@@ -1,191 +1,97 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 768557844A1
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 22 Aug 2023 16:45:00 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 041E87844D9
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 22 Aug 2023 16:57:58 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 070B360AC9;
-	Tue, 22 Aug 2023 14:44:59 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 070B360AC9
+	by smtp3.osuosl.org (Postfix) with ESMTP id 069D3611AA;
+	Tue, 22 Aug 2023 14:57:56 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 069D3611AA
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1692715499;
-	bh=S5R/gOYveki1v3VrtbYfMJKqcJ/Bj6MTO1OZWoVerTY=;
+	s=default; t=1692716276;
+	bh=di37mFimF5wpPlIlOBH1xxprIwOZzbpFi3kYI9SWt38=;
 	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=XKN1vkLd2wWxz6pTnp62ihHEzkZj5qVshr8i862K8iISXe3jx1NppXvehb15ruiSF
-	 TiPstmlUv844Qel+BAY83jpiSv1+pPUd8l3lFeEKlkfr52dQ4cLDbFxWQlDdMROewi
-	 CYyCIO7Ufi8C2Po9bYF+w+3v4G9HyspJPHkCCRH9nogQ7LrVT2iAjzMIAqH61HMVMk
-	 dAufysV7RcM7eiQJqI1c1T1iLatJ4mH6IyQYUicAETB5MSdcWRCpxtW4TAXQU+lQZX
-	 VGm1XZCm2BB3c4LGrL3iovFC1WBNktDDnb++boTFqoSLM6Su0iqtdFKO6ENEGweFYC
-	 B2EkfUVNPjlKg==
+	b=Y/Z9kqxof09E4DEIzD6pK77lO1HfSSDHPkXfd5+atnjS8XhWvD8aM1FNZiXq8Ka0l
+	 +wD2HTBETJssRP8Tz0hXazZFLasctA2ZzBdpjyT5xe3dMUZOZRgWIV9nuJ2gPu334b
+	 7K07y+csPgHypvJXubGVJ6IDq8fNQl3WdSRIlynmzhMKmZna7KcmSD/iurnGmUiFXH
+	 yoW21WHgf7UWcqTxZDEEkt0FrDpaf/3r8By6M3RMEx+i/FNojhd0l9JQJJ2o3Wnv5r
+	 fIFWCVavnIgJ6rThPzH324V7FWF/pelnywzFZrzC1ygGJMwRGayaERLmk7jxTC9ams
+	 1UcibI70Rt+jQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Rjlj5lVhu4ma; Tue, 22 Aug 2023 14:44:58 +0000 (UTC)
+	with ESMTP id TWcw4iSl1F9P; Tue, 22 Aug 2023 14:57:52 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id C56546079D;
-	Tue, 22 Aug 2023 14:44:57 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C56546079D
+	by smtp3.osuosl.org (Postfix) with ESMTP id B03C6611BA;
+	Tue, 22 Aug 2023 14:57:51 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B03C6611BA
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id D758C1BF2BA
- for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Aug 2023 14:44:52 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 1170B1BF2BA
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Aug 2023 14:57:47 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id B9FC94089B
- for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Aug 2023 14:44:52 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B9FC94089B
+ by smtp2.osuosl.org (Postfix) with ESMTP id E6F6540BBF
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Aug 2023 14:57:46 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org E6F6540BBF
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 69Jx1I2oHuCQ for <intel-wired-lan@lists.osuosl.org>;
- Tue, 22 Aug 2023 14:44:51 +0000 (UTC)
-Received: from mgamail.intel.com (mgamail.intel.com [134.134.136.65])
- by smtp4.osuosl.org (Postfix) with ESMTPS id CBED040895
- for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Aug 2023 14:44:50 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org CBED040895
-X-IronPort-AV: E=McAfee;i="6600,9927,10809"; a="377656246"
-X-IronPort-AV: E=Sophos;i="6.01,193,1684825200"; d="scan'208";a="377656246"
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 22 Aug 2023 07:44:49 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10809"; a="713184179"
-X-IronPort-AV: E=Sophos;i="6.01,193,1684825200"; d="scan'208";a="713184179"
-Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
- by orsmga006.jf.intel.com with ESMTP; 22 Aug 2023 07:44:49 -0700
-Received: from orsmsx611.amr.corp.intel.com (10.22.229.24) by
- ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.27; Tue, 22 Aug 2023 07:44:42 -0700
-Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
- ORSMSX611.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.27; Tue, 22 Aug 2023 07:44:39 -0700
-Received: from ORSEDG601.ED.cps.intel.com (10.7.248.6) by
- orsmsx610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.27 via Frontend Transport; Tue, 22 Aug 2023 07:44:39 -0700
-Received: from NAM10-BN7-obe.outbound.protection.outlook.com (104.47.70.105)
- by edgegateway.intel.com (134.134.137.102) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.27; Tue, 22 Aug 2023 07:44:39 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=eaDvM4WqgT0LIJ2FsoKeDdUqloLnhLYZ20vikFjzauhpsR0rifywkaAjZKwLnJNjen3Wz0ctHm2RtQMPdQjxLH+MYULmJToj8tTgufL2zYNtLPoA3lZKioFrWQCTp/+eF42bzYfp2X/Cv1tafVtVquNsA7vuyBhTsvhW7zZps1CzYbfvZT0B1P4Z2tPgB4Chd4FkkwqUZ20kJGKeG2fpVLq/GSJuFEYnq26Z3Fle1QOWn9UQ4kvbqSg0XYb720UB16djhbrAZy13Dw2pWFxAdG3HkJ5T+ApaVGbpddQMdjh100Fw/FDt/5BgaFbTNezY9Fxa0iRsm3B1tQUHHk/+mQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=XAesGsxnV+omO1dOzrTVmpAFC+vYNQSHP9u13lJY3kc=;
- b=dz3axw7I5ftiAB5QT1FLgc7okGGDfNsUXk1vSHAB8XbI/GPYuGNprftaWXjkNcVeWC1ouLVz1I7/fjqPw0hFkVNdvb83ozSL2IVul9g/Sf/tuow8uSTccIGFo33SusZLTva0NQwy3ghou7HNQSYDQxXlnwMfy7jDuAG/vAz3rHxMcpjAdH5eqJiXMLmQH4XC8xPRpA1kEU78iGAYRXLjl/pSPvlzx8JXGvZ+Pm7y+ULQhNpSPLcg4MtJi8WIi6TKQkc7hk2K9kvc6TA/VrEAwWFofp45PmLw0ofryNVE+xNALSW+gNvi+yYZkC3iwNadGZVm3LlhFKyouYpvAcUHYA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from BYAPR11MB3672.namprd11.prod.outlook.com (2603:10b6:a03:fa::30)
- by BL1PR11MB5555.namprd11.prod.outlook.com (2603:10b6:208:317::11)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6699.24; Tue, 22 Aug
- 2023 14:44:36 +0000
-Received: from BYAPR11MB3672.namprd11.prod.outlook.com
- ([fe80::c45d:d61e:8d13:cb29]) by BYAPR11MB3672.namprd11.prod.outlook.com
- ([fe80::c45d:d61e:8d13:cb29%3]) with mapi id 15.20.6699.022; Tue, 22 Aug 2023
- 14:44:36 +0000
-Message-ID: <f497dc97-76bb-7526-7d19-d6886a3f3a65@intel.com>
-Date: Tue, 22 Aug 2023 16:44:29 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.3.1
-Content-Language: en-US
-To: Leon Romanovsky <leon@kernel.org>, Simon Horman <horms@kernel.org>
-References: <20230817141746.18726-1-karol.kolacinski@intel.com>
- <20230817141746.18726-2-karol.kolacinski@intel.com>
- <20230819115249.GP22185@unreal> <20230822070211.GH2711035@kernel.org>
- <20230822141348.GH6029@unreal>
-From: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-In-Reply-To: <20230822141348.GH6029@unreal>
-X-ClientProxiedBy: FR0P281CA0061.DEUP281.PROD.OUTLOOK.COM
- (2603:10a6:d10:49::16) To BYAPR11MB3672.namprd11.prod.outlook.com
- (2603:10b6:a03:fa::30)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 4IDke0tZoyVI for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 22 Aug 2023 14:57:45 +0000 (UTC)
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 1849E4014D
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Aug 2023 14:57:44 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1849E4014D
+Received: from mimecast-mx02.redhat.com (66.187.233.73 [66.187.233.73]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-343-UnGKpmn9Oq6clML505fQAw-1; Tue, 22 Aug 2023 10:57:40 -0400
+X-MC-Unique: UnGKpmn9Oq6clML505fQAw-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.7])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 4BF633C13924;
+ Tue, 22 Aug 2023 14:57:40 +0000 (UTC)
+Received: from [10.43.2.183] (unknown [10.43.2.183])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 6C66A140E96E;
+ Tue, 22 Aug 2023 14:57:39 +0000 (UTC)
+Message-ID: <8d809d10-c5a7-3f6a-e56d-12b5bf2dc046@redhat.com>
+Date: Tue, 22 Aug 2023 16:57:38 +0200
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: BYAPR11MB3672:EE_|BL1PR11MB5555:EE_
-X-MS-Office365-Filtering-Correlation-Id: 6f2aeec7-e6a2-41cd-a853-08dba31e4e9b
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 1AFu/J+o99B6AEY6pgK97r/JA4JXGgbUSrGEtgnUU0N7uTbNVapc4tYpo/CJZ8NAReUTyzGGdGTQxV1jp3VsBa2piR37VZa7eoPD+UxOG7FZu768E1ukRPmIYU5UcH40rWP55rI/GV59uxx7P0gI2NalF0VOVxsNeo3JwRnOJ/6yf3cLQ6AqOjG9dijUbZqelElDr49GeaxeCy++SqzF2jBt2slOVqVUKh0V1y3996gY/M+m6AgACTNMugHXtE+3QoX7rBmMUX5i/Fjyr4wbLiPMbIecm6Wv/ckszD3VteunTS9YFSvYbrPGirGV7Vw7PnZro8gOWKYGPie6LYkdq25v4O1CaFk7r4dq1C7AvnYJ5wUHAYe22brzYhHLWGSXe8Wmk0F4ptLKFcHRv/TyqumnBPK4r9bpA0S48V7u4bZ6fO8iYqdnAvSTAK1sVM30hshIugwynODnigopuUNqZGjKn2pWbWKCmwF6GmU5gNxcvLAF9GNPuQ4xMeRKlq9cKkARCtQQeDYBC2AdPeYYn9NfvdsAtzNCff/dQGZGA5Aa0phmLciPMKN+ptczZ9CP+BSBJD2PPIiGbSEWyN7m1hitSOT3eJOge399iJYqZS/5Jao6xapFieaBNmE7IIbBYzFdAO5N+2DmcEkpDqSeE7mqNLlq5/Pidfs8qXhb35ICiw8B80YmvdC14T+Kf1TY
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BYAPR11MB3672.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230031)(396003)(136003)(376002)(39860400002)(346002)(366004)(1800799009)(186009)(451199024)(66476007)(66556008)(6512007)(316002)(66946007)(66899024)(82960400001)(110136005)(8676002)(8936002)(2616005)(4326008)(966005)(36756003)(41300700001)(478600001)(6666004)(38100700002)(6486002)(53546011)(6506007)(83380400001)(2906002)(31686004)(31696002)(86362001)(5660300002)(26005)(45980500001)(43740500002);
- DIR:OUT; SFP:1102; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?a2M5cGQ2NXB0WisxRGJYNTJOTW5KMlhDeHd1a3ptUFU2b0NuWXViemEvc2Fp?=
- =?utf-8?B?ejBuTzZ3MUh0WmpEUndhSU9MS01Dcm9QVGE0Ri9RTkNrK1p6eEg4MEk5ZXRv?=
- =?utf-8?B?OGdIY1h6M3lEQ05nVjU1RGU4UFRuMlF0VU9lZ3g4MldYbmRVaXVueTJyMW9x?=
- =?utf-8?B?dk1BeUVkNCtGeThBamZSZWVOcWl0cVRnbElMd1FnQVJ1cSt2dHZHd2tVdEpP?=
- =?utf-8?B?WSt5THcrWVFQS25YRU5TNWJ3SDJ3OFovdVRsTHdFQlpHL1ZuQjIxRDk4RW9q?=
- =?utf-8?B?S3RCc3U1d2JYbVl2YUc5TG5XUHhiaWtOS1RuQzRzV3h5b0plckI4YkJrb1FD?=
- =?utf-8?B?NjY2ZDRXRVpkWEZPNjM4QXhNMmNmT0FjQU1NSXFrd2pxemNBUU1yeUtDS012?=
- =?utf-8?B?ckptMDBSMkJFU0pFdWN1RUQrbEhoUmIwcGdMSWdDRlZNVjdjUjV5eE81NlV4?=
- =?utf-8?B?OUpoMXRCRlpHbVZMd0k2dHo1TFZjd3RKOHVEQWl4d1ZlWlUra2o4RDdsaTBW?=
- =?utf-8?B?cTBNZjVQN2t0dVJaeFBlbi9tSm96Nno5eVZDNVU3djRKTmVtV2xONTNqaXN3?=
- =?utf-8?B?TURWdE9yVjE2SU9nL3NvNTJseW9QK3lJb2ZFbzluOXpyWFltK2xxcVJXVmxG?=
- =?utf-8?B?cFVnMkNnMDVKeWx3MEd0SWYvSnJmTXNKMkx6MTVqSlFCZ1cvaWE1bk9jRWlS?=
- =?utf-8?B?bW9HK0x6OG9helFuaGdLcnFwWVNtVDhiNUp3cUxtQnMrZ0tsYUdBUXFoLzEw?=
- =?utf-8?B?bmtJejJYVG41Mlg4SWVFaHZuSzh0OGtnMjAyOGpWVDlnay9WbTRWT3ZZS0tt?=
- =?utf-8?B?UGlRMzhudmtQd3p2Z3Yrb0F4V2RlRGdEQjRHRHo3WmpqQ2RjMElsVDl4Q1d2?=
- =?utf-8?B?N29FZ2tmcGxRNkg5ZEp6RStxL1BmRndCcFgxeHI0K0ZsVWNJOUoyZVpPWUMw?=
- =?utf-8?B?RGJPT0l1QzNwMlZNdVp5WU81YkFSYUl6dWhZM2lYK3FnMm5EeVNJVVBLa2Np?=
- =?utf-8?B?NURBZWFCeUpuaXkwa1Z5RlM2WFVPSmhBUUE2UFg3SUFJUnVDR1VKMWJ5aFZ4?=
- =?utf-8?B?LzdvTExzckN1emN6VjVjWWF6MkZBd29MUGg1YjlpVnlTVHVLMzFqVHlvVEFq?=
- =?utf-8?B?MWptdU13VXdmOUdmdEFYWFVISWo1ZjFQQkFQQmdaNWZkcXoxbXRNNjVYb1Vt?=
- =?utf-8?B?b3FRVUlzVHR1QzFGTUpIUHNFY3ZNeExQQjJ6UjM2WWNFRUlka2ltUlFYUGtV?=
- =?utf-8?B?VWhDeFNuVE1mSUdiOHNsRm9CYmRna1BYa0M2M0l5bG1tbG9nRWRWYXJjNXZR?=
- =?utf-8?B?OStWcUFEVGdpNUQvcGhpT1QzMFplSmRRY3ZHaGRhU3p3eGFHRENMUmptc3RU?=
- =?utf-8?B?MWZhTUVHbkNzNjYwV3N3ZlZEU0J3RllMWFh6U0s2NW1MeVVGc2xxakJlUzB2?=
- =?utf-8?B?SHZkY3ZMRHY3TmR6K09wQ2tKTFE1OVZ4Nll1aWNpeXFCT3NGSGsxaERSTXNi?=
- =?utf-8?B?N3ByNkU2M3d1MFZTOU5SMnZ0UXNZazFSck5CaUtyM3R3eFZQeVdjQXhGVHZp?=
- =?utf-8?B?VzhhcHZMVXBnc0UrZ2Vscmc2SlRBMHRtalphYlNiVURQZjB1SnhmaWRtQWo3?=
- =?utf-8?B?YlJ1WUlZOEVTRGs3UUZWU0R3MExZelFsTUNqV2lpMDYzRmp5T0M5bGdGWkFJ?=
- =?utf-8?B?dzU0ckMzdTRYTFFIYWxMVmd3OU9BZ3pvR2JIZ1lzSm1DZXhTSjdabHQwd3c3?=
- =?utf-8?B?K0dpZ2VHditjUGxSU0duNXZteURGMVk2L2dlM25kb0c4ZkticUtBNVpQRXEw?=
- =?utf-8?B?YmRWWWtXejMxNUxzZ1RHYkt0cWRER2JvM0xLQ0p1Y2thTEVDcVRINGFVcTBk?=
- =?utf-8?B?SHlFMHN2ZHZUVTdqWjFDaTVOR21MVGg4cmZEQmtIMmpjM1gvWksvOU9sbmwv?=
- =?utf-8?B?aXdIN2Z5L0tjRUVvVytVcjZUSkpvZG43U3N4d1AwSjNHZDlwYkFhVUVpNXAr?=
- =?utf-8?B?V2lMM0MyRHh4aHFRYXpkVXlYblIwcGl3aWVzYXdiZGRUVjVBN1JoUllDQlox?=
- =?utf-8?B?RkpPcTkvV00ySnNybDc0OXM1MUxSR0IwS3laVWF6U3ZZNUluL0prQ2lrdnRP?=
- =?utf-8?B?alJMVW96aEJpaVJJWTNDREd3YUhLSFdKeEVIbWhlZnlGV3paWUViMGZYQ3RD?=
- =?utf-8?B?SWc9PQ==?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: 6f2aeec7-e6a2-41cd-a853-08dba31e4e9b
-X-MS-Exchange-CrossTenant-AuthSource: BYAPR11MB3672.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 22 Aug 2023 14:44:36.7467 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 6ekdluDdI8S0wptiRBUnq8dT3g9l3CujxJ2jlE9xEDl/6FlR5V9RAVf6/t7btJswjUE33n7cV1EUpKGsoUjl3BP1I8dStnJGNrUS2Nut39o=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BL1PR11MB5555
-X-OriginatorOrg: intel.com
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1692715490; x=1724251490;
- h=message-id:date:subject:to:cc:references:from:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=nteqYLE8OVHV638aEcg6/R5kWYgvC+DY0fun3TxJyTE=;
- b=iUvFiSeZFhb4j6RmI+cg7ncczCoIglPR00F7qXplivsOY+0Q51W5yYzl
- n4PSeu7DJweeS2ZyuJF5dhFC6fyfQ+kcOeaO3WQPohjRoaSqwnjLA6j2Q
- ZW9D1ZZuGTl9h245jJOV5zTcxcV0fAKXbbm7jbzaq8ZcNJXiTcYE8J1ei
- HrnZD5f4SBUSzRG98jKJ1gZKEsgfMkoukxBiBqu4x8Tt64V5m7USv19DX
- sZezOBKWC9+777i9tu3nDWmzVQCWndi3hqOCUQ8LG0JbtKUJdrOt9dRzg
- GbgrPI1KvAlZIanvSozc9A+A2q2DhDqoeH3+UGnKpWVHrcpVXeLwXiFHU
- g==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=iUvFiSeZ
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH v2 iwl-next 1/9] ice: use
- ice_pf_src_tmr_owned where available
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.14.0
+To: Junfeng Guo <junfeng.guo@intel.com>, intel-wired-lan@lists.osuosl.org
+References: <20230817093442.2576997-2-junfeng.guo@intel.com>
+ <20230817094240.2584745-1-junfeng.guo@intel.com>
+ <20230817094240.2584745-3-junfeng.guo@intel.com>
+From: Ivan Vecera <ivecera@redhat.com>
+In-Reply-To: <20230817094240.2584745-3-junfeng.guo@intel.com>
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.7
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=redhat.com; 
+ s=mimecast20190719; t=1692716264;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=qwWb7vemJ17QECDuLNJx/OYhnnSJxbNSmmfoycI3ljU=;
+ b=Z79FyGrmBWBTz/PB+qvCH7kW9Rrz0xMME9+/MVVye7ATf6CDwXqAQvMPCsUt0Wsa7jLrFr
+ j91mCx+h7a6v0nMOW7InMCdRptkwBcsGzcZvtKaZZt0lDjOLWZkHytLqoY9OABcjSKLhn4
+ 0SSn52r8jgW7bKjSQBBUK9QLV9rY+dQ=
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
+ header.a=rsa-sha256 header.s=mimecast20190719 header.b=Z79FyGrm
+Subject: Re: [Intel-wired-lan] [PATCH net-next v4 02/15] ice: init imem
+ table for parser
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -198,49 +104,763 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, Karol Kolacinski <karol.kolacinski@intel.com>,
- intel-wired-lan@lists.osuosl.org, anthony.l.nguyen@intel.com,
- jesse.brandeburg@intel.com
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Cc: qi.z.zhang@intel.com
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-T24gOC8yMi8yMyAxNjoxMywgTGVvbiBSb21hbm92c2t5IHdyb3RlOgo+IE9uIFR1ZSwgQXVnIDIy
-LCAyMDIzIGF0IDA5OjAyOjExQU0gKzAyMDAsIFNpbW9uIEhvcm1hbiB3cm90ZToKPj4gT24gU2F0
-LCBBdWcgMTksIDIwMjMgYXQgMDI6NTI6NDlQTSArMDMwMCwgTGVvbiBSb21hbm92c2t5IHdyb3Rl
-Ogo+Pj4gT24gVGh1LCBBdWcgMTcsIDIwMjMgYXQgMDQ6MTc6MzhQTSArMDIwMCwgS2Fyb2wgS29s
-YWNpbnNraSB3cm90ZToKPj4+PiBUaGUgaWNlX3BmX3NyY190bXJfb3duZWQoKSBtYWNybyBleGlz
-dHMgdG8gY2hlY2sgdGhlIGZ1bmN0aW9uIGNhcGFiaWxpdHkKPj4+PiBiaXQgaW5kaWNhdGluZyBp
-ZiB0aGUgY3VycmVudCBmdW5jdGlvbiBvd25zIHRoZSBQVFAgaGFyZHdhcmUgY2xvY2suCj4+Pgo+
-Pj4gVGhpcyBpcyBmaXJzdCBwYXRjaCBpbiB0aGUgc2VyaWVzLCBidXQgSSBjYW4ndCBmaW5kIG1l
-bnRpb25lZCBtYWNyby4KPj4+IE15IG5ldC1uZXh0IGlzIGJhc2VkIG9uIDViMGExNDE0ZTBiMCAo
-Ik1lcmdlIGJyYW5jaCAnc21jLWZlYXR1cmVzJyIpCj4+PiDinpwgIGtlcm5lbCBnaXQ6KG5ldC1u
-ZXh0KSBnaXQgZ3JlcCBpY2VfcGZfc3JjX3Rtcl9vd25lZAo+Pj4gc2hvd3Mgbm90aGluZy4KPj4+
-Cj4+PiBPbiB3aGljaCBicmFuY2ggaXMgaXQgYmFzZWQ/Cj4+Cj4+IEhpIExlb24sCj4+Cj4+IE15
-IGFzc3VtcHRpb24gaXMgdGhhdCBpdCBpcyBiYXNlZCBvbiB0aGUgZGV2LXF1ZXVlIGJyYW5jaCBv
-Zgo+PiBodHRwczovL2dpdC5rZXJuZWwub3JnL3B1Yi9zY20vbGludXgva2VybmVsL2dpdC90bmd1
-eS9uZXh0LXF1ZXVlLmdpdAo+IAo+IFNvIHNob3VsZCBuZXRkZXYgcmVhZGVycyByZXZpZXcgaXQg
-b3Igd2FpdCB0aWxsIEludGVsIGZvbGtzIHBlcmZvcm0KPiBmaXJzdCBwYXNzIG9uIGl0PwoKTW9z
-dCBvZiB0aGUgdGltZSBJbnRlbCBmb2xrcyB3b3VsZCBiZSBmaXJzdCB0byByZXZpZXcsIGlmIG9u
-bHkgYmVjYXVzZSAKb2Ygb3VyIHByZS1JV0wgcHJvY2Vzc2VzIG9yIHB1cmUgZmFtaWxpYXJpdHkv
-aW50ZXJlc3QgaW4gZ2l2ZW4gcGllY2UuCgpGb3IgdGhpcyBwYXJ0aWN1bGFyIHNlcmllcywgaXQg
-aXMgYWJvdXQgcmlnaHQgImNvZGV3aXNlIiBzaW5jZSB2MSwgc28gCnlvdSBhcmUgd2VsY29tZSBm
-b3IgYW4gaW5zaWdodGZ1bCBsb29rIGF0IHYzCihJIGRpZG4ndCBwcm92aWRlZCBteSBSQnMgc28g
-ZmFyIGJlY2F1c2Ugb2YgIm1ldGFkYXRhIiBpc3N1ZXMgOiksCndpbGwgdGFrZSBhIGZyZXNoIGxv
-b2ssIGJ1dCB5b3UgZG9uJ3QgbmVlZCB0byB3YWl0KS4KCgpHZW5lcmFsIGlkZWEgZm9yIENDJ2lu
-ZyBuZXRkZXYgZm9yIElXTC10YXJnZXRlZCBwYXRjaGVzIGlzIHRvIGhhdmUgb3BlbiAKZGV2ZWxv
-bXBlbnQgcHJvY2Vzcy4KUXVhbGl0eSBzaG91bGQgYmUgYWxyZWFkeSBhcyBmb3IgbmV0ZGV2IHBv
-c3RpbmcuCk91ciBWQUwgcGlja3MgdXAgcGF0Y2hlcyBmb3IgdGVzdGluZyBmcm9tIGhlcmUgd2hl
-biBUb255IG1hcmtzIHRoZW0gc28uCgpUaGF0J3Mgd2hhdCBJIGNvdWxkIHNheSBmb3IgcmV2aWV3
-IHByb2Nlc3MuCgoiTWFpbnRhaW5lcnMgc3R1ZmYiLCBJICpndWVzcyosIGlzOgphZnRlciByZXZp
-ZXcmdGVzdCBUb255IFJlcXVlc3RzIG5ldGRldiBNYWludGFpbmVycyB0byBQdWxsCihhbmQgdGhy
-b3R0bGVzIG91dGdvaW5nIHN0dWZmIGJ5IGRvaW5nIHNvIHRvIHBhY2UgYWdyZWVkIHVwb24pLgpB
-dCB0aGF0IHN0YWdlIGlzIGEgbGFzdCBtb21lbnQgZm9yIChsYXRlPykgcmV2aWV3LCB3ZWxjb21l
-ZCBhcyBhbHdheXMuCgoKCj4gCj4gVGhhbmtzCj4gX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX18KPiBJbnRlbC13aXJlZC1sYW4gbWFpbGluZyBsaXN0Cj4gSW50
-ZWwtd2lyZWQtbGFuQG9zdW9zbC5vcmcKPiBodHRwczovL2xpc3RzLm9zdW9zbC5vcmcvbWFpbG1h
-bi9saXN0aW5mby9pbnRlbC13aXJlZC1sYW4KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fCkludGVsLXdpcmVkLWxhbiBtYWlsaW5nIGxpc3QKSW50ZWwtd2ly
-ZWQtbGFuQG9zdW9zbC5vcmcKaHR0cHM6Ly9saXN0cy5vc3Vvc2wub3JnL21haWxtYW4vbGlzdGlu
-Zm8vaW50ZWwtd2lyZWQtbGFuCg==
+Masks and shifts can be simplified by FIELD_GET() macro from 
+linux/bitfield.h... See below...
+
+On 17. 08. 23 11:42, Junfeng Guo wrote:
+> Parse DDP section ICE_SID_RXPARSER_IMEM into an arrary of
+> struct ice_imem_item.
+> 
+> Signed-off-by: Junfeng Guo <junfeng.guo@intel.com>
+> ---
+>   drivers/net/ethernet/intel/ice/ice_imem.c     | 279 ++++++++++++++++++
+>   drivers/net/ethernet/intel/ice/ice_imem.h     | 217 ++++++++++++++
+>   drivers/net/ethernet/intel/ice/ice_parser.c   |  97 ++++++
+>   drivers/net/ethernet/intel/ice/ice_parser.h   |   8 +
+>   .../net/ethernet/intel/ice/ice_parser_util.h  |  24 ++
+>   drivers/net/ethernet/intel/ice/ice_type.h     |   1 +
+>   6 files changed, 626 insertions(+)
+>   create mode 100644 drivers/net/ethernet/intel/ice/ice_imem.c
+>   create mode 100644 drivers/net/ethernet/intel/ice/ice_imem.h
+>   create mode 100644 drivers/net/ethernet/intel/ice/ice_parser_util.h
+> 
+> diff --git a/drivers/net/ethernet/intel/ice/ice_imem.c b/drivers/net/ethernet/intel/ice/ice_imem.c
+> new file mode 100644
+> index 000000000000..a47748d1b1bf
+> --- /dev/null
+> +++ b/drivers/net/ethernet/intel/ice/ice_imem.c
+> @@ -0,0 +1,279 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +/* Copyright (C) 2018-2023 Intel Corporation */
+> +
+> +#include "ice_common.h"
+> +#include "ice_parser_util.h"
+> +
+> +static void _ice_imem_bst_bm_dump(struct ice_hw *hw, struct ice_bst_main *bm)
+> +{
+> +	dev_info(ice_hw_to_dev(hw), "boost main:\n");
+> +	dev_info(ice_hw_to_dev(hw), "\talu0 = %d\n", bm->alu0);
+> +	dev_info(ice_hw_to_dev(hw), "\talu1 = %d\n", bm->alu1);
+> +	dev_info(ice_hw_to_dev(hw), "\talu2 = %d\n", bm->alu2);
+> +	dev_info(ice_hw_to_dev(hw), "\tpg = %d\n", bm->pg);
+> +}
+> +
+> +static void _ice_imem_bst_kb_dump(struct ice_hw *hw,
+> +				  struct ice_bst_keybuilder *kb)
+> +{
+> +	dev_info(ice_hw_to_dev(hw), "boost key builder:\n");
+> +	dev_info(ice_hw_to_dev(hw), "\tpriority = %d\n", kb->prio);
+> +	dev_info(ice_hw_to_dev(hw), "\ttsr_ctrl = %d\n", kb->tsr_ctrl);
+> +}
+> +
+> +static void _ice_imem_np_kb_dump(struct ice_hw *hw,
+> +				 struct ice_np_keybuilder *kb)
+> +{
+> +	dev_info(ice_hw_to_dev(hw), "next proto key builder:\n");
+> +	dev_info(ice_hw_to_dev(hw), "\tops = %d\n", kb->opc);
+> +	dev_info(ice_hw_to_dev(hw), "\tstart_or_reg0 = %d\n",
+> +		 kb->start_reg0);
+> +	dev_info(ice_hw_to_dev(hw), "\tlen_or_reg1 = %d\n", kb->len_reg1);
+> +}
+> +
+> +static void _ice_imem_pg_kb_dump(struct ice_hw *hw,
+> +				 struct ice_pg_keybuilder *kb)
+> +{
+> +	dev_info(ice_hw_to_dev(hw), "parse graph key builder:\n");
+> +	dev_info(ice_hw_to_dev(hw), "\tflag0_ena = %d\n", kb->flag0_ena);
+> +	dev_info(ice_hw_to_dev(hw), "\tflag1_ena = %d\n", kb->flag1_ena);
+> +	dev_info(ice_hw_to_dev(hw), "\tflag2_ena = %d\n", kb->flag2_ena);
+> +	dev_info(ice_hw_to_dev(hw), "\tflag3_ena = %d\n", kb->flag3_ena);
+> +	dev_info(ice_hw_to_dev(hw), "\tflag0_idx = %d\n", kb->flag0_idx);
+> +	dev_info(ice_hw_to_dev(hw), "\tflag1_idx = %d\n", kb->flag1_idx);
+> +	dev_info(ice_hw_to_dev(hw), "\tflag2_idx = %d\n", kb->flag2_idx);
+> +	dev_info(ice_hw_to_dev(hw), "\tflag3_idx = %d\n", kb->flag3_idx);
+> +	dev_info(ice_hw_to_dev(hw), "\talu_reg_idx = %d\n", kb->alu_reg_idx);
+> +}
+> +
+> +static void _ice_imem_alu_dump(struct ice_hw *hw,
+> +			       struct ice_alu *alu, int index)
+> +{
+> +	dev_info(ice_hw_to_dev(hw), "alu%d:\n", index);
+> +	dev_info(ice_hw_to_dev(hw), "\topc = %d\n", alu->opc);
+> +	dev_info(ice_hw_to_dev(hw), "\tsrc_start = %d\n", alu->src_start);
+> +	dev_info(ice_hw_to_dev(hw), "\tsrc_len = %d\n", alu->src_len);
+> +	dev_info(ice_hw_to_dev(hw), "\tshift_xlate_sel = %d\n",
+> +		 alu->shift_xlate_sel);
+> +	dev_info(ice_hw_to_dev(hw), "\tshift_xlate_key = %d\n",
+> +		 alu->shift_xlate_key);
+> +	dev_info(ice_hw_to_dev(hw), "\tsrc_reg_id = %d\n", alu->src_reg_id);
+> +	dev_info(ice_hw_to_dev(hw), "\tdst_reg_id = %d\n", alu->dst_reg_id);
+> +	dev_info(ice_hw_to_dev(hw), "\tinc0 = %d\n", alu->inc0);
+> +	dev_info(ice_hw_to_dev(hw), "\tinc1 = %d\n", alu->inc1);
+> +	dev_info(ice_hw_to_dev(hw), "\tproto_offset_opc = %d\n",
+> +		 alu->proto_offset_opc);
+> +	dev_info(ice_hw_to_dev(hw), "\tproto_offset = %d\n",
+> +		 alu->proto_offset);
+> +	dev_info(ice_hw_to_dev(hw), "\tbranch_addr = %d\n", alu->branch_addr);
+> +	dev_info(ice_hw_to_dev(hw), "\timm = %d\n", alu->imm);
+> +	dev_info(ice_hw_to_dev(hw), "\tdst_start = %d\n", alu->dst_start);
+> +	dev_info(ice_hw_to_dev(hw), "\tdst_len = %d\n", alu->dst_len);
+> +	dev_info(ice_hw_to_dev(hw), "\tflags_extr_imm = %d\n",
+> +		 alu->flags_extr_imm);
+> +	dev_info(ice_hw_to_dev(hw), "\tflags_start_imm= %d\n",
+> +		 alu->flags_start_imm);
+> +}
+> +
+> +/**
+> + * ice_imem_dump - dump an imem item info
+> + * @hw: pointer to the hardware structure
+> + * @item: imem item to dump
+> + */
+> +void ice_imem_dump(struct ice_hw *hw, struct ice_imem_item *item)
+> +{
+> +	dev_info(ice_hw_to_dev(hw), "index = %d\n", item->idx);
+> +	_ice_imem_bst_bm_dump(hw, &item->b_m);
+> +	_ice_imem_bst_kb_dump(hw, &item->b_kb);
+> +	dev_info(ice_hw_to_dev(hw), "pg priority = %d\n", item->pg_pri);
+> +	_ice_imem_np_kb_dump(hw, &item->np_kb);
+> +	_ice_imem_pg_kb_dump(hw, &item->pg_kb);
+> +	_ice_imem_alu_dump(hw, &item->alu0, 0);
+> +	_ice_imem_alu_dump(hw, &item->alu1, 1);
+> +	_ice_imem_alu_dump(hw, &item->alu2, 2);
+> +}
+> +
+> +/** The function parses a 4 bits Boost Main with below format:
+> + *  BIT 0: ALU 0	(bm->alu0)
+> + *  BIT 1: ALU 1	(bm->alu1)
+> + *  BIT 2: ALU 2	(bm->alu2)
+> + *  BIT 3: Parge Graph	(bm->pg)
+> + */
+> +static void _ice_imem_bm_init(struct ice_bst_main *bm, u8 data)
+> +{
+> +	bm->alu0	= !!(data & ICE_BM_ALU0);
+> +	bm->alu1	= !!(data & ICE_BM_ALU1);
+> +	bm->alu2	= !!(data & ICE_BM_ALU2);
+> +	bm->pg		= !!(data & ICE_BM_PG);
+> +}
+
+Can be written as:
+#define ICE_BM_ALU0 BIT(0)
+#define ICE_BM_ALU1 BIT(1)
+#define ICE_BM_ALU2 BIT(2)
+#define ICE_BM_PG   BIT(3)
+...
+bm->alu0 = FIELD_GET(ICE_BM_ALU0, data);
+bm->alu1 = FIELD_GET(ICE_BM_ALU1, data);
+bm->alu2 = FIELD_GET(ICE_BM_ALU2, data);
+bm->pg   = FIELD_GET(ICE_BM_PG, data);
+
+> +
+> +/** The function parses a 10 bits Boost Main Build with below format:
+> + *  BIT 0-7:	Priority	(bkb->prio)
+> + *  BIT 8:	TSR Control	(bkb->tsr_ctrl)
+> + *  BIT 9:	Reserved
+> + */
+> +static void _ice_imem_bkb_init(struct ice_bst_keybuilder *bkb, u16 data)
+> +{
+> +	bkb->prio	= (u8)(data & ICE_BKB_PRIO_M);
+> +	bkb->tsr_ctrl	= !!(data >> ICE_BKB_TSRC_S & ICE_BKB_TSRC_M);
+> +}
+
+Here:
+#define ICE_BKB_PRIO GENMASK(7, 0)
+#define ICE_BKB_TSRC BIT(8)
+...
+bkb->prio     = FIELD_GET(ICE_BKB_PRIO, data);
+bkb->tsr_ctrl = FIELD_GET(ICE_BKB_TSRC, data);
+
+> +
+> +/** The function parses a 18 bits Next Protocol Key Build with below format:
+> + *  BIT 0-1:	Opcode		(kb->ops)
+> + *  BIT 2-9:	Start / Reg 0	(kb->start_or_reg0)
+> + *  BIT 10-17:	Length / Reg 1	(kb->len_or_reg1)
+> + */
+> +static void _ice_imem_npkb_init(struct ice_np_keybuilder *kb, u32 data)
+> +{
+> +	kb->opc		= (u8)(data & ICE_NPKB_OPC_M);
+> +	kb->start_reg0	= (u8)((data >> ICE_NPKB_SR0_S) & ICE_NPKB_SR0_M);
+> +	kb->len_reg1	= (u8)((data >> ICE_NPKB_LR1_S) & ICE_NPKB_LR1_M);
+> +}
+
+Likewise... etc etc etc in other parts below.
+
+The advantage of this is that you don't need to specify defines for mask
+and shift separately... Just use BIT for single bit field or GENMASK
+for multi-bit field and FIELD_GET takes care about masking & shifting.
+Code is more readable...
+
+> +
+> +/** The function parses a 35 bits Parse Graph Key Build with below format:
+> + *  BIT 0:	Flag 0 Enable		(kb->flag0_ena)
+> + *  BIT 1-6:	Flag 0 Index		(kb->flag0_idx)
+> + *  BIT 7:	Flag 1 Enable		(kb->flag1_ena)
+> + *  BIT 8-13:	Flag 1 Index		(kb->flag1_idx)
+> + *  BIT 14:	Flag 2 Enable		(kb->flag2_ena)
+> + *  BIT 15-20:	Flag 2 Index		(kb->flag2_idx)
+> + *  BIT 21:	Flag 3 Enable		(kb->flag3_ena)
+> + *  BIT 22-27:	Flag 3 Index		(kb->flag3_idx)
+> + *  BIT 28-34:	ALU Register Index	(kb->alu_reg_idx)
+> + */
+> +static void _ice_imem_pgkb_init(struct ice_pg_keybuilder *kb, u64 data)
+> +{
+> +	kb->flag0_ena	= !!(data & ICE_PGKB_F0E_M);
+> +	kb->flag0_idx	= (u8)((data >> ICE_PGKB_F0I_S) & ICE_PGKB_F0I_M);
+> +	kb->flag1_ena	= !!((data >> ICE_PGKB_F1E_S) & ICE_PGKB_F1E_M);
+> +	kb->flag1_idx	= (u8)((data >> ICE_PGKB_F1I_S) & ICE_PGKB_F1I_M);
+> +	kb->flag2_ena	= !!((data >> ICE_PGKB_F2E_S) & ICE_PGKB_F2E_M);
+> +	kb->flag2_idx	= (u8)((data >> ICE_PGKB_F2I_S) & ICE_PGKB_F2I_M);
+> +	kb->flag3_ena	= !!((data >> ICE_PGKB_F3E_S) & ICE_PGKB_F3E_M);
+> +	kb->flag3_idx	= (u8)((data >> ICE_PGKB_F3I_S) & ICE_PGKB_F3I_M);
+> +	kb->alu_reg_idx	= (u8)((data >> ICE_PGKB_ARI_S) & ICE_PGKB_ARI_M);
+> +}
+> +
+> +/** The function parses a 96 bits ALU entry with below format:
+> + *  BIT 0-5:	Opcode			(alu->opc)
+> + *  BIT 6-13:	Source Start		(alu->src_start)
+> + *  BIT 14-18:	Source Length		(alu->src_len)
+> + *  BIT 19:	Shift/Xlate Select	(alu->shift_xlate_select)
+> + *  BIT 20-23:	Shift/Xlate Key		(alu->shift_xlate_key)
+> + *  BIT 24-30:	Source Register ID	(alu->src_reg_id)
+> + *  BIT 31-37:	Dest. Register ID	(alu->dst_reg_id)
+> + *  BIT 38:	Inc0			(alu->inc0)
+> + *  BIT 39:	Inc1			(alu->inc1)
+> + *  BIT 40:41	Protocol Offset Opcode	(alu->proto_offset_opc)
+> + *  BIT 42:49	Protocol Offset		(alu->proto_offset)
+> + *  BIT 50:57	Branch Address		(alu->branch_addr)
+> + *  BIT 58:73	Immediate		(alu->imm)
+> + *  BIT 74	Dedicated Flags Enable	(alu->dedicate_flags_ena)
+> + *  BIT 75:80	Dest. Start		(alu->dst_start)
+> + *  BIT 81:86	Dest. Length		(alu->dst_len)
+> + *  BIT 87	Flags Extract Imm.	(alu->flags_extr_imm)
+> + *  BIT 88:95	Flags Start/Immediate	(alu->flags_start_imm)
+> + */
+> +static void _ice_imem_alu_init(struct ice_alu *alu, u8 *data, u8 off)
+> +{
+> +	u64 d64;
+> +	u8 idd;
+> +
+> +	d64 = *((u64 *)data) >> off;
+> +
+> +	alu->opc		= (enum ice_alu_opcode)(d64 & ICE_ALU_OPC_M);
+> +	alu->src_start		= (u8)((d64 >> ICE_ALU_SS_S) & ICE_ALU_SS_M);
+> +	alu->src_len		= (u8)((d64 >> ICE_ALU_SL_S) & ICE_ALU_SL_M);
+> +	alu->shift_xlate_sel	= !!((d64 >> ICE_ALU_SXS_S) & ICE_ALU_SXS_M);
+> +	alu->shift_xlate_key	= (u8)((d64 >> ICE_ALU_SXK_S) & ICE_ALU_SXK_M);
+> +	alu->src_reg_id		= (u8)((d64 >> ICE_ALU_SRI_S) & ICE_ALU_SRI_M);
+> +	alu->dst_reg_id		= (u8)((d64 >> ICE_ALU_DRI_S) & ICE_ALU_DRI_M);
+> +	alu->inc0		= !!((d64 >> ICE_ALU_INC0_S) & ICE_ALU_INC0_M);
+> +	alu->inc1		= !!((d64 >> ICE_ALU_INC1_S) & ICE_ALU_INC1_M);
+> +	alu->proto_offset_opc	= (u8)((d64 >> ICE_ALU_POO_S) & ICE_ALU_POO_M);
+> +	alu->proto_offset	= (u8)((d64 >> ICE_ALU_PO_S) & ICE_ALU_PO_M);
+> +
+> +	idd = (ICE_ALU_BA_S + off) / BITS_PER_BYTE;
+> +	off = (ICE_ALU_BA_S + off) % BITS_PER_BYTE;
+> +	d64 = *((u64 *)(&data[idd])) >> off;
+> +
+> +	alu->branch_addr	= (u8)(d64 & ICE_ALU_BA_M);
+> +	off			= ICE_ALU_IMM_S - ICE_ALU_BA_S;
+> +	alu->imm		= (u16)((d64 >> off) & ICE_ALU_IMM_M);
+> +	off			= ICE_ALU_DFE_S - ICE_ALU_BA_S;
+> +	alu->dedicate_flags_ena	= !!((d64 >> off) & ICE_ALU_DFE_M);
+> +	off			= ICE_ALU_DS_S - ICE_ALU_BA_S;
+> +	alu->dst_start		= (u8)((d64 >> off) & ICE_ALU_DS_M);
+> +	off			= ICE_ALU_DL_S - ICE_ALU_BA_S;
+> +	alu->dst_len		= (u8)((d64 >> off) & ICE_ALU_DL_M);
+> +	off			= ICE_ALU_FEI_S - ICE_ALU_BA_S;
+> +	alu->flags_extr_imm	= !!((d64 >> off) & ICE_ALU_FEI_M);
+> +	off			= ICE_ALU_FSI_S - ICE_ALU_BA_S;
+> +	alu->flags_start_imm	= (u8)((d64 >> off) & ICE_ALU_FSI_M);
+> +}
+> +
+> +/** The function parses a 384 bits IMEM entry with below format:
+> + *  BIT 0-3:	Boost Main		(ii->b_m)
+> + *  BIT 4-13:	Boost Key Build		(ii->b_kb)
+> + *  BIT 14-15:	PG Priority		(ii->pg)
+> + *  BIT 16-33:	Next Proto Key Build	(ii->np_kb)
+> + *  BIT 34-68:	PG Key Build		(ii->pg_kb)
+> + *  BIT 69-164:	ALU0			(ii->alu0)
+> + *  BIT 165-260:ALU1			(ii->alu1)
+> + *  BIT 261-356:ALU2			(ii->alu2)
+> + *  BIT 357-383:Reserved
+> + */
+> +static void _ice_imem_parse_item(struct ice_hw *hw, u16 idx, void *item,
+> +				 void *data, int size)
+> +{
+> +	struct ice_imem_item *ii = item;
+> +	u8 *buf = (u8 *)data;
+> +	u8 idd, off;
+> +
+> +	ii->idx = idx;
+> +
+> +	_ice_imem_bm_init(&ii->b_m, *(u8 *)buf);
+> +
+> +	idd = ICE_IMEM_BKB_S / BITS_PER_BYTE;
+> +	off = ICE_IMEM_BKB_S % BITS_PER_BYTE;
+> +	_ice_imem_bkb_init(&ii->b_kb, *((u16 *)(&buf[idd])) >> off);
+> +
+> +	ii->pg_pri = (u8)((*(u16 *)buf >> ICE_IMEM_PGP_S) & ICE_IMEM_PGP_M);
+> +
+> +	idd = ICE_IMEM_NPKB_S / BITS_PER_BYTE;
+> +	off = ICE_IMEM_NPKB_S % BITS_PER_BYTE;
+> +	_ice_imem_npkb_init(&ii->np_kb, *((u32 *)(&buf[idd])) >> off);
+> +
+> +	idd = ICE_IMEM_PGKB_S / BITS_PER_BYTE;
+> +	off = ICE_IMEM_PGKB_S % BITS_PER_BYTE;
+> +	_ice_imem_pgkb_init(&ii->pg_kb, *((u64 *)(&buf[idd])) >> off);
+> +
+> +	idd = ICE_IMEM_ALU0_S / BITS_PER_BYTE;
+> +	off = ICE_IMEM_ALU0_S % BITS_PER_BYTE;
+> +	_ice_imem_alu_init(&ii->alu0, &buf[idd], off);
+> +
+> +	idd = ICE_IMEM_ALU1_S / BITS_PER_BYTE;
+> +	off = ICE_IMEM_ALU1_S % BITS_PER_BYTE;
+> +	_ice_imem_alu_init(&ii->alu1, &buf[idd], off);
+> +
+> +	idd = ICE_IMEM_ALU2_S / BITS_PER_BYTE;
+> +	off = ICE_IMEM_ALU2_S % BITS_PER_BYTE;
+> +	_ice_imem_alu_init(&ii->alu2, &buf[idd], off);
+> +
+> +	if (hw->debug_mask & ICE_DBG_PARSER)
+> +		ice_imem_dump(hw, ii);
+> +}
+> +
+> +/**
+> + * ice_imem_table_get - create an imem table
+> + * @hw: pointer to the hardware structure
+> + */
+> +struct ice_imem_item *ice_imem_table_get(struct ice_hw *hw)
+> +{
+> +	return (struct ice_imem_item *)
+> +		ice_parser_create_table(hw, ICE_SID_RXPARSER_IMEM,
+> +					sizeof(struct ice_imem_item),
+> +					ICE_IMEM_TABLE_SIZE,
+> +					ice_parser_sect_item_get,
+> +					_ice_imem_parse_item);
+> +}
+> diff --git a/drivers/net/ethernet/intel/ice/ice_imem.h b/drivers/net/ethernet/intel/ice/ice_imem.h
+> new file mode 100644
+> index 000000000000..50861379659e
+> --- /dev/null
+> +++ b/drivers/net/ethernet/intel/ice/ice_imem.h
+> @@ -0,0 +1,217 @@
+> +/* SPDX-License-Identifier: GPL-2.0 */
+> +/* Copyright (C) 2018-2023 Intel Corporation */
+> +
+> +#ifndef _ICE_IMEM_H_
+> +#define _ICE_IMEM_H_
+> +
+> +#define ICE_IMEM_TABLE_SIZE	192
+> +
+> +#define ICE_BM_ALU0	BIT(0)
+> +#define ICE_BM_ALU1	BIT(1)
+> +#define ICE_BM_ALU2	BIT(2)
+> +#define ICE_BM_PG	BIT(3)
+> +
+> +struct ice_bst_main {
+> +	bool alu0;
+> +	bool alu1;
+> +	bool alu2;
+> +	bool pg;
+> +};
+> +
+> +#define ICE_BKB_PRIO_S		0
+> +#define ICE_BKB_PRIO_M		BITMAP_MASK(8)
+> +#define ICE_BKB_TSRC_S		8
+> +#define ICE_BKB_TSRC_M		BITMAP_MASK(1)
+> +
+> +struct ice_bst_keybuilder {
+> +	u8 prio;
+> +	bool tsr_ctrl;
+> +};
+> +
+> +#define ICE_NPKB_HV_SIZE	8
+> +
+> +#define ICE_NPKB_OPC_S		0
+> +#define ICE_NPKB_OPC_M		BITMAP_MASK(2)
+> +#define ICE_NPKB_SR0_S		2
+> +#define ICE_NPKB_SR0_M		BITMAP_MASK(8)
+> +#define ICE_NPKB_LR1_S		10
+> +#define ICE_NPKB_LR1_M		BITMAP_MASK(8)
+> +
+> +struct ice_np_keybuilder {
+> +	u8 opc;
+> +	u8 start_reg0;
+> +	u8 len_reg1;
+> +};
+> +
+> +enum ice_np_keybuilder_opcode {
+> +	ICE_NPKB_OPC_EXTRACT	= 0,
+> +	ICE_NPKB_OPC_BUILD	= 1,
+> +	ICE_NPKB_OPC_BYPASS	= 2,
+> +};
+> +
+> +#define ICE_PGKB_F0E_S		0
+> +#define ICE_PGKB_F0E_M		BITMAP_MASK(1)
+> +#define ICE_PGKB_F0I_S		1
+> +#define ICE_PGKB_F0I_M		BITMAP_MASK(6)
+> +#define ICE_PGKB_F1E_S		7
+> +#define ICE_PGKB_F1E_M		BITMAP_MASK(1)
+> +#define ICE_PGKB_F1I_S		8
+> +#define ICE_PGKB_F1I_M		BITMAP_MASK(6)
+> +#define ICE_PGKB_F2E_S		14
+> +#define ICE_PGKB_F2E_M		BITMAP_MASK(1)
+> +#define ICE_PGKB_F2I_S		15
+> +#define ICE_PGKB_F2I_M		BITMAP_MASK(6)
+> +#define ICE_PGKB_F3E_S		21
+> +#define ICE_PGKB_F3E_M		BITMAP_MASK(1)
+> +#define ICE_PGKB_F3I_S		22
+> +#define ICE_PGKB_F3I_M		BITMAP_MASK(6)
+> +#define ICE_PGKB_ARI_S		28
+> +#define ICE_PGKB_ARI_M		BITMAP_MASK(7)
+> +
+> +struct ice_pg_keybuilder {
+> +	bool flag0_ena;
+> +	bool flag1_ena;
+> +	bool flag2_ena;
+> +	bool flag3_ena;
+> +	u8 flag0_idx;
+> +	u8 flag1_idx;
+> +	u8 flag2_idx;
+> +	u8 flag3_idx;
+> +	u8 alu_reg_idx;
+> +};
+> +
+> +enum ice_alu_idx {
+> +	ICE_ALU0_IDX	= 0,
+> +	ICE_ALU1_IDX	= 1,
+> +	ICE_ALU2_IDX	= 2,
+> +};
+> +
+> +enum ice_alu_opcode {
+> +	ICE_ALU_PARK	= 0,
+> +	ICE_ALU_MOV_ADD	= 1,
+> +	ICE_ALU_ADD	= 2,
+> +	ICE_ALU_MOV_AND	= 4,
+> +	ICE_ALU_AND	= 5,
+> +	ICE_ALU_AND_IMM	= 6,
+> +	ICE_ALU_MOV_OR	= 7,
+> +	ICE_ALU_OR	= 8,
+> +	ICE_ALU_MOV_XOR	= 9,
+> +	ICE_ALU_XOR	= 10,
+> +	ICE_ALU_NOP	= 11,
+> +	ICE_ALU_BR	= 12,
+> +	ICE_ALU_BREQ	= 13,
+> +	ICE_ALU_BRNEQ	= 14,
+> +	ICE_ALU_BRGT	= 15,
+> +	ICE_ALU_BRLT	= 16,
+> +	ICE_ALU_BRGEQ	= 17,
+> +	ICE_ALU_BRLEG	= 18,
+> +	ICE_ALU_SETEQ	= 19,
+> +	ICE_ALU_ANDEQ	= 20,
+> +	ICE_ALU_OREQ	= 21,
+> +	ICE_ALU_SETNEQ	= 22,
+> +	ICE_ALU_ANDNEQ	= 23,
+> +	ICE_ALU_ORNEQ	= 24,
+> +	ICE_ALU_SETGT	= 25,
+> +	ICE_ALU_ANDGT	= 26,
+> +	ICE_ALU_ORGT	= 27,
+> +	ICE_ALU_SETLT	= 28,
+> +	ICE_ALU_ANDLT	= 29,
+> +	ICE_ALU_ORLT	= 30,
+> +	ICE_ALU_MOV_SUB	= 31,
+> +	ICE_ALU_SUB	= 32,
+> +	ICE_ALU_INVALID	= 64,
+> +};
+> +
+> +enum ice_proto_off_opcode {
+> +	ICE_PO_OFF_REMAIN	= 0,
+> +	ICE_PO_OFF_HDR_ADD	= 1,
+> +	ICE_PO_OFF_HDR_SUB	= 2,
+> +};
+> +
+> +#define ICE_ALU_REG_SIZE	4
+> +
+> +#define ICE_ALU_OPC_S		0
+> +#define ICE_ALU_OPC_M		BITMAP_MASK(6)
+> +#define ICE_ALU_SS_S		6
+> +#define ICE_ALU_SS_M		BITMAP_MASK(8)
+> +#define ICE_ALU_SL_S		14
+> +#define ICE_ALU_SL_M		BITMAP_MASK(5)
+> +#define ICE_ALU_SXS_S		19
+> +#define ICE_ALU_SXS_M		BITMAP_MASK(1)
+> +#define ICE_ALU_SXK_S		20
+> +#define ICE_ALU_SXK_M		BITMAP_MASK(4)
+> +#define ICE_ALU_SRI_S		24
+> +#define ICE_ALU_SRI_M		BITMAP_MASK(7)
+> +#define ICE_ALU_DRI_S		31
+> +#define ICE_ALU_DRI_M		BITMAP_MASK(7)
+> +#define ICE_ALU_INC0_S		38
+> +#define ICE_ALU_INC0_M		BITMAP_MASK(1)
+> +#define ICE_ALU_INC1_S		39
+> +#define ICE_ALU_INC1_M		BITMAP_MASK(1)
+> +#define ICE_ALU_POO_S		40
+> +#define ICE_ALU_POO_M		BITMAP_MASK(2)
+> +#define ICE_ALU_PO_S		42
+> +#define ICE_ALU_PO_M		BITMAP_MASK(8)
+> +#define ICE_ALU_BA_S		50
+> +#define ICE_ALU_BA_M		BITMAP_MASK(8)
+> +#define ICE_ALU_IMM_S		58
+> +#define ICE_ALU_IMM_M		BITMAP_MASK(16)
+> +#define ICE_ALU_DFE_S		74
+> +#define ICE_ALU_DFE_M		BITMAP_MASK(1)
+> +#define ICE_ALU_DS_S		75
+> +#define ICE_ALU_DS_M		BITMAP_MASK(6)
+> +#define ICE_ALU_DL_S		81
+> +#define ICE_ALU_DL_M		BITMAP_MASK(6)
+> +#define ICE_ALU_FEI_S		87
+> +#define ICE_ALU_FEI_M		BITMAP_MASK(1)
+> +#define ICE_ALU_FSI_S		88
+> +#define ICE_ALU_FSI_M		BITMAP_MASK(8)
+> +
+> +struct ice_alu {
+> +	enum ice_alu_opcode opc;
+> +	u8 src_start;
+> +	u8 src_len;
+> +	bool shift_xlate_sel;
+> +	u8 shift_xlate_key;
+> +	u8 src_reg_id;
+> +	u8 dst_reg_id;
+> +	bool inc0;
+> +	bool inc1;
+> +	u8 proto_offset_opc;
+> +	u8 proto_offset;
+> +	u8 branch_addr;
+> +	u16 imm;
+> +	bool dedicate_flags_ena;
+> +	u8 dst_start;
+> +	u8 dst_len;
+> +	bool flags_extr_imm;
+> +	u8 flags_start_imm;
+> +};
+> +
+> +#define ICE_IMEM_BM_S		0
+> +#define ICE_IMEM_BM_M		BITMAP_MASK(4)
+> +#define ICE_IMEM_BKB_S		4
+> +#define ICE_IMEM_BKB_M		BITMAP_MASK(10)
+> +#define ICE_IMEM_PGP_S		14
+> +#define ICE_IMEM_PGP_M		BITMAP_MASK(2)
+> +#define ICE_IMEM_NPKB_S		16
+> +#define ICE_IMEM_PGKB_S		34
+> +#define ICE_IMEM_ALU0_S		69
+> +#define ICE_IMEM_ALU1_S		165
+> +#define ICE_IMEM_ALU2_S		357
+> +
+> +struct ice_imem_item {
+> +	u16 idx;
+> +	struct ice_bst_main b_m;
+> +	struct ice_bst_keybuilder b_kb;
+> +	u8 pg_pri;
+> +	struct ice_np_keybuilder np_kb;
+> +	struct ice_pg_keybuilder pg_kb;
+> +	struct ice_alu alu0;
+> +	struct ice_alu alu1;
+> +	struct ice_alu alu2;
+> +};
+> +
+> +void ice_imem_dump(struct ice_hw *hw, struct ice_imem_item *item);
+> +struct ice_imem_item *ice_imem_table_get(struct ice_hw *hw);
+> +#endif /* _ICE_IMEM_H_ */
+> diff --git a/drivers/net/ethernet/intel/ice/ice_parser.c b/drivers/net/ethernet/intel/ice/ice_parser.c
+> index 692ad26ec551..2a543c469fdf 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_parser.c
+> +++ b/drivers/net/ethernet/intel/ice/ice_parser.c
+> @@ -2,6 +2,91 @@
+>   /* Copyright (C) 2018-2023 Intel Corporation */
+>   
+>   #include "ice_common.h"
+> +#include "ice_parser_util.h"
+> +
+> +/**
+> + * ice_parser_sect_item_get - parse a item from a section
+> + * @sect_type: section type
+> + * @section: section object
+> + * @index: index of the item to get
+> + * @offset: dummy as prototype of ice_pkg_enum_entry's last parameter
+> + */
+> +void *ice_parser_sect_item_get(u32 sect_type, void *section,
+> +			       u32 index, u32 *offset)
+> +{
+> +	size_t data_off = ICE_SEC_DATA_OFFSET;
+> +	struct ice_pkg_sect_hdr *hdr;
+> +	size_t size;
+> +
+> +	if (!section)
+> +		return NULL;
+> +
+> +	switch (sect_type) {
+> +	case ICE_SID_RXPARSER_IMEM:
+> +		size = ICE_SID_RXPARSER_IMEM_ENTRY_SIZE;
+> +		break;
+> +	default:
+> +		return NULL;
+> +	}
+> +
+> +	hdr = section;
+> +	if (index >= le16_to_cpu(hdr->count))
+> +		return NULL;
+> +
+> +	return (u8 *)section + data_off + index * size;
+> +}
+> +
+> +/**
+> + * ice_parser_create_table - create a item table from a section
+> + * @hw: pointer to the hardware structure
+> + * @sect_type: section type
+> + * @item_size: item size in byte
+> + * @length: number of items in the table to create
+> + * @item_get: the function will be parsed to ice_pkg_enum_entry
+> + * @parse_item: the function to parse the item
+> + */
+> +void *ice_parser_create_table(struct ice_hw *hw, u32 sect_type,
+> +			      u32 item_size, u32 length,
+> +			      void *(*item_get)(u32 sect_type, void *section,
+> +						u32 index, u32 *offset),
+> +			      void (*parse_item)(struct ice_hw *hw, u16 idx,
+> +						 void *item, void *data,
+> +						 int size))
+> +{
+> +	struct ice_seg *seg = hw->seg;
+> +	struct ice_pkg_enum state;
+> +	u16 idx = U16_MAX;
+> +	void *table;
+> +	void *data;
+> +
+> +	if (!seg)
+> +		return NULL;
+> +
+> +	table = devm_kzalloc(ice_hw_to_dev(hw), item_size * length,
+> +			     GFP_KERNEL);
+> +	if (!table)
+> +		return NULL;
+> +
+> +	memset(&state, 0, sizeof(state));
+> +	do {
+> +		data = ice_pkg_enum_entry(seg, &state, sect_type, NULL,
+> +					  item_get);
+> +		seg = NULL;
+> +		if (data) {
+> +			struct ice_pkg_sect_hdr *hdr =
+> +				(struct ice_pkg_sect_hdr *)state.sect;
+> +
+> +			idx = le16_to_cpu(hdr->offset) + state.entry_idx;
+> +			parse_item(hw, idx,
+> +				   (void *)((uintptr_t)table +
+> +					    ((uintptr_t)idx *
+> +					     (uintptr_t)item_size)),
+> +				   data, item_size);
+> +		}
+> +	} while (data);
+> +
+> +	return table;
+> +}
+>   
+>   /**
+>    * ice_parser_create - create a parser instance
+> @@ -11,6 +96,7 @@
+>   int ice_parser_create(struct ice_hw *hw, struct ice_parser **psr)
+>   {
+>   	struct ice_parser *p;
+> +	int status;
+>   
+>   	p = devm_kzalloc(ice_hw_to_dev(hw), sizeof(struct ice_parser),
+>   			 GFP_KERNEL);
+> @@ -20,8 +106,17 @@ int ice_parser_create(struct ice_hw *hw, struct ice_parser **psr)
+>   	p->hw = hw;
+>   	p->rt.psr = p;
+>   
+> +	p->imem_table = ice_imem_table_get(hw);
+> +	if (!p->imem_table) {
+> +		status = -EINVAL;
+> +		goto err;
+> +	}
+> +
+>   	*psr = p;
+>   	return 0;
+> +err:
+> +	ice_parser_destroy(p);
+> +	return status;
+>   }
+>   
+>   /**
+> @@ -30,5 +125,7 @@ int ice_parser_create(struct ice_hw *hw, struct ice_parser **psr)
+>    */
+>   void ice_parser_destroy(struct ice_parser *psr)
+>   {
+> +	devm_kfree(ice_hw_to_dev(psr->hw), psr->imem_table);
+> +
+>   	devm_kfree(ice_hw_to_dev(psr->hw), psr);
+>   }
+> diff --git a/drivers/net/ethernet/intel/ice/ice_parser.h b/drivers/net/ethernet/intel/ice/ice_parser.h
+> index c6cd74c6e434..3450830db473 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_parser.h
+> +++ b/drivers/net/ethernet/intel/ice/ice_parser.h
+> @@ -4,8 +4,16 @@
+>   #ifndef _ICE_PARSER_H_
+>   #define _ICE_PARSER_H_
+>   
+> +#include "ice_imem.h"
+> +
+> +#define ICE_SEC_DATA_OFFSET				4
+> +#define ICE_SID_RXPARSER_IMEM_ENTRY_SIZE		48
+> +
+>   struct ice_parser {
+>   	struct ice_hw *hw; /* pointer to the hardware structure */
+> +
+> +	/* load data from section ICE_SID_RX_PARSER_IMEM */
+> +	struct ice_imem_item *imem_table;
+>   };
+>   
+>   int ice_parser_create(struct ice_hw *hw, struct ice_parser **psr);
+> diff --git a/drivers/net/ethernet/intel/ice/ice_parser_util.h b/drivers/net/ethernet/intel/ice/ice_parser_util.h
+> new file mode 100644
+> index 000000000000..6259d3d97b23
+> --- /dev/null
+> +++ b/drivers/net/ethernet/intel/ice/ice_parser_util.h
+> @@ -0,0 +1,24 @@
+> +/* SPDX-License-Identifier: GPL-2.0 */
+> +/* Copyright (C) 2018-2023 Intel Corporation */
+> +
+> +#ifndef _ICE_PARSER_UTIL_H_
+> +#define _ICE_PARSER_UTIL_H_
+> +
+> +#include "ice_imem.h"
+> +
+> +struct ice_pkg_sect_hdr {
+> +	__le16 count;
+> +	__le16 offset;
+> +};
+> +
+> +void *ice_parser_sect_item_get(u32 sect_type, void *section,
+> +			       u32 index, u32 *offset);
+> +
+> +void *ice_parser_create_table(struct ice_hw *hw, u32 sect_type,
+> +			      u32 item_size, u32 length,
+> +			      void *(*handler)(u32 sect_type, void *section,
+> +					       u32 index, u32 *offset),
+> +			      void (*parse_item)(struct ice_hw *hw, u16 idx,
+> +						 void *item, void *data,
+> +						 int size));
+> +#endif /* _ICE_PARSER_UTIL_H_ */
+> diff --git a/drivers/net/ethernet/intel/ice/ice_type.h b/drivers/net/ethernet/intel/ice/ice_type.h
+> index a09556e57803..fa4336dd55f7 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_type.h
+> +++ b/drivers/net/ethernet/intel/ice/ice_type.h
+> @@ -60,6 +60,7 @@ static inline u32 ice_round_to_num(u32 N, u32 R)
+>   				 ICE_DBG_AQ_DESC	| \
+>   				 ICE_DBG_AQ_DESC_BUF	| \
+>   				 ICE_DBG_AQ_CMD)
+> +#define ICE_DBG_PARSER		BIT_ULL(28)
+>   
+>   #define ICE_DBG_USER		BIT_ULL(31)
+>   
+
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
