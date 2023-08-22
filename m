@@ -2,84 +2,86 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 595BB783A42
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 22 Aug 2023 09:02:26 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8D3B3783B0A
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 22 Aug 2023 09:36:36 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id DA9264056D;
-	Tue, 22 Aug 2023 07:02:24 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org DA9264056D
+	by smtp2.osuosl.org (Postfix) with ESMTP id EECFC40B5E;
+	Tue, 22 Aug 2023 07:36:34 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org EECFC40B5E
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1692687744;
-	bh=DzK+dNZdpmGKgS+MrM40YWXDKt7INCdZA5ps6ue12GI=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=j36SWYT78RneLHnSIUQHRdqC6A6Au9Qlhv3F6yKqd3xQf5hug1LbDOSp0+vc8w4AL
-	 ratd9wTUfgYSCapBGwJJTSUHM/ygU/peH24PzOqjT/G4RpzWx9kuDWUT8tPBKuqo6m
-	 O98BE2iJwTpfybSWGK8stOS4u6ctwTLtcUN4+TPhHFyf2+ODEaMqFkQNofhL8/BiMh
-	 K8uUATO+gygr8HiDGwrSPZVPQtnORzkaq5c5VvR9WTQAye8cXt4rxNzXzyoU+nR3fr
-	 +CYLnZV5MlU3NOPV1CiW8lAYKD7+Yy6Nsvq5CbfVCu4EEgxJVmEe+VuLiy3VbQ7tPx
-	 UXM/WK6qKMWwg==
+	s=default; t=1692689795;
+	bh=G0qgsn72HWpY8xTQjewE2XACpNz1vIWxiwAq6h8Dq0M=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=SjVxn2QDOpDeK7GoMY9W/MyCPsHbpmcae8eWjrraNNb1ZNEXvtwkaYI2DIYwo4nQZ
+	 m3aIsYKIjDIyI45N6nvpc8LPHrJKujELvUDtN1RUhRZo/xo58nJytQCFw4WOhVKkY0
+	 ikiQPiyjKheZFDCXX5PVxcz/T+H6uDb5RJ17ghCCdMjz7yCrAxqlD+OUUhwislBmdj
+	 SohJexdKFRhmiZhtmuZMyThcU7mhJ4ReFUGo2S6objEMnu7t7bhsRurr3y4l36R9Np
+	 MaoDN7MIIaYkJw684Eh9MM9rUIKHT8M4JFIdoGqo2PmEqU5ujXGACniFnYLZLjHUKM
+	 friWCTO2uL5Rw==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id YI3PhAiglzAU; Tue, 22 Aug 2023 07:02:24 +0000 (UTC)
+	with ESMTP id MeeTCaEsyTOP; Tue, 22 Aug 2023 07:36:34 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 8820B4035D;
-	Tue, 22 Aug 2023 07:02:23 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 8820B4035D
+	by smtp2.osuosl.org (Postfix) with ESMTP id A646240A58;
+	Tue, 22 Aug 2023 07:36:33 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A646240A58
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 532421BF2A2
- for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Aug 2023 07:02:18 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 70F761BF20B
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Aug 2023 07:36:28 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 2042761147
- for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Aug 2023 07:02:18 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2042761147
+ by smtp1.osuosl.org (Postfix) with ESMTP id 494A381D46
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Aug 2023 07:36:28 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 494A381D46
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id MfKXtfBbjBuP for <intel-wired-lan@lists.osuosl.org>;
- Tue, 22 Aug 2023 07:02:17 +0000 (UTC)
-Received: from dfw.source.kernel.org (dfw.source.kernel.org
- [IPv6:2604:1380:4641:c500::1])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 5111D60B16
- for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Aug 2023 07:02:17 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5111D60B16
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits))
- (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 213D662A66;
- Tue, 22 Aug 2023 07:02:16 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E9DAEC433C8;
- Tue, 22 Aug 2023 07:02:13 +0000 (UTC)
-Date: Tue, 22 Aug 2023 09:02:11 +0200
-From: Simon Horman <horms@kernel.org>
-To: Leon Romanovsky <leon@kernel.org>
-Message-ID: <20230822070211.GH2711035@kernel.org>
-References: <20230817141746.18726-1-karol.kolacinski@intel.com>
- <20230817141746.18726-2-karol.kolacinski@intel.com>
- <20230819115249.GP22185@unreal>
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id fAoLQuP9ZDnx for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 22 Aug 2023 07:36:25 +0000 (UTC)
+Received: from mgamail.intel.com (mgamail.intel.com [134.134.136.31])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 6756581BA8
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Aug 2023 07:36:25 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6756581BA8
+X-IronPort-AV: E=McAfee;i="6600,9927,10809"; a="437723487"
+X-IronPort-AV: E=Sophos;i="6.01,192,1684825200"; d="scan'208";a="437723487"
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+ by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 22 Aug 2023 00:36:13 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10809"; a="713060718"
+X-IronPort-AV: E=Sophos;i="6.01,192,1684825200"; d="scan'208";a="713060718"
+Received: from irvmail002.ir.intel.com ([10.43.11.120])
+ by orsmga006.jf.intel.com with ESMTP; 22 Aug 2023 00:36:11 -0700
+Received: from rozewie.igk.intel.com (rozewie.igk.intel.com [10.211.8.69])
+ by irvmail002.ir.intel.com (Postfix) with ESMTP id D5FD0333CE;
+ Tue, 22 Aug 2023 08:36:10 +0100 (IST)
+From: Wojciech Drewek <wojciech.drewek@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Tue, 22 Aug 2023 09:34:52 +0200
+Message-Id: <20230822073452.28446-1-wojciech.drewek@intel.com>
+X-Mailer: git-send-email 2.40.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20230819115249.GP22185@unreal>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1692687735;
- bh=Slg9Rrck55ui9hK/Yr9pb9KndYPiVtpXtFsYx8Md7eU=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=tLv3XsTe9n70+2i29n0J4WnUnPgHaK2jLFfOfAPpCLgu/vDkIfhHXe3SooXQtnOt/
- uNsLQT6RJCWFosyl1yAaKLFMkz5tk49b+iWlcNDP95Fv7nPMUMJUDi8gpYkoYvNSSx
- 361QcQa6zJsJrxUfcW+nv+4ncXx0oMuu5jGKw5obziOvIzY8P3lbaXTLYofwtW1zE1
- PuW9BDwWRrLv+u2/C3O/LmdJUhU8nQHbkkG2jbCznrj5eJsdEPbKD1GbU6R5Z91108
- eiyXnWcq5IeTG7jK/u6aWjHb5oyOUUMsugfM64DwVq/12sRletmzE1a+DeMmJ3bYpG
- h/5qmsoh8s5WQ==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=tLv3XsTe
-Subject: Re: [Intel-wired-lan] [PATCH v2 iwl-next 1/9] ice: use
- ice_pf_src_tmr_owned where available
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1692689785; x=1724225785;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=bAcGHkc+BDZTeEBPWBUcR2G/1CyIxh7FabUDc3RWk80=;
+ b=bssP91zwWmUpl84cVq7GTZtRn38nc1y9wqhtdxnpFdpLscFHTfYlbdAJ
+ zfIHfnMWFJSptsGL+dcA30RwfLTYSDa0MNWXnUhyUNNgxbLvlQEOlmmpp
+ fwSiGXu0tMbHD6gHOtKK0brmd7M0ery+Yv497u8K8WswReCmYDrzcUmT6
+ 8mxKz7cZolrVGWSROCq9OHTdhPh0SCnCab8f1wl4VcbZNEQH3SjmfWKPw
+ 6BtycoUNGL0UrzQQyh2UxYNV3pjVf66bGg/X6E3pRvGKzqviHqAVCyTU6
+ Q2sYg8Al1yreE2jltGlLlHJ+uG/dlRII/JDli72z1Cmavqzk1GCPlJri1
+ w==;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=bssP91zw
+Subject: [Intel-wired-lan] [PATCH iwl-next] ice: Disable Cage Max Power
+ override
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,26 +94,133 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, jesse.brandeburg@intel.com,
- Karol Kolacinski <karol.kolacinski@intel.com>, anthony.l.nguyen@intel.com,
- intel-wired-lan@lists.osuosl.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: netdev@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-T24gU2F0LCBBdWcgMTksIDIwMjMgYXQgMDI6NTI6NDlQTSArMDMwMCwgTGVvbiBSb21hbm92c2t5
-IHdyb3RlOgo+IE9uIFRodSwgQXVnIDE3LCAyMDIzIGF0IDA0OjE3OjM4UE0gKzAyMDAsIEthcm9s
-IEtvbGFjaW5za2kgd3JvdGU6Cj4gPiBUaGUgaWNlX3BmX3NyY190bXJfb3duZWQoKSBtYWNybyBl
-eGlzdHMgdG8gY2hlY2sgdGhlIGZ1bmN0aW9uIGNhcGFiaWxpdHkKPiA+IGJpdCBpbmRpY2F0aW5n
-IGlmIHRoZSBjdXJyZW50IGZ1bmN0aW9uIG93bnMgdGhlIFBUUCBoYXJkd2FyZSBjbG9jay4KPiAK
-PiBUaGlzIGlzIGZpcnN0IHBhdGNoIGluIHRoZSBzZXJpZXMsIGJ1dCBJIGNhbid0IGZpbmQgbWVu
-dGlvbmVkIG1hY3JvLgo+IE15IG5ldC1uZXh0IGlzIGJhc2VkIG9uIDViMGExNDE0ZTBiMCAoIk1l
-cmdlIGJyYW5jaCAnc21jLWZlYXR1cmVzJyIpCj4g4p6cICBrZXJuZWwgZ2l0OihuZXQtbmV4dCkg
-Z2l0IGdyZXAgaWNlX3BmX3NyY190bXJfb3duZWQKPiBzaG93cyBub3RoaW5nLgo+IAo+IE9uIHdo
-aWNoIGJyYW5jaCBpcyBpdCBiYXNlZD8KCkhpIExlb24sCgpNeSBhc3N1bXB0aW9uIGlzIHRoYXQg
-aXQgaXMgYmFzZWQgb24gdGhlIGRldi1xdWV1ZSBicmFuY2ggb2YKaHR0cHM6Ly9naXQua2VybmVs
-Lm9yZy9wdWIvc2NtL2xpbnV4L2tlcm5lbC9naXQvdG5ndXkvbmV4dC1xdWV1ZS5naXQKX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KSW50ZWwtd2lyZWQtbGFu
-IG1haWxpbmcgbGlzdApJbnRlbC13aXJlZC1sYW5Ab3N1b3NsLm9yZwpodHRwczovL2xpc3RzLm9z
-dW9zbC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC13aXJlZC1sYW4K
+NVM module called "Cage Max Power override" allows to
+change max power in the cage. This can be achieved
+using external tools. The responsibility of the ice driver is to
+go back to the default settings whenever port split is done.
+This is achieved by clearing Override Enable bit in the
+NVM module. Override of the max power is disabled so the
+default value will be used.
+
+Signed-off-by: Wojciech Drewek <wojciech.drewek@intel.com>
+---
+ .../net/ethernet/intel/ice/ice_adminq_cmd.h   |  9 +++++
+ drivers/net/ethernet/intel/ice/ice_devlink.c  | 35 +++++++++++++++++++
+ drivers/net/ethernet/intel/ice/ice_nvm.c      |  2 +-
+ drivers/net/ethernet/intel/ice/ice_nvm.h      |  4 +++
+ 4 files changed, 49 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h b/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
+index ffbe9d3a5d77..a3a49d922650 100644
+--- a/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
++++ b/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
+@@ -1569,6 +1569,15 @@ struct ice_aqc_nvm {
+ 	__le32 addr_low;
+ };
+ 
++#define ICE_AQC_NVM_CMPO_MOD_ID			0x153
++
++/* Cage Max Power override NVM module */
++struct ice_aqc_nvm_cmpo {
++	__le16 length;
++#define ICE_AQC_NVM_CMPO_ENABLE	BIT(8)
++	__le16 cages_cfg[8];
++};
++
+ #define ICE_AQC_NVM_START_POINT			0
+ 
+ /* NVM Checksum Command (direct, 0x0706) */
+diff --git a/drivers/net/ethernet/intel/ice/ice_devlink.c b/drivers/net/ethernet/intel/ice/ice_devlink.c
+index 80dc5445b50d..e9300df9ef40 100644
+--- a/drivers/net/ethernet/intel/ice/ice_devlink.c
++++ b/drivers/net/ethernet/intel/ice/ice_devlink.c
+@@ -591,6 +591,36 @@ static void ice_devlink_port_options_print(struct ice_pf *pf)
+ 	kfree(options);
+ }
+ 
++#define ICE_NUM_OF_CAGES 8
++
++/**
++ * ice_devlink_aq_clear_cmpo - clear Cage Max Power override
++ * @hw: pointer to the HW struct
++ *
++ * Read Cage Max Power override NVM module, clear override
++ * enable bit for each of the cages. Write the settings back to
++ * the NVM.
++ */
++static int
++ice_devlink_aq_clear_cmpo(struct ice_hw *hw)
++{
++	struct ice_aqc_nvm_cmpo data;
++	int ret, i;
++
++	ret = ice_aq_read_nvm(hw, ICE_AQC_NVM_CMPO_MOD_ID, 0, sizeof(data),
++			      &data, true, false, NULL);
++	if (ret)
++		return ret;
++
++	for (i = 0; i < ICE_NUM_OF_CAGES; i++)
++		data.cages_cfg[i] &= ~cpu_to_le16(ICE_AQC_NVM_CMPO_ENABLE);
++
++	/* Do not update the length word since it is not permitted */
++	return ice_aq_update_nvm(hw, ICE_AQC_NVM_CMPO_MOD_ID, 2,
++				 sizeof(data.cages_cfg), data.cages_cfg,
++				 false, 0, NULL);
++}
++
+ /**
+  * ice_devlink_aq_set_port_option - Send set port option admin queue command
+  * @pf: the PF to print split port options
+@@ -623,6 +653,11 @@ ice_devlink_aq_set_port_option(struct ice_pf *pf, u8 option_idx,
+ 		return -EIO;
+ 	}
+ 
++	status = ice_devlink_aq_clear_cmpo(&pf->hw);
++	if (status)
++		dev_dbg(dev, "Failed to clear Cage Max Power override, err %d aq_err %d\n",
++			status, pf->hw.adminq.sq_last_status);
++
+ 	status = ice_nvm_write_activate(&pf->hw, ICE_AQC_NVM_ACTIV_REQ_EMPR, NULL);
+ 	if (status) {
+ 		dev_dbg(dev, "ice_nvm_write_activate failed, err %d aq_err %d\n",
+diff --git a/drivers/net/ethernet/intel/ice/ice_nvm.c b/drivers/net/ethernet/intel/ice/ice_nvm.c
+index f6f52a248066..745f2459943f 100644
+--- a/drivers/net/ethernet/intel/ice/ice_nvm.c
++++ b/drivers/net/ethernet/intel/ice/ice_nvm.c
+@@ -18,7 +18,7 @@
+  *
+  * Read the NVM using the admin queue commands (0x0701)
+  */
+-static int
++int
+ ice_aq_read_nvm(struct ice_hw *hw, u16 module_typeid, u32 offset, u16 length,
+ 		void *data, bool last_command, bool read_shadow_ram,
+ 		struct ice_sq_cd *cd)
+diff --git a/drivers/net/ethernet/intel/ice/ice_nvm.h b/drivers/net/ethernet/intel/ice/ice_nvm.h
+index 774c2317967d..90f36e19e06b 100644
+--- a/drivers/net/ethernet/intel/ice/ice_nvm.h
++++ b/drivers/net/ethernet/intel/ice/ice_nvm.h
+@@ -15,6 +15,10 @@ struct ice_orom_civd_info {
+ int ice_acquire_nvm(struct ice_hw *hw, enum ice_aq_res_access_type access);
+ void ice_release_nvm(struct ice_hw *hw);
+ int
++ice_aq_read_nvm(struct ice_hw *hw, u16 module_typeid, u32 offset, u16 length,
++		void *data, bool last_command, bool read_shadow_ram,
++		struct ice_sq_cd *cd);
++int
+ ice_read_flat_nvm(struct ice_hw *hw, u32 offset, u32 *length, u8 *data,
+ 		  bool read_shadow_ram);
+ int
+-- 
+2.40.1
+
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
