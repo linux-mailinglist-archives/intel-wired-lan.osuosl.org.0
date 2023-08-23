@@ -1,79 +1,179 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0218D7863B0
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 24 Aug 2023 00:54:11 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id C942D78640E
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 24 Aug 2023 01:46:20 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 85E7C61004;
-	Wed, 23 Aug 2023 22:54:09 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 85E7C61004
+	by smtp2.osuosl.org (Postfix) with ESMTP id 91EDC405EC;
+	Wed, 23 Aug 2023 23:46:17 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 91EDC405EC
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1692831249;
-	bh=S0E/NHZ43UIvGx/nSf+sYhENNn2jXhao3Nutkf1e7GY=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1692834377;
+	bh=CYsbutN4Y7dtOnTDWKRZBIhKwqjA1WSnWLJyh86u10E=;
+	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=aYqc8P4UyMJUrTSl+r/+CTKe1YrEV2zRb/4fqShaiPfYAhoSa+pjctrQT4jR+pW7U
-	 Lsmv3ZwFVE3W3g/L6S5LQH80FOn30r6IuIxBasWrYA6HgXwDCBE7c01WhxEVLBqLNF
-	 cc4WAdfd6vDvV9z9XIO8WAIYkDZ2QqBv4kKaWYIATYaQd67hR5N3shsbQ1eaYwa8qq
-	 K58sCMh7LL3TMVXukw1a7wPic6qOIuAqVpP92/8pz0kUWFv00lkfD95ZiIbniGQ/WC
-	 5eQeK89SdFx9DESZDBXo+14M6Dvf58+vAvFNjUMcBRXEnX0WtgkzwWvDBoKps5vXOC
-	 ajsxf4EmQUKWw==
+	b=6A/HLUthMDc3lCj6Bm4HIXlH854/dLHw7HLslyTn/KMNwU61KhKY4OfWxKEuVM1GG
+	 dXuoCJ6KZFklGPaod33rjyPY9OJgfCXQGIp0ppmV327saCZhGbcVAKh8i1yBBbXiNF
+	 XUsGTB/mqHmAJcUSSKGpJjQPTiiqj5jMSu8WlHhwiaR5w3GY9ocHDM+tD6gTQBovtY
+	 WdIcnSEQh42l3zentyFGWwCSHt0ty1xq2ZLl/ujpeK0Juv2mzuQ6X2fiOkJcUsRxfr
+	 bRuppw/toRnZQec6lr2+VddbgIkXNcAPp3zRzCXQHLIqOjocj8CLvIVWawzLew5hk4
+	 WHMRA+QRo+klw==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id JTujRs2-1uEJ; Wed, 23 Aug 2023 22:54:08 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id R9H9WxyWDjLe; Wed, 23 Aug 2023 23:46:16 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id D6FAE60AB5;
-	Wed, 23 Aug 2023 22:54:07 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D6FAE60AB5
+	by smtp2.osuosl.org (Postfix) with ESMTP id 6BB36403B3;
+	Wed, 23 Aug 2023 23:46:16 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 6BB36403B3
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 4FA781BF280
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Aug 2023 22:53:26 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id B3D591BF286
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Aug 2023 23:46:10 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 28C6460681
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Aug 2023 22:53:26 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 28C6460681
+ by smtp4.osuosl.org (Postfix) with ESMTP id 87F4C41825
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Aug 2023 23:46:10 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 87F4C41825
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ASMM5JDBIJKv for <intel-wired-lan@lists.osuosl.org>;
- Wed, 23 Aug 2023 22:53:24 +0000 (UTC)
-Received: from out-36.mta0.migadu.com (out-36.mta0.migadu.com [91.218.175.36])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 86E8760EEB
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Aug 2023 22:53:24 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 86E8760EEB
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and
- include these headers.
-From: Vadim Fedorenko <vadim.fedorenko@linux.dev>
-To: Jakub Kicinski <kuba@kernel.org>, Jiri Pirko <jiri@resnulli.us>,
- Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>,
- Jonathan Lemon <jonathan.lemon@gmail.com>, Paolo Abeni <pabeni@redhat.com>
-Date: Wed, 23 Aug 2023 23:52:42 +0100
-Message-Id: <20230823225242.817957-10-vadim.fedorenko@linux.dev>
-In-Reply-To: <20230823225242.817957-1-vadim.fedorenko@linux.dev>
-References: <20230823225242.817957-1-vadim.fedorenko@linux.dev>
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id u5uQsbyxbYh9 for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 23 Aug 2023 23:46:06 +0000 (UTC)
+Received: from mgamail.intel.com (mgamail.intel.com [192.55.52.115])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 8B8CC417B4
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Aug 2023 23:46:06 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8B8CC417B4
+X-IronPort-AV: E=McAfee;i="6600,9927,10811"; a="374275378"
+X-IronPort-AV: E=Sophos;i="6.01,195,1684825200"; d="scan'208";a="374275378"
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 23 Aug 2023 16:46:05 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10811"; a="766316095"
+X-IronPort-AV: E=Sophos;i="6.01,195,1684825200"; d="scan'208";a="766316095"
+Received: from orsmsx602.amr.corp.intel.com ([10.22.229.15])
+ by orsmga008.jf.intel.com with ESMTP; 23 Aug 2023 16:46:05 -0700
+Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
+ ORSMSX602.amr.corp.intel.com (10.22.229.15) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.27; Wed, 23 Aug 2023 16:46:04 -0700
+Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
+ orsmsx610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.27 via Frontend Transport; Wed, 23 Aug 2023 16:46:04 -0700
+Received: from NAM04-DM6-obe.outbound.protection.outlook.com (104.47.73.44) by
+ edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.27; Wed, 23 Aug 2023 16:46:04 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=JTZSC9lyNXSg7uNHjf1Xpdz2ACTJKq+WTBdcumGHGFEM1N8s9leYa2yxoT1T7N5myI9BMan6E0pfq8nRZ5WvB8WE1Qk77UJRcWvF8JrudCjDorDvtfiJMnKSbsmORWI8z1cI5YyaSFGsSrtoEovOYnDGUPoU1tJxv8b9Rn/wEIKRHMh4SrsK7xa7D60cKNHBe6/UDDh4bT9rXuuHuxLKnrVXGcP0IOtbM3nlfDkX2x1VaP2FSjuWCJ+G1aJ9UP1XN7/3HzLAJuTDSJvoZ/ndCNult/L2fsvKHz2U+QmdwZeQXP8aDReNwQN6z6F4Kv6a+egCEywq0n9cIMS76wH9yg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=sj7jqL7tklBRkT/2Aa1/1jjNwD7pfrscj2AlcRfGhHk=;
+ b=hJtfoJqCvjq+GqApUGnZnfjDP0arL9f07uC1qtl5PTQZeMjxkC+K46kipmSON5Vq9u4SUc5gNEn6bOhSpgTDvkLnAWjey73E8ATAJFYupTfAWJXqBoVFLy1v6BVnKxPPLBVPQ0yFHskR0tM5wdaQOeuDbhvzJJf6M4pMpkv89BsBhD3OOmyT0MzY4ZbVNTdTU+tXhPy42BC99I/QhDEvWQ9PjF+i7rBLh7wDOMAaeu7h0IBHgk+pClTbkSwrCatYZgrpp/YqVXZm9zuI11FvllJoeMRb82/c/Yip9lknP4gByaGyc9PYPBjgNRe+7+Lt510RLoFZzj9sSqm+uLQ38Q==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from DM6PR11MB4657.namprd11.prod.outlook.com (2603:10b6:5:2a6::7) by
+ PH7PR11MB5941.namprd11.prod.outlook.com (2603:10b6:510:13d::20) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6699.24; Wed, 23 Aug
+ 2023 23:46:01 +0000
+Received: from DM6PR11MB4657.namprd11.prod.outlook.com
+ ([fe80::c3cd:b8d0:5231:33a8]) by DM6PR11MB4657.namprd11.prod.outlook.com
+ ([fe80::c3cd:b8d0:5231:33a8%5]) with mapi id 15.20.6699.026; Wed, 23 Aug 2023
+ 23:46:01 +0000
+From: "Kubalewski, Arkadiusz" <arkadiusz.kubalewski@intel.com>
+To: Jakub Kicinski <kuba@kernel.org>, Vadim Fedorenko
+ <vadim.fedorenko@linux.dev>
+Thread-Topic: [PATCH net-next v5 2/9] dpll: spec: Add Netlink spec in YAML
+Thread-Index: AQHZ1UyObJCb8WHuyEqSNP91XS9AT6/3JmsAgAFmjnA=
+Date: Wed, 23 Aug 2023 23:46:01 +0000
+Message-ID: <DM6PR11MB465745087EE52C193BA3C0D59B1CA@DM6PR11MB4657.namprd11.prod.outlook.com>
+References: <20230822230037.809114-1-vadim.fedorenko@linux.dev>
+ <20230822230037.809114-3-vadim.fedorenko@linux.dev>
+ <20230822192122.00f40f0b@kernel.org>
+In-Reply-To: <20230822192122.00f40f0b@kernel.org>
+Accept-Language: pl-PL, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: DM6PR11MB4657:EE_|PH7PR11MB5941:EE_
+x-ms-office365-filtering-correlation-id: b15c2b79-98bb-49af-c328-08dba4331b8d
+x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: t7LwjT8eWpSFMIhhGQ2zi29H58RLBO8Wih8p192fV3aiRekKdbFIXAYVSshOXaQ5GUxje7JAMRkrsQI8wv5Qbh3Fo6zoxQ/xp6KsjNt3KZBwbuHGWGRsnCo4yhGcU3QGArOoLTlIz1GNRPSSeJwLGKdvTM3AHUOv7q9hVHgeY/eXAql25wza+LwPYYbIwO/UAdPeE212I/9tvJFyTmnxLOuFO/2kfebE+nfv3sfFJdS2QB5wX7nOpGiTUz/1RDgpwqgGDd5pC3NUHALgVTMVWtdWbDlBwc+/lepsCREJivRQN+5wCY/UltgxlJw3dzCtxqRSRdqOXQpFsZswsksATglXDEDBEmYG6gWBltx/+2u0a71djY4Jz+KFJ0xNpoHdl1VlurUMAWy1b8dNmKtO8WoVNsTzgZ1oBE7lr61SCzGhDIVichgHFUAuaG+6XKOpxV5NAX2/FD0FCOnh5L/zRd+m+1Jg2yXHIII+YlJafQLP/DbLf6r42aviFweJY3DWOL386YdA+05HZYjVdwgtbO0gbD6K5O+TpTUBaTHEHCvgm09coFZXghq5PWdnzqZgcK18byQbce4SoGd1zfHi5ZlTWyQKYwpvs89xbA2wrssZsexs0R+LE0KlPgG9gyxq
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:DM6PR11MB4657.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230031)(366004)(346002)(39860400002)(376002)(396003)(136003)(451199024)(1800799009)(186009)(2906002)(4744005)(7416002)(6506007)(7696005)(38100700002)(5660300002)(52536014)(26005)(33656002)(38070700005)(86362001)(8676002)(8936002)(82960400001)(4326008)(9686003)(316002)(66476007)(64756008)(54906003)(66446008)(66556008)(76116006)(66946007)(110136005)(478600001)(122000001)(55016003)(71200400001)(41300700001);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?cs7ZEZU9XM9+jjERq2dXjg81A2G+l4Nr6MLVdyR6720nhDS8PpcC2f/7bxtK?=
+ =?us-ascii?Q?nSs7/0K5PpkwDwPFNjfKtwSKt74nwT5x5dTBt5Cr/Lyk5HbuwJibqHQCIMrQ?=
+ =?us-ascii?Q?ESMJKXK1nIT+Ia3OekeCO+vSIOEq+8KJO2O7KzPfaWpf0fVdGl2Q0fj6D4+J?=
+ =?us-ascii?Q?ozsfF1wH9jQTJIpHT8SZ6VbmIdiwK2p5h8OIIghkXUzPXw8ys0LZ8vwGN8AY?=
+ =?us-ascii?Q?ZhCooFJ8eVW2w7n8pJVWDsLdaRwj35XuzmdojvYO/f5VAhnd8jqMTnwM+Wed?=
+ =?us-ascii?Q?52w9Fbq6LnaUtB7P1U/IZ18wBkE7/A/pcuVGb0mgMojpp0KISnVpdo4fwkgm?=
+ =?us-ascii?Q?PJp2tFMWMzq9GAYT2Zvfh3tbhe7wlbpApbigUUntc+DtU+YScTkNIrVbA39c?=
+ =?us-ascii?Q?iXAjP3GslAV+s+1jh1UtQApPzJN/PxptyJmykhRpZFzD3zsSUZQ0UFWLvHHn?=
+ =?us-ascii?Q?RlzVHQayDI7OSv30kvrde+Wgv1LrdIei8x82fjtYQOEJspNnU7QvKvvaeJfe?=
+ =?us-ascii?Q?3YcJXk8umOkvYDA4GLVfrYAxEPf7HuApXpazqk126RpUkMSltbZaNR0dDGUI?=
+ =?us-ascii?Q?8J4whE41Wxj/bcziZ5fh9W87I4xo9QVhwNq/U8bB1zok2bnDkXyKT3zxo7uZ?=
+ =?us-ascii?Q?vBzY5caigDVZahxmdyTcyax81d6rsdH83Sn04OjAjNguf9IGYVTTsPkBEqeF?=
+ =?us-ascii?Q?fUm8k/6cNr5475VEoYqjZy6co0VzIPs/xtf6DvIGUWbrp3QJ2YGGtPgiifbm?=
+ =?us-ascii?Q?ZjAXSuP8xQ2NKvssWUT0NK5wbIcFbo8IgkxhdimmTtwOHIq4aoYfg+/ARo2e?=
+ =?us-ascii?Q?Nmk8ZT+kDY7EOMe/bx8+aRBWzV1E5EG37yJ+e3xK09s1Fonicd9aYZ/uxc4y?=
+ =?us-ascii?Q?FkBXtJzpnuls7L5xif1SVKA+il7Cfh+ZvMD2sslFkAf8I//Js7X5WUTaGPqr?=
+ =?us-ascii?Q?KcT1RuI+iuFyCwK1gG/T9vjlDQOB2Hd1M/KS9pMfpDMpkXVZ37Qw1Dt1XJ5u?=
+ =?us-ascii?Q?Pc9rNgqYCaE5RymyGK0H9soV02fnZpAI2RXaCphaAmAtupFoFL7SSgAbiW1o?=
+ =?us-ascii?Q?nT688hFXNbJDxslMgWURsBkZFpXTksHzKtAmBrsocKLepz6ln2Ac1TGa194A?=
+ =?us-ascii?Q?6s5mjBNaDMp3d84EA/oSiTXLqS+UDWhNEufkrLaImRmh4/l9sOPzu1zbFbRt?=
+ =?us-ascii?Q?Qn7iyY3dVuC4S2dpDMclqw0Dz+gvc+FSv2rThq+6LYEwQOueMnYK6L+/UXM5?=
+ =?us-ascii?Q?z4YDI0t/wRs8C1sX5vofTMaLU89NWb9NT7IDLn2gEduaevBUV5B6RV4n78Rb?=
+ =?us-ascii?Q?KglMEfrUNsWvwmI5dYAq6DNFl+kDXseddm92FSFUdpCikS9rqi1NMiy8KxIq?=
+ =?us-ascii?Q?8w2jxLcR9eZ/g2XPws4+Fh16mdnN7oF7c8PeLW/ayuBe3H5royyXASmigwdw?=
+ =?us-ascii?Q?bB6e2HLJTf5ZG9uLgjD0eMgyJP6GcLHuKMOHVn45iFJDNUehjOCAtkznw9n4?=
+ =?us-ascii?Q?IlWXmoOqqtbB3ehN/zRsEFs/gQHtdO+hZSvmcBH/b74Aow8fl2jPrroLQYU1?=
+ =?us-ascii?Q?treQjbM1TzoNj3a9Jud8tYf/+eP1gMxh8azC0U6ddVenGh51X2qfwgCAl2MK?=
+ =?us-ascii?Q?qg=3D=3D?=
 MIME-Version: 1.0
-X-Migadu-Flow: FLOW_OUT
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linux.dev; s=key1; t=1692831202;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=Lx1pwzqSdaBJZRa6rmjkLYddmZiL4nVnCIPfpRicLO4=;
- b=ClFdLZw/Lq+BAN+xL9/jJ34yaUHJhKEENUCI9ydEIempeVg6tAdm1XZBtuQUsQ+k19k8mi
- Flksx1kOuEP67GTOUmH78gMt+gwmbC5ct4WgY7nH19p/cePJ7bnxrcO3PLeLadhwkO+UvB
- Q8I8zkZL7e6aLxukS9f+MdvwSC4tVbA=
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (1024-bit key,
- unprotected) header.d=linux.dev header.i=@linux.dev header.a=rsa-sha256
- header.s=key1 header.b=ClFdLZw/
-Subject: [Intel-wired-lan] [PATCH net-next v6 9/9] mlx5: Implement SyncE
- support using DPLL infrastructure
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: DM6PR11MB4657.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: b15c2b79-98bb-49af-c328-08dba4331b8d
+X-MS-Exchange-CrossTenant-originalarrivaltime: 23 Aug 2023 23:46:01.5427 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: hERmLopmKb9Zf5M4a9yB8VkzFn/3C7WYK2Ku4z5vqt8VIBqr+s+qioN5qljeonkrz8O6BuZOk2BZuaYU4wLMuhqCGtr5hS4Q6g3EpuUcJSY=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH7PR11MB5941
+X-OriginatorOrg: intel.com
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1692834366; x=1724370366;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=4sSx2QPSggkQ6ureHbGSjzmT/k+a4KEv0+Jz8kY/CVM=;
+ b=lTeMGb86IKbU29SArDlpGy8QOj8JbmPPHaCI0eEOOkXroonew3Q9mmlD
+ 7yKF36y0PvS0Vv4bVM/rOgS5fcTrs2SmGTuTuu/OocWyat1F4IcNYx4Vf
+ Q7fJezjPtFjtjTfWx51oro8xzO96MFBm0Xp5zCXfx2whWbQ1/QxUCOCK6
+ n2mv8uY1THGwnmTp3RlBcSpKgpv321sNiiqAWLUQ+SMTekR8GwkAmAQ+4
+ 2ka1TF2dH45k/lPwbvGL0/Jsi/0ilT8H+Zbs6BNTnSdSxYVfIdT9UM9M1
+ Oovb6fOAHX1OLtfPI2MFJQwgywN4XA8NSF4LdCNXMNua2sGtuvubZy8pE
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=lTeMGb86
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH net-next v5 2/9] dpll: spec: Add
+ Netlink spec in YAML
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,637 +186,35 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Vadim Fedorenko <vadim.fedorenko@linux.dev>,
- Bart Van Assche <bvanassche@acm.org>, netdev@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org, Milena Olech <milena.olech@intel.com>,
- Jiri Pirko <jiri@nvidia.com>, linux-clk@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org
+Cc: Jiri Pirko <jiri@resnulli.us>, Bart Van Assche <bvanassche@acm.org>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>, "Olech,
+ Milena" <milena.olech@intel.com>, Jiri Pirko <jiri@nvidia.com>,
+ Jonathan Lemon <jonathan.lemon@gmail.com>, Paolo Abeni <pabeni@redhat.com>,
+ "linux-clk@vger.kernel.org" <linux-clk@vger.kernel.org>,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Jiri Pirko <jiri@nvidia.com>
+>From: Jakub Kicinski <kuba@kernel.org>
+>Sent: Wednesday, August 23, 2023 4:21 AM
+>
+>On Wed, 23 Aug 2023 00:00:30 +0100 Vadim Fedorenko wrote:
+>> +      -
+>> +        name: dpll-caps
+>> +        type: u32
+>
+>Why is this one called dpll-caps (it's in the pin space)?
+>"doc:" could help clarify the rationale?
+>
+>Also enum: pin-caps ?
 
-Implement SyncE support using newly introduced DPLL support.
-Make sure that each PFs/VFs/SFs probed with appropriate capability
-will spawn a dpll auxiliary device and register appropriate dpll device
-and pin instances.
+Yeah, this is not needed now, fixed in v6.
 
-Signed-off-by: Jiri Pirko <jiri@nvidia.com>
-Signed-off-by: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
-Signed-off-by: Vadim Fedorenko <vadim.fedorenko@linux.dev>
----
-v5->v6:
-- rename DPLL_PIN_CAPS_* -> DPLL_PIN_CAPABILITIES_*
-
- .../net/ethernet/mellanox/mlx5/core/Kconfig   |   8 +
- .../net/ethernet/mellanox/mlx5/core/Makefile  |   3 +
- drivers/net/ethernet/mellanox/mlx5/core/dev.c |  17 +
- .../net/ethernet/mellanox/mlx5/core/dpll.c    | 432 ++++++++++++++++++
- include/linux/mlx5/driver.h                   |   2 +
- include/linux/mlx5/mlx5_ifc.h                 |  59 ++-
- 6 files changed, 520 insertions(+), 1 deletion(-)
- create mode 100644 drivers/net/ethernet/mellanox/mlx5/core/dpll.c
-
-diff --git a/drivers/net/ethernet/mellanox/mlx5/core/Kconfig b/drivers/net/ethernet/mellanox/mlx5/core/Kconfig
-index d537d517cabe..62b4358d5f25 100644
---- a/drivers/net/ethernet/mellanox/mlx5/core/Kconfig
-+++ b/drivers/net/ethernet/mellanox/mlx5/core/Kconfig
-@@ -189,3 +189,11 @@ config MLX5_SF_MANAGER
- 	port is managed through devlink.  A subfunction supports RDMA, netdevice
- 	and vdpa device. It is similar to a SRIOV VF but it doesn't require
- 	SRIOV support.
-+
-+config MLX5_DPLL
-+	tristate "Mellanox 5th generation network adapters (ConnectX series) DPLL support"
-+	depends on NETDEVICES && ETHERNET && PCI && MLX5_CORE
-+	select DPLL
-+	help
-+	  DPLL support in Mellanox Technologies ConnectX NICs.
-+
-diff --git a/drivers/net/ethernet/mellanox/mlx5/core/Makefile b/drivers/net/ethernet/mellanox/mlx5/core/Makefile
-index 946310390659..4a0176088b40 100644
---- a/drivers/net/ethernet/mellanox/mlx5/core/Makefile
-+++ b/drivers/net/ethernet/mellanox/mlx5/core/Makefile
-@@ -128,3 +128,6 @@ mlx5_core-$(CONFIG_MLX5_SF) += sf/vhca_event.o sf/dev/dev.o sf/dev/driver.o irq_
- # SF manager
- #
- mlx5_core-$(CONFIG_MLX5_SF_MANAGER) += sf/cmd.o sf/hw_table.o sf/devlink.o
-+
-+obj-$(CONFIG_MLX5_DPLL) += mlx5_dpll.o
-+mlx5_dpll-y :=	dpll.o
-diff --git a/drivers/net/ethernet/mellanox/mlx5/core/dev.c b/drivers/net/ethernet/mellanox/mlx5/core/dev.c
-index 7909f378dc93..1fc03480c2ff 100644
---- a/drivers/net/ethernet/mellanox/mlx5/core/dev.c
-+++ b/drivers/net/ethernet/mellanox/mlx5/core/dev.c
-@@ -206,6 +206,19 @@ static bool is_ib_enabled(struct mlx5_core_dev *dev)
- 	return err ? false : val.vbool;
- }
- 
-+static bool is_dpll_supported(struct mlx5_core_dev *dev)
-+{
-+	if (!IS_ENABLED(CONFIG_MLX5_DPLL))
-+		return false;
-+
-+	if (!MLX5_CAP_MCAM_REG2(dev, synce_registers)) {
-+		mlx5_core_warn(dev, "Missing SyncE capability\n");
-+		return false;
-+	}
-+
-+	return true;
-+}
-+
- enum {
- 	MLX5_INTERFACE_PROTOCOL_ETH,
- 	MLX5_INTERFACE_PROTOCOL_ETH_REP,
-@@ -215,6 +228,8 @@ enum {
- 	MLX5_INTERFACE_PROTOCOL_MPIB,
- 
- 	MLX5_INTERFACE_PROTOCOL_VNET,
-+
-+	MLX5_INTERFACE_PROTOCOL_DPLL,
- };
- 
- static const struct mlx5_adev_device {
-@@ -237,6 +252,8 @@ static const struct mlx5_adev_device {
- 					   .is_supported = &is_ib_rep_supported },
- 	[MLX5_INTERFACE_PROTOCOL_MPIB] = { .suffix = "multiport",
- 					   .is_supported = &is_mp_supported },
-+	[MLX5_INTERFACE_PROTOCOL_DPLL] = { .suffix = "dpll",
-+					   .is_supported = &is_dpll_supported },
- };
- 
- int mlx5_adev_idx_alloc(void)
-diff --git a/drivers/net/ethernet/mellanox/mlx5/core/dpll.c b/drivers/net/ethernet/mellanox/mlx5/core/dpll.c
-new file mode 100644
-index 000000000000..74f0c7867120
---- /dev/null
-+++ b/drivers/net/ethernet/mellanox/mlx5/core/dpll.c
-@@ -0,0 +1,432 @@
-+// SPDX-License-Identifier: GPL-2.0 OR Linux-OpenIB
-+/* Copyright (c) 2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved. */
-+
-+#include <linux/dpll.h>
-+#include <linux/mlx5/driver.h>
-+
-+/* This structure represents a reference to DPLL, one is created
-+ * per mdev instance.
-+ */
-+struct mlx5_dpll {
-+	struct dpll_device *dpll;
-+	struct dpll_pin *dpll_pin;
-+	struct mlx5_core_dev *mdev;
-+	struct workqueue_struct *wq;
-+	struct delayed_work work;
-+	struct {
-+		bool valid;
-+		enum dpll_lock_status lock_status;
-+		enum dpll_pin_state pin_state;
-+	} last;
-+	struct notifier_block mdev_nb;
-+	struct net_device *tracking_netdev;
-+};
-+
-+static int mlx5_dpll_clock_id_get(struct mlx5_core_dev *mdev, u64 *clock_id)
-+{
-+	u32 out[MLX5_ST_SZ_DW(msecq_reg)] = {};
-+	u32 in[MLX5_ST_SZ_DW(msecq_reg)] = {};
-+	int err;
-+
-+	err = mlx5_core_access_reg(mdev, in, sizeof(in), out, sizeof(out),
-+				   MLX5_REG_MSECQ, 0, 0);
-+	if (err)
-+		return err;
-+	*clock_id = MLX5_GET64(msecq_reg, out, local_clock_identity);
-+	return 0;
-+}
-+
-+static int
-+mlx5_dpll_synce_status_get(struct mlx5_core_dev *mdev,
-+			   enum mlx5_msees_admin_status *admin_status,
-+			   enum mlx5_msees_oper_status *oper_status,
-+			   bool *ho_acq)
-+{
-+	u32 out[MLX5_ST_SZ_DW(msees_reg)] = {};
-+	u32 in[MLX5_ST_SZ_DW(msees_reg)] = {};
-+	int err;
-+
-+	err = mlx5_core_access_reg(mdev, in, sizeof(in), out, sizeof(out),
-+				   MLX5_REG_MSEES, 0, 0);
-+	if (err)
-+		return err;
-+	if (admin_status)
-+		*admin_status = MLX5_GET(msees_reg, out, admin_status);
-+	*oper_status = MLX5_GET(msees_reg, out, oper_status);
-+	if (ho_acq)
-+		*ho_acq = MLX5_GET(msees_reg, out, ho_acq);
-+	return 0;
-+}
-+
-+static int
-+mlx5_dpll_synce_status_set(struct mlx5_core_dev *mdev,
-+			   enum mlx5_msees_admin_status admin_status)
-+{
-+	u32 out[MLX5_ST_SZ_DW(msees_reg)] = {};
-+	u32 in[MLX5_ST_SZ_DW(msees_reg)] = {};
-+
-+	MLX5_SET(msees_reg, in, field_select,
-+		 MLX5_MSEES_FIELD_SELECT_ENABLE |
-+		 MLX5_MSEES_FIELD_SELECT_ADMIN_STATUS);
-+	MLX5_SET(msees_reg, in, admin_status, admin_status);
-+	return mlx5_core_access_reg(mdev, in, sizeof(in), out, sizeof(out),
-+				    MLX5_REG_MSEES, 0, 1);
-+}
-+
-+static enum dpll_lock_status
-+mlx5_dpll_lock_status_get(enum mlx5_msees_oper_status oper_status, bool ho_acq)
-+{
-+	switch (oper_status) {
-+	case MLX5_MSEES_OPER_STATUS_SELF_TRACK:
-+		fallthrough;
-+	case MLX5_MSEES_OPER_STATUS_OTHER_TRACK:
-+		return ho_acq ? DPLL_LOCK_STATUS_LOCKED_HO_ACQ :
-+				DPLL_LOCK_STATUS_LOCKED;
-+	case MLX5_MSEES_OPER_STATUS_HOLDOVER:
-+		fallthrough;
-+	case MLX5_MSEES_OPER_STATUS_FAIL_HOLDOVER:
-+		return DPLL_LOCK_STATUS_HOLDOVER;
-+	default:
-+		return DPLL_LOCK_STATUS_UNLOCKED;
-+	}
-+}
-+
-+static enum dpll_pin_state
-+mlx5_dpll_pin_state_get(enum mlx5_msees_admin_status admin_status,
-+			enum mlx5_msees_oper_status oper_status)
-+{
-+	return (admin_status == MLX5_MSEES_ADMIN_STATUS_TRACK &&
-+		(oper_status == MLX5_MSEES_OPER_STATUS_SELF_TRACK ||
-+		 oper_status == MLX5_MSEES_OPER_STATUS_OTHER_TRACK)) ?
-+	       DPLL_PIN_STATE_CONNECTED : DPLL_PIN_STATE_DISCONNECTED;
-+}
-+
-+static int mlx5_dpll_device_lock_status_get(const struct dpll_device *dpll,
-+					    void *priv,
-+					    enum dpll_lock_status *status,
-+					    struct netlink_ext_ack *extack)
-+{
-+	enum mlx5_msees_oper_status oper_status;
-+	struct mlx5_dpll *mdpll = priv;
-+	bool ho_acq;
-+	int err;
-+
-+	err = mlx5_dpll_synce_status_get(mdpll->mdev, NULL,
-+					 &oper_status, &ho_acq);
-+	if (err)
-+		return err;
-+
-+	*status = mlx5_dpll_lock_status_get(oper_status, ho_acq);
-+	return 0;
-+}
-+
-+static int mlx5_dpll_device_mode_get(const struct dpll_device *dpll,
-+				     void *priv,
-+				     u32 *mode, struct netlink_ext_ack *extack)
-+{
-+	*mode = DPLL_MODE_MANUAL;
-+	return 0;
-+}
-+
-+static bool mlx5_dpll_device_mode_supported(const struct dpll_device *dpll,
-+					    void *priv,
-+					    enum dpll_mode mode,
-+					    struct netlink_ext_ack *extack)
-+{
-+	return mode == DPLL_MODE_MANUAL;
-+}
-+
-+static const struct dpll_device_ops mlx5_dpll_device_ops = {
-+	.lock_status_get = mlx5_dpll_device_lock_status_get,
-+	.mode_get = mlx5_dpll_device_mode_get,
-+	.mode_supported = mlx5_dpll_device_mode_supported,
-+};
-+
-+static int mlx5_dpll_pin_direction_get(const struct dpll_pin *pin,
-+				       void *pin_priv,
-+				       const struct dpll_device *dpll,
-+				       void *dpll_priv,
-+				       enum dpll_pin_direction *direction,
-+				       struct netlink_ext_ack *extack)
-+{
-+	*direction = DPLL_PIN_DIRECTION_INPUT;
-+	return 0;
-+}
-+
-+static int mlx5_dpll_state_on_dpll_get(const struct dpll_pin *pin,
-+				       void *pin_priv,
-+				       const struct dpll_device *dpll,
-+				       void *dpll_priv,
-+				       enum dpll_pin_state *state,
-+				       struct netlink_ext_ack *extack)
-+{
-+	enum mlx5_msees_admin_status admin_status;
-+	enum mlx5_msees_oper_status oper_status;
-+	struct mlx5_dpll *mdpll = pin_priv;
-+	int err;
-+
-+	err = mlx5_dpll_synce_status_get(mdpll->mdev, &admin_status,
-+					 &oper_status, NULL);
-+	if (err)
-+		return err;
-+	*state = mlx5_dpll_pin_state_get(admin_status, oper_status);
-+	return 0;
-+}
-+
-+static int mlx5_dpll_state_on_dpll_set(const struct dpll_pin *pin,
-+				       void *pin_priv,
-+				       const struct dpll_device *dpll,
-+				       void *dpll_priv,
-+				       enum dpll_pin_state state,
-+				       struct netlink_ext_ack *extack)
-+{
-+	struct mlx5_dpll *mdpll = pin_priv;
-+
-+	return mlx5_dpll_synce_status_set(mdpll->mdev,
-+					  state == DPLL_PIN_STATE_CONNECTED ?
-+					  MLX5_MSEES_ADMIN_STATUS_TRACK :
-+					  MLX5_MSEES_ADMIN_STATUS_FREE_RUNNING);
-+}
-+
-+static const struct dpll_pin_ops mlx5_dpll_pins_ops = {
-+	.direction_get = mlx5_dpll_pin_direction_get,
-+	.state_on_dpll_get = mlx5_dpll_state_on_dpll_get,
-+	.state_on_dpll_set = mlx5_dpll_state_on_dpll_set,
-+};
-+
-+static const struct dpll_pin_properties mlx5_dpll_pin_properties = {
-+	.type = DPLL_PIN_TYPE_SYNCE_ETH_PORT,
-+	.capabilities = DPLL_PIN_CAPABILITIES_STATE_CAN_CHANGE,
-+};
-+
-+#define MLX5_DPLL_PERIODIC_WORK_INTERVAL 500 /* ms */
-+
-+static void mlx5_dpll_periodic_work_queue(struct mlx5_dpll *mdpll)
-+{
-+	queue_delayed_work(mdpll->wq, &mdpll->work,
-+			   msecs_to_jiffies(MLX5_DPLL_PERIODIC_WORK_INTERVAL));
-+}
-+
-+static void mlx5_dpll_periodic_work(struct work_struct *work)
-+{
-+	struct mlx5_dpll *mdpll = container_of(work, struct mlx5_dpll,
-+					       work.work);
-+	enum mlx5_msees_admin_status admin_status;
-+	enum mlx5_msees_oper_status oper_status;
-+	enum dpll_lock_status lock_status;
-+	enum dpll_pin_state pin_state;
-+	bool ho_acq;
-+	int err;
-+
-+	err = mlx5_dpll_synce_status_get(mdpll->mdev, &admin_status,
-+					 &oper_status, &ho_acq);
-+	if (err)
-+		goto err_out;
-+	lock_status = mlx5_dpll_lock_status_get(oper_status, ho_acq);
-+	pin_state = mlx5_dpll_pin_state_get(admin_status, oper_status);
-+
-+	if (!mdpll->last.valid)
-+		goto invalid_out;
-+
-+	if (mdpll->last.lock_status != lock_status)
-+		dpll_device_change_ntf(mdpll->dpll);
-+	if (mdpll->last.pin_state != pin_state)
-+		dpll_pin_change_ntf(mdpll->dpll_pin);
-+
-+invalid_out:
-+	mdpll->last.lock_status = lock_status;
-+	mdpll->last.pin_state = pin_state;
-+	mdpll->last.valid = true;
-+err_out:
-+	mlx5_dpll_periodic_work_queue(mdpll);
-+}
-+
-+static void mlx5_dpll_netdev_dpll_pin_set(struct mlx5_dpll *mdpll,
-+					  struct net_device *netdev)
-+{
-+	if (mdpll->tracking_netdev)
-+		return;
-+	netdev_dpll_pin_set(netdev, mdpll->dpll_pin);
-+	mdpll->tracking_netdev = netdev;
-+}
-+
-+static void mlx5_dpll_netdev_dpll_pin_clear(struct mlx5_dpll *mdpll)
-+{
-+	if (!mdpll->tracking_netdev)
-+		return;
-+	netdev_dpll_pin_clear(mdpll->tracking_netdev);
-+	mdpll->tracking_netdev = NULL;
-+}
-+
-+static int mlx5_dpll_mdev_notifier_event(struct notifier_block *nb,
-+					 unsigned long event, void *data)
-+{
-+	struct mlx5_dpll *mdpll = container_of(nb, struct mlx5_dpll, mdev_nb);
-+	struct net_device *netdev = data;
-+
-+	switch (event) {
-+	case MLX5_DRIVER_EVENT_UPLINK_NETDEV:
-+		if (netdev)
-+			mlx5_dpll_netdev_dpll_pin_set(mdpll, netdev);
-+		else
-+			mlx5_dpll_netdev_dpll_pin_clear(mdpll);
-+		break;
-+	default:
-+		return NOTIFY_DONE;
-+	}
-+
-+	return NOTIFY_OK;
-+}
-+
-+static void mlx5_dpll_mdev_netdev_track(struct mlx5_dpll *mdpll,
-+					struct mlx5_core_dev *mdev)
-+{
-+	mdpll->mdev_nb.notifier_call = mlx5_dpll_mdev_notifier_event;
-+	mlx5_blocking_notifier_register(mdev, &mdpll->mdev_nb);
-+	mlx5_core_uplink_netdev_event_replay(mdev);
-+}
-+
-+static void mlx5_dpll_mdev_netdev_untrack(struct mlx5_dpll *mdpll,
-+					  struct mlx5_core_dev *mdev)
-+{
-+	mlx5_blocking_notifier_unregister(mdev, &mdpll->mdev_nb);
-+	mlx5_dpll_netdev_dpll_pin_clear(mdpll);
-+}
-+
-+static int mlx5_dpll_probe(struct auxiliary_device *adev,
-+			   const struct auxiliary_device_id *id)
-+{
-+	struct mlx5_adev *edev = container_of(adev, struct mlx5_adev, adev);
-+	struct mlx5_core_dev *mdev = edev->mdev;
-+	struct mlx5_dpll *mdpll;
-+	u64 clock_id;
-+	int err;
-+
-+	err = mlx5_dpll_synce_status_set(mdev,
-+					 MLX5_MSEES_ADMIN_STATUS_FREE_RUNNING);
-+	if (err)
-+		return err;
-+
-+	err = mlx5_dpll_clock_id_get(mdev, &clock_id);
-+	if (err)
-+		return err;
-+
-+	mdpll = kzalloc(sizeof(*mdpll), GFP_KERNEL);
-+	if (!mdpll)
-+		return -ENOMEM;
-+	mdpll->mdev = mdev;
-+	auxiliary_set_drvdata(adev, mdpll);
-+
-+	/* Multiple mdev instances might share one DPLL device. */
-+	mdpll->dpll = dpll_device_get(clock_id, 0, THIS_MODULE);
-+	if (IS_ERR(mdpll->dpll)) {
-+		err = PTR_ERR(mdpll->dpll);
-+		goto err_free_mdpll;
-+	}
-+
-+	err = dpll_device_register(mdpll->dpll, DPLL_TYPE_EEC,
-+				   &mlx5_dpll_device_ops, mdpll);
-+	if (err)
-+		goto err_put_dpll_device;
-+
-+	/* Multiple mdev instances might share one DPLL pin. */
-+	mdpll->dpll_pin = dpll_pin_get(clock_id, mlx5_get_dev_index(mdev),
-+				       THIS_MODULE, &mlx5_dpll_pin_properties);
-+	if (IS_ERR(mdpll->dpll_pin)) {
-+		err = PTR_ERR(mdpll->dpll_pin);
-+		goto err_unregister_dpll_device;
-+	}
-+
-+	err = dpll_pin_register(mdpll->dpll, mdpll->dpll_pin,
-+				&mlx5_dpll_pins_ops, mdpll);
-+	if (err)
-+		goto err_put_dpll_pin;
-+
-+	mdpll->wq = create_singlethread_workqueue("mlx5_dpll");
-+	if (!mdpll->wq) {
-+		err = -ENOMEM;
-+		goto err_unregister_dpll_pin;
-+	}
-+
-+	mlx5_dpll_mdev_netdev_track(mdpll, mdev);
-+
-+	INIT_DELAYED_WORK(&mdpll->work, &mlx5_dpll_periodic_work);
-+	mlx5_dpll_periodic_work_queue(mdpll);
-+
-+	return 0;
-+
-+err_unregister_dpll_pin:
-+	dpll_pin_unregister(mdpll->dpll, mdpll->dpll_pin,
-+			    &mlx5_dpll_pins_ops, mdpll);
-+err_put_dpll_pin:
-+	dpll_pin_put(mdpll->dpll_pin);
-+err_unregister_dpll_device:
-+	dpll_device_unregister(mdpll->dpll, &mlx5_dpll_device_ops, mdpll);
-+err_put_dpll_device:
-+	dpll_device_put(mdpll->dpll);
-+err_free_mdpll:
-+	kfree(mdpll);
-+	return err;
-+}
-+
-+static void mlx5_dpll_remove(struct auxiliary_device *adev)
-+{
-+	struct mlx5_dpll *mdpll = auxiliary_get_drvdata(adev);
-+	struct mlx5_core_dev *mdev = mdpll->mdev;
-+
-+	cancel_delayed_work(&mdpll->work);
-+	mlx5_dpll_mdev_netdev_untrack(mdpll, mdev);
-+	destroy_workqueue(mdpll->wq);
-+	dpll_pin_unregister(mdpll->dpll, mdpll->dpll_pin,
-+			    &mlx5_dpll_pins_ops, mdpll);
-+	dpll_pin_put(mdpll->dpll_pin);
-+	dpll_device_unregister(mdpll->dpll, &mlx5_dpll_device_ops, mdpll);
-+	dpll_device_put(mdpll->dpll);
-+	kfree(mdpll);
-+
-+	mlx5_dpll_synce_status_set(mdev,
-+				   MLX5_MSEES_ADMIN_STATUS_FREE_RUNNING);
-+}
-+
-+static int mlx5_dpll_suspend(struct auxiliary_device *adev, pm_message_t state)
-+{
-+	return 0;
-+}
-+
-+static int mlx5_dpll_resume(struct auxiliary_device *adev)
-+{
-+	return 0;
-+}
-+
-+static const struct auxiliary_device_id mlx5_dpll_id_table[] = {
-+	{ .name = MLX5_ADEV_NAME ".dpll", },
-+	{},
-+};
-+
-+MODULE_DEVICE_TABLE(auxiliary, mlx5_dpll_id_table);
-+
-+static struct auxiliary_driver mlx5_dpll_driver = {
-+	.name = "dpll",
-+	.probe = mlx5_dpll_probe,
-+	.remove = mlx5_dpll_remove,
-+	.suspend = mlx5_dpll_suspend,
-+	.resume = mlx5_dpll_resume,
-+	.id_table = mlx5_dpll_id_table,
-+};
-+
-+static int __init mlx5_dpll_init(void)
-+{
-+	return auxiliary_driver_register(&mlx5_dpll_driver);
-+}
-+
-+static void __exit mlx5_dpll_exit(void)
-+{
-+	auxiliary_driver_unregister(&mlx5_dpll_driver);
-+}
-+
-+module_init(mlx5_dpll_init);
-+module_exit(mlx5_dpll_exit);
-+
-+MODULE_AUTHOR("Jiri Pirko <jiri@nvidia.com>");
-+MODULE_DESCRIPTION("Mellanox 5th generation network adapters (ConnectX series) DPLL driver");
-+MODULE_LICENSE("Dual BSD/GPL");
-diff --git a/include/linux/mlx5/driver.h b/include/linux/mlx5/driver.h
-index c9d82e74daaa..83514d0bacf6 100644
---- a/include/linux/mlx5/driver.h
-+++ b/include/linux/mlx5/driver.h
-@@ -155,6 +155,8 @@ enum {
- 	MLX5_REG_MCC		 = 0x9062,
- 	MLX5_REG_MCDA		 = 0x9063,
- 	MLX5_REG_MCAM		 = 0x907f,
-+	MLX5_REG_MSECQ		 = 0x9155,
-+	MLX5_REG_MSEES		 = 0x9156,
- 	MLX5_REG_MIRC		 = 0x9162,
- 	MLX5_REG_SBCAM		 = 0xB01F,
- 	MLX5_REG_RESOURCE_DUMP   = 0xC000,
-diff --git a/include/linux/mlx5/mlx5_ifc.h b/include/linux/mlx5/mlx5_ifc.h
-index 08dcb1f43be7..33d64c92b1aa 100644
---- a/include/linux/mlx5/mlx5_ifc.h
-+++ b/include/linux/mlx5/mlx5_ifc.h
-@@ -10173,7 +10173,9 @@ struct mlx5_ifc_mcam_access_reg_bits2 {
- 	u8         mirc[0x1];
- 	u8         regs_97_to_96[0x2];
- 
--	u8         regs_95_to_64[0x20];
-+	u8         regs_95_to_87[0x09];
-+	u8         synce_registers[0x2];
-+	u8         regs_84_to_64[0x15];
- 
- 	u8         regs_63_to_32[0x20];
- 
-@@ -12546,4 +12548,59 @@ struct mlx5_ifc_modify_page_track_obj_in_bits {
- 	struct mlx5_ifc_page_track_bits obj_context;
- };
- 
-+struct mlx5_ifc_msecq_reg_bits {
-+	u8         reserved_at_0[0x20];
-+
-+	u8         reserved_at_20[0x12];
-+	u8         network_option[0x2];
-+	u8         local_ssm_code[0x4];
-+	u8         local_enhanced_ssm_code[0x8];
-+
-+	u8         local_clock_identity[0x40];
-+
-+	u8         reserved_at_80[0x180];
-+};
-+
-+enum {
-+	MLX5_MSEES_FIELD_SELECT_ENABLE			= BIT(0),
-+	MLX5_MSEES_FIELD_SELECT_ADMIN_STATUS		= BIT(1),
-+	MLX5_MSEES_FIELD_SELECT_ADMIN_FREQ_MEASURE	= BIT(2),
-+};
-+
-+enum mlx5_msees_admin_status {
-+	MLX5_MSEES_ADMIN_STATUS_FREE_RUNNING		= 0x0,
-+	MLX5_MSEES_ADMIN_STATUS_TRACK			= 0x1,
-+};
-+
-+enum mlx5_msees_oper_status {
-+	MLX5_MSEES_OPER_STATUS_FREE_RUNNING		= 0x0,
-+	MLX5_MSEES_OPER_STATUS_SELF_TRACK		= 0x1,
-+	MLX5_MSEES_OPER_STATUS_OTHER_TRACK		= 0x2,
-+	MLX5_MSEES_OPER_STATUS_HOLDOVER			= 0x3,
-+	MLX5_MSEES_OPER_STATUS_FAIL_HOLDOVER		= 0x4,
-+	MLX5_MSEES_OPER_STATUS_FAIL_FREE_RUNNING	= 0x5,
-+};
-+
-+struct mlx5_ifc_msees_reg_bits {
-+	u8         reserved_at_0[0x8];
-+	u8         local_port[0x8];
-+	u8         pnat[0x2];
-+	u8         lp_msb[0x2];
-+	u8         reserved_at_14[0xc];
-+
-+	u8         field_select[0x20];
-+
-+	u8         admin_status[0x4];
-+	u8         oper_status[0x4];
-+	u8         ho_acq[0x1];
-+	u8         reserved_at_49[0xc];
-+	u8         admin_freq_measure[0x1];
-+	u8         oper_freq_measure[0x1];
-+	u8         failure_reason[0x9];
-+
-+	u8         frequency_diff[0x20];
-+
-+	u8         reserved_at_80[0x180];
-+};
-+
- #endif /* MLX5_IFC_H */
--- 
-2.27.0
-
+Thank you!
+Arkadiusz
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
