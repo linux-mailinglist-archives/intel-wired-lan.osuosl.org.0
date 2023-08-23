@@ -2,79 +2,78 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 75ADB7863AE
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 24 Aug 2023 00:54:01 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0218D7863B0
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 24 Aug 2023 00:54:11 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id EEEC9612F2;
-	Wed, 23 Aug 2023 22:53:59 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org EEEC9612F2
+	by smtp3.osuosl.org (Postfix) with ESMTP id 85E7C61004;
+	Wed, 23 Aug 2023 22:54:09 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 85E7C61004
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1692831240;
-	bh=Yg9jeQlOoK5Ro1bf1mk31wQDduIaJ3PNlhnHnmkR9RU=;
+	s=default; t=1692831249;
+	bh=S0E/NHZ43UIvGx/nSf+sYhENNn2jXhao3Nutkf1e7GY=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=K+/9/DIW+6gMu+r/G5uBZ5URjS/iLeUBCf2rg6rdzXkHQDqNY96Shotc9cvs4/TPr
-	 5fxBV0WVx5Ng/vO5XOy/kMIui7Ev72w/RTv6CZlDVDYkImepxhyk4Gcaz0U14sXrDx
-	 2G+TlfaspYpO5IlbrVL/G/zfg86GSFWRfAJXN8vZjko34vJCeRSofXmL/fam8Mhu/J
-	 sFFH7g+6VPBnO838wt1XriPMesJHyXDJgtXT4cLdMtPtNB8Mjon7ha3uFshdlk14ha
-	 V+M9+nRckqAXi929+jDrWErZVeyuqYXP4gQG/myv0ZPXtOiCZ1K/bSsh1js5TxcKw0
-	 +PnS6FUoeXbCg==
+	b=aYqc8P4UyMJUrTSl+r/+CTKe1YrEV2zRb/4fqShaiPfYAhoSa+pjctrQT4jR+pW7U
+	 Lsmv3ZwFVE3W3g/L6S5LQH80FOn30r6IuIxBasWrYA6HgXwDCBE7c01WhxEVLBqLNF
+	 cc4WAdfd6vDvV9z9XIO8WAIYkDZ2QqBv4kKaWYIATYaQd67hR5N3shsbQ1eaYwa8qq
+	 K58sCMh7LL3TMVXukw1a7wPic6qOIuAqVpP92/8pz0kUWFv00lkfD95ZiIbniGQ/WC
+	 5eQeK89SdFx9DESZDBXo+14M6Dvf58+vAvFNjUMcBRXEnX0WtgkzwWvDBoKps5vXOC
+	 ajsxf4EmQUKWw==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id VD7sWMnTNmei; Wed, 23 Aug 2023 22:53:58 +0000 (UTC)
+	with ESMTP id JTujRs2-1uEJ; Wed, 23 Aug 2023 22:54:08 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 0C663605A7;
-	Wed, 23 Aug 2023 22:53:58 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0C663605A7
+	by smtp3.osuosl.org (Postfix) with ESMTP id D6FAE60AB5;
+	Wed, 23 Aug 2023 22:54:07 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D6FAE60AB5
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 339F61BF280
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Aug 2023 22:53:25 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 4FA781BF280
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Aug 2023 22:53:26 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 000FF8204E
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Aug 2023 22:53:24 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 000FF8204E
+ by smtp3.osuosl.org (Postfix) with ESMTP id 28C6460681
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Aug 2023 22:53:26 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 28C6460681
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id nv6GiPo7Bden for <intel-wired-lan@lists.osuosl.org>;
- Wed, 23 Aug 2023 22:53:23 +0000 (UTC)
-Received: from out-53.mta0.migadu.com (out-53.mta0.migadu.com
- [IPv6:2001:41d0:1004:224b::35])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 4410E8204C
- for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Aug 2023 22:53:23 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4410E8204C
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id ASMM5JDBIJKv for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 23 Aug 2023 22:53:24 +0000 (UTC)
+Received: from out-36.mta0.migadu.com (out-36.mta0.migadu.com [91.218.175.36])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 86E8760EEB
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 23 Aug 2023 22:53:24 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 86E8760EEB
 X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and
  include these headers.
 From: Vadim Fedorenko <vadim.fedorenko@linux.dev>
 To: Jakub Kicinski <kuba@kernel.org>, Jiri Pirko <jiri@resnulli.us>,
  Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>,
  Jonathan Lemon <jonathan.lemon@gmail.com>, Paolo Abeni <pabeni@redhat.com>
-Date: Wed, 23 Aug 2023 23:52:41 +0100
-Message-Id: <20230823225242.817957-9-vadim.fedorenko@linux.dev>
+Date: Wed, 23 Aug 2023 23:52:42 +0100
+Message-Id: <20230823225242.817957-10-vadim.fedorenko@linux.dev>
 In-Reply-To: <20230823225242.817957-1-vadim.fedorenko@linux.dev>
 References: <20230823225242.817957-1-vadim.fedorenko@linux.dev>
 MIME-Version: 1.0
 X-Migadu-Flow: FLOW_OUT
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linux.dev; s=key1; t=1692831201;
+ d=linux.dev; s=key1; t=1692831202;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=vZass3Dyedj4ggitp08zjYqaNhpM0XXdE/iC0Le1m5g=;
- b=JI5xtLCySIEyFkgBSoOjO/9ZkVKHr81ECJDOOGQX30QfXJM1yYv6Q/s/iidsV3gG0M3Vt5
- AAJ2LM/+7ISHmMqa6ZvnrIu9L9kxtCoCutSyC6QaFZ7yfbajlH8Cejmk1wfpmx4FZiz3yF
- 0H4RQxmmxwlfnvC8dlBQQz3n52z2esI=
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ bh=Lx1pwzqSdaBJZRa6rmjkLYddmZiL4nVnCIPfpRicLO4=;
+ b=ClFdLZw/Lq+BAN+xL9/jJ34yaUHJhKEENUCI9ydEIempeVg6tAdm1XZBtuQUsQ+k19k8mi
+ Flksx1kOuEP67GTOUmH78gMt+gwmbC5ct4WgY7nH19p/cePJ7bnxrcO3PLeLadhwkO+UvB
+ Q8I8zkZL7e6aLxukS9f+MdvwSC4tVbA=
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (1024-bit key,
  unprotected) header.d=linux.dev header.i=@linux.dev header.a=rsa-sha256
- header.s=key1 header.b=JI5xtLCy
-Subject: [Intel-wired-lan] [PATCH net-next v6 8/9] ptp_ocp: implement DPLL
- ops
+ header.s=key1 header.b=ClFdLZw/
+Subject: [Intel-wired-lan] [PATCH net-next v6 9/9] mlx5: Implement SyncE
+ support using DPLL infrastructure
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,652 +96,624 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Implement basic DPLL operations in ptp_ocp driver as the
-simplest example of using new subsystem.
+From: Jiri Pirko <jiri@nvidia.com>
 
-Signed-off-by: Vadim Fedorenko <vadim.fedorenko@linux.dev>
-Signed-off-by: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
+Implement SyncE support using newly introduced DPLL support.
+Make sure that each PFs/VFs/SFs probed with appropriate capability
+will spawn a dpll auxiliary device and register appropriate dpll device
+and pin instances.
+
 Signed-off-by: Jiri Pirko <jiri@nvidia.com>
+Signed-off-by: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
+Signed-off-by: Vadim Fedorenko <vadim.fedorenko@linux.dev>
 ---
 v5->v6:
 - rename DPLL_PIN_CAPS_* -> DPLL_PIN_CAPABILITIES_*
-RFC:
-v9->v10:
-- implement monitoring thread and netlink notification
 
- drivers/ptp/Kconfig   |   1 +
- drivers/ptp/ptp_ocp.c | 369 +++++++++++++++++++++++++++++++++++-------
- 2 files changed, 310 insertions(+), 60 deletions(-)
+ .../net/ethernet/mellanox/mlx5/core/Kconfig   |   8 +
+ .../net/ethernet/mellanox/mlx5/core/Makefile  |   3 +
+ drivers/net/ethernet/mellanox/mlx5/core/dev.c |  17 +
+ .../net/ethernet/mellanox/mlx5/core/dpll.c    | 432 ++++++++++++++++++
+ include/linux/mlx5/driver.h                   |   2 +
+ include/linux/mlx5/mlx5_ifc.h                 |  59 ++-
+ 6 files changed, 520 insertions(+), 1 deletion(-)
+ create mode 100644 drivers/net/ethernet/mellanox/mlx5/core/dpll.c
 
-diff --git a/drivers/ptp/Kconfig b/drivers/ptp/Kconfig
-index ed9d97a032f1..5dd5f188e14f 100644
---- a/drivers/ptp/Kconfig
-+++ b/drivers/ptp/Kconfig
-@@ -188,6 +188,7 @@ config PTP_1588_CLOCK_OCP
- 	depends on COMMON_CLK
- 	select NET_DEVLINK
- 	select CRC16
+diff --git a/drivers/net/ethernet/mellanox/mlx5/core/Kconfig b/drivers/net/ethernet/mellanox/mlx5/core/Kconfig
+index d537d517cabe..62b4358d5f25 100644
+--- a/drivers/net/ethernet/mellanox/mlx5/core/Kconfig
++++ b/drivers/net/ethernet/mellanox/mlx5/core/Kconfig
+@@ -189,3 +189,11 @@ config MLX5_SF_MANAGER
+ 	port is managed through devlink.  A subfunction supports RDMA, netdevice
+ 	and vdpa device. It is similar to a SRIOV VF but it doesn't require
+ 	SRIOV support.
++
++config MLX5_DPLL
++	tristate "Mellanox 5th generation network adapters (ConnectX series) DPLL support"
++	depends on NETDEVICES && ETHERNET && PCI && MLX5_CORE
 +	select DPLL
- 	help
- 	  This driver adds support for an OpenCompute time card.
++	help
++	  DPLL support in Mellanox Technologies ConnectX NICs.
++
+diff --git a/drivers/net/ethernet/mellanox/mlx5/core/Makefile b/drivers/net/ethernet/mellanox/mlx5/core/Makefile
+index 946310390659..4a0176088b40 100644
+--- a/drivers/net/ethernet/mellanox/mlx5/core/Makefile
++++ b/drivers/net/ethernet/mellanox/mlx5/core/Makefile
+@@ -128,3 +128,6 @@ mlx5_core-$(CONFIG_MLX5_SF) += sf/vhca_event.o sf/dev/dev.o sf/dev/driver.o irq_
+ # SF manager
+ #
+ mlx5_core-$(CONFIG_MLX5_SF_MANAGER) += sf/cmd.o sf/hw_table.o sf/devlink.o
++
++obj-$(CONFIG_MLX5_DPLL) += mlx5_dpll.o
++mlx5_dpll-y :=	dpll.o
+diff --git a/drivers/net/ethernet/mellanox/mlx5/core/dev.c b/drivers/net/ethernet/mellanox/mlx5/core/dev.c
+index 7909f378dc93..1fc03480c2ff 100644
+--- a/drivers/net/ethernet/mellanox/mlx5/core/dev.c
++++ b/drivers/net/ethernet/mellanox/mlx5/core/dev.c
+@@ -206,6 +206,19 @@ static bool is_ib_enabled(struct mlx5_core_dev *dev)
+ 	return err ? false : val.vbool;
+ }
  
-diff --git a/drivers/ptp/ptp_ocp.c b/drivers/ptp/ptp_ocp.c
-index 20a974ced8d6..88d60a9b5731 100644
---- a/drivers/ptp/ptp_ocp.c
-+++ b/drivers/ptp/ptp_ocp.c
-@@ -23,6 +23,7 @@
- #include <linux/mtd/mtd.h>
- #include <linux/nvmem-consumer.h>
- #include <linux/crc16.h>
-+#include <linux/dpll.h>
++static bool is_dpll_supported(struct mlx5_core_dev *dev)
++{
++	if (!IS_ENABLED(CONFIG_MLX5_DPLL))
++		return false;
++
++	if (!MLX5_CAP_MCAM_REG2(dev, synce_registers)) {
++		mlx5_core_warn(dev, "Missing SyncE capability\n");
++		return false;
++	}
++
++	return true;
++}
++
+ enum {
+ 	MLX5_INTERFACE_PROTOCOL_ETH,
+ 	MLX5_INTERFACE_PROTOCOL_ETH_REP,
+@@ -215,6 +228,8 @@ enum {
+ 	MLX5_INTERFACE_PROTOCOL_MPIB,
  
- #define PCI_VENDOR_ID_FACEBOOK			0x1d9b
- #define PCI_DEVICE_ID_FACEBOOK_TIMECARD		0x0400
-@@ -260,12 +261,21 @@ enum ptp_ocp_sma_mode {
- 	SMA_MODE_OUT,
+ 	MLX5_INTERFACE_PROTOCOL_VNET,
++
++	MLX5_INTERFACE_PROTOCOL_DPLL,
  };
  
-+static struct dpll_pin_frequency ptp_ocp_sma_freq[] = {
-+	DPLL_PIN_FREQUENCY_1PPS,
-+	DPLL_PIN_FREQUENCY_10MHZ,
-+	DPLL_PIN_FREQUENCY_IRIG_B,
-+	DPLL_PIN_FREQUENCY_DCF77,
+ static const struct mlx5_adev_device {
+@@ -237,6 +252,8 @@ static const struct mlx5_adev_device {
+ 					   .is_supported = &is_ib_rep_supported },
+ 	[MLX5_INTERFACE_PROTOCOL_MPIB] = { .suffix = "multiport",
+ 					   .is_supported = &is_mp_supported },
++	[MLX5_INTERFACE_PROTOCOL_DPLL] = { .suffix = "dpll",
++					   .is_supported = &is_dpll_supported },
+ };
+ 
+ int mlx5_adev_idx_alloc(void)
+diff --git a/drivers/net/ethernet/mellanox/mlx5/core/dpll.c b/drivers/net/ethernet/mellanox/mlx5/core/dpll.c
+new file mode 100644
+index 000000000000..74f0c7867120
+--- /dev/null
++++ b/drivers/net/ethernet/mellanox/mlx5/core/dpll.c
+@@ -0,0 +1,432 @@
++// SPDX-License-Identifier: GPL-2.0 OR Linux-OpenIB
++/* Copyright (c) 2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved. */
++
++#include <linux/dpll.h>
++#include <linux/mlx5/driver.h>
++
++/* This structure represents a reference to DPLL, one is created
++ * per mdev instance.
++ */
++struct mlx5_dpll {
++	struct dpll_device *dpll;
++	struct dpll_pin *dpll_pin;
++	struct mlx5_core_dev *mdev;
++	struct workqueue_struct *wq;
++	struct delayed_work work;
++	struct {
++		bool valid;
++		enum dpll_lock_status lock_status;
++		enum dpll_pin_state pin_state;
++	} last;
++	struct notifier_block mdev_nb;
++	struct net_device *tracking_netdev;
 +};
 +
- struct ptp_ocp_sma_connector {
- 	enum	ptp_ocp_sma_mode mode;
- 	bool	fixed_fcn;
- 	bool	fixed_dir;
- 	bool	disabled;
- 	u8	default_fcn;
-+	struct dpll_pin		   *dpll_pin;
-+	struct dpll_pin_properties dpll_prop;
- };
- 
- struct ocp_attr_group {
-@@ -294,6 +304,7 @@ struct ptp_ocp_serial_port {
- 
- #define OCP_BOARD_ID_LEN		13
- #define OCP_SERIAL_LEN			6
-+#define OCP_SMA_NUM			4
- 
- struct ptp_ocp {
- 	struct pci_dev		*pdev;
-@@ -331,7 +342,9 @@ struct ptp_ocp {
- 	const struct attribute_group **attr_group;
- 	const struct ptp_ocp_eeprom_map *eeprom_map;
- 	struct dentry		*debug_root;
-+	bool			sync;
- 	time64_t		gnss_lost;
-+	struct delayed_work	sync_work;
- 	int			id;
- 	int			n_irqs;
- 	struct ptp_ocp_serial_port	gnss_port;
-@@ -350,8 +363,9 @@ struct ptp_ocp {
- 	u32			ts_window_adjust;
- 	u64			fw_cap;
- 	struct ptp_ocp_signal	signal[4];
--	struct ptp_ocp_sma_connector sma[4];
-+	struct ptp_ocp_sma_connector sma[OCP_SMA_NUM];
- 	const struct ocp_sma_op *sma_op;
-+	struct dpll_device *dpll;
- };
- 
- #define OCP_REQ_TIMESTAMP	BIT(0)
-@@ -835,6 +849,7 @@ static DEFINE_IDR(ptp_ocp_idr);
- struct ocp_selector {
- 	const char *name;
- 	int value;
-+	u64 frequency;
- };
- 
- static const struct ocp_selector ptp_ocp_clock[] = {
-@@ -855,31 +870,31 @@ static const struct ocp_selector ptp_ocp_clock[] = {
- #define SMA_SELECT_MASK		GENMASK(14, 0)
- 
- static const struct ocp_selector ptp_ocp_sma_in[] = {
--	{ .name = "10Mhz",	.value = 0x0000 },
--	{ .name = "PPS1",	.value = 0x0001 },
--	{ .name = "PPS2",	.value = 0x0002 },
--	{ .name = "TS1",	.value = 0x0004 },
--	{ .name = "TS2",	.value = 0x0008 },
--	{ .name = "IRIG",	.value = 0x0010 },
--	{ .name = "DCF",	.value = 0x0020 },
--	{ .name = "TS3",	.value = 0x0040 },
--	{ .name = "TS4",	.value = 0x0080 },
--	{ .name = "FREQ1",	.value = 0x0100 },
--	{ .name = "FREQ2",	.value = 0x0200 },
--	{ .name = "FREQ3",	.value = 0x0400 },
--	{ .name = "FREQ4",	.value = 0x0800 },
--	{ .name = "None",	.value = SMA_DISABLE },
-+	{ .name = "10Mhz",  .value = 0x0000,      .frequency = 10000000 },
-+	{ .name = "PPS1",   .value = 0x0001,      .frequency = 1 },
-+	{ .name = "PPS2",   .value = 0x0002,      .frequency = 1 },
-+	{ .name = "TS1",    .value = 0x0004,      .frequency = 0 },
-+	{ .name = "TS2",    .value = 0x0008,      .frequency = 0 },
-+	{ .name = "IRIG",   .value = 0x0010,      .frequency = 10000 },
-+	{ .name = "DCF",    .value = 0x0020,      .frequency = 77500 },
-+	{ .name = "TS3",    .value = 0x0040,      .frequency = 0 },
-+	{ .name = "TS4",    .value = 0x0080,      .frequency = 0 },
-+	{ .name = "FREQ1",  .value = 0x0100,      .frequency = 0 },
-+	{ .name = "FREQ2",  .value = 0x0200,      .frequency = 0 },
-+	{ .name = "FREQ3",  .value = 0x0400,      .frequency = 0 },
-+	{ .name = "FREQ4",  .value = 0x0800,      .frequency = 0 },
-+	{ .name = "None",   .value = SMA_DISABLE, .frequency = 0 },
- 	{ }
- };
- 
- static const struct ocp_selector ptp_ocp_sma_out[] = {
--	{ .name = "10Mhz",	.value = 0x0000 },
--	{ .name = "PHC",	.value = 0x0001 },
--	{ .name = "MAC",	.value = 0x0002 },
--	{ .name = "GNSS1",	.value = 0x0004 },
--	{ .name = "GNSS2",	.value = 0x0008 },
--	{ .name = "IRIG",	.value = 0x0010 },
--	{ .name = "DCF",	.value = 0x0020 },
-+	{ .name = "10Mhz",	.value = 0x0000,  .frequency = 10000000 },
-+	{ .name = "PHC",	.value = 0x0001,  .frequency = 1 },
-+	{ .name = "MAC",	.value = 0x0002,  .frequency = 1 },
-+	{ .name = "GNSS1",	.value = 0x0004,  .frequency = 1 },
-+	{ .name = "GNSS2",	.value = 0x0008,  .frequency = 1 },
-+	{ .name = "IRIG",	.value = 0x0010,  .frequency = 10000 },
-+	{ .name = "DCF",	.value = 0x0020,  .frequency = 77000 },
- 	{ .name = "GEN1",	.value = 0x0040 },
- 	{ .name = "GEN2",	.value = 0x0080 },
- 	{ .name = "GEN3",	.value = 0x0100 },
-@@ -890,15 +905,15 @@ static const struct ocp_selector ptp_ocp_sma_out[] = {
- };
- 
- static const struct ocp_selector ptp_ocp_art_sma_in[] = {
--	{ .name = "PPS1",	.value = 0x0001 },
--	{ .name = "10Mhz",	.value = 0x0008 },
-+	{ .name = "PPS1",	.value = 0x0001,  .frequency = 1 },
-+	{ .name = "10Mhz",	.value = 0x0008,  .frequency = 1000000 },
- 	{ }
- };
- 
- static const struct ocp_selector ptp_ocp_art_sma_out[] = {
--	{ .name = "PHC",	.value = 0x0002 },
--	{ .name = "GNSS",	.value = 0x0004 },
--	{ .name = "10Mhz",	.value = 0x0010 },
-+	{ .name = "PHC",	.value = 0x0002,  .frequency = 1 },
-+	{ .name = "GNSS",	.value = 0x0004,  .frequency = 1 },
-+	{ .name = "10Mhz",	.value = 0x0010,  .frequency = 10000000 },
- 	{ }
- };
- 
-@@ -1351,7 +1366,6 @@ static int
- ptp_ocp_init_clock(struct ptp_ocp *bp)
- {
- 	struct timespec64 ts;
--	bool sync;
- 	u32 ctrl;
- 
- 	ctrl = OCP_CTRL_ENABLE;
-@@ -1375,8 +1389,8 @@ ptp_ocp_init_clock(struct ptp_ocp *bp)
- 
- 	ptp_ocp_estimate_pci_timing(bp);
- 
--	sync = ioread32(&bp->reg->status) & OCP_STATUS_IN_SYNC;
--	if (!sync) {
-+	bp->sync = ioread32(&bp->reg->status) & OCP_STATUS_IN_SYNC;
-+	if (!bp->sync) {
- 		ktime_get_clocktai_ts64(&ts);
- 		ptp_ocp_settime(&bp->ptp_info, &ts);
- 	}
-@@ -2289,22 +2303,35 @@ ptp_ocp_sma_fb_set_inputs(struct ptp_ocp *bp, int sma_nr, u32 val)
- static void
- ptp_ocp_sma_fb_init(struct ptp_ocp *bp)
- {
-+	struct dpll_pin_properties prop = {
-+		.board_label = NULL,
-+		.type = DPLL_PIN_TYPE_EXT,
-+		.capabilities = DPLL_PIN_CAPABILITIES_DIRECTION_CAN_CHANGE,
-+		.freq_supported_num = ARRAY_SIZE(ptp_ocp_sma_freq),
-+		.freq_supported = ptp_ocp_sma_freq,
++static int mlx5_dpll_clock_id_get(struct mlx5_core_dev *mdev, u64 *clock_id)
++{
++	u32 out[MLX5_ST_SZ_DW(msecq_reg)] = {};
++	u32 in[MLX5_ST_SZ_DW(msecq_reg)] = {};
++	int err;
 +
-+	};
- 	u32 reg;
- 	int i;
- 
- 	/* defaults */
-+	for (i = 0; i < OCP_SMA_NUM; i++) {
-+		bp->sma[i].default_fcn = i & 1;
-+		bp->sma[i].dpll_prop = prop;
-+		bp->sma[i].dpll_prop.board_label =
-+			bp->ptp_info.pin_config[i].name;
-+	}
- 	bp->sma[0].mode = SMA_MODE_IN;
- 	bp->sma[1].mode = SMA_MODE_IN;
- 	bp->sma[2].mode = SMA_MODE_OUT;
- 	bp->sma[3].mode = SMA_MODE_OUT;
--	for (i = 0; i < 4; i++)
--		bp->sma[i].default_fcn = i & 1;
--
- 	/* If no SMA1 map, the pin functions and directions are fixed. */
- 	if (!bp->sma_map1) {
--		for (i = 0; i < 4; i++) {
-+		for (i = 0; i < OCP_SMA_NUM; i++) {
- 			bp->sma[i].fixed_fcn = true;
- 			bp->sma[i].fixed_dir = true;
-+			bp->sma[1].dpll_prop.capabilities &=
-+				~DPLL_PIN_CAPABILITIES_DIRECTION_CAN_CHANGE;
- 		}
- 		return;
- 	}
-@@ -2314,7 +2341,7 @@ ptp_ocp_sma_fb_init(struct ptp_ocp *bp)
- 	 */
- 	reg = ioread32(&bp->sma_map2->gpio2);
- 	if (reg == 0xffffffff) {
--		for (i = 0; i < 4; i++)
-+		for (i = 0; i < OCP_SMA_NUM; i++)
- 			bp->sma[i].fixed_dir = true;
- 	} else {
- 		reg = ioread32(&bp->sma_map1->gpio1);
-@@ -2336,7 +2363,7 @@ static const struct ocp_sma_op ocp_fb_sma_op = {
- };
- 
- static int
--ptp_ocp_fb_set_pins(struct ptp_ocp *bp)
-+ptp_ocp_set_pins(struct ptp_ocp *bp)
- {
- 	struct ptp_pin_desc *config;
- 	int i;
-@@ -2403,16 +2430,16 @@ ptp_ocp_fb_board_init(struct ptp_ocp *bp, struct ocp_resource *r)
- 
- 	ptp_ocp_tod_init(bp);
- 	ptp_ocp_nmea_out_init(bp);
--	ptp_ocp_sma_init(bp);
- 	ptp_ocp_signal_init(bp);
- 
- 	err = ptp_ocp_attr_group_add(bp, fb_timecard_groups);
- 	if (err)
- 		return err;
- 
--	err = ptp_ocp_fb_set_pins(bp);
-+	err = ptp_ocp_set_pins(bp);
- 	if (err)
- 		return err;
-+	ptp_ocp_sma_init(bp);
- 
- 	return ptp_ocp_init_clock(bp);
- }
-@@ -2452,6 +2479,14 @@ ptp_ocp_register_resources(struct ptp_ocp *bp, kernel_ulong_t driver_data)
- static void
- ptp_ocp_art_sma_init(struct ptp_ocp *bp)
- {
-+	struct dpll_pin_properties prop = {
-+		.board_label = NULL,
-+		.type = DPLL_PIN_TYPE_EXT,
-+		.capabilities = 0,
-+		.freq_supported_num = ARRAY_SIZE(ptp_ocp_sma_freq),
-+		.freq_supported = ptp_ocp_sma_freq,
-+
-+	};
- 	u32 reg;
- 	int i;
- 
-@@ -2466,16 +2501,16 @@ ptp_ocp_art_sma_init(struct ptp_ocp *bp)
- 	bp->sma[2].default_fcn = 0x10;	/* OUT: 10Mhz */
- 	bp->sma[3].default_fcn = 0x02;	/* OUT: PHC */
- 
--	/* If no SMA map, the pin functions and directions are fixed. */
--	if (!bp->art_sma) {
--		for (i = 0; i < 4; i++) {
-+	for (i = 0; i < OCP_SMA_NUM; i++) {
-+		/* If no SMA map, the pin functions and directions are fixed. */
-+		bp->sma[i].dpll_prop = prop;
-+		bp->sma[i].dpll_prop.board_label =
-+			bp->ptp_info.pin_config[i].name;
-+		if (!bp->art_sma) {
- 			bp->sma[i].fixed_fcn = true;
- 			bp->sma[i].fixed_dir = true;
-+			continue;
- 		}
--		return;
--	}
--
--	for (i = 0; i < 4; i++) {
- 		reg = ioread32(&bp->art_sma->map[i].gpio);
- 
- 		switch (reg & 0xff) {
-@@ -2486,9 +2521,13 @@ ptp_ocp_art_sma_init(struct ptp_ocp *bp)
- 		case 1:
- 		case 8:
- 			bp->sma[i].mode = SMA_MODE_IN;
-+			bp->sma[i].dpll_prop.capabilities =
-+				DPLL_PIN_CAPABILITIES_DIRECTION_CAN_CHANGE;
- 			break;
- 		default:
- 			bp->sma[i].mode = SMA_MODE_OUT;
-+			bp->sma[i].dpll_prop.capabilities =
-+				DPLL_PIN_CAPABILITIES_DIRECTION_CAN_CHANGE;
- 			break;
- 		}
- 	}
-@@ -2555,6 +2594,9 @@ ptp_ocp_art_board_init(struct ptp_ocp *bp, struct ocp_resource *r)
- 	/* Enable MAC serial port during initialisation */
- 	iowrite32(1, &bp->board_config->mro50_serial_activate);
- 
-+	err = ptp_ocp_set_pins(bp);
++	err = mlx5_core_access_reg(mdev, in, sizeof(in), out, sizeof(out),
++				   MLX5_REG_MSECQ, 0, 0);
 +	if (err)
 +		return err;
- 	ptp_ocp_sma_init(bp);
- 
- 	err = ptp_ocp_attr_group_add(bp, art_timecard_groups);
-@@ -2696,16 +2738,9 @@ sma4_show(struct device *dev, struct device_attribute *attr, char *buf)
- }
- 
- static int
--ptp_ocp_sma_store(struct ptp_ocp *bp, const char *buf, int sma_nr)
-+ptp_ocp_sma_store_val(struct ptp_ocp *bp, int val, enum ptp_ocp_sma_mode mode, int sma_nr)
- {
- 	struct ptp_ocp_sma_connector *sma = &bp->sma[sma_nr - 1];
--	enum ptp_ocp_sma_mode mode;
--	int val;
--
--	mode = sma->mode;
--	val = sma_parse_inputs(bp->sma_op->tbl, buf, &mode);
--	if (val < 0)
--		return val;
- 
- 	if (sma->fixed_dir && (mode != sma->mode || val & SMA_DISABLE))
- 		return -EOPNOTSUPP;
-@@ -2740,6 +2775,20 @@ ptp_ocp_sma_store(struct ptp_ocp *bp, const char *buf, int sma_nr)
- 	return val;
- }
- 
++	*clock_id = MLX5_GET64(msecq_reg, out, local_clock_identity);
++	return 0;
++}
++
 +static int
-+ptp_ocp_sma_store(struct ptp_ocp *bp, const char *buf, int sma_nr)
++mlx5_dpll_synce_status_get(struct mlx5_core_dev *mdev,
++			   enum mlx5_msees_admin_status *admin_status,
++			   enum mlx5_msees_oper_status *oper_status,
++			   bool *ho_acq)
 +{
-+	struct ptp_ocp_sma_connector *sma = &bp->sma[sma_nr - 1];
-+	enum ptp_ocp_sma_mode mode;
-+	int val;
++	u32 out[MLX5_ST_SZ_DW(msees_reg)] = {};
++	u32 in[MLX5_ST_SZ_DW(msees_reg)] = {};
++	int err;
 +
-+	mode = sma->mode;
-+	val = sma_parse_inputs(bp->sma_op->tbl, buf, &mode);
-+	if (val < 0)
-+		return val;
-+	return ptp_ocp_sma_store_val(bp, val, mode, sma_nr);
-+}
-+
- static ssize_t
- sma1_store(struct device *dev, struct device_attribute *attr,
- 	   const char *buf, size_t count)
-@@ -3834,9 +3883,8 @@ ptp_ocp_summary_show(struct seq_file *s, void *data)
- 		strcpy(buf, "unknown");
- 		break;
- 	}
--	val = ioread32(&bp->reg->status);
- 	seq_printf(s, "%7s: %s, state: %s\n", "PHC src", buf,
--		   val & OCP_STATUS_IN_SYNC ? "sync" : "unsynced");
-+		   bp->sync ? "sync" : "unsynced");
- 
- 	if (!ptp_ocp_gettimex(&bp->ptp_info, &ts, &sts)) {
- 		struct timespec64 sys_ts;
-@@ -4068,7 +4116,6 @@ ptp_ocp_phc_info(struct ptp_ocp *bp)
- {
- 	struct timespec64 ts;
- 	u32 version, select;
--	bool sync;
- 
- 	version = ioread32(&bp->reg->version);
- 	select = ioread32(&bp->reg->select);
-@@ -4077,11 +4124,10 @@ ptp_ocp_phc_info(struct ptp_ocp *bp)
- 		 ptp_ocp_select_name_from_val(ptp_ocp_clock, select >> 16),
- 		 ptp_clock_index(bp->ptp));
- 
--	sync = ioread32(&bp->reg->status) & OCP_STATUS_IN_SYNC;
- 	if (!ptp_ocp_gettimex(&bp->ptp_info, &ts, NULL))
- 		dev_info(&bp->pdev->dev, "Time: %lld.%ld, %s\n",
- 			 ts.tv_sec, ts.tv_nsec,
--			 sync ? "in-sync" : "UNSYNCED");
-+			 bp->sync ? "in-sync" : "UNSYNCED");
- }
- 
- static void
-@@ -4178,12 +4224,168 @@ ptp_ocp_detach(struct ptp_ocp *bp)
- 	device_unregister(&bp->dev);
- }
- 
-+static int ptp_ocp_dpll_lock_status_get(const struct dpll_device *dpll,
-+					void *priv,
-+					enum dpll_lock_status *status,
-+					struct netlink_ext_ack *extack)
-+{
-+	struct ptp_ocp *bp = priv;
-+
-+	*status = bp->sync ? DPLL_LOCK_STATUS_LOCKED : DPLL_LOCK_STATUS_UNLOCKED;
-+
-+	return 0;
-+}
-+
-+static int ptp_ocp_dpll_state_get(const struct dpll_pin *pin, void *pin_priv,
-+				  const struct dpll_device *dpll, void *priv,
-+				  enum dpll_pin_state *state,
-+				  struct netlink_ext_ack *extack)
-+{
-+	struct ptp_ocp *bp = priv;
-+	int idx;
-+
-+	if (bp->pps_select) {
-+		idx = ioread32(&bp->pps_select->gpio1);
-+		*state = (&bp->sma[idx] == pin_priv) ? DPLL_PIN_STATE_CONNECTED :
-+						      DPLL_PIN_STATE_SELECTABLE;
-+		return 0;
-+	}
-+	NL_SET_ERR_MSG(extack, "pin selection is not supported on current HW");
-+	return -EINVAL;
-+}
-+
-+static int ptp_ocp_dpll_mode_get(const struct dpll_device *dpll, void *priv,
-+				 u32 *mode, struct netlink_ext_ack *extack)
-+{
-+	*mode = DPLL_MODE_AUTOMATIC;
-+	return 0;
-+}
-+
-+static bool ptp_ocp_dpll_mode_supported(const struct dpll_device *dpll,
-+					void *priv, const enum dpll_mode mode,
-+					struct netlink_ext_ack *extack)
-+{
-+	return mode == DPLL_MODE_AUTOMATIC;
-+}
-+
-+static int ptp_ocp_dpll_direction_get(const struct dpll_pin *pin,
-+				      void *pin_priv,
-+				      const struct dpll_device *dpll,
-+				      void *priv,
-+				      enum dpll_pin_direction *direction,
-+				      struct netlink_ext_ack *extack)
-+{
-+	struct ptp_ocp_sma_connector *sma = pin_priv;
-+
-+	*direction = sma->mode == SMA_MODE_IN ?
-+				  DPLL_PIN_DIRECTION_INPUT :
-+				  DPLL_PIN_DIRECTION_OUTPUT;
-+	return 0;
-+}
-+
-+static int ptp_ocp_dpll_direction_set(const struct dpll_pin *pin,
-+				      void *pin_priv,
-+				      const struct dpll_device *dpll,
-+				      void *dpll_priv,
-+				      enum dpll_pin_direction direction,
-+				      struct netlink_ext_ack *extack)
-+{
-+	struct ptp_ocp_sma_connector *sma = pin_priv;
-+	struct ptp_ocp *bp = dpll_priv;
-+	enum ptp_ocp_sma_mode mode;
-+	int sma_nr = (sma - bp->sma);
-+
-+	if (sma->fixed_dir)
-+		return -EOPNOTSUPP;
-+	mode = direction == DPLL_PIN_DIRECTION_INPUT ?
-+			    SMA_MODE_IN : SMA_MODE_OUT;
-+	return ptp_ocp_sma_store_val(bp, 0, mode, sma_nr);
-+}
-+
-+static int ptp_ocp_dpll_frequency_set(const struct dpll_pin *pin,
-+				      void *pin_priv,
-+				      const struct dpll_device *dpll,
-+				      void *dpll_priv, u64 frequency,
-+				      struct netlink_ext_ack *extack)
-+{
-+	struct ptp_ocp_sma_connector *sma = pin_priv;
-+	struct ptp_ocp *bp = dpll_priv;
-+	const struct ocp_selector *tbl;
-+	int sma_nr = (sma - bp->sma);
-+	int i;
-+
-+	if (sma->fixed_fcn)
-+		return -EOPNOTSUPP;
-+
-+	tbl = bp->sma_op->tbl[sma->mode];
-+	for (i = 0; tbl[i].name; i++)
-+		if (tbl[i].frequency == frequency)
-+			return ptp_ocp_sma_store_val(bp, i, sma->mode, sma_nr);
-+	return -EINVAL;
-+}
-+
-+static int ptp_ocp_dpll_frequency_get(const struct dpll_pin *pin,
-+				      void *pin_priv,
-+				      const struct dpll_device *dpll,
-+				      void *dpll_priv, u64 *frequency,
-+				      struct netlink_ext_ack *extack)
-+{
-+	struct ptp_ocp_sma_connector *sma = pin_priv;
-+	struct ptp_ocp *bp = dpll_priv;
-+	const struct ocp_selector *tbl;
-+	int sma_nr = (sma - bp->sma);
-+	u32 val;
-+	int i;
-+
-+	val = bp->sma_op->get(bp, sma_nr);
-+	tbl = bp->sma_op->tbl[sma->mode];
-+	for (i = 0; tbl[i].name; i++)
-+		if (val == tbl[i].value) {
-+			*frequency = tbl[i].frequency;
-+			return 0;
-+		}
-+
-+	return -EINVAL;
-+}
-+
-+static const struct dpll_device_ops dpll_ops = {
-+	.lock_status_get = ptp_ocp_dpll_lock_status_get,
-+	.mode_get = ptp_ocp_dpll_mode_get,
-+	.mode_supported = ptp_ocp_dpll_mode_supported,
-+};
-+
-+static const struct dpll_pin_ops dpll_pins_ops = {
-+	.frequency_get = ptp_ocp_dpll_frequency_get,
-+	.frequency_set = ptp_ocp_dpll_frequency_set,
-+	.direction_get = ptp_ocp_dpll_direction_get,
-+	.direction_set = ptp_ocp_dpll_direction_set,
-+	.state_on_dpll_get = ptp_ocp_dpll_state_get,
-+};
-+
-+static void
-+ptp_ocp_sync_work(struct work_struct *work)
-+{
-+	struct ptp_ocp *bp;
-+	bool sync;
-+
-+	bp = container_of(work, struct ptp_ocp, sync_work.work);
-+	sync = !!(ioread32(&bp->reg->status) & OCP_STATUS_IN_SYNC);
-+
-+	if (bp->sync != sync)
-+		dpll_device_change_ntf(bp->dpll);
-+
-+	bp->sync = sync;
-+
-+	queue_delayed_work(system_power_efficient_wq, &bp->sync_work, HZ);
-+}
-+
- static int
- ptp_ocp_probe(struct pci_dev *pdev, const struct pci_device_id *id)
- {
- 	struct devlink *devlink;
- 	struct ptp_ocp *bp;
--	int err;
-+	int err, i;
-+	u64 clkid;
- 
- 	devlink = devlink_alloc(&ptp_ocp_devlink_ops, sizeof(*bp), &pdev->dev);
- 	if (!devlink) {
-@@ -4202,6 +4404,8 @@ ptp_ocp_probe(struct pci_dev *pdev, const struct pci_device_id *id)
- 	if (err)
- 		goto out_disable;
- 
-+	INIT_DELAYED_WORK(&bp->sync_work, ptp_ocp_sync_work);
-+
- 	/* compat mode.
- 	 * Older FPGA firmware only returns 2 irq's.
- 	 * allow this - if not all of the IRQ's are returned, skip the
-@@ -4233,8 +4437,43 @@ ptp_ocp_probe(struct pci_dev *pdev, const struct pci_device_id *id)
- 
- 	ptp_ocp_info(bp);
- 	devlink_register(devlink);
--	return 0;
- 
-+	clkid = pci_get_dsn(pdev);
-+	bp->dpll = dpll_device_get(clkid, 0, THIS_MODULE);
-+	if (IS_ERR(bp->dpll)) {
-+		err = PTR_ERR(bp->dpll);
-+		dev_err(&pdev->dev, "dpll_device_alloc failed\n");
-+		goto out;
-+	}
-+
-+	err = dpll_device_register(bp->dpll, DPLL_TYPE_PPS, &dpll_ops, bp);
++	err = mlx5_core_access_reg(mdev, in, sizeof(in), out, sizeof(out),
++				   MLX5_REG_MSEES, 0, 0);
 +	if (err)
-+		goto out;
++		return err;
++	if (admin_status)
++		*admin_status = MLX5_GET(msees_reg, out, admin_status);
++	*oper_status = MLX5_GET(msees_reg, out, oper_status);
++	if (ho_acq)
++		*ho_acq = MLX5_GET(msees_reg, out, ho_acq);
++	return 0;
++}
 +
-+	for (i = 0; i < OCP_SMA_NUM; i++) {
-+		bp->sma[i].dpll_pin = dpll_pin_get(clkid, i, THIS_MODULE, &bp->sma[i].dpll_prop);
-+		if (IS_ERR(bp->sma[i].dpll_pin)) {
-+			err = PTR_ERR(bp->dpll);
-+			goto out_dpll;
-+		}
++static int
++mlx5_dpll_synce_status_set(struct mlx5_core_dev *mdev,
++			   enum mlx5_msees_admin_status admin_status)
++{
++	u32 out[MLX5_ST_SZ_DW(msees_reg)] = {};
++	u32 in[MLX5_ST_SZ_DW(msees_reg)] = {};
 +
-+		err = dpll_pin_register(bp->dpll, bp->sma[i].dpll_pin, &dpll_pins_ops,
-+					&bp->sma[i]);
-+		if (err) {
-+			dpll_pin_put(bp->sma[i].dpll_pin);
-+			goto out_dpll;
-+		}
++	MLX5_SET(msees_reg, in, field_select,
++		 MLX5_MSEES_FIELD_SELECT_ENABLE |
++		 MLX5_MSEES_FIELD_SELECT_ADMIN_STATUS);
++	MLX5_SET(msees_reg, in, admin_status, admin_status);
++	return mlx5_core_access_reg(mdev, in, sizeof(in), out, sizeof(out),
++				    MLX5_REG_MSEES, 0, 1);
++}
++
++static enum dpll_lock_status
++mlx5_dpll_lock_status_get(enum mlx5_msees_oper_status oper_status, bool ho_acq)
++{
++	switch (oper_status) {
++	case MLX5_MSEES_OPER_STATUS_SELF_TRACK:
++		fallthrough;
++	case MLX5_MSEES_OPER_STATUS_OTHER_TRACK:
++		return ho_acq ? DPLL_LOCK_STATUS_LOCKED_HO_ACQ :
++				DPLL_LOCK_STATUS_LOCKED;
++	case MLX5_MSEES_OPER_STATUS_HOLDOVER:
++		fallthrough;
++	case MLX5_MSEES_OPER_STATUS_FAIL_HOLDOVER:
++		return DPLL_LOCK_STATUS_HOLDOVER;
++	default:
++		return DPLL_LOCK_STATUS_UNLOCKED;
 +	}
-+	queue_delayed_work(system_power_efficient_wq, &bp->sync_work, HZ);
++}
++
++static enum dpll_pin_state
++mlx5_dpll_pin_state_get(enum mlx5_msees_admin_status admin_status,
++			enum mlx5_msees_oper_status oper_status)
++{
++	return (admin_status == MLX5_MSEES_ADMIN_STATUS_TRACK &&
++		(oper_status == MLX5_MSEES_OPER_STATUS_SELF_TRACK ||
++		 oper_status == MLX5_MSEES_OPER_STATUS_OTHER_TRACK)) ?
++	       DPLL_PIN_STATE_CONNECTED : DPLL_PIN_STATE_DISCONNECTED;
++}
++
++static int mlx5_dpll_device_lock_status_get(const struct dpll_device *dpll,
++					    void *priv,
++					    enum dpll_lock_status *status,
++					    struct netlink_ext_ack *extack)
++{
++	enum mlx5_msees_oper_status oper_status;
++	struct mlx5_dpll *mdpll = priv;
++	bool ho_acq;
++	int err;
++
++	err = mlx5_dpll_synce_status_get(mdpll->mdev, NULL,
++					 &oper_status, &ho_acq);
++	if (err)
++		return err;
++
++	*status = mlx5_dpll_lock_status_get(oper_status, ho_acq);
++	return 0;
++}
++
++static int mlx5_dpll_device_mode_get(const struct dpll_device *dpll,
++				     void *priv,
++				     u32 *mode, struct netlink_ext_ack *extack)
++{
++	*mode = DPLL_MODE_MANUAL;
++	return 0;
++}
++
++static bool mlx5_dpll_device_mode_supported(const struct dpll_device *dpll,
++					    void *priv,
++					    enum dpll_mode mode,
++					    struct netlink_ext_ack *extack)
++{
++	return mode == DPLL_MODE_MANUAL;
++}
++
++static const struct dpll_device_ops mlx5_dpll_device_ops = {
++	.lock_status_get = mlx5_dpll_device_lock_status_get,
++	.mode_get = mlx5_dpll_device_mode_get,
++	.mode_supported = mlx5_dpll_device_mode_supported,
++};
++
++static int mlx5_dpll_pin_direction_get(const struct dpll_pin *pin,
++				       void *pin_priv,
++				       const struct dpll_device *dpll,
++				       void *dpll_priv,
++				       enum dpll_pin_direction *direction,
++				       struct netlink_ext_ack *extack)
++{
++	*direction = DPLL_PIN_DIRECTION_INPUT;
++	return 0;
++}
++
++static int mlx5_dpll_state_on_dpll_get(const struct dpll_pin *pin,
++				       void *pin_priv,
++				       const struct dpll_device *dpll,
++				       void *dpll_priv,
++				       enum dpll_pin_state *state,
++				       struct netlink_ext_ack *extack)
++{
++	enum mlx5_msees_admin_status admin_status;
++	enum mlx5_msees_oper_status oper_status;
++	struct mlx5_dpll *mdpll = pin_priv;
++	int err;
++
++	err = mlx5_dpll_synce_status_get(mdpll->mdev, &admin_status,
++					 &oper_status, NULL);
++	if (err)
++		return err;
++	*state = mlx5_dpll_pin_state_get(admin_status, oper_status);
++	return 0;
++}
++
++static int mlx5_dpll_state_on_dpll_set(const struct dpll_pin *pin,
++				       void *pin_priv,
++				       const struct dpll_device *dpll,
++				       void *dpll_priv,
++				       enum dpll_pin_state state,
++				       struct netlink_ext_ack *extack)
++{
++	struct mlx5_dpll *mdpll = pin_priv;
++
++	return mlx5_dpll_synce_status_set(mdpll->mdev,
++					  state == DPLL_PIN_STATE_CONNECTED ?
++					  MLX5_MSEES_ADMIN_STATUS_TRACK :
++					  MLX5_MSEES_ADMIN_STATUS_FREE_RUNNING);
++}
++
++static const struct dpll_pin_ops mlx5_dpll_pins_ops = {
++	.direction_get = mlx5_dpll_pin_direction_get,
++	.state_on_dpll_get = mlx5_dpll_state_on_dpll_get,
++	.state_on_dpll_set = mlx5_dpll_state_on_dpll_set,
++};
++
++static const struct dpll_pin_properties mlx5_dpll_pin_properties = {
++	.type = DPLL_PIN_TYPE_SYNCE_ETH_PORT,
++	.capabilities = DPLL_PIN_CAPABILITIES_STATE_CAN_CHANGE,
++};
++
++#define MLX5_DPLL_PERIODIC_WORK_INTERVAL 500 /* ms */
++
++static void mlx5_dpll_periodic_work_queue(struct mlx5_dpll *mdpll)
++{
++	queue_delayed_work(mdpll->wq, &mdpll->work,
++			   msecs_to_jiffies(MLX5_DPLL_PERIODIC_WORK_INTERVAL));
++}
++
++static void mlx5_dpll_periodic_work(struct work_struct *work)
++{
++	struct mlx5_dpll *mdpll = container_of(work, struct mlx5_dpll,
++					       work.work);
++	enum mlx5_msees_admin_status admin_status;
++	enum mlx5_msees_oper_status oper_status;
++	enum dpll_lock_status lock_status;
++	enum dpll_pin_state pin_state;
++	bool ho_acq;
++	int err;
++
++	err = mlx5_dpll_synce_status_get(mdpll->mdev, &admin_status,
++					 &oper_status, &ho_acq);
++	if (err)
++		goto err_out;
++	lock_status = mlx5_dpll_lock_status_get(oper_status, ho_acq);
++	pin_state = mlx5_dpll_pin_state_get(admin_status, oper_status);
++
++	if (!mdpll->last.valid)
++		goto invalid_out;
++
++	if (mdpll->last.lock_status != lock_status)
++		dpll_device_change_ntf(mdpll->dpll);
++	if (mdpll->last.pin_state != pin_state)
++		dpll_pin_change_ntf(mdpll->dpll_pin);
++
++invalid_out:
++	mdpll->last.lock_status = lock_status;
++	mdpll->last.pin_state = pin_state;
++	mdpll->last.valid = true;
++err_out:
++	mlx5_dpll_periodic_work_queue(mdpll);
++}
++
++static void mlx5_dpll_netdev_dpll_pin_set(struct mlx5_dpll *mdpll,
++					  struct net_device *netdev)
++{
++	if (mdpll->tracking_netdev)
++		return;
++	netdev_dpll_pin_set(netdev, mdpll->dpll_pin);
++	mdpll->tracking_netdev = netdev;
++}
++
++static void mlx5_dpll_netdev_dpll_pin_clear(struct mlx5_dpll *mdpll)
++{
++	if (!mdpll->tracking_netdev)
++		return;
++	netdev_dpll_pin_clear(mdpll->tracking_netdev);
++	mdpll->tracking_netdev = NULL;
++}
++
++static int mlx5_dpll_mdev_notifier_event(struct notifier_block *nb,
++					 unsigned long event, void *data)
++{
++	struct mlx5_dpll *mdpll = container_of(nb, struct mlx5_dpll, mdev_nb);
++	struct net_device *netdev = data;
++
++	switch (event) {
++	case MLX5_DRIVER_EVENT_UPLINK_NETDEV:
++		if (netdev)
++			mlx5_dpll_netdev_dpll_pin_set(mdpll, netdev);
++		else
++			mlx5_dpll_netdev_dpll_pin_clear(mdpll);
++		break;
++	default:
++		return NOTIFY_DONE;
++	}
++
++	return NOTIFY_OK;
++}
++
++static void mlx5_dpll_mdev_netdev_track(struct mlx5_dpll *mdpll,
++					struct mlx5_core_dev *mdev)
++{
++	mdpll->mdev_nb.notifier_call = mlx5_dpll_mdev_notifier_event;
++	mlx5_blocking_notifier_register(mdev, &mdpll->mdev_nb);
++	mlx5_core_uplink_netdev_event_replay(mdev);
++}
++
++static void mlx5_dpll_mdev_netdev_untrack(struct mlx5_dpll *mdpll,
++					  struct mlx5_core_dev *mdev)
++{
++	mlx5_blocking_notifier_unregister(mdev, &mdpll->mdev_nb);
++	mlx5_dpll_netdev_dpll_pin_clear(mdpll);
++}
++
++static int mlx5_dpll_probe(struct auxiliary_device *adev,
++			   const struct auxiliary_device_id *id)
++{
++	struct mlx5_adev *edev = container_of(adev, struct mlx5_adev, adev);
++	struct mlx5_core_dev *mdev = edev->mdev;
++	struct mlx5_dpll *mdpll;
++	u64 clock_id;
++	int err;
++
++	err = mlx5_dpll_synce_status_set(mdev,
++					 MLX5_MSEES_ADMIN_STATUS_FREE_RUNNING);
++	if (err)
++		return err;
++
++	err = mlx5_dpll_clock_id_get(mdev, &clock_id);
++	if (err)
++		return err;
++
++	mdpll = kzalloc(sizeof(*mdpll), GFP_KERNEL);
++	if (!mdpll)
++		return -ENOMEM;
++	mdpll->mdev = mdev;
++	auxiliary_set_drvdata(adev, mdpll);
++
++	/* Multiple mdev instances might share one DPLL device. */
++	mdpll->dpll = dpll_device_get(clock_id, 0, THIS_MODULE);
++	if (IS_ERR(mdpll->dpll)) {
++		err = PTR_ERR(mdpll->dpll);
++		goto err_free_mdpll;
++	}
++
++	err = dpll_device_register(mdpll->dpll, DPLL_TYPE_EEC,
++				   &mlx5_dpll_device_ops, mdpll);
++	if (err)
++		goto err_put_dpll_device;
++
++	/* Multiple mdev instances might share one DPLL pin. */
++	mdpll->dpll_pin = dpll_pin_get(clock_id, mlx5_get_dev_index(mdev),
++				       THIS_MODULE, &mlx5_dpll_pin_properties);
++	if (IS_ERR(mdpll->dpll_pin)) {
++		err = PTR_ERR(mdpll->dpll_pin);
++		goto err_unregister_dpll_device;
++	}
++
++	err = dpll_pin_register(mdpll->dpll, mdpll->dpll_pin,
++				&mlx5_dpll_pins_ops, mdpll);
++	if (err)
++		goto err_put_dpll_pin;
++
++	mdpll->wq = create_singlethread_workqueue("mlx5_dpll");
++	if (!mdpll->wq) {
++		err = -ENOMEM;
++		goto err_unregister_dpll_pin;
++	}
++
++	mlx5_dpll_mdev_netdev_track(mdpll, mdev);
++
++	INIT_DELAYED_WORK(&mdpll->work, &mlx5_dpll_periodic_work);
++	mlx5_dpll_periodic_work_queue(mdpll);
 +
 +	return 0;
-+out_dpll:
-+	while (i) {
-+		--i;
-+		dpll_pin_unregister(bp->dpll, bp->sma[i].dpll_pin, &dpll_pins_ops, &bp->sma[i]);
-+		dpll_pin_put(bp->sma[i].dpll_pin);
-+	}
-+	dpll_device_put(bp->dpll);
- out:
- 	ptp_ocp_detach(bp);
- out_disable:
-@@ -4249,7 +4488,17 @@ ptp_ocp_remove(struct pci_dev *pdev)
- {
- 	struct ptp_ocp *bp = pci_get_drvdata(pdev);
- 	struct devlink *devlink = priv_to_devlink(bp);
-+	int i;
++
++err_unregister_dpll_pin:
++	dpll_pin_unregister(mdpll->dpll, mdpll->dpll_pin,
++			    &mlx5_dpll_pins_ops, mdpll);
++err_put_dpll_pin:
++	dpll_pin_put(mdpll->dpll_pin);
++err_unregister_dpll_device:
++	dpll_device_unregister(mdpll->dpll, &mlx5_dpll_device_ops, mdpll);
++err_put_dpll_device:
++	dpll_device_put(mdpll->dpll);
++err_free_mdpll:
++	kfree(mdpll);
++	return err;
++}
++
++static void mlx5_dpll_remove(struct auxiliary_device *adev)
++{
++	struct mlx5_dpll *mdpll = auxiliary_get_drvdata(adev);
++	struct mlx5_core_dev *mdev = mdpll->mdev;
++
++	cancel_delayed_work(&mdpll->work);
++	mlx5_dpll_mdev_netdev_untrack(mdpll, mdev);
++	destroy_workqueue(mdpll->wq);
++	dpll_pin_unregister(mdpll->dpll, mdpll->dpll_pin,
++			    &mlx5_dpll_pins_ops, mdpll);
++	dpll_pin_put(mdpll->dpll_pin);
++	dpll_device_unregister(mdpll->dpll, &mlx5_dpll_device_ops, mdpll);
++	dpll_device_put(mdpll->dpll);
++	kfree(mdpll);
++
++	mlx5_dpll_synce_status_set(mdev,
++				   MLX5_MSEES_ADMIN_STATUS_FREE_RUNNING);
++}
++
++static int mlx5_dpll_suspend(struct auxiliary_device *adev, pm_message_t state)
++{
++	return 0;
++}
++
++static int mlx5_dpll_resume(struct auxiliary_device *adev)
++{
++	return 0;
++}
++
++static const struct auxiliary_device_id mlx5_dpll_id_table[] = {
++	{ .name = MLX5_ADEV_NAME ".dpll", },
++	{},
++};
++
++MODULE_DEVICE_TABLE(auxiliary, mlx5_dpll_id_table);
++
++static struct auxiliary_driver mlx5_dpll_driver = {
++	.name = "dpll",
++	.probe = mlx5_dpll_probe,
++	.remove = mlx5_dpll_remove,
++	.suspend = mlx5_dpll_suspend,
++	.resume = mlx5_dpll_resume,
++	.id_table = mlx5_dpll_id_table,
++};
++
++static int __init mlx5_dpll_init(void)
++{
++	return auxiliary_driver_register(&mlx5_dpll_driver);
++}
++
++static void __exit mlx5_dpll_exit(void)
++{
++	auxiliary_driver_unregister(&mlx5_dpll_driver);
++}
++
++module_init(mlx5_dpll_init);
++module_exit(mlx5_dpll_exit);
++
++MODULE_AUTHOR("Jiri Pirko <jiri@nvidia.com>");
++MODULE_DESCRIPTION("Mellanox 5th generation network adapters (ConnectX series) DPLL driver");
++MODULE_LICENSE("Dual BSD/GPL");
+diff --git a/include/linux/mlx5/driver.h b/include/linux/mlx5/driver.h
+index c9d82e74daaa..83514d0bacf6 100644
+--- a/include/linux/mlx5/driver.h
++++ b/include/linux/mlx5/driver.h
+@@ -155,6 +155,8 @@ enum {
+ 	MLX5_REG_MCC		 = 0x9062,
+ 	MLX5_REG_MCDA		 = 0x9063,
+ 	MLX5_REG_MCAM		 = 0x907f,
++	MLX5_REG_MSECQ		 = 0x9155,
++	MLX5_REG_MSEES		 = 0x9156,
+ 	MLX5_REG_MIRC		 = 0x9162,
+ 	MLX5_REG_SBCAM		 = 0xB01F,
+ 	MLX5_REG_RESOURCE_DUMP   = 0xC000,
+diff --git a/include/linux/mlx5/mlx5_ifc.h b/include/linux/mlx5/mlx5_ifc.h
+index 08dcb1f43be7..33d64c92b1aa 100644
+--- a/include/linux/mlx5/mlx5_ifc.h
++++ b/include/linux/mlx5/mlx5_ifc.h
+@@ -10173,7 +10173,9 @@ struct mlx5_ifc_mcam_access_reg_bits2 {
+ 	u8         mirc[0x1];
+ 	u8         regs_97_to_96[0x2];
  
-+	cancel_delayed_work_sync(&bp->sync_work);
-+	for (i = 0; i < OCP_SMA_NUM; i++) {
-+		if (bp->sma[i].dpll_pin) {
-+			dpll_pin_unregister(bp->dpll, bp->sma[i].dpll_pin, &dpll_pins_ops, bp);
-+			dpll_pin_put(bp->sma[i].dpll_pin);
-+		}
-+	}
-+	dpll_device_unregister(bp->dpll, &dpll_ops, bp);
-+	dpll_device_put(bp->dpll);
- 	devlink_unregister(devlink);
- 	ptp_ocp_detach(bp);
- 	pci_disable_device(pdev);
+-	u8         regs_95_to_64[0x20];
++	u8         regs_95_to_87[0x09];
++	u8         synce_registers[0x2];
++	u8         regs_84_to_64[0x15];
+ 
+ 	u8         regs_63_to_32[0x20];
+ 
+@@ -12546,4 +12548,59 @@ struct mlx5_ifc_modify_page_track_obj_in_bits {
+ 	struct mlx5_ifc_page_track_bits obj_context;
+ };
+ 
++struct mlx5_ifc_msecq_reg_bits {
++	u8         reserved_at_0[0x20];
++
++	u8         reserved_at_20[0x12];
++	u8         network_option[0x2];
++	u8         local_ssm_code[0x4];
++	u8         local_enhanced_ssm_code[0x8];
++
++	u8         local_clock_identity[0x40];
++
++	u8         reserved_at_80[0x180];
++};
++
++enum {
++	MLX5_MSEES_FIELD_SELECT_ENABLE			= BIT(0),
++	MLX5_MSEES_FIELD_SELECT_ADMIN_STATUS		= BIT(1),
++	MLX5_MSEES_FIELD_SELECT_ADMIN_FREQ_MEASURE	= BIT(2),
++};
++
++enum mlx5_msees_admin_status {
++	MLX5_MSEES_ADMIN_STATUS_FREE_RUNNING		= 0x0,
++	MLX5_MSEES_ADMIN_STATUS_TRACK			= 0x1,
++};
++
++enum mlx5_msees_oper_status {
++	MLX5_MSEES_OPER_STATUS_FREE_RUNNING		= 0x0,
++	MLX5_MSEES_OPER_STATUS_SELF_TRACK		= 0x1,
++	MLX5_MSEES_OPER_STATUS_OTHER_TRACK		= 0x2,
++	MLX5_MSEES_OPER_STATUS_HOLDOVER			= 0x3,
++	MLX5_MSEES_OPER_STATUS_FAIL_HOLDOVER		= 0x4,
++	MLX5_MSEES_OPER_STATUS_FAIL_FREE_RUNNING	= 0x5,
++};
++
++struct mlx5_ifc_msees_reg_bits {
++	u8         reserved_at_0[0x8];
++	u8         local_port[0x8];
++	u8         pnat[0x2];
++	u8         lp_msb[0x2];
++	u8         reserved_at_14[0xc];
++
++	u8         field_select[0x20];
++
++	u8         admin_status[0x4];
++	u8         oper_status[0x4];
++	u8         ho_acq[0x1];
++	u8         reserved_at_49[0xc];
++	u8         admin_freq_measure[0x1];
++	u8         oper_freq_measure[0x1];
++	u8         failure_reason[0x9];
++
++	u8         frequency_diff[0x20];
++
++	u8         reserved_at_80[0x180];
++};
++
+ #endif /* MLX5_IFC_H */
 -- 
 2.27.0
 
