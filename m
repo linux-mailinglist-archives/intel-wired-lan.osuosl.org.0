@@ -1,193 +1,90 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 41917788C96
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 25 Aug 2023 17:38:59 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id F37E17891AD
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 26 Aug 2023 00:23:40 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id C521783104;
-	Fri, 25 Aug 2023 15:38:57 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org C521783104
+	by smtp4.osuosl.org (Postfix) with ESMTP id 90C7F42047;
+	Fri, 25 Aug 2023 22:23:38 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 90C7F42047
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1692977937;
-	bh=FRCar/rdVvwlD7WaHQo5ta8OpAsNn8zuIl6ZKFV+koc=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
+	s=default; t=1693002218;
+	bh=XuouAeGeov8Ccd1Mo1ISUjIPYlFQ4XZEnVy5BI5ciqo=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=cVDpJbQsmptXirVG2NpIBa8SOdf+ghy4iq++EDN8swXOEbCPG9wEniDC8qRTy+CNb
-	 G7AUtIMfSwcHEJ/CElMywa/pLFlWxrMEvGzq1k6Y9iKPqvF5ckU5a/lQY37cE45lDN
-	 x+weQ7c/fmmnOSQ1hGrAOpNxtEboNMM3KSXSFkE38VmvFNPeYgzGvkv0XtgGiHuOdj
-	 UJrDuL7egtuUMrHU86/MbeJkgVK5gRxllWs6EWR2D+RJG0fGM/TFRxNzGqR1mJevPY
-	 PCA7DePzYvJJYYUXUWFnvK8TgyYwjl3urj5zB2DtfWZNtRb12meSgNwiTb/lFnbXcv
-	 uRGE8KhxlD74g==
+	b=7E6pslDgUFVP7FhcDrJJX9VYBrTk8b9Cs1sJXoIBqRFpJuV1WhplP/nIKQW1r2mBQ
+	 GYiuKOodmv8wwYVxeihqGHsa3eAKYjXCFge6VKzNMa/A8ERqWmoVdk9zYM7QguW2Ze
+	 1PJXBvFNsaD94Kv4TYhjYj56eYAEYwH96bZ/OB9QgK3lz6fM7jUYfMWesInMYqMziK
+	 7ksCoRs2HKLRATEx9wFgGiGFNd7eV53vOgFc0IbBbDLcf159761FB4hFXc3etqKqoj
+	 qVEfTNw/j8Gx3BGQpdmKeycGjOGoT6K/YM6XYwA1yjvs62TbwGji8r7GiENZwc2fmN
+	 DY0O60hv/qa5w==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id EddkpF5_GGhA; Fri, 25 Aug 2023 15:38:57 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Ah2qe4MQYnd1; Fri, 25 Aug 2023 22:23:37 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 918DF82C61;
-	Fri, 25 Aug 2023 15:38:56 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 918DF82C61
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 4EC041BF271
- for <intel-wired-lan@lists.osuosl.org>; Fri, 25 Aug 2023 15:38:52 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id EA95041FA4;
+	Fri, 25 Aug 2023 22:23:36 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org EA95041FA4
+X-Original-To: intel-wired-lan@osuosl.org
+Delivered-To: intel-wired-lan@osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 0269F1BF5A5
+ for <intel-wired-lan@osuosl.org>; Fri, 25 Aug 2023 22:23:32 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 1D8E361473
- for <intel-wired-lan@lists.osuosl.org>; Fri, 25 Aug 2023 15:38:52 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1D8E361473
+ by smtp4.osuosl.org (Postfix) with ESMTP id CC30841EA0
+ for <intel-wired-lan@osuosl.org>; Fri, 25 Aug 2023 22:23:31 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org CC30841EA0
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 6VbzhH1U5vPQ for <intel-wired-lan@lists.osuosl.org>;
- Fri, 25 Aug 2023 15:38:51 +0000 (UTC)
-Received: from mgamail.intel.com (mgamail.intel.com [134.134.136.65])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 4FCA661001
- for <intel-wired-lan@lists.osuosl.org>; Fri, 25 Aug 2023 15:38:51 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 4FCA661001
-X-IronPort-AV: E=McAfee;i="6600,9927,10813"; a="378518540"
-X-IronPort-AV: E=Sophos;i="6.02,201,1688454000"; d="scan'208";a="378518540"
-Received: from orsmga002.jf.intel.com ([10.7.209.21])
- by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 25 Aug 2023 08:38:39 -0700
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id cFn15888cKWT for <intel-wired-lan@osuosl.org>;
+ Fri, 25 Aug 2023 22:23:30 +0000 (UTC)
+Received: from mgamail.intel.com (mgamail.intel.com [192.55.52.115])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 57E2841BB7
+ for <intel-wired-lan@osuosl.org>; Fri, 25 Aug 2023 22:23:30 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 57E2841BB7
+X-IronPort-AV: E=McAfee;i="6600,9927,10813"; a="374789364"
+X-IronPort-AV: E=Sophos;i="6.02,202,1688454000"; d="scan'208";a="374789364"
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 25 Aug 2023 15:22:14 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10813"; a="737520166"
-X-IronPort-AV: E=Sophos;i="6.02,201,1688454000"; d="scan'208";a="737520166"
-Received: from fmsmsx603.amr.corp.intel.com ([10.18.126.83])
- by orsmga002.jf.intel.com with ESMTP; 25 Aug 2023 08:38:39 -0700
-Received: from fmsmsx612.amr.corp.intel.com (10.18.126.92) by
- fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.27; Fri, 25 Aug 2023 08:38:38 -0700
-Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
- fmsmsx612.amr.corp.intel.com (10.18.126.92) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.27; Fri, 25 Aug 2023 08:38:38 -0700
-Received: from fmsedg602.ED.cps.intel.com (10.1.192.136) by
- fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.27 via Frontend Transport; Fri, 25 Aug 2023 08:38:38 -0700
-Received: from NAM11-CO1-obe.outbound.protection.outlook.com (104.47.56.169)
- by edgegateway.intel.com (192.55.55.71) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.27; Fri, 25 Aug 2023 08:38:38 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=OKDJH8lIjuNw/ahk6iowjtRCFTXNZpfkJLUeX1ExWBLqd2658tjFqdJ0lKY6WTRUsrDmO06KnqGUNe4rIvSqr3mmnKpgvdlXVayvMvBMOszbac2cqGzQZqkpgtX13EnfqNVeaT3P0/RGdWt8K8Vd8ikmTvac+oI4MHBeLC68vmBPOv4z+k//XFCG3rkLuxMyvBH1rZwpt4TFS7VPEVfbPOq8R6qZBfZs+HRgMU0yCMtSUNgrSLwhZOQyivOg+/v134INDFPjWgR/qTITeHDbqtVr0eJqPbJWXB+sOrsmSbMeKq0RyNC0ckSl6ccZEqWHgg2JUNMNMnTSqCBMlBV0VQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=0Jcb5to0tqQC/XkQR2NCv5QnEoP7Aj6soh0jqgfKpKY=;
- b=Z1VCi/itAYSZoXD4aIkd6Xvzbct8J3ZBZjRsPuNTwVYty6shrdO/vDAH3MJZhVBDDoexfd4usnEgbByz5Gqj16Z9O8IvrdSaFso5oQmq0XP28RNZWUNyUDWhfeD1A5jJvJ/xrEwPCwm7h4bVlayNiFe55pDCSVTTM5wTimAZqyYXuFUUQ54AcnUuEybgUd0neONKw4T1draT/KbgFVL0lBmESkV2tVqkXB0IjB3H8BAwEsctfgllzdxvwd0qAuw364VczapUuME/Xal86TK/gxnVwp+qEkdPZdFubLCYW6qo+ND8VWl08HmKyWKdHd6TEXrur9tSQrhNBdTgyOOqJQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from DM6PR11MB3625.namprd11.prod.outlook.com (2603:10b6:5:13a::21)
- by DS0PR11MB7624.namprd11.prod.outlook.com (2603:10b6:8:141::6) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6699.29; Fri, 25 Aug
- 2023 15:38:35 +0000
-Received: from DM6PR11MB3625.namprd11.prod.outlook.com
- ([fe80::44ff:6a5:9aa4:124a]) by DM6PR11MB3625.namprd11.prod.outlook.com
- ([fe80::44ff:6a5:9aa4:124a%7]) with mapi id 15.20.6678.031; Fri, 25 Aug 2023
- 15:38:35 +0000
-Message-ID: <db89ad83-a4e8-d622-fd65-f2046a10f8e8@intel.com>
-Date: Fri, 25 Aug 2023 17:36:52 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Content-Language: en-US
-To: Ahmed Zaki <ahmed.zaki@intel.com>
-References: <20230824122337.3300895-1-ahmed.zaki@intel.com>
- <bb334cef-1cd5-0aaf-6fe3-fd632b34d756@intel.com>
- <536c1d2d-d371-97ed-d550-26800c142274@intel.com>
- <30ae8892-3332-7fb7-273d-81f40a068175@intel.com>
- <f60f2e8a-d77d-9048-405d-9c356960eb01@intel.com>
- <a9bd1a28-34d3-1342-8811-555e9d3904d5@intel.com>
-From: Alexander Lobakin <aleksander.lobakin@intel.com>
-In-Reply-To: <a9bd1a28-34d3-1342-8811-555e9d3904d5@intel.com>
-X-ClientProxiedBy: FRYP281CA0002.DEUP281.PROD.OUTLOOK.COM (2603:10a6:d10::12)
- To DM6PR11MB3625.namprd11.prod.outlook.com
- (2603:10b6:5:13a::21)
+X-IronPort-AV: E=McAfee;i="6600,9927,10813"; a="772640758"
+X-IronPort-AV: E=Sophos;i="6.02,202,1688454000"; d="scan'208";a="772640758"
+Received: from lkp-server02.sh.intel.com (HELO daf8bb0a381d) ([10.239.97.151])
+ by orsmga001.jf.intel.com with ESMTP; 25 Aug 2023 15:22:09 -0700
+Received: from kbuild by daf8bb0a381d with local (Exim 4.96)
+ (envelope-from <lkp@intel.com>) id 1qZfBu-000445-0v;
+ Fri, 25 Aug 2023 22:22:06 +0000
+Date: Sat, 26 Aug 2023 06:21:58 +0800
+From: kernel test robot <lkp@intel.com>
+To: Pawel Chmielewski <pawel.chmielewski@intel.com>, intel-wired-lan@osuosl.org
+Message-ID: <202308260616.Sf8QzI7c-lkp@intel.com>
+References: <20230823180633.2450617-3-pawel.chmielewski@intel.com>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DM6PR11MB3625:EE_|DS0PR11MB7624:EE_
-X-MS-Office365-Filtering-Correlation-Id: 4a1f5432-6027-479d-6077-08dba5815817
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: +jOMbRY7gjTWkNv3Vg2/nywb3/QwPWMkkgR9F7YqQKDfjDeXGw4I9fOEGVPmwXG8mwLnbXHwLdzCGHgM4ECLCu0hXdjF5n6INSP4lB24FMPykhPEVlCGV4lRw8PpJdLmeD2pGiPwb2qgSmsP8KzzGu8NpjdEvwOcdYrs02JzC//GKHCo2+om6rBdpRxxfU4p/TL8QnxTwHz9NK+Vh+Bm7DqwKeLWnA9gIrIvKQKkVVWZeumHo8Vpx61KwlL2Rf8WPUDpc0OGEVq/K94EP3aODGD97azrks79CQPJh+7KSSSO/jomV+sg1HpyV/BGJWwBp6gHRjGUgMyu76UeNWPBNaHHdkQmOav/pXbPMZp07P4liPqtakJTvzES8gI3Gz4haoKc5r6kv1ujb90VAQXUMdhIRVxo7fsFLGnUZZi8x6gNng2w8NSX+suQPbk38jEAIObITWTkBVAi0LXWEdQAFJeQ/7fPyoT7OJwXUAp2Dr4Y25UGzI+YIAlfRM4Vo8RnifOjV0wqHLjQLuTtDj43vyeU0N9tiDWzV67Y3ditgLpggcE5LyliRJ4IKmTN+96P5L6KEj8eiVvaqKW/hE2JZ0WXqBnJzfkRVnLBhNYH2f8NmcdXGeYKkCJffDJcq7lFukkTzgdh7K5JQIkb40aWyA==
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:DM6PR11MB3625.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230031)(136003)(396003)(346002)(366004)(39860400002)(376002)(1800799009)(451199024)(186009)(83380400001)(6512007)(478600001)(26005)(2616005)(5660300002)(31686004)(2906002)(8676002)(8936002)(6862004)(4326008)(66899024)(82960400001)(38100700002)(6636002)(66556008)(66946007)(66476007)(37006003)(86362001)(41300700001)(31696002)(53546011)(6486002)(36756003)(6666004)(316002)(6506007)(45980500001)(43740500002);
- DIR:OUT; SFP:1102; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?c282OHJLaERxRHJhTUlxVFg3Tk82ZlkxbE0vRmNUZjVUWWs5dXJmZDV4NDBX?=
- =?utf-8?B?Ti90Um1IWFM2UlFydjdZemlEQjJoWHB3S2JucUpZT0w0Mlhqc0N4S1VFV2VR?=
- =?utf-8?B?c2R2am81cUsxV0JqRTI0dlJOZFpGd2N0YU1ZRGo3MDdvSGlWQWYxVUZjcmk4?=
- =?utf-8?B?NHpFUnBYTE9pN3hCRjVlVmFHajAzdWl2QkJPMk0yenRHRi82UmJIaTdrZnFG?=
- =?utf-8?B?ampmUXJmc3VMMjEvSlJDU1IyNTF4UTRvU3Zyd2tIZnZkUmYwMi9LMzB0NFVJ?=
- =?utf-8?B?aHBCU2pZdWpjRjBOb2NyR0g3cU5iT1Nsa0dZNHMycy9rYWt4UXpHSCtvR0w4?=
- =?utf-8?B?T0tDNXFvMVNBdE0vejVPRkx4QTBmajJMTlZrZnhvc2NPdTBORGxVSE55TUhp?=
- =?utf-8?B?SUh3NlcwbkliZDYwRUUwU3JnV2dsL1NjZVk5MmUrUnpITlhSZDhDZ1RFbEZB?=
- =?utf-8?B?dG14dzFKd1N4WjVQNzFFOElRem5LdHNpSUlLeGlOeGlPWHZnU0tFSlJnNzVn?=
- =?utf-8?B?OFJlajlKcjhCWXlVSDFnVjhuYjgzQWx1YTZiYUpDQnRHOEprbHBlTCtYTk12?=
- =?utf-8?B?TFMrdW05T1JUTzMzUVg3SXRlMEVWallITW9Ga0M5ZXd4YUQrWC9QS1o5YjFB?=
- =?utf-8?B?MWtZQkl6aThSMmN3Z1g5M21xeUd1QmdKWGRwbWppaFdSQm1kRS9ublZUMWdh?=
- =?utf-8?B?L1Q1SEZYQ0JWbWZzRkkyZHJYWVYxS2hpSk16QUoxY2ZqYlhGbTU3Y2VtbGc1?=
- =?utf-8?B?K2VMTE83QWNSbTgyQXl5N3kwRWsvdmZGSElZMWRSS2FrUjdpMnl2b0R3bXJX?=
- =?utf-8?B?VFZ0dElIQ0t2OFZSUzVJa3RITGszZ0wyL2VIMlpMNlBYREJQYy92RVM5eUpr?=
- =?utf-8?B?RjR6a2dZUHgzVGZ1Y2RyRFgxVjFxYzU5YXdiWFZWdzJXQ2xyQ2lEazBsdnhG?=
- =?utf-8?B?VTFSdFdGcHJpZjFvbnp1ajVLd1lmbGlwRlRKYnpMM3laSmVoYXo3QnlMZVZ5?=
- =?utf-8?B?SDFUZHNZU0FYWjZRamY5ODNQNUE3c0REVXZKZjBkelBlN2VUOENsVEx2bVkv?=
- =?utf-8?B?YXhHT2hCWGMzU1l5THRyUlRMdWI0Uk1WdUVhWkFuVHpMRmFCYjc2Vm8rNG1j?=
- =?utf-8?B?YnJjazhkNmxQalYzQ1NGRTdRVHdtb0F1ai9WSkh5Z1RzU3JZY1ZaSEdwTkdB?=
- =?utf-8?B?UmpKZzRJYWpNdVdSLzB2TStGUXpiWmFBYWZlYzM3Z1M4NzgxbGRmTjA5NHRI?=
- =?utf-8?B?a0RUSTBKUHJZd3JUYVFWYkJiK3h2Szh0YXJJRm9QTVZVdm41cVB2WEoyMXNh?=
- =?utf-8?B?aDFxVzA3RCtmYWsxNHI0ZStjSndtZjRXU2pDUE1RWldqbGpqYzM3Z3N3WGs2?=
- =?utf-8?B?MGp2dDFhZ3lsSHJBWEVHYWMrQVRiVklwTWR0RHBDQm0yTlRGeW82Yms4YjhV?=
- =?utf-8?B?WmtEL0Z3VTRJcW81K1RKTEhycklrR3ovcU0wWXlCVlI1RWlrOHFEd211OGpF?=
- =?utf-8?B?LzdjcUphNktyN1NrMTFvU3JvU1BwOXJhK00xU3FzNkc0UTJTL1BNNG5DTUh6?=
- =?utf-8?B?OTV1VVhLaTZ1WVVSdGtuTnVjUnZNVEdjdmlNVHFhU3pSOGZpOUdFK0dnTUtE?=
- =?utf-8?B?WmpIYjNVODQyRHp0b1J2U3pPOGlmeEJEOUlPV3ByNGpOVFhDb0xqUzJ2TGhQ?=
- =?utf-8?B?T3NBTEV1b0Z5a2orWnFWS01ZRUZrcVgrVHJVVVdPZmJqdVBZOTFLR2pxVWFP?=
- =?utf-8?B?WmFiVkU4MUtiQys3NEVOVnRFNXpkZSs5Y0Y2bFVtbVpWcVpoRWUzaGJWTVNl?=
- =?utf-8?B?dGlOeWxUZDRLZjJFSGJZZmpVcjdMclY3RWJHMHpUVW95d1o3Zmk0djV1VTFy?=
- =?utf-8?B?bmpDekhGdmkwTVF1SmEycHFyNW1tSmQyamlLVXlSa0c2TWJkMzIzMVd4LzRG?=
- =?utf-8?B?cXZOWlYvOGJTK2hoZEVRbWhiaTdoUGNFMExkT1p1VHJZMW1BUEdqRVpjS01t?=
- =?utf-8?B?dWp0Zmk1aUFXNzUrSEk4cEwvK09CS0tQYmcvNUxpWmVsRXAwbHdnVC94YWQz?=
- =?utf-8?B?ZXZJZmJiaUUrRWVhclJ5RUN2a0hNTUxYVDF3UW1oNVlLN2pZZ05NVm91b0No?=
- =?utf-8?B?NFlhYzRBWWJhRzZieUhOaUUzZnFJWkJnWDZIVWlOZDZjSWsxMEs5M204aDR0?=
- =?utf-8?Q?5H9cm6pVB1TZtCfHiT0FMio=3D?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: 4a1f5432-6027-479d-6077-08dba5815817
-X-MS-Exchange-CrossTenant-AuthSource: DM6PR11MB3625.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 25 Aug 2023 15:38:35.2901 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 2TICi+AbAr4KcXjiDD4xZmodNIhgkhBEraaUmKUXbq8CgX/HGwrhcjUliI7m4vAIbN/sShiZ+Qoywhf/LXIHS7pPOzuYuR4hoIxucox7ATI=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS0PR11MB7624
-X-OriginatorOrg: intel.com
+Content-Disposition: inline
+In-Reply-To: <20230823180633.2450617-3-pawel.chmielewski@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1692977931; x=1724513931;
- h=message-id:date:subject:to:cc:references:from:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=dMON6xwdyeMLQm67BvIRWq0/3TRpxW07jBDrANc72IQ=;
- b=SWTk2EoGikzq7+4x62h8aLbpK40K3yQm9WlIHcdDUxbAoELJABOHaKpo
- hHmd8vdE3WbI3gSJt/L6XVGm2AJE2BQCdN6d8faIQW6fsCu49Z8Z2CYjr
- 460l79/tsMCYu8usaoxe9091Pz9jVdyKJGcDTPdiYkGgAfIobTD2uWE8/
- JBdosRKLy/L45GbfBvrB7suzwh/O/xrZSkzGEzbdz5iFRYIVXWNtv5bT3
- AwbyW2ZYVpLvwPSZJ9jIYsDWQqDCebJUqkvS9ks0Ltm/SYmY2rCKsaGZ5
- 9bGmVZzJfdZItPB8mC6o1Cgl1OMCDuUHxmROQHw51CxzE4Wy0aAKAU4WI
- g==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ t=1693002210; x=1724538210;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:in-reply-to;
+ bh=JBnc0QG+1aFQQroftxh2ThC8FXzf6nI5IRhrwD0d8tY=;
+ b=lEmdwXiPKXFxri5NySFuLNRSb3CK1qzyx36loHRHqTRhRQVD2mNqMIGB
+ E+owAAWnR9gV3lZNYNZCTfyXw7dUK40DRGkcIIXjmEDCzqM0VJLmudqiD
+ oi7Bfr0fwHIclOODBG/kfKyj3630AnQ0zDbgg3PkjEoTwjIO+1Aw9ODZc
+ Wozg4wcrpCNOnPmuizwguHcEAeOiQABk6Btsq/+mxJ3ocNtuneb+4ETf2
+ /Fs+jcI2ch4ASFrwd8qscPEJ+28Udp9MTmMqFpnpyTOruIdfezGkMBGsj
+ XV+EkQtRNWFN2/MCuikyY0V5t6lm5rAaYsCA8D91P2wT2loEXvUReAzeC
+ w==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=SWTk2EoG
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next] iavf: remove "inline"
- functions from iavf_txrx.c
+ header.a=rsa-sha256 header.s=Intel header.b=lEmdwXiP
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v3 2/8] ethtool: Add forced
+ speed to supported link modes maps
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -200,51 +97,118 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: intel-wired-lan@lists.osuosl.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: andrew@lunn.ch, netdev@vger.kernel.org, aelior@marvell.com,
+ manishc@marvell.com, oe-kbuild-all@lists.linux.dev
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-RnJvbTogQWhtZWQgWmFraSA8YWhtZWQuemFraUBpbnRlbC5jb20+CkRhdGU6IEZyaSwgMjUgQXVn
-IDIwMjMgMDk6MzE6MzggLTA2MDAKCj4gCj4gT24gMjAyMy0wOC0yNSAwNTozNiwgQWxleGFuZGVy
-IExvYmFraW4gd3JvdGU6Cj4+IEZyb206IEFobWVkIFpha2kgPGFobWVkLnpha2lAaW50ZWwuY29t
-Pgo+PiBEYXRlOiBUaHUsIDI0IEF1ZyAyMDIzIDE0OjA4OjA1IC0wNjAwCj4+Cj4+PiBPbiAyMDIz
-LTA4LTI0IDA5OjQ2LCBBaG1lZCBaYWtpIHdyb3RlOgo+Pj4+IE9uIDIwMjMtMDgtMjQgMDg6NDks
-IEFsZXhhbmRlciBMb2Jha2luIHdyb3RlOgo+Pj4+PiBGcm9tOiBBaG1lZCBaYWtpIDxhaG1lZC56
-YWtpQGludGVsLmNvbT4KPj4+Pj4gRGF0ZTogVGh1LCAyNCBBdWcgMjAyMyAwNjoyMzozNyAtMDYw
-MAo+Pj4+Pgo+Pj4+Pj4gRnJvbTogSmFjb2IgS2VsbGVyIDxqYWNvYi5lLmtlbGxlckBpbnRlbC5j
-b20+Cj4+Pj4+Pgo+Pj4+Pj4gVGhlIGlBVkYgdHhyeCBob3RwYXRoIGNvZGUgaGFzIHNldmVyYWwg
-ZnVuY3Rpb25zIHRoYXQgYXJlIG1hcmtlZCBhcwo+Pj4+Pj4gInN0YXRpYyBpbmxpbmUiIGluIHRo
-ZSBpYXZmX3R4cnguYyBmaWxlLiBUaGlzIHVzZSBvZiBpbmxpbmUgaXMKPj4+Pj4+IGZyb3duZWQK
-Pj4+Pj4+IHVwb24gaW4gdGhlIG5ldGRldiBjb21tdW5pdHkgYW5kIGV4cGxpY2l0bHkgbWFya2Vk
-IGFzIHNvbWV0aGluZyB0bwo+Pj4+Pj4gYXZvaWQKPj4+Pj4+IGluIHRoZSBMaW51eCBjb2Rpbmct
-c3R5bGUgZG9jdW1lbnQgKHNlY3Rpb24gMTUpLgo+Pj4+Pj4KPj4+Pj4+IEV2ZW4gdGhvdWdoIHRo
-ZXNlIGZ1bmN0aW9ucyBhcmUgb25seSB1c2VkIG9uY2UsIGl0IGlzIGV4cGVjdGVkCj4+Pj4+PiB0
-aGF0IEdDQwo+Pj4+Pj4gaXMgc21hcnQgZW5vdWdoIHRvIGRlY2lkZSB3aGVuIHRvIHBlcmZvcm0g
-ZnVuY3Rpb24gaW5saW5pbmcgd2hlcmUKPj4+Pj4+IGFwcHJvcHJpYXRlIHdpdGhvdXQgdGhlICJo
-aW50Ii4KPj4+Pj4gVGhlIGNvbXBpbGVycyBzb21ldGltZXMgZG8gdW5leHBlY3RlZCB0aGluZ3Mu
-IEkgd291bGRuJ3QgYmxpbmRseSBob3BlLgo+Pj4+PiBUaGlzIG1lYW5zLCBJJ2QgbGlrZSB0byBo
-YXZlIHNvbWUgb2JqZGlmZiBvciBhdCBsZWFzdCBibG9hdC1vLW1ldGVyCj4+Pj4+IG91dHB1dCBo
-ZXJlIHRvIHByb3ZlIHRoaXMgY29tbWl0IGRvZXNuJ3QgaHVydC4KPj4+Pj4gSWYgdGhlcmUgYXJl
-IGNoYW5nZXMgaW4gdGhlIG9iamVjdCBjb2RlIC0tIHRoZW4gc29tZSBwZXJmIHRlc3RzIGFzCj4+
-Pj4+IHdlbGwuCj4+Pj4gT0ssIEkgd2lsbCBhZGQgYSBibG9hdC1vLW1ldGVyIGluIHYyCj4+PiBi
-bG9hdC1vLW1ldGVyIGlzIHNob3dpbmcgemVybyBkaWZmOgo+Pj4KPj4+IGFkZC9yZW1vdmU6IDAv
-MCBncm93L3NocmluazogMC8wIHVwL2Rvd246IDAvMCAoMCkKPj4+IEZ1bmN0aW9uwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgIG9sZMKgwqDCoMKgIG5ld8KgwqAgZGVsdGEKPj4+IFRvdGFsOiBCZWZvcmU9MTIxNjYs
-IEFmdGVyPTEyMTY2LCBjaGcgKzAuMDAlCj4+IEFjay4gQWRkIGl0IHRvIHRoZSBjb21taXQgbWVz
-c2FnZSBwbGVhc2UuIEJ1dCBiZWZvcmUgdGhhdCwgcGxlYXNlIGNoZWNrCj4+IHRoZSBzYW1lIHdp
-dGggQ2xhbmcuIEFuZCBkb24ndCBmb3JnZXQgdGhhdCB3ZSBoYXZlCj4+IENDX09QVElNSVpFX0ZP
-Ul9QRVJGT1JNQU5DRSBhbmQgQ0NfT1BUSU1JWkVfRk9SX1NJWkUgYW5kIGlkZWFsbHkgSSdkCj4+
-IGxpa2UgeW91IHRvIHRlc3QgYm90aCBHQ0MgYW5kIENsYW5nIG9uIGJvdGggb2YgdGhlbSwgc2lu
-Y2UgdGhleSBwYXNzCj4+IGRpZmZlcmVudCBgLU94YCBmbGFncyBhbmQgcmVzdWx0cyBtYXkgc29t
-ZXRpbWVzIHZhcnkgYSBsb3QgKGAtT3NgCj4+IGlubGluZXMgc3R1ZmYgbGVzcyBhZ2dyZXNzaXZl
-bHkpLgo+IAo+IEkgYWxyZWFkeSBhZGRlZCBhIGNvbW1lbnQgaW4gdjIgYWJvdXQgdGhlIGJsb2F0
-LW8tbWV0ZXIgcmVzdWx0LiBJIGhhZCBteQo+IHN5c3RlbSBvbiAiLU8yIiAoYWJvdmUgcmVzdWx0
-cyksIGNoYW5nZWQgdGhhdCB0byAiT3MiLCByZWJ1aWx0IG1vZHVsZXMKPiBhbmQgSSBnb3Qgc2Ft
-ZSBaZXJvIGRpZmYgcmVzdWx0IChleHBlY3RlZCBzaW5jZSBub3QgbXVjaCBpbmxpbmluZykuCgpB
-Y2ssIHRoYW5rcy4KCj4gCj4gVGhhbmtzLAo+IAo+IEFobWVkCj4gCgpPbGVrCl9fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkludGVsLXdpcmVkLWxhbiBtYWls
-aW5nIGxpc3QKSW50ZWwtd2lyZWQtbGFuQG9zdW9zbC5vcmcKaHR0cHM6Ly9saXN0cy5vc3Vvc2wu
-b3JnL21haWxtYW4vbGlzdGluZm8vaW50ZWwtd2lyZWQtbGFuCg==
+Hi Pawel,
+
+kernel test robot noticed the following build errors:
+
+[auto build test ERROR on tnguy-next-queue/dev-queue]
+
+url:    https://github.com/intel-lab-lkp/linux/commits/Pawel-Chmielewski/ice-Add-E830-device-IDs-MAC-type-and-registers/20230824-021235
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git dev-queue
+patch link:    https://lore.kernel.org/r/20230823180633.2450617-3-pawel.chmielewski%40intel.com
+patch subject: [Intel-wired-lan] [PATCH iwl-next v3 2/8] ethtool: Add forced speed to supported link modes maps
+config: x86_64-allyesconfig (https://download.01.org/0day-ci/archive/20230826/202308260616.Sf8QzI7c-lkp@intel.com/config)
+compiler: gcc-12 (Debian 12.2.0-14) 12.2.0
+reproduce: (https://download.01.org/0day-ci/archive/20230826/202308260616.Sf8QzI7c-lkp@intel.com/reproduce)
+
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202308260616.Sf8QzI7c-lkp@intel.com/
+
+All errors (new ones prefixed by >>):
+
+   drivers/net/ethernet/qlogic/qede/qede_ethtool.c: In function 'qede_set_link_ksettings':
+>> drivers/net/ethernet/qlogic/qede/qede_ethtool.c:584:29: error: assignment to 'const struct qede_forced_speed_map *' from incompatible pointer type 'struct ethtool_forced_speed_map *' [-Werror=incompatible-pointer-types]
+     584 |                         map = qede_forced_speed_maps + i;
+         |                             ^
+>> drivers/net/ethernet/qlogic/qede/qede_ethtool.c:586:47: error: invalid use of undefined type 'const struct qede_forced_speed_map'
+     586 |                         if (base->speed != map->speed ||
+         |                                               ^~
+   drivers/net/ethernet/qlogic/qede/qede_ethtool.c:588:53: error: invalid use of undefined type 'const struct qede_forced_speed_map'
+     588 |                                                  map->caps))
+         |                                                     ^~
+   drivers/net/ethernet/qlogic/qede/qede_ethtool.c:592:70: error: invalid use of undefined type 'const struct qede_forced_speed_map'
+     592 |                                      current_link.supported_caps, map->caps);
+         |                                                                      ^~
+   cc1: some warnings being treated as errors
+
+
+vim +584 drivers/net/ethernet/qlogic/qede/qede_ethtool.c
+
+133fac0eedc355 Sudarsana Kalluru            2015-10-26  546  
+054c67d1c82afd Sudarsana Reddy Kalluru      2016-08-09  547  static int qede_set_link_ksettings(struct net_device *dev,
+054c67d1c82afd Sudarsana Reddy Kalluru      2016-08-09  548  				   const struct ethtool_link_ksettings *cmd)
+133fac0eedc355 Sudarsana Kalluru            2015-10-26  549  {
+054c67d1c82afd Sudarsana Reddy Kalluru      2016-08-09  550  	const struct ethtool_link_settings *base = &cmd->base;
+133fac0eedc355 Sudarsana Kalluru            2015-10-26  551  	struct qede_dev *edev = netdev_priv(dev);
+1d4e4ecccb1144 Alexander Lobakin            2020-07-20  552  	const struct qede_forced_speed_map *map;
+133fac0eedc355 Sudarsana Kalluru            2015-10-26  553  	struct qed_link_output current_link;
+133fac0eedc355 Sudarsana Kalluru            2015-10-26  554  	struct qed_link_params params;
+1d4e4ecccb1144 Alexander Lobakin            2020-07-20  555  	u32 i;
+133fac0eedc355 Sudarsana Kalluru            2015-10-26  556  
+fe7cd2bfdac4d8 Yuval Mintz                  2016-04-22  557  	if (!edev->ops || !edev->ops->common->can_link_change(edev->cdev)) {
+054c67d1c82afd Sudarsana Reddy Kalluru      2016-08-09  558  		DP_INFO(edev, "Link settings are not allowed to be changed\n");
+133fac0eedc355 Sudarsana Kalluru            2015-10-26  559  		return -EOPNOTSUPP;
+133fac0eedc355 Sudarsana Kalluru            2015-10-26  560  	}
+133fac0eedc355 Sudarsana Kalluru            2015-10-26  561  	memset(&current_link, 0, sizeof(current_link));
+133fac0eedc355 Sudarsana Kalluru            2015-10-26  562  	memset(&params, 0, sizeof(params));
+133fac0eedc355 Sudarsana Kalluru            2015-10-26  563  	edev->ops->common->get_link(edev->cdev, &current_link);
+133fac0eedc355 Sudarsana Kalluru            2015-10-26  564  
+133fac0eedc355 Sudarsana Kalluru            2015-10-26  565  	params.override_flags |= QED_LINK_OVERRIDE_SPEED_ADV_SPEEDS;
+133fac0eedc355 Sudarsana Kalluru            2015-10-26  566  	params.override_flags |= QED_LINK_OVERRIDE_SPEED_AUTONEG;
+bdb5d8ec47611c Alexander Lobakin            2020-07-20  567  
+054c67d1c82afd Sudarsana Reddy Kalluru      2016-08-09  568  	if (base->autoneg == AUTONEG_ENABLE) {
+bdb5d8ec47611c Alexander Lobakin            2020-07-20  569  		if (!phylink_test(current_link.supported_caps, Autoneg)) {
+161adb046b9119 sudarsana.kalluru@cavium.com 2017-05-04  570  			DP_INFO(edev, "Auto negotiation is not supported\n");
+161adb046b9119 sudarsana.kalluru@cavium.com 2017-05-04  571  			return -EOPNOTSUPP;
+161adb046b9119 sudarsana.kalluru@cavium.com 2017-05-04  572  		}
+161adb046b9119 sudarsana.kalluru@cavium.com 2017-05-04  573  
+133fac0eedc355 Sudarsana Kalluru            2015-10-26  574  		params.autoneg = true;
+133fac0eedc355 Sudarsana Kalluru            2015-10-26  575  		params.forced_speed = 0;
+bdb5d8ec47611c Alexander Lobakin            2020-07-20  576  
+bdb5d8ec47611c Alexander Lobakin            2020-07-20  577  		linkmode_copy(params.adv_speeds, cmd->link_modes.advertising);
+133fac0eedc355 Sudarsana Kalluru            2015-10-26  578  	} else {		/* forced speed */
+133fac0eedc355 Sudarsana Kalluru            2015-10-26  579  		params.override_flags |= QED_LINK_OVERRIDE_SPEED_FORCED_SPEED;
+133fac0eedc355 Sudarsana Kalluru            2015-10-26  580  		params.autoneg = false;
+054c67d1c82afd Sudarsana Reddy Kalluru      2016-08-09  581  		params.forced_speed = base->speed;
+bdb5d8ec47611c Alexander Lobakin            2020-07-20  582  
+1d4e4ecccb1144 Alexander Lobakin            2020-07-20  583  		for (i = 0; i < ARRAY_SIZE(qede_forced_speed_maps); i++) {
+1d4e4ecccb1144 Alexander Lobakin            2020-07-20 @584  			map = qede_forced_speed_maps + i;
+bdb5d8ec47611c Alexander Lobakin            2020-07-20  585  
+1d4e4ecccb1144 Alexander Lobakin            2020-07-20 @586  			if (base->speed != map->speed ||
+1d4e4ecccb1144 Alexander Lobakin            2020-07-20  587  			    !linkmode_intersects(current_link.supported_caps,
+1d4e4ecccb1144 Alexander Lobakin            2020-07-20  588  						 map->caps))
+1d4e4ecccb1144 Alexander Lobakin            2020-07-20  589  				continue;
+bdb5d8ec47611c Alexander Lobakin            2020-07-20  590  
+1d4e4ecccb1144 Alexander Lobakin            2020-07-20  591  			linkmode_and(params.adv_speeds,
+1d4e4ecccb1144 Alexander Lobakin            2020-07-20  592  				     current_link.supported_caps, map->caps);
+1d4e4ecccb1144 Alexander Lobakin            2020-07-20  593  			goto set_link;
+bdb5d8ec47611c Alexander Lobakin            2020-07-20  594  		}
+bdb5d8ec47611c Alexander Lobakin            2020-07-20  595  
+1d4e4ecccb1144 Alexander Lobakin            2020-07-20  596  		DP_INFO(edev, "Unsupported speed %u\n", base->speed);
+1d4e4ecccb1144 Alexander Lobakin            2020-07-20  597  		return -EINVAL;
+133fac0eedc355 Sudarsana Kalluru            2015-10-26  598  	}
+133fac0eedc355 Sudarsana Kalluru            2015-10-26  599  
+1d4e4ecccb1144 Alexander Lobakin            2020-07-20  600  set_link:
+133fac0eedc355 Sudarsana Kalluru            2015-10-26  601  	params.link_up = true;
+133fac0eedc355 Sudarsana Kalluru            2015-10-26  602  	edev->ops->common->set_link(edev->cdev, &params);
+133fac0eedc355 Sudarsana Kalluru            2015-10-26  603  
+133fac0eedc355 Sudarsana Kalluru            2015-10-26  604  	return 0;
+133fac0eedc355 Sudarsana Kalluru            2015-10-26  605  }
+133fac0eedc355 Sudarsana Kalluru            2015-10-26  606  
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
