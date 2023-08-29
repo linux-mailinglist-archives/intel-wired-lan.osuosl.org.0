@@ -2,64 +2,64 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2DB4078C26E
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 29 Aug 2023 12:41:38 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 59C1478C270
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 29 Aug 2023 12:41:42 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id AE0AF60AE1;
-	Tue, 29 Aug 2023 10:41:36 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org AE0AF60AE1
+	by smtp3.osuosl.org (Postfix) with ESMTP id DAA0F60F5F;
+	Tue, 29 Aug 2023 10:41:40 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org DAA0F60F5F
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1693305696;
-	bh=q7/yP2Cmt7gFRtM9WMSFxgz4frI9G7/2csLSGWbae5E=;
+	s=default; t=1693305700;
+	bh=pDqJZ64r2RbRIvzQz45+1lx7VmJiHyydNxkVqHVCPUY=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=n9nSwBpwffoc1MmSC8KLraydKOlwBVXVOt3IqZwb7ZowLh9fX4dW2tOXd4WLG4kIu
-	 hyTfqAcQGv1X/LW02ZZJMyCuc4qZlo4eaoUp20g1i4TIO0sl4+WPqYi2JERMPNWuet
-	 uHZgUgbOmTtdDiN58EmLOMDMNI6z/rwUAkRv2x2yMehBkBoaOvF7xNXkfZ3GUHHSKX
-	 eD24Ph0AiK8XZ1XNgIeOutny/UgxREeCZBl3FDyiaki/akt9YqY+LF8DHyurpaSDSR
-	 rcG89sFPpvU6CZQFYsAOvbq/LhaZj+BKfClZHV9dOEI0ScW2F35dPL7w/tvAQ2Ltxv
-	 vLX/dMlpO2DlQ==
+	b=DNxl3WUq66sWicj9NcduXlkVyaOlwuypXNBPrqmTRS1ZY84AITOPkxx2kfwVwHvTf
+	 KWoYr7NCFDny0MJH9c+RZdtn/ccvUznKkxjUfOAcihyqxS17maq6W9Ha2Vr5PK6TJ1
+	 mynsuXk7y17MRxhOuxZ9CjYa8TI8Pqmf+9B+D/48JGoei8Y9HLEOxKaDX998hG+GDk
+	 hn6pXxByGyxxDm3P2ue3S6DQqteBUnyDm5tCGuTMnPq6KVk3VGoq3090GSZlixsUt6
+	 L4PWPbY0nyUdrclB4v9KiiuLmQwN2OV/4myfxooXZclAkdWxQCijbxSm9q1CWeG/Qu
+	 Vk5nxq1hhHw8w==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id gG--45a_QGs9; Tue, 29 Aug 2023 10:41:36 +0000 (UTC)
+	with ESMTP id xe8YFBoda17Z; Tue, 29 Aug 2023 10:41:40 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id A056060B35;
-	Tue, 29 Aug 2023 10:41:35 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A056060B35
+	by smtp3.osuosl.org (Postfix) with ESMTP id A97FC60B35;
+	Tue, 29 Aug 2023 10:41:39 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A97FC60B35
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 6E7281BF2CF
- for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Aug 2023 10:41:09 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 3EE8E1BF2CF
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Aug 2023 10:41:11 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 40EEE81501
- for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Aug 2023 10:41:09 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 40EEE81501
+ by smtp1.osuosl.org (Postfix) with ESMTP id 16ED281501
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Aug 2023 10:41:11 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 16ED281501
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id W6CvKNyvfTFO for <intel-wired-lan@lists.osuosl.org>;
- Tue, 29 Aug 2023 10:41:08 +0000 (UTC)
+ with ESMTP id G3OeHn4sGiOm for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 29 Aug 2023 10:41:10 +0000 (UTC)
 Received: from mgamail.intel.com (mgamail.intel.com [192.55.52.43])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 7C5E781419
- for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Aug 2023 10:41:08 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 7C5E781419
-X-IronPort-AV: E=McAfee;i="6600,9927,10816"; a="461696911"
-X-IronPort-AV: E=Sophos;i="6.02,210,1688454000"; d="scan'208";a="461696911"
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 5D4C281419
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Aug 2023 10:41:10 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 5D4C281419
+X-IronPort-AV: E=McAfee;i="6600,9927,10816"; a="461696919"
+X-IronPort-AV: E=Sophos;i="6.02,210,1688454000"; d="scan'208";a="461696919"
 Received: from fmsmga002.fm.intel.com ([10.253.24.26])
  by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 29 Aug 2023 03:41:08 -0700
+ 29 Aug 2023 03:41:10 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10816"; a="853229827"
-X-IronPort-AV: E=Sophos;i="6.02,210,1688454000"; d="scan'208";a="853229827"
+X-IronPort-AV: E=McAfee;i="6600,9927,10816"; a="853229837"
+X-IronPort-AV: E=Sophos;i="6.02,210,1688454000"; d="scan'208";a="853229837"
 Received: from kkolacin-desk1.igk.intel.com ([10.102.102.152])
- by fmsmga002.fm.intel.com with ESMTP; 29 Aug 2023 03:41:06 -0700
+ by fmsmga002.fm.intel.com with ESMTP; 29 Aug 2023 03:41:08 -0700
 From: Karol Kolacinski <karol.kolacinski@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Tue, 29 Aug 2023 12:40:38 +0200
-Message-Id: <20230829104041.64131-9-karol.kolacinski@intel.com>
+Date: Tue, 29 Aug 2023 12:40:39 +0200
+Message-Id: <20230829104041.64131-10-karol.kolacinski@intel.com>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230829104041.64131-1-karol.kolacinski@intel.com>
 References: <20230829104041.64131-1-karol.kolacinski@intel.com>
@@ -68,22 +68,22 @@ Organization: Intel Technology Poland sp. z o.o. - ul. Slowackiego 173,
  80-298 Gdansk - KRS 101882 - NIP 957-07-52-316
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1693305668; x=1724841668;
+ t=1693305670; x=1724841670;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=bXO8V1ULgZycDSoU0VymmEVwhyU6WCRUOeeK4jScNUk=;
- b=BjD3S9dvG/jh9C0mpPipumqB7ST4DHrY3V5ADHmyo/ZBCw2zfGvOLoe4
- Z3fAw8ZDJ+8vvBTUTU9IPHB/JBlQ1BA+a9nYGHNSpbuYgn4vRLA5M8ucr
- Pk+RhhlBF5aWmw2+wvq/vaoNM7/ZQZ00Y/bKiUX71v7w5VmCPiGgRap6R
- PYqIKtmcSTtVmi9j3oe1AVbX0lKyk3T3ydc5WV+Eh/uUzWNgiIpymzmsS
- M2wDzPt7nHUwYqRkF0WVsYGfZ1czIWzsA/iHsteDD4PH+do2DFp5EnqI4
- 69qQoV211plhqFERMry1LQyvnPigxIv55tvoX3y/xcU8z/+LhvEUb3u47
- A==;
+ bh=ZuOf/Zu3k2qwD+EABgE2Vqa+fbd80dxj8iH2we8IU/A=;
+ b=fpRYii5kiLKSYL3QQ/NyvXZ/KRTf2gzrG5ahwh3y6zz3oxYqqm5UDsBw
+ Ee7UzcbcvDzHbbtBcX2r3Gy/9C1sLmpNJeKJIklDvsHaZsZTLJ/BhGNjc
+ q3bx8h944wNQ1ZnX4SVckD0e/flV1lI8IlDJ83ln8E5Z4lylepqQ+Fq+M
+ Fa5KhNEd1q1RTc6HejS56BnYVno8sWKGmteox3lQuq0JTQjpHelRltCcJ
+ 7qKqqugoCDecfWwWW1pXLxErYJOJpZteqEzAsYhpgZja3Y3cuOkej0nCe
+ 9NU5iyaGVlZSs9ESyeWRdcOnwZttKGaWiIQ0Zfia0ispopMQEINYfGzpY
+ w==;
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=BjD3S9dv
-Subject: [Intel-wired-lan] [PATCH v4 iwl-next 08/11] ice: remove ptp_tx ring
- parameter flag
+ header.a=rsa-sha256 header.s=Intel header.b=fpRYii5k
+Subject: [Intel-wired-lan] [PATCH v4 iwl-next 09/11] ice: modify
+ tstamp_config only during TS mode set
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -105,83 +105,82 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 From: Jacob Keller <jacob.e.keller@intel.com>
 
-Before performing a Tx timestamp in ice_stamp(), the driver checks
-a ptp_tx ring variable to see if timestamping is enabled on that ring.
-This value is set for all rings whenever userspace configures Tx
-timestamping.
+The driver stores the current Tx and Rx timestamping configuration in
+pf->ptp.tstamp_config. This structure is supposed to represent the
+currently requested configuration from userspace that we've applied to
+the device.
 
-Ostensibly this was done to avoid wasting cycles checking other fields
-when timestamping has not been enabled. However, for Tx timestamps we
-already get an individual per-SKB flag indicating whether userspace
-wants to request a timestamp on that packet. We do not gain much by also
-having a separate flag to check for whether timestamping was enabled.
+The values of this structure are modified within the low level
+ice_set_tx_tstamp() and ice_set_rx_tstamp() functions. These functions
+*are* called by ice_ptp_set_timestamp_mode. However, they are also
+called during the driver reset and rebuild flow. Because of this, the
+driver overwrites user configuration during reset, preventing itself
+from being able to properly restore the configuration after a reset.
 
-In fact, the driver currently fails to restore the field after a PF
-reset. Because of this, if a PF reset occurs, timestamps will be
-disabled.
+Instead, stop modifying this saved configuration state outside of
+ice_ptp_set_timestamp_mode. Instead, set the values directly within this
+function. This avoids losing the configuration data.
 
-Since this flag doesn't add value in the hotpath, remove it and always
-provide a timestamp if the SKB flag has been set.
+A following change will refactor the rebuild flow to properly restore
+the configuration after a PF reset.
 
 Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
 Signed-off-by: Karol Kolacinski <karol.kolacinski@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_ptp.c  | 14 --------------
- drivers/net/ethernet/intel/ice/ice_txrx.c |  3 ---
- drivers/net/ethernet/intel/ice/ice_txrx.h |  1 -
- 3 files changed, 18 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_ptp.c | 9 ++++-----
+ 1 file changed, 4 insertions(+), 5 deletions(-)
 
 diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.c b/drivers/net/ethernet/intel/ice/ice_ptp.c
-index 12824da9f3da..f2b315b18cbd 100644
+index f2b315b18cbd..085f415e98ca 100644
 --- a/drivers/net/ethernet/intel/ice/ice_ptp.c
 +++ b/drivers/net/ethernet/intel/ice/ice_ptp.c
-@@ -305,20 +305,6 @@ static void ice_ptp_cfg_tx_interrupt(struct ice_pf *pf, bool on)
-  */
- static void ice_set_tx_tstamp(struct ice_pf *pf, bool on)
+@@ -307,8 +307,6 @@ static void ice_set_tx_tstamp(struct ice_pf *pf, bool on)
  {
--	struct ice_vsi *vsi;
--	u16 i;
--
--	vsi = ice_get_main_vsi(pf);
--	if (!vsi)
--		return;
--
--	/* Set the timestamp enable flag for all the Tx rings */
--	ice_for_each_txq(vsi, i) {
--		if (!vsi->tx_rings[i])
--			continue;
--		vsi->tx_rings[i]->ptp_tx = on;
--	}
--
  	if (pf->ptp.tx_interrupt_mode == ICE_PTP_TX_INTERRUPT_SELF)
  		ice_ptp_cfg_tx_interrupt(pf, on);
- 
-diff --git a/drivers/net/ethernet/intel/ice/ice_txrx.c b/drivers/net/ethernet/intel/ice/ice_txrx.c
-index 52d0a126eb61..9e97ea863068 100644
---- a/drivers/net/ethernet/intel/ice/ice_txrx.c
-+++ b/drivers/net/ethernet/intel/ice/ice_txrx.c
-@@ -2306,9 +2306,6 @@ ice_tstamp(struct ice_tx_ring *tx_ring, struct sk_buff *skb,
- 	if (likely(!(skb_shinfo(skb)->tx_flags & SKBTX_HW_TSTAMP)))
- 		return;
- 
--	if (!tx_ring->ptp_tx)
--		return;
 -
- 	/* Tx timestamps cannot be sampled when doing TSO */
- 	if (first->tx_flags & ICE_TX_FLAGS_TSO)
- 		return;
-diff --git a/drivers/net/ethernet/intel/ice/ice_txrx.h b/drivers/net/ethernet/intel/ice/ice_txrx.h
-index 166413fc33f4..daf7b9dbb143 100644
---- a/drivers/net/ethernet/intel/ice/ice_txrx.h
-+++ b/drivers/net/ethernet/intel/ice/ice_txrx.h
-@@ -380,7 +380,6 @@ struct ice_tx_ring {
- #define ICE_TX_FLAGS_RING_VLAN_L2TAG2	BIT(2)
- 	u8 flags;
- 	u8 dcb_tc;			/* Traffic class of ring */
--	u8 ptp_tx;
- } ____cacheline_internodealigned_in_smp;
+-	pf->ptp.tstamp_config.tx_type = on ? HWTSTAMP_TX_ON : HWTSTAMP_TX_OFF;
+ }
  
- static inline bool ice_ring_uses_build_skb(struct ice_rx_ring *ring)
+ /**
+@@ -331,9 +329,6 @@ static void ice_set_rx_tstamp(struct ice_pf *pf, bool on)
+ 			continue;
+ 		vsi->rx_rings[i]->ptp_rx = on;
+ 	}
+-
+-	pf->ptp.tstamp_config.rx_filter = on ? HWTSTAMP_FILTER_ALL :
+-					       HWTSTAMP_FILTER_NONE;
+ }
+ 
+ /**
+@@ -2054,9 +2049,11 @@ ice_ptp_set_timestamp_mode(struct ice_pf *pf, struct hwtstamp_config *config)
+ 	switch (config->tx_type) {
+ 	case HWTSTAMP_TX_OFF:
+ 		ice_set_tx_tstamp(pf, false);
++		pf->ptp.tstamp_config.tx_type = HWTSTAMP_TX_OFF;
+ 		break;
+ 	case HWTSTAMP_TX_ON:
+ 		ice_set_tx_tstamp(pf, true);
++		pf->ptp.tstamp_config.tx_type = HWTSTAMP_TX_ON;
+ 		break;
+ 	default:
+ 		return -ERANGE;
+@@ -2065,6 +2062,7 @@ ice_ptp_set_timestamp_mode(struct ice_pf *pf, struct hwtstamp_config *config)
+ 	switch (config->rx_filter) {
+ 	case HWTSTAMP_FILTER_NONE:
+ 		ice_set_rx_tstamp(pf, false);
++		pf->ptp.tstamp_config.rx_filter = HWTSTAMP_FILTER_NONE;
+ 		break;
+ 	case HWTSTAMP_FILTER_PTP_V1_L4_EVENT:
+ 	case HWTSTAMP_FILTER_PTP_V1_L4_SYNC:
+@@ -2081,6 +2079,7 @@ ice_ptp_set_timestamp_mode(struct ice_pf *pf, struct hwtstamp_config *config)
+ 	case HWTSTAMP_FILTER_NTP_ALL:
+ 	case HWTSTAMP_FILTER_ALL:
+ 		ice_set_rx_tstamp(pf, true);
++		pf->ptp.tstamp_config.rx_filter = HWTSTAMP_FILTER_ALL;
+ 		break;
+ 	default:
+ 		return -ERANGE;
 -- 
 2.39.2
 
