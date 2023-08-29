@@ -1,93 +1,91 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1B41978C27D
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 29 Aug 2023 12:43:20 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3D61778C4B9
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 29 Aug 2023 15:02:30 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 9F69D60C0E;
-	Tue, 29 Aug 2023 10:43:18 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9F69D60C0E
+	by smtp1.osuosl.org (Postfix) with ESMTP id B9FD7820DD;
+	Tue, 29 Aug 2023 13:02:28 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B9FD7820DD
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1693305798;
-	bh=hBv9V/BX5BhGO/KAYPLxjmJAPUxESqZbc0nuuZxwquI=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
+	s=default; t=1693314148;
+	bh=7KqiEBxUDEFsT+ZFT6J/1SV233XjTeLKqV6O873SdbI=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=nR3lh4sBcFLLaxthIsOzL8wTCkWkncXAHpewGyzeGyIAgZuPjkJY2tXhsu9XldQwC
-	 Mvsy3a9u10ky0q7v/0+DMQwxtbJYhEnDhNjKWSPEbNGhJb2SiQafL9s0DqOhrhya+h
-	 n+7zWx0gezaDS7M8zMYS/STdZA63prKKtvaNsu307UVlv70jGcHReJyGz78n6OpWgL
-	 O+KkG5QT8sAyV34NDzX8sJiXCiTqvClIPmuUnT221R10UkxCP4pe0pImEeRoOYDn/o
-	 szdjuyt6NE0qKueAI+a8jf/f6ExYZ8zJdYztUY+5VS5K7W6WWdN3U/gd4KpbO4dK1p
-	 BHru7wQK5MKHw==
+	b=yE8phKcIL3PhMuGSJ58Vzvl8XJ/AUlLu+NdpSExMs66FuZktD/cWmkQUa+Yro38kH
+	 MAel4UIe4rrQKpsGaUjUNZ1X6K1CymoSVogUExn1f3vw5l62POnau1IqopM693i/Yf
+	 IKcGZnTYYQIr7VgU015gsLs2531GaR9W3sLfuk4Ozcd+h4WteSgH7LTJc5OpzpSWAB
+	 IfVmd/D7OuGpjkQz2Wb09FqqLldGlgEGPSIOq13lPTcI/NH9gdz8BlHhRa6t9hts1b
+	 rUXx+mNt9bcMu/bEGy+LKafneO1vv/Qswm4LZRJPihPsUJnwEykrmjWW5UczTnyZze
+	 sVzuW1yind0+w==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id tJaDe5O74nFT; Tue, 29 Aug 2023 10:43:18 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id CeAgu2OYe6TJ; Tue, 29 Aug 2023 13:02:23 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 832FF60AE1;
-	Tue, 29 Aug 2023 10:43:17 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 832FF60AE1
+	by smtp1.osuosl.org (Postfix) with ESMTP id EBB0582077;
+	Tue, 29 Aug 2023 13:02:22 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org EBB0582077
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id A96841BF2CF
- for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Aug 2023 10:43:12 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 90E3A1BF46A
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Aug 2023 13:01:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 802BD401B4
- for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Aug 2023 10:43:12 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 802BD401B4
+ by smtp1.osuosl.org (Postfix) with ESMTP id 6F39D82035
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Aug 2023 13:01:09 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6F39D82035
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ebZeIgL9CkmK for <intel-wired-lan@lists.osuosl.org>;
- Tue, 29 Aug 2023 10:43:11 +0000 (UTC)
-Received: from mgamail.intel.com (mgamail.intel.com [192.55.52.93])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 6B170401B3
- for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Aug 2023 10:43:11 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6B170401B3
-X-IronPort-AV: E=McAfee;i="6600,9927,10816"; a="372748303"
-X-IronPort-AV: E=Sophos;i="6.02,210,1688454000"; d="scan'208";a="372748303"
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 29 Aug 2023 03:43:09 -0700
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id nu7nLeW374mq for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 29 Aug 2023 13:01:03 +0000 (UTC)
+Received: from mgamail.intel.com (mgamail.intel.com [134.134.136.65])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 76E6C810CC
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 29 Aug 2023 13:00:59 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 76E6C810CC
+X-IronPort-AV: E=McAfee;i="6600,9927,10817"; a="379128821"
+X-IronPort-AV: E=Sophos;i="6.02,210,1688454000"; d="scan'208";a="379128821"
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+ by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 29 Aug 2023 05:54:59 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10816"; a="715484791"
-X-IronPort-AV: E=Sophos;i="6.02,210,1688454000"; d="scan'208";a="715484791"
-Received: from mszycik-mobl1.ger.corp.intel.com (HELO [10.249.132.148])
- ([10.249.132.148])
- by orsmga006-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 29 Aug 2023 03:43:04 -0700
-Message-ID: <ebb004ea-bd9e-aa42-530e-ccfdb086ec9f@linux.intel.com>
-Date: Tue, 29 Aug 2023 12:42:56 +0200
+X-IronPort-AV: E=McAfee;i="6600,9927,10817"; a="828785221"
+X-IronPort-AV: E=Sophos;i="6.02,210,1688454000"; d="scan'208";a="828785221"
+Received: from lkp-server02.sh.intel.com (HELO daf8bb0a381d) ([10.239.97.151])
+ by FMSMGA003.fm.intel.com with ESMTP; 29 Aug 2023 05:54:57 -0700
+Received: from kbuild by daf8bb0a381d with local (Exim 4.96)
+ (envelope-from <lkp@intel.com>) id 1qayF8-0008jn-1C;
+ Tue, 29 Aug 2023 12:54:52 +0000
+Date: Tue, 29 Aug 2023 20:54:44 +0800
+From: kernel test robot <lkp@intel.com>
+To: Karol Kolacinski <karol.kolacinski@intel.com>,
+ intel-wired-lan@lists.osuosl.org
+Message-ID: <202308292029.9Je6bgXn-lkp@intel.com>
+References: <20230829104041.64131-3-karol.kolacinski@intel.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Thunderbird/102.14.0
-Content-Language: en-US
-To: Subbaraya Sundeep Bhatta <sbhatta@marvell.com>,
- "jesse.brandeburg@intel.com" <jesse.brandeburg@intel.com>,
- "anthony.l.nguyen@intel.com" <anthony.l.nguyen@intel.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-References: <CO1PR18MB46668B13A44DD677B6A241F0A1E7A@CO1PR18MB4666.namprd18.prod.outlook.com>
-From: Marcin Szycik <marcin.szycik@linux.intel.com>
-In-Reply-To: <CO1PR18MB46668B13A44DD677B6A241F0A1E7A@CO1PR18MB4666.namprd18.prod.outlook.com>
+Content-Disposition: inline
+In-Reply-To: <20230829104041.64131-3-karol.kolacinski@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1693305791; x=1724841791;
- h=message-id:date:mime-version:subject:to:cc:references:
- from:in-reply-to:content-transfer-encoding;
- bh=MsxR7QKpIt5CsxpWBb9Z6qvDwri7o9tBTG/pV/U9iuo=;
- b=KwZV0svxzHcxG0wQAbgxJf6xJukn83dCRpHKPDKzGQFQ3o4b7bNpFvE0
- cWUQMMkFgAzlXMOcD4Z1kH/OuLS9/t9joWB05h8Qc7ZI2/9DeP4D2Md02
- +/oBmweKJW7ProGUvoggJODjt5Zl2dSQD84xJKVVgTOcjbvlIPJEvxMuo
- fP9OrlY190I/ZwWi0cC88G+UefcaGEkjVfEsnMry/KFhP4Pt8+3lUyLu/
- SZ6Jl9GVpuLykJA5KUFqos3W3Km32f+hpNSc1z20e5pJ0HXXUEf5Q0Mks
- voXMPwscmLe6gFZnUquhDf67y7egGXlh14dbHV1CydVvKLQd4jRrzTGfX
- g==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ t=1693314059; x=1724850059;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:in-reply-to;
+ bh=OqrJ7NCugAHCrcBizDstYU3tAj/RSOo3I5oth/zsfMI=;
+ b=jEuSArkPN2JAaD70WC+p6DhMZs5m9OjEqy6UBby2oDQGtfgd+R3nZy2G
+ jxogYf76Shu2yZe7qAjULm1S0J24BeSGiVsWY+/DUsUbx5kL2KyC/kE1t
+ UzGVuHhZIy2mrB5VhvoYRnGm30B7sOU526d+yybA8kFh4ah6V0CE0gYzk
+ yMAQzSBpUS0UZy8zKhsdigO2PlswxpMlmjz3dvX0scyPH+HkQurcvkOOU
+ pov9q1GeqwidljMshPH2Bm/N2otOk6ZaoYCzjztP6yhjyEvIkZgbIgbDX
+ wUQ6Dc1HWQt0sZjUBJu+Zvo7no7+izaPP3/f6kFi4Sk4EvHTXaSuLKjZv
+ w==;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=KwZV0svx
-Subject: Re: [Intel-wired-lan] hardware filter for matching GTP-U TEID
+ header.a=rsa-sha256 header.s=Intel header.b=jEuSArkP
+Subject: Re: [Intel-wired-lan] [PATCH v4 iwl-next 02/11] ice: introduce PTP
+ state machine
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,72 +98,72 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Ratheesh Kannoth <rkannoth@marvell.com>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- Naveen Mamindlapalli <naveenm@marvell.com>,
- Hariprasad Kelam <hkelam@marvell.com>,
- Geethasowjanya Akula <gakula@marvell.com>,
- "edumazet@google.com" <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- "pabeni@redhat.com" <pabeni@redhat.com>,
- "davem@davemloft.net" <davem@davemloft.net>,
- Sunil Kovvuri Goutham <sgoutham@marvell.com>, Suman Ghosh <sumang@marvell.com>
+Cc: netdev@vger.kernel.org, Karol Kolacinski <karol.kolacinski@intel.com>,
+ anthony.l.nguyen@intel.com, jesse.brandeburg@intel.com,
+ oe-kbuild-all@lists.linux.dev
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 29.08.2023 08:18, Subbaraya Sundeep Bhatta wrote:
-> Hi Marcin Szycik,
-> 
-> Below commit demonstrates that we need to create a GTP tunnel netdev and
-> create a tc filter on top of it. I am unable to understand how the tc filter on top of
-> tunnel netdev $GTP0 propagates to the interface $PF0 for hardware offload?
+Hi Karol,
 
-It propagates via a notification from tunnel netdev to PF, and then to driver.
- 
-> commit 97aeb877de7f14f819fc2cf8388d7a2d8090489d
-> Merge: 4d17d43 9a225f8
-> Author: David S. Miller <davem@davemloft.net>
-> Date:   Sat Mar 12 11:54:29 2022 +0000
-> 
->     Merge branch '100GbE' of git://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue
-> 
->     Tony Nguyen says:
-> 
->     ====================
->     ice: GTP support in switchdev
-> 
->     Marcin Szycik says:
-> 
->     Add support for adding GTP-C and GTP-U filters in switchdev mode.
-> 
->     To create a filter for GTP, create a GTP-type netdev with ip tool, enable
->     hardware offload, add qdisc and add a filter in tc:
-> 
->     ip link add $GTP0 type gtp role <sgsn/ggsn> hsize <hsize>
->     ethtool -K $PF0 hw-tc-offload on
->     tc qdisc add dev $GTP0 ingress
->     tc filter add dev $GTP0 ingress prio 1 flower enc_key_id 1337 \
->     action mirred egress redirect dev $VF1_PR
-> 
-> 
-> I have to redirect GTP-U packets with a TEID to a VF which may be in guest using hardware tc filter on PF.
->>From my understanding current TC and ethtool cannot specify match filters beyond L4 header fields.
-> Can I add new command something like gtp-teid to tc filter?
-> Please help me understand this.
+kernel test robot noticed the following build warnings:
 
-You can specify TEID field with the enc_key_id option in tc (like in above
-example). Meaning of that option changes depending on tunnel used, in case of
-GTP it's TEID.
+[auto build test WARNING on 938672aefaeb88c4e3b6d8bc04ff97900e0809dd]
 
-> 
-> Thanks,
-> Sundeep
-> 
-> 
+url:    https://github.com/intel-lab-lkp/linux/commits/Karol-Kolacinski/ice-use-ice_pf_src_tmr_owned-where-available/20230829-184543
+base:   938672aefaeb88c4e3b6d8bc04ff97900e0809dd
+patch link:    https://lore.kernel.org/r/20230829104041.64131-3-karol.kolacinski%40intel.com
+patch subject: [Intel-wired-lan] [PATCH v4 iwl-next 02/11] ice: introduce PTP state machine
+config: alpha-allyesconfig (https://download.01.org/0day-ci/archive/20230829/202308292029.9Je6bgXn-lkp@intel.com/config)
+compiler: alpha-linux-gcc (GCC) 13.2.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20230829/202308292029.9Je6bgXn-lkp@intel.com/reproduce)
 
-I hope that answers your questions,
-Marcin
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202308292029.9Je6bgXn-lkp@intel.com/
+
+All warnings (new ones prefixed by >>):
+
+>> drivers/net/ethernet/intel/ice/ice_ptp.c:265:20: warning: 'ice_ptp_state_str' defined but not used [-Wunused-function]
+     265 | static const char *ice_ptp_state_str(enum ice_ptp_state state)
+         |                    ^~~~~~~~~~~~~~~~~
+
+
+vim +/ice_ptp_state_str +265 drivers/net/ethernet/intel/ice/ice_ptp.c
+
+   257	
+   258	/**
+   259	 * ice_ptp_state_str - Convert PTP state to readable string
+   260	 * @state: PTP state to convert
+   261	 *
+   262	 * Returns: the human readable string representation of the provided PTP
+   263	 * state, used for printing error messages.
+   264	 */
+ > 265	static const char *ice_ptp_state_str(enum ice_ptp_state state)
+   266	{
+   267		switch (state) {
+   268		case ICE_PTP_UNINIT:
+   269			return "UNINITIALIZED";
+   270		case ICE_PTP_INITIALIZING:
+   271			return "INITIALIZING";
+   272		case ICE_PTP_READY:
+   273			return "READY";
+   274		case ICE_PTP_RESETTING:
+   275			return "RESETTING";
+   276		case ICE_PTP_ERROR:
+   277			return "ERROR";
+   278		}
+   279	
+   280		return "UNKNOWN";
+   281	}
+   282	
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
