@@ -1,108 +1,82 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C93CA78D6F4
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 30 Aug 2023 17:26:09 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id A45B178E0CD
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 30 Aug 2023 22:38:33 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 4E91A41787;
-	Wed, 30 Aug 2023 15:26:08 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 4E91A41787
+	by smtp2.osuosl.org (Postfix) with ESMTP id 4736C417F9;
+	Wed, 30 Aug 2023 20:38:32 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 4736C417F9
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1693409168;
-	bh=p0/m6Fpoo3aMK9ASlnr8KQOwyVTc0gpRcuwSWU/KiPk=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1693427912;
+	bh=+WmsqNIYkBNHAa6omdOzPmu40NwVuCbnwNeJKrHLYBM=;
+	h=Date:From:To:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=vnU42fKOC4Ps7Pvc1kX7WPnWLlD9nBxDUZGbHRAAdNptFnvLIgwFofYF4fnSmc4Zt
-	 yMjiemnhBWtqKkyd2T+z5v85c0Jvj2Y4ZEIECD6aoLX8V4CFvB0aF+67vik88GS6vF
-	 Bnm91sXZz3Su7q0HMxRIRb7RrU9bpOh55CsIrX7NzIUnP0NyU9XFzxNp1iLg4K2ClP
-	 XydwQjFwNnKiUJL+dm5evzhZ86kAx/dL5nt98bzmRSUF9ZLX/EAXNWZrviyfEL9gXm
-	 aToSKmgCuRzrAn+8/ahCk46oVR+UDrNdDMP0MXoUBm6qbDTyCRF2HYe9tmCJj/Vy/S
-	 YlMup9gdWZvXA==
+	b=rOvKr47gr+tbpMWn7DxEAl8Pq5F8rY7NRbqitJX6bhlD6dNx2ikgVNMDym93L37Ir
+	 VCRSfqSlLyt38Vc4liTsCfg9lw8Nfd8gnGPKyf/Ac+NrHoqiA4ksQ2ZquMJ1Hee14d
+	 8wJIxD/d8Q6hWPZDCD0utYa6gZ8xplo/Ney1ljerUz0asgEQsEyhA9OtR5lstLfZ4n
+	 txVHmEW5GCegcDY71LPPpu+1dC124wDqmyPLvL1ldn+npUS9WvVZeoQXLIO9Ln5NG5
+	 wvP5FM1IUy8jerOhh3LSgazbQSw2iUIo+2kMw0U4/7otqzVzDdzuKih8W4RgpVLaZk
+	 Clb1Yuofy1PRg==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id NscdiLhOx1HV; Wed, 30 Aug 2023 15:26:07 +0000 (UTC)
+	with ESMTP id qdEJvMMyZ59E; Wed, 30 Aug 2023 20:38:31 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 5A54F4177E;
-	Wed, 30 Aug 2023 15:26:07 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 5A54F4177E
+	by smtp2.osuosl.org (Postfix) with ESMTP id 3D665417B8;
+	Wed, 30 Aug 2023 20:38:31 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3D665417B8
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 44C701BF30D
- for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Aug 2023 15:26:02 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 8D2331BF40B
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Aug 2023 20:38:26 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 028EE419D3
- for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Aug 2023 15:26:02 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 028EE419D3
+ by smtp1.osuosl.org (Postfix) with ESMTP id 7286582D57
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Aug 2023 20:38:26 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 7286582D57
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Nubk6LKSW2F3 for <intel-wired-lan@lists.osuosl.org>;
- Wed, 30 Aug 2023 15:26:01 +0000 (UTC)
-X-Greylist: delayed 504 seconds by postgrey-1.37 at util1.osuosl.org;
- Wed, 30 Aug 2023 15:26:00 UTC
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org CD2A640243
-Received: from out4-smtp.messagingengine.com (out4-smtp.messagingengine.com
- [66.111.4.28])
- by smtp4.osuosl.org (Postfix) with ESMTPS id CD2A640243
- for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Aug 2023 15:26:00 +0000 (UTC)
-Received: from compute3.internal (compute3.nyi.internal [10.202.2.43])
- by mailout.nyi.internal (Postfix) with ESMTP id DED465C0109;
- Wed, 30 Aug 2023 11:17:32 -0400 (EDT)
-Received: from mailfrontend2 ([10.202.2.163])
- by compute3.internal (MEProxy); Wed, 30 Aug 2023 11:17:32 -0400
-X-ME-Sender: <xms:jF3vZIkHtnLIbFo7RMw-xnlSYf7YexHD0LXn8vdaZ01OZF48QbE2jg>
- <xme:jF3vZH1niGrB2mgdOCFyOFhWQiBcsfvCZzqQfZe03bEiouAcbZSz305wRiLqcJjSB
- I6j2oB-mOQxvA8>
-X-ME-Received: <xmr:jF3vZGq2qq05iDOMBPAvaA5I7oXNqkNkwwSklxDiHR3iAmxRFThNG9eGkAVrq79YGgHsrdhwXx80blx4Ow5O_KO2Q3FQ9g>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedviedrudefkedgkeekucetufdoteggodetrfdotf
- fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
- uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
- cujfgurhepfffhvfevuffkfhggtggujgesthdtredttddtvdenucfhrhhomhepkfguohcu
- ufgthhhimhhmvghluceoihguohhstghhsehiughoshgthhdrohhrgheqnecuggftrfgrth
- htvghrnhepvddufeevkeehueegfedtvdevfefgudeifeduieefgfelkeehgeelgeejjeeg
- gefhnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomhepih
- guohhstghhsehiughoshgthhdrohhrgh
-X-ME-Proxy: <xmx:jF3vZElTLqxkzcP3fRz7EpT_YibOm0OC5r5Fq6RKCVjY70yrp5q1wA>
- <xmx:jF3vZG3QHECtkvV2wVpAZnprlz6FbpOjwben01RgQFotwGZgz8KNiA>
- <xmx:jF3vZLtI6Vo_fbfAGHSWVaSq3pzRilwpHBxr9Z0hxPwKw9wD9SUtgg>
- <xmx:jF3vZLzq7SnSLB-vxY9e5fU-fcULJK6TyEZefztmgvjEu7gIYRS8yw>
-Feedback-ID: i494840e7:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Wed,
- 30 Aug 2023 11:17:31 -0400 (EDT)
-Date: Wed, 30 Aug 2023 18:17:27 +0300
-From: Ido Schimmel <idosch@idosch.org>
-To: "Drewek, Wojciech" <wojciech.drewek@intel.com>
-Message-ID: <ZO9dhzhK+psufXqS@shredder>
-References: <20230824085459.35998-1-wojciech.drewek@intel.com>
- <20230824083201.79f79513@kernel.org>
- <MW4PR11MB57768054635E8DEF841BB2A9FDE3A@MW4PR11MB5776.namprd11.prod.outlook.com>
- <ZOsNhgd3ZxXEaEA5@shredder>
- <MW4PR11MB57766C3B9C05C94F51630251FDE7A@MW4PR11MB5776.namprd11.prod.outlook.com>
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id S2-4_53Qs9xP for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 30 Aug 2023 20:38:25 +0000 (UTC)
+X-Greylist: delayed 331 seconds by postgrey-1.37 at util1.osuosl.org;
+ Wed, 30 Aug 2023 20:38:24 UTC
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org F2D89826C1
+Received: from ams.source.kernel.org (ams.source.kernel.org [145.40.68.75])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id F2D89826C1
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Aug 2023 20:38:24 +0000 (UTC)
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits))
+ (No client certificate requested)
+ by ams.source.kernel.org (Postfix) with ESMTPS id A0722B82016
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Aug 2023 20:32:48 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2E0EAC433C8;
+ Wed, 30 Aug 2023 20:32:47 +0000 (UTC)
+Date: Wed, 30 Aug 2023 13:32:46 -0700
+From: Jakub Kicinski <kuba@kernel.org>
+To: netdev@vger.kernel.org
+Message-ID: <20230830133246.1a059f0a@kernel.org>
+In-Reply-To: <20230829150539.6f998d1f@kernel.org>
+References: <20230829150539.6f998d1f@kernel.org>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <MW4PR11MB57766C3B9C05C94F51630251FDE7A@MW4PR11MB5776.namprd11.prod.outlook.com>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:cc:content-type:content-type:date:date
- :feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
- :message-id:mime-version:references:reply-to:sender:subject
- :subject:to:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
- :x-sasl-enc; s=fm1; t=1693408652; x=1693495052; bh=0qPtmyyUpQSLN
- Odgbtpe33Gx+tXIvgjJ/8JvU5B4E+8=; b=tO8IWeumdcaoWkBD1zxdBSwvMjxxP
- PHIEn/o6KClMduHCafpD68S7ggy5J1waZd0ekscD0ItsBl4qPfE7EzlTacdcqCF/
- 20VBZ7ybnIlF+YU058eza/9QPlzh4KNs6WLCSnik040m1haqRaof4lEIgM9CpC9X
- bMi7KmumX9JQrgS4YlotjofumsgNDBd6zBKbEjmoI3GK6EfIxu/COrjrSPBRQwqr
- 7ET7GyXZRr6uBAiPTtv9fpjTeXeoirTwWNSvx0VqYBNjtRw/+LwaP+V2mCjvFjS6
- Uce4ivRaFX2+uO522UwCaTybnCSOdKm2KlqN2hjHSxK6OQPQgOPDL/mzg==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=messagingengine.com header.i=@messagingengine.com
- header.a=rsa-sha256 header.s=fm1 header.b=tO8IWeum
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v2] ice: Disable Cage Max
- Power override
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=kernel.org; s=k20201202; t=1693427567;
+ bh=SzzWusXtXJX5L6WVyCZuB0hjgeuxLc63hlHpUKYBYrA=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=iMBnXw4nwL1/LTlpQevoLpNRzuINhyInuowN0KBMiRolKd93ZVFqv6NulHZz7xJ5y
+ w1I4ORAQ+fGZkisGNKRcqJ36ojp09wb3cF8diM6EnFoi3NFdikEjk6Yo7ETc8YXLDG
+ nImuwK5/6Lu2DGB27luHIPeEOZknem5v91zYk/hhN5E94QQXvlDqa1G9O+QNEHR0Sy
+ qxr/51EDOc5Lva6lfJiCst5GnfkZFXXhHYXNZhLDUqGEYXYkfCbrmi22G7C9F8V6yl
+ FihBNAxP3aAwuV00j6UTUWPF00m+kszZG0qZTex2tDGK+Sh7rp/xDEK+1Q132b2FsN
+ CREZrsQjysJPQ==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=iMBnXw4n
+Subject: Re: [Intel-wired-lan] [ANN] netdev development stats for 6.6
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -115,30 +89,34 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Jakub Kicinski <kuba@kernel.org>, "idosch@nvidia.com" <idosch@nvidia.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "Kitszel, Przemyslaw" <przemyslaw.kitszel@intel.com>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>
+Cc: intel-wired-lan@lists.osuosl.org, netdev-driver-reviewers@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, Aug 29, 2023 at 09:12:22AM +0000, Drewek, Wojciech wrote:
-> In some cases users are trying to use media with power exceeding max allowed value.
-> Port split require system reboot so it feels natural to me to restore default settings.
+A minor follow up / question.
 
-I don't believe it's the kernel's responsibility to undo changes done by
-external tools. Given that the tool is able to change this setting, I
-assume it can also restore it back to default.
+Would it be helpful to generate these kind of stats scoped to
+particular companies?
 
-Moreover, it doesn't sound like port split won't work without this
-change, so placing this change there only because we assume that a
-reboot will follow seems random.
+Very few people end up in the top 12. It may not be entirely trivial 
+to run these scripts locally because people use their non-company
+addresses at times. And because of GDPR and data privacy concerns 
+I don't want to upload raw results to GitHub or some such :(
 
-I think the best way forward is to extend ethtool as was already
-suggested. It should allow you to avoid the split brain situation where
-the hardware is configured by both the kernel and an external tool.
+The best idea I could come up with was to post the stats
+to a per-company ML. Intel has the "wired" list which is 
+a perfect fit. That way the result is accessible to developers,
+and they can refer to it in the "performance review" or
+whenever they want to get credit for upstream reviews? :)
+
+Does that sound sensible?
+
+Please don't hesitate to LMK either on or off list. 
+Particularly if you think this is a bad idea.
+
+And LMK if any other company wants similar stats.
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
