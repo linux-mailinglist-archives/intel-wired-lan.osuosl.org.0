@@ -1,82 +1,86 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id A45B178E0CD
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 30 Aug 2023 22:38:33 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id E76B778E196
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 30 Aug 2023 23:48:39 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 4736C417F9;
-	Wed, 30 Aug 2023 20:38:32 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 4736C417F9
+	by smtp2.osuosl.org (Postfix) with ESMTP id 745B74181B;
+	Wed, 30 Aug 2023 21:48:38 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 745B74181B
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1693427912;
-	bh=+WmsqNIYkBNHAa6omdOzPmu40NwVuCbnwNeJKrHLYBM=;
-	h=Date:From:To:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=rOvKr47gr+tbpMWn7DxEAl8Pq5F8rY7NRbqitJX6bhlD6dNx2ikgVNMDym93L37Ir
-	 VCRSfqSlLyt38Vc4liTsCfg9lw8Nfd8gnGPKyf/Ac+NrHoqiA4ksQ2ZquMJ1Hee14d
-	 8wJIxD/d8Q6hWPZDCD0utYa6gZ8xplo/Ney1ljerUz0asgEQsEyhA9OtR5lstLfZ4n
-	 txVHmEW5GCegcDY71LPPpu+1dC124wDqmyPLvL1ldn+npUS9WvVZeoQXLIO9Ln5NG5
-	 wvP5FM1IUy8jerOhh3LSgazbQSw2iUIo+2kMw0U4/7otqzVzDdzuKih8W4RgpVLaZk
-	 Clb1Yuofy1PRg==
+	s=default; t=1693432118;
+	bh=2geAN+qKC+kpHdcyqkgHrDPAZFbHCsBfttQURgw0Zn0=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=Qrje4iG78/1NKDJ+fqUNnwouY5VjlPSeav/U/80c6z0urbIY4JTbYX/uDQ3u4FUET
+	 1rjQ9ZIpvdG0sRTDWXp+Q5eLUQ2TA+GAM4d7LXoPnOGB13gCV1QNPXYI/mz3LPMElG
+	 2Xbr6n0uV7QjMEftmxGoNL1D4Wk0WKjyPuji5T1zbSfyU0JQdaLRpdQLpoDsDMtaAQ
+	 i1wAh+CUw20MtvnQ8dyjrhfCaAQqNOxT/HskSqgR5LqSJkVITsW3cletdrP5+RhzKd
+	 2ai1vADh7TdHor92APGqzPZMpCesH8FpPlK1MtV0k7xHw7QhsmdEAJFVdJhrrTr9jx
+	 03l+ODTcvvejg==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id qdEJvMMyZ59E; Wed, 30 Aug 2023 20:38:31 +0000 (UTC)
+	with ESMTP id PXobxURuvstS; Wed, 30 Aug 2023 21:48:37 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 3D665417B8;
-	Wed, 30 Aug 2023 20:38:31 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3D665417B8
+	by smtp2.osuosl.org (Postfix) with ESMTP id 73462417F8;
+	Wed, 30 Aug 2023 21:48:37 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 73462417F8
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 8D2331BF40B
- for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Aug 2023 20:38:26 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 7DB081BF405
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Aug 2023 21:48:32 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 7286582D57
- for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Aug 2023 20:38:26 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 7286582D57
+ by smtp3.osuosl.org (Postfix) with ESMTP id 62BD86060A
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Aug 2023 21:48:32 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 62BD86060A
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id S2-4_53Qs9xP for <intel-wired-lan@lists.osuosl.org>;
- Wed, 30 Aug 2023 20:38:25 +0000 (UTC)
-X-Greylist: delayed 331 seconds by postgrey-1.37 at util1.osuosl.org;
- Wed, 30 Aug 2023 20:38:24 UTC
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org F2D89826C1
-Received: from ams.source.kernel.org (ams.source.kernel.org [145.40.68.75])
- by smtp1.osuosl.org (Postfix) with ESMTPS id F2D89826C1
- for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Aug 2023 20:38:24 +0000 (UTC)
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits))
- (No client certificate requested)
- by ams.source.kernel.org (Postfix) with ESMTPS id A0722B82016
- for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Aug 2023 20:32:48 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2E0EAC433C8;
- Wed, 30 Aug 2023 20:32:47 +0000 (UTC)
-Date: Wed, 30 Aug 2023 13:32:46 -0700
-From: Jakub Kicinski <kuba@kernel.org>
-To: netdev@vger.kernel.org
-Message-ID: <20230830133246.1a059f0a@kernel.org>
-In-Reply-To: <20230829150539.6f998d1f@kernel.org>
-References: <20230829150539.6f998d1f@kernel.org>
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id IwA2JFCERPe3 for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 30 Aug 2023 21:48:31 +0000 (UTC)
+Received: from mgamail.intel.com (mgamail.intel.com [134.134.136.20])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 91FBF60595
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Aug 2023 21:48:31 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 91FBF60595
+X-IronPort-AV: E=McAfee;i="6600,9927,10818"; a="365958644"
+X-IronPort-AV: E=Sophos;i="6.02,214,1688454000"; d="scan'208";a="365958644"
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+ by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 30 Aug 2023 14:48:30 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10818"; a="716072878"
+X-IronPort-AV: E=Sophos;i="6.02,214,1688454000"; d="scan'208";a="716072878"
+Received: from akervine-mobl1.ger.corp.intel.com (HELO azaki-desk1.intel.com)
+ ([10.249.42.39])
+ by orsmga006-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 30 Aug 2023 14:48:29 -0700
+From: Ahmed Zaki <ahmed.zaki@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Wed, 30 Aug 2023 15:48:17 -0600
+Message-Id: <20230830214821.3439959-1-ahmed.zaki@intel.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1693427567;
- bh=SzzWusXtXJX5L6WVyCZuB0hjgeuxLc63hlHpUKYBYrA=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=iMBnXw4nwL1/LTlpQevoLpNRzuINhyInuowN0KBMiRolKd93ZVFqv6NulHZz7xJ5y
- w1I4ORAQ+fGZkisGNKRcqJ36ojp09wb3cF8diM6EnFoi3NFdikEjk6Yo7ETc8YXLDG
- nImuwK5/6Lu2DGB27luHIPeEOZknem5v91zYk/hhN5E94QQXvlDqa1G9O+QNEHR0Sy
- qxr/51EDOc5Lva6lfJiCst5GnfkZFXXhHYXNZhLDUqGEYXYkfCbrmi22G7C9F8V6yl
- FihBNAxP3aAwuV00j6UTUWPF00m+kszZG0qZTex2tDGK+Sh7rp/xDEK+1Q132b2FsN
- CREZrsQjysJPQ==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=iMBnXw4n
-Subject: Re: [Intel-wired-lan] [ANN] netdev development stats for 6.6
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1693432111; x=1724968111;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=OitTqVofEbGPGaA2+8TsSqjw2wgORVZ97088BehUcPA=;
+ b=iat9x1a1WYNkRi4AIGjCoT6ncgGkQff+C++RSyeBAMJH8TSmBtFUrJCv
+ +NRdxx60ZlVMwcAx/qZFX76t/Ts38+hOWlirtm3nmVwv8T3l+pIq5XLWG
+ sHfGPnCqCavJWlcC62gwedZ/UZskybquDxGtr4cBHcs37wgsQ6hh9rrKk
+ +XJcD2bfJnGyGbgneYiaNslQsJEr3ibH+8kESL9mf15PCVn1OLY2IyTHW
+ PPK5qMudyRzlOU5ivRRn820PuaGmwbWwRlCkifIEcG2/jxJghL0YueP0v
+ X9bEhHSyZT1DIWoD8IXTaChtr07ZlGSIoqzXajeUYWdItlZzxQK/BRYBo
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=iat9x1a1
+Subject: [Intel-wired-lan] [PATCH iwl-next v2 0/4] Support rx-fcs on/off for
+ VFs
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,34 +93,43 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: intel-wired-lan@lists.osuosl.org, netdev-driver-reviewers@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-A minor follow up / question.
+Allow the user to turn on/off the CRC/FCS stripping through ethtool. We
+first add the CRC offload capability in the virtchannel, then the feature
+is enabled in ice and iavf drivers.
 
-Would it be helpful to generate these kind of stats scoped to
-particular companies?
+We make sure that the netdev features are fixed such that CRC stripping
+cannot be disabled if VLAN rx offload (VLAN strip) is enabled. Also, VLAN
+stripping cannot be enabled unless CRC stripping is ON.
+---
+v2: Move patch "ice: Fix VLAN and CRC strip co-existence" from 4/4 to 3/4
+    Other minor fixes from Tony for the same patch
 
-Very few people end up in the top 12. It may not be entirely trivial 
-to run these scripts locally because people use their non-company
-addresses at times. And because of GDPR and data privacy concerns 
-I don't want to upload raw results to GitHub or some such :(
+Haiyue Wang (2):
+  ice: Support FCS/CRC strip disable for VF
+  ice: Fix VLAN and CRC strip co-existence
 
-The best idea I could come up with was to post the stats
-to a per-company ML. Intel has the "wired" list which is 
-a perfect fit. That way the result is accessible to developers,
-and they can refer to it in the "performance review" or
-whenever they want to get credit for upstream reviews? :)
+Norbert Zulinski (1):
+  iavf: Add ability to turn off CRC stripping for VF
 
-Does that sound sensible?
+Paul M Stillwell Jr (1):
+  virtchnl: Add CRC stripping capability
 
-Please don't hesitate to LMK either on or off list. 
-Particularly if you think this is a bad idea.
+ drivers/net/ethernet/intel/iavf/iavf.h        |  2 +
+ drivers/net/ethernet/intel/iavf/iavf_main.c   | 59 ++++++++++++++++-
+ .../net/ethernet/intel/iavf/iavf_virtchnl.c   |  4 ++
+ drivers/net/ethernet/intel/ice/ice_vf_lib.h   |  3 +
+ drivers/net/ethernet/intel/ice/ice_virtchnl.c | 66 +++++++++++++++++--
+ include/linux/avf/virtchnl.h                  | 11 +++-
+ 6 files changed, 138 insertions(+), 7 deletions(-)
 
-And LMK if any other company wants similar stats.
+-- 
+2.34.1
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
