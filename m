@@ -1,89 +1,181 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 85C4D78E19C
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 30 Aug 2023 23:48:57 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 46E4E78E589
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 31 Aug 2023 06:52:41 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 14E1C4181E;
-	Wed, 30 Aug 2023 21:48:56 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 14E1C4181E
+	by smtp3.osuosl.org (Postfix) with ESMTP id 20D0260BFC;
+	Thu, 31 Aug 2023 04:52:39 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 20D0260BFC
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1693432136;
-	bh=gVNV6vXFc4D29NmhOTHPoeWPzo0lgDOUWZWp6e5C8w0=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1693457559;
+	bh=BZex6I3VijSJGMhp39kfk2G1rk/VZeqD6hVCAWYcgnk=;
+	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=jTFbdoZWvMgr61nDMGh9NaUvbWTZjFvhp2HVzAgdJHI0a+FLnmaWep+/RzQTERLVI
-	 Zx5X4TlwOvAEm5UG6epcfUiyeHIYgg2XhYvScEVQj9uMla+dn4pOk3ailHqlfVPLZ8
-	 oAg96XDCHknZW++hUPbHajEjTnGzuAo60P0IGXkYSPowfwEUeD1qTuXWJXs7XWELzc
-	 8SuxSii6vCKKltgC1UG5oZlhBXOlgXoYDWhgkiu7rc7GRkR/9XNcgbWDMl4kENGRZi
-	 6WoFd+8dW0GjTiUGvgXsP5NLEJr1bpD67tTuhzCgQ7HvC6poPct4dihxeaEIS0PU3A
-	 3bFPXhQXYTYNA==
+	b=J21PtKOBejJMl60sKqibKsVmN+glor69VxIBzRXdFuy/uwc9780zc9Zd2VxECD0l2
+	 SvBxuqEam9ZSLs5678XKN9lqPIjsnoF9hoHtGh9eAhBFibfR1r9uIG09hMvhKQSoAb
+	 v978Q/Tmmo7bn/ilAlAVNjyVBj52XJpkrVAWNzggVyUtzFKYAuYsLgHY9mSXxD6e8Z
+	 9juUvy3OX/Qs+3KLYV64jqgqBwcgEUosPt6HwTfoAzc/rURI3ovfxvY701QFnlNPbr
+	 ympIdWogdVenUPNdjCD1WpGP8iNJOoPX+Lqi2IM0y/CjHLL8mCsHcM2w3WVFcOVJS9
+	 NMDncxAqvuNYA==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 4fAM-5cag4zS; Wed, 30 Aug 2023 21:48:55 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id zEQjdN222FMD; Thu, 31 Aug 2023 04:52:38 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id C95B14180A;
-	Wed, 30 Aug 2023 21:48:54 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C95B14180A
+	by smtp3.osuosl.org (Postfix) with ESMTP id 112A460B8E;
+	Thu, 31 Aug 2023 04:52:38 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 112A460B8E
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 3045D1BF405
- for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Aug 2023 21:48:40 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 75F121BF406
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 31 Aug 2023 04:52:32 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 092BD60B30
- for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Aug 2023 21:48:40 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 092BD60B30
+ by smtp3.osuosl.org (Postfix) with ESMTP id 5A10260B8E
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 31 Aug 2023 04:52:32 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5A10260B8E
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id pKEE0kj6-xWq for <intel-wired-lan@lists.osuosl.org>;
- Wed, 30 Aug 2023 21:48:39 +0000 (UTC)
-Received: from mgamail.intel.com (mgamail.intel.com [134.134.136.20])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 399536060A
- for <intel-wired-lan@lists.osuosl.org>; Wed, 30 Aug 2023 21:48:39 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 399536060A
-X-IronPort-AV: E=McAfee;i="6600,9927,10818"; a="365958660"
-X-IronPort-AV: E=Sophos;i="6.02,214,1688454000"; d="scan'208";a="365958660"
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 30 Aug 2023 14:48:38 -0700
+ with ESMTP id vItSZi5gTDfV for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 31 Aug 2023 04:52:31 +0000 (UTC)
+Received: from mgamail.intel.com (mgamail.intel.com [134.134.136.126])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 325A360B3A
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 31 Aug 2023 04:52:31 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 325A360B3A
+X-IronPort-AV: E=McAfee;i="6600,9927,10818"; a="360800158"
+X-IronPort-AV: E=Sophos;i="6.02,215,1688454000"; d="scan'208";a="360800158"
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+ by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 30 Aug 2023 21:52:29 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10818"; a="716072928"
-X-IronPort-AV: E=Sophos;i="6.02,214,1688454000"; d="scan'208";a="716072928"
-Received: from akervine-mobl1.ger.corp.intel.com (HELO azaki-desk1.intel.com)
- ([10.249.42.39])
- by orsmga006-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 30 Aug 2023 14:48:37 -0700
-From: Ahmed Zaki <ahmed.zaki@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Wed, 30 Aug 2023 15:48:21 -0600
-Message-Id: <20230830214821.3439959-5-ahmed.zaki@intel.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20230830214821.3439959-1-ahmed.zaki@intel.com>
-References: <20230830214821.3439959-1-ahmed.zaki@intel.com>
+X-IronPort-AV: E=McAfee;i="6600,9927,10818"; a="829482066"
+X-IronPort-AV: E=Sophos;i="6.02,215,1688454000"; d="scan'208";a="829482066"
+Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
+ by FMSMGA003.fm.intel.com with ESMTP; 30 Aug 2023 21:52:29 -0700
+Received: from orsmsx612.amr.corp.intel.com (10.22.229.25) by
+ ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.27; Wed, 30 Aug 2023 21:52:28 -0700
+Received: from orsmsx612.amr.corp.intel.com (10.22.229.25) by
+ ORSMSX612.amr.corp.intel.com (10.22.229.25) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.27; Wed, 30 Aug 2023 21:52:28 -0700
+Received: from ORSEDG601.ED.cps.intel.com (10.7.248.6) by
+ orsmsx612.amr.corp.intel.com (10.22.229.25) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.27 via Frontend Transport; Wed, 30 Aug 2023 21:52:28 -0700
+Received: from NAM12-DM6-obe.outbound.protection.outlook.com (104.47.59.172)
+ by edgegateway.intel.com (134.134.137.102) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.27; Wed, 30 Aug 2023 21:52:28 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=NTfFgbHZ76kZRtyu4EGjjyNoeyHzKfiQsSLnidLuWPUCVw6MAbuTXhIIGwTUQlHA9PXi/qZN8f32iEhd1klSM0stpzAe9I3T6Yutev1h/ytZRIkmgcd+3cOHi5d1lCcMbxlHVrAuIzsGL9P9T4i6Cp8OHkKBGbtO/6jOUNc48ZHYmlZM+yflY/EnzLhv92DGe7Aq0XVnixCC1BCass+PZcKERgBzspmwlshoe5ly+gUop3rLP+o2rJlL07O0uL2NHIrHcDOVI0vIM2XNHDP5F4L6yoLLuSm8+dlyk9cjqAYcRQsQFrHvHimZsv94nVgA9agPEfEHjPjGmP3W5SHKcQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=F7ckKjW/TjZUG9sClxxSrcEzgooRhyckdKL+opYfYpQ=;
+ b=cy/ATeCgpjOj9i0xxmqHIQKEg3FYuqWK0wZHFPQkXWI5QA7jyuEpzm8CQbXXmmkbI1RaVmj1K9ePki2LqaW42RerZeffJrBND2auZID+4nhpSssxvySxz2s4NCK2gXqZ1NBRY3P40RjtglAfjeykxF/E1IpNffh4PPsNIw7XiVdVr10/CCxqXUG76bt7WFYCapYuzOWWsf7+97jU3SMzf0BADQs7V/O40IbhMlwXpTPyGoYLu86uunBeDUB2UrtrDetvpvSZ32FFfgF/3S1rAwL7WW5I1ziqqD4DHauHaRbM4GC7IUeY38Kav4K/l2Lv2Ml12p5Gxx5euisHjXdNbg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from BL0PR11MB3122.namprd11.prod.outlook.com (2603:10b6:208:75::32)
+ by PH7PR11MB6545.namprd11.prod.outlook.com (2603:10b6:510:213::13)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6745.21; Thu, 31 Aug
+ 2023 04:52:26 +0000
+Received: from BL0PR11MB3122.namprd11.prod.outlook.com
+ ([fe80::a6fa:cb0d:5e13:fc2d]) by BL0PR11MB3122.namprd11.prod.outlook.com
+ ([fe80::a6fa:cb0d:5e13:fc2d%4]) with mapi id 15.20.6745.020; Thu, 31 Aug 2023
+ 04:52:26 +0000
+From: "Pucha, HimasekharX Reddy" <himasekharx.reddy.pucha@intel.com>
+To: "Staikov, Andrii" <andrii.staikov@intel.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Thread-Topic: [Intel-wired-lan] [PATCH iwl-net v3] i40e: fix potential memory
+ leaks in i40e_remove()
+Thread-Index: AQHZzDZqnpqZgc9LOUm3blaLSVb3lrAD9P2g
+Date: Thu, 31 Aug 2023 04:52:25 +0000
+Message-ID: <BL0PR11MB31226CCD6AA135C17B7430D8BDE5A@BL0PR11MB3122.namprd11.prod.outlook.com>
+References: <20230811092836.1707101-1-andrii.staikov@intel.com>
+In-Reply-To: <20230811092836.1707101-1-andrii.staikov@intel.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: BL0PR11MB3122:EE_|PH7PR11MB6545:EE_
+x-ms-office365-filtering-correlation-id: 26ac51ad-d2c5-4d84-8933-08dba9de1234
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: jSLfK02dPuRDWU1FJUMVC7bMSobtK0gn7Tvjn/6becOfViGxz26OtZdXtXN1V80zVqzMyJRb3bcGM/j0mn/IyCOh3285WvEdj7ol0v6sS59iJX4Q1yditEGFGvsPyBQBqEWsAC2G9TeCI7Byv4yN6/ZlYvYxcPQWrdX4yxD0AcRQ/MX61+AaVebSoS5Xla2BYsgLr7Xb7ng0qA1M3RsI4xUJ3ghqle6tRWbgGsIQA7aUxxupem8PtrVzemk4G1iL4JlCNp8q+dU+zg8RIrS5MkgHmrMCpjqySI/nrWGtkqZSrWciKVcg82BlvpYxIO6yNJyW10Ja3oBYeCSMMKQE18Hab255Z51k+9rH9zku9vcEEdY5QqOocgbwsa5yvLtaLWV8zK9rr/Fa+8Jh789ViYDaabexVHNyEg8t+ShAu3iEOFYt8lxfgnElVgXyDyp/DwcJv482/V+oY1f7RsQHS5CXHX3E0Ca0V9jnmhizgvCuUbvxn7xmUm8gpGrtQaLJArSwTuy9m8ORssaIL+tOuxVFJz98fAOFvJ0Nb/y7Tvgu2vRncueMsGFSoBW1NB6VVMTLo+Vy5Ni5TWg3AWrS25ym3VOBZ8t7OFj8+BTHw3lzKDbQHFVMXe/Mt6qRY5FK
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BL0PR11MB3122.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230031)(396003)(366004)(39860400002)(376002)(346002)(136003)(451199024)(1800799009)(186009)(7696005)(6506007)(71200400001)(9686003)(53546011)(478600001)(83380400001)(107886003)(26005)(4744005)(2906002)(54906003)(64756008)(66446008)(66476007)(66556008)(316002)(41300700001)(66946007)(76116006)(110136005)(52536014)(5660300002)(4326008)(8676002)(8936002)(55016003)(82960400001)(33656002)(86362001)(38100700002)(38070700005)(122000001);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?HPjjM002W6pE+zmsHbVCzLf3YzUfZazf2aawkTmBpEoQvPD2Njqclc2uWbw5?=
+ =?us-ascii?Q?vfjj3JgOEXxMYUcr15a3ofzL0M+c9yXnjdQJrkXoBFrpjRjHkb9fbqJt+zBR?=
+ =?us-ascii?Q?iwjgAOypLGK2hP0GUcfcT7+d+LtbQLm5kHValp7X/JtbTm05EM+kzj2nSyEf?=
+ =?us-ascii?Q?/c3Wzt0iaQKQYdCAEFkfJ8U93IS0c/w9vf2lDaE9fSkq5Np+4QtFI54cbFW/?=
+ =?us-ascii?Q?iyj8Re0SOMNb7wPskQwArA/kfDQGPeStNJsyMDNE2ZuRZb5/MguXWTLa88Z2?=
+ =?us-ascii?Q?eIaK7qlbaqrbJNvCgaArzbFMJe8uLNjlgTrBUL3p5lwwwmaI5KZfUuDTWYa5?=
+ =?us-ascii?Q?DyQWM8UXELGYc5p4N384nf9bexoa368xhQ73I1cQOtJDDRkeNRSjEkHur92q?=
+ =?us-ascii?Q?tQnRl9h4vsqZ3hYzY0MiDrxEhsothDexldpZL5jhhp+x00LwSXgxGJkzo5Nf?=
+ =?us-ascii?Q?gLf/jSLdGZ7vvI+EVe6NTlKO2EUWPOXhwgoZY8Se9jano4eEXpIWCNfDnMuL?=
+ =?us-ascii?Q?6XLWW4T+zwAIk/52PpqMBCyB7s1AiuKo5rC7EvgQ4DhMoVu4fKB/2/KMID3O?=
+ =?us-ascii?Q?aRSvDBcb2PdO2E0G0GI6mCwzrn7khDqs+c/BF0YN/9rAhTXB10RbYHNATTCU?=
+ =?us-ascii?Q?AC/xknE1dT3wYLWDptSYOktkL/7pMtiht+jEFsUPm7L168b6FDdUpN170pak?=
+ =?us-ascii?Q?ftwVPZ9ah9TYuCr1AtawRLCbce26NAX5Vm7EBCWutBzK226g19iJ0xaZXNrk?=
+ =?us-ascii?Q?zl+Sqapd7FYgRkiuRM8zRkeDUgwb4tIyb82rCxiAFKzTwd1jbYQElyWlV+dZ?=
+ =?us-ascii?Q?ZJP4ldh6QfYQmtFpP5YjlUsXfiNay1qGM6ok3Pkst5T+HHQLV3YrOU1ptzoS?=
+ =?us-ascii?Q?lhp5hCuu1476ujOJMz2e7jr/SvhKzBjNcYtH37RBKSIaU0sMZQeNkz03Gr9f?=
+ =?us-ascii?Q?1CXq1l46PbDtUCqM24ZTOSNy2/C43Gm6lB70vmcsMItApFIKIW9LuUb3W3U4?=
+ =?us-ascii?Q?KyZj40lUi789/q8cMr9Zz7GdxvTg8kdSBRyGBGsdLP5pvHQKcsua3OmblCWi?=
+ =?us-ascii?Q?iJG5aUtH9MM35pGRcnDVr+3id7V6xbx8zYYDqUFnIDHDE8sRIx2szlvyZYuV?=
+ =?us-ascii?Q?0llwtBwJDLZyAwzOhJphhinzSUexCojvsUEag0IFb+bPRRCN8QE6MXdXW1f7?=
+ =?us-ascii?Q?SNb7S2RDn0GUQlO8AVkvdMOL13/ehL/Ln4g+1bU+YCzvQf5isjsheasBhdoP?=
+ =?us-ascii?Q?edFLMQ07ngMcZn4NwIGrxuxAhyvPMAIunhrhTAT/mHtoVMaPqcdL2e1ioNiV?=
+ =?us-ascii?Q?5jySb78HAPuDqMLCJfFDWTgF1Lg6w5HN9KgbH2m0M/+zq98Di57ERL/epct2?=
+ =?us-ascii?Q?ZEA6+l1j38ud4Npk2JsXAHel5H7stzug/V2QHqMpEyP0ZVAmbL6WQXyyANqh?=
+ =?us-ascii?Q?7KUjgztukk51mdowwkbjhSfwZI04vc1cdk+0iiuvojMjpfD99fvseC4xdg38?=
+ =?us-ascii?Q?dsxjOq4MPE/y49x9dlD50DkGBDYpdQkAFtG2EOhHS04N3HAmubp1mlDtqTBw?=
+ =?us-ascii?Q?X7+xYB92lodM2GTL/ibV2eMpJl/j0asOeJOMkGhF1wFk9zCOOAa3T9ZXrenD?=
+ =?us-ascii?Q?Zw=3D=3D?=
 MIME-Version: 1.0
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: BL0PR11MB3122.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 26ac51ad-d2c5-4d84-8933-08dba9de1234
+X-MS-Exchange-CrossTenant-originalarrivaltime: 31 Aug 2023 04:52:25.5705 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: OpCO0DtB2CpYmkpcNTB8wFkV1aUd1RPD9CX9DBOO8dDq81+9rmmhgZEvVUPeRCYf1CF6h52epYwyEpKZcr3CcEp/33f0Facz+ChYA6AEI8zGT3AJ+44H07sIsqDpEZsr
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH7PR11MB6545
+X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1693432119; x=1724968119;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=ml11XlYHehpmSnhaOox7Ud4jaxZv7sK4TEVUjA1JUR8=;
- b=mLFZDHchgGuD7ia8xgNzQYSiI5gJIKLemJwf9UJ13Z4inLpi51ogXl3F
- opAhUJxIA3hs/4uaQfRzjJBiJilqV+9VK1JkN8AFxHV8U+OUkA5QLMb9q
- JmJPORMVBkptZ+QBcTs0hin4UbXD8OEkHj0DBdCm1Cqs7+3/WTA+lCx0a
- l43o0l+a2tTWoS8OeRXvAstPTatCitFPmyQ43b4bpqCM/UxT8JbMOkDuD
- 8Zcf7n4LrYnc060HWaz3iEnAhfZfxLdAv+TqhrS5U/t2+kx9d2HfFBkAe
- G69sGjQF+eMp8JErsZusDuXcwRxFlBPd3tjj0KKvEB0iS9Gp5M3V0cEsy
- g==;
+ t=1693457551; x=1724993551;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=+u8TT7bQL+2YBztFAI0getR+wqlU66LAk2SsTyYaIM4=;
+ b=mjTCeMYqME27ZPeZ340rJvCHhayjti4iN+tKKS7yi8tk70IiWyaT037+
+ /XlevFfFdLqY4IUCeZLnYp8EZ+iQPMO56K5+uQ7BDr8RclAVaXvgx3LE7
+ OSAQE/rxrqBBI/M3DYur9SYYi7TSg1N6XHpv5IpQIcM+koVpUnzV8Z/5z
+ Obs7HgI0qWsDrbgQuTvuaXo61koqeqaVLhA1OV7ZZeAudJovJ7lhAVWzM
+ cmrQiYo49CeizzqVSIQPXJkiT0rKqBe6/zE2EDib87Cn/xSGSTzIwqrwh
+ YfxGgojz0cCM8y7qorX2pIn15LzNRld+sKFeJSAkExAhveVbM47fRadlK
+ w==;
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=mLFZDHch
-Subject: [Intel-wired-lan] [PATCH iwl-next v2 4/4] iavf: Add ability to turn
- off CRC stripping for VF
+ header.a=rsa-sha256 header.s=Intel header.b=mjTCeMYq
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH iwl-net v3] i40e: fix potential memory
+ leaks in i40e_remove()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,163 +188,37 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Jesse Brandeburg <jesse.brandeburg@intel.com>,
- Norbert Zulinski <norbertx.zulinski@intel.com>
+Cc: "Loktionov, Aleksandr" <aleksandr.loktionov@intel.com>, "Staikov,
+ Andrii" <andrii.staikov@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Norbert Zulinski <norbertx.zulinski@intel.com>
+> -----Original Message-----
+> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of Andrii Staikov
+> Sent: Friday, August 11, 2023 2:59 PM
+> To: intel-wired-lan@lists.osuosl.org
+> Cc: Loktionov, Aleksandr <aleksandr.loktionov@intel.com>; Staikov, Andrii <andrii.staikov@intel.com>
+> Subject: [Intel-wired-lan] [PATCH iwl-net v3] i40e: fix potential memory leaks in i40e_remove()
+>
+> Instead of freeing memory of a single VSI, make sure
+> the memory for all VSIs is cleared before releasing VSIs.
+> Add releasing of their resources in a loop with the iteration
+> number equal to the number of allocated VSIs.
+>
+> Fixes: 41c445ff0f48 ("i40e: main driver core")
+> Signed-off-by: Andrii Staikov <andrii.staikov@intel.com>
+> Signed-off-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+> ---
+> v1 -> v2: Changed commit message.
+> v2 -> v3: Fixed mistakes in the commit message.
+> ---
+>  drivers/net/ethernet/intel/i40e/i40e_main.c | 10 ++++++++--
+>  1 file changed, 8 insertions(+), 2 deletions(-)
+>
 
-Previously CRC stripping was always enabled for VF.
-
-Now it is possible to turn off CRC stripping via ethtool.
-        ethtool -K <interface> rx-fcs off
-To turn off CRC stripping, first vlan stripping must be disabled.
-
-In iavf_configure_queues add check if CRC stripping is enabled for
-VF, if it's enabled then set crc_disabled to false on every VF's
-queue. In iavf_set_features add check if CRC stripping setting was
-changed then schedule reset.
-
-Signed-off-by: Norbert Zulinski <norbertx.zulinski@intel.com>
-Reviewed-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
-Signed-off-by: Ahmed Zaki <ahmed.zaki@intel.com>
----
- drivers/net/ethernet/intel/iavf/iavf.h        |  2 +
- drivers/net/ethernet/intel/iavf/iavf_main.c   | 59 ++++++++++++++++++-
- .../net/ethernet/intel/iavf/iavf_virtchnl.c   |  4 ++
- 3 files changed, 64 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/net/ethernet/intel/iavf/iavf.h b/drivers/net/ethernet/intel/iavf/iavf.h
-index 738e25657c6b..f32b0453584f 100644
---- a/drivers/net/ethernet/intel/iavf/iavf.h
-+++ b/drivers/net/ethernet/intel/iavf/iavf.h
-@@ -406,6 +406,8 @@ struct iavf_adapter {
- 			  VIRTCHNL_VF_OFFLOAD_VLAN)
- #define VLAN_V2_ALLOWED(_a) ((_a)->vf_res->vf_cap_flags & \
- 			     VIRTCHNL_VF_OFFLOAD_VLAN_V2)
-+#define CRC_OFFLOAD_ALLOWED(_a) ((_a)->vf_res->vf_cap_flags & \
-+				 VIRTCHNL_VF_OFFLOAD_CRC)
- #define VLAN_V2_FILTERING_ALLOWED(_a) \
- 	(VLAN_V2_ALLOWED((_a)) && \
- 	 ((_a)->vlan_v2_caps.filtering.filtering_support.outer || \
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
-index 0302e46e7942..ed4666b59ad2 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_main.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
-@@ -4402,6 +4402,9 @@ static int iavf_set_features(struct net_device *netdev,
- 	    (features & NETIF_VLAN_OFFLOAD_FEATURES))
- 		iavf_set_vlan_offload_features(adapter, netdev->features,
- 					       features);
-+	if (CRC_OFFLOAD_ALLOWED(adapter) &&
-+	    ((netdev->features & NETIF_F_RXFCS) ^ (features & NETIF_F_RXFCS)))
-+		iavf_schedule_reset(adapter, IAVF_FLAG_RESET_NEEDED);
- 
- 	return 0;
- }
-@@ -4523,6 +4526,9 @@ iavf_get_netdev_vlan_hw_features(struct iavf_adapter *adapter)
- 		}
- 	}
- 
-+	if (CRC_OFFLOAD_ALLOWED(adapter))
-+		hw_features |= NETIF_F_RXFCS;
-+
- 	return hw_features;
- }
- 
-@@ -4686,6 +4692,55 @@ iavf_fix_netdev_vlan_features(struct iavf_adapter *adapter,
- 	return requested_features;
- }
- 
-+/**
-+ * iavf_fix_strip_features - fix NETDEV strip features based on functionality
-+ * @adapter: board private structure
-+ * @requested_features: stack requested NETDEV features
-+ *
-+ * Returns fixed-up features bits
-+ **/
-+static netdev_features_t
-+iavf_fix_strip_features(struct iavf_adapter *adapter,
-+			netdev_features_t requested_features)
-+{
-+	struct net_device *netdev = adapter->netdev;
-+	bool crc_offload_req, is_vlan_strip;
-+	netdev_features_t vlan_strip;
-+	int num_non_zero_vlan;
-+
-+	crc_offload_req = CRC_OFFLOAD_ALLOWED(adapter) &&
-+			  (requested_features & NETIF_F_RXFCS);
-+	num_non_zero_vlan = iavf_get_num_vlans_added(adapter);
-+	vlan_strip = (NETIF_F_HW_VLAN_CTAG_RX | NETIF_F_HW_VLAN_STAG_RX);
-+	is_vlan_strip = requested_features & vlan_strip;
-+
-+	if (!crc_offload_req)
-+		return requested_features;
-+
-+	if (!num_non_zero_vlan && (netdev->features & vlan_strip) &&
-+	    !(netdev->features & NETIF_F_RXFCS) && is_vlan_strip) {
-+		requested_features &= ~vlan_strip;
-+		netdev_info(netdev, "Disabling VLAN stripping as FCS/CRC stripping is also disabled and there is no VLAN configured\n");
-+		return requested_features;
-+	}
-+
-+	if ((netdev->features & NETIF_F_RXFCS) && is_vlan_strip) {
-+		requested_features &= ~vlan_strip;
-+		if (!(netdev->features & vlan_strip))
-+			netdev_info(netdev, "To enable VLAN stripping, first need to enable FCS/CRC stripping");
-+
-+		return requested_features;
-+	}
-+
-+	if (num_non_zero_vlan && is_vlan_strip &&
-+	    !(netdev->features & NETIF_F_RXFCS)) {
-+		requested_features &= ~NETIF_F_RXFCS;
-+		netdev_info(netdev, "To disable FCS/CRC stripping, first need to disable VLAN stripping");
-+	}
-+
-+	return requested_features;
-+}
-+
- /**
-  * iavf_fix_features - fix up the netdev feature bits
-  * @netdev: our net device
-@@ -4698,7 +4753,9 @@ static netdev_features_t iavf_fix_features(struct net_device *netdev,
- {
- 	struct iavf_adapter *adapter = netdev_priv(netdev);
- 
--	return iavf_fix_netdev_vlan_features(adapter, features);
-+	features = iavf_fix_netdev_vlan_features(adapter, features);
-+
-+	return iavf_fix_strip_features(adapter, features);
- }
- 
- static const struct net_device_ops iavf_netdev_ops = {
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
-index 0b97b424e487..8ce6389b5815 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
-@@ -142,6 +142,7 @@ int iavf_send_vf_config_msg(struct iavf_adapter *adapter)
- 	       VIRTCHNL_VF_OFFLOAD_RSS_PCTYPE_V2 |
- 	       VIRTCHNL_VF_OFFLOAD_ENCAP |
- 	       VIRTCHNL_VF_OFFLOAD_VLAN_V2 |
-+	       VIRTCHNL_VF_OFFLOAD_CRC |
- 	       VIRTCHNL_VF_OFFLOAD_ENCAP_CSUM |
- 	       VIRTCHNL_VF_OFFLOAD_REQ_QUEUES |
- 	       VIRTCHNL_VF_OFFLOAD_ADQ |
-@@ -312,6 +313,9 @@ void iavf_configure_queues(struct iavf_adapter *adapter)
- 		vqpi->rxq.databuffer_size =
- 			ALIGN(adapter->rx_rings[i].rx_buf_len,
- 			      BIT_ULL(IAVF_RXQ_CTX_DBUFF_SHIFT));
-+		if (CRC_OFFLOAD_ALLOWED(adapter))
-+			vqpi->rxq.crc_disable = !!(adapter->netdev->features &
-+						   NETIF_F_RXFCS);
- 		vqpi++;
- 	}
- 
--- 
-2.34.1
+Tested-by: Pucha Himasekhar Reddy <himasekharx.reddy.pucha@intel.com> (A Contingent worker at Intel)
 
 _______________________________________________
 Intel-wired-lan mailing list
