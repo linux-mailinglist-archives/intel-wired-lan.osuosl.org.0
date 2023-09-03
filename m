@@ -1,87 +1,82 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id A5B3A790C1B
-	for <lists+intel-wired-lan@lfdr.de>; Sun,  3 Sep 2023 15:20:13 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 91589790C54
+	for <lists+intel-wired-lan@lfdr.de>; Sun,  3 Sep 2023 16:01:19 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 30F5740A01;
-	Sun,  3 Sep 2023 13:20:12 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 30F5740A01
+	by smtp3.osuosl.org (Postfix) with ESMTP id 427F560EC5;
+	Sun,  3 Sep 2023 14:01:15 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 427F560EC5
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1693747212;
-	bh=PoZhAncn/SeZWfEtKhSAzSIXfJ25EBtUQRpOFsQ7wg4=;
-	h=From:Date:References:In-Reply-To:To:Subject:List-Id:
+	s=default; t=1693749675;
+	bh=KQKP/lOUgaYR8JWwjlcvfN9XiZpo/wIsMwjqO0Hcmug=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=JU3bucMh5pw7HdaP1sg+P4g4OsyUGHgP/3DqPlNmg/96XYvTtGWWT/aXNDfHsedtk
-	 FBeFXe7HGzfrY/n2sDvJpkMWONlfYPgD2+wh/MziBnaXLVXtxmTPizE+MIxVsyqDRe
-	 J4lf7x0g4m2U4iyKfcYesAWR6Rg3AOcRhx+3LD0LXa7a8wYs2WtBdYTiLc+O4ZfmRy
-	 OYLssi1jAO+aqBTd5dzmr4hCOhLqHFwYFj6UIwvIZ+nlK2IXjRsWRthQPOo8v9LXhq
-	 +YcuIy5NF/ZEj8TGhzP0hwKiRv4LJrRPrPr9g5bxcwwJi/TsL18BF/MSDOmMcfawCO
-	 GgzGkRi9PjZQQ==
+	b=K1erM44/X3E3Ue+dRxGjpxbKMY7kNcW0Ddet3UP2ELeFEjLtTjNnKo04TzdEuTVG9
+	 qhCMemH1UbOhO0fzKbcOiVWypPB4pvxJN326RJDpadRLXVztrbMuLMgxYvD5iUfhgH
+	 ryHsRnheYd07qJHG8dahClqIcyA09P4633WxgLtL76F9bTXVXh9NCDKheQmiG9McXM
+	 g6HVyJADPL3FdasLmNoVzlzLYRmodweJiUBpSofjlUocND1zpbzsq2cka+nUaJUNXD
+	 jEE5jjRb52PMBmkorN9bb0Gf9FI3lN9ORf0plrsjmok53Dl/Y+GwETAaNmHWIvo9jf
+	 yTYdhiPPqanpA==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id m-jBbozbA6G2; Sun,  3 Sep 2023 13:20:11 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id gHUU3bpo-IC9; Sun,  3 Sep 2023 14:01:14 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id E1F724097B;
-	Sun,  3 Sep 2023 13:20:10 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E1F724097B
+	by smtp3.osuosl.org (Postfix) with ESMTP id 3EF9760C25;
+	Sun,  3 Sep 2023 14:01:14 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3EF9760C25
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id D95931BF3D9
- for <intel-wired-lan@lists.osuosl.org>; Sun,  3 Sep 2023 13:20:04 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id CD3EF1BF3D9
+ for <intel-wired-lan@lists.osuosl.org>; Sun,  3 Sep 2023 14:01:08 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id BEC1181E38
- for <intel-wired-lan@lists.osuosl.org>; Sun,  3 Sep 2023 13:20:04 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org BEC1181E38
+ by smtp2.osuosl.org (Postfix) with ESMTP id A5DD7404B4
+ for <intel-wired-lan@lists.osuosl.org>; Sun,  3 Sep 2023 14:01:08 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A5DD7404B4
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id fE4I8WhpU1YG for <intel-wired-lan@lists.osuosl.org>;
- Sun,  3 Sep 2023 13:20:04 +0000 (UTC)
-X-Greylist: delayed 442 seconds by postgrey-1.37 at util1.osuosl.org;
- Sun, 03 Sep 2023 13:20:03 UTC
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9383481E32
-Received: from sin.source.kernel.org (sin.source.kernel.org [145.40.73.55])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 9383481E32
- for <intel-wired-lan@lists.osuosl.org>; Sun,  3 Sep 2023 13:20:03 +0000 (UTC)
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits))
- (No client certificate requested)
- by sin.source.kernel.org (Postfix) with ESMTPS id B68F5CE0AAF;
- Sun,  3 Sep 2023 13:12:36 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 69C23C433CA;
- Sun,  3 Sep 2023 13:12:33 +0000 (UTC)
-Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org
- (localhost.localdomain [127.0.0.1])
- by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id
- 4C894E29F39; Sun,  3 Sep 2023 13:12:33 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id I6T5o5lXwwuo for <intel-wired-lan@lists.osuosl.org>;
+ Sun,  3 Sep 2023 14:01:03 +0000 (UTC)
+Received: from vps0.lunn.ch (vps0.lunn.ch [156.67.10.101])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 233A6401B2
+ for <intel-wired-lan@lists.osuosl.org>; Sun,  3 Sep 2023 14:01:03 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 233A6401B2
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+ (envelope-from <andrew@lunn.ch>)
+ id 1qcner-005gdi-GE; Sun, 03 Sep 2023 16:00:57 +0200
+Date: Sun, 3 Sep 2023 16:00:57 +0200
+From: Andrew Lunn <andrew@lunn.ch>
+To: Pawel Chmielewski <pawel.chmielewski@intel.com>
+Message-ID: <87ea2635-c0b3-4de4-bc65-cbc33a0d5814@lunn.ch>
+References: <20230819093941.15163-1-paul.greenwalt@intel.com>
+ <e6e508a7-3cbc-4568-a1f5-c13b5377f77e@lunn.ch>
+ <e676df0e-b736-069c-77c4-ae58ad1e24f8@intel.com>
+ <ZOZISCYNWEKqBotb@baltimore>
+ <a9fee3a7-8c31-e048-32eb-ed82b8233aee@intel.com>
+ <51ee86d8-5baa-4419-9419-bcf737229868@lunn.ch>
+ <ZPCQ5DNU8k8mfAct@baltimore>
 MIME-Version: 1.0
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <169374675330.16952.10821656752298867430.git-patchwork-notify@kernel.org>
-Date: Sun, 03 Sep 2023 13:12:33 +0000
-References: <20230831121914.660875-1-vinschen@redhat.com>
-In-Reply-To: <20230831121914.660875-1-vinschen@redhat.com>
-To: Corinna Vinschen <vinschen@redhat.com>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1693746753;
- bh=g8pSR9QSVK6IeE2/A0s/1+eGsGP0iQjvdmE/KxRxGHs=;
- h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
- b=bGcMumlA/LMwxHzciuPWXEmAmoGpA8XWLb+ZxkzxMGAEh6tVIyf9qQRK43A8t2FMW
- mQhhBJuN5VVYjh8KcC/wjBFlZyOoaBHn/qkpGAumIimER83M6Qg7Q/YVqi5CXwE307
- NKT/ecSNY4LjYP2/7Phsenq+jsSuV2pzVPsXqe2TEgglG24RAHS21ZcZ3YfK1Vn5SC
- fg5pztGMbFctuS1lX+q7kYuzDaFUwvWrF2/HBM4yzVkHkrh9cj8qxFH8TirM4h2cU5
- CWp+gk4CjowMmt0dGBL7j8uxDahM+wJcVl6xlq1GmalOh5VleOzb8iExsSBXy9aujv
- UIiZPXpmZnlVw==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=bGcMumlA
-Subject: Re: [Intel-wired-lan] [PATCH v2 net] igb: disable virtualization
- features on 82580
+Content-Disposition: inline
+In-Reply-To: <ZPCQ5DNU8k8mfAct@baltimore>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt;
+ c=relaxed/relaxed; d=lunn.ch; 
+ s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+ References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+ Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+ Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+ bh=FRmvoZb9t6APhYJBtCKJrCvXQcrJ9in/X9+fCHbnW6w=; b=3tXvc7/7TjDjVhrzlFQFzrSQsj
+ JHAXRK4NsORbzL6xAJaeJNyoBDCf+z0+YTgjpDlDVQ/chI3DRuJ6Bf9wy3B2c8co3iH4DZ+I9Yiei
+ hjSddfw8kLk+SJ0tMAjjDaM4q1sxAiLmkdTslvP3dxZ79BOPctPlQ2WOarayMQHmtpaI=;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (1024-bit key) header.d=lunn.ch header.i=@lunn.ch
+ header.a=rsa-sha256 header.s=20171124 header.b=3tXvc7/7
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v2 2/9] ethtool: Add forced
+ speed to supported link modes maps
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,38 +89,28 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: intel-wired-lan@lists.osuosl.org, anthony.l.nguyen@intel.com,
- jesse.brandeburg@intel.com, netdev@vger.kernel.org
+Cc: aelior@marvell.com, manishc@marvell.com, netdev@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org, "Greenwalt, Paul" <paul.greenwalt@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hello:
+> Let me check if I understand correctly- is that what was sent with the
+> v3 [1] , with the initialization helper (ethtool_forced_speed_maps_init)
+> and the structure map in the ethtool code? Or do you have another helper
+> in mind?
 
-This patch was applied to netdev/net.git (main)
-by David S. Miller <davem@davemloft.net>:
+Sorry for the late reply, been on vacation.
 
-On Thu, 31 Aug 2023 14:19:13 +0200 you wrote:
-> Disable virtualization features on 82580 just as on i210/i211.
-> This avoids that virt functions are acidentally called on 82850.
-> 
-> Fixes: 55cac248caa4 ("igb: Add full support for 82580 devices")
-> Signed-off-by: Corinna Vinschen <vinschen@redhat.com>
-> ---
->  drivers/net/ethernet/intel/igb/igb_main.c | 5 +++--
->  1 file changed, 3 insertions(+), 2 deletions(-)
+The main thing is you try to reuse the table:
 
-Here is the summary with links:
-  - [v2,net] igb: disable virtualization features on 82580
-    https://git.kernel.org/netdev/net/c/fa09bc40b21a
+static const struct phy_setting settings[] = {}
 
-You are awesome, thank you!
--- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
+If you can build your helper on top of phy_lookup_setting() even
+better. You don't need a phy_device to use those.
 
-
+	Andrew
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
