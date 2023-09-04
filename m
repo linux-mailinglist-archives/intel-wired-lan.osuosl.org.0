@@ -2,86 +2,86 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 33B62790FFD
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  4 Sep 2023 04:15:58 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id DE1CB790FFE
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  4 Sep 2023 04:16:02 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id CE3BA81EA9;
-	Mon,  4 Sep 2023 02:15:56 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org CE3BA81EA9
+	by smtp1.osuosl.org (Postfix) with ESMTP id 6C7ED81E8C;
+	Mon,  4 Sep 2023 02:16:01 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6C7ED81E8C
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1693793756;
-	bh=yEwIQ0nBpt9kpf0l98tzlkS4JkZARnj8lcf7BM/YfW8=;
+	s=default; t=1693793761;
+	bh=sS+j6kzK5gyy+lU7NEqDYG5AaCo7uNJd29wf6Ab55Tk=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=Ae8mEK7dwbmX/FeZHCTWJaAAy7FF9GpSsvUusKRHivY+nlJw/FqoR6hGAqmaFMeHe
-	 qmqfX/TCg6eHwGzuyR0i22w9HGE4u3shR+ZdrB7AzY5smxG3SQeCcImoaIJ/RtAXjj
-	 ATAeUuSRUDKZOqZ6sPoBGkzO+CZlVA8nSMx+xb65wsU1+5/AZF+rsszPYyzm5INi7a
-	 kMC4pdoc25qWSFf3sbuSAcA74c4mgOGfBGkOltJnRr7PT9nBNkDw7fSyjfeOYHtEBr
-	 mnmQcSrrABZiIYkLE6UCY1QMXbPoaWgqYzk2XJKlne3sHsrQjGVHXCXIEEUbSj0KvM
-	 KHAFKnRXEnPUQ==
+	b=4hmnZVXd7OFNz74sSZNqUvkB3ogqA1cu2fnroV+VOcOyg1jzQMevqGfPdhd78Fhh3
+	 c73LO1/u+TIvfZ1hnzcTo/hGXJipnx1KMO5bVyBD7UEEcELCyqiSfxQ7a+d6xUmCAG
+	 6l0J4txbTolr9hICRWRpvr0MuaRc2UM2uZGs3vhwONIhmXz6wi8JJ2pe1F5xUsjM+y
+	 Ws3XIqrGobLzG38yeVCtZmgFKHFJr1tpxmd5C5AsnaJj12ef1BhjzPR5UKaM4QQ16V
+	 cqWOlML1okToh4YSJCIQrB8adZf6dqBW6vjXB8AiNB2v8ZKhWQgY1hFA7Ia/iE13YI
+	 A+TbTzguMriGQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id yryoCwImAXcn; Mon,  4 Sep 2023 02:15:55 +0000 (UTC)
+	with ESMTP id FYfIuhWTgJZN; Mon,  4 Sep 2023 02:16:00 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 687F881E8C;
-	Mon,  4 Sep 2023 02:15:55 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 687F881E8C
+	by smtp1.osuosl.org (Postfix) with ESMTP id 1A73E81E74;
+	Mon,  4 Sep 2023 02:16:00 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1A73E81E74
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 9B95E1BF360
- for <intel-wired-lan@lists.osuosl.org>; Mon,  4 Sep 2023 02:15:46 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 0F24E1BF360
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  4 Sep 2023 02:15:51 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 81F3C81E76
- for <intel-wired-lan@lists.osuosl.org>; Mon,  4 Sep 2023 02:15:46 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 81F3C81E76
+ by smtp1.osuosl.org (Postfix) with ESMTP id DBCDC81E74
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  4 Sep 2023 02:15:50 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org DBCDC81E74
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 1dENCydjI2Nt for <intel-wired-lan@lists.osuosl.org>;
- Mon,  4 Sep 2023 02:15:45 +0000 (UTC)
+ with ESMTP id UTTr8Xy2ROLi for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  4 Sep 2023 02:15:50 +0000 (UTC)
 Received: from mgamail.intel.com (mgamail.intel.com [134.134.136.24])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 5B23081EA0
- for <intel-wired-lan@lists.osuosl.org>; Mon,  4 Sep 2023 02:15:45 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 5B23081EA0
-X-IronPort-AV: E=McAfee;i="6600,9927,10822"; a="379215297"
-X-IronPort-AV: E=Sophos;i="6.02,225,1688454000"; d="scan'208";a="379215297"
+ by smtp1.osuosl.org (Postfix) with ESMTPS id CB9CE81E76
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  4 Sep 2023 02:15:49 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org CB9CE81E76
+X-IronPort-AV: E=McAfee;i="6600,9927,10822"; a="379215307"
+X-IronPort-AV: E=Sophos;i="6.02,225,1688454000"; d="scan'208";a="379215307"
 Received: from orsmga008.jf.intel.com ([10.7.209.65])
  by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 03 Sep 2023 19:15:45 -0700
+ 03 Sep 2023 19:15:49 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10822"; a="769826919"
-X-IronPort-AV: E=Sophos;i="6.02,225,1688454000"; d="scan'208";a="769826919"
+X-IronPort-AV: E=McAfee;i="6600,9927,10822"; a="769826926"
+X-IronPort-AV: E=Sophos;i="6.02,225,1688454000"; d="scan'208";a="769826926"
 Received: from dpdk-jf-ntb-v2.sh.intel.com ([10.67.119.19])
- by orsmga008.jf.intel.com with ESMTP; 03 Sep 2023 19:15:40 -0700
+ by orsmga008.jf.intel.com with ESMTP; 03 Sep 2023 19:15:45 -0700
 From: Junfeng Guo <junfeng.guo@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Mon,  4 Sep 2023 10:14:49 +0800
-Message-Id: <20230904021455.3944605-10-junfeng.guo@intel.com>
+Date: Mon,  4 Sep 2023 10:14:50 +0800
+Message-Id: <20230904021455.3944605-11-junfeng.guo@intel.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20230904021455.3944605-1-junfeng.guo@intel.com>
 References: <20230904021455.3944605-1-junfeng.guo@intel.com>
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1693793745; x=1725329745;
+ t=1693793749; x=1725329749;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=V56aoUsDhYZoNlAORzKmdymW7lVjIwDC6aNR7co2fPs=;
- b=kr1fJxotwhw10I1YS1e7dhFlzcK1zdIpIlno4Wc4ByFhuDPRkvB1F3Mj
- AhCvmsPENfERu4aQkm7umxF2AKaKFt7qYIPk/oYl34DbLRwU1hAUZhnfe
- pYEJPGVd0TS2hl/q8HSux/l/nl1dsw8oxIpMXiOhp69UIXq6BWE6/c6Ka
- AsenqVtQQ1/HjTgk2IKCDVW7HRvwsXjxownJ89AaDF2a7X5EQ8KtHmUcF
- ZdE/RMQ6C4k5W+oETXGHInUGKR/uG44pEi6R03BwQsglyUqjcvO4ppP1W
- MkB69BtpMwU6y3Kzyq1fRxj7+qAxlo+Nz0KRxyrULEvzA6WojznTNisAK
- w==;
+ bh=tFodM5pzzULf5ovMGpFKc7vtqdFTGW9SMB4weKcztPs=;
+ b=BGSLv5lRQE7QXPA5QO6rlpmX9A2K6HFFvtEfHpUJwlxtFGIAEJi27aGP
+ uaXe9i9d0JCQziywH+0u6HPoxNRW87sq1fXgn/Ej5j36LYuiiA3ZheR5s
+ 9ScjkGE0dcwef90v0KtnsedKULdHai3jEhUJC8sog41+PJHjHNFcsOCxG
+ QaRUH6/ix2Vteyvz7rs/et3C0J+TbQn6HVS2Jc6vsA0enS/TWtFvKtSxW
+ Dvwv9jw5tSNgCAA48psmcC5s4Mc6MrjL0m22NV3XM9Hf4cl9h2hGGLKiQ
+ ooQommcK34ORFjxfreN/nbrNDdh0MV/4pdp/rcBD9zdRahR+Z/8UiwHUY
+ A==;
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=kr1fJxot
-Subject: [Intel-wired-lan] [PATCH iwl-next v9 09/15] ice: init XLT key
- builder for parser
+ header.a=rsa-sha256 header.s=Intel header.b=BGSLv5lR
+Subject: [Intel-wired-lan] [PATCH iwl-next v9 10/15] ice: add parser runtime
+ skeleton
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -102,383 +102,306 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Parse below DDP section into struct ice_xlt_kb:
-	ICE_SID_XLT_KEY_BUILDER_SW
-	ICE_SID_XLT_KEY_BUILDER_ACL
-	ICE_SID_XLT_KEY_BUILDER_FD
-	ICE_SID_XLT_KEY_BUILDER_RSS
+Add parser runtime data struct ice_parser_rt.
+
+Add below APIs for parser runtime preparation:
+- ice_parser_rt_reset
+- ice_parser_rt_pkt_buf_set
+
+Add below API skeleton for parser runtime execution:
+- ice_parser_rt_execute
 
 Signed-off-by: Junfeng Guo <junfeng.guo@intel.com>
 ---
- drivers/net/ethernet/intel/ice/Makefile     |   1 +
- drivers/net/ethernet/intel/ice/ice_parser.c |  28 +++
- drivers/net/ethernet/intel/ice/ice_parser.h |   9 +
- drivers/net/ethernet/intel/ice/ice_xlt_kb.c | 230 ++++++++++++++++++++
- drivers/net/ethernet/intel/ice/ice_xlt_kb.h |  33 +++
- 5 files changed, 301 insertions(+)
- create mode 100644 drivers/net/ethernet/intel/ice/ice_xlt_kb.c
- create mode 100644 drivers/net/ethernet/intel/ice/ice_xlt_kb.h
+ drivers/net/ethernet/intel/ice/Makefile       |  1 +
+ drivers/net/ethernet/intel/ice/ice_common.h   |  2 +
+ drivers/net/ethernet/intel/ice/ice_parser.c   | 40 ++++++++
+ drivers/net/ethernet/intel/ice/ice_parser.h   | 28 ++++++
+ .../net/ethernet/intel/ice/ice_parser_rt.c    | 92 +++++++++++++++++++
+ .../net/ethernet/intel/ice/ice_parser_rt.h    | 40 ++++++++
+ 6 files changed, 203 insertions(+)
+ create mode 100644 drivers/net/ethernet/intel/ice/ice_parser_rt.c
+ create mode 100644 drivers/net/ethernet/intel/ice/ice_parser_rt.h
 
 diff --git a/drivers/net/ethernet/intel/ice/Makefile b/drivers/net/ethernet/intel/ice/Makefile
-index 73245f7b0750..607730663766 100644
+index 607730663766..a0c3d4804300 100644
 --- a/drivers/net/ethernet/intel/ice/Makefile
 +++ b/drivers/net/ethernet/intel/ice/Makefile
-@@ -35,6 +35,7 @@ ice-y := ice_main.o	\
- 	 ice_mk_grp.o    \
+@@ -36,6 +36,7 @@ ice-y := ice_main.o	\
  	 ice_proto_grp.o \
  	 ice_flg_rd.o    \
-+	 ice_xlt_kb.o    \
+ 	 ice_xlt_kb.o    \
++	 ice_parser_rt.o \
  	 ice_idc.o	\
  	 ice_devlink.o	\
  	 ice_ddp.o	\
+diff --git a/drivers/net/ethernet/intel/ice/ice_common.h b/drivers/net/ethernet/intel/ice/ice_common.h
+index 4052227d5791..2364e8d81eaf 100644
+--- a/drivers/net/ethernet/intel/ice/ice_common.h
++++ b/drivers/net/ethernet/intel/ice/ice_common.h
+@@ -17,6 +17,8 @@
+ #define ICE_SQ_SEND_DELAY_TIME_MS	10
+ #define ICE_SQ_SEND_MAX_EXECUTE		3
+ 
++#define ICE_ERR_NOT_IMPL		-1
++
+ int ice_init_hw(struct ice_hw *hw);
+ void ice_deinit_hw(struct ice_hw *hw);
+ int ice_check_reset(struct ice_hw *hw);
 diff --git a/drivers/net/ethernet/intel/ice/ice_parser.c b/drivers/net/ethernet/intel/ice/ice_parser.c
-index 3c3f7d6bea52..6499bb774667 100644
+index 6499bb774667..1bd1417e32c6 100644
 --- a/drivers/net/ethernet/intel/ice/ice_parser.c
 +++ b/drivers/net/ethernet/intel/ice/ice_parser.c
-@@ -229,6 +229,30 @@ int ice_parser_create(struct ice_hw *hw, struct ice_parser **psr)
- 		goto err;
- 	}
+@@ -156,6 +156,7 @@ int ice_parser_create(struct ice_hw *hw, struct ice_parser **psr)
+ 		return -ENOMEM;
  
-+	p->xlt_kb_sw = ice_xlt_kb_get_sw(hw);
-+	if (!p->xlt_kb_sw) {
-+		status = -EINVAL;
-+		goto err;
-+	}
-+
-+	p->xlt_kb_acl = ice_xlt_kb_get_acl(hw);
-+	if (!p->xlt_kb_acl) {
-+		status = -EINVAL;
-+		goto err;
-+	}
-+
-+	p->xlt_kb_fd = ice_xlt_kb_get_fd(hw);
-+	if (!p->xlt_kb_fd) {
-+		status = -EINVAL;
-+		goto err;
-+	}
-+
-+	p->xlt_kb_rss = ice_xlt_kb_get_rss(hw);
-+	if (!p->xlt_kb_rss) {
-+		status = -EINVAL;
-+		goto err;
-+	}
-+
- 	*psr = p;
- 	return 0;
- err:
-@@ -254,6 +278,10 @@ void ice_parser_destroy(struct ice_parser *psr)
- 	devm_kfree(ice_hw_to_dev(psr->hw), psr->mk_grp_table);
- 	devm_kfree(ice_hw_to_dev(psr->hw), psr->proto_grp_table);
- 	devm_kfree(ice_hw_to_dev(psr->hw), psr->flg_rd_table);
-+	devm_kfree(ice_hw_to_dev(psr->hw), psr->xlt_kb_sw);
-+	devm_kfree(ice_hw_to_dev(psr->hw), psr->xlt_kb_acl);
-+	devm_kfree(ice_hw_to_dev(psr->hw), psr->xlt_kb_fd);
-+	devm_kfree(ice_hw_to_dev(psr->hw), psr->xlt_kb_rss);
+ 	p->hw = hw;
++	p->rt.psr = p;
+ 
+ 	p->imem_table = ice_imem_table_get(hw);
+ 	if (!p->imem_table) {
+@@ -285,3 +286,42 @@ void ice_parser_destroy(struct ice_parser *psr)
  
  	devm_kfree(ice_hw_to_dev(psr->hw), psr);
  }
++
++/**
++ * ice_parser_run - parse on a packet in binary and return the result
++ * @psr: pointer to a parser instance
++ * @pkt_buf: packet data
++ * @pkt_len: packet length
++ * @rslt: input/output parameter to save parser result.
++ */
++int ice_parser_run(struct ice_parser *psr, const u8 *pkt_buf,
++		   int pkt_len, struct ice_parser_result *rslt)
++{
++	ice_parser_rt_reset(&psr->rt);
++	ice_parser_rt_pktbuf_set(&psr->rt, pkt_buf, pkt_len);
++
++	return ice_parser_rt_execute(&psr->rt, rslt);
++}
++
++/**
++ * ice_parser_result_dump - dump a parser result info
++ * @hw: pointer to the hardware structure
++ * @rslt: parser result info to dump
++ */
++void ice_parser_result_dump(struct ice_hw *hw, struct ice_parser_result *rslt)
++{
++	int i;
++
++	dev_info(ice_hw_to_dev(hw), "ptype = %d\n", rslt->ptype);
++	for (i = 0; i < rslt->po_num; i++)
++		dev_info(ice_hw_to_dev(hw), "proto = %d, offset = %d\n",
++			 rslt->po[i].proto_id, rslt->po[i].offset);
++
++	dev_info(ice_hw_to_dev(hw), "flags_psr = 0x%016llx\n",
++		 (unsigned long long)rslt->flags_psr);
++	dev_info(ice_hw_to_dev(hw), "flags_pkt = 0x%016llx\n",
++		 (unsigned long long)rslt->flags_pkt);
++	dev_info(ice_hw_to_dev(hw), "flags_sw = 0x%04x\n", rslt->flags_sw);
++	dev_info(ice_hw_to_dev(hw), "flags_fd = 0x%04x\n", rslt->flags_fd);
++	dev_info(ice_hw_to_dev(hw), "flags_rss = 0x%04x\n", rslt->flags_rss);
++}
 diff --git a/drivers/net/ethernet/intel/ice/ice_parser.h b/drivers/net/ethernet/intel/ice/ice_parser.h
-index 62123788e0a2..ca71ef4f50f5 100644
+index ca71ef4f50f5..5f98f3031294 100644
 --- a/drivers/net/ethernet/intel/ice/ice_parser.h
 +++ b/drivers/net/ethernet/intel/ice/ice_parser.h
-@@ -12,6 +12,7 @@
- #include "ice_mk_grp.h"
+@@ -13,6 +13,7 @@
  #include "ice_proto_grp.h"
  #include "ice_flg_rd.h"
-+#include "ice_xlt_kb.h"
+ #include "ice_xlt_kb.h"
++#include "ice_parser_rt.h"
  
  #define ICE_SEC_DATA_OFFSET				4
  #define ICE_SID_RXPARSER_IMEM_ENTRY_SIZE		48
-@@ -56,6 +57,14 @@ struct ice_parser {
- 	struct ice_proto_grp_item *proto_grp_table;
- 	/* load data from section ICE_SID_RXPARSER_FLAG_REDIR */
- 	struct ice_flg_rd_item *flg_rd_table;
-+	/* load data from section ICE_SID_XLT_KEY_BUILDER_SW */
-+	struct ice_xlt_kb *xlt_kb_sw;
-+	/* load data from section ICE_SID_XLT_KEY_BUILDER_ACL */
-+	struct ice_xlt_kb *xlt_kb_acl;
-+	/* load data from section ICE_SID_XLT_KEY_BUILDER_FD */
-+	struct ice_xlt_kb *xlt_kb_fd;
-+	/* load data from section ICE_SID_XLT_KEY_BUILDER_RSS */
-+	struct ice_xlt_kb *xlt_kb_rss;
+@@ -30,6 +31,8 @@
+ #define ICE_SEC_LBL_DATA_OFFSET				2
+ #define ICE_SID_LBL_ENTRY_SIZE				66
+ 
++#define ICE_PARSER_PROTO_OFF_PAIR_SIZE			16
++
+ struct ice_parser {
+ 	struct ice_hw *hw; /* pointer to the hardware structure */
+ 
+@@ -65,8 +68,33 @@ struct ice_parser {
+ 	struct ice_xlt_kb *xlt_kb_fd;
+ 	/* load data from section ICE_SID_XLT_KEY_BUILDER_RSS */
+ 	struct ice_xlt_kb *xlt_kb_rss;
++	struct ice_parser_rt rt; /* parser runtime */
  };
  
  int ice_parser_create(struct ice_hw *hw, struct ice_parser **psr);
-diff --git a/drivers/net/ethernet/intel/ice/ice_xlt_kb.c b/drivers/net/ethernet/intel/ice/ice_xlt_kb.c
+ void ice_parser_destroy(struct ice_parser *psr);
++
++struct ice_parser_proto_off {
++	u8 proto_id;	/* hardware protocol ID */
++	u16 offset;	/* offset from the start of the protocol header */
++};
++
++#define ICE_PARSER_FLAG_PSR_SIZE	8
++
++struct ice_parser_result {
++	u16 ptype;	/* 16 bits hardware PTYPE */
++	/* array of protocol and header offset pairs */
++	struct ice_parser_proto_off po[ICE_PARSER_PROTO_OFF_PAIR_SIZE];
++	int po_num;	/* # of protocol-offset pairs must <= 16 */
++	u64 flags_psr;	/* 64 bits parser flags */
++	u64 flags_pkt;	/* 64 bits packet flags */
++	u16 flags_sw;	/* 16 bits key builder flag for SW */
++	u16 flags_acl;	/* 16 bits key builder flag for ACL */
++	u16 flags_fd;	/* 16 bits key builder flag for FD */
++	u16 flags_rss;	/* 16 bits key builder flag for RSS */
++};
++
++int ice_parser_run(struct ice_parser *psr, const u8 *pkt_buf,
++		   int pkt_len, struct ice_parser_result *rslt);
++void ice_parser_result_dump(struct ice_hw *hw, struct ice_parser_result *rslt);
+ #endif /* _ICE_PARSER_H_ */
+diff --git a/drivers/net/ethernet/intel/ice/ice_parser_rt.c b/drivers/net/ethernet/intel/ice/ice_parser_rt.c
 new file mode 100644
-index 000000000000..776f5db686f8
+index 000000000000..a6644f4b3324
 --- /dev/null
-+++ b/drivers/net/ethernet/intel/ice/ice_xlt_kb.c
-@@ -0,0 +1,230 @@
++++ b/drivers/net/ethernet/intel/ice/ice_parser_rt.c
+@@ -0,0 +1,92 @@
 +// SPDX-License-Identifier: GPL-2.0
 +/* Copyright (C) 2023 Intel Corporation */
 +
 +#include "ice_common.h"
 +
-+static void _ice_xlt_kb_entry_dump(struct ice_hw *hw,
-+				   struct ice_xlt_kb_entry *entry, int idx)
++static void _ice_rt_tsr_set(struct ice_parser_rt *rt, u16 tsr)
 +{
-+	int i;
++	rt->gpr[ICE_GPR_TSR_IDX] = tsr;
++}
 +
-+	dev_info(ice_hw_to_dev(hw), "key builder entry %d\n", idx);
-+	dev_info(ice_hw_to_dev(hw), "\txlt1_ad_sel = %d\n",
-+		 entry->xlt1_ad_sel);
-+	dev_info(ice_hw_to_dev(hw), "\txlt2_ad_sel = %d\n",
-+		 entry->xlt2_ad_sel);
++static void _ice_rt_ho_set(struct ice_parser_rt *rt, u16 ho)
++{
++	rt->gpr[ICE_GPR_HO_IDX] = ho;
++	memcpy(&rt->gpr[ICE_GPR_HV_IDX], &rt->pkt_buf[ho], ICE_GPR_HV_SIZE);
++}
 +
-+	for (i = 0; i < ICE_XLT_KB_FLAG0_14_CNT; i++)
-+		dev_info(ice_hw_to_dev(hw), "\tflg%d_sel = %d\n", i,
-+			 entry->flg0_14_sel[i]);
++static void _ice_rt_np_set(struct ice_parser_rt *rt, u16 pc)
++{
++	rt->gpr[ICE_GPR_NP_IDX] = pc;
++}
 +
-+	dev_info(ice_hw_to_dev(hw), "\txlt1_md_sel = %d\n",
-+		 entry->xlt1_md_sel);
-+	dev_info(ice_hw_to_dev(hw), "\txlt2_md_sel = %d\n",
-+		 entry->xlt2_md_sel);
++static void _ice_rt_nn_set(struct ice_parser_rt *rt, u16 node)
++{
++	rt->gpr[ICE_GPR_NN_IDX] = node;
++}
++
++static void _ice_rt_flag_set(struct ice_parser_rt *rt, int idx, bool val)
++{
++	int y = idx / ICE_GPR_FLG_SIZE;
++	int x = idx % ICE_GPR_FLG_SIZE;
++
++	if (val)
++		rt->gpr[ICE_GPR_FLG_IDX + y] |= (u16)BIT(x);
 +}
 +
 +/**
-+ * ice_xlt_kb_dump - dump a xlt key build info
-+ * @hw: pointer to the hardware structure
-+ * @kb: key build to dump
++ * ice_parser_rt_reset - reset the parser runtime
++ * @rt: pointer to the parser runtime
 + */
-+void ice_xlt_kb_dump(struct ice_hw *hw, struct ice_xlt_kb *kb)
++void ice_parser_rt_reset(struct ice_parser_rt *rt)
 +{
++	struct ice_parser *psr = rt->psr;
++	struct ice_metainit_item *mi = &psr->mi_table[0];
 +	int i;
 +
-+	dev_info(ice_hw_to_dev(hw), "xlt1_pm = %d\n", kb->xlt1_pm);
-+	dev_info(ice_hw_to_dev(hw), "xlt2_pm = %d\n", kb->xlt2_pm);
-+	dev_info(ice_hw_to_dev(hw), "prof_id_pm = %d\n", kb->prof_id_pm);
-+	dev_info(ice_hw_to_dev(hw), "flag15 lo = 0x%08x\n", (u32)kb->flag15);
-+	dev_info(ice_hw_to_dev(hw), "flag15 hi = 0x%08x\n",
-+		 (u32)(kb->flag15 >> (sizeof(u32) * BITS_PER_BYTE)));
++	memset(rt, 0, sizeof(*rt));
 +
-+	for (i = 0; i < ICE_XLT_KB_TBL_CNT; i++)
-+		_ice_xlt_kb_entry_dump(hw, &kb->entries[i], i);
-+}
++	/* TSR: TCAM Search Register */
++	_ice_rt_tsr_set(rt, mi->tsr);
++	/* HO: Next Parsing Cycle Header Offset */
++	_ice_rt_ho_set(rt, mi->ho);
++	/* NP: Next Parsing Cycle */
++	_ice_rt_np_set(rt, mi->pc);
++	/* NN: Next Parsing Cycle Node ID */
++	_ice_rt_nn_set(rt, mi->pg_rn);
 +
-+#define ICE_XLT_KB_X1AS_S	32	/* offset for the 1st 64-bits field */
-+#define ICE_XLT_KB_X1AS		GENMASK_ULL(34 - ICE_XLT_KB_X1AS_S, 32 - ICE_XLT_KB_X1AS_S)
-+#define ICE_XLT_KB_X2AS		GENMASK_ULL(37 - ICE_XLT_KB_X1AS_S, 35 - ICE_XLT_KB_X1AS_S)
-+#define ICE_XLT_KB_FL00		GENMASK_ULL(46 - ICE_XLT_KB_X1AS_S, 38 - ICE_XLT_KB_X1AS_S)
-+#define ICE_XLT_KB_FL01		GENMASK_ULL(55 - ICE_XLT_KB_X1AS_S, 47 - ICE_XLT_KB_X1AS_S)
-+#define ICE_XLT_KB_FL02		GENMASK_ULL(64 - ICE_XLT_KB_X1AS_S, 56 - ICE_XLT_KB_X1AS_S)
-+#define ICE_XLT_KB_FL03		GENMASK_ULL(73 - ICE_XLT_KB_X1AS_S, 65 - ICE_XLT_KB_X1AS_S)
-+#define ICE_XLT_KB_FL04		GENMASK_ULL(82 - ICE_XLT_KB_X1AS_S, 74 - ICE_XLT_KB_X1AS_S)
-+#define ICE_XLT_KB_FL05		GENMASK_ULL(91 - ICE_XLT_KB_X1AS_S, 83 - ICE_XLT_KB_X1AS_S)
-+#define ICE_XLT_KB_FL06_S	92	/* offset for the 2nd 64-bits field */
-+#define ICE_XLT_KB_FL06		GENMASK_ULL(100 - ICE_XLT_KB_FL06_S, 92 - ICE_XLT_KB_FL06_S)
-+#define ICE_XLT_KB_FL07		GENMASK_ULL(109 - ICE_XLT_KB_FL06_S, 101 - ICE_XLT_KB_FL06_S)
-+#define ICE_XLT_KB_FL08		GENMASK_ULL(118 - ICE_XLT_KB_FL06_S, 110 - ICE_XLT_KB_FL06_S)
-+#define ICE_XLT_KB_FL09		GENMASK_ULL(127 - ICE_XLT_KB_FL06_S, 119 - ICE_XLT_KB_FL06_S)
-+#define ICE_XLT_KB_FL10		GENMASK_ULL(136 - ICE_XLT_KB_FL06_S, 128 - ICE_XLT_KB_FL06_S)
-+#define ICE_XLT_KB_FL11		GENMASK_ULL(145 - ICE_XLT_KB_FL06_S, 137 - ICE_XLT_KB_FL06_S)
-+#define ICE_XLT_KB_FL12_S	146	/* offset for the 3rd 64-bits field */
-+#define ICE_XLT_KB_FL12		GENMASK_ULL(154 - ICE_XLT_KB_FL12_S, 146 - ICE_XLT_KB_FL12_S)
-+#define ICE_XLT_KB_FL13		GENMASK_ULL(163 - ICE_XLT_KB_FL12_S, 155 - ICE_XLT_KB_FL12_S)
-+#define ICE_XLT_KB_FL14		GENMASK_ULL(181 - ICE_XLT_KB_FL12_S, 164 - ICE_XLT_KB_FL12_S)
-+#define ICE_XLT_KB_X1MS		GENMASK_ULL(186 - ICE_XLT_KB_FL12_S, 182 - ICE_XLT_KB_FL12_S)
-+#define ICE_XLT_KB_X2MS		GENMASK_ULL(191 - ICE_XLT_KB_FL12_S, 187 - ICE_XLT_KB_FL12_S)
++	rt->psr = psr;
 +
-+/** The function parses a 192 bits XLT Key Builder entry with below format:
-+ *  BIT 0-31:	reserved
-+ *  BIT 32-34:	XLT1 AdSel	(entry->xlt1_ad_sel)
-+ *  BIT 35-37:	XLT2 AdSel	(entry->xlt2_ad_sel)
-+ *  BIT 38-46:	Flag 0 Select	(entry->flg0_14_sel[0])
-+ *  BIT 47-55:	Flag 1 Select	(entry->flg0_14_sel[1])
-+ *  BIT 56-64:	Flag 2 Select	(entry->flg0_14_sel[2])
-+ *  BIT 65-73:	Flag 3 Select	(entry->flg0_14_sel[3])
-+ *  BIT 74-82:	Flag 4 Select	(entry->flg0_14_sel[4])
-+ *  BIT 83-91:	Flag 5 Select	(entry->flg0_14_sel[5])
-+ *  BIT 92-100:	Flag 6 Select	(entry->flg0_14_sel[6])
-+ *  BIT 101-109:Flag 7 Select	(entry->flg0_14_sel[7])
-+ *  BIT 110-118:Flag 8 Select	(entry->flg0_14_sel[8])
-+ *  BIT 119-127:Flag 9 Select	(entry->flg0_14_sel[9])
-+ *  BIT 128-136:Flag 10 Select	(entry->flg0_14_sel[10])
-+ *  BIT 137-145:Flag 11 Select	(entry->flg0_14_sel[11])
-+ *  BIT 146-154:Flag 12 Select	(entry->flg0_14_sel[12])
-+ *  BIT 155-163:Flag 13 Select	(entry->flg0_14_sel[13])
-+ *  BIT 164-172:Flag 14 Select	(entry->flg0_14_sel[14])
-+ *  BIT 173-181:reserved
-+ *  BIT 182-186:XLT1 MdSel	(entry->xlt1_md_sel)
-+ *  BIT 187-191:XLT2 MdSel	(entry->xlt2_md_sel)
-+ */
-+static void _ice_kb_entry_init(struct ice_xlt_kb_entry *entry, u8 *data)
-+{
-+	u8 idd, off, i = 0;
-+	u64 d64;
-+
-+	idd = ICE_XLT_KB_X1AS_S / BITS_PER_BYTE;
-+	off = ICE_XLT_KB_X1AS_S % BITS_PER_BYTE;
-+	d64 = *((u64 *)&data[idd]) >> off;
-+
-+	entry->xlt1_ad_sel	= FIELD_GET(ICE_XLT_KB_X1AS, d64);
-+	entry->xlt2_ad_sel	= FIELD_GET(ICE_XLT_KB_X2AS, d64);
-+
-+	entry->flg0_14_sel[i++]	= FIELD_GET(ICE_XLT_KB_FL00, d64);
-+	entry->flg0_14_sel[i++]	= FIELD_GET(ICE_XLT_KB_FL01, d64);
-+	entry->flg0_14_sel[i++]	= FIELD_GET(ICE_XLT_KB_FL02, d64);
-+	entry->flg0_14_sel[i++]	= FIELD_GET(ICE_XLT_KB_FL03, d64);
-+	entry->flg0_14_sel[i++]	= FIELD_GET(ICE_XLT_KB_FL04, d64);
-+	entry->flg0_14_sel[i++]	= FIELD_GET(ICE_XLT_KB_FL05, d64);
-+
-+	idd = ICE_XLT_KB_FL06_S / BITS_PER_BYTE;
-+	off = ICE_XLT_KB_FL06_S % BITS_PER_BYTE;
-+	d64 = *((u64 *)&data[idd]) >> off;
-+
-+	entry->flg0_14_sel[i++]	= FIELD_GET(ICE_XLT_KB_FL06, d64);
-+	entry->flg0_14_sel[i++]	= FIELD_GET(ICE_XLT_KB_FL07, d64);
-+	entry->flg0_14_sel[i++]	= FIELD_GET(ICE_XLT_KB_FL08, d64);
-+	entry->flg0_14_sel[i++]	= FIELD_GET(ICE_XLT_KB_FL09, d64);
-+	entry->flg0_14_sel[i++]	= FIELD_GET(ICE_XLT_KB_FL10, d64);
-+	entry->flg0_14_sel[i++]	= FIELD_GET(ICE_XLT_KB_FL11, d64);
-+
-+	idd = ICE_XLT_KB_FL12_S / BITS_PER_BYTE;
-+	off = ICE_XLT_KB_FL12_S % BITS_PER_BYTE;
-+	d64 = *((u64 *)&data[idd]) >> off;
-+
-+	entry->flg0_14_sel[i++]	= FIELD_GET(ICE_XLT_KB_FL12, d64);
-+	entry->flg0_14_sel[i++]	= FIELD_GET(ICE_XLT_KB_FL13, d64);
-+	entry->flg0_14_sel[i]	= FIELD_GET(ICE_XLT_KB_FL14, d64);
-+
-+	entry->xlt1_md_sel	= FIELD_GET(ICE_XLT_KB_X1MS, d64);
-+	entry->xlt2_md_sel	= FIELD_GET(ICE_XLT_KB_X2MS, d64);
-+}
-+
-+#define ICE_XLT_KB_X1PM_OFF		0
-+#define ICE_XLT_KB_X2PM_OFF		1
-+#define ICE_XLT_KB_PIPM_OFF		2
-+#define ICE_XLT_KB_FL15_OFF		4
-+#define ICE_XLT_KB_TBL_OFF		12
-+
-+/** The function parses a 204 bytes XLT Key Build Table with below format:
-+ *  byte 0:	XLT1 Partition Mode		(kb->xlt1_pm)
-+ *  byte 1:	XLT2 Partition Mode		(kb->xlt2_pm)
-+ *  byte 2:	Profile ID Partition Mode	(kb->prof_id_pm)
-+ *  byte 3:	reserved
-+ *  byte 4-11:	Flag15 Mask			(kb->flag15)
-+ *  byte 12-203:8 Key Build entries		(kb->entries)
-+ */
-+static void _ice_parse_kb_data(struct ice_hw *hw, struct ice_xlt_kb *kb,
-+			       void *data)
-+{
-+	u8 *buf = data;
-+	int i;
-+
-+	kb->xlt1_pm	= buf[ICE_XLT_KB_X1PM_OFF];
-+	kb->xlt2_pm	= buf[ICE_XLT_KB_X2PM_OFF];
-+	kb->prof_id_pm	= buf[ICE_XLT_KB_PIPM_OFF];
-+
-+	kb->flag15 = *(u64 *)&buf[ICE_XLT_KB_FL15_OFF];
-+	for (i = 0; i < ICE_XLT_KB_TBL_CNT; i++)
-+		_ice_kb_entry_init(&kb->entries[i],
-+				   &buf[ICE_XLT_KB_TBL_OFF +
-+					i * ICE_XLT_KB_TBL_ENTRY_SIZE]);
-+
-+	if (hw->debug_mask & ICE_DBG_PARSER)
-+		ice_xlt_kb_dump(hw, kb);
-+}
-+
-+static struct ice_xlt_kb *_ice_xlt_kb_get(struct ice_hw *hw, u32 sect_type)
-+{
-+	struct ice_seg *seg = hw->seg;
-+	struct ice_pkg_enum state;
-+	struct ice_xlt_kb *kb;
-+	void *data;
-+
-+	if (!seg)
-+		return NULL;
-+
-+	kb = devm_kzalloc(ice_hw_to_dev(hw), sizeof(*kb), GFP_KERNEL);
-+	if (!kb)
-+		return NULL;
-+
-+	memset(&state, 0, sizeof(state));
-+	data = ice_pkg_enum_section(seg, &state, sect_type);
-+	if (!data) {
-+		ice_debug(hw, ICE_DBG_PARSER, "failed to find section type %d.\n",
-+			  sect_type);
-+		return NULL;
++	for (i = 0; i < ICE_PARSER_FLG_NUM; i++) {
++		if ((mi->flags & BIT(i)) != 0ul)
++			_ice_rt_flag_set(rt, i, true);
 +	}
-+
-+	_ice_parse_kb_data(hw, kb, data);
-+
-+	return kb;
 +}
 +
 +/**
-+ * ice_xlt_kb_get_sw - create switch xlt key build
-+ * @hw: pointer to the hardware structure
++ * ice_parser_rt_pktbuf_set - set a packet into parser runtime
++ * @rt: pointer to the parser runtime
++ * @pkt_buf: buffer with packet data
++ * @pkt_len: packet buffer length
 + */
-+struct ice_xlt_kb *ice_xlt_kb_get_sw(struct ice_hw *hw)
++void ice_parser_rt_pktbuf_set(struct ice_parser_rt *rt, const u8 *pkt_buf,
++			      int pkt_len)
 +{
-+	return _ice_xlt_kb_get(hw, ICE_SID_XLT_KEY_BUILDER_SW);
++	int len = min(ICE_PARSER_MAX_PKT_LEN, pkt_len);
++	u16 ho = rt->gpr[ICE_GPR_HO_IDX];
++
++	memcpy(rt->pkt_buf, pkt_buf, len);
++	rt->pkt_len = pkt_len;
++
++	memcpy(&rt->gpr[ICE_GPR_HV_IDX], &rt->pkt_buf[ho], ICE_GPR_HV_SIZE);
 +}
 +
 +/**
-+ * ice_xlt_kb_get_acl - create acl xlt key build
-+ * @hw: pointer to the hardware structure
++ * ice_parser_rt_execute - parser execution routine
++ * @rt: pointer to the parser runtime
++ * @rslt: input/output parameter to save parser result
 + */
-+struct ice_xlt_kb *ice_xlt_kb_get_acl(struct ice_hw *hw)
++int ice_parser_rt_execute(struct ice_parser_rt *rt,
++			  struct ice_parser_result *rslt)
 +{
-+	return _ice_xlt_kb_get(hw, ICE_SID_XLT_KEY_BUILDER_ACL);
++	return ICE_ERR_NOT_IMPL;
 +}
-+
-+/**
-+ * ice_xlt_kb_get_fd - create fdir xlt key build
-+ * @hw: pointer to the hardware structure
-+ */
-+struct ice_xlt_kb *ice_xlt_kb_get_fd(struct ice_hw *hw)
-+{
-+	return _ice_xlt_kb_get(hw, ICE_SID_XLT_KEY_BUILDER_FD);
-+}
-+
-+/**
-+ * ice_xlt_kb_get_rss - create rss xlt key build
-+ * @hw: pointer to the hardware structure
-+ */
-+struct ice_xlt_kb *ice_xlt_kb_get_rss(struct ice_hw *hw)
-+{
-+	return _ice_xlt_kb_get(hw, ICE_SID_XLT_KEY_BUILDER_RSS);
-+}
-diff --git a/drivers/net/ethernet/intel/ice/ice_xlt_kb.h b/drivers/net/ethernet/intel/ice/ice_xlt_kb.h
+diff --git a/drivers/net/ethernet/intel/ice/ice_parser_rt.h b/drivers/net/ethernet/intel/ice/ice_parser_rt.h
 new file mode 100644
-index 000000000000..81f1f5742075
+index 000000000000..9356950aa0f0
 --- /dev/null
-+++ b/drivers/net/ethernet/intel/ice/ice_xlt_kb.h
-@@ -0,0 +1,33 @@
++++ b/drivers/net/ethernet/intel/ice/ice_parser_rt.h
+@@ -0,0 +1,40 @@
 +/* SPDX-License-Identifier: GPL-2.0 */
 +/* Copyright (C) 2023 Intel Corporation */
 +
-+#ifndef _ICE_XLT_KB_H_
-+#define _ICE_XLT_KB_H_
++#ifndef _ICE_PARSER_RT_H_
++#define _ICE_PARSER_RT_H_
 +
-+#define ICE_XLT_KB_FLAG0_14_CNT		15
-+#define ICE_XLT_KB_TBL_CNT		8
-+#define ICE_XLT_KB_TBL_ENTRY_SIZE	24
++#define ICE_GPR_HV_IDX		64
++#define ICE_GPR_HV_SIZE		32
++#define ICE_GPR_ERR_IDX		84
++#define ICE_GPR_FLG_IDX		104
++#define ICE_GPR_FLG_SIZE	16
 +
-+struct ice_xlt_kb_entry {
-+	u8 xlt1_ad_sel;
-+	u8 xlt2_ad_sel;
-+	u16 flg0_14_sel[ICE_XLT_KB_FLAG0_14_CNT];
-+	u8 xlt1_md_sel;
-+	u8 xlt2_md_sel;
++#define ICE_GPR_TSR_IDX		108
++#define ICE_GPR_NN_IDX		109
++#define ICE_GPR_HO_IDX		110
++#define ICE_GPR_NP_IDX		111
++
++struct ice_parser_ctx;
++
++#define ICE_PARSER_MAX_PKT_LEN	504
++#define ICE_PARSER_PKT_REV	32
++#define ICE_PARSER_GPR_NUM	128
++#define ICE_PARSER_FLG_NUM	64
++
++struct ice_parser_rt {
++	struct ice_parser *psr;
++	u16 gpr[ICE_PARSER_GPR_NUM];
++	u8 pkt_buf[ICE_PARSER_MAX_PKT_LEN + ICE_PARSER_PKT_REV];
++	u16 pkt_len;
++	u16 po;
 +};
 +
-+struct ice_xlt_kb {
-+	u8 xlt1_pm;
-+	u8 xlt2_pm;
-+	u8 prof_id_pm;
-+	u64 flag15;
++void ice_parser_rt_reset(struct ice_parser_rt *rt);
++void ice_parser_rt_pktbuf_set(struct ice_parser_rt *rt, const u8 *pkt_buf,
++			      int pkt_len);
 +
-+	struct ice_xlt_kb_entry entries[ICE_XLT_KB_TBL_CNT];
-+};
-+
-+void ice_xlt_kb_dump(struct ice_hw *hw, struct ice_xlt_kb *kb);
-+struct ice_xlt_kb *ice_xlt_kb_get_sw(struct ice_hw *hw);
-+struct ice_xlt_kb *ice_xlt_kb_get_acl(struct ice_hw *hw);
-+struct ice_xlt_kb *ice_xlt_kb_get_fd(struct ice_hw *hw);
-+struct ice_xlt_kb *ice_xlt_kb_get_rss(struct ice_hw *hw);
-+#endif /* _ICE_XLT_KB_H */
++struct ice_parser_result;
++int ice_parser_rt_execute(struct ice_parser_rt *rt,
++			  struct ice_parser_result *rslt);
++#endif /* _ICE_PARSER_RT_H_ */
 -- 
 2.25.1
 
