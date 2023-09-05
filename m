@@ -1,85 +1,81 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 964E2793102
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  5 Sep 2023 23:38:11 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3C10179320C
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  6 Sep 2023 00:37:53 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id CE7D060F83;
-	Tue,  5 Sep 2023 21:38:09 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org CE7D060F83
+	by smtp3.osuosl.org (Postfix) with ESMTP id 1A8D960DF4;
+	Tue,  5 Sep 2023 22:37:51 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1A8D960DF4
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1693949889;
-	bh=dksekLTSqSv0uX3qqiTSnFG2GCecZQoXndKvOG+E4AY=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=Z/Cr4LnOjlvMCItChAe2SakrmLuG2GTSfPxUikTRe2vRv4x1I7OCSUj9OcI7Q5O30
-	 O8cm8Dp+jJVLe01FI8arlqA9Al2Tgm+Cm+zKxzTF6s8AiO1Im2SF3FYVlgdoZx1YdT
-	 rBMM//87JXh9eWuvCx8c4Hn/UwQN/Wb11AS7rTpdTYjhqgrP363Rh4zYDwy2aeSOBU
-	 qqbXqnuHPMaVoD9CiFIH/eNgsPo+wAA2+d0WfioQt7nPkpSl3SFVgTIrwdtcPNsvjv
-	 pQe7gMcrjZcbcrPH78d6MBNUEy/5n37L/ILJ6DD8Pdq1bt0+/GfPWwrOhKe5wyIfkF
-	 5DXc/rJ9Wbs4A==
+	s=default; t=1693953471;
+	bh=Y8m0ZUNZerRUy+OizE9c65/GfVccJQCjAuU86GpBEEg=;
+	h=Date:From:To:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=LHoxys8CHh1njnpoGy5WnF05F3RCfgsJY72lFpiQs0FnXP//q6A9cSSNJCI84TTPD
+	 LxMPF8lOSTINcrWqqHhC/pIVpfpWlrWjU8umwxgJKJGJIgsN05lYxgx6QpnBK7sZyB
+	 s9NtopLlvV3o3heWfbKKt6jRA3XTUH1o1OsfaqzOgyheuImEnmGZHDoxADt/zHs04J
+	 t+lzQsDVzXoJVgjYw2DGThGYXr20eovZvW9zkLxYQ16ZD1WOGzTSr7IIV0R0vrJagF
+	 HKTrwpfi/Pi29fLUJvmQ7KmtKYDCiBcrNkTk2ro5V25u5KjIJI2ZcCDz0wt7RQFaf+
+	 ALvfAanBUO8Cg==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Hg6Dn-hF35cV; Tue,  5 Sep 2023 21:38:09 +0000 (UTC)
+	with ESMTP id LouchUSU8HGy; Tue,  5 Sep 2023 22:37:50 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id DFDA860DF4;
-	Tue,  5 Sep 2023 21:38:08 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org DFDA860DF4
+	by smtp3.osuosl.org (Postfix) with ESMTP id 09F9E60BCB;
+	Tue,  5 Sep 2023 22:37:49 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 09F9E60BCB
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 1E4391BF2B4
- for <intel-wired-lan@lists.osuosl.org>; Tue,  5 Sep 2023 21:38:04 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 2D08D1BF344
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  5 Sep 2023 22:37:45 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id E846B60DF4
- for <intel-wired-lan@lists.osuosl.org>; Tue,  5 Sep 2023 21:38:03 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org E846B60DF4
+ by smtp1.osuosl.org (Postfix) with ESMTP id 0C2E381749
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  5 Sep 2023 22:37:45 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0C2E381749
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Iv9fGBt9uMtt for <intel-wired-lan@lists.osuosl.org>;
- Tue,  5 Sep 2023 21:38:03 +0000 (UTC)
-Received: from mgamail.intel.com (mgamail.intel.com [134.134.136.100])
- by smtp3.osuosl.org (Postfix) with ESMTPS id D1A8E60D76
- for <intel-wired-lan@lists.osuosl.org>; Tue,  5 Sep 2023 21:38:02 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D1A8E60D76
-X-IronPort-AV: E=McAfee;i="6600,9927,10824"; a="443298017"
-X-IronPort-AV: E=Sophos;i="6.02,230,1688454000"; d="scan'208";a="443298017"
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 05 Sep 2023 14:38:02 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10824"; a="864902564"
-X-IronPort-AV: E=Sophos;i="6.02,230,1688454000"; d="scan'208";a="864902564"
-Received: from vcostago-mobl3.jf.intel.com ([10.24.14.106])
- by orsmga004-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 05 Sep 2023 14:38:01 -0700
-From: Vinicius Costa Gomes <vinicius.gomes@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Tue,  5 Sep 2023 14:37:52 -0700
-Message-ID: <20230905213753.697461-1-vinicius.gomes@intel.com>
-X-Mailer: git-send-email 2.41.0
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 0DeKKHCfl2R2 for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  5 Sep 2023 22:37:44 +0000 (UTC)
+Received: from sin.source.kernel.org (sin.source.kernel.org [145.40.73.55])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id E49C481746
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  5 Sep 2023 22:37:43 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E49C481746
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits))
+ (No client certificate requested)
+ by sin.source.kernel.org (Postfix) with ESMTPS id 2C252CE11D9;
+ Tue,  5 Sep 2023 22:37:37 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 05C34C433C7;
+ Tue,  5 Sep 2023 22:37:34 +0000 (UTC)
+Date: Tue, 5 Sep 2023 15:37:34 -0700
+From: Jakub Kicinski <kuba@kernel.org>
+To: Junfeng Guo <junfeng.guo@intel.com>
+Message-ID: <20230905153734.18b9bc84@kernel.org>
+In-Reply-To: <20230904021455.3944605-1-junfeng.guo@intel.com>
+References: <20230904021455.3944605-1-junfeng.guo@intel.com>
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1693949883; x=1725485883;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=9apBiphN57rQ3aiF+Q7XIdDoQMMdkK/gnjUcFUrpp1Y=;
- b=Q5d+/0+7HmWHP0PEMBeHfOqsYHKs+dVgzuo48kwFk0D9j4ye3kGwHaxx
- DqhDJwExeTjsQ17VV/iyO48Hq06jwGMybyKtKAw319OQ3OQhRdquh9wk4
- atTtDX7jOkoEwWbLm2ObZN8Sppd3pzezcJSvRa13xxa6GXNWGK5YSd3LF
- BlAGD14NNMMkyuZJ+U3G1ksnavxBQaM/IorBwuhjSmPfTDFNd/JqwDqmT
- NZOsIEkDz+0Q4QhS4UQSY8cMNioK2lZOY9sgayGyk/VFCfFBzjoAnnwwT
- tUyhetjxl7t4DtBxWBTuK5RdwBw//joZYC854LCkXSj4eWtOfGdi+aTSK
- w==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=Q5d+/0+7
-Subject: [Intel-wired-lan] [PATCH iwl-net v1] igc: Fix infinite
- initialization loop with early XDP redirect
+ d=kernel.org; s=k20201202; t=1693953455;
+ bh=d/sh29sVp2yI2/siIM8XCjBscl+j38GKqXME3fu5YvE=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=Kh4jroAUW2f1qvlnwj4WeBxWI2n219TB2O1eH9OphP/wrAwo8k7HuL9l6nRqfPltG
+ Wk3jNFruqzyhYPFQ0WGrqJ3OqwgVPWcTnuUrq1l/dlBrakrxZVz73ry9u9mZz5SrLB
+ ojqLy/sbP5vLD+d2Wz9miV5SX+iHReYeuytslWSsInrSgMCAbx4EnEsrt8TYom0Qnt
+ A8LGCe2gQYlZtyuhq5CSFHrd6iDigSgI1dOPzDeKTKsvIKXAm0Rpax8vQIBWBA1c/P
+ ffcHajG8WeB7U5e+k/UY7Oq/QPBiMhk5Pk/STwd98fZAIcsvP4HKDX6Ihta5+qEf+C
+ iQKsW7c+8YbUA==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=Kh4jroAU
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v9 00/15] Introduce the
+ Parser Library
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,51 +88,75 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Andre Guedes <andre.guedes@intel.com>,
- Jithu Joseph <jithu.joseph@intel.com>, netdev@vger.kernel.org,
- Jesse Brandeburg <jesse.brandeburg@intel.com>, linux-kernel@vger.kernel.org,
- Ferenc Fejes <ferenc.fejes@ericsson.com>, Eric Dumazet <edumazet@google.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>,
- Vedang Patel <vedang.patel@intel.com>
+Cc: ivecera@redhat.com, netdev@vger.kernel.org, jesse.brandeburg@intel.com,
+ edumazet@google.com, anthony.l.nguyen@intel.com, horms@kernel.org,
+ qi.z.zhang@intel.com, intel-wired-lan@lists.osuosl.org, pabeni@redhat.com,
+ davem@davemloft.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-When a XDP redirect happens before the link is ready, that
-transmission will not finish and will timeout, causing an adapter
-reset. If the redirects do not stop, the adapter will not stop
-resetting.
+On Mon,  4 Sep 2023 10:14:40 +0800 Junfeng Guo wrote:
+> Current software architecture for flow filtering offloading limited
+> the capability of Intel Ethernet 800 Series Dynamic Device
+> Personalization (DDP) Package. The flow filtering offloading in the
+> driver is enabled based on the naming parsers, each flow pattern is
+> represented by a protocol header stack. And there are multiple layers
+> (e.g., virtchnl) to maintain their own enum/macro/structure
+> to represent a protocol header (IP, TCP, UDP ...), thus the extra
+> parsers to verify if a pattern is supported by hardware or not as
+> well as the extra converters that to translate represents between
+> different layers. Every time a new protocol/field is requested to be
+> supported, the corresponding logic for the parsers and the converters
+> needs to be modified accordingly. Thus, huge & redundant efforts are
+> required to support the increasing flow filtering offloading features,
+> especially for the tunnel types flow filtering.
 
-Wait for the driver to signal that there's a carrier before allowing
-transmissions to proceed.
+Are you talking about problems internal to ICE or the flower interface?
 
-Fixes: 4ff320361092 ("igc: Add support for XDP_REDIRECT action")
-Reported-by: Ferenc Fejes <ferenc.fejes@ericsson.com>
-Closes: https://lore.kernel.org/netdev/0caf33cf6adb3a5bf137eeaa20e89b167c9986d5.camel@ericsson.com/
-Signed-off-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
-Tested-by: Ferenc Fejes <ferenc.fejes@ericsson.com>
----
- drivers/net/ethernet/intel/igc/igc_main.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+> This patch set provides a way for applications to send down training
+> packets & masks (in binary) to the driver. Then these binary data
+> would be used by the driver to generate certain data that are needed
+> to create a filter rule in the filtering stage of switch/RSS/FDIR.
 
-diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
-index 293b45717683..98de34d0ce07 100644
---- a/drivers/net/ethernet/intel/igc/igc_main.c
-+++ b/drivers/net/ethernet/intel/igc/igc_main.c
-@@ -6491,7 +6491,7 @@ static int igc_xdp_xmit(struct net_device *dev, int num_frames,
- 	struct igc_ring *ring;
- 	int i, drops;
- 
--	if (unlikely(test_bit(__IGC_DOWN, &adapter->state)))
-+	if (unlikely(!netif_carrier_ok(dev)))
- 		return -ENETDOWN;
- 
- 	if (unlikely(flags & ~XDP_XMIT_FLAGS_MASK))
--- 
-2.41.0
+What's the API for the user? I see a whole bunch of functions added here
+which never get called.
 
+> Note that the impact of a malicious rule in the raw packet filter is
+> limited to performance rather than functionality. It may affect the
+> performance of the workload, similar to other limitations in FDIR/RSS
+> on AVF. For example, there is no resource boundary for VF FDIR/RSS
+> rules, so one malicious VF could potentially make other VFs
+> inefficient in offloading.
+> 
+> The parser library is expected to include boundary checks to prevent
+> critical errors such as infinite loops or segmentation faults.
+> However, only implementing and validating the parser emulator in a
+> sandbox environment (like ebpf) presents a challenge.
+> 
+> The idea is to make the driver be able to learn from the DDP package
+> directly to understand how the hardware parser works (i.e., the
+> Parser Library), so that it can process on the raw training packet
+> (in binary) directly and create the filter rule accordingly.
+
+No idea what this means in terms of the larger networking stack.
+
+> Based on this Parser Library, the raw flow filtering of
+> switch/RSS/FDIR could be enabled to allow new flow filtering
+> offloading features to be supported without any driver changes (only
+> need to update the DDP package).
+
+Sounds like you are talking about some vague "vision" rather than 
+the code you're actually posting.
+
+Given that you've posted 5 versions of this to netdev and got no
+notable comments, please don't CC netdev on the next version
+until you get some reviews inside Intel. Stuff like:
+
++#define ICE_ERR_NOT_IMPL		-1
+
+should get caught by internal review.
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
