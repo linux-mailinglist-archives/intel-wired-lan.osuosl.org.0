@@ -2,87 +2,87 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 134CC793293
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  6 Sep 2023 01:29:10 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7D0DF793294
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  6 Sep 2023 01:29:14 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id A588C407D7;
-	Tue,  5 Sep 2023 23:29:08 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A588C407D7
+	by smtp4.osuosl.org (Postfix) with ESMTP id 14B3840861;
+	Tue,  5 Sep 2023 23:29:13 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 14B3840861
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1693956548;
-	bh=2KpJzf3P2RZrYdDfplBwSjNQ/d1vbZyDA8o5XdWg7QY=;
+	s=default; t=1693956553;
+	bh=4I9x3LLxd0QsAw0+4vVktcgYsz/QgV7njKX/0L+aLTE=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=5Mwcs7cFV6OW9JJsDXv/NqS0l6gYtfGJ50uxqO4rqVFMafSstVw5tvyAZL2eM4oDs
-	 bb8cIBtYKIGFI5N3tesQ92jzdhttBajkcF7A5TVLyl93v6gEl7+PZzndLuaLBfpqs0
-	 i6OpXDgOakQEzDsJMNzm0mdrvNnVaI8VEWdAvMi+VM0CTYQ9RTx/Bq+td4kqsESX0+
-	 cnp9XG/4IRimpUeZhkFKClEIp+bxnKFbU0zFme0SgOiIzbGbGW+5/a/aad1hbJq1TG
-	 blr3isFiUN5aHEcxXwhmHZTyud6nQM4h3xm3uDvqDE3Cfn+5HTybo17hESs2RgoN31
-	 gUoz+VOTDGfJQ==
+	b=zciYaNDM8hU4ND2Oh7YdyDbRytqaKEHOz96P3Wr5mP2c1UuEyED9GWwkoZbC0kzV2
+	 rYqEV67QSDNuvkXyYQCR34YgKEe8k6BRwgOhWSFhTpu2GHuY1Rnn8jJjiwug58MZRS
+	 1iDUhfNmdsgFYnXPqpy0dnXRVU8pmofsAv9ZGucWkEbMbFyOk1Y3crOLguZP1mmevL
+	 xDTqsZ1B7GANit8tXyGHRbz5AU9dhU+WqvF/yb6TH83blqUlmTCzcNseCzDVBgl0vy
+	 P00w+3NdLR84IUEZUzeKCujV7JOZtKRD2Wd3tsyzwfyXMYnwREUUn8cp4Hlq72rVp0
+	 aYEVxpfwNvQTQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id PlkzCbyrsY23; Tue,  5 Sep 2023 23:29:07 +0000 (UTC)
+	with ESMTP id P8TGzfK1EX6F; Tue,  5 Sep 2023 23:29:11 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 2E67D4085B;
-	Tue,  5 Sep 2023 23:29:07 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2E67D4085B
+	by smtp4.osuosl.org (Postfix) with ESMTP id 8D35B40650;
+	Tue,  5 Sep 2023 23:29:11 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8D35B40650
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id B7C861BF25F
- for <intel-wired-lan@lists.osuosl.org>; Tue,  5 Sep 2023 23:28:57 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 855BE1BF25F
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  5 Sep 2023 23:29:00 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 916E381228
- for <intel-wired-lan@lists.osuosl.org>; Tue,  5 Sep 2023 23:28:57 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 916E381228
+ by smtp1.osuosl.org (Postfix) with ESMTP id 5E7E881228
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  5 Sep 2023 23:29:00 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 5E7E881228
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 9rDrNp-WtaeM for <intel-wired-lan@lists.osuosl.org>;
- Tue,  5 Sep 2023 23:28:56 +0000 (UTC)
+ with ESMTP id mW_ZtzbSTTQ4 for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  5 Sep 2023 23:28:59 +0000 (UTC)
 Received: from mgamail.intel.com (mgamail.intel.com [134.134.136.24])
- by smtp1.osuosl.org (Postfix) with ESMTPS id BCEC88121A
- for <intel-wired-lan@lists.osuosl.org>; Tue,  5 Sep 2023 23:28:56 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org BCEC88121A
-X-IronPort-AV: E=McAfee;i="6600,9927,10824"; a="379643916"
-X-IronPort-AV: E=Sophos;i="6.02,230,1688454000"; d="scan'208";a="379643916"
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 77CDD8121A
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  5 Sep 2023 23:28:59 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 77CDD8121A
+X-IronPort-AV: E=McAfee;i="6600,9927,10824"; a="379643934"
+X-IronPort-AV: E=Sophos;i="6.02,230,1688454000"; d="scan'208";a="379643934"
 Received: from fmsmga007.fm.intel.com ([10.253.24.52])
  by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 05 Sep 2023 16:28:56 -0700
+ 05 Sep 2023 16:28:59 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10824"; a="744448405"
-X-IronPort-AV: E=Sophos;i="6.02,230,1688454000"; d="scan'208";a="744448405"
+X-IronPort-AV: E=McAfee;i="6600,9927,10824"; a="744448413"
+X-IronPort-AV: E=Sophos;i="6.02,230,1688454000"; d="scan'208";a="744448413"
 Received: from amlin-018-114.igk.intel.com ([10.102.18.114])
- by fmsmga007.fm.intel.com with ESMTP; 05 Sep 2023 16:28:53 -0700
+ by fmsmga007.fm.intel.com with ESMTP; 05 Sep 2023 16:28:56 -0700
 From: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
 To: kuba@kernel.org, jiri@resnulli.us, jonathan.lemon@gmail.com,
  pabeni@redhat.com, vadim.fedorenko@linux.dev
-Date: Wed,  6 Sep 2023 01:26:08 +0200
-Message-Id: <20230905232610.1403647-3-arkadiusz.kubalewski@intel.com>
+Date: Wed,  6 Sep 2023 01:26:09 +0200
+Message-Id: <20230905232610.1403647-4-arkadiusz.kubalewski@intel.com>
 X-Mailer: git-send-email 2.38.1
 In-Reply-To: <20230905232610.1403647-1-arkadiusz.kubalewski@intel.com>
 References: <20230905232610.1403647-1-arkadiusz.kubalewski@intel.com>
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1693956536; x=1725492536;
+ t=1693956539; x=1725492539;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=Hc4JW8JICLwG/GnGOazeCrnRdo3FqnON36pXWH/pBug=;
- b=eIXL+v17frQO1Yyxq/gc4+ooDwVj9JgvemjoLgAGcFiL/TRxRowX5DO4
- Nuv8lbSyjo3Go+EPkfSgRNV5WMGbWLJYLf1vhCy0UqMQJIKrOKLpMQ83q
- wFEl/mImSs31JKXLx4lHPh0Li4AB4/HgpA9zXoC3Bn0m+FaTj6xTnBNyT
- wfhfI8o0IUhQ3H4gwKjRWygAqfbUlaUQqQMbDS1N23RGwcsJod20QyKAT
- fziNsQuBpYyShO7ntaWGgNYF4T8jLyouNlU2orFGCcVO9oIcZ8UhmjRtt
- 111S5mdObt/zdUbHysMmzS07e+qz95amLsxEC0Z7h26l6oGKOsxxmmP06
- Q==;
+ bh=tY4VTbOhUSxDrOVCkDIaSt8IZVaqxQkalWFqbHb52W4=;
+ b=hh0HPnB6FQcfYcLrj/pstNKP1koOt14BMKWYt+BlW9oIKTjNr3t5RxKl
+ wVIyDnHG/Q7E7SJez2idZtxTtJl6XMsuBHGtFzKIwcWcjZZ1i1InlYZTY
+ TBLFfagaPwv5q4OqcH/rn8OaIlEAjcbdxrS9E6gYvnhtttPWd9gEHP2Ml
+ 3sEOwvzedmCy1PuYY+St+Cm4vdrLgWg9sbyv32Ij7ZgLyB+759lWpPAqS
+ +cCYb12571OsN1eOlDs0v5qP4D1VsaJQ20YU66eP4OIS8gMHHMg25NvFZ
+ SO5QDa1x5sjg9pxSxgyCaH7vfkjPeLD6hojCYh4EviasjgmsK+MvNt8TO
+ A==;
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=eIXL+v17
-Subject: [Intel-wired-lan] [PATCH net-next 2/4] dpll: spec: add support for
- pin-dpll signal phase offset/adjust
+ header.a=rsa-sha256 header.s=Intel header.b=hh0HPnB6
+Subject: [Intel-wired-lan] [PATCH net-next 3/4] dpll: netlink/core: add
+ support for pin-dpll signal phase offset/adjust
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -103,187 +103,206 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Add attributes for providing the user with:
-- measurement of signals phase offset between pin and dpll
-- ability to adjust the phase of pin signal
+Add callback ops for pin-dpll phase measurment.
+Add callback for pin signal phase adjustment.
+Add min and max phase adjustment values to pin proprties.
+Invoke callbacks in dpll_netlink.c when filling the pin details to
+provide user with phase related attribute values.
 
 Signed-off-by: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
 ---
- Documentation/netlink/specs/dpll.yaml | 33 ++++++++++++++++++++++++++-
- drivers/dpll/dpll_nl.c                |  8 ++++---
- drivers/dpll/dpll_nl.h                |  2 +-
- include/uapi/linux/dpll.h             |  8 ++++++-
- 4 files changed, 45 insertions(+), 6 deletions(-)
+ drivers/dpll/dpll_netlink.c | 99 ++++++++++++++++++++++++++++++++++++-
+ include/linux/dpll.h        | 18 +++++++
+ 2 files changed, 116 insertions(+), 1 deletion(-)
 
-diff --git a/Documentation/netlink/specs/dpll.yaml b/Documentation/netlink/specs/dpll.yaml
-index 8b86b28b47a6..dc057494101f 100644
---- a/Documentation/netlink/specs/dpll.yaml
-+++ b/Documentation/netlink/specs/dpll.yaml
-@@ -1,7 +1,7 @@
- # SPDX-License-Identifier: ((GPL-2.0 WITH Linux-syscall-note) OR BSD-3-Clause)
+diff --git a/drivers/dpll/dpll_netlink.c b/drivers/dpll/dpll_netlink.c
+index 764437a0661b..548517d9ca4c 100644
+--- a/drivers/dpll/dpll_netlink.c
++++ b/drivers/dpll/dpll_netlink.c
+@@ -212,6 +212,53 @@ dpll_msg_add_pin_direction(struct sk_buff *msg, struct dpll_pin *pin,
+ 	return 0;
+ }
  
- name: dpll
--
-+version: 2
- doc: DPLL subsystem.
- 
- definitions:
-@@ -164,6 +164,18 @@ definitions:
-       -
-         name: state-can-change
-         doc: pin state can be changed
-+  -
-+    type: const
-+    name: phase-offset-divider
-+    value: 1000
-+    doc: |
-+      phase offset divider allows userspace to calculate a value of
-+      measured signal phase difference between a pin and dpll device
-+      as a fractional value with three digit decimal precision.
-+      Value of (DPLL_A_PHASE_OFFSET / DPLL_PHASE_OFFSET_DIVIDER) is an
-+      integer part of a measured phase offest value.
-+      Value of (DPLL_A_PHASE_OFFSET % DPLL_PHASE_OFFSET_DIVIDER) is a
-+      fractional part of a measured phase offest value.
- 
- attribute-sets:
-   -
-@@ -272,6 +284,18 @@ attribute-sets:
-         type: nest
-         multi-attr: true
-         nested-attributes: pin-parent-pin
-+      -
-+        name: phase-adjust-min
-+        type: s32
-+      -
-+        name: phase-adjust-max
-+        type: s32
-+      -
-+        name: phase-adjust
-+        type: s32
-+      -
-+        name: phase-offset
-+        type: s64
-   -
-     name: pin-parent-device
-     subset-of: pin
-@@ -288,6 +312,9 @@ attribute-sets:
-       -
-         name: state
-         type: u32
-+      -
-+        name: phase-offset
-+        type: s64
-   -
-     name: pin-parent-pin
-     subset-of: pin
-@@ -439,6 +466,9 @@ operations:
-             - capabilities
-             - parent-device
-             - parent-pin
-+            - phase-adjust-min
-+            - phase-adjust-max
-+            - phase-adjust
- 
-       dump:
-         pre: dpll-lock-dumpit
-@@ -466,6 +496,7 @@ operations:
-             - state
-             - parent-device
-             - parent-pin
-+            - phase-adjust
-     -
-       name: pin-create-ntf
-       doc: Notification about pin appearing
-diff --git a/drivers/dpll/dpll_nl.c b/drivers/dpll/dpll_nl.c
-index 14064c8c783b..eaee5be7aa64 100644
---- a/drivers/dpll/dpll_nl.c
-+++ b/drivers/dpll/dpll_nl.c
-@@ -11,11 +11,12 @@
- #include <uapi/linux/dpll.h>
- 
- /* Common nested types */
--const struct nla_policy dpll_pin_parent_device_nl_policy[DPLL_A_PIN_STATE + 1] = {
-+const struct nla_policy dpll_pin_parent_device_nl_policy[DPLL_A_PIN_PHASE_OFFSET + 1] = {
- 	[DPLL_A_PIN_PARENT_ID] = { .type = NLA_U32, },
- 	[DPLL_A_PIN_DIRECTION] = NLA_POLICY_RANGE(NLA_U32, 1, 2),
- 	[DPLL_A_PIN_PRIO] = { .type = NLA_U32, },
- 	[DPLL_A_PIN_STATE] = NLA_POLICY_RANGE(NLA_U32, 1, 3),
-+	[DPLL_A_PIN_PHASE_OFFSET] = { .type = NLA_S64, },
- };
- 
- const struct nla_policy dpll_pin_parent_pin_nl_policy[DPLL_A_PIN_STATE + 1] = {
-@@ -61,7 +62,7 @@ static const struct nla_policy dpll_pin_get_dump_nl_policy[DPLL_A_PIN_ID + 1] =
- };
- 
- /* DPLL_CMD_PIN_SET - do */
--static const struct nla_policy dpll_pin_set_nl_policy[DPLL_A_PIN_PARENT_PIN + 1] = {
-+static const struct nla_policy dpll_pin_set_nl_policy[DPLL_A_PIN_PHASE_ADJUST + 1] = {
- 	[DPLL_A_PIN_ID] = { .type = NLA_U32, },
- 	[DPLL_A_PIN_FREQUENCY] = { .type = NLA_U64, },
- 	[DPLL_A_PIN_DIRECTION] = NLA_POLICY_RANGE(NLA_U32, 1, 2),
-@@ -69,6 +70,7 @@ static const struct nla_policy dpll_pin_set_nl_policy[DPLL_A_PIN_PARENT_PIN + 1]
- 	[DPLL_A_PIN_STATE] = NLA_POLICY_RANGE(NLA_U32, 1, 3),
- 	[DPLL_A_PIN_PARENT_DEVICE] = NLA_POLICY_NESTED(dpll_pin_parent_device_nl_policy),
- 	[DPLL_A_PIN_PARENT_PIN] = NLA_POLICY_NESTED(dpll_pin_parent_pin_nl_policy),
-+	[DPLL_A_PIN_PHASE_ADJUST] = { .type = NLA_S32, },
- };
- 
- /* Ops table for dpll */
-@@ -140,7 +142,7 @@ static const struct genl_split_ops dpll_nl_ops[] = {
- 		.doit		= dpll_nl_pin_set_doit,
- 		.post_doit	= dpll_pin_post_doit,
- 		.policy		= dpll_pin_set_nl_policy,
--		.maxattr	= DPLL_A_PIN_PARENT_PIN,
-+		.maxattr	= DPLL_A_PIN_PHASE_ADJUST,
- 		.flags		= GENL_ADMIN_PERM | GENL_CMD_CAP_DO,
- 	},
- };
-diff --git a/drivers/dpll/dpll_nl.h b/drivers/dpll/dpll_nl.h
-index 1f67aaed4742..92d4c9c4f788 100644
---- a/drivers/dpll/dpll_nl.h
-+++ b/drivers/dpll/dpll_nl.h
-@@ -12,7 +12,7 @@
- #include <uapi/linux/dpll.h>
- 
- /* Common nested types */
--extern const struct nla_policy dpll_pin_parent_device_nl_policy[DPLL_A_PIN_STATE + 1];
-+extern const struct nla_policy dpll_pin_parent_device_nl_policy[DPLL_A_PIN_PHASE_OFFSET + 1];
- extern const struct nla_policy dpll_pin_parent_pin_nl_policy[DPLL_A_PIN_STATE + 1];
- 
- int dpll_lock_doit(const struct genl_split_ops *ops, struct sk_buff *skb,
-diff --git a/include/uapi/linux/dpll.h b/include/uapi/linux/dpll.h
-index 20ef0718f8dc..050f51b48ef8 100644
---- a/include/uapi/linux/dpll.h
-+++ b/include/uapi/linux/dpll.h
-@@ -7,7 +7,7 @@
- #define _UAPI_LINUX_DPLL_H
- 
- #define DPLL_FAMILY_NAME	"dpll"
--#define DPLL_FAMILY_VERSION	1
-+#define DPLL_FAMILY_VERSION	2
- 
- /**
-  * enum dpll_mode - working modes a dpll can support, differentiates if and how
-@@ -138,6 +138,8 @@ enum dpll_pin_capabilities {
- 	DPLL_PIN_CAPABILITIES_STATE_CAN_CHANGE = 4,
- };
- 
-+#define DPLL_PHASE_OFFSET_DIVIDER	1000
++static int
++dpll_msg_add_pin_phase_adjust(struct sk_buff *msg, struct dpll_pin *pin,
++			      struct dpll_pin_ref *ref,
++			      struct netlink_ext_ack *extack)
++{
++	const struct dpll_pin_ops *ops = dpll_pin_ops(ref);
++	struct dpll_device *dpll = ref->dpll;
++	s32 phase_adjust;
++	int ret;
 +
- enum dpll_a {
- 	DPLL_A_ID = 1,
- 	DPLL_A_MODULE_NAME,
-@@ -173,6 +175,10 @@ enum dpll_a_pin {
- 	DPLL_A_PIN_CAPABILITIES,
- 	DPLL_A_PIN_PARENT_DEVICE,
- 	DPLL_A_PIN_PARENT_PIN,
-+	DPLL_A_PIN_PHASE_ADJUST_MIN,
-+	DPLL_A_PIN_PHASE_ADJUST_MAX,
-+	DPLL_A_PIN_PHASE_ADJUST,
-+	DPLL_A_PIN_PHASE_OFFSET,
++	if (!ops->phase_adjust_get)
++		return 0;
++	ret = ops->phase_adjust_get(pin, dpll_pin_on_dpll_priv(dpll, pin),
++				    dpll, dpll_priv(dpll),
++				    &phase_adjust, extack);
++	if (ret)
++		return ret;
++	if (nla_put_s32(msg, DPLL_A_PIN_PHASE_ADJUST, phase_adjust))
++		return -EMSGSIZE;
++
++	return 0;
++}
++
++static int
++dpll_msg_add_phase_offset(struct sk_buff *msg, struct dpll_pin *pin,
++			  struct dpll_pin_ref *ref,
++			  struct netlink_ext_ack *extack)
++{
++	const struct dpll_pin_ops *ops = dpll_pin_ops(ref);
++	struct dpll_device *dpll = ref->dpll;
++	s64 phase_offset;
++	int ret;
++
++	if (!ops->phase_offset_get)
++		return 0;
++	ret = ops->phase_offset_get(pin, dpll_pin_on_dpll_priv(dpll, pin),
++				    dpll, dpll_priv(dpll), &phase_offset,
++				    extack);
++	if (ret)
++		return ret;
++	if (nla_put_64bit(msg, DPLL_A_PIN_PHASE_OFFSET, sizeof(phase_offset),
++			  &phase_offset, DPLL_A_PIN_PAD))
++		return -EMSGSIZE;
++
++	return 0;
++}
++
+ static int
+ dpll_msg_add_pin_freq(struct sk_buff *msg, struct dpll_pin *pin,
+ 		      struct dpll_pin_ref *ref, struct netlink_ext_ack *extack)
+@@ -330,6 +377,9 @@ dpll_msg_add_pin_dplls(struct sk_buff *msg, struct dpll_pin *pin,
+ 		if (ret)
+ 			goto nest_cancel;
+ 		ret = dpll_msg_add_pin_direction(msg, pin, ref, extack);
++		if (ret)
++			goto nest_cancel;
++		ret = dpll_msg_add_phase_offset(msg, pin, ref, extack);
+ 		if (ret)
+ 			goto nest_cancel;
+ 		nla_nest_end(msg, attr);
+@@ -377,6 +427,15 @@ dpll_cmd_pin_get_one(struct sk_buff *msg, struct dpll_pin *pin,
+ 	if (nla_put_u32(msg, DPLL_A_PIN_CAPABILITIES, prop->capabilities))
+ 		return -EMSGSIZE;
+ 	ret = dpll_msg_add_pin_freq(msg, pin, ref, extack);
++	if (ret)
++		return ret;
++	if (nla_put_s32(msg, DPLL_A_PIN_PHASE_ADJUST_MIN,
++			prop->phase_range.min))
++		return -EMSGSIZE;
++	if (nla_put_s32(msg, DPLL_A_PIN_PHASE_ADJUST_MAX,
++			prop->phase_range.max))
++		return -EMSGSIZE;
++	ret = dpll_msg_add_pin_phase_adjust(msg, pin, ref, extack);
+ 	if (ret)
+ 		return ret;
+ 	if (xa_empty(&pin->parent_refs))
+@@ -416,7 +475,7 @@ dpll_device_get_one(struct dpll_device *dpll, struct sk_buff *msg,
+ 	if (nla_put_u32(msg, DPLL_A_TYPE, dpll->type))
+ 		return -EMSGSIZE;
  
- 	__DPLL_A_PIN_MAX,
- 	DPLL_A_PIN_MAX = (__DPLL_A_PIN_MAX - 1)
+-	return ret;
++	return 0;
+ }
+ 
+ static int
+@@ -705,6 +764,39 @@ dpll_pin_direction_set(struct dpll_pin *pin, struct dpll_device *dpll,
+ 	return 0;
+ }
+ 
++static int
++dpll_pin_phase_adj_set(struct dpll_pin *pin, struct nlattr *phase_adj_attr,
++		       struct netlink_ext_ack *extack)
++{
++	struct dpll_pin_ref *ref;
++	unsigned long i;
++	s32 phase_adj;
++	int ret;
++
++	phase_adj = nla_get_s32(phase_adj_attr);
++	if (phase_adj > pin->prop->phase_range.max ||
++	    phase_adj < pin->prop->phase_range.min) {
++		NL_SET_ERR_MSG(extack, "phase adjust value not supported");
++		return -EINVAL;
++	}
++	xa_for_each(&pin->dpll_refs, i, ref) {
++		const struct dpll_pin_ops *ops = dpll_pin_ops(ref);
++		struct dpll_device *dpll = ref->dpll;
++
++		if (!ops->phase_adjust_set)
++			return -EOPNOTSUPP;
++		ret = ops->phase_adjust_set(pin,
++					    dpll_pin_on_dpll_priv(dpll, pin),
++					    dpll, dpll_priv(dpll), phase_adj,
++					    extack);
++		if (ret)
++			return ret;
++	}
++	__dpll_pin_change_ntf(pin);
++
++	return 0;
++}
++
+ static int
+ dpll_pin_parent_device_set(struct dpll_pin *pin, struct nlattr *parent_nest,
+ 			   struct netlink_ext_ack *extack)
+@@ -793,6 +885,11 @@ dpll_pin_set_from_nlattr(struct dpll_pin *pin, struct genl_info *info)
+ 			if (ret)
+ 				return ret;
+ 			break;
++		case DPLL_A_PIN_PHASE_ADJUST:
++			ret = dpll_pin_phase_adj_set(pin, a, info->extack);
++			if (ret)
++				return ret;
++			break;
+ 		case DPLL_A_PIN_PARENT_DEVICE:
+ 			ret = dpll_pin_parent_device_set(pin, a, info->extack);
+ 			if (ret)
+diff --git a/include/linux/dpll.h b/include/linux/dpll.h
+index bbc480cd2932..578fc5fa3750 100644
+--- a/include/linux/dpll.h
++++ b/include/linux/dpll.h
+@@ -68,6 +68,18 @@ struct dpll_pin_ops {
+ 	int (*prio_set)(const struct dpll_pin *pin, void *pin_priv,
+ 			const struct dpll_device *dpll, void *dpll_priv,
+ 			const u32 prio, struct netlink_ext_ack *extack);
++	int (*phase_offset_get)(const struct dpll_pin *pin, void *pin_priv,
++				const struct dpll_device *dpll, void *dpll_priv,
++				s64 *phase_offset,
++				struct netlink_ext_ack *extack);
++	int (*phase_adjust_get)(const struct dpll_pin *pin, void *pin_priv,
++				const struct dpll_device *dpll, void *dpll_priv,
++				s32 *phase_adjust,
++				struct netlink_ext_ack *extack);
++	int (*phase_adjust_set)(const struct dpll_pin *pin, void *pin_priv,
++				const struct dpll_device *dpll, void *dpll_priv,
++				const s32 phase_adjust,
++				struct netlink_ext_ack *extack);
+ };
+ 
+ struct dpll_pin_frequency {
+@@ -91,6 +103,11 @@ struct dpll_pin_frequency {
+ #define DPLL_PIN_FREQUENCY_DCF77 \
+ 	DPLL_PIN_FREQUENCY(DPLL_PIN_FREQUENCY_77_5_KHZ)
+ 
++struct dpll_pin_phase_adjust_range {
++	s32 min;
++	s32 max;
++};
++
+ struct dpll_pin_properties {
+ 	const char *board_label;
+ 	const char *panel_label;
+@@ -99,6 +116,7 @@ struct dpll_pin_properties {
+ 	unsigned long capabilities;
+ 	u32 freq_supported_num;
+ 	struct dpll_pin_frequency *freq_supported;
++	struct dpll_pin_phase_adjust_range phase_range;
+ };
+ 
+ #if IS_ENABLED(CONFIG_DPLL)
 -- 
 2.38.1
 
