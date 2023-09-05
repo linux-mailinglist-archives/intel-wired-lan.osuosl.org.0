@@ -1,89 +1,85 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 63EAA792DC0
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  5 Sep 2023 20:50:55 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 964E2793102
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  5 Sep 2023 23:38:11 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id E437981F2B;
-	Tue,  5 Sep 2023 18:50:53 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E437981F2B
+	by smtp3.osuosl.org (Postfix) with ESMTP id CE7D060F83;
+	Tue,  5 Sep 2023 21:38:09 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org CE7D060F83
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1693939853;
-	bh=gVNV6vXFc4D29NmhOTHPoeWPzo0lgDOUWZWp6e5C8w0=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=HGXmqz7xdgO+QP2CorgcY0evqCLMaETAZXA01preYQm6dexPIkrxbs84tnO4xE1ZB
-	 NrnhYH148e+JKi+qEQ7fw7s+9W7ZQjoFOF7ICJkb55wo/UqvTJmg5ytvnHD1y7neZe
-	 96pJPe5ArmOlpBj9NCcJ+pU4l9nbjq2gkNG+YytEXie23McGE0q/fOr1v0fOkHuSoN
-	 +XgZjko0KPuS/o22TVi/35RkoAXAX59sjfqQr9M2Jh4CI9XsuxmwZ1e72ZOpz9cc5F
-	 ncGpLdv0R5rPR60/DOT5Q/zjbofow3MhTds85SG2/YEBYDdUKBCpiW9cIMVVu7xoqe
-	 CpfwgXGbShSdQ==
+	s=default; t=1693949889;
+	bh=dksekLTSqSv0uX3qqiTSnFG2GCecZQoXndKvOG+E4AY=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=Z/Cr4LnOjlvMCItChAe2SakrmLuG2GTSfPxUikTRe2vRv4x1I7OCSUj9OcI7Q5O30
+	 O8cm8Dp+jJVLe01FI8arlqA9Al2Tgm+Cm+zKxzTF6s8AiO1Im2SF3FYVlgdoZx1YdT
+	 rBMM//87JXh9eWuvCx8c4Hn/UwQN/Wb11AS7rTpdTYjhqgrP363Rh4zYDwy2aeSOBU
+	 qqbXqnuHPMaVoD9CiFIH/eNgsPo+wAA2+d0WfioQt7nPkpSl3SFVgTIrwdtcPNsvjv
+	 pQe7gMcrjZcbcrPH78d6MBNUEy/5n37L/ILJ6DD8Pdq1bt0+/GfPWwrOhKe5wyIfkF
+	 5DXc/rJ9Wbs4A==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id s-LLTdFbxlJJ; Tue,  5 Sep 2023 18:50:53 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Hg6Dn-hF35cV; Tue,  5 Sep 2023 21:38:09 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 9A8ED81EEC;
-	Tue,  5 Sep 2023 18:50:52 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9A8ED81EEC
+	by smtp3.osuosl.org (Postfix) with ESMTP id DFDA860DF4;
+	Tue,  5 Sep 2023 21:38:08 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org DFDA860DF4
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id E23971BF318
- for <intel-wired-lan@lists.osuosl.org>; Tue,  5 Sep 2023 18:50:36 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 1E4391BF2B4
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  5 Sep 2023 21:38:04 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id BA93760BE7
- for <intel-wired-lan@lists.osuosl.org>; Tue,  5 Sep 2023 18:50:36 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org BA93760BE7
+ by smtp3.osuosl.org (Postfix) with ESMTP id E846B60DF4
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  5 Sep 2023 21:38:03 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org E846B60DF4
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id cj4HfqxkPDUc for <intel-wired-lan@lists.osuosl.org>;
- Tue,  5 Sep 2023 18:50:36 +0000 (UTC)
-Received: from mgamail.intel.com (mgamail.intel.com [192.55.52.88])
- by smtp3.osuosl.org (Postfix) with ESMTPS id EB9D360B69
- for <intel-wired-lan@lists.osuosl.org>; Tue,  5 Sep 2023 18:50:35 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org EB9D360B69
-X-IronPort-AV: E=McAfee;i="6600,9927,10824"; a="407870968"
-X-IronPort-AV: E=Sophos;i="6.02,229,1688454000"; d="scan'208";a="407870968"
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
- by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 05 Sep 2023 11:50:35 -0700
+ with ESMTP id Iv9fGBt9uMtt for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  5 Sep 2023 21:38:03 +0000 (UTC)
+Received: from mgamail.intel.com (mgamail.intel.com [134.134.136.100])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id D1A8E60D76
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  5 Sep 2023 21:38:02 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D1A8E60D76
+X-IronPort-AV: E=McAfee;i="6600,9927,10824"; a="443298017"
+X-IronPort-AV: E=Sophos;i="6.02,230,1688454000"; d="scan'208";a="443298017"
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 05 Sep 2023 14:38:02 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10824"; a="884411885"
-X-IronPort-AV: E=Sophos;i="6.02,229,1688454000"; d="scan'208";a="884411885"
-Received: from nsnaveen-mobl.gar.corp.intel.com (HELO azaki-desk1.intel.com)
- ([10.252.34.119])
- by fmsmga001-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 05 Sep 2023 11:50:25 -0700
-From: Ahmed Zaki <ahmed.zaki@intel.com>
+X-IronPort-AV: E=McAfee;i="6600,9927,10824"; a="864902564"
+X-IronPort-AV: E=Sophos;i="6.02,230,1688454000"; d="scan'208";a="864902564"
+Received: from vcostago-mobl3.jf.intel.com ([10.24.14.106])
+ by orsmga004-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 05 Sep 2023 14:38:01 -0700
+From: Vinicius Costa Gomes <vinicius.gomes@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Tue,  5 Sep 2023 12:50:20 -0600
-Message-Id: <20230905185020.3613223-5-ahmed.zaki@intel.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20230905185020.3613223-1-ahmed.zaki@intel.com>
-References: <20230905185020.3613223-1-ahmed.zaki@intel.com>
+Date: Tue,  5 Sep 2023 14:37:52 -0700
+Message-ID: <20230905213753.697461-1-vinicius.gomes@intel.com>
+X-Mailer: git-send-email 2.41.0
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1693939835; x=1725475835;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=ml11XlYHehpmSnhaOox7Ud4jaxZv7sK4TEVUjA1JUR8=;
- b=ithxZNQEqUCzT/BZmNXhg8aljocTsWi46yd1bGh8OnHhVrv/sc9KvVyF
- h1Y7PS+Kho9/Fot1AHbCdWyjYmaabnl7+MAU8vqnRYoMRn2N7pgz0JHuf
- akdKdSCjxoxua9G9H74G/Aua1uw3yOCQpRZp6B/x5NbCBFqoovp3Caq5p
- N1KmH/rUTP7O2EwoQm75oIKno59AIuUm33mqsAU9av9qNmilZSxzEPBCl
- O8TwvR1amrN8Sa5ZxJxdXRt1gT1hgJherOfKk0MCeFZU6JmY1jwYDaflQ
- dK/ycFnupzgQQVdhmv3PR/ii3VfN4Ww6bF6SX610GMspEWcMmwWOOaQKN
+ t=1693949883; x=1725485883;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=9apBiphN57rQ3aiF+Q7XIdDoQMMdkK/gnjUcFUrpp1Y=;
+ b=Q5d+/0+7HmWHP0PEMBeHfOqsYHKs+dVgzuo48kwFk0D9j4ye3kGwHaxx
+ DqhDJwExeTjsQ17VV/iyO48Hq06jwGMybyKtKAw319OQ3OQhRdquh9wk4
+ atTtDX7jOkoEwWbLm2ObZN8Sppd3pzezcJSvRa13xxa6GXNWGK5YSd3LF
+ BlAGD14NNMMkyuZJ+U3G1ksnavxBQaM/IorBwuhjSmPfTDFNd/JqwDqmT
+ NZOsIEkDz+0Q4QhS4UQSY8cMNioK2lZOY9sgayGyk/VFCfFBzjoAnnwwT
+ tUyhetjxl7t4DtBxWBTuK5RdwBw//joZYC854LCkXSj4eWtOfGdi+aTSK
  w==;
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=ithxZNQE
-Subject: [Intel-wired-lan] [PATCH iwl-next v6 4/4] iavf: Add ability to turn
- off CRC stripping for VF
+ header.a=rsa-sha256 header.s=Intel header.b=Q5d+/0+7
+Subject: [Intel-wired-lan] [PATCH iwl-net v1] igc: Fix infinite
+ initialization loop with early XDP redirect
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,163 +92,50 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Jesse Brandeburg <jesse.brandeburg@intel.com>,
- Norbert Zulinski <norbertx.zulinski@intel.com>
+Cc: Andre Guedes <andre.guedes@intel.com>,
+ Jithu Joseph <jithu.joseph@intel.com>, netdev@vger.kernel.org,
+ Jesse Brandeburg <jesse.brandeburg@intel.com>, linux-kernel@vger.kernel.org,
+ Ferenc Fejes <ferenc.fejes@ericsson.com>, Eric Dumazet <edumazet@google.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>,
+ Vedang Patel <vedang.patel@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Norbert Zulinski <norbertx.zulinski@intel.com>
+When a XDP redirect happens before the link is ready, that
+transmission will not finish and will timeout, causing an adapter
+reset. If the redirects do not stop, the adapter will not stop
+resetting.
 
-Previously CRC stripping was always enabled for VF.
+Wait for the driver to signal that there's a carrier before allowing
+transmissions to proceed.
 
-Now it is possible to turn off CRC stripping via ethtool.
-        ethtool -K <interface> rx-fcs off
-To turn off CRC stripping, first vlan stripping must be disabled.
-
-In iavf_configure_queues add check if CRC stripping is enabled for
-VF, if it's enabled then set crc_disabled to false on every VF's
-queue. In iavf_set_features add check if CRC stripping setting was
-changed then schedule reset.
-
-Signed-off-by: Norbert Zulinski <norbertx.zulinski@intel.com>
-Reviewed-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
-Signed-off-by: Ahmed Zaki <ahmed.zaki@intel.com>
+Fixes: 4ff320361092 ("igc: Add support for XDP_REDIRECT action")
+Reported-by: Ferenc Fejes <ferenc.fejes@ericsson.com>
+Closes: https://lore.kernel.org/netdev/0caf33cf6adb3a5bf137eeaa20e89b167c9986d5.camel@ericsson.com/
+Signed-off-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
+Tested-by: Ferenc Fejes <ferenc.fejes@ericsson.com>
 ---
- drivers/net/ethernet/intel/iavf/iavf.h        |  2 +
- drivers/net/ethernet/intel/iavf/iavf_main.c   | 59 ++++++++++++++++++-
- .../net/ethernet/intel/iavf/iavf_virtchnl.c   |  4 ++
- 3 files changed, 64 insertions(+), 1 deletion(-)
+ drivers/net/ethernet/intel/igc/igc_main.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/net/ethernet/intel/iavf/iavf.h b/drivers/net/ethernet/intel/iavf/iavf.h
-index 738e25657c6b..f32b0453584f 100644
---- a/drivers/net/ethernet/intel/iavf/iavf.h
-+++ b/drivers/net/ethernet/intel/iavf/iavf.h
-@@ -406,6 +406,8 @@ struct iavf_adapter {
- 			  VIRTCHNL_VF_OFFLOAD_VLAN)
- #define VLAN_V2_ALLOWED(_a) ((_a)->vf_res->vf_cap_flags & \
- 			     VIRTCHNL_VF_OFFLOAD_VLAN_V2)
-+#define CRC_OFFLOAD_ALLOWED(_a) ((_a)->vf_res->vf_cap_flags & \
-+				 VIRTCHNL_VF_OFFLOAD_CRC)
- #define VLAN_V2_FILTERING_ALLOWED(_a) \
- 	(VLAN_V2_ALLOWED((_a)) && \
- 	 ((_a)->vlan_v2_caps.filtering.filtering_support.outer || \
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
-index 0302e46e7942..ed4666b59ad2 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_main.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
-@@ -4402,6 +4402,9 @@ static int iavf_set_features(struct net_device *netdev,
- 	    (features & NETIF_VLAN_OFFLOAD_FEATURES))
- 		iavf_set_vlan_offload_features(adapter, netdev->features,
- 					       features);
-+	if (CRC_OFFLOAD_ALLOWED(adapter) &&
-+	    ((netdev->features & NETIF_F_RXFCS) ^ (features & NETIF_F_RXFCS)))
-+		iavf_schedule_reset(adapter, IAVF_FLAG_RESET_NEEDED);
+diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
+index 293b45717683..98de34d0ce07 100644
+--- a/drivers/net/ethernet/intel/igc/igc_main.c
++++ b/drivers/net/ethernet/intel/igc/igc_main.c
+@@ -6491,7 +6491,7 @@ static int igc_xdp_xmit(struct net_device *dev, int num_frames,
+ 	struct igc_ring *ring;
+ 	int i, drops;
  
- 	return 0;
- }
-@@ -4523,6 +4526,9 @@ iavf_get_netdev_vlan_hw_features(struct iavf_adapter *adapter)
- 		}
- 	}
+-	if (unlikely(test_bit(__IGC_DOWN, &adapter->state)))
++	if (unlikely(!netif_carrier_ok(dev)))
+ 		return -ENETDOWN;
  
-+	if (CRC_OFFLOAD_ALLOWED(adapter))
-+		hw_features |= NETIF_F_RXFCS;
-+
- 	return hw_features;
- }
- 
-@@ -4686,6 +4692,55 @@ iavf_fix_netdev_vlan_features(struct iavf_adapter *adapter,
- 	return requested_features;
- }
- 
-+/**
-+ * iavf_fix_strip_features - fix NETDEV strip features based on functionality
-+ * @adapter: board private structure
-+ * @requested_features: stack requested NETDEV features
-+ *
-+ * Returns fixed-up features bits
-+ **/
-+static netdev_features_t
-+iavf_fix_strip_features(struct iavf_adapter *adapter,
-+			netdev_features_t requested_features)
-+{
-+	struct net_device *netdev = adapter->netdev;
-+	bool crc_offload_req, is_vlan_strip;
-+	netdev_features_t vlan_strip;
-+	int num_non_zero_vlan;
-+
-+	crc_offload_req = CRC_OFFLOAD_ALLOWED(adapter) &&
-+			  (requested_features & NETIF_F_RXFCS);
-+	num_non_zero_vlan = iavf_get_num_vlans_added(adapter);
-+	vlan_strip = (NETIF_F_HW_VLAN_CTAG_RX | NETIF_F_HW_VLAN_STAG_RX);
-+	is_vlan_strip = requested_features & vlan_strip;
-+
-+	if (!crc_offload_req)
-+		return requested_features;
-+
-+	if (!num_non_zero_vlan && (netdev->features & vlan_strip) &&
-+	    !(netdev->features & NETIF_F_RXFCS) && is_vlan_strip) {
-+		requested_features &= ~vlan_strip;
-+		netdev_info(netdev, "Disabling VLAN stripping as FCS/CRC stripping is also disabled and there is no VLAN configured\n");
-+		return requested_features;
-+	}
-+
-+	if ((netdev->features & NETIF_F_RXFCS) && is_vlan_strip) {
-+		requested_features &= ~vlan_strip;
-+		if (!(netdev->features & vlan_strip))
-+			netdev_info(netdev, "To enable VLAN stripping, first need to enable FCS/CRC stripping");
-+
-+		return requested_features;
-+	}
-+
-+	if (num_non_zero_vlan && is_vlan_strip &&
-+	    !(netdev->features & NETIF_F_RXFCS)) {
-+		requested_features &= ~NETIF_F_RXFCS;
-+		netdev_info(netdev, "To disable FCS/CRC stripping, first need to disable VLAN stripping");
-+	}
-+
-+	return requested_features;
-+}
-+
- /**
-  * iavf_fix_features - fix up the netdev feature bits
-  * @netdev: our net device
-@@ -4698,7 +4753,9 @@ static netdev_features_t iavf_fix_features(struct net_device *netdev,
- {
- 	struct iavf_adapter *adapter = netdev_priv(netdev);
- 
--	return iavf_fix_netdev_vlan_features(adapter, features);
-+	features = iavf_fix_netdev_vlan_features(adapter, features);
-+
-+	return iavf_fix_strip_features(adapter, features);
- }
- 
- static const struct net_device_ops iavf_netdev_ops = {
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
-index 0b97b424e487..8ce6389b5815 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
-@@ -142,6 +142,7 @@ int iavf_send_vf_config_msg(struct iavf_adapter *adapter)
- 	       VIRTCHNL_VF_OFFLOAD_RSS_PCTYPE_V2 |
- 	       VIRTCHNL_VF_OFFLOAD_ENCAP |
- 	       VIRTCHNL_VF_OFFLOAD_VLAN_V2 |
-+	       VIRTCHNL_VF_OFFLOAD_CRC |
- 	       VIRTCHNL_VF_OFFLOAD_ENCAP_CSUM |
- 	       VIRTCHNL_VF_OFFLOAD_REQ_QUEUES |
- 	       VIRTCHNL_VF_OFFLOAD_ADQ |
-@@ -312,6 +313,9 @@ void iavf_configure_queues(struct iavf_adapter *adapter)
- 		vqpi->rxq.databuffer_size =
- 			ALIGN(adapter->rx_rings[i].rx_buf_len,
- 			      BIT_ULL(IAVF_RXQ_CTX_DBUFF_SHIFT));
-+		if (CRC_OFFLOAD_ALLOWED(adapter))
-+			vqpi->rxq.crc_disable = !!(adapter->netdev->features &
-+						   NETIF_F_RXFCS);
- 		vqpi++;
- 	}
- 
+ 	if (unlikely(flags & ~XDP_XMIT_FLAGS_MASK))
 -- 
-2.34.1
+2.41.0
 
 _______________________________________________
 Intel-wired-lan mailing list
