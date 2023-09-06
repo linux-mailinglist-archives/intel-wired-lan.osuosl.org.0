@@ -1,88 +1,71 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id D4D6C793296
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  6 Sep 2023 01:29:19 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id D6FF2793444
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  6 Sep 2023 05:57:45 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 6499E4081F;
-	Tue,  5 Sep 2023 23:29:18 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6499E4081F
+	by smtp2.osuosl.org (Postfix) with ESMTP id 14633414A4;
+	Wed,  6 Sep 2023 03:57:43 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 14633414A4
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1693956558;
-	bh=dEDL2oxlYvwACWdERKlcTi/vgbD2WrXIibDWKYe5N7M=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1693972663;
+	bh=/946oVQlbrvtTxBbYK1ONLb1nC6V8/JluE7hll/yR8A=;
+	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=ft9YrLejEYI3hvGBTzLtuWW7hwja4JI1QubQG2nHxb2iDucArqjEGJ+si2F9DBA+Y
-	 3NLPUw7TNdGH11d2oM1ijeWODXsBuafgLAk1l9PkzfxIe+8t8jTGXXOkd2VfhvkU3F
-	 QbXDHfuB3NPhXU65o1i+UBvFWbppiYoh3a7WjotFWFq9ngkZqeiDbR6FpAssJlkAhu
-	 RFfpsZtsitCZ4GvoP7rjkCLN3a1fs+lCXn0fLg3WUyy3rEiHa4bHmq6kf1HzE9ufay
-	 DzF49dQzxLe4AtxE0eSTXl/HnTzbgLbByXug+faYdh60Np5S5GgwxsCyZ1hAMdW2XN
-	 KJmb+yp50/H6w==
+	b=lKdbwSLaqzUqJIae+eGn7/oRSme7UEJYoyx8deZ179uipVuQm+64WJp8lLCFDvrzo
+	 PHLP3vSUEjaHstquh0yFn9lUF7AZn1UaDUY5DGvrJBQ/SoCmqhVw95IKypqqn+pps2
+	 5VXuUN+uCcCP1rXIaECxjTPO8rmq+Iw5ORLaG9aMM3g8LrwO+0wNyvBNIszsvWXjxv
+	 HsEWlWQCAt+VecmuLq9/xjvlJPOEfv2XLqCJ9a8lhYEJJ+qKW9x+66AtAUHMtoaXqq
+	 pPh9+rEvULujcVZvoXJxm3i1Fs31p3zkalqbFvmugzQrgI7OiRIUf+5EUoUNDM+ZsB
+	 HbRQVzMVUBEFw==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id SFvgobAWWUlu; Tue,  5 Sep 2023 23:29:16 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id UhOJ5OmZU42Y; Wed,  6 Sep 2023 03:57:42 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 8149C4085D;
-	Tue,  5 Sep 2023 23:29:16 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8149C4085D
+	by smtp2.osuosl.org (Postfix) with ESMTP id A18654149C;
+	Wed,  6 Sep 2023 03:57:41 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A18654149C
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 9BE3E1BF25F
- for <intel-wired-lan@lists.osuosl.org>; Tue,  5 Sep 2023 23:29:03 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 12B391BF292
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  6 Sep 2023 03:57:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 8229B813E0
- for <intel-wired-lan@lists.osuosl.org>; Tue,  5 Sep 2023 23:29:03 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8229B813E0
+ by smtp3.osuosl.org (Postfix) with ESMTP id D623860E2F
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  6 Sep 2023 03:57:35 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D623860E2F
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id NrWRVxrTNh1x for <intel-wired-lan@lists.osuosl.org>;
- Tue,  5 Sep 2023 23:29:02 +0000 (UTC)
-Received: from mgamail.intel.com (mgamail.intel.com [134.134.136.24])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 6851281277
- for <intel-wired-lan@lists.osuosl.org>; Tue,  5 Sep 2023 23:29:02 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6851281277
-X-IronPort-AV: E=McAfee;i="6600,9927,10824"; a="379643946"
-X-IronPort-AV: E=Sophos;i="6.02,230,1688454000"; d="scan'208";a="379643946"
-Received: from fmsmga007.fm.intel.com ([10.253.24.52])
- by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 05 Sep 2023 16:29:02 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10824"; a="744448422"
-X-IronPort-AV: E=Sophos;i="6.02,230,1688454000"; d="scan'208";a="744448422"
-Received: from amlin-018-114.igk.intel.com ([10.102.18.114])
- by fmsmga007.fm.intel.com with ESMTP; 05 Sep 2023 16:28:59 -0700
-From: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
-To: kuba@kernel.org, jiri@resnulli.us, jonathan.lemon@gmail.com,
- pabeni@redhat.com, vadim.fedorenko@linux.dev
-Date: Wed,  6 Sep 2023 01:26:10 +0200
-Message-Id: <20230905232610.1403647-5-arkadiusz.kubalewski@intel.com>
-X-Mailer: git-send-email 2.38.1
-In-Reply-To: <20230905232610.1403647-1-arkadiusz.kubalewski@intel.com>
-References: <20230905232610.1403647-1-arkadiusz.kubalewski@intel.com>
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id rnyVlj744FJy for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  6 Sep 2023 03:57:34 +0000 (UTC)
+Received: from mx3.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 9870460E25
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  6 Sep 2023 03:57:33 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9870460E25
+Received: from [192.168.0.185] (ip5f5aeeca.dynamic.kabel-deutschland.de
+ [95.90.238.202])
+ (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested) (Authenticated sender: pmenzel)
+ by mx.molgen.mpg.de (Postfix) with ESMTPSA id F253861E5FE01;
+ Wed,  6 Sep 2023 05:57:09 +0200 (CEST)
+Message-ID: <ffbffb50-d5a8-4433-bb4f-d64997725877@molgen.mpg.de>
+Date: Wed, 6 Sep 2023 05:57:09 +0200
 MIME-Version: 1.0
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1693956542; x=1725492542;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=6ILH6tqAB5WQEX9vhWwiKc9ectzRsNTAExKhJfVX6K4=;
- b=KTYhgW3t4vcfZZMigANDd46LCb25QcQjNm7TO7Jm0vtBMZjAQ6/9BSK/
- hxx5rHbyIfX7EVt0yb1icCXPmQZuMZfMxxt0iyBLE8hHsOWnrPma9IVaY
- B2zVKbz9geIcbLeHL/RNanErnQwSQvnspM8Pqwwf/GLM9s4ggqRojYLK9
- HIZjK9RrUrQxULhHrMPDY+3rNUwAMj1monoFaC6wODFWj9aM60WkSvxge
- JO5z+i34+NcQGL+IHNj5OYBXiG/Z5xicIf2Q0g60BTosC3X93TBvkfQle
- cH2Ru3ZD7F9d7H2XsI7BODEDuhMVwa9JNZiY1xqf8D0EHJttidxA60UHH
- g==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=KTYhgW3t
-Subject: [Intel-wired-lan] [PATCH net-next 4/4] ice: dpll: implement pin
- phase related callbacks
+User-Agent: Mozilla Thunderbird
+Content-Language: en-US
+To: Ahmed Zaki <ahmed.zaki@intel.com>,
+ Norbert Zulinski <norbertx.zulinski@intel.com>
+References: <20230905180837.3611383-1-ahmed.zaki@intel.com>
+ <20230905180837.3611383-5-ahmed.zaki@intel.com>
+From: Paul Menzel <pmenzel@molgen.mpg.de>
+In-Reply-To: <20230905180837.3611383-5-ahmed.zaki@intel.com>
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v5 4/4] iavf: Add ability to
+ turn off CRC stripping for VF
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,353 +78,132 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: bvanassche@acm.org, netdev@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org, linux-clk@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: intel-wired-lan@lists.osuosl.org,
+ Jesse Brandeburg <jesse.brandeburg@intel.com>
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Implement new callback ops related to measurment and adjustment of
-signal phase for pin-dpll in ice driver.
-
-Signed-off-by: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
----
- drivers/net/ethernet/intel/ice/ice_dpll.c | 224 +++++++++++++++++++++-
- drivers/net/ethernet/intel/ice/ice_dpll.h |  10 +-
- 2 files changed, 230 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/ice/ice_dpll.c b/drivers/net/ethernet/intel/ice/ice_dpll.c
-index 1faee9cb944d..6f7a2916f6c2 100644
---- a/drivers/net/ethernet/intel/ice/ice_dpll.c
-+++ b/drivers/net/ethernet/intel/ice/ice_dpll.c
-@@ -878,6 +878,203 @@ ice_dpll_output_direction(const struct dpll_pin *pin, void *pin_priv,
- 	return 0;
- }
- 
-+/**
-+ * ice_dpll_pin_phase_adjust_get - callback for get pin phase adjust value
-+ * @pin: pointer to a pin
-+ * @pin_priv: private data pointer passed on pin registration
-+ * @dpll: registered dpll pointer
-+ * @dpll_priv: private data pointer passed on dpll registration
-+ * @phase_adjust: on success holds pin phase_adjust value
-+ * @extack: error reporting
-+ *
-+ * Dpll subsystem callback. Handler for getting phase adjust value of a pin.
-+ *
-+ * Context: Acquires pf->dplls.lock
-+ * Return:
-+ * * 0 - success
-+ * * negative - error
-+ */
-+static int
-+ice_dpll_pin_phase_adjust_get(const struct dpll_pin *pin, void *pin_priv,
-+			      const struct dpll_device *dpll, void *dpll_priv,
-+			      s32 *phase_adjust,
-+			      struct netlink_ext_ack *extack)
-+{
-+	struct ice_dpll_pin *p = pin_priv;
-+	struct ice_pf *pf = p->pf;
-+
-+	mutex_lock(&pf->dplls.lock);
-+	*phase_adjust = p->phase_adjust;
-+	mutex_unlock(&pf->dplls.lock);
-+
-+	return 0;
-+}
-+
-+/**
-+ * ice_dpll_pin_phase_adjust_set - helper for setting a pin phase adjust value
-+ * @pin: pointer to a pin
-+ * @pin_priv: private data pointer passed on pin registration
-+ * @dpll: registered dpll pointer
-+ * @dpll_priv: private data pointer passed on dpll registration
-+ * @phase_adjust: phase_adjust to be set
-+ * @extack: error reporting
-+ * @type: type of a pin
-+ *
-+ * Helper for dpll subsystem callback. Handler for setting phase adjust value
-+ * of a pin.
-+ *
-+ * Context: Acquires pf->dplls.lock
-+ * Return:
-+ * * 0 - success
-+ * * negative - error
-+ */
-+static int
-+ice_dpll_pin_phase_adjust_set(const struct dpll_pin *pin, void *pin_priv,
-+			      const struct dpll_device *dpll, void *dpll_priv,
-+			      s32 phase_adjust,
-+			      struct netlink_ext_ack *extack,
-+			      enum ice_dpll_pin_type type)
-+{
-+	struct ice_dpll_pin *p = pin_priv;
-+	struct ice_dpll *d = dpll_priv;
-+	struct ice_pf *pf = d->pf;
-+	u8 flag, flags_en = 0;
-+	int ret;
-+
-+	mutex_lock(&pf->dplls.lock);
-+	if (phase_adjust == p->phase_adjust) {
-+		mutex_unlock(&pf->dplls.lock);
-+		return 0;
-+	}
-+	switch (type) {
-+	case ICE_DPLL_PIN_TYPE_INPUT:
-+		flag = ICE_AQC_SET_CGU_IN_CFG_FLG1_UPDATE_DELAY;
-+		if (p->flags[0] & ICE_AQC_GET_CGU_IN_CFG_FLG2_ESYNC_EN)
-+			flags_en |= ICE_AQC_SET_CGU_IN_CFG_FLG2_ESYNC_EN;
-+		if (p->flags[0] & ICE_AQC_GET_CGU_IN_CFG_FLG2_INPUT_EN)
-+			flags_en |= ICE_AQC_SET_CGU_IN_CFG_FLG2_INPUT_EN;
-+		ret = ice_aq_set_input_pin_cfg(&pf->hw, p->idx, flag, flags_en,
-+					       0, phase_adjust);
-+		break;
-+	case ICE_DPLL_PIN_TYPE_OUTPUT:
-+		flag = ICE_AQC_SET_CGU_OUT_CFG_UPDATE_PHASE;
-+		if (p->flags[0] & ICE_AQC_GET_CGU_OUT_CFG_OUT_EN)
-+			flag |= ICE_AQC_SET_CGU_OUT_CFG_OUT_EN;
-+		if (p->flags[0] & ICE_AQC_GET_CGU_OUT_CFG_ESYNC_EN)
-+			flag |= ICE_AQC_SET_CGU_OUT_CFG_ESYNC_EN;
-+		ret = ice_aq_set_output_pin_cfg(&pf->hw, p->idx, flag, 0, 0,
-+						phase_adjust);
-+		break;
-+	default:
-+		ret = -EINVAL;
-+	}
-+	if (!ret)
-+		p->phase_adjust = phase_adjust;
-+	mutex_unlock(&pf->dplls.lock);
-+	if (ret)
-+		NL_SET_ERR_MSG_FMT(extack,
-+				   "err:%d %s failed to set pin phase_adjust:%d for pin:%u on dpll:%u\n",
-+				   ret,
-+				   ice_aq_str(pf->hw.adminq.sq_last_status),
-+				   phase_adjust, p->idx, d->dpll_idx);
-+
-+	return ret;
-+}
-+
-+/**
-+ * ice_dpll_input_phase_adjust_set - callback for set input pin phase adjust
-+ * @pin: pointer to a pin
-+ * @pin_priv: private data pointer passed on pin registration
-+ * @dpll: registered dpll pointer
-+ * @dpll_priv: private data pointer passed on dpll registration
-+ * @phase_adjust: phase_adjust to be set
-+ * @extack: error reporting
-+ *
-+ * Dpll subsystem callback. Wraps a handler for setting phase adjust on input
-+ * pin.
-+ *
-+ * Context: Calls a function which acquires pf->dplls.lock
-+ * Return:
-+ * * 0 - success
-+ * * negative - error
-+ */
-+static int
-+ice_dpll_input_phase_adjust_set(const struct dpll_pin *pin, void *pin_priv,
-+				const struct dpll_device *dpll, void *dpll_priv,
-+				s32 phase_adjust,
-+				struct netlink_ext_ack *extack)
-+{
-+	return ice_dpll_pin_phase_adjust_set(pin, pin_priv, dpll, dpll_priv,
-+					     phase_adjust, extack,
-+					     ICE_DPLL_PIN_TYPE_INPUT);
-+}
-+
-+/**
-+ * ice_dpll_output_phase_adjust_set - callback for set output pin phase adjust
-+ * @pin: pointer to a pin
-+ * @pin_priv: private data pointer passed on pin registration
-+ * @dpll: registered dpll pointer
-+ * @dpll_priv: private data pointer passed on dpll registration
-+ * @phase_adjust: phase_adjust to be set
-+ * @extack: error reporting
-+ *
-+ * Dpll subsystem callback. Wraps a handler for setting phase adjust on output
-+ * pin.
-+ *
-+ * Context: Calls a function which acquires pf->dplls.lock
-+ * Return:
-+ * * 0 - success
-+ * * negative - error
-+ */
-+static int
-+ice_dpll_output_phase_adjust_set(const struct dpll_pin *pin, void *pin_priv,
-+				 const struct dpll_device *dpll, void *dpll_priv,
-+				 s32 phase_adjust,
-+				 struct netlink_ext_ack *extack)
-+{
-+	return ice_dpll_pin_phase_adjust_set(pin, pin_priv, dpll, dpll_priv,
-+					     phase_adjust, extack,
-+					     ICE_DPLL_PIN_TYPE_OUTPUT);
-+}
-+
-+#define ICE_DPLL_PHASE_OFFSET_DIVIDER	100
-+#define ICE_DPLL_PHASE_OFFSET_FACTOR		\
-+	(DPLL_PHASE_OFFSET_DIVIDER / ICE_DPLL_PHASE_OFFSET_DIVIDER)
-+/**
-+ * ice_dpll_phase_offset_get - callback for get dpll phase shift value
-+ * @pin: pointer to a pin
-+ * @pin_priv: private data pointer passed on pin registration
-+ * @dpll: registered dpll pointer
-+ * @dpll_priv: private data pointer passed on dpll registration
-+ * @phase_adjust: on success holds pin phase_adjust value
-+ * @extack: error reporting
-+ *
-+ * Dpll subsystem callback. Handler for getting phase shift value between
-+ * dpll's input and output.
-+ *
-+ * Context: Acquires pf->dplls.lock
-+ * Return:
-+ * * 0 - success
-+ * * negative - error
-+ */
-+static int
-+ice_dpll_phase_offset_get(const struct dpll_pin *pin, void *pin_priv,
-+			  const struct dpll_device *dpll, void *dpll_priv,
-+			  s64 *phase_offset, struct netlink_ext_ack *extack)
-+{
-+	struct ice_dpll *d = dpll_priv;
-+	struct ice_pf *pf = d->pf;
-+
-+	mutex_lock(&pf->dplls.lock);
-+	if (d->active_input == pin)
-+		*phase_offset = d->phase_offset * ICE_DPLL_PHASE_OFFSET_FACTOR;
-+	else
-+		*phase_offset = 0;
-+	mutex_unlock(&pf->dplls.lock);
-+
-+	return 0;
-+}
-+
- /**
-  * ice_dpll_rclk_state_on_pin_set - set a state on rclk pin
-  * @pin: pointer to a pin
-@@ -993,6 +1190,9 @@ static const struct dpll_pin_ops ice_dpll_input_ops = {
- 	.prio_get = ice_dpll_input_prio_get,
- 	.prio_set = ice_dpll_input_prio_set,
- 	.direction_get = ice_dpll_input_direction,
-+	.phase_adjust_get = ice_dpll_pin_phase_adjust_get,
-+	.phase_adjust_set = ice_dpll_input_phase_adjust_set,
-+	.phase_offset_get = ice_dpll_phase_offset_get,
- };
- 
- static const struct dpll_pin_ops ice_dpll_output_ops = {
-@@ -1001,6 +1201,8 @@ static const struct dpll_pin_ops ice_dpll_output_ops = {
- 	.state_on_dpll_get = ice_dpll_output_state_get,
- 	.state_on_dpll_set = ice_dpll_output_state_set,
- 	.direction_get = ice_dpll_output_direction,
-+	.phase_adjust_get = ice_dpll_pin_phase_adjust_get,
-+	.phase_adjust_set = ice_dpll_output_phase_adjust_set,
- };
- 
- static const struct dpll_device_ops ice_dpll_ops = {
-@@ -1031,6 +1233,8 @@ static u64 ice_generate_clock_id(struct ice_pf *pf)
-  */
- static void ice_dpll_notify_changes(struct ice_dpll *d)
- {
-+	bool pin_notified = false;
-+
- 	if (d->prev_dpll_state != d->dpll_state) {
- 		d->prev_dpll_state = d->dpll_state;
- 		dpll_device_change_ntf(d->dpll);
-@@ -1039,7 +1243,14 @@ static void ice_dpll_notify_changes(struct ice_dpll *d)
- 		if (d->prev_input)
- 			dpll_pin_change_ntf(d->prev_input);
- 		d->prev_input = d->active_input;
--		if (d->active_input)
-+		if (d->active_input) {
-+			dpll_pin_change_ntf(d->active_input);
-+			pin_notified = true;
-+		}
-+	}
-+	if (d->prev_phase_offset != d->phase_offset) {
-+		d->prev_phase_offset = d->phase_offset;
-+		if (!pin_notified && d->active_input)
- 			dpll_pin_change_ntf(d->active_input);
- 	}
- }
-@@ -1065,7 +1276,7 @@ ice_dpll_update_state(struct ice_pf *pf, struct ice_dpll *d, bool init)
- 
- 	ret = ice_get_cgu_state(&pf->hw, d->dpll_idx, d->prev_dpll_state,
- 				&d->input_idx, &d->ref_state, &d->eec_mode,
--				&d->phase_shift, &d->dpll_state);
-+				&d->phase_offset, &d->dpll_state);
- 
- 	dev_dbg(ice_pf_to_dev(pf),
- 		"update dpll=%d, prev_src_idx:%u, src_idx:%u, state:%d, prev:%d mode:%d\n",
-@@ -1656,6 +1867,15 @@ ice_dpll_init_info_direct_pins(struct ice_pf *pf,
- 				return ret;
- 			pins[i].prop.capabilities |=
- 				DPLL_PIN_CAPABILITIES_PRIORITY_CAN_CHANGE;
-+			pins[i].prop.phase_range.min =
-+				pf->dplls.input_phase_adj_max;
-+			pins[i].prop.phase_range.max =
-+				-pf->dplls.input_phase_adj_max;
-+		} else {
-+			pins[i].prop.phase_range.min =
-+				pf->dplls.output_phase_adj_max,
-+			pins[i].prop.phase_range.max =
-+				-pf->dplls.output_phase_adj_max;
- 		}
- 		pins[i].prop.capabilities |=
- 			DPLL_PIN_CAPABILITIES_STATE_CAN_CHANGE;
-diff --git a/drivers/net/ethernet/intel/ice/ice_dpll.h b/drivers/net/ethernet/intel/ice/ice_dpll.h
-index 9c524c4bdfd7..5f23f82d31a9 100644
---- a/drivers/net/ethernet/intel/ice/ice_dpll.h
-+++ b/drivers/net/ethernet/intel/ice/ice_dpll.h
-@@ -19,6 +19,7 @@
-  * @state: state of a pin
-  * @prop: pin properties
-  * @freq: current frequency of a pin
-+ * @phase_adjust: current phase adjust value
-  */
- struct ice_dpll_pin {
- 	struct dpll_pin *pin;
-@@ -30,6 +31,7 @@ struct ice_dpll_pin {
- 	u8 state[ICE_DPLL_RCLK_NUM_MAX];
- 	struct dpll_pin_properties prop;
- 	u32 freq;
-+	s32 phase_adjust;
- };
- 
- /** ice_dpll - store info required for DPLL control
-@@ -40,7 +42,8 @@ struct ice_dpll_pin {
-  * @prev_input_idx: previously selected input index
-  * @ref_state: state of dpll reference signals
-  * @eec_mode: eec_mode dpll is configured for
-- * @phase_shift: phase shift delay of a dpll
-+ * @phase_offset: phase offset of active pin vs dpll signal
-+ * @prev_phase_offset: previous phase offset of active pin vs dpll signal
-  * @input_prio: priorities of each input
-  * @dpll_state: current dpll sync state
-  * @prev_dpll_state: last dpll sync state
-@@ -55,7 +58,8 @@ struct ice_dpll {
- 	u8 prev_input_idx;
- 	u8 ref_state;
- 	u8 eec_mode;
--	s64 phase_shift;
-+	s64 phase_offset;
-+	s64 prev_phase_offset;
- 	u8 *input_prio;
- 	enum dpll_lock_status dpll_state;
- 	enum dpll_lock_status prev_dpll_state;
-@@ -78,6 +82,8 @@ struct ice_dpll {
-  * @cgu_state_acq_err_num: number of errors returned during periodic work
-  * @base_rclk_idx: idx of first pin used for clock revocery pins
-  * @clock_id: clock_id of dplls
-+ * @input_phase_adj_max: max phase adjust value for an input pins
-+ * @output_phase_adj_max: max phase adjust value for an output pins
-  */
- struct ice_dplls {
- 	struct kthread_worker *kworker;
--- 
-2.38.1
-
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+RGVhciBBaG1lZCwgZGVhciBOb2JlcnQsCgoKQW0gMDUuMDkuMjMgdW0gMjA6MDggc2NocmllYiBB
+aG1lZCBaYWtpOgo+IEZyb206IE5vcmJlcnQgWnVsaW5za2kgPG5vcmJlcnR4Lnp1bGluc2tpQGlu
+dGVsLmNvbT4KPiAKPiBQcmV2aW91c2x5IENSQyBzdHJpcHBpbmcgd2FzIGFsd2F5cyBlbmFibGVk
+IGZvciBWRi4KPiAKPiBOb3cgaXQgaXMgcG9zc2libGUgdG8gdHVybiBvZmYgQ1JDIHN0cmlwcGlu
+ZyB2aWEgZXRodG9vbC4KPiAgICAgICAgICBldGh0b29sIC1LIDxpbnRlcmZhY2U+IHJ4LWZjcyBv
+ZmYKCihQZXJzb25hbGx5LCBJ4oCZZCBhZGQgYSBibGFuayBsaW5lIGJlZm9yZSBhbmQgYWZ0ZXIg
+YSBjb21tYW5kLCBhbmQgYWxzbyAKb25seSBpbmRlbnQgaXQgYnkgZm91ciBzcGFjZXMgKHNpbWls
+YXIgdG8gTWFya2Rvd24gc3R5bGUuKQoKPiBUbyB0dXJuIG9mZiBDUkMgc3RyaXBwaW5nLCBmaXJz
+dCB2bGFuIHN0cmlwcGluZyBtdXN0IGJlIGRpc2FibGVkLgoKTWF5YmUgYWxzbyBhZGQgdGhlIGNv
+cnJlc3BvbmRpbmcgY29tbWVudC4KCj4gSW4gaWF2Zl9jb25maWd1cmVfcXVldWVzIGFkZCBjaGVj
+ayBpZiBDUkMgc3RyaXBwaW5nIGlzIGVuYWJsZWQgZm9yCj4gVkYsIGlmIGl0J3MgZW5hYmxlZCB0
+aGVuIHNldCBjcmNfZGlzYWJsZWQgdG8gZmFsc2Ugb24gZXZlcnkgVkYncwo+IHF1ZXVlLiBJbiBp
+YXZmX3NldF9mZWF0dXJlcyBhZGQgY2hlY2sgaWYgQ1JDIHN0cmlwcGluZyBzZXR0aW5nIHdhcwo+
+IGNoYW5nZWQgdGhlbiBzY2hlZHVsZSByZXNldC4KPiAKPiBTaWduZWQtb2ZmLWJ5OiBOb3JiZXJ0
+IFp1bGluc2tpIDxub3JiZXJ0eC56dWxpbnNraUBpbnRlbC5jb20+Cj4gUmV2aWV3ZWQtYnk6IEpl
+c3NlIEJyYW5kZWJ1cmcgPGplc3NlLmJyYW5kZWJ1cmdAaW50ZWwuY29tPgo+IFNpZ25lZC1vZmYt
+Ynk6IEFobWVkIFpha2kgPGFobWVkLnpha2lAaW50ZWwuY29tPgo+IC0tLQo+ICAgZHJpdmVycy9u
+ZXQvZXRoZXJuZXQvaW50ZWwvaWF2Zi9pYXZmLmggICAgICAgIHwgIDIgKwo+ICAgZHJpdmVycy9u
+ZXQvZXRoZXJuZXQvaW50ZWwvaWF2Zi9pYXZmX21haW4uYyAgIHwgNTkgKysrKysrKysrKysrKysr
+KysrLQo+ICAgLi4uL25ldC9ldGhlcm5ldC9pbnRlbC9pYXZmL2lhdmZfdmlydGNobmwuYyAgIHwg
+IDQgKysKPiAgIGluY2x1ZGUvdWFwaS9saW51eC9ldGh0b29sLmggICAgICAgICAgICAgICAgICB8
+ICAzICstCj4gICA0IGZpbGVzIGNoYW5nZWQsIDY2IGluc2VydGlvbnMoKyksIDIgZGVsZXRpb25z
+KC0pCj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2lhdmYvaWF2
+Zi5oIGIvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWF2Zi9pYXZmLmgKPiBpbmRleCA3Mzhl
+MjU2NTdjNmIuLmYzMmIwNDUzNTg0ZiAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL25ldC9ldGhlcm5l
+dC9pbnRlbC9pYXZmL2lhdmYuaAo+ICsrKyBiL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2lh
+dmYvaWF2Zi5oCj4gQEAgLTQwNiw2ICs0MDYsOCBAQCBzdHJ1Y3QgaWF2Zl9hZGFwdGVyIHsKPiAg
+IAkJCSAgVklSVENITkxfVkZfT0ZGTE9BRF9WTEFOKQo+ICAgI2RlZmluZSBWTEFOX1YyX0FMTE9X
+RUQoX2EpICgoX2EpLT52Zl9yZXMtPnZmX2NhcF9mbGFncyAmIFwKPiAgIAkJCSAgICAgVklSVENI
+TkxfVkZfT0ZGTE9BRF9WTEFOX1YyKQo+ICsjZGVmaW5lIENSQ19PRkZMT0FEX0FMTE9XRUQoX2Ep
+ICgoX2EpLT52Zl9yZXMtPnZmX2NhcF9mbGFncyAmIFwKPiArCQkJCSBWSVJUQ0hOTF9WRl9PRkZM
+T0FEX0NSQykKPiAgICNkZWZpbmUgVkxBTl9WMl9GSUxURVJJTkdfQUxMT1dFRChfYSkgXAo+ICAg
+CShWTEFOX1YyX0FMTE9XRUQoKF9hKSkgJiYgXAo+ICAgCSAoKF9hKS0+dmxhbl92Ml9jYXBzLmZp
+bHRlcmluZy5maWx0ZXJpbmdfc3VwcG9ydC5vdXRlciB8fCBcCj4gZGlmZiAtLWdpdCBhL2RyaXZl
+cnMvbmV0L2V0aGVybmV0L2ludGVsL2lhdmYvaWF2Zl9tYWluLmMgYi9kcml2ZXJzL25ldC9ldGhl
+cm5ldC9pbnRlbC9pYXZmL2lhdmZfbWFpbi5jCj4gaW5kZXggMDMwMmU0NmU3OTQyLi5lZDQ2NjZi
+NTlhZDIgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWF2Zi9pYXZm
+X21haW4uYwo+ICsrKyBiL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2lhdmYvaWF2Zl9tYWlu
+LmMKPiBAQCAtNDQwMiw2ICs0NDAyLDkgQEAgc3RhdGljIGludCBpYXZmX3NldF9mZWF0dXJlcyhz
+dHJ1Y3QgbmV0X2RldmljZSAqbmV0ZGV2LAo+ICAgCSAgICAoZmVhdHVyZXMgJiBORVRJRl9WTEFO
+X09GRkxPQURfRkVBVFVSRVMpKQo+ICAgCQlpYXZmX3NldF92bGFuX29mZmxvYWRfZmVhdHVyZXMo
+YWRhcHRlciwgbmV0ZGV2LT5mZWF0dXJlcywKPiAgIAkJCQkJICAgICAgIGZlYXR1cmVzKTsKPiAr
+CWlmIChDUkNfT0ZGTE9BRF9BTExPV0VEKGFkYXB0ZXIpICYmCj4gKwkgICAgKChuZXRkZXYtPmZl
+YXR1cmVzICYgTkVUSUZfRl9SWEZDUykgXiAoZmVhdHVyZXMgJiBORVRJRl9GX1JYRkNTKSkpCj4g
+KwkJaWF2Zl9zY2hlZHVsZV9yZXNldChhZGFwdGVyLCBJQVZGX0ZMQUdfUkVTRVRfTkVFREVEKTsK
+PiAgIAo+ICAgCXJldHVybiAwOwo+ICAgfQo+IEBAIC00NTIzLDYgKzQ1MjYsOSBAQCBpYXZmX2dl
+dF9uZXRkZXZfdmxhbl9od19mZWF0dXJlcyhzdHJ1Y3QgaWF2Zl9hZGFwdGVyICphZGFwdGVyKQo+
+ICAgCQl9Cj4gICAJfQo+ICAgCj4gKwlpZiAoQ1JDX09GRkxPQURfQUxMT1dFRChhZGFwdGVyKSkK
+PiArCQlod19mZWF0dXJlcyB8PSBORVRJRl9GX1JYRkNTOwo+ICsKPiAgIAlyZXR1cm4gaHdfZmVh
+dHVyZXM7Cj4gICB9Cj4gICAKPiBAQCAtNDY4Niw2ICs0NjkyLDU1IEBAIGlhdmZfZml4X25ldGRl
+dl92bGFuX2ZlYXR1cmVzKHN0cnVjdCBpYXZmX2FkYXB0ZXIgKmFkYXB0ZXIsCj4gICAJcmV0dXJu
+IHJlcXVlc3RlZF9mZWF0dXJlczsKPiAgIH0KPiAgIAo+ICsvKioKPiArICogaWF2Zl9maXhfc3Ry
+aXBfZmVhdHVyZXMgLSBmaXggTkVUREVWIHN0cmlwIGZlYXR1cmVzIGJhc2VkIG9uIGZ1bmN0aW9u
+YWxpdHkKPiArICogQGFkYXB0ZXI6IGJvYXJkIHByaXZhdGUgc3RydWN0dXJlCj4gKyAqIEByZXF1
+ZXN0ZWRfZmVhdHVyZXM6IHN0YWNrIHJlcXVlc3RlZCBORVRERVYgZmVhdHVyZXMKPiArICoKPiAr
+ICogUmV0dXJucyBmaXhlZC11cCBmZWF0dXJlcyBiaXRzCgpBIGJldHRlciBkZXNjcmlwdGlvbiB3
+b3VsZCBiZSBuaWNlLiBDdXJyZW50bHkgaXQgb25seSBzZWVtcyB0byBtYXRjaCBDUkMgCmFuZCBW
+TEFOIHN0cmlwcGluZy4KCgpLaW5kIHJlZ2FyZHMsCgpQYXVsCgoKPiArICoqLwo+ICtzdGF0aWMg
+bmV0ZGV2X2ZlYXR1cmVzX3QKPiAraWF2Zl9maXhfc3RyaXBfZmVhdHVyZXMoc3RydWN0IGlhdmZf
+YWRhcHRlciAqYWRhcHRlciwKPiArCQkJbmV0ZGV2X2ZlYXR1cmVzX3QgcmVxdWVzdGVkX2ZlYXR1
+cmVzKQo+ICt7Cj4gKwlzdHJ1Y3QgbmV0X2RldmljZSAqbmV0ZGV2ID0gYWRhcHRlci0+bmV0ZGV2
+Owo+ICsJYm9vbCBjcmNfb2ZmbG9hZF9yZXEsIGlzX3ZsYW5fc3RyaXA7Cj4gKwluZXRkZXZfZmVh
+dHVyZXNfdCB2bGFuX3N0cmlwOwo+ICsJaW50IG51bV9ub25femVyb192bGFuOwo+ICsKPiArCWNy
+Y19vZmZsb2FkX3JlcSA9IENSQ19PRkZMT0FEX0FMTE9XRUQoYWRhcHRlcikgJiYKPiArCQkJICAo
+cmVxdWVzdGVkX2ZlYXR1cmVzICYgTkVUSUZfRl9SWEZDUyk7Cj4gKwludW1fbm9uX3plcm9fdmxh
+biA9IGlhdmZfZ2V0X251bV92bGFuc19hZGRlZChhZGFwdGVyKTsKPiArCXZsYW5fc3RyaXAgPSAo
+TkVUSUZfRl9IV19WTEFOX0NUQUdfUlggfCBORVRJRl9GX0hXX1ZMQU5fU1RBR19SWCk7Cj4gKwlp
+c192bGFuX3N0cmlwID0gcmVxdWVzdGVkX2ZlYXR1cmVzICYgdmxhbl9zdHJpcDsKPiArCj4gKwlp
+ZiAoIWNyY19vZmZsb2FkX3JlcSkKPiArCQlyZXR1cm4gcmVxdWVzdGVkX2ZlYXR1cmVzOwo+ICsK
+PiArCWlmICghbnVtX25vbl96ZXJvX3ZsYW4gJiYgKG5ldGRldi0+ZmVhdHVyZXMgJiB2bGFuX3N0
+cmlwKSAmJgo+ICsJICAgICEobmV0ZGV2LT5mZWF0dXJlcyAmIE5FVElGX0ZfUlhGQ1MpICYmIGlz
+X3ZsYW5fc3RyaXApIHsKPiArCQlyZXF1ZXN0ZWRfZmVhdHVyZXMgJj0gfnZsYW5fc3RyaXA7Cj4g
+KwkJbmV0ZGV2X2luZm8obmV0ZGV2LCAiRGlzYWJsaW5nIFZMQU4gc3RyaXBwaW5nIGFzIEZDUy9D
+UkMgc3RyaXBwaW5nIGlzIGFsc28gZGlzYWJsZWQgYW5kIHRoZXJlIGlzIG5vIFZMQU4gY29uZmln
+dXJlZFxuIik7Cj4gKwkJcmV0dXJuIHJlcXVlc3RlZF9mZWF0dXJlczsKPiArCX0KPiArCj4gKwlp
+ZiAoKG5ldGRldi0+ZmVhdHVyZXMgJiBORVRJRl9GX1JYRkNTKSAmJiBpc192bGFuX3N0cmlwKSB7
+Cj4gKwkJcmVxdWVzdGVkX2ZlYXR1cmVzICY9IH52bGFuX3N0cmlwOwo+ICsJCWlmICghKG5ldGRl
+di0+ZmVhdHVyZXMgJiB2bGFuX3N0cmlwKSkKPiArCQkJbmV0ZGV2X2luZm8obmV0ZGV2LCAiVG8g
+ZW5hYmxlIFZMQU4gc3RyaXBwaW5nLCBmaXJzdCBuZWVkIHRvIGVuYWJsZSBGQ1MvQ1JDIHN0cmlw
+cGluZyIpOwo+ICsKPiArCQlyZXR1cm4gcmVxdWVzdGVkX2ZlYXR1cmVzOwo+ICsJfQo+ICsKPiAr
+CWlmIChudW1fbm9uX3plcm9fdmxhbiAmJiBpc192bGFuX3N0cmlwICYmCj4gKwkgICAgIShuZXRk
+ZXYtPmZlYXR1cmVzICYgTkVUSUZfRl9SWEZDUykpIHsKPiArCQlyZXF1ZXN0ZWRfZmVhdHVyZXMg
+Jj0gfk5FVElGX0ZfUlhGQ1M7Cj4gKwkJbmV0ZGV2X2luZm8obmV0ZGV2LCAiVG8gZGlzYWJsZSBG
+Q1MvQ1JDIHN0cmlwcGluZywgZmlyc3QgbmVlZCB0byBkaXNhYmxlIFZMQU4gc3RyaXBwaW5nIik7
+Cj4gKwl9Cj4gKwo+ICsJcmV0dXJuIHJlcXVlc3RlZF9mZWF0dXJlczsKPiArfQo+ICsKPiAgIC8q
+Kgo+ICAgICogaWF2Zl9maXhfZmVhdHVyZXMgLSBmaXggdXAgdGhlIG5ldGRldiBmZWF0dXJlIGJp
+dHMKPiAgICAqIEBuZXRkZXY6IG91ciBuZXQgZGV2aWNlCj4gQEAgLTQ2OTgsNyArNDc1Myw5IEBA
+IHN0YXRpYyBuZXRkZXZfZmVhdHVyZXNfdCBpYXZmX2ZpeF9mZWF0dXJlcyhzdHJ1Y3QgbmV0X2Rl
+dmljZSAqbmV0ZGV2LAo+ICAgewo+ICAgCXN0cnVjdCBpYXZmX2FkYXB0ZXIgKmFkYXB0ZXIgPSBu
+ZXRkZXZfcHJpdihuZXRkZXYpOwo+ICAgCj4gLQlyZXR1cm4gaWF2Zl9maXhfbmV0ZGV2X3ZsYW5f
+ZmVhdHVyZXMoYWRhcHRlciwgZmVhdHVyZXMpOwo+ICsJZmVhdHVyZXMgPSBpYXZmX2ZpeF9uZXRk
+ZXZfdmxhbl9mZWF0dXJlcyhhZGFwdGVyLCBmZWF0dXJlcyk7Cj4gKwo+ICsJcmV0dXJuIGlhdmZf
+Zml4X3N0cmlwX2ZlYXR1cmVzKGFkYXB0ZXIsIGZlYXR1cmVzKTsKPiAgIH0KPiAgIAo+ICAgc3Rh
+dGljIGNvbnN0IHN0cnVjdCBuZXRfZGV2aWNlX29wcyBpYXZmX25ldGRldl9vcHMgPSB7Cj4gZGlm
+ZiAtLWdpdCBhL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2lhdmYvaWF2Zl92aXJ0Y2hubC5j
+IGIvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWF2Zi9pYXZmX3ZpcnRjaG5sLmMKPiBpbmRl
+eCAwYjk3YjQyNGU0ODcuLjhjZTYzODliNTgxNSAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL25ldC9l
+dGhlcm5ldC9pbnRlbC9pYXZmL2lhdmZfdmlydGNobmwuYwo+ICsrKyBiL2RyaXZlcnMvbmV0L2V0
+aGVybmV0L2ludGVsL2lhdmYvaWF2Zl92aXJ0Y2hubC5jCj4gQEAgLTE0Miw2ICsxNDIsNyBAQCBp
+bnQgaWF2Zl9zZW5kX3ZmX2NvbmZpZ19tc2coc3RydWN0IGlhdmZfYWRhcHRlciAqYWRhcHRlcikK
+PiAgIAkgICAgICAgVklSVENITkxfVkZfT0ZGTE9BRF9SU1NfUENUWVBFX1YyIHwKPiAgIAkgICAg
+ICAgVklSVENITkxfVkZfT0ZGTE9BRF9FTkNBUCB8Cj4gICAJICAgICAgIFZJUlRDSE5MX1ZGX09G
+RkxPQURfVkxBTl9WMiB8Cj4gKwkgICAgICAgVklSVENITkxfVkZfT0ZGTE9BRF9DUkMgfAo+ICAg
+CSAgICAgICBWSVJUQ0hOTF9WRl9PRkZMT0FEX0VOQ0FQX0NTVU0gfAo+ICAgCSAgICAgICBWSVJU
+Q0hOTF9WRl9PRkZMT0FEX1JFUV9RVUVVRVMgfAo+ICAgCSAgICAgICBWSVJUQ0hOTF9WRl9PRkZM
+T0FEX0FEUSB8Cj4gQEAgLTMxMiw2ICszMTMsOSBAQCB2b2lkIGlhdmZfY29uZmlndXJlX3F1ZXVl
+cyhzdHJ1Y3QgaWF2Zl9hZGFwdGVyICphZGFwdGVyKQo+ICAgCQl2cXBpLT5yeHEuZGF0YWJ1ZmZl
+cl9zaXplID0KPiAgIAkJCUFMSUdOKGFkYXB0ZXItPnJ4X3JpbmdzW2ldLnJ4X2J1Zl9sZW4sCj4g
+ICAJCQkgICAgICBCSVRfVUxMKElBVkZfUlhRX0NUWF9EQlVGRl9TSElGVCkpOwo+ICsJCWlmIChD
+UkNfT0ZGTE9BRF9BTExPV0VEKGFkYXB0ZXIpKQo+ICsJCQl2cXBpLT5yeHEuY3JjX2Rpc2FibGUg
+PSAhIShhZGFwdGVyLT5uZXRkZXYtPmZlYXR1cmVzICYKPiArCQkJCQkJICAgTkVUSUZfRl9SWEZD
+Uyk7Cj4gICAJCXZxcGkrKzsKPiAgIAl9Cj4gICAKPiBkaWZmIC0tZ2l0IGEvaW5jbHVkZS91YXBp
+L2xpbnV4L2V0aHRvb2wuaCBiL2luY2x1ZGUvdWFwaS9saW51eC9ldGh0b29sLmgKPiBpbmRleCBm
+N2ZiYTBkYzg3ZTUuLmFkYjI1MmZjODE4YSAxMDA2NDQKPiAtLS0gYS9pbmNsdWRlL3VhcGkvbGlu
+dXgvZXRodG9vbC5oCj4gKysrIGIvaW5jbHVkZS91YXBpL2xpbnV4L2V0aHRvb2wuaAo+IEBAIC0x
+Mjg1LDcgKzEyODUsOCBAQCBzdHJ1Y3QgZXRodG9vbF9yeGZoIHsKPiAgIAlfX3UzMiAgIGluZGly
+X3NpemU7Cj4gICAJX191MzIgICBrZXlfc2l6ZTsKPiAgIAlfX3U4CWhmdW5jOwo+IC0JX191OAly
+c3ZkOFszXTsKPiArCV9fdTgJc3ltbV9vcHRzOwo+ICsJX191OAlyc3ZkOFsyXTsKPiAgIAlfX3Uz
+Mglyc3ZkMzI7Cj4gICAJX191MzIgICByc3NfY29uZmlnW107Cj4gICB9OwoKX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KSW50ZWwtd2lyZWQtbGFuIG1haWxp
+bmcgbGlzdApJbnRlbC13aXJlZC1sYW5Ab3N1b3NsLm9yZwpodHRwczovL2xpc3RzLm9zdW9zbC5v
+cmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC13aXJlZC1sYW4K
