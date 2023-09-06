@@ -2,80 +2,80 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9E3EC7939CE
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  6 Sep 2023 12:26:35 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id A8A837939E8
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  6 Sep 2023 12:31:04 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id AA6B7414F1;
-	Wed,  6 Sep 2023 10:26:33 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org AA6B7414F1
+	by smtp2.osuosl.org (Postfix) with ESMTP id 1E048414EF;
+	Wed,  6 Sep 2023 10:31:03 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1E048414EF
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1693995993;
-	bh=tFHsyxw2b56nST0ndTxkygl82U5compbFbOf5zWUGRI=;
+	s=default; t=1693996263;
+	bh=28gWCGOkv8f8IR73DNv8zLhAYfKzCFTyiZ9wwxenJFg=;
 	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=3xaPqPpFYqy5hDaSrbnx0Ho31lgQZCGxSQjTnYX1ukIjFWgqqqt3wMx14l3UN4Bdh
-	 F0oXXJh6OuUyppa1Gzs1LAz9AIyWS/LW7o7hQq/6t5g1IOUxBh+c0ToSpKENJQ3yxJ
-	 sbGYaPPpQRcYbC6Hrlg7nJKJoO47kyQC/erBonILZzRtslnl+YaPcNXKtsiitED8sY
-	 yNX8fRdGhCBgdK7AjoGbLe0DzNXBpBQVcvJPecplvpErnOGYy3jxe44raxj/JoAQJc
-	 PjsVnCTryihPXgYyPERsNhaWL2hb/bHr+lFfo+p5GTY10R2DPnJUsYyoUo4wscspZR
-	 IRnEQpL4o48uA==
+	b=K2u0nKk6fpKYKZPcf6eQ4O/LQMF9YrYejBYL+ZnDCIO4SuXoY3Vqikbu/NjPUirFh
+	 KjBFnVPAYRKD5eN4LPl8K/SuZr4qL194gIxC/QLoU3+5Gw7bUkcBDIM0trD0ixu4d2
+	 GA53rh3QWgW9Ci264rtlFmgvtvwr83L3H2yk96SRLiRchTUkk9uIDL8168N+m5PXtg
+	 0x7RxMG3pbQ4pfYSP4yKqxbM+7OmJbNq2iCqrkWe5X4JHUJ2ISlgbQbB4LxqRYN2fM
+	 mKlt2VFwhGsIyp/N4WQWmO2ZlkqbipmmcwLOw/gDGSF+15AIkYznZxoyCnKZkTkZZ+
+	 6mFpIgK84x5Wg==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id V8Npzenn1o7w; Wed,  6 Sep 2023 10:26:32 +0000 (UTC)
+	with ESMTP id kwqEYRYps8of; Wed,  6 Sep 2023 10:31:02 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 08FFA4011C;
-	Wed,  6 Sep 2023 10:26:31 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 08FFA4011C
+	by smtp2.osuosl.org (Postfix) with ESMTP id E1BBE414F7;
+	Wed,  6 Sep 2023 10:31:01 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org E1BBE414F7
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id C472A1BF2E5
- for <intel-wired-lan@lists.osuosl.org>; Wed,  6 Sep 2023 10:26:26 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 57D6A1BF2E5
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  6 Sep 2023 10:30:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id A92EF82035
- for <intel-wired-lan@lists.osuosl.org>; Wed,  6 Sep 2023 10:26:26 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org A92EF82035
+ by smtp3.osuosl.org (Postfix) with ESMTP id 3C1F960E36
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  6 Sep 2023 10:30:57 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3C1F960E36
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id hYAzqWa6aDPG for <intel-wired-lan@lists.osuosl.org>;
- Wed,  6 Sep 2023 10:26:24 +0000 (UTC)
-Received: from mgamail.intel.com (mgamail.intel.com [134.134.136.65])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 7311682055
- for <intel-wired-lan@lists.osuosl.org>; Wed,  6 Sep 2023 10:26:24 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 7311682055
-X-IronPort-AV: E=McAfee;i="6600,9927,10824"; a="380828951"
-X-IronPort-AV: E=Sophos;i="6.02,231,1688454000"; d="scan'208";a="380828951"
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
- by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 06 Sep 2023 03:26:22 -0700
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id BFpWFzfRhk3q for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  6 Sep 2023 10:30:56 +0000 (UTC)
+Received: from mgamail.intel.com (mgamail.intel.com [134.134.136.126])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 4159960B70
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  6 Sep 2023 10:30:56 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 4159960B70
+X-IronPort-AV: E=McAfee;i="6600,9927,10824"; a="362054836"
+X-IronPort-AV: E=Sophos;i="6.02,231,1688454000"; d="scan'208";a="362054836"
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+ by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 06 Sep 2023 03:30:54 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10824"; a="884639834"
-X-IronPort-AV: E=Sophos;i="6.02,231,1688454000"; d="scan'208";a="884639834"
-Received: from orsmsx602.amr.corp.intel.com ([10.22.229.15])
- by fmsmga001.fm.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
- 06 Sep 2023 03:26:11 -0700
-Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
- ORSMSX602.amr.corp.intel.com (10.22.229.15) with Microsoft SMTP Server
+X-IronPort-AV: E=McAfee;i="6600,9927,10824"; a="776551368"
+X-IronPort-AV: E=Sophos;i="6.02,231,1688454000"; d="scan'208";a="776551368"
+Received: from fmsmsx601.amr.corp.intel.com ([10.18.126.81])
+ by orsmga001.jf.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
+ 06 Sep 2023 03:30:54 -0700
+Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
+ fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.32; Wed, 6 Sep 2023 03:26:20 -0700
-Received: from ORSEDG602.ED.cps.intel.com (10.7.248.7) by
- orsmsx610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
+ 15.1.2507.32; Wed, 6 Sep 2023 03:30:54 -0700
+Received: from fmsedg602.ED.cps.intel.com (10.1.192.136) by
+ fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.27 via Frontend Transport; Wed, 6 Sep 2023 03:26:20 -0700
-Received: from NAM12-MW2-obe.outbound.protection.outlook.com (104.47.66.43) by
- edgegateway.intel.com (134.134.137.103) with Microsoft SMTP Server
+ 15.1.2507.27 via Frontend Transport; Wed, 6 Sep 2023 03:30:54 -0700
+Received: from NAM11-BN8-obe.outbound.protection.outlook.com (104.47.58.169)
+ by edgegateway.intel.com (192.55.55.71) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.27; Wed, 6 Sep 2023 03:26:19 -0700
+ 15.1.2507.27; Wed, 6 Sep 2023 03:30:53 -0700
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=NHvtfsCcOlZGFcznxZDD6YhwyAUkQ4OJQ1MKCrP7iU7tl1OEA2zVUm9E54EnuQ8Eu0BQ2Ah+f+hdtCMK/uLqkGj6FJUBCSeNPzvS/puya0pXduyuRbCsy0rHQJoPuiSg7snJvbgR96SUEStYd4QkFoGq3n6oTnki4AKNIBCFEHt6d6tUoeMWS3zUNHWIEXci9vPsEI2mCOPbsb2d6wLfP4KcR7GYrHhTGpnbBXrUdziZVnYIBNwB/kjRdqOjXdOAM/QAhT/+0RPUla8bv5eskiErhSRz8t1vNnqyeJgx1kWyJPxmcq0TDe0X1DSQgcuALgr62KOAlpALIKBkv4VSgA==
+ b=GjYisVQeTIcmLWPnhJKYPQ7wocD3ZfbBKj/tZGrnIopdFDt5fnrIHAVXzbtNxlwU6pR+2fy0LiE+6GV9cwMKdw33XaAujqCKu/Zgx/8pTj7gjSwEwxqNyB3sle2jxGeOFk8NTpoB2sS0zp8UOmE70EXGQ3SUIbfe276ys0hwpc6WS1oC/7U1VeHznEkL66gG7swBJhqFhNGaitszZV5Ba4f6ga0GaHa8L90rVNhyHnJfUzgd+jpsH4W4DAvVtLeIAHsN7oU5SY6Omb/yVmuFD0ZtYxgX3L7EnuYahgPgPpog//ll4w+t41JZ2N8Lz1MXkxDfbDGPcq5fMerr0py0xg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=fuxLw9neIWnPIG4fSJBWdfdL5hAZUmVcwVHzyvRjSfw=;
- b=QUhy8f2UkNvkE8Vo4643dVfBgdjAaxVRU6zqFbhPk1unz7XiF/Pl0bfebw+9DYMI5UaxK9kmoltS4ae94BOEZOCHS9IZDyCx3rOL9iSQtei9QVbc3Soh+OJplJEdXVaoETofXslxITNRKtpOH17QMU7kiRUvGP6ZjM4TS2hcdpL1UDS+/HjcB7qUZ/N5F568iWJrCGvOyPbAkzI1tJcEGeXFftwa+6cAByvPPSMwUwN5wBVkv8KJm4KIetljk9ke+MYj/Cgaa+hMpY31NJMdnlhSsHQLJzN6Pn3V7DEo8FYf7feIPeM8miuSbod8/Bm+vxzwfuYg6rx9+6GJKatAtA==
+ bh=gwd72Ba8l33BYFLRYu3Qa/hdIQjoBMCM5anHLEW/d9k=;
+ b=T5OWqiUKkZ4FvBkj3b4DVuNjoweVUHZmfUnSwlkdaWGh9dE8cb83ov15GeCRHpBfXTxgHQiaczcesLG4Pdlzj5WfA46kyfVfcRrsW+TFhzf9XwqwJ/NA+kakrEZGUnKCbUqfNt9xVBBtX+3J5y+6jm7rsNrU8K0Ivqvq70ZmrwjbFsFNRvxwBxx330qnPeIg7WM9UIBKc0lpImRpduWLxqgfh3qQOYk17UwszXM6Z0HwZHnQlx6HI20Igf5NbD9IHgQHZ9pWYpP2nMdHJ17O+gClue3YiI50DTNTABhzy1IxI8XCk3wnvThw6f2s9cmrq5IoaCuKBGbxFUSTQwSzzw==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
  dkim=pass header.d=intel.com; arc=none
@@ -83,101 +83,97 @@ Received: from DM6PR11MB4657.namprd11.prod.outlook.com (2603:10b6:5:2a6::7) by
  DS7PR11MB6246.namprd11.prod.outlook.com (2603:10b6:8:99::15) with
  Microsoft
  SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.6745.34; Wed, 6 Sep 2023 10:26:16 +0000
+ 15.20.6745.34; Wed, 6 Sep 2023 10:30:51 +0000
 Received: from DM6PR11MB4657.namprd11.prod.outlook.com
  ([fe80::c3cd:b8d0:5231:33a8]) by DM6PR11MB4657.namprd11.prod.outlook.com
  ([fe80::c3cd:b8d0:5231:33a8%5]) with mapi id 15.20.6745.034; Wed, 6 Sep 2023
- 10:26:15 +0000
+ 10:30:51 +0000
 From: "Kubalewski, Arkadiusz" <arkadiusz.kubalewski@intel.com>
-To: "Drewek, Wojciech" <wojciech.drewek@intel.com>, "kuba@kernel.org"
- <kuba@kernel.org>, "jiri@resnulli.us" <jiri@resnulli.us>,
- "jonathan.lemon@gmail.com" <jonathan.lemon@gmail.com>, "pabeni@redhat.com"
- <pabeni@redhat.com>, "vadim.fedorenko@linux.dev" <vadim.fedorenko@linux.dev>
-Thread-Topic: [Intel-wired-lan] [PATCH net-next 3/4] dpll: netlink/core: add
- support for pin-dpll signal phase offset/adjust
-Thread-Index: AQHZ4FDCw1mHMtCJKkeJmPewpnRyjLANcEiAgAAhq0A=
-Date: Wed, 6 Sep 2023 10:26:15 +0000
-Message-ID: <DM6PR11MB4657497B4D1446F62E3BC5C89BEFA@DM6PR11MB4657.namprd11.prod.outlook.com>
+To: Jiri Pirko <jiri@resnulli.us>
+Thread-Topic: [PATCH net-next 0/4] dpll: add phase offset and phase adjust
+Thread-Index: AQHZ4FDIJjHp9uhszUKzsg9Bi06Y07ANeh6AgAAedPA=
+Date: Wed, 6 Sep 2023 10:30:50 +0000
+Message-ID: <DM6PR11MB465729212685E3D5B938F0449BEFA@DM6PR11MB4657.namprd11.prod.outlook.com>
 References: <20230905232610.1403647-1-arkadiusz.kubalewski@intel.com>
- <20230905232610.1403647-4-arkadiusz.kubalewski@intel.com>
- <MW4PR11MB577647EAF2272B22A73131D4FDEFA@MW4PR11MB5776.namprd11.prod.outlook.com>
-In-Reply-To: <MW4PR11MB577647EAF2272B22A73131D4FDEFA@MW4PR11MB5776.namprd11.prod.outlook.com>
+ <ZPg6Sz6pgLnmQcpe@nanopsycho>
+In-Reply-To: <ZPg6Sz6pgLnmQcpe@nanopsycho>
 Accept-Language: pl-PL, en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
 x-ms-publictraffictype: Email
 x-ms-traffictypediagnostic: DM6PR11MB4657:EE_|DS7PR11MB6246:EE_
-x-ms-office365-filtering-correlation-id: bc99a86c-1ca4-4d97-4979-08dbaec3b369
+x-ms-office365-filtering-correlation-id: b7429f51-0a7a-4de6-ab31-08dbaec457a3
+x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
 x-ms-exchange-senderadcheck: 1
 x-ms-exchange-antispam-relay: 0
 x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: ZNCJ4XJRa4aV29QO8OH4/rr2dnPdg7u3y6jNx+evwB1RFlaE+KOIStS/DaCY6sSOz8HytTU2WMCYhWfwhik8kOqid37g0KM709UeiSUguscyLMn8iirh/6tu5y4HP/cajG2ckeo1yrY3bhARYQ8fFvgTPXlpxzttUfie/haDT1NKuIFvBnTz4yeVhhIbiOKXEqJ9eyX1IY0BfRZjDc/HKnOgCj0KbJsXwPziOyFiaey27E5bZrIt+Gu9C+pTe2LVULQMgf0fUEaAJzQcK2XQqMU8IeZ+ZzYyWqg9gGeT1aFvMMM3ChZaKZz6ygCAWhxPnGvyO+6+sSGn0AAvD4x1s7u2jckRI5NXezP/sQ6wUhvbZVQOOMbfdmyRnLZF+yOpG5e01OGNrBiWiuyzBIHpuv5rwkL0ZQTDoPLgk4DYzk0CrYDITkoJO8J+aO7m+uOPCAGO2Hi2/Wn1QDkuNslnlllRbhdtoQUcFD20yQxlwHj68V7IwM2tj3p29EuVqL+u/RkBZOPnYT0utGd1NEms5ntcjBfPZB+74hx9vIkK9Zv0QT7a+j7ymCpgItnf/kRILSfdfo9MhmE0rS2hj98UWABzH9c3bjk9ABtXdneGKFI=
+x-microsoft-antispam-message-info: s2TftUWbuyOJD9ggCJsKxELbfW/d9LT4XIzVO3vYghJ9OGKpA3bwE8XIzfHOHw25tB7aBqyQgjht0wmHI2qrVfABn7IKD10RYimAJg8kAr4kJwxfCEPo4bML9cFRO0phBy22KO6SaUN4O9C1M/3mSJl96Z8Oz6E+o3ysBQlfDoOjTPurcRXtiG+MNHsTdRhTCmJHA7GFfbGA1BXg1Y5K6d2G6rj+BP6knNYWsu6udABRjAtk+Af91qwW2+ImPepVwpH2FLC9r/8s0beP8XpIUyu1sy/XcljEWjGLbjOo39PjyaRKq4ElsofIuthQkcKfvujBQ6BTt/2uDMsf5UskVpHnO6fNfK46UWVjgkJDmwuugBTo+DZD3kVztGUYY7VMnY0ujlDuVxqpbAmZtGRM3+0acUte0SA4kwiigyF8Dx3W7IfkfhU/6gOg8CHR4gLtsbjWRvSZsFI9hDXRWvCGKDKkA4IZvsEJ41IRZQdfDtbJF6NRZsUNK/lCUOrmEXnn/lgc5j1t2/PKc1EBue2mPAWMVg3obQHwav2VzxmId3gvXCsRXTCzddcLlx1SOFTIslZmjfyeByphnLVeJRZL791cuKYO6O1B8d3Tn04/e38=
 x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:DM6PR11MB4657.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230031)(136003)(346002)(396003)(39860400002)(376002)(366004)(451199024)(186009)(1800799009)(122000001)(9686003)(53546011)(7696005)(6506007)(71200400001)(52536014)(33656002)(82960400001)(55016003)(38100700002)(38070700005)(86362001)(2906002)(966005)(83380400001)(478600001)(110136005)(66946007)(316002)(76116006)(8676002)(8936002)(4326008)(5660300002)(7416002)(41300700001)(54906003)(66476007)(66446008)(64756008)(66556008);
+ SFS:(13230031)(136003)(346002)(396003)(39860400002)(376002)(366004)(451199024)(186009)(1800799009)(122000001)(9686003)(7696005)(6506007)(71200400001)(52536014)(33656002)(82960400001)(55016003)(38100700002)(38070700005)(86362001)(2906002)(83380400001)(478600001)(66946007)(316002)(76116006)(8676002)(8936002)(4326008)(5660300002)(7416002)(6916009)(41300700001)(54906003)(66476007)(66446008)(64756008)(66556008);
  DIR:OUT; SFP:1102; 
 x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?osmYYq5bZzNUfYPKMK689rhHHdwc+fkJ64BGEW4qcOS2N68st42J6qmNg8C1?=
- =?us-ascii?Q?Z+sPL+9FayNwda/+n+HMt6FeSPzwbtWHNSOPAJMZZnSDV8OLnZfNQQ/ob8xy?=
- =?us-ascii?Q?Uqc1EpIzT88bUuSfjspzeq3L81BjRg6ngiLeTG6HfmHHHZXazfCacAt8d/3h?=
- =?us-ascii?Q?s+cFIZ4cHIVVDKfuQR9pMWwMG49coYbaLr6XWUIFob7t9BBsI5PdtTmOJUrL?=
- =?us-ascii?Q?HKqWLAccc7LGtW7YH0yLvlRiyhWtTONcEnoHen+nbMMWRLjO/B56hjMSkBWW?=
- =?us-ascii?Q?XPY9pJTa0/hOCUEoGq01brdNptQ7KrMMmfMpmoEIqW+KZwXeumuPvRO/rV4i?=
- =?us-ascii?Q?djILAt6+gy6dS3DlNEZc5kGD45Xh4CGlV2Z4/8CczLTvfUtB+POwiXLSQbU0?=
- =?us-ascii?Q?S/eXDfdXGButRhzed2zkCI7g18TyyhnVOnBrpsg4JT9/OTlMYp4nbtBk07es?=
- =?us-ascii?Q?Q85MlcAGOVh+UfC6aUxsX4csobtUsT/SfBUa9NBPFO5AN6jQ5gJe3kjxI775?=
- =?us-ascii?Q?4jU8zFGcqdNfQUPNpu3xuJlJQIE6AZ+nkxtq6nvpZLwH710/a9g/q5EUtKP6?=
- =?us-ascii?Q?KWkVI9aO3cDIcI1ouXA2NdLDGeBY/ZUFMzOG7PVQuzVOghKL2qGcLakyIw44?=
- =?us-ascii?Q?5No6EZ7Gk2G75O5fubHGGVaVLt7POWodJ+3tY+GpnSXxj7I/FTSlk8Xdln3V?=
- =?us-ascii?Q?FX2EJx9xw/ph1LE8RVR07pPzOBMTxHK7YMxRpt7JZMtR4ruKVNusBQwcxDOf?=
- =?us-ascii?Q?Rdwv8rxLaYcwDOuOCCEaKjVGPsYkwEVRuzgloZSQ5kQzs8k6b+oGfz60f4C7?=
- =?us-ascii?Q?x0pkqrT00Uc3s2kbEMonxfQJ/MMVWNOm6oi9r9EDMn3gI+JFBvlub4T7X4Nm?=
- =?us-ascii?Q?ll034kcBRxCg3IRajlluOatuOTh5PKN+FKMU9xAWGG3i2/QSkLQfpdEYGFhL?=
- =?us-ascii?Q?7T41AMm7ATFWl3Ht3zdUI7r2et2hVcavzOXlMNtPlFeffWWxG/ImtYEt38WK?=
- =?us-ascii?Q?FpDI/uaDwJy2/UINgsdpxEEsisXkCsLXNoBP0k71pj5ZmrEQe1SGcRuSur6K?=
- =?us-ascii?Q?Etpl/SfOc30XKRauTXkjh6qfNuyO+uBZh6odPOjI8ZhFhqnkecyM0LXsSdG/?=
- =?us-ascii?Q?3wbt/XlS0kQIyVGDkHvqJMnxpRnxvYviGqjJrcnHCiZCM4a/mEXEE5Zoev2S?=
- =?us-ascii?Q?i24icFhbhu+ia4n60CUu+gJKlkSYis0J+Sibz6VgkkyQTos+oZvtKMIypz5C?=
- =?us-ascii?Q?wE9q6b4EhY8YTo2KNDoVCByLtvmo/auOXKhHryFhUiaOQmT/87v0VcgYxaAR?=
- =?us-ascii?Q?AUvVJKbJtayv792rdt7Qr0T1gwSSGotcdu8hbKakF7elIt1n7iOYUJYT29H6?=
- =?us-ascii?Q?bJz3W7bLnaup6gfiYq9dQmEZmtA0FRhWEiuRBt2zVWIRb/foaLgor81WoUiI?=
- =?us-ascii?Q?3yRKBKS48hnekyG0zycJuv5ARthLlueSAtpKE8oVE1rqDy7xxT1fS2hnFdlL?=
- =?us-ascii?Q?a8AIyfTDmywMLTCpGiPbW79ImiFhr10z5TiZQiF7fpQ2bAdTL4herSWqZ2wO?=
- =?us-ascii?Q?wJzWls/L4kyW7EMfw9FEi7hSflpI0lQMIHf7gVfygf2QDXjGGSTOFfVENUi1?=
- =?us-ascii?Q?+RC05syHjvtXuSQghJS7J5FP8yO97p8IdK/1JjQpHcdDK2kTHW257vMXTXUN?=
- =?us-ascii?Q?NZsJ3A=3D=3D?=
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?q4RyE8gYmd4vfjQ8S15iA5J840OG2GkveNJ9Q8TOZvljD6Q6T12Bngsbgrp4?=
+ =?us-ascii?Q?/j80Hm5Hzc5JwAcqYSNoKRvVuw2rk9xkNB85kitX8GE3cf6DWKX3YwJahEnB?=
+ =?us-ascii?Q?RgZj8WC8j8J7pKrr8AMZxd75MIZU5s5cBgmrq23Sy3/Tb1+E0TFwEd9VQLYj?=
+ =?us-ascii?Q?gn0L1JdzcDObBlxaj2btLY0iVbE7QRqqqqfd3CoLzPfHB844zNIQpGskTf8f?=
+ =?us-ascii?Q?inIVk1S7i+C8nhZ6MQrJE5EWj86fshpYgprglYZ/8pUBZU3Wa3kbIQ3IS5Il?=
+ =?us-ascii?Q?MEeMWW3nAD+BeX8QBZkx8HrOqOGJrsQiWQb8c6GG8D/QY6yltd8bExkbEpom?=
+ =?us-ascii?Q?dT1s5bUpnDATKvVEEhLpDNIOTU+7FB8xRb60nItZLpG+R+/VDmciJ6/Lb2H4?=
+ =?us-ascii?Q?j+QQX4zo5m/TYh/HhMLtJEiRa/d0cT3r/kn2Y+vEqhu9aC8CTI7Mn16+6HDE?=
+ =?us-ascii?Q?6JR/NmWSua4Pmpw3bLOjLh++EdhxDCl6UoBaZsSEZ2O/hiFxHHij2x9xaze5?=
+ =?us-ascii?Q?CLJ9idzpbKi0lKDqYGJecLqeVpd5cZTH0kMzGMnuf9U78qeMLeVxSP/QvV04?=
+ =?us-ascii?Q?k5rRN1FTw8qOPCztImyEiOs5S6K5+P7EnhXLbTfOKUOvJ6R45Ozm3zDkP0o9?=
+ =?us-ascii?Q?PhPdkWDaf2hMzBEoYKq3ennSTwVmlQ0HlX7NlWW2FWuf4X+Q3X+2qHaasKX7?=
+ =?us-ascii?Q?Kjdy5V3ddwqlkTs4qfuzfEWpZ3b4iSVgt1WJ6T0geWXAIgxie9zcgXsgZjoV?=
+ =?us-ascii?Q?JfdYVJdEymBbrqNUfG8LajAR3RlOQtCoOULgOd8T1PG9zVXwVVsKCMIesCS8?=
+ =?us-ascii?Q?8lqPvUlDK/xbSNuab26yi5TlqvFoF/2+CeGW/NdBAs64Tyb3FX2vQDEBfC2j?=
+ =?us-ascii?Q?usm2GadXD4fKPJSbLwVZ0waep5hHDTusNZXMni1i07ol1B2upCRCTxo84mq6?=
+ =?us-ascii?Q?VLfX8pVOJYU9OJtExuSpqHiIYlTwax0uS7V1sSja2ifH0nF88muLjM2rK+8p?=
+ =?us-ascii?Q?Qi+1QpxbOUwfbRKDXUQ3N0e7gtDl+PXp30F5bMuPsR1Pdo43OwKMTy+ofXbX?=
+ =?us-ascii?Q?0P+3GFwgqhZU/IB+dBSPKkuYhhG7txmyhKjPvyf7Z3zZgjU+YcpTQTUlQ3Yo?=
+ =?us-ascii?Q?7No23ZTeZDeakTBdqUjcuzROvhmu0IpM5C8x4UOWms3+JJpCPEH/gybRiFOv?=
+ =?us-ascii?Q?8i12+Nvc80cm0KL4WG6rmrbzqXBale+wpH23KzvZnsdvpX01RF+CqPcoZnuz?=
+ =?us-ascii?Q?12b1fGaqc5Wp8Be3dsJNX0mjjikFyrWZ8gxwJdZ6tdbeszhGeIVcK2l+mYVo?=
+ =?us-ascii?Q?XHRdsGD//R5jEdGWd+QRG42zDqhVxbcXuR9KUfU8ZEb1mDqzVPXPCgxwg1Ai?=
+ =?us-ascii?Q?YM8sa3JnuGzN4IQfCpv166PC5nZ3ZuzIWLgTCqSjuZkCeqZmt3sFrvehfjlQ?=
+ =?us-ascii?Q?qCimgLVYBfhQhN42gmoT+5mqS0k+NClpoaLze6DHkib2Ty5n2/p2ifuGjy2y?=
+ =?us-ascii?Q?MHWwu0HAUKRzShmboZp4TbmE2igKpgRIrKPVAEHlVVTDEd0g3OYMyPMrmN35?=
+ =?us-ascii?Q?tW3dEvWxLbLxiIsziM58Slh7X2t06EJu/UilZUx3oqje8P9UI6GpkTOCgmAa?=
+ =?us-ascii?Q?hBe1eS2aI8yFAnCVCaCExMo+aRQyOlFqYAOXP7OvBD6lHZmXi53A6hyYxSHd?=
+ =?us-ascii?Q?/4PrHw=3D=3D?=
 MIME-Version: 1.0
 X-MS-Exchange-CrossTenant-AuthAs: Internal
 X-MS-Exchange-CrossTenant-AuthSource: DM6PR11MB4657.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: bc99a86c-1ca4-4d97-4979-08dbaec3b369
-X-MS-Exchange-CrossTenant-originalarrivaltime: 06 Sep 2023 10:26:15.4907 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: b7429f51-0a7a-4de6-ab31-08dbaec457a3
+X-MS-Exchange-CrossTenant-originalarrivaltime: 06 Sep 2023 10:30:51.0091 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: YbAYrgd2iFGn7e7HGx3XjSsiJbKH9/yvVhVjji+v7rMcO1Z75/P91OMdd5BvVSSjzWeadHceKWPseLrwpxyf4fF9tfvqf/xo17f/32VSgEI=
+X-MS-Exchange-CrossTenant-userprincipalname: rl6GIJb+openXdeskCXesHV6ViF1Cc0UmZhnBR3/1Rj0pVDTEhHugFG70EyKayO/nHJTZtPT5C/rLPoASDIiRR3ixs8S1MqSZ0QxX78/Hdw=
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS7PR11MB6246
 X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1693995984; x=1725531984;
+ t=1693996256; x=1725532256;
  h=from:to:cc:subject:date:message-id:references:
  in-reply-to:content-transfer-encoding:mime-version;
- bh=WMhnAR1sbMmFu0U79lTBLHtF+yfuj4+7qrkTt5Ldtpg=;
- b=YZa+YDLDhdUA7bZip8fMVO4maHI1W3J+wFkykV6tQqJ2o2tjXMKJTQun
- N7/02s2mm8MFxHcFuaWt7mqlLOWZCbdvLQDbO5LHsqpxLpX/HvnzVKt1V
- YXxc0yA8ESBZmi2PqYtJs3RY4/Wiry+dHlspx2vzCMRyS5TxQ3zryPbMz
- j/18hjhRhXVG6MimXQCfAEk/xadVK4jrjgpV7AGqOC3QHY6WP32bX/orA
- 1DF1CeE8rYxo0sIYBZY0EC3XGuN5xlXcFjnK1SaB9d6a3Og4kO0Ytywji
- RSPrEwabMBdtYfTiw3j2oq2leIEZGwBHTPNZI1umCVRGbN9+o2/GMUb9t
- w==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ bh=1weGCQm4KV4MM1wlc+P/1WbRbkgOdoOOfMh04zpDjl0=;
+ b=ggs4pKVcMKpScF5k49oDHbCilXWZ2mtnJNYG6HlbyEOVpalpa8X3tMmf
+ fpPnbl9yMQXT6MIQl0V3lv66EBVn7DFzwWUw7g4ANkLy+VjZgVhIjDN5a
+ ySNBxPNPOpCf5qQvSr2uX4Soy5A0/HmATmqa6d7aF5FbYn6ZZ0Xk6dlJ4
+ 8yZwTABMPpRuAqzjNlNAyzTFy9T//j4lMtGgExtl8avYSdC2dcqlafqZO
+ T080VQSNQFtbv0VDZ0A6aSj8VW3kUx1aYqM1iZa/Nsb5RKMv8r44a4FbM
+ SisCprvEv3LEty0aWawXSGFJwY/0otc6JMVlOOz3QLMdPaW1j5Ti4cIAm
+ A==;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=YZa+YDLD
+ header.a=rsa-sha256 header.s=Intel header.b=ggs4pKVc
 X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH net-next 3/4] dpll: netlink/core: add
- support for pin-dpll signal phase offset/adjust
+Subject: Re: [Intel-wired-lan] [PATCH net-next 0/4] dpll: add phase offset
+ and phase adjust
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -190,268 +186,70 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+Cc: "vadim.fedorenko@linux.dev" <vadim.fedorenko@linux.dev>,
  "bvanassche@acm.org" <bvanassche@acm.org>,
- "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
- "linux-clk@vger.kernel.org" <linux-clk@vger.kernel.org>
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "jonathan.lemon@gmail.com" <jonathan.lemon@gmail.com>,
+ "kuba@kernel.org" <kuba@kernel.org>, "pabeni@redhat.com" <pabeni@redhat.com>,
+ "linux-clk@vger.kernel.org" <linux-clk@vger.kernel.org>,
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
->From: Drewek, Wojciech <wojciech.drewek@intel.com>
->Sent: Wednesday, September 6, 2023 10:02 AM
+>From: Jiri Pirko <jiri@resnulli.us>
+>Sent: Wednesday, September 6, 2023 10:38 AM
 >
->> -----Original Message-----
->> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
->> Arkadiusz Kubalewski
->> Sent: Wednesday, September 6, 2023 1:26 AM
->> To: kuba@kernel.org; jiri@resnulli.us; jonathan.lemon@gmail.com;
->> pabeni@redhat.com; vadim.fedorenko@linux.dev
->> Cc: bvanassche@acm.org; netdev@vger.kernel.org; intel-wired-
->> lan@lists.osuosl.org; linux-clk@vger.kernel.org; linux-arm-
->> kernel@lists.infradead.org
->> Subject: [Intel-wired-lan] [PATCH net-next 3/4] dpll: netlink/core: add
->> support
->> for pin-dpll signal phase offset/adjust
->>
->> Add callback ops for pin-dpll phase measurment.
->> Add callback for pin signal phase adjustment.
->> Add min and max phase adjustment values to pin proprties.
->> Invoke callbacks in dpll_netlink.c when filling the pin details to
->> provide user with phase related attribute values.
->>
->> Signed-off-by: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
->> ---
->>  drivers/dpll/dpll_netlink.c | 99
->> ++++++++++++++++++++++++++++++++++++-
->>  include/linux/dpll.h        | 18 +++++++
->>  2 files changed, 116 insertions(+), 1 deletion(-)
->>
->> diff --git a/drivers/dpll/dpll_netlink.c b/drivers/dpll/dpll_netlink.c
->> index 764437a0661b..548517d9ca4c 100644
->> --- a/drivers/dpll/dpll_netlink.c
->> +++ b/drivers/dpll/dpll_netlink.c
->> @@ -212,6 +212,53 @@ dpll_msg_add_pin_direction(struct sk_buff *msg,
->> struct dpll_pin *pin,
->>  	return 0;
->>  }
->>
->> +static int
->> +dpll_msg_add_pin_phase_adjust(struct sk_buff *msg, struct dpll_pin *pin,
->> +			      struct dpll_pin_ref *ref,
->> +			      struct netlink_ext_ack *extack)
->> +{
->> +	const struct dpll_pin_ops *ops = dpll_pin_ops(ref);
->> +	struct dpll_device *dpll = ref->dpll;
->> +	s32 phase_adjust;
->> +	int ret;
->> +
->> +	if (!ops->phase_adjust_get)
->> +		return 0;
+>Wed, Sep 06, 2023 at 01:26:06AM CEST, arkadiusz.kubalewski@intel.com wrote:
+>>This RFC is to start discussion over extending dpll interface with
+>>possibility to:
+>>- read a phase offset between signals on pin and dpll,
+>>- adjust a phase of pin's signal.
 >
->Why 0 is returned here? If it's intended, I would put a comment stating
->why.
->Same thing in dpll_msg_add_phase_offset.
+>1) RFC patches should be marked as such
 
-The callback is optional, any driver implementing dpll interface doesn't
-have to implement this callback and it must not be seen as an error.
-Callback that are required are pointed out in documentation:
-Documentation/driver-api/dpll.rst
+That is true, sorry about that, will fix it if there would be v2.
 
-All the optional callbacks are returning this way, I don't see a point
-in adding extra comment here.
+>2) I suggest to postpone this after the first dpll patchset is merged
+
+Well this is exactly only to start discussion, I will resubmit the patches
+after the merge of dpll, although we can decide some details already.
 
 Thank you!
 Arkadiusz
 
 >
->> +	ret = ops->phase_adjust_get(pin, dpll_pin_on_dpll_priv(dpll, pin),
->> +				    dpll, dpll_priv(dpll),
->> +				    &phase_adjust, extack);
->> +	if (ret)
->> +		return ret;
->> +	if (nla_put_s32(msg, DPLL_A_PIN_PHASE_ADJUST, phase_adjust))
->> +		return -EMSGSIZE;
->> +
->> +	return 0;
->> +}
->> +
->> +static int
->> +dpll_msg_add_phase_offset(struct sk_buff *msg, struct dpll_pin *pin,
->> +			  struct dpll_pin_ref *ref,
->> +			  struct netlink_ext_ack *extack)
->> +{
->> +	const struct dpll_pin_ops *ops = dpll_pin_ops(ref);
->> +	struct dpll_device *dpll = ref->dpll;
->> +	s64 phase_offset;
->> +	int ret;
->> +
->> +	if (!ops->phase_offset_get)
->> +		return 0;
->> +	ret = ops->phase_offset_get(pin, dpll_pin_on_dpll_priv(dpll, pin),
->> +				    dpll, dpll_priv(dpll), &phase_offset,
->> +				    extack);
->> +	if (ret)
->> +		return ret;
->> +	if (nla_put_64bit(msg, DPLL_A_PIN_PHASE_OFFSET,
->> sizeof(phase_offset),
->> +			  &phase_offset, DPLL_A_PIN_PAD))
->> +		return -EMSGSIZE;
->> +
->> +	return 0;
->> +}
->> +
->>  static int
->>  dpll_msg_add_pin_freq(struct sk_buff *msg, struct dpll_pin *pin,
->>  		      struct dpll_pin_ref *ref, struct netlink_ext_ack *extack)
->> @@ -330,6 +377,9 @@ dpll_msg_add_pin_dplls(struct sk_buff *msg, struct
->> dpll_pin *pin,
->>  		if (ret)
->>  			goto nest_cancel;
->>  		ret = dpll_msg_add_pin_direction(msg, pin, ref, extack);
->> +		if (ret)
->> +			goto nest_cancel;
->> +		ret = dpll_msg_add_phase_offset(msg, pin, ref, extack);
->>  		if (ret)
->>  			goto nest_cancel;
->>  		nla_nest_end(msg, attr);
->> @@ -377,6 +427,15 @@ dpll_cmd_pin_get_one(struct sk_buff *msg, struct
->> dpll_pin *pin,
->>  	if (nla_put_u32(msg, DPLL_A_PIN_CAPABILITIES, prop->capabilities))
->>  		return -EMSGSIZE;
->>  	ret = dpll_msg_add_pin_freq(msg, pin, ref, extack);
->> +	if (ret)
->> +		return ret;
->> +	if (nla_put_s32(msg, DPLL_A_PIN_PHASE_ADJUST_MIN,
->> +			prop->phase_range.min))
->> +		return -EMSGSIZE;
->> +	if (nla_put_s32(msg, DPLL_A_PIN_PHASE_ADJUST_MAX,
->> +			prop->phase_range.max))
->> +		return -EMSGSIZE;
->> +	ret = dpll_msg_add_pin_phase_adjust(msg, pin, ref, extack);
->>  	if (ret)
->>  		return ret;
->>  	if (xa_empty(&pin->parent_refs))
->> @@ -416,7 +475,7 @@ dpll_device_get_one(struct dpll_device *dpll, struct
->> sk_buff *msg,
->>  	if (nla_put_u32(msg, DPLL_A_TYPE, dpll->type))
->>  		return -EMSGSIZE;
 >>
->> -	return ret;
->> +	return 0;
->>  }
+>>The RFC is based on latest version of dpll interface submitted for
+>>net-next [1].
 >>
->>  static int
->> @@ -705,6 +764,39 @@ dpll_pin_direction_set(struct dpll_pin *pin, struct
->> dpll_device *dpll,
->>  	return 0;
->>  }
+>>[1]
+>>https://lore.kernel.org/netdev/20230824213132.827338-1-vadim.fedorenko@
+>>linux.dev/
 >>
->> +static int
->> +dpll_pin_phase_adj_set(struct dpll_pin *pin, struct nlattr
->> *phase_adj_attr,
->> +		       struct netlink_ext_ack *extack)
->> +{
->> +	struct dpll_pin_ref *ref;
->> +	unsigned long i;
->> +	s32 phase_adj;
->> +	int ret;
->> +
->> +	phase_adj = nla_get_s32(phase_adj_attr);
->> +	if (phase_adj > pin->prop->phase_range.max ||
->> +	    phase_adj < pin->prop->phase_range.min) {
->> +		NL_SET_ERR_MSG(extack, "phase adjust value not
->> supported");
->> +		return -EINVAL;
->> +	}
->> +	xa_for_each(&pin->dpll_refs, i, ref) {
->> +		const struct dpll_pin_ops *ops = dpll_pin_ops(ref);
->> +		struct dpll_device *dpll = ref->dpll;
->> +
->> +		if (!ops->phase_adjust_set)
->> +			return -EOPNOTSUPP;
->> +		ret = ops->phase_adjust_set(pin,
->> +					    dpll_pin_on_dpll_priv(dpll, pin),
->> +					    dpll, dpll_priv(dpll), phase_adj,
->> +					    extack);
->> +		if (ret)
->> +			return ret;
->> +	}
->> +	__dpll_pin_change_ntf(pin);
->> +
->> +	return 0;
->> +}
->> +
->>  static int
->>  dpll_pin_parent_device_set(struct dpll_pin *pin, struct nlattr
->> *parent_nest,
->>  			   struct netlink_ext_ack *extack)
->> @@ -793,6 +885,11 @@ dpll_pin_set_from_nlattr(struct dpll_pin *pin,
->> struct
->> genl_info *info)
->>  			if (ret)
->>  				return ret;
->>  			break;
->> +		case DPLL_A_PIN_PHASE_ADJUST:
->> +			ret = dpll_pin_phase_adj_set(pin, a, info->extack);
->> +			if (ret)
->> +				return ret;
->> +			break;
->>  		case DPLL_A_PIN_PARENT_DEVICE:
->>  			ret = dpll_pin_parent_device_set(pin, a, info->extack);
->>  			if (ret)
->> diff --git a/include/linux/dpll.h b/include/linux/dpll.h
->> index bbc480cd2932..578fc5fa3750 100644
->> --- a/include/linux/dpll.h
->> +++ b/include/linux/dpll.h
->> @@ -68,6 +68,18 @@ struct dpll_pin_ops {
->>  	int (*prio_set)(const struct dpll_pin *pin, void *pin_priv,
->>  			const struct dpll_device *dpll, void *dpll_priv,
->>  			const u32 prio, struct netlink_ext_ack *extack);
->> +	int (*phase_offset_get)(const struct dpll_pin *pin, void *pin_priv,
->> +				const struct dpll_device *dpll, void *dpll_priv,
->> +				s64 *phase_offset,
->> +				struct netlink_ext_ack *extack);
->> +	int (*phase_adjust_get)(const struct dpll_pin *pin, void *pin_priv,
->> +				const struct dpll_device *dpll, void *dpll_priv,
->> +				s32 *phase_adjust,
->> +				struct netlink_ext_ack *extack);
->> +	int (*phase_adjust_set)(const struct dpll_pin *pin, void *pin_priv,
->> +				const struct dpll_device *dpll, void *dpll_priv,
->> +				const s32 phase_adjust,
->> +				struct netlink_ext_ack *extack);
->>  };
+>>Arkadiusz Kubalewski (4):
+>>  dpll: docs: add support for pin signal phase offset/adjust
+>>  dpll: spec: add support for pin-dpll signal phase offset/adjust
+>>  dpll: netlink/core: add support for pin-dpll signal phase
+>>    offset/adjust
+>>  ice: dpll: implement phase related callbacks
 >>
->>  struct dpll_pin_frequency {
->> @@ -91,6 +103,11 @@ struct dpll_pin_frequency {
->>  #define DPLL_PIN_FREQUENCY_DCF77 \
->>  	DPLL_PIN_FREQUENCY(DPLL_PIN_FREQUENCY_77_5_KHZ)
+>> Documentation/driver-api/dpll.rst         |  53 ++++-
+>> Documentation/netlink/specs/dpll.yaml     |  33 +++-
+>> drivers/dpll/dpll_netlink.c               |  99 +++++++++-
+>> drivers/dpll/dpll_nl.c                    |   8 +-
+>> drivers/dpll/dpll_nl.h                    |   2 +-
+>> drivers/net/ethernet/intel/ice/ice_dpll.c | 224 +++++++++++++++++++++-
+>> drivers/net/ethernet/intel/ice/ice_dpll.h |  10 +-
+>> include/linux/dpll.h                      |  18 ++
+>> include/uapi/linux/dpll.h                 |   8 +-
+>> 9 files changed, 443 insertions(+), 12 deletions(-)
 >>
->> +struct dpll_pin_phase_adjust_range {
->> +	s32 min;
->> +	s32 max;
->> +};
->> +
->>  struct dpll_pin_properties {
->>  	const char *board_label;
->>  	const char *panel_label;
->> @@ -99,6 +116,7 @@ struct dpll_pin_properties {
->>  	unsigned long capabilities;
->>  	u32 freq_supported_num;
->>  	struct dpll_pin_frequency *freq_supported;
->> +	struct dpll_pin_phase_adjust_range phase_range;
->>  };
+>>--
+>>2.38.1
 >>
->>  #if IS_ENABLED(CONFIG_DPLL)
->> --
->> 2.38.1
->>
->> _______________________________________________
->> Intel-wired-lan mailing list
->> Intel-wired-lan@osuosl.org
->> https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
