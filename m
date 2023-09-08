@@ -1,84 +1,82 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id BA166797CDB
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  7 Sep 2023 21:38:50 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 4260C40091;
-	Thu,  7 Sep 2023 19:38:49 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4260C40091
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1694115529;
-	bh=ST1GwjH+nd0Bg5UbOGMnbpk4kpSVOcsY7x2Qy43phNY=;
-	h=Date:From:To:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=Mpj4V8uZ9KNnd/d68fOjx6o9NczVI74lTdhae3LHgDr7bfOyxDQo40nekauV4kL9U
-	 EHqZZRQW3u6zdI7LUbiK7ePdLmvHL88+CyS0PNWHJ9PhaduuLsehiTMxnhfhzHckQU
-	 kAe8oRuZh2Oe0tHWARJzlbMeAGdw9Pj07GcBReFZjzRjKEnaJ5dNH3Zzl/iNYxaw3R
-	 FPOa9wZEbV8KCdm2UBcD5LSoBlTpxMRjWjAfFHLD3pb7ooj+C8ZT5P0JM7n1nClIF0
-	 QKs4POqMjeES0NuZLINuCsg8NdG+C14swOYfJKfhNo3dsJmFCh0cbL+hhDJQMAcdCE
-	 1AZWJxf1Hjp+w==
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id BwH7mWgzUHRn; Thu,  7 Sep 2023 19:38:48 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 0BB9841D62;
-	Thu,  7 Sep 2023 19:38:47 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0BB9841D62
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 460521BF3C0
- for <intel-wired-lan@lists.osuosl.org>; Thu,  7 Sep 2023 19:38:43 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id E23207983E3
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  8 Sep 2023 10:19:00 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 1DE3140004
- for <intel-wired-lan@lists.osuosl.org>; Thu,  7 Sep 2023 19:38:43 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1DE3140004
+	by smtp2.osuosl.org (Postfix) with ESMTP id 09B0F40BFE;
+	Fri,  8 Sep 2023 08:18:59 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 09B0F40BFE
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1694161139;
+	bh=U7z7lvA0NCXqPr3P/93H2tU7hNDPo3owz8NDnQxEKXw=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=vpRixxGyr3CCCUfsYPhKGZLbKT0vIHzeIsN/3ZWz5hbtm/9Epnwg7aruhFlBNf7+a
+	 AeiB9k5SB+rtJae3ZNxlZtp8I2YnMyyE7+0DUKrQi1JgW93qphkQMUzz6gOJWp9m53
+	 9p7GuUq5IWOAZRNMj7MFDoLvxkCwHqZQoq3JwgJH1rP3gIHWNWG1mSyHfqBMk9jV+G
+	 AemAv3IfeyNgmivJWBSLMlaDWq8bbpJmCNKGVQ0kR5AXYuSpgbiDD3frqo78qTGHpt
+	 kLXROFXtE7FoLd8NBoy0+WCIqNB+xUKiPSch2igpc+YGPRmb2Ri8phCLxLxMJe5oBN
+	 DTTVeUqxT07eg==
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id gxT0JO5XZWUe; Fri,  8 Sep 2023 08:18:58 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp2.osuosl.org (Postfix) with ESMTP id EEC524058F;
+	Fri,  8 Sep 2023 08:18:57 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org EEC524058F
+X-Original-To: intel-wired-lan@osuosl.org
+Delivered-To: intel-wired-lan@osuosl.org
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id DB47E1BF328
+ for <intel-wired-lan@osuosl.org>; Fri,  8 Sep 2023 08:18:52 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp2.osuosl.org (Postfix) with ESMTP id ACA82405D8
+ for <intel-wired-lan@osuosl.org>; Fri,  8 Sep 2023 08:18:52 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org ACA82405D8
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ehEzypEJ8FVi for <intel-wired-lan@lists.osuosl.org>;
- Thu,  7 Sep 2023 19:38:42 +0000 (UTC)
-Received: from dfw.source.kernel.org (dfw.source.kernel.org
- [IPv6:2604:1380:4641:c500::1])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 4E14440424
- for <intel-wired-lan@lists.osuosl.org>; Thu,  7 Sep 2023 19:38:42 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 4E14440424
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits))
- (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 3235661371;
- Thu,  7 Sep 2023 19:38:41 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 28808C433C7;
- Thu,  7 Sep 2023 19:38:40 +0000 (UTC)
-Date: Thu, 7 Sep 2023 12:38:39 -0700
-From: Jakub Kicinski <kuba@kernel.org>
-To: "Samudrala, Sridhar" <sridhar.samudrala@intel.com>
-Message-ID: <20230907123839.59a10f23@kernel.org>
-In-Reply-To: <9d236687-6161-3e1b-f73f-ed9358e47577@intel.com>
-References: <20230904021455.3944605-1-junfeng.guo@intel.com>
- <20230905153734.18b9bc84@kernel.org>
- <9d236687-6161-3e1b-f73f-ed9358e47577@intel.com>
-MIME-Version: 1.0
+ with ESMTP id 6sehtA3sQBTV for <intel-wired-lan@osuosl.org>;
+ Fri,  8 Sep 2023 08:18:51 +0000 (UTC)
+Received: from mgamail.intel.com (mgamail.intel.com [134.134.136.126])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 1317A4058F
+ for <intel-wired-lan@osuosl.org>; Fri,  8 Sep 2023 08:18:50 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1317A4058F
+X-IronPort-AV: E=McAfee;i="6600,9927,10826"; a="362655519"
+X-IronPort-AV: E=Sophos;i="6.02,236,1688454000"; d="scan'208";a="362655519"
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+ by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 08 Sep 2023 01:18:49 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10826"; a="735878681"
+X-IronPort-AV: E=Sophos;i="6.02,236,1688454000"; d="scan'208";a="735878681"
+Received: from zulkifl3-ilbpg0.png.intel.com ([10.88.229.82])
+ by orsmga007.jf.intel.com with ESMTP; 08 Sep 2023 01:18:46 -0700
+From: Muhammad Husaini Zulkifli <muhammad.husaini.zulkifli@intel.com>
+To: intel-wired-lan@osuosl.org
+Date: Fri,  8 Sep 2023 16:17:34 +0800
+Message-Id: <20230908081734.28205-1-muhammad.husaini.zulkifli@intel.com>
+X-Mailer: git-send-email 2.17.1
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1694115520;
- bh=qfQOR+G9SmAgbHYTVBt3SdKA3Duz9kjlW64D77WR2YI=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=MBnpO7gNmF5DePYLCPnbrnfpKJhUTaXFKG9LDRyVo0ikbZJxR3n6BZa1OpWucxEWn
- 3kG9pKQ0WDUiAFuOVG9DP47lBWjFDpOrrSeZ0Not0BB2uCwCUxXxP59rSP9I0IOZe0
- 4Mlo7orUgTmrpIgLreqtw7iX9v6eX3LpOpl0+RhrakVGYS5GsW2yYP+OhYmHMQ8b5A
- ++I0QOCiCJxRcf4zEuK94hDDh1FqK/xXvoXZK+n+blthsRbFuQkCfey2QXNcIWUw8p
- 90DB5ruR4ULU6AT6MG7bK5eFBkRhmSCvPivcPsHJMC2t/bFVJ6tPprjuhMGC+GO761
- yg+Px5hrxy4hA==
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1694161131; x=1725697131;
+ h=from:to:cc:subject:date:message-id;
+ bh=AURspU3F76W2cee+nFjq4Ps1mpWQnJyFzP2jJXded+c=;
+ b=O5WBsmAOHcPKwYGLwQntKrkCRIIQu4flO34zyx7JQwVl+i0DDnyT1Ebb
+ YNvT+Q+0OtLgjTeei7WsfsYsVGRzwmcsrtbMNQ3EPFLw+2tK40oDp7FkM
+ JBcsmJooIePwUe1T1yQd3GaFSx+XyUY/a17yny3A/DZesmyk6kxIVz705
+ sqh/JjDzIsX6nN+QRuGcDBhuz0HjPFFXWowvp6pjRG+SQsnadw1n0E/RE
+ MR2Caqryna7YExl5Cng7MBM+XWqxdtlzWzJAnAdyisoN0sN9N1Yef20ap
+ pmE9AYK05sbOzW5J3cJu+rBEHEc+DHBbYHnY0NkZyM1NgGpYzE6mbTSQ6
+ A==;
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=MBnpO7gN
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v9 00/15] Introduce the
- Parser Library
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=O5WBsmAO
+Subject: [Intel-wired-lan] [PATCH iwl-net v5] igc: Expose tx-usecs coalesce
+ setting to user
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,34 +89,147 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: ivecera@redhat.com, netdev@vger.kernel.org, jesse.brandeburg@intel.com,
- edumazet@google.com, intel-wired-lan@lists.osuosl.org, horms@kernel.org,
- qi.z.zhang@intel.com, anthony.l.nguyen@intel.com, pabeni@redhat.com,
- davem@davemloft.net
+Cc: husainizulkifli@gmail.com, bcreeley@amd.com, netdev@vger.kernel.org,
+ edumazet@google.com, pabeni@redhat.com, anthony.l.nguyen@intel.com,
+ horms@kernel.org, kuba@kernel.org, davem@davemloft.net
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Thu, 7 Sep 2023 14:08:15 -0500 Samudrala, Sridhar wrote:
-> >> This patch set provides a way for applications to send down training
-> >> packets & masks (in binary) to the driver. Then these binary data
-> >> would be used by the driver to generate certain data that are needed
-> >> to create a filter rule in the filtering stage of switch/RSS/FDIR.  
-> > 
-> > What's the API for the user? I see a whole bunch of functions added here
-> > which never get called.  
-> 
-> This link shows an early version of a user of this patch series
-> 	https://lore.kernel.org/intel-wired-lan/20230818064703.154183-1-junfeng.guo@intel.com/
-> 
-> This API is planned to be exposed to VF drivers via virtchnl interface 
-> to pass raw training packets and masks. The VF using this API can only 
-> steer RX traffic directed that VF to its own queues.
+When users attempt to obtain the coalesce setting using the
+ethtool command, current code always returns 0 for tx-usecs.
+This is because I225/6 always uses a queue pair setting, hence
+tx_coalesce_usecs does not return a value during the
+igc_ethtool_get_coalesce() callback process. The pair queue
+condition checking in igc_ethtool_get_coalesce() is removed by
+this patch so that the user gets information of the value of tx-usecs.
 
-FWIW I have no idea what a "training packet and mask" is either.
-Hopefully next version will come with a _much_ clearer high
-level explanation.
+Even if i225/6 is using queue pair setting, there is no harm in
+notifying the user of the tx-usecs. The implementation of the current
+code may have previously been a copy of the legacy code i210.
+Since I225 has the queue pair setting enabled, tx-usecs will always adhere
+to the user-set rx-usecs value. An error message will appear when the user
+attempts to set the tx-usecs value for the input parameters because,
+by default, they should only set the rx-usecs value.
+
+This patch also adds the helper function to get the
+previous rx coalesce value similar to tx coalesce.
+
+How to test:
+User can get the coalesce value using ethtool command.
+
+Example command:
+Get: ethtool -c <interface>
+
+Previous output:
+
+rx-usecs: 3
+rx-frames: n/a
+rx-usecs-irq: n/a
+rx-frames-irq: n/a
+
+tx-usecs: 0
+tx-frames: n/a
+tx-usecs-irq: n/a
+tx-frames-irq: n/a
+
+New output:
+
+rx-usecs: 3
+rx-frames: n/a
+rx-usecs-irq: n/a
+rx-frames-irq: n/a
+
+tx-usecs: 3
+tx-frames: n/a
+tx-usecs-irq: n/a
+tx-frames-irq: n/a
+
+Fixes: 8c5ad0dae93c ("igc: Add ethtool support")
+Signed-off-by: Muhammad Husaini Zulkifli <muhammad.husaini.zulkifli@intel.com>
+Tested-by: Naama Meir <naamax.meir@linux.intel.com>
+---
+V4 -> V5:
+- Squash patch for set/get together as recommended by Jakub.
+- Fix unstabilize value when user insert both tx and rx params
+together.
+- Add error message for unsupported config.
+
+V3 -> V4:
+- Implement the helper function, as recommended by Brett Creely.
+- Fix typo in cover letter.
+
+V2 -> V3:
+- Refactor the code, as Simon suggested, to make it more readable.
+
+V1 -> V2:
+- Split the patch file into two, like Anthony suggested.
+---
+ drivers/net/ethernet/intel/igc/igc_ethtool.c | 31 ++++++++++++--------
+ 1 file changed, 19 insertions(+), 12 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/igc/igc_ethtool.c b/drivers/net/ethernet/intel/igc/igc_ethtool.c
+index 93bce729be76..7ab6dd58e400 100644
+--- a/drivers/net/ethernet/intel/igc/igc_ethtool.c
++++ b/drivers/net/ethernet/intel/igc/igc_ethtool.c
+@@ -868,6 +868,18 @@ static void igc_ethtool_get_stats(struct net_device *netdev,
+ 	spin_unlock(&adapter->stats64_lock);
+ }
+ 
++static int igc_ethtool_get_previous_rx_coalesce(struct igc_adapter *adapter)
++{
++	return (adapter->rx_itr_setting <= 3) ?
++		adapter->rx_itr_setting : adapter->rx_itr_setting >> 2;
++}
++
++static int igc_ethtool_get_previous_tx_coalesce(struct igc_adapter *adapter)
++{
++	return (adapter->tx_itr_setting <= 3) ?
++		adapter->tx_itr_setting : adapter->tx_itr_setting >> 2;
++}
++
+ static int igc_ethtool_get_coalesce(struct net_device *netdev,
+ 				    struct ethtool_coalesce *ec,
+ 				    struct kernel_ethtool_coalesce *kernel_coal,
+@@ -875,17 +887,8 @@ static int igc_ethtool_get_coalesce(struct net_device *netdev,
+ {
+ 	struct igc_adapter *adapter = netdev_priv(netdev);
+ 
+-	if (adapter->rx_itr_setting <= 3)
+-		ec->rx_coalesce_usecs = adapter->rx_itr_setting;
+-	else
+-		ec->rx_coalesce_usecs = adapter->rx_itr_setting >> 2;
+-
+-	if (!(adapter->flags & IGC_FLAG_QUEUE_PAIRS)) {
+-		if (adapter->tx_itr_setting <= 3)
+-			ec->tx_coalesce_usecs = adapter->tx_itr_setting;
+-		else
+-			ec->tx_coalesce_usecs = adapter->tx_itr_setting >> 2;
+-	}
++	ec->rx_coalesce_usecs = igc_ethtool_get_previous_rx_coalesce(adapter);
++	ec->tx_coalesce_usecs = igc_ethtool_get_previous_tx_coalesce(adapter);
+ 
+ 	return 0;
+ }
+@@ -910,8 +913,12 @@ static int igc_ethtool_set_coalesce(struct net_device *netdev,
+ 	    ec->tx_coalesce_usecs == 2)
+ 		return -EINVAL;
+ 
+-	if ((adapter->flags & IGC_FLAG_QUEUE_PAIRS) && ec->tx_coalesce_usecs)
++	if ((adapter->flags & IGC_FLAG_QUEUE_PAIRS) &&
++	    ec->tx_coalesce_usecs != igc_ethtool_get_previous_tx_coalesce(adapter)) {
++		NL_SET_ERR_MSG_MOD(extack,
++				   "Queue Pair mode enabled, both Rx and Tx coalescing controlled by rx-usecs");
+ 		return -EINVAL;
++	}
+ 
+ 	/* If ITR is disabled, disable DMAC */
+ 	if (ec->rx_coalesce_usecs == 0) {
+-- 
+2.17.1
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
