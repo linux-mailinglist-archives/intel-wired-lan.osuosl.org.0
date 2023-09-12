@@ -2,83 +2,113 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 740BD79CBCC
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 12 Sep 2023 11:30:36 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 477DF79CC84
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 12 Sep 2023 11:56:30 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id A12DF6111B;
-	Tue, 12 Sep 2023 09:30:34 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A12DF6111B
+	by smtp3.osuosl.org (Postfix) with ESMTP id C78F761135;
+	Tue, 12 Sep 2023 09:56:28 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C78F761135
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1694511034;
-	bh=NYdtKMwNoJKMevEGoh21eZ6SWD7f4iolcVlU7XsWiE4=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=jTRDVZOmvBmhc3t7mt/WBdl6SihuZWQI/Vd1DdJubsPHR55RkRq0AwCK2coNscaYc
-	 KARrOY3GcB3wP0gBxVudN+yo1EnNwTt1L0bV9EXP3jOFE8mpaUU0asa+Nzbbcqgxkb
-	 zjzvI/vwWcSUa19R87jNMs+xxPFtXSDOnW0fZyfV2u+ri7uzbDrY180lQigjkG7FXC
-	 jztzQK/Pi/7ZCrlJ1GPY8tYJ8gkKd+9ydfiYyQ8EJhjEPZe4OyVD3GLuq8ymGm5cGm
-	 E2EMobxJr1sTd38zdN+EZgpqzlh/9Cy+eG94kMwACm7rYVma6mhh/iyvsabU6G6Atu
-	 6IlUgTp5I8fmQ==
+	s=default; t=1694512588;
+	bh=CmwqzFa2ZveIK6lNc/jCplC3bhFkHMpmGX0HUd8DMUk=;
+	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=XgP3ijRPWPtl7Jcriyjs5ckzER3JxPK5lZQBHHpzQMOgGkOpKNNMm2j02m8Bua0hv
+	 YzSTAHolpDFWP+Z5tvtaL3E3FPe2T4Mub6oDdsdf+D4TyEDBitIcMQOzoujmyv///u
+	 d+bFekpO3Vj0yvqo14Q+JWpaOLUhRp7emacu/uCIsphIgFUCwzVF3ERvHT2seaIgBD
+	 QTDn7OTRAKT5F/88G2KSYcPUiEGm5CRX6Ez9JQARY0VH7fZ+k81teSt69ag+n16pGw
+	 LwC22BelTQoJ7Fm4Fml8i9a9NiK/HMz3ofHou0jiNWLRHoIsKwTIpnobHtOlVXCGeb
+	 PP5ZNpJktd7jA==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id w45i5IWDsm-1; Tue, 12 Sep 2023 09:30:33 +0000 (UTC)
+	with ESMTP id JWMuSI3DQW6m; Tue, 12 Sep 2023 09:56:28 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 9FCF16110E;
-	Tue, 12 Sep 2023 09:30:33 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9FCF16110E
+	by smtp3.osuosl.org (Postfix) with ESMTP id D5E8360692;
+	Tue, 12 Sep 2023 09:56:27 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D5E8360692
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 4C0181BF357
- for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Sep 2023 09:30:28 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 540531BF3BE
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Sep 2023 09:56:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 23BEB403A9
- for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Sep 2023 09:30:28 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 23BEB403A9
+ by smtp2.osuosl.org (Postfix) with ESMTP id 2BD934038B
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Sep 2023 09:56:22 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 2BD934038B
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id OPyQ4UPGeZfj for <intel-wired-lan@lists.osuosl.org>;
- Tue, 12 Sep 2023 09:30:26 +0000 (UTC)
-Received: from mgamail.intel.com (mgamail.intel.com [192.55.52.93])
- by smtp2.osuosl.org (Postfix) with ESMTPS id AB785402E7
- for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Sep 2023 09:30:26 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org AB785402E7
-X-IronPort-AV: E=McAfee;i="6600,9927,10830"; a="375655201"
-X-IronPort-AV: E=Sophos;i="6.02,245,1688454000"; d="scan'208";a="375655201"
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 12 Sep 2023 02:29:56 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10830"; a="809170420"
-X-IronPort-AV: E=Sophos;i="6.02,245,1688454000"; d="scan'208";a="809170420"
-Received: from amlin-019-225.igk.intel.com ([10.102.19.225])
- by fmsmga008.fm.intel.com with ESMTP; 12 Sep 2023 02:29:55 -0700
-From: Andrii Staikov <andrii.staikov@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Tue, 12 Sep 2023 11:29:52 +0200
-Message-Id: <20230912092952.2814966-1-andrii.staikov@intel.com>
-X-Mailer: git-send-email 2.25.1
+ with ESMTP id ugYn3q_JZuXn for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 12 Sep 2023 09:56:21 +0000 (UTC)
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 611F5401CA
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Sep 2023 09:56:21 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 611F5401CA
+Received: from mail-ed1-f72.google.com (mail-ed1-f72.google.com
+ [209.85.208.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-191-bYaZUqB8NwKeh_RMwC8Oxw-1; Tue, 12 Sep 2023 05:56:18 -0400
+X-MC-Unique: bYaZUqB8NwKeh_RMwC8Oxw-1
+Received: by mail-ed1-f72.google.com with SMTP id
+ 4fb4d7f45d1cf-52a59eb87fcso1062300a12.0
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Sep 2023 02:56:18 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1694512577; x=1695117377;
+ h=mime-version:user-agent:content-transfer-encoding:references
+ :in-reply-to:date:cc:to:from:subject:message-id:x-gm-message-state
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=qwbY5T4S7HVWeFjupYj7Meyn2zny3d5w0hwW7I2C90g=;
+ b=d9ntuGXFuTttuQDXf64Z3qNA17fhAi3oaIZ4CeA2K0NeL+iN+Jz9CDcPtwdQFgz84K
+ dyEwyLighNPDlyzPIe92c5C9DRT7DWtL34z4LK0D45OC1g9IfDBy2GAVM68+oFBvRIYT
+ c5arBoArlkXPB8Xd9Ypknf/vCkm8HOv8tBb+9dnvGZwF3k6DbiGrHHUP+t+uswdT3WRb
+ v6cNH+ptCJNkWPS4Ky89BeSR5mkf+CSKhWTUVC8zJY3SUnmlhZiDVPxg7zP0m29JPh6a
+ 6+07P4hvWPM6TKuAl1s5qPpRfAVJ6/Zdo25YuO5KO4J4Jqvwe9/KxP6B12n1eqYt1rp1
+ EQhg==
+X-Gm-Message-State: AOJu0YwWHzYutm+viVGfHWaE0grRAgVUTzsisokrABi5r9LUzha4iYte
+ Pn4dmfGubTYSz15qZiD3nh4Q3pf9pFvcP8zXPd4Cj4dxjPFPVj4XEtUmXszwI3YNf+BfkWt4xXU
+ h8gQpqqZcfnNE0Nz/QekfQEnjcptX8g==
+X-Received: by 2002:a05:6402:26cc:b0:514:ab8b:ee78 with SMTP id
+ x12-20020a05640226cc00b00514ab8bee78mr10100852edd.3.1694512577547; 
+ Tue, 12 Sep 2023 02:56:17 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHL6yEqSITkrMXY37tjjUVT9sr6X+90RRvmipG1uMwsARpI1raoLpntc8EIwiFYT+PS/8a0Qw==
+X-Received: by 2002:a05:6402:26cc:b0:514:ab8b:ee78 with SMTP id
+ x12-20020a05640226cc00b00514ab8bee78mr10100843edd.3.1694512577268; 
+ Tue, 12 Sep 2023 02:56:17 -0700 (PDT)
+Received: from gerbillo.redhat.com (146-241-249-231.dyn.eolo.it.
+ [146.241.249.231]) by smtp.gmail.com with ESMTPSA id
+ l9-20020aa7c309000000b0052a19a75372sm5664844edq.90.2023.09.12.02.56.16
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 12 Sep 2023 02:56:16 -0700 (PDT)
+Message-ID: <0168a988486f4bff08bd186d5aea1cfe4900a2c3.camel@redhat.com>
+From: Paolo Abeni <pabeni@redhat.com>
+To: Andrii Staikov <andrii.staikov@intel.com>, 
+ intel-wired-lan@lists.osuosl.org
+Date: Tue, 12 Sep 2023 11:56:15 +0200
+In-Reply-To: <20230912092952.2814966-1-andrii.staikov@intel.com>
+References: <20230912092952.2814966-1-andrii.staikov@intel.com>
+User-Agent: Evolution 3.46.4 (3.46.4-1.fc37)
 MIME-Version: 1.0
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1694511026; x=1726047026;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=az/P5VcS7y6RnLURzuxIdD/CGde1PcjrEtLTetl36xE=;
- b=cvIKWARDDHcxwuWVhPl3/bzTMF1EG3MAYCOqjwbWm08fgYxsN8PIwH27
- EvpMMYJGQrvAb6jLrvPlTWG3n/kItA7/aiqqsgsH5AT2DNcC9fhJU3jNd
- H1AevEUTGICa1CgSPj/judANbG7KQIk/Lc361+mJEQDU+oi4QSn/mJuzR
- vZrTIqNZ+7T/VVZsfMJ559LfMeHjV5W4x0draQy7W1Vsveba+tytpLSxT
- naj9Sllxvw2CNUgOcc+esoEhIGWDKncGUseU0vjR01j4fgDoNZb7JAGql
- qcEGghjfy8BJq8Sp1mo7mnbJ0C3sn3AXFQHRCGdDlHNn9o1tw5lL1snc5
- g==;
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=redhat.com; 
+ s=mimecast20190719; t=1694512580;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=qwbY5T4S7HVWeFjupYj7Meyn2zny3d5w0hwW7I2C90g=;
+ b=bp3+SpM58/VXRXQY+ESGkZ6KCTAIVGA7fKYRZY4dLFFWhOOK7PE1dOKwwS0OJPBVUJBZut
+ WjD/etp51BLYQAobFKHszCDdbvG06gKRhQUJmw/Pt0HR4RU9lEY0EgOH+kOw+O2Unj96Oo
+ PpppFL3WET2AdiigNTiW0xyHhUSKR5o=
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=cvIKWARD
-Subject: [Intel-wired-lan] [PATCH iwl-next v2] ice: Add support for packet
- mirroring using hardware in switchdev mode
+ dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
+ header.a=rsa-sha256 header.s=mimecast20190719 header.b=bp3+SpM5
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v2] ice: Add support for
+ packet mirroring using hardware in switchdev mode
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,136 +121,44 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, Andrii Staikov <andrii.staikov@intel.com>
+Cc: netdev@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Switchdev mode allows to add mirroring rules to mirror
-incoming and outgoing packets to the interface's port
-representor. Previously, this was available only using
-software functionality. Add possibility to offload this
-functionality to the NIC hardware.
+Hi all,
 
-Introduce ICE_MIRROR_PACKET filter action to the
-ice_sw_fwd_act_type enum to identify the desired action
-and pass it to the hardware as well as the VSI to mirror.
+On Tue, 2023-09-12 at 11:29 +0200, Andrii Staikov wrote:
+> Switchdev mode allows to add mirroring rules to mirror
+> incoming and outgoing packets to the interface's port
+> representor. Previously, this was available only using
+> software functionality. Add possibility to offload this
+> functionality to the NIC hardware.
+> 
+> Introduce ICE_MIRROR_PACKET filter action to the
+> ice_sw_fwd_act_type enum to identify the desired action
+> and pass it to the hardware as well as the VSI to mirror.
+> 
+> Example of tc mirror command using hardware:
+> tc filter add dev ens1f0np0 ingress protocol ip prio 1 flower
+> src_mac b4:96:91:a5:c7:a7 skip_sw action mirred egress mirror dev eth1
+> 
+> ens1f0np0 - PF
+> b4:96:91:a5:c7:a7 - source MAC address
+> eth1 - PR of a VF to mirror to
+> 
+> Signed-off-by: Andrii Staikov <andrii.staikov@intel.com>
 
-Example of tc mirror command using hardware:
-tc filter add dev ens1f0np0 ingress protocol ip prio 1 flower
-src_mac b4:96:91:a5:c7:a7 skip_sw action mirred egress mirror dev eth1
+The amount of patches that IMHO should land only into intel-specific
+MLs and instead reaches also netdev, recently increased.
 
-ens1f0np0 - PF
-b4:96:91:a5:c7:a7 - source MAC address
-eth1 - PR of a VF to mirror to
+Please try harder to apply proper constraints to your traffic, netdev
+is already busy enough!
 
-Signed-off-by: Andrii Staikov <andrii.staikov@intel.com>
----
-v1 -> v2: no need for changes in ice_add_tc_flower_adv_fltr()
----
- drivers/net/ethernet/intel/ice/ice_switch.c | 25 +++++++++++++++------
- drivers/net/ethernet/intel/ice/ice_tc_lib.c | 13 +++++++++++
- drivers/net/ethernet/intel/ice/ice_type.h   |  1 +
- 3 files changed, 32 insertions(+), 7 deletions(-)
+Thanks,
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_switch.c b/drivers/net/ethernet/intel/ice/ice_switch.c
-index 2f77b684ff76..d915b72e8dbb 100644
---- a/drivers/net/ethernet/intel/ice/ice_switch.c
-+++ b/drivers/net/ethernet/intel/ice/ice_switch.c
-@@ -6100,6 +6100,7 @@ ice_add_adv_rule(struct ice_hw *hw, struct ice_adv_lkup_elem *lkups,
- 	      rinfo->sw_act.fltr_act == ICE_FWD_TO_Q ||
- 	      rinfo->sw_act.fltr_act == ICE_FWD_TO_QGRP ||
- 	      rinfo->sw_act.fltr_act == ICE_DROP_PACKET ||
-+	      rinfo->sw_act.fltr_act == ICE_MIRROR_PACKET ||
- 	      rinfo->sw_act.fltr_act == ICE_NOP)) {
- 		status = -EIO;
- 		goto free_pkt_profile;
-@@ -6112,9 +6113,11 @@ ice_add_adv_rule(struct ice_hw *hw, struct ice_adv_lkup_elem *lkups,
- 	}
- 
- 	if (rinfo->sw_act.fltr_act == ICE_FWD_TO_VSI ||
--	    rinfo->sw_act.fltr_act == ICE_NOP)
-+	    rinfo->sw_act.fltr_act == ICE_MIRROR_PACKET ||
-+	    rinfo->sw_act.fltr_act == ICE_NOP) {
- 		rinfo->sw_act.fwd_id.hw_vsi_id =
- 			ice_get_hw_vsi_num(hw, vsi_handle);
-+	}
- 
- 	if (rinfo->src_vsi)
- 		rinfo->sw_act.src = ice_get_hw_vsi_num(hw, rinfo->src_vsi);
-@@ -6150,12 +6153,15 @@ ice_add_adv_rule(struct ice_hw *hw, struct ice_adv_lkup_elem *lkups,
- 		status = -ENOMEM;
- 		goto free_pkt_profile;
- 	}
--	if (!rinfo->flags_info.act_valid) {
--		act |= ICE_SINGLE_ACT_LAN_ENABLE;
--		act |= ICE_SINGLE_ACT_LB_ENABLE;
--	} else {
--		act |= rinfo->flags_info.act & (ICE_SINGLE_ACT_LAN_ENABLE |
--						ICE_SINGLE_ACT_LB_ENABLE);
-+
-+	if (rinfo->sw_act.fltr_act != ICE_MIRROR_PACKET) {
-+		if (!rinfo->flags_info.act_valid) {
-+			act |= ICE_SINGLE_ACT_LAN_ENABLE;
-+			act |= ICE_SINGLE_ACT_LB_ENABLE;
-+		} else {
-+			act |= rinfo->flags_info.act & (ICE_SINGLE_ACT_LAN_ENABLE |
-+							ICE_SINGLE_ACT_LB_ENABLE);
-+		}
- 	}
- 
- 	switch (rinfo->sw_act.fltr_act) {
-@@ -6182,6 +6188,11 @@ ice_add_adv_rule(struct ice_hw *hw, struct ice_adv_lkup_elem *lkups,
- 		act |= ICE_SINGLE_ACT_VSI_FORWARDING | ICE_SINGLE_ACT_DROP |
- 		       ICE_SINGLE_ACT_VALID_BIT;
- 		break;
-+	case ICE_MIRROR_PACKET:
-+		act |= ICE_SINGLE_ACT_OTHER_ACTS;
-+		act |= (rinfo->sw_act.fwd_id.hw_vsi_id << ICE_SINGLE_ACT_MIRROR_VSI_ID_S) &
-+		       ICE_SINGLE_ACT_MIRROR_VSI_ID_M;
-+		break;
- 	case ICE_NOP:
- 		act |= FIELD_PREP(ICE_SINGLE_ACT_VSI_ID_M,
- 				  rinfo->sw_act.fwd_id.hw_vsi_id);
-diff --git a/drivers/net/ethernet/intel/ice/ice_tc_lib.c b/drivers/net/ethernet/intel/ice/ice_tc_lib.c
-index 37b54db91df2..db34df1890f7 100644
---- a/drivers/net/ethernet/intel/ice/ice_tc_lib.c
-+++ b/drivers/net/ethernet/intel/ice/ice_tc_lib.c
-@@ -659,6 +659,19 @@ ice_eswitch_tc_parse_action(struct ice_tc_flower_fltr *fltr,
- 
- 		break;
- 
-+	case FLOW_ACTION_MIRRED:
-+		fltr->action.fltr_act = ICE_MIRROR_PACKET;
-+
-+		if (ice_is_port_repr_netdev(act->dev)) {
-+			repr = ice_netdev_to_repr(act->dev);
-+
-+			fltr->dest_vsi = repr->src_vsi;
-+		} else {
-+			NL_SET_ERR_MSG_MOD(fltr->extack, "Provided netdevice doesn't support mirroring");
-+			return -EINVAL;
-+		}
-+		break;
-+
- 	default:
- 		NL_SET_ERR_MSG_MOD(fltr->extack, "Unsupported action in switchdev mode");
- 		return -EINVAL;
-diff --git a/drivers/net/ethernet/intel/ice/ice_type.h b/drivers/net/ethernet/intel/ice/ice_type.h
-index 02db9e5810e6..f5c35dc8766f 100644
---- a/drivers/net/ethernet/intel/ice/ice_type.h
-+++ b/drivers/net/ethernet/intel/ice/ice_type.h
-@@ -1047,6 +1047,7 @@ enum ice_sw_fwd_act_type {
- 	ICE_FWD_TO_Q,
- 	ICE_FWD_TO_QGRP,
- 	ICE_DROP_PACKET,
-+	ICE_MIRROR_PACKET,
- 	ICE_NOP,
- 	ICE_INVAL_ACT
- };
--- 
-2.25.1
+Paolo
 
 _______________________________________________
 Intel-wired-lan mailing list
