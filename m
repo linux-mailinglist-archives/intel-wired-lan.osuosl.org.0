@@ -1,85 +1,84 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 66A297A3544
-	for <lists+intel-wired-lan@lfdr.de>; Sun, 17 Sep 2023 13:00:39 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id C43417A4181
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 18 Sep 2023 08:48:16 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 98BB141687;
-	Sun, 17 Sep 2023 11:00:37 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 98BB141687
+	by smtp2.osuosl.org (Postfix) with ESMTP id 54836404C1;
+	Mon, 18 Sep 2023 06:48:15 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 54836404C1
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1694948437;
-	bh=Ys2OJuIu7IDVDRlz8tMZFWzo4X48y4iPJAponDbjkks=;
-	h=From:Date:References:In-Reply-To:To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=Hlkrg+YQORC2udmdT2OcMS65qS6zttp8FCr5clXBsaTIXvAvBCM6lR9gr3JwF2/7F
-	 ZifqlduLrG8+QA61Th5z+DqYMVqlaa8PdTgCG5gcnnIPwzabwSDuRALhKqwyxKMZtZ
-	 Pho3jjCj+Rt6Ui8hpgVBD8pUQaRJDXhAlynmYsKOcuHN1SfmWu7OY8SGUU5dp/SHn0
-	 ZBBNcDD0DfAzpBvJj0tSnlbRqea2frs3J5OKXBIbJia6sSsFMs4M5vS+N6hlYiYjcL
-	 kva7Df2tNXaA9rKzhJFG3P+6cnNfJP0pswtfOsuCRlFA93PnB0SM3BqadZ0u2utoy9
-	 13VCoJviaqWCw==
+	s=default; t=1695019695;
+	bh=oB/yYSwOxHg9D1SRJRrbNF7eaTvnvvhVY/r4gAlPi+c=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=juKd7pacLHim2OowAJYkvZqm6RUA7EMP1vcq5nL0e1DeyeNMuGLNfs5AAVWEMbQDL
+	 e0MLs+rx8RtR3INTKZgK4u7EJEIHEvNOZGAgdgNDHHSsROmB3bRfm5n8gUmJ731w3/
+	 bxH4rLxwxH9nVSrFlHOTQzxzr/x9g6tFjLaQATV/pkmFodcSzmWvrXrmS0pyCnGLd7
+	 ZYnIawUfVxpTVmrABmj5s2wJ0zCgW5/dyZxT+r0YT00MXmbKs50Qxh+dZC0fC/xmhJ
+	 SE1uvwu6A7hUKXDJQr7YnUaKRoUEGNGd887wDk5HsRZr5DTzlBCpcaRNa5X9dGmDbw
+	 JwKake3I3NHiw==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 9cqVzj-3gxnD; Sun, 17 Sep 2023 11:00:36 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id cHzxj9tBvF0U; Mon, 18 Sep 2023 06:48:14 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 47A3E41686;
-	Sun, 17 Sep 2023 11:00:36 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 47A3E41686
+	by smtp2.osuosl.org (Postfix) with ESMTP id 47EDC41486;
+	Mon, 18 Sep 2023 06:48:14 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 47EDC41486
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id D1CE91BF423
- for <intel-wired-lan@lists.osuosl.org>; Sun, 17 Sep 2023 11:00:30 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id DB6701BF40F
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 18 Sep 2023 06:48:09 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id A8F7A40B47
- for <intel-wired-lan@lists.osuosl.org>; Sun, 17 Sep 2023 11:00:30 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A8F7A40B47
+ by smtp2.osuosl.org (Postfix) with ESMTP id B0A5240446
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 18 Sep 2023 06:48:09 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B0A5240446
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id NPImV1dAttCY for <intel-wired-lan@lists.osuosl.org>;
- Sun, 17 Sep 2023 11:00:29 +0000 (UTC)
-Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
- by smtp2.osuosl.org (Postfix) with ESMTPS id A4981401CA
- for <intel-wired-lan@lists.osuosl.org>; Sun, 17 Sep 2023 11:00:29 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A4981401CA
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits))
- (No client certificate requested)
- by dfw.source.kernel.org (Postfix) with ESMTPS id 67EEE60B58;
- Sun, 17 Sep 2023 11:00:28 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 7B459C433C8;
- Sun, 17 Sep 2023 11:00:27 +0000 (UTC)
-Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org
- (localhost.localdomain [127.0.0.1])
- by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id
- 5A962E26888; Sun, 17 Sep 2023 11:00:27 +0000 (UTC)
+ with ESMTP id I4eysb8tZjtr for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 18 Sep 2023 06:48:08 +0000 (UTC)
+Received: from mgamail.intel.com (mgamail.intel.com [134.134.136.20])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 94255400FE
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 18 Sep 2023 06:48:08 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 94255400FE
+X-IronPort-AV: E=McAfee;i="6600,9927,10836"; a="369907509"
+X-IronPort-AV: E=Sophos;i="6.02,155,1688454000"; d="scan'208";a="369907509"
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+ by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 17 Sep 2023 23:48:07 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10836"; a="869452216"
+X-IronPort-AV: E=Sophos;i="6.02,156,1688454000"; d="scan'208";a="869452216"
+Received: from wasp.igk.intel.com ([10.102.20.192])
+ by orsmga004.jf.intel.com with ESMTP; 17 Sep 2023 23:48:06 -0700
+From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Mon, 18 Sep 2023 08:24:02 +0200
+Message-ID: <20230918062406.90359-1-michal.swiatkowski@linux.intel.com>
+X-Mailer: git-send-email 2.41.0
 MIME-Version: 1.0
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <169494842736.21621.10730860855645661664.git-patchwork-notify@kernel.org>
-Date: Sun, 17 Sep 2023 11:00:27 +0000
-References: <20230913204943.1051233-1-vadim.fedorenko@linux.dev>
-In-Reply-To: <20230913204943.1051233-1-vadim.fedorenko@linux.dev>
-To: Vadim Fedorenko <vadim.fedorenko@linux.dev>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1694948427;
- bh=s08oDzPuNzSJeFX6h/ScM9J80V2nEYO6YkYo4nxEPCE=;
- h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
- b=nritynd2YmYUlN1ie5Ol4kmiqCoZ5YuAdBaqB1rdW9DyUzY5ckHaIv3mlVt52W+Ze
- CkVyNPkKEA0HggjJK7WTDYR+3afmh9aobqqy7H3YnB1Ezsx70YW4ca9y2eJAT8w1x3
- PjDJGUp5NWF6rbMJlTMVaT1cL240EHZqLkchK6JhyZK4IfUhQjnwAS3dnSfOR0i/w5
- PoJfvWfc/cf77esp/YA2sM5hOv88kUAFW5RKvL6CsIdl3nQiILPgkwiwqMSCgF6R54
- fnaMzKOPkuVXNx+PGFTJiBCvQpYzNAqWIQZwOCTOs85sSdkHZiM+PgFtPE1x/lr8MR
- c++vLi1xox62w==
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1695019688; x=1726555688;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=GS1gck9ANbiz+tFMOrhAj4TzAhzOgIqU7Aa0jlYpc2w=;
+ b=DBsXllqD+3FDISHObULgaC+7aaFn9VeKNGpMmzaJWDaJAEKAOBolxp3P
+ GaAKkDPuckCJRVNe+TiyK14v7TIJLeORRnJByvKX3Q7oscQaVb0z6278O
+ NH2PimuAVpZbRhrh8xGMZBvh6QC0QUaN7iedKmGWA7/NVqEtbSQRkeKs0
+ lpt6zmBEQfv7atoJBvZ2wCPoMPllGF8gxqwk3ED0Y8hcRG9/gXg2xMAkI
+ bLnMz6TrO7nmfFzxSrSosArVYMH/r40QwIK06bIrQGiliFGelUFMJGDHQ
+ rLOlvbazFLWTA7HH01KzDpf+SbnH0ZDj5HEs8FsWwOaLWVMaQ5V2Ga6su
+ A==;
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=nritynd2
-Subject: Re: [Intel-wired-lan] [PATCH net-next v8 0/9] Create common DPLL
- configuration API
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=DBsXllqD
+Subject: [Intel-wired-lan] [PATCH iwl-next v2 0/4] change MSI-X vectors per
+ VF
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,60 +91,53 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: jiri@resnulli.us, bvanassche@acm.org, michal.michalik@intel.com,
- netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
- linux-arm-kernel@lists.infradead.org, jonathan.lemon@gmail.com,
- kuba@kernel.org, pabeni@redhat.com, linux-clk@vger.kernel.org,
- milena.olech@intel.com
+Cc: netdev@vger.kernel.org,
+ Michal Swiatkowski <michal.swiatkowski@linux.intel.com>,
+ maciej.fijalkowski@intel.com, przemyslaw.kitszel@intel.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hello:
+Hi,
 
-This series was applied to netdev/net-next.git (main)
-by David S. Miller <davem@davemloft.net>:
+This patchset is implementing sysfs API introduced here [1].
 
-On Wed, 13 Sep 2023 21:49:34 +0100 you wrote:
-> Implement common API for DPLL configuration and status reporting.
-> The API utilises netlink interface as transport for commands and event
-> notifications. This API aims to extend current pin configuration
-> provided by PTP subsystem and make it flexible and easy to cover
-> complex configurations.
-> 
-> Netlink interface is based on ynl spec, it allows use of in-kernel
-> tools/net/ynl/cli.py application to control the interface with properly
-> formated command and json attribute strings. Here are few command
-> examples of how it works with `ice` driver on supported NIC:
-> 
-> [...]
+It will allow user to assign different amount of MSI-X vectors to VF.
+For example when there are VMs with different number of virtual cores.
 
-Here is the summary with links:
-  - [net-next,v8,1/9] dpll: documentation on DPLL subsystem interface
-    https://git.kernel.org/netdev/net-next/c/dbb291f19393
-  - [net-next,v8,2/9] dpll: spec: Add Netlink spec in YAML
-    https://git.kernel.org/netdev/net-next/c/3badff3a25d8
-  - [net-next,v8,3/9] dpll: core: Add DPLL framework base functions
-    https://git.kernel.org/netdev/net-next/c/9431063ad323
-  - [net-next,v8,4/9] dpll: netlink: Add DPLL framework base functions
-    https://git.kernel.org/netdev/net-next/c/9d71b54b65b1
-  - [net-next,v8,5/9] netdev: expose DPLL pin handle for netdevice
-    https://git.kernel.org/netdev/net-next/c/5f1842692880
-  - [net-next,v8,6/9] ice: add admin commands to access cgu configuration
-    https://git.kernel.org/netdev/net-next/c/8a3a565ff210
-  - [net-next,v8,7/9] ice: implement dpll interface to control cgu
-    https://git.kernel.org/netdev/net-next/c/d7999f5ea64b
-  - [net-next,v8,8/9] ptp_ocp: implement DPLL ops
-    https://git.kernel.org/netdev/net-next/c/09eeb3aecc6c
-  - [net-next,v8,9/9] mlx5: Implement SyncE support using DPLL infrastructure
-    https://git.kernel.org/netdev/net-next/c/496fd0a26bbf
+Example:
+1. Turn off autoprobe
+echo 0 > /sys/bus/pci/devices/0000\:18\:00.0/sriov_drivers_autoprobe
+2. Create VFs
+echo 4 > /sys/bus/pci/devices/0000\:18\:00.0/sriov_numvfs
+3. Configure MSI-X
+echo 20 > /sys/class/pci_bus/0000\:18/device/0000\:18\:01.0/sriov_vf_msix_count
 
-You are awesome, thank you!
+v1 --> v2: [2] (Sorry for long time between versions)
+ * rebase
+ * reword commit message in ice: implement num_msix field per VF
+
+[1] https://lore.kernel.org/netdev/20210314124256.70253-1-leon@kernel.org/
+[2] https://lore.kernel.org/netdev/20230615123830.155927-1-michal.swiatkowski@linux.intel.com/
+
+Michal Swiatkowski (4):
+  ice: implement num_msix field per VF
+  ice: add bitmap to track VF MSI-X usage
+  ice: set MSI-X vector count on VF
+  ice: manage VFs MSI-X using resource tracking
+
+ drivers/net/ethernet/intel/ice/ice.h          |   2 +
+ drivers/net/ethernet/intel/ice/ice_lib.c      |   2 +-
+ drivers/net/ethernet/intel/ice/ice_main.c     |   2 +
+ drivers/net/ethernet/intel/ice/ice_sriov.c    | 257 ++++++++++++++++--
+ drivers/net/ethernet/intel/ice/ice_sriov.h    |  13 +
+ drivers/net/ethernet/intel/ice/ice_vf_lib.h   |   4 +-
+ drivers/net/ethernet/intel/ice/ice_virtchnl.c |   2 +-
+ 7 files changed, 258 insertions(+), 24 deletions(-)
+
 -- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
+2.41.0
 
 _______________________________________________
 Intel-wired-lan mailing list
