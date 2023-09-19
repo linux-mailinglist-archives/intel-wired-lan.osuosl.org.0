@@ -2,75 +2,134 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 767607A67B4
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 19 Sep 2023 17:12:11 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 54F747A67B3
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 19 Sep 2023 17:12:07 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 0CF5C60FD1;
-	Tue, 19 Sep 2023 15:12:10 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0CF5C60FD1
+	by smtp3.osuosl.org (Postfix) with ESMTP id DDA1961633;
+	Tue, 19 Sep 2023 15:12:05 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org DDA1961633
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1695136330;
-	bh=nW0fC22gyZUpskkX5yQAmiUNJ34XPABIM2set8exXVU=;
-	h=Date:From:To:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1695136325;
+	bh=/fyKRnjtldoUiPEctqRKjaplSZjnQGFm1xKPa5K2WTA=;
+	h=In-Reply-To:References:Date:From:To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=YPGnOk2PTwvPOFqnMOnU7ynqPKcwcgfBg6v5qOPR4Z58FdCKQHZs1pwYMDkEgs6zL
-	 5EJTiDO4nEWJKJvpHUfzKiRHc5UMD25mZdjRtBsSHNglB+2X8xtiL5+N7aaDjdlgK1
-	 VT9iMeX9/xyaH52LZZwk1nYWRSwg7jMTV0txHqHX2yicEtV+KxXaGqg0UVsKI0zlum
-	 Rl75iiHjljgkdjNQysw5h42uuaVNLtGOadoJn5hdZILhIyQhbU+rPnBu3u4BGWiz86
-	 GW9U4e0QDlGBe1UKyrMBKB49pJitczCGTwjEx+QJ7+IT8nFQZZKuWYzQ6H6PhTcsb4
-	 Ziui8uOpg7b5w==
+	b=FitSojTmqaKDKjQ4DlRLelloVGm0axiJahvI3UbjDIcauralSPNYoMwXFqr29b3Kh
+	 riKorQ3OsTlhCmyVZdI7jhi5V1v47oGxjHUj/RIVlgKPwkRiYltgcq3j9ItJGRXj0d
+	 cFLWM+fWh603zAxeBHglBLk5rIfNG4zk8gLi9KLZmrxeShC60Myusb6EBCetjmEZ+n
+	 SBnKM2bLuJfx5RGfErOXUyTfC5sVLiKUbAttH4M0OmG0S1VHIgMzioA42qElaFr5Lg
+	 qCJQzMUYo7a6TBsQbX6ql8+6YGm3aICYg5W6byXRzYjZyw+9rnUlKdgCn8slWMsS3A
+	 Zb7v4Xqn7NKwg==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id qUuXCs-IBoKy; Tue, 19 Sep 2023 15:12:09 +0000 (UTC)
+	with ESMTP id hDY9b7rbHKQJ; Tue, 19 Sep 2023 15:12:05 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id D647961238;
-	Tue, 19 Sep 2023 15:12:08 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D647961238
+	by smtp3.osuosl.org (Postfix) with ESMTP id DAEA261613;
+	Tue, 19 Sep 2023 15:12:04 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org DAEA261613
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id BD7CB1BF3CB
- for <intel-wired-lan@lists.osuosl.org>; Tue, 19 Sep 2023 13:27:27 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 38D591BF317
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 19 Sep 2023 13:45:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 8A6C18348C
- for <intel-wired-lan@lists.osuosl.org>; Tue, 19 Sep 2023 13:27:27 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8A6C18348C
+ by smtp2.osuosl.org (Postfix) with ESMTP id F312D40C00
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 19 Sep 2023 13:45:56 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org F312D40C00
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id BhNbfM2PCVAN for <intel-wired-lan@lists.osuosl.org>;
- Tue, 19 Sep 2023 13:27:24 +0000 (UTC)
-Received: from frasgout.his.huawei.com (frasgout.his.huawei.com
- [185.176.79.56])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 4FD7C83312
- for <intel-wired-lan@lists.osuosl.org>; Tue, 19 Sep 2023 13:27:24 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4FD7C83312
-Received: from lhrpeml500005.china.huawei.com (unknown [172.18.147.207])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4Rqj9b5SvDz6K5nL;
- Tue, 19 Sep 2023 21:26:27 +0800 (CST)
-Received: from localhost (10.202.227.76) by lhrpeml500005.china.huawei.com
- (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.31; Tue, 19 Sep
- 2023 14:27:19 +0100
-Date: Tue, 19 Sep 2023 14:27:17 +0100
-From: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
-To: Ilpo =?ISO-8859-1?Q?J=E4rvinen?= <ilpo.jarvinen@linux.intel.com>
-Message-ID: <20230919142717.0000247c@Huawei.com>
-In-Reply-To: <20230919125648.1920-9-ilpo.jarvinen@linux.intel.com>
-References: <20230919125648.1920-1-ilpo.jarvinen@linux.intel.com>
- <20230919125648.1920-9-ilpo.jarvinen@linux.intel.com>
-Organization: Huawei Technologies Research and Development (UK) Ltd.
-X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id eZX-vJ6WgnR3 for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 19 Sep 2023 13:45:56 +0000 (UTC)
+X-Greylist: delayed 560 seconds by postgrey-1.37 at util1.osuosl.org;
+ Tue, 19 Sep 2023 13:45:56 UTC
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1C79740165
+Received: from out1-smtp.messagingengine.com (out1-smtp.messagingengine.com
+ [66.111.4.25])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 1C79740165
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 19 Sep 2023 13:45:55 +0000 (UTC)
+Received: from compute5.internal (compute5.nyi.internal [10.202.2.45])
+ by mailout.nyi.internal (Postfix) with ESMTP id 0A3D15C00A5;
+ Tue, 19 Sep 2023 09:36:34 -0400 (EDT)
+Received: from imap47 ([10.202.2.97])
+ by compute5.internal (MEProxy); Tue, 19 Sep 2023 09:36:34 -0400
+X-ME-Sender: <xms:4KMJZbW9LbqWPcHkGh_DlPuxCBkGLtv3JnsYlVzXjKzSIeeti7RIhg>
+ <xme:4KMJZTmAvH4L7z_nGaP5KdfIvqOZiks__CHr-LlmDmPx7zd2plYewMvSEyaWyUHFk
+ jKbOhCbS2QMQUW6WgU>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedviedrudekuddgfeeiucetufdoteggodetrfdotf
+ fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
+ uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
+ cujfgurhepofgfggfkjghffffhvfevufgtgfesthhqredtreerjeenucfhrhhomhepfdfu
+ vhgvnhcurfgvthgvrhdfuceoshhvvghnsehsvhgvnhhpvghtvghrrdguvghvqeenucggtf
+ frrghtthgvrhhnpeevhedthffgffelhedujefgueduudeutdefleevvdetudelhfeihfdv
+ ffelteeuudenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhroh
+ hmpehsvhgvnhesshhvvghnphgvthgvrhdruggvvh
+X-ME-Proxy: <xmx:4KMJZXYmYuvL3nH0_SgD_kNdsC7XHLClfVBAmruidR-V60B6y3P-MQ>
+ <xmx:4KMJZWXQA3WzRBb5zCu-QYvcA4iZm-q-O5n5rA4kxuHe43SgaGHuSg>
+ <xmx:4KMJZVk9Oi99N4mk7qm3lIUI4afyU90X7PI_XuVzNp7f82_pACbMKw>
+ <xmx:4qMJZdNsFBGmk6guzMsje_BoEdpEh-d6HrZzup8N865hs4SPZgsPDA>
+Feedback-ID: i51094778:Fastmail
+Received: by mailuser.nyi.internal (Postfix, from userid 501)
+ id 0378AA60077; Tue, 19 Sep 2023 09:36:31 -0400 (EDT)
+X-Mailer: MessagingEngine.com Webmail Interface
+User-Agent: Cyrus-JMAP/3.9.0-alpha0-761-gece9e40c48-fm-20230913.001-gece9e40c
 MIME-Version: 1.0
-X-Originating-IP: [10.202.227.76]
-X-ClientProxiedBy: lhrpeml500005.china.huawei.com (7.191.163.240) To
- lhrpeml500005.china.huawei.com (7.191.163.240)
-X-CFilter-Loop: Reflected
-X-Mailman-Approved-At: Tue, 19 Sep 2023 15:11:54 +0000
-Subject: Re: [Intel-wired-lan] [PATCH v3 8/8] e1000e: Use
- pcie_capability_read_word() for reading LNKSTA
+Message-Id: <aabaa49f-8988-42c0-bf8e-2266005e2155@app.fastmail.com>
+In-Reply-To: <20230918131103.24119-7-ilpo.jarvinen@linux.intel.com>
+References: <20230918131103.24119-1-ilpo.jarvinen@linux.intel.com>
+ <20230918131103.24119-7-ilpo.jarvinen@linux.intel.com>
+Date: Tue, 19 Sep 2023 15:36:10 +0200
+From: "Sven Peter" <sven@svenpeter.dev>
+To: =?UTF-8?Q?Ilpo_J=C3=A4rvinen?= <ilpo.jarvinen@linux.intel.com>,
+ linux-pci@vger.kernel.org, "Bjorn Helgaas" <helgaas@kernel.org>,
+ "Lorenzo Pieralisi" <lorenzo.pieralisi@arm.com>,
+ "Rob Herring" <robh@kernel.org>,
+ =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kw@linux.com>,
+ "Lukas Wunner" <lukas@wunner.de>, "Rafael J. Wysocki" <rafael@kernel.org>,
+ "Heiner Kallweit" <hkallweit1@gmail.com>,
+ "Emmanuel Grumbach" <emmanuel.grumbach@intel.com>,
+ linux-kernel@vger.kernel.org, "Hector Martin" <marcan@marcan.st>,
+ "Alyssa Rosenzweig" <alyssa@rosenzweig.io>,
+ "Marcel Holtmann" <marcel@holtmann.org>,
+ "Johan Hedberg" <johan.hedberg@gmail.com>,
+ "Luiz Augusto von Dentz" <luiz.dentz@gmail.com>,
+ "Bjorn Helgaas" <bhelgaas@google.com>, asahi@lists.linux.dev,
+ linux-arm-kernel@lists.infradead.org, linux-bluetooth@vger.kernel.org
+X-Mailman-Approved-At: Tue, 19 Sep 2023 15:11:47 +0000
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=svenpeter.dev; 
+ h=cc:cc:content-transfer-encoding:content-type:content-type
+ :date:date:from:from:in-reply-to:in-reply-to:message-id
+ :mime-version:references:reply-to:sender:subject:subject:to:to;
+ s=fm2; t=1695130594; x=1695216994; bh=G3Kkrzt0AGrrY/tjL0EyntUuI
+ Bb8mCCGj+mtTnmx+Q8=; b=UnODe/CFFm/fKyGaSWbPPfJGyccMgh1Fl4ql7J8B2
+ 9jTTCbW7SBL9mmZVXktU9NHHOKE59vNmIt0/3PhYLyfB2ct9PpB2TtdW2GrTNk0N
+ p54KxQZhj60LKixvUfYSDQa4v3EbvN8Xt+LCAGQGVQ26IZGNwzMCGuce3Gghezi+
+ NDemRIJWikj5y3YJh93ZKtlx/6vlOGJnSRujwbi6RlScOarSzktohPxAwVVayDgE
+ wc1G63LzMMrc7gbgXgfjjE3fjf+QuIdkFrVuooWiII9CtYxJ0KGYCqtctLBBxlXB
+ a0MaGet4EcXXzcNEDj0hlAAITshodNu2ZUQSCM82e95IQ==
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:cc:content-transfer-encoding
+ :content-type:content-type:date:date:feedback-id:feedback-id
+ :from:from:in-reply-to:in-reply-to:message-id:mime-version
+ :references:reply-to:sender:subject:subject:to:to:x-me-proxy
+ :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm2; t=
+ 1695130594; x=1695216994; bh=G3Kkrzt0AGrrY/tjL0EyntUuIBb8mCCGj+m
+ tTnmx+Q8=; b=Ki98uDeNfz0jsUIT+QrBfvj6hR3UdAj0JGP0Kk0m3is6XGITVnc
+ DitfO8Z+GtWWohKTB22DWPAWKANFWZvwpnHoOdj68y6C4Z7ADQwwOPv0cl9n2b+x
+ ySjituYs4vc8wTr6657lSCf6nuZlPaevwRT+ZlC5EloYB2OJvQKrFkiBrlsDjKms
+ R/4JDdefME8w8YDPy5+wnxG2+Fya9/liDAL5qCMMKpXum+43+FmCAvT5DhfpQlfI
+ HT3jt59lJiwFge+hvLDqbVFgQ4bt7cNR/bPeevGW7CpYG9z9TksRHzzWy5ZpkhSc
+ +qvxWapAs7q7hQNor2DKBFbtWnh42FwH2mg==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key, unprotected) header.d=svenpeter.dev
+ header.i=@svenpeter.dev header.a=rsa-sha256 header.s=fm2 header.b=UnODe/CF; 
+ dkim=pass (2048-bit key,
+ unprotected) header.d=messagingengine.com header.i=@messagingengine.com
+ header.a=rsa-sha256 header.s=fm2 header.b=Ki98uDeN
+Subject: Re: [Intel-wired-lan] [PATCH v2 06/13] Bluetooth: hci_bcm4377:
+ Convert aspm disable to quirk
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,84 +142,24 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: linux-pci@vger.kernel.org, Jesse
- Brandeburg <jesse.brandeburg@intel.com>, linux-kernel@vger.kernel.org, Eric
- Dumazet <edumazet@google.com>, netdev@vger.kernel.org,
- Tony Nguyen <anthony.l.nguyen@intel.com>, intel-wired-lan@lists.osuosl.org,
- Bjorn Helgaas <bhelgaas@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo
- Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Cc: ath12k@lists.infradead.org, netdev@vger.kernel.org,
+ linux-wireless@vger.kernel.org, ath10k@lists.infradead.org,
+ linux-rdma@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ intel-wired-lan@lists.osuosl.org, ath11k@lists.infradead.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, 19 Sep 2023 15:56:48 +0300
-Ilpo J=E4rvinen <ilpo.jarvinen@linux.intel.com> wrote:
-
-> Use pcie_capability_read_word() for reading LNKSTA and remove the
-> custom define that matches to PCI_EXP_LNKSTA.
-> =
-
-> As only single user for cap_offset remains, replace it with a call to
-> pci_pcie_cap(). Instead of e1000_adapter, make local variable out of
-> pci_dev because both users are interested in it.
-> =
-
-> Signed-off-by: Ilpo J=E4rvinen <ilpo.jarvinen@linux.intel.com>
-LGTM
-Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-
-> ---
->  drivers/net/ethernet/intel/e1000e/defines.h |  1 -
->  drivers/net/ethernet/intel/e1000e/mac.c     | 11 ++++-------
->  2 files changed, 4 insertions(+), 8 deletions(-)
-> =
-
-> diff --git a/drivers/net/ethernet/intel/e1000e/defines.h b/drivers/net/et=
-hernet/intel/e1000e/defines.h
-> index a4d29c9e03a6..23a58cada43a 100644
-> --- a/drivers/net/ethernet/intel/e1000e/defines.h
-> +++ b/drivers/net/ethernet/intel/e1000e/defines.h
-> @@ -678,7 +678,6 @@
->  =
-
->  /* PCI/PCI-X/PCI-EX Config space */
->  #define PCI_HEADER_TYPE_REGISTER     0x0E
-> -#define PCIE_LINK_STATUS             0x12
->  =
-
->  #define PCI_HEADER_TYPE_MULTIFUNC    0x80
->  =
-
-> diff --git a/drivers/net/ethernet/intel/e1000e/mac.c b/drivers/net/ethern=
-et/intel/e1000e/mac.c
-> index 5340cf73778d..694a779e718d 100644
-> --- a/drivers/net/ethernet/intel/e1000e/mac.c
-> +++ b/drivers/net/ethernet/intel/e1000e/mac.c
-> @@ -17,16 +17,13 @@ s32 e1000e_get_bus_info_pcie(struct e1000_hw *hw)
->  {
->  	struct e1000_mac_info *mac =3D &hw->mac;
->  	struct e1000_bus_info *bus =3D &hw->bus;
-> -	struct e1000_adapter *adapter =3D hw->adapter;
-> -	u16 pcie_link_status, cap_offset;
-> +	struct pci_dev *pdev =3D hw->adapter->pdev;
-> +	u16 pcie_link_status;
->  =
-
-> -	cap_offset =3D adapter->pdev->pcie_cap;
-> -	if (!cap_offset) {
-> +	if (!pci_pcie_cap(pdev)) {
->  		bus->width =3D e1000_bus_width_unknown;
->  	} else {
-> -		pci_read_config_word(adapter->pdev,
-> -				     cap_offset + PCIE_LINK_STATUS,
-> -				     &pcie_link_status);
-> +		pcie_capability_read_word(pdev, PCI_EXP_LNKSTA, &pcie_link_status);
->  		bus->width =3D (enum e1000_bus_width)FIELD_GET(PCI_EXP_LNKSTA_NLW,
->  							     pcie_link_status);
->  	}
-
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+SGksCgpPbiBNb24sIFNlcCAxOCwgMjAyMywgYXQgMTU6MTAsIElscG8gSsOkcnZpbmVuIHdyb3Rl
+Ogo+IHBjaV9kaXNhYmxlX2xpbmtfc3RhdGUoKSB3YXMgbWFkZSByZWxpYWJsZSByZWdhcmRsZXNz
+IG9mIEFTUE0gQ09ORklHCj4gYW5kIE9TIGJlaW5nIGRpc2FsbG93ZWQgdG8gY2hhbmdlIEFTUE0g
+c3RhdGVzIHRvIGFsbG93IGRyaXZlcnMgdG8gcmVseQo+IG9uIHBjaV9kaXNhYmxlX2xpbmtfc3Rh
+dGUoKSB3b3JraW5nLgo+Cj4gUmVtb3ZlIGRyaXZlciB3b3JraW5nIGFyb3VuZCB1bnJlbGlhYmxl
+IHBjaV9kaXNhYmxlX2xpbmtfc3RhdGUoKSBmcm9tCj4gaGNpX2JjbTQzNzcgZHJpdmVyIGFuZCBh
+ZGQgYSBQQ0kgcXVpcmsgdG8gZGlzYWJsZSBBU1BNLgo+Cj4gU2lnbmVkLW9mZi1ieTogSWxwbyBK
+w6RydmluZW4gPGlscG8uamFydmluZW5AbGludXguaW50ZWwuY29tPgo+IC0tLQoKQWNrZWQtYnk6
+IFN2ZW4gUGV0ZXIgPHN2ZW5Ac3ZlbnBldGVyLmRldj4KCgpUaGFua3MsCgpTdmVuCl9fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkludGVsLXdpcmVkLWxhbiBt
+YWlsaW5nIGxpc3QKSW50ZWwtd2lyZWQtbGFuQG9zdW9zbC5vcmcKaHR0cHM6Ly9saXN0cy5vc3Vv
+c2wub3JnL21haWxtYW4vbGlzdGluZm8vaW50ZWwtd2lyZWQtbGFuCg==
