@@ -1,85 +1,81 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 998F97AB029
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 22 Sep 2023 13:04:45 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id CDAEC7AB031
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 22 Sep 2023 13:06:08 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 1DAC540A57;
-	Fri, 22 Sep 2023 11:04:44 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1DAC540A57
+	by smtp2.osuosl.org (Postfix) with ESMTP id 6AFBC408D5;
+	Fri, 22 Sep 2023 11:06:07 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 6AFBC408D5
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1695380684;
-	bh=6kt/vISia7O5D+dNX7+ULewkc8qtGVRqo9Mzzc9JDcg=;
+	s=default; t=1695380767;
+	bh=jkfWnt0FJCNOM6QNLraRQHP/GW3EC+9fxjm+3T0qKLM=;
 	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=uUbTCIcND0rc6Lj1LMd3iwGVYfrMWVlbpVuIHKrs+Jth6LQW8Z4Zm1PzpU3FCSXBP
-	 17V1fPRUU/A98/EFY3cWeBVxeBkUDzAFKSyN5EXv8rnaDOkxDp6+PqsfozKAQwTNOr
-	 qnCYY0yiTQtG1Ul2kPM+t91lWxADIECyMgx0XwfYfw2u76fdoNCojbBasnwPhJfqQ8
-	 T3eW90EDnWRLg6fImOsDtXe0vxJWHcaA6p9PxUMVtKZXNOgZMC103iuUUbbPsAVPuZ
-	 s0Ik5G6nLtB/G6ci74xwt6lxNSYGfd/DBzNmTRCHyP7l0T3TFRISKqDvvaZYN1KA4U
-	 3dLNqQZJq1fFA==
+	b=lbJRERABECESzYyxX+esm9+EBDTeoifhMYnl+bobJURGDpucIMMa8hGDOi/ROGd+r
+	 /WAGZUfziq3Aly3NQMWYOUrHjUL51ZJ3caEFk++oBFGmNQ9x67OPhxdbRFfwDbLtR0
+	 nx1pRrQNE3+VoQz4LHcFsWbZePIT5l6Ly+i5sECLWDIWlqm6OEB/rDpQf7BU6XHwM6
+	 ITKXJ1X2JcsymS2dJboCzAGXbwyoFUwQb9w54aOYknm2kQQdk2v7iDlRta5imq7EGW
+	 U7hcSAdjGn2ao72JOf0Ykrq27JHNd7QUds2BgbiCdxaDV0jv03okKvP9Dtie+teAVk
+	 MJDGXJtBpxP+Q==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id sjz46IT3yP9e; Fri, 22 Sep 2023 11:04:43 +0000 (UTC)
+	with ESMTP id DQ9Fq3dvnU4j; Fri, 22 Sep 2023 11:06:06 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 7373A40204;
-	Fri, 22 Sep 2023 11:04:42 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 7373A40204
+	by smtp2.osuosl.org (Postfix) with ESMTP id B853F40A57;
+	Fri, 22 Sep 2023 11:06:05 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B853F40A57
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 581C11BF2A1
- for <intel-wired-lan@lists.osuosl.org>; Fri, 22 Sep 2023 11:04:37 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id F15B51BF2A1
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 22 Sep 2023 11:05:59 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 3007740204
- for <intel-wired-lan@lists.osuosl.org>; Fri, 22 Sep 2023 11:04:37 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3007740204
+ by smtp3.osuosl.org (Postfix) with ESMTP id D4B2460BD7
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 22 Sep 2023 11:05:59 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D4B2460BD7
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ezBuuJ3IzPxJ for <intel-wired-lan@lists.osuosl.org>;
- Fri, 22 Sep 2023 11:04:35 +0000 (UTC)
-Received: from mgamail.intel.com (mgamail.intel.com [192.55.52.43])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 51C9E40120
- for <intel-wired-lan@lists.osuosl.org>; Fri, 22 Sep 2023 11:04:34 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 51C9E40120
-X-IronPort-AV: E=McAfee;i="6600,9927,10840"; a="467100853"
-X-IronPort-AV: E=Sophos;i="6.03,167,1694761200"; d="scan'208";a="467100853"
-Received: from orsmga002.jf.intel.com ([10.7.209.21])
- by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 22 Sep 2023 04:04:28 -0700
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id mKVgfLsHPGBb for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 22 Sep 2023 11:05:59 +0000 (UTC)
+Received: from mgamail.intel.com (mgamail.intel.com [192.55.52.88])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id F220760B2D
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 22 Sep 2023 11:05:58 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org F220760B2D
+X-IronPort-AV: E=McAfee;i="6600,9927,10840"; a="411738937"
+X-IronPort-AV: E=Sophos;i="6.03,167,1694761200"; d="scan'208";a="411738937"
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 22 Sep 2023 04:05:53 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10840"; a="747483475"
-X-IronPort-AV: E=Sophos;i="6.03,167,1694761200"; d="scan'208";a="747483475"
-Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
- by orsmga002.jf.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
- 22 Sep 2023 04:04:28 -0700
-Received: from orsmsx611.amr.corp.intel.com (10.22.229.24) by
- ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
+X-IronPort-AV: E=McAfee;i="6600,9927,10840"; a="817737810"
+X-IronPort-AV: E=Sophos;i="6.03,167,1694761200"; d="scan'208";a="817737810"
+Received: from fmsmsx601.amr.corp.intel.com ([10.18.126.81])
+ by fmsmga004.fm.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
+ 22 Sep 2023 04:05:53 -0700
+Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
+ fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.32; Fri, 22 Sep 2023 04:04:27 -0700
-Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
- ORSMSX611.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
+ 15.1.2507.32; Fri, 22 Sep 2023 04:05:52 -0700
+Received: from fmsedg601.ED.cps.intel.com (10.1.192.135) by
+ fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.32; Fri, 22 Sep 2023 04:04:27 -0700
-Received: from ORSEDG601.ED.cps.intel.com (10.7.248.6) by
- orsmsx610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.32 via Frontend Transport; Fri, 22 Sep 2023 04:04:27 -0700
-Received: from NAM12-BN8-obe.outbound.protection.outlook.com (104.47.55.172)
- by edgegateway.intel.com (134.134.137.102) with Microsoft SMTP Server
+ 15.1.2507.32 via Frontend Transport; Fri, 22 Sep 2023 04:05:52 -0700
+Received: from NAM12-BN8-obe.outbound.protection.outlook.com (104.47.55.168)
+ by edgegateway.intel.com (192.55.55.70) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.32; Fri, 22 Sep 2023 04:04:26 -0700
+ 15.1.2507.32; Fri, 22 Sep 2023 04:05:52 -0700
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Ux5QAQkTs8ZOLtCtynHRUjkTOkbsVKkumHSfuNASDbqwq6pYxNizOvvCGK7TZYHOqa2i2RPlY/vpU6GpmLAo3OINxVKbFlcR6aplEqvhKwjQI9olg2Qofl8EpSecigG92GEdkdkmbtfmzDkoprMwM3RWa5iz7ezhfHelQVN+NX1th5g5F+P01KIFGq9JASiFYgOJDVSHpbrP8KphmeV80wJwfQCD17COeMbH0Q6g6qaW/YvLllNNxWHIjYe8/EYhYin816KR3rni5DDBUHKM1CjTxG3YNhjg48PDenYQGruz8YRGH410sAmHDKaahDDqVTRfPaRtAbBR5QaLbbdzqw==
+ b=Hhn9kfVE0/URFmtuC18Xio3d4Le3IA7TPT1ncB9KnF65Te9vMNon6evCgCpwZKQ9Ry0fj52IEzcPRIj8dZ2JuQTcMCW8g97CLaZip5WoOTKqtEdGNEnydXAHLEk1+nJNym/bEYIeKT19z2d5UYdBW4aZGIDoG3N+DF4GWzX2mg4la0S+ih9mkSjFfyzieOw/s3vwbejnqFIpzmNo2IiabKhPfjSkQrgNOuNGbqXZvqgpGzLO9Uk3RUODbEhgAI3IkT+Z47fOE+lcMXwG0rLNzFL1swSbqFqrK8vXnFB5kHKp5ozqMkF6d0BwctrP4Os/LC7X7exF9Cl+PNJvjhzbFQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=8RUs4JnI0gCTz6Hvn7gPAPoBrg74gCgQCYIVWSSTJ5A=;
- b=jIR716ATc22LgtWlGLZK3P+Yo+uq9mQ12Q+oqqKZcbMd1+fGx+snwzU/+LuBOex/+Kwc6x8Tq7ZBWuK0z4Tk/Ji7VP8ZI8lqtQQp38x1tW2AxS8tpozlYlu+/NhjFFiA7OuL5BrlUy4+TdwVTvg8WsYYziE0sBdX+qExcl0G18OKxlpzVyEAH5bbPFFjcB0KYhZhtDT+3MMtd0PVdISuiDIMyLJxhQI0+nPpWYShjgaG0OaeWiGVOF/8DSZ1Zkb7pRV+ygDHalw2M32NucqxOvQZ1rYULJmuAOsOlZdD+irNKKLEDEYlVKJAkjNumLBPaij6zelJzX44YorYB2gqYg==
+ bh=/r2SZdXSqAAcIsBtaLk8QA1TXvXgdP9/5rG60xTTPZo=;
+ b=Tmx8BvL7y5mAWuY2tYcmmp7mvjltE6KJtRmGs+qM4hz/hTRaBsDJRmIVM1J44EAwfiaRBsH1ur+jjYAzdCBxqx/GtGoeiSLV+6hCzd03VtY5DPW1ick9GDy5nZBck7FTgE0thyXGK0xry0simpSSYFr6IfL8KAsvhrpcvqJlBTcO13vAe6718C3MU4TJ2FGGU2y11xtmyNOd8g5W8RuOrT5npCTtv/kIevx92GAVvzaFdrCTppyxfheNu9bmFLTSVfCSypD7XDrX3rHUc3irT7H3uYYc5AAs4sPtpxkYn6whrYXYmO2A6zeAdaErWEFfZxQLLPrCi1rZUjfZkpSgxA==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
  dkim=pass header.d=intel.com; arc=none
@@ -87,104 +83,103 @@ Received: from BYAPR11MB3672.namprd11.prod.outlook.com (2603:10b6:a03:fa::30)
  by SN7PR11MB7568.namprd11.prod.outlook.com (2603:10b6:806:34e::12)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6792.27; Fri, 22 Sep
- 2023 11:04:24 +0000
+ 2023 11:05:50 +0000
 Received: from BYAPR11MB3672.namprd11.prod.outlook.com
  ([fe80::7666:c666:e6b6:6e48]) by BYAPR11MB3672.namprd11.prod.outlook.com
  ([fe80::7666:c666:e6b6:6e48%4]) with mapi id 15.20.6813.017; Fri, 22 Sep 2023
- 11:04:24 +0000
-Message-ID: <a4204cc7-cb40-dc17-610e-73ca12d8d6f7@intel.com>
-Date: Fri, 22 Sep 2023 13:04:14 +0200
+ 11:05:50 +0000
+Message-ID: <d8f4375a-b970-3902-b3c4-7da6e4965a39@intel.com>
+Date: Fri, 22 Sep 2023 13:05:42 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.3.1
 Content-Language: en-US
 To: Pawel Chmielewski <pawel.chmielewski@intel.com>, <netdev@vger.kernel.org>
 References: <20230921135140.1134153-1-pawel.chmielewski@intel.com>
- <20230921135140.1134153-3-pawel.chmielewski@intel.com>
 From: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-In-Reply-To: <20230921135140.1134153-3-pawel.chmielewski@intel.com>
-X-ClientProxiedBy: FR0P281CA0106.DEUP281.PROD.OUTLOOK.COM
- (2603:10a6:d10:a8::7) To BYAPR11MB3672.namprd11.prod.outlook.com
+In-Reply-To: <20230921135140.1134153-1-pawel.chmielewski@intel.com>
+X-ClientProxiedBy: FR0P281CA0115.DEUP281.PROD.OUTLOOK.COM
+ (2603:10a6:d10:a8::14) To BYAPR11MB3672.namprd11.prod.outlook.com
  (2603:10b6:a03:fa::30)
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
 X-MS-TrafficTypeDiagnostic: BYAPR11MB3672:EE_|SN7PR11MB7568:EE_
-X-MS-Office365-Filtering-Correlation-Id: a45a54f2-2ed3-4e66-147c-08dbbb5badd4
+X-MS-Office365-Filtering-Correlation-Id: 8ead76e0-0917-4e28-fc0f-08dbbb5be16d
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: HlE98G5qD5RtVTHT61eEvqWgS7IoqZr0tOxBJXjHQJM35C0my6GDeu+UPnHOn1xgOwRwRFnrJMt4YaoZ9eXS/Ppj3xeKzBenMlsgneCHbu0GZooId5inFu64hp/SLpHnLZbZlzLYSEaSUelCSGQ2Dyb/R0TeLJQu00ij4VMBGTNg6vrgVqvJeckqzcIoPJIOg4V43NBSP88zXt3eHqpwCYKk+rdC7PVfE4hS1uOtxAtMfYNkW7yZzMPkkPT3SLtJ2bcygsCjfbXm9Lq2W6Z/bFB/g9ZNLplgnoc/A4vTnyZtwpOZFVNkouwvy3ZeIzKfUHobjqLLYJLoldqKDPbdMYbTikzJKvydiVeYxZiTwAQY1u/wzb1gpJNcMvIxc2aD6neWhCPcCGjfjd9xJqH9B7ehPsQDFM2/in+8tYggdIAHw4EzjS3B3utBABczVsSv6OkC35swGtcOtbr4LWYnbvhz2U5k+lHrYWucRqfOygFBdlOlrQHapECfCwuc0Ib/UEC/SnbdZgars6q+nvt5CkNlL88iRTehVUUq+PwNngwG6/zLb2fs1fvfHLiR/l3moiXmdrdl/lyh30auugs5qAo2xUrFlZUgx+0UV6MYPcUZNThBlDYLF81qjbCeH0VO2cWbHaIlEC3mx3a61+iHCg==
+X-Microsoft-Antispam-Message-Info: rMx3jS6Wmdn6VPLOFMRXZnToESUCkHws9uLtmjwubzPKIK/BY5IcFf4Ep2Ehut7KGunV4SjeK5N28SePmQgTqYC7HYdlllfCshmi0m+ou4NHAH/ZOShldsNCH0S/J/Y+k+IsIkpry35qjrBffWkAEIZQTCH7m35u01Aa+NJk8q8RbEdLTt4P2W+yW9kaBTFywRuC1gVIhAdWl/Edo0d6ukossRdbe3vX8kAUmp5k4dKdoNZCXReXNhZowNjU0bNCXRsqcezZo/eYlF+pNT2zllr9bnAHYKU3IvnOmgG0d02JpVb6e6H2dCd9X11/xo3/DQwWmjRuo7snL8eY9pMk+CkaBbds0ENnwkAF655GL6LBMFDDHpRyo3IF75gRoD1KZsjx3KiczCZrz7niPDcvVuv/Q6TPUMHHIOh6X3PJPt8TD18jVDHpveur83hxeX2f434xgA72dOriIzFuX8PyibXzH9tYZ3mgkf+7D0NryXp+s+dNKdzPdhIT1O18W7MM2QQQ8118l1OwZAJrFYoD17s9y2F+oU1HZA7pRDgUZd8zeogPec/qUW89ta6J/WblsY/VB6KwoTadReSCPIZa1e31OZrb7ZDQae/A4I2Z+29fdkkINuYr4YAmj6DQPkHEbyGUSZiMK/cROdIgbT0B6g==
 X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:BYAPR11MB3672.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230031)(396003)(366004)(136003)(376002)(39860400002)(346002)(186009)(1800799009)(451199024)(26005)(82960400001)(2616005)(8936002)(8676002)(4326008)(107886003)(83380400001)(31696002)(2906002)(36756003)(53546011)(6506007)(86362001)(6486002)(478600001)(6512007)(6666004)(31686004)(5660300002)(66946007)(41300700001)(66556008)(38100700002)(66476007)(316002)(43740500002)(45980500001);
+ SFS:(13230031)(396003)(366004)(136003)(376002)(39860400002)(346002)(186009)(1800799009)(451199024)(26005)(82960400001)(2616005)(8936002)(8676002)(4326008)(83380400001)(31696002)(2906002)(36756003)(53546011)(6506007)(86362001)(6486002)(478600001)(6512007)(966005)(6666004)(31686004)(5660300002)(66946007)(41300700001)(66556008)(38100700002)(66476007)(316002)(43740500002)(45980500001);
  DIR:OUT; SFP:1102; 
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?MElzdzk2QThpZjQyUU1IdVlxdGpQWStQN3hteEZ0RjF3cXBRSnhTTVd1L1Vo?=
- =?utf-8?B?b2p3cnZvZHk3K3pCR2RxeE96NVV1c2hwemVFTitueWJqajJpZ0M4a29KWmgv?=
- =?utf-8?B?eUthcXNYUUtJTDAxbitDNFhsTVhjS1IvMnVxUkRQcEdSUXl2VmR5V1JGTFli?=
- =?utf-8?B?NkdkbGt6c2xUSndxWXI3YmNJNzc4NUtvc2NETms0OTl2SElaMnNlcEtJc0Qw?=
- =?utf-8?B?aE1haGE2UEJkQzRuMyt5MENYU1g2dzBra05KL2NlS2k3YjRQSkJ5Wk1jU2dn?=
- =?utf-8?B?RisvMktDYktNa2cwT0FjdU95c0pPUFdZUHJWNVphZ1dXMWJnUDBoWnVYQmRF?=
- =?utf-8?B?RnllM28yQlpsYWtaTTNoSGdrdDRSVTJNUlNiYVd0M0RSa09ZZ3Z5UldzZXMz?=
- =?utf-8?B?dnVmN1dXYlYrZ2FiRllyYjA3TjhyUC9BY3ZwTjlyTlZVTnp0SDNKa2U1ZE9I?=
- =?utf-8?B?YXFteUp3SnlOY2pnL1V4NUhRbGM2cmVhaWFvZnlTejVqd1YzUGlndWtXdWVJ?=
- =?utf-8?B?ajRwNFIvMjhvdEl0YkttSDRjcXU0ckU3N1ZtY1kvYWNybjM4MC9SNHQ3ZitW?=
- =?utf-8?B?QlBnMmxxdmd0bzJETVRGV3E3VGlHSVBGVGxxYWMwZXZCSkFEb2pXaEF1U1ht?=
- =?utf-8?B?MExEMTI0Tjcrd0J2TWZFUzRtUldqS05WYW9kUXhhYi9GaDQ0d1RDYXNlOEhy?=
- =?utf-8?B?dG0reSs0VkdMSkN5WHNzNnZpWHdHRHVUUE5LZU1KckJmcnBhQ0ovZnUxZVdt?=
- =?utf-8?B?cnY3c1A2Tk42c0ZTOHg4ekdsMmUxRTMrdFZMVTVhc1hPYkduY2dTRy9SZWQy?=
- =?utf-8?B?eGh0V0IvalhhbXBBNEY3MWZHb09hYlJ1VjZQeDZnWU4zQUd4cmhldTJZMjB3?=
- =?utf-8?B?NkVSZDlkSjlXSGVteGtuNzdLRDFQZ1NmU3cxcm1tbTYwTGE5WGdlczQzOTVN?=
- =?utf-8?B?WXNXbTlrZFl1aEo5YlFYZitCaWpTZnJoNHpOc1J3YWtXUk5WRVd3Q0V0MmVu?=
- =?utf-8?B?YTExRWV6cDNWUFpTZlM5QVZaWXpabWVVN0dnSldyTWVQeXdxL3VzdUlBekg0?=
- =?utf-8?B?THl4K2RSK3J4VGZqUzllSzhqU0lsbGxpbXJ3dFl5SWZBOFVZRGVZdUN1L1B1?=
- =?utf-8?B?MzhOWEhDTTI0ckVSREg3ekhQR0paQTFISThqQThnbnhuQi84UXpjOXZOVG9P?=
- =?utf-8?B?Y3dXY3hhYWtJKzE4VmlLQ3NnSk1nbVdxUmNUU0lMOUhyTTNjZ2dYaWlsbU1u?=
- =?utf-8?B?RmM2OHhleFNoa2tibGJpdWtpdkFOZGpLSVZCZGFlN1hxTDBGVmUzMlY0Z3U0?=
- =?utf-8?B?WEZXd0V4KzRHT21HN2JFRzQzRVh2clpDaW1lV29pcDUzQ2N0NGdXT3RvZHFV?=
- =?utf-8?B?djA0c3d4WkNLTXVJV2RtUlB4V2g3dTRiRGdtdTNFUm1rUEdiZXkrUGhoVURI?=
- =?utf-8?B?TzdDTlY5UDh4SGQwVW5oK1BMOE9rV3RxbGYxS1RheUNtSjVIcURwOGE5MGNl?=
- =?utf-8?B?RGZEL2N3S2VkdmQvQlN0TTMrYWx5c2VQUW9URUJHRlI1UGtTWWc4Nk5kbHhL?=
- =?utf-8?B?eTd1d2ZKeWt0QzVPaDlTNmdKQTZlYmllSHdPZ0xRRkFQL0liOHh4Yzcrcmla?=
- =?utf-8?B?RkF2U1ljNmZnL3R0V1ZMeDhLQnZJeGFvVjUwZmluU2lTZUdCSjRrNnV2UGtq?=
- =?utf-8?B?YUxUb3lkMW1VVXgzNVhXeUdZdzBZTTQyVzV6Ynd3UFBXNWFWNXhYVmJCOUdp?=
- =?utf-8?B?REFzM01BSkVhcEdjVHZMaXFydGgwT05KdHhDNkxlNURSdEt4Qmc2UkYzdWdw?=
- =?utf-8?B?TVl5M3VRV0VWcDVJa0tLSURZVUM5MW1EbFFqQi9qYWw4UFU5ZzNKdEVUb3d6?=
- =?utf-8?B?SUJCUUR6S1YvMU1LbUlEM0FIOFdCUVczMCtGR1NDY21ZR0dqMFpsZDdQSlhv?=
- =?utf-8?B?NEREOGxWWUFxc0daYnp1Z0NEV2J3dkFqR1VOMkU5MEtRRmZ3WEhodXNnRkhC?=
- =?utf-8?B?blduSHgyc2VWL2haZVNLTXR0SGVQaGhIVmpPb3FuTmV2MWtrQWZ1T0NIc28x?=
- =?utf-8?B?VWc2bnBLYXpsa0toVDNiU3RSN1czUTBKLzA0NGZIc2VIMEMzN0dLeGwxOWlk?=
- =?utf-8?B?QUxDTzM2dnpEWDk4OVIzV05qSnNoQmtkMlNPTitIMDVjZkkxaHQ0S3JkTjF1?=
- =?utf-8?B?U2c9PQ==?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: a45a54f2-2ed3-4e66-147c-08dbbb5badd4
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?bFIvYTNTczc4NGZFSEc1VXJPS3dqTG5PQklnWXNtRkRHdGhQNjdPRUtzeENZ?=
+ =?utf-8?B?VmxOZTVHdnlLTkxuSWFwa2xFMHFUOEFRNUFBTktUaVBJRkdLblZUWHJvbFF4?=
+ =?utf-8?B?QzRuODc4dHcrYmk4aFNldW1ncVRqd2F1aEtVcEw2RzVEanY1SGljZUgxaGpW?=
+ =?utf-8?B?ZGFTRE9LUjVTaTY4L21pdXZ6L1R1TXF2dDJjWmR3UGttT2kzdCsvdXN0Nm5M?=
+ =?utf-8?B?Ykd0VFU4eGlWUnV1OE1TdG1LYVdMOUtLSTZvWjZPcG9RanpjUU9UMXhaMk5z?=
+ =?utf-8?B?aXNJeGtBejFuQXptN2h2N1gwN2w4bFh2NGJVQ3NweHJQbWZIZ3N0cXpEMWl1?=
+ =?utf-8?B?eGg0dE95QmQydGQ1a2V6SkRZbktMdXd6MFFkenNnL1RSZ25Kb0I0ZHRNNERy?=
+ =?utf-8?B?eU9uaFlMZExEVXdUcE50bjg2WkczMXFiUkQxenJ4aXR5Y0wybHJ4dWcxL2xG?=
+ =?utf-8?B?SDhxT1ZUU0wxTHJFRFV2QTloZVpkTWVwTDRhRkpEK1Q4QnVRbmprUmZGdlJj?=
+ =?utf-8?B?RzZBb1FHY3lZRDBRRnN2S0RGWWduOUwvYlQ2bXFqV1B3dXdwOGo1ajNPang3?=
+ =?utf-8?B?dFdNbkJGQmQ5cmlZSXNVRmd5b0dwQVVCQ1F0cDF1WWRBN1lCKzVnVGVRQXRh?=
+ =?utf-8?B?SHZhU2lYZ2d5cWZvU3BtUGlabytxbFhYMS9KTHdaOGpZR1lQZkc2bzA0QzFO?=
+ =?utf-8?B?MEcxQU5XdHA2QUwrNEJOK1hQT1dRcW05STBzZWFtVVpZVStCLzNiVUNGWVor?=
+ =?utf-8?B?ejZkcmM4ZTh3U1J1VGJOTjhocUovRnFBYk9NVVNNaVhlV0NsUVgwd0Q4Vm1w?=
+ =?utf-8?B?RngzZHBnazk5bTNtc2IzbE5qanBrOFFRSk1RZk5pc29qVnhvakE5aXpJM3hj?=
+ =?utf-8?B?SHlHcGpHOFdNblRQNlcrT3I2R0ZKQ3J6RHdWRVlrRHBZSVBPYmNQOW5RZVhY?=
+ =?utf-8?B?VUw3Yk9wdEFpV1lxbHNNUDQ3VmYrdDZRT2FxVUY3b01yMEFVM1RtNXkyUW5S?=
+ =?utf-8?B?UWZiMmRFWlJXTy9lRWw2Nnc5citBcUxaKzYyL2pWWkZYRmsybE9IMll1Z3Ji?=
+ =?utf-8?B?c3VvaWdQN29sMEhpMEZFeWJZcExZUVhOSlpBR1NucjUweGVaRnU2R09TNTE1?=
+ =?utf-8?B?UG4xUjJNMmcyTTlGZ0dpZncyQ1JIbWlkVWVCc2ZZMEl1NGxFelBSeGtBODZ5?=
+ =?utf-8?B?bUtFV1JwTDRmM3lOZnAza1RqRmxIcFZzSHhoYXpVNU5xQjUwTmRhczV0NHl2?=
+ =?utf-8?B?Qnp5NXR0Znc0R2hJU1F1Y3BETjNDelVibG8xTEVnV0QxdXhUWWZHY3ZTOS8y?=
+ =?utf-8?B?VjVHeENDMCtLRzRsNFlzMGF5Q2FXRGY2S256VXYwQkh3NU5UNVV2N0tEYTh3?=
+ =?utf-8?B?RmxZeXM0VTFodVZ0SGdmSlljY1ZOeFRvSk5DWUR2L1RNT0FoZEFLNDhLMExT?=
+ =?utf-8?B?N01aN1NINGVYSnBxSGZyNzhEK0VKZjE5NVZ2WkdscXNkL3ptZ0w3Z0MyUVQ4?=
+ =?utf-8?B?WVdsdUxHc3RZaGhndGtTYzhqQ1oxRGgwWWNKOHBnanRha1cwSFVIemI2bEpJ?=
+ =?utf-8?B?YVFmREtjWlJZMDNNSW9qc0FpOXhobkN2ZEVLS3hPU2VRQ1VhTGZrQUVLZTBF?=
+ =?utf-8?B?bjQ5U0QrYTN5RzdEQURmdzM3a2xNWGI5NGFpeUlMSi9vU0QrTVRtRllsODA1?=
+ =?utf-8?B?SitQWW1Zblc1QWVib29NbEo3eGZPbkp5OGZ5L3JlTWJCbUMraFAybkdtLzY5?=
+ =?utf-8?B?ckNhZHdTYTQyVUlQaElFTmZtWE9pamF0OWFnaG5pRXlSc2FLN2dqaHhsYXBF?=
+ =?utf-8?B?NHJmeGNBanAwV0xIejBocG1ubmlHaVVzZU1ZRklmZnlVZm9zdExGUHdxd1RX?=
+ =?utf-8?B?Qy9SY25hODBSdCtKYis4c0JwdTc5YkJIclVIdzFJTDhJTGsxNmpKakdaMGtt?=
+ =?utf-8?B?T2x2bWQxOW9kaVB4ZDlyS1luRGZPTjUwZ0IyUDhyaFhCNWRrQjlBNE5Tdnky?=
+ =?utf-8?B?UTFIUFNXODBHNWtpVGxDYnlEcWQySUJyYWpLd29CNEdJNG9pUmpJM0JiMW0x?=
+ =?utf-8?B?ay9DYlpHL0Q1eWExVkVpWUFPcitZTVdTUnpzWE5XTnY5WE1EYTRnUHQvdSsz?=
+ =?utf-8?B?enNhaXV3cUdrUVpqYlBNZGJicnFuOHMyRTBKUXpaYWFRTG1lMEJkbkdObllZ?=
+ =?utf-8?Q?+yKU5JUmvv8hloucWZSwchU=3D?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: 8ead76e0-0917-4e28-fc0f-08dbbb5be16d
 X-MS-Exchange-CrossTenant-AuthSource: BYAPR11MB3672.namprd11.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 22 Sep 2023 11:04:23.8378 (UTC)
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 22 Sep 2023 11:05:50.3947 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: SEOhvfeMQ5I6rAQs54Q8XMiSVErfe6CgaL5/72Cb870wbIHwwYnkTiNR1VOUFn0LaNeyFcca2NAj7Fkx20eVZT+HKubll8SxeUoMqqcj4jY=
+X-MS-Exchange-CrossTenant-UserPrincipalName: s8KdtT8NJXwautP0CarWw0S5HUHcE6Pvu7vjAw3SpHzOb1HXZWM1LAJEtP1/YXCAyPcRslUgpOJGYvMGGvR2rB1Vvc5Qp9txQQGsCYYfWLU=
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN7PR11MB7568
 X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1695380674; x=1726916674;
+ t=1695380758; x=1726916758;
  h=message-id:date:subject:to:cc:references:from:
  in-reply-to:content-transfer-encoding:mime-version;
- bh=CiH8nT3EsXOTYbXV6qfFJZwNJMvT+GMGji1e7gPc734=;
- b=TdbieyooGhYXUVbDo112nkWhL1OMnpe1hhOX27oB/7AhD0kA1nbJFkJo
- 0wpKlLU23+bX7Jig1c9hPb+hzYD7fps/lr94Dg10BxAbX1tISUxwk91jN
- MwohlRU2GIWFmvIf6EbpCi0hCiAOhuMccHY+/JD1udsG7rLXq4Dg865xO
- I4Ox6vxbZMS/tNqTqwzYGwlnJi7spNP1gUlS7JSugxwLyVcRBYXYKgxes
- 9axh28L31TAEGDvjTKw1S2bMh71wKvye2SfBHNW8juv51tL2inuMVQ0DY
- 7KwYb4J3k7hniVImhw5qNjFNCFaxlXAXky5IpZHVz1CIa8v2DdUyYT5uK
- g==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ bh=r081hEvSFfyisKi3PjwsiXWOnbs28j/WFV2KRAYN8M8=;
+ b=DFT8p8OGZ7x+IzJk5sCQccqz84P0H85aFWpeByUlyQ2gq2ewNHZbPsns
+ 2TTKJ1VP5zfvhwfS1VPszyyjingXo6PWGBG9zADusAUn9H4zMhL+IzuMJ
+ qeAIJ2s2acC5iNDzTM3Oiw7LCHjyOWzXtuMt728kOGnNDsBpFauHs56ER
+ fIZKnyRjg/W2SsOSaYlh8ttvhxgHfwKtKY0uRLXXGzvOncWz70wCf6N5r
+ oT+PxFozsQ4l2gsTWtG5PdREwQ1f4Re55zrSBeSWQR5m2W9YvTBt8/81T
+ XuZxzHjfhzaGH4S9Nepug9tG+w/v0rP2S3j6cbVCMMKD/nZKyjFKZcQBf
+ A==;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=Tdbieyoo
+ header.a=rsa-sha256 header.s=Intel header.b=DFT8p8OG
 X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH net-next v2 2/2] ice: Refactor finding
- advertised link speed
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next 0/2] ethtool: Add link mode
+ maps for forced speeds
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -197,285 +192,47 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: andrew@lunn.ch, Paul Greenwalt <paul.greenwalt@intel.com>,
- manishc@marvell.com, intel-wired-lan@lists.osuosl.org, horms@kernel.org,
- aelior@marvell.com
+Cc: andrew@lunn.ch, intel-wired-lan@lists.osuosl.org, aelior@marvell.com,
+ horms@kernel.org, manishc@marvell.com
 Content-Transfer-Encoding: 7bit
 Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 On 9/21/23 15:51, Pawel Chmielewski wrote:
-> Refactor ice_get_link_ksettings to using forced speed to link modes mapping.
+> The following patch set was initially a part of [1]. As the purpose of
+> the original series was to add the support of the new hardware to the
+> intel ice driver, the refactoring of advertised link modes mapping was
+> extracted to a new set.
+> The patch set adds a common mechanism for mapping Ethtool forced speeds
+> with Ethtool supported link modes, which can be used in drivers code.
 > 
-> Suggested-by : Alexander Lobakin <aleksander.lobakin@intel.com>
-> Signed-off-by: Pawel Chmielewski <pawel.chmielewski@intel.com>
-> Signed-off-by: Paul Greenwalt <paul.greenwalt@intel.com>
-
-minor: your SB should be last
-
-> ---
->   drivers/net/ethernet/intel/ice/ice.h         |   1 +
->   drivers/net/ethernet/intel/ice/ice_ethtool.c | 200 +++++++++++++------
->   drivers/net/ethernet/intel/ice/ice_main.c    |   2 +
->   3 files changed, 138 insertions(+), 65 deletions(-)
+> [1] https://lore.kernel.org/netdev/20230823180633.2450617-1-pawel.chmielewski@intel.com
 > 
-> diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
-> index 5022b036ca4f..5eda0fa39d81 100644
-> --- a/drivers/net/ethernet/intel/ice/ice.h
-> +++ b/drivers/net/ethernet/intel/ice/ice.h
-> @@ -942,6 +942,7 @@ int ice_stop(struct net_device *netdev);
->   void ice_service_task_schedule(struct ice_pf *pf);
->   int ice_load(struct ice_pf *pf);
->   void ice_unload(struct ice_pf *pf);
-> +void ice_adv_lnk_speed_maps_init(void);
->   
->   /**
->    * ice_set_rdma_cap - enable RDMA support
-> diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool.c b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-> index ad4d4702129f..8b84bb539e1a 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_ethtool.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-> @@ -345,6 +345,86 @@ static const struct ice_priv_flag ice_gstrings_priv_flags[] = {
->   
->   #define ICE_PRIV_FLAG_ARRAY_SIZE	ARRAY_SIZE(ice_gstrings_priv_flags)
->   
-> +static const u32 ice_adv_lnk_speed_100[] __initconst = {
-> +	ETHTOOL_LINK_MODE_100baseT_Full_BIT,
-> +};
-> +
-> +static const u32 ice_adv_lnk_speed_1000[] __initconst = {
-> +	ETHTOOL_LINK_MODE_1000baseX_Full_BIT,
-> +	ETHTOOL_LINK_MODE_1000baseT_Full_BIT,
-> +	ETHTOOL_LINK_MODE_1000baseKX_Full_BIT,
-> +};
-> +
-> +static const u32 ice_adv_lnk_speed_2500[] __initconst = {
-> +	ETHTOOL_LINK_MODE_2500baseT_Full_BIT,
-> +	ETHTOOL_LINK_MODE_2500baseX_Full_BIT,
-> +};
-> +
-> +static const u32 ice_adv_lnk_speed_5000[] __initconst = {
-> +	ETHTOOL_LINK_MODE_5000baseT_Full_BIT,
-> +};
-> +
-> +static const u32 ice_adv_lnk_speed_10000[] __initconst = {
-> +	ETHTOOL_LINK_MODE_10000baseT_Full_BIT,
-> +	ETHTOOL_LINK_MODE_10000baseKR_Full_BIT,
-> +	ETHTOOL_LINK_MODE_10000baseSR_Full_BIT,
-> +	ETHTOOL_LINK_MODE_10000baseLR_Full_BIT,
-> +};
-> +
-> +static const u32 ice_adv_lnk_speed_25000[] __initconst = {
-> +	ETHTOOL_LINK_MODE_25000baseCR_Full_BIT,
-> +	ETHTOOL_LINK_MODE_25000baseSR_Full_BIT,
-> +	ETHTOOL_LINK_MODE_25000baseKR_Full_BIT,
-> +};
-> +
-> +static const u32 ice_adv_lnk_speed_40000[] __initconst = {
-> +	ETHTOOL_LINK_MODE_40000baseCR4_Full_BIT,
-> +	ETHTOOL_LINK_MODE_40000baseSR4_Full_BIT,
-> +	ETHTOOL_LINK_MODE_40000baseLR4_Full_BIT,
-> +	ETHTOOL_LINK_MODE_40000baseKR4_Full_BIT,
-> +};
-> +
-> +static const u32 ice_adv_lnk_speed_50000[] __initconst = {
-> +	ETHTOOL_LINK_MODE_50000baseCR2_Full_BIT,
-> +	ETHTOOL_LINK_MODE_50000baseKR2_Full_BIT,
-> +	ETHTOOL_LINK_MODE_50000baseSR2_Full_BIT,
-> +};
-> +
-> +static const u32 ice_adv_lnk_speed_100000[] __initconst = {
-> +	ETHTOOL_LINK_MODE_100000baseCR4_Full_BIT,
-> +	ETHTOOL_LINK_MODE_100000baseSR4_Full_BIT,
-> +	ETHTOOL_LINK_MODE_100000baseLR4_ER4_Full_BIT,
-> +	ETHTOOL_LINK_MODE_100000baseKR4_Full_BIT,
-> +	ETHTOOL_LINK_MODE_100000baseCR2_Full_BIT,
-> +	ETHTOOL_LINK_MODE_100000baseSR2_Full_BIT,
-> +	ETHTOOL_LINK_MODE_100000baseKR2_Full_BIT,
-> +};
-> +
-> +#define ICE_ADV_LNK_SPEED_MAP(value)					\
-> +{									\
-> +	.speed		= SPEED_##value,				\
-> +	.cap_arr	= ice_adv_lnk_speed_##value,			\
-> +	.arr_size	= ARRAY_SIZE(ice_adv_lnk_speed_##value),	\
-> +}
-> +
-> +static struct ethtool_forced_speed_map ice_adv_lnk_speed_maps[] __ro_after_init = {
-> +	ICE_ADV_LNK_SPEED_MAP(100),
-> +	ICE_ADV_LNK_SPEED_MAP(1000),
-> +	ICE_ADV_LNK_SPEED_MAP(2500),
-> +	ICE_ADV_LNK_SPEED_MAP(5000),
-> +	ICE_ADV_LNK_SPEED_MAP(10000),
-> +	ICE_ADV_LNK_SPEED_MAP(25000),
-> +	ICE_ADV_LNK_SPEED_MAP(40000),
-> +	ICE_ADV_LNK_SPEED_MAP(50000),
-> +	ICE_ADV_LNK_SPEED_MAP(100000),
-> +};
-> +
-> +void __init ice_adv_lnk_speed_maps_init(void)
-> +{
-> +	ethtool_forced_speed_maps_init(ice_adv_lnk_speed_maps,
-> +				       ARRAY_SIZE(ice_adv_lnk_speed_maps));
-> +}
-> +
->   static void
->   __ice_get_drvinfo(struct net_device *netdev, struct ethtool_drvinfo *drvinfo,
->   		  struct ice_vsi *vsi)
-> @@ -2007,6 +2087,55 @@ ice_get_link_ksettings(struct net_device *netdev,
->   	return err;
->   }
->   
-> +/**
-> + * ice_speed_to_aq_link - Get AQ link speed by Ethtool forced speed
-> + * @speed: ethtool forced speed
-> + */
-> +static u16 ice_speed_to_aq_link(int speed)
-> +{
-> +	int aq_speed;
-> +
-> +	switch (speed) {
-> +	case SPEED_10:
-> +		aq_speed = ICE_AQ_LINK_SPEED_10MB;
-> +		break;
-> +	case SPEED_100:
-> +		aq_speed = ICE_AQ_LINK_SPEED_100MB;
-> +		break;
-> +	case SPEED_1000:
-> +		aq_speed = ICE_AQ_LINK_SPEED_1000MB;
-> +		break;
-> +	case SPEED_2500:
-> +		aq_speed = ICE_AQ_LINK_SPEED_2500MB;
-> +		break;
-> +	case SPEED_5000:
-> +		aq_speed = ICE_AQ_LINK_SPEED_5GB;
-> +		break;
-> +	case SPEED_10000:
-> +		aq_speed = ICE_AQ_LINK_SPEED_10GB;
-> +		break;
-> +	case SPEED_20000:
-> +		aq_speed = ICE_AQ_LINK_SPEED_20GB;
-> +		break;
-> +	case SPEED_25000:
-> +		aq_speed = ICE_AQ_LINK_SPEED_25GB;
-> +		break;
-> +	case SPEED_40000:
-> +		aq_speed = ICE_AQ_LINK_SPEED_40GB;
-> +		break;
-> +	case SPEED_50000:
-> +		aq_speed = ICE_AQ_LINK_SPEED_50GB;
-> +		break;
-> +	case SPEED_100000:
-> +		aq_speed = ICE_AQ_LINK_SPEED_100GB;
-> +		break;
-> +	default:
-> +	       aq_speed = ICE_AQ_LINK_SPEED_UNKNOWN;
+> Changelog:
+> v1->v2:
+> Fixed formatting, typo, moved declaration of iterator to loop line.
+> 
+> Paul Greenwalt (1):
+>    ethtool: Add forced speed to supported link modes maps
+> 
+> Pawel Chmielewski (1):
+>    ice: Refactor finding advertised link speed
+> 
+>   drivers/net/ethernet/intel/ice/ice.h          |   1 +
+>   drivers/net/ethernet/intel/ice/ice_ethtool.c  | 201 ++++++++++++------
+>   drivers/net/ethernet/intel/ice/ice_main.c     |   2 +
+>   .../net/ethernet/qlogic/qede/qede_ethtool.c   |  24 +--
+>   include/linux/ethtool.h                       |  20 ++
+>   net/ethtool/ioctl.c                           |  15 ++
+>   6 files changed, 178 insertions(+), 85 deletions(-)
+> 
 
-minor: wrong whitespaces
+Thanks,
+Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
 
-> +		break;
-> +	}
-> +	return aq_speed;
-> +}
-> +
->   /**
->    * ice_ksettings_find_adv_link_speed - Find advertising link speed
->    * @ks: ethtool ksettings
-> @@ -2014,73 +2143,14 @@ ice_get_link_ksettings(struct net_device *netdev,
->   static u16
->   ice_ksettings_find_adv_link_speed(const struct ethtool_link_ksettings *ks)
->   {
-> +	const struct ethtool_forced_speed_map *map;
->   	u16 adv_link_speed = 0;
->   
-> -	if (ethtool_link_ksettings_test_link_mode(ks, advertising,
-> -						  100baseT_Full))
-> -		adv_link_speed |= ICE_AQ_LINK_SPEED_100MB;
-> -	if (ethtool_link_ksettings_test_link_mode(ks, advertising,
-> -						  1000baseX_Full) ||
-> -	    ethtool_link_ksettings_test_link_mode(ks, advertising,
-> -						  1000baseT_Full) ||
-> -	    ethtool_link_ksettings_test_link_mode(ks, advertising,
-> -						  1000baseKX_Full))
-> -		adv_link_speed |= ICE_AQ_LINK_SPEED_1000MB;
-> -	if (ethtool_link_ksettings_test_link_mode(ks, advertising,
-> -						  2500baseT_Full) ||
-> -	    ethtool_link_ksettings_test_link_mode(ks, advertising,
-> -						  2500baseX_Full))
-> -		adv_link_speed |= ICE_AQ_LINK_SPEED_2500MB;
-> -	if (ethtool_link_ksettings_test_link_mode(ks, advertising,
-> -						  5000baseT_Full))
-> -		adv_link_speed |= ICE_AQ_LINK_SPEED_5GB;
-> -	if (ethtool_link_ksettings_test_link_mode(ks, advertising,
-> -						  10000baseT_Full) ||
-> -	    ethtool_link_ksettings_test_link_mode(ks, advertising,
-> -						  10000baseKR_Full) ||
-> -	    ethtool_link_ksettings_test_link_mode(ks, advertising,
-> -						  10000baseSR_Full) ||
-> -	    ethtool_link_ksettings_test_link_mode(ks, advertising,
-> -						  10000baseLR_Full))
-> -		adv_link_speed |= ICE_AQ_LINK_SPEED_10GB;
-> -	if (ethtool_link_ksettings_test_link_mode(ks, advertising,
-> -						  25000baseCR_Full) ||
-> -	    ethtool_link_ksettings_test_link_mode(ks, advertising,
-> -						  25000baseSR_Full) ||
-> -	    ethtool_link_ksettings_test_link_mode(ks, advertising,
-> -						  25000baseKR_Full))
-> -		adv_link_speed |= ICE_AQ_LINK_SPEED_25GB;
-> -	if (ethtool_link_ksettings_test_link_mode(ks, advertising,
-> -						  40000baseCR4_Full) ||
-> -	    ethtool_link_ksettings_test_link_mode(ks, advertising,
-> -						  40000baseSR4_Full) ||
-> -	    ethtool_link_ksettings_test_link_mode(ks, advertising,
-> -						  40000baseLR4_Full) ||
-> -	    ethtool_link_ksettings_test_link_mode(ks, advertising,
-> -						  40000baseKR4_Full))
-> -		adv_link_speed |= ICE_AQ_LINK_SPEED_40GB;
-> -	if (ethtool_link_ksettings_test_link_mode(ks, advertising,
-> -						  50000baseCR2_Full) ||
-> -	    ethtool_link_ksettings_test_link_mode(ks, advertising,
-> -						  50000baseKR2_Full) ||
-> -	    ethtool_link_ksettings_test_link_mode(ks, advertising,
-> -						  50000baseSR2_Full))
-> -		adv_link_speed |= ICE_AQ_LINK_SPEED_50GB;
-> -	if (ethtool_link_ksettings_test_link_mode(ks, advertising,
-> -						  100000baseCR4_Full) ||
-> -	    ethtool_link_ksettings_test_link_mode(ks, advertising,
-> -						  100000baseSR4_Full) ||
-> -	    ethtool_link_ksettings_test_link_mode(ks, advertising,
-> -						  100000baseLR4_ER4_Full) ||
-> -	    ethtool_link_ksettings_test_link_mode(ks, advertising,
-> -						  100000baseKR4_Full) ||
-> -	    ethtool_link_ksettings_test_link_mode(ks, advertising,
-> -						  100000baseCR2_Full) ||
-> -	    ethtool_link_ksettings_test_link_mode(ks, advertising,
-> -						  100000baseSR2_Full) ||
-> -	    ethtool_link_ksettings_test_link_mode(ks, advertising,
-> -						  100000baseKR2_Full))
-> -		adv_link_speed |= ICE_AQ_LINK_SPEED_100GB;
-> +	for (u32 i = 0; i < ARRAY_SIZE(ice_adv_lnk_speed_maps); i++) {
-> +		map = ice_adv_lnk_speed_maps + i;
-> +		if (linkmode_intersects(ks->link_modes.advertising, map->caps))
-> +			adv_link_speed |= ice_speed_to_aq_link(map->speed);
-> +	}
->   
->   	return adv_link_speed;
->   }
-> diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-> index c8286adae946..04047f869a99 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_main.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_main.c
-> @@ -5627,6 +5627,8 @@ static int __init ice_module_init(void)
->   	pr_info("%s\n", ice_driver_string);
->   	pr_info("%s\n", ice_copyright);
->   
-> +	ice_adv_lnk_speed_maps_init();
-> +
->   	ice_wq = alloc_workqueue("%s", 0, 0, KBUILD_MODNAME);
->   	if (!ice_wq) {
->   		pr_err("Failed to create workqueue\n");
-
+(one minor whitespace error found,
+for me personally we could go with it)
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
