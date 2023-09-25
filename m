@@ -1,176 +1,99 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id C41207AE0F2
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 25 Sep 2023 23:49:15 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3B7B47AE17C
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 26 Sep 2023 00:03:59 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 0BEA741C60;
-	Mon, 25 Sep 2023 21:49:14 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0BEA741C60
+	by smtp4.osuosl.org (Postfix) with ESMTP id BAED141D69;
+	Mon, 25 Sep 2023 22:03:57 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org BAED141D69
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1695678554;
-	bh=151qtuoT2QlWwl1+pdUcy5QWrhaXCy+yAv1sNzlcAQo=;
-	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1695679437;
+	bh=BgGL8krfUM4gpVnoOVMsHFSt9FiiYHVfYhgO+1g1nWQ=;
+	h=References:In-Reply-To:From:Date:To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=2bLwM6ebrYze7vZX9DZVjISxC1leOhgyIA2CdGF5bI/CWwxJtoqH0tuOh0YocPQrl
-	 nUxSa4kognbGFAcQkO7z208MfLe/u6waX1GzOWGPzV3sUcG6eXrudL7gTP7E1TKStS
-	 1yCPDuhVOW4c9yQcQ+pAuf90dfzIQsRfo77aUcpZ+0UPnTwD/ihbOymt14cAeRERnm
-	 L26i/aB8IPNmJDEpQJtWNHwwOX9CHirMDBw65khj4sdYIhmvqvmZDB616WYQi+QYyU
-	 NBO3CnxtNrdu6bCG82u7JpbGXkwFq9BUo9reiM7+Qtc+nmKMEkLl5D/Uz188bScFXC
-	 R/tGtbPxdIDzA==
+	b=1ezTHb22b7/sxbiuvoJYw3UVuS3mNbhxqeCEpJirSZAfVjlP7TYkJqzsvhW7f3H4S
+	 XdT9fST8pNgLxfT4FTg0kyow5NIfi0uwEDZJvyVtAfkhQGzjdN3oo3ft+ij5Evc+pJ
+	 0nOMiSvVw49tveOT85XPtzEl+2sN+KWeP6RfN8R5GJPdl7ighSTjkBBgf0tlCVJQ5Q
+	 F4HHyH3Xfu2d6Unp0FIpB3qfypZ7zVc2/ZPoZTyY8EMwiHNwVESMGkeHu2KSA630sU
+	 or+yhh2PYbZi2W0l0B+GfFbWALSspXNepQnTOynZx5vwelUyA2aZdckApGNT8g6b7j
+	 8mu3NRgErr3VA==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id zpJw1f7vA3XQ; Mon, 25 Sep 2023 21:49:13 +0000 (UTC)
+	with ESMTP id QoDhuQevpIe4; Mon, 25 Sep 2023 22:03:56 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 858EE4086A;
-	Mon, 25 Sep 2023 21:49:12 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 858EE4086A
+	by smtp4.osuosl.org (Postfix) with ESMTP id 6FF71408CF;
+	Mon, 25 Sep 2023 22:03:55 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6FF71408CF
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 4E0481BF279
- for <intel-wired-lan@lists.osuosl.org>; Mon, 25 Sep 2023 21:49:07 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 7A3D71BF334
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 25 Sep 2023 19:41:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 2555F81E5B
- for <intel-wired-lan@lists.osuosl.org>; Mon, 25 Sep 2023 21:49:07 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 2555F81E5B
+ by smtp2.osuosl.org (Postfix) with ESMTP id 4E52440352
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 25 Sep 2023 19:41:15 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 4E52440352
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id VMprFU1oL2W0 for <intel-wired-lan@lists.osuosl.org>;
- Mon, 25 Sep 2023 21:49:06 +0000 (UTC)
-Received: from mgamail.intel.com (mgamail.intel.com [192.55.52.136])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 3586181DE1
- for <intel-wired-lan@lists.osuosl.org>; Mon, 25 Sep 2023 21:49:05 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3586181DE1
-X-IronPort-AV: E=McAfee;i="6600,9927,10843"; a="360787868"
-X-IronPort-AV: E=Sophos;i="6.03,176,1694761200"; d="scan'208";a="360787868"
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
- by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 25 Sep 2023 14:49:04 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10843"; a="742084545"
-X-IronPort-AV: E=Sophos;i="6.03,176,1694761200"; d="scan'208";a="742084545"
-Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
- by orsmga007.jf.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
- 25 Sep 2023 14:49:03 -0700
-Received: from orsmsx611.amr.corp.intel.com (10.22.229.24) by
- ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.32; Mon, 25 Sep 2023 14:49:03 -0700
-Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
- orsmsx611.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.32 via Frontend Transport; Mon, 25 Sep 2023 14:49:03 -0700
-Received: from NAM10-MW2-obe.outbound.protection.outlook.com (104.47.55.106)
- by edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.32; Mon, 25 Sep 2023 14:49:03 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=kGuG0Q+ajgg/2XTnou0rlUTIodl0HyY8puwV0FPFqITA1RC5i4KX84WFJCK9BWVJ2sGLEBOQlKy7Re4sfYylY3gxmm6xNBfukv6dvVajVsU0L+rzTpaPPsOm8uvrfLJrtJ06vtin25ccWPudDSCJhn1jMotUWyuk+M2sW8WGXs0dYG0edOQS4c69ruy0hRbCwxTMQvIC3Yz9EWZ2oGdcWV9xh/j9RalpoNK695SAH3xQW+EcY5skNNVy3fyifTBZhPdMwxZiAW4MPBcN3943Xgw66TZei0sU1YUT1pR5+4Ll3NsWaUmWtJE+qx4DaYjFBZyG5bmVCqPXPxLevli7oQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=FMECfvdTafSrM7ROs3D86SLTpB8TGxqmUam1e1elb6Q=;
- b=d5v3BshVJoH0Bf6ENfIuKPY+mC+8lIugMCn2VU4lRU10/t8oXKUCHwlSTVuY5Tgxkjm3KdbUIvnd8UEU5EA28LeuiJh9TP+KYnoxibnkC1rmkhfI1qUaZ74ChpQMrFQypnWjXU56xhxbmkKigBu/wZj2052i1fn29XPdKx5Plh1czEtvqFhfvEpjLyqxSKAz8ueHCopVmHOlAT5QZ+QN1u0p9JtaDlNjLCAKdRwnpF+FI8YYvcx05lVAXTAIyrZtqnvQOa/4+boWMBuVuICAzTzXQneyZt5oxM28XQHGebhbId8i3TePZQCb6+eNmw3KiIsTgv9LjLVx12hgDdLC5A==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from CO1PR11MB5089.namprd11.prod.outlook.com (2603:10b6:303:9b::16)
- by PH8PR11MB8063.namprd11.prod.outlook.com (2603:10b6:510:252::15)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6813.28; Mon, 25 Sep
- 2023 21:49:01 +0000
-Received: from CO1PR11MB5089.namprd11.prod.outlook.com
- ([fe80::9654:610d:227a:104f]) by CO1PR11MB5089.namprd11.prod.outlook.com
- ([fe80::9654:610d:227a:104f%4]) with mapi id 15.20.6813.018; Mon, 25 Sep 2023
- 21:49:01 +0000
-From: "Keller, Jacob E" <jacob.e.keller@intel.com>
-To: Arnd Bergmann <arnd@kernel.org>, "Brandeburg, Jesse"
- <jesse.brandeburg@intel.com>, "Nguyen, Anthony L"
- <anthony.l.nguyen@intel.com>
-Thread-Topic: [PATCH] ice: require PTP clock for building
-Thread-Index: AQHZ78jGgTby0iFDvU+ADGoYgeC6t7AsFAmw
-Date: Mon, 25 Sep 2023 21:49:01 +0000
-Message-ID: <CO1PR11MB50895BBE115A20B1A1EEC603D6FCA@CO1PR11MB5089.namprd11.prod.outlook.com>
-References: <20230925155538.526317-1-arnd@kernel.org>
-In-Reply-To: <20230925155538.526317-1-arnd@kernel.org>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: CO1PR11MB5089:EE_|PH8PR11MB8063:EE_
-x-ms-office365-filtering-correlation-id: 98cafa83-5047-4006-e026-08dbbe113aa3
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: TyeK5/80UepCowzQBhNM7rjVkXWHJZONTeUqn14Jsc3EYU+hkwoHjP+ghqO5g951WV7Bq1WAN40SAg3XBWEXhq3no/kshAqx+j1jai/rgosETKflc9g1Rjspvb2oSS45aXgzoU0Q2ABRKqJxlj5r3ARpMZC/jvC2A3GIJfTGAVt9i5lqhMVbkE83EydA/GDTqI4DaMCz7j7L8lph/HYj2IL7SfNZ2EJZDHHLYkiPcW4vQczlyG+ODCq62LDdJ/Kp6ufGUaMVsQDR/odSE0Hfd3gJO77deGdcr7Z8WR7GSK4Fj2R73cD9FofRw/k/75RVByRP+havgjYCOy7APH4pPsuvTtpjpA8dvFOOomhRR/r/0EKw96k/ypRl1OON7RLEFnIj7WuxDUoxcBr/8cTIHP6a9imiJF1y/gQvNELjkuBs1Y/pXxgo7sajfF56pIuY4xzO84aaQMTcZgQG3Y5lrqvFbSMUPnSV6owIphqiJF3oX3XBNP/G7iNl7Po/MHlzHrGdTGW20jbzbtZ0LUWiPWapzBy6Bcv+l3n+R8fEPNyya2Cc7F5eIAxTXORQ07KnIMWX05Tb4GEx7ByYKDCzLxawqePHo5FBRA3ctDEiG4U=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:CO1PR11MB5089.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230031)(366004)(376002)(39860400002)(136003)(396003)(346002)(230922051799003)(186009)(1800799009)(451199024)(71200400001)(478600001)(966005)(26005)(83380400001)(86362001)(82960400001)(38070700005)(38100700002)(33656002)(5660300002)(55016003)(53546011)(7696005)(6506007)(122000001)(9686003)(6636002)(110136005)(2906002)(54906003)(66556008)(66446008)(66476007)(76116006)(66946007)(64756008)(316002)(7416002)(52536014)(41300700001)(4326008)(8676002)(8936002);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?MADUfIeB4V5T/ccJhNLMRTKuhSz8/6InGLZX/hvZaX1eEk9C5iTaAgp+B/Vw?=
- =?us-ascii?Q?T/F6od2XKVVbeNxLh2Sp2xXEGseokTAN08AEFEKut3Q7+x+Ywfu2ogzB2oVr?=
- =?us-ascii?Q?zD5bHw919yyT9iDEMIotu8UcPg6faMYgrTsyJsEtYPMf6ks2wy0QAKfkH3Mx?=
- =?us-ascii?Q?0IjQw9N8O4Ru+ghURZjXgfluetOvXOA62Ssqm6f15M9OqN6nuANkRMb6A+v6?=
- =?us-ascii?Q?LNNJV/4i8by8Yvk3B7DMMZXdlw+P1lWgFbNzGjXBc8sGHT2af1WWuP30Gm2l?=
- =?us-ascii?Q?m3nGQQNVrtU0BMcjXieuidUPTa+MTaN3qXVwXzcXF+w4/Tu6RWMDmEe+TrGb?=
- =?us-ascii?Q?/4Y3ithzmJhUOA0PQWyijBgj6pZAZDcuzkGyp5XR115sleHCrgdSYulFsumf?=
- =?us-ascii?Q?Gj4yH/zuJNNDy6DMBR1H+nNYgUNO8KOSM7ZZZWFEFnbV60ZuK5LhdvqTwg/B?=
- =?us-ascii?Q?aNhlVoQQ55i0KJtsd3zptF5jqhaGUBK8Vrv1cUB4CkohCKCvDnpaNZD7K7ZH?=
- =?us-ascii?Q?H6pWXlUT9/btgbM4k1dyIzb8UB+Z1CyN1ETu0CVAJ750pT3E7w9er9PIi6pq?=
- =?us-ascii?Q?bdk3PbdwRlGwX5dHt8VIm1ulzpO9L0e1xw9++TTo2dywUuPDaBoGV5bSfWtI?=
- =?us-ascii?Q?MDttVad1owdSlhL9L23ESLH/i426+NxNRlW02rwCT8b0A59UepNPX6nXpumy?=
- =?us-ascii?Q?eHc6ueMrjGZGG4NyqA/I09R6YiIFnitY3CSUoral/twn+9AXlHIlbPPa5jQe?=
- =?us-ascii?Q?RRGP17CfLa4xOCRtPTc0+hvWALepRM7i3/fWJfhIVfZI3M49F2E8Q9hBIRqK?=
- =?us-ascii?Q?ZImNCloQztG6l7jFImbxrCeZUDZ182lv9dds60CcHy0+0aF7Y5oM39oT05QX?=
- =?us-ascii?Q?9WzeAXVuQvgZmNlYeSDyBng04Ow0YWVWkpA0nvOE/VeY0sIpZZzvkajRBs7h?=
- =?us-ascii?Q?GAnpeadf//KrCBYpRKw9bTfyZf/6wX8OQZyo22cT9yminrFoHPBY4J+zgSb5?=
- =?us-ascii?Q?IM/noDaI4nwWiqLLYYOxxZa2SPG3Wzq9wwrhQD4q6xivygq9xtI/CfAYSSJg?=
- =?us-ascii?Q?kvtPA+4HKe6w/QQMwxETMT5yuenoVylF/wBMpWFF7O9qbu9zOKknqyofowWf?=
- =?us-ascii?Q?peB7jyNjtFUXVdcizBGRlw4il1b493ug0Gh5WC0/g/C8bqAs5wM6WSKnyFmB?=
- =?us-ascii?Q?IYo7sLNYI5LZ5oHPGriEjr2QU5oZuizixdvoWVF1o5r8S+vaOx21M7JQDmIl?=
- =?us-ascii?Q?rkwc8sKvBCRIC81LNHR2OhFduTukB4wHp/+eCjPpw6mb7GTEP8aEV4WF1E2/?=
- =?us-ascii?Q?PRqc4Qi4XEzGnS6eD+rXx/8vnaBNa/ARWRpn2JtJq04hjErnKnQm6l68sSsy?=
- =?us-ascii?Q?qT3pVqLXB13wY5qBt26GroGoSRO39knhtjF+YJK6pmECGLrEh2sqKgLYlfrB?=
- =?us-ascii?Q?MaMuFETHkcqjNopgI9MoHy6XQrz1qAOOASrR597D6VV9RuWOgyrLY2SK8I50?=
- =?us-ascii?Q?RclTxhqh2uKfCbztHcaiR0E3n1gMw25XznXs2opWJcge8IZCkki//GdnExs9?=
- =?us-ascii?Q?2oHO3weR9wGPLd1vaoDgEYSKgOKDx0EcWyw//bGp?=
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id GcmT5nNAHISQ for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 25 Sep 2023 19:41:12 +0000 (UTC)
+Received: from mail-wm1-x32f.google.com (mail-wm1-x32f.google.com
+ [IPv6:2a00:1450:4864:20::32f])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 74EF740131
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 25 Sep 2023 19:41:12 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 74EF740131
+Received: by mail-wm1-x32f.google.com with SMTP id
+ 5b1f17b1804b1-40572aeb73cso38069475e9.3
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 25 Sep 2023 12:41:12 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1695670870; x=1696275670;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=T6trxzudUI1eKlqa/eejHE9u02o7xmWO8q0nCXY+t8E=;
+ b=EDZLhjeuwsObeluWmHzpTDm1MFcr9GG9n5YEvA1g92flAlKBsxFbVmxg7whWNia0an
+ /fE5sFpaVH6ojY1pHIXi/5ogskQAeS9/R5fXCFQbt55wng5Q33MFUVkpLk9Ck3kYJxeY
+ YfjAqkO/S+2RWQJXMG0QP1UPc1J0cKNNcFK49/N+zWOnvOjdrQ7+Qo46LTZePPGE8X8F
+ jQfHkuIORHIW97haFyP7qxeE9S956bZReU94wG4NnJRvB+G54jRcqBZ6auOOsWwfa61k
+ RGFlB70I2PbMCF+0RaL9dx1t/WN0hwNGg4RCWrTAOhPc7oPL88sb8PpzzACkbwsZ2Jwm
+ q6TA==
+X-Gm-Message-State: AOJu0YzfPowG1nVQRJTsYw5RiGIQOWp7GPqPmvTef54bG/VufitVBfbq
+ oNj5FU9SB4XWSkauky/HVzAZHA5hTABuplEfV0gyyg==
+X-Google-Smtp-Source: AGHT+IFsfyqROc7vEhTQkheAeKxctGFVKQHa8xnqk0VQilhLlTVjkCLCkZew4hTAAKIjyCDVxd+qCDOS38onFq/k89k=
+X-Received: by 2002:adf:f110:0:b0:320:459:5a3 with SMTP id
+ r16-20020adff110000000b00320045905a3mr6559562wro.33.1695670870451; 
+ Mon, 25 Sep 2023 12:41:10 -0700 (PDT)
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: CO1PR11MB5089.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 98cafa83-5047-4006-e026-08dbbe113aa3
-X-MS-Exchange-CrossTenant-originalarrivaltime: 25 Sep 2023 21:49:01.0394 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 9frKj0mLNq29OUU/0Ay0nrh3YAJIT8kH9BJ3XhbWUWp8rjAojmgH+CJJiQK/oRHrA7nICTq7+A+TLS5Hq6iFSvxAeMa1Bk5bl9gW0Mdsarg=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH8PR11MB8063
-X-OriginatorOrg: intel.com
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1695678546; x=1727214546;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=V2VY60xiM6Moj9wKTSvhFEWIstdZh5Y1B/XqcNAEea8=;
- b=hAR0rH5cAAcPP0+HMGWqd4EW4wsbRM2Xli7CJezeEgLCgE3a2quir0Df
- xXXHslgmWdr9RvoucsPJFdG4o9V5JkCYIssI80Rogl0UJ4KStOneG8fyO
- KZtrOsoRyFIaDBQRoexZKPLCg/as/5V9pEPl7dnZf5FSLQdWBX1Uc5KDM
- O/f1x6fIB+aKbUnYbdIW8/UqinhVILgAZWfGFlp3LNSOOKRF31eTEKD6i
- MKhnVhHCpaeH51pNMjlI+COegRZjF7LA22Aykvu4mMzQOvzbjJqvqpTWw
- XlEQhSPN5qJOGURLWVl/c8caOKhca/c5pvIkkkx4I7HtVs8FMrTRTXXvw
- Q==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=hAR0rH5c
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH] ice: require PTP clock for building
+References: <20230922163804.7DDBA2440449@us122.sjc.aristanetworks.com>
+ <40c11058-5065-41f0-bf09-2784b291c41b@intel.com>
+ <04bc5392-24da-49dc-a240-27e8c69c7e06@lunn.ch>
+In-Reply-To: <04bc5392-24da-49dc-a240-27e8c69c7e06@lunn.ch>
+From: Prasad Koya <prasad@arista.com>
+Date: Mon, 25 Sep 2023 12:40:58 -0700
+Message-ID: <CAKh1g55zm4jcwB34Qch=yAdLwLyPcQD0NbgZtUeS=shiRkd_vw@mail.gmail.com>
+To: Andrew Lunn <andrew@lunn.ch>
+X-Mailman-Approved-At: Mon, 25 Sep 2023 22:03:51 +0000
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=arista.com; s=google; t=1695670870; x=1696275670; darn=lists.osuosl.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=T6trxzudUI1eKlqa/eejHE9u02o7xmWO8q0nCXY+t8E=;
+ b=cpT+8LRMMEZxGc+e6PInOX1CEhEhBXYAMFSe0rb8+EB3DP2sQoVxOG3yORXeEp528k
+ L3aLwAzg4tGe+TAagV/qfoLjivUvLMnorVqpQhngpYF/35GGNnaNvEnzakfA9AsfjtI0
+ 5SuefUd9TgU5bfqCCsDU2//BlIHO5iGrO5qjtrznkWixk+eZU99rwhpuVq0cLRxBidpm
+ oftiKnoizdgivhp/AYm7bhfJj0+Qd1VS/yhYIkx7hGM+nfAfINrFKsxn38B3uTqml5V2
+ a8Io2MJUf6rUR6GyM0sVmFJJGL07ndqDiCL68T3IzJOECG5HVfLCk8WLuv4HXTj4j2Bx
+ uwHQ==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key) header.d=arista.com header.i=@arista.com
+ header.a=rsa-sha256 header.s=google header.b=cpT+8LRM
+Subject: Re: [Intel-wired-lan] [PATCH] [iwl-net] Revert "igc: set TP bit in
+ 'supported' and 'advertising' fields of ethtool_link_ksettings"
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -183,107 +106,464 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Vadim Fedorenko <vadim.fedorenko@linux.dev>, Jiri Pirko <jiri@resnulli.us>,
- "Michalik, Michal" <michal.michalik@intel.com>, Arnd Bergmann <arnd@arndb.de>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>, "Hay,
- Joshua A" <joshua.a.hay@intel.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "Kubalewski,
- Arkadiusz" <arkadiusz.kubalewski@intel.com>,
- Eric Dumazet <edumazet@google.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- Jakub Kicinski <kuba@kernel.org>, Paolo
- Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: "Neftin, Sasha" <sasha.neftin@intel.com>, edumazet@google.com,
+ netdev@vger.kernel.org, jesse.brandeburg@intel.com, "Ruinskiy,
+ Dima" <dima.ruinskiy@intel.com>, anthony.l.nguyen@intel.com,
+ intel-wired-lan@lists.osuosl.org, "lifshits,
+ Vitaly" <vitaly.lifshits@intel.com>, kuba@kernel.org, pabeni@redhat.com,
+ davem@davemloft.net
+Content-Type: multipart/mixed; boundary="===============4888331503274847271=="
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+--===============4888331503274847271==
+Content-Type: multipart/alternative; boundary="000000000000e443e706063423f6"
+
+--000000000000e443e706063423f6
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Hi,
+
+Here is the ethtool output before and after changing the speed with the
+commit 9ac3fc2f42e5ffa1e927dcbffb71b15fa81459e2:
+
+-bash-4.2# ethtool ma1
+Settings for ma1:
+        Supported ports: [ TP ]
+        Supported link modes:   10baseT/Half 10baseT/Full
+                                100baseT/Half 100baseT/Full
+                                1000baseT/Full
+                                2500baseT/Full
+        Supported pause frame use: Symmetric
+        Supports auto-negotiation: Yes
+        Supported FEC modes: Not reported
+        Advertised link modes:  10baseT/Half 10baseT/Full
+                                100baseT/Half 100baseT/Full
+                                1000baseT/Full
+                                2500baseT/Full
+        Advertised pause frame use: Symmetric
+        Advertised auto-negotiation: Yes
+        Advertised FEC modes: Not reported
+        Speed: 1000Mb/s
+        Duplex: Full
+        Auto-negotiation: on
+        Port: Twisted Pair
+        PHYAD: 0
+        Transceiver: internal
+        MDI-X: off (auto)
+        Supports Wake-on: pumbg
+        Wake-on: d
+        Current message level: 0x00000007 (7)
+                               drv probe link
+        Link detected: yes
+-bash-4.2#
+-bash-4.2# ethtool  -s ma1 speed 100 duplex full autoneg on
+-bash-4.2#
+-bash-4.2# ethtool ma1
+Settings for ma1:
+        Supported ports: [ TP ]
+        Supported link modes:   10baseT/Half 10baseT/Full
+                                100baseT/Half 100baseT/Full
+                                1000baseT/Full
+                                2500baseT/Full
+        Supported pause frame use: Symmetric
+        Supports auto-negotiation: Yes
+        Supported FEC modes: Not reported
+        Advertised link modes:  100baseT/Full
+                                2500baseT/Full
+        Advertised pause frame use: Symmetric
+        Advertised auto-negotiation: Yes
+        Advertised FEC modes: Not reported
+        Speed: 100Mb/s
+        Duplex: Full
+        Auto-negotiation: on
+        Port: Twisted Pair
+        PHYAD: 0
+        Transceiver: internal
+        MDI-X: off (auto)
+        Supports Wake-on: pumbg
+        Wake-on: d
+        Current message level: 0x00000007 (7)
+                               drv probe link
+        Link detected: yes
+-bash-4.2#
+
+With the patch reverted:
+
+-bash-4.2# ethtool -s ma1 speed 100 duplex full autoneg on
+-bash-4.2#
+-bash-4.2# ethtool ma1
+Settings for ma1:
+        Supported ports: [ TP ]
+        Supported link modes:   10baseT/Half 10baseT/Full
+                                100baseT/Half 100baseT/Full
+                                1000baseT/Full
+                                2500baseT/Full
+        Supported pause frame use: Symmetric
+        Supports auto-negotiation: Yes
+        Supported FEC modes: Not reported
+        Advertised link modes:  100baseT/Full
+        Advertised pause frame use: Symmetric
+        Advertised auto-negotiation: Yes
+        Advertised FEC modes: Not reported
+        Speed: 100Mb/s
+        Duplex: Full
+        Port: Twisted Pair
+        PHYAD: 0
+        Transceiver: internal
+        Auto-negotiation: on
+        MDI-X: off (auto)
+        Supports Wake-on: pumbg
+        Wake-on: d
+        Current message level: 0x00000007 (7)
+                               drv probe link
+        Link detected: yes
+-bash-4.2#
+
+with the patch enabled:
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+
+Default 'advertising' field is: 0x8000000020ef
+ie., 10Mbps_half, 10Mbps_full, 100Mbps_half, 100Mbps_full, 1000Mbps_full,
+Autoneg, TP, Pause and 2500Mbps_full bits set.
+
+and 'hw->phy.autoneg_advertised' is 0xaf
+
+During "ethtool -s ma1 speed 100 duplex full autoneg on"
+
+ethtool sends 'advertising' as 0x20c8 ie., 100Mbps_full, Autoneg, TP, Pause
+bits set which are correct.
+
+However, to reset the link with new 'advertising' bits, code takes this
+path:
+
+[  255.073847]  igc_setup_copper_link+0x73c/0x750
+[  255.073851]  igc_setup_link+0x4a/0x170
+[  255.073852]  igc_init_hw_base+0x98/0x100
+[  255.073855]  igc_reset+0x69/0xe0
+[  255.073857]  igc_down+0x22b/0x230
+[  255.073859]  igc_ethtool_set_link_ksettings+0x25f/0x270
+[  255.073863]  ethtool_set_link_ksettings+0xa9/0x140
+[  255.073866]  dev_ethtool+0x1236/0x2570
+
+igc_setup_copper_link() calls igc_copper_link_autoneg().
+igc_copper_link_autoneg() changes phy->autoneg_advertised
+
+    phy->autoneg_advertised &=3D phy->autoneg_mask;
+
+and autoneg_mask is IGC_ALL_SPEED_DUPLEX_2500 which is 0xaf:
+
+/* 1Gbps and 2.5Gbps half duplex is not supported, nor spec-compliant. */
+#define ADVERTISE_10_HALF       0x0001
+#define ADVERTISE_10_FULL       0x0002
+#define ADVERTISE_100_HALF      0x0004
+#define ADVERTISE_100_FULL      0x0008
+#define ADVERTISE_1000_HALF     0x0010 /* Not used, just FYI */
+#define ADVERTISE_1000_FULL     0x0020
+#define ADVERTISE_2500_HALF     0x0040 /* Not used, just FYI */
+#define ADVERTISE_2500_FULL     0x0080
+
+#define IGC_ALL_SPEED_DUPLEX_2500 ( \
+    ADVERTISE_10_HALF | ADVERTISE_10_FULL | ADVERTISE_100_HALF | \
+    ADVERTISE_100_FULL | ADVERTISE_1000_FULL | ADVERTISE_2500_FULL)
+
+so 0x20c8 & 0xaf becomes 0x88 ie., the TP bit (bit 7
+of ethtool_link_mode_bit_indices) in 0x20c8 got interpreted as
+ADVERTISE_2500_FULL. so after igc_reset(), hw->phy.autoneg_advertised is
+0x88. Post that, 'ethtool <interface>' reports 2500Mbps can also be
+advertised.
+
+@@ -445,9 +451,19 @@ static s32 igc_copper_link_autoneg(struct igc_hw *hw)
+        u16 phy_ctrl;
+        s32 ret_val;
+
+        /* Perform some bounds checking on the autoneg advertisement
+         * parameter.
+         */
++       if (!(phy->autoneg_advertised & ADVERTISED_2500baseX_Full))
++               phy->autoneg_advertised &=3D ~ADVERTISE_2500_FULL;
++       if ((phy->autoneg_advertised & ADVERTISED_2500baseX_Full))
++               phy->autoneg_advertised |=3D ADVERTISE_2500_FULL;
++
+        phy->autoneg_advertised &=3D phy->autoneg_mask;
+
+I see phy->autoneg_advertised modified similarly in igc_phy_setup_autoneg()
+as well.
+
+Above diff works for:
+
+ethtool -s <intf> speed 10/100/1000 duplex full autoneg on
+or
+ethtool -s <intf> advertise 0x3f (0x03 or 0x0f etc)
+
+but I haven't tested on a 2500 Mbps link. ADVERTISE_2500_FULL is there only
+for igc.
+
+Thanks
+Prasad
 
 
-> -----Original Message-----
-> From: Arnd Bergmann <arnd@kernel.org>
-> Sent: Monday, September 25, 2023 8:55 AM
-> To: Brandeburg, Jesse <jesse.brandeburg@intel.com>; Nguyen, Anthony L
-> <anthony.l.nguyen@intel.com>
-> Cc: Arnd Bergmann <arnd@arndb.de>; David S. Miller <davem@davemloft.net>;
-> Eric Dumazet <edumazet@google.com>; Jakub Kicinski <kuba@kernel.org>; Paolo
-> Abeni <pabeni@redhat.com>; Kubalewski, Arkadiusz
-> <arkadiusz.kubalewski@intel.com>; Michalik, Michal
-> <michal.michalik@intel.com>; Jiri Pirko <jiri@resnulli.us>; Keller, Jacob E
-> <jacob.e.keller@intel.com>; Hay, Joshua A <joshua.a.hay@intel.com>; Vadim
-> Fedorenko <vadim.fedorenko@linux.dev>; intel-wired-lan@lists.osuosl.org;
-> netdev@vger.kernel.org; linux-kernel@vger.kernel.org
-> Subject: [PATCH] ice: require PTP clock for building
-> 
-> From: Arnd Bergmann <arnd@arndb.de>
-> 
-> A previous fix added PTP as an optional dependency, which was correct as
-> of commit 87758511075ec ("igc: fix build errors for PTP"), but this
-> has recently changed with the PTP code getting more deeply integrated
-> into the ICE driver.
-> 
-> Trying to build ICE when PTP is disabled results in this internal link failure
-> as the local functions are left out of the driver:
-> 
-> ERROR: modpost: "ice_is_clock_mux_present_e810t"
-> [drivers/net/ethernet/intel/ice/ice.ko] undefined!
-> ERROR: modpost: "ice_is_phy_rclk_present"
-> [drivers/net/ethernet/intel/ice/ice.ko] undefined!
-> ERROR: modpost: "ice_cgu_get_pin_name" [drivers/net/ethernet/intel/ice/ice.ko]
-> undefined!
-> ERROR: modpost: "ice_get_cgu_state" [drivers/net/ethernet/intel/ice/ice.ko]
-> undefined!
-> ERROR: modpost: "ice_is_cgu_present" [drivers/net/ethernet/intel/ice/ice.ko]
-> undefined!
-> ERROR: modpost: "ice_get_cgu_rclk_pin_info"
-> [drivers/net/ethernet/intel/ice/ice.ko] undefined!
-> ERROR: modpost: "ice_cgu_get_pin_type" [drivers/net/ethernet/intel/ice/ice.ko]
-> undefined!
-> ERROR: modpost: "ice_cgu_get_pin_freq_supp"
-> [drivers/net/ethernet/intel/ice/ice.ko] undefined!
-> 
-> I tried rearranging the code to allow building it again, but this was getting
-> too complicated for an outsider, so just enforce the dependency to fix randconfig
-> builds again, until someone wants to clean this up again.
-> 
-> In practice, any configuration that includes this driver is also going to
-> want PTP clocks anyway.
-> 
-> Fixes: 8a3a565ff210a ("ice: add admin commands to access cgu configuration")
-> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+On Sun, Sep 24, 2023 at 7:51=E2=80=AFAM Andrew Lunn <andrew@lunn.ch> wrote:
 
+> On Sun, Sep 24, 2023 at 10:09:17AM +0300, Neftin, Sasha wrote:
+> > On 22/09/2023 19:38, Prasad Koya wrote:
+> > > This reverts commit 9ac3fc2f42e5ffa1e927dcbffb71b15fa81459e2.
+> > >
+> > > After the command "ethtool -s enps0 speed 100 duplex full autoneg on"=
+,
+> > > i.e., advertise only 100Mbps speed to the peer, "ethtool enps0" shows
+> > > advertised speeds as 100Mbps and 2500Mbps. Same behavior is seen
+> > > when changing the speed to 10Mbps or 1000Mbps.
+> > >
+> > > This applies to I225/226 parts, which only supports copper mode.
+> > > Reverting to original till the ambiguity is resolved.
+> > >
+> > > Fixes: 9ac3fc2f42e5 ("igc: set TP bit in 'supported' and
+> > > 'advertising' fields of ethtool_link_ksettings")
+> > > Signed-off-by: Prasad Koya <prasad@arista.com>
+> >
+> > Acked-by: Sasha Neftin <sasha.neftin@intel.com>
+> >
+> > > ---
+> > >   drivers/net/ethernet/intel/igc/igc_ethtool.c | 2 --
+> > >   1 file changed, 2 deletions(-)
+> > >
+> > > diff --git a/drivers/net/ethernet/intel/igc/igc_ethtool.c
+> b/drivers/net/ethernet/intel/igc/igc_ethtool.c
+> > > index 93bce729be76..0e2cb00622d1 100644
+> > > --- a/drivers/net/ethernet/intel/igc/igc_ethtool.c
+> > > +++ b/drivers/net/ethernet/intel/igc/igc_ethtool.c
+> > > @@ -1708,8 +1708,6 @@ static int igc_ethtool_get_link_ksettings(struc=
+t
+> net_device *netdev,
+> > >     /* twisted pair */
+> > >     cmd->base.port =3D PORT_TP;
+> > >     cmd->base.phy_address =3D hw->phy.addr;
+> > > -   ethtool_link_ksettings_add_link_mode(cmd, supported, TP);
+> > > -   ethtool_link_ksettings_add_link_mode(cmd, advertising, TP);
+>
+> This looks very odd. Please can you confirm this revert really does
+> make ethtool report the correct advertisement when it has been limited
+> to 100Mbps. Because looking at this patch, i have no idea how this is
+> going wrong.
+>
+>         Andrew
+>
 
-There are a couple of other fixes already posted including the one I posted last week:
+--000000000000e443e706063423f6
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-https://lore.kernel.org/netdev/20230921000633.1238097-1-jacob.e.keller@intel.com/
+<div dir=3D"ltr"><div>Hi,</div><div><br></div><div>Here is the ethtool outp=
+ut before and after changing the speed with the commit 9ac3fc2f42e5ffa1e927=
+dcbffb71b15fa81459e2:</div><div><br></div><div>-bash-4.2# ethtool ma1<br>Se=
+ttings for ma1:<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 Supported ports: [ TP ]<br>=
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 Supported link modes: =C2=A0 10baseT/Half 10bas=
+eT/Full<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 100baseT/Half 100baseT/Ful=
+l<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 1000baseT/Full<br>=C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 2500baseT/Full<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 Supp=
+orted pause frame use: Symmetric<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 Supports au=
+to-negotiation: Yes<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 Supported FEC modes: Not=
+ reported<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 Advertised link modes: =C2=A010bas=
+eT/Half 10baseT/Full<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 100baseT/Hal=
+f 100baseT/Full<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 1000baseT/Full<br>=
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 2500baseT/Full<br>=C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 Advertised pause frame use: Symmetric<br>=C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 Advertised auto-negotiation: Yes<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 Adve=
+rtised FEC modes: Not reported<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 Speed: 1000Mb=
+/s<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 Duplex: Full<br>=C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 Auto-negotiation: on<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 Port: Twisted Pair<=
+br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 PHYAD: 0<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 Tran=
+sceiver: internal<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 MDI-X: off (auto)<br>=C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 Supports Wake-on: pumbg<br>=C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 Wake-on: d<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 Current message level: 0x0=
+0000007 (7)<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0drv probe link<br>=C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 Link detected: yes<br>-bash-4.2#<br></div>-bash-4.=
+2# ethtool =C2=A0-s ma1 speed 100 duplex full autoneg on<br>-bash-4.2#<br>-=
+bash-4.2# ethtool ma1<br>Settings for ma1:<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 S=
+upported ports: [ TP ]<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 Supported link modes:=
+ =C2=A0 10baseT/Half 10baseT/Full<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 1=
+00baseT/Half 100baseT/Full<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 1000base=
+T/Full<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 2500baseT/Full<br>=C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 Supported pause frame use: Symmetric<br>=C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 Supports auto-negotiation: Yes<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ Supported FEC modes: Not reported<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 Advertise=
+d link modes: =C2=A0100baseT/Full<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 2=
+500baseT/Full<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 Advertised pause frame use: Sy=
+mmetric<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 Advertised auto-negotiation: Yes<br>=
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 Advertised FEC modes: Not reported<br>=C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 Speed: 100Mb/s<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 Duplex: =
+Full<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 Auto-negotiation: on<br>=C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 Port: Twisted Pair<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 PHYAD: 0<br=
+>=C2=A0 =C2=A0 =C2=A0 =C2=A0 Transceiver: internal<br>=C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 MDI-X: off (auto)<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 Supports Wake-on: p=
+umbg<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 Wake-on: d<br>=C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 Current message level: 0x00000007 (7)<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0drv probe link<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 Link detected: yes<=
+br>-bash-4.2#<div><br></div><div>With the patch reverted:</div><div><br></d=
+iv><div>-bash-4.2# ethtool -s ma1 speed 100 duplex full autoneg on<br>-bash=
+-4.2#<br>-bash-4.2# ethtool ma1<br>Settings for ma1:<br>=C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 Supported ports: [ TP ]<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 Supported=
+ link modes: =C2=A0 10baseT/Half 10baseT/Full<br>=C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 100baseT/Half 100baseT/Full<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 1000baseT/Full<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 2500base=
+T/Full<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 Supported pause frame use: Symmetric<=
+br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 Supports auto-negotiation: Yes<br>=C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 Supported FEC modes: Not reported<br>=C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 Advertised link modes: =C2=A0100baseT/Full<br>=C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 Advertised pause frame use: Symmetric<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ Advertised auto-negotiation: Yes<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 Advertised=
+ FEC modes: Not reported<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 Speed: 100Mb/s<br>=
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 Duplex: Full<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 Por=
+t: Twisted Pair<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 PHYAD: 0<br>=C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 Transceiver: internal<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 Auto-neg=
+otiation: on<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 MDI-X: off (auto)<br>=C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 Supports Wake-on: pumbg<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 Wa=
+ke-on: d<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 Current message level: 0x00000007 (=
+7)<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0drv probe link<br>=C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 Link detected: yes<br>-bash-4.2#<br></div><div><br></div><div=
+>with the patch enabled:<br></div><div>=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D</div><div><br></div><div>Default &#39;advertising&#39; f=
+ield is:=C2=A00x8000000020ef=C2=A0</div><div>ie., 10Mbps_half, 10Mbps_full,=
+ 100Mbps_half, 100Mbps_full, 1000Mbps_full, Autoneg, TP, Pause and 2500Mbps=
+_full bits set.</div><div><br></div><div>and &#39;hw-&gt;phy.autoneg_advert=
+ised&#39; is 0xaf=C2=A0<br></div><div><br></div><div>During &quot;ethtool -=
+s ma1 speed 100 duplex full autoneg on&quot;</div><div><br></div><div>ethto=
+ol sends &#39;advertising&#39; as 0x20c8 ie., 100Mbps_full, Autoneg, TP, Pa=
+use bits set which are correct.</div><div><br></div><div>However, to reset =
+the link with new &#39;advertising&#39; bits, code takes this path:</div><d=
+iv><br></div><div>[ =C2=A0255.073847] =C2=A0igc_setup_copper_link+0x73c/0x7=
+50<br>[ =C2=A0255.073851] =C2=A0igc_setup_link+0x4a/0x170<br>[ =C2=A0255.07=
+3852] =C2=A0igc_init_hw_base+0x98/0x100<br>[ =C2=A0255.073855] =C2=A0igc_re=
+set+0x69/0xe0<br>[ =C2=A0255.073857] =C2=A0igc_down+0x22b/0x230<br>[ =C2=A0=
+255.073859] =C2=A0igc_ethtool_set_link_ksettings+0x25f/0x270<br>[ =C2=A0255=
+.073863] =C2=A0ethtool_set_link_ksettings+0xa9/0x140<br>[ =C2=A0255.073866]=
+ =C2=A0dev_ethtool+0x1236/0x2570<br></div><div><br></div><div>igc_setup_cop=
+per_link() calls=C2=A0igc_copper_link_autoneg().=C2=A0 igc_copper_link_auto=
+neg()=C2=A0changes phy-&gt;autoneg_advertised</div><div><br></div><div>=C2=
+=A0 =C2=A0 phy-&gt;autoneg_advertised &amp;=3D phy-&gt;autoneg_mask;<br></d=
+iv><div><br></div><div>and autoneg_mask is=C2=A0IGC_ALL_SPEED_DUPLEX_2500 w=
+hich is 0xaf:</div><div><br></div><div>/* 1Gbps and 2.5Gbps half duplex is =
+not supported, nor spec-compliant. */<br>#define ADVERTISE_10_HALF =C2=A0 =
+=C2=A0 =C2=A0 0x0001<br>#define ADVERTISE_10_FULL =C2=A0 =C2=A0 =C2=A0 0x00=
+02<br>#define ADVERTISE_100_HALF =C2=A0 =C2=A0 =C2=A00x0004<br>#define ADVE=
+RTISE_100_FULL =C2=A0 =C2=A0 =C2=A00x0008<br>#define ADVERTISE_1000_HALF =
+=C2=A0 =C2=A0 0x0010 /* Not used, just FYI */<br>#define ADVERTISE_1000_FUL=
+L =C2=A0 =C2=A0 0x0020<br>#define ADVERTISE_2500_HALF =C2=A0 =C2=A0 0x0040 =
+/* Not used, just FYI */<br>#define ADVERTISE_2500_FULL =C2=A0 =C2=A0 0x008=
+0<br><br>#define IGC_ALL_SPEED_DUPLEX_2500 ( \<br>=C2=A0 =C2=A0 ADVERTISE_1=
+0_HALF | ADVERTISE_10_FULL | ADVERTISE_100_HALF | \<br>=C2=A0 =C2=A0 ADVERT=
+ISE_100_FULL | ADVERTISE_1000_FULL | ADVERTISE_2500_FULL)<br></div><div><br=
+></div><div>so 0x20c8 &amp; 0xaf becomes 0x88 ie., the TP bit (bit 7 of=C2=
+=A0ethtool_link_mode_bit_indices) in 0x20c8 got interpreted as ADVERTISE_25=
+00_FULL. so after igc_reset(),=C2=A0hw-&gt;phy.autoneg_advertised is 0x88. =
+Post that, &#39;ethtool &lt;interface&gt;&#39; reports 2500Mbps can also be=
+ advertised.=C2=A0</div><div><br></div><div>@@ -445,9 +451,19 @@ static s32=
+ igc_copper_link_autoneg(struct igc_hw *hw)<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+u16 phy_ctrl;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 s32 ret_val;<br><br>=C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 /* Perform some bounds checking on the autoneg advertisem=
+ent<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0* parameter.<br>=C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0*/<br>+ =C2=A0 =C2=A0 =C2=A0 if (!(phy-&gt;autoneg_adverti=
+sed &amp; ADVERTISED_2500baseX_Full))<br>+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 phy-&gt;autoneg_advertised &amp;=3D ~ADVERTISE_2500_FULL;=
+<br>+ =C2=A0 =C2=A0 =C2=A0 if ((phy-&gt;autoneg_advertised &amp; ADVERTISED=
+_2500baseX_Full))<br>+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 phy=
+-&gt;autoneg_advertised |=3D ADVERTISE_2500_FULL;<br>+<br>=C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 phy-&gt;autoneg_advertised &amp;=3D phy-&gt;autoneg_mask;<br></d=
+iv><div><br></div><div>I see phy-&gt;autoneg_advertised modified similarly =
+in=C2=A0igc_phy_setup_autoneg() as well.</div><div><br></div><div>Above dif=
+f works for:</div><div><br></div><div>ethtool -s &lt;intf&gt; speed 10/100/=
+1000 duplex full autoneg on</div><div>or</div><div>ethtool -s &lt;intf&gt; =
+advertise 0x3f (0x03 or 0x0f etc)=C2=A0</div><div><br></div><div>but I have=
+n&#39;t tested on a 2500 Mbps link. ADVERTISE_2500_FULL is there only for i=
+gc.</div><div><br></div><div>Thanks</div><div>Prasad</div><div><br></div></=
+div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On=
+ Sun, Sep 24, 2023 at 7:51=E2=80=AFAM Andrew Lunn &lt;<a href=3D"mailto:and=
+rew@lunn.ch" target=3D"_blank">andrew@lunn.ch</a>&gt; wrote:<br></div><bloc=
+kquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:=
+1px solid rgb(204,204,204);padding-left:1ex">On Sun, Sep 24, 2023 at 10:09:=
+17AM +0300, Neftin, Sasha wrote:<br>
+&gt; On 22/09/2023 19:38, Prasad Koya wrote:<br>
+&gt; &gt; This reverts commit 9ac3fc2f42e5ffa1e927dcbffb71b15fa81459e2.<br>
+&gt; &gt; <br>
+&gt; &gt; After the command &quot;ethtool -s enps0 speed 100 duplex full au=
+toneg on&quot;,<br>
+&gt; &gt; i.e., advertise only 100Mbps speed to the peer, &quot;ethtool enp=
+s0&quot; shows<br>
+&gt; &gt; advertised speeds as 100Mbps and 2500Mbps. Same behavior is seen<=
+br>
+&gt; &gt; when changing the speed to 10Mbps or 1000Mbps.<br>
+&gt; &gt; <br>
+&gt; &gt; This applies to I225/226 parts, which only supports copper mode.<=
+br>
+&gt; &gt; Reverting to original till the ambiguity is resolved.<br>
+&gt; &gt; <br>
+&gt; &gt; Fixes: 9ac3fc2f42e5 (&quot;igc: set TP bit in &#39;supported&#39;=
+ and<br>
+&gt; &gt; &#39;advertising&#39; fields of ethtool_link_ksettings&quot;)<br>
+&gt; &gt; Signed-off-by: Prasad Koya &lt;<a href=3D"mailto:prasad@arista.co=
+m" target=3D"_blank">prasad@arista.com</a>&gt;<br>
+&gt; <br>
+&gt; Acked-by: Sasha Neftin &lt;<a href=3D"mailto:sasha.neftin@intel.com" t=
+arget=3D"_blank">sasha.neftin@intel.com</a>&gt;<br>
+&gt; <br>
+&gt; &gt; ---<br>
+&gt; &gt;=C2=A0 =C2=A0drivers/net/ethernet/intel/igc/igc_ethtool.c | 2 --<b=
+r>
+&gt; &gt;=C2=A0 =C2=A01 file changed, 2 deletions(-)<br>
+&gt; &gt; <br>
+&gt; &gt; diff --git a/drivers/net/ethernet/intel/igc/igc_ethtool.c b/drive=
+rs/net/ethernet/intel/igc/igc_ethtool.c<br>
+&gt; &gt; index 93bce729be76..0e2cb00622d1 100644<br>
+&gt; &gt; --- a/drivers/net/ethernet/intel/igc/igc_ethtool.c<br>
+&gt; &gt; +++ b/drivers/net/ethernet/intel/igc/igc_ethtool.c<br>
+&gt; &gt; @@ -1708,8 +1708,6 @@ static int igc_ethtool_get_link_ksettings(s=
+truct net_device *netdev,<br>
+&gt; &gt;=C2=A0 =C2=A0 =C2=A0/* twisted pair */<br>
+&gt; &gt;=C2=A0 =C2=A0 =C2=A0cmd-&gt;base.port =3D PORT_TP;<br>
+&gt; &gt;=C2=A0 =C2=A0 =C2=A0cmd-&gt;base.phy_address =3D hw-&gt;phy.addr;<=
+br>
+&gt; &gt; -=C2=A0 =C2=A0ethtool_link_ksettings_add_link_mode(cmd, supported=
+, TP);<br>
+&gt; &gt; -=C2=A0 =C2=A0ethtool_link_ksettings_add_link_mode(cmd, advertisi=
+ng, TP);<br>
+<br>
+This looks very odd. Please can you confirm this revert really does<br>
+make ethtool report the correct advertisement when it has been limited<br>
+to 100Mbps. Because looking at this patch, i have no idea how this is<br>
+going wrong.<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 Andrew<br>
+</blockquote></div>
 
-My method keeps the PTP dependency optional and instead disables the features that required PTP.
+--000000000000e443e706063423f6--
 
-Thanks,
-Jake
-
-> ---
->  drivers/net/ethernet/intel/Kconfig | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/net/ethernet/intel/Kconfig b/drivers/net/ethernet/intel/Kconfig
-> index e6684f3cc0ce0..c452ecf89b984 100644
-> --- a/drivers/net/ethernet/intel/Kconfig
-> +++ b/drivers/net/ethernet/intel/Kconfig
-> @@ -278,7 +278,7 @@ config ICE
->  	tristate "Intel(R) Ethernet Connection E800 Series Support"
->  	default n
->  	depends on PCI_MSI
-> -	depends on PTP_1588_CLOCK_OPTIONAL
-> +	depends on PTP_1588_CLOCK
->  	depends on GNSS || GNSS = n
->  	select AUXILIARY_BUS
->  	select DIMLIB
-> --
-> 2.39.2
-> 
+--===============4888331503274847271==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+
+--===============4888331503274847271==--
