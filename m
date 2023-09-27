@@ -1,85 +1,179 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1B6AE7B07C7
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 27 Sep 2023 17:11:12 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 144E47B0815
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 27 Sep 2023 17:23:06 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 8E4F841997;
-	Wed, 27 Sep 2023 15:11:10 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 8E4F841997
+	by smtp2.osuosl.org (Postfix) with ESMTP id A624741ADD;
+	Wed, 27 Sep 2023 15:23:04 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A624741ADD
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1695827470;
-	bh=XQqL/smeCGfAvpCfWzArb0syqr6x49F25vMcPniUJyE=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=uf0VrfKcs92dx5bSV62dkYUMgEM/yvoZGHitn79SiwIhUzo5ygNbKl7j9on9pVghl
-	 dN8Ygvb4Lvi0cMysUOvUddqUzeZq0qJYZIGkDOkmPrgXpHx4wLCR01Zc4iNxsbeZ0R
-	 QAqbLxfQazKMlR2EmTKU1u24cGRsGQY8Rzwi+fb+52msFkIdbvYVXpE4dVYdrJXnts
-	 V/YagUo18CQx5w0KpDZ4+eJFAP2NTE2BACXsn7XA7LQxclrMAI455eIHtwu2viI2eK
-	 myu1ZeL4Ntws21o4DIighSVu/r3mJriLA/XA36jWZafQH04pNGl7HuN5Es5OD+g/Bo
-	 dzDRpxYyHwByw==
+	s=default; t=1695828184;
+	bh=uEPdCI8I23wIa6Z6kBtVuRnDxdTQVo65K/Z1DzMx2Mo=;
+	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=0hFGLepNUlDhpr311SmUOZFOrc4C1hIAkhLbO+Qe+L9gowLk+0qpppfDgdmgql7Jz
+	 cO9oMXcNsDQfoCzm9sUEnLya0vJTMqgXxm4Kb6/j7VzYZ8Zi5ubUZROA/KF29/XDpL
+	 nfIMXhWnhPRtK6smlMRF/Ct9tazdfODP5i+XqGC/yXQbHfX2L7yjv/ZgTNQGRNWfGA
+	 s5QTlKqeSI+8Gbwn8G16WEAD/UI3zVabjbJJdVJiFK9SeQD/9EasDUjEljPebyAAj0
+	 priOHozsW2CNRVBXUDNba9idyNqtjwGHpMEVOvkZOxsoN8WS57srzXfmQRlu4z3k4j
+	 orSduOGcwNzWA==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id iIm8Z0CMGNty; Wed, 27 Sep 2023 15:11:09 +0000 (UTC)
+	with ESMTP id CT3A026NXfXd; Wed, 27 Sep 2023 15:23:03 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 1784541991;
-	Wed, 27 Sep 2023 15:11:09 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1784541991
+	by smtp2.osuosl.org (Postfix) with ESMTP id 7105E4025D;
+	Wed, 27 Sep 2023 15:23:03 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 7105E4025D
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 1E1171BF5DE
- for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Sep 2023 10:43:30 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 75E691BF286
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Sep 2023 15:22:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id EA9D582F4A
- for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Sep 2023 10:43:29 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org EA9D582F4A
+ by smtp4.osuosl.org (Postfix) with ESMTP id 433CD4225C
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Sep 2023 15:22:58 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 433CD4225C
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 51w_S-zibibU for <intel-wired-lan@lists.osuosl.org>;
- Wed, 27 Sep 2023 10:43:28 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id lJkKz0hGFxMV for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 27 Sep 2023 15:22:56 +0000 (UTC)
 Received: from mgamail.intel.com (mgamail.intel.com [192.55.52.88])
- by smtp1.osuosl.org (Postfix) with ESMTPS id B55CE82F49
- for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Sep 2023 10:43:28 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B55CE82F49
-X-IronPort-AV: E=McAfee;i="6600,9927,10845"; a="412704675"
-X-IronPort-AV: E=Sophos;i="6.03,179,1694761200"; d="scan'208";a="412704675"
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 70FBF42148
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Sep 2023 15:22:56 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 70FBF42148
+X-IronPort-AV: E=McAfee;i="6600,9927,10846"; a="412761357"
+X-IronPort-AV: E=Sophos;i="6.03,181,1694761200"; d="scan'208";a="412761357"
+Received: from fmsmga006.fm.intel.com ([10.253.24.20])
  by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 27 Sep 2023 03:43:27 -0700
+ 27 Sep 2023 08:22:55 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10845"; a="922729569"
-X-IronPort-AV: E=Sophos;i="6.03,179,1694761200"; d="scan'208";a="922729569"
-Received: from unknown (HELO fedora.iind.intel.com) ([10.138.157.125])
- by orsmga005.jf.intel.com with ESMTP; 27 Sep 2023 03:43:24 -0700
-From: Aniruddha Paul <aniruddha.paul@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Wed, 27 Sep 2023 16:12:53 +0530
-Message-Id: <20230927104253.1729049-1-aniruddha.paul@intel.com>
-X-Mailer: git-send-email 2.40.1
+X-IronPort-AV: E=McAfee;i="6600,9927,10846"; a="996182121"
+X-IronPort-AV: E=Sophos;i="6.03,181,1694761200"; d="scan'208";a="996182121"
+Received: from fmsmsx601.amr.corp.intel.com ([10.18.126.81])
+ by fmsmga006.fm.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
+ 27 Sep 2023 08:22:55 -0700
+Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
+ fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.32; Wed, 27 Sep 2023 08:22:55 -0700
+Received: from fmsedg601.ED.cps.intel.com (10.1.192.135) by
+ fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.32 via Frontend Transport; Wed, 27 Sep 2023 08:22:55 -0700
+Received: from NAM02-SN1-obe.outbound.protection.outlook.com (104.47.57.47) by
+ edgegateway.intel.com (192.55.55.70) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.32; Wed, 27 Sep 2023 08:22:48 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=Hdk0Vn6TZRuXXlUYpUjQT41DbwlH4RmSnYlaTfX9skRuZexsTxqprIgVUxf0Jx0fekyHWFC6RO/jDD176nfJiVriUpdbUZ45GS11RamBR1NFjxvRs5VAEChw089aa7d/JdsGVUR2ApAUIuvp8vZMwPVV8CuoHv4ZpP/4SiM/atZNTQlhMAUsagJ1/sv8bvWVGzot3fmY6NtlNSp15hdecKXPuW6CD6RrvhzgW304IZOq19ayLjJBbuIAp4cVA3kS7hKyq/vuKM9lAH9100GueA6e4bsHwZJv+I3po8k/FymbWY6PCwGDfAIlr/R0hWBkqnU4zFf4nZlVgdVt9n/plg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=qBxfBm3E8Ak585Wq6WHIyI77+3slsMqETOj0wn6Mzh8=;
+ b=c7evZP5kH3y/vh8+stAl1m8ehS++edofAlSE2g5MPWEgHcTgqS+i+ON1SA8GeyibLx1H4tMvxYFlwRpbRr8hJ9OK9IXZJ0iFKlIf/fgz8R0+GwJIfsesdwhyUEKNwKuMC1VHhDBqLV/tdYqW3JtFlZ2qRaGKCkM8hPnlyCVCVA9Gy99tilTIFFQWXM2ia+Ri8cstJW56h6PpjIM5VCTN85/h7CjesxFQE+Uy+rg6EkpGJk5chcBg1Em60a30B9KQ5DGW2w750R/U5sQzGpAtgoV0FnBO3ERA/04meUZVZd8gt3wlUGPd/dK3HgiZFdP9CTfOW8Yb1xkuvDAC02J/gg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from DS0PR11MB7357.namprd11.prod.outlook.com (2603:10b6:8:136::11)
+ by SA3PR11MB7528.namprd11.prod.outlook.com (2603:10b6:806:317::22) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6813.28; Wed, 27 Sep
+ 2023 15:22:46 +0000
+Received: from DS0PR11MB7357.namprd11.prod.outlook.com
+ ([fe80::4b01:f9bb:f8bb:65f5]) by DS0PR11MB7357.namprd11.prod.outlook.com
+ ([fe80::4b01:f9bb:f8bb:65f5%7]) with mapi id 15.20.6813.017; Wed, 27 Sep 2023
+ 15:22:46 +0000
+From: "Rucinska, Monika" <monika.rucinska@intel.com>
+To: "e1000-patches@eclists.intel.com" <e1000-patches@eclists.intel.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Thread-Topic: [ANN] Upstreaming Process Change - Mandatory "reviewed-by" Tag 
+Thread-Index: AdnwRfzUkSx9blm4QtanqRcWEaxe4AABSnWA
+Date: Wed, 27 Sep 2023 15:22:31 +0000
+Deferred-Delivery: Wed, 27 Sep 2023 15:21:41 +0000
+Message-ID: <DS0PR11MB7357050A8489A7AB2B76BDA9F4C2A@DS0PR11MB7357.namprd11.prod.outlook.com>
+References: <DS0PR11MB7357A4D02D705DFDE6B1EBB5F4C3A@DS0PR11MB7357.namprd11.prod.outlook.com>
+In-Reply-To: <DS0PR11MB7357A4D02D705DFDE6B1EBB5F4C3A@DS0PR11MB7357.namprd11.prod.outlook.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: DS0PR11MB7357:EE_|SA3PR11MB7528:EE_
+x-ms-office365-filtering-correlation-id: 782b99ac-34c3-4c59-204c-08dbbf6d9a36
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: dUiPhQkVZdin7QvU1K19th3Z2oOzGxFiKuW2pjbAYMbAqNixcQSgO+h96Ba9QdNU8hxDG4uRrUv/H1p2ip9dAwc07tdvYux94cLvae3DC1VXpNiuixrb8Y3SyQEHYHFIyYoxz8lMTZ+oRh8GwuWuB/uPgxHzPV5ze288s5Ix4wxzss8aWwJ4ULm/YV8020KIXgLz8XLXxeDskWCjMhlrbGvbGV5TKHqQxbK76jmfpP4dXoTKgyBxXIOwXg+hrmuBG2m2aW4Yq0lRa3QeMJCtJgRpZ+aLxDndzVd1ig/DpJZQ6WohzADvJgYiY7MIMo5pmpSAvgosObPkTnFd8M9nCH2SvPgjRNjWDynqH0xaun5QQaSvPeObBWquHuBfBRm0WfSPtx9WhUXJbQHdWKWT5CLl8sLVZSJm3a7vSjjxyAffc2XmN+7HHJGzylkxwSI4TA5Il9rDS8KVjbuSKQk0BKYwa6YsMrgZ/o/7jjmi2Fz27juaU4Mka80gYK2jV5dTOhj8stb27YyFv3ef4gs+o9G9FikU5sNU5jQGQMNdF5HZV6lUA+h3FuU/o4KAo5THG8Zsh912f7aujH/MJOtFl3I185ejBkb6tOSCicPsyXqfj8yI91+TJmatChPMyBZayuDavR45DS+8/2TZEo9Lug==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:DS0PR11MB7357.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230031)(376002)(39860400002)(346002)(366004)(396003)(136003)(230922051799003)(451199024)(186009)(1800799009)(33656002)(86362001)(55016003)(6506007)(966005)(71200400001)(52536014)(26005)(5660300002)(7696005)(110136005)(9686003)(64756008)(66446008)(66556008)(66476007)(316002)(4743002)(76116006)(41300700001)(8676002)(8936002)(478600001)(66946007)(2906002)(38100700002)(82960400001)(6666004)(38070700005)(122000001)(83380400001);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?iso-8859-2?Q?Wu+xegJ+tRc3iSg9DNwTqz9C9gE904symx/601ZjOidU3H5pRB60hxah5V?=
+ =?iso-8859-2?Q?gPQRzS1gpnmyf0kSYbNZPpB9XT6ISbAfonQinwa9s460dH65RjpYjf81yG?=
+ =?iso-8859-2?Q?VB+m0x3uRkzrY57hkXKfuBlnlC2NuI5OWpLxkxlKvhmmRlQ66xsf8LC/5C?=
+ =?iso-8859-2?Q?Ea90KpS15/M+74+qv0FadbRB2G51TKntdOGDW6vJml+0O5SN9+/8dyQDN+?=
+ =?iso-8859-2?Q?3HJT5x8IYPPVYIi9Qb0838YG4uYPy9wWRB2h3Bg5eyeJ5d8GSZRl0+I9uC?=
+ =?iso-8859-2?Q?LEXbuBi8OQcjAguJE3dDN9VReKRiHDvHrynvm+XwQSYtYnGaahPOyaZtaN?=
+ =?iso-8859-2?Q?AM3u1QLvauHzgAoKiYN8MeC5h2y0NC2j1o/4c/wuHxF4QCIs4Cg4h6glfR?=
+ =?iso-8859-2?Q?LDUKug9LNy5eSztyGCKBMIiIzKuXZktD8cgb0AxZ0myZzYsImP7lIvC+EA?=
+ =?iso-8859-2?Q?agvcv0drQuUh0U7YFkyXVikKNBJebLPxHuxZ1IEgto8G9KYFyFZ47XpMN0?=
+ =?iso-8859-2?Q?PX3yumPiYGA9KcMAAjuHTF8/ai7f7PPd2R7uhpMfXndWrht5/D6wxDgwFE?=
+ =?iso-8859-2?Q?UH20cUSIU+m3v7QtXcbp0Bq2K2p9aUjvgUfV4n7a8YnF29eRwC15BgFEps?=
+ =?iso-8859-2?Q?JwGkELyG7vXke8lO+1LSCMrsVWEMBhwmNgVx9UT4FllBP0AFzn2Cvl9tho?=
+ =?iso-8859-2?Q?buv2vPFEm19QW1VGxT+jbLMILgI9EtvkTw6aXjhiJaIBi0bVcQzrNJ7XJa?=
+ =?iso-8859-2?Q?Y6uL99Piq2sQpK7RbCtslE8fHlqn/xiZ6ChgadGuF0hPA1Hz3/GyfJMX9H?=
+ =?iso-8859-2?Q?1hSFOfROZ87t9pZJ0hNwG0Jt08I9pTx6wykMipurxXoeh+5utI4bKR7nxO?=
+ =?iso-8859-2?Q?9MTTrgQ2josOpvj9Yo3D++rBY4kKI4SBI5/rSZr3ByakhP60c4/z5t7Op1?=
+ =?iso-8859-2?Q?wFF70cI2msiUyTMHJPwWGUHQJC0nvOQSNxpQrTH7hFgW6XoykfPQ4naRdR?=
+ =?iso-8859-2?Q?A25YMmRRZtToxvkcifZIUYQPSPaPUx2lZ7RTE1s/xrc+fu7y4CZ7f4Ov0R?=
+ =?iso-8859-2?Q?DyGz8uWlwdsuqbkqNB6+kPp2y1gStECauSb+j9rhBGTzzSiYj0NTzBJA8G?=
+ =?iso-8859-2?Q?BzhWWVyTUltUVxFrTXGCgS1uhw/ZP6/LzIGzAxf/servXfyfIpZ38SDgjP?=
+ =?iso-8859-2?Q?bWXdllNgAoQ5XpK+yHUMxeuhCa2o0FI7AA5IXnJ0FmQ9fdaEe3ARqOPecZ?=
+ =?iso-8859-2?Q?+jjlBmD17bg2uEHpZ802kk/yyheMIWXjbeFdIz3dgynefw4xCC52UOtd6u?=
+ =?iso-8859-2?Q?Zz2DCmYvWQcIjX7784BkuWxx+W5UbMIOOLSgYwrZqln3C8F49d1mKpPGhh?=
+ =?iso-8859-2?Q?rzaW2DhC27l7OouGgwwS/1j7kl63YKJwtPO6xUwlI1xfjI1DHlQrYBmWcQ?=
+ =?iso-8859-2?Q?jmfuD+OOJA2EzLjQnUI1QdnqVn8At439QnVtPhTlXHs+K014pApSVGfGOl?=
+ =?iso-8859-2?Q?WzspCnimlNi8Q0SDOL2MDYLIrpPk7IoISqcIq0+Ke4Wj3i/WFGbhyS4fxE?=
+ =?iso-8859-2?Q?YOO90Xuh833EV87SedNe41VV+HJj4Mig+wGgXx9FVtvrY5QSUvKNoYww3r?=
+ =?iso-8859-2?Q?JlD8E22XiruIjV+rkklOA7PYe1QZTQE5mYYaushe984INy72aP/zh3YA?=
+ =?iso-8859-2?Q?=3D=3D?=
 MIME-Version: 1.0
-X-Mailman-Approved-At: Wed, 27 Sep 2023 15:11:04 +0000
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: DS0PR11MB7357.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 782b99ac-34c3-4c59-204c-08dbbf6d9a36
+X-MS-Exchange-CrossTenant-originalarrivaltime: 27 Sep 2023 15:22:46.2047 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: /nesEDc1FrZ9rB1fKfZXILSPF4L2vJYHu1pxj0dEWYehzn+tQoBpZrEWcC/uebAWnZSJZ72fs8pnIKWSvcD6ZSMFAQ+CIKVbCyBIsX0VH2Y=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA3PR11MB7528
+X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1695811408; x=1727347408;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=Dw23sqyuUWOc7PdWJTvKQS/VTXp5Khnn+koeSLqD4l4=;
- b=LRWdLTpOD2prIXpNOj/uSxjdzycm6r7EWWVzLikVw49lPGMEGEtU8T6D
- vPFtMmP2JVdCJurD23nM6FtWDpB6mKaK7ZY11YNwohBLNBpbVuVi+fWmE
- 8DKMpOq7xAZ3784lvm+xegmiFehHEr6OyN5Y+E+BDSzdMQw37oti2Cmmg
- ZfsXyQVKmb+evjIbqLkCXhbE7khW0Qb0nH/4Vv9DJog740Zjtfy5ygXSL
- 4T0SXVXIVPNoxe+/yYqTNotvh3seXLjgJM2TmYM7GnazBBPPevgwdzS3W
- sMxNf+kePTWD7sww6leO/0T2+Y6W9cOV1jeAlwMiYzYvBGImmlCaOckj1
- A==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ t=1695828176; x=1727364176;
+ h=from:to:subject:date:message-id:references:in-reply-to:
+ content-transfer-encoding:mime-version;
+ bh=LvAIrdQ1Cs9qo4aNJfstWcvxWv5Lj2609/V8QqXrEOw=;
+ b=hHIqB9UayBxrLBYmOH3qk8cZ4ohNEe+N74Lm+cZ+IINVasqvJSduCczM
+ 3CjFSU3WoS+voEDYeE3cr73WikWwX411M+4t0XliMEcsjMf4SiFr0pglD
+ ylcqVa5Zy2l9RbL3xNvCVnzH+34iZQD+nWzqeBQMsCz6+n30wbyZo0aov
+ EI8pq0JSVuRZWPgpEzGt3Fyt1fzzyZs+GwOfRoPZ2C0CN1z7PSGflDc2x
+ EF8SpwxdAiN9fBlK+clFWbt+9J+KJ86T28b9ThHDu2qsf5OhCR+IrYryY
+ SaVd4IVm84wpv82mE7nTGJZYkb96QNZoEoT0ie1NitmAHcFELb3zV9dKi
+ w==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=LRWdLTpO
-Subject: [Intel-wired-lan] [PATCH iwl-next,
- v1] ice: Fix VF-VF filter rules in switchdev mode
+ header.a=rsa-sha256 header.s=Intel header.b=hHIqB9Ua
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: [Intel-wired-lan] [ANN] Upstreaming Process Change - Mandatory
+ "reviewed-by" Tag
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,193 +186,56 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Przemek Kitszel <przemyslaw.kitszel@intel.com>, netdev@vger.kernel.org,
- Wojciech Drewek <wojciech.drewek@intel.com>, marcin.szycik@intel.com,
- Aniruddha Paul <aniruddha.paul@intel.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-2"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Any packet leaving VSI i.e VF's VSI is considered as
-egress traffic by HW, thus failing to match the added
-rule.
+Dear e1000 and IWL contributors,
 
-Mark the direction for redirect rules as below:
-1. VF-VF - Egress
-2. Uplink-VF - Ingress
-3. VF-Uplink - Egress
-4. Link_Partner-Uplink - Ingress
-5. Link_Partner-VF - Ingress
+We are implementing a crucial process change to enhance the quality
+and efficiency of our upstream development and upstreaming efforts.
+Effective immediately, every INTEL/NCIS patch posted to IWL must have
+at least one "Reviewed-by" tag, those are provided during e1000 review
+process.  Any exceptions to that process must be agreed upon. By adding
+the "reviewed-by" tag, we can establish a clear indication that a patch
+has undergone careful scrutiny and has received approval from a reviewer.
 
-Fixes: 0960a27bd479 ("ice: Add direction metadata")
-Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-Reviewed-by: Wojciech Drewek <wojciech.drewek@intel.com>
-Signed-off-by: Aniruddha Paul <aniruddha.paul@intel.com>
----
- drivers/net/ethernet/intel/ice/ice_tc_lib.c | 90 ++++++++++++++-------
- 1 file changed, 62 insertions(+), 28 deletions(-)
+Key Rules:
+1. Mandatory "reviewed-by" Tag: Every patch submitted to e1000
+must have at least one "reviewed-by" tag from a reviewer before it is
+sent to IWL.  This tag serves as a sign of endorsement and validates
+the quality of the patch.
+2. Completion within 48 Hours: The review
+process should be completed within 48 hours after the patch appears on
+e1000, except for large series that may require more time.  We encourage
+reviewers to provide timely feedback, ensuring a smooth and efficient
+upstreaming process.
+3. Continued Tagging in Subsequent Patch Series:
+The "reviewed-by" tag should continue to be added to subsequent patch
+series for IWL.  This ensures that each iteration of the patch receives
+the necessary reviews, even if modifications have been made.
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_tc_lib.c b/drivers/net/ethernet/intel/ice/ice_tc_lib.c
-index 37b54db91df2..0e75fc6b3c06 100644
---- a/drivers/net/ethernet/intel/ice/ice_tc_lib.c
-+++ b/drivers/net/ethernet/intel/ice/ice_tc_lib.c
-@@ -630,32 +630,61 @@ bool ice_is_tunnel_supported(struct net_device *dev)
- 	return ice_tc_tun_get_type(dev) != TNL_LAST;
- }
- 
--static int
--ice_eswitch_tc_parse_action(struct ice_tc_flower_fltr *fltr,
--			    struct flow_action_entry *act)
-+static bool ice_tc_is_dev_uplink(struct net_device *dev)
-+{
-+	return netif_is_ice(dev) || ice_is_tunnel_supported(dev);
-+}
-+
-+static int ice_tc_setup_redirect_action(struct net_device *filter_dev,
-+					struct ice_tc_flower_fltr *fltr,
-+					struct net_device *target_dev)
- {
- 	struct ice_repr *repr;
- 
-+	fltr->action.fltr_act = ICE_FWD_TO_VSI;
-+
-+	if (ice_is_port_repr_netdev(filter_dev) &&
-+	    ice_is_port_repr_netdev(target_dev)) {
-+		repr = ice_netdev_to_repr(target_dev);
-+
-+		fltr->dest_vsi = repr->src_vsi;
-+		fltr->direction = ICE_ESWITCH_FLTR_EGRESS;
-+	} else if (ice_is_port_repr_netdev(filter_dev) &&
-+		   ice_tc_is_dev_uplink(target_dev)) {
-+		repr = ice_netdev_to_repr(filter_dev);
-+
-+		fltr->dest_vsi = repr->src_vsi->back->switchdev.uplink_vsi;
-+		fltr->direction = ICE_ESWITCH_FLTR_EGRESS;
-+	} else if (ice_tc_is_dev_uplink(filter_dev) &&
-+		   ice_is_port_repr_netdev(target_dev)) {
-+		repr = ice_netdev_to_repr(target_dev);
-+
-+		fltr->dest_vsi = repr->src_vsi;
-+		fltr->direction = ICE_ESWITCH_FLTR_INGRESS;
-+	} else {
-+		NL_SET_ERR_MSG_MOD(fltr->extack,
-+				   "Unsupported netdevice in switchdev mode");
-+		return -EINVAL;
-+	}
-+
-+	return 0;
-+}
-+
-+static int ice_eswitch_tc_parse_action(struct net_device *filter_dev,
-+				       struct ice_tc_flower_fltr *fltr,
-+				       struct flow_action_entry *act)
-+{
-+	int err;
-+
- 	switch (act->id) {
- 	case FLOW_ACTION_DROP:
- 		fltr->action.fltr_act = ICE_DROP_PACKET;
- 		break;
- 
- 	case FLOW_ACTION_REDIRECT:
--		fltr->action.fltr_act = ICE_FWD_TO_VSI;
--
--		if (ice_is_port_repr_netdev(act->dev)) {
--			repr = ice_netdev_to_repr(act->dev);
--
--			fltr->dest_vsi = repr->src_vsi;
--			fltr->direction = ICE_ESWITCH_FLTR_INGRESS;
--		} else if (netif_is_ice(act->dev) ||
--			   ice_is_tunnel_supported(act->dev)) {
--			fltr->direction = ICE_ESWITCH_FLTR_EGRESS;
--		} else {
--			NL_SET_ERR_MSG_MOD(fltr->extack, "Unsupported netdevice in switchdev mode");
--			return -EINVAL;
--		}
-+		err = ice_tc_setup_redirect_action(filter_dev, fltr, act->dev);
-+		if (err)
-+			return err;
- 
- 		break;
- 
-@@ -696,10 +725,6 @@ ice_eswitch_add_tc_fltr(struct ice_vsi *vsi, struct ice_tc_flower_fltr *fltr)
- 		goto exit;
- 	}
- 
--	/* egress traffic is always redirect to uplink */
--	if (fltr->direction == ICE_ESWITCH_FLTR_EGRESS)
--		fltr->dest_vsi = vsi->back->switchdev.uplink_vsi;
--
- 	rule_info.sw_act.fltr_act = fltr->action.fltr_act;
- 	if (fltr->action.fltr_act != ICE_DROP_PACKET)
- 		rule_info.sw_act.vsi_handle = fltr->dest_vsi->idx;
-@@ -713,13 +738,21 @@ ice_eswitch_add_tc_fltr(struct ice_vsi *vsi, struct ice_tc_flower_fltr *fltr)
- 	rule_info.flags_info.act_valid = true;
- 
- 	if (fltr->direction == ICE_ESWITCH_FLTR_INGRESS) {
-+		/* Uplink to VF */
- 		rule_info.sw_act.flag |= ICE_FLTR_RX;
- 		rule_info.sw_act.src = hw->pf_id;
- 		rule_info.flags_info.act = ICE_SINGLE_ACT_LB_ENABLE;
--	} else {
-+	} else if (fltr->direction == ICE_ESWITCH_FLTR_EGRESS &&
-+		   fltr->dest_vsi == vsi->back->switchdev.uplink_vsi) {
-+		/* VF to Uplink */
- 		rule_info.sw_act.flag |= ICE_FLTR_TX;
- 		rule_info.sw_act.src = vsi->idx;
- 		rule_info.flags_info.act = ICE_SINGLE_ACT_LAN_ENABLE;
-+	} else {
-+		/* VF to VF */
-+		rule_info.sw_act.flag |= ICE_FLTR_TX;
-+		rule_info.sw_act.src = vsi->idx;
-+		rule_info.flags_info.act = ICE_SINGLE_ACT_LB_ENABLE;
- 	}
- 
- 	/* specify the cookie as filter_rule_id */
-@@ -1745,16 +1778,17 @@ ice_tc_parse_action(struct ice_vsi *vsi, struct ice_tc_flower_fltr *fltr,
- 
- /**
-  * ice_parse_tc_flower_actions - Parse the actions for a TC filter
-+ * @filter_dev: Pointer to device on which filter is being added
-  * @vsi: Pointer to VSI
-  * @cls_flower: Pointer to TC flower offload structure
-  * @fltr: Pointer to TC flower filter structure
-  *
-  * Parse the actions for a TC filter
-  */
--static int
--ice_parse_tc_flower_actions(struct ice_vsi *vsi,
--			    struct flow_cls_offload *cls_flower,
--			    struct ice_tc_flower_fltr *fltr)
-+static int ice_parse_tc_flower_actions(struct net_device *filter_dev,
-+				       struct ice_vsi *vsi,
-+				       struct flow_cls_offload *cls_flower,
-+				       struct ice_tc_flower_fltr *fltr)
- {
- 	struct flow_rule *rule = flow_cls_offload_flow_rule(cls_flower);
- 	struct flow_action *flow_action = &rule->action;
-@@ -1769,7 +1803,7 @@ ice_parse_tc_flower_actions(struct ice_vsi *vsi,
- 
- 	flow_action_for_each(i, act, flow_action) {
- 		if (ice_is_eswitch_mode_switchdev(vsi->back))
--			err = ice_eswitch_tc_parse_action(fltr, act);
-+			err = ice_eswitch_tc_parse_action(filter_dev, fltr, act);
- 		else
- 			err = ice_tc_parse_action(vsi, fltr, act);
- 		if (err)
-@@ -1856,7 +1890,7 @@ ice_add_tc_fltr(struct net_device *netdev, struct ice_vsi *vsi,
- 	if (err < 0)
- 		goto err;
- 
--	err = ice_parse_tc_flower_actions(vsi, f, fltr);
-+	err = ice_parse_tc_flower_actions(netdev, vsi, f, fltr);
- 	if (err < 0)
- 		goto err;
- 
--- 
-2.40.1
+These changes aim to streamline the upstreaming process, improve code
+quality, and encourage collaboration among contributors. Please ensure
+compliance with these new guidelines.
 
+If you have any questions or need further clarification regarding this
+process change, please feel free to reach out to me or any of upstreaming
+contact points.  Thank you for your understanding and commitment
+to maintaining the highest standards in our upstreaming process.
+For more detailed information please follow the link to the Wiki [1]
+or to presentation [2].
+
+[1]
+https://wiki.ith.intel.com/pages/viewpage.action?spaceKey=3DLADSW&title=3DH=
+ow+to+upstream+a+patch
+[2]
+https://intel-my.sharepoint.com/:p:/p/monika_rucinska/EQs_jci29JlKvDIW1Yb6g=
+o0BBNnUf3A_IrVFBfn63ltqmw?e=3DNqRqce
+
+Best regards,
+Monika Ruci=F1ska
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
