@@ -1,95 +1,86 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id C33717AFBAE
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 27 Sep 2023 09:08:29 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id CB4D57AFE79
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 27 Sep 2023 10:31:54 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 5B61582784;
-	Wed, 27 Sep 2023 07:08:28 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 5B61582784
+	by smtp4.osuosl.org (Postfix) with ESMTP id 7A96A42095;
+	Wed, 27 Sep 2023 08:31:51 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7A96A42095
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1695798508;
-	bh=Z8oGr7U11PiYiyM7Ur1XFRKtsFKfBWmUiFw6yDHFi4o=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=gRNDmaXgdlBtUdgC0qj1JPVfyfGHJcfAbBS98dYqN89Rq7lZHcDMRLuvMaLkWSZcT
-	 j7jO1Fpp/IS6nrV6t+OsUwvBcZdQ7V+2ePka8Qw7myYwCW55PSqCBiksxNaGOM5axV
-	 fMMiLMh7w3Y+vQCM5noBDyUTCU6nyfwcdnOF1v60dPF5ZLO9L3on0VbqhNcayKNZZZ
-	 M8lUiznhaAx1esS6Bs3n8X8O7ILYoRFbkgD5xX/aoWWf+zNNkBAg3yQNHqNyM90wUQ
-	 kc4YJA1Ms4XucHjrfdbv4CVHPLCNC0J4qS4ywW+CB/ioM7/O4T/trVHfO0kUHoDQWl
-	 1bsUM6Zz/yGrA==
+	s=default; t=1695803511;
+	bh=cJAoKvr3vxFTQXTh8j3ClDgThMrgPtS/9ix0aC71hwA=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=ceuf25sw6Nveu5vpREkrTVMXe8caYqVY85g6CTWeq8j67Mo+AK0o7xuCj5ydJHag6
+	 rupyU1bRzU2phLHf0PjpP5OUOhc0WmPvQBgx7iQz+n/JQw7h44YRwalIzeoR+BR3Gq
+	 v0luDE4mQDHAsYw+ruSb26GsPbNpiLDhJPBQEb1W+Rba8fjDJOe/1FQzh2hgX5MK3f
+	 B3b6c49/uDfaE0YT0qW6Kwkx55bk6S/SR19o/eoPl7zw77Wl+IKD7/Rw7WgD3rRVJ4
+	 fWMwPicczJt0CZlCQeKhaC5Bh6CT4eAX5UIzr+INxaDmGguLWtm0JViTQ1cMeyXRLg
+	 kdf988+Bzn/1g==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id OVvA-C-cIH56; Wed, 27 Sep 2023 07:08:27 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id jWEECgfrrnR6; Wed, 27 Sep 2023 08:31:50 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 4C15F82778;
-	Wed, 27 Sep 2023 07:08:27 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4C15F82778
+	by smtp4.osuosl.org (Postfix) with ESMTP id 1B8F841F5C;
+	Wed, 27 Sep 2023 08:31:50 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1B8F841F5C
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id BC99D1BF23C
- for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Sep 2023 07:08:22 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 5C4291BF5DE
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Sep 2023 08:31:45 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 8454361020
- for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Sep 2023 07:08:22 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 8454361020
+ by smtp1.osuosl.org (Postfix) with ESMTP id 13E5E82B34
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Sep 2023 08:31:45 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 13E5E82B34
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 2psN7nTdOkKd for <intel-wired-lan@lists.osuosl.org>;
- Wed, 27 Sep 2023 07:08:21 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 4Yl1cZryrKEA for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 27 Sep 2023 08:31:44 +0000 (UTC)
 Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.129.124])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 900F46101B
- for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Sep 2023 07:08:21 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 900F46101B
+ (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 5A65082B1E
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Sep 2023 08:31:44 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 5A65082B1E
 Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
  by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-9-polHlrETPIugM8oCdkdXCA-1; Wed, 27 Sep 2023 03:08:16 -0400
-X-MC-Unique: polHlrETPIugM8oCdkdXCA-1
-Received: from smtp.corp.redhat.com (int-mx09.intmail.prod.int.rdu2.redhat.com
- [10.11.54.9])
+ us-mta-94-LhP0U0hdPgKzOIsqtwUPgg-1; Wed, 27 Sep 2023 04:31:38 -0400
+X-MC-Unique: LhP0U0hdPgKzOIsqtwUPgg-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.6])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 0605F3C0C4A0;
- Wed, 27 Sep 2023 07:08:16 +0000 (UTC)
-Received: from [10.45.225.119] (unknown [10.45.225.119])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 5D90D492B16;
- Wed, 27 Sep 2023 07:08:14 +0000 (UTC)
-Message-ID: <16cc3132-9d2c-04de-51b6-88e4476b4d26@redhat.com>
-Date: Wed, 27 Sep 2023 09:08:13 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.15.0
-Content-Language: en-US
-To: Przemek Kitszel <przemyslaw.kitszel@intel.com>, netdev@vger.kernel.org
-References: <20230926182710.2517901-1-ivecera@redhat.com>
- <20230926182710.2517901-8-ivecera@redhat.com>
- <f17ed43b-7329-5566-a75e-befebd20d032@intel.com>
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 599011C0CCC1;
+ Wed, 27 Sep 2023 08:31:38 +0000 (UTC)
+Received: from p1.luc.cera.cz (unknown [10.45.225.119])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 8C8212156702;
+ Wed, 27 Sep 2023 08:31:36 +0000 (UTC)
 From: Ivan Vecera <ivecera@redhat.com>
-In-Reply-To: <f17ed43b-7329-5566-a75e-befebd20d032@intel.com>
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.9
+To: netdev@vger.kernel.org
+Date: Wed, 27 Sep 2023 10:31:26 +0200
+Message-ID: <20230927083135.3237206-1-ivecera@redhat.com>
+MIME-Version: 1.0
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.6
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=redhat.com; 
- s=mimecast20190719; t=1695798500;
+ s=mimecast20190719; t=1695803502;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=4kaLfJmtB6MqdF1sxC45vDWpKHYD0ArvO2N0519Wf3c=;
- b=Or0AoxtMN6HLlZjgUjfqXVm9G2oyFIalSYNiEGgicxyMi7GDl8YqRFbD5E7RZB3IzIb8EE
- zLekPHoHLO6k616V5yLBL+x1x+C4z9rVNcP1IZf8mnmH2KT6GEBonixVMg37R+gEqEN/0T
- tbuslTgNV4FxhQEdKPYmqCKrEQqSQjg=
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=rb3zxIpSULzDXYGrVPMEtJunp5C3RMSrw/MepQSv0j8=;
+ b=Dwf9iqwc9pH+3yabRNhSB/EA7M/yMEWZd1dVOEM4fq300J8gPLOBCLODG/i3/v0crLYkT7
+ wPCvp4n1t+yCdWeAm3cON03tvMmt0MgXWCYpZ+rBkXBzjG9w1Q++7rHgeV47z/j7b6bRee
+ t5Qd+pWovj2NUVha9U8gfDClkUiFP30=
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
- header.a=rsa-sha256 header.s=mimecast20190719 header.b=Or0AoxtM
-Subject: Re: [Intel-wired-lan] [PATCH net-next 7/9] i40e: Move memory
- allocation structures to i40e_alloc.h
+ header.a=rsa-sha256 header.s=mimecast20190719 header.b=Dwf9iqwc
+Subject: [Intel-wired-lan] [PATCH net-next v2 0/9] i40e: House-keeping and
+ clean-up
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -104,44 +95,72 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Cc: edumazet@google.com, intel-wired-lan@lists.osuosl.org,
  jesse.brandeburg@intel.com, linux-kernel@vger.kernel.org,
- anthony.l.nguyen@intel.com, kuba@kernel.org, pabeni@redhat.com,
- davem@davemloft.net
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+ anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com, kuba@kernel.org,
+ pabeni@redhat.com, davem@davemloft.net
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-CgpPbiAyNi4gMDkuIDIzIDIxOjU3LCBQcnplbWVrIEtpdHN6ZWwgd3JvdGU6Cj4gT24gOS8yNi8y
-MyAyMDoyNywgSXZhbiBWZWNlcmEgd3JvdGU6Cj4+IFN0cnVjdHVyZXMgaTQwZV9kbWFfbWVtICYg
-aTQwZV92aXJ0X21lbSBhcmUgZGVmaW5lZCBpNDBlX29zZGVwLmggd2hpbGUKPj4gbWVtb3J5IGFs
-bG9jYXRpb24gZnVuY3Rpb25zIHRoYXQgdXNlIHRoZW0gYXJlIGRlY2xhcmVkIGluIGk0MGVfYWxs
-b2MuaAo+PiBNb3ZlIHRoZW0gdG8gaTQwZV9hbGxvYy5oIGFuZCByZW1vdmUgdGhpcyBoZWFkZXIg
-ZmlsZSBkZXBlbmRlbmN5IG9uCj4+IGk0MGVfb3NkZXAuaCBoZWFkZXIuCj4+Cj4+IER1ZSB0byBy
-ZW1vdmFsIG9mIHRoaXMgZGVwZW5kZW5jeSB3ZSBoYXZlIHRvIGluY2x1ZGUgaTQwZV9vc2RlcC5o
-IGluIAo+PiBmaWxlcwo+PiB0aGF0IHJlcXVpcmVzIGl0Lgo+Pgo+PiBTaWduZWQtb2ZmLWJ5OiBJ
-dmFuIFZlY2VyYSA8aXZlY2VyYUByZWRoYXQuY29tPgo+PiAtLS0KPj4gwqAgZHJpdmVycy9uZXQv
-ZXRoZXJuZXQvaW50ZWwvaTQwZS9pNDBlX2FkbWlucS5jIHzCoCAxICsKPj4gwqAgZHJpdmVycy9u
-ZXQvZXRoZXJuZXQvaW50ZWwvaTQwZS9pNDBlX2FkbWlucS5oIHzCoCAyICstCj4+IMKgIGRyaXZl
-cnMvbmV0L2V0aGVybmV0L2ludGVsL2k0MGUvaTQwZV9hbGxvYy5owqAgfCAyMSArKysrKysrKysr
-KysrKysrKystCj4+IMKgIGRyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2k0MGUvaTQwZV9jb21t
-b24uYyB8wqAgMSArCj4+IMKgIGRyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2k0MGUvaTQwZV9k
-Y2IuY8KgwqDCoCB8wqAgMSArCj4+IMKgIGRyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2k0MGUv
-aTQwZV9kaWFnLmPCoMKgIHzCoCAxICsKPj4gwqAgZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwv
-aTQwZS9pNDBlX2htYy5jwqDCoMKgIHzCoCAxICsKPj4gwqAgZHJpdmVycy9uZXQvZXRoZXJuZXQv
-aW50ZWwvaTQwZS9pNDBlX2htYy5owqDCoMKgIHzCoCAyICstCj4+IMKgIC4uLi9uZXQvZXRoZXJu
-ZXQvaW50ZWwvaTQwZS9pNDBlX2xhbl9obWMuY8KgwqDCoCB8wqAgMSArCj4+IMKgIGRyaXZlcnMv
-bmV0L2V0aGVybmV0L2ludGVsL2k0MGUvaTQwZV9udm0uY8KgwqDCoCB8wqAgMSArCj4+IMKgIGRy
-aXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2k0MGUvaTQwZV9vc2RlcC5owqAgfCAxOSAtLS0tLS0t
-LS0tLS0tLS0tLQo+PiDCoCAxMSBmaWxlcyBjaGFuZ2VkLCAyOSBpbnNlcnRpb25zKCspLCAyMiBk
-ZWxldGlvbnMoLSkKPiAKPiBJIHZlcnkgbXVjaCBsaWtlIHRoaXMgc2VyaWVzLCBidXQgZXh0ZW5k
-aW5nIGk0MGVfb3NkZXAuaCB1c2FnZSBhc2tzIGZvciAKPiBjb21tZW50IPCfmIkgLSBwbGVhc2Ug
-dHJ5IHRvIHJlb3JkZXIgcGF0Y2hlcyB0byBoYXZlIGxlc3MgZGVwZW5kZW5jeSBvbiBpdCAKPiBm
-aXJzdCwgYW5kIGFmdGVyd2FyZHMgZG8gc3BsaXQKPiAoSU9XIGZpcnN0IHJlbW92ZSZyZWR1Y2Us
-IHRoZW4gc3BsaXQgd2hhdCdzIGxlZnQpCj4gCj4gKGRpc2NsYWltZXI6IEkgaGF2ZSBub3QgZG91
-YmxlIGNoZWNrZWQgaWYgdGhhdCdzIHBvc3NpYmxlKQoKSSB3aWxsIG1vdmUgdGhlIHBhdGNoIDUg
-YWZ0ZXIgaTQwZV9vc2RlcCBzcGxpdCBhbmQgbWVtb3J5IGFsbG9jYXRpb24gCmNsZWFuLXVwIHBh
-dGNoZXMuIFRoaXMgc2hvdWxkIHNpbXBsaWZ5IHRoZSBjaGFuZ2VzLgoKVGhhbmtzIGZvciBjb21t
-ZW50Li4uCgpJdmFuCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fXwpJbnRlbC13aXJlZC1sYW4gbWFpbGluZyBsaXN0CkludGVsLXdpcmVkLWxhbkBvc3Vvc2wu
-b3JnCmh0dHBzOi8vbGlzdHMub3N1b3NsLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVsLXdpcmVk
-LWxhbgo=
+The series makes some house-keeping tasks on i40e driver:
+
+Patch 1: Removes unnecessary back pointer from i40e_hw
+Patch 2: Moves I40E_MASK macro to i40e_register.h where is used
+Patch 3: Refactors I40E_MDIO_CLAUSE* to use the common macro
+Patch 4: Add header dependencies to <linux/avf/virtchnl.h>
+Patch 5: Simplifies memory alloction functions
+Patch 6: Moves mem alloc structures to i40e_alloc.h
+Patch 7: Splits i40e_osdep.h to i40e_debug.h and i40e_io.h
+Patch 8: Removes circular header deps, fixes and cleans headers
+Patch 9: Moves DDP specific macros and structs to i40e_ddp.c
+
+Changes:
+v2 - Fixed kdoc comment for i40e_hw_to_pf()
+   - Reordered patches 5 and 7-9 to make them simplier
+
+ drivers/net/ethernet/intel/i40e/i40e.h        | 76 +++++--------------
+ drivers/net/ethernet/intel/i40e/i40e_adminq.c |  8 +-
+ drivers/net/ethernet/intel/i40e/i40e_adminq.h |  3 +-
+ .../net/ethernet/intel/i40e/i40e_adminq_cmd.h |  2 +
+ drivers/net/ethernet/intel/i40e/i40e_alloc.h  | 24 +++---
+ drivers/net/ethernet/intel/i40e/i40e_client.c |  1 -
+ drivers/net/ethernet/intel/i40e/i40e_common.c | 11 ++-
+ drivers/net/ethernet/intel/i40e/i40e_dcb.c    |  4 +-
+ drivers/net/ethernet/intel/i40e/i40e_dcb_nl.c |  2 +-
+ drivers/net/ethernet/intel/i40e/i40e_ddp.c    | 24 +++++-
+ drivers/net/ethernet/intel/i40e/i40e_debug.h  | 47 ++++++++++++
+ .../net/ethernet/intel/i40e/i40e_debugfs.c    |  3 +-
+ drivers/net/ethernet/intel/i40e/i40e_diag.h   |  5 +-
+ .../net/ethernet/intel/i40e/i40e_ethtool.c    |  3 +-
+ drivers/net/ethernet/intel/i40e/i40e_hmc.c    | 16 ++--
+ drivers/net/ethernet/intel/i40e/i40e_hmc.h    |  4 +
+ drivers/net/ethernet/intel/i40e/i40e_io.h     | 16 ++++
+ .../net/ethernet/intel/i40e/i40e_lan_hmc.c    |  9 +--
+ .../net/ethernet/intel/i40e/i40e_lan_hmc.h    |  2 +
+ drivers/net/ethernet/intel/i40e/i40e_main.c   | 57 ++++++++------
+ drivers/net/ethernet/intel/i40e/i40e_nvm.c    |  2 +
+ drivers/net/ethernet/intel/i40e/i40e_osdep.h  | 59 --------------
+ .../net/ethernet/intel/i40e/i40e_prototype.h  |  9 ++-
+ drivers/net/ethernet/intel/i40e/i40e_ptp.c    |  3 +-
+ .../net/ethernet/intel/i40e/i40e_register.h   |  5 ++
+ drivers/net/ethernet/intel/i40e/i40e_txrx.c   |  7 +-
+ drivers/net/ethernet/intel/i40e/i40e_txrx.h   |  1 +
+ .../ethernet/intel/i40e/i40e_txrx_common.h    |  2 +
+ drivers/net/ethernet/intel/i40e/i40e_type.h   | 59 +++-----------
+ .../ethernet/intel/i40e/i40e_virtchnl_pf.c    |  2 +
+ .../ethernet/intel/i40e/i40e_virtchnl_pf.h    |  4 +-
+ drivers/net/ethernet/intel/i40e/i40e_xsk.c    |  4 -
+ drivers/net/ethernet/intel/i40e/i40e_xsk.h    |  4 +
+ include/linux/avf/virtchnl.h                  |  4 +
+ 34 files changed, 231 insertions(+), 251 deletions(-)
+ create mode 100644 drivers/net/ethernet/intel/i40e/i40e_debug.h
+ create mode 100644 drivers/net/ethernet/intel/i40e/i40e_io.h
+ delete mode 100644 drivers/net/ethernet/intel/i40e/i40e_osdep.h
+
+-- 
+2.41.0
+
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
