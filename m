@@ -1,90 +1,105 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 66BFE7B5571
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  2 Oct 2023 16:49:16 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 48EAB7B557C
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  2 Oct 2023 16:53:40 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 7E4E4610EB;
-	Mon,  2 Oct 2023 14:49:14 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7E4E4610EB
+	by smtp3.osuosl.org (Postfix) with ESMTP id CA1DA61076;
+	Mon,  2 Oct 2023 14:53:38 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org CA1DA61076
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1696258154;
-	bh=CSIfzzB9lsSxariSiIdnBLhJ8N7BmfK7kPbzEoppobQ=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1696258418;
+	bh=SX3QXEaR6D8cgew1TYopFJTWBofzj0MG/+aF3a4XLes=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=YyGFO5d7YQaOCc3LKynFgkA4GHRU7O82UY7JA0cxMESP9DrI033NYHW3e58rlJ8aH
-	 ju7h2CSAjYme9oPM0fhYahc48FYLkA0f2U9vfTXkk717BIxeBFxdWJJHDoyGYohPu4
-	 OjoeeSy7cDB6IEg3d2GXzz2G9JIzH502QoNAx+ZOf5z+xafqU9jx8iEB61vTn4Y0Zt
-	 yb6n626X5fRBn71uW+s1grhDoGmH1+rOpFf29XYuHdAcNWeHzpncK1gbyU9YtqbjEs
-	 hXvcPdKwZ1YZT6NHWVHw35S9jCObe1W+AYBgN2B6NfmRZGsfJfcFFDraC+aRhiAIMa
-	 A+zoni8ovFJQQ==
+	b=X4hMgfEui2hz3GGUO/Ga+mcrap6OSL4vMNiMA5+au3XCGpAJj1JhgMTWH6CLQJaSS
+	 ptXVbF+zJR55b6tEg8H67+FzxFQrAidGlnRzb3NZLGr29wWbXYkPCC8cMdkPVOIIs/
+	 0KrBwNuqlvi2qk4wSWm84XbzXNPN8AeGRwFBLkKxaatr4sYIfmeFoVLQAUFwobCsaV
+	 hAwo2tiptSA2HXPoLcm5hDx9E47PUxNwAcyaize6IJjTpH2+Q4Jtm58bFdKcaWUWya
+	 kkXQz0WgEYozXSKPArv7Ct3WNjB4T1UbwPCG6bb9GD3A4X4JwYxk5/HafecYZUYxM9
+	 /VyhUon+XE5GA==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id jAIRoGbHQbuB; Mon,  2 Oct 2023 14:49:13 +0000 (UTC)
+	with ESMTP id JZRMiudD3_t4; Mon,  2 Oct 2023 14:53:36 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 0F4996106C;
-	Mon,  2 Oct 2023 14:49:13 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0F4996106C
+	by smtp3.osuosl.org (Postfix) with ESMTP id C1D5060BBD;
+	Mon,  2 Oct 2023 14:53:35 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C1D5060BBD
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id A10951BF584
- for <intel-wired-lan@lists.osuosl.org>; Mon,  2 Oct 2023 14:49:05 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 1DF711BF584
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  2 Oct 2023 14:53:31 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 740CF610A0
- for <intel-wired-lan@lists.osuosl.org>; Mon,  2 Oct 2023 14:49:05 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 740CF610A0
+ by smtp1.osuosl.org (Postfix) with ESMTP id E66CA81FA2
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  2 Oct 2023 14:53:30 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E66CA81FA2
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id vJCSYzRsJ3b4 for <intel-wired-lan@lists.osuosl.org>;
- Mon,  2 Oct 2023 14:49:02 +0000 (UTC)
-Received: from mgamail.intel.com (mgamail.intel.com [134.134.136.24])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 9893D61063
- for <intel-wired-lan@lists.osuosl.org>; Mon,  2 Oct 2023 14:49:02 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9893D61063
-X-IronPort-AV: E=McAfee;i="6600,9927,10851"; a="385476104"
-X-IronPort-AV: E=Sophos;i="6.03,194,1694761200"; d="scan'208";a="385476104"
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
- by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 02 Oct 2023 07:49:01 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10851"; a="874375006"
-X-IronPort-AV: E=Sophos;i="6.03,194,1694761200"; d="scan'208";a="874375006"
-Received: from irvmail002.ir.intel.com ([10.43.11.120])
- by orsmga004.jf.intel.com with ESMTP; 02 Oct 2023 07:48:56 -0700
-Received: from baltimore.igk.intel.com (baltimore.igk.intel.com [10.102.21.1])
- by irvmail002.ir.intel.com (Postfix) with ESMTP id 340B743C33;
- Mon,  2 Oct 2023 15:48:54 +0100 (IST)
-From: Pawel Chmielewski <pawel.chmielewski@intel.com>
-To: netdev@vger.kernel.org
-Date: Mon,  2 Oct 2023 16:44:12 +0200
-Message-Id: <20231002144412.1755194-3-pawel.chmielewski@intel.com>
-X-Mailer: git-send-email 2.37.3
-In-Reply-To: <20231002144412.1755194-1-pawel.chmielewski@intel.com>
-References: <20231002144412.1755194-1-pawel.chmielewski@intel.com>
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id Usp05Fdsw6eN for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  2 Oct 2023 14:53:29 +0000 (UTC)
+Received: from mail-ed1-x530.google.com (mail-ed1-x530.google.com
+ [IPv6:2a00:1450:4864:20::530])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 8EED681FA5
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  2 Oct 2023 14:53:28 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8EED681FA5
+Received: by mail-ed1-x530.google.com with SMTP id
+ 4fb4d7f45d1cf-53406799540so16928222a12.1
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 02 Oct 2023 07:53:28 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1696258406; x=1696863206;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=Io8DiXqjSfTqepUgkoeQXJPEkLkiVe5602Ih+UtiRhc=;
+ b=Hg2PndGw+zy4N5exzHDfac+lFoBfg8eTa/7mPaB4kbK764i/bWEDkmTJBqEt9huM8J
+ +FmdUhDh9hxroWiTwss/2KbX7UjDnTfzfP/ZYHqHJDS3Nv+nMCdKjDzDqJYNpuPkw0BE
+ Gc8Zli1xqjbdpDutzMUPbOc0yKc/3Ow3PYuSIykh5v0qYRApPNoznlO1S72ErCHIXDVD
+ B6jIaAedkKotneSOglY3kOVeZAL+7+IkURGgEchzcD3ogG8MT0Zt0HKb8dnXAaxCIicb
+ 2WEAHOigeIi0UprHsNsL1u0RqNRP9+mtOWTUDO/IAEwhRbTpYBwPI2FkBZ58dYfmQgHR
+ iv3g==
+X-Gm-Message-State: AOJu0YydzhTGx9xc+gjZD0snxvjInL5LWxi4ggOvN6jsA0qyxaPNKiGq
+ sIp5LwmPToKQqIlN/afcMA2hdw==
+X-Google-Smtp-Source: AGHT+IGLdofiABYnVTHaKEqx4FAGXdzNwFEC1xhDWk5ks3eDjq8Ai96j3n5CHrYeigrr56gl72n0Wg==
+X-Received: by 2002:a05:6402:1481:b0:530:5465:ad6d with SMTP id
+ e1-20020a056402148100b005305465ad6dmr9956304edv.2.1696258406261; 
+ Mon, 02 Oct 2023 07:53:26 -0700 (PDT)
+Received: from localhost (host-213-179-129-39.customer.m-online.net.
+ [213.179.129.39]) by smtp.gmail.com with ESMTPSA id
+ cy23-20020a0564021c9700b005362c9905b2sm6638316edb.35.2023.10.02.07.53.25
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 02 Oct 2023 07:53:25 -0700 (PDT)
+Date: Mon, 2 Oct 2023 16:53:24 +0200
+From: Jiri Pirko <jiri@resnulli.us>
+To: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
+Message-ID: <ZRrZZDDvuifWhDeL@nanopsycho>
+References: <20230927092435.1565336-1-arkadiusz.kubalewski@intel.com>
+ <20230927092435.1565336-3-arkadiusz.kubalewski@intel.com>
 MIME-Version: 1.0
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1696258142; x=1727794142;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=YI337NDib3HjeDmkE/CY4l6KOioR/S3EP7lU7GCo+BM=;
- b=KD/Zv6CNljeoTyHgvvfiBM75HZQ9kCswh+/nFlGnGjAGPsJ9HrqWYd5y
- /cCI68iefNPj4yx7l7dHjDfxfz2tpphyQTi6TkDg9JJwaU7ygDD8jlz+K
- Ro9jAqBLvyh916Q0z1vLhhdHqr/sLP0ND9NHn70igHvTWhze0cPAVMrbH
- Fv6CXqlQREcpv+xg39pn/UJGNusPejLwdJm4jLL137q61Ov/w+HguyQ/Y
- Jp8Rq1maBXa2eXjBIGlZ67wdKWZ30AU7Nb9OrWv7Rg0KvkibvsyBXVJOr
- q2UJ5MTkNStQszSPtEqcBYWSDmWpFfDlKVYMbytvfikwFfX4Vyfwlj3Sw
- A==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=KD/Zv6CN
-Subject: [Intel-wired-lan] [PATCH net-next v3 2/2] ice: Refactor finding
- advertised link speed
+Content-Disposition: inline
+In-Reply-To: <20230927092435.1565336-3-arkadiusz.kubalewski@intel.com>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=resnulli-us.20230601.gappssmtp.com; s=20230601; t=1696258406; x=1696863206;
+ darn=lists.osuosl.org; 
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+ bh=Io8DiXqjSfTqepUgkoeQXJPEkLkiVe5602Ih+UtiRhc=;
+ b=sgVCIO1MJAj5jAb/yZgkeHlvOyrBDF4RmRkxpmWUxjGurjzepDEojrAu7lWLLPLeBy
+ HNJWHnl6wb2LDLbjnZx3YIGJCu4aXQGqLlYTszzyKakF895HVrEMJ/2E45xNSP7my5Ss
+ OFiwsCasjIrXYoo7tAD+jVjznzIh6q++mF9uP2n2qfXHJEvf4roZRPN6PwemqscNsBmM
+ kWz1UCtEHcXd1KBTt0QLr+D2RTOvqG9DaO80nhrWXZTTU163+DYqzJX0qQKn7zaMRW8w
+ kVoZtFCIb5+S+/fBjpLIKG6NoCo7QvL5trfmumHVrw4hY148IEO46k/Km3TlYqGFj8Lf
+ aK3Q==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key) header.d=resnulli-us.20230601.gappssmtp.com
+ header.i=@resnulli-us.20230601.gappssmtp.com header.a=rsa-sha256
+ header.s=20230601 header.b=sgVCIO1M
+Subject: Re: [Intel-wired-lan] [PATCH net-next 2/4] dpll: spec: add support
+ for pin-dpll signal phase offset/adjust
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,286 +112,58 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: andrew@lunn.ch, aelior@marvell.com, manishc@marvell.com,
- vladimir.oltean@nxp.com, jdamato@fastly.com,
- Pawel Chmielewski <pawel.chmielewski@intel.com>, edumazet@google.com,
- intel-wired-lan@lists.osuosl.org, Paul Greenwalt <paul.greenwalt@intel.com>,
- horms@kernel.org, Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Jacob Keller <jacob.e.keller@intel.com>, kuba@kernel.org,
- d-tatianin@yandex-team.ru, pabeni@redhat.com, davem@davemloft.net
+Cc: vadim.fedorenko@linux.dev, corbet@lwn.net, netdev@vger.kernel.org,
+ linux-doc@vger.kernel.org, jesse.brandeburg@intel.com,
+ anthony.l.nguyen@intel.com, intel-wired-lan@lists.osuosl.org, kuba@kernel.org,
+ pabeni@redhat.com, davem@davemloft.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Refactor ice_get_link_ksettings to using forced speed to link modes mapping.
+Wed, Sep 27, 2023 at 11:24:33AM CEST, arkadiusz.kubalewski@intel.com wrote:
+>Add new pin's attributes to dpll netlink spec:
+>- phase-offset - measured difference between phase of signals on pin
+>  and dpll
+>- phase-adjust - adjustable value of pin's signal phase
+>- phase-adjust-min / phase-adjust-max - values for determining limits
+>  for phase-adjust
+>
+>Signed-off-by: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
+>---
+> Documentation/netlink/specs/dpll.yaml | 33 ++++++++++++++++++++++++++-
+> drivers/dpll/dpll_nl.c                |  8 ++++---
+> drivers/dpll/dpll_nl.h                |  2 +-
+> include/uapi/linux/dpll.h             |  8 ++++++-
+> 4 files changed, 45 insertions(+), 6 deletions(-)
+>
+>diff --git a/Documentation/netlink/specs/dpll.yaml b/Documentation/netlink/specs/dpll.yaml
+>index 8b86b28b47a6..dc057494101f 100644
+>--- a/Documentation/netlink/specs/dpll.yaml
+>+++ b/Documentation/netlink/specs/dpll.yaml
+>@@ -1,7 +1,7 @@
+> # SPDX-License-Identifier: ((GPL-2.0 WITH Linux-syscall-note) OR BSD-3-Clause)
+> 
+> name: dpll
+>-
+>+version: 2
 
-Suggested-by : Alexander Lobakin <aleksander.lobakin@intel.com>
-Reviewed-by: Jacob Keller <jacob.e.keller@intel.com>
-Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-Signed-off-by: Paul Greenwalt <paul.greenwalt@intel.com>
-Signed-off-by: Pawel Chmielewski <pawel.chmielewski@intel.com>
----
- drivers/net/ethernet/intel/ice/ice.h         |   1 +
- drivers/net/ethernet/intel/ice/ice_ethtool.c | 200 +++++++++++++------
- drivers/net/ethernet/intel/ice/ice_main.c    |   2 +
- 3 files changed, 138 insertions(+), 65 deletions(-)
+How is this supposed to work. You bump the version with every uapi
+extension? First time I see this.
 
-diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
-index fcaa5c3b8ec0..988b177d9388 100644
---- a/drivers/net/ethernet/intel/ice/ice.h
-+++ b/drivers/net/ethernet/intel/ice/ice.h
-@@ -960,6 +960,7 @@ int ice_stop(struct net_device *netdev);
- void ice_service_task_schedule(struct ice_pf *pf);
- int ice_load(struct ice_pf *pf);
- void ice_unload(struct ice_pf *pf);
-+void ice_adv_lnk_speed_maps_init(void);
- 
- /**
-  * ice_set_rdma_cap - enable RDMA support
-diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool.c b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-index d3cb08e66dcb..b027788c42f6 100644
---- a/drivers/net/ethernet/intel/ice/ice_ethtool.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-@@ -345,6 +345,86 @@ static const struct ice_priv_flag ice_gstrings_priv_flags[] = {
- 
- #define ICE_PRIV_FLAG_ARRAY_SIZE	ARRAY_SIZE(ice_gstrings_priv_flags)
- 
-+static const u32 ice_adv_lnk_speed_100[] __initconst = {
-+	ETHTOOL_LINK_MODE_100baseT_Full_BIT,
-+};
-+
-+static const u32 ice_adv_lnk_speed_1000[] __initconst = {
-+	ETHTOOL_LINK_MODE_1000baseX_Full_BIT,
-+	ETHTOOL_LINK_MODE_1000baseT_Full_BIT,
-+	ETHTOOL_LINK_MODE_1000baseKX_Full_BIT,
-+};
-+
-+static const u32 ice_adv_lnk_speed_2500[] __initconst = {
-+	ETHTOOL_LINK_MODE_2500baseT_Full_BIT,
-+	ETHTOOL_LINK_MODE_2500baseX_Full_BIT,
-+};
-+
-+static const u32 ice_adv_lnk_speed_5000[] __initconst = {
-+	ETHTOOL_LINK_MODE_5000baseT_Full_BIT,
-+};
-+
-+static const u32 ice_adv_lnk_speed_10000[] __initconst = {
-+	ETHTOOL_LINK_MODE_10000baseT_Full_BIT,
-+	ETHTOOL_LINK_MODE_10000baseKR_Full_BIT,
-+	ETHTOOL_LINK_MODE_10000baseSR_Full_BIT,
-+	ETHTOOL_LINK_MODE_10000baseLR_Full_BIT,
-+};
-+
-+static const u32 ice_adv_lnk_speed_25000[] __initconst = {
-+	ETHTOOL_LINK_MODE_25000baseCR_Full_BIT,
-+	ETHTOOL_LINK_MODE_25000baseSR_Full_BIT,
-+	ETHTOOL_LINK_MODE_25000baseKR_Full_BIT,
-+};
-+
-+static const u32 ice_adv_lnk_speed_40000[] __initconst = {
-+	ETHTOOL_LINK_MODE_40000baseCR4_Full_BIT,
-+	ETHTOOL_LINK_MODE_40000baseSR4_Full_BIT,
-+	ETHTOOL_LINK_MODE_40000baseLR4_Full_BIT,
-+	ETHTOOL_LINK_MODE_40000baseKR4_Full_BIT,
-+};
-+
-+static const u32 ice_adv_lnk_speed_50000[] __initconst = {
-+	ETHTOOL_LINK_MODE_50000baseCR2_Full_BIT,
-+	ETHTOOL_LINK_MODE_50000baseKR2_Full_BIT,
-+	ETHTOOL_LINK_MODE_50000baseSR2_Full_BIT,
-+};
-+
-+static const u32 ice_adv_lnk_speed_100000[] __initconst = {
-+	ETHTOOL_LINK_MODE_100000baseCR4_Full_BIT,
-+	ETHTOOL_LINK_MODE_100000baseSR4_Full_BIT,
-+	ETHTOOL_LINK_MODE_100000baseLR4_ER4_Full_BIT,
-+	ETHTOOL_LINK_MODE_100000baseKR4_Full_BIT,
-+	ETHTOOL_LINK_MODE_100000baseCR2_Full_BIT,
-+	ETHTOOL_LINK_MODE_100000baseSR2_Full_BIT,
-+	ETHTOOL_LINK_MODE_100000baseKR2_Full_BIT,
-+};
-+
-+#define ICE_ADV_LNK_SPEED_MAP(value)					\
-+{									\
-+	.speed		= SPEED_##value,				\
-+	.cap_arr	= ice_adv_lnk_speed_##value,			\
-+	.arr_size	= ARRAY_SIZE(ice_adv_lnk_speed_##value),	\
-+}
-+
-+static struct ethtool_forced_speed_map ice_adv_lnk_speed_maps[] __ro_after_init = {
-+	ICE_ADV_LNK_SPEED_MAP(100),
-+	ICE_ADV_LNK_SPEED_MAP(1000),
-+	ICE_ADV_LNK_SPEED_MAP(2500),
-+	ICE_ADV_LNK_SPEED_MAP(5000),
-+	ICE_ADV_LNK_SPEED_MAP(10000),
-+	ICE_ADV_LNK_SPEED_MAP(25000),
-+	ICE_ADV_LNK_SPEED_MAP(40000),
-+	ICE_ADV_LNK_SPEED_MAP(50000),
-+	ICE_ADV_LNK_SPEED_MAP(100000),
-+};
-+
-+void __init ice_adv_lnk_speed_maps_init(void)
-+{
-+	ethtool_forced_speed_maps_init(ice_adv_lnk_speed_maps,
-+				       ARRAY_SIZE(ice_adv_lnk_speed_maps));
-+}
-+
- static void
- __ice_get_drvinfo(struct net_device *netdev, struct ethtool_drvinfo *drvinfo,
- 		  struct ice_vsi *vsi)
-@@ -2007,6 +2087,55 @@ ice_get_link_ksettings(struct net_device *netdev,
- 	return err;
- }
- 
-+/**
-+ * ice_speed_to_aq_link - Get AQ link speed by Ethtool forced speed
-+ * @speed: ethtool forced speed
-+ */
-+static u16 ice_speed_to_aq_link(int speed)
-+{
-+	int aq_speed;
-+
-+	switch (speed) {
-+	case SPEED_10:
-+		aq_speed = ICE_AQ_LINK_SPEED_10MB;
-+		break;
-+	case SPEED_100:
-+		aq_speed = ICE_AQ_LINK_SPEED_100MB;
-+		break;
-+	case SPEED_1000:
-+		aq_speed = ICE_AQ_LINK_SPEED_1000MB;
-+		break;
-+	case SPEED_2500:
-+		aq_speed = ICE_AQ_LINK_SPEED_2500MB;
-+		break;
-+	case SPEED_5000:
-+		aq_speed = ICE_AQ_LINK_SPEED_5GB;
-+		break;
-+	case SPEED_10000:
-+		aq_speed = ICE_AQ_LINK_SPEED_10GB;
-+		break;
-+	case SPEED_20000:
-+		aq_speed = ICE_AQ_LINK_SPEED_20GB;
-+		break;
-+	case SPEED_25000:
-+		aq_speed = ICE_AQ_LINK_SPEED_25GB;
-+		break;
-+	case SPEED_40000:
-+		aq_speed = ICE_AQ_LINK_SPEED_40GB;
-+		break;
-+	case SPEED_50000:
-+		aq_speed = ICE_AQ_LINK_SPEED_50GB;
-+		break;
-+	case SPEED_100000:
-+		aq_speed = ICE_AQ_LINK_SPEED_100GB;
-+		break;
-+	default:
-+		aq_speed = ICE_AQ_LINK_SPEED_UNKNOWN;
-+		break;
-+	}
-+	return aq_speed;
-+}
-+
- /**
-  * ice_ksettings_find_adv_link_speed - Find advertising link speed
-  * @ks: ethtool ksettings
-@@ -2014,73 +2143,14 @@ ice_get_link_ksettings(struct net_device *netdev,
- static u16
- ice_ksettings_find_adv_link_speed(const struct ethtool_link_ksettings *ks)
- {
-+	const struct ethtool_forced_speed_map *map;
- 	u16 adv_link_speed = 0;
- 
--	if (ethtool_link_ksettings_test_link_mode(ks, advertising,
--						  100baseT_Full))
--		adv_link_speed |= ICE_AQ_LINK_SPEED_100MB;
--	if (ethtool_link_ksettings_test_link_mode(ks, advertising,
--						  1000baseX_Full) ||
--	    ethtool_link_ksettings_test_link_mode(ks, advertising,
--						  1000baseT_Full) ||
--	    ethtool_link_ksettings_test_link_mode(ks, advertising,
--						  1000baseKX_Full))
--		adv_link_speed |= ICE_AQ_LINK_SPEED_1000MB;
--	if (ethtool_link_ksettings_test_link_mode(ks, advertising,
--						  2500baseT_Full) ||
--	    ethtool_link_ksettings_test_link_mode(ks, advertising,
--						  2500baseX_Full))
--		adv_link_speed |= ICE_AQ_LINK_SPEED_2500MB;
--	if (ethtool_link_ksettings_test_link_mode(ks, advertising,
--						  5000baseT_Full))
--		adv_link_speed |= ICE_AQ_LINK_SPEED_5GB;
--	if (ethtool_link_ksettings_test_link_mode(ks, advertising,
--						  10000baseT_Full) ||
--	    ethtool_link_ksettings_test_link_mode(ks, advertising,
--						  10000baseKR_Full) ||
--	    ethtool_link_ksettings_test_link_mode(ks, advertising,
--						  10000baseSR_Full) ||
--	    ethtool_link_ksettings_test_link_mode(ks, advertising,
--						  10000baseLR_Full))
--		adv_link_speed |= ICE_AQ_LINK_SPEED_10GB;
--	if (ethtool_link_ksettings_test_link_mode(ks, advertising,
--						  25000baseCR_Full) ||
--	    ethtool_link_ksettings_test_link_mode(ks, advertising,
--						  25000baseSR_Full) ||
--	    ethtool_link_ksettings_test_link_mode(ks, advertising,
--						  25000baseKR_Full))
--		adv_link_speed |= ICE_AQ_LINK_SPEED_25GB;
--	if (ethtool_link_ksettings_test_link_mode(ks, advertising,
--						  40000baseCR4_Full) ||
--	    ethtool_link_ksettings_test_link_mode(ks, advertising,
--						  40000baseSR4_Full) ||
--	    ethtool_link_ksettings_test_link_mode(ks, advertising,
--						  40000baseLR4_Full) ||
--	    ethtool_link_ksettings_test_link_mode(ks, advertising,
--						  40000baseKR4_Full))
--		adv_link_speed |= ICE_AQ_LINK_SPEED_40GB;
--	if (ethtool_link_ksettings_test_link_mode(ks, advertising,
--						  50000baseCR2_Full) ||
--	    ethtool_link_ksettings_test_link_mode(ks, advertising,
--						  50000baseKR2_Full) ||
--	    ethtool_link_ksettings_test_link_mode(ks, advertising,
--						  50000baseSR2_Full))
--		adv_link_speed |= ICE_AQ_LINK_SPEED_50GB;
--	if (ethtool_link_ksettings_test_link_mode(ks, advertising,
--						  100000baseCR4_Full) ||
--	    ethtool_link_ksettings_test_link_mode(ks, advertising,
--						  100000baseSR4_Full) ||
--	    ethtool_link_ksettings_test_link_mode(ks, advertising,
--						  100000baseLR4_ER4_Full) ||
--	    ethtool_link_ksettings_test_link_mode(ks, advertising,
--						  100000baseKR4_Full) ||
--	    ethtool_link_ksettings_test_link_mode(ks, advertising,
--						  100000baseCR2_Full) ||
--	    ethtool_link_ksettings_test_link_mode(ks, advertising,
--						  100000baseSR2_Full) ||
--	    ethtool_link_ksettings_test_link_mode(ks, advertising,
--						  100000baseKR2_Full))
--		adv_link_speed |= ICE_AQ_LINK_SPEED_100GB;
-+	for (u32 i = 0; i < ARRAY_SIZE(ice_adv_lnk_speed_maps); i++) {
-+		map = ice_adv_lnk_speed_maps + i;
-+		if (linkmode_intersects(ks->link_modes.advertising, map->caps))
-+			adv_link_speed |= ice_speed_to_aq_link(map->speed);
-+	}
- 
- 	return adv_link_speed;
- }
-diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index c726913bc635..0dd7f23395b0 100644
---- a/drivers/net/ethernet/intel/ice/ice_main.c
-+++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -5633,6 +5633,8 @@ static int __init ice_module_init(void)
- 	pr_info("%s\n", ice_driver_string);
- 	pr_info("%s\n", ice_copyright);
- 
-+	ice_adv_lnk_speed_maps_init();
-+
- 	ice_wq = alloc_workqueue("%s", 0, 0, KBUILD_MODNAME);
- 	if (!ice_wq) {
- 		pr_err("Failed to create workqueue\n");
--- 
-2.37.3
+[...]
 
+
+>diff --git a/include/uapi/linux/dpll.h b/include/uapi/linux/dpll.h
+>index 20ef0718f8dc..050f51b48ef8 100644
+>--- a/include/uapi/linux/dpll.h
+>+++ b/include/uapi/linux/dpll.h
+>@@ -7,7 +7,7 @@
+> #define _UAPI_LINUX_DPLL_H
+> 
+> #define DPLL_FAMILY_NAME	"dpll"
+>-#define DPLL_FAMILY_VERSION	1
+>+#define DPLL_FAMILY_VERSION	2
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
