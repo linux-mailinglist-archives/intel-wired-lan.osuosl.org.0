@@ -2,85 +2,82 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id D613F7B7294
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  3 Oct 2023 22:34:08 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6E8247B7312
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  3 Oct 2023 23:10:36 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 58F3B6101A;
-	Tue,  3 Oct 2023 20:34:05 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 58F3B6101A
+	by smtp3.osuosl.org (Postfix) with ESMTP id F3D7F611BC;
+	Tue,  3 Oct 2023 21:10:34 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org F3D7F611BC
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1696365245;
-	bh=69vpyzT78RmGJj3i7HC9tU2ttP8PK/xR0BUeFvXeqU4=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
+	s=default; t=1696367435;
+	bh=HTda6OXo6L0J/x/zuL/+95b+L9nLLpn307be/i+Px2M=;
+	h=From:Date:References:In-Reply-To:To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=WbTrptjOLbz48fM+iKBIG8+qXbqnAsr5ozmDtomRw3tCKj1nY5tzmtxSME7DTja8T
-	 jBT1a4r5OBPGY5tIjDjSnloeiz8aaUs7i2barqyf8U6ozrS2A3URHcTBTpmbIOzxHt
-	 or6Um+72Q9cQ37XL/FlA7fBh+SjrYqWuuYXCXwMWWx5L3hKX8IeZXCSinaine2Xtv3
-	 MrzgFeSr9cn2/wkZF37Uh0FBF2kzbcGoA372uqnvs1eiKgEruQzH12eGMEO0o9tdyg
-	 70PfY/ODsEYe2/fmkXt9TG4sXa/pqUQlryxdk/Q+55tmgo7WUKmrz1yKySR1CBXlBI
-	 5Aaloe8awm4PA==
+	b=Gf5RongOmXcuQQQXsDM3yi7+Vk6mlJhQlkKvU1kTdwnkKHVAIHehTkDgnaEQqUBhe
+	 ixM7GPdmRvIjhv3R2LraqZZBNrLfYbisNYmgbCTLAA4uGbsdrkpIrSL6TqzG9czUKX
+	 ykQd7QBa3YNC44aMGWLH9fsmdTgJuZ0lQjWuJUTOz568kM+Vr6Sk5opLymR+A0LFUg
+	 vgkpvyYduWFGBMK7pHNVe+mcRW0hQcT4XzcCC/7sIRH7/0IXsftLh0UTv/VL3C4Kq5
+	 Y62P675UnVW1NnQovhM8gsC2sCuTcKT8JsOK20cLwzeOoNhRl32ZtMBwclirYNeagX
+	 KtZ+T+NPtUrPA==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id nez9ZkkRir0e; Tue,  3 Oct 2023 20:34:04 +0000 (UTC)
+	with ESMTP id GUoNqVXqGywL; Tue,  3 Oct 2023 21:10:34 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 1591860ECE;
-	Tue,  3 Oct 2023 20:34:04 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1591860ECE
+	by smtp3.osuosl.org (Postfix) with ESMTP id CE3AD611AA;
+	Tue,  3 Oct 2023 21:10:33 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org CE3AD611AA
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 772961BF3D2
- for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Oct 2023 20:33:59 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 6E5CE1BF4E7
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Oct 2023 21:10:28 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 4C6C48225D
- for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Oct 2023 20:33:59 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4C6C48225D
+ by smtp3.osuosl.org (Postfix) with ESMTP id 534A3611AA
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Oct 2023 21:10:28 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 534A3611AA
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id aq8XYPVQoi5u for <intel-wired-lan@lists.osuosl.org>;
- Tue,  3 Oct 2023 20:33:53 +0000 (UTC)
-Received: from smtp.smtpout.orange.fr (smtp-13.smtpout.orange.fr
- [80.12.242.13])
- by smtp1.osuosl.org (Postfix) with ESMTPS id C5F2782259
- for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Oct 2023 20:33:52 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org C5F2782259
-Received: from [192.168.1.18] ([86.243.2.178]) by smtp.orange.fr with ESMTPA
- id nm5UqMLsanmFYnm5UqMmLO; Tue, 03 Oct 2023 22:33:50 +0200
-X-ME-Helo: [192.168.1.18]
-X-ME-Auth: Y2hyaXN0b3BoZS5qYWlsbGV0QHdhbmFkb28uZnI=
-X-ME-Date: Tue, 03 Oct 2023 22:33:50 +0200
-X-ME-IP: 86.243.2.178
-Message-ID: <abf8d279-b579-4a03-9ae9-053cf5efec3d@wanadoo.fr>
-Date: Tue, 3 Oct 2023 22:33:47 +0200
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id htVW2N3lRPpR for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  3 Oct 2023 21:10:27 +0000 (UTC)
+Received: from dfw.source.kernel.org (dfw.source.kernel.org
+ [IPv6:2604:1380:4641:c500::1])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 803FA6119A
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Oct 2023 21:10:27 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 803FA6119A
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by dfw.source.kernel.org (Postfix) with ESMTP id A15E56139D;
+ Tue,  3 Oct 2023 21:10:26 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 46A15C433C8;
+ Tue,  3 Oct 2023 21:10:26 +0000 (UTC)
+Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org
+ (localhost.localdomain [127.0.0.1])
+ by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id
+ 276F6C595D2; Tue,  3 Oct 2023 21:10:26 +0000 (UTC)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: Jesse Brandeburg <jesse.brandeburg@intel.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>,
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>
-References: <966968bda15a7128a381b589329184dfea3e0548.1695471387.git.christophe.jaillet@wanadoo.fr>
- <a5e933fe-4566-9ae6-9a5d-b3a4c186fe0b@intel.com>
-Content-Language: fr
-From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
-In-Reply-To: <a5e933fe-4566-9ae6-9a5d-b3a4c186fe0b@intel.com>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=wanadoo.fr; s=t20230301; t=1696365230;
- bh=4szZBF58NVDMkJwPCQGcaCq/8DXhNFlNUXK9ISU4JTg=;
- h=Date:Subject:To:Cc:References:From:In-Reply-To;
- b=jMM5hJEqTl55wNmQJ4+r0YBYKX0Tt7hC93DBUR4UNEOanbF1mI9FB5vNtzYC2Pde+
- C8uatHITU/+hpj/uqY+xb1UDRcQNixIQ0QRqZB5BX1rnOdJR+PV2qgNjdXxQfoBT/q
- 5mH067tDe9dQK9bITKkPOVeZS3Grb0t7xas5Um2HHzjy8eawGUpSaPkrxJLOAQWaOt
- FqiQqCllcVli5oAHKFhBhF+Ushb8praKuB+JIwc9S2J7+rEW+RJVDPL9+x0xTaAAu+
- QNHIBIeTTl8ZTcGMnXT6+6FXDCqrD5IzyWDMvBx3LZVqP+/1kvhJ4MrlpwYFc7VkWz
- CuKV7HsUbuTVQ==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=wanadoo.fr header.i=@wanadoo.fr
- header.a=rsa-sha256 header.s=t20230301 header.b=jMM5hJEq
-Subject: Re: [Intel-wired-lan] [PATCH net-next] iavf: Avoid a memory
- allocation in iavf_print_link_message()
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <169636742615.22161.7688987075875689506.git-patchwork-notify@kernel.org>
+Date: Tue, 03 Oct 2023 21:10:26 +0000
+References: <20230912115937.1645707-1-przemyslaw.kitszel@intel.com>
+In-Reply-To: <20230912115937.1645707-1-przemyslaw.kitszel@intel.com>
+To: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=kernel.org; s=k20201202; t=1696367426;
+ bh=a2OQUcE+ISQtj09ENLHvNyZpLnb2mGbhv6CIImC0Y1o=;
+ h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+ b=EWUGiwUg1CL/Zl4/IfF+fn0PrMvK6Q/i6OxqLQd937mJN7vNibUdpXWmmkrDaWkyP
+ EVM0Ke/cKhjfTzrCLBJTFKzhJ7cGnjl/w5M1ADgK71MxjUQDoMaH0WqxtEdhCpJYl6
+ jxRCLyK7+r8EE2NL0sAANqCtlXCr6Tfaq7YQY9lIJe3SIuzSpDv6I1cSoSTxWukRnD
+ Dbuc9hhgVrutDG0VC7rlLT+PfGmXvw3yQK9vWeZSqEwZd/8ahPFf+amatJh42G46jZ
+ h/grImG00zjg3Nn0pXJkJh6djfHV3JKt9MLgES8W4gOfXpoyg0c5tnWCgSPVVRFO2p
+ 9cNjhSUQwPh9A==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=EWUGiwUg
+Subject: Re: [Intel-wired-lan] [PATCH net-next v5 0/7] introduce
+ DEFINE_FLEX() macro
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,121 +90,55 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: intel-wired-lan@lists.osuosl.org, kernel-janitors@vger.kernel.org,
- linux-kernel@vger.kernel.org, netdev@vger.kernel.org
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Cc: keescook@chromium.org, anthony.l.nguyen@intel.com, netdev@vger.kernel.org,
+ steven.zou@intel.com, aleksander.lobakin@intel.com, edumazet@google.com,
+ David.Laight@ACULAB.COM, intel-wired-lan@lists.osuosl.org,
+ linux-hardening@vger.kernel.org, jacob.e.keller@intel.com, kuba@kernel.org,
+ pabeni@redhat.com, davem@davemloft.net
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-TGUgMDMvMTAvMjAyMyDDoCAxOToxNCwgSmVzc2UgQnJhbmRlYnVyZyBhIMOpY3JpdMKgOgo+IE9u
-IDkvMjMvMjAyMyA1OjE3IEFNLCBDaHJpc3RvcGhlIEpBSUxMRVQgd3JvdGU6Cj4+IElBVkZfTUFY
-X1NQRUVEX1NUUkxFTiBpcyBvbmx5IDEzIGFuZCAnc3BlZWQnIGlzIGFsbG9jYXRlZCBhbmQgZnJl
-ZWQgd2l0aGluCj4+IGlhdmZfcHJpbnRfbGlua19tZXNzYWdlKCkuCj4+Cj4+ICdzcGVlZCcgaXMg
-b25seSB1c2VkIHdpdGggc29tZSBzbnByaW50ZigpIGFuZCBuZXRkZXZfaW5mbygpIGNhbGxzLgo+
-Pgo+PiBTbyB0aGVyZSBpcyBubyByZWFsIHVzZSB0byBremFsbG9jKCkvZnJlZSgpIGl0LiBVc2Ug
-dGhlIHN0YWNrIGluc3RlYWQuCj4+IFRoaXMgc2F2ZXMgYSBtZW1vcnkgYWxsb2NhdGlvbi4KPj4K
-Pj4gU2lnbmVkLW9mZi1ieTogQ2hyaXN0b3BoZSBKQUlMTEVUIDxjaHJpc3RvcGhlLmphaWxsZXRA
-d2FuYWRvby5mcj4KPj4gLS0tCj4+ICAgZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWF2Zi9p
-YXZmX3ZpcnRjaG5sLmMgfCA3ICstLS0tLS0KPj4gICAxIGZpbGUgY2hhbmdlZCwgMSBpbnNlcnRp
-b24oKyksIDYgZGVsZXRpb25zKC0pCj4+Cj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL25ldC9ldGhl
-cm5ldC9pbnRlbC9pYXZmL2lhdmZfdmlydGNobmwuYyBiL2RyaXZlcnMvbmV0L2V0aGVybmV0L2lu
-dGVsL2lhdmYvaWF2Zl92aXJ0Y2hubC5jCj4+IGluZGV4IDhjZTYzODliNTgxNS4uOTgwZGM2OWQ3
-ZmJlIDEwMDY0NAo+PiAtLS0gYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pYXZmL2lhdmZf
-dmlydGNobmwuYwo+PiArKysgYi9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pYXZmL2lhdmZf
-dmlydGNobmwuYwo+PiBAQCAtMTM4OSwxOCArMTM4OSwxNCBAQCB2b2lkIGlhdmZfZGlzYWJsZV92
-bGFuX2luc2VydGlvbl92MihzdHJ1Y3QgaWF2Zl9hZGFwdGVyICphZGFwdGVyLCB1MTYgdHBpZCkK
-Pj4gICBzdGF0aWMgdm9pZCBpYXZmX3ByaW50X2xpbmtfbWVzc2FnZShzdHJ1Y3QgaWF2Zl9hZGFw
-dGVyICphZGFwdGVyKQo+PiAgIHsKPj4gICAJc3RydWN0IG5ldF9kZXZpY2UgKm5ldGRldiA9IGFk
-YXB0ZXItPm5ldGRldjsKPj4gKwljaGFyIHNwZWVkW0lBVkZfTUFYX1NQRUVEX1NUUkxFTl07Cj4+
-ICAgCWludCBsaW5rX3NwZWVkX21icHM7Cj4+IC0JY2hhciAqc3BlZWQ7Cj4+ICAgCj4+ICAgCWlm
-ICghYWRhcHRlci0+bGlua191cCkgewo+PiAgIAkJbmV0ZGV2X2luZm8obmV0ZGV2LCAiTklDIExp
-bmsgaXMgRG93blxuIik7Cj4+ICAgCQlyZXR1cm47Cj4+ICAgCX0KPj4gICAKPj4gLQlzcGVlZCA9
-IGt6YWxsb2MoSUFWRl9NQVhfU1BFRURfU1RSTEVOLCBHRlBfS0VSTkVMKTsKPj4gLQlpZiAoIXNw
-ZWVkKQo+PiAtCQlyZXR1cm47Cj4+IC0KPj4gICAJaWYgKEFEVl9MSU5LX1NVUFBPUlQoYWRhcHRl
-cikpIHsKPj4gICAJCWxpbmtfc3BlZWRfbWJwcyA9IGFkYXB0ZXItPmxpbmtfc3BlZWRfbWJwczsK
-Pj4gICAJCWdvdG8gcHJpbnRfbGlua19tc2c7Cj4+IEBAIC0xNDUyLDcgKzE0NDgsNiBAQCBzdGF0
-aWMgdm9pZCBpYXZmX3ByaW50X2xpbmtfbWVzc2FnZShzdHJ1Y3QgaWF2Zl9hZGFwdGVyICphZGFw
-dGVyKQo+PiAgIAl9Cj4+ICAgCj4+ICAgCW5ldGRldl9pbmZvKG5ldGRldiwgIk5JQyBMaW5rIGlz
-IFVwIFNwZWVkIGlzICVzIEZ1bGwgRHVwbGV4XG4iLCBzcGVlZCk7Cj4+IC0Ja2ZyZWUoc3BlZWQp
-Owo+PiAgIH0KPj4gICAKPj4gICAvKioKPiAKPiBIaSBDaHJpc3RvcGhlIQo+IAo+IEkgaGFkIGEg
-c2xpZ2h0bHkgZGlmZmVyZW50IHByb3Bvc2FsIHRoYXQgZ2V0cyByaWQgb2YgYWxsIHRoZSAtV2Zv
-cm1hdD0yCj4gd2FybmluZ3MgaW4gdGhpcyBjb2RlIGJ5IHVzaW5nIGthc3ByaW50ZiB0byBoYW5k
-bGUgdGhlIHZhcnlpbmcgc3RyaW5nCj4gbGVuZ3Rocy4KPiAKPiBhbnkgdGhvdWdodHMgYWJvdXQg
-dGhpcyBpbnN0ZWFkIGFuZCBkcm9wIHlvdXJzPyBJJ20gbGVzcyB3b3JyaWVkIGFib3V0Cj4gdGhl
-ICJleHRyYSBhbGxvY2F0aW9uIiBoZXJlIGluIHRoaXMgZnVuY3Rpb24gc2luY2UgaXQncyBzbG93
-IHBhdGgsIGFuZAo+IHRoZSBzYW1lIGNvbW1lbnQgYXBwbGllcyB0byB5b3VyIHBhdGNoIGFzIHdl
-bGwuCgprYXNwcmludGYoKSBpcyBtdWNoIGJldHRlci4KCj4gCj4geW91ciBwYXRjaCBzdGlsbCBz
-aG93cyB0aGVzZSBlcnJvcnMKCkkgYnVpbHQtdGVzdGVkIHRoZSBwYXRjaCBiZWZvcmUgc2VuZGlu
-Zywgc28gdGhpcyBpcyBzdHJhbmdlLgoKSG93ZXZlciwgSSBnb3QgYSBzaW1pbGFyIGZlZWRiYWNr
-IGZyb20gR3JlZyBLSCBhbmQgdGhlICJrZXJuZWwgdGVzdCAKcm9ib3QiIGZvciBhbm90aGVyIHNp
-bWlsYXIgcGF0Y2guCgpXaGF0IHZlcnNpb24gb2YgZ2NjIGRvIHlvdSB1c2U/CkkgdXNlIDEyLjMu
-MCwgYW5kIEkgc3VzcGVjdCB0aGF0IHRoZSB2YWx1ZSByYW5nZSBhbGdvcml0aG0gb3IgaG93IHRo
-ZSAKZGlhZ25vc3RpYyBpcyBkb25lIGhhcyBiZWVuIGltcHJvdmVkIGluIHJlY2VudCBnY2MuCgpU
-aGUgb3RoZXIgcmVwb3J0IHdhcyBmcm9tIDExLjMuMC4KCkNKCgo+PiBkcml2ZXJzL25ldC9ldGhl
-cm5ldC9pbnRlbC9pYXZmL2lhdmZfdmlydGNobmwuYzogSW4gZnVuY3Rpb24g4oCYaWF2Zl92aXJ0
-Y2hubF9jb21wbGV0aW9u4oCZOgo+PiBkcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pYXZmL2lh
-dmZfdmlydGNobmwuYzoxNDQ2OjYwOiB3YXJuaW5nOiDigJglc+KAmSBkaXJlY3RpdmUgb3V0cHV0
-IG1heSBiZSB0cnVuY2F0ZWQgd3JpdGluZyA0IGJ5dGVzIGludG8gYSByZWdpb24gb2Ygc2l6ZSBi
-ZXR3ZWVuIDEgYW5kIDExIFstV2Zvcm1hdC10cnVuY2F0aW9uPV0KPj4gICAxNDQ2IHwgICAgICAg
-ICAgICAgICAgIHNucHJpbnRmKHNwZWVkLCBJQVZGX01BWF9TUEVFRF9TVFJMRU4sICIlZCAlcyIs
-Cj4+ICAgICAgICB8ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgXn4KPj4gICAxNDQ3IHwgICAgICAgICAgICAgICAgICAgICAgICAgIGxp
-bmtfc3BlZWRfbWJwcywgIk1icHMiKTsKPj4gICAgICAgIHwgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgfn5+fn5+Cj4+IEluIGZ1bmN0aW9uIOKAmGlhdmZfcHJpbnRf
-bGlua19tZXNzYWdl4oCZLAo+PiAgICAgIGlubGluZWQgZnJvbSDigJhpYXZmX3ZpcnRjaG5sX2Nv
-bXBsZXRpb27igJkgYXQgZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWF2Zi9pYXZmX3ZpcnRj
-aG5sLmM6MTk2NTo0Ogo+PiBkcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pYXZmL2lhdmZfdmly
-dGNobmwuYzoxNDQ2OjE3OiBub3RlOiDigJhzbnByaW50ZuKAmSBvdXRwdXQgYmV0d2VlbiA3IGFu
-ZCAxNyBieXRlcyBpbnRvIGEgZGVzdGluYXRpb24gb2Ygc2l6ZSAxMwo+PiAgIDE0NDYgfCAgICAg
-ICAgICAgICAgICAgc25wcmludGYoc3BlZWQsIElBVkZfTUFYX1NQRUVEX1NUUkxFTiwgIiVkICVz
-IiwKPj4gICAgICAgIHwgICAgICAgICAgICAgICAgIF5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+
-fn5+fn5+fn5+fn5+fn5+fn5+fn5+Cj4+ICAgMTQ0NyB8ICAgICAgICAgICAgICAgICAgICAgICAg
-ICBsaW5rX3NwZWVkX21icHMsICJNYnBzIik7Cj4+ICAgICAgICB8ICAgICAgICAgICAgICAgICAg
-ICAgICAgICB+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn4KPiAKPiAKPiA8bXkgaWF2ZiBwYXRjaCBw
-YXN0ZWQgYXMgYSBxdW90ZSBzbyBteSBtYWlsIGNsaWVudCB3b24ndCB3cmFwIHRoZSBsaW5lcy4u
-Lj4KPiAKPiAKPj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2lhdmYv
-aWF2Zl92aXJ0Y2hubC5jIGIvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWF2Zi9pYXZmX3Zp
-cnRjaG5sLmMKPj4gaW5kZXggOGNlNjM4OWI1ODE1Li44MmI4NGE5M2JjYzggMTAwNjQ0Cj4+IC0t
-LSBhL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2lhdmYvaWF2Zl92aXJ0Y2hubC5jCj4+ICsr
-KyBiL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2lhdmYvaWF2Zl92aXJ0Y2hubC5jCj4+IEBA
-IC0xMzc4LDggKzEzNzgsNiBAQCB2b2lkIGlhdmZfZGlzYWJsZV92bGFuX2luc2VydGlvbl92Mihz
-dHJ1Y3QgaWF2Zl9hZGFwdGVyICphZGFwdGVyLCB1MTYgdHBpZCkKPj4gICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICBWSVJUQ0hOTF9PUF9ESVNBQkxFX1ZMQU5fSU5TRVJUSU9OX1Yy
-KTsKPj4gICB9Cj4+Cj4+IC0jZGVmaW5lIElBVkZfTUFYX1NQRUVEX1NUUkxFTiAgMTMKPj4gLQo+
-PiAgIC8qKgo+PiAgICAqIGlhdmZfcHJpbnRfbGlua19tZXNzYWdlIC0gcHJpbnQgbGluayB1cCBv
-ciBkb3duCj4+ICAgICogQGFkYXB0ZXI6IGFkYXB0ZXIgc3RydWN0dXJlCj4+IEBAIC0xMzk3LDEw
-ICsxMzk1LDYgQEAgc3RhdGljIHZvaWQgaWF2Zl9wcmludF9saW5rX21lc3NhZ2Uoc3RydWN0IGlh
-dmZfYWRhcHRlciAqYWRhcHRlcikKPj4gICAgICAgICAgICAgICAgICByZXR1cm47Cj4+ICAgICAg
-ICAgIH0KPj4KPj4gLSAgICAgICBzcGVlZCA9IGt6YWxsb2MoSUFWRl9NQVhfU1BFRURfU1RSTEVO
-LCBHRlBfS0VSTkVMKTsKPj4gLSAgICAgICBpZiAoIXNwZWVkKQo+PiAtICAgICAgICAgICAgICAg
-cmV0dXJuOwo+PiAtCj4+ICAgICAgICAgIGlmIChBRFZfTElOS19TVVBQT1JUKGFkYXB0ZXIpKSB7
-Cj4+ICAgICAgICAgICAgICAgICAgbGlua19zcGVlZF9tYnBzID0gYWRhcHRlci0+bGlua19zcGVl
-ZF9tYnBzOwo+PiAgICAgICAgICAgICAgICAgIGdvdG8gcHJpbnRfbGlua19tc2c7Cj4+IEBAIC0x
-NDM4LDE3ICsxNDMyLDE3IEBAIHN0YXRpYyB2b2lkIGlhdmZfcHJpbnRfbGlua19tZXNzYWdlKHN0
-cnVjdCBpYXZmX2FkYXB0ZXIgKmFkYXB0ZXIpCj4+Cj4+ICAgcHJpbnRfbGlua19tc2c6Cj4+ICAg
-ICAgICAgIGlmIChsaW5rX3NwZWVkX21icHMgPiBTUEVFRF8xMDAwKSB7Cj4+IC0gICAgICAgICAg
-ICAgICBpZiAobGlua19zcGVlZF9tYnBzID09IFNQRUVEXzI1MDApCj4+IC0gICAgICAgICAgICAg
-ICAgICAgICAgIHNucHJpbnRmKHNwZWVkLCBJQVZGX01BWF9TUEVFRF9TVFJMRU4sICIyLjUgR2Jw
-cyIpOwo+PiAtICAgICAgICAgICAgICAgZWxzZQo+PiArICAgICAgICAgICAgICAgaWYgKGxpbmtf
-c3BlZWRfbWJwcyA9PSBTUEVFRF8yNTAwKSB7Cj4+ICsgICAgICAgICAgICAgICAgICAgICAgIHNw
-ZWVkID0ga2FzcHJpbnRmKEdGUF9LRVJORUwsICIlcyIsICIyLjUgR2JwcyIpOwo+PiArICAgICAg
-ICAgICAgICAgfSBlbHNlIHsKPj4gICAgICAgICAgICAgICAgICAgICAgICAgIC8qIGNvbnZlcnQg
-dG8gR2JwcyBpbmxpbmUgKi8KPj4gLSAgICAgICAgICAgICAgICAgICAgICAgc25wcmludGYoc3Bl
-ZWQsIElBVkZfTUFYX1NQRUVEX1NUUkxFTiwgIiVkICVzIiwKPj4gLSAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgbGlua19zcGVlZF9tYnBzIC8gMTAwMCwgIkdicHMiKTsKPj4gKyAgICAg
-ICAgICAgICAgICAgICAgICAgc3BlZWQgPSBrYXNwcmludGYoR0ZQX0tFUk5FTCwgIiVkIEdicHMi
-LAo+PiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBsaW5rX3NwZWVk
-X21icHMgLyAxMDAwKTsKPj4gKyAgICAgICAgICAgICAgIH0KPj4gICAgICAgICAgfSBlbHNlIGlm
-IChsaW5rX3NwZWVkX21icHMgPT0gU1BFRURfVU5LTk9XTikgewo+PiAtICAgICAgICAgICAgICAg
-c25wcmludGYoc3BlZWQsIElBVkZfTUFYX1NQRUVEX1NUUkxFTiwgIiVzIiwgIlVua25vd24gTWJw
-cyIpOwo+PiArICAgICAgICAgICAgICAgc3BlZWQgPSBrYXNwcmludGYoR0ZQX0tFUk5FTCwgIiVz
-IiwgIlVua25vd24gTWJwcyIpOwo+PiAgICAgICAgICB9IGVsc2Ugewo+PiAtICAgICAgICAgICAg
-ICAgc25wcmludGYoc3BlZWQsIElBVkZfTUFYX1NQRUVEX1NUUkxFTiwgIiVkICVzIiwKPj4gLSAg
-ICAgICAgICAgICAgICAgICAgICAgIGxpbmtfc3BlZWRfbWJwcywgIk1icHMiKTsKPj4gKyAgICAg
-ICAgICAgICAgIHNwZWVkID0ga2FzcHJpbnRmKEdGUF9LRVJORUwsICIlZCBNYnBzIiwgbGlua19z
-cGVlZF9tYnBzKTsKPj4gICAgICAgICAgfQo+Pgo+PiAgICAgICAgICBuZXRkZXZfaW5mbyhuZXRk
-ZXYsICJOSUMgTGluayBpcyBVcCBTcGVlZCBpcyAlcyBGdWxsIER1cGxleFxuIiwgc3BlZWQpOwo+
-IAo+IAo+IAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
-SW50ZWwtd2lyZWQtbGFuIG1haWxpbmcgbGlzdApJbnRlbC13aXJlZC1sYW5Ab3N1b3NsLm9yZwpo
-dHRwczovL2xpc3RzLm9zdW9zbC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC13aXJlZC1sYW4K
+Hello:
+
+This series was applied to netdev/net-next.git (main)
+by Jakub Kicinski <kuba@kernel.org>:
+
+On Tue, 12 Sep 2023 07:59:30 -0400 you wrote:
+> Add DEFINE_FLEX() macro, that helps on-stack allocation of structures
+> with trailing flex array member.
+> Expose __struct_size() macro which reads size of data allocated
+> by DEFINE_FLEX().
+> 
+> Accompany new macros introduction with actual usage,
+> in the ice driver - hence targeting for netdev tree.
+> 
+> [...]
+
+Here is the summary with links:
+  - [net-next,v5,1/7] overflow: add DEFINE_FLEX() for on-stack allocs
+    https://git.kernel.org/netdev/net-next/c/26dd68d293fd
+  - [net-next,v5,2/7] ice: ice_sched_remove_elems: replace 1 elem array param by u32
+    https://git.kernel.org/netdev/net-next/c/ece285af77d0
+  - [net-next,v5,3/7] ice: drop two params of ice_aq_move_sched_elems()
+    https://git.kernel.org/netdev/net-next/c/a034fcdbeaf7
+  - [net-next,v5,4/7] ice: make use of DEFINE_FLEX() in ice_ddp.c
+    https://git.kernel.org/netdev/net-next/c/230064baa43d
+  - [net-next,v5,5/7] ice: make use of DEFINE_FLEX() for struct ice_aqc_add_tx_qgrp
+    https://git.kernel.org/netdev/net-next/c/43bba3b1664d
+  - [net-next,v5,6/7] ice: make use of DEFINE_FLEX() for struct ice_aqc_dis_txq_item
+    https://git.kernel.org/netdev/net-next/c/11dee3d611dd
+  - [net-next,v5,7/7] ice: make use of DEFINE_FLEX() in ice_switch.c
+    https://git.kernel.org/netdev/net-next/c/e268b9722705
+
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
+
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
