@@ -1,180 +1,183 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 960DE7B6B95
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  3 Oct 2023 16:30:08 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 049047B6B91
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  3 Oct 2023 16:29:59 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 0E63641F67;
-	Tue,  3 Oct 2023 14:30:07 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0E63641F67
+	by smtp4.osuosl.org (Postfix) with ESMTP id 14DD941EB4;
+	Tue,  3 Oct 2023 14:29:57 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 14DD941EB4
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1696343407;
-	bh=4lb93Qw9TAhyo7S4WkknqpBVcvKRJXG8Ew2CsaOcvSk=;
+	s=default; t=1696343397;
+	bh=limO7+OmyaAIEhggAtSyDa6OnE3Bo9pictdWF8KicJU=;
 	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=cJxJAEzbv79CHMjDL+5oraWLTGF0D3foqJySG7sCuj+1ZTmKxa0YcOsa5CSPhqq0s
-	 ySeYlaxcCUMXlSff0BFHHmGXa9Bsc2d1fy53PwaSfGSx5rrs2cUvRXLLHt90b5onHW
-	 WxSj3UmflFBdhrjDjQBtoJUBli5Wjf9Uou5p7G2oG3/O7uvrhskx5rlO+bP++LgNhn
-	 NXoK9FL3eKyx9eHdCBHU/TYRKr1uFIhuHFC2A9Jlo/ZHfNFcvgDhJNP6LC3yyRHB+y
-	 5m95jexOYId5on2A4sZQqTKnnf5BLyAvfvNzGfecHl5eaxBJkC9TpY82kqsMFIsSCs
-	 pEGYhQUqtPsnQ==
+	b=z6349Yc4sTEGzq73uGx3E2fhfxFYtc11Mw0B2mzJcSDGuuiJOBoxOOxaA++Gw5IF3
+	 o9kcBS6OM+9o5C23uEMkYpym/Xq2PkkJXO7sWYukaVRsm9sA4I9N+1539CjEN4P+X1
+	 lKrGgczjbstXYoXpIXXNnujFwXzaeOHrl7hjFUm0uxMWwlFogcyjkEHW01ku8+AxbR
+	 jpOZjWtQeePk22/ldJEUqhEGLUJgCPkhw/BRdYWEm/zLysUU+ZGzNjHSO7Iz1xC9tL
+	 ERn8t6FHbnodOG5xng45hpQ9a/gDQ0tqvixVbfLJCdTV9oHYRSYxey8qLCZMh5m5Iy
+	 YHjg3Zv+nledQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 9uSoUIqdUznE; Tue,  3 Oct 2023 14:30:04 +0000 (UTC)
+	with ESMTP id ovvKQd_QcQvE; Tue,  3 Oct 2023 14:29:55 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 542E841EBD;
-	Tue,  3 Oct 2023 14:30:04 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 542E841EBD
+	by smtp4.osuosl.org (Postfix) with ESMTP id 7438D405AA;
+	Tue,  3 Oct 2023 14:29:55 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7438D405AA
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id A0C271BF59B
- for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Oct 2023 14:29:58 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 4CAC71BF59B
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Oct 2023 14:29:50 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 794C6401AD
- for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Oct 2023 14:29:58 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 794C6401AD
+ by smtp2.osuosl.org (Postfix) with ESMTP id 30FD9400FE
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Oct 2023 14:29:50 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 30FD9400FE
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id SXK1UCRqb16s for <intel-wired-lan@lists.osuosl.org>;
- Tue,  3 Oct 2023 14:29:57 +0000 (UTC)
-Received: from mgamail.intel.com (mgamail.intel.com [134.134.136.100])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 3DC8C400FE
- for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Oct 2023 14:29:57 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3DC8C400FE
-X-IronPort-AV: E=McAfee;i="6600,9927,10852"; a="449373438"
-X-IronPort-AV: E=Sophos;i="6.03,197,1694761200"; d="scan'208";a="449373438"
-Received: from fmsmga007.fm.intel.com ([10.253.24.52])
- by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 03 Oct 2023 07:29:18 -0700
+ with ESMTP id 0PmGSfvaRYC5 for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  3 Oct 2023 14:29:49 +0000 (UTC)
+Received: from mgamail.intel.com (mgamail.intel.com [134.134.136.20])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id F2357405D9
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Oct 2023 14:29:48 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org F2357405D9
+X-IronPort-AV: E=McAfee;i="6600,9927,10852"; a="373230472"
+X-IronPort-AV: E=Sophos;i="6.03,197,1694761200"; d="scan'208";a="373230472"
+Received: from orsmga008.jf.intel.com ([10.7.209.65])
+ by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 03 Oct 2023 07:29:48 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10852"; a="754457804"
-X-IronPort-AV: E=Sophos;i="6.03,197,1694761200"; d="scan'208";a="754457804"
-Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82])
- by fmsmga007.fm.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
- 03 Oct 2023 07:29:16 -0700
+X-IronPort-AV: E=McAfee;i="6600,9927,10852"; a="780306376"
+X-IronPort-AV: E=Sophos;i="6.03,197,1694761200"; d="scan'208";a="780306376"
+Received: from fmsmsx603.amr.corp.intel.com ([10.18.126.83])
+ by orsmga008.jf.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
+ 03 Oct 2023 07:29:47 -0700
+Received: from fmsmsx612.amr.corp.intel.com (10.18.126.92) by
+ fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.32; Tue, 3 Oct 2023 07:29:47 -0700
 Received: from fmsmsx602.amr.corp.intel.com (10.18.126.82) by
+ fmsmsx612.amr.corp.intel.com (10.18.126.92) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.32; Tue, 3 Oct 2023 07:29:46 -0700
+Received: from FMSEDG603.ED.cps.intel.com (10.1.192.133) by
  fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.32; Tue, 3 Oct 2023 07:29:17 -0700
-Received: from fmsedg602.ED.cps.intel.com (10.1.192.136) by
- fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.32 via Frontend Transport; Tue, 3 Oct 2023 07:29:17 -0700
-Received: from NAM11-DM6-obe.outbound.protection.outlook.com (104.47.57.170)
- by edgegateway.intel.com (192.55.55.71) with Microsoft SMTP Server
+ 15.1.2507.32 via Frontend Transport; Tue, 3 Oct 2023 07:29:46 -0700
+Received: from NAM02-BN1-obe.outbound.protection.outlook.com (104.47.51.42) by
+ edgegateway.intel.com (192.55.55.68) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.32; Tue, 3 Oct 2023 07:29:15 -0700
+ 15.1.2507.32; Tue, 3 Oct 2023 07:29:46 -0700
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Z8sZSZOBGRh5VhXYYf+KjfS4moX++QfFqtGt8cxAGkKauYdiGLQz7krBJEeEviT0yfzCRtG+k5LSjornQtcznmp8LYwzEjJo691NTt2aFwg61kJIQHP/DTj0enpN/OIwCRakAr+vCCDkxQ+t0eKGWsuYdNqxb+0AJBzld/ZjYdOocylFZ3KBFGDUnwwDsx8pc3wXKpJ9lsRVWd0NVL7xiOcvoazirMgUD20Q4w5dn0UTZuVUHE2+NXd4YhRLxDYRs/SSFzMF81qj1oYLKIjeB8APmLXdIeWhxVIQpRs8Ws0jbw+OkkGT2cUnJGGgcdtydvov/iUqooxlrOkeOfkoYQ==
+ b=KXjsbmS316udk+7JUG89GXvktgf/yU8jZSI9JwY1hidxJBVq2v8uohEu3q2kRV+uLKNKUistn7R/IPA8uYQ5fv24k8wvjy04fbuakkxM6St2r88Hu10PvjkLQ6EAnlR25JfF15I2rlF1Z8F2z1TYXLwaW1fvJWGKbdLaUw9HHvQYSdR1OPBNUjML5vIa0BCtRbTzEoJvwJIN6mhIp7UuKM/qOOncBMkVr5EjjmZoheEAz6I2BcpYkYV8qao/BxiTmzXVD82rFoPYv2RFu3CA0LM4pUmJ4ReJwF6y3GzWJj96tOaImTEMTkakfWzvsj4Hcr9+9DdE/nHYq+Qzc+GhHw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=dfruEa7S432H3UJwU/3lxHwENWU2BdHuzyQHDjfCNSs=;
- b=f8W6lHqCh9ZvSw2AGKlByJevctx71bjJxqR0KIeHZ10cXYx9VVoGX2gU+/FHctA6dUWkl4y95TyBzkbzfdpMT6vb7Yd20T9Ecl2zjsyKqfhUUZtycOgeH5nOnXEr7vIUmITGXpPwQDHiKwWCdys5doNEcG3B0KpTLI1ggI7nJDFFIu3T1RcLIWJ/XHYkupsdvFTxP2jGzMEsGk7IHyUZ3WC2tuQC6UTuxjqheMUxvqhSWTV9KyoQFiSBhfQEoNUccNeKT5MW7C0P6dUS6vWWoPLkBimrHpUhxoHCmFKD/PPcpWtuArsSyzCxP4PMEOQe5tl0Yh/O0mQJxjwie880ew==
+ bh=Koe1dIF4Njta8wIRsG1mCrMnxmr7bdStY896eLxdiIs=;
+ b=lL/jiXMGcW/cCXDK/jBjT2FeI98uH+bl/Pct7/VaeMHv+f/evyN79LTXCxsbMerf0jj/HOiyrgaWhvJAJ/CZLlXwMAeTHqa5vCF1cfKWAVaqLGAFcuazG35ix/d9tlHJVISYNqdaZ+u4Y+X8qDUiM2/Iysf3TSM1x3xsVZaHF5neQSkjKci1by9svMYIFw4P5+3JKpZ6O4k1GLI2qrgUNmloCDr1qdEjWNxbT3RqG0rm7jQdGet4f1mqXtAn1vDU8sufQS3E57b5T/HQs8Pp1d3fv7cC0L4C4C7UYwgrCKUxkDN2C5XPCCOqBRx8pGDR9eyvzpDZ1vS/Hcp+LBhrpw==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
  dkim=pass header.d=intel.com; arc=none
 Received: from DM6PR11MB4657.namprd11.prod.outlook.com (2603:10b6:5:2a6::7) by
- DM4PR11MB6549.namprd11.prod.outlook.com (2603:10b6:8:8e::9) with
+ MW4PR11MB6666.namprd11.prod.outlook.com (2603:10b6:303:1eb::6) with
  Microsoft
  SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.6813.21; Tue, 3 Oct 2023 14:29:13 +0000
+ 15.20.6838.33; Tue, 3 Oct 2023 14:29:43 +0000
 Received: from DM6PR11MB4657.namprd11.prod.outlook.com
  ([fe80::4c69:ab61:fea5:5a7f]) by DM6PR11MB4657.namprd11.prod.outlook.com
  ([fe80::4c69:ab61:fea5:5a7f%3]) with mapi id 15.20.6813.035; Tue, 3 Oct 2023
- 14:29:13 +0000
+ 14:29:43 +0000
 From: "Kubalewski, Arkadiusz" <arkadiusz.kubalewski@intel.com>
 To: Jiri Pirko <jiri@resnulli.us>
-Thread-Topic: [Intel-wired-lan] [PATCH net-next 3/4] dpll: netlink/core: add
- support for pin-dpll signal phase offset/adjust
-Thread-Index: AQHZ8STYBdXle/Bxd0eyxPCX/7DD6LAu+R+AgAebAaCAAA0FgIAAAWUAgAB1LQCAAItBAIAAgqAQ
-Date: Tue, 3 Oct 2023 14:29:13 +0000
-Message-ID: <DM6PR11MB46573DF9081298B816A215329BC4A@DM6PR11MB4657.namprd11.prod.outlook.com>
+Thread-Topic: [PATCH net-next 3/4] dpll: netlink/core: add support for
+ pin-dpll signal phase offset/adjust
+Thread-Index: AQHZ8STYBdXle/Bxd0eyxPCX/7DD6LAu+R+AgAebAaCAAA0FgIAAWKYAgACqnwCAAIO7gA==
+Date: Tue, 3 Oct 2023 14:29:43 +0000
+Message-ID: <DM6PR11MB4657B52BD09700F49799ED8C9BC4A@DM6PR11MB4657.namprd11.prod.outlook.com>
 References: <20230927092435.1565336-1-arkadiusz.kubalewski@intel.com>
  <20230927092435.1565336-4-arkadiusz.kubalewski@intel.com>
  <4018c0b0-b288-ff60-09be-7ded382f4a82@linux.dev>
  <DM6PR11MB4657AA79C0C44F868499A3129BC5A@DM6PR11MB4657.namprd11.prod.outlook.com>
  <ZRrb87drG7aVrxsT@nanopsycho>
- <eb019ccf-c50b-e9d7-e4e6-f6574f805b49@linux.dev>
- <DM6PR11MB4657DB3C9BC3E1EFE6A2F3389BC5A@DM6PR11MB4657.namprd11.prod.outlook.com>
- <ZRu0OlwKWSmXFOcV@nanopsycho>
-In-Reply-To: <ZRu0OlwKWSmXFOcV@nanopsycho>
+ <DM6PR11MB4657C61104280788DF49F0E59BC5A@DM6PR11MB4657.namprd11.prod.outlook.com>
+ <ZRu1cG2uglhmCdlI@nanopsycho>
+In-Reply-To: <ZRu1cG2uglhmCdlI@nanopsycho>
 Accept-Language: pl-PL, en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
 x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: DM6PR11MB4657:EE_|DM4PR11MB6549:EE_
-x-ms-office365-filtering-correlation-id: c90329f1-8361-45d0-478d-08dbc41d1dcf
+x-ms-traffictypediagnostic: DM6PR11MB4657:EE_|MW4PR11MB6666:EE_
+x-ms-office365-filtering-correlation-id: afcf311b-4886-4502-7be1-08dbc41d2fb2
 x-ms-exchange-senderadcheck: 1
 x-ms-exchange-antispam-relay: 0
 x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: zHXZ2/Z3454bBJtncxGSIUZThIWSv8lXLV2Ak2VFDSgsB9aZs5+pkUWQe/zPeZmcDQ4SVfP4oQ8xhUbVCg5iwyDpinyE8WgpRBMOAH3nD1rlywgaXS+L2NPpR/6hqFin93DDfoEN0p2fRZwIG/zOS7zDPqNy4QgWB4devmYGChHWVmWEKLzIyBGn4r1/j5v6ZD1uiZ2W9ZIgCJIq+tIRBY3A8qMYycHV5onnaqauyixD3Jop/XM1ojHS8xHtvSD//Mpbc04y8FPVAI6LzmDJP6L1ZxD0AIZV9tE8DQzNxbu6B1MhVIJZ4gAKeKeHQsNweWqij0mrllqSbd0PrVBkJ/eCG1ydYFoVJH1UH4asKLwOaQpiT3JE+/kzmJzXkAwLKmTRxENnjkoOwckSnB1K7tNFuUB7G9Tm5y8M4O5LbnqrLFa6l4OOFb7biI5JFIPfsq3DVX9lzSXex0rW3WxaXTvuaUvP0KxgahxS6nykDcciEX1zCh8N1PYz/mhIRnGij6Lm06/qdMgydwU9Xs1CxBnECuZP2g01B3Kjv9Tm+hH4BdZbqe7sIbI4BIOiu/LmK/PhQ1k5Ouludl0lAIl7vGwcaPe4wP6UdZDACJ/q6RI=
+x-microsoft-antispam-message-info: Mf6j7AmCdAKSPc2DdCUZ7hWegMvwcJRX1aWvUwlKiEpCArL+Rpru/PKB1NT7blyOxcivAHk9B6i+n4OwMaT3m6LgthTJi3p59wCrggurRz5LR+7mZBJsW/dWhIH4LpmV7L/n5NVq7yBetWSWiTrY9c4RvHsEmMYP1Z4FcLK3IpMgfyFSBoUDteImU8iIuqPiNdt5HggS26q8hOF2SFcfBPr9RDIUASg1dKgnJAG0i42nX2TRSxnjlsH0rRgkEomJLCq/cvhOHdBO6GIilX4i48QbZxqjd6Ej/K/YtmSuIx8l9It+uVB0fPOULSnSs1kX8RBvtHExxB+TwDbSClxQkqD7VoXO1Q+kjrbiLJpGr3LabH09rCzOIV7NT76siTQUib4H+aAva2gPvrDZ0DcGC7R4z7h9ImmzLB6o6UZuzuoXe7CssTmDXRfKfO34SAptwuru2HdKHGngGHSqdvy1H/6vpN7ap5661L1t9gaHogs4WlVula1gd2OvHVbsZGfQa1+LKczVkrJazUGVlzbAeRafgUVQHT/4P2nOZZhaeUgcO9D97mJiwjHDrHokaptSgc/8le6eLClyyioCiGIbHrDIiVcDiNx8JnASV07AqslpcabglZ9ULYGYsxusiCgv
 x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:DM6PR11MB4657.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230031)(346002)(376002)(39860400002)(396003)(366004)(136003)(230922051799003)(64100799003)(186009)(1800799009)(451199024)(7696005)(2906002)(9686003)(66446008)(66476007)(4326008)(6916009)(66556008)(54906003)(41300700001)(64756008)(66946007)(316002)(53546011)(6506007)(5660300002)(26005)(83380400001)(8936002)(52536014)(8676002)(38100700002)(38070700005)(71200400001)(82960400001)(122000001)(76116006)(478600001)(86362001)(33656002)(55016003);
+ SFS:(13230031)(396003)(39860400002)(366004)(136003)(346002)(376002)(230922051799003)(186009)(64100799003)(451199024)(1800799009)(2906002)(83380400001)(66899024)(86362001)(33656002)(122000001)(38070700005)(38100700002)(82960400001)(55016003)(316002)(6916009)(76116006)(66476007)(66946007)(54906003)(66446008)(66556008)(64756008)(9686003)(7696005)(6506007)(41300700001)(71200400001)(478600001)(52536014)(4326008)(8676002)(5660300002)(26005)(8936002);
  DIR:OUT; SFP:1102; 
 x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?4kms2Zar2twd1SLvNp+pDZqAtbazeApl/s92YhV4zQDyWlQ5Byj2Mo0zqYaS?=
- =?us-ascii?Q?3gnMgjM4GHU7nJbpTOQ3JbBbnx292wp4t8cyS+i2hB3YrQKN6cLhjY6uCBsD?=
- =?us-ascii?Q?t9+7OnrI7ZomJelfnSFNFHs1d0YGZwk7WpK7pFGoz4ileX9vml1ThLPK4C//?=
- =?us-ascii?Q?Ht7PGXJMg01KQaaAS1FMaJv+kPaE0J2uejFNN4153MwuMdkNejNUPoLahcp1?=
- =?us-ascii?Q?IFG3pQi0CntJN+Q4Sy+uMdLNoVSoSm5vObvIcuhP6c706hyS0EnER5syK2x3?=
- =?us-ascii?Q?bYvbwNQicDWxwe0YKiP3mkKrOIOuwr+KKa8GM6ZLbUSysjKr4HpbstlNaWTp?=
- =?us-ascii?Q?QPY7AF5KBL1GwQUlrzLuMIvq4nZTyUvFYIgvb4aUjUtz9RqFFlxc67vx3JAP?=
- =?us-ascii?Q?0XEcvZyp0BOeUa3Rioy8BafN/9eXFWg2vZ+cl/C8AiKx8ESrqP0/iuyBHLEk?=
- =?us-ascii?Q?wHE1L1Tl0PSt8sGiDA411AAbfpQaASW9AR0DSg42MImSvnVuBnthEoOu+dHj?=
- =?us-ascii?Q?XWaXcP+K9b3e3RwUYfOCEdTuuSwNTVY46DoeZ3Dq7JNd319hvhV11p34oHEY?=
- =?us-ascii?Q?ScpMo0C8OYSiXI24R0t+hImCipCOB35KU3I8I9Xilio+a0gSaI6hVxwMpPas?=
- =?us-ascii?Q?ma5Zf72uQuFXAmjNOIYSQ+I6hGdBCgR494GpDRQZMUn748RPWcJjQn5agMol?=
- =?us-ascii?Q?9Ji1Thb5jQ2FPcgp6sh4SZiUr955SWCiT8OxIAUVcwTJbqbfMQl1x90KtrbG?=
- =?us-ascii?Q?GUFB6Z5Oms7tBeR6IMmp1jsUjkJMOdoRu0G/vk6U2avifG22uMYryP+IheWb?=
- =?us-ascii?Q?w9gz3JZ5Y98YJaHyd0xzC1Kfrrl+2UsbUDrSrYEysGEe4UfvSMG2kTeBJYYe?=
- =?us-ascii?Q?ZwRMHvMc2DHCP0cqiFRhcBM4F2lYBeIS2Xq3eqvoFcHsicoDb0R1sYB42jhp?=
- =?us-ascii?Q?Ru6wMLWGVImzJD1GfrGnKraN6NrneOu1YMoRrvZ1pGRHDlA8OGtX6rJ9nUyd?=
- =?us-ascii?Q?VFV6MJKCjRj6+rL+Do4KXq9oJhEo6OzuSps7RaK54z6a5mXUYvr7OqwDB0+8?=
- =?us-ascii?Q?14omvg/9izrX3VOTx+9LVgp6lFObgZSfINyoMwp8/x6x8OjWxhj/0VYA0aoG?=
- =?us-ascii?Q?v7FAuWojnhD4x+wZhjdw20/akByOevmAqkbqD+qL8ooFOA8nBbIxevqReJ2q?=
- =?us-ascii?Q?/SlpD0I2uQqWiigWC3mO7IQNpScpci8oYIQ3Jz5y3lo7YkqJPWYNAAMisOnr?=
- =?us-ascii?Q?jhaCrDbou2HJnQI7AtF8En7MS29oklLH1oC6wMGGJmFkUq3M7+l5Hm0vhfI7?=
- =?us-ascii?Q?OfIB+qfxX7Fv7FJo/VhIuClCBO0gPTs4Nwy3+GtBPj7K7YLiulOu7UPsMc8a?=
- =?us-ascii?Q?1q9KLtXC/yRpSyDTB8gOo9HX8Uu/J2dxjEAeEso9vvaE41fH7dBqrgdD0WaA?=
- =?us-ascii?Q?tcFou3vc88e0nHNB8R8nnlrlB7T38bHBrTNhjbHA5X/VlmgxD7XZP9rDTXPG?=
- =?us-ascii?Q?48cejNTlzU4aFW+oYc73Vu9kC0rGOw86c7s7WnXNFlpLCsTQo9JNphWGHUGe?=
- =?us-ascii?Q?oii04z+HdA8nKWrtICV5S21TAtkSb9l1jwDcthorZ9fuMxE1sE8udIC20pFY?=
- =?us-ascii?Q?Lg=3D=3D?=
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?8w3TjGBtJmaBiAWaC5L8PVr68LDXGdBwmmCZ51dDrxoIEOgkVlmlWnYgYlq+?=
+ =?us-ascii?Q?gMKBILwF8JfEfJGOafWv/XrkOmVU8FC1IKuD17/aKku96/gXA3r2u91vPtd4?=
+ =?us-ascii?Q?yN12Iz3ZjMVBb8FAT9+paBczaIi12da1A+r/H8bakZeV1hiYbbrZ3d0m/V+j?=
+ =?us-ascii?Q?Z5FrdXD3FulZRSz87+px1DqIkM3wT4BVqgglD8ML8z1yDB6jewmfzXFv0/ms?=
+ =?us-ascii?Q?Nuv5MH3sTSWulnm4i6KLtYO/fvhngoLv/OUXP6g+r2JPBsitjVo1nb1LKt7C?=
+ =?us-ascii?Q?sugRvadqFVaCpcLlETBsNQ8lwN1jCaMcOdFwc92W+PjALMmGoPRgaLBiqexd?=
+ =?us-ascii?Q?DNLKp4wMmkOYFH2Rp6lNQ8of5acr8gGiTfNWbBi/aTC/4uGCEyu78kpG0WFF?=
+ =?us-ascii?Q?z2pI1dUXZdW/lK207zn14MywQU97IoiajH9/e4uw/NkcpK6VXeiruACO07yP?=
+ =?us-ascii?Q?PWByrVpWE4pI0jjW/x0wSSyi72au9Hm1Sv/VmxiUd0k8ZmzRJbhJzwIp+LDp?=
+ =?us-ascii?Q?PzLNB0kK5/YT5YVGp20QVYFAuPkraqgoQ1vaPb9kuMytf/EPIMSTh7MPJ2+n?=
+ =?us-ascii?Q?MYYEDmbH3RTa7ZU2yatbKLSgQq7twICItzNfW8TUG8zwLO+HAvBS7eFZc6Xc?=
+ =?us-ascii?Q?qbRh/WnF9lKBDZ/R2Nr1jeX6YGUILgsHzRSXKYfPy1fsYX9N6fWpXiteekT6?=
+ =?us-ascii?Q?5lPn4ETQ4TXH/p23NupdMnn02wQH2I8rbgcnVn+7BK8G4h8btLfWj+7FmY62?=
+ =?us-ascii?Q?ViKmWyIOt9RWGKK6vEFu0IffTbtUlaxfBxCeft+vMaTIleoM6s9WOgGgBbDl?=
+ =?us-ascii?Q?IKXqyDeECDG8gxdXQ8XMr3XpMmPWMUrDaG8HAUvOI/Gy8Y71AR3Z9o0h8Slo?=
+ =?us-ascii?Q?6rACPh3cUUU/f78fQnP7bLOC+3193xrNAaTmNtce7/SHFNU2T+UVjCnjHd7c?=
+ =?us-ascii?Q?SOf/eSsLCluQR3UrZkcDxH550DbBan2BSrD8GOVXRDnHL7+Sw2YtiAhBG+gj?=
+ =?us-ascii?Q?Wtjq+IKOXlb8LN2j7DDSuSDT7V84hcyHt+bFml1s/iFlau6J+2ITYAnjsqQ5?=
+ =?us-ascii?Q?UKsVNXCPbkLRsmwnLcMUqPVlrRotCdTm26GziCK7AAXLR/WSlaZS4sJsExwc?=
+ =?us-ascii?Q?CbkhkwYxEUPozvT+7Mj2jiM+mE2ba3qP1BR6BNGuPATvrdYJY4JQlnmggeNl?=
+ =?us-ascii?Q?rP/QkZCqFRN4TPbo6/OnF8rKb6MPWK+89ceGmHs9O2DDz7unaF0rTKdw1Zvj?=
+ =?us-ascii?Q?qYO8hCsyuGguXEI7f8R7uq6a1leIR7kalkfUjz2F0PUnasWJMuSI4HAZmM5a?=
+ =?us-ascii?Q?cFqo/3S7XZ8HzjDtwBiIlkPY5NSmYz8XaPYmJNhVe7qbNVfPjAJdtCElSzP8?=
+ =?us-ascii?Q?eXetyFqDq0eFr3cKlApX2z97MFlcdeadM1evFD7XXPePfxzJvT7OMRZwxdv+?=
+ =?us-ascii?Q?rOOJzstnvRU1fRd2LA3tcuBasupdKoQS3XVmUreRoaDVI+uPLxzjf9fZ5uqZ?=
+ =?us-ascii?Q?9Ojo0V5Pn9AIMVgzRPc1SQwjAttLIsd5sRYtvLjQcpW1Y2sgd+lechROy+ST?=
+ =?us-ascii?Q?Sjw/DA6Fb66PHMkawjoA9eFnz2msPa2xprdrZJfFtPMpHmBBpmhHQ2kajdVB?=
+ =?us-ascii?Q?oA=3D=3D?=
 MIME-Version: 1.0
 X-MS-Exchange-CrossTenant-AuthAs: Internal
 X-MS-Exchange-CrossTenant-AuthSource: DM6PR11MB4657.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: c90329f1-8361-45d0-478d-08dbc41d1dcf
-X-MS-Exchange-CrossTenant-originalarrivaltime: 03 Oct 2023 14:29:13.5913 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: afcf311b-4886-4502-7be1-08dbc41d2fb2
+X-MS-Exchange-CrossTenant-originalarrivaltime: 03 Oct 2023 14:29:43.6135 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: ICmUME7ZHnO1bRB7tmKqfP7FIiUqf1b0kgDWxKpBHLo/HVDbeqivFNXaGmAOS2fbcDNEQBjkdZlTMdX1Y9Wp6TneNvmPkAn0AjlHuqvX/9g=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM4PR11MB6549
+X-MS-Exchange-CrossTenant-userprincipalname: uJy1aKzqudQ0IrOr0/Ob3METNnVe7YghJt6xouHFYGOQ8cfxZr2FuLFs7+G4g/JBVVfUvPnXuBxo5FprZinjSeZ/Tq9dUeFB8mdkfbYULt4=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MW4PR11MB6666
 X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1696343397; x=1727879397;
+ t=1696343389; x=1727879389;
  h=from:to:cc:subject:date:message-id:references:
  in-reply-to:content-transfer-encoding:mime-version;
- bh=ah2DKyj4GzuJhohPfF/qNAdp/H6XH0UsSS428FnB7Bk=;
- b=G5MzZN/+RKMOqF3xqfr3IgUKZv7KWV5hfTJ26EXLfaZx10mjzhz/OSFN
- 33pKiXT8oiv6Ibc7yG26XD448EWw/4XlFYko3wQphPfVN7TUCLjWBjr/7
- 0f8mTWOgIKj9hYMrNqxhBqCXOry5KEzyoHJ28WjFr2n6E3EinQhE9ICa2
- wHqOW0KPv/cGYV/uJnzd6qglXhWJtQJZKXwgW7TH4YInUEzAqkWTt/HJs
- gnkeLSb2zJ/7i2Q8muPzQ/QY4/MXeqhUsd80EeLD4fxS+4x6bwuVBZxKQ
- 1wUVNs/YveCwqwEgLgxCQ1Bdzld7XCXaGwiATSOM3sVVn/v6Fm9lDKgYY
- A==;
+ bh=cKhiHZw4HQHAZoVhe5O0cJi4L9RDANYt57adLh47nVA=;
+ b=WUIsCOxpHrJFXXNX4bu7R7sujeUZfqQsZnIvveCdbakBqO04F2p+jJ29
+ Irs5WFe9TDbbe/QbK++Xj10ZUopr5TE/Ckuj7xfIJpaw8JazoBsRmLnEz
+ xfdmUgq7qWiWuJ0BmD173tQto30DZdMotHf7wPRYO6sUd10axn+VXV7qX
+ +4RGlT9ihXDWe9DRC3xHhq3dZeFPD0omngM3IcCZtL5bKirZJ60E/wpGo
+ HNtK1XRs3L+8NmPyw/Mj+e0u3AmvVp/QkP1NHag6sMtB7VdbLfuwt2QZi
+ wgZSFpG7G6Q5poq6DO3ywr+IIj15FjQOpfh1iqq+dDl5cj/5t2s2tZp2o
+ w==;
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=G5MzZN/+
+ header.a=rsa-sha256 header.s=Intel header.b=WUIsCOxp
 X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=intel.com;
 Subject: Re: [Intel-wired-lan] [PATCH net-next 3/4] dpll: netlink/core: add
@@ -192,13 +195,13 @@ List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Cc: Vadim Fedorenko <vadim.fedorenko@linux.dev>,
- "linux-doc@vger.kernel.org" <linux-doc@vger.kernel.org>,
+ "corbet@lwn.net" <corbet@lwn.net>,
  "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "corbet@lwn.net" <corbet@lwn.net>, "Brandeburg,
+ "linux-doc@vger.kernel.org" <linux-doc@vger.kernel.org>, "Brandeburg, 
  Jesse" <jesse.brandeburg@intel.com>, "Nguyen,
- Anthony L" <anthony.l.nguyen@intel.com>, "kuba@kernel.org" <kuba@kernel.org>,
+ Anthony L" <anthony.l.nguyen@intel.com>,
  "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "pabeni@redhat.com" <pabeni@redhat.com>,
+ "kuba@kernel.org" <kuba@kernel.org>, "pabeni@redhat.com" <pabeni@redhat.com>,
  "davem@davemloft.net" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
@@ -206,172 +209,153 @@ Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 >From: Jiri Pirko <jiri@resnulli.us>
->Sent: Tuesday, October 3, 2023 8:27 AM
->To: Kubalewski, Arkadiusz <arkadiusz.kubalewski@intel.com>
+>Sent: Tuesday, October 3, 2023 8:32 AM
 >
->Tue, Oct 03, 2023 at 01:10:39AM CEST, arkadiusz.kubalewski@intel.com wrote:
->>>From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
->>>Vadim Fedorenko
->>>Sent: Monday, October 2, 2023 5:09 PM
+>Tue, Oct 03, 2023 at 01:03:00AM CEST, arkadiusz.kubalewski@intel.com wrote:
+>>>From: Jiri Pirko <jiri@resnulli.us>
+>>>Sent: Monday, October 2, 2023 5:04 PM
 >>>
->>>On 02/10/2023 16:04, Jiri Pirko wrote:
->>>> Mon, Oct 02, 2023 at 04:32:30PM CEST, arkadiusz.kubalewski@intel.com
->>>> wrote:
->>>>>> From: Vadim Fedorenko <vadim.fedorenko@linux.dev>
->>>>>> Sent: Wednesday, September 27, 2023 8:09 PM
->>>>>>
->>>>>> On 27/09/2023 10:24, Arkadiusz Kubalewski wrote:
->>>>>>> Add callback op (get) for pin-dpll phase-offset measurment.
->>>>>>> Add callback ops (get/set) for pin signal phase adjustment.
->>>>>>> Add min and max phase adjustment values to pin proprties.
->>>>>>> Invoke get callbacks when filling up the pin details to provide user
->>>>>>> with phase related attribute values.
->>>>>>> Invoke phase-adjust set callback when phase-adjust value is provided
->>>>>>> for
->>>>>>> pin-set request.
->>>>>>>
->>>>>>> Signed-off-by: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
->>>>>>
->>>>>> [...]
->>>>>>
->>>>>>> +static int
->>>>>>> +dpll_pin_phase_adj_set(struct dpll_pin *pin, struct nlattr
->>>>>>> *phase_adj_attr,
->>>>>>> +		       struct netlink_ext_ack *extack)
->>>>>>> +{
->>>>>>> +	struct dpll_pin_ref *ref;
->>>>>>> +	unsigned long i;
->>>>>>> +	s32 phase_adj;
->>>>>>> +	int ret;
->>>>>>> +
->>>>>>> +	phase_adj = nla_get_s32(phase_adj_attr);
->>>>>>> +	if (phase_adj > pin->prop->phase_range.max ||
->>>>>>> +	    phase_adj < pin->prop->phase_range.min) {
->>>>>>> +		NL_SET_ERR_MSG(extack, "phase adjust value not
->>>>>>> supported");
->>>>>>> +		return -EINVAL;
->>>>>>> +	}
->>>>>>> +	xa_for_each(&pin->dpll_refs, i, ref) {
->>>>>>> +		const struct dpll_pin_ops *ops = dpll_pin_ops(ref);
->>>>>>> +		struct dpll_device *dpll = ref->dpll;
->>>>>>> +
->>>>>>> +		if (!ops->phase_adjust_set)
->>>>>>> +			return -EOPNOTSUPP;
->>>>>>
->>>>>> I'm thinking about this part. We can potentially have dpll devices
->>>>>> with
->>>>>> different expectations on phase adjustments, right? And if one of
->>>>>> them
->>>>>> won't be able to adjust phase (or will fail in the next line), then
->>>>>> netlink will return EOPNOTSUPP while _some_ of the devices will be
->>>>>> adjusted. Doesn't look great. Can we think about different way to
->>>>>> apply
->>>>>> the change?
->>>>>>
+>>>Mon, Oct 02, 2023 at 04:32:30PM CEST, arkadiusz.kubalewski@intel.com
+>>>wrote:
+>>>>>From: Vadim Fedorenko <vadim.fedorenko@linux.dev>
+>>>>>Sent: Wednesday, September 27, 2023 8:09 PM
 >>>>>
->>>>> Well makes sense to me.
+>>>>>On 27/09/2023 10:24, Arkadiusz Kubalewski wrote:
+>>>>>> Add callback op (get) for pin-dpll phase-offset measurment.
+>>>>>> Add callback ops (get/set) for pin signal phase adjustment.
+>>>>>> Add min and max phase adjustment values to pin proprties.
+>>>>>> Invoke get callbacks when filling up the pin details to provide user
+>>>>>> with phase related attribute values.
+>>>>>> Invoke phase-adjust set callback when phase-adjust value is provided
+>>>>>> for
+>>>>>> pin-set request.
+>>>>>>
+>>>>>> Signed-off-by: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
 >>>>>
->>>>> Does following makes sense as a fix?
->>>>> We would call op for all devices which has been provided with the op.
->>>>> If device has no op -> add extack error, continue
+>>>>>[...]
+>>>>>
+>>>>>> +static int
+>>>>>> +dpll_pin_phase_adj_set(struct dpll_pin *pin, struct nlattr
+>>>>>> *phase_adj_attr,
+>>>>>> +		       struct netlink_ext_ack *extack)
+>>>>>> +{
+>>>>>> +	struct dpll_pin_ref *ref;
+>>>>>> +	unsigned long i;
+>>>>>> +	s32 phase_adj;
+>>>>>> +	int ret;
+>>>>>> +
+>>>>>> +	phase_adj = nla_get_s32(phase_adj_attr);
+>>>>>> +	if (phase_adj > pin->prop->phase_range.max ||
+>>>>>> +	    phase_adj < pin->prop->phase_range.min) {
+>>>>>> +		NL_SET_ERR_MSG(extack, "phase adjust value not
+>>>>>> supported");
+>>>>>> +		return -EINVAL;
+>>>>>> +	}
+>>>>>> +	xa_for_each(&pin->dpll_refs, i, ref) {
+>>>>>> +		const struct dpll_pin_ops *ops = dpll_pin_ops(ref);
+>>>>>> +		struct dpll_device *dpll = ref->dpll;
+>>>>>> +
+>>>>>> +		if (!ops->phase_adjust_set)
+>>>>>> +			return -EOPNOTSUPP;
+>>>>>
+>>>>>I'm thinking about this part. We can potentially have dpll devices with
+>>>>>different expectations on phase adjustments, right? And if one of them
+>>>>>won't be able to adjust phase (or will fail in the next line), then
+>>>>>netlink will return EOPNOTSUPP while _some_ of the devices will be
+>>>>>adjusted. Doesn't look great. Can we think about different way to apply
+>>>>>the change?
+>>>>>
 >>>>
->>>> Is it real to expect some of the device support this and others don't?
->>>> Is it true for ice?
->>>> If not, I would got for all-or-nothing here.
+>>>>Well makes sense to me.
 >>>>
+>>>>Does following makes sense as a fix?
+>>>>We would call op for all devices which has been provided with the op.
+>>>>If device has no op -> add extack error, continue
 >>>
->>>But nothing blocks vendors to provide such configuration. Should we
->>>rollback the configuration? Otherwise we can easily make it
->>>inconsistent.
->>
->>Good point, in such case rollback might be required.
->>
->>>
->>>I'm more thinking of checking if all the devices returned error (or
->>>absence of operation callback) and then return error instead of 0 with
->>>extack filled in.
+>>>Is it real to expect some of the device support this and others don't?
+>>>Is it true for ice?
+>>>If not, I would got for all-or-nothing here.
 >>>
 >>
->>Well, what if different devices would return different errors?
->>In general we would have to keep track of the error values returned in
->>such case.. Assuming one is different than the other - still need to error
->>extack them out? I guess it would be easier to return common error if
->there
+>>Let's step back a bit.
+>>The op itself is introduced as per pin-dpll tuple.. did this
+>>intentionally,
+>>to inform each dpll that the offset has been changed - in case dplls are
+>>controlled by separated driver/firmware instances but still sharing the
+>>pin.
+>>Same way a pin frequency is being set, from user perspective on a pin, but
+>>callback is called for each dpll the pin was registered with.
+>>Whatever we do here, it shall be probably done for frequency_set()
+>>callback as
+>>well.
+>>
+>>The answers:
+>>So far I don't know the device that might do it this way, it rather
+>>supports
+>>phase_adjust or not. In theory we allow such behavior to be implemented,
+>>i.e.
+>>pin is registered with 2 dplls, one has the callback, second not.
 >
->In this case, it is common to return the first error hit and bail out,
->not trying the rest.
+>If there is only theoretical device like that now, implement
+>all-or-nothing. If such theoretical device appears in real, this could
+>be changed. The UAPI would not change, no problem.
 >
 
-OK, so now I see it like this:
--> check if all device implement callback, if not return EOPNOTSUPP;
--> get old phase_adjust
--> if new == old, return EINVAL
--> for each device: call phase_adjust_set, if fails, rollback all previous
-   successful attempts and return the failure code
-?
+I can live with it :)
+
+>
+>>Current hardware of ice sets phase offset for a pin no matter on which
+>>dpll
+>>device callback was invoked.
+>>"all-or-nothing" - do you mean to check all callback returns and then
+>>decide
+>>if it was successful?
+>
+>Check if all dplls have ops and only perform the action in such case. In
+>case one of the dplls does not have the op filled, return -EOPNOTSUPP.
+>
+>
+>Regarding the successful/failed op, I think you can just return. In
+>these cases, when user performs multiaction cmd, he should be prepared
+>to deal with consequences if part of this cmd fails. We don't have
+>rollback for any other multiaction cmd in dpll, I don't see why this
+>should be treated differently.
+>
+
+We don't have it because no one have spotted it on review,
+as mentioned the frequency_set behaves the same way,
+we need one approach for all of those cases.
+I am opting for having the rollback as suggested on the other thread.
 
 Thank you!
 Arkadiusz
 
 >
->>were only failures and let the driver fill the errors on extack, smt like:
->>
->>	int miss_cb_num = 0, dev_num = 0, err_num;
->>
->>	xa_for_each(&pin->dpll_refs, i, ref) {
->>		const struct dpll_pin_ops *ops = dpll_pin_ops(ref);
->>		struct dpll_device *dpll = ref->dpll;
->>
->>		dev_num++;
->>		if (!ops->phase_adjust_set) {
->>			miss_cb_num++;
->>			continue;
->>		}
->>		ret = ops->phase_adjust_set(pin,
->>					dpll_pin_on_dpll_priv(dpll, pin),
->>					dpll, dpll_priv(dpll), phase_adj,
->>					extack);
->>		if (ret)
->>			err_num++;
->>	}
->>	if (dev_num == miss_cb_num)
->>		return -EOPNOTSUPP;
->>	if (dev_num == err_num)
->>		return -EINVAL;
->>	__dpll_pin_change_ntf(pin);
->>	return 0;
->>
->>??
 >>
 >>Thank you!
 >>Arkadiusz
 >>
->>>>
->>>>> If device fails to set -> add extack error, continue
->>>>> Function always returns 0.
->>>>>
->>>>> Thank you!
->>>>> Arkadiusz
->>>>>
->>>>>>
->>>>>>> +		ret = ops->phase_adjust_set(pin,
->>>>>>> +					    dpll_pin_on_dpll_priv(dpll, pin),
->>>>>>> +					    dpll, dpll_priv(dpll), phase_adj,
->>>>>>> +					    extack);
->>>>>>> +		if (ret)
->>>>>>> +			return ret;
->>>>>>> +	}
->>>>>>> +	__dpll_pin_change_ntf(pin);
->>>>>>> +
->>>>>>> +	return 0;
->>>>>>> +}
->>>>>>> +
 >>>
->>>_______________________________________________
->>>Intel-wired-lan mailing list
->>>Intel-wired-lan@osuosl.org
->>>https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
-
+>>>>If device fails to set -> add extack error, continue
+>>>>Function always returns 0.
+>>>>
+>>>>Thank you!
+>>>>Arkadiusz
+>>>>
+>>>>>
+>>>>>> +		ret = ops->phase_adjust_set(pin,
+>>>>>> +					    dpll_pin_on_dpll_priv(dpll, pin),
+>>>>>> +					    dpll, dpll_priv(dpll), phase_adj,
+>>>>>> +					    extack);
+>>>>>> +		if (ret)
+>>>>>> +			return ret;
+>>>>>> +	}
+>>>>>> +	__dpll_pin_change_ntf(pin);
+>>>>>> +
+>>>>>> +	return 0;
+>>>>>> +}
+>>>>>> +
+>>
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
