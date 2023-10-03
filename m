@@ -2,84 +2,84 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9867E7B606C
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  3 Oct 2023 07:32:16 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 940367B6080
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  3 Oct 2023 07:48:23 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 3889041BE9;
-	Tue,  3 Oct 2023 05:32:15 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3889041BE9
+	by smtp4.osuosl.org (Postfix) with ESMTP id 1CA4741D87;
+	Tue,  3 Oct 2023 05:48:22 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1CA4741D87
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1696311135;
-	bh=TrIGDJRnjfHAtNcEtlgzPjI0J8/DAQqgle3V6njM8aI=;
+	s=default; t=1696312102;
+	bh=GPlXAFZSRSjiISvKogz/tBBlCF3jwjB4WpGr2mwCBcM=;
 	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=wD3fTo0mV3iZzTWo63Hp5N8yAy4zb2MJtN2YntAvLpbi2/so9MOdbqSX5KXFKrUBx
-	 DBiJau0C3Tc/1J96o25FuH/ajtjcMckKhtQrMSB2Dia+l6qTyNa7HYvUkhkucZPCol
-	 GMaIYc07kCeqqUsT5rFZDP9SDFJUItJXvmkUZss7AbsBZH29nhXYmzuC8rDTR+APxe
-	 Y/16/KQklujVyo4hEtABbnMg+wB34MXbAtPf+EZCpsUEadULbEe7SlvkrHxw5IenXh
-	 /vkBNsHRvopiLAPQmrIvWT/r2wYXuKjl7DTQkv5j/oAHvmOQrvXXJmD/po2g5tReb2
-	 DmiM3wFVHTurQ==
+	 List-Post:List-Help:List-Subscribe:From;
+	b=E1dZKu6UulTXGyZEqWebMSMRmGfzKwktMrwjKdobQIazc6NuYIuJXQ7TarrO8QFrg
+	 lD41SufnOK8NRFe/iPMSNLlCZUttjIQWEUX7I9QuGTboXnOdALElT4/Q43vE4MzaQn
+	 h+6HJh/OTQbpImP65Sv2JQcS/QD/0fFJZeasEdGOkOGAH8MUechpsUskUc2oIFzgmU
+	 LrYonrVWum2XHfWTiONdo2T16nmsfrlJgLlJsAbKhcRsk0p+o7YnZixfKEZNmfEWmR
+	 dq2KJ0gTqScLSzawNo3Udl9b410YYc0C3QkTcBIRxyNEtHPF92oWX1g5/5TMW7gHU8
+	 FsFR8ugMa8wlA==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id AoENXYTeg5p8; Tue,  3 Oct 2023 05:32:13 +0000 (UTC)
+	with ESMTP id srUKIdDn-pdc; Tue,  3 Oct 2023 05:48:21 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 82C0F41BF8;
-	Tue,  3 Oct 2023 05:32:12 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 82C0F41BF8
+	by smtp4.osuosl.org (Postfix) with ESMTP id 958DC41D76;
+	Tue,  3 Oct 2023 05:48:20 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 958DC41D76
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 060C21BF94D
- for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Oct 2023 05:32:07 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 9E73B1BF584
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Oct 2023 05:48:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id D2A95417B3
- for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Oct 2023 05:32:06 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org D2A95417B3
+ by smtp2.osuosl.org (Postfix) with ESMTP id 8011E40FCC
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Oct 2023 05:48:15 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 8011E40FCC
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id coQalDrQ9Er3 for <intel-wired-lan@lists.osuosl.org>;
- Tue,  3 Oct 2023 05:32:04 +0000 (UTC)
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.9])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 3D89140140
- for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Oct 2023 05:32:03 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3D89140140
-X-IronPort-AV: E=McAfee;i="6600,9927,10851"; a="1385304"
-X-IronPort-AV: E=Sophos;i="6.03,196,1694761200"; 
-   d="scan'208";a="1385304"
-Received: from fmsmga005.fm.intel.com ([10.253.24.32])
- by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 02 Oct 2023 22:32:01 -0700
+ with ESMTP id CqADPEfNcjs5 for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  3 Oct 2023 05:48:14 +0000 (UTC)
+Received: from mgamail.intel.com (mgamail.intel.com [134.134.136.126])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 89E6740140
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Oct 2023 05:48:14 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 89E6740140
+X-IronPort-AV: E=McAfee;i="6600,9927,10851"; a="367849721"
+X-IronPort-AV: E=Sophos;i="6.03,196,1694761200"; d="scan'208";a="367849721"
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+ by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 02 Oct 2023 22:48:13 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10851"; a="1081881159"
-X-IronPort-AV: E=Sophos;i="6.03,196,1694761200"; d="scan'208";a="1081881159"
-Received: from jbrandeb-spr1.jf.intel.com ([10.166.28.233])
- by fmsmga005-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 02 Oct 2023 22:32:00 -0700
-From: Jesse Brandeburg <jesse.brandeburg@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Mon,  2 Oct 2023 22:31:10 -0700
-Message-Id: <20231003053110.3872424-1-jesse.brandeburg@intel.com>
-X-Mailer: git-send-email 2.39.3
+X-IronPort-AV: E=McAfee;i="6600,9927,10851"; a="727507651"
+X-IronPort-AV: E=Sophos;i="6.03,196,1694761200"; d="scan'208";a="727507651"
+Received: from ccdlinuxdev11.iil.intel.com ([143.185.162.129])
+ by orsmga006.jf.intel.com with ESMTP; 02 Oct 2023 22:48:11 -0700
+From: Sasha Neftin <sasha.neftin@intel.com>
+To: intel-wired-lan@lists.osuosl.org,
+	sasha.neftin@intel.com
+Date: Tue,  3 Oct 2023 08:48:11 +0300
+Message-Id: <20231003054811.3679788-1-sasha.neftin@intel.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1696311123; x=1727847123;
- h=from:to:cc:subject:date:message-id:mime-version:
+ t=1696312094; x=1727848094;
+ h=from:to:subject:date:message-id:mime-version:
  content-transfer-encoding;
- bh=nFMy4xx+Sj2GKtLX3a/Sf+EbgsqvUQF1nDj0BB8WZTA=;
- b=DcDYSaZhBZAcxDwXcNUdXOLQxHa+vMOiodJu7RvCOg3E8yYB+Oi1dsYc
- OE5gkulJzz32itLMG788mSixBM3GpNcDkzOWPO8uZzK9XRmcCszc60ki5
- RrdTMILuIU/T6cY0lRsPlyrM4rwm3cXF7N04rPZWrm0H4Qlh+Pww5gw80
- TkxxZKNwcJ9U3CZPRFJxH+kr1OQuUGtg2aYUH6MWn10wn5D5ApHnfgLVw
- JOZAmpEr0SkzzNMeWGnDQLa0vKCgIdT29vbJeZ+QDkW5LmlnTmMmfVtN4
- j+RoK7DLpd/OKQJCiN+lNX4+ngjh2pxzEBHkidm1P1iQCaridfvNScRWW
+ bh=MQABlIspiGTSTMuwYw6UciqQ0vMYjCLN4o+o3RzWcsE=;
+ b=bJ3jNfaj4Z21c/ais9//csuaXkpF9DMZgIzd72i2wXTJ66oIGDL7dRo7
+ biM4/Q1z2e0v2ZUvFgNRoizduofGyxeD2Wx/vmPlAjqWg5Y/C0h8CGpkJ
+ 2dLB5qdw9yWr1KLUgrZnft9Z7ynC8q8vAv2tzVfdk0sCLOfqB/2vAF+Ws
+ a14rbukwaXGYEyFRV1fyMFIXiak6nKoawE+qSKxKTBHq4Vsro+VhSOqNG
+ mdabGYovMyumT0H3m6zGDeK4c0CdB4UuM9mBKmDQeWZMdQXg5fDYiFEiY
+ u0zpuwzEzJ6mtgNJQu5RuyGvzx5KYFynAjXSF8jR0gr6Y5pUt+7P15LTQ
  A==;
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=DcDYSaZh
-Subject: [Intel-wired-lan] [PATCH iwl-net v1] ice: fix over-shifted variable
+ header.a=rsa-sha256 header.s=Intel header.b=bJ3jNfaj
+Subject: [Intel-wired-lan] [PATCH iwl-net v1 1/1] igc: Fix ambiguity in the
+ ethtool advertising
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,49 +92,82 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, Jesse Brandeburg <jesse.brandeburg@intel.com>,
- stable@vger.kernel.org, Przemek Kitszel <przemyslaw.kitszel@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Since the introduction of the ice driver the code has been
-double-shifting the RSS enabling field, because the define already has
-shifts in it and can't have the regular pattern of "a << shiftval &
-mask" applied.
+The 'ethtool_convert_link_mode_to_legacy_u32' method does not allow us to
+advertise 2500M speed support and TP (twisted pair) properly. Convert to
+'ethtool_link_ksettings_test_link_mode' to advertise supported speed and
+eliminate ambiguity.
 
-Most places in the code got it right, but one line was still wrong. Fix
-this one location for easy backports to stable. An in-progress patch
-fixes the defines to "standard" and will be applied as part of the
-regular -next process sometime after this one.
-
-Fixes: d76a60ba7afb ("ice: Add support for VLANs and offloads")
-Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-CC: stable@vger.kernel.org
-Signed-off-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
+Fixes: 8c5ad0dae93c ("igc: Add ethtool support")
+Suggested-by: Dima Ruinskiy <dima.ruinskiy@intel.com>
+Suggested-by: Vitaly Lifshits <vitaly.lifshits@intel.com>
+Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_lib.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ drivers/net/ethernet/intel/igc/igc_ethtool.c | 35 ++++++++++++++------
+ 1 file changed, 25 insertions(+), 10 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
-index 201570cd2e0b..0aac519cc298 100644
---- a/drivers/net/ethernet/intel/ice/ice_lib.c
-+++ b/drivers/net/ethernet/intel/ice/ice_lib.c
-@@ -1201,8 +1201,7 @@ static void ice_set_rss_vsi_ctx(struct ice_vsi_ctx *ctxt, struct ice_vsi *vsi)
+diff --git a/drivers/net/ethernet/intel/igc/igc_ethtool.c b/drivers/net/ethernet/intel/igc/igc_ethtool.c
+index 7ab6dd58e400..dd8a9d27a167 100644
+--- a/drivers/net/ethernet/intel/igc/igc_ethtool.c
++++ b/drivers/net/ethernet/intel/igc/igc_ethtool.c
+@@ -1817,7 +1817,7 @@ igc_ethtool_set_link_ksettings(struct net_device *netdev,
+ 	struct igc_adapter *adapter = netdev_priv(netdev);
+ 	struct net_device *dev = adapter->netdev;
+ 	struct igc_hw *hw = &adapter->hw;
+-	u32 advertising;
++	u16 advertised = 0;
  
- 	ctxt->info.q_opt_rss = ((lut_type << ICE_AQ_VSI_Q_OPT_RSS_LUT_S) &
- 				ICE_AQ_VSI_Q_OPT_RSS_LUT_M) |
--				((hash_type << ICE_AQ_VSI_Q_OPT_RSS_HASH_S) &
--				 ICE_AQ_VSI_Q_OPT_RSS_HASH_M);
-+				(hash_type & ICE_AQ_VSI_Q_OPT_RSS_HASH_M);
- }
+ 	/* When adapter in resetting mode, autoneg/speed/duplex
+ 	 * cannot be changed
+@@ -1842,18 +1842,33 @@ igc_ethtool_set_link_ksettings(struct net_device *netdev,
+ 	while (test_and_set_bit(__IGC_RESETTING, &adapter->state))
+ 		usleep_range(1000, 2000);
  
- static void
-
-base-commit: 6a70e5cbedaf8ad10528ac9ac114f3ec20f422df
+-	ethtool_convert_link_mode_to_legacy_u32(&advertising,
+-						cmd->link_modes.advertising);
+-	/* Converting to legacy u32 drops ETHTOOL_LINK_MODE_2500baseT_Full_BIT.
+-	 * We have to check this and convert it to ADVERTISE_2500_FULL
+-	 * (aka ETHTOOL_LINK_MODE_2500baseX_Full_BIT) explicitly.
+-	 */
+-	if (ethtool_link_ksettings_test_link_mode(cmd, advertising, 2500baseT_Full))
+-		advertising |= ADVERTISE_2500_FULL;
++	if (ethtool_link_ksettings_test_link_mode(cmd, advertising,
++						  2500baseT_Full))
++		advertised |= ADVERTISE_2500_FULL;
++
++	if (ethtool_link_ksettings_test_link_mode(cmd, advertising,
++						  1000baseT_Full))
++		advertised |= ADVERTISE_1000_FULL;
++
++	if (ethtool_link_ksettings_test_link_mode(cmd, advertising,
++						  100baseT_Full))
++		advertised |= ADVERTISE_100_FULL;
++
++	if (ethtool_link_ksettings_test_link_mode(cmd, advertising,
++						  100baseT_Half))
++		advertised |= ADVERTISE_100_HALF;
++
++	if (ethtool_link_ksettings_test_link_mode(cmd, advertising,
++						  10baseT_Full))
++		advertised |= ADVERTISE_10_FULL;
++
++	if (ethtool_link_ksettings_test_link_mode(cmd, advertising,
++						  10baseT_Half))
++		advertised |= ADVERTISE_10_HALF;
+ 
+ 	if (cmd->base.autoneg == AUTONEG_ENABLE) {
+ 		hw->mac.autoneg = 1;
+-		hw->phy.autoneg_advertised = advertising;
++		hw->phy.autoneg_advertised = advertised;
+ 		if (adapter->fc_autoneg)
+ 			hw->fc.requested_mode = igc_fc_default;
+ 	} else {
 -- 
-2.39.3
+2.25.1
 
 _______________________________________________
 Intel-wired-lan mailing list
