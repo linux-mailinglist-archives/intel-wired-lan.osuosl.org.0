@@ -1,109 +1,85 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id ED7B77B60D0
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  3 Oct 2023 08:32:30 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4F3737B626C
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  3 Oct 2023 09:19:01 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 7C5A460ECA;
-	Tue,  3 Oct 2023 06:32:29 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7C5A460ECA
+	by smtp1.osuosl.org (Postfix) with ESMTP id 6395582037;
+	Tue,  3 Oct 2023 07:18:58 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6395582037
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1696314749;
-	bh=jfKVjNhvgVawBkemIJY/X+7bakiEgfCPB0pXn9ieqow=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=IjxBVzUjvyxNOaI9MvsgXtAH2tbG+z+bodJKAN6gvNOejgEgse8sByull4b5lr+2I
-	 L0PtfYbrue5zCM2loD/KGDZ6y11BMieo2ffzEwDrAdTk9aeJ8j9hZAJyn6uVskTcRC
-	 IfRYZjsm28+ziuX+NhzW5mxdPbrRaQ7OdhPuQ/sREvPcF7Zls8dU7Fyo0glF8Pjo6+
-	 0pElRqqU1sNZhSk/EhzfDH0ugGaNFQQ5yUK8IpvdUghRP72GJBHmoo8NT3Su6Uoubg
-	 ZsI1cBvpJ5J4q7Tjqn43oWPSHI5qBCJShySE0iO5B4lrb66++f9ccKnGvM2RmjW5EY
-	 HQgpE1VpZqbCw==
+	s=default; t=1696317538;
+	bh=TTK7h8BAd+7qFW1XRG9c0Z1S11s4SpHgde1rQ6bmoQk=;
+	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=Gz9+IALtjHMLi012XAmqXqFM+FJrViRDfI8QYBBgrHELkb7ANNN+HLlAaMWsvDHu6
+	 13THu9XaZgvb5wncsLsU0s31wvvQa3C1CS9R0RlDgGeXaPBg/mmLGM3JJ653+QbK+L
+	 QsphBzlYHbxRrOtlw91Tjp/2WGjxv9vvqMWjdYOO2MgcXAUq132XyUdj7uxxK5dG85
+	 SwxEjpsagi9nB18/rxfKXSlwMuhC251AbkiJAQdreOwYYuY1CTmt7KSr65XMAr7pm8
+	 M85erjRIrBQbcXda/MurtjhqLIlyCv82/ffQOV6I1HH0o3oONDS8n19uRu0aJwmPhd
+	 fOYKIXN+AX9jQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Xf_PHYAhCnhf; Tue,  3 Oct 2023 06:32:28 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id fHsS7JxE9zVv; Tue,  3 Oct 2023 07:18:57 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 0B7E160B8C;
-	Tue,  3 Oct 2023 06:32:27 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0B7E160B8C
+	by smtp1.osuosl.org (Postfix) with ESMTP id 34FC982036;
+	Tue,  3 Oct 2023 07:18:57 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 34FC982036
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 610B91BF393
- for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Oct 2023 06:32:22 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 3CE561BF86C
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Oct 2023 07:18:52 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 2BE3940221
- for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Oct 2023 06:32:22 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2BE3940221
+ by smtp1.osuosl.org (Postfix) with ESMTP id 14BA382036
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Oct 2023 07:18:52 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 14BA382036
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id lZtX7X2TULI8 for <intel-wired-lan@lists.osuosl.org>;
- Tue,  3 Oct 2023 06:32:20 +0000 (UTC)
-Received: from mail-ej1-x635.google.com (mail-ej1-x635.google.com
- [IPv6:2a00:1450:4864:20::635])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 877A040210
- for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Oct 2023 06:32:20 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 877A040210
-Received: by mail-ej1-x635.google.com with SMTP id
- a640c23a62f3a-9a9d82d73f9so83424366b.3
- for <intel-wired-lan@lists.osuosl.org>; Mon, 02 Oct 2023 23:32:20 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1696314738; x=1696919538;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=FWmqyqJeTEvaHR8Lmkdp/KbmlUpGqPBWa9X1iRjNIUQ=;
- b=fKUNvvqMW4ZSo+QFeYSbwRqtuUSIQWJDIdqCijhuC/arRz48PysL5rcgSZsplMl6gj
- wVfbPHzjCPVAFrqqdRIlo8pS+uD3etR5ijKSTZE4F5Z5vENFZcKYIUxeX26QXVYl0Pxx
- m7Kru2jtlrPmw5GAMpgYYXvc72Hhza07aLwyGRnrsNV48BXL9We8zTsZ1YD/TS6q09Qh
- mmePkE3Aps+RD3md7A5wbwKn8PR/Mih335wNYuAGXCGesOnlgBtVU9a7E/WqkZhSlXhr
- iZWCoE41jxyB6UNQSvQD5hBsYk9IAj1/VjFyVop47ho6a+yAlWxL+W4Q8a+PZ+6IPUPY
- GMRA==
-X-Gm-Message-State: AOJu0YxnGjkfp6XMddEIqh+HyJuL9gL5nPncAaYQ5wYGdUHu0XdX/MeN
- kHumFERpOD6KYBSP5423dBly3g==
-X-Google-Smtp-Source: AGHT+IF4PzMMEUwwkb7PbO5lVgCUiTIjKrcfk9g70VH7YQKDMKsb+ZV8H5NG7n1iNYEdIOgtTG/ONQ==
-X-Received: by 2002:a17:906:3150:b0:9a1:f5b1:c864 with SMTP id
- e16-20020a170906315000b009a1f5b1c864mr11705405eje.10.1696314738381; 
- Mon, 02 Oct 2023 23:32:18 -0700 (PDT)
-Received: from localhost (host-213-179-129-39.customer.m-online.net.
- [213.179.129.39]) by smtp.gmail.com with ESMTPSA id
- a22-20020a1709064a5600b0099293cdbc98sm496181ejv.145.2023.10.02.23.32.17
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 02 Oct 2023 23:32:17 -0700 (PDT)
-Date: Tue, 3 Oct 2023 08:32:16 +0200
-From: Jiri Pirko <jiri@resnulli.us>
-To: "Kubalewski, Arkadiusz" <arkadiusz.kubalewski@intel.com>
-Message-ID: <ZRu1cG2uglhmCdlI@nanopsycho>
-References: <20230927092435.1565336-1-arkadiusz.kubalewski@intel.com>
- <20230927092435.1565336-4-arkadiusz.kubalewski@intel.com>
- <4018c0b0-b288-ff60-09be-7ded382f4a82@linux.dev>
- <DM6PR11MB4657AA79C0C44F868499A3129BC5A@DM6PR11MB4657.namprd11.prod.outlook.com>
- <ZRrb87drG7aVrxsT@nanopsycho>
- <DM6PR11MB4657C61104280788DF49F0E59BC5A@DM6PR11MB4657.namprd11.prod.outlook.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <DM6PR11MB4657C61104280788DF49F0E59BC5A@DM6PR11MB4657.namprd11.prod.outlook.com>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=resnulli-us.20230601.gappssmtp.com; s=20230601; t=1696314738; x=1696919538;
- darn=lists.osuosl.org; 
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=FWmqyqJeTEvaHR8Lmkdp/KbmlUpGqPBWa9X1iRjNIUQ=;
- b=Qha9QnmPB5Qaex+8K8ABL84oUpXZDNgUlbOqV8mapZHKBKMsFDGDTJnsqqH+By5YwH
- seBxpnH9xl2oELmBz/plTIckMVDxIpKnwY56DupurIRzncwuV5TztGR7T+xS+R+JVIsx
- xAH8VQ6NdISqR36LWr9vUbV4OwbXTwcZCdEzBRYEOXEe1VKFNI0GKYnSHy+R4qClJ0yG
- m4BG8p+7sW/LPMuFLQGm9VIlXEbnX9Nb3xlLuDRsKzLfKtSzUpkW0O/cymnNkrXNh8cd
- HvC7dUYT0Q3dBO8b2U8OsaRRrDOOh/V2KuO4OKfy/Qyn/KUKhNn+E3M63ttCJj0ynysG
- jhoQ==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=resnulli-us.20230601.gappssmtp.com
- header.i=@resnulli-us.20230601.gappssmtp.com header.a=rsa-sha256
- header.s=20230601 header.b=Qha9QnmP
-Subject: Re: [Intel-wired-lan] [PATCH net-next 3/4] dpll: netlink/core: add
- support for pin-dpll signal phase offset/adjust
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id l10bJAT0Rc_p for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  3 Oct 2023 07:18:50 +0000 (UTC)
+Received: from mgamail.intel.com (mgamail.intel.com [134.134.136.24])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 04B0C82035
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Oct 2023 07:18:49 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 04B0C82035
+X-IronPort-AV: E=McAfee;i="6600,9927,10851"; a="385634078"
+X-IronPort-AV: E=Sophos;i="6.03,196,1694761200"; d="scan'208";a="385634078"
+Received: from fmsmga008.fm.intel.com ([10.253.24.58])
+ by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 03 Oct 2023 00:18:49 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10851"; a="816582064"
+X-IronPort-AV: E=Sophos;i="6.03,196,1694761200"; d="scan'208";a="816582064"
+Received: from lkp-server02.sh.intel.com (HELO c3b01524d57c) ([10.239.97.151])
+ by fmsmga008.fm.intel.com with ESMTP; 03 Oct 2023 00:18:48 -0700
+Received: from kbuild by c3b01524d57c with local (Exim 4.96)
+ (envelope-from <lkp@intel.com>) id 1qnZg5-0006s8-35
+ for intel-wired-lan@lists.osuosl.org; Tue, 03 Oct 2023 07:18:45 +0000
+Date: Tue, 03 Oct 2023 15:18:08 +0800
+From: kernel test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <202310031506.iNn2AScV-lkp@intel.com>
+User-Agent: s-nail v14.9.24
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1696317530; x=1727853530;
+ h=date:from:to:subject:message-id;
+ bh=slKXcaKLvTk9I3+G2fmS3rYh0l81XPtMlf5ZOuo3qhU=;
+ b=QB06rOkwXyWjMIxVt27DTE+60GEzCTWeRESLwVYEB8WBxDkILosbfWk2
+ /hlCYHrjDxofuafultnIWkHJGgHp6ErX4Ypgs3rvZL080+WPkTZvlvbcA
+ 8LLFtnsMaBIYNrGPDlEvqNUiOFbAd4JXbRbxEpsejA1o8pMBe9F6Vl5mg
+ jRSWyElZJV2UV9c96lzwXWhERzVBtF9zCFEKMcwa/6jMa9CkLMUMvbk4T
+ ZT9hdSzCucoen4KtDxwT8OkoSiBMtAP4g5hVriJvU8Rp2qUgbjTClnW87
+ aIDiLIG0y9ZVyHddzmcJDTS6l04cxMU+TqGISsiVRCezchQ5rSq5PPuRn
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=QB06rOkw
+Subject: [Intel-wired-lan] [tnguy-next-queue:40GbE] BUILD SUCCESS
+ beabc8ccaf4c075b73c93b438c9357d8e9de8398
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -116,144 +92,152 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Vadim Fedorenko <vadim.fedorenko@linux.dev>,
- "corbet@lwn.net" <corbet@lwn.net>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "linux-doc@vger.kernel.org" <linux-doc@vger.kernel.org>, "Brandeburg,
- Jesse" <jesse.brandeburg@intel.com>, "Nguyen,
- Anthony L" <anthony.l.nguyen@intel.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "kuba@kernel.org" <kuba@kernel.org>, "pabeni@redhat.com" <pabeni@redhat.com>,
- "davem@davemloft.net" <davem@davemloft.net>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Tue, Oct 03, 2023 at 01:03:00AM CEST, arkadiusz.kubalewski@intel.com wrote:
->>From: Jiri Pirko <jiri@resnulli.us>
->>Sent: Monday, October 2, 2023 5:04 PM
->>
->>Mon, Oct 02, 2023 at 04:32:30PM CEST, arkadiusz.kubalewski@intel.com wrote:
->>>>From: Vadim Fedorenko <vadim.fedorenko@linux.dev>
->>>>Sent: Wednesday, September 27, 2023 8:09 PM
->>>>
->>>>On 27/09/2023 10:24, Arkadiusz Kubalewski wrote:
->>>>> Add callback op (get) for pin-dpll phase-offset measurment.
->>>>> Add callback ops (get/set) for pin signal phase adjustment.
->>>>> Add min and max phase adjustment values to pin proprties.
->>>>> Invoke get callbacks when filling up the pin details to provide user
->>>>> with phase related attribute values.
->>>>> Invoke phase-adjust set callback when phase-adjust value is provided
->>>>> for
->>>>> pin-set request.
->>>>>
->>>>> Signed-off-by: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
->>>>
->>>>[...]
->>>>
->>>>> +static int
->>>>> +dpll_pin_phase_adj_set(struct dpll_pin *pin, struct nlattr
->>>>> *phase_adj_attr,
->>>>> +		       struct netlink_ext_ack *extack)
->>>>> +{
->>>>> +	struct dpll_pin_ref *ref;
->>>>> +	unsigned long i;
->>>>> +	s32 phase_adj;
->>>>> +	int ret;
->>>>> +
->>>>> +	phase_adj = nla_get_s32(phase_adj_attr);
->>>>> +	if (phase_adj > pin->prop->phase_range.max ||
->>>>> +	    phase_adj < pin->prop->phase_range.min) {
->>>>> +		NL_SET_ERR_MSG(extack, "phase adjust value not supported");
->>>>> +		return -EINVAL;
->>>>> +	}
->>>>> +	xa_for_each(&pin->dpll_refs, i, ref) {
->>>>> +		const struct dpll_pin_ops *ops = dpll_pin_ops(ref);
->>>>> +		struct dpll_device *dpll = ref->dpll;
->>>>> +
->>>>> +		if (!ops->phase_adjust_set)
->>>>> +			return -EOPNOTSUPP;
->>>>
->>>>I'm thinking about this part. We can potentially have dpll devices with
->>>>different expectations on phase adjustments, right? And if one of them
->>>>won't be able to adjust phase (or will fail in the next line), then
->>>>netlink will return EOPNOTSUPP while _some_ of the devices will be
->>>>adjusted. Doesn't look great. Can we think about different way to apply
->>>>the change?
->>>>
->>>
->>>Well makes sense to me.
->>>
->>>Does following makes sense as a fix?
->>>We would call op for all devices which has been provided with the op.
->>>If device has no op -> add extack error, continue
->>
->>Is it real to expect some of the device support this and others don't?
->>Is it true for ice?
->>If not, I would got for all-or-nothing here.
->>
->
->Let's step back a bit.
->The op itself is introduced as per pin-dpll tuple.. did this intentionally,
->to inform each dpll that the offset has been changed - in case dplls are
->controlled by separated driver/firmware instances but still sharing the pin.
->Same way a pin frequency is being set, from user perspective on a pin, but
->callback is called for each dpll the pin was registered with.
->Whatever we do here, it shall be probably done for frequency_set() callback as
->well.
->
->The answers:
->So far I don't know the device that might do it this way, it rather supports
->phase_adjust or not. In theory we allow such behavior to be implemented, i.e.
->pin is registered with 2 dplls, one has the callback, second not.
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git 40GbE
+branch HEAD: beabc8ccaf4c075b73c93b438c9357d8e9de8398  iavf: Avoid a memory allocation in iavf_print_link_message()
 
-If there is only theoretical device like that now, implement
-all-or-nothing. If such theoretical device appears in real, this could
-be changed. The UAPI would not change, no problem.
+elapsed time: 720m
 
+configs tested: 124
+configs skipped: 2
 
->Current hardware of ice sets phase offset for a pin no matter on which dpll
->device callback was invoked.
->"all-or-nothing" - do you mean to check all callback returns and then decide
->if it was successful?
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
-Check if all dplls have ops and only perform the action in such case. In
-case one of the dplls does not have the op filled, return -EOPNOTSUPP.
+tested configs:
+alpha                             allnoconfig   gcc  
+alpha                            allyesconfig   gcc  
+alpha                               defconfig   gcc  
+arc                              allmodconfig   gcc  
+arc                               allnoconfig   gcc  
+arc                              allyesconfig   gcc  
+arc                          axs101_defconfig   gcc  
+arc                                 defconfig   gcc  
+arc                   randconfig-001-20231003   gcc  
+arm                              allmodconfig   gcc  
+arm                               allnoconfig   gcc  
+arm                              allyesconfig   gcc  
+arm                                 defconfig   gcc  
+arm                   randconfig-001-20231003   gcc  
+arm64                            allmodconfig   gcc  
+arm64                             allnoconfig   gcc  
+arm64                            allyesconfig   gcc  
+arm64                               defconfig   gcc  
+csky                             alldefconfig   gcc  
+csky                             allmodconfig   gcc  
+csky                              allnoconfig   gcc  
+csky                             allyesconfig   gcc  
+csky                                defconfig   gcc  
+i386                             allmodconfig   gcc  
+i386                              allnoconfig   gcc  
+i386                             allyesconfig   gcc  
+i386         buildonly-randconfig-001-20231003   gcc  
+i386         buildonly-randconfig-002-20231003   gcc  
+i386         buildonly-randconfig-003-20231003   gcc  
+i386         buildonly-randconfig-004-20231003   gcc  
+i386         buildonly-randconfig-005-20231003   gcc  
+i386         buildonly-randconfig-006-20231003   gcc  
+i386                              debian-10.3   gcc  
+i386                                defconfig   gcc  
+i386                  randconfig-001-20231003   gcc  
+i386                  randconfig-002-20231003   gcc  
+i386                  randconfig-003-20231003   gcc  
+i386                  randconfig-004-20231003   gcc  
+i386                  randconfig-005-20231003   gcc  
+i386                  randconfig-006-20231003   gcc  
+loongarch                        allmodconfig   gcc  
+loongarch                         allnoconfig   gcc  
+loongarch                        allyesconfig   gcc  
+loongarch                           defconfig   gcc  
+loongarch             randconfig-001-20231003   gcc  
+m68k                             allmodconfig   gcc  
+m68k                              allnoconfig   gcc  
+m68k                             allyesconfig   gcc  
+m68k                                defconfig   gcc  
+m68k                       m5249evb_defconfig   gcc  
+microblaze                       allmodconfig   gcc  
+microblaze                        allnoconfig   gcc  
+microblaze                       allyesconfig   gcc  
+microblaze                          defconfig   gcc  
+mips                             allmodconfig   gcc  
+mips                              allnoconfig   gcc  
+mips                             allyesconfig   gcc  
+nios2                            allmodconfig   gcc  
+nios2                             allnoconfig   gcc  
+nios2                            allyesconfig   gcc  
+nios2                               defconfig   gcc  
+openrisc                         allmodconfig   gcc  
+openrisc                          allnoconfig   gcc  
+openrisc                         allyesconfig   gcc  
+openrisc                            defconfig   gcc  
+parisc                           allmodconfig   gcc  
+parisc                            allnoconfig   gcc  
+parisc                           allyesconfig   gcc  
+parisc                              defconfig   gcc  
+parisc64                            defconfig   gcc  
+powerpc                          allmodconfig   gcc  
+powerpc                           allnoconfig   gcc  
+powerpc                          allyesconfig   gcc  
+powerpc                      ep88xc_defconfig   gcc  
+powerpc                 mpc837x_rdb_defconfig   gcc  
+powerpc                     mpc83xx_defconfig   gcc  
+powerpc                      ppc40x_defconfig   gcc  
+riscv                            allmodconfig   gcc  
+riscv                             allnoconfig   gcc  
+riscv                            allyesconfig   gcc  
+riscv                               defconfig   gcc  
+riscv                          rv32_defconfig   gcc  
+s390                             allmodconfig   gcc  
+s390                              allnoconfig   gcc  
+s390                             allyesconfig   gcc  
+s390                          debug_defconfig   gcc  
+s390                                defconfig   gcc  
+sh                               allmodconfig   gcc  
+sh                                allnoconfig   gcc  
+sh                               allyesconfig   gcc  
+sh                                  defconfig   gcc  
+sh                         ecovec24_defconfig   gcc  
+sh                 kfr2r09-romimage_defconfig   gcc  
+sh                          sdk7780_defconfig   gcc  
+sh                           se7712_defconfig   gcc  
+sh                           se7750_defconfig   gcc  
+sh                           se7751_defconfig   gcc  
+sh                        sh7757lcr_defconfig   gcc  
+sparc                            allmodconfig   gcc  
+sparc                             allnoconfig   gcc  
+sparc                            allyesconfig   gcc  
+sparc                               defconfig   gcc  
+sparc64                          allmodconfig   gcc  
+sparc64                          allyesconfig   gcc  
+sparc64                             defconfig   gcc  
+um                               allmodconfig   clang
+um                                allnoconfig   clang
+um                               allyesconfig   clang
+um                                  defconfig   gcc  
+um                             i386_defconfig   gcc  
+um                           x86_64_defconfig   gcc  
+x86_64                            allnoconfig   gcc  
+x86_64                           allyesconfig   gcc  
+x86_64                              defconfig   gcc  
+x86_64                randconfig-001-20231003   gcc  
+x86_64                randconfig-002-20231003   gcc  
+x86_64                randconfig-003-20231003   gcc  
+x86_64                randconfig-004-20231003   gcc  
+x86_64                randconfig-005-20231003   gcc  
+x86_64                randconfig-006-20231003   gcc  
+x86_64                          rhel-8.3-rust   clang
+x86_64                               rhel-8.3   gcc  
+xtensa                            allnoconfig   gcc  
+xtensa                           allyesconfig   gcc  
 
-
-Regarding the successful/failed op, I think you can just return. In
-these cases, when user performs multiaction cmd, he should be prepared
-to deal with consequences if part of this cmd fails. We don't have
-rollback for any other multiaction cmd in dpll, I don't see why this
-should be treated differently.
-
-
->
->Thank you!
->Arkadiusz
->
->>
->>>If device fails to set -> add extack error, continue
->>>Function always returns 0.
->>>
->>>Thank you!
->>>Arkadiusz
->>>
->>>>
->>>>> +		ret = ops->phase_adjust_set(pin,
->>>>> +					    dpll_pin_on_dpll_priv(dpll, pin),
->>>>> +					    dpll, dpll_priv(dpll), phase_adj,
->>>>> +					    extack);
->>>>> +		if (ret)
->>>>> +			return ret;
->>>>> +	}
->>>>> +	__dpll_pin_change_ntf(pin);
->>>>> +
->>>>> +	return 0;
->>>>> +}
->>>>> +
->
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
