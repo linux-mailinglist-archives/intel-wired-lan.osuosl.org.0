@@ -2,109 +2,108 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1FB977B6F84
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  3 Oct 2023 19:19:09 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 344F07B6F94
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  3 Oct 2023 19:19:59 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 914554149D;
-	Tue,  3 Oct 2023 17:19:07 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 914554149D
+	by smtp2.osuosl.org (Postfix) with ESMTP id 5222B414C9;
+	Tue,  3 Oct 2023 17:19:57 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 5222B414C9
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1696353547;
-	bh=t8rzXQedGmBXqD2NYPQp6TEmYfnKLPvV+ISFCBSj5E0=;
+	s=default; t=1696353597;
+	bh=33+WXqRwPSyr2s1cGgatFrguBEdqrDD0+OIyOXwcDkk=;
 	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=c/JYDMveA0O2f2yo8fntNYIHFx/EEXIQCOPBTsdZ13K7HctfNvkJaRc/jI3iiX6hc
-	 JFUarr2LwQ7oPVNZaKAZjZQZdoCquv+6NbNTJS9pQAPrhQ53RXfv1qsMAEHfmPThQU
-	 S06Hqkx2C44K+M1V69iVn1thlnF0tb5ePZctfPE9Ywv1NG1Wqimgu0+87SGqPTpfj2
-	 dfJp+WwkexW5yXGA64pUOWzjTM+5xDOgbn6dAKfMrugNnHfST3168eHOAtWQfjYfrV
-	 q83aXs3E40HjrzyqYy5pQXanyaO4d97i5ieM1OS62k5jUzL9IIc2JNDok4SXG8nCtL
-	 DmAHdk+h+04Gg==
+	b=nAPiZNmaoUGfwKMAoYyoTNVvE2uW4OFcsbFQXj6ywdwkSUueOp3TlKAZaxrmx2NXM
+	 vrVvHCg/Dmi3tMVsao4QO426KDhhkQ65nBUXZvFKMQnS0uak8R8r4+3TNA3/D72++A
+	 iwGoL573XeDouWl/jwkH4mG+y5P9anqIFicxlPQvl1+MfYip4+Qt1LdXlkiPl2OBy+
+	 AJgsP0lZzsGrxNDfXxMLlsGKXgJ25tMtIUxs+elDaeugyrWSWcSQIVF405CRS3tdOJ
+	 BsW9QTLid31vsNgdDaEQvCVc1zzlf9qkTaag5CSyowrwDXvm+HRtRsponxrJvVCF9H
+	 9JP43evqIjbug==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 7A0LVffsXO02; Tue,  3 Oct 2023 17:19:06 +0000 (UTC)
+	with ESMTP id zJRBD8tuwezc; Tue,  3 Oct 2023 17:19:56 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id EDDBD4148B;
-	Tue,  3 Oct 2023 17:19:05 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org EDDBD4148B
+	by smtp2.osuosl.org (Postfix) with ESMTP id E32BB414C2;
+	Tue,  3 Oct 2023 17:19:55 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org E32BB414C2
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 97E6F1BF3F9
- for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Oct 2023 17:19:01 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 01FDC1BF3F9
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Oct 2023 17:19:50 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 6EFE88227C
- for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Oct 2023 17:19:01 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6EFE88227C
+ by smtp4.osuosl.org (Postfix) with ESMTP id D369F40149
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Oct 2023 17:19:49 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D369F40149
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id wkCW4daPjqRK for <intel-wired-lan@lists.osuosl.org>;
- Tue,  3 Oct 2023 17:19:00 +0000 (UTC)
-Received: from mail-ej1-x635.google.com (mail-ej1-x635.google.com
- [IPv6:2a00:1450:4864:20::635])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 7F1478227A
- for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Oct 2023 17:18:59 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 7F1478227A
-Received: by mail-ej1-x635.google.com with SMTP id
- a640c23a62f3a-99c3c8adb27so224702666b.1
- for <intel-wired-lan@lists.osuosl.org>; Tue, 03 Oct 2023 10:18:59 -0700 (PDT)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id s4xJ3A7g2rCY for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  3 Oct 2023 17:19:48 +0000 (UTC)
+Received: from mail-ej1-x62a.google.com (mail-ej1-x62a.google.com
+ [IPv6:2a00:1450:4864:20::62a])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 7F8D141F35
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Oct 2023 17:19:48 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7F8D141F35
+Received: by mail-ej1-x62a.google.com with SMTP id
+ a640c23a62f3a-991c786369cso200899266b.1
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 03 Oct 2023 10:19:48 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1696353537; x=1696958337;
+ d=1e100.net; s=20230601; t=1696353586; x=1696958386;
  h=in-reply-to:content-disposition:mime-version:references:message-id
  :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=5EnlzNRFWMQ7thQWMg/qT9DCbeAiLijmJLaD1WjKhQ4=;
- b=czzSzvlQciHalojRA4a56/5r2OA2Ch7LziZTomwwOvBYUyaIYRITk6+Zh4+nn1iDtX
- swxj4qmyavNoRAutELEnlZNObbvkgVkOZJMaDjUfCIrsHyvlWzDYQNkIEw3du2ADdQvu
- JzU6FXtxLQorGgu8O7/IYmJ0IlU8Cj5y0hFIoSwWTpLP4gb8br+nz2C0pPJLbZ2FJniP
- q3v5N1eQSK1ZVbkS3FdeI4b2rU5Iqv90G0xJU0iX/cW94YSV+zQFhbl621bJZSwPJ5Mx
- o0o2CcMCD4dwJSyVar1kItUTLQt8mO1HfAwuFQ2Iv4taT+c2Tr0Vb6miuVc6KVxOcSHI
- 8fwQ==
-X-Gm-Message-State: AOJu0Yx3v4/LMtiuZJLl+9X48NdJUKVSvPkdhnC+522hnqV2vRnx7TnV
- iSSsVI+smkcViz5cYrG7Ry35nQ==
-X-Google-Smtp-Source: AGHT+IFZlMvMFeZ+OIrO7SCq93L8uRpsoOdhD5LXSPfy8mVx/wszOcWdFS9c324GMhaor8MVEZFISg==
-X-Received: by 2002:a17:906:3cb2:b0:9ad:df85:97ae with SMTP id
- b18-20020a1709063cb200b009addf8597aemr13771395ejh.66.1696353537104; 
- Tue, 03 Oct 2023 10:18:57 -0700 (PDT)
+ bh=Nm1Co97Gzfh8Vq750T8kSdQUCIb/1ye+ULTOO7iQfz8=;
+ b=nTH5M4czTk8Lwi58hbsnj8b2gu5644rLPI3sxLM07Hw+OfFXAE+E9fNSHfQM561pQo
+ VC2hb65rEJfIhkq6XhZxcNV/gpBlN/gnancREZeD55V4TzTRV+oFaLEHLaD30I6UaDEo
+ 46dNOEoAj9lef24t67NZ3nLX39nk43dMQI+2rNIfeIwVLpW//0mCyfUh6TUA0n/3FRB0
+ GZTWsChje975c1dNyzu3OzthYCRwHkUPDUna193zFCaX3YUFbfbupCtsDgiBbe5Siy1E
+ HAnqapwR9kSdD03zBtu4Bs7YKhFvYTUqpE9yb5qCPzw2KXJU3hmYnf9HksALTOzqKH0D
+ npjw==
+X-Gm-Message-State: AOJu0Yy57+FfodQCDfoO2/PeJuCMI6bkpCp5caP7Y7EnZwuRDRN1aXON
+ +4xg10ytNYIpoD26U6PWdpylBg==
+X-Google-Smtp-Source: AGHT+IFL89GFPQftGrDAdWk1LB4hpVU3dne0w1ogcBIfCpwhJPO4BRAxt67OuAblcJV4cPFvVxZBvw==
+X-Received: by 2002:a17:906:1350:b0:9ae:3d17:d5d0 with SMTP id
+ x16-20020a170906135000b009ae3d17d5d0mr13562375ejb.31.1696353586218; 
+ Tue, 03 Oct 2023 10:19:46 -0700 (PDT)
 Received: from localhost (host-213-179-129-39.customer.m-online.net.
  [213.179.129.39]) by smtp.gmail.com with ESMTPSA id
- jw21-20020a17090776b500b009786c8249d6sm1389944ejc.175.2023.10.03.10.18.56
+ ss26-20020a170907039a00b009a5f1d15644sm1325283ejb.119.2023.10.03.10.19.45
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 03 Oct 2023 10:18:56 -0700 (PDT)
-Date: Tue, 3 Oct 2023 19:18:55 +0200
+ Tue, 03 Oct 2023 10:19:45 -0700 (PDT)
+Date: Tue, 3 Oct 2023 19:19:44 +0200
 From: Jiri Pirko <jiri@resnulli.us>
 To: "Kubalewski, Arkadiusz" <arkadiusz.kubalewski@intel.com>
-Message-ID: <ZRxM/+njiiu78b9p@nanopsycho>
+Message-ID: <ZRxNML855TG7L5To@nanopsycho>
 References: <20230927092435.1565336-1-arkadiusz.kubalewski@intel.com>
  <20230927092435.1565336-4-arkadiusz.kubalewski@intel.com>
  <4018c0b0-b288-ff60-09be-7ded382f4a82@linux.dev>
  <DM6PR11MB4657AA79C0C44F868499A3129BC5A@DM6PR11MB4657.namprd11.prod.outlook.com>
  <ZRrb87drG7aVrxsT@nanopsycho>
- <eb019ccf-c50b-e9d7-e4e6-f6574f805b49@linux.dev>
- <DM6PR11MB4657DB3C9BC3E1EFE6A2F3389BC5A@DM6PR11MB4657.namprd11.prod.outlook.com>
- <ZRu0OlwKWSmXFOcV@nanopsycho>
- <DM6PR11MB46573DF9081298B816A215329BC4A@DM6PR11MB4657.namprd11.prod.outlook.com>
+ <DM6PR11MB4657C61104280788DF49F0E59BC5A@DM6PR11MB4657.namprd11.prod.outlook.com>
+ <ZRu1cG2uglhmCdlI@nanopsycho>
+ <DM6PR11MB4657B52BD09700F49799ED8C9BC4A@DM6PR11MB4657.namprd11.prod.outlook.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <DM6PR11MB46573DF9081298B816A215329BC4A@DM6PR11MB4657.namprd11.prod.outlook.com>
+In-Reply-To: <DM6PR11MB4657B52BD09700F49799ED8C9BC4A@DM6PR11MB4657.namprd11.prod.outlook.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=resnulli-us.20230601.gappssmtp.com; s=20230601; t=1696353537; x=1696958337;
+ d=resnulli-us.20230601.gappssmtp.com; s=20230601; t=1696353586; x=1696958386;
  darn=lists.osuosl.org; 
  h=in-reply-to:content-disposition:mime-version:references:message-id
  :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=5EnlzNRFWMQ7thQWMg/qT9DCbeAiLijmJLaD1WjKhQ4=;
- b=Kh1dQYwDRtJwVW8v4F17j/O2692/6WF6Id8kNaPdet3tMvsl2EiVtm8dRs9qYyaAnb
- 4Js65i2tFu2Wo8bsTC0MuAzXvrE6bQ8h9oR8sX8zaGmgi8Iz7sACEjEtgsHWTYeCYFJH
- 7zF2JKb6cvR9HrHKH3SlUy78kQn7Pty+1yMqdgSWHu+S6NSN71IT8OvsSCsv3gPxAIKM
- OYleSGtCoG99EeWagmaJZrlbsD1SSujSmw2D+i4ZhdiPrC3WMiiemrYP80UspFjja6LI
- 4Ax0ZHeS/RQ3F2Uhvnj/gT/q3lX51p5eanYjFdrAavO9v1ptHtV6BocY54Vm4R9Bz/in
- zXMA==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ bh=Nm1Co97Gzfh8Vq750T8kSdQUCIb/1ye+ULTOO7iQfz8=;
+ b=yvCzsN8FWt0xbim8mOlhfmOGPw1RzA/jekP1BIyC+XTL18lRbPBu/MCVvGEQz026Jq
+ thF7MkZ0Hmw9g/vBKdxLHg86w0aB7+mKI60EaKbyH7M21I9xZk/Iqww6Ex0KbKSd4AxY
+ +MvNVMgF0etD51objt293AtkjGqAjaP0ioNlY9R9yG4jc5D7Ve9Mq8hz6XGkxzisk/5m
+ ESaYhIgWDLYXW6ihHh0ou0OpQjFCTtSoZneU18GbiuTp8vF5PJKXrDYMCRxzdviDCmK8
+ /A0Qn6Z6w3miqAi3USVmAnvxlWmUm7mXBdtqhz2dZ3scR90+P49kaNAeblhB40QA1jSY
+ t4kw==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=resnulli-us.20230601.gappssmtp.com
  header.i=@resnulli-us.20230601.gappssmtp.com header.a=rsa-sha256
- header.s=20230601 header.b=Kh1dQYwD
+ header.s=20230601 header.b=yvCzsN8F
 Subject: Re: [Intel-wired-lan] [PATCH net-next 3/4] dpll: netlink/core: add
  support for pin-dpll signal phase offset/adjust
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -120,195 +119,171 @@ List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Cc: Vadim Fedorenko <vadim.fedorenko@linux.dev>,
- "linux-doc@vger.kernel.org" <linux-doc@vger.kernel.org>,
+ "corbet@lwn.net" <corbet@lwn.net>,
  "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "corbet@lwn.net" <corbet@lwn.net>, "Brandeburg,
+ "linux-doc@vger.kernel.org" <linux-doc@vger.kernel.org>, "Brandeburg,
  Jesse" <jesse.brandeburg@intel.com>, "Nguyen,
- Anthony L" <anthony.l.nguyen@intel.com>, "kuba@kernel.org" <kuba@kernel.org>,
+ Anthony L" <anthony.l.nguyen@intel.com>,
  "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "pabeni@redhat.com" <pabeni@redhat.com>,
+ "kuba@kernel.org" <kuba@kernel.org>, "pabeni@redhat.com" <pabeni@redhat.com>,
  "davem@davemloft.net" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Tue, Oct 03, 2023 at 04:29:13PM CEST, arkadiusz.kubalewski@intel.com wrote:
+Tue, Oct 03, 2023 at 04:29:43PM CEST, arkadiusz.kubalewski@intel.com wrote:
 >>From: Jiri Pirko <jiri@resnulli.us>
->>Sent: Tuesday, October 3, 2023 8:27 AM
->>To: Kubalewski, Arkadiusz <arkadiusz.kubalewski@intel.com>
+>>Sent: Tuesday, October 3, 2023 8:32 AM
 >>
->>Tue, Oct 03, 2023 at 01:10:39AM CEST, arkadiusz.kubalewski@intel.com wrote:
->>>>From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
->>>>Vadim Fedorenko
->>>>Sent: Monday, October 2, 2023 5:09 PM
+>>Tue, Oct 03, 2023 at 01:03:00AM CEST, arkadiusz.kubalewski@intel.com wrote:
+>>>>From: Jiri Pirko <jiri@resnulli.us>
+>>>>Sent: Monday, October 2, 2023 5:04 PM
 >>>>
->>>>On 02/10/2023 16:04, Jiri Pirko wrote:
->>>>> Mon, Oct 02, 2023 at 04:32:30PM CEST, arkadiusz.kubalewski@intel.com
->>>>> wrote:
->>>>>>> From: Vadim Fedorenko <vadim.fedorenko@linux.dev>
->>>>>>> Sent: Wednesday, September 27, 2023 8:09 PM
->>>>>>>
->>>>>>> On 27/09/2023 10:24, Arkadiusz Kubalewski wrote:
->>>>>>>> Add callback op (get) for pin-dpll phase-offset measurment.
->>>>>>>> Add callback ops (get/set) for pin signal phase adjustment.
->>>>>>>> Add min and max phase adjustment values to pin proprties.
->>>>>>>> Invoke get callbacks when filling up the pin details to provide user
->>>>>>>> with phase related attribute values.
->>>>>>>> Invoke phase-adjust set callback when phase-adjust value is provided
->>>>>>>> for
->>>>>>>> pin-set request.
->>>>>>>>
->>>>>>>> Signed-off-by: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
->>>>>>>
->>>>>>> [...]
->>>>>>>
->>>>>>>> +static int
->>>>>>>> +dpll_pin_phase_adj_set(struct dpll_pin *pin, struct nlattr
->>>>>>>> *phase_adj_attr,
->>>>>>>> +		       struct netlink_ext_ack *extack)
->>>>>>>> +{
->>>>>>>> +	struct dpll_pin_ref *ref;
->>>>>>>> +	unsigned long i;
->>>>>>>> +	s32 phase_adj;
->>>>>>>> +	int ret;
->>>>>>>> +
->>>>>>>> +	phase_adj = nla_get_s32(phase_adj_attr);
->>>>>>>> +	if (phase_adj > pin->prop->phase_range.max ||
->>>>>>>> +	    phase_adj < pin->prop->phase_range.min) {
->>>>>>>> +		NL_SET_ERR_MSG(extack, "phase adjust value not
->>>>>>>> supported");
->>>>>>>> +		return -EINVAL;
->>>>>>>> +	}
->>>>>>>> +	xa_for_each(&pin->dpll_refs, i, ref) {
->>>>>>>> +		const struct dpll_pin_ops *ops = dpll_pin_ops(ref);
->>>>>>>> +		struct dpll_device *dpll = ref->dpll;
->>>>>>>> +
->>>>>>>> +		if (!ops->phase_adjust_set)
->>>>>>>> +			return -EOPNOTSUPP;
->>>>>>>
->>>>>>> I'm thinking about this part. We can potentially have dpll devices
->>>>>>> with
->>>>>>> different expectations on phase adjustments, right? And if one of
->>>>>>> them
->>>>>>> won't be able to adjust phase (or will fail in the next line), then
->>>>>>> netlink will return EOPNOTSUPP while _some_ of the devices will be
->>>>>>> adjusted. Doesn't look great. Can we think about different way to
->>>>>>> apply
->>>>>>> the change?
->>>>>>>
+>>>>Mon, Oct 02, 2023 at 04:32:30PM CEST, arkadiusz.kubalewski@intel.com
+>>>>wrote:
+>>>>>>From: Vadim Fedorenko <vadim.fedorenko@linux.dev>
+>>>>>>Sent: Wednesday, September 27, 2023 8:09 PM
 >>>>>>
->>>>>> Well makes sense to me.
+>>>>>>On 27/09/2023 10:24, Arkadiusz Kubalewski wrote:
+>>>>>>> Add callback op (get) for pin-dpll phase-offset measurment.
+>>>>>>> Add callback ops (get/set) for pin signal phase adjustment.
+>>>>>>> Add min and max phase adjustment values to pin proprties.
+>>>>>>> Invoke get callbacks when filling up the pin details to provide user
+>>>>>>> with phase related attribute values.
+>>>>>>> Invoke phase-adjust set callback when phase-adjust value is provided
+>>>>>>> for
+>>>>>>> pin-set request.
+>>>>>>>
+>>>>>>> Signed-off-by: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
 >>>>>>
->>>>>> Does following makes sense as a fix?
->>>>>> We would call op for all devices which has been provided with the op.
->>>>>> If device has no op -> add extack error, continue
+>>>>>>[...]
+>>>>>>
+>>>>>>> +static int
+>>>>>>> +dpll_pin_phase_adj_set(struct dpll_pin *pin, struct nlattr
+>>>>>>> *phase_adj_attr,
+>>>>>>> +		       struct netlink_ext_ack *extack)
+>>>>>>> +{
+>>>>>>> +	struct dpll_pin_ref *ref;
+>>>>>>> +	unsigned long i;
+>>>>>>> +	s32 phase_adj;
+>>>>>>> +	int ret;
+>>>>>>> +
+>>>>>>> +	phase_adj = nla_get_s32(phase_adj_attr);
+>>>>>>> +	if (phase_adj > pin->prop->phase_range.max ||
+>>>>>>> +	    phase_adj < pin->prop->phase_range.min) {
+>>>>>>> +		NL_SET_ERR_MSG(extack, "phase adjust value not
+>>>>>>> supported");
+>>>>>>> +		return -EINVAL;
+>>>>>>> +	}
+>>>>>>> +	xa_for_each(&pin->dpll_refs, i, ref) {
+>>>>>>> +		const struct dpll_pin_ops *ops = dpll_pin_ops(ref);
+>>>>>>> +		struct dpll_device *dpll = ref->dpll;
+>>>>>>> +
+>>>>>>> +		if (!ops->phase_adjust_set)
+>>>>>>> +			return -EOPNOTSUPP;
+>>>>>>
+>>>>>>I'm thinking about this part. We can potentially have dpll devices with
+>>>>>>different expectations on phase adjustments, right? And if one of them
+>>>>>>won't be able to adjust phase (or will fail in the next line), then
+>>>>>>netlink will return EOPNOTSUPP while _some_ of the devices will be
+>>>>>>adjusted. Doesn't look great. Can we think about different way to apply
+>>>>>>the change?
+>>>>>>
 >>>>>
->>>>> Is it real to expect some of the device support this and others don't?
->>>>> Is it true for ice?
->>>>> If not, I would got for all-or-nothing here.
+>>>>>Well makes sense to me.
 >>>>>
+>>>>>Does following makes sense as a fix?
+>>>>>We would call op for all devices which has been provided with the op.
+>>>>>If device has no op -> add extack error, continue
 >>>>
->>>>But nothing blocks vendors to provide such configuration. Should we
->>>>rollback the configuration? Otherwise we can easily make it
->>>>inconsistent.
->>>
->>>Good point, in such case rollback might be required.
->>>
->>>>
->>>>I'm more thinking of checking if all the devices returned error (or
->>>>absence of operation callback) and then return error instead of 0 with
->>>>extack filled in.
+>>>>Is it real to expect some of the device support this and others don't?
+>>>>Is it true for ice?
+>>>>If not, I would got for all-or-nothing here.
 >>>>
 >>>
->>>Well, what if different devices would return different errors?
->>>In general we would have to keep track of the error values returned in
->>>such case.. Assuming one is different than the other - still need to error
->>>extack them out? I guess it would be easier to return common error if
->>there
+>>>Let's step back a bit.
+>>>The op itself is introduced as per pin-dpll tuple.. did this
+>>>intentionally,
+>>>to inform each dpll that the offset has been changed - in case dplls are
+>>>controlled by separated driver/firmware instances but still sharing the
+>>>pin.
+>>>Same way a pin frequency is being set, from user perspective on a pin, but
+>>>callback is called for each dpll the pin was registered with.
+>>>Whatever we do here, it shall be probably done for frequency_set()
+>>>callback as
+>>>well.
+>>>
+>>>The answers:
+>>>So far I don't know the device that might do it this way, it rather
+>>>supports
+>>>phase_adjust or not. In theory we allow such behavior to be implemented,
+>>>i.e.
+>>>pin is registered with 2 dplls, one has the callback, second not.
 >>
->>In this case, it is common to return the first error hit and bail out,
->>not trying the rest.
+>>If there is only theoretical device like that now, implement
+>>all-or-nothing. If such theoretical device appears in real, this could
+>>be changed. The UAPI would not change, no problem.
 >>
 >
->OK, so now I see it like this:
->-> check if all device implement callback, if not return EOPNOTSUPP;
->-> get old phase_adjust
->-> if new == old, return EINVAL
+>I can live with it :)
+>
+>>
+>>>Current hardware of ice sets phase offset for a pin no matter on which
+>>>dpll
+>>>device callback was invoked.
+>>>"all-or-nothing" - do you mean to check all callback returns and then
+>>>decide
+>>>if it was successful?
+>>
+>>Check if all dplls have ops and only perform the action in such case. In
+>>case one of the dplls does not have the op filled, return -EOPNOTSUPP.
+>>
+>>
+>>Regarding the successful/failed op, I think you can just return. In
+>>these cases, when user performs multiaction cmd, he should be prepared
+>>to deal with consequences if part of this cmd fails. We don't have
+>>rollback for any other multiaction cmd in dpll, I don't see why this
+>>should be treated differently.
+>>
+>
+>We don't have it because no one have spotted it on review,
+>as mentioned the frequency_set behaves the same way,
+>we need one approach for all of those cases.
+>I am opting for having the rollback as suggested on the other thread.
 
-0 would be better, no? User has what he desired.
+Okay, but let's do that consistently.
 
-
->-> for each device: call phase_adjust_set, if fails, rollback all previous
->   successful attempts and return the failure code
-
-That would work.
-
-
->?
 >
 >Thank you!
 >Arkadiusz
 >
 >>
->>>were only failures and let the driver fill the errors on extack, smt like:
->>>
->>>	int miss_cb_num = 0, dev_num = 0, err_num;
->>>
->>>	xa_for_each(&pin->dpll_refs, i, ref) {
->>>		const struct dpll_pin_ops *ops = dpll_pin_ops(ref);
->>>		struct dpll_device *dpll = ref->dpll;
->>>
->>>		dev_num++;
->>>		if (!ops->phase_adjust_set) {
->>>			miss_cb_num++;
->>>			continue;
->>>		}
->>>		ret = ops->phase_adjust_set(pin,
->>>					dpll_pin_on_dpll_priv(dpll, pin),
->>>					dpll, dpll_priv(dpll), phase_adj,
->>>					extack);
->>>		if (ret)
->>>			err_num++;
->>>	}
->>>	if (dev_num == miss_cb_num)
->>>		return -EOPNOTSUPP;
->>>	if (dev_num == err_num)
->>>		return -EINVAL;
->>>	__dpll_pin_change_ntf(pin);
->>>	return 0;
->>>
->>>??
 >>>
 >>>Thank you!
 >>>Arkadiusz
 >>>
->>>>>
->>>>>> If device fails to set -> add extack error, continue
->>>>>> Function always returns 0.
->>>>>>
->>>>>> Thank you!
->>>>>> Arkadiusz
->>>>>>
->>>>>>>
->>>>>>>> +		ret = ops->phase_adjust_set(pin,
->>>>>>>> +					    dpll_pin_on_dpll_priv(dpll, pin),
->>>>>>>> +					    dpll, dpll_priv(dpll), phase_adj,
->>>>>>>> +					    extack);
->>>>>>>> +		if (ret)
->>>>>>>> +			return ret;
->>>>>>>> +	}
->>>>>>>> +	__dpll_pin_change_ntf(pin);
->>>>>>>> +
->>>>>>>> +	return 0;
->>>>>>>> +}
->>>>>>>> +
 >>>>
->>>>_______________________________________________
->>>>Intel-wired-lan mailing list
->>>>Intel-wired-lan@osuosl.org
->>>>https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
->
+>>>>>If device fails to set -> add extack error, continue
+>>>>>Function always returns 0.
+>>>>>
+>>>>>Thank you!
+>>>>>Arkadiusz
+>>>>>
+>>>>>>
+>>>>>>> +		ret = ops->phase_adjust_set(pin,
+>>>>>>> +					    dpll_pin_on_dpll_priv(dpll, pin),
+>>>>>>> +					    dpll, dpll_priv(dpll), phase_adj,
+>>>>>>> +					    extack);
+>>>>>>> +		if (ret)
+>>>>>>> +			return ret;
+>>>>>>> +	}
+>>>>>>> +	__dpll_pin_change_ntf(pin);
+>>>>>>> +
+>>>>>>> +	return 0;
+>>>>>>> +}
+>>>>>>> +
+>>>
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
