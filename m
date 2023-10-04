@@ -1,84 +1,105 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3FE7A7B7D35
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  4 Oct 2023 12:32:53 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id D34467B7D70
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  4 Oct 2023 12:41:53 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id DD26C83547;
-	Wed,  4 Oct 2023 10:32:51 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org DD26C83547
+	by smtp1.osuosl.org (Postfix) with ESMTP id ED8698333E;
+	Wed,  4 Oct 2023 10:41:50 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org ED8698333E
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1696415571;
-	bh=pHIajuiNwweDigUr74MUhCjMpYViOAS8sHNUe5r+xII=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=QuY/SODEnUn2Nb6yZCj8tQmpHBv/M5WYF2lbQUSZLQFATpslM1Y83E1cbJyir7LTL
-	 4UpdXFt5Lp2v2DbOlA/VwXhQmvRMpHxpfURgXzgQxnGyHHBam8mspjyi+otJoYgziE
-	 EhRCi9vCMOw8LgsNgf0GWT3EabKLodw830s/Ff1SnWBUtQFyWif4jC6vp/U7oGhlE2
-	 QvTsitcN657fJ5FwdtG/q/L7ZpCnGSUoQH8OMjGdvHUUWubLGbTt9XmW3j5zQnY1BU
-	 J7KZFyQ3nCksYJK8PHcPaeypApMddtHyU0PZpJQS2WGoh2Non0/5UUy5cg7YiAeTSD
-	 xunToNm0WoxpQ==
+	s=default; t=1696416111;
+	bh=cJLIqpVtNbFIphvEw6WHGXqFHljrC0Hnwlve1X/Om54=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=f0HYcVJA2fQy5m8zqsTo5KTZtHaw/ZCj7c9IsNXiQvWeGZeunWSyZ43GiqTi1Sbu7
+	 hmk3yeTx6y9BdpK3I4HPxe+fTP17/V47VCl+cu+jMxufeVzDzPe/Vsg4Tc9K4Nr3uF
+	 8Wuo5ouvOFqcNkxv1ob2V1JKDohwqvN50qJgPOmno7CmxPuzLAvWymepCUdawxADA/
+	 grOEWvyVUV5Hf48Ou/1PsMBvD8+UemX9X1d2e0Lu0L46SYWMEy8YhB40noV7jWaJU0
+	 0rfBtlwlbWUV66fVJogVTDf7G7rRXSizSMjfLRaS+R01aDlrnWHRYrQhfSRRwd58w1
+	 58V7QVgr/dT4A==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id laxjCDDdJKEj; Wed,  4 Oct 2023 10:32:51 +0000 (UTC)
+	with ESMTP id 9cgw_Yy5zAR4; Wed,  4 Oct 2023 10:41:50 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 2521B834F4;
-	Wed,  4 Oct 2023 10:32:50 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 2521B834F4
+	by smtp1.osuosl.org (Postfix) with ESMTP id D718B83332;
+	Wed,  4 Oct 2023 10:41:49 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D718B83332
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 106391BF860
- for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Oct 2023 10:32:45 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id E00B51BF860
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Oct 2023 10:41:44 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id E704E40C13
- for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Oct 2023 10:32:44 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org E704E40C13
+ by smtp2.osuosl.org (Postfix) with ESMTP id AE6604063E
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Oct 2023 10:41:44 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org AE6604063E
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 8l1E1DUdc_Y8 for <intel-wired-lan@lists.osuosl.org>;
- Wed,  4 Oct 2023 10:32:42 +0000 (UTC)
-Received: from mgamail.intel.com (mgamail.intel.com [192.55.52.93])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 166E9400BF
- for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Oct 2023 10:32:42 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 166E9400BF
-X-IronPort-AV: E=McAfee;i="6600,9927,10852"; a="380405691"
-X-IronPort-AV: E=Sophos;i="6.03,199,1694761200"; d="scan'208";a="380405691"
-Received: from fmsmga003.fm.intel.com ([10.253.24.29])
- by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 04 Oct 2023 03:32:40 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10852"; a="841762861"
-X-IronPort-AV: E=Sophos;i="6.03,199,1694761200"; d="scan'208";a="841762861"
-Received: from amlin-018-068.igk.intel.com ([10.102.18.68])
- by FMSMGA003.fm.intel.com with ESMTP; 04 Oct 2023 03:32:39 -0700
-From: Mateusz Palczewski <mateusz.palczewski@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Wed,  4 Oct 2023 06:25:00 -0400
-Message-Id: <20231004102500.1063799-1-mateusz.palczewski@intel.com>
-X-Mailer: git-send-email 2.31.1
+ with ESMTP id dZBdjhYNtdGn for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  4 Oct 2023 10:41:43 +0000 (UTC)
+Received: from mail-ed1-x536.google.com (mail-ed1-x536.google.com
+ [IPv6:2a00:1450:4864:20::536])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id A989B400BF
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Oct 2023 10:41:42 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A989B400BF
+Received: by mail-ed1-x536.google.com with SMTP id
+ 4fb4d7f45d1cf-5334d78c5f6so3439439a12.2
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 04 Oct 2023 03:41:42 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1696416100; x=1697020900;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=UzXarj/dIrLAH4tPhBh7BzTA1z+2WH5X+IxGm0B65kk=;
+ b=YLYDQPJ2eBUp6Ii0VlNkd1JrPT3uRbrhaFiYsSMnG6dY9IMZHOkaq+2feHW9CGVnK6
+ mLoiq6+Kqn+GkFPIc5JMPw6iUvuMJ12dI0SwB2MWdJDg5Bk3spHf5ZAA25X3O/sgVVJN
+ TZzSEoH0LBzEO2H6qQ6NAhk1qXiuxLf5y40qAIeFhgXqgzY4ba6j4/36N0K+FUt2Ze3y
+ xhjWiz+K4za0dUrOUpvHOGVBrAIARGHovIzg5hahQly23e8DpZPMAAv+I9fa1ym4i90s
+ kSqUQo6HKP8mHegnzqrc56VstkWBdq/0UXrbvbERd1JHHdHNcbAnt7d3q6g1aSPyiTnB
+ Bg/A==
+X-Gm-Message-State: AOJu0YxXSRbOeRD2QKDmJifRAdM41CJRX/D6hDgv6S5ynn+mgYxmhEPh
+ CA5a5Yc6VOeatscloJN6aHU2sw==
+X-Google-Smtp-Source: AGHT+IHLpWQ5S4hZp+7IuOHxp4blL7eubhAEfZYoixgG+l4TPda7KJJaiRndD6JAp2v+zJQCW100Kg==
+X-Received: by 2002:a05:6402:1257:b0:530:c363:449c with SMTP id
+ l23-20020a056402125700b00530c363449cmr1453487edw.40.1696416100316; 
+ Wed, 04 Oct 2023 03:41:40 -0700 (PDT)
+Received: from localhost (host-213-179-129-39.customer.m-online.net.
+ [213.179.129.39]) by smtp.gmail.com with ESMTPSA id
+ g13-20020a50ee0d000000b0051e1660a34esm2227535eds.51.2023.10.04.03.41.39
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 04 Oct 2023 03:41:39 -0700 (PDT)
+Date: Wed, 4 Oct 2023 12:41:37 +0200
+From: Jiri Pirko <jiri@resnulli.us>
+To: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
+Message-ID: <ZR1BYQuSfdMdDimH@nanopsycho>
+References: <20231004090547.1597844-1-arkadiusz.kubalewski@intel.com>
+ <20231004090547.1597844-3-arkadiusz.kubalewski@intel.com>
 MIME-Version: 1.0
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1696415562; x=1727951562;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=zt9aHw+e8tKwx6KYhcHajN7IyCKV4yB6rnotmdPrnxE=;
- b=XYQRR89SDtqVDViD01JIXO6sS+afMiuSw/H1YJwVFNOKx+FjAF15gT9J
- d/Q3NnAtkVD1xJwCEFqVZf2vUu+6pnGDa8zEahxJWJKWQFQVdWw3VkBOb
- 7ArqtQ5nyeS3f7oaOzXl7fn68HQ8KzhmaXvm6NTM5Qotwv9i3BTX+exz8
- o5g9aXqpst6hN79Vof1CtxYRcjmxnwLb6DjLko+iCxsS2MQo2fD8kLMWO
- qNkS2199Vm/jIovNXPl/tMx5Xao7/NThykaMjILxLBi+EgDKdiYQCEFN0
- yfxhdU/1eBoXd5q3c8Rw7JtLFnhgbDX7QZreAfUDD6vLDhKUd5LYg+66s
- A==;
+Content-Disposition: inline
+In-Reply-To: <20231004090547.1597844-3-arkadiusz.kubalewski@intel.com>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=resnulli-us.20230601.gappssmtp.com; s=20230601; t=1696416100; x=1697020900;
+ darn=lists.osuosl.org; 
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+ bh=UzXarj/dIrLAH4tPhBh7BzTA1z+2WH5X+IxGm0B65kk=;
+ b=hGlLazRyvxd9N4ODRdGWwjw9jU22xPTgRCEqY8pwEX0JPMF8O1RqBPNpLF5aylrUL7
+ aBrYdr0ENAVWnJsx6TCqcRgfnj3TiPeVnc1C+DSKXdcsgCZ24L5VEntgg98lH8ezseXc
+ USIUys9cSLRAt59XiKvySdBhnUJ/WXYdD1Eb5/VJFIcZatNtQJ9JG5jhLRP0VZ7MzXgV
+ hpkPuVceQ4qH9pSFA8hl6Mp19q6/XH9SYbsIiBu8uNMZvC+v4XS+JntovA/IyinZyVMG
+ yxW5Fv103VG+WxvHZTnA+wsZlSzi0Unn+gQdNBfzHf+2NW/qDYKiGD+iIv3wq0G7cWM5
+ nx/g==
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=XYQRR89S
-Subject: [Intel-wired-lan] [PATCH iwl-net v1] igb: Fix potential memory leak
- in igb_add_ethtool_nfc_entry
+ dkim=pass (2048-bit key) header.d=resnulli-us.20230601.gappssmtp.com
+ header.i=@resnulli-us.20230601.gappssmtp.com header.a=rsa-sha256
+ header.s=20230601 header.b=hGlLazRy
+Subject: Re: [Intel-wired-lan] [PATCH net-next v2 2/5] dpll: spec: add
+ support for pin-dpll signal phase offset/adjust
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,47 +112,40 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Mateusz Palczewski <mateusz.palczewski@intel.com>,
- Wojciech Drewek <wojciech.drewek@intel.com>
+Cc: vadim.fedorenko@linux.dev, corbet@lwn.net, netdev@vger.kernel.org,
+ linux-doc@vger.kernel.org, jesse.brandeburg@intel.com,
+ anthony.l.nguyen@intel.com, intel-wired-lan@lists.osuosl.org, kuba@kernel.org,
+ pabeni@redhat.com, davem@davemloft.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Add check for return of igb_update_ethtool_nfc_entry so that in case
-of any potential errors the memory alocated for input will be freed.
+Wed, Oct 04, 2023 at 11:05:44AM CEST, arkadiusz.kubalewski@intel.com wrote:
+>Add attributes for providing the user with:
+>- measurement of signals phase offset between pin and dpll
+>- ability to adjust the phase of pin signal
+>
+>Signed-off-by: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
+>---
+> Documentation/netlink/specs/dpll.yaml | 33 ++++++++++++++++++++++++++-
+> drivers/dpll/dpll_nl.c                |  8 ++++---
+> drivers/dpll/dpll_nl.h                |  2 +-
+> include/uapi/linux/dpll.h             |  8 ++++++-
+> 4 files changed, 45 insertions(+), 6 deletions(-)
+>
+>diff --git a/Documentation/netlink/specs/dpll.yaml b/Documentation/netlink/specs/dpll.yaml
+>index 8b86b28b47a6..dc057494101f 100644
+>--- a/Documentation/netlink/specs/dpll.yaml
+>+++ b/Documentation/netlink/specs/dpll.yaml
+>@@ -1,7 +1,7 @@
+> # SPDX-License-Identifier: ((GPL-2.0 WITH Linux-syscall-note) OR BSD-3-Clause)
+> 
+> name: dpll
+>-
+>+version: 2
 
-Fixes: 0e71def25281 ("igb: add support of RX network flow classification")
-Reviewed-by: Wojciech Drewek <wojciech.drewek@intel.com>
-Signed-off-by: Mateusz Palczewski <mateusz.palczewski@intel.com>
----
- drivers/net/ethernet/intel/igb/igb_ethtool.c | 6 +++++-
- 1 file changed, 5 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/net/ethernet/intel/igb/igb_ethtool.c b/drivers/net/ethernet/intel/igb/igb_ethtool.c
-index 319ed601eaa1..4ee849985e2b 100644
---- a/drivers/net/ethernet/intel/igb/igb_ethtool.c
-+++ b/drivers/net/ethernet/intel/igb/igb_ethtool.c
-@@ -2978,11 +2978,15 @@ static int igb_add_ethtool_nfc_entry(struct igb_adapter *adapter,
- 	if (err)
- 		goto err_out_w_lock;
- 
--	igb_update_ethtool_nfc_entry(adapter, input, input->sw_idx);
-+	err = igb_update_ethtool_nfc_entry(adapter, input, input->sw_idx);
-+	if (err)
-+		goto err_out_input_filter;
- 
- 	spin_unlock(&adapter->nfc_lock);
- 	return 0;
- 
-+err_out_input_filter:
-+	igb_erase_filter(adapter, input);
- err_out_w_lock:
- 	spin_unlock(&adapter->nfc_lock);
- err_out:
--- 
-2.31.1
-
+Could you reply to my comment about this in V1 please?
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
