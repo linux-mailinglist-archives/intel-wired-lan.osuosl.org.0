@@ -2,60 +2,60 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id CF4027B8616
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  4 Oct 2023 19:04:52 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id C7B227B861F
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  4 Oct 2023 19:08:34 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id E29B2400E5;
-	Wed,  4 Oct 2023 17:04:49 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E29B2400E5
+	by smtp4.osuosl.org (Postfix) with ESMTP id 68CBF42132;
+	Wed,  4 Oct 2023 17:08:33 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 68CBF42132
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1696439089;
-	bh=TJ6F8WbT+MMhUzlqJgH1sgyi0FbecaAnyb9Q0v9TGPo=;
+	s=default; t=1696439313;
+	bh=t8FKJwOpWkO7+ZLhR7IgbUEJvVvAzPI/y8metcvLhuQ=;
 	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=phsUfOU7hJNzTH7ZqGIGOzwxEjXx/FWHzZdoIdku3NSM40yf1DjFBdtb9dbMMhRCA
-	 DkDuvYCtqCg6n+n+ZV5Mapsx2eaJObX5VGLX+3bFHY6kR5TPxV+72Le1bzKFZsYxqd
-	 kPc8q9sZ0oH5cLJBYxt/hC3s1mgNDfnv9gmPNqmxxYnIlQXpxCydy8INIw8mnxhiGG
-	 P2ejt6/SGn6mz4O5Oj7h8YoJiNxre/Uwj49MIOK5HCRHUYbAYTWeEjZGLXcPpjUzab
-	 jO1tsky1nMS73/fsJV/75wuQ616gdXhAD5DdBZtbTZLRS8K2KqOukn4YbsJVsD4fgS
-	 sIcftRa9wB0lQ==
+	b=gq3PdWmFZp0FA7u9m3zxETZJrNhVZ/bDJjVdJsijQoJMpLpuZI6N4PW7p08Tz4fyY
+	 Gv3SOuzBrfqZ5EjULeA9QgWlzBDd0HrI5XMopOlHbNuSUFWKStD1SaGK0lmjHRBbOd
+	 mBDuIN1sETWSzT7My475EsdBVx+IJBwj2FKkUmV8dXbpyiofrYRX09Rpv2BqUPpM0m
+	 TDiaG/G4E2xlsvR4SMBndagXv8HqySL/bBrkdMqVR2vAPW4vd8tFLR+Yw6eYOgcEp6
+	 YqAdkTmBnBJr+MLfvs3qHEhhn1RVn3vIx1d3WvIqwn2mQ5m/9heXlJjnswBU1JrE0H
+	 4ZZO9CxhssHLQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id jxnNCGNb269R; Wed,  4 Oct 2023 17:04:48 +0000 (UTC)
+	with ESMTP id 9A_jDOY_BLr9; Wed,  4 Oct 2023 17:08:31 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 8F6A7417C8;
-	Wed,  4 Oct 2023 17:04:47 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8F6A7417C8
+	by smtp4.osuosl.org (Postfix) with ESMTP id 63CEF41F4C;
+	Wed,  4 Oct 2023 17:08:31 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 63CEF41F4C
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 856941BF38D
- for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Oct 2023 17:04:42 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 1CF2E1BF38D
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Oct 2023 17:08:26 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 3AD9F417C8
- for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Oct 2023 17:04:42 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3AD9F417C8
+ by smtp2.osuosl.org (Postfix) with ESMTP id DB3BF404A8
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Oct 2023 17:08:25 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org DB3BF404A8
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id zXqApbwv_5ap for <intel-wired-lan@lists.osuosl.org>;
- Wed,  4 Oct 2023 17:04:40 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id LdrOAzCrz6yE for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  4 Oct 2023 17:08:24 +0000 (UTC)
 Received: from wout1-smtp.messagingengine.com (wout1-smtp.messagingengine.com
  [64.147.123.24])
- by smtp4.osuosl.org (Postfix) with ESMTPS id F28E04035A
- for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Oct 2023 17:04:39 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org F28E04035A
-Received: from compute1.internal (compute1.nyi.internal [10.202.2.41])
- by mailout.west.internal (Postfix) with ESMTP id B53663200A78;
- Wed,  4 Oct 2023 13:04:38 -0400 (EDT)
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 70F2E401ED
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Oct 2023 17:08:24 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 70F2E401ED
+Received: from compute3.internal (compute3.nyi.internal [10.202.2.43])
+ by mailout.west.internal (Postfix) with ESMTP id 58F6A3200B21;
+ Wed,  4 Oct 2023 13:08:23 -0400 (EDT)
 Received: from mailfrontend2 ([10.202.2.163])
- by compute1.internal (MEProxy); Wed, 04 Oct 2023 13:04:39 -0400
-X-ME-Sender: <xms:JZsdZZ0PeAhJSILNLY53y3U5tndjG9TV4wF1X9j5bKOXxCKNkPZ3tQ>
- <xme:JZsdZQHQ10tIR5ktg_Brkoshp8eW9QS3iNMu-beRzb5ihaaSb1na8kJRiuRD_4jGz
- Apv_lC-gYyo1C6uXmA>
-X-ME-Received: <xmr:JZsdZZ7OEMY9TTexsAkbteMtyYrzuUiyYgyWLr0Bxs1SvkUpn80KtCIPD67-3wJBUgnDwa_rYOEtl4ctx-63BXVjv4egdFVWCS4>
+ by compute3.internal (MEProxy); Wed, 04 Oct 2023 13:08:23 -0400
+X-ME-Sender: <xms:BpwdZYtHwoclaxGflAbBnD9kpnOS0UubwDmzuxKsGxGQo1XniUCF6A>
+ <xme:BpwdZVd0GSB9uEK1ZBq0JvSiGWkkD7x92Sup6qaFCIDaaZR3CPrhPe6Tf8KvonOhi
+ R4jJhvM3nFKVXTE5xI>
+X-ME-Received: <xmr:BpwdZTwL8TKzzNnOZKAYFupJljknbw_jR2LceIFgflQP6yAgH7hhwGSItDOQXSvHPedc9xd8TcvNfEifdRWrDB_BF_D7q4S1kW4>
 X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvkedrgedvgddutdejucetufdoteggodetrfdotf
  fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
  uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
@@ -64,53 +64,53 @@ X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvkedrgedvgddutdejucetufdoteggod
  ftrfgrthhtvghrnhepteeggfejgfeftdeileeutdffheejvdeuudeukeegteegfeegieej
  gfduteekhfdtnecuffhomhgrihhnpehvhihoshdrihhonecuvehluhhsthgvrhfuihiivg
  eptdenucfrrghrrghmpehmrghilhhfrhhomhepshhmodhlihhsthhssehskhihmhdrfhhi
-X-ME-Proxy: <xmx:JZsdZW1ZVTFDFUz6Agu6GO3B5eqTyTT0gbw5NfE6HPQEzM0vrSbl0g>
- <xmx:JZsdZcHFbuIhJGwQZS0jC3lNSJHYUHDj5xJIsdjqIPLTIG6bCX6DHQ>
- <xmx:JZsdZX81qBtTcW3KhnOUTk6qY5sXeG4vFjGkpoHalxWy9QYrGLuecA>
- <xmx:JpsdZWNFoxkjMUe-T9zlQ05o53FpYIAckHEvmygtlnzCCPig_So0Ww>
+X-ME-Proxy: <xmx:BpwdZbMc7eg9cQOzA1iVV57-WIrWgh0jnFNTwN2-uD9nAnDs8OYj5Q>
+ <xmx:BpwdZY_OBSAXHWv2CxOWmUCDawxUZPTzrITFAV_m2Zo5G6PUVmHlvQ>
+ <xmx:BpwdZTUJyMhv-cLPAnsnUmsUhxGc7I8AznkKvyGmdhPNn1m0kZ0eDA>
+ <xmx:BpwdZWnrmblfC1cty5GLRki2ziet1uCQ5Dc7EpuLlQsZo6bhf_Wx8A>
 Feedback-ID: i1cc947c0:Fastmail
 Received: by mail.messagingengine.com (Postfix) with ESMTPA; Wed,
- 4 Oct 2023 13:04:36 -0400 (EDT)
-Message-ID: <9667a2af-45f2-4aad-a648-31602d3d4a84@skym.fi>
-Date: Wed, 4 Oct 2023 20:04:34 +0300
+ 4 Oct 2023 13:08:21 -0400 (EDT)
+Message-ID: <c526d946-2779-434b-b8ec-423a48f71e36@skym.fi>
+Date: Wed, 4 Oct 2023 20:08:20 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
+Content-Language: en-US
 To: Jesse Brandeburg <jesse.brandeburg@intel.com>
 References: <ee7f6320-0742-65d4-7411-400d55daebf8@skym.fi>
  <994cebfe-c97a-4e11-8dad-b3c589e9f094@intel.com>
-Content-Language: en-US
 From: =?UTF-8?Q?Skyler_M=C3=A4ntysaari?= <sm+lists@skym.fi>
 In-Reply-To: <994cebfe-c97a-4e11-8dad-b3c589e9f094@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=skym.fi; h=cc:cc
  :content-type:content-type:date:date:from:from:in-reply-to
  :in-reply-to:message-id:mime-version:references:reply-to:sender
- :subject:subject:to:to; s=fm3; t=1696439078; x=1696525478; bh=Fe
- EAE7IaVr3bxersraaTp9aSZLuJwthw7XAg8WdbJYw=; b=CDAYQMl+jYIqiKiu7A
- LQ1S0LBW++X5ybz/YZ+gG7eTdU30euA/RLAZdWSYw952ophwqL6hAqZhmaZWB4nA
- XmzjT1Ib6X/nk9h5pgZUQ05PVNj+aOSX/e1j6EiiyTm5G+52x8MU5YreopZkGjN2
- fwaRb+/UpQiNvQvpy1Oh4ebdsuLSGUTrHKHQr44mymM6odX4UKVsx2S4an1muCPC
- pRsXL8jGz3bl8CLSvnK9oyzUruWewFWd9Nawy5FnM4VBfFtohWNtMfeDKzo57J/R
- ubuhqH/Dx2Rjarc1Vjr9/waYbTZ00kiBozu1Nc1cLfYLmYQjnjhBn1+attQ+wblD
- x/Kw==
+ :subject:subject:to:to; s=fm3; t=1696439302; x=1696525702; bh=Ei
+ j35Yzv3Mrzv2X1NJqwWpf3jP3T9keYkUQc4if1UHc=; b=FlEoN0JE2XMl6j3ntF
+ pKMRtaEa+PDneNgtw7OOiD1VCHAupx5niJur75PJuf7654A0Jwlwq8VZKsEuzvq2
+ fdsjVA4kAuQhoxc7Ii4CObWSg11DFV9rAqOqHKYm2iPUaRclxt86TrEbt5RVRqKY
+ 45AakpiTE7ikI5tbSA61EfQ+HKXfZInTqSAfhEqztwq2EZIFWoeosGw+YYKkjLVx
+ wIQcsAoZXpDPvqSCNi6qa1JimxlxtRYFCg5/P2fuTZexETbROfEFhGUMT/2bC4qU
+ uQImcL9AB+HBVycThF1swAM3VURAXuonXc8MyrUID6xIVOS8eG948TcYIzqVEvBb
+ D6MA==
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
  messagingengine.com; h=cc:cc:content-type:content-type:date:date
  :feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
  :message-id:mime-version:references:reply-to:sender:subject
  :subject:to:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
- :x-sasl-enc; s=fm2; t=1696439078; x=1696525478; bh=FeEAE7IaVr3bx
- ersraaTp9aSZLuJwthw7XAg8WdbJYw=; b=VQQ8H3ZmyRx1Ke/vRor+9loGn2hvV
- pYo8paR+qAfWGebfEpfRSVnyF0oSLiUvaVI4WUl9eiV6mGfBP1tzIa3ZAfBU0Dhm
- i+62n25pIuWhdxdDoP4D+hNiW1AFFzVNukIKgXFgsrgzxj6UWTURSP1ccWlXj7qE
- dGkYOxnAWYWMDQiA6Kk1EQos086v5HNnewHhVKCJbgunoZ2HqgeeZ0JwqfpchNEQ
- cwjl1Q/ZhfDUgI3HZH7vOtrfB28j6YVC71ltFp/0O8inf8vipVZr6NrouiLSarso
- o+RxUEFhmt5q62eJxNZ9PAH0aXioVs9TFaCT8X3QeGs1n5o/yc6aI09kA==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ :x-sasl-enc; s=fm2; t=1696439302; x=1696525702; bh=Eij35Yzv3Mrzv
+ 2X1NJqwWpf3jP3T9keYkUQc4if1UHc=; b=aoEP71Oe5uHwmeAfTwEFtxeb+VMCK
+ vB16FvOHlT7TM4EIeosKoO72w0USGTXlYq3Zlhkpz8mCSplrPKqEzyZdTX97RAn8
+ 5FQRMhPSock4puF7P0GHa3kNtG1Fs61iT36fx84z+AIV4jLdUhHYuSwS6vTueuG/
+ kVaqzwY48VVbbEAQZaKxHTw5XBp/9XcUqt5psqO0iqoq8F0B1B/y2f93ppXlHwrF
+ UHXD24O/a3X5T8nDe+Qum3FfyA1jEV44P4oX/uywyXUtTHpyW64Qg0m2Z2bkuiRr
+ 8mWS2imz8I2HDKxDMGtvwxYguWBDfstJ6zaCXjEjoiVPrdvCqT3C2pz+w==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key, unprotected) header.d=skym.fi header.i=@skym.fi
- header.a=rsa-sha256 header.s=fm3 header.b=CDAYQMl+; 
+ header.a=rsa-sha256 header.s=fm3 header.b=FlEoN0JE; 
  dkim=pass (2048-bit key,
  unprotected) header.d=messagingengine.com header.i=@messagingengine.com
- header.a=rsa-sha256 header.s=fm2 header.b=VQQ8H3Zm
+ header.a=rsa-sha256 header.s=fm2 header.b=aoEP71Oe
 Subject: Re: [Intel-wired-lan] The difference between linux kernel driver
  and FreeBSD's with Intel X533
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -126,22 +126,21 @@ List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Cc: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org
-Content-Type: multipart/mixed; boundary="===============0977105366234746719=="
+Content-Type: multipart/mixed; boundary="===============0492103809009992723=="
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 This is a multi-part message in MIME format.
---===============0977105366234746719==
+--===============0492103809009992723==
 Content-Type: multipart/alternative;
- boundary="------------s9aqSPqS0oSG0D3c5FinjDVT"
+ boundary="------------pUZNhG20wj94wf86aSqewny4"
 Content-Language: en-US
 
 This is a multi-part message in MIME format.
---------------s9aqSPqS0oSG0D3c5FinjDVT
+--------------pUZNhG20wj94wf86aSqewny4
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 
-> On 10/3/2023 4:25 PM, Skyler Mäntysaari wrote:
 >> Hi there,
 >>
 >> It seems that for reasons unknown to me, my Intel X533 based 10G SFP+ 
@@ -163,7 +162,8 @@ warning/error about it) but instead something else.
 >> https://forum.vyos.io/t/10g-sfp-trouble-with-linking-intel-x553/12253
 >
 > Also, for troubleshooting it would be useful to have the output of 
-> ethtool -m eth0 from your device. 
+> ethtool -m eth0 from your device.
+
 
 It was already provided in the VyOS forum thread, but here:
 
@@ -258,7 +258,8 @@ https://forum.vyos.io/t/10g-sfp-trouble-with-linking-intel-x553/12253/11?u=samip
 
 - Skyler
 
---------------s9aqSPqS0oSG0D3c5FinjDVT
+
+--------------pUZNhG20wj94wf86aSqewny4
 Content-Type: text/html; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 
@@ -268,48 +269,46 @@ Content-Transfer-Encoding: 8bit
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   </head>
   <body>
-    <p>
-      <blockquote type="cite">On 10/3/2023 4:25 PM, Skyler Mäntysaari
-        wrote:
+    <blockquote type="cite">
+      <blockquote type="cite" style="color: #007cff;">Hi there,
         <br>
-        <blockquote type="cite" style="color: #007cff;">Hi there,
-          <br>
-          <br>
-          It seems that for reasons unknown to me, my Intel X533 based
-          10G SFP+ doesn't want to work with kernel 6.1.55 in VyOS 1.4
-          nor Debian 12 but it does in OPNsense which is based on
-          FreeBSD 13.2.
-          <br>
-          <br>
-          How would I go about debugging this properly? Both sides see
-          light, but no link unless I'm using FreeBSD.
-          <br>
-        </blockquote>
         <br>
-        have you tried setting the allow_unsupported_sfp=1 module
-        parameter?
+        It seems that for reasons unknown to me, my Intel X533 based 10G
+        SFP+ doesn't want to work with kernel 6.1.55 in VyOS 1.4 nor
+        Debian 12 but it does in OPNsense which is based on FreeBSD
+        13.2.
         <br>
-        parm:           allow_unsupported_sfp:Allow unsupported and
-        untested SFP+ modules on 82599-based adapters (bool)
+        <br>
+        How would I go about debugging this properly? Both sides see
+        light, but no link unless I'm using FreeBSD.
+        <br>
       </blockquote>
       <br>
-      That's enabled by default on VyOS so yes, but it doesn't seem to
+      have you tried setting the allow_unsupported_sfp=1 module
+      parameter?
+      <br>
+      parm:           allow_unsupported_sfp:Allow unsupported and
+      untested SFP+ modules on 82599-based adapters (bool)
+    </blockquote>
+    <p>That's enabled by default on VyOS so yes, but it doesn't seem to
       be a problem that it wouldn't recolonize the module at all (and
-      print a warning/error about it) but instead something else.<br>
-    </p>
+      print a warning/error about it) but instead something else.</p>
     <p>
       <blockquote type="cite">
-        <blockquote type="cite">For reference the thread on VyOS forums
-          regarding this:
-          <a class="moz-txt-link-freetext" href="https://forum.vyos.io/t/10g-sfp-trouble-with-linking-intel-x553/12253">https://forum.vyos.io/t/10g-sfp-trouble-with-linking-intel-x553/12253</a>
+        <blockquote type="cite" style="color: #007cff;">For reference
+          the thread on VyOS forums regarding this: <a
+            class="moz-txt-link-freetext"
+href="https://forum.vyos.io/t/10g-sfp-trouble-with-linking-intel-x553/12253">https://forum.vyos.io/t/10g-sfp-trouble-with-linking-intel-x553/12253</a>
           <br>
         </blockquote>
         <br>
         Also, for troubleshooting it would be useful to have the output
         of ethtool -m eth0 from your device.
+        <br>
       </blockquote>
     </p>
-    <p>It was already provided in the VyOS forum thread, but here:<br>
+    <p><br>
+      It was already provided in the VyOS forum thread, but here:<br>
       <br>
               Identifier                                : 0x03 (SFP)<br>
               Extended identifier                       : 0x04 (GBIC/SFP
@@ -412,16 +411,17 @@ Content-Transfer-Encoding: 8bit
       <br>
       For reference the other side's juniper does see light as can be
       seen in this post:
-<a class="moz-txt-link-freetext" href="https://forum.vyos.io/t/10g-sfp-trouble-with-linking-intel-x553/12253/11?u=samip537">https://forum.vyos.io/t/10g-sfp-trouble-with-linking-intel-x553/12253/11?u=samip537</a><br>
+      <a class="moz-txt-link-freetext"
+href="https://forum.vyos.io/t/10g-sfp-trouble-with-linking-intel-x553/12253/11?u=samip537">https://forum.vyos.io/t/10g-sfp-trouble-with-linking-intel-x553/12253/11?u=samip537</a><br>
       <br>
-      - Skyler<br>
-    </p>
+      - Skyler</p>
+    <br>
   </body>
 </html>
 
---------------s9aqSPqS0oSG0D3c5FinjDVT--
+--------------pUZNhG20wj94wf86aSqewny4--
 
---===============0977105366234746719==
+--===============0492103809009992723==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -432,4 +432,4 @@ Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
 
---===============0977105366234746719==--
+--===============0492103809009992723==--
