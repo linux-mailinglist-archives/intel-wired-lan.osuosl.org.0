@@ -2,84 +2,178 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8134E7B8074
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  4 Oct 2023 15:14:56 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 314DD7B808B
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  4 Oct 2023 15:16:44 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 213E160F0C;
-	Wed,  4 Oct 2023 13:14:55 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 213E160F0C
+	by smtp3.osuosl.org (Postfix) with ESMTP id BEB9B60D72;
+	Wed,  4 Oct 2023 13:16:42 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org BEB9B60D72
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1696425295;
-	bh=upa0XkqMocQsihBrFAHEQU3/pHvA1klSEaECIWn1IYI=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=WqTgr6L/2l7ua4JnJrUediYB1rOQTu+vBZ8d2JT1pLKZAJXvqU8k0bO/kz0KR6NOi
-	 xYh+hFyL17JURe8YMzS4lf2GF5lUoDq853tbbAKqB7v4+VQkttbZEEy+c37Rl4Hp+7
-	 OC6/5gaGsEuA8UjJepOHAmlhHJvhqrQ4c3msqr2l865IrbA1A2OwKcj/RgZqk9LvUm
-	 +NLK+hCCCtKXE2Hbse9BFJat740WYteFU7RMCLOyyf1cPRndvz/BpPVT5CGEZyCCkH
-	 gsI+t9PsFMv1TQWgkSE9UqBWvwXlnA16jlagZ7IBLZcuHaA3DJpsgMrZOO4FId0cwB
-	 iysSjWmOaFpTg==
+	s=default; t=1696425402;
+	bh=OjONmNoRuPa+D3RAhU4YKrFM+sajnIfjptfS7k4acvM=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=vytWk7M3hW057Q5vgAWONbsvp3r6BKFdLaXKF0O0HrhtExuc1Y21JNxwkeYFPlgu8
+	 yiCgnSEVL4KqMjxJiW4z7mvvt/GScG9GxBmvtoOPFO5mIlLQ6Ia4POwiOweN93zhqG
+	 R2KIYaWASPCEGUBp48zOGrgiMQkZZGeWxtVE7Hi6GTNzLk5HqwPppDwk8uGWRehRQ5
+	 EOYKAsc1+R2VeqYE7xTNXEftbobpqBOd/oBgA/ogyGsVd08wMx3QB414j6glPP9RRg
+	 eC7uKe81jox6dpNYXqwJiwMEQ2KsDprFzDkTVM7GMqo6Qcz6IHQa/0Mh+DwFnve9YB
+	 92+wi1t8FKyzw==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 2JGAtfqU3VM1; Wed,  4 Oct 2023 13:14:54 +0000 (UTC)
+	with ESMTP id ikj0fsG5jgH9; Wed,  4 Oct 2023 13:16:40 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 43A3060E1B;
-	Wed,  4 Oct 2023 13:14:53 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 43A3060E1B
+	by smtp3.osuosl.org (Postfix) with ESMTP id 2A1B660B2C;
+	Wed,  4 Oct 2023 13:16:40 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2A1B660B2C
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 09B4A1BF2BC
- for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Oct 2023 13:14:49 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 40FEF1BF2BC
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Oct 2023 13:16:35 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id E363460E1B
- for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Oct 2023 13:14:48 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org E363460E1B
+ by smtp3.osuosl.org (Postfix) with ESMTP id 254E560B2C
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Oct 2023 13:16:35 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 254E560B2C
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id QVDHw74DSCWo for <intel-wired-lan@lists.osuosl.org>;
- Wed,  4 Oct 2023 13:14:47 +0000 (UTC)
-Received: from mgamail.intel.com (mgamail.intel.com [192.55.52.151])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 9E7E460C17
- for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Oct 2023 13:14:47 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9E7E460C17
-X-IronPort-AV: E=McAfee;i="6600,9927,10853"; a="363434041"
-X-IronPort-AV: E=Sophos;i="6.03,200,1694761200"; d="scan'208";a="363434041"
-Received: from orsmga008.jf.intel.com ([10.7.209.65])
- by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 04 Oct 2023 06:14:46 -0700
+ with ESMTP id GXqHIL0WoDUD for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  4 Oct 2023 13:16:33 +0000 (UTC)
+Received: from mgamail.intel.com (mgamail.intel.com [134.134.136.65])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 47EAB60AD0
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Oct 2023 13:16:33 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 47EAB60AD0
+X-IronPort-AV: E=McAfee;i="6600,9927,10853"; a="387032800"
+X-IronPort-AV: E=Sophos;i="6.03,200,1694761200"; d="scan'208";a="387032800"
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+ by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 04 Oct 2023 06:16:32 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10853"; a="780769650"
-X-IronPort-AV: E=Sophos;i="6.03,200,1694761200"; d="scan'208";a="780769650"
-Received: from ccdlinuxdev11.iil.intel.com ([143.185.162.129])
- by orsmga008.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 04 Oct 2023 06:14:44 -0700
-From: Vitaly Lifshits <vitaly.lifshits@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Wed,  4 Oct 2023 16:14:32 +0300
-Message-Id: <20231004131432.3725445-1-vitaly.lifshits@intel.com>
-X-Mailer: git-send-email 2.25.1
+X-IronPort-AV: E=McAfee;i="6600,9927,10853"; a="727995544"
+X-IronPort-AV: E=Sophos;i="6.03,200,1694761200"; d="scan'208";a="727995544"
+Received: from fmsmsx601.amr.corp.intel.com ([10.18.126.81])
+ by orsmga006.jf.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
+ 04 Oct 2023 06:16:32 -0700
+Received: from fmsmsx611.amr.corp.intel.com (10.18.126.91) by
+ fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.32; Wed, 4 Oct 2023 06:16:31 -0700
+Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
+ fmsmsx611.amr.corp.intel.com (10.18.126.91) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.32; Wed, 4 Oct 2023 06:16:31 -0700
+Received: from fmsedg602.ED.cps.intel.com (10.1.192.136) by
+ fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.32 via Frontend Transport; Wed, 4 Oct 2023 06:16:31 -0700
+Received: from NAM10-MW2-obe.outbound.protection.outlook.com (104.47.55.104)
+ by edgegateway.intel.com (192.55.55.71) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.32; Wed, 4 Oct 2023 06:16:28 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=GqD+b3MXQ/lG4DV7zWxcObjpwvloSGypzglG9lfTtR5HmgsyxrKYcSHxwJy64zK9fJ71brc1+Z17PQwvZ4YIiyJf7xkCPXhNdpJXHYCsiqsUlpPjZ5DaLvI2/Fu1+JXvpvH4N3AfPzhG2tpJ5D+4ktz9iKUBRjv97ccRMNUlQIdrp/f+TLxqioDf6O4Pdy1N0Sid19HLaaTB6NtDPHLzpYF/s0FKSW6iGuij+gn8AODK6zobj+0dvKO11fuGO4rnwC3N0RMw4eE1zUVNu7qkVirgfNXfIX/sZZuy0x7qEXGtsZLQPhUXtsK/GvB2O7MFaOL9mo1qGvgD2qIw+eDtuA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=aDIiFUFJQeP3buxG7FJXWSpcTXg8XnRjVaDByakUKxE=;
+ b=YndT+OrU5CujJQt43wB8by9Jte7Huyh2jnyAMTy3nnbpcqWJLV1DtcVls//DbaNngVLfXubf9g1ZBgBLBPxCsFA6RwfdLkKD4/YRL3I1Cvmk0KsmOlZb1yjwm88xcXqOSYt55l7XKk7+MdwIZGk+TqQoZ8xOkrslQER6l5XHasI4dkMbPSoud4wk95p0s5Y8NxdXHIugR2yRua7EtsPMYKAEmBuiwoDaNam6zYGbanh8QeHIjZIam2+Deeg0KJ7xBmNxgTW1CGrW6lxW+BtrZOEf2F0QM/UdP0LrKxaK+uNvexqqKIYWcQ6LjN1jfi+sZI/n89jt+3AHqd5fS1DG1w==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from DM4PR11MB6117.namprd11.prod.outlook.com (2603:10b6:8:b3::19) by
+ SN7PR11MB7419.namprd11.prod.outlook.com (2603:10b6:806:34d::16) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6838.36; Wed, 4 Oct
+ 2023 13:16:27 +0000
+Received: from DM4PR11MB6117.namprd11.prod.outlook.com
+ ([fe80::551d:c6c9:7d7:79cc]) by DM4PR11MB6117.namprd11.prod.outlook.com
+ ([fe80::551d:c6c9:7d7:79cc%7]) with mapi id 15.20.6838.028; Wed, 4 Oct 2023
+ 13:16:27 +0000
+Date: Wed, 4 Oct 2023 15:16:20 +0200
+From: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+To: Tirthendu Sarkar <tirthendu.sarkar@intel.com>
+Message-ID: <ZR1lpCB1FqqbdSEX@boxer>
+References: <20231004083454.20143-1-tirthendu.sarkar@intel.com>
+Content-Disposition: inline
+In-Reply-To: <20231004083454.20143-1-tirthendu.sarkar@intel.com>
+X-ClientProxiedBy: DB3PR06CA0014.eurprd06.prod.outlook.com (2603:10a6:8:1::27)
+ To DM4PR11MB6117.namprd11.prod.outlook.com
+ (2603:10b6:8:b3::19)
 MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DM4PR11MB6117:EE_|SN7PR11MB7419:EE_
+X-MS-Office365-Filtering-Correlation-Id: 5268b403-ff73-4c53-1a81-08dbc4dc1d74
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: FTsPNZybq3d4BBTTvcFVXXNGWdXG2a34Km627L1PaBxs7+jBB/gm93KrWR51/DndvUIh3q70wXhshwizVeytWnjeLucBtpaEDQ+Ks4VNAEY7Qo4h6K/fyo9odf1G1AHgGrCA7cdzAbfrpYESIMOij7gk1FXwjDwqXUooxUUiNm84FH+n3+ySH8itWvVfAeynnYfHuDyqwZPMXeqlbsH2IJNn+3nATPn+orUhOBnSptkeCU6meg8c6C4w0k52vQOXSwoWtjxwVw4HmBnuoOYrN7yJvi/DQyCOMxDrZHY1khBQKMmOG6oNfO/yFE+IsEZLdsk/JnS2O2FgxK7s8vnaE+dXAViRwSqipQLMT7K2fKxSZ+pGZfT6QnJkSpzMH5DQXJiVVcs4nZxpPqL/odeAQSW+3Es7eInc/m+ByPIpWpygrlJXOlWlEnwqCbd6zy+OvnDriH4JJmK/xpVfHS232heDCy+0jqDXzgwdUnMm7bhX5LI9kSORBV6VzeDfJt/zITqblrcX5WDdDuIr4j8T3ryCMOTerJhMTlDgWftKyts=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:DM4PR11MB6117.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230031)(7916004)(366004)(39860400002)(376002)(346002)(396003)(136003)(230922051799003)(1800799009)(186009)(64100799003)(451199024)(2906002)(107886003)(83380400001)(66574015)(26005)(82960400001)(33716001)(86362001)(38100700002)(6666004)(316002)(41300700001)(6862004)(4326008)(8676002)(8936002)(6486002)(966005)(44832011)(5660300002)(478600001)(66476007)(66556008)(66946007)(9686003)(6512007)(6506007)(6636002);
+ DIR:OUT; SFP:1102; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?iso-8859-1?Q?TzB9qkiBOM3gCkNfA6rEuUWkeAUVBIZafTBKo+ZHNhJ0QnJgmGqkVl1oNz?=
+ =?iso-8859-1?Q?Zenz6ug8ZBXlF5dbdiyCDYpHk9piws2o/YNpr+wkehmISRl6aDB5cx4Pk+?=
+ =?iso-8859-1?Q?e3+F6SpGTtazTaDpusgn3MQ7FaH/zRqK/lg4FTf0mCskSLvYOky3zVK2Jq?=
+ =?iso-8859-1?Q?m7kyLiBFTvQPEsxpNg5ZZ6DSY8Mhm75hisILmrAjUcv0ucC0mX6Wd8k5GC?=
+ =?iso-8859-1?Q?g7nkm2eQu+HG7lG7sLxi8bHqaV+QEo4vZx0/SvaaCFCQHVo3XEHjxRBgQs?=
+ =?iso-8859-1?Q?MW0OIVTpny2ejyY7lsHaMvAD2TYmcpoorXw4n/ua7FhV8eKq1yhCocEiJw?=
+ =?iso-8859-1?Q?FEhH0CPm6r0pEe/avMMN5CzTa2DGkkmuK0ezPWOneluk502wwmrUYBcnHN?=
+ =?iso-8859-1?Q?u1tyQNAwQCwn9x6xwjEUWEzGzCJ+MNPLc2olP7/6qHuSbAw/+hvjnUNMZY?=
+ =?iso-8859-1?Q?UOnFtomhwrcWjycYdJH9K9mUoPHk8rlSOamOPASfCn3ihTfSIThnkSvYZz?=
+ =?iso-8859-1?Q?skGVHVk4DPqmfeajAF/XsAXGig4XegdS4YfcOHMaks2c5sMgivu+56Mmoj?=
+ =?iso-8859-1?Q?kUs/Hy7qqpuhuRlPRLWo3P/AeI36SgnfntuhsdvY9T7e/WiIRDwqRGsoMO?=
+ =?iso-8859-1?Q?zYwpDVkytctXQCxD+EOBouX6BPB4Sj6EFCWvYm97/VHIke7nI20grqse36?=
+ =?iso-8859-1?Q?lb4Cfmg63rQ2/LFgj9bJn+4erOEHTbuPOSuqZkYZm7tQ6raL/QpIW/weCZ?=
+ =?iso-8859-1?Q?QhMc0UGlo9t6yZM7cDUcGhuGRxNtfOl0vSeuQBHN3FWJmDemnf79FjW1Zj?=
+ =?iso-8859-1?Q?cSN0g3TQm6kM8o2fBfMZ5psOZDv7EJO/YamP6Kzyr31TAKiu4lsQHqRjCJ?=
+ =?iso-8859-1?Q?e7cqEUE5dO/UxwMB1X0Gwyx/L8bL+bhJbbtjKo2fXGy+5J64X8klagw74E?=
+ =?iso-8859-1?Q?i7YzvJrILhKJnJIcVIKGNluJvlZs71zLx+zyOT51rQxLPlNjTyi/2hZv4b?=
+ =?iso-8859-1?Q?gflmCSWa+fJkJNIeNQF/xWxXxJPcSbGL5hYsXJnpXB6GsDCQs1O8R6L6bs?=
+ =?iso-8859-1?Q?rBjGmMk/dQ7yc1wpwhdu2plbCBS9ov68FaBjSD/5XwsoCwGJdZyH1g0wGa?=
+ =?iso-8859-1?Q?8Ne49I20K95IvjEVCPDw1ZcLY8eodCzsYcy9WNQUkb/9NpB+xzOmNjgE2R?=
+ =?iso-8859-1?Q?VaIEdF6kZ6itWiq+7AGmalAoyEkWhuogTmQ824WmAbCNXdYAoMkp2C6rA4?=
+ =?iso-8859-1?Q?uWsITWe44PHlM1N2qZZX/9s966+wY53Q6hClTfCw5iCpwl9TpZO6+1gFOM?=
+ =?iso-8859-1?Q?DiyW50wxbSXWudoO8cm/3rXDItxYPPx3DGWG0ZZIeiGN9SewffQf9/as26?=
+ =?iso-8859-1?Q?2gXVPpgLN2L8O9wFDwURilpJ1OBGhFJ6YHklisDg+E0T/yD+BUqeV5aOX9?=
+ =?iso-8859-1?Q?Ne+9F1GeAznj5chk6SNB2Ws4Sf7Er6PPi+TwEbzWjxI5aqGbddHpvlnisc?=
+ =?iso-8859-1?Q?0mQkrjwNIQ0o8TAFhlQriwEnEDSM7dUQaWz0pNcjKbKOHwarzK0IoU9IQx?=
+ =?iso-8859-1?Q?4Ib3HE1X75PSuaZy5UncQ7wyGmW0fzHXnZD/ViIh0jzgzvtmHpKy91yxz1?=
+ =?iso-8859-1?Q?Q1pA03vhxGG3zBm0DyNKZ1fv6D8B9ypRPuQiPc4rWvhZKxWRn8PXWdnw?=
+ =?iso-8859-1?Q?=3D=3D?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: 5268b403-ff73-4c53-1a81-08dbc4dc1d74
+X-MS-Exchange-CrossTenant-AuthSource: DM4PR11MB6117.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 04 Oct 2023 13:16:27.0651 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: 6fdyGY1HvT6ORY+4rHs4RwoDGCQun4oYgkBt2fRff5OKVodmAOhT8JZR1rcdgEgZldjnfg1ebC9OgJ0OOxb4hMXE3Q7rq5z+kCOEB6yv3Qg=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN7PR11MB7419
+X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1696425287; x=1727961287;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=LGUl/QDQ2+tpycsCWXqnRaOJ6tYbUre9vFGbcxG4Vt0=;
- b=LtDDd8AvsMp6wMYEePmhgeWXlCfmyTB9XRsJlcnF3Gt1a70miBEJkTu6
- i7jFfj53pbj3HEknKlvgdwf2j/NPsVN/z8x5QMNAvX0yl6HDh+ZSxER10
- 1pAKM6mtBsh+Q401ic2MQcPehWx+R6zM1nypaigyBoPeSdNuxU/zoXgV9
- PCvRiR/xkoa11M4Gn0nY6GtOcXrgqCUhBAGTTO3L3znkSwRN8fwWTZh6X
- t/Y6aaqa6JapBKzJY3viQzDr5uBfZVh6CV0ksADyF0tlZ9FA+C9v0/cho
- M+ybzD7+PAGb+f6Rf+DZuwLQWgWjnLc1EOfgTIhG7hU+VSl2N8/rNkqGV
- w==;
+ t=1696425393; x=1727961393;
+ h=date:from:to:cc:subject:message-id:references:
+ content-transfer-encoding:in-reply-to:mime-version;
+ bh=fLeckvmJWcfVmpFYkzAGtU2x2tESFu5IcJQ8KPKVft0=;
+ b=IqtrbW++gcvYGzULrVlk/DJuy8Q4PbMC5NhREbvplWNa+IgpkRfxpqgl
+ ncgu0fPTuGTZfsDlSxe3jLoNHjulhqFSjW7DE4hrJsdUPsvoNLCbixFG2
+ WG0v8zHg0C99VldO8elo34SzioS2S+5e0msuTllMKdzOCtVBNw+9MjWnj
+ Pvbn4FXSRt8pfghPHtN9sruunbbEsUc3u0xucV2TKOTnfcATWv6WwrzVN
+ FmMGCieN6GF0G3S1d7fdGBLbyyRBryNunW0QgMu0klwy1t6YD1HoJB6X1
+ u/YvWOw1wz8TdXM+R68v9CSToHuHfSPkDrPImE6V8Gzmz2T3bR2ZSDGIJ
+ A==;
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=LtDDd8Av
-Subject: [Intel-wired-lan] [PATCH iwl-net v1 1/1] e1000e: Workaround for
- sporadic MDI error on Meteor Lake systems
+ header.a=rsa-sha256 header.s=Intel header.b=IqtrbW++
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH net] i40e: sync next_to_clean and
+ next_to_process for programming status desc
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,410 +186,73 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Vitaly Lifshits <vitaly.lifshits@intel.com>,
- Nikolay Mushayev <nikolay.mushayev@intel.com>,
- Nir Efrati <nir.efrati@intel.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: netdev@vger.kernel.org, jesse.brandeburg@intel.com,
+ anthony.l.nguyen@intel.com, intel-wired-lan@lists.osuosl.org,
+ bpf@vger.kernel.org, magnus.karlsson@intel.com
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On some Meteor Lake systems accessing the PHY via the MDIO interface may
-result in an MDI error. This issue happens sporadically and in most cases
-a second access to the PHY via the MDIO interface results in success.
+On Wed, Oct 04, 2023 at 02:04:54PM +0530, Tirthendu Sarkar wrote:
+> When a programming status desc is encountered on the rx_ring,
+> next_to_process is bumped along with cleaned_count but next_to_clean is
+> not. This causes I40E_DESC_UNUSED() macro to misbehave resulting in
+> overwriting whole ring with new buffers.
+> =
 
-As a workaround, introduce a retry counter which is set to 3 on Meteor
-Lake systems. The driver will only return an error if 3 consecutive PHY
-access attempts fail. The retry mechanism is disabled in specific flows,
-where MDI errors are expected.
+> Update next_to_clean to point to next_to_process on seeing a programming
+> status desc if not in the middle of handling a multi-frag packet. Also,
+> bump cleaned_count only for such case as otherwise next_to_clean buffer
+> may be returned to hardware on reaching clean_threshold.
+> =
 
-Fixes: cc23f4f0b6b9 ("e1000e: Add support for Meteor Lake")
-Suggested-by: Nikolay Mushayev <nikolay.mushayev@intel.com>
-Co-developed-by: Nir Efrati <nir.efrati@intel.com>
-Signed-off-by: Nir Efrati <nir.efrati@intel.com>
-Signed-off-by: Vitaly Lifshits <vitaly.lifshits@intel.com>
----
- drivers/net/ethernet/intel/e1000e/hw.h      |   2 +
- drivers/net/ethernet/intel/e1000e/ich8lan.c |  33 ++++
- drivers/net/ethernet/intel/e1000e/phy.c     | 186 ++++++++++++--------
- drivers/net/ethernet/intel/e1000e/phy.h     |   2 +
- 4 files changed, 152 insertions(+), 71 deletions(-)
+> Fixes: e9031f2da1ae ("i40e: introduce next_to_process to i40e_ring")
+> Suggested-by: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+> Reported-by: hq.dev+kernel@msdfc.xyz
+> Reported by: Solomon Peachy <pizza@shaftnet.org>
+> Closes: https://bugzilla.kernel.org/show_bug.cgi?id=3D217678
+> Tested-by: hq.dev+kernel@msdfc.xyz
 
-diff --git a/drivers/net/ethernet/intel/e1000e/hw.h b/drivers/net/ethernet/intel/e1000e/hw.h
-index 29f9fae35f42..0eb7555e0168 100644
---- a/drivers/net/ethernet/intel/e1000e/hw.h
-+++ b/drivers/net/ethernet/intel/e1000e/hw.h
-@@ -625,6 +625,7 @@ struct e1000_phy_info {
- 	u32 id;
- 	u32 reset_delay_us;	/* in usec */
- 	u32 revision;
-+	u32 retry_count;
- 
- 	enum e1000_media_type media_type;
- 
-@@ -641,6 +642,7 @@ struct e1000_phy_info {
- 	bool polarity_correction;
- 	bool speed_downgraded;
- 	bool autoneg_wait_to_complete;
-+	bool retry_enabled;
- };
- 
- struct e1000_nvm_info {
-diff --git a/drivers/net/ethernet/intel/e1000e/ich8lan.c b/drivers/net/ethernet/intel/e1000e/ich8lan.c
-index 0c7fd10312c8..1d1a30e2a614 100644
---- a/drivers/net/ethernet/intel/e1000e/ich8lan.c
-+++ b/drivers/net/ethernet/intel/e1000e/ich8lan.c
-@@ -222,11 +222,18 @@ static bool e1000_phy_is_accessible_pchlan(struct e1000_hw *hw)
- 	if (hw->mac.type >= e1000_pch_lpt) {
- 		/* Only unforce SMBus if ME is not active */
- 		if (!(er32(FWSM) & E1000_ICH_FWSM_FW_VALID)) {
-+			/* Switching PHY interface always returns MDI error
-+			 * so disable retry mechanism to avoid wasting time
-+			 */
-+			e1000e_disable_phy_retry(hw);
-+
- 			/* Unforce SMBus mode in PHY */
- 			e1e_rphy_locked(hw, CV_SMB_CTRL, &phy_reg);
- 			phy_reg &= ~CV_SMB_CTRL_FORCE_SMBUS;
- 			e1e_wphy_locked(hw, CV_SMB_CTRL, phy_reg);
- 
-+			e1000e_enable_phy_retry(hw);
-+
- 			/* Unforce SMBus mode in MAC */
- 			mac_reg = er32(CTRL_EXT);
- 			mac_reg &= ~E1000_CTRL_EXT_FORCE_SMBUS;
-@@ -310,6 +317,11 @@ static s32 e1000_init_phy_workarounds_pchlan(struct e1000_hw *hw)
- 		goto out;
- 	}
- 
-+	/* There is no guarantee that the PHY is accessible at this time
-+	 * so disable retry mechanism to avoid wasting time
-+	 */
-+	e1000e_disable_phy_retry(hw);
-+
- 	/* The MAC-PHY interconnect may be in SMBus mode.  If the PHY is
- 	 * inaccessible and resetting the PHY is not blocked, toggle the
- 	 * LANPHYPC Value bit to force the interconnect to PCIe mode.
-@@ -379,6 +391,8 @@ static s32 e1000_init_phy_workarounds_pchlan(struct e1000_hw *hw)
- 		break;
- 	}
- 
-+	e1000e_enable_phy_retry(hw);
-+
- 	hw->phy.ops.release(hw);
- 	if (!ret_val) {
- 
-@@ -448,6 +462,11 @@ static s32 e1000_init_phy_params_pchlan(struct e1000_hw *hw)
- 
- 	phy->id = e1000_phy_unknown;
- 
-+	if (hw->mac.type == e1000_pch_mtp) {
-+		phy->retry_count = 2;
-+		e1000e_enable_phy_retry(hw);
-+	}
-+
- 	ret_val = e1000_init_phy_workarounds_pchlan(hw);
- 	if (ret_val)
- 		return ret_val;
-@@ -1145,6 +1164,11 @@ s32 e1000_enable_ulp_lpt_lp(struct e1000_hw *hw, bool to_sx)
- 	if (ret_val)
- 		goto out;
- 
-+	/* Switching PHY interface always returns MDI error
-+	 * so disable retry mechanism to avoid wasting time
-+	 */
-+	e1000e_disable_phy_retry(hw);
-+
- 	/* Force SMBus mode in PHY */
- 	ret_val = e1000_read_phy_reg_hv_locked(hw, CV_SMB_CTRL, &phy_reg);
- 	if (ret_val)
-@@ -1152,6 +1176,8 @@ s32 e1000_enable_ulp_lpt_lp(struct e1000_hw *hw, bool to_sx)
- 	phy_reg |= CV_SMB_CTRL_FORCE_SMBUS;
- 	e1000_write_phy_reg_hv_locked(hw, CV_SMB_CTRL, phy_reg);
- 
-+	e1000e_enable_phy_retry(hw);
-+
- 	/* Force SMBus mode in MAC */
- 	mac_reg = er32(CTRL_EXT);
- 	mac_reg |= E1000_CTRL_EXT_FORCE_SMBUS;
-@@ -1312,6 +1338,11 @@ static s32 e1000_disable_ulp_lpt_lp(struct e1000_hw *hw, bool force)
- 		/* Toggle LANPHYPC Value bit */
- 		e1000_toggle_lanphypc_pch_lpt(hw);
- 
-+	/* Switching PHY interface always returns MDI error
-+	 * so disable retry mechanism to avoid wasting time
-+	 */
-+	e1000e_disable_phy_retry(hw);
-+
- 	/* Unforce SMBus mode in PHY */
- 	ret_val = e1000_read_phy_reg_hv_locked(hw, CV_SMB_CTRL, &phy_reg);
- 	if (ret_val) {
-@@ -1332,6 +1363,8 @@ static s32 e1000_disable_ulp_lpt_lp(struct e1000_hw *hw, bool force)
- 	phy_reg &= ~CV_SMB_CTRL_FORCE_SMBUS;
- 	e1000_write_phy_reg_hv_locked(hw, CV_SMB_CTRL, phy_reg);
- 
-+	e1000e_enable_phy_retry(hw);
-+
- 	/* Unforce SMBus mode in MAC */
- 	mac_reg = er32(CTRL_EXT);
- 	mac_reg &= ~E1000_CTRL_EXT_FORCE_SMBUS;
-diff --git a/drivers/net/ethernet/intel/e1000e/phy.c b/drivers/net/ethernet/intel/e1000e/phy.c
-index 08c3d477dd6f..a2fe5647ad9e 100644
---- a/drivers/net/ethernet/intel/e1000e/phy.c
-+++ b/drivers/net/ethernet/intel/e1000e/phy.c
-@@ -107,6 +107,16 @@ s32 e1000e_phy_reset_dsp(struct e1000_hw *hw)
- 	return e1e_wphy(hw, M88E1000_PHY_GEN_CONTROL, 0);
- }
- 
-+void e1000e_disable_phy_retry(struct e1000_hw* hw)
-+{
-+	hw->phy.retry_enabled = false;
-+}
-+
-+void e1000e_enable_phy_retry(struct e1000_hw* hw)
-+{
-+	hw->phy.retry_enabled = true;
-+}
-+
- /**
-  *  e1000e_read_phy_reg_mdic - Read MDI control register
-  *  @hw: pointer to the HW structure
-@@ -118,57 +128,74 @@ s32 e1000e_phy_reset_dsp(struct e1000_hw *hw)
-  **/
- s32 e1000e_read_phy_reg_mdic(struct e1000_hw *hw, u32 offset, u16 *data)
- {
-+	u32 i, mdic = 0, retry_counter, retry_max;
- 	struct e1000_phy_info *phy = &hw->phy;
--	u32 i, mdic = 0;
-+	bool success;
- 
- 	if (offset > MAX_PHY_REG_ADDRESS) {
- 		e_dbg("PHY Address %d is out of range\n", offset);
- 		return -E1000_ERR_PARAM;
- 	}
- 
-+	retry_max = phy->retry_enabled ? phy->retry_count : 0;
-+
- 	/* Set up Op-code, Phy Address, and register offset in the MDI
- 	 * Control register.  The MAC will take care of interfacing with the
- 	 * PHY to retrieve the desired data.
- 	 */
--	mdic = ((offset << E1000_MDIC_REG_SHIFT) |
--		(phy->addr << E1000_MDIC_PHY_SHIFT) |
--		(E1000_MDIC_OP_READ));
-+	for (retry_counter = 0; retry_counter <= retry_max; retry_counter++) {
-+		success = true;
- 
--	ew32(MDIC, mdic);
-+		mdic = ((offset << E1000_MDIC_REG_SHIFT) |
-+			(phy->addr << E1000_MDIC_PHY_SHIFT) |
-+			(E1000_MDIC_OP_READ));
- 
--	/* Poll the ready bit to see if the MDI read completed
--	 * Increasing the time out as testing showed failures with
--	 * the lower time out
--	 */
--	for (i = 0; i < (E1000_GEN_POLL_TIMEOUT * 3); i++) {
--		udelay(50);
--		mdic = er32(MDIC);
--		if (mdic & E1000_MDIC_READY)
--			break;
--	}
--	if (!(mdic & E1000_MDIC_READY)) {
--		e_dbg("MDI Read PHY Reg Address %d did not complete\n", offset);
--		return -E1000_ERR_PHY;
--	}
--	if (mdic & E1000_MDIC_ERROR) {
--		e_dbg("MDI Read PHY Reg Address %d Error\n", offset);
--		return -E1000_ERR_PHY;
--	}
--	if (((mdic & E1000_MDIC_REG_MASK) >> E1000_MDIC_REG_SHIFT) != offset) {
--		e_dbg("MDI Read offset error - requested %d, returned %d\n",
--		      offset,
--		      (mdic & E1000_MDIC_REG_MASK) >> E1000_MDIC_REG_SHIFT);
--		return -E1000_ERR_PHY;
-+		ew32(MDIC, mdic);
-+
-+		/* Poll the ready bit to see if the MDI read completed
-+		 * Increasing the time out as testing showed failures with
-+		 * the lower time out
-+		 */
-+		for (i = 0; i < (E1000_GEN_POLL_TIMEOUT * 3); i++) {
-+			udelay(50);
-+			mdic = er32(MDIC);
-+			if (mdic & E1000_MDIC_READY)
-+				break;
-+		}
-+		if (!(mdic & E1000_MDIC_READY)) {
-+			e_dbg("MDI Read PHY Reg Address %d did not complete\n", offset);
-+			success = false;
-+		}
-+		if (mdic & E1000_MDIC_ERROR) {
-+			e_dbg("MDI Read PHY Reg Address %d Error\n", offset);
-+			success = false;
-+		}
-+		if (((mdic & E1000_MDIC_REG_MASK) >> E1000_MDIC_REG_SHIFT) != offset) {
-+			e_dbg("MDI Read offset error - requested %d, returned %d\n",
-+			      offset,
-+			      (mdic & E1000_MDIC_REG_MASK) >> E1000_MDIC_REG_SHIFT);
-+			success = false;
-+		}
-+
-+		/* Allow some time after each MDIC transaction to avoid
-+		 * reading duplicate data in the next MDIC transaction.
-+		 */
-+		if (hw->mac.type == e1000_pch2lan)
-+			udelay(100);
-+
-+		if (success) {
-+			*data = (u16)mdic;
-+			return 0;
-+		}
-+
-+		if (retry_counter != retry_max) {
-+			e_dbg("Perform retry on PHY transaction...\n");
-+			mdelay(10);
-+		}
- 	}
--	*data = (u16)mdic;
- 
--	/* Allow some time after each MDIC transaction to avoid
--	 * reading duplicate data in the next MDIC transaction.
--	 */
--	if (hw->mac.type == e1000_pch2lan)
--		udelay(100);
- 
--	return 0;
-+	return -E1000_ERR_PHY;
- }
- 
- /**
-@@ -181,57 +208,74 @@ s32 e1000e_read_phy_reg_mdic(struct e1000_hw *hw, u32 offset, u16 *data)
-  **/
- s32 e1000e_write_phy_reg_mdic(struct e1000_hw *hw, u32 offset, u16 data)
- {
-+	u32 i, mdic = 0, retry_counter, retry_max;
- 	struct e1000_phy_info *phy = &hw->phy;
--	u32 i, mdic = 0;
-+	bool success;
- 
- 	if (offset > MAX_PHY_REG_ADDRESS) {
- 		e_dbg("PHY Address %d is out of range\n", offset);
- 		return -E1000_ERR_PARAM;
- 	}
- 
-+	retry_max = phy->retry_enabled ? phy->retry_count : 0;
-+
- 	/* Set up Op-code, Phy Address, and register offset in the MDI
- 	 * Control register.  The MAC will take care of interfacing with the
- 	 * PHY to retrieve the desired data.
- 	 */
--	mdic = (((u32)data) |
--		(offset << E1000_MDIC_REG_SHIFT) |
--		(phy->addr << E1000_MDIC_PHY_SHIFT) |
--		(E1000_MDIC_OP_WRITE));
-+	for (retry_counter = 0; retry_counter <= retry_max; retry_counter++) {
-+		success = true;
- 
--	ew32(MDIC, mdic);
-+		mdic = (((u32)data) |
-+			(offset << E1000_MDIC_REG_SHIFT) |
-+			(phy->addr << E1000_MDIC_PHY_SHIFT) |
-+			(E1000_MDIC_OP_WRITE));
- 
--	/* Poll the ready bit to see if the MDI read completed
--	 * Increasing the time out as testing showed failures with
--	 * the lower time out
--	 */
--	for (i = 0; i < (E1000_GEN_POLL_TIMEOUT * 3); i++) {
--		udelay(50);
--		mdic = er32(MDIC);
--		if (mdic & E1000_MDIC_READY)
--			break;
--	}
--	if (!(mdic & E1000_MDIC_READY)) {
--		e_dbg("MDI Write PHY Reg Address %d did not complete\n", offset);
--		return -E1000_ERR_PHY;
--	}
--	if (mdic & E1000_MDIC_ERROR) {
--		e_dbg("MDI Write PHY Red Address %d Error\n", offset);
--		return -E1000_ERR_PHY;
--	}
--	if (((mdic & E1000_MDIC_REG_MASK) >> E1000_MDIC_REG_SHIFT) != offset) {
--		e_dbg("MDI Write offset error - requested %d, returned %d\n",
--		      offset,
--		      (mdic & E1000_MDIC_REG_MASK) >> E1000_MDIC_REG_SHIFT);
--		return -E1000_ERR_PHY;
--	}
- 
--	/* Allow some time after each MDIC transaction to avoid
--	 * reading duplicate data in the next MDIC transaction.
--	 */
--	if (hw->mac.type == e1000_pch2lan)
--		udelay(100);
-+		ew32(MDIC, mdic);
- 
--	return 0;
-+		/* Poll the ready bit to see if the MDI read completed
-+		 * Increasing the time out as testing showed failures with
-+		 * the lower time out
-+		 */
-+		for (i = 0; i < (E1000_GEN_POLL_TIMEOUT * 3); i++) {
-+			udelay(50);
-+			mdic = er32(MDIC);
-+			if (mdic & E1000_MDIC_READY)
-+				break;
-+		}
-+		if (!(mdic & E1000_MDIC_READY)) {
-+			e_dbg("MDI Write PHY Reg Address %d did not complete\n", offset);
-+			success = false;
-+		}
-+		if (mdic & E1000_MDIC_ERROR) {
-+			e_dbg("MDI Write PHY Red Address %d Error\n", offset);
-+			success = false;
-+		}
-+		if (((mdic & E1000_MDIC_REG_MASK) >> E1000_MDIC_REG_SHIFT) != offset) {
-+			e_dbg("MDI Write offset error - requested %d, returned %d\n",
-+			      offset,
-+			      (mdic & E1000_MDIC_REG_MASK) >> E1000_MDIC_REG_SHIFT);
-+			success = false;
-+		}
-+
-+		/* Allow some time after each MDIC transaction to avoid
-+		 * reading duplicate data in the next MDIC transaction.
-+		 */
-+		if (hw->mac.type == e1000_pch2lan)
-+			udelay(100);
-+
-+		if (success)
-+			return 0;
-+
-+		if (retry_counter != retry_max) {
-+			e_dbg("Perform retry on PHY transaction...\n");
-+			mdelay(10);
-+		}
-+
-+	}
-+
-+	return -E1000_ERR_PHY;
- }
- 
- /**
-diff --git a/drivers/net/ethernet/intel/e1000e/phy.h b/drivers/net/ethernet/intel/e1000e/phy.h
-index c48777d09523..049bb325b4b1 100644
---- a/drivers/net/ethernet/intel/e1000e/phy.h
-+++ b/drivers/net/ethernet/intel/e1000e/phy.h
-@@ -51,6 +51,8 @@ s32 e1000e_read_phy_reg_bm2(struct e1000_hw *hw, u32 offset, u16 *data);
- s32 e1000e_write_phy_reg_bm2(struct e1000_hw *hw, u32 offset, u16 data);
- void e1000_power_up_phy_copper(struct e1000_hw *hw);
- void e1000_power_down_phy_copper(struct e1000_hw *hw);
-+void e1000e_disable_phy_retry(struct e1000_hw *hw);
-+void e1000e_enable_phy_retry(struct e1000_hw *hw);
- s32 e1000e_read_phy_reg_mdic(struct e1000_hw *hw, u32 offset, u16 *data);
- s32 e1000e_write_phy_reg_mdic(struct e1000_hw *hw, u32 offset, u16 data);
- s32 e1000_read_phy_reg_hv(struct e1000_hw *hw, u32 offset, u16 *data);
--- 
-2.25.1
+Could you ask for a name of that someone?
+
+> Tested by: Indrek J=E4rve <incx@dustbite.net>
+> Signed-off-by: Tirthendu Sarkar <tirthendu.sarkar@intel.com>
+
+Acked-by: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+
+> ---
+>  drivers/net/ethernet/intel/i40e/i40e_txrx.c | 9 ++++++++-
+>  1 file changed, 8 insertions(+), 1 deletion(-)
+> =
+
+> diff --git a/drivers/net/ethernet/intel/i40e/i40e_txrx.c b/drivers/net/et=
+hernet/intel/i40e/i40e_txrx.c
+> index 0b3a27f118fb..50c70a8e470a 100644
+> --- a/drivers/net/ethernet/intel/i40e/i40e_txrx.c
+> +++ b/drivers/net/ethernet/intel/i40e/i40e_txrx.c
+> @@ -2544,7 +2544,14 @@ static int i40e_clean_rx_irq(struct i40e_ring *rx_=
+ring, int budget,
+>  			rx_buffer =3D i40e_rx_bi(rx_ring, ntp);
+>  			i40e_inc_ntp(rx_ring);
+>  			i40e_reuse_rx_page(rx_ring, rx_buffer);
+> -			cleaned_count++;
+> +			/* Update ntc and bump cleaned count if not in the
+> +			 * middle of mb packet.
+> +			 */
+> +			if (rx_ring->next_to_clean =3D=3D ntp) {
+> +				rx_ring->next_to_clean =3D
+> +					rx_ring->next_to_process;
+> +				cleaned_count++;
+> +			}
+>  			continue;
+>  		}
+>  =
+
+> -- =
+
+> 2.34.1
+> =
 
 _______________________________________________
 Intel-wired-lan mailing list
