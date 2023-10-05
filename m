@@ -1,114 +1,98 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id D8AB77B9D83
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  5 Oct 2023 15:49:06 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 38F3A7B9DE3
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  5 Oct 2023 15:57:18 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 6B07D83AA5;
-	Thu,  5 Oct 2023 13:49:03 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6B07D83AA5
+	by smtp1.osuosl.org (Postfix) with ESMTP id 6E45183AA4;
+	Thu,  5 Oct 2023 13:57:16 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6E45183AA4
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1696513743;
-	bh=+s/59ynkIicVfi2i4Su10Y6krSH1KZk/3QB+RqKvwo8=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=ujnAtE/xSncaYGKMzL+uWRD80IqOVM6fJuBHr29ZdfCjQKlgMBWjOd+d14eY1hogp
-	 a4r0Cfqa9qNtSr4iZrkntJbUKvcWUugKonYrtGRhawB60cdigW7mM298BSNtHL6qE2
-	 mjdRDG84W/T1kFvwnRSMfDcEr/SXwTw8tfdwDEjha+RB+gHMR9lxM6gD6kxFqVFrES
-	 vgZ/ThWQfn02Y1RScn3QWOAild6XQL87QQ3hxYppRAxsOCPUfyrqKvDq24/cM14sdS
-	 6xs40M0OUO0VjPcpy05VDOvJ4AOskjioCpbJ+zRfRmRe9n+7k8s3Vh7eF1zNg6rhYH
-	 4nuDdBs7n+Gvw==
+	s=default; t=1696514236;
+	bh=+vv4bVoov6u4qV575i47iCpOJ9WqQve/pQ5suH0FNAY=;
+	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=X9cFfhvsvuegQ6iqrBEOBha2Q2WkuYUb4tR7kwRXb2XXixrypuYDyU4Vf/+pOMwl9
+	 zhqHGF8SdGCR3bOpDQgW4hsdWICuTlErmg0+lI5Tp8j/P8yrG1ulypnipd0kc7zTSF
+	 DdxXFYN+BPEJ8o6NQJL5Y4rUUFOpnD0HGsDgULNPBFQJkIPm/xamBNGo66TaKWC5Zl
+	 D0B5wAMGEY+m8El3HzpkiIuDcu1xdj+m+GbSvhpaxYm/F3Z3zrd+eFwZPzS9j1wDJZ
+	 WQtnazSDj4sle/ogexAPL9Z7OUv8QlxvNpBX6W/3nL6uBmUo6h0YxgBWF9lrfDoKTM
+	 HP5GvHhrJoRsQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id vIsUjWlfB1EE; Thu,  5 Oct 2023 13:49:02 +0000 (UTC)
+	with ESMTP id scdXn7TNzZlK; Thu,  5 Oct 2023 13:57:15 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 312008382D;
-	Thu,  5 Oct 2023 13:49:02 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 312008382D
+	by smtp1.osuosl.org (Postfix) with ESMTP id 0FA9883AA6;
+	Thu,  5 Oct 2023 13:57:15 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0FA9883AA6
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id A04101BF4E4
- for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Oct 2023 13:48:57 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 8C47B1BF4E4
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Oct 2023 13:57:10 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 7635F40B0E
- for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Oct 2023 13:48:57 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 7635F40B0E
+ by smtp1.osuosl.org (Postfix) with ESMTP id 647F283834
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Oct 2023 13:57:10 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 647F283834
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id eVCVlWrKFWbh for <intel-wired-lan@lists.osuosl.org>;
- Thu,  5 Oct 2023 13:48:55 +0000 (UTC)
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.129.124])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 5BEA740AA1
- for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Oct 2023 13:48:55 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 5BEA740AA1
-Received: from mail-qk1-f199.google.com (mail-qk1-f199.google.com
- [209.85.222.199]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-283-eMbJz1K7NmOYv0WHBXKPdA-1; Thu, 05 Oct 2023 09:48:52 -0400
-X-MC-Unique: eMbJz1K7NmOYv0WHBXKPdA-1
-Received: by mail-qk1-f199.google.com with SMTP id
- af79cd13be357-7742bd869e4so17526785a.1
- for <intel-wired-lan@lists.osuosl.org>; Thu, 05 Oct 2023 06:48:52 -0700 (PDT)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id hp1BDeKekEOa for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  5 Oct 2023 13:57:09 +0000 (UTC)
+Received: from mail-wm1-x334.google.com (mail-wm1-x334.google.com
+ [IPv6:2a00:1450:4864:20::334])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id EB4908381F
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Oct 2023 13:57:08 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org EB4908381F
+Received: by mail-wm1-x334.google.com with SMTP id
+ 5b1f17b1804b1-4065dea9a33so9413485e9.3
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 05 Oct 2023 06:57:08 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1696513732; x=1697118532;
- h=mime-version:user-agent:content-transfer-encoding:references
- :in-reply-to:date:cc:to:from:subject:message-id:x-gm-message-state
- :from:to:cc:subject:date:message-id:reply-to;
- bh=WUFBDdELdueKekAKn28l3cuGTc8E2A1Wmz1k6PVvTYE=;
- b=KlNlrq6HkiAUePaUkWac29SQ/7a7WPX8/Qn5r/fPYA0LyrjxecPkPAZ8kYZmMDqPcL
- pEVtvNRR5rwkcq5XUbMzuJS5ZZkjYYY6Dx5AMeQwIHz46LFRv/lvJCHOWpq7UbUIEi0P
- +33Gpmons4fkUTzUed7ZWS1lwlxZ0qKonAoKTYBOtMrPI42uVLRI/0YQImY8B2K5SY1s
- Rzg9kqKysdhMYcNaQ6u3gzj2giSGb04sszcYaiJA6NEitx3hCWMiFlQ/zdwbJGDSUey4
- lyPgkDHJobtNpRRShCUE3HmmiV/XMNMEUrRSHe+BzbjIGuSybhy0McWR4YzX7w6OZYSP
- PIGA==
-X-Gm-Message-State: AOJu0Yyg6Mrh1up5i+qiZoU3rO/G94Eg6r0V1JVAJAfHzTagpMHnNypU
- l8X80yZCFPvQJ5Y03AclSBN/GWPAhEzrArYCupwzbeDQLYvWIG2yXAADKqONQ3IQyXVwQ/YsQwl
- 0G4GUMo1LoDkvNCOepuiB3vObk/D+xA==
-X-Received: by 2002:a05:620a:2915:b0:775:7520:5214 with SMTP id
- m21-20020a05620a291500b0077575205214mr5945540qkp.0.1696513732210; 
- Thu, 05 Oct 2023 06:48:52 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IF2wtaXq1pHzz6hwXZa4E2xm2NacBrWxiRKjpHT50618ghR5jmmr+RqCR72p5u/LAer+oWUdA==
-X-Received: by 2002:a05:620a:2915:b0:775:7520:5214 with SMTP id
- m21-20020a05620a291500b0077575205214mr5945510qkp.0.1696513731890; 
- Thu, 05 Oct 2023 06:48:51 -0700 (PDT)
-Received: from gerbillo.redhat.com (146-241-225-9.dyn.eolo.it. [146.241.225.9])
- by smtp.gmail.com with ESMTPSA id
- s17-20020a05620a031100b00767177a5bebsm490081qkm.56.2023.10.05.06.48.49
+ d=1e100.net; s=20230601; t=1696514226; x=1697119026;
+ h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=kIDUUDyPCMDnmf6dgpyyTfj6uNBxPsdSSFa0JLZBazw=;
+ b=ACHHTS/K/91z9gV3zGcpy4Q+BtIZtbYyjdH54UzjMSXF2EvfGiEz9es8pVD5Oq7Gy+
+ oUyIurhahwmPrLWVwlhPOz6NiMMh679M3uiHWAPIZmlz/a3QUXGOTiR6IrEjqSG2FZgI
+ 5pFkJ9vpNCw3X99aNczAJzE6AHPD1vT84NgggNsbriuvpRh4uJrJSgQ2FJ29XPpj1YpD
+ H0KrNi75FLFTSP59ZJuRY2vRrwIQexMEVOUl8Mk/OpJwR7Iz7BWkirIkNwTjIuozW0bU
+ mQfC4VwQxgKy6iHB+m4QrctZkWaDONTMPckEt7B2JhtENWBHWxto3WXoeNzxuLbXJsTN
+ XC/g==
+X-Gm-Message-State: AOJu0YwsUXaFg79C280cbkjx0xuWtVRvTWTyIpC2v+qgMyMCrBdGUvlL
+ t1QxkUnP+lNaeOcpv+U/0Y3ASA==
+X-Google-Smtp-Source: AGHT+IH+50km3L9x7FNGDdpi8jFVFT/mSqPZ1f1vTJoCUCMCRuejoPXyRAO7AbAoq0zfWgzr9nEAVw==
+X-Received: by 2002:a05:600c:211:b0:401:bf56:8ba6 with SMTP id
+ 17-20020a05600c021100b00401bf568ba6mr5087166wmi.28.1696514226615; 
+ Thu, 05 Oct 2023 06:57:06 -0700 (PDT)
+Received: from localhost ([102.36.222.112]) by smtp.gmail.com with ESMTPSA id
+ n16-20020a05600c3b9000b0040684abb623sm3774428wms.24.2023.10.05.06.57.05
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 05 Oct 2023 06:48:51 -0700 (PDT)
-Message-ID: <97f3ac0d8b49305390ed799c1965fd665b755e77.camel@redhat.com>
-From: Paolo Abeni <pabeni@redhat.com>
-To: Pawel Chmielewski <pawel.chmielewski@intel.com>, netdev@vger.kernel.org
-Date: Thu, 05 Oct 2023 15:48:47 +0200
-In-Reply-To: <20231002144412.1755194-3-pawel.chmielewski@intel.com>
-References: <20231002144412.1755194-1-pawel.chmielewski@intel.com>
- <20231002144412.1755194-3-pawel.chmielewski@intel.com>
-User-Agent: Evolution 3.46.4 (3.46.4-1.fc37)
+ Thu, 05 Oct 2023 06:57:06 -0700 (PDT)
+Date: Thu, 5 Oct 2023 16:57:02 +0300
+From: Dan Carpenter <dan.carpenter@linaro.org>
+To: Greg Rose <gregory.v.rose@intel.com>
+Message-ID: <3cee09b8-4c49-4a39-b889-75c0798dfe1c@moroto.mountain>
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+Content-Disposition: inline
+X-Mailer: git-send-email haha only kidding
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=redhat.com; 
- s=mimecast20190719; t=1696513734;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=+IpFm9Ok/lIm5ILa4vZsIurwO6BXWfpUh9Q8gUop0SM=;
- b=V4NaUHgtrU4UpiAW6KSwvsteIvggbEKHPq3LSwX6bXH2z1x0nday3uITvC+e4BQnxpbOCS
- Hk6hfOWymtUoyOWCZM9n37IM/kwq0hNG0PVLNjE2n1qyeJn08xdtYKC8nxZ2HfCy0XN7yC
- a/YYH2qKIFr/8ZUkNUo4x8niPttelnk=
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
- header.a=rsa-sha256 header.s=mimecast20190719 header.b=V4NaUHgt
-Subject: Re: [Intel-wired-lan] [PATCH net-next v3 2/2] ice: Refactor finding
- advertised link speed
+ d=linaro.org; s=google; t=1696514226; x=1697119026; darn=lists.osuosl.org;
+ h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=kIDUUDyPCMDnmf6dgpyyTfj6uNBxPsdSSFa0JLZBazw=;
+ b=P7VemuOlNjPjmpMc9H8K8A77+vagcvmv3oJGFKQXXC6RH5Q0v9pB+I95GR8fk/N7xn
+ 67IuxTRxmRJrEVisKlv3iR/7VwtyvhXTGjLkBkb7EWmLEYBCCSzLq6s43iVNDmNiiByx
+ 0OBV7/H9eK/b8Y/JV8IFVW1aET1WRw5zb4zt1yAp0hR7Mj/BTv8QGWcw5NCqkorCCEh1
+ aadJC71T0RMcDT2MtLIslXZFoAUxb6IM/yeN1drtERFTCqBylJeJBtrc/LXLA6N5+hb6
+ T6uULhsgbNP0QVM5k/U4dLTj3hgXDbwcFp6aqlu5TB/33Bv7hCnIxuJ8slwkAwDUsxBZ
+ 5toA==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org
+ header.a=rsa-sha256 header.s=google header.b=P7VemuOl
+Subject: [Intel-wired-lan] [PATCH net] ixgbe: fix crash with empty VF
+ macvlan list
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -121,120 +105,51 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: andrew@lunn.ch, aelior@marvell.com, manishc@marvell.com,
- vladimir.oltean@nxp.com, jdamato@fastly.com, kuba@kernel.org,
- edumazet@google.com, intel-wired-lan@lists.osuosl.org, horms@kernel.org,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Jacob Keller <jacob.e.keller@intel.com>,
- Paul Greenwalt <paul.greenwalt@intel.com>, d-tatianin@yandex-team.ru,
- davem@davemloft.net
+Cc: intel-wired-lan@lists.osuosl.org, kernel-janitors@vger.kernel.org,
+ Jesse Brandeburg <jesse.brandeburg@intel.com>,
+ Eric Dumazet <edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Jeff Kirsher <jeffrey.t.kirsher@intel.com>, netdev@vger.kernel.org,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ "David S. Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, 2023-10-02 at 16:44 +0200, Pawel Chmielewski wrote:
-> Refactor ice_get_link_ksettings to using forced speed to link modes mapping.
-> 
-> Suggested-by : Alexander Lobakin <aleksander.lobakin@intel.com>
-> Reviewed-by: Jacob Keller <jacob.e.keller@intel.com>
-> Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-> Signed-off-by: Paul Greenwalt <paul.greenwalt@intel.com>
-> Signed-off-by: Pawel Chmielewski <pawel.chmielewski@intel.com>
-> ---
->  drivers/net/ethernet/intel/ice/ice.h         |   1 +
->  drivers/net/ethernet/intel/ice/ice_ethtool.c | 200 +++++++++++++------
->  drivers/net/ethernet/intel/ice/ice_main.c    |   2 +
->  3 files changed, 138 insertions(+), 65 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
-> index fcaa5c3b8ec0..988b177d9388 100644
-> --- a/drivers/net/ethernet/intel/ice/ice.h
-> +++ b/drivers/net/ethernet/intel/ice/ice.h
-> @@ -960,6 +960,7 @@ int ice_stop(struct net_device *netdev);
->  void ice_service_task_schedule(struct ice_pf *pf);
->  int ice_load(struct ice_pf *pf);
->  void ice_unload(struct ice_pf *pf);
-> +void ice_adv_lnk_speed_maps_init(void);
->  
->  /**
->   * ice_set_rdma_cap - enable RDMA support
-> diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool.c b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-> index d3cb08e66dcb..b027788c42f6 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_ethtool.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-> @@ -345,6 +345,86 @@ static const struct ice_priv_flag ice_gstrings_priv_flags[] = {
->  
->  #define ICE_PRIV_FLAG_ARRAY_SIZE	ARRAY_SIZE(ice_gstrings_priv_flags)
->  
-> +static const u32 ice_adv_lnk_speed_100[] __initconst = {
-> +	ETHTOOL_LINK_MODE_100baseT_Full_BIT,
-> +};
-> +
-> +static const u32 ice_adv_lnk_speed_1000[] __initconst = {
-> +	ETHTOOL_LINK_MODE_1000baseX_Full_BIT,
-> +	ETHTOOL_LINK_MODE_1000baseT_Full_BIT,
-> +	ETHTOOL_LINK_MODE_1000baseKX_Full_BIT,
-> +};
-> +
-> +static const u32 ice_adv_lnk_speed_2500[] __initconst = {
-> +	ETHTOOL_LINK_MODE_2500baseT_Full_BIT,
-> +	ETHTOOL_LINK_MODE_2500baseX_Full_BIT,
-> +};
-> +
-> +static const u32 ice_adv_lnk_speed_5000[] __initconst = {
-> +	ETHTOOL_LINK_MODE_5000baseT_Full_BIT,
-> +};
-> +
-> +static const u32 ice_adv_lnk_speed_10000[] __initconst = {
-> +	ETHTOOL_LINK_MODE_10000baseT_Full_BIT,
-> +	ETHTOOL_LINK_MODE_10000baseKR_Full_BIT,
-> +	ETHTOOL_LINK_MODE_10000baseSR_Full_BIT,
-> +	ETHTOOL_LINK_MODE_10000baseLR_Full_BIT,
-> +};
-> +
-> +static const u32 ice_adv_lnk_speed_25000[] __initconst = {
-> +	ETHTOOL_LINK_MODE_25000baseCR_Full_BIT,
-> +	ETHTOOL_LINK_MODE_25000baseSR_Full_BIT,
-> +	ETHTOOL_LINK_MODE_25000baseKR_Full_BIT,
-> +};
-> +
-> +static const u32 ice_adv_lnk_speed_40000[] __initconst = {
-> +	ETHTOOL_LINK_MODE_40000baseCR4_Full_BIT,
-> +	ETHTOOL_LINK_MODE_40000baseSR4_Full_BIT,
-> +	ETHTOOL_LINK_MODE_40000baseLR4_Full_BIT,
-> +	ETHTOOL_LINK_MODE_40000baseKR4_Full_BIT,
-> +};
-> +
-> +static const u32 ice_adv_lnk_speed_50000[] __initconst = {
-> +	ETHTOOL_LINK_MODE_50000baseCR2_Full_BIT,
-> +	ETHTOOL_LINK_MODE_50000baseKR2_Full_BIT,
-> +	ETHTOOL_LINK_MODE_50000baseSR2_Full_BIT,
-> +};
-> +
-> +static const u32 ice_adv_lnk_speed_100000[] __initconst = {
-> +	ETHTOOL_LINK_MODE_100000baseCR4_Full_BIT,
-> +	ETHTOOL_LINK_MODE_100000baseSR4_Full_BIT,
-> +	ETHTOOL_LINK_MODE_100000baseLR4_ER4_Full_BIT,
-> +	ETHTOOL_LINK_MODE_100000baseKR4_Full_BIT,
-> +	ETHTOOL_LINK_MODE_100000baseCR2_Full_BIT,
-> +	ETHTOOL_LINK_MODE_100000baseSR2_Full_BIT,
-> +	ETHTOOL_LINK_MODE_100000baseKR2_Full_BIT,
-> +};
-> +
-> +#define ICE_ADV_LNK_SPEED_MAP(value)					\
-> +{									\
-> +	.speed		= SPEED_##value,				\
-> +	.cap_arr	= ice_adv_lnk_speed_##value,			\
-> +	.arr_size	= ARRAY_SIZE(ice_adv_lnk_speed_##value),	\
-> +}
+The adapter->vf_mvs.l list needs to be initialized even if the list is
+empty.  Otherwise it will lead to crashes.
 
-I think it could make sense move even the above macro definition to the
-common APIs (adding a 'prefix' argument).
+Fixes: c6bda30a06d9 ("ixgbe: Reconfigure SR-IOV Init")
+Signed-off-by: Dan Carpenter <dan.carpenter@linaro.org>
+---
+ drivers/net/ethernet/intel/ixgbe/ixgbe_sriov.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-Cheers,
-
-Paolo
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_sriov.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_sriov.c
+index a703ba975205..9cfdfa8a4355 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_sriov.c
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_sriov.c
+@@ -28,6 +28,9 @@ static inline void ixgbe_alloc_vf_macvlans(struct ixgbe_adapter *adapter,
+ 	struct vf_macvlans *mv_list;
+ 	int num_vf_macvlans, i;
+ 
++	/* Initialize list of VF macvlans */
++	INIT_LIST_HEAD(&adapter->vf_mvs.l);
++
+ 	num_vf_macvlans = hw->mac.num_rar_entries -
+ 			  (IXGBE_MAX_PF_MACVLANS + 1 + num_vfs);
+ 	if (!num_vf_macvlans)
+@@ -36,8 +39,6 @@ static inline void ixgbe_alloc_vf_macvlans(struct ixgbe_adapter *adapter,
+ 	mv_list = kcalloc(num_vf_macvlans, sizeof(struct vf_macvlans),
+ 			  GFP_KERNEL);
+ 	if (mv_list) {
+-		/* Initialize list of VF macvlans */
+-		INIT_LIST_HEAD(&adapter->vf_mvs.l);
+ 		for (i = 0; i < num_vf_macvlans; i++) {
+ 			mv_list[i].vf = -1;
+ 			mv_list[i].free = true;
+-- 
+2.39.2
 
 _______________________________________________
 Intel-wired-lan mailing list
