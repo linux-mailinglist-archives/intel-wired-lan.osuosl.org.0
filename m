@@ -2,103 +2,79 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id E8D167BBD47
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  6 Oct 2023 18:53:18 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B8FA47BBFCD
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  6 Oct 2023 21:45:13 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 38A5E6FA7E;
-	Fri,  6 Oct 2023 16:53:17 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 38A5E6FA7E
+	by smtp3.osuosl.org (Postfix) with ESMTP id 2EBAD6FAB8;
+	Fri,  6 Oct 2023 19:45:12 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2EBAD6FAB8
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1696611197;
-	bh=P3Qena8belJ+wCU9F7ldybCacp3Avwf36vzBq2Gu07Q=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1696621512;
+	bh=qQrfuCR8RXHAf7O/NS2UGQcCfFVizG4mr1gd+AcitB0=;
+	h=Date:From:To:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=p8709tr4i3ly131b1/o6VJOX/b3zO9mYAyVECeSIrTVTUnKVLukjyZ2xzh738qqgF
-	 goyH8en2JjJrREqDVW1OMYwA96Zl/RvbIGQY1iJc5pvRX48kPN6h3DmyYRGszMKEDj
-	 3YLgOuqom5hLGvKhZJLeVB85gFIYFvfGBFda6TNO3eW+4H2l1vzW8OVBWKOncPlvg3
-	 CSbcZr6fXfZt1CCi1L27btSWv2cN1iz3w+TMSGi2LxqpJo6hZ8k/CrUEJqhWjEkG9i
-	 B135DNt1NUJsde3MI+auMEYXA0vtX+64yYXu70U8uSr1Zr5Wuw1eQz9A9YgC3E0ij2
-	 y+8DyPM4ZVOIQ==
+	b=48dVvmeIhkcJ6S+fKLvKwe7ulSZ39HeyrJ94lJT7jYPlctzNVYahAG1MAYOLDW2zn
+	 XWtf2HLBqjQk4fut3+HDTt/EMUum0NVxQw/dkLrCRY8pON/n8vt+RY6h3ecwARrdUY
+	 OphRsk/CyJP7m562+Hu53lZKZypVEnpcDX1V7AJWnxArPMZBnY3RzjMll8gJDAL40l
+	 +RMgzflqGsjT42NoPbrxhU0F80sqllOuBuB5Ve1zqFVJYJ0lG0R01U2OTpDW9thw4z
+	 ksfKm0FLaJKu37+GdZuf2IJs8xQUhtDVJc24/ezz9j2/pLWrOw+OknYTaBUYqhHXpl
+	 b4GQ0boc/y62A==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 02uDT1QCiewO; Fri,  6 Oct 2023 16:53:16 +0000 (UTC)
+	with ESMTP id hfligjTP5y7l; Fri,  6 Oct 2023 19:45:10 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 2600560F86;
-	Fri,  6 Oct 2023 16:53:16 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2600560F86
+	by smtp3.osuosl.org (Postfix) with ESMTP id B0C0D60F37;
+	Fri,  6 Oct 2023 19:45:09 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B0C0D60F37
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 2753D1BF40D
- for <intel-wired-lan@lists.osuosl.org>; Fri,  6 Oct 2023 16:53:11 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id A081D1BF40D
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  6 Oct 2023 19:45:05 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id F2DF542E8F
- for <intel-wired-lan@lists.osuosl.org>; Fri,  6 Oct 2023 16:53:10 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org F2DF542E8F
+ by smtp2.osuosl.org (Postfix) with ESMTP id 8596540194
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  6 Oct 2023 19:45:05 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 8596540194
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id hVxKtKECC298 for <intel-wired-lan@lists.osuosl.org>;
- Fri,  6 Oct 2023 16:53:09 +0000 (UTC)
-Received: from mail-wr1-x42a.google.com (mail-wr1-x42a.google.com
- [IPv6:2a00:1450:4864:20::42a])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 60DAA42E89
- for <intel-wired-lan@lists.osuosl.org>; Fri,  6 Oct 2023 16:53:08 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 60DAA42E89
-Received: by mail-wr1-x42a.google.com with SMTP id
- ffacd0b85a97d-32487efc319so2260016f8f.1
- for <intel-wired-lan@lists.osuosl.org>; Fri, 06 Oct 2023 09:53:08 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1696611187; x=1697215987;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=h970WFqLxvJe5qinLhTrSPPuLT8BDW9gx47optmXmQ8=;
- b=UZyEjLtlB/PjdztFLBneYk5Em/bizf1KSKY2PXww4eIKCpf9TL6/wvmH4s2FMeniiW
- IfdYLG6m1rwI24fMf3InhOLgi4VX9VddQR49we2dVC5WspBPO8CqUj1xVy3+Ydo9q9fN
- QRLmpLAMm2es4idiYpOWTphHLA2qtaQgZtpaSh5Rwpj9tNl+cPTWwTwoikTTS2TRbYrF
- OTiQ6O4D2Y3y6XmRXeN04hVMlaYJqd03RY36KbJcw9GVzwqMzy46lD2FLl5YGWoNyeJf
- xWVc9IJJ3i2NXvIY7cSwfGFuuKEbhSt/dTyN752BOJswUstf5ZHHu7EZrL5u3cyPGvwi
- OOOA==
-X-Gm-Message-State: AOJu0YxzxNB1s+pYRyY8kKAbmbzgqwcYyUtUSjPu+wZUYh9FvX6tTBAM
- 45fHxYAVm+pLOiTpVmQbo4yfVg==
-X-Google-Smtp-Source: AGHT+IG7AIHYrhwpOEb9IZJnVzjhVWheK168zk+9p/ADPkPcpyNkE8a+S1hlq/Czi4cKRB1GsbKksw==
-X-Received: by 2002:adf:fa49:0:b0:31f:97e2:a933 with SMTP id
- y9-20020adffa49000000b0031f97e2a933mr7798228wrr.56.1696611186809; 
- Fri, 06 Oct 2023 09:53:06 -0700 (PDT)
-Received: from localhost (host-213-179-129-39.customer.m-online.net.
- [213.179.129.39]) by smtp.gmail.com with ESMTPSA id
- z7-20020a7bc7c7000000b003fee567235bsm6395414wmk.1.2023.10.06.09.53.05
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 06 Oct 2023 09:53:05 -0700 (PDT)
-Date: Fri, 6 Oct 2023 18:53:04 +0200
-From: Jiri Pirko <jiri@resnulli.us>
-To: Jakub Kicinski <kuba@kernel.org>
-Message-ID: <ZSA7cEEc5nKl07/z@nanopsycho>
+ with ESMTP id MFkEBsdQbhps for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  6 Oct 2023 19:45:03 +0000 (UTC)
+Received: from sin.source.kernel.org (sin.source.kernel.org
+ [IPv6:2604:1380:40e1:4800::1])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 43DFB40467
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  6 Oct 2023 19:45:03 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 43DFB40467
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by sin.source.kernel.org (Postfix) with ESMTP id 49A0FCE28FB;
+ Fri,  6 Oct 2023 19:44:59 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 276A5C433C8;
+ Fri,  6 Oct 2023 19:44:58 +0000 (UTC)
+Date: Fri, 6 Oct 2023 12:44:57 -0700
+From: Kuba Kicinski <kuba@kernel.org>
+To: Jiri Pirko <jiri@resnulli.us>
+Message-ID: <20231006124457.26417f37@kernel.org>
+In-Reply-To: <ZSA7cEEc5nKl07/z@nanopsycho>
 References: <20231006114101.1608796-1-arkadiusz.kubalewski@intel.com>
  <20231006114101.1608796-3-arkadiusz.kubalewski@intel.com>
  <ZR/9yCVakCrDbBww@nanopsycho> <20231006075536.3b21582e@kernel.org>
+ <ZSA7cEEc5nKl07/z@nanopsycho>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20231006075536.3b21582e@kernel.org>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=resnulli-us.20230601.gappssmtp.com; s=20230601; t=1696611187; x=1697215987;
- darn=lists.osuosl.org; 
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=h970WFqLxvJe5qinLhTrSPPuLT8BDW9gx47optmXmQ8=;
- b=Kgtbce3D2CavdkH53CF+i5rIVELzgv0c7cC4RwJBX7Q35xaPcyZhtlKhQG/LLE1Jun
- L1W1D5Mlt4hgND3EL0E66wGav20pcNkhTtxeg3DDHpPH4TNjV+UK7/6dCdNxCWpnkrK6
- SY/9On+a1INO7Jg2c7carIiQjYJnLKitSbZmcWXeYgzXdfUGne0SIxPt/oumlfIHGkkE
- qmxSYZuASczxcd8GxDeevdN+oCdKn9pyFFVI0u/QbFkUnVAjAmkuW8PfNABrGqDsUBxK
- jFilfNGyUK3Jk77amZk+HWlsdLAZCzutty/RlEY6Czi7CYGevbp2IpjEDja9K1L6cFPw
- k1Tw==
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=kernel.org; s=k20201202; t=1696621498;
+ bh=39zT5U5C6ML4UJu86kiMMCT+A/btFJCDbmSNpW+/ufA=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=EaDT7pOKoSDEC6eeiApq95BQB7uUBMrmtS9NN52siiSD5klu95fOIt5hHdqvzB8xN
+ ACA7ABu4I75Z6XvWeuF3BWGPHl7fC+BP8/KmB/QbHW/Cq+y12Nfr9MoYFa7tCvISRF
+ Vn6pcu/CAg6SO6ugkKdCEUhQHciLolzna9HI5K5C/CDNQPWv85iFDXK9sin4rSAbMe
+ inCa1/UwHBNCAvvZV+WDnj7St1yTNqY/7vBLETN7p3axqv3QXJ42rU/OF2DwI0NPuN
+ 3jAH8YxZ07ux9L8IXYWMR5rxVritya4oEgIhQeRkbRTTtGDeP2l/HeWfgyRT/gug4E
+ +AUAHiJm4LReg==
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=resnulli-us.20230601.gappssmtp.com
- header.i=@resnulli-us.20230601.gappssmtp.com header.a=rsa-sha256
- header.s=20230601 header.b=Kgtbce3D
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=EaDT7pOK
 Subject: Re: [Intel-wired-lan] [PATCH net-next v3 2/5] dpll: spec: add
  support for pin-dpll signal phase offset/adjust
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -123,23 +99,52 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Fri, Oct 06, 2023 at 04:55:36PM CEST, kuba@kernel.org wrote:
->On Fri, 6 Oct 2023 14:30:00 +0200 Jiri Pirko wrote:
->> >+version: 2  
->> 
->> I'm confused. Didn't you say you'll remove this? If not, my question
->> from v1 still stands.
->
->Perhaps we should dis-allow setting version in non-genetlink-legacy
->specs? I thought it may be a useful thing to someone, at some point,
->but so far the scoreboard is: legit uses: 0, confused uses: 1 :S
->
->Thoughts?
+On Fri, 6 Oct 2023 18:53:04 +0200 Jiri Pirko wrote:
+> Fri, Oct 06, 2023 at 04:55:36PM CEST, kuba@kernel.org wrote:
+> >> I'm confused. Didn't you say you'll remove this? If not, my question
+> >> from v1 still stands.  
+> >
+> >Perhaps we should dis-allow setting version in non-genetlink-legacy
+> >specs? I thought it may be a useful thing to someone, at some point,
+> >but so far the scoreboard is: legit uses: 0, confused uses: 1 :S
+> >
+> >Thoughts?  
+> 
+> I don't know what the meaning of version is. I just never saw that being
+> touched. Is there any semantics documented for it?
+> 
+> Kuba, any opinion?
 
-I don't know what the meaning of version is. I just never saw that being
-touched. Is there any semantics documented for it?
+/me switches the first name in From :P
 
-Kuba, any opinion?
+I think it basically predates the op / policy introspection,
+and allows people to break backward compat.
+
+drop_monitor bumped to 2 in 2009:
+
+  683703a26e46 ("drop_monitor: Update netlink protocol to include
+netlink attribute header in alert message")
+
+which breaks backward compat.
+
+genetlink ctrl went to 2 in 2006:
+
+  334c29a64507 ("[GENETLINK]: Move command capabilities to flags.")
+
+which moves some info around in attrs, also breaks backward compat
+if someone depended on the old placement.
+
+ovs did it in 2013:
+
+  44da5ae5fbea ("openvswitch: Drop user features if old user space
+attempted to create datapath")
+
+again, breaks backwards compat.
+
+
+I guess it may still make one day to bump the version for some proto
+which has very tight control over the user space. But it hasn't
+happened for 10 years.
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
