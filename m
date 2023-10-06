@@ -2,105 +2,101 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id E16377BB7FE
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  6 Oct 2023 14:41:53 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id A307E7BB815
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  6 Oct 2023 14:49:53 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 64EDB6141D;
-	Fri,  6 Oct 2023 12:41:52 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 64EDB6141D
+	by smtp3.osuosl.org (Postfix) with ESMTP id 32DD760E0B;
+	Fri,  6 Oct 2023 12:49:52 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 32DD760E0B
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1696596112;
-	bh=XCRXrdSuqyGLyTWUNTKzWi1R/AFUq6C4ho3nds4kPq8=;
+	s=default; t=1696596592;
+	bh=nIx4bL1NZKynmqadC8V3nMQ+g0esAXB62Bfcx2Kh7DA=;
 	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=0KlTkY8Fp9ByTFO926QwvE411nQUJfnUnPfkdjqJeD4MnVliTBk96Ss146wT3KzZ0
-	 ozzgKl0EJLRhcKPTZmvoPWpKj9gmJuw+5GaiSewBLUyrce0ezEgRIu7deR9DVa2Jh8
-	 0FPNBT9cRLyOjNdMCiLJn1kfQk9gjGoh1VG22TW2ALwyewJBSTB2msXlbI5oyybr06
-	 hQx70FTQxZRl7ERWVje/5/0e9ySfRREhvhBIR7WoY4/EA5VpADt6h8/2kIa4oIklw/
-	 Iio8+a45gnSHFmLFx2SKeXpyCK4c6lhtT7LwvUbsgm221PoaolQf+6PKZQg97CLNJY
-	 Vt9xzV7jHvZbw==
+	b=D/egaAfCNXlN+9f/92msK7vAE33zuVHW9NoL7l9xoVyuYB8eUUg269Te9Zleh5uW+
+	 TzblObj0EPJF3nYwcJSyxjnsl+zXAFe/43wXTbfOpzcONlqzUzGrg8oykg9CYNOxm8
+	 fQV8gxhwoL4GbJjTFBUeuJ6RRpgWGvUKJJv1gSpL0Q1GONjiTNXZP372stb+Su+jQu
+	 7J/S3x+kfGuT1TlZQ59DEzojHICfEsjXdazvrM+e7deZ5mDeY463c2Jz2GgvCfXzGv
+	 MmW13widNWWgd40hpSeF9cLOUWjeOVvCcvtixax7+QsDIW0jSVAPiM//jShN6TFkzn
+	 e/x3d3TtDoGGw==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id QCxcJk8jnkUn; Fri,  6 Oct 2023 12:41:51 +0000 (UTC)
+	with ESMTP id 0UlJGXgE8ltv; Fri,  6 Oct 2023 12:49:51 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 2CD24613CB;
-	Fri,  6 Oct 2023 12:41:51 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2CD24613CB
+	by smtp3.osuosl.org (Postfix) with ESMTP id 157F860BEF;
+	Fri,  6 Oct 2023 12:49:51 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 157F860BEF
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 020C81BF2FF
- for <intel-wired-lan@lists.osuosl.org>; Fri,  6 Oct 2023 12:41:45 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 90EBD1BF2FF
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  6 Oct 2023 12:49:46 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id CC289405D2
- for <intel-wired-lan@lists.osuosl.org>; Fri,  6 Oct 2023 12:41:45 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org CC289405D2
+ by smtp4.osuosl.org (Postfix) with ESMTP id 6399042C43
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  6 Oct 2023 12:49:46 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6399042C43
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Pui59uNJC5qv for <intel-wired-lan@lists.osuosl.org>;
- Fri,  6 Oct 2023 12:41:44 +0000 (UTC)
-Received: from mail-ej1-x630.google.com (mail-ej1-x630.google.com
- [IPv6:2a00:1450:4864:20::630])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 5B9894013B
- for <intel-wired-lan@lists.osuosl.org>; Fri,  6 Oct 2023 12:41:43 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 5B9894013B
-Received: by mail-ej1-x630.google.com with SMTP id
- a640c23a62f3a-991c786369cso355548566b.1
- for <intel-wired-lan@lists.osuosl.org>; Fri, 06 Oct 2023 05:41:43 -0700 (PDT)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id MB7ZI8-RgERg for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  6 Oct 2023 12:49:45 +0000 (UTC)
+Received: from mail-wm1-x331.google.com (mail-wm1-x331.google.com
+ [IPv6:2a00:1450:4864:20::331])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id D3C0E41932
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  6 Oct 2023 12:49:44 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D3C0E41932
+Received: by mail-wm1-x331.google.com with SMTP id
+ 5b1f17b1804b1-40535597f01so18622725e9.3
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 06 Oct 2023 05:49:44 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1696596102; x=1697200902;
+ d=1e100.net; s=20230601; t=1696596582; x=1697201382;
  h=in-reply-to:content-disposition:mime-version:references:message-id
  :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=mW5SVktj2xUWf9LqoXpgBXu7K2ICps52XbOnVUo46IM=;
- b=IwtTiVxYZKJmqd3q3td7vKJ9GoLCRtsg9YuYbt+iItR12Q87SCMvLv6S2HDdnWMRjW
- cP36tRRIa7aDcpc+l8MUchQy4RCshTbB5tZWf4yGyvXnVKbgwPO8c3HYROmg7E98wfss
- VOrLG/u5eAzglMQUpJX3VE5a0JNqYfcBfuiPCIoLM5+73yTuDXeC5B/VjDLIMeEWorey
- WfU4BUaJS1DDugPJKOhQZUkOeq2vdTfH9N095sUyyRiy6exrVBmrHB47Y2Lb+NLE1Ha2
- 3vRu4VMd7YwXqrXc88qeDUx8kixIq/sFDD0TDzzVZ0c4YimQtzEbNk/yUih6Y3ziTfKD
- g+Kg==
-X-Gm-Message-State: AOJu0YyVgAA5ktXfT4WEdDXENEAGMInkQmWpYhbMKXHAKJ682ZzOwc9A
- 0te5iTsR1ebAOZKGYAHwX8Bghw==
-X-Google-Smtp-Source: AGHT+IGDzND6oeHj41td9dY/OmMaIkCdkLJphE1fmDDVPuSEB4VwAnf7dRKhLynRWUzgKd6WFcyYhw==
-X-Received: by 2002:a17:907:b10:b0:9aa:e08:9fb7 with SMTP id
- h16-20020a1709070b1000b009aa0e089fb7mr6240513ejl.76.1696596102024; 
- Fri, 06 Oct 2023 05:41:42 -0700 (PDT)
-Received: from localhost (host-213-179-129-39.customer.m-online.net.
- [213.179.129.39]) by smtp.gmail.com with ESMTPSA id
- oz10-20020a170906cd0a00b009ad8acac02asm2849794ejb.172.2023.10.06.05.41.40
+ bh=oHjBNst/lhil+UcE/qDI5coR6SVyilLvcP6sMcHytls=;
+ b=d2N8DEdsOfNgz/wgUuo/hG2nYeeDHGuaf46fdMp8ryoAh/tQatn3F8mT/SqZlQCQo+
+ RA1U09BuRic3eL8XzyQHxGLk9Z7WTIRVK4/2/yaygUrTdJXpz1S9XJks82VdkvxgyG2V
+ TKGYNInmULxTHm2XySPmkfdO8q04h1bA6S9OIdGALt9VVbR85wE7l5U9gD52DTfr+Xgb
+ o80jzbOYUEStZ3Ev6RMN337+gA0GYAzCG4wEmX5XXHgbv5AZlNhfkNw+Pn7jZfcmBk0c
+ cpIC0GBYH1XGFsIEA5U2Ks84xAHhkfBOp4O7hxAfhV8XWyHgkYMthZ5CLigZY4xsJKfD
+ KROw==
+X-Gm-Message-State: AOJu0YziFQfMlC2qf8DfABXA6axKu8+ZeN+l+z/H/0OuxUCCU42YSv/7
+ s6NCyhd3s25hyLlCx1TZtR52CQ==
+X-Google-Smtp-Source: AGHT+IErZT4Z9JOnQab8/UPM9P5VYK8b44c4GNP61Z9e5SRanKoOeNOUL0LBngvKhNZHSCtY36Ax5g==
+X-Received: by 2002:adf:ecd2:0:b0:317:e1fb:d57b with SMTP id
+ s18-20020adfecd2000000b00317e1fbd57bmr6910194wro.56.1696596582480; 
+ Fri, 06 Oct 2023 05:49:42 -0700 (PDT)
+Received: from localhost ([102.36.222.112]) by smtp.gmail.com with ESMTPSA id
+ v7-20020adfedc7000000b003197efd1e7bsm1563290wro.114.2023.10.06.05.49.41
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 06 Oct 2023 05:41:41 -0700 (PDT)
-Date: Fri, 6 Oct 2023 14:41:39 +0200
-From: Jiri Pirko <jiri@resnulli.us>
+ Fri, 06 Oct 2023 05:49:41 -0700 (PDT)
+Date: Fri, 6 Oct 2023 15:49:39 +0300
+From: Dan Carpenter <dan.carpenter@linaro.org>
 To: Simon Horman <horms@kernel.org>
-Message-ID: <ZSAAg39SzlDS55Kn@nanopsycho>
-References: <20231006114101.1608796-1-arkadiusz.kubalewski@intel.com>
- <20231006114101.1608796-5-arkadiusz.kubalewski@intel.com>
- <ZR/+noRCdnsy6QJo@kernel.org>
+Message-ID: <569ba96b-2bc3-45ea-b397-36e7ef88ed8f@kadam.mountain>
+References: <3cee09b8-4c49-4a39-b889-75c0798dfe1c@moroto.mountain>
+ <ZR/si/di5IbSB9Gq@kernel.org>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <ZR/+noRCdnsy6QJo@kernel.org>
+In-Reply-To: <ZR/si/di5IbSB9Gq@kernel.org>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=resnulli-us.20230601.gappssmtp.com; s=20230601; t=1696596102; x=1697200902;
- darn=lists.osuosl.org; 
+ d=linaro.org; s=google; t=1696596582; x=1697201382; darn=lists.osuosl.org;
  h=in-reply-to:content-disposition:mime-version:references:message-id
  :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=mW5SVktj2xUWf9LqoXpgBXu7K2ICps52XbOnVUo46IM=;
- b=Rco7dGBupe9Qh0nT9+Jild0irqWIf5Yx/f9MPG67q9cFqL4GdQBfClIfCaJR9UuA/I
- GSKxkxOzx8ZhTHFEN6cRu75n5azmEhklav0ZRCqZronpF1t9RU+aN6G2eN7KD7Iv/EGN
- 9x12HveFRWLiCxo79F9r6O22HjaIaoAfSrrV5cxv3ahASP2uyjbldWHKfAiMH0H0Void
- SR/q9YpoWZvantfM3oFvnlCbpXWzAm+EaOYD1G9ZskwKf9j97Tl+Sb+quvhj76GXL7Yu
- zvEB0zT6VKAa7WoZEWSJlFEfxEhsQAJLsIrtNsDZywXWRZOFX3B2Fc8Dxx3ebNbN07s+
- xuuw==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=resnulli-us.20230601.gappssmtp.com
- header.i=@resnulli-us.20230601.gappssmtp.com header.a=rsa-sha256
- header.s=20230601 header.b=Rco7dGBu
-Subject: Re: [Intel-wired-lan] [PATCH net-next v3 4/5] ice: dpll: implement
- phase related callbacks
+ bh=oHjBNst/lhil+UcE/qDI5coR6SVyilLvcP6sMcHytls=;
+ b=rcynwYu3kyDs+rUrtha/TStmbUsuRlA1lxbReVV+Z0FAEkEDOdlatWwA2zqxftXccK
+ jwoOzIUl9ji5gR+TXmQx8aTWxGYMBvDKTw2gPfstqQgNciRg7cxvAKEfUN+/vgIRxM5h
+ y8aacOv9P6duXclemieCVx/yoKUgDmvNmmzm1gQVcJRypMTU341gij/Xi/Dh4pmjAa91
+ d3C7UCPvON7Pu/Vd7dBfgevg6mPK7mY+XQ8ORoO1AIU4BJ0u/kD0ZgQ+F1e1zUVs5JAa
+ xJqgFLU7CQeUSuu8mFUTNyApS1LRAQ9IPYHS5ipnbgOsypgFLtLXJmAACDa1LA/8quV3
+ PL5A==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org
+ header.a=rsa-sha256 header.s=google header.b=rcynwYu3
+Subject: Re: [Intel-wired-lan] [PATCH net] ixgbe: fix crash with empty VF
+ macvlan list
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -113,111 +109,81 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: vadim.fedorenko@linux.dev, corbet@lwn.net, netdev@vger.kernel.org,
- linux-doc@vger.kernel.org, jesse.brandeburg@intel.com,
- Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>,
- anthony.l.nguyen@intel.com, intel-wired-lan@lists.osuosl.org, kuba@kernel.org,
- pabeni@redhat.com, davem@davemloft.net
+Cc: intel-wired-lan@lists.osuosl.org, kernel-janitors@vger.kernel.org,
+ Jesse Brandeburg <jesse.brandeburg@intel.com>,
+ Greg Rose <gregory.v.rose@intel.com>, Eric Dumazet <edumazet@google.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Jeff Kirsher <jeffrey.t.kirsher@intel.com>, netdev@vger.kernel.org,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ "David S. Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Fri, Oct 06, 2023 at 02:33:34PM CEST, horms@kernel.org wrote:
->On Fri, Oct 06, 2023 at 01:41:00PM +0200, Arkadiusz Kubalewski wrote:
->> Implement new callback ops related to measurment and adjustment of
->> signal phase for pin-dpll in ice driver.
->> 
->> Signed-off-by: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
->
->Hi Arkadiusz,
->
->some minor feedback from my side.
->
->If you do end up re-spinning the series, please consider
->running checkpatch.pl --codespell.
->
->> ---
->>  drivers/net/ethernet/intel/ice/ice_dpll.c | 224 +++++++++++++++++++++-
->>  drivers/net/ethernet/intel/ice/ice_dpll.h |  10 +-
->>  2 files changed, 230 insertions(+), 4 deletions(-)
->> 
->> diff --git a/drivers/net/ethernet/intel/ice/ice_dpll.c b/drivers/net/ethernet/intel/ice/ice_dpll.c
->
->...
->
->> +/**
->> + * ice_dpll_phase_offset_get - callback for get dpll phase shift value
->> + * @pin: pointer to a pin
->> + * @pin_priv: private data pointer passed on pin registration
->> + * @dpll: registered dpll pointer
->> + * @dpll_priv: private data pointer passed on dpll registration
->> + * @phase_adjust: on success holds pin phase_adjust value
->
->nit: The parameter is called phase_offset, not phase_adjust in the code below
+On Fri, Oct 06, 2023 at 01:16:27PM +0200, Simon Horman wrote:
+> On Thu, Oct 05, 2023 at 04:57:02PM +0300, Dan Carpenter wrote:
+> > The adapter->vf_mvs.l list needs to be initialized even if the list is
+> > empty.  Otherwise it will lead to crashes.
+> > 
+> > Fixes: c6bda30a06d9 ("ixgbe: Reconfigure SR-IOV Init")
+> 
+> Hi Dan,
+> 
+> I see that the patch cited above added the line you are changing.
+> But it also seems to me that patch was moving it from elsewhere.
+> 
+> Perhaps I am mistaken, but I wonder if this is a better tag.
+> 
+> Fixes: a1cbb15c1397 ("ixgbe: Add macvlan support for VF")
+> 
 
-Yeah, the non-sense static function docs and how buggy they are. Nobody
-reads them anyway. Same old story for ice I guess....
+Yeah.  You're right.  I'll resend.
 
 
->
->> + * @extack: error reporting
->> + *
->> + * Dpll subsystem callback. Handler for getting phase shift value between
->> + * dpll's input and output.
->> + *
->> + * Context: Acquires pf->dplls.lock
->> + * Return:
->> + * * 0 - success
->> + * * negative - error
->> + */
->> +static int
->> +ice_dpll_phase_offset_get(const struct dpll_pin *pin, void *pin_priv,
->> +			  const struct dpll_device *dpll, void *dpll_priv,
->> +			  s64 *phase_offset, struct netlink_ext_ack *extack)
->> +{
->> +	struct ice_dpll *d = dpll_priv;
->> +	struct ice_pf *pf = d->pf;
->> +
->> +	mutex_lock(&pf->dplls.lock);
->> +	if (d->active_input == pin)
->> +		*phase_offset = d->phase_offset * ICE_DPLL_PHASE_OFFSET_FACTOR;
->> +	else
->> +		*phase_offset = 0;
->> +	mutex_unlock(&pf->dplls.lock);
->> +
->> +	return 0;
->> +}
->> +
->>  /**
->>   * ice_dpll_rclk_state_on_pin_set - set a state on rclk pin
->>   * @pin: pointer to a pin
->
->...
->
->> @@ -1656,6 +1867,15 @@ ice_dpll_init_info_direct_pins(struct ice_pf *pf,
->>  				return ret;
->>  			pins[i].prop.capabilities |=
->>  				DPLL_PIN_CAPABILITIES_PRIORITY_CAN_CHANGE;
->> +			pins[i].prop.phase_range.min =
->> +				pf->dplls.input_phase_adj_max;
->> +			pins[i].prop.phase_range.max =
->> +				-pf->dplls.input_phase_adj_max;
->> +		} else {
->> +			pins[i].prop.phase_range.min =
->> +				pf->dplls.output_phase_adj_max,
->
->nit: It probably doesn't make any difference, but perhaps ',' should be ';'.
->
->As flagged by clang-16 with -Wcomma
->
->> +			pins[i].prop.phase_range.max =
->> +				-pf->dplls.output_phase_adj_max;
->>  		}
->>  		pins[i].prop.capabilities |=
->>  			DPLL_PIN_CAPABILITIES_STATE_CAN_CHANGE;
->
->...
+> > Signed-off-by: Dan Carpenter <dan.carpenter@linaro.org>
+> > ---
+> >  drivers/net/ethernet/intel/ixgbe/ixgbe_sriov.c | 5 +++--
+> >  1 file changed, 3 insertions(+), 2 deletions(-)
+> > 
+> > diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_sriov.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_sriov.c
+> > index a703ba975205..9cfdfa8a4355 100644
+> > --- a/drivers/net/ethernet/intel/ixgbe/ixgbe_sriov.c
+> > +++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_sriov.c
+> > @@ -28,6 +28,9 @@ static inline void ixgbe_alloc_vf_macvlans(struct ixgbe_adapter *adapter,
+> >  	struct vf_macvlans *mv_list;
+> >  	int num_vf_macvlans, i;
+> >  
+> > +	/* Initialize list of VF macvlans */
+> > +	INIT_LIST_HEAD(&adapter->vf_mvs.l);
+> > +
+> >  	num_vf_macvlans = hw->mac.num_rar_entries -
+> >  			  (IXGBE_MAX_PF_MACVLANS + 1 + num_vfs);
+> >  	if (!num_vf_macvlans)
+> > @@ -36,8 +39,6 @@ static inline void ixgbe_alloc_vf_macvlans(struct ixgbe_adapter *adapter,
+> >  	mv_list = kcalloc(num_vf_macvlans, sizeof(struct vf_macvlans),
+> >  			  GFP_KERNEL);
+> >  	if (mv_list) {
+> 
+> I'm not sure it it is worth it, but perhaps more conventional error
+> handling could be used here:
+> 
+> 	if (!mv_list)
+> 		return;
+> 
+> 	for (i = 0; i < num_vf_macvlans; i++) {
+> 		...
+
+I mean error handling is always cleaner than success handling but it's
+probably not worth cleaning up in old code.  I say it's not worth
+cleaning up old code and yet I secretly reversed two if statements like
+this yesterday.  :P
+https://lore.kernel.org/all/d9da4c97-0da9-499f-9a21-1f8e3f148dc1@moroto.mountain/
+It really is nicer, yes.  But it just makes the patch too noisy.
+
+regards,
+dan carpenter
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
