@@ -1,82 +1,85 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id B8FA47BBFCD
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  6 Oct 2023 21:45:13 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id E9D057BC0D3
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  6 Oct 2023 23:00:21 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 2EBAD6FAB8;
-	Fri,  6 Oct 2023 19:45:12 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2EBAD6FAB8
+	by smtp2.osuosl.org (Postfix) with ESMTP id 64EA540AB1;
+	Fri,  6 Oct 2023 21:00:20 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 64EA540AB1
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1696621512;
-	bh=qQrfuCR8RXHAf7O/NS2UGQcCfFVizG4mr1gd+AcitB0=;
-	h=Date:From:To:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=48dVvmeIhkcJ6S+fKLvKwe7ulSZ39HeyrJ94lJT7jYPlctzNVYahAG1MAYOLDW2zn
-	 XWtf2HLBqjQk4fut3+HDTt/EMUum0NVxQw/dkLrCRY8pON/n8vt+RY6h3ecwARrdUY
-	 OphRsk/CyJP7m562+Hu53lZKZypVEnpcDX1V7AJWnxArPMZBnY3RzjMll8gJDAL40l
-	 +RMgzflqGsjT42NoPbrxhU0F80sqllOuBuB5Ve1zqFVJYJ0lG0R01U2OTpDW9thw4z
-	 ksfKm0FLaJKu37+GdZuf2IJs8xQUhtDVJc24/ezz9j2/pLWrOw+OknYTaBUYqhHXpl
-	 b4GQ0boc/y62A==
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id hfligjTP5y7l; Fri,  6 Oct 2023 19:45:10 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id B0C0D60F37;
-	Fri,  6 Oct 2023 19:45:09 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B0C0D60F37
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id A081D1BF40D
- for <intel-wired-lan@lists.osuosl.org>; Fri,  6 Oct 2023 19:45:05 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 8596540194
- for <intel-wired-lan@lists.osuosl.org>; Fri,  6 Oct 2023 19:45:05 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 8596540194
+	s=default; t=1696626020;
+	bh=8o0nAIeROWv5q9vwAviaP3ok8mhCkKQg76BDjHgUBMc=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=HoJjRgXRRitF6Jv3w+ss/RP7BR7bg+qlcWcXV5Db3R6LN5mN7iyqFQB8KdPUS0PXc
+	 ygZCQE2BjuigHA3fsdp0kXngGo6hHwJJzO99qLT6q94IdL35Vef042xe+HgKoEBflJ
+	 jP0MW5kYiBLVtoGArzRyavcrzLov9xILuVzqFzoUoQBvaF6ctFg+1paPiyEpvVmOm/
+	 Lz8FirEth7NQ4KWgslpKQVKP5sxUZLgYUMD3qe2NDa8eaS8QoTFKgyU2GXLIz/4qro
+	 l9cXQxJYPKWyc4+FZPU2M/X7Di2gnedtK5k/9U65cogWH44Kef5oRQWzYhkOo8Nnxm
+	 BZ3+6PYehKZTw==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id MFkEBsdQbhps for <intel-wired-lan@lists.osuosl.org>;
- Fri,  6 Oct 2023 19:45:03 +0000 (UTC)
-Received: from sin.source.kernel.org (sin.source.kernel.org
- [IPv6:2604:1380:40e1:4800::1])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 43DFB40467
- for <intel-wired-lan@lists.osuosl.org>; Fri,  6 Oct 2023 19:45:03 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 43DFB40467
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by sin.source.kernel.org (Postfix) with ESMTP id 49A0FCE28FB;
- Fri,  6 Oct 2023 19:44:59 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 276A5C433C8;
- Fri,  6 Oct 2023 19:44:58 +0000 (UTC)
-Date: Fri, 6 Oct 2023 12:44:57 -0700
-From: Kuba Kicinski <kuba@kernel.org>
-To: Jiri Pirko <jiri@resnulli.us>
-Message-ID: <20231006124457.26417f37@kernel.org>
-In-Reply-To: <ZSA7cEEc5nKl07/z@nanopsycho>
-References: <20231006114101.1608796-1-arkadiusz.kubalewski@intel.com>
- <20231006114101.1608796-3-arkadiusz.kubalewski@intel.com>
- <ZR/9yCVakCrDbBww@nanopsycho> <20231006075536.3b21582e@kernel.org>
- <ZSA7cEEc5nKl07/z@nanopsycho>
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 28DKobc7SWC1; Fri,  6 Oct 2023 21:00:19 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp2.osuosl.org (Postfix) with ESMTP id 4B38D4064E;
+	Fri,  6 Oct 2023 21:00:19 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 4B38D4064E
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 8BFCE1BF98E
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  6 Oct 2023 21:00:14 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp4.osuosl.org (Postfix) with ESMTP id 624AD41830
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  6 Oct 2023 21:00:14 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 624AD41830
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id YpDWYwBvxas0 for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  6 Oct 2023 21:00:13 +0000 (UTC)
+Received: from mgamail.intel.com (mgamail.intel.com [134.134.136.24])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 6AB3041806
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  6 Oct 2023 21:00:13 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6AB3041806
+X-IronPort-AV: E=McAfee;i="6600,9927,10855"; a="386662134"
+X-IronPort-AV: E=Sophos;i="6.03,204,1694761200"; d="scan'208";a="386662134"
+Received: from fmsmga008.fm.intel.com ([10.253.24.58])
+ by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 06 Oct 2023 14:00:12 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10855"; a="818138798"
+X-IronPort-AV: E=Sophos;i="6.03,204,1694761200"; d="scan'208";a="818138798"
+Received: from dmert-dev.jf.intel.com ([10.166.241.14])
+ by fmsmga008-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 06 Oct 2023 14:00:12 -0700
+From: Dave Ertman <david.m.ertman@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Fri,  6 Oct 2023 14:02:11 -0700
+Message-Id: <20231006210211.1443696-1-david.m.ertman@intel.com>
+X-Mailer: git-send-email 2.40.1
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1696621498;
- bh=39zT5U5C6ML4UJu86kiMMCT+A/btFJCDbmSNpW+/ufA=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=EaDT7pOKoSDEC6eeiApq95BQB7uUBMrmtS9NN52siiSD5klu95fOIt5hHdqvzB8xN
- ACA7ABu4I75Z6XvWeuF3BWGPHl7fC+BP8/KmB/QbHW/Cq+y12Nfr9MoYFa7tCvISRF
- Vn6pcu/CAg6SO6ugkKdCEUhQHciLolzna9HI5K5C/CDNQPWv85iFDXK9sin4rSAbMe
- inCa1/UwHBNCAvvZV+WDnj7St1yTNqY/7vBLETN7p3axqv3QXJ42rU/OF2DwI0NPuN
- 3jAH8YxZ07ux9L8IXYWMR5rxVritya4oEgIhQeRkbRTTtGDeP2l/HeWfgyRT/gug4E
- +AUAHiJm4LReg==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=EaDT7pOK
-Subject: Re: [Intel-wired-lan] [PATCH net-next v3 2/5] dpll: spec: add
- support for pin-dpll signal phase offset/adjust
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1696626013; x=1728162013;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=1DpSrKIs+hAEukPt4xle9xxxAoy6cCiHpiGwkrwOOIU=;
+ b=nFf46bK7ZJ0lRMjW2A8ivwloZ8bZAosP+Kne6CK0n9PMGdzPRoZpi+ws
+ tucqyt2Dg7AVPI/oOgNb3SnQb57cVp3Cr0JSXx4MiOmX8nO8T+vSmtBdc
+ dItugrLlqV8yfK3slZtBe8eKX2yJbfDNObRt9O/EeBfPs//5gfZDKLXKk
+ 2WCZVlcWFExq5PRC3LDMo0rI/axtX3GzCXDrDQqF40hj7SFcoc29p4DZS
+ Q+hXEXLAn6U8fanMK6kw/l0A7zLofP9qB+mJYGQ4t7TmyI7ApXhWPRFhx
+ PszDF1INrCxkEEiK4P/f9SkzTovrqrbqa+tDsrVGhpJ7+VlsOHfX5dY7d
+ g==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=nFf46bK7
+Subject: [Intel-wired-lan] [PATCH iwl-next] ice: Fix SRIOV LAG disable on
+ non-compliant aggreagate
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,62 +92,53 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: vadim.fedorenko@linux.dev, corbet@lwn.net, netdev@vger.kernel.org,
- linux-doc@vger.kernel.org, jesse.brandeburg@intel.com,
- Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>,
- anthony.l.nguyen@intel.com, intel-wired-lan@lists.osuosl.org,
- pabeni@redhat.com, davem@davemloft.net
+Cc: netdev@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Fri, 6 Oct 2023 18:53:04 +0200 Jiri Pirko wrote:
-> Fri, Oct 06, 2023 at 04:55:36PM CEST, kuba@kernel.org wrote:
-> >> I'm confused. Didn't you say you'll remove this? If not, my question
-> >> from v1 still stands.  
-> >
-> >Perhaps we should dis-allow setting version in non-genetlink-legacy
-> >specs? I thought it may be a useful thing to someone, at some point,
-> >but so far the scoreboard is: legit uses: 0, confused uses: 1 :S
-> >
-> >Thoughts?  
-> 
-> I don't know what the meaning of version is. I just never saw that being
-> touched. Is there any semantics documented for it?
-> 
-> Kuba, any opinion?
+If an attribute of an aggregate interface disqualifies it from supporting
+SRIOV, the driver will unwind the SRIOV support.  Currently the driver is
+clearing the feature bit for all interfaces in the aggregate, but this is
+not allowing the other interfaces to unwind successfully on driver unload.
 
-/me switches the first name in From :P
+Only clear the feature bit for the interface that is currently unwinding.
 
-I think it basically predates the op / policy introspection,
-and allows people to break backward compat.
+Fixes: bf65da2eb279 ("ice: enforce interface eligibility and add messaging for SRIOV LAG")
+Signed-off-by: Dave Ertman <david.m.ertman@intel.com>
+---
+ drivers/net/ethernet/intel/ice/ice_lag.c | 11 +++--------
+ 1 file changed, 3 insertions(+), 8 deletions(-)
 
-drop_monitor bumped to 2 in 2009:
+diff --git a/drivers/net/ethernet/intel/ice/ice_lag.c b/drivers/net/ethernet/intel/ice/ice_lag.c
+index 2c96d1883e19..c9071228b1ea 100644
+--- a/drivers/net/ethernet/intel/ice/ice_lag.c
++++ b/drivers/net/ethernet/intel/ice/ice_lag.c
+@@ -1513,17 +1513,12 @@ static void ice_lag_chk_disabled_bond(struct ice_lag *lag, void *ptr)
+  */
+ static void ice_lag_disable_sriov_bond(struct ice_lag *lag)
+ {
+-	struct ice_lag_netdev_list *entry;
+ 	struct ice_netdev_priv *np;
+-	struct net_device *netdev;
+ 	struct ice_pf *pf;
+ 
+-	list_for_each_entry(entry, lag->netdev_head, node) {
+-		netdev = entry->netdev;
+-		np = netdev_priv(netdev);
+-		pf = np->vsi->back;
+-
+-		ice_clear_feature_support(pf, ICE_F_SRIOV_LAG);
++	np = netdev_priv(lag->netdev);
++	pf = np->vsi->back;
++	ice_clear_feature_support(pf, ICE_F_SRIOV_LAG);
+ 	}
+ }
+ 
+-- 
+2.40.1
 
-  683703a26e46 ("drop_monitor: Update netlink protocol to include
-netlink attribute header in alert message")
-
-which breaks backward compat.
-
-genetlink ctrl went to 2 in 2006:
-
-  334c29a64507 ("[GENETLINK]: Move command capabilities to flags.")
-
-which moves some info around in attrs, also breaks backward compat
-if someone depended on the old placement.
-
-ovs did it in 2013:
-
-  44da5ae5fbea ("openvswitch: Drop user features if old user space
-attempted to create datapath")
-
-again, breaks backwards compat.
-
-
-I guess it may still make one day to bump the version for some proto
-which has very tight control over the user space. But it hasn't
-happened for 10 years.
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
