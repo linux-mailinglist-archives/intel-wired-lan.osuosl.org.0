@@ -1,103 +1,104 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id A70FA7C74C8
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 12 Oct 2023 19:30:07 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id E5A89408E8;
-	Thu, 12 Oct 2023 17:30:05 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org E5A89408E8
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1697131805;
-	bh=Ap9zMd10+nV+SqJAJt/NCB7pi3eyJSeDHTz++C/75lM=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=a1H9Abt2CbHih1rfg6FGhSAYm/PO4dmNLjS6PnmelMBazEIFqPjfxY4QLEv4SndEs
-	 LQdquwi28Oi85eNDv8F2URP4KBWZbBb8FADrC9QEYU6fdebQwD/lxPS287oqjvG+t3
-	 OMHiI4ryIMIAlEXzYZ8hfSawqIsLWG3QrxNjEbV+ldvX7q4mrPcYa9ADJfSpXlJA9b
-	 V8QDinqCRM/q6UOVKbJEGh9ZlOFl54pylB830iK7IsQ0FV6muOpxIaIFkYBR0NgieI
-	 mxKn1h1n0ns9NAOavBINmTbFng7DXQ0blXGyI6JZggBbxZeh8BDkGV7Q/sXiWV5j02
-	 yH1mCyM5MDUZg==
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id MSm7d2l_2kiE; Thu, 12 Oct 2023 17:30:04 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 2461E400DC;
-	Thu, 12 Oct 2023 17:30:04 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 2461E400DC
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 82CA11BF97D
- for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Oct 2023 17:29:59 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 30E067C763E
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 12 Oct 2023 21:06:48 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 59EAB60D70
- for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Oct 2023 17:29:59 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 59EAB60D70
+	by smtp3.osuosl.org (Postfix) with ESMTP id 9FE0F6103E;
+	Thu, 12 Oct 2023 19:06:46 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9FE0F6103E
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1697137606;
+	bh=LI3mAHFEqdzj7ucFyei/4HUQXmL8DHIw1/XWE3Z6zbE=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=JYlcmYeCOxq6Gx7rkK2V4jq9a+/mPrfBftY4BunDTCZPCEgcCi8geYSSGYE3NpMam
+	 OAua10RNoG1WgKIG1YOvVx7dN4dsEjaKiBMJaoBjIBts8iefsSkO2W72WgDbxtonBb
+	 4Ft2pOAdPE/T9bNcQR6+ocGrhFO3gwv9yKPJsHk6JHldxieMgyHNuCctS2w7/u7RML
+	 9A7PwIwqDxdTboOoKRTk2hiZxNslGUfalZycpEYKeAzt/h/AG1MmM92GyEr6AUWurV
+	 CvBjQcFn8JttPg8Um/w6JSGSxxwRQNI/FhJaYeWiVfdYzY22nf4QjUO3EEb5i19OUo
+	 eHyJCDKHO235A==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id sDY-oL3Shu0z for <intel-wired-lan@lists.osuosl.org>;
- Thu, 12 Oct 2023 17:29:56 +0000 (UTC)
-Received: from mail-vk1-xa32.google.com (mail-vk1-xa32.google.com
- [IPv6:2607:f8b0:4864:20::a32])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 7BD4660C24
- for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Oct 2023 17:29:56 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7BD4660C24
-Received: by mail-vk1-xa32.google.com with SMTP id
- 71dfb90a1353d-49abb53648aso437182e0c.0
- for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Oct 2023 10:29:56 -0700 (PDT)
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id pb6p-b6xZgaK; Thu, 12 Oct 2023 19:06:45 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp3.osuosl.org (Postfix) with ESMTP id 22A1760F53;
+	Thu, 12 Oct 2023 19:06:45 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 22A1760F53
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 162341BF3DC
+ for <intel-wired-lan@lists.osuosl.org>; Sun,  8 Oct 2023 06:36:13 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp4.osuosl.org (Postfix) with ESMTP id CF0164189E
+ for <intel-wired-lan@lists.osuosl.org>; Sun,  8 Oct 2023 06:36:12 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org CF0164189E
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id TLDcFNlKaYRR for <intel-wired-lan@lists.osuosl.org>;
+ Sun,  8 Oct 2023 06:36:10 +0000 (UTC)
+Received: from mail-yw1-x112e.google.com (mail-yw1-x112e.google.com
+ [IPv6:2607:f8b0:4864:20::112e])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 6ECD341740
+ for <intel-wired-lan@lists.osuosl.org>; Sun,  8 Oct 2023 06:36:10 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6ECD341740
+Received: by mail-yw1-x112e.google.com with SMTP id
+ 00721157ae682-59f6041395dso43622867b3.1
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 07 Oct 2023 23:36:10 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697131795; x=1697736595;
- h=in-reply-to:content-transfer-encoding:content-disposition
- :mime-version:references:message-id:subject:cc:to:from:date:sender
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=ERpB4HRiq1DkWAntm2RqpcUmvZFIt5oY6QlWkecr8bs=;
- b=tA/IN6Oq4fGLstyAVepPo96glTZu6KgkxJgFqutoQZxJzDRdOKCKywqHLuwnEZU0KN
- 1bIeaE2Ow7Y42TMRrjxvzN2XqsKFcSplJJhRLe3xAqxPAyyDGycybP+CbIIheDgm2J8Z
- 3Qcixz0fKQtcpJGLGg2laJuYBXKPBFaJ9SruHmxsYW0tofqny+7mOHUiB7pFUH9WWPS9
- txS7ItvnrRA0PivdGIeJw3nMjFJpZh6ZZRBIGBKgS3EAUlMJC911uOZZlFHvunGS3O5l
- nGLXrBvBSnzumhQUA3/WNuCIaMhVm7aBk4SXxd4r8keufw6QqWf5hGRIjgl2qrBYGdl8
- xGgQ==
-X-Gm-Message-State: AOJu0YzXPVPEnlEUBwbwvQEBj9SO6ZCgMSkuBQQjnyDutX7fQ9Da8m60
- IKASO77EQzO1lDs045dj5hU=
-X-Google-Smtp-Source: AGHT+IGIGmjCkbf2pu1fpLTthG5RUYcQX2PFfmVlRYaoNzGhsF+e4lF5DMzJNa0LBnZSbN6KfDxFeg==
-X-Received: by 2002:a05:6122:2208:b0:48f:cd3a:108 with SMTP id
- bb8-20020a056122220800b0048fcd3a0108mr21697091vkb.12.1697131794685; 
- Thu, 12 Oct 2023 10:29:54 -0700 (PDT)
-Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
- by smtp.gmail.com with ESMTPSA id
- 10-20020ac5ce8a000000b0049a5b8d475csm3036049vke.34.2023.10.12.10.29.53
+ d=1e100.net; s=20230601; t=1696746969; x=1697351769;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=2ZcY7LYYHgfRnAS6/MqMsfJ+TF7feUNbMBV189+9vhw=;
+ b=iPchS9HNxOfTXOBaXXx0nbayNpX6AoXaZIiLKiUu2u5YwNp9rTyU0u0OlIeibnDyVH
+ 56vfpUWQwWZ0IF+CVAap1N9J2To08DkZkzD1gFM9Gy9WOdeymkLpT7/1m8d0CxHhkMY4
+ eGLRd+l0Z19fwtrvB5Ms7wVwZN5T1eeW0ifKM7Hyv/QcYb2U+YuyvjIAEMFRTzHLgqfT
+ FOfeq0J2xgAEipA7/w6f2sEB9R9urQ4GkqzSR6dt8PFInjy9EehD/ga6cDfGqeKsBAPS
+ na1u56sJ6ECjR423/KRjadoNuuu08R94Iacim0Gbl3szD0b8r0FtytidshAwxcDr8PC5
+ HpQQ==
+X-Gm-Message-State: AOJu0Yx7I9V8oKcAm5hyks1/8sNbzVUJkDqTGTkl/PxZNx/Sb0B+U0Gd
+ ZqVGWZSD+1b5jaRN2BUABWk=
+X-Google-Smtp-Source: AGHT+IE+oXMPVuBZmST15ZL+Vl9YSp/yrk8QAaLaSC7UDJUPbeoCczAYRb5b2LLP6zEEAQ+7h2W7zw==
+X-Received: by 2002:a81:7cd6:0:b0:59b:6c4:b822 with SMTP id
+ x205-20020a817cd6000000b0059b06c4b822mr13517377ywc.36.1696746968956; 
+ Sat, 07 Oct 2023 23:36:08 -0700 (PDT)
+Received: from ocxma-dut.. ([153.126.233.61]) by smtp.gmail.com with ESMTPSA id
+ y76-20020a0dd64f000000b0058c668e46cbsm2661460ywd.46.2023.10.07.23.36.06
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 12 Oct 2023 10:29:53 -0700 (PDT)
-Date: Thu, 12 Oct 2023 10:29:51 -0700
-From: Guenter Roeck <linux@roeck-us.net>
-To: Konrad Knitter <konrad.knitter@intel.com>
-Message-ID: <df0e5774-3db7-4f0f-a9e8-c4369c2e6083@roeck-us.net>
-References: <20231012071358.1101438-1-konrad.knitter@intel.com>
+ Sat, 07 Oct 2023 23:36:08 -0700 (PDT)
+From: Takeru Hayasaka <hayatake396@gmail.com>
+X-Google-Original-From: Takeru Hayasaka <t-hayasaka@bbsakura.net>
+To: Jesse Brandeburg <jesse.brandeburg@intel.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>,
+ "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>
+Date: Sun,  8 Oct 2023 06:36:01 +0000
+Message-Id: <20231008063601.61674-1-t-hayasaka@bbsakura.net>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20231012071358.1101438-1-konrad.knitter@intel.com>
+X-Mailman-Approved-At: Thu, 12 Oct 2023 19:06:38 +0000
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1697131795; x=1697736595; darn=lists.osuosl.org;
- h=in-reply-to:content-transfer-encoding:content-disposition
- :mime-version:references:message-id:subject:cc:to:from:date:sender
- :from:to:cc:subject:date:message-id:reply-to;
- bh=ERpB4HRiq1DkWAntm2RqpcUmvZFIt5oY6QlWkecr8bs=;
- b=bInWOxbHPJYzveKihWL+f4oFfYLsklA0k/8JIcwpypnW0lxY2G6qcKJ95+kiNKWqU4
- erUbIKXzItbc3HM0wL+JPYAxH+YU0O9lJRhF/cYl0wxIIiGeqHp4GgbtzSSmwIupOoXo
- Q2/RqMubtR1sim7oyW4+lmZEUft6miKx65j7+I/zBqCdftYfpydVQiRBzCD/IxOJngcw
- xk7Y4X9MdZaEXj8MNKRbvCfJ3o+d+z8bXVO4V1yA3q1y20Vs3pp2cLH3z0c3ziKSniRG
- g03MzNWFSg5jwvP/++G1x6vc4Cvrv0xBtA5F6mLWsz+WWD4VXg5G7ME1KAIzD1NefkUm
- B6ew==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ d=gmail.com; s=20230601; t=1696746969; x=1697351769; darn=lists.osuosl.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=2ZcY7LYYHgfRnAS6/MqMsfJ+TF7feUNbMBV189+9vhw=;
+ b=IDWsdEs7ZhbACZKPwh6vWC/oDTwwAzy76FQ27p60DpnpaWSOFG224BqpNJ5et7oDwp
+ oOaXBpDuLe6jaco4e7HnMqmKMVKBDTpIGpKYcylk0uBaTEkcild7NmOwDMN0O62APPsm
+ iEIjMSh1KK0lr7A9w/5+XsznsfqpCLEc28etVeVRKcIFjk2flwSntP6KVxVmP0yDZxEu
+ cgD2y82g3iYfEv96t9/Znc7Ul4U4BUOqRvFfRJJEVg7J3EJgE2zXrZUw/oFwp9dbohKt
+ S3g35SC3ZJnoqsqhsooxfanw71M+hnxUzbrqjfArPKT+2RdUweyv+8RrlRbUKQn6RzJY
+ JASQ==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
- header.a=rsa-sha256 header.s=20230601 header.b=bInWOxbH
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v3] ice: read internal
- temperature sensor
+ header.a=rsa-sha256 header.s=20230601 header.b=IDWsdEs7
+Subject: [Intel-wired-lan] [PATCH net-next] ethtool: ice: Support for RSS
+ settings to GTP from ethtool
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -110,530 +111,342 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: jdelvare@suse.com, netdev@vger.kernel.org,
- Eric Joyner <eric.joyner@intel.com>,
- Marcin Szycik <marcin.szycik@linux.intel.com>,
- intel-wired-lan@lists.osuosl.org, Marcin Domagala <marcinx.domagala@intel.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Cc: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
+ linux-kernel@vger.kernel.org, Takeru Hayasaka <hayatake396@gmail.com>,
+ Takeru Hayasaka <t-hayasaka@bbsakura.net>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Thu, Oct 12, 2023 at 09:13:59AM +0200, Konrad Knitter wrote:
-> Since 4.30 firmware exposes internal thermal sensor reading via admin
-> queue commands. Expose those readouts via hwmon API when supported.
-> =
+From: Takeru Hayasaka <hayatake396@gmail.com>
 
-> Driver provides current reading from HW as well as device specific
-> thresholds for thermal alarm (Warning, Critical, Fatal) events.
-> =
+This is a patch that enables RSS functionality for GTP packets using
+ethtool.
+A user can include her TEID and make RSS work for GTP-U over IPv4 by
+doing the following:
+`ethtool -N ens3 rx-flow-hash gtpu4 sd`
+In addition to gtpu(4|6), we now support gtpc(4|6), gtpu(4|6)e,
+gtpu(4|6)u, and gtpu(4|6)d.
 
-> $ sensors
-> =
+Signed-off-by: Takeru Hayasaka <t-hayasaka@bbsakura.net>
+---
+Hi mentainers.
 
-> Output
-> =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D
-> ice-pci-b100
-> Adapter: PCI adapter
-> temp1:        +62.0=B0C  (high =3D +95.0=B0C, crit =3D +105.0=B0C)
->                        (emerg =3D +115.0=B0C)
-> =
+I wrote a patch to enable RSS for GTP-U/C (+Exthdr) using ethtool.
+This is an advantage for users who use Linux on mobile networks.
 
-> Co-developed-by: Marcin Domagala <marcinx.domagala@intel.com>
-> Signed-off-by: Marcin Domagala <marcinx.domagala@intel.com>
-> Co-developed-by: Eric Joyner <eric.joyner@intel.com>
-> Signed-off-by: Eric Joyner <eric.joyner@intel.com>
-> Reviewed-by: Marcin Szycik <marcin.szycik@linux.intel.com>
-> Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-> Signed-off-by: Konrad Knitter <konrad.knitter@intel.com>
-> ---
-> v3: add SPDX identification to ice_hwmon files
-> v2: fix formmating issues, added hwmon maintainers to Cc
-> ---
->  drivers/net/ethernet/intel/ice/Makefile       |   1 +
+Here is the ethtool patch
+cf. https://lore.kernel.org/netdev/20231008063041.61709-1-t-hayasaka@bbsakura.net/T/#u
 
-The code seems to be unconditional, but I see no added
-dependency on CONFIG_HWMON. Does this compile if
-HWMON=3Dm and this code is built into the kernel, or if HWMON=3Dn ?
+Thank you.
 
->  drivers/net/ethernet/intel/ice/ice.h          |   1 +
->  .../net/ethernet/intel/ice/ice_adminq_cmd.h   |  28 ++++
->  drivers/net/ethernet/intel/ice/ice_common.c   |  57 +++++++-
->  drivers/net/ethernet/intel/ice/ice_common.h   |   2 +
->  drivers/net/ethernet/intel/ice/ice_hwmon.c    | 130 ++++++++++++++++++
->  drivers/net/ethernet/intel/ice/ice_hwmon.h    |  10 ++
->  drivers/net/ethernet/intel/ice/ice_main.c     |   5 +
->  drivers/net/ethernet/intel/ice/ice_type.h     |   4 +
->  9 files changed, 237 insertions(+), 1 deletion(-)
->  create mode 100644 drivers/net/ethernet/intel/ice/ice_hwmon.c
->  create mode 100644 drivers/net/ethernet/intel/ice/ice_hwmon.h
-> =
+ drivers/net/ethernet/intel/ice/ice_ethtool.c | 98 +++++++++++++++++++-
+ drivers/net/ethernet/intel/ice/ice_flow.h    | 15 +++
+ drivers/net/ethernet/intel/ice/ice_lib.c     | 70 ++++++++++++++
+ include/uapi/linux/ethtool.h                 | 10 ++
+ 4 files changed, 191 insertions(+), 2 deletions(-)
 
-> diff --git a/drivers/net/ethernet/intel/ice/Makefile b/drivers/net/ethern=
-et/intel/ice/Makefile
-> index 8757bec23fb3..b4c8f5303e57 100644
-> --- a/drivers/net/ethernet/intel/ice/Makefile
-> +++ b/drivers/net/ethernet/intel/ice/Makefile
-> @@ -36,6 +36,7 @@ ice-y :=3D ice_main.o	\
->  	 ice_repr.o	\
->  	 ice_tc_lib.o	\
->  	 ice_fwlog.o	\
-> +	 ice_hwmon.o	\
->  	 ice_debugfs.o
->  ice-$(CONFIG_PCI_IOV) +=3D	\
->  	ice_sriov.o		\
-> diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/=
-intel/ice/ice.h
-> index ad5614d4449c..61d26be502b2 100644
-> --- a/drivers/net/ethernet/intel/ice/ice.h
-> +++ b/drivers/net/ethernet/intel/ice/ice.h
-> @@ -650,6 +650,7 @@ struct ice_pf {
->  #define ICE_MAX_VF_AGG_NODES		32
->  	struct ice_agg_node vf_agg_node[ICE_MAX_VF_AGG_NODES];
->  	struct ice_dplls dplls;
-> +	struct device *hwmon_dev;
->  };
->  =
-
->  extern struct workqueue_struct *ice_lag_wq;
-> diff --git a/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h b/drivers/ne=
-t/ethernet/intel/ice/ice_adminq_cmd.h
-> index 1202abfb9eb3..3c4295f8e4ba 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
-> +++ b/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
-> @@ -117,6 +117,7 @@ struct ice_aqc_list_caps_elem {
->  #define ICE_AQC_CAPS_NET_VER				0x004C
->  #define ICE_AQC_CAPS_PENDING_NET_VER			0x004D
->  #define ICE_AQC_CAPS_RDMA				0x0051
-> +#define ICE_AQC_CAPS_SENSOR_READING			0x0067
->  #define ICE_AQC_CAPS_PCIE_RESET_AVOIDANCE		0x0076
->  #define ICE_AQC_CAPS_POST_UPDATE_RESET_RESTRICT		0x0077
->  #define ICE_AQC_CAPS_NVM_MGMT				0x0080
-> @@ -1393,6 +1394,30 @@ struct ice_aqc_get_phy_rec_clk_out {
->  	__le16 node_handle;
->  };
->  =
-
-> +/* Get sensor reading (direct 0x0632) */
-> +struct ice_aqc_get_sensor_reading {
-> +	u8 sensor;
-> +	u8 format;
-> +	u8 reserved[6];
-> +	__le32 addr_high;
-> +	__le32 addr_low;
-> +};
-> +
-> +/* Get sensor reading response (direct 0x0632) */
-> +struct ice_aqc_get_sensor_reading_resp {
-> +	union {
-> +		u8 raw[8];
-> +		/* Output data for sensor 0x00, format 0x00 */
-> +		struct {
-> +			s8 temp;
-> +			u8 temp_warning_threshold;
-> +			u8 temp_critical_threshold;
-> +			u8 temp_fatal_threshold;
-> +			u8 reserved[4];
-> +		} s0f0;
-> +	} data;
-> +};
-
-Kind of surprising that this doesn't need packed attributes.
-
-> +
->  struct ice_aqc_link_topo_params {
->  	u8 lport_num;
->  	u8 lport_num_valid;
-> @@ -2438,6 +2463,8 @@ struct ice_aq_desc {
->  		struct ice_aqc_restart_an restart_an;
->  		struct ice_aqc_set_phy_rec_clk_out set_phy_rec_clk_out;
->  		struct ice_aqc_get_phy_rec_clk_out get_phy_rec_clk_out;
-> +		struct ice_aqc_get_sensor_reading get_sensor_reading;
-> +		struct ice_aqc_get_sensor_reading_resp get_sensor_reading_resp;
->  		struct ice_aqc_gpio read_write_gpio;
->  		struct ice_aqc_sff_eeprom read_write_sff_param;
->  		struct ice_aqc_set_port_id_led set_port_id_led;
-> @@ -2617,6 +2644,7 @@ enum ice_adminq_opc {
->  	ice_aqc_opc_set_mac_lb				=3D 0x0620,
->  	ice_aqc_opc_set_phy_rec_clk_out			=3D 0x0630,
->  	ice_aqc_opc_get_phy_rec_clk_out			=3D 0x0631,
-> +	ice_aqc_opc_get_sensor_reading			=3D 0x0632,
->  	ice_aqc_opc_get_link_topo			=3D 0x06E0,
->  	ice_aqc_opc_read_i2c				=3D 0x06E2,
->  	ice_aqc_opc_write_i2c				=3D 0x06E3,
-> diff --git a/drivers/net/ethernet/intel/ice/ice_common.c b/drivers/net/et=
-hernet/intel/ice/ice_common.c
-> index 283492314215..e566485a01b2 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_common.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_common.c
-> @@ -2462,6 +2462,26 @@ ice_parse_fdir_dev_caps(struct ice_hw *hw, struct =
-ice_hw_dev_caps *dev_p,
->  		  dev_p->num_flow_director_fltr);
->  }
->  =
-
-> +/**
-> + * ice_parse_sensor_reading_cap - Parse ICE_AQC_CAPS_SENSOR_READING cap
-> + * @hw: pointer to the HW struct
-> + * @dev_p: pointer to device capabilities structure
-> + * @cap: capability element to parse
-> + *
-> + * Parse ICE_AQC_CAPS_SENSOR_READING for device capability for reading
-> + * enabled sensors.
-> + */
-> +static void
-> +ice_parse_sensor_reading_cap(struct ice_hw *hw, struct ice_hw_dev_caps *=
-dev_p,
-> +			     struct ice_aqc_list_caps_elem *cap)
-> +{
-> +	dev_p->supported_sensors =3D le32_to_cpu(cap->number);
-> +
-> +	ice_debug(hw, ICE_DBG_INIT,
-> +		  "dev caps: supported sensors (bitmap) =3D 0x%x\n",
-> +		  dev_p->supported_sensors);
-> +}
-> +
->  /**
->   * ice_parse_dev_caps - Parse device capabilities
->   * @hw: pointer to the HW struct
-> @@ -2507,9 +2527,12 @@ ice_parse_dev_caps(struct ice_hw *hw, struct ice_h=
-w_dev_caps *dev_p,
->  		case ICE_AQC_CAPS_1588:
->  			ice_parse_1588_dev_caps(hw, dev_p, &cap_resp[i]);
->  			break;
-> -		case  ICE_AQC_CAPS_FD:
-> +		case ICE_AQC_CAPS_FD:
->  			ice_parse_fdir_dev_caps(hw, dev_p, &cap_resp[i]);
->  			break;
-> +		case ICE_AQC_CAPS_SENSOR_READING:
-> +			ice_parse_sensor_reading_cap(hw, dev_p, &cap_resp[i]);
-> +			break;
->  		default:
->  			/* Don't list common capabilities as unknown */
->  			if (!found)
-> @@ -5292,6 +5315,38 @@ ice_aq_get_phy_rec_clk_out(struct ice_hw *hw, u8 *=
-phy_output, u8 *port_num,
->  	return status;
->  }
->  =
-
-> +/**
-> + * ice_aq_get_sensor_reading
-> + * @hw: pointer to the HW struct
-> + * @sensor: sensor type
-> + * @format: requested response format
-> + * @data: pointer to data to be read from the sensor
-> + *
-> + * Get sensor reading (0x0632)
-> + */
-> +int ice_aq_get_sensor_reading(struct ice_hw *hw, u8 sensor, u8 format,
-> +			      struct ice_aqc_get_sensor_reading_resp *data)
-
-Are "sensor" and "format" ever going to be !=3D 0 ? If not,
-those parameters are just noise.
-
-> +{
-> +	struct ice_aqc_get_sensor_reading *cmd;
-> +	struct ice_aq_desc desc;
-> +	int status;
-> +
-> +	if (!data)
-> +		return -EINVAL;
-
-This is never called with a NULL pointer. The check is pointless.
-
-> +
-> +	ice_fill_dflt_direct_cmd_desc(&desc, ice_aqc_opc_get_sensor_reading);
-> +	cmd =3D &desc.params.get_sensor_reading;
-> +	cmd->sensor =3D sensor;
-> +	cmd->format =3D format;
-> +
-> +	status =3D ice_aq_send_cmd(hw, &desc, NULL, 0, NULL);
-> +	if (!status)
-> +		memcpy(data, &desc.params.get_sensor_reading_resp,
-> +		       sizeof(*data));
-> +
-> +	return status;
-> +}
-> +
->  /**
->   * ice_replay_pre_init - replay pre initialization
->   * @hw: pointer to the HW struct
-> diff --git a/drivers/net/ethernet/intel/ice/ice_common.h b/drivers/net/et=
-hernet/intel/ice/ice_common.h
-> index 4a75c0c89301..e23787c17505 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_common.h
-> +++ b/drivers/net/ethernet/intel/ice/ice_common.h
-> @@ -240,6 +240,8 @@ ice_aq_set_phy_rec_clk_out(struct ice_hw *hw, u8 phy_=
-output, bool enable,
->  int
->  ice_aq_get_phy_rec_clk_out(struct ice_hw *hw, u8 *phy_output, u8 *port_n=
-um,
->  			   u8 *flags, u16 *node_handle);
-> +int ice_aq_get_sensor_reading(struct ice_hw *hw, u8 sensor, u8 format,
-> +			      struct ice_aqc_get_sensor_reading_resp *data);
->  void
->  ice_stat_update40(struct ice_hw *hw, u32 reg, bool prev_stat_loaded,
->  		  u64 *prev_stat, u64 *cur_stat);
-> diff --git a/drivers/net/ethernet/intel/ice/ice_hwmon.c b/drivers/net/eth=
-ernet/intel/ice/ice_hwmon.c
-> new file mode 100644
-> index 000000000000..6b23ae27169c
-> --- /dev/null
-> +++ b/drivers/net/ethernet/intel/ice/ice_hwmon.c
-> @@ -0,0 +1,130 @@
-> +// SPDX-License-Identifier: GPL-2.0
-> +/* Copyright (C) 2022, Intel Corporation. */
-> +
-> +#include "ice.h"
-> +#include "ice_hwmon.h"
-> +#include "ice_adminq_cmd.h"
-> +
-> +#include <linux/hwmon.h>
-> +
-> +#define ICE_INTERNAL_TEMP_SENSOR 0
-> +#define ICE_INTERNAL_TEMP_SENSOR_FORMAT 0
-> +
-
-Personally I very much prefer
-
-#define<space>NAME<tab>value
-
-but obviously that is a maintainer decision to make.
-
-> +#define TEMP_FROM_REG(reg) ((reg) * 1000)
-> +
-> +static const struct hwmon_channel_info *ice_hwmon_info[] =3D {
-> +	HWMON_CHANNEL_INFO(temp,
-> +			   HWMON_T_INPUT | HWMON_T_MAX |
-> +			   HWMON_T_CRIT | HWMON_T_EMERGENCY),
-> +	NULL
-> +};
-> +
-> +static int ice_hwmon_read(struct device *dev, enum hwmon_sensor_types ty=
-pe,
-> +			  u32 attr, int channel, long *val)
-> +{
-> +	struct ice_aqc_get_sensor_reading_resp resp;
-> +	struct ice_pf *pf =3D dev_get_drvdata(dev);
-> +	int ret;
-> +
-> +	if (type !=3D hwmon_temp)
-> +		return -EOPNOTSUPP;
-> +
-> +	ret =3D ice_aq_get_sensor_reading(&pf->hw,
-> +					ICE_INTERNAL_TEMP_SENSOR,
-> +					ICE_INTERNAL_TEMP_SENSOR_FORMAT,
-> +					&resp);
-> +	if (ret) {
-> +		dev_warn(dev, "%s HW read failure (%d)\n", __func__, ret);
-
-Up to maintainers to decide, but I do not support error messages
-as result of normal operation because it may end up clogging
-the log if the underlying HW has a problem.
-
-> +		return ret;
-> +	}
-> +
-> +	switch (attr) {
-> +	case hwmon_temp_input:
-> +		*val =3D TEMP_FROM_REG(resp.data.s0f0.temp);
-> +		break;
-> +	case hwmon_temp_max:
-> +		*val =3D TEMP_FROM_REG(resp.data.s0f0.temp_warning_threshold);
-> +		break;
-> +	case hwmon_temp_crit:
-> +		*val =3D TEMP_FROM_REG(resp.data.s0f0.temp_critical_threshold);
-> +		break;
-> +	case hwmon_temp_emergency:
-> +		*val =3D TEMP_FROM_REG(resp.data.s0f0.temp_fatal_threshold);
-> +		break;
-> +	default:
-> +		dev_warn(dev, "%s unsupported attribute (%d)\n",
-> +			 __func__, attr);
-
-Same here, especially since this won't ever happen and the code
-just exists to make the compiler happy.
-
-> +		return -EINVAL;
-
-Should be -EOPNOTSUPP.
-
-> +	}
-> +
-> +	return 0;
-> +}
-> +
-> +static umode_t ice_hwmon_is_visible(const void *data,
-> +				    enum hwmon_sensor_types type, u32 attr,
-> +				    int channel)
-> +{
-> +	if (type !=3D hwmon_temp)
-> +		return 0;
-> +
-> +	switch (attr) {
-> +	case hwmon_temp_input:
-> +	case hwmon_temp_crit:
-> +	case hwmon_temp_max:
-> +	case hwmon_temp_emergency:
-> +		return 0444;
-> +	}
-> +
-> +	return 0;
-> +}
-> +
-> +static const struct hwmon_ops ice_hwmon_ops =3D {
-> +	.is_visible =3D ice_hwmon_is_visible,
-> +	.read =3D ice_hwmon_read
-> +};
-> +
-> +static const struct hwmon_chip_info ice_chip_info =3D {
-> +	.ops =3D &ice_hwmon_ops,
-> +	.info =3D ice_hwmon_info
-> +};
-> +
-> +static bool ice_is_internal_reading_supported(struct ice_pf *pf)
-> +{
-> +	if (pf->hw.pf_id)
-> +		return false;
-> +
-
-This should be explained. From the rest of the code, it appears
-that pf_id=3D=3D0 reflects the first "pf". Why should this device not regis=
-ter
-a hwmon device, and / or why is pf->hw.dev_caps.supported_sensors
-unsupported or not set correctly for it ?
-
-> +	unsigned long sensors =3D pf->hw.dev_caps.supported_sensors;
-> +
-> +	if (!_test_bit(ICE_SENSOR_SUPPORT_E810_INT_TEMP_BIT, &sensors))
-> +		return false;
-> +
-> +	return true;
-
-	return _test_bit(ICE_SENSOR_SUPPORT_E810_INT_TEMP_BIT, &sensors);
-
-would do the same.
-
-> +};
-> +
-> +void ice_hwmon_init(struct ice_pf *pf)
-> +{
-> +	struct device *dev =3D ice_pf_to_dev(pf);
-> +	struct device *hdev;
-> +
-> +	if (!ice_is_internal_reading_supported(pf))
-> +		return;
-> +
-> +	hdev =3D hwmon_device_register_with_info(dev, "ice", pf, &ice_chip_info,
-> +					       NULL);
-> +	if (IS_ERR(hdev)) {
-> +		dev_warn(dev,
-> +			 "hwmon_device_register_with_info returns error (%ld)",
-> +			 PTR_ERR(hdev));
-> +		return;
-> +	}
-> +	pf->hwmon_dev =3D hdev;
-> +}
-> +
-> +void ice_hwmon_exit(struct ice_pf *pf)
-> +{
-> +	if (!ice_is_internal_reading_supported(pf))
-> +		return;
-
-In this case hwmon_dev would be NULL, making the above check unnecessary.
-
-> +	if (!pf->hwmon_dev)
-> +		return;
-> +	hwmon_device_unregister(pf->hwmon_dev);
-> +}
-> diff --git a/drivers/net/ethernet/intel/ice/ice_hwmon.h b/drivers/net/eth=
-ernet/intel/ice/ice_hwmon.h
-> new file mode 100644
-> index 000000000000..8c74d19933d7
-> --- /dev/null
-> +++ b/drivers/net/ethernet/intel/ice/ice_hwmon.h
-> @@ -0,0 +1,10 @@
-> +/* SPDX-License-Identifier: GPL-2.0 */
-> +/* Copyright (C) 2022, Intel Corporation. */
-> +
-> +#ifndef _ICE_HWMON_H_
-> +#define _ICE_HWMON_H_
-> +
-> +void ice_hwmon_init(struct ice_pf *pf);
-> +void ice_hwmon_exit(struct ice_pf *pf);
-> +
-> +#endif /* _ICE_HWMON_H_ */
-> diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethe=
-rnet/intel/ice/ice_main.c
-> index afe19219a640..8f7e901a6c95 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_main.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_main.c
-> @@ -14,6 +14,7 @@
->  #include "ice_dcb_lib.h"
->  #include "ice_dcb_nl.h"
->  #include "ice_devlink.h"
-> +#include "ice_hwmon.h"
->  /* Including ice_trace.h with CREATE_TRACE_POINTS defined will generate =
-the
->   * ice tracepoint functions. This must be done exactly once across the
->   * ice driver.
-> @@ -4785,6 +4786,8 @@ static void ice_init_features(struct ice_pf *pf)
->  =
-
->  	if (ice_init_lag(pf))
->  		dev_warn(dev, "Failed to init link aggregation support\n");
-> +
-> +	ice_hwmon_init(pf);
->  }
->  =
-
->  static void ice_deinit_features(struct ice_pf *pf)
-> @@ -5310,6 +5313,8 @@ static void ice_remove(struct pci_dev *pdev)
->  		ice_free_vfs(pf);
->  	}
->  =
-
-> +	ice_hwmon_exit(pf);
-> +
->  	ice_service_task_stop(pf);
->  	ice_aq_cancel_waiting_tasks(pf);
->  	set_bit(ICE_DOWN, pf->state);
-> diff --git a/drivers/net/ethernet/intel/ice/ice_type.h b/drivers/net/ethe=
-rnet/intel/ice/ice_type.h
-> index 877a92099ef0..0b5425d33adf 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_type.h
-> +++ b/drivers/net/ethernet/intel/ice/ice_type.h
-> @@ -378,6 +378,8 @@ struct ice_hw_func_caps {
->  	struct ice_ts_func_info ts_func_info;
->  };
->  =
-
-> +#define ICE_SENSOR_SUPPORT_E810_INT_TEMP_BIT	0
-> +
->  /* Device wide capabilities */
->  struct ice_hw_dev_caps {
->  	struct ice_hw_common_caps common_cap;
-> @@ -386,6 +388,8 @@ struct ice_hw_dev_caps {
->  	u32 num_flow_director_fltr;	/* Number of FD filters available */
->  	struct ice_ts_dev_info ts_dev_info;
->  	u32 num_funcs;
-> +	/* bitmap of supported sensors */
-> +	u32 supported_sensors;
->  };
->  =
-
->  /* MAC info */
-> =
-
-> base-commit: 2318d58f358e7aef726c038aff87a68bec8f09e0
-> -- =
-
-> 2.35.3
-> =
+diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool.c b/drivers/net/ethernet/intel/ice/ice_ethtool.c
+index ad4d4702129f..a5ee6638bc60 100644
+--- a/drivers/net/ethernet/intel/ice/ice_ethtool.c
++++ b/drivers/net/ethernet/intel/ice/ice_ethtool.c
+@@ -2404,6 +2404,21 @@ static u32 ice_parse_hdrs(struct ethtool_rxnfc *nfc)
+ 	case SCTP_V4_FLOW:
+ 		hdrs |= ICE_FLOW_SEG_HDR_SCTP | ICE_FLOW_SEG_HDR_IPV4;
+ 		break;
++	case GTPU_V4_FLOW:
++		hdrs |= ICE_FLOW_SEG_HDR_GTPU_IP | ICE_FLOW_SEG_HDR_IPV4;
++		break;
++	case GTPC_V4_FLOW:
++		hdrs |= ICE_FLOW_SEG_HDR_GTPC_TEID | ICE_FLOW_SEG_HDR_IPV4;
++		break;
++	case GTPU_EH_V4_FLOW:
++		hdrs |= ICE_FLOW_SEG_HDR_GTPU_EH | ICE_FLOW_SEG_HDR_IPV4;
++		break;
++	case GTPU_UL_V4_FLOW:
++		hdrs |= ICE_FLOW_SEG_HDR_GTPU_UP | ICE_FLOW_SEG_HDR_IPV4;
++		break;
++	case GTPU_DL_V4_FLOW:
++		hdrs |= ICE_FLOW_SEG_HDR_GTPU_DWN | ICE_FLOW_SEG_HDR_IPV4;
++		break;
+ 	case TCP_V6_FLOW:
+ 		hdrs |= ICE_FLOW_SEG_HDR_TCP | ICE_FLOW_SEG_HDR_IPV6;
+ 		break;
+@@ -2413,9 +2428,25 @@ static u32 ice_parse_hdrs(struct ethtool_rxnfc *nfc)
+ 	case SCTP_V6_FLOW:
+ 		hdrs |= ICE_FLOW_SEG_HDR_SCTP | ICE_FLOW_SEG_HDR_IPV6;
+ 		break;
++	case GTPU_V6_FLOW:
++		hdrs |= ICE_FLOW_SEG_HDR_GTPU_IP | ICE_FLOW_SEG_HDR_IPV6;
++		break;
++	case GTPC_V6_FLOW:
++		hdrs |= ICE_FLOW_SEG_HDR_GTPC_TEID | ICE_FLOW_SEG_HDR_IPV6;
++		break;
++	case GTPU_EH_V6_FLOW:
++		hdrs |= ICE_FLOW_SEG_HDR_GTPU_EH | ICE_FLOW_SEG_HDR_IPV6;
++		break;
++	case GTPU_UL_V6_FLOW:
++		hdrs |= ICE_FLOW_SEG_HDR_GTPU_UP | ICE_FLOW_SEG_HDR_IPV6;
++		break;
++	case GTPU_DL_V6_FLOW:
++		hdrs |= ICE_FLOW_SEG_HDR_GTPU_DWN | ICE_FLOW_SEG_HDR_IPV6;
++		break;
+ 	default:
+ 		break;
+ 	}
++
+ 	return hdrs;
+ }
+ 
+@@ -2431,6 +2462,12 @@ static u32 ice_parse_hdrs(struct ethtool_rxnfc *nfc)
+ 	BIT_ULL(ICE_FLOW_FIELD_IDX_SCTP_SRC_PORT)
+ #define ICE_FLOW_HASH_FLD_SCTP_DST_PORT	\
+ 	BIT_ULL(ICE_FLOW_FIELD_IDX_SCTP_DST_PORT)
++#define ICE_FLOW_HASH_FLD_GTPC_TEID	BIT_ULL(ICE_FLOW_FIELD_IDX_GTPC_TEID)
++#define ICE_FLOW_HASH_FLD_GTPU_IP_TEID BIT_ULL(ICE_FLOW_FIELD_IDX_GTPU_IP_TEID)
++#define ICE_FLOW_HASH_FLD_GTPU_EH_TEID BIT_ULL(ICE_FLOW_FIELD_IDX_GTPU_EH_TEID)
++#define ICE_FLOW_HASH_FLD_GTPU_EH_QFI BIT_ULL(ICE_FLOW_FIELD_IDX_GTPU_EH_QFI)
++#define ICE_FLOW_HASH_FLD_GTPU_UP_TEID BIT_ULL(ICE_FLOW_FIELD_IDX_GTPU_UP_TEID)
++#define ICE_FLOW_HASH_FLD_GTPU_DWN_TEID BIT_ULL(ICE_FLOW_FIELD_IDX_GTPU_DWN_TEID)
+ 
+ /**
+  * ice_parse_hash_flds - parses hash fields from RSS hash input
+@@ -2448,6 +2485,11 @@ static u64 ice_parse_hash_flds(struct ethtool_rxnfc *nfc)
+ 		case TCP_V4_FLOW:
+ 		case UDP_V4_FLOW:
+ 		case SCTP_V4_FLOW:
++		case GTPU_V4_FLOW:
++		case GTPC_V4_FLOW:
++		case GTPU_EH_V4_FLOW:
++		case GTPU_UL_V4_FLOW:
++		case GTPU_DL_V4_FLOW:
+ 			if (nfc->data & RXH_IP_SRC)
+ 				hfld |= ICE_FLOW_HASH_FLD_IPV4_SA;
+ 			if (nfc->data & RXH_IP_DST)
+@@ -2456,6 +2498,11 @@ static u64 ice_parse_hash_flds(struct ethtool_rxnfc *nfc)
+ 		case TCP_V6_FLOW:
+ 		case UDP_V6_FLOW:
+ 		case SCTP_V6_FLOW:
++		case GTPU_V6_FLOW:
++		case GTPC_V6_FLOW:
++		case GTPU_EH_V6_FLOW:
++		case GTPU_UL_V6_FLOW:
++		case GTPU_DL_V6_FLOW:
+ 			if (nfc->data & RXH_IP_SRC)
+ 				hfld |= ICE_FLOW_HASH_FLD_IPV6_SA;
+ 			if (nfc->data & RXH_IP_DST)
+@@ -2489,11 +2536,50 @@ static u64 ice_parse_hash_flds(struct ethtool_rxnfc *nfc)
+ 			if (nfc->data & RXH_L4_B_2_3)
+ 				hfld |= ICE_FLOW_HASH_FLD_SCTP_DST_PORT;
+ 			break;
++		case GTPU_V4_FLOW:
++		case GTPU_V6_FLOW:
++		case GTPU_EH_V4_FLOW:
++		case GTPU_EH_V6_FLOW:
++		case GTPU_UL_V4_FLOW:
++		case GTPU_UL_V6_FLOW:
++		case GTPU_DL_V4_FLOW:
++		case GTPU_DL_V6_FLOW:
++			if (nfc->data & RXH_L4_B_0_1)
++				hfld |= ICE_FLOW_HASH_FLD_TCP_SRC_PORT |
++						ICE_FLOW_HASH_FLD_UDP_SRC_PORT;
++			if (nfc->data & RXH_L4_B_2_3)
++				hfld |= ICE_FLOW_HASH_FLD_TCP_DST_PORT |
++						ICE_FLOW_HASH_FLD_UDP_DST_PORT;
++			break;
+ 		default:
+ 			break;
+ 		}
+ 	}
+ 
++	switch (nfc->flow_type) {
++	case GTPC_V4_FLOW:
++	case GTPC_V6_FLOW:
++		hfld |= ICE_FLOW_HASH_FLD_GTPC_TEID;
++		break;
++	case GTPU_V4_FLOW:
++	case GTPU_V6_FLOW:
++		hfld |= ICE_FLOW_HASH_FLD_GTPU_IP_TEID;
++		break;
++	case GTPU_EH_V4_FLOW:
++	case GTPU_EH_V6_FLOW:
++		hfld |= ICE_FLOW_HASH_FLD_GTPU_EH_TEID;
++		break;
++	case GTPU_UL_V4_FLOW:
++	case GTPU_UL_V6_FLOW:
++		hfld |= ICE_FLOW_HASH_FLD_GTPU_UP_TEID;
++		break;
++	case GTPU_DL_V4_FLOW:
++	case GTPU_DL_V6_FLOW:
++		hfld |= ICE_FLOW_HASH_FLD_GTPU_DWN_TEID;
++		break;
++	default:
++		break;
++	}
+ 	return hfld;
+ }
+ 
+@@ -2590,12 +2676,20 @@ ice_get_rss_hash_opt(struct ice_vsi *vsi, struct ethtool_rxnfc *nfc)
+ 
+ 	if (hash_flds & ICE_FLOW_HASH_FLD_TCP_SRC_PORT ||
+ 	    hash_flds & ICE_FLOW_HASH_FLD_UDP_SRC_PORT ||
+-	    hash_flds & ICE_FLOW_HASH_FLD_SCTP_SRC_PORT)
++	    hash_flds & ICE_FLOW_HASH_FLD_SCTP_SRC_PORT ||
++		hash_flds & ICE_FLOW_HASH_FLD_GTPU_IP_TEID ||
++		hash_flds & ICE_FLOW_HASH_FLD_GTPU_EH_TEID ||
++		hash_flds & ICE_FLOW_HASH_FLD_GTPU_UP_TEID ||
++		hash_flds & ICE_FLOW_HASH_FLD_GTPU_DWN_TEID)
+ 		nfc->data |= (u64)RXH_L4_B_0_1;
+ 
+ 	if (hash_flds & ICE_FLOW_HASH_FLD_TCP_DST_PORT ||
+ 	    hash_flds & ICE_FLOW_HASH_FLD_UDP_DST_PORT ||
+-	    hash_flds & ICE_FLOW_HASH_FLD_SCTP_DST_PORT)
++	    hash_flds & ICE_FLOW_HASH_FLD_SCTP_DST_PORT ||
++		hash_flds & ICE_FLOW_HASH_FLD_GTPU_IP_TEID ||
++		hash_flds & ICE_FLOW_HASH_FLD_GTPU_EH_TEID ||
++		hash_flds & ICE_FLOW_HASH_FLD_GTPU_UP_TEID ||
++		hash_flds & ICE_FLOW_HASH_FLD_GTPU_DWN_TEID)
+ 		nfc->data |= (u64)RXH_L4_B_2_3;
+ }
+ 
+diff --git a/drivers/net/ethernet/intel/ice/ice_flow.h b/drivers/net/ethernet/intel/ice/ice_flow.h
+index b465d27d9b80..7ddf6ce994e7 100644
+--- a/drivers/net/ethernet/intel/ice/ice_flow.h
++++ b/drivers/net/ethernet/intel/ice/ice_flow.h
+@@ -64,6 +64,21 @@
+ 	(ICE_FLOW_HASH_IPV6 | ICE_FLOW_HASH_GTP_U_EH_TEID | \
+ 	 ICE_FLOW_HASH_GTP_U_EH_QFI)
+ 
++#define ICE_FLOW_HASH_GTP_U_UP_TEID \
++	(BIT_ULL(ICE_FLOW_FIELD_IDX_GTPU_UP_TEID))
++#define ICE_FLOW_HASH_GTP_U_DWN_TEID \
++	(BIT_ULL(ICE_FLOW_FIELD_IDX_GTPU_DWN_TEID))
++
++#define ICE_FLOW_HASH_GTP_U_IPV4_UP \
++	(ICE_FLOW_HASH_IPV4 | ICE_FLOW_HASH_GTP_U_UP_TEID)
++#define ICE_FLOW_HASH_GTP_U_IPV6_UP \
++	(ICE_FLOW_HASH_IPV6 | ICE_FLOW_HASH_GTP_U_UP_TEID)
++
++#define ICE_FLOW_HASH_GTP_U_IPV4_DWN \
++	(ICE_FLOW_HASH_IPV4 | ICE_FLOW_HASH_GTP_U_DWN_TEID)
++#define ICE_FLOW_HASH_GTP_U_IPV6_DWN \
++	(ICE_FLOW_HASH_IPV6 | ICE_FLOW_HASH_GTP_U_DWN_TEID)
++
+ #define ICE_FLOW_HASH_PPPOE_SESS_ID \
+ 	(BIT_ULL(ICE_FLOW_FIELD_IDX_PPPOE_SESS_ID))
+ 
+diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
+index 201570cd2e0b..a9664b48eddb 100644
+--- a/drivers/net/ethernet/intel/ice/ice_lib.c
++++ b/drivers/net/ethernet/intel/ice/ice_lib.c
+@@ -1667,6 +1667,41 @@ static void ice_vsi_set_rss_flow_fld(struct ice_vsi *vsi)
+ 		dev_dbg(dev, "ice_add_rss_cfg failed for sctp4 flow, vsi = %d, error = %d\n",
+ 			vsi_num, status);
+ 
++	/* configure RSS for gtpc4 with input set IPv4 src/dst */
++	status = ice_add_rss_cfg(hw, vsi_handle, ICE_FLOW_HASH_GTP_IPV4_TEID,
++				 ICE_FLOW_SEG_HDR_GTPC_TEID | ICE_FLOW_SEG_HDR_IPV4);
++	if (status)
++		dev_dbg(dev, "ice_add_rss_cfg failed for gtpc4 flow, vsi = %d, error = %d\n",
++			vsi_num, status);
++
++	/* configure RSS for gtpu4 with input set IPv4 src/dst */
++	status = ice_add_rss_cfg(hw, vsi_handle, ICE_FLOW_HASH_GTP_U_IPV4_TEID,
++				 ICE_FLOW_SEG_HDR_GTPU_IP | ICE_FLOW_SEG_HDR_IPV4);
++	if (status)
++		dev_dbg(dev, "ice_add_rss_cfg failed for gtpu4 flow, vsi = %d, error = %d\n",
++			vsi_num, status);
++
++	/* configure RSS for gtpu4e with input set IPv4 src/dst */
++	status = ice_add_rss_cfg(hw, vsi_handle, ICE_FLOW_HASH_GTP_U_IPV4_EH,
++				 ICE_FLOW_SEG_HDR_GTPU_EH | ICE_FLOW_SEG_HDR_IPV4);
++	if (status)
++		dev_dbg(dev, "ice_add_rss_cfg failed for gtpu4e flow, vsi = %d, error = %d\n",
++			vsi_num, status);
++
++	/* configure RSS for gtpu4u with input set IPv4 src/dst */
++	status = ice_add_rss_cfg(hw, vsi_handle, ICE_FLOW_HASH_GTP_U_IPV4_UP,
++				 ICE_FLOW_SEG_HDR_GTPU_UP | ICE_FLOW_SEG_HDR_IPV4);
++	if (status)
++		dev_dbg(dev, "ice_add_rss_cfg failed for gtpu4u flow, vsi = %d, error = %d\n",
++			vsi_num, status);
++
++	/* configure RSS for gtpu4d with input set IPv4 src/dst */
++	status = ice_add_rss_cfg(hw, vsi_handle, ICE_FLOW_HASH_GTP_U_IPV4_DWN,
++				 ICE_FLOW_SEG_HDR_GTPU_DWN | ICE_FLOW_SEG_HDR_IPV4);
++	if (status)
++		dev_dbg(dev, "ice_add_rss_cfg failed for gtpu4d flow, vsi = %d, error = %d\n",
++			vsi_num, status);
++
+ 	/* configure RSS for tcp6 with input set IPv6 src/dst, TCP src/dst */
+ 	status = ice_add_rss_cfg(hw, vsi_handle, ICE_HASH_TCP_IPV6,
+ 				 ICE_FLOW_SEG_HDR_TCP | ICE_FLOW_SEG_HDR_IPV6);
+@@ -1688,6 +1723,41 @@ static void ice_vsi_set_rss_flow_fld(struct ice_vsi *vsi)
+ 		dev_dbg(dev, "ice_add_rss_cfg failed for sctp6 flow, vsi = %d, error = %d\n",
+ 			vsi_num, status);
+ 
++	/* configure RSS for gtpc6 with input set IPv6 src/dst */
++	status = ice_add_rss_cfg(hw, vsi_handle, ICE_FLOW_HASH_GTP_IPV6_TEID,
++				 ICE_FLOW_SEG_HDR_GTPC_TEID | ICE_FLOW_SEG_HDR_IPV6);
++	if (status)
++		dev_dbg(dev, "ice_add_rss_cfg failed for gtpc6 flow, vsi = %d, error = %d\n",
++			vsi_num, status);
++
++	/* configure RSS for gtpu6 with input set IPv6 src/dst */
++	status = ice_add_rss_cfg(hw, vsi_handle, ICE_FLOW_HASH_GTP_U_IPV6_TEID,
++				 ICE_FLOW_SEG_HDR_GTPU_IP | ICE_FLOW_SEG_HDR_IPV6);
++	if (status)
++		dev_dbg(dev, "ice_add_rss_cfg failed for gtpu4 flow, vsi = %d, error = %d\n",
++			vsi_num, status);
++
++	/* configure RSS for gtpu6e with input set IPv6 src/dst */
++	status = ice_add_rss_cfg(hw, vsi_handle, ICE_FLOW_HASH_GTP_U_IPV6_EH,
++				 ICE_FLOW_SEG_HDR_GTPU_EH | ICE_FLOW_SEG_HDR_IPV6);
++	if (status)
++		dev_dbg(dev, "ice_add_rss_cfg failed for gtpu6e flow, vsi = %d, error = %d\n",
++			vsi_num, status);
++
++	/* configure RSS for gtpu6u with input set IPv6 src/dst */
++	status = ice_add_rss_cfg(hw, vsi_handle, ICE_FLOW_HASH_GTP_U_IPV6_UP,
++				 ICE_FLOW_SEG_HDR_GTPU_UP | ICE_FLOW_SEG_HDR_IPV6);
++	if (status)
++		dev_dbg(dev, "ice_add_rss_cfg failed for gtpu6u flow, vsi = %d, error = %d\n",
++			vsi_num, status);
++
++	/* configure RSS for gtpu6d with input set IPv6 src/dst */
++	status = ice_add_rss_cfg(hw, vsi_handle, ICE_FLOW_HASH_GTP_U_IPV6_DWN,
++				 ICE_FLOW_SEG_HDR_GTPU_DWN | ICE_FLOW_SEG_HDR_IPV6);
++	if (status)
++		dev_dbg(dev, "ice_add_rss_cfg failed for gtpu4d flow, vsi = %d, error = %d\n",
++			vsi_num, status);
++
+ 	status = ice_add_rss_cfg(hw, vsi_handle, ICE_FLOW_HASH_ESP_SPI,
+ 				 ICE_FLOW_SEG_HDR_ESP);
+ 	if (status)
+diff --git a/include/uapi/linux/ethtool.h b/include/uapi/linux/ethtool.h
+index f7fba0dc87e5..f3af2a78f7dd 100644
+--- a/include/uapi/linux/ethtool.h
++++ b/include/uapi/linux/ethtool.h
+@@ -2011,6 +2011,16 @@ static inline int ethtool_validate_duplex(__u8 duplex)
+ #define	IPV4_FLOW	0x10	/* hash only */
+ #define	IPV6_FLOW	0x11	/* hash only */
+ #define	ETHER_FLOW	0x12	/* spec only (ether_spec) */
++#define GTPU_V4_FLOW 0x13	/* hash only */
++#define GTPU_V6_FLOW 0x14	/* hash only */
++#define GTPC_V4_FLOW 0x15	/* hash only */
++#define GTPC_V6_FLOW 0x16	/* hash only */
++#define GTPU_EH_V4_FLOW 0x17	/* hash only */
++#define GTPU_EH_V6_FLOW 0x18	/* hash only */
++#define GTPU_UL_V4_FLOW 0x19	/* hash only */
++#define GTPU_UL_V6_FLOW 0x20	/* hash only */
++#define GTPU_DL_V4_FLOW 0x21	/* hash only */
++#define GTPU_DL_V6_FLOW 0x22	/* hash only */
+ /* Flag to enable additional fields in struct ethtool_rx_flow_spec */
+ #define	FLOW_EXT	0x80000000
+ #define	FLOW_MAC_EXT	0x40000000
+-- 
+2.34.1
 
 _______________________________________________
 Intel-wired-lan mailing list
