@@ -2,101 +2,100 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 30E067C763E
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 12 Oct 2023 21:06:48 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id A1CED7C763F
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 12 Oct 2023 21:06:52 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 9FE0F6103E;
-	Thu, 12 Oct 2023 19:06:46 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9FE0F6103E
+	by smtp3.osuosl.org (Postfix) with ESMTP id 34F0261062;
+	Thu, 12 Oct 2023 19:06:51 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 34F0261062
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1697137606;
-	bh=LI3mAHFEqdzj7ucFyei/4HUQXmL8DHIw1/XWE3Z6zbE=;
+	s=default; t=1697137611;
+	bh=1jpnHaSedixiXN4AKVK0TrZWRJzHeB0E0efJCy3cQ5U=;
 	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
 	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=JYlcmYeCOxq6Gx7rkK2V4jq9a+/mPrfBftY4BunDTCZPCEgcCi8geYSSGYE3NpMam
-	 OAua10RNoG1WgKIG1YOvVx7dN4dsEjaKiBMJaoBjIBts8iefsSkO2W72WgDbxtonBb
-	 4Ft2pOAdPE/T9bNcQR6+ocGrhFO3gwv9yKPJsHk6JHldxieMgyHNuCctS2w7/u7RML
-	 9A7PwIwqDxdTboOoKRTk2hiZxNslGUfalZycpEYKeAzt/h/AG1MmM92GyEr6AUWurV
-	 CvBjQcFn8JttPg8Um/w6JSGSxxwRQNI/FhJaYeWiVfdYzY22nf4QjUO3EEb5i19OUo
-	 eHyJCDKHO235A==
+	b=9IM1ZeVq6LfVO37tKoh1IfFR7BxSmR4+uGznggRuD8sbF4s5wPW8MpckztZEKv3zM
+	 7QwDgBuiuOe6q8PGiFh2bKvOt8MfzuDdUJK6ACPI7lflQrLFBPYA29ljldEwI4FWKL
+	 GBUFK6XPy6L8ikn/Rbd5gdVsoEOtkPQT192icmfASOE0K4ablQ4+CC4PseO4WeEcJm
+	 ejINEKrLbbUULwZ2xRnvOqu6v42fmP+NvLNHwacXjSNF4UORj6BiceafmJzl3+R+kj
+	 PUsLD4z2eovW9xRBspRN4sEtCrqFk08ma4BaFNGWQA5ZBDjIBrWOJD3He8pkfjzGlC
+	 2w3upOACOZz7w==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id pb6p-b6xZgaK; Thu, 12 Oct 2023 19:06:45 +0000 (UTC)
+	with ESMTP id BjPiZfwLzLWw; Thu, 12 Oct 2023 19:06:50 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 22A1760F53;
-	Thu, 12 Oct 2023 19:06:45 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 22A1760F53
+	by smtp3.osuosl.org (Postfix) with ESMTP id 72FA460F26;
+	Thu, 12 Oct 2023 19:06:49 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 72FA460F26
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 162341BF3DC
- for <intel-wired-lan@lists.osuosl.org>; Sun,  8 Oct 2023 06:36:13 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 4A5FB1BF302
+ for <intel-wired-lan@lists.osuosl.org>; Sun,  8 Oct 2023 07:54:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id CF0164189E
- for <intel-wired-lan@lists.osuosl.org>; Sun,  8 Oct 2023 06:36:12 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org CF0164189E
+ by smtp1.osuosl.org (Postfix) with ESMTP id 1F205822BC
+ for <intel-wired-lan@lists.osuosl.org>; Sun,  8 Oct 2023 07:54:07 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1F205822BC
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id TLDcFNlKaYRR for <intel-wired-lan@lists.osuosl.org>;
- Sun,  8 Oct 2023 06:36:10 +0000 (UTC)
-Received: from mail-yw1-x112e.google.com (mail-yw1-x112e.google.com
- [IPv6:2607:f8b0:4864:20::112e])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 6ECD341740
- for <intel-wired-lan@lists.osuosl.org>; Sun,  8 Oct 2023 06:36:10 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6ECD341740
-Received: by mail-yw1-x112e.google.com with SMTP id
- 00721157ae682-59f6041395dso43622867b3.1
- for <intel-wired-lan@lists.osuosl.org>; Sat, 07 Oct 2023 23:36:10 -0700 (PDT)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id H1nBVPbFvBBR for <intel-wired-lan@lists.osuosl.org>;
+ Sun,  8 Oct 2023 07:54:06 +0000 (UTC)
+Received: from mail-yw1-x112f.google.com (mail-yw1-x112f.google.com
+ [IPv6:2607:f8b0:4864:20::112f])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id F0956822AC
+ for <intel-wired-lan@lists.osuosl.org>; Sun,  8 Oct 2023 07:54:05 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org F0956822AC
+Received: by mail-yw1-x112f.google.com with SMTP id
+ 00721157ae682-59f55c276c3so44007287b3.2
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 08 Oct 2023 00:54:05 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1696746969; x=1697351769;
+ d=1e100.net; s=20230601; t=1696751645; x=1697356445;
  h=content-transfer-encoding:mime-version:message-id:date:subject:cc
  :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=2ZcY7LYYHgfRnAS6/MqMsfJ+TF7feUNbMBV189+9vhw=;
- b=iPchS9HNxOfTXOBaXXx0nbayNpX6AoXaZIiLKiUu2u5YwNp9rTyU0u0OlIeibnDyVH
- 56vfpUWQwWZ0IF+CVAap1N9J2To08DkZkzD1gFM9Gy9WOdeymkLpT7/1m8d0CxHhkMY4
- eGLRd+l0Z19fwtrvB5Ms7wVwZN5T1eeW0ifKM7Hyv/QcYb2U+YuyvjIAEMFRTzHLgqfT
- FOfeq0J2xgAEipA7/w6f2sEB9R9urQ4GkqzSR6dt8PFInjy9EehD/ga6cDfGqeKsBAPS
- na1u56sJ6ECjR423/KRjadoNuuu08R94Iacim0Gbl3szD0b8r0FtytidshAwxcDr8PC5
- HpQQ==
-X-Gm-Message-State: AOJu0Yx7I9V8oKcAm5hyks1/8sNbzVUJkDqTGTkl/PxZNx/Sb0B+U0Gd
- ZqVGWZSD+1b5jaRN2BUABWk=
-X-Google-Smtp-Source: AGHT+IE+oXMPVuBZmST15ZL+Vl9YSp/yrk8QAaLaSC7UDJUPbeoCczAYRb5b2LLP6zEEAQ+7h2W7zw==
-X-Received: by 2002:a81:7cd6:0:b0:59b:6c4:b822 with SMTP id
- x205-20020a817cd6000000b0059b06c4b822mr13517377ywc.36.1696746968956; 
- Sat, 07 Oct 2023 23:36:08 -0700 (PDT)
-Received: from ocxma-dut.. ([153.126.233.61]) by smtp.gmail.com with ESMTPSA id
- y76-20020a0dd64f000000b0058c668e46cbsm2661460ywd.46.2023.10.07.23.36.06
+ bh=NZxvUPc0BhnwiDbJCKmaxQ0rdkiyEaqH40H6qCqFDAc=;
+ b=wu7VGlaR0Mwz9KS2kdNGZLLvB2KOQhhIgkOkEV/f9W4FryTeAbG53cfTV//yZAIEoh
+ T2VTcprGwECxDKw5CBiBQzYN3M/KmFLxiCjvCC0i/ealQg4G5mR593XQVKMmIslmp8k9
+ 8sRAL5KgzhgRsL779+W0+oNxRfGhqf3ChmPjeUMyeU83VxntZUckolobnFvW8B7dcKnM
+ u4qthGggPi5VDiSqXBvdeDGKrf7LfNfBYgBD499qZNLOg8Vs3jBMXAKtg1j6INKo5ebZ
+ yhNuKgcs+ZNwseZuYf7JqFzDlaZArwPyc+rKxKUNMy92p0IOQSQgMi/5yGHiaLnyCHjS
+ wKyw==
+X-Gm-Message-State: AOJu0YwWXrvcq/Lu2lcNHNtCVWQa2oCW/aUUdlA+xg9fotCW6ZIIflhD
+ 9sVFUe6+WQRr54sbQny7jUM=
+X-Google-Smtp-Source: AGHT+IHpDcOc923WIIl4ZPCG22n/xC1XbcFXbWIr/t4GneLXge7flEdXmRqG6TJ5A/E156F2C8LPaw==
+X-Received: by 2002:a0d:cbca:0:b0:59b:f152:8997 with SMTP id
+ n193-20020a0dcbca000000b0059bf1528997mr13688152ywd.0.1696751644630; 
+ Sun, 08 Oct 2023 00:54:04 -0700 (PDT)
+Received: from ocxma-dut.. ([153.126.233.62]) by smtp.gmail.com with ESMTPSA id
+ x74-20020a81a04d000000b0058c55d40765sm2667127ywg.106.2023.10.08.00.54.01
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 07 Oct 2023 23:36:08 -0700 (PDT)
+ Sun, 08 Oct 2023 00:54:04 -0700 (PDT)
 From: Takeru Hayasaka <hayatake396@gmail.com>
-X-Google-Original-From: Takeru Hayasaka <t-hayasaka@bbsakura.net>
 To: Jesse Brandeburg <jesse.brandeburg@intel.com>,
  Tony Nguyen <anthony.l.nguyen@intel.com>,
  "David S. Miller" <davem@davemloft.net>,
  Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
  Paolo Abeni <pabeni@redhat.com>
-Date: Sun,  8 Oct 2023 06:36:01 +0000
-Message-Id: <20231008063601.61674-1-t-hayasaka@bbsakura.net>
+Date: Sun,  8 Oct 2023 07:52:22 +0000
+Message-Id: <20231008075221.61863-1-hayatake396@gmail.com>
 X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-X-Mailman-Approved-At: Thu, 12 Oct 2023 19:06:38 +0000
+X-Mailman-Approved-At: Thu, 12 Oct 2023 19:06:39 +0000
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1696746969; x=1697351769; darn=lists.osuosl.org;
+ d=gmail.com; s=20230601; t=1696751645; x=1697356445; darn=lists.osuosl.org;
  h=content-transfer-encoding:mime-version:message-id:date:subject:cc
  :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=2ZcY7LYYHgfRnAS6/MqMsfJ+TF7feUNbMBV189+9vhw=;
- b=IDWsdEs7ZhbACZKPwh6vWC/oDTwwAzy76FQ27p60DpnpaWSOFG224BqpNJ5et7oDwp
- oOaXBpDuLe6jaco4e7HnMqmKMVKBDTpIGpKYcylk0uBaTEkcild7NmOwDMN0O62APPsm
- iEIjMSh1KK0lr7A9w/5+XsznsfqpCLEc28etVeVRKcIFjk2flwSntP6KVxVmP0yDZxEu
- cgD2y82g3iYfEv96t9/Znc7Ul4U4BUOqRvFfRJJEVg7J3EJgE2zXrZUw/oFwp9dbohKt
- S3g35SC3ZJnoqsqhsooxfanw71M+hnxUzbrqjfArPKT+2RdUweyv+8RrlRbUKQn6RzJY
- JASQ==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ bh=NZxvUPc0BhnwiDbJCKmaxQ0rdkiyEaqH40H6qCqFDAc=;
+ b=G/S7/HAac1ReW7fc8bOh4MzmN8H6T3AtQLgD8KfI4gR9bppx5jISoFmdBE7haaMA3x
+ 8R3Jl+msCmoKO4GuJVnwq74ivK0HL9A4DfY0ugOPNk1ijKalASM9cp3no6E/PwtDBlbq
+ fu7yU1tZrxbHKgImpFaRkZDxiPN6yirKTKTkOreafk6m2GIn3qZ4NF26L39HCP98O4C9
+ 2RG3pa1fp///s+kUuBHBNYaugcZTsi4+t5YFRjfOn1W9OUtyGXiDaoHkPo/zytVQUtxb
+ jpmvPAqR7JzBHqDpcRx0GL+vJSfupPIXD8u8rhGPaihA0NV/lmDlqz46lZ0GURUSVOeM
+ ikhQ==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
- header.a=rsa-sha256 header.s=20230601 header.b=IDWsdEs7
+ header.a=rsa-sha256 header.s=20230601 header.b=G/S7/HAa
 Subject: [Intel-wired-lan] [PATCH net-next] ethtool: ice: Support for RSS
  settings to GTP from ethtool
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -112,14 +111,11 @@ List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Cc: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
- linux-kernel@vger.kernel.org, Takeru Hayasaka <hayatake396@gmail.com>,
- Takeru Hayasaka <t-hayasaka@bbsakura.net>
+ linux-kernel@vger.kernel.org, Takeru Hayasaka <hayatake396@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
-
-From: Takeru Hayasaka <hayatake396@gmail.com>
 
 This is a patch that enables RSS functionality for GTP packets using
 ethtool.
@@ -129,18 +125,9 @@ doing the following:
 In addition to gtpu(4|6), we now support gtpc(4|6), gtpu(4|6)e,
 gtpu(4|6)u, and gtpu(4|6)d.
 
-Signed-off-by: Takeru Hayasaka <t-hayasaka@bbsakura.net>
+Signed-off-by: Takeru Hayasaka <hayatake396@gmail.com>
 ---
-Hi mentainers.
-
-I wrote a patch to enable RSS for GTP-U/C (+Exthdr) using ethtool.
-This is an advantage for users who use Linux on mobile networks.
-
-Here is the ethtool patch
-cf. https://lore.kernel.org/netdev/20231008063041.61709-1-t-hayasaka@bbsakura.net/T/#u
-
-Thank you.
-
+ sorry. i signed off by mistake in email. i fixed.
  drivers/net/ethernet/intel/ice/ice_ethtool.c | 98 +++++++++++++++++++-
  drivers/net/ethernet/intel/ice/ice_flow.h    | 15 +++
  drivers/net/ethernet/intel/ice/ice_lib.c     | 70 ++++++++++++++
