@@ -1,183 +1,123 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id C3CFA7BEE96
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 10 Oct 2023 00:56:09 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id E96637BEF66
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 10 Oct 2023 02:00:59 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 53AB461037;
-	Mon,  9 Oct 2023 22:56:08 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 53AB461037
+	by smtp4.osuosl.org (Postfix) with ESMTP id 19BF2417A0;
+	Tue, 10 Oct 2023 00:00:58 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 19BF2417A0
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1696892168;
-	bh=aL1W7CCYyeyxL5HHfX1PMbojOGK/0baoVPQkyqk4CQo=;
-	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1696896058;
+	bh=MRsWIwpk7XtLh1qMj/HtidppFgCkSZGZJMzd6eCaUsE=;
+	h=In-Reply-To:References:Date:From:To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=2gIxQwVh6SKAIb6sriVQO4pb7GMuzcOrSOu8B3goZfr10gYDYC3JMoDaBGD1jac0B
-	 ZvaE6b16eg1hIlXV3CY675uBgiCVW2YaUBD5pq4mDDZo6En9bpuYp3sJZx5F4BzebO
-	 dMUSEuTXVhr42QikgJLljg61B5DtQaURbTUPqBqroazosFAMsDoRNZFNltcWstI6u8
-	 eMv3IRv+vms1sfd+JV3H5BFFN6gBT6tV73PGDfEQxiTweZSzGk3+U665Rm+YmtIjIN
-	 c1eexqrD3hjcyt75s3xhNQBK16ZeMMlDegMcwTCSUbyYj5wvgiLm118/n7gNEBHlRq
-	 zScIA8FY2VuMA==
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Bz3G3JPz-Y7w; Mon,  9 Oct 2023 22:56:07 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 45AA660E77;
-	Mon,  9 Oct 2023 22:56:07 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 45AA660E77
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id D7F091BF375
- for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Oct 2023 22:56:01 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id AA2E341514
- for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Oct 2023 22:56:01 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org AA2E341514
+	b=03YECAqSQH47kINqtTCLG58nnzKKEQZBkFJIc5ZFi5G7TQpC5H1J4jwLcK//mqe6R
+	 3A5AHNtvZ/qVe2+7bnBXtjxFqszpBFWKijYtmlMd6h0hC+Ie8lbNYqg9dK0fhhlJVp
+	 AsyaG9IacPktExWOpkdx5KI8iRepB+LmOKreHgr+Au53Rx5jRjiCSoZHGmfe/rpyAb
+	 hikakBhyG4PeVjsDRA7D9D9uoKteQ5u2gJJtU5P1TgRFHAATzppemF6ipLSYE3KccU
+	 +lJEfryylXHKyvfc+0IeqyARy0y+Dmtt7vGbDyeqaOiVZojkxU4z6v2vutRNR3ra0l
+	 cOL8mWQV3UOKA==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id IS7ttx0AeIFx for <intel-wired-lan@lists.osuosl.org>;
- Mon,  9 Oct 2023 22:55:59 +0000 (UTC)
-Received: from mgamail.intel.com (mgamail.intel.com [192.55.52.93])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 9798D410D5
- for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Oct 2023 22:55:59 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9798D410D5
-X-IronPort-AV: E=McAfee;i="6600,9927,10858"; a="381529117"
-X-IronPort-AV: E=Sophos;i="6.03,211,1694761200"; d="scan'208";a="381529117"
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
- by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 09 Oct 2023 15:55:58 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10858"; a="869437860"
-X-IronPort-AV: E=Sophos;i="6.03,211,1694761200"; d="scan'208";a="869437860"
-Received: from orsmsx602.amr.corp.intel.com ([10.22.229.15])
- by fmsmga002.fm.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
- 09 Oct 2023 15:55:58 -0700
-Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
- ORSMSX602.amr.corp.intel.com (10.22.229.15) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.32; Mon, 9 Oct 2023 15:55:57 -0700
-Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
- ORSMSX610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.32; Mon, 9 Oct 2023 15:55:57 -0700
-Received: from ORSEDG602.ED.cps.intel.com (10.7.248.7) by
- orsmsx610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.32 via Frontend Transport; Mon, 9 Oct 2023 15:55:57 -0700
-Received: from NAM11-BN8-obe.outbound.protection.outlook.com (104.47.58.168)
- by edgegateway.intel.com (134.134.137.103) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.32; Mon, 9 Oct 2023 15:55:54 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=JHWmNWz88U6ZoqSjySh5KRVuQajltM1Mzuilm9t6F3Y+PPN2a1S1pXSIyEDz4WovpQaa41WAKLaCHOAOXXmUOBSTAKbWpt17xph5JuJ5194D9EM57PGAf0QK+uc0m6p79mjptYKxuz62w/vsq+8HO+z8HgU+Do5MnZFGoHee7yJx4ql1jpx0M0Q6HWyseWVuQ/N4EnbyxLKK5147sRvtmF3A/fFruNYkWEI2vuXYZCrEesolP/L+Rtzk8Zy2nEoZ83WAvtMWZqBTR1N/whbhHJObrzZ528LFy2YqCZ/WxLcDRt1s8mEnUZGhWjxG45+/3O1RECGzK1esO0yqVGDoyw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=ZK5hV9vu8ai8kwnttVRjScOF9ewqHfojexLXbA3HEhs=;
- b=XzyI16AMWom/EqoX56cIETv8KUOuMAV7+aK52l7YCe2aDEd6uDDk9AxTml3nPXhFwJMGs0Br+mXOBoWAwiNpm01pnE4ea2/+PjqzkoXCT1vJN3hCRIvGqy9RJkc0O/AMbJaq+1QKZGxkFU4fwTu1ASwKC3ssfnfqei0t42FxQnSab21ribIJc62Z1INTFlVtP2VGol4CCGm8xNP0RVrGG6r/5cZq491vMlLTRYuNCDX2zw7mo2suyRhb/KsFTiVtkMuqtzCuCdPu0ApQlxll7R0a7+ZM8xYpXm1QPLzPRvgPn8N+a8/cgQh9uxTU+jrHkFyVp3D+ZiXC1FR10IWZUQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from DM6PR11MB4657.namprd11.prod.outlook.com (2603:10b6:5:2a6::7) by
- CY8PR11MB7897.namprd11.prod.outlook.com (2603:10b6:930:7d::9) with
- Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.6863.37; Mon, 9 Oct 2023 22:55:52 +0000
-Received: from DM6PR11MB4657.namprd11.prod.outlook.com
- ([fe80::4c69:ab61:fea5:5a7f]) by DM6PR11MB4657.namprd11.prod.outlook.com
- ([fe80::4c69:ab61:fea5:5a7f%3]) with mapi id 15.20.6863.032; Mon, 9 Oct 2023
- 22:55:52 +0000
-From: "Kubalewski, Arkadiusz" <arkadiusz.kubalewski@intel.com>
-To: Jiri Pirko <jiri@resnulli.us>
-Thread-Topic: [PATCH net-next v3 2/5] dpll: spec: add support for pin-dpll
- signal phase offset/adjust
-Thread-Index: AQHZ+Epmg7phnTS/TkKDwNu8gB4oQrA8sRAAgAVlg6A=
-Date: Mon, 9 Oct 2023 22:55:52 +0000
-Message-ID: <DM6PR11MB46577C12ABC1AE8B8BF743719BCEA@DM6PR11MB4657.namprd11.prod.outlook.com>
-References: <20231006114101.1608796-1-arkadiusz.kubalewski@intel.com>
- <20231006114101.1608796-3-arkadiusz.kubalewski@intel.com>
- <ZR/9yCVakCrDbBww@nanopsycho>
-In-Reply-To: <ZR/9yCVakCrDbBww@nanopsycho>
-Accept-Language: pl-PL, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: DM6PR11MB4657:EE_|CY8PR11MB7897:EE_
-x-ms-office365-filtering-correlation-id: 298d3878-19e8-4f50-91f4-08dbc91ae36d
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: 4qNrRlbHivpf+daFJ5C/bWzs21Ik43NJxQxH3KNPIWrUp8lgK3XSH4qUPuuoo4xCbWKfDwSpN3Oja/buRjAZUL8yKGLDkJa+nJ+0oQFVj2LuyLzw424ZZ2qyxjgjxEYcd4mfU6P7EEBcJCZAFQhT7b3VWuPkKAjiMIduAVZT4ToYT9ccvkjEGqJvZ0g26QbFrYGK+mo1e3bJHwLIkHOPuEw1scBsoksl/X3kLCiJmlaHU29OjiLE8kIqxQmh7HKHl2lGQagDJocZaQJZfMQBXMyn+Ks3YpqZ4MQxzizAUI411IyRq7b0ZeX2w3hGc9poiCF8DezlgcEorPzYQzq8HB+IDhB0znGWTkWBGnYvcFroqWUhnui830r/1itQA6V5aFISPAIFAKZnLxehi7B44fER4MLHfBKdYaFXJlCYF+JA2zP1kxPt7c93bjV4kGtTd0EXzRJDLMfByU4BY8Yp2rRQS8Pil2N1KVwXBc7JoHPkgo7WhEVjJJF7Pn8B6jYC0rAI7hBOQoDSULkliwj/Zz5yuat7kbQ1uvmVBBAMeEbSKXNRyh3qR1xNCjSldRLTBCanCN1PwU1I/AT0yGc+y7ZeH8yoPicGUk+t7dIPOOJOiUg9inRfJNQ7bykCckfN
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:DM6PR11MB4657.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230031)(136003)(396003)(346002)(376002)(39860400002)(366004)(230922051799003)(451199024)(64100799003)(186009)(1800799009)(55016003)(83380400001)(76116006)(26005)(54906003)(66556008)(66476007)(6916009)(66946007)(64756008)(316002)(66446008)(4326008)(5660300002)(8676002)(7696005)(41300700001)(6506007)(71200400001)(52536014)(2906002)(9686003)(478600001)(8936002)(33656002)(122000001)(82960400001)(86362001)(38070700005)(38100700002);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?X9Qv7XPZXg3hxCzBTORIDtWax2EIYj7pKLzKr6Kzrum2MXk/hL9/C1pV3hJV?=
- =?us-ascii?Q?eJqGxW1foBznW8hmFpCizpmZhzzYMjOpSjgNM6GBihX2m/jjUXch24upZhau?=
- =?us-ascii?Q?eK+vcKkts6tAhcbfyQnRIQd4WsU3wRP6zRVq/HCMX9AZLrwgbaFjObN+P9Sv?=
- =?us-ascii?Q?TyJhvKI0fDN/VDhwsePq8byzka48LqEpqvWFoHYJ5dkXMd8ftBU8BM5K8UQ2?=
- =?us-ascii?Q?j8SugkNdTIJ8QevthOT2Hcm/nFRgeCzVMRIwlJqHs3rsWusiTFwkIZH6/78R?=
- =?us-ascii?Q?tH+AL9LaDGH/GeedjWS+ocZoX1R8jRReIzES8wwt2SlianX2k9Ad5AHSe7+6?=
- =?us-ascii?Q?atrex3AgzFGEtSKKzzrgnx6BluOAmCLRdsizUgNNkcEqZORc0Om+DOc+Xdtb?=
- =?us-ascii?Q?/NBfz90LTXrVj33H9k3JQBSenYfLF+kmBY8zMtMw0It4WtctO+6EOcpG0CHZ?=
- =?us-ascii?Q?4h/pExLBrRDu0kpxACD9k0XnSKT89sGOiPZu2W/37awEYvOaIgfrEnI8JsHH?=
- =?us-ascii?Q?JiwGevn7f2FwRbJlV89DWOzAJBoNioKVHsCWb0uem2J4AKJPn+kOGRyQdCe9?=
- =?us-ascii?Q?/8K+GvrP+XhxMcSc0aEjAJCWsWHcd9yQytwTrKglCvLHSB8MbBEyiVdr5aYf?=
- =?us-ascii?Q?tEd+3yBHH8k5zKE6gKAZ4EPLpKl+vbvtPV7W/BwWODonCxTNx/CbawPgewmK?=
- =?us-ascii?Q?Ly0/7fkpJE8Ll/KU0IKYjf2+VsNzovtmL2M3L2SVVY/4AzCooLMiliKoh8N2?=
- =?us-ascii?Q?DsPmQgRHtbHdgR/AqbwM6+RP69I2D0wX8X3oXst5xJiAJlMIR4OZfarGj9Lr?=
- =?us-ascii?Q?rCi7BzZ2OuaQKYB7dyBi9Wf/8hhvMOTDS7KT2JjpWf/FQtpDRvn9l3FK1A3y?=
- =?us-ascii?Q?JLicBlHkP8AjFo4R09wcmijEbA9bURukXjdegFjkf3BC28DoZc4IRJSjYmHT?=
- =?us-ascii?Q?4u9kYBgsVbFzP3MLGJ0bg6Tw6lzhSW1V5FW6tGRUNLfc+tAqbORjUC9pTV5E?=
- =?us-ascii?Q?UYHEVIkJ38caYnUpMkoNJ7n83Dyyj7+GRrsY+QN/vadgfUBmINB3m9Tls1tM?=
- =?us-ascii?Q?qbN3TlJRZYScgO4oVmsFdazW7TTYJRHuhglQPu1LEW5iD7NSaz66LhiIr5kD?=
- =?us-ascii?Q?xPYCgyD5/zh5zmXEv0LfOxv//uj1j6hwhqBRmTVRVlI5YBtbfhsxOxOh9G9g?=
- =?us-ascii?Q?lfsL5oRRG1pRO66iyJiiOFeS6NwBNQJ63vqgTwqdSVSgcIPoJMQtPj4jTd/1?=
- =?us-ascii?Q?QWkZdC5vvosVeO3p2LQ3Usyh6EJjWG5PpPGhbZ7dsJzJ5nNuqQ1Y3qF7XcZO?=
- =?us-ascii?Q?GsuNfPYu05vA0lgTqJ/YQRd3X0CyszVP6jlwbzPhb7N19HQyooQfofdLt8B9?=
- =?us-ascii?Q?qNzKJszdTkEYBK4CtHT7okRwyFsQMMPuIQ2ew9Tc8kcRCe3Cc0wGA/nGrNzf?=
- =?us-ascii?Q?b/I5sDVSTb58TlHh8lNmwNSI+modfGPcy88JaO7d9Pv10u8dw+r+6CInWTjT?=
- =?us-ascii?Q?PvAJfQ8mzYSte7RvA+8WPmNwUQ+RaT/+yXpo7dDsC+WgPtxtqGJDhlLli4R8?=
- =?us-ascii?Q?B5D4d7PIS7MM/x088kjtDUBVzRlZf5GP8dXQ5Bg5/42qNeMYLe+3WE91AlZV?=
- =?us-ascii?Q?9g=3D=3D?=
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id kPDj7_fFBj1P; Tue, 10 Oct 2023 00:00:57 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp4.osuosl.org (Postfix) with ESMTP id BF5094173A;
+	Tue, 10 Oct 2023 00:00:56 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org BF5094173A
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 7DAEB1BF427
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Oct 2023 00:00:51 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp3.osuosl.org (Postfix) with ESMTP id 2A47960E77
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Oct 2023 00:00:51 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2A47960E77
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id K_-qzzGMQqJc for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 10 Oct 2023 00:00:49 +0000 (UTC)
+X-Greylist: delayed 574 seconds by postgrey-1.37 at util1.osuosl.org;
+ Tue, 10 Oct 2023 00:00:48 UTC
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org E3C3260E6A
+Received: from out4-smtp.messagingengine.com (out4-smtp.messagingengine.com
+ [66.111.4.28])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id E3C3260E6A
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Oct 2023 00:00:48 +0000 (UTC)
+Received: from compute5.internal (compute5.nyi.internal [10.202.2.45])
+ by mailout.nyi.internal (Postfix) with ESMTP id 25B205C02C5;
+ Mon,  9 Oct 2023 19:51:13 -0400 (EDT)
+Received: from imap49 ([10.202.2.99])
+ by compute5.internal (MEProxy); Mon, 09 Oct 2023 19:51:13 -0400
+X-ME-Sender: <xms:8JEkZRIaG_G5zBq-Ig6uE9rr00acr15yd3LPMa3MJlw8DI76h_PTgQ>
+ <xme:8JEkZdJhhO4aokOo_kYAqkgcx4yDQlV4EEpYzEZsq_IDW1_4n6eM68B50TVTngyN5
+ umgbo2MEYDHvM2nYGU>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvkedrheeggddvhecutefuodetggdotefrodftvf
+ curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
+ uegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenuc
+ fjughrpefofgggkfgjfhffhffvvefutgfgsehtqhertderreejnecuhfhrohhmpefukhih
+ lhgvrhcuofomnhhthihsrggrrhhiuceoshhmodhlihhsthhssehskhihmhdrfhhiqeenuc
+ ggtffrrghtthgvrhhnpeetheegleegveeugeffheeuueekffevvddvtdejffeijeffkefh
+ hfeutedtteetgfenucffohhmrghinhepvhihohhsrdhiohenucevlhhushhtvghrufhiii
+ gvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehsmhdolhhishhtshesshhkhihmrdhf
+ ih
+X-ME-Proxy: <xmx:8JEkZZuqOL_3mbwZU1w-5NXBTW_hXThv8wVRUL_mX7XQS7gdjz4Zqw>
+ <xmx:8JEkZSZSL0pU9teE9G_pQ8YkNOWxLFc8r5lOxLCTrFPwlPGvwyaJdg>
+ <xmx:8JEkZYbiPwW6HtgHBV5J8PDWKV4JVtUeR97khRi4ygG3KbKuMi-NZg>
+ <xmx:8ZEkZRBg-O1rZp-1skYspAHEH0O74jrp-seGDBjAc4DtRBXfT8fGkQ>
+Feedback-ID: id05146f6:Fastmail
+Received: by mailuser.nyi.internal (Postfix, from userid 501)
+ id B0A1D15A0091; Mon,  9 Oct 2023 19:51:12 -0400 (EDT)
+X-Mailer: MessagingEngine.com Webmail Interface
+User-Agent: Cyrus-JMAP/3.9.0-alpha0-958-g1b1b911df8-fm-20230927.002-g1b1b911d
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: DM6PR11MB4657.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 298d3878-19e8-4f50-91f4-08dbc91ae36d
-X-MS-Exchange-CrossTenant-originalarrivaltime: 09 Oct 2023 22:55:52.4781 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: W/D2ge8dYBeR8jzMfVq7V+ONyQlD4pwDvsxDwfQJRVXYFmOybmXNjUXverh5vozG3BuBb6otp4Zrx0JaeiZPVjW3jSlPQdVaqzbPgCS98Vs=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY8PR11MB7897
-X-OriginatorOrg: intel.com
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1696892159; x=1728428159;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=EAogbdI7XEdWVAqbuUjuiiJ0pJf5B8vFc0Wc0ZX+Kfw=;
- b=AIqlo6dFayLwfiJNI9wkvJS8xn6q9JcIzv3VdgPz3qXZPsi1Te6Ugjgd
- 0m+u5KdFSYzpewlZ8hDpHKPfJmo3TSlHAKMLwQk3KInbIlUXd+t6idMAj
- Yf28jBgZ3upqEKki7PvceEyVRqjyhyv1LBUJm5nAAygGjvZVZOnPTg9wA
- Ai+/Ops0ur9u1vzKSjkvH4gOU+ce+qCprf6QBMpJYIoNgWCZF3iCUjejN
- rnkd9SpaQWLzyQhjGDKf2ihRJWXaI0dfXV8Lcsfu5n7xbIsS8ZIoRb0Db
- NSfPxC5WsXya/0pXEjfK33eLqBeDu9AGJVW+oVOhcFuxZ1NevwT93m25b
- Q==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=AIqlo6dF
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH net-next v3 2/5] dpll: spec: add
- support for pin-dpll signal phase offset/adjust
+Message-Id: <4330a47e-aa31-4248-9d9d-95c54f74cdd9@app.fastmail.com>
+In-Reply-To: <6e48c3ba-8d17-41db-ca8d-0a7881d122c9@intel.com>
+References: <ee7f6320-0742-65d4-7411-400d55daebf8@skym.fi>
+ <994cebfe-c97a-4e11-8dad-b3c589e9f094@intel.com>
+ <c526d946-2779-434b-b8ec-423a48f71e36@skym.fi>
+ <6e48c3ba-8d17-41db-ca8d-0a7881d122c9@intel.com>
+Date: Tue, 10 Oct 2023 02:50:14 +0300
+From: =?UTF-8?Q?Skyler_M=C3=A4ntysaari?= <sm+lists@skym.fi>
+To: "Jesse Brandeburg" <jesse.brandeburg@intel.com>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=skym.fi; h=cc:cc
+ :content-transfer-encoding:content-type:content-type:date:date
+ :from:from:in-reply-to:in-reply-to:message-id:mime-version
+ :references:reply-to:sender:subject:subject:to:to; s=fm3; t=
+ 1696895473; x=1696981873; bh=QPhhfuTn8dWrXfMXBvKQgAu3hMOz6o7Ef/K
+ oQCq+2yo=; b=MD6s4unO6LnBJXdQJYR02PWZztYPE1l/bzv8ccaP4+MwrK1jcC6
+ CZ0Qe4xC0fXvBBLYsrPVF/MMLv2/hwjM7w84FF3t3p2CJQOcWBk2maN8C67WW6RD
+ 8cbZOgtthEVzkk20ia36KITebzHuI8KS1f3xVLpn7loBKN1wfmpJh67mTymywfCa
+ 5slTDhH5H7kWAF/TLr/c+iuvszXcEPXRrjuUdLHx6Dt37sB+xtx2DsxbJTx3tbxi
+ lcDUrD/oZ7f1K/Nrwc+RLjZtTZHrkTTclgJk7rVTu9oByz02LWlUoKBUwYamNLrz
+ zaLWR5bfTDH3t+Kc0OAbs5N8jqhA48mcXSg==
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:cc:content-transfer-encoding
+ :content-type:content-type:date:date:feedback-id:feedback-id
+ :from:from:in-reply-to:in-reply-to:message-id:mime-version
+ :references:reply-to:sender:subject:subject:to:to:x-me-proxy
+ :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm2; t=
+ 1696895473; x=1696981873; bh=QPhhfuTn8dWrXfMXBvKQgAu3hMOz6o7Ef/K
+ oQCq+2yo=; b=RSSQ1nTkTFagVWv0BLqyL+KovEh17F8/IhQsARRMLNjAKkLQKAt
+ abSc3kSLha9Z2RmYZzz5/a+vvBqukWHVa+yvWgBHWTkQrnltp6qww+9hv5q8RSRq
+ 9rkbIZoCfjNGtgWLViE4mq+/j8qPM4LWG6g24lJEwGQ1mjurce7Aq9rvjogwOBHv
+ y3tvfNPn9V96hth4iQ4fn7AQjWbev5TnecP4y8MIaFNz5ZJDSPMhL9EDUYFNcyqb
+ x4PjV/YdfkUuM3bh8iWqqlDw/muupBabRgoONKi4Hlh0lsR2l9JwlvoBwYG2tg9p
+ tXv15E6TS87TLt4ZjXEggamZvKcapa+oV9Q==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key, unprotected) header.d=skym.fi header.i=@skym.fi
+ header.a=rsa-sha256 header.s=fm3 header.b=MD6s4unO; 
+ dkim=pass (2048-bit key,
+ unprotected) header.d=messagingengine.com header.i=@messagingengine.com
+ header.a=rsa-sha256 header.s=fm2 header.b=RSSQ1nTk
+Subject: Re: [Intel-wired-lan] The difference between linux kernel driver
+ and FreeBSD's with Intel X533
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -190,58 +130,37 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "vadim.fedorenko@linux.dev" <vadim.fedorenko@linux.dev>,
- "corbet@lwn.net" <corbet@lwn.net>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "linux-doc@vger.kernel.org" <linux-doc@vger.kernel.org>, "Brandeburg,
- Jesse" <jesse.brandeburg@intel.com>, "Nguyen,
- Anthony L" <anthony.l.nguyen@intel.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "kuba@kernel.org" <kuba@kernel.org>, "pabeni@redhat.com" <pabeni@redhat.com>,
- "davem@davemloft.net" <davem@davemloft.net>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
->From: Jiri Pirko <jiri@resnulli.us>
->Sent: Friday, October 6, 2023 2:30 PM
->
->Fri, Oct 06, 2023 at 01:40:58PM CEST, arkadiusz.kubalewski@intel.com wrote:
->>Add attributes for providing the user with:
->>- measurement of signals phase offset between pin and dpll
->>- ability to adjust the phase of pin signal
->>
->>Signed-off-by: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
->>---
->> Documentation/netlink/specs/dpll.yaml | 33 ++++++++++++++++++++++++++-
->> drivers/dpll/dpll_nl.c                |  8 ++++---
->> drivers/dpll/dpll_nl.h                |  2 +-
->> include/uapi/linux/dpll.h             |  8 ++++++-
->> 4 files changed, 45 insertions(+), 6 deletions(-)
->>
->>diff --git a/Documentation/netlink/specs/dpll.yaml
->>b/Documentation/netlink/specs/dpll.yaml
->>index 8b86b28b47a6..dc057494101f 100644
->>--- a/Documentation/netlink/specs/dpll.yaml
->>+++ b/Documentation/netlink/specs/dpll.yaml
->>@@ -1,7 +1,7 @@
->> # SPDX-License-Identifier: ((GPL-2.0 WITH Linux-syscall-note) OR
->>BSD-3-Clause)
->>
->> name: dpll
->>-
->>+version: 2
->
->I'm confused. Didn't you say you'll remove this? If not, my question from
->v1 still stands.
-
-I am just moron who have sent wrong patch :s
-Now is fixed in v4.
-
-Thank you,
-Arkadiusz
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+CgpPbiBNb24sIE9jdCA5LCAyMDIzLCBhdCAxODozMywgSmVzc2UgQnJhbmRlYnVyZyB3cm90ZToK
+PiBPbiAxMC80LzIwMjMgMTA6MDggQU0sIFNreWxlciBNw6RudHlzYWFyaSB3cm90ZToKPj4+PiBI
+aSB0aGVyZSwKPj4+Pgo+Pj4+IEl0IHNlZW1zIHRoYXQgZm9yIHJlYXNvbnMgdW5rbm93biB0byBt
+ZSwgbXkgSW50ZWwgWDUzMyBiYXNlZCAxMEcgU0ZQKwo+Pj4+IGRvZXNuJ3Qgd2FudCB0byB3b3Jr
+IHdpdGgga2VybmVsIDYuMS41NSBpbiBWeU9TIDEuNCBub3IgRGViaWFuIDEyIGJ1dAo+Pj4+IGl0
+IGRvZXMgaW4gT1BOc2Vuc2Ugd2hpY2ggaXMgYmFzZWQgb24gRnJlZUJTRCAxMy4yLgo+Pj4+Cj4+
+Pj4gSG93IHdvdWxkIEkgZ28gYWJvdXQgZGVidWdnaW5nIHRoaXMgcHJvcGVybHk/IEJvdGggc2lk
+ZXMgc2VlIGxpZ2h0LAo+Pj4+IGJ1dCBubyBsaW5rIHVubGVzcyBJJ20gdXNpbmcgRnJlZUJTRC4K
+Pj4gaHR0cHM6Ly9mb3J1bS52eW9zLmlvL3QvMTBnLXNmcC10cm91YmxlLXdpdGgtbGlua2luZy1p
+bnRlbC14NTUzLzEyMjUzLzExP3U9c2FtaXA1MzcKPgo+IEhpIFNreWxlciwKPgo+IFJlc3BvbnNl
+IGZyb20gSW50ZWwgdGVhbToKPgo+IEluIHRoZSBldGh0b29sIC1tIG91dHB1dCBwYXN0ZWQgSSBz
+ZWUgVFggYW5kIFJYIG9wdGljYWwgcG93ZXIgaXMgZmluZS4KPiBDb3VsZCB5b3UgcmVxdWVzdCBm
+YXVsdCBzdGF0dXMgb24gYm90aCBzaWRlcz8gSnVzdCB3YW50IHRvIGNoZWNrIGlmIGxpbmsKPiBp
+cyBkb3duIGJlY2F1c2Ugd2UgYXJlIGF0IGxvY2FsLWZhdWx0IG9yIGxpbmsgcGFydG5lciBpcyBh
+dCBsb2NhbC1mYXVsdC4KPgo+IHJtbW9kIGl4Z2JlCj4gbW9kcHJvYmUgaXhnYmUKPiBldGh0b29s
+IC1TIGV0aDAgfCBncmVwIGZhdWx0Cj4KPiBTaW5jZSBpdCBpcyAxMEcsIGlmIG91ciBzaWRlIFRY
+IGlzIE9OIChwb3dlciBsZXZlbCBzYXlzIGl0IGlzKSB0aGVuIHdlCj4gc2hvdWxkIGV4cGVjdCBs
+aW5rIHBhcnRuZXIgUlggdG8gYmUgbG9ja2VkIHNvIGNhbm5vdCBiZSBhdCBMb2NhbCBGYXVsdC4K
+Pgo+IFNreWxlciwgcGxlYXNlIGdhdGhlciB0aGF0IGV0aHRvb2wgLVMgZGF0YSBmb3IgdXMuCj4K
+PiBKZXNzZQo+Cj4KPgo+IAoKSGkgSmVzc2UsCgpBcyB0aGUgb3RoZXIgc2lkZSBvZiB0aGUgbGlu
+ayBpcyBhbiBKdW5pcGVyLCBJJ20gbm90IHF1aXRlIHN1cmUgaG93IEkgd291bGQgZ2F0aGVyIHRo
+ZSBzYW1lIGRhdGEgZnJvbSBpdCBhcyBpdCBkb2Vzbid0IGhhdmUgZXRodG9vbD8KCkkgaGF2ZSBh
+bHNvIHNvbWV3aGF0IGdpdmVuIHVwIGhvcGUgb24gaXQgd29ya2luZyBvbiBWeU9TIGFuZCBpbnN0
+ZWFkIEkgYW0gdXNpbmcgT1BOc2Vuc2UgZm9yIHRoZSBtb21lbnQgYnV0IEkgc3RpbGwgaGF2ZSBW
+eU9TIGluc3RhbGxlZCBhcyB3ZWxsLgoKU2t5bGVyCgoKCl9fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fCkludGVsLXdpcmVkLWxhbiBtYWlsaW5nIGxpc3QKSW50
+ZWwtd2lyZWQtbGFuQG9zdW9zbC5vcmcKaHR0cHM6Ly9saXN0cy5vc3Vvc2wub3JnL21haWxtYW4v
+bGlzdGluZm8vaW50ZWwtd2lyZWQtbGFuCg==
