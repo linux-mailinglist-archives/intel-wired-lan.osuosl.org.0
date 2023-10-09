@@ -1,88 +1,88 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 979597BEE56
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 10 Oct 2023 00:29:59 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1920A7BEE54
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 10 Oct 2023 00:29:56 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 3892761196;
-	Mon,  9 Oct 2023 22:29:58 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3892761196
+	by smtp3.osuosl.org (Postfix) with ESMTP id B43C960FFF;
+	Mon,  9 Oct 2023 22:29:53 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B43C960FFF
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1696890598;
-	bh=Jcw9u8VILQffO80LNYRVZMVDDeCDGbd2OelZdpWfT+Q=;
+	s=default; t=1696890593;
+	bh=RQC3c21uDx6HzwXihHYlxRrFu/VhZk0gCx8T921BU8E=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=uvG/JV3Qh425FmvCrL6de/noqzaHDAGO1vejpfXxBJHEBbop8HMOa7T101aD9qK0X
-	 0TbUqSQUjfF8MuAY4/HziUnHKb/4AoC0KVROfKOiwjWY6urxPDjQN0/PhS856Vqy1N
-	 ikhnPmvM01Xi/kPTddH/EXoYDCKuTyDUfoq1iR7Goe+MD5otHVZHfjUQX6NAFUxDZI
-	 LT7+++he8h2mY3v69MhqBJ5kPBg0rUh8IV9GZuTioY+IGlfPVO5RCjm+QiTrQRehAM
-	 htbtHlWyhnpSmul9dJqTKBPHCetimnnOZr4VVusHyDo/balWHWDK95Qcxb+FTo+nNW
-	 Lcx6SZ4ZbuXzQ==
+	b=hbOalyAQdg36uq16rm6QwerJKdpyl7XP0USUybWqKLyawXL92h/UCtvak5qkooHN/
+	 CVvTbIbVpoLgFXJgxvaly2jkk3+A6i5iplXqGIQSkkTMy/wkaM9zNU4R3SdORKgOOt
+	 sqRM921W/OlrAGOqJTmueQjYFdIArOv1Rk92sRyvDhxz9qHm2zWTShQSy2hnPimMRy
+	 GqbKJzH14oEaCk3BsVWSDZ6ooyN0U2m2m8PSRP6X9blHB03iflOhwH//ay7PDPHf0A
+	 5OKKC6NLuYdECKjHOAIsSzSkEM8VlKZjVANwfBiUXmUbOFZt6TJ1GAGqhgy0PoqF66
+	 8heH4xPcp9cXQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id rd1z6YshJa3h; Mon,  9 Oct 2023 22:29:56 +0000 (UTC)
+	with ESMTP id of7nkSBG50Oq; Mon,  9 Oct 2023 22:29:52 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 659C560BFF;
-	Mon,  9 Oct 2023 22:29:56 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 659C560BFF
+	by smtp3.osuosl.org (Postfix) with ESMTP id 16A6C61037;
+	Mon,  9 Oct 2023 22:29:51 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 16A6C61037
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 618641BF375
- for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Oct 2023 22:29:41 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 2800E41713
+ by ash.osuosl.org (Postfix) with ESMTP id 506A91BF375
  for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Oct 2023 22:29:40 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2800E41713
+Received: from localhost (localhost [127.0.0.1])
+ by smtp4.osuosl.org (Postfix) with ESMTP id C08F141704
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Oct 2023 22:29:39 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C08F141704
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 1vt8VKoGOV4a for <intel-wired-lan@lists.osuosl.org>;
- Mon,  9 Oct 2023 22:29:37 +0000 (UTC)
+ with ESMTP id nj_ibGGePW6a for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  9 Oct 2023 22:29:38 +0000 (UTC)
 Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.9])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 047C541703
- for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Oct 2023 22:29:36 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 047C541703
-X-IronPort-AV: E=McAfee;i="6600,9927,10858"; a="2849414"
+ by smtp4.osuosl.org (Postfix) with ESMTPS id C5DC841713
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Oct 2023 22:29:37 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C5DC841713
+X-IronPort-AV: E=McAfee;i="6600,9927,10858"; a="2849431"
 X-IronPort-AV: E=Sophos;i="6.03,211,1694761200"; 
-   d="scan'208";a="2849414"
+   d="scan'208";a="2849431"
 Received: from fmsmga003.fm.intel.com ([10.253.24.29])
  by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 09 Oct 2023 15:28:59 -0700
+ 09 Oct 2023 15:29:02 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10858"; a="843876590"
-X-IronPort-AV: E=Sophos;i="6.03,211,1694761200"; d="scan'208";a="843876590"
+X-IronPort-AV: E=McAfee;i="6600,9927,10858"; a="843876596"
+X-IronPort-AV: E=Sophos;i="6.03,211,1694761200"; d="scan'208";a="843876596"
 Received: from amlin-018-114.igk.intel.com ([10.102.18.114])
- by FMSMGA003.fm.intel.com with ESMTP; 09 Oct 2023 15:28:56 -0700
+ by FMSMGA003.fm.intel.com with ESMTP; 09 Oct 2023 15:28:59 -0700
 From: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
 To: netdev@vger.kernel.org
-Date: Tue, 10 Oct 2023 00:26:14 +0200
-Message-Id: <20231009222616.12163-4-arkadiusz.kubalewski@intel.com>
+Date: Tue, 10 Oct 2023 00:26:15 +0200
+Message-Id: <20231009222616.12163-5-arkadiusz.kubalewski@intel.com>
 X-Mailer: git-send-email 2.38.1
 In-Reply-To: <20231009222616.12163-1-arkadiusz.kubalewski@intel.com>
 References: <20231009222616.12163-1-arkadiusz.kubalewski@intel.com>
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1696890577; x=1728426577;
+ t=1696890578; x=1728426578;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=6il3hD0J2C6Jv58oQ5d+XknTFtdnPTX0OAm+UTkXwgI=;
- b=HtAZqh+TE4L6PT5QDdnHyWT97bfSiG8bCX2l6o7UFzgJOV09PaYNVigJ
- J5m+r9btExW0jEeyYz1KPRjeTOgfDLnykjYagb1H3FrFMP603Qh0X9lXc
- OP8xvf2k5EDfCmOcyHTxNIragBmhHxD5H6oZNR3ug0HsdT4CM0c08LCEq
- llEDZi/MtaeF6vWd8DsXmooWfitgn/jE9zVY0FvnxPundgSCvRxjQdLTn
- q/14e237L3ublDsl198kCUMRkWvUDhHy1SFsFut8O+HXY13BbE1KT917J
- 6nHmx/AM+rTlwETLfEIDaYRi3812me+LN3YRsnwrgqjtShY5Hszlv0dwk
+ bh=be4eUH2Ldwl+vuGHWCvFOPxAQkfJ89MRK98Bu9/bNN8=;
+ b=dZ8rUlQ7GJHy/qO9NZHQ46IwS5v2KnlMrzmXmxaeYS1B+cb5Ny8sPq8j
+ 6526cLDVTs/YEu5cRs7Xw81bQQe7IrfzSt6EbEupIenP9r854Ec33dyLs
+ msX0fq+0eRKXVhYvjq1pp9v4uVb6rLwCaiGP9TkQryW6CyeKjof+XPIHV
+ 17k6Na45tyXzO9bUtnKTRFVJUyD0Ybd5gnjlyp3/3IOEq2NO49QajRi8+
+ ILYp9X7ihpUMMF+ju2fgLGov66LCNN8y0qn1tc8sEdcYhc+8UbGDPyMgV
+ w82bV/DGkcvTQkkXjvQD4QGLA07EGUuHo12BHy3DqxtGbdiVrNS/TaDCt
  g==;
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=HtAZqh+T
-Subject: [Intel-wired-lan] [PATCH net-next v4 3/5] dpll: netlink/core: add
- support for pin-dpll signal phase offset/adjust
+ header.a=rsa-sha256 header.s=Intel header.b=dZ8rUlQ7
+Subject: [Intel-wired-lan] [PATCH net-next v4 4/5] ice: dpll: implement
+ phase related callbacks
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -105,245 +105,337 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Add callback ops for pin-dpll phase measurement.
-Add callback for pin signal phase adjustment.
-Add min and max phase adjustment values to pin proprties.
-Invoke callbacks in dpll_netlink.c when filling the pin details to
-provide user with phase related attribute values.
+Implement new callback ops related to measurement and adjustment of
+signal phase for pin-dpll in ice driver.
 
 Signed-off-by: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
 ---
- drivers/dpll/dpll_netlink.c | 138 +++++++++++++++++++++++++++++++++++-
- include/linux/dpll.h        |  18 +++++
- 2 files changed, 155 insertions(+), 1 deletion(-)
+ drivers/net/ethernet/intel/ice/ice_dpll.c | 220 +++++++++++++++++++++-
+ drivers/net/ethernet/intel/ice/ice_dpll.h |  10 +-
+ 2 files changed, 226 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/dpll/dpll_netlink.c b/drivers/dpll/dpll_netlink.c
-index e20daba6896a..09a6c2a1ea92 100644
---- a/drivers/dpll/dpll_netlink.c
-+++ b/drivers/dpll/dpll_netlink.c
-@@ -212,6 +212,53 @@ dpll_msg_add_pin_direction(struct sk_buff *msg, struct dpll_pin *pin,
+diff --git a/drivers/net/ethernet/intel/ice/ice_dpll.c b/drivers/net/ethernet/intel/ice/ice_dpll.c
+index 1faee9cb944d..835c419ccc74 100644
+--- a/drivers/net/ethernet/intel/ice/ice_dpll.c
++++ b/drivers/net/ethernet/intel/ice/ice_dpll.c
+@@ -878,6 +878,199 @@ ice_dpll_output_direction(const struct dpll_pin *pin, void *pin_priv,
  	return 0;
  }
  
++/**
++ * ice_dpll_pin_phase_adjust_get - callback for get pin phase adjust value
++ * @pin: pointer to a pin
++ * @pin_priv: private data pointer passed on pin registration
++ * @dpll: registered dpll pointer
++ * @dpll_priv: private data pointer passed on dpll registration
++ * @phase_adjust: on success holds pin phase_adjust value
++ * @extack: error reporting
++ *
++ * Dpll subsystem callback. Handler for getting phase adjust value of a pin.
++ *
++ * Context: Acquires pf->dplls.lock
++ * Return:
++ * * 0 - success
++ * * negative - error
++ */
 +static int
-+dpll_msg_add_pin_phase_adjust(struct sk_buff *msg, struct dpll_pin *pin,
-+			      struct dpll_pin_ref *ref,
++ice_dpll_pin_phase_adjust_get(const struct dpll_pin *pin, void *pin_priv,
++			      const struct dpll_device *dpll, void *dpll_priv,
++			      s32 *phase_adjust,
 +			      struct netlink_ext_ack *extack)
 +{
-+	const struct dpll_pin_ops *ops = dpll_pin_ops(ref);
-+	struct dpll_device *dpll = ref->dpll;
-+	s32 phase_adjust;
-+	int ret;
++	struct ice_dpll_pin *p = pin_priv;
++	struct ice_pf *pf = p->pf;
 +
-+	if (!ops->phase_adjust_get)
-+		return 0;
-+	ret = ops->phase_adjust_get(pin, dpll_pin_on_dpll_priv(dpll, pin),
-+				    dpll, dpll_priv(dpll),
-+				    &phase_adjust, extack);
-+	if (ret)
-+		return ret;
-+	if (nla_put_s32(msg, DPLL_A_PIN_PHASE_ADJUST, phase_adjust))
-+		return -EMSGSIZE;
++	mutex_lock(&pf->dplls.lock);
++	*phase_adjust = p->phase_adjust;
++	mutex_unlock(&pf->dplls.lock);
 +
 +	return 0;
 +}
 +
++/**
++ * ice_dpll_pin_phase_adjust_set - helper for setting a pin phase adjust value
++ * @pin: pointer to a pin
++ * @pin_priv: private data pointer passed on pin registration
++ * @dpll: registered dpll pointer
++ * @dpll_priv: private data pointer passed on dpll registration
++ * @phase_adjust: phase_adjust to be set
++ * @extack: error reporting
++ * @type: type of a pin
++ *
++ * Helper for dpll subsystem callback. Handler for setting phase adjust value
++ * of a pin.
++ *
++ * Context: Acquires pf->dplls.lock
++ * Return:
++ * * 0 - success
++ * * negative - error
++ */
 +static int
-+dpll_msg_add_phase_offset(struct sk_buff *msg, struct dpll_pin *pin,
-+			  struct dpll_pin_ref *ref,
-+			  struct netlink_ext_ack *extack)
++ice_dpll_pin_phase_adjust_set(const struct dpll_pin *pin, void *pin_priv,
++			      const struct dpll_device *dpll, void *dpll_priv,
++			      s32 phase_adjust,
++			      struct netlink_ext_ack *extack,
++			      enum ice_dpll_pin_type type)
 +{
-+	const struct dpll_pin_ops *ops = dpll_pin_ops(ref);
-+	struct dpll_device *dpll = ref->dpll;
-+	s64 phase_offset;
++	struct ice_dpll_pin *p = pin_priv;
++	struct ice_dpll *d = dpll_priv;
++	struct ice_pf *pf = d->pf;
++	u8 flag, flags_en = 0;
 +	int ret;
 +
-+	if (!ops->phase_offset_get)
-+		return 0;
-+	ret = ops->phase_offset_get(pin, dpll_pin_on_dpll_priv(dpll, pin),
-+				    dpll, dpll_priv(dpll), &phase_offset,
-+				    extack);
++	mutex_lock(&pf->dplls.lock);
++	switch (type) {
++	case ICE_DPLL_PIN_TYPE_INPUT:
++		flag = ICE_AQC_SET_CGU_IN_CFG_FLG1_UPDATE_DELAY;
++		if (p->flags[0] & ICE_AQC_GET_CGU_IN_CFG_FLG2_ESYNC_EN)
++			flags_en |= ICE_AQC_SET_CGU_IN_CFG_FLG2_ESYNC_EN;
++		if (p->flags[0] & ICE_AQC_GET_CGU_IN_CFG_FLG2_INPUT_EN)
++			flags_en |= ICE_AQC_SET_CGU_IN_CFG_FLG2_INPUT_EN;
++		ret = ice_aq_set_input_pin_cfg(&pf->hw, p->idx, flag, flags_en,
++					       0, phase_adjust);
++		break;
++	case ICE_DPLL_PIN_TYPE_OUTPUT:
++		flag = ICE_AQC_SET_CGU_OUT_CFG_UPDATE_PHASE;
++		if (p->flags[0] & ICE_AQC_GET_CGU_OUT_CFG_OUT_EN)
++			flag |= ICE_AQC_SET_CGU_OUT_CFG_OUT_EN;
++		if (p->flags[0] & ICE_AQC_GET_CGU_OUT_CFG_ESYNC_EN)
++			flag |= ICE_AQC_SET_CGU_OUT_CFG_ESYNC_EN;
++		ret = ice_aq_set_output_pin_cfg(&pf->hw, p->idx, flag, 0, 0,
++						phase_adjust);
++		break;
++	default:
++		ret = -EINVAL;
++	}
++	if (!ret)
++		p->phase_adjust = phase_adjust;
++	mutex_unlock(&pf->dplls.lock);
 +	if (ret)
-+		return ret;
-+	if (nla_put_64bit(msg, DPLL_A_PIN_PHASE_OFFSET, sizeof(phase_offset),
-+			  &phase_offset, DPLL_A_PIN_PAD))
-+		return -EMSGSIZE;
++		NL_SET_ERR_MSG_FMT(extack,
++				   "err:%d %s failed to set pin phase_adjust:%d for pin:%u on dpll:%u\n",
++				   ret,
++				   ice_aq_str(pf->hw.adminq.sq_last_status),
++				   phase_adjust, p->idx, d->dpll_idx);
 +
-+	return 0;
-+}
-+
- static int
- dpll_msg_add_pin_freq(struct sk_buff *msg, struct dpll_pin *pin,
- 		      struct dpll_pin_ref *ref, struct netlink_ext_ack *extack)
-@@ -330,6 +377,9 @@ dpll_msg_add_pin_dplls(struct sk_buff *msg, struct dpll_pin *pin,
- 		if (ret)
- 			goto nest_cancel;
- 		ret = dpll_msg_add_pin_direction(msg, pin, ref, extack);
-+		if (ret)
-+			goto nest_cancel;
-+		ret = dpll_msg_add_phase_offset(msg, pin, ref, extack);
- 		if (ret)
- 			goto nest_cancel;
- 		nla_nest_end(msg, attr);
-@@ -377,6 +427,15 @@ dpll_cmd_pin_get_one(struct sk_buff *msg, struct dpll_pin *pin,
- 	if (nla_put_u32(msg, DPLL_A_PIN_CAPABILITIES, prop->capabilities))
- 		return -EMSGSIZE;
- 	ret = dpll_msg_add_pin_freq(msg, pin, ref, extack);
-+	if (ret)
-+		return ret;
-+	if (nla_put_s32(msg, DPLL_A_PIN_PHASE_ADJUST_MIN,
-+			prop->phase_range.min))
-+		return -EMSGSIZE;
-+	if (nla_put_s32(msg, DPLL_A_PIN_PHASE_ADJUST_MAX,
-+			prop->phase_range.max))
-+		return -EMSGSIZE;
-+	ret = dpll_msg_add_pin_phase_adjust(msg, pin, ref, extack);
- 	if (ret)
- 		return ret;
- 	if (xa_empty(&pin->parent_refs))
-@@ -416,7 +475,7 @@ dpll_device_get_one(struct dpll_device *dpll, struct sk_buff *msg,
- 	if (nla_put_u32(msg, DPLL_A_TYPE, dpll->type))
- 		return -EMSGSIZE;
- 
--	return ret;
-+	return 0;
- }
- 
- static int
-@@ -705,6 +764,78 @@ dpll_pin_direction_set(struct dpll_pin *pin, struct dpll_device *dpll,
- 	return 0;
- }
- 
-+static int
-+dpll_pin_phase_adj_set(struct dpll_pin *pin, struct nlattr *phase_adj_attr,
-+		       struct netlink_ext_ack *extack)
-+{
-+	struct dpll_pin_ref *ref, *failed;
-+	const struct dpll_pin_ops *ops;
-+	s32 phase_adj, old_phase_adj;
-+	struct dpll_device *dpll;
-+	unsigned long i;
-+	int ret;
-+
-+	phase_adj = nla_get_s32(phase_adj_attr);
-+	if (phase_adj > pin->prop->phase_range.max ||
-+	    phase_adj < pin->prop->phase_range.min) {
-+		NL_SET_ERR_MSG_ATTR(extack, phase_adj_attr,
-+				    "phase adjust value not supported");
-+		return -EINVAL;
-+	}
-+
-+	xa_for_each(&pin->dpll_refs, i, ref) {
-+		ops = dpll_pin_ops(ref);
-+		if (!ops->phase_adjust_set || !ops->phase_adjust_get) {
-+			NL_SET_ERR_MSG(extack, "phase adjust not supported");
-+			return -EOPNOTSUPP;
-+		}
-+	}
-+	ref = dpll_xa_ref_dpll_first(&pin->dpll_refs);
-+	ops = dpll_pin_ops(ref);
-+	dpll = ref->dpll;
-+	ret = ops->phase_adjust_get(pin, dpll_pin_on_dpll_priv(dpll, pin),
-+				    dpll, dpll_priv(dpll), &old_phase_adj,
-+				    extack);
-+	if (ret) {
-+		NL_SET_ERR_MSG(extack, "unable to get old phase adjust value");
-+		return ret;
-+	}
-+	if (phase_adj == old_phase_adj)
-+		return 0;
-+
-+	xa_for_each(&pin->dpll_refs, i, ref) {
-+		ops = dpll_pin_ops(ref);
-+		dpll = ref->dpll;
-+		ret = ops->phase_adjust_set(pin,
-+					    dpll_pin_on_dpll_priv(dpll, pin),
-+					    dpll, dpll_priv(dpll), phase_adj,
-+					    extack);
-+		if (ret) {
-+			failed = ref;
-+			NL_SET_ERR_MSG_FMT(extack,
-+					   "phase adjust set failed for dpll_id:%u",
-+					   dpll->id);
-+			goto rollback;
-+		}
-+	}
-+	__dpll_pin_change_ntf(pin);
-+
-+	return 0;
-+
-+rollback:
-+	xa_for_each(&pin->dpll_refs, i, ref) {
-+		if (ref == failed)
-+			break;
-+		ops = dpll_pin_ops(ref);
-+		dpll = ref->dpll;
-+		if (ops->phase_adjust_set(pin, dpll_pin_on_dpll_priv(dpll, pin),
-+					  dpll, dpll_priv(dpll), old_phase_adj,
-+					  extack))
-+			NL_SET_ERR_MSG(extack, "set phase adjust rollback failed");
-+	}
 +	return ret;
 +}
 +
- static int
- dpll_pin_parent_device_set(struct dpll_pin *pin, struct nlattr *parent_nest,
- 			   struct netlink_ext_ack *extack)
-@@ -793,6 +924,11 @@ dpll_pin_set_from_nlattr(struct dpll_pin *pin, struct genl_info *info)
- 			if (ret)
- 				return ret;
- 			break;
-+		case DPLL_A_PIN_PHASE_ADJUST:
-+			ret = dpll_pin_phase_adj_set(pin, a, info->extack);
-+			if (ret)
-+				return ret;
-+			break;
- 		case DPLL_A_PIN_PARENT_DEVICE:
- 			ret = dpll_pin_parent_device_set(pin, a, info->extack);
- 			if (ret)
-diff --git a/include/linux/dpll.h b/include/linux/dpll.h
-index bbc480cd2932..578fc5fa3750 100644
---- a/include/linux/dpll.h
-+++ b/include/linux/dpll.h
-@@ -68,6 +68,18 @@ struct dpll_pin_ops {
- 	int (*prio_set)(const struct dpll_pin *pin, void *pin_priv,
- 			const struct dpll_device *dpll, void *dpll_priv,
- 			const u32 prio, struct netlink_ext_ack *extack);
-+	int (*phase_offset_get)(const struct dpll_pin *pin, void *pin_priv,
++/**
++ * ice_dpll_input_phase_adjust_set - callback for set input pin phase adjust
++ * @pin: pointer to a pin
++ * @pin_priv: private data pointer passed on pin registration
++ * @dpll: registered dpll pointer
++ * @dpll_priv: private data pointer passed on dpll registration
++ * @phase_adjust: phase_adjust to be set
++ * @extack: error reporting
++ *
++ * Dpll subsystem callback. Wraps a handler for setting phase adjust on input
++ * pin.
++ *
++ * Context: Calls a function which acquires pf->dplls.lock
++ * Return:
++ * * 0 - success
++ * * negative - error
++ */
++static int
++ice_dpll_input_phase_adjust_set(const struct dpll_pin *pin, void *pin_priv,
 +				const struct dpll_device *dpll, void *dpll_priv,
-+				s64 *phase_offset,
-+				struct netlink_ext_ack *extack);
-+	int (*phase_adjust_get)(const struct dpll_pin *pin, void *pin_priv,
-+				const struct dpll_device *dpll, void *dpll_priv,
-+				s32 *phase_adjust,
-+				struct netlink_ext_ack *extack);
-+	int (*phase_adjust_set)(const struct dpll_pin *pin, void *pin_priv,
-+				const struct dpll_device *dpll, void *dpll_priv,
-+				const s32 phase_adjust,
-+				struct netlink_ext_ack *extack);
- };
- 
- struct dpll_pin_frequency {
-@@ -91,6 +103,11 @@ struct dpll_pin_frequency {
- #define DPLL_PIN_FREQUENCY_DCF77 \
- 	DPLL_PIN_FREQUENCY(DPLL_PIN_FREQUENCY_77_5_KHZ)
- 
-+struct dpll_pin_phase_adjust_range {
-+	s32 min;
-+	s32 max;
-+};
++				s32 phase_adjust,
++				struct netlink_ext_ack *extack)
++{
++	return ice_dpll_pin_phase_adjust_set(pin, pin_priv, dpll, dpll_priv,
++					     phase_adjust, extack,
++					     ICE_DPLL_PIN_TYPE_INPUT);
++}
 +
- struct dpll_pin_properties {
- 	const char *board_label;
- 	const char *panel_label;
-@@ -99,6 +116,7 @@ struct dpll_pin_properties {
- 	unsigned long capabilities;
- 	u32 freq_supported_num;
- 	struct dpll_pin_frequency *freq_supported;
-+	struct dpll_pin_phase_adjust_range phase_range;
++/**
++ * ice_dpll_output_phase_adjust_set - callback for set output pin phase adjust
++ * @pin: pointer to a pin
++ * @pin_priv: private data pointer passed on pin registration
++ * @dpll: registered dpll pointer
++ * @dpll_priv: private data pointer passed on dpll registration
++ * @phase_adjust: phase_adjust to be set
++ * @extack: error reporting
++ *
++ * Dpll subsystem callback. Wraps a handler for setting phase adjust on output
++ * pin.
++ *
++ * Context: Calls a function which acquires pf->dplls.lock
++ * Return:
++ * * 0 - success
++ * * negative - error
++ */
++static int
++ice_dpll_output_phase_adjust_set(const struct dpll_pin *pin, void *pin_priv,
++				 const struct dpll_device *dpll, void *dpll_priv,
++				 s32 phase_adjust,
++				 struct netlink_ext_ack *extack)
++{
++	return ice_dpll_pin_phase_adjust_set(pin, pin_priv, dpll, dpll_priv,
++					     phase_adjust, extack,
++					     ICE_DPLL_PIN_TYPE_OUTPUT);
++}
++
++#define ICE_DPLL_PHASE_OFFSET_DIVIDER	100
++#define ICE_DPLL_PHASE_OFFSET_FACTOR		\
++	(DPLL_PHASE_OFFSET_DIVIDER / ICE_DPLL_PHASE_OFFSET_DIVIDER)
++/**
++ * ice_dpll_phase_offset_get - callback for get dpll phase shift value
++ * @pin: pointer to a pin
++ * @pin_priv: private data pointer passed on pin registration
++ * @dpll: registered dpll pointer
++ * @dpll_priv: private data pointer passed on dpll registration
++ * @phase_offset: on success holds pin phase_offset value
++ * @extack: error reporting
++ *
++ * Dpll subsystem callback. Handler for getting phase shift value between
++ * dpll's input and output.
++ *
++ * Context: Acquires pf->dplls.lock
++ * Return:
++ * * 0 - success
++ * * negative - error
++ */
++static int
++ice_dpll_phase_offset_get(const struct dpll_pin *pin, void *pin_priv,
++			  const struct dpll_device *dpll, void *dpll_priv,
++			  s64 *phase_offset, struct netlink_ext_ack *extack)
++{
++	struct ice_dpll *d = dpll_priv;
++	struct ice_pf *pf = d->pf;
++
++	mutex_lock(&pf->dplls.lock);
++	if (d->active_input == pin)
++		*phase_offset = d->phase_offset * ICE_DPLL_PHASE_OFFSET_FACTOR;
++	else
++		*phase_offset = 0;
++	mutex_unlock(&pf->dplls.lock);
++
++	return 0;
++}
++
+ /**
+  * ice_dpll_rclk_state_on_pin_set - set a state on rclk pin
+  * @pin: pointer to a pin
+@@ -993,6 +1186,9 @@ static const struct dpll_pin_ops ice_dpll_input_ops = {
+ 	.prio_get = ice_dpll_input_prio_get,
+ 	.prio_set = ice_dpll_input_prio_set,
+ 	.direction_get = ice_dpll_input_direction,
++	.phase_adjust_get = ice_dpll_pin_phase_adjust_get,
++	.phase_adjust_set = ice_dpll_input_phase_adjust_set,
++	.phase_offset_get = ice_dpll_phase_offset_get,
  };
  
- #if IS_ENABLED(CONFIG_DPLL)
+ static const struct dpll_pin_ops ice_dpll_output_ops = {
+@@ -1001,6 +1197,8 @@ static const struct dpll_pin_ops ice_dpll_output_ops = {
+ 	.state_on_dpll_get = ice_dpll_output_state_get,
+ 	.state_on_dpll_set = ice_dpll_output_state_set,
+ 	.direction_get = ice_dpll_output_direction,
++	.phase_adjust_get = ice_dpll_pin_phase_adjust_get,
++	.phase_adjust_set = ice_dpll_output_phase_adjust_set,
+ };
+ 
+ static const struct dpll_device_ops ice_dpll_ops = {
+@@ -1031,6 +1229,8 @@ static u64 ice_generate_clock_id(struct ice_pf *pf)
+  */
+ static void ice_dpll_notify_changes(struct ice_dpll *d)
+ {
++	bool pin_notified = false;
++
+ 	if (d->prev_dpll_state != d->dpll_state) {
+ 		d->prev_dpll_state = d->dpll_state;
+ 		dpll_device_change_ntf(d->dpll);
+@@ -1039,7 +1239,14 @@ static void ice_dpll_notify_changes(struct ice_dpll *d)
+ 		if (d->prev_input)
+ 			dpll_pin_change_ntf(d->prev_input);
+ 		d->prev_input = d->active_input;
+-		if (d->active_input)
++		if (d->active_input) {
++			dpll_pin_change_ntf(d->active_input);
++			pin_notified = true;
++		}
++	}
++	if (d->prev_phase_offset != d->phase_offset) {
++		d->prev_phase_offset = d->phase_offset;
++		if (!pin_notified && d->active_input)
+ 			dpll_pin_change_ntf(d->active_input);
+ 	}
+ }
+@@ -1065,7 +1272,7 @@ ice_dpll_update_state(struct ice_pf *pf, struct ice_dpll *d, bool init)
+ 
+ 	ret = ice_get_cgu_state(&pf->hw, d->dpll_idx, d->prev_dpll_state,
+ 				&d->input_idx, &d->ref_state, &d->eec_mode,
+-				&d->phase_shift, &d->dpll_state);
++				&d->phase_offset, &d->dpll_state);
+ 
+ 	dev_dbg(ice_pf_to_dev(pf),
+ 		"update dpll=%d, prev_src_idx:%u, src_idx:%u, state:%d, prev:%d mode:%d\n",
+@@ -1656,6 +1863,15 @@ ice_dpll_init_info_direct_pins(struct ice_pf *pf,
+ 				return ret;
+ 			pins[i].prop.capabilities |=
+ 				DPLL_PIN_CAPABILITIES_PRIORITY_CAN_CHANGE;
++			pins[i].prop.phase_range.min =
++				pf->dplls.input_phase_adj_max;
++			pins[i].prop.phase_range.max =
++				-pf->dplls.input_phase_adj_max;
++		} else {
++			pins[i].prop.phase_range.min =
++				pf->dplls.output_phase_adj_max;
++			pins[i].prop.phase_range.max =
++				-pf->dplls.output_phase_adj_max;
+ 		}
+ 		pins[i].prop.capabilities |=
+ 			DPLL_PIN_CAPABILITIES_STATE_CAN_CHANGE;
+diff --git a/drivers/net/ethernet/intel/ice/ice_dpll.h b/drivers/net/ethernet/intel/ice/ice_dpll.h
+index 2dfe764b81e1..bb32b6d88373 100644
+--- a/drivers/net/ethernet/intel/ice/ice_dpll.h
++++ b/drivers/net/ethernet/intel/ice/ice_dpll.h
+@@ -19,6 +19,7 @@
+  * @state: state of a pin
+  * @prop: pin properties
+  * @freq: current frequency of a pin
++ * @phase_adjust: current phase adjust value
+  */
+ struct ice_dpll_pin {
+ 	struct dpll_pin *pin;
+@@ -30,6 +31,7 @@ struct ice_dpll_pin {
+ 	u8 state[ICE_DPLL_RCLK_NUM_MAX];
+ 	struct dpll_pin_properties prop;
+ 	u32 freq;
++	s32 phase_adjust;
+ };
+ 
+ /** ice_dpll - store info required for DPLL control
+@@ -40,7 +42,8 @@ struct ice_dpll_pin {
+  * @prev_input_idx: previously selected input index
+  * @ref_state: state of dpll reference signals
+  * @eec_mode: eec_mode dpll is configured for
+- * @phase_shift: phase shift delay of a dpll
++ * @phase_offset: phase offset of active pin vs dpll signal
++ * @prev_phase_offset: previous phase offset of active pin vs dpll signal
+  * @input_prio: priorities of each input
+  * @dpll_state: current dpll sync state
+  * @prev_dpll_state: last dpll sync state
+@@ -55,7 +58,8 @@ struct ice_dpll {
+ 	u8 prev_input_idx;
+ 	u8 ref_state;
+ 	u8 eec_mode;
+-	s64 phase_shift;
++	s64 phase_offset;
++	s64 prev_phase_offset;
+ 	u8 *input_prio;
+ 	enum dpll_lock_status dpll_state;
+ 	enum dpll_lock_status prev_dpll_state;
+@@ -78,6 +82,8 @@ struct ice_dpll {
+  * @cgu_state_acq_err_num: number of errors returned during periodic work
+  * @base_rclk_idx: idx of first pin used for clock revocery pins
+  * @clock_id: clock_id of dplls
++ * @input_phase_adj_max: max phase adjust value for an input pins
++ * @output_phase_adj_max: max phase adjust value for an output pins
+  */
+ struct ice_dplls {
+ 	struct kthread_worker *kworker;
 -- 
 2.38.1
 
