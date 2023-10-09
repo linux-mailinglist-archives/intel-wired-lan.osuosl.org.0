@@ -1,68 +1,68 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 19BCE7BD66A
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  9 Oct 2023 11:11:13 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 416777BD667
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  9 Oct 2023 11:11:00 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id ADF55820D5;
-	Mon,  9 Oct 2023 09:11:11 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org ADF55820D5
+	by smtp1.osuosl.org (Postfix) with ESMTP id C2F5C82053;
+	Mon,  9 Oct 2023 09:10:58 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org C2F5C82053
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1696842671;
-	bh=aRd0773OAahSGr6Kj2+TdPKtQ2hV1L2KSYE2fhfrphM=;
+	s=default; t=1696842658;
+	bh=kdKy3+L4BCWfh42Eof7CIiAeGn8pZEqRczVPidaKuM8=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=8KjrkMwmZ/kN4pKzVJCbGHoZhteM0NCeeL21AyXtDd4HAdemIUhsKgWPkfqY+qmEf
-	 paaqXoMaVMW6PWB6WEEDJppQx7+3cNGCYKEHzylejYkoHY5bEEK5MNbKoKfFjj18L1
-	 8K7q0Nq9EEv/wHL6uio5XfZJsE3ki4DDGgPnROSGxrwh4OQ3UciiI4L511/Z9yfR6R
-	 xC6JI1rXMH8Y4lFPXdBl0gVvuiIa+gIk920ZLGBb8bDHDt5c2nzSf0Nf3YSrzlpMFT
-	 weDJey9lnBHKa6EF4VEPefQ1A5dA3urkC8ID4BTBJYv3PHejn2S3cGx2SrvGF1FMsw
-	 JmjdUTSHie0Fw==
+	b=cLW7VvstXreDFHd9Gw2KF55NhUCGhC1wnlbwY9AlhOYeo81dO9RxUeBQ2iNltrk2f
+	 KK5vXYiL6c95vV93c7vL2gqXo9U+FynvHD4C4YuWjVyQn8Tp0/MKlld5eSMgcFC8B5
+	 P0742qU7mSnOXVQlTBKcPahJy891MDb6lxUSLIpA7EAC/tSaLMlBAummIz3SGO9fJi
+	 4+jiGGq8XVypDKaPwk37kQKup/LkFSnQ9iimGv+3FxcJRWEu2AVaQs77WYGsKRCp2x
+	 Y0ehD0aivuKCm2rGgAMirRbAWIbK82aI6eeXacIBPQ7ugsqUb05YcakiROwx84Ljlj
+	 IG786aLV51Qsg==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id EJfAMQmGtG22; Mon,  9 Oct 2023 09:11:11 +0000 (UTC)
+	with ESMTP id B00ZdCUpnZ0s; Mon,  9 Oct 2023 09:10:57 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 77C94820EF;
-	Mon,  9 Oct 2023 09:11:10 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 77C94820EF
+	by smtp1.osuosl.org (Postfix) with ESMTP id 6C6C782038;
+	Mon,  9 Oct 2023 09:10:57 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6C6C782038
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id A8CAA1BF94D
- for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Oct 2023 09:10:45 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 7ED7B409DB
+ by ash.osuosl.org (Postfix) with ESMTP id 987DC1BF2B3
  for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Oct 2023 09:10:44 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 7ED7B409DB
+Received: from localhost (localhost [127.0.0.1])
+ by smtp2.osuosl.org (Postfix) with ESMTP id 8400C40190
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Oct 2023 09:10:43 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 8400C40190
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 8pMT48bKUEyD for <intel-wired-lan@lists.osuosl.org>;
+ with ESMTP id yLv6WVKtTm3w for <intel-wired-lan@lists.osuosl.org>;
  Mon,  9 Oct 2023 09:10:42 +0000 (UTC)
 Received: from mgamail.intel.com (mgamail.intel.com [192.55.52.120])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 59FAC405B1
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 7FC76409DB
  for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Oct 2023 09:10:42 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 59FAC405B1
-X-IronPort-AV: E=McAfee;i="6600,9927,10857"; a="382978402"
-X-IronPort-AV: E=Sophos;i="6.03,210,1694761200"; d="scan'208";a="382978402"
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 7FC76409DB
+X-IronPort-AV: E=McAfee;i="6600,9927,10857"; a="382978409"
+X-IronPort-AV: E=Sophos;i="6.03,210,1694761200"; d="scan'208";a="382978409"
 Received: from fmsmga003.fm.intel.com ([10.253.24.29])
  by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 09 Oct 2023 02:10:40 -0700
+ 09 Oct 2023 02:10:41 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10857"; a="843635711"
-X-IronPort-AV: E=Sophos;i="6.03,210,1694761200"; d="scan'208";a="843635711"
+X-IronPort-AV: E=McAfee;i="6600,9927,10857"; a="843635719"
+X-IronPort-AV: E=Sophos;i="6.03,210,1694761200"; d="scan'208";a="843635719"
 Received: from irvmail002.ir.intel.com ([10.43.11.120])
- by FMSMGA003.fm.intel.com with ESMTP; 09 Oct 2023 02:10:38 -0700
+ by FMSMGA003.fm.intel.com with ESMTP; 09 Oct 2023 02:10:39 -0700
 Received: from fedora.igk.intel.com (Metan_eth.igk.intel.com [10.123.220.124])
- by irvmail002.ir.intel.com (Postfix) with ESMTP id A11D43635D;
- Mon,  9 Oct 2023 10:10:37 +0100 (IST)
+ by irvmail002.ir.intel.com (Postfix) with ESMTP id D0A5536372;
+ Mon,  9 Oct 2023 10:10:38 +0100 (IST)
 From: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Mon,  9 Oct 2023 05:07:08 -0400
-Message-Id: <20231009090711.136777-3-mateusz.polchlopek@intel.com>
+Date: Mon,  9 Oct 2023 05:07:09 -0400
+Message-Id: <20231009090711.136777-4-mateusz.polchlopek@intel.com>
 X-Mailer: git-send-email 2.38.1
 In-Reply-To: <20231009090711.136777-1-mateusz.polchlopek@intel.com>
 References: <20231009090711.136777-1-mateusz.polchlopek@intel.com>
@@ -72,19 +72,19 @@ X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  t=1696842642; x=1728378642;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=c6zZJweTyeHofPvPL00/6e5qNZyuSiVqBJjm+rSh+Iw=;
- b=L3vn/JH1qBr0Zpk+MLLFIRdO2X5jjsXJJOR8dFQSrmNGmkaA03cVXsDh
- Dx0bqEgtYuk753C/wCfzN2JcmOBImEZyyvSXjvGBX7HNtM9iMDxHY1kc1
- 9LKgQyj12jKq/UTrBbcNEooEgg/xoLTfRNlanOesJKrCtK0zf9e9ReT+F
- QjS59blw43AVGPtvRZIWeJluLR3DxLHQSOp470HBSzkfvIBfPOQWH9I37
- fMGY89q6KwPEzmN8Rm6LdI/cpF+WXAp14U631FxTndHYuIolDcRBdEcxu
- rxzYPrvzOamEgBxZ1OblOJZa2jwqU/6IjGHxtTD4Mt9lzXM2w4rqzyQKd
- A==;
+ bh=kNrEmOh5WmMmAaFdoGUjMhORFctkIYyOww9zGbLkdFI=;
+ b=TzySlZxl0JGAv1Odu+iqd01FeSF+HfR565YiW6lQeF1f73w9JfaOowlL
+ IMFi/zogg/VVOlNJWnXCqjs0rPvVaK+d12O/XcXv1u1DksphshrEVEYg/
+ J2xGc9R6G4apINevgvx1L4w+5xGL3A/FtyDTe1puxmOlnasYsIOHOspy0
+ QAsJBXoFvDZItKC++U79U8CtMhZtz4Hjh4is7I7Xux00bTHKiTI0AGc7G
+ On4bpsA26J2qu3xpU9iXrBBKGEfaJFSIsbhQXxZzGXshzXxs7C+wXGKpn
+ 3/9AJxp+nOPQWQ/gnIlvNt4qNXZtyRf0ddmI6LTDPp7ql6vLVufPhws7F
+ Q==;
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=L3vn/JH1
-Subject: [Intel-wired-lan] [PATCH iwl-next v3 2/5] ice: Adjust the
- VSI/Aggregator layers
+ header.a=rsa-sha256 header.s=Intel header.b=TzySlZxl
+Subject: [Intel-wired-lan] [PATCH iwl-next v3 3/5] ice: Enable switching
+ default Tx scheduler topology
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,125 +97,197 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Przemek Kitszel <przemyslaw.kitszel@intel.com>, netdev@vger.kernel.org,
- Mateusz Polchlopek <mateusz.polchlopek@intel.com>,
- Raj Victor <victor.raj@intel.com>,
- Michal Wilczynski <michal.wilczynski@intel.com>
+Cc: netdev@vger.kernel.org, Mateusz Polchlopek <mateusz.polchlopek@intel.com>,
+ Michal Wilczynski <michal.wilczynski@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Raj Victor <victor.raj@intel.com>
+From: Michal Wilczynski <michal.wilczynski@intel.com>
 
-Adjust the VSI/Aggregator layers based on the number of logical layers
-supported by the FW. Currently the VSI and Aggregator layers are
-fixed based on the 9 layer scheduler tree layout. Due to performance
-reasons the number of layers of the scheduler tree is changing from
-9 to 5. It requires a readjustment of these VSI/Aggregator layer values.
+Introduce support for Tx scheduler topology change, based on user
+selection, from default 9-layer to 5-layer.
+Change requires NVM (version 3.20 or newer) and DDP package (OS Package
+1.3.30 or newer - available for over a year in linux-firmware, since
+commit aed71f296637 in linux-firmware ("ice: Update package to 1.3.30.0"))
+https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/commit/?id=aed71f296637
 
-Signed-off-by: Raj Victor <victor.raj@intel.com>
-Co-developed-by: Michal Wilczynski <michal.wilczynski@intel.com>
+Enable 5-layer topology switch in init path of the driver. To accomplish
+that upload of the DDP package needs to be delayed, until change in Tx
+topology is finished. To trigger the Tx change user selection should be
+changed in NVM using devlink. Then the platform should be rebooted.
+
 Signed-off-by: Michal Wilczynski <michal.wilczynski@intel.com>
 Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+Co-developed-by: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
 Signed-off-by: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_sched.c | 37 +++++++++++-----------
- 1 file changed, 19 insertions(+), 18 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_ddp.c  |  2 +-
+ drivers/net/ethernet/intel/ice/ice_ddp.h  |  2 +-
+ drivers/net/ethernet/intel/ice/ice_main.c | 97 ++++++++++++++++++-----
+ 3 files changed, 80 insertions(+), 21 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_sched.c b/drivers/net/ethernet/intel/ice/ice_sched.c
-index c0533d7b66b9..5a65cf8a1806 100644
---- a/drivers/net/ethernet/intel/ice/ice_sched.c
-+++ b/drivers/net/ethernet/intel/ice/ice_sched.c
-@@ -1140,12 +1140,11 @@ u8 ice_sched_get_vsi_layer(struct ice_hw *hw)
- 	 *     5 or less       sw_entry_point_layer
- 	 */
- 	/* calculate the VSI layer based on number of layers. */
--	if (hw->num_tx_sched_layers > ICE_VSI_LAYER_OFFSET + 1) {
--		u8 layer = hw->num_tx_sched_layers - ICE_VSI_LAYER_OFFSET;
--
--		if (layer > hw->sw_entry_point_layer)
--			return layer;
--	}
-+	if (hw->num_tx_sched_layers == ICE_SCHED_9_LAYERS)
-+		return hw->num_tx_sched_layers - ICE_VSI_LAYER_OFFSET;
-+	else if (hw->num_tx_sched_layers == ICE_SCHED_5_LAYERS)
-+		/* qgroup and VSI layers are same */
-+		return hw->num_tx_sched_layers - ICE_QGRP_LAYER_OFFSET;
- 	return hw->sw_entry_point_layer;
- }
+diff --git a/drivers/net/ethernet/intel/ice/ice_ddp.c b/drivers/net/ethernet/intel/ice/ice_ddp.c
+index 95c7712b56b8..44591bcdb537 100644
+--- a/drivers/net/ethernet/intel/ice/ice_ddp.c
++++ b/drivers/net/ethernet/intel/ice/ice_ddp.c
+@@ -1950,7 +1950,7 @@ ice_get_set_tx_topo(struct ice_hw *hw, u8 *buf, u16 buf_size,
+  * The function will apply the new Tx topology from the package buffer
+  * if available.
+  */
+-int ice_cfg_tx_topo(struct ice_hw *hw, u8 *buf, u32 len)
++int ice_cfg_tx_topo(struct ice_hw *hw, const u8 *buf, u32 len)
+ {
+ 	u8 *current_topo, *new_topo = NULL;
+ 	struct ice_run_time_cfg_seg *seg;
+diff --git a/drivers/net/ethernet/intel/ice/ice_ddp.h b/drivers/net/ethernet/intel/ice/ice_ddp.h
+index c00203df35da..b6f126e11dea 100644
+--- a/drivers/net/ethernet/intel/ice/ice_ddp.h
++++ b/drivers/net/ethernet/intel/ice/ice_ddp.h
+@@ -432,6 +432,6 @@ u16 ice_pkg_buf_get_active_sections(struct ice_buf_build *bld);
+ void *ice_pkg_enum_section(struct ice_seg *ice_seg, struct ice_pkg_enum *state,
+ 			   u32 sect_type);
  
-@@ -1162,13 +1161,10 @@ u8 ice_sched_get_agg_layer(struct ice_hw *hw)
- 	 *     7 or less       sw_entry_point_layer
+-int ice_cfg_tx_topo(struct ice_hw *hw, u8 *buf, u32 len);
++int ice_cfg_tx_topo(struct ice_hw *hw, const u8 *buf, u32 len);
+ 
+ #endif
+diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
+index 3363c69d49da..ad3a1572a635 100644
+--- a/drivers/net/ethernet/intel/ice/ice_main.c
++++ b/drivers/net/ethernet/intel/ice/ice_main.c
+@@ -4319,11 +4319,11 @@ static char *ice_get_opt_fw_name(struct ice_pf *pf)
+ /**
+  * ice_request_fw - Device initialization routine
+  * @pf: pointer to the PF instance
++ * @firmware: double pointer to firmware struct
+  */
+-static void ice_request_fw(struct ice_pf *pf)
++static int ice_request_fw(struct ice_pf *pf, const struct firmware **firmware)
+ {
+ 	char *opt_fw_filename = ice_get_opt_fw_name(pf);
+-	const struct firmware *firmware = NULL;
+ 	struct device *dev = ice_pf_to_dev(pf);
+ 	int err = 0;
+ 
+@@ -4332,29 +4332,86 @@ static void ice_request_fw(struct ice_pf *pf)
+ 	 * and warning messages for other errors.
  	 */
- 	/* calculate the aggregator layer based on number of layers. */
--	if (hw->num_tx_sched_layers > ICE_AGG_LAYER_OFFSET + 1) {
--		u8 layer = hw->num_tx_sched_layers - ICE_AGG_LAYER_OFFSET;
+ 	if (opt_fw_filename) {
+-		err = firmware_request_nowarn(&firmware, opt_fw_filename, dev);
+-		if (err) {
+-			kfree(opt_fw_filename);
+-			goto dflt_pkg_load;
+-		}
 -
--		if (layer > hw->sw_entry_point_layer)
--			return layer;
--	}
--	return hw->sw_entry_point_layer;
-+	if (hw->num_tx_sched_layers == ICE_SCHED_9_LAYERS)
-+		return hw->num_tx_sched_layers - ICE_AGG_LAYER_OFFSET;
-+	else
-+		return hw->sw_entry_point_layer;
+-		/* request for firmware was successful. Download to device */
+-		ice_load_pkg(firmware, pf);
++		err = firmware_request_nowarn(firmware, opt_fw_filename, dev);
+ 		kfree(opt_fw_filename);
+-		release_firmware(firmware);
+-		return;
++		if (!err)
++			return err;
+ 	}
++	err = request_firmware(firmware, ICE_DDP_PKG_FILE, dev);
++	if (err)
++		dev_err(dev, "The DDP package file was not found or could not be read. Entering Safe Mode\n");
++
++	return err;
++}
++
++/**
++ * ice_init_tx_topology - performs Tx topology initialization
++ * @hw: pointer to the hardware structure
++ * @firmware: pointer to firmware structure
++ */
++static int
++ice_init_tx_topology(struct ice_hw *hw, const struct firmware *firmware)
++{
++	u8 num_tx_sched_layers = hw->num_tx_sched_layers;
++	struct ice_pf *pf = hw->back;
++	struct device *dev;
++	int err;
++
++	dev = ice_pf_to_dev(pf);
+ 
+-dflt_pkg_load:
+-	err = request_firmware(&firmware, ICE_DDP_PKG_FILE, dev);
++	err = ice_cfg_tx_topo(hw, firmware->data, firmware->size);
++	if (!err) {
++		if (hw->num_tx_sched_layers > num_tx_sched_layers)
++			dev_info(dev, "Tx scheduling layers switching feature disabled\n");
++		else
++			dev_info(dev, "Tx scheduling layers switching feature enabled\n");
++		/* if there was a change in topology ice_cfg_tx_topo triggered
++		 * a CORER and we need to re-init hw
++		 */
++		ice_deinit_hw(hw);
++		err = ice_init_hw(hw);
++
++		return err;
++	} else if (err == -EIO) {
++		dev_info(dev, "DDP package does not support Tx scheduling layers switching feature - please update to the latest DDP package and try again\n");
++	}
++
++	return 0;
++}
++
++/**
++ * ice_init_ddp_config - DDP related configuration
++ * @hw: pointer to the hardware structure
++ * @pf: pointer to pf structure
++ *
++ * This function loads DDP file from the disk, then initializes Tx
++ * topology. At the end DDP package is loaded on the card.
++ */
++static int ice_init_ddp_config(struct ice_hw *hw, struct ice_pf *pf)
++{
++	struct device *dev = ice_pf_to_dev(pf);
++	const struct firmware *firmware = NULL;
++	int err;
++
++	err = ice_request_fw(pf, &firmware);
+ 	if (err) {
+-		dev_err(dev, "The DDP package file was not found or could not be read. Entering Safe Mode\n");
+-		return;
++		dev_err(dev, "Fail during requesting FW: %d\n", err);
++		return err;
+ 	}
+ 
+-	/* request for firmware was successful. Download to device */
++	err = ice_init_tx_topology(hw, firmware);
++	if (err) {
++		dev_err(dev, "Fail during initialization of Tx topology: %d\n",
++			err);
++		release_firmware(firmware);
++		return err;
++	}
++
++	/* Download firmware to device */
+ 	ice_load_pkg(firmware, pf);
+ 	release_firmware(firmware);
++
++	return 0;
  }
  
  /**
-@@ -1523,10 +1519,11 @@ ice_sched_get_free_qparent(struct ice_port_info *pi, u16 vsi_handle, u8 tc,
- {
- 	struct ice_sched_node *vsi_node, *qgrp_node;
- 	struct ice_vsi_ctx *vsi_ctx;
-+	u8 qgrp_layer, vsi_layer;
- 	u16 max_children;
--	u8 qgrp_layer;
+@@ -4614,9 +4671,11 @@ static int ice_init_dev(struct ice_pf *pf)
  
- 	qgrp_layer = ice_sched_get_qgrp_layer(pi->hw);
-+	vsi_layer = ice_sched_get_vsi_layer(pi->hw);
- 	max_children = pi->hw->max_children[qgrp_layer];
+ 	ice_init_feature_support(pf);
  
- 	vsi_ctx = ice_get_vsi_ctx(pi->hw, vsi_handle);
-@@ -1537,6 +1534,12 @@ ice_sched_get_free_qparent(struct ice_port_info *pi, u16 vsi_handle, u8 tc,
- 	if (!vsi_node)
- 		return NULL;
+-	ice_request_fw(pf);
++	err = ice_init_ddp_config(hw, pf);
++	if (err)
++		return err;
  
-+	/* If the queue group and VSI layer are same then queues
-+	 * are all attached directly to VSI
-+	 */
-+	if (qgrp_layer == vsi_layer)
-+		return vsi_node;
-+
- 	/* get the first queue group node from VSI sub-tree */
- 	qgrp_node = ice_sched_get_first_node(pi, vsi_node, qgrp_layer);
- 	while (qgrp_node) {
-@@ -3220,7 +3223,7 @@ ice_sched_add_rl_profile(struct ice_port_info *pi,
- 	u8 profile_type;
- 	int status;
- 
--	if (layer_num >= ICE_AQC_TOPO_MAX_LEVEL_NUM)
-+	if (!pi || layer_num >= pi->hw->num_tx_sched_layers)
- 		return NULL;
- 	switch (rl_type) {
- 	case ICE_MIN_BW:
-@@ -3236,8 +3239,6 @@ ice_sched_add_rl_profile(struct ice_port_info *pi,
- 		return NULL;
- 	}
- 
--	if (!pi)
--		return NULL;
- 	hw = pi->hw;
- 	list_for_each_entry(rl_prof_elem, &pi->rl_prof_list[layer_num],
- 			    list_entry)
-@@ -3467,7 +3468,7 @@ ice_sched_rm_rl_profile(struct ice_port_info *pi, u8 layer_num, u8 profile_type,
- 	struct ice_aqc_rl_profile_info *rl_prof_elem;
- 	int status = 0;
- 
--	if (layer_num >= ICE_AQC_TOPO_MAX_LEVEL_NUM)
-+	if (layer_num >= pi->hw->num_tx_sched_layers)
- 		return -EINVAL;
- 	/* Check the existing list for RL profile */
- 	list_for_each_entry(rl_prof_elem, &pi->rl_prof_list[layer_num],
+-	/* if ice_request_fw fails, ICE_FLAG_ADV_FEATURES bit won't be
++	/* if ice_init_ddp_config fails, ICE_FLAG_ADV_FEATURES bit won't be
+ 	 * set in pf->state, which will cause ice_is_safe_mode to return
+ 	 * true
+ 	 */
 -- 
 2.38.1
 
