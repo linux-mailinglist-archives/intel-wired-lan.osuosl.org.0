@@ -2,86 +2,86 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id A5E517C7650
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 12 Oct 2023 21:07:54 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id DF4397C7652
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 12 Oct 2023 21:07:58 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 2F784612CE;
-	Thu, 12 Oct 2023 19:07:53 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2F784612CE
+	by smtp3.osuosl.org (Postfix) with ESMTP id 6DF7C612D1;
+	Thu, 12 Oct 2023 19:07:57 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6DF7C612D1
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1697137673;
-	bh=XBT4/T0+lkJ2hcHG7rMFPHk5q5eV3jHMjR2UFnS6p58=;
+	s=default; t=1697137677;
+	bh=60UefcizznLBx6M2vGYK5o7Bg/AxO2I0ZISRtOkt6gY=;
 	h=Date:In-Reply-To:References:From:To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=GxRfPjqT8EAZ7Yv1iKe6CqI6V85IC/ZJFrGJwdzvGdLJpawRkUT9YGeZj0gCoPQjQ
-	 QD+MAbH34HNuht/FTr9v5O4fLdApDVKC0k8+c/jkE/CZggaX6m51oVtWVs6AeEHR81
-	 99rMCerPjHnhiBYEoEoTbWv6hKfTAPIpNTwKMPqKYDAXIThNbFynHM1om0YVfYWJQ0
-	 V+3mFOn4yDDqnzHDiVc7HIRyPlxJOEc1YbMrc9Z+wSd1CFueqWRevifuIrkGz5fX13
-	 hhfJSWiLTIuG5fI/5maIxiU+WemT2VMNiScELwjF6QVSJZuaWV79BuSJ4xeRxeqg6F
-	 XxxGtU/a4KAxw==
+	b=W1KKUBLFB/qI+mnAjkPqfOR4XcMMbAr1wBcStT5LxuVzYgTEYzb86tbJOz8Ubc4KI
+	 G5qIEwyrw+cXFw8QEf+oRUHhYe9wdFRUy9cMS8WDxEmuIgUaWIZbXf/VJx9ECuY9c+
+	 pZlmadw9Q4QZ3C/EEIsDGbG6OoachSI/SAqkstOmlpZyo0krHTq+1SLG8djEjSqUX5
+	 BM7Ol2Q0QjoTp6kmjILAlkeCaaMALWGYY3Lj+IDz8LagVoibXBZa3LHni2s3W3S2cL
+	 gGeKJz+G/H9/dRuJSA72hJWDTfvcuXcTPNRmq96T5J42K9/qfpYGrP53cnIVc2QqSJ
+	 0SP77l/Oo2wWQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id V-IzBJe7IAdF; Thu, 12 Oct 2023 19:07:52 +0000 (UTC)
+	with ESMTP id HYGhjjUw2Ok7; Thu, 12 Oct 2023 19:07:56 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 1716F6105A;
-	Thu, 12 Oct 2023 19:07:52 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1716F6105A
+	by smtp3.osuosl.org (Postfix) with ESMTP id 43002606DC;
+	Thu, 12 Oct 2023 19:07:56 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 43002606DC
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 79E351BF25F
- for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Oct 2023 22:27:14 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id A33B01BF969
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Oct 2023 22:27:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 4E9474044D
- for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Oct 2023 22:27:14 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 4E9474044D
+ by smtp2.osuosl.org (Postfix) with ESMTP id 7C5A74044D
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Oct 2023 22:27:15 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 7C5A74044D
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id DX17hevwDrRp for <intel-wired-lan@lists.osuosl.org>;
- Tue, 10 Oct 2023 22:27:13 +0000 (UTC)
-Received: from mail-yb1-xb49.google.com (mail-yb1-xb49.google.com
- [IPv6:2607:f8b0:4864:20::b49])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 5FA8F40012
- for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Oct 2023 22:27:13 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 5FA8F40012
-Received: by mail-yb1-xb49.google.com with SMTP id
- 3f1490d57ef6-d9a509861acso1944604276.2
- for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Oct 2023 15:27:13 -0700 (PDT)
+ with ESMTP id fhRk5r4I1G9G for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 10 Oct 2023 22:27:14 +0000 (UTC)
+Received: from mail-yw1-x1149.google.com (mail-yw1-x1149.google.com
+ [IPv6:2607:f8b0:4864:20::1149])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id A302240012
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Oct 2023 22:27:14 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A302240012
+Received: by mail-yw1-x1149.google.com with SMTP id
+ 00721157ae682-5a7bcbb95b2so20484297b3.3
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Oct 2023 15:27:14 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1696976832; x=1697581632;
+ d=1e100.net; s=20230601; t=1696976833; x=1697581633;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=GtM0w+J9cw3jjb0usGEHfb5iDugSjDgb6JSiT+iZymc=;
- b=eTzJsnwFHqFfCH/jU2bwueMDONwl70zofdHV5ryMWRmtVTTjEdXqxP9CDToTnKurzl
- pjPXNdjRNKd0UADBXp0O1HcXLE37AQ3CB2yMrwcuDjpD5fTFtwDaFRctcUmANEkHdBD0
- QiFebgHRU1XpzgkIA6kbahPLsT8xvK72kU5EG5BdCrMwZ1mm1uH/YyfzTVps7K5nOWWf
- sABjHRvb+n8+TCz2LAgFJ5E5Zr1KumT/c5NNthIwrLQHecV6LIXnnuYar42hJxZwNN42
- YjfQ9k6WbITCWKhsasye6PzLt8S3ddLHakVSl4y8d++rAVHd+wghBRHCqDSJJiUqKjws
- 6Axw==
-X-Gm-Message-State: AOJu0YwPtvt0vAfOSeeer0IciCmAYx6ypiAMkypw1WeeGk7pMT5fO6ZP
- XcKwbkzMLuTUiehnHcaUqxBQUdhw6oul4mDCrA==
-X-Google-Smtp-Source: AGHT+IE90IMRLxbCtK+FWTfBYeHC+U5Cy3qc2KOUif/Mw4hAnclXZq/qXjDbI29Vfn0ZPUuW4ixhfNcK0Pbgbem5bA==
+ bh=no1ezg/K8vqwwloDW/HES3GQ/s3OFKPTQdEopkcO670=;
+ b=nuk0xsb6ahM6u+vYiui6YNsnl9G0XTvvGQ9ELR0neT4GrImeEnArXLyo2LgrzklTuv
+ 1rutxWYtq6gxEWsirzmAWgpUkpRrDCgH72SLkgKdWiMlG8CexaHs2rAVopSa43Mx67Lq
+ dWzsfjcpgKjDTDPN8ZS6B6H6FYVeHYrVzX0axfZITJ1vBNvf/HwmVKk0KhRjenFPVUdJ
+ aXxOK6gWnWVGsNOLdFCqOY+PvCx8o7ACML1tFmp1cgWlPm5OEfKhhju8XI50AgVJ8hG1
+ kPSeRn4+1irwSlFqcVOByMxBhJYBcA8TT1xfP/lxvahRMz6pcHZnLAS1fS17kSYmFXuZ
+ qXYQ==
+X-Gm-Message-State: AOJu0YxsuHQdbF6eEZ68at4OQRwYR+XrAc/ndlSDOyngpouZEtg2Z2Rc
+ KZge4jzH31g+N3Fl1hAlUUQjB7MNp/LShWM+OQ==
+X-Google-Smtp-Source: AGHT+IGbG6IYsWKztc9eojIXUzVD3Isy/9hlxzBlyjEVNI0A4VM2MItv3Gt9eZ20f/xkZ1g/F2q2V2ckLAz9494wcg==
 X-Received: from jstitt-linux1.c.googlers.com
  ([fda3:e722:ac3:cc00:2b:ff92:c0a8:23b5])
- (user=justinstitt job=sendgmr) by 2002:a25:ced3:0:b0:d9a:634d:4400 with SMTP
- id x202-20020a25ced3000000b00d9a634d4400mr53292ybe.5.1696976832282; Tue, 10
- Oct 2023 15:27:12 -0700 (PDT)
-Date: Tue, 10 Oct 2023 22:26:58 +0000
+ (user=justinstitt job=sendgmr) by 2002:a25:3290:0:b0:d9a:5b63:a682 with SMTP
+ id y138-20020a253290000000b00d9a5b63a682mr53542yby.13.1696976833634; Tue, 10
+ Oct 2023 15:27:13 -0700 (PDT)
+Date: Tue, 10 Oct 2023 22:26:59 +0000
 In-Reply-To: <20231010-netdev-replace-strncpy-resend-as-series-v1-0-caf9f0f2f021@google.com>
 Mime-Version: 1.0
 References: <20231010-netdev-replace-strncpy-resend-as-series-v1-0-caf9f0f2f021@google.com>
 X-Developer-Key: i=justinstitt@google.com; a=ed25519;
  pk=tC3hNkJQTpNX/gLKxTNQKDmiQl6QjBNCGKJINqAdJsE=
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1696976825; l=2053;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1696976825; l=1977;
  i=justinstitt@google.com; s=20230717; h=from:subject:message-id;
- bh=tIBhN0dI5KQV25Dn8IjDZp+7IelZH6PsmdLrTBm66Xc=;
- b=hRT8DAV5FRqqSXsHAHmPSGPSEQbQBGx13G3GU53NmuUbzuZgGmmwVJqw/B2WprCOy7JOSEs7A
- JUBcK+9dOy2Bis775R/QWrp3y4385KpGI7leBfVy2b+aVrSU/y1pH0a
+ bh=l7ud0vzH9yZbaC9lpRM0yEoQEtXO/RLFBqfqu9zutis=;
+ b=jQcCLbxmGWObHnArcKoYj2/zN6/Nnp7Y3bIItQSofJOQ0w5NrEaAgjJZ8R6E+xsT14D0zxpeI
+ a7KQJh8W8O7AWC0AJvaq/NMmrGf75By+asp4Xl/fMav25g/6JTazc+A
 X-Mailer: b4 0.12.3
-Message-ID: <20231010-netdev-replace-strncpy-resend-as-series-v1-5-caf9f0f2f021@google.com>
+Message-ID: <20231010-netdev-replace-strncpy-resend-as-series-v1-6-caf9f0f2f021@google.com>
 From: Justin Stitt <justinstitt@google.com>
 To: Jesse Brandeburg <jesse.brandeburg@intel.com>,
  Tony Nguyen <anthony.l.nguyen@intel.com>, 
@@ -89,20 +89,20 @@ To: Jesse Brandeburg <jesse.brandeburg@intel.com>,
  Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>
 X-Mailman-Approved-At: Thu, 12 Oct 2023 19:06:39 +0000
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1696976832; x=1697581632; darn=lists.osuosl.org;
+ d=google.com; s=20230601; t=1696976833; x=1697581633; darn=lists.osuosl.org;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:from:to:cc:subject:date:message-id:reply-to;
- bh=GtM0w+J9cw3jjb0usGEHfb5iDugSjDgb6JSiT+iZymc=;
- b=HCZhogpfqvjds7uNBfhVwTX4Eq8Uw663hvqpitFaKyMEcE59il4keVd4kt7nY6wV6v
- 3IpYCYMCEey2XeTf1ckMj7vwSgd7Wnoch7EtSXBiSKe2LsYFi5WMwt6+fFBRH8mzWwZH
- LuKH8Xk78CzFcQQH58RlJKyzL+wg4YiQvbKne6TmkZ8YYHdHWtJOpeZ9LPgOqJ+pseWH
- cMd2trTaqXlJoYyuJQcXeplsh77NjHRq6kM937u8BNSo+7JliUnQv+FBxOcHe1wtlcgk
- VVaRKXOu51MGzvZaBv/rrCav+T3U5S3YaXAkqqLdDc3/n3HcLLoT7DMwN4X7lXKBrjv8
- EEBQ==
+ bh=no1ezg/K8vqwwloDW/HES3GQ/s3OFKPTQdEopkcO670=;
+ b=OO0khsc3IrhIR26Q4wPVt+KfF+7kuyCAuiWiBb1OPg926djLESZxpZjAvlDBUgN8gh
+ dWN+rFwxcrNWRA7ml67Rh7ttA1zX+30r1ovORCCMzZJZS5OyFcqu50+u4sgvVOaxiPFI
+ IRnAFTCe1rwflJReLdRA/RH91Vr3O3njyt9XqFlsVxCfIeYeRisIANI5UMTITbzkwyj4
+ C5e/r3+vXlQR74MjHM4V7Cd+V10sABWKSWOBo++ufIHGFDrV9rcpL3AD2hQl2SaStpMJ
+ jWgL10JK8Zi5u20ctdEcERsFPRpHfrOl261sew3hvGr+Jpz9ws7p8SIvm3UO37u79d3v
+ o4Ag==
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=google.com header.i=@google.com
- header.a=rsa-sha256 header.s=20230601 header.b=HCZhogpf
-Subject: [Intel-wired-lan] [PATCH v1 net-next 5/7] igb: replace deprecated
+ header.a=rsa-sha256 header.s=20230601 header.b=OO0khsc3
+Subject: [Intel-wired-lan] [PATCH v1 net-next 6/7] igbvf: replace deprecated
  strncpy with strscpy
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -128,17 +128,17 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 [1] and as such we should prefer more robust and less ambiguous string
 interfaces.
 
-We see that netdev->name is expected to be NUL-terminated based on its
-usage with format strings:
-|       sprintf(q_vector->name, "%s-TxRx-%u", netdev->name,
-|               q_vector->rx.ring->queue_index);
+We expect netdev->name to be NUL-terminated based on its usage with
+`strlen` and format strings:
+|       if (strlen(netdev->name) < (IFNAMSIZ - 5)) {
+|               sprintf(adapter->tx_ring->name, "%s-tx-0", netdev->name);
 
-Furthermore, NUL-padding is not required as netdev is already
+Moreover, we do not need NUL-padding as netdev is already
 zero-allocated:
-|       netdev = alloc_etherdev_mq(sizeof(struct igb_adapter),
-|                                  IGB_MAX_TX_QUEUES);
+|       netdev = alloc_etherdev(sizeof(struct igbvf_adapter));
 ...
-alloc_etherdev_mq() -> alloc_etherdev_mqs() -> alloc_netdev_mqs() ...
+alloc_etherdev() -> alloc_etherdev_mq() -> alloc_etherdev_mqs() ->
+alloc_netdev_mqs() ...
 |       p = kvzalloc(alloc_size, GFP_KERNEL_ACCOUNT | __GFP_RETRY_MAYFAIL);
 
 Considering the above, a suitable replacement is `strscpy` [2] due to
@@ -154,22 +154,22 @@ Signed-off-by: Justin Stitt <justinstitt@google.com>
 ---
 Note: build-tested only.
 ---
- drivers/net/ethernet/intel/igb/igb_main.c | 2 +-
+ drivers/net/ethernet/intel/igbvf/netdev.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
-index 76b34cee1da3..9de103bd3ad3 100644
---- a/drivers/net/ethernet/intel/igb/igb_main.c
-+++ b/drivers/net/ethernet/intel/igb/igb_main.c
-@@ -3264,7 +3264,7 @@ static int igb_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
- 	igb_set_ethtool_ops(netdev);
- 	netdev->watchdog_timeo = 5 * HZ;
+diff --git a/drivers/net/ethernet/intel/igbvf/netdev.c b/drivers/net/ethernet/intel/igbvf/netdev.c
+index 7ff2752dd763..fd712585af27 100644
+--- a/drivers/net/ethernet/intel/igbvf/netdev.c
++++ b/drivers/net/ethernet/intel/igbvf/netdev.c
+@@ -2785,7 +2785,7 @@ static int igbvf_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
  
+ 	igbvf_set_ethtool_ops(netdev);
+ 	netdev->watchdog_timeo = 5 * HZ;
 -	strncpy(netdev->name, pci_name(pdev), sizeof(netdev->name) - 1);
 +	strscpy(netdev->name, pci_name(pdev), sizeof(netdev->name));
  
- 	netdev->mem_start = pci_resource_start(pdev, 0);
- 	netdev->mem_end = pci_resource_end(pdev, 0);
+ 	adapter->bd_number = cards_found++;
+ 
 
 -- 
 2.42.0.609.gbb76f46606-goog
