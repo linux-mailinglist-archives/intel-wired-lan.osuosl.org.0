@@ -1,83 +1,80 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4FFEB7BF79C
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 10 Oct 2023 11:40:35 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id A2AB67BF81E
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 10 Oct 2023 12:00:00 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id E43C1414FF;
-	Tue, 10 Oct 2023 09:40:33 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org E43C1414FF
+	by smtp2.osuosl.org (Postfix) with ESMTP id 22C0240A9A;
+	Tue, 10 Oct 2023 09:59:59 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 22C0240A9A
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1696930833;
-	bh=9FKTDGTMR+tr1sI7NbTrbWkiqxm2zHxOVy6f7qeyGQ4=;
-	h=From:Date:References:In-Reply-To:To:Subject:List-Id:
+	s=default; t=1696931999;
+	bh=w/7nHog+38B3mEbCAM+yNSMspP44kI3FxHWnwFQ4wGk=;
+	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=y+c1lfnrZXLqsTeibAjs1vWBNM5uZEt8gkX6IW1sjjnLFdn+LnOd1tGplE7OGPBIm
-	 U15nvcoHjCOUz8LBleSIjLtvD8A4WEdnWRmgZ7pCKdIlsNKVaG9nQQ+Fm6BiYMqIm2
-	 zT8JBHyBw4EWo5Q0ZjBRanqYe8CLN9m36pvh+IfDR1gj7kUkENaKlD0gUK5EYwkQml
-	 d3Y4RtxB0d8yV7lPXHsB3VaUGoN2vjslThK+nXlmeZkb//BXLMl7pJlACAnHTahxoC
-	 hIkM5wfHPlKBC/phzE/3XL5Lf72vjz5/b3N9WsdOLdWB1usBENwxaG/zik8VjPaK7N
-	 sqU0SCBhcTnEw==
+	b=DAEJPHBnRkoq+NYU6OYn59S66vIUbO5UunSZG49p6/GPfEyS1EztWtbRcpS5uhgCH
+	 ZZh50oEBi7oWJVo9xHvH9OnOlDPQLQnRLvSuuOqIksISn7TdzX59aHkL7pyHA5nclP
+	 01CWdWG3ZlnOyUXfLJVrLfhSvyxEc0nGJsEpwxQTrS/+nw5VyNnO3idP98MqT4P7Ic
+	 0Br1Lez0rzHpxxTTbGAN/+IcWwttFtyLo072lFfU8hpqyAqr5B+kN5cbMJsLYOz4Xw
+	 PuYKTPV0uO+fR71AZ5zwzfwRgXKySKz6RrVN9omPL0otgdbjG3S0JHdTmD2w+HA1Qz
+	 PhESbm+yWPw9g==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id wtIRFD_qfEWB; Tue, 10 Oct 2023 09:40:32 +0000 (UTC)
+	with ESMTP id FOybGu6TK0FR; Tue, 10 Oct 2023 09:59:58 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 83DD2408A8;
-	Tue, 10 Oct 2023 09:40:32 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 83DD2408A8
+	by smtp2.osuosl.org (Postfix) with ESMTP id EC72140A93;
+	Tue, 10 Oct 2023 09:59:57 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org EC72140A93
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 44F031BF2FB
- for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Oct 2023 09:40:27 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 9BD4D1BF20B
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Oct 2023 09:59:53 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 1310A40C6F
- for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Oct 2023 09:40:27 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1310A40C6F
+ by smtp1.osuosl.org (Postfix) with ESMTP id 396EC80F89
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Oct 2023 09:59:53 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 396EC80F89
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 4sX2cIKzO-3j for <intel-wired-lan@lists.osuosl.org>;
- Tue, 10 Oct 2023 09:40:25 +0000 (UTC)
-Received: from dfw.source.kernel.org (dfw.source.kernel.org
- [IPv6:2604:1380:4641:c500::1])
- by smtp2.osuosl.org (Postfix) with ESMTPS id AA73D4177A
- for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Oct 2023 09:40:25 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org AA73D4177A
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by dfw.source.kernel.org (Postfix) with ESMTP id 84ABA615A2;
- Tue, 10 Oct 2023 09:40:24 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 25D84C433CA;
- Tue, 10 Oct 2023 09:40:24 +0000 (UTC)
-Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org
- (localhost.localdomain [127.0.0.1])
- by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id
- 09E68C595C5; Tue, 10 Oct 2023 09:40:24 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id ch-9Ekwoqrgn for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 10 Oct 2023 09:59:51 +0000 (UTC)
+Received: from out-196.mta1.migadu.com (out-196.mta1.migadu.com
+ [IPv6:2001:41d0:203:375::c4])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 7E87B80EE0
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Oct 2023 09:59:51 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 7E87B80EE0
+Message-ID: <8b727f96-1dfd-4a93-9d10-e9bd3f8eebc9@linux.dev>
+Date: Tue, 10 Oct 2023 10:59:37 +0100
 MIME-Version: 1.0
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <169693082403.5800.6981451364289759108.git-patchwork-notify@kernel.org>
-Date: Tue, 10 Oct 2023 09:40:24 +0000
-References: <ZSADNdIw8zFx1xw2@kadam>
-In-Reply-To: <ZSADNdIw8zFx1xw2@kadam>
-To: Dan Carpenter <dan.carpenter@linaro.org>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1696930824;
- bh=d5GXNWwoNDXNq9hUxuk9GxPSEE/IHXHFL6VyvMeDIvo=;
- h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
- b=QVRXkPWUzCFltimaLELy7wuruoL5hw4jf0oeZnlyvltelKamaJzsHlxuhfO8n6eZN
- tEJ4FPG6ayQGR9Dyk0ox5mUgGJLOJTBOPOsADgsuTm3gYbmJabiWg9aStcy5jphIgY
- E4YY/UTsDWqxTPThOdSYVTDvGN3vLVM4qPFu2HESvpvmBX1/rcGvKubX49vYUOZEI0
- NIi/n7xzRHlGWoPx+Gm+sws/ZV38kyj4t+NUJ/RpiqXL3cusMT6rmjoBWE1rw3bKIX
- p2CJaaY1nbU+xI39k/HCSIKy9jPOz+TwXgExHnDnMEB7hUGOUNzAIfFe+U7bdQlgXh
- 9/1AIPvdJRYMQ==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=QVRXkPWU
-Subject: Re: [Intel-wired-lan] [PATCH net v2] ixgbe: fix crash with empty VF
- macvlan list
+Content-Language: en-US
+To: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>,
+ netdev@vger.kernel.org
+References: <20231009222616.12163-1-arkadiusz.kubalewski@intel.com>
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and
+ include these headers.
+From: Vadim Fedorenko <vadim.fedorenko@linux.dev>
+In-Reply-To: <20231009222616.12163-1-arkadiusz.kubalewski@intel.com>
+X-Migadu-Flow: FLOW_OUT
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linux.dev; s=key1; t=1696931983;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=OLTR3Fa5NU1FJ0mPUCV17BXWlC/RQ59d9nTce1fx2KM=;
+ b=JMLc+Q+7l0vIDURftnwdjjdsJLixj3ifTOXqqF00ihEFQkN0d6E00eGp0nphAWelDmVVhN
+ ZCkVlzM6xSa+le8V49PWChfPucXF2y+2ml/qxrTT93Zz0K8Dcb4aUf9F/l3Bu91JynHHnJ
+ u2+5xXzRnNABRz9ez3owztBf3lljSeA=
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (1024-bit key,
+ unprotected) header.d=linux.dev header.i=@linux.dev header.a=rsa-sha256
+ header.s=key1 header.b=JMLc+Q+7
+Subject: Re: [Intel-wired-lan] [PATCH net-next v4 0/5] dpll: add
+ phase-offset and phase-adjust
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,40 +87,61 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: intel-wired-lan@lists.osuosl.org, kernel-janitors@vger.kernel.org,
- jesse.brandeburg@intel.com, edumazet@google.com, anthony.l.nguyen@intel.com,
- jeffrey.t.kirsher@intel.com, horms@kernel.org, netdev@vger.kernel.org,
- kuba@kernel.org, pabeni@redhat.com, davem@davemloft.net
-Content-Type: text/plain; charset="us-ascii"
+Cc: jiri@resnulli.us, corbet@lwn.net, intel-wired-lan@lists.osuosl.org,
+ linux-doc@vger.kernel.org, jesse.brandeburg@intel.com,
+ anthony.l.nguyen@intel.com, kuba@kernel.org, pabeni@redhat.com,
+ davem@davemloft.net
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hello:
-
-This patch was applied to netdev/net.git (main)
-by Paolo Abeni <pabeni@redhat.com>:
-
-On Fri, 6 Oct 2023 15:53:09 +0300 you wrote:
-> The adapter->vf_mvs.l list needs to be initialized even if the list is
-> empty.  Otherwise it will lead to crashes.
+On 09/10/2023 23:26, Arkadiusz Kubalewski wrote:
+> Improve monitoring and control over dpll devices.
+> Allow user to receive measurement of phase difference between signals
+> on pin and dpll (phase-offset).
+> Allow user to receive and control adjustable value of pin's signal
+> phase (phase-adjust).
 > 
-> Fixes: a1cbb15c1397 ("ixgbe: Add macvlan support for VF")
-> Signed-off-by: Dan Carpenter <dan.carpenter@linaro.org>
-> ---
-> v2: Use the correct fixes tag.  Thanks, Simon.
+> v3->v4:
+> - do not increase do version of uAPI header as it is not needed (v3 did
+>    not have this change)
+> - fix spelling around commit messages, argument descriptions and docs
+> - add missing extack errors on failure set callbacks for pin phase
+>    adjust and frequency
+> - remove ice check if value is already set, now redundant as checked in
+>    the dpll subsystem
 > 
-> [...]
+> v2->v3:
+> - do not increase do version of uAPI header as it is not needed
+> 
+> v1->v2:
+> - improve handling for error case of requesting the phase adjust set
+> - align handling for error case of frequency set request with the
+> approach introduced for phase adjust
+> 
+> 
+> Arkadiusz Kubalewski (5):
+>    dpll: docs: add support for pin signal phase offset/adjust
+>    dpll: spec: add support for pin-dpll signal phase offset/adjust
+>    dpll: netlink/core: add support for pin-dpll signal phase
+>      offset/adjust
+>    ice: dpll: implement phase related callbacks
+>    dpll: netlink/core: change pin frequency set behavior
+> 
+>   Documentation/driver-api/dpll.rst         |  53 +++++-
+>   Documentation/netlink/specs/dpll.yaml     |  31 +++
+>   drivers/dpll/dpll_netlink.c               | 188 +++++++++++++++++-
+>   drivers/dpll/dpll_nl.c                    |   8 +-
+>   drivers/dpll/dpll_nl.h                    |   2 +-
+>   drivers/net/ethernet/intel/ice/ice_dpll.c | 220 +++++++++++++++++++++-
+>   drivers/net/ethernet/intel/ice/ice_dpll.h |  10 +-
+>   include/linux/dpll.h                      |  18 ++
+>   include/uapi/linux/dpll.h                 |   6 +
+>   9 files changed, 518 insertions(+), 18 deletions(-)
+> 
 
-Here is the summary with links:
-  - [net,v2] ixgbe: fix crash with empty VF macvlan list
-    https://git.kernel.org/netdev/net/c/7b5add9af567
-
-You are awesome, thank you!
--- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
+Acked-by: Vadim Fedorenko <vadim.fedorenko@linux.dev>
 
 _______________________________________________
 Intel-wired-lan mailing list
