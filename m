@@ -2,80 +2,77 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 069C77C47A2
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 11 Oct 2023 04:10:33 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 20AB17C47D8
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 11 Oct 2023 04:34:54 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 618A6415D0;
-	Wed, 11 Oct 2023 02:10:31 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 618A6415D0
+	by smtp2.osuosl.org (Postfix) with ESMTP id 9EC94404BF;
+	Wed, 11 Oct 2023 02:34:52 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 9EC94404BF
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1696990231;
-	bh=RLGhS4HeXMKedXMBgpYhLZCdhjbecdbA1kxTGCj0w4Q=;
+	s=default; t=1696991692;
+	bh=peGk+PiMGWbfacikj6LaYsSyNtDbXq+AVoFMpqljz1c=;
 	h=Date:From:To:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=wI1FP3/nXOVCYRH3FLSFtZhOP3gkPQpfFLq1A1FeZ955+QG6EbtoLMowqaDhVysun
-	 g2xRYiP7n/3v/eq2jzR2lwSAxD65GnDdrWxCN2JcvvKuPZrK819fFlf4DPIO9/BC3A
-	 LUhm5VEUgBIjeWrb3/onwwlXjpoZp7sx9T8fVrNo2oQQLLbLohAJrPCe9mJxqx0KMi
-	 LinjYHAjk5MJCppepR7bRWGLJXjds9FysgAhfK8PaxDCI0rViTW2MDiNaD0QiC9NdU
-	 WKi/kI+dUShHxoOMnPE2Wuksbf8pVEQHa7QOJ5DEXSajjnaLQvyT6oJyugxX30JFzN
-	 jxUrfgedBL5jw==
+	b=6URuVasyr7ufUmPJkqet+7APTR28OBOI8tEobPtJbPmRrAySTmnHybwtyULi8/F/q
+	 niEl32eQR5L/M9kA01rOi+6jzxnVFj7gEhiYz9qsLerGYo7+JuBuaGeQ/DuRD43DQM
+	 elDz23blWiiUY/fPIstpFIZHbezIRpz6ov4FvwZzqVDPttkvBxZEMizzRwyypQz+OS
+	 MwPd3371TItxYV8so39bthx1N506IuX4RfMTJ475c+RZDMTeo2si7kiIBT80mZuGHf
+	 BaYHlvr5KAHEu+X4fhh1I81AH9tqbUcnuU0Mr7EUwnx82Nzd19nmAySYjz5ktY70rJ
+	 TiyMAA90GK2BA==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 8cKPoxdlKOCP; Wed, 11 Oct 2023 02:10:30 +0000 (UTC)
+	with ESMTP id 6RKi49AK1BES; Wed, 11 Oct 2023 02:34:51 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 1E03D404BF;
-	Wed, 11 Oct 2023 02:10:30 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1E03D404BF
+	by smtp2.osuosl.org (Postfix) with ESMTP id 7CFAE403A2;
+	Wed, 11 Oct 2023 02:34:51 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 7CFAE403A2
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 277CE1BF292
- for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Oct 2023 02:10:25 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 55CF31BF2C7
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Oct 2023 02:34:46 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id F3D614047C
- for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Oct 2023 02:10:24 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org F3D614047C
+ by smtp3.osuosl.org (Postfix) with ESMTP id 27535611B8
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Oct 2023 02:34:46 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 27535611B8
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ye7lZ7lE6rAG for <intel-wired-lan@lists.osuosl.org>;
- Wed, 11 Oct 2023 02:10:23 +0000 (UTC)
-Received: from dfw.source.kernel.org (dfw.source.kernel.org
- [IPv6:2604:1380:4641:c500::1])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 0F3EE4158B
- for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Oct 2023 02:10:22 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 0F3EE4158B
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id wIki2JdYht2j for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 11 Oct 2023 02:34:45 +0000 (UTC)
+Received: from ams.source.kernel.org (ams.source.kernel.org [145.40.68.75])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 2AE5060F47
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Oct 2023 02:34:45 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2AE5060F47
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by dfw.source.kernel.org (Postfix) with ESMTP id 99C2561026;
- Wed, 11 Oct 2023 02:10:21 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B1D5DC433C8;
- Wed, 11 Oct 2023 02:10:20 +0000 (UTC)
-Date: Tue, 10 Oct 2023 19:10:19 -0700
+ by ams.source.kernel.org (Postfix) with ESMTP id 4ED5EB81E12;
+ Wed, 11 Oct 2023 02:34:42 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 224A4C433C7;
+ Wed, 11 Oct 2023 02:34:41 +0000 (UTC)
+Date: Tue, 10 Oct 2023 19:34:40 -0700
 From: Jakub Kicinski <kuba@kernel.org>
-To: takeru hayasaka <hayatake396@gmail.com>
-Message-ID: <20231010191019.12fb7071@kernel.org>
-In-Reply-To: <CADFiAcKF08osdvd4EiXSR1YJ22TXrMu3b7ujkMTwAsEE8jzgOw@mail.gmail.com>
-References: <20231008075221.61863-1-hayatake396@gmail.com>
- <20231010123235.4a6498da@kernel.org>
- <CADFiAcKF08osdvd4EiXSR1YJ22TXrMu3b7ujkMTwAsEE8jzgOw@mail.gmail.com>
+To: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
+Message-ID: <20231010193440.76f93d5c@kernel.org>
+In-Reply-To: <20231009222616.12163-1-arkadiusz.kubalewski@intel.com>
+References: <20231009222616.12163-1-arkadiusz.kubalewski@intel.com>
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1696990221;
- bh=SCN+YvrTAvn/rzETs6OSh7GFIZOLCdOcc5xTG+BWl0g=;
+ d=kernel.org; s=k20201202; t=1696991681;
+ bh=FIVK2LFMNaBYWMWiLVN8ylTMPWm33ozh0ZjII2bqVP4=;
  h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=A0n2bizFMpZqqKeGhyfo1ozKH4zwv1E5WO/KuO+JorM7wXzRM6u21i+SvPPYJPSgL
- 8IqhnLJh5EdIJKh+kVXpg8RCAGy8fiWXmjx6wag+lF9y2PDpt33HpFV6iz8JSsWBIM
- QFyLHie+TUizdXcW9qnZcCeEwjxw3/2lrXoEwz9cZ1ctYvcWrhSBPQmqeaysAwknlh
- BUkjjBOydhkCOQvKK2JxDXFKCCFNMJ5XcTXWPK8kz/gRCkT8fW47b9auOrDVAGrzGQ
- vzgylqoG1XQ39ay/nXMofyJqIkddLIywkojM3gpXsJy4O0dYN98IQuVdgltPbH1/Ag
- 0z1PUB0veiV3A==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ b=ZJeTP3e+xhussaXir+c6WTyVo+EfMBXdFNtepz9PD+zZVgDgVGD/uZyBO+9xvPeeT
+ 8f3XJPp8hZDPu3TG9MTF8j2aUcJKuL7jcJoJGrMO5UcQ/sZ9GRtylOTX0l1aEP/nx6
+ DbOzmS4tIkU3YSwh2f/0hUjnAWQfthYchudcg7Bbjf7fy2n2nyLtyKdgPQREvXaE0/
+ ruIL1ISvTJIJRTm+61P+y7DdiNO3vL9G2Oe/vYPfaGIclx6GWbIG3hVEQhEwRPntvP
+ KDgQSN5MpsZGrxi7iEPRsgdufLUJLLlyfl6a4fsF4YKgNbWd/yffgJryPL2bGN7UXW
+ YYW5VvlJY372w==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=A0n2bizF
-Subject: Re: [Intel-wired-lan] [PATCH net-next] ethtool: ice: Support for
- RSS settings to GTP from ethtool
+ header.a=rsa-sha256 header.s=k20201202 header.b=ZJeTP3e+
+Subject: Re: [Intel-wired-lan] [PATCH net-next v4 0/5] dpll: add
+ phase-offset and phase-adjust
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,45 +85,23 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, Jesse Brandeburg <jesse.brandeburg@intel.com>,
- linux-kernel@vger.kernel.org, Eric Dumazet <edumazet@google.com>,
- intel-wired-lan@lists.osuosl.org, Tony Nguyen <anthony.l.nguyen@intel.com>,
- Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>
+Cc: jiri@resnulli.us, corbet@lwn.net, netdev@vger.kernel.org,
+ linux-doc@vger.kernel.org, jesse.brandeburg@intel.com,
+ anthony.l.nguyen@intel.com, intel-wired-lan@lists.osuosl.org,
+ vadim.fedorenko@linux.dev, pabeni@redhat.com, davem@davemloft.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed, 11 Oct 2023 10:56:17 +0900 takeru hayasaka wrote:
-> GTP generates a flow that includes an ID called TEID to identify the
-> tunnel. This tunnel is created for each UE (User Equipment).
-> By performing RSS based on this flow, it is possible to apply RSS for
-> each communication unit from the UE.
-> Without this, RSS would only be effective within the range of IP addresses.
-> For instance, the PGW can only perform RSS within the IP range of the SGW.
-> What I'm trying to say is that RSS based solely on IP addresses can be
-> problematic from a load distribution perspective, especially if
-> there's a bias in the terminals connected to a particular base
-> station.
-> As a reference that discusses a similar topic, please see the link
-> below(is not RSS, is TEID Flow):
-> https://docs.nvidia.com/networking-ethernet-software/cumulus-linux-56/Layer-3/Routing/Equal-Cost-Multipath-Load-Sharing/#gtp-hashing
+On Tue, 10 Oct 2023 00:26:11 +0200 Arkadiusz Kubalewski wrote:
+> Improve monitoring and control over dpll devices.
+> Allow user to receive measurement of phase difference between signals
+> on pin and dpll (phase-offset).
+> Allow user to receive and control adjustable value of pin's signal
+> phase (phase-adjust).
 
-Makes sense, thanks for the extra information. I think it would be
-worth adding all of this to the commit message!
-
-Regarding the patch - you are only adding flow types, not a new field 
-(which are defined as RXH_*). If we want to hash on an extra field, 
-I think we need to specify that field as well?
-
-> Thank you for your understanding.
-> ---
-> Sorry! My email was blocked because it wasn't sent in plain text mode.
-> I've made the necessary changes and will resend it.
-
-No worries! Additional request - in the future please prefer the
-bottom-posting or interleaved style of replies:
-https://en.wikipedia.org/wiki/Posting_style#Interleaved_style
+Does not apply, please rebase / repost.
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
