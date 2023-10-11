@@ -2,85 +2,85 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 052847C50C4
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 11 Oct 2023 13:03:15 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 67D8C7C50C8
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 11 Oct 2023 13:04:33 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 9678F610C6;
-	Wed, 11 Oct 2023 11:03:13 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9678F610C6
+	by smtp3.osuosl.org (Postfix) with ESMTP id 0C42A611B8;
+	Wed, 11 Oct 2023 11:04:32 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0C42A611B8
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1697022193;
-	bh=BXghXEJgOqXPH27fIKippPcYPs/zOojCBx4b7xCymrs=;
+	s=default; t=1697022272;
+	bh=xTxl4HG54QOvZ7mDq8+jiH73VZmgCjXZ4rfTqmU9KKM=;
 	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
 	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=KLW1h0kfUJy74e/3JXEm9Tidb1p1NZyeGP0n7Sd63V/N18UOLJU7lJU42suunbrkd
-	 PnVL3x+/3d7wgV+w2WgrkjpAYdoaOceTFHrc22YH3nJJv+tCtz8w8WOQU+OpY553qf
-	 wB2s8/49+DFIJkNjO+uHTExKAB7LAKwWbx/xhGR9CxlKC9H3VJA68L1R6VaC6ncero
-	 GDyw488Km/xlMWX8CFn6VgtkSLQcLXLgc44IJs5cStr9T76Zq6sdc1aXCFYVrohC/S
-	 2K+SHksaZsigg9DrxLI5DlmYBE8JFxVTo7JGmStJW30cX5X3SpQ+XkmwxZDl2g15j8
-	 PMhrP5dJ8VM8g==
+	b=jAn7/g43wmA39WnQM1GBiMP6bLyiDjZsd7ptvrLHEgHUfhb6czgkchRTuNtl068hu
+	 AVocH5T8abTuF+p/A+Bxxo5gZjr1Rr0FsH1VYYoB93Ty5im9mlEosgcNjzkELf3AAM
+	 GQLGSetA01BZ++NQ/k5SEf6QTAv8+e6cZieKe/iWtGPas2103+r+8EOJl+5kho+6l7
+	 CowJiNK59yh++hT9Z7qh0Z0MT0A6tHA1BySEOPmcSsNNDzvNS+7nbq/nW8Yzn23QDF
+	 te6leeBEzUggB1W1t0y8apzw8mjb4tEJxQQu7aPC0GEzV9C0rZXvRT9r/cY5xZX/K4
+	 mnSG5nmrRwu7Q==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id gactVa9JcrHh; Wed, 11 Oct 2023 11:03:12 +0000 (UTC)
+	with ESMTP id lgBwsMFaLbHB; Wed, 11 Oct 2023 11:04:31 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 32DCC60608;
-	Wed, 11 Oct 2023 11:03:12 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 32DCC60608
+	by smtp3.osuosl.org (Postfix) with ESMTP id A47A06059C;
+	Wed, 11 Oct 2023 11:04:30 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A47A06059C
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id CB72F1BF855
- for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Oct 2023 11:03:06 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 202071BF84C
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Oct 2023 11:04:26 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id A13D882265
- for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Oct 2023 11:03:06 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org A13D882265
+ by smtp4.osuosl.org (Postfix) with ESMTP id E9B8D41D6B
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Oct 2023 11:04:25 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E9B8D41D6B
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 0fSwygwMityT for <intel-wired-lan@lists.osuosl.org>;
- Wed, 11 Oct 2023 11:03:05 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id GNeLe_0AJzlK for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 11 Oct 2023 11:04:25 +0000 (UTC)
 Received: from mgamail.intel.com (mgamail.intel.com [192.55.52.136])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 895E6821FE
- for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Oct 2023 11:03:05 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 895E6821FE
-X-IronPort-AV: E=McAfee;i="6600,9927,10859"; a="363994300"
-X-IronPort-AV: E=Sophos;i="6.03,214,1694761200"; d="scan'208";a="363994300"
-Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 08E2441D6A
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Oct 2023 11:04:24 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 08E2441D6A
+X-IronPort-AV: E=McAfee;i="6600,9927,10859"; a="363994543"
+X-IronPort-AV: E=Sophos;i="6.03,214,1694761200"; d="scan'208";a="363994543"
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
  by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 11 Oct 2023 04:03:03 -0700
+ 11 Oct 2023 04:04:24 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10859"; a="824118617"
-X-IronPort-AV: E=Sophos;i="6.03,214,1694761200"; d="scan'208";a="824118617"
+X-IronPort-AV: E=McAfee;i="6600,9927,10859"; a="1085189666"
+X-IronPort-AV: E=Sophos;i="6.03,214,1694761200"; d="scan'208";a="1085189666"
 Received: from unknown (HELO kkolacin-DESK1.igk.intel.com) ([10.102.102.152])
- by fmsmga004.fm.intel.com with ESMTP; 11 Oct 2023 04:03:01 -0700
+ by fmsmga005.fm.intel.com with ESMTP; 11 Oct 2023 04:04:23 -0700
 From: Karol Kolacinski <karol.kolacinski@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Wed, 11 Oct 2023 13:02:58 +0200
-Message-Id: <20231011110258.203770-1-karol.kolacinski@intel.com>
+Date: Wed, 11 Oct 2023 13:04:11 +0200
+Message-Id: <20231011110411.204700-1-karol.kolacinski@intel.com>
 X-Mailer: git-send-email 2.39.2
 MIME-Version: 1.0
 Organization: Intel Technology Poland sp. z o.o. - ul. Slowackiego 173,
  80-298 Gdansk - KRS 101882 - NIP 957-07-52-316
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1697022185; x=1728558185;
+ t=1697022265; x=1728558265;
  h=from:to:cc:subject:date:message-id:mime-version:
  content-transfer-encoding;
- bh=uOgIJDf2zxElhMnLIZqfUjDA82fLs/iAmAArFSb3nqw=;
- b=RKo7iNEDatYtmkcw8b3vM810KNEym9ObsYSMRNoc68Epe0LoL1oQT7dq
- MIWAQKkfjLWYx/+2DHsNCEKNgZI6w1vNWwuuhT9JEKk+JikD0CmTNrscz
- WoMuDVxyRSMUvl7QGt0y0ZXiowoq7M1fMRumMSMSzT6vuy9bzy4cnHa1T
- R5tEq4EZBwFYXiqjHjPRO9IBoC1YStlADOnokKlIDXpEhrzf1cda1lFfd
- 6He1P8lL/s+Q3IJUy2UPqynIxRZrzQFmQbUuKlhV+w6f5HD9N0OA0du65
- rXVDRwxN+7dCj33bdn7ldMPSaTSr92okT3oohKsLrjS7+hiqI2Q1oCnXH
- g==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ bh=8LkWOhiB2uSmJ5qq04yZ6D92iJojiye3hVSLFuLx7fY=;
+ b=Ljkb3wdZ+3lGoC78H7lz8m4jsKoP7xiiewBre3F6w1vQ/Yy/jYza2wnE
+ FynMM3N5ZSF785gcavEzO9wS/MY3dgcpmTHK5EUqXbGKIi/CfLHOu053E
+ bO9GePD1oFK4iyJQKc+nYe15Di1B+stOXR5EunIvlPG2PsnMXZZ+lxNVc
+ Pyo7KIJMOyk49GrS/zv5w0UtOO5E78IERZV5BeVj86yEACAy0lZWy5IaU
+ OBC9P34mbuQy+2cvXtPArvS4RutsUPQ7Ay9cYz3A0/2m/LuAD6zqfFoiS
+ wPw1ehgj+ivqf++Ft1Vr+M1eEKhVEGxC+4PQ2KbG7BeqJSH7hzXDj8+Gl
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=RKo7iNED
-Subject: [Intel-wired-lan] [PATCH iwl-next] ice: Don't disable PHY before
- settime
+ header.a=rsa-sha256 header.s=Intel header.b=Ljkb3wdZ
+Subject: [Intel-wired-lan] [PATCH iwl-next] ice: Re-enable timestamping
+ correctly after reset
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,125 +94,94 @@ List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Cc: Karol Kolacinski <karol.kolacinski@intel.com>, anthony.l.nguyen@intel.com,
- jesse.brandeburg@intel.com, Larysa Zaremba <larysa.zaremba@intel.com>
+ jesse.brandeburg@intel.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-When settime is called, the driver tries to disable the PHY to avoid
-PHY clock running and giving incorrect timestamps during time change.
-PHY stop procedure takes more HW writes than just marking timestamps as
-invalid. After settime, the PHYs is recalibrated and timestamping is
-reenabled.
-Change disabling the PHY to marking timestamps as invalid.
+During reset, TX_TSYN interrupt should be processed as it may process
+timestamps in brief moments before and after reset.
+Timestamping should be enabled on VSIs at the end of reset procedure.
+On ice_get_phy_tx_tstamp_ready error, interrupt should not be rearmed,
+because error only happens on resets.
 
-Reviewed-by: Larysa Zaremba <larysa.zaremba@intel.com>
+Reviewed-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
 Signed-off-by: Karol Kolacinski <karol.kolacinski@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_ptp.c    |  7 +--
- drivers/net/ethernet/intel/ice/ice_ptp_hw.c | 49 +++++++++++++++++++++
- drivers/net/ethernet/intel/ice/ice_ptp_hw.h |  1 +
- 3 files changed, 54 insertions(+), 3 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_main.c |  2 +-
+ drivers/net/ethernet/intel/ice/ice_ptp.c  | 22 +++++++++++++---------
+ 2 files changed, 14 insertions(+), 10 deletions(-)
 
+diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
+index afe19219a640..a58da0024fe5 100644
+--- a/drivers/net/ethernet/intel/ice/ice_main.c
++++ b/drivers/net/ethernet/intel/ice/ice_main.c
+@@ -3176,7 +3176,7 @@ static irqreturn_t ice_misc_intr(int __always_unused irq, void *data)
+ 
+ 	if (oicr & PFINT_OICR_TSYN_TX_M) {
+ 		ena_mask &= ~PFINT_OICR_TSYN_TX_M;
+-		if (!hw->reset_ongoing && ice_ptp_pf_handles_tx_interrupt(pf))
++		if (ice_ptp_pf_handles_tx_interrupt(pf))
+ 			set_bit(ICE_MISC_THREAD_TX_TSTAMP, pf->misc_thread);
+ 	}
+ 
 diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.c b/drivers/net/ethernet/intel/ice/ice_ptp.c
-index 1eddcbe89b0c..50ee90fd77d6 100644
+index 1eddcbe89b0c..7e548a634f3f 100644
 --- a/drivers/net/ethernet/intel/ice/ice_ptp.c
 +++ b/drivers/net/ethernet/intel/ice/ice_ptp.c
-@@ -1796,10 +1796,11 @@ ice_ptp_settime64(struct ptp_clock_info *info, const struct timespec64 *ts)
- 	int err;
+@@ -684,7 +684,9 @@ static enum ice_tx_tstamp_work ice_ptp_tx_tstamp_owner(struct ice_pf *pf)
  
- 	/* For Vernier mode, we need to recalibrate after new settime
--	 * Start with disabling timestamp block
-+	 * Start with marking timestamps as invalid.
- 	 */
--	if (pf->ptp.port.link_up)
--		ice_ptp_port_phy_stop(&pf->ptp.port);
-+	err = ice_ptp_clear_phy_offset_ready(hw);
-+	if (err)
-+		dev_warn(ice_pf_to_dev(pf), "Failed to mark timestamps as invalid before settime\n");
+ 		/* Read the Tx ready status first */
+ 		err = ice_get_phy_tx_tstamp_ready(&pf->hw, i, &tstamp_ready);
+-		if (err || tstamp_ready)
++		if (err)
++			break;
++		else if (tstamp_ready)
+ 			return ICE_TX_TSTAMP_WORK_PENDING;
+ 	}
  
- 	if (!ice_ptp_lock(hw)) {
- 		err = -EBUSY;
-diff --git a/drivers/net/ethernet/intel/ice/ice_ptp_hw.c b/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
-index 6d573908de7a..5984df8cb942 100644
---- a/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
-@@ -2323,6 +2323,36 @@ int ice_phy_cfg_rx_offset_e822(struct ice_hw *hw, u8 port)
- 	return 0;
- }
+@@ -2444,12 +2446,10 @@ void ice_ptp_reset(struct ice_pf *pf)
+ 	int err, itr = 1;
+ 	u64 time_diff;
  
-+/**
-+ * ice_ptp_clear_phy_offset_ready_e822 - Clear PHY TX_/RX_OFFSET_READY registers
-+ * @hw: pointer to the HW struct
-+ *
-+ * Clear PHY TX_/RX_OFFSET_READY registers, effectively marking all transmitted
-+ * and received timestamps as invalid.
-+ */
-+static int ice_ptp_clear_phy_offset_ready_e822(struct ice_hw *hw)
-+{
-+	u8 port;
-+
-+	for (port = 0; port < hw->phy_ports; port++) {
-+		int err;
-+
-+		err = ice_write_phy_reg_e822(hw, port, P_REG_TX_OR, 0);
-+		if (err) {
-+			ice_warn(hw, "Failed to clear PHY TX_OFFSET_READY register\n");
-+			return err;
-+		}
-+
-+		err = ice_write_phy_reg_e822(hw, port, P_REG_RX_OR, 0);
-+		if (err) {
-+			ice_warn(hw, "Failed to clear PHY RX_OFFSET_READY register\n");
-+			return err;
-+		}
-+	}
-+
-+	return 0;
-+}
-+
- /**
-  * ice_read_phy_and_phc_time_e822 - Simultaneously capture PHC and PHY time
-  * @hw: pointer to the HW struct
-@@ -3505,6 +3535,25 @@ int ice_ptp_adj_clock(struct ice_hw *hw, s32 adj)
- 	return ice_ptp_tmr_cmd(hw, ICE_PTP_ADJ_TIME);
- }
+-	if (test_bit(ICE_PFR_REQ, pf->state))
++	if (test_bit(ICE_PFR_REQ, pf->state) ||
++	    !ice_pf_src_tmr_owned(pf))
+ 		goto pfr;
  
-+/**
-+ * ice_ptp_clear_phy_offset_ready - Clear PHY TX_/RX_OFFSET_READY registers
-+ * @hw: pointer to the HW struct
-+ *
-+ * Clear PHY TX_/RX_OFFSET_READY registers, effectively marking all transmitted
-+ * and received timestamps as invalid.
-+ */
-+int ice_ptp_clear_phy_offset_ready(struct ice_hw *hw)
-+{
-+	switch (hw->phy_model) {
-+	case ICE_PHY_E810:
-+		return 0;
-+	case ICE_PHY_E822:
-+		return ice_ptp_clear_phy_offset_ready_e822(hw);
-+	default:
-+		return -EOPNOTSUPP;
-+	}
-+}
+-	if (!ice_pf_src_tmr_owned(pf))
+-		goto reset_ts;
+-
+ 	err = ice_ptp_init_phc(hw);
+ 	if (err)
+ 		goto err;
+@@ -2493,10 +2493,6 @@ void ice_ptp_reset(struct ice_pf *pf)
+ 			goto err;
+ 	}
+ 
+-reset_ts:
+-	/* Restart the PHY timestamping block */
+-	ice_ptp_reset_phy_timestamping(pf);
+-
+ pfr:
+ 	/* Init Tx structures */
+ 	if (ice_is_e810(&pf->hw)) {
+@@ -2512,6 +2508,14 @@ void ice_ptp_reset(struct ice_pf *pf)
+ 
+ 	set_bit(ICE_FLAG_PTP, pf->flags);
+ 
++	/* Restart the PHY timestamping block */
++	if (!test_bit(ICE_PFR_REQ, pf->state) &&
++	    ice_pf_src_tmr_owned(pf))
++		ice_ptp_restart_all_phy(pf);
 +
- /**
-  * ice_read_phy_tstamp - Read a PHY timestamp from the timestamo block
-  * @hw: pointer to the HW struct
-diff --git a/drivers/net/ethernet/intel/ice/ice_ptp_hw.h b/drivers/net/ethernet/intel/ice/ice_ptp_hw.h
-index 36aeeef99ec0..813ebc254135 100644
---- a/drivers/net/ethernet/intel/ice/ice_ptp_hw.h
-+++ b/drivers/net/ethernet/intel/ice/ice_ptp_hw.h
-@@ -208,6 +208,7 @@ int ice_ptp_init_time(struct ice_hw *hw, u64 time);
- int ice_ptp_write_incval(struct ice_hw *hw, u64 incval);
- int ice_ptp_write_incval_locked(struct ice_hw *hw, u64 incval);
- int ice_ptp_adj_clock(struct ice_hw *hw, s32 adj);
-+int ice_ptp_clear_phy_offset_ready(struct ice_hw *hw);
- int ice_read_phy_tstamp(struct ice_hw *hw, u8 block, u8 idx, u64 *tstamp);
- int ice_clear_phy_tstamp(struct ice_hw *hw, u8 block, u8 idx);
- void ice_ptp_reset_ts_memory(struct ice_hw *hw);
++	if (ptp->tx_interrupt_mode)
++		ice_ptp_configure_tx_tstamp(pf, true);
++
+ 	/* Start periodic work going */
+ 	kthread_queue_delayed_work(ptp->kworker, &ptp->work, 0);
+ 
 
 base-commit: 2318d58f358e7aef726c038aff87a68bec8f09e0
 -- 
