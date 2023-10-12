@@ -1,179 +1,181 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2B7527C6AB2
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 12 Oct 2023 12:13:38 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 895CC7C6F56
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 12 Oct 2023 15:34:41 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id ACEE360FE7;
-	Thu, 12 Oct 2023 10:13:36 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org ACEE360FE7
+	by smtp1.osuosl.org (Postfix) with ESMTP id 05E548234A;
+	Thu, 12 Oct 2023 13:34:40 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 05E548234A
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1697105616;
-	bh=swxo9oTAB87d6k6UDoHh1FJiop29TKha9+joXQrR97E=;
-	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1697117680;
+	bh=SH438nLpN0bQcradeorDd4GrZz6G06TXHvG+lj6jwjI=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=o2nSJjpyZkm2yiWaQbyyYbxjM1XPFTZdkhkUCXwJF8RRe84n6AV/UWrCspTng91+B
-	 Wuz7wIKshsqohU3XwJ4fPQWqJKeYyraypo6oXNfvLC1nOiiXrB5tJavPjb7CYtuwxa
-	 M5ivYTBlqkh9nTcT+CnnGhHhYbGXUhbmTO8tG8XGH2DhFnW6pRarOgkbnUVcS52ecZ
-	 kkG7YlaQI/DtajHrmqer44uNMy5X0adB8tMCYjM2J89aMXKzfl6XcYwt+r7LykqGdG
-	 n/IHPauLCXWG0Nu5+N2DoNJloxT8Qo1qbGrykBr++ibtwWMhwDDeYpR11pc5lYQjbC
-	 NgzPlEeHyM3TA==
+	b=g8jY8rBe3qJIQDMPTrUYmNrHwMM3IlNsFMdNVek0cZeEPQgvmYgqiVyCZjlnCBtJS
+	 nlgI/yrIYesR8YeKNsHsi8J5YvBXFSCI9q8G8eEDdnEgTKyEZGJ+dgKH95wbg4pbJD
+	 kszv0SHCcn78SAMR0wD+5nAwm4QjrDIMr9b7u1G1FtilLcAdbP1VTO6O6q0O0itLGi
+	 6oIl0XDNnpSwstloEtHakDuFvKomqLf+xY8yO9CTufJ+fYKxsjIyXkSHhhy29O5FAb
+	 bjFc8RntYkSMCQKVU6rOPQpKB8IYB/zUwnfF0CGH1xLc7H7C9aVOSWt4ilrwEJZhvB
+	 XBo0Pu6qugUHA==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id N-6Hsarc_M9q; Thu, 12 Oct 2023 10:13:35 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id zjXTi9dEYqeL; Thu, 12 Oct 2023 13:34:39 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id EFFA960BC3;
-	Thu, 12 Oct 2023 10:13:34 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org EFFA960BC3
+	by smtp1.osuosl.org (Postfix) with ESMTP id D4B52822CA;
+	Thu, 12 Oct 2023 13:34:38 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D4B52822CA
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 445511BF2B9
- for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Oct 2023 10:13:29 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id D02331BF3EE
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Oct 2023 13:34:33 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 27A8E40370
- for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Oct 2023 10:13:29 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 27A8E40370
+ by smtp3.osuosl.org (Postfix) with ESMTP id A49A960A6B
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Oct 2023 13:34:33 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A49A960A6B
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id llcxUjX3EFHw for <intel-wired-lan@lists.osuosl.org>;
- Thu, 12 Oct 2023 10:13:27 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id VTvEyO1Xwukq for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 12 Oct 2023 13:34:29 +0000 (UTC)
 Received: from mgamail.intel.com (mgamail.intel.com [192.55.52.151])
- by smtp2.osuosl.org (Postfix) with ESMTPS id BE15040004
- for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Oct 2023 10:13:26 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org BE15040004
-X-IronPort-AV: E=McAfee;i="6600,9927,10860"; a="365158884"
-X-IronPort-AV: E=Sophos;i="6.03,218,1694761200"; d="scan'208";a="365158884"
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 7403460A5A
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 12 Oct 2023 13:34:29 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7403460A5A
+X-IronPort-AV: E=McAfee;i="6600,9927,10861"; a="365190866"
+X-IronPort-AV: E=Sophos;i="6.03,219,1694761200"; d="scan'208";a="365190866"
 Received: from fmsmga001.fm.intel.com ([10.253.24.23])
  by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 12 Oct 2023 03:13:10 -0700
+ 12 Oct 2023 06:34:28 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10860"; a="898036501"
-X-IronPort-AV: E=Sophos;i="6.03,218,1694761200"; d="scan'208";a="898036501"
-Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82])
+X-IronPort-AV: E=McAfee;i="6600,9927,10861"; a="898111389"
+X-IronPort-AV: E=Sophos;i="6.03,219,1694761200"; d="scan'208";a="898111389"
+Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
  by fmsmga001.fm.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
- 12 Oct 2023 03:11:23 -0700
-Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
- fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
+ 12 Oct 2023 06:32:39 -0700
+Received: from orsmsx612.amr.corp.intel.com (10.22.229.25) by
+ ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.32; Thu, 12 Oct 2023 03:13:10 -0700
-Received: from fmsedg602.ED.cps.intel.com (10.1.192.136) by
- fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
+ 15.1.2507.32; Thu, 12 Oct 2023 06:34:26 -0700
+Received: from orsmsx603.amr.corp.intel.com (10.22.229.16) by
+ ORSMSX612.amr.corp.intel.com (10.22.229.25) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.32 via Frontend Transport; Thu, 12 Oct 2023 03:13:10 -0700
-Received: from NAM10-MW2-obe.outbound.protection.outlook.com (104.47.55.100)
- by edgegateway.intel.com (192.55.55.71) with Microsoft SMTP Server
+ 15.1.2507.32; Thu, 12 Oct 2023 06:34:26 -0700
+Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
+ orsmsx603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.32 via Frontend Transport; Thu, 12 Oct 2023 06:34:26 -0700
+Received: from NAM12-DM6-obe.outbound.protection.outlook.com (104.47.59.169)
+ by edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.32; Thu, 12 Oct 2023 03:13:09 -0700
+ 15.1.2507.32; Thu, 12 Oct 2023 06:34:25 -0700
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=FkihDJosW0wnKQ5dZMDwPD/FLuueYBt+OP7l1HrPVTqiOC10sbGXkuHvljOaKE1Zpn+Rg6YE+w3Z2izChu2on5NFHu5LWn299s9xI/IT1Rtimqrpo1l78vzTPtxtR4T5lDSxQSRUWlj0eVuHvBYofyHILLpE/vhmZ9d9JFJO2vZCOVs6CbOM/+Rle1tSV9S2OqaTN2XVnQxg1lBqglbGLo+wNyMH1lV4GY3db2Uwvb4nAQeFHyAGLQRua4uaHWtFYzsvtBt6N7+719VHDy/eU8Pn76TsAYe7t8uKFOKLYkHRNQ9JDWFxomVJIWXoHetBMzdTUrWfKTzz/PmSpfISiw==
+ b=muouekx5x986cZykmRHmS0runDnbPqudpLz/xlMB143XbETGR4rbe6TFh6kOaJB8X7IQ5/DewqO2usuiLLTy6TNsHr30t6Tb5KDT3MNZpn3AcWVvUO3q99A/EUtHuBizxXSTKsLynn3Kve46npZChxVDXStElhX7Dj5XRKFPRF1DknB8glp6rfPm1Lh7oLHquvOT1lkjR9MycbS2yhRhYqGBTiTv4aurHdEwJcBn9SzP/ePduEZ4T/WUZC0poFCWl9uDe6T1nSZQt6TNqjyDnKpRz3SzKSdnvR5l2oXF011CPP86vqnc3zma3SLoR2goe02FUo+3iSjuQYiIq6tP4A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=fSM3vdOIausRWKP4h3wW+HUHEcuFBMJUlkIRVAvMBdY=;
- b=guh6sBvozl6L3/b+6I6pVpcgAPfrWw5oGUOJcqyxjxNBJR+qdZSlPsdKQQmolE64P992Lh4757zcImHOFkx4bheWy8yuxN2uxTr3pG/NWBCzi2ENcssutf3By2avkaopRdoeF8126mb+kf8VdRwTDgogUDDL9F4HK8B6+k1hDDx4Kvvix8nN9xVrjxFuNErlS7YLzi3LtEGnlLRUOW7lgo6gIK6s1SdshflUmfqP5+TrUK+7oTlvZ7GvbAnsK/w8wuMoborFqlP5JVykgB2dsbnrAwnTbwD/vbs6u8KzKnukObvpmjBV9jP4aKOJESgLJns96yBMQx/Qu1Pf2cIPPg==
+ bh=JWTmbk1TzcT4Bx8yGOSIiwmeIMb/2tWlQoizFIYRQoM=;
+ b=HfgJYOgrW6bcxaeSDpvYJEYgz/1aUdw1tXI2EaWSmSCThlShgwQriNCm6V6vHCy0MGn3Lvg5XXBXDryM0pNNCKlzdni9bq9TMSYmBv7TDqsAd3HV6FL9TT651bqIkskCgpeQbItaOBYD75a2IFYaOX8gyEuCpszq8hK4LrVTIaFvdx+BLdyDgWoWnbnxTQjSyFtMSlq5j+ymlFUTrLURoE7AnUTWhXaWlMRpYb7aPhp8SgIQDkXcG4EfVvlrxmgK4q330Wgacwl3UtT3VfnhWb/vkSanMmVy+p1DkEsz/B4XEgL6jFilvPEWWi6FpbQHt5DQ8cY72CCvVYuhqzIVag==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
  dkim=pass header.d=intel.com; arc=none
-Received: from BL0PR11MB3122.namprd11.prod.outlook.com (2603:10b6:208:75::32)
- by PH7PR11MB8251.namprd11.prod.outlook.com (2603:10b6:510:1a9::9)
+Received: from PH7PR11MB6748.namprd11.prod.outlook.com (2603:10b6:510:1b6::8)
+ by PH7PR11MB8454.namprd11.prod.outlook.com (2603:10b6:510:30c::5)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6863.44; Thu, 12 Oct
- 2023 10:13:08 +0000
-Received: from BL0PR11MB3122.namprd11.prod.outlook.com
- ([fe80::e372:f873:de53:dfa8]) by BL0PR11MB3122.namprd11.prod.outlook.com
- ([fe80::e372:f873:de53:dfa8%7]) with mapi id 15.20.6863.043; Thu, 12 Oct 2023
- 10:13:08 +0000
-From: "Pucha, HimasekharX Reddy" <himasekharx.reddy.pucha@intel.com>
-To: "Brandeburg, Jesse" <jesse.brandeburg@intel.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH iwl-next v1 2/2] intel: fix format
- warnings
-Thread-Index: AQHZ9imWOmpOSesagUKJY+axTP6BBrBF+wZA
-Date: Thu, 12 Oct 2023 10:13:08 +0000
-Message-ID: <BL0PR11MB31222860B8222722D15AA251BDD3A@BL0PR11MB3122.namprd11.prod.outlook.com>
-References: <20231003183603.3887546-1-jesse.brandeburg@intel.com>
- <20231003183603.3887546-3-jesse.brandeburg@intel.com>
-In-Reply-To: <20231003183603.3887546-3-jesse.brandeburg@intel.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: BL0PR11MB3122:EE_|PH7PR11MB8251:EE_
-x-ms-office365-filtering-correlation-id: bc1e00a7-341e-48f4-63df-08dbcb0bd50c
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: JoY3dN9EghjAxh4ZjAp8ZvP+n7v9ax8X5Wa4gYiFDZ9+ajy5AzygXNZS887FvIHEh0C3G8Vhuynf2yweUI2xQoXSw5Q9A/JT3GzUhS1tgNiyMglkZ4SCj7rmzSnBFzOM5sxOuC2wWbat+hOYljESXXhd5kuICqNw/0EyxJUe+jY8O3RhfqmKCT/7QfdOp7ym53SIq46Xh0jztswuAlRrNsRImBfAk9KN7xnfYgFhtHh/7RmdRnLTaCLR4EOM4UNyCGq/niqEL8o9wzE6U+PH4I2rR+7xXZyN8nZQeOpQ7M/msCMQRXrLTYFxpC3ZIo48WrU12Vo4WLEwqonhtpZ8UQE/YRFiaKKsHLmqan4nFrWLcqKcMIrqYNesKpL6tcktxbvITbRoyktdDZHq2N5PwqK2KLH7d5ySmr7ObUlTq+Y2TckejpWHawPmR743Y4ZzeXN8L19PK3LBweCMWScTb7EmjDNOwd/xqzdYhL7C1G+Lgnjm7HxofITSt1OydWa7o79GvePlcNHJbM9MAJXanKl/9vX69DdU7pLvPF5jJdJqEqBOemfORyrAmvIRUaup3Rnn0+isqWN0F0V2ViugsvNqhDGJwiJStq2Z+Hci6KpC11ag6F/9gm3DU4TP/ri7
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BL0PR11MB3122.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230031)(366004)(376002)(136003)(346002)(396003)(39860400002)(230922051799003)(186009)(451199024)(1800799009)(64100799003)(26005)(66446008)(107886003)(54906003)(55016003)(478600001)(71200400001)(53546011)(86362001)(7696005)(9686003)(38100700002)(33656002)(41300700001)(66946007)(5660300002)(122000001)(66476007)(66556008)(110136005)(64756008)(6506007)(316002)(38070700005)(82960400001)(8676002)(8936002)(2906002)(4326008)(52536014)(76116006)(83380400001);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?skxSahXyIxNOAfxZC+aqWa4avEPSdSys2/5G3Eog4wPRRtGg0PBfEwOJo3W1?=
- =?us-ascii?Q?uHemSxSVog18dHQuixFsJ2IatVE/AOQVDh0yrZX8lVXTURVQeCdQ7kGKKv/W?=
- =?us-ascii?Q?mgd9DeoQ3gMqF7ikjHeYteeOyOG/V8VKGNJSEH2LnE3gnY2hTvJjAdCR8Zyx?=
- =?us-ascii?Q?534EJq+G4/35pgJJHGsrmRnnFWMeyQPvb15sHoH7YIje1Ph5MJw7FK6bfW77?=
- =?us-ascii?Q?DkmjqdLBaKOH6CZgbF7c9oljgfdWrCWIxqGGGVUpjw8/74mP54POcX+WL3sW?=
- =?us-ascii?Q?q8MwVcId6Q67SXY2Xp/9Bf4FW3KYnSFJOJlcjZ6/hKoqKEHW6RAlGPWxcLeQ?=
- =?us-ascii?Q?9y0Ajxg6+H0jQjerpAiOtfIB7yW8DrIHuLhZgvU1mmFwBdNomseg8HuiI2LY?=
- =?us-ascii?Q?FayYMwEbjyp2OggXJMcHM2L870QpVNzADGOJFMvXQ3/f1Hqk9JsQhBU2Ypn3?=
- =?us-ascii?Q?w8lwi/Xt1gguqkzXFjD6KZ5JbwpIHoXjfSMAn3qrJ3jopiuPWeItnFzicVdL?=
- =?us-ascii?Q?An8VVHUSfWq9FKWBSiDPlj4EAq063xSg4QTFlktdKRFC4mFHYntBbdq9tjnj?=
- =?us-ascii?Q?6XLXgeVvq4GcX9q0bqBWBeAmntxum+69x6AChpFiumowCRSHGLPhjbYFzjlZ?=
- =?us-ascii?Q?VedKDaCUtYMPT83VAZ14Yk7kH3r7iYnAm4VEQS3oP/mjI2k1D8kIHtenUPFD?=
- =?us-ascii?Q?Z9+/kQ54NgZNeRvLcbFJIQaaeRiRImUC+nOjbpQfdG9qJweChF17rl+ax/TW?=
- =?us-ascii?Q?WX+ujmPLpU6o0NqI+dXiOuqz/UrPbNN2Febocrld2I4+dQ6WcnmfhC3uPM3+?=
- =?us-ascii?Q?X4u4MqK7rmDEjNqykpviqdXOjE0qczqrmxIfEJ5wRBji8E1rn0GJBntkvI6S?=
- =?us-ascii?Q?4pJN7PdP5NcvMKO3JXjZXXUL5ngHV0oBZkDuwCaYH85Ak9lSuuUB/iWZgyxh?=
- =?us-ascii?Q?baBnJ7iLC1Kzt1lDQ3TMUh1OHLOwo1b/I0VouGQtxJqaHGcjDmTe7i+mk9x3?=
- =?us-ascii?Q?kGlPq3FbMlcksdHyVYA1WNWQiSrHGK5bKN6I1PuRZBpDz4BO0N8T3F3BRHGY?=
- =?us-ascii?Q?wufO4Ugr9tqjmcDyrE1hsNoKtgE7Rc3P3kMMu3/Lq/t4bogmV6BtsmnpP5vP?=
- =?us-ascii?Q?NhcKnmEk52KYapqun/l3joFWFzVg2DOM3I0fExHkAWygdozACiGS1KsLkzJG?=
- =?us-ascii?Q?I7gtxlPNn+Iz0I/zThNfSn4S251cAwgNENqkKojbZJJ8p1D+AUB0+dYz9pzf?=
- =?us-ascii?Q?cQ+920a/D26dmhlWJZ5fQBSfzwVyNeSk3viHFc5+3Ur1CbBZq9kOggi94mxk?=
- =?us-ascii?Q?nN+fJRXR7bLtndqWFAloExbprJ1trWBFouWTqL/PCUhBPG7j9bMBn8PmtPg/?=
- =?us-ascii?Q?NNYYyC0C410dT+x++kQ9bT1hLAoSwnvCKXFtJQwDcdeZpg+k6j62XayGkFlk?=
- =?us-ascii?Q?78+V3p8ST25ZefCkiflsOEZDEfKL2wkv5GVL1H18uLZWvjvx+nQbzfr+Z2/v?=
- =?us-ascii?Q?TOe36wFls60XzXcZEpGaOjghpu+vU6MFRv/ysSsA0Ysv2x55GlTC2e3ouVnQ?=
- =?us-ascii?Q?WHg+uJSuuzoqb2WyZuh2TUG0W5Jx7MrRc6Q4WEIYAn7nleE9dnv2gGnfCWlM?=
- =?us-ascii?Q?rw=3D=3D?=
+ 2023 13:34:23 +0000
+Received: from PH7PR11MB6748.namprd11.prod.outlook.com
+ ([fe80::d99f:f0a0:a56b:925c]) by PH7PR11MB6748.namprd11.prod.outlook.com
+ ([fe80::d99f:f0a0:a56b:925c%2]) with mapi id 15.20.6863.032; Thu, 12 Oct 2023
+ 13:34:23 +0000
+Date: Thu, 12 Oct 2023 15:33:15 +0200
+From: Pawel Chmielewski <pawel.chmielewski@intel.com>
+To: Jiri Pirko <jiri@resnulli.us>
+Message-ID: <ZSf1m7uIYGuF35a8@baltimore>
+References: <20231011131348.435353-1-pawel.chmielewski@intel.com>
+ <20231011131348.435353-2-pawel.chmielewski@intel.com>
+ <ZSa7Y9gwC8qCBv2r@nanopsycho>
+Content-Disposition: inline
+In-Reply-To: <ZSa7Y9gwC8qCBv2r@nanopsycho>
+X-ClientProxiedBy: FR0P281CA0120.DEUP281.PROD.OUTLOOK.COM
+ (2603:10a6:d10:a8::10) To PH7PR11MB6748.namprd11.prod.outlook.com
+ (2603:10b6:510:1b6::8)
 MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: PH7PR11MB6748:EE_|PH7PR11MB8454:EE_
+X-MS-Office365-Filtering-Correlation-Id: b223c759-814a-4fb5-ca3e-08dbcb27f230
+X-LD-Processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: B/HYSz99k9Ti5h/Pm1/wd0mHZiS+8P7KmzaKhCyboYQkiN1g0f2eJOK25RVqATqlYwL7uEhoFtvenCGnl4g3+mtOVFO2dWKcRmTWxyRu6cNyfWBa7I49SLHMYV3QxF604aHeECrpD5qas8hhO1xMcVqrTRRLLt2d97BFBQCtprv/XHDN93cIYxyj+T1mSvHr5SvjL3tf5NkhDNmCzZkhghy5KaKOwr6Br1hn4jNErZL2rpOJHYsTJEk88zKDYyxBecEtphDSNd59OtGVUSgBiPYA9JIJt9+ZhK8eFq4xFF+RaMq3mL51AxWIFFKIPyawQ4kCvI70m3YP4Yrqvzaugi4NtVwKh1gOuIebHBZtnW664/dS4pXdgGmnNPreMm9rfB2oBhLeq0yUEkk4K0u3GUiKhJUWgEk1N7z4HhmZkfIQTLRt2SOzyjInbSG1Qx1U7skaiga0ga9NxEd8ZUo/wq9JL8RtksbR7+ZpOmjNPjjHiYjFF8B1vNSPfe3ICT6/xiWqNNA2TPJzjVRtocBRqfeCwru0mCVY/jLfwHR7hexGTKCvdyNZ+zb+jHcAruYV
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:PH7PR11MB6748.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230031)(7916004)(366004)(396003)(376002)(136003)(346002)(39860400002)(230922051799003)(64100799003)(1800799009)(186009)(451199024)(7416002)(6506007)(6666004)(86362001)(33716001)(6512007)(4744005)(9686003)(2906002)(6486002)(44832011)(41300700001)(5660300002)(478600001)(38100700002)(26005)(8676002)(8936002)(4326008)(66476007)(54906003)(66556008)(6916009)(66946007)(316002)(107886003)(82960400001);
+ DIR:OUT; SFP:1102; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?xmlfnQXdzUNDWRYpXSgaaLypB4xXc9uo54ZUWG1ntNuEG1aOwBq8+bO9KyRW?=
+ =?us-ascii?Q?9gVP3xYaSRqxTtS4s0cC5zdNeD9gfywk4YoHVornjn7gC2i9yRFL4HOWVWAB?=
+ =?us-ascii?Q?GUn3vVWgREvRbg23wHv3vWca1ta1zy0HH2iSMjm15sxTcjQvyeeIuC8OF6W8?=
+ =?us-ascii?Q?dpoq6RMJh3y251hSgFNy7SHoV/8/pQlFFOu/8/ubGo1SQiY5kJZ/2CRWxzCI?=
+ =?us-ascii?Q?+OaysnFKurHDbJW7WdRnGhFt719V9+gGzLE5YWHsymwLzFJuWkD3b3BrWzGO?=
+ =?us-ascii?Q?7mi3xPiB4Ptai3lwNtb99X2DRORLT8MLkR4FajnuQhnlRWYkmYFA3YR1FcF8?=
+ =?us-ascii?Q?q/6SccznQt2VzFcl1BwTF7NDUBkHaessvgvAKQ1NZT2oVSeo67xVKSZR1Fdt?=
+ =?us-ascii?Q?QbTvesD7XBaCJ2g/0EkWFNCdnXueqkuLzFfbaEy7vK8p7pTscfpHu81XFtNk?=
+ =?us-ascii?Q?2h7s9lnOobwYERpqG/MRUBC+k1hY3jFY8iuV71uBN0zTnr40UXE2ylG5o+et?=
+ =?us-ascii?Q?Pu2wh2/PKejB44Ph3oGdBalcb4QFJ8ncVwlhvI3wpdewICkE5VwDfeD18Yhz?=
+ =?us-ascii?Q?mfZ+u8/UUF6THOvWaaLRRTmUzNkK7+FXMI9BquiMgfHEjwfhCq3F5wuNp10y?=
+ =?us-ascii?Q?lsIDzKZOc7MJn7uTQCYd8hrir1psFu7Smw1vLCifnN97eYcRhHHTULmv7Jkt?=
+ =?us-ascii?Q?FdVypp4reQ6S1T6JaFqSi6UVrAXqnPZv1mrqiRFOZ1RhvtafR7OnjLxw77RR?=
+ =?us-ascii?Q?C/JiAgG2JeSPWE3nYtC22YhuiL4dEdWL0vMCDDFdvzoYnK6hKFDQGPK4uLdx?=
+ =?us-ascii?Q?+kWWjTTM3BCRMXv+5uNoUpCvsPN7utvbkwYTPfP/+H7cYCfthBcZi0xXRN1m?=
+ =?us-ascii?Q?C79VPnr2lUMIdyEyX3VW41UYF0lTsUYNURH3Y8kpPZPCDsWYQp1UQyN8IaA3?=
+ =?us-ascii?Q?/u5WhskO+Vkd61R3lFbzK6iJ8JS4/brUHRcerZ1ehto/iOO5YMz1cpGALPtL?=
+ =?us-ascii?Q?6ixa9VrodIRL8Jnuz0/e4A04yIfs5UoCMudX/HOGJXgyGMrpeiT8BGZxhI29?=
+ =?us-ascii?Q?jCNWWwU3uXPH8Yvjc8OTVvACZaTPruva9rA7EDl7Plt4U14wefyMrfl6gDUB?=
+ =?us-ascii?Q?oxhQAU98VAjJtZEm5Zjbb05ZjE3Yq0WZqeAU/xkwvoWrEFNOzdUX5VUDi8wu?=
+ =?us-ascii?Q?iHWu7ty9ebUbL3oaXwiBSkudJikYOMMAXMrw+57nqa2nvufZXNPqloF3QFnx?=
+ =?us-ascii?Q?NkFYCCgAhQh9MLRN2W7DOfgTIQ9uYfZ5AnqmI9g2nUUtTkyB6YKLigf+aGYo?=
+ =?us-ascii?Q?ETOOksOG0sbcZ0nDDfM/4BAdOswlW3I8A+HW+Raf+wrTFVo/MLZndtt71pAI?=
+ =?us-ascii?Q?6PNP4ZZALqSRvnjAjywFCzBRxc5qHKzKYcU7YGoNYMkQ9A0d2kL3jnTHWJdU?=
+ =?us-ascii?Q?7LaOeGVwX3osNcPnWQhyIsukWwchnLCzFnqlWcurN6frfdsk9A5nnV9XOTVy?=
+ =?us-ascii?Q?9Va3rmvNFxVN85wFTOEBRw2wbs3+4+I2hHxzqC/utF+Sy7aXsqu54FgOwdLQ?=
+ =?us-ascii?Q?NTgNmCehS7U+/65CJDhxnby9a9evXdhFyYxVob1THnDFj0GvyZQ/DSo+VHD4?=
+ =?us-ascii?Q?bg=3D=3D?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: b223c759-814a-4fb5-ca3e-08dbcb27f230
+X-MS-Exchange-CrossTenant-AuthSource: PH7PR11MB6748.namprd11.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: BL0PR11MB3122.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: bc1e00a7-341e-48f4-63df-08dbcb0bd50c
-X-MS-Exchange-CrossTenant-originalarrivaltime: 12 Oct 2023 10:13:08.1984 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 44HNjzjjhoH1QsgCF99+RCyJ5kvJyRi9Q5Nhnm9EkPsUD0d1Vb5QNTNd1wmnMxIGSUgdBoFYEc4VD6DPddlA7GMUSO3XQkxSpnsTvgfm8UZNUx6FFOnBBQYbuwdOHmeW
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH7PR11MB8251
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 12 Oct 2023 13:34:23.1961 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: e6iVzUA3Q5LcnfHGUfH/767bPGKpkUYQKk/rZieFYDO0N4xF1uzl4NZIDitOy6HfmP/4RdpJjbietpIiEFhSvPKV9vR4mVRHqFF37TxBiVY=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH7PR11MB8454
 X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1697105606; x=1728641606;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=dXFDwfrKX1xj13g4jnwVkLmGf+zJ7yLPdDrCN6RcKps=;
- b=AhrJ94JRFbGirRLwblEGZ8YNG0VTqPZ+QvcCzOGpZdrvRdEpfVQhCUdK
- +Fxa+q5u6UnuPh57Esnagn2xJALGo8wWZ3DGDKOu2nGAkA/lkAm4jF8go
- CEcZnrp99H0ol7WeAfmJtlAC09ySjNZGFrS3wpUWLcvbTVX/UElCIZMeI
- yoaQkle9i4qRWFdOns2m5imqrU4Xb7FYwUpVz6wfIY8qE+URCF8Xypfbw
- MefoiVtm9jNR6AXc/P04vzT9TtPesUs6T21fhgzilwWoMWzko8BY9Fq5F
- CFQz4A6JwsI3QTr/REc/reByrpQBJib8R7lO/sAFfdF9V10hGW72hP012
- g==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ t=1697117669; x=1728653669;
+ h=date:from:to:cc:subject:message-id:references:
+ in-reply-to:mime-version;
+ bh=ENQDimDpFG19j54rptHH3whN7lKTywd57dxnVfMLunU=;
+ b=TU8qn9oVuvtKwctOzv1UxOuYdd3s1woCgBwUTdP1+jCV9Noxzg+ithEq
+ AjYCoCWUI3m5UoM6hapDKdGlZDYywFLginBbX2IV52Q+oDLrx8pB/3LUH
+ XAoiACux8XBfY2M90LkgAU1j/omgOFUjIUCt/DglSyObAY/RZB+JVZIQQ
+ rchEHYixMNumJ6bFhiq2f1DafoHjjL5LqjJedmYmvWnMvUswb1oBkVbC4
+ OoxZK0mogQ86td1LcidHk0YqAOfkExXRBLm1K+AVXZ2i8vAhQwxBElaKs
+ elSxMNbzAZZxEmN1Tcvd+0Lv2EfXjJIb28ehhArUypUJUF2qi94sjnjwp
+ A==;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=AhrJ94JR
+ header.a=rsa-sha256 header.s=Intel header.b=TU8qn9oV
 X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v1 2/2] intel: fix format
- warnings
+Subject: Re: [Intel-wired-lan] [PATCH net-next v4 1/2] ethtool: Add forced
+ speed to supported link modes maps
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -186,165 +188,53 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "Kitszel, Przemyslaw" <przemyslaw.kitszel@intel.com>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- Christophe JAILLET <christophe.jaillet@wanadoo.fr>, "Brandeburg,
- Jesse" <jesse.brandeburg@intel.com>, "Lobakin,
- Aleksander" <aleksander.lobakin@intel.com>
+Cc: andrew@lunn.ch, aelior@marvell.com, manishc@marvell.com,
+ netdev@vger.kernel.org, jdamato@fastly.com, Przemek
+ Kitszel <przemyslaw.kitszel@intel.com>, edumazet@google.com,
+ intel-wired-lan@lists.osuosl.org, Paul Greenwalt <paul.greenwalt@intel.com>,
+ horms@kernel.org, vladimir.oltean@nxp.com,
+ Jacob Keller <jacob.e.keller@intel.com>, kuba@kernel.org,
+ d-tatianin@yandex-team.ru, pabeni@redhat.com, davem@davemloft.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-> -----Original Message-----
-> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of Jesse Brandeburg
-> Sent: Wednesday, October 4, 2023 12:06 AM
-> To: intel-wired-lan@lists.osuosl.org
-> Cc: netdev@vger.kernel.org; Lobakin, Aleksander <aleksander.lobakin@intel.com>; Christophe JAILLET <christophe.jaillet@wanadoo.fr>; Brandeburg, Jesse <jesse.brandeburg@intel.com>; Kitszel, Przemyslaw <przemyslaw.kitszel@intel.com>
-> Subject: [Intel-wired-lan] [PATCH iwl-next v1 2/2] intel: fix format warnings
->
-> Get ahead of the game and fix all the -Wformat=2 noted warnings in the
-> intel drivers directory.
->
-> There are one set of i40e and iavf warnings I couldn't figure out how to
-> fix because the driver is already using vsnprintf without an explicit
-> "const char *" format string.
->
-> Tested with both gcc-12 and clang-15. I found gcc-12 runs clean after
-> this series but clang-15 is a little worried about the vsnprintf lines.
->
-> summary of warnings:
+> >diff --git a/net/ethtool/ioctl.c b/net/ethtool/ioctl.c
 > 
-> drivers/net/ethernet/intel/fm10k/fm10k_ethtool.c:148:34: warning: format string is not a string literal [-Wformat-nonliteral]
-> drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c:1416:24: warning: format string is not a string literal (potentially insecure) [-Wformat-security]
-> drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c:1416:24: note: treat the string as an argument to avoid this
-> drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c:1421:6: warning: format string is not a string literal (potentially insecure) [-Wformat-security]
-> drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c:1421:6: note: treat the string as an argument to avoid this
-> drivers/net/ethernet/intel/igc/igc_ethtool.c:776:24: warning: format string is not a string literal (potentially insecure) [-Wformat-security]
-> drivers/net/ethernet/intel/igc/igc_ethtool.c:776:24: note: treat the string as an argument to avoid this
-> drivers/net/ethernet/intel/igc/igc_ethtool.c:779:6: warning: format string is not a string literal (potentially insecure) [-Wformat-security]
-> drivers/net/ethernet/intel/igc/igc_ethtool.c:779:6: note: treat the string as an argument to avoid this
-> drivers/net/ethernet/intel/iavf/iavf_ethtool.c:199:34: warning: format string is not a string literal [-Wformat-nonliteral]
-> drivers/net/ethernet/intel/igb/igb_ethtool.c:2360:6: warning: format string is not a string literal (potentially insecure) [-Wformat-security]
-> drivers/net/ethernet/intel/igb/igb_ethtool.c:2360:6: note: treat the string as an argument to avoid this
-> drivers/net/ethernet/intel/igb/igb_ethtool.c:2363:6: warning: format string is not a string literal (potentially insecure) [-Wformat-security]
-> drivers/net/ethernet/intel/igb/igb_ethtool.c:2363:6: note: treat the string as an argument to avoid this
-> drivers/net/ethernet/intel/i40e/i40e_ethtool.c:208:34: warning: format string is not a string literal [-Wformat-nonliteral]
-> drivers/net/ethernet/intel/i40e/i40e_ethtool.c:2515:23: warning: format string is not a string literal (potentially insecure) [-Wformat-security]
-> drivers/net/ethernet/intel/i40e/i40e_ethtool.c:2515:23: note: treat the string as an argument to avoid this
-> drivers/net/ethernet/intel/i40e/i40e_ethtool.c:2519:23: warning: format string is not a string literal (potentially insecure) [-Wformat-security]
-> drivers/net/ethernet/intel/i40e/i40e_ethtool.c:2519:23: note: treat the string as an argument to avoid this
-> drivers/net/ethernet/intel/ice/ice_ethtool.c:1064:6: warning: format string is not a string literal (potentially insecure) [-Wformat-security]
-> drivers/net/ethernet/intel/ice/ice_ethtool.c:1064:6: note: treat the string as an argument to avoid this
-> drivers/net/ethernet/intel/ice/ice_ethtool.c:1084:6: warning: format string is not a string literal (potentially insecure) [-Wformat-security]
-> drivers/net/ethernet/intel/ice/ice_ethtool.c:1084:6: note: treat the string as an argument to avoid this
-> drivers/net/ethernet/intel/ice/ice_ethtool.c:1100:24: warning: format string is not a string literal (potentially insecure) [-Wformat-security]
-> drivers/net/ethernet/intel/ice/ice_ethtool.c:1100:24: note: treat the string as an argument to avoid this
->
-> Suggested-by: Alexander Lobakin <aleksander.lobakin@intel.com>
-> Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-> Signed-off-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
-> ---
-> clang-15 warnings before the patch:
->
-> drivers/net/ethernet/intel/fm10k/fm10k_ethtool.c:148:34: warning: format string is not a string literal [-Wformat-nonliteral]
->                vsnprintf(*p, ETH_GSTRING_LEN, stats[i].stat_string, args);
->                                               ^~~~~~~~~~~~~~~~~~~~
-> drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c:1416:24: warning: format string is not a string literal (potentially insecure) [-Wformat-security]
->                         ethtool_sprintf(&p, ixgbe_gstrings_test[i]);
->                                             ^~~~~~~~~~~~~~~~~~~~~~
-> drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c:1416:24: note: treat the string as an argument to avoid this
->                         ethtool_sprintf(&p, ixgbe_gstrings_test[i]);
->                                             ^
->                                            "%s",
-> drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c:1421:6: warning: format string is not a string literal (potentially insecure) [-Wformat-security]
->                                         ixgbe_gstrings_stats[i].stat_string);
->                                        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-> drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c:1421:6: note: treat the string as an argument to avoid this
->                                         ixgbe_gstrings_stats[i].stat_string);
->                                         ^
->                                         "%s",
-> drivers/net/ethernet/intel/igc/igc_ethtool.c:776:24: warning: format string is not a string literal (potentially insecure) [-Wformat-security]
->                         ethtool_sprintf(&p, igc_gstrings_stats[i].stat_string);
->                                             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-> drivers/net/ethernet/intel/igc/igc_ethtool.c:776:24: note: treat the string as an argument to avoid this
->                         ethtool_sprintf(&p, igc_gstrings_stats[i].stat_string);
->                                            ^
->                                            "%s",
-> drivers/net/ethernet/intel/igc/igc_ethtool.c:779:6: warning: format string is not a string literal (potentially insecure) [-Wformat-security]
->                                         igc_gstrings_net_stats[i].stat_string);
->                                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-> drivers/net/ethernet/intel/igc/igc_ethtool.c:779:6: note: treat the string as an argument to avoid this
->                                         igc_gstrings_net_stats[i].stat_string);
->                                       ^
->                                        "%s",
-> drivers/net/ethernet/intel/iavf/iavf_ethtool.c:199:34: warning: format string is not a string literal [-Wformat-nonliteral]
->                vsnprintf(*p, ETH_GSTRING_LEN, stats[i].stat_string, args);
->                                               ^~~~~~~~~~~~~~~~~~~~
-> drivers/net/ethernet/intel/igb/igb_ethtool.c:2360:6: warning: format string is not a string literal (potentially insecure) [-Wformat-security]
->                                         igb_gstrings_stats[i].stat_string);
->                                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-> drivers/net/ethernet/intel/igb/igb_ethtool.c:2360:6: note: treat the string as an argument to avoid this
->                                         igb_gstrings_stats[i].stat_string);
->                                         ^
->                                         "%s",
-> drivers/net/ethernet/intel/igb/igb_ethtool.c:2363:6: warning: format string is not a string literal (potentially insecure) [-Wformat-security]
->                                         igb_gstrings_net_stats[i].stat_string);
->                                        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-> drivers/net/ethernet/intel/igb/igb_ethtool.c:2363:6: note: treat the string as an argument to avoid this
->                                         igb_gstrings_net_stats[i].stat_string);
->                                         ^
->                                         "%s",
-> drivers/net/ethernet/intel/i40e/i40e_ethtool.c:208:34: warning: format string is not a string literal [-Wformat-nonliteral]
->                 vsnprintf(*p, ETH_GSTRING_LEN, stats[i].stat_string, args);
->                                                ^~~~~~~~~~~~~~~~~~~~
-> drivers/net/ethernet/intel/i40e/i40e_ethtool.c:2515:23: warning: format string is not a string literal (potentially insecure) [-Wformat-security]
->                 ethtool_sprintf(&p, i40e_gstrings_priv_flags[i].flag_string);
->                                     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-> drivers/net/ethernet/intel/i40e/i40e_ethtool.c:2515:23: note: treat the string as an argument to avoid this
->                 ethtool_sprintf(&p, i40e_gstrings_priv_flags[i].flag_string);
->                                   ^
->                                    "%s",
-> drivers/net/ethernet/intel/i40e/i40e_ethtool.c:2519:23: warning: format string is not a string literal (potentially insecure) [-Wformat-security]
->                 ethtool_sprintf(&p, i40e_gl_gstrings_priv_flags[i].flag_string);
->                                     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-> drivers/net/ethernet/intel/i40e/i40e_ethtool.c:2519:23: note: treat the string as an argument to avoid this
->                 ethtool_sprintf(&p, i40e_gl_gstrings_priv_flags[i].flag_string);
->                                     ^
->                                     "%s",
-> drivers/net/ethernet/intel/ice/ice_ethtool.c:1064:6: warning: format string is not a string literal (potentially insecure) [-Wformat-security]
->                                         ice_gstrings_vsi_stats[i].stat_string);
->                                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-> drivers/net/ethernet/intel/ice/ice_ethtool.c:1064:6: note: treat the string as an argument to avoid this
->                                         ice_gstrings_vsi_stats[i].stat_string);
->                                        ^
->                                        "%s",
-> drivers/net/ethernet/intel/ice/ice_ethtool.c:1084:6: warning: format string is not a string literal (potentially insecure) [-Wformat-security]
->                                         ice_gstrings_pf_stats[i].stat_string);
->                                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-> drivers/net/ethernet/intel/ice/ice_ethtool.c:1084:6: note: treat the string as an argument to avoid this
->                                         ice_gstrings_pf_stats[i].stat_string);
->                                         ^
->                                        "%s",
-> drivers/net/ethernet/intel/ice/ice_ethtool.c:1100:24: warning: format string is not a string literal (potentially insecure) [-Wformat-security]
->                         ethtool_sprintf(&p, ice_gstrings_priv_flags[i].name);
->                                             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-> drivers/net/ethernet/intel/ice/ice_ethtool.c:1100:24: note: treat the string as an argument to avoid this
->                         ethtool_sprintf(&p, ice_gstrings_priv_flags[i].name);
->                                           ^
->                                            "%s",
-> ---
->  drivers/net/ethernet/intel/i40e/i40e_ethtool.c   | 6 ++++--
->  drivers/net/ethernet/intel/iavf/iavf_ethtool.c   | 8 +++-----
->  drivers/net/ethernet/intel/ice/ice_ethtool.c     | 7 ++++---
-> drivers/net/ethernet/intel/igb/igb_ethtool.c     | 4 ++--
->  drivers/net/ethernet/intel/igc/igc_ethtool.c     | 5 +++--
->  drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c | 4 ++--
->  6 files changed, 18 insertions(+), 16 deletions(-)
->
+> Why you put this into ioctl.c?
+> 
+> Can't this be put into include/linux/linkmode.h as a static helper as
+> well?
 
-Tested-by: Pucha Himasekhar Reddy <himasekharx.reddy.pucha@intel.com> (A Contingent worker at Intel)
-
+I'm a little bit confused, include/linux/linkmode.h doesn't contain
+similar ethtool helpers.. Did you maybe meant ethtool.h?
+ 
+> 
+> >index 0b0ce4f81c01..34507691fc9d 100644
+> >--- a/net/ethtool/ioctl.c
+> >+++ b/net/ethtool/ioctl.c
+> >@@ -3388,3 +3388,16 @@ void ethtool_rx_flow_rule_destroy(struct ethtool_rx_flow_rule *flow)
+> > 	kfree(flow);
+> > }
+> > EXPORT_SYMBOL(ethtool_rx_flow_rule_destroy);
+> >+
+> >+void ethtool_forced_speed_maps_init(struct ethtool_forced_speed_map *maps,
+> >+				    u32 size)
+> >+{
+> >+	for (u32 i = 0; i < size; i++) {
+> >+		struct ethtool_forced_speed_map *map = &maps[i];
+> >+
+> >+		linkmode_set_bit_array(map->cap_arr, map->arr_size, map->caps);
+> >+		map->cap_arr = NULL;
+> >+		map->arr_size = 0;
+> >+	}
+> >+}
+> >+EXPORT_SYMBOL(ethtool_forced_speed_maps_init);
+> >-- 
+> >2.37.3
+> >
+> >
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
