@@ -1,78 +1,86 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id F2ACC7C8BB6
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 13 Oct 2023 18:49:04 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 34EF84059E;
-	Fri, 13 Oct 2023 16:49:03 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 34EF84059E
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1697215743;
-	bh=aDiyuKT/DEV2qRDbUinQ5kgUz+TlBkD8XbQ0pEx5St8=;
-	h=Date:From:To:In-Reply-To:Subject:List-Id:List-Unsubscribe:
-	 List-Archive:List-Post:List-Help:List-Subscribe:Cc:From;
-	b=nYphWBbK7kIIM4D9OUTR0OKqj0wHrSail7D6q4JkpREVYlw/wgBMDpnalgHIZ/Rpe
-	 m11F4Rij9VPmqFgwEkvDZMxXj2I0YLdfwoXXGDlG4OiOPDqJnK2XTz9ExlJXYYT1Ib
-	 wppKjlO6KFUkWz2FqBeNNDNR3s4QIUczeXQIl2QeTWEOQrdB+lUc4mJdODgL5oUtnH
-	 PZL1V1UPYsX7VUeajobamHt5UeNyG3w/NAC2R1g/qKJqDSxtModoTkay2kUnq2xjB/
-	 ebew3HOfAOf4IlWfZrWrkC+u6YoB6BF/XhZ3d0mUSLCT3D7XDtKDRZeGdgayWoWp5g
-	 C1E8KYif6M0kA==
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id HKJ8CB4v3v-D; Fri, 13 Oct 2023 16:49:02 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 9A09F40590;
-	Fri, 13 Oct 2023 16:49:01 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 9A09F40590
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id D3E411BF349
- for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Oct 2023 16:48:56 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id DF8737C8BF8
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 13 Oct 2023 19:08:12 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id B833641AFD
- for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Oct 2023 16:48:56 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B833641AFD
+	by smtp4.osuosl.org (Postfix) with ESMTP id 379F04185D;
+	Fri, 13 Oct 2023 17:08:11 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 379F04185D
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1697216891;
+	bh=xm0+D/mVaFRrHTI1ygpb+e+DT7vG2g9/R+OnoXHuLCY=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=l4ZloJrrPWPQNXM1Pci+CmmHVlhjGgCvefLMNpofnM0pAVHErKi3pIQB1IAIjVETj
+	 CVtyjrXX9OMA6gd5z4J5D/VZG0cbCEWvlKJqChRTlC1swbZ5FnkpfCfr0Ocw1d+Jpa
+	 0Ote0W9BDFEJkJbH8vfI/H6i7G2KJtQCnyW3E2uBvJdj0Z1hpr8CrmF3iq/bw1I3uX
+	 PR3B8ce0i1/lN1n/OUqe+h0AVIMB2WT3zrsBNIk4O/1vT5h9FcmrdGqzL+BSEeccBe
+	 A0t58w90afk/GANYN8/78kb7/xGUZu+7e8jsaNkxTlm8rYyO7OwqK80MZAOQUIQd4k
+	 CjYuEyGcYI5mg==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id WVa294QQcAbm for <intel-wired-lan@lists.osuosl.org>;
- Fri, 13 Oct 2023 16:48:56 +0000 (UTC)
-Received: from ams.source.kernel.org (ams.source.kernel.org
- [IPv6:2604:1380:4601:e00::1])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 9BD9C41AEB
- for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Oct 2023 16:48:55 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9BD9C41AEB
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by ams.source.kernel.org (Postfix) with ESMTP id 8F2E6B82BBE;
- Fri, 13 Oct 2023 16:48:52 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A61FEC433C9;
- Fri, 13 Oct 2023 16:48:51 +0000 (UTC)
-Date: Fri, 13 Oct 2023 11:48:50 -0500
-From: Bjorn Helgaas <helgaas@kernel.org>
-To: Ilpo =?utf-8?B?SsOkcnZpbmVu?= <ilpo.jarvinen@linux.intel.com>
-Message-ID: <20231013164850.GA1118214@bhelgaas>
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Jp7wBPCdHcSo; Fri, 13 Oct 2023 17:08:10 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp4.osuosl.org (Postfix) with ESMTP id C774C41B33;
+	Fri, 13 Oct 2023 17:08:09 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C774C41B33
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id EBFDB1BF425
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Oct 2023 17:08:04 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp3.osuosl.org (Postfix) with ESMTP id CCA28610F1
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Oct 2023 17:08:04 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org CCA28610F1
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id RsANDCaoAEyK for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 13 Oct 2023 17:08:03 +0000 (UTC)
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 92A7C610B8
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Oct 2023 17:08:03 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 92A7C610B8
+Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
+ by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-449-p1fc9ffLPHa4J1LrbnZu_A-1; Fri, 13 Oct 2023 13:07:58 -0400
+X-MC-Unique: p1fc9ffLPHa4J1LrbnZu_A-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.7])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 24E832800E84;
+ Fri, 13 Oct 2023 17:07:58 +0000 (UTC)
+Received: from p1.luc.cera.cz (unknown [10.45.225.161])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 907BA1C060DF;
+ Fri, 13 Oct 2023 17:07:56 +0000 (UTC)
+From: Ivan Vecera <ivecera@redhat.com>
+To: netdev@vger.kernel.org
+Date: Fri, 13 Oct 2023 19:07:50 +0200
+Message-ID: <20231013170755.2367410-1-ivecera@redhat.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <afb4db5-5fe1-9f5d-a910-032adf195c@linux.intel.com>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1697215731;
- bh=szP7x2S0GYdm6BcJLpTOMMqgkvX4QE9nsVO22TS5i8o=;
- h=Date:From:To:Cc:Subject:In-Reply-To:From;
- b=iXecQ4KBb/XyryDRw48MJQ8eE5IZmTibbJWLMBT63ah7VMsNNhfRxsQRBnSxXVRz8
- ptzcbqS9ofaJyIOri3ZALVgpwCe+Rwg/lONB4QUFij9MtoErSRw7/rE4HfqKMRp9Ol
- 1AuluwowvDK8NcbSOabPG4FxyRekhzTRLLTUCt9VlQsHG9fr69h7832PJfiQYCJtsC
- xvTbFlvGOVHUu8F9jtsNeee3XWb5EfGiJLqK4gNafwswJDcPCPTqjBh2AHAtqM1Mvf
- uNDeS2sjsSyZm50Zfb+V47XLjRkfe0MUfugLCniPVwGscnhdTvdZP2Opj4v6DC5oEv
- fj+erZKZvWbGg==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=iXecQ4KB
-Subject: Re: [Intel-wired-lan] [PATCH v2 05/13] PCI/ASPM: Add
- pci_enable_link_state()
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.7
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=redhat.com; 
+ s=mimecast20190719; t=1697216882;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=TksTCekXADksDkw6zz27tOiFc5jOxJuDTlx+GNP+MB4=;
+ b=c+U17X3YHzp6ibhVUeXfN1wAHcdb4ovH1Q1Ayyo8iRLW2FjsWEAvJMqyfGuNBXqdGyMsBP
+ s+UYszHEhhKOZD7rOf84GJg6cfxMfqaHZrXjP3ADq8eDzvLvITgtyUXEFmZ/SoOIgGOlNc
+ FnHlEvjjvpyg03Gctkp76hwhIuKalI4=
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
+ header.a=rsa-sha256 header.s=mimecast20190719 header.b=c+U17X3Y
+Subject: [Intel-wired-lan] [PATCH net-next 0/5] i40e: Add basic devlink
+ support
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,91 +93,50 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
- linux-rdma@vger.kernel.org, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
- "Rafael J . Wysocki" <rafael@kernel.org>, ath12k@lists.infradead.org,
- linux-pci@vger.kernel.org, linux-wireless@vger.kernel.org,
- LKML <linux-kernel@vger.kernel.org>, ath10k@lists.infradead.org,
- ath11k@lists.infradead.org, Emmanuel Grumbach <emmanuel.grumbach@intel.com>,
- linux-bluetooth@vger.kernel.org, Lukas Wunner <lukas@wunner.de>,
- intel-wired-lan@lists.osuosl.org, Netdev <netdev@vger.kernel.org>,
- Bjorn Helgaas <bhelgaas@google.com>, linux-mediatek@lists.infradead.org,
- Rob Herring <robh@kernel.org>, linux-arm-kernel@lists.infradead.org,
- Heiner Kallweit <hkallweit1@gmail.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: intel-wired-lan@lists.osuosl.org,
+ Jesse Brandeburg <jesse.brandeburg@intel.com>, linux-kernel@vger.kernel.org,
+ Eric Dumazet <edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ "David S . Miller" <davem@davemloft.net>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-T24gVGh1LCBPY3QgMTIsIDIwMjMgYXQgMDM6NTM6MzlQTSArMDMwMCwgSWxwbyBKw6RydmluZW4g
-d3JvdGU6Cj4gT24gV2VkLCAxMSBPY3QgMjAyMywgQmpvcm4gSGVsZ2FhcyB3cm90ZToKPiA+IE9u
-IE1vbiwgU2VwIDE4LCAyMDIzIGF0IDA0OjEwOjU1UE0gKzAzMDAsIElscG8gSsOkcnZpbmVuIHdy
-b3RlOgo+ID4gPiBwY2lfZGlzYWJsZV9saW5rX3N0YXRlKCkgbGFja3MgYSBzeW1tZXRyaWMgcGFp
-ci4gU29tZSBkcml2ZXJzIHdhbnQgdG8KPiA+ID4gZGlzYWJsZSBBU1BNIGR1cmluZyBjZXJ0YWlu
-IHBoYXNlcyBvZiB0aGVpciBvcGVyYXRpb24gYnV0IHRoZW4KPiA+ID4gcmUtZW5hYmxlIGl0IGxh
-dGVyIG9uLiBJZiBwY2lfZGlzYWJsZV9saW5rX3N0YXRlKCkgaXMgbWFkZSBmb3IgdGhlCj4gPiA+
-IGRldmljZSwgdGhlcmUgaXMgY3VycmVudGx5IG5vIHdheSB0byByZS1lbmFibGUgdGhlIHN0YXRl
-cyB0aGF0IHdlcmUKPiA+ID4gZGlzYWJsZWQuCj4gPiAKPiA+IHBjaV9kaXNhYmxlX2xpbmtfc3Rh
-dGUoKSBnaXZlcyBkcml2ZXJzIGEgd2F5IHRvIGRpc2FibGUgc3BlY2lmaWVkIEFTUE0KPiA+IHN0
-YXRlcyB1c2luZyBhIGJpdG1hc2sgKFBDSUVfTElOS19TVEFURV9MMFMsIFBDSUVfTElOS19TVEFU
-RV9MMSwKPiA+IFBDSUVfTElOS19TVEFURV9MMV8xLCBldGMpLCBidXQgSUlVQyB0aGUgZHJpdmVy
-IGNhbid0IHRlbGwgZXhhY3RseQo+ID4gd2hhdCBjaGFuZ2VkIGFuZCBjYW4ndCBkaXJlY3RseSBy
-ZXN0b3JlIHRoZSBvcmlnaW5hbCBzdGF0ZSwgZS5nLiwKPiA+IAo+ID4gICAtIFBDSUVfTElOS19T
-VEFURV9MMSBlbmFibGVkIGluaXRpYWxseQo+ID4gICAtIGRyaXZlciBjYWxscyBwY2lfZGlzYWJs
-ZV9saW5rX3N0YXRlKFBDSUVfTElOS19TVEFURV9MMFMpCj4gPiAgIC0gZHJpdmVyIGNhbGxzIHBj
-aV9lbmFibGVfbGlua19zdGF0ZShQQ0lFX0xJTktfU1RBVEVfTDBTKQo+ID4gICAtIFBDSUVfTElO
-S19TVEFURV9MMFMgYW5kIFBDSUVfTElOS19TVEFURV9MMSBhcmUgZW5hYmxlZCBub3cKPiA+IAo+
-ID4gTm93IFBDSUVfTElOS19TVEFURV9MMFMgaXMgZW5hYmxlZCBldmVuIHRob3VnaCBpdCB3YXMg
-bm90IGluaXRpYWxseQo+ID4gZW5hYmxlZC4gIE1heWJlIHRoYXQncyB3aGF0IHdlIHdhbnQ7IEkg
-ZHVubm8uCj4gPiAKPiA+IHBjaV9kaXNhYmxlX2xpbmtfc3RhdGUoKSBjdXJyZW50bHkgcmV0dXJu
-cyBzdWNjZXNzL2ZhaWx1cmUsIGJ1dCBvbmx5Cj4gPiByODE2OSBhbmQgbXQ3NiBldmVuIGNoZWNr
-LCBhbmQgb25seSBydGxfaW5pdF9vbmUoKSAocjgxNjkpIGhhcyBhCj4gPiBub24tdHJpdmlhbCBy
-ZWFzb24sIHNvIGl0J3MgY29uY2VpdmFibGUgdGhhdCBpdCBjb3VsZCByZXR1cm4gYSBiaXRtYXNr
-Cj4gPiBpbnN0ZWFkLgo+IAo+IEl0J3MgZ3JlYXQgdGhhdCB5b3Ugc3VnZ2VzdGVkIHRoaXMgc2lu
-Y2UgaXQncyBhY3R1YWxseSB3aGF0IGFsc28gSSd2ZSBiZWVuIAo+IHN0YXJ0ZWQgdG8gdGhpbmsg
-c2hvdWxkIGJlIGRvbmUgaW5zdGVhZCBvZiB0aGlzIHN0cmFpZ2h0Zm9yd2FyZCBhcHByb2FjaAo+
-IEkgdXNlZCBpbiBWMi4gCj4gCj4gVGhhdCBpcywgZG9uJ3QgaGF2ZSB0aGUgZHJpdmVycyB0byBn
-ZXQgYW55dGhpbmcgZGlyZWN0bHkgZnJvbSBMTktDVEwKPiBidXQgdGhleSBzaG91bGQgZ2V0IGV2
-ZXJ5dGhpbmcgdGhyb3VnaCB0aGUgQVBJIHByb3ZpZGVkIGJ5IHRoZSAKPiBkaXNhYmxlL2VuYWJs
-ZSBjYWxscyB3aGljaCBtYWtlcyBpdCBlYXN5IGZvciB0aGUgZHJpdmVyIHRvIHBhc3MgdGhlIHNh
-bWUKPiB2YWx1ZSBiYWNrIGludG8gdGhlIGVuYWJsZSBjYWxsLgo+IAo+ID4gPiBBZGQgcGNpX2Vu
-YWJsZV9saW5rX3N0YXRlKCkgdG8gcmVtb3ZlIEFTUE0gc3RhdGVzIGZyb20gdGhlIHN0YXRlCj4g
-PiA+IGRpc2FibGUgbWFzay4KPiA+ID4gCj4gPiA+IFNpZ25lZC1vZmYtYnk6IElscG8gSsOkcnZp
-bmVuIDxpbHBvLmphcnZpbmVuQGxpbnV4LmludGVsLmNvbT4KPiA+ID4gLS0tCj4gPiA+ICBkcml2
-ZXJzL3BjaS9wY2llL2FzcG0uYyB8IDQyICsrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysr
-KysrKysrKysrCj4gPiA+ICBpbmNsdWRlL2xpbnV4L3BjaS5oICAgICB8ICAyICsrCj4gPiA+ICAy
-IGZpbGVzIGNoYW5nZWQsIDQ0IGluc2VydGlvbnMoKykKPiA+ID4gCj4gPiA+IGRpZmYgLS1naXQg
-YS9kcml2ZXJzL3BjaS9wY2llL2FzcG0uYyBiL2RyaXZlcnMvcGNpL3BjaWUvYXNwbS5jCj4gPiA+
-IGluZGV4IDkxZGM5NWFjYTkwZi4uZjQ1ZDE4ZDQ3YzIwIDEwMDY0NAo+ID4gPiAtLS0gYS9kcml2
-ZXJzL3BjaS9wY2llL2FzcG0uYwo+ID4gPiArKysgYi9kcml2ZXJzL3BjaS9wY2llL2FzcG0uYwo+
-ID4gPiBAQCAtMTExNyw2ICsxMTE3LDQ4IEBAIGludCBwY2lfZGlzYWJsZV9saW5rX3N0YXRlKHN0
-cnVjdCBwY2lfZGV2ICpwZGV2LCBpbnQgc3RhdGUpCj4gPiA+ICB9Cj4gPiA+ICBFWFBPUlRfU1lN
-Qk9MKHBjaV9kaXNhYmxlX2xpbmtfc3RhdGUpOwo+ID4gPiAgCj4gPiA+ICsvKioKPiA+ID4gKyAq
-IHBjaV9lbmFibGVfbGlua19zdGF0ZSAtIFJlLWVuYWJsZSBkZXZpY2UncyBsaW5rIHN0YXRlCj4g
-PiA+ICsgKiBAcGRldjogUENJIGRldmljZQo+ID4gPiArICogQHN0YXRlOiBBU1BNIGxpbmsgc3Rh
-dGVzIHRvIHJlLWVuYWJsZQo+ID4gPiArICoKPiA+ID4gKyAqIEVuYWJsZSBkZXZpY2UncyBsaW5r
-IHN0YXRlIHRoYXQgd2VyZSBwcmV2aW91c2x5IGRpc2FibGUgc28gdGhlIGxpbmsgaXMKPiA+IAo+
-ID4gInN0YXRlW3NdIHRoYXQgd2VyZSBwcmV2aW91c2x5IGRpc2FibGVbZF0iIGFsbHVkZXMgdG8g
-dGhlIHVzZSBjYXNlIHlvdQo+ID4gaGF2ZSBpbiBtaW5kLCBidXQgSSBkb24ndCB0aGluayBpdCBk
-ZXNjcmliZXMgaG93IHRoaXMgZnVuY3Rpb24KPiA+IGFjdHVhbGx5IHdvcmtzLiAgVGhpcyBmdW5j
-dGlvbiBqdXN0IG1ha2VzIGl0IHBvc3NpYmxlIHRvIGVuYWJsZSB0aGUKPiA+IHNwZWNpZmllZCBz
-dGF0ZXMuICBUaGUgQHN0YXRlIHBhcmFtZXRlciBtYXkgaGF2ZSBub3RoaW5nIHRvIGRvIHdpdGgK
-PiA+IGFueSBwcmV2aW91c2x5IGRpc2FibGVkIHN0YXRlcy4KPiAKPiBZZXMsIGl0J3Mgd2hhdCBJ
-J3ZlIGJlZW4gdGhpbmtpbmcgYmV0d2VlbiB0aGUgbGluZXMuIEJ1dCBJIHNlZSB5b3VyIHBvaW50
-IAo+IHRoYXQgdGhpcyBBUEkgZGlkbid0IG1ha2UgaXQgZWFzeS9vYnZpb3VzIGFzIGlzLgo+IAo+
-IFdvdWxkIHlvdSB3YW50IG1lIHRvIGVuZm9yY2UgaXQgdG9vIGJlc2lkZXMgYWx0ZXJpbmcgdGhl
-IEFQSSBzdWNoIHRoYXQgdGhlIAo+IHN0YXRlcyBhcmUgYWN0dWFsbHkgcmV0dXJuZWQgZnJvbSBk
-aXNhYmxlIGNhbGw/IChJIGRvbid0IHBlcnNvbmFsbHkgZmluZAo+IHRoYXQgbmVjZXNzYXJ5IGFz
-IGxvbmcgYXMgdGhlIEFQSSBwYWlyIGl0c2VsZiBtYWtlcyBpdCBvYnZpb3VzIHdoYXQgdGhlIAo+
-IGRyaXZlciBpcyBleHBlY3QgdG8gcGFzcyB0aGVyZS4pCgpUaGlzIHdhcyBqdXN0IGEgY29tbWVu
-dCBhYm91dCB0aGUgZG9jIG5vdCBtYXRjaGluZyB0aGUgZnVuY3Rpb24KYmVoYXZpb3IuCgpJIHRo
-aW5rIHdlIGhhdmUgdG8gc3VwcG9ydCBwY2lfZW5hYmxlX2xpbmtfc3RhdGUoKSBldmVuIGlmIHRo
-ZSBkcml2ZXIKaGFzbid0IHByZXZpb3VzbHkgY2FsbGVkIHBjaV9kaXNhYmxlX2xpbmtfc3RhdGUo
-KSwgc28gZHJpdmVycyBoYXZlIHRvCmJlIGFibGUgdG8gc3BlY2lmeSB0aGUgcGNpX2VuYWJsZV9s
-aW5rX3N0YXRlKCkgQHN0YXRlIGZyb20gc2NyYXRjaC4KCkRvZXMgdGhhdCBhbnN3ZXIgdGhlIGVu
-Zm9yY2VtZW50IHF1ZXN0aW9uPyAgSSBkb24ndCB0aGluayB3ZSBjYW4KcmVhbGx5IGVuZm9yY2Ug
-YW55dGhpbmcgb3RoZXIgdGhhbiB0aGF0IEBzdGF0ZSBzcGVjaWZpZXMgdmFsaWQgQVNQTQpzdGF0
-ZXMuCgpCam9ybgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-XwpJbnRlbC13aXJlZC1sYW4gbWFpbGluZyBsaXN0CkludGVsLXdpcmVkLWxhbkBvc3Vvc2wub3Jn
-Cmh0dHBzOi8vbGlzdHMub3N1b3NsLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVsLXdpcmVkLWxh
-bgo=
+The series adds initial support for devlink to i40e driver.
+
+Patch-set overview:
+Patch 1: Adds initial devlink support (devlink and port registration)
+Patch 2: Refactors and split i40e_nvm_version_str()
+Patch 3: Adds support for 'devlink dev info'
+Patch 4: Refactors existing helper function to read PBA ID
+Patch 5: Adds 'board.id' to 'devlink dev info' using PBA ID
+
+Ivan Vecera (5):
+  i40e: Add initial devlink support
+  i40e: Split and refactor i40e_nvm_version_str()
+  i40e: Add handler for devlink .info_get
+  i40e: Refactor and rename i40e_read_pba_string()
+  i40e: Add PBA as board id info to devlink .info_get
+
+ drivers/net/ethernet/intel/Kconfig            |   1 +
+ drivers/net/ethernet/intel/i40e/Makefile      |   3 +-
+ drivers/net/ethernet/intel/i40e/i40e.h        | 136 ++++++++---
+ drivers/net/ethernet/intel/i40e/i40e_common.c |  58 +++--
+ .../net/ethernet/intel/i40e/i40e_devlink.c    | 224 ++++++++++++++++++
+ .../net/ethernet/intel/i40e/i40e_devlink.h    |  18 ++
+ .../net/ethernet/intel/i40e/i40e_ethtool.c    |   4 +-
+ drivers/net/ethernet/intel/i40e/i40e_main.c   |  40 +++-
+ .../net/ethernet/intel/i40e/i40e_prototype.h  |   3 +-
+ drivers/net/ethernet/intel/i40e/i40e_type.h   |   3 +
+ 10 files changed, 414 insertions(+), 76 deletions(-)
+ create mode 100644 drivers/net/ethernet/intel/i40e/i40e_devlink.c
+ create mode 100644 drivers/net/ethernet/intel/i40e/i40e_devlink.h
+
+-- 
+2.41.0
+
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
