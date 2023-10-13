@@ -1,80 +1,85 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 487907C8426
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 13 Oct 2023 13:13:19 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9F4487C8512
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 13 Oct 2023 13:53:08 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 6491C403A9;
-	Fri, 13 Oct 2023 11:13:17 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 6491C403A9
+	by smtp2.osuosl.org (Postfix) with ESMTP id 269704173C;
+	Fri, 13 Oct 2023 11:53:07 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 269704173C
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1697195597;
-	bh=3GxQrjz9pgG6qyCNZL9LGyhauQ+x+u00ALr+zfy6jvw=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=fmS8PHgDgSmLaOOXuFVFHSY2FmfGlsIUlIRniNrWTkNrKaT1pfD+sn35wK/Ep57wN
-	 ZpNyeVMyIlnuauVWhatu5KqsiCxrBYRXTC57C842mPmRhAfHr6EYtcdmGrdsPbVZt9
-	 ViMIfpCud3MUdPPb4ZARKCIcBK2fYZO/ZEcJELNjyP397WAVCHVcQsGSYq5txlIz6X
-	 l1WFhWCcVj2GZKwxb2SUWosjzWSFq8QI58y1VuM/Gw72xkxzipyM88sqPAZ/F9E0IM
-	 vqq3djiuyEb6dHwCIllGGIDWbIgB/rX2UxqXlE6BdFfQk3eCJ6C95v6XaLnaLTsTdN
-	 xMmU6NL3TSkGA==
+	s=default; t=1697197987;
+	bh=dj7DbtdxBVL0HLJEecEEHIfwtxz9E3xKIC8K5Nneu8M=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=MVN17xPfLkR6VgNyiLeI+ukApb8/yWHkxyDvDTI8FMGcfL4ml9iBPw2/hASlLjXvq
+	 akd5pSTDf4/BMmGtggbrnHFp+ZO9djyiBZvJXL3jZ0jk3Skvu2Qh9iFhavmUz7BhHT
+	 rL1bVltasa7nfTRIRWB2LtZYv3iepAqbbB47Fq7yxUz31CkaK4BpHaVMQklno+815N
+	 aXFAitS9thSDbIra/qt2nmki26e5w1tbOX76r+rl2n1QFRmtbHJboTZ8jCgj88U0sI
+	 +7S++Pf2givIrTMIvAKZ+yvVkK/xzTlqWvB8IbYSQ5hQ/AS/r6MG5rrb5vjEQxvaN4
+	 3krquo2ICdyFg==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id H-wFpxhiUMas; Fri, 13 Oct 2023 11:13:16 +0000 (UTC)
+	with ESMTP id Hp1JGtkDd-pP; Fri, 13 Oct 2023 11:53:05 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id B75F6402E0;
-	Fri, 13 Oct 2023 11:13:15 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B75F6402E0
+	by smtp2.osuosl.org (Postfix) with ESMTP id C5D3F416FC;
+	Fri, 13 Oct 2023 11:53:04 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C5D3F416FC
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id D57B51BF33C
- for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Oct 2023 11:13:09 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 925581BF33C
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Oct 2023 11:52:59 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 8C86960E1A
- for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Oct 2023 11:13:09 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 8C86960E1A
+ by smtp3.osuosl.org (Postfix) with ESMTP id 692AE6079B
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Oct 2023 11:52:59 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 692AE6079B
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id eLs_UyZNUw2F for <intel-wired-lan@lists.osuosl.org>;
- Fri, 13 Oct 2023 11:13:08 +0000 (UTC)
-Received: from out-193.mta0.migadu.com (out-193.mta0.migadu.com
- [91.218.175.193])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 6D7A860767
- for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Oct 2023 11:13:08 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6D7A860767
-Message-ID: <b6fbabb3-f270-4762-8b31-399d48de1456@linux.dev>
-Date: Fri, 13 Oct 2023 12:13:03 +0100
+ with ESMTP id rX8xqdcTN-qa for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 13 Oct 2023 11:52:57 +0000 (UTC)
+Received: from mgamail.intel.com (mgamail.intel.com [134.134.136.100])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 41F0F60745
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 13 Oct 2023 11:52:57 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 41F0F60745
+X-IronPort-AV: E=McAfee;i="6600,9927,10861"; a="451636877"
+X-IronPort-AV: E=Sophos;i="6.03,222,1694761200"; d="scan'208";a="451636877"
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 13 Oct 2023 04:52:47 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10861"; a="845446270"
+X-IronPort-AV: E=Sophos;i="6.03,222,1694761200"; d="scan'208";a="845446270"
+Received: from unknown (HELO amlin-019-225.igk.intel.com) ([10.102.19.225])
+ by FMSMGA003.fm.intel.com with ESMTP; 13 Oct 2023 04:52:46 -0700
+From: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+To: intel-wired-lan@lists.osuosl.org, anthony.l.nguyen@intel.com,
+ aleksandr.loktionov@intel.com, jedrzej.jagielski@intel.com
+Date: Fri, 13 Oct 2023 13:52:45 +0200
+Message-Id: <20231013115245.1517606-1-aleksandr.loktionov@intel.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Language: en-US
-To: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>,
- netdev@vger.kernel.org
-References: <20231011101236.23160-1-arkadiusz.kubalewski@intel.com>
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and
- include these headers.
-From: Vadim Fedorenko <vadim.fedorenko@linux.dev>
-In-Reply-To: <20231011101236.23160-1-arkadiusz.kubalewski@intel.com>
-X-Migadu-Flow: FLOW_OUT
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linux.dev; s=key1; t=1697195585;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=CeDV7uvq+wU99a5k0tITH4O1+68ZHdKMz7Zl4hCUc0I=;
- b=JKJgQBxFdSSQ2zrX99jZyGeEFf3nDa1+Cm+EoBQM6pSIoy7c2BKOLh9ypwDnbwBBFX9XdX
- DwhP+WWg1ZNY9cW74OAn9AJKXFOyrq6jEn+8g/al8lWhss4PXEWkAqEa8gS/7mwZocvdv2
- zNojf9C4CAFsWhX2Teut0kHNbm5ncgk=
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1697197977; x=1728733977;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=L2yLlOc8vB7BKM7ZbneI4WcA5LmAwEXyptbf0TpYHOg=;
+ b=j5zjDx7QsUhNJtGiEt3pNDRtDYrDlyvvUQl2+Gt5F5I+ZAnqLkpltCfM
+ +6dHx8Idhp4QBCJMybbKeNP/J22eqWnR/QEURhoZdh2TRJFvTgAqDwrCL
+ 1e23mRPJMWEXj9QrliIMM0zXzLpY1GY4bgaouqXmczNIOalhaDVLpfQ6i
+ Q6fQol9GItOfcDuHoIQgwE/74krcgr0pay4HjZCSx+vISK3gy2AIpo77h
+ ce3J5KVTESsBlnvp4d8JY+k98gI7D7euk1y9ohH6J4XCMBszK7NcPOz4t
+ GEVxSyn6A0qgoerf55CDLblWTFXP+7qqhgKnKeLmBQoR6NX72qaQ+Pxis
+ w==;
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (1024-bit key,
- unprotected) header.d=linux.dev header.i=@linux.dev header.a=rsa-sha256
- header.s=key1 header.b=JKJgQBxF
-Subject: Re: [Intel-wired-lan] [PATCH net-next v5 0/5] dpll: add
- phase-offset and phase-adjust
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=j5zjDx7Q
+Subject: [Intel-wired-lan] [PATCH iwl-next v5] i40e: add restore default
+ speed when changed PHY doesn't support it
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,67 +92,125 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: jiri@resnulli.us, corbet@lwn.net, intel-wired-lan@lists.osuosl.org,
- linux-doc@vger.kernel.org, jesse.brandeburg@intel.com,
- anthony.l.nguyen@intel.com, kuba@kernel.org, pabeni@redhat.com,
- davem@davemloft.net
+Cc: netdev@vger.kernel.org
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 11/10/2023 11:12, Arkadiusz Kubalewski wrote:
-> Improve monitoring and control over dpll devices.
-> Allow user to receive measurement of phase difference between signals
-> on pin and dpll (phase-offset).
-> Allow user to receive and control adjustable value of pin's signal
-> phase (phase-adjust).
-> 
-> v4->v5:
-> - rebase series on top of net-next/main, fix conflict - remove redundant
->    attribute type definition in subset definition
-> 
-> v3->v4:
-> - do not increase do version of uAPI header as it is not needed (v3 did
->    not have this change)
-> - fix spelling around commit messages, argument descriptions and docs
-> - add missing extack errors on failure set callbacks for pin phase
->    adjust and frequency
-> - remove ice check if value is already set, now redundant as checked in
->    the dpll subsystem
-> 
-> v2->v3:
-> - do not increase do version of uAPI header as it is not needed
-> 
-> v1->v2:
-> - improve handling for error case of requesting the phase adjust set
-> - align handling for error case of frequency set request with the
-> approach introduced for phase adjust
-> 
-> 
-> Arkadiusz Kubalewski (5):
->    dpll: docs: add support for pin signal phase offset/adjust
->    dpll: spec: add support for pin-dpll signal phase offset/adjust
->    dpll: netlink/core: add support for pin-dpll signal phase
->      offset/adjust
->    ice: dpll: implement phase related callbacks
->    dpll: netlink/core: change pin frequency set behavior
-> 
->   Documentation/driver-api/dpll.rst         |  53 +++++-
->   Documentation/netlink/specs/dpll.yaml     |  30 +++
->   drivers/dpll/dpll_netlink.c               | 188 +++++++++++++++++-
->   drivers/dpll/dpll_nl.c                    |   8 +-
->   drivers/dpll/dpll_nl.h                    |   2 +-
->   drivers/net/ethernet/intel/ice/ice_dpll.c | 220 +++++++++++++++++++++-
->   drivers/net/ethernet/intel/ice/ice_dpll.h |  10 +-
->   include/linux/dpll.h                      |  18 ++
->   include/uapi/linux/dpll.h                 |   6 +
->   9 files changed, 517 insertions(+), 18 deletions(-)
-> 
-For the series:
-Acked-by: Vadim Fedorenko <vadim.fedorenko@linux.dev>
+Currently, there was no link after plugging a different type of PHY
+module if user forced previous PHY specific link type/speed before.
 
-Thanks!
+Add reset link speed settings to the default values for PHY module,
+if different PHY module is inserted and currently defined user-specified
+speed is not compatible with this module.
+
+Co-developed-by: Radoslaw Tyl <radoslawx.tyl@intel.com>
+Signed-off-by: Radoslaw Tyl <radoslawx.tyl@intel.com>
+Reviewed-by: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
+Signed-off-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+---
+v1->v2 fixed Reviewed-by tags
+v2->v3 fixed commit messages and tags
+v3->v4 fixed commit message typo
+v4->v5 cc to netdev@vger.kernel.org
+---
+---
+ drivers/net/ethernet/intel/i40e/i40e_main.c | 65 +++++++++++++++++++--
+ 1 file changed, 61 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
+index d0d0218..6829720 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_main.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
+@@ -10076,6 +10076,55 @@ static void i40e_reset_subtask(struct i40e_pf *pf)
+ 	rtnl_unlock();
+ }
+ 
++/**
++ * i40e_restore_supported_phy_link_speed - Restore default PHY speed
++ * @pf: board private structure
++ *
++ * Set PHY module speeds according to values got from
++ * initial link speed abilites.
++ **/
++static int i40e_restore_supported_phy_link_speed(struct i40e_pf *pf)
++{
++	struct i40e_aq_get_phy_abilities_resp abilities;
++	struct i40e_aq_set_phy_config config = {0};
++	struct i40e_hw *hw = &pf->hw;
++	int err;
++
++	err = i40e_aq_get_phy_capabilities(hw, false, false, &abilities, NULL);
++	if (err) {
++		dev_dbg(&pf->pdev->dev, "failed to get phy cap., ret =  %i last_status =  %s\n",
++			err, i40e_aq_str(&pf->hw, pf->hw.aq.asq_last_status));
++		return err;
++	}
++	config.eee_capability = abilities.eee_capability;
++	config.phy_type_ext = abilities.phy_type_ext;
++	config.low_power_ctrl = abilities.d3_lpan;
++	config.abilities = abilities.abilities;
++	config.abilities |= I40E_AQ_PHY_ENABLE_AN;
++	config.phy_type = abilities.phy_type;
++	config.eeer = abilities.eeer_val;
++	config.fec_config = abilities.fec_cfg_curr_mod_ext_info &
++			    I40E_AQ_PHY_FEC_CONFIG_MASK;
++	err = i40e_aq_get_phy_capabilities(hw, false, true, &abilities, NULL);
++	if (err) {
++		dev_dbg(&pf->pdev->dev, "get supported phy types ret =  %i last_status =  %s\n",
++			err, i40e_aq_str(&pf->hw, pf->hw.aq.asq_last_status));
++		return err;
++	}
++	config.link_speed = abilities.link_speed;
++
++	err = i40e_aq_set_phy_config(hw, &config, NULL);
++	if (err)
++		return err;
++	err = i40e_aq_set_link_restart_an(hw, true, NULL);
++	if (err)
++		return err;
++
++	pf->hw.phy.link_info.requested_speeds = config.link_speed;
++
++	return err;
++}
++
+ /**
+  * i40e_handle_link_event - Handle link event
+  * @pf: board private structure
+@@ -10086,6 +10135,7 @@ static void i40e_handle_link_event(struct i40e_pf *pf,
+ {
+ 	struct i40e_aqc_get_link_status *status =
+ 		(struct i40e_aqc_get_link_status *)&e->desc.params.raw;
++	int err;
+ 
+ 	/* Do a new status request to re-enable LSE reporting
+ 	 * and load new status information into the hw struct
+@@ -10109,10 +10159,17 @@ static void i40e_handle_link_event(struct i40e_pf *pf,
+ 		    (!(status->an_info & I40E_AQ_QUALIFIED_MODULE)) &&
+ 		    (!(status->link_info & I40E_AQ_LINK_UP)) &&
+ 		    (!(pf->flags & I40E_FLAG_LINK_DOWN_ON_CLOSE_ENABLED))) {
+-			dev_err(&pf->pdev->dev,
+-				"Rx/Tx is disabled on this device because an unsupported SFP module type was detected.\n");
+-			dev_err(&pf->pdev->dev,
+-				"Refer to the Intel(R) Ethernet Adapters and Devices User Guide for a list of supported modules.\n");
++			err = i40e_restore_supported_phy_link_speed(pf);
++			if (err) {
++				dev_err(&pf->pdev->dev,
++					"Rx/Tx is disabled on this device because an unsupported SFP module type was detected.\n");
++				dev_err(&pf->pdev->dev,
++					"Refer to the Intel(R) Ethernet Adapters and Devices User Guide for a list of supported modules.\n");
++
++				return;
++			}
++
++			dev_info(&pf->pdev->dev, "The selected speed is incompatible with the connected media type. Resetting to the default speed setting for the media type.");
+ 		}
+ 	}
+ }
+-- 
+2.25.1
 
 _______________________________________________
 Intel-wired-lan mailing list
