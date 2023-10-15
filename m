@@ -1,85 +1,82 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id D90F37C96F9
-	for <lists+intel-wired-lan@lfdr.de>; Sun, 15 Oct 2023 00:02:46 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id BA2B27C9931
+	for <lists+intel-wired-lan@lfdr.de>; Sun, 15 Oct 2023 15:40:36 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 654F481F54;
-	Sat, 14 Oct 2023 22:02:45 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 654F481F54
+	by smtp1.osuosl.org (Postfix) with ESMTP id 8FB1681E4D;
+	Sun, 15 Oct 2023 13:40:34 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8FB1681E4D
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1697320965;
-	bh=kPhmHG3GFIe3+GL8SkVcsspAtMPbFXybXMotEc9/eFM=;
-	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=7XSuCQ32NlSelm6D9tdKpK5gPgA+VNRBw8zKccK3qEzB/Bluhd9JpfvSSFWcLUtj8
-	 B1/hzw9Gc5UQwR5ZfLi8Cb2A536QZaNiF0eTBm1eLZaHvk04Tstl7ifMF9FlbPXrrx
-	 +bP7a6bLGXhd71AP+qjQxrxFt0SrogIbprdL+///a+vsoQO1Th9slvmSrHL832N/1z
-	 TJJ781b7vXZfS1+JMvMUt3jP+emx6xgr/Ej4YurQXeJbcA0/bU9z/dPpubie2M/zbm
-	 6AiNySaBND3r9pBv0Oh0QcXiEJQj4VGjhjf3Uki6J5ccLp0SqMHjabUdb/xXK0KYtR
-	 M2IEj9sI73XTA==
+	s=default; t=1697377234;
+	bh=ZFmygP6Dz74Bcpy1E42ePE+6rEk41tMoVOEwoWoXu84=;
+	h=From:Date:References:In-Reply-To:To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=vFAHtfQD6WECMzVxldGKNe1n9OGfIywPY4zMFcqH3LVtfSwS50/IXIazvqNMOdGvq
+	 JU1zvrx02epraMJ9hEgH6cYSqE/tH/DHKdORA/ZuQ/Dwf/eIYau2vHtZTwgc7l1yBF
+	 G4FPgT2AbYwxlx2GW3ZMDn0L0yh1ey0oFXdhMXNRJTj7n39eYFkHRTMuxmfVh0S9O7
+	 c0gprpCVNZkGoGCarzXUBsAUg6b5fjwIR31Rlz6nJ5ogY+plMDtHPgPVlJlwtFlJCv
+	 IBEC0M5DTb8QkvxDQgCmlPRs/PG6VP1HqItYxes18W/Zer7Unp6LUQTPqGcQDdLFdy
+	 N8PtEJIGTjhQg==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 9NXAjJSGb1m0; Sat, 14 Oct 2023 22:02:44 +0000 (UTC)
+	with ESMTP id h6xpK1CN6HBY; Sun, 15 Oct 2023 13:40:33 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id EA6B681F53;
-	Sat, 14 Oct 2023 22:02:43 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org EA6B681F53
+	by smtp1.osuosl.org (Postfix) with ESMTP id 8D59D8146C;
+	Sun, 15 Oct 2023 13:40:33 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8D59D8146C
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 7C2BA1BF83E
- for <intel-wired-lan@lists.osuosl.org>; Sat, 14 Oct 2023 22:02:39 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id A231B1BF841
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 15 Oct 2023 13:40:28 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 53C0D81F53
- for <intel-wired-lan@lists.osuosl.org>; Sat, 14 Oct 2023 22:02:39 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 53C0D81F53
+ by smtp1.osuosl.org (Postfix) with ESMTP id 8663081462
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 15 Oct 2023 13:40:28 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8663081462
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id aXqv5IYcjOl5 for <intel-wired-lan@lists.osuosl.org>;
- Sat, 14 Oct 2023 22:02:38 +0000 (UTC)
-Received: from mgamail.intel.com (mgamail.intel.com [192.55.52.120])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 1C66481E05
- for <intel-wired-lan@lists.osuosl.org>; Sat, 14 Oct 2023 22:02:37 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1C66481E05
-X-IronPort-AV: E=McAfee;i="6600,9927,10863"; a="384221692"
-X-IronPort-AV: E=Sophos;i="6.03,224,1694761200"; d="scan'208";a="384221692"
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
- by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 14 Oct 2023 15:02:37 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10863"; a="878926755"
-X-IronPort-AV: E=Sophos;i="6.03,224,1694761200"; d="scan'208";a="878926755"
-Received: from lkp-server02.sh.intel.com (HELO f64821696465) ([10.239.97.151])
- by orsmga004.jf.intel.com with ESMTP; 14 Oct 2023 15:02:36 -0700
-Received: from kbuild by f64821696465 with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1qrmiP-0006j1-2Z
- for intel-wired-lan@lists.osuosl.org; Sat, 14 Oct 2023 22:02:33 +0000
-Date: Sun, 15 Oct 2023 06:02:31 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <202310150628.qbQfjLwF-lkp@intel.com>
-User-Agent: s-nail v14.9.24
+ with ESMTP id VrBwsrZG3FdZ for <intel-wired-lan@lists.osuosl.org>;
+ Sun, 15 Oct 2023 13:40:24 +0000 (UTC)
+Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id B62D381440
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 15 Oct 2023 13:40:24 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B62D381440
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by dfw.source.kernel.org (Postfix) with ESMTP id 943DC60BB5;
+ Sun, 15 Oct 2023 13:40:23 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 3734EC433C8;
+ Sun, 15 Oct 2023 13:40:23 +0000 (UTC)
+Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org
+ (localhost.localdomain [127.0.0.1])
+ by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id
+ 1F6A5C595D0; Sun, 15 Oct 2023 13:40:23 +0000 (UTC)
+MIME-Version: 1.0
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <169737722312.30429.981395182996753709.git-patchwork-notify@kernel.org>
+Date: Sun, 15 Oct 2023 13:40:23 +0000
+References: <20231013170755.2367410-1-ivecera@redhat.com>
+In-Reply-To: <20231013170755.2367410-1-ivecera@redhat.com>
+To: Ivan Vecera <ivecera@redhat.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1697320958; x=1728856958;
- h=date:from:to:subject:message-id;
- bh=qA7w4SQ0JzVF1s1YIPmIfzbipf1ogzOY3dsrVOotg1I=;
- b=JW2sAbIbC/TwC9Nh1lhytpA7Zd2eHmfdzxaxWmTAWNT1A3iQvWYdsV/D
- 8Mzn00dmRtCELTMZ5aFCRE+JjRw1D/HQArGGUNAGkB+zuU3dsNs3ODFXI
- LlVpOQzDK9GzYLMcu1B2tEniVgkQipYVI6kcMZ6NJfe9HTZ2AcOKk+fee
- X4HketJsgVV1YQqmNm39x6RdyTr0t/LthSO/+Jo8FBbHUriAWBZozxpLi
- uU/5RNlbSCCk13EuBUlGFzFBtRV6kjOpQMfqrSsw2CNBAT7oXGRtkMLau
- Y1xI4Hzt99gF2KXKP0+ZH+c3LfypDqWWnPqujFehN4zOQO4JM5RueacOi
- g==;
+ d=kernel.org; s=k20201202; t=1697377223;
+ bh=6Mewa66v8BFCchHUq3fJshoDXWM7XvqrgL6LOYfNQ5A=;
+ h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+ b=D3XCGPD7hW8kYrTPpM3j/FV684hSxNCdzR68EEKgdmGKo4/IMY1NjVw0E5XeIRzTl
+ nUNLyqFGY8ENnHfbYa5jCjY1D/DXwkUozUGcR2X1TaGM5wCUa51++tCcwilSORamAd
+ kIrrGvpcTqa3fHR7p/g5r1mIM0g70897IMU+Ll6lqPFYPgqnX38RPrN7VRyNvOfrGJ
+ myjVkiHGuUf4vBfvv8pBU49Q0Z9NujCptSHdaxLLOVTCTZRmjymdZndVP0q2fv9aYJ
+ UOxLuGoJTm3zMGR3lU/5X1NgKho1V19gjGhue79drxXN9f0ZIYZOLIpolXljY1pady
+ 1jonfls8tmvFQ==
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=JW2sAbIb
-Subject: [Intel-wired-lan] [tnguy-net-queue:main] BUILD SUCCESS
- b91e8403373cab79375a65f5cf3495e2cd0bbdfa
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=D3XCGPD7
+Subject: Re: [Intel-wired-lan] [PATCH net-next 0/5] i40e: Add basic devlink
+ support
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,115 +89,50 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-MIME-Version: 1.0
+Cc: netdev@vger.kernel.org, jesse.brandeburg@intel.com,
+ linux-kernel@vger.kernel.org, edumazet@google.com, anthony.l.nguyen@intel.com,
+ intel-wired-lan@lists.osuosl.org, kuba@kernel.org, pabeni@redhat.com,
+ davem@davemloft.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git main
-branch HEAD: b91e8403373cab79375a65f5cf3495e2cd0bbdfa  Merge branch 'rswitch-fix-issues-on-specific-conditions'
+Hello:
 
-elapsed time: 3583m
+This series was applied to netdev/net-next.git (main)
+by David S. Miller <davem@davemloft.net>:
 
-configs tested: 87
-configs skipped: 2
+On Fri, 13 Oct 2023 19:07:50 +0200 you wrote:
+> The series adds initial support for devlink to i40e driver.
+> 
+> Patch-set overview:
+> Patch 1: Adds initial devlink support (devlink and port registration)
+> Patch 2: Refactors and split i40e_nvm_version_str()
+> Patch 3: Adds support for 'devlink dev info'
+> Patch 4: Refactors existing helper function to read PBA ID
+> Patch 5: Adds 'board.id' to 'devlink dev info' using PBA ID
+> 
+> [...]
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+Here is the summary with links:
+  - [net-next,1/5] i40e: Add initial devlink support
+    https://git.kernel.org/netdev/net-next/c/9e479d64dc58
+  - [net-next,2/5] i40e: Split and refactor i40e_nvm_version_str()
+    https://git.kernel.org/netdev/net-next/c/7aabde397683
+  - [net-next,3/5] i40e: Add handler for devlink .info_get
+    https://git.kernel.org/netdev/net-next/c/5a423552e0d9
+  - [net-next,4/5] i40e: Refactor and rename i40e_read_pba_string()
+    https://git.kernel.org/netdev/net-next/c/df19ea696644
+  - [net-next,5/5] i40e: Add PBA as board id info to devlink .info_get
+    https://git.kernel.org/netdev/net-next/c/3e02480d5e38
 
-tested configs:
-alpha                             allnoconfig   gcc  
-alpha                            allyesconfig   gcc  
-alpha                               defconfig   gcc  
-arc                              allmodconfig   gcc  
-arc                               allnoconfig   gcc  
-arc                              allyesconfig   gcc  
-arc                                 defconfig   gcc  
-arc                   randconfig-001-20231013   gcc  
-arm                              allmodconfig   gcc  
-arm                               allnoconfig   gcc  
-arm                              allyesconfig   gcc  
-arm                                 defconfig   gcc  
-arm                   randconfig-001-20231013   gcc  
-arm64                            allmodconfig   gcc  
-arm64                             allnoconfig   gcc  
-arm64                            allyesconfig   gcc  
-arm64                               defconfig   gcc  
-csky                             allmodconfig   gcc  
-csky                              allnoconfig   gcc  
-csky                             allyesconfig   gcc  
-csky                                defconfig   gcc  
-i386                                defconfig   gcc  
-loongarch                        allmodconfig   gcc  
-loongarch                         allnoconfig   gcc  
-loongarch                        allyesconfig   gcc  
-loongarch                           defconfig   gcc  
-loongarch             randconfig-001-20231013   gcc  
-m68k                             allmodconfig   gcc  
-m68k                              allnoconfig   gcc  
-m68k                             allyesconfig   gcc  
-m68k                                defconfig   gcc  
-microblaze                       allmodconfig   gcc  
-microblaze                        allnoconfig   gcc  
-microblaze                       allyesconfig   gcc  
-microblaze                          defconfig   gcc  
-mips                             allmodconfig   gcc  
-mips                              allnoconfig   gcc  
-mips                             allyesconfig   gcc  
-nios2                            allmodconfig   gcc  
-nios2                             allnoconfig   gcc  
-nios2                            allyesconfig   gcc  
-nios2                               defconfig   gcc  
-openrisc                         allmodconfig   gcc  
-openrisc                          allnoconfig   gcc  
-openrisc                         allyesconfig   gcc  
-openrisc                            defconfig   gcc  
-parisc                           allmodconfig   gcc  
-parisc                            allnoconfig   gcc  
-parisc                           allyesconfig   gcc  
-parisc                              defconfig   gcc  
-parisc64                            defconfig   gcc  
-powerpc                          allmodconfig   gcc  
-powerpc                           allnoconfig   gcc  
-powerpc                          allyesconfig   gcc  
-riscv                            allmodconfig   gcc  
-riscv                             allnoconfig   gcc  
-riscv                            allyesconfig   gcc  
-riscv                               defconfig   gcc  
-riscv                 randconfig-001-20231013   gcc  
-riscv                 randconfig-001-20231014   gcc  
-riscv                          rv32_defconfig   gcc  
-s390                             allmodconfig   gcc  
-s390                              allnoconfig   gcc  
-s390                             allyesconfig   gcc  
-s390                                defconfig   gcc  
-s390                  randconfig-001-20231013   gcc  
-sh                               allmodconfig   gcc  
-sh                                allnoconfig   gcc  
-sh                               allyesconfig   gcc  
-sh                                  defconfig   gcc  
-sparc                            allmodconfig   gcc  
-sparc                             allnoconfig   gcc  
-sparc                            allyesconfig   gcc  
-sparc                               defconfig   gcc  
-sparc                 randconfig-001-20231014   gcc  
-sparc64                          allmodconfig   gcc  
-sparc64                          allyesconfig   gcc  
-sparc64                             defconfig   gcc  
-um                               allmodconfig   clang
-um                                allnoconfig   clang
-um                               allyesconfig   clang
-um                                  defconfig   gcc  
-um                             i386_defconfig   gcc  
-um                           x86_64_defconfig   gcc  
-x86_64                              defconfig   gcc  
-x86_64                randconfig-002-20231013   gcc  
-x86_64                randconfig-006-20231013   gcc  
-
+You are awesome, thank you!
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
