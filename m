@@ -2,78 +2,82 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id E919E7CAC98
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 16 Oct 2023 16:56:34 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3F7C07CACCD
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 16 Oct 2023 17:02:16 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 8A48D41774;
-	Mon, 16 Oct 2023 14:56:33 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8A48D41774
+	by smtp4.osuosl.org (Postfix) with ESMTP id CDEE3408F7;
+	Mon, 16 Oct 2023 15:02:14 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org CDEE3408F7
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1697468193;
-	bh=bmKtMvke+5MqimV8GUDFR1R+ZFuUyzHlo75awQ+CjB8=;
+	s=default; t=1697468534;
+	bh=GE4ET5GQ0PTc+JOTtkvwlW8kP+QEoW3+B39gHyQHPTc=;
 	h=Date:From:To:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=pdQVCIjBOsRjfRZpizHMfEs5WzV46ULDopHDNtvE+g68rnGe2JwtBBGR+e8fvHQGH
-	 vpLncXn/JBCvmqAOe/g0KsfC27jWb87+QWa4HsL6OpLh/zajhlP7Bb300ajk9ySc8h
-	 uhy1Dg+49t7VAWevfdz4gtj5rsEEySOTXGiIqf4POFPPMcZ4ss6vTqAVpP3Wf+SNAq
-	 ym64v9kqQlJpQ4MOU1MRTN+oGigtzGiyJzIUhVhOrS1rc/xBc+vAcJwhmU0N9SNBaN
-	 ImhiWKOTZh8OTvkGHIZdmqF0UimhNQ1BfhFaDu7zBvuo5bthYYzFK/GHf2k0ZRlkf8
-	 lgWjGgmIRF2aQ==
+	b=ACQtgAEz8Sj700/FqXP1M/dj45V0aUjSNRlzKD1GBNJ6EmU4TJoJ4fa3QF2SKf5PL
+	 6GbymjoPa+J8U8xKI0aOqQI7UPRPp5nd/MsRSj9x4SGRLz3Y/9XbP74Q/Aaxp4Mdnj
+	 oDxvVBahWroWWNXoSTKy6i03ms4jD1vxxkYM7Im0CELIT/0sK4iNvnbqAV+TIuNVwD
+	 +bds4GeBwo4UJa6KxEw9ldUEniAWRekAuVtersR4ltL4EG7ZGSxyFLn3j1mHlQKJYW
+	 nRJJLnLzzLxYe9T6psQPUmG8K6TFI5Ta7vfhoK4fcsyCW8dsmcwJ//4eKwYhypliSg
+	 n+HpCf3XpkKRg==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ttXMWuKw3iHl; Mon, 16 Oct 2023 14:56:31 +0000 (UTC)
+	with ESMTP id K1Hj_JboyLQz; Mon, 16 Oct 2023 15:02:13 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id A388341758;
-	Mon, 16 Oct 2023 14:56:30 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A388341758
+	by smtp4.osuosl.org (Postfix) with ESMTP id 375D74179D;
+	Mon, 16 Oct 2023 15:02:12 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 375D74179D
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 616301BF28E
- for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Oct 2023 14:56:25 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 5B4D51BF95C
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Oct 2023 15:02:06 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 328EC414A0
- for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Oct 2023 14:56:25 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 328EC414A0
+ by smtp1.osuosl.org (Postfix) with ESMTP id 40BE281E39
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Oct 2023 15:02:06 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 40BE281E39
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id NKPmrbUH3NPu for <intel-wired-lan@lists.osuosl.org>;
- Mon, 16 Oct 2023 14:56:23 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id LSw3LclpVDWl for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 16 Oct 2023 15:02:05 +0000 (UTC)
 Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 27116408C0
- for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Oct 2023 14:56:23 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 27116408C0
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 19CB581E46
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 16 Oct 2023 15:02:04 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 19CB581E46
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by dfw.source.kernel.org (Postfix) with ESMTP id C9025603E0;
- Mon, 16 Oct 2023 14:56:21 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 67E9BC433C7;
- Mon, 16 Oct 2023 14:56:20 +0000 (UTC)
-Date: Mon, 16 Oct 2023 07:56:19 -0700
+ by dfw.source.kernel.org (Postfix) with ESMTP id 1942E60FDB;
+ Mon, 16 Oct 2023 15:02:04 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2663CC433C9;
+ Mon, 16 Oct 2023 15:02:03 +0000 (UTC)
+Date: Mon, 16 Oct 2023 08:02:02 -0700
 From: Jakub Kicinski <kuba@kernel.org>
-To: Ivan Vecera <ivecera@redhat.com>
-Message-ID: <20231016075619.02d1dd27@kernel.org>
-In-Reply-To: <20231013170755.2367410-4-ivecera@redhat.com>
-References: <20231013170755.2367410-1-ivecera@redhat.com>
- <20231013170755.2367410-4-ivecera@redhat.com>
+To: Ahmed Zaki <ahmed.zaki@intel.com>
+Message-ID: <20231016080202.0d755ef3@kernel.org>
+In-Reply-To: <cf6c824a-be09-4b6c-b2a2-fb870e9f0c37@intel.com>
+References: <20231010200437.9794-1-ahmed.zaki@intel.com>
+ <20231010200437.9794-2-ahmed.zaki@intel.com>
+ <CAF=yD-+=3=MqqsHESPsgD0yCQSCA9qBe1mB1OVhSYuB_GhZK6g@mail.gmail.com>
+ <8d205051-d04c-42ff-a2c5-98fcd8545ecb@intel.com>
+ <CAF=yD-J=6atRuyhx+a9dvYkr3_Ydzqwwp0Pd1HkFsgNzzk01DQ@mail.gmail.com>
+ <cf6c824a-be09-4b6c-b2a2-fb870e9f0c37@intel.com>
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1697468180;
- bh=WUnDHVUOqfcPj5bVg+fqz9I2iqfRHmXakB6J7g0FSl0=;
+ d=kernel.org; s=k20201202; t=1697468523;
+ bh=J5b7wIkmNDZePcl6689bb1lqUj0fI6CrDKw3d6N9cNQ=;
  h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=tBaHa4rN2f9ZyQl8PO3D969/xIInxobp0Agmgswj4NYeEzKJt+Yd7gKTjQ85y4/ps
- vONoeTQn9sA1D7eJw0BeGNIDBFDXBgu+cuyXsm0PM88sEj5UgAictN722B3haxDhad
- I8nV4q4exbAqN6Mf1a7NbrUxI+lkf7ptzG8ZcLVnkXBn+UcNjHyo7wQMy4+E8reMGR
- oLr7pUPkemFg0Z9yIifcwLdr2ubw6+/6+4vQ10oomAedeksnDJYLfQRhLIGPWjrmHz
- RKO7CgX/X464Ldl5bpLeK06sAMOI2ULsNx8CFVejQ6OH5HgMjjZE1lWyIMSt7+VHKy
- 4jbKvne1+vUEw==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ b=nwE77uyMYSNbphoXAWn6ygCBN9Q7OQRXv+tz+SPnRISF379jWyUQyfomoc1+mxW+P
+ NIZnRfAqC7tevyg0mOTjTv782qCPLA07+i1UgcSqJvOt9JSMVDjEwOCv2uPKAtxvmY
+ vJRzQTj1EvdV5oQGdwUkT8mhnpJyD3Rl0m935hTPR6wFmLES/JXnhJs7MscEZtAaY9
+ 0bf7k93jUqoAJ/4bVq0BMXTEeIzsc46z1jqTcU7Ymq752JZSgaQ6nsayyXx0/2P7fB
+ 0qNmHFNfzp6Vtb6D7TS/cXVLLYFRvR0M0fDeIgPzfPK3YyK862ibFTE6AgjLW3C3Bc
+ 34jwcmi6xdGYw==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=tBaHa4rN
-Subject: Re: [Intel-wired-lan] [PATCH net-next 3/5] i40e: Add handler for
- devlink .info_get
+ header.a=rsa-sha256 header.s=k20201202 header.b=nwE77uyM
+Subject: Re: [Intel-wired-lan] [PATCH net-next v3 1/6] net: ethtool: allow
+ symmetric-xor RSS hash for any flow type
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,29 +90,44 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, Jesse Brandeburg <jesse.brandeburg@intel.com>,
- linux-kernel@vger.kernel.org, Eric Dumazet <edumazet@google.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>, intel-wired-lan@lists.osuosl.org,
- Paolo Abeni <pabeni@redhat.com>, "David S . Miller" <davem@davemloft.net>
+Cc: mkubecek@suse.cz, andrew@lunn.ch,
+ Willem de Bruijn <willemdebruijn.kernel@gmail.com>,
+ Wojciech Drewek <wojciech.drewek@intel.com>, corbet@lwn.net,
+ netdev@vger.kernel.org, linux-doc@vger.kernel.org, jesse.brandeburg@intel.com,
+ edumazet@google.com, anthony.l.nguyen@intel.com, horms@kernel.org,
+ vladimir.oltean@nxp.com, intel-wired-lan@lists.osuosl.org, pabeni@redhat.com,
+ davem@davemloft.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Fri, 13 Oct 2023 19:07:53 +0200 Ivan Vecera wrote:
->  "serial_number" -> The PCI DSN of the adapter
->  "fw.mgmt" -> The version of the firmware
->  "fw.mgmt.api" -> The API version of interface exposed over the AdminQ
->  "fw.psid" -> The version of the NVM image
+On Sat, 14 Oct 2023 06:19:54 -0600 Ahmed Zaki wrote:
+> >> +#define        RXH_SYMMETRIC_XOR       (1 << 30)
+> >> +#define        RXH_DISCARD             (1 << 31)
+> >>
+> >> Are these indentation changes intentional?
+> >>
+> >>
+> >> Yes, for alignment ("RXH_SYMMETRIC_XOR" is too long).  
+> > 
+> > I think it's preferable to not touch other lines. Among others, that
+> > messes up git blame. But it's subjective. Follow your preference if no
+> > one else chimes in.  
+> 
+> Jakub,
+> 
+> Sorry for late reply, I was off for few days.
+> 
+> I'd like to keep this version, I don't see any other comments that needs 
+> to be addressed. Can you accept this or need a v4/rebase ?
 
-Your board reports "fw.psid 9.30", this may not be right,
-PSID is more of a board+customer ID, IIUC. 9.30 looks like
-a version, not an ID.
+I think you should add a comment above the define explaining what
+"symmetric-xor" is. Is this correct?
 
->  "fw.bundle_id" -> Unique identifier for the combined flash image
->  "fw.undi" -> The combo image version
-
-UNDI means PXE. Is that whave "combo image" means for Intel?
+/* XOR corresponding source and destination fields, both copies 
+ * of the XOR'ed fields are fed into the RSS and RXHASH calculation.
+ */
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
