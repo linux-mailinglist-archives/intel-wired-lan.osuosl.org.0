@@ -2,68 +2,66 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 398C47CC9DE
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 17 Oct 2023 19:26:23 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7E1197CC9DF
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 17 Oct 2023 19:26:27 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id C71678219A;
-	Tue, 17 Oct 2023 17:26:21 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org C71678219A
+	by smtp1.osuosl.org (Postfix) with ESMTP id 10299821F4;
+	Tue, 17 Oct 2023 17:26:26 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 10299821F4
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1697563581;
-	bh=71AX1k2MkeY51AS2SzAhrLvqs/PqbgcEEvRNksMbnqU=;
+	s=default; t=1697563586;
+	bh=khcPWDGaCpwb4zPzEu9A2BXm/BruWtmJJQwNNji1eMY=;
 	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=Hw7CRmusRuPXThmfYfxLF8Xovwj44DLTxvaHwmQviXnpmp+xFlJbjkJ6TVf8N3ln0
-	 2ZAyXLpipgqm/ZqpdjZCK0eYJtt5A/oLcx+0lUt7zX3HRUPcZ4QLwvAZCUeFXYUJ7Q
-	 sQVyA4GhEt//84H2N1Z7Y5ruQ/G6ftz/x1+Z9UMmhTm3j0S5OSLqbwc+IFhKbL4qRe
-	 ZpgFBzZ/oscfC9w6oexUuZSjhYSTWQRtOwgLw1s7tIEpp7pmXSDrX3hx+z62KI+YhB
-	 Lp0xBYpas4wHoDQEYZrjuerjVEwvHY7jNqfF3+uWiONcDOUFrWISDCzXNNRyUSan4J
-	 HQIzxlxEZn3SQ==
+	b=CmnUOTojqFVzQOd9SXRXEDn/7FuODY7oUvyNE/9Zkmcr5zkzN4haf3UwF/+Wzk1Vm
+	 lPGXsjJFd063SqBuD0+GUSE7M7Fm2S/Kgu7lwFblHa+SAIkgnWEUgj58EJPuzjCSRh
+	 5R+H1KEiTPAgPJrOm+SS2pCOkERY+yMnt0k9S6hcnubtEgjzMnFdj869i6Pty6uRJo
+	 aTDBOH4dGPlWdR+Jk8+Cuu7QfqTAsRfPVr6g+L4ZMRlAVK33d5R2TYOk5HtaK9TzNO
+	 YI5R4kDgHg1RkdKvmOj8EjQ+NvZe9NASgW3lAzSgNLrkJ0PGfB4v8Sh3gwhHYpaXVq
+	 YRRxVuN7O0xJQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id jNdSjU7YmfJo; Tue, 17 Oct 2023 17:26:21 +0000 (UTC)
+	with ESMTP id KuAQQEBk2yqj; Tue, 17 Oct 2023 17:26:25 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id AD78C820E4;
-	Tue, 17 Oct 2023 17:26:20 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org AD78C820E4
+	by smtp1.osuosl.org (Postfix) with ESMTP id CADF2820E4;
+	Tue, 17 Oct 2023 17:26:24 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org CADF2820E4
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id D9EE71BF3A3
- for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Oct 2023 06:35:47 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 0A53D1BF3A3
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Oct 2023 06:45:12 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id A590F80F4E
- for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Oct 2023 06:35:47 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org A590F80F4E
+ by smtp4.osuosl.org (Postfix) with ESMTP id D6355403A8
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Oct 2023 06:45:11 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D6355403A8
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id yk9flaXYiqxx for <intel-wired-lan@lists.osuosl.org>;
- Tue, 17 Oct 2023 06:35:46 +0000 (UTC)
-X-Greylist: delayed 1233 seconds by postgrey-1.37 at util1.osuosl.org;
- Tue, 17 Oct 2023 06:35:46 UTC
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 62D3080E36
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 5pPdzLlLRkUL for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 17 Oct 2023 06:45:10 +0000 (UTC)
 Received: from ganesha.gnumonks.org (ganesha.gnumonks.org
  [IPv6:2001:780:45:1d:225:90ff:fe52:c662])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 62D3080E36
- for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Oct 2023 06:35:46 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 9CF7F40386
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Oct 2023 06:45:10 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9CF7F40386
 Received: from uucp by ganesha.gnumonks.org with local-bsmtp (Exim 4.94.2)
  (envelope-from <laforge@gnumonks.org>)
- id 1qsdMA-003P2Q-Dk; Tue, 17 Oct 2023 08:15:06 +0200
+ id 1qsdpC-003Ysp-QU; Tue, 17 Oct 2023 08:45:07 +0200
 Received: from laforge by nataraja with local (Exim 4.97-RC2)
- (envelope-from <laforge@gnumonks.org>) id 1qsdIe-000000020Oa-1ZtF;
- Tue, 17 Oct 2023 08:11:28 +0200
-Date: Tue, 17 Oct 2023 08:11:28 +0200
+ (envelope-from <laforge@gnumonks.org>) id 1qsdoQ-000000020rj-2TUW;
+ Tue, 17 Oct 2023 08:44:18 +0200
+Date: Tue, 17 Oct 2023 08:44:18 +0200
 From: Harald Welte <laforge@gnumonks.org>
 To: Jakub Kicinski <kuba@kernel.org>
-Message-ID: <ZS4lkKv3xfnkEWRi@nataraja>
+Message-ID: <ZS4tQpFq6CnrKGIc@nataraja>
 References: <20231012060115.107183-1-hayatake396@gmail.com>
- <20231016152343.1fc7c7be@kernel.org>
+ <20231016152343.1fc7c7be@kernel.org> <ZS4lkKv3xfnkEWRi@nataraja>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20231016152343.1fc7c7be@kernel.org>
+In-Reply-To: <ZS4lkKv3xfnkEWRi@nataraja>
 X-Mailman-Approved-At: Tue, 17 Oct 2023 17:25:58 +0000
 Subject: Re: [Intel-wired-lan] [PATCH net-next v2] ethtool: ice: Support for
  RSS settings to GTP from ethtool
@@ -91,47 +89,66 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi Jakub and others,
+Hi again,
 
-On Mon, Oct 16, 2023 at 03:23:43PM -0700, Jakub Kicinski wrote:
-> Adding Willem, Pablo, and Harald to CC (please CC them on future
-> versions).
+On Tue, Oct 17, 2023 at 08:11:28AM +0200, Harald Welte wrote:
+> I cannot really comment on that, as I haven't yet been thinking about how RSS
+> might potentially be used in GTPU use cases.  I would also appreciate
+> some enlightenment on that.  What kind of network element/function are we talking
+> about (my guess is an UPF).  How does its architecture look like to spread GTPU flows
+> across CPUs using RSS?
 
-thanks for that Cc, it's much appreciated!
+Thinking of this a few more minutes: In my opinion the usual use case
+would be to perform RSS distribution based on a (hash of) the TEID,
+possibly in combination with the destination IP(v4/v6) address of the
+outer IP header, and possibly also including the [outer] destination UDP
+port number.
 
-> My understanding of GTP is limited to what I just read on Wikipedia.
+The latter could likely be always included in the hash, as either it is
+the standard port (like in all public standard GTPU traffic) and would
+hence not contribute to the distribution across the hash function, or it
+would be a non-standard port number in some kind of private/custom
+deployment, and then you would want to use it to differentiate traffic,
+as otherwise you wouldn't use non-standard ports.
 
-If there are any specific questions, I'm very happy to respond to them.
+> +#define GTPU_V4_FLOW 0x13    /* hash only */
+> +#define GTPU_V6_FLOW 0x14    /* hash only */
 
-> IIUC the GTPC vs GTPU distinction comes down to the UDP port on
-> which the protocol runs? 
+so if I'm guessing correctly, those would be hashing only on the V4/V6
+destination address?  Why would that be GTP specific?  The IPv4/v6
+header in front of the GTP header is a normal IP header.
 
-that is a convention.  Similar to any other wll-known port
+> +#define GTPC_V4_FLOW 0x15    /* hash only */
+> +#define GTPC_V6_FLOW 0x16    /* hash only */
 
-> Are the frames also different?
+Are there really deployments where the *very limited* GTP-C control
+traffic needs RSS for scalability?  The control plane GTP-C traffic
+during session setup or mobility is extremely little, compared to GTP-U.
 
-Yes, the message type is different. There is one specific message type used for GTP-U
-and lots of others for GTP-C.
+Also, same question applies: Why is hasing the v4/v6 destination address
+GTP specific and not generic like any other IP packet?
 
-> I'm guessing UL/DL are uplink/downlink but what's EH?
+> +#define GTPC_TEID_V4_FLOW 0x17       /* hash only */
+> +#define GTPC_TEID_V6_FLOW 0x18       /* hash only */
 
-Surprisingly, I also am not familiar with "EH" in the context of GTP.  It's an ancronym
-I don't recall reading in any related 3GPP spec.
+Why do we have TEID based hashing only in GTP-C?  The User plane in
+GTP-U is normally what you'd want to load-share across CPUs/nodes/...
+That's where you have thousands to millions more packets than GTP-C.
+What am I missing?
 
-> Key question is - are there reasonable use cases that you can think of
-> for enabling GTP hashing for each one of those bits individually or can
-> we combine some of them?
+> +#define GTPU_EH_V4_FLOW 0x19 /* hash only */
+> +#define GTPU_EH_V6_FLOW 0x20 /* hash only */
+> +#define GTPU_UL_V4_FLOW 0x21 /* hash only */
+> +#define GTPU_UL_V6_FLOW 0x22 /* hash only */
+> +#define GTPU_DL_V4_FLOW 0x23 /* hash only */
+> +#define GTPU_DL_V6_FLOW 0x24 /* hash only */
 
-I cannot really comment on that, as I haven't yet been thinking about how RSS
-might potentially be used in GTPU use cases.  I would also appreciate
-some enlightenment on that.  What kind of network element/function are we talking
-about (my guess is an UPF).  How does its architecture look like to spread GTPU flows
-across CPUs using RSS?
+Can you explain what those are supposed to do?  what exactly are those
+hashing on?
 
-This is by the way something that I've been also seeing with patches
-against the kernel gtp in recent years: People submit patches but are
-not explaining the use cases, so it's hard to judge how relevant this
-really is to most users.
+IMHO that kind of explanation should be in the comment next to the
+#define (for all of them) rather than "hash only".  That way it's
+obvious to the reader what they do, rather than having to guess.
 
 -- 
 - Harald Welte <laforge@gnumonks.org>          https://laforge.gnumonks.org/
