@@ -1,92 +1,80 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7F9E47CBFFD
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 17 Oct 2023 11:56:47 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id E68C17CC754
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 17 Oct 2023 17:21:38 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id F3FD9415B8;
-	Tue, 17 Oct 2023 09:56:45 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org F3FD9415B8
+	by smtp3.osuosl.org (Postfix) with ESMTP id 057D8613B6;
+	Tue, 17 Oct 2023 15:21:36 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 057D8613B6
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1697536606;
-	bh=liJGJWMx9ryVOZ0sde8qRI2HnKPAnTFYw5rf2jHNXM4=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
+	s=default; t=1697556096;
+	bh=NurbrjHBnD+6Ehga0DUd8nenEWRig7BdbYgsozvqRnA=;
+	h=Date:From:To:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=gtcydPSI9aX50PvKqoHNDeQX6RFmvDw8Wufh6X64FOTmqQ+QDtHYx8yst8xQUeiVn
-	 87JHyaRAiN8D1v15T5/pMskY6mMVmV0i23vJsNI7D5l0OZeU4QfFxLD+4Kxq8xAPSg
-	 F2DpypgnDh4YthHc5oIoxu+uZ8TkBKTy6pD2ND2+rN8nAE0GCvOIWFqs8D+F6jJUeI
-	 t2SqGm1JalINhJ2xLzvMXYMgm4lFSdVI9/qcC5iwasbi4l0RfsHKkVT+7CFxVn8+Fz
-	 3w+kUK9AIry3rSYh1Wv8stwWNLyuNPAGMeoNQGrBhWk678wvm4gx4yOrcxKmJCj61t
-	 grnhHU/vMh3Kw==
+	b=pfx8HIUVIy5e7PLDHoJlPMdr3DaX2NJ6NM7t0iA/STVXquxel4KDz3T+mitT04utR
+	 7PPfOssZmPT5U1PSbMlXKYQ2jr7tUs5XIKNyFw/5lbM0DtTrCO7u/yD1v72rvo59lu
+	 Yw8/rjf+Gk9aBblqAaXQfCpxmkMhzkabV6itrIURDp+OlrY2fN2j0p3H2fjFbXV9Zq
+	 nNkF4XuwEuKJXZToSqEHamE/adkgQ0T1yq72+JFlB9w5Ce8fBuF6uFegl7bHF3+DEw
+	 xpBUJ6Ta+6lblQp32WvIgylOqekb1+gF1f2uEAJFvSlXJDGoOfxIZmGQB2KHdRcY0P
+	 gaTsQez/PqICw==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id sy1jojao0h2V; Tue, 17 Oct 2023 09:56:45 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id GrZsJNP7SfoX; Tue, 17 Oct 2023 15:21:35 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 738244057B;
-	Tue, 17 Oct 2023 09:56:44 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 738244057B
+	by smtp3.osuosl.org (Postfix) with ESMTP id D78AA61325;
+	Tue, 17 Oct 2023 15:21:34 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D78AA61325
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id CED771BF30C
- for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Oct 2023 09:56:38 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 6CCE01BF32B
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Oct 2023 15:21:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id A573081400
- for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Oct 2023 09:56:38 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org A573081400
+ by smtp1.osuosl.org (Postfix) with ESMTP id D15648214C
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Oct 2023 15:21:28 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D15648214C
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id yIisvsPZ0UAv for <intel-wired-lan@lists.osuosl.org>;
- Tue, 17 Oct 2023 09:56:37 +0000 (UTC)
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.133.124])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 86B8E81371
- for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Oct 2023 09:56:37 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 86B8E81371
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-632-B0Jm9qSrO7CpqPjDEewBfw-1; Tue, 17 Oct 2023 05:56:23 -0400
-X-MC-Unique: B0Jm9qSrO7CpqPjDEewBfw-1
-Received: from smtp.corp.redhat.com (int-mx09.intmail.prod.int.rdu2.redhat.com
- [10.11.54.9])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 8DDA88F15C5;
- Tue, 17 Oct 2023 09:56:22 +0000 (UTC)
-Received: from [10.43.2.183] (unknown [10.43.2.183])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 56F85492BEE;
- Tue, 17 Oct 2023 09:56:21 +0000 (UTC)
-Message-ID: <b1805c01-483a-4d7e-8fb2-537f9a7ed9b4@redhat.com>
-Date: Tue, 17 Oct 2023 11:56:20 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: Jakub Kicinski <kuba@kernel.org>
+ with ESMTP id uOFphA3cDTHu for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 17 Oct 2023 15:21:28 +0000 (UTC)
+Received: from sin.source.kernel.org (sin.source.kernel.org
+ [IPv6:2604:1380:40e1:4800::1])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id D8C9C812AF
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Oct 2023 15:21:27 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D8C9C812AF
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by sin.source.kernel.org (Postfix) with ESMTP id CE922CE1D79;
+ Tue, 17 Oct 2023 15:21:23 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B64D4C433C8;
+ Tue, 17 Oct 2023 15:21:22 +0000 (UTC)
+Date: Tue, 17 Oct 2023 08:21:20 -0700
+From: Jakub Kicinski <kuba@kernel.org>
+To: Ivan Vecera <ivecera@redhat.com>, Jacob Keller <jacob.e.keller@intel.com>
+Message-ID: <20231017082120.1d1246f6@kernel.org>
+In-Reply-To: <b1805c01-483a-4d7e-8fb2-537f9a7ed9b4@redhat.com>
 References: <20231013170755.2367410-1-ivecera@redhat.com>
  <20231013170755.2367410-4-ivecera@redhat.com>
  <20231016075619.02d1dd27@kernel.org>
-Content-Language: en-US
-From: Ivan Vecera <ivecera@redhat.com>
-In-Reply-To: <20231016075619.02d1dd27@kernel.org>
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.9
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=redhat.com; 
- s=mimecast20190719; t=1697536596;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=YskDJvOwtltUEF1vV1LUQRzaj8p5jAo4b5a3cEViogM=;
- b=Z1m/RXureFWo05Soz3aGSr2Qv3nF1jgkkTUYxSuUMptb/eRAb+T/s/K4Y/smwS44ATyGbM
- c1ySAWc8DwDA7z8pnmth8tECFCosYXDiKz4kNh+Sbth4B14jq/FFW94Ja51euLDMHWCGVq
- LQJBcIjIvgMd9/RwWW7BgzxkXaxjVL8=
+ <b1805c01-483a-4d7e-8fb2-537f9a7ed9b4@redhat.com>
+MIME-Version: 1.0
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=kernel.org; s=k20201202; t=1697556083;
+ bh=qbYVXv4lkClIrB/LA3B8Jyjx9weJj4eJIR8Mx8PZSYg=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=jqRAq7CIsOinTEsGUuo+mqcv9B0r2CXjADfQ4alGoVBKPa9EXx6j7ii9pwS8T5GPG
+ qkbsJP+Z4OSLjbPKwb8wVfJPScrt+g7RY9OnASGqa0oLI+nZudKHO17RTLro2tvQgi
+ 0rKV89mkA2GAyutB0nvGmPm/sRzYunUVmCvxjSQIxxi4Fvi2/kq+rYObzQ6B2faq0W
+ 5VM7d3/Nepn29SFzYmUMnxK4hFoZJkLRap/mNlicUsVCy22af19XxgBqmnRwefoykE
+ mbRrJNDRlnAkV3oOsPz2oFC+BUxqabo6WQYZwfoWk971qZN2ZdO9WZULka4eDX0liy
+ 8MCb7vl6Iybsg==
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
- header.a=rsa-sha256 header.s=mimecast20190719 header.b=Z1m/RXur
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=jqRAq7CI
 Subject: Re: [Intel-wired-lan] [PATCH net-next 3/5] i40e: Add handler for
  devlink .info_get
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -105,44 +93,35 @@ Cc: netdev@vger.kernel.org, Jesse Brandeburg <jesse.brandeburg@intel.com>,
  linux-kernel@vger.kernel.org, Eric Dumazet <edumazet@google.com>,
  Tony Nguyen <anthony.l.nguyen@intel.com>, intel-wired-lan@lists.osuosl.org,
  Paolo Abeni <pabeni@redhat.com>, "David S . Miller" <davem@davemloft.net>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-
-
-On 16. 10. 23 16:56, Jakub Kicinski wrote:
-> On Fri, 13 Oct 2023 19:07:53 +0200 Ivan Vecera wrote:
->>   "serial_number" -> The PCI DSN of the adapter
->>   "fw.mgmt" -> The version of the firmware
->>   "fw.mgmt.api" -> The API version of interface exposed over the AdminQ
->>   "fw.psid" -> The version of the NVM image
+On Tue, 17 Oct 2023 11:56:20 +0200 Ivan Vecera wrote:
+> > Your board reports "fw.psid 9.30", this may not be right,
+> > PSID is more of a board+customer ID, IIUC. 9.30 looks like
+> > a version, not an ID.  
 > 
-> Your board reports "fw.psid 9.30", this may not be right,
-> PSID is more of a board+customer ID, IIUC. 9.30 looks like
-> a version, not an ID.
-
-Maybe plain 'fw' should be used for this '9.30' as this is a version
-of the whole software package provided by Intel for these adapters
-(e.g. 
-https://www.intel.com/content/www/us/en/download/18190/non-volatile-memory-nvm-update-utility-for-intel-ethernet-network-adapter-700-series.html).
-
-Thoughts?
-
->>   "fw.bundle_id" -> Unique identifier for the combined flash image
->>   "fw.undi" -> The combo image version
+> Maybe plain 'fw' should be used for this '9.30' as this is a version
+> of the whole software package provided by Intel for these adapters
+> (e.g. 
+> https://www.intel.com/content/www/us/en/download/18190/non-volatile-memory-nvm-update-utility-for-intel-ethernet-network-adapter-700-series.html).
 > 
-> UNDI means PXE. Is that whave "combo image" means for Intel?
+> Thoughts?
 
-Combo image version (aka CIVD) is reported by nvmupdate tool and this
-should be version of OROM that contains PXE, EFI images that each of
-them can have specific version but this CIVD should be overall OROM 
-version for this combination of PXE and EFI. I hope I'm right.
+Hm, that could be better, yes.
 
-Thanks,
-Ivan
+Jake, any guidance?
 
+> > UNDI means PXE. Is that whave "combo image" means for Intel?  
+> 
+> Combo image version (aka CIVD) is reported by nvmupdate tool and this
+> should be version of OROM that contains PXE, EFI images that each of
+> them can have specific version but this CIVD should be overall OROM 
+> version for this combination of PXE and EFI. I hope I'm right.
+
+Sounds good then!
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
