@@ -2,78 +2,73 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 268467CE58B
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 18 Oct 2023 19:57:18 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 703367CE5BC
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 18 Oct 2023 20:00:22 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id B2CFA41935;
-	Wed, 18 Oct 2023 17:57:16 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B2CFA41935
+	by smtp2.osuosl.org (Postfix) with ESMTP id 5F96C4192F;
+	Wed, 18 Oct 2023 18:00:20 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 5F96C4192F
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1697651836;
-	bh=+Z4LA1QevHu8kNLw3L24Sqw3ypRaRFwixTAP05NV+r0=;
-	h=Date:From:To:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1697652020;
+	bh=qY1RVN4kD2j5mziWMqJE/TCr/tDxJHJB3rhBdKt4bxo=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=k7bFYV0JdTBSrbgrk0mxUVSs7t7H0UAP7BVS3H5h67plb8Oq0wk2/81ITluPfRuWP
-	 bX+TeGYmEM4+NNo8oXZO95aowbwpHixF+PyTH0KMhlO9aW7xY6ZWwqEqkWrxRbbtMW
-	 K1/xUOve+F+NTREKmpSpXJS1YqoM4nw5N/PcljHFZpf+Z49PTxfiNcROEQdaWKXuVr
-	 D9Sc5dMmSt45Zk6iWTGwS98Eh4GJ0KjUHHm7x82Jg4VzcxdpbuOC2e0lKTw2AKdCgl
-	 49mm77A6hpdw0AC4JjIBXMQSZoz2TOshLtG6A2o4c5nbqvwAoTvnvKC54TO8TBjZZ+
-	 fUCg+evfmVgJQ==
+	b=Rlg8QU1/OLH6U+guC/7nTJJ31mZPwTzPaNLHxfQuRcVNfAqwMk+h9duTP7StDPUOW
+	 vsvMGISGVD6hqxTHTjl8kWnuRgfDJTFEyNDEnGuPw3zwRpmQPaK2IhiThj5AZ9dTQF
+	 GzyjIOUj3zZmIbhw4rFCiHcd2mgqf49ZJfH119+FhtvzgXzpJyAkUmPTGw1jH3gnPI
+	 me3+oVTWsSPDNmBP7KzCCRUjyr2p9yC4TXd+op4mhD/gYnP+jh6KNJ55BHBMQJU1Y8
+	 0tU4HVdPcwoXoZeLdD7+bocp/fdunkLRVL+/wAdGzDbP0WrmawQ2lZLIswrlkX7lPt
+	 SKIjcU4BrzvYw==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id H0rf0h9sMQAv; Wed, 18 Oct 2023 17:57:15 +0000 (UTC)
+	with ESMTP id B5zteoj-0bZE; Wed, 18 Oct 2023 18:00:19 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 387BD41923;
-	Wed, 18 Oct 2023 17:57:15 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 387BD41923
+	by smtp2.osuosl.org (Postfix) with ESMTP id 939BC4047D;
+	Wed, 18 Oct 2023 18:00:18 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 939BC4047D
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 22AC51BF5D7
- for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Oct 2023 17:57:10 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 828071BF5D7
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Oct 2023 18:00:13 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 0431582FE7
- for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Oct 2023 17:57:10 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0431582FE7
+ by smtp2.osuosl.org (Postfix) with ESMTP id 585684192E
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Oct 2023 18:00:13 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 585684192E
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id R0dVDAdctd_3 for <intel-wired-lan@lists.osuosl.org>;
- Wed, 18 Oct 2023 17:57:09 +0000 (UTC)
-Received: from ams.source.kernel.org (ams.source.kernel.org
- [IPv6:2604:1380:4601:e00::1])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 5695482FE4
- for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Oct 2023 17:57:09 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 5695482FE4
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by ams.source.kernel.org (Postfix) with ESMTP id 64D28B82445;
- Wed, 18 Oct 2023 17:57:07 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2FC27C433C7;
- Wed, 18 Oct 2023 17:57:06 +0000 (UTC)
-Date: Wed, 18 Oct 2023 10:57:05 -0700
-From: Jakub Kicinski <kuba@kernel.org>
-To: Ahmed Zaki <ahmed.zaki@intel.com>
-Message-ID: <20231018105705.556a6cc9@kernel.org>
-In-Reply-To: <20231018170635.65409-1-ahmed.zaki@intel.com>
-References: <20231018170635.65409-1-ahmed.zaki@intel.com>
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id DDmLU5pdpjWY for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 18 Oct 2023 18:00:11 +0000 (UTC)
+Received: from ganesha.gnumonks.org (ganesha.gnumonks.org
+ [IPv6:2001:780:45:1d:225:90ff:fe52:c662])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id AA8784047D
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Oct 2023 18:00:10 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org AA8784047D
+Received: from uucp by ganesha.gnumonks.org with local-bsmtp (Exim 4.94.2)
+ (envelope-from <laforge@gnumonks.org>)
+ id 1qtApx-00EjDB-RY; Wed, 18 Oct 2023 20:00:05 +0200
+Received: from laforge by nataraja with local (Exim 4.97-RC2)
+ (envelope-from <laforge@gnumonks.org>) id 1qtAnC-00000002j2L-0xli;
+ Wed, 18 Oct 2023 19:57:14 +0200
+Date: Wed, 18 Oct 2023 19:57:14 +0200
+From: Harald Welte <laforge@gnumonks.org>
+To: Jakub Kicinski <kuba@kernel.org>
+Message-ID: <ZTAceqxFSmL-jFuw@nataraja>
+References: <20231012060115.107183-1-hayatake396@gmail.com>
+ <20231016152343.1fc7c7be@kernel.org>
+ <CADFiAcKOKiTXFXs-e=WotnQwhLB2ycbBovqS2YCk9hvK_RH2uQ@mail.gmail.com>
+ <CADFiAcLiAcyqaOTsRZHex8g-wSBQjCzt_0SBtBaW3CJHz9afug@mail.gmail.com>
+ <20231017164915.23757eed@kernel.org>
+ <CADFiAc+OnpyNTXntZBkDAf+UfueRotqqWKg+BrApWcL=x_8vjQ@mail.gmail.com>
+ <20231018103703.41fd4d9b@kernel.org>
 MIME-Version: 1.0
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1697651826;
- bh=JofSflLWtggV8URpWNuqKetCfBtt9egjfPL+AtxClcY=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=H0cSHS/2ehHG2JNjTx2sCWDMBQGHbTRUdGfIJPR32ZYkHmaKW3xB5IJNUQshZ+LIN
- g+NlnxCGi0wM6yll3Jfh3iE3Yk6GF8jcJ3ZNSaxzjYIRUtFEaVxPgUr5Gvn+RDSOXm
- BHwX4oRLnpqmdsb+BLwpfW3QtvFohCNu5ET8xEb3c156uzxXIP/Wm4piE00x7k1Qjq
- 4MlWCEL64X9Bn6IwIObodMvUyiqoadwwSBgT8WY8zls6QaaBrsVLWK34B1wi0QPdx6
- isL8Z5xcB1iaGAN8elbocYzDsjWPzLkSXPBJf0/b/3fMQfHxeOxs9vYdtleqgIUovK
- sp+PbinN1obLQ==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=H0cSHS/2
-Subject: Re: [Intel-wired-lan] [PATCH net-next v5 0/6] Support symmetric RSS
- (Toeplitz) hash
+Content-Disposition: inline
+In-Reply-To: <20231018103703.41fd4d9b@kernel.org>
+Subject: Re: [Intel-wired-lan] [PATCH net-next v2] ethtool: ice: Support for
+ RSS settings to GTP from ethtool
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,23 +81,47 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: mkubecek@suse.cz, andrew@lunn.ch, willemdebruijn.kernel@gmail.com,
- corbet@lwn.net, netdev@vger.kernel.org, linux-doc@vger.kernel.org,
- jesse.brandeburg@intel.com, edumazet@google.com, anthony.l.nguyen@intel.com,
- horms@kernel.org, vladimir.oltean@nxp.com, intel-wired-lan@lists.osuosl.org,
- pabeni@redhat.com, davem@davemloft.net
+Cc: Willem de Bruijn <willemdebruijn.kernel@gmail.com>, netdev@vger.kernel.org,
+ osmocom-net-gprs@lists.osmocom.org,
+ Jesse Brandeburg <jesse.brandeburg@intel.com>, linux-kernel@vger.kernel.org,
+ Eric Dumazet <edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
+ takeru hayasaka <hayatake396@gmail.com>, intel-wired-lan@lists.osuosl.org,
+ Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>,
+ Pablo Neira Ayuso <pablo@netfilter.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed, 18 Oct 2023 11:06:29 -0600 Ahmed Zaki wrote:
-> v5: move sanity checks from ethtool/ioctl.c to ice's and iavf's rxfnc
->     drivers entries (patches 5 and 6).
+Hi Jakub,
 
-What about the discussion with Alex?
-I thought you'd move the flag out of RXH_ into a separate field,
-key-preproc, sub-algo, whatever..
+On Wed, Oct 18, 2023 at 10:37:03AM -0700, Jakub Kicinski wrote:
+> Harald went further and questioned use of the same IP addresses for 
+> -U and -C traffic, but even within one endpoint aren't these running
+> on a different port? 
+
+yes.
+
+> Can someone reasonably use the same UDP port for both types of traffic?
+
+I don't think so.  In the entire 3GPP protocol world, the UDP port numbers
+for GTP-U and GTP-C are fixed.  The various signaling protocols allow you to
+communicate the IPv4/v6 address and TEID of tunnel endpoints, but never allow
+you to communicate the port number - which hence must always be the well-known port
+(2123 for GTP-C + 2152 for GTP-U).
+
+Of course somebody could do whatever they want in some kind of internal interface
+not required to interoperate with any other equipment/implementation/operator, but
+I'd consider it not falling in your question of "reasonable use".
+
+Regards,
+	Harald
+
+-- 
+- Harald Welte <laforge@gnumonks.org>          https://laforge.gnumonks.org/
+============================================================================
+"Privacy in residential applications is a desirable marketing option."
+                                                  (ETSI EN 300 175-7 Ch. A6)
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
