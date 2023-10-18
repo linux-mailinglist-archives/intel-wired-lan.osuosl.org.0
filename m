@@ -2,71 +2,81 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 38A577CD65D
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 18 Oct 2023 10:26:40 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id D9F8A7CD6C5
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 18 Oct 2023 10:40:36 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id C2E22405C6;
-	Wed, 18 Oct 2023 08:26:38 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C2E22405C6
+	by smtp2.osuosl.org (Postfix) with ESMTP id 0882440AAE;
+	Wed, 18 Oct 2023 08:40:35 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 0882440AAE
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1697617598;
-	bh=2gWjySmuKTXdRKw9Kp3fe2WZ3AKTHlyPK0rd4VIe8LM=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1697618435;
+	bh=aI/oVZlxrhBG2TGQptXTWaPbdPMfdj5sL1EVs0/o8EY=;
+	h=From:Date:References:In-Reply-To:To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=Z20WFlswcZvgiGMx5oWNN3+UrJT6mExY8uLmBPz+ZBBvlZwgMuO1GEycPG3Aa+eGh
-	 mMfnmbby/MnNfyyY4lEz2yRd8IZ57EpaXSeuwf0eR1NWa0ESzfV3vFXuKfVSXfNZxe
-	 euX/oYquh1vMzl2ETzvJBseYMNPXfMbmF3S9M9ojgA8guy9cFMwHeKCtRLpBvwl52h
-	 VTXPC32lBmHOHV7xJ9ttaUwTWTafYwoDfzVf5b8oeYPmr+3DFE3eb0RiGIMahx3z+g
-	 F4vwtTjvvJOb4ZHOeqCMaDSj1jmwutm41u0KDX/cUUIYEz2CmGLTReMez8UVF+GVff
-	 Xud4HCdRFlvcA==
+	b=s+8HS0GsEZVu/LTLReGFwsXRVM3+DoYysR0UYrFsaD3JFofUwYCMiYN9ezIqYaO9p
+	 IdsT9B7reJ9qQEQ3vTH38N0pMtZUAcdFDYMtZvglGTPkdboGlLqbgrotQV1gqAslz7
+	 9fbY9Xbe+zZtLKnYCWNrB8iULRVQyY+K2e5GGBXONDwkD0rD/xuX3b9vaCkfCql2E6
+	 m8rNUD274OTtUIhimeIanYgG69RPhdv+ZAXznYFnU4Q/Olkn+NZR5G/U8r+aH513WM
+	 PtFpzl7pX9lYPzsQSoqaR8iJr+hNTk/4SuKXGC6biLqQ2d+q86c8Efn0Km01R2gSCA
+	 ycrZpQhzkkKBg==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 9gKBBem1jos2; Wed, 18 Oct 2023 08:26:37 +0000 (UTC)
+	with ESMTP id tlIzcYtOOsHa; Wed, 18 Oct 2023 08:40:34 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 63FC7404F4;
-	Wed, 18 Oct 2023 08:26:37 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 63FC7404F4
+	by smtp2.osuosl.org (Postfix) with ESMTP id B2751404D4;
+	Wed, 18 Oct 2023 08:40:33 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B2751404D4
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id D20F91BF285
- for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Oct 2023 08:26:31 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 83FB11BF285
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Oct 2023 08:40:28 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id B50C6404F4
- for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Oct 2023 08:26:31 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B50C6404F4
+ by smtp1.osuosl.org (Postfix) with ESMTP id 5ABFF820B9
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Oct 2023 08:40:28 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 5ABFF820B9
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ICregRT3Qn2M for <intel-wired-lan@lists.osuosl.org>;
- Wed, 18 Oct 2023 08:26:30 +0000 (UTC)
-Received: from ganesha.gnumonks.org (ganesha.gnumonks.org
- [IPv6:2001:780:45:1d:225:90ff:fe52:c662])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 29202404D4
- for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Oct 2023 08:26:29 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 29202404D4
-Received: from uucp by ganesha.gnumonks.org with local-bsmtp (Exim 4.94.2)
- (envelope-from <laforge@gnumonks.org>)
- id 1qt1sl-00Bhme-QA; Wed, 18 Oct 2023 10:26:23 +0200
-Received: from laforge by nataraja with local (Exim 4.97-RC2)
- (envelope-from <laforge@gnumonks.org>) id 1qt1sD-00000002YxM-3yh4;
- Wed, 18 Oct 2023 10:25:49 +0200
-Date: Wed, 18 Oct 2023 10:25:49 +0200
-From: Harald Welte <laforge@gnumonks.org>
-To: takeru hayasaka <hayatake396@gmail.com>
-Message-ID: <ZS-WjVVaoBXqdZgB@nataraja>
-References: <20231012060115.107183-1-hayatake396@gmail.com>
- <20231016152343.1fc7c7be@kernel.org>
- <CADFiAcKOKiTXFXs-e=WotnQwhLB2ycbBovqS2YCk9hvK_RH2uQ@mail.gmail.com>
- <CADFiAcLiAcyqaOTsRZHex8g-wSBQjCzt_0SBtBaW3CJHz9afug@mail.gmail.com>
- <CADFiAcLvrpm+HGotr=UWiqyLGG-Bp1vf1E7bwKH_-MTCc84Jjw@mail.gmail.com>
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id cy9eGWuHbfUo for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 18 Oct 2023 08:40:27 +0000 (UTC)
+Received: from ams.source.kernel.org (ams.source.kernel.org [145.40.68.75])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id E4A1981471
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Oct 2023 08:40:26 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E4A1981471
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by ams.source.kernel.org (Postfix) with ESMTP id C8599B82266;
+ Wed, 18 Oct 2023 08:40:23 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 25AD2C433CC;
+ Wed, 18 Oct 2023 08:40:23 +0000 (UTC)
+Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org
+ (localhost.localdomain [127.0.0.1])
+ by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id
+ 0BF96C04DD9; Wed, 18 Oct 2023 08:40:23 +0000 (UTC)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <CADFiAcLvrpm+HGotr=UWiqyLGG-Bp1vf1E7bwKH_-MTCc84Jjw@mail.gmail.com>
-Subject: Re: [Intel-wired-lan] [PATCH net-next v2] ethtool: ice: Support for
- RSS settings to GTP from ethtool
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <169761842304.32286.14718578238275474190.git-patchwork-notify@kernel.org>
+Date: Wed, 18 Oct 2023 08:40:23 +0000
+References: <20231015234304.2633-1-paul.greenwalt@intel.com>
+In-Reply-To: <20231015234304.2633-1-paul.greenwalt@intel.com>
+To: Paul Greenwalt <paul.greenwalt@intel.com>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=kernel.org; s=k20201202; t=1697618423;
+ bh=GDfbvZk3KEL/2OiP0+wJBNdzV07Kq7LZeX1sJq5NRSs=;
+ h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+ b=FRdVEGQcO5oZ3Pszg7eozW4THnumQY5R+cIefaOFwSy0jYzqcy5OsMR6c8uxViKK3
+ Z/pN+geFvN4eTGxBGL5mAwW62mbcMZLprGCafLpHRqrL1SFr8zmOo2vaxol8jLRgs0
+ nt+a7MlkwSLgxLnNaA7er6FLV4fVHpPwr5A3Soz0OY55o8wFxM+fqzzmS/+e5hq4NG
+ Znfs01thHGsX7I7JWpyIhoyLB/ee+dJ52O1QjouhC1rFKdcqRiGCCI6ExY/FZIqDuP
+ +3SRXmk7smqQmBS25Y0H2R5SXc75t+vh4tcQTBjROYdkMqErkw63HAECACgVgJ4NPt
+ jVpnyr6KhrQpw==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=FRdVEGQc
+Subject: Re: [Intel-wired-lan] [PATCH net-next v5 0/3] ethtool: Add link
+ mode maps for forced speeds
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,48 +89,46 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Willem de Bruijn <willemdebruijn.kernel@gmail.com>,
- intel-wired-lan@lists.osuosl.org, osmocom-net-gprs@lists.osmocom.org,
- Jesse Brandeburg <jesse.brandeburg@intel.com>, linux-kernel@vger.kernel.org,
- Eric Dumazet <edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
- netdev@vger.kernel.org, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>,
- Pablo Neira Ayuso <pablo@netfilter.org>
+Cc: jiri@resnulli.us, andrew@lunn.ch, aelior@marvell.com, manishc@marvell.com,
+ vladimir.oltean@nxp.com, jdamato@fastly.com, pawel.chmielewski@intel.com,
+ edumazet@google.com, intel-wired-lan@lists.osuosl.org, horms@kernel.org,
+ netdev@vger.kernel.org, kuba@kernel.org, d-tatianin@yandex-team.ru,
+ pabeni@redhat.com, davem@davemloft.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi Takeru,
+Hello:
 
-On Wed, Oct 18, 2023 at 01:49:08AM +0900, takeru hayasaka wrote:
-> I'm not very proficient in English, so I'm worried whether I can
-> explain it well.
+This series was applied to netdev/net-next.git (main)
+by David S. Miller <davem@davemloft.net>:
 
-Don't worry, you were very clear in this e-mail.
+On Sun, 15 Oct 2023 19:43:01 -0400 you wrote:
+> The following patch set was initially a part of [1]. As the purpose of the
+> original series was to add the support of the new hardware to the intel ice
+> driver, the refactoring of advertised link modes mapping was extracted to a
+> new set.
+> 
+> The patch set adds a common mechanism for mapping Ethtool forced speeds
+> with Ethtool supported link modes, which can be used in drivers code.
+> 
+> [...]
 
-> Therefore, I will try to briefly explain the flow and what kind of
-> cases these are in a straightforward manner.
+Here is the summary with links:
+  - [net-next,v5,1/3] ethtool: Add forced speed to supported link modes maps
+    https://git.kernel.org/netdev/net-next/c/26c5334d344d
+  - [net-next,v5,2/3] qede: Refactor qede_forced_speed_maps_init()
+    https://git.kernel.org/netdev/net-next/c/a5b65cd2a317
+  - [net-next,v5,3/3] ice: Refactor finding advertised link speed
+    https://git.kernel.org/netdev/net-next/c/982b0192db45
 
-Thanks for taking the time.  As stated, I think it would be best to have
-these or some other some brief comments about the different flow types
-in the source code (and especially the documentation) of ethtool.
-
-Based on your explanation, I agree that indeed those are all different
-flow types that occur in real-life on PGW/UPF and other 3GPP network
-elements/functions.  I can also very well imagine that there are use
-cases to steer all of those separately, including the EH and UL/DL types
-you mentioned.
-
-So I'm supporing your patch with all its many different flow types for RSS.
-
-Thanks,
-	Harald
+You are awesome, thank you!
 -- 
-- Harald Welte <laforge@gnumonks.org>          https://laforge.gnumonks.org/
-============================================================================
-"Privacy in residential applications is a desirable marketing option."
-                                                  (ETSI EN 300 175-7 Ch. A6)
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
