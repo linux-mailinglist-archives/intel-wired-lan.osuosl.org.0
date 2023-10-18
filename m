@@ -1,86 +1,113 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 32A7B7CFBB9
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 19 Oct 2023 15:54:04 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1D3D87D00F9
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 19 Oct 2023 19:52:04 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 9863E40491;
-	Thu, 19 Oct 2023 13:54:02 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 9863E40491
+	by smtp1.osuosl.org (Postfix) with ESMTP id 8E46E8412A;
+	Thu, 19 Oct 2023 17:52:00 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8E46E8412A
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1697723642;
-	bh=BRBI8IX/Q3iApEFwDcHd36eywfOVymEG366FYbCfd/s=;
+	s=default; t=1697737920;
+	bh=4orV4K/1b656SECXLI3chzvLYGFxSqVKhIo5yiA/JOw=;
 	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
 	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=zfG5ZhwFWLwX4aOsiEh8OVO0Kc83BK2Vhyr6r8sGmd4tSnjO1sbbzF/y1xmcp+1zT
-	 iegdy8wSCJkI4fz71nPAWPWkP1nje5Di0YUsNc4WQ4dGgiSkx2PDhQj1viW5Q9LghT
-	 A00QLwpdJdG9STGk6qCimYzHuJ7NI4w9yyimrzLHIWZIK9xgTgrb2Aj+avH5D5Vhur
-	 pY1is1dGB+kjcqFMvb6dgqjnt8K68wcq6+McYQ5nYRVqr4mBRscFw6H9ucVaTh4ula
-	 iwo9i9k3bEGZbYj3tsDhf8yWgNN5l281LvHTq0qKICyT87Jr8Kf/Ogf4kFSZ8mlVa4
-	 NMS6t3DqhtRZw==
+	b=7Vjm36xhCRaPfBPbdULr3T5l2L84vchDhTL1yfDcWE/3QhZTXgCbtndvfE3Bg63v7
+	 y0iON77w39HyEneFm8qNQJuvF6YT/TaX3zmYbIuFIuZGXAyert+/PnIyRTbLdfkfY9
+	 JY+coivyv/NnvDFtL2RrEq24R2XfQujIj/lrlBY8Xh4LHq2txEzoOxENrrkXOFknsR
+	 8PWaIhGDsqWYkR59IsgWT4JuzI0gpiCCVUGw91eQX6ec5nwg5+arZyemzv+PaLV2Gk
+	 /areiSo8FCp2Yaw85/RQDVExoLCdi+2wuSfhnGhTeAInVN0uImj06GktQKICbBPz/f
+	 tLJMojC2epSAQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id u09quoIWHosB; Thu, 19 Oct 2023 13:54:01 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id QuT_58MTDZlK; Thu, 19 Oct 2023 17:51:59 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 3A98C42F78;
-	Thu, 19 Oct 2023 13:54:01 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3A98C42F78
+	by smtp1.osuosl.org (Postfix) with ESMTP id 57A4084120;
+	Thu, 19 Oct 2023 17:51:59 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 57A4084120
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 717671BF588
- for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Oct 2023 13:53:56 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 11E6A1BF39F
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Oct 2023 21:20:55 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 5148C42F77
- for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Oct 2023 13:53:56 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 5148C42F77
+ by smtp1.osuosl.org (Postfix) with ESMTP id DCBB5831DE
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Oct 2023 21:20:54 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org DCBB5831DE
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id OhHSS_Zja2ma for <intel-wired-lan@lists.osuosl.org>;
- Thu, 19 Oct 2023 13:53:51 +0000 (UTC)
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.129.124])
- by smtp2.osuosl.org (Postfix) with ESMTPS id AFE5C40491
- for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Oct 2023 13:53:51 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org AFE5C40491
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-359-kWHLDIYfO7KaAiIWsoYliQ-1; Thu, 19 Oct 2023 09:53:47 -0400
-X-MC-Unique: kWHLDIYfO7KaAiIWsoYliQ-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
- [10.11.54.3])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id AFD1E185A78E;
- Thu, 19 Oct 2023 13:53:45 +0000 (UTC)
-Received: from p1.luc.com (unknown [10.45.226.105])
- by smtp.corp.redhat.com (Postfix) with ESMTP id D8BF1111D782;
- Thu, 19 Oct 2023 13:53:43 +0000 (UTC)
-From: Ivan Vecera <ivecera@redhat.com>
-To: netdev@vger.kernel.org
-Date: Thu, 19 Oct 2023 15:53:42 +0200
-Message-ID: <20231019135342.1209152-1-ivecera@redhat.com>
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id UKn1EOWoltFR for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 18 Oct 2023 21:20:54 +0000 (UTC)
+X-Greylist: delayed 325 seconds by postgrey-1.37 at util1.osuosl.org;
+ Wed, 18 Oct 2023 21:20:53 UTC
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org CC48080E39
+Received: from out3-smtp.messagingengine.com (out3-smtp.messagingengine.com
+ [66.111.4.27])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id CC48080E39
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Oct 2023 21:20:53 +0000 (UTC)
+Received: from compute1.internal (compute1.nyi.internal [10.202.2.41])
+ by mailout.nyi.internal (Postfix) with ESMTP id A84B15C032D;
+ Wed, 18 Oct 2023 17:15:25 -0400 (EDT)
+Received: from mailfrontend1 ([10.202.2.162])
+ by compute1.internal (MEProxy); Wed, 18 Oct 2023 17:15:25 -0400
+X-ME-Sender: <xms:7UowZXvsoJzN_z23mA7yN7Fdv_DGwZBM-2V9R29L_qm2aW7L-djcdA>
+ <xme:7UowZYdOVTiG5mspQdHT6k_JO9LECpcogFvsOM-L4nOXKrU8IgUNAM8HCvdtaACQa
+ ELfVZvjLoFZUUllJQ>
+X-ME-Received: <xmr:7UowZawRtA50J36dzWrkrzrL8GeoVgfvnfseGgtZUmpeSeUB2Hh9A4hIsH9FnBadH6AgQC3se86ZqxUK0w1TC7WvrtEuBb-uaf6d8HMh1Q>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedvkedrjeeggdduheeiucetufdoteggodetrfdotf
+ fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
+ uceurghilhhouhhtmecufedttdenucenucfjughrpefhvfevufffkffoggfgsedtkeertd
+ ertddtnecuhfhrohhmpefluhhsthhinhcuuehrohhnuggvrhcuoehjshgsrhhonhguvghr
+ segtohhlugdqfhhrohhnthdrohhrgheqnecuggftrfgrthhtvghrnhepudfghfdvkeeuhe
+ duudduhfeuieeikeegfeelhffgfeejgeelheejhfeftdelheegnecuvehluhhsthgvrhfu
+ ihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomhepjhhssghrohhnuggvrhestgholh
+ guqdhfrhhonhhtrdhorhhg
+X-ME-Proxy: <xmx:7UowZWN6_8GVnbu4gVTR0b3r7wVbXni1pnPs5_SXilgrphisjtl6YQ>
+ <xmx:7UowZX_SQwvOmcehqoeHfC__0s4rDe6MNXg6q_dg81RX2ULP9ED6Ow>
+ <xmx:7UowZWVW-Wq3e1PsAZNpvajOScb4f8Yk38SWY6PxMGkXry4oVfGE4g>
+ <xmx:7UowZUE4WUZE_DLVl4cSlBL-68h7YLGWfENI6uURB1SongnlQ4c9vQ>
+Feedback-ID: iea0042cb:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Wed,
+ 18 Oct 2023 17:15:25 -0400 (EDT)
+From: Justin Bronder <jsbronder@cold-front.org>
+To: intel-wired-lan@lists.osuosl.org
+Date: Wed, 18 Oct 2023 17:15:22 -0400
+Message-ID: <20231018211522.29017-1-jsbronder@cold-front.org>
+X-Mailer: git-send-email 2.42.0
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.3
+X-Mailman-Approved-At: Thu, 19 Oct 2023 17:51:54 +0000
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=redhat.com; 
- s=mimecast20190719; t=1697723630;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=HhuLAtEC9vvHEOX4edXMkoJRK35YOO0BifovbLT07EE=;
- b=cy+1fVkNKlKuv15XNjRwVm/r0gWqq/SIkHMou8zWrDSNZ0zEtBGjYNCSueeyq7bMsrv84r
- sJtp6gG6DIbqmNvanbNpX4qUWB8BEB1FnuhbIs59R+uosT64BuZ4G/ZuEDYvFdI5ISW3tT
- pL4dMv2UVxdkCkikeQQcBK5VnR/tbHY=
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
- header.a=rsa-sha256 header.s=mimecast20190719 header.b=cy+1fVkN
-Subject: [Intel-wired-lan] [PATCH net] i40e: Fix wrong check for
- I40E_TXR_FLAGS_WB_ON_ITR
+ d=cold-front.org; 
+ h=cc:cc:content-transfer-encoding:content-type:date:date:from
+ :from:in-reply-to:message-id:mime-version:reply-to:sender
+ :subject:subject:to:to; s=mesmtp; t=1697663725; x=1697750125;
+ bh=YUIIbcMEAk6JNyZcfIv8UDjxm/re2iAtxt/LDtQGNOQ=; b=aSGr66n9PCdE
+ +mAREW7NewnM0RN8v4jO4/JprMN4hwpTs72BFggJmCN0jXkViJQjHWQIxIJR6/IK
+ NgNVeVl/FqF/P0kYQutzUmyInAaMQJep96rZALK/CPzAxxEUQfwHpR44B+oYgZhj
+ FFtYOy09WOjypBDf/ZHp85YmzDWMd64=
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:cc:content-transfer-encoding
+ :content-type:date:date:feedback-id:feedback-id:from:from
+ :in-reply-to:message-id:mime-version:reply-to:sender:subject
+ :subject:to:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
+ :x-sasl-enc; s=fm3; t=1697663725; x=1697750125; bh=YUIIbcMEAk6JN
+ yZcfIv8UDjxm/re2iAtxt/LDtQGNOQ=; b=s9s1t6eIBE1AvMT7PMhxpc+2Vdo7b
+ PXx+Bhkn8MEMOj/HcH3VjfNAVsJBKSBsQ66E1laLHqAOch80MyWTidgcxYeK/AbR
+ RzbNOJxKAwY+51P9bQIDCnUJ7iklWd+59oLl03wD5MY6FsZIACb9/3N+9AzqIFzH
+ 9BWuRL/X0XU09BjZgA45UzkPX8hOAKbYeGLd9NT7/th81Eu5gRSoA1/C+XWzesEk
+ kk/+KM4zQRTqZo0SPDpwuLq1o194Z+65zuqYgQLFd+aWNyoimlzsmF4nw/xtoyh2
+ 7rA35nVOm/+oYIjy0knzPULDMYLxYZMUhfKTR5p+Ym7SCNRdxuuaqCG1g==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (1024-bit key) header.d=cold-front.org header.i=@cold-front.org
+ header.a=rsa-sha256 header.s=mesmtp header.b=aSGr66n9; 
+ dkim=pass (2048-bit key,
+ unprotected) header.d=messagingengine.com header.i=@messagingengine.com
+ header.a=rsa-sha256 header.s=fm3 header.b=s9s1t6eI
+Subject: [Intel-wired-lan] [PATCH net-next] i40e: increase max descriptors
+ for XL710
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,43 +120,93 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Catherine Sullivan <catherine.sullivan@intel.com>,
- Anjali Singhai Jain <anjali.singhai@intel.com>,
- Jesse Brandeburg <jesse.brandeburg@intel.com>,
- open list <linux-kernel@vger.kernel.org>, Eric Dumazet <edumazet@google.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>,
- Jeff Kirsher <jeffrey.t.kirsher@intel.com>,
- "moderated list:INTEL ETHERNET DRIVERS" <intel-wired-lan@lists.osuosl.org>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- "David S. Miller" <davem@davemloft.net>
+Cc: Justin Bronder <jsbronder@cold-front.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The I40E_TXR_FLAGS_WB_ON_ITR is i40e_ring flag and not i40e_pf one.
+In Tables 8-12 and 8-22 in the X710/XXV710/XL710 datasheet, the QLEN
+description states that the maximum size of the descriptor queue is 8k
+minus 32, or 8160.
 
-Fixes: 8e0764b4d6be42 ("i40e/i40evf: Add support for writeback on ITR feature for X722")
-Signed-off-by: Ivan Vecera <ivecera@redhat.com>
+Signed-off-by: Justin Bronder <jsbronder@cold-front.org>
 ---
- drivers/net/ethernet/intel/i40e/i40e_txrx.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/net/ethernet/intel/i40e/i40e.h        |  1 +
+ .../net/ethernet/intel/i40e/i40e_ethtool.c    | 23 +++++++++++++++----
+ 2 files changed, 19 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_txrx.c b/drivers/net/ethernet/intel/i40e/i40e_txrx.c
-index 0b3a27f118fb97..9c36540846f7a9 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_txrx.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_txrx.c
-@@ -2847,7 +2847,7 @@ int i40e_napi_poll(struct napi_struct *napi, int budget)
- 		return budget;
+diff --git a/drivers/net/ethernet/intel/i40e/i40e.h b/drivers/net/ethernet/intel/i40e/i40e.h
+index 6e310a539467..ad261fa00d4c 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e.h
++++ b/drivers/net/ethernet/intel/i40e/i40e.h
+@@ -50,6 +50,7 @@
+ #define I40E_MAX_VEB			16
+ 
+ #define I40E_MAX_NUM_DESCRIPTORS	4096
++#define I40E_MAX_NUM_DESCRIPTORS_XL710	8160
+ #define I40E_MAX_CSR_SPACE		(4 * 1024 * 1024 - 64 * 1024)
+ #define I40E_DEFAULT_NUM_DESCRIPTORS	512
+ #define I40E_REQ_DESCRIPTOR_MULTIPLE	32
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_ethtool.c b/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
+index afc4fa8c66af..338c8f1acc1a 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
+@@ -2013,6 +2013,18 @@ static void i40e_get_drvinfo(struct net_device *netdev,
+ 		drvinfo->n_priv_flags += I40E_GL_PRIV_FLAGS_STR_LEN;
+ }
+ 
++static u32 i40e_get_max_num_descriptors(struct i40e_pf *pf)
++{
++	struct i40e_hw *hw = &pf->hw;
++
++	switch (hw->mac.type) {
++	case I40E_MAC_XL710:
++		return I40E_MAX_NUM_DESCRIPTORS_XL710;
++	default:
++		return I40E_MAX_NUM_DESCRIPTORS;
++	}
++}
++
+ static void i40e_get_ringparam(struct net_device *netdev,
+ 			       struct ethtool_ringparam *ring,
+ 			       struct kernel_ethtool_ringparam *kernel_ring,
+@@ -2022,8 +2034,8 @@ static void i40e_get_ringparam(struct net_device *netdev,
+ 	struct i40e_pf *pf = np->vsi->back;
+ 	struct i40e_vsi *vsi = pf->vsi[pf->lan_vsi];
+ 
+-	ring->rx_max_pending = I40E_MAX_NUM_DESCRIPTORS;
+-	ring->tx_max_pending = I40E_MAX_NUM_DESCRIPTORS;
++	ring->rx_max_pending = i40e_get_max_num_descriptors(pf);
++	ring->tx_max_pending = i40e_get_max_num_descriptors(pf);
+ 	ring->rx_mini_max_pending = 0;
+ 	ring->rx_jumbo_max_pending = 0;
+ 	ring->rx_pending = vsi->rx_rings[0]->count;
+@@ -2057,18 +2069,19 @@ static int i40e_set_ringparam(struct net_device *netdev,
+ 	u16 tx_alloc_queue_pairs;
+ 	int timeout = 50;
+ 	int i, err = 0;
++	u32 max_num_descriptors = i40e_get_max_num_descriptors(pf);
+ 
+ 	if ((ring->rx_mini_pending) || (ring->rx_jumbo_pending))
+ 		return -EINVAL;
+ 
+-	if (ring->tx_pending > I40E_MAX_NUM_DESCRIPTORS ||
++	if (ring->tx_pending > max_num_descriptors ||
+ 	    ring->tx_pending < I40E_MIN_NUM_DESCRIPTORS ||
+-	    ring->rx_pending > I40E_MAX_NUM_DESCRIPTORS ||
++	    ring->rx_pending > max_num_descriptors ||
+ 	    ring->rx_pending < I40E_MIN_NUM_DESCRIPTORS) {
+ 		netdev_info(netdev,
+ 			    "Descriptors requested (Tx: %d / Rx: %d) out of range [%d-%d]\n",
+ 			    ring->tx_pending, ring->rx_pending,
+-			    I40E_MIN_NUM_DESCRIPTORS, I40E_MAX_NUM_DESCRIPTORS);
++			    I40E_MIN_NUM_DESCRIPTORS, max_num_descriptors);
+ 		return -EINVAL;
  	}
  
--	if (vsi->back->flags & I40E_TXR_FLAGS_WB_ON_ITR)
-+	if (q_vector->tx.ring[0].flags & I40E_TXR_FLAGS_WB_ON_ITR)
- 		q_vector->arm_wb_state = false;
- 
- 	/* Exit the polling mode, but don't re-enable interrupts if stack might
 -- 
-2.41.0
+2.42.0
 
 _______________________________________________
 Intel-wired-lan mailing list
