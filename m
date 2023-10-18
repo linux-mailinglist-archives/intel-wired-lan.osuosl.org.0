@@ -1,87 +1,87 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id ABF097CEBF9
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 19 Oct 2023 01:25:14 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 921927CEBFE
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 19 Oct 2023 01:25:24 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 3B0D8419A2;
-	Wed, 18 Oct 2023 23:25:13 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3B0D8419A2
+	by smtp2.osuosl.org (Postfix) with ESMTP id 21805419A7;
+	Wed, 18 Oct 2023 23:25:23 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 21805419A7
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1697671513;
-	bh=mZqPEo0kzwFKqICsfsrtQxCk3va1sNRvuPOy/NK1XG8=;
+	s=default; t=1697671523;
+	bh=DBb9BTzdumAhBY8FbMRpfagq/UA1iTwTKcqUxBC0tKs=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=9YyOmRwtPEwcTisFi4F8SFTsJ+QNYeszPxvWceTl1/3UMAKA7z2xyYtDbLY7B1BAF
-	 xYaWThtPnf9N1Eq6wfJsS1AlEbdO7DlGIeUHDkS4TqIIEn/ObKLQNpVum76vFlPBUi
-	 wiMk64N9Hs1MolnfqPjGnjx9ODWrWBePQR0c+/dJrhL7Cdip7emHHoyxWj7CWRFLcs
-	 4UEi7B1XIzUAuujUBqPYm2f+ha/Fuj989BYAhYPNWNRmR0SzWMj9OGhpxctpUkjOA4
-	 B2INjhb/g+tjnFF8dtTPYq46Vptzbd3CMXFvQ2HNceSBUx+0ehduwM1wf0qGnreTMK
-	 T8t0pPPyIwE2Q==
+	b=MR87npT1biUddAGO6MUEa0vBzqy0SW0/NsnFrQfLQJF/CwgcUd/DtKJkR4rTjYszq
+	 jVaXze39XKj5BqjcM7N5kUecrPiI4OuXbl/fIJ4va71hfgTf+mcYrBkrk25BRGLZ00
+	 XjQRtREIfwT4TjmN3/7HQZ9VBC4R644OBXgJYl6zi9GqO5s5M3oMiMveWtXfI/sebD
+	 Uo6Appq/Tl0cj9jOS4RWDKU123mxMm8LWWsKaTuZ5QO1R5Lh84fVLt9ZSFy7v6w1ow
+	 8JZpR7yxmxUHqt6VGGFJZziqgCXzdnxn4U/oGHXnVAiue3GYzL+ij1xpKx+kn+MKsw
+	 bSZVSVoc4u+OQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ODzzPjzQWoeE; Wed, 18 Oct 2023 23:25:12 +0000 (UTC)
+	with ESMTP id tPocPtDuOcWH; Wed, 18 Oct 2023 23:25:22 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id A0BAA40A21;
-	Wed, 18 Oct 2023 23:25:11 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A0BAA40A21
+	by smtp2.osuosl.org (Postfix) with ESMTP id 7C237405D0;
+	Wed, 18 Oct 2023 23:25:21 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 7C237405D0
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 2E11C1BF42E
- for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Oct 2023 23:24:50 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 2ED191BF42E
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Oct 2023 23:24:52 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 5B0CA40129
- for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Oct 2023 23:24:49 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 5B0CA40129
+ by smtp2.osuosl.org (Postfix) with ESMTP id 2634C4198B
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Oct 2023 23:24:50 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 2634C4198B
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Ceg7aK-KGb8g for <intel-wired-lan@lists.osuosl.org>;
- Wed, 18 Oct 2023 23:24:48 +0000 (UTC)
+ with ESMTP id iiBaIxXgp2VL for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 18 Oct 2023 23:24:49 +0000 (UTC)
 Received: from mgamail.intel.com (mgamail.intel.com [134.134.136.24])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 1AE4340A21
- for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Oct 2023 23:24:48 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1AE4340A21
-X-IronPort-AV: E=McAfee;i="6600,9927,10867"; a="388996737"
-X-IronPort-AV: E=Sophos;i="6.03,236,1694761200"; d="scan'208";a="388996737"
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 39CA8400EF
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Oct 2023 23:24:49 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 39CA8400EF
+X-IronPort-AV: E=McAfee;i="6600,9927,10867"; a="388996743"
+X-IronPort-AV: E=Sophos;i="6.03,236,1694761200"; d="scan'208";a="388996743"
 Received: from fmviesa001.fm.intel.com ([10.60.135.141])
  by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 18 Oct 2023 16:24:47 -0700
+ 18 Oct 2023 16:24:48 -0700
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.03,236,1694761200"; 
-   d="scan'208";a="4732362"
+   d="scan'208";a="4732367"
 Received: from unknown (HELO fedora.jf.intel.com) ([10.166.244.144])
- by fmviesa001.fm.intel.com with ESMTP; 18 Oct 2023 16:24:50 -0700
+ by fmviesa001.fm.intel.com with ESMTP; 18 Oct 2023 16:24:51 -0700
 From: Paul Greenwalt <paul.greenwalt@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Wed, 18 Oct 2023 19:16:42 -0400
-Message-ID: <20231018231643.2356-6-paul.greenwalt@intel.com>
+Date: Wed, 18 Oct 2023 19:16:43 -0400
+Message-ID: <20231018231643.2356-7-paul.greenwalt@intel.com>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20231018231643.2356-1-paul.greenwalt@intel.com>
 References: <20231018231643.2356-1-paul.greenwalt@intel.com>
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1697671488; x=1729207488;
+ t=1697671489; x=1729207489;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=WWIuqo8DjD2tGs5InqMhR/qDHPzPIo+a0QT/T+FhDzQ=;
- b=N6DZRQs5pvkx95QZLUbJQQoiqRH9pjTXH/vJVry2Nn/M+5uwHyJNfQlW
- lLdAYqO+5u9wPreLWlZTZKLgx05nQWfynAHrUpECWF2HOp9gsf449zo/y
- fNnfcLChEoSnxbtDmvZy2cOvpuz4rfnTdgDf7Df2mYLMnXrJ93egPWhll
- l+1NXu6+hQ+XaqV+WzjSqmSNG0YYIfcW8Gtrw5MRuDw2jvaDsi1vEaFFW
- F5ba7bOzcj2X7PAN+0TQKKZmB5ExSXqhZ74oPngTG2gmRzDEceVL38Lv4
- ojCWNvXjWXMMZ+TdWItQcqvhhAfnCVc56iPYxY/oUXN3XGHFV0ZncF3z4
+ bh=3oeLdPZ4E29kjd284PYRPlBekIGJzdbuvuJVazBGSfI=;
+ b=JBQjpNwQkGZw0cOlIPqSwcwRH5I1FX+JOkS9qx0yHlj6q024xNq6B95o
+ ykiKH0qmQ2MInquuH0UbuXHZFHYLxBr6XmfXE23zmKvSnGllEaTNzvfSN
+ MbOYYXRT/cQu+wR49P7MlJBmzGZFEmQkpn8D9j0uj+0BiAmaHICtxsZRj
+ 5Uv+xbG+NkMPfDUETkNqswoHuIpz1mXc1Ek8miDQ1bwjnqudgt+GCwaUV
+ +inNS444lZRNuCSUmUabK2s6eJz+hYeb+T2nyL6uVkLro/MrfPKM/emO2
+ TZNlDrIW5W5uGRnl7C2dd2m0YKQGelqmIXTNGwxHcyxYFGMoxInpjY5Qj
  Q==;
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=N6DZRQs5
-Subject: [Intel-wired-lan] [PATCH net-next v5 5/6] ice: Remove redundant
- zeroing of the fields.
+ header.a=rsa-sha256 header.s=Intel header.b=JBQjpNwQ
+Subject: [Intel-wired-lan] [PATCH net-next v5 6/6] ice: Hook up 4 E830
+ devices by adding their IDs
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -105,83 +105,33 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 From: Pawel Chmielewski <pawel.chmielewski@intel.com>
 
-Remove zeroing of the fields, as all the fields are in fact initialized
-with zeros automatically
+As the previous patches provide support for E830 hardware, add E830
+specific IDs to the PCI device ID table, so these devices can now be
+probed by the kernel.
 
 Reviewed-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
 Signed-off-by: Pawel Chmielewski <pawel.chmielewski@intel.com>
 Reviewed-by: Simon Horman <horms@kernel.org>
 Signed-off-by: Paul Greenwalt <paul.greenwalt@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_main.c | 54 +++++++++++------------
- 1 file changed, 27 insertions(+), 27 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_main.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
 diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index 388727478ddf..f47db07df679 100644
+index f47db07df679..66095e9b094e 100644
 --- a/drivers/net/ethernet/intel/ice/ice_main.c
 +++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -5585,34 +5585,34 @@ static void ice_pci_err_reset_done(struct pci_dev *pdev)
-  *   Class, Class Mask, private data (not used) }
-  */
- static const struct pci_device_id ice_pci_tbl[] = {
--	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E810C_BACKPLANE), 0 },
--	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E810C_QSFP), 0 },
--	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E810C_SFP), 0 },
--	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E810_XXV_BACKPLANE), 0 },
--	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E810_XXV_QSFP), 0 },
--	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E810_XXV_SFP), 0 },
--	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E823C_BACKPLANE), 0 },
--	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E823C_QSFP), 0 },
--	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E823C_SFP), 0 },
--	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E823C_10G_BASE_T), 0 },
--	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E823C_SGMII), 0 },
--	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E822C_BACKPLANE), 0 },
--	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E822C_QSFP), 0 },
--	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E822C_SFP), 0 },
--	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E822C_10G_BASE_T), 0 },
--	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E822C_SGMII), 0 },
--	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E822L_BACKPLANE), 0 },
--	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E822L_SFP), 0 },
--	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E822L_10G_BASE_T), 0 },
--	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E822L_SGMII), 0 },
--	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E823L_BACKPLANE), 0 },
--	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E823L_SFP), 0 },
--	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E823L_10G_BASE_T), 0 },
--	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E823L_1GBE), 0 },
--	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E823L_QSFP), 0 },
--	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E822_SI_DFLT), 0 },
-+	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E810C_BACKPLANE) },
-+	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E810C_QSFP) },
-+	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E810C_SFP) },
-+	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E810_XXV_BACKPLANE) },
-+	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E810_XXV_QSFP) },
-+	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E810_XXV_SFP) },
-+	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E823C_BACKPLANE) },
-+	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E823C_QSFP) },
-+	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E823C_SFP) },
-+	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E823C_10G_BASE_T) },
-+	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E823C_SGMII) },
-+	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E822C_BACKPLANE) },
-+	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E822C_QSFP) },
-+	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E822C_SFP) },
-+	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E822C_10G_BASE_T) },
-+	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E822C_SGMII) },
-+	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E822L_BACKPLANE) },
-+	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E822L_SFP) },
-+	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E822L_10G_BASE_T) },
-+	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E822L_SGMII) },
-+	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E823L_BACKPLANE) },
-+	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E823L_SFP) },
-+	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E823L_10G_BASE_T) },
-+	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E823L_1GBE) },
-+	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E823L_QSFP) },
-+	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E822_SI_DFLT) },
+@@ -5611,6 +5611,10 @@ static const struct pci_device_id ice_pci_tbl[] = {
+ 	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E823L_1GBE) },
+ 	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E823L_QSFP) },
+ 	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E822_SI_DFLT) },
++	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E830_BACKPLANE) },
++	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E830_QSFP56) },
++	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E830_SFP) },
++	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E830_SFP_DD) },
  	/* required last entry */
--	{ 0, }
-+	{}
+ 	{}
  };
- MODULE_DEVICE_TABLE(pci, ice_pci_tbl);
- 
 -- 
 2.41.0
 
