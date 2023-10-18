@@ -2,86 +2,90 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 921927CEBFE
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 19 Oct 2023 01:25:24 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2C31E7CEC4E
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 19 Oct 2023 01:50:34 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 21805419A7;
-	Wed, 18 Oct 2023 23:25:23 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 21805419A7
+	by smtp2.osuosl.org (Postfix) with ESMTP id 5C283419A3;
+	Wed, 18 Oct 2023 23:50:32 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 5C283419A3
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1697671523;
-	bh=DBb9BTzdumAhBY8FbMRpfagq/UA1iTwTKcqUxBC0tKs=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1697673032;
+	bh=yiAxUm2mP7r8bWbamLg3a0lqEvzMydQTw5lq9cuCy8M=;
+	h=Date:From:To:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=MR87npT1biUddAGO6MUEa0vBzqy0SW0/NsnFrQfLQJF/CwgcUd/DtKJkR4rTjYszq
-	 jVaXze39XKj5BqjcM7N5kUecrPiI4OuXbl/fIJ4va71hfgTf+mcYrBkrk25BRGLZ00
-	 XjQRtREIfwT4TjmN3/7HQZ9VBC4R644OBXgJYl6zi9GqO5s5M3oMiMveWtXfI/sebD
-	 Uo6Appq/Tl0cj9jOS4RWDKU123mxMm8LWWsKaTuZ5QO1R5Lh84fVLt9ZSFy7v6w1ow
-	 8JZpR7yxmxUHqt6VGGFJZziqgCXzdnxn4U/oGHXnVAiue3GYzL+ij1xpKx+kn+MKsw
-	 bSZVSVoc4u+OQ==
+	b=m9Rdy9yaOwUjx8eoJhtpjQ7kyxPO/OtUQcySfIfzRLuDcQvUeMrEwZ2XzzFUwUwOW
+	 KQDxsQ8p8YMiRB0Nc5fwcaDvfJ64uRBCVXawMq/uK3YGDfQCMu3wjd5mR1dMq8FyoF
+	 VO3loDqSa3y0/bfjKeM1zWIbTGJKj0C4xDPnHq0hks6P/8XeyxyGm4YstunHtGO1wg
+	 DrHaaoJHqsY1QuhBBSuicIfwdaC0xlQNlykKDrncpEh+drrpZN2E/W3WTj/IuyvUT0
+	 0WXiJQiKqRsW+es0uqHvY6WryXoNAe5MSOGlkwlMwCHSiH1Ck1db8rsVNEW/Dm/OT5
+	 WnoUvUXaQaqXQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id tPocPtDuOcWH; Wed, 18 Oct 2023 23:25:22 +0000 (UTC)
+	with ESMTP id YU82UJ4WoEcY; Wed, 18 Oct 2023 23:50:31 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 7C237405D0;
-	Wed, 18 Oct 2023 23:25:21 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 7C237405D0
+	by smtp2.osuosl.org (Postfix) with ESMTP id 798584199B;
+	Wed, 18 Oct 2023 23:50:30 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 798584199B
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 2ED191BF42E
- for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Oct 2023 23:24:52 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 2F1B21BF32E
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Oct 2023 23:50:25 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 2634C4198B
- for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Oct 2023 23:24:50 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 2634C4198B
+ by smtp2.osuosl.org (Postfix) with ESMTP id 0473F41997
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Oct 2023 23:50:25 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 0473F41997
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id iiBaIxXgp2VL for <intel-wired-lan@lists.osuosl.org>;
- Wed, 18 Oct 2023 23:24:49 +0000 (UTC)
-Received: from mgamail.intel.com (mgamail.intel.com [134.134.136.24])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 39CA8400EF
- for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Oct 2023 23:24:49 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 39CA8400EF
-X-IronPort-AV: E=McAfee;i="6600,9927,10867"; a="388996743"
-X-IronPort-AV: E=Sophos;i="6.03,236,1694761200"; d="scan'208";a="388996743"
-Received: from fmviesa001.fm.intel.com ([10.60.135.141])
- by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 18 Oct 2023 16:24:48 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.03,236,1694761200"; 
-   d="scan'208";a="4732367"
-Received: from unknown (HELO fedora.jf.intel.com) ([10.166.244.144])
- by fmviesa001.fm.intel.com with ESMTP; 18 Oct 2023 16:24:51 -0700
-From: Paul Greenwalt <paul.greenwalt@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Wed, 18 Oct 2023 19:16:43 -0400
-Message-ID: <20231018231643.2356-7-paul.greenwalt@intel.com>
-X-Mailer: git-send-email 2.41.0
-In-Reply-To: <20231018231643.2356-1-paul.greenwalt@intel.com>
-References: <20231018231643.2356-1-paul.greenwalt@intel.com>
+ with ESMTP id P3fchTaaN1DG for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 18 Oct 2023 23:50:23 +0000 (UTC)
+Received: from dfw.source.kernel.org (dfw.source.kernel.org
+ [IPv6:2604:1380:4641:c500::1])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id ADF914198C
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 18 Oct 2023 23:50:23 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org ADF914198C
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by dfw.source.kernel.org (Postfix) with ESMTP id 830B9619D9;
+ Wed, 18 Oct 2023 23:50:22 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A2588C433C9;
+ Wed, 18 Oct 2023 23:50:21 +0000 (UTC)
+Date: Wed, 18 Oct 2023 16:50:20 -0700
+From: Jakub Kicinski <kuba@kernel.org>
+To: Alexander Duyck <alexander.duyck@gmail.com>
+Message-ID: <20231018165020.55cc4a79@kernel.org>
+In-Reply-To: <CAKgT0Udz+YdkmtO2Gbhr7CccHtBbTpKich4er3qQXY-b2inUoA@mail.gmail.com>
+References: <20231016154937.41224-1-ahmed.zaki@intel.com>
+ <20231016154937.41224-2-ahmed.zaki@intel.com>
+ <8d1b1494cfd733530be887806385cde70e077ed1.camel@gmail.com>
+ <26812a57-bdd8-4a39-8dd2-b0ebcfd1073e@intel.com>
+ <CAKgT0Ud7JjUiE32jJbMbBGVexrndSCepG54PcGYWHJ+OC9pOtQ@mail.gmail.com>
+ <14feb89d-7b4a-40c5-8983-5ef331953224@intel.com>
+ <CAKgT0UfcT5cEDRBzCxU9UrQzbBEgFt89vJZjz8Tow=yAfEYERw@mail.gmail.com>
+ <20231016163059.23799429@kernel.org>
+ <CAKgT0Udyvmxap_F+yFJZiY44sKi+_zOjUjbVYO=TqeW4p0hxrA@mail.gmail.com>
+ <20231017131727.78e96449@kernel.org>
+ <CAKgT0Ud4PX1Y6GO9rW+Nvr_y862Cbv3Fpn+YX4wFHEos9rugJA@mail.gmail.com>
+ <20231017173448.3f1c35aa@kernel.org>
+ <CAKgT0Udz+YdkmtO2Gbhr7CccHtBbTpKich4er3qQXY-b2inUoA@mail.gmail.com>
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1697671489; x=1729207489;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=3oeLdPZ4E29kjd284PYRPlBekIGJzdbuvuJVazBGSfI=;
- b=JBQjpNwQkGZw0cOlIPqSwcwRH5I1FX+JOkS9qx0yHlj6q024xNq6B95o
- ykiKH0qmQ2MInquuH0UbuXHZFHYLxBr6XmfXE23zmKvSnGllEaTNzvfSN
- MbOYYXRT/cQu+wR49P7MlJBmzGZFEmQkpn8D9j0uj+0BiAmaHICtxsZRj
- 5Uv+xbG+NkMPfDUETkNqswoHuIpz1mXc1Ek8miDQ1bwjnqudgt+GCwaUV
- +inNS444lZRNuCSUmUabK2s6eJz+hYeb+T2nyL6uVkLro/MrfPKM/emO2
- TZNlDrIW5W5uGRnl7C2dd2m0YKQGelqmIXTNGwxHcyxYFGMoxInpjY5Qj
- Q==;
+ d=kernel.org; s=k20201202; t=1697673022;
+ bh=xzyBRSLNILhZ9XPTGbRgeQaBpcpvp+VTRtwqd65Y2ps=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=jDyquIIAfzo1AcouG0XZnhFod8njD5NjytVJbZ17RUkxx9ihOmWpBENhLa05hU+wq
+ or4nP6z09vCfgxp3rOamqbcitzreRbIsj6u1wt8KGE6yHS4RxP4XA3HmPQkdsSFjL7
+ UCRQB32WmkOAxT9x6tFn7bZhxAexFDg+/CWMIf71JQrhlshzye5VJqqJNIxiYjXNHX
+ Ytc/B+BrzZ6zzFFRPVTXtYRuZJdnoCEPilQ1oxsNtPWAnn1STqTK+9bQPzFyO58hk0
+ sLOVU4PxJ258vj7dG6kHIz3twBBC7Y9zvpPsw/JzsWG3GxnwwLf9risIW2XpTvkm+T
+ /ThvaixH7OLmA==
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=JBQjpNwQ
-Subject: [Intel-wired-lan] [PATCH net-next v5 6/6] ice: Hook up 4 E830
- devices by adding their IDs
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=jDyquIIA
+Subject: Re: [Intel-wired-lan] [PATCH net-next v4 1/6] net: ethtool: allow
+ symmetric-xor RSS hash for any flow type
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,47 +98,52 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: andrew@lunn.ch, Paul Greenwalt <paul.greenwalt@intel.com>,
- netdev@vger.kernel.org, Jesse Brandeburg <jesse.brandeburg@intel.com>,
- Pawel Chmielewski <pawel.chmielewski@intel.com>, anthony.l.nguyen@intel.com,
- horms@kernel.org
+Cc: mkubecek@suse.cz, andrew@lunn.ch, willemdebruijn.kernel@gmail.com,
+ Wojciech Drewek <wojciech.drewek@intel.com>, corbet@lwn.net,
+ netdev@vger.kernel.org, linux-doc@vger.kernel.org, jesse.brandeburg@intel.com,
+ Ahmed Zaki <ahmed.zaki@intel.com>, edumazet@google.com,
+ anthony.l.nguyen@intel.com, horms@kernel.org, vladimir.oltean@nxp.com,
+ intel-wired-lan@lists.osuosl.org, pabeni@redhat.com, davem@davemloft.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Pawel Chmielewski <pawel.chmielewski@intel.com>
+On Wed, 18 Oct 2023 11:12:13 -0700 Alexander Duyck wrote:
+> > > Based on earlier comments it doesn't change the inputs, it just
+> > > changes how I have to handle the data and the key. It starts reducing
+> > > things down to something like the Intel implementation of Flow
+> > > Director in terms of how the key gets generated and hashed.  
+> >
+> > About Flow Director I know only that it is bad :)  
+> 
+> Yeah, and that is my concern w/ the symmetric XOR is that it isn't
+> good. It opens up the toeplitz hash to exploitation. You can target
+> the same bucket by just making sure that source IP and port XOR with
+> destination IP and port to the same value. That can be done by adding
+> the same amount to each side. So there are 2^144 easily predictable
+> possible combinations that will end up in the same hash bucket. Seems
+> like it might be something that could be exploitable. That is why I
+> want it marked out as a separate algo since it is essentially
+> destroying entropy before we even get to the Toeplitz portion of the
+> hash. As such it isn't a hash I would want to use for anything that is
+> meant to spread workload since it is so easily exploitable.
 
-As the previous patches provide support for E830 hardware, add E830
-specific IDs to the PCI device ID table, so these devices can now be
-probed by the kernel.
+I see your point.
 
-Reviewed-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
-Signed-off-by: Pawel Chmielewski <pawel.chmielewski@intel.com>
-Reviewed-by: Simon Horman <horms@kernel.org>
-Signed-off-by: Paul Greenwalt <paul.greenwalt@intel.com>
----
- drivers/net/ethernet/intel/ice/ice_main.c | 4 ++++
- 1 file changed, 4 insertions(+)
+Which is not to say that I know what to do about it. crc or any
+future secure algo will get destroyed all the same. It's the input
+entropy that gets destroyed, independently of the algo.
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index f47db07df679..66095e9b094e 100644
---- a/drivers/net/ethernet/intel/ice/ice_main.c
-+++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -5611,6 +5611,10 @@ static const struct pci_device_id ice_pci_tbl[] = {
- 	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E823L_1GBE) },
- 	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E823L_QSFP) },
- 	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E822_SI_DFLT) },
-+	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E830_BACKPLANE) },
-+	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E830_QSFP56) },
-+	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E830_SFP) },
-+	{ PCI_VDEVICE(INTEL, ICE_DEV_ID_E830_SFP_DD) },
- 	/* required last entry */
- 	{}
- };
--- 
-2.41.0
+We already support xor, and it doesn't come with a warning saying
+it's insecure so we kind of assume user knows what they are doing.
 
+I think the API we pick for configuring sym-xor should be the same as
+sym-sort. And the "makes algo insecure" argument won't apply to sort.
+
+IMO fat warning in the documentation and ethtool man saying that this
+makes the algo (any / all) vulnerable to attack would be enough.
+Willem?
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
