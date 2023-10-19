@@ -1,68 +1,80 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 21D027CF22F
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 19 Oct 2023 10:15:26 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id A20557CF3BE
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 19 Oct 2023 11:15:36 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id AFDCC6FB03;
-	Thu, 19 Oct 2023 08:15:24 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org AFDCC6FB03
+	by smtp1.osuosl.org (Postfix) with ESMTP id 9EBD183B90;
+	Thu, 19 Oct 2023 09:15:33 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9EBD183B90
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1697703324;
-	bh=Jw1DkMAyMzg1QntlemvI3CZGfiaLit1hUygZsFnxKCE=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
+	s=default; t=1697706933;
+	bh=8SIjYCcKmaHxu9hCCsAd5338bBqdWh7r7BMWODqwwOY=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=LO1nDbPZmZcfQA2rq2pygf1uEzFD7P/JGz9hMee4luZWdY/tGdPZMGhTC39zHtfuN
-	 l59RiUMuXQHTlAcneU1SXKIM/BFXHjRM3XlZzUR4JXth+jFBpf4j+xYK3fn735ms6b
-	 QOtai8CvmQRzYgFj/iEmJwEcisW2251Lriq1DDs2vl8gR8596PtV4F6p+4v7GTWaJo
-	 TuAFkLP66MvPs3KBfrgp/UipOtWuJwu6h6I0yXqCj1kFHZx8r5znhWwOKXCUGXSWZq
-	 /JJJq80adXqdyqIQs3q6R+T8MC+V8UG9popid8s1ctedfSjYnLraoIQYfWas1+0xJ3
-	 9ORQqDaphStBA==
+	b=bqsi1h223QehcxEDaHw0bFboo7dVOhEd/3R4INMCF9eMKMUjBxrttKIFYsjhIsGY4
+	 LRty8Sxw3thXqrR7HghAsNf/28fOVHzf1LyqCjv/eDVK0Hufq5jTX+6KW+BBdVkxMN
+	 AizDbOkXS9jNM6vBxAnezcgmx4tFl097JEf25CgcRqrnFTP54czpWZSdsnXeCkWFHr
+	 VnRY0vPKU3tlMMhQ1Yd4Wnt1Ys5yxzxZqlK3u+OMlRfNZp6DmeEeAyqpzEqjxVbZkd
+	 ig/3pE2LK85gRZxCUmum5FO2Uts6kIkcTi8CrW7KX9VRbr4aXEwXYvUv7LVZ1ve0jA
+	 h05WchJSo3+8A==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id WhzfPtHeeE37; Thu, 19 Oct 2023 08:15:23 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id rZ9XtVDhvRFq; Thu, 19 Oct 2023 09:15:33 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 7E9246FB01;
-	Thu, 19 Oct 2023 08:15:23 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7E9246FB01
+	by smtp1.osuosl.org (Postfix) with ESMTP id 8B68783B7E;
+	Thu, 19 Oct 2023 09:15:32 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8B68783B7E
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 76CAB1BF45A
- for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Oct 2023 08:15:18 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id C11801BF479
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Oct 2023 09:15:26 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 4E42A6FB01
- for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Oct 2023 08:15:18 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 4E42A6FB01
+ by smtp4.osuosl.org (Postfix) with ESMTP id 91F5E4214D
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Oct 2023 09:15:26 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 91F5E4214D
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id JU7o-ZTydOKf for <intel-wired-lan@lists.osuosl.org>;
- Thu, 19 Oct 2023 08:15:16 +0000 (UTC)
-Received: from mx3.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 8C90360B8C
- for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Oct 2023 08:15:16 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 8C90360B8C
-Received: from [10.0.101.84] (unknown [62.214.191.67])
- (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested) (Authenticated sender: pmenzel)
- by mx.molgen.mpg.de (Postfix) with ESMTPSA id CD71A61E5FE01;
- Thu, 19 Oct 2023 10:14:52 +0200 (CEST)
-Message-ID: <5fe36894-5554-4861-8119-e013b80583b9@molgen.mpg.de>
-Date: Thu, 19 Oct 2023 10:14:50 +0200
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id Ai3kJQi6ANbp for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 19 Oct 2023 09:15:25 +0000 (UTC)
+Received: from ams.source.kernel.org (ams.source.kernel.org
+ [IPv6:2604:1380:4601:e00::1])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 4828B4214B
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 19 Oct 2023 09:15:25 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4828B4214B
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by ams.source.kernel.org (Postfix) with ESMTP id 8FD51B82737;
+ Thu, 19 Oct 2023 09:15:22 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B1780C433C9;
+ Thu, 19 Oct 2023 09:15:19 +0000 (UTC)
+Date: Thu, 19 Oct 2023 11:15:17 +0200
+From: Simon Horman <horms@kernel.org>
+To: Ivan Vecera <ivecera@redhat.com>
+Message-ID: <20231019091408.GA2100445@kernel.org>
+References: <20231018112621.463893-1-ivecera@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Content-Language: en-US
-To: Michal Schmidt <mschmidt@redhat.com>
-References: <20231019071346.55949-1-mschmidt@redhat.com>
-From: Paul Menzel <pmenzel@molgen.mpg.de>
-In-Reply-To: <20231019071346.55949-1-mschmidt@redhat.com>
-Subject: Re: [Intel-wired-lan] [PATCH net] iavf: initialize waitqueues
- before starting watchdog_task
+Content-Disposition: inline
+In-Reply-To: <20231018112621.463893-1-ivecera@redhat.com>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=kernel.org; s=k20201202; t=1697706921;
+ bh=2akR1+SpClZT3e4hW3GUBKo4hbbNfLPH+FJFcgjS+bQ=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=NDw9mOxaxTwpIG2OLQXoJ0CTEuTsLDqvqLHgBr9mmasIrMuTajY6NHR2Lyp8kgko6
+ d4U8sANg22+MMNy2oqQ2OSdIgdmMJamlgzMkYRMyp1LiPWEsQFCCXrYG+KB9s9ROA6
+ xrGm9sIN/VYicmTIOc2PRrZHF0zprsL+JeaHthvLwlsKzaB7CqNBLgHapoVQ0xfmNS
+ fEpb0MVH2Rxi8hOXbP4pIFEwrbKXxQorzEod3798LFEhxycRFVGFPYJO2X/E3npYjx
+ /veSJeNpceDqBEWxRwbj3qneTmQEmzUOwpDBaggyRdFFT7LeLAZjB0uzOvwZ8xtJ3D
+ LHb3jjr7cIK7g==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=NDw9mOxa
+Subject: Re: [Intel-wired-lan] [PATCH net] i40e: Fix
+ I40E_FLAG_VF_VLAN_PRUNING value
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -76,64 +88,43 @@ List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Cc: netdev@vger.kernel.org, Jesse Brandeburg <jesse.brandeburg@intel.com>,
- Sudheer Mogilappagari <sudheer.mogilappagari@intel.com>,
+ open list <linux-kernel@vger.kernel.org>, Eric Dumazet <edumazet@google.com>,
  Tony Nguyen <anthony.l.nguyen@intel.com>,
- Jeff Kirsher <jeffrey.t.kirsher@intel.com>, intel-wired-lan@lists.osuosl.org
+ Mateusz Palczewski <mateusz.palczewski@intel.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ "David S. Miller" <davem@davemloft.net>,
+ "moderated list:INTEL ETHERNET DRIVERS" <intel-wired-lan@lists.osuosl.org>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Dear Michal,
-
-
-Am 19.10.23 um 09:13 schrieb Michal Schmidt:
-> It is not safe to initialize the waitqueues after queueing the
-> watchdog_task. It will be using them.
+On Wed, Oct 18, 2023 at 01:26:20PM +0200, Ivan Vecera wrote:
+> Commit c87c938f62d8f1 ("i40e: Add VF VLAN pruning") added new
+> PF flag I40E_FLAG_VF_VLAN_PRUNING but its value collides with
+> existing I40E_FLAG_TOTAL_PORT_SHUTDOWN_ENABLED flag.
 > 
-> The chance of this causing a real problem is very small, because
-> there will be some sleeping before any of the waitqueues get used.
-> I got a crash only after inserting an artificial sleep in iavf_probe.
+> Move the affected flag at the end of the flags and fix its value.
 > 
-> Queue the watchdog_task as the last step in iavf_probe. Add a comment to
-> prevent repeating the mistake.
-> 
-> Fixes: fe2647ab0c99 ("i40evf: prevent VF close returning before state transitions to DOWN")
-> Signed-off-by: Michal Schmidt <mschmidt@redhat.com>
-> ---
->   drivers/net/ethernet/intel/iavf/iavf_main.c | 5 +++--
->   1 file changed, 3 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
-> index 6a2e6d64bc3a..5b5c0525aa13 100644
-> --- a/drivers/net/ethernet/intel/iavf/iavf_main.c
-> +++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
-> @@ -4982,8 +4982,6 @@ static int iavf_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
->   	INIT_WORK(&adapter->finish_config, iavf_finish_config);
->   	INIT_DELAYED_WORK(&adapter->watchdog_task, iavf_watchdog_task);
->   	INIT_DELAYED_WORK(&adapter->client_task, iavf_client_task);
-> -	queue_delayed_work(adapter->wq, &adapter->watchdog_task,
-> -			   msecs_to_jiffies(5 * (pdev->devfn & 0x07)));
->   
->   	/* Setup the wait queue for indicating transition to down status */
->   	init_waitqueue_head(&adapter->down_waitqueue);
-> @@ -4994,6 +4992,9 @@ static int iavf_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
->   	/* Setup the wait queue for indicating virtchannel events */
->   	init_waitqueue_head(&adapter->vc_waitqueue);
->   
-> +	queue_delayed_work(adapter->wq, &adapter->watchdog_task,
-> +			   msecs_to_jiffies(5 * (pdev->devfn & 0x07)));
-> +	/* Initialization goes on in the work. Do not add more of it below. */
->   	return 0;
->   
->   err_ioremap:
+> Cc: Mateusz Palczewski <mateusz.palczewski@intel.com>
+> Signed-off-by: Ivan Vecera <ivecera@redhat.com>
 
-Reviewed-by: Paul Menzel <pmenzel@molgen.mpg.de>
+Hi Ivan,
 
+I agree with the correctness of this patch and that it was
+introduced by the cited commit.
 
-Kind regards,
+However, I do wonder if, as a fix for 'net':
 
-Paul
+1) The patch description could include some discussion of
+   what problem is resolved, and, ideally, how I user might
+   get into such a situation.
+
+2) The following fixes tag is appropriate.
+
+Fixes: c87c938f62d8 ("i40e: Add VF VLAN pruning")
+
+...
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
