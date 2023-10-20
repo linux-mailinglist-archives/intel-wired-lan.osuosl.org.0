@@ -1,81 +1,78 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id EF0AE7D05E4
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 20 Oct 2023 02:40:37 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 287837D05F5
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 20 Oct 2023 02:49:16 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id E87308448B;
-	Fri, 20 Oct 2023 00:40:35 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E87308448B
+	by smtp1.osuosl.org (Postfix) with ESMTP id 72B1484733;
+	Fri, 20 Oct 2023 00:49:14 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 72B1484733
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1697762436;
-	bh=if9ZDaM6V9912WNaIPp0MOHOqqI7oG9Xs1VRsD68lAQ=;
-	h=From:Date:References:In-Reply-To:To:Subject:List-Id:
+	s=default; t=1697762954;
+	bh=s0Igel9sQE6aRWh/I4yVvoyE+hyGz/i22CENP4+fuQc=;
+	h=Date:From:To:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=xLKJX3CVoNXI9vLpcIDGNM3+6uqPQlm+LM5oXjK+sfG9tePi4dePUTqnjqN30a/f4
-	 H4kynRxAUGmbaIfB5aqlYG/J+CrPrMzjYp8uOwtiAyP1aTTbUnzi4f9mMSGk2EfYGt
-	 s7l9D7WYCcH9gmJNyOHSDnktmVmoq/iAA0aOYLbPIWDMv3n7u26ocJ4FI+OaQBe4uf
-	 PzgAAFb0lzgqjnwGLVxr6E+JSPRGlAWhJHFhxwneRnBYvvKceZRVclYKn4OdYRZwuv
-	 FRXHLXpjCzE+f94MuDnLGBW2xFyBuB4HKfQfFsJRBsO5xz07/ICr+N70uGAecBDVoY
-	 Z1wp/vCYgOzWg==
+	b=9cTdw3PQVs/vVLAljrA/S9BMi0ZzrUbRcEUa21ueyJmvObitlYayWYw7GlaeHkFPA
+	 aJUfbxtXY99yA87e7Dxb4cVCjxsWIArq+id8v1cnGZdBX4kIw1uECBHokKcvSMOlEP
+	 W1a52ZGcQ6e4uRPBacsy5Gx5XlARWilOZItE8BIIUr2jGxQIPk+M967ioxS2uKXhaQ
+	 E+sKlIi9fQlJvfI1YaqRA1C33Sj0IW89QkCO0JtsVIyr8H36/UHnu//IH0RclY9zpA
+	 IAtszVxnzw8rVqO7Y4rZuchlEFTh2jXKPTbGDA7MwvLKmNeLHNhyEcx85A+7frdvvb
+	 p+k+jKO6iqZTg==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id jeA6oKS2v4sW; Fri, 20 Oct 2023 00:40:35 +0000 (UTC)
+	with ESMTP id ebdE5qP1UGXZ; Fri, 20 Oct 2023 00:49:13 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id D718483F6C;
-	Fri, 20 Oct 2023 00:40:34 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D718483F6C
+	by smtp1.osuosl.org (Postfix) with ESMTP id 67C3B8472C;
+	Fri, 20 Oct 2023 00:49:13 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 67C3B8472C
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id BA7A11BF368
- for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Oct 2023 00:40:29 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 219721BF368
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Oct 2023 00:49:08 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 8D6AE60F40
- for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Oct 2023 00:40:29 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 8D6AE60F40
+ by smtp1.osuosl.org (Postfix) with ESMTP id EF9948472C
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Oct 2023 00:49:07 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org EF9948472C
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Rmd45OUGyq21 for <intel-wired-lan@lists.osuosl.org>;
- Fri, 20 Oct 2023 00:40:27 +0000 (UTC)
-Received: from ams.source.kernel.org (ams.source.kernel.org [145.40.68.75])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 3CB4560EFC
- for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Oct 2023 00:40:27 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3CB4560EFC
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id Bz3LjiooCSR4 for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 20 Oct 2023 00:49:07 +0000 (UTC)
+Received: from sin.source.kernel.org (sin.source.kernel.org [145.40.73.55])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 047878472B
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Oct 2023 00:49:06 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 047878472B
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by ams.source.kernel.org (Postfix) with ESMTP id 16540B82932;
- Fri, 20 Oct 2023 00:40:24 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 3F9A1C433CA;
- Fri, 20 Oct 2023 00:40:23 +0000 (UTC)
-Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org
- (localhost.localdomain [127.0.0.1])
- by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id
- 1D8C7C595CE; Fri, 20 Oct 2023 00:40:23 +0000 (UTC)
+ by sin.source.kernel.org (Postfix) with ESMTP id E5668CE32E5;
+ Fri, 20 Oct 2023 00:49:02 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BEA34C433C8;
+ Fri, 20 Oct 2023 00:49:01 +0000 (UTC)
+Date: Thu, 19 Oct 2023 17:49:00 -0700
+From: Jakub Kicinski <kuba@kernel.org>
+To: Paul Greenwalt <paul.greenwalt@intel.com>
+Message-ID: <20231019174900.29d93b3d@kernel.org>
+In-Reply-To: <20231018231643.2356-1-paul.greenwalt@intel.com>
+References: <20231018231643.2356-1-paul.greenwalt@intel.com>
 MIME-Version: 1.0
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <169776242311.19903.7725017864610807952.git-patchwork-notify@kernel.org>
-Date: Fri, 20 Oct 2023 00:40:23 +0000
-References: <20231018163908.40841-1-maciej.fijalkowski@intel.com>
-In-Reply-To: <20231018163908.40841-1-maciej.fijalkowski@intel.com>
-To: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1697762423;
- bh=H3/cGCGm5Lcth5PGgrinf5iAWAJdIj6emJBvsWuPRVg=;
- h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
- b=tMoUkk/abpGKzLpfHr6ADL7K9dmJ1jz7PoeVcwmZ0odPLjJs7EkOLI6IiX1EJUZLP
- vuvdq/PMylDLihCSjZ/AlOtILqehjKoR5jPLqfWZ439o7EUQN3g8t5B+oyJhlOC+rR
- aHNAB9tpEYcTB+S6/gmtgvg2G5n3QnxQioCJFQK97r/BqOyJo5/ZhQviZyxclciAZH
- ttQo3V4HHrogUj5udfewhevy1vb4F7T01YLtkYNRq1zacTAaJuCzExo3Hs6a7dffT9
- FjwmoFwurWfMuoD1kmq87+TFp7W3uYuuqDqrBj+q5m/dGpoJk7rOQ5SPW3qymx2V/r
- KmGTEFZccYlow==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ d=kernel.org; s=k20201202; t=1697762942;
+ bh=rnIfb+GILZTA3JjJg2XMTMZwzlS5SD40Q5GFiOgP0Xs=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=shrjz2sm8lLpVjNejlun0cxC1rHqHaC0uGar4sDgHDRTSvQ98EZj2fujtTc1nQvdx
+ aT5n7VC3/dthkSekKnpf/J29kDlb4fF+O8U7Kl/4yQoT/sImJQhLQHAztB1anyCQb5
+ h+iDsFoDScABwem01RGzHiXutOIVV3eeiwJIH2y9eUXDKU6Vp7OHgQMV3LmKZnpy0/
+ RVe8sLPpYQwf7WYBaKuiUyzjTh4fenvRRZPAsIvIW5yfxIoSN67FXXzJp9T6tXwvY2
+ PlQ9qYIj5SemyZXAxOXW+l6QM20NSIxlCc5lPl8NYkButCPXGZRDTIJ3yLaQ7wsl/C
+ M0a6Suymegh1g==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=tMoUkk/a
-Subject: Re: [Intel-wired-lan] [PATCH net] i40e: xsk: remove count_mask
+ header.a=rsa-sha256 header.s=k20201202 header.b=shrjz2sm
+Subject: Re: [Intel-wired-lan] [PATCH net-next v5 0/6] ice: Add basic E830
+ support
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,39 +85,26 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, tushar.vyavahare@intel.com,
- anthony.l.nguyen@intel.com, jacob.e.keller@intel.com,
- intel-wired-lan@lists.osuosl.org, magnus.karlsson@intel.com
+Cc: andrew@lunn.ch, netdev@vger.kernel.org,
+ Pawel Chmielewski <pawel.chmielewski@intel.com>, anthony.l.nguyen@intel.com,
+ horms@kernel.org, intel-wired-lan@lists.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hello:
+On Wed, 18 Oct 2023 19:16:37 -0400 Paul Greenwalt wrote:
+> This is an initial patchset adding the basic support for E830. E830 is
+> the 200G ethernet controller family that is a follow on to the E810 100G
+> family. The series adds new devices IDs, a new MAC type, several registers
+> and a support for new link speeds. As the new devices use another version
+> of ice_aqc_get_link_status_data admin command, the driver should use
+> different buffer length for this AQ command when loaded on E830.
 
-This patch was applied to netdev/net.git (main)
-by Jakub Kicinski <kuba@kernel.org>:
-
-On Wed, 18 Oct 2023 18:39:08 +0200 you wrote:
-> Cited commit introduced a neat way of updating next_to_clean that does
-> not require boundary checks on each increment. This was done by masking
-> the new value with (ring length - 1) mask. Problem is that this is
-> applicable only for power of 2 ring sizes, for every other size this
-> assumption can not be made. In turn, it leads to cleaning descriptors
-> out of order as well as splats:
-> 
-> [...]
-
-Here is the summary with links:
-  - [net] i40e: xsk: remove count_mask
-    https://git.kernel.org/netdev/net/c/913eda2b08cc
-
-You are awesome, thank you!
+Please make sure to mark purely Intel driver patch sets as iwl-next
+rather than net-next.
 -- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
-
+pw-bot: awaiting-upstream
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
