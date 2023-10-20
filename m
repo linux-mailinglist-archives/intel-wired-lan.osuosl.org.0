@@ -1,85 +1,90 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6597A7D165A
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 20 Oct 2023 21:38:24 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 461407D1653
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 20 Oct 2023 21:38:07 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id CA6AC84CD2;
-	Fri, 20 Oct 2023 19:38:22 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org CA6AC84CD2
+	by smtp1.osuosl.org (Postfix) with ESMTP id 80FF584CB6;
+	Fri, 20 Oct 2023 19:38:05 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 80FF584CB6
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1697830702;
-	bh=JCj8hJQ//U4vTzjo2/CCpyX9z0x/pXoObbD8IwfT/wI=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=hQ9lqmLTcZof9Ty/+4CocvN7+IQpFMka344TINQxGDrBAgGyR2F31q0miAe7MK1nL
-	 eE4EDGUP7hQVN1SjBxa+wL/FtbwjA7yjgCm58HKJ9ufyztsjsUQyEQZG4sDFAD1Gby
-	 Q6Hr3Pved9ZPdI+yUON1/Ou3VItEr1HaJnYwSRutmT2oqjevio0463z9L90HSUJ6qT
-	 H8+mZ+JdB0vk/9ECavdr/636WU/Vf2Y5cISjZWvG+OnYJYr7kAbl5Hymm64Qco1llE
-	 kv+VdjN1rWYBJlFqgo5zgnuuGqYJupHM+lMD9l4amtxKBOf6XOjx8pahqCusJGNwxg
-	 u8l75aAblT5Dg==
+	s=default; t=1697830685;
+	bh=jFd1OKzhn3qKJ1TiTBJ2CJE/jPegzD05FGSqPSVKZPQ=;
+	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=VYpdkcTXPKS3b/R5FzTK5imYsI8eKt3CTjq3WiQEM5GRamKIQ9baV98F0Jk2uNJfd
+	 qasbuzR0JYTr05jzIPh3plsglaR5VniNfSyEPUIN5M8uiiJs7OIw4/joYJIU/YoI15
+	 RuEWX1c3NinFDXvdCrU84my4+BxiPaP9HKNPFN1IVyVRdDwFusNNDGiQnr5231FuSd
+	 Q/LWZebV1MtpULdsZN/g+t4zMTO/x62dZPQXKJy5rYz6v4HGZsMu9bQIhuPIweMvtT
+	 R6FmlEHiQTGxXtQGbZpiRSTnIVo0/g/CMvx+nqeD1CXFFTxUG0+lRU7cM+eF7ptgJb
+	 NuUpigwDevNiQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id FW2vmLmlnRRT; Fri, 20 Oct 2023 19:38:21 +0000 (UTC)
+	with ESMTP id oha9xlTV41RA; Fri, 20 Oct 2023 19:38:04 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 6DE9D84CB6;
-	Fri, 20 Oct 2023 19:38:21 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6DE9D84CB6
+	by smtp1.osuosl.org (Postfix) with ESMTP id 2D98684C7E;
+	Fri, 20 Oct 2023 19:38:04 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 2D98684C7E
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 6619E1BF2CF
- for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Oct 2023 19:38:13 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 87B1F1BF2CF
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Oct 2023 19:37:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 3F9E384CD1
- for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Oct 2023 19:38:13 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3F9E384CD1
+ by smtp3.osuosl.org (Postfix) with ESMTP id 5EC4660FA5
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Oct 2023 19:37:58 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5EC4660FA5
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id MRWvg2mx-wti for <intel-wired-lan@lists.osuosl.org>;
- Fri, 20 Oct 2023 19:38:12 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id PpQae2WNRERV for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 20 Oct 2023 19:37:57 +0000 (UTC)
 Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.133.124])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 3E70184CB8
- for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Oct 2023 19:38:12 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3E70184CB8
-Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
- by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-664-Wn8qypecNgCyS0PD6FYezg-1; Fri, 20 Oct 2023 15:37:49 -0400
-X-MC-Unique: Wn8qypecNgCyS0PD6FYezg-1
+ (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 92A5860F9F
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Oct 2023 19:37:57 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 92A5860F9F
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-663-MpDWGtoANyumZVIETc3cJA-1; Fri, 20 Oct 2023 15:37:52 -0400
+X-MC-Unique: MpDWGtoANyumZVIETc3cJA-1
 Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.rdu2.redhat.com
  [10.11.54.8])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 20A1C3C1016C;
- Fri, 20 Oct 2023 19:37:49 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 87859185A7A7;
+ Fri, 20 Oct 2023 19:37:51 +0000 (UTC)
 Received: from p1.luc.com (unknown [10.45.226.105])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 341A7C15BB8;
- Fri, 20 Oct 2023 19:37:47 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 9491DC15BB8;
+ Fri, 20 Oct 2023 19:37:49 +0000 (UTC)
 From: Ivan Vecera <ivecera@redhat.com>
 To: netdev@vger.kernel.org
-Date: Fri, 20 Oct 2023 21:37:37 +0200
-Message-ID: <20231020193746.2274379-1-ivecera@redhat.com>
+Date: Fri, 20 Oct 2023 21:37:38 +0200
+Message-ID: <20231020193746.2274379-2-ivecera@redhat.com>
+In-Reply-To: <20231020193746.2274379-1-ivecera@redhat.com>
+References: <20231020193746.2274379-1-ivecera@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.8
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=redhat.com; 
- s=mimecast20190719; t=1697830691;
+ s=mimecast20190719; t=1697830676;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=W3RsnyeipnBfFTo07NnrzIlV7yB7g314ddY+RHz4USc=;
- b=f96e3K8x2bxC1euWXk9p5hp+PEuuZB6bgZRaBW4oTM6k1oehWq+w302Ui0NaZCNLj3tJD2
- H+KH/qp3GelaBAfhPcIHSDHLbdgYwR1IssyCFtlJrf8HP7HW771bA5B74afuQBD89+cKPN
- ySnZdMG7nlmI2gxdTjssgNoi+eyw6QA=
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=5NtRMAxR+Ue4rX4KZZUpffz2stN0dFpO9Ia6gRLh85E=;
+ b=XO+GJnt1ZMh9EkJsTvrNw05jq0xOLLG2Uq1iL2mXGIrPKlizwY4gRHO2B5lHumoMfP4lUT
+ Po2R3+BfkoI3ukdWSraGDbnlVz5WIOLIXp0SiEQAU4Z3swh85f7gVPRug8QibsiHD3sPvm
+ HHMK9RyFS3X44/R3o9IDHKC8cGBQj2o=
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
- header.a=rsa-sha256 header.s=mimecast20190719 header.b=f96e3K8x
-Subject: [Intel-wired-lan] [PATCH iwl-next 1/6] i40e: Remove unused flags
+ header.a=rsa-sha256 header.s=mimecast20190719 header.b=XO+GJnt1
+Subject: [Intel-wired-lan] [PATCH iwl-next 2/6] i40e: Remove _t suffix from
+ enum type names
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,6 +98,7 @@ List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Cc: Eric Dumazet <edumazet@google.com>, dacampbe@redhat.com,
+ Richard Cochran <richardcochran@gmail.com>,
  Jesse Brandeburg <jesse.brandeburg@intel.com>,
  open list <linux-kernel@vger.kernel.org>,
  Tony Nguyen <anthony.l.nguyen@intel.com>,
@@ -104,137 +110,92 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The flag I40E_FLAG_RX_CSUM_ENABLED and I40E_HW_FLAG_DROP_MODE are
-set and never read. Remove them.
+Enum type names should not be suffixed by '_t'. Either to use
+'typedef enum name name_t' to so plain 'name_t var' instead of
+'enum name_t var'.
 
 Signed-off-by: Ivan Vecera <ivecera@redhat.com>
 ---
- drivers/net/ethernet/intel/i40e/i40e.h        | 57 +++++++++----------
- drivers/net/ethernet/intel/i40e/i40e_adminq.c |  4 +-
- drivers/net/ethernet/intel/i40e/i40e_main.c   |  4 +-
- drivers/net/ethernet/intel/i40e/i40e_type.h   |  3 +-
- 4 files changed, 31 insertions(+), 37 deletions(-)
+ drivers/net/ethernet/intel/i40e/i40e.h      | 4 ++--
+ drivers/net/ethernet/intel/i40e/i40e_ptp.c  | 6 +++---
+ drivers/net/ethernet/intel/i40e/i40e_txrx.h | 4 ++--
+ 3 files changed, 7 insertions(+), 7 deletions(-)
 
 diff --git a/drivers/net/ethernet/intel/i40e/i40e.h b/drivers/net/ethernet/intel/i40e/i40e.h
-index f86a4241eca2..6e3e2a6d18c4 100644
+index 6e3e2a6d18c4..b3cb79fb8791 100644
 --- a/drivers/net/ethernet/intel/i40e/i40e.h
 +++ b/drivers/net/ethernet/intel/i40e/i40e.h
-@@ -501,33 +501,32 @@ struct i40e_pf {
- #define I40E_HW_RESTART_AUTONEG			BIT(18)
+@@ -78,7 +78,7 @@
+ #define I40E_MAX_BW_INACTIVE_ACCUM	4 /* accumulate 4 credits max */
  
- 	u32 flags;
--#define I40E_FLAG_RX_CSUM_ENABLED		BIT(0)
--#define I40E_FLAG_MSI_ENABLED			BIT(1)
--#define I40E_FLAG_MSIX_ENABLED			BIT(2)
--#define I40E_FLAG_RSS_ENABLED			BIT(3)
--#define I40E_FLAG_VMDQ_ENABLED			BIT(4)
--#define I40E_FLAG_SRIOV_ENABLED			BIT(5)
--#define I40E_FLAG_DCB_CAPABLE			BIT(6)
--#define I40E_FLAG_DCB_ENABLED			BIT(7)
--#define I40E_FLAG_FD_SB_ENABLED			BIT(8)
--#define I40E_FLAG_FD_ATR_ENABLED		BIT(9)
--#define I40E_FLAG_MFP_ENABLED			BIT(10)
--#define I40E_FLAG_HW_ATR_EVICT_ENABLED		BIT(11)
--#define I40E_FLAG_VEB_MODE_ENABLED		BIT(12)
--#define I40E_FLAG_VEB_STATS_ENABLED		BIT(13)
--#define I40E_FLAG_LINK_POLLING_ENABLED		BIT(14)
--#define I40E_FLAG_TRUE_PROMISC_SUPPORT		BIT(15)
--#define I40E_FLAG_LEGACY_RX			BIT(16)
--#define I40E_FLAG_PTP				BIT(17)
--#define I40E_FLAG_IWARP_ENABLED			BIT(18)
--#define I40E_FLAG_LINK_DOWN_ON_CLOSE_ENABLED	BIT(19)
--#define I40E_FLAG_SOURCE_PRUNING_DISABLED       BIT(20)
--#define I40E_FLAG_TC_MQPRIO			BIT(21)
--#define I40E_FLAG_FD_SB_INACTIVE		BIT(22)
--#define I40E_FLAG_FD_SB_TO_CLOUD_FILTER		BIT(23)
--#define I40E_FLAG_DISABLE_FW_LLDP		BIT(24)
--#define I40E_FLAG_RS_FEC			BIT(25)
--#define I40E_FLAG_BASE_R_FEC			BIT(26)
-+#define I40E_FLAG_MSI_ENABLED			BIT(0)
-+#define I40E_FLAG_MSIX_ENABLED			BIT(1)
-+#define I40E_FLAG_RSS_ENABLED			BIT(2)
-+#define I40E_FLAG_VMDQ_ENABLED			BIT(3)
-+#define I40E_FLAG_SRIOV_ENABLED			BIT(4)
-+#define I40E_FLAG_DCB_CAPABLE			BIT(5)
-+#define I40E_FLAG_DCB_ENABLED			BIT(6)
-+#define I40E_FLAG_FD_SB_ENABLED			BIT(7)
-+#define I40E_FLAG_FD_ATR_ENABLED		BIT(8)
-+#define I40E_FLAG_MFP_ENABLED			BIT(9)
-+#define I40E_FLAG_HW_ATR_EVICT_ENABLED		BIT(10)
-+#define I40E_FLAG_VEB_MODE_ENABLED		BIT(11)
-+#define I40E_FLAG_VEB_STATS_ENABLED		BIT(12)
-+#define I40E_FLAG_LINK_POLLING_ENABLED		BIT(13)
-+#define I40E_FLAG_TRUE_PROMISC_SUPPORT		BIT(14)
-+#define I40E_FLAG_LEGACY_RX			BIT(15)
-+#define I40E_FLAG_PTP				BIT(16)
-+#define I40E_FLAG_IWARP_ENABLED			BIT(17)
-+#define I40E_FLAG_LINK_DOWN_ON_CLOSE_ENABLED	BIT(18)
-+#define I40E_FLAG_SOURCE_PRUNING_DISABLED       BIT(19)
-+#define I40E_FLAG_TC_MQPRIO			BIT(20)
-+#define I40E_FLAG_FD_SB_INACTIVE		BIT(21)
-+#define I40E_FLAG_FD_SB_TO_CLOUD_FILTER		BIT(22)
-+#define I40E_FLAG_DISABLE_FW_LLDP		BIT(23)
-+#define I40E_FLAG_RS_FEC			BIT(24)
-+#define I40E_FLAG_BASE_R_FEC			BIT(25)
- /* TOTAL_PORT_SHUTDOWN
-  * Allows to physically disable the link on the NIC's port.
-  * If enabled, (after link down request from the OS)
-@@ -549,8 +548,8 @@ struct i40e_pf {
-  *   the link is being brought down by clearing bit (I40E_AQ_PHY_ENABLE_LINK)
-  *   in abilities field of i40e_aq_set_phy_config structure
+ /* driver state flags */
+-enum i40e_state_t {
++enum i40e_state {
+ 	__I40E_TESTING,
+ 	__I40E_CONFIG_BUSY,
+ 	__I40E_CONFIG_DONE,
+@@ -126,7 +126,7 @@ enum i40e_state_t {
+ 	BIT_ULL(__I40E_PF_RESET_AND_REBUILD_REQUESTED)
+ 
+ /* VSI state flags */
+-enum i40e_vsi_state_t {
++enum i40e_vsi_state {
+ 	__I40E_VSI_DOWN,
+ 	__I40E_VSI_NEEDS_RESTART,
+ 	__I40E_VSI_SYNCING_FILTERS,
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_ptp.c b/drivers/net/ethernet/intel/i40e/i40e_ptp.c
+index 20b77398f060..65c714d0bfff 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_ptp.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_ptp.c
+@@ -35,7 +35,7 @@ enum i40e_ptp_pin {
+ 	GPIO_4
+ };
+ 
+-enum i40e_can_set_pins_t {
++enum i40e_can_set_pins {
+ 	CANT_DO_PINS = -1,
+ 	CAN_SET_PINS,
+ 	CAN_DO_PINS
+@@ -193,7 +193,7 @@ static bool i40e_is_ptp_pin_dev(struct i40e_hw *hw)
+  * return CAN_DO_PINS if pins can be manipulated within a NIC or
+  * return CANT_DO_PINS otherwise.
+  **/
+-static enum i40e_can_set_pins_t i40e_can_set_pins(struct i40e_pf *pf)
++static enum i40e_can_set_pins i40e_can_set_pins(struct i40e_pf *pf)
+ {
+ 	if (!i40e_is_ptp_pin_dev(&pf->hw)) {
+ 		dev_warn(&pf->pdev->dev,
+@@ -1071,7 +1071,7 @@ static void i40e_ptp_set_pins_hw(struct i40e_pf *pf)
+ static int i40e_ptp_set_pins(struct i40e_pf *pf,
+ 			     struct i40e_ptp_pins_settings *pins)
+ {
+-	enum i40e_can_set_pins_t pin_caps = i40e_can_set_pins(pf);
++	enum i40e_can_set_pins pin_caps = i40e_can_set_pins(pf);
+ 	int i = 0;
+ 
+ 	if (pin_caps == CANT_DO_PINS)
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_txrx.h b/drivers/net/ethernet/intel/i40e/i40e_txrx.h
+index 421fe5675584..1c667408f687 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_txrx.h
++++ b/drivers/net/ethernet/intel/i40e/i40e_txrx.h
+@@ -58,7 +58,7 @@ static inline u16 i40e_intrl_usec_to_reg(int intrl)
+  * mentioning ITR_INDX, ITR_NONE cannot be used as an index 'n' into any
+  * register but instead is a special value meaning "don't update" ITR0/1/2.
   */
--#define I40E_FLAG_TOTAL_PORT_SHUTDOWN_ENABLED	BIT(27)
--#define I40E_FLAG_VF_VLAN_PRUNING		BIT(28)
-+#define I40E_FLAG_TOTAL_PORT_SHUTDOWN_ENABLED	BIT(26)
-+#define I40E_FLAG_VF_VLAN_PRUNING		BIT(27)
+-enum i40e_dyn_idx_t {
++enum i40e_dyn_idx {
+ 	I40E_IDX_ITR0 = 0,
+ 	I40E_IDX_ITR1 = 1,
+ 	I40E_IDX_ITR2 = 2,
+@@ -306,7 +306,7 @@ struct i40e_rx_queue_stats {
+ 	u64 page_busy_count;
+ };
  
- 	struct i40e_client_instance *cinst;
- 	bool stat_offsets_loaded;
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_adminq.c b/drivers/net/ethernet/intel/i40e/i40e_adminq.c
-index 9ce6e633cc2f..9a5a47b29bb7 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_adminq.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_adminq.c
-@@ -555,10 +555,8 @@ static void i40e_set_hw_flags(struct i40e_hw *hw)
- 
- 	if (aq->api_maj_ver > 1 ||
- 	    (aq->api_maj_ver == 1 &&
--	     aq->api_min_ver >= 8)) {
-+	     aq->api_min_ver >= 8))
- 		hw->flags |= I40E_HW_FLAG_FW_LLDP_PERSISTENT;
--		hw->flags |= I40E_HW_FLAG_DROP_MODE;
--	}
- 
- 	if (aq->api_maj_ver > 1 ||
- 	    (aq->api_maj_ver == 1 &&
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
-index f24d2e13fcd1..b44d8d8b0474 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_main.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
-@@ -12733,9 +12733,7 @@ static int i40e_sw_init(struct i40e_pf *pf)
- 	u16 pow;
- 
- 	/* Set default capability flags */
--	pf->flags = I40E_FLAG_RX_CSUM_ENABLED |
--		    I40E_FLAG_MSI_ENABLED     |
--		    I40E_FLAG_MSIX_ENABLED;
-+	pf->flags = I40E_FLAG_MSI_ENABLED | I40E_FLAG_MSIX_ENABLED;
- 
- 	/* Set default ITR */
- 	pf->rx_itr_default = I40E_ITR_RX_DEF;
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_type.h b/drivers/net/ethernet/intel/i40e/i40e_type.h
-index 2a5c7aec0bb1..2c791b7342b9 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_type.h
-+++ b/drivers/net/ethernet/intel/i40e/i40e_type.h
-@@ -553,8 +553,7 @@ struct i40e_hw {
- #define I40E_HW_FLAG_FW_LLDP_STOPPABLE      BIT_ULL(4)
- #define I40E_HW_FLAG_FW_LLDP_PERSISTENT     BIT_ULL(5)
- #define I40E_HW_FLAG_AQ_PHY_ACCESS_EXTENDED BIT_ULL(6)
--#define I40E_HW_FLAG_DROP_MODE              BIT_ULL(7)
--#define I40E_HW_FLAG_X722_FEC_REQUEST_CAPABLE BIT_ULL(8)
-+#define I40E_HW_FLAG_X722_FEC_REQUEST_CAPABLE BIT_ULL(7)
- 	u64 flags;
- 
- 	/* Used in set switch config AQ command */
+-enum i40e_ring_state_t {
++enum i40e_ring_state {
+ 	__I40E_TX_FDIR_INIT_DONE,
+ 	__I40E_TX_XPS_INIT_DONE,
+ 	__I40E_RING_STATE_NBITS /* must be last */
 -- 
 2.41.0
 
