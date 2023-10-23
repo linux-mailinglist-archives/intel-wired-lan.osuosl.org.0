@@ -1,88 +1,188 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3BFFB7D3FAA
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 23 Oct 2023 20:58:21 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id AFE0D7D4282
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 24 Oct 2023 00:01:40 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id B8467837D3;
-	Mon, 23 Oct 2023 18:58:19 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B8467837D3
+	by smtp3.osuosl.org (Postfix) with ESMTP id C88DC613FC;
+	Mon, 23 Oct 2023 22:01:38 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C88DC613FC
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1698087499;
-	bh=/M6YW9kwIfs8Wq6k0Q/zRrc/wnYdynYPRoQL4LeNa2s=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1698098498;
+	bh=0VixZHVSnvYZlVhV8KU2W8VFi3yEKNQxSNnqf2onAFo=;
+	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=AFwWLdWwXvgfCf/9aeILpFyqILezAGmG/CO8f7iuAJijXFCr5DzOQKhmf5epE4YvX
-	 ugqvGylcgpPNBc6MHOFdxdaZDH+5IIWNTZOGzCpHHM5/XOflS4kubyJXRu6Se5lzph
-	 aj7yu5itSOPm2suzhXf7D2GywuMWG/hcjUzFIaC6rIc9rm63jr8xVeIx+etTGW3zQf
-	 JcCjPZhU8UMOJN/wLWGrFU721Rd/tjF2xI2kLij1cWpKrdggqLwA9Sxw2kXgGvQrMq
-	 PcY7njuvJMzuMKtF1tp3F3SImtV7sFIjHNXZTSgWxLn5EBtdNJGyOgdvtUKb5p5bQy
-	 rea9NySptYYVw==
+	b=w/t1FXLAa9vqsTD53dNeW6iz+vG1HNcVChmZ++gbQdbIyYHkyPAq7XhJl+ubofVPN
+	 zOtij1Ev7IJtq9GUgRPWsqXNHMhiF0Ka9+9DN3lhjFw84cB/PTcGWZhQDDyEuhCLaH
+	 K6ztkIQnOMcS5Tqsn8XIynt5fhUcjffKENQ2L6RwMo9imqHpavo2EvqYko/bhHKKpi
+	 LCLNJg2PCFwLYIyEXz0NDxXwNwrSB8q/75jt8Qv1Xy0ccKQSkZBZC5qyLHKiw/UjMk
+	 uUfCAcPwHff+qBJmdSA2rTXNMINvwzjLg1gJJt8/bm6Z2QynyP1omE8cl+kKyCJ2iv
+	 7RCDz2+830j4A==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id JTDD0EdH45Hj; Mon, 23 Oct 2023 18:58:18 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id TddMewJ0KXQI; Mon, 23 Oct 2023 22:01:38 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id A317F837CE;
-	Mon, 23 Oct 2023 18:58:18 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org A317F837CE
+	by smtp3.osuosl.org (Postfix) with ESMTP id B0A0A613F9;
+	Mon, 23 Oct 2023 22:01:37 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B0A0A613F9
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 5C6D91BF2FF
- for <intel-wired-lan@lists.osuosl.org>; Mon, 23 Oct 2023 18:58:13 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 517E51BF3EA
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 23 Oct 2023 22:01:32 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 32994837CE
- for <intel-wired-lan@lists.osuosl.org>; Mon, 23 Oct 2023 18:58:13 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 32994837CE
+ by smtp2.osuosl.org (Postfix) with ESMTP id 222C5405FA
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 23 Oct 2023 22:01:32 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 222C5405FA
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id AS06PqdTVwt1 for <intel-wired-lan@lists.osuosl.org>;
- Mon, 23 Oct 2023 18:58:12 +0000 (UTC)
-Received: from mgamail.intel.com (mgamail.intel.com [134.134.136.65])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 15524837B9
- for <intel-wired-lan@lists.osuosl.org>; Mon, 23 Oct 2023 18:58:11 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 15524837B9
-X-IronPort-AV: E=McAfee;i="6600,9927,10872"; a="390791176"
-X-IronPort-AV: E=Sophos;i="6.03,246,1694761200"; d="scan'208";a="390791176"
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 23 Oct 2023 11:58:11 -0700
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id rzmDniui6HTe for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 23 Oct 2023 22:01:30 +0000 (UTC)
+Received: from mgamail.intel.com (mgamail.intel.com [134.134.136.126])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id A89DD40168
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 23 Oct 2023 22:01:30 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A89DD40168
+X-IronPort-AV: E=McAfee;i="6600,9927,10872"; a="372004027"
+X-IronPort-AV: E=Sophos;i="6.03,246,1694761200"; d="scan'208";a="372004027"
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+ by orsmga106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 23 Oct 2023 15:01:29 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10872"; a="931781013"
-X-IronPort-AV: E=Sophos;i="6.03,246,1694761200"; d="scan'208";a="931781013"
-Received: from lkp-server01.sh.intel.com (HELO 8917679a5d3e) ([10.239.97.150])
- by orsmga005.jf.intel.com with ESMTP; 23 Oct 2023 11:58:07 -0700
-Received: from kbuild by 8917679a5d3e with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1qv07p-0007AX-0n;
- Mon, 23 Oct 2023 18:58:05 +0000
-Date: Tue, 24 Oct 2023 02:57:17 +0800
-From: kernel test robot <lkp@intel.com>
-To: Ivan Vecera <ivecera@redhat.com>, netdev@vger.kernel.org
-Message-ID: <202310240231.6eF5YKB4-lkp@intel.com>
-References: <20231023162928.245583-3-ivecera@redhat.com>
-MIME-Version: 1.0
-Content-Disposition: inline
+X-IronPort-AV: E=McAfee;i="6600,9927,10872"; a="1089630195"
+X-IronPort-AV: E=Sophos;i="6.03,246,1694761200"; d="scan'208";a="1089630195"
+Received: from fmsmsx601.amr.corp.intel.com ([10.18.126.81])
+ by fmsmga005.fm.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
+ 23 Oct 2023 15:01:29 -0700
+Received: from fmsmsx611.amr.corp.intel.com (10.18.126.91) by
+ fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.32; Mon, 23 Oct 2023 15:01:28 -0700
+Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
+ fmsmsx611.amr.corp.intel.com (10.18.126.91) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.32; Mon, 23 Oct 2023 15:01:28 -0700
+Received: from FMSEDG603.ED.cps.intel.com (10.1.192.133) by
+ fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.32 via Frontend Transport; Mon, 23 Oct 2023 15:01:28 -0700
+Received: from NAM12-DM6-obe.outbound.protection.outlook.com (104.47.59.169)
+ by edgegateway.intel.com (192.55.55.68) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.32; Mon, 23 Oct 2023 15:01:28 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=KILGqgAowXtAvst23UmrZcj+5og46AfRa5H4OFU5pfP+5CxJLuEXYQRF8D5JEKLZ4MSz4OsuQl3gl2j95OcDIZANC4AirLAbzxGtXb4rpiZglU/sGMYyIS6ggXsyCYnVhillzf/bAc1OUarCcWEAnSwnphwYj9z3pnzNOP/uMxV9ttPAxfhUJewxMbb+htyEzot5lrmp0wWXAL6cfAnodWcJLgRUZPhqzkpy6h8BCKy/gH16mdGsXRpbnxdAv7X8/29d5Ny0dTKwWiWcywspkN8L8ObxIKtig/AiORJOp+6PW8/3azZh5n1hdaRu87m+HpYKwm/kFMBI4paaO7QsTw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=ZHDH7fvV8YM4OYAtVr843oqvWf73Hnq6oz3fCF8gydU=;
+ b=lF/dRZKLBa5B5XHGI70H2/+ngIByxsAO1ZOWPvm7/aRDcEhHW/u549Rh35dJ/7hjOPRJ2aw6r2wUnOmJKK2LLWmDmc5Uq1DtUZWAfH41+c6IU+hJ/DSxb4ztXHD07HYxfePZooLeSyeXYKFuEuCyQ1SPMc3pIRy1/QEQ1vyJBhABSpmlgACPgMhKRLN4G/jhNubDT7wbcmKMZb+NOMT7HLrBZKjnqmxD7ZlSBV+IczcvC3h1iN4cdsvPZmKisN61vwAsNEHcAX8oNmPD2j2EDn3nJANN98RxrqTKJJ83QyOgFPa/ZyG2fa5DR66W3xX8KHPMC+gN3pfAUICzzQDvVQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from CO1PR11MB5089.namprd11.prod.outlook.com (2603:10b6:303:9b::16)
+ by BL3PR11MB5700.namprd11.prod.outlook.com (2603:10b6:208:33f::22)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6907.29; Mon, 23 Oct
+ 2023 22:01:26 +0000
+Received: from CO1PR11MB5089.namprd11.prod.outlook.com
+ ([fe80::f216:6b2b:3af0:35c1]) by CO1PR11MB5089.namprd11.prod.outlook.com
+ ([fe80::f216:6b2b:3af0:35c1%4]) with mapi id 15.20.6907.032; Mon, 23 Oct 2023
+ 22:01:25 +0000
+Message-ID: <7531aae8-c523-45e1-a9e3-bdecb485a00b@intel.com>
+Date: Mon, 23 Oct 2023 15:01:21 -0700
+User-Agent: Mozilla Thunderbird
+Content-Language: en-US
+To: Ivan Vecera <ivecera@redhat.com>, <netdev@vger.kernel.org>
+References: <20231023162928.245583-1-ivecera@redhat.com>
+ <20231023162928.245583-3-ivecera@redhat.com>
+From: Jacob Keller <jacob.e.keller@intel.com>
 In-Reply-To: <20231023162928.245583-3-ivecera@redhat.com>
+X-ClientProxiedBy: MW4PR04CA0347.namprd04.prod.outlook.com
+ (2603:10b6:303:8a::22) To CO1PR11MB5089.namprd11.prod.outlook.com
+ (2603:10b6:303:9b::16)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: CO1PR11MB5089:EE_|BL3PR11MB5700:EE_
+X-MS-Office365-Filtering-Correlation-Id: e3d4dc7c-888f-4766-5d6b-08dbd413992b
+X-LD-Processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: IC0pg3JUf7h0XWrPF20KyXogVxrAcjoZ7WVIurLEbvuuPy5+aysWprWJ3MdeesJeOvrYBj02oxlRXpykn1wRZITcK4YFlG87dj+ArHBcbjRQ7ArriOM/hN4S5mAADAD45ifCX6yaQ+3JDYr6sVHwJBzURHvZcbpA8yBcS5lDNhYRpGF/X7NJYHvnjm5Ui2lzouATKvlyVxsWHMc2mcbYnshfuD9viD0o75Etg0Kzch9v/sJuZFyK38g2xcIBSQ05hVJB74rgsS7xLDvGxysNBe46+rmz3amaEzVY208Hb9x84dnMYDqm9EAOZ7O+/kR30HGHoZHadR1wkBP5Hy5vQrrW48WGYZsAIzbriJZXO2MPiAvJNp+WhIpAwitxajdNoNT60IMbJAKQtU2UTKNl+m90WzzqycNSVhSj2Asw1md33KOrLgp1Q87fxUKVw4FGBkN10Vu/+CM23LErSfM3V76eKrV3Y5QhezwrGQ6qR6856VzpsYnTGy4fo62gfQJYSlVgawMLYtI30vSqBVHfRAYdwLof2Om0q3K1swj/6ILfRIuywB8xVg3wbXISwM8DHlbpwlSMwEQrFngryHdqMzbrpuX3PUD383GMgeAiuEfkYcxS5RScGdKvKBckOdiF1IunnXCKp07ihOkbCPUeRA==
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:CO1PR11MB5089.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230031)(136003)(376002)(346002)(396003)(366004)(39860400002)(230922051799003)(1800799009)(451199024)(64100799003)(186009)(26005)(31686004)(38100700002)(2906002)(86362001)(31696002)(7416002)(5660300002)(36756003)(4326008)(8676002)(8936002)(6506007)(6666004)(478600001)(54906003)(2616005)(316002)(66476007)(66556008)(82960400001)(66946007)(83380400001)(41300700001)(6486002)(6512007)(53546011)(43740500002)(45980500001);
+ DIR:OUT; SFP:1102; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?dUdhM2VBUElZMm50SG5nZW9zS2Rwc0V3OERUeUZIK0UrOWlVTHdNSGV2ZWVO?=
+ =?utf-8?B?MVd3eVFwOW5nS2IvSkpNS1loL0ZyNHZ5OVYzSU9Ka0pBOUR1TUtPWmJVNDZn?=
+ =?utf-8?B?eStROWNZTmF0bEF1bU5UOS9ncHRvam5NSnJqeEJMSXdTY1p0cXp2bG1QRWtz?=
+ =?utf-8?B?aklGYzBicU9zcVVxSjZRQW53TGRQMUUvRVVHNFlJM0xIUEVWQjlkMDdSTi81?=
+ =?utf-8?B?SEcvUmRvcU9DQ1lwajdtTHFXa3NEUS95djZRRkxFakZJRzQrZFY0WWREa3d2?=
+ =?utf-8?B?OVhISkZMSjlaMk9ROW9mdnBXcE5oMGFmNkVTMXJQMHJKYkNxQWhnMVV4UDE2?=
+ =?utf-8?B?c3MyWXgwMGZDSUFpdkZEMHR5TTZXUjFoVWM1NWY2OWF4c3VDVEp1QjZUU1c4?=
+ =?utf-8?B?T001Ukt0bTcvc3hFT2h0aGdsYzRvVlBsSGhSazhkVHFjYXh5MGY0aGdQQ0do?=
+ =?utf-8?B?YTVraW5XN05POGpvVFpRUzJJUG8zNHhEMzBiZVBOQ3hLcHNnTFdzTlZWTjVa?=
+ =?utf-8?B?OXlncDR3UDVkUkl4dmo3YjI5RDUrVWE2OFJKWHdBcEVhTGtNK1JqR3lGZlBw?=
+ =?utf-8?B?d2ljNkN5ZFFjMFJKZmloeEthRlFUR3NoUE1mVnZGZ2M0cVRXMms0VlFEczVi?=
+ =?utf-8?B?eXJZOG13eHhlTmNvNlljYXNEKzhLN0gza0pmL214N2ErNEY0WUlObUNFQzJX?=
+ =?utf-8?B?VFRPQUZYS0NwMFpZaDBEQUFBcHhLRzhqRUp6WjdYZW9MZ1NYbjluN0dhMVZQ?=
+ =?utf-8?B?VExHaXJ6UndJMXZ5eWYxb29oamhtV3VyVmlIT1JUSmg2cWltQTRReHZmTVRE?=
+ =?utf-8?B?VXFNNkhlVUFjQXhyY0ZkNGlYU09kaXRFYlU0eUZLKzVuUjVMUnlBYk0zNXZV?=
+ =?utf-8?B?OW5qcUtrQ3VwaHJqWm5JTG9SMzJOOElZTjdvamJ6dEVSbTlGUVl1WCtUY256?=
+ =?utf-8?B?ekRReDhjV1lqOTY1eGlDeDB5aXJtUFhESGJSTWQ1dTRPRjVqM3YrT3gxc0VM?=
+ =?utf-8?B?OUJmVExMQW9pY09tNlJScWMrTEN2OEVMd284RnhxTWd0eHFNaW1nVDZXeTI1?=
+ =?utf-8?B?L0k1WXNML1BXNU5KM0pvS29KOXAyLzlPUjRKeXAvNHBEbDRwYmpSSzVGZURn?=
+ =?utf-8?B?VU9KRzVSby9NSGh2bzd1VmdabkRkMnVHK20yR0xMOXlJaWQxamdsRXQ0c2ti?=
+ =?utf-8?B?aUJJZlQvZlRZYmRHRjBjcGJRVmgxcUFYaVpNVnZ4M2E3aGtUSXVLd0Vkekp3?=
+ =?utf-8?B?K3lQd1JMN1FiL3JjdmxyNlRzaSsvQ2NxWmRBVHBncUROYk9zbjM4ZDM0MmxQ?=
+ =?utf-8?B?bWZaOEtWWm9ZQUlIc29UYWRXSTVndjE3QlF1aWszTEhwT1hoMkFFc0N0YkFa?=
+ =?utf-8?B?QWl5c1lDLyt6YWdVYkkvRjAzYlVYdXdrWTRtVzRwbnIrZGw0R0hZTmk4TkN3?=
+ =?utf-8?B?elBlOFF6UkVQWFE2RWgrQnV2WlFoTSt4SDdVRk1xaGpnSlpzOU1vbnJMNXNo?=
+ =?utf-8?B?TUpmc0pRVjdTeStsVEQ3Sm50ZEFKSUlrNlhiR2RSNitxV3BwYTN2L2ZwSWJL?=
+ =?utf-8?B?UTg4eGpKdCt4ZnpPbzd5WnkySGRMUnRkejNqTFNOUWNwSDJQaEora3REM0Vw?=
+ =?utf-8?B?VzErUjBXeTIyN1NiZlYrNnpyMFBFemtEWVMyVUF6WHplaC9MUjlrS2lVTVZO?=
+ =?utf-8?B?cU8xMDRxMlRKWi9tTFZIUFkxcE1zSVlsTUhFYkloSjlyaTRySkVGRFVYKzg3?=
+ =?utf-8?B?QXZTT3pSbUl1MFBlVVhUeHBjK01KOTNmYU5RVlJRS3lpQ0tWWnh3a2w0Tno5?=
+ =?utf-8?B?ZGkzR1dxNllEbGwySDRkaEl4SWlpblZpdStXRnptRS9ZTmhrdVFERTU5QXRS?=
+ =?utf-8?B?OFdqdmsrckpkOEQ3QTdseGFOZ0cyK0c4eUI3bG9Bd1ZFU29IU1Y4V25rdE5X?=
+ =?utf-8?B?d0hWRDBFUjdlMDVmU0hWd3lRYTdRZ3JIUmFmUTlBUFBYUUNRbk9vMHMrcTE4?=
+ =?utf-8?B?OUFrNFB2ZXByZjJuYTB0NUg3OHVuWGFaRnE5VjZ0cE1QWjNCN2YvUHd2YTc4?=
+ =?utf-8?B?a1ZTb2NCNy8zV2t2RXg3dTZ3N2YwTkZieDNERElvMVo5cklUbkpGa3d6WER6?=
+ =?utf-8?B?RUtEalZlaSswVXBkNE1uSmhxOXFYRUlzMmNOaXF4dzJSb3ZWeU9GM0lMemk2?=
+ =?utf-8?B?ZGc9PQ==?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: e3d4dc7c-888f-4766-5d6b-08dbd413992b
+X-MS-Exchange-CrossTenant-AuthSource: CO1PR11MB5089.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 23 Oct 2023 22:01:24.8364 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: GgQGfkEguWvFzuyy3Rbiv6fQuS2edPBVUEUzyP/foRRKGYpFhSjFgo1PCPgiQh1FsIBP+mhoIQ2YhCUtcH4uHpaDkna+h8S/RhwALansCrg=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BL3PR11MB5700
+X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1698087492; x=1729623492;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=jfRzDBKygKvxCl+MnO+GjTDOLBtOdkySu7nZa6XOIwI=;
- b=R1ExYlTXWggRm0W5OmIQofU7Km9CdpSqQCe61w37PS+F9uRvtU7JwbLz
- Woozl+AUgNYiApMoVjd7PrMi7sHUAFORCTkJ7nw9oVd0nsHmxs8AGNm0J
- datqp7b6kvF8M3q6vyaHIEdE4/HGrenW44kVdA9IwSyawGtJpgPD522Oy
- fAGd/wlVEQRcjhjZ5S1QA82YKSVUa9qYdYMNmLwaT+FItnxEsN4by5Kgx
- ZbnxKpUW3CRT/rTZ9XP09YbGlvP7Cywk+O3DZ0G8wMxg8b2nXA4QuLtnZ
- gHWMPmSg+keGw+SnXRVjdMuu3AU0JgTwOoz4ABPhIqRbt46iDpTJKEvuT
- g==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ t=1698098490; x=1729634490;
+ h=message-id:date:subject:to:cc:references:from:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=1zyuNOXsUCyRSn9PDztBwRVa6GDXMO8TEd1wyFf8YAk=;
+ b=kpEfl8DK8C5gXBP0SOSYvX3a8qUNunyk2+54HXLga2mJYh6YFkhkCN+l
+ nEVJOuGGayBsHWYziQWfNioO8X23cnQg7o8TUglBF+4+0VGiBCY4bADxA
+ +G/UXmJ6wom92PUgu6LzQDQuKqIpY3TSTL1QvBIbAZtBP+YZv8NEXs/31
+ 6jwGzItcGlK9mdAh2AAIp3O6FepUMrW7pl/2pfQVQ8TBKHILWeVomWvYW
+ eLIEdoMN6Yq3BzSFA9N5Y3VOQZJdFrCTDsvNj2/MYxN+LVe/5jf1WVADa
+ r3FB5J/1F/8dWm6IeXDSrFMI+ND47y8q8XkV/RHgC9zLX1SGPXAvBsmLx
+ A==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=R1ExYlTX
+ header.a=rsa-sha256 header.s=Intel header.b=kpEfl8DK
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
 Subject: Re: [Intel-wired-lan] [PATCH iwl-next 2/3] i40e: Add other helpers
  to check version of running firmware and AQ API
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -97,99 +197,90 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: dacampbe@redhat.com, intel-wired-lan@lists.osuosl.org,
+Cc: intel-wired-lan@lists.osuosl.org,
  Jesse Brandeburg <jesse.brandeburg@intel.com>, linux-kernel@vger.kernel.org,
- Eric Dumazet <edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
- oe-kbuild-all@lists.linux.dev, Jacob Keller <jacob.e.keller@intel.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>
+ Eric
+ Dumazet <edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
+ dacampbe@redhat.com, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi Ivan,
-
-kernel test robot noticed the following build warnings:
-
-[auto build test WARNING on tnguy-next-queue/dev-queue]
-
-url:    https://github.com/intel-lab-lkp/linux/commits/Ivan-Vecera/i40e-Move-i40e_is_aq_api_ver_ge-helper/20231024-003221
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git dev-queue
-patch link:    https://lore.kernel.org/r/20231023162928.245583-3-ivecera%40redhat.com
-patch subject: [PATCH iwl-next 2/3] i40e: Add other helpers to check version of running firmware and AQ API
-config: alpha-allyesconfig (https://download.01.org/0day-ci/archive/20231024/202310240231.6eF5YKB4-lkp@intel.com/config)
-compiler: alpha-linux-gcc (GCC) 13.2.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20231024/202310240231.6eF5YKB4-lkp@intel.com/reproduce)
-
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202310240231.6eF5YKB4-lkp@intel.com/
-
-All warnings (new ones prefixed by >>):
-
-   In file included from drivers/net/ethernet/intel/i40e/i40e_dcb.h:7,
-                    from drivers/net/ethernet/intel/i40e/i40e.h:15,
-                    from drivers/net/ethernet/intel/i40e/i40e_main.c:13:
->> drivers/net/ethernet/intel/i40e/i40e_type.h:632:1: warning: 'inline' is not at beginning of declaration [-Wold-style-declaration]
-     632 | static bool inline i40e_is_fw_ver_ge(struct i40e_hw *hw, u16 maj, u16 min)
-         | ^~~~~~
-   drivers/net/ethernet/intel/i40e/i40e_type.h:646:1: warning: 'inline' is not at beginning of declaration [-Wold-style-declaration]
-     646 | static bool inline i40e_is_fw_ver_lt(struct i40e_hw *hw, u16 maj, u16 min)
-         | ^~~~~~
-   drivers/net/ethernet/intel/i40e/i40e_type.h:659:1: warning: 'inline' is not at beginning of declaration [-Wold-style-declaration]
-     659 | static bool inline i40e_is_fw_ver_eq(struct i40e_hw *hw, u16 maj, u16 min)
-         | ^~~~~~
---
-   In file included from drivers/net/ethernet/intel/i40e/i40e_dcb.h:7,
-                    from drivers/net/ethernet/intel/i40e/i40e.h:15,
-                    from drivers/net/ethernet/intel/i40e/i40e_ptp.c:6:
->> drivers/net/ethernet/intel/i40e/i40e_type.h:632:1: warning: 'inline' is not at beginning of declaration [-Wold-style-declaration]
-     632 | static bool inline i40e_is_fw_ver_ge(struct i40e_hw *hw, u16 maj, u16 min)
-         | ^~~~~~
-   drivers/net/ethernet/intel/i40e/i40e_type.h:646:1: warning: 'inline' is not at beginning of declaration [-Wold-style-declaration]
-     646 | static bool inline i40e_is_fw_ver_lt(struct i40e_hw *hw, u16 maj, u16 min)
-         | ^~~~~~
-   drivers/net/ethernet/intel/i40e/i40e_type.h:659:1: warning: 'inline' is not at beginning of declaration [-Wold-style-declaration]
-     659 | static bool inline i40e_is_fw_ver_eq(struct i40e_hw *hw, u16 maj, u16 min)
-         | ^~~~~~
-   drivers/net/ethernet/intel/i40e/i40e_ptp.c: In function 'i40e_ptp_init':
-   drivers/net/ethernet/intel/i40e/i40e_ptp.c:1353:27: warning: '%s' directive output may be truncated writing up to 287 bytes into a region of size 64 [-Wformat-truncation=]
-    1353 |                          "%s", sdp_desc[i].name);
-         |                           ^~
-   In function 'i40e_init_pin_config',
-       inlined from 'i40e_ptp_create_clock' at drivers/net/ethernet/intel/i40e/i40e_ptp.c:1392:13,
-       inlined from 'i40e_ptp_init' at drivers/net/ethernet/intel/i40e/i40e_ptp.c:1497:8:
-   drivers/net/ethernet/intel/i40e/i40e_ptp.c:1351:17: note: 'snprintf' output between 1 and 288 bytes into a destination of size 64
-    1351 |                 snprintf(pf->ptp_caps.pin_config[i].name,
-         |                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    1352 |                          sizeof(pf->ptp_caps.pin_config[i].name),
-         |                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    1353 |                          "%s", sdp_desc[i].name);
-         |                          ~~~~~~~~~~~~~~~~~~~~~~~
 
 
-vim +/inline +632 drivers/net/ethernet/intel/i40e/i40e_type.h
+On 10/23/2023 9:29 AM, Ivan Vecera wrote:
+> Add another helper functions that will be used by subsequent
+> patch to refactor existing open-coded checks whether the version
+> of running firmware and AdminQ API is recent enough to provide
+> certain capabilities.
+> 
+> Signed-off-by: Ivan Vecera <ivecera@redhat.com>
+> ---
+>  drivers/net/ethernet/intel/i40e/i40e_type.h | 54 +++++++++++++++++++++
+>  1 file changed, 54 insertions(+)
+> 
+> diff --git a/drivers/net/ethernet/intel/i40e/i40e_type.h b/drivers/net/ethernet/intel/i40e/i40e_type.h
+> index 050d479aeed3..bb62c14aa3d4 100644
+> --- a/drivers/net/ethernet/intel/i40e/i40e_type.h
+> +++ b/drivers/net/ethernet/intel/i40e/i40e_type.h
+> @@ -608,6 +608,60 @@ static inline bool i40e_is_aq_api_ver_ge(struct i40e_hw *hw, u16 maj, u16 min)
+>  		(hw->aq.api_maj_ver == maj && hw->aq.api_min_ver >= min));
+>  }
+>  
 
-   623	
-   624	/**
-   625	 * i40e_is_fw_ver_ge
-   626	 * @hw: pointer to i40e_hw structure
-   627	 * @maj: API major value to compare
-   628	 * @min: API minor value to compare
-   629	 *
-   630	 * Assert whether current firmware version is greater/equal than provided.
-   631	 **/
- > 632	static bool inline i40e_is_fw_ver_ge(struct i40e_hw *hw, u16 maj, u16 min)
-   633	{
-   634	        return (hw->aq.fw_maj_ver > maj ||
-   635	                (hw->aq.fw_maj_ver == maj && hw->aq.fw_min_ver >= min));
-   636	}
-   637	
+This has a bunch of checkpatch.pl warnings if you wouldn't mind fixing them:
 
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+> ERROR: inline keyword should sit between storage class and type
+> #47: FILE: drivers/net/ethernet/intel/i40e/i40e_type.h:632:
+> +static bool inline i40e_is_fw_ver_ge(struct i40e_hw *hw, u16 maj, u16 min)
+> 
+> ERROR: code indent should use tabs where possible
+> #49: FILE: drivers/net/ethernet/intel/i40e/i40e_type.h:634:
+> +        return (hw->aq.fw_maj_ver > maj ||$
+> 
+> WARNING: please, no spaces at the start of a line
+> #49: FILE: drivers/net/ethernet/intel/i40e/i40e_type.h:634:
+> +        return (hw->aq.fw_maj_ver > maj ||$
+> 
+> ERROR: code indent should use tabs where possible
+> #50: FILE: drivers/net/ethernet/intel/i40e/i40e_type.h:635:
+> +                (hw->aq.fw_maj_ver == maj && hw->aq.fw_min_ver >= min));$
+> 
+> WARNING: please, no spaces at the start of a line
+> #50: FILE: drivers/net/ethernet/intel/i40e/i40e_type.h:635:
+> +                (hw->aq.fw_maj_ver == maj && hw->aq.fw_min_ver >= min));$
+> 
+> ERROR: inline keyword should sit between storage class and type
+> #61: FILE: drivers/net/ethernet/intel/i40e/i40e_type.h:646:
+> +static bool inline i40e_is_fw_ver_lt(struct i40e_hw *hw, u16 maj, u16 min)
+> 
+> ERROR: inline keyword should sit between storage class and type
+> #74: FILE: drivers/net/ethernet/intel/i40e/i40e_type.h:659:
+> +static bool inline i40e_is_fw_ver_eq(struct i40e_hw *hw, u16 maj, u16 min)
+> 
+> ERROR: code indent should use tabs where possible
+> #76: FILE: drivers/net/ethernet/intel/i40e/i40e_type.h:661:
+> +        return (hw->aq.fw_maj_ver > maj ||$
+> 
+> WARNING: please, no spaces at the start of a line
+> #76: FILE: drivers/net/ethernet/intel/i40e/i40e_type.h:661:
+> +        return (hw->aq.fw_maj_ver > maj ||$
+> 
+> ERROR: code indent should use tabs where possible
+> #77: FILE: drivers/net/ethernet/intel/i40e/i40e_type.h:662:
+> +                (hw->aq.fw_maj_ver == maj && hw->aq.fw_min_ver == min));$
+> 
+> WARNING: please, no spaces at the start of a line
+> #77: FILE: drivers/net/ethernet/intel/i40e/i40e_type.h:662:
+> +                (hw->aq.fw_maj_ver == maj && hw->aq.fw_min_ver == min));$
+> 
+> total: 7 errors, 4 warnings, 0 checks, 60 lines checked
+> 
+
+Thanks,
+Jake
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
