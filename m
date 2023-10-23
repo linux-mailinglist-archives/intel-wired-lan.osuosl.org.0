@@ -1,66 +1,82 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 343707D27F9
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 23 Oct 2023 03:27:05 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id A15CD7D330B
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 23 Oct 2023 13:26:09 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 5299360E0B;
-	Mon, 23 Oct 2023 01:27:02 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5299360E0B
+	by smtp4.osuosl.org (Postfix) with ESMTP id B7DA7418F3;
+	Mon, 23 Oct 2023 11:26:07 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B7DA7418F3
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1698024422;
-	bh=sGELTJrqfEG8oEIkyn8/W36bo22wnAV7hDlhU7hswN0=;
-	h=Date:To:From:In-Reply-To:Subject:List-Id:List-Unsubscribe:
-	 List-Archive:List-Post:List-Help:List-Subscribe:Cc:From;
-	b=9MicBiVO+z1vXY3K4yOQJ9+GPO+4eQ0riMnw6HOZbRCpa/gLMnrgT6O4WClh0trhW
-	 /l8hG8CRJ+F1eFlPHwbVm882zI2pKopvWPpc+tXXrxSsKph9gUmXN7TqjYDwDlniQA
-	 bA3879Rcn2x8ZCj2U/ZvxGWfjLSA26GRIu+rtRdm6OkkZxaR+95dV+rFvkvoZHEyES
-	 sK5lbFucGmbQcf90UfI2o4n4w9AfQ5MrGTlr8Wp6MSUk4lxVFelp/fABm02BeGfQft
-	 asfghnX2WZUlT83cBhixmGJ0mpuynx5NFotb5yLGYOUyPgaFgpfV1nzh0LoN/UdRVU
-	 gjj3P5Ddxa6WQ==
+	s=default; t=1698060367;
+	bh=+JqpjfQxQIvA1QmgfQyX2kk6kj13fkdKXLmysznby+0=;
+	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=au7gKjmvYtSJM4NCOzJU1cfwxYPimRszeGWM1hxC0zv7aVObn+57PtjEHG5iidb3F
+	 mISO8uJOrYsggOrl8X8yferdfGzjvkqzWTnGFbb0pxLrhXL4iKm1X+OBYZnjAzT2K2
+	 zG/ElNx+hJdVJ73w+V9DLVN+/f/LcuqTtXlrjoIos6oAoAtDPBsnyNSyrLjdtI7qdY
+	 Rw1V8g05503rvyUB5RP8t74ZVf5dTj50O+uQvyI08qWGTHJuguZ++JR8RrUudK/9wu
+	 fE/bCmo0u3s/eGaikPjgsxecqHFKwsik7cQD7UDxvHkPIsy5lMG87vYkDrLEaTUOPQ
+	 dAQBneE4EGChA==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 9iGtUFEk8hlO; Mon, 23 Oct 2023 01:27:01 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id oDExrwWPjOqL; Mon, 23 Oct 2023 11:26:07 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 4660560DC2;
-	Mon, 23 Oct 2023 01:27:01 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 4660560DC2
+	by smtp4.osuosl.org (Postfix) with ESMTP id 7E3EF41939;
+	Mon, 23 Oct 2023 11:26:06 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7E3EF41939
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id CB23C1BF3FC
- for <intel-wired-lan@lists.osuosl.org>; Mon, 23 Oct 2023 01:26:56 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 3BAE21BF2B6
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 23 Oct 2023 11:26:01 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 9FB8D40603
- for <intel-wired-lan@lists.osuosl.org>; Mon, 23 Oct 2023 01:26:56 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 9FB8D40603
+ by smtp4.osuosl.org (Postfix) with ESMTP id 13D3D418C9
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 23 Oct 2023 11:26:01 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 13D3D418C9
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id vzmi5SF1ZI3K for <intel-wired-lan@lists.osuosl.org>;
- Mon, 23 Oct 2023 01:26:55 +0000 (UTC)
-Received: from mail.nfschina.com (unknown [42.101.60.195])
- by smtp2.osuosl.org (Postfix) with SMTP id 26D02405FD
- for <intel-wired-lan@lists.osuosl.org>; Mon, 23 Oct 2023 01:26:54 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 26D02405FD
-Received: from [172.30.11.106] (unknown [180.167.10.98])
- by mail.nfschina.com (Maildata Gateway V2.8.8) with ESMTPSA id 8D33D6047A8C6; 
- Mon, 23 Oct 2023 09:26:35 +0800 (CST)
-Message-ID: <394deb86-89c8-9e77-eb92-8fca21997083@nfschina.com>
-Date: Mon, 23 Oct 2023 09:26:34 +0800
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id mVYog3Flw-bt for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 23 Oct 2023 11:26:00 +0000 (UTC)
+Received: from ams.source.kernel.org (ams.source.kernel.org
+ [IPv6:2604:1380:4601:e00::1])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 451C5418C8
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 23 Oct 2023 11:26:00 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 451C5418C8
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by ams.source.kernel.org (Postfix) with ESMTP id 49436B81B98;
+ Mon, 23 Oct 2023 11:25:57 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 45013C433C8;
+ Mon, 23 Oct 2023 11:25:56 +0000 (UTC)
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: stable@vger.kernel.org
+Date: Mon, 23 Oct 2023 12:56:42 +0200
+Message-ID: <20231023104832.357990560@linuxfoundation.org>
+X-Mailer: git-send-email 2.42.0
+In-Reply-To: <20231023104828.488041585@linuxfoundation.org>
+References: <20231023104828.488041585@linuxfoundation.org>
+User-Agent: quilt/0.67
+X-stable: review
+X-Patchwork-Hint: ignore
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101
- Thunderbird/91.8.0
-Content-Language: en-US
-To: Jacob Keller <jacob.e.keller@intel.com>
-X-MD-Sfrom: suhui@nfschina.com
-X-MD-SrcIP: 180.167.10.98
-From: Su Hui <suhui@nfschina.com>
-In-Reply-To: <58d18354-dbd6-47d3-93a8-ba0446dcc8f6@intel.com>
-Subject: Re: [Intel-wired-lan] [PATCH v2] i40e: add an error code check in
- i40e_vsi_setup
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=linuxfoundation.org; 
+ s=korg; t=1698060356;
+ bh=xXvY4xmd2AnMqShJdWovg+G43rAKn8hdI+9YL5/JR7g=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=p9JrcLm6joP5AnMckmalDI0P/9GR9I55kAMQ9ce8vpyC9dRPd4k7r12UJI36no4cP
+ Na4N3JUxTl6s3tXCDNFiG6hPUfdXzraqu7ZCFUBhgqQIvQEREn/XkJ54k5wKbVjTFz
+ li5gcjJ7t0U8wjlMgGcKJKO3onXo/2qJMD3sxC1A=
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (1024-bit key) header.d=linuxfoundation.org
+ header.i=@linuxfoundation.org header.a=rsa-sha256 header.s=korg
+ header.b=p9JrcLm6
+Subject: [Intel-wired-lan] [PATCH 6.1 137/196] ice: Remove redundant
+ pci_enable_pcie_error_reporting()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,48 +89,80 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: intel-wired-lan@lists.osuosl.org, kernel-janitors@vger.kernel.org,
- jesse.brandeburg@intel.com, linux-kernel@vger.kernel.org, edumazet@google.com,
- anthony.l.nguyen@intel.com, netdev@vger.kernel.org, kuba@kernel.org,
- pabeni@redhat.com, davem@davemloft.net,
- Dan Carpenter <dan.carpenter@linaro.org>
+Cc: Sasha Levin <sashal@kernel.org>, Gurucharan G <gurucharanx.g@intel.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, patches@lists.linux.dev,
+ Jesse Brandeburg <jesse.brandeburg@intel.com>,
+ intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
+ Bjorn Helgaas <bhelgaas@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 2023/10/21 05:09, Jacob Keller wrote:
+6.1-stable review patch.  If anyone has any objections, please let me know.
 
->
-> On 10/19/2023 11:56 PM, Dan Carpenter wrote:
->> On Fri, Oct 20, 2023 at 10:43:09AM +0800, Su Hui wrote:
->>> check the value of 'ret' after calling 'i40e_vsi_config_rss'.
->>>
->>> Signed-off-by: Su Hui <suhui@nfschina.com>
->>> ---
->>> v2:
->>> - call i40e_vsi_clear_rings() to free rings(thank dan carpenter for
->>>    pointing out this).
->> Looks okay now.
->>
->> Reviewed-by: Dan Carpenter <dan.carpenter@linaro.org>
->>
->> regards,
->> dan carpenter
->>
->>
-> For some reason this patch doesn't appear to have hit the
-> intel-wired-lan list and is thus not being recorded in patchwork for IWL.
->
-> Su Hui, would you mind please re-sending this so that it gets picked up
-> by patchwork? Otherwise I'm afraid that it might get lost inbetween when
-> Tony returns from vacation.
+------------------
 
-Sorry for the late reply, I have already resent it[1].
+From: Bjorn Helgaas <bhelgaas@google.com>
 
-Su Hui
+[ Upstream commit ba153552c18d7eb839ec0bad7d7484e29ba4719c ]
 
-[1] https://lore.kernel.org/all/20231023012024.18757-1-suhui@nfschina.com/
+pci_enable_pcie_error_reporting() enables the device to send ERR_*
+Messages.  Since f26e58bf6f54 ("PCI/AER: Enable error reporting when AER is
+native"), the PCI core does this for all devices during enumeration.
+
+Remove the redundant pci_enable_pcie_error_reporting() call from the
+driver.  Also remove the corresponding pci_disable_pcie_error_reporting()
+from the driver .remove() path.
+
+Note that this doesn't control interrupt generation by the Root Port; that
+is controlled by the AER Root Error Command register, which is managed by
+the AER service driver.
+
+Signed-off-by: Bjorn Helgaas <bhelgaas@google.com>
+Cc: Jesse Brandeburg <jesse.brandeburg@intel.com>
+Cc: Tony Nguyen <anthony.l.nguyen@intel.com>
+Cc: intel-wired-lan@lists.osuosl.org
+Cc: netdev@vger.kernel.org
+Tested-by: Gurucharan G <gurucharanx.g@intel.com> (A Contingent worker at Intel)
+Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
+Stable-dep-of: 0288c3e709e5 ("ice: reset first in crash dump kernels")
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
+ drivers/net/ethernet/intel/ice/ice_main.c | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
+index ae733207d0116..f0f39364819ac 100644
+--- a/drivers/net/ethernet/intel/ice/ice_main.c
++++ b/drivers/net/ethernet/intel/ice/ice_main.c
+@@ -4723,7 +4723,6 @@ ice_probe(struct pci_dev *pdev, const struct pci_device_id __always_unused *ent)
+ 		return err;
+ 	}
+ 
+-	pci_enable_pcie_error_reporting(pdev);
+ 	pci_set_master(pdev);
+ 
+ 	pf->pdev = pdev;
+@@ -5016,7 +5015,6 @@ ice_probe(struct pci_dev *pdev, const struct pci_device_id __always_unused *ent)
+ 	ice_devlink_destroy_regions(pf);
+ 	ice_deinit_hw(hw);
+ err_exit_unroll:
+-	pci_disable_pcie_error_reporting(pdev);
+ 	pci_disable_device(pdev);
+ 	return err;
+ }
+@@ -5142,7 +5140,6 @@ static void ice_remove(struct pci_dev *pdev)
+ 	ice_reset(&pf->hw, ICE_RESET_PFR);
+ 	pci_wait_for_pending_transaction(pdev);
+ 	ice_clear_interrupt_scheme(pf);
+-	pci_disable_pcie_error_reporting(pdev);
+ 	pci_disable_device(pdev);
+ }
+ 
+-- 
+2.40.1
+
 
 
 _______________________________________________
