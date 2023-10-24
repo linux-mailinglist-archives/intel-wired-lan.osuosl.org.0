@@ -2,103 +2,104 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id AEE667D5088
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 24 Oct 2023 15:00:44 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id EEF6F7D508A
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 24 Oct 2023 15:00:57 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 409D383F33;
-	Tue, 24 Oct 2023 13:00:43 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 409D383F33
+	by smtp1.osuosl.org (Postfix) with ESMTP id 7F73F84767;
+	Tue, 24 Oct 2023 13:00:56 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 7F73F84767
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1698152443;
-	bh=KxQkHwhIgA4gnTK6Ruks4lSozeDbz6q0YLdhn0YGpos=;
+	s=default; t=1698152456;
+	bh=HlN1fQtkUv7XW4CA0b+ny0AnvZO/jTIsy3SXjP9eofs=;
 	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=zAp8JWnfrtnp8VOCdNfjdV/qVvAeZIWwmkXH3GGuP0JBgVzPTGEzWEWSKukvmEmk7
-	 Z3O8kzhXWnNZCTzIajXl14KQYErEZeNqmvcS07gWWhOAPGw1QUJ0QmlV3VvGgW21nw
-	 YTecy3EFACXHVb/0cmfMLAHyOrDO8AA+08jhe/OEwgFGDMg60JNrU5vFZ8PhqlVdzG
-	 csOqQRpZoQEbi2m8J3Csfmh3c1jlvCT1ne+XldkeaidQNl7QnrYcB3fFPtZPxS+Bu+
-	 ZWOt82tgo1TQTyCUc50OZe0lYs/DNGGsk3OsB7XfusGLUcEf9IJyiX38hdOxdGnIQ+
-	 ocW84xf9J/Z7w==
+	b=JtVW9Q9XWnGFmVlmoiteLX0QKZUDqWYtn9c5dF3PZpeXhWKP1utg2uP9qjQ3z/27q
+	 TfFXjQ4dDS7ckIXS4+5lVNMotycryYbiqeE84ZAU8/mrFb0RzZbmZYmYGGN0+vw6kq
+	 cKA0FfsjYjhr1yo+HtfLvf6drUXI5yTqDNNNMCmDXQnO/RANk308nzWSaOwYuxb47C
+	 bbue0BjCubrvBnvWLu4n60G1BXQbW8SmmUCmD8C9XVYQyz7cmoVhGtiRmXhll6GUOo
+	 KjEwF/3cQ5jIDMNS5qn1n808jsHrWjCH3J5xbbSScBMO11qhZj+yauzXfwfeAryVut
+	 S4JZ32SDGY+Kw==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id G7T3pRg7Aw-i; Tue, 24 Oct 2023 13:00:42 +0000 (UTC)
+	with ESMTP id wb50u631lP0U; Tue, 24 Oct 2023 13:00:55 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 1CE8083F2C;
-	Tue, 24 Oct 2023 13:00:42 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1CE8083F2C
+	by smtp1.osuosl.org (Postfix) with ESMTP id 37F1C840FA;
+	Tue, 24 Oct 2023 13:00:55 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 37F1C840FA
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 0EDDB1BF38E
- for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Oct 2023 13:00:37 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id BA2FE1BF38E
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Oct 2023 13:00:49 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id DA96D6FC0D
- for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Oct 2023 13:00:36 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org DA96D6FC0D
+ by smtp1.osuosl.org (Postfix) with ESMTP id 92F3F844CA
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Oct 2023 13:00:49 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 92F3F844CA
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id VZt7lXRUJbUB for <intel-wired-lan@lists.osuosl.org>;
- Tue, 24 Oct 2023 13:00:35 +0000 (UTC)
-Received: from mail-ed1-x532.google.com (mail-ed1-x532.google.com
- [IPv6:2a00:1450:4864:20::532])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 628376FC0C
- for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Oct 2023 13:00:34 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 628376FC0C
-Received: by mail-ed1-x532.google.com with SMTP id
- 4fb4d7f45d1cf-53d9b94731aso6973173a12.1
- for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Oct 2023 06:00:34 -0700 (PDT)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id a8X20EvvGMfP for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 24 Oct 2023 13:00:48 +0000 (UTC)
+Received: from mail-lf1-x135.google.com (mail-lf1-x135.google.com
+ [IPv6:2a00:1450:4864:20::135])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 9997683F2C
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Oct 2023 13:00:48 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9997683F2C
+Received: by mail-lf1-x135.google.com with SMTP id
+ 2adb3069b0e04-507a55302e0so6017244e87.0
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Oct 2023 06:00:48 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1698152432; x=1698757232;
+ d=1e100.net; s=20230601; t=1698152446; x=1698757246;
  h=in-reply-to:content-disposition:mime-version:references:message-id
  :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=ZWgZj0jWXyKIUpIqseNDFQ+Z3Ajt56Y9J6kThz0DfLU=;
- b=MOWpWX18OJFhKp5Uvn7e7N7XweL/Ib9YJCbVh3djgeP0q5STSDy8fKpWZlczLDTgGr
- 0AdGEog1llUEEMHoncVLK8l8tDI+0Aw+5W1Tv8KIU7Y4iUfqurmfpfhTElOH1Mour1Ld
- 8+9MQW3Nv12GVqbxXQgIskGzK+jG/hBeUcmcrHUFnO0rZlDzqEPyuOTXwy5QsO67Um5x
- s7mKHYHeaKmB2TwExhyHNdB8at1otfmbcyirggmN2b3yy1jEKWBxah2v4uD2CFwT8VyE
- 1+MScu1GUVsnFsINOG5Fy5y+K8o/fBekrLBhkLfkRebtIcUhWs7jCm9N61QxOU3nfrRk
- 7PMA==
-X-Gm-Message-State: AOJu0Yyf9jJ2OLbjpu40d6Y+VA9vn60GoLxwgPzzzX38P7GQKLzW/fan
- AEcAVAsyLpjVK0465YjrsXJj4w==
-X-Google-Smtp-Source: AGHT+IEzcpYTuCTOHF/4/6Ur1ISFMPTfgKZaV6/zztDjAlr47wbdwfa+ojve+Wi/F7riNzmSUNX+5g==
-X-Received: by 2002:a50:d603:0:b0:53e:6624:5aeb with SMTP id
- x3-20020a50d603000000b0053e66245aebmr9243046edi.11.1698152432557; 
- Tue, 24 Oct 2023 06:00:32 -0700 (PDT)
+ bh=K9mkSvzL5AlqEqCk4gL6PQxVO/Ut1Am/gjPnbui/hZY=;
+ b=GM6eanVQ60QVd0zhu3o3tfeoTgDY5hD9uMTbjmftmOMt/ZLrerw2OQkQy7P+FHgy2/
+ 8TmLVXSsGbjxsxHxqPDV85xbT/KfzcEeFBM1sW9ljOaWVn9K/esnOcRM/qJEPmVQbgtN
+ O7fizP2vISik8YSNnY/bjnSPD5bSMizlxYdiIU8AcAmifpxTVghi/aHS/mnAfFQJJdf7
+ nBbMf8T4+4Iamga6m51CUg2r85NJGxua6T62cnmn7IA9ns3eyM7sYlSLzRk/00r6q7a0
+ 5xcUk7IVn7J/DV0CNHKxKvQcw86ouO93oYjcaIMP4SCMyxZ9XxUNDJe1thFYIFBx2z9W
+ LdDw==
+X-Gm-Message-State: AOJu0Yx1tJCGWSTROUP54qWDe26KkAYG45Y/zgTu4ydSA8fA/hU7zZdL
+ QvJbwNVlvZ09KwkJjt/UlFh0sA==
+X-Google-Smtp-Source: AGHT+IF0yE6XO/mX2TbNGtNxqeLgtwKSWDprIrmqOUxkx9EVlX98W4Y61rPzb7TU1zWbcCeFWoQKdA==
+X-Received: by 2002:ac2:532a:0:b0:507:9777:7a7 with SMTP id
+ f10-20020ac2532a000000b00507977707a7mr8516878lfh.17.1698152446332; 
+ Tue, 24 Oct 2023 06:00:46 -0700 (PDT)
 Received: from localhost (host-213-179-129-39.customer.m-online.net.
  [213.179.129.39]) by smtp.gmail.com with ESMTPSA id
- h28-20020a50cddc000000b0053e589016a7sm7980698edj.16.2023.10.24.06.00.31
+ gy5-20020a0564025bc500b0053d9cb67248sm7728993edb.18.2023.10.24.06.00.45
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 24 Oct 2023 06:00:31 -0700 (PDT)
-Date: Tue, 24 Oct 2023 15:00:30 +0200
+ Tue, 24 Oct 2023 06:00:45 -0700 (PDT)
+Date: Tue, 24 Oct 2023 15:00:44 +0200
 From: Jiri Pirko <jiri@resnulli.us>
 To: Ivan Vecera <ivecera@redhat.com>
-Message-ID: <ZTe/7nfMmS+6KhrE@nanopsycho>
+Message-ID: <ZTe//IyJUl10iFYI@nanopsycho>
 References: <20231024125109.844045-1-ivecera@redhat.com>
+ <20231024125109.844045-2-ivecera@redhat.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20231024125109.844045-1-ivecera@redhat.com>
+In-Reply-To: <20231024125109.844045-2-ivecera@redhat.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=resnulli-us.20230601.gappssmtp.com; s=20230601; t=1698152432; x=1698757232;
+ d=resnulli-us.20230601.gappssmtp.com; s=20230601; t=1698152446; x=1698757246;
  darn=lists.osuosl.org; 
  h=in-reply-to:content-disposition:mime-version:references:message-id
  :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=ZWgZj0jWXyKIUpIqseNDFQ+Z3Ajt56Y9J6kThz0DfLU=;
- b=s7ShErmWnPaFNRSRw6GFBjVDhKglUbk96eso8azBSAc9GSWt9j6snEWCtB+XZxYTQo
- uB2x24vxzgmUnRLSMeZoaoH31RVGK5N3DUWPdXz1qZWkbMfNqDPmKBJfQToR/khaYCEm
- ANHIVoZ/WqqjpkdpRxvVsw8+M/jFV70IxAGaC9YtHqc1VV56jlIpyfcAHFtuCNcE2kam
- 7C1N0PZjSF6qTqGoZaGYjO+95SEGyy3JYK16Cx71mvpZ/OLEZBcue2a90+HyJQDZiIoO
- wVZKa1ue4bGCjTAH3XgQPa/Mcnw8p4cZxzhkcOckQz/Qvvgi6uxmxeXN+6bLZJzgARvd
- 05NQ==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ bh=K9mkSvzL5AlqEqCk4gL6PQxVO/Ut1Am/gjPnbui/hZY=;
+ b=fCaBVoGRrKl0PA6rg7vuGpGf2eIGHfkQIQE9UbEgmjUYn6WHADN1NH2x3MxQMaZwwu
+ hNTEgDN0YNVpLzR2EbWFH0f4e8kl08HPhvyd5L5FxQhgPHgo1nGoJcP4wbS2y5PWTV9w
+ ipRGUlN0hHLz6nxg3zm+4Xwbw6sSZoDoAHNkPK2xvtegBVKSrrUJGPHsmqdgGYf0hA7S
+ R/TqYuKVJ7vCNbQbxvpujiD9WdbHTgvkfLfT9YaLkPHdAmnAwY8hX4eD/s407fKkMgrY
+ 2A/uTH8FSj0XKVNhxOf43G7NYg2UvVFej7y9IcGvTF8fCNDBym2f1POLFr3d0DfVBDkK
+ 7Riw==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=resnulli-us.20230601.gappssmtp.com
  header.i=@resnulli-us.20230601.gappssmtp.com header.a=rsa-sha256
- header.s=20230601 header.b=s7ShErmW
-Subject: Re: [Intel-wired-lan] [PATCH net-next 1/2] i40e: Do not call
- devlink_port_type_clear()
+ header.s=20230601 header.b=fCaBVoGR
+Subject: Re: [Intel-wired-lan] [PATCH net-next 2/2] i40e: Fix devlink port
+ unregistering
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -121,23 +122,21 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Tue, Oct 24, 2023 at 02:51:08PM CEST, ivecera@redhat.com wrote:
->Do not call devlink_port_type_clear() prior devlink port unregister
->and let devlink core to take care about it.
+Tue, Oct 24, 2023 at 02:51:09PM CEST, ivecera@redhat.com wrote:
+>Ensure that devlink port is unregistered after unregistering
+>of net device.
 >
 >Reproducer:
 >[root@host ~]# rmmod i40e
->[ 4539.964699] i40e 0000:02:00.0: devlink port type for port 0 cleared without a software interface reference, device type not supported by the kernel?
->[ 4540.319811] i40e 0000:02:00.1: devlink port type for port 1 cleared without a software interface reference, device type not supported by the kernel?
+>[ 4742.939386] i40e 0000:02:00.1: i40e_ptp_stop: removed PHC on enp2s0f1np1
+>[ 4743.059269] ------------[ cut here ]------------
+>[ 4743.063900] WARNING: CPU: 21 PID: 10766 at net/devlink/port.c:1078 devl_port_unregister+0x69/0x80
+>...
 >
 >Fixes: 9e479d64dc58 ("i40e: Add initial devlink support")
 >Signed-off-by: Ivan Vecera <ivecera@redhat.com>
 
-Ivan, I see that even if we have checks and warnings, it is not enough :)
-
 Reviewed-by: Jiri Pirko <jiri@nvidia.com>
-
-Btw, some (even brief) cover letter for patchset would be nice.
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
