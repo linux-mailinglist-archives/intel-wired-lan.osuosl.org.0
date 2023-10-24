@@ -2,89 +2,91 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id CDBE87D5016
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 24 Oct 2023 14:43:02 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 233A37D5037
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 24 Oct 2023 14:49:49 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 541A5848DA;
-	Tue, 24 Oct 2023 12:43:01 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 541A5848DA
+	by smtp1.osuosl.org (Postfix) with ESMTP id 92BD580EFA;
+	Tue, 24 Oct 2023 12:49:47 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 92BD580EFA
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1698151381;
-	bh=eDA08gaNFcYjqPrH2W14cZzcgZh0ZM/cy612qynwuYs=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1698151787;
+	bh=5fotfLrqKqNO3kEgwfeviAFcoaTAEJObYzm8IbGQ1P4=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=gs0zNHlxLgpF0GBfyqIflLa2H96FjQoNcvnJdVS8bjKmoZgnDrAcfRNI28enI1b0Z
-	 xCz6Z4D2pbhHXKK2CyFbP+vwQ5dD7N3Imui6SwVFLqNkhzYI7NWjswak3SeUsHFmyL
-	 RLeQmQ3F2BpVkww8npB6cotn9pEW47mhFgxmsbl/UecEeym4CkimZ9SG585K3IACGj
-	 2ryBSqAGT11hFeGcjvKHiUsjLUJd4z0Yq2HOa7rzYJA/qz3n7lvsa+jjA1Xj+5ceXT
-	 l+Ls+HOkfzsMqPET3v/4MD10TDY5xkAWf6U16tTWQcqrCQq7Hho3awFjcvPOPBtyPv
-	 OFDllp/RwuzyQ==
+	b=IgdPAF9E4tqrmhhUzbqcLlT50b5x3mgfnGYhfw6puBfBd9K8dP87YSjVV8N3cGAFo
+	 1nmCAL40JvIDs+HjJMOs9heTti7Rf7WCdccAJwKokLMt/3gzTt1ObRP4U7sgGLdYOX
+	 9hEUX+K6uy5iZmkjsvaEix2Y98v2jdtMaaZDflMk+DLTFsxMdxFK7ddyiFaamB7b9k
+	 R2rLNEtM5E+WSGwdPF+GDNFhjltlrTbLbyFxWvBJztqJlpgVi1ZFa8OepeCVg4trSb
+	 xxIa8kHt1MCKIC13evBvBE3TCGQv/3QXjpQ1uC4BR8X2/Yx+ayTRuMbmYzBzs5FtIF
+	 IcwWLw98kl1Yg==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id F4GZGM8N_0zF; Tue, 24 Oct 2023 12:43:00 +0000 (UTC)
+	with ESMTP id zvVoMeD5QzXx; Tue, 24 Oct 2023 12:49:46 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 2D186848D4;
-	Tue, 24 Oct 2023 12:43:00 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 2D186848D4
+	by smtp1.osuosl.org (Postfix) with ESMTP id 79F8280A75;
+	Tue, 24 Oct 2023 12:49:46 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 79F8280A75
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id B64011BF38E
- for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Oct 2023 12:42:55 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 11E3C1BF38E
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Oct 2023 12:49:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 9949942EDC
- for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Oct 2023 12:42:55 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 9949942EDC
+ by smtp1.osuosl.org (Postfix) with ESMTP id D8276848DA
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Oct 2023 12:49:40 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D8276848DA
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 69SqqJejS3lD for <intel-wired-lan@lists.osuosl.org>;
- Tue, 24 Oct 2023 12:42:54 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 12x_pWO6dt1C for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 24 Oct 2023 12:49:40 +0000 (UTC)
 Received: from us-smtp-delivery-124.mimecast.com
  (us-smtp-delivery-124.mimecast.com [170.10.129.124])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 8BC1742ED8
- for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Oct 2023 12:42:54 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 8BC1742ED8
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 10691848D7
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Oct 2023 12:49:39 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 10691848D7
 Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
  [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-185-14QY-GXoMf2RcfJKXAovzg-1; Tue, 24 Oct 2023 08:42:51 -0400
-X-MC-Unique: 14QY-GXoMf2RcfJKXAovzg-1
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-99-vJLQkFovPimUQaMJtn9_zQ-1; Tue, 24 Oct 2023 08:49:22 -0400
+X-MC-Unique: vJLQkFovPimUQaMJtn9_zQ-1
 Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
  [10.11.54.6])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 61162811E7E;
- Tue, 24 Oct 2023 12:42:51 +0000 (UTC)
-Received: from p1.luc.com (unknown [10.43.2.183])
- by smtp.corp.redhat.com (Postfix) with ESMTP id DFFE32166B26;
- Tue, 24 Oct 2023 12:42:49 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 23920185A790;
+ Tue, 24 Oct 2023 12:49:22 +0000 (UTC)
+Received: from [10.43.2.183] (unknown [10.43.2.183])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id C6D9B2166B26;
+ Tue, 24 Oct 2023 12:49:20 +0000 (UTC)
+Message-ID: <349d8eb5-b499-45ea-8de5-2c3658d4c446@redhat.com>
+Date: Tue, 24 Oct 2023 14:49:20 +0200
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
 From: Ivan Vecera <ivecera@redhat.com>
 To: netdev@vger.kernel.org
-Date: Tue, 24 Oct 2023 14:42:45 +0200
-Message-ID: <20231024124245.837908-2-ivecera@redhat.com>
-In-Reply-To: <20231024124245.837908-1-ivecera@redhat.com>
 References: <20231024124245.837908-1-ivecera@redhat.com>
-MIME-Version: 1.0
+Content-Language: en-US
+In-Reply-To: <20231024124245.837908-1-ivecera@redhat.com>
 X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.6
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=redhat.com; 
- s=mimecast20190719; t=1698151373;
+ s=mimecast20190719; t=1698151778;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=uQvIAHxlIRsODDQvHhHg2yEUAX99/4EQzAeL/zSIx6I=;
- b=ZaF5ja6I/NdAstaFLttt5cH6ajaqKD4maLnEbR1ybOQ0WYaT2QXizvDmW6WiOlLMcDXmHF
- lD+p/B6KmNUSfjcfta3uFFfC7rkP0bc8x0Zg7oTKHGP7KhK4nJKC1wOi8IstTqPwzEFct3
- 2OmhljoOWgDx+YkFDXTzVvNLtuazxMo=
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ bh=UVRePymm5LlGxEOZU5dUiW35O7/1kIgQIOIIucxo4g8=;
+ b=IWf8VyOC/dmlcAsnAEgeDgaHWoISDhg/HwHu84hqKLXu/P5f7Qu86Ac45ulckG6/jJWlvV
+ jB1vL3iyx7WonS5P+cnB0l4/s3Z8a0xsHv/mSGuoZ2rZQC2zaqu6hdKHRM9K9u2emmWVm1
+ GS8BbQH3Qq6uEyiIAEYy2iMP4+VCI3o=
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
- header.a=rsa-sha256 header.s=mimecast20190719 header.b=ZaF5ja6I
-Subject: [Intel-wired-lan] [PATCH 2/2] i40e: Fix devlink port unregistering
+ header.a=rsa-sha256 header.s=mimecast20190719 header.b=IWf8VyOC
+Subject: Re: [Intel-wired-lan] [PATCH 1/2] i40e: Do not call
+ devlink_port_type_clear()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -102,70 +104,44 @@ Cc: intel-wired-lan@lists.osuosl.org,
  Eric Dumazet <edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
  Jacob Keller <jacob.e.keller@intel.com>, Jakub Kicinski <kuba@kernel.org>,
  Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Ensure that devlink port is unregistered after unregistering
-of net device.
 
-Reproducer:
-[root@host ~]# rmmod i40e
-[ 4742.939386] i40e 0000:02:00.1: i40e_ptp_stop: removed PHC on enp2s0f1np1
-[ 4743.059269] ------------[ cut here ]------------
-[ 4743.063900] WARNING: CPU: 21 PID: 10766 at net/devlink/port.c:1078 devl_port_unregister+0x69/0x80
-...
 
-Fixes: 9e479d64dc58 ("i40e: Add initial devlink support")
-Signed-off-by: Ivan Vecera <ivecera@redhat.com>
----
- drivers/net/ethernet/intel/i40e/i40e_main.c | 10 ++++++----
- 1 file changed, 6 insertions(+), 4 deletions(-)
+On 24. 10. 23 14:42, Ivan Vecera wrote:
+> Do not call devlink_port_type_clear() prior devlink port unregister
+> and let devlink core to take care about it.
+> 
+> Reproducer:
+> [root@host ~]# rmmod i40e
+> [ 4539.964699] i40e 0000:02:00.0: devlink port type for port 0 cleared without a software interface reference, device type not supported by the kernel?
+> [ 4540.319811] i40e 0000:02:00.1: devlink port type for port 1 cleared without a software interface reference, device type not supported by the kernel?
+> 
+> Fixes: 9e479d64dc58 ("i40e: Add initial devlink support")
+> Signed-off-by: Ivan Vecera <ivecera@redhat.com>
+> ---
+>   drivers/net/ethernet/intel/i40e/i40e_devlink.c | 1 -
+>   1 file changed, 1 deletion(-)
+> 
+> diff --git a/drivers/net/ethernet/intel/i40e/i40e_devlink.c b/drivers/net/ethernet/intel/i40e/i40e_devlink.c
+> index 74bc111b4849..cc4e9e2addb7 100644
+> --- a/drivers/net/ethernet/intel/i40e/i40e_devlink.c
+> +++ b/drivers/net/ethernet/intel/i40e/i40e_devlink.c
+> @@ -231,6 +231,5 @@ int i40e_devlink_create_port(struct i40e_pf *pf)
+>    **/
+>   void i40e_devlink_destroy_port(struct i40e_pf *pf)
+>   {
+> -	devlink_port_type_clear(&pf->devlink_port);
+>   	devlink_port_unregister(&pf->devlink_port);
+>   }
 
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
-index df058540d277..3f396c100835 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_main.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
-@@ -14181,8 +14181,7 @@ int i40e_vsi_release(struct i40e_vsi *vsi)
- 	}
- 	set_bit(__I40E_VSI_RELEASING, vsi->state);
- 	uplink_seid = vsi->uplink_seid;
--	if (vsi->type == I40E_VSI_MAIN)
--		i40e_devlink_destroy_port(pf);
-+
- 	if (vsi->type != I40E_VSI_SRIOV) {
- 		if (vsi->netdev_registered) {
- 			vsi->netdev_registered = false;
-@@ -14196,6 +14195,9 @@ int i40e_vsi_release(struct i40e_vsi *vsi)
- 		i40e_vsi_disable_irq(vsi);
- 	}
- 
-+	if (vsi->type == I40E_VSI_MAIN)
-+		i40e_devlink_destroy_port(pf);
-+
- 	spin_lock_bh(&vsi->mac_filter_hash_lock);
- 
- 	/* clear the sync flag on all filters */
-@@ -14370,14 +14372,14 @@ static struct i40e_vsi *i40e_vsi_reinit_setup(struct i40e_vsi *vsi)
- 
- err_rings:
- 	i40e_vsi_free_q_vectors(vsi);
--	if (vsi->type == I40E_VSI_MAIN)
--		i40e_devlink_destroy_port(pf);
- 	if (vsi->netdev_registered) {
- 		vsi->netdev_registered = false;
- 		unregister_netdev(vsi->netdev);
- 		free_netdev(vsi->netdev);
- 		vsi->netdev = NULL;
- 	}
-+	if (vsi->type == I40E_VSI_MAIN)
-+		i40e_devlink_destroy_port(pf);
- 	i40e_aq_delete_element(&pf->hw, vsi->seid, NULL);
- err_vsi:
- 	i40e_vsi_clear(vsi);
--- 
-2.41.0
+Please drop... there is missing net-next target.
+Will post v2.
+
+Ivan
 
 _______________________________________________
 Intel-wired-lan mailing list
