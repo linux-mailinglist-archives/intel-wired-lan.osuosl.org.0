@@ -1,68 +1,104 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 868287D4F0F
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 24 Oct 2023 13:42:39 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id AF1457D4F37
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 24 Oct 2023 13:50:31 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 11E554ED55;
-	Tue, 24 Oct 2023 11:42:38 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 11E554ED55
+	by smtp4.osuosl.org (Postfix) with ESMTP id 31B45428E6;
+	Tue, 24 Oct 2023 11:50:30 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 31B45428E6
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1698147758;
-	bh=Ujxm+cEEs5ko09d2H1XxvLIykzVd6yEjzOcPXG0inxU=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
+	s=default; t=1698148230;
+	bh=f4DasIpQvlyK+Xm44wvAxslBrd9J+24d816nuRG7gxM=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=TCMfgfeCd2Io8tUHNXFx2i/wuv32oTFl63D6oXFavLmFE2IsGvx0ycZutJ9no4I4X
-	 iwHt6FDC/PpzxmPXM4G2y+MmwAT7QFMh92aTb9dr26chcKaEQ/9NGOHTYOE2/ycUi4
-	 pjskcn4RHM62IBiRuAdBmLzIz2QRmRvWIpYhrgZIQwN9z/NwJ7N1uztyyBEnm2P7p/
-	 QPZPIQupMu/sawWiVSlNZ/lpRmhnePMM8JoIvETMW5VVSRMdz0Qiritl+hPYPILS+8
-	 GeMHRuYvy8rwnn0e/97881e/j3ccnyA1yvEmOWKQnNr+KNAw7gi3OG561KV8KX1R64
-	 MIMgTs1aSfRkg==
+	b=0XtY4Ed/gjndU/A4QECbb5tX9UzAlLOPneotoG26YIf4RfwBMDnjXkenANO4J4mt0
+	 1QSs/VF0OsjOCCXcQeqWfQfkgVI3IqVnM9donOS1o1/B0Z7moWVLa2oXcYayXB9OHK
+	 OsKCi3K4wqhI8iL8J7htRv2pv2+3KzMXjpUwlQKc9/6xLX+o8lLOlfu/cdNSLu5Fqe
+	 aUcJcYDgQZZ0oVAESlMeQiNekRXIHDvLZMQmkKegNF4rY1sGZ723E7NWyrPsvv9mgO
+	 wCTgDLgMit9hkd7V9zH/yNoK4ondCpKG9JkUtBboED7ca3PK59P3V+esdLwPVfltVq
+	 kIq1wN4jfqFsw==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id VZskDX5A2oDm; Tue, 24 Oct 2023 11:42:37 +0000 (UTC)
+	with ESMTP id FC71qTfudXsP; Tue, 24 Oct 2023 11:50:29 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id BBA604ED1D;
-	Tue, 24 Oct 2023 11:42:36 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org BBA604ED1D
+	by smtp4.osuosl.org (Postfix) with ESMTP id C7B0E42093;
+	Tue, 24 Oct 2023 11:50:28 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C7B0E42093
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 2EFA21BF311
- for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Oct 2023 11:42:32 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id D0D5F1BF2F6
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Oct 2023 11:50:23 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id EBE788483E
- for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Oct 2023 11:42:31 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org EBE788483E
+ by smtp4.osuosl.org (Postfix) with ESMTP id A7BF942071
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Oct 2023 11:50:23 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A7BF942071
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id fU6d6eWPIi-i for <intel-wired-lan@lists.osuosl.org>;
- Tue, 24 Oct 2023 11:42:30 +0000 (UTC)
-Received: from mx3.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 2A4BF8483C
- for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Oct 2023 11:42:30 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 2A4BF8483C
-Received: from [141.14.220.45] (g45.guest.molgen.mpg.de [141.14.220.45])
- (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested) (Authenticated sender: pmenzel)
- by mx.molgen.mpg.de (Postfix) with ESMTPSA id 386F261E5FE03;
- Tue, 24 Oct 2023 13:41:55 +0200 (CEST)
-Message-ID: <71c02ebc-77f0-4b7d-9a1c-b2ed638f2757@molgen.mpg.de>
-Date: Tue, 24 Oct 2023 13:41:53 +0200
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id ivBXCgQAigsu for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 24 Oct 2023 11:50:22 +0000 (UTC)
+Received: from mail-wm1-x335.google.com (mail-wm1-x335.google.com
+ [IPv6:2a00:1450:4864:20::335])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 10C8641F1D
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Oct 2023 11:50:21 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 10C8641F1D
+Received: by mail-wm1-x335.google.com with SMTP id
+ 5b1f17b1804b1-40839807e82so25430805e9.0
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Oct 2023 04:50:21 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1698148219; x=1698753019;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=i2XdxedmWSwH4vw/QHp+RZVDywlMbPNif4GB1QAW8hE=;
+ b=NyN9nuvRavS2250isYdQv/3wWvN/FgxTUYUTUR8k5qDaHDZqd8lXpUIz+4SP9H+4Uz
+ LUuGh8/EE6goqJWoa4UFoi1Oad6OtkKG31hF2oupxiExKsR6ETn4qEXHbKAYddw/zCD2
+ 4wP4rFaPZasThek5Cn2w378lECogg2FHkDFDrPnct3BG0zveZoRbkLJ2JHOPfHtfJn7x
+ kYPbhl/tLp4hVn0UdXOgK9sdoCiiHkjpbPLOh3YjEs3fUSIOyKcBQsmWvlS6hGEeGfYP
+ IDpxF5zs1uwBA3jXPpSsox0AA1ow75vZb31haEO9yFAXib2qlGqO5EdK9xKW8LNp66zu
+ ctaA==
+X-Gm-Message-State: AOJu0YxxyvIMeHr5GZJCVtwfaYNKnU+w+HXz+y9CQ7PxQcGHGVRYvA0C
+ cDXzMp2Klk20jF4AjqvstUOPTw==
+X-Google-Smtp-Source: AGHT+IFYLVTxRjI85SHP8iUKKoWYZ69YKRQqPUSXVKzjW23w/XZMU4VToX0MAPWkBNL+z3sQ5mm9AQ==
+X-Received: by 2002:a05:600c:602a:b0:407:4126:f71c with SMTP id
+ az42-20020a05600c602a00b004074126f71cmr14878834wmb.6.1698148219327; 
+ Tue, 24 Oct 2023 04:50:19 -0700 (PDT)
+Received: from localhost (host-213-179-129-39.customer.m-online.net.
+ [213.179.129.39]) by smtp.gmail.com with ESMTPSA id
+ c16-20020a05600c0ad000b003fee567235bsm16537251wmr.1.2023.10.24.04.50.18
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 24 Oct 2023 04:50:18 -0700 (PDT)
+Date: Tue, 24 Oct 2023 13:50:16 +0200
+From: Jiri Pirko <jiri@resnulli.us>
+To: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+Message-ID: <ZTeveEZ1W/zejDuM@nanopsycho>
+References: <20231024110929.19423-1-michal.swiatkowski@linux.intel.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Content-Language: en-US
-To: Pawel Chmielewski <pawel.chmielewski@intel.com>,
- Liang-min Wang <liang-min.wang@intel.com>
-References: <20231024112912.1811594-1-pawel.chmielewski@intel.com>
-From: Paul Menzel <pmenzel@molgen.mpg.de>
-In-Reply-To: <20231024112912.1811594-1-pawel.chmielewski@intel.com>
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next] ice: Reset VF on Tx MDD event
+Content-Disposition: inline
+In-Reply-To: <20231024110929.19423-1-michal.swiatkowski@linux.intel.com>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=resnulli-us.20230601.gappssmtp.com; s=20230601; t=1698148219; x=1698753019;
+ darn=lists.osuosl.org; 
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+ bh=i2XdxedmWSwH4vw/QHp+RZVDywlMbPNif4GB1QAW8hE=;
+ b=CtxTr7EgRhllhAjKAjUAkG+xW+ShMtFoU4/O17YFJPOfqFj9X/MuTaUnwt0cYv9I2C
+ h90/SRwTDW63Sul7mdq3XKezawwTuP5bTaZo9KbxWX+G106gsA/9b/+1pr6fukcb/b08
+ nQV2PSAn02ved3CxkDtbBIchwAY8xsWIP7SLx0dL2Pw7C+PumygNMvNerIwcQxi1RasN
+ 6Q1m/OWED8v7KmqPj+kRHuB1Q4Lyo6xidzLx5NQI2TED39boEQMJM+qiC6oL6Bm/bn8y
+ 2xkg/PVqW6Io/eF7Q5BGnnKhCYvJu6mgOMlTVkObTHxUmcS3QE0khI/b/0ZzjIOiMsld
+ I2qg==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key) header.d=resnulli-us.20230601.gappssmtp.com
+ header.i=@resnulli-us.20230601.gappssmtp.com header.a=rsa-sha256
+ header.s=20230601 header.b=CtxTr7Eg
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v1 00/15] one by one port
+ representors creation
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,59 +111,78 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>,
- lukasz.czapnik@intel.com, intel-wired-lan@lists.osuosl.org
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Cc: wojciech.drewek@intel.com, marcin.szycik@intel.com, netdev@vger.kernel.org,
+ jesse.brandeburg@intel.com, intel-wired-lan@lists.osuosl.org,
+ przemyslaw.kitszel@intel.com, jacob.e.keller@intel.com,
+ piotr.raczynski@intel.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-RGVhciBQYXdlbCwgZGVhciBMaWFuZy1taW4sCgoKQW0gMjQuMTAuMjMgdW0gMTM6Mjkgc2Nocmll
-YiBQYXdlbCBDaG1pZWxld3NraToKPiBGcm9tOiBMaWFuZy1taW4gV2FuZyA8bGlhbmctbWluLndh
-bmdAaW50ZWwuY29tPgoKU2hvdWxkIG1pbiBzdGFydCB3aXRoIGEgY2FwaXRhbCBsZXR0ZXIgTGlh
-bmctTWluPwoKPiBJbiBjYXNlcyB3aGVuIFZGIHNlbmRzIG1hbGZvcm1lZCBwYWNrZXRzIHRoYXQg
-YXJlIGNsYXNzaWZpZWQgYXMgbWFsaWNpb3VzLAo+IHNvbWV0aW1lcyBpdCBjYXVzZXMgVHggcXVl
-dWUgdG8gZnJlZXplLiBUaGlzIGZyb3plbiBxdWV1ZSBjYW4gYmUgc3R1Y2sKPiBmb3Igc2V2ZXJh
-bCBtaW51dGVzIGJlaW5nIHVudXNhYmxlLgoKRGlkIHlvdSBhbmFseXplIHRoZSBjYXVzZSBmb3Ig
-dGhpcy4gV2h5IGRvZXMgaXQgZnJlZXplIG9ubHkgc29tZXRpbWVzPyAKQXJlIHlvdSBhYmxlIHRv
-IHJlcHJvZHVjZSBpdD8KCj4gV2hlbiBNREQgZXZlbnQgb2NjdXJzLCBwZXJmb3JtIGdyYWNlZnVs
-IFZGIHJlc2V0IHRvIHF1aWNrbHkgYnJpbmcgVkYKPiBiYWNrIHRvIG9wZXJhdGlvbmFsIHN0YXRl
-LgoKSeKAmWQgc3BlbGwgb3V0IE1hbGljaW91cyBEcml2ZXIgRGV0ZWN0aW9uLgoKUGxlYXNlIG1l
-bnRpb24sIHRoYXQgYSBuZXcgbG9nIG1lc3NhZ2UgaXMgYWRkZWQuCgo+IFNpZ25lZC1vZmYtYnk6
-IExpYW5nLW1pbiBXYW5nIDxsaWFuZy1taW4ud2FuZ0BpbnRlbC5jb20+Cj4gU2lnbmVkLW9mZi1i
-eTogUGF3ZWwgQ2htaWVsZXdza2kgPHBhd2VsLmNobWllbGV3c2tpQGludGVsLmNvbT4KPiBSZXZp
-ZXdlZC1ieTogTWljaGFsIFN3aWF0a293c2tpIDxtaWNoYWwuc3dpYXRrb3dza2lAbGludXguaW50
-ZWwuY29tPgo+IC0tLQo+ICAgZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWNlL2ljZV9tYWlu
-LmMgfCAxNCArKysrKysrKysrKystLQo+ICAgMSBmaWxlIGNoYW5nZWQsIDEyIGluc2VydGlvbnMo
-KyksIDIgZGVsZXRpb25zKC0pCj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvbmV0L2V0aGVybmV0
-L2ludGVsL2ljZS9pY2VfbWFpbi5jIGIvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWNlL2lj
-ZV9tYWluLmMKPiBpbmRleCA2NjA5NWU5YjA5NGUuLmNmOWZkMWYxNjhmNyAxMDA2NDQKPiAtLS0g
-YS9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pY2UvaWNlX21haW4uYwo+ICsrKyBiL2RyaXZl
-cnMvbmV0L2V0aGVybmV0L2ludGVsL2ljZS9pY2VfbWFpbi5jCj4gQEAgLTE4MzYsOCArMTgzNiwx
-MyBAQCBzdGF0aWMgdm9pZCBpY2VfaGFuZGxlX21kZF9ldmVudChzdHJ1Y3QgaWNlX3BmICpwZikK
-PiAgIAkJCXZmLT5tZGRfdHhfZXZlbnRzLmNvdW50Kys7Cj4gICAJCQlzZXRfYml0KElDRV9NRERf
-VkZfUFJJTlRfUEVORElORywgcGYtPnN0YXRlKTsKPiAgIAkJCWlmIChuZXRpZl9tc2dfdHhfZXJy
-KHBmKSkKPiAtCQkJCWRldl9pbmZvKGRldiwgIk1hbGljaW91cyBEcml2ZXIgRGV0ZWN0aW9uIGV2
-ZW50IFRYX1RDTEFOIGRldGVjdGVkIG9uIFZGICVkXG4iLAo+ICsJCQkJZGV2X2luZm8oZGV2LAo+
-ICsJCQkJCSAiTWFsaWNpb3VzIERyaXZlciBEZXRlY3Rpb24gZXZlbnQgVFhfVENMQU4gZGV0ZWN0
-ZWQgb24gVkYgJWRcbiIsCj4gICAJCQkJCSB2Zi0+dmZfaWQpOwoKSeKAmWQgcmVmcmFpbiBmcm9t
-IGZvcm1hdHRpbmcgY2hhbmdlcy4KCj4gKwkJCWRldl9pbmZvKGRldiwKPiArCQkJCSAiUEYtdG8t
-VkYgcmVzZXQgb24gVkYgJWQgZHVlIHRvIFR4IE1ERCBUWF9UQ0xBTiBldmVudFxuIiwKPiArCQkJ
-CSB2Zi0+dmZfaWQpOwo+ICsJCQlpY2VfcmVzZXRfdmYodmYsIElDRV9WRl9SRVNFVF9OT1RJRlkp
-Owo+ICAgCQl9Cj4gICAKPiAgIAkJcmVnID0gcmQzMihodywgVlBfTURFVF9UWF9URFBVKHZmLT52
-Zl9pZCkpOwo+IEBAIC0xODQ2LDggKzE4NTEsMTMgQEAgc3RhdGljIHZvaWQgaWNlX2hhbmRsZV9t
-ZGRfZXZlbnQoc3RydWN0IGljZV9wZiAqcGYpCj4gICAJCQl2Zi0+bWRkX3R4X2V2ZW50cy5jb3Vu
-dCsrOwo+ICAgCQkJc2V0X2JpdChJQ0VfTUREX1ZGX1BSSU5UX1BFTkRJTkcsIHBmLT5zdGF0ZSk7
-Cj4gICAJCQlpZiAobmV0aWZfbXNnX3R4X2VycihwZikpCj4gLQkJCQlkZXZfaW5mbyhkZXYsICJN
-YWxpY2lvdXMgRHJpdmVyIERldGVjdGlvbiBldmVudCBUWF9URFBVIGRldGVjdGVkIG9uIFZGICVk
-XG4iLAo+ICsJCQkJZGV2X2luZm8oZGV2LAo+ICsJCQkJCSAiTWFsaWNpb3VzIERyaXZlciBEZXRl
-Y3Rpb24gZXZlbnQgVFhfVERQVSBkZXRlY3RlZCBvbiBWRiAlZFxuIiwKPiAgIAkJCQkJIHZmLT52
-Zl9pZCk7Cj4gKwkJCWRldl9pbmZvKGRldiwKPiArCQkJCSAiUEYtdG8tVkYgcmVzZXQgb24gVkYg
-JWQgZHVlIHRvIFR4IE1ERCBUWF9UQ0xBTiBldmVudFxuIiwKPiArCQkJCSB2Zi0+dmZfaWQpOwo+
-ICsJCQlpY2VfcmVzZXRfdmYodmYsIElDRV9WRl9SRVNFVF9OT1RJRlkpOwo+ICAgCQl9Cj4gICAK
-PiAgIAkJcmVnID0gcmQzMihodywgVlBfTURFVF9SWCh2Zi0+dmZfaWQpKTsKCkl0IGxvb2sgbGlr
-ZSwgYSBwYXRjaCBjb3VsZCBiZSBhZGRlZCBhaGVhZCB0byBmYWN0b3IgdGhlc2UgcGFydHMgaW4g
-YSAKc2VwYXJhdGUgZnVuY3Rpb24uCgoKS2luZCByZWdhcmRzLAoKUGF1bApfX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpJbnRlbC13aXJlZC1sYW4gbWFpbGlu
-ZyBsaXN0CkludGVsLXdpcmVkLWxhbkBvc3Vvc2wub3JnCmh0dHBzOi8vbGlzdHMub3N1b3NsLm9y
-Zy9tYWlsbWFuL2xpc3RpbmZvL2ludGVsLXdpcmVkLWxhbgo=
+Tue, Oct 24, 2023 at 01:09:14PM CEST, michal.swiatkowski@linux.intel.com wrote:
+>Hi,
+>
+>Currently ice supports creating port representors only for VFs. For that
+>use case they can be created and removed in one step.
+>
+>This patchset is refactoring current flow to support port representor
+>creation also for subfunctions and SIOV. In this case port representors
+>need to be createad and removed one by one. Also, they can be added and
+>removed while other port representors are running.
+>
+>To achieve that we need to change the switchdev configuration flow.
+>Three first patches are only cosmetic (renaming, removing not used code).
+>Next few ones are preparation for new flow. The most important one
+>is "add VF representor one by one". It fully implements new flow.
+>
+>New type of port representor (for subfunction) will be introduced in
+>follow up patchset.
+
+Examples please. Show new outputs of devlink commands.
+
+Thanks!
+
+
+>
+>Michal Swiatkowski (15):
+>  ice: rename switchdev to eswitch
+>  ice: remove redundant max_vsi_num variable
+>  ice: remove unused control VSI parameter
+>  ice: track q_id in representor
+>  ice: use repr instead of vf->repr
+>  ice: track port representors in xarray
+>  ice: remove VF pointer reference in eswitch code
+>  ice: make representor code generic
+>  ice: return pointer to representor
+>  ice: allow changing SWITCHDEV_CTRL VSI queues
+>  ice: set Tx topology every time new repr is added
+>  ice: realloc VSI stats arrays
+>  ice: add VF representors one by one
+>  ice: adjust switchdev rebuild path
+>  ice: reserve number of CP queues
+>
+> drivers/net/ethernet/intel/ice/ice.h          |  13 +-
+> drivers/net/ethernet/intel/ice/ice_devlink.c  |  29 +
+> drivers/net/ethernet/intel/ice/ice_devlink.h  |   1 +
+> drivers/net/ethernet/intel/ice/ice_eswitch.c  | 562 ++++++++++--------
+> drivers/net/ethernet/intel/ice/ice_eswitch.h  |  22 +-
+> .../net/ethernet/intel/ice/ice_eswitch_br.c   |  22 +-
+> drivers/net/ethernet/intel/ice/ice_lib.c      |  81 ++-
+> drivers/net/ethernet/intel/ice/ice_main.c     |   6 +-
+> drivers/net/ethernet/intel/ice/ice_repr.c     | 195 +++---
+> drivers/net/ethernet/intel/ice/ice_repr.h     |   9 +-
+> drivers/net/ethernet/intel/ice/ice_sriov.c    |  20 +-
+> drivers/net/ethernet/intel/ice/ice_tc_lib.c   |   4 +-
+> drivers/net/ethernet/intel/ice/ice_vf_lib.c   |   9 +-
+> drivers/net/ethernet/intel/ice/ice_vf_lib.h   |   2 +-
+> 14 files changed, 553 insertions(+), 422 deletions(-)
+>
+>-- 
+>2.41.0
+>
+>
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
