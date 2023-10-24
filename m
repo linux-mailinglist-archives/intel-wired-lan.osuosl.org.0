@@ -1,95 +1,89 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 48F7F7D50A7
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 24 Oct 2023 15:01:20 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 52B527D51E4
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 24 Oct 2023 15:36:08 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id C6935847D4;
-	Tue, 24 Oct 2023 13:01:18 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org C6935847D4
+	by smtp1.osuosl.org (Postfix) with ESMTP id DC5DC846FB;
+	Tue, 24 Oct 2023 13:36:06 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org DC5DC846FB
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1698152478;
-	bh=Uag6bqF7l/KA1vOoZ+JThx8KA58VTEkQq2z1nT8hkpk=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
+	s=default; t=1698154566;
+	bh=0q3OKUSOdiVKOeTXMc3eW8NF/J7fBek4TFDUzZErIt4=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=CBdHcP5vMmcOujT0McG5SwrACHH6aAfmFFtXShS8u5xV6+xQNKnIdluYzVs0fSzDz
-	 2eUq32v53FZYE/6gY1TuwVdx6WVoI40KbpCBILD8ZrFO+YVdr7AzTtltNpy5P4CFxC
-	 sxBtr7tKdP3i9lmgLdN+IFNxsSPEStG106+ATjZGGrJhKUbFZTa4DkhHVofPez+9/I
-	 VkeT7+iwpO8wdeCH/C28E78R8VK5GMNdBbGHzA4xCR9VqSoOXdPCyaTaHll+y65TBo
-	 AdzoXq8ldBh7F4AJhsJZXrdXFqjN+jB8qE7oSwovygdGtQ/S5CQvRNSI9XVCqudvUY
-	 xWOj9MjlQ/BaA==
+	b=uB7txVIETBQ3sqNayuALO2InLaWIFJF9TJ+zk6F6lYHEmTzNfj/mBWsdd16X1x/EC
+	 zYhIpz5hsstE5BSo28cGMGi+WHz+nA7ypkBHRv6C8zgZ1+8bdQxpmTPVicfW5kzTfu
+	 pMuv5V8WVxCnMriNDgHn0jb00DAMMqBaRf6bWBVNz+FYyp0Hbi4rAlA+XLm2PaI6TO
+	 FWQKBv64Re6QQjlt0GTD85mPWENJf7wJqrRgdK7DrdddyfciWDTI0r4HAEX8qdcEFj
+	 bANVmobwB00LUwI83N9AsdbjWSqemtufRnZDO/Ttb7VblncWD/7ejmYiUizl4xeZja
+	 8yQgS0o2hhnWQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id KGDbv0ZtDiz4; Tue, 24 Oct 2023 13:01:18 +0000 (UTC)
+	with ESMTP id 9aq_5-iAe4nx; Tue, 24 Oct 2023 13:36:06 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id B56A3844CA;
-	Tue, 24 Oct 2023 13:01:17 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B56A3844CA
+	by smtp1.osuosl.org (Postfix) with ESMTP id 79F4F846F8;
+	Tue, 24 Oct 2023 13:36:05 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 79F4F846F8
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 831741BF38E
- for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Oct 2023 13:01:13 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 48EF91BF377
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Oct 2023 13:36:01 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 68E5B6FC0D
- for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Oct 2023 13:01:13 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 68E5B6FC0D
+ by smtp3.osuosl.org (Postfix) with ESMTP id 2CFD56FCB5
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Oct 2023 13:36:01 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2CFD56FCB5
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id zyY7aR3Z-iOh for <intel-wired-lan@lists.osuosl.org>;
- Tue, 24 Oct 2023 13:01:12 +0000 (UTC)
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.129.124])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 9D6F26FC0C
- for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Oct 2023 13:01:12 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9D6F26FC0C
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-257-_Yx9v7gsPGSlGCwy8j95PA-1; Tue, 24 Oct 2023 09:01:07 -0400
-X-MC-Unique: _Yx9v7gsPGSlGCwy8j95PA-1
-Received: from smtp.corp.redhat.com (int-mx09.intmail.prod.int.rdu2.redhat.com
- [10.11.54.9])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id A8EBE857BC5;
- Tue, 24 Oct 2023 13:01:05 +0000 (UTC)
-Received: from [10.43.2.183] (unknown [10.43.2.183])
- by smtp.corp.redhat.com (Postfix) with ESMTP id E865A492BD9;
- Tue, 24 Oct 2023 13:01:03 +0000 (UTC)
-Message-ID: <d71f2fa2-e5b7-4221-bbd0-86285b6c1c33@redhat.com>
-Date: Tue, 24 Oct 2023 15:01:03 +0200
+ with ESMTP id qckkttXq_K0P for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 24 Oct 2023 13:36:00 +0000 (UTC)
+Received: from mgamail.intel.com (mgamail.intel.com [192.55.52.120])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 3363D6FB65
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Oct 2023 13:36:00 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3363D6FB65
+X-IronPort-AV: E=McAfee;i="6600,9927,10873"; a="385949465"
+X-IronPort-AV: E=Sophos;i="6.03,247,1694761200"; d="scan'208";a="385949465"
+Received: from fmsmga008.fm.intel.com ([10.253.24.58])
+ by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 24 Oct 2023 06:35:59 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10873"; a="824285712"
+X-IronPort-AV: E=Sophos;i="6.03,247,1694761200"; d="scan'208";a="824285712"
+Received: from wasp.igk.intel.com (HELO wasp) ([10.102.20.192])
+ by fmsmga008-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 24 Oct 2023 06:35:57 -0700
+Date: Tue, 24 Oct 2023 15:10:46 +0200
+From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+To: Jiri Pirko <jiri@resnulli.us>
+Message-ID: <ZTfCVsYtbwSg9nZ/@wasp>
+References: <20231024110929.19423-1-michal.swiatkowski@linux.intel.com>
+ <ZTeveEZ1W/zejDuM@nanopsycho>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Content-Language: en-US
-To: Wojciech Drewek <wojciech.drewek@intel.com>, netdev@vger.kernel.org
-References: <20231023162928.245583-1-ivecera@redhat.com>
- <20231023162928.245583-3-ivecera@redhat.com>
- <2aba9a2d-9dfd-49f2-bfec-1ff563a5f017@intel.com>
-From: Ivan Vecera <ivecera@redhat.com>
-In-Reply-To: <2aba9a2d-9dfd-49f2-bfec-1ff563a5f017@intel.com>
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.9
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=redhat.com; 
- s=mimecast20190719; t=1698152471;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=TdTXynsl0mVy35KpmI9bLMXkB0nwWaN15oyfZ6foo9E=;
- b=Yjn5ZFGmYJrfUDfd2I5W8ZoGykHe5SIFcJ9mHa3GMzx9uGuOIPBiiXGACWJ+/G2dHGlkNq
- aXhSAmUmeR7u2QV8Uigr6PXD8YcrQi53xXBjLvOAKKdCRppLPBm9Lr6NNhwoT3cagSd2u2
- 4FO+Cq49OU4jIyj/sgwXkgmYnRSRpZY=
+Content-Disposition: inline
+In-Reply-To: <ZTeveEZ1W/zejDuM@nanopsycho>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1698154560; x=1729690560;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:in-reply-to;
+ bh=xQRn7rZeilK2OunzJ4Yh7VMYWV9hIWoDgOVfiQGK9/M=;
+ b=l7iOhgOJQSvz+Yera6dHCzbQBhDxjiMvJ6vwVTrXfqkQzgM3IWytuO+X
+ 5rs6yr8i8ggk7VYe9d6f6xVSLEhCBCM+ILzMF/MQMjCdF73WkOsUF5vj5
+ Uf3lxWZSz1at+qo1mGPIwwrUm+8tUESmI4IzhjoOnIdY9TSHMD+fdFuZ9
+ oQXxEmPDL7hM2dz0ZiGwwxWa6saqrl2bgTCxHHy8KpWZPwY123a+wa68l
+ 4yj30yGSIeHGs2cY4KaCPx1aXvh237/ntoIkuHRcLLuOluGQwWKlzZDIU
+ 8et7g/qMQD4KnuPynKP6YpC5QCwls/MsdaKN1dFLfF/nLfo7v/tsdZgcH
+ A==;
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
- header.a=rsa-sha256 header.s=mimecast20190719 header.b=Yjn5ZFGm
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next 2/3] i40e: Add other helpers
- to check version of running firmware and AQ API
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=l7iOhgOJ
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v1 00/15] one by one port
+ representors creation
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -102,66 +96,103 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Jesse Brandeburg <jesse.brandeburg@intel.com>, linux-kernel@vger.kernel.org,
- Eric Dumazet <edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
- Jakub Kicinski <kuba@kernel.org>, Jacob Keller <jacob.e.keller@intel.com>,
- intel-wired-lan@lists.osuosl.org, Paolo Abeni <pabeni@redhat.com>,
- "David S. Miller" <davem@davemloft.net>
+Cc: wojciech.drewek@intel.com, marcin.szycik@intel.com, netdev@vger.kernel.org,
+ jesse.brandeburg@intel.com, intel-wired-lan@lists.osuosl.org,
+ przemyslaw.kitszel@intel.com, jacob.e.keller@intel.com,
+ piotr.raczynski@intel.com
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+On Tue, Oct 24, 2023 at 01:50:16PM +0200, Jiri Pirko wrote:
+> Tue, Oct 24, 2023 at 01:09:14PM CEST, michal.swiatkowski@linux.intel.com wrote:
+> >Hi,
+> >
+> >Currently ice supports creating port representors only for VFs. For that
+> >use case they can be created and removed in one step.
+> >
+> >This patchset is refactoring current flow to support port representor
+> >creation also for subfunctions and SIOV. In this case port representors
+> >need to be createad and removed one by one. Also, they can be added and
+> >removed while other port representors are running.
+> >
+> >To achieve that we need to change the switchdev configuration flow.
+> >Three first patches are only cosmetic (renaming, removing not used code).
+> >Next few ones are preparation for new flow. The most important one
+> >is "add VF representor one by one". It fully implements new flow.
+> >
+> >New type of port representor (for subfunction) will be introduced in
+> >follow up patchset.
+> 
+> Examples please. Show new outputs of devlink commands.
+> 
+> Thanks!
+>
 
+If you mean outputs after refactor to one by one solution nothing
+has changed:
 
-On 24. 10. 23 12:24, Wojciech Drewek wrote:
-> On 23.10.2023 18:29, Ivan Vecera wrote:
->> Add another helper functions that will be used by subsequent
->> patch to refactor existing open-coded checks whether the version
->> of running firmware and AdminQ API is recent enough to provide
->> certain capabilities.
->>
->> Signed-off-by: Ivan Vecera<ivecera@redhat.com>
->> ---
->>   drivers/net/ethernet/intel/i40e/i40e_type.h | 54 +++++++++++++++++++++
->>   1 file changed, 54 insertions(+)
->>
->> diff --git a/drivers/net/ethernet/intel/i40e/i40e_type.h b/drivers/net/ethernet/intel/i40e/i40e_type.h
->> index 050d479aeed3..bb62c14aa3d4 100644
->> --- a/drivers/net/ethernet/intel/i40e/i40e_type.h
->> +++ b/drivers/net/ethernet/intel/i40e/i40e_type.h
->> @@ -608,6 +608,60 @@ static inline bool i40e_is_aq_api_ver_ge(struct i40e_hw *hw, u16 maj, u16 min)
->>   		(hw->aq.api_maj_ver == maj && hw->aq.api_min_ver >= min));
->>   }
->>   
->> +/**
->> + * i40e_is_aq_api_ver_lt
->> + * @hw: pointer to i40e_hw structure
->> + * @maj: API major value to compare
->> + * @min: API minor value to compare
->> + *
->> + * Assert whether current HW API version is less than provided.
->> + **/
->> +static inline bool i40e_is_aq_api_ver_lt(struct i40e_hw *hw, u16 maj, u16 min)
->> +{
->> +	return !i40e_is_aq_api_ver_ge(hw, maj, min);
->> +}
-> It feels a bit off to have those helpers in i40e_type.h.
-> We don't have i40e_common.h though so I'd move them to i40e_prototype.h or i40e.h.
-> Same comment regarding 1st patch (I know I gave it my tag but I spotted the issue
-> while reading the 2nd patch).
+# devlink port show (after creating 4 VFs in switchdev mode)
+pci/0000:18:00.0/0: type eth netdev ens785f0np0 flavour physical port 0 splittable true lanes 8
+pci/0000:18:00.0/2: type eth netdev ens785f0np0_0 flavour pcivf controller 0 pfnum 0 vfnum 0 external false splittable false
+pci/0000:18:00.0/4: type eth netdev ens785f0np0_3 flavour pcivf controller 0 pfnum 0 vfnum 3 external false splittable false
+pci/0000:18:00.0/5: type eth netdev ens785f0np0_1 flavour pcivf controller 0 pfnum 0 vfnum 1 external false splittable false
+pci/0000:18:00.0/6: type eth netdev ens785f0np0_2 flavour pcivf controller 0 pfnum 0 vfnum 2 external false splittable false
 
-I'm sorry I already submitted v2 and helpers are present i40e_type.h.
-I would submit v3 but there is also i40e_is_vf() inline function already 
-present in i40e_type. Would you be OK with a follow-up that would move 
-all these inlines into i40e_prototype.h?
+According subfunction, it will also be in cover latter for patchset that
+is implementing subfunction.
 
-Btw i40e.h is not a good idea as this would bring a dependency on i40e.h 
-into i40e_adminq.c, i40e_common.c and i40e_dcb.c.
+Commands:
+# devlink dev eswitch set pci/0000:18:00.0 mode switchdev
+# devlink port add pci/0000:18:00.0 flavour pcisf pfnum 0 sfnum 1000
+# devlink port function set pci/0000:18:00.0/3 state active
 
-Regards,
-Ivan
+Outputs:
+Don't have it saved, will send it here after rebasing subfunction of top
+of this one.
 
+Thanks,
+Michal
+
+> >
+> >Michal Swiatkowski (15):
+> >  ice: rename switchdev to eswitch
+> >  ice: remove redundant max_vsi_num variable
+> >  ice: remove unused control VSI parameter
+> >  ice: track q_id in representor
+> >  ice: use repr instead of vf->repr
+> >  ice: track port representors in xarray
+> >  ice: remove VF pointer reference in eswitch code
+> >  ice: make representor code generic
+> >  ice: return pointer to representor
+> >  ice: allow changing SWITCHDEV_CTRL VSI queues
+> >  ice: set Tx topology every time new repr is added
+> >  ice: realloc VSI stats arrays
+> >  ice: add VF representors one by one
+> >  ice: adjust switchdev rebuild path
+> >  ice: reserve number of CP queues
+> >
+> > drivers/net/ethernet/intel/ice/ice.h          |  13 +-
+> > drivers/net/ethernet/intel/ice/ice_devlink.c  |  29 +
+> > drivers/net/ethernet/intel/ice/ice_devlink.h  |   1 +
+> > drivers/net/ethernet/intel/ice/ice_eswitch.c  | 562 ++++++++++--------
+> > drivers/net/ethernet/intel/ice/ice_eswitch.h  |  22 +-
+> > .../net/ethernet/intel/ice/ice_eswitch_br.c   |  22 +-
+> > drivers/net/ethernet/intel/ice/ice_lib.c      |  81 ++-
+> > drivers/net/ethernet/intel/ice/ice_main.c     |   6 +-
+> > drivers/net/ethernet/intel/ice/ice_repr.c     | 195 +++---
+> > drivers/net/ethernet/intel/ice/ice_repr.h     |   9 +-
+> > drivers/net/ethernet/intel/ice/ice_sriov.c    |  20 +-
+> > drivers/net/ethernet/intel/ice/ice_tc_lib.c   |   4 +-
+> > drivers/net/ethernet/intel/ice/ice_vf_lib.c   |   9 +-
+> > drivers/net/ethernet/intel/ice/ice_vf_lib.h   |   2 +-
+> > 14 files changed, 553 insertions(+), 422 deletions(-)
+> >
+> >-- 
+> >2.41.0
+> >
+> >
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
