@@ -1,105 +1,85 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6B2FB7D5389
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 24 Oct 2023 16:00:10 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id A39BF7D543C
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 24 Oct 2023 16:45:31 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id DCF0682269;
-	Tue, 24 Oct 2023 14:00:08 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org DCF0682269
+	by smtp4.osuosl.org (Postfix) with ESMTP id 34AB54EE25;
+	Tue, 24 Oct 2023 14:45:30 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 34AB54EE25
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1698156008;
-	bh=J5JzInJFzQRHPpU+Dsm2uzFhGdYC7rKbNtXTGrkee60=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=e37bgjeHEIGu5ZoB5dTVMmmFdZPTajckoZDDZJ5rEa5oXtc2wBzEhuSFBJib+XbYE
-	 AhPh/eyU78/9+ALTSDmGjyhjjL0Aktna1ctiXA5GOj2gTveuFL63GC1Y8tLjDocb0V
-	 2WDmWUmSpy6ZdEFlik9WBqjGvEzH18Fbe7I/j6DSfuOfIiQ/AyyZ0FLsg+z786VGG3
-	 sWAILbUSmeMRZ4ux4RQAf6r8WvWPRslatxGbePoq0qdFiXPgMFtbfD1T3CnSf1VreQ
-	 I2v2NeuUA7vDdB1eUxBqCjh4bn1dgCWvzHLsBf/eeq8e9klaBUjTniOIPNCjwg5OsQ
-	 nD91nWy0cVE4g==
+	s=default; t=1698158730;
+	bh=LEkZcFDiIbpGieMXceGzzjBnQC5Tn5WYLapjrlNXrwU=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=c66Fnjh3QwaZvGjdKm8ltXSegBnuatk/spJMQXj/iqaVK4nZto3if1F+pw2SefPo+
+	 x5YZHAxW8PY0gLMHBRelAx82yR6PI7WXHN1nl4fh+F1cgGdhib93VN74/vxpwF3qCu
+	 Xp/PZSAa/M6kcJxfuf74b3rFsrx+wpai5pIpfWdd+eCon7r4vd23V2T98di2WRQzjA
+	 Y/ODT4PHpFuVIqtLSM7cZTSYReWVkyo7bUvNuVRo7roOGoAWq1SQAsSUPEo7CVCa4N
+	 osrnNOguCZqlRPTaWcMlUDGCogy7dUQqBUZXzu4I+j9lLjghM9xSyMpag+8IwafB4R
+	 ZHnZ5G/Qgbg0g==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id s1dyXSsgGlhg; Tue, 24 Oct 2023 14:00:08 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id zemYcUhYmQXu; Tue, 24 Oct 2023 14:45:29 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 860808201B;
-	Tue, 24 Oct 2023 14:00:07 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 860808201B
+	by smtp4.osuosl.org (Postfix) with ESMTP id F1AC54EDC0;
+	Tue, 24 Oct 2023 14:45:28 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org F1AC54EDC0
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 89CEB1BF2F6
- for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Oct 2023 14:00:02 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 6485F1BF2C4
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Oct 2023 14:45:24 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 608BE42F80
- for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Oct 2023 14:00:02 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 608BE42F80
+ by smtp1.osuosl.org (Postfix) with ESMTP id 3BD5E846FE
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Oct 2023 14:45:24 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3BD5E846FE
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id IGWh9d30WizG for <intel-wired-lan@lists.osuosl.org>;
- Tue, 24 Oct 2023 14:00:00 +0000 (UTC)
-Received: from mail-ed1-x52b.google.com (mail-ed1-x52b.google.com
- [IPv6:2a00:1450:4864:20::52b])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 122FD42F73
- for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Oct 2023 13:59:59 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 122FD42F73
-Received: by mail-ed1-x52b.google.com with SMTP id
- 4fb4d7f45d1cf-53f6ccea1eeso6905678a12.3
- for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Oct 2023 06:59:59 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1698155997; x=1698760797;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=SgdX192KFs5xjFiQY9Esfa/RVC4h8fO0VTXfZSLKSz0=;
- b=aswBzv+CkS8D+yIrVANc3vjAqXZPtx8b5Uuv2pQo0hyozA1PdXhf2GlcQV5UNZltfH
- 0VTIz+qIyr3h8X+mJl13kp4YzyZEsBVgF2yZymk89Q+LMfDiw6BUh0BAInytHMAK1fni
- tHqBbkzgeWM8rpAoDV8iGFSNq0CyF9C0sVYVz48ngttdJn9OBA2/FaxcLrfdYzvC/Se2
- pkGJYCVm3UPsR9joaPNObft9kTSi95TK6H2HcMGGEseYK8z9qskcwW2u+nzehs9pZmQ2
- Ew6g6+S72ewrE3aVT/YEwxBylB9Vw+VS2JDDjgXQPbe/gfy+uwRX1ewJyMVmifUWkf7x
- nOIA==
-X-Gm-Message-State: AOJu0YwO2yCa/5p2qDS9Wi7kjo8Hv89fjo/IRh0fXna/kvwvEUqxOQzR
- 8BCe8JQgdVR/VTtvetfoC3pKhA==
-X-Google-Smtp-Source: AGHT+IEOqSVuyPBWT2PEqpT8k//S2BmNYh48OAyoFg4PNFz48+TogLO7Km36A6Ryl0V8LASW4amubg==
-X-Received: by 2002:a05:6402:2707:b0:540:3a46:cdcd with SMTP id
- y7-20020a056402270700b005403a46cdcdmr6418116edd.29.1698155997370; 
- Tue, 24 Oct 2023 06:59:57 -0700 (PDT)
-Received: from localhost (host-213-179-129-39.customer.m-online.net.
- [213.179.129.39]) by smtp.gmail.com with ESMTPSA id
- o2-20020a509b02000000b0053db0df6970sm8138765edi.54.2023.10.24.06.59.56
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 24 Oct 2023 06:59:56 -0700 (PDT)
-Date: Tue, 24 Oct 2023 15:59:55 +0200
-From: Jiri Pirko <jiri@resnulli.us>
-To: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-Message-ID: <ZTfN22fHri3vKWyF@nanopsycho>
-References: <20231024110929.19423-1-michal.swiatkowski@linux.intel.com>
- <ZTeveEZ1W/zejDuM@nanopsycho> <ZTfCVsYtbwSg9nZ/@wasp>
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id MlOpfGygTqu7 for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 24 Oct 2023 14:45:23 +0000 (UTC)
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.7])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 4B2E6846FD
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 24 Oct 2023 14:45:23 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4B2E6846FD
+X-IronPort-AV: E=McAfee;i="6600,9927,10873"; a="8624654"
+X-IronPort-AV: E=Sophos;i="6.03,248,1694761200"; 
+   d="scan'208";a="8624654"
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
+ by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 24 Oct 2023 07:45:22 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10873"; a="758495717"
+X-IronPort-AV: E=Sophos;i="6.03,248,1694761200"; d="scan'208";a="758495717"
+Received: from wasp.igk.intel.com ([10.102.20.192])
+ by orsmga002.jf.intel.com with ESMTP; 24 Oct 2023 07:45:19 -0700
+From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Tue, 24 Oct 2023 16:20:10 +0200
+Message-ID: <20231024142010.175592-1-michal.swiatkowski@linux.intel.com>
+X-Mailer: git-send-email 2.41.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <ZTfCVsYtbwSg9nZ/@wasp>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=resnulli-us.20230601.gappssmtp.com; s=20230601; t=1698155997; x=1698760797;
- darn=lists.osuosl.org; 
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=SgdX192KFs5xjFiQY9Esfa/RVC4h8fO0VTXfZSLKSz0=;
- b=1jqjYFiScBwL66zvlmkK2+TbVal5kQKthvbdE/L/NJ6eOJxi1Au3nskvDzz9f/xIsw
- qt8qyTQjC654M7CmOg99tChDQczok6GBwcn5XXRdhZh7x1XQFXRPtObWSH8AguoxBBsp
- gMfNGhGO3dEvmzXlRVSMsaM7U9MhV0wnUIhM74jIW5DNGZe7Q85BxXh75yib/a/9XfJl
- b8upYgxssr7QocckvueEEjZ0yMgAhoU/YqwxOSUSil5YS5NrxowBS6sUndDJzs1hBVrs
- p2CtM/8Uge686nR9lVac8i4VXU5tn2ifJxZ1C4JN4fRPosLO3iLo62rDI/OPqbGjFBYZ
- 9Rnw==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=resnulli-us.20230601.gappssmtp.com
- header.i=@resnulli-us.20230601.gappssmtp.com header.a=rsa-sha256
- header.s=20230601 header.b=1jqjYFiS
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v1 00/15] one by one port
- representors creation
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1698158723; x=1729694723;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=uikVPsf4VnPWDd3+XJU1LuQp8HEviAEs9MF9PJcjl4w=;
+ b=f0hE2GUsjyOmUUTpJiPzEOLSBqjtxIKM8ucM0nQNp6WRroPcpDAiNoey
+ SkwQGIoUtKqhs3dnNy+Vt3hzlMAkKn5Fh44tihVPOcwPDNfOQoRdPiKjT
+ bjtlV4jEq7LTV2ni8oJX56wQFSyQ385EdloFmDrBF4nLIUjvcOLJ9CLFq
+ ellLQb7SsIpKu74nAm1wuUUMAFK9Y0bKAAUvVaXQlUr64t2gF4IgVpZdW
+ f2bJ0hKbZ35qxZ7KbDucBAsXXM407fZm8nnzta5fZAiLQ79IkppWbfD4J
+ uySzrZ393XXuAwIdPNgwpNNHqldMwz71HD08hP/+WkvnJXA5jPPyosUaj
+ w==;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=f0hE2GUs
+Subject: [Intel-wired-lan] [PATCH iwl-next v1] ice: change vfs.num_msix_per
+ to vf->num_msix
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -112,108 +92,86 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: wojciech.drewek@intel.com, marcin.szycik@intel.com, netdev@vger.kernel.org,
- jesse.brandeburg@intel.com, intel-wired-lan@lists.osuosl.org,
+Cc: netdev@vger.kernel.org, yahui.cao@intel.com, marcin.szycik@linux.intel.com,
  przemyslaw.kitszel@intel.com, jacob.e.keller@intel.com,
- piotr.raczynski@intel.com
+ Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Tue, Oct 24, 2023 at 03:10:46PM CEST, michal.swiatkowski@linux.intel.com wrote:
->On Tue, Oct 24, 2023 at 01:50:16PM +0200, Jiri Pirko wrote:
->> Tue, Oct 24, 2023 at 01:09:14PM CEST, michal.swiatkowski@linux.intel.com wrote:
->> >Hi,
->> >
->> >Currently ice supports creating port representors only for VFs. For that
->> >use case they can be created and removed in one step.
->> >
->> >This patchset is refactoring current flow to support port representor
->> >creation also for subfunctions and SIOV. In this case port representors
->> >need to be createad and removed one by one. Also, they can be added and
->> >removed while other port representors are running.
->> >
->> >To achieve that we need to change the switchdev configuration flow.
->> >Three first patches are only cosmetic (renaming, removing not used code).
->> >Next few ones are preparation for new flow. The most important one
->> >is "add VF representor one by one". It fully implements new flow.
->> >
->> >New type of port representor (for subfunction) will be introduced in
->> >follow up patchset.
->> 
->> Examples please. Show new outputs of devlink commands.
->> 
->> Thanks!
->>
->
->If you mean outputs after refactor to one by one solution nothing
->has changed:
->
-># devlink port show (after creating 4 VFs in switchdev mode)
->pci/0000:18:00.0/0: type eth netdev ens785f0np0 flavour physical port 0 splittable true lanes 8
->pci/0000:18:00.0/2: type eth netdev ens785f0np0_0 flavour pcivf controller 0 pfnum 0 vfnum 0 external false splittable false
->pci/0000:18:00.0/4: type eth netdev ens785f0np0_3 flavour pcivf controller 0 pfnum 0 vfnum 3 external false splittable false
->pci/0000:18:00.0/5: type eth netdev ens785f0np0_1 flavour pcivf controller 0 pfnum 0 vfnum 1 external false splittable false
->pci/0000:18:00.0/6: type eth netdev ens785f0np0_2 flavour pcivf controller 0 pfnum 0 vfnum 2 external false splittable false
->
->According subfunction, it will also be in cover latter for patchset that
->is implementing subfunction.
->
->Commands:
-># devlink dev eswitch set pci/0000:18:00.0 mode switchdev
-># devlink port add pci/0000:18:00.0 flavour pcisf pfnum 0 sfnum 1000
-># devlink port function set pci/0000:18:00.0/3 state active
->
->Outputs:
->Don't have it saved, will send it here after rebasing subfunction of top
->of this one.
+vfs::num_msix_per should be only used as default value for
+vf->num_msix. For other use cases vf->num_msix should be used, as VF can
+have different MSI-X amount values.
 
-Ah, I was under impression it is part of this set. Sorry.
+Fix incorrect register index calculation. vfs::num_msix_per and
+pf->sriov_base_vector shouldn't be used after implementation of changing
+MSI-X amount on VFs. Instead vf->first_vector_idx should be used, as it
+is storing value for first irq index.
 
+Fixes: fe1c5ca2fe76 ("ice: implement num_msix field per VF")
+Reviewed-by: Jacob Keller <jacob.e.keller@intel.com>
+Signed-off-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+---
+ drivers/net/ethernet/intel/ice/ice_sriov.c    | 7 +------
+ drivers/net/ethernet/intel/ice/ice_virtchnl.c | 5 ++---
+ 2 files changed, 3 insertions(+), 9 deletions(-)
 
->
->Thanks,
->Michal
->
->> >
->> >Michal Swiatkowski (15):
->> >  ice: rename switchdev to eswitch
->> >  ice: remove redundant max_vsi_num variable
->> >  ice: remove unused control VSI parameter
->> >  ice: track q_id in representor
->> >  ice: use repr instead of vf->repr
->> >  ice: track port representors in xarray
->> >  ice: remove VF pointer reference in eswitch code
->> >  ice: make representor code generic
->> >  ice: return pointer to representor
->> >  ice: allow changing SWITCHDEV_CTRL VSI queues
->> >  ice: set Tx topology every time new repr is added
->> >  ice: realloc VSI stats arrays
->> >  ice: add VF representors one by one
->> >  ice: adjust switchdev rebuild path
->> >  ice: reserve number of CP queues
->> >
->> > drivers/net/ethernet/intel/ice/ice.h          |  13 +-
->> > drivers/net/ethernet/intel/ice/ice_devlink.c  |  29 +
->> > drivers/net/ethernet/intel/ice/ice_devlink.h  |   1 +
->> > drivers/net/ethernet/intel/ice/ice_eswitch.c  | 562 ++++++++++--------
->> > drivers/net/ethernet/intel/ice/ice_eswitch.h  |  22 +-
->> > .../net/ethernet/intel/ice/ice_eswitch_br.c   |  22 +-
->> > drivers/net/ethernet/intel/ice/ice_lib.c      |  81 ++-
->> > drivers/net/ethernet/intel/ice/ice_main.c     |   6 +-
->> > drivers/net/ethernet/intel/ice/ice_repr.c     | 195 +++---
->> > drivers/net/ethernet/intel/ice/ice_repr.h     |   9 +-
->> > drivers/net/ethernet/intel/ice/ice_sriov.c    |  20 +-
->> > drivers/net/ethernet/intel/ice/ice_tc_lib.c   |   4 +-
->> > drivers/net/ethernet/intel/ice/ice_vf_lib.c   |   9 +-
->> > drivers/net/ethernet/intel/ice/ice_vf_lib.h   |   2 +-
->> > 14 files changed, 553 insertions(+), 422 deletions(-)
->> >
->> >-- 
->> >2.41.0
->> >
->> >
+diff --git a/drivers/net/ethernet/intel/ice/ice_sriov.c b/drivers/net/ethernet/intel/ice/ice_sriov.c
+index 2a5e6616cc0a..e1494f24f661 100644
+--- a/drivers/net/ethernet/intel/ice/ice_sriov.c
++++ b/drivers/net/ethernet/intel/ice/ice_sriov.c
+@@ -374,16 +374,11 @@ static void ice_ena_vf_mappings(struct ice_vf *vf)
+  */
+ int ice_calc_vf_reg_idx(struct ice_vf *vf, struct ice_q_vector *q_vector)
+ {
+-	struct ice_pf *pf;
+-
+ 	if (!vf || !q_vector)
+ 		return -EINVAL;
+ 
+-	pf = vf->pf;
+-
+ 	/* always add one to account for the OICR being the first MSIX */
+-	return pf->sriov_base_vector + pf->vfs.num_msix_per * vf->vf_id +
+-		q_vector->v_idx + 1;
++	return vf->first_vector_idx + q_vector->v_idx + 1;
+ }
+ 
+ /**
+diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl.c b/drivers/net/ethernet/intel/ice/ice_virtchnl.c
+index cdf17b1e2f25..5261ba802c36 100644
+--- a/drivers/net/ethernet/intel/ice/ice_virtchnl.c
++++ b/drivers/net/ethernet/intel/ice/ice_virtchnl.c
+@@ -1523,7 +1523,6 @@ static int ice_vc_cfg_irq_map_msg(struct ice_vf *vf, u8 *msg)
+ 	u16 num_q_vectors_mapped, vsi_id, vector_id;
+ 	struct virtchnl_irq_map_info *irqmap_info;
+ 	struct virtchnl_vector_map *map;
+-	struct ice_pf *pf = vf->pf;
+ 	struct ice_vsi *vsi;
+ 	int i;
+ 
+@@ -1535,7 +1534,7 @@ static int ice_vc_cfg_irq_map_msg(struct ice_vf *vf, u8 *msg)
+ 	 * there is actually at least a single VF queue vector mapped
+ 	 */
+ 	if (!test_bit(ICE_VF_STATE_ACTIVE, vf->vf_states) ||
+-	    pf->vfs.num_msix_per < num_q_vectors_mapped ||
++	    vf->num_msix < num_q_vectors_mapped ||
+ 	    !num_q_vectors_mapped) {
+ 		v_ret = VIRTCHNL_STATUS_ERR_PARAM;
+ 		goto error_param;
+@@ -1557,7 +1556,7 @@ static int ice_vc_cfg_irq_map_msg(struct ice_vf *vf, u8 *msg)
+ 		/* vector_id is always 0-based for each VF, and can never be
+ 		 * larger than or equal to the max allowed interrupts per VF
+ 		 */
+-		if (!(vector_id < pf->vfs.num_msix_per) ||
++		if (!(vector_id < vf->num_msix) ||
+ 		    !ice_vc_isvalid_vsi_id(vf, vsi_id) ||
+ 		    (!vector_id && (map->rxq_map || map->txq_map))) {
+ 			v_ret = VIRTCHNL_STATUS_ERR_PARAM;
+-- 
+2.41.0
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
