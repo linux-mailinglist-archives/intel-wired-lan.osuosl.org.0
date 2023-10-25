@@ -1,126 +1,100 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id BFC6C7DBCB1
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 30 Oct 2023 16:35:21 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 29EE07DBCB4
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 30 Oct 2023 16:35:26 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 611AC70B70;
-	Mon, 30 Oct 2023 15:35:20 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 611AC70B70
+	by smtp3.osuosl.org (Postfix) with ESMTP id ACF0670A95;
+	Mon, 30 Oct 2023 15:35:24 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org ACF0670A95
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1698680120;
-	bh=trxk7ds1ZbTFq35ZfKEOkTAXMc4hhc7+gEL5g62Sux8=;
-	h=Date:In-Reply-To:References:From:To:Subject:List-Id:
+	s=default; t=1698680124;
+	bh=jj/PgvDrJJzk38H7FcgXpdT0grnKfYZ/T/Paz36o+9Q=;
+	h=References:In-Reply-To:From:Date:To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=ejZVQeCbERueP90Gu9gqXJGFg2tfX0AkOb2EhOjRWWzJntRnYHJaJUnG1hSzo1pg9
-	 fPv9pvo/mZkLCPebqqJ5v7Moq/19QchM0D6OOuKqnTCKR0gLLGgxE+9XFdSuJ2KPwl
-	 8O3WPsTambexph8cuyKygHHun+h0ov0dhbhgcsBviJRG6iqUayUshFhnmWxgXiDRXT
-	 Q3ndyKgxTz+IQZYEKaDmPaUdJa9IYAG4FWnryi0L433jPpaKN/a4EKJxWZZ85jTT1U
-	 oqB7zlkOq1F3xAVUq19DjOJtwj3GXK8aAYZPR6PqaCcbd02vuStuAbvAtAyO5cPfOy
-	 aXRZEuA6PJqiA==
+	b=yt+1y8V6XTG2DukXteTcliRobfdXxj9iN5XgaQNzE/c6lTpiFcusOwTb2/BBzjNN5
+	 XOGo2ooykCEe/ArnoQFBO5yVG+xbJMmB/8Esrhl20tCjGwA1g3pxdtYPDaz/tsOr+A
+	 3nZcMFCsxKm4DnQW2D5UBiLuUHl8zpknkO+0TfT0wXxBpMIo4icLr2ONuctf27nymT
+	 umEyr41OPM3mD/KiWb+8HgvdjWERzBSvSZEbJUpp8d3TG468mOYE/YJvuW4Fwii7AP
+	 GRtdUBu0fSyZrkMZnOzWmb7Xw0yVZhNWetQKB0uPiqq1PD2gzyTsh/cp7lUqsvRMlE
+	 Z3aPcEiU65WeQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id T1bSvVDOq4qU; Mon, 30 Oct 2023 15:35:19 +0000 (UTC)
+	with ESMTP id kVasNdOTewb2; Mon, 30 Oct 2023 15:35:23 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 4317A70925;
-	Mon, 30 Oct 2023 15:35:19 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 4317A70925
+	by smtp3.osuosl.org (Postfix) with ESMTP id 7350170925;
+	Mon, 30 Oct 2023 15:35:23 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7350170925
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 400911BF3CE
- for <intel-wired-lan@lists.osuosl.org>; Wed, 25 Oct 2023 23:40:43 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id CB7AB1BF2FE
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 25 Oct 2023 23:59:25 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 16C5F40960
- for <intel-wired-lan@lists.osuosl.org>; Wed, 25 Oct 2023 23:40:43 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 16C5F40960
+ by smtp1.osuosl.org (Postfix) with ESMTP id B13C18210D
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 25 Oct 2023 23:59:25 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B13C18210D
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 4OtUCHCc6hh0 for <intel-wired-lan@lists.osuosl.org>;
- Wed, 25 Oct 2023 23:40:39 +0000 (UTC)
-Received: from mail-yb1-xb49.google.com (mail-yb1-xb49.google.com
- [IPv6:2607:f8b0:4864:20::b49])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 4CAE64012D
- for <intel-wired-lan@lists.osuosl.org>; Wed, 25 Oct 2023 23:40:39 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 4CAE64012D
-Received: by mail-yb1-xb49.google.com with SMTP id
- 3f1490d57ef6-da05c625cb9so217734276.2
- for <intel-wired-lan@lists.osuosl.org>; Wed, 25 Oct 2023 16:40:39 -0700 (PDT)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id CTsdZlg1rnaP for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 25 Oct 2023 23:59:24 +0000 (UTC)
+Received: from mail-lf1-x136.google.com (mail-lf1-x136.google.com
+ [IPv6:2a00:1450:4864:20::136])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 957D78210A
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 25 Oct 2023 23:59:24 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 957D78210A
+Received: by mail-lf1-x136.google.com with SMTP id
+ 2adb3069b0e04-507f1c29f25so360728e87.1
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 25 Oct 2023 16:59:24 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1698277238; x=1698882038;
- h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
- :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=z2yHYpXdKX/Z1PdTHNHNNkO8SEsjgfSsadT9YDZgRP0=;
- b=s+kwORnkWHm+UsfoIkDFy7N85hI352EAqESskbTRZPihASYzGZ3ZEkumwpoYgC3rMb
- 37cHJ5YIWSXUrIvirNR2QIK+m5ytcihvnsLmpCIxp1Emm1M0/Yke4t7WX/ktTI5JOmKI
- UYICtUIcbIaOlGdb8SkRU69Vv08zFsCh3m1wNXNJosN8aG3pVrcQORFaEUD1KUNrkW/k
- k/AOIGYsZS66s5KmcUpWIELPSGAhxK7/Gcyv/G/knImfBiiJrN+9HFWKtP3OxaNEPf27
- gLB/N7BfOQgWbtzomdlgWqQvR9iFSwPAQzorm2LfWmrvGM0hvMeAmgsoUEzrp6AGn57u
- GDOw==
-X-Gm-Message-State: AOJu0YzvpeO8jzlnVXYnM3FTq7gYA0uQgy+ccDLp6lbuo+G5xT2DXrPQ
- X0JhCljLXIa/xjqXDlm2RcZJUaurBuR4j0ERMA==
-X-Google-Smtp-Source: AGHT+IEPHaIkN8H3iGQWkKfJ5NpCYcT3yYMmFh0PPi0IcMzsA3hF9JA14tymNgt30lyJsEwk/WiGn6lEwEr2E4Dzgg==
-X-Received: from jstitt-linux1.c.googlers.com
- ([fda3:e722:ac3:cc00:2b:ff92:c0a8:23b5])
- (user=justinstitt job=sendgmr) by 2002:a25:bccc:0:b0:d9a:c218:8177 with SMTP
- id l12-20020a25bccc000000b00d9ac2188177mr365329ybm.8.1698277238101; Wed, 25
- Oct 2023 16:40:38 -0700 (PDT)
-Date: Wed, 25 Oct 2023 23:40:34 +0000
-In-Reply-To: <20231025-ethtool_puts_impl-v1-0-6a53a93d3b72@google.com>
-Mime-Version: 1.0
+ d=1e100.net; s=20230601; t=1698278362; x=1698883162;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=rOKIo8DF+sUuPmcncHrP3egXRJzB8ddS10YhGbuNSzU=;
+ b=n4I2OjRqF8cF4pcPPiZL3/rpaAnI7P6Wyenbm0JKopsbFD5y8JkiyMs+riT1lZJpL/
+ 5qj6zvdYVqVk/4ftGmmXqDdKZlkSQZsh3MToTtVOv9tvqPQGIlA8n+Yt0702ODgnKdXH
+ Le4nndVkDPgeuBof8D79T3S/8xWTZDzI6+E+PtVSPPFImaYy0m2fwwKjhiKYTbooAh8q
+ kRolG37/eDOJmQE9GY0DDYPgXm+7mPtHxMMVBcsJhnvVmh8qVFEUDXnoM11U8Xna3g6Q
+ VXo+0m4TheCEyOQ2B/VQS+gr1YmMJYCdRTKm/FVsKB+a3xWlcJHFGqYEk7M4UAYzg3xs
+ fDiA==
+X-Gm-Message-State: AOJu0Yxr7I+l8q4cL+lPpsXn/GTsslHkPkTDyCasl08n0e1nz+PG30BX
+ 9gpiWapqDlB72wJ0lDWCzBPcVC3rCRKyNXCylIHk0Q==
+X-Google-Smtp-Source: AGHT+IGtsFDBZKN+N/ZF4VcJsolWlfdEFrnQ/DXEW85XQ02kN1A3YBCHAzvuiK4AYre/UMSRQEecJKagI7QT12Wqsd4=
+X-Received: by 2002:a19:2d54:0:b0:507:ceba:a94d with SMTP id
+ t20-20020a192d54000000b00507cebaa94dmr12847400lft.14.1698278362169; Wed, 25
+ Oct 2023 16:59:22 -0700 (PDT)
+MIME-Version: 1.0
 References: <20231025-ethtool_puts_impl-v1-0-6a53a93d3b72@google.com>
-X-Developer-Key: i=justinstitt@google.com; a=ed25519;
- pk=tC3hNkJQTpNX/gLKxTNQKDmiQl6QjBNCGKJINqAdJsE=
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1698277232; l=1707;
- i=justinstitt@google.com; s=20230717; h=from:subject:message-id;
- bh=n1veWIcKxGb7fuzlMSTmPKoEQaWG96C9Cgb9YzocQ5U=;
- b=W+dlkHRgIJMungJ97d0DNn75PwsHcGQp6OJdyQzjetsUzkUF+C5MUA4sHBdGuuzJqLmwBu8XE
- 4b6P70t8H6LCSr0S2uDYGUmJBTSTiZLZFgaH2y2gkECIo+QpVCuuHfV
-X-Mailer: b4 0.12.3
-Message-ID: <20231025-ethtool_puts_impl-v1-3-6a53a93d3b72@google.com>
+ <20231025-ethtool_puts_impl-v1-2-6a53a93d3b72@google.com>
+ <10a072f549e187bc2fdc735c0161c09c90fc1392.camel@perches.com>
+In-Reply-To: <10a072f549e187bc2fdc735c0161c09c90fc1392.camel@perches.com>
 From: Justin Stitt <justinstitt@google.com>
-To: "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Shay Agroskin <shayagr@amazon.com>, 
- Arthur Kiyanovski <akiyano@amazon.com>, David Arinzon <darinzon@amazon.com>,
- Noam Dagan <ndagan@amazon.com>, 
- Saeed Bishara <saeedb@amazon.com>, Rasesh Mody <rmody@marvell.com>, 
- Sudarsana Kalluru <skalluru@marvell.com>, GR-Linux-NIC-Dev@marvell.com, 
- Dimitris Michailidis <dmichail@fungible.com>,
- Yisen Zhuang <yisen.zhuang@huawei.com>, 
- Salil Mehta <salil.mehta@huawei.com>,
- Jesse Brandeburg <jesse.brandeburg@intel.com>, 
- Tony Nguyen <anthony.l.nguyen@intel.com>,
- Louis Peens <louis.peens@corigine.com>, 
- Shannon Nelson <shannon.nelson@amd.com>, Brett Creeley <brett.creeley@amd.com>,
- drivers@pensando.io, 
- "K. Y. Srinivasan" <kys@microsoft.com>, Haiyang Zhang <haiyangz@microsoft.com>,
- Wei Liu <wei.liu@kernel.org>, 
- Dexuan Cui <decui@microsoft.com>, Ronak Doshi <doshir@vmware.com>, 
- VMware PV-Drivers Reviewers <pv-drivers@vmware.com>,
- Andy Whitcroft <apw@canonical.com>, Joe Perches <joe@perches.com>, 
- Dwaipayan Ray <dwaipayanray1@gmail.com>,
- Lukas Bulwahn <lukas.bulwahn@gmail.com>
+Date: Wed, 25 Oct 2023 16:59:10 -0700
+Message-ID: <CAFhGd8r5YFJrpy7xvhi2LZUrsPNTTpWKy2PYgDOjnrnTNBN3Bg@mail.gmail.com>
+To: Joe Perches <joe@perches.com>
 X-Mailman-Approved-At: Mon, 30 Oct 2023 15:34:59 +0000
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1698277238; x=1698882038; darn=lists.osuosl.org;
- h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
- :date:from:to:cc:subject:date:message-id:reply-to;
- bh=z2yHYpXdKX/Z1PdTHNHNNkO8SEsjgfSsadT9YDZgRP0=;
- b=3syZtyjddWRBtHTzvLStKkH+W5uc562WEkhHbATkJAKXvv2ZUnokXIquP6AFvEEK6d
- 0Oi2bF2Ih5w/F42jfOedH+ILFzcmXYDUhXGWdOa8FsAUTNh3wjAlh37jQnjXhJvVxkHm
- nKrI9vrcsEtNK8JOxvZ5OC6/o+/+OsyFysQtjtifftfki0giJ5Iv6KWtxmHgCuSUpG3d
- 1+UsYNJuAQSS1mm4B3r3ass9QS39Ar/6Za9Y3kRxIRa5HTN9+V/Bdxt/+RSmsXPWJkXy
- 4VZGCi1TEHZ/JsDeOZkKuCsC6RmzUk/WZJ3hJeuakuvkPB/A4FHyFfh4gQ6Vvgnm4sfK
- sUAg==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ d=google.com; s=20230601; t=1698278362; x=1698883162; darn=lists.osuosl.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=rOKIo8DF+sUuPmcncHrP3egXRJzB8ddS10YhGbuNSzU=;
+ b=nHc+ILKaaKYzigBmOyA96MBnfkMksECE0HR3o7HrOYuLNjWkY+a4ohtrp97Chlsdmp
+ GwpZj4gsM2xZWSUDXMdgXp23oEkNf10c561An/rBiNTf8n/swQh92He7YrvfUEN0hHc6
+ D9VIIaUXPcvgmh1wN88HWvoDBlpdiFRAPgVi5O7xSxKuwXScP9PPhIorkNMpUfamCcAn
+ XmZsjbFns/W3TymEAbxJWKa2vK710H/4X4mehayqiYCCDTJnBGd2iEMzUcuKwIjbdGJY
+ mbFrJru15BwRWMvb8vEjUB2oTbZXXUz48x5U9SsI23ywbPFGFcRPeL6gmPwyncJqSxch
+ cY1g==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=google.com header.i=@google.com
- header.a=rsa-sha256 header.s=20230601 header.b=3syZtyjd
-Subject: [Intel-wired-lan] [PATCH 3/3] checkpatch: add ethtool_sprintf rules
+ header.a=rsa-sha256 header.s=20230601 header.b=nHc+ILKa
+Subject: Re: [Intel-wired-lan] [PATCH 2/3] treewide: Convert some
+ ethtool_sprintf() to ethtool_puts()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -133,64 +107,60 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: linux-hyperv@vger.kernel.org, Kees Cook <keescook@chromium.org>,
- netdev@vger.kernel.org, Nick Desaulniers <ndesaulniers@google.com>,
- linux-kernel@vger.kernel.org, Nathan Chancellor <nathan@kernel.org>,
- oss-drivers@corigine.com, intel-wired-lan@lists.osuosl.org,
- Justin Stitt <justinstitt@google.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: linux-hyperv@vger.kernel.org, Brett Creeley <brett.creeley@amd.com>,
+ Ronak Doshi <doshir@vmware.com>,
+ VMware PV-Drivers Reviewers <pv-drivers@vmware.com>,
+ Eric Dumazet <edumazet@google.com>, netdev@vger.kernel.org,
+ Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Arthur Kiyanovski <akiyano@amazon.com>, Louis Peens <louis.peens@corigine.com>,
+ Wei Liu <wei.liu@kernel.org>, Dexuan Cui <decui@microsoft.com>,
+ Jesse Brandeburg <jesse.brandeburg@intel.com>, Noam Dagan <ndagan@amazon.com>,
+ intel-wired-lan@lists.osuosl.org, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, Yisen Zhuang <yisen.zhuang@huawei.com>,
+ Shay Agroskin <shayagr@amazon.com>, Kees Cook <keescook@chromium.org>,
+ Haiyang Zhang <haiyangz@microsoft.com>, Nathan Chancellor <nathan@kernel.org>,
+ Lukas Bulwahn <lukas.bulwahn@gmail.com>, Andy Whitcroft <apw@canonical.com>,
+ drivers@pensando.io, Salil Mehta <salil.mehta@huawei.com>,
+ GR-Linux-NIC-Dev@marvell.com, Rasesh Mody <rmody@marvell.com>,
+ David Arinzon <darinzon@amazon.com>, oss-drivers@corigine.com,
+ Nick Desaulniers <ndesaulniers@google.com>, linux-kernel@vger.kernel.org,
+ "David S. Miller" <davem@davemloft.net>,
+ Dwaipayan Ray <dwaipayanray1@gmail.com>, Saeed Bishara <saeedb@amazon.com>,
+ Dimitris Michailidis <dmichail@fungible.com>,
+ Sudarsana Kalluru <skalluru@marvell.com>,
+ Shannon Nelson <shannon.nelson@amd.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Add some warnings for using ethtool_sprintf() where a simple
-ethtool_puts() would suffice.
-
-The two cases are:
-
-1) Use ethtool_sprintf() with just two arguments:
-|       ethtool_sprintf(&data, driver[i].name);
-or
-2) Use ethtool_sprintf() with a standalone "%s" fmt string:
-|       ethtool_sprintf(&data, "%s", driver[i].name);
-
-The former may cause -Wformat-security warnings while the latter is just
-not preferred. Both are safely in the category of warnings, not errors.
-
-Signed-off-by: Justin Stitt <justinstitt@google.com>
----
- scripts/checkpatch.pl | 13 +++++++++++++
- 1 file changed, 13 insertions(+)
-
-diff --git a/scripts/checkpatch.pl b/scripts/checkpatch.pl
-index 7d16f863edf1..1ba9ce778746 100755
---- a/scripts/checkpatch.pl
-+++ b/scripts/checkpatch.pl
-@@ -7020,6 +7020,19 @@ sub process {
- 			     "Prefer strscpy, strscpy_pad, or __nonstring over strncpy - see: https://github.com/KSPP/linux/issues/90\n" . $herecurr);
- 		}
- 
-+# ethtool_sprintf uses that should likely be ethtool_puts
-+		if (   $line =~ /\bethtool_sprintf\s*\(\s*$FuncArg\s*,\s*$FuncArg\s*\)/   ) {
-+			WARN("ETHTOOL_SPRINTF",
-+			     "Prefer ethtool_puts over ethtool_sprintf with only two arguments" . $herecurr);
-+		}
-+
-+		# use $rawline because $line loses %s via sanitization and thus we can't match against it.
-+		if (   $rawline =~ /\bethtool_sprintf\s*\(\s*$FuncArg\s*,\s*\"\%s\"\s*,\s*$FuncArg\s*\)/   ) {
-+			WARN("ETHTOOL_SPRINTF2",
-+			     "Prefer ethtool_puts over ethtool_sprintf with standalone \"%s\" specifier" . $herecurr);
-+		}
-+
-+
- # typecasts on min/max could be min_t/max_t
- 		if ($perl_version_ok &&
- 		    defined $stat &&
-
--- 
-2.42.0.758.gaed0368e0e-goog
-
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+T24gV2VkLCBPY3QgMjUsIDIwMjMgYXQgNDo1MeKAr1BNIEpvZSBQZXJjaGVzIDxqb2VAcGVyY2hl
+cy5jb20+IHdyb3RlOgo+Cj4gT24gV2VkLCAyMDIzLTEwLTI1IGF0IDIzOjQwICswMDAwLCBKdXN0
+aW4gU3RpdHQgd3JvdGU6Cj4gPiBUaGlzIHBhdGNoIGNvbnZlcnRzIHNvbWUgYmFzaWMgY2FzZXMg
+b2YgZXRodG9vbF9zcHJpbnRmKCkgdG8KPiA+IGV0aHRvb2xfcHV0cygpLgo+ID4KPiA+IFRoZSBj
+b252ZXJzaW9ucyBhcmUgdXNlZCBpbiBjYXNlcyB3aGVyZSBldGh0b29sX3NwcmludGYoKSB3YXMg
+YmVpbmcgdXNlZAo+ID4gd2l0aCBqdXN0IHR3byBhcmd1bWVudHM6Cj4gPiA+ICAgICAgIGV0aHRv
+b2xfc3ByaW50ZigmZGF0YSwgYnVmZmVyW2ldLm5hbWUpOwo+Cj4gT0suCj4KPiA+IG9yIHdoZW4g
+aXQncyB1c2VkIHdpdGggZm9ybWF0IHN0cmluZzogIiVzIgo+ID4gPiAgICAgICBldGh0b29sX3Nw
+cmludGYoJmRhdGEsICIlcyIsIGJ1ZmZlcltpXS5uYW1lKTsKPiA+ID4gd2hpY2ggYm90aCBub3cg
+YmVjb21lOgo+ID4gPiAgICAgICBldGh0b29sX3B1dHMoJmRhdGEsIGJ1ZmZlcltpXS5uYW1lKTsK
+Pgo+IFdoeSBkbyB5b3Ugd2FudCB0aGlzIGNvbnZlcnNpb24/Cj4gSXMgaXQgbm90IHBvc3NpYmxl
+IGZvciAubmFtZSB0byBjb250YWluIGEgZm9ybWF0dGluZyBmaWVsZD8KClRoZSBjYXNlIG9mIHVz
+aW5nIGp1c3QgdHdvIGFyZ3VtZW50cyB0byBhIGV0aHRvb2xfc3ByaW50ZgpjYWxsIG1heSBjYXVz
+ZSAtV2Zvcm1hdC1zZWN1cml0eSB3YXJuaW5ncy4gSWYgaXQgZGlkIGluZGVlZApoYXZlIGZvcm1h
+dCBzcGVjaWZpZXJzIHRoZW4gd2Ugd291bGQgaGF2ZSBtb3JlIGZvcm1hdApzcGVjaWZpZXJzIHRo
+YW4gYXJndW1lbnRzLiBOb3QgaWRlYWwuCgpUaGUgc2Vjb25kIGNhc2Ugb2YgaGF2aW5nIGEgc3Rh
+bmRhbG9uZSAiJXMiIGlzbid0Cm5lY2Vzc2FyaWx5IGJhZCBvciB3cm9uZy4gSSB1c2VkIHRoaXMg
+ZXhhY3QgYXBwcm9hY2ggdG8KcmVwbGFjZSBzb21lIHN0cm5jcHkoKSB1c2FnZSBpbiBuZXQgZHJp
+dmVycyBbMV0uCgpJJ20gd29ya2luZyBvZmYgZ3VpZGFuY2UgZnJvbSBBbmRyZXcgTHVubiBbMl0g
+YW5kIEtlZXMKd2hvIHNhaWQgaXQgbWF5IGJlIGEgZ29vZCBpZGVhIHRvIHRpZHkgdGhpcyB1cCB3
+aXRoIGEgcHV0cygpLgoKQWxsIGluIGFsbCwgdGhpcyBwYXRjaCBkb2Vzbid0IGRvIG11Y2ggYnV0
+IGZpeCBzb21lIHdhcm5pbmdzCmFuZCBwcm92aWRlIGEgbW9yZSBvYnZpb3VzIGludGVyZmFjZS4g
+VGhlIG51bWJlciBvZgphY3R1YWwgcmVwbGFjZW1lbnRzIGFyZSByZWxhdGl2ZWx5IGxvdyAoYXJv
+dW5kIDIwaXNoKSBzbwpJIHdhcyBob3BpbmcgdG8gc25lYWsgdGhlbSBpbiB2aWEgdGhpcyBzZXJp
+ZXMuCgo+CgpbMV06IGh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL2FsbC8/cT1kZmIlM0FldGh0b29s
+X3NwcmludGYrQU5EK2YlM0FqdXN0aW5zdGl0dApbMl06IGh0dHBzOi8vbG9yZS5rZXJuZWwub3Jn
+L2FsbC9hOTU4ZDM1ZS05OGI2LTRhOTUtYjUwNS03NzY0ODJkMTE1MGNAbHVubi5jaC8KClRoYW5r
+cwpKdXN0aW4KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
+SW50ZWwtd2lyZWQtbGFuIG1haWxpbmcgbGlzdApJbnRlbC13aXJlZC1sYW5Ab3N1b3NsLm9yZwpo
+dHRwczovL2xpc3RzLm9zdW9zbC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC13aXJlZC1sYW4K
