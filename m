@@ -1,189 +1,185 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B47377D7FE1
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 26 Oct 2023 11:43:05 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id A35C97D7FF2
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 26 Oct 2023 11:47:58 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 4C73E415AE;
-	Thu, 26 Oct 2023 09:43:04 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 4C73E415AE
+	by smtp2.osuosl.org (Postfix) with ESMTP id 02CF640A71;
+	Thu, 26 Oct 2023 09:47:57 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 02CF640A71
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1698313384;
-	bh=OM+eUMDGhv4F7xj/gci7YbE2uhuMG4DN7tUeL+pOcTc=;
+	s=default; t=1698313677;
+	bh=a+aW2Jd9/M0wIAMn2dxW0zKlEDHdsA++r2WW2m86Wng=;
 	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=bXIOpXZkFo3U3VTzXWlxaIf4yBRzSDPAFAHFOnPD88AncGrHkqK6woJm9jMZ1jhZz
-	 Pwq10phSlmDocMTkohAPmUqqflqY6Dm0emrD1BfPA6qzgOPM2k9anYxeenQt6FHah7
-	 UtZRqDdDbSNGE01xXL/Xd/sZa1RCAOV0JPHHmTiKB4SFQWrfiq9UYMroTGfwk5DA8d
-	 0UL7k0FC7X+IR7GoLrdRlDBHAM7++0rY1lE0xvjaOXkqauswkdxnhXxMoqx2/18nlL
-	 +G3XQvx/UZvQCxKVC5A3v03+wq8+JQF/QhqqUGYbiXYKpJqdEO9HrgCJTTPcmdrwHb
-	 uzhwtaS9N/hHQ==
+	b=Bw1E4UqDx+BicDPnhWgY+X7SnZ2gu1ETKvpKqD/nLO64mE4U+tWQoZmnBbYEkOYYS
+	 t0bMnpObX3tdwgCyXsLW17rHtKxx3ahMAbq/7bJooZHt0AfQ+3tb5Za5600jeuN2XM
+	 mVfB9aDW8jkKeIXSgxE+HcmKUG9fpeJJ5M1cqPpaHfCJPuS78EWrazOIM6UU6x3D2o
+	 fJMR3QLYPElc9R8o8oBQQwnn1iYARz6m4ppjYhtHN4OXCcuS+FU63s+9A8qPpKB89S
+	 00uGENtv2J1T8AzIX4vqiscSlqoqBO/CgwzX5D0NgnUxukhqCh4N9CwcGHbO/kE55g
+	 ZSkvLRCPYjmOw==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id VXT4pKsaDDFj; Thu, 26 Oct 2023 09:43:03 +0000 (UTC)
+	with ESMTP id NFfmMAjI1kP1; Thu, 26 Oct 2023 09:47:55 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id C0EF44114E;
-	Thu, 26 Oct 2023 09:43:02 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C0EF44114E
+	by smtp2.osuosl.org (Postfix) with ESMTP id B077341755;
+	Thu, 26 Oct 2023 09:47:54 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B077341755
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id EA6301BF2B8
- for <intel-wired-lan@lists.osuosl.org>; Thu, 26 Oct 2023 09:42:57 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id CA6731BF2B8
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 26 Oct 2023 09:47:48 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id C2E548176F
- for <intel-wired-lan@lists.osuosl.org>; Thu, 26 Oct 2023 09:42:57 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org C2E548176F
+ by smtp2.osuosl.org (Postfix) with ESMTP id ADB9141732
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 26 Oct 2023 09:47:48 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org ADB9141732
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id R7UC3Fek6pSU for <intel-wired-lan@lists.osuosl.org>;
- Thu, 26 Oct 2023 09:42:57 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id YQNOQbbSQ45q for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 26 Oct 2023 09:47:46 +0000 (UTC)
 Received: from mgamail.intel.com (mgamail.intel.com [134.134.136.31])
- by smtp1.osuosl.org (Postfix) with ESMTPS id F20AB81761
- for <intel-wired-lan@lists.osuosl.org>; Thu, 26 Oct 2023 09:42:56 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org F20AB81761
-X-IronPort-AV: E=McAfee;i="6600,9927,10874"; a="451737975"
-X-IronPort-AV: E=Sophos;i="6.03,253,1694761200"; d="scan'208";a="451737975"
+ by smtp2.osuosl.org (Postfix) with ESMTPS id E67AF40A71
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 26 Oct 2023 09:47:45 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org E67AF40A71
+X-IronPort-AV: E=McAfee;i="6600,9927,10874"; a="451739955"
+X-IronPort-AV: E=Sophos;i="6.03,253,1694761200"; d="scan'208";a="451739955"
 Received: from fmsmga004.fm.intel.com ([10.253.24.48])
  by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 26 Oct 2023 02:42:56 -0700
+ 26 Oct 2023 02:47:44 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10874"; a="829555884"
-X-IronPort-AV: E=Sophos;i="6.03,253,1694761200"; d="scan'208";a="829555884"
-Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82])
+X-IronPort-AV: E=McAfee;i="6600,9927,10874"; a="829558303"
+X-IronPort-AV: E=Sophos;i="6.03,253,1694761200"; d="scan'208";a="829558303"
+Received: from fmsmsx601.amr.corp.intel.com ([10.18.126.81])
  by fmsmga004.fm.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
- 26 Oct 2023 02:42:55 -0700
-Received: from fmsmsx603.amr.corp.intel.com (10.18.126.83) by
- fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
+ 26 Oct 2023 02:47:44 -0700
+Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
+ fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.34; Thu, 26 Oct 2023 02:42:55 -0700
-Received: from fmsedg601.ED.cps.intel.com (10.1.192.135) by
- fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
+ 15.1.2507.34; Thu, 26 Oct 2023 02:47:44 -0700
+Received: from fmsedg602.ED.cps.intel.com (10.1.192.136) by
+ fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.34 via Frontend Transport; Thu, 26 Oct 2023 02:42:55 -0700
-Received: from NAM11-DM6-obe.outbound.protection.outlook.com (104.47.57.169)
- by edgegateway.intel.com (192.55.55.70) with Microsoft SMTP Server
+ 15.1.2507.34 via Frontend Transport; Thu, 26 Oct 2023 02:47:44 -0700
+Received: from NAM12-DM6-obe.outbound.protection.outlook.com (104.47.59.169)
+ by edgegateway.intel.com (192.55.55.71) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.34; Thu, 26 Oct 2023 02:42:55 -0700
+ 15.1.2507.32; Thu, 26 Oct 2023 02:47:43 -0700
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Ov5qeHCwQOJRj+QCcyzQRtnYHyKgN1dKjABkvcUyjYfEZREue40wrnVlDVkuCz7JzoAQ8qR9G27Ltgt6ubitzwivZqvtLirBN+V67T9cFQ1ZAIhMYa73Bda53xx0+cjFqrBo+fqOdy+I7I1i0pka5SaFsnHdLRfumPz5pwJLSj7tp/0xBzlvf6KZE5BiaMMI2MprLXxJBPDRjfnttf3b2q11B+eMZHDwAFWjPxoKg5Qh7VMV2jP6pt4vFaLqBchfGmdT+tpejgsT9qvUsfLTPuea1yMWCkzOEmT7WsOyZXKrf3FLvwDmggQaehdyVHaXwUa0N23OfJCX2Qs6+t73Ew==
+ b=VeRA7FkbPYSnu3ztApJK8ZHdlKobcXvy+yDH+H4w+ApboPchFU78vcFDaBOMgSRiZkoCBrS01vV1TyJD41VY4YqbUrufY+d1GZp5Ye3saBjiLqjkNGhxvAPFvS5e4hPLaR90YNloFon2BuMBORVWWTWFYA+ABVEx9WMALZ25gHpsuTEjSt3rJqJ9UVdfLSSGeLxzvw3lKaWvkgRg159+KAW/3UElbwf0fdU7z0IK8GkqKMJqK3gVzTVuv0iXAB+TTHJ8+ZWCBxNxXtx+RmMGaLP10NO4u2F5UlR1oNBMyUISu7L7YxQry02gh5DPFeYRHqXNv3OkLfjau0puF0fsfA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=CSjpP5JvFVTpTt1XsyzU8t7Ub7soh/CJgVNosx84eGI=;
- b=LUFAyOWA6uZ56+jj1515EOpRh7iZT4Q5+1EK0c/LgKfoeWGvzSwPVG73YhIzDdYWbbBpc7GwQIViw3FELIAdestPFeyWImtxekmoj7+KirP0zt1piCjJdj0H53AY91CgxgnrIJ3md3XWqkcKcVe1KA+0myXhWVpDgM3g0CAOZptpfNkdj6E86aDex776oJi4FFj7pIdpj3hy31glNA4qMbJKvwnPZSScn+d+G9rTfOZ+Nygh3MUgPDgTe0zSO2h4qa6ejdPZQ1/tUPdd+BpnBWCnYDNt1vS9SBqngzm5oVWDOqM/Kno3lH+mJxDpgH9dlB/Lv9VZNbwu+JZj0FhhzA==
+ bh=VmhVwN5h+zHuaC6i4n//s1KUl2OyO6wa8zw52Hq9rzU=;
+ b=kNF0pT4Vq0iz6PB2VuHHxFjDOpoBaBID8ykGRxFaZ0i60ilqwpZ+ftVUdtD+JhWTP8mx7Oq4B2Xn7fW369eiVV/3oZIBricVh/BSI9JktNc199OwfZNhiaOCOU8rvwnfyz5FdDKIhyxqHljriCXKLEx6LPfE/CzAXd3zcCmCuetC3qdBXRmdI5m0BSSSK82TL6EDWDxdGrTTUffopGPB+nT/d4b2h3Su5LolUb506u3KghZnpUYcr8sk6kdQa9GPP1C3xT2oUd4njvLKbImZ0j5dZ6x7Cuw1YlfppwIONlpUNyZCr7UdZzxUf5tEi4T8duL98WLXtgXN14Kmw4Jeew==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
  dkim=pass header.d=intel.com; arc=none
 Received: from MW4PR11MB5776.namprd11.prod.outlook.com (2603:10b6:303:183::9)
- by BL3PR11MB6481.namprd11.prod.outlook.com (2603:10b6:208:3bc::21)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6907.33; Thu, 26 Oct
- 2023 09:42:52 +0000
+ by SA0PR11MB4670.namprd11.prod.outlook.com (2603:10b6:806:9a::8) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6933.19; Thu, 26 Oct
+ 2023 09:47:40 +0000
 Received: from MW4PR11MB5776.namprd11.prod.outlook.com
  ([fe80::71a7:70c4:9046:9b8a]) by MW4PR11MB5776.namprd11.prod.outlook.com
  ([fe80::71a7:70c4:9046:9b8a%4]) with mapi id 15.20.6907.032; Thu, 26 Oct 2023
- 09:42:52 +0000
-Message-ID: <beb49134-37c7-48c6-8f3f-ac4a083d6bd6@intel.com>
-Date: Thu, 26 Oct 2023 11:42:45 +0200
+ 09:47:40 +0000
+Message-ID: <8ae4a3b1-288c-4739-8a75-f0fb275c00ae@intel.com>
+Date: Thu, 26 Oct 2023 11:47:34 +0200
 User-Agent: Mozilla Thunderbird
 Content-Language: en-US
-To: Jacob Keller <jacob.e.keller@intel.com>, Ivan Vecera <ivecera@redhat.com>, 
- <netdev@vger.kernel.org>
-References: <20231025103315.1149589-1-ivecera@redhat.com>
- <20231025103315.1149589-2-ivecera@redhat.com>
- <8a8f54a8-1a18-4797-a592-b57bc6fc45c1@intel.com>
- <cbb2e9f4-03f8-4a46-99e4-e952bb754a2f@redhat.com>
- <022960b9-dfd1-4ed8-9b46-9cc11ba060e2@intel.com>
+To: Ivan Vecera <ivecera@redhat.com>, <netdev@vger.kernel.org>
+References: <20231026083932.2623631-1-ivecera@redhat.com>
 From: Wojciech Drewek <wojciech.drewek@intel.com>
-In-Reply-To: <022960b9-dfd1-4ed8-9b46-9cc11ba060e2@intel.com>
-X-ClientProxiedBy: WA2P291CA0014.POLP291.PROD.OUTLOOK.COM
- (2603:10a6:1d0:1e::25) To MW4PR11MB5776.namprd11.prod.outlook.com
+In-Reply-To: <20231026083932.2623631-1-ivecera@redhat.com>
+X-ClientProxiedBy: FR4P281CA0172.DEUP281.PROD.OUTLOOK.COM
+ (2603:10a6:d10:b7::19) To MW4PR11MB5776.namprd11.prod.outlook.com
  (2603:10b6:303:183::9)
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: MW4PR11MB5776:EE_|BL3PR11MB6481:EE_
-X-MS-Office365-Filtering-Correlation-Id: f634bded-247a-4de4-83f2-08dbd607ec7d
+X-MS-TrafficTypeDiagnostic: MW4PR11MB5776:EE_|SA0PR11MB4670:EE_
+X-MS-Office365-Filtering-Correlation-Id: 067d7974-3544-45d8-e47a-08dbd6089816
 X-LD-Processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: jtqEpjv9cKOxLSSS4Rjmyp9xOi4AWXT6oFx0SgAGMxJ8FwTPvOI+Mvph9Erpgl0cZlPjK8uhQyMv0bsqJYq/svCNKmwkM7IyRPggmJjIKCrqxOfxedIMuqPKRezgJh3Pob58pTt8Npv5Evx6XRVfPWvHKFVzRjvdRov9KdB0HA3qTzRASGY79KcxUGWmJ0+vkCk94SGvUJj41QzkxDoglP+I+K053yTfHzBT02rtZeNtxtDcP0LC69EAza8TvlXpUE8Vrj2yLdRlSdte0mCr/vv5tTM2Lv92zPQYRnzdTnOIB5YSPrBnXBP6BsX6hvABAvABiWflIrwojPSh+VjAWYsiyPGKDDPR+hOxIkaFwTGPXLtGm5LXsDGxvemeP4dj5oHt7orj6hRHru/Hru8veWaOEXxxPG8STlCzJwEAwXHw/6CV6+F3VBN9KV4MCCiBkWNO0eQq7nhBvb5muIplAjWFzcOio8sk2xbo7pxCoTQggVLbVSgd1FLv0gAc+DFVbKWUrO/1jrgaWbOgs5AoViV6QZ+zdHRfc7ftsRYXC80WTAI2Xa84/eFVt3Cqcm8tsl4uWa79JBqHltgADjWt+TYWvFGg/xn460q84ycXQNjESNztvSw5Due/YzQsXvVZ2MiAt669yOc506RoCWyS9w==
+X-Microsoft-Antispam-Message-Info: D4Tfl+7ZdFRUDDud/L8kuTcD6bSYDDxBPlcgTvknSRE53DR9QvaiAybl3k+yYEPaplboIaFUUqDvW7jgZP3yNro5TgCZVadvpmLb1CyovHxwK4hw8cn0kxF2MMyKmgTs1o64Wg2DVoR+N3w1hEO0+VjQdQqA4r2WqJjB+TTnyDYlE/KutUkMAc/IgFPU5vKBeBzuyFL46MnAmprinL7cOLIM1jSfoeobzR+8qY9tFOFaoRGyHwJbht4h3WXbAcuH4SJVF42FaeeK/dbyeWtta8r+EuRwU5FZSfCC6XqKSHFvcLGOueLW0OL/tRK0xJva9fiwwh/ZOv8QOcQDFo2QEFzcvkPRw3OPUH8WkLBb1GS/Wq5VdiUetFrTLiaTGjppMlXTOl4Mb9ObV4V+IRLljyipaznEeHB/O5oLGpvGkRMytF7ObKmCLDMPHkgdZ1X1Qv7LvvqnwGkfiAapq6qLeoq8Ea2SOxGkP3QswYutcmT8Ewzg0GVq+91pDS7720hV64KCneG5WIawgGVVBqMWRs8pXcTEzuuyiEy1wuq2Zhv8/iZq4CY04qOmyRa/eRNsmDZPo0gWV7ZpTw8yC4B6IUgEVoEHYHUwL8M1T5ARVIFQKPo9elo/YKhG62gf0Vd+6SPFr2ggb4glNvCygL/T2A==
 X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:MW4PR11MB5776.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230031)(39860400002)(366004)(396003)(136003)(376002)(346002)(230922051799003)(451199024)(186009)(1800799009)(64100799003)(2906002)(2616005)(66556008)(31696002)(6506007)(6512007)(26005)(54906003)(6486002)(110136005)(6666004)(53546011)(66946007)(82960400001)(83380400001)(38100700002)(5660300002)(4326008)(316002)(41300700001)(66476007)(36756003)(8936002)(8676002)(44832011)(86362001)(31686004)(478600001)(43740500002)(45980500001);
+ SFS:(13230031)(366004)(396003)(346002)(136003)(39860400002)(376002)(230922051799003)(451199024)(64100799003)(186009)(1800799009)(2906002)(31686004)(30864003)(5660300002)(41300700001)(44832011)(82960400001)(26005)(38100700002)(4326008)(8676002)(8936002)(83380400001)(107886003)(54906003)(2616005)(66556008)(66476007)(316002)(6666004)(36756003)(6512007)(66946007)(53546011)(6506007)(478600001)(31696002)(86362001)(6486002)(45980500001)(43740500002);
  DIR:OUT; SFP:1102; 
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?ZlMxd2dLdjBTL0VmOENXd0VaNmtIeWxqeGFRTG5KUHVzSW50SG1UNkhaM0Ra?=
- =?utf-8?B?MXZwY01sUkpKL2lQQTI4OUtYalk4Y0pzcGFWaHdoaXNSeHQ1VmNsTVllaSta?=
- =?utf-8?B?bWR3SmtKQXNWTDltY2xBQmhTQXVRTkFFOXhYeXQxbERkWWc2VWtPRmxLNTlX?=
- =?utf-8?B?emQrcitYMit5dlhYQlpCUWNFOWNhdWRJRTlueUpaU09sVWVLb2lMcEZId04z?=
- =?utf-8?B?ekxLY3Fnb2x3OUN3MVFTRHhQdmpITWRPOTZxNm1NWmVNb0dnNTZ6VDkxV2N1?=
- =?utf-8?B?dFhKUzlJQWJtS3I3bUdHaFFKQXJTT2x0NXQ5dUYvVjZxU3k1YzcyQjBMVnFj?=
- =?utf-8?B?NmJjay96Sy9nNFpZd2dMMm9reXdBVE5tSnhVYVlkS1d0MEJVUVBsVDExRC9l?=
- =?utf-8?B?Qkw2Ni8xRklSVXJNdjNOMk1scVdBNTl6dmtyMkpHSElBd2gvWXVYOFVDUHNV?=
- =?utf-8?B?YmV2Z2E5VFIxRHByYXR1ektuM1hDMld3U0Z5bEVjdDFxb0VWSEdFQVRmZFln?=
- =?utf-8?B?aHdoM1Jpc2t1bkl0Y01BcVZUbGt4dXF1aWhteTZoOVcvZW9yZk83dVZsV2Ri?=
- =?utf-8?B?S2puOHFkK2R2S2V0S2ordVBpUm9WRzFqUnZwVkUxdEl0SDI3b1pPSEdKMmVr?=
- =?utf-8?B?LzNLTW5BU0ZyejhqV1BlRVlLSmVrRDJwcmFva29KdHBGd0xXOGRtWUpFekcv?=
- =?utf-8?B?UHBKYjNMY0wzS2syb2JQTHBYQVM2d1pTcGZ3UmtxSjFOTHRLRU1WdVBZYllq?=
- =?utf-8?B?VnlnTUZDUVIrWVFCUjhZZkRoWUFYUERoaHpUaVo2VVR4VE5sYUQrQlhzM1h3?=
- =?utf-8?B?UFhtbmNxQVpXaVA4MzJkZEpUbnE3M2pQT1lGaEE5Z3dEaHl2SkordkNSeXBr?=
- =?utf-8?B?a3J6WTM5bjJyMk1tRXVQWmdsQjBLZkZZN0V5SFdIbEFBdi9NaDlyL3ZtZDNU?=
- =?utf-8?B?Q1lMZE1sNzd1eUVlMzZTdVBFQlhhZ0ZPUlUrODdvWGFWM01sYWlUdmt4Yk8v?=
- =?utf-8?B?dE5hTHF2SU9iWVN5czIxRHB0cExoemJxMERhRFJQaWU3TUttbGY4bm1QcDZI?=
- =?utf-8?B?N1ZMSGR4YTFYRlNjdnFJb0tvUFlNVXQ3UWZ0T1RrYmpYbjNoMXBVZG0vVTJv?=
- =?utf-8?B?ZTBrcXB6czlUcVBhcWtUSnpJcmVma21BeGQybGRGZW55aFg5ZUE3RnRPenNy?=
- =?utf-8?B?bDNCeThSTFcvMFQ0RTd6NlZNcWRPS1JDQWZMWXVCajdRUEJPNEVYc210elJW?=
- =?utf-8?B?eUkrTzdYc1hONjhQbmYrc3ZEaFRMbEhVZzRmK0hlRWR5bnVEbWxmd2NtcEJK?=
- =?utf-8?B?YzUrWnBoR2ZhenU2Q09rRUYxN2hpVHRsTXdPV1llNStwaDlJWGZ6M0pPQk82?=
- =?utf-8?B?RGtEOXZ3MzdwcTgrMnVBUkoyMDZ3TFR3ZDViS0twcldBT3UyeFNlbnRxb3lG?=
- =?utf-8?B?NTdYZGlOTFd3VGJYTEp1V1BiQjMrMkxacEdmazJoUU0zbE04bEVOeEMwWUVw?=
- =?utf-8?B?ZzFHUkRkVTRVUmE1WitSalVvM3h2QUtzSXZ3QjlJM28xRzRhcm1JdE5MZDJD?=
- =?utf-8?B?Z3k3MWlrdWFVL2phdzdHbzlZemNNYm5oaWFrUlNQc0IvZHBCemFPMjI5NXFI?=
- =?utf-8?B?SDdnODRSVUhHZkNnSEJrR3dGcFIwd3Brc3FoVmgzMmtMQW5HYUYwQkhjSHBh?=
- =?utf-8?B?ZS9wUld3NDNsMFBpbGRVMy95bXRIQ3d5YS83M2Q5L0tHemN5VzB0Wmp3YjlF?=
- =?utf-8?B?cDd4TlhDT1BLZjJkeG5TdmhkcHppdFZCdEh5NC9DaUJJcXFQUEJjTzVsM1dx?=
- =?utf-8?B?dUN1QU5YZFRWaHpwUEFuMElpYkd4d01lNVFKdkF4S256YXlTQVFJZ0NOZWhw?=
- =?utf-8?B?dHJEVzlaZDhRVGVYL0I0MEF1OTdZWkNNSVU0NHBTNFRKVm9JdzNMMnpvS2tQ?=
- =?utf-8?B?cE9QZ1ZJSVdiYjMwYlJyVmVzcTBuS1FpZktFNjd2NXBycWxFb3BlRG44cktF?=
- =?utf-8?B?MFlrdERWTTU4MzF1dklNYzlvUmNmVndCUi9Oc3NJYjV2UDd2enFLb215RUI2?=
- =?utf-8?B?ekxqU3BPbnc2NG1vSUZ2YzhWaFJPL3p4OUtTeTZTM0ZnT0VPZmlUMGNhSnBn?=
- =?utf-8?B?NndaWkN2WVJ0TU5RV3l2VlBUaytRTW5TSVVFMnUybFRaYTk4UFo1VDU1ZDdK?=
- =?utf-8?B?eWc9PQ==?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: f634bded-247a-4de4-83f2-08dbd607ec7d
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?OWE4SGoxMlY0K2VQcG9FV0Z1eGxQSG9jVHFCWkNHVUwzYVJScHY2V1lKOHZz?=
+ =?utf-8?B?NHlTWVllYlZkcVhQQkh5ZkFiL2ZlT2dDYit1WW53a0VEYVZwZmRKTG9jUExY?=
+ =?utf-8?B?MDNFeU9lZ1lyZzVJWU9VMHY4RWpWbXFBRzVlaUNWVDlFK0VodU1Mb0FkcWdS?=
+ =?utf-8?B?R2tEMXZCNERZUFYxRzNyYkY5RjZaMXM4QlAyNkRmY3NoZ2F0RU5oYVkzUi8x?=
+ =?utf-8?B?VFltQjcvVUVQZ0VFbXU2Zkp5ZGJncnhSZTMybXZ6OHF0ckM3bnQrV0Z3TnFD?=
+ =?utf-8?B?aGxZQUNhNzFVamRnWU1kVVdWSXZLalBOdERtU0FnTzZyOEZaZmUzd1U4SkJO?=
+ =?utf-8?B?Y1ZFSmhiWmwvbFlBUmJXMTRpSTV4NXNTRDZ5eXNCYS9wLzlmeVZjclEzRkJX?=
+ =?utf-8?B?WVQza0V5UVVFcXJsYStSK0JVT2tFZlhQbGtBL0V5UWNrcUJVSjhyemszUjlh?=
+ =?utf-8?B?S29UNnBibzlML2hLMXFudDU4NnNhRlMvMWRzTDVIVWZkS0pXN0NyMDRPMkpI?=
+ =?utf-8?B?ZDh5RUJnV01oaXh0Y21Cd0FKa0E2OHNzL1kvaWx0UlVtaXlwU2RJNkk3QXlh?=
+ =?utf-8?B?UGR0MEFuZkViSzExcmhlbG45WlJTRUFralpYSG9scVhoZVpGcVRZMWZZN2py?=
+ =?utf-8?B?by9EMDhrNVMrbUtzYmFKZ2YwaTh2Wm9iZnJEOEw2OWlyQ1NCeVo3Sjgvb2lC?=
+ =?utf-8?B?Z0Q0VjM4WTcxeEszbFpINVUrK1VGKzBLTVVOQTRrUkFtLzBSZmsyYk5GVlJz?=
+ =?utf-8?B?dzZJUndRZVpSRkZ2UVIxdE1uc0psOW9RdGxwaWk2VHk1bUcxRGNrcCtjUnBY?=
+ =?utf-8?B?c1JVQmRUbVpIWkpmZ08wSmdTTENCc0l6ZFZYU1hSNUl0a1pJazZZeE9sbHQ5?=
+ =?utf-8?B?UkNtcXowcFc2L00xTloxa0NrZldEUTcyYlFwVGdwaURwLy9Samc2VFNEQ042?=
+ =?utf-8?B?a3YzV2xmMVMwY2NFZXFpREtHWUJYOWpkd2ErRW9taDRXbnBseFovUlI0dEla?=
+ =?utf-8?B?SEx3WEhua1kycnRycTF6VmxwSWFZTDlzR2dSdmJXeUdOVTZvMFdXVHRhT0N4?=
+ =?utf-8?B?SGxYd3l6YnNUSHU1ZFgzbG51cmx5VUxnRWthRXZQT0YxVDhwUVRTV1p4cnlu?=
+ =?utf-8?B?STFTeFdqd1BPQmhHWTZNVGVFdjV5RXZvM1Q4VEhMVzA0dXdrQWdLVFJtVzVS?=
+ =?utf-8?B?N2MrL29VT0xLdTZxQXZSQ1hPL3gwR3VGanJDcFdBOVN6Q1hLc05KRE5aNlkw?=
+ =?utf-8?B?V2MrVjllK1dyOVFHUDRZNkVxUEx1MTVFd21aUzNKSzdwTmFzSDY3ZVNPdWdU?=
+ =?utf-8?B?MzUxZTFLZ2Q5WmVPbWZJUEhPanBNSlAwVFpoQWV5cGVabVZlcEdRRjl4RVlH?=
+ =?utf-8?B?YWxHUXRBemdtOGIvck41WURzd3ZOT2FXV3ljWGpPSG9xTUxlelhiRmdwVW9H?=
+ =?utf-8?B?ME9jeGYrcW8wQVp4dnNrRk8yNUNlNW1KeHl5bDBvNTY5d0Iwbjd4TXNudFhw?=
+ =?utf-8?B?UlNPSjFheGQzeHBYRWU3ZXpnOVdwSTQ0bGpHWlA3dHZYeGpkTkJPaUkvTWpG?=
+ =?utf-8?B?cldzSW95RnVCVERTVEJVbGNoRTl5L3ZtMkxnRDI1UDdKUHdBUHp2MlNhdVhv?=
+ =?utf-8?B?NlduNFZ1bHlmdExmZW1tYWRaYlR1enh3TXRDMDJESDdXK2FoY1dMMWY3dTdq?=
+ =?utf-8?B?dy9TWGVaeEVqU3BCWUtVQ0RUdGkxREtvL0hkQkhQaTdmOWVtV1RTOXd6c3Y0?=
+ =?utf-8?B?TUpNSGd3VlpGY3kyTExTM1lCM01MWjA1MGVqRzlXQXpsMTVrT0V3eVlBcmVO?=
+ =?utf-8?B?QW43WmJuaUphSjVuU1NCaXRnUzdrN0tyYVNjSzRBeHRzM0F3QWYrRFNxYi9k?=
+ =?utf-8?B?ODYyd3Nqc0x4NWE5OXgwYlB0clNpUG9KeVRabWdFMkFlK01OQVhQa3ZiSFBu?=
+ =?utf-8?B?MVF1cVM2aW5zaXFJUG96S1J2eThhQW5oYWc3QU5FNE84UU1xVFcvNWJhL1k1?=
+ =?utf-8?B?b1hIMHJlY2wwM2g2OGVLdSt5bU9LbGNUWWIrSm1qcXd4OWZVdW5yejllRnFY?=
+ =?utf-8?B?ZG9IRlg3UThDeE1PUTkzdTY1Mm1TVFhBMUgzRzY2ODEzQW1nQ1dCelZLb1E5?=
+ =?utf-8?B?Z1hucUEwdWdXbktwbXQ1b3JsdEtjM1p2TzdFdW5hc09oOTFyVU9MUTJ1RlBF?=
+ =?utf-8?B?UlE9PQ==?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: 067d7974-3544-45d8-e47a-08dbd6089816
 X-MS-Exchange-CrossTenant-AuthSource: MW4PR11MB5776.namprd11.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 26 Oct 2023 09:42:52.6432 (UTC)
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 26 Oct 2023 09:47:40.7806 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: qIRR6m4CQfilBVdB9ThhHaWoV/6+GCqlarHTAanoWBjPeIxNB1SRxBl0cKhFF1dE52mif65lqOOVm4B49+HbGhHFb5qQKp2eUAC52xMPQM4=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BL3PR11MB6481
+X-MS-Exchange-CrossTenant-UserPrincipalName: AU4iBq4T9+AW4+4AEZzdotjMCLqiGz8rEP17AbQ8L3u2FFa4Cxk77QZvgtddRAVhcGmYrxKSgOh5DmTjZ+9NodniQHyRjxC35MBTTzoFp8A=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA0PR11MB4670
 X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1698313377; x=1729849377;
+ t=1698313666; x=1729849666;
  h=message-id:date:subject:to:cc:references:from:
  in-reply-to:content-transfer-encoding:mime-version;
- bh=UhQH95HSQ0a5F6vMDXnKMvc59wLPv/Rp0FjtRjAK9bg=;
- b=TLOxaTBIG9ubWhiSy4sxVdqAd6F2hkEvTFdY+n2ZqOAF35rE9EapbmDG
- kn+q03PeEypyVvPkijQz51WB6DXqu9tUV6aQPJejXdT0/Ti2T7/lfS20V
- FHmXy92Zeq4AhMxjfkSDmbyHODrpCjgdVvWEu0zSRYYivBXPUoYavt364
- x0tHmQJZE3bQVMMy32DwrlRtEMFd1Q7T/fO49EWw2xMQOAuY4TR/k4ajO
- j86dzWQjNWvnkI1OpbQQALIRhpwP2xdxnbahbLrHtA8CugS7XAWcEAe/D
- dpMuSSP30pvQAL94MZDZJ6ztA4zdNS9MtxhdgDik4PPe+q2qI2wPC2TfM
- Q==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ bh=ENyEpaNuiRYBrG1K+VzxxlcXE2kaVE1CqBOTt9v4AMw=;
+ b=UYkI27nZ5uJFQqcfihrAxS5FL2g2NbwaSMlrRm9Gkv24V/1pAwk61+w5
+ ezuG3VN89RzNTpf7xhAjfG4JwkHq12wUKwvaXFq6CeJgn/zMnGqZRth4F
+ 8eadoagSABpzz/Cpv+3OncjDzKnXqoWVKZltj2djBpy2669x4/i5TZiIe
+ ebaQVYfx8Y4pFGLXlufognrzmRk4+rYg4GwDjrmG2KVTBI/6U+1vEdFrW
+ mgwSurr0VmwqBZvgTnMSsQYJKKI0uQKX1rH1OcrG0Z5NxJ4E2JsYNYZiL
+ gRJ6Dso+bcuoFQeqdoS09/iIeNC2s9PVT+qsY+WqImet/7Pis+7zCIHYQ
+ g==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=TLOxaTBI
+ header.a=rsa-sha256 header.s=Intel header.b=UYkI27nZ
 X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next 1/2] i40e: Remove VF MAC types
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next] iavf: Remove queue tracking
+ fields from iavf_adminq_ring
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -200,8 +196,8 @@ Cc: intel-wired-lan@lists.osuosl.org,
  Jesse Brandeburg <jesse.brandeburg@intel.com>, linux-kernel@vger.kernel.org,
  Eric
  Dumazet <edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- "David S. Miller" <davem@davemloft.net>
+ Jacob Keller <jacob.e.keller@intel.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
@@ -209,60 +205,300 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 
 
-On 25.10.2023 19:44, Jacob Keller wrote:
+On 26.10.2023 10:39, Ivan Vecera wrote:
+> Fields 'head', 'tail', 'len', 'bah' and 'bal' in iavf_adminq_ring
+> are used to store register offsets. These offsets are initialized
+> and remains constant so there is no need to store them in the
+> iavf_adminq_ring structure.
 > 
+> Remove these fields from iavf_adminq_ring and use register offset
+> constants instead. Remove iavf_adminq_init_regs() that originally
+> stores these constants into these fields.
 > 
-> On 10/25/2023 7:39 AM, Ivan Vecera wrote:
->>
->>
->> On 25. 10. 23 12:48, Wojciech Drewek wrote:
->>>
->>> On 25.10.2023 12:33, Ivan Vecera wrote:
->>>> The i40e_hw.mac.type cannot to be equal to I40E_MAC_VF or
->>>> I40E_MAC_X722_VF so remove helper i40e_is_vf(), simplify
->>>> i40e_adminq_init_regs() and remove enums for these VF MAC types.
->>>>
->>>> Signed-off-by: Ivan Vecera<ivecera@redhat.com>
->>>> ---
->>>>   drivers/net/ethernet/intel/i40e/i40e_adminq.c | 33 ++++++-------------
->>>>   drivers/net/ethernet/intel/i40e/i40e_type.h   |  8 -----
->>>>   2 files changed, 10 insertions(+), 31 deletions(-)
->>>>
->>>> diff --git a/drivers/net/ethernet/intel/i40e/i40e_adminq.c b/drivers/net/ethernet/intel/i40e/i40e_adminq.c
->>>> index 29fc46abf690..896c43905309 100644
->>>> --- a/drivers/net/ethernet/intel/i40e/i40e_adminq.c
->>>> +++ b/drivers/net/ethernet/intel/i40e/i40e_adminq.c
->>>> @@ -17,29 +17,16 @@ static void i40e_resume_aq(struct i40e_hw *hw);
->>>>   static void i40e_adminq_init_regs(struct i40e_hw *hw)
->>>>   {
->>>>   	/* set head and tail registers in our local struct */
->>>> -	if (i40e_is_vf(hw)) {
->>>> -		hw->aq.asq.tail = I40E_VF_ATQT1;
->>>> -		hw->aq.asq.head = I40E_VF_ATQH1;
->>>> -		hw->aq.asq.len  = I40E_VF_ATQLEN1;
->>>> -		hw->aq.asq.bal  = I40E_VF_ATQBAL1;
->>>> -		hw->aq.asq.bah  = I40E_VF_ATQBAH1;
->>>> -		hw->aq.arq.tail = I40E_VF_ARQT1;
->>>> -		hw->aq.arq.head = I40E_VF_ARQH1;
->>>> -		hw->aq.arq.len  = I40E_VF_ARQLEN1;
->>>> -		hw->aq.arq.bal  = I40E_VF_ARQBAL1;
->>>> -		hw->aq.arq.bah  = I40E_VF_ARQBAH1;
->>> What about removing those I40E_VF_* defines?
->>> This is their only usage here, right?
->>
->> Yes, do you want to remove them in this patch? Or follow-up is sufficient?
->>
->> Ivan
->>
->>
+> Finally improve iavf_check_asq_alive() that assumes that
+> non-zero value of hw->aq.asq.len indicates fully initialized
+> AdminQ send queue. Replace it by check for non-zero value
+> of field hw->aq.asq.count that is non-zero when the sending
+> queue is initialized and is zeroed during shutdown of
+> the queue.
 > 
-> I'm fine with a follow up.
+> Signed-off-by: Ivan Vecera <ivecera@redhat.com>
+> ---
 
-Me too
+Reviewed-by: Wojciech Drewek <wojciech.drewek@intel.com>
 
+>  drivers/net/ethernet/intel/iavf/iavf_adminq.c | 86 +++++++------------
+>  drivers/net/ethernet/intel/iavf/iavf_adminq.h |  7 --
+>  drivers/net/ethernet/intel/iavf/iavf_common.c |  8 +-
+>  drivers/net/ethernet/intel/iavf/iavf_main.c   |  8 +-
+>  4 files changed, 39 insertions(+), 70 deletions(-)
 > 
-> Thanks,
-> Jake
+> diff --git a/drivers/net/ethernet/intel/iavf/iavf_adminq.c b/drivers/net/ethernet/intel/iavf/iavf_adminq.c
+> index 9ffbd24d83cb..82fcd18ad660 100644
+> --- a/drivers/net/ethernet/intel/iavf/iavf_adminq.c
+> +++ b/drivers/net/ethernet/intel/iavf/iavf_adminq.c
+> @@ -7,27 +7,6 @@
+>  #include "iavf_adminq.h"
+>  #include "iavf_prototype.h"
+>  
+> -/**
+> - *  iavf_adminq_init_regs - Initialize AdminQ registers
+> - *  @hw: pointer to the hardware structure
+> - *
+> - *  This assumes the alloc_asq and alloc_arq functions have already been called
+> - **/
+> -static void iavf_adminq_init_regs(struct iavf_hw *hw)
+> -{
+> -	/* set head and tail registers in our local struct */
+> -	hw->aq.asq.tail = IAVF_VF_ATQT1;
+> -	hw->aq.asq.head = IAVF_VF_ATQH1;
+> -	hw->aq.asq.len  = IAVF_VF_ATQLEN1;
+> -	hw->aq.asq.bal  = IAVF_VF_ATQBAL1;
+> -	hw->aq.asq.bah  = IAVF_VF_ATQBAH1;
+> -	hw->aq.arq.tail = IAVF_VF_ARQT1;
+> -	hw->aq.arq.head = IAVF_VF_ARQH1;
+> -	hw->aq.arq.len  = IAVF_VF_ARQLEN1;
+> -	hw->aq.arq.bal  = IAVF_VF_ARQBAL1;
+> -	hw->aq.arq.bah  = IAVF_VF_ARQBAH1;
+> -}
+> -
+>  /**
+>   *  iavf_alloc_adminq_asq_ring - Allocate Admin Queue send rings
+>   *  @hw: pointer to the hardware structure
+> @@ -259,17 +238,17 @@ static enum iavf_status iavf_config_asq_regs(struct iavf_hw *hw)
+>  	u32 reg = 0;
+>  
+>  	/* Clear Head and Tail */
+> -	wr32(hw, hw->aq.asq.head, 0);
+> -	wr32(hw, hw->aq.asq.tail, 0);
+> +	wr32(hw, IAVF_VF_ATQH1, 0);
+> +	wr32(hw, IAVF_VF_ATQT1, 0);
+>  
+>  	/* set starting point */
+> -	wr32(hw, hw->aq.asq.len, (hw->aq.num_asq_entries |
+> +	wr32(hw, IAVF_VF_ATQLEN1, (hw->aq.num_asq_entries |
+>  				  IAVF_VF_ATQLEN1_ATQENABLE_MASK));
+> -	wr32(hw, hw->aq.asq.bal, lower_32_bits(hw->aq.asq.desc_buf.pa));
+> -	wr32(hw, hw->aq.asq.bah, upper_32_bits(hw->aq.asq.desc_buf.pa));
+> +	wr32(hw, IAVF_VF_ATQBAL1, lower_32_bits(hw->aq.asq.desc_buf.pa));
+> +	wr32(hw, IAVF_VF_ATQBAH1, upper_32_bits(hw->aq.asq.desc_buf.pa));
+>  
+>  	/* Check one register to verify that config was applied */
+> -	reg = rd32(hw, hw->aq.asq.bal);
+> +	reg = rd32(hw, IAVF_VF_ATQBAL1);
+>  	if (reg != lower_32_bits(hw->aq.asq.desc_buf.pa))
+>  		ret_code = IAVF_ERR_ADMIN_QUEUE_ERROR;
+>  
+> @@ -288,20 +267,20 @@ static enum iavf_status iavf_config_arq_regs(struct iavf_hw *hw)
+>  	u32 reg = 0;
+>  
+>  	/* Clear Head and Tail */
+> -	wr32(hw, hw->aq.arq.head, 0);
+> -	wr32(hw, hw->aq.arq.tail, 0);
+> +	wr32(hw, IAVF_VF_ARQH1, 0);
+> +	wr32(hw, IAVF_VF_ARQT1, 0);
+>  
+>  	/* set starting point */
+> -	wr32(hw, hw->aq.arq.len, (hw->aq.num_arq_entries |
+> +	wr32(hw, IAVF_VF_ARQLEN1, (hw->aq.num_arq_entries |
+>  				  IAVF_VF_ARQLEN1_ARQENABLE_MASK));
+> -	wr32(hw, hw->aq.arq.bal, lower_32_bits(hw->aq.arq.desc_buf.pa));
+> -	wr32(hw, hw->aq.arq.bah, upper_32_bits(hw->aq.arq.desc_buf.pa));
+> +	wr32(hw, IAVF_VF_ARQBAL1, lower_32_bits(hw->aq.arq.desc_buf.pa));
+> +	wr32(hw, IAVF_VF_ARQBAH1, upper_32_bits(hw->aq.arq.desc_buf.pa));
+>  
+>  	/* Update tail in the HW to post pre-allocated buffers */
+> -	wr32(hw, hw->aq.arq.tail, hw->aq.num_arq_entries - 1);
+> +	wr32(hw, IAVF_VF_ARQT1, hw->aq.num_arq_entries - 1);
+>  
+>  	/* Check one register to verify that config was applied */
+> -	reg = rd32(hw, hw->aq.arq.bal);
+> +	reg = rd32(hw, IAVF_VF_ARQBAL1);
+>  	if (reg != lower_32_bits(hw->aq.arq.desc_buf.pa))
+>  		ret_code = IAVF_ERR_ADMIN_QUEUE_ERROR;
+>  
+> @@ -455,11 +434,11 @@ static enum iavf_status iavf_shutdown_asq(struct iavf_hw *hw)
+>  	}
+>  
+>  	/* Stop firmware AdminQ processing */
+> -	wr32(hw, hw->aq.asq.head, 0);
+> -	wr32(hw, hw->aq.asq.tail, 0);
+> -	wr32(hw, hw->aq.asq.len, 0);
+> -	wr32(hw, hw->aq.asq.bal, 0);
+> -	wr32(hw, hw->aq.asq.bah, 0);
+> +	wr32(hw, IAVF_VF_ATQH1, 0);
+> +	wr32(hw, IAVF_VF_ATQT1, 0);
+> +	wr32(hw, IAVF_VF_ATQLEN1, 0);
+> +	wr32(hw, IAVF_VF_ATQBAL1, 0);
+> +	wr32(hw, IAVF_VF_ATQBAH1, 0);
+>  
+>  	hw->aq.asq.count = 0; /* to indicate uninitialized queue */
+>  
+> @@ -489,11 +468,11 @@ static enum iavf_status iavf_shutdown_arq(struct iavf_hw *hw)
+>  	}
+>  
+>  	/* Stop firmware AdminQ processing */
+> -	wr32(hw, hw->aq.arq.head, 0);
+> -	wr32(hw, hw->aq.arq.tail, 0);
+> -	wr32(hw, hw->aq.arq.len, 0);
+> -	wr32(hw, hw->aq.arq.bal, 0);
+> -	wr32(hw, hw->aq.arq.bah, 0);
+> +	wr32(hw, IAVF_VF_ARQH1, 0);
+> +	wr32(hw, IAVF_VF_ARQT1, 0);
+> +	wr32(hw, IAVF_VF_ARQLEN1, 0);
+> +	wr32(hw, IAVF_VF_ARQBAL1, 0);
+> +	wr32(hw, IAVF_VF_ARQBAH1, 0);
+>  
+>  	hw->aq.arq.count = 0; /* to indicate uninitialized queue */
+>  
+> @@ -529,9 +508,6 @@ enum iavf_status iavf_init_adminq(struct iavf_hw *hw)
+>  		goto init_adminq_exit;
+>  	}
+>  
+> -	/* Set up register offsets */
+> -	iavf_adminq_init_regs(hw);
+> -
+>  	/* setup ASQ command write back timeout */
+>  	hw->aq.asq_cmd_timeout = IAVF_ASQ_CMD_TIMEOUT;
+>  
+> @@ -587,9 +563,9 @@ static u16 iavf_clean_asq(struct iavf_hw *hw)
+>  
+>  	desc = IAVF_ADMINQ_DESC(*asq, ntc);
+>  	details = IAVF_ADMINQ_DETAILS(*asq, ntc);
+> -	while (rd32(hw, hw->aq.asq.head) != ntc) {
+> +	while (rd32(hw, IAVF_VF_ATQH1) != ntc) {
+>  		iavf_debug(hw, IAVF_DEBUG_AQ_MESSAGE,
+> -			   "ntc %d head %d.\n", ntc, rd32(hw, hw->aq.asq.head));
+> +			   "ntc %d head %d.\n", ntc, rd32(hw, IAVF_VF_ATQH1));
+>  
+>  		if (details->callback) {
+>  			IAVF_ADMINQ_CALLBACK cb_func =
+> @@ -624,7 +600,7 @@ bool iavf_asq_done(struct iavf_hw *hw)
+>  	/* AQ designers suggest use of head for better
+>  	 * timing reliability than DD bit
+>  	 */
+> -	return rd32(hw, hw->aq.asq.head) == hw->aq.asq.next_to_use;
+> +	return rd32(hw, IAVF_VF_ATQH1) == hw->aq.asq.next_to_use;
+>  }
+>  
+>  /**
+> @@ -663,7 +639,7 @@ enum iavf_status iavf_asq_send_command(struct iavf_hw *hw,
+>  
+>  	hw->aq.asq_last_status = IAVF_AQ_RC_OK;
+>  
+> -	val = rd32(hw, hw->aq.asq.head);
+> +	val = rd32(hw, IAVF_VF_ATQH1);
+>  	if (val >= hw->aq.num_asq_entries) {
+>  		iavf_debug(hw, IAVF_DEBUG_AQ_MESSAGE,
+>  			   "AQTX: head overrun at %d\n", val);
+> @@ -755,7 +731,7 @@ enum iavf_status iavf_asq_send_command(struct iavf_hw *hw,
+>  	if (hw->aq.asq.next_to_use == hw->aq.asq.count)
+>  		hw->aq.asq.next_to_use = 0;
+>  	if (!details->postpone)
+> -		wr32(hw, hw->aq.asq.tail, hw->aq.asq.next_to_use);
+> +		wr32(hw, IAVF_VF_ATQT1, hw->aq.asq.next_to_use);
+>  
+>  	/* if cmd_details are not defined or async flag is not set,
+>  	 * we need to wait for desc write back
+> @@ -810,7 +786,7 @@ enum iavf_status iavf_asq_send_command(struct iavf_hw *hw,
+>  	/* update the error if time out occurred */
+>  	if ((!cmd_completed) &&
+>  	    (!details->async && !details->postpone)) {
+> -		if (rd32(hw, hw->aq.asq.len) & IAVF_VF_ATQLEN1_ATQCRIT_MASK) {
+> +		if (rd32(hw, IAVF_VF_ATQLEN1) & IAVF_VF_ATQLEN1_ATQCRIT_MASK) {
+>  			iavf_debug(hw, IAVF_DEBUG_AQ_MESSAGE,
+>  				   "AQTX: AQ Critical error.\n");
+>  			status = IAVF_ERR_ADMIN_QUEUE_CRITICAL_ERROR;
+> @@ -878,7 +854,7 @@ enum iavf_status iavf_clean_arq_element(struct iavf_hw *hw,
+>  	}
+>  
+>  	/* set next_to_use to head */
+> -	ntu = rd32(hw, hw->aq.arq.head) & IAVF_VF_ARQH1_ARQH_MASK;
+> +	ntu = rd32(hw, IAVF_VF_ARQH1) & IAVF_VF_ARQH1_ARQH_MASK;
+>  	if (ntu == ntc) {
+>  		/* nothing to do - shouldn't need to update ring's values */
+>  		ret_code = IAVF_ERR_ADMIN_QUEUE_NO_WORK;
+> @@ -926,7 +902,7 @@ enum iavf_status iavf_clean_arq_element(struct iavf_hw *hw,
+>  	desc->params.external.addr_low = cpu_to_le32(lower_32_bits(bi->pa));
+>  
+>  	/* set tail = the last cleaned desc index. */
+> -	wr32(hw, hw->aq.arq.tail, ntc);
+> +	wr32(hw, IAVF_VF_ARQT1, ntc);
+>  	/* ntc is updated to tail + 1 */
+>  	ntc++;
+>  	if (ntc == hw->aq.num_arq_entries)
+> diff --git a/drivers/net/ethernet/intel/iavf/iavf_adminq.h b/drivers/net/ethernet/intel/iavf/iavf_adminq.h
+> index 1f60518eb0e5..406506f64bdd 100644
+> --- a/drivers/net/ethernet/intel/iavf/iavf_adminq.h
+> +++ b/drivers/net/ethernet/intel/iavf/iavf_adminq.h
+> @@ -29,13 +29,6 @@ struct iavf_adminq_ring {
+>  	/* used for interrupt processing */
+>  	u16 next_to_use;
+>  	u16 next_to_clean;
+> -
+> -	/* used for queue tracking */
+> -	u32 head;
+> -	u32 tail;
+> -	u32 len;
+> -	u32 bah;
+> -	u32 bal;
+>  };
+>  
+>  /* ASQ transaction details */
+> diff --git a/drivers/net/ethernet/intel/iavf/iavf_common.c b/drivers/net/ethernet/intel/iavf/iavf_common.c
+> index 8091e6feca01..89d2bce529ae 100644
+> --- a/drivers/net/ethernet/intel/iavf/iavf_common.c
+> +++ b/drivers/net/ethernet/intel/iavf/iavf_common.c
+> @@ -279,11 +279,11 @@ void iavf_debug_aq(struct iavf_hw *hw, enum iavf_debug_mask mask, void *desc,
+>   **/
+>  bool iavf_check_asq_alive(struct iavf_hw *hw)
+>  {
+> -	if (hw->aq.asq.len)
+> -		return !!(rd32(hw, hw->aq.asq.len) &
+> -			  IAVF_VF_ATQLEN1_ATQENABLE_MASK);
+> -	else
+> +	/* Check if the queue is initialized */
+> +	if (!hw->aq.asq.count)
+>  		return false;
+> +
+> +	return !!(rd32(hw, IAVF_VF_ATQLEN1) & IAVF_VF_ATQLEN1_ATQENABLE_MASK);
+>  }
+>  
+>  /**
+> diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
+> index 6e27b7938b8a..146755498feb 100644
+> --- a/drivers/net/ethernet/intel/iavf/iavf_main.c
+> +++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
+> @@ -3253,7 +3253,7 @@ static void iavf_adminq_task(struct work_struct *work)
+>  		goto freedom;
+>  
+>  	/* check for error indications */
+> -	val = rd32(hw, hw->aq.arq.len);
+> +	val = rd32(hw, IAVF_VF_ARQLEN1);
+>  	if (val == 0xdeadbeef || val == 0xffffffff) /* device in reset */
+>  		goto freedom;
+>  	oldval = val;
+> @@ -3270,9 +3270,9 @@ static void iavf_adminq_task(struct work_struct *work)
+>  		val &= ~IAVF_VF_ARQLEN1_ARQCRIT_MASK;
+>  	}
+>  	if (oldval != val)
+> -		wr32(hw, hw->aq.arq.len, val);
+> +		wr32(hw, IAVF_VF_ARQLEN1, val);
+>  
+> -	val = rd32(hw, hw->aq.asq.len);
+> +	val = rd32(hw, IAVF_VF_ATQLEN1);
+>  	oldval = val;
+>  	if (val & IAVF_VF_ATQLEN1_ATQVFE_MASK) {
+>  		dev_info(&adapter->pdev->dev, "ASQ VF Error detected\n");
+> @@ -3287,7 +3287,7 @@ static void iavf_adminq_task(struct work_struct *work)
+>  		val &= ~IAVF_VF_ATQLEN1_ATQCRIT_MASK;
+>  	}
+>  	if (oldval != val)
+> -		wr32(hw, hw->aq.asq.len, val);
+> +		wr32(hw, IAVF_VF_ATQLEN1, val);
+>  
+>  freedom:
+>  	kfree(event.msg_buf);
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
