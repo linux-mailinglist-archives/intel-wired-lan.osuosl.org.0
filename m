@@ -1,189 +1,86 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 88B037D8007
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 26 Oct 2023 11:52:00 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id E0BFD7D816A
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 26 Oct 2023 13:00:23 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 1038F4157B;
-	Thu, 26 Oct 2023 09:51:59 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1038F4157B
+	by smtp4.osuosl.org (Postfix) with ESMTP id 285534096D;
+	Thu, 26 Oct 2023 11:00:22 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 285534096D
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1698313919;
-	bh=uWk90zfWMg7XX76S5N1Cjc0viFQM7pPRx3eWCkUlC/s=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=f+1XlVSwA9PkuccAaU5L8qOGonhWTFx7biPGKcG3rAnY7spIh3gfouqCqkNOrlwvY
-	 jM+4HPsQhmXFGXx2TGHusATw6NXNUSkOb8oCKL6VUSLaXhpdYCvbra08wW6NSPf7EP
-	 6t+nM/wVpPlSolGxpqMJq4XUEbSbDAPSRxoXt6bfGl+D7JIF6869w/w8l1TchwdtaF
-	 u8X89VqMrEApUybskEiIk1UVDuUyAP6cqOflnRuV/0I1Lx4Li110bq8h/HN58zGq4w
-	 BI50jEkLKudAoV82QaCyeMqo3ND+Pz+PmDFLy55SHn+uKHeyNjOv0UIz3sFMfFBXc4
-	 xjEWljztcSXdA==
+	s=default; t=1698318022;
+	bh=wfC9zqDNR4WJT5fBmyDNgFyvgfDuvkQCG4cyhWZw5rE=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=Bdyf3KcT6fJ9nEu6wwvPqtoKFaX+ZtbDnrZH7NXqhEnPk5OqtgHrELanJHxf7puAe
+	 vxU9hVxXAJgbCXCn0n1GRBxnezKkaFojeBQI6xY1SNW2uCeWYgB5LWaVQw9IyUf6lh
+	 lZdebUeHspoAXxoj7V0Hs1qnhgbmk8wOKjyvrVSxXusKaH9RrL81a5rAcVlv/ZifgA
+	 cn7nhyQNuIKFe/VKHLeG5bs1gAg7CNYp95xJw/0QxL7MfbdpPSUNQgMswFlJZuN+Zr
+	 JAZQ37VwVo8OhJOvpCnnYZucecmqq9FPhvWk5f3fntT5RIfxWxyj3wNSaKHLoES0oh
+	 WJpKyJJZfK2ZA==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id p9vcNaovC509; Thu, 26 Oct 2023 09:51:58 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id BIlZyCQXgDG9; Thu, 26 Oct 2023 11:00:20 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 1445A415AE;
-	Thu, 26 Oct 2023 09:51:57 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1445A415AE
+	by smtp4.osuosl.org (Postfix) with ESMTP id 1CBDF415C7;
+	Thu, 26 Oct 2023 11:00:20 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1CBDF415C7
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 5AA371BF2B8
- for <intel-wired-lan@lists.osuosl.org>; Thu, 26 Oct 2023 09:51:52 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 4324D1BF3F3
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 26 Oct 2023 11:00:14 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 3152F40A71
- for <intel-wired-lan@lists.osuosl.org>; Thu, 26 Oct 2023 09:51:52 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3152F40A71
+ by smtp3.osuosl.org (Postfix) with ESMTP id 2A024612F3
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 26 Oct 2023 11:00:14 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2A024612F3
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id eR9tg5iGY4Mi for <intel-wired-lan@lists.osuosl.org>;
- Thu, 26 Oct 2023 09:51:51 +0000 (UTC)
-Received: from mgamail.intel.com (mgamail.intel.com [134.134.136.20])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 2B070400DD
- for <intel-wired-lan@lists.osuosl.org>; Thu, 26 Oct 2023 09:51:51 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 2B070400DD
-X-IronPort-AV: E=McAfee;i="6600,9927,10874"; a="377869054"
-X-IronPort-AV: E=Sophos;i="6.03,253,1694761200"; d="scan'208";a="377869054"
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 26 Oct 2023 02:51:50 -0700
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id wRIrKhAm0lQC for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 26 Oct 2023 11:00:13 +0000 (UTC)
+Received: from mgamail.intel.com (mgamail.intel.com [134.134.136.100])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 0833C612F0
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 26 Oct 2023 11:00:12 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0833C612F0
+X-IronPort-AV: E=McAfee;i="6600,9927,10874"; a="453984857"
+X-IronPort-AV: E=Sophos;i="6.03,253,1694761200"; d="scan'208";a="453984857"
+Received: from fmsmga002.fm.intel.com ([10.253.24.26])
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 26 Oct 2023 04:00:12 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10874"; a="824938905"
-X-IronPort-AV: E=Sophos;i="6.03,253,1694761200"; d="scan'208";a="824938905"
-Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
- by fmsmga008.fm.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
- 26 Oct 2023 02:51:49 -0700
-Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
- ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.34; Thu, 26 Oct 2023 02:51:47 -0700
-Received: from orsmsx603.amr.corp.intel.com (10.22.229.16) by
- ORSMSX610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.34; Thu, 26 Oct 2023 02:51:47 -0700
-Received: from ORSEDG602.ED.cps.intel.com (10.7.248.7) by
- orsmsx603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.34 via Frontend Transport; Thu, 26 Oct 2023 02:51:47 -0700
-Received: from NAM11-DM6-obe.outbound.protection.outlook.com (104.47.57.168)
- by edgegateway.intel.com (134.134.137.103) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.32; Thu, 26 Oct 2023 02:51:46 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=PIq9ij+BlUIfSFcMa9S+ZD8874ypp449mrtsTs+WdF34AvHxqy+rIk4TaNkv3wvE3gDNpGvNIeIcZ7JpbfCvGD7Sxj/vKKfkqMayUmbKl3f2g144kHDYnISzGgqB7xFkuBI4f2btjRD/gKgYvEVYrFfOeN4UNSi904GTywy9dCpc72zC4x5ozN5wF8G64i+XlDTAauzqGZIyzgzaOfbUd5fBJvIK7xiCJGptkafW8ZLr+cU734lZ9fti3nJk645g3pr4xB408WmmwhC1asg8sNFvLfckcBUOP22AAGl24708qDVUWooKaGFvmlTdjQAq6WsLJsCg5rko7YXAZ+aM8g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=+uNHN96aHAjWFhYImAwQUO7J9ecAFBh3pKms3AShB/U=;
- b=GvraPBa2rcDjDNiMN93xk+TY4ruME/81yT8iqBhv8AnEa7EQk2aIP6OyIUoeZNqN9YH5ZI8ZZ0gCJ7ebnC7aQvueCG49AMQL+xiznrFBrzALc7sRijgwuc2rTIEeVMv7OwMnVdAxY9T57ryHyCSNcI2BaK31G9JdDfiUNwa15n7c4Fvcw544EO2JJPOYvfAzFZVc0/4XFqKXEGYw5f+cTWW6HJGOPPUxADYNNbFGsSPgdZBxKbSThEmndLm8+6QuOeZxhjlz08vfpX96VQofdjidA495PBK+3nWgYDcvZNp3R/IpZ5H0+aKgxX8Sm8G9Xoc8cyfic1nkJRoBFdifBA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from MW4PR11MB5776.namprd11.prod.outlook.com (2603:10b6:303:183::9)
- by CYYPR11MB8307.namprd11.prod.outlook.com (2603:10b6:930:ba::15)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6907.33; Thu, 26 Oct
- 2023 09:51:39 +0000
-Received: from MW4PR11MB5776.namprd11.prod.outlook.com
- ([fe80::71a7:70c4:9046:9b8a]) by MW4PR11MB5776.namprd11.prod.outlook.com
- ([fe80::71a7:70c4:9046:9b8a%4]) with mapi id 15.20.6907.032; Thu, 26 Oct 2023
- 09:51:39 +0000
-Message-ID: <5ef0961b-fd69-4fc5-8212-d5f502e42a50@intel.com>
-Date: Thu, 26 Oct 2023 11:51:36 +0200
-User-Agent: Mozilla Thunderbird
-Content-Language: en-US
-To: Ivan Vecera <ivecera@redhat.com>, <netdev@vger.kernel.org>
-References: <20231026083822.2622930-1-ivecera@redhat.com>
-From: Wojciech Drewek <wojciech.drewek@intel.com>
-In-Reply-To: <20231026083822.2622930-1-ivecera@redhat.com>
-X-ClientProxiedBy: WA0P291CA0012.POLP291.PROD.OUTLOOK.COM (2603:10a6:1d0:1::7)
- To MW4PR11MB5776.namprd11.prod.outlook.com
- (2603:10b6:303:183::9)
+X-IronPort-AV: E=McAfee;i="6600,9927,10874"; a="875893385"
+X-IronPort-AV: E=Sophos;i="6.03,253,1694761200"; d="scan'208";a="875893385"
+Received: from kkolacin-desk1.igk.intel.com ([10.102.102.152])
+ by fmsmga002.fm.intel.com with ESMTP; 26 Oct 2023 03:59:58 -0700
+From: Karol Kolacinski <karol.kolacinski@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Thu, 26 Oct 2023 12:59:55 +0200
+Message-Id: <20231026105955.282546-1-karol.kolacinski@intel.com>
+X-Mailer: git-send-email 2.40.1
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: MW4PR11MB5776:EE_|CYYPR11MB8307:EE_
-X-MS-Office365-Filtering-Correlation-Id: a7e8d5d6-7b16-4c1a-32b9-08dbd6092661
-X-LD-Processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: MuTcczS1esOpxhHepeq3HUHWNsVZ94wq4JiT4/Htqm9CVHF3eQob0Vqi5ogITx5sBcZuVvZRBwcnUw50P2B1kmvirrKK2sF8WYT2OGNXPTcDZ+7HgTz36YWPENPThzb9LeQmh0FoFPwc6D89b0x5XXmjo9dJfmncIaaU3YgsyjYx6fIVDRcACXtCxncpB3KYn9TrYA6XWlzrAwm9kZE8D7td0J/L6QLsd3FzcfBNYBUpmeMjG4HWOTuPPKoxRvdggXhi1/2XOxO9A6SErpu2mRewBvUmp+2o3nqrAE71hM1CCnmj7pNgUVq0tZGk7yGfPJwD16uIoChx3+4L1LSb5+mvjdEkfq33JrcurfNUlpAOZPBu2LuEMC1ww0/voyWxl0vDKRstC2jVqCJB98ClkTE3LpNPlJ5Mj04Iv5/LlIwHyDH9YJIN25Csg10EwpdJDgBRwu2A8NXt+a44Gw3/DaWovwGDEkU9EVKQZuNwL5Tj1YHe7jX1rznTPLMO5oofKzPfCAf2ch7V8+yLil4ElEx9Njx1b3B0lUuqMWJFYzzcLEqC+DTn2qRaR4LBy6faILjDYVNJn93vCsEp5/kgIMHmlpLzRZThzKQRGwVLtE7LaDVBqv93SfL2Rpdmkccmk12O4WVO0/0ab7EP/t6fBw==
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:MW4PR11MB5776.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230031)(376002)(136003)(396003)(346002)(39860400002)(366004)(230922051799003)(64100799003)(186009)(451199024)(1800799009)(5660300002)(2906002)(44832011)(41300700001)(66946007)(316002)(4326008)(8676002)(8936002)(66476007)(66556008)(54906003)(53546011)(478600001)(6486002)(31686004)(6506007)(6666004)(107886003)(2616005)(26005)(6512007)(83380400001)(86362001)(38100700002)(36756003)(31696002)(82960400001)(45980500001)(43740500002);
- DIR:OUT; SFP:1102; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?eDVwa2d1a0NINTNHYXFqeVpYTUhkbkxKK2pPWTBld1Ztdmg5L1pjekE0ZVZD?=
- =?utf-8?B?QzNLaUdPLzY1NWlDK0xlNUp2TitOZmlwT04rRkNwK3QxNDF5WGhRbjRaOGJG?=
- =?utf-8?B?MnZPYlV5T3F6Y29ta05uOUNGTFZ5ZmhIZXhkRDFaZTMvWkx4eXQzdi95ZGxN?=
- =?utf-8?B?TUxBWlBkUUJsY08yTUFscEovZzAvbldOaTVmS0pvQWZYT3pJemdOYWFlK3k2?=
- =?utf-8?B?RE5EQ3pWSTY1amgvN2p3NVhQVFg4WjJ4cmtiY0taNU9FaTYxWi9OVy9SRlZB?=
- =?utf-8?B?YnVqeDJGb2dPU25NQUUvRUFSZkQzT05pSjQvSmhDUW1Hb1IzS2dwMktvK05y?=
- =?utf-8?B?RkpoSHZWMCtKMWV4TnRYMXFsRjgrQlJPa3dONStLRmlRbFlqN2phVFlLTHZ3?=
- =?utf-8?B?WHp6eklrcktJTGpmT1hkV0ptekRFZG9JbmxRbWhYUUJsME1mc0lsdlBpQXM2?=
- =?utf-8?B?VksxN0g0MTQxVDNmeklDaWhMdXYzVGl3YkJndmZvWHArby9tMUJvNVI2NkxG?=
- =?utf-8?B?Mm9NNEFnelhYeVd1SXpJb2tLNnpSVGsvR0pBbElUWDRxM01JQ0dCeStwWkZj?=
- =?utf-8?B?N1dBOHAzVXZXNnJLd3FIS0JqNXg3RUV1SHlJc3JUcVVsMTYyNlgyUy90cTVw?=
- =?utf-8?B?b3RVQ1ZrYm1qcnlxdERROThoeWJJNHRWN1dxOVpMWDFINVZJRXBHaWgyajdE?=
- =?utf-8?B?cXFSN3BWbE1YTk5WV2tCdjcvTjRsRjNXMldVVGpSbXg5Rk5vUGxRc3NXZ3l4?=
- =?utf-8?B?YmJCaDZPZXVqZFZFLzhBQ1NLZEF1dzdlRVF2Z2FyQWxwSHhUS1pzRUx4S0Zx?=
- =?utf-8?B?QTEzQzU5K2EzVzJQQVI1ZkMyOXc4WDczNEMxMXM0RmFoNkJPaGhVT3Mrc2NW?=
- =?utf-8?B?RUcxNDRPclU4Qys3YU5JZmEwT2trejBvbkRRcy9EeUF1Mzl1RER3Z0QzcXRt?=
- =?utf-8?B?aElja3BTZ3padnpYZlgzNXhxTXBCMVZNMEVJSjZuT2JBK0NtYm53cDNuSEEr?=
- =?utf-8?B?QWZ1NlE5VUkvNStMSTdQMGRLSDBPR0d2VHZmUmF6Ky9zUWxWdk54a1lUV1Rx?=
- =?utf-8?B?QU42Nm9TUXZNYUkyZytMczJKTDl6U1NNMnoyRHlLM0RlQ0N4ZlNwU0FSNDB5?=
- =?utf-8?B?aS9uZnMyYmlRL3ljcnFoL1NvRGIxQkFyNCtEaHZFQ3M3d0xNbTgrSDYyYUsr?=
- =?utf-8?B?ZG4xRmFCaWp1c1dQMXk0bE1ZN2tXL2hiajZxb3NVTGlGSDltSzdMc29uTkVF?=
- =?utf-8?B?RlAyRURLZ3czVUZQaUk4dDhhN1NTWGFxZjNpMWdZK2RLVEg3WVNERGVCZ3pz?=
- =?utf-8?B?ejQ4UlRSZWFabVRuREJ5czljK2lINTlhVTJUUXVrUlN4RGxOTlpreFdlUlFS?=
- =?utf-8?B?VXdPNGR2NWljN0JNWElTeHVENzQ1M2llaUx5RUgxRmRMWGplMW5RdHdqSnZi?=
- =?utf-8?B?dHVtWTRKR0NIOVQwa3J0NnpVeFliamIwdDZYQVlGOGZmWFNYNEFBVjZyRGth?=
- =?utf-8?B?ZFRWWWFKQkJzYkIyZjdYZVF5aW56YnBidDhsYmd4VU8rNDI5WWxieTNQWldk?=
- =?utf-8?B?L2ltcG1pbUgrUHBvM0xka0JJdlVEVTVhYnJ2c25USWpRcG1ZK0d6Mk5IdC8y?=
- =?utf-8?B?dkQ2c05yVzNJb0RHMHk0UzVJVUZhcjY4MVRMOER0QlN1WTlJSnA1cUFIQS9U?=
- =?utf-8?B?cXI0aW1CV0FVbXJocStMdkEvM0dRWDVDZmJ0Ly9iUGxsZzBiRHVXUWdnQTlO?=
- =?utf-8?B?bjJ3TmJxWDE2OExLTkdVVER3R09oVnk0U1FyVXdxdkEwdDdEVzNaVHVHQndO?=
- =?utf-8?B?bG1sS0E2QUlKOHI4TFhpVWFLNUkrZVNMb21kVXdOcStQb2JsQmlOZm9nNjdz?=
- =?utf-8?B?SXU0bEo1Tks0M0J2ZllQWU9aeFl1WTJBN1FBSU42Tlh6andwb1V2Mis1UHlS?=
- =?utf-8?B?Z3FKSWJnRTRDZ1J2VDZpazh5enZHQUxOOTJwcnNmMklOQnFCSHVhek81OVNs?=
- =?utf-8?B?Z3JkZUx0VXROUmo4WmNVdUlyTmp1RDM2cThuWFY5c2FKS0dPNHI4aGtMSWhN?=
- =?utf-8?B?TDk5SXlaM1c1MTk0ejJQeUNmRHBWdis0SEpVL25UN3JaUVlYTWh1TmNicTBZ?=
- =?utf-8?B?QkZtUWNCL3ptTTUzV3VlS0VnaGE0WnVadldGSzBoQ1RZVk40Q0VSZkttUkhU?=
- =?utf-8?B?b2c9PQ==?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: a7e8d5d6-7b16-4c1a-32b9-08dbd6092661
-X-MS-Exchange-CrossTenant-AuthSource: MW4PR11MB5776.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 26 Oct 2023 09:51:39.3463 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: CLWAG40ucIq3K6JamSsbFaxBGVzYzib4XsE2uMQ5DOHh3u9EJq5QRjUvmnI8ulj/60Q9iqU7CdV7vHAgnZ7K8QbC7RKewVuCNTrDJsW0cec=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CYYPR11MB8307
-X-OriginatorOrg: intel.com
+Organization: Intel Technology Poland sp. z o.o. - ul. Slowackiego 173,
+ 80-298 Gdansk - KRS 101882 - NIP 957-07-52-316
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1698313911; x=1729849911;
- h=message-id:date:subject:to:cc:references:from:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=cMJWTQxgCm1mvu+sTyQHJRFOEQ5zKewRiIAJiAWxwM8=;
- b=h8ZHAvrIaULZAUAye2I7BhKXovSZc889ESXYAN3fn+rODACB8ekg9haL
- ysNtJRwkD3s9Eb+T5NBUcUpB6k8btCgJiyE5OeM1fw6MKpY+Yr5IJNSlB
- E/5Ww9v7yatqf4qrZHi09MjFHXdydSONxnZ4MmdY/BpN3S+tNMeVytIeI
- Gxy+YgA5VEubWigZBM/suSy1gn/cJlshDpIc7zg/Mq47wlO0xJ0Ejsszw
- AU8SnFf/ehllOJ5LXwGLp3OQk5RxP9WTdEiLoCHPibXWiAHVa6ILgiuql
- o86de8oAU5okJbCGeY0ueLCRrS5rotcAaRmhJyYC5VvCKqKOWuRRDf586
- w==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ t=1698318013; x=1729854013;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=Im/4q+MjL5eJ1DmWuxMDMpxzjfyAd0wAkQbj3DkAPJY=;
+ b=TiuT3b+LGSqK/OBW9baJYY5YM6RUsAti1ImHnVScnKmVdctFjyrZX37F
+ KEJbvlb9IGA4Vg/NzMoa6n/fIAy5rp60P6ULKtkL9j/wCijxcGWhVj3R/
+ tHZoT5VC1HTWuNrzMtZXwUSGsTw0RvDxNSq2aDkalj7NdW4QC3Ezznt87
+ xAobW1w377WtwKCaCxTpo0jTEkhjMTV+m/ln/t0HxyAah5OBQLKWYrBUL
+ ryO3KprIVK6dZZJWcCcWLNE56tSVdFGFNpYwS+x1APdiL9sVfJqxbEX+Z
+ nb4f9yS4lswftji4VjIVMlr5wyIWLY0XskSpikIMVG1K0ba6YyCkEiynv
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=h8ZHAvrI
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next] i40e: Remove AQ register
- definitions for VF types
+ header.a=rsa-sha256 header.s=Intel header.b=TiuT3b+L
+Subject: [Intel-wired-lan] [PATCH iwl-next] ice: remove unnecessary
+ discarding of timestamps
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -196,54 +93,254 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: intel-wired-lan@lists.osuosl.org,
- Jesse Brandeburg <jesse.brandeburg@intel.com>, linux-kernel@vger.kernel.org,
- Eric
- Dumazet <edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
- Jacob Keller <jacob.e.keller@intel.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>
+Cc: Jacob Keller <jacob.e.keller@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Karol Kolacinski <karol.kolacinski@intel.com>, anthony.l.nguyen@intel.com,
+ jesse.brandeburg@intel.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+From: Jacob Keller <jacob.e.keller@intel.com>
 
+The ice driver currently discards any outstanding timestamps that are
+happening very near to a .adjtime or .settime callback. This was
+originally added by commit b1a582e64bf2 ("ice: introduce
+ice_ptp_reset_cached_phctime function") and later extended by commit
+d40fd6009332 ("ice: handle flushing stale Tx timestamps in
+ice_ptp_tx_tstamp").
 
-On 26.10.2023 10:38, Ivan Vecera wrote:
-> The i40e driver does not handle its VF device types so there
-> is no need to keep AdminQ register definitions for such
-> device types. Remove them.
-> 
-> Signed-off-by: Ivan Vecera <ivecera@redhat.com>
-> ---
+The original motivation for discarding timestamps was that extending an
+old timestamp using the new cached value of PHC was a problem, as it
+could produce incorrect results. The change did not describe what such
+"incorrect results" were.
 
-Thanks Ivan!
-Reviewed-by: Wojciech Drewek <wojciech.drewek@intel.com>
+There are no such incorrect results. Extending the 32 bit timestamp with
+the new time value just means that the timestamp is reported in terms of
+the newly updated and adjusted system clock. This won't produce
+incorrect results or problematic timestamps to applications. Either the
+timestamp will be extended with the value of the PHC just prior to the
+time adjustment (if the timestamp completes prior to the adjust
+callback), or it will be extended using the new PHC value after the
+adjustment. In either case, the resulting extended timestamp value makes
+sense.
 
->  drivers/net/ethernet/intel/i40e/i40e_register.h | 10 ----------
->  1 file changed, 10 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/intel/i40e/i40e_register.h b/drivers/net/ethernet/intel/i40e/i40e_register.h
-> index d561687303ea..2e1eaca44343 100644
-> --- a/drivers/net/ethernet/intel/i40e/i40e_register.h
-> +++ b/drivers/net/ethernet/intel/i40e/i40e_register.h
-> @@ -863,16 +863,6 @@
->  #define I40E_PFPM_WUFC 0x0006B400 /* Reset: POR */
->  #define I40E_PFPM_WUFC_MAG_SHIFT 1
->  #define I40E_PFPM_WUFC_MAG_MASK I40E_MASK(0x1, I40E_PFPM_WUFC_MAG_SHIFT)
-> -#define I40E_VF_ARQBAH1 0x00006000 /* Reset: EMPR */
-> -#define I40E_VF_ARQBAL1 0x00006C00 /* Reset: EMPR */
-> -#define I40E_VF_ARQH1 0x00007400 /* Reset: EMPR */
-> -#define I40E_VF_ARQLEN1 0x00008000 /* Reset: EMPR */
-> -#define I40E_VF_ARQT1 0x00007000 /* Reset: EMPR */
-> -#define I40E_VF_ATQBAH1 0x00007800 /* Reset: EMPR */
-> -#define I40E_VF_ATQBAL1 0x00007C00 /* Reset: EMPR */
-> -#define I40E_VF_ATQH1 0x00006400 /* Reset: EMPR */
-> -#define I40E_VF_ATQLEN1 0x00006800 /* Reset: EMPR */
-> -#define I40E_VF_ATQT1 0x00008400 /* Reset: EMPR */
->  #define I40E_VFQF_HLUT_MAX_INDEX 15
->  
->  
+The timestamp extension logic is very similar to the logic found in
+timecounter_cyc2time, the primary difference being that the ice hardware
+maintains the full 64 bits of nanoseconds in the MAC rather than being
+maintained purely by software as in the timecounter case.
+
+Indeed, I couldn't find an example of a driver using
+timecounter_cyc2time which does discard timestamps that occur nearby
+a time adjustment. The ice driver behavior of discarding such timestamps
+just results in failure to deliver a Tx timestamp to userspace,
+resulting in applications such as ptp4l to timeout and enter a fault
+state. Reporting the extended timestamp based on the updated PHC value
+isn't producing "garbage" results, and doesn't lead to incorrect
+behavior.
+
+Remove the unnecessary stale timestamp logic.
+
+Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
+Signed-off-by: Karol Kolacinski <karol.kolacinski@intel.com>
+Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+---
+ drivers/net/ethernet/intel/ice/ice_ptp.c | 77 +++---------------------
+ drivers/net/ethernet/intel/ice/ice_ptp.h |  2 -
+ 2 files changed, 8 insertions(+), 71 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.c b/drivers/net/ethernet/intel/ice/ice_ptp.c
+index 5fb9dbbdfc16..bcc3bf105b71 100644
+--- a/drivers/net/ethernet/intel/ice/ice_ptp.c
++++ b/drivers/net/ethernet/intel/ice/ice_ptp.c
+@@ -534,9 +534,8 @@ ice_ptp_is_tx_tracker_up(struct ice_ptp_tx *tx)
+  * 2) check that a timestamp is ready and available in the PHY memory bank
+  * 3) read and copy the timestamp out of the PHY register
+  * 4) unlock the index by clearing the associated in_use bit
+- * 5) check if the timestamp is stale, and discard if so
+- * 6) extend the 40 bit timestamp value to get a 64 bit timestamp value
+- * 7) send this 64 bit timestamp to the stack
++ * 5) extend the 40 bit timestamp value to get a 64 bit timestamp value
++ * 6) send this 64 bit timestamp to the stack
+  *
+  * Note that we do not hold the tracking lock while reading the Tx timestamp.
+  * This is because reading the timestamp requires taking a mutex that might
+@@ -556,12 +555,6 @@ ice_ptp_is_tx_tracker_up(struct ice_ptp_tx *tx)
+  * interrupt for that timestamp should re-trigger this function once
+  * a timestamp is ready.
+  *
+- * In cases where the PTP hardware clock was directly adjusted, some
+- * timestamps may not be able to safely use the timestamp extension math. In
+- * this case, software will set the stale bit for any outstanding Tx
+- * timestamps when the clock is adjusted. Then this function will discard
+- * those captured timestamps instead of sending them to the stack.
+- *
+  * If a Tx packet has been waiting for more than 2 seconds, it is not possible
+  * to correctly extend the timestamp using the cached PHC time. It is
+  * extremely unlikely that a packet will ever take this long to timestamp. If
+@@ -652,8 +645,6 @@ static void ice_ptp_process_tx_tstamp(struct ice_ptp_tx *tx)
+ 		clear_bit(idx, tx->in_use);
+ 		skb = tx->tstamps[idx].skb;
+ 		tx->tstamps[idx].skb = NULL;
+-		if (test_and_clear_bit(idx, tx->stale))
+-			drop_ts = true;
+ 		spin_unlock(&tx->lock);
+ 
+ 		/* It is unlikely but possible that the SKB will have been
+@@ -752,24 +743,21 @@ static enum ice_tx_tstamp_work ice_ptp_tx_tstamp(struct ice_ptp_tx *tx)
+ static int
+ ice_ptp_alloc_tx_tracker(struct ice_ptp_tx *tx)
+ {
+-	unsigned long *in_use, *stale;
+ 	struct ice_tx_tstamp *tstamps;
++	unsigned long *in_use;
+ 
+ 	tstamps = kcalloc(tx->len, sizeof(*tstamps), GFP_KERNEL);
+ 	in_use = bitmap_zalloc(tx->len, GFP_KERNEL);
+-	stale = bitmap_zalloc(tx->len, GFP_KERNEL);
+ 
+-	if (!tstamps || !in_use || !stale) {
++	if (!tstamps || !in_use) {
+ 		kfree(tstamps);
+ 		bitmap_free(in_use);
+-		bitmap_free(stale);
+ 
+ 		return -ENOMEM;
+ 	}
+ 
+ 	tx->tstamps = tstamps;
+ 	tx->in_use = in_use;
+-	tx->stale = stale;
+ 	tx->init = 1;
+ 
+ 	spin_lock_init(&tx->lock);
+@@ -815,7 +803,6 @@ ice_ptp_flush_tx_tracker(struct ice_pf *pf, struct ice_ptp_tx *tx)
+ 		skb = tx->tstamps[idx].skb;
+ 		tx->tstamps[idx].skb = NULL;
+ 		clear_bit(idx, tx->in_use);
+-		clear_bit(idx, tx->stale);
+ 		spin_unlock(&tx->lock);
+ 
+ 		/* Count the number of Tx timestamps flushed */
+@@ -826,41 +813,6 @@ ice_ptp_flush_tx_tracker(struct ice_pf *pf, struct ice_ptp_tx *tx)
+ 	}
+ }
+ 
+-/**
+- * ice_ptp_mark_tx_tracker_stale - Mark unfinished timestamps as stale
+- * @tx: the tracker to mark
+- *
+- * Mark currently outstanding Tx timestamps as stale. This prevents sending
+- * their timestamp value to the stack. This is required to prevent extending
+- * the 40bit hardware timestamp incorrectly.
+- *
+- * This should be called when the PTP clock is modified such as after a set
+- * time request.
+- */
+-static void
+-ice_ptp_mark_tx_tracker_stale(struct ice_ptp_tx *tx)
+-{
+-	spin_lock(&tx->lock);
+-	bitmap_or(tx->stale, tx->stale, tx->in_use, tx->len);
+-	spin_unlock(&tx->lock);
+-}
+-
+-/**
+- * ice_ptp_flush_all_tx_tracker - Flush all timestamp trackers on this clock
+- * @pf: Board private structure
+- *
+- * Called by the clock owner to flush all the Tx timestamp trackers associated
+- * with the clock.
+- */
+-static void
+-ice_ptp_flush_all_tx_tracker(struct ice_pf *pf)
+-{
+-	struct ice_ptp_port *port;
+-
+-	list_for_each_entry(port, &pf->ptp.ports_owner.ports, list_member)
+-		ice_ptp_flush_tx_tracker(ptp_port_to_pf(port), &port->tx);
+-}
+-
+ /**
+  * ice_ptp_release_tx_tracker - Release allocated memory for Tx tracker
+  * @pf: Board private structure
+@@ -886,9 +838,6 @@ ice_ptp_release_tx_tracker(struct ice_pf *pf, struct ice_ptp_tx *tx)
+ 	bitmap_free(tx->in_use);
+ 	tx->in_use = NULL;
+ 
+-	bitmap_free(tx->stale);
+-	tx->stale = NULL;
+-
+ 	tx->len = 0;
+ }
+ 
+@@ -1006,14 +955,12 @@ static int ice_ptp_update_cached_phctime(struct ice_pf *pf)
+  * ice_ptp_reset_cached_phctime - Reset cached PHC time after an update
+  * @pf: Board specific private structure
+  *
+- * This function must be called when the cached PHC time is no longer valid,
+- * such as after a time adjustment. It marks any currently outstanding Tx
+- * timestamps as stale and updates the cached PHC time for both the PF and Rx
+- * rings.
++ * This function is called to immediately update the cached PHC time after
++ * a .settime or .adjtime call.
+  *
+  * If updating the PHC time cannot be done immediately, a warning message is
+- * logged and the work item is scheduled immediately to minimize the window
+- * with a wrong cached timestamp.
++ * logged and the work item is scheduled without delay to minimize the window
++ * where a timestamp is extended using the old cached value.
+  */
+ static void ice_ptp_reset_cached_phctime(struct ice_pf *pf)
+ {
+@@ -1036,13 +983,6 @@ static void ice_ptp_reset_cached_phctime(struct ice_pf *pf)
+ 		kthread_queue_delayed_work(pf->ptp.kworker, &pf->ptp.work,
+ 					   msecs_to_jiffies(10));
+ 	}
+-
+-	/* Mark any outstanding timestamps as stale, since they might have
+-	 * been captured in hardware before the time update. This could lead
+-	 * to us extending them with the wrong cached value resulting in
+-	 * incorrect timestamp values.
+-	 */
+-	ice_ptp_mark_tx_tracker_stale(&pf->ptp.port.tx);
+ }
+ 
+ /**
+@@ -2416,7 +2356,6 @@ s8 ice_ptp_request_ts(struct ice_ptp_tx *tx, struct sk_buff *skb)
+ 		 * requests.
+ 		 */
+ 		set_bit(idx, tx->in_use);
+-		clear_bit(idx, tx->stale);
+ 		tx->tstamps[idx].start = jiffies;
+ 		tx->tstamps[idx].skb = skb_get(skb);
+ 		skb_shinfo(skb)->tx_flags |= SKBTX_IN_PROGRESS;
+diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.h b/drivers/net/ethernet/intel/ice/ice_ptp.h
+index c0c8ef4de70f..ed2d3517db04 100644
+--- a/drivers/net/ethernet/intel/ice/ice_ptp.h
++++ b/drivers/net/ethernet/intel/ice/ice_ptp.h
+@@ -123,7 +123,6 @@ enum ice_tx_tstamp_work {
+  * @lock: lock to prevent concurrent access to fields of this struct
+  * @tstamps: array of len to store outstanding requests
+  * @in_use: bitmap of len to indicate which slots are in use
+- * @stale: bitmap of len to indicate slots which have stale timestamps
+  * @block: which memory block (quad or port) the timestamps are captured in
+  * @offset: offset into timestamp block to get the real index
+  * @len: length of the tstamps and in_use fields.
+@@ -138,7 +137,6 @@ struct ice_ptp_tx {
+ 	spinlock_t lock; /* lock protecting in_use bitmap */
+ 	struct ice_tx_tstamp *tstamps;
+ 	unsigned long *in_use;
+-	unsigned long *stale;
+ 	u8 block;
+ 	u8 offset;
+ 	u8 len;
+
+base-commit: b57a67bab47efc24e7ea7bd626aa517ac76c4fc9
+-- 
+2.40.1
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
