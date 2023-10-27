@@ -2,101 +2,99 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id E0DEA7DBCBF
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 30 Oct 2023 16:36:09 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 901487DBCC2
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 30 Oct 2023 16:36:14 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 70D7470BAF;
-	Mon, 30 Oct 2023 15:36:08 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 70D7470BAF
+	by smtp3.osuosl.org (Postfix) with ESMTP id 1C39370B70;
+	Mon, 30 Oct 2023 15:36:13 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1C39370B70
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1698680168;
-	bh=YcK3rNJaNWSukhmsdAPYxSzaqXi2TtR7Y8XJ1HTGUGA=;
+	s=default; t=1698680173;
+	bh=PYz+LF67SiGScj3D+49wDizlwUxtX8g4OvrJqYBm8GA=;
 	h=References:In-Reply-To:From:Date:To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=WvJir/4lIJR4zgT/2g2ALeev0SuHTLS1XuQvmmCceD/C9CRwSOO7CHgt67rvjXvEu
-	 jkdAj9tiBK+YhSW7xxkVIiPrh8+oFe7Ksz5mOGK94vHzHgc9avN5bNiSJd7t/kRY2f
-	 E5ORg9MJ68t0iN2jZn6L3oiavt+NjLAH7jAG+nZM5k+sAPDrs4F4EYKrlEE+bvBDId
-	 X6CHP7B79Oeb/BvWHfTJLpjAbfezyxCjELm0YFPqA+inHgFDL5frAWEXNsxvOjUNln
-	 JVNwAI4dSio5Dsb5IsNXSvS2wI/VHCZZ40/0ZQAMPSZoFlJ1PfjHx8zBRGAPzAcNO4
-	 9SKXRMZyJuoCA==
+	b=ddE9I/A2NqXsbFYBrDdSzmEmuHFBVzU4X5+ZlB5Nyr8b0BZCoQ5fDWn6ToXkkP5SU
+	 YLzNeX76FcDdE17PGyTbuc2t8teh/C8xjIvaI/4yaLK8Qi//uUavN2+as6GT6UdIiC
+	 78M7JJ/SIQyHaYhskelKH/9uKtFYNS+RjDe4McMSHqycvuGfZnynMINWOgoTgzojb+
+	 3jIe1mcy1BNXQHomCLgFXS73VOloM1U33BYQBlyQk5UKIFDK5GEPhuJ6cnZaLfQuHt
+	 I4uVLL+hRlRvaCGbqQsx9UsPi6pemDvNFG5LJiAm0YqQiuP/iq4PfooM/51wYU2isJ
+	 1wxNXLiYEZcVQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id pAtG5dn0ADp5; Mon, 30 Oct 2023 15:36:07 +0000 (UTC)
+	with ESMTP id 1JqO2AwxTDNm; Mon, 30 Oct 2023 15:36:12 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 47BC670925;
-	Mon, 30 Oct 2023 15:36:07 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 47BC670925
+	by smtp3.osuosl.org (Postfix) with ESMTP id 8014770925;
+	Mon, 30 Oct 2023 15:36:11 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 8014770925
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 0728E1BF318
- for <intel-wired-lan@lists.osuosl.org>; Fri, 27 Oct 2023 19:38:22 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 2266C1BF318
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 27 Oct 2023 19:40:55 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id DFCD87086D
- for <intel-wired-lan@lists.osuosl.org>; Fri, 27 Oct 2023 19:38:21 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org DFCD87086D
+ by smtp3.osuosl.org (Postfix) with ESMTP id EE0797086D
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 27 Oct 2023 19:40:54 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org EE0797086D
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id bgHltZLRDzdg for <intel-wired-lan@lists.osuosl.org>;
- Fri, 27 Oct 2023 19:38:21 +0000 (UTC)
-Received: from mail-ej1-x62a.google.com (mail-ej1-x62a.google.com
- [IPv6:2a00:1450:4864:20::62a])
- by smtp3.osuosl.org (Postfix) with ESMTPS id C750070869
- for <intel-wired-lan@lists.osuosl.org>; Fri, 27 Oct 2023 19:38:20 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C750070869
-Received: by mail-ej1-x62a.google.com with SMTP id
- a640c23a62f3a-9be1ee3dc86so344868166b.1
- for <intel-wired-lan@lists.osuosl.org>; Fri, 27 Oct 2023 12:38:20 -0700 (PDT)
+ with ESMTP id puOJmth6TSBR for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 27 Oct 2023 19:40:54 +0000 (UTC)
+Received: from mail-ej1-x631.google.com (mail-ej1-x631.google.com
+ [IPv6:2a00:1450:4864:20::631])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id BF57370869
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 27 Oct 2023 19:40:53 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org BF57370869
+Received: by mail-ej1-x631.google.com with SMTP id
+ a640c23a62f3a-9c3aec5f326so747735466b.1
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 27 Oct 2023 12:40:53 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1698435499; x=1699040299;
+ d=1e100.net; s=20230601; t=1698435651; x=1699040451;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=HResry5JndYeZBSzTVAWBwxzRl7+fUNF38GNSOea4NU=;
- b=TOiRCoHHDQWxXrDoa8zUR+aYpDgV/CAg/Z0sHKku5GuVpOu+M9VwkdbTR1FBJf6m7z
- fvj8/esoKQ6N2V2wyuYm3bwqoNDXE/25OIWGk8EPSI6Z6U4CoWUaqBNvvFriNkKdkeyE
- y43iz4F2k7mLOKaYcu8uO89xqvDEbilgC6fEO8W0aC3P75sPm50v4aoPPET5tPSv/ecd
- xt3S+wE1InUhT7yy/UxlQGoOj+2WdagdpYdixrsYfHFVWvBaWAwPGwYSjVxS/XyK3QP5
- vKR15oxARhb1BBmH3Wl4e6wXjpteL6wMM8ob2ma27Fl6IY6pm7axoadwb659S1gqCLhH
- cddw==
-X-Gm-Message-State: AOJu0YzcAfgr5iB2ZrQ7couj4hE5UXeEq7I6O0Yuf/SNXIAFpR5ET8i1
- h34xs9ukVx7WW49jw85mi05tWAgsZnmwbQMEJgxaSQ==
-X-Google-Smtp-Source: AGHT+IGfiH7/vZwPOYNJYfiPFBz2VHBIUsAkZ3hwTXH1qOBLB7kLIxeiWKyV6/erRjPKyouXW2aFwt8n98N0Q3p+tfY=
-X-Received: by 2002:a17:907:9341:b0:9b2:b71f:83be with SMTP id
- bv1-20020a170907934100b009b2b71f83bemr3210322ejc.1.1698435498762; Fri, 27 Oct
- 2023 12:38:18 -0700 (PDT)
+ bh=xzKQXsJ9PPJ95N5huUjFyALdgbkkeZmKhRTaQ99Yt+o=;
+ b=ed+npppM7dqvgqAMDZmiuP1kNUrkbBd8UlCiCMWwurcyep6OBwlX6z5jZ9YVivxGts
+ pNJzIqrmUBlysY2SzUTONlQk8lRbnDE316ZNH6WqW7LdIZoyX02escQU8AhaW32VW6J8
+ ji1peTP51p4FZa2gy51ejSF/v9ka4cmtkOL2sPrFoXO6EjKzkRWwZKGIc1a551nY7m5F
+ nT5Fk8ge4YXID0Gi7NVHwPC77VJxAWdh81yxNt2i/immUYBIMahVln2yG4UWJL94cXFT
+ GE3AzrOgAEW799jjbGU+G/YVYQMVkVVc+jtOkGcZZUCMHLMQnrvOmEzM8F2vntVEiufj
+ iqAQ==
+X-Gm-Message-State: AOJu0YxB6taKvOBN+UR7QqdbMNM/qYS8rzmwzRc/DNVITkGz00+cGWur
+ b3nlqOa3dA2Xp5g3t9lss2cekExqyhY0lQoY80JZew==
+X-Google-Smtp-Source: AGHT+IEPfEM/trnfZm6cOr0U7cu+iGr19zJct2V4K5qR5GqFK9SelPMa/Z/9udzIJpJO7oi3U+zFq2t/7LTPw2L/vcI=
+X-Received: by 2002:a17:907:2da3:b0:9c3:97d7:2c67 with SMTP id
+ gt35-20020a1709072da300b009c397d72c67mr3978966ejc.25.1698435651329; Fri, 27
+ Oct 2023 12:40:51 -0700 (PDT)
 MIME-Version: 1.0
 References: <20231026-ethtool_puts_impl-v2-0-0d67cbdd0538@google.com>
- <20231026-ethtool_puts_impl-v2-1-0d67cbdd0538@google.com>
- <20231026220248.blgf7kgt5fkkbg7f@skbuf>
- <CAFhGd8rWOE8zGFCdjM6i8H3TP8q5BFFxMGCk0n-nmLmjHojefg@mail.gmail.com>
- <20231026222548.rqbp5ktgo2mysl6w@skbuf>
-In-Reply-To: <20231026222548.rqbp5ktgo2mysl6w@skbuf>
+ <20231026-ethtool_puts_impl-v2-2-0d67cbdd0538@google.com>
+ <8521c712250bcffce5c71e8d2b2574de786d4572.camel@perches.com>
+In-Reply-To: <8521c712250bcffce5c71e8d2b2574de786d4572.camel@perches.com>
 From: Justin Stitt <justinstitt@google.com>
-Date: Fri, 27 Oct 2023 12:38:06 -0700
-Message-ID: <CAFhGd8r9Y2tavxA2KVpELm-SRdvD+iEmYW=s7tf_dPpmVT3WeA@mail.gmail.com>
-To: Vladimir Oltean <olteanv@gmail.com>
+Date: Fri, 27 Oct 2023 12:40:39 -0700
+Message-ID: <CAFhGd8p9ytqbRuqgWmKe=zCg7Nhft0NMvbuuEyjAQHNAcBedaQ@mail.gmail.com>
+To: Joe Perches <joe@perches.com>
 X-Mailman-Approved-At: Mon, 30 Oct 2023 15:35:00 +0000
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1698435499; x=1699040299; darn=lists.osuosl.org;
+ d=google.com; s=20230601; t=1698435651; x=1699040451; darn=lists.osuosl.org;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=HResry5JndYeZBSzTVAWBwxzRl7+fUNF38GNSOea4NU=;
- b=Jyiu3bXETdH5CDBwYaQ/3/wcrYF+LYqHKiNe9+7N2Pw5Bm/t5G4NBFr3giFTxl7K3G
- jyUs2/AutBCzLNDh3suoxGGJSN8NFbZuEVh+wtg2P2hzAVFq76qnBoUSkYzRtuqN2N0U
- /KaU1fLTpWBfx3paaTDJGMHBy2png3ADWAHUbQoXJYMHzx/SJ3kdBz4Aq3e0bFQeUdZ1
- nXvt4rJkOLsfvD8xtFlFk/jegtplnzrgx8gTbGZy3nXwJ/D4c/dLtZiBZRW4iaGr0mfX
- RvVQGnkNCyNhCwQi9Uf0afrWwKF3XquugHfD2AkaOONC5mFUDT9bNfwjhJo8ed6r40Yr
- jsuQ==
+ bh=xzKQXsJ9PPJ95N5huUjFyALdgbkkeZmKhRTaQ99Yt+o=;
+ b=4nDtVNVeTU24B6IWrmkbXRHwZk7fS46qbkVUk0LHKsDQ0Gk0SrWbqaUT1AqvHOfv8q
+ YPNfGhYuaZ3xBu+rE1xUcdTGd3u/NKaLgU7MY+tLD1Im0neL+WQKGe32Uhe4Lo+yYKB1
+ gSgSmGzK0lEuIBIzCPgfeu9B5yJBHZGR2ptPuglv1ruSrvBI0dltCAowVU4+0onMz8Gh
+ 4lIfaiuYBpr6gyil2lxGxuuPgw6cHrxxZCIzUSchn9b8pkjaGQrwU0rSV52Qzwljm3Rq
+ amfVZ3vQZLrXJNwCOMdAZ92Avlxrd4MVN3eY8DkLME00bXrk0MIOegMeUI9hjVvEoeZa
+ VT/A==
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=google.com header.i=@google.com
- header.a=rsa-sha256 header.s=20230601 header.b=Jyiu3bXE
-Subject: Re: [Intel-wired-lan] [PATCH next v2 1/3] ethtool: Implement
- ethtool_puts()
+ header.a=rsa-sha256 header.s=20230601 header.b=4nDtVNVe
+Subject: Re: [Intel-wired-lan] [PATCH next v2 2/3] checkpatch: add
+ ethtool_sprintf rules
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -109,42 +107,96 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: linux-hyperv@vger.kernel.org, GR-Linux-NIC-Dev@marvell.com,
- netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- UNGLinuxDriver@microchip.com, oss-drivers@corigine.com,
- intel-wired-lan@lists.osuosl.org, linux-mediatek@lists.infradead.org,
- bpf@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Cc: Andrew Lunn <andrew@lunn.ch>, linux-hyperv@vger.kernel.org,
+ Brett Creeley <brett.creeley@amd.com>, Ronak Doshi <doshir@vmware.com>,
+ VMware PV-Drivers Reviewers <pv-drivers@vmware.com>,
+ John Fastabend <john.fastabend@gmail.com>,
+ Linus Walleij <linus.walleij@linaro.org>, Alexei Starovoitov <ast@kernel.org>,
+ Russell King <linux@armlinux.org.uk>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Eric Dumazet <edumazet@google.com>,
+ Vladimir Oltean <olteanv@gmail.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Mengyuan Lou <mengyuanlou@net-swift.com>, netdev@vger.kernel.org,
+ Arthur Kiyanovski <akiyano@amazon.com>, linux-kernel@vger.kernel.org,
+ Jesper Dangaard Brouer <hawk@kernel.org>,
+ Louis Peens <louis.peens@corigine.com>, Wei Liu <wei.liu@kernel.org>,
+ Florian Fainelli <f.fainelli@gmail.com>,
+ Daniel Borkmann <daniel@iogearbox.net>,
+ Steen Hegelund <Steen.Hegelund@microchip.com>,
+ Dexuan Cui <decui@microsoft.com>,
+ Jesse Brandeburg <jesse.brandeburg@intel.com>, Noam Dagan <ndagan@amazon.com>,
+ Heiner Kallweit <hkallweit1@gmail.com>, Shenwei Wang <shenwei.wang@nxp.com>,
+ Clark Wang <xiaoning.wang@nxp.com>, NXP Linux Team <linux-imx@nxp.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Yisen Zhuang <yisen.zhuang@huawei.com>, Landen Chao <Landen.Chao@mediatek.com>,
+ Shay Agroskin <shayagr@amazon.com>,
+ Daniel Machon <daniel.machon@microchip.com>,
+ =?UTF-8?Q?Alvin_=C5=A0ipraga?= <alsi@bang-olufsen.dk>,
+ Hauke Mehrtens <hauke@hauke-m.de>, Haiyang Zhang <haiyangz@microsoft.com>,
+ Sean Wang <sean.wang@mediatek.com>, Nathan Chancellor <nathan@kernel.org>,
+ DENG Qingfang <dqfext@gmail.com>, Jiawen Wu <jiawenwu@trustnetic.com>,
+ Wei Fang <wei.fang@nxp.com>, Lukas Bulwahn <lukas.bulwahn@gmail.com>,
+ Andy Whitcroft <apw@canonical.com>, drivers@pensando.io,
+ intel-wired-lan@lists.osuosl.org, Lars Povlsen <lars.povlsen@microchip.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ linux-arm-kernel@lists.infradead.org, Salil Mehta <salil.mehta@huawei.com>,
+ GR-Linux-NIC-Dev@marvell.com, Kees Cook <keescook@chromium.org>,
+ =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>,
+ Rasesh Mody <rmody@marvell.com>, David Arinzon <darinzon@amazon.com>,
+ oss-drivers@corigine.com, Nick Desaulniers <ndesaulniers@google.com>,
+ Daniel Golle <daniel@makrotopia.org>, "David S. Miller" <davem@davemloft.net>,
+ Dwaipayan Ray <dwaipayanray1@gmail.com>, Saeed Bishara <saeedb@amazon.com>,
+ linux-mediatek@lists.infradead.org, bpf@vger.kernel.org,
+ Dimitris Michailidis <dmichail@fungible.com>,
+ Sudarsana Kalluru <skalluru@marvell.com>, UNGLinuxDriver@microchip.com,
+ Shannon Nelson <shannon.nelson@amd.com>
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: base64
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-T24gVGh1LCBPY3QgMjYsIDIwMjMgYXQgMzoyNeKAr1BNIFZsYWRpbWlyIE9sdGVhbiA8b2x0ZWFu
-dkBnbWFpbC5jb20+IHdyb3RlOgo+Cj4gT24gVGh1LCBPY3QgMjYsIDIwMjMgYXQgMDM6MDk6NTlQ
-TSAtMDcwMCwgSnVzdGluIFN0aXR0IHdyb3RlOgo+ID4gU2hvdWxkIEkgdW5kbyB0aGlzPyBJIHdh
-bnQgbXkgcGF0Y2ggYWdhaW5zdCBuZXh0IHNpbmNlIGl0J3MgdGFyZ2V0aW5nCj4gPiBzb21lIHN0
-dWZmIGluLWZsaWdodCBvdmVyIHRoZXJlLiBCVVQsIEkgYWxzbyB3YW50IGV0aHRvb2xfcHV0cygp
-IHRvIGJlCj4gPiBkaXJlY3RseSBiZWxvdyBldGh0b29sX3NwcmludGYoKSBpbiB0aGUgc291cmNl
-IGNvZGUuIFdoYXQgdG8gZG8/Cj4KPiAocmVtb3ZpbmcgZXZlcnlvbmUgZXhjZXB0IHRoZSBsaXN0
-cyBmcm9tIENDLCBJIGRvbid0IHdhbnQgdG8gZ28gdG8gZW1haWwKPiBhcmVzdCBiZWNhdXNlIG9m
-IHNwYW1taW5nIHRvbyBtYW55IHJlY2lwaWVudHMpCj4KPiBXaGF0IGlzIHRoZSBzdHVmZiBpbi1m
-bGlnaHQgaW4gbmV4dCB0aGF0IHRoaXMgaXMgdGFyZ2V0aW5nPwo+Cj4gQW5kIHdoeSB3b3VsZCBh
-bnl0aGluZyBwcmV2ZW50IHlvdSBmcm9tIHB1dHRpbmcgZXRodG9vbF9wdXRzKCkgZGlyZWN0bHkK
-PiBiZWxvdyBldGh0b29sX3NwcmludGYoKT8KClRoZSBpbi1mbGlnaHQgc3R1ZmYgY29uc2lzdHMg
-b2YgcGF0Y2hlcyBJIHNlbnQgY2hhbmdpbmcgc29tZSBzdHJuY3B5KCkgdXNhZ2UKdG8KCmV0aHRv
-b2xfc3ByaW50ZigmZGF0YSwgIiVzIiwgc29tZXRoaW5nW2ldLm5hbWUpOwoKV2UgY2FuIHNlZSB0
-aGVtIGhlcmUgWzFdLiBJIHdlbnQgZm9yIHRoaXMgYXBwcm9hY2ggaW5pdGlhbGx5IGJ1dCB0aGVu
-CmRpc2N1c3Npb24gY2FtZSB1cCBhYm91dCBpbnRyb2R1Y2luZyBldGh0b29sX3B1dHMoKSB3aGlj
-aCBub3cKbWFkZSBteSBwYXRjaGVzIChzb21lIGFjY2VwdGVkIGludG8gbmV4dCBhbHJlYWR5KSBz
-ZW1pLW91dGRhdGVkCmFuZCBpbiBuZWVkIG9mIGFub3RoZXIgc3dhcCBmcm9tIHNwcmludGYtPnB1
-dHMoKSAtLSBoZW5jZSB0aGlzIHNlcmllcy4KCkFzIGZhciBhcyB0aGUgcmViYXNlLCBJIHNpbXBs
-eSB0b29rIG15IGNvbW1pdHMgYW5kIHBsYWNlZCB0aGVtIG9uCnRvcCBvZiBuZXh0L21hc3RlciBh
-bmQgZ290IG1lcmdlIGNvbmZsaWN0cyB3aGVuIGV0aHRvb2xfcHV0cygpCndhcyBwbGFjZWQgYmVs
-b3cgZXRodG9vbF9zcHJpbnRmKCkuIEFsbCBJIGhhdmUgdG8gZG8gaXMgbW92ZSB0aGUgaHVua3MK
-YXJvdW5kIGJ1dCBzaW5jZSBJIGZvcm1hdHRlZCB0aGUgZmlsZSBpdCdzIGFwcGVhcmluZyBpbiB0
-aGUgZGlmZi4gdjMgd2lsbApiZSBhIGNsZWFuIGRpZmYuCgoKWzFdOiBodHRwczovL2xvcmUua2Vy
-bmVsLm9yZy9hbGwvP3E9ZGZiOmV0aHRvb2xfc3ByaW50ZiUyMEFORCUyMGY6anVzdGluc3RpdHQK
-ClRoYW5rcwpKdXN0aW4KX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX18KSW50ZWwtd2lyZWQtbGFuIG1haWxpbmcgbGlzdApJbnRlbC13aXJlZC1sYW5Ab3N1b3Ns
-Lm9yZwpodHRwczovL2xpc3RzLm9zdW9zbC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC13aXJl
-ZC1sYW4K
+T24gVGh1LCBPY3QgMjYsIDIwMjMgYXQgMzozOeKAr1BNIEpvZSBQZXJjaGVzIDxqb2VAcGVyY2hl
+cy5jb20+IHdyb3RlOgo+Cj4gT24gVGh1LCAyMDIzLTEwLTI2IGF0IDIxOjU2ICswMDAwLCBKdXN0
+aW4gU3RpdHQgd3JvdGU6Cj4gPiBBZGQgc29tZSB3YXJuaW5ncyBmb3IgdXNpbmcgZXRodG9vbF9z
+cHJpbnRmKCkgd2hlcmUgYSBzaW1wbGUKPiA+IGV0aHRvb2xfcHV0cygpIHdvdWxkIHN1ZmZpY2Uu
+Cj4gW10KPiA+IGRpZmYgLS1naXQgYS9zY3JpcHRzL2NoZWNrcGF0Y2gucGwgYi9zY3JpcHRzL2No
+ZWNrcGF0Y2gucGwKPiBbXQo+ID4gQEAgLTcwMTEsNiArNzAxMSwyNSBAQCBzdWIgcHJvY2VzcyB7
+Cj4gPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAiUHJlZmVyIHN0cnNjcHksIHN0cnNjcHlf
+cGFkLCBvciBfX25vbnN0cmluZyBvdmVyIHN0cm5jcHkgLSBzZWU6IGh0dHBzOi8vZ2l0aHViLmNv
+bS9LU1BQL2xpbnV4L2lzc3Vlcy85MFxuIiAuICRoZXJlY3Vycik7Cj4gPiAgICAgICAgICAgICAg
+IH0KPiA+Cj4gPiArIyBldGh0b29sX3NwcmludGYgdXNlcyB0aGF0IHNob3VsZCBsaWtlbHkgYmUg
+ZXRodG9vbF9wdXRzCj4gPiArICAgICAgICAgICAgIGlmICgkbGluZSA9fiAvXGJldGh0b29sX3Nw
+cmludGZccypcKFxzKiRGdW5jQXJnXHMqLFxzKiRGdW5jQXJnXHMqXCkvKSB7Cj4gPiArICAgICAg
+ICAgICAgICAgICAgICAgaWYoV0FSTigiRVRIVE9PTF9TUFJJTlRGIiwKPiA+ICsgICAgICAgICAg
+ICAgICAgICAgICAgICAiUHJlZmVyIGV0aHRvb2xfcHV0cyBvdmVyIGV0aHRvb2xfc3ByaW50ZiB3
+aXRoIG9ubHkgdHdvIGFyZ3VtZW50c1xuIiAuICRoZXJlY3VycikgJiYKPiA+ICsgICAgICAgICAk
+Zml4KSB7Cj4gPiArICAgICAgICAgJGZpeGVkWyRmaXhsaW5lbnJdID1+IHMvZXRodG9vbF9zcHJp
+bnRmXHMqXCgvZXRodG9vbF9wdXRzXCgvOwo+ID4gKyAgICAgICB9Cj4gPiArICAgICAgICAgICAg
+IH0KPiA+ICsKPiA+ICsgICAgICAgICAgICAgIyB1c2UgJHJhd2xpbmUgYmVjYXVzZSAkbGluZSBs
+b3NlcyAlcyB2aWEgc2FuaXRpemF0aW9uIGFuZCB0aHVzIHdlIGNhbid0IG1hdGNoIGFnYWluc3Qg
+aXQuCj4gPiArICAgICAgICAgICAgIGlmICgkcmF3bGluZSA9fiAvXGJldGh0b29sX3NwcmludGZc
+cypcKFxzKiRGdW5jQXJnXHMqLFxzKlwiXCVzXCJccyosXHMqJEZ1bmNBcmdccypcKS8pIHsKPiA+
+ICsgICAgICAgICAgICAgICAgICAgICBpZihXQVJOKCJFVEhUT09MX1NQUklOVEYiLAo+ID4gKyAg
+ICAgICAgICAgICAgICAgICAgICAgICJQcmVmZXIgZXRodG9vbF9wdXRzIG92ZXIgZXRodG9vbF9z
+cHJpbnRmIHdpdGggc3RhbmRhbG9uZSBcIiVzXCIgc3BlY2lmaWVyXG4iIC4gJGhlcmVjdXJyKSAm
+Jgo+ID4gKyAgICAgICAgICRmaXgpIHsKPiA+ICsgICAgICAgICAkZml4ZWRbJGZpeGxpbmVucl0g
+PX4gcy9ldGh0b29sX3NwcmludGZccypcKFxzKiguKj8pLC4qPywoLio/KVwpL2V0aHRvb2xfcHV0
+c1woJDEsJDIpLzsKPgo+IFRoYW5rcywgYnV0Ogo+Cj4gVGhpcyBmaXggd291bGRuJ3Qgd29yayBp
+ZiB0aGUgZmlyc3QgYXJndW1lbnQgd2FzIGl0c2VsZiBhIGZ1bmN0aW9uCj4gd2l0aCBtdWx0aXBs
+ZSBhcmd1bWVudHMuCj4KPiBBbmQgdGhpcyBpcyB3aGl0ZXNwYWNlIGZvcm1hdHRlZCBpbmNvcnJl
+Y3RseS4KPgo+IEl0Ogo+Cj4gbyBuZWVkcyBhIHNwYWNlIGFmdGVyIGlmCj4gbyBuZWVkcyBhIHNw
+YWNlIGFmdGVyIHRoZSBjb21tYSBpbiB0aGUgZml4Cj4gbyBuZWVkcyB0byB1c2UgdGhlIGFwcHJv
+cHJpYXRlIGFtb3VudCBhbmQgdGFicyBmb3IgaW5kZW50YXRpb24KPiBvIG5lZWRzIGFsaWdubWVu
+dCB0byBvcGVuIHBhcmVudGhlc2VzCj4gbyB0aGUgYmFja3NsYXNoZXMgYXJlIG5vdCByZXF1aXJl
+ZCBpbiB0aGUgZml4IGJsb2NrCj4KPiBEbyB5b3Ugd2FudCBtZSB0byBwdXNoIHdoYXQgSSB3cm90
+ZSBpbiB0aGUgbGluayBiZWxvdz8KPiBodHRwczovL2xvcmUua2VybmVsLm9yZy9sa21sLzdlZWM5
+MmQ5ZTcyZDI4ZTdiNTIwMmY0MWIwMmEzODNlYjI4ZGRkMjYuY2FtZWxAcGVyY2hlcy5jb20vCgpB
+aCwgSSBkaWRuJ3Qgc2VlIHlvdSBwcm92aWRlZCBhIGRpZmYgaW4gcHJldmlvdXMgdGhyZWFkLgoK
+WWVhaCB5b3UgY2FuIHB1c2ggaXQgYnV0IGl0J3Mgbm90IHJlYWxseSBhIHN0YW5kYWxvbmUgc28g
+cGVyaGFwcyBJJ2xsCmp1c3Qgc3RlYWwgdGhlIGRpZmYgYW5kCndyYXAgaW50byB2Mz8KCj4KPiA+
+ICsgICAgICAgfQo+ID4gKyAgICAgICAgICAgICB9Cj4gPiArCj4gPiArCj4gPiAgIyB0eXBlY2Fz
+dHMgb24gbWluL21heCBjb3VsZCBiZSBtaW5fdC9tYXhfdAo+ID4gICAgICAgICAgICAgICBpZiAo
+JHBlcmxfdmVyc2lvbl9vayAmJgo+ID4gICAgICAgICAgICAgICAgICAgZGVmaW5lZCAkc3RhdCAm
+Jgo+ID4KPgoKVGhhbmtzCkp1c3RpbgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fXwpJbnRlbC13aXJlZC1sYW4gbWFpbGluZyBsaXN0CkludGVsLXdpcmVkLWxh
+bkBvc3Vvc2wub3JnCmh0dHBzOi8vbGlzdHMub3N1b3NsLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2lu
+dGVsLXdpcmVkLWxhbgo=
