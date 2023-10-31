@@ -1,91 +1,184 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id DB3FC7DBDC2
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 30 Oct 2023 17:24:51 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 85BA07DC9CC
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 31 Oct 2023 10:43:49 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 67C9860B14;
-	Mon, 30 Oct 2023 16:24:50 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 67C9860B14
+	by smtp1.osuosl.org (Postfix) with ESMTP id 01C838333F;
+	Tue, 31 Oct 2023 09:43:48 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 01C838333F
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1698683090;
-	bh=uPQT0AqcxuoVxBowwbp3gydrBcY/L/o+pzlyNruIfPQ=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1698745428;
+	bh=rCqciO5ESo+YfZ639eqIDsI+q2niY33Lr2b+IXjNX6g=;
+	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=2htjpIrdNiwKkjInjT7sUT2/2mGXvPWs7Yicm2g8fZKpdlw6IGm017/ey2EEEFoX4
-	 9O5G70ksyExm3TqK/WgB58XlDOtbt72tgJKsUbSg5tq+zsvdRqSXuCgAPqWRkhJlRa
-	 5KT20O3OoOZxsCnTrt/PfoR4c3PNq0bZFM0rbTYh9npV8rPde7x47niky/gcJzZaVK
-	 KAWChPSJO15Q9fkZ96htNsGQoge32OB63D67w19LOwnJLNmw1sB9Tx2XXxDcgFwGM1
-	 Yi/NZyqFG8D3CnnPWIKh0O/qvURskn56FyqwdeMgJvYYA82wkVnzCKShKP6ysRzduY
-	 UyKJAccS0SOZQ==
+	b=PoX9jHSjOp9QZDkS+Ui/Aio5sitQIx3cGcO7fr1tbVWCcdd8sPPel6s2sKomt9/So
+	 dLyuC6KEDhJOS7ruTc416q27ZuLgyTQQT+CLs9MHUc2zxBC+rUKGnYIXVVW05RSF6C
+	 FXAP7YjreJzB42JDgcw0XwyLBsiuGmAgJ2P9ZI056GbItRNGMh5ZCeAuKeFBuDXJa+
+	 qrGG+SuUsGxjNfX4Fx2BXo5tbHFxvW/87y28n0NyePGr0f0ZrjXg25M99Jo0a3uNHg
+	 bkLq/xERJMVr310AlyNIDLN40p7aPOwg9deBMVMv03Coi2+X6WMM2Je7s+Yhn4tvRV
+	 MPWWv6FDk5GPw==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 1Kw5hMh_Ub6g; Mon, 30 Oct 2023 16:24:49 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Puk4nlVAe6I4; Tue, 31 Oct 2023 09:43:47 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 2613160AA8;
-	Mon, 30 Oct 2023 16:24:49 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2613160AA8
+	by smtp1.osuosl.org (Postfix) with ESMTP id C5E42832D9;
+	Tue, 31 Oct 2023 09:43:46 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org C5E42832D9
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 1D8A91BF313
- for <intel-wired-lan@lists.osuosl.org>; Mon, 30 Oct 2023 16:24:44 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id EFFAC1BF976
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 31 Oct 2023 09:43:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id E7D32415C7
- for <intel-wired-lan@lists.osuosl.org>; Mon, 30 Oct 2023 16:24:43 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E7D32415C7
+ by smtp3.osuosl.org (Postfix) with ESMTP id D063B61215
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 31 Oct 2023 09:43:41 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D063B61215
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id MmR7-MajhFZU for <intel-wired-lan@lists.osuosl.org>;
- Mon, 30 Oct 2023 16:24:42 +0000 (UTC)
-Received: from mgamail.intel.com (mgamail.intel.com [192.55.52.88])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 85CB1415A4
- for <intel-wired-lan@lists.osuosl.org>; Mon, 30 Oct 2023 16:24:42 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 85CB1415A4
-X-IronPort-AV: E=McAfee;i="6600,9927,10879"; a="419224916"
-X-IronPort-AV: E=Sophos;i="6.03,263,1694761200"; d="scan'208";a="419224916"
-Received: from orsmga005.jf.intel.com ([10.7.209.41])
- by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 30 Oct 2023 09:24:40 -0700
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id Y1CHd4rsgKIr for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 31 Oct 2023 09:43:41 +0000 (UTC)
+Received: from mgamail.intel.com (mgamail.intel.com [192.55.52.136])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id DA0EF61212
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 31 Oct 2023 09:43:40 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org DA0EF61212
+X-IronPort-AV: E=McAfee;i="6600,9927,10879"; a="367597164"
+X-IronPort-AV: E=Sophos;i="6.03,265,1694761200"; d="scan'208";a="367597164"
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+ by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 31 Oct 2023 02:43:40 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10879"; a="933818179"
-X-IronPort-AV: E=Sophos;i="6.03,263,1694761200"; d="scan'208";a="933818179"
-Received: from lkp-server01.sh.intel.com (HELO 8917679a5d3e) ([10.239.97.150])
- by orsmga005.jf.intel.com with ESMTP; 30 Oct 2023 09:24:38 -0700
-Received: from kbuild by 8917679a5d3e with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1qxV47-000DPP-1e;
- Mon, 30 Oct 2023 16:24:35 +0000
-Date: Tue, 31 Oct 2023 00:23:35 +0800
-From: kernel test robot <lkp@intel.com>
-To: Karol Kolacinski <karol.kolacinski@intel.com>,
- intel-wired-lan@lists.osuosl.org
-Message-ID: <202310310036.7Cgll3Lm-lkp@intel.com>
-References: <20231026105955.282546-1-karol.kolacinski@intel.com>
+X-IronPort-AV: E=McAfee;i="6600,9927,10879"; a="851191047"
+X-IronPort-AV: E=Sophos;i="6.03,265,1694761200"; d="scan'208";a="851191047"
+Received: from orsmsx602.amr.corp.intel.com ([10.22.229.15])
+ by FMSMGA003.fm.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
+ 31 Oct 2023 02:43:39 -0700
+Received: from orsmsx612.amr.corp.intel.com (10.22.229.25) by
+ ORSMSX602.amr.corp.intel.com (10.22.229.15) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.34; Tue, 31 Oct 2023 02:43:38 -0700
+Received: from orsmsx602.amr.corp.intel.com (10.22.229.15) by
+ ORSMSX612.amr.corp.intel.com (10.22.229.25) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.34; Tue, 31 Oct 2023 02:43:38 -0700
+Received: from ORSEDG601.ED.cps.intel.com (10.7.248.6) by
+ orsmsx602.amr.corp.intel.com (10.22.229.15) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.34 via Frontend Transport; Tue, 31 Oct 2023 02:43:38 -0700
+Received: from NAM10-MW2-obe.outbound.protection.outlook.com (104.47.55.101)
+ by edgegateway.intel.com (134.134.137.102) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.34; Tue, 31 Oct 2023 02:43:38 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=Np/OLqo4zO4h350JPMm8DoUzizyBVTaHHFgRfxRDp8a+n20N7nMScTtmWb132XNFsfydpJL/0kcSLwWaEgI8a5JN2PWjZZAYnMG0ekUgco5/mBhSwdxyMlFD/C8CGaCZq6qFSujQxugy7dFhXm3eWwezjPUrsZcYRUY/zx+99IUdrvszmLjVx32xY8MnVAb0YfKuh6TgEbhc0elSCq7esn6U2iYbEi/KcZ3BUV/s+PuTIefEoTCm8d+Kn/Hd4ObcBJ2uobh+2aiySR3Dst9xMHedgdxcqQ3o66vu67SlEUglbQzsJqE2JZuoQkYvRWmEONbVAaHEU7w0kY1JM79tBQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=Z6e9w1HuEUw/SfwPZi8E0fIxk51oKFsmJpIzWRwDExw=;
+ b=EY5Xace9uueye5L//Xv7hyQm9USxKcRUpycxOfi5W4R61d+XxfHtfWY99FC9PvWU2Lv2uwdJ93MRcklXhhKtF30D2t5SZ6iMYDxALEC7qFeBi6pSx9Nr2+58c7787COhRbBcsrfFDdLCePszNxEDguFDZd9H+JXdRSwYKEuxnhCKh+8vY5lFvrEwYnT3h0WHR1hYbTmdDtg8hbAh+hX740WqjWImGB5bASBaUPkt7s3f5EpvioUwWrSTO9SUvZAl41O3O35b6t5WnBGVLtePRJxwpTyIfIkLzK7UlSESyc1MmiVWCydiDDkBHualxsQigEo7YmBbXlRQxTbSW4wnlA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from BL0PR11MB3122.namprd11.prod.outlook.com (2603:10b6:208:75::32)
+ by PH8PR11MB7117.namprd11.prod.outlook.com (2603:10b6:510:217::12)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6933.26; Tue, 31 Oct
+ 2023 09:43:35 +0000
+Received: from BL0PR11MB3122.namprd11.prod.outlook.com
+ ([fe80::7911:8ae6:fc73:1097]) by BL0PR11MB3122.namprd11.prod.outlook.com
+ ([fe80::7911:8ae6:fc73:1097%6]) with mapi id 15.20.6907.032; Tue, 31 Oct 2023
+ 09:42:35 +0000
+From: "Pucha, HimasekharX Reddy" <himasekharx.reddy.pucha@intel.com>
+To: ivecera <ivecera@redhat.com>, "netdev@vger.kernel.org"
+ <netdev@vger.kernel.org>
+Thread-Topic: [Intel-wired-lan] [PATCH iwl-next 6/6] i40e: Initialize hardware
+ capabilities at single place
+Thread-Index: AQHaA40ROFDNUykjZU+m3eRXp9v+krBjtTXQ
+Date: Tue, 31 Oct 2023 09:41:04 +0000
+Message-ID: <BL0PR11MB31220520397A2F9389FBB2EEBDA0A@BL0PR11MB3122.namprd11.prod.outlook.com>
+References: <20231020193746.2274379-1-ivecera@redhat.com>
+ <20231020193746.2274379-6-ivecera@redhat.com>
+In-Reply-To: <20231020193746.2274379-6-ivecera@redhat.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: BL0PR11MB3122:EE_|PH8PR11MB7117:EE_
+x-ms-office365-filtering-correlation-id: df274748-99f4-4295-78d3-08dbd9f58008
+x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: F2/DE6W9EofBfNDDBq7hOaCbooNMJ4a8Z7JQ55Cq5GboD0JmuO2wsLLD3snt2904QHtTTthKeXZ1LD7d0N3RC5cGnAP3XZ/WB3CSSEOaa3cY98xRhRBbBDCwgVHBR7oF34R2T3STpNy8gYB6+abgs+kX0+Kq4V34Bfj0U8Al9SsLDIwOFQKezFnSHz4qoskXR65/d1w8GoSAC/mCGXD/j41DyoDNYbwSZMbSGPybnodkWISLuXFLbwnph2LLjuQOys+81VhogUJbtoGhnfM2QO4wRIIUYpGZC2Uzby0gWFxyvSgtOS7OhfAXc8i1cAWg3BOBi7rmeVKhqbdk2r5zKD2BX6c/NC/i/jGJou9u4uZHqM9w6s7MxV2Ccm5h1JGqujfBbdC2Xo1S3MTOGhYP+FEidzbqIHQBp65DtA0oHaha5NeBPvc4yP3/ZBg05BgUNkPEYVkQNxSWwsm/FChxqkh2RL5MhWDSlqPstGGwwNwSciH6c+NEQcuK8iXhf7KrSVw2kOJWQ9F7D6qhB9dqY4JqNIpUOq/me/z+seMMCyKLUJTEKJSAAfdrrU7qcRKPKnu1rye5pFmwMownE9wEnLXHbv9KMXOtPKniKTeqoxzLKFAOxNDP5IvrZvsHSAwK
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BL0PR11MB3122.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230031)(39860400002)(136003)(376002)(396003)(346002)(366004)(230922051799003)(64100799003)(186009)(1800799009)(451199024)(55016003)(53546011)(6666004)(71200400001)(9686003)(478600001)(7696005)(83380400001)(6506007)(41300700001)(64756008)(33656002)(86362001)(38100700002)(122000001)(82960400001)(66946007)(66556008)(66476007)(66446008)(5660300002)(54906003)(26005)(2906002)(110136005)(76116006)(52536014)(38070700009)(316002)(8676002)(4326008)(8936002);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?B9yI3DStKn8wr1+KljjSHJ89n+9xi0GvnSj5xxsnbzUFaUAeJ1pd7E1f+77B?=
+ =?us-ascii?Q?3f5HW+OJ4aAIKaNYatMwDwxcIt06leEXhe7jbIch6tDEeST7EyglGEuWaqMY?=
+ =?us-ascii?Q?AmImTb68WR6VDB+0ccIc7AGeA/ypdM0I72w+dmgMwR6yV+As9Zk+OsoSZiwo?=
+ =?us-ascii?Q?UZl1LClb5ORnOJuabfMw1pRWaKCiIp+UE6NSsIo2zpWHaATGzduRgRYFCuBC?=
+ =?us-ascii?Q?wb5cyHhk7uHcPL+kqH2NPAsAEyjyfXAB9woJFhScLRgesWvrgLrdtb35JOm1?=
+ =?us-ascii?Q?SzcZ1Y4VlUkLOaYF8k7t7GkZJn/QRhMvyJLjYDot2ssgBTZDvoLUQ9sJysbt?=
+ =?us-ascii?Q?YAPvjmWFwX8XXYNMUTIINoFRLHwb1iFMfT7O4UBNpM3w3IrGygOe0NXdsrnr?=
+ =?us-ascii?Q?EOx6HtWs6q9kFp0iQcEvvp0hzyKYVt8dYBsyqKVcFlyXa7M/SgjPp/HRcIJ2?=
+ =?us-ascii?Q?jtPbJrz1PD9xcQWT1DYzg7bqT6vH7OI/N7WpmC9od/Fzv5k8HjHnMFhqhJlv?=
+ =?us-ascii?Q?k+7ryyV19XSyv5XU3e+To1bnl+qD9vTpouBDPJetvgQ8DQNyTFJ37rp/vxP5?=
+ =?us-ascii?Q?lJftgvCgjMnpRmwZ/z5zYOHz3O9ayKXIwIhGwROzHWfVZdctxVElYfBsLdpA?=
+ =?us-ascii?Q?wNQhfB/j79XMxM1VzGh0yOlw9l/meYdUiErULrcd3Ehp4KbU9aL95I05SSVt?=
+ =?us-ascii?Q?Lx2ABT88Nn/CMebOF4YwUZouPhl6A2GH+3N71U4b4FDRm4zcJKFK5qDyaSHE?=
+ =?us-ascii?Q?1Se+7rcisayEo/juEBlFAT9KAaA3QOwUkXVHO+7M4KS5bguLjMFQ4Q6hA7ZB?=
+ =?us-ascii?Q?dEUhe/tlvNWrs3rkFpNqKamT6wBeEq89/vKvDnACnTWdc1k9ZzW05s3KHCa8?=
+ =?us-ascii?Q?A8OH13N25CDbURwCjWNnTXsdTJSTsM5QQOQygXPLUuOBcKnmxwhnKS9V/ixq?=
+ =?us-ascii?Q?nftyTZiHHPi0xvrnV0n7knFa/LLwy0qrbchSgWikMfvvR68sYeKctlH0ZVlx?=
+ =?us-ascii?Q?GxZ6dnp0dIeaZqVWTeoG34Y9HVAVaiOQ0WmOCY/J1kLWktrlbYFl60LwmB/9?=
+ =?us-ascii?Q?Y1/ymjTdbHDSWmnJRil0+C+hBJuv+gco0KIVQ04Q5UdjrJQe5bxzDFxWphVm?=
+ =?us-ascii?Q?NTIF+pp5TpBp4nPb8wKgWYP8K24MowYQGrjMi7K8VXdG7aM3YUpIDmbz0HhI?=
+ =?us-ascii?Q?g8lwlkeOkY2gh+8JgmKNKxLBgZsQb/V01dgzNnxAijFbEOC7/ck4vuxLS4Jd?=
+ =?us-ascii?Q?wDXQUC4vs7UoVm7eW1Wfyp9MuzKj6ToBk4CAmCaH9qGGF5VaHCx6Yain9x8k?=
+ =?us-ascii?Q?xsagZBvlZtOnsMuILzutlS8IIcQ+kcjxNt4nnxcEWRqafTavGOyU+usQDXk7?=
+ =?us-ascii?Q?PWSDyx5GgA/KqRacwYRwsExQqBOF9MC/KkJIGcno7yUuqIO2tyJUIByZ6Wf5?=
+ =?us-ascii?Q?UDmX9LdLv+iD9X1CLSjeFsbcWrPIhGlbDb8JEP3emysZVFaPQ28FKGw9nTHT?=
+ =?us-ascii?Q?/gxqEr3lhhKFwZU7bB9TwncNgkl4Iao3MeNB1IKuyHUhOVoxw1IKor6xigce?=
+ =?us-ascii?Q?hVgOFZB3WBl7PlsfA+enhCbZ9nkhKKYOZt4CUBTmG6BWCkDFSvD/K0TutLER?=
+ =?us-ascii?Q?6w=3D=3D?=
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20231026105955.282546-1-karol.kolacinski@intel.com>
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: BL0PR11MB3122.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: df274748-99f4-4295-78d3-08dbd9f58008
+X-MS-Exchange-CrossTenant-originalarrivaltime: 31 Oct 2023 09:41:04.0759 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: aYmn7sfhQ3zY4buhHFoPrytiY+eeM23Ut7sL0T/G9IkdV9v0yJFQCS6gPic/vygvkDeSk71ew4WFHkUXlciaj5n5N38ThUmoIdPuQuwdA0POMAV9J1YODXmZ3XpxYEJN
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH8PR11MB7117
+X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1698683082; x=1730219082;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=8Hd1Suavl8irXLV5dwiCITrLgudmw7DM6XwD+5bIeqc=;
- b=ikAr+MqwV5HxzA1PmIc/gsKlEwQrNqKoZUmA1en087DcfDAmx2J9eX2j
- WqN0lBtgjNjazkMFuNIZLCSp1FhX251Z96PPEV+YNUU/bwZXCOZVgoGSo
- dSmJknN6bN1Rl1QsZOS8oAe0+u4FkVHfism4r9k2DrxNiZFILvrzit/se
- NiOj4mpRx7vXKg++r0e+FKkmXjA6rZxsiaP4QFYwRZUIh5+2+vil2zAHe
- YdlvGgGikpc0DOgEo22F5Usz9zVlpnagH9Lu2xT7vmJRL0Wh5foqEAU39
- 18+5j+x6uo1ipd4WUVIFITYHidCsuaEfqGLKuy4RBVRQ39SiPpxHJ4j8o
- A==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ t=1698745421; x=1730281421;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=haaeoGk6yksPsBvGRRzKPtDFzjmqVN7OWs2zIGjmiQU=;
+ b=Zf+iTupQVbbqIp22s4wmZ03Nv4MwrFuBIuyqJ4e1Y/ZwpnpGPOJCwnql
+ bseDVfH3tg8a9ks7Se47AY/a5QPhSzplwcHZgN7RlZsO8hjbQpzvaCXat
+ PvkUY4bBi8kNHnwRSI3wIipWnaIn4z0qdw2oxHM4aU0RGQpDiCGQCQyy9
+ pFXqvpyeFADITUyabu0tRM/IH4pUy+xZGOlhYx7gGh/Clr6sWl/9LfXZ0
+ vz4WJQ5vyBbdr6v3/HxUXMUjDm34VeWZtMV5yMrSgTjmOqigj8oO50LaE
+ IxWrE2tsHFzXVldwUXAfnhVbZIbu+0KnXp6qNMJsjU+sn120vaZUa/0zy
+ w==;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=ikAr+Mqw
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next] ice: remove unnecessary
- discarding of timestamps
+ header.a=rsa-sha256 header.s=Intel header.b=Zf+iTupQ
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next 6/6] i40e: Initialize
+ hardware capabilities at single place
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,118 +191,40 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Przemek Kitszel <przemyslaw.kitszel@intel.com>, jesse.brandeburg@intel.com,
- Karol Kolacinski <karol.kolacinski@intel.com>, anthony.l.nguyen@intel.com,
- oe-kbuild-all@lists.linux.dev, Jacob Keller <jacob.e.keller@intel.com>
+Cc: "dacampbe@redhat.com" <dacampbe@redhat.com>, "Brandeburg,
+ Jesse" <jesse.brandeburg@intel.com>, open list <linux-kernel@vger.kernel.org>,
+ Eric Dumazet <edumazet@google.com>,
+ "moderated list:INTEL ETHERNET DRIVERS" <intel-wired-lan@lists.osuosl.org>,
+ Jakub Kicinski <kuba@kernel.org>, "Keller, Jacob E" <jacob.e.keller@intel.com>,
+ "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>,
+ Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi Karol,
+> -----Original Message-----
+> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of Ivan Vecera
+> Sent: Saturday, October 21, 2023 1:08 AM
+> To: netdev@vger.kernel.org
+> Cc: Eric Dumazet <edumazet@google.com>; dacampbe@redhat.com; Brandeburg, Jesse <jesse.brandeburg@intel.com>; open list <linux-kernel@vger.kernel.org>; Nguyen, Anthony L <anthony.l.nguyen@intel.com>; moderated list:INTEL ETHERNET DRIVERS <intel-wired-lan@lists.osuosl.org>; Keller, Jacob E <jacob.e.keller@intel.com>; Jakub Kicinski <kuba@kernel.org>; Paolo Abeni <pabeni@redhat.com>; David S. Miller <davem@davemloft.net>
+> Subject: [Intel-wired-lan] [PATCH iwl-next 6/6] i40e: Initialize hardware capabilities at single place
+>
+> Some i40e_hw.caps bits are set in i40e_set_hw_caps(), some of them
+> in i40e_init_adminq() and the rest of them in i40e_sw_init().
+> Consolidate the initialization to single proper place i40e_set_hw_caps().
+>
+> Signed-off-by: Ivan Vecera <ivecera@redhat.com>
+> ---
+>  drivers/net/ethernet/intel/i40e/i40e_adminq.c | 66 ++++++++++++++-----
+>  drivers/net/ethernet/intel/i40e/i40e_debug.h  |  1 +
+>  drivers/net/ethernet/intel/i40e/i40e_main.c   | 55 +---------------
+>  .../net/ethernet/intel/i40e/i40e_register.h   |  1 +
+>  4 files changed, 51 insertions(+), 72 deletions(-)
+>
 
-kernel test robot noticed the following build errors:
+Tested-by: Pucha Himasekhar Reddy <himasekharx.reddy.pucha@intel.com> (A Contingent worker at Intel)
 
-[auto build test ERROR on b57a67bab47efc24e7ea7bd626aa517ac76c4fc9]
-
-url:    https://github.com/intel-lab-lkp/linux/commits/Karol-Kolacinski/ice-remove-unnecessary-discarding-of-timestamps/20231026-192456
-base:   b57a67bab47efc24e7ea7bd626aa517ac76c4fc9
-patch link:    https://lore.kernel.org/r/20231026105955.282546-1-karol.kolacinski%40intel.com
-patch subject: [Intel-wired-lan] [PATCH iwl-next] ice: remove unnecessary discarding of timestamps
-config: arc-allmodconfig (https://download.01.org/0day-ci/archive/20231031/202310310036.7Cgll3Lm-lkp@intel.com/config)
-compiler: arceb-elf-gcc (GCC) 13.2.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20231031/202310310036.7Cgll3Lm-lkp@intel.com/reproduce)
-
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202310310036.7Cgll3Lm-lkp@intel.com/
-
-All errors (new ones prefixed by >>):
-
-   drivers/net/ethernet/intel/ice/ice_ptp.c: In function 'ice_ptp_rebuild_owner':
->> drivers/net/ethernet/intel/ice/ice_ptp.c:2509:9: error: implicit declaration of function 'ice_ptp_flush_all_tx_tracker'; did you mean 'ice_ptp_flush_tx_tracker'? [-Werror=implicit-function-declaration]
-    2509 |         ice_ptp_flush_all_tx_tracker(pf);
-         |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
-         |         ice_ptp_flush_tx_tracker
-   cc1: some warnings being treated as errors
-
-
-vim +2509 drivers/net/ethernet/intel/ice/ice_ptp.c
-
-0c095c9988dd713 Karol Kolacinski 2023-10-25  2454  
-4809671015a1bd2 Karol Kolacinski 2021-12-20  2455  /**
-9ea8140e2f947cb Jacob Keller     2023-10-25  2456   * ice_ptp_rebuild_owner - Initialize PTP clock owner after reset
-4809671015a1bd2 Karol Kolacinski 2021-12-20  2457   * @pf: Board private structure
-9ea8140e2f947cb Jacob Keller     2023-10-25  2458   *
-9ea8140e2f947cb Jacob Keller     2023-10-25  2459   * Companion function for ice_ptp_rebuild() which handles tasks that only the
-9ea8140e2f947cb Jacob Keller     2023-10-25  2460   * PTP clock owner instance should perform.
-4809671015a1bd2 Karol Kolacinski 2021-12-20  2461   */
-9ea8140e2f947cb Jacob Keller     2023-10-25  2462  static int ice_ptp_rebuild_owner(struct ice_pf *pf)
-4809671015a1bd2 Karol Kolacinski 2021-12-20  2463  {
-4809671015a1bd2 Karol Kolacinski 2021-12-20  2464  	struct ice_ptp *ptp = &pf->ptp;
-4809671015a1bd2 Karol Kolacinski 2021-12-20  2465  	struct ice_hw *hw = &pf->hw;
-4809671015a1bd2 Karol Kolacinski 2021-12-20  2466  	struct timespec64 ts;
-4809671015a1bd2 Karol Kolacinski 2021-12-20  2467  	u64 time_diff;
-d695241a0a0ea02 Jacob Keller     2023-10-25  2468  	int err;
-4809671015a1bd2 Karol Kolacinski 2021-12-20  2469  
-b2ee72565cd0ee2 Jacob Keller     2021-10-13  2470  	err = ice_ptp_init_phc(hw);
-4809671015a1bd2 Karol Kolacinski 2021-12-20  2471  	if (err)
-9ea8140e2f947cb Jacob Keller     2023-10-25  2472  		return err;
-4809671015a1bd2 Karol Kolacinski 2021-12-20  2473  
-4809671015a1bd2 Karol Kolacinski 2021-12-20  2474  	/* Acquire the global hardware lock */
-4809671015a1bd2 Karol Kolacinski 2021-12-20  2475  	if (!ice_ptp_lock(hw)) {
-4809671015a1bd2 Karol Kolacinski 2021-12-20  2476  		err = -EBUSY;
-9ea8140e2f947cb Jacob Keller     2023-10-25  2477  		return err;
-4809671015a1bd2 Karol Kolacinski 2021-12-20  2478  	}
-4809671015a1bd2 Karol Kolacinski 2021-12-20  2479  
-4809671015a1bd2 Karol Kolacinski 2021-12-20  2480  	/* Write the increment time value to PHY and LAN */
-78267d0c9cabf09 Jacob Keller     2021-10-13  2481  	err = ice_ptp_write_incval(hw, ice_base_incval(pf));
-4809671015a1bd2 Karol Kolacinski 2021-12-20  2482  	if (err) {
-4809671015a1bd2 Karol Kolacinski 2021-12-20  2483  		ice_ptp_unlock(hw);
-9ea8140e2f947cb Jacob Keller     2023-10-25  2484  		return err;
-4809671015a1bd2 Karol Kolacinski 2021-12-20  2485  	}
-4809671015a1bd2 Karol Kolacinski 2021-12-20  2486  
-4809671015a1bd2 Karol Kolacinski 2021-12-20  2487  	/* Write the initial Time value to PHY and LAN using the cached PHC
-4809671015a1bd2 Karol Kolacinski 2021-12-20  2488  	 * time before the reset and time difference between stopping and
-4809671015a1bd2 Karol Kolacinski 2021-12-20  2489  	 * starting the clock.
-4809671015a1bd2 Karol Kolacinski 2021-12-20  2490  	 */
-4809671015a1bd2 Karol Kolacinski 2021-12-20  2491  	if (ptp->cached_phc_time) {
-4809671015a1bd2 Karol Kolacinski 2021-12-20  2492  		time_diff = ktime_get_real_ns() - ptp->reset_time;
-4809671015a1bd2 Karol Kolacinski 2021-12-20  2493  		ts = ns_to_timespec64(ptp->cached_phc_time + time_diff);
-4809671015a1bd2 Karol Kolacinski 2021-12-20  2494  	} else {
-4809671015a1bd2 Karol Kolacinski 2021-12-20  2495  		ts = ktime_to_timespec64(ktime_get_real());
-4809671015a1bd2 Karol Kolacinski 2021-12-20  2496  	}
-4809671015a1bd2 Karol Kolacinski 2021-12-20  2497  	err = ice_ptp_write_init(pf, &ts);
-4809671015a1bd2 Karol Kolacinski 2021-12-20  2498  	if (err) {
-4809671015a1bd2 Karol Kolacinski 2021-12-20  2499  		ice_ptp_unlock(hw);
-9ea8140e2f947cb Jacob Keller     2023-10-25  2500  		return err;
-4809671015a1bd2 Karol Kolacinski 2021-12-20  2501  	}
-4809671015a1bd2 Karol Kolacinski 2021-12-20  2502  
-4809671015a1bd2 Karol Kolacinski 2021-12-20  2503  	/* Release the global hardware lock */
-4809671015a1bd2 Karol Kolacinski 2021-12-20  2504  	ice_ptp_unlock(hw);
-4809671015a1bd2 Karol Kolacinski 2021-12-20  2505  
-b57a67bab47efc2 Jacob Keller     2023-10-25  2506  	/* Flush software tracking of any outstanding timestamps since we're
-b57a67bab47efc2 Jacob Keller     2023-10-25  2507  	 * about to flush the PHY timestamp block.
-b57a67bab47efc2 Jacob Keller     2023-10-25  2508  	 */
-b57a67bab47efc2 Jacob Keller     2023-10-25 @2509  	ice_ptp_flush_all_tx_tracker(pf);
-b57a67bab47efc2 Jacob Keller     2023-10-25  2510  
-3a7496234d179a7 Jacob Keller     2021-10-13  2511  	if (!ice_is_e810(hw)) {
-3a7496234d179a7 Jacob Keller     2021-10-13  2512  		/* Enable quad interrupts */
-d695241a0a0ea02 Jacob Keller     2023-10-25  2513  		err = ice_ptp_cfg_phy_interrupt(pf, true, 1);
-9ea8140e2f947cb Jacob Keller     2023-10-25  2514  		if (err)
-9ea8140e2f947cb Jacob Keller     2023-10-25  2515  			return err;
-9ea8140e2f947cb Jacob Keller     2023-10-25  2516  
-9ea8140e2f947cb Jacob Keller     2023-10-25  2517  		ice_ptp_restart_all_phy(pf);
-9ea8140e2f947cb Jacob Keller     2023-10-25  2518  	}
-9ea8140e2f947cb Jacob Keller     2023-10-25  2519  
-9ea8140e2f947cb Jacob Keller     2023-10-25  2520  	return 0;
-9ea8140e2f947cb Jacob Keller     2023-10-25  2521  }
-9ea8140e2f947cb Jacob Keller     2023-10-25  2522  
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
