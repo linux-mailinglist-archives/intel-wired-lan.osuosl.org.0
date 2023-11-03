@@ -2,78 +2,79 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 17CB67E0734
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  3 Nov 2023 18:09:47 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id B03B87E0739
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  3 Nov 2023 18:14:10 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 43D9741BEC;
-	Fri,  3 Nov 2023 17:09:45 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 43D9741BEC
+	by smtp4.osuosl.org (Postfix) with ESMTP id 2645C41BFF;
+	Fri,  3 Nov 2023 17:14:09 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2645C41BFF
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1699031385;
-	bh=U8hUuNLR4IHdnbeF6t01PiwtZ473eXg2/rFgcR/z/1Y=;
+	s=default; t=1699031649;
+	bh=fzoq5nrVdMsQR44siXDu8LIOhYJ26dovfH1coEiDLsg=;
 	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=RvAcehlluuR6uKfNsh2pKhf8YvtC4zU926eGFZhnOO7Jnnflpt0/dxAdNYmlzwTKZ
-	 bjp2TRcBUT6mv8kKfn8pdNBf3Sza9+cu2N+oU+YiZQ8Z6osSWMtkMohbNIch0ZKR+g
-	 bcabWyHzsq2lGaqlc4RzKadIVDQMnF3izZ2OmmmbQMHpIGj2Y83cr4I6nr9+ZCOTCg
-	 iQ65C5oGE2FJLGjdJQnihDGjc9+LFYI3ETzdYbJ8yikSuMvPcjBKBMCqK/kPhDcLEA
-	 AV0ugj1ONlAYTSSEcABYs2d5FmZZHnBLT89Mu9p57z0ahKNLT6+vX6ckiP9UOYDJvY
-	 4Sbx+SHU5/9iA==
+	b=xLkiZb4rSE08jNYgQXzn1IcVuiVEumBiXs5Ig0yOZ4Wv06XaOV6jyQ6HTD0XbvCIn
+	 VYuwJ8A7ECyaSIlTZcn35CgHoyHfNRIivIy/PMJBHv+1p4EdkcofRP5LRSMwxa2ZUP
+	 846IYeoNQ4eqp+xNAWpJBsZfERp3h2GFzZyRjpq6WPDFBVohhc+yL+acJXpGr/fAsh
+	 jzQcC9DIEfKdhAJkTQ1oXgp1UmbUncSYkdUdtMXs/s/RMICdYfhFW50ocNc+S6rwOR
+	 HLUzOYRVh05Y4+NO1uHAWq10Y7hKpxSAf2tDCPx5L2M52DdfQtti3BjDc5FGXspjxa
+	 hHAr+cpdOnHjQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 5u-iLFVwRPn0; Fri,  3 Nov 2023 17:09:44 +0000 (UTC)
+	with ESMTP id MPLMJgpWVSpY; Fri,  3 Nov 2023 17:14:08 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 3470A41BD4;
-	Fri,  3 Nov 2023 17:09:44 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3470A41BD4
+	by smtp4.osuosl.org (Postfix) with ESMTP id 0165C41BF7;
+	Fri,  3 Nov 2023 17:14:08 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0165C41BF7
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 0D97B1BF21A
- for <intel-wired-lan@lists.osuosl.org>; Fri,  3 Nov 2023 17:09:39 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 78D8C1BF21A
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  3 Nov 2023 17:14:03 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id D973660A87
- for <intel-wired-lan@lists.osuosl.org>; Fri,  3 Nov 2023 17:09:38 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D973660A87
+ by smtp3.osuosl.org (Postfix) with ESMTP id 50AA560A97
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  3 Nov 2023 17:14:03 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 50AA560A97
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id flPy_UGaGxJ4 for <intel-wired-lan@lists.osuosl.org>;
- Fri,  3 Nov 2023 17:09:38 +0000 (UTC)
-Received: from ams.source.kernel.org (ams.source.kernel.org [145.40.68.75])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 18C6A60A81
- for <intel-wired-lan@lists.osuosl.org>; Fri,  3 Nov 2023 17:09:37 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 18C6A60A81
+ with ESMTP id rs5T62vbmvQD for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  3 Nov 2023 17:14:02 +0000 (UTC)
+Received: from ams.source.kernel.org (ams.source.kernel.org
+ [IPv6:2604:1380:4601:e00::1])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id B391060A8C
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  3 Nov 2023 17:14:02 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B391060A8C
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by ams.source.kernel.org (Postfix) with ESMTP id 3A6DEB81FA2;
- Fri,  3 Nov 2023 17:09:34 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B4560C433C8;
- Fri,  3 Nov 2023 17:09:30 +0000 (UTC)
-Date: Fri, 3 Nov 2023 17:09:28 +0000
+ by ams.source.kernel.org (Postfix) with ESMTP id B4671B81F78;
+ Fri,  3 Nov 2023 17:14:00 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5EF03C433C8;
+ Fri,  3 Nov 2023 17:13:57 +0000 (UTC)
+Date: Fri, 3 Nov 2023 17:13:54 +0000
 From: Simon Horman <horms@kernel.org>
 To: Ivan Vecera <ivecera@redhat.com>
-Message-ID: <20231103170928.GD714036@kernel.org>
-References: <20231026083932.2623631-1-ivecera@redhat.com>
+Message-ID: <20231103171354.GE714036@kernel.org>
+References: <20231026083822.2622930-1-ivecera@redhat.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20231026083932.2623631-1-ivecera@redhat.com>
+In-Reply-To: <20231026083822.2622930-1-ivecera@redhat.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1699031373;
- bh=sq3L5gUrO9wxalfWm5HOiwIfw0lC8DkpESy25Odx+hE=;
+ d=kernel.org; s=k20201202; t=1699031640;
+ bh=i1/OCP6nHwLYZipGp9hjEQ3J+qcqL4DAmtnlCVaSDqk=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=tkhmF8t+hdszhtvZFdcxIUCkZguAyqoHMDR2jOPEL+5Ked3zu9OKkuNyiwqVLy/zr
- fdB95qyMygnaWOzw5t9vbfRhjzYrKSYi0JNsxd4zmLq+FPUmFeRWegt7XPiFDEx7GV
- nPHRTjDtBEdyok9/nLUpZjzEpOVgRY7Tw1o/izNpDfFzPrsq23Y+FKgxPNH/UktSUJ
- /CtAipVpNhDWss8cxTM8wD9nSarGpkH8RRjHX+MX5ID9pKEz0AtOrbGxFD5OcFW72x
- QoCRp1XTBISxXF0s+oDYMZF6LmxK1aygn1ecLzoFztXYt4+2ERqi6gg3p4tv4H1DhN
- ZWAFlbJpccrZw==
+ b=s5to2z2eyOIQrYaKX3IjmVMzsSpkh2bZkXp3Sqv27KBCY6mmo/R2twyhRcxqpzpyj
+ H5dGKPKcwqvbFQJ/mi8MtB/CwI7mhPLMOxKJoi+z/1xm20XxplGjR5FdYtzqk7OWaq
+ y5ayxEyYL2pzmNy+JuvGsE4mTJXsQ1wklVC6G81wYR/TwD0mfOqx9QCVx87MsD8HHQ
+ kvRA7K0lIi/+FJdbogUsko5plKqmEzYPTZP07RIsz2FUETDojmrh55pZxy2u6JwbG+
+ NZvWx/NLyX9qjon10RPbalzWtg16ebUfqwHp4av1NLDDSNKiffldCjRVCGVOySt/wq
+ wrZrczhJZcWRQ==
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=tkhmF8t+
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next] iavf: Remove queue tracking
- fields from iavf_adminq_ring
+ header.a=rsa-sha256 header.s=k20201202 header.b=s5to2z2e
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next] i40e: Remove AQ register
+ definitions for VF types
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,30 +98,17 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Thu, Oct 26, 2023 at 10:39:32AM +0200, Ivan Vecera wrote:
-> Fields 'head', 'tail', 'len', 'bah' and 'bal' in iavf_adminq_ring
-> are used to store register offsets. These offsets are initialized
-> and remains constant so there is no need to store them in the
-> iavf_adminq_ring structure.
-> 
-> Remove these fields from iavf_adminq_ring and use register offset
-> constants instead. Remove iavf_adminq_init_regs() that originally
-> stores these constants into these fields.
-> 
-> Finally improve iavf_check_asq_alive() that assumes that
-> non-zero value of hw->aq.asq.len indicates fully initialized
-> AdminQ send queue. Replace it by check for non-zero value
-> of field hw->aq.asq.count that is non-zero when the sending
-> queue is initialized and is zeroed during shutdown of
-> the queue.
+On Thu, Oct 26, 2023 at 10:38:22AM +0200, Ivan Vecera wrote:
+> The i40e driver does not handle its VF device types so there
+> is no need to keep AdminQ register definitions for such
+> device types. Remove them.
 > 
 > Signed-off-by: Ivan Vecera <ivecera@redhat.com>
 
-Thanks, this is a nice cleanup.
+Thanks, another nice cleanup.
 
 Reviewed-by: Simon Horman <horms@kernel.org>
 
-...
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
