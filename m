@@ -1,80 +1,92 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id D4B5F7E101D
-	for <lists+intel-wired-lan@lfdr.de>; Sat,  4 Nov 2023 16:36:52 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2D4D27E293F
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  6 Nov 2023 16:59:56 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id BDBC641E41;
-	Sat,  4 Nov 2023 15:36:49 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org BDBC641E41
+	by smtp2.osuosl.org (Postfix) with ESMTP id 99BE84150C;
+	Mon,  6 Nov 2023 15:59:54 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 99BE84150C
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1699112209;
-	bh=6WYyugLAZ0psjwwjXkqfFKg2Po/3Vay71EEPHkFyijA=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=9BHLPbclSdzEOMBKUwdY1MgNqKlERYLSx6tIm98G2iVn1SCNj1wbH4jvcJY1c4lcR
-	 IYsFrg6MW7dFkfw27yqEphyrlOAuimKgvuuVCPgbtULDF5U3EvqvLFvbcOWSqDFM3N
-	 XZS//tofsxdbCQSa+Xk8gHO64mIOwmmunbdUOkwj0JFqT7etX7ae4HPqphZNNyjt+1
-	 KbfMileaUUTNG9qU3F4DGJ+X9BjtlCWczy4bAvD1YF1n/oNB7d747Z7FMHcPQ/iJK8
-	 7GJzAvAjRwYDoZqVEaX1ha2FjifYbkMxbVdYFyQcL0kT2GmTPCt6vUUVJhZK1N3FUY
-	 vj6s5yDqfIZbw==
+	s=default; t=1699286394;
+	bh=fQwW+tyqxPgvwjFmETNpi/7koZObKh1GGQF2hpUngf0=;
+	h=From:Date:To:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=oVgqB7Rn2aeiVCNSu/0HczU2D2WlKzAbscHmy/P0Hu8j/YQAVnn3BMKBlWERpJET8
+	 cjvTMNwX/SV4AFYXDtQDjjd5QlIHIiKfoIWptL6Wu+qyM1nuHVx8iMZProSAf3CMRG
+	 bv3Xu/yUDx5f+uwgs/CzlIv/a3KVX1jDIGcppZvPjE3vaIYkoPxmh1v5SFHcmHw9py
+	 2u0E4tvijahOiqZtapGCMCqnR8kEfffH3FNnRWTzUlfX33fv5bypNOa102hqE1OGXx
+	 bHnOWD8QbjQO83qM24sApG8LeIEg640mHj8sH1e0/EWvMTXXXiaFASlgzkqfXURRLG
+	 0FWi4VqeHPV0A==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id WYd0ZihsvNEN; Sat,  4 Nov 2023 15:36:47 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id RfANkQVlaM5f; Mon,  6 Nov 2023 15:59:53 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 6CBC441DD1;
-	Sat,  4 Nov 2023 15:36:47 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6CBC441DD1
+	by smtp2.osuosl.org (Postfix) with ESMTP id 25CB04149C;
+	Mon,  6 Nov 2023 15:59:52 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 25CB04149C
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 17C051BF2AB
- for <intel-wired-lan@lists.osuosl.org>; Sat,  4 Nov 2023 15:36:41 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 0DAE11BF21A
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  4 Nov 2023 17:48:24 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id E332360F47
- for <intel-wired-lan@lists.osuosl.org>; Sat,  4 Nov 2023 15:36:40 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org E332360F47
+ by smtp1.osuosl.org (Postfix) with ESMTP id D947282277
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  4 Nov 2023 17:48:23 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D947282277
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Ewn7igxCK_S0 for <intel-wired-lan@lists.osuosl.org>;
- Sat,  4 Nov 2023 15:36:40 +0000 (UTC)
-Received: from sin.source.kernel.org (sin.source.kernel.org
- [IPv6:2604:1380:40e1:4800::1])
- by smtp3.osuosl.org (Postfix) with ESMTPS id F308B60F44
- for <intel-wired-lan@lists.osuosl.org>; Sat,  4 Nov 2023 15:36:39 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org F308B60F44
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by sin.source.kernel.org (Postfix) with ESMTP id 13C39CE01BA;
- Sat,  4 Nov 2023 15:36:38 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id ABEE9C433C8;
- Sat,  4 Nov 2023 15:36:28 +0000 (UTC)
-Date: Sat, 4 Nov 2023 11:36:17 -0400
-From: Simon Horman <horms@kernel.org>
-To: Karol Kolacinski <karol.kolacinski@intel.com>
-Message-ID: <20231104153617.GK891380@kernel.org>
-References: <20231103162943.485467-1-karol.kolacinski@intel.com>
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id lK3fp2PDFazY for <intel-wired-lan@lists.osuosl.org>;
+ Sat,  4 Nov 2023 17:48:23 +0000 (UTC)
+Received: from mail-ed1-x52b.google.com (mail-ed1-x52b.google.com
+ [IPv6:2a00:1450:4864:20::52b])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id F05BF82275
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  4 Nov 2023 17:48:22 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org F05BF82275
+Received: by mail-ed1-x52b.google.com with SMTP id
+ 4fb4d7f45d1cf-5406c099cebso5057065a12.2
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 04 Nov 2023 10:48:22 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1699120101; x=1699724901;
+ h=to:subject:message-id:date:from:mime-version:x-gm-message-state
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=Pa7eeV9AcNNxuywWOrtbmSMVpU6x4fPaTeJzl1/5UYQ=;
+ b=UoUFz+CqKY/jNi/dUsurS1BSMnD28npOw0TJd1YCATGk2cltw73zAD9spF9hs0nNdO
+ SoL8UL9Wo/BkDo1lHXhWrChMFFrOqZRhQ6lSOcrUyo1uF3XAxNdtq8HyD4RxM6LLJqLa
+ 5m4lFOtizjGjeOn3CBvDk+mgfG5k4Vw5I87Zw/96ThClZl9QVHUpaezRH1MrGNMRhE/g
+ AndsZgOay3JUsiGLcEPcUI2qsA80mP2pJhyLtuNGN6pxBNFrjjnaGeqRek/85qlyWNpP
+ xfP4ggrDy3fXNtAeDsvnd006lc57uNM21OWQxvUsLH94VAFZu0S2R7H5BXf7Xp6Cqc4i
+ cl/w==
+X-Gm-Message-State: AOJu0YwqAyBupt3d1+EgrEV5U8YaZ7589J41wjNliRj3t1iju1cgly67
+ lvIL7Zwkf/5XEip2wuY8pnDaR+cyrUmy03sow/eW2JSKelBLjg==
+X-Google-Smtp-Source: AGHT+IHzjO050UB5ArxfdglVeEQY6p3ipQmIHSFP4KFs2rcWs9N0fGqpeAL+nhpGdqUVS7LsHa/3aYYO2gU7X33BO6E=
+X-Received: by 2002:a50:9e24:0:b0:53f:a017:7526 with SMTP id
+ z33-20020a509e24000000b0053fa0177526mr18063385ede.40.1699120100700; Sat, 04
+ Nov 2023 10:48:20 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20231103162943.485467-1-karol.kolacinski@intel.com>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1699112197;
- bh=vafSQTQ5kXKyz/SHRy5gVLc2MmSNeUAQAiolRcAYYaI=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=hOIwzmZMSGkTaLl4Ih31a2Q3XsXTeyKtQqcxLwKL4lNDs+oRYQRkuwYp0Nc9MYrOq
- gi2iiKNn3yhlrZN+IMKdk2V3OtTWXIa0iwN81TNNlAu2+tsVZ60sORX0EbyUjtn+3P
- COycA5cNkMAKB3scLRBbiZZ7mdT4FrxRxmeN+N75rK/SykBE6DVBKurNNh0dOHPo28
- jFQ9SqE2qs2VZMTFU6KZkmiUmZuRtsTm5NUkVBxuHEBt1kkuiX90P9yl0VbRv/Ys5Z
- SM75E2yxn7JMDQu9vsCPLXqTvi1DhvA5zfqVy1ORwulBzjJTPQz/fZ7vlVddt54SOB
- I9++h5DTc5hCw==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=hOIwzmZM
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next] ice: periodically kick Tx
- timestamp interrupt
+From: Manuel Lauss <manuel.lauss@gmail.com>
+Date: Sat, 4 Nov 2023 18:47:44 +0100
+Message-ID: <CAOLZvyGSi9jorwKfcpWrnv0=oYf-vTxY_K-mUecQTir3HNyNHw@mail.gmail.com>
+To: intel-wired-lan@lists.osuosl.org
+X-Mailman-Approved-At: Mon, 06 Nov 2023 15:59:46 +0000
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1699120101; x=1699724901; darn=lists.osuosl.org;
+ h=to:subject:message-id:date:from:mime-version:from:to:cc:subject
+ :date:message-id:reply-to;
+ bh=Pa7eeV9AcNNxuywWOrtbmSMVpU6x4fPaTeJzl1/5UYQ=;
+ b=V/oHWRoXnPU0pU6Q3E81TfqnUwXOTlc/m+rUwzdGYHqJLGeJ2CST4ZlivLmwh2vWjd
+ 5cvMqnIn7gUAXfYYmGnO/olsJhbGigm87+rhFUobDuV+SGbMWLOonJxTK9goEevde10g
+ wwyLmCEF8NHWWleBANUXvhaM5st6deBP5sNHBYx7O6R/ynQZ8QOxWcXraCXoPmsdSAp7
+ m5q0xDz9C2laJ8PnBj+04uwHB4j9ngYOpBTAXoH/2GXqYQQ0b1jDnvmAGQyu9u91pjkE
+ If1dRIHnHiYyfDiqGtYk4FG/u5pg/FelacSv1FSEyetR4QLw8HOFdnUB3YLs5QaZqiJU
+ 9uMg==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
+ header.a=rsa-sha256 header.s=20230601 header.b=V/oHWRoX
+Subject: [Intel-wired-lan] linux-6.5.8: i40e (X710) randomly stops working
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,55 +99,67 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, jesse.brandeburg@intel.com,
- Andrii Staikov <andrii.staikov@intel.com>, anthony.l.nguyen@intel.com,
- Jacob Keller <jacob.e.keller@intel.com>, intel-wired-lan@lists.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Fri, Nov 03, 2023 at 05:29:43PM +0100, Karol Kolacinski wrote:
-> From: Jacob Keller <jacob.e.keller@intel.com>
-> 
-> The E822 hardware for Tx timestamping keeps track of how many
-> outstanding timestamps are still in the PHY memory block. It will not
-> generate a new interrupt to the MAC until all of the timestamps in the
-> region have been read.
-> 
-> If somehow all the available data is not read, but the driver has exited
-> its interrupt routine already, the PHY will not generate a new interrupt
-> even if new timestamp data is captured. Because no interrupt is
-> generated, the driver never processes the timestamp data. This state
-> results in a permanent failure for all future Tx timestamps.
-> 
-> It is not clear how the driver and hardware could enter this state.
-> However, if it does, there is currently no recovery mechanism.
-> 
-> Add a recovery mechanism via the periodic PTP work thread which invokes
-> ice_ptp_periodic_work(). Introduce a new check,
-> ice_ptp_maybe_trigger_tx_interrupt() which checks the PHY timestamp
-> ready bitmask. If any bits are set, trigger a software interrupt by
-> writing to PFINT_OICR.
-> 
-> Once triggered, the main timestamp processing thread will read through
-> the PHY data and clear the outstanding timestamp data. Once cleared, new
-> data should trigger interrupts as expected.
-> 
-> This should allow recovery from such a state rather than leaving the
-> device in a state where we cannot process Tx timestamps.
-> 
-> It is possible that this function checks for timestamp data
-> simultaneously with the interrupt, and it might trigger additional
-> unnecessary interrupts. This will cause a small amount of additional
-> processing.
-> 
-> Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
-> Signed-off-by: Karol Kolacinski <karol.kolacinski@intel.com>
-> Reviewed-by: Andrii Staikov <andrii.staikov@intel.com>
+Hello,
 
-Reviewed-by: Simon Horman <horms@kernel.org>
+Linux-6.5.8. X710 Network card, attached via 1meter DAC cable to an
+Ubiquiti Aggregation switch (10Gbe).
+Networking is fine, throughput as expected,  but the X710 stops
+forwarding packets after ~20 hours.
+I have to "ifconfig enp1s0f1 down ; sleep 1; ifconfig enp1s0f1 up" to
+get it working again;
+pulling and reinserting the DAC cable does not help.
 
+Interface is part of a linux ethernet bridge device (br0), the X710 is
+used purely as a dumb fast
+ethernet device, no advances features enabled.
+
+Any ideas what could be wrong?
+
+Thanks!
+     Manuel
+
+[    1.327924] i40e: Intel(R) Ethernet Connection XL710 Network Driver
+[    1.327925] i40e: Copyright (c) 2013 - 2019 Intel Corporation.
+[    1.341521] i40e 0000:01:00.0: fw 6.0.48442 api 1.7 nvm 6.01
+0x800035cf 1.1747.0 [8086:1572] [8086:0007]
+[    1.405557] i40e 0000:01:00.0: MAC address: 40:a6:b7:b9:d6:28
+[    1.414463] i40e 0000:01:00.0 eth0: NIC Link is Up, 10 Gbps Full
+Duplex, Flow Control: RX/TX
+[    1.414634] i40e 0000:01:00.0: PCI-Express: Speed 8.0GT/s Width x8
+[    1.423363] i40e 0000:01:00.0: Features: PF-id[0] VSIs: 66 QP: 8
+RSS FD_ATR FD_SB NTUPLE VxLAN Geneve VEPA
+[    1.435506] i40e 0000:01:00.1: fw 6.0.48442 api 1.7 nvm 6.01
+0x800035cf 1.1747.0 [8086:1572] [8086:0007]
+[    1.499379] i40e 0000:01:00.1: MAC address: 40:a6:b7:b9:d6:29
+[    1.503350] i40e 0000:01:00.1: PCI-Express: Speed 8.0GT/s Width x8
+[    1.503796] i40e 0000:01:00.1: Features: PF-id[1] VSIs: 66 QP: 8
+RSS FD_ATR FD_SB NTUPLE VxLAN Geneve VEPA
+[    3.405496] i40e 0000:01:00.1 enp1s0f1: renamed from eth1
+[    3.414522] i40e 0000:01:00.0 enp1s0f0: renamed from eth0
+[    3.447993] i40e 0000:01:00.1 enp1s0f1: entered allmulticast mode
+[    3.453846] i40e 0000:01:00.1 enp1s0f1: entered promiscuous mode
+[    3.455960] i40e 0000:01:00.1: entering allmulti mode.
+[    3.457363] i40e 0000:01:00.0 enp1s0f0: entered allmulticast mode
+[    3.457396] i40e 0000:01:00.0 enp1s0f0: entered promiscuous mode
+[    3.458964] i40e 0000:01:00.0: entering allmulti mode.
+
+[284945.387974] i40e 0000:01:00.0: VSI seid 390 Rx ring 1 disable timeout
+[284945.388260] i40e 0000:01:00.0: VSI seid 390 Rx ring 2 disable timeout
+[284945.388538] i40e 0000:01:00.0: VSI seid 390 Rx ring 3 disable timeout
+[284948.609618] i40e 0000:01:00.0: entering allmulti mode.
+[344837.196104] i40e 0000:01:00.0: VSI seid 390 Rx ring 1 disable timeout
+[344837.196399] i40e 0000:01:00.0: VSI seid 390 Rx ring 2 disable timeout
+[344837.196683] i40e 0000:01:00.0: VSI seid 390 Rx ring 3 disable timeout
+[344842.966942] i40e 0000:01:00.0: entering allmulti mode.
+[451897.400889] i40e 0000:01:00.0: VSI seid 390 Rx ring 1 disable timeout
+[451897.401176] i40e 0000:01:00.0: VSI seid 390 Rx ring 2 disable timeout
+[451897.401456] i40e 0000:01:00.0: VSI seid 390 Rx ring 3 disable timeout
+[451901.231805] i40e 0000:01:00.0: entering allmulti mode.
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
