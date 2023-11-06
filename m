@@ -1,84 +1,87 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 180EE7E289E
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  6 Nov 2023 16:26:26 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 838827E28A0
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  6 Nov 2023 16:26:30 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 609AD4154A;
-	Mon,  6 Nov 2023 15:26:24 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 609AD4154A
+	by smtp2.osuosl.org (Postfix) with ESMTP id 23B5B4151E;
+	Mon,  6 Nov 2023 15:26:29 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 23B5B4151E
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1699284384;
-	bh=8gm5QZXm/eBj83+6PFnPwHmHB/HfaWmN4gv7pvoC75M=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=0r7JEvli4GL5t43UoPhYvBLpXsPDyFswenAFd0WwIUY6mBpY78qonTq6sx4/w0zmv
-	 zAHrYFSWQp3GQ6cq8Dq0EE4WfAYdHO34gx0EGQhLemeiKIWvoLDvGbDQdqa7BIfgJd
-	 xRpryjquu9eZBN7oTCXpUjTqx7Low3MjshWe4e7lZK5m3S4YSz2qlIyqAH5Lb3xTWg
-	 GR+XUjXT4ARiWcDTr1DG7Vxp1T9pTEWphTGAfWzWqkqNPMOC8/kfBCUf5c0XkwwEuv
-	 bZJy6ChPbDGiEu+t+z33OlvMdrdOldquwg7GRNyrXkHoWzkvIU0Q88RrMHszUY883W
-	 PRcn40T2Wbs0w==
+	s=default; t=1699284389;
+	bh=sfMcv6Zlfru1lWCQ8Fg5tjhQ32ad0vBYXPjT1LVOofs=;
+	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=k7zz5raMgQu1F6JKLAJw3kynWCghnG3ij7Vpvm4M++SNDirWqGIIfM8PsqY5a1b6c
+	 uYR1ZcXnmJBVNtmb7PHV3VYXYMlYHFu0t4NhMt4xkpZuHlFXoYUqS2RYu+dxGjcvcw
+	 WyqV6fzR7/cceODmUiHqzBpfg2xKkBRcLuXHY9n8Eo2PoS75wctHXdrw0X0DW9UY5y
+	 9Ux6jBQ8MfpT6ITHBgQGyM9qM+T7Kl5DgP000L3xeLqaI1Gw+HBMJiE+2v7y9yUuCj
+	 obNvv7K9oFZG3qXHSoLVjWwMsGQk1JokH9re5gIlM5lWGkqrwACosqK7ey+grL3gzF
+	 73Dv+rLmMR5pQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ydh65x_JdvJ6; Mon,  6 Nov 2023 15:26:23 +0000 (UTC)
+	with ESMTP id aFsIOrBp8nC0; Mon,  6 Nov 2023 15:26:28 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id B016641503;
-	Mon,  6 Nov 2023 15:26:22 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B016641503
+	by smtp2.osuosl.org (Postfix) with ESMTP id 8C32C41503;
+	Mon,  6 Nov 2023 15:26:27 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 8C32C41503
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 752161BF3AF
- for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Nov 2023 15:26:17 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 1EE7B1BF3AF
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Nov 2023 15:26:18 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 4832E41FE3
+ by smtp4.osuosl.org (Postfix) with ESMTP id 5852041FED
  for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Nov 2023 15:26:17 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4832E41FE3
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5852041FED
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Kz_ngsKtKJsF for <intel-wired-lan@lists.osuosl.org>;
+ with ESMTP id JNbxesh_16N3 for <intel-wired-lan@lists.osuosl.org>;
  Mon,  6 Nov 2023 15:26:16 +0000 (UTC)
 Received: from mgamail.intel.com (mgamail.intel.com [192.55.52.115])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 32E9041FE4
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 9349541FEE
  for <intel-wired-lan@lists.osuosl.org>; Mon,  6 Nov 2023 15:26:16 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 32E9041FE4
-X-IronPort-AV: E=McAfee;i="6600,9927,10886"; a="389105784"
-X-IronPort-AV: E=Sophos;i="6.03,281,1694761200"; d="scan'208";a="389105784"
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9349541FEE
+X-IronPort-AV: E=McAfee;i="6600,9927,10886"; a="389105792"
+X-IronPort-AV: E=Sophos;i="6.03,281,1694761200"; d="scan'208";a="389105792"
 Received: from orsmga008.jf.intel.com ([10.7.209.65])
  by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 06 Nov 2023 07:26:15 -0800
+ 06 Nov 2023 07:26:16 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10886"; a="791492575"
-X-IronPort-AV: E=Sophos;i="6.03,281,1694761200"; d="scan'208";a="791492575"
+X-IronPort-AV: E=McAfee;i="6600,9927,10886"; a="791492585"
+X-IronPort-AV: E=Sophos;i="6.03,281,1694761200"; d="scan'208";a="791492585"
 Received: from unknown (HELO fedora.jf.intel.com) ([10.166.244.154])
- by orsmga008.jf.intel.com with ESMTP; 06 Nov 2023 07:26:14 -0800
+ by orsmga008.jf.intel.com with ESMTP; 06 Nov 2023 07:26:15 -0800
 From: Paul Greenwalt <paul.greenwalt@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Mon,  6 Nov 2023 10:18:07 -0500
-Message-ID: <20231106151808.421280-1-paul.greenwalt@intel.com>
+Date: Mon,  6 Nov 2023 10:18:08 -0500
+Message-ID: <20231106151808.421280-2-paul.greenwalt@intel.com>
 X-Mailer: git-send-email 2.41.0
+In-Reply-To: <20231106151808.421280-1-paul.greenwalt@intel.com>
+References: <20231106151808.421280-1-paul.greenwalt@intel.com>
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
  t=1699284376; x=1730820376;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=Z4hObpuNefplRECRvFfNiSxNjDgba8y3jRhdyvxG5+c=;
- b=RFiUw6IC+KWWLy46hWxmeNNeuC7OJpUccbixU8VPdDV03CLS+hcOVAWN
- Y6kqrr0mmTtOgpQvXlwxd8GlGCYOt/linSuwswIeeQzW1YFKv/SqVDENg
- CRVCRwXc5gxzWFSPqCiEx+8qHmEAebGMzwnT3FSOA1YvpNbFAMHm0sZh7
- pxeMoY2TTAJw4SQ1kdNuyaDpvwJr+FIB9XEWMvMmDQoD+GQYjsomyDTU7
- EsvHQGNWaVi391JcHYJS4UqOiU/eZVVODevlxNddtfTA5NgdoJY2mJHWQ
- 8b+6muZzePryp+bUcX4pLYwQcR4CAYyJnJd+OFRQOMhJLvzyVK3isncHa
- A==;
+ h=from:to:cc:subject:date:message-id:in-reply-to:
+ references:mime-version:content-transfer-encoding;
+ bh=C5xAmnqBSRvl7cD+EhLOcdeNwbvjBkRZfdt4wnE0Pxw=;
+ b=J6lWYWXaae74TMMdDA9nZlyH7EFL+BSXHQu5YQNeMkPtW1NozHKn16sd
+ E2KnBKUUEuly6SltNqUS/Wi8+UN3q7pluZUtSWzWNpktc8NCD7D6oydyG
+ Wxp2d9iUlZd+is+PndyoFD1TqvyTFrHWMKZhIJs1nh/2MI6P8s4QO0S3l
+ 12pSu01kXzMkIT+b/23ZjlKcysChndOAoUP7k5i6w9W4vY01BJVi8LJux
+ h3v/+02vsqVy6Vjn4vK3QAbWsW6/i/UkRzvKg+E5BDUWKti7hTCmjTHA8
+ TAEI5G6837PopqdgGgGMnEfkhqu3TePr2QlHAckCSk2EHMMAZaoZ0y+J1
+ Q==;
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=RFiUw6IC
-Subject: [Intel-wired-lan] [PATCH iwl-net] ice: fix DDP package download for
- packages without signature segment
+ header.a=rsa-sha256 header.s=Intel header.b=J6lWYWXa
+Subject: [Intel-wired-lan] [PATCH iwl-net v2] ice: fix DDP package download
+ for packages without signature segment
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -106,7 +109,7 @@ From: Dan Nowlin <dan.nowlin@intel.com>
 Commit 3cbdb0343022 ("ice: Add support for E830 DDP package segment")
 incorrectly removed support for package download for packages without a
 signature segment. These packages include the signature buffer inline
-in the configurations buffers, and do not in a signature segment.
+in the configurations buffers, and not in a signature segment.
 
 Fix package download by providing download support for both packages
 with (ice_download_pkg_with_sig_seg()) and without signature segment
@@ -118,9 +121,9 @@ Signed-off-by: Dan Nowlin <dan.nowlin@intel.com>
 Signed-off-by: Paul Greenwalt <paul.greenwalt@intel.com>
 ---
 Changelog
-v1->v2:
-Fix Reported-by email.
----
+v2->v3:
+- correct Reported-by email address.
+___
 
  drivers/net/ethernet/intel/ice/ice_ddp.c | 106 ++++++++++++++++++++++-
  1 file changed, 103 insertions(+), 3 deletions(-)
