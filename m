@@ -2,83 +2,84 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 891157E4739
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  7 Nov 2023 18:40:51 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0BD1D7E472C
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  7 Nov 2023 18:36:38 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 21C2361460;
-	Tue,  7 Nov 2023 17:40:50 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 21C2361460
+	by smtp3.osuosl.org (Postfix) with ESMTP id A14E46145F;
+	Tue,  7 Nov 2023 17:36:36 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A14E46145F
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1699378850;
-	bh=MAgqeaAKV4bsFpei8cy16bPBHgX6hnxRT/Vu3uoCA1c=;
+	s=default; t=1699378596;
+	bh=WLEjOBpglcnzxEZaeTtejwp5CvtKL6N/EAKfwzH7GH4=;
 	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=H+rxGsP7hRNTv8UIKnSZP3DpSxE3anUdGDyIZaMBOz39kZyK+HgXE61vLxScpaxWP
-	 PznNBU6FXHRa32t4Bos5yNeH/x+1kDNiXDBkKdpeBtcCuG7ZVkJl/wBqZ23tEliPmP
-	 KMhetfpZq4JQ1kDLtBAHojt9s3QHgML/zpjz2eElXV5ZmvqC104C4mxV9G0/IaDiy7
-	 NzIl4TsMfNj2+Mqs/usXHhTLu5K2TwgGUuXFhhk3nY1B6WNpy2NtsnnUfvVNDSeHsM
-	 5TrfXzPxXfUEsZqhOiJA9cIKJZzPCmC5QykLG9ebmG5zD2UbLosaR43SCFTjq2AonH
-	 qWpUUKeH9hs9Q==
+	 List-Post:List-Help:List-Subscribe:From;
+	b=EaZzLVFgD8jR3vDtAfw7p0CgG/NlWJlVIRT1JtVGD1C43JloSIsOXAOoK6bgcKeu5
+	 mIWHhTZj5OPnEJm+woiZLjmkJRGVXdFNTyn2nG0k4KiZdiV1hf/yP6uhEm/I6xvtUQ
+	 IBQ1NkHDYlcqsOqKytO7v1aAy9m9p4aRIWUjMK+LUCkEWHmbb3wrc2ENmTFgcfdKGn
+	 /0w+IioXgbY9INlFTyOyEF8M+oY04Ufm90FrPqzs7qLN0x+clSDq1vufOIYaJxSuUs
+	 zODh67uwrb1/AmXcqaqpJNUVjCRksaeat8lUUMu+TfmE4P+1jdMA65ZetvIQOulzBc
+	 C8lRbbypeEFpg==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id hZ6y8giGVPd3; Tue,  7 Nov 2023 17:40:49 +0000 (UTC)
+	with ESMTP id z1iP1M5Wh4vH; Tue,  7 Nov 2023 17:36:35 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id C1BBB61446;
-	Tue,  7 Nov 2023 17:40:48 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C1BBB61446
+	by smtp3.osuosl.org (Postfix) with ESMTP id 17C2A611B4;
+	Tue,  7 Nov 2023 17:36:35 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 17C2A611B4
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 54C271BF3B5
- for <intel-wired-lan@lists.osuosl.org>; Tue,  7 Nov 2023 17:40:43 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id DBF5F1BF3B5
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  7 Nov 2023 17:36:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 2C09A421FB
- for <intel-wired-lan@lists.osuosl.org>; Tue,  7 Nov 2023 17:40:43 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2C09A421FB
+ by smtp2.osuosl.org (Postfix) with ESMTP id B26A641840
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  7 Nov 2023 17:36:29 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B26A641840
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id xFYEgazEwPtV for <intel-wired-lan@lists.osuosl.org>;
- Tue,  7 Nov 2023 17:40:42 +0000 (UTC)
-Received: from mgamail.intel.com (mgamail.intel.com [134.134.136.20])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 09037405C4
- for <intel-wired-lan@lists.osuosl.org>; Tue,  7 Nov 2023 17:40:41 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 09037405C4
-X-IronPort-AV: E=McAfee;i="6600,9927,10887"; a="379966757"
-X-IronPort-AV: E=Sophos;i="6.03,284,1694761200"; d="scan'208";a="379966757"
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
- by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 07 Nov 2023 09:40:41 -0800
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id uFyMBysffCrI for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  7 Nov 2023 17:36:28 +0000 (UTC)
+Received: from mgamail.intel.com (mgamail.intel.com [192.55.52.151])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id DEDDD4187E
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  7 Nov 2023 17:36:27 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org DEDDD4187E
+X-IronPort-AV: E=McAfee;i="6600,9927,10887"; a="369757847"
+X-IronPort-AV: E=Sophos;i="6.03,284,1694761200"; d="scan'208";a="369757847"
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 07 Nov 2023 09:36:26 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10887"; a="879894166"
-X-IronPort-AV: E=Sophos;i="6.03,284,1694761200"; d="scan'208";a="879894166"
-Received: from unknown (HELO fedora.jf.intel.com) ([10.166.244.154])
- by fmsmga002.fm.intel.com with ESMTP; 07 Nov 2023 09:40:39 -0800
-From: Paul Greenwalt <paul.greenwalt@intel.com>
+X-IronPort-AV: E=McAfee;i="6600,9927,10887"; a="739213999"
+X-IronPort-AV: E=Sophos;i="6.03,284,1694761200"; d="scan'208";a="739213999"
+Received: from dmert-dev.jf.intel.com ([10.166.241.14])
+ by orsmga006-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 07 Nov 2023 09:36:26 -0800
+From: Dave Ertman <david.m.ertman@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Tue,  7 Nov 2023 12:32:27 -0500
-Message-ID: <20231107173227.862417-1-paul.greenwalt@intel.com>
-X-Mailer: git-send-email 2.41.0
+Date: Tue,  7 Nov 2023 09:38:25 -0800
+Message-Id: <20231107173825.1853492-1-david.m.ertman@intel.com>
+X-Mailer: git-send-email 2.40.1
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1699378842; x=1730914842;
- h=from:to:cc:subject:date:message-id:mime-version:
+ t=1699378587; x=1730914587;
+ h=from:to:subject:date:message-id:mime-version:
  content-transfer-encoding;
- bh=J0TcrzXGQz0pEEW2aauhG6IXnihUc5Hx1HooNK4d4lw=;
- b=Hg2epZFJPQS4S91zImGw6yiUv6vouV/r0vcRWUIJWBBA0A0XOkVaWeGT
- KCTlt/yAJPKyJw88Gvi8eHTua9KiUaxhhHrjFSmgNMeosKHOZvrKMkZf0
- +48N1UzUPYxa2UpMyoGk0LDXFAt3RIwECBR9HFRCvy5l1UmFgUcMWUyJq
- VNRpMvPXdaYCE6EgwzLwFaJECGj0uKKuyWrcVRLo7AELQoYWTdLAx50ZH
- bKqFOVEDW4zw9WWzYthP873IFVbTOdT5MYQIky1vV5/Wjfsq4k5R9NziQ
- QRYzDStlBngomW6bfRSIv3g4qBfDqHGr0DbVyESM7+tAaO0WAYqJ9Umnu
+ bh=kf2dfYoUGr0ScZjdu6khqTDc59hw2kEXcudfbFf2ELQ=;
+ b=VerhLh55vsFQLH5geqMT7hk4dJ+YH1Fj0hXovH9DZ4TmT0jtLjJOht8c
+ tx/ory14xYpvWA6Bmj9sx3DGavLAkdFLpOHdzK3YplRv+YB2kXJIZx2d7
+ uQFqvc16MLAxLBhEHAccSjaMNPesJSZj16wrUCPpCzklejnUr27cLs+xJ
+ bT0xK3XaB9ZAAPug30j+1pA+TW10fnb7BS86gavZtpIbypOXWBzT4547Y
+ bNrraNQbS2kqSIkJleWebWmS2ze5mQor4sCWft4D1FrgtJHGwStKswdpP
+ FiJ29XtpnV+1BrXqm4xQZqE8qcZZHOi3VunvB+ovgqRpN0CQJ40GY4ntF
  w==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=Hg2epZFJ
-Subject: [Intel-wired-lan] [PATCH iwl-net v3] ice: fix DDP package download
- for packages without signature segment
+ header.a=rsa-sha256 header.s=Intel header.b=VerhLh55
+Subject: [Intel-wired-lan] [PATCH iwl-net] ice: Fix VF Reset paths when
+ interface in a failed over aggregate
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,186 +92,208 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Dan Nowlin <dan.nowlin@intel.com>,
- Maciej Fijalkowski <maciej.fijalkowski@intel.com>, netdev@vger.kernel.org,
- jesse.brandeburg@intel.com, Jacob Keller <jacob.e.keller@intel.com>,
- anthony.l.nguyen@intel.com, Paul Greenwalt <paul.greenwalt@intel.com>,
- horms@kernel.org, Wojciech Drewek <wojciech.drewek@intel.com>, kuba@kernel.org,
- davem@davemloft.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Dan Nowlin <dan.nowlin@intel.com>
+There is an error when an interface has the following conditions:
+- PF is in an aggregate (bond)
+- PF has VFs created on it
+- bond is in a state where it is failed-over to the secondary interface
+- A VF reset is issued on one or more of those VFs
 
-Commit 3cbdb0343022 ("ice: Add support for E830 DDP package segment")
-incorrectly removed support for package download for packages without a
-signature segment. These packages include the signature buffer inline
-in the configurations buffers, and not in a signature segment.
+The issue is generated by the originating PF trying to rebuild or
+reconfigure the VF resources.  Since the bond is failed over to the
+secondary interface the queue contexts are in a modified state.
 
-Fix package download by providing download support for both packages
-with (ice_download_pkg_with_sig_seg()) and without signature segment
-(ice_download_pkg_without_sig_seg()).
+To fix this issue, have the originating interface reclaim its resources
+prior to the tear-down and rebuild or reconfigure.  Then after the process
+is complete, move the resources back to the currently active interface.
 
-Fixes: 3cbdb0343022 ("ice: Add support for E830 DDP package segment")
-Reported-by: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
-Closes: https://lore.kernel.org/netdev/ZUT50a94kk2pMGKb@boxer/
-Tested-by: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
-Reviewed-by: Wojciech Drewek <wojciech.drewek@intel.com>
-Reviewed-by: Jacob Keller <jacob.e.keller@intel.com>
-Signed-off-by: Dan Nowlin <dan.nowlin@intel.com>
-Signed-off-by: Paul Greenwalt <paul.greenwalt@intel.com>
+There are multiple paths that can be used depending on what triggered the
+event, so create a helper function to move the queues and use paired calls
+to the helper (back to origin, process, then move back to active interface)
+under the same lag_mutex lock.
+
+Fixes: 1e0f9881ef79 ("ice: Flesh out implementation of support for SRIOV on bonded interface")
+Signed-off-by: Dave Ertman <david.m.ertman@intel.com>
 ---
-Changelog
-v2->v3:
-- correct Changelog version tag, add Closes, Tested-by and Reviewed-by.
-  Remove unnecessary local variable initialization in ice_dwnld_cfg_bufs(),
-  and unnecessary local variable in ice_download_pkg_without_sig_seg(),
-v1->v2:
-- correct Reported-by email address.
----
- drivers/net/ethernet/intel/ice/ice_ddp.c | 103 ++++++++++++++++++++++-
- 1 file changed, 100 insertions(+), 3 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_lag.c      | 42 +++++++++++++++++++
+ drivers/net/ethernet/intel/ice/ice_lag.h      |  1 +
+ drivers/net/ethernet/intel/ice/ice_vf_lib.c   | 20 +++++++++
+ drivers/net/ethernet/intel/ice/ice_virtchnl.c | 25 +++++++++++
+ 4 files changed, 88 insertions(+)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_ddp.c b/drivers/net/ethernet/intel/ice/ice_ddp.c
-index cfb1580f5850..8b7504a9df31 100644
---- a/drivers/net/ethernet/intel/ice/ice_ddp.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ddp.c
-@@ -1479,14 +1479,14 @@ ice_post_dwnld_pkg_actions(struct ice_hw *hw)
+diff --git a/drivers/net/ethernet/intel/ice/ice_lag.c b/drivers/net/ethernet/intel/ice/ice_lag.c
+index 57226f70c6e8..737145b68380 100644
+--- a/drivers/net/ethernet/intel/ice/ice_lag.c
++++ b/drivers/net/ethernet/intel/ice/ice_lag.c
+@@ -679,6 +679,48 @@ static void ice_lag_move_vf_nodes(struct ice_lag *lag, u8 oldport, u8 newport)
+ 			ice_lag_move_single_vf_nodes(lag, oldport, newport, i);
  }
  
- /**
-- * ice_download_pkg
-+ * ice_download_pkg_with_sig_seg
-  * @hw: pointer to the hardware structure
-  * @pkg_hdr: pointer to package header
-  *
-  * Handles the download of a complete package.
-  */
- static enum ice_ddp_state
--ice_download_pkg(struct ice_hw *hw, struct ice_pkg_hdr *pkg_hdr)
-+ice_download_pkg_with_sig_seg(struct ice_hw *hw, struct ice_pkg_hdr *pkg_hdr)
- {
- 	enum ice_aq_err aq_err = hw->adminq.sq_last_status;
- 	enum ice_ddp_state state = ICE_DDP_PKG_ERR;
-@@ -1519,6 +1519,103 @@ ice_download_pkg(struct ice_hw *hw, struct ice_pkg_hdr *pkg_hdr)
- 		state = ice_post_dwnld_pkg_actions(hw);
- 
- 	ice_release_global_cfg_lock(hw);
++/**
++ * ice_lag_move_vf_nodes_cfg - move vf nodes outside LAG netdev event context
++ * @lag: local lag struct
++ * @src_prt: lport value for source port
++ * @dst_prt: lport value for destination port
++ *
++ * This function is used to move nodes during an out-of-netdev-event situation,
++ * primarily when the driver needs to reconfigure or recreate resources.
++ *
++ * Must be called while holding the lag_mutex to avoid lag events from
++ * processing while out-of-sync moves are happening.  Also, paired moves,
++ * such as used in a reset flow, should both be called under the same mutex
++ * lock to avoid changes between start of reset and end of reset.
++ */
++void ice_lag_move_vf_nodes_cfg(struct ice_lag *lag, u8 src_prt, u8 dst_prt)
++{
++	struct ice_lag_netdev_list ndlist, *nl;
++	struct list_head *tmp, *n;
++	struct net_device *tmp_nd;
 +
-+	return state;
++	INIT_LIST_HEAD(&ndlist.node);
++	rcu_read_lock();
++	for_each_netdev_in_bond_rcu(lag->upper_netdev, tmp_nd) {
++		nl = kzalloc(sizeof(*nl), GFP_ATOMIC);
++		if (!nl)
++			break;
++
++		nl->netdev = tmp_nd;
++		list_add(&nl->node, &ndlist.node);
++	}
++	rcu_read_unlock();
++	lag->netdev_head = &ndlist.node;
++	ice_lag_move_vf_nodes(lag, src_prt, dst_prt);
++
++	list_for_each_safe(tmp, n, &ndlist.node) {
++		nl = list_entry(tmp, struct ice_lag_netdev_list, node);
++		list_del(&nl->node);
++		kfree(nl);
++	}
++	lag->netdev_head = NULL;
 +}
 +
-+/**
-+ * ice_dwnld_cfg_bufs
-+ * @hw: pointer to the hardware structure
-+ * @bufs: pointer to an array of buffers
-+ * @count: the number of buffers in the array
-+ *
-+ * Obtains global config lock and downloads the package configuration buffers
-+ * to the firmware.
-+ */
-+static enum ice_ddp_state
-+ice_dwnld_cfg_bufs(struct ice_hw *hw, struct ice_buf *bufs, u32 count)
-+{
-+	enum ice_ddp_state state;
-+	struct ice_buf_hdr *bh;
-+	int status;
-+
-+	if (!bufs || !count)
-+		return ICE_DDP_PKG_ERR;
-+
-+	/* If the first buffer's first section has its metadata bit set
-+	 * then there are no buffers to be downloaded, and the operation is
-+	 * considered a success.
-+	 */
-+	bh = (struct ice_buf_hdr *)bufs;
-+	if (le32_to_cpu(bh->section_entry[0].type) & ICE_METADATA_BUF)
-+		return ICE_DDP_PKG_SUCCESS;
-+
-+	status = ice_acquire_global_cfg_lock(hw, ICE_RES_WRITE);
-+	if (status) {
-+		if (status == -EALREADY)
-+			return ICE_DDP_PKG_ALREADY_LOADED;
-+		return ice_map_aq_err_to_ddp_state(hw->adminq.sq_last_status);
+ #define ICE_LAG_SRIOV_CP_RECIPE		10
+ #define ICE_LAG_SRIOV_TRAIN_PKT_LEN	16
+ 
+diff --git a/drivers/net/ethernet/intel/ice/ice_lag.h b/drivers/net/ethernet/intel/ice/ice_lag.h
+index 9557e8605a07..ede833dfa658 100644
+--- a/drivers/net/ethernet/intel/ice/ice_lag.h
++++ b/drivers/net/ethernet/intel/ice/ice_lag.h
+@@ -65,4 +65,5 @@ int ice_init_lag(struct ice_pf *pf);
+ void ice_deinit_lag(struct ice_pf *pf);
+ void ice_lag_rebuild(struct ice_pf *pf);
+ bool ice_lag_is_switchdev_running(struct ice_pf *pf);
++void ice_lag_move_vf_nodes_cfg(struct ice_lag *lag, u8 src_prt, u8 dst_prt);
+ #endif /* _ICE_LAG_H_ */
+diff --git a/drivers/net/ethernet/intel/ice/ice_vf_lib.c b/drivers/net/ethernet/intel/ice/ice_vf_lib.c
+index aca1f2ea5034..b7ae09952156 100644
+--- a/drivers/net/ethernet/intel/ice/ice_vf_lib.c
++++ b/drivers/net/ethernet/intel/ice/ice_vf_lib.c
+@@ -829,12 +829,16 @@ static void ice_notify_vf_reset(struct ice_vf *vf)
+ int ice_reset_vf(struct ice_vf *vf, u32 flags)
+ {
+ 	struct ice_pf *pf = vf->pf;
++	struct ice_lag *lag;
+ 	struct ice_vsi *vsi;
++	u8 act_prt, pri_prt;
+ 	struct device *dev;
+ 	int err = 0;
+ 	bool rsd;
+ 
+ 	dev = ice_pf_to_dev(pf);
++	act_prt = ICE_LAG_INVALID_PORT;
++	pri_prt = pf->hw.port_info->lport;
+ 
+ 	if (flags & ICE_VF_RESET_NOTIFY)
+ 		ice_notify_vf_reset(vf);
+@@ -845,6 +849,17 @@ int ice_reset_vf(struct ice_vf *vf, u32 flags)
+ 		return 0;
+ 	}
+ 
++	lag = pf->lag;
++	mutex_lock(&pf->lag_mutex);
++	if (lag && lag->bonded && lag->primary) {
++		act_prt = lag->active_port;
++		if (act_prt != pri_prt && act_prt != ICE_LAG_INVALID_PORT &&
++		    lag->upper_netdev)
++			ice_lag_move_vf_nodes_cfg(lag, act_prt, pri_prt);
++		else
++			act_prt = ICE_LAG_INVALID_PORT;
 +	}
 +
-+	state = ice_dwnld_cfg_bufs_no_lock(hw, bufs, 0, count, true);
-+	if (!state)
-+		state = ice_post_dwnld_pkg_actions(hw);
-+
-+	ice_release_global_cfg_lock(hw);
-+
-+	return state;
-+}
-+
-+/**
-+ * ice_download_pkg_without_sig_seg
-+ * @hw: pointer to the hardware structure
-+ * @ice_seg: pointer to the segment of the package to be downloaded
-+ *
-+ * Handles the download of a complete package without signature segment.
-+ */
-+static enum ice_ddp_state
-+ice_download_pkg_without_sig_seg(struct ice_hw *hw, struct ice_seg *ice_seg)
-+{
-+	struct ice_buf_table *ice_buf_tbl;
-+
-+	ice_debug(hw, ICE_DBG_PKG, "Segment format version: %d.%d.%d.%d\n",
-+		  ice_seg->hdr.seg_format_ver.major,
-+		  ice_seg->hdr.seg_format_ver.minor,
-+		  ice_seg->hdr.seg_format_ver.update,
-+		  ice_seg->hdr.seg_format_ver.draft);
-+
-+	ice_debug(hw, ICE_DBG_PKG, "Seg: type 0x%X, size %d, name %s\n",
-+		  le32_to_cpu(ice_seg->hdr.seg_type),
-+		  le32_to_cpu(ice_seg->hdr.seg_size), ice_seg->hdr.seg_id);
-+
-+	ice_buf_tbl = ice_find_buf_table(ice_seg);
-+
-+	ice_debug(hw, ICE_DBG_PKG, "Seg buf count: %d\n",
-+		  le32_to_cpu(ice_buf_tbl->buf_count));
-+
-+	return ice_dwnld_cfg_bufs(hw, ice_buf_tbl->buf_array,
-+				  le32_to_cpu(ice_buf_tbl->buf_count));
-+}
-+
-+/**
-+ * ice_download_pkg
-+ * @hw: pointer to the hardware structure
-+ * @pkg_hdr: pointer to package header
-+ * @ice_seg: pointer to the segment of the package to be downloaded
-+ *
-+ * Handles the download of a complete package.
-+ */
-+static enum ice_ddp_state
-+ice_download_pkg(struct ice_hw *hw, struct ice_pkg_hdr *pkg_hdr,
-+		 struct ice_seg *ice_seg)
-+{
-+	enum ice_ddp_state state;
-+
-+	if (hw->pkg_has_signing_seg)
-+		state = ice_download_pkg_with_sig_seg(hw, pkg_hdr);
-+	else
-+		state = ice_download_pkg_without_sig_seg(hw, ice_seg);
-+
- 	ice_post_pkg_dwnld_vlan_mode_cfg(hw);
+ 	if (flags & ICE_VF_RESET_LOCK)
+ 		mutex_lock(&vf->cfg_lock);
+ 	else
+@@ -937,6 +952,11 @@ int ice_reset_vf(struct ice_vf *vf, u32 flags)
+ 	if (flags & ICE_VF_RESET_LOCK)
+ 		mutex_unlock(&vf->cfg_lock);
  
- 	return state;
-@@ -2083,7 +2180,7 @@ enum ice_ddp_state ice_init_pkg(struct ice_hw *hw, u8 *buf, u32 len)
++	if (lag && lag->bonded && lag->primary &&
++	    act_prt != ICE_LAG_INVALID_PORT)
++		ice_lag_move_vf_nodes_cfg(lag, pri_prt, act_prt);
++	mutex_unlock(&pf->lag_mutex);
++
+ 	return err;
+ }
  
- 	/* initialize package hints and then download package */
- 	ice_init_pkg_hints(hw, seg);
--	state = ice_download_pkg(hw, pkg);
-+	state = ice_download_pkg(hw, pkg, seg);
- 	if (state == ICE_DDP_PKG_ALREADY_LOADED) {
- 		ice_debug(hw, ICE_DBG_INIT,
- 			  "package previously loaded - no work.\n");
-
-base-commit: 016b9332a3346e97a6cacffea0f9dc10e1235a75
+diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl.c b/drivers/net/ethernet/intel/ice/ice_virtchnl.c
+index cdf17b1e2f25..de11b3186bd7 100644
+--- a/drivers/net/ethernet/intel/ice/ice_virtchnl.c
++++ b/drivers/net/ethernet/intel/ice/ice_virtchnl.c
+@@ -1603,9 +1603,24 @@ static int ice_vc_cfg_qs_msg(struct ice_vf *vf, u8 *msg)
+ 	    (struct virtchnl_vsi_queue_config_info *)msg;
+ 	struct virtchnl_queue_pair_info *qpi;
+ 	struct ice_pf *pf = vf->pf;
++	struct ice_lag *lag;
+ 	struct ice_vsi *vsi;
++	u8 act_prt, pri_prt;
+ 	int i = -1, q_idx;
+ 
++	lag = pf->lag;
++	mutex_lock(&pf->lag_mutex);
++	act_prt = ICE_LAG_INVALID_PORT;
++	pri_prt = pf->hw.port_info->lport;
++	if (lag && lag->bonded && lag->primary) {
++		act_prt = lag->active_port;
++		if (act_prt != pri_prt && act_prt != ICE_LAG_INVALID_PORT &&
++		    lag->upper_netdev)
++			ice_lag_move_vf_nodes_cfg(lag, act_prt, pri_prt);
++		else
++			act_prt = ICE_LAG_INVALID_PORT;
++	}
++
+ 	if (!test_bit(ICE_VF_STATE_ACTIVE, vf->vf_states))
+ 		goto error_param;
+ 
+@@ -1729,6 +1744,11 @@ static int ice_vc_cfg_qs_msg(struct ice_vf *vf, u8 *msg)
+ 		}
+ 	}
+ 
++	if (lag && lag->bonded && lag->primary &&
++	    act_prt != ICE_LAG_INVALID_PORT)
++		ice_lag_move_vf_nodes_cfg(lag, pri_prt, act_prt);
++	mutex_unlock(&pf->lag_mutex);
++
+ 	/* send the response to the VF */
+ 	return ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_CONFIG_VSI_QUEUES,
+ 				     VIRTCHNL_STATUS_SUCCESS, NULL, 0);
+@@ -1743,6 +1763,11 @@ static int ice_vc_cfg_qs_msg(struct ice_vf *vf, u8 *msg)
+ 				vf->vf_id, i);
+ 	}
+ 
++	if (lag && lag->bonded && lag->primary &&
++	    act_prt != ICE_LAG_INVALID_PORT)
++		ice_lag_move_vf_nodes_cfg(lag, pri_prt, act_prt);
++	mutex_unlock(&pf->lag_mutex);
++
+ 	ice_lag_move_new_vf_nodes(vf);
+ 
+ 	/* send the response to the VF */
 -- 
-2.41.0
+2.40.1
 
 _______________________________________________
 Intel-wired-lan mailing list
