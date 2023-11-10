@@ -1,85 +1,85 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id DF7387E84C7
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 10 Nov 2023 21:54:52 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2F7847E84C6
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 10 Nov 2023 21:54:47 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id EC1114270B;
-	Fri, 10 Nov 2023 20:54:49 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org EC1114270B
+	by smtp4.osuosl.org (Postfix) with ESMTP id 56E6442713;
+	Fri, 10 Nov 2023 20:54:45 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 56E6442713
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1699649690;
-	bh=aIILcArJZ/Qc4Wt5C9C/KjwPkYH+hKjH/IsKUx1NaS4=;
+	s=default; t=1699649685;
+	bh=3h8KvGT2Q94FXnzVUTLgN0dVkgOdAmEZCDrOWloaH9w=;
 	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
 	 List-Post:List-Help:List-Subscribe:From;
-	b=zaiyLraWhSJxuiLkYx+CKV4hVmOws6W7u5WC3gam+u8OFl19Bi4//Vb2F+LNTDn6C
-	 eKnNDN7kWg+ieRNy8Tmd8rnsz0RrNOvHe3+RyY9EF1MiKVZ29tpdnpiZLXRpGedwY3
-	 a07/ejcEhLkhReu2SNPzFZ/QPYNvVkkPATPdkhhME5EE5xHmgA5fOVwEYAqzgRbZlz
-	 HyNoZQSOt5uqY/n3Cz/2gAKkM5xGXJ2NGqyjizwp6Pw2rrhe2FyrbmwVE6CJTr8RyV
-	 AMm3P7MOB9ELUHwuu89FKxJw5pCQuDrdKuhea66hblF48LPzxGXUT+RpoYx431n07D
-	 NJ/6v1qQzmHpA==
+	b=6FzKrSRYMRoObhHnyiZyBmBrjH3x3W7ucEaQgrs77KwbD/SCJ3ttPvSKUfK74up2Z
+	 Fwzai/p09UZVnt2GQxLiulx7Eo/FgL+c/QipYMwS3cZ2+jzVadFX40364RRFv3Bd7T
+	 qxNjWrpMMt5B+9WAcsmx1+KdXchqpglzBg7FdByZCm+BPB+V+X5HpRuYs8915lboX5
+	 qIFLIMRtBnxrD3IlrRelDrA8a430Z7dbHw9n3X0QhygUiQS/fzbWeadTj1Swi1hVYt
+	 0O+KZjjYzd1bAQVRF+3pIq2U4+MoDyTmorbrmi11jLrujxXQpNMTeEMVKYcU1R42e3
+	 gpVF1INZOx7ZQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id L1JYJk6Ll3EC; Fri, 10 Nov 2023 20:54:48 +0000 (UTC)
+	with ESMTP id 2KOd2zHB93CI; Fri, 10 Nov 2023 20:54:44 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 3E31E42567;
-	Fri, 10 Nov 2023 20:54:48 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3E31E42567
+	by smtp4.osuosl.org (Postfix) with ESMTP id C81AE4257B;
+	Fri, 10 Nov 2023 20:54:43 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C81AE4257B
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 791541BF2C4
- for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Nov 2023 20:54:39 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 4CAD34257B
+ by ash.osuosl.org (Postfix) with ESMTP id 5E6C01BF2C4
  for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Nov 2023 20:54:38 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4CAD34257B
+Received: from localhost (localhost [127.0.0.1])
+ by smtp4.osuosl.org (Postfix) with ESMTP id 2A629426F6
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Nov 2023 20:54:38 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2A629426F6
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 9Cj16hSSlupE for <intel-wired-lan@lists.osuosl.org>;
+ with ESMTP id Wc68aE9h-vr0 for <intel-wired-lan@lists.osuosl.org>;
  Fri, 10 Nov 2023 20:54:36 +0000 (UTC)
 Received: from mgamail.intel.com (mgamail.intel.com [134.134.136.65])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 21B9142567
- for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Nov 2023 20:54:35 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 21B9142567
-X-IronPort-AV: E=McAfee;i="6600,9927,10890"; a="394137162"
-X-IronPort-AV: E=Sophos;i="6.03,293,1694761200"; d="scan'208";a="394137162"
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 9A67D4257B
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 10 Nov 2023 20:54:36 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9A67D4257B
+X-IronPort-AV: E=McAfee;i="6600,9927,10890"; a="394137163"
+X-IronPort-AV: E=Sophos;i="6.03,293,1694761200"; d="scan'208";a="394137163"
 Received: from orsmga005.jf.intel.com ([10.7.209.41])
  by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 10 Nov 2023 12:54:34 -0800
+ 10 Nov 2023 12:54:35 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10890"; a="937253466"
-X-IronPort-AV: E=Sophos;i="6.03,293,1694761200"; d="scan'208";a="937253466"
+X-IronPort-AV: E=McAfee;i="6600,9927,10890"; a="937253467"
+X-IronPort-AV: E=Sophos;i="6.03,293,1694761200"; d="scan'208";a="937253467"
 Received: from lkp-server01.sh.intel.com (HELO 17d9e85e5079) ([10.239.97.150])
  by orsmga005.jf.intel.com with ESMTP; 10 Nov 2023 12:54:33 -0800
 Received: from kbuild by 17d9e85e5079 with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1r1YWN-0009tV-0w
+ (envelope-from <lkp@intel.com>) id 1r1YWN-0009tY-2k
  for intel-wired-lan@lists.osuosl.org; Fri, 10 Nov 2023 20:54:31 +0000
-Date: Sat, 11 Nov 2023 04:53:24 +0800
+Date: Sat, 11 Nov 2023 04:53:35 +0800
 From: kernel test robot <lkp@intel.com>
 To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <202311110422.eokSQqEf-lkp@intel.com>
+Message-ID: <202311110433.ewgHfEAz-lkp@intel.com>
 User-Agent: s-nail v14.9.24
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
  t=1699649676; x=1731185676;
  h=date:from:to:subject:message-id;
- bh=VBkhvKsLimbnqH6Xiutjl/dszhmSudqM6SBluPs46xg=;
- b=FXVXH7+2aHsIUTftwEvjEgR8Wb+b1HO+dHuj4VECCPM+zfLujiuVdgzp
- vJNC3jZ2KTiDycWsC5n2Fqd6pjcXS0J/G9rQF9Q0DlJ0juHRVkB2FcpOf
- K4XIm8Ev6bjAU1KLYWtz5SiQ1dZ7a1r4mChVuph6MKY8svqZQWIVKZczI
- o2RD43CwMEiwX3plWMRvnV4Zrzu+bLu+IC+Eked++N9kjhcLbC9CLCWSB
- cydeEqB+eJlmHjzmPOts6GjmAqyJ7GoYK298Rpuc7vjfyIr1kB+YIgA3n
- 0ksMxALOE8D5yNZkQDdN3mHoTU17Ln4AwOgLFmRU4mZgPG0vfLjC34eqI
+ bh=TvY3Ps9EklzfbYd2t9fN5G1uUVnEbKHoWMJLsFC2auI=;
+ b=Fpbm2LFOD15QzvHV79y15iPtlcMbdh11vLr/w8KdoDPPbFm/rwCvDsvM
+ cnEoaW5GFdqVktaeMfiNA/F/p5FnYqOSyE/M+6K3WfmdDAKo34+obzV4L
+ wMfobiRiRtRiUDSvXZeJA3yfxaHzw7wCXXGZ6+Ul7+Em4IjWUQIlHZ57S
+ benLl/dWxhqbgzwpCue59NeScpjlr6BIg689Ve7zKmEcWbysNTo8Uj8Lb
+ NmwT+UC0paAYV4s8ogvaq1mHqzA+M/uvUYvQo9Da1/8SE1IWl9PTYVzC1
+ tOGB/Wn5XaWiXjLXN0Yx3oxnS515eLAfN/xJbffukdxeqzWowI9rk3PtF
  g==;
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=FXVXH7+2
-Subject: [Intel-wired-lan] [tnguy-next-queue:dev-queue] BUILD REGRESSION
- 90c4fba6434d6a91c009f2604664052dc37c952c
+ header.a=rsa-sha256 header.s=Intel header.b=Fpbm2LFO
+Subject: [Intel-wired-lan] [tnguy-net-queue:dev-queue] BUILD SUCCESS
+ 60cbbf6578e6ef3806f72b3ecec389ad2701d1ff
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,67 +98,19 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git dev-queue
-branch HEAD: 90c4fba6434d6a91c009f2604664052dc37c952c  iavf: validate tx_coalesce_usecs even if rx_coalesce_usecs is zero
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git dev-queue
+branch HEAD: 60cbbf6578e6ef3806f72b3ecec389ad2701d1ff  iavf: validate tx_coalesce_usecs even if rx_coalesce_usecs is zero
 
-Error/Warning ids grouped by kconfigs:
+elapsed time: 1458m
 
-gcc_recent_errors
-|-- i386-buildonly-randconfig-005-20231110
-|   |-- kernel-bpf-task_iter.c:error:CSS_TASK_ITER_THREADED-undeclared-(first-use-in-this-function)
-|   |-- kernel-bpf-task_iter.c:error:implicit-declaration-of-function-css_task_iter_end
-|   |-- kernel-bpf-task_iter.c:error:implicit-declaration-of-function-css_task_iter_next
-|   |-- kernel-bpf-task_iter.c:error:implicit-declaration-of-function-css_task_iter_start
-|   `-- kernel-bpf-task_iter.c:error:invalid-application-of-sizeof-to-incomplete-type-struct-css_task_iter
-|-- m68k-defconfig
-|   |-- kernel-bpf-task_iter.c:error:CSS_TASK_ITER_THREADED-undeclared-(first-use-in-this-function)
-|   |-- kernel-bpf-task_iter.c:error:implicit-declaration-of-function-css_task_iter_end
-|   |-- kernel-bpf-task_iter.c:error:implicit-declaration-of-function-css_task_iter_next
-|   |-- kernel-bpf-task_iter.c:error:implicit-declaration-of-function-css_task_iter_start
-|   `-- kernel-bpf-task_iter.c:error:invalid-application-of-sizeof-to-incomplete-type-struct-css_task_iter
-|-- nios2-randconfig-001-20231110
-|   |-- kernel-bpf-task_iter.c:error:CSS_TASK_ITER_THREADED-undeclared-(first-use-in-this-function)
-|   |-- kernel-bpf-task_iter.c:error:implicit-declaration-of-function-css_task_iter_end
-|   |-- kernel-bpf-task_iter.c:error:implicit-declaration-of-function-css_task_iter_next
-|   |-- kernel-bpf-task_iter.c:error:implicit-declaration-of-function-css_task_iter_start
-|   `-- kernel-bpf-task_iter.c:error:invalid-application-of-sizeof-to-incomplete-type-struct-css_task_iter
-|-- parisc-randconfig-001-20231110
-|   |-- kernel-bpf-task_iter.c:error:CSS_TASK_ITER_THREADED-undeclared-(first-use-in-this-function)
-|   |-- kernel-bpf-task_iter.c:error:implicit-declaration-of-function-css_task_iter_end
-|   |-- kernel-bpf-task_iter.c:error:implicit-declaration-of-function-css_task_iter_next
-|   |-- kernel-bpf-task_iter.c:error:implicit-declaration-of-function-css_task_iter_start
-|   `-- kernel-bpf-task_iter.c:error:invalid-application-of-sizeof-to-incomplete-type-struct-css_task_iter
-|-- powerpc64-randconfig-002-20231110
-|   |-- kernel-bpf-task_iter.c:error:CSS_TASK_ITER_THREADED-undeclared-(first-use-in-this-function)
-|   |-- kernel-bpf-task_iter.c:error:implicit-declaration-of-function-css_task_iter_end
-|   |-- kernel-bpf-task_iter.c:error:implicit-declaration-of-function-css_task_iter_next
-|   |-- kernel-bpf-task_iter.c:error:implicit-declaration-of-function-css_task_iter_start
-|   `-- kernel-bpf-task_iter.c:error:invalid-application-of-sizeof-to-incomplete-type-struct-css_task_iter
-|-- sparc64-randconfig-001-20231110
-|   |-- kernel-bpf-task_iter.c:error:CSS_TASK_ITER_THREADED-undeclared-(first-use-in-this-function)
-|   |-- kernel-bpf-task_iter.c:error:implicit-declaration-of-function-css_task_iter_end
-|   |-- kernel-bpf-task_iter.c:error:implicit-declaration-of-function-css_task_iter_next
-|   |-- kernel-bpf-task_iter.c:error:implicit-declaration-of-function-css_task_iter_start
-|   `-- kernel-bpf-task_iter.c:error:invalid-application-of-sizeof-to-incomplete-type-struct-css_task_iter
-|-- x86_64-buildonly-randconfig-003-20231110
-|   |-- kernel-bpf-task_iter.c:error:CSS_TASK_ITER_THREADED-undeclared-(first-use-in-this-function)
-|   |-- kernel-bpf-task_iter.c:error:implicit-declaration-of-function-css_task_iter_end
-|   |-- kernel-bpf-task_iter.c:error:implicit-declaration-of-function-css_task_iter_next
-|   |-- kernel-bpf-task_iter.c:error:implicit-declaration-of-function-css_task_iter_start
-|   `-- kernel-bpf-task_iter.c:error:invalid-application-of-sizeof-to-incomplete-type-struct-css_task_iter
-`-- xtensa-randconfig-002-20231110
-    |-- kernel-bpf-task_iter.c:error:CSS_TASK_ITER_THREADED-undeclared-(first-use-in-this-function)
-    |-- kernel-bpf-task_iter.c:error:implicit-declaration-of-function-css_task_iter_end
-    |-- kernel-bpf-task_iter.c:error:implicit-declaration-of-function-css_task_iter_next
-    |-- kernel-bpf-task_iter.c:error:implicit-declaration-of-function-css_task_iter_start
-    `-- kernel-bpf-task_iter.c:error:invalid-application-of-sizeof-to-incomplete-type-struct-css_task_iter
-
-elapsed time: 1457m
-
-configs tested: 169
+configs tested: 199
 configs skipped: 2
 
+The following configs have been built successfully.
+More configs may be tested in the coming days.
+
 tested configs:
+alpha                            alldefconfig   gcc  
 alpha                             allnoconfig   gcc  
 alpha                            allyesconfig   gcc  
 alpha                               defconfig   gcc  
@@ -172,6 +124,7 @@ arm                              allmodconfig   gcc
 arm                               allnoconfig   gcc  
 arm                              allyesconfig   gcc  
 arm                                 defconfig   gcc  
+arm                         lpc32xx_defconfig   clang
 arm                   randconfig-001-20231110   gcc  
 arm                   randconfig-002-20231110   gcc  
 arm                   randconfig-003-20231110   gcc  
@@ -201,11 +154,17 @@ i386         buildonly-randconfig-005-20231110   gcc
 i386         buildonly-randconfig-006-20231110   gcc  
 i386                                defconfig   gcc  
 i386                  randconfig-001-20231110   gcc  
+i386                  randconfig-001-20231111   gcc  
 i386                  randconfig-002-20231110   gcc  
+i386                  randconfig-002-20231111   gcc  
 i386                  randconfig-003-20231110   gcc  
+i386                  randconfig-003-20231111   gcc  
 i386                  randconfig-004-20231110   gcc  
+i386                  randconfig-004-20231111   gcc  
 i386                  randconfig-005-20231110   gcc  
+i386                  randconfig-005-20231111   gcc  
 i386                  randconfig-006-20231110   gcc  
+i386                  randconfig-006-20231111   gcc  
 i386                  randconfig-011-20231110   gcc  
 i386                  randconfig-012-20231110   gcc  
 i386                  randconfig-013-20231110   gcc  
@@ -229,8 +188,13 @@ microblaze                          defconfig   gcc
 mips                             allmodconfig   gcc  
 mips                              allnoconfig   gcc  
 mips                             allyesconfig   gcc  
-mips                         bigsur_defconfig   gcc  
+mips                         cobalt_defconfig   gcc  
+mips                     cu1830-neo_defconfig   clang
+mips                           gcw0_defconfig   gcc  
+mips                           jazz_defconfig   gcc  
+mips                           mtx1_defconfig   clang
 mips                        qi_lb60_defconfig   clang
+nios2                         10m50_defconfig   gcc  
 nios2                            allmodconfig   gcc  
 nios2                             allnoconfig   gcc  
 nios2                            allyesconfig   gcc  
@@ -251,9 +215,17 @@ parisc64                            defconfig   gcc
 powerpc                          allmodconfig   gcc  
 powerpc                           allnoconfig   gcc  
 powerpc                          allyesconfig   gcc  
+powerpc                    klondike_defconfig   gcc  
+powerpc                   lite5200b_defconfig   clang
+powerpc                 mpc8315_rdb_defconfig   clang
+powerpc                  mpc866_ads_defconfig   clang
+powerpc                  mpc885_ads_defconfig   clang
+powerpc                      pcm030_defconfig   gcc  
+powerpc                     powernv_defconfig   clang
 powerpc               randconfig-001-20231110   gcc  
 powerpc               randconfig-002-20231110   gcc  
 powerpc               randconfig-003-20231110   gcc  
+powerpc                    sam440ep_defconfig   gcc  
 powerpc64             randconfig-001-20231110   gcc  
 powerpc64             randconfig-002-20231110   gcc  
 powerpc64             randconfig-003-20231110   gcc  
@@ -273,16 +245,17 @@ s390                  randconfig-002-20231110   gcc
 sh                               allmodconfig   gcc  
 sh                                allnoconfig   gcc  
 sh                               allyesconfig   gcc  
+sh                         ap325rxa_defconfig   gcc  
 sh                                  defconfig   gcc  
 sh                    randconfig-001-20231110   gcc  
 sh                    randconfig-002-20231110   gcc  
-sh                   rts7751r2dplus_defconfig   gcc  
 sparc                            allmodconfig   gcc  
 sparc                             allnoconfig   gcc  
 sparc                            allyesconfig   gcc  
 sparc                               defconfig   gcc  
 sparc                 randconfig-001-20231110   gcc  
 sparc                 randconfig-002-20231110   gcc  
+sparc64                          alldefconfig   gcc  
 sparc64                          allmodconfig   gcc  
 sparc64                          allyesconfig   gcc  
 sparc64                             defconfig   gcc  
@@ -302,8 +275,10 @@ x86_64       buildonly-randconfig-001-20231110   gcc
 x86_64       buildonly-randconfig-002-20231110   gcc  
 x86_64       buildonly-randconfig-003-20231110   gcc  
 x86_64       buildonly-randconfig-004-20231110   gcc  
+x86_64       buildonly-randconfig-005-20231110   gcc  
 x86_64       buildonly-randconfig-006-20231110   gcc  
 x86_64                              defconfig   gcc  
+x86_64                                  kexec   gcc  
 x86_64                randconfig-001-20231110   gcc  
 x86_64                randconfig-002-20231110   gcc  
 x86_64                randconfig-003-20231110   gcc  
@@ -322,10 +297,16 @@ x86_64                randconfig-073-20231110   gcc
 x86_64                randconfig-074-20231110   gcc  
 x86_64                randconfig-075-20231110   gcc  
 x86_64                randconfig-076-20231110   gcc  
+x86_64                           rhel-8.3-bpf   gcc  
+x86_64                          rhel-8.3-func   gcc  
+x86_64                    rhel-8.3-kselftests   gcc  
+x86_64                         rhel-8.3-kunit   gcc  
+x86_64                           rhel-8.3-ltp   gcc  
 x86_64                          rhel-8.3-rust   clang
 x86_64                               rhel-8.3   gcc  
+xtensa                            allnoconfig   gcc  
+xtensa                           allyesconfig   gcc  
 xtensa                              defconfig   gcc  
-xtensa                  nommu_kc705_defconfig   gcc  
 xtensa                randconfig-001-20231110   gcc  
 xtensa                randconfig-002-20231110   gcc  
 
