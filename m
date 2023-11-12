@@ -1,79 +1,85 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 360EA7E8C2C
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 11 Nov 2023 19:41:16 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6B8657EA127
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 13 Nov 2023 17:19:37 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id CDE2941E50;
-	Sat, 11 Nov 2023 18:41:12 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org CDE2941E50
+	by smtp2.osuosl.org (Postfix) with ESMTP id 1F72C41193;
+	Mon, 13 Nov 2023 16:19:34 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1F72C41193
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1699728072;
-	bh=Rx324LH4Q9ZeJMW3FJHt/iVk1cf5LqmGLCJQZEdmJ3w=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=uhprBAbMEHi8l7IwcQGH8/IwInS0fz+6wbUrUl09lHJInyg2N+GhQ1e6JxqJBFsZZ
-	 jarAjNSWkzaYRBEwG0Ly4xWaDw+stwWwNQvskvI/5N5IGA2BkCLY8TVs1VtQrHjoNB
-	 JwbmzsUb651lz7SvR23kJJrSj+BauZfV3SCFcVBOqeLWZgjqdEQbtlAq4mrmUWsaVq
-	 SECNKYtOji6hR9uoRo8gUP6zv8bQ3QR3eU5Fbw8IIo/e9BveGiWUPk+70gxFg/cnXB
-	 Pl6QzlyW1x/+yjZJFb1GXWGXaZll+EoDIZDqcJLyiyK8luPIuv9tHBBVRBuz5dHU8K
-	 WxK5Ds9glC0sQ==
+	s=default; t=1699892374;
+	bh=K4vNBEfgCvaEuIyLOsIzM+e0qrRuufJwIeSfVutGieY=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=dyDKag4oeH/MbmRVVLN6Shs3zV80uG3pVhLYJ+Qmg6G7RcIjNeCB20s77FK69QbaF
+	 12aRMBPYHOApTOY9f9Grqz+H4g+0WI4UHiVwCKSGi7zy/N2vKphdmWCEKO5yeIbady
+	 1ZfFbRhT89io2W0xz+SKEAJcBOyTT0cfvZ8LaqC6DmN2un6ht/ittzat75QAJa68/y
+	 5pSvKElZcjgkyANYCAXG0tF51NOExna5Y+YNhu3uV4Xnyp0yRpT7EeR0Xxen0nKNcO
+	 wni811I24heEU2s/kH2aUwf5i+tH44yKXNZZ6JXROBmT/dSGoBsVCTNddjgXpwWCAt
+	 F2I4v433Me7JQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id YFdhRHHZbWNi; Sat, 11 Nov 2023 18:41:12 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id hbE49buqcFVX; Mon, 13 Nov 2023 16:19:33 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id A4BB941DCE;
-	Sat, 11 Nov 2023 18:41:11 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A4BB941DCE
+	by smtp2.osuosl.org (Postfix) with ESMTP id 8A3E6404AF;
+	Mon, 13 Nov 2023 16:19:32 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 8A3E6404AF
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 558D11BF36A
- for <intel-wired-lan@lists.osuosl.org>; Sat, 11 Nov 2023 18:41:06 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 693D61BF2FE
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 12 Nov 2023 11:03:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 28CAA82321
- for <intel-wired-lan@lists.osuosl.org>; Sat, 11 Nov 2023 18:41:06 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 28CAA82321
+ by smtp1.osuosl.org (Postfix) with ESMTP id 403BA82261
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 12 Nov 2023 11:03:15 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 403BA82261
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id p8j7Iuxv21yp for <intel-wired-lan@lists.osuosl.org>;
- Sat, 11 Nov 2023 18:41:05 +0000 (UTC)
-Received: from ams.source.kernel.org (ams.source.kernel.org [145.40.68.75])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 788FF8231E
- for <intel-wired-lan@lists.osuosl.org>; Sat, 11 Nov 2023 18:41:05 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 788FF8231E
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by ams.source.kernel.org (Postfix) with ESMTP id 6A80FB80B6F;
- Sat, 11 Nov 2023 18:41:03 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id F3757C433C7;
- Sat, 11 Nov 2023 18:40:59 +0000 (UTC)
-Date: Sat, 11 Nov 2023 18:40:52 +0000
-From: Simon Horman <horms@kernel.org>
-To: Ivan Vecera <ivecera@redhat.com>
-Message-ID: <20231111184052.GA705326@kernel.org>
-References: <20231110081209.189481-1-ivecera@redhat.com>
+ with ESMTP id Idq2q1rOuvny for <intel-wired-lan@lists.osuosl.org>;
+ Sun, 12 Nov 2023 11:03:13 +0000 (UTC)
+X-Greylist: delayed 305 seconds by postgrey-1.37 at util1.osuosl.org;
+ Sun, 12 Nov 2023 11:03:12 UTC
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1DEC7821E3
+Received: from mailgw.kylinos.cn (mailgw.kylinos.cn [124.126.103.232])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 1DEC7821E3
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 12 Nov 2023 11:03:11 +0000 (UTC)
+X-UUID: 9eeb32bb3fb04d4ab49ba3f3031df80f-20231112
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.32, REQID:b31aca77-f427-4c47-b2b9-f3ea21d1e941, IP:15,
+ URL:0,TC:0,Content:-5,EDM:0,RT:0,SF:-15,FILE:0,BULK:0,RULE:Release_Ham,ACT
+ ION:release,TS:-5
+X-CID-INFO: VERSION:1.1.32, REQID:b31aca77-f427-4c47-b2b9-f3ea21d1e941, IP:15,
+ UR
+ L:0,TC:0,Content:-5,EDM:0,RT:0,SF:-15,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+ N:release,TS:-5
+X-CID-META: VersionHash:5f78ec9, CLOUDID:413d4b95-10ce-4e4b-85c2-c9b5229ff92b,
+ B
+ ulkID:231112183317SMX1J234,BulkQuantity:1,Recheck:0,SF:44|66|38|24|17|19|1
+ 02,TC:nil,Content:0,EDM:-3,IP:-2,URL:0,File:nil,Bulk:40,QS:nil,BEC:nil,COL
+ :0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0,NGT
+X-CID-BAS: 0,NGT,0,_
+X-CID-FACTOR: TF_CID_SPAM_FAS,TF_CID_SPAM_FSD,TF_CID_SPAM_FSI,TF_CID_SPAM_SNR
+X-UUID: 9eeb32bb3fb04d4ab49ba3f3031df80f-20231112
+X-User: chentao@kylinos.cn
+Received: from vt.. [(116.128.244.169)] by mailgw
+ (envelope-from <chentao@kylinos.cn>)
+ (Generic MTA with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+ with ESMTP id 1214345310; Sun, 12 Nov 2023 18:57:41 +0800
+From: Kunwu Chan <chentao@kylinos.cn>
+To: jesse.brandeburg@intel.com, anthony.l.nguyen@intel.com,
+ davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
+ pabeni@redhat.com, jeffrey.t.kirsher@intel.com, shannon.nelson@amd.com
+Date: Sun, 12 Nov 2023 18:57:14 +0800
+Message-Id: <20231112105714.3829869-1-chentao@kylinos.cn>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20231110081209.189481-1-ivecera@redhat.com>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1699728062;
- bh=RX3cBdIDKqcF57RnJqTIKKb8tzO0jX/53K43wpZkfaM=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=JX9ST7pmqRLghGLS7zyNC/HocKeBpovpuRqw2Jz/p4XuyrOJsalbi4mZAUH6uMJIb
- PnOlPrZFvJjmwcOB/NioYCw3uHkliZo6fxI07BuFd1hGgL36EsGTrnd0tEzjcU4s/V
- rqRPeAXjS5dz6OASQzkqo6NeXtvogL7YYeL3TzuR9/UMJx898K+9nKemVYLo2piWAA
- 1pp7Mt46U53NRvaIf9Ixp26m58ew93Tw00a6QorCxFgI+XsAG/W+Yq0l5qVbxzTsAW
- WRda9xI6nX3+Yk3tzHYCDYeFAfWHPEDa4Qs+qP/njhdzwNIrMqJBCJ0+Y8GNuwi1bC
- OxqSHSguRaqxQ==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=JX9ST7pm
-Subject: Re: [Intel-wired-lan] [PATCH iwl-net] i40e: Fix unexpected MFS
- warning message
+X-Mailman-Approved-At: Mon, 13 Nov 2023 16:19:27 +0000
+Subject: [Intel-wired-lan] [PATCH] i40e: Use correct buffer size
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,54 +92,40 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Wojciech Drewek <wojciech.drewek@intel.com>,
- "open list:NETWORKING DRIVERS" <netdev@vger.kernel.org>,
- Jesse Brandeburg <jesse.brandeburg@intel.com>,
- open list <linux-kernel@vger.kernel.org>, Eric Dumazet <edumazet@google.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>,
- Jeff Kirsher <jeffrey.t.kirsher@intel.com>, Jakub Kicinski <kuba@kernel.org>,
- Jacob Keller <jacob.e.keller@intel.com>, intel-wired-lan@lists.osuosl.org,
- Todd Fujinaka <todd.fujinaka@intel.com>, Paolo Abeni <pabeni@redhat.com>,
- "David S. Miller" <davem@davemloft.net>
+Cc: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
+ linux-kernel@vger.kernel.org, Kunwu Chan <chentao@kylinos.cn>,
+ kunwu.chan@hotmail.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Fri, Nov 10, 2023 at 09:12:09AM +0100, Ivan Vecera wrote:
-> Commit 3a2c6ced90e1 ("i40e: Add a check to see if MFS is set") added
-> a warning message that reports unexpected size of port's MFS (max
-> frame size) value. This message use for the port number local
-> variable 'i' that is wrong.
-> In i40e_probe() this 'i' variable is used only to iterate VSIs
-> to find FDIR VSI:
-> 
-> <code>
-> ...
-> /* if FDIR VSI was set up, start it now */
->         for (i = 0; i < pf->num_alloc_vsi; i++) {
->                 if (pf->vsi[i] && pf->vsi[i]->type == I40E_VSI_FDIR) {
->                         i40e_vsi_open(pf->vsi[i]);
->                         break;
->                 }
->         }
-> ...
-> </code>
-> 
-> So the warning message use for the port number indext of FDIR VSI
-> if this exists or pf->num_alloc_vsi if not.
-> 
-> Fix the message by using 'pf->hw.port' for the port number.
-> 
-> Fixes: 3a2c6ced90e1 ("i40e: Add a check to see if MFS is set")
-> Signed-off-by: Ivan Vecera <ivecera@redhat.com>
+The size of "i40e_dbg_command_buf" is 256, the size of "name" is
+at most 256, plus a null character and the format size,
+the total size should be 516.
 
-Thanks Ivan,
+Fixes: 02e9c290814c ("i40e: debugfs interface")
+Signed-off-by: Kunwu Chan <chentao@kylinos.cn>
+---
+ drivers/net/ethernet/intel/i40e/i40e_debugfs.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-I agree with your analysis that this change corrects the port number
-printed. And that the problem is introduced in the cited commit.
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_debugfs.c b/drivers/net/ethernet/intel/i40e/i40e_debugfs.c
+index 999c9708def5..d3f07cecfe57 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_debugfs.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_debugfs.c
+@@ -72,7 +72,7 @@ static ssize_t i40e_dbg_command_read(struct file *filp, char __user *buffer,
+ {
+ 	struct i40e_pf *pf = filp->private_data;
+ 	int bytes_not_copied;
+-	int buf_size = 256;
++	int buf_size = 513;
+ 	char *buf;
+ 	int len;
+ 
+-- 
+2.34.1
 
-Reviewed-by: Simon Horman <horms@kernel.org>
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
