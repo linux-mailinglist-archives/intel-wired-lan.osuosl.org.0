@@ -1,84 +1,75 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 379007EC852
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 15 Nov 2023 17:20:12 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7498A7EBCEE
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 15 Nov 2023 07:10:02 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 476664221B;
-	Wed, 15 Nov 2023 16:20:10 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 476664221B
+	by smtp1.osuosl.org (Postfix) with ESMTP id 6F8CA81295;
+	Wed, 15 Nov 2023 06:10:00 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6F8CA81295
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1700065210;
-	bh=MRD5zLYs+2BfmkiXJJ0osG9vr8h6UqFMK7gwCHSiH+M=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1700028600;
+	bh=rFnmlG32xgD1eEVd7pfd1HgWUIWFaHvdwI0e0oeaAFg=;
+	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=TDB25xf2ysdyr5IlFO4onc1Yf1PQEQcHhzFkTJjhaXRNZMf/95Ic1yr1IUzKB4ywf
-	 7CN8jZFH5NS/Vk09M2tyvEQ5wo/MU/U/JQW1lyolJJ0MufRzb398N1MzQSw9PM2835
-	 jmj76lcWAbA/PJr9p8BEdkF3S5mmgg2c2CaVgoXPuZcIykMsP0bxshG2//J9VBjcM8
-	 ryRgwFSN+Z+PEk9I7PfyGkBNQsHOy392yVUf9IuTsYSdHR+yd0T/DA7xR7kgjXenpu
-	 EbBUp/DovKTQ9S7EsFaBe26vYxz0CvNAlmTzATRUf97R1mDXpWeAgtWHjbNU5v4DOs
-	 B2jq4/w3VPX/Q==
+	 Reply-To:Cc:From;
+	b=P8bMRNLNvICV4zMkDM+uCQwJQ/g+ytZiCTI2u1rOkw1mTup06ar/OnwfyZ+UYJNJi
+	 UkxoSOmv1f62Wsc7SJZUiBhBVh25ERSUsPhwXQuY7/JKdyPad99bbbHAlcdCcXcQVw
+	 YhiTJp3fQsKLYCiNgx0Htbe6Ky8/ar5LIyY+ZRWCMqmB6zAss62LfKXWtmob+CeoaR
+	 knMqX2yJB6edIdwPXy87etunyzQ1r/s+m1kQStJgo4Ry2Ba1NpPQeIX8PyZC7xbq3L
+	 payAg2bhIUE0l28bPYsuErongGeTqt2goevbyqtuQuNwOZ2SSxHnI1fCQWyvrSTQm/
+	 ykVwbL5yCglIA==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 9r4FWYhFyMlP; Wed, 15 Nov 2023 16:20:09 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id byDg_k1HJrbJ; Wed, 15 Nov 2023 06:09:59 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 3EAB5410E6;
-	Wed, 15 Nov 2023 16:20:09 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3EAB5410E6
+	by smtp1.osuosl.org (Postfix) with ESMTP id 2E21D811F3;
+	Wed, 15 Nov 2023 06:09:59 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 2E21D811F3
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id BDDA91BF295
- for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Nov 2023 03:15:08 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id C4C7E1BF2B0
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Nov 2023 06:09:54 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 954104148F
- for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Nov 2023 03:15:08 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 954104148F
+ by smtp4.osuosl.org (Postfix) with ESMTP id 9B49540450
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Nov 2023 06:09:54 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9B49540450
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ha9xabTZRq47 for <intel-wired-lan@lists.osuosl.org>;
- Wed, 15 Nov 2023 03:15:08 +0000 (UTC)
-Received: from mailgw.kylinos.cn (mailgw.kylinos.cn [124.126.103.232])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 52340414A2
- for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Nov 2023 03:15:06 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 52340414A2
-X-UUID: ed5a0a20a55e490aa9171fb72141b083-20231115
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.1.32, REQID:2cfcccbc-ff1f-499a-af7d-84216c47cfff, IP:15,
- URL:0,TC:0,Content:-5,EDM:25,RT:0,SF:-15,FILE:0,BULK:0,RULE:Release_Ham,AC
- TION:release,TS:20
-X-CID-INFO: VERSION:1.1.32, REQID:2cfcccbc-ff1f-499a-af7d-84216c47cfff, IP:15,
- UR
- L:0,TC:0,Content:-5,EDM:25,RT:0,SF:-15,FILE:0,BULK:0,RULE:Release_Ham,ACTI
- ON:release,TS:20
-X-CID-META: VersionHash:5f78ec9, CLOUDID:98c3a972-1bd3-4f48-b671-ada88705968c,
- B
- ulkID:2311151114581JDKGIG5,BulkQuantity:0,Recheck:0,SF:19|44|66|24|17|102,
- TC:nil,Content:0,EDM:5,IP:-2,URL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,
- OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
-X-CID-BVR: 0,NGT
-X-CID-BAS: 0,NGT,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_FAS,TF_CID_SPAM_FSD,TF_CID_SPAM_FSI
-X-UUID: ed5a0a20a55e490aa9171fb72141b083-20231115
-X-User: chentao@kylinos.cn
-Received: from vt.. [(116.128.244.169)] by mailgw
- (envelope-from <chentao@kylinos.cn>)
- (Generic MTA with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
- with ESMTP id 1282692015; Wed, 15 Nov 2023 11:14:55 +0800
-From: Kunwu Chan <chentao@kylinos.cn>
-To: horms@kernel.org
-Date: Wed, 15 Nov 2023 11:14:44 +0800
-Message-Id: <20231115031444.33381-1-chentao@kylinos.cn>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20231113093112.GL705326@kernel.org>
-References: <20231113093112.GL705326@kernel.org>
+ with ESMTP id 6-fdHXpsv3cK for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 15 Nov 2023 06:09:53 +0000 (UTC)
+X-Greylist: delayed 1161 seconds by postgrey-1.37 at util1.osuosl.org;
+ Wed, 15 Nov 2023 06:09:53 UTC
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5A9E24025A
+Received: from wp530.webpack.hosteurope.de (wp530.webpack.hosteurope.de
+ [80.237.130.52])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 5A9E24025A
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 15 Nov 2023 06:09:53 +0000 (UTC)
+Received: from [2a02:8108:8980:2478:8cde:aa2c:f324:937e]; authenticated
+ by wp530.webpack.hosteurope.de running ExIM with esmtpsa
+ (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ id 1r38nD-0004Iu-Md; Wed, 15 Nov 2023 06:50:27 +0100
+Message-ID: <0f97acf9-012d-4bb2-a766-0c2737e32b2c@leemhuis.info>
+Date: Wed, 15 Nov 2023 06:50:26 +0100
 MIME-Version: 1.0
-X-Mailman-Approved-At: Wed, 15 Nov 2023 16:19:59 +0000
-Subject: [Intel-wired-lan] [PATCH iwl-next] i40e: Use correct buffer size
+User-Agent: Mozilla Thunderbird
+Content-Language: en-US, de-DE
+To: Jay Vosburgh <jay.vosburgh@canonical.com>,
+ Bagas Sanjaya <bagasdotme@gmail.com>
+References: <986716ed-f898-4a02-a8f6-94f85b355a05@gmail.com>
+ <32716.1700009673@famine>
+From: "Linux regression tracking (Thorsten Leemhuis)"
+ <regressions@leemhuis.info>
+In-Reply-To: <32716.1700009673@famine>
+X-bounce-key: webpack.hosteurope.de; regressions@leemhuis.info; 1700028593;
+ 6f89673e; 
+X-HE-SMSGID: 1r38nD-0004Iu-Md
+Subject: Re: [Intel-wired-lan] sr-iov related bonding regression (two
+ regressions in one report)
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,42 +82,70 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: chentao@kylinos.cn, kunwu.chan@hotmail.com, netdev@vger.kernel.org,
- jesse.brandeburg@intel.com, linux-kernel@vger.kernel.org, edumazet@google.com,
- intel-wired-lan@lists.osuosl.org, jeffrey.t.kirsher@intel.com, kuba@kernel.org,
- anthony.l.nguyen@intel.com, pabeni@redhat.com, davem@davemloft.net,
- shannon.nelson@amd.com
+Reply-To: Linux regressions mailing list <regressions@lists.linux.dev>
+Cc: Anil Choudhary <anilchabba@gmail.com>,
+ Linux Regressions <regressions@lists.linux.dev>,
+ Linux Networking <netdev@vger.kernel.org>,
+ Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
+ Jesse Brandeburg <jesse.brandeburg@intel.com>,
+ Eric Dumazet <edumazet@google.com>,
+ Linux Intel Wired LAN <intel-wired-lan@lists.osuosl.org>,
+ Jakub Kicinski <kuba@kernel.org>, Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Andy Gospodarek <andy@greyhouse.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The size of "i40e_dbg_command_buf" is 256, the size of "name"
-depends on "IFNAMSIZ", plus a null character and format size,
-the total size is more than 256, fix it.
+On 15.11.23 01:54, Jay Vosburgh wrote:
+> Bagas Sanjaya <bagasdotme@gmail.com> wrote:
+> 
+>> I come across LACP bonding regression on Bugzilla [1].
 
-Signed-off-by: Kunwu Chan <chentao@kylinos.cn>
-Suggested-by: Simon Horman <horms@kernel.org>
----
- drivers/net/ethernet/intel/i40e/i40e_debugfs.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Side note: Stephen forwards some (all?) network regressions to the right
+people:
+https://lore.kernel.org/all/20231113083746.5e02f8b0@hermes.local/
 
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_debugfs.c b/drivers/net/ethernet/intel/i40e/i40e_debugfs.c
-index 999c9708def5..e3b939c67cfe 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_debugfs.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_debugfs.c
-@@ -72,7 +72,7 @@ static ssize_t i40e_dbg_command_read(struct file *filp, char __user *buffer,
- {
- 	struct i40e_pf *pf = filp->private_data;
- 	int bytes_not_copied;
--	int buf_size = 256;
-+	int buf_size = IFNAMSIZ + sizeof(i40e_dbg_command_buf) + 4;
- 	char *buf;
- 	int len;
- 
--- 
-2.34.1
+Would be best to check for that, no need to forward things twice, that
+just results in a mess.
 
+>> The reporter
+>> (Cc'ed) has two regressions. The first is actual LACP bonding
+>> regression (but terse):
+>>
+>>> Till linkx kernel 6.5.7 it is working fine, but after upgrading to 6.6.1 ping stop working with LACP bonding.
+>>> When we disable SR-IOV from bios , everything working fine
+
+Makes me wonder if things have been working with or without the OOT
+module on 6.5.7, as strictly speaking it's only considered a kernel
+regression if thing worked with a vanilla kernel (e.g. without OOT
+modules) beforehand and broke when switching to a newer vanilla kernel.
+If that's the case it would be okay to add to regzbot.
+
+>> And the second is out-of-tree module FTBFS:
+> [... skip OOT stuff ...]
+> 
+>> Should I add the first regression to regzbot (since the second one
+>> is obviously out-of-tree problem), or should I asked detailed regression
+>> info to the reporter?
+> 
+> 	My vote is to get additional information.  Given the nature of
+> the workaround ("When we disable SR-IOV from bios , everything working
+> fine"), it's plausible that the underlying cause is something
+> platform-specific.
+
+Maybe, but when it comes to the "no regressions" rule that likely makes
+no difference from Linus perspective.
+
+But I guess unless the intel folks or someone else has an idea what
+might be wrong here we likely need a bisection (with vanilla kernels of
+course) to get anywhere.
+
+Ciao, Thorsten (wearing his 'the Linux kernel's regression tracker' hat)
+--
+Everything you wanna know about Linux kernel regression tracking:
+https://linux-regtracking.leemhuis.info/about/#tldr
+If I did something stupid, please tell me, as explained on that page.
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
