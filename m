@@ -2,89 +2,182 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id C60797EE421
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 16 Nov 2023 16:21:57 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id DAAAA7EE4B1
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 16 Nov 2023 16:52:24 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 5B25342864;
-	Thu, 16 Nov 2023 15:21:56 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5B25342864
+	by smtp4.osuosl.org (Postfix) with ESMTP id 6AEDF42C25;
+	Thu, 16 Nov 2023 15:52:23 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6AEDF42C25
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1700148116;
-	bh=vlNx7u0tcB6HBNOrJmfWrKQcvSQp7E7XGP/m4X0d2p8=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1700149943;
+	bh=nt2rXY/xmBxX6yEkANvst3d3Ui40cgvzKh5rxX7Pc+w=;
+	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=DnrZsBW3T66LIbbYGk6ToCAnNPxnw06/IgPHQpClIdK3y7hmPt5iV4fuXWr6wewLX
-	 NJM+s+e1Ucr9He8PqN8n+Cahytk9XmzM42J/Th4vxxZIu3AIgBmSGBKHMfCkUmc4Zs
-	 l5HyVyHBZXyIVEwpN8dohe/Yy7ENhi8145mVMdbJp30HumDQWqseJtCKXyZO5zCQXC
-	 USajKE0Ut1c0+6ZUL09BT6ljPxa/2mUJKsA9Fe5kaM4DVgr+ldK44hhNK9FSppJ3Yi
-	 vwlHmlKUfrC6QsZcYh4h8iGc8+gVMZ9OW7XdWQF1Fi7+cZ1yKL4kgcuEkT0DF1DnRH
-	 b+961WKEp00dQ==
+	b=PWyJzTC/bhYvCIDTLPsRRXzHE4R3B3ijERBvyAS4xJ8MUZTadBjNRYPtGNXq0/l/G
+	 lzWlTvSILnLnPuDpZq3CLVvi756qKh7KfJpCfCBOBvqYKMwoayyc16B0rAV/V+3hYf
+	 F7vq+Xv/YSNHIHIVnycrq7oIaypDFIXzFfqXuR2PlbkrNwRrCLj+/QwYFdNNYXRcHz
+	 rgg2uVDzDbc4zBHCgma5sMSQH58S1rzCmwHf3EJWLqxb2QhacFu4Ud8CFALszIymxK
+	 R59RN1UMnTrYFi1oQAWxeD62g6IS611ifQD9lWgb0YVkAn7CzcOvDkRcXR49x3vxiY
+	 p4DQdq/mWGtuw==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id nbfna1uFZ0mw; Thu, 16 Nov 2023 15:21:54 +0000 (UTC)
+	with ESMTP id f0SUwbkYpJd1; Thu, 16 Nov 2023 15:52:22 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id EFE0542862;
-	Thu, 16 Nov 2023 15:21:53 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org EFE0542862
+	by smtp4.osuosl.org (Postfix) with ESMTP id 3516C40889;
+	Thu, 16 Nov 2023 15:52:22 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3516C40889
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id BAAE91BF3C5
- for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Nov 2023 15:21:36 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 2E5181BF3C5
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Nov 2023 15:52:16 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id A06A442850
- for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Nov 2023 15:21:36 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A06A442850
+ by smtp4.osuosl.org (Postfix) with ESMTP id 1143440889
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Nov 2023 15:52:16 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1143440889
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 4ZNL_kh65ScJ for <intel-wired-lan@lists.osuosl.org>;
- Thu, 16 Nov 2023 15:21:35 +0000 (UTC)
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.133.124])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 2924E428BC
- for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Nov 2023 15:21:34 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2924E428BC
-Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
- by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-564-Xr5BfC3tNlGbK_H2VYpiaQ-1; Thu,
- 16 Nov 2023 10:21:28 -0500
-X-MC-Unique: Xr5BfC3tNlGbK_H2VYpiaQ-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.rdu2.redhat.com
- [10.11.54.2])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id D3EAD3C0274E;
- Thu, 16 Nov 2023 15:21:27 +0000 (UTC)
-Received: from p1.luc.cera.cz (unknown [10.45.225.144])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 0571D40C6EBB;
- Thu, 16 Nov 2023 15:21:25 +0000 (UTC)
-From: Ivan Vecera <ivecera@redhat.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Thu, 16 Nov 2023 16:21:14 +0100
-Message-ID: <20231116152114.88515-6-ivecera@redhat.com>
-In-Reply-To: <20231116152114.88515-1-ivecera@redhat.com>
-References: <20231116152114.88515-1-ivecera@redhat.com>
+ with ESMTP id GvmKTZDaujhX for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 16 Nov 2023 15:52:14 +0000 (UTC)
+Received: from mgamail.intel.com (mgamail.intel.com [192.55.52.151])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id A1DB04077D
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 16 Nov 2023 15:52:14 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A1DB04077D
+X-IronPort-AV: E=McAfee;i="6600,9927,10896"; a="371293306"
+X-IronPort-AV: E=Sophos;i="6.04,204,1695711600"; d="scan'208";a="371293306"
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+ by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 16 Nov 2023 07:52:13 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10896"; a="741802053"
+X-IronPort-AV: E=Sophos;i="6.04,204,1695711600"; d="scan'208";a="741802053"
+Received: from fmsmsx601.amr.corp.intel.com ([10.18.126.81])
+ by orsmga006.jf.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
+ 16 Nov 2023 07:52:13 -0800
+Received: from fmsmsx611.amr.corp.intel.com (10.18.126.91) by
+ fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.34; Thu, 16 Nov 2023 07:52:12 -0800
+Received: from fmsmsx603.amr.corp.intel.com (10.18.126.83) by
+ fmsmsx611.amr.corp.intel.com (10.18.126.91) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.34; Thu, 16 Nov 2023 07:52:11 -0800
+Received: from fmsedg601.ED.cps.intel.com (10.1.192.135) by
+ fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.34 via Frontend Transport; Thu, 16 Nov 2023 07:52:11 -0800
+Received: from NAM12-BN8-obe.outbound.protection.outlook.com (104.47.55.168)
+ by edgegateway.intel.com (192.55.55.70) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.34; Thu, 16 Nov 2023 07:52:11 -0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=FkxKHukG0tnb5jeSPAFfR5PEudC4ks0scfLHwjPcG0kjqP06z4UHoBVg9D7cTiKe8MipZWqwp2vZVJl8x6Menqf9lAV0iPvRcNwsQJzXdOWuPeq1GbApB3u5Q3NO/d73grR+RXRPUdjRQhSXhUiWqScqj31bhEVJECNOhf7WR5I3aYsj3h8IcMuHUv8403Ka4QH675lvxH6m9VlmBzuRUCFSHBinIgxWRWZNlWqq9YxZEX57pPTzsQ7/puXihvEvtCm65a1E95XQgUHWBSOOGFxououvb/+xhDIOx6tCNCA0JeAdnjsQRyGkN6TXN2jjaX7GGm9N2k9RkTg5D9HiuA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=Q+SpuiHWixl/2iHDOZJhDhjvPhOIxB3kw33rkALx/ac=;
+ b=m9K9W5QJS1vemEbdVb534eD7FHNhd78d2wXO276FvwbqndaqIEhFoG/aIMW39gX2ATXpeM3tla6nqsmNzdxSSMjVckGlOpTQ+GnFF/tS7KV1X0tZdMwmBtvkhFi1XA9EqR7CmtBvcvyn07CXLzX03n8oJ9QKLvDwqLyBVqP4auOTZiu7mlEgVqwSGpvKOIRNVWmFIv3GBgM0qt45Xycf/CppdiriZ3dPYXvqp/OtpEIUW0fowgtWK0wFZtKgUbee4hxi17iftNp4a8dRLws+XCSvyxgV7nKbovxepo6S5L5G+F5p1+pZbWcFirJs3Ok8CJvzRgB2xEv7/TqUutdqZw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from BL0PR11MB3521.namprd11.prod.outlook.com (2603:10b6:208:7b::32)
+ by SJ0PR11MB6768.namprd11.prod.outlook.com (2603:10b6:a03:47f::8)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7002.20; Thu, 16 Nov
+ 2023 15:52:07 +0000
+Received: from BL0PR11MB3521.namprd11.prod.outlook.com
+ ([fe80::2a7:165b:5c95:7a5d]) by BL0PR11MB3521.namprd11.prod.outlook.com
+ ([fe80::2a7:165b:5c95:7a5d%7]) with mapi id 15.20.7002.021; Thu, 16 Nov 2023
+ 15:52:06 +0000
+From: "Romanowski, Rafal" <rafal.romanowski@intel.com>
+To: Simon Horman <horms@kernel.org>, ivecera <ivecera@redhat.com>
+Thread-Topic: [Intel-wired-lan] [PATCH iwl-next] iavf: Remove queue tracking
+ fields from iavf_adminq_ring
+Thread-Index: AQHaB+gUbHAaPQzHrE2HZOs0BH2JpLBo4TEAgBRYnhA=
+Date: Thu, 16 Nov 2023 15:52:06 +0000
+Message-ID: <BL0PR11MB3521C0334FF07B3C3DD69D9D8FB0A@BL0PR11MB3521.namprd11.prod.outlook.com>
+References: <20231026083932.2623631-1-ivecera@redhat.com>
+ <20231103170928.GD714036@kernel.org>
+In-Reply-To: <20231103170928.GD714036@kernel.org>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: BL0PR11MB3521:EE_|SJ0PR11MB6768:EE_
+x-ms-office365-filtering-correlation-id: 5c23fe34-5b00-4ff4-138b-08dbe6bbfbff
+x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: rk/dqzMl4wZ3px1I7WW7O6qsrzf9CwMlaoAL5G5Rx60Zj9UPRtwdX0/EjC7T0uFM6/zK5pExfnuYTgEcO6/nyEr/t5weaEhIUodHVXGzIVg1tVZRnZCOS433YqGPY7xjtG7ZtZgB/TnKcSFBS1+6gZiPKjzO7ao4EfuFP/+ad46cAkaJQNavrwbagKPqwe/+D0hJzcd3uYoVW5Ve3Y3pwwy7UekndQZJb5gSL6IIF+q4lXHT0VREP1WSIfaCHlojuZ7VOacVD24gim2GfIGtBD6eA7DZa8W/RuZ/E8QEIiu3pbkextCzZXVd7PtTi+P/3xJYvwB10134EBcUJYyrxPYQYMRKjZBokcZDqKcrJqsddnydK4OiR4Reb1ZVOw1He3pffmj98mWWJsBdE9ITp3AhWjisjGiNnIralADICprazrzztdZ3cucOSW3x4e9C6IjxK8juLVjeW0+TD4i0vOJRpNguC9k5aDIpB+Pu2XU6VeJLlQPGC4yMsC3pI+1B2B1XsyQizuqKTbvu5Q9EQWTzZJOvXcIUJqUZJ5zhngvnVt7Y0OakhoxXPtEbU67+iN0w2Xy6MB3AUHEBnMwCJiou+ss2lxr1zC3vK1v7dB0=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BL0PR11MB3521.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230031)(346002)(136003)(376002)(39860400002)(366004)(396003)(230922051799003)(1800799009)(451199024)(64100799003)(186009)(966005)(478600001)(2906002)(6506007)(9686003)(53546011)(7696005)(52536014)(33656002)(5660300002)(86362001)(71200400001)(316002)(64756008)(54906003)(66946007)(66476007)(66556008)(66446008)(76116006)(4326008)(8936002)(8676002)(38100700002)(38070700009)(83380400001)(110136005)(41300700001)(55016003)(26005)(82960400001)(122000001);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?rYsfQEZFedn6fZqC9pxW6qtOJ8b6U6wnld9Bs6i2mvZEMRMerUG2vntQuoQr?=
+ =?us-ascii?Q?bSm4fhNTvOLeBoNKArAwssD9/3X5XHEJ8X7JznMk1FMurbzYvCCpoRT3LWNN?=
+ =?us-ascii?Q?2C6SRRN+4adb2UF6GKWWyB/u6gbu34zm0VYX0Cr7fi3d1YPcoxfUF7/6/jOw?=
+ =?us-ascii?Q?YBhjO3AR5azX48zyLzxm6Quq8fkN/C6U/u6XovLEmYldat1dxhHqZKbOLa55?=
+ =?us-ascii?Q?ENzhjSlrv0dYoeo2COJxVumw+LoDSP7eIz/8TQv4w+b6opkWuvpzNIhjxdo9?=
+ =?us-ascii?Q?qFYLp1yXLsV7GrMUcGJ4BwgNO7HB3pVIh/hgNykY/OF6HZckzDSCs/+zgE5W?=
+ =?us-ascii?Q?pn8XP+8YWdoSC/ApUVTJxRuHvK5TNzQ8aD50LPXOlGNZIrGOC793VrtAtvDd?=
+ =?us-ascii?Q?DQsnVqONGMgcMDCoJ8jw67+JkKi4iSMQM2EyIj4tQOIzOlaqAcdTBsmdcbxX?=
+ =?us-ascii?Q?ZX3HARVWnloDz1Z45bAgDLJzcWZAfupFPRVkGwXM5CBSX3SgDQ2aqjR/3XRw?=
+ =?us-ascii?Q?FMuEfv5qpEgOe05mdZXnDQg+7qb7WzlyduXzDpBJ0VgsGqm6i1on+kI/Uweu?=
+ =?us-ascii?Q?JI3JNHaQ+LT6t/BID/OP+RTCFH2uAJhWO3IiNOeMZJ/o2fo/mNa0Tj/8CRkW?=
+ =?us-ascii?Q?l9V+66oCtiWBSqrNqSrWDlsuQkmfIUo7dxz5owKMaj2MPimqNnfkT5YBkt9q?=
+ =?us-ascii?Q?Na0SOASBIPji2X0Cib34it4JlFgQxCSodR3HvTaND18/zx94gdJLDONenKQm?=
+ =?us-ascii?Q?vxgMlA2GCOGWqXJvXvXUhzSQIsCAMErGThi8zaWbj/hk7w4+1LWRfkFbSXnq?=
+ =?us-ascii?Q?woLYR92QYCkbldQOxoafjk6fnrzmA3Fxff5pVm3Hr9yoe9olfncxlFB9yRMw?=
+ =?us-ascii?Q?Ml0cDElM+5uDA2Iu3/WkEdAxbeXY7RAO86tvOPUDs7sAHpOADNHrbefmt/FC?=
+ =?us-ascii?Q?lXTcddMIZsSP7zLPDeNQXtBZUhiVYrpZRtP/xPnQiM9/nvMPFWrQucR+Av5o?=
+ =?us-ascii?Q?ZN5DBr8AacqRwHFzPfscFvRFIdL9a61e0WGXS8mVWpPGXtAahxHNU7wbQsI+?=
+ =?us-ascii?Q?l4b1eJNObGliuAEpJ6Oj+Rhy8UYCh5P+bS7rtf4CMnEugywnv8duQJC0hxjV?=
+ =?us-ascii?Q?Y7qGgEKKBuBEi1NgWBBQMizOKw6ehsTMJJJgJ6eZT5U862XUVP7a5IjkOeW6?=
+ =?us-ascii?Q?hHBSttPfjjoNP0KggOPkP7mBlntq2OCYt2tKy3WFye2YrfSu5uAua/BNfAW4?=
+ =?us-ascii?Q?eXSrYI4Ak5gFIPerldhzcqJj2GbQ2RO+YpuM1sW2SM3ob9uxrZtfcDcjqbJ7?=
+ =?us-ascii?Q?6uABMvKDgWptuKICBwstGFf1bFRLxgZOX9qhzEkFU6vnrfWTvhuziwhnjIeH?=
+ =?us-ascii?Q?TKN+4Uz+ktP4yBQ3Yf7MdPUCFgDN/JjIqLeV1g9Xyvv6HJVRJV1bpteovotc?=
+ =?us-ascii?Q?U2sxvbGibuoDuLN1q7zXSb3FOgk+0bO3KAayOWcxvdHK68odx+2Y/jD1tqt+?=
+ =?us-ascii?Q?zcpTVDsjUj5yeXcFQ3Sw3fs5BsSyQFe98BHcA73GxOMxtS110JmLupMXYsPY?=
+ =?us-ascii?Q?S2NkoOagEblplEEJMjNWrPgKsZLvRROr7i9Lp+ejEBSXIBG2OvYvun5/uQ5j?=
+ =?us-ascii?Q?tg=3D=3D?=
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.2
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=redhat.com; 
- s=mimecast20190719; t=1700148094;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=2ZTScLppJWVGKPHQqR8DqdFOGy0PitC5NYiBrS/u1A0=;
- b=h9d2L5PSG3B3tp/3SrvtQ9jdHNW0WXiE3GDfUGYVdEyw6v7q9IdwnKBK8Src1fgFyniLtj
- H+IB2x5Xpa0qs147XcKQvj0RSwD2otMr2MzcOmCOKCmWo6h47OGXu7LDvTpKob23CtLQLk
- KigrApekf1hBCYJM8yyJw+3R4XHWC7I=
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: BL0PR11MB3521.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 5c23fe34-5b00-4ff4-138b-08dbe6bbfbff
+X-MS-Exchange-CrossTenant-originalarrivaltime: 16 Nov 2023 15:52:06.3798 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: 8Wwc+fiwKQwMa5MRzBJeDh2rhEbdHJX7H2PXB0rRD/qOl1uuqIQo/27Q/mlcmJZHoeMcH1+5DsLUiHpDV55SxXMR3kE/4vZgopVxPxvMkEM=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ0PR11MB6768
+X-OriginatorOrg: intel.com
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1700149934; x=1731685934;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=Q+SpuiHWixl/2iHDOZJhDhjvPhOIxB3kw33rkALx/ac=;
+ b=k/d08LaHZfnTFUpsha7nnKP1gCixjmJ6wnJ0mFet3OwPiV88IEaxoKx6
+ 4xtfB4NramR0mwx+sOmbnx2O+bg55y1omt/HPjTZ8dlxL9bvCmAvW+1AB
+ B7jXh61CyL3dTT5N+cmNQ8K/no5MGHgK3kkWaMQeIXwDkT43vgT/vsx6X
+ F5JclvONi+Ar379WM1VeD7yPhEsuGIVm03W9X6mVA7t5uiPp2O7nemrW9
+ c8+u4UddVYO0Y5Ms6+OL5HALsEV7k63Pg0yt1Ng72BRfuIqgvYj7mfIf6
+ 1vYlXEYuSfgHoFrDj+3NVjnvxp12ZNWEgQ2Cg16l8cqRMoS5EExPYmoim
+ Q==;
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
- header.a=rsa-sha256 header.s=mimecast20190719 header.b=h9d2L5PS
-Subject: [Intel-wired-lan] [PATCH iwl-next v3 5/5] i40e: Remove VEB recursion
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=k/d08LaH
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next] iavf: Remove queue tracking
+ fields from iavf_adminq_ring
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,461 +190,66 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Wojciech Drewek <wojciech.drewek@intel.com>, netdev@vger.kernel.org,
- Jesse Brandeburg <jesse.brandeburg@intel.com>, linux-kernel@vger.kernel.org,
- Eric Dumazet <edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
- Simon Horman <horms@kernel.org>, Jacob Keller <jacob.e.keller@intel.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- "David S. Miller" <davem@davemloft.net>
+Cc: "Drewek, Wojciech" <wojciech.drewek@intel.com>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>, "Brandeburg,
+ Jesse" <jesse.brandeburg@intel.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ Eric Dumazet <edumazet@google.com>, "Nguyen,
+ Anthony L" <anthony.l.nguyen@intel.com>, Jakub Kicinski <kuba@kernel.org>,
+ "Keller, Jacob E" <jacob.e.keller@intel.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The VEB (virtual embedded switch) as a switch element can be
-connected according datasheet though its uplink to:
-- Physical port
-- Port Virtualizer (not used directly by i40e driver but can
-  be present in MFP mode where the physical port is shared
-  between PFs)
-- No uplink (aka floating VEB)
+> -----Original Message-----
+> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
+> Simon Horman
+> Sent: Friday, November 3, 2023 6:09 PM
+> To: ivecera <ivecera@redhat.com>
+> Cc: Drewek, Wojciech <wojciech.drewek@intel.com>;
+> netdev@vger.kernel.org; Brandeburg, Jesse <jesse.brandeburg@intel.com>;
+> linux-kernel@vger.kernel.org; Eric Dumazet <edumazet@google.com>;
+> Nguyen, Anthony L <anthony.l.nguyen@intel.com>; intel-wired-
+> lan@lists.osuosl.org; Keller, Jacob E <jacob.e.keller@intel.com>; Jakub Kicinski
+> <kuba@kernel.org>; Paolo Abeni <pabeni@redhat.com>; David S. Miller
+> <davem@davemloft.net>
+> Subject: Re: [Intel-wired-lan] [PATCH iwl-next] iavf: Remove queue tracking
+> fields from iavf_adminq_ring
+> 
+> On Thu, Oct 26, 2023 at 10:39:32AM +0200, Ivan Vecera wrote:
+> > Fields 'head', 'tail', 'len', 'bah' and 'bal' in iavf_adminq_ring are
+> > used to store register offsets. These offsets are initialized and
+> > remains constant so there is no need to store them in the
+> > iavf_adminq_ring structure.
+> >
+> > Remove these fields from iavf_adminq_ring and use register offset
+> > constants instead. Remove iavf_adminq_init_regs() that originally
+> > stores these constants into these fields.
+> >
+> > Finally improve iavf_check_asq_alive() that assumes that non-zero
+> > value of hw->aq.asq.len indicates fully initialized AdminQ send queue.
+> > Replace it by check for non-zero value of field hw->aq.asq.count that
+> > is non-zero when the sending queue is initialized and is zeroed during
+> > shutdown of the queue.
+> >
+> > Signed-off-by: Ivan Vecera <ivecera@redhat.com>
+> 
+> Thanks, this is a nice cleanup.
+> 
+> Reviewed-by: Simon Horman <horms@kernel.org>
+> 
+> ...
+> _______________________________________________
+> Intel-wired-lan mailing list
+> Intel-wired-lan@osuosl.org
+> https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
 
-But VEB uplink cannot be connected to another VEB and any attempt
-to do so results in:
 
-"i40e 0000:02:00.0: couldn't add VEB, err -EIO aq_err I40E_AQ_RC_ENOENT"
+Tested-by: Rafal Romanowski <rafal.romanowski@intel.com>
 
-that indicates "the uplink SEID does not point to valid element".
-
-Remove this logic from the driver code this way:
-
-1) For debugfs only allow to build floating VEB (uplink_seid == 0)
-   or main VEB (uplink_seid == mac_seid)
-2) Do not recurse in i40e_veb_link_event() as no VEB cannot have
-   sub-VEBs
-3) Ditto for i40e_veb_rebuild() + simplify the function as we know
-   that the VEB for rebuild can be only the main LAN VEB or some
-   of the floating VEBs
-4) In i40e_rebuild() there is no need to check veb->uplink_seid
-   as the possible ones are 0 and MAC SEID
-5) In i40e_vsi_release() do not take into account VEBs whose
-   uplink is another VEB as this is not possible
-6) Remove veb_idx field from i40e_veb as a VEB cannot have
-   sub-VEBs
-
-Tested using i40e debugfs interface:
-1) Initial state
-[root@cnb-03 net-next]# CMD="/sys/kernel/debug/i40e/0000:02:00.0/command"
-[root@cnb-03 net-next]# echo dump switch > $CMD
-[root@cnb-03 net-next]# dmesg -c
-[   98.440641] i40e 0000:02:00.0: header: 3 reported 3 total
-[   98.446053] i40e 0000:02:00.0: type=19 seid=392 uplink=160 downlink=16
-[   98.452593] i40e 0000:02:00.0: type=17 seid=160 uplink=2 downlink=0
-[   98.458856] i40e 0000:02:00.0: type=19 seid=390 uplink=160 downlink=16
-
-2) Add floating VEB
-[root@cnb-03 net-next]# echo add relay > $CMD
-[root@cnb-03 net-next]# dmesg -c
-[  122.745630] i40e 0000:02:00.0: added relay 162
-[root@cnb-03 net-next]# echo dump switch > $CMD
-[root@cnb-03 net-next]# dmesg -c
-[  136.650049] i40e 0000:02:00.0: header: 4 reported 4 total
-[  136.655466] i40e 0000:02:00.0: type=19 seid=392 uplink=160 downlink=16
-[  136.661994] i40e 0000:02:00.0: type=17 seid=160 uplink=2 downlink=0
-[  136.668264] i40e 0000:02:00.0: type=19 seid=390 uplink=160 downlink=16
-[  136.674787] i40e 0000:02:00.0: type=17 seid=162 uplink=0 downlink=0
-
-3) Add VMDQ2 VSI to this new VEB
-[root@cnb-03 net-next]# dmesg -c
-[  168.351763] i40e 0000:02:00.0: added VSI 394 to relay 162
-[  168.374652] enp2s0f0np0v0: NIC Link is Up, 40 Gbps Full Duplex, Flow Control: None
-[root@cnb-03 net-next]# echo dump switch > $CMD
-[root@cnb-03 net-next]# dmesg -c
-[  195.683204] i40e 0000:02:00.0: header: 5 reported 5 total
-[  195.688611] i40e 0000:02:00.0: type=19 seid=394 uplink=162 downlink=16
-[  195.695143] i40e 0000:02:00.0: type=17 seid=162 uplink=0 downlink=0
-[  195.701410] i40e 0000:02:00.0: type=19 seid=392 uplink=160 downlink=16
-[  195.707935] i40e 0000:02:00.0: type=17 seid=160 uplink=2 downlink=0
-[  195.714201] i40e 0000:02:00.0: type=19 seid=390 uplink=160 downlink=16
-
-4) Try to delete the VEB
-[root@cnb-03 net-next]# echo del relay 162 > $CMD
-[root@cnb-03 net-next]# dmesg -c
-[  239.260901] i40e 0000:02:00.0: deleting relay 162
-[  239.265621] i40e 0000:02:00.0: can't remove VEB 162 with 1 VSIs left
-
-5) Do PF reset and check switch status after rebuild
-[root@cnb-03 net-next]# echo pfr > $CMD
-[root@cnb-03 net-next]# echo dump switch > $CMD
-[root@cnb-03 net-next]# dmesg -c
-...
-[  272.333655] i40e 0000:02:00.0: header: 5 reported 5 total
-[  272.339066] i40e 0000:02:00.0: type=19 seid=394 uplink=162 downlink=16
-[  272.345599] i40e 0000:02:00.0: type=17 seid=162 uplink=0 downlink=0
-[  272.351862] i40e 0000:02:00.0: type=19 seid=392 uplink=160 downlink=16
-[  272.358387] i40e 0000:02:00.0: type=17 seid=160 uplink=2 downlink=0
-[  272.364654] i40e 0000:02:00.0: type=19 seid=390 uplink=160 downlink=16
-
-6) Delete VSI and delete VEB
-[  297.199116] i40e 0000:02:00.0: deleting VSI 394
-[  299.807580] i40e 0000:02:00.0: deleting relay 162
-[  309.767905] i40e 0000:02:00.0: header: 3 reported 3 total
-[  309.773318] i40e 0000:02:00.0: type=19 seid=392 uplink=160 downlink=16
-[  309.779845] i40e 0000:02:00.0: type=17 seid=160 uplink=2 downlink=0
-[  309.786111] i40e 0000:02:00.0: type=19 seid=390 uplink=160 downlink=16
-
-Reviewed-by: Wojciech Drewek <wojciech.drewek@intel.com>
-Signed-off-by: Ivan Vecera <ivecera@redhat.com>
----
- drivers/net/ethernet/intel/i40e/i40e.h        |   1 -
- .../net/ethernet/intel/i40e/i40e_debugfs.c    |   8 +-
- drivers/net/ethernet/intel/i40e/i40e_main.c   | 176 ++++++++----------
- 3 files changed, 76 insertions(+), 109 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/i40e/i40e.h b/drivers/net/ethernet/intel/i40e/i40e.h
-index ca8997d29c02..0fd38fb4dd1f 100644
---- a/drivers/net/ethernet/intel/i40e/i40e.h
-+++ b/drivers/net/ethernet/intel/i40e/i40e.h
-@@ -783,7 +783,6 @@ struct i40e_new_mac_filter {
- struct i40e_veb {
- 	struct i40e_pf *pf;
- 	u16 idx;
--	u16 veb_idx;		/* index of VEB parent */
- 	u16 seid;
- 	u16 uplink_seid;
- 	u16 stats_idx;		/* index of VEB parent */
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_debugfs.c b/drivers/net/ethernet/intel/i40e/i40e_debugfs.c
-index 921a97d5479e..f9ba45f596c9 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_debugfs.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_debugfs.c
-@@ -683,9 +683,8 @@ static void i40e_dbg_dump_veb_seid(struct i40e_pf *pf, int seid)
- 		return;
- 	}
- 	dev_info(&pf->pdev->dev,
--		 "veb idx=%d,%d stats_ic=%d  seid=%d uplink=%d mode=%s\n",
--		 veb->idx, veb->veb_idx, veb->stats_idx, veb->seid,
--		 veb->uplink_seid,
-+		 "veb idx=%d stats_ic=%d  seid=%d uplink=%d mode=%s\n",
-+		 veb->idx, veb->stats_idx, veb->seid, veb->uplink_seid,
- 		 veb->bridge_mode == BRIDGE_MODE_VEPA ? "VEPA" : "VEB");
- 	i40e_dbg_dump_eth_stats(pf, &veb->stats);
- }
-@@ -848,8 +847,7 @@ static ssize_t i40e_dbg_command_write(struct file *filp,
- 			goto command_write_done;
- 		}
- 
--		veb = i40e_pf_get_veb_by_seid(pf, uplink_seid);
--		if (!veb && uplink_seid != 0 && uplink_seid != pf->mac_seid) {
-+		if (uplink_seid != 0 && uplink_seid != pf->mac_seid) {
- 			dev_info(&pf->pdev->dev,
- 				 "add relay: relay uplink %d not found\n",
- 				 uplink_seid);
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
-index 7af5cb056786..7d8aabee3869 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_main.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
-@@ -9871,7 +9871,6 @@ static void i40e_vsi_link_event(struct i40e_vsi *vsi, bool link_up)
-  **/
- static void i40e_veb_link_event(struct i40e_veb *veb, bool link_up)
- {
--	struct i40e_veb *veb_it;
- 	struct i40e_vsi *vsi;
- 	struct i40e_pf *pf;
- 	int i;
-@@ -9880,12 +9879,7 @@ static void i40e_veb_link_event(struct i40e_veb *veb, bool link_up)
- 		return;
- 	pf = veb->pf;
- 
--	/* depth first... */
--	i40e_pf_for_each_veb(pf, i, veb_it)
--		if (veb_it->uplink_seid == veb->seid)
--			i40e_veb_link_event(veb_it, link_up);
--
--	/* ... now the local VSIs */
-+	/* Send link event to contained VSIs */
- 	i40e_pf_for_each_vsi(pf, i, vsi)
- 		if (vsi->uplink_seid == veb->seid)
- 			i40e_vsi_link_event(vsi, link_up);
-@@ -10363,56 +10357,57 @@ static void i40e_config_bridge_mode(struct i40e_veb *veb)
- }
- 
- /**
-- * i40e_reconstitute_veb - rebuild the VEB and anything connected to it
-+ * i40e_reconstitute_veb - rebuild the VEB and VSIs connected to it
-  * @veb: pointer to the VEB instance
-  *
-- * This is a recursive function that first builds the attached VSIs then
-- * recurses in to build the next layer of VEB.  We track the connections
-- * through our own index numbers because the seid's from the HW could
-- * change across the reset.
-+ * This is a function that builds the attached VSIs. We track the connections
-+ * through our own index numbers because the seid's from the HW could change
-+ * across the reset.
-  **/
- static int i40e_reconstitute_veb(struct i40e_veb *veb)
- {
- 	struct i40e_vsi *ctl_vsi = NULL;
- 	struct i40e_pf *pf = veb->pf;
--	struct i40e_veb *veb_it;
- 	struct i40e_vsi *vsi;
- 	int v, ret;
- 
--	if (veb->uplink_seid) {
--		/* Look for VSI that owns this VEB, temporarily attached to base VEB */
--		i40e_pf_for_each_vsi(pf, v, vsi)
--			if (vsi->veb_idx == veb->idx &&
--			    vsi->flags & I40E_VSI_FLAG_VEB_OWNER) {
--				ctl_vsi = vsi;
--				break;
--			}
-+	/* As we do not maintain PV (port virtualizer) switch element then
-+	 * there can be only one non-floating VEB that have uplink to MAC SEID
-+	 * and its control VSI is the main one.
-+	 */
-+	if (WARN_ON(veb->uplink_seid && veb->uplink_seid != pf->mac_seid)) {
-+		dev_err(&pf->pdev->dev,
-+			"Invalid uplink SEID for VEB %d\n", veb->idx);
-+		return -ENOENT;
-+	}
- 
--		if (!ctl_vsi) {
--			dev_info(&pf->pdev->dev,
--				 "missing owner VSI for veb_idx %d\n",
--				 veb->idx);
--			ret = -ENOENT;
--			goto end_reconstitute;
-+	if (veb->uplink_seid == pf->mac_seid) {
-+		/* Check that the LAN VSI has VEB owning flag set */
-+		ctl_vsi = pf->vsi[pf->lan_vsi];
-+
-+		if (WARN_ON(ctl_vsi->veb_idx != veb->idx ||
-+			    !(ctl_vsi->flags & I40E_VSI_FLAG_VEB_OWNER))) {
-+			dev_err(&pf->pdev->dev,
-+				"Invalid control VSI for VEB %d\n", veb->idx);
-+			return -ENOENT;
- 		}
--		if (ctl_vsi != pf->vsi[pf->lan_vsi])
--			ctl_vsi->uplink_seid =
--				pf->vsi[pf->lan_vsi]->uplink_seid;
- 
-+		/* Add the control VSI to switch */
- 		ret = i40e_add_vsi(ctl_vsi);
- 		if (ret) {
--			dev_info(&pf->pdev->dev,
--				 "rebuild of veb_idx %d owner VSI failed: %d\n",
--				 veb->idx, ret);
--			goto end_reconstitute;
-+			dev_err(&pf->pdev->dev,
-+				"Rebuild of owner VSI for VEB %d failed: %d\n",
-+				veb->idx, ret);
-+			return ret;
- 		}
-+
- 		i40e_vsi_reset_stats(ctl_vsi);
- 	}
- 
- 	/* create the VEB in the switch and move the VSI onto the VEB */
- 	ret = i40e_add_veb(veb, ctl_vsi);
- 	if (ret)
--		goto end_reconstitute;
-+		return ret;
- 
- 	if (veb->uplink_seid) {
- 		if (test_bit(I40E_FLAG_VEB_MODE_ENA, pf->flags))
-@@ -10434,23 +10429,12 @@ static int i40e_reconstitute_veb(struct i40e_veb *veb)
- 				dev_info(&pf->pdev->dev,
- 					 "rebuild of vsi_idx %d failed: %d\n",
- 					 v, ret);
--				goto end_reconstitute;
-+				return ret;
- 			}
- 			i40e_vsi_reset_stats(vsi);
- 		}
- 	}
- 
--	/* create any VEBs attached to this VEB - RECURSION */
--	i40e_pf_for_each_veb(pf, v, veb_it) {
--		if (veb_it->veb_idx == veb->idx) {
--			veb_it->uplink_seid = veb->seid;
--			ret = i40e_reconstitute_veb(veb_it);
--			if (ret)
--				break;
--		}
--	}
--
--end_reconstitute:
- 	return ret;
- }
- 
-@@ -10990,31 +10974,29 @@ static void i40e_rebuild(struct i40e_pf *pf, bool reinit, bool lock_acquired)
- 	 */
- 	if (vsi->uplink_seid != pf->mac_seid) {
- 		dev_dbg(&pf->pdev->dev, "attempting to rebuild switch\n");
--		/* find the one VEB connected to the MAC, and find orphans */
-+
-+		/* Rebuild VEBs */
- 		i40e_pf_for_each_veb(pf, v, veb) {
--			if (veb->uplink_seid == pf->mac_seid ||
--			    veb->uplink_seid == 0) {
--				ret = i40e_reconstitute_veb(veb);
--				if (!ret)
--					continue;
--
--				/* If Main VEB failed, we're in deep doodoo,
--				 * so give up rebuilding the switch and set up
--				 * for minimal rebuild of PF VSI.
--				 * If orphan failed, we'll report the error
--				 * but try to keep going.
--				 */
--				if (veb->uplink_seid == pf->mac_seid) {
--					dev_info(&pf->pdev->dev,
--						 "rebuild of switch failed: %d, will try to set up simple PF connection\n",
--						 ret);
--					vsi->uplink_seid = pf->mac_seid;
--					break;
--				} else if (veb->uplink_seid == 0) {
--					dev_info(&pf->pdev->dev,
--						 "rebuild of orphan VEB failed: %d\n",
--						 ret);
--				}
-+			ret = i40e_reconstitute_veb(veb);
-+			if (!ret)
-+				continue;
-+
-+			/* If Main VEB failed, we're in deep doodoo,
-+			 * so give up rebuilding the switch and set up
-+			 * for minimal rebuild of PF VSI.
-+			 * If orphan failed, we'll report the error
-+			 * but try to keep going.
-+			 */
-+			if (veb->uplink_seid == pf->mac_seid) {
-+				dev_info(&pf->pdev->dev,
-+					 "rebuild of switch failed: %d, will try to set up simple PF connection\n",
-+					 ret);
-+				vsi->uplink_seid = pf->mac_seid;
-+				break;
-+			} else if (veb->uplink_seid == 0) {
-+				dev_info(&pf->pdev->dev,
-+					 "rebuild of orphan VEB failed: %d\n",
-+					 ret);
- 			}
- 		}
- 	}
-@@ -14138,9 +14120,9 @@ static int i40e_add_vsi(struct i40e_vsi *vsi)
-  **/
- int i40e_vsi_release(struct i40e_vsi *vsi)
- {
--	struct i40e_veb *veb, *veb_it;
- 	struct i40e_mac_filter *f;
- 	struct hlist_node *h;
-+	struct i40e_veb *veb;
- 	struct i40e_pf *pf;
- 	u16 uplink_seid;
- 	int i, n, bkt;
-@@ -14204,27 +14186,28 @@ int i40e_vsi_release(struct i40e_vsi *vsi)
- 
- 	/* If this was the last thing on the VEB, except for the
- 	 * controlling VSI, remove the VEB, which puts the controlling
--	 * VSI onto the next level down in the switch.
-+	 * VSI onto the uplink port.
- 	 *
- 	 * Well, okay, there's one more exception here: don't remove
--	 * the orphan VEBs yet.  We'll wait for an explicit remove request
-+	 * the floating VEBs yet.  We'll wait for an explicit remove request
- 	 * from up the network stack.
- 	 */
--	n = 0;
--	i40e_pf_for_each_vsi(pf, i, vsi)
--		if (vsi->uplink_seid == uplink_seid &&
--		    (vsi->flags & I40E_VSI_FLAG_VEB_OWNER) == 0)
--			n++;      /* count the VSIs */
-+	veb = i40e_pf_get_veb_by_seid(pf, uplink_seid);
-+	if (veb && veb->uplink_seid) {
-+		n = 0;
-+
-+		/* Count non-controlling VSIs present on  the VEB */
-+		i40e_pf_for_each_vsi(pf, i, vsi)
-+			if (vsi->uplink_seid == uplink_seid &&
-+			    (vsi->flags & I40E_VSI_FLAG_VEB_OWNER) == 0)
-+				n++;
- 
--	veb = NULL;
--	i40e_pf_for_each_veb(pf, i, veb_it) {
--		if (veb_it->uplink_seid == uplink_seid)
--			n++;     /* count the VEBs */
--		if (veb_it->seid == uplink_seid)
--			veb = veb_it;
-+		/* If there is no VSI except the control one then release
-+		 * the VEB and put the control VSI onto VEB uplink.
-+		 */
-+		if (!n)
-+			i40e_veb_release(veb);
- 	}
--	if (n == 0 && veb && veb->uplink_seid != 0)
--		i40e_veb_release(veb);
- 
- 	return 0;
- }
-@@ -14738,14 +14721,11 @@ void i40e_veb_release(struct i40e_veb *veb)
- 		return;
- 	}
- 
--	/* For regular VEB move the owner VSI to uplink VEB */
-+	/* For regular VEB move the owner VSI to uplink port */
- 	if (veb->uplink_seid) {
- 		vsi->flags &= ~I40E_VSI_FLAG_VEB_OWNER;
- 		vsi->uplink_seid = veb->uplink_seid;
--		if (veb->uplink_seid == pf->mac_seid)
--			vsi->veb_idx = I40E_NO_VEB;
--		else
--			vsi->veb_idx = veb->veb_idx;
-+		vsi->veb_idx = I40E_NO_VEB;
- 	}
- 
- 	i40e_aq_delete_element(&pf->hw, veb->seid, NULL);
-@@ -14825,8 +14805,8 @@ struct i40e_veb *i40e_veb_setup(struct i40e_pf *pf, u16 flags,
- 				u16 uplink_seid, u16 vsi_seid,
- 				u8 enabled_tc)
- {
--	struct i40e_veb *veb, *uplink_veb = NULL;
- 	struct i40e_vsi *vsi = NULL;
-+	struct i40e_veb *veb;
- 	int veb_idx;
- 	int ret;
- 
-@@ -14848,14 +14828,6 @@ struct i40e_veb *i40e_veb_setup(struct i40e_pf *pf, u16 flags,
- 			return NULL;
- 		}
- 	}
--	if (uplink_seid && uplink_seid != pf->mac_seid) {
--		uplink_veb = i40e_pf_get_veb_by_seid(pf, uplink_seid);
--		if (!uplink_veb) {
--			dev_info(&pf->pdev->dev,
--				 "uplink seid %d not found\n", uplink_seid);
--			return NULL;
--		}
--	}
- 
- 	/* get veb sw struct */
- 	veb_idx = i40e_veb_mem_alloc(pf);
-@@ -14864,7 +14836,6 @@ struct i40e_veb *i40e_veb_setup(struct i40e_pf *pf, u16 flags,
- 	veb = pf->veb[veb_idx];
- 	veb->flags = flags;
- 	veb->uplink_seid = uplink_seid;
--	veb->veb_idx = (uplink_veb ? uplink_veb->idx : I40E_NO_VEB);
- 	veb->enabled_tc = (enabled_tc ? enabled_tc : 0x1);
- 
- 	/* create the VEB in the switch */
-@@ -14935,7 +14906,6 @@ static void i40e_setup_pf_switch_element(struct i40e_pf *pf,
- 		pf->veb[pf->lan_veb]->seid = seid;
- 		pf->veb[pf->lan_veb]->uplink_seid = pf->mac_seid;
- 		pf->veb[pf->lan_veb]->pf = pf;
--		pf->veb[pf->lan_veb]->veb_idx = I40E_NO_VEB;
- 		break;
- 	case I40E_SWITCH_ELEMENT_TYPE_VSI:
- 		if (num_reported != 1)
--- 
-2.41.0
 
 _______________________________________________
 Intel-wired-lan mailing list
