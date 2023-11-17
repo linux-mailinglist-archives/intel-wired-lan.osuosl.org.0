@@ -1,112 +1,152 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 73BFA7EF1A0
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 17 Nov 2023 12:21:22 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id A37037EF237
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 17 Nov 2023 13:05:33 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id E8DE76FB10;
-	Fri, 17 Nov 2023 11:21:20 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org E8DE76FB10
+	by smtp4.osuosl.org (Postfix) with ESMTP id 5DAB0420A3;
+	Fri, 17 Nov 2023 12:05:30 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5DAB0420A3
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1700220081;
-	bh=KUVnksDmoSyvUnVaODEPs+kOjALLnNnIGVP/1N20WXc=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1700222730;
+	bh=YlhEZY5V8w/leH6Th2j+EmVWT3wuad6YVGBa35oniXo=;
+	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=hZQtVqskdFRULSjIdBwdgjIpbXiTYcarztkFk4SkPUYJiQdCIWSVGkqJ6Jgamfslk
-	 PHCbIfVNVEz2pOYXWqUX61qCmokUPAznmF8yqqo/fb142qUFh+4Lxzr8Lgmr2LYoca
-	 2qluGdyouY3hLuLCDkFnh2fjjCKOwC2w222ts70T7Uf4bRvKcnhxQG72GZyzJvSzHp
-	 qCBbc24V+8M7d89BxmKk/AqEorzNtZRzeaN4hRwUROyYiN0OZtQ52AkD5QLni7Qp3J
-	 zOiEnv9tMfgdJgSGQaLKjuY2s5LB4Ww/fwS4b7sZFGwbvBO4pU1yBGQ5rU/fAf5acL
-	 fhoUBUCDOMTMA==
+	b=vDKIejL213jQffsHrvevXqm64DpmdoqVEtWzHLkUs9b+eAiD58ZL9IriqC0qM1kkW
+	 DI+8ftfBMwW5SwDZs2woWQQlchCnUlyuL9mX8JsZVFFNZwgyh3Q1EqTpobvYgq2Tgk
+	 tbU6BhyRM2vAg19jeJIQ8oJDS0YLm4/UqO8XOf1JtTJjcM8iwupyAbisDnEMbiqNKj
+	 X1ftvj42EcSkc4HHVNMu6ukmCSXFG0YmAabAkVRIf/llDbWnyng2GNtBfmHCWTGaod
+	 y+KOmFtZFm/fJ2VMBstEtcpNwcJDioRiF2KUiN5oEukFQnJLbH2eVPdbfRkY9ng+LU
+	 sPU22/ELR1ngg==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id hdSqx95XFGug; Fri, 17 Nov 2023 11:21:20 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id ml0I7d2ZEsv3; Fri, 17 Nov 2023 12:05:29 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id A80E36FB0F;
-	Fri, 17 Nov 2023 11:21:19 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A80E36FB0F
+	by smtp4.osuosl.org (Postfix) with ESMTP id 77D7942C94;
+	Fri, 17 Nov 2023 12:05:28 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 77D7942C94
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id A117D1BF33A
- for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Nov 2023 11:21:14 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 4B32E1BF2BA
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Nov 2023 12:05:23 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 84C7D6FB0F
- for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Nov 2023 11:21:14 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 84C7D6FB0F
+ by smtp3.osuosl.org (Postfix) with ESMTP id 229196FB2E
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Nov 2023 12:05:23 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 229196FB2E
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id yXm0xoeOAl3a for <intel-wired-lan@lists.osuosl.org>;
- Fri, 17 Nov 2023 11:21:13 +0000 (UTC)
-Received: from mail-ej1-x62a.google.com (mail-ej1-x62a.google.com
- [IPv6:2a00:1450:4864:20::62a])
- by smtp3.osuosl.org (Postfix) with ESMTPS id DDD896FB0A
- for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Nov 2023 11:21:12 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org DDD896FB0A
-Received: by mail-ej1-x62a.google.com with SMTP id
- a640c23a62f3a-9dd6dc9c00cso265472966b.3
- for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Nov 2023 03:21:12 -0800 (PST)
+ with ESMTP id dWyj5dYUTVkJ for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 17 Nov 2023 12:05:22 +0000 (UTC)
+Received: from mail-lf1-x136.google.com (mail-lf1-x136.google.com
+ [IPv6:2a00:1450:4864:20::136])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id A4C686FB29
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Nov 2023 12:05:21 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A4C686FB29
+Received: by mail-lf1-x136.google.com with SMTP id
+ 2adb3069b0e04-507973f3b65so2710450e87.3
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 17 Nov 2023 04:05:21 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1700220070; x=1700824870;
- h=in-reply-to:content-transfer-encoding:content-disposition
- :mime-version:references:message-id:subject:cc:to:from:date
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=eHIsjVFizKvIbQl8U+CvUzO8VVtyUgWU0JIxQXuswVo=;
- b=iDmtSe1BO7Izfj5do6MYgK/Ad+4W9JurvyokMhhpVSEFZ0q+IPvQwQDPc8z9RKvPPN
- 6kMFZ/KYt7t7F1HUpxiA60t2SnlHUTwUHmV1vIJmTeXVLx7e1rggZM8KX8+54vQ3fdGY
- ibZ6DX8DO3uX/E2q4aSq1VEvRlbFhRuT1UpY4WDyxOHsms8jSa007331aS42B+V7sH4z
- v++cUnDPU6t6nKUMXm/C4nCaGbG8CCCi89Py2BSdZw9WynGR7d4ibl/mOtRJa02KeC/w
- KqDdIU3MIn8kZUPrLRRh2Z52a+4mjvqsySjeJAKs84jFzJKbCiVVF6FHZ0lTPeHhmX6m
- er6A==
-X-Gm-Message-State: AOJu0Yz64D7QCgU+Qv6HA7kUWv5qZzA3EyBANwlxNx03W7IHfL7heaEz
- ES4e54Gs2wI4H62MZu6D5mYGxA==
-X-Google-Smtp-Source: AGHT+IH35q7ljA6W7fdY8McRtLg6kQqnqRXP0n88dr4WEhfMowxfS+GOWBModH14HMBc8PwitCqbWQ==
-X-Received: by 2002:a17:906:37c7:b0:9a1:f81f:d0d5 with SMTP id
- o7-20020a17090637c700b009a1f81fd0d5mr3513420ejc.54.1700220070193; 
- Fri, 17 Nov 2023 03:21:10 -0800 (PST)
-Received: from localhost (host-213-179-129-39.customer.m-online.net.
- [213.179.129.39]) by smtp.gmail.com with ESMTPSA id
- gr2-20020a170906e2c200b0099d45ed589csm671223ejb.125.2023.11.17.03.21.08
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 17 Nov 2023 03:21:09 -0800 (PST)
-Date: Fri, 17 Nov 2023 12:21:08 +0100
-From: Jiri Pirko <jiri@resnulli.us>
-To: "Zhang, Xuejun" <xuejun.zhang@intel.com>
-Message-ID: <ZVdMpLz1LPfMyM8S@nanopsycho>
-References: <20230727021021.961119-1-wenjun1.wu@intel.com>
- <20230822034003.31628-1-wenjun1.wu@intel.com>
- <ZORRzEBcUDEjMniz@nanopsycho> <20230822081255.7a36fa4d@kernel.org>
- <ZOTVkXWCLY88YfjV@nanopsycho>
- <0893327b-1c84-7c25-d10c-1cc93595825a@intel.com>
- <ZOcBEt59zHW9qHhT@nanopsycho>
- <5aed9b87-28f8-f0b0-67c4-346e1d8f762c@intel.com>
- <bdb0137a-b735-41d9-9fea-38b238db0305@intel.com>
+ d=1e100.net; s=20230601; t=1700222719; x=1700827519;
+ h=content-transfer-encoding:in-reply-to:organization:autocrypt:from
+ :references:cc:to:content-language:subject:user-agent:mime-version
+ :date:message-id:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=iTLJfhF/Kvz1TJHe3rbPkbM2Y309st43b6vz+/FStcc=;
+ b=kqarHYb4J+Dm0xj69rlbRKTR/3KstObKe291N+dYwwjLiPD+BDed93ZVgxehKJ48Kp
+ Qydgp+hf9k5RcgoAL9fEk2/CddOZZMFf9mGetdBMwKoAu+VzwMGxrFsc/eE0iMC+nTDR
+ YKCJ4TCkc/XsZ/CvdQczGAqOUHfxc45u4sSfm/RnsFpQa2uq4wU/bLBs9xo7flS+WUpC
+ x3vJPqE8dDbiiLFRnweZYyQ4+CpdyUXGcIPx5vcak6NYim9Q3XU8s5KSAgPdwGafU5/t
+ 1DlnnrPynB5q2weZQZ755419LHDfr/5Bfm984AUoV7lknt0o3DN7Kf8PF1FFYJG1YNnM
+ MX2w==
+X-Gm-Message-State: AOJu0Yx9O0gX6PASc/5ut10anW1+9QcvSsOMWjrewFwCmFzJpR34v+Va
+ 7ciAZepvXlThEBEvjP5a6i7KeQ==
+X-Google-Smtp-Source: AGHT+IH84wJxlxB8n1Ax4FKov7QyS4oJcFwNEd5FcT25I6IvVvvJ+s5C4sOFgyyoT/4ifB9jk3X9zA==
+X-Received: by 2002:a2e:b815:0:b0:2c5:be8:68ae with SMTP id
+ u21-20020a2eb815000000b002c50be868aemr7559668ljo.0.1700222718831; 
+ Fri, 17 Nov 2023 04:05:18 -0800 (PST)
+Received: from [10.100.10.83] ([57.133.65.178])
+ by smtp.gmail.com with ESMTPSA id
+ 14-20020a05600c22ce00b004053a6b8c41sm2441432wmg.12.2023.11.17.04.05.18
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 17 Nov 2023 04:05:18 -0800 (PST)
+Message-ID: <e1b2f012-7e0a-4167-bfa9-026d49f1b45b@inovex.de>
+Date: Fri, 17 Nov 2023 13:05:17 +0100
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <bdb0137a-b735-41d9-9fea-38b238db0305@intel.com>
+User-Agent: Mozilla Thunderbird
+Content-Language: en-US
+To: Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ intel-wired-lan@lists.osuosl.org
+References: <f38a6ca4-af05-48b1-a3e6-17ef2054e525@inovex.de>
+ <7bbe621e-52cc-8111-bec7-70632900c3b0@intel.com>
+From: Christian Rohmann <christian.rohmann@inovex.de>
+Autocrypt: addr=christian.rohmann@inovex.de; keydata=
+ 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
+ 6/S+Umx1vXWUG6ol8Oalq8coKRpry3O+ytxj/sc=
+Organization: inovex GmbH
+In-Reply-To: <7bbe621e-52cc-8111-bec7-70632900c3b0@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=resnulli-us.20230601.gappssmtp.com; s=20230601; t=1700220070; x=1700824870;
- darn=lists.osuosl.org; 
- h=in-reply-to:content-transfer-encoding:content-disposition
- :mime-version:references:message-id:subject:cc:to:from:date:from:to
- :cc:subject:date:message-id:reply-to;
- bh=eHIsjVFizKvIbQl8U+CvUzO8VVtyUgWU0JIxQXuswVo=;
- b=hZHrYPkUJ6mCz1L6g4/+djuZKUi1tHKb4EjgcEdhdybDUeA/zxYe3Ly5pOm59YhEzV
- yITmvBsOTPYN9UWZJcd0A8uvORJq5KHZViMG8sv8nIn78tZl9yUS6ZRJv6xIbmVP6Pes
- Nf/7UFAG4C2D06lE96b6aUkhguP+dFVstFBlYAd2VmYZ/t1q1jGJDEf4EYA0A/QIgs1d
- J9hxKAHwgQqaZ5U/m1ATWvnd5QDXQDafOAZ2WyFhxuGOG07pIOaIg0FqvIBHocvB5tk+
- 9ZzOYzKzMG51pQGGPFrymZEmoDM1NOJECt9OZK+zBlRw1M7/oWIINzZENh9nOPFmldfd
- yraw==
+ d=inovex.de; s=google; t=1700222719; x=1700827519; darn=lists.osuosl.org;
+ h=content-transfer-encoding:in-reply-to:organization:autocrypt:from
+ :references:cc:to:content-language:subject:user-agent:mime-version
+ :date:message-id:from:to:cc:subject:date:message-id:reply-to;
+ bh=iTLJfhF/Kvz1TJHe3rbPkbM2Y309st43b6vz+/FStcc=;
+ b=BRbd4x5Zp/SgUq3jw9gadGi+rm+NKGv0azP3TFOn8pfX/KChNmKsk7sP6ZxdlS3/TP
+ VtSKilWiCf1GX/C7DKEDwaVvWvbVCcNnEt8EaQIahPfsV9U8wUwI2rjQjzvE+WcYISeN
+ E3iY+AQoTLORILDiI9j240PHJfj01dVkGvB21UF1AXwNj3YkUk+PDlwbwqZu6TFkxhHJ
+ 8jVF8n+pAMDL8BI5ipqbjAANIIC2Tt2BaTu8T/EAb0Ui50iLoKk5ifIHrqfqriEnZJ5x
+ oWdvwD/unklJRs/GbN9FRxyORtwppnonKla1Qbn3UWq3pokPmZehOKlOiP9vRsWTovqT
+ k+Zg==
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=resnulli-us.20230601.gappssmtp.com
- header.i=@resnulli-us.20230601.gappssmtp.com header.a=rsa-sha256
- header.s=20230601 header.b=hZHrYPkU
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v4 0/5] iavf: Add devlink and
- devlink rate support'
+ dkim=pass (2048-bit key) header.d=inovex.de header.i=@inovex.de
+ header.a=rsa-sha256 header.s=google header.b=BRbd4x5Z
+Subject: Re: [Intel-wired-lan] Counter spikes in /proc/net/dev for
+ E810-CQDA2 interfaces (ice driver) on kernel >=6.2
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -119,109 +159,235 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "Samudrala, Sridhar" <sridhar.samudrala@intel.com>, netdev@vger.kernel.org,
- maxtram95@gmail.com, qi.z.zhang@intel.com, "Chittim,
- Madhu" <madhu.chittim@intel.com>, intel-wired-lan@lists.osuosl.org,
- Jakub Kicinski <kuba@kernel.org>, anthony.l.nguyen@intel.com,
- pabeni@redhat.com, Wenjun Wu <wenjun1.wu@intel.com>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Cc: leszek.pepiak@intel.com, "Czapnik, Lukasz" <lukasz.czapnik@intel.com>,
+ Nebojsa Stevanovic <nebojsa.stevanovic@gcore.com>
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Fri, Nov 17, 2023 at 06:52:49AM CET, xuejun.zhang@intel.com wrote:
->Hello Jiri & Jakub,
->
->Thanks for looking into our last patch with devlink API. Really appreciate
->your candid review.
->
->Following your suggestion, we have looked into 3 tc offload options to
->support queue rate limiting
->
->#1 mq + matchall + police
+Hey Przemek,
 
-This looks most suitable. Why it would not work?
-
->
->#2 mq + tbf
->
->#3 htb
->
->all 3 tc offload options require some level of tc extensions to support VF=
- tx
->queue rate limiting (tx_maxrate & tx_minrate)
->
->htb offload requires minimal tc changes or no change with similar change d=
-one
->@ driver (we can share patch for review).
->
->After discussing with Maxim Mikityanskiy( https://lore.kernel.org/netdev/5=
-4a7dd27-a612-46f1-80dd-b43e28f8e4ce@intel.com/
->), looks like sysfs interface with tx_minrate extension could be the option
-
-I don't undestand how any sysfs know is related to any of the tree tc
-solutions above.
+thanks for picking up on this so quickly!
 
 
->we can take.
+On 17.11.23 11:13, Przemek Kitszel wrote:
+>> If you require any more information to narrow down the issue, please 
+>> don't hesitate to contact me.
 >
->Look forward your opinion & guidance. Thanks for your time!
+> Was there anything logged in dmesg or other system logs at that time?
+
+Nothing I would correlate with this issue:
+
+--- cut ---
+[...]
+[Thu Nov 16 09:46:05 2023] brqe861cc6a-7a: port 4(tap12f22cf7-9f) 
+entered blocking state
+[Thu Nov 16 09:46:05 2023] brqe861cc6a-7a: port 4(tap12f22cf7-9f) 
+entered disabled state
+[Thu Nov 16 09:46:05 2023] device tap12f22cf7-9f entered promiscuous mode
+[Thu Nov 16 09:46:05 2023] brqe861cc6a-7a: port 4(tap12f22cf7-9f) 
+entered blocking state
+[Thu Nov 16 09:46:05 2023] brqe861cc6a-7a: port 4(tap12f22cf7-9f) 
+entered forwarding state
+[Thu Nov 16 09:46:41 2023] vxlan-710: e2:d6:9b:e7:3e:1f migrated from 
+10.101.11.101 to 10.101.11.99
+[Thu Nov 16 09:46:49 2023] vxlan-112: fa:16:3e:0a:e3:78 migrated from 
+10.101.11.101 to 10.101.11.97
+[Thu Nov 16 09:46:57 2023] vxlan-449: fa:16:3e:3b:a2:96 migrated from 
+10.101.11.101 to 10.101.11.98
+[Thu Nov 16 09:47:13 2023] vxlan-710: b2:61:c3:32:2b:a3 migrated from 
+10.101.11.101 to 10.101.11.98
+[Thu Nov 16 09:47:14 2023] vxlan-167: ce:48:98:bb:37:b5 migrated from 
+10.101.11.101 to 10.101.11.98
+[Thu Nov 16 09:47:16 2023] vxlan-449: fa:16:3e:0c:e2:dd migrated from 
+10.101.11.101 to 10.101.11.99
+[Thu Nov 16 09:47:21 2023] vxlan-449: fa:16:3e:5e:f8:65 migrated from 
+10.101.11.101 to 10.101.11.99
+[Thu Nov 16 10:09:10 2023] clocksource: timekeeping watchdog on CPU44: 
+hpet wd-wd read-back delay of 245282ns
+[Thu Nov 16 10:09:10 2023] clocksource: wd-tsc-wd read-back delay of 
+237530ns, clock-skew test skipped!
+[Thu Nov 16 11:09:00 2023] brq993a79c9-f7: port 2(tap6b35cfee-6c) 
+entered disabled state
+[Thu Nov 16 11:09:00 2023] device tap6b35cfee-6c left promiscuous mode
+[Thu Nov 16 11:09:00 2023] brq993a79c9-f7: port 2(tap6b35cfee-6c) 
+entered disabled state
+[Thu Nov 16 11:09:00 2023] brq8daed714-05: port 10(tapcd40cc09-db) 
+entered disabled state
+[Thu Nov 16 11:09:00 2023] device tapcd40cc09-db left promiscuous mode
+[Thu Nov 16 11:09:00 2023] brq8daed714-05: port 10(tapcd40cc09-db) 
+entered disabled state
+[Thu Nov 16 11:09:03 2023] device vxlan-393 left promiscuous mode
+[Thu Nov 16 11:09:03 2023] brqbe0ca29c-93: port 1(vxlan-393) entered 
+disabled state
+[Thu Nov 16 11:09:03 2023] device tap39935f01-25 left promiscuous mode
+[Thu Nov 16 11:09:03 2023] brqbe0ca29c-93: port 2(tap39935f01-25) 
+entered disabled state
+[Thu Nov 16 11:09:05 2023] device vxlan-715 left promiscuous mode
+[Thu Nov 16 11:09:05 2023] brq993a79c9-f7: port 1(vxlan-715) entered 
+disabled state
+[Thu Nov 16 11:13:03 2023] clocksource: timekeeping watchdog on CPU71: 
+hpet wd-wd read-back delay of 245352ns
+[Thu Nov 16 11:13:03 2023] clocksource: wd-tsc-wd read-back delay of 
+244653ns, clock-skew test skipped!
+[Thu Nov 16 12:11:25 2023] brqf6366546-d3: port 1(tapa284b204-c0) 
+entered blocking state
+[Thu Nov 16 12:11:25 2023] brqf6366546-d3: port 1(tapa284b204-c0) 
+entered disabled state
+[Thu Nov 16 12:11:25 2023] device tapa284b204-c0 entered promiscuous mode
+[Thu Nov 16 12:11:25 2023] brqf6366546-d3: port 1(tapa284b204-c0) 
+entered blocking state
+[Thu Nov 16 12:11:25 2023] brqf6366546-d3: port 1(tapa284b204-c0) 
+entered forwarding state
+[Thu Nov 16 12:22:21 2023] clocksource: timekeeping watchdog on CPU107: 
+hpet wd-wd read-back delay of 242419ns
+[Thu Nov 16 12:22:21 2023] clocksource: wd-tsc-wd read-back delay of 
+234387ns, clock-skew test skipped!
+[Thu Nov 16 12:50:37 2023] clocksource: timekeeping watchdog on CPU83: 
+hpet wd-wd read-back delay of 245073ns
+[Thu Nov 16 12:50:37 2023] clocksource: wd-tsc-wd read-back delay of 
+243257ns, clock-skew test skipped!
+[Thu Nov 16 13:32:22 2023] clocksource: timekeeping watchdog on CPU13: 
+hpet wd-wd read-back delay of 248006ns
+[Thu Nov 16 13:32:22 2023] clocksource: wd-tsc-wd read-back delay of 
+245352ns, clock-skew test skipped!
+[Thu Nov 16 13:52:43 2023] clocksource: timekeeping watchdog on CPU63: 
+hpet wd-wd read-back delay of 244863ns
+[Thu Nov 16 13:52:43 2023] clocksource: wd-tsc-wd read-back delay of 
+245561ns, clock-skew test skipped!
+[Thu Nov 16 14:28:24 2023] clocksource: timekeeping watchdog on CPU33: 
+hpet wd-wd read-back delay of 245282ns
+[Thu Nov 16 14:28:24 2023] clocksource: wd-tsc-wd read-back delay of 
+245352ns, clock-skew test skipped!
+[Thu Nov 16 15:22:12 2023] clocksource: timekeeping watchdog on CPU1: 
+hpet wd-wd read-back delay of 244863ns
+[Thu Nov 16 15:22:12 2023] clocksource: wd-tsc-wd read-back delay of 
+245631ns, clock-skew test skipped!
+[Thu Nov 16 15:29:20 2023] clocksource: timekeeping watchdog on CPU1: 
+hpet wd-wd read-back delay of 245282ns
+[Thu Nov 16 15:29:20 2023] clocksource: wd-tsc-wd read-back delay of 
+245282ns, clock-skew test skipped!
+[Thu Nov 16 15:43:34 2023] clocksource: timekeeping watchdog on CPU85: 
+hpet wd-wd read-back delay of 245142ns
+[Thu Nov 16 15:43:34 2023] clocksource: wd-tsc-wd read-back delay of 
+242907ns, clock-skew test skipped!
+[Thu Nov 16 16:13:06 2023] clocksource: timekeeping watchdog on CPU85: 
+hpet wd-wd read-back delay of 245212ns
+[Thu Nov 16 16:13:06 2023] clocksource: wd-tsc-wd read-back delay of 
+245561ns, clock-skew test skipped!
+[Thu Nov 16 16:27:22 2023] clocksource: timekeeping watchdog on CPU45: 
+hpet wd-wd read-back delay of 246260ns
+[Thu Nov 16 16:27:22 2023] clocksource: wd-tsc-wd read-back delay of 
+237600ns, clock-skew test skipped!
+[Thu Nov 16 16:41:32 2023] clocksource: timekeeping watchdog on CPU122: 
+hpet wd-wd read-back delay of 245631ns
+[Thu Nov 16 16:41:32 2023] clocksource: wd-tsc-wd read-back delay of 
+245282ns, clock-skew test skipped!
+[Thu Nov 16 16:52:43 2023] clocksource: timekeeping watchdog on CPU95: 
+hpet wd-wd read-back delay of 245282ns
+[Thu Nov 16 16:52:43 2023] clocksource: wd-tsc-wd read-back delay of 
+245282ns, clock-skew test skipped!
+[Thu Nov 16 17:15:04 2023] clocksource: timekeeping watchdog on CPU2: 
+hpet wd-wd read-back delay of 246190ns
+[Thu Nov 16 17:15:04 2023] clocksource: wd-tsc-wd read-back delay of 
+234666ns, clock-skew test skipped!
+[Thu Nov 16 17:57:42 2023] clocksource: timekeeping watchdog on CPU38: 
+hpet wd-wd read-back delay of 244863ns
+[Thu Nov 16 17:57:42 2023] clocksource: wd-tsc-wd read-back delay of 
+245561ns, clock-skew test skipped!
+[Thu Nov 16 18:44:33 2023] clocksource: timekeeping watchdog on CPU67: 
+hpet wd-wd read-back delay of 245073ns
+[Thu Nov 16 18:44:33 2023] clocksource: wd-tsc-wd read-back delay of 
+235155ns, clock-skew test skipped!
+[Thu Nov 16 19:02:50 2023] clocksource: timekeeping watchdog on CPU125: 
+hpet wd-wd read-back delay of 245352ns
+[Thu Nov 16 19:02:50 2023] clocksource: wd-tsc-wd read-back delay of 
+244793ns, clock-skew test skipped!
+[Thu Nov 16 19:19:00 2023] clocksource: timekeeping watchdog on CPU57: 
+hpet wd-wd read-back delay of 245212ns
+[Thu Nov 16 19:19:00 2023] clocksource: wd-tsc-wd read-back delay of 
+245142ns, clock-skew test skipped!
+[Thu Nov 16 19:27:09 2023] clocksource: timekeeping watchdog on CPU51: 
+hpet wd-wd read-back delay of 245561ns
+[Thu Nov 16 19:27:09 2023] clocksource: wd-tsc-wd read-back delay of 
+245352ns, clock-skew test skipped!
+[Thu Nov 16 19:50:34 2023] clocksource: timekeeping watchdog on CPU85: 
+hpet wd-wd read-back delay of 245282ns
+[Thu Nov 16 19:50:34 2023] clocksource: wd-tsc-wd read-back delay of 
+245142ns, clock-skew test skipped!
+[Thu Nov 16 20:11:49 2023] clocksource: timekeeping watchdog on CPU115: 
+hpet wd-wd read-back delay of 245701ns
+[Thu Nov 16 20:11:49 2023] clocksource: wd-tsc-wd read-back delay of 
+245142ns, clock-skew test skipped!
+[Thu Nov 16 20:31:06 2023] clocksource: timekeeping watchdog on CPU38: 
+hpet wd-wd read-back delay of 241860ns
+[Thu Nov 16 20:31:06 2023] clocksource: wd-tsc-wd read-back delay of 
+248984ns, clock-skew test skipped!
+[Thu Nov 16 20:37:08 2023] clocksource: timekeeping watchdog on CPU34: 
+hpet wd-wd read-back delay of 245561ns
+[Thu Nov 16 20:37:08 2023] clocksource: wd-tsc-wd read-back delay of 
+244933ns, clock-skew test skipped!
+[Thu Nov 16 20:45:18 2023] clocksource: timekeeping watchdog on CPU30: 
+hpet wd-wd read-back delay of 245282ns
+[Thu Nov 16 20:45:18 2023] clocksource: wd-tsc-wd read-back delay of 
+245073ns, clock-skew test skipped!
+[Thu Nov 16 21:02:35 2023] clocksource: timekeeping watchdog on CPU96: 
+hpet wd-wd read-back delay of 245352ns
+[Thu Nov 16 21:02:35 2023] clocksource: wd-tsc-wd read-back delay of 
+245212ns, clock-skew test skipped!
+[Thu Nov 16 21:02:51 2023] vxlan-117: fa:16:3e:9f:4b:81 migrated from 
+10.101.11.17 to 10.101.11.101
+[Thu Nov 16 21:10:32 2023] vxlan-117: fa:16:3e:a2:d8:b1 migrated from 
+10.101.11.16 to 10.101.11.101
+[Thu Nov 16 21:11:46 2023] clocksource: timekeeping watchdog on CPU85: 
+hpet wd-wd read-back delay of 242279ns
+[Thu Nov 16 21:11:46 2023] clocksource: wd-tsc-wd read-back delay of 
+248425ns, clock-skew test skipped!
+[Thu Nov 16 21:14:41 2023] vxlan-117: fa:16:3e:03:ec:41 migrated from 
+10.101.11.17 to 10.101.11.98
+[Thu Nov 16 21:19:30 2023] vxlan-117: fa:16:3e:3e:6e:72 migrated from 
+10.101.11.17 to 10.101.11.97
+[Thu Nov 16 21:23:02 2023] vxlan-117: fa:16:3e:a3:7d:e1 migrated from 
+10.101.11.17 to 10.101.11.97
+[Thu Nov 16 21:37:10 2023] clocksource: timekeeping watchdog on CPU103: 
+hpet wd-wd read-back delay of 245422ns
+[Thu Nov 16 21:37:10 2023] clocksource: wd-tsc-wd read-back delay of 
+245212ns, clock-skew test skipped!
+[Thu Nov 16 22:09:45 2023] clocksource: timekeeping watchdog on CPU85: 
+hpet wd-wd read-back delay of 245422ns
+[Thu Nov 16 22:09:45 2023] clocksource: wd-tsc-wd read-back delay of 
+244863ns, clock-skew test skipped!
+[...]
+--- cut ---
+
+
+BTW, this machine runs OpenStack Nova + Neutron, that's the bridge, tap 
+and vxlan messages you see there.
+We observe the issue on multiple machines. But some of them either don't 
+have the issue or very very sendomly, others have this every hour or so.
+All of them are the exact same make and model including all of the 
+peripherals and firmware versions.
+
+
+
+> Thank you for the report, I will take a look.
 >
->Regards,
+> We have already received similar report from Nebojsa Stevanovic, CCed.
 >
->Jun
->
->On 8/28/2023 3:46 PM, Zhang, Xuejun wrote:
->> =
+> Sorry that the issue is not resolved yet. I will review what we have
+> changed in the drivers between 6.1 and 6.2, where bug was introduced. 
 
->> On 8/24/2023 12:04 AM, Jiri Pirko wrote:
->> > Wed, Aug 23, 2023 at 09:13:34PM CEST, xuejun.zhang@intel.com wrote:
->> > > On 8/22/2023 8:34 AM, Jiri Pirko wrote:
->> > > > Tue, Aug 22, 2023 at 05:12:55PM CEST,kuba@kernel.org=A0 wrote:
->> > > > > On Tue, 22 Aug 2023 08:12:28 +0200 Jiri Pirko wrote:
->> > > > > > NACK! Port function is there to configure the VF/SF from the e=
-switch
->> > > > > > side. Yet you use it for the configureation of the
->> > > > > > actual VF, which is
->> > > > > > clear misuse. Please don't
->> > > > > Stating where they are supposed to configure the rate
->> > > > > would be helpful.
->> > > > TC?
->> > > Our implementation is an extension to this commit 42c2eb6b1f43
->> > > ice: Implement
->> > > devlink-rate API).
->> > > =
 
->> > > We are setting the Tx max & share rates of individual queues in a
->> > > VF using
->> > > the devlink rate API.
->> > > =
+Thank again for looking into this.
 
->> > > Here we are using DEVLINK_PORT_FLAVOUR_VIRTUAL as the attribute
->> > > for the port
->> > > to distinguish it from being eswitch.
->> > I understand, that is a wrong object. So again, you should use
->> > "function" subobject of devlink port to configure "the other side of t=
-he
->> > wire", that means the function related to a eswitch port. Here, you are
->> > doing it for the VF directly, which is wrong. If you need some rate
->> > limiting to be configured on an actual VF, use what you use for any
->> > other nic. Offload TC.
->> Thanks for detailed explanation and suggestions. Sorry for late reply as
->> it took a bit longer to understand options.
->> =
 
->> As sysfs has similar rate configuration on per queue basis with
->> tx_maxrate, is it a viable option for our use case (i.e allow user to
->> configure tx rate for each allocated queue in a VF).
->> =
 
->> Pls aslo see If adding tx_minrate to sysfs tx queue entry is feasible on
->> the current framework.
->> _______________________________________________
->> Intel-wired-lan mailing list
->> Intel-wired-lan@osuosl.org
->> https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+Regards
+
+
+Christian
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
