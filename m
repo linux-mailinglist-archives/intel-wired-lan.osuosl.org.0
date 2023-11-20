@@ -1,95 +1,86 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 625D17F1BB3
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 20 Nov 2023 18:55:59 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8D9D67F1E53
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 20 Nov 2023 21:56:41 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id CB77F81AF4;
-	Mon, 20 Nov 2023 17:55:57 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org CB77F81AF4
+	by smtp1.osuosl.org (Postfix) with ESMTP id 74C2E81D5F;
+	Mon, 20 Nov 2023 20:56:38 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 74C2E81D5F
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1700502957;
-	bh=SvvYPZURTcA1uIzPcm0OcC15U0v1/u7m4cns/G0ZTiA=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=dHJ5hS1Kqq9K+LyxwrLWIy240y/YUI1gIXYb2vZXXvF8yG9R84IDw3KAcc4+DaL9j
-	 bm/AST1d69NLgnQZcFES3kjPnbHzgwkWiIydso++ZdBXj9k5jW+UWBSLCsH4pwRdIs
-	 QRuIwdDcTxjDnoLS9zAT78gsOUJNQWgUKwx7wgVwFTXPPWkZS3sJmTvMBnGHGAiwfF
-	 QaUi/Fsumg9HKh8UcXKLtikCI63t5deYoDa+ArVj65qJ/czvlde+25HrSO415kpRY/
-	 k+1ktYWejivASOCR5tltWa0DBjtuplSU1mCU/jV/ePWYJiZ3vOmBKInKlP2ynZbqiL
-	 bk00f44OB0HvQ==
+	s=default; t=1700513798;
+	bh=IFBxkPe2DJAwnRVdPzv+eJ2k3v+MfLLNMg+dXYBss7M=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=jwq53Lgze5+mdWHqKbVASr1lev/wyaBCaNmuQ3LhJkSS8XLoXLdd5j0/W13bLVFtO
+	 Cx+XRxzZw1D4FudJc/K3+RpMM87NrhaAyovWwr+bx9XubwJIGy4Tvy6qpcw+GQYZaO
+	 ax9IuGiFSwm4l4rWnMvyRSXM5hKUDTnUvWdeWTRcvJDlfRGN+JqRPvqQLVztKdV37V
+	 ndjVUOmu8B/gYNIvSpbl8WKYNXfqUIEi5QnvpqAXB0fBhBHKc7nUs0Iz7LhbXh3Iu4
+	 +Dnr3PSz5CSFkGjomNbypRS82ip7/phYXKxhvfvfm2AxoTBOI8k2ZK7Ql17C91VDGx
+	 zrYCN0vdJIv1g==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id dOIk4y83c7du; Mon, 20 Nov 2023 17:55:56 +0000 (UTC)
+	with ESMTP id N7DCKK_YPGiM; Mon, 20 Nov 2023 20:56:37 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 6ECEC8143F;
-	Mon, 20 Nov 2023 17:55:56 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6ECEC8143F
+	by smtp1.osuosl.org (Postfix) with ESMTP id EBDFD81D5C;
+	Mon, 20 Nov 2023 20:56:36 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org EBDFD81D5C
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 408971BF34A
- for <intel-wired-lan@lists.osuosl.org>; Mon, 20 Nov 2023 17:55:51 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 5E44D1BF2A4
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 20 Nov 2023 20:56:31 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 0C89E8141F
- for <intel-wired-lan@lists.osuosl.org>; Mon, 20 Nov 2023 17:55:51 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0C89E8141F
+ by smtp3.osuosl.org (Postfix) with ESMTP id 41ECA60F7E
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 20 Nov 2023 20:56:31 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 41ECA60F7E
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id XN1JKa7NzehJ for <intel-wired-lan@lists.osuosl.org>;
- Mon, 20 Nov 2023 17:55:50 +0000 (UTC)
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.133.124])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 2750F8141D
- for <intel-wired-lan@lists.osuosl.org>; Mon, 20 Nov 2023 17:55:50 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 2750F8141D
-Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
- by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-102-tzwAAGVqNVq0GsfIxjQw7Q-1; Mon,
- 20 Nov 2023 12:55:45 -0500
-X-MC-Unique: tzwAAGVqNVq0GsfIxjQw7Q-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com
- [10.11.54.7])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id A998A380450C;
- Mon, 20 Nov 2023 17:55:44 +0000 (UTC)
-Received: from [10.45.225.144] (unknown [10.45.225.144])
- by smtp.corp.redhat.com (Postfix) with ESMTP id D7A221C060AE;
- Mon, 20 Nov 2023 17:55:42 +0000 (UTC)
-Message-ID: <26b17c32-c9ad-4b4c-8193-3a9757e587db@redhat.com>
-Date: Mon, 20 Nov 2023 18:55:42 +0100
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id GEtpUrgRJ-XM for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 20 Nov 2023 20:56:29 +0000 (UTC)
+Received: from mgamail.intel.com (mgamail.intel.com [192.55.52.115])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 4148860F71
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 20 Nov 2023 20:56:29 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 4148860F71
+X-IronPort-AV: E=McAfee;i="6600,9927,10900"; a="391484216"
+X-IronPort-AV: E=Sophos;i="6.04,214,1695711600"; d="scan'208";a="391484216"
+Received: from fmsmga003.fm.intel.com ([10.253.24.29])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 20 Nov 2023 12:56:27 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10900"; a="857106100"
+X-IronPort-AV: E=Sophos;i="6.04,214,1695711600"; d="scan'208";a="857106100"
+Received: from cchircul-mobl2.ger.corp.intel.com (HELO azaki-desk1.intel.com)
+ ([10.249.46.122])
+ by fmsmga003-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 20 Nov 2023 12:56:22 -0800
+From: Ahmed Zaki <ahmed.zaki@intel.com>
+To: netdev@vger.kernel.org
+Date: Mon, 20 Nov 2023 13:56:07 -0700
+Message-Id: <20231120205614.46350-1-ahmed.zaki@intel.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Content-Language: en-US
-To: Simon Horman <horms@kernel.org>
-References: <20231116152114.88515-1-ivecera@redhat.com>
- <20231116152114.88515-4-ivecera@redhat.com>
- <20231120114224.GB223713@kernel.org>
-From: Ivan Vecera <ivecera@redhat.com>
-In-Reply-To: <20231120114224.GB223713@kernel.org>
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.7
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=redhat.com; 
- s=mimecast20190719; t=1700502948;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=6G9H3tkseCt3efcb3Be3wJxxKfn5uz65Box8O4djf1o=;
- b=O2XHaLivP/evvKBqdNgex33f1gXhjCuZjS073DcnpeZ9NrpL01Q3W8b7x/FbV6vlbslPQl
- 3xwX4bgpo2bztv/XYRiE8Nzt9xoVmtQ7hZc8KtY+A3fh5DYEqOcq9wj8gurKaJSQwEWJaa
- dYqS9TZ81Pp+EJ/ku3bQfuWx9z7ehmQ=
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
- header.a=rsa-sha256 header.s=mimecast20190719 header.b=O2XHaLiv
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v3 3/5] i40e: Add helpers to
- find VSI and VEB by SEID and use them
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1700513789; x=1732049789;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=wGwsgnA/t7SrzMu/qCHumWhoQ9pMGfMRuWcha0iwNfg=;
+ b=WMuNUeqgUb38JDyEykGdESnaxUyhKSpQPMgyv26AarIdSjnr3glTQ+oC
+ oyu0MceDrDmoOUuPhnXY/roie7JPgeL1FHWaW/awMaktKVmQnb4t9mcpK
+ EfM/7lxNe9Rmbwda5vU6NHAUzULgBBW15N4zDedCPyUZYhhJglVIDvsq1
+ GPSNwL0S4seXpcvwTzAlK0ikLSSYZYshGchkj+dJEE+ssgnxeetrBfpqs
+ jmpePsS2vxupBD7O0oSL1hvASwb1Mij/lDatGG6Tfi3BGd0eLmrJL81Bh
+ 5lPbXe9FXartIIlx4MBknA473PqNk3XVnA3nnzT3b1YRFOr8wt7znf6T7
+ g==;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=WMuNUeqg
+Subject: [Intel-wired-lan] [PATCH net-next v6 0/7] Support symmetric-xor RSS
+ hash
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -102,161 +93,153 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Wojciech Drewek <wojciech.drewek@intel.com>, netdev@vger.kernel.org,
- Jesse Brandeburg <jesse.brandeburg@intel.com>, linux-kernel@vger.kernel.org,
- Eric Dumazet <edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
- Jakub Kicinski <kuba@kernel.org>, Jacob Keller <jacob.e.keller@intel.com>,
- intel-wired-lan@lists.osuosl.org, Paolo Abeni <pabeni@redhat.com>,
- "David S. Miller" <davem@davemloft.net>
+Cc: mkubecek@suse.cz, andrew@lunn.ch, willemdebruijn.kernel@gmail.com,
+ corbet@lwn.net, vladimir.oltean@nxp.com, gal@nvidia.com,
+ linux-doc@vger.kernel.org, jesse.brandeburg@intel.com,
+ Ahmed Zaki <ahmed.zaki@intel.com>, edumazet@google.com,
+ anthony.l.nguyen@intel.com, horms@kernel.org, kuba@kernel.org,
+ intel-wired-lan@lists.osuosl.org, pabeni@redhat.com, davem@davemloft.net
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+Patch 1 modifies the set_rxh ethtool API to take a pointer to struct
+ethtool_rxfh instead of individual params. This will allow future 
+changes to the struct without changing the API.
 
-On 20. 11. 23 12:42, Simon Horman wrote:
-> On Thu, Nov 16, 2023 at 04:21:12PM +0100, Ivan Vecera wrote:
->> Add two helpers i40e_(veb|vsi)_get_by_seid() to find corresponding
->> VEB or VSI by their SEID value and use these helpers to replace
->> existing open-coded loops.
->>
->> Reviewed-by: Wojciech Drewek <wojciech.drewek@intel.com>
->> Signed-off-by: Ivan Vecera <ivecera@redhat.com>
-> 
-> Hi Ivan,
-> 
-> some minor feedback from my side.
-> 
-> ...
-> 
->> diff --git a/drivers/net/ethernet/intel/i40e/i40e.h b/drivers/net/ethernet/intel/i40e/i40e.h
->> index 1e9266de270b..ca8997d29c02 100644
->> --- a/drivers/net/ethernet/intel/i40e/i40e.h
->> +++ b/drivers/net/ethernet/intel/i40e/i40e.h
->> @@ -1360,4 +1360,38 @@ static inline struct i40e_pf *i40e_hw_to_pf(struct i40e_hw *hw)
->>   
->>   struct device *i40e_hw_to_dev(struct i40e_hw *hw);
->>   
->> +/**
->> + * i40e_pf_get_vsi_by_seid - find VSI by SEID
->> + * @pf: pointer to a PF
-> 
-> nit: @seid is missing here
-> 
->> + **/
->> +static inline struct i40e_vsi *
->> +i40e_pf_get_vsi_by_seid(struct i40e_pf *pf, u16 seid)
->> +{
->> +	struct i40e_vsi *vsi;
->> +	int i;
->> +
->> +	i40e_pf_for_each_vsi(pf, i, vsi)
->> +		if (vsi->seid == seid)
->> +			return vsi;
->> +
->> +	return NULL;
->> +}
->> +
->> +/**
->> + * i40e_pf_get_veb_by_seid - find VEB by SEID
->> + * @pf: pointer to a PF
-> 
-> Ditto
-> 
-> ...
-> 
->> diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
-> 
-> ...
-> 
->> @@ -14848,23 +14831,16 @@ struct i40e_veb *i40e_veb_setup(struct i40e_pf *pf, u16 flags,
->>   	}
->>   
->>   	/* make sure there is such a vsi and uplink */
->> -	i40e_pf_for_each_vsi(pf, vsi_idx, vsi)
->> -		if (vsi->seid == vsi_seid)
->> -			break;
->> -
->> -	if (vsi_idx == pf->num_alloc_vsi && vsi_seid != 0) {
->> -		dev_info(&pf->pdev->dev, "vsi seid %d not found\n",
->> -			 vsi_seid);
->> -		return NULL;
->> +	if (vsi_seid) {
->> +		vsi = i40e_pf_get_vsi_by_seid(pf, vsi_seid);
->> +		if (!vsi) {
->> +			dev_err(&pf->pdev->dev, "vsi seid %d not found\n",
->> +				vsi_seid);
->> +			return NULL;
->> +		}
->>   	}
->> -
->>   	if (uplink_seid && uplink_seid != pf->mac_seid) {
->> -		i40e_pf_for_each_veb(pf, veb_idx, veb) {
->> -			if (veb->seid == uplink_seid) {
->> -				uplink_veb = veb;
->> -				break;
->> -			}
->> -		}
->> +		uplink_veb = i40e_pf_get_veb_by_seid(pf, uplink_seid);
->>   		if (!uplink_veb) {
->>   			dev_info(&pf->pdev->dev,
->>   				 "uplink seid %d not found\n", uplink_seid);
-> 
-> The next part of this function looks like this:
-> 
-> 		if (!uplink_veb) {
-> 			dev_info(&pf->pdev->dev,
-> 				 "uplink seid %d not found\n", uplink_seid);
-> 			return NULL;
-> 		}
-> 	}
-> 	/* get veb sw struct */
-> 	veb_idx = i40e_veb_mem_alloc(pf);
-> 	if (veb_idx < 0)
-> 		goto err_alloc;
-> 	veb = pf->veb[veb_idx];
-> 	veb->flags = flags;
-> 	veb->uplink_seid = uplink_seid;
-> 	veb->veb_idx = (uplink_veb ? uplink_veb->idx : I40E_NO_VEB);
-> 	veb->enabled_tc = (enabled_tc ? enabled_tc : 0x1);
-> 
-> 	/* create the VEB in the switch */
-> 	ret = i40e_add_veb(veb, vsi);
-> 
-> Smatch complains that vsi may be used uninitialised here.
-> Which does seem possible to me if vsi_seid is 0.
+Patch 2 adds the support at the Kernel level, allowing the user to set a
+symmetric-xor RSS hash for a netdevice via:
 
-Yes, the support for floating VEBs is and WAS broken prior this patch 
-and it is fixed by the following patch.
+    # ethtool -X eth0 hfunc toeplitz symmetric-xor
 
-Prior this patch... Let's vsi_seid == 0:
+and clears the flag via:
 
-	/* make sure there is such a vsi and uplink */
-	i40e_pf_for_each_vsi(pf, vsi_idx, vsi)
-		if (vsi->seid == vsi_seid)
-			break;
--> here vsi_idx == pf->num_alloc_vsi because there cannot be VSI with 
-SEID == 0... and VSI points after the pf->vsi[] array.
+    # ethtool -X eth0 hfunc toeplitz
 
-	if (vsi_idx == pf->num_alloc_vsi && vsi_seid != 0) {
-		dev_info(&pf->pdev->dev, "vsi seid %d not found\n",
-			 vsi_seid);
-		return NULL;
-	}
+The "symmetric-xor" is set in a new "data" field in struct ethtool_rxfh.
+Support for the new "symmetric-xor" flag will be later sent to the
+"ethtool" user-space tool.
 
-This condition is not met, although vsi_idx == pf->num_alloc_vsi but 
-vsi_seid == 0 so the rest of code ended by:
+Patch 3 fixes a long standing bug with the ice hash function register
+values. The bug has been benign for now since only (asymmetric) Toeplitz
+hash (Zero) has been used.
 
-	ret = i40e_add_veb(veb, vsi);
+Patches 4 and 5 lay some groundwork refactoring. While the first is
+mainly cosmetic, the second is needed since there is no more room in the
+previous 64-bit RSS profile ID for the symmetric attribute introduced in 
+the next patch.
 
-and vsi pointer points to invalid area (item after the last one from 
-pf->vsi).
+Finally, patches 6 and 7 add the symmetric-xor support for the ice 
+(E800 PFs) and the iAVF drivers.
 
-As I mentioned the broken floating VEB functionality (where vsi_seid == 
-0 and uplink_seid == 0) is fixed by the following patch.
+---
+v6: switch user interface to "ethtool -X" (ethtool_rxfh) instead of
+    "ethtool -N". Patch (1) is added to allow new params in the get/set_rxh
+    ethtool API. Doc is updated in "Documentation/networking/scaling.rst"
+    to specify how the "symmetric-xor" manipulates the input fields.
 
-Thanks,
-Ivan
+v5: move sanity checks from ethtool/ioctl.c to ice's and iavf's rxfnc
+    drivers entries (patches 5 and 6).
+    https://lore.kernel.org/netdev/20231018170635.65409-2-ahmed.zaki@intel.com/T/
+
+v4: add a comment to "#define RXH_SYMMETRIC_XOR" (in uapi/linux/ethtool.h)
+    https://lore.kernel.org/netdev/20231016154937.41224-1-ahmed.zaki@intel.com/T/
+
+v3: rename "symmetric" to "symmetric-xor" and drop "Fixes" tag in patch 2.
+v2: fixed a "Reviewed by" to "Reviewed-by", also need to cc maintainers.
+
+Ahmed Zaki (5):
+  net: ethtool: pass ethtool_rxfh to get/set_rxfh ethtool ops
+  net: ethtool: add support for symmetric-xor RSS hash
+  ice: fix ICE_AQ_VSI_Q_OPT_RSS_* register values
+  ice: refactor the FD and RSS flow ID generation
+  iavf: enable symmetric-xor RSS for Toeplitz hash function
+
+Jeff Guo (1):
+  ice: enable symmetric-xor RSS for Toeplitz hash function
+
+Qi Zhang (1):
+  ice: refactor RSS configuration
+
+ Documentation/networking/scaling.rst          |  15 +
+ drivers/net/ethernet/amazon/ena/ena_ethtool.c |  13 +-
+ drivers/net/ethernet/amd/xgbe/xgbe-ethtool.c  |  15 +-
+ .../ethernet/aquantia/atlantic/aq_ethtool.c   |  17 +-
+ .../ethernet/broadcom/bnx2x/bnx2x_ethtool.c   |  15 +-
+ .../net/ethernet/broadcom/bnxt/bnxt_ethtool.c |  14 +-
+ drivers/net/ethernet/broadcom/tg3.c           |  14 +-
+ .../ethernet/cavium/thunder/nicvf_ethtool.c   |  15 +-
+ .../ethernet/chelsio/cxgb4/cxgb4_ethtool.c    |  14 +-
+ .../net/ethernet/cisco/enic/enic_ethtool.c    |  15 +-
+ .../net/ethernet/emulex/benet/be_ethtool.c    |  15 +-
+ .../ethernet/freescale/enetc/enetc_ethtool.c  |  12 +-
+ .../ethernet/fungible/funeth/funeth_ethtool.c |  18 +-
+ .../net/ethernet/hisilicon/hns/hns_ethtool.c  |  15 +-
+ .../ethernet/hisilicon/hns3/hns3_ethtool.c    |  19 +-
+ .../net/ethernet/huawei/hinic/hinic_ethtool.c |  20 +-
+ .../net/ethernet/intel/fm10k/fm10k_ethtool.c  |  15 +-
+ .../net/ethernet/intel/i40e/i40e_ethtool.c    |  19 +-
+ drivers/net/ethernet/intel/iavf/iavf.h        |   5 +-
+ .../net/ethernet/intel/iavf/iavf_adv_rss.c    |   8 +-
+ .../net/ethernet/intel/iavf/iavf_adv_rss.h    |   3 +-
+ .../net/ethernet/intel/iavf/iavf_ethtool.c    |  60 ++-
+ drivers/net/ethernet/intel/iavf/iavf_main.c   |   4 +
+ .../net/ethernet/intel/iavf/iavf_virtchnl.c   |  41 ++
+ drivers/net/ethernet/intel/ice/ice.h          |   2 +
+ .../net/ethernet/intel/ice/ice_adminq_cmd.h   |   8 +-
+ drivers/net/ethernet/intel/ice/ice_common.h   |   1 +
+ drivers/net/ethernet/intel/ice/ice_ethtool.c  |  74 ++-
+ .../net/ethernet/intel/ice/ice_ethtool_fdir.c |  35 +-
+ .../net/ethernet/intel/ice/ice_flex_pipe.c    |  44 +-
+ .../net/ethernet/intel/ice/ice_flex_pipe.h    |   4 +-
+ .../net/ethernet/intel/ice/ice_flex_type.h    |   7 +
+ drivers/net/ethernet/intel/ice/ice_flow.c     | 482 +++++++++++++-----
+ drivers/net/ethernet/intel/ice/ice_flow.h     |  60 ++-
+ .../net/ethernet/intel/ice/ice_hw_autogen.h   |   4 +
+ drivers/net/ethernet/intel/ice/ice_lib.c      | 116 ++---
+ drivers/net/ethernet/intel/ice/ice_main.c     |  58 ++-
+ drivers/net/ethernet/intel/ice/ice_type.h     |   1 +
+ drivers/net/ethernet/intel/ice/ice_virtchnl.c | 105 +++-
+ drivers/net/ethernet/intel/ice/ice_virtchnl.h |   1 +
+ .../intel/ice/ice_virtchnl_allowlist.c        |   1 +
+ .../ethernet/intel/ice/ice_virtchnl_fdir.c    |  35 +-
+ .../net/ethernet/intel/idpf/idpf_ethtool.c    |  19 +-
+ drivers/net/ethernet/intel/igb/igb_ethtool.c  |  15 +-
+ drivers/net/ethernet/intel/igc/igc_ethtool.c  |  16 +-
+ .../net/ethernet/intel/ixgbe/ixgbe_ethtool.c  |  15 +-
+ drivers/net/ethernet/intel/ixgbevf/ethtool.c  |   9 +-
+ drivers/net/ethernet/marvell/mvneta.c         |  17 +-
+ .../net/ethernet/marvell/mvpp2/mvpp2_main.c   |  17 +-
+ .../marvell/octeontx2/nic/otx2_ethtool.c      |  14 +-
+ .../net/ethernet/mellanox/mlx4/en_ethtool.c   |  20 +-
+ drivers/net/ethernet/mellanox/mlx5/core/en.h  |   7 +-
+ .../ethernet/mellanox/mlx5/core/en_ethtool.c  |  12 +-
+ .../net/ethernet/microchip/lan743x_ethtool.c  |  14 +-
+ .../ethernet/microsoft/mana/mana_ethtool.c    |  15 +-
+ .../ethernet/netronome/nfp/nfp_net_ethtool.c  |  21 +-
+ .../ethernet/pensando/ionic/ionic_ethtool.c   |  15 +-
+ .../net/ethernet/qlogic/qede/qede_ethtool.c   |  14 +-
+ drivers/net/ethernet/sfc/ethtool_common.c     |  15 +-
+ drivers/net/ethernet/sfc/ethtool_common.h     |   8 +-
+ drivers/net/ethernet/sfc/falcon/ethtool.c     |  17 +-
+ .../net/ethernet/sfc/siena/ethtool_common.c   |  17 +-
+ .../net/ethernet/sfc/siena/ethtool_common.h   |   7 +-
+ .../ethernet/stmicro/stmmac/stmmac_ethtool.c  |  15 +-
+ drivers/net/hyperv/netvsc_drv.c               |  15 +-
+ drivers/net/virtio_net.c                      |  13 +-
+ drivers/net/vmxnet3/vmxnet3_ethtool.c         |  14 +-
+ include/linux/avf/virtchnl.h                  |  35 +-
+ include/linux/ethtool.h                       |   8 +-
+ include/uapi/linux/ethtool.h                  |  12 +-
+ include/uapi/linux/ethtool_netlink.h          |   1 +
+ net/ethtool/common.c                          |   2 +-
+ net/ethtool/ioctl.c                           |  28 +-
+ net/ethtool/rss.c                             |  14 +-
+ 74 files changed, 1263 insertions(+), 637 deletions(-)
+
+-- 
+2.34.1
 
 _______________________________________________
 Intel-wired-lan mailing list
