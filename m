@@ -1,82 +1,85 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1E1D27F36E5
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 21 Nov 2023 20:45:23 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 129D37F3814
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 21 Nov 2023 22:20:18 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 74309414FE;
-	Tue, 21 Nov 2023 19:45:21 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 74309414FE
+	by smtp1.osuosl.org (Postfix) with ESMTP id 984338133C;
+	Tue, 21 Nov 2023 21:20:16 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 984338133C
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1700595921;
-	bh=6PghvBKWUtSNvXxBqz0IPTnhQK0KM2uGjZ18Ao623nk=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=TUVfu0eO7zy+aYUPCTDLQJl3owE8X7JKS8Wq3EjTsl6PTKI1cQjPfLdnBS36F1VGN
-	 97Y/y2d8KpyJJVSOwoNIUVbaQk1+bDVXZ/mB6etlQZdVZsRhv/oFJgd+xm0PfIazII
-	 0kdxop9jfmdWZcG7lNWiN3jmBjtVbSbgTpAW/MLUQTvpgQREOXzuN1uLdrueVeH4FD
-	 yTvqIGaajb5M52il12zzL1gxifmPaa49ofuu2Bkm/pBeIe4h24DH2BvJbx9+NJmcyS
-	 zVyhmK99rsbH9qY/ApW5Z3YH+6JFmuuw2KozUfGQOE8UJCejq6mleMUY9JRo7j+LZb
-	 gnwWfJ62o8W0Q==
+	s=default; t=1700601616;
+	bh=kEkGTwwtsUNNw4s7Klm5BlUFIwbWBK3VwAbqD+2ET3s=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=Zugsizw6WSz5wTOKql0EGSs1F3iJtJvJ80+jJaKVwgdmlaHDBybSd66MgJ8qRyfSN
+	 3Wt9aJvQptPSQg9M3aSBWtYTjUA4X+py2A2MZv3iH0OVjBAlf7YFRYnT/zRdWkx3Ty
+	 qVUmlL8cqjOuf2dzspCjiRNDkwRHGqUhBqStsBn+AhQtt0dIxW+aREzHYJx6o/ppsI
+	 VsqPqhsc6LkaErqlffVgfFAltCxpd+WL5Pi5GGfWMLOD4xzHreK5uOsIYhB16K50Me
+	 UE9MpjzSm/qLxdujHwQpjtRDyP1bx98qAlyCTuNVCE9JcoOxrJJi4dB7tE8upYaQIa
+	 CbN5RgRQrnbyQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Pw6j8iYKthnu; Tue, 21 Nov 2023 19:45:20 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id kFz9haqlp-Gv; Tue, 21 Nov 2023 21:20:15 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id C0A17414DB;
-	Tue, 21 Nov 2023 19:45:19 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C0A17414DB
+	by smtp1.osuosl.org (Postfix) with ESMTP id 3780880BEE;
+	Tue, 21 Nov 2023 21:20:15 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3780880BEE
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 03E791BF30C
- for <intel-wired-lan@lists.osuosl.org>; Tue, 21 Nov 2023 19:45:15 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id BB6321BF3F6
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 21 Nov 2023 21:19:46 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id CDD07414DB
- for <intel-wired-lan@lists.osuosl.org>; Tue, 21 Nov 2023 19:45:14 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org CDD07414DB
+ by smtp4.osuosl.org (Postfix) with ESMTP id 61D0E40E46
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 21 Nov 2023 21:19:43 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 61D0E40E46
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id FDw1RZn9KqpH for <intel-wired-lan@lists.osuosl.org>;
- Tue, 21 Nov 2023 19:45:13 +0000 (UTC)
-Received: from ams.source.kernel.org (ams.source.kernel.org [145.40.68.75])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 36E45414C7
- for <intel-wired-lan@lists.osuosl.org>; Tue, 21 Nov 2023 19:45:12 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 36E45414C7
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by ams.source.kernel.org (Postfix) with ESMTP id 24189B824BD;
- Tue, 21 Nov 2023 19:45:10 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E0A6DC433C8;
- Tue, 21 Nov 2023 19:45:06 +0000 (UTC)
-Date: Tue, 21 Nov 2023 19:45:04 +0000
-From: Simon Horman <horms@kernel.org>
-To: Ivan Vecera <ivecera@redhat.com>
-Message-ID: <20231121194504.GB16629@kernel.org>
-References: <20231116152114.88515-1-ivecera@redhat.com>
- <20231116152114.88515-4-ivecera@redhat.com>
- <20231120114224.GB223713@kernel.org>
- <26b17c32-c9ad-4b4c-8193-3a9757e587db@redhat.com>
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 9x0J5lZsqjXy for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 21 Nov 2023 21:19:41 +0000 (UTC)
+Received: from mgamail.intel.com (mgamail.intel.com [192.55.52.88])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id B995F4087F
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 21 Nov 2023 21:19:40 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B995F4087F
+X-IronPort-AV: E=McAfee;i="6600,9927,10901"; a="423022063"
+X-IronPort-AV: E=Sophos;i="6.04,216,1695711600"; d="scan'208";a="423022063"
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 21 Nov 2023 13:19:39 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10901"; a="716630528"
+X-IronPort-AV: E=Sophos;i="6.04,216,1695711600"; d="scan'208";a="716630528"
+Received: from jbrandeb-spr1.jf.intel.com ([10.166.28.233])
+ by orsmga003-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 21 Nov 2023 13:19:37 -0800
+From: Jesse Brandeburg <jesse.brandeburg@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Tue, 21 Nov 2023 13:19:08 -0800
+Message-Id: <20231121211921.19834-1-jesse.brandeburg@intel.com>
+X-Mailer: git-send-email 2.39.3
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <26b17c32-c9ad-4b4c-8193-3a9757e587db@redhat.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1700595909;
- bh=0tE7FUri9NR3r1ltIJTlrq+5XAyUqVTBZs2c+Lm0tcU=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=g7klvz5c3eK1Ct/KL2pKu0Aob8mnF4NuPOLshrD7w88j77Zqmdr+BfHVcIHDf9BAM
- BhAdht3THEq54q+9RDSyDLZeuZuYr1I8Ikc3lewRN25Z2UbmxCnUhBIHBZy12liD/c
- IFCfQNtDl8HEpPjinlFOJaNBrbm3VTb6qtdyns/aqsEwAiHa6Jj1ZD/W6dHgfWvsDQ
- Vbs7STtmjAu6C2DBcPgzPK3tUZQ+vKKTMxR167q+Of7kxAYS5KUibJX6z+4ELaYCpC
- Cr2RPffe0AU6TbI0zLABZtbWvqgtZWCNeax0OEBcLYiEIrdZT7iuaY0Cbo56A8kBiA
- TWhRmuSmuY3RA==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=g7klvz5c
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v3 3/5] i40e: Add helpers to
- find VSI and VEB by SEID and use them
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1700601580; x=1732137580;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=7Qft3Kif2jDd7FcxoyFTaYULEq5BlIfAq0P2rkH/uL0=;
+ b=me0iUh3dXMuRK+X8Nba9wgEe96ty4iU1UZ13Mb4Euv4EeZAFduuSlhuZ
+ t7hwspCbmxzJJjMOeIbTfjT9CJoRrGkgaQw4eoC9AU/9EGVtMAmoY/98G
+ +1UF8Vt4ZxcnnZcCIYb1ZRi9W3yxHurIY2reNOsWWWtudsZiAYP4cl0f2
+ p4Q+KfJTdwMEyaaH8cO93UXkCAUO8/pX/8DO7qcWA2OW1DTBgLhfVGqAT
+ 3d6wmyhEFPzjVVbfVtMWDcJ7PCR2xcSxtuTKisR2q1+Aq8jH4vPYnW+GU
+ fc5ASzXJSOgXuEBNXe5iQCsH4N2lWwBzjs7fNuaN2ITgFcNxGrqX5xLKx
+ A==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=me0iUh3d
+Subject: [Intel-wired-lan] [PATCH iwl-next v1 00/13] intel: use FIELD_PREP
+ and FIELD_GET
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,162 +92,127 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Wojciech Drewek <wojciech.drewek@intel.com>, netdev@vger.kernel.org,
- Jesse Brandeburg <jesse.brandeburg@intel.com>, linux-kernel@vger.kernel.org,
- Eric Dumazet <edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
- Jakub Kicinski <kuba@kernel.org>, Jacob Keller <jacob.e.keller@intel.com>,
- intel-wired-lan@lists.osuosl.org, Paolo Abeni <pabeni@redhat.com>,
- "David S. Miller" <davem@davemloft.net>
+Cc: netdev@vger.kernel.org, Marcin Szycik <marcin.szycik@linux.intel.com>,
+ Jesse Brandeburg <jesse.brandeburg@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, Nov 20, 2023 at 06:55:42PM +0100, Ivan Vecera wrote:
-> 
-> On 20. 11. 23 12:42, Simon Horman wrote:
-> > On Thu, Nov 16, 2023 at 04:21:12PM +0100, Ivan Vecera wrote:
-> > > Add two helpers i40e_(veb|vsi)_get_by_seid() to find corresponding
-> > > VEB or VSI by their SEID value and use these helpers to replace
-> > > existing open-coded loops.
-> > > 
-> > > Reviewed-by: Wojciech Drewek <wojciech.drewek@intel.com>
-> > > Signed-off-by: Ivan Vecera <ivecera@redhat.com>
-> > 
-> > Hi Ivan,
-> > 
-> > some minor feedback from my side.
-> > 
-> > ...
-> > 
-> > > diff --git a/drivers/net/ethernet/intel/i40e/i40e.h b/drivers/net/ethernet/intel/i40e/i40e.h
-> > > index 1e9266de270b..ca8997d29c02 100644
-> > > --- a/drivers/net/ethernet/intel/i40e/i40e.h
-> > > +++ b/drivers/net/ethernet/intel/i40e/i40e.h
-> > > @@ -1360,4 +1360,38 @@ static inline struct i40e_pf *i40e_hw_to_pf(struct i40e_hw *hw)
-> > >   struct device *i40e_hw_to_dev(struct i40e_hw *hw);
-> > > +/**
-> > > + * i40e_pf_get_vsi_by_seid - find VSI by SEID
-> > > + * @pf: pointer to a PF
-> > 
-> > nit: @seid is missing here
-> > 
-> > > + **/
-> > > +static inline struct i40e_vsi *
-> > > +i40e_pf_get_vsi_by_seid(struct i40e_pf *pf, u16 seid)
-> > > +{
-> > > +	struct i40e_vsi *vsi;
-> > > +	int i;
-> > > +
-> > > +	i40e_pf_for_each_vsi(pf, i, vsi)
-> > > +		if (vsi->seid == seid)
-> > > +			return vsi;
-> > > +
-> > > +	return NULL;
-> > > +}
-> > > +
-> > > +/**
-> > > + * i40e_pf_get_veb_by_seid - find VEB by SEID
-> > > + * @pf: pointer to a PF
-> > 
-> > Ditto
-> > 
-> > ...
-> > 
-> > > diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
-> > 
-> > ...
-> > 
-> > > @@ -14848,23 +14831,16 @@ struct i40e_veb *i40e_veb_setup(struct i40e_pf *pf, u16 flags,
-> > >   	}
-> > >   	/* make sure there is such a vsi and uplink */
-> > > -	i40e_pf_for_each_vsi(pf, vsi_idx, vsi)
-> > > -		if (vsi->seid == vsi_seid)
-> > > -			break;
-> > > -
-> > > -	if (vsi_idx == pf->num_alloc_vsi && vsi_seid != 0) {
-> > > -		dev_info(&pf->pdev->dev, "vsi seid %d not found\n",
-> > > -			 vsi_seid);
-> > > -		return NULL;
-> > > +	if (vsi_seid) {
-> > > +		vsi = i40e_pf_get_vsi_by_seid(pf, vsi_seid);
-> > > +		if (!vsi) {
-> > > +			dev_err(&pf->pdev->dev, "vsi seid %d not found\n",
-> > > +				vsi_seid);
-> > > +			return NULL;
-> > > +		}
-> > >   	}
-> > > -
-> > >   	if (uplink_seid && uplink_seid != pf->mac_seid) {
-> > > -		i40e_pf_for_each_veb(pf, veb_idx, veb) {
-> > > -			if (veb->seid == uplink_seid) {
-> > > -				uplink_veb = veb;
-> > > -				break;
-> > > -			}
-> > > -		}
-> > > +		uplink_veb = i40e_pf_get_veb_by_seid(pf, uplink_seid);
-> > >   		if (!uplink_veb) {
-> > >   			dev_info(&pf->pdev->dev,
-> > >   				 "uplink seid %d not found\n", uplink_seid);
-> > 
-> > The next part of this function looks like this:
-> > 
-> > 		if (!uplink_veb) {
-> > 			dev_info(&pf->pdev->dev,
-> > 				 "uplink seid %d not found\n", uplink_seid);
-> > 			return NULL;
-> > 		}
-> > 	}
-> > 	/* get veb sw struct */
-> > 	veb_idx = i40e_veb_mem_alloc(pf);
-> > 	if (veb_idx < 0)
-> > 		goto err_alloc;
-> > 	veb = pf->veb[veb_idx];
-> > 	veb->flags = flags;
-> > 	veb->uplink_seid = uplink_seid;
-> > 	veb->veb_idx = (uplink_veb ? uplink_veb->idx : I40E_NO_VEB);
-> > 	veb->enabled_tc = (enabled_tc ? enabled_tc : 0x1);
-> > 
-> > 	/* create the VEB in the switch */
-> > 	ret = i40e_add_veb(veb, vsi);
-> > 
-> > Smatch complains that vsi may be used uninitialised here.
-> > Which does seem possible to me if vsi_seid is 0.
-> 
-> Yes, the support for floating VEBs is and WAS broken prior this patch and it
-> is fixed by the following patch.
-> 
-> Prior this patch... Let's vsi_seid == 0:
-> 
-> 	/* make sure there is such a vsi and uplink */
-> 	i40e_pf_for_each_vsi(pf, vsi_idx, vsi)
-> 		if (vsi->seid == vsi_seid)
-> 			break;
-> -> here vsi_idx == pf->num_alloc_vsi because there cannot be VSI with SEID
-> == 0... and VSI points after the pf->vsi[] array.
-> 
-> 	if (vsi_idx == pf->num_alloc_vsi && vsi_seid != 0) {
-> 		dev_info(&pf->pdev->dev, "vsi seid %d not found\n",
-> 			 vsi_seid);
-> 		return NULL;
-> 	}
-> 
-> This condition is not met, although vsi_idx == pf->num_alloc_vsi but
-> vsi_seid == 0 so the rest of code ended by:
-> 
-> 	ret = i40e_add_veb(veb, vsi);
-> 
-> and vsi pointer points to invalid area (item after the last one from
-> pf->vsi).
-> 
-> As I mentioned the broken floating VEB functionality (where vsi_seid == 0
-> and uplink_seid == 0) is fixed by the following patch.
+After repeatedly getting review comments on new patches, and sporadic
+patches to fix parts of our drivers, we should just convert the Intel code
+to use FIELD_PREP() and FIELD_GET().  It's then "common" in the code and
+hopefully future change-sets will see the context and do-the-right-thing.
 
-Thanks Ivan,
+This conversion was done with a coccinelle script which is mentioned in the
+commit messages. Generally there were only a couple conversions that were
+"undone" after the automatic changes because they tried to convert a
+non-contiguous mask.
 
-I see that I flagged a false positive, sorry about that.
-I understand things quite a bit better after reading your explanation
-above.
+Patch 1 is required at the beginning of this series to fix a "forever"
+issue in the e1000e driver that fails the compilation test after conversion
+because the shift / mask was out of range.
+
+The second patch just adds all the new #includes in one go.
+
+The patch titled: "ice: fix pre-shifted bit usage" is needed to allow the
+use of the FIELD_* macros and fix up the unexpected "shifts included"
+defines found while creating this series.
+
+The rest are the conversion to use FIELD_PREP()/FIELD_GET().
+
+Reviewed-by: Marcin Szycik <marcin.szycik@linux.intel.com>
+Signed-off-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
+
+Jesse Brandeburg (13):
+  e1000e: make lost bits explicit
+  intel: add bit macro includes where needed
+  intel: legacy: field prep conversion
+  i40e: field prep conversion
+  iavf: field prep conversion
+  ice: field prep conversion
+  ice: fix pre-shifted bit usage
+  igc: field prep conversion
+  intel: legacy: field get conversion
+  igc: field get conversion
+  i40e: field get conversion
+  iavf: field get conversion
+  ice: field get conversion
+
+ drivers/net/ethernet/intel/e1000/e1000_hw.c   |  46 ++-
+ .../net/ethernet/intel/e1000e/80003es2lan.c   |  23 +-
+ drivers/net/ethernet/intel/e1000e/82571.c     |   3 +-
+ drivers/net/ethernet/intel/e1000e/ethtool.c   |   7 +-
+ drivers/net/ethernet/intel/e1000e/ich8lan.c   |  18 +-
+ drivers/net/ethernet/intel/e1000e/mac.c       |   8 +-
+ drivers/net/ethernet/intel/e1000e/netdev.c    |  11 +-
+ drivers/net/ethernet/intel/e1000e/phy.c       |  24 +-
+ drivers/net/ethernet/intel/fm10k/fm10k_pf.c   |   7 +-
+ drivers/net/ethernet/intel/fm10k/fm10k_vf.c   |  10 +-
+ drivers/net/ethernet/intel/i40e/i40e_common.c | 140 ++++-----
+ drivers/net/ethernet/intel/i40e/i40e_dcb.c    | 276 +++++++-----------
+ drivers/net/ethernet/intel/i40e/i40e_dcb_nl.c |   3 +-
+ drivers/net/ethernet/intel/i40e/i40e_ddp.c    |   4 +-
+ .../net/ethernet/intel/i40e/i40e_ethtool.c    |   7 +-
+ drivers/net/ethernet/intel/i40e/i40e_main.c   |  85 +++---
+ drivers/net/ethernet/intel/i40e/i40e_nvm.c    |  14 +-
+ drivers/net/ethernet/intel/i40e/i40e_ptp.c    |   4 +-
+ drivers/net/ethernet/intel/i40e/i40e_txrx.c   |  70 ++---
+ .../ethernet/intel/i40e/i40e_virtchnl_pf.c    |  27 +-
+ drivers/net/ethernet/intel/i40e/i40e_xsk.c    |   3 +-
+ drivers/net/ethernet/intel/iavf/iavf_common.c |  34 +--
+ .../net/ethernet/intel/iavf/iavf_ethtool.c    |   8 +-
+ drivers/net/ethernet/intel/iavf/iavf_fdir.c   |   3 +-
+ drivers/net/ethernet/intel/iavf/iavf_txrx.c   |  21 +-
+ .../net/ethernet/intel/ice/ice_adminq_cmd.h   |  18 +-
+ drivers/net/ethernet/intel/ice/ice_base.c     |  32 +-
+ drivers/net/ethernet/intel/ice/ice_common.c   |  38 ++-
+ drivers/net/ethernet/intel/ice/ice_dcb.c      |  77 ++---
+ drivers/net/ethernet/intel/ice/ice_dcb_lib.c  |   2 +-
+ drivers/net/ethernet/intel/ice/ice_dcb_nl.c   |   2 +-
+ drivers/net/ethernet/intel/ice/ice_eswitch.c  |   4 +-
+ .../net/ethernet/intel/ice/ice_ethtool_fdir.c |   3 +-
+ drivers/net/ethernet/intel/ice/ice_fdir.c     |  69 ++---
+ .../net/ethernet/intel/ice/ice_flex_pipe.c    |   8 +-
+ drivers/net/ethernet/intel/ice/ice_flow.c     |   2 +-
+ drivers/net/ethernet/intel/ice/ice_lib.c      |  64 ++--
+ drivers/net/ethernet/intel/ice/ice_main.c     |  48 ++-
+ drivers/net/ethernet/intel/ice/ice_nvm.c      |  15 +-
+ drivers/net/ethernet/intel/ice/ice_ptp.c      |  13 +-
+ drivers/net/ethernet/intel/ice/ice_sched.c    |   3 +-
+ drivers/net/ethernet/intel/ice/ice_sriov.c    |  41 +--
+ drivers/net/ethernet/intel/ice/ice_switch.c   |  61 ++--
+ drivers/net/ethernet/intel/ice/ice_txrx.c     |   6 +-
+ drivers/net/ethernet/intel/ice/ice_virtchnl.c |  14 +-
+ .../ethernet/intel/ice/ice_virtchnl_fdir.c    |  15 +-
+ .../net/ethernet/intel/ice/ice_vsi_vlan_lib.c |  35 +--
+ drivers/net/ethernet/intel/igb/e1000_82575.c  |  29 +-
+ drivers/net/ethernet/intel/igb/e1000_i210.c   |  19 +-
+ drivers/net/ethernet/intel/igb/e1000_mac.c    |   7 +-
+ drivers/net/ethernet/intel/igb/e1000_nvm.c    |  18 +-
+ drivers/net/ethernet/intel/igb/e1000_phy.c    |  17 +-
+ drivers/net/ethernet/intel/igb/igb_ethtool.c  |  11 +-
+ drivers/net/ethernet/intel/igb/igb_main.c     |  13 +-
+ drivers/net/ethernet/intel/igbvf/mbx.c        |   1 +
+ drivers/net/ethernet/intel/igbvf/netdev.c     |  33 +--
+ drivers/net/ethernet/intel/igc/igc_base.c     |   6 +-
+ drivers/net/ethernet/intel/igc/igc_i225.c     |   6 +-
+ drivers/net/ethernet/intel/igc/igc_main.c     |  10 +-
+ drivers/net/ethernet/intel/igc/igc_phy.c      |   5 +-
+ .../net/ethernet/intel/ixgbe/ixgbe_82598.c    |   2 +-
+ .../net/ethernet/intel/ixgbe/ixgbe_common.c   |  30 +-
+ drivers/net/ethernet/intel/ixgbe/ixgbe_fcoe.c |   4 +-
+ drivers/net/ethernet/intel/ixgbe/ixgbe_main.c |   2 +-
+ drivers/net/ethernet/intel/ixgbe/ixgbe_phy.c  |   8 +-
+ .../net/ethernet/intel/ixgbe/ixgbe_sriov.c    |   8 +-
+ drivers/net/ethernet/intel/ixgbe/ixgbe_x540.c |   8 +-
+ drivers/net/ethernet/intel/ixgbe/ixgbe_x550.c |  19 +-
+ include/linux/avf/virtchnl.h                  |   1 +
+ 69 files changed, 705 insertions(+), 978 deletions(-)
+
+-- 
+2.39.3
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
