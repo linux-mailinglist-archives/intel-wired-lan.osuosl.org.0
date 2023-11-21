@@ -1,84 +1,87 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 28E547F2437
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 21 Nov 2023 03:49:55 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id A79E07F2439
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 21 Nov 2023 03:49:59 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 8C3D780C53;
-	Tue, 21 Nov 2023 02:49:53 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8C3D780C53
+	by smtp1.osuosl.org (Postfix) with ESMTP id 0A56280C31;
+	Tue, 21 Nov 2023 02:49:58 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0A56280C31
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1700534993;
-	bh=0n+2CDaam81vYE0230qdG00pFvo95es8XkpmzElQ5fQ=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=AvYTQgPclwid0H2og+eU5eNPtI+mSwzHyc11czwEmGFhkOL+VvSEv/ripsA59406Y
-	 p/RTOVSgPtl8uoH1prAKLly+QHnnmJ9W59GJuoHPMSS4G44WH+XhaOzmicPesOgJo9
-	 UmsMNtIDLg/GgsCB1YyXD0D1kt7KIwfksbIqM8+C5wYRtiHL5pwsRLkgpn3N3qihZt
-	 ZoJp9sl/AWndjUcnctWWpS3nm0YwVwQz1I2Gjgq4XVSfEtTYJUvgSrt52OrWgLX2vQ
-	 EU0RTRvzP/+nBOGaDHUfTRoAIfZpTHQnFHg1PEomzFMQ458ylFtgyJnmOGvEFhaRqV
-	 bG/zu+uytbmlg==
+	s=default; t=1700534998;
+	bh=WM1n5oOC/PfXvA1TVZk/FH8S63P9Ed82xXfCYSUtWFI=;
+	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=cZWmgRgADESf5lSBREgBx6FF2zugF2hijpRhRmO1u6BdjOQxbPDSgRcF7Z3rb/Rpq
+	 FTFR7hSk9ZvaqVHFbkTsZki872TgBlxWTWKvLv2u9qFQI+O7L1kbZLp5xfepc5RXgf
+	 GM73odmmcnp+oorSexFFWkRYDQUBxkxjCvY257nq8VKsuvEJnT4/tPEsvyVIKYXgwC
+	 PAZ4vCLKQX//LQKln/u7yq0m7GY+HpFcHmkrLmwLUEgbAMWS/rxrAgc4r9hauMoeto
+	 NUxfU/RGUYbrjXDuKAIrMh5LNwcXkBy823q8N25RKQD63wwnIbwe7DhrlraQpH1HOd
+	 YeRqNJ7oOXuDQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id kehSBIayPYwN; Tue, 21 Nov 2023 02:49:52 +0000 (UTC)
+	with ESMTP id cEzI5XQ3xebI; Tue, 21 Nov 2023 02:49:57 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 2B42080B82;
-	Tue, 21 Nov 2023 02:49:52 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 2B42080B82
+	by smtp1.osuosl.org (Postfix) with ESMTP id 7F44780C07;
+	Tue, 21 Nov 2023 02:49:56 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 7F44780C07
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id A98711BF33D
- for <intel-wired-lan@lists.osuosl.org>; Tue, 21 Nov 2023 02:49:47 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id DE38F1BF33D
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 21 Nov 2023 02:49:51 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 890CF415EF
- for <intel-wired-lan@lists.osuosl.org>; Tue, 21 Nov 2023 02:49:47 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 890CF415EF
+ by smtp4.osuosl.org (Postfix) with ESMTP id B6F34415EF
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 21 Nov 2023 02:49:51 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B6F34415EF
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id i_QvbgYTVH44 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 21 Nov 2023 02:49:46 +0000 (UTC)
+ with ESMTP id mxvqCyAVvwMT for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 21 Nov 2023 02:49:50 +0000 (UTC)
 Received: from mgamail.intel.com (mgamail.intel.com [134.134.136.100])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 2B0AF41568
- for <intel-wired-lan@lists.osuosl.org>; Tue, 21 Nov 2023 02:49:46 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2B0AF41568
-X-IronPort-AV: E=McAfee;i="6600,9927,10900"; a="458245827"
-X-IronPort-AV: E=Sophos;i="6.04,215,1695711600"; d="scan'208";a="458245827"
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 9C5DE41568
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 21 Nov 2023 02:49:50 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9C5DE41568
+X-IronPort-AV: E=McAfee;i="6600,9927,10900"; a="458245842"
+X-IronPort-AV: E=Sophos;i="6.04,215,1695711600"; d="scan'208";a="458245842"
 Received: from fmsmga008.fm.intel.com ([10.253.24.58])
  by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 20 Nov 2023 18:49:45 -0800
+ 20 Nov 2023 18:49:50 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10900"; a="832488158"
-X-IronPort-AV: E=Sophos;i="6.04,215,1695711600"; d="scan'208";a="832488158"
+X-IronPort-AV: E=McAfee;i="6600,9927,10900"; a="832488198"
+X-IronPort-AV: E=Sophos;i="6.04,215,1695711600"; d="scan'208";a="832488198"
 Received: from dpdk-yahui-icx1.sh.intel.com ([10.67.111.85])
- by fmsmga008.fm.intel.com with ESMTP; 20 Nov 2023 18:49:39 -0800
+ by fmsmga008.fm.intel.com with ESMTP; 20 Nov 2023 18:49:45 -0800
 From: Yahui Cao <yahui.cao@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Tue, 21 Nov 2023 02:50:59 +0000
-Message-Id: <20231121025111.257597-1-yahui.cao@intel.com>
+Date: Tue, 21 Nov 2023 02:51:00 +0000
+Message-Id: <20231121025111.257597-2-yahui.cao@intel.com>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20231121025111.257597-1-yahui.cao@intel.com>
+References: <20231121025111.257597-1-yahui.cao@intel.com>
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1700534986; x=1732070986;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=fdaQz0ZM4OtUE45j2+h6jhkmPo/THh9DldmSVo5IyKs=;
- b=eVLVW35fJfboGegiFs5tEpYMWTg5gpMApbp1PufgsDLwF02r0Ys9ptid
- ZZ0x5MypAnU4lQPCbfci2g/SPYtsNW9OsJUv5LLvhu28W9DuACb5Uq87B
- Iqewjv2SfcXoPz+41ZWVTm3udHr3RK0Ep9KlpbUUFf3yTV+n/5eECAu+w
- q/xToU6sTYHKZq+Asnd+9eqxmoxPFr7R4sc+jb1kJUxm5vSSXK6OkhUuz
- f3xP0gOose5NYwDFlamQj8XYNbNle9LU5sChK+gBlkpbaSlu9w3trxZgz
- SEeEE/BiKHdJzHHE8m7+EFR2qphsrnxGQd0zoC0zN6g9LEUak+HdWho01
- Q==;
+ t=1700534990; x=1732070990;
+ h=from:to:cc:subject:date:message-id:in-reply-to:
+ references:mime-version:content-transfer-encoding;
+ bh=5mmDRZqN56RQo8t8hR6LlwHoKlEk5QkHY/79mVty8Uk=;
+ b=TzrAtX0Rs4GoPOLTyDCDKX1+10uBAVnAiUQm5d/FB38jMtpcDWgBxmcc
+ SEToXB7OM6o4kTaPuXuzZeaYIwE+gxw3R6ZTc9qTSsUkajAI/exExtY5P
+ 3SUAOJemzbu06VI+MJmprMcszvbujpJDDHEBLDBL23KL0N7VWZ6BHhsEO
+ 33MDd/Jso0Kf7oLbTn/zYA/qUl4ayUJ3h5CB0udrlV7iNiVIuyVAIG0v3
+ lCsRfdw1g1MR3dSEYkWtI7b98fpS9UJCN6pwO4kMKZ0tSb42p6Gq/FuUJ
+ rgUUMn61t+N1cudnBGtq4r1hC76IqI+DpIPGMiov7AlY8spnN0iud4qWr
+ g==;
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=eVLVW35f
-Subject: [Intel-wired-lan] [PATCH iwl-next v4 00/12] Add E800 live migration
- driver
+ header.a=rsa-sha256 header.s=Intel header.b=TzrAtX0R
+Subject: [Intel-wired-lan] [PATCH iwl-next v4 01/12] ice: Add function to
+ get RX queue context
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -101,123 +104,332 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-This series adds vfio live migration support for Intel E810 VF devices
-based on the v2 migration protocol definition series discussed here[0].
+Export RX queue context get function which is consumed by linux live
+migration driver to save and load device state.
 
-Steps to test:
-1. Bind one or more E810 VF devices to the module ice-vfio-pci.ko
-2. Assign the VFs to the virtual machine and enable device live migration
-3. Run a workload using IAVF inside the VM, for example, iperf.
-4. Migrate the VM from the source node to a destination node.
-
-The series is also available for review here[1].
-
-Thanks,
-Yahui
-[0] https://lore.kernel.org/kvm/20220224142024.147653-1-yishaih@nvidia.com/
-[1] https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/linux.git/log/?h=ice_live_migration
-
-Change log:
-
-v4:
- - Remove unnecessary iomap from vfio variant driver
- - Change Kconfig to select VFIO_PCI_CORE for ICE_VFIO_PCI module (Alex)
- - Replace restore state with load state for naming convention
- - Remove RXDID Patch
- - Fix missed comments in Patch03
- - Remove "so" at the beginning of the sentence and fix other grammar issue.
- - Remove double init and change return logic for Patch 10
- - Change ice_migration_unlog_vf_msg comments for Patch04
- - Add r-b from Michal to Patch04 of v4
- - Change ice_migration_is_loggable_msg return value type into bool type for Patch05
- - Change naming from dirtied to dirty for Patch11
- - Use total_length to pass parameter to save/load function instead of macro for Patch12
- - Refactor timeout logic for Patch09
- - Change migration_enabled from bool into u8:1 type for Patch04
- - Fix 80 max line length limit issue and compilation warning 
- - Add r-b from Igor to all the patches of v4
- - Fix incorrect type in assignment of __le16/32 for Patch06
- - Change product name to from E800 to E810
-
-v3: https://lore.kernel.org/intel-wired-lan/20230918062546.40419-1-yahui.cao@intel.com/
- - Add P2P support in vfio driver (Jason)
- - Remove source/destination check in vfio driver (Jason)
- - Restructure PF exported API with proper types and layering (Jason)
- - Change patchset email sender.
- - Reword commit message and comments to be more reviewer-friendly (Kevin)
- - Add s-o-b for Patch01 (Kevin)
- - Merge Patch08 into Patch04 and merge Patch13 into Patch06 (Kevin)
- - Remove uninit() in VF destroy stage for Patch 05 (Kevin)
- - change migration_active to migration_enabled (Kevin)
- - Add total_size in devstate to greatly simplify the various checks for
-   Patch07 (Kevin)
- - Add magic and version in device state for Patch07 (Kevin)
- - Fix rx head init issue in Patch10 (Kevin)
- - Remove DMA access for Guest Memory at device resume stage and deprecate
-   the approach to restore TX head in VF space, instead restore TX head in
-   PF space and then switch context back to VF space which is transparent
-   to Guest for Patch11 (Jason, Kevin)
- - Use non-interrupt mode instead of VF MSIX vector to restore TX head for
-   Patch11 (Kevin)
- - Move VF pci mmio save/restore from vfio driver into PF driver
- - Add configuration match check at device resume stage (Kevin)
- - Remove sleep before stopping queue at device suspend stage (Kevin)
- - Let PF respond failure to VF if virtual channel messages logging failed (Kevin)
- - Add migration setup and description in cover letter
-
-v2: https://lore.kernel.org/intel-wired-lan/20230621091112.44945-1-lingyu.liu@intel.com/
- - clarified comments and commit message
-
-v1: https://lore.kernel.org/intel-wired-lan/20230620100001.5331-1-lingyu.liu@intel.com/
-
+Signed-off-by: Yahui Cao <yahui.cao@intel.com>
+Signed-off-by: Lingyu Liu <lingyu.liu@intel.com>
 ---
+ drivers/net/ethernet/intel/ice/ice_common.c | 268 ++++++++++++++++++++
+ drivers/net/ethernet/intel/ice/ice_common.h |   5 +
+ 2 files changed, 273 insertions(+)
 
-
-Lingyu Liu (9):
-  ice: Introduce VF state ICE_VF_STATE_REPLAYING_VC for migration
-  ice: Add fundamental migration init and exit function
-  ice: Log virtual channel messages in PF
-  ice: Add device state save/load function for migration
-  ice: Fix VSI id in virtual channel message for migration
-  ice: Save and load RX Queue head
-  ice: Save and load TX Queue head
-  ice: Add device suspend function for migration
-  vfio/ice: Implement vfio_pci driver for E800 devices
-
-Yahui Cao (3):
-  ice: Add function to get RX queue context
-  ice: Add function to get and set TX queue context
-  ice: Save and load mmio registers
-
- MAINTAINERS                                   |    7 +
- drivers/net/ethernet/intel/ice/Makefile       |    1 +
- drivers/net/ethernet/intel/ice/ice.h          |    3 +
- drivers/net/ethernet/intel/ice/ice_common.c   |  484 +++++-
- drivers/net/ethernet/intel/ice/ice_common.h   |   11 +
- .../net/ethernet/intel/ice/ice_hw_autogen.h   |   23 +
- .../net/ethernet/intel/ice/ice_lan_tx_rx.h    |    3 +
- drivers/net/ethernet/intel/ice/ice_main.c     |   15 +
- .../net/ethernet/intel/ice/ice_migration.c    | 1378 +++++++++++++++++
- .../intel/ice/ice_migration_private.h         |   49 +
- drivers/net/ethernet/intel/ice/ice_vf_lib.c   |    4 +
- drivers/net/ethernet/intel/ice/ice_vf_lib.h   |   11 +
- drivers/net/ethernet/intel/ice/ice_virtchnl.c |  256 ++-
- drivers/net/ethernet/intel/ice/ice_virtchnl.h |   15 +-
- .../ethernet/intel/ice/ice_virtchnl_fdir.c    |   28 +-
- drivers/vfio/pci/Kconfig                      |    2 +
- drivers/vfio/pci/Makefile                     |    2 +
- drivers/vfio/pci/ice/Kconfig                  |   10 +
- drivers/vfio/pci/ice/Makefile                 |    4 +
- drivers/vfio/pci/ice/ice_vfio_pci.c           |  707 +++++++++
- include/linux/net/intel/ice_migration.h       |   48 +
- 21 files changed, 2962 insertions(+), 99 deletions(-)
- create mode 100644 drivers/net/ethernet/intel/ice/ice_migration.c
- create mode 100644 drivers/net/ethernet/intel/ice/ice_migration_private.h
- create mode 100644 drivers/vfio/pci/ice/Kconfig
- create mode 100644 drivers/vfio/pci/ice/Makefile
- create mode 100644 drivers/vfio/pci/ice/ice_vfio_pci.c
- create mode 100644 include/linux/net/intel/ice_migration.h
-
+diff --git a/drivers/net/ethernet/intel/ice/ice_common.c b/drivers/net/ethernet/intel/ice/ice_common.c
+index 9a6c25f98632..d0a3bed00921 100644
+--- a/drivers/net/ethernet/intel/ice/ice_common.c
++++ b/drivers/net/ethernet/intel/ice/ice_common.c
+@@ -1540,6 +1540,34 @@ ice_copy_rxq_ctx_to_hw(struct ice_hw *hw, u8 *ice_rxq_ctx, u32 rxq_index)
+ 	return 0;
+ }
+ 
++/**
++ * ice_copy_rxq_ctx_from_hw - Copy rxq context register from HW
++ * @hw: pointer to the hardware structure
++ * @ice_rxq_ctx: pointer to the rxq context
++ * @rxq_index: the index of the Rx queue
++ *
++ * Copy rxq context from HW register space to dense structure
++ */
++static int
++ice_copy_rxq_ctx_from_hw(struct ice_hw *hw, u8 *ice_rxq_ctx, u32 rxq_index)
++{
++	u8 i;
++
++	if (!ice_rxq_ctx || rxq_index > QRX_CTRL_MAX_INDEX)
++		return -EINVAL;
++
++	/* Copy each dword separately from HW */
++	for (i = 0; i < ICE_RXQ_CTX_SIZE_DWORDS; i++) {
++		u32 *ctx = (u32 *)(ice_rxq_ctx + (i * sizeof(u32)));
++
++		*ctx = rd32(hw, QRX_CONTEXT(i, rxq_index));
++
++		ice_debug(hw, ICE_DBG_QCTX, "qrxdata[%d]: %08X\n", i, *ctx);
++	}
++
++	return 0;
++}
++
+ /* LAN Rx Queue Context */
+ static const struct ice_ctx_ele ice_rlan_ctx_info[] = {
+ 	/* Field		Width	LSB */
+@@ -1591,6 +1619,32 @@ ice_write_rxq_ctx(struct ice_hw *hw, struct ice_rlan_ctx *rlan_ctx,
+ 	return ice_copy_rxq_ctx_to_hw(hw, ctx_buf, rxq_index);
+ }
+ 
++/**
++ * ice_read_rxq_ctx - Read rxq context from HW
++ * @hw: pointer to the hardware structure
++ * @rlan_ctx: pointer to the rxq context
++ * @rxq_index: the index of the Rx queue
++ *
++ * Read rxq context from HW register space and then converts it from dense
++ * structure to sparse
++ */
++int
++ice_read_rxq_ctx(struct ice_hw *hw, struct ice_rlan_ctx *rlan_ctx,
++		 u32 rxq_index)
++{
++	u8 ctx_buf[ICE_RXQ_CTX_SZ] = { 0 };
++	int status;
++
++	if (!rlan_ctx)
++		return -EINVAL;
++
++	status = ice_copy_rxq_ctx_from_hw(hw, ctx_buf, rxq_index);
++	if (status)
++		return status;
++
++	return ice_get_ctx(ctx_buf, (u8 *)rlan_ctx, ice_rlan_ctx_info);
++}
++
+ /* LAN Tx Queue Context */
+ const struct ice_ctx_ele ice_tlan_ctx_info[] = {
+ 				    /* Field			Width	LSB */
+@@ -4743,6 +4797,220 @@ ice_set_ctx(struct ice_hw *hw, u8 *src_ctx, u8 *dest_ctx,
+ 	return 0;
+ }
+ 
++/**
++ * ice_read_byte - read context byte into struct
++ * @src_ctx:  the context structure to read from
++ * @dest_ctx: the context to be written to
++ * @ce_info:  a description of the struct to be filled
++ */
++static void
++ice_read_byte(u8 *src_ctx, u8 *dest_ctx, const struct ice_ctx_ele *ce_info)
++{
++	u8 dest_byte, mask;
++	u8 *src, *target;
++	u16 shift_width;
++
++	/* prepare the bits and mask */
++	shift_width = ce_info->lsb % 8;
++	mask = (u8)(BIT(ce_info->width) - 1);
++
++	/* shift to correct alignment */
++	mask <<= shift_width;
++
++	/* get the current bits from the src bit string */
++	src = src_ctx + (ce_info->lsb / 8);
++
++	memcpy(&dest_byte, src, sizeof(dest_byte));
++
++	dest_byte &= mask;
++
++	dest_byte >>= shift_width;
++
++	/* get the address from the struct field */
++	target = dest_ctx + ce_info->offset;
++
++	/* put it back in the struct */
++	memcpy(target, &dest_byte, sizeof(dest_byte));
++}
++
++/**
++ * ice_read_word - read context word into struct
++ * @src_ctx:  the context structure to read from
++ * @dest_ctx: the context to be written to
++ * @ce_info:  a description of the struct to be filled
++ */
++static void
++ice_read_word(u8 *src_ctx, u8 *dest_ctx, const struct ice_ctx_ele *ce_info)
++{
++	u16 dest_word, mask;
++	u8 *src, *target;
++	__le16 src_word;
++	u16 shift_width;
++
++	/* prepare the bits and mask */
++	shift_width = ce_info->lsb % 8;
++	mask = BIT(ce_info->width) - 1;
++
++	/* shift to correct alignment */
++	mask <<= shift_width;
++
++	/* get the current bits from the src bit string */
++	src = src_ctx + (ce_info->lsb / 8);
++
++	memcpy(&src_word, src, sizeof(src_word));
++
++	/* the data in the memory is stored as little endian so mask it
++	 * correctly
++	 */
++	src_word &= cpu_to_le16(mask);
++
++	/* get the data back into host order before shifting */
++	dest_word = le16_to_cpu(src_word);
++
++	dest_word >>= shift_width;
++
++	/* get the address from the struct field */
++	target = dest_ctx + ce_info->offset;
++
++	/* put it back in the struct */
++	memcpy(target, &dest_word, sizeof(dest_word));
++}
++
++/**
++ * ice_read_dword - read context dword into struct
++ * @src_ctx:  the context structure to read from
++ * @dest_ctx: the context to be written to
++ * @ce_info:  a description of the struct to be filled
++ */
++static void
++ice_read_dword(u8 *src_ctx, u8 *dest_ctx, const struct ice_ctx_ele *ce_info)
++{
++	u32 dest_dword, mask;
++	__le32 src_dword;
++	u8 *src, *target;
++	u16 shift_width;
++
++	/* prepare the bits and mask */
++	shift_width = ce_info->lsb % 8;
++
++	/* if the field width is exactly 32 on an x86 machine, then the shift
++	 * operation will not work because the SHL instructions count is masked
++	 * to 5 bits so the shift will do nothing
++	 */
++	if (ce_info->width < 32)
++		mask = BIT(ce_info->width) - 1;
++	else
++		mask = (u32)~0;
++
++	/* shift to correct alignment */
++	mask <<= shift_width;
++
++	/* get the current bits from the src bit string */
++	src = src_ctx + (ce_info->lsb / 8);
++
++	memcpy(&src_dword, src, sizeof(src_dword));
++
++	/* the data in the memory is stored as little endian so mask it
++	 * correctly
++	 */
++	src_dword &= cpu_to_le32(mask);
++
++	/* get the data back into host order before shifting */
++	dest_dword = le32_to_cpu(src_dword);
++
++	dest_dword >>= shift_width;
++
++	/* get the address from the struct field */
++	target = dest_ctx + ce_info->offset;
++
++	/* put it back in the struct */
++	memcpy(target, &dest_dword, sizeof(dest_dword));
++}
++
++/**
++ * ice_read_qword - read context qword into struct
++ * @src_ctx:  the context structure to read from
++ * @dest_ctx: the context to be written to
++ * @ce_info:  a description of the struct to be filled
++ */
++static void
++ice_read_qword(u8 *src_ctx, u8 *dest_ctx, const struct ice_ctx_ele *ce_info)
++{
++	u64 dest_qword, mask;
++	__le64 src_qword;
++	u8 *src, *target;
++	u16 shift_width;
++
++	/* prepare the bits and mask */
++	shift_width = ce_info->lsb % 8;
++
++	/* if the field width is exactly 64 on an x86 machine, then the shift
++	 * operation will not work because the SHL instructions count is masked
++	 * to 6 bits so the shift will do nothing
++	 */
++	if (ce_info->width < 64)
++		mask = BIT_ULL(ce_info->width) - 1;
++	else
++		mask = (u64)~0;
++
++	/* shift to correct alignment */
++	mask <<= shift_width;
++
++	/* get the current bits from the src bit string */
++	src = src_ctx + (ce_info->lsb / 8);
++
++	memcpy(&src_qword, src, sizeof(src_qword));
++
++	/* the data in the memory is stored as little endian so mask it
++	 * correctly
++	 */
++	src_qword &= cpu_to_le64(mask);
++
++	/* get the data back into host order before shifting */
++	dest_qword = le64_to_cpu(src_qword);
++
++	dest_qword >>= shift_width;
++
++	/* get the address from the struct field */
++	target = dest_ctx + ce_info->offset;
++
++	/* put it back in the struct */
++	memcpy(target, &dest_qword, sizeof(dest_qword));
++}
++
++/**
++ * ice_get_ctx - extract context bits from a packed structure
++ * @src_ctx:  pointer to a generic packed context structure
++ * @dest_ctx: pointer to a generic non-packed context structure
++ * @ce_info:  a description of the structure to be read from
++ */
++int
++ice_get_ctx(u8 *src_ctx, u8 *dest_ctx, const struct ice_ctx_ele *ce_info)
++{
++	int i;
++
++	for (i = 0; ce_info[i].width; i++) {
++		switch (ce_info[i].size_of) {
++		case 1:
++			ice_read_byte(src_ctx, dest_ctx, &ce_info[i]);
++			break;
++		case 2:
++			ice_read_word(src_ctx, dest_ctx, &ce_info[i]);
++			break;
++		case 4:
++			ice_read_dword(src_ctx, dest_ctx, &ce_info[i]);
++			break;
++		case 8:
++			ice_read_qword(src_ctx, dest_ctx, &ce_info[i]);
++			break;
++		default:
++			return -EINVAL;
++		}
++	}
++
++	return 0;
++}
++
+ /**
+  * ice_get_lan_q_ctx - get the LAN queue context for the given VSI and TC
+  * @hw: pointer to the HW struct
+diff --git a/drivers/net/ethernet/intel/ice/ice_common.h b/drivers/net/ethernet/intel/ice/ice_common.h
+index 31fdcac33986..df9c7f30592a 100644
+--- a/drivers/net/ethernet/intel/ice/ice_common.h
++++ b/drivers/net/ethernet/intel/ice/ice_common.h
+@@ -55,6 +55,9 @@ void ice_set_safe_mode_caps(struct ice_hw *hw);
+ int
+ ice_write_rxq_ctx(struct ice_hw *hw, struct ice_rlan_ctx *rlan_ctx,
+ 		  u32 rxq_index);
++int
++ice_read_rxq_ctx(struct ice_hw *hw, struct ice_rlan_ctx *rlan_ctx,
++		 u32 rxq_index);
+ 
+ int
+ ice_aq_get_rss_lut(struct ice_hw *hw, struct ice_aq_get_set_rss_lut_params *get_params);
+@@ -74,6 +77,8 @@ extern const struct ice_ctx_ele ice_tlan_ctx_info[];
+ int
+ ice_set_ctx(struct ice_hw *hw, u8 *src_ctx, u8 *dest_ctx,
+ 	    const struct ice_ctx_ele *ce_info);
++int
++ice_get_ctx(u8 *src_ctx, u8 *dest_ctx, const struct ice_ctx_ele *ce_info);
+ 
+ extern struct mutex ice_global_cfg_lock_sw;
+ 
 -- 
 2.34.1
 
