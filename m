@@ -2,84 +2,87 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 129D37F3814
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 21 Nov 2023 22:20:18 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 124857F3806
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 21 Nov 2023 22:19:50 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 984338133C;
-	Tue, 21 Nov 2023 21:20:16 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 984338133C
+	by smtp1.osuosl.org (Postfix) with ESMTP id 624AD81C11;
+	Tue, 21 Nov 2023 21:19:48 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 624AD81C11
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1700601616;
-	bh=kEkGTwwtsUNNw4s7Klm5BlUFIwbWBK3VwAbqD+2ET3s=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=Zugsizw6WSz5wTOKql0EGSs1F3iJtJvJ80+jJaKVwgdmlaHDBybSd66MgJ8qRyfSN
-	 3Wt9aJvQptPSQg9M3aSBWtYTjUA4X+py2A2MZv3iH0OVjBAlf7YFRYnT/zRdWkx3Ty
-	 qVUmlL8cqjOuf2dzspCjiRNDkwRHGqUhBqStsBn+AhQtt0dIxW+aREzHYJx6o/ppsI
-	 VsqPqhsc6LkaErqlffVgfFAltCxpd+WL5Pi5GGfWMLOD4xzHreK5uOsIYhB16K50Me
-	 UE9MpjzSm/qLxdujHwQpjtRDyP1bx98qAlyCTuNVCE9JcoOxrJJi4dB7tE8upYaQIa
-	 CbN5RgRQrnbyQ==
+	s=default; t=1700601588;
+	bh=mFQbl/bhHaRJY47JpoAVY7dFAvui/sISSXEJIPH0TF0=;
+	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=r0X7M6HQgeQVHU+2GlVu62ndPLp69uX4Eay6B6Om8vPIc8WEHHmt5lS7egd2cZ/4R
+	 J4mnsPRM6bHuZa3ASlALhqHgFZfrNPkXp5hV3PWBMvhMIwTj3645ebfBg8qdKBvTHU
+	 DH8EzTq7UdMEDpQj3TI6G9ICwbrg/qjt8IV9KNzEQvimXYoPRcq8mJThPq9RjJVJW1
+	 W7fNhTptyKtl8tB15YnCoUA+sQJu26/ieP7LYLWAxFXsQQRM778Z0/7Tar2/Vlzy/h
+	 I7twCXgpi/w2Tc3w4KFxj/BPxiU/Ow0CYupPtVPhGVOMPYTGx/tlmTlv3gLLyt5ujr
+	 wKxccGoPAi4qA==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id kFz9haqlp-Gv; Tue, 21 Nov 2023 21:20:15 +0000 (UTC)
+	with ESMTP id zB8ZFZi6DgkF; Tue, 21 Nov 2023 21:19:47 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 3780880BEE;
-	Tue, 21 Nov 2023 21:20:15 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3780880BEE
+	by smtp1.osuosl.org (Postfix) with ESMTP id 293A8813E4;
+	Tue, 21 Nov 2023 21:19:47 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 293A8813E4
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id BB6321BF3F6
- for <intel-wired-lan@lists.osuosl.org>; Tue, 21 Nov 2023 21:19:46 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 91AAE1BF3F6
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 21 Nov 2023 21:19:42 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 61D0E40E46
- for <intel-wired-lan@lists.osuosl.org>; Tue, 21 Nov 2023 21:19:43 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 61D0E40E46
+ by smtp4.osuosl.org (Postfix) with ESMTP id 689D740E46
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 21 Nov 2023 21:19:42 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 689D740E46
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 9x0J5lZsqjXy for <intel-wired-lan@lists.osuosl.org>;
+ with ESMTP id SkPS1jG68NwI for <intel-wired-lan@lists.osuosl.org>;
  Tue, 21 Nov 2023 21:19:41 +0000 (UTC)
 Received: from mgamail.intel.com (mgamail.intel.com [192.55.52.88])
- by smtp4.osuosl.org (Postfix) with ESMTPS id B995F4087F
- for <intel-wired-lan@lists.osuosl.org>; Tue, 21 Nov 2023 21:19:40 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B995F4087F
-X-IronPort-AV: E=McAfee;i="6600,9927,10901"; a="423022063"
-X-IronPort-AV: E=Sophos;i="6.04,216,1695711600"; d="scan'208";a="423022063"
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 4DD4640978
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 21 Nov 2023 21:19:41 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4DD4640978
+X-IronPort-AV: E=McAfee;i="6600,9927,10901"; a="423022066"
+X-IronPort-AV: E=Sophos;i="6.04,216,1695711600"; d="scan'208";a="423022066"
 Received: from orsmga003.jf.intel.com ([10.7.209.27])
  by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  21 Nov 2023 13:19:39 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10901"; a="716630528"
-X-IronPort-AV: E=Sophos;i="6.04,216,1695711600"; d="scan'208";a="716630528"
+X-IronPort-AV: E=McAfee;i="6600,9927,10901"; a="716630531"
+X-IronPort-AV: E=Sophos;i="6.04,216,1695711600"; d="scan'208";a="716630531"
 Received: from jbrandeb-spr1.jf.intel.com ([10.166.28.233])
  by orsmga003-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  21 Nov 2023 13:19:37 -0800
 From: Jesse Brandeburg <jesse.brandeburg@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Tue, 21 Nov 2023 13:19:08 -0800
-Message-Id: <20231121211921.19834-1-jesse.brandeburg@intel.com>
+Date: Tue, 21 Nov 2023 13:19:09 -0800
+Message-Id: <20231121211921.19834-2-jesse.brandeburg@intel.com>
 X-Mailer: git-send-email 2.39.3
+In-Reply-To: <20231121211921.19834-1-jesse.brandeburg@intel.com>
+References: <20231121211921.19834-1-jesse.brandeburg@intel.com>
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1700601580; x=1732137580;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=7Qft3Kif2jDd7FcxoyFTaYULEq5BlIfAq0P2rkH/uL0=;
- b=me0iUh3dXMuRK+X8Nba9wgEe96ty4iU1UZ13Mb4Euv4EeZAFduuSlhuZ
- t7hwspCbmxzJJjMOeIbTfjT9CJoRrGkgaQw4eoC9AU/9EGVtMAmoY/98G
- +1UF8Vt4ZxcnnZcCIYb1ZRi9W3yxHurIY2reNOsWWWtudsZiAYP4cl0f2
- p4Q+KfJTdwMEyaaH8cO93UXkCAUO8/pX/8DO7qcWA2OW1DTBgLhfVGqAT
- 3d6wmyhEFPzjVVbfVtMWDcJ7PCR2xcSxtuTKisR2q1+Aq8jH4vPYnW+GU
- fc5ASzXJSOgXuEBNXe5iQCsH4N2lWwBzjs7fNuaN2ITgFcNxGrqX5xLKx
+ t=1700601581; x=1732137581;
+ h=from:to:cc:subject:date:message-id:in-reply-to:
+ references:mime-version:content-transfer-encoding;
+ bh=bssGAbRo6EZ7uH9j8e/gpjKd/Bpnhc8jnprKFrUZrJs=;
+ b=lwioLlmVkw+TpQMRlU7pTn+sOhl+M+43leKfjqFocz84wSLiDtoLwqPF
+ YcYjWax0y7/XVoFlEZgHMTccBtvhwhpdTMdwyZlKUTzp9bpUuJyjQHy7S
+ 8MuqOXg0GuaTKkCauh5ABZXPTSSUPhqyWWTK1G1BDu3o5rJN0FZbC+KiU
+ H/ETfgLjlfoQ4C2bmjRAlXDUYlSNQNLjjczKoDIN87IX7AKYsj9mH5b0b
+ RnNeL4x0IONUXBH30js/q42ddUtrSmhkZv3IPJk+OhWgTQGzRZCK/tWzD
+ yC4Umted0MyKw+Ez2S2t8IZuEx3gAe5elnoeZYScE3ceEjiJArjM0fKx/
  A==;
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=me0iUh3d
-Subject: [Intel-wired-lan] [PATCH iwl-next v1 00/13] intel: use FIELD_PREP
- and FIELD_GET
+ header.a=rsa-sha256 header.s=Intel header.b=lwioLlmV
+Subject: [Intel-wired-lan] [PATCH iwl-next v1 01/13] e1000e: make lost bits
+ explicit
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,117 +102,52 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-After repeatedly getting review comments on new patches, and sporadic
-patches to fix parts of our drivers, we should just convert the Intel code
-to use FIELD_PREP() and FIELD_GET().  It's then "common" in the code and
-hopefully future change-sets will see the context and do-the-right-thing.
+For more than 15 years this code has passed in a request for a page and
+masked off that page when read/writing. This code has been here forever,
+but FIELD_PREP finds the bug when converted to use it. Change the code
+to do exactly the same thing but allow the conversion to FIELD_PREP in a
+later patch. To make it clear what we lost when making this change I
+left a comment, but there is no point to change the code to generate a
+correct sequence at this point.
 
-This conversion was done with a coccinelle script which is mentioned in the
-commit messages. Generally there were only a couple conversions that were
-"undone" after the automatic changes because they tried to convert a
-non-contiguous mask.
-
-Patch 1 is required at the beginning of this series to fix a "forever"
-issue in the e1000e driver that fails the compilation test after conversion
-because the shift / mask was out of range.
-
-The second patch just adds all the new #includes in one go.
-
-The patch titled: "ice: fix pre-shifted bit usage" is needed to allow the
-use of the FIELD_* macros and fix up the unexpected "shifts included"
-defines found while creating this series.
-
-The rest are the conversion to use FIELD_PREP()/FIELD_GET().
+This is not a Fixes tagged patch on purpose because it doesn't change
+the binary output.
 
 Reviewed-by: Marcin Szycik <marcin.szycik@linux.intel.com>
 Signed-off-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
+---
+ drivers/net/ethernet/intel/e1000e/80003es2lan.c | 13 +++++++------
+ 1 file changed, 7 insertions(+), 6 deletions(-)
 
-Jesse Brandeburg (13):
-  e1000e: make lost bits explicit
-  intel: add bit macro includes where needed
-  intel: legacy: field prep conversion
-  i40e: field prep conversion
-  iavf: field prep conversion
-  ice: field prep conversion
-  ice: fix pre-shifted bit usage
-  igc: field prep conversion
-  intel: legacy: field get conversion
-  igc: field get conversion
-  i40e: field get conversion
-  iavf: field get conversion
-  ice: field get conversion
-
- drivers/net/ethernet/intel/e1000/e1000_hw.c   |  46 ++-
- .../net/ethernet/intel/e1000e/80003es2lan.c   |  23 +-
- drivers/net/ethernet/intel/e1000e/82571.c     |   3 +-
- drivers/net/ethernet/intel/e1000e/ethtool.c   |   7 +-
- drivers/net/ethernet/intel/e1000e/ich8lan.c   |  18 +-
- drivers/net/ethernet/intel/e1000e/mac.c       |   8 +-
- drivers/net/ethernet/intel/e1000e/netdev.c    |  11 +-
- drivers/net/ethernet/intel/e1000e/phy.c       |  24 +-
- drivers/net/ethernet/intel/fm10k/fm10k_pf.c   |   7 +-
- drivers/net/ethernet/intel/fm10k/fm10k_vf.c   |  10 +-
- drivers/net/ethernet/intel/i40e/i40e_common.c | 140 ++++-----
- drivers/net/ethernet/intel/i40e/i40e_dcb.c    | 276 +++++++-----------
- drivers/net/ethernet/intel/i40e/i40e_dcb_nl.c |   3 +-
- drivers/net/ethernet/intel/i40e/i40e_ddp.c    |   4 +-
- .../net/ethernet/intel/i40e/i40e_ethtool.c    |   7 +-
- drivers/net/ethernet/intel/i40e/i40e_main.c   |  85 +++---
- drivers/net/ethernet/intel/i40e/i40e_nvm.c    |  14 +-
- drivers/net/ethernet/intel/i40e/i40e_ptp.c    |   4 +-
- drivers/net/ethernet/intel/i40e/i40e_txrx.c   |  70 ++---
- .../ethernet/intel/i40e/i40e_virtchnl_pf.c    |  27 +-
- drivers/net/ethernet/intel/i40e/i40e_xsk.c    |   3 +-
- drivers/net/ethernet/intel/iavf/iavf_common.c |  34 +--
- .../net/ethernet/intel/iavf/iavf_ethtool.c    |   8 +-
- drivers/net/ethernet/intel/iavf/iavf_fdir.c   |   3 +-
- drivers/net/ethernet/intel/iavf/iavf_txrx.c   |  21 +-
- .../net/ethernet/intel/ice/ice_adminq_cmd.h   |  18 +-
- drivers/net/ethernet/intel/ice/ice_base.c     |  32 +-
- drivers/net/ethernet/intel/ice/ice_common.c   |  38 ++-
- drivers/net/ethernet/intel/ice/ice_dcb.c      |  77 ++---
- drivers/net/ethernet/intel/ice/ice_dcb_lib.c  |   2 +-
- drivers/net/ethernet/intel/ice/ice_dcb_nl.c   |   2 +-
- drivers/net/ethernet/intel/ice/ice_eswitch.c  |   4 +-
- .../net/ethernet/intel/ice/ice_ethtool_fdir.c |   3 +-
- drivers/net/ethernet/intel/ice/ice_fdir.c     |  69 ++---
- .../net/ethernet/intel/ice/ice_flex_pipe.c    |   8 +-
- drivers/net/ethernet/intel/ice/ice_flow.c     |   2 +-
- drivers/net/ethernet/intel/ice/ice_lib.c      |  64 ++--
- drivers/net/ethernet/intel/ice/ice_main.c     |  48 ++-
- drivers/net/ethernet/intel/ice/ice_nvm.c      |  15 +-
- drivers/net/ethernet/intel/ice/ice_ptp.c      |  13 +-
- drivers/net/ethernet/intel/ice/ice_sched.c    |   3 +-
- drivers/net/ethernet/intel/ice/ice_sriov.c    |  41 +--
- drivers/net/ethernet/intel/ice/ice_switch.c   |  61 ++--
- drivers/net/ethernet/intel/ice/ice_txrx.c     |   6 +-
- drivers/net/ethernet/intel/ice/ice_virtchnl.c |  14 +-
- .../ethernet/intel/ice/ice_virtchnl_fdir.c    |  15 +-
- .../net/ethernet/intel/ice/ice_vsi_vlan_lib.c |  35 +--
- drivers/net/ethernet/intel/igb/e1000_82575.c  |  29 +-
- drivers/net/ethernet/intel/igb/e1000_i210.c   |  19 +-
- drivers/net/ethernet/intel/igb/e1000_mac.c    |   7 +-
- drivers/net/ethernet/intel/igb/e1000_nvm.c    |  18 +-
- drivers/net/ethernet/intel/igb/e1000_phy.c    |  17 +-
- drivers/net/ethernet/intel/igb/igb_ethtool.c  |  11 +-
- drivers/net/ethernet/intel/igb/igb_main.c     |  13 +-
- drivers/net/ethernet/intel/igbvf/mbx.c        |   1 +
- drivers/net/ethernet/intel/igbvf/netdev.c     |  33 +--
- drivers/net/ethernet/intel/igc/igc_base.c     |   6 +-
- drivers/net/ethernet/intel/igc/igc_i225.c     |   6 +-
- drivers/net/ethernet/intel/igc/igc_main.c     |  10 +-
- drivers/net/ethernet/intel/igc/igc_phy.c      |   5 +-
- .../net/ethernet/intel/ixgbe/ixgbe_82598.c    |   2 +-
- .../net/ethernet/intel/ixgbe/ixgbe_common.c   |  30 +-
- drivers/net/ethernet/intel/ixgbe/ixgbe_fcoe.c |   4 +-
- drivers/net/ethernet/intel/ixgbe/ixgbe_main.c |   2 +-
- drivers/net/ethernet/intel/ixgbe/ixgbe_phy.c  |   8 +-
- .../net/ethernet/intel/ixgbe/ixgbe_sriov.c    |   8 +-
- drivers/net/ethernet/intel/ixgbe/ixgbe_x540.c |   8 +-
- drivers/net/ethernet/intel/ixgbe/ixgbe_x550.c |  19 +-
- include/linux/avf/virtchnl.h                  |   1 +
- 69 files changed, 705 insertions(+), 978 deletions(-)
-
+diff --git a/drivers/net/ethernet/intel/e1000e/80003es2lan.c b/drivers/net/ethernet/intel/e1000e/80003es2lan.c
+index be9c695dde12..74671201208e 100644
+--- a/drivers/net/ethernet/intel/e1000e/80003es2lan.c
++++ b/drivers/net/ethernet/intel/e1000e/80003es2lan.c
+@@ -1035,17 +1035,18 @@ static s32 e1000_setup_copper_link_80003es2lan(struct e1000_hw *hw)
+ 	 * iteration and increase the max iterations when
+ 	 * polling the phy; this fixes erroneous timeouts at 10Mbps.
+ 	 */
+-	ret_val = e1000_write_kmrn_reg_80003es2lan(hw, GG82563_REG(0x34, 4),
+-						   0xFFFF);
++	/* these next three accesses were always meant to use page 0x34 using
++	 * GG82563_REG(0x34, N) but never did, so we've just corrected the call
++	 * to not drop bits
++	 */
++	ret_val = e1000_write_kmrn_reg_80003es2lan(hw, 4, 0xFFFF);
+ 	if (ret_val)
+ 		return ret_val;
+-	ret_val = e1000_read_kmrn_reg_80003es2lan(hw, GG82563_REG(0x34, 9),
+-						  &reg_data);
++	ret_val = e1000_read_kmrn_reg_80003es2lan(hw, 9, &reg_data);
+ 	if (ret_val)
+ 		return ret_val;
+ 	reg_data |= 0x3F;
+-	ret_val = e1000_write_kmrn_reg_80003es2lan(hw, GG82563_REG(0x34, 9),
+-						   reg_data);
++	ret_val = e1000_write_kmrn_reg_80003es2lan(hw, 9, reg_data);
+ 	if (ret_val)
+ 		return ret_val;
+ 	ret_val =
 -- 
 2.39.3
 
