@@ -1,80 +1,80 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 98DC47F723F
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 24 Nov 2023 12:00:38 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id ECE467F7243
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 24 Nov 2023 12:00:57 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 30F2C61502;
-	Fri, 24 Nov 2023 11:00:37 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 30F2C61502
+	by smtp3.osuosl.org (Postfix) with ESMTP id 53F2860B0B;
+	Fri, 24 Nov 2023 11:00:56 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 53F2860B0B
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1700823637;
-	bh=hJaxiW27m9V2ZPWpEQ6hUmqE2wxqRpgh79hgkDrN1iQ=;
+	s=default; t=1700823656;
+	bh=4j7dIonebJtV5L72uHnruBlxjjebnNQO+ISQHQ2Dpuc=;
 	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=W+vshvWhTgao3QzSxX9/EPhoKg3NCfeUas9aKG9nxkoHUhra4hbPK4KvgASw+Xht0
-	 d3l0OqZMuquQoCS/ed3i1FJeoBQ9dTOXJfb93KHFbsGnNvdKdsnutw2PR8sIYl+ss2
-	 d05achCb6y9nXd035KVdTliuHHEA/03v+FBp+92dSoeWOEitBXQHE+k0p2xaLneqjB
-	 srXP8D5U15O5VqISBj8ZgSdFQ3InTz/UiaDc/o1NjThHVE3SXghvij56eEmzGYfp2l
-	 pHKd0h7xv2XtSd9y2FWgZ8HV8uFOMFo6bQcVG2T4ZSkki26Q1/xMI6l4tH1OUXPSnm
-	 5b+kRtvkFbf2w==
+	b=xsm+E8YWjNs5NHS8g+2HCt+IaM+TCQWbvZ7ynsytJ2I/UyKdugad9JU1fOECk5vwe
+	 LZzd9fOtvOG4o4W2Z7Jf7HnZNGZl2GUSgcA5UWo6d5pq5An37lx8+JHLnxZ0/1ITjF
+	 dmeVxYYJCNp7AvsqhNDH7TFDBurq0j6Ig1r7V+1l9YJyEpihnql0U7FagnZfosah4O
+	 W+hKihjtK+RTG8ZuMU6iXt8x7duhBjxikmXCUug9+BARCIK3UxA438xAZC/hgQP49Z
+	 ik4Rz8oTHDaiJE+sAt6KaIj64+ZPf0bbrHU/Tb0+3HH8OTPUTYz5tpqs9JLqgXzgt5
+	 jgaV4eL6Vn0nQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 0boNoQaLGbEU; Fri, 24 Nov 2023 11:00:36 +0000 (UTC)
+	with ESMTP id VUwAabtZTxUQ; Fri, 24 Nov 2023 11:00:55 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 122C561504;
-	Fri, 24 Nov 2023 11:00:36 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 122C561504
+	by smtp3.osuosl.org (Postfix) with ESMTP id 1496461507;
+	Fri, 24 Nov 2023 11:00:55 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1496461507
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 1F29E1BF83C
- for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Nov 2023 11:00:31 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 20E2B1BF83C
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Nov 2023 11:00:50 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 041F3614FF
- for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Nov 2023 11:00:31 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 041F3614FF
+ by smtp2.osuosl.org (Postfix) with ESMTP id 8EE3840132
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Nov 2023 11:00:49 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 8EE3840132
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id QXUem34GLR7s for <intel-wired-lan@lists.osuosl.org>;
- Fri, 24 Nov 2023 11:00:30 +0000 (UTC)
-Received: from dfw.source.kernel.org (dfw.source.kernel.org
- [IPv6:2604:1380:4641:c500::1])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 737AE60B0B
- for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Nov 2023 11:00:30 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 737AE60B0B
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id R5rXU1oz1gj7 for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 24 Nov 2023 11:00:48 +0000 (UTC)
+Received: from ams.source.kernel.org (ams.source.kernel.org
+ [IPv6:2604:1380:4601:e00::1])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id A9835401D2
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Nov 2023 11:00:48 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A9835401D2
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by dfw.source.kernel.org (Postfix) with ESMTP id B421062135;
- Fri, 24 Nov 2023 11:00:29 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 15C18C433C7;
- Fri, 24 Nov 2023 11:00:27 +0000 (UTC)
-Date: Fri, 24 Nov 2023 11:00:25 +0000
+ by ams.source.kernel.org (Postfix) with ESMTP id 00094B8164A;
+ Fri, 24 Nov 2023 11:00:46 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3656DC433C8;
+ Fri, 24 Nov 2023 11:00:45 +0000 (UTC)
+Date: Fri, 24 Nov 2023 11:00:42 +0000
 From: Simon Horman <horms@kernel.org>
 To: Jesse Brandeburg <jesse.brandeburg@intel.com>
-Message-ID: <20231124110025.GE50352@kernel.org>
+Message-ID: <20231124110042.GF50352@kernel.org>
 References: <20231121211921.19834-1-jesse.brandeburg@intel.com>
- <20231121211921.19834-6-jesse.brandeburg@intel.com>
+ <20231121211921.19834-7-jesse.brandeburg@intel.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20231121211921.19834-6-jesse.brandeburg@intel.com>
+In-Reply-To: <20231121211921.19834-7-jesse.brandeburg@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1700823629;
- bh=lY5lbWMSvYgdNTnwGkTdkoM/X4wObIy/Mhn5AVhK97g=;
+ d=kernel.org; s=k20201202; t=1700823646;
+ bh=fZnitmSPXZKwgPdo66YLsPoA9dTxzgOfY2rIV7jtyjQ=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=tXG9Rm0j28Ip4AJr/y+Y+3vmxmUP+7sQxEgg2Ig5u3DW0vUrxbRRJ9/npsUsyn//E
- 9V9cAiCtF3/deX7X1wA8kRzOI05eywutRw+tiYX/xP9geW9cwhaEQJN0UYatdJxKMt
- fA2kqypGvSJkHSBJUfH/CtRXqnRF2jG7R0tCfp+8MM6wY6ffcLRYf2Zt34lCpvZEIf
- VMKOh7MDgnMsnRf8y266ziFbI6vjzxWaL9SYb0aa9DVUBQfC4MmEa/lA2zP9g5JHWC
- rJCBzK7qSfE6ehuAvdHZip8p/ifoUF/9UwBBZdqcDvWI6cZoAhMPTqnQ7yVUP875w0
- 4vmbsRXo/uFxg==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ b=rMirdcIwo+Xq2KpE8xH6kwLW/X9NWRIjhkC2dJV8cwJB1J4Lztd7CSrXvpzv5qpys
+ bp/OYnOrEqCJ4SL5yBaKwcyRf8G4nQgfqNt7EzrkzRAXi/COtYu/3VlWqOUN7t+Bxs
+ 27HGO2iqVAKLXJ9a+2lALzz0REjoaCd1TdscCXklVd5DBw26NFoyu6gDCRa3q3RlXT
+ 1IE0UjLWsIubjperZxEZOvfBZRnW1ZH/MzIuvNnW6GFfCNrw9M1poKeCmhw1+6QbR0
+ DhB3tU9HmI5EkLQxmwxDCH62YcRzfSNrgaJxQQy5EWddgpwsDEQaeJCPFKB2siV1NM
+ 4YhLsLDBWTUcg==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=tXG9Rm0j
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v1 05/13] iavf: field prep
+ header.a=rsa-sha256 header.s=k20201202 header.b=rMirdcIw
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v1 06/13] ice: field prep
  conversion
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -90,36 +90,36 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Cc: Julia Lawall <Julia.Lawall@inria.fr>, netdev@vger.kernel.org,
  Marcin Szycik <marcin.szycik@linux.intel.com>,
- intel-wired-lan@lists.osuosl.org, Ahmed Zaki <ahmed.zaki@intel.com>
+ intel-wired-lan@lists.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, Nov 21, 2023 at 01:19:13PM -0800, Jesse Brandeburg wrote:
-> Refactor iavf driver to use FIELD_PREP(), which reduces lines of code
+On Tue, Nov 21, 2023 at 01:19:14PM -0800, Jesse Brandeburg wrote:
+> Refactor ice driver to use FIELD_PREP(), which reduces lines of code
 > and adds clarity of intent.
 > 
 > This code was generated by the following coccinelle/spatch script and
 > then manually repaired.
 > 
-> Clean up a couple spots in the code that had repetitive
-> y = cpu_to_*((blah << blah_blah) & blat)
-> y |= cpu_to_*((blahs << blahs_blahs) & blats)
-> to
-> x = FIELD_PREP(blat blah)
-> x |= FIELD_PREP(blats, blahs)
-> y = cpu_to_*(x);
+> Several places I changed to OR into a single variable with |= instead of
+> using a multi-line statement with trailing OR operators, as it
+> (subjectively) makes the code clearer.
+> 
+> A local variable vmvf_and_timeout was created and used to avoid multiple
+> logical ORs being __le16 converted, which shortened some lines and makes
+> the code cleaner.
 > 
 > @prep@
 > constant shift,mask;
+> type T;
 > expression a;
 > @@
-> -((a << shift) & mask)
+> -(((T)(a) << shift) & mask)
 > +FIELD_PREP(mask, a)
 > 
 > Cc: Julia Lawall <Julia.Lawall@inria.fr>
-> Cc: Ahmed Zaki <ahmed.zaki@intel.com>
 > Reviewed-by: Marcin Szycik <marcin.szycik@linux.intel.com>
 > Signed-off-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
 
