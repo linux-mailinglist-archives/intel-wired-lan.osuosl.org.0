@@ -1,80 +1,79 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id CD93B7F724C
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 24 Nov 2023 12:02:01 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 198AD7F724F
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 24 Nov 2023 12:02:21 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 6273461512;
-	Fri, 24 Nov 2023 11:02:00 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6273461512
+	by smtp3.osuosl.org (Postfix) with ESMTP id A9B6E61511;
+	Fri, 24 Nov 2023 11:02:19 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A9B6E61511
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1700823720;
-	bh=5VGPZjnK/IYKk13XFKSL6RTFbklaguh7lKFoYC/5EYM=;
+	s=default; t=1700823739;
+	bh=iW9uhVpN0TnBVzt9wMz2pRoi86EKUkMg0yqXxBziWc8=;
 	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=QkcvMOq0AGE08KPpjsXy/fGhwvJbxdigmETpzgiaVuMdcboKdnoOhoD7h5I2b3APy
-	 /wWk6E4+I6ogVQPzH2vl+8WvQehLv0yYLmsCA52WZgAI99OGEOP8EAvbNReGr1s6F5
-	 Q+3bGTho+cJEKtbJ/YSbrNaUB1Y05JMYTgCoqXmsBmS6mJh+jwqQY/vKXk/fZeDPVD
-	 GRiV9j6QvH4pC7R6OXisWabr19hU3LQgqDsjskVpLuqEEmrPAnznQI8Mc3i8y2NGw5
-	 3jmhbWNDqZgd+SiJPVeUWBIqgPCMcg5691hFYhxQ605SOIMdbIk90U1JVvtAJsuYAS
-	 U46A359kYBgIw==
+	b=5f9pHAkWn6S85s11twR1qkOuuF2NFqq/qdbBlpBUG+pVvuoAe+5dnzAHiXujUouv/
+	 W+hEjWqorJoKA0ZnP7yBSVuH24qYAZuVZfYH+jL69+yPpQ13XqWd6N97k2voL/hyPL
+	 4U9etHg8txJy5YrBj5BZiHpA1xQz8JS/FklkNm5g3OjS5mK36NRQrnuRZ9+I4h9An6
+	 L/DmsiNsCF0WLXyRjHaA5iQHcPzZBYvO2L+P6viJVsmBKJV/4GLh6bY4q9TGaOGyF9
+	 O2ZZpeB4r5p6hpugIlevraodsTJLjkjlrPyJc995xJ9evpjsFO5uBu+Y6RB8L9CWuI
+	 XILKDPoXS5stw==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id enp5z-a-EEBD; Fri, 24 Nov 2023 11:01:59 +0000 (UTC)
+	with ESMTP id VE9whF1ij6Q5; Fri, 24 Nov 2023 11:02:19 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 43B5E60B0B;
-	Fri, 24 Nov 2023 11:01:59 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 43B5E60B0B
+	by smtp3.osuosl.org (Postfix) with ESMTP id 9675E61502;
+	Fri, 24 Nov 2023 11:02:18 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9675E61502
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id CD6C11BF83C
- for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Nov 2023 11:01:53 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 73EE01BF83C
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Nov 2023 11:02:13 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id A6F99821E1
- for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Nov 2023 11:01:53 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org A6F99821E1
+ by smtp1.osuosl.org (Postfix) with ESMTP id 48512821E0
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Nov 2023 11:02:13 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 48512821E0
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id nGn_Um3p5Rcr for <intel-wired-lan@lists.osuosl.org>;
- Fri, 24 Nov 2023 11:01:53 +0000 (UTC)
-Received: from dfw.source.kernel.org (dfw.source.kernel.org
- [IPv6:2604:1380:4641:c500::1])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 159B3821D6
- for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Nov 2023 11:01:53 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 159B3821D6
+ with ESMTP id pu25YOSeZZpv for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 24 Nov 2023 11:02:12 +0000 (UTC)
+Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id B0AEB821C5
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Nov 2023 11:02:12 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B0AEB821C5
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by dfw.source.kernel.org (Postfix) with ESMTP id 5893C62136;
- Fri, 24 Nov 2023 11:01:52 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D1ECFC433C7;
- Fri, 24 Nov 2023 11:01:50 +0000 (UTC)
-Date: Fri, 24 Nov 2023 11:01:48 +0000
+ by dfw.source.kernel.org (Postfix) with ESMTP id E25F762136;
+ Fri, 24 Nov 2023 11:02:11 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3F8F8C433C7;
+ Fri, 24 Nov 2023 11:02:10 +0000 (UTC)
+Date: Fri, 24 Nov 2023 11:02:07 +0000
 From: Simon Horman <horms@kernel.org>
 To: Jesse Brandeburg <jesse.brandeburg@intel.com>
-Message-ID: <20231124110148.GJ50352@kernel.org>
+Message-ID: <20231124110207.GK50352@kernel.org>
 References: <20231121211921.19834-1-jesse.brandeburg@intel.com>
- <20231121211921.19834-11-jesse.brandeburg@intel.com>
+ <20231121211921.19834-12-jesse.brandeburg@intel.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20231121211921.19834-11-jesse.brandeburg@intel.com>
+In-Reply-To: <20231121211921.19834-12-jesse.brandeburg@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1700823712;
- bh=pAzbhg6Np4McrtVqaHbOiqH3nSzqJr4A1M4dWs8QWcs=;
+ d=kernel.org; s=k20201202; t=1700823731;
+ bh=TAuekQvbUIp2kEg0QV2/67OHSWj/+A92G8o3FKcZjl4=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=trs3RDmwYZZRuqn9alxC+f9Ro3w4tXNH3I5yaB/hWOpxDdFOGFFi0/e+C18Nc0aUp
- PEWq8uP5GOmDXqKiU5aZjBQGH2hzMAKg4G+CNj4sIOAQOQmUymrMNKSsBHCWAn5lUe
- qEj0Eer+pTBlHvaXXzTtz7pAoR7IhpjbjDDrS5POJZD6s9sVVwB/aLgd5B8GKdwuFo
- 03m65Eon0qFm5/gZACnlBxWCLLN5Tq0yWYb/EFAbnqrc3y35XyL9VW/pcRyqjkYXpD
- 9fpMXuxVKtFSUsVvPZlF8nNxgse7TkUTY+AVKgE34CU7KtzyFeKQWi2OFQqnp4+ofm
- 2jkPMvmX8A3Kg==
+ b=Xd57WlrC/NQSShYN73rii/vQvmF2T2EXZ2Y3G3MMxnBv64vDctYn5wm+Id0e1FC+A
+ Qz+nvgEg09GvcoCoSfwaluYL3kUKv31ienO+tiszxqhKbQi5Bi0qDIaAn/UQf6CJ3f
+ VXH+WvESKkeOjIyP++cY45AXIfG+t+xn/+IKJD0q6c/ego2sH0xptWVpL6yJG7ViQ5
+ 95tcT/D+1TIcM9iUv8DMZMWP7Tbt4gGmTMBD9qaqbLRhuQ028ezwFuUs06jijDjJbE
+ 4qf0eQKlvZP7XW4Oz75lfxN6Nzl9J4i+YAoCG3ddE+w+oGn1fRMZEx+q8Xvt7gMrlG
+ GrJOXDkAPE22w==
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=trs3RDmw
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v1 10/13] igc: field get
+ header.a=rsa-sha256 header.s=k20201202 header.b=Xd57WlrC
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v1 11/13] i40e: field get
  conversion
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -90,24 +89,31 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Cc: Julia Lawall <Julia.Lawall@inria.fr>, netdev@vger.kernel.org,
  Marcin Szycik <marcin.szycik@linux.intel.com>,
- intel-wired-lan@lists.osuosl.org
+ intel-wired-lan@lists.osuosl.org,
+ Aleksandr Loktionov <aleksandr.loktionov@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, Nov 21, 2023 at 01:19:18PM -0800, Jesse Brandeburg wrote:
-> Refactor the igc driver to use FIELD_GET() for mask and shift reads,
+On Tue, Nov 21, 2023 at 01:19:19PM -0800, Jesse Brandeburg wrote:
+> Refactor the i40e driver to use FIELD_GET() for mask and shift reads,
 > which reduces lines of code and adds clarity of intent.
 > 
 > This code was generated by the following coccinelle/spatch script and
-> then manually repaired in a later patch.
+> then manually repaired.
+> 
+> While making one of the conversions, an if() check was inverted to
+> return early and avoid un-necessary indentation of the remainder of the
+> function. In some other cases a stack variable was moved inside the
+> block where it was used while doing cleanups/review.
 > 
 > @get@
 > constant shift,mask;
+> metavariable type T;
 > expression a;
 > @@
-> -((a & mask) >> shift)
+> -(((T)(a) & mask) >> shift)
 > +FIELD_GET(mask, a)
 > 
 > and applied via:
@@ -115,6 +121,7 @@ On Tue, Nov 21, 2023 at 01:19:18PM -0800, Jesse Brandeburg wrote:
 >  drivers/net/ethernet/intel/
 > 
 > Cc: Julia Lawall <Julia.Lawall@inria.fr>
+> Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
 > Reviewed-by: Marcin Szycik <marcin.szycik@linux.intel.com>
 > Signed-off-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
 
