@@ -1,91 +1,79 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 09FD47F85AF
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 24 Nov 2023 22:55:08 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id EE9577F8AD8
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 25 Nov 2023 13:49:29 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id F124B421D5;
-	Fri, 24 Nov 2023 21:55:05 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org F124B421D5
+	by smtp2.osuosl.org (Postfix) with ESMTP id 297D5403BE;
+	Sat, 25 Nov 2023 12:49:28 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 297D5403BE
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1700862906;
-	bh=omIVty/PB6MHySjm9OZnxyQYMimecgoqHAye88w+Clc=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1700916568;
+	bh=NmkMGKCriPhi/yuWsagInBKUtRKmVIBgcVfze/vRSTk=;
+	h=To:References:From:Date:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=uo3AvBiQPGR6Y1qUWSJF4JnXzhy2LlDYnMA954B6bkm/XqsixF7iyJ96uv2AbEMV8
-	 uBYyGeiB308C4IcvrGMeRBFNuZXrzDl8dTC16tYuxS2w6DjmsVHuQCzXVB1UxbrTo9
-	 mGi8FoPC8rF487BeJizHCS9jKeSZI6+gFTWlFqtRtUxUICZu9uZB1j0dcIpzTt4mKs
-	 S51hzcebNQr79XcZ+COPoyqu6E+69P40ywKskWSShDIYXVB7Ztzm4lQA7nv1cbpPSi
-	 PJP9VDdqxPwbLYUBz7uRu2C1Jrntxd6900fCramSxAqt7x6Pi55T/zEvKqOeKPr/db
-	 EugMkxjZxZM6g==
+	b=lO8U0GRmwLZ2rm1q+zvPlwmFlNkn7QYvna5xOD/9GtbXwhskE1NSkVl9OcfJEhYwp
+	 60Fc3CBfmeset4WobKpHRBwRPM/bZdZTEm/mITkpUeWjebBYuw7DYFSgvoFfwWxb44
+	 o0rw5dirCgsnD8WJYonDLrtN1+HMd4thZeVbb7HadBMcRCJHbtrPeVTvSb7AIsyeKF
+	 8kmF58rZkNnwI9d/DYG3ABUQRYx6O/rtEq0Wgkl4umFTV3m7AdeGKyW7ZIM/u4OJCb
+	 T5MxkqSi7Cj3LZJ16iJ4kPwHNjSYe4RKkzh7BVFF2MjpUxj8MS92hETTiMm0WzDfii
+	 pRysLIy8eR+lg==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id pJHMkkJU2_3q; Fri, 24 Nov 2023 21:55:05 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id tPCnJheBrTAq; Sat, 25 Nov 2023 12:49:27 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 8A0A54213E;
-	Fri, 24 Nov 2023 21:55:04 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8A0A54213E
+	by smtp2.osuosl.org (Postfix) with ESMTP id B11D44037E;
+	Sat, 25 Nov 2023 12:49:26 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B11D44037E
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id E8E911BF32E
- for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Nov 2023 21:54:59 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 7181D1BF487
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 25 Nov 2023 12:49:21 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id C336061542
- for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Nov 2023 21:54:59 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C336061542
+ by smtp3.osuosl.org (Postfix) with ESMTP id 493D560B69
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 25 Nov 2023 12:49:21 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 493D560B69
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id H15idzBIXFcq for <intel-wired-lan@lists.osuosl.org>;
- Fri, 24 Nov 2023 21:54:58 +0000 (UTC)
-Received: from mgamail.intel.com (mgamail.intel.com [192.55.52.120])
- by smtp3.osuosl.org (Postfix) with ESMTPS id BF47461520
- for <intel-wired-lan@lists.osuosl.org>; Fri, 24 Nov 2023 21:54:58 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org BF47461520
-X-IronPort-AV: E=McAfee;i="6600,9927,10904"; a="391344090"
-X-IronPort-AV: E=Sophos;i="6.04,224,1695711600"; d="scan'208";a="391344090"
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
- by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 24 Nov 2023 13:54:52 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10904"; a="802229627"
-X-IronPort-AV: E=Sophos;i="6.04,224,1695711600"; d="scan'208";a="802229627"
-Received: from lkp-server01.sh.intel.com (HELO d584ee6ebdcc) ([10.239.97.150])
- by orsmga001.jf.intel.com with ESMTP; 24 Nov 2023 13:54:49 -0800
-Received: from kbuild by d584ee6ebdcc with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1r6e8N-0003JY-2X;
- Fri, 24 Nov 2023 21:54:47 +0000
-Date: Sat, 25 Nov 2023 05:54:21 +0800
-From: kernel test robot <lkp@intel.com>
-To: Aleksandr Loktionov <aleksandr.loktionov@intel.com>,
- intel-wired-lan@lists.osuosl.org, anthony.l.nguyen@intel.com
-Message-ID: <202311250323.TmiFJ9nb-lkp@intel.com>
-References: <20231124160804.2672341-1-aleksandr.loktionov@intel.com>
+ with ESMTP id 4lY9hfmyBJDi for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 25 Nov 2023 12:49:20 +0000 (UTC)
+X-Greylist: delayed 1192 seconds by postgrey-1.37 at util1.osuosl.org;
+ Sat, 25 Nov 2023 12:49:19 UTC
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A70B360B29
+Received: from szxga03-in.huawei.com (szxga03-in.huawei.com [45.249.212.189])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id A70B360B29
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 25 Nov 2023 12:49:19 +0000 (UTC)
+Received: from dggpemm500005.china.huawei.com (unknown [172.30.72.53])
+ by szxga03-in.huawei.com (SkyGuard) with ESMTP id 4ScrdJ16N2zMnKp;
+ Sat, 25 Nov 2023 20:24:36 +0800 (CST)
+Received: from [10.69.30.204] (10.69.30.204) by dggpemm500005.china.huawei.com
+ (7.185.36.74) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.35; Sat, 25 Nov
+ 2023 20:29:22 +0800
+To: Alexander Lobakin <aleksander.lobakin@intel.com>, "David S. Miller"
+ <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Jakub Kicinski
+ <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>
+References: <20231124154732.1623518-1-aleksander.lobakin@intel.com>
+ <20231124154732.1623518-2-aleksander.lobakin@intel.com>
+From: Yunsheng Lin <linyunsheng@huawei.com>
+Message-ID: <9902d1c4-5e51-551a-3b66-c078c217c5ad@huawei.com>
+Date: Sat, 25 Nov 2023 20:29:22 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:52.0) Gecko/20100101
+ Thunderbird/52.2.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20231124160804.2672341-1-aleksandr.loktionov@intel.com>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1700862898; x=1732398898;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=3YjHettXvMeAxIoI/czxLXV1254w1xnxROIM5sTJpK0=;
- b=CTvmhZIvyBYHulsMGYyDfQJSTWQ3dDtbJBzvuxizq0BxlKAsc203eYby
- mLOMaU2D2OjpEjtvS9mplrzL/yeWkDt7jPE5wf8jKu0VYi3hlSa39OfFr
- pl4M+yl7pdAyPzq90CG/PvPitCNBZyK/NcSxuRHBc/XyPMLmWmaV+ne2h
- gjNdQHbAGdO5VvfjATt0lcSUzNf1IubMquFThIq37F3n9JJeh9MpEAGS+
- Bv/VRtnhPuzrbBOIiKOi6FaoPGsE+1c6+a8gzrLWSwaYbKGHDRiyLObIQ
- esbTGqHivopoT5R0ornfc44NmqncdcW2/24AfrMfVLhvVRgB8FVcyuLM8
- g==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=CTvmhZIv
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v2] i40e: add ability to
- reset vf for tx and rx mdd events
+In-Reply-To: <20231124154732.1623518-2-aleksander.lobakin@intel.com>
+Content-Language: en-US
+X-Originating-IP: [10.69.30.204]
+X-ClientProxiedBy: dggems702-chm.china.huawei.com (10.3.19.179) To
+ dggpemm500005.china.huawei.com (7.185.36.74)
+X-CFilter-Loop: Reflected
+Subject: Re: [Intel-wired-lan] [PATCH net-next v5 01/14] page_pool: make
+ sure frag API fields don't span between cachelines
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,78 +86,57 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Jan Sokolowski <jan.sokolowski@intel.com>, netdev@vger.kernel.org,
- llvm@lists.linux.dev, Padraig J Connolly <padraig.j.connolly@intel.com>,
- oe-kbuild-all@lists.linux.dev
+Cc: Paul Menzel <pmenzel@molgen.mpg.de>,
+ Maciej Fijalkowski <maciej.fijalkowski@intel.com>,
+ Jesper Dangaard Brouer <hawk@kernel.org>,
+ Larysa Zaremba <larysa.zaremba@intel.com>, netdev@vger.kernel.org,
+ Alexander Duyck <alexanderduyck@fb.com>,
+ Ilias Apalodimas <ilias.apalodimas@linaro.org>, linux-kernel@vger.kernel.org,
+ Michal Kubiak <michal.kubiak@intel.com>, intel-wired-lan@lists.osuosl.org,
+ David Christensen <drc@linux.vnet.ibm.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi Aleksandr,
+On 2023/11/24 23:47, Alexander Lobakin wrote:
+> After commit 5027ec19f104 ("net: page_pool: split the page_pool_params
+> into fast and slow") that made &page_pool contain only "hot" params at
+> the start, cacheline boundary chops frag API fields group in the middle
+> again.
+> To not bother with this each time fast params get expanded or shrunk,
+> let's just align them to `4 * sizeof(long)`, the closest upper pow-2 to
+> their actual size (2 longs + 2 ints). This ensures 16-byte alignment for
+> the 32-bit architectures and 32-byte alignment for the 64-bit ones,
+> excluding unnecessary false-sharing.
+> 
+> Signed-off-by: Alexander Lobakin <aleksander.lobakin@intel.com>
+> ---
+>  include/net/page_pool/types.h | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/include/net/page_pool/types.h b/include/net/page_pool/types.h
+> index e1bb92c192de..989d07b831fc 100644
+> --- a/include/net/page_pool/types.h
+> +++ b/include/net/page_pool/types.h
+> @@ -127,7 +127,7 @@ struct page_pool {
+>  
+>  	bool has_init_callback;
 
-kernel test robot noticed the following build errors:
+It seems odd to have only a slow field between tow fast
+field group, isn't it better to move it to the end of
+page_pool or where is more appropriate?
 
-[auto build test ERROR on tnguy-next-queue/dev-queue]
+>  
+> -	long frag_users;
+> +	long frag_users __aligned(4 * sizeof(long));
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Aleksandr-Loktionov/i40e-add-ability-to-reset-vf-for-tx-and-rx-mdd-events/20231125-000929
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git dev-queue
-patch link:    https://lore.kernel.org/r/20231124160804.2672341-1-aleksandr.loktionov%40intel.com
-patch subject: [PATCH iwl-next v2] i40e: add ability to reset vf for tx and rx mdd events
-config: x86_64-rhel-8.3-rust (https://download.01.org/0day-ci/archive/20231125/202311250323.TmiFJ9nb-lkp@intel.com/config)
-compiler: clang version 16.0.4 (https://github.com/llvm/llvm-project.git ae42196bc493ffe877a7e3dff8be32035dea4d07)
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20231125/202311250323.TmiFJ9nb-lkp@intel.com/reproduce)
+If we need that, why not just use '____cacheline_aligned_in_smp'?
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202311250323.TmiFJ9nb-lkp@intel.com/
-
-All errors (new ones prefixed by >>):
-
->> drivers/net/ethernet/intel/i40e/i40e_debugfs.c:746:9: error: no member named 'num_mdd_events' in 'struct i40e_vf'
-                            vf->num_mdd_events);
-                            ~~  ^
-   include/linux/dev_printk.h:150:67: note: expanded from macro 'dev_info'
-           dev_printk_index_wrap(_dev_info, KERN_INFO, dev, dev_fmt(fmt), ##__VA_ARGS__)
-                                                                            ^~~~~~~~~~~
-   include/linux/dev_printk.h:110:23: note: expanded from macro 'dev_printk_index_wrap'
-                   _p_func(dev, fmt, ##__VA_ARGS__);                       \
-                                       ^~~~~~~~~~~
-   1 error generated.
-
-
-vim +746 drivers/net/ethernet/intel/i40e/i40e_debugfs.c
-
-02e9c290814cc1 Jesse Brandeburg 2013-09-11  727  
-3118025a070f33 Mitch Williams   2017-04-12  728  /**
-3118025a070f33 Mitch Williams   2017-04-12  729   * i40e_dbg_dump_vf - dump VF info
-3118025a070f33 Mitch Williams   2017-04-12  730   * @pf: the i40e_pf created in command write
-3118025a070f33 Mitch Williams   2017-04-12  731   * @vf_id: the vf_id from the user
-3118025a070f33 Mitch Williams   2017-04-12  732   **/
-3118025a070f33 Mitch Williams   2017-04-12  733  static void i40e_dbg_dump_vf(struct i40e_pf *pf, int vf_id)
-3118025a070f33 Mitch Williams   2017-04-12  734  {
-3118025a070f33 Mitch Williams   2017-04-12  735  	struct i40e_vf *vf;
-3118025a070f33 Mitch Williams   2017-04-12  736  	struct i40e_vsi *vsi;
-3118025a070f33 Mitch Williams   2017-04-12  737  
-3118025a070f33 Mitch Williams   2017-04-12  738  	if (!pf->num_alloc_vfs) {
-3118025a070f33 Mitch Williams   2017-04-12  739  		dev_info(&pf->pdev->dev, "no VFs allocated\n");
-3118025a070f33 Mitch Williams   2017-04-12  740  	} else if ((vf_id >= 0) && (vf_id < pf->num_alloc_vfs)) {
-3118025a070f33 Mitch Williams   2017-04-12  741  		vf = &pf->vf[vf_id];
-3118025a070f33 Mitch Williams   2017-04-12  742  		vsi = pf->vsi[vf->lan_vsi_idx];
-3118025a070f33 Mitch Williams   2017-04-12  743  		dev_info(&pf->pdev->dev, "vf %2d: VSI id=%d, seid=%d, qps=%d\n",
-3118025a070f33 Mitch Williams   2017-04-12  744  			 vf_id, vf->lan_vsi_id, vsi->seid, vf->num_queue_pairs);
-5710ab79166504 Jacob Keller     2022-02-16  745  		dev_info(&pf->pdev->dev, "       num MDD=%lld\n",
-5710ab79166504 Jacob Keller     2022-02-16 @746  			 vf->num_mdd_events);
-3118025a070f33 Mitch Williams   2017-04-12  747  	} else {
-3118025a070f33 Mitch Williams   2017-04-12  748  		dev_info(&pf->pdev->dev, "invalid VF id %d\n", vf_id);
-3118025a070f33 Mitch Williams   2017-04-12  749  	}
-3118025a070f33 Mitch Williams   2017-04-12  750  }
-3118025a070f33 Mitch Williams   2017-04-12  751  
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+>  	struct page *frag_page;
+>  	unsigned int frag_offset;
+>  	u32 pages_state_hold_cnt;
+> 
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
