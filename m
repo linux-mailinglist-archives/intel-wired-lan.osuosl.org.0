@@ -1,81 +1,86 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7221E7FA8BD
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 27 Nov 2023 19:17:37 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 622187FAE63
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 28 Nov 2023 00:34:06 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id D6F0C817A2;
-	Mon, 27 Nov 2023 18:17:33 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D6F0C817A2
+	by smtp4.osuosl.org (Postfix) with ESMTP id AB17840335;
+	Mon, 27 Nov 2023 23:34:04 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org AB17840335
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1701109053;
-	bh=Hz2uVTaK+Jg8E+2yAmv8tmPVv7Vg1zS5EM6Ae79nnYQ=;
-	h=Date:From:To:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=aQAr+JkDKAbsWI82Wxo7q8opLi1/y2FWyCcJYbiS0JFKiHQssrCbhOGuZDNPa6Dvb
-	 +InrWyKJhvL7u6ilaNgVPsFRRJK4zfYFIngOyAr/4HXrTMllwfidi5lliHrF8aSCUt
-	 0E5qUODkjunHeLtAUezq4dlAhX6L/CA4r0EUGkESFUn4ir/vQYXU9Vkk1m4n+Mt+is
-	 9mG6zsXZ8JPO2GfZh4sy63KDKeYc+kfNsBsHfEaKvYVGIvJnY73wlZVP85VLuHmLBS
-	 2cYMqCVlgBjQYeTG/coAldVLMU4rdAjITejL1xBdPAqPZ+3Jz5MKdsrt1Iqvg8mVpU
-	 9yR0Cmec2/4Pw==
+	s=default; t=1701128044;
+	bh=hoytRuV9fcDGd/09eXS/cc2cNQRsOnZPO8MJXvoAjMg=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=k7VMIefsjBbDfHl3JBLajRG1v413Xx8FG31QSXnIbH9oVC/PYzU8/QSM7T5g6vlr2
+	 htTX44+WGxGSqMq/JY3hWv2WO5WPPd/Njg3feHnh4fezWSoOzts3xjve1BPo64kHyy
+	 fT81sfSaD6TBUW/sn5hV3a4xSuIHzgvwQyOr7gQue/DNS5RoHuqSLSdUmzX6tcKmjA
+	 cLOx0R44n0n5OASVk3tb6o3xgGzta+lCSTSPiCjiZAxIltwe0/x7mq73+iVV0pv16U
+	 4lTEzkjXnZP8XHH/ciFg4QsbTRqVI5/M9jyAfTnCNbC6dp+RgCGvnfALhdK8jQFaf7
+	 pmMx3Sf3x4/MA==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id QbdmKGP0Ou1L; Mon, 27 Nov 2023 18:17:33 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id ZPrmf9n-bHbg; Mon, 27 Nov 2023 23:34:03 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id A25F381768;
-	Mon, 27 Nov 2023 18:17:32 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org A25F381768
+	by smtp4.osuosl.org (Postfix) with ESMTP id 595E740341;
+	Mon, 27 Nov 2023 23:34:03 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 595E740341
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 877B11BF348
- for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Nov 2023 18:17:27 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id EA8091BF20B
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Nov 2023 23:33:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 5CBCE4064E
- for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Nov 2023 18:17:27 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 5CBCE4064E
+ by smtp1.osuosl.org (Postfix) with ESMTP id CF1D281A33
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Nov 2023 23:33:57 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org CF1D281A33
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id DNrna6I0a0_9 for <intel-wired-lan@lists.osuosl.org>;
- Mon, 27 Nov 2023 18:17:25 +0000 (UTC)
-Received: from ams.source.kernel.org (ams.source.kernel.org [145.40.68.75])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 0C0384063B
- for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Nov 2023 18:17:24 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 0C0384063B
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by ams.source.kernel.org (Postfix) with ESMTP id 0B669B834FB;
- Mon, 27 Nov 2023 18:17:22 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C6F6DC433C7;
- Mon, 27 Nov 2023 18:17:20 +0000 (UTC)
-Date: Mon, 27 Nov 2023 10:17:20 -0800
-From: Jakub Kicinski <kuba@kernel.org>
-To: Alexander Lobakin <aleksander.lobakin@intel.com>
-Message-ID: <20231127101720.282862f6@kernel.org>
-In-Reply-To: <a1a0c27f-f367-40e7-9dc2-9421b4b6379a@intel.com>
-References: <20231124154732.1623518-1-aleksander.lobakin@intel.com>
- <20231124154732.1623518-4-aleksander.lobakin@intel.com>
- <6bd14aa9-fa65-e4f6-579c-3a1064b2a382@huawei.com>
- <a1a0c27f-f367-40e7-9dc2-9421b4b6379a@intel.com>
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id O2Upo3OyiFnd for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 27 Nov 2023 23:33:57 +0000 (UTC)
+Received: from mgamail.intel.com (mgamail.intel.com [192.55.52.120])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id C108981A16
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Nov 2023 23:33:56 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org C108981A16
+X-IronPort-AV: E=McAfee;i="6600,9927,10907"; a="391687641"
+X-IronPort-AV: E=Sophos;i="6.04,232,1695711600"; d="scan'208";a="391687641"
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+ by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 27 Nov 2023 15:33:54 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10907"; a="891900872"
+X-IronPort-AV: E=Sophos;i="6.04,232,1695711600"; d="scan'208";a="891900872"
+Received: from jekeller-desk.amr.corp.intel.com (HELO
+ jekeller-desk.jekeller.internal) ([10.166.241.1])
+ by orsmga004-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 27 Nov 2023 15:33:54 -0800
+From: Jacob Keller <jacob.e.keller@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Date: Mon, 27 Nov 2023 15:33:50 -0800
+Message-ID: <20231127233350.2652604-1-jacob.e.keller@intel.com>
+X-Mailer: git-send-email 2.41.0
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1701109041;
- bh=Kq8G4186oIvvG0OGelsVcM8Ma8D3c+DoqPy0UYxMLWY=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=QG6ONPukVchwWErAMLaSIt1BRLdfpyvDFYvlAneifGBLLwxrgc9YT9DQUv+jORVZl
- Wv2eJmxqdYpysNKvq88faMBlo509G9gLB4g5hMFATiV5ip1MamKARiU7ZI0QrcJzby
- iBOmDkhn7cftAcy9e+M8XNePHSRWBpEgAucP8J5IOYslJywc08DLve2OOYLOKSUH9D
- dXV4vYiNlS555n5f3WzGRnn8Lj7S9VnIkJT3TNd8k8d8Wd2AEfeoacY5qE0wwD7bxj
- 3zEqW/QBr4UsSEFa3hQSNHvf5Db9My2Ez9GHfnaqmQhtAynL/Th6EhJQ2Mwo2LLnyA
- KeVCUsFW2DZRA==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=QG6ONPuk
-Subject: Re: [Intel-wired-lan] [PATCH net-next v5 03/14] page_pool: avoid
- calling no-op externals when possible
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1701128036; x=1732664036;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=oV9i7t4dLdAA3Jw0YCkuKYepgWZlqx1MZuhXZAaWb50=;
+ b=d31FELvIqPnWaskrpPlpEIvjB0tJtytVH1BE6X8p3wJ8uC36MCbBDZwS
+ okRxwjl8l2yGCqMcy5wrDu9LvOP5Ya/U1LNllaZdx5PA+u7DpkrSwcGcj
+ 9TXVrhxATQsZpox4Ex1ltk4LtPPj0eLWhTMAoArIfqNZXyBHzr/rQumyl
+ sqKoEOuJ6C8MTdrEQq7OKzcBE0mIN4DqOsn6JwRHAi9z4A0a8YWIXsAac
+ BnFTtHKiKg0BxWCX+FoHWBATtBOuzSHHiEPvRLyCWRvWYlprqNggYKEie
+ bhZqPl+r88oxa8KekbMunf3YEi4D8iJHNoYKUy5+XK+6Zprr4v481IToA
+ w==;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=d31FELvI
+Subject: [Intel-wired-lan] [PATCH iwl-net v2] iavf: validate
+ tx_coalesce_usecs even if rx_coalesce_usecs is zero
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,35 +93,90 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Paul Menzel <pmenzel@molgen.mpg.de>,
- Maciej Fijalkowski <maciej.fijalkowski@intel.com>,
- Jesper Dangaard Brouer <hawk@kernel.org>, Eric Dumazet <edumazet@google.com>,
- Larysa Zaremba <larysa.zaremba@intel.com>, netdev@vger.kernel.org,
- Alexander Duyck <alexanderduyck@fb.com>, Ilias
- Apalodimas <ilias.apalodimas@linaro.org>, linux-kernel@vger.kernel.org, "David
- S. Miller" <davem@davemloft.net>, Yunsheng Lin <linyunsheng@huawei.com>,
- Michal Kubiak <michal.kubiak@intel.com>, intel-wired-lan@lists.osuosl.org,
- David Christensen <drc@linux.vnet.ibm.com>, Paolo Abeni <pabeni@redhat.com>,
- Christoph Hellwig <hch@lst.de>
+Cc: Jacob Keller <jacob.e.keller@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Anthony Nguyen <anthony.l.nguyen@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, 27 Nov 2023 15:32:19 +0100 Alexander Lobakin wrote:
-> > Sorry for not remembering the suggestion:(  
-> 
-> In the previous versions of this change I used a global flag per whole
-> page_pool, just like XSk does for the whole XSk buff pool, then you
-> proposed to use the lowest bit of ::dma_addr and store it per page, so
-> that it would be more granular/precise. I tested it and it doesn't
-> perform worse than global, but in some cases may be beneficial.
+In __iavf_set_coalesce, the driver checks both ec->rx_coalesce_usecs and
+ec->tx_coalesce_usecs for validity. It does this via a chain if if/else-if
+blocks. If every single branch of the series of if statements exited, this
+would be fine. However, the rx_coalesce_usecs is checked against zero to
+print an informative message if use_adaptive_rx_coalesce is enabled. If
+this check is true, it short circuits the entire chain of statements,
+preventing validation of the tx_coalesce_usecs field.
 
-FWIW I'd vote to stick to per-page pool. You seem to handle the
-sizeof(dma_addr_t) > sizeof(long) case correctly but the code is
-growing in complexity, providing no known/measurable benefit.
-We can always do this later but for now it seems like a premature
-optimization to me.
+Indeed, since commit e792779e6b63 ("iavf: Prevent changing static ITR
+values if adaptive moderation is on") the iavf driver actually rejects any
+change to the tx_coalesce_usecs or rx_coalesce_usecs when
+use_adaptive_tx_coalesce or use_adaptive_rx_coalesce is enabled, making
+this checking a bit redundant.
+
+Fix this error by removing the unnecessary and redundant checks for
+use_adaptive_rx_coalesce and use_adaptive_tx_coalesce. Since zero is a
+valid value, and since the tx_coalesce_usecs and rx_coalesce_usecs fields
+are already unsigned, remove the minimum value check. This allows assigning
+an ITR value ranging from 0-8160 as described by the printed message.
+
+Fixes: 65e87c0398f5 ("i40evf: support queue-specific settings for interrupt moderation")
+Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
+---
+
+Changes since v1:
+* Fix the new check to continue allowing zero as a valid ITR value
+
+ drivers/net/ethernet/intel/iavf/iavf_ethtool.c | 12 ++----------
+ drivers/net/ethernet/intel/iavf/iavf_txrx.h    |  1 -
+ 2 files changed, 2 insertions(+), 11 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/iavf/iavf_ethtool.c b/drivers/net/ethernet/intel/iavf/iavf_ethtool.c
+index 6f236d1a6444..19cbfe554689 100644
+--- a/drivers/net/ethernet/intel/iavf/iavf_ethtool.c
++++ b/drivers/net/ethernet/intel/iavf/iavf_ethtool.c
+@@ -827,18 +827,10 @@ static int __iavf_set_coalesce(struct net_device *netdev,
+ 	struct iavf_adapter *adapter = netdev_priv(netdev);
+ 	int i;
+ 
+-	if (ec->rx_coalesce_usecs == 0) {
+-		if (ec->use_adaptive_rx_coalesce)
+-			netif_info(adapter, drv, netdev, "rx-usecs=0, need to disable adaptive-rx for a complete disable\n");
+-	} else if ((ec->rx_coalesce_usecs < IAVF_MIN_ITR) ||
+-		   (ec->rx_coalesce_usecs > IAVF_MAX_ITR)) {
++	if (ec->rx_coalesce_usecs > IAVF_MAX_ITR) {
+ 		netif_info(adapter, drv, netdev, "Invalid value, rx-usecs range is 0-8160\n");
+ 		return -EINVAL;
+-	} else if (ec->tx_coalesce_usecs == 0) {
+-		if (ec->use_adaptive_tx_coalesce)
+-			netif_info(adapter, drv, netdev, "tx-usecs=0, need to disable adaptive-tx for a complete disable\n");
+-	} else if ((ec->tx_coalesce_usecs < IAVF_MIN_ITR) ||
+-		   (ec->tx_coalesce_usecs > IAVF_MAX_ITR)) {
++	} else if (ec->tx_coalesce_usecs > IAVF_MAX_ITR) {
+ 		netif_info(adapter, drv, netdev, "Invalid value, tx-usecs range is 0-8160\n");
+ 		return -EINVAL;
+ 	}
+diff --git a/drivers/net/ethernet/intel/iavf/iavf_txrx.h b/drivers/net/ethernet/intel/iavf/iavf_txrx.h
+index 7e6ee32d19b6..10ba36602c0c 100644
+--- a/drivers/net/ethernet/intel/iavf/iavf_txrx.h
++++ b/drivers/net/ethernet/intel/iavf/iavf_txrx.h
+@@ -15,7 +15,6 @@
+  */
+ #define IAVF_ITR_DYNAMIC	0x8000	/* use top bit as a flag */
+ #define IAVF_ITR_MASK		0x1FFE	/* mask for ITR register value */
+-#define IAVF_MIN_ITR		     2	/* reg uses 2 usec resolution */
+ #define IAVF_ITR_100K		    10	/* all values below must be even */
+ #define IAVF_ITR_50K		    20
+ #define IAVF_ITR_20K		    50
+
+base-commit: 218db91044f8f2f6db95ff4788ac1a03fcaf7c4a
+prerequisite-patch-id: b6de8a16db743e14af55f1b9cf67f31ef4da0900
+prerequisite-patch-id: d36ab3205e29262f859cbecc76f6f52aa35dd1b5
+prerequisite-patch-id: 0d1bf2d99824f1a2090539ef5bdd4ea96fbd9957
+-- 
+2.41.0
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
