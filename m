@@ -2,186 +2,185 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8E1CA7FA289
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 27 Nov 2023 15:22:20 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 233A17FA30A
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 27 Nov 2023 15:38:26 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 0001E405CA;
-	Mon, 27 Nov 2023 14:22:18 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 0001E405CA
+	by smtp2.osuosl.org (Postfix) with ESMTP id 98F27405C4;
+	Mon, 27 Nov 2023 14:38:24 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 98F27405C4
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1701094939;
-	bh=Gi30YrlaIEV+w5qgER2WRyrzBlY/d553GpOf1uxqgSY=;
+	s=default; t=1701095904;
+	bh=RmV4RWtJO5zxD+tw13jcqpZVygN1jnipxhjqm4RRTmE=;
 	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=RqS2JzTO1l4lpdSbmNXvg/mHqVNqMg5lk0tfjkq/FZBNuvnwJl/bZo99KIKmHrAt0
-	 UZlw7fva7OKjWSJG7O19fd+AoKQPES7yPa8NJhWVDbZGq0XU2sUxF9smvqxWvKBQ6j
-	 f9UO+MqBF/haY2SHHxYnky4iAzT+YTzikrN4PirBuhrsiHDBhAlvmUI9IyowL78dtW
-	 Z0Ih1a+qH+5cnElte/aBM+CPHm4eXANpq3+j3bWTLeBr4AscvGw7yPysv4EWSosZgE
-	 FGEoflIIhGnK3FxAEKzCqCR2lt36eP3Apbsux9snxLvGG2VCcppAJHSoHoQUUYyEih
-	 DLQs2m31aclew==
+	b=HVNoCta/gqNWLvSMtD02qvcUiN96HGhEfSc55CQYVHa9MjXMRHpbSs9TXyAJ7Lf6v
+	 KK/5OWmQPEQVxBO3naXlx0XnLMWC/6RavKn4+igR9ZF/NoNcf3XzotYDinoU7I1IXL
+	 /CMSjJO39WUz0JOob91JlO01UoA1GDlMSQfU2DbKkX0zmEWILgoafdc/W31wmKuKHK
+	 m3eemYRL/IQey40xwEwZSkwPyuy6u7wfTr/o3YjAVa1IaVi/soyTTt4zdaCAlZTkUJ
+	 jWbS0f7Y7UfEW0xrnDHRH5/Bx11j9QdYzm/cuf/VCFwDyO5jr0ogGzqiDTZZepH4m2
+	 7jUsj8G+fyy6g==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id DEV8_bJFowNu; Mon, 27 Nov 2023 14:22:18 +0000 (UTC)
+	with ESMTP id yk6eDKMtPZwt; Mon, 27 Nov 2023 14:38:23 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 6E1A9405A0;
-	Mon, 27 Nov 2023 14:22:17 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 6E1A9405A0
+	by smtp2.osuosl.org (Postfix) with ESMTP id C1076400AF;
+	Mon, 27 Nov 2023 14:38:22 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C1076400AF
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id EAB161BF2FF
- for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Nov 2023 14:22:11 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id A05361BF2FF
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Nov 2023 14:38:16 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id BEFBB405A0
- for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Nov 2023 14:22:11 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org BEFBB405A0
+ by smtp2.osuosl.org (Postfix) with ESMTP id 7D5E7405C4
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Nov 2023 14:38:16 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 7D5E7405C4
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Jo9jhASK32Zo for <intel-wired-lan@lists.osuosl.org>;
- Mon, 27 Nov 2023 14:22:10 +0000 (UTC)
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.8])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 8F2D6400AF
- for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Nov 2023 14:22:10 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 8F2D6400AF
-X-IronPort-AV: E=McAfee;i="6600,9927,10906"; a="5901405"
-X-IronPort-AV: E=Sophos;i="6.04,231,1695711600"; 
-   d="scan'208";a="5901405"
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
- by fmvoesa102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 27 Nov 2023 06:22:03 -0800
+ with ESMTP id Et_qVQsz_088 for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 27 Nov 2023 14:38:15 +0000 (UTC)
+Received: from mgamail.intel.com (mgamail.intel.com [134.134.136.24])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 4AD1540154
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 27 Nov 2023 14:38:14 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 4AD1540154
+X-IronPort-AV: E=McAfee;i="6600,9927,10906"; a="395535170"
+X-IronPort-AV: E=Sophos;i="6.04,231,1695711600"; d="scan'208";a="395535170"
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+ by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 27 Nov 2023 06:33:00 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10906"; a="802657339"
-X-IronPort-AV: E=Sophos;i="6.04,231,1695711600"; d="scan'208";a="802657339"
-Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82])
- by orsmga001.jf.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
- 27 Nov 2023 06:22:02 -0800
+X-IronPort-AV: E=McAfee;i="6600,9927,10906"; a="838726679"
+X-IronPort-AV: E=Sophos;i="6.04,231,1695711600"; d="scan'208";a="838726679"
+Received: from fmsmsx601.amr.corp.intel.com ([10.18.126.81])
+ by fmsmga004.fm.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
+ 27 Nov 2023 06:32:59 -0800
 Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
- fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
+ fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.34; Mon, 27 Nov 2023 06:22:01 -0800
-Received: from fmsedg602.ED.cps.intel.com (10.1.192.136) by
+ 15.1.2507.34; Mon, 27 Nov 2023 06:32:59 -0800
+Received: from fmsedg601.ED.cps.intel.com (10.1.192.135) by
  fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.34 via Frontend Transport; Mon, 27 Nov 2023 06:22:01 -0800
-Received: from NAM04-MW2-obe.outbound.protection.outlook.com (104.47.73.168)
- by edgegateway.intel.com (192.55.55.71) with Microsoft SMTP Server
+ 15.1.2507.34 via Frontend Transport; Mon, 27 Nov 2023 06:32:59 -0800
+Received: from NAM12-DM6-obe.outbound.protection.outlook.com (104.47.59.169)
+ by edgegateway.intel.com (192.55.55.70) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.34; Mon, 27 Nov 2023 06:22:01 -0800
+ 15.1.2507.34; Mon, 27 Nov 2023 06:32:56 -0800
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=VzX0U08y9ZvfTBhhZ9zzsBcOlHKNSNYms4hHYRFI5UlXZJxCGfe5uzPbRVMAVm/gV16N+cjMiLdPKxvALSsGzavD8FISn+nUvi/UDsQl+xzSeAE0E9mz5qBBHnKMg3aQI5YUEf5IZC98KeAIMw6kRULng+WSm+mXaYEfyMKPv3TvmN/Ct5rHuXDzAax1L1UUcVftdiBmO50hJWRGPNKIm/ohMESbF41/86CaUeNcTnqb9Xyb6LSlvIuo54Vg5TRLAqsUoEMCK+0LVexGdTgATjfQBbuNlFN85ku6n4U44g2xyOBhesi7XBshV/XUgSriAhGjW734dNhBqWMlvGF1Bw==
+ b=XTFUf21IXlIslORRu97j5njlib111qlWTIGYsA9Pku+v76CGbqNGhk+zBnGO0ZJfPRP4kU16iTzsvlksxu7j65qJ7nblCRorC7u91cAHWm2nihtQJh+E9QrEhnMTOf/fmPNMoVwC3rjgJ53nI3Vn6LPN0hXheUKszLf0LXCyUJ4rEXebjpMYm+ddJ6ocoNDGeM5z5WNXXgcm+0GrV8HLlzbZuWwKU2MPliSLsfYYDo6kjPr3hVWSTXSvtj+AZHPAt53eXgeKOZfsPqmnOReY1t7Y450WAzNTMoDJeZ/P4/pcr5G1EBrIM9xzUxlQCV5u2lkEzRsws08AL3+98tnRkQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=no/HP1oii982GyUeha4nVmS+6rTsIB8oRWcESOAc+xo=;
- b=ZBUcOUJtE+FrIbn9Xb9kpG2HGfpKkmxxpk+PY/gFplvrt6bhA7V4xcB+ku+yoNWlukKOSFt4aCxlhKXLH19m9N3PFgrVuxLyHMCDEoHo56M6xX2TKHyCgfnM6DTGCvbDOcgPkM+CjcS0ffmLIcJJk3mxCN3yixwH8C/iuiwfPNZJHU+PpoXyl5d8KwQZLvt4TVtpifwcJo3ussKM/r0/IVCFTCNjTsFOQ/pjWfYIiV328VVn7sz0/ks6qWLn8CxiOYs3poqnZIXvrCE07ZRAM2HskXFUPeEvCyU60xFF8DGOn15A/4z1fD4iZ6aV9+K7ISP48ZIku7NGHiSAgtRKAg==
+ bh=wK1Pcw3H8q76I8U3aN1plnOZJ42UpfJqDQpZ5nuO7e0=;
+ b=V43PDfREJfwaHi8kuTb/cwFFv5Q+LPjkNQBk5mF1TKxuHVHKSFj14S8fES2ZI0xVHXJlF4IBzx2qSltjDP0ZuJvZ7+QlKBpF0iK3LQCR20W70B+QhTWIdOta7ISM+Eb23ZwmR/tKOtx1vmKugi0OxKqLJJdNW/go+CwsykzK3gVit/my1iHtzDI2zC5GtdfRBR7SnX6huQUxCI2l24l/NRsSqaYYtqfzBTfpfy/51BMP121k3TGL95gYP1aYCmy0KZY3XbHZrZiDAu2+NKuFyDaTOU17eOGiv+yKNF15kkTydfKvgHiAZeGLmXGYcQGXcFQUtGVLhaDJbbWFWRa+VQ==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
  dkim=pass header.d=intel.com; arc=none
-Received: from SN7PR11MB7420.namprd11.prod.outlook.com (2603:10b6:806:328::20)
- by SJ0PR11MB6624.namprd11.prod.outlook.com (2603:10b6:a03:47a::6)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7025.27; Mon, 27 Nov
- 2023 14:21:59 +0000
-Received: from SN7PR11MB7420.namprd11.prod.outlook.com
- ([fe80::b73b:45a5:d8d8:65d8]) by SN7PR11MB7420.namprd11.prod.outlook.com
- ([fe80::b73b:45a5:d8d8:65d8%7]) with mapi id 15.20.7025.022; Mon, 27 Nov 2023
- 14:21:59 +0000
-Message-ID: <f24802ae-bd66-446b-9b13-e291d33fb5c6@intel.com>
-Date: Mon, 27 Nov 2023 07:21:47 -0700
+Received: from DM6PR11MB3625.namprd11.prod.outlook.com (2603:10b6:5:13a::21)
+ by CYXPR11MB8689.namprd11.prod.outlook.com (2603:10b6:930:d8::14) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7025.28; Mon, 27 Nov
+ 2023 14:32:49 +0000
+Received: from DM6PR11MB3625.namprd11.prod.outlook.com
+ ([fe80::36be:aaee:c5fe:2b80]) by DM6PR11MB3625.namprd11.prod.outlook.com
+ ([fe80::36be:aaee:c5fe:2b80%7]) with mapi id 15.20.7025.022; Mon, 27 Nov 2023
+ 14:32:49 +0000
+Message-ID: <a1a0c27f-f367-40e7-9dc2-9421b4b6379a@intel.com>
+Date: Mon, 27 Nov 2023 15:32:19 +0100
 User-Agent: Mozilla Thunderbird
 Content-Language: en-US
-To: Jakub Kicinski <kuba@kernel.org>
-References: <20231120205614.46350-1-ahmed.zaki@intel.com>
- <20231120205614.46350-3-ahmed.zaki@intel.com>
- <20231121153358.3a6a09de@kernel.org>
-From: Ahmed Zaki <ahmed.zaki@intel.com>
-In-Reply-To: <20231121153358.3a6a09de@kernel.org>
-X-ClientProxiedBy: FR2P281CA0101.DEUP281.PROD.OUTLOOK.COM
- (2603:10a6:d10:9c::7) To SN7PR11MB7420.namprd11.prod.outlook.com
- (2603:10b6:806:328::20)
+To: Yunsheng Lin <linyunsheng@huawei.com>, Christoph Hellwig <hch@lst.de>
+References: <20231124154732.1623518-1-aleksander.lobakin@intel.com>
+ <20231124154732.1623518-4-aleksander.lobakin@intel.com>
+ <6bd14aa9-fa65-e4f6-579c-3a1064b2a382@huawei.com>
+From: Alexander Lobakin <aleksander.lobakin@intel.com>
+In-Reply-To: <6bd14aa9-fa65-e4f6-579c-3a1064b2a382@huawei.com>
+X-ClientProxiedBy: FR0P281CA0004.DEUP281.PROD.OUTLOOK.COM
+ (2603:10a6:d10:15::9) To BYAPR11MB3624.namprd11.prod.outlook.com
+ (2603:10b6:a03:b1::33)
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: SN7PR11MB7420:EE_|SJ0PR11MB6624:EE_
-X-MS-Office365-Filtering-Correlation-Id: 3961acbf-808c-4bc0-8fd2-08dbef543775
+X-MS-TrafficTypeDiagnostic: DM6PR11MB3625:EE_|CYXPR11MB8689:EE_
+X-MS-Office365-Filtering-Correlation-Id: 1cd46896-442c-421c-20c6-08dbef55ba50
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: ITrTK2KaQWvmsOJe7ZLWmwgAjKet29oG794tePwWXg1gYqIUdfCQAqlMQLVWr/xKaTJhR8GqExI/8R1YkjE8KSIUiks8rWf9AgXvzESHTkgLKJLg3B6oLGMQx4l3FH6g22qok9WQSFpiusfi9syPuLpWGpzzBxiAFG1NXVc9pMS08BxaeC7GAetWhRci9GWyhAQH1u7Y48lDp5FOC0GMSaVLRHvpj1zJOxu178hus+DV5NsbJloJkRLCUpisbbpms/5Hgtu9UYFAAE72H6x9wzzHeus8UKSl22WZBFhqDxCFa9NRsPiBRc3O2ax2Yxc3323YdMNvVYn+Dg4/giF1gn5iUZASXKuYxNBg7GChs7CVn/PD6oI34giZgFPY0jUOvRKvU8wNXlv33iRUD4v4opesuOUj8ByLBzXBfkp28q8aznuUiJJudpJLh24eRPPpYCx52athLIYmmB0GO/EZizJKSvcPg9kHFR1cx4L1GsTtP7VIcwofLx8dlhbjiPDln1rf9nyR5LRALrg89IcVX0JD780VQ/VTywqprbPV/DVp40ABftncTGAa0fExqjhFkG9TGcl+nwn/9rSd55Oxb1QaZqaVATG4Mkm+ouru4xptzPlsRHiJUhog4im8adn0f2QX6mgmSYJ3IC/vLE/nxw==
+X-Microsoft-Antispam-Message-Info: dDJ0bTRYyzO8g5SfdQhQEwOPSWGUS5hnYFH6buHkoOjX5Zkk5M87REyb6BB/wb9E+w0DYg7ATynSm2wDwZrK5VzYswtd0ms0avs5x+kwVLXHpZZ7wVUbvTNhWYryhzMog03aZHGWnoKeyiKV+FPz2T8AeK1Btv5xGJ4b4/MmgmsyfKvCIg/0fJ4at3YtOGCgSMdVkXK05mv0G7gdKy6eMlFXBqSP/zOWA7EfSeF2QOhN4gVhjGOxE3ym1uoK+Mdg83yrgJZKG/ZkDek+4NUKhnzWxJCnML7+9FGMOxg4mr/BawatYE6DOYIzkDbyNshV6joBC0XkTgIrmuAxAfgScDVlnm+COwa/XE4bS2hdMI0TDLJhQeAwNo2tmcB+iRD2KuGJ88yypa8zXyyFTfsQlDTzupgmNIYgPpXHuQWCE3JUSbytuO2cmuQVIpKPWP2A3YggeqIIaR3Skla1nelRVxR9xBc+7qJv7cRKMOcGCxI9N3UGY8YT/bY0Ip1CG4ml/lSamPXDZVeOB1Krhk3PhrTuLKPYT/vSuc4oPDv2KiB/zkkxAINAS8mVochF3x7KIr7unaqdSoo33U8QAD9imF6/2fzB81N13f3fr9NrD+3GgP5JeUGxjSn7Yq3QcFv+qBlyALuaHkQsr/g667U4lX0B4DN4c34J5j65inVd2O3NviJjF8Ng5RmqxdS4EYrh
 X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:SN7PR11MB7420.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230031)(396003)(366004)(376002)(136003)(39860400002)(346002)(230922051799003)(186009)(1800799012)(64100799003)(451199024)(7416002)(8676002)(8936002)(4326008)(31686004)(44832011)(5660300002)(66946007)(66556008)(316002)(66476007)(6916009)(41300700001)(6512007)(53546011)(478600001)(4001150100001)(6666004)(6506007)(6486002)(2616005)(107886003)(26005)(2906002)(38100700002)(86362001)(31696002)(82960400001)(36756003)(45980500001)(43740500002);
+ IPV:NLI; SFV:NSPM; H:DM6PR11MB3625.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230031)(346002)(366004)(39860400002)(136003)(376002)(396003)(230273577357003)(230173577357003)(230922051799003)(64100799003)(186009)(1800799012)(451199024)(6512007)(6506007)(53546011)(2616005)(6486002)(478600001)(6666004)(83380400001)(7416002)(2906002)(5660300002)(41300700001)(66946007)(110136005)(54906003)(4326008)(66476007)(316002)(8936002)(8676002)(66556008)(38100700002)(82960400001)(86362001)(31696002)(36756003)(31686004)(26005)(45980500001)(43740500002);
  DIR:OUT; SFP:1102; 
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?QzExejQyOGJST1NpV0NOWHVSTXBoSk90OWRiTVJOQkVJWXB5dVJpSnN5ZzV0?=
- =?utf-8?B?V3l4eWtQVURIdXRheXViamxGYzVTUFg3dmxPc1F0bkRHNUNGMXUxcENaWFNv?=
- =?utf-8?B?VjRzNkFoUFp2cnFtdXdYUGFwajhBZnNXbDZ2c2Mwbnl5WVVIRFdmRStBYjFt?=
- =?utf-8?B?OHZML01xemZia21rNWFxRkNsUjU5OUxlSkFQYlp6WEQ3UStISG93N1hBaFh5?=
- =?utf-8?B?L24xQy9EUVkzQ1R0WmxXZk5NU0V5VHAvaFlMS0RyZEc5clhueTk2a3hSc2tR?=
- =?utf-8?B?eEIvbW43RDJJY2c5VGtoVGx1dkw1RmhWV2pRMWxtNXl2WlNTOGJ5NnE4RnlS?=
- =?utf-8?B?T3RDalhYMUlJcndJRzBPVVl1S0UzNWZEQk9jRWkyZkljRFd4aUdEdEVDZEZJ?=
- =?utf-8?B?T05vaDQ5Qlg0VEtaUTZlNXpjQUR3Q1ptNmQwRlVXeDV4R3hmM0pCSFBFV05I?=
- =?utf-8?B?cXVGZzhEeFBOMVBMNkJ5Tk1IM3dpTU8zMTdubmtqU25BaW9TNnpiWFBGNEtk?=
- =?utf-8?B?RzFsWkdTdkhmZ0QxVERHSWxKOXd1VkJWZE1lMFp4WjVpZEtkamtFR1VVSFVF?=
- =?utf-8?B?dHg0LzViQzd3aFo2Y2hXOWlBb2VBNEVkY2hCbkd1d3B3UWdhb3dpdk8rOUpH?=
- =?utf-8?B?Y3NVc3RuWjNvajVKMlN6cEtQa1A3ZG1neW1RRXRiN3FHalR6QXFOU09tWEIz?=
- =?utf-8?B?OHY4elhSTXhTdW91ZFRpZlpkaVNyR1QxUWFibUtwLy9scG9ia3Q5dHBacEJR?=
- =?utf-8?B?Zy9LaHJtV3d3WWJPZ1ByZVZSOEtoK0J6TW1LV1cxL0M5MzJhc2krQk92NDg4?=
- =?utf-8?B?QzJ6TGFaOXZMTmQ0VU4vQTRZdXFVczFTM2VhQ0pOOHBFclp4ek9ENFlvQW9G?=
- =?utf-8?B?ZjhDREZCME5PREVkTW5yZklPT3hnY05QU2lBRWRwN0dNTm1KQy8vc3U0RkdL?=
- =?utf-8?B?RjV2RTZ6RG85ckVzcHZmc3VDUlZQUWYybWh4MG1SMGJiRWMxa2pGTGxIaGc5?=
- =?utf-8?B?MnlTNFNhVy9jblRIR1YyaTltdHdPMFhObUt2Qk9qdUg2VWZPaFpJSFE2Mkti?=
- =?utf-8?B?bEpGTmhMdFZQQkFnenYzOCtHL1NxbnI1MjRpYTBXZnZ5YVhDVXcwM21ZSjVV?=
- =?utf-8?B?UStBeWdBRTY1YnRLY0JwNFFRTXQ0QU1RRXRGdCtBNjJrVm4rUGg1TUg4Ty9X?=
- =?utf-8?B?QjhsYXJrRGhNdWRWVExzUmhjOGFFV1d5VGYyUVpWQkxIcDFiV3RjcGg2YmVU?=
- =?utf-8?B?VnhWRzFsbkVUa3hCZmNzek4yR3BCN2w4Z1l2cUU5QlpCNW9CREFUUkdUYUVM?=
- =?utf-8?B?VGNxN3NuSGlPQ1JRZThRN3BGUFFYTk0zeHFaL3BYdVRrTGVkNG01UDExQzlv?=
- =?utf-8?B?RzVzanNyb2lFQm1vYTJueFNFQ1NsRk55Yi9xTVJ0eWh5aEFrUUNYMjJDYnRZ?=
- =?utf-8?B?MzZ4V2hQaDd5T3E0eGUwYkdPTE9Bc1pkZXdRL1pFeFBOWmpySkdTcGVhdzBw?=
- =?utf-8?B?Z1dobHF3b05ndk41dGpXTVI1cnpiK1ljamk5c1hJSjNJZ0JkS3JjQTZFVVMr?=
- =?utf-8?B?eHJ0cGk2Vy9uQWxPR3hxVXVNaThxQW56WHl5V2VSY0JxSmFOcnorMlpRbXRN?=
- =?utf-8?B?U3FWRTkvVzRXOFBSK01uN2VJMFhrRnFoaHN4N0RabU1leDNOcnZwU3FtK0I3?=
- =?utf-8?B?djFvdkdpQlpxYUt4dXJsbE9jVlQvK3pVYXJKdGJpOGFuWU15aTNKbWp5SGM3?=
- =?utf-8?B?aHhEbEJjU2tOdFl1TGZINzN3N1B3MjhqWUNERmt5ZTcwRGZGVlBQL3A3a2VD?=
- =?utf-8?B?bDExYTV2SVJyS0FKUkgyQUltVmc3YmZWajRpU2xlQW1MNFZ4OXM3NDdmamNM?=
- =?utf-8?B?YTduYmV0VUs5YzBaTU1iN1Z0YTF5Sit3TmVpa2hMWVc1dE81aE5CckxXdUhn?=
- =?utf-8?B?Qy9uVDZSYmhvZXJJaHlIOGtlbTJ3bytXRXhHMzM1VUVqdGVSVzMvOWo1cEdr?=
- =?utf-8?B?U082azhySGhMSXJCRFZJa1NpZWNJWXh2Nzc1WWg2MHZuaUNmaitqMW10SUJ3?=
- =?utf-8?B?a1VUb2VtWEJ4Wk1OM3R5bEQ1WUZ1V3BQOG8xTk9SWHRDZk9tZTRJWm56empl?=
- =?utf-8?B?cEZQWjAvejZxN1dGeU5nbFpiNkIxME8wdU8zcGNaNnhVbHkvMkNWOTh5c2Zq?=
- =?utf-8?B?bUE9PQ==?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: 3961acbf-808c-4bc0-8fd2-08dbef543775
-X-MS-Exchange-CrossTenant-AuthSource: SN7PR11MB7420.namprd11.prod.outlook.com
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?Rlh4RXJZaVI2OTZLcklCbkZvOXplVGtmYWoyVXlTRVU4SDVWekI0Zm9zZ0ha?=
+ =?utf-8?B?dmo3YTRaYUVWOCt3OExSOTNLdUZNN2hHVHhzQ0hSLzhLd2I3NWRwZDNuM042?=
+ =?utf-8?B?R05OOHIybG9DTnVDZzhFU3c5cS90R0ZRRktuS3FGNDhoQVNaV3I1Y09iVUJJ?=
+ =?utf-8?B?ZnBlSDc5MjZuZ09rOGdhaWU1V1BBT1IreUpTbStVdTkvdEhWWkpmb1ZlTDRo?=
+ =?utf-8?B?Q3J5bWY5c0d6Z1BZL3NDT1oyQ29hOWlmbjlYV3krL2Ezam9WOTlwcUhVbVJJ?=
+ =?utf-8?B?dC9pU2ZqcmlTUzVFTzl6SE41Vkw5MjFoZElNZGZIUGl4MWdwcjBEY1lTVWFR?=
+ =?utf-8?B?QlFON3M0SWRFVHJCeWZJY25SYVQ0dUtDQ21Kclo5VlZzRERtbVkwMGg1ZEdR?=
+ =?utf-8?B?OElDQlc1ZEk5aHJyYSt1S2ZPU081YUR4TVJNZjkxL0hsTm5SeWF3cFpKWFds?=
+ =?utf-8?B?Q2lkMUpva3poR21SdE1DblYydEJodllGMThFcm5IUGRxdzFPWFR1bnFEdVhZ?=
+ =?utf-8?B?Qm9vQkh5K1BkTUxrQ2lLeHJ2T2xzL05IcVVCRDRrOGxDRVNZNVNIc2NXWnF6?=
+ =?utf-8?B?MkJUTU0xdVkxakRpY0dOU1ptdzZpK3FjRU4xZVhpMlNDajJMSHRLZmt2aEgy?=
+ =?utf-8?B?RFNZd0xZYXBaMEdTdnpibW9heWVZYk9lVUtXRWdxZHgzcU1xUFVQQXdSeGhG?=
+ =?utf-8?B?eFo0QUo2SHhjakNXQ2tPbFo2OGx1OVlvZXprSTJTWUJjcWMvV0hvKzBTV29G?=
+ =?utf-8?B?dCtuSWk5VlpPV25wRzhPYytzNG5wZ3BNTkRwVDhJRkw2N1hmaFg5YWtsNm1z?=
+ =?utf-8?B?d1JpeFl3TlBzaFJLeDE1MUlmampsTGtyVVJMV0N3ZkhsTXhueEZqcTYzNEVX?=
+ =?utf-8?B?b3NMZC9iaTVtbEZQZ0tXR3lja0tnV3N3TjFBMEFDeWo3dTR5K1hzQy9GV2NZ?=
+ =?utf-8?B?K014T1I0RWkrUld4WWtrc2c3WVB0dmhiS1dPZk5yY3BBaEcyOGtxTW9jS3hn?=
+ =?utf-8?B?SEt1eE5XUmRnQWF2Sks1MU4rYnVBaFV1SWRvU1JyN1Z3K1p6U3pWdTdWSC96?=
+ =?utf-8?B?ak5pQ1kxcG1vZzZnZ1M5aGhtKzd0VHV3UGVBRnVLeHVqWGErTFhmQUY0Ui85?=
+ =?utf-8?B?aHVRNWMxc005Rm1kMU5nTWRvMWNlamUzMUovaysvNDBBZ3RybTZ5ZENmUnR6?=
+ =?utf-8?B?UU9URkNXOW00S1Rja1RQZFEyZFZuNC9hWi9SOUd2SHpCY2tib0hvaDBraTZM?=
+ =?utf-8?B?SFk0OExoV3lEWUNzUDUxNitFcDFneC9EOFRIQzhjaDlkakUxNkRoT3RqVktm?=
+ =?utf-8?B?Sm5SdFU2enp5dStJc09LM1o4NUFjVGFvQ1hETHcvZ3RzNlpobE9ZTmprRVhu?=
+ =?utf-8?B?UFdiNjlIbDNIRHR6UldHSzBKQkRaczZJdFpXVU9ITllzMlo5d21welEyQlJk?=
+ =?utf-8?B?TTRTajBKbE1LNGQrYmxlMU1qeHVUYmp5ZTFONEJkRzN5SFpRN0FYdi82eG1t?=
+ =?utf-8?B?T2JqMkR2NUNyNEw0azgwcVQvSDdRYmx6ck5LbE5VODk2aVBiQjZOL3JiSUtX?=
+ =?utf-8?B?Ym5uUDAwMkNZY3ZZSjdKbEtQOUtIU2MrM0dFUWxXdUlDZXBERms2ZWZmWUpF?=
+ =?utf-8?B?T1lENG5ieWRYNHdhS0pCbnc0aXFLcjVCQmdyOHQzT1ZuS1VoMnV3TyswVWxj?=
+ =?utf-8?B?OEFsRWYwQ1NsVmtSQ2hlV3R0enJFOGk1RVJMWVQ0SlRvYnNVRDhFVHdkd2VM?=
+ =?utf-8?B?SXhlRU1QU0RxUW8xQzV5aFcxdDlnSng3eGpDSy8rZ3dQazJ0by9NbGYyamR2?=
+ =?utf-8?B?Vk9OOWxpODBEODV5NVhCQWJKL1BDdy83L25NemhZUHRqUG5jaE1XZ0Uzb0F1?=
+ =?utf-8?B?QzAySGUrR0dhdXJqUmZ5Z3pNMDJjVEVLbmR6bFRWMzZUVTg4N3pFUU4xdURK?=
+ =?utf-8?B?ajFwd0VNOUc0ZWk2eUNJc3JsQ2c2bFN3WTZiU0pCMloxN3hRaXV5ejVqaGpi?=
+ =?utf-8?B?bEcwa3JwQUQ4UHZ2dzlmeWZrM0w5WDV5YUNsV3BhMFYxdlhSTjkvSTVrbUYy?=
+ =?utf-8?B?S001dXpQVGpaSUpia3FJZUd4MmFlQXRPLzVwRU9oRUlWcVc4WmRlMDhZY1Fw?=
+ =?utf-8?B?QlZGTDRWTnpIMzNSSFhtaDdRZjdORnlRcmlDTnVRbzQ3T2hWdFNjbTQxNENV?=
+ =?utf-8?B?c0E9PQ==?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: 1cd46896-442c-421c-20c6-08dbef55ba50
+X-MS-Exchange-CrossTenant-AuthSource: BYAPR11MB3624.namprd11.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 27 Nov 2023 14:21:59.2056 (UTC)
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 27 Nov 2023 14:32:49.4089 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 7b1LaxscBOJtzJTVsfkKFpgshMX1aQ3mjXTXG1unC/mKS3Wa7OeKWhYrSy1mp4TBd+DZPUjsA+20AfSCjEEHQw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ0PR11MB6624
+X-MS-Exchange-CrossTenant-UserPrincipalName: +3ptlIcmvkU82EP9sDT5h43ktPsi6weXQhXTrsdDPm+STi5Ttzi93W1l2t5//K2YUkRpQZj0V9HGaUb76moPyoX//YoNBGfEzYAXwPDLpiQ=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CYXPR11MB8689
 X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1701094931; x=1732630931;
+ t=1701095894; x=1732631894;
  h=message-id:date:subject:to:cc:references:from:
  in-reply-to:content-transfer-encoding:mime-version;
- bh=zZfc8Cydl8fcqoGHzyDpSLhziuXW0ieqLjlZskdW300=;
- b=ncV9M+DU4WRTypeznmwMHPbE0w+eHQGzT97P2jvCTCRgHM2IrMEfeCVS
- VviD2SGQ48hLymEfbZR/bjt9K7G3iryH0zfwhJFiCdm9NC8PIjQix1lUj
- zBOvhP8ZOiIeKK1W/PYly1FqgUhzhaq8VtzYFQrOJ52Z5NNzU3hs8q1mn
- O0c31FKgPsIrvnP0Xz/W3aUGsSlFDQcHXGPQ8PgjsKjCZdlxtWCF5ALCq
- 7/pmOwaZkKQLRnD0/QDu+1t30HrTOP07J8sE9L6ShqM/IGkVREZRc84tS
- 1ntdtlI5XtZU44wKuNmF9taVD5DiOidZMPoG/tLG3KJ62Vt7pQGrPMpHX
- w==;
+ bh=Fm4dWuQER+Ufha5siUVxpKAanEAMKbZ40hQaeuvltA8=;
+ b=YeHBVxSONHA8veg7FrtpxboUe99amiuPY1saQc5L4X5hxlxRKzfsbznc
+ nowj4mUtZQjBAtHW2S4rLPdpvBayFYc8EEy5FfOZXCavDgckuedoxbpma
+ 320jISaR+eTtlPU9i5ly1+PVNGXKg3Tb5M7LmunEct8wdOq8Yjnf7WY1f
+ nDbQ8tMKrU0AffaQAP4fgUi222RrG9k99nHduJHeZUbfQcw0i908ZShQj
+ Bfqpy2aA/fA7Loy4LSEFyRO+UW2tEHstYxLuCMk4OTRZSUcg2cYXVSU20
+ mVb1GgzdHexUbzDzYAWYwcBoUVQQOpMXA8mXks2HA8zgYwtMMt9FHsS4m
+ Q==;
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=ncV9M+DU
+ header.a=rsa-sha256 header.s=Intel header.b=YeHBVxSO
 X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH net-next v6 2/7] net: ethtool: add
- support for symmetric-xor RSS hash
+Subject: Re: [Intel-wired-lan] [PATCH net-next v5 03/14] page_pool: avoid
+ calling no-op externals when possible
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -194,52 +193,239 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: mkubecek@suse.cz, andrew@lunn.ch, willemdebruijn.kernel@gmail.com,
- Wojciech Drewek <wojciech.drewek@intel.com>, corbet@lwn.net,
- netdev@vger.kernel.org, gal@nvidia.com, linux-doc@vger.kernel.org,
- jesse.brandeburg@intel.com, edumazet@google.com, anthony.l.nguyen@intel.com,
- horms@kernel.org, vladimir.oltean@nxp.com, intel-wired-lan@lists.osuosl.org,
- pabeni@redhat.com, davem@davemloft.net
+Cc: Paul Menzel <pmenzel@molgen.mpg.de>,
+ Maciej Fijalkowski <maciej.fijalkowski@intel.com>,
+ Jesper Dangaard Brouer <hawk@kernel.org>,
+ Larysa Zaremba <larysa.zaremba@intel.com>, netdev@vger.kernel.org,
+ Alexander Duyck <alexanderduyck@fb.com>, Ilias
+ Apalodimas <ilias.apalodimas@linaro.org>, linux-kernel@vger.kernel.org,
+ Eric Dumazet <edumazet@google.com>, Michal Kubiak <michal.kubiak@intel.com>,
+ intel-wired-lan@lists.osuosl.org, David Christensen <drc@linux.vnet.ibm.com>,
+ Jakub
+ Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, "David S.
+ Miller" <davem@davemloft.net>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+From: Yunsheng Lin <linyunsheng@huawei.com>
+Date: Sat, 25 Nov 2023 21:04:28 +0800
 
-
-On 2023-11-21 16:33, Jakub Kicinski wrote:
-> On Mon, 20 Nov 2023 13:56:09 -0700 Ahmed Zaki wrote:
->> + * @data: Extension for the RSS hash function. Valid values are one of the
->> + *	%RXH_HFUNC_*.
+> On 2023/11/24 23:47, Alexander Lobakin wrote:
+>> Turned out page_pool_put{,_full}_page() can burn quite a bunch of cycles
+>> even on DMA-coherent platforms (like x86) with no active IOMMU or
+>> swiotlb, just for the call ladder.
+>> Indeed, it's
+>>
+>> page_pool_put_page()
+>>   page_pool_put_defragged_page()                  <- external
+>>     __page_pool_put_page()
+>>       page_pool_dma_sync_for_device()             <- non-inline
+>>         dma_sync_single_range_for_device()
+>>           dma_sync_single_for_device()            <- external
+>>             dma_direct_sync_single_for_device()
+>>               dev_is_dma_coherent()               <- exit
+>>
+>> For the inline functions, no guarantees the compiler won't uninline them
+>> (they're clearly not one-liners and sometimes the compilers manage to
+>> uninline 2 + 2). The first external call is necessary, but the rest 2+
+>> are done for nothing each time, plus a bunch of checks here and there.
+>> Since Page Pool mappings are long-term and for one "device + addr" pair
+>> dma_need_sync() will always return the same value (basically, whether it
+>> belongs to an swiotlb pool), addresses can be tested once right after
+>> they're obtained and the result can be reused until the page is
+>> unmapped.
+>> Do this test after a successful DMA mapping and reuse the lowest bit of
+>> page::dma_addr to store the result, since Page Pool addresses are always
+>> page-aligned and the lowest bits are unused.
+>> page_pool_{g,s}et_dma_addr() will then take this bit into account and
+>> exclude it from the actual address. Call page_pool_dma_sync_for_device()
+>> only if the bit is set, shaving off several function calls back and
+>> forth. If pool::dma_sync is not set, i.e. the driver didn't ask to
+>> perform syncs, don't do this test and never touch the lowest bit.
+>> On my x86_64, this gives from 2% to 5% performance benefit with no
+>> negative impact for cases when IOMMU is on and the shortcut can't be
+>> used.
+>>
+>> Suggested-by: Yunsheng Lin <linyunsheng@huawei.com> # per-page flag
 > 
-> @data is way too generic. Can we call this key_xfrm? key_preproc?
+> Sorry for not remembering the suggestion:(
 
-We manipulate the "input data" (protocol fields) not the key. I will 
-rename to "input_xfrm".
+In the previous versions of this change I used a global flag per whole
+page_pool, just like XSk does for the whole XSk buff pool, then you
+proposed to use the lowest bit of ::dma_addr and store it per page, so
+that it would be more granular/precise. I tested it and it doesn't
+perform worse than global, but in some cases may be beneficial.
 
 > 
->> +/* RSS hash function data
->> + * XOR the corresponding source and destination fields of each specified
->> + * protocol. Both copies of the XOR'ed fields are fed into the RSS and RXHASH
->> + * calculation.
+> If most of cases is that some pages need syncing and some page does not
+> need syncing for the same device, then perhaps per-page flag is more
+> beneficial, if not, maybe per-device flag is enough too?
+
+Per-device is not.
+You never know when dma_alloc_* or dma_map_* will return an address
+needing syncs. I realize that in most cases it will always be the same,
+but since there is a possibility of more precise optimization, why not
+use it :>
+
+> 
+> What i wonder is that is there any reason this kind trick isn't done
+> in the dma layer instead of each subsystem or driver using dma api
+> duplicating this kind of trick?
+> 
+> At least xsk_buff seems to using the similar trick?
+> 
+> You may have explained that, it has been a litte long between v4 and v5,
+> so I may have forgotten about that.
+
+Yeah, as I wrote previously, there's currently no easy way to combine
+these two optimizations.
+
+I can't even use this patch in the XSk layer, since it doesn't operate
+with struct page, rather xsk_buff etc., which may not have a direct
+pointer to struct page. And in case of DMA sync functions, there are no
+pointers to xsk_buff passed there, only xsk_buff_pool and dma_addr_t,
+with no direct association with a particular page.
+Also note that xsk_buff_pool still needs to be converted to use dma_buf
+API. This should be done soon and will involve quite big changes
+regarding DMA, it makes no sense to touch anything there prior to this.
+
+Field in the struct device may work out, but in some cases such global
+gate might disable this optimization where it could be still enabled for
+page_pool or xsk_buff_pool.
+
+Chris, any thoughts on a global flag for skipping DMA syncs ladder?
+
+> 
+> 
+>> Signed-off-by: Alexander Lobakin <aleksander.lobakin@intel.com>
+>> ---
+>>  include/net/page_pool/helpers.h | 60 +++++++++++++++++++++++++++++----
+>>  net/core/page_pool.c            | 10 +++---
+>>  2 files changed, 58 insertions(+), 12 deletions(-)
+>>
+>> diff --git a/include/net/page_pool/helpers.h b/include/net/page_pool/helpers.h
+>> index 4ebd544ae977..28bec368b8e9 100644
+>> --- a/include/net/page_pool/helpers.h
+>> +++ b/include/net/page_pool/helpers.h
+>> @@ -52,6 +52,8 @@
+>>  #ifndef _NET_PAGE_POOL_HELPERS_H
+>>  #define _NET_PAGE_POOL_HELPERS_H
+>>  
+>> +#include <linux/dma-mapping.h>
+>> +
+>>  #include <net/page_pool/types.h>
+>>  
+>>  #ifdef CONFIG_PAGE_POOL_STATS
+>> @@ -354,6 +356,11 @@ static inline void page_pool_free_va(struct page_pool *pool, void *va,
+>>  	page_pool_put_page(pool, virt_to_head_page(va), -1, allow_direct);
+>>  }
+>>  
+>> +/* Occupies page::dma_addr[0:0] and indicates whether the mapping needs to be
+>> + * synchronized (either for device, for CPU, or both).
 >> + */
->> +#define	RXH_HFUNC_SYM_XOR	(1 << 0)
+>> +#define PAGE_POOL_DMA_ADDR_NEED_SYNC		BIT(0)
 > 
-> We need to mention somewhere that sym-xor is unsafe, per Alex's
-> comments.
+> It seems we have less dma space from 32 bit arch with 64 bit dma address:(
+> But from my last searching in google, it seems we still have enough bit for
+> that:
+> 
+> arm: Large Physical Address Extension or LPAE, 40 bits of phys addr.
+> arc: Physical Address Extension or PAE, 40 bits of phys addr.
+> mips: eXtended Physical Addressing or PXA, 40 bits of phys addr.
+> powerpc: does not seems to have a name for the feature, and have 36
+>          bits of phys addr.
+> riscv: large physical address, 34 bits of phys addr.
+> x86: Physical Address Extension or PAE, 36 bits of phys addr.
 
-I already added the following in Documentation/networking/scaling.rst:
+Yeah, 1 bit less, but from I've read, in most cases it will still work.
+For 4 Kb pages, shift is 12, so that we're able to address 44 bits.
+Eating one bit for DMA sync flag shrinks it to 43 -> still enough for
+the cases you described above. Also note that some of these arches may
+have bigger pages, where the shift is higher -> even more available bits.
 
-"The Symmetric-XOR" is a type of RSS algorithms that achieves this hash 
-symmetry by XORing the input source and destination fields of the IP
-and/or L4 protocols. This, however, results in reduced input entropy and
-could potentially be exploited."
+> 
+>> +
+>>  /**
+>>   * page_pool_get_dma_addr() - Retrieve the stored DMA address.
+>>   * @page:	page allocated from a page pool
+>> @@ -363,27 +370,66 @@ static inline void page_pool_free_va(struct page_pool *pool, void *va,
+>>   */
+>>  static inline dma_addr_t page_pool_get_dma_addr(struct page *page)
+>>  {
+>> -	dma_addr_t ret = page->dma_addr;
+>> +	dma_addr_t ret = page->dma_addr & ~PAGE_POOL_DMA_ADDR_NEED_SYNC;
+>>  
+>>  	if (PAGE_POOL_32BIT_ARCH_WITH_64BIT_DMA)
+>> -		ret <<= PAGE_SHIFT;
+>> +		ret <<= PAGE_SHIFT - 1;
+>>  
+>>  	return ret;
+>>  }
+>>  
+>> -static inline bool page_pool_set_dma_addr(struct page *page, dma_addr_t addr)
+>> +/**
+>> + * page_pool_set_dma_addr - save the obtained DMA address for @page
+>> + * @pool: &page_pool this page belongs to and was mapped by
+>> + * @page: page to save the address for
+>> + * @addr: DMA address to save
+>> + *
+>> + * If the pool was created with the DMA synchronization enabled, it will test
+>> + * whether the address needs to be synced and store the result as well to
+>> + * conserve CPU cycles.
+>> + *
+>> + * Return: false if the address doesn't fit into the corresponding field and
+>> + * thus can't be stored, true on success.
+>> + */
+>> +static inline bool page_pool_set_dma_addr(const struct page_pool *pool,
+>> +					  struct page *page,
+>> +					  dma_addr_t addr)
+>>  {
+>> +	unsigned long val = addr;
+>> +
+>> +	if (unlikely(!addr)) {
+>> +		page->dma_addr = 0;
+>> +		return true;
+>> +	}
+> 
+> The above seems unrelated change?
 
+Related. We use page_put_set_dma_addr() to clear ::dma_addr as well
+(grep for it in page_pool.c). In this case, we don't want
+dma_need_sync() to be called as we explicitly pass zero. This check
+zeroes the field and exits as quickly as possible.
+In case with the call mentioned above, zero is a compile-time constant
+there, so that this little branch will be inlined with the rest dropped.
 
-Or do you mean add it also to "uapi/linux/ethtool.h" ?
+> 
+>> +
+>>  	if (PAGE_POOL_32BIT_ARCH_WITH_64BIT_DMA) {
+>> -		page->dma_addr = addr >> PAGE_SHIFT;
+>> +		val = addr >> (PAGE_SHIFT - 1);
+>>  
+>>  		/* We assume page alignment to shave off bottom bits,
+>>  		 * if this "compression" doesn't work we need to drop.
+>>  		 */
+>> -		return addr != (dma_addr_t)page->dma_addr << PAGE_SHIFT;
+>> +		if (addr != (dma_addr_t)val << (PAGE_SHIFT - 1))
+>> +			return false;
+>>  	}
+>>  
+>> -	page->dma_addr = addr;
+>> -	return false;
+>> +	if (pool->dma_sync && dma_need_sync(pool->p.dev, addr))
+>> +		val |= PAGE_POOL_DMA_ADDR_NEED_SYNC;
+>> +
+>> +	page->dma_addr = val;
+>> +
+>> +	return true;
+>> +}
+>> +
+> 
 
-
-Will do the rest in the next version.
+Thanks,
+Olek
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
