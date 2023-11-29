@@ -1,88 +1,77 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 857BE7FCAEC
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 29 Nov 2023 00:37:35 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5128E7FCD19
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 29 Nov 2023 03:55:18 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id F423043527;
-	Tue, 28 Nov 2023 23:37:33 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org F423043527
+	by smtp4.osuosl.org (Postfix) with ESMTP id A6F68417B9;
+	Wed, 29 Nov 2023 02:55:14 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A6F68417B9
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1701214654;
-	bh=s4munxkJNX+ZI99Kag5cCgx19QZgY1Uj4Vx6QuxIJo4=;
-	h=From:To:In-Reply-To:References:Date:Subject:List-Id:
+	s=default; t=1701226514;
+	bh=eKouF6G/GWEttDAKHw7Fox0EXB23kLnvxF2GzeiUUT8=;
+	h=To:References:From:Date:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=GycEEXrviHVlf1mJwD/hWJKItMrOMnFsxS9/igzLxI5zsiD64a7llPpjtp2GtQ7AW
-	 AQSbgqgwDUIJO7n/hQX8PYxEaUa7PwO2A6yNbjvYRLdO6S8BsG4Lzyi1D869ydYb8x
-	 3+E2sLaeW5wQdQL4r3WL/EgUFLJgSMdWhJXH6G6otnBksjHtDngaXp0x4PBAq3FjtL
-	 bKUJUcclb38/nHL9KOt6Mqs3HFmEN354OSJoeB6zuvvCOhYpqBxX2na8i/a/hADtWn
-	 fSA8gbHH3f3HP+Z6TkMsLv9WeGKMsdmEdbkIedMJlmmTxj7fLQihKj6XGsPArXjIxp
-	 IGJKpYIXho08Q==
+	b=qwu30nYk/aduuBlTouavgh/QDpl9o1gi35Z5HtNoUtg9BSlQmaaOQn00QsJAerCJj
+	 i5Cgc7+++UjX47Xnz8yScOl2O725KeIXI695TLsbX0ZZRpdNlK8cQEFNTqt5wWF7BN
+	 JPBuwYUwuM59E0c5oRxq9JqXJP4SUCkKUS30InQ8yHPjqORrvX11TtRiiRVk8ZIX7o
+	 QW8SanlzvmYTrfvXkGrXxU//0RJeBLDK/57PGzXZVTiBi2He6Ehib2hR4SiOl1j2U6
+	 iRdsY3yKGCKvZCBgZFYfOROMZh+NoKxZqy1dxKx7EDZxeN2fRVklgLsP2iwrltrLN/
+	 +KOZLZfdPUU8A==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id dlDdFJLbDWxP; Tue, 28 Nov 2023 23:37:33 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 30GAHfN9nXya; Wed, 29 Nov 2023 02:55:13 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 8A38C416E5;
-	Tue, 28 Nov 2023 23:37:32 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 8A38C416E5
+	by smtp4.osuosl.org (Postfix) with ESMTP id 5CB81417B6;
+	Wed, 29 Nov 2023 02:55:13 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5CB81417B6
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id CFE4A1BF32D
- for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Nov 2023 23:37:26 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 2FBAD1BF400
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Nov 2023 02:55:08 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 9C7F460BB1
- for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Nov 2023 23:37:26 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9C7F460BB1
+ by smtp1.osuosl.org (Postfix) with ESMTP id 05CC681EAE
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Nov 2023 02:55:08 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 05CC681EAE
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id dYvompofTE_9 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 28 Nov 2023 23:37:26 +0000 (UTC)
-Received: from mgamail.intel.com (mgamail.intel.com [192.55.52.43])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 0DF9B60B53
- for <intel-wired-lan@lists.osuosl.org>; Tue, 28 Nov 2023 23:37:25 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0DF9B60B53
-X-IronPort-AV: E=McAfee;i="6600,9927,10908"; a="479250765"
-X-IronPort-AV: E=Sophos;i="6.04,234,1695711600"; d="scan'208";a="479250765"
-Received: from fmviesa002.fm.intel.com ([10.60.135.142])
- by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 28 Nov 2023 15:37:25 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.04,234,1695711600"; d="scan'208";a="10253019"
-Received: from ticela-or-268.amr.corp.intel.com (HELO vcostago-mobl3)
- ([10.212.190.61])
- by fmviesa002-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 28 Nov 2023 15:37:25 -0800
-From: Vinicius Costa Gomes <vinicius.gomes@intel.com>
-To: Kurt Kanzenbach <kurt@linutronix.de>, Jesse Brandeburg
- <jesse.brandeburg@intel.com>, Tony Nguyen <anthony.l.nguyen@intel.com>
-In-Reply-To: <20231128074849.16863-1-kurt@linutronix.de>
-References: <20231128074849.16863-1-kurt@linutronix.de>
-Date: Tue, 28 Nov 2023 15:37:24 -0800
-Message-ID: <87bkbdsb4b.fsf@intel.com>
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id ZmPp5taCg7dX for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 29 Nov 2023 02:55:06 +0000 (UTC)
+Received: from szxga01-in.huawei.com (szxga01-in.huawei.com [45.249.212.187])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 2211581E8F
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Nov 2023 02:55:05 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 2211581E8F
+Received: from dggpemm500005.china.huawei.com (unknown [172.30.72.57])
+ by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4Sg3nf1VjFzvRHv;
+ Wed, 29 Nov 2023 10:54:30 +0800 (CST)
+Received: from [10.69.30.204] (10.69.30.204) by dggpemm500005.china.huawei.com
+ (7.185.36.74) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.35; Wed, 29 Nov
+ 2023 10:55:01 +0800
+To: Alexander Lobakin <aleksander.lobakin@intel.com>
+References: <20231124154732.1623518-1-aleksander.lobakin@intel.com>
+ <20231124154732.1623518-2-aleksander.lobakin@intel.com>
+ <9902d1c4-5e51-551a-3b66-c078c217c5ad@huawei.com>
+ <5e6859d3-d3e7-44c1-acee-2c4ec568615d@intel.com>
+From: Yunsheng Lin <linyunsheng@huawei.com>
+Message-ID: <bd35cf74-698f-e811-43be-af207a88fdc7@huawei.com>
+Date: Wed, 29 Nov 2023 10:55:00 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:52.0) Gecko/20100101
+ Thunderbird/52.2.0
 MIME-Version: 1.0
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1701214646; x=1732750646;
- h=from:to:cc:subject:in-reply-to:references:date:
- message-id:mime-version;
- bh=EGEixHtQb1+ZHIfzVRxJRAfvWyXmF6jAq+s8NNkM3sU=;
- b=nOVUcEPO79UPrjQQzaqCtcyzXgyuXEniqVIER3/9UZnBjxu8eNehncvL
- a4XuIM6yKQlcgx6Q1YwuODNZSkQEgtI5ZM980WWE1dV3hp3F8wbfTkYnY
- nyuiMGiITdabwWvG2JpGsLg8xp169KnvePrQrVUFiDWDQWHpV3KLYbvo6
- kiTObdcm4V0Tjohno7WXbxrg+VSxipXjDAWzzvNwJU+yYF4/Kbua1m9hv
- W15AoW9G4dA3AwW7xaetSedMtvFrn6lgj9K7zmvux8PIkK4VVIOQJ8Ox5
- 3BUht4GUTHbijeJuhzpMeRgpMmc1HTgFZGw0hoMbxG7y8Q+c3XO3pLGl0
- w==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=nOVUcEPO
-Subject: Re: [Intel-wired-lan] [PATCH net-next 0/5] igc: ethtool: Check VLAN
- TCI mask
+In-Reply-To: <5e6859d3-d3e7-44c1-acee-2c4ec568615d@intel.com>
+Content-Language: en-US
+X-Originating-IP: [10.69.30.204]
+X-ClientProxiedBy: dggems706-chm.china.huawei.com (10.3.19.183) To
+ dggpemm500005.china.huawei.com (7.185.36.74)
+X-CFilter-Loop: Reflected
+Subject: Re: [Intel-wired-lan] [PATCH net-next v5 01/14] page_pool: make
+ sure frag API fields don't span between cachelines
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,43 +84,70 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, Kurt Kanzenbach <kurt@linutronix.de>,
- Eric Dumazet <edumazet@google.com>, intel-wired-lan@lists.osuosl.org,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- "David S. Miller" <davem@davemloft.net>
+Cc: Paul Menzel <pmenzel@molgen.mpg.de>,
+ Maciej Fijalkowski <maciej.fijalkowski@intel.com>,
+ Jesper Dangaard Brouer <hawk@kernel.org>,
+ Larysa Zaremba <larysa.zaremba@intel.com>, netdev@vger.kernel.org,
+ Alexander Duyck <alexanderduyck@fb.com>,
+ Ilias Apalodimas <ilias.apalodimas@linaro.org>, linux-kernel@vger.kernel.org,
+ Eric Dumazet <edumazet@google.com>, Michal Kubiak <michal.kubiak@intel.com>,
+ intel-wired-lan@lists.osuosl.org, David Christensen <drc@linux.vnet.ibm.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, "David S.
+ Miller" <davem@davemloft.net>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Kurt Kanzenbach <kurt@linutronix.de> writes:
+On 2023/11/27 22:08, Alexander Lobakin wrote:
+> From: Yunsheng Lin <linyunsheng@huawei.com>
+> Date: Sat, 25 Nov 2023 20:29:22 +0800
+> 
+>> On 2023/11/24 23:47, Alexander Lobakin wrote:
+>>> After commit 5027ec19f104 ("net: page_pool: split the page_pool_params
+>>> into fast and slow") that made &page_pool contain only "hot" params at
+>>> the start, cacheline boundary chops frag API fields group in the middle
+>>> again.
+>>> To not bother with this each time fast params get expanded or shrunk,
+>>> let's just align them to `4 * sizeof(long)`, the closest upper pow-2 to
+>>> their actual size (2 longs + 2 ints). This ensures 16-byte alignment for
+>>> the 32-bit architectures and 32-byte alignment for the 64-bit ones,
+>>> excluding unnecessary false-sharing.
+>>>
+>>> Signed-off-by: Alexander Lobakin <aleksander.lobakin@intel.com>
+>>> ---
+>>>  include/net/page_pool/types.h | 2 +-
+>>>  1 file changed, 1 insertion(+), 1 deletion(-)
+>>>
+>>> diff --git a/include/net/page_pool/types.h b/include/net/page_pool/types.h
+>>> index e1bb92c192de..989d07b831fc 100644
+>>> --- a/include/net/page_pool/types.h
+>>> +++ b/include/net/page_pool/types.h
+>>> @@ -127,7 +127,7 @@ struct page_pool {
+>>>  
+>>>  	bool has_init_callback;
+>>
+>> It seems odd to have only a slow field between tow fast
+>> field group, isn't it better to move it to the end of
+>> page_pool or where is more appropriate?
+> 
+> 1. There will be more in the subsequent patches.
+> 2. ::has_init_callback happens each new page allocation, it's not slow.
+>    Jakub did put it here for purpose.
+> 
+>>
+>>>  
+>>> -	long frag_users;
+>>> +	long frag_users __aligned(4 * sizeof(long));
+>>
+>> If we need that, why not just use '____cacheline_aligned_in_smp'?
+> 
+> It can be an overkill. We don't need a full cacheline, but only these
+> fields to stay within one, no matter whether they are in the beginning
+> of it or at the end.
 
-> Hi,
->
-> currently it is possible to configure receive queue assignment using the VLAN
-> TCI field with arbitrary masks. However, the hardware only supports steering
-> either by full TCI or the priority (PCP) field. In case a wrong mask is given by
-> the user the driver will silently convert it into a PCP filter which is not
-> desired. Therefore, add a check for it.
->
-> Patches #1 to #4 are minor things found along the way.
->
-
-Some very minor things: patches 2,3 and 4 have extra long lines in their
-commit messages that checkpatch.pl doesn't seem to like.
-
-Patches 4 and 5 read more like fixes to me. I think they could be
-proposed to -net, as they contain fixes to user visible issues. Do you
-think that makes sense?
-
-As for the code, feel free to add my Ack to the series:
-
-Acked-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
-
-
-Cheers,
--- 
-Vinicius
+I am still a little lost here, A comment explaining why using '4' in the
+above would be really helpful here.
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
