@@ -1,77 +1,78 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5128E7FCD19
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 29 Nov 2023 03:55:18 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id E13727FCD5A
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 29 Nov 2023 04:18:07 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id A6F68417B9;
-	Wed, 29 Nov 2023 02:55:14 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A6F68417B9
+	by smtp1.osuosl.org (Postfix) with ESMTP id 3502D820FF;
+	Wed, 29 Nov 2023 03:18:04 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3502D820FF
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1701226514;
-	bh=eKouF6G/GWEttDAKHw7Fox0EXB23kLnvxF2GzeiUUT8=;
+	s=default; t=1701227884;
+	bh=jDNjoJh/pDJYQaYalWcXtbKSP0fNpbYnPeoJF3eyyws=;
 	h=To:References:From:Date:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=qwu30nYk/aduuBlTouavgh/QDpl9o1gi35Z5HtNoUtg9BSlQmaaOQn00QsJAerCJj
-	 i5Cgc7+++UjX47Xnz8yScOl2O725KeIXI695TLsbX0ZZRpdNlK8cQEFNTqt5wWF7BN
-	 JPBuwYUwuM59E0c5oRxq9JqXJP4SUCkKUS30InQ8yHPjqORrvX11TtRiiRVk8ZIX7o
-	 QW8SanlzvmYTrfvXkGrXxU//0RJeBLDK/57PGzXZVTiBi2He6Ehib2hR4SiOl1j2U6
-	 iRdsY3yKGCKvZCBgZFYfOROMZh+NoKxZqy1dxKx7EDZxeN2fRVklgLsP2iwrltrLN/
-	 +KOZLZfdPUU8A==
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 30GAHfN9nXya; Wed, 29 Nov 2023 02:55:13 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 5CB81417B6;
-	Wed, 29 Nov 2023 02:55:13 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5CB81417B6
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 2FBAD1BF400
- for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Nov 2023 02:55:08 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 05CC681EAE
- for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Nov 2023 02:55:08 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 05CC681EAE
+	b=7/4CGkcGX95lOdnbEo+4YHtvUKhYOMedoMr+g2BCifLIqLGbDzcVVPcCAaq5Awl9K
+	 3cEYKsdxkJ8iOMHhn+aMYmFMB3XMXfICnKy+IqW7HDSC2Cx735oUg/rk1ZQgAyEZ0v
+	 p9Unb9zyzcJqzBU9zJLFUulbB9p3EywIpFzcTn+3sqk2ef+ihAL5Vz9gbCdAI6QlzF
+	 ILuT67zugg9jR2YIwbDsBFmZqtcZM9kQTUAL76rvIw8hFgqn7tJMFE/1XqE06yGlrx
+	 BidU5daF2PNX+lfl+GpIqW5C+xzTJkuRZakAmxHODlVLGqgGFhI3dVptWgeoQ4WKr/
+	 If+ay2CUBvsaw==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ZmPp5taCg7dX for <intel-wired-lan@lists.osuosl.org>;
- Wed, 29 Nov 2023 02:55:06 +0000 (UTC)
-Received: from szxga01-in.huawei.com (szxga01-in.huawei.com [45.249.212.187])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 2211581E8F
- for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Nov 2023 02:55:05 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 2211581E8F
-Received: from dggpemm500005.china.huawei.com (unknown [172.30.72.57])
- by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4Sg3nf1VjFzvRHv;
- Wed, 29 Nov 2023 10:54:30 +0800 (CST)
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id aEWMz76Gd7Ld; Wed, 29 Nov 2023 03:18:03 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp1.osuosl.org (Postfix) with ESMTP id 0B3CC820E6;
+	Wed, 29 Nov 2023 03:18:03 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0B3CC820E6
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 4804B1BF2C9
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Nov 2023 03:17:58 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp2.osuosl.org (Postfix) with ESMTP id 28EEC40179
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Nov 2023 03:17:58 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 28EEC40179
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id FQ4-Bqfm1sOK for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 29 Nov 2023 03:17:56 +0000 (UTC)
+Received: from szxga02-in.huawei.com (szxga02-in.huawei.com [45.249.212.188])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 51D0B40106
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 29 Nov 2023 03:17:55 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 51D0B40106
+Received: from dggpemm500005.china.huawei.com (unknown [172.30.72.53])
+ by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4Sg4Cc5t3JzShPM;
+ Wed, 29 Nov 2023 11:13:32 +0800 (CST)
 Received: from [10.69.30.204] (10.69.30.204) by dggpemm500005.china.huawei.com
  (7.185.36.74) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.35; Wed, 29 Nov
- 2023 10:55:01 +0800
-To: Alexander Lobakin <aleksander.lobakin@intel.com>
+ 2023 11:17:51 +0800
+To: Alexander Lobakin <aleksander.lobakin@intel.com>, Christoph Hellwig
+ <hch@lst.de>
 References: <20231124154732.1623518-1-aleksander.lobakin@intel.com>
- <20231124154732.1623518-2-aleksander.lobakin@intel.com>
- <9902d1c4-5e51-551a-3b66-c078c217c5ad@huawei.com>
- <5e6859d3-d3e7-44c1-acee-2c4ec568615d@intel.com>
+ <20231124154732.1623518-4-aleksander.lobakin@intel.com>
+ <6bd14aa9-fa65-e4f6-579c-3a1064b2a382@huawei.com>
+ <a1a0c27f-f367-40e7-9dc2-9421b4b6379a@intel.com>
 From: Yunsheng Lin <linyunsheng@huawei.com>
-Message-ID: <bd35cf74-698f-e811-43be-af207a88fdc7@huawei.com>
-Date: Wed, 29 Nov 2023 10:55:00 +0800
+Message-ID: <534e7752-38a9-3e7e-cb04-65789712fb66@huawei.com>
+Date: Wed, 29 Nov 2023 11:17:50 +0800
 User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:52.0) Gecko/20100101
  Thunderbird/52.2.0
 MIME-Version: 1.0
-In-Reply-To: <5e6859d3-d3e7-44c1-acee-2c4ec568615d@intel.com>
+In-Reply-To: <a1a0c27f-f367-40e7-9dc2-9421b4b6379a@intel.com>
 Content-Language: en-US
 X-Originating-IP: [10.69.30.204]
-X-ClientProxiedBy: dggems706-chm.china.huawei.com (10.3.19.183) To
+X-ClientProxiedBy: dggems704-chm.china.huawei.com (10.3.19.181) To
  dggpemm500005.china.huawei.com (7.185.36.74)
 X-CFilter-Loop: Reflected
-Subject: Re: [Intel-wired-lan] [PATCH net-next v5 01/14] page_pool: make
- sure frag API fields don't span between cachelines
+Subject: Re: [Intel-wired-lan] [PATCH net-next v5 03/14] page_pool: avoid
+ calling no-op externals when possible
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,55 +100,45 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 2023/11/27 22:08, Alexander Lobakin wrote:
-> From: Yunsheng Lin <linyunsheng@huawei.com>
-> Date: Sat, 25 Nov 2023 20:29:22 +0800
+On 2023/11/27 22:32, Alexander Lobakin wrote:
 > 
->> On 2023/11/24 23:47, Alexander Lobakin wrote:
->>> After commit 5027ec19f104 ("net: page_pool: split the page_pool_params
->>> into fast and slow") that made &page_pool contain only "hot" params at
->>> the start, cacheline boundary chops frag API fields group in the middle
->>> again.
->>> To not bother with this each time fast params get expanded or shrunk,
->>> let's just align them to `4 * sizeof(long)`, the closest upper pow-2 to
->>> their actual size (2 longs + 2 ints). This ensures 16-byte alignment for
->>> the 32-bit architectures and 32-byte alignment for the 64-bit ones,
->>> excluding unnecessary false-sharing.
->>>
->>> Signed-off-by: Alexander Lobakin <aleksander.lobakin@intel.com>
->>> ---
->>>  include/net/page_pool/types.h | 2 +-
->>>  1 file changed, 1 insertion(+), 1 deletion(-)
->>>
->>> diff --git a/include/net/page_pool/types.h b/include/net/page_pool/types.h
->>> index e1bb92c192de..989d07b831fc 100644
->>> --- a/include/net/page_pool/types.h
->>> +++ b/include/net/page_pool/types.h
->>> @@ -127,7 +127,7 @@ struct page_pool {
->>>  
->>>  	bool has_init_callback;
->>
->> It seems odd to have only a slow field between tow fast
->> field group, isn't it better to move it to the end of
->> page_pool or where is more appropriate?
-> 
-> 1. There will be more in the subsequent patches.
-> 2. ::has_init_callback happens each new page allocation, it's not slow.
->    Jakub did put it here for purpose.
-> 
->>
->>>  
->>> -	long frag_users;
->>> +	long frag_users __aligned(4 * sizeof(long));
->>
->> If we need that, why not just use '____cacheline_aligned_in_smp'?
-> 
-> It can be an overkill. We don't need a full cacheline, but only these
-> fields to stay within one, no matter whether they are in the beginning
-> of it or at the end.
+> Chris, any thoughts on a global flag for skipping DMA syncs ladder?
 
-I am still a little lost here, A comment explaining why using '4' in the
-above would be really helpful here.
+It seems there was one already in the past:
+
+https://lore.kernel.org/netdev/7c55a4d7-b4aa-25d4-1917-f6f355bd722e@arm.com/T/
+
+> 
+>>
+>>
+
+>>> +static inline bool page_pool_set_dma_addr(const struct page_pool *pool,
+>>> +					  struct page *page,
+>>> +					  dma_addr_t addr)
+>>>  {
+>>> +	unsigned long val = addr;
+>>> +
+>>> +	if (unlikely(!addr)) {
+>>> +		page->dma_addr = 0;
+>>> +		return true;
+>>> +	}
+>>
+>> The above seems unrelated change?
+> 
+> Related. We use page_put_set_dma_addr() to clear ::dma_addr as well
+> (grep for it in page_pool.c). In this case, we don't want
+> dma_need_sync() to be called as we explicitly pass zero. This check
+> zeroes the field and exits as quickly as possible.
+
+The question seems to be about if we need to ensure the LSB of
+page->dma_addr is not set when page_pool releases a page back to page
+allocator?
+
+> In case with the call mentioned above, zero is a compile-time constant
+> there, so that this little branch will be inlined with the rest dropped.
+> 
+
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
