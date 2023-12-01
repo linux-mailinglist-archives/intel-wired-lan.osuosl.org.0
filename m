@@ -1,80 +1,89 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0E1CE8007CE
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  1 Dec 2023 10:59:07 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id F37E2800C29
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  1 Dec 2023 14:32:00 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 2E27B847C2;
-	Fri,  1 Dec 2023 09:59:05 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 2E27B847C2
+	by smtp3.osuosl.org (Postfix) with ESMTP id B52926FA8A;
+	Fri,  1 Dec 2023 13:31:58 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B52926FA8A
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1701424745;
-	bh=pk/kEKFwi3j0G3f+qFlP4PoiQyf+zY1TF/gw9Mq5NDs=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1701437518;
+	bh=TwRrd9wPYHSEhgI8RiPICh9TSEP3I+6AUvVWG6Fd8/o=;
+	h=From:To:In-Reply-To:References:Date:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=eYCHQzBXYwTcoqvE6HeeKDBTp5RxCbqZ/ilvK67X9lh3ME4btYemKSTn2nfXYO/jq
-	 TZbyRGUW3eAvC3xIOLhwaeTxKVaBqx4J6sIQMugjDNZPd0qGMzMEGCsKKVJtUMPSiq
-	 JMGXHapptKJuuxlIyhxvqV7R8t95Qtxi7NdelTI3I8kkdy0Rut1dEEenBv04g9RyGR
-	 ZBmuGjxuVc7RQ/XA0Z+BoYCd/D8BYAfZkJpS8Zy/cPcT3XouSd7S0G9RXzjBRPmjWE
-	 hHm8ChBF+IaPDrJ+OvHnobPujLNkTg3/8LLn8At8B12yKzphdzv1CzhrbR148jnWMd
-	 TXTsK1M4ZNXcA==
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id rtEA1lgCWmpR; Fri,  1 Dec 2023 09:59:04 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 15E17847B3;
-	Fri,  1 Dec 2023 09:59:04 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 15E17847B3
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id B534D1BF345
- for <intel-wired-lan@lists.osuosl.org>; Fri,  1 Dec 2023 09:58:58 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 8CD2760B68
- for <intel-wired-lan@lists.osuosl.org>; Fri,  1 Dec 2023 09:58:58 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 8CD2760B68
+	b=CMSfQ4xDcQ6bMpztA4ibdv8r6s3Hj1OM8St7J5Z3DgYngJ/W82syZIm3Plwjuo9n4
+	 bWDZ6VxjxNPsBSTsGwkDWVkmVL4Wrode9BpNjYUVe+MjAI9t2wZ5EZxAr0LFWG4AmW
+	 S5aQKpVztNdSvs8Z4hUMYD8jqyi1LNxq5s4hxoT9tuiwmYv8+h7O5vfLMscaRQQSvw
+	 DP+qSubpti7wvlfFhwp45owHweMee8BQaRaPmIIWpvfP13yI9vKEdhir4Z2O6YM3sZ
+	 m8XrWvV0uU+dqsPVVGSuXjXlEhHtCQYOyBBUrP9s7fZ8KG5q37WmlewkCf5ZIDK9tX
+	 UNxweGEH/HOcg==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id k9sCzlvywYcF for <intel-wired-lan@lists.osuosl.org>;
- Fri,  1 Dec 2023 09:58:58 +0000 (UTC)
-Received: from ams.source.kernel.org (ams.source.kernel.org
- [IPv6:2604:1380:4601:e00::1])
- by smtp3.osuosl.org (Postfix) with ESMTPS id CC2C160AEF
- for <intel-wired-lan@lists.osuosl.org>; Fri,  1 Dec 2023 09:58:57 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org CC2C160AEF
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by ams.source.kernel.org (Postfix) with ESMTP id 0EC1BB84776;
- Fri,  1 Dec 2023 09:58:55 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id AA0CBC433C9;
- Fri,  1 Dec 2023 09:58:52 +0000 (UTC)
-Date: Fri, 1 Dec 2023 09:58:48 +0000
-From: Simon Horman <horms@kernel.org>
-To: Jan Glaza <jan.glaza@intel.com>
-Message-ID: <20231201095848.GT32077@kernel.org>
-References: <20231129073611.8816-1-jan.glaza@intel.com>
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id ak81Ft2JZ6Hy; Fri,  1 Dec 2023 13:31:57 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp3.osuosl.org (Postfix) with ESMTP id 969E66FA15;
+	Fri,  1 Dec 2023 13:31:57 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 969E66FA15
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id D694C1BF5E9
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  1 Dec 2023 13:31:51 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp4.osuosl.org (Postfix) with ESMTP id AE27942143
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  1 Dec 2023 13:31:51 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org AE27942143
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id NeMdcp6Ayorw for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  1 Dec 2023 13:31:51 +0000 (UTC)
+Received: from galois.linutronix.de (Galois.linutronix.de
+ [IPv6:2a0a:51c0:0:12e:550::1])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 09B3942142
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  1 Dec 2023 13:31:50 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 09B3942142
+From: Kurt Kanzenbach <kurt@linutronix.de>
+To: Suman Ghosh <sumang@marvell.com>, Jesse Brandeburg
+ <jesse.brandeburg@intel.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Vinicius Costa Gomes <vinicius.gomes@intel.com>
+In-Reply-To: <SJ0PR18MB52163CF3D9F88A96707B0708DB81A@SJ0PR18MB5216.namprd18.prod.outlook.com>
+References: <20231201075043.7822-1-kurt@linutronix.de>
+ <20231201075043.7822-2-kurt@linutronix.de>
+ <SJ0PR18MB52163CF3D9F88A96707B0708DB81A@SJ0PR18MB5216.namprd18.prod.outlook.com>
+Date: Fri, 01 Dec 2023 14:31:45 +0100
+Message-ID: <87fs0m2gn2.fsf@kurt>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20231129073611.8816-1-jan.glaza@intel.com>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1701424734;
- bh=MyorjKQYbtVSpbBJboZrJOBowqJDICf5+G93U5kPraI=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=POVNK/b8fBIwpTZKLT1FLBnnQTMvkV3Or4wWeZmfpB9NTZNZju7zAy6/NhB1b8AN3
- WEJAp6lHgj1VFZbe+MptFZHuQpmGC94byOaNr27CwRWhV2IbxOsdjQNOXJIzDeLqZN
- epNLsucZxb12CUzwI5a+G7gZAJdVf8HZ1PjlmgAiaQA82/VAncBYjl/tID9Fzh/XiE
- Zgg0jwIpEh2MG97PXRMVLC8kjoXIA524beqMX1sUINGYzDGD8Jsc+A87UVLKIKhOu7
- JrjCw7mAw1JPT1Kfi/Fe1nHhzzc7QeHYik+wLZpUIkzSBWVdfDcp6XGnhA+MGRkHuW
- aoKQmkXQhpKVw==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=POVNK/b8
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next] ice: ice_base.c: Add const
- modifier to params and vars
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linutronix.de; s=2020; t=1701437507;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=UPBgS6HkYRkOkv21t9MfxwD13qsaPAeJ9zmSlmunmb4=;
+ b=nHLOwjK6VqSE6j91L4KEZqxKl/P4Wu8TNhM5ZWgCihkFT9MGhkiuJRZji8e9B489+jkma4
+ yYTSFXhEF3xMzpRAhm2Noy9EbTbthBVzGYgrt+gtN+KSf9F7WBLWBKTqBBbjhSsUtSXKhV
+ Ci7cjxcifQzxDf3RhqCQoOdfg5dsHYKIEIl2tAxdXZtSUrVPPgw7iF0Igl8npmadtCNFxx
+ nkaHUHwz9c0I9nwgMfORElqfP0lSwf6XBxtSglfb3L8pdvJpjEC+cqeWk1hHUOIfqY0D0P
+ 19oL9D0cTO/J+1D/G/zYbTzHOQ84a8PYhbwfOhxk9ji2IX6W0ghmBH9DSi1T5w==
+X-Mailman-Original-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed;
+ d=linutronix.de; s=2020e; t=1701437507;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=UPBgS6HkYRkOkv21t9MfxwD13qsaPAeJ9zmSlmunmb4=;
+ b=7o4X1CACoAzwuWvHTrfkLltCTGL/Mq9vwEQevdUG3xY1yDVmpJC8Y5J/lhndAtpT5GsQS2
+ a+vODSD9H8qbSCBg==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key) header.d=linutronix.de header.i=@linutronix.de
+ header.a=rsa-sha256 header.s=2020 header.b=nHLOwjK6; 
+ dkim=pass header.d=linutronix.de header.i=@linutronix.de
+ header.a=ed25519-sha256 header.s=2020e header.b=7o4X1CAC
+Subject: Re: [Intel-wired-lan] [EXT] [PATCH iwl-net v2 1/2] igc: Report VLAN
+ EtherType matching back to user
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,40 +96,74 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
- Sachin Bahadur <sachin.bahadur@intel.com>,
- Andrii Staikov <andrii.staikov@intel.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ Eric Dumazet <edumazet@google.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ "David S. Miller" <davem@davemloft.net>
+Content-Type: multipart/mixed; boundary="===============1897736211759465046=="
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed, Nov 29, 2023 at 02:36:11AM -0500, Jan Glaza wrote:
-> Add const modifier to function parameters and variables where appropriate
-> in ice_base.c and corresponding declarations in ice_base.h.
-> 
-> The reason for starting the change is that read-only pointers should be
-> marked as const when possible to allow for smoother and more optimal code
-> generation and optimization as well as allowing the compiler to warn the
-> developer about potentially unwanted modifications, while not carrying
-> noticable negative impact.
+--===============1897736211759465046==
+Content-Type: multipart/signed; boundary="=-=-=";
+	micalg=pgp-sha512; protocol="application/pgp-signature"
 
-Hi Jan,
+--=-=-=
+Content-Type: text/plain
 
-it's probably not worth respinning for this, but: noticeable
+Hi Suman,
 
-> 
-> Reviewed-by: Andrii Staikov <andrii.staikov@intel.com>
-> Reviewed-by: Sachin Bahadur <sachin.bahadur@intel.com>
-> Signed-off-by: Jan Glaza <jan.glaza@intel.com>
-> ---
-> This change is done in one file to get comment feedback and, if positive,
-> will be rolled out across the entire ice driver code.
+On Fri Dec 01 2023, Suman Ghosh wrote:
+> Hi Kurt,
+>
+>
+>>+	if (rule->filter.match_flags & IGC_FILTER_FLAG_VLAN_ETYPE) {
+>>+		fsp->flow_type |= FLOW_EXT;
+>>+		fsp->h_ext.vlan_etype = rule->filter.vlan_etype;
+>>+		fsp->m_ext.vlan_etype = ETHER_TYPE_FULL_MASK;
+> [Suman] User can provide mask for vlan-etype as well. Why not take
+> that rather than hard coding it? I checked you are already doing the
+> same for TCI in the other patch.
 
-The nit above notwithstanding, this looks good to me.
+Currently the driver allows/supports to match the VLAN EtherType only by
+full mask. That is different from TCI, where two different mask values
+are possible.
 
-Reviewed-by: Simon Horman <horms@kernel.org>
+Thanks,
+Kurt
+
+--=-=-=
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQJHBAEBCgAxFiEEvLm/ssjDfdPf21mSwZPR8qpGc4IFAmVp4EETHGt1cnRAbGlu
+dXRyb25peC5kZQAKCRDBk9HyqkZzgiT6D/sGHAgkvZqoH10WUoVnaxUvE7W0RoEN
+h6+7WS0BMVPOWK6dvsvP8QMm9ECJrGpI+BrA4StfbyJci/n2anUeYDPf67ozlInJ
+Cw106cjEsIVMxQumY5YJKm/1/Hg3o2aZ1XzVRG5WIjDHJxn7A0qXSZ4FjWZxXEtu
+QJ4JsfY7w7A7YAXJHOqXebqlc36OMdxtCjRufH7GDNT0aZHK1JXovOW8/nf70/7+
+zz/3ygJvu7691hr+mUazQ0DB6FXFol41EjlITxumdqhdFYYF1Fts0uZ+g0wGdOVn
+lAVZ5ss62dTQ3tnedxrADoU65U5LXqiGWg2Zp+R2mwvoUoyzRSmiwG1kq4VF5hWW
+fV4xtxLNEUCW1ebQ5OLwYgIBrzGpaOrhnvW1IwRHR9OPa+qyTL8ENd6oMCfQICP2
+aA0yrzGhNSy4Ew0P8XFFTfN21+FzziarG8iCtg5TYl6ev4hIfPSdLAKtEC8MbNZD
+qB7c10GgGigEQIoPrtFrqSkd1LN/0hFUzPWJTWx/4RSNa18nZrHSHA5JxgsLX0Pp
+l/qZChqVWrgphTRCjWvMysVF1DUPa3tkLlRqotACau0AxTXk2eZwFflmVK8AmQoN
+Zx2Z3yNpvku3X8GvLHbTcSGqiicEgzCOMGAj/gU+jFvJ1fmx4JVkpwcDoHB0KTsV
+E623CKidIznuOg==
+=aGjs
+-----END PGP SIGNATURE-----
+--=-=-=--
+
+--===============1897736211759465046==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
 https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+
+--===============1897736211759465046==--
