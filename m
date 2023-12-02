@@ -1,79 +1,80 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id CF08D801A15
-	for <lists+intel-wired-lan@lfdr.de>; Sat,  2 Dec 2023 03:37:19 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id CBBB0801DDC
+	for <lists+intel-wired-lan@lfdr.de>; Sat,  2 Dec 2023 17:48:42 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 2A90E42459;
-	Sat,  2 Dec 2023 02:37:18 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2A90E42459
+	by smtp2.osuosl.org (Postfix) with ESMTP id 83F9240547;
+	Sat,  2 Dec 2023 16:48:39 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 83F9240547
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1701484638;
-	bh=n40Gk6FqRCZuvWZjkqlzqVe0KsgsUW2HU9XiPA2XN3o=;
-	h=Date:From:To:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1701535719;
+	bh=1xo/BDgoaYsllWGuAyeC0P2jMUnOch9r00aVgTQ1H9k=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=oOiY+sQGFvPu9RD4/kNpXeUrBaYjaWEHfw+6E7JN6cNyljssnLNWOI28d5lHkAyHY
-	 PAH7ve/kV2aUo9rD+dGcPqP2TfPHhhlESfJ3cVy7HufqkFIT4vqhxA0VewIN/mlY+x
-	 0BAIAx+6t2fpkeWcKPnwrne+fe5X+OTShf1m0FsgDywuVos8Rox3JMCZgfIBMDHmxT
-	 9/FVVVkIq3VvtEPUmwMx06YxYHM0IBncUpPyHsEygKUCaq8FZJPGNqgXc5+wWCnyAM
-	 ndCsBP49bjdmm23HB98GOjSGeqmkbvfGIpNfX6CqG9Q+3XOFFIUwVYZm8yeHbVSnyQ
-	 NITIix4xCnH+w==
+	b=hiiDNXv0Nlx6P/zKAxw4eIWdR2GVxGmX2APGOmdDxrMar3esyC4pjAg8D/oefwr+G
+	 OhDH5ZQWiJEqnyIWf9SkdeSBC8swASh+5RuAVPGQa5sw7mjL2yd8uREsZkvAha/q4n
+	 viEBMRTS6XoxZmvbbL5R8qHXafuVZ11SellV+11fiX1R6LpCBK6U8cDWNbHzL+HAPt
+	 vDvvLEm2jDcUdKZeNvDtEJG9UMomn3u+bgQIHpKjaIv+cQbHH1CwxLwNsUt8mDrxMg
+	 0Z/SkVtXgr5QGMpy/IPvUQf60AxSoFDa/h4ZWBxJZ7HX9p/ezrF+yRSUHUFJzvDOeA
+	 PsPkpNQPi4n+A==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id z9dFgzzxoJyQ; Sat,  2 Dec 2023 02:37:17 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id IYfIs5hh9fuv; Sat,  2 Dec 2023 16:48:38 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id F288342440;
-	Sat,  2 Dec 2023 02:37:16 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org F288342440
-X-Original-To: intel-wired-lan@osuosl.org
-Delivered-To: intel-wired-lan@osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 2840A1BF2CD
- for <intel-wired-lan@osuosl.org>; Sat,  2 Dec 2023 02:37:12 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 1B2B440530;
+	Sat,  2 Dec 2023 16:48:38 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1B2B440530
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 1C7E71BF5A5
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  2 Dec 2023 16:48:33 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id EBE4A848F7
- for <intel-wired-lan@osuosl.org>; Sat,  2 Dec 2023 02:37:11 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org EBE4A848F7
+ by smtp2.osuosl.org (Postfix) with ESMTP id E264740530
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  2 Dec 2023 16:48:32 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org E264740530
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id lTI5p5dEP8fu for <intel-wired-lan@osuosl.org>;
- Sat,  2 Dec 2023 02:37:11 +0000 (UTC)
-Received: from sin.source.kernel.org (sin.source.kernel.org
- [IPv6:2604:1380:40e1:4800::1])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 149D3848B5
- for <intel-wired-lan@osuosl.org>; Sat,  2 Dec 2023 02:37:10 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 149D3848B5
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id PNNLTMyvdaQ6 for <intel-wired-lan@lists.osuosl.org>;
+ Sat,  2 Dec 2023 16:48:30 +0000 (UTC)
+Received: from dfw.source.kernel.org (dfw.source.kernel.org
+ [IPv6:2604:1380:4641:c500::1])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id B754D4052D
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  2 Dec 2023 16:48:30 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B754D4052D
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by sin.source.kernel.org (Postfix) with ESMTP id 45B2ECE259D;
- Sat,  2 Dec 2023 02:37:06 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5262DC433C7;
- Sat,  2 Dec 2023 02:37:05 +0000 (UTC)
-Date: Fri, 1 Dec 2023 18:37:04 -0800
-From: Jakub Kicinski <kuba@kernel.org>
-To: Pawel Kaminski <pawel.kaminski@intel.com>
-Message-ID: <20231201183704.382f5964@kernel.org>
-In-Reply-To: <20231201235949.62728-1-pawel.kaminski@intel.com>
-References: <20231201235949.62728-1-pawel.kaminski@intel.com>
+ by dfw.source.kernel.org (Postfix) with ESMTP id 9DA9D60B93;
+ Sat,  2 Dec 2023 16:48:29 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id ECD44C433C9;
+ Sat,  2 Dec 2023 16:48:26 +0000 (UTC)
+Date: Sat, 2 Dec 2023 16:48:24 +0000
+From: Simon Horman <horms@kernel.org>
+To: Ivan Vecera <ivecera@redhat.com>
+Message-ID: <20231202164824.GA50400@kernel.org>
+References: <20231129161711.771729-1-ivecera@redhat.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20231129161711.771729-1-ivecera@redhat.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1701484625;
- bh=7TxLpYvEmtlsow83j0jT5kvwsPw4rjLxRzvb9Zl7cMs=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=thKnZh+XhU645J7FTtcZmdC443aYOo2RGAG6K1/bOr0BKyEsUmxTh5rh7CCcBIsCz
- R8gebA+nTEq4l81+42rWf0X7cWxS7AwryjdVSwylUVcRKdBoac9swHmVdTIK1J1tMi
- 8WH7/N/TMoyu4Ul13X7V+VB6MTNFpI9jJ8rHZTPE4TSYgw1Vb1xKgCv3IKJS2h5Tib
- Mq27Eh+tsaS+HyR+pguHBSkwfQ+Hr1XRvIDI813QV7EFQnC8/TtLQGHwaHzkWNx/jr
- PwF36e3WMG0ifmEzJSeFYmiSgjBg+0/fiHG7XPQfE0fKqoKojCr7oq0+ypUs2Rqh+0
- 2WSEW54eNG4Lw==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ d=kernel.org; s=k20201202; t=1701535709;
+ bh=DnZEzNXP9hV68Bv4xg8L4T2Cgy7MhrlHkGJzKWd0Rog=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=SZoOTDXNOwfGy+XbS4lGBQnlNtfStPpSe6XOuqQbxnbXDAUBoZaxsBOXb2D0e9dmu
+ C7p8JBEBYJRi0f0bK+IiWqwRZivi4i7Yep2WYel8lRjn8pg/WNx16abD/9vaSwAyAR
+ k4GatGF7Xw7DiyvOAZMGPkwt6A+K+y//RaCLR9ncjQMGdaNL+aqaolGYgZJKoIem/6
+ fMHcyTIbpba7xUZLqzio6tpm7HN3f4iXQsM8BLAQs6HGWp7wxz0PXN6ghbQEEtNMDe
+ NZa3CQKerGMXmPiMF4YfSgJAGp7mYigBA8NEINbq3X72XTGMZRY5/a/Q6TV9VTNUxc
+ NDJVm2GW1LVYQ==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=thKnZh+X
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v1] ice: Add support for
- devlink loopback param.
+ header.a=rsa-sha256 header.s=k20201202 header.b=SZoOTDXN
+Subject: Re: [Intel-wired-lan] [PATCH iwl-net] i40e: Fix ST code value for
+ Clause 45
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,51 +87,40 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Przemek Kitszel <przemyslaw.kitszel@intel.com>, intel-wired-lan@osuosl.org,
- Michal Wilczynski <michal.wilczynski@intel.com>, netdev@vger.kernel.org
+Cc: netdev@vger.kernel.org, Jesse Brandeburg <jesse.brandeburg@intel.com>,
+ open list <linux-kernel@vger.kernel.org>,
+ Aleksandr Loktionov <aleksandr.loktionov@intel.com>,
+ Eric Dumazet <edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ "David S. Miller" <davem@davemloft.net>,
+ "moderated list:INTEL ETHERNET DRIVERS" <intel-wired-lan@lists.osuosl.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Fri,  1 Dec 2023 15:59:49 -0800 Pawel Kaminski wrote:
-> Add support for devlink loopback param. Supported values are "enabled",
-> "disabled" and "prioritized". Default configuration is set to "enabled.
+On Wed, Nov 29, 2023 at 05:17:10PM +0100, Ivan Vecera wrote:
+> ST code value for clause 45 that has been changed by
+> commit 8196b5fd6c73 ("i40e: Refactor I40E_MDIO_CLAUSE* macros")
+> is currently wrong.
 > 
-> By default loopback traffic BW is locked to PF configured BW.
+> The mentioned commit refactored ..MDIO_CLAUSE??_STCODE_MASK so
+> their value is the same for both clauses. The value is correct
+> for clause 22 but not for clause 45.
+> 
+> Fix the issue by adding a parameter to I40E_GLGEN_MSCA_STCODE_MASK
+> macro that specifies required value.
+> 
+> Fixes: 8196b5fd6c73 ("i40e: Refactor I40E_MDIO_CLAUSE* macros")
+> Signed-off-by: Ivan Vecera <ivecera@redhat.com>
 
-First off - hairpin-bandwidth or some such would be a much better name.
-Second - you must explain every devlink param in Documentation/
+Thanks Ivan,
 
-Also admission ctrl vs prioritizing sounds like different knobs.
+I agree with your analysis and this fix looks good to me.
 
-> HW is
-> capable of higher speeds on loopback traffic. Loopback param set to
-> "prioritized" enables HW BW prioritization for VF to VF traffic,
-> effectively increasing BW between VFs. Applicable to 8x10G and 4x25G
-> cards.
+Reviewed-by: Simon Horman <horms@kernel.org>
 
-Not very clear what this means...
-So the VFs are Tx bandwidth limited to link speed.
-How does the device know it can admit extra traffic?
-Presumably this doesn't affect rates set by devlink rate?
-
-> To achieve max loopback BW one could:
->  - Make, as much as possible, fair distribution of loopback usages
->    between groups to gain maximal loopback BW.
-
-Can't parse what this means.
-
->  - Try to dedicate ports for loopback only traffic, with minimal network
->    traffic.
-
-Or this.
-
-> Changing loopback configuration will trigger CORER reset in order to take
-> effect.
-
-Changing config of a permanent param shouldn't trigger anything.
-Please see the documentation for expected behavior..
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
