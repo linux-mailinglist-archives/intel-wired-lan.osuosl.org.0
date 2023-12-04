@@ -2,81 +2,81 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4E47B8033F9
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  4 Dec 2023 14:09:21 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id AEADC803411
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  4 Dec 2023 14:10:54 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 77E5781EFD;
-	Mon,  4 Dec 2023 13:09:18 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 77E5781EFD
+	by smtp1.osuosl.org (Postfix) with ESMTP id F22B68132A;
+	Mon,  4 Dec 2023 13:10:52 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org F22B68132A
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1701695358;
-	bh=4qgw4kZPc78zB65OWBh/WcLORiOAMuU+gKVUiy4ayk0=;
+	s=default; t=1701695453;
+	bh=Tapz7prEtLsa1HjqjdvLiOzJgGV4v6ZbV80g6JVC/X0=;
 	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
 	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=pCZJI0UJ/kgHbSJHkbrmkKD7mP3/2/QZDxjFU+Prj9wj8UhPrSW9rGgCktwRtmevA
-	 Le8aZXViFKavF95Ni8Fia0iwLnK7d6k06rJEJ0StwHtocMLR5M6v53ehjpjSGSsUdf
-	 7lbChb2ipxE6byxuhZbjnXwBShDXcZFx7ic+4J7nlMrLnWPBLbOTcGkgAN+9Q5mJ42
-	 dDLD/wlWtYdonThuIcGDnV3s1mtm6RJfnSIlz988PXlaEHnDl3VH+5kjDtgdxTlv94
-	 TeF7uOoLHWS58h3k8PIKVniKjzn/hKo04L3uczdtqyGOnuDLFEYjUeNH0kqH9odOSD
-	 UQ6pCvSQZAuyA==
+	b=MuNOhgiMaD2bBP9B+8N/bIHWP7t7KKCnEvQlp+5zajIn95higpJQTW3g7N+Cju9CE
+	 8RglxvyVHY5LHgn87STi96TT5+DCDq56sN6tRwR4XkRPXMv7fug8qz57WbEDLg97qa
+	 nSSD3fIQtoNJYdzuyfTToPt2KrACd+fj0U0eWKjF8Y1uu2c57ZgPv8Q0UjVK9zdGD2
+	 PId6wSGCuqswtCb3GjZpkYrMd+cHhZiZzzhxDdefGDfRtwVYU/zPp4hnqkDi4SrM4B
+	 k8erckOO0duPsiAXBS2GZSicpQ0VlAxms9HBcX73N5HtSJScCOXDzt3ACChk0QZtRZ
+	 1wqX5Zk29msgw==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id VXzXnZ0bEj2s; Mon,  4 Dec 2023 13:09:17 +0000 (UTC)
+	with ESMTP id L5YA785BVgu4; Mon,  4 Dec 2023 13:10:52 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 504CE81EB4;
-	Mon,  4 Dec 2023 13:09:17 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 504CE81EB4
+	by smtp1.osuosl.org (Postfix) with ESMTP id C0A4B81BD4;
+	Mon,  4 Dec 2023 13:10:51 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org C0A4B81BD4
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id E65FD1BF33E
- for <intel-wired-lan@lists.osuosl.org>; Mon,  4 Dec 2023 13:09:11 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 707801BF33E
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  4 Dec 2023 13:10:47 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id CB53660F9B
- for <intel-wired-lan@lists.osuosl.org>; Mon,  4 Dec 2023 13:09:11 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org CB53660F9B
+ by smtp4.osuosl.org (Postfix) with ESMTP id 480BF41685
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  4 Dec 2023 13:10:47 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 480BF41685
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id LH7EQ2T6GPzG for <intel-wired-lan@lists.osuosl.org>;
- Mon,  4 Dec 2023 13:09:11 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id p6XASumM3qwa for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  4 Dec 2023 13:10:46 +0000 (UTC)
 Received: from mgamail.intel.com (mgamail.intel.com [134.134.136.65])
- by smtp3.osuosl.org (Postfix) with ESMTPS id D91AF60F91
- for <intel-wired-lan@lists.osuosl.org>; Mon,  4 Dec 2023 13:09:10 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D91AF60F91
-X-IronPort-AV: E=McAfee;i="6600,9927,10913"; a="397616166"
-X-IronPort-AV: E=Sophos;i="6.04,249,1695711600"; d="scan'208";a="397616166"
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 9029B415F4
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  4 Dec 2023 13:10:46 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9029B415F4
+X-IronPort-AV: E=McAfee;i="6600,9927,10913"; a="397616300"
+X-IronPort-AV: E=Sophos;i="6.04,249,1695711600"; d="scan'208";a="397616300"
 Received: from fmsmga001.fm.intel.com ([10.253.24.23])
  by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 04 Dec 2023 05:09:10 -0800
+ 04 Dec 2023 05:10:45 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10913"; a="914420067"
-X-IronPort-AV: E=Sophos;i="6.04,249,1695711600"; d="scan'208";a="914420067"
+X-IronPort-AV: E=McAfee;i="6600,9927,10913"; a="914420391"
+X-IronPort-AV: E=Sophos;i="6.04,249,1695711600"; d="scan'208";a="914420391"
 Received: from unknown (HELO amlin-019-225.igk.intel.com) ([10.102.19.225])
- by fmsmga001.fm.intel.com with ESMTP; 04 Dec 2023 05:09:08 -0800
+ by fmsmga001.fm.intel.com with ESMTP; 04 Dec 2023 05:10:44 -0800
 From: Andrii Staikov <andrii.staikov@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Mon,  4 Dec 2023 14:09:05 +0100
-Message-Id: <20231204130905.3366688-1-andrii.staikov@intel.com>
+Date: Mon,  4 Dec 2023 14:10:41 +0100
+Message-Id: <20231204131041.3369693-1-andrii.staikov@intel.com>
 X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1701695350; x=1733231350;
+ t=1701695446; x=1733231446;
  h=from:to:cc:subject:date:message-id:mime-version:
  content-transfer-encoding;
- bh=QacuDBxTcIx+Nm5G4eqgOMtRD1K79VuWAuOYgcivmio=;
- b=XedSgnHbD+Prx4gxZgnMz8metVtjbliqXiMIc0fTdW2ByuYG+Z5s+7eL
- NDwyDczWhyCcV2VUJbX/5fDCzdx6+ekdUAm6kfCoUAUbNPbbiLEjvrOnR
- GSB0Ce80qj6WBI4iZn+sPdUf7T8l7NS+azFd+8x+oRsgo4erdRs1033MB
- g45NzmN0M/38f3EM51TAnDxwShUIACk336lmk9lLRHcnvd1007JWGfUz1
- 5xClfhFZV58QbIbwS5gUNkLXgiPem/ZCMLBlO5ZJm5Hi6NVXcp4geCbar
- bibjr63Zu9wo9oyGJmeDD9dPaeiILHTenw807iUX5f3/qzaD2yblHIj2O
- w==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ bh=2mrXCNRtDzTTUQyE3yNuZqW2b0mxtGVuOqJbt1r6kpU=;
+ b=Yjt1NA9tGSiVRcTOUYEJIjh+IYA0c/sscgJT1sanGo6Wj2z10NBuxU+8
+ Lo/0/mNxbeTV5PWSNgcwZ0kB8uJCI4acyTLCvhx3urCuudHrF9ek1AsVB
+ Ev5In/31qCMETGm56Fn8GFuZ07g8jo5K5kZNpzfvunXWghdg/3OPNx96H
+ bgnhnewajgw+yvd98zlrSERUAtaDlykGQNaBQNmn+lSdq1ez0L8BFjRS5
+ 7mFJ3u7d1EgyI4OnhE1kB5bFgXWaUhp6U5bz+SBysjmPygs84I9shbEfX
+ BuxleofJJj3wRvNqhnbgIwymhWfT5aIWpb1RzfiJmCtUBHq9l5N5Ivs7j
+ g==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=XedSgnHb
+ header.a=rsa-sha256 header.s=Intel header.b=Yjt1NA9t
 Subject: [Intel-wired-lan] [PATCH iwl-net v1] i40e: Restore VF MSI-X state
  during PCI reset
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -93,6 +93,7 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Cc: Karen Ostrowska <karen.ostrowska@intel.com>,
  Mateusz Palczewski <mateusz.palczewski@intel.com>,
+ Wojciech Drewek <wojciech.drewek@intel.com>,
  Andrii Staikov <andrii.staikov@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
@@ -114,7 +115,10 @@ Co-developed-by: Karen Ostrowska <karen.ostrowska@intel.com>
 Signed-off-by: Karen Ostrowska <karen.ostrowska@intel.com>
 Co-developed-by: Mateusz Palczewski <mateusz.palczewski@intel.com>
 Signed-off-by: Mateusz Palczewski <mateusz.palczewski@intel.com>
+Reviewed-by: Wojciech Drewek <wojciech.drewek@intel.com>
 Signed-off-by: Andrii Staikov <andrii.staikov@intel.com>
+---
+v1 -> v2: Add reviewed-by tag
 ---
  drivers/net/ethernet/intel/i40e/i40e_main.c   |  2 ++
  .../ethernet/intel/i40e/i40e_virtchnl_pf.c    | 24 +++++++++++++++++++
