@@ -1,72 +1,84 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 807C380410B
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  4 Dec 2023 22:41:37 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id CE07C804102
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  4 Dec 2023 22:32:40 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 1B0D440201;
-	Mon,  4 Dec 2023 21:41:36 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1B0D440201
+	by smtp2.osuosl.org (Postfix) with ESMTP id 12DA341555;
+	Mon,  4 Dec 2023 21:32:39 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 12DA341555
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1701726096;
-	bh=By8Tj6WKRwvfaWdhazhfUQTM6h3Lsk/Xnca4kCVK5p4=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1701725559;
+	bh=CJB3DYj9p/ddSL/C4ZRczjTMFiQvSOoU0L+mMJ/TLWA=;
+	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=Kh3g/3fxl5pAQ7O9uhYyvciigwpUKrw5NCaF9n45cL76aNGJ8UQoAe3nh2ymFI2i0
-	 Jc1n0nsMswmq0W90GQ4WJmi7rFQ3+0wX3a2y98FrjXTpYHGUgqbVtG93Dau6ZWDZvp
-	 7/f4p1abv+CeIUPxxcQbQrDu3iC8+xNgz61vBhd2zc7ysP6e/HkCfENNKpKbopWh0w
-	 91ogfA/L+DO1qUhA83BBrtjl54iA7aQjjbq/vArQ6H8CqBXk06x0tFk0JBMKu1emkO
-	 ga7Qkpxo/pcFTDgR4XleIcjYBHAFt7qicAjy3HbwJXrkWG7Qp/ReRyobWhI8Oa1a/b
-	 S1oU8tjj8eJVg==
+	b=AU4jMhsgBZXdS51auVC+JueFt43Paey0wVe5YA7e0q3/b86cbFTFPjAZCEpomnyls
+	 BvcCCq6svZi9rWd4xi+mOhRFlQBoUxD+iVDTJeb/HQxW5JXZTam+FFT7kxZyYk1Ilt
+	 Jh6ZpTwvXm485WNdeFiZ6LZLF1Ix6QAErq4C9Lh8maXGC30bT68qllPSx3LxdoNugD
+	 SYjujR/XEsR9L/jqIwoxEwGrYMpECcVhvc25iWSg8F958uRQme/Pwi83BLPOSiCtwn
+	 FRHjZ1xt9YVykwkKGQJrNlZ/SH/4iWlSGa2EfCE2YuMR79VChH2n3nYoldK+ibO5If
+	 dFqhCstpO77kQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 46uoixUXtiAN; Mon,  4 Dec 2023 21:41:35 +0000 (UTC)
+	with ESMTP id DMKNB65zRO7w; Mon,  4 Dec 2023 21:32:38 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 846CF40151;
-	Mon,  4 Dec 2023 21:41:34 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 846CF40151
+	by smtp2.osuosl.org (Postfix) with ESMTP id B9A5940201;
+	Mon,  4 Dec 2023 21:32:37 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B9A5940201
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 1E4771BF30E
- for <intel-wired-lan@lists.osuosl.org>; Mon,  4 Dec 2023 21:28:55 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 216721BF30E
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  4 Dec 2023 21:32:32 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id EA80841793
- for <intel-wired-lan@lists.osuosl.org>; Mon,  4 Dec 2023 21:28:54 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org EA80841793
+ by smtp4.osuosl.org (Postfix) with ESMTP id 0135841795
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  4 Dec 2023 21:32:32 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0135841795
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id QGwoVATAep4b for <intel-wired-lan@lists.osuosl.org>;
- Mon,  4 Dec 2023 21:28:54 +0000 (UTC)
-Received: from mail1.merlins.org (magic.merlins.org [209.81.13.136])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 11FD44176D
- for <intel-wired-lan@lists.osuosl.org>; Mon,  4 Dec 2023 21:28:53 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 11FD44176D
-Received: from merlin by mail1.merlins.org with local (Exim 4.94.2 #2)
- id 1rAGUj-0001wP-VU by authid <merlin>; Mon, 04 Dec 2023 13:28:49 -0800
-Date: Mon, 4 Dec 2023 13:28:49 -0800
-From: Marc MERLIN <marc@merlins.org>
-To: Johannes Berg <johannes@sipsolutions.net>
-Message-ID: <20231204212849.GA25864@merlins.org>
+ with ESMTP id jm3WtwzCTqYU for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  4 Dec 2023 21:32:31 +0000 (UTC)
+Received: from sipsolutions.net (s3.sipsolutions.net
+ [IPv6:2a01:4f8:242:246e::2])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 293FF41793
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  4 Dec 2023 21:32:31 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 293FF41793
+Received: by sipsolutions.net with esmtpsa
+ (TLS1.3:ECDHE_X25519__RSA_PSS_RSAE_SHA256__AES_256_GCM:256)
+ (Exim 4.97) (envelope-from <johannes@sipsolutions.net>)
+ id 1rAGYE-0000000FGpo-1Fro; Mon, 04 Dec 2023 22:32:26 +0100
+Message-ID: <69c0fa67c2b0930f72e99c19c72fc706627989af.camel@sipsolutions.net>
+From: Johannes Berg <johannes@sipsolutions.net>
+To: Marc MERLIN <marc@merlins.org>
+Date: Mon, 04 Dec 2023 22:32:25 +0100
+In-Reply-To: <20231204212849.GA25864@merlins.org>
 References: <20231204200710.40c291e60cea.I2deb5804ef1739a2af307283d320ef7d82456494@changeid>
  <20231204200038.GA9330@merlins.org>
  <a6ac887f7ce8af0235558752d0c781b817f1795a.camel@sipsolutions.net>
  <20231204203622.GB9330@merlins.org>
  <24577c9b8b4d398fe34bd756354c33b80cf67720.camel@sipsolutions.net>
- <20231204205439.GA32680@merlins.org>
+ <20231204205439.GA32680@merlins.org> <20231204212849.GA25864@merlins.org>
+User-Agent: Evolution 3.50.1 (3.50.1-1.fc39) 
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20231204205439.GA32680@merlins.org>
-X-Sysadmin: BOFH
-X-URL: http://marc.merlins.org/
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-SA-Exim-Connect-IP: <locally generated>
-X-SA-Exim-Mail-From: marc@merlins.org
-X-Mailman-Approved-At: Mon, 04 Dec 2023 21:41:23 +0000
+X-malware-bazaar: not-scanned
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt;
+ c=relaxed/relaxed; 
+ d=sipsolutions.net; s=mail; h=MIME-Version:Content-Transfer-Encoding:
+ Content-Type:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Sender
+ :Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-To:
+ Resent-Cc:Resent-Message-ID; bh=7JmWiw2OjGew/L9t8WojbOOKVqJKnGxbMVBwCRVjGDA=; 
+ t=1701725551; x=1702935151; b=mChIJu57D94WwqsN5YKWbezoTd6ZadBf3AYYNRZS3wWluK1
+ XOyviJek5AAH+OoMlpPbbLT0Z2jKNJ0jb07H0kuTG598rk6jEYFbie9mcMemWjUN4icBwIcT/+Wu4
+ 3L4L7JpkJklwOQ2CBn4Z11ttvNwnGtpMKQbNX2UVMLuy/JBPiyRQTmzMJCjZeVb9o05Fr6BmgFWfI
+ TCW+hzVmasHpoxfBZsNkISt9r+OtOH04LL+A5rd+906VKRgU/x6fSSggeTUQEC1hUMPj8DLqeIpxb
+ ZyqbNiJANnUQDXmD+XJXL4FVu74t0rcRltS4gQCYmqT+e8yp7zMKIfXK3QAK34Vg==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key) header.d=sipsolutions.net header.i=@sipsolutions.net
+ header.a=rsa-sha256 header.s=mail header.b=mChIJu57
 Subject: Re: [Intel-wired-lan] [RFC PATCH] net: ethtool: do runtime PM
  outside RTNL
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -81,78 +93,33 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
+Cc: netdev@vger.kernel.org, Jesse Brandeburg <jesse.brandeburg@intel.com>,
+ intel-wired-lan@lists.osuosl.org, Jakub Kicinski <kuba@kernel.org>,
  Tony Nguyen <anthony.l.nguyen@intel.com>,
- Jesse Brandeburg <jesse.brandeburg@intel.com>,
  Heiner Kallweit <hkallweit1@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, Dec 04, 2023 at 12:54:39PM -0800, Marc MERLIN wrote:
-> On Mon, Dec 04, 2023 at 09:40:08PM +0100, Johannes Berg wrote:
-> > This one's still the problem, so I guess my 2-line hack didn't do
-> > anything.
+On Mon, 2023-12-04 at 13:28 -0800, Marc MERLIN wrote:
 > 
-> sorry, I wasn't clear, this was the last hang before your patch. I
-> wanted to make sure it matched your analysis, which it seems to, so
-> that's good.  I now understand that the order in printk is not actually
-> the order of who is at fault.
-> I'm testing your patch now, will let you know ASAP
+> Where do you we go from here? Is the patch obviously good/safe, or do we
+> need to narrow things down/test some more?
+> 
 
-Well. Good news. So far so good.
+Well, I was hoping that
 
-sauron:~# ethtool -i enp11s0
-driver: igc
-version: 6.6.4-amd64-volpre-sysrq-202312
-firmware-version: 1073:8754
-expansion-rom-version: 
-bus-info: 0000:0b:00.0
-supports-statistics: yes
-supports-test: yes
-supports-eeprom-access: yes
-supports-register-dump: yes
-supports-priv-flags: yes
+ (a) ethtool folks / Jakub would comment if this makes sense, but I
+     don't see a good reason to do things the other way around (other
+     than "code is simpler"); and
 
-sauron:~# iwconfig wlp9s0
-wlp9s0    IEEE 802.11  ESSID:"magicnet"  
-          Mode:Managed  Frequency:5.2 GHz  Access Point: E0:63:DA:28:03:67   
-          Bit Rate=866.7 Mb/s   Tx-Power=22 dBm   
-          Retry short limit:7   RTS thr:off   Fragment thr:off
-          Encryption key:off
-          Power Management:off
-          Link Quality=70/70  Signal level=-40 dBm  
-          Rx invalid nwid:0  Rx invalid crypt:0  Rx invalid frag:0
-          Tx excessive retries:0  Invalid misc:992   Missed beacon:0
+ (b) Intel wired folks could help out with getting the patch across the
+     finish line, seeing how their driver needs it :) I think the dev
+     get/put needs to use the newer API, but I didn't immediately see
+     how that works locally in a function without an allocated tracker
 
-sauron:~# lspci | grep -i net
-09:00.0 Network controller: Intel Corporation Wi-Fi 6 AX210/AX211/AX411 160MHz (rev 1a)
-0b:00.0 Ethernet controller: Intel Corporation Ethernet Controller I225-LM (rev 03)
-
-It's unfortunate that nouveau doesn't seem to support the nvidia chip at all, not even
-well enough to turn it off, but thankfully I can do this via
-  echo 'auto' > '/sys/bus/pci/devices/0000:01:00.0/power/control'
-
-For power, I was able to get it to idle at 13W with tlp powering down chips to slow
-speeds, and the screen fairly dim. It's not great but it's cmoparable to the P73, so
-close enough.
-
-The weird PME loops I attached in the last Email would also butn batteries on my P73
-without hanging it. Your patch may have fixed that too. If so, thank you
-(will report if I see the PME stuff again).
-
-Either way, I'm in much better shape right now on a laptop I was about
-to return after having spent 3 days of effort on it, so a heartfelt thank you!
-
-Where do you we go from here? Is the patch obviously good/safe, or do we
-need to narrow things down/test some more?
-
-Marc
--- 
-"A mouse is a device used to point at the xterm you want to type in" - A.S.R.
- 
-Home page: http://marc.merlins.org/  
+johannes
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
