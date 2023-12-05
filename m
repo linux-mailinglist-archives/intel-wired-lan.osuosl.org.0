@@ -2,189 +2,80 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C72F180598B
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  5 Dec 2023 17:10:11 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7EBF6805E73
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  5 Dec 2023 20:15:55 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id C09314357C;
-	Tue,  5 Dec 2023 16:10:09 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C09314357C
+	by smtp2.osuosl.org (Postfix) with ESMTP id DE6CC435C8;
+	Tue,  5 Dec 2023 19:15:53 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org DE6CC435C8
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1701792609;
-	bh=GJsgXkClNAwhFjl+fNObg8Ro5TdXCI65EctRu+hThYE=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
+	s=default; t=1701803753;
+	bh=pxvI0X6/x/KpgB/bcHNybkaHPSHJ6mvU2L9wt210Vd0=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=3zd9VpOPZ0KKhOz6lda8BKA4ZAfED4GPgIY8Yj7KLJtL95z5UK3N7JN6upoz187e4
-	 b2IPxUSV28QPoHyTM7QrFnH+fWggm6JCe0vC+IO+YHDQZvFatmMFsQIyn6F17bfD/n
-	 pSuhOUH0wSG+2pbFpcrTwVGW9duj8Z2+o9uBMXmD5+WwfUkf+uAGdJ1PM7W6Zy1ptn
-	 fCcpxPnOt2sSFWqNyHhcprCsdj9cDU47ZG443ArYnd9abu8DnPnXD1mAevOSVbzc7r
-	 0LinLq5KSmoubOw3V2H7h9vlDvqArerJDmetknthJAugnVBKgd5fYQ9AUFZGV4Tm3V
-	 SvtCW/Sf+1DMg==
+	b=T+7bd7I4iIdItt2yoV2SmaUvVtSXpRgdtx23UxdBnRq6EKlrgAem/ZDaJdFdy25Ii
+	 mtJIQ41YR1QfAKbS09oUPDn+/JFN1EjHO6k04/U/KVAf95y+jHEI4idWHPZY0waTCM
+	 VUFILoNnLZlT7665OXbzoBFiLkwdjmDrcO75cU0HNj+ztPnHj5zU80WHaRd4h34TEf
+	 yH3Fjgkn2T06sgc4iKpwTbs2NHY83J3VC16O8GQ3akVwmC5Bma9g1oaA1pi1R8zozS
+	 z8kxkXm30Ux5NLxQiBgCjPEC0x/u5Y/alFhQFgziAQXT7x4zOhqX3B3nNatVkL/KiU
+	 Uq5oBFo9YvO+w==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id fP-WvONF422V; Tue,  5 Dec 2023 16:10:09 +0000 (UTC)
+	with ESMTP id T62jt6QnwlQ8; Tue,  5 Dec 2023 19:15:52 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 78BC443569;
-	Tue,  5 Dec 2023 16:10:08 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 78BC443569
+	by smtp2.osuosl.org (Postfix) with ESMTP id 9C0EF40445;
+	Tue,  5 Dec 2023 19:15:51 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 9C0EF40445
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 786291BF279
- for <intel-wired-lan@lists.osuosl.org>; Tue,  5 Dec 2023 16:10:03 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id BE2F21BF2C3
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  5 Dec 2023 19:15:45 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 4E293613A2
- for <intel-wired-lan@lists.osuosl.org>; Tue,  5 Dec 2023 16:10:03 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 4E293613A2
+ by smtp1.osuosl.org (Postfix) with ESMTP id 93C6C81424
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  5 Dec 2023 19:15:45 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 93C6C81424
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 9oMibc6felIc for <intel-wired-lan@lists.osuosl.org>;
- Tue,  5 Dec 2023 16:10:02 +0000 (UTC)
-Received: from mgamail.intel.com (mgamail.intel.com [192.55.52.120])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 4A5E5611FC
- for <intel-wired-lan@lists.osuosl.org>; Tue,  5 Dec 2023 16:10:02 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 4A5E5611FC
-X-IronPort-AV: E=McAfee;i="6600,9927,10915"; a="392780236"
-X-IronPort-AV: E=Sophos;i="6.04,252,1695711600"; d="scan'208";a="392780236"
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
- by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 05 Dec 2023 08:10:01 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10915"; a="888992792"
-X-IronPort-AV: E=Sophos;i="6.04,252,1695711600"; d="scan'208";a="888992792"
-Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82])
- by fmsmga002.fm.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
- 05 Dec 2023 08:10:01 -0800
-Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
- fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.35; Tue, 5 Dec 2023 08:10:01 -0800
-Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
- fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.35; Tue, 5 Dec 2023 08:10:00 -0800
-Received: from FMSEDG603.ED.cps.intel.com (10.1.192.133) by
- fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.35 via Frontend Transport; Tue, 5 Dec 2023 08:10:00 -0800
-Received: from NAM02-DM3-obe.outbound.protection.outlook.com (104.47.56.40) by
- edgegateway.intel.com (192.55.55.68) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.34; Tue, 5 Dec 2023 08:09:57 -0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=UPko4fT5Gp+VGl2+ks9sEj1wQVHm0Yrj8ql/4PO2tlBcdscgXNhP+2tsyyylTuuiAebaBAb0d8GMgiEipbf8MOwwIkLA4NzqeV2vI5O0KhxwIc6rBnjIqOHVOTALF/qCFQyFHDQGYMTgvgyJpMUf8O5kDAfjhF85JOAtDNcf5m0bX9ZMQx/2WujIVBR0GcuONLsJ0xc+vQnslR57qZu+s3XHzYHE1N2+NjJrQHpoOrLaFgr2ELXeQ9Noikug/w8uB/6ImlDjvWV2I8LnsxNHcEeVhrlNe9m6RLVsvfldv+UYWMJ6TaQLPxyuk+9QJdZdJSSnU4OpfATS3ud0sIxnvA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=8BvyqlErlpRNH+sXPi2e5T3qmLMD291kVkkmKfiizy4=;
- b=fnfDzORqJNWsEZPggC/aiBvG10XpNHpC3vealsv6vnE9T3zn5JOpVVOk9mxGH7vkK4Km6noqXapLu99Cbuy6I6VtD/OsT3hUkB0yQ/ssgDydyJrda6uqyvmaVeZUKzwkpW47CbbSfehZJr0Vf4ImEIeIsMv/1c45rqmdX+mqwhdf1ZNa2l4lli7l55U0SXMwz8SUJSuxSpByITIO/EPBQKFyNuwOqXrzblSxy6ZHD7KAX3i+nN3ufsZrfjV3kaWWoZ9sWNpnSYddkoSgzq8z9HuHT9Mdei5f0yYILwF/+JkpvxzUZErdDzOzH4QfOjf9sifzY5694jeRpqyT2NAtKg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from BYAPR11MB3672.namprd11.prod.outlook.com (2603:10b6:a03:fa::30)
- by SN7PR11MB7665.namprd11.prod.outlook.com (2603:10b6:806:340::8)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7046.33; Tue, 5 Dec
- 2023 16:09:56 +0000
-Received: from BYAPR11MB3672.namprd11.prod.outlook.com
- ([fe80::5112:5e76:3f72:38f7]) by BYAPR11MB3672.namprd11.prod.outlook.com
- ([fe80::5112:5e76:3f72:38f7%5]) with mapi id 15.20.7046.034; Tue, 5 Dec 2023
- 16:09:56 +0000
-Message-ID: <8eca364e-8796-d01f-ead3-2a419a9f7658@intel.com>
-Date: Tue, 5 Dec 2023 17:09:48 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.3.1
-Content-Language: en-US
-To: Pawel Chmielewski <pawel.chmielewski@intel.com>,
- <intel-wired-lan@lists.osuosl.org>
-References: <20231205152620.568183-1-pawel.chmielewski@intel.com>
-From: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-In-Reply-To: <20231205152620.568183-1-pawel.chmielewski@intel.com>
-X-ClientProxiedBy: FR2P281CA0184.DEUP281.PROD.OUTLOOK.COM
- (2603:10a6:d10:9f::16) To BYAPR11MB3672.namprd11.prod.outlook.com
- (2603:10b6:a03:fa::30)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id iq22cs3dNiiI for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  5 Dec 2023 19:15:44 +0000 (UTC)
+Received: from dfw.source.kernel.org (dfw.source.kernel.org
+ [IPv6:2604:1380:4641:c500::1])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 56A9F8141F
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  5 Dec 2023 19:15:44 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 56A9F8141F
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by dfw.source.kernel.org (Postfix) with ESMTP id 2BCFA612DB;
+ Tue,  5 Dec 2023 19:15:43 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id EFE53C433CB;
+ Tue,  5 Dec 2023 19:15:40 +0000 (UTC)
+Date: Tue, 5 Dec 2023 19:15:38 +0000
+From: Simon Horman <horms@kernel.org>
+To: Steven Zou <steven.zou@intel.com>
+Message-ID: <20231205191538.GT50400@kernel.org>
+References: <20231201062502.10099-1-steven.zou@intel.com>
+ <20231201062502.10099-3-steven.zou@intel.com>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: BYAPR11MB3672:EE_|SN7PR11MB7665:EE_
-X-MS-Office365-Filtering-Correlation-Id: 7a149d36-9209-4fff-51fc-08dbf5ac9f56
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: qMbWqLM6qs6Ew4nCMfXSmguF93jAV2Zk0xF6KNIZ/haCLm7ySbu5Y+rERhBEVs3vktmk4gXJne1jbxye6DtHNZ57pgZIXx2jPmGZi+NkK+LB84t0YAqGdn5ta9l74v0qKJvbukNWGf4zG8ea8tm5eAERlb4qIanOCE1P1JLgFr0cLRxYnXW2rJ2SAGh+mh2vvm5ZbdMWHVaCXepti7BquKHiJ/OBBQ3kKKBUDArUkN7f8NN2HDpsMuAJ9l7DMdjoMmpOa4Z2Dfv9Bnjr/pbNUe4UxK+EiZ0y4UCLi7FWd6fvMuOkbDeSdgDwDkXo5aYF7sf/OA7npWusjDaG/IIJcxy5pvi0tHz7N2B6OZWpZBVG49qfsEfDN5Ol/7u9l63Ix8LngUQIxJGNLoXj3Mm+AsRV4MVpXKHgS2dH0UgJSaefxI/OjCsglLLXXIvcFjZoa0lMwdhVjpj2lw34oHmmOQA4J7ka8QKbXMgm8+SWis0cs7k5eAp7QiMyZz+ZAg470jnyMb2Se46MagJBnf1Pwtx2Dopr+LmBAOrdScarGqQ87xHnHPrcP4eGUCbpYSjIDnxfNn1uvL42iLxf1nsa1YI/V9ne3G011/aOssKZJcNas+CV2ol/yZc+GEdKzji1OW7TWNswcG4j378HO9Z86Q==
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BYAPR11MB3672.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230031)(376002)(346002)(366004)(396003)(136003)(39860400002)(230922051799003)(1800799012)(64100799003)(451199024)(186009)(26005)(478600001)(6486002)(6666004)(6512007)(6506007)(53546011)(82960400001)(36756003)(2616005)(107886003)(316002)(66556008)(66476007)(66946007)(54906003)(31686004)(38100700002)(5660300002)(86362001)(4326008)(8936002)(8676002)(2906002)(31696002)(41300700001)(43740500002)(45980500001);
- DIR:OUT; SFP:1102; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?bGRZUERxSFN5elljdVVnbExnUE5CdmJFN3lFTmVzaEM0N3NRWGJ6ZEJhOGpZ?=
- =?utf-8?B?MTBTd1podFFTN1hCMEIvNnZ1RGc2N1BUZzhyNUhjOU5uTnRMTGdNYmJkUk5S?=
- =?utf-8?B?RVRDdGFPQ21HSk5TMVo5ekVGbjZJK2YwVmhVOUg2endCbWtuZjBFTkVwanJE?=
- =?utf-8?B?YnpuZ3ROWWdJa3luRUZRNU50SkFRWUlpNnlLRnYyVzBTVng2Q2F4aEpvTU9Z?=
- =?utf-8?B?N1ltSDRQekZ5VWpFb0NneHEzL0FuZS9vK1dDVHJqektOS1hOTHA3ME1uWTlV?=
- =?utf-8?B?M2I4QTFNN2pjb0lqSVpLUHhuNnJJTVF2T0VOMk5BS0ZuM3FQaklEc1lwaklr?=
- =?utf-8?B?b2U2MXJWdXJ1cndlRmFXRFIvU0RRZVRCWnNaZFBPbmZKVnlQVFYzMjJVQ2hO?=
- =?utf-8?B?ZE9HdjZvNkZjOWNVa3BCajQ2bG5DdmliTGtpQm9tQWFTaHN0a09XUUJtNllj?=
- =?utf-8?B?ZUJ4bjc5YVdsMlJlVXRCeSs0N1dTNDFJbFpQazBPRHJQL2pWT05yQXJvZG44?=
- =?utf-8?B?TkdLcEVhNHprRGRBV2p4eU9odHVTTmZMZzYrZ2JmMjdQMVFycERtbEFPTW9E?=
- =?utf-8?B?STZNdDNGaFA3d1N1Q2pLOWMxaHlMdWhQMkx5cVlIdWJXYTRlTFhDT0dJWTdr?=
- =?utf-8?B?TE5nTGovMmc1UjdlWXF0d3dXSEpTdmk1d0UzbmhKSmxIYXNUN3ZYSHZYaWly?=
- =?utf-8?B?OEdEa09HVU1pemE1NG5aVEJLZGJlTlFzQUhHSU9qUHpZc2ZsUE01OTdVdWha?=
- =?utf-8?B?S2l3Wk05ZlgxMHZSdTQwS1pMdy9jSlR0RSszcHhyeHExL0x5ZWVVcWp4VGlh?=
- =?utf-8?B?UkkyT3I5RDFuZEJIR2pRZzR2T0lhaUJYbU9aQzVLM0FsVEtMcXJKQUVzN3NC?=
- =?utf-8?B?MGhFNmwwWWFCdzJGQXZ6QWVKd3Y0ZVR4bVMvVzgrYWhqK0ZLUnd6MWNBUHhr?=
- =?utf-8?B?N3hNMWFGNjBHejRzcHBOWWRTdmNGSXluM1hBK3hlNFVkaG5qdlV1R2JhM3VI?=
- =?utf-8?B?ZFpyYU85Qng5R0xtT0RuZmEzSmg0L0VHeWlJaVZVYVV5R3pPcU5FU3RhSmFl?=
- =?utf-8?B?aWE1WGtrRG9CMk9iRFZRVmRwRzJHQmRnd1AvckRGZUc4WFBxWU5ZNUt0eHpH?=
- =?utf-8?B?ZnRIOS9zZjBBNG9zcURFbWNrWEdUL1ZxTWh6WjdUWUVWZ2pmRmxIekdsM2F1?=
- =?utf-8?B?OUxiS1BqWWYxRkJ2UmFxaHZMT0w4UnFRanFqRVFXQzNBeEsrUWVQelpQbVNH?=
- =?utf-8?B?aStGZm5LaWtPbFI3WnB5OGwzdk5lU1Z6amg1cGJ5Z2d0RXJNcC8wZElIb0V3?=
- =?utf-8?B?eUxDVGlOeG5sYjQrMk8weXI2Vml0NG5HdGdHSHVYaWtCcjFtdzl1bzUvWVlQ?=
- =?utf-8?B?Vy9GaytPbWFtM0pJQTBBcVI5cHpVOTNFUHUrZ2NVRnNBeitvZGxCeGllaEF1?=
- =?utf-8?B?eG5wM0h4eVYwemliK2lybTRsMElENlZyM2JtSDFkNDZDd3FuUHA1dzZ5U0F0?=
- =?utf-8?B?TGtNL2I3dHZPald4UnN2dHp2NHRqRDFoOWdWL3k4OElYdFNMb0JqWDZDbDJW?=
- =?utf-8?B?RTJiaWNEQTlnYlpRb2dKdTBnejQ4ZmtDeFJZVzg5eXFBa254U2NWQmNEa2dt?=
- =?utf-8?B?M3BRZmZJODQ3eXc4UnZLVDRDaDJsc1drQ2QxSUptL29GbEpaZy9zSXY1b1gy?=
- =?utf-8?B?YUU3V05VTEFSdlpoSGx2Q0dUdThTVTZzanpyTExnQ3NybXdpTmI5UEZEVWF6?=
- =?utf-8?B?UHNxUS8ranlBYSs5NFc4QmYzRUYxMzNqUEVvUzgvc3AzeC9ZNnBMcmxPK2tQ?=
- =?utf-8?B?ZXpVeWhNcFlZZEtaNmFCRElSYXVLb1VDQzF2dUMxdStWU2Uyby9uWkZtVGE3?=
- =?utf-8?B?bTBZbTBwdXlOdU9DWWQ4QURkUlFUbVZLT296Ui90MldjcTczS05jTXdpM0d2?=
- =?utf-8?B?ak9BY0JqbUZ2aFVRa0o4UWRTU1dOTmlGMUFsUjl4UFlyeDBHTGFxYktuK0gr?=
- =?utf-8?B?UXRYbEdQSmJIZHdIWnZ1Mnp4YVgvaERJUHRYUnZMZVkwczBtSTQwOTRaMGtq?=
- =?utf-8?B?V1BBcElJWElSQ2gxdXUzNk5STXFMcTIyMDl4TXVCNm12Szc5VU0vKzBTbkFO?=
- =?utf-8?B?TUlSOW1VRWwxdEluSGNGaEpSZVZnUjRaMUVteXdlVzJhd29HQlFxN052alMv?=
- =?utf-8?Q?Zo7JjXRHch3A5M5vIbytSBw=3D?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: 7a149d36-9209-4fff-51fc-08dbf5ac9f56
-X-MS-Exchange-CrossTenant-AuthSource: BYAPR11MB3672.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 05 Dec 2023 16:09:56.1832 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: QU4uZZGlDUoz0ENB5qXtnpK3JGE3uipiW4axid8hgq8Eid2og2GghIKFclLMIuEtNW7aegoKDtWfFzNcj3+Zj4t2V+RtaaxCmLRHJpc1ULU=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN7PR11MB7665
-X-OriginatorOrg: intel.com
+Content-Disposition: inline
+In-Reply-To: <20231201062502.10099-3-steven.zou@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1701792602; x=1733328602;
- h=message-id:date:subject:to:cc:references:from:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=C/oHXb4JfloEcj9RUEqYmf3NTcPJpcC7thkzrpT0SMQ=;
- b=CQv0vuNsdEzv+DGcvapYy+2jG2h0NUTELXqsmupRhOdlNpEUp2UrW117
- tAg6CHAhXcNvWWNnRCztywGZSaPP2/LJbitJqdiSc10udD5xD3TGtd3sW
- Z9NuYbqe00Gh7pXMjw6k10glsjya85ZvD0cgH8OjUgykcI+rjnCNV2BmL
- EzZVDOKpIztDfgkTBIeVND8FZ/hNQ6+fCsSq18rXBe3zKaY/j0WZm8Rkp
- WxfhsavxW0V9W/nIP9Bc437l5lJR/wXkhNpNvBxveWh6VZ5Tg9v+d6zvq
- kHimhf9+a/sn3u74zHkVGATJanBhWuasxlRLYoLSsbbiuLiN0KseIbPJR
- A==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=CQv0vuNs
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next] ice: Do not get coalesce
- settings while in reset
+ d=kernel.org; s=k20201202; t=1701803742;
+ bh=ftX5j7pQDUkTy8My7q++52SfQylFjudKlfleW4PQwtk=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=iLuNGQSyVDzI07IrkFwdRNESu/HzxZm52kRFGshNtN3zvCgnGef47W8AfYFv+kwHu
+ 5d4ho9CrbBSoYcYC8H/yCO5YUMkJaAPUOk54n9GUZa/2rXhOphpophz52mgq/UYx/Q
+ c7peE1QPHMTrvImZark19jz6nzBu7F/NWWEPKb60lLE8b3eEBqU1+V188CGaOtcdvB
+ hIqXuEnt//fiDLPUfCTRUIdRRT6Av66dh7o/6d1h2NXN8LEViGwETTqPkSBFKIt1JH
+ biC3QFXpT9ivBkWiBHoaAohGxSSYzON4tinKqBeNVYjLzpjT1+Ybywj5mg1tCyKofk
+ dKyubLbiOj4dg==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=iLuNGQSy
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next 2/2] ice: Add switch recipe
+ reusing feature
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -197,44 +88,444 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Ngai-Mint Kwan <ngai-mint.kwan@intel.com>, netdev@vger.kernel.org,
- Mateusz Polchlopek <mateusz.polchlopek@intel.com>
+Cc: Ivan Vecera <ivecera@redhat.com>, jan.sokolowski@intel.com,
+ netdev@vger.kernel.org, andrii.staikov@intel.com, aleksander.lobakin@intel.com,
+ intel-wired-lan@lists.osuosl.org, przemyslaw.kitszel@intel.com,
+ andriy.shevchenko@linux.intel.com
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 12/5/23 16:26, Pawel Chmielewski wrote:
-> From: Ngai-Mint Kwan <ngai-mint.kwan@intel.com>
-> 
-> Getting coalesce settings while reset is in progress can cause NULL
-> pointer deference bug.
-> If under reset, abort get coalesce for ethtool.
-> 
-> Signed-off-by: Ngai-Mint Kwan <ngai-mint.kwan@intel.com>
-> Reviewed-by: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
-> Signed-off-by: Pawel Chmielewski <pawel.chmielewski@intel.com>
-> ---
->   drivers/net/ethernet/intel/ice/ice_ethtool.c | 3 +++
->   1 file changed, 3 insertions(+)
-> 
-> diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool.c b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-> index bde9bc74f928..2d565cc484a0 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_ethtool.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-> @@ -3747,6 +3747,9 @@ __ice_get_coalesce(struct net_device *netdev, struct ethtool_coalesce *ec,
->   	struct ice_netdev_priv *np = netdev_priv(netdev);
->   	struct ice_vsi *vsi = np->vsi;
->   
-> +	if (ice_is_reset_in_progress(vsi->back->state))
-> +		return -EBUSY;
-> +
->   	if (q_num < 0)
->   		q_num = 0;
->   
++ Ivan Vecera <ivecera@redhat.com>
 
-Sorry for a late review,
-This asks for a Fixes: tag, and targeting at iwl-net instead :)
+On Fri, Dec 01, 2023 at 02:25:02PM +0800, Steven Zou wrote:
+> New E810 firmware supports the corresponding functionality, so the driver
+> allows PFs to subscribe the same switch recipes. Then when the PF is done
+> with a switch recipes, the PF can ask firmware to free that switch recipe.
+> 
+> When users configure a rule to PFn into E810 switch component, if there is
+> no existing recipe matching this rule's pattern, the driver will request
+> firmware to allocate and return a new recipe resource for the rule by
+> calling ice_add_sw_recipe() and ice_alloc_recipe(). If there is an existing
+> recipe matching this rule's pattern with different key value, or this is a
+> same second rule to PFm into switch component, the driver checks out this
+> recipe by calling ice_find_recp(), the driver will tell firmware to share
+> using this same recipe resource by calling ice_subscribable_recp_shared()
+> and ice_subscribe_recipe().
+> 
+> When firmware detects that all subscribing PFs have freed the switch
+> recipe, firmware will free the switch recipe so that it can be reused.
+> 
+> This feature also fixes a problem where all switch recipes would eventually
+> be exhausted because switch recipes could not be freed, as freeing a shared
+> recipe could potentially break other PFs that were using it.
+> 
+> Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+> Reviewed-by: Andrii Staikov <andrii.staikov@intel.com>
+> Signed-off-by: Steven Zou <steven.zou@intel.com>
+
+Hi Ivan,
+
+with my upstream hat on, I'd be most grateful if you could review this.
+
+> ---
+>  .../net/ethernet/intel/ice/ice_adminq_cmd.h   |   2 +
+>  drivers/net/ethernet/intel/ice/ice_common.c   |   2 +
+>  drivers/net/ethernet/intel/ice/ice_switch.c   | 187 ++++++++++++++++--
+>  drivers/net/ethernet/intel/ice/ice_switch.h   |   1 +
+>  drivers/net/ethernet/intel/ice/ice_type.h     |   2 +
+>  5 files changed, 177 insertions(+), 17 deletions(-)
+> 
+> diff --git a/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h b/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
+> index c2b3ccce3124..2654aaad9a51 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
+> +++ b/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
+> @@ -264,6 +264,8 @@ struct ice_aqc_set_port_params {
+>  #define ICE_AQC_RES_TYPE_FLAG_SHARED			BIT(7)
+>  #define ICE_AQC_RES_TYPE_FLAG_SCAN_BOTTOM		BIT(12)
+>  #define ICE_AQC_RES_TYPE_FLAG_IGNORE_INDEX		BIT(13)
+> +#define ICE_AQC_RES_TYPE_FLAG_SUBSCRIBE_SHARED		BIT(14)
+> +#define ICE_AQC_RES_TYPE_FLAG_SUBSCRIBE_CTL		BIT(15)
+>  
+>  #define ICE_AQC_RES_TYPE_FLAG_DEDICATED			0x00
+>  
+> diff --git a/drivers/net/ethernet/intel/ice/ice_common.c b/drivers/net/ethernet/intel/ice/ice_common.c
+> index 8df151dd0c90..5bfec6bb759b 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_common.c
+> +++ b/drivers/net/ethernet/intel/ice/ice_common.c
+> @@ -1321,6 +1321,8 @@ int ice_init_hw(struct ice_hw *hw)
+>  	if (status)
+>  		goto err_unroll_fltr_mgmt_struct;
+>  	mutex_init(&hw->tnl_lock);
+> +	ice_init_chk_recipe_reuse_support(hw);
+> +
+>  	return 0;
+>  
+>  err_unroll_fltr_mgmt_struct:
+> diff --git a/drivers/net/ethernet/intel/ice/ice_switch.c b/drivers/net/ethernet/intel/ice/ice_switch.c
+> index 3cee603b187f..b926c045ebec 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_switch.c
+> +++ b/drivers/net/ethernet/intel/ice/ice_switch.c
+> @@ -2074,6 +2074,18 @@ ice_aq_get_recipe_to_profile(struct ice_hw *hw, u32 profile_id, u64 *r_assoc,
+>  	return status;
+>  }
+>  
+> +/**
+> + * ice_init_chk_recipe_reuse_support - check if recipe reuse is supported
+> + * @hw: pointer to the hardware structure
+> + */
+> +void ice_init_chk_recipe_reuse_support(struct ice_hw *hw)
+> +{
+> +	struct ice_nvm_info *nvm = &hw->flash.nvm;
+> +
+> +	hw->recp_reuse = (nvm->major == 0x4 && nvm->minor >= 0x30) ||
+> +			 nvm->major > 0x4;
+> +}
+> +
+>  /**
+>   * ice_alloc_recipe - add recipe resource
+>   * @hw: pointer to the hardware structure
+> @@ -2083,12 +2095,16 @@ int ice_alloc_recipe(struct ice_hw *hw, u16 *rid)
+>  {
+>  	DEFINE_FLEX(struct ice_aqc_alloc_free_res_elem, sw_buf, elem, 1);
+>  	u16 buf_len = __struct_size(sw_buf);
+> +	u16 res_type;
+>  	int status;
+>  
+>  	sw_buf->num_elems = cpu_to_le16(1);
+> -	sw_buf->res_type = cpu_to_le16((ICE_AQC_RES_TYPE_RECIPE <<
+> -					ICE_AQC_RES_TYPE_S) |
+> -					ICE_AQC_RES_TYPE_FLAG_SHARED);
+> +	res_type = FIELD_PREP(ICE_AQC_RES_TYPE_M, ICE_AQC_RES_TYPE_RECIPE);
+> +	if (hw->recp_reuse)
+> +		res_type |= ICE_AQC_RES_TYPE_FLAG_SUBSCRIBE_SHARED;
+> +	else
+> +		res_type |= ICE_AQC_RES_TYPE_FLAG_SHARED;
+> +	sw_buf->res_type = cpu_to_le16(res_type);
+>  	status = ice_aq_alloc_free_res(hw, sw_buf, buf_len,
+>  				       ice_aqc_opc_alloc_res);
+>  	if (!status)
+> @@ -2097,6 +2113,70 @@ int ice_alloc_recipe(struct ice_hw *hw, u16 *rid)
+>  	return status;
+>  }
+>  
+> +/**
+> + * ice_free_recipe_res - free recipe resource
+> + * @hw: pointer to the hardware structure
+> + * @rid: recipe ID to free
+> + *
+> + * Return: 0 on success, and others on error
+> + */
+> +static int ice_free_recipe_res(struct ice_hw *hw, u16 rid)
+> +{
+> +	return ice_free_hw_res(hw, ICE_AQC_RES_TYPE_RECIPE, 1, &rid);
+> +}
+> +
+> +/**
+> + * ice_release_recipe_res - disassociate and free recipe resource
+> + * @hw: pointer to the hardware structure
+> + * @recp: the recipe struct resource to unassociate and free
+> + *
+> + * Return: 0 on success, and others on error
+> + */
+> +static int ice_release_recipe_res(struct ice_hw *hw,
+> +				  struct ice_sw_recipe *recp)
+> +{
+> +	DECLARE_BITMAP(r_bitmap, ICE_MAX_NUM_RECIPES);
+> +	struct ice_switch_info *sw = hw->switch_info;
+> +	u64 recp_assoc;
+> +	u32 rid, prof;
+> +	int status;
+> +
+> +	for_each_set_bit(rid, recp->r_bitmap, ICE_MAX_NUM_RECIPES) {
+> +		for_each_set_bit(prof, recipe_to_profile[rid],
+> +				 ICE_MAX_NUM_PROFILES) {
+> +			status = ice_aq_get_recipe_to_profile(hw, prof,
+> +							      &recp_assoc,
+> +							      NULL);
+> +			if (status)
+> +				return status;
+> +
+> +			bitmap_from_arr64(r_bitmap, &recp_assoc,
+> +					  ICE_MAX_NUM_RECIPES);
+> +			bitmap_andnot(r_bitmap, r_bitmap, recp->r_bitmap,
+> +				      ICE_MAX_NUM_RECIPES);
+> +			bitmap_to_arr64(&recp_assoc, r_bitmap,
+> +					ICE_MAX_NUM_RECIPES);
+> +			ice_aq_map_recipe_to_profile(hw, prof,
+> +						     recp_assoc, NULL);
+> +
+> +			clear_bit(rid, profile_to_recipe[prof]);
+> +			clear_bit(prof, recipe_to_profile[rid]);
+> +		}
+> +
+> +		status = ice_free_recipe_res(hw, rid);
+> +		if (status)
+> +			return status;
+> +
+> +		sw->recp_list[rid].recp_created = false;
+> +		sw->recp_list[rid].adv_rule = false;
+> +		memset(&sw->recp_list[rid].lkup_exts, 0,
+> +		       sizeof(sw->recp_list[rid].lkup_exts));
+> +		clear_bit(rid, recp->r_bitmap);
+> +	}
+> +
+> +	return 0;
+> +}
+> +
+>  /**
+>   * ice_get_recp_to_prof_map - updates recipe to profile mapping
+>   * @hw: pointer to hardware structure
+> @@ -2146,6 +2226,7 @@ ice_collect_result_idx(struct ice_aqc_recipe_data_elem *buf,
+>   * @recps: struct that we need to populate
+>   * @rid: recipe ID that we are populating
+>   * @refresh_required: true if we should get recipe to profile mapping from FW
+> + * @is_add: flag of adding recipe
+>   *
+>   * This function is used to populate all the necessary entries into our
+>   * bookkeeping so that we have a current list of all the recipes that are
+> @@ -2153,7 +2234,7 @@ ice_collect_result_idx(struct ice_aqc_recipe_data_elem *buf,
+>   */
+>  static int
+>  ice_get_recp_frm_fw(struct ice_hw *hw, struct ice_sw_recipe *recps, u8 rid,
+> -		    bool *refresh_required)
+> +		    bool *refresh_required, bool is_add)
+>  {
+>  	DECLARE_BITMAP(result_bm, ICE_MAX_FV_WORDS);
+>  	struct ice_aqc_recipe_data_elem *tmp;
+> @@ -2270,8 +2351,12 @@ ice_get_recp_frm_fw(struct ice_hw *hw, struct ice_sw_recipe *recps, u8 rid,
+>  			recps[idx].chain_idx = ICE_INVAL_CHAIN_IND;
+>  		}
+>  
+> -		if (!is_root)
+> +		if (!is_root) {
+> +			if (hw->recp_reuse && is_add)
+> +				recps[idx].recp_created = true;
+> +
+>  			continue;
+> +		}
+>  
+>  		/* Only do the following for root recipes entries */
+>  		memcpy(recps[idx].r_bitmap, root_bufs.recipe_bitmap,
+> @@ -2295,7 +2380,8 @@ ice_get_recp_frm_fw(struct ice_hw *hw, struct ice_sw_recipe *recps, u8 rid,
+>  
+>  	/* Copy result indexes */
+>  	bitmap_copy(recps[rid].res_idxs, result_bm, ICE_MAX_FV_WORDS);
+> -	recps[rid].recp_created = true;
+> +	if (is_add)
+> +		recps[rid].recp_created = true;
+>  
+>  err_unroll:
+>  	kfree(tmp);
+> @@ -4575,12 +4661,13 @@ static struct ice_protocol_entry ice_prot_id_tbl[ICE_PROTOCOL_LAST] = {
+>   * @hw: pointer to the hardware structure
+>   * @lkup_exts: extension sequence to match
+>   * @rinfo: information regarding the rule e.g. priority and action info
+> + * @is_add: flag of adding recipe
+>   *
+>   * Returns index of matching recipe, or ICE_MAX_NUM_RECIPES if not found.
+>   */
+>  static u16
+>  ice_find_recp(struct ice_hw *hw, struct ice_prot_lkup_ext *lkup_exts,
+> -	      const struct ice_adv_rule_info *rinfo)
+> +	      const struct ice_adv_rule_info *rinfo, bool is_add)
+>  {
+>  	bool refresh_required = true;
+>  	struct ice_sw_recipe *recp;
+> @@ -4594,11 +4681,12 @@ ice_find_recp(struct ice_hw *hw, struct ice_prot_lkup_ext *lkup_exts,
+>  		 * entry update it in our SW bookkeeping and continue with the
+>  		 * matching.
+>  		 */
+> -		if (!recp[i].recp_created)
+> +		if (hw->recp_reuse) {
+>  			if (ice_get_recp_frm_fw(hw,
+>  						hw->switch_info->recp_list, i,
+> -						&refresh_required))
+> +						&refresh_required, is_add))
+>  				continue;
+> +		}
+>  
+>  		/* Skip inverse action recipes */
+>  		if (recp[i].root_buf && recp[i].root_buf->content.act_ctrl &
+> @@ -5279,6 +5367,49 @@ ice_get_compat_fv_bitmap(struct ice_hw *hw, struct ice_adv_rule_info *rinfo,
+>  	ice_get_sw_fv_bitmap(hw, prof_type, bm);
+>  }
+>  
+> +/**
+> + * ice_subscribe_recipe - subscribe to an existing recipe
+> + * @hw: pointer to the hardware structure
+> + * @rid: recipe ID to subscribe to
+> + *
+> + * Return: 0 on success, and others on error
+> + */
+> +static int ice_subscribe_recipe(struct ice_hw *hw, u16 rid)
+> +{
+> +	DEFINE_FLEX(struct ice_aqc_alloc_free_res_elem, sw_buf, elem, 1);
+> +	u16 buf_len = __struct_size(sw_buf);
+> +	u16 res_type;
+> +	int status;
+> +
+> +	/* Prepare buffer to allocate resource */
+> +	sw_buf->num_elems = cpu_to_le16(1);
+> +	res_type = FIELD_PREP(ICE_AQC_RES_TYPE_M, ICE_AQC_RES_TYPE_RECIPE) |
+> +		   ICE_AQC_RES_TYPE_FLAG_SUBSCRIBE_SHARED |
+> +		   ICE_AQC_RES_TYPE_FLAG_SUBSCRIBE_CTL;
+> +	sw_buf->res_type = cpu_to_le16(res_type);
+> +
+> +	sw_buf->elem[0].e.sw_resp = cpu_to_le16(rid);
+> +
+> +	status = ice_aq_alloc_free_res(hw, sw_buf, buf_len,
+> +				       ice_aqc_opc_alloc_res);
+> +
+> +	return status;
+> +}
+> +
+> +/**
+> + * ice_subscribable_recp_shared - share an existing subscribable recipe
+> + * @hw: pointer to the hardware structure
+> + * @rid: recipe ID to subscribe to
+> + */
+> +static void ice_subscribable_recp_shared(struct ice_hw *hw, u16 rid)
+> +{
+> +	struct ice_sw_recipe *recps = hw->switch_info->recp_list;
+> +	u16 sub_rid;
+> +
+> +	for_each_set_bit(sub_rid, recps[rid].r_bitmap, ICE_MAX_NUM_RECIPES)
+> +		ice_subscribe_recipe(hw, sub_rid);
+> +}
+> +
+>  /**
+>   * ice_add_adv_recipe - Add an advanced recipe that is not part of the default
+>   * @hw: pointer to hardware structure
+> @@ -5301,6 +5432,7 @@ ice_add_adv_recipe(struct ice_hw *hw, struct ice_adv_lkup_elem *lkups,
+>  	struct ice_sw_fv_list_entry *tmp;
+>  	struct ice_sw_recipe *rm;
+>  	int status = 0;
+> +	u16 rid_tmp;
+>  	u8 i;
+>  
+>  	if (!lkups_cnt)
+> @@ -5378,10 +5510,14 @@ ice_add_adv_recipe(struct ice_hw *hw, struct ice_adv_lkup_elem *lkups,
+>  	}
+>  
+>  	/* Look for a recipe which matches our requested fv / mask list */
+> -	*rid = ice_find_recp(hw, lkup_exts, rinfo);
+> -	if (*rid < ICE_MAX_NUM_RECIPES)
+> +	*rid = ice_find_recp(hw, lkup_exts, rinfo, true);
+> +	if (*rid < ICE_MAX_NUM_RECIPES) {
+>  		/* Success if found a recipe that match the existing criteria */
+> +		if (hw->recp_reuse)
+> +			ice_subscribable_recp_shared(hw, *rid);
+> +
+>  		goto err_unroll;
+> +	}
+>  
+>  	rm->tun_type = rinfo->tun_type;
+>  	/* Recipe we need does not exist, add a recipe */
+> @@ -5400,14 +5536,14 @@ ice_add_adv_recipe(struct ice_hw *hw, struct ice_adv_lkup_elem *lkups,
+>  		status = ice_aq_get_recipe_to_profile(hw, fvit->profile_id,
+>  						      &recp_assoc, NULL);
+>  		if (status)
+> -			goto err_unroll;
+> +			goto err_free_recipe;
+>  
+>  		bitmap_from_arr64(r_bitmap, &recp_assoc, ICE_MAX_NUM_RECIPES);
+>  		bitmap_or(r_bitmap, r_bitmap, rm->r_bitmap,
+>  			  ICE_MAX_NUM_RECIPES);
+>  		status = ice_acquire_change_lock(hw, ICE_RES_WRITE);
+>  		if (status)
+> -			goto err_unroll;
+> +			goto err_free_recipe;
+>  
+>  		bitmap_to_arr64(&recp_assoc, r_bitmap, ICE_MAX_NUM_RECIPES);
+>  		status = ice_aq_map_recipe_to_profile(hw, fvit->profile_id,
+> @@ -5415,7 +5551,7 @@ ice_add_adv_recipe(struct ice_hw *hw, struct ice_adv_lkup_elem *lkups,
+>  		ice_release_change_lock(hw);
+>  
+>  		if (status)
+> -			goto err_unroll;
+> +			goto err_free_recipe;
+>  
+>  		/* Update profile to recipe bitmap array */
+>  		bitmap_copy(profile_to_recipe[fvit->profile_id], r_bitmap,
+> @@ -5429,6 +5565,16 @@ ice_add_adv_recipe(struct ice_hw *hw, struct ice_adv_lkup_elem *lkups,
+>  	*rid = rm->root_rid;
+>  	memcpy(&hw->switch_info->recp_list[*rid].lkup_exts, lkup_exts,
+>  	       sizeof(*lkup_exts));
+> +	goto err_unroll;
+> +
+> +err_free_recipe:
+> +	if (hw->recp_reuse) {
+> +		for_each_set_bit(rid_tmp, rm->r_bitmap, ICE_MAX_NUM_RECIPES) {
+> +			if (!ice_free_recipe_res(hw, rid_tmp))
+> +				clear_bit(rid_tmp, rm->r_bitmap);
+> +		}
+> +	}
+> +
+>  err_unroll:
+>  	list_for_each_entry_safe(r_entry, r_tmp, &rm->rg_list, l_entry) {
+>  		list_del(&r_entry->l_entry);
+> @@ -6431,7 +6577,7 @@ ice_rem_adv_rule(struct ice_hw *hw, struct ice_adv_lkup_elem *lkups,
+>  			return -EIO;
+>  	}
+>  
+> -	rid = ice_find_recp(hw, &lkup_exts, rinfo);
+> +	rid = ice_find_recp(hw, &lkup_exts, rinfo, false);
+>  	/* If did not find a recipe that match the existing criteria */
+>  	if (rid == ICE_MAX_NUM_RECIPES)
+>  		return -EINVAL;
+> @@ -6475,14 +6621,21 @@ ice_rem_adv_rule(struct ice_hw *hw, struct ice_adv_lkup_elem *lkups,
+>  					 ice_aqc_opc_remove_sw_rules, NULL);
+>  		if (!status || status == -ENOENT) {
+>  			struct ice_switch_info *sw = hw->switch_info;
+> +			struct ice_sw_recipe *r_list = sw->recp_list;
+>  
+>  			mutex_lock(rule_lock);
+>  			list_del(&list_elem->list_entry);
+>  			devm_kfree(ice_hw_to_dev(hw), list_elem->lkups);
+>  			devm_kfree(ice_hw_to_dev(hw), list_elem);
+>  			mutex_unlock(rule_lock);
+> -			if (list_empty(&sw->recp_list[rid].filt_rules))
+> -				sw->recp_list[rid].adv_rule = false;
+> +			if (list_empty(&r_list[rid].filt_rules)) {
+> +				r_list[rid].adv_rule = false;
+> +
+> +				/* All rules for this recipe are now removed */
+> +				if (hw->recp_reuse)
+> +					ice_release_recipe_res(hw,
+> +							       &r_list[rid]);
+> +			}
+>  		}
+>  		kfree(s_rule);
+>  	}
+> diff --git a/drivers/net/ethernet/intel/ice/ice_switch.h b/drivers/net/ethernet/intel/ice/ice_switch.h
+> index 89ffa1b51b5a..9cf819b20d9c 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_switch.h
+> +++ b/drivers/net/ethernet/intel/ice/ice_switch.h
+> @@ -429,5 +429,6 @@ ice_aq_get_recipe_to_profile(struct ice_hw *hw, u32 profile_id, u64 *r_assoc,
+>  int
+>  ice_aq_map_recipe_to_profile(struct ice_hw *hw, u32 profile_id, u64 r_assoc,
+>  			     struct ice_sq_cd *cd);
+> +void ice_init_chk_recipe_reuse_support(struct ice_hw *hw);
+>  
+>  #endif /* _ICE_SWITCH_H_ */
+> diff --git a/drivers/net/ethernet/intel/ice/ice_type.h b/drivers/net/ethernet/intel/ice/ice_type.h
+> index 2be3955e249e..4c756c2b6157 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_type.h
+> +++ b/drivers/net/ethernet/intel/ice/ice_type.h
+> @@ -862,6 +862,8 @@ struct ice_hw {
+>  
+>  	u16 max_burst_size;	/* driver sets this value */
+>  
+> +	u8 recp_reuse:1;	/* indicates whether FW supports recipe reuse */
+> +
+>  	/* Tx Scheduler values */
+>  	u8 num_tx_sched_layers;
+>  	u8 num_tx_sched_phys_layers;
+> -- 
+> 2.31.1
+> 
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
