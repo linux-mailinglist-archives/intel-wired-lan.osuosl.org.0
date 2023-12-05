@@ -1,81 +1,87 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 75384805E75
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  5 Dec 2023 20:16:17 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6FCE2805EA5
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  5 Dec 2023 20:33:18 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id CEEAB435C0;
-	Tue,  5 Dec 2023 19:16:15 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org CEEAB435C0
+	by smtp2.osuosl.org (Postfix) with ESMTP id 0EBBB435D0;
+	Tue,  5 Dec 2023 19:33:17 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 0EBBB435D0
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1701803775;
-	bh=rkhWEPvg04qStLgMRPYpeugSKrnS/6R8CSko7pe5hDw=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1701804797;
+	bh=vPqbunM/C36qxC8mUJZlMOmVwJMJewb7MhfOoUFznMg=;
+	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=s7uFdpVNEfzD04P9cpzzM7vHdp4hucVXqDVj9aAdKv5Qd16QLnh4wzerQtttriaVe
-	 7DySWWGWVrbYChfYTH4FrzBql31E7YKs6JSV2R0GTtL0cCzV9ovlITjbqKNu3UqWnI
-	 uL02jcwUxyVzDkL1p1KoiTmHMYqVq1aymBEszRqQ1Jb5pGa+X31gugqYXIQQAx/C1j
-	 /gmrYK6/s8xnYsdG9Ln7EKzKiTsl/B7IBKyb5Z2F+nx94ycYQXJgC1jT5KbY7EzD0O
-	 oow6fSOClvE+6I9h+eylIMjk3pJvwWsRVj/dVvBX4Jutl0AmM+tDOr5WXzyS+CdQ/q
-	 P0PDsjiZ1eh6g==
+	b=DMH0hUvyHavBupnKRyXKSq3+jp8HlzoXb3vTBiijt+1zTuTHM9WsPqz3cx1qx/75d
+	 tUMmI/Wt4BF1IqJBHE4qOKP6YEwOUZyWGpmT3BqMxZFoFRocRwx1ViRlXBty46iMi5
+	 9GSfFDSGV0W0U6BnTi2LLmoDgvoRziZi0ZpKxh+HzAn0b/P1o1tVI+DglE5SbtRKue
+	 UbgMxdhB8UvHhbyosQ1oqb2JXVRI4DxWvvEh6AxhLtx8qxx1teeIiYu78RAMq1qdZh
+	 Z9jkZ2bMPxp6jpqJRLXNM8juA3GXn3nuuF28HDEWx1Yi8ugE58//ROUTTDgMANtufJ
+	 Cd66GRSSPx8PA==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id F7hLxPpAWTH0; Tue,  5 Dec 2023 19:16:14 +0000 (UTC)
+	with ESMTP id emQgmXKd82eH; Tue,  5 Dec 2023 19:33:16 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 65BC4435BB;
-	Tue,  5 Dec 2023 19:16:14 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 65BC4435BB
+	by smtp2.osuosl.org (Postfix) with ESMTP id 9B089435A1;
+	Tue,  5 Dec 2023 19:33:15 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 9B089435A1
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 371EA1BF2C3
- for <intel-wired-lan@lists.osuosl.org>; Tue,  5 Dec 2023 19:16:09 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 263681BF363
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  5 Dec 2023 19:33:10 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 0E249435BB
- for <intel-wired-lan@lists.osuosl.org>; Tue,  5 Dec 2023 19:16:09 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 0E249435BB
+ by smtp3.osuosl.org (Postfix) with ESMTP id EFD27613D8
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  5 Dec 2023 19:33:09 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org EFD27613D8
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id JhUuu3CdnpQx for <intel-wired-lan@lists.osuosl.org>;
- Tue,  5 Dec 2023 19:16:08 +0000 (UTC)
-Received: from dfw.source.kernel.org (dfw.source.kernel.org
- [IPv6:2604:1380:4641:c500::1])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 4567E435AD
- for <intel-wired-lan@lists.osuosl.org>; Tue,  5 Dec 2023 19:16:08 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 4567E435AD
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by dfw.source.kernel.org (Postfix) with ESMTP id 73638612DB;
- Tue,  5 Dec 2023 19:16:07 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 69924C433C9;
- Tue,  5 Dec 2023 19:16:05 +0000 (UTC)
-Date: Tue, 5 Dec 2023 19:16:02 +0000
-From: Simon Horman <horms@kernel.org>
-To: Steven Zou <steven.zou@intel.com>
-Message-ID: <20231205191602.GU50400@kernel.org>
-References: <20231201062502.10099-1-steven.zou@intel.com>
- <20231201062502.10099-2-steven.zou@intel.com>
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 50w4xXC7XKFc for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  5 Dec 2023 19:33:08 +0000 (UTC)
+Received: from sipsolutions.net (s3.sipsolutions.net
+ [IPv6:2a01:4f8:242:246e::2])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id A4A00613D6
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  5 Dec 2023 19:33:08 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A4A00613D6
+Received: by sipsolutions.net with esmtpsa
+ (TLS1.3:ECDHE_X25519__RSA_PSS_RSAE_SHA256__AES_256_GCM:256)
+ (Exim 4.97) (envelope-from <johannes@sipsolutions.net>)
+ id 1rAbAF-0000000GWCC-2rbp; Tue, 05 Dec 2023 20:33:03 +0100
+Message-ID: <1d986c73c1d39b0cced7d8d2119fba4b2a02418b.camel@sipsolutions.net>
+From: Johannes Berg <johannes@sipsolutions.net>
+To: Marc MERLIN <marc@merlins.org>
+Date: Tue, 05 Dec 2023 20:33:02 +0100
+In-Reply-To: <20231205024652.GA12805@merlins.org>
+References: <20231204200710.40c291e60cea.I2deb5804ef1739a2af307283d320ef7d82456494@changeid>
+ <20231204200038.GA9330@merlins.org>
+ <a6ac887f7ce8af0235558752d0c781b817f1795a.camel@sipsolutions.net>
+ <20231204203622.GB9330@merlins.org>
+ <24577c9b8b4d398fe34bd756354c33b80cf67720.camel@sipsolutions.net>
+ <20231204205439.GA32680@merlins.org> <20231204212849.GA25864@merlins.org>
+ <20231205024652.GA12805@merlins.org>
+User-Agent: Evolution 3.50.1 (3.50.1-1.fc39) 
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20231201062502.10099-2-steven.zou@intel.com>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1701803767;
- bh=dFHThxBmnjrmmteNpPiNVEIBTX15vyVkyAINGkaYRe8=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=HzHDlKjWO3GvAifXp8J72cUctfpy+jZDLA0bBhY2yeXgqOzotz944ixeLAlzh/Nan
- jYrRdd8fkHORjFD7cyc5aqjKqy9mzCD94T3vrejrcn+MUevuBLDoHSYNVfl2C+JWA0
- 9TuRExl15t3bLIpeu5foPvdlPcYTEozi12JwnjWw/ilz8pMjy3xJiHE3qSA3Gdaq1W
- JXWpMe5FMQ8oBolm0cUuIb+P22pszymtWg2bL3X38nKKwUA1jht+gsnklq8yCxD1FI
- wMHSUV+R+Bpo46VAyuKxtcLUnDjWrH7X5fbakpHv3/DPu2opxovA6IXLvgioNLtM2V
- fRSCYUbfz/NZg==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=HzHDlKjW
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next 1/2] ice: Refactor FW data
- type and fix bitmap casting issue
+X-malware-bazaar: not-scanned
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt;
+ c=relaxed/relaxed; 
+ d=sipsolutions.net; s=mail; h=MIME-Version:Content-Transfer-Encoding:
+ Content-Type:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Sender
+ :Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-To:
+ Resent-Cc:Resent-Message-ID; bh=SkMzdOaiE/tH3KLyUGpebGooZ6m/kC6AAcd35NxWXmA=; 
+ t=1701804788; x=1703014388; b=Q/Eo+FEbKPrfOziPHy5XnZPDgWyqEAoY9xNRUGnOrPSvk6R
+ aJoy7+UYUfnwneXoGIt5udVb0G1ZB2MGZbmXZjkUlqbDNoapBOfwj3ZCYPoOrpcUnFAfF0sjKxAT7
+ oMW9yyD6H2hYTpiKy2wgjCTBQmq6YxfVA1W0ODxGnLCF9hmIOQEHBzS1kRaz0w3z2rrFlG07rQvta
+ czoMk/VHCCGHUEHAoz9FaYjmfkIc05xpt6URXvwHvoYaBQtlC7rDkPg+jwl4u/V+h77iOAdXSCNev
+ lAr6/sL30Zwx2SVTyBBV8JgkSkTJH1LLNVZ1brrjRU5IR93TudPfhqp/kv8Zqupg==;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key) header.d=sipsolutions.net header.i=@sipsolutions.net
+ header.a=rsa-sha256 header.s=mail header.b=Q/Eo+FEb
+Subject: Re: [Intel-wired-lan] [RFC PATCH] net: ethtool: do runtime PM
+ outside RTNL
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,28 +94,31 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: jan.sokolowski@intel.com, netdev@vger.kernel.org, andrii.staikov@intel.com,
- aleksander.lobakin@intel.com, intel-wired-lan@lists.osuosl.org,
- przemyslaw.kitszel@intel.com, andriy.shevchenko@linux.intel.com
+Cc: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
+ Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Jesse Brandeburg <jesse.brandeburg@intel.com>,
+ Heiner Kallweit <hkallweit1@gmail.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Fri, Dec 01, 2023 at 02:25:01PM +0800, Steven Zou wrote:
-> According to the datasheet, the recipe association data is an 8-byte
-> little-endian value. It is described as 'Bitmap of the recipe indexes
-> associated with this profile', it is from 24 to 31 byte area in FW.
-> Therefore, it is defined to '__le64 recipe_assoc' in struct
-> ice_aqc_recipe_to_profile. And then fix the bitmap casting issue, as we
-> must never ever use castings for bitmap type.
+On Mon, 2023-12-04 at 18:46 -0800, Marc MERLIN wrote:
 > 
-> Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-> Reviewed-by: Andrii Staikov <andrii.staikov@intel.com>
-> Reviewed-by: Jan Sokolowski <jan.sokolowski@intel.com>
-> Signed-off-by: Steven Zou <steven.zou@intel.com>
+> [13323.572484] iwlwifi 0000:09:00.0: TB bug workaround: copied 152 bytes from 0xffffff68 to 0xfd080000
+> [13328.000825] iwlwifi 0000:09:00.0: TB bug workaround: copied 1272 bytes from 0xfffffb08 to 0xff42c000
+> [13367.278564] iwlwifi 0000:09:00.0: TB bug workaround: copied 1328 bytes from 0xfffffad0 to 0xfec41000
+> [13389.737971] iwlwifi 0000:09:00.0: TB bug workaround: copied 572 bytes from 0xfffffdc4 to 0xff091000
+> [13389.860480] iwlwifi 0000:09:00.0: TB bug workaround: copied 148 bytes from 0xffffff6c to 0xfe412000
+> [13393.435354] iwlwifi 0000:09:00.0: TB bug workaround: copied 360 bytes from 0xfffffe98 to 0xfedcd000
+> [13409.827199] iwlwifi 0000:09:00.0: TB bug workaround: copied 1348 bytes from 0xfffffabc to 0xfd057000
 
-Reviewed-by: Simon Horman <horms@kernel.org>
+That's fine, just working around a HW bug on 2^32 address boundaries.
+
+I had a patch a long time ago to make those messages not appear ... not
+sure where it ended up.
+
+johannes
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
