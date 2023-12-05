@@ -1,92 +1,84 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E16B18051DB
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  5 Dec 2023 12:17:18 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id A3DAB80531F
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  5 Dec 2023 12:37:56 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id B285041A35;
-	Tue,  5 Dec 2023 11:17:14 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B285041A35
+	by smtp1.osuosl.org (Postfix) with ESMTP id D88408243B;
+	Tue,  5 Dec 2023 11:37:54 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D88408243B
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1701775034;
-	bh=RkVsKWPQU37QkX3wxDijA2i7VbYRPVvsYP1O4PJia8o=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=ZYNMX4X7XqgTW3K0GXflt96OKSJQqs/BHqHRHBYX8f/u7G1XoNOuRZKWhLfwfAjpZ
-	 xem8i6RtRMfGtlF1vlSZYg6/1jkJ1BliJczwlBX+4iZsUERiNGmQkEBrSOSojJKpQ5
-	 zwgHkYeYyYiRGNoMZnHEegsNG6+NXyhVorOT/t4W/27zYlSD9bW2C9xXHc3r+W9zH9
-	 I+ZXhIHUoNS/C/GdrvQ79CTa9TgvFE0CKSPwFuRsMpJDrvamLGcOrpI/pE0YQ4WMz1
-	 E8KRgiNb0kuOeBKPrm+yCbCrA4FKntwCVVGVKr5+Y5/lu0jysfKRmmxHii4BtNF/kS
-	 IAJiuCekmeSwQ==
+	s=default; t=1701776274;
+	bh=OI4Nk+0sbPzo23wRZ8mMirRzKx4ntQjmxRpCs4o0OvY=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=o6GTVOOccZS1l4zYjSgQm0KkFumQ6GmkZUyg7MQHZCrU5LpY4We0Lbj5200cJ8SMb
+	 NXHtTyjRiI1TliykAlPICH3Wvzq9AE/VK1ZMEOoizZWrFfYwvvbOCBsielmrLG8vO3
+	 llDCRAl6119N7RYqQ4b3jXSqIf3o7vZ/Q6/TRxq5ivR4GhKKpjdVYfHw8gM5Cd/7Mq
+	 yiPe0hdJ7666OaS2ABLWfto5fE49evzImoW1tj2BKFhnwO1uWe8uixRkk+zmB6Pmnt
+	 grh86V6cMgqGfLKJgcNitNYwn0+JDXPJbnkKuzflk0SKktvNgVK4TNgWPy18xtIVBj
+	 L8EcKjomYtaww==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id U70fKKKUuazp; Tue,  5 Dec 2023 11:17:13 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 7Mdi_eTDQo5V; Tue,  5 Dec 2023 11:37:54 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 724BF41A34;
-	Tue,  5 Dec 2023 11:17:13 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 724BF41A34
+	by smtp1.osuosl.org (Postfix) with ESMTP id C706082404;
+	Tue,  5 Dec 2023 11:37:53 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org C706082404
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 918881BF2B0
- for <intel-wired-lan@lists.osuosl.org>; Tue,  5 Dec 2023 11:17:07 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id C89611BF2B0
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  5 Dec 2023 11:37:48 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 5D3D241A1B
- for <intel-wired-lan@lists.osuosl.org>; Tue,  5 Dec 2023 11:17:07 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 5D3D241A1B
+ by smtp3.osuosl.org (Postfix) with ESMTP id 9607961087
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  5 Dec 2023 11:37:48 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9607961087
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 2vWLhjFEbgo6 for <intel-wired-lan@lists.osuosl.org>;
- Tue,  5 Dec 2023 11:17:06 +0000 (UTC)
-Received: from mgamail.intel.com (mgamail.intel.com [134.134.136.65])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 5BE1F41A1C
- for <intel-wired-lan@lists.osuosl.org>; Tue,  5 Dec 2023 11:17:06 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 5BE1F41A1C
-X-IronPort-AV: E=McAfee;i="6600,9927,10914"; a="397775472"
-X-IronPort-AV: E=Sophos;i="6.04,252,1695711600"; d="scan'208";a="397775472"
-Received: from fmsmga004.fm.intel.com ([10.253.24.48])
- by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 05 Dec 2023 03:17:04 -0800
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id bjchwExggOBU for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  5 Dec 2023 11:37:47 +0000 (UTC)
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.7])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id B55DB61082
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  5 Dec 2023 11:37:47 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B55DB61082
+X-IronPort-AV: E=McAfee;i="6600,9927,10914"; a="15429376"
+X-IronPort-AV: E=Sophos;i="6.04,252,1695711600"; d="scan'208";a="15429376"
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+ by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 05 Dec 2023 03:37:46 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10914"; a="841421178"
-X-IronPort-AV: E=Sophos;i="6.04,252,1695711600"; d="scan'208";a="841421178"
-Received: from naamamex-mobl.ger.corp.intel.com (HELO [10.214.215.245])
- ([10.214.215.245])
- by fmsmga004-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 05 Dec 2023 03:17:02 -0800
-Message-ID: <c55d299b-ff6b-4da6-bc9f-931d7cd5b2f8@linux.intel.com>
-Date: Tue, 5 Dec 2023 13:16:41 +0200
+X-IronPort-AV: E=McAfee;i="6600,9927,10914"; a="747196964"
+X-IronPort-AV: E=Sophos;i="6.04,252,1695711600"; d="scan'208";a="747196964"
+Received: from os-delivery.igk.intel.com ([10.102.18.218])
+ by orsmga006.jf.intel.com with ESMTP; 05 Dec 2023 03:37:44 -0800
+From: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Tue,  5 Dec 2023 12:28:38 +0100
+Message-Id: <20231205112840.149813-1-jedrzej.jagielski@intel.com>
+X-Mailer: git-send-email 2.31.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Content-Language: en-US
-To: Jesse Brandeburg <jesse.brandeburg@intel.com>,
- intel-wired-lan@lists.osuosl.org
-References: <20231121211921.19834-1-jesse.brandeburg@intel.com>
- <20231121211921.19834-9-jesse.brandeburg@intel.com>
-From: "naamax.meir" <naamax.meir@linux.intel.com>
-In-Reply-To: <20231121211921.19834-9-jesse.brandeburg@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1701775026; x=1733311026;
- h=message-id:date:mime-version:subject:to:cc:references:
- from:in-reply-to:content-transfer-encoding;
- bh=H271sEIBAGP5MA7yccwYLYdOp2ywSPd2T2VYfsYelW8=;
- b=WVU53oZYk3yfTs4+CJloP+K79XLqnWkr6fmI3rj0PZ0FfV1eBvQvx/uV
- iB7xW4wPXIvLd1SWIs3C7FekuOUw+r3MfI8UxAfOzjXJ6VHeoDdsrSEwL
- nqV67mtWGDi1gx1IDrUh/msYh0/ghO5TeHscG0uEAqserEIKIujpfl75r
- nfx0DdI4wSlkQkELJz1HNtnS6p8dkut9s17+YXevklCViwepfPay0T7Ex
- U8gsAGyFaB34F4FY8/W3UWFnDDDKl+NFJ/s7ysCUUuoCi1V5Xr5HjL8Jb
- /TIPpWBhXZUDTnBO/e8afm48G4cFnY7OAHMBXpdzYe0cuIoMbzC3HhOWg
- g==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ t=1701776268; x=1733312268;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=AIUHmhEmwcOCgMt2++sCNVhBbRepohu8MlTc7aJci5o=;
+ b=UvTt3c0F2U9p0dQtqycq29edEFhGbJcvrp01kysYv0XBlvWUtI5msmC0
+ m6RgDOCEvvQt5rkUMezrPfvBwSTMzghcS0Jrx+KBLxM452kyu0ek/IGt1
+ ozPnkvGSc1lyk9kk9p7dI12PG+rM51le3EP7/VlXvIl8hwdoKg++SDPXc
+ ptxEht2P2yVobs906T6cGsbiKZtYRO5uXPV/MvrYe+Guy+ex2wPIi0q3U
+ AuPXWJNLoC4UzNRIfcJgD7u7xyV/6wdJQG14pqMXd+2miAKU8x7/jBRu/
+ I2QaP1v74UWkWWYWtA7NDwm8xDcZqmO74IJYlECvBi/pfdLmVQ0FW+Xi6
+ A==;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=WVU53oZY
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v1 08/13] igc: field prep
- conversion
+ header.a=rsa-sha256 header.s=Intel header.b=UvTt3c0F
+Subject: [Intel-wired-lan] [PATCH iwl-next v2 0/2] ixgbe: Refactor ixgbe
+ internal status
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,37 +91,40 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Julia Lawall <Julia.Lawall@inria.fr>, netdev@vger.kernel.org,
- Sasha Neftin <sasha.neftin@intel.com>,
- Marcin Szycik <marcin.szycik@linux.intel.com>
+Cc: anthony.l.nguyen@intel.com, Jedrzej Jagielski <jedrzej.jagielski@intel.com>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 11/21/2023 23:19, Jesse Brandeburg wrote:
-> Refactor igc driver to use FIELD_PREP(), which reduces lines of code
-> and adds clarity of intent.
-> 
-> This code was generated by the following coccinelle/spatch script and
-> then manually repaired in a later patch.
-> 
-> @prep@
-> constant shift,mask;
-> expression a;
-> @@
-> -((a << shift) & mask)
-> +FIELD_PREP(mask, a)
-> 
-> Cc: Julia Lawall <Julia.Lawall@inria.fr>
-> Cc: Sasha Neftin <sasha.neftin@intel.com>
-> Reviewed-by: Marcin Szycik <marcin.szycik@linux.intel.com>
-> Signed-off-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
-> ---
->   drivers/net/ethernet/intel/igc/igc_main.c | 4 ++--
->   1 file changed, 2 insertions(+), 2 deletions(-)
+A small 2 patches series removing currently used internal status codes in
+ixgbe driver and converting them to the regular ones.
 
-Tested-by: Naama Meir <naamax.meir@linux.intel.com>
+1st patch deals specifically with overtemp error code, the 2nd one
+refactors the rest of the error codes.
+
+Jedrzej Jagielski (2):
+  ixgbe: Refactor overtemp event handling
+  ixgbe: Refactor returning internal error codes
+
+ .../net/ethernet/intel/ixgbe/ixgbe_82598.c    |  36 ++--
+ .../net/ethernet/intel/ixgbe/ixgbe_82599.c    |  61 ++++---
+ .../net/ethernet/intel/ixgbe/ixgbe_common.c   | 145 ++++++++--------
+ .../net/ethernet/intel/ixgbe/ixgbe_ethtool.c  |   2 +-
+ drivers/net/ethernet/intel/ixgbe/ixgbe_main.c |  46 +++---
+ drivers/net/ethernet/intel/ixgbe/ixgbe_mbx.c  |  34 ++--
+ drivers/net/ethernet/intel/ixgbe/ixgbe_mbx.h  |   1 -
+ drivers/net/ethernet/intel/ixgbe/ixgbe_phy.c  | 117 +++++++------
+ drivers/net/ethernet/intel/ixgbe/ixgbe_phy.h  |   2 +-
+ .../net/ethernet/intel/ixgbe/ixgbe_sriov.c    |   2 +-
+ drivers/net/ethernet/intel/ixgbe/ixgbe_type.h |  43 +----
+ drivers/net/ethernet/intel/ixgbe/ixgbe_x540.c |  44 ++---
+ drivers/net/ethernet/intel/ixgbe/ixgbe_x550.c | 156 ++++++++++--------
+ 13 files changed, 333 insertions(+), 356 deletions(-)
+
+-- 
+2.31.1
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
