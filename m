@@ -1,191 +1,86 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2173980609C
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  5 Dec 2023 22:23:29 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4106B806283
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  6 Dec 2023 00:01:19 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id A3DF6613E7;
-	Tue,  5 Dec 2023 21:23:27 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A3DF6613E7
+	by smtp4.osuosl.org (Postfix) with ESMTP id C47FF41BE3;
+	Tue,  5 Dec 2023 23:01:17 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C47FF41BE3
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1701811407;
-	bh=kHAugBSzkm+aHXlLGjkqQbR2YX1cw6uOW0HnFidWElQ=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=3hh4y4p+/mmUJjm9nAQPAvslG1aVU63iyYxZFwAygBVI12vk9tdSn2D7iLHmZbbdE
-	 G6QoqHE/YPkILfa9cB+uhbb9KWnAjoLxz4Fyup+eKoQTSzXcVwll8/IdcF4m9dtvFq
-	 Amea9TC86pPOkEsUiqzN6QLcW6maezNFtAseGG45FDAt3iAmaQu3bj9bkBoubY/vMI
-	 p0bXu/UBRkPcmtTtMbRFYSTBZ3N376ATu9uPMPcP9GxzEf71LAtsciL7LXt5LKw+ik
-	 EmerGtb9jmBcq5G58AdoAxloE2pgL4egTPl64EtMvLxIBluMEHevAEG1TAByfXjw7g
-	 dkAf7tYrbwd+Q==
+	s=default; t=1701817277;
+	bh=EKa8SSu50GZ0FkktRHXCQIyP42cN36Z0M8Zz9YHvVR4=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=r7/8C3q7zaqHKRxFuOK9UWoNyJRG9hAMP0ZzCff2+lExgOFBXsjUz8al1IcBZAWLs
+	 +rYFQg/ZbjMntC2Gp3yOUJmd4BO0VrzwzJeBs1v1LuOmhOm2mfJYnsG0DEvcgyGWyA
+	 oRLl4BjQzG5bqcsduWoX0QHdnYgST4IByXMq7P9ykiwhuGUIQt6NZX27RQEsbR0x7Y
+	 KLdlkiX4GL1o/f+tw/GCN7XvK68keQQVRA9BgtdvYwWH2wnDTqdIw5zxqvIxqLMUgK
+	 SdCUpckkDKERd4SCPcr5q+ofpHdAYg0eKtjeZEhzkd7/qXiJr+zZqaIT7s6DaormUB
+	 5DfkG+hi4Wf0w==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id PRPlCRln5LxW; Tue,  5 Dec 2023 21:23:26 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id iCHu6DU-NTUD; Tue,  5 Dec 2023 23:01:16 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 80F56605E8;
-	Tue,  5 Dec 2023 21:23:26 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 80F56605E8
+	by smtp4.osuosl.org (Postfix) with ESMTP id 12DCF41BBF;
+	Tue,  5 Dec 2023 23:01:16 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 12DCF41BBF
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id B29EF1BF35E
- for <intel-wired-lan@lists.osuosl.org>; Tue,  5 Dec 2023 21:23:20 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 9B8021BF2F4
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  5 Dec 2023 23:01:10 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 89A238228D
- for <intel-wired-lan@lists.osuosl.org>; Tue,  5 Dec 2023 21:23:20 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 89A238228D
+ by smtp1.osuosl.org (Postfix) with ESMTP id 80A36823DD
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  5 Dec 2023 23:01:10 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 80A36823DD
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id l9v3w59Uiwit for <intel-wired-lan@lists.osuosl.org>;
- Tue,  5 Dec 2023 21:23:15 +0000 (UTC)
-Received: from mgamail.intel.com (mgamail.intel.com [134.134.136.20])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 0694C81E5E
- for <intel-wired-lan@lists.osuosl.org>; Tue,  5 Dec 2023 21:23:14 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0694C81E5E
-X-IronPort-AV: E=McAfee;i="6600,9927,10915"; a="384370005"
-X-IronPort-AV: E=Sophos;i="6.04,253,1695711600"; d="scan'208";a="384370005"
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
- by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 05 Dec 2023 13:23:12 -0800
+ with ESMTP id WF-GGFASn_pR for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  5 Dec 2023 23:01:07 +0000 (UTC)
+Received: from mgamail.intel.com (mgamail.intel.com [134.134.136.100])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 87DF582261
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  5 Dec 2023 23:01:07 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 87DF582261
+X-IronPort-AV: E=McAfee;i="6600,9927,10915"; a="460462205"
+X-IronPort-AV: E=Sophos;i="6.04,253,1695711600"; d="scan'208";a="460462205"
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 05 Dec 2023 15:01:06 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10915"; a="914941448"
-X-IronPort-AV: E=Sophos;i="6.04,253,1695711600"; d="scan'208";a="914941448"
-Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
- by fmsmga001.fm.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
- 05 Dec 2023 13:23:13 -0800
-Received: from orsmsx612.amr.corp.intel.com (10.22.229.25) by
- ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.35; Tue, 5 Dec 2023 13:23:12 -0800
-Received: from orsmsx611.amr.corp.intel.com (10.22.229.24) by
- ORSMSX612.amr.corp.intel.com (10.22.229.25) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.35; Tue, 5 Dec 2023 13:23:12 -0800
-Received: from ORSEDG601.ED.cps.intel.com (10.7.248.6) by
- orsmsx611.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.35 via Frontend Transport; Tue, 5 Dec 2023 13:23:12 -0800
-Received: from NAM10-MW2-obe.outbound.protection.outlook.com (104.47.55.101)
- by edgegateway.intel.com (134.134.137.102) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.35; Tue, 5 Dec 2023 13:23:11 -0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=eiAVlQ3TrT2XfHo4Gg97yEoSkv2TX7u7wSWPZgmT87wvOZeAqIvR2R4c4rJ/3axA7IqsJhjFN2KuuKtOrI4yyEcjuVWhPD2ImGxnBPI6193bk8KOKAckmEwnQ34RrIX+e93UVlq78YhwbjjVkb+4ErG7HGkuVjQPBb2/Lsz5rl8OIGF1/UMkSG2ucWLTGA4xLG2BAk8ymQiKaMbnZ+HCYDrlPVZ/ZxBjPvAOOzYQJLNfwIEPBFnMeZec2Fxz8ADwjaUdXyiA5Hyo0OVMUtGpyK2B/3Y4+f98Kx2RMpeQ+D+k5/QvChiJidK2lxV+yxS6A3xA9xTPV8WlfE/PATjV+Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=vBfx8G2Vf89m70QX/nuQLZD7IYp1NN7TguCUss+gNWU=;
- b=J9T1BmksiJZSbI3QWo4NWYm2vM+Z6giZ39qESxF2hSQGsZiZwhpR7MNoHo2n3VJm9IYRKsceT0/yzoE6MBRosOWYZH7suh7oJ4Z7mwG+KX/zlvUBfHaFk/rjWI2vPfS3u2MG2rkH6bsAcUde+RMqz1AzhANFGHQKerbiVzHGMwHs0LRuf1daPPjufuFWNg9rZcxIZ3AFOXZnGM03KhGcqtF4H5aSFV1A2iYaCTSkJLfBNWrDfxLRsthLGQQiZc5zV5GbJzdEOz1KrgSoLn4idJyc7XylUFw56Xt/5dGu+6gF94RxhNOGxiXH2ktfA9IAy5Xb9sTiN5M5E9MOJaPu6g==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from BL3PR11MB6435.namprd11.prod.outlook.com (2603:10b6:208:3bb::9)
- by PH8PR11MB6707.namprd11.prod.outlook.com (2603:10b6:510:1c6::16)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7046.34; Tue, 5 Dec
- 2023 21:23:05 +0000
-Received: from BL3PR11MB6435.namprd11.prod.outlook.com
- ([fe80::11e1:7392:86a5:59e3]) by BL3PR11MB6435.namprd11.prod.outlook.com
- ([fe80::11e1:7392:86a5:59e3%4]) with mapi id 15.20.7046.034; Tue, 5 Dec 2023
- 21:23:05 +0000
-Message-ID: <a47ee305-1318-3b32-bf26-da6342ca4513@intel.com>
-Date: Tue, 5 Dec 2023 13:23:02 -0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.1
-To: Lukasz Plachno <lukasz.plachno@intel.com>,
- <intel-wired-lan@lists.osuosl.org>
-References: <20231130055540.12692-1-lukasz.plachno@intel.com>
- <20231130055540.12692-2-lukasz.plachno@intel.com>
-Content-Language: en-US
-From: Tony Nguyen <anthony.l.nguyen@intel.com>
-In-Reply-To: <20231130055540.12692-2-lukasz.plachno@intel.com>
-X-ClientProxiedBy: MW4PR03CA0199.namprd03.prod.outlook.com
- (2603:10b6:303:b8::24) To BL3PR11MB6435.namprd11.prod.outlook.com
- (2603:10b6:208:3bb::9)
+X-IronPort-AV: E=McAfee;i="6600,9927,10915"; a="805434229"
+X-IronPort-AV: E=Sophos;i="6.04,253,1695711600"; d="scan'208";a="805434229"
+Received: from blavena-mobl2.ger.corp.intel.com (HELO azaki-desk1.intel.com)
+ ([10.252.46.234])
+ by orsmga001-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 05 Dec 2023 15:01:00 -0800
+From: Ahmed Zaki <ahmed.zaki@intel.com>
+To: netdev@vger.kernel.org
+Date: Tue,  5 Dec 2023 16:00:41 -0700
+Message-Id: <20231205230049.18872-1-ahmed.zaki@intel.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: BL3PR11MB6435:EE_|PH8PR11MB6707:EE_
-X-MS-Office365-Filtering-Correlation-Id: 4d3657b7-c96b-46b3-246f-08dbf5d85e6a
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: lzW8F5itUvN3kghU2/r1+6MmIEvV1JWLWbOLopjNvNFA2xPcv8uBV6NIEUMoXeRTv1tEPVk6LoZSc2xElMkcGajXnUKqcL0IUylC/f/oDFvW4dSj5Xi507tTQjYJK9ahBdOueCQ7nP77pifz6UdsdO/jsl72H4jfZ4LJqkThgTfdLd6hHeMxw3A7hxlr+AkeX3fGS/xPd8WxQ53PojX5hO1GgJZo7oB4BXkVgsMn9jWv1xK9khoSWbChV0DNSiBMkqTWdt2qw6pEJIaGk0gNiT7SKfdcl5ipYLyFbSNbTZBQPpEazkpZ76i/KWL9c+EklXb19l0Z1z4MI7VS9tLvh9A05AKINFOti8FiwRuD+KTCt+m1Q1xvVLrIKtT5exSgQD3qgVPaZDHMVnhpFE9bfA+aXbUuUZxPOaAE/TVvTpx141Pz0Z/1T2gGfZvC7nLMkCuDU3GIPGOgGAB04BNlBfixE3EmZwvGFV9A17p2EMfoI+EO0HMKXYXlG5X9yeSxtlGP15+9RTHDSAsq+KW7+0+DEmo3AnTuzU99J+C92IE5J/+Q2Py/kkgcAAF6i1IKRuXA/xBMWIZ0ayNuJdoKAljWZ2sZz0/oIpWaeVWZU0sy5ovwPTTQPxAdNj96x7MISZqYa0GPcKcUwGwiUO9oHbbqekMGWh86sLLwAJTHDz66sJBH53CPlYlFnlex5lgP
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BL3PR11MB6435.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230031)(39860400002)(136003)(346002)(376002)(366004)(396003)(230273577357003)(230922051799003)(230173577357003)(186009)(451199024)(64100799003)(1800799012)(41300700001)(36756003)(5660300002)(86362001)(2906002)(107886003)(2616005)(26005)(6512007)(82960400001)(83380400001)(6666004)(478600001)(6506007)(53546011)(6486002)(38100700002)(31686004)(8676002)(4326008)(66476007)(66556008)(66946007)(8936002)(31696002)(316002)(45980500001)(43740500002);
- DIR:OUT; SFP:1102; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?Y2NPdE9GVk1lb1FUZi8xZ2llS0lnd1hHL3B6dHdvaWgrY3pGdlJYVG02ZlEy?=
- =?utf-8?B?Y0VtOURTdjNJNzBlam5jY1hwVjNabFpJcHV6YW9iNDRGbXhMSnJSUk9SSW9S?=
- =?utf-8?B?S2htU2c5UG9UUVdkQXMxSWFBMHpwejJ5dzQveWRKcC9zd1JOdDRMOTI1Qldo?=
- =?utf-8?B?WVU1bUVHVUJNYlBFdW54RVlHeFlROCt0QmFYY3FMc2pNNXNRc2FCc3ByVFJB?=
- =?utf-8?B?SUh5K2QySDNveHZDTjViODJJTjY4RnExaXk3VmVkMmdOMEdRbk9MV1I1MTRx?=
- =?utf-8?B?RlIrcDZwSlJNRHZKb0ZKU09HWnVMUStONFdoSG1NaFlNR0Q1bGoyWUlEc0xu?=
- =?utf-8?B?citkQVRMak00WmF2akJLRy9jODhlYXlQeGpCc1Rkekk3aDlteXZDSmhmL3or?=
- =?utf-8?B?d1VaZFR6UGZ5MTNQbkN0dnNHRGs1UUxhSGhPOTZveG00MnVLbG9LTUZ1QkFz?=
- =?utf-8?B?a3BDRVZUYkRjTU5JUHBFSHo2eDNSbWtCK1J1M2o2T1FIZjFzWkh1SVUyakR2?=
- =?utf-8?B?a1NBVlp4ZEQ4WW9wVE81OUZ3N0FwU1BxeDB5TjZ1R0prZkgyK3dJeGdhNi9G?=
- =?utf-8?B?dGRJd3Z2SDFzYzZPejNQTzdzNGdmcnFRdHk0a09NRjVpVGRadzJhajZZZ0t4?=
- =?utf-8?B?WTJoMkZRcWlocmlWK2d2Y0FFQWxQb21GeTVMQWE4RVJJYXhwSE9VUU9WcXFI?=
- =?utf-8?B?TExUUkJnQWJyYVMrU0F4eXVsR09RVTBBdXlmaTI0cXpYb2R5NmZTZmZycmR3?=
- =?utf-8?B?YlhCQk52WTdUYy9HVFVLSWtkUUM5MWdFRmJvTWNJWk5yU3V1ajIxa0xHc1Aw?=
- =?utf-8?B?M1paaXRRdEJGZ0VjZVdEVS95VzBiTHp0aFZ5dTRDQWRXWXo2MGFld3JNcDRQ?=
- =?utf-8?B?cXVtd2NtZHJsN1ZyQmhoSktXOEFQMm5tOWNuKzI5QjRzalVjRkNFcytlV1NV?=
- =?utf-8?B?bS91TEZocjF2TnVtanNUZ0VBb1J3ZHJkTE13OFJJTDR2REFtRDQ3cHhRZXU3?=
- =?utf-8?B?UkNtNU5RKytyUGdDeWY4ZU5hUzEzR05TaXYzNWRzM1hmUkFlNHF4N0JHNnZa?=
- =?utf-8?B?Rkxnd1NVR2QwU3JJVVNKTy9paFdCRzRNWGo0cXdDQzlaSTYxeThDbzRCQkM4?=
- =?utf-8?B?VThhTW1aNllZOFJzKzhGZnBtVklpYUJPUUFmVmhLSWZNQkp3a0dYbDMyNktn?=
- =?utf-8?B?bDBubW1Ydk9hUldEYUJxZ0JjQWdhWFFBQk9uVmpBaHVSQkZLN25lS2lqam5Z?=
- =?utf-8?B?Q2Q4WCtwaTN1R1FhenVYd3lLSVNKM2kvWmJwSDZpNGF0SFh3c05kRzVaT1pN?=
- =?utf-8?B?Qkw3REJOdG0rcmkrOTFFeTh0aldDT21hRjVDYlUrYmZXZVA5RjJXMjNobjNi?=
- =?utf-8?B?SVdudG5tZERyODRmR3VHdmlPMmdwRFZPVHBLM2ZuRWYvblh4Y2NnWXN5cTcx?=
- =?utf-8?B?VmlyS0x3YW9FMkdTczl0SmRtdWxJQWM1eDlFOEhINnNldkFZc1BJQ2o1TXIy?=
- =?utf-8?B?U1pUKzYvQWQ5M3VTRGJGSTBOV2tWR1dpN056Y24yZE82Q3haZXo5bVdtT2hv?=
- =?utf-8?B?RFBEeWh1MnlmbWkxOUdrKzV4YUFDWk91eWhzWXQ5YVVmMm5yL3p1TmNpb2Zk?=
- =?utf-8?B?eDlWdzdyU1lBYVNsMndTWTNvQ0h4VS9LYWhXRDF6b0FGVnRuaG0yZmVuN2E0?=
- =?utf-8?B?a1hFSXFDTlhFcjZ5M2tHbE45MlFTbG0rbGwvSVRLR1ZZMGNEUk1jMWp5ZnBv?=
- =?utf-8?B?YzRCUmNoRjBlM3BhNjBlSFpPZGEzVzY3Y0hxZlc2VFMvTVdvOG0vQ3V6ajZL?=
- =?utf-8?B?eENSUEZlZENkUXNLczlmZXNrUlN2ejMvYkExVlcwZVJMZXhkeW5paHl1TE45?=
- =?utf-8?B?YlBpcmFqaU1JS3UxUFZSUFE4Zy9reldnZTh1V0x2N2djTHhEK3FaZDRQYzda?=
- =?utf-8?B?SzFzWVkweFcxUEZNcGxKSm96V1lMOEpYVEtGZjErbnNYbEwwS0g1SktCZkY5?=
- =?utf-8?B?ZUZYd2hjSXdDbHRmcFBkME1rUThVWG5uQlQ0TXhtME5lNE9hNGlKZ2xocVRF?=
- =?utf-8?B?M2YxT0kvTHplNmxmQ3JIM3RyaHBHNXgwWVRLMDJydlduMGtGa2djeXd1WVBK?=
- =?utf-8?B?RkZmVzZpalk1MXJBUFp0dXlzSXFvRlFaUEtRSnIvVDlSc1NNU2ttWTk3ZmlO?=
- =?utf-8?B?QVE9PQ==?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: 4d3657b7-c96b-46b3-246f-08dbf5d85e6a
-X-MS-Exchange-CrossTenant-AuthSource: BL3PR11MB6435.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 05 Dec 2023 21:23:05.0683 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: cvC9AI6olDBkNSSEQqdOWQoRq1BgAuwfAhG71ahuIIbtNZsZl6CaGI0SPx7LvSpxzcl8npdWmo1SB1vzyLfuK2DLvtYIhS20eyt3fEAxPdk=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH8PR11MB6707
-X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1701811393; x=1733347393;
- h=message-id:date:subject:to:cc:references:from:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=xiTGQ429X+MM8nQIO/dEgp8tzX9cBitibHzidlA5z4g=;
- b=g89wcUbk9o2olYbVE8MbJMqi879O/x32P2dbbxI/nx8+2sfyA8qNcFk1
- n+Y2T1rGdPloVjGKTIDjiT79D/ZjGGLNd0opvKuS3SI1J5jX3ABFpA9uY
- eFA8UX6OuWO263u+J/hgrB2NvHM/XmV8N6h0qgtor9usOFoCl/tcVQgOV
- HFLvsaLa9yRfbliIahO+a7gm5/0v09bfVJcWmn0CQ5dV5gKAUNf5IRrYe
- DtvKL49wAH1U4jiLlLsReLTq3t1LzxWJXE/lTnMg/ynq+FmcPYEkA3CiO
- P7dZujEMtBLKy+Unzr500F8PXQ/TvwU7TIRuPEToExrn64JQQBenGfBlU
+ t=1701817267; x=1733353267;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=IcnvGakiWRB5wIZ7PIMSEpzTjZxypJ1zC+MUScCOPBQ=;
+ b=WADi7HTj7tCGL2kwTXlQ8nTLxSdBlRRMqlSGFDskXOVt5uqSAOY+eTXv
+ /qbQvLwNh4NzdCsij/umZQ/ziZh9UyGgyeu1KsWJ8l5Jf10PtPFUihh4e
+ MvRwEOke6CtZBSFtUKnz+paO8hPO4HF9nV9GHdgRQtLDCBamLPxD5t6tn
+ 0fMb/z8VgOvp+LmlIkHVJjeyUwXWPXiQxnzKSmY1Lpof3PM/H50rp0LU9
+ +3vAm0q/QbWKb+nR/yYZp7HxGU8ZbGZNJLjtp1T+GUeS8oHBh959ftGIn
+ TLAWdddWYYV06DbGW8kMrrmwNyy+5mZBo6/b5Ssu5bpWlJbRK/WxrmI16
  Q==;
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=g89wcUbk
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next 1/2] ice: Remove unnecessary
- argument from ice_fdir_comp_rules()
+ header.a=rsa-sha256 header.s=Intel header.b=WADi7HTj
+Subject: [Intel-wired-lan] [PATCH net-next v7 0/8] Support symmetric-xor RSS
+ hash
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -198,36 +93,177 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Cc: mkubecek@suse.cz, andrew@lunn.ch, willemdebruijn.kernel@gmail.com,
+ corbet@lwn.net, vladimir.oltean@nxp.com, gal@nvidia.com,
+ linux-doc@vger.kernel.org, jesse.brandeburg@intel.com,
+ Ahmed Zaki <ahmed.zaki@intel.com>, ecree.xilinx@gmail.com, edumazet@google.com,
+ anthony.l.nguyen@intel.com, horms@kernel.org, kuba@kernel.org,
+ intel-wired-lan@lists.osuosl.org, pabeni@redhat.com, davem@davemloft.net
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-CgpPbiAxMS8yOS8yMDIzIDk6NTUgUE0sIEx1a2FzeiBQbGFjaG5vIHdyb3RlOgo+IFBhc3Npbmcg
-djYgYXJndW1lbnQgaXMgdW5uZWNlc3NhcnkgYXMgZmxvd190eXBlIGlzIHN0aWxsCj4gYW5hbHl6
-ZWQgaW5zaWRlIHRoZSBmdW5jdGlvbi4KPiAKPiBSZXZpZXdlZC1ieTogUHJ6ZW1layBLaXRzemVs
-IDxwcnplbXlzbGF3LmtpdHN6ZWxAaW50ZWwuY29tPgo+IFNpZ25lZC1vZmYtYnk6IEx1a2FzeiBQ
-bGFjaG5vIDxsdWthc3oucGxhY2hub0BpbnRlbC5jb20+CgpUaGlzIGRvZXNuJ3QgYnVpbGQgY2xl
-YW5seS4KCi4uL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2ljZS9pY2VfZmRpci5jOiBJbiBm
-dW5jdGlvbiAK4oCYaWNlX2ZkaXJfY29tcF9ydWxlc+KAmToKLi4vZHJpdmVycy9uZXQvZXRoZXJu
-ZXQvaW50ZWwvaWNlL2ljZV9mZGlyLmM6MTIwMzoyOiB3YXJuaW5nOiAKZW51bWVyYXRpb24gdmFs
-dWUg4oCYSUNFX0ZMVFJfUFRZUEVfTk9ORl9OT05F4oCZIG5vdCBoYW5kbGVkIGluIHN3aXRjaCAK
-Wy1Xc3dpdGNoXQogICBzd2l0Y2ggKGZsb3dfdHlwZSkgewogICBefn5+fn4KLi4vZHJpdmVycy9u
-ZXQvZXRoZXJuZXQvaW50ZWwvaWNlL2ljZV9mZGlyLmM6MTIwMzoyOiB3YXJuaW5nOiAKZW51bWVy
-YXRpb24gdmFsdWUg4oCYSUNFX0ZMVFJfUFRZUEVfTk9ORl9JUFY0X0dUUFVfSVBWNF9VRFDigJkg
-bm90IGhhbmRsZWQgCmluIHN3aXRjaCBbLVdzd2l0Y2hdCi4uL2RyaXZlcnMvbmV0L2V0aGVybmV0
-L2ludGVsL2ljZS9pY2VfZmRpci5jOjEyMDM6Mjogd2FybmluZzogCmVudW1lcmF0aW9uIHZhbHVl
-IOKAmElDRV9GTFRSX1BUWVBFX05PTkZfSVBWNF9HVFBVX0lQVjRfVENQ4oCZIG5vdCBoYW5kbGVk
-IAppbiBzd2l0Y2ggWy1Xc3dpdGNoXQouLi9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pY2Uv
-aWNlX2ZkaXIuYzoxMjAzOjI6IHdhcm5pbmc6IAplbnVtZXJhdGlvbiB2YWx1ZSDigJhJQ0VfRkxU
-Ul9QVFlQRV9OT05GX0lQVjRfR1RQVV9JUFY0X0lDTVDigJkgbm90IGhhbmRsZWQgCmluIHN3aXRj
-aCBbLVdzd2l0Y2hdCi4uL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2ljZS9pY2VfZmRpci5j
-OjEyMDM6Mjogd2FybmluZzogCmVudW1lcmF0aW9uIHZhbHVlIOKAmElDRV9GTFRSX1BUWVBFX05P
-TkZfSVBWNF9HVFBVX0lQVjRfT1RIRVLigJkgbm90IGhhbmRsZWQgCmluIHN3aXRjaCBbLVdzd2l0
-Y2hdCi4uL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2ljZS9pY2VfZmRpci5jOjEyMDM6Mjog
-d2FybmluZzogCmVudW1lcmF0aW9uIHZhbHVlIOKAmElDRV9GTFRSX1BUWVBFX05PTkZfSVBWNl9H
-VFBVX0lQVjZfT1RIRVLigJkgbm90IGhhbmRsZWQgCmluIHN3aXRjaCBbLVdzd2l0Y2hdCi4uLgpf
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpJbnRlbC13aXJl
-ZC1sYW4gbWFpbGluZyBsaXN0CkludGVsLXdpcmVkLWxhbkBvc3Vvc2wub3JnCmh0dHBzOi8vbGlz
-dHMub3N1b3NsLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2ludGVsLXdpcmVkLWxhbgo=
+Patches 1 and 2 modify the get/set_rxh ethtool API to take a pointer to 
+struct of parameters instead of individual params. This will allow future
+changes to the uAPI-shared struct ethtool_rxfh without changing the
+drivers' API.
+
+Patch 3 adds the support at the Kernel level, allowing the user to set a
+symmetric-xor RSS hash for a netdevice via:
+
+    # ethtool -X eth0 hfunc toeplitz symmetric-xor
+
+and clears the flag via:
+
+    # ethtool -X eth0 hfunc toeplitz
+
+The "symmetric-xor" is set in a new "input_xfrm" field in struct
+ethtool_rxfh. Support for the new "symmetric-xor" flag will be later sent
+to the "ethtool" user-space tool.
+
+Patch 4 fixes a long standing bug with the ice hash function register
+values. The bug has been benign for now since only (asymmetric) Toeplitz
+hash (Zero) has been used.
+
+Patches 5 and 6 lay some groundwork refactoring. While the first is
+mainly cosmetic, the second is needed since there is no more room in the
+previous 64-bit RSS profile ID for the symmetric attribute introduced in 
+the next patch.
+
+Finally, patches 7 and 8 add the symmetric-xor support for the ice 
+(E800 PFs) and the iAVF drivers.
+
+---
+v7: - Use new struct ethtool_rxfh_params to pass arguments to set/get_rxfh
+    - Remove get/set_rxfh_context functions and use a new capability to 
+      indicate RSS context support (cap_rss_ctx_supported).
+    - Move the sanity checks on the rxnfc fields when symmetric-xor is set
+      back to core.
+    - Add a new capability (cap_rss_sym_xor_supported) to indicate
+      symmetric-xor support. Core returns -ENOTSUPP if the driver does not
+      support symmetric-xor.
+    - Rename the new struct ethtool_rxfh field to "input_xfrm" and
+      update "Documentation/networking/ethtool-netlink.rst" and 
+      "Documentation/netlink/specs/ethtool.yaml".
+    - Add a comment on potential vulnerability of symmetric-xor in
+      include/uapi/linux/ethtool.h.
+
+v6: switch user interface to "ethtool -X" (ethtool_rxfh) instead of
+    "ethtool -N". Patch (1) is added to allow new params in the get/set_rxh
+    ethtool API. Doc is updated in "Documentation/networking/scaling.rst"
+    to specify how the "symmetric-xor" manipulates the input fields.
+    https://lore.kernel.org/netdev/20231120205614.46350-2-ahmed.zaki@intel.com/T/
+
+v5: move sanity checks from ethtool/ioctl.c to ice's and iavf's rxfnc
+    drivers entries (patches 5 and 6).
+    https://lore.kernel.org/netdev/20231018170635.65409-2-ahmed.zaki@intel.com/T/
+
+v4: add a comment to "#define RXH_SYMMETRIC_XOR" (in uapi/linux/ethtool.h)
+    https://lore.kernel.org/netdev/20231016154937.41224-1-ahmed.zaki@intel.com/T/
+
+v3: rename "symmetric" to "symmetric-xor" and drop "Fixes" tag in patch 2.
+v2: fixed a "Reviewed by" to "Reviewed-by", also need to cc maintainers.
+
+Ahmed Zaki (6):
+  net: ethtool: pass a pointer to parameters to get/set_rxfh ethtool ops
+  net: ethtool: get rid of get/set_rxfh_context functions
+  net: ethtool: add support for symmetric-xor RSS hash
+  ice: fix ICE_AQ_VSI_Q_OPT_RSS_* register values
+  ice: refactor the FD and RSS flow ID generation
+  iavf: enable symmetric-xor RSS for Toeplitz hash function
+
+Jeff Guo (1):
+  ice: enable symmetric-xor RSS for Toeplitz hash function
+
+Qi Zhang (1):
+  ice: refactor RSS configuration
+
+ Documentation/netlink/specs/ethtool.yaml      |   4 +
+ Documentation/networking/ethtool-netlink.rst  |   6 +-
+ Documentation/networking/scaling.rst          |  15 +
+ drivers/net/ethernet/amazon/ena/ena_ethtool.c |  28 +-
+ drivers/net/ethernet/amd/xgbe/xgbe-ethtool.c  |  33 +-
+ .../ethernet/aquantia/atlantic/aq_ethtool.c   |  31 +-
+ .../ethernet/broadcom/bnx2x/bnx2x_ethtool.c   |  25 +-
+ .../net/ethernet/broadcom/bnxt/bnxt_ethtool.c |  28 +-
+ drivers/net/ethernet/broadcom/tg3.c           |  22 +-
+ .../ethernet/cavium/thunder/nicvf_ethtool.c   |  31 +-
+ .../ethernet/chelsio/cxgb4/cxgb4_ethtool.c    |  24 +-
+ .../net/ethernet/cisco/enic/enic_ethtool.c    |  25 +-
+ .../net/ethernet/emulex/benet/be_ethtool.c    |  28 +-
+ .../ethernet/freescale/enetc/enetc_ethtool.c  |  31 +-
+ .../ethernet/fungible/funeth/funeth_ethtool.c |  40 +-
+ .../net/ethernet/hisilicon/hns/hns_ethtool.c  |  17 +-
+ .../ethernet/hisilicon/hns3/hns3_ethtool.c    |  23 +-
+ .../net/ethernet/huawei/hinic/hinic_ethtool.c |  40 +-
+ .../net/ethernet/intel/fm10k/fm10k_ethtool.c  |  26 +-
+ .../net/ethernet/intel/i40e/i40e_ethtool.c    |  38 +-
+ drivers/net/ethernet/intel/iavf/iavf.h        |   5 +-
+ .../net/ethernet/intel/iavf/iavf_adv_rss.c    |   8 +-
+ .../net/ethernet/intel/iavf/iavf_adv_rss.h    |   3 +-
+ .../net/ethernet/intel/iavf/iavf_ethtool.c    |  74 ++-
+ drivers/net/ethernet/intel/iavf/iavf_main.c   |   4 +
+ .../net/ethernet/intel/iavf/iavf_virtchnl.c   |  41 ++
+ drivers/net/ethernet/intel/ice/ice.h          |   2 +
+ .../net/ethernet/intel/ice/ice_adminq_cmd.h   |   8 +-
+ drivers/net/ethernet/intel/ice/ice_common.h   |   1 +
+ drivers/net/ethernet/intel/ice/ice_ethtool.c  | 102 ++--
+ .../net/ethernet/intel/ice/ice_ethtool_fdir.c |  35 +-
+ .../net/ethernet/intel/ice/ice_flex_pipe.c    |  44 +-
+ .../net/ethernet/intel/ice/ice_flex_pipe.h    |   4 +-
+ .../net/ethernet/intel/ice/ice_flex_type.h    |   7 +
+ drivers/net/ethernet/intel/ice/ice_flow.c     | 482 +++++++++++++-----
+ drivers/net/ethernet/intel/ice/ice_flow.h     |  60 ++-
+ .../net/ethernet/intel/ice/ice_hw_autogen.h   |   4 +
+ drivers/net/ethernet/intel/ice/ice_lib.c      | 116 ++---
+ drivers/net/ethernet/intel/ice/ice_main.c     |  58 ++-
+ drivers/net/ethernet/intel/ice/ice_type.h     |   1 +
+ drivers/net/ethernet/intel/ice/ice_virtchnl.c | 105 +++-
+ drivers/net/ethernet/intel/ice/ice_virtchnl.h |   1 +
+ .../intel/ice/ice_virtchnl_allowlist.c        |   1 +
+ .../ethernet/intel/ice/ice_virtchnl_fdir.c    |  35 +-
+ .../net/ethernet/intel/idpf/idpf_ethtool.c    |  40 +-
+ drivers/net/ethernet/intel/igb/igb_ethtool.c  |  27 +-
+ drivers/net/ethernet/intel/igc/igc_ethtool.c  |  27 +-
+ .../net/ethernet/intel/ixgbe/ixgbe_ethtool.c  |  35 +-
+ drivers/net/ethernet/intel/ixgbevf/ethtool.c  |  27 +-
+ drivers/net/ethernet/marvell/mvneta.c         |  25 +-
+ .../net/ethernet/marvell/mvpp2/mvpp2_main.c   |  79 +--
+ .../marvell/octeontx2/nic/otx2_ethtool.c      |  80 ++-
+ .../net/ethernet/mellanox/mlx4/en_ethtool.c   |  40 +-
+ drivers/net/ethernet/mellanox/mlx5/core/en.h  |   6 +-
+ .../ethernet/mellanox/mlx5/core/en_ethtool.c  |  43 +-
+ .../net/ethernet/microchip/lan743x_ethtool.c  |  34 +-
+ .../ethernet/microsoft/mana/mana_ethtool.c    |  33 +-
+ .../ethernet/netronome/nfp/nfp_net_ethtool.c  |  38 +-
+ .../ethernet/pensando/ionic/ionic_ethtool.c   |  26 +-
+ .../net/ethernet/qlogic/qede/qede_ethtool.c   |  32 +-
+ drivers/net/ethernet/sfc/ef100_ethtool.c      |   3 +-
+ drivers/net/ethernet/sfc/ethtool.c            |   3 +-
+ drivers/net/ethernet/sfc/ethtool_common.c     | 126 ++---
+ drivers/net/ethernet/sfc/ethtool_common.h     |  13 +-
+ drivers/net/ethernet/sfc/falcon/ethtool.c     |  26 +-
+ drivers/net/ethernet/sfc/siena/ethtool.c      |   3 +-
+ .../net/ethernet/sfc/siena/ethtool_common.c   | 126 ++---
+ .../net/ethernet/sfc/siena/ethtool_common.h   |  13 +-
+ .../ethernet/stmicro/stmmac/stmmac_ethtool.c  |  31 +-
+ drivers/net/hyperv/netvsc_drv.c               |  32 +-
+ drivers/net/virtio_net.c                      |  29 +-
+ drivers/net/vmxnet3/vmxnet3_ethtool.c         |  22 +-
+ include/linux/avf/virtchnl.h                  |  35 +-
+ include/linux/ethtool.h                       |  27 +-
+ include/uapi/linux/ethtool.h                  |  45 +-
+ include/uapi/linux/ethtool_netlink.h          |   1 +
+ net/ethtool/common.c                          |  12 +-
+ net/ethtool/ioctl.c                           | 218 ++++----
+ net/ethtool/rss.c                             |  55 +-
+ 79 files changed, 1861 insertions(+), 1267 deletions(-)
+
+-- 
+2.34.1
+
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
