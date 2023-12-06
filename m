@@ -1,84 +1,87 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0FB23806ADD
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  6 Dec 2023 10:38:15 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 7AAE0435E0;
-	Wed,  6 Dec 2023 09:38:13 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 7AAE0435E0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1701855493;
-	bh=lwbSE+TMmK0APoIFxj7rjQICPicx8zcYoDvn+K+Pk1Q=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=WovJAvQUlkheJN3AAcHobxYahJCsEo0IZZfa63k4PVRnovDYsaQCr/as6WX7dNxGG
-	 dryjbA0fO4cy1EVT60f/vue8AP6wOJaM1PKFY47qUTp/1tljlDrQMiNZwWcM1KAOzf
-	 qiLIM57dAeFwf++CrPpkGxMbH1DIM+/Umbylpw/uSCrAWkCXREg9J0pHJYeD/Fhlbz
-	 c7v7qCS/10poOFRzgpIrJSlfenuNO8GcqNxkbeVF5H+LbOXGQZBGBxFEl7FE+u06g0
-	 iWboJGxjmpYZhqdvoqPoFxIjfFu8NaWy130CaNeA0esLrCiP9JnpHEoLMNCZUVrQux
-	 xvHzKlAmiAQNQ==
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id B7WqUHVgxf_g; Wed,  6 Dec 2023 09:38:12 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 059DE41A49;
-	Wed,  6 Dec 2023 09:38:12 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 059DE41A49
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 0209E1BF83E
- for <intel-wired-lan@lists.osuosl.org>; Wed,  6 Dec 2023 09:38:06 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 37694806C49
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  6 Dec 2023 11:39:44 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id CC89B408B1
- for <intel-wired-lan@lists.osuosl.org>; Wed,  6 Dec 2023 09:38:06 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org CC89B408B1
+	by smtp4.osuosl.org (Postfix) with ESMTP id 43DD441B5E;
+	Wed,  6 Dec 2023 10:39:42 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 43DD441B5E
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1701859182;
+	bh=cS+VdcYINBnsrtXkF8TL+weqrUwqJtBxy61p1XgzqH0=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=Lz1rytSLmgYp6AvczAVLNh/uhkkTczfAyQLToROqr9vhD+QtWVvbRQLrgdsa6iIQM
+	 45S4u7lwUySa3fff4AedjCfOxlf/dpJOJkL6Cx6w4ZYnAd4gKENObxfsYqonWV1hDh
+	 5WmGobeDIHZbuJgLWljIpCzC3SveMpV5niMJnpzlpc21ZT3CNZ//XKqsKV551Ay/PU
+	 7OSHRaT/OGn/7JNEiZow9qA4k82TlfmA4QgsXJQQKjztI213eXZLAQqeo0BiHsuOFc
+	 YhUzhVnJvAVFx2GxeS+U9CcpLcQip4GoERqSqwQRZEbc8/E7UZ1aQD9kW9tGe63PXj
+	 I0y4ON0oHFalg==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id iYwzNBWYfIAM for <intel-wired-lan@lists.osuosl.org>;
- Wed,  6 Dec 2023 09:38:06 +0000 (UTC)
-Received: from sipsolutions.net (s3.sipsolutions.net
- [IPv6:2a01:4f8:242:246e::2])
- by smtp4.osuosl.org (Postfix) with ESMTPS id C1FA0408A0
- for <intel-wired-lan@lists.osuosl.org>; Wed,  6 Dec 2023 09:38:05 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C1FA0408A0
-Received: by sipsolutions.net with esmtpsa
- (TLS1.3:ECDHE_X25519__RSA_PSS_RSAE_SHA256__AES_256_GCM:256)
- (Exim 4.97) (envelope-from <johannes@sipsolutions.net>)
- id 1rAoLt-0000000HY61-2IUs; Wed, 06 Dec 2023 10:37:57 +0100
-Message-ID: <c1189a1982630f71dd106c3963e0fa71fa6c8a76.camel@sipsolutions.net>
-From: Johannes Berg <johannes@sipsolutions.net>
-To: Przemek Kitszel <przemyslaw.kitszel@intel.com>, netdev@vger.kernel.org
-Date: Wed, 06 Dec 2023 10:37:56 +0100
-In-Reply-To: <3e7ae1f5-77e3-a561-2d6b-377026b1fd26@intel.com>
-References: <20231204200710.40c291e60cea.I2deb5804ef1739a2af307283d320ef7d82456494@changeid>
- <d0fc7d04-e3c9-47c0-487e-666cb2a4e3bc@intel.com>
- <709eff7500f2da223df9905ce49c026a881cb0e0.camel@sipsolutions.net>
- <3e7ae1f5-77e3-a561-2d6b-377026b1fd26@intel.com>
-User-Agent: Evolution 3.50.1 (3.50.1-1.fc39) 
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id VcuThnTd3PAh; Wed,  6 Dec 2023 10:39:41 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp4.osuosl.org (Postfix) with ESMTP id 14B8D41579;
+	Wed,  6 Dec 2023 10:39:41 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 14B8D41579
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 70D751BF354
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  6 Dec 2023 10:39:35 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp2.osuosl.org (Postfix) with ESMTP id 464844028D
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  6 Dec 2023 10:39:35 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 464844028D
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id Z-tE6L6qpDHh for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  6 Dec 2023 10:39:34 +0000 (UTC)
+Received: from mgamail.intel.com (mgamail.intel.com [134.134.136.24])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 1916A400BF
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  6 Dec 2023 10:39:33 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1916A400BF
+X-IronPort-AV: E=McAfee;i="6600,9927,10915"; a="396831058"
+X-IronPort-AV: E=Sophos;i="6.04,254,1695711600"; d="scan'208";a="396831058"
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
+ by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 06 Dec 2023 02:39:32 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10915"; a="771258314"
+X-IronPort-AV: E=Sophos;i="6.04,254,1695711600"; d="scan'208";a="771258314"
+Received: from irvmail002.ir.intel.com ([10.43.11.120])
+ by orsmga002.jf.intel.com with ESMTP; 06 Dec 2023 02:39:31 -0800
+Received: from DevelopmentVM.nql.local (s240.igk.intel.com [10.102.18.202])
+ by irvmail002.ir.intel.com (Postfix) with ESMTP id F3256332C7;
+ Wed,  6 Dec 2023 10:39:23 +0000 (GMT)
+From: Jan Sokolowski <jan.sokolowski@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Wed,  6 Dec 2023 11:43:33 +0100
+Message-Id: <20231206104333.141792-1-jan.sokolowski@intel.com>
+X-Mailer: git-send-email 2.31.1
 MIME-Version: 1.0
-X-malware-bazaar: not-scanned
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt;
- c=relaxed/relaxed; 
- d=sipsolutions.net; s=mail; h=MIME-Version:Content-Transfer-Encoding:
- Content-Type:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Sender
- :Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-To:
- Resent-Cc:Resent-Message-ID; bh=3fntxHKIyKjnSM6vuBVwyvUk6ZAEqyru8xw5RbWoPl0=; 
- t=1701855485; x=1703065085; b=apgR32lTHnLjVxgWB4HtDZLtA8wIIpmm0kwZ5+kzuI8Fh8U
- zZKIxMUaxliLwQYhCbJVIeS815sr2tUBNfUI6fzoGxoJlNPKllys8qoj/j0LJrC4h+3ZP3D+z+/aE
- M5vkJoVq+0CzM/l++SMnEuVX8glDOmuVZt6KrkxP0uP5efdps4wJKZjIaGtu6QEGiRrNOvzYSl/Zt
- GsZ0R0JAwbXGtRx2w1L2E00KHSJCPEHuWBCu9b3NG1Jf3pN/bYvYJtad1wnxqsT/2mm95BbgXNNTb
- 1vrmC3nrxtXe3gd6P1vHu2z5nSck/6APyGIyfaBRhJxvCNnekRILxRyIzYRBKhxQ==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=sipsolutions.net header.i=@sipsolutions.net
- header.a=rsa-sha256 header.s=mail header.b=apgR32lT
-Subject: Re: [Intel-wired-lan] [RFC PATCH] net: ethtool: do runtime PM
- outside RTNL
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1701859174; x=1733395174;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=OSb8jK1aKTmLGdq/yXys0RdhQey8FalM7aYHrKABLdw=;
+ b=DJxZj9rpuq3X5XyxFBed1GMAAAIsuFwUcIGJH9gmq4P7eYJGx29wAe7T
+ o+jHzkLyN9XAJnfrxbPFDVpIYaMwOeaHYcB1NBbqbdeM9aCWgRBmP123A
+ MSaGX/x9V35qbut19Ip/Y6p2E0faYOps5AUpkZM10/QN9TAaYb6+iUmOJ
+ 4HBzgNzEUTwPRZnavCYUCCOWIHUdVrX8KUupzNwTVhfaGaYE1CUxZOg3I
+ CNdpYt2oMxPUOJcc5EbzxjDNE+Kl3NhEdXHmeLW4xCYOgOCXdnx0JyDnH
+ On3v1sp1YTJIDSrm60OdtvpG/gWSMGV0j9zdsJZ4DiHCT1EY9O3ZYWoGp
+ g==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=DJxZj9rp
+Subject: [Intel-wired-lan] [PATCH iwl-next v1] ice: remove rx_len_errors
+ statistic
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,56 +94,86 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Marc MERLIN <marc@merlins.org>,
- Jesse Brandeburg <jesse.brandeburg@intel.com>,
- Aleksandr Loktionov <aleksandr.loktionov@intel.com>,
- intel-wired-lan@lists.osuosl.org, Tony Nguyen <anthony.l.nguyen@intel.com>,
- Heiner Kallweit <hkallweit1@gmail.com>
+Cc: Jan Sokolowski <jan.sokolowski@intel.com>,
+ Mateusz Polchlopek <mateusz.polchlopek@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed, 2023-12-06 at 09:46 +0100, Przemek Kitszel wrote:
-> 
-> That sounds right too; one could argue if your fix is orthogonal to that
-> or not. I would say that your fix makes core net code more robust
-> against drivers from past millennia. :)
-> igc folks are notified, no idea how much time it would take to propose
-> a fix.
+It was found that this statistic is incorrectly
+reported by HW and thus, useless.
 
-Maybe it should be on whoever added runtime pm to ethtool ;-)
+As RX length error statistics are shown to the
+end user when requested, the values reported
+are misleading.
 
-Heiner, the igc driver was already doing this when you added
-pm_runtime_get_sync() ops, was there a discussion at the time, or just
-missed?
+Thus, that value is no longer reported and
+doesn't count anymore when adding all rx errors.
 
-I really don't know any of this ...
+Signed-off-by: Jan Sokolowski <jan.sokolowski@intel.com>
+Reviewed-by: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
+---
+ drivers/net/ethernet/intel/ice/ice_ethtool.c | 1 -
+ drivers/net/ethernet/intel/ice/ice_main.c    | 5 -----
+ drivers/net/ethernet/intel/ice/ice_type.h    | 1 -
+ 3 files changed, 7 deletions(-)
 
-> > Well, according to the checks, the patch really should use
-> > netdev_get_by_name() and netdev_put()? But I don't know how to do that
-> > on short-term stack thing ... maybe it doesn't have to?
-> 
-> Nice to have such checks :)
-> You need some &netdevice_tracker, perhaps one added into struct net
-> or other place that would allow to track it at ethtool level.
+diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool.c b/drivers/net/ethernet/intel/ice/ice_ethtool.c
+index bde9bc74f928..9a62d74f9379 100644
+--- a/drivers/net/ethernet/intel/ice/ice_ethtool.c
++++ b/drivers/net/ethernet/intel/ice/ice_ethtool.c
+@@ -129,7 +129,6 @@ static const struct ice_stats ice_gstrings_pf_stats[] = {
+ 	ICE_PF_STAT("rx_oversize.nic", stats.rx_oversize),
+ 	ICE_PF_STAT("rx_jabber.nic", stats.rx_jabber),
+ 	ICE_PF_STAT("rx_csum_bad.nic", hw_csum_rx_error),
+-	ICE_PF_STAT("rx_length_errors.nic", stats.rx_len_errors),
+ 	ICE_PF_STAT("rx_dropped.nic", stats.eth.rx_discards),
+ 	ICE_PF_STAT("rx_crc_errors.nic", stats.crc_errors),
+ 	ICE_PF_STAT("illegal_bytes.nic", stats.illegal_bytes),
+diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
+index 08691469b489..09d508df3deb 100644
+--- a/drivers/net/ethernet/intel/ice/ice_main.c
++++ b/drivers/net/ethernet/intel/ice/ice_main.c
+@@ -6822,13 +6822,11 @@ void ice_update_vsi_stats(struct ice_vsi *vsi)
+ 		cur_ns->rx_crc_errors = pf->stats.crc_errors;
+ 		cur_ns->rx_errors = pf->stats.crc_errors +
+ 				    pf->stats.illegal_bytes +
+-				    pf->stats.rx_len_errors +
+ 				    pf->stats.rx_undersize +
+ 				    pf->hw_csum_rx_error +
+ 				    pf->stats.rx_jabber +
+ 				    pf->stats.rx_fragments +
+ 				    pf->stats.rx_oversize;
+-		cur_ns->rx_length_errors = pf->stats.rx_len_errors;
+ 		/* record drops from the port level */
+ 		cur_ns->rx_missed_errors = pf->stats.eth.rx_discards;
+ 	}
+@@ -6968,9 +6966,6 @@ void ice_update_pf_stats(struct ice_pf *pf)
+ 			  &prev_ps->mac_remote_faults,
+ 			  &cur_ps->mac_remote_faults);
+ 
+-	ice_stat_update32(hw, GLPRT_RLEC(port), pf->stat_prev_loaded,
+-			  &prev_ps->rx_len_errors, &cur_ps->rx_len_errors);
+-
+ 	ice_stat_update32(hw, GLPRT_RUC(port), pf->stat_prev_loaded,
+ 			  &prev_ps->rx_undersize, &cur_ps->rx_undersize);
+ 
+diff --git a/drivers/net/ethernet/intel/ice/ice_type.h b/drivers/net/ethernet/intel/ice/ice_type.h
+index 1fff865d0661..e1ded29ca59f 100644
+--- a/drivers/net/ethernet/intel/ice/ice_type.h
++++ b/drivers/net/ethernet/intel/ice/ice_type.h
+@@ -1002,7 +1002,6 @@ struct ice_hw_port_stats {
+ 	u64 error_bytes;		/* errbc */
+ 	u64 mac_local_faults;		/* mlfc */
+ 	u64 mac_remote_faults;		/* mrfc */
+-	u64 rx_len_errors;		/* rlec */
+ 	u64 link_xon_rx;		/* lxonrxc */
+ 	u64 link_xoff_rx;		/* lxoffrxc */
+ 	u64 link_xon_tx;		/* lxontxc */
+-- 
+2.31.1
 
-Yeah but that's dynamic? Seems weird to add something to allocations for
-something released in the same function ...
-
-> "short term stack thing" does not relieve us from good coding practices,
-> but perhaps "you just replaced __dev_get_by_name() call by
-> dev_get_by_name()" to fix a bug would ;) - with transition to tracked
-> alloc as a next series to be promised :)
-
-All I want is to know how ;)
-but I guess I can try to find examples.
-
-> anyway, I'm fresh here, and would love to know what others think about
-
-Not me, but me too ;-)
-
-johannes
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
