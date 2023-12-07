@@ -2,89 +2,191 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 71A26808DCD
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  7 Dec 2023 17:49:14 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0D41C808E2B
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  7 Dec 2023 18:04:40 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 048588319F;
-	Thu,  7 Dec 2023 16:49:13 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 048588319F
+	by smtp1.osuosl.org (Postfix) with ESMTP id 7877483CE6;
+	Thu,  7 Dec 2023 17:04:38 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 7877483CE6
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1701967753;
-	bh=8eBjMBhwAjCc0/7oIbRe9AvyGy0+mnfUZiUNXjcI6eI=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1701968678;
+	bh=xh3BTBU+DUjf9VZHQEUu/fnR9N2Bhq8KBvwJFZQljN4=;
+	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=ze2riNyiPU3NbW6cUevfwwZWfDHNGnmJOSfMRaKiMI+/WxQtoss8zT7qsIZA8XdHE
-	 PtKgO3vkcethwAz+qCCTSG1TlRmbSY5V06dJi+iP+G4J5UX0Gl8+3PgTjosgoM3u0K
-	 SQx6D8gb1ZHy2rD1vylxdOYLefaGQXh+xluYalYfF05BFfhHu7340+2JLPif3rZk+o
-	 eVqHNCbwxi/+uMvKHJvyYrK9+AH2dHvtt4YHFMQBbA6sM571V7OgXLIah25gbYByTg
-	 hIvr0b9/RJzzMDWd4PqDupx41n3F5XS8QWSef5yIDr6tWXXpxC8wTmoiK5rByOY8p9
-	 q2JI8Q0fQtGNA==
+	b=LhaDj0bUg8R4ZWUfecTlyHHntK0LbZ3fLPjRT+qmYSv3s7KrSPUHs5Dwr0Sqvt88m
+	 WVSfkErmhX2dFpdSFHR/ymEprJgDK/u/LP5mDoj6ADl88uneIbSZsfHY5cXt8+AGfb
+	 +ch+6otbuRSXsTtFNTGYglxlOvog4VQLpr6TZXi+nJl5q3pr6xVyhauva+Par2gskv
+	 1jnjz+Bdjmk154KlFCeUIZEl9l2lHRQfGWtTdgnZGB4NKZfkBbdto2OoYLeAAaeqjH
+	 fh32zScKO+gjQtBRbnkiZ03026R6fvF0/LRk3y5CyT7o80TNjNfwNcZzRxQr2QPzb4
+	 jpMR/45NeD5FA==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id uHqnDMx3MCH8; Thu,  7 Dec 2023 16:49:11 +0000 (UTC)
+	with ESMTP id gMlMfRNjd_IJ; Thu,  7 Dec 2023 17:04:37 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 46ABE83D26;
-	Thu,  7 Dec 2023 16:49:11 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 46ABE83D26
+	by smtp1.osuosl.org (Postfix) with ESMTP id 1B6F783C5A;
+	Thu,  7 Dec 2023 17:04:37 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1B6F783C5A
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 58B041BF5B3
- for <intel-wired-lan@lists.osuosl.org>; Thu,  7 Dec 2023 16:48:50 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 3FAB61BF380
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  7 Dec 2023 17:04:32 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 31CE342147
- for <intel-wired-lan@lists.osuosl.org>; Thu,  7 Dec 2023 16:48:50 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 31CE342147
+ by smtp1.osuosl.org (Postfix) with ESMTP id 1627983C5A
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  7 Dec 2023 17:04:32 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1627983C5A
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id jttg7i0xx-1W for <intel-wired-lan@lists.osuosl.org>;
- Thu,  7 Dec 2023 16:48:48 +0000 (UTC)
-Received: from mgamail.intel.com (mgamail.intel.com [192.55.52.136])
- by smtp4.osuosl.org (Postfix) with ESMTPS id C116B42138
- for <intel-wired-lan@lists.osuosl.org>; Thu,  7 Dec 2023 16:48:48 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C116B42138
-X-IronPort-AV: E=McAfee;i="6600,9927,10917"; a="373759603"
-X-IronPort-AV: E=Sophos;i="6.04,258,1695711600"; d="scan'208";a="373759603"
-Received: from fmsmga007.fm.intel.com ([10.253.24.52])
- by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 07 Dec 2023 08:48:48 -0800
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id AZP-2jNKxIQe for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  7 Dec 2023 17:04:30 +0000 (UTC)
+X-Greylist: delayed 427 seconds by postgrey-1.37 at util1.osuosl.org;
+ Thu, 07 Dec 2023 17:04:30 UTC
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org AA9E483C1B
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.12])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id AA9E483C1B
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  7 Dec 2023 17:04:30 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10917"; a="1344667"
+X-IronPort-AV: E=Sophos;i="6.04,258,1695711600"; 
+   d="scan'208";a="1344667"
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+ by orvoesa104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 07 Dec 2023 08:56:52 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10917"; a="775477375"
-X-IronPort-AV: E=Sophos;i="6.04,258,1695711600"; d="scan'208";a="775477375"
-Received: from irvmail002.ir.intel.com ([10.43.11.120])
- by fmsmga007.fm.intel.com with ESMTP; 07 Dec 2023 08:48:42 -0800
-Received: from mystra-4.igk.intel.com (mystra-4.igk.intel.com [10.123.220.40])
- by irvmail002.ir.intel.com (Postfix) with ESMTP id 0FEE735421;
- Thu,  7 Dec 2023 16:48:40 +0000 (GMT)
-From: Marcin Szycik <marcin.szycik@linux.intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Thu,  7 Dec 2023 17:49:11 +0100
-Message-ID: <20231207164911.14330-8-marcin.szycik@linux.intel.com>
-X-Mailer: git-send-email 2.41.0
-In-Reply-To: <20231207164911.14330-1-marcin.szycik@linux.intel.com>
-References: <20231207164911.14330-1-marcin.szycik@linux.intel.com>
+X-IronPort-AV: E=McAfee;i="6600,9927,10917"; a="765163904"
+X-IronPort-AV: E=Sophos;i="6.04,258,1695711600"; d="scan'208";a="765163904"
+Received: from orsmsx602.amr.corp.intel.com ([10.22.229.15])
+ by orsmga007.jf.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
+ 07 Dec 2023 08:56:50 -0800
+Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
+ ORSMSX602.amr.corp.intel.com (10.22.229.15) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.35; Thu, 7 Dec 2023 08:56:50 -0800
+Received: from ORSEDG601.ED.cps.intel.com (10.7.248.6) by
+ orsmsx610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.35 via Frontend Transport; Thu, 7 Dec 2023 08:56:50 -0800
+Received: from NAM12-MW2-obe.outbound.protection.outlook.com (104.47.66.40) by
+ edgegateway.intel.com (134.134.137.102) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.35; Thu, 7 Dec 2023 08:56:49 -0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=SEDZg+BCQf5KEK6jwc5dsqgJ3TDgwv5LTu58fIX9ioXMNO2rsqDBaTMhfl/tjKrlt81/BYm4e+WyixJvj48v4NwPhB7Xtydcv7qDNIQjYHPkGobniX+COwh7P8ClTMP5esxvvLLBL/n0S5Om7bu32AAB0540kgL3OhIoyQf2huxZFba57fUmJSdcYIzOxXdFOQgyJdUmuYH7eswft5rYsaoRMmwK6LvQ1keeF+b8+Gd+C6WlJffAVapytZ5KrbuAaFBbKgTpNwzx2A5Sr5cxxyRzy9UdVNvH0lxB9zdImOk8QU47/bOpDnDd+PBTcNhMvQuV/9mvby50rWdqpYvg4Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=ebAKYzsYAKSpw9YlO/gIaCSh3EZ+rGbc8Uk329an47g=;
+ b=I5Dcuadg3cv1N7RZHePaNrnuqY8OciSvals4rWmSYsKhxWFjD9b+5C9JnZX03d/qAArxbFTbeke/P/z/Apsdwz0YRo1b994Ebc5nHhzrMkuk6R4vlngAy9Qw16Oqy2z9aoKuYq5c/U+V0lqHHwVvKbg8rrA3L92Q0K4dwkg7J44LSDdzCrjGSEAwAp56t0tBpAS0uy85wx7vvu4OLmwI/jdOiaDHMtFcQtc0t7LT6kL0tqcN1uj6ZKe2rGYdLIgv88ViywbJLLVV8NFLJ84VeAXGSvPkLGJf/rq8LOkHyK/VV/+SGFYdyemuQoLRko8qizWNp2pDYnHrqz8sKR4oiQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from BL0PR11MB3521.namprd11.prod.outlook.com (2603:10b6:208:7b::32)
+ by MW4PR11MB5910.namprd11.prod.outlook.com (2603:10b6:303:189::5)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7068.25; Thu, 7 Dec
+ 2023 16:56:45 +0000
+Received: from BL0PR11MB3521.namprd11.prod.outlook.com
+ ([fe80::1498:c32d:2d2:975c]) by BL0PR11MB3521.namprd11.prod.outlook.com
+ ([fe80::1498:c32d:2d2:975c%5]) with mapi id 15.20.7068.027; Thu, 7 Dec 2023
+ 16:56:42 +0000
+From: "Romanowski, Rafal" <rafal.romanowski@intel.com>
+To: poros <poros@redhat.com>, "Keller, Jacob E" <jacob.e.keller@intel.com>,
+ Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Thread-Topic: [PATCH iwl-next v4] ice: replace ice_vf_recreate_vsi() with
+ ice_vf_reconfig_vsi()
+Thread-Index: AQHaIjMPBYxM+aFjyEOsMqG8dCFdu7CSm/YAgAt8RKA=
+Date: Thu, 7 Dec 2023 16:56:42 +0000
+Message-ID: <BL0PR11MB3521EF8DEEDF736629552CF68F8BA@BL0PR11MB3521.namprd11.prod.outlook.com>
+References: <20231128194215.3318925-1-jacob.e.keller@intel.com>
+ <b24eebdf-8ef4-4e93-a21c-64af73271829@redhat.com>
+In-Reply-To: <b24eebdf-8ef4-4e93-a21c-64af73271829@redhat.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: BL0PR11MB3521:EE_|MW4PR11MB5910:EE_
+x-ms-office365-filtering-correlation-id: 732ed0d9-82d5-4407-e654-08dbf7457d1b
+x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: mZaUgpPbCfkePNHBbuwrX9ZbIK/DTHE1ZqhAIPA8HxxBkDi2gdrKgWVENbioZB7O9Zkj4sr0QOPzqLgSkiEUvS7VNRQxF2ejsdl0u/k+4gfR2uerg+sM7zVHvXwd5VthRtDjTBmBWAUjw3Rrrjw7CSNzqeXkG8M2bLdCtn63E/eMCYd026LD+udeaAwhWbw0EOETyEFZ2HxcKyZgAeTmICR4uYFeh15J+bfSh3yJbtArmIL1OZJ6sXUGxZrVNavxZEqmvGbWGb8NmpAL5iceCgqvVHrpbau63kjK7dR6pms5QWMIkkow+IRuJjtDalC6uQSU8BdOnKdolTpLf/sF9ih57tn6z31E5AsPJUMwA7Iz11IaptWlh1noSozxPJUBDKuiV9aVSy03+XRPGMrRqRzYo/pdKF0kC4TyVfyY561HBKBHmI4ayOd6yn+zCXLt5+AEsLAlhNCZEbQKcpV4wc4w/543OarmY8z33kFyWT7VumbQwPiMUpaiMVn7gnLtAjk1u8qk7zXTFPk8fL2S6zQgEyf9h+x/pSTGwO8Wdsabf4ATycEI69ve8VoEWHSx2KBeQUoszO2SfM5q9A4ZQVCc3g/LQaUAGJKazqycN1kxrjyzml6d1x88R1q9dgjQRSJANFTDfn/O7In5lASaSg==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BL0PR11MB3521.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230031)(396003)(39860400002)(376002)(366004)(346002)(136003)(230922051799003)(186009)(1800799012)(451199024)(64100799003)(38070700009)(9686003)(316002)(110136005)(26005)(83380400001)(64756008)(66476007)(76116006)(54906003)(66446008)(66556008)(66946007)(478600001)(966005)(6506007)(53546011)(7696005)(71200400001)(5660300002)(82960400001)(122000001)(55016003)(33656002)(2906002)(38100700002)(52536014)(4326008)(86362001)(41300700001)(8936002)(8676002);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?ZWlBczZUQ0llZ0dtVW5ackpzdkJlMk9FSldYcFpCRC9POGh0UFFEWDRQNWcv?=
+ =?utf-8?B?Sit4MzVUL2lldFBwYkF3dU9GU2ZZb2tmWStaMjFmd2NjNmMyUExFTXE0WnJh?=
+ =?utf-8?B?YTFDM3hpUVJrUzFqVmtIbCsraEttcW9na2FlNzkyaHlGT0F1MkNRWjdHQlRV?=
+ =?utf-8?B?UXRrU1Q4M2V6TVk4UDNPM0ZWUUI4dXN6WGZwYkhBUmF6cXJtQkRrMTRLSXN4?=
+ =?utf-8?B?ZEwrVnVzMFZJMndON3FSTldpeTYxWGtCNXpKTjVJb0ZKc0MwWGVKU2lac0ox?=
+ =?utf-8?B?UWVCMVRqVXZjNnluNVZLdU9WMlFGczd3dUhFeG1RUHdMYitFS0lrYytWSEFU?=
+ =?utf-8?B?SUFBMGJQbkZ5azdzQ2JLbklpaGRxTFYzSEs3TGdRQXVRek0wTzNmNitzSkpP?=
+ =?utf-8?B?TVFZTTVRT1BranhCcGpZbCtCOUpBN3ErNjF0WTVtV1I1WWE5YWRPWEE5dHFS?=
+ =?utf-8?B?VmR3em9uWUdrcVRNbkVnVzc2UXZKK1R3OWxicFNLQ29FQmlGR2pTMEd0SS8w?=
+ =?utf-8?B?Mlpna0Jxd1VyZUx6UHYreW5rWmgxbllmaG5KdkpwK1VzOGdDVjdoc2lia1Ez?=
+ =?utf-8?B?bURTNnNZd1Z5RGxvV1hkMGQyUTRNM3pWOFRPR2tERjhOcGhUQ3ZHN2JHOXJt?=
+ =?utf-8?B?cGdLQVdLRThDVWtBbTZHRmVyMDk0MlQ2dGhvbHptNzB3WEs4N2prREt6T2hZ?=
+ =?utf-8?B?NEVnLzVRNmZTdVh4aGFCdjdKaHliUnE5TSt0elN2elV4OHNMUGhyOUVGZm9L?=
+ =?utf-8?B?S3dOVDdPbllwNXE4M1JPVmlRZU1EdmFCYVlYRjlWTGNzYzFudTdaUDdtaVlm?=
+ =?utf-8?B?S05DRU5HUC9wbkJVK21LWE1yVzF2Mm1OK2p5ZU1HZHN2N05SK0srV0JNV2Z0?=
+ =?utf-8?B?cGxpOUxiRHEvb0FvQ0ZPclYzQ21ZdytucFhiU1pJQjRncGRhVmpLaTlEQ2hT?=
+ =?utf-8?B?ZFVEdW5CbU5tWFljeGxrVDFLa3VqVkdzTVRqYnVQNkdHRHA2NTBUUGowaldw?=
+ =?utf-8?B?bGpBNnRvcUVBaERzY09RMFlzekh1Y0k2QTJoMWxxTXZlZGRhUGFheDJkcENE?=
+ =?utf-8?B?N1hhZGVka2x0RlFuWlZRWUVZckZMbk9MQWxXQnJyb0EvakRwQjZ3a1g1bWh6?=
+ =?utf-8?B?OFFUQjgzU2VDb2xld09QUktQa3RaTS83bVowRmhXUkZqUTlJeDdUdnBCY3JK?=
+ =?utf-8?B?OGdudFFiMUJ3c3pCenNaZkk2ZzdFWmtWdU9BdUZJR24yQkFkWnorY3RyM2Rw?=
+ =?utf-8?B?citaZ1ZROHUyYTkvV0FReHdRRnVDT25hWVdidGZGcjFMSGFjcmxRY3VPWXYz?=
+ =?utf-8?B?V0w3TGVjdlRzRlphb1NPSEl3UUJXZWYzeHpqZGZTWDI3dFhscklScVczbHc4?=
+ =?utf-8?B?Niswa093OXBjOE11OFZZNU9aQTZ6cDZwc0ZPaWd5MXJFYzlLVkszU0lyQkVu?=
+ =?utf-8?B?Y2k3V2xKYU1XOXEyb29ETkkvdGF2Nnkwc2xpZ2xEMEdUbnV4cWVQamZLdFdw?=
+ =?utf-8?B?cnNsY3p6aFJNM1E1RFV4ZFl6VWxCelFGYTM2WDVMeDdsVFFuSGx5dUhOTEdV?=
+ =?utf-8?B?amJuV1lmVnJsRHdtVkVoS0o4L0FQUjhISlMyekJ3R2FhVHd2OVM2U3pnbDNM?=
+ =?utf-8?B?UzYwV0pXNnRRQ0EwOE43YU41K0tLNGVPbXhJRytKOFZIRGN1YXRqanlOVUxR?=
+ =?utf-8?B?ZXVZSW95VThMOTZLMElxRVJobURyaFdLb2Q4OWxYSkJRaUFDSXFqWkVWYVRu?=
+ =?utf-8?B?UkRCRXpRTmZia0dWdXdIWnYwYXVXcG03MDZHNENhUnYzQzRqKzg1Z0hYM2xV?=
+ =?utf-8?B?aTdWVG9yY3NDTFRGU2VPcnd6ZU1xTHYyclFoRjhPSS9sL1loNW9XUndEZVJU?=
+ =?utf-8?B?enU1SUMvT3VobzM1V2VzSXZJRHhrWUJYUnA0aXlPTjhyQWsxaGx5cUlHdXd0?=
+ =?utf-8?B?RnVOUWNrN1JmSW5MelVrTjYwN2xpeHZwdmxlUXJzMHlVcDF5bXdiZ0pnNFFw?=
+ =?utf-8?B?Ujg0ZGJkR0lkVkFzbEgwUmJ6WG4yTFg5dXBvUjJEb1NWZ3pIWkZxTzg3ZWcx?=
+ =?utf-8?B?NDhQZVZuVTFxUDlPU3RtdDFuN2EzRHVrK01CWkUvanVSbW14bDRzNVJqNHlB?=
+ =?utf-8?B?RUc2Y09NUVRuanZ2SE5jZ2tTZVdlNDlMTmU2QXN0N2FrdTRZalRDY0w1NzZ3?=
+ =?utf-8?B?TUE9PQ==?=
 MIME-Version: 1.0
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: BL0PR11MB3521.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 732ed0d9-82d5-4407-e654-08dbf7457d1b
+X-MS-Exchange-CrossTenant-originalarrivaltime: 07 Dec 2023 16:56:42.6481 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: 2FLiHLxKy2IaKI5qn4bfrCCihmF4eH2g9WCRJWUNCE/JxEMGhgysYe1mtz/bTBf1w+O+Y/vagl9/CL9wygr0SylVdYroS4jA+yRcbV4wAUQ=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MW4PR11MB5910
+X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1701967728; x=1733503728;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=EeDtvsL1NmnfJCp0xS/fxWL+214LlDaasv4Zj6WVZX0=;
- b=JZSZJpOk7DJG2COOvFBDueBmxLg3REEj0qw3usdpfhADs5ckdlS+Cb8j
- qaEF/GwJtaagvsFePE13zugOWDLQWvkIpqvWk9GiKoL58gWDkxRK3cEb9
- 7PyqJ9Fey3QmSNuu1nCKSH5IC2FzRvQ8+wvD7UDq8XKISG5oryUD7uEk5
- tnCSLEtWVMllAo3fWPLevWwt6BpBeGzDh4sMLD3a4y3ndd7QcCrWR4nlj
- 2zs1h+L/0v7JhwEyAIra4vnMnUpW4PUjBe9tZm8mrkalzqH49fqXqjWUr
- 2IW2ZsR25LY/oLf78mt6K3i3QP7+DohjvR1BcSlO0F4fRLmCgmvpgcWyp
- A==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ t=1701968671; x=1733504671;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=ebAKYzsYAKSpw9YlO/gIaCSh3EZ+rGbc8Uk329an47g=;
+ b=L3Z2qRoPbCb9ykGWKkiTwO2kZBsUwD49mP75EcWFNnZ9FhCdQ6ydf4hj
+ lY5s/RyWZ03+e+QyZnrJZ6k8pPhaUYMCXx5EE976TLe6VuoQeIo/khU6S
+ V9jcOriJcK8eOqKQDc9Xh1Uo+nPfd4RUe8A7m5HRE0zMIe3TQg1rV81IU
+ +6m3F0b+YuoJsFSDacuZhO/fGSU59TnfDuBQTOFbEXqRrSIL9JHdMOghA
+ nirvkg0qm9JPkIrzwlN+abEAgFCPWogkDwDGYgWw2+q0v2H9ZFnNFZl8Q
+ 87RbLvB8RiRVRPSABC/RcE0MRSRqe3PVaqhR+/zN6lI5zMgRJejegq/ZC
+ g==;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=JZSZJpOk
-Subject: [Intel-wired-lan] [PATCH iwl-next v4 7/7] ice: Add support for PFCP
- hardware offload in switchdev
+ header.a=rsa-sha256 header.s=Intel header.b=L3Z2qRoP
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v4] ice: replace
+ ice_vf_recreate_vsi() with ice_vf_reconfig_vsi()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,447 +199,100 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: jiri@resnulli.us, andy@kernel.org, wojciech.drewek@intel.com,
- netdev@vger.kernel.org, idosch@nvidia.com, jesse.brandeburg@intel.com,
- aleksander.lobakin@intel.com, Marcin Szycik <marcin.szycik@linux.intel.com>,
- michal.swiatkowski@linux.intel.com, simon.horman@corigine.com, kuba@kernel.org,
- pabeni@redhat.com, davem@davemloft.net
+Cc: "Kitszel, Przemyslaw" <przemyslaw.kitszel@intel.com>, "Nguyen,
+ Anthony L" <anthony.l.nguyen@intel.com>, "Buchocki,
+ JakubX" <jakubx.buchocki@intel.com>,
+ Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Add support for creating PFCP filters in switchdev mode. Add support
-for parsing PFCP-specific tc options: S flag and SEID.
+> -----Original Message-----
+> From: Petr Oros <poros@redhat.com>
+> Sent: Thursday, November 30, 2023 10:33 AM
+> To: Keller, Jacob E <jacob.e.keller@intel.com>; Intel Wired LAN <intel-wired-
+> lan@lists.osuosl.org>
+> Cc: Kitszel, Przemyslaw <przemyslaw.kitszel@intel.com>; Romanowski, Rafal
+> <rafal.romanowski@intel.com>; Michal Swiatkowski
+> <michal.swiatkowski@linux.intel.com>; Buchocki, JakubX
+> <jakubx.buchocki@intel.com>; Nguyen, Anthony L
+> <anthony.l.nguyen@intel.com>
+> Subject: Re: [PATCH iwl-next v4] ice: replace ice_vf_recreate_vsi() with
+> ice_vf_reconfig_vsi()
+> 
+> 
+> Dne 28. 11. 23 v 20:42 Jacob Keller napsal(a):
+> > The ice_vf_create_vsi() function and its VF ops helper introduced by
+> > commit a4c785e8162e ("ice: convert vf_ops .vsi_rebuild to
+> > .create_vsi") are used during an individual VF reset to re-create the
+> > VSI. This was done in order to ensure that the VSI gets properly reconfigured
+> within the hardware.
+> >
+> > This is somewhat heavy handed as we completely release the VSI memory
+> > and structure, and then create a new VSI. This can also potentially
+> > force a change of the VSI index as we will re-use the first open slot
+> > in the VSI array which may not be the same.
+> >
+> > As part of implementing devlink reload, commit 6624e780a577 ("ice:
+> > split ice_vsi_setup into smaller functions") split VSI setup into
+> > smaller functions, introducing both ice_vsi_cfg() and ice_vsi_decfg()
+> > which can be used to configure or deconfigure an existing software VSI
+> structure.
+> >
+> > Rather than completely removing the VSI and adding a new one using the
+> > .create_vsi() VF operation, simply use ice_vsi_decfg() to remove the
+> > current configuration. Save the VSI type and then call ice_vsi_cfg()
+> > to reconfigure the VSI as the same type that it was before.
+> >
+> > The existing reset logic assumes that all hardware filters will be
+> > removed, so also call ice_fltr_remove_all() before re-configuring the VSI.
+> >
+> > This new operation does not re-create the VSI, so rename it to
+> > ice_vf_reconfig_vsi().
+> >
+> > The new approach can safely share the exact same flow for both SR-IOV
+> > VFs as well as the Scalable IOV VFs being worked on. This uses less
+> > code and is a better abstraction over fully deleting the VSI and adding a new
+> one.
+> >
+> > Fixes: a4c785e8162e ("ice: convert vf_ops .vsi_rebuild to
+> > .create_vsi")
+> > Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
+> > ---
+> > Changes since v3:
+> > * Removal of filters was a side effect of VSI being fully deleted by
+> >    firmware. Since we don't do that now, it was not happening. Fix this by
+> >    adding a call to ice_fltr_remove_all(). Thanks to Jakub Buchocki for
+> >    figuring out this solution.
+> > * Rebase on to current dev-queue.
+> >
+> > v3 was posted at
+> > https://lore.kernel.org/intel-wired-lan/20230712222936.1048751-1-jacob
+> > .e.keller@intel.com/
+> > v2 was posted at
+> > https://lore.kernel.org/intel-wired-lan/20230712204730.326331-1-jacob.
+> > e.keller@intel.com/
+> > v1 was posted at
+> > https://lore.kernel.org/intel-wired-lan/20230504211829.3869868-1-jacob
+> > .e.keller@intel.com/
+> >
+> >
+> >   drivers/net/ethernet/intel/ice/ice_sriov.c    | 24 ++-----------
+> >   drivers/net/ethernet/intel/ice/ice_vf_lib.c   | 35 +++++++++++++------
+> >   drivers/net/ethernet/intel/ice/ice_vf_lib.h   |  1 -
+> >   .../ethernet/intel/ice/ice_vf_lib_private.h   |  1 +
+> >   4 files changed, 28 insertions(+), 33 deletions(-)
+> Issue from previous version is fixed. Thanks
+> 
+> everything looks fine.
+> 
+> Reviewed-by: Petr Oros <poros@redhat.com>
+> 
 
-To create a PFCP filter, a special netdev must be created and passed
-to tc command:
 
-  ip link add pfcp0 type pfcp
-  tc filter add dev eth0 ingress prio 1 flower pfcp_opts \
-    1:12ab/ff:fffffffffffffff0 skip_hw action mirred egress redirect \
-    dev pfcp0
+Tested-by: Rafal Romanowski <rafal.romanowski@intel.com>
 
-Changes in iproute2 [1] are required to be able to use pfcp_opts in tc.
-
-ICE COMMS package is required to create a filter as it contains PFCP
-profiles.
-
-Link: https://lore.kernel.org/netdev/20230614091758.11180-1-marcin.szycik@linux.intel.com [1]
-Reviewed-by: Simon Horman <simon.horman@corigine.com>
-Signed-off-by: Marcin Szycik <marcin.szycik@linux.intel.com>
----
- drivers/net/ethernet/intel/ice/ice_ddp.c      |  9 ++
- .../net/ethernet/intel/ice/ice_flex_type.h    |  4 +-
- .../ethernet/intel/ice/ice_protocol_type.h    | 12 +++
- drivers/net/ethernet/intel/ice/ice_switch.c   | 85 +++++++++++++++++++
- drivers/net/ethernet/intel/ice/ice_switch.h   |  2 +
- drivers/net/ethernet/intel/ice/ice_tc_lib.c   | 58 +++++++++++--
- drivers/net/ethernet/intel/ice/ice_tc_lib.h   |  6 ++
- 7 files changed, 169 insertions(+), 7 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/ice/ice_ddp.c b/drivers/net/ethernet/intel/ice/ice_ddp.c
-index 8b7504a9df31..57278ec71aac 100644
---- a/drivers/net/ethernet/intel/ice/ice_ddp.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ddp.c
-@@ -721,6 +721,12 @@ static bool ice_is_gtp_c_profile(u16 prof_idx)
- 	}
- }
- 
-+static bool ice_is_pfcp_profile(u16 prof_idx)
-+{
-+	return prof_idx >= ICE_PROFID_IPV4_PFCP_NODE &&
-+	       prof_idx <= ICE_PROFID_IPV6_PFCP_SESSION;
-+}
-+
- /**
-  * ice_get_sw_prof_type - determine switch profile type
-  * @hw: pointer to the HW structure
-@@ -738,6 +744,9 @@ static enum ice_prof_type ice_get_sw_prof_type(struct ice_hw *hw,
- 	if (ice_is_gtp_u_profile(prof_idx))
- 		return ICE_PROF_TUN_GTPU;
- 
-+	if (ice_is_pfcp_profile(prof_idx))
-+		return ICE_PROF_TUN_PFCP;
-+
- 	for (i = 0; i < hw->blk[ICE_BLK_SW].es.fvw; i++) {
- 		/* UDP tunnel will have UDP_OF protocol ID and VNI offset */
- 		if (fv->ew[i].prot_id == (u8)ICE_PROT_UDP_OF &&
-diff --git a/drivers/net/ethernet/intel/ice/ice_flex_type.h b/drivers/net/ethernet/intel/ice/ice_flex_type.h
-index 4f42e14ed3ae..2dd8909dce2e 100644
---- a/drivers/net/ethernet/intel/ice/ice_flex_type.h
-+++ b/drivers/net/ethernet/intel/ice/ice_flex_type.h
-@@ -93,6 +93,7 @@ enum ice_tunnel_type {
- 	TNL_GRETAP,
- 	TNL_GTPC,
- 	TNL_GTPU,
-+	TNL_PFCP,
- 	__TNL_TYPE_CNT,
- 	TNL_LAST = 0xFF,
- 	TNL_ALL = 0xFF,
-@@ -351,7 +352,8 @@ enum ice_prof_type {
- 	ICE_PROF_TUN_GRE = 0x4,
- 	ICE_PROF_TUN_GTPU = 0x8,
- 	ICE_PROF_TUN_GTPC = 0x10,
--	ICE_PROF_TUN_ALL = 0x1E,
-+	ICE_PROF_TUN_PFCP = 0x20,
-+	ICE_PROF_TUN_ALL = 0x3E,
- 	ICE_PROF_ALL = 0xFF,
- };
- 
-diff --git a/drivers/net/ethernet/intel/ice/ice_protocol_type.h b/drivers/net/ethernet/intel/ice/ice_protocol_type.h
-index f6f27361c3cf..755a9c55267c 100644
---- a/drivers/net/ethernet/intel/ice/ice_protocol_type.h
-+++ b/drivers/net/ethernet/intel/ice/ice_protocol_type.h
-@@ -43,6 +43,7 @@ enum ice_protocol_type {
- 	ICE_NVGRE,
- 	ICE_GTP,
- 	ICE_GTP_NO_PAY,
-+	ICE_PFCP,
- 	ICE_PPPOE,
- 	ICE_L2TPV3,
- 	ICE_VLAN_EX,
-@@ -61,6 +62,7 @@ enum ice_sw_tunnel_type {
- 	ICE_SW_TUN_NVGRE,
- 	ICE_SW_TUN_GTPU,
- 	ICE_SW_TUN_GTPC,
-+	ICE_SW_TUN_PFCP,
- 	ICE_ALL_TUNNELS /* All tunnel types including NVGRE */
- };
- 
-@@ -202,6 +204,15 @@ struct ice_udp_gtp_hdr {
- 	u8 rsvrd;
- };
- 
-+struct ice_pfcp_hdr {
-+	u8 flags;
-+	u8 msg_type;
-+	__be16 length;
-+	__be64 seid;
-+	__be32 seq;
-+	u8 spare;
-+} __packed __aligned(__alignof__(u16));
-+
- struct ice_pppoe_hdr {
- 	u8 rsrvd_ver_type;
- 	u8 rsrvd_code;
-@@ -418,6 +429,7 @@ union ice_prot_hdr {
- 	struct ice_udp_tnl_hdr tnl_hdr;
- 	struct ice_nvgre_hdr nvgre_hdr;
- 	struct ice_udp_gtp_hdr gtp_hdr;
-+	struct ice_pfcp_hdr pfcp_hdr;
- 	struct ice_pppoe_hdr pppoe_hdr;
- 	struct ice_l2tpv3_sess_hdr l2tpv3_sess_hdr;
- 	struct ice_hw_metadata metadata;
-diff --git a/drivers/net/ethernet/intel/ice/ice_switch.c b/drivers/net/ethernet/intel/ice/ice_switch.c
-index ee19f3aa3d19..a83462d77ebd 100644
---- a/drivers/net/ethernet/intel/ice/ice_switch.c
-+++ b/drivers/net/ethernet/intel/ice/ice_switch.c
-@@ -42,6 +42,7 @@ enum {
- 	ICE_PKT_KMALLOC		= BIT(9),
- 	ICE_PKT_PPPOE		= BIT(10),
- 	ICE_PKT_L2TPV3		= BIT(11),
-+	ICE_PKT_PFCP		= BIT(12),
- };
- 
- struct ice_dummy_pkt_offsets {
-@@ -1110,6 +1111,77 @@ ICE_DECLARE_PKT_TEMPLATE(ipv6_gtp) = {
- 	0x00, 0x00,
- };
- 
-+ICE_DECLARE_PKT_OFFSETS(pfcp_session_ipv4) = {
-+	{ ICE_MAC_OFOS,		0 },
-+	{ ICE_ETYPE_OL,		12 },
-+	{ ICE_IPV4_OFOS,	14 },
-+	{ ICE_UDP_ILOS,		34 },
-+	{ ICE_PFCP,		42 },
-+	{ ICE_PROTOCOL_LAST,	0 },
-+};
-+
-+ICE_DECLARE_PKT_TEMPLATE(pfcp_session_ipv4) = {
-+	0x00, 0x00, 0x00, 0x00, /* ICE_MAC_OFOS 0 */
-+	0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00,
-+
-+	0x08, 0x00,		/* ICE_ETYPE_OL 12 */
-+
-+	0x45, 0x00, 0x00, 0x2c, /* ICE_IPV4_OFOS 14 */
-+	0x00, 0x01, 0x00, 0x00,
-+	0x00, 0x11, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00,
-+
-+	0x00, 0x00, 0x22, 0x65, /* ICE_UDP_ILOS 34 */
-+	0x00, 0x18, 0x00, 0x00,
-+
-+	0x21, 0x01, 0x00, 0x0c, /* ICE_PFCP 42 */
-+	0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00,
-+
-+	0x00, 0x00,		/* 2 bytes for 4 byte alignment */
-+};
-+
-+ICE_DECLARE_PKT_OFFSETS(pfcp_session_ipv6) = {
-+	{ ICE_MAC_OFOS,		0 },
-+	{ ICE_ETYPE_OL,		12 },
-+	{ ICE_IPV6_OFOS,	14 },
-+	{ ICE_UDP_ILOS,		54 },
-+	{ ICE_PFCP,		62 },
-+	{ ICE_PROTOCOL_LAST,	0 },
-+};
-+
-+ICE_DECLARE_PKT_TEMPLATE(pfcp_session_ipv6) = {
-+	0x00, 0x00, 0x00, 0x00, /* ICE_MAC_OFOS 0 */
-+	0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00,
-+
-+	0x86, 0xdd,		/* ICE_ETYPE_OL 12 */
-+
-+	0x60, 0x00, 0x00, 0x00, /* ICE_IPV6_OFOS 14 */
-+	0x00, 0x10, 0x11, 0x00, /* Next header UDP */
-+	0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00,
-+
-+	0x00, 0x00, 0x22, 0x65, /* ICE_UDP_ILOS 54 */
-+	0x00, 0x18, 0x00, 0x00,
-+
-+	0x21, 0x01, 0x00, 0x0c, /* ICE_PFCP 62 */
-+	0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00,
-+
-+	0x00, 0x00,		/* 2 bytes for 4 byte alignment */
-+};
-+
- ICE_DECLARE_PKT_OFFSETS(pppoe_ipv4_tcp) = {
- 	{ ICE_MAC_OFOS,		0 },
- 	{ ICE_ETYPE_OL,		12 },
-@@ -1343,6 +1415,8 @@ static const struct ice_dummy_pkt_profile ice_dummy_pkt_profiles[] = {
- 	ICE_PKT_PROFILE(ipv4_gtpu_ipv4_tcp, ICE_PKT_TUN_GTPU),
- 	ICE_PKT_PROFILE(ipv6_gtp, ICE_PKT_TUN_GTPC | ICE_PKT_OUTER_IPV6),
- 	ICE_PKT_PROFILE(ipv4_gtpu_ipv4, ICE_PKT_TUN_GTPC),
-+	ICE_PKT_PROFILE(pfcp_session_ipv6, ICE_PKT_PFCP | ICE_PKT_OUTER_IPV6),
-+	ICE_PKT_PROFILE(pfcp_session_ipv4, ICE_PKT_PFCP),
- 	ICE_PKT_PROFILE(pppoe_ipv6_udp, ICE_PKT_PPPOE | ICE_PKT_OUTER_IPV6 |
- 					ICE_PKT_INNER_UDP),
- 	ICE_PKT_PROFILE(pppoe_ipv6_tcp, ICE_PKT_PPPOE | ICE_PKT_OUTER_IPV6),
-@@ -4532,6 +4606,7 @@ static const struct ice_prot_ext_tbl_entry ice_prot_ext[ICE_PROTOCOL_LAST] = {
- 	ICE_PROTOCOL_ENTRY(ICE_NVGRE, 0, 2, 4, 6),
- 	ICE_PROTOCOL_ENTRY(ICE_GTP, 8, 10, 12, 14, 16, 18, 20, 22),
- 	ICE_PROTOCOL_ENTRY(ICE_GTP_NO_PAY, 8, 10, 12, 14),
-+	ICE_PROTOCOL_ENTRY(ICE_PFCP, 8, 10, 12, 14, 16, 18, 20, 22),
- 	ICE_PROTOCOL_ENTRY(ICE_PPPOE, 0, 2, 4, 6),
- 	ICE_PROTOCOL_ENTRY(ICE_L2TPV3, 0, 2, 4, 6, 8, 10),
- 	ICE_PROTOCOL_ENTRY(ICE_VLAN_EX, 2, 0),
-@@ -4565,6 +4640,7 @@ static struct ice_protocol_entry ice_prot_id_tbl[ICE_PROTOCOL_LAST] = {
- 	{ ICE_NVGRE,		ICE_GRE_OF_HW },
- 	{ ICE_GTP,		ICE_UDP_OF_HW },
- 	{ ICE_GTP_NO_PAY,	ICE_UDP_ILOS_HW },
-+	{ ICE_PFCP,		ICE_UDP_ILOS_HW },
- 	{ ICE_PPPOE,		ICE_PPPOE_HW },
- 	{ ICE_L2TPV3,		ICE_L2TPV3_HW },
- 	{ ICE_VLAN_EX,          ICE_VLAN_OF_HW },
-@@ -5272,6 +5348,9 @@ ice_get_compat_fv_bitmap(struct ice_hw *hw, struct ice_adv_rule_info *rinfo,
- 	case ICE_SW_TUN_GTPC:
- 		prof_type = ICE_PROF_TUN_GTPC;
- 		break;
-+	case ICE_SW_TUN_PFCP:
-+		prof_type = ICE_PROF_TUN_PFCP;
-+		break;
- 	case ICE_SW_TUN_AND_NON_TUN:
- 	default:
- 		prof_type = ICE_PROF_ALL;
-@@ -5554,6 +5633,9 @@ ice_find_dummy_packet(struct ice_adv_lkup_elem *lkups, u16 lkups_cnt,
- 	case ICE_SW_TUN_VXLAN:
- 		match |= ICE_PKT_TUN_UDP;
- 		break;
-+	case ICE_SW_TUN_PFCP:
-+		match |= ICE_PKT_PFCP;
-+		break;
- 	default:
- 		break;
- 	}
-@@ -5694,6 +5776,9 @@ ice_fill_adv_dummy_packet(struct ice_adv_lkup_elem *lkups, u16 lkups_cnt,
- 		case ICE_GTP:
- 			len = sizeof(struct ice_udp_gtp_hdr);
- 			break;
-+		case ICE_PFCP:
-+			len = sizeof(struct ice_pfcp_hdr);
-+			break;
- 		case ICE_PPPOE:
- 			len = sizeof(struct ice_pppoe_hdr);
- 			break;
-diff --git a/drivers/net/ethernet/intel/ice/ice_switch.h b/drivers/net/ethernet/intel/ice/ice_switch.h
-index db7e501b7e0a..30091a80e7fa 100644
---- a/drivers/net/ethernet/intel/ice/ice_switch.h
-+++ b/drivers/net/ethernet/intel/ice/ice_switch.h
-@@ -21,6 +21,8 @@
- #define ICE_PROFID_IPV6_GTPC_NO_TEID			45
- #define ICE_PROFID_IPV6_GTPU_TEID			46
- #define ICE_PROFID_IPV6_GTPU_IPV6_TCP_INNER		70
-+#define ICE_PROFID_IPV4_PFCP_NODE			79
-+#define ICE_PROFID_IPV6_PFCP_SESSION			82
- 
- #define ICE_SW_RULE_VSI_LIST_SIZE(s, n)		struct_size((s), vsi, (n))
- #define ICE_SW_RULE_RX_TX_HDR_SIZE(s, l)	struct_size((s), hdr_data, (l))
-diff --git a/drivers/net/ethernet/intel/ice/ice_tc_lib.c b/drivers/net/ethernet/intel/ice/ice_tc_lib.c
-index e9acab2ede10..2e9fffa77538 100644
---- a/drivers/net/ethernet/intel/ice/ice_tc_lib.c
-+++ b/drivers/net/ethernet/intel/ice/ice_tc_lib.c
-@@ -38,6 +38,9 @@ ice_tc_count_lkups(u32 flags, struct ice_tc_flower_lyr_2_4_hdrs *headers,
- 	if (flags & ICE_TC_FLWR_FIELD_GTP_OPTS)
- 		lkups_cnt++;
- 
-+	if (flags & ICE_TC_FLWR_FIELD_PFCP_OPTS)
-+		lkups_cnt++;
-+
- 	if (flags & (ICE_TC_FLWR_FIELD_ENC_SRC_IPV4 |
- 		     ICE_TC_FLWR_FIELD_ENC_DEST_IPV4 |
- 		     ICE_TC_FLWR_FIELD_ENC_SRC_IPV6 |
-@@ -138,6 +141,8 @@ ice_proto_type_from_tunnel(enum ice_tunnel_type type)
- 		return ICE_GTP;
- 	case TNL_GTPC:
- 		return ICE_GTP_NO_PAY;
-+	case TNL_PFCP:
-+		return ICE_PFCP;
- 	default:
- 		return 0;
- 	}
-@@ -157,6 +162,8 @@ ice_sw_type_from_tunnel(enum ice_tunnel_type type)
- 		return ICE_SW_TUN_GTPU;
- 	case TNL_GTPC:
- 		return ICE_SW_TUN_GTPC;
-+	case TNL_PFCP:
-+		return ICE_SW_TUN_PFCP;
- 	default:
- 		return ICE_NON_TUN;
- 	}
-@@ -236,6 +243,22 @@ ice_tc_fill_tunnel_outer(u32 flags, struct ice_tc_flower_fltr *fltr,
- 		i++;
- 	}
- 
-+	if (flags & ICE_TC_FLWR_FIELD_PFCP_OPTS) {
-+		struct ice_pfcp_hdr *hdr_h, *hdr_m;
-+
-+		hdr_h = &list[i].h_u.pfcp_hdr;
-+		hdr_m = &list[i].m_u.pfcp_hdr;
-+		list[i].type = ICE_PFCP;
-+
-+		hdr_h->flags = fltr->pfcp_meta_keys.type;
-+		hdr_m->flags = fltr->pfcp_meta_masks.type & 0x01;
-+
-+		hdr_h->seid = fltr->pfcp_meta_keys.seid;
-+		hdr_m->seid = fltr->pfcp_meta_masks.seid;
-+
-+		i++;
-+	}
-+
- 	if (flags & (ICE_TC_FLWR_FIELD_ENC_SRC_IPV4 |
- 		     ICE_TC_FLWR_FIELD_ENC_DEST_IPV4)) {
- 		list[i].type = ice_proto_type_from_ipv4(false);
-@@ -366,8 +389,11 @@ ice_tc_fill_rules(struct ice_hw *hw, u32 flags,
- 	if (tc_fltr->tunnel_type != TNL_LAST) {
- 		i = ice_tc_fill_tunnel_outer(flags, tc_fltr, list, i);
- 
--		headers = &tc_fltr->inner_headers;
--		inner = true;
-+		/* PFCP is considered non-tunneled - don't swap headers. */
-+		if (tc_fltr->tunnel_type != TNL_PFCP) {
-+			headers = &tc_fltr->inner_headers;
-+			inner = true;
-+		}
- 	}
- 
- 	if (flags & ICE_TC_FLWR_FIELD_ETH_TYPE_ID) {
-@@ -621,6 +647,8 @@ static int ice_tc_tun_get_type(struct net_device *tunnel_dev)
- 	 */
- 	if (netif_is_gtp(tunnel_dev))
- 		return TNL_GTPU;
-+	if (netif_is_pfcp(tunnel_dev))
-+		return TNL_PFCP;
- 	return TNL_LAST;
- }
- 
-@@ -1374,6 +1402,20 @@ ice_parse_tunnel_attr(struct net_device *dev, struct flow_rule *rule,
- 		fltr->flags |= ICE_TC_FLWR_FIELD_GTP_OPTS;
- 	}
- 
-+	if (flow_rule_match_key(rule, FLOW_DISSECTOR_KEY_ENC_OPTS) &&
-+	    fltr->tunnel_type == TNL_PFCP) {
-+		struct flow_match_enc_opts match;
-+
-+		flow_rule_match_enc_opts(rule, &match);
-+
-+		memcpy(&fltr->pfcp_meta_keys, match.key->data,
-+		       sizeof(struct pfcp_metadata));
-+		memcpy(&fltr->pfcp_meta_masks, match.mask->data,
-+		       sizeof(struct pfcp_metadata));
-+
-+		fltr->flags |= ICE_TC_FLWR_FIELD_PFCP_OPTS;
-+	}
-+
- 	return 0;
- }
- 
-@@ -1432,10 +1474,14 @@ ice_parse_cls_flower(struct net_device *filter_dev, struct ice_vsi *vsi,
- 			return err;
- 		}
- 
--		/* header pointers should point to the inner headers, outer
--		 * header were already set by ice_parse_tunnel_attr
--		 */
--		headers = &fltr->inner_headers;
-+		/* PFCP is considered non-tunneled - don't swap headers. */
-+		if (fltr->tunnel_type != TNL_PFCP) {
-+			/* Header pointers should point to the inner headers,
-+			 * outer header were already set by
-+			 * ice_parse_tunnel_attr().
-+			 */
-+			headers = &fltr->inner_headers;
-+		}
- 	} else if (dissector->used_keys &
- 		  (BIT_ULL(FLOW_DISSECTOR_KEY_ENC_IPV4_ADDRS) |
- 		   BIT_ULL(FLOW_DISSECTOR_KEY_ENC_IPV6_ADDRS) |
-diff --git a/drivers/net/ethernet/intel/ice/ice_tc_lib.h b/drivers/net/ethernet/intel/ice/ice_tc_lib.h
-index 5d188ad7517a..d84f153517ec 100644
---- a/drivers/net/ethernet/intel/ice/ice_tc_lib.h
-+++ b/drivers/net/ethernet/intel/ice/ice_tc_lib.h
-@@ -4,6 +4,9 @@
- #ifndef _ICE_TC_LIB_H_
- #define _ICE_TC_LIB_H_
- 
-+#include <linux/bits.h>
-+#include <net/pfcp.h>
-+
- #define ICE_TC_FLWR_FIELD_DST_MAC		BIT(0)
- #define ICE_TC_FLWR_FIELD_SRC_MAC		BIT(1)
- #define ICE_TC_FLWR_FIELD_VLAN			BIT(2)
-@@ -34,6 +37,7 @@
- #define ICE_TC_FLWR_FIELD_VLAN_PRIO		BIT(27)
- #define ICE_TC_FLWR_FIELD_CVLAN_PRIO		BIT(28)
- #define ICE_TC_FLWR_FIELD_VLAN_TPID		BIT(29)
-+#define ICE_TC_FLWR_FIELD_PFCP_OPTS		BIT(30)
- 
- #define ICE_TC_FLOWER_MASK_32   0xFFFFFFFF
- 
-@@ -161,6 +165,8 @@ struct ice_tc_flower_fltr {
- 	__be32 tenant_id;
- 	struct gtp_pdu_session_info gtp_pdu_info_keys;
- 	struct gtp_pdu_session_info gtp_pdu_info_masks;
-+	struct pfcp_metadata pfcp_meta_keys;
-+	struct pfcp_metadata pfcp_meta_masks;
- 	u32 flags;
- 	u8 tunnel_type;
- 	struct ice_tc_flower_action	action;
--- 
-2.41.0
 
 _______________________________________________
 Intel-wired-lan mailing list
