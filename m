@@ -1,88 +1,91 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id E309780884D
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  7 Dec 2023 13:49:06 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id D4C6C808854
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  7 Dec 2023 13:49:29 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 1CE5E42136;
-	Thu,  7 Dec 2023 12:49:05 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1CE5E42136
+	by smtp4.osuosl.org (Postfix) with ESMTP id 1047B41F9F;
+	Thu,  7 Dec 2023 12:49:28 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1047B41F9F
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1701953345;
-	bh=1uwgpAloTQNCKl9n6mEd0H6f9VcfLh9ps2wHGDxtwHw=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=lFjYUVa+gdUppwGx1NNMnOt147DTDVAeF+Eu+a7b1xomV93tjdhN8HkIHAqmQSAGO
-	 a8ovmhyCJdQrQAB/n0Yms6fK9wLky15pGL527wjeK7unvaae9BgaTPy4X9oxZU9alN
-	 lvR5xlsrF4+YCrjY4cmL0ruyUqrwRkoLNRaSc35ocTVv76rSpYE3yXJNfvTNthAQ9/
-	 +5EN1KQNnhBL7oIH3Bs3zQM/fhmsggbjwWzs969qKPcJTQkNDSfF+hs/9HYhZJaUdw
-	 FBNe9f2/3qAHrSJ5OADkA6JF9l7Qk+tTlnbgABhinpC1hQCJ3rAq2JZ6V8jP5qPU1b
-	 NMhYGiFb8Sx6A==
+	s=default; t=1701953368;
+	bh=13ehiWPvxuuqkt4gtPuROB0X4Ee1PUcwiGNs9X52V5Y=;
+	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=cn99v1IZRF8KSR0DiQ8mLckHOkoDzaXS9uGQzsik7dTH23rJtfSmYuuWNiJHf0idd
+	 lJ3ZzeIL5zNSAOTOGQMrKOiT12dG7klgyGIGXnCV56l5h4Y/yyYCGNuylcRshHwbVn
+	 cNKJZ+WuVVj2ZGmsrpi3RB4smbRvO8pmKoembmQ2qz6Xyese7//wp4X4wHGX1M3GhM
+	 r9EBejPMM0ITE0BHz5eoKsSm5CRYGnhSKu36qS7gZq7KKc1TYVvcET+0FjMC47yLUn
+	 LaHreWdORUEGbRurY7HgmrGXj02/t4Y5SX6cZUj8hdqbRM3oUMVfTOLqEi5JVRZs7z
+	 5DlHHl6dG/lzQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id E80yCuVK1Iqk; Thu,  7 Dec 2023 12:49:04 +0000 (UTC)
+	with ESMTP id oNoGEnoqAFRL; Thu,  7 Dec 2023 12:49:27 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id E2A48408C8;
-	Thu,  7 Dec 2023 12:49:03 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E2A48408C8
+	by smtp4.osuosl.org (Postfix) with ESMTP id BC66F41E76;
+	Thu,  7 Dec 2023 12:49:26 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org BC66F41E76
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 3792E1BF38D
- for <intel-wired-lan@lists.osuosl.org>; Thu,  7 Dec 2023 12:48:59 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 51F041BF38D
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  7 Dec 2023 12:49:17 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 1B35883B60
- for <intel-wired-lan@lists.osuosl.org>; Thu,  7 Dec 2023 12:48:59 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1B35883B60
+ by smtp2.osuosl.org (Postfix) with ESMTP id 29B9843742
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  7 Dec 2023 12:49:17 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 29B9843742
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id u1CuPqkdSUBp for <intel-wired-lan@lists.osuosl.org>;
- Thu,  7 Dec 2023 12:48:57 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id Fs_BNLIrTvFV for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  7 Dec 2023 12:49:16 +0000 (UTC)
 Received: from mgamail.intel.com (mgamail.intel.com [134.134.136.24])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 4C6C283B4F
- for <intel-wired-lan@lists.osuosl.org>; Thu,  7 Dec 2023 12:48:56 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4C6C283B4F
-X-IronPort-AV: E=McAfee;i="6600,9927,10916"; a="397015132"
-X-IronPort-AV: E=Sophos;i="6.04,256,1695711600"; d="scan'208";a="397015132"
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 08C774032A
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  7 Dec 2023 12:49:15 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 08C774032A
+X-IronPort-AV: E=McAfee;i="6600,9927,10916"; a="397015169"
+X-IronPort-AV: E=Sophos;i="6.04,256,1695711600"; d="scan'208";a="397015169"
 Received: from fmsmga008.fm.intel.com ([10.253.24.58])
  by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 07 Dec 2023 04:48:56 -0800
+ 07 Dec 2023 04:49:15 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10916"; a="837704127"
-X-IronPort-AV: E=Sophos;i="6.04,256,1695711600"; d="scan'208";a="837704127"
+X-IronPort-AV: E=McAfee;i="6600,9927,10916"; a="837704204"
+X-IronPort-AV: E=Sophos;i="6.04,256,1695711600"; d="scan'208";a="837704204"
 Received: from irvmail002.ir.intel.com ([10.43.11.120])
- by fmsmga008.fm.intel.com with ESMTP; 07 Dec 2023 04:48:54 -0800
+ by fmsmga008.fm.intel.com with ESMTP; 07 Dec 2023 04:49:12 -0800
 Received: from lplachno-mobl.ger.corp.intel.com
  (lplachno-mobl.ger.corp.intel.com [10.249.158.92])
- by irvmail002.ir.intel.com (Postfix) with ESMTP id 211C233EBF;
- Thu,  7 Dec 2023 12:48:53 +0000 (GMT)
+ by irvmail002.ir.intel.com (Postfix) with ESMTP id 4DD8E33EBF;
+ Thu,  7 Dec 2023 12:49:11 +0000 (GMT)
 From: Lukasz Plachno <lukasz.plachno@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Thu,  7 Dec 2023 13:48:37 +0100
-Message-Id: <20231207124838.29915-1-lukasz.plachno@intel.com>
+Date: Thu,  7 Dec 2023 13:48:39 +0100
+Message-Id: <20231207124838.29915-2-lukasz.plachno@intel.com>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20231207124838.29915-1-lukasz.plachno@intel.com>
+References: <20231207124838.29915-1-lukasz.plachno@intel.com>
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1701953337; x=1733489337;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=PypshdJBiWJ8UuGO1KeStpKR9p6uxObiG6BXtzxh8Xw=;
- b=cD4QSFppuji+hIsyuEWlUUvdILtceYPfysK25DlmiBfGhTdwsDVt1GpY
- 25Resg2fp8UDUTt9g+jO/KnUmRbH7SGzFAOGUBJ3TpQ2ec0bGCFxj5+NY
- 0+hGAuIH56lzGWQvHgf5qsWNnUCqGysAeehzLdHt6WOCq6RRQ8CVB5N9c
- Jxu4XyLOiX2I+HivDyBZz7jnO/5Bo5I2/6A+3osmAzmFg1aptH5PZUuic
- /47Jkjv1WnyTtMPjMzyQAKgIFGzT1fTmA3Uj1kuRbDEWg55GYrl5Go/uv
- U+uN+kmFJcW9rpzdH41Zx5UaqnkLGXbBvY6B/sI0K7yVeDScm6hH9vOah
+ t=1701953356; x=1733489356;
+ h=from:to:cc:subject:date:message-id:in-reply-to:
+ references:mime-version:content-transfer-encoding;
+ bh=OZ5n0YQNgYisJAyGNQGsrKgqrrk1uGfJnL/orTtqmtU=;
+ b=ekYwMnkYEhnbiN3mmukaUom/TufNLIL+bEqmj2aV+zgdCvLoe47a2/JV
+ u2CaJ5DyfRC3EP8gDYV0s4lPsA5ZPbYK9wZT6fDzGvOIxBQqjLvhw5MKC
+ i5U30xZdKF9AmIwuA2u/TwwOzthjyqYoi4v/qzZGKDSZF0uSLi3OEis7z
+ rhB60kSLojTHxzMczhSMyc7cr/nDO7kZKb+CPttCv8coNTUVDHrjQVI2g
+ j1jVU0VWdcif7/PZLXJdh9wPGF3+aNZHNsfLDQ1Qp04AZxKcfkON8RSwG
+ NDkbPtOZOh6kgmUKl8GsLsPvZzkX04jgpsNAXrML6VLePpc7VhAT9oZpl
  w==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=cD4QSFpp
-Subject: [Intel-wired-lan] [PATCH iwl-next v2 0/2] ice: Support flow
- director ether type filters
+ header.a=rsa-sha256 header.s=Intel header.b=ekYwMnkY
+Subject: [Intel-wired-lan] [PATCH iwl-next v2 1/2] ice: Remove unnecessary
+ argument from ice_fdir_comp_rules()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,31 +98,138 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, Lukasz Plachno <lukasz.plachno@intel.com>
+Cc: netdev@vger.kernel.org, Lukasz Plachno <lukasz.plachno@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Ethtool allows creating rules with type=ether, add support for such
-filters in ice driver.
-Patch 1 allows extending ice_fdir_comp_rules() with handling additional
-type of filters.
+Passing v6 argument is unnecessary as flow_type is still
+analyzed inside the function.
 
-v2: fixed compilation warning by moving default: case between commits
+Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+Signed-off-by: Lukasz Plachno <lukasz.plachno@intel.com>
+---
+ drivers/net/ethernet/intel/ice/ice_fdir.c | 85 +++++++++++------------
+ 1 file changed, 39 insertions(+), 46 deletions(-)
 
-Jakub Buchocki (1):
-  ice: Implement 'flow-type ether' rules
-
-Lukasz Plachno (1):
-  ice: Remove unnecessary argument from ice_fdir_comp_rules()
-
- .../net/ethernet/intel/ice/ice_ethtool_fdir.c | 126 ++++++++++++++++++
- drivers/net/ethernet/intel/ice/ice_fdir.c     | 112 +++++++++-------
- drivers/net/ethernet/intel/ice/ice_fdir.h     |  11 ++
- drivers/net/ethernet/intel/ice/ice_type.h     |   1 +
- 4 files changed, 204 insertions(+), 46 deletions(-)
-
+diff --git a/drivers/net/ethernet/intel/ice/ice_fdir.c b/drivers/net/ethernet/intel/ice/ice_fdir.c
+index ae089d32ee9d..d6053cdad686 100644
+--- a/drivers/net/ethernet/intel/ice/ice_fdir.c
++++ b/drivers/net/ethernet/intel/ice/ice_fdir.c
+@@ -1212,52 +1212,54 @@ static int ice_cmp_ipv6_addr(__be32 *a, __be32 *b)
+  * ice_fdir_comp_rules - compare 2 filters
+  * @a: a Flow Director filter data structure
+  * @b: a Flow Director filter data structure
+- * @v6: bool true if v6 filter
+  *
+  * Returns true if the filters match
+  */
+ static bool
+-ice_fdir_comp_rules(struct ice_fdir_fltr *a,  struct ice_fdir_fltr *b, bool v6)
++ice_fdir_comp_rules(struct ice_fdir_fltr *a,  struct ice_fdir_fltr *b)
+ {
+ 	enum ice_fltr_ptype flow_type = a->flow_type;
+ 
+ 	/* The calling function already checks that the two filters have the
+ 	 * same flow_type.
+ 	 */
+-	if (!v6) {
+-		if (flow_type == ICE_FLTR_PTYPE_NONF_IPV4_TCP ||
+-		    flow_type == ICE_FLTR_PTYPE_NONF_IPV4_UDP ||
+-		    flow_type == ICE_FLTR_PTYPE_NONF_IPV4_SCTP) {
+-			if (a->ip.v4.dst_ip == b->ip.v4.dst_ip &&
+-			    a->ip.v4.src_ip == b->ip.v4.src_ip &&
+-			    a->ip.v4.dst_port == b->ip.v4.dst_port &&
+-			    a->ip.v4.src_port == b->ip.v4.src_port)
+-				return true;
+-		} else if (flow_type == ICE_FLTR_PTYPE_NONF_IPV4_OTHER) {
+-			if (a->ip.v4.dst_ip == b->ip.v4.dst_ip &&
+-			    a->ip.v4.src_ip == b->ip.v4.src_ip &&
+-			    a->ip.v4.l4_header == b->ip.v4.l4_header &&
+-			    a->ip.v4.proto == b->ip.v4.proto &&
+-			    a->ip.v4.ip_ver == b->ip.v4.ip_ver &&
+-			    a->ip.v4.tos == b->ip.v4.tos)
+-				return true;
+-		}
+-	} else {
+-		if (flow_type == ICE_FLTR_PTYPE_NONF_IPV6_UDP ||
+-		    flow_type == ICE_FLTR_PTYPE_NONF_IPV6_TCP ||
+-		    flow_type == ICE_FLTR_PTYPE_NONF_IPV6_SCTP) {
+-			if (a->ip.v6.dst_port == b->ip.v6.dst_port &&
+-			    a->ip.v6.src_port == b->ip.v6.src_port &&
+-			    !ice_cmp_ipv6_addr(a->ip.v6.dst_ip,
+-					       b->ip.v6.dst_ip) &&
+-			    !ice_cmp_ipv6_addr(a->ip.v6.src_ip,
+-					       b->ip.v6.src_ip))
+-				return true;
+-		} else if (flow_type == ICE_FLTR_PTYPE_NONF_IPV6_OTHER) {
+-			if (a->ip.v6.dst_port == b->ip.v6.dst_port &&
+-			    a->ip.v6.src_port == b->ip.v6.src_port)
+-				return true;
+-		}
++	switch (flow_type) {
++	case ICE_FLTR_PTYPE_NONF_IPV4_TCP:
++	case ICE_FLTR_PTYPE_NONF_IPV4_UDP:
++	case ICE_FLTR_PTYPE_NONF_IPV4_SCTP:
++		if (a->ip.v4.dst_ip == b->ip.v4.dst_ip &&
++		    a->ip.v4.src_ip == b->ip.v4.src_ip &&
++		    a->ip.v4.dst_port == b->ip.v4.dst_port &&
++		    a->ip.v4.src_port == b->ip.v4.src_port)
++			return true;
++		break;
++	case ICE_FLTR_PTYPE_NONF_IPV4_OTHER:
++		if (a->ip.v4.dst_ip == b->ip.v4.dst_ip &&
++		    a->ip.v4.src_ip == b->ip.v4.src_ip &&
++		    a->ip.v4.l4_header == b->ip.v4.l4_header &&
++		    a->ip.v4.proto == b->ip.v4.proto &&
++		    a->ip.v4.ip_ver == b->ip.v4.ip_ver &&
++		    a->ip.v4.tos == b->ip.v4.tos)
++			return true;
++		break;
++	case ICE_FLTR_PTYPE_NONF_IPV6_UDP:
++	case ICE_FLTR_PTYPE_NONF_IPV6_TCP:
++	case ICE_FLTR_PTYPE_NONF_IPV6_SCTP:
++		if (a->ip.v6.dst_port == b->ip.v6.dst_port &&
++		    a->ip.v6.src_port == b->ip.v6.src_port &&
++		    !ice_cmp_ipv6_addr(a->ip.v6.dst_ip,
++				       b->ip.v6.dst_ip) &&
++		    !ice_cmp_ipv6_addr(a->ip.v6.src_ip,
++				       b->ip.v6.src_ip))
++			return true;
++		break;
++	case ICE_FLTR_PTYPE_NONF_IPV6_OTHER:
++		if (a->ip.v6.dst_port == b->ip.v6.dst_port &&
++		    a->ip.v6.src_port == b->ip.v6.src_port)
++			return true;
++		break;
++	default:
++		break;
+ 	}
+ 
+ 	return false;
+@@ -1276,19 +1278,10 @@ bool ice_fdir_is_dup_fltr(struct ice_hw *hw, struct ice_fdir_fltr *input)
+ 	bool ret = false;
+ 
+ 	list_for_each_entry(rule, &hw->fdir_list_head, fltr_node) {
+-		enum ice_fltr_ptype flow_type;
+-
+ 		if (rule->flow_type != input->flow_type)
+ 			continue;
+ 
+-		flow_type = input->flow_type;
+-		if (flow_type == ICE_FLTR_PTYPE_NONF_IPV4_TCP ||
+-		    flow_type == ICE_FLTR_PTYPE_NONF_IPV4_UDP ||
+-		    flow_type == ICE_FLTR_PTYPE_NONF_IPV4_SCTP ||
+-		    flow_type == ICE_FLTR_PTYPE_NONF_IPV4_OTHER)
+-			ret = ice_fdir_comp_rules(rule, input, false);
+-		else
+-			ret = ice_fdir_comp_rules(rule, input, true);
++		ret = ice_fdir_comp_rules(rule, input);
+ 		if (ret) {
+ 			if (rule->fltr_id == input->fltr_id &&
+ 			    rule->q_index != input->q_index)
 -- 
 2.34.1
 
