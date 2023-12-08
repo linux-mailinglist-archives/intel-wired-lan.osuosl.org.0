@@ -1,187 +1,156 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6FE6980AFA0
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  8 Dec 2023 23:24:53 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id A50D280AFA9
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  8 Dec 2023 23:29:06 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 015DA6F6B5;
-	Fri,  8 Dec 2023 22:24:52 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 015DA6F6B5
+	by smtp3.osuosl.org (Postfix) with ESMTP id 34AEB6F722;
+	Fri,  8 Dec 2023 22:29:05 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 34AEB6F722
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1702074292;
-	bh=yoRW9BoT6j2SzFe9gqx3aiGl1qJkWTlfKce/ILbamF8=;
-	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1702074545;
+	bh=+NBV9udp+6xVG950TEi8npyY7AYLIqBMQIH73Ysk8MU=;
+	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=tuYddc4XJQY92379ycmDKUg7kNbGBP6ahWzulWjqstkB472sod7xZKmdADDs4tg4Y
-	 7y8n1gYDB5Z8iykvTTUUhNOoAIXMQ+2y3CZQLjXHopwHskx6st0/5wu0YgdcQPp4jo
-	 5mmfU3WYilItSeuzgStfK+wcCFGKDvRYSyP2+FTLTUW/7Z8p8gBe1SojnXSLFqxqzA
-	 RT3AEgfrW2UYsBoAmEjM0UM64FY5jC+YCzi6FwICcK+lJY7kZna2tnhfgPPA6oqH/u
-	 eOp2Ykh9yu6y32qf5W1muS8moiXiaND7pvqtOUyfWKluNuKanI9JDRcsvPbtg6c3nj
-	 0wM95+Q+ZEU/A==
+	b=zkD/04JGTc6KZmB68RPTgjp1Kl2luVG1TO94RpHPUEWiSZKiSlU0MtnGAfQSdaYUb
+	 3kwFe721kk6acd/wPyx/50V4IwG3rsamtOQP83vSLVVJWDgcDz5eZOFW6bP7DbSfkW
+	 EINsLRcSEeCJ13GJUQeMMTelmjaHD7ieKo541WbGxg1p2zQJqy/hZDG7wITwL7BhzJ
+	 2mND0TEWqkeKwdpaa/osk9/j4UV+bDarJnFTp0xUCiUm83IBk4WA9CavlXwGmwutEr
+	 u8zxmZiT5yTBrwaENT5QbVxzHVPccbFWe9pXrgvY9q+oIYSQLaVhfOhJ1FKwzQA5LU
+	 dBklw3vrN2smA==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 0LpSrUhhuTZ6; Fri,  8 Dec 2023 22:24:51 +0000 (UTC)
+	with ESMTP id WwW7w0xDwULT; Fri,  8 Dec 2023 22:29:03 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 50B396F64E;
-	Fri,  8 Dec 2023 22:24:50 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 50B396F64E
+	by smtp3.osuosl.org (Postfix) with ESMTP id 3AB6D6F6B5;
+	Fri,  8 Dec 2023 22:29:02 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3AB6D6F6B5
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 794321BF995
- for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Dec 2023 22:24:45 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 67A4D1BF995
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Dec 2023 22:28:56 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 4959E40518
- for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Dec 2023 22:24:45 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 4959E40518
+ by smtp4.osuosl.org (Postfix) with ESMTP id 3116A409E7
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Dec 2023 22:28:56 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3116A409E7
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id WAD-8Xm-SVdI for <intel-wired-lan@lists.osuosl.org>;
- Fri,  8 Dec 2023 22:24:43 +0000 (UTC)
-Received: from mgamail.intel.com (mgamail.intel.com [134.134.136.24])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 7E4CD400AF
- for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Dec 2023 22:24:43 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 7E4CD400AF
-X-IronPort-AV: E=McAfee;i="6600,9927,10918"; a="397263187"
-X-IronPort-AV: E=Sophos;i="6.04,262,1695711600"; d="scan'208";a="397263187"
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 Dec 2023 14:24:10 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10918"; a="838273026"
-X-IronPort-AV: E=Sophos;i="6.04,262,1695711600"; d="scan'208";a="838273026"
-Received: from fmsmsx603.amr.corp.intel.com ([10.18.126.83])
- by fmsmga008.fm.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
- 08 Dec 2023 14:24:09 -0800
-Received: from fmsmsx603.amr.corp.intel.com (10.18.126.83) by
- fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.35; Fri, 8 Dec 2023 14:24:09 -0800
-Received: from FMSEDG603.ED.cps.intel.com (10.1.192.133) by
- fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.35 via Frontend Transport; Fri, 8 Dec 2023 14:24:09 -0800
-Received: from NAM12-BN8-obe.outbound.protection.outlook.com (104.47.55.168)
- by edgegateway.intel.com (192.55.55.68) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.35; Fri, 8 Dec 2023 14:24:09 -0800
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id ft4RAgUJopJs for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  8 Dec 2023 22:28:54 +0000 (UTC)
+Received: from NAM10-MW2-obe.outbound.protection.outlook.com
+ (mail-mw2nam10on2048.outbound.protection.outlook.com [40.107.94.48])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 81BE54099B
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Dec 2023 22:28:54 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 81BE54099B
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Rxfec1NdHu8j8PINxyBi5c/U95O10QfmBzH9GDxcOv5i3jhJnSdsA06C7+oYjpI8LdLs1cA/HKCf298sqmaUSf3/k5xlD0jb3QwySZ0+OSE8D/r9MWOjiGZoVNsRjeUhCHL0Cb22OCSs7Gv/CY9ioI3dNDpWsumjVNrz7GlmXWzVcrm60NAgPAHS6DfbNFCQag3KVSEk8M7QiAxg6+BlOtFDv+8NZw1CqLJPCHGNydEfGle81wwqT6VHGaqlXByP05zjUG9Q3Dd9DcIrfVsciRW/FF875bp3NZvnPuZ6q+1rfv5Bq9asyKyPkc3WKhQIPV88nXdlpkTEUpsLH+mQFw==
+ b=G16COIAuPau43BgQLOWqxiGCk73qXP64kfBC5LG1uUqpDzhhJsaQFqS6POMPixUw8VY72c+QnZTWrX/JuOsi9hEZsXgfneuXQ1RAzTAkufncXxCE9bBtOwIzbkQPos6ymdBUAy+nBgC1Zv4wPd/v+T6f81b8WFyg/Jm3jSGSI8RP7YTIkk/NaPiAS68iJMbADIqm2ZVOY94gu+cATEXAMPq90two9KEQHVkYcd5inYT/6l8RZnjVUUK/oh3ia9tvmtHI+HZJEF5W68SU7LtuXCmXK1bVEJvMqFDh1R3Xe5TGC+ooawasUMVDgKpGAzYkV7YOkW6NazY02O53StQ9RA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=tVDwgFAWOIpFyH3AMgxt+kKN5Vibby4NmstqYkxvOWc=;
- b=gNlJnH6wlAP/dlYdu6/ScClhpoZL7LhKJv/ftXLFI2Li3O4mOGJJVcxMJX0JGGAQxDlvD4rDF171JzQekoU3Su1ptyq4FueNFD/tPQ3tNyFPYEjIfCQrv8FM00wA1pUN2YjMKeMjE1NDqwWpt7wwa8+WcMYvq3ipDeG5V7TNtAA4fHdkAUWa2e8rKxHBm9D1LKePSkZyxD9mp9wyFnYggQU9emo6USFqHn7BE1ZxZN2U953PHPimeCRaqyn+6T6vx1KCeD5cD05PRaQEOEesEU8+dWcLlzcT5Lx/qY6en2ZeRconLO4vPVbTcifZIO0n5HzZljMi7i8Wxj1+sgfbeA==
+ bh=rxNbUMoujh9v4RFtZuIlMwhqEyFVvbqEOsTWFeEC6TY=;
+ b=J2Zgzt4wNP6etbqEDd3izruYyhdZ5ysUGFHuAfH2o3JOr9Wgt85GA0b7E2Da6Q1RgdEUEs5cp+caKp249pt0U8ebdWL0AEJiLA3nUp8phNPlQ5pU+fU+LtW3RXPoBkfz3IwfV0YgrLg21WLzH1IU3bSN1dNGINUNt2DRZbW4fyciRjh8YPgKYsTrNtJ6+eK0CQDzQ2V87pUplZ+gZed4Dqyng2pskxEoEvHHj1BbXJwSm1vPjWriKNMCkIK+/o/YFU2IZyjORvATRLj8Sowc6Us2ksSmCYnYTVleh4lzZ27QJr7hpzwYAoyNbZC0e7XPOOWI4TWb3Gr9JvWkkw5L8Q==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from MW5PR11MB5811.namprd11.prod.outlook.com (2603:10b6:303:198::18)
- by BN9PR11MB5548.namprd11.prod.outlook.com (2603:10b6:408:105::10)
+ smtp.mailfrom=amd.com; dmarc=pass action=none header.from=amd.com; dkim=pass
+ header.d=amd.com; arc=none
+Received: from PH0PR12MB7982.namprd12.prod.outlook.com (2603:10b6:510:28d::5)
+ by IA0PR12MB8647.namprd12.prod.outlook.com (2603:10b6:208:480::8)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7068.28; Fri, 8 Dec
- 2023 22:24:07 +0000
-Received: from MW5PR11MB5811.namprd11.prod.outlook.com
- ([fe80::f6f9:943e:b38e:70de]) by MW5PR11MB5811.namprd11.prod.outlook.com
- ([fe80::f6f9:943e:b38e:70de%4]) with mapi id 15.20.7068.028; Fri, 8 Dec 2023
- 22:24:07 +0000
-From: "Ertman, David M" <david.m.ertman@intel.com>
-To: "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [PATCH iwl-next] ice: alter feature support check for SRIOV and
- LAG
-Thread-Index: AQHaKToUXVlzIDYaGEyh4eN8rXhk7rCf5awAgAAR/LA=
-Date: Fri, 8 Dec 2023 22:24:06 +0000
-Message-ID: <MW5PR11MB581150E2535B00AD04A37913DD8AA@MW5PR11MB5811.namprd11.prod.outlook.com>
-References: <20231207182158.2199799-1-david.m.ertman@intel.com>
- <bca6d80f-21de-f6dd-7b86-3daa867323e1@intel.com>
-In-Reply-To: <bca6d80f-21de-f6dd-7b86-3daa867323e1@intel.com>
-Accept-Language: en-US
+ 2023 22:28:49 +0000
+Received: from PH0PR12MB7982.namprd12.prod.outlook.com
+ ([fe80::bec4:77b3:e1d1:5615]) by PH0PR12MB7982.namprd12.prod.outlook.com
+ ([fe80::bec4:77b3:e1d1:5615%5]) with mapi id 15.20.7068.028; Fri, 8 Dec 2023
+ 22:28:48 +0000
+Message-ID: <d1a5437e-a1ac-1fde-dfdf-9c1d8768b052@amd.com>
+Date: Fri, 8 Dec 2023 14:28:46 -0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
+ Thunderbird/102.15.1
 Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: MW5PR11MB5811:EE_|BN9PR11MB5548:EE_
-x-ms-office365-filtering-correlation-id: f64dc960-638a-4195-09f5-08dbf83c6478
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: fE1tNCk5coWTu1ciyIPOvOFSEbMHhV8XdJuUPVYz3fJwc6XoHg0lj5YZ25TOyLmRFDbzlY20onsA79LR34RyOhyUr8AWJxnA0tRqYauEmAYXUoFwm3iyo8LIRIJi4BS249kzwSn4PW7j/0EoXYEU0DdGmhWc4M7wA8FT+jfuNl4xw4LeAeZtq0VuT/arnH3MmXF/FYYtcbVNPIxf8vr/VKvYZl9FsD49iM/W/4Y3+Aid7/IPwiPmH5l3oWQJCLrUWe6GG09CApklKxKJfMJVfHkzOllzFSBJjnT9UknQRU/uF3xxTx7Fy8OR3CQJj2iwOHZNSj3+UwOKhrr4ADKyNsQCxx8F2ZSp+4YNBzG5JXuhC09v9JGIuJWaYvsuzQJ0GAbZtxAb5fZa2QQuZdJbE0ECTC4wxsjck1k2o3u6yVHFYKbGSxxpyph96PE8rnaZ+U8qFjrxvhiCXV1xRkRer7Lz9PyJW6zDmdRIVfLXSSpUEkqVpb8o3Hi2bMlOi2nIud4RDxYIkIpzUQ/mACvB1Dw2BypAowYCNza5lBzMOWcekcO8XfH10naOA7tvZH8jDJ+O37BSlvzj14zx2GvbKZaERzrdDHwdcxWcPMc26tTUuwAIYyxzgcEu9pNbou6M
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:MW5PR11MB5811.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230031)(396003)(346002)(376002)(39860400002)(366004)(136003)(230922051799003)(64100799003)(451199024)(1800799012)(186009)(6506007)(53546011)(478600001)(9686003)(38070700009)(107886003)(38100700002)(7696005)(26005)(5660300002)(52536014)(122000001)(86362001)(316002)(66476007)(54906003)(66946007)(64756008)(76116006)(66446008)(110136005)(66556008)(71200400001)(4326008)(8676002)(55016003)(8936002)(33656002)(2906002)(83380400001)(41300700001)(82960400001);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?cVcwNXNMYXdkQ2Z0QnZEWVlIVG82MTVKbGcyZEZLUm0zZ0hLeGlKeEsrRzZN?=
- =?utf-8?B?a0NXR2tVMFlKQzR1Tm8rSjJrRkNvc29YaGYvdUgyT1czemhTVXRGd1orZFBT?=
- =?utf-8?B?djA3TDBjYmpEalQrT0FQSTc5OHN3Y3FBZUo0QVkyS2NQdVlFODkvejBLZVg0?=
- =?utf-8?B?ZUZGOFFjWEJ0bG5xd1lXNVhnVi9pb042L3FBb3htTjd4TVRCRG5XelNJSUp2?=
- =?utf-8?B?Yyt2c3ZteERTT3IweWVoaDlVeGpuamdnY3NzeFpKYVQ3KzZySW5UU0NxYTZM?=
- =?utf-8?B?VnErUHBYL2JOT1JTUzBOWGQ1c2JmdDBhUHA2Wmxmc1NCOG1nanN4VWlSMk9R?=
- =?utf-8?B?eUQ1Z1U3eDN4MFNXMEFyMUp3TVQ2Vm9hbXkxRHAxTWhWNDQvYnY2SXFIa1Zp?=
- =?utf-8?B?RFduVnBtc3Z6TDIzUHkwdG52NUVsU01pYytRKzQwZURUMkIyQVAwMjB6OFFT?=
- =?utf-8?B?MmZSV2NPRUlmSXBUeTlINTl1MDVlOVR5S1BKbVZZeURDdHRIWkduekJVL3N6?=
- =?utf-8?B?QTFvZEQ3RHZla2FNM1JxdVVSd21FY2djUktvSnVjc2RZZWdBUHRWS0gwTzNy?=
- =?utf-8?B?RDM4VUY0Z1VNK1Z4QUg2dDRCSXZSUXNDaThMdFJFMjFQZ2VpRW90bi9zcHE5?=
- =?utf-8?B?Mmc1Q2ZoVlNFYTUvTi8yOUhSVEZ2bzU0T3pPSHVPckJOSEtCV2JRazRSYjlQ?=
- =?utf-8?B?YjNpY2xOLzR4NEF2ZEVJVGIvL3VOOFdmNXUvY1Q4VW0wTVYvWmpqbGpOY2py?=
- =?utf-8?B?dlFsWjlKT3VzWFhlVlpLNVZtNFhQd3Nyaks3RE9JclNTOXNhaFhiTnk1YTZE?=
- =?utf-8?B?dFIxT3ZKL1Y0NzNBQmZSblczTEUrcUFVT0hlUTh1ekw1R3pMdjZEcHVPaHlz?=
- =?utf-8?B?dkhBdHlCKzdrM0Q3Q1pqR1ovemd2UXZHMjNDRlAza0dRRkNodTBHa2FOTm5M?=
- =?utf-8?B?YUpqWGRvL081ZWNJNEpmWlpXOXJoSWlQczFtQjIzMTl2S01HZ3IyaWlmZ2gw?=
- =?utf-8?B?MjRkMkFWYkJGanF3bGdyNUowTHQvQzBta3dmMDBsMGdHbGhhQTZrM1NWYnA2?=
- =?utf-8?B?MUt5dzMySS83MUtXbnZUWEZVM3RhbndRd2V3WDdaazREaGltMHdjWjk2dmUw?=
- =?utf-8?B?MFJuMUQ2cWFMN0NMTWdnbkVCUHB3WXRMcktkaXFBeDYvQW1ITk04VXVzOWhN?=
- =?utf-8?B?RnFXL3BKK3ErMEpTUVlZMnpzcms2N3MvNmdncGpHeUxPeWlaQlM1UDR2UExM?=
- =?utf-8?B?cVV6TFZHUE1kN0pidFJEU0dla1B5eGdlYmpRRlBSUitud0JhQnlkaFM2MmFU?=
- =?utf-8?B?TmpjV3VGbkZHYWRwaktNdFhoSUZCclhtalBIUkM4d0NtSEdIUThZV1dKK04w?=
- =?utf-8?B?NU5nYzc2VmRuN0FoQ09ZdzNqS2duZlBBZ2J5MVpXd3hDT3Bqb2RDVEVnZ1Fu?=
- =?utf-8?B?WGxZNlliWEhaTnoxclZIRmIyOXhYRjJidTlrR0ZWN2k0VmcxYyt5TkdLZWp2?=
- =?utf-8?B?OW1MRlNpbENaN1ZNU1BDUjVzUUdXVmo4S0FGcCtYU0lZWmpjMDBvSVNLci83?=
- =?utf-8?B?U3RJSGZ6bkM1YWtuai9IZlc5S0xJdytGT3lVSlFKMzZSMFNEZEkzZlhYMmdz?=
- =?utf-8?B?K2xULzE4MCs3a3JPRCtJU1VPaTRwNStHenlhdlZSb0RBK1lVRTdNWjZxcFJi?=
- =?utf-8?B?WFdjWjFPZktET1hiS2Q4TndyMU5TaXhFaEhKUU9IT3UrR0pSemQxOFZKLzJI?=
- =?utf-8?B?MFgwSThwL2hBamxEK1NyU0hXWUNPdGtNSGxxQms2UzMwNVIvUys4NExVWnBN?=
- =?utf-8?B?QkVWQ1RsNm5CMGJzNTlsUllML01pYU1MZ2NtaFpmdVdEajFuaklHM0p3NS9D?=
- =?utf-8?B?dUxIUEZQZktJSjU1V0lDU1Z6WnpoWVBQRU9aQ1l5WUYxVXZONVptcmxIczF3?=
- =?utf-8?B?bzlQdXc3amFWMVBEL3FwQ2xzcDkxNmxuY2dNUENRODNMSnp4UXpFbDQxaEFi?=
- =?utf-8?B?Zm9Wb1MxZFZnZEVISWx2N3JZSFZDT2d0MjFtVFJNc3FXUlFMSC9LUC9vTTlX?=
- =?utf-8?B?aE9OS0lGRjRPYUNobTlXbTMvekdBQkRRUFRTTFZpeDdRazEyaUh6MjIzTDND?=
- =?utf-8?Q?pZYxkvvkAjlgYjTFneGKpJfsE?=
+To: Yahui Cao <yahui.cao@intel.com>, intel-wired-lan@lists.osuosl.org
+References: <20231121025111.257597-1-yahui.cao@intel.com>
+ <20231121025111.257597-4-yahui.cao@intel.com>
+From: Brett Creeley <bcreeley@amd.com>
+In-Reply-To: <20231121025111.257597-4-yahui.cao@intel.com>
+X-ClientProxiedBy: SJ0PR03CA0375.namprd03.prod.outlook.com
+ (2603:10b6:a03:3a1::20) To PH0PR12MB7982.namprd12.prod.outlook.com
+ (2603:10b6:510:28d::5)
 MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: PH0PR12MB7982:EE_|IA0PR12MB8647:EE_
+X-MS-Office365-Filtering-Correlation-Id: a577b004-e4c3-4b1b-3c08-08dbf83d0c31
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: I3dX42B+f9ZNMZtULZ1FoFvPs250ObdvK16gtKbsFX6LehnzRpYKq1gIwFYCCJTjPtUj6+VUTJOhmhOd9ouybGEfK2oAMe41BaTrclPR3dMOggSQsSveSs0QZkwRWMQCyfBu8XIrFIhxhk2cWZz8QgKgbgGHfC8Z1tn62+TEQxbMizrCLkyOI2iqJlueOHB2t9Vi15gtN5lEnvcBfQIxPd9z7HBYUzsq8nE4cYJiO2u7fMmhVwiOOGB4Ki1gd5xNcgjhq61QMy5P0WYX+8R/2obLseBxPkWGi9bQqkOBm14w/0iD4iTSNi6F63JqKRrNKc6QZrOVPbpyqdWhucqto9DzLEBttVDyACWi7B8s+qXy8dxQp7aqaAm9dR5Du4gGUqCj5jBkfrY4DzcXKe8bqhzfg4EwDezUfDc/yCPJfFQUj3OfGaxrfVsynnsco8tYuFGeoBlLA+VXqdELbJfHkvC2te4Zo4A7QOytkB4jFwqH94L07gGbDLL0p/z6a9C2okK5r/uKwpC9U7bJmSTyvWrQpl3WZcmQ8XXhZQbO9KTAZpivea2tQvpXbx6M20bGbAFEwXe8+HS0jatxfq263tB+oz7tpAse5KSVrnCq5YgenqbcMiujAKdNQuvJnx/OZSjYN9f4jmngvEzn5lWSAnc6pz6Zr7bdYdvyFPvzf4UiZuF2lLaASvfM6kp1rjvf
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:PH0PR12MB7982.namprd12.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230031)(366004)(39860400002)(136003)(376002)(346002)(396003)(230922051799003)(230173577357003)(230273577357003)(64100799003)(186009)(1800799012)(451199024)(31686004)(41300700001)(38100700002)(2906002)(7416002)(30864003)(316002)(36756003)(5660300002)(4326008)(8676002)(8936002)(2616005)(6486002)(6512007)(26005)(53546011)(6506007)(478600001)(31696002)(66946007)(66476007)(66556008)(83380400001)(43740500002)(45980500001);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?dFAxVjRsREdtL0ZpczNQWDU3N1lEZXJybEFVdnVXMXVseFBUSEMrcU8xTTdW?=
+ =?utf-8?B?Zm1KbkFsVXpyUm9VMDltcC94QW5ERWNoNEhtTDZMcldxQjdPQ2dJbkc4QnNw?=
+ =?utf-8?B?bDduMTNEWmtOblFWTkVjc0VwQTVtWHB2ODE5NlVyUW9rcWtCdnZCbE84dXpp?=
+ =?utf-8?B?WGwwUXBDUWsxeDV4bVB1a3BrbE44TUpUemJDYTdNWDYwZXNPb08xMEgrKzFH?=
+ =?utf-8?B?WkVpZFpqdWNONlF4ajRhVlhRMmQyMVpKbkxnZ0xmVnJPL0FxK3RUSGZTRnUr?=
+ =?utf-8?B?d2s5dm4rQWVWdWdmVS8xYzd4ZC9jYm9sVjhjTERHUTU1VDJBeGFvRGxTTlFM?=
+ =?utf-8?B?cm8rZ3dyb2VSNTBnQUhqaDNBUnhWV21JTUxoVjNJdExNdFpnUjh6QU44b2tt?=
+ =?utf-8?B?bFZpS2xIbDJmN0JsaFN6UVphbXUvV3UwdEpXbkN3aS9saVZGSm8zdG81ekVp?=
+ =?utf-8?B?a210em5YbzFOYVAyeVNDYW5yVDJ0d0Q2U2FXUVJZaC9KejBNZFF2THFYMjJF?=
+ =?utf-8?B?TllCZ3RFN1EzSWVkMlJvTnMwNlphQitYTG1WSit2Q3BZQmx4TExDN0g4TzR3?=
+ =?utf-8?B?OGZrZTY5b1IzRDRsbHJWblVTY2trc2JRRnp6bDBEak9tTHBIT2Z6M2NrL1V2?=
+ =?utf-8?B?L1BhTmhTN2RldjNHU09GeG5LSitxTUIrQ0VwdVFKQ080TVV6aXRCZG1rQ1BN?=
+ =?utf-8?B?R1VSYzd5SzFuRjFDcGpiOTBXMlR2dmhhR0ltZkVMMnFwMDBCRkpZdWRzb1Mx?=
+ =?utf-8?B?bGxVaklYYm1KNFVwdWE2OGc5Zi9LYlFqUVR4Q3czeDlROElTMkFzQlhoVnpn?=
+ =?utf-8?B?aFV3enllTFhCUXB0UFFoRkVpVkhwZ0IvZUtXcjRRS2hGK0NVR1dsNkFXTXZV?=
+ =?utf-8?B?RHNYdUV3NkJQdzViQnU0STZJSHNOVTNpTVNvK3RvTVVIV3drTUYwdG5xVHha?=
+ =?utf-8?B?Sytsb1R1R1k4Yy9Galo5T2FDUlJyUHNYRjNIdW9SVnhhU05CY28rOEUwUEFJ?=
+ =?utf-8?B?SHF2UHB2MXZXS1krVVc1Q2d4WTB3bkk3MTQ4N1ZBV3dpMmhKZC91Mlk3c3ZX?=
+ =?utf-8?B?SnRUMmxrMjFQMWFsWW12enRDQkdDOVh1Y0hNbHJQMzhQc3ZiendNN2VBemlN?=
+ =?utf-8?B?alA1WkFGRGgzVDFWbDd6SU1YVVpmdVBSL3JSdWdrMFUvZTQxZWZZSCtacnVY?=
+ =?utf-8?B?aEUrWitsRjNEcEh0TUpFaHliVi92Z1gralIwOE9oWTJtbkY5a2wyWnE4MElJ?=
+ =?utf-8?B?WGVTZzNRdjlCOUg2dUxyb2hKYXhLcEUrMmZPV1hJbmdCS3pDbUVxcXUvVlYv?=
+ =?utf-8?B?TE9kaU1teU1OMVU5eGNqaTFRWUFjV3RuMGhiY1RjaGU3TDJuSVdPQWM5U045?=
+ =?utf-8?B?NlhpbktjTHBDZXJsN0kwKzlXcE42b2lDS3FZK21YMk1aNS9VcFhVbnc2WFNQ?=
+ =?utf-8?B?NmlXOU5PM0x1eHU1bjBWd3F0WXIzR1AvNktoaVZHd3ZpT1RlaW5EWXRUYWlX?=
+ =?utf-8?B?RTk3ZVJSb2xoRE1NbUV0TkwyT09WOWJSM1FtekxCeVpCbThmZ25sa1dlVFEr?=
+ =?utf-8?B?UzJZS2FWQ2ZYNm1QNUJ4Zi8xWnFLUVVpMUc5Zk5KMjgxdUtiVG9PbjY3NmxL?=
+ =?utf-8?B?UFo3ZTJrY3NpUGFHeGZVU2pKZ0J2YlQrcjQ5ak9nYWdPeGVMSG5OdXpvSVh2?=
+ =?utf-8?B?dTlNTHQzRUR2T011Qm5zY2JsTGcxeEtoaUQ5cVlDbm1aNm53ZU5vc1JUMkU1?=
+ =?utf-8?B?UnBCVEh2eThMWW55U1B1VUc0ZDczVlQ2NzJ6dXdJeHhrbXh5TnRZcGNZamZ4?=
+ =?utf-8?B?eUhOQm83eWJCdnV0bDErVzRqc0NRZ3htMXVxek82N2NrdVQ5bHZHOWxneDZu?=
+ =?utf-8?B?L2s2Q1pBOVNxLytaQTM5cVJvMHBUQ1ljOFNQdHJZUURVVFBmT1RmWDRDWWRN?=
+ =?utf-8?B?TDNWZXhWODJiOUVRZk4vSzJSMTFabXE3SEExdXpwSVBUTVEyazIzcjJxSnVl?=
+ =?utf-8?B?M1VjSU1sbW5ncVpRMnd1eWV0NTVmT0hORjdGMDBpZVIxYjd3TEhhOUUzQkZ3?=
+ =?utf-8?B?Z2xoTldzSHcrR0RhV3lCMjhvWXduWVEyL3BGVWNyQjA2Rk9HcGc4TDlEeVln?=
+ =?utf-8?Q?fdAeuG9TjyYLF3JiEA5pWUA7J?=
+X-OriginatorOrg: amd.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: a577b004-e4c3-4b1b-3c08-08dbf83d0c31
+X-MS-Exchange-CrossTenant-AuthSource: PH0PR12MB7982.namprd12.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: MW5PR11MB5811.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: f64dc960-638a-4195-09f5-08dbf83c6478
-X-MS-Exchange-CrossTenant-originalarrivaltime: 08 Dec 2023 22:24:07.0009 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 0InVXSBlN/TWZC2SLalLqBwxFs1xOlpDG3WttaLVWCn10iFPouYS9FOX1iJui1SRw54BEAv2Hx2X7jJklHtAFaVlHTA6MZUZQmGdYLzjEEo=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN9PR11MB5548
-X-OriginatorOrg: intel.com
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1702074283; x=1733610283;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=tVDwgFAWOIpFyH3AMgxt+kKN5Vibby4NmstqYkxvOWc=;
- b=chmyP9GLdgPxuc3LgTBfZRP/x/oyip9hSJJoKtDv6EyzZod0Xx9u/yXo
- FvnakgvZBr4RlWq1Iqn5RxSWx0wOQ1FkZq0LuNlXA5jxwbVgPV5J/+x88
- tWDNXENFvrQwvix5U1hC2J1rGC7loLxmk4XD7p38g8TzEQd2oOlwBZvpF
- otBvA+WoF6VLueArxtQ8zdOQgMnv+CW2Ck9kyXf4+kddeB+AUDOcvQcMM
- zPV4LmjTu2X5xXRarLFxC3IxxGDtcf8M5vTt5ei/APekhKXGd7mrTK1X3
- Ge96eiAPPdJ8kLc2/NwNFPw7T0kE/KSwA4djAouKLJSXNu3jO6nvF1dsy
- w==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=chmyP9GL
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 08 Dec 2023 22:28:48.5566 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: V6DvaRejk0XedktVPelr24x2YoljBiqdHXsVbfsDJbDmqm7xNeiwuJiIbWQRcUmEU547Rt5yw8NmmzyKPcN85w==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA0PR12MB8647
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=amd.com; s=selector1; 
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=rxNbUMoujh9v4RFtZuIlMwhqEyFVvbqEOsTWFeEC6TY=;
+ b=pgizEkNmJoV0lxd3Y6eUXYxcZ6pG7J0DleaiL7Xr8mJXic/h7YRt6PQDpIBNaSEJPSDpciCcLQ+Tiye4mAe7Q6j739TXOkkXvF+EuY3WbuXAWSUpx8xBXtsAilCTozLBYIRYTLyH0QAYZVFhGWeE1HzMlQI/u50nA8lsGMyzYJc=
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (1024-bit key,
+ unprotected) header.d=amd.com header.i=@amd.com header.a=rsa-sha256
+ header.s=selector1 header.b=pgizEkNm
 X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next] ice: alter feature support
- check for SRIOV and LAG
+ header.d=none;dmarc=none action=none header.from=amd.com;
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v4 03/12] ice: Introduce VF
+ state ICE_VF_STATE_REPLAYING_VC for migration
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -194,73 +163,625 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "netdev@vger.kernel.org" <netdev@vger.kernel.org>, "Brandeburg,
- Jesse" <jesse.brandeburg@intel.com>
-Content-Type: text/plain; charset="us-ascii"
+Cc: kevin.tian@intel.com, yishaih@nvidia.com, brett.creeley@amd.com,
+ kvm@vger.kernel.org, sridhar.samudrala@intel.com, edumazet@google.com,
+ shameerali.kolothum.thodi@huawei.com, alex.williamson@redhat.com,
+ madhu.chittim@intel.com, jgg@nvidia.com, netdev@vger.kernel.org,
+ kuba@kernel.org, pabeni@redhat.com, davem@davemloft.net
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-> -----Original Message-----
-> From: Nguyen, Anthony L <anthony.l.nguyen@intel.com>
-> Sent: Friday, December 8, 2023 1:18 PM
-> To: Ertman, David M <david.m.ertman@intel.com>; intel-wired-
-> lan@lists.osuosl.org
-> Cc: netdev@vger.kernel.org; Brandeburg, Jesse
-> <jesse.brandeburg@intel.com>
-> Subject: Re: [PATCH iwl-next] ice: alter feature support check for SRIOV and
-> LAG
+On 11/20/2023 6:51 PM, Yahui Cao wrote:
+> Caution: This message originated from an External Source. Use proper caution when opening attachments, clicking links, or responding.
 > 
 > 
+> From: Lingyu Liu <lingyu.liu@intel.com>
 > 
-> On 12/7/2023 10:21 AM, Dave Ertman wrote:
-> > Previously, the ice driver had support for using a hanldler for bonding
-> > netdev events to ensure that conflicting features were not allowed to be
-> > activated at the same time.  While this was still in place, additional
-> > support was added to specifically support SRIOV and LAG together.  These
-> > both utilized the netdev event handler, but the SRIOV and LAG feature was
-> > behind a capabilities feature check to make sure the current NVM has
-> > support.
-> >
-> > The exclusion part of the event handler should be removed since there are
-> > users who have custom made solutions that depend on the non-exclusion
-> of
-> > features.
-> >
-> > Wrap the creation/registration and cleanup of the event handler and
-> > associated structs in the probe flow with a feature check so that the
-> > only systems that support the full implementation of LAG features will
-> > initialize support.  This will leave other systems unhindered with
-> > functionality as it existed before any LAG code was added.
+> During migration device resume stage, part of device state is loaded by
+> replaying logged virtual channel message. By default, once virtual
+> channel message is processed successfully, PF will send message to VF.
 > 
-> This sounds like a bug fix? Should it be for iwl-net?
->
+> In addition, PF will notify VF about link state while handling virtual
+> channel message GET_VF_RESOURCE and ENABLE_QUEUES. And VF driver will
+> print link state change info once receiving notification from PF.
+> 
+> However, device resume stage does not need PF to send messages to VF
+> for the above cases. Stop PF from sending messages to VF while VF is
+> in replay state.
+> 
+> Signed-off-by: Lingyu Liu <lingyu.liu@intel.com>
+> Signed-off-by: Yahui Cao <yahui.cao@intel.com>
+> ---
+>   drivers/net/ethernet/intel/ice/ice_vf_lib.h   |   1 +
+>   drivers/net/ethernet/intel/ice/ice_virtchnl.c | 179 +++++++++++-------
+>   drivers/net/ethernet/intel/ice/ice_virtchnl.h |   8 +-
+>   .../ethernet/intel/ice/ice_virtchnl_fdir.c    |  28 +--
+>   4 files changed, 127 insertions(+), 89 deletions(-)
+> 
+> diff --git a/drivers/net/ethernet/intel/ice/ice_vf_lib.h b/drivers/net/ethernet/intel/ice/ice_vf_lib.h
+> index 93c774f2f437..c7e7df7baf38 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_vf_lib.h
+> +++ b/drivers/net/ethernet/intel/ice/ice_vf_lib.h
+> @@ -37,6 +37,7 @@ enum ice_vf_states {
+>          ICE_VF_STATE_DIS,
+>          ICE_VF_STATE_MC_PROMISC,
+>          ICE_VF_STATE_UC_PROMISC,
+> +       ICE_VF_STATE_REPLAYING_VC,
 
-To my knowledge, this issue has not been reported by any users and was found
-through code inspection.  Would you still recommend iwl-net?
+Should this enum have "MIGRATION" in it to make it clear that this flag 
+is specifically for replaying VF state for migration purposes?
 
-DaveE
- 
-> > Reviewed-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
-> > Signed-off-by: Dave Ertman <david.m.ertman@intel.com>
-> > ---
-> >   drivers/net/ethernet/intel/ice/ice_lag.c | 2 ++
-> >   1 file changed, 2 insertions(+)
-> >
-> > diff --git a/drivers/net/ethernet/intel/ice/ice_lag.c
-> b/drivers/net/ethernet/intel/ice/ice_lag.c
-> > index 280994ee5933..b47cd43ae871 100644
-> > --- a/drivers/net/ethernet/intel/ice/ice_lag.c
-> > +++ b/drivers/net/ethernet/intel/ice/ice_lag.c
-> > @@ -1981,6 +1981,8 @@ int ice_init_lag(struct ice_pf *pf)
-> >   	int n, err;
-> >
-> >   	ice_lag_init_feature_support_flag(pf);
-> > +	if (!ice_is_feature_supported(pf, ICE_F_SRIOV_LAG))
-> > +		return 0;
-> >
-> >   	pf->lag = kzalloc(sizeof(*lag), GFP_KERNEL);
-> >   	if (!pf->lag)
+>          ICE_VF_STATES_NBITS
+>   };
+> 
+> diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl.c b/drivers/net/ethernet/intel/ice/ice_virtchnl.c
+> index cdf17b1e2f25..661ca86c3032 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_virtchnl.c
+> +++ b/drivers/net/ethernet/intel/ice/ice_virtchnl.c
+> @@ -233,6 +233,9 @@ void ice_vc_notify_vf_link_state(struct ice_vf *vf)
+>          struct virtchnl_pf_event pfe = { 0 };
+>          struct ice_hw *hw = &vf->pf->hw;
+> 
+> +       if (test_bit(ICE_VF_STATE_REPLAYING_VC, vf->vf_states))
+> +               return;
+> +
+>          pfe.event = VIRTCHNL_EVENT_LINK_CHANGE;
+>          pfe.severity = PF_EVENT_SEVERITY_INFO;
+> 
+> @@ -282,7 +285,7 @@ void ice_vc_notify_reset(struct ice_pf *pf)
+>   }
+> 
+>   /**
+> - * ice_vc_send_msg_to_vf - Send message to VF
+> + * ice_vc_send_response_to_vf - Send response message to VF
+>    * @vf: pointer to the VF info
+>    * @v_opcode: virtual channel opcode
+>    * @v_retval: virtual channel return value
+> @@ -291,9 +294,10 @@ void ice_vc_notify_reset(struct ice_pf *pf)
+>    *
+>    * send msg to VF
+>    */
+> -int
+> -ice_vc_send_msg_to_vf(struct ice_vf *vf, u32 v_opcode,
+> -                     enum virtchnl_status_code v_retval, u8 *msg, u16 msglen)
+> +static int
+> +ice_vc_send_response_to_vf(struct ice_vf *vf, u32 v_opcode,
+> +                          enum virtchnl_status_code v_retval,
+> +                          u8 *msg, u16 msglen)
+
+Is all of this rework needed? It seems like it's just a name change with 
+additional logic to check the REPLAYING state. IMHO the naming isn't 
+really any cleaner.
+
+Would it make more sense to just modify the current 
+ice_vc_send_msg_to_vf() to handle the REPLAYING state? It seems like 
+that would simplify this patch quite a bit.
+
+Is there a reason for these changes in follow up patches that I missed?
+
+Thanks,
+
+Brett
+>   {
+>          struct device *dev;
+>          struct ice_pf *pf;
+> @@ -314,6 +318,39 @@ ice_vc_send_msg_to_vf(struct ice_vf *vf, u32 v_opcode,
+>          return 0;
+>   }
+> 
+> +/**
+> + * ice_vc_respond_to_vf - Respond to VF
+> + * @vf: pointer to the VF info
+> + * @v_opcode: virtual channel opcode
+> + * @v_retval: virtual channel return value
+> + * @msg: pointer to the msg buffer
+> + * @msglen: msg length
+> + *
+> + * Respond to VF. If it is replaying, return directly.
+> + *
+> + * Return 0 for success, negative for error.
+> + */
+> +int
+> +ice_vc_respond_to_vf(struct ice_vf *vf, u32 v_opcode,
+> +                    enum virtchnl_status_code v_retval, u8 *msg, u16 msglen)
+> +{
+> +       struct device *dev;
+> +       struct ice_pf *pf = vf->pf;
+> +
+> +       dev = ice_pf_to_dev(pf);
+> +
+> +       if (test_bit(ICE_VF_STATE_REPLAYING_VC, vf->vf_states)) {
+> +               if (v_retval == VIRTCHNL_STATUS_SUCCESS)
+> +                       return 0;
+> +
+> +               dev_dbg(dev, "Unable to replay virt channel command, VF ID %d, virtchnl status code %d. op code %d, len %d.\n",
+> +                       vf->vf_id, v_retval, v_opcode, msglen);
+> +               return -EIO;
+> +       }
+> +
+> +       return ice_vc_send_response_to_vf(vf, v_opcode, v_retval, msg, msglen);
+> +}
+> +
+>   /**
+>    * ice_vc_get_ver_msg
+>    * @vf: pointer to the VF info
+> @@ -332,9 +369,9 @@ static int ice_vc_get_ver_msg(struct ice_vf *vf, u8 *msg)
+>          if (VF_IS_V10(&vf->vf_ver))
+>                  info.minor = VIRTCHNL_VERSION_MINOR_NO_VF_CAPS;
+> 
+> -       return ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_VERSION,
+> -                                    VIRTCHNL_STATUS_SUCCESS, (u8 *)&info,
+> -                                    sizeof(struct virtchnl_version_info));
+> +       return ice_vc_respond_to_vf(vf, VIRTCHNL_OP_VERSION,
+> +                                   VIRTCHNL_STATUS_SUCCESS, (u8 *)&info,
+> +                                   sizeof(struct virtchnl_version_info));
+>   }
+> 
+>   /**
+> @@ -522,8 +559,8 @@ static int ice_vc_get_vf_res_msg(struct ice_vf *vf, u8 *msg)
+> 
+>   err:
+>          /* send the response back to the VF */
+> -       ret = ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_GET_VF_RESOURCES, v_ret,
+> -                                   (u8 *)vfres, len);
+> +       ret = ice_vc_respond_to_vf(vf, VIRTCHNL_OP_GET_VF_RESOURCES, v_ret,
+> +                                  (u8 *)vfres, len);
+> 
+>          kfree(vfres);
+>          return ret;
+> @@ -892,7 +929,7 @@ static int ice_vc_handle_rss_cfg(struct ice_vf *vf, u8 *msg, bool add)
+>          }
+> 
+>   error_param:
+> -       return ice_vc_send_msg_to_vf(vf, v_opcode, v_ret, NULL, 0);
+> +       return ice_vc_respond_to_vf(vf, v_opcode, v_ret, NULL, 0);
+>   }
+> 
+>   /**
+> @@ -938,8 +975,8 @@ static int ice_vc_config_rss_key(struct ice_vf *vf, u8 *msg)
+>          if (ice_set_rss_key(vsi, vrk->key))
+>                  v_ret = VIRTCHNL_STATUS_ERR_ADMIN_QUEUE_ERROR;
+>   error_param:
+> -       return ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_CONFIG_RSS_KEY, v_ret,
+> -                                    NULL, 0);
+> +       return ice_vc_respond_to_vf(vf, VIRTCHNL_OP_CONFIG_RSS_KEY, v_ret,
+> +                                   NULL, 0);
+>   }
+> 
+>   /**
+> @@ -984,7 +1021,7 @@ static int ice_vc_config_rss_lut(struct ice_vf *vf, u8 *msg)
+>          if (ice_set_rss_lut(vsi, vrl->lut, ICE_LUT_VSI_SIZE))
+>                  v_ret = VIRTCHNL_STATUS_ERR_ADMIN_QUEUE_ERROR;
+>   error_param:
+> -       return ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_CONFIG_RSS_LUT, v_ret,
+> +       return ice_vc_respond_to_vf(vf, VIRTCHNL_OP_CONFIG_RSS_LUT, v_ret,
+>                                       NULL, 0);
+>   }
+> 
+> @@ -1124,8 +1161,8 @@ static int ice_vc_cfg_promiscuous_mode_msg(struct ice_vf *vf, u8 *msg)
+>          }
+> 
+>   error_param:
+> -       return ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_CONFIG_PROMISCUOUS_MODE,
+> -                                    v_ret, NULL, 0);
+> +       return ice_vc_respond_to_vf(vf, VIRTCHNL_OP_CONFIG_PROMISCUOUS_MODE,
+> +                                   v_ret, NULL, 0);
+>   }
+> 
+>   /**
+> @@ -1165,8 +1202,8 @@ static int ice_vc_get_stats_msg(struct ice_vf *vf, u8 *msg)
+> 
+>   error_param:
+>          /* send the response to the VF */
+> -       return ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_GET_STATS, v_ret,
+> -                                    (u8 *)&stats, sizeof(stats));
+> +       return ice_vc_respond_to_vf(vf, VIRTCHNL_OP_GET_STATS, v_ret,
+> +                                   (u8 *)&stats, sizeof(stats));
+>   }
+> 
+>   /**
+> @@ -1315,8 +1352,8 @@ static int ice_vc_ena_qs_msg(struct ice_vf *vf, u8 *msg)
+> 
+>   error_param:
+>          /* send the response to the VF */
+> -       return ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_ENABLE_QUEUES, v_ret,
+> -                                    NULL, 0);
+> +       return ice_vc_respond_to_vf(vf, VIRTCHNL_OP_ENABLE_QUEUES, v_ret,
+> +                                   NULL, 0);
+>   }
+> 
+>   /**
+> @@ -1455,8 +1492,8 @@ static int ice_vc_dis_qs_msg(struct ice_vf *vf, u8 *msg)
+> 
+>   error_param:
+>          /* send the response to the VF */
+> -       return ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_DISABLE_QUEUES, v_ret,
+> -                                    NULL, 0);
+> +       return ice_vc_respond_to_vf(vf, VIRTCHNL_OP_DISABLE_QUEUES, v_ret,
+> +                                   NULL, 0);
+>   }
+> 
+>   /**
+> @@ -1586,8 +1623,8 @@ static int ice_vc_cfg_irq_map_msg(struct ice_vf *vf, u8 *msg)
+> 
+>   error_param:
+>          /* send the response to the VF */
+> -       return ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_CONFIG_IRQ_MAP, v_ret,
+> -                                    NULL, 0);
+> +       return ice_vc_respond_to_vf(vf, VIRTCHNL_OP_CONFIG_IRQ_MAP, v_ret,
+> +                                   NULL, 0);
+>   }
+> 
+>   /**
+> @@ -1730,8 +1767,8 @@ static int ice_vc_cfg_qs_msg(struct ice_vf *vf, u8 *msg)
+>          }
+> 
+>          /* send the response to the VF */
+> -       return ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_CONFIG_VSI_QUEUES,
+> -                                    VIRTCHNL_STATUS_SUCCESS, NULL, 0);
+> +       return ice_vc_respond_to_vf(vf, VIRTCHNL_OP_CONFIG_VSI_QUEUES,
+> +                                   VIRTCHNL_STATUS_SUCCESS, NULL, 0);
+>   error_param:
+>          /* disable whatever we can */
+>          for (; i >= 0; i--) {
+> @@ -1746,8 +1783,8 @@ static int ice_vc_cfg_qs_msg(struct ice_vf *vf, u8 *msg)
+>          ice_lag_move_new_vf_nodes(vf);
+> 
+>          /* send the response to the VF */
+> -       return ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_CONFIG_VSI_QUEUES,
+> -                                    VIRTCHNL_STATUS_ERR_PARAM, NULL, 0);
+> +       return ice_vc_respond_to_vf(vf, VIRTCHNL_OP_CONFIG_VSI_QUEUES,
+> +                                   VIRTCHNL_STATUS_ERR_PARAM, NULL, 0);
+>   }
+> 
+>   /**
+> @@ -2049,7 +2086,7 @@ ice_vc_handle_mac_addr_msg(struct ice_vf *vf, u8 *msg, bool set)
+> 
+>   handle_mac_exit:
+>          /* send the response to the VF */
+> -       return ice_vc_send_msg_to_vf(vf, vc_op, v_ret, NULL, 0);
+> +       return ice_vc_respond_to_vf(vf, vc_op, v_ret, NULL, 0);
+>   }
+> 
+>   /**
+> @@ -2132,8 +2169,8 @@ static int ice_vc_request_qs_msg(struct ice_vf *vf, u8 *msg)
+> 
+>   error_param:
+>          /* send the response to the VF */
+> -       return ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_REQUEST_QUEUES,
+> -                                    v_ret, (u8 *)vfres, sizeof(*vfres));
+> +       return ice_vc_respond_to_vf(vf, VIRTCHNL_OP_REQUEST_QUEUES,
+> +                                   v_ret, (u8 *)vfres, sizeof(*vfres));
+>   }
+> 
+>   /**
+> @@ -2398,11 +2435,11 @@ static int ice_vc_process_vlan_msg(struct ice_vf *vf, u8 *msg, bool add_v)
+>   error_param:
+>          /* send the response to the VF */
+>          if (add_v)
+> -               return ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_ADD_VLAN, v_ret,
+> -                                            NULL, 0);
+> +               return ice_vc_respond_to_vf(vf, VIRTCHNL_OP_ADD_VLAN, v_ret,
+> +                                           NULL, 0);
+>          else
+> -               return ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_DEL_VLAN, v_ret,
+> -                                            NULL, 0);
+> +               return ice_vc_respond_to_vf(vf, VIRTCHNL_OP_DEL_VLAN, v_ret,
+> +                                           NULL, 0);
+>   }
+> 
+>   /**
+> @@ -2477,8 +2514,8 @@ static int ice_vc_ena_vlan_stripping(struct ice_vf *vf)
+>                  vf->vlan_strip_ena |= ICE_INNER_VLAN_STRIP_ENA;
+> 
+>   error_param:
+> -       return ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_ENABLE_VLAN_STRIPPING,
+> -                                    v_ret, NULL, 0);
+> +       return ice_vc_respond_to_vf(vf, VIRTCHNL_OP_ENABLE_VLAN_STRIPPING,
+> +                                   v_ret, NULL, 0);
+>   }
+> 
+>   /**
+> @@ -2514,8 +2551,8 @@ static int ice_vc_dis_vlan_stripping(struct ice_vf *vf)
+>                  vf->vlan_strip_ena &= ~ICE_INNER_VLAN_STRIP_ENA;
+> 
+>   error_param:
+> -       return ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_DISABLE_VLAN_STRIPPING,
+> -                                    v_ret, NULL, 0);
+> +       return ice_vc_respond_to_vf(vf, VIRTCHNL_OP_DISABLE_VLAN_STRIPPING,
+> +                                   v_ret, NULL, 0);
+>   }
+> 
+>   /**
+> @@ -2550,8 +2587,8 @@ static int ice_vc_get_rss_hena(struct ice_vf *vf)
+>          vrh->hena = ICE_DEFAULT_RSS_HENA;
+>   err:
+>          /* send the response back to the VF */
+> -       ret = ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_GET_RSS_HENA_CAPS, v_ret,
+> -                                   (u8 *)vrh, len);
+> +       ret = ice_vc_respond_to_vf(vf, VIRTCHNL_OP_GET_RSS_HENA_CAPS, v_ret,
+> +                                  (u8 *)vrh, len);
+>          kfree(vrh);
+>          return ret;
+>   }
+> @@ -2616,8 +2653,8 @@ static int ice_vc_set_rss_hena(struct ice_vf *vf, u8 *msg)
+> 
+>          /* send the response to the VF */
+>   err:
+> -       return ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_SET_RSS_HENA, v_ret,
+> -                                    NULL, 0);
+> +       return ice_vc_respond_to_vf(vf, VIRTCHNL_OP_SET_RSS_HENA, v_ret,
+> +                                   NULL, 0);
+>   }
+> 
+>   /**
+> @@ -2672,8 +2709,8 @@ static int ice_vc_query_rxdid(struct ice_vf *vf)
+>          pf->supported_rxdids = rxdid->supported_rxdids;
+> 
+>   err:
+> -       ret = ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_GET_SUPPORTED_RXDIDS,
+> -                                   v_ret, (u8 *)rxdid, len);
+> +       ret = ice_vc_respond_to_vf(vf, VIRTCHNL_OP_GET_SUPPORTED_RXDIDS,
+> +                                  v_ret, (u8 *)rxdid, len);
+>          kfree(rxdid);
+>          return ret;
+>   }
+> @@ -2909,8 +2946,8 @@ static int ice_vc_get_offload_vlan_v2_caps(struct ice_vf *vf)
+>          memcpy(&vf->vlan_v2_caps, caps, sizeof(*caps));
+> 
+>   out:
+> -       err = ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_GET_OFFLOAD_VLAN_V2_CAPS,
+> -                                   v_ret, (u8 *)caps, len);
+> +       err = ice_vc_respond_to_vf(vf, VIRTCHNL_OP_GET_OFFLOAD_VLAN_V2_CAPS,
+> +                                  v_ret, (u8 *)caps, len);
+>          kfree(caps);
+>          return err;
+>   }
+> @@ -3151,8 +3188,8 @@ static int ice_vc_remove_vlan_v2_msg(struct ice_vf *vf, u8 *msg)
+>                  v_ret = VIRTCHNL_STATUS_ERR_PARAM;
+> 
+>   out:
+> -       return ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_DEL_VLAN_V2, v_ret, NULL,
+> -                                    0);
+> +       return ice_vc_respond_to_vf(vf, VIRTCHNL_OP_DEL_VLAN_V2,
+> +                                   v_ret, NULL, 0);
+>   }
+> 
+>   /**
+> @@ -3293,8 +3330,8 @@ static int ice_vc_add_vlan_v2_msg(struct ice_vf *vf, u8 *msg)
+>                  v_ret = VIRTCHNL_STATUS_ERR_PARAM;
+> 
+>   out:
+> -       return ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_ADD_VLAN_V2, v_ret, NULL,
+> -                                    0);
+> +       return ice_vc_respond_to_vf(vf, VIRTCHNL_OP_ADD_VLAN_V2,
+> +                                   v_ret, NULL, 0);
+>   }
+> 
+>   /**
+> @@ -3525,8 +3562,8 @@ static int ice_vc_ena_vlan_stripping_v2_msg(struct ice_vf *vf, u8 *msg)
+>                  vf->vlan_strip_ena |= ICE_INNER_VLAN_STRIP_ENA;
+> 
+>   out:
+> -       return ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_ENABLE_VLAN_STRIPPING_V2,
+> -                                    v_ret, NULL, 0);
+> +       return ice_vc_respond_to_vf(vf, VIRTCHNL_OP_ENABLE_VLAN_STRIPPING_V2,
+> +                                   v_ret, NULL, 0);
+>   }
+> 
+>   /**
+> @@ -3600,8 +3637,8 @@ static int ice_vc_dis_vlan_stripping_v2_msg(struct ice_vf *vf, u8 *msg)
+>                  vf->vlan_strip_ena &= ~ICE_INNER_VLAN_STRIP_ENA;
+> 
+>   out:
+> -       return ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_DISABLE_VLAN_STRIPPING_V2,
+> -                                    v_ret, NULL, 0);
+> +       return ice_vc_respond_to_vf(vf, VIRTCHNL_OP_DISABLE_VLAN_STRIPPING_V2,
+> +                                   v_ret, NULL, 0);
+>   }
+> 
+>   /**
+> @@ -3659,8 +3696,8 @@ static int ice_vc_ena_vlan_insertion_v2_msg(struct ice_vf *vf, u8 *msg)
+>          }
+> 
+>   out:
+> -       return ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_ENABLE_VLAN_INSERTION_V2,
+> -                                    v_ret, NULL, 0);
+> +       return ice_vc_respond_to_vf(vf, VIRTCHNL_OP_ENABLE_VLAN_INSERTION_V2,
+> +                                   v_ret, NULL, 0);
+>   }
+> 
+>   /**
+> @@ -3714,8 +3751,8 @@ static int ice_vc_dis_vlan_insertion_v2_msg(struct ice_vf *vf, u8 *msg)
+>          }
+> 
+>   out:
+> -       return ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_DISABLE_VLAN_INSERTION_V2,
+> -                                    v_ret, NULL, 0);
+> +       return ice_vc_respond_to_vf(vf, VIRTCHNL_OP_DISABLE_VLAN_INSERTION_V2,
+> +                                   v_ret, NULL, 0);
+>   }
+> 
+>   static const struct ice_virtchnl_ops ice_virtchnl_dflt_ops = {
+> @@ -3812,8 +3849,8 @@ static int ice_vc_repr_add_mac(struct ice_vf *vf, u8 *msg)
+>          }
+> 
+>   handle_mac_exit:
+> -       return ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_ADD_ETH_ADDR,
+> -                                    v_ret, NULL, 0);
+> +       return ice_vc_respond_to_vf(vf, VIRTCHNL_OP_ADD_ETH_ADDR,
+> +                                   v_ret, NULL, 0);
+>   }
+> 
+>   /**
+> @@ -3832,8 +3869,8 @@ ice_vc_repr_del_mac(struct ice_vf __always_unused *vf, u8 __always_unused *msg)
+> 
+>          ice_update_legacy_cached_mac(vf, &al->list[0]);
+> 
+> -       return ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_DEL_ETH_ADDR,
+> -                                    VIRTCHNL_STATUS_SUCCESS, NULL, 0);
+> +       return ice_vc_respond_to_vf(vf, VIRTCHNL_OP_DEL_ETH_ADDR,
+> +                                   VIRTCHNL_STATUS_SUCCESS, NULL, 0);
+>   }
+> 
+>   static int
+> @@ -3842,8 +3879,8 @@ ice_vc_repr_cfg_promiscuous_mode(struct ice_vf *vf, u8 __always_unused *msg)
+>          dev_dbg(ice_pf_to_dev(vf->pf),
+>                  "Can't config promiscuous mode in switchdev mode for VF %d\n",
+>                  vf->vf_id);
+> -       return ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_CONFIG_PROMISCUOUS_MODE,
+> -                                    VIRTCHNL_STATUS_ERR_NOT_SUPPORTED,
+> +       return ice_vc_respond_to_vf(vf, VIRTCHNL_OP_CONFIG_PROMISCUOUS_MODE,
+> +                                   VIRTCHNL_STATUS_ERR_NOT_SUPPORTED,
+>                                       NULL, 0);
+>   }
+> 
+> @@ -3986,16 +4023,16 @@ void ice_vc_process_vf_msg(struct ice_pf *pf, struct ice_rq_event_info *event,
+> 
+>   error_handler:
+>          if (err) {
+> -               ice_vc_send_msg_to_vf(vf, v_opcode, VIRTCHNL_STATUS_ERR_PARAM,
+> -                                     NULL, 0);
+> +               ice_vc_respond_to_vf(vf, v_opcode, VIRTCHNL_STATUS_ERR_PARAM,
+> +                                    NULL, 0);
+>                  dev_err(dev, "Invalid message from VF %d, opcode %d, len %d, error %d\n",
+>                          vf_id, v_opcode, msglen, err);
+>                  goto finish;
+>          }
+> 
+>          if (!ice_vc_is_opcode_allowed(vf, v_opcode)) {
+> -               ice_vc_send_msg_to_vf(vf, v_opcode,
+> -                                     VIRTCHNL_STATUS_ERR_NOT_SUPPORTED, NULL,
+> +               ice_vc_respond_to_vf(vf, v_opcode,
+> +                                    VIRTCHNL_STATUS_ERR_NOT_SUPPORTED, NULL,
+>                                        0);
+>                  goto finish;
+>          }
+> @@ -4106,9 +4143,9 @@ void ice_vc_process_vf_msg(struct ice_pf *pf, struct ice_rq_event_info *event,
+>          default:
+>                  dev_err(dev, "Unsupported opcode %d from VF %d\n", v_opcode,
+>                          vf_id);
+> -               err = ice_vc_send_msg_to_vf(vf, v_opcode,
+> -                                           VIRTCHNL_STATUS_ERR_NOT_SUPPORTED,
+> -                                           NULL, 0);
+> +               err = ice_vc_respond_to_vf(vf, v_opcode,
+> +                                          VIRTCHNL_STATUS_ERR_NOT_SUPPORTED,
+> +                                          NULL, 0);
+>                  break;
+>          }
+>          if (err) {
+> diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl.h b/drivers/net/ethernet/intel/ice/ice_virtchnl.h
+> index cd747718de73..a2b6094e2f2f 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_virtchnl.h
+> +++ b/drivers/net/ethernet/intel/ice/ice_virtchnl.h
+> @@ -60,8 +60,8 @@ void ice_vc_notify_vf_link_state(struct ice_vf *vf);
+>   void ice_vc_notify_link_state(struct ice_pf *pf);
+>   void ice_vc_notify_reset(struct ice_pf *pf);
+>   int
+> -ice_vc_send_msg_to_vf(struct ice_vf *vf, u32 v_opcode,
+> -                     enum virtchnl_status_code v_retval, u8 *msg, u16 msglen);
+> +ice_vc_respond_to_vf(struct ice_vf *vf, u32 v_opcode,
+> +                    enum virtchnl_status_code v_retval, u8 *msg, u16 msglen);
+>   bool ice_vc_isvalid_vsi_id(struct ice_vf *vf, u16 vsi_id);
+>   void ice_vc_process_vf_msg(struct ice_pf *pf, struct ice_rq_event_info *event,
+>                             struct ice_mbx_data *mbxdata);
+> @@ -73,8 +73,8 @@ static inline void ice_vc_notify_link_state(struct ice_pf *pf) { }
+>   static inline void ice_vc_notify_reset(struct ice_pf *pf) { }
+> 
+>   static inline int
+> -ice_vc_send_msg_to_vf(struct ice_vf *vf, u32 v_opcode,
+> -                     enum virtchnl_status_code v_retval, u8 *msg, u16 msglen)
+> +ice_vc_respond_to_vf(struct ice_vf *vf, u32 v_opcode,
+> +                    enum virtchnl_status_code v_retval, u8 *msg, u16 msglen)
+>   {
+>          return -EOPNOTSUPP;
+>   }
+> diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.c b/drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.c
+> index 24b23b7ef04a..816d8bf8bec4 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.c
+> +++ b/drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.c
+> @@ -1584,8 +1584,8 @@ ice_vc_add_fdir_fltr_post(struct ice_vf *vf, struct ice_vf_fdir_ctx *ctx,
+>          resp->flow_id = conf->flow_id;
+>          vf->fdir.fdir_fltr_cnt[conf->input.flow_type][is_tun]++;
+> 
+> -       ret = ice_vc_send_msg_to_vf(vf, ctx->v_opcode, v_ret,
+> -                                   (u8 *)resp, len);
+> +       ret = ice_vc_respond_to_vf(vf, ctx->v_opcode, v_ret,
+> +                                  (u8 *)resp, len);
+>          kfree(resp);
+> 
+>          dev_dbg(dev, "VF %d: flow_id:0x%X, FDIR %s success!\n",
+> @@ -1600,8 +1600,8 @@ ice_vc_add_fdir_fltr_post(struct ice_vf *vf, struct ice_vf_fdir_ctx *ctx,
+>          ice_vc_fdir_remove_entry(vf, conf, conf->flow_id);
+>          devm_kfree(dev, conf);
+> 
+> -       ret = ice_vc_send_msg_to_vf(vf, ctx->v_opcode, v_ret,
+> -                                   (u8 *)resp, len);
+> +       ret = ice_vc_respond_to_vf(vf, ctx->v_opcode, v_ret,
+> +                                  (u8 *)resp, len);
+>          kfree(resp);
+>          return ret;
+>   }
+> @@ -1648,8 +1648,8 @@ ice_vc_del_fdir_fltr_post(struct ice_vf *vf, struct ice_vf_fdir_ctx *ctx,
+>          ice_vc_fdir_remove_entry(vf, conf, conf->flow_id);
+>          vf->fdir.fdir_fltr_cnt[conf->input.flow_type][is_tun]--;
+> 
+> -       ret = ice_vc_send_msg_to_vf(vf, ctx->v_opcode, v_ret,
+> -                                   (u8 *)resp, len);
+> +       ret = ice_vc_respond_to_vf(vf, ctx->v_opcode, v_ret,
+> +                                  (u8 *)resp, len);
+>          kfree(resp);
+> 
+>          dev_dbg(dev, "VF %d: flow_id:0x%X, FDIR %s success!\n",
+> @@ -1665,8 +1665,8 @@ ice_vc_del_fdir_fltr_post(struct ice_vf *vf, struct ice_vf_fdir_ctx *ctx,
+>          if (success)
+>                  devm_kfree(dev, conf);
+> 
+> -       ret = ice_vc_send_msg_to_vf(vf, ctx->v_opcode, v_ret,
+> -                                   (u8 *)resp, len);
+> +       ret = ice_vc_respond_to_vf(vf, ctx->v_opcode, v_ret,
+> +                                  (u8 *)resp, len);
+>          kfree(resp);
+>          return ret;
+>   }
+> @@ -1863,8 +1863,8 @@ int ice_vc_add_fdir_fltr(struct ice_vf *vf, u8 *msg)
+>                  v_ret = VIRTCHNL_STATUS_SUCCESS;
+>                  stat->status = VIRTCHNL_FDIR_SUCCESS;
+>                  devm_kfree(dev, conf);
+> -               ret = ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_ADD_FDIR_FILTER,
+> -                                           v_ret, (u8 *)stat, len);
+> +               ret = ice_vc_respond_to_vf(vf, VIRTCHNL_OP_ADD_FDIR_FILTER,
+> +                                          v_ret, (u8 *)stat, len);
+>                  goto exit;
+>          }
+> 
+> @@ -1922,8 +1922,8 @@ int ice_vc_add_fdir_fltr(struct ice_vf *vf, u8 *msg)
+>   err_free_conf:
+>          devm_kfree(dev, conf);
+>   err_exit:
+> -       ret = ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_ADD_FDIR_FILTER, v_ret,
+> -                                   (u8 *)stat, len);
+> +       ret = ice_vc_respond_to_vf(vf, VIRTCHNL_OP_ADD_FDIR_FILTER, v_ret,
+> +                                  (u8 *)stat, len);
+>          kfree(stat);
+>          return ret;
+>   }
+> @@ -2006,8 +2006,8 @@ int ice_vc_del_fdir_fltr(struct ice_vf *vf, u8 *msg)
+>   err_del_tmr:
+>          ice_vc_fdir_clear_irq_ctx(vf);
+>   err_exit:
+> -       ret = ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_DEL_FDIR_FILTER, v_ret,
+> -                                   (u8 *)stat, len);
+> +       ret = ice_vc_respond_to_vf(vf, VIRTCHNL_OP_DEL_FDIR_FILTER, v_ret,
+> +                                  (u8 *)stat, len);
+>          kfree(stat);
+>          return ret;
+>   }
+> --
+> 2.34.1
+> 
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
