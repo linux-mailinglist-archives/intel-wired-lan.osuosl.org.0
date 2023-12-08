@@ -1,156 +1,123 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id A50D280AFA9
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  8 Dec 2023 23:29:06 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id A3F4780B097
+	for <lists+intel-wired-lan@lfdr.de>; Sat,  9 Dec 2023 00:31:09 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 34AEB6F722;
-	Fri,  8 Dec 2023 22:29:05 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 34AEB6F722
+	by smtp3.osuosl.org (Postfix) with ESMTP id 341346F6A0;
+	Fri,  8 Dec 2023 23:31:08 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 341346F6A0
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1702074545;
-	bh=+NBV9udp+6xVG950TEi8npyY7AYLIqBMQIH73Ysk8MU=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
+	s=default; t=1702078268;
+	bh=irR7lOjY4iyAk3NCvEyTIWqeFPRTQ5YhxWtBErHRnTY=;
+	h=From:To:In-reply-to:References:Date:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=zkD/04JGTc6KZmB68RPTgjp1Kl2luVG1TO94RpHPUEWiSZKiSlU0MtnGAfQSdaYUb
-	 3kwFe721kk6acd/wPyx/50V4IwG3rsamtOQP83vSLVVJWDgcDz5eZOFW6bP7DbSfkW
-	 EINsLRcSEeCJ13GJUQeMMTelmjaHD7ieKo541WbGxg1p2zQJqy/hZDG7wITwL7BhzJ
-	 2mND0TEWqkeKwdpaa/osk9/j4UV+bDarJnFTp0xUCiUm83IBk4WA9CavlXwGmwutEr
-	 u8zxmZiT5yTBrwaENT5QbVxzHVPccbFWe9pXrgvY9q+oIYSQLaVhfOhJ1FKwzQA5LU
-	 dBklw3vrN2smA==
+	b=gPiV14r1VlPGrzPEnrbWgIffZFeVdmLdWw6YLh8jwY4gXMjDYuOa1V0jl1U+9Q5I/
+	 RI4Wh3CLBtz6cAJf52FVbmWCl83EKiHNn+kYvK78q7WVeZd3C4w5TzeQSJu0Leh54W
+	 8Jv1NgR0u9B75clkBlLBwIO4Xhtbf6VHKzQR26FuGpHeGCGKAQgEV5hfatBWPTR2Vk
+	 IwWPipw9MHiQH2amfLHjI9/o1nYAepEUGB80mn638Z3IdVSeZ8xE+62Sa6SYfOh0BR
+	 WjhixDLO4v4ghCZpCVdJIpAmw0c+bWSJTQeNw0uV1DHbYmAha6EBCVkPnk8FL2elDb
+	 eMrmUdHwDbYag==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id WwW7w0xDwULT; Fri,  8 Dec 2023 22:29:03 +0000 (UTC)
+	with ESMTP id ABjWgpoeXZeF; Fri,  8 Dec 2023 23:31:07 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 3AB6D6F6B5;
-	Fri,  8 Dec 2023 22:29:02 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3AB6D6F6B5
+	by smtp3.osuosl.org (Postfix) with ESMTP id EBEF660F41;
+	Fri,  8 Dec 2023 23:31:06 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org EBEF660F41
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 67A4D1BF995
- for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Dec 2023 22:28:56 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id A279B1BF5D7
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Dec 2023 23:31:01 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 3116A409E7
- for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Dec 2023 22:28:56 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3116A409E7
+ by smtp3.osuosl.org (Postfix) with ESMTP id 792A760F41
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Dec 2023 23:31:01 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 792A760F41
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ft4RAgUJopJs for <intel-wired-lan@lists.osuosl.org>;
- Fri,  8 Dec 2023 22:28:54 +0000 (UTC)
-Received: from NAM10-MW2-obe.outbound.protection.outlook.com
- (mail-mw2nam10on2048.outbound.protection.outlook.com [40.107.94.48])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 81BE54099B
- for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Dec 2023 22:28:54 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 81BE54099B
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=G16COIAuPau43BgQLOWqxiGCk73qXP64kfBC5LG1uUqpDzhhJsaQFqS6POMPixUw8VY72c+QnZTWrX/JuOsi9hEZsXgfneuXQ1RAzTAkufncXxCE9bBtOwIzbkQPos6ymdBUAy+nBgC1Zv4wPd/v+T6f81b8WFyg/Jm3jSGSI8RP7YTIkk/NaPiAS68iJMbADIqm2ZVOY94gu+cATEXAMPq90two9KEQHVkYcd5inYT/6l8RZnjVUUK/oh3ia9tvmtHI+HZJEF5W68SU7LtuXCmXK1bVEJvMqFDh1R3Xe5TGC+ooawasUMVDgKpGAzYkV7YOkW6NazY02O53StQ9RA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=rxNbUMoujh9v4RFtZuIlMwhqEyFVvbqEOsTWFeEC6TY=;
- b=J2Zgzt4wNP6etbqEDd3izruYyhdZ5ysUGFHuAfH2o3JOr9Wgt85GA0b7E2Da6Q1RgdEUEs5cp+caKp249pt0U8ebdWL0AEJiLA3nUp8phNPlQ5pU+fU+LtW3RXPoBkfz3IwfV0YgrLg21WLzH1IU3bSN1dNGINUNt2DRZbW4fyciRjh8YPgKYsTrNtJ6+eK0CQDzQ2V87pUplZ+gZed4Dqyng2pskxEoEvHHj1BbXJwSm1vPjWriKNMCkIK+/o/YFU2IZyjORvATRLj8Sowc6Us2ksSmCYnYTVleh4lzZ27QJr7hpzwYAoyNbZC0e7XPOOWI4TWb3Gr9JvWkkw5L8Q==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=amd.com; dmarc=pass action=none header.from=amd.com; dkim=pass
- header.d=amd.com; arc=none
-Received: from PH0PR12MB7982.namprd12.prod.outlook.com (2603:10b6:510:28d::5)
- by IA0PR12MB8647.namprd12.prod.outlook.com (2603:10b6:208:480::8)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7068.28; Fri, 8 Dec
- 2023 22:28:49 +0000
-Received: from PH0PR12MB7982.namprd12.prod.outlook.com
- ([fe80::bec4:77b3:e1d1:5615]) by PH0PR12MB7982.namprd12.prod.outlook.com
- ([fe80::bec4:77b3:e1d1:5615%5]) with mapi id 15.20.7068.028; Fri, 8 Dec 2023
- 22:28:48 +0000
-Message-ID: <d1a5437e-a1ac-1fde-dfdf-9c1d8768b052@amd.com>
-Date: Fri, 8 Dec 2023 14:28:46 -0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Thunderbird/102.15.1
-Content-Language: en-US
-To: Yahui Cao <yahui.cao@intel.com>, intel-wired-lan@lists.osuosl.org
-References: <20231121025111.257597-1-yahui.cao@intel.com>
- <20231121025111.257597-4-yahui.cao@intel.com>
-From: Brett Creeley <bcreeley@amd.com>
-In-Reply-To: <20231121025111.257597-4-yahui.cao@intel.com>
-X-ClientProxiedBy: SJ0PR03CA0375.namprd03.prod.outlook.com
- (2603:10b6:a03:3a1::20) To PH0PR12MB7982.namprd12.prod.outlook.com
- (2603:10b6:510:28d::5)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 7Hkmvxkqcqi0 for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  8 Dec 2023 23:31:00 +0000 (UTC)
+Received: from smtp-relay-internal-1.canonical.com
+ (smtp-relay-internal-1.canonical.com [185.125.188.123])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 0E90460F3E
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Dec 2023 23:30:59 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0E90460F3E
+Received: from mail-il1-f197.google.com (mail-il1-f197.google.com
+ [209.85.166.197])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by smtp-relay-internal-1.canonical.com (Postfix) with ESMTPS id 3BF923F18B
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Dec 2023 23:30:57 +0000 (UTC)
+Received: by mail-il1-f197.google.com with SMTP id
+ e9e14a558f8ab-35d47b916a1so25404515ab.3
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 08 Dec 2023 15:30:57 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1702078256; x=1702683056;
+ h=message-id:date:content-transfer-encoding:content-id:mime-version
+ :comments:references:in-reply-to:subject:cc:to:from
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=W4YmvBWrOBzInEYUWdzBgaE35XDrnqoquNNpR5Ozyw8=;
+ b=oEGy2F8OAI9rdcocz7qV5JGH5S0a8FtzgrjtwoQBbscaDamPrtdzBSyeK4BzuPuIQ3
+ gGzyFDetCKoaRdsLJ0zQ0X7rChIIiYrPkTiQR8vdwomCc30imkrmm2x4IyJjADRHVTgS
+ tyxGfm/JzzrpA84PmnpyrYjHEJQPEXJ4uNyAICqCuooOrwz30hoiu3b2nVyDxvJj8eSO
+ g5j948dnuNN/ubf9QsIyCp6AhfHvuYMHLPBY6epH5bn+XbI8gH5pwGp54uPhoSL3c6PC
+ oyQXkFH5J9Pp1Jd0ORPgA+L+HjmKNBdtVKB4s1t/NTGXwZ0lb5bbbgbMEQ3LSKPosMgM
+ Inaw==
+X-Gm-Message-State: AOJu0YxnfXB5mT7MWd1GQx4liR1baoZA9yCCscnH+egQoWQw2L5fmKH1
+ xLuWZ29jkrOVpwxujgCAgRJyr3dq3zlLSDxWKRasWMLYVP6euhbhirYTos5eZF6MPjfnpCcI0WC
+ HS8jVk2wz+Pct3vjNTD69svA6dhbCs71BC/XBD5fH+OmpsaE=
+X-Received: by 2002:a92:cdae:0:b0:35d:59a2:1285 with SMTP id
+ g14-20020a92cdae000000b0035d59a21285mr1173530ild.49.1702078255922; 
+ Fri, 08 Dec 2023 15:30:55 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEfsWTaPFJlhMNBh4Ocy0DObSJXiXWvrbBSbZz0L4YyFpOPyuwVQUfGjYVcOrHUq4/BJxnsEw==
+X-Received: by 2002:a92:cdae:0:b0:35d:59a2:1285 with SMTP id
+ g14-20020a92cdae000000b0035d59a21285mr1173517ild.49.1702078255572; 
+ Fri, 08 Dec 2023 15:30:55 -0800 (PST)
+Received: from famine.localdomain ([50.125.80.253])
+ by smtp.gmail.com with ESMTPSA id
+ k10-20020a170902694a00b001d0ba4513b0sm2232119plt.287.2023.12.08.15.30.55
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Fri, 08 Dec 2023 15:30:55 -0800 (PST)
+Received: by famine.localdomain (Postfix, from userid 1000)
+ id CCFF25FFF6; Fri,  8 Dec 2023 15:30:54 -0800 (PST)
+Received: from famine (localhost [127.0.0.1])
+ by famine.localdomain (Postfix) with ESMTP id C52D09F88E;
+ Fri,  8 Dec 2023 15:30:54 -0800 (PST)
+From: Jay Vosburgh <jay.vosburgh@canonical.com>
+To: "Ertman, David M" <david.m.ertman@intel.com>
+In-reply-to: <MW5PR11MB581150E2535B00AD04A37913DD8AA@MW5PR11MB5811.namprd11.prod.outlook.com>
+References: <20231207182158.2199799-1-david.m.ertman@intel.com>
+ <bca6d80f-21de-f6dd-7b86-3daa867323e1@intel.com>
+ <MW5PR11MB581150E2535B00AD04A37913DD8AA@MW5PR11MB5811.namprd11.prod.outlook.com>
+Comments: In-reply-to "Ertman, David M" <david.m.ertman@intel.com>
+ message dated "Fri, 08 Dec 2023 22:24:06 +0000."
+X-Mailer: MH-E 8.6+git; nmh 1.6; Emacs 29.0.50
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: PH0PR12MB7982:EE_|IA0PR12MB8647:EE_
-X-MS-Office365-Filtering-Correlation-Id: a577b004-e4c3-4b1b-3c08-08dbf83d0c31
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: I3dX42B+f9ZNMZtULZ1FoFvPs250ObdvK16gtKbsFX6LehnzRpYKq1gIwFYCCJTjPtUj6+VUTJOhmhOd9ouybGEfK2oAMe41BaTrclPR3dMOggSQsSveSs0QZkwRWMQCyfBu8XIrFIhxhk2cWZz8QgKgbgGHfC8Z1tn62+TEQxbMizrCLkyOI2iqJlueOHB2t9Vi15gtN5lEnvcBfQIxPd9z7HBYUzsq8nE4cYJiO2u7fMmhVwiOOGB4Ki1gd5xNcgjhq61QMy5P0WYX+8R/2obLseBxPkWGi9bQqkOBm14w/0iD4iTSNi6F63JqKRrNKc6QZrOVPbpyqdWhucqto9DzLEBttVDyACWi7B8s+qXy8dxQp7aqaAm9dR5Du4gGUqCj5jBkfrY4DzcXKe8bqhzfg4EwDezUfDc/yCPJfFQUj3OfGaxrfVsynnsco8tYuFGeoBlLA+VXqdELbJfHkvC2te4Zo4A7QOytkB4jFwqH94L07gGbDLL0p/z6a9C2okK5r/uKwpC9U7bJmSTyvWrQpl3WZcmQ8XXhZQbO9KTAZpivea2tQvpXbx6M20bGbAFEwXe8+HS0jatxfq263tB+oz7tpAse5KSVrnCq5YgenqbcMiujAKdNQuvJnx/OZSjYN9f4jmngvEzn5lWSAnc6pz6Zr7bdYdvyFPvzf4UiZuF2lLaASvfM6kp1rjvf
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:PH0PR12MB7982.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230031)(366004)(39860400002)(136003)(376002)(346002)(396003)(230922051799003)(230173577357003)(230273577357003)(64100799003)(186009)(1800799012)(451199024)(31686004)(41300700001)(38100700002)(2906002)(7416002)(30864003)(316002)(36756003)(5660300002)(4326008)(8676002)(8936002)(2616005)(6486002)(6512007)(26005)(53546011)(6506007)(478600001)(31696002)(66946007)(66476007)(66556008)(83380400001)(43740500002)(45980500001);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?dFAxVjRsREdtL0ZpczNQWDU3N1lEZXJybEFVdnVXMXVseFBUSEMrcU8xTTdW?=
- =?utf-8?B?Zm1KbkFsVXpyUm9VMDltcC94QW5ERWNoNEhtTDZMcldxQjdPQ2dJbkc4QnNw?=
- =?utf-8?B?bDduMTNEWmtOblFWTkVjc0VwQTVtWHB2ODE5NlVyUW9rcWtCdnZCbE84dXpp?=
- =?utf-8?B?WGwwUXBDUWsxeDV4bVB1a3BrbE44TUpUemJDYTdNWDYwZXNPb08xMEgrKzFH?=
- =?utf-8?B?WkVpZFpqdWNONlF4ajRhVlhRMmQyMVpKbkxnZ0xmVnJPL0FxK3RUSGZTRnUr?=
- =?utf-8?B?d2s5dm4rQWVWdWdmVS8xYzd4ZC9jYm9sVjhjTERHUTU1VDJBeGFvRGxTTlFM?=
- =?utf-8?B?cm8rZ3dyb2VSNTBnQUhqaDNBUnhWV21JTUxoVjNJdExNdFpnUjh6QU44b2tt?=
- =?utf-8?B?bFZpS2xIbDJmN0JsaFN6UVphbXUvV3UwdEpXbkN3aS9saVZGSm8zdG81ekVp?=
- =?utf-8?B?a210em5YbzFOYVAyeVNDYW5yVDJ0d0Q2U2FXUVJZaC9KejBNZFF2THFYMjJF?=
- =?utf-8?B?TllCZ3RFN1EzSWVkMlJvTnMwNlphQitYTG1WSit2Q3BZQmx4TExDN0g4TzR3?=
- =?utf-8?B?OGZrZTY5b1IzRDRsbHJWblVTY2trc2JRRnp6bDBEak9tTHBIT2Z6M2NrL1V2?=
- =?utf-8?B?L1BhTmhTN2RldjNHU09GeG5LSitxTUIrQ0VwdVFKQ080TVV6aXRCZG1rQ1BN?=
- =?utf-8?B?R1VSYzd5SzFuRjFDcGpiOTBXMlR2dmhhR0ltZkVMMnFwMDBCRkpZdWRzb1Mx?=
- =?utf-8?B?bGxVaklYYm1KNFVwdWE2OGc5Zi9LYlFqUVR4Q3czeDlROElTMkFzQlhoVnpn?=
- =?utf-8?B?aFV3enllTFhCUXB0UFFoRkVpVkhwZ0IvZUtXcjRRS2hGK0NVR1dsNkFXTXZV?=
- =?utf-8?B?RHNYdUV3NkJQdzViQnU0STZJSHNOVTNpTVNvK3RvTVVIV3drTUYwdG5xVHha?=
- =?utf-8?B?Sytsb1R1R1k4Yy9Galo5T2FDUlJyUHNYRjNIdW9SVnhhU05CY28rOEUwUEFJ?=
- =?utf-8?B?SHF2UHB2MXZXS1krVVc1Q2d4WTB3bkk3MTQ4N1ZBV3dpMmhKZC91Mlk3c3ZX?=
- =?utf-8?B?SnRUMmxrMjFQMWFsWW12enRDQkdDOVh1Y0hNbHJQMzhQc3ZiendNN2VBemlN?=
- =?utf-8?B?alA1WkFGRGgzVDFWbDd6SU1YVVpmdVBSL3JSdWdrMFUvZTQxZWZZSCtacnVY?=
- =?utf-8?B?aEUrWitsRjNEcEh0TUpFaHliVi92Z1gralIwOE9oWTJtbkY5a2wyWnE4MElJ?=
- =?utf-8?B?WGVTZzNRdjlCOUg2dUxyb2hKYXhLcEUrMmZPV1hJbmdCS3pDbUVxcXUvVlYv?=
- =?utf-8?B?TE9kaU1teU1OMVU5eGNqaTFRWUFjV3RuMGhiY1RjaGU3TDJuSVdPQWM5U045?=
- =?utf-8?B?NlhpbktjTHBDZXJsN0kwKzlXcE42b2lDS3FZK21YMk1aNS9VcFhVbnc2WFNQ?=
- =?utf-8?B?NmlXOU5PM0x1eHU1bjBWd3F0WXIzR1AvNktoaVZHd3ZpT1RlaW5EWXRUYWlX?=
- =?utf-8?B?RTk3ZVJSb2xoRE1NbUV0TkwyT09WOWJSM1FtekxCeVpCbThmZ25sa1dlVFEr?=
- =?utf-8?B?UzJZS2FWQ2ZYNm1QNUJ4Zi8xWnFLUVVpMUc5Zk5KMjgxdUtiVG9PbjY3NmxL?=
- =?utf-8?B?UFo3ZTJrY3NpUGFHeGZVU2pKZ0J2YlQrcjQ5ak9nYWdPeGVMSG5OdXpvSVh2?=
- =?utf-8?B?dTlNTHQzRUR2T011Qm5zY2JsTGcxeEtoaUQ5cVlDbm1aNm53ZU5vc1JUMkU1?=
- =?utf-8?B?UnBCVEh2eThMWW55U1B1VUc0ZDczVlQ2NzJ6dXdJeHhrbXh5TnRZcGNZamZ4?=
- =?utf-8?B?eUhOQm83eWJCdnV0bDErVzRqc0NRZ3htMXVxek82N2NrdVQ5bHZHOWxneDZu?=
- =?utf-8?B?L2s2Q1pBOVNxLytaQTM5cVJvMHBUQ1ljOFNQdHJZUURVVFBmT1RmWDRDWWRN?=
- =?utf-8?B?TDNWZXhWODJiOUVRZk4vSzJSMTFabXE3SEExdXpwSVBUTVEyazIzcjJxSnVl?=
- =?utf-8?B?M1VjSU1sbW5ncVpRMnd1eWV0NTVmT0hORjdGMDBpZVIxYjd3TEhhOUUzQkZ3?=
- =?utf-8?B?Z2xoTldzSHcrR0RhV3lCMjhvWXduWVEyL3BGVWNyQjA2Rk9HcGc4TDlEeVln?=
- =?utf-8?Q?fdAeuG9TjyYLF3JiEA5pWUA7J?=
-X-OriginatorOrg: amd.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: a577b004-e4c3-4b1b-3c08-08dbf83d0c31
-X-MS-Exchange-CrossTenant-AuthSource: PH0PR12MB7982.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 08 Dec 2023 22:28:48.5566 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: V6DvaRejk0XedktVPelr24x2YoljBiqdHXsVbfsDJbDmqm7xNeiwuJiIbWQRcUmEU547Rt5yw8NmmzyKPcN85w==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA0PR12MB8647
+Content-ID: <21389.1702078254.1@famine>
+Date: Fri, 08 Dec 2023 15:30:54 -0800
+Message-ID: <21390.1702078254@famine>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=amd.com; s=selector1; 
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=rxNbUMoujh9v4RFtZuIlMwhqEyFVvbqEOsTWFeEC6TY=;
- b=pgizEkNmJoV0lxd3Y6eUXYxcZ6pG7J0DleaiL7Xr8mJXic/h7YRt6PQDpIBNaSEJPSDpciCcLQ+Tiye4mAe7Q6j739TXOkkXvF+EuY3WbuXAWSUpx8xBXtsAilCTozLBYIRYTLyH0QAYZVFhGWeE1HzMlQI/u50nA8lsGMyzYJc=
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (1024-bit key,
- unprotected) header.d=amd.com header.i=@amd.com header.a=rsa-sha256
- header.s=selector1 header.b=pgizEkNm
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=amd.com;
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v4 03/12] ice: Introduce VF
- state ICE_VF_STATE_REPLAYING_VC for migration
+ d=canonical.com; s=20210705; t=1702078257;
+ bh=W4YmvBWrOBzInEYUWdzBgaE35XDrnqoquNNpR5Ozyw8=;
+ h=From:To:cc:Subject:In-reply-to:References:MIME-Version:
+ Content-Type:Date:Message-ID;
+ b=ND/Dxwpr29QmIAdE/Wd7H2nEF3xeS2TNEvelF118ZGXztUigLJvT3cYkiMvZ7KVbO
+ 7MhGM/vdte7VYqVmN7UBpsW+4guqa392OtecmSwHLa0sFLtCE3ory+c3Xhpm/8WIlJ
+ NqpcPiPRT6ragI8Togf376f3a22OYHT48yR2rR76dqtXS7jgNPbCnnSe5PEOebIIiP
+ LdBh9fnIEAtufiSEGV2ZNWBOOawrU5MqXghf5Dde5dtA51vOXHjR7WZG3Xw7E+AZ6a
+ RD5gfsMhyaDIiblnLoHiEsOu98C1YIHvuYlTXiyRzWBzkegf58UcQqvmxKFxx5bnhM
+ f9wXILKD97z3g==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key) header.d=canonical.com header.i=@canonical.com
+ header.a=rsa-sha256 header.s=20210705 header.b=ND/Dxwpr
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next] ice: alter feature support
+ check for SRIOV and LAG
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -163,625 +130,103 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: kevin.tian@intel.com, yishaih@nvidia.com, brett.creeley@amd.com,
- kvm@vger.kernel.org, sridhar.samudrala@intel.com, edumazet@google.com,
- shameerali.kolothum.thodi@huawei.com, alex.williamson@redhat.com,
- madhu.chittim@intel.com, jgg@nvidia.com, netdev@vger.kernel.org,
- kuba@kernel.org, pabeni@redhat.com, davem@davemloft.net
+Cc: Robert Malz <robert.malz@canonical.com>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>, "Brandeburg, 
+ Jesse" <jesse.brandeburg@intel.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>, "Nguyen,
+ Anthony L" <anthony.l.nguyen@intel.com>,
+ Heitor Alves de Siqueira <heitor.de.siqueira@canonical.com>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 11/20/2023 6:51 PM, Yahui Cao wrote:
-> Caution: This message originated from an External Source. Use proper caution when opening attachments, clicking links, or responding.
-> 
-> 
-> From: Lingyu Liu <lingyu.liu@intel.com>
-> 
-> During migration device resume stage, part of device state is loaded by
-> replaying logged virtual channel message. By default, once virtual
-> channel message is processed successfully, PF will send message to VF.
-> 
-> In addition, PF will notify VF about link state while handling virtual
-> channel message GET_VF_RESOURCE and ENABLE_QUEUES. And VF driver will
-> print link state change info once receiving notification from PF.
-> 
-> However, device resume stage does not need PF to send messages to VF
-> for the above cases. Stop PF from sending messages to VF while VF is
-> in replay state.
-> 
-> Signed-off-by: Lingyu Liu <lingyu.liu@intel.com>
-> Signed-off-by: Yahui Cao <yahui.cao@intel.com>
-> ---
->   drivers/net/ethernet/intel/ice/ice_vf_lib.h   |   1 +
->   drivers/net/ethernet/intel/ice/ice_virtchnl.c | 179 +++++++++++-------
->   drivers/net/ethernet/intel/ice/ice_virtchnl.h |   8 +-
->   .../ethernet/intel/ice/ice_virtchnl_fdir.c    |  28 +--
->   4 files changed, 127 insertions(+), 89 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/intel/ice/ice_vf_lib.h b/drivers/net/ethernet/intel/ice/ice_vf_lib.h
-> index 93c774f2f437..c7e7df7baf38 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_vf_lib.h
-> +++ b/drivers/net/ethernet/intel/ice/ice_vf_lib.h
-> @@ -37,6 +37,7 @@ enum ice_vf_states {
->          ICE_VF_STATE_DIS,
->          ICE_VF_STATE_MC_PROMISC,
->          ICE_VF_STATE_UC_PROMISC,
-> +       ICE_VF_STATE_REPLAYING_VC,
+Ertman, David M <david.m.ertman@intel.com> wrote:
 
-Should this enum have "MIGRATION" in it to make it clear that this flag 
-is specifically for replaying VF state for migration purposes?
+>> -----Original Message-----
+>> From: Nguyen, Anthony L <anthony.l.nguyen@intel.com>
+>> Sent: Friday, December 8, 2023 1:18 PM
+>> To: Ertman, David M <david.m.ertman@intel.com>; intel-wired-
+>> lan@lists.osuosl.org
+>> Cc: netdev@vger.kernel.org; Brandeburg, Jesse
+>> <jesse.brandeburg@intel.com>
+>> Subject: Re: [PATCH iwl-next] ice: alter feature support check for SRIOV and
+>> LAG
+>> 
+>> 
+>> 
+>> On 12/7/2023 10:21 AM, Dave Ertman wrote:
+>> > Previously, the ice driver had support for using a hanldler for bonding
+>> > netdev events to ensure that conflicting features were not allowed to be
+>> > activated at the same time.  While this was still in place, additional
+>> > support was added to specifically support SRIOV and LAG together.  These
+>> > both utilized the netdev event handler, but the SRIOV and LAG feature was
+>> > behind a capabilities feature check to make sure the current NVM has
+>> > support.
+>> >
+>> > The exclusion part of the event handler should be removed since there are
+>> > users who have custom made solutions that depend on the non-exclusion
+>> of
+>> > features.
+>> >
+>> > Wrap the creation/registration and cleanup of the event handler and
+>> > associated structs in the probe flow with a feature check so that the
+>> > only systems that support the full implementation of LAG features will
+>> > initialize support.  This will leave other systems unhindered with
+>> > functionality as it existed before any LAG code was added.
+>> 
+>> This sounds like a bug fix? Should it be for iwl-net?
+>>
+>
+>To my knowledge, this issue has not been reported by any users and was found
+>through code inspection.  Would you still recommend iwl-net?
 
->          ICE_VF_STATES_NBITS
->   };
-> 
-> diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl.c b/drivers/net/ethernet/intel/ice/ice_virtchnl.c
-> index cdf17b1e2f25..661ca86c3032 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_virtchnl.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_virtchnl.c
-> @@ -233,6 +233,9 @@ void ice_vc_notify_vf_link_state(struct ice_vf *vf)
->          struct virtchnl_pf_event pfe = { 0 };
->          struct ice_hw *hw = &vf->pf->hw;
-> 
-> +       if (test_bit(ICE_VF_STATE_REPLAYING_VC, vf->vf_states))
-> +               return;
-> +
->          pfe.event = VIRTCHNL_EVENT_LINK_CHANGE;
->          pfe.severity = PF_EVENT_SEVERITY_INFO;
-> 
-> @@ -282,7 +285,7 @@ void ice_vc_notify_reset(struct ice_pf *pf)
->   }
-> 
->   /**
-> - * ice_vc_send_msg_to_vf - Send message to VF
-> + * ice_vc_send_response_to_vf - Send response message to VF
->    * @vf: pointer to the VF info
->    * @v_opcode: virtual channel opcode
->    * @v_retval: virtual channel return value
-> @@ -291,9 +294,10 @@ void ice_vc_notify_reset(struct ice_pf *pf)
->    *
->    * send msg to VF
->    */
-> -int
-> -ice_vc_send_msg_to_vf(struct ice_vf *vf, u32 v_opcode,
-> -                     enum virtchnl_status_code v_retval, u8 *msg, u16 msglen)
-> +static int
-> +ice_vc_send_response_to_vf(struct ice_vf *vf, u32 v_opcode,
-> +                          enum virtchnl_status_code v_retval,
-> +                          u8 *msg, u16 msglen)
+	We have a customer experiencing intermittent issues with
+transmit timeouts that go away if we disable the LAG integration as
+suggested at [0] (or don't use bonding).  This is on the Ubuntu 5.15
+based distro kernel, not upstream, but it does not manifest with the OOT
+driver, and seems somehow related to the LAG offloading functionality.
 
-Is all of this rework needed? It seems like it's just a name change with 
-additional logic to check the REPLAYING state. IMHO the naming isn't 
-really any cleaner.
+	There was also a post to the list describing similar effects
+last month [1], that one seems to be on an Ubuntu 6.2 distro kernel.
 
-Would it make more sense to just modify the current 
-ice_vc_send_msg_to_vf() to handle the REPLAYING state? It seems like 
-that would simplify this patch quite a bit.
+	Could these issues be plausibly related to the change in this
+patch?
 
-Is there a reason for these changes in follow up patches that I missed?
+	-J
+	
+[0]
+https://bugs.launchpad.net/ubuntu/+source/linux/+bug/2036239/comments/40
+[1]
+https://lists.osuosl.org/pipermail/intel-wired-lan/Week-of-Mon-20231120/038096.html
 
-Thanks,
 
-Brett
->   {
->          struct device *dev;
->          struct ice_pf *pf;
-> @@ -314,6 +318,39 @@ ice_vc_send_msg_to_vf(struct ice_vf *vf, u32 v_opcode,
->          return 0;
->   }
-> 
-> +/**
-> + * ice_vc_respond_to_vf - Respond to VF
-> + * @vf: pointer to the VF info
-> + * @v_opcode: virtual channel opcode
-> + * @v_retval: virtual channel return value
-> + * @msg: pointer to the msg buffer
-> + * @msglen: msg length
-> + *
-> + * Respond to VF. If it is replaying, return directly.
-> + *
-> + * Return 0 for success, negative for error.
-> + */
-> +int
-> +ice_vc_respond_to_vf(struct ice_vf *vf, u32 v_opcode,
-> +                    enum virtchnl_status_code v_retval, u8 *msg, u16 msglen)
-> +{
-> +       struct device *dev;
-> +       struct ice_pf *pf = vf->pf;
-> +
-> +       dev = ice_pf_to_dev(pf);
-> +
-> +       if (test_bit(ICE_VF_STATE_REPLAYING_VC, vf->vf_states)) {
-> +               if (v_retval == VIRTCHNL_STATUS_SUCCESS)
-> +                       return 0;
-> +
-> +               dev_dbg(dev, "Unable to replay virt channel command, VF ID %d, virtchnl status code %d. op code %d, len %d.\n",
-> +                       vf->vf_id, v_retval, v_opcode, msglen);
-> +               return -EIO;
-> +       }
-> +
-> +       return ice_vc_send_response_to_vf(vf, v_opcode, v_retval, msg, msglen);
-> +}
-> +
->   /**
->    * ice_vc_get_ver_msg
->    * @vf: pointer to the VF info
-> @@ -332,9 +369,9 @@ static int ice_vc_get_ver_msg(struct ice_vf *vf, u8 *msg)
->          if (VF_IS_V10(&vf->vf_ver))
->                  info.minor = VIRTCHNL_VERSION_MINOR_NO_VF_CAPS;
-> 
-> -       return ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_VERSION,
-> -                                    VIRTCHNL_STATUS_SUCCESS, (u8 *)&info,
-> -                                    sizeof(struct virtchnl_version_info));
-> +       return ice_vc_respond_to_vf(vf, VIRTCHNL_OP_VERSION,
-> +                                   VIRTCHNL_STATUS_SUCCESS, (u8 *)&info,
-> +                                   sizeof(struct virtchnl_version_info));
->   }
-> 
->   /**
-> @@ -522,8 +559,8 @@ static int ice_vc_get_vf_res_msg(struct ice_vf *vf, u8 *msg)
-> 
->   err:
->          /* send the response back to the VF */
-> -       ret = ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_GET_VF_RESOURCES, v_ret,
-> -                                   (u8 *)vfres, len);
-> +       ret = ice_vc_respond_to_vf(vf, VIRTCHNL_OP_GET_VF_RESOURCES, v_ret,
-> +                                  (u8 *)vfres, len);
-> 
->          kfree(vfres);
->          return ret;
-> @@ -892,7 +929,7 @@ static int ice_vc_handle_rss_cfg(struct ice_vf *vf, u8 *msg, bool add)
->          }
-> 
->   error_param:
-> -       return ice_vc_send_msg_to_vf(vf, v_opcode, v_ret, NULL, 0);
-> +       return ice_vc_respond_to_vf(vf, v_opcode, v_ret, NULL, 0);
->   }
-> 
->   /**
-> @@ -938,8 +975,8 @@ static int ice_vc_config_rss_key(struct ice_vf *vf, u8 *msg)
->          if (ice_set_rss_key(vsi, vrk->key))
->                  v_ret = VIRTCHNL_STATUS_ERR_ADMIN_QUEUE_ERROR;
->   error_param:
-> -       return ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_CONFIG_RSS_KEY, v_ret,
-> -                                    NULL, 0);
-> +       return ice_vc_respond_to_vf(vf, VIRTCHNL_OP_CONFIG_RSS_KEY, v_ret,
-> +                                   NULL, 0);
->   }
-> 
->   /**
-> @@ -984,7 +1021,7 @@ static int ice_vc_config_rss_lut(struct ice_vf *vf, u8 *msg)
->          if (ice_set_rss_lut(vsi, vrl->lut, ICE_LUT_VSI_SIZE))
->                  v_ret = VIRTCHNL_STATUS_ERR_ADMIN_QUEUE_ERROR;
->   error_param:
-> -       return ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_CONFIG_RSS_LUT, v_ret,
-> +       return ice_vc_respond_to_vf(vf, VIRTCHNL_OP_CONFIG_RSS_LUT, v_ret,
->                                       NULL, 0);
->   }
-> 
-> @@ -1124,8 +1161,8 @@ static int ice_vc_cfg_promiscuous_mode_msg(struct ice_vf *vf, u8 *msg)
->          }
-> 
->   error_param:
-> -       return ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_CONFIG_PROMISCUOUS_MODE,
-> -                                    v_ret, NULL, 0);
-> +       return ice_vc_respond_to_vf(vf, VIRTCHNL_OP_CONFIG_PROMISCUOUS_MODE,
-> +                                   v_ret, NULL, 0);
->   }
-> 
->   /**
-> @@ -1165,8 +1202,8 @@ static int ice_vc_get_stats_msg(struct ice_vf *vf, u8 *msg)
-> 
->   error_param:
->          /* send the response to the VF */
-> -       return ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_GET_STATS, v_ret,
-> -                                    (u8 *)&stats, sizeof(stats));
-> +       return ice_vc_respond_to_vf(vf, VIRTCHNL_OP_GET_STATS, v_ret,
-> +                                   (u8 *)&stats, sizeof(stats));
->   }
-> 
->   /**
-> @@ -1315,8 +1352,8 @@ static int ice_vc_ena_qs_msg(struct ice_vf *vf, u8 *msg)
-> 
->   error_param:
->          /* send the response to the VF */
-> -       return ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_ENABLE_QUEUES, v_ret,
-> -                                    NULL, 0);
-> +       return ice_vc_respond_to_vf(vf, VIRTCHNL_OP_ENABLE_QUEUES, v_ret,
-> +                                   NULL, 0);
->   }
-> 
->   /**
-> @@ -1455,8 +1492,8 @@ static int ice_vc_dis_qs_msg(struct ice_vf *vf, u8 *msg)
-> 
->   error_param:
->          /* send the response to the VF */
-> -       return ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_DISABLE_QUEUES, v_ret,
-> -                                    NULL, 0);
-> +       return ice_vc_respond_to_vf(vf, VIRTCHNL_OP_DISABLE_QUEUES, v_ret,
-> +                                   NULL, 0);
->   }
-> 
->   /**
-> @@ -1586,8 +1623,8 @@ static int ice_vc_cfg_irq_map_msg(struct ice_vf *vf, u8 *msg)
-> 
->   error_param:
->          /* send the response to the VF */
-> -       return ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_CONFIG_IRQ_MAP, v_ret,
-> -                                    NULL, 0);
-> +       return ice_vc_respond_to_vf(vf, VIRTCHNL_OP_CONFIG_IRQ_MAP, v_ret,
-> +                                   NULL, 0);
->   }
-> 
->   /**
-> @@ -1730,8 +1767,8 @@ static int ice_vc_cfg_qs_msg(struct ice_vf *vf, u8 *msg)
->          }
-> 
->          /* send the response to the VF */
-> -       return ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_CONFIG_VSI_QUEUES,
-> -                                    VIRTCHNL_STATUS_SUCCESS, NULL, 0);
-> +       return ice_vc_respond_to_vf(vf, VIRTCHNL_OP_CONFIG_VSI_QUEUES,
-> +                                   VIRTCHNL_STATUS_SUCCESS, NULL, 0);
->   error_param:
->          /* disable whatever we can */
->          for (; i >= 0; i--) {
-> @@ -1746,8 +1783,8 @@ static int ice_vc_cfg_qs_msg(struct ice_vf *vf, u8 *msg)
->          ice_lag_move_new_vf_nodes(vf);
-> 
->          /* send the response to the VF */
-> -       return ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_CONFIG_VSI_QUEUES,
-> -                                    VIRTCHNL_STATUS_ERR_PARAM, NULL, 0);
-> +       return ice_vc_respond_to_vf(vf, VIRTCHNL_OP_CONFIG_VSI_QUEUES,
-> +                                   VIRTCHNL_STATUS_ERR_PARAM, NULL, 0);
->   }
-> 
->   /**
-> @@ -2049,7 +2086,7 @@ ice_vc_handle_mac_addr_msg(struct ice_vf *vf, u8 *msg, bool set)
-> 
->   handle_mac_exit:
->          /* send the response to the VF */
-> -       return ice_vc_send_msg_to_vf(vf, vc_op, v_ret, NULL, 0);
-> +       return ice_vc_respond_to_vf(vf, vc_op, v_ret, NULL, 0);
->   }
-> 
->   /**
-> @@ -2132,8 +2169,8 @@ static int ice_vc_request_qs_msg(struct ice_vf *vf, u8 *msg)
-> 
->   error_param:
->          /* send the response to the VF */
-> -       return ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_REQUEST_QUEUES,
-> -                                    v_ret, (u8 *)vfres, sizeof(*vfres));
-> +       return ice_vc_respond_to_vf(vf, VIRTCHNL_OP_REQUEST_QUEUES,
-> +                                   v_ret, (u8 *)vfres, sizeof(*vfres));
->   }
-> 
->   /**
-> @@ -2398,11 +2435,11 @@ static int ice_vc_process_vlan_msg(struct ice_vf *vf, u8 *msg, bool add_v)
->   error_param:
->          /* send the response to the VF */
->          if (add_v)
-> -               return ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_ADD_VLAN, v_ret,
-> -                                            NULL, 0);
-> +               return ice_vc_respond_to_vf(vf, VIRTCHNL_OP_ADD_VLAN, v_ret,
-> +                                           NULL, 0);
->          else
-> -               return ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_DEL_VLAN, v_ret,
-> -                                            NULL, 0);
-> +               return ice_vc_respond_to_vf(vf, VIRTCHNL_OP_DEL_VLAN, v_ret,
-> +                                           NULL, 0);
->   }
-> 
->   /**
-> @@ -2477,8 +2514,8 @@ static int ice_vc_ena_vlan_stripping(struct ice_vf *vf)
->                  vf->vlan_strip_ena |= ICE_INNER_VLAN_STRIP_ENA;
-> 
->   error_param:
-> -       return ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_ENABLE_VLAN_STRIPPING,
-> -                                    v_ret, NULL, 0);
-> +       return ice_vc_respond_to_vf(vf, VIRTCHNL_OP_ENABLE_VLAN_STRIPPING,
-> +                                   v_ret, NULL, 0);
->   }
-> 
->   /**
-> @@ -2514,8 +2551,8 @@ static int ice_vc_dis_vlan_stripping(struct ice_vf *vf)
->                  vf->vlan_strip_ena &= ~ICE_INNER_VLAN_STRIP_ENA;
-> 
->   error_param:
-> -       return ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_DISABLE_VLAN_STRIPPING,
-> -                                    v_ret, NULL, 0);
-> +       return ice_vc_respond_to_vf(vf, VIRTCHNL_OP_DISABLE_VLAN_STRIPPING,
-> +                                   v_ret, NULL, 0);
->   }
-> 
->   /**
-> @@ -2550,8 +2587,8 @@ static int ice_vc_get_rss_hena(struct ice_vf *vf)
->          vrh->hena = ICE_DEFAULT_RSS_HENA;
->   err:
->          /* send the response back to the VF */
-> -       ret = ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_GET_RSS_HENA_CAPS, v_ret,
-> -                                   (u8 *)vrh, len);
-> +       ret = ice_vc_respond_to_vf(vf, VIRTCHNL_OP_GET_RSS_HENA_CAPS, v_ret,
-> +                                  (u8 *)vrh, len);
->          kfree(vrh);
->          return ret;
->   }
-> @@ -2616,8 +2653,8 @@ static int ice_vc_set_rss_hena(struct ice_vf *vf, u8 *msg)
-> 
->          /* send the response to the VF */
->   err:
-> -       return ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_SET_RSS_HENA, v_ret,
-> -                                    NULL, 0);
-> +       return ice_vc_respond_to_vf(vf, VIRTCHNL_OP_SET_RSS_HENA, v_ret,
-> +                                   NULL, 0);
->   }
-> 
->   /**
-> @@ -2672,8 +2709,8 @@ static int ice_vc_query_rxdid(struct ice_vf *vf)
->          pf->supported_rxdids = rxdid->supported_rxdids;
-> 
->   err:
-> -       ret = ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_GET_SUPPORTED_RXDIDS,
-> -                                   v_ret, (u8 *)rxdid, len);
-> +       ret = ice_vc_respond_to_vf(vf, VIRTCHNL_OP_GET_SUPPORTED_RXDIDS,
-> +                                  v_ret, (u8 *)rxdid, len);
->          kfree(rxdid);
->          return ret;
->   }
-> @@ -2909,8 +2946,8 @@ static int ice_vc_get_offload_vlan_v2_caps(struct ice_vf *vf)
->          memcpy(&vf->vlan_v2_caps, caps, sizeof(*caps));
-> 
->   out:
-> -       err = ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_GET_OFFLOAD_VLAN_V2_CAPS,
-> -                                   v_ret, (u8 *)caps, len);
-> +       err = ice_vc_respond_to_vf(vf, VIRTCHNL_OP_GET_OFFLOAD_VLAN_V2_CAPS,
-> +                                  v_ret, (u8 *)caps, len);
->          kfree(caps);
->          return err;
->   }
-> @@ -3151,8 +3188,8 @@ static int ice_vc_remove_vlan_v2_msg(struct ice_vf *vf, u8 *msg)
->                  v_ret = VIRTCHNL_STATUS_ERR_PARAM;
-> 
->   out:
-> -       return ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_DEL_VLAN_V2, v_ret, NULL,
-> -                                    0);
-> +       return ice_vc_respond_to_vf(vf, VIRTCHNL_OP_DEL_VLAN_V2,
-> +                                   v_ret, NULL, 0);
->   }
-> 
->   /**
-> @@ -3293,8 +3330,8 @@ static int ice_vc_add_vlan_v2_msg(struct ice_vf *vf, u8 *msg)
->                  v_ret = VIRTCHNL_STATUS_ERR_PARAM;
-> 
->   out:
-> -       return ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_ADD_VLAN_V2, v_ret, NULL,
-> -                                    0);
-> +       return ice_vc_respond_to_vf(vf, VIRTCHNL_OP_ADD_VLAN_V2,
-> +                                   v_ret, NULL, 0);
->   }
-> 
->   /**
-> @@ -3525,8 +3562,8 @@ static int ice_vc_ena_vlan_stripping_v2_msg(struct ice_vf *vf, u8 *msg)
->                  vf->vlan_strip_ena |= ICE_INNER_VLAN_STRIP_ENA;
-> 
->   out:
-> -       return ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_ENABLE_VLAN_STRIPPING_V2,
-> -                                    v_ret, NULL, 0);
-> +       return ice_vc_respond_to_vf(vf, VIRTCHNL_OP_ENABLE_VLAN_STRIPPING_V2,
-> +                                   v_ret, NULL, 0);
->   }
-> 
->   /**
-> @@ -3600,8 +3637,8 @@ static int ice_vc_dis_vlan_stripping_v2_msg(struct ice_vf *vf, u8 *msg)
->                  vf->vlan_strip_ena &= ~ICE_INNER_VLAN_STRIP_ENA;
-> 
->   out:
-> -       return ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_DISABLE_VLAN_STRIPPING_V2,
-> -                                    v_ret, NULL, 0);
-> +       return ice_vc_respond_to_vf(vf, VIRTCHNL_OP_DISABLE_VLAN_STRIPPING_V2,
-> +                                   v_ret, NULL, 0);
->   }
-> 
->   /**
-> @@ -3659,8 +3696,8 @@ static int ice_vc_ena_vlan_insertion_v2_msg(struct ice_vf *vf, u8 *msg)
->          }
-> 
->   out:
-> -       return ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_ENABLE_VLAN_INSERTION_V2,
-> -                                    v_ret, NULL, 0);
-> +       return ice_vc_respond_to_vf(vf, VIRTCHNL_OP_ENABLE_VLAN_INSERTION_V2,
-> +                                   v_ret, NULL, 0);
->   }
-> 
->   /**
-> @@ -3714,8 +3751,8 @@ static int ice_vc_dis_vlan_insertion_v2_msg(struct ice_vf *vf, u8 *msg)
->          }
-> 
->   out:
-> -       return ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_DISABLE_VLAN_INSERTION_V2,
-> -                                    v_ret, NULL, 0);
-> +       return ice_vc_respond_to_vf(vf, VIRTCHNL_OP_DISABLE_VLAN_INSERTION_V2,
-> +                                   v_ret, NULL, 0);
->   }
-> 
->   static const struct ice_virtchnl_ops ice_virtchnl_dflt_ops = {
-> @@ -3812,8 +3849,8 @@ static int ice_vc_repr_add_mac(struct ice_vf *vf, u8 *msg)
->          }
-> 
->   handle_mac_exit:
-> -       return ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_ADD_ETH_ADDR,
-> -                                    v_ret, NULL, 0);
-> +       return ice_vc_respond_to_vf(vf, VIRTCHNL_OP_ADD_ETH_ADDR,
-> +                                   v_ret, NULL, 0);
->   }
-> 
->   /**
-> @@ -3832,8 +3869,8 @@ ice_vc_repr_del_mac(struct ice_vf __always_unused *vf, u8 __always_unused *msg)
-> 
->          ice_update_legacy_cached_mac(vf, &al->list[0]);
-> 
-> -       return ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_DEL_ETH_ADDR,
-> -                                    VIRTCHNL_STATUS_SUCCESS, NULL, 0);
-> +       return ice_vc_respond_to_vf(vf, VIRTCHNL_OP_DEL_ETH_ADDR,
-> +                                   VIRTCHNL_STATUS_SUCCESS, NULL, 0);
->   }
-> 
->   static int
-> @@ -3842,8 +3879,8 @@ ice_vc_repr_cfg_promiscuous_mode(struct ice_vf *vf, u8 __always_unused *msg)
->          dev_dbg(ice_pf_to_dev(vf->pf),
->                  "Can't config promiscuous mode in switchdev mode for VF %d\n",
->                  vf->vf_id);
-> -       return ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_CONFIG_PROMISCUOUS_MODE,
-> -                                    VIRTCHNL_STATUS_ERR_NOT_SUPPORTED,
-> +       return ice_vc_respond_to_vf(vf, VIRTCHNL_OP_CONFIG_PROMISCUOUS_MODE,
-> +                                   VIRTCHNL_STATUS_ERR_NOT_SUPPORTED,
->                                       NULL, 0);
->   }
-> 
-> @@ -3986,16 +4023,16 @@ void ice_vc_process_vf_msg(struct ice_pf *pf, struct ice_rq_event_info *event,
-> 
->   error_handler:
->          if (err) {
-> -               ice_vc_send_msg_to_vf(vf, v_opcode, VIRTCHNL_STATUS_ERR_PARAM,
-> -                                     NULL, 0);
-> +               ice_vc_respond_to_vf(vf, v_opcode, VIRTCHNL_STATUS_ERR_PARAM,
-> +                                    NULL, 0);
->                  dev_err(dev, "Invalid message from VF %d, opcode %d, len %d, error %d\n",
->                          vf_id, v_opcode, msglen, err);
->                  goto finish;
->          }
-> 
->          if (!ice_vc_is_opcode_allowed(vf, v_opcode)) {
-> -               ice_vc_send_msg_to_vf(vf, v_opcode,
-> -                                     VIRTCHNL_STATUS_ERR_NOT_SUPPORTED, NULL,
-> +               ice_vc_respond_to_vf(vf, v_opcode,
-> +                                    VIRTCHNL_STATUS_ERR_NOT_SUPPORTED, NULL,
->                                        0);
->                  goto finish;
->          }
-> @@ -4106,9 +4143,9 @@ void ice_vc_process_vf_msg(struct ice_pf *pf, struct ice_rq_event_info *event,
->          default:
->                  dev_err(dev, "Unsupported opcode %d from VF %d\n", v_opcode,
->                          vf_id);
-> -               err = ice_vc_send_msg_to_vf(vf, v_opcode,
-> -                                           VIRTCHNL_STATUS_ERR_NOT_SUPPORTED,
-> -                                           NULL, 0);
-> +               err = ice_vc_respond_to_vf(vf, v_opcode,
-> +                                          VIRTCHNL_STATUS_ERR_NOT_SUPPORTED,
-> +                                          NULL, 0);
->                  break;
->          }
->          if (err) {
-> diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl.h b/drivers/net/ethernet/intel/ice/ice_virtchnl.h
-> index cd747718de73..a2b6094e2f2f 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_virtchnl.h
-> +++ b/drivers/net/ethernet/intel/ice/ice_virtchnl.h
-> @@ -60,8 +60,8 @@ void ice_vc_notify_vf_link_state(struct ice_vf *vf);
->   void ice_vc_notify_link_state(struct ice_pf *pf);
->   void ice_vc_notify_reset(struct ice_pf *pf);
->   int
-> -ice_vc_send_msg_to_vf(struct ice_vf *vf, u32 v_opcode,
-> -                     enum virtchnl_status_code v_retval, u8 *msg, u16 msglen);
-> +ice_vc_respond_to_vf(struct ice_vf *vf, u32 v_opcode,
-> +                    enum virtchnl_status_code v_retval, u8 *msg, u16 msglen);
->   bool ice_vc_isvalid_vsi_id(struct ice_vf *vf, u16 vsi_id);
->   void ice_vc_process_vf_msg(struct ice_pf *pf, struct ice_rq_event_info *event,
->                             struct ice_mbx_data *mbxdata);
-> @@ -73,8 +73,8 @@ static inline void ice_vc_notify_link_state(struct ice_pf *pf) { }
->   static inline void ice_vc_notify_reset(struct ice_pf *pf) { }
-> 
->   static inline int
-> -ice_vc_send_msg_to_vf(struct ice_vf *vf, u32 v_opcode,
-> -                     enum virtchnl_status_code v_retval, u8 *msg, u16 msglen)
-> +ice_vc_respond_to_vf(struct ice_vf *vf, u32 v_opcode,
-> +                    enum virtchnl_status_code v_retval, u8 *msg, u16 msglen)
->   {
->          return -EOPNOTSUPP;
->   }
-> diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.c b/drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.c
-> index 24b23b7ef04a..816d8bf8bec4 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.c
-> @@ -1584,8 +1584,8 @@ ice_vc_add_fdir_fltr_post(struct ice_vf *vf, struct ice_vf_fdir_ctx *ctx,
->          resp->flow_id = conf->flow_id;
->          vf->fdir.fdir_fltr_cnt[conf->input.flow_type][is_tun]++;
-> 
-> -       ret = ice_vc_send_msg_to_vf(vf, ctx->v_opcode, v_ret,
-> -                                   (u8 *)resp, len);
-> +       ret = ice_vc_respond_to_vf(vf, ctx->v_opcode, v_ret,
-> +                                  (u8 *)resp, len);
->          kfree(resp);
-> 
->          dev_dbg(dev, "VF %d: flow_id:0x%X, FDIR %s success!\n",
-> @@ -1600,8 +1600,8 @@ ice_vc_add_fdir_fltr_post(struct ice_vf *vf, struct ice_vf_fdir_ctx *ctx,
->          ice_vc_fdir_remove_entry(vf, conf, conf->flow_id);
->          devm_kfree(dev, conf);
-> 
-> -       ret = ice_vc_send_msg_to_vf(vf, ctx->v_opcode, v_ret,
-> -                                   (u8 *)resp, len);
-> +       ret = ice_vc_respond_to_vf(vf, ctx->v_opcode, v_ret,
-> +                                  (u8 *)resp, len);
->          kfree(resp);
->          return ret;
->   }
-> @@ -1648,8 +1648,8 @@ ice_vc_del_fdir_fltr_post(struct ice_vf *vf, struct ice_vf_fdir_ctx *ctx,
->          ice_vc_fdir_remove_entry(vf, conf, conf->flow_id);
->          vf->fdir.fdir_fltr_cnt[conf->input.flow_type][is_tun]--;
-> 
-> -       ret = ice_vc_send_msg_to_vf(vf, ctx->v_opcode, v_ret,
-> -                                   (u8 *)resp, len);
-> +       ret = ice_vc_respond_to_vf(vf, ctx->v_opcode, v_ret,
-> +                                  (u8 *)resp, len);
->          kfree(resp);
-> 
->          dev_dbg(dev, "VF %d: flow_id:0x%X, FDIR %s success!\n",
-> @@ -1665,8 +1665,8 @@ ice_vc_del_fdir_fltr_post(struct ice_vf *vf, struct ice_vf_fdir_ctx *ctx,
->          if (success)
->                  devm_kfree(dev, conf);
-> 
-> -       ret = ice_vc_send_msg_to_vf(vf, ctx->v_opcode, v_ret,
-> -                                   (u8 *)resp, len);
-> +       ret = ice_vc_respond_to_vf(vf, ctx->v_opcode, v_ret,
-> +                                  (u8 *)resp, len);
->          kfree(resp);
->          return ret;
->   }
-> @@ -1863,8 +1863,8 @@ int ice_vc_add_fdir_fltr(struct ice_vf *vf, u8 *msg)
->                  v_ret = VIRTCHNL_STATUS_SUCCESS;
->                  stat->status = VIRTCHNL_FDIR_SUCCESS;
->                  devm_kfree(dev, conf);
-> -               ret = ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_ADD_FDIR_FILTER,
-> -                                           v_ret, (u8 *)stat, len);
-> +               ret = ice_vc_respond_to_vf(vf, VIRTCHNL_OP_ADD_FDIR_FILTER,
-> +                                          v_ret, (u8 *)stat, len);
->                  goto exit;
->          }
-> 
-> @@ -1922,8 +1922,8 @@ int ice_vc_add_fdir_fltr(struct ice_vf *vf, u8 *msg)
->   err_free_conf:
->          devm_kfree(dev, conf);
->   err_exit:
-> -       ret = ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_ADD_FDIR_FILTER, v_ret,
-> -                                   (u8 *)stat, len);
-> +       ret = ice_vc_respond_to_vf(vf, VIRTCHNL_OP_ADD_FDIR_FILTER, v_ret,
-> +                                  (u8 *)stat, len);
->          kfree(stat);
->          return ret;
->   }
-> @@ -2006,8 +2006,8 @@ int ice_vc_del_fdir_fltr(struct ice_vf *vf, u8 *msg)
->   err_del_tmr:
->          ice_vc_fdir_clear_irq_ctx(vf);
->   err_exit:
-> -       ret = ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_DEL_FDIR_FILTER, v_ret,
-> -                                   (u8 *)stat, len);
-> +       ret = ice_vc_respond_to_vf(vf, VIRTCHNL_OP_DEL_FDIR_FILTER, v_ret,
-> +                                  (u8 *)stat, len);
->          kfree(stat);
->          return ret;
->   }
-> --
-> 2.34.1
-> 
+
+>DaveE
+> 
+>> > Reviewed-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
+>> > Signed-off-by: Dave Ertman <david.m.ertman@intel.com>
+>> > ---
+>> >   drivers/net/ethernet/intel/ice/ice_lag.c | 2 ++
+>> >   1 file changed, 2 insertions(+)
+>> >
+>> > diff --git a/drivers/net/ethernet/intel/ice/ice_lag.c
+>> b/drivers/net/ethernet/intel/ice/ice_lag.c
+>> > index 280994ee5933..b47cd43ae871 100644
+>> > --- a/drivers/net/ethernet/intel/ice/ice_lag.c
+>> > +++ b/drivers/net/ethernet/intel/ice/ice_lag.c
+>> > @@ -1981,6 +1981,8 @@ int ice_init_lag(struct ice_pf *pf)
+>> >   	int n, err;
+>> >
+>> >   	ice_lag_init_feature_support_flag(pf);
+>> > +	if (!ice_is_feature_supported(pf, ICE_F_SRIOV_LAG))
+>> > +		return 0;
+>> >
+>> >   	pf->lag = kzalloc(sizeof(*lag), GFP_KERNEL);
+>> >   	if (!pf->lag)
+
+---
+	-Jay Vosburgh, jay.vosburgh@canonical.com
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
