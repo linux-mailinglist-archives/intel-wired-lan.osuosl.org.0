@@ -1,211 +1,81 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8E5C780A8E3
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  8 Dec 2023 17:28:14 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2F6B980A1B0
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  8 Dec 2023 12:00:41 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 1F8E983E38;
-	Fri,  8 Dec 2023 16:28:13 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1F8E983E38
+	by smtp4.osuosl.org (Postfix) with ESMTP id 9F52341BE0;
+	Fri,  8 Dec 2023 11:00:39 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9F52341BE0
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1702052893;
-	bh=sSoi7YycHBUQ59q8+8zG1oerOZOXFbd7akdGGdv9ZGs=;
-	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1702033239;
+	bh=i9EEo6V/mArWu5rFvWjOsxYWwyPl20u8rxFFxp9K4mk=;
+	h=From:Date:References:In-Reply-To:To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=gRs/55QPdL9n/Sowmm1XYP00EWSQvUYoPuSCCiB2lRCT9CMZXfLwX7hpl5RRBKzhd
-	 g6xItw0kjKS+OrYqVTl8sh+iONFXyIvfzZ/0S4l8YNIppFYtLQVUTTtJfroObaQrJ6
-	 nrJ7pq503K8iDTDjxwYsgBwgLWLRjJt5QtXW7VI7c+fMrrvVxzBPYIiBZcnmU9d4am
-	 KK08nUgxugigEXx+azzlKu8G46+81cU/meenzFdAOg92mN4JYXQo8NTS7kTtnfwfEq
-	 4hFV453ycomDJkUPZtI/bl9GmnIGQgAFQ8pY6xkoqNRaMEmgFC4FILo37b17vEWh6U
-	 bcH8bxAWoUhgw==
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id mEp4kssH0wPb; Fri,  8 Dec 2023 16:28:12 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id E714383DE6;
-	Fri,  8 Dec 2023 16:28:11 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E714383DE6
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 8AA601BF34A
- for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Dec 2023 10:53:44 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 4A38D416E7
- for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Dec 2023 10:53:44 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4A38D416E7
+	b=M97P5N9+OeIE95Zr8Y889zwy3qlfE+UgW6rEUsg1xq3X3QaJcVKDIKuhxI2Ty8CLs
+	 GbqjddrZ9JdI0XtRXGLq9c+A5pIjQC5QQqPF4JQ0hfQZ1xwg7Yq5iRn83ibD7ZplcS
+	 t1eL1yNLlkPX05cR/z1aehU0gxtQHtSpjr21p1L1bSHLQdaXUaGczSeWVmsbwC6a/M
+	 2DcsTican496Ros1wh4V5cYOMQV3lGU/nItOrMHiu2rJCubft3GJGsk3GTxH63pDrt
+	 L54HG3kiah4TPR+fbQyq9ujS6ZCitGiGoz3rv12dp8TV4PgmyjHZgYovmI+2vRrkjb
+	 ZP6g57LRqpU5g==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id hf5QssdveDdP for <intel-wired-lan@lists.osuosl.org>;
- Fri,  8 Dec 2023 10:53:43 +0000 (UTC)
-X-Greylist: delayed 427 seconds by postgrey-1.37 at util1.osuosl.org;
- Fri, 08 Dec 2023 10:53:42 UTC
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E32B24161B
-Received: from esa.microchip.iphmx.com (esa.microchip.iphmx.com
- [68.232.154.123])
- by smtp4.osuosl.org (Postfix) with ESMTPS id E32B24161B
- for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Dec 2023 10:53:42 +0000 (UTC)
-X-CSE-ConnectionGUID: 3e0NrtFURd+b5G5ahGbLkA==
-X-CSE-MsgGUID: ByjXocyMTD2zBApuqawf4w==
-X-ThreatScanner-Verdict: Negative
-X-IronPort-AV: E=Sophos;i="6.04,260,1695711600"; d="scan'208";a="180148518"
-X-Amp-Result: SKIPPED(no attachment in message)
-Received: from unknown (HELO email.microchip.com) ([170.129.1.10])
- by esa6.microchip.iphmx.com with ESMTP/TLS/ECDHE-RSA-AES128-GCM-SHA256;
- 08 Dec 2023 03:46:32 -0700
-Received: from chn-vm-ex04.mchp-main.com (10.10.85.152) by
- chn-vm-ex01.mchp-main.com (10.10.85.143) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.35; Fri, 8 Dec 2023 03:45:58 -0700
-Received: from NAM11-CO1-obe.outbound.protection.outlook.com (10.10.215.250)
- by email.microchip.com (10.10.87.151) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.35 via Frontend Transport; Fri, 8 Dec 2023 03:45:58 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=hAgIk/6QprF53h2o12pUFOBi49+RtBzI6MDv3h1HrxN+UHO94bdr2jApmg4YhxUb2ftmor9BzHtr5L+91LtgNPz/I2OOkYSKOqw//H9CTGCvPr/M1xld4rXFEsJNPYp48DLlcezIvnwLczrfa6b5e74YzD1Rv2v3BZ6kDQwhfwdymQ/+5/FypJT022n6+KDpzE7OE8yychhqDyWmQ+weZjpNv8+m5KqcJ8qnXQAHvICzfS1uTt9i0XRa2BFkTbCPmnKYlSTEV+32cKQRR6HHnOUxoqgMzZI8oiTBrNqSHA/jRV56tjRkTPMKPuFA8UbLrZCyDXb3TDI7rPl9NlllWw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=TFzEVkrtdkDnecnm4Wpk02bP9YsYLIVSeyZ6cPyg7OU=;
- b=iGowH8kB77pa6VxsozIleBNNKSftdyZgMy9crRuivqPsXzg4g1IHQnQ1Hfuxuoslr4gEzZxSQmKe8OhIoM6qPjxWmEaswtENXPRmeo9HLz3P6GAGZWdqzGz7blaZZs8l2QDFfUmqnURuFiUDuvhJdqbh5Uza3LpsM18ne1C/0lIMeVXuEYcX29niC4SgYSFAGi/+sP/5TwLc9CAOascWpyAy831gfTAsH/CcdM6CwZbf2VGrttxogRJysF65Wo0Hk12YWo/2NAOEhfur0the43+ozuUKME5Ww9iTRg2IoDd2x6+DZEhIYCzU/Kw3TLy8QCHqVKUnp59CvxIZazJBuw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=microchip.com; dmarc=pass action=none
- header.from=microchip.com; dkim=pass header.d=microchip.com; arc=none
-Received: from DM6PR11MB4124.namprd11.prod.outlook.com (2603:10b6:5:4::13) by
- MW4PR11MB8291.namprd11.prod.outlook.com (2603:10b6:303:20d::14) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7068.28; Fri, 8 Dec
- 2023 10:45:56 +0000
-Received: from DM6PR11MB4124.namprd11.prod.outlook.com
- ([fe80::af51:1aed:6d1c:6d64]) by DM6PR11MB4124.namprd11.prod.outlook.com
- ([fe80::af51:1aed:6d1c:6d64%7]) with mapi id 15.20.7068.028; Fri, 8 Dec 2023
- 10:45:55 +0000
-From: <Madhuri.Sripada@microchip.com>
-To: <justinstitt@google.com>, <davem@davemloft.net>, <edumazet@google.com>,
- <kuba@kernel.org>, <pabeni@redhat.com>, <shayagr@amazon.com>,
- <akiyano@amazon.com>, <darinzon@amazon.com>, <ndagan@amazon.com>,
- <saeedb@amazon.com>, <rmody@marvell.com>, <skalluru@marvell.com>,
- <GR-Linux-NIC-Dev@marvell.com>, <dmichail@fungible.com>,
- <yisen.zhuang@huawei.com>, <salil.mehta@huawei.com>,
- <jesse.brandeburg@intel.com>, <anthony.l.nguyen@intel.com>,
- <louis.peens@corigine.com>, <shannon.nelson@amd.com>,
- <brett.creeley@amd.com>, <drivers@pensando.io>, <kys@microsoft.com>,
- <haiyangz@microsoft.com>, <wei.liu@kernel.org>, <decui@microsoft.com>,
- <doshir@vmware.com>, <pv-drivers@vmware.com>, <apw@canonical.com>,
- <joe@perches.com>, <dwaipayanray1@gmail.com>, <lukas.bulwahn@gmail.com>,
- <hauke@hauke-m.de>, <andrew@lunn.ch>, <f.fainelli@gmail.com>,
- <olteanv@gmail.com>, <arinc.unal@arinc9.com>, <daniel@makrotopia.org>,
- <Landen.Chao@mediatek.com>, <dqfext@gmail.com>, <sean.wang@mediatek.com>,
- <matthias.bgg@gmail.com>, <angelogioacchino.delregno@collabora.com>,
- <linus.walleij@linaro.org>, <alsi@bang-olufsen.dk>, <wei.fang@nxp.com>,
- <shenwei.wang@nxp.com>, <xiaoning.wang@nxp.com>, <linux-imx@nxp.com>,
- <Lars.Povlsen@microchip.com>, <Steen.Hegelund@microchip.com>,
- <Daniel.Machon@microchip.com>, <UNGLinuxDriver@microchip.com>,
- <jiawenwu@trustnetic.com>, <mengyuanlou@net-swift.com>,
- <hkallweit1@gmail.com>, <linux@armlinux.org.uk>, <ast@kernel.org>,
- <daniel@iogearbox.net>, <hawk@kernel.org>, <john.fastabend@gmail.com>
-Thread-Topic: [PATCH net-next v5 1/3] ethtool: Implement ethtool_puts()
-Thread-Index: AQHaKJpSOq0mHraPM0S77nPVwW1Wl7CfNdhg
-Date: Fri, 8 Dec 2023 10:45:55 +0000
-Message-ID: <DM6PR11MB4124F675444E8BA0523264F8E18AA@DM6PR11MB4124.namprd11.prod.outlook.com>
-References: <20231206-ethtool_puts_impl-v5-0-5a2528e17bf8@google.com>
- <20231206-ethtool_puts_impl-v5-1-5a2528e17bf8@google.com>
-In-Reply-To: <20231206-ethtool_puts_impl-v5-1-5a2528e17bf8@google.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: DM6PR11MB4124:EE_|MW4PR11MB8291:EE_
-x-ms-office365-filtering-correlation-id: 795540da-659c-4df8-0aa2-08dbf7dadb35
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: h/+/FTei1hfSE5QUMpHFvgmqMd6ersNN1yNf/rcvXbzkM/PaCOWaHWASxhzd64P+RUAXEDasAJfsfkTHSq4H9o9O4pQnmnHIa0eeeiC7d4Y93tWz1faFw5+eMg6BwN8b6e6gwQewNfwDkOLRbpZ4DL7N3MwsyI+SRyNVd9XGCjiUVVhK4G9D3f6CxENCWl4x6/rkcHhRqW0sCMuoJdTOezN3pk8/4KSHopbAWDwnQUc16dckqNWZEE57SILnJH35oA5nzUfTMi1uu3rhEgBKmgIYQQuhulVshcQRSV6N1u4z1wal6F7TRPYh5zbE6yWXrtqg+McXFl9N/+pbzNCFamtoUy4c/UQU0qHbiEtrwuBrfxEvC+2uWjcjYW8nUBiEdkcVNBXtRkR5bnycRwGRPReqL8tKQwG4os64L9k4SVCvhMbOWVvncVaE4SyjWj6qzruLCkeFYKuROJ11EPq4NpqHFeo8qVRfmv0dauTIiu8kc4H2YucdRlROsOEym/Ct72NbsvcKStZ4ZkurI2Kypc1HzRmIbzwOXmWkdgqVXoqwm0jxsBv98j/dFLdmJJXyEVREslvtPceypUIovDCJv0V+3hh/qnXXjgtIgToAOIZkGtkUmcqvAghKbLbNSY/UL4/Lm8g+ZbiU9ffEainEAg==
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:DM6PR11MB4124.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230031)(366004)(39860400002)(346002)(396003)(136003)(376002)(230922051799003)(1800799012)(451199024)(186009)(64100799003)(5660300002)(1191002)(7406005)(7366002)(2906002)(7416002)(52536014)(4326008)(8936002)(8676002)(86362001)(38070700009)(921008)(41300700001)(55016003)(9686003)(558084003)(26005)(66446008)(64756008)(66946007)(76116006)(66476007)(54906003)(66556008)(110136005)(316002)(38100700002)(71200400001)(6506007)(33656002)(7696005)(122000001)(478600001);
- DIR:OUT; SFP:1101; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?VjMwQ0U5WTJDcXhPT1lud044ekFxVGpycU15UU5YZjdrUnU1UWdUTUZ1RTd1?=
- =?utf-8?B?WU9yMFVMU0k0QVU5MVlVVlE2Q1Z3N0RmdU1HVG8zRnNWQ1ZydG1Xc2ZUQU1u?=
- =?utf-8?B?RXFFWlJPWGhOUUx6Q3Jwa05wN0tGQkVkSWMyNVB2QzhVSExJTDhCZXl0Mjh0?=
- =?utf-8?B?ZkRiVitKaFJTdWs3UDZaOGFCOUtObnN3RkJGVkpqTXFINC9WTWpDdXY3RG14?=
- =?utf-8?B?eU02RjY0Nlo0Tk9kTE8xU0NtQ0x3aktLK0pkUzN0RDB0S095Z1AyN2l2RVZn?=
- =?utf-8?B?QlRDeitrQ2lVeFVkOVJPeWJQZEJWak9JSHpjZU1QdHpQZXlwakd6REd0Zmxk?=
- =?utf-8?B?eFBzVUJMaUFwYlpEbElVWUZaMFRNWmhyOFR5Qk9tK1FEM3A5VHpXMk91M0NX?=
- =?utf-8?B?UDNkcnBveDhtTVhUaGVvcVl5eVBVaUFrK2wxNTQ4b1pVZ3E0VHVPQ1hDZmhy?=
- =?utf-8?B?dHR6VlRybk9VV0RBVjJmRys1aGJNRXNtbHRhZWkyT1UxZ0pMZEs3Nk9WdzBa?=
- =?utf-8?B?SXpkVUdqbzZCVHRVVStlUDFBaUxrRHdqcDhSTFRUV2pkaWo5TnNGQjh2SWJJ?=
- =?utf-8?B?cWNGNTZWVlZIUlRmaDhtNXZ3TWhxbUVKZnJJVkM2RmFmM0VTdjg3b3VIQlMy?=
- =?utf-8?B?UjdkYWs1WkVqMm9NUWRPODJENGhIMUMrZzFXV0RLYmhTWDVXd3hud05jRDlP?=
- =?utf-8?B?Z2FyRjRCNVl6Y1RPNkRRN3IyTGVjNXA5Zk1CMEV1TjFQQ2EzVkoya2lKekpK?=
- =?utf-8?B?RHBNdlVwdW9HbHkwL1B6R3FBR0NnRzBHOGx0eCtQL3JKN1RYbkdudHNDMWw3?=
- =?utf-8?B?MDMyZWtvNFdxS2x6OW5hOFg2VEJ0T21PNktRRFpCdS9oTXd5NmJtR09aaWMy?=
- =?utf-8?B?bFhDeDZ2UUt5WWJidzEzSU1Gd2tSWlJrWG1VanlUb0RMay9MTXIwTXhxRWM4?=
- =?utf-8?B?UzJ1RUc2TFM0Y3dTTkVyYW9sWFpoeWJOa2xqcWFnNjJTb3UzMTh4ZytMdTIy?=
- =?utf-8?B?dS9NQ0p1TWtUVFJWbWk3RUhVZTJVN0FjOFJhdUlwNkVrOGhZNU94MkZtRE0w?=
- =?utf-8?B?SFA4ZmJZSk9FWmhON3ZKN1p1YjVxVWdhWlVxTU05M1BGdlJuZDdFdVMyQkc2?=
- =?utf-8?B?Q2pWeFFCZDd3NlFqT3FHY3p0VDRRUi85Y3NJT0xpU2F4YW9GWTlhYjRGdGo0?=
- =?utf-8?B?aXh3SFJseVZDRHkya1haejlQMVVTb1p4NEw3L1B0eXY5NVZyd3dKZ0NGaGcw?=
- =?utf-8?B?NklFYmxPV1g2cW1tdDJGNmdrVVY0WUVRdklLNVYzeTNTcGZhVnNDY3ZpRnVK?=
- =?utf-8?B?NXBhZVNYSXY1aU5IWVJLYWthL0RXdTNFdWtqMHBrKzMyUXp4RVJ6QTdZZWpy?=
- =?utf-8?B?TXZFblNLRFVYakQ1Z0E2eUhIM25mcDZGNkZTZmNXR0lwNmdINHF4aGpaSXk4?=
- =?utf-8?B?NzREb2tpZHFsVlRseE5KazN5Vis0VzZycUN0SHdNTWhaTmh5elFMWGtudlN4?=
- =?utf-8?B?dTlPUktpdTN6V2s3RVkxOWJjSEV2OGpLWW93cm51cVNrd1QzTHdhYjh2MUZN?=
- =?utf-8?B?ZEZFVHQyVlNkbnVtR3dMRk1sc1BXdGZxY2haeFh6dmhhaFE1cnlqcUlQaXI0?=
- =?utf-8?B?RjhlNkkxUFJTdElrM2Znb3EwTjBNTmRNMytzSWhCVllyeHhOVnRsSTFMeFVE?=
- =?utf-8?B?SGhCd1UweFZaZituQTRkb0hIQkkvVEtialdXNmRVeVNTcStWL2RpakFORDRP?=
- =?utf-8?B?Y3g4WFVTcWhYK0J1eTFqeUJkZ2krKzg2dDRzT3BWSzRZcnNyU2paTGY0RWxm?=
- =?utf-8?B?VnJuTURGL1diWTVERG1MZHgyTlk2Nk0zb25RNS9DZmN4Nzd6dGVXZnE3NHZF?=
- =?utf-8?B?cEtUSmkvOW9SQjBUcVMrUFZpUEZvVVl4M3VGTFJpNTB0cWNzWmFkeCtPbEtu?=
- =?utf-8?B?aVRlNldub1BETU1KMGdWQVF4ZVRkQjNBMVozZzU2VlhJdER6RmRHQmNQU3Vi?=
- =?utf-8?B?alFmSWErSkVPN0NGZHpxQkZzdDZjSjlEY2p6eGZHcC81SnFqSjVuaTNNZjYz?=
- =?utf-8?B?V2xhTmkyMkhtWTE1eDNtRDE0UkU5MXRRV0ZCcVNXa3Z1eDFvQXFmc1duMmhv?=
- =?utf-8?B?Y2dDcjdHMlo3dzVBQjJleW1mT3djTzFKWlBsUnIwUXJQZ0xrUEZyemUyZyt1?=
- =?utf-8?B?cUE9PQ==?=
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id LWTexrNqZaKy; Fri,  8 Dec 2023 11:00:38 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp4.osuosl.org (Postfix) with ESMTP id 7D0CA41B55;
+	Fri,  8 Dec 2023 11:00:38 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7D0CA41B55
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id DB9501BF34A
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Dec 2023 11:00:32 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp2.osuosl.org (Postfix) with ESMTP id B0F7843603
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Dec 2023 11:00:32 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B0F7843603
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id BltqhHd96Fga for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  8 Dec 2023 11:00:31 +0000 (UTC)
+Received: from sin.source.kernel.org (sin.source.kernel.org [145.40.73.55])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id DCCB541A08
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Dec 2023 11:00:30 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org DCCB541A08
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by sin.source.kernel.org (Postfix) with ESMTP id 28E11CE26CE;
+ Fri,  8 Dec 2023 11:00:26 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 54E74C433C8;
+ Fri,  8 Dec 2023 11:00:25 +0000 (UTC)
+Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org
+ (localhost.localdomain [127.0.0.1])
+ by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id
+ 30F8DDD4F1E; Fri,  8 Dec 2023 11:00:25 +0000 (UTC)
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: DM6PR11MB4124.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 795540da-659c-4df8-0aa2-08dbf7dadb35
-X-MS-Exchange-CrossTenant-originalarrivaltime: 08 Dec 2023 10:45:55.5444 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 3f4057f3-b418-4d4e-ba84-d55b4e897d88
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: KZwULr+JuDj2/keqFQbk036G7+tYZ/Dgb93suShdlzQYZwEUQp8TE5MsiZSkOYdTORdQQmvTdzTy4RkFvXJN6w7a7lahGm1TuwMiQk++YhA=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MW4PR11MB8291
-X-Mailman-Approved-At: Fri, 08 Dec 2023 16:27:53 +0000
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <170203322519.25632.13162024419836426102.git-patchwork-notify@kernel.org>
+Date: Fri, 08 Dec 2023 11:00:25 +0000
+References: <20231206-ethtool_puts_impl-v5-0-5a2528e17bf8@google.com>
+In-Reply-To: <20231206-ethtool_puts_impl-v5-0-5a2528e17bf8@google.com>
+To: Justin Stitt <justinstitt@google.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=microchip.com; i=@microchip.com; q=dns/txt; s=mchp;
- t=1702032822; x=1733568822;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=TFzEVkrtdkDnecnm4Wpk02bP9YsYLIVSeyZ6cPyg7OU=;
- b=PjsFnyF1301/Ap0vNkwnBjpKwJSvmF8qycVIgE3ogEemoOozQUfBH1Ak
- drkoDVbCiSz3xMc5ISValQwEthEra3saeT6LXdyMlhE65ZQgKsZ1Ed3ch
- eamGq+xa3QeAI3FYctgZ0p52O2MLXR87YJvwNUhvFZcLJu880aiv9KIei
- Wyf52ZVbr9ODdf+0SCQM2aufneRjGvLdS5cwHuVn/rfQlpShiEZRYCxze
- PVYTaV3CxOW/WbAHtGanhP8GivI2PBuFmTAqWlf80WLFyrhOKyGXlYwRc
- sfvv9rYa9vizJpT4+w83Dk1ubcmuK0r6UYPctBgooZj3Uv+kCTt3Folil
- w==;
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=microchip.com; s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=TFzEVkrtdkDnecnm4Wpk02bP9YsYLIVSeyZ6cPyg7OU=;
- b=RyxHwG6VRm5i+ZgFUEU+j3FjkWSCQw3uuWn7H3SM1el3XyNr3yhjTQj71KhPgwMTTNST7VMFm3+fqtVyp8KzDN24gZo0isG1ANS5jnnFYaIeKLNdLKJaZxJAU0F+QdhMgxs/tr+xsQlsKd7Na9vrmyKGrJRJMb0GBHknXXc1NEEvFr72BrDE7iLMerShol2d2eWFkjI1SK6S30G+/7UAdPDRjkeYVSWacP6UxYQu6xAPT5lsy9jnuDM/wI8ckx5WHDsAzg2JEshIsgGEmfpoTh1dAc+BO6yF/tByl5iHmnMeeeRfKovwu4+L34NBxQq7fB8Hkni7QprNW1R37HvwJQ==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=microchip.com header.i=@microchip.com
- header.a=rsa-sha256 header.s=mchp header.b=PjsFnyF1; 
- dkim=pass (2048-bit key,
- unprotected) header.d=microchip.com header.i=@microchip.com
- header.a=rsa-sha256 header.s=selector1 header.b=RyxHwG6V
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=microchip.com;
-Subject: Re: [Intel-wired-lan] [PATCH net-next v5 1/3] ethtool: Implement
+ d=kernel.org; s=k20201202; t=1702033225;
+ bh=1L3W0Olv+R+kHzOLiJnr1tgIjD7V5hrXUJRJcLy2Pb8=;
+ h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+ b=VEzPH/rCT0ANk+4UUjvCU1rO1UprgeFQBr0nGUZP1RWomNYrfR8kgoFGuq04gfnqW
+ 0ydoitXLAhaANSZQQhMEpVgvAj0n9PFVJ27TXSw6o0bxn980ZNTbu8PdD8ZguRFSXh
+ O47aTfET1burDw4ZGz9Fu9f32nVVNGoY7vyFXl7YChbkCPFlSeOXmUW2wQEE29xXbw
+ NyAMkTsXQVCRNum1prPdPUDNkEZu6tSU7YY50aS7XfiTa3goiime8PYZ40zhjUUmTf
+ 6qVTycbXIuTvn8oghp4WgPu6nz1XSp4ElOvhqdpP0Xep7yVbPjeIHGY7Bb49tmMaUo
+ tyqWXix93P1VA==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=VEzPH/rC
+Subject: Re: [Intel-wired-lan] [PATCH net-next v5 0/3] ethtool: Add
  ethtool_puts()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -219,24 +89,65 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: linux-hyperv@vger.kernel.org, keescook@chromium.org, netdev@vger.kernel.org,
- ndesaulniers@google.com, linux-kernel@vger.kernel.org, nathan@kernel.org,
- oss-drivers@corigine.com, intel-wired-lan@lists.osuosl.org,
- linux-mediatek@lists.infradead.org, bpf@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org
+Cc: andrew@lunn.ch, linux-hyperv@vger.kernel.org, brett.creeley@amd.com,
+ doshir@vmware.com, pv-drivers@vmware.com, john.fastabend@gmail.com,
+ linus.walleij@linaro.org, ast@kernel.org, linux@armlinux.org.uk,
+ matthias.bgg@gmail.com, edumazet@google.com, olteanv@gmail.com,
+ anthony.l.nguyen@intel.com, mengyuanlou@net-swift.com, netdev@vger.kernel.org,
+ akiyano@amazon.com, linux-kernel@vger.kernel.org, hawk@kernel.org,
+ louis.peens@corigine.com, wei.liu@kernel.org, f.fainelli@gmail.com,
+ daniel@iogearbox.net, Steen.Hegelund@microchip.com, decui@microsoft.com,
+ jesse.brandeburg@intel.com, ndagan@amazon.com, hkallweit1@gmail.com,
+ shenwei.wang@nxp.com, xiaoning.wang@nxp.com, linux-imx@nxp.com,
+ kuba@kernel.org, pabeni@redhat.com, yisen.zhuang@huawei.com,
+ Landen.Chao@mediatek.com, shayagr@amazon.com, daniel.machon@microchip.com,
+ alsi@bang-olufsen.dk, hauke@hauke-m.de, haiyangz@microsoft.com,
+ sean.wang@mediatek.com, nathan@kernel.org, joe@perches.com,
+ jiawenwu@trustnetic.com, wei.fang@nxp.com, lukas.bulwahn@gmail.com,
+ apw@canonical.com, drivers@pensando.io, intel-wired-lan@lists.osuosl.org,
+ lars.povlsen@microchip.com, angelogioacchino.delregno@collabora.com,
+ linux-arm-kernel@lists.infradead.org, salil.mehta@huawei.com,
+ GR-Linux-NIC-Dev@marvell.com, dqfext@gmail.com, keescook@chromium.org,
+ arinc.unal@arinc9.com, rmody@marvell.com, darinzon@amazon.com,
+ oss-drivers@corigine.com, ndesaulniers@google.com, daniel@makrotopia.org,
+ davem@davemloft.net, dwaipayanray1@gmail.com, saeedb@amazon.com,
+ linux-mediatek@lists.infradead.org, bpf@vger.kernel.org, dmichail@fungible.com,
+ skalluru@marvell.com, UNGLinuxDriver@microchip.com, shannon.nelson@amd.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-> Use strscpy() to implement ethtool_puts().
-> 
-> Functionally the same as ethtool_sprintf() when it's used with two arguments
-> or with just "%s" format specifier.
-> 
-> Signed-off-by: Justin Stitt <justinstitt@google.com>
+Hello:
 
-Reviewed-by: Madhuri Sripada <madhuri.sripada@microchip.com>
+This series was applied to netdev/net-next.git (main)
+by David S. Miller <davem@davemloft.net>:
+
+On Wed, 06 Dec 2023 23:16:09 +0000 you wrote:
+> Hi,
+> 
+> This series aims to implement ethtool_puts() and send out a wave 1 of
+> conversions from ethtool_sprintf(). There's also a checkpatch patch
+> included to check for the cases listed below.
+> 
+> This was sparked from recent discussion here [1]
+> 
+> [...]
+
+Here is the summary with links:
+  - [net-next,v5,1/3] ethtool: Implement ethtool_puts()
+    https://git.kernel.org/netdev/net-next/c/2a48c635fd9a
+  - [net-next,v5,2/3] checkpatch: add ethtool_sprintf rules
+    https://git.kernel.org/netdev/net-next/c/9b5f621cea6e
+  - [net-next,v5,3/3] net: Convert some ethtool_sprintf() to ethtool_puts()
+    https://git.kernel.org/netdev/net-next/c/e403cffff1a4
+
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
