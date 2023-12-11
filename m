@@ -1,79 +1,85 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4131C80BA88
-	for <lists+intel-wired-lan@lfdr.de>; Sun, 10 Dec 2023 12:54:29 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id E343F80D26F
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 11 Dec 2023 17:42:33 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 625F06106E;
-	Sun, 10 Dec 2023 11:54:27 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 625F06106E
+	by smtp4.osuosl.org (Postfix) with ESMTP id 4B06B418DE;
+	Mon, 11 Dec 2023 16:42:32 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4B06B418DE
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1702209267;
-	bh=sykPpd8ETUDreZCYwvx7SiWIydhJyz07UN2ZCokDEO0=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=W16GhSZk3xV/9bkgAU+RR9mHjcePRaxm2niMAKMAYzGN0c+lm3RiiZ3QBnXZj+JYr
-	 9M20E66q3H8f36p87PdzIxPIKqmVb755o+RTt3Zk5rouN3o4LVq80lDgDvB6fkMaDe
-	 GvrhMUXQtpdkE/1OeNKRSdKpwBWldG2nA2SyjWiq2g20JMBBbhoJUqOoLUZuanYvXy
-	 GY0cVUovxL9uuavtje84zkBLflWrhWnfnGN027ycR9ipqc+Q+12b8tJz31fkTrT51o
-	 rm+0A/FHAtgBAkkkDJmrxiX3XTLNxb8pxA3vFaqEPboeiO7+0QjkXCuytQ2mbmcRV+
-	 DoK6vt16OLkOQ==
+	s=default; t=1702312952;
+	bh=wKwQ4eYsKEwXT3XXCNLGQwBLZPy4U+Ac7JejFRuXAuU=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=SMuxq74dcppcQZT9YZCHcYElVYouticjQbOTWnQGT6BEG6UwxmWTgPEcaYP4xG1Yv
+	 WxQdJoYi+m6AyVvHScjT+mZyv2NHA+uHy9vdBbTTAnYJEV7iz0Ieh+XWhK7yG52oB8
+	 rL3t5Ilq8wkTUwUaGCoS5ThQUACWmrb6qRLJo3uuPSTuU2e+onQY1enmV2zQJWy1uR
+	 Xzkh9zp7pQhcB2Mm/PgRG2boEi/EwOqL7y+gB33u2kGsIERmJj1TaCF7l/3/nzje7t
+	 Q8zgK/WlF+bAMLw0V4YCif9ZRLikgbVhNjePrwjvmhMs5mM5xvNsRY3NDJiPurZ9CK
+	 11p2XYxMXh0jg==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id yIkP07sb9D1L; Sun, 10 Dec 2023 11:54:26 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id FNfsBOkw-TSy; Mon, 11 Dec 2023 16:42:31 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 446066104E;
-	Sun, 10 Dec 2023 11:54:26 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 446066104E
+	by smtp4.osuosl.org (Postfix) with ESMTP id 09EE440345;
+	Mon, 11 Dec 2023 16:42:31 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 09EE440345
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 11D081BF593
- for <intel-wired-lan@lists.osuosl.org>; Sun, 10 Dec 2023 11:54:21 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 3E8011BF3C1
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 11 Dec 2023 03:00:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id DDCDC82099
- for <intel-wired-lan@lists.osuosl.org>; Sun, 10 Dec 2023 11:54:20 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org DDCDC82099
+ by smtp1.osuosl.org (Postfix) with ESMTP id 15AAB80BC3
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 11 Dec 2023 03:00:22 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 15AAB80BC3
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id SXssTemyZYNL for <intel-wired-lan@lists.osuosl.org>;
- Sun, 10 Dec 2023 11:54:20 +0000 (UTC)
-Received: from ams.source.kernel.org (ams.source.kernel.org [145.40.68.75])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 1E3538208A
- for <intel-wired-lan@lists.osuosl.org>; Sun, 10 Dec 2023 11:54:19 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1E3538208A
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by ams.source.kernel.org (Postfix) with ESMTP id 33587B80A27;
- Sun, 10 Dec 2023 11:54:18 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 60A13C433C8;
- Sun, 10 Dec 2023 11:54:16 +0000 (UTC)
-Date: Sun, 10 Dec 2023 11:54:14 +0000
-From: Simon Horman <horms@kernel.org>
-To: Pawel Chmielewski <pawel.chmielewski@intel.com>
-Message-ID: <20231210115414.GK5817@kernel.org>
-References: <20231206173936.732818-1-pawel.chmielewski@intel.com>
+ with ESMTP id zgqkWXhYHVFC for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 11 Dec 2023 03:00:21 +0000 (UTC)
+Received: from mailgw.kylinos.cn (mailgw.kylinos.cn [124.126.103.232])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 670F780A58
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 11 Dec 2023 03:00:19 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 670F780A58
+X-UUID: 0b105c8e154d4308be340be35614f20c-20231211
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.33, REQID:19a20f34-c316-4582-9f89-476ca1073edf, IP:5,
+ U
+ RL:0,TC:0,Content:0,EDM:0,RT:0,SF:-15,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+ N:release,TS:-10
+X-CID-INFO: VERSION:1.1.33, REQID:19a20f34-c316-4582-9f89-476ca1073edf, IP:5,
+ URL
+ :0,TC:0,Content:0,EDM:0,RT:0,SF:-15,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+ release,TS:-10
+X-CID-META: VersionHash:364b77b, CLOUDID:931283fd-4a48-46e2-b946-12f04f20af8c,
+ B
+ ulkID:231211105935IA61I4Z6,BulkQuantity:0,Recheck:0,SF:38|24|17|19|44|66|1
+ 02,TC:nil,Content:0,EDM:-3,IP:-2,URL:0,File:nil,Bulk:nil,QS:nil,BEC:nil,CO
+ L:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_FSD,TF_CID_SPAM_FSI,TF_CID_SPAM_SNR,TF_CID_SPAM_FAS
+X-UUID: 0b105c8e154d4308be340be35614f20c-20231211
+X-User: chentao@kylinos.cn
+Received: from vt.. [(116.128.244.169)] by mailgw
+ (envelope-from <chentao@kylinos.cn>)
+ (Generic MTA with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+ with ESMTP id 1052257917; Mon, 11 Dec 2023 10:59:34 +0800
+From: Kunwu Chan <chentao@kylinos.cn>
+To: jesse.brandeburg@intel.com, anthony.l.nguyen@intel.com,
+ davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
+ pabeni@redhat.com
+Date: Mon, 11 Dec 2023 10:59:27 +0800
+Message-Id: <20231211025927.233449-1-chentao@kylinos.cn>
+X-Mailer: git-send-email 2.39.2
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20231206173936.732818-1-pawel.chmielewski@intel.com>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1702209257;
- bh=x6cjpt3ajy0Kzb75ylp+GLKAKp4kb24qMl37MO3JNIk=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=UkH21ofnQYHV0Vs2oSW+t/uDnCP6CzdX7Y53lJsOFMLDAMX/46zp3/uH3+j6LCEMc
- 27oUG/jVVLDdeFbBCbm5zBLrGpZNIRJMvWQVpdF1sVDot5tNtBjGnlch0/9fHvXoty
- Xh1O9Ne5O3YqEOD4lEixA5W5v3aspEwPcIt3CyR1yWlW1zYExcze9J51bvRkspkLZ6
- F/ku17FGXywToRTt4T1GpM2MdvVj0sP+smnyut1GDZrs6/f/rzEem5MC2eDj4Km1oz
- vmdVPjTZmlSfx6m2EZGDSQ7mklDgVKCEabqeA0l8IMWbzeUYg/jK666MdqSMEr3Gg8
- d9mmuMZjkecoA==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=UkH21ofn
-Subject: Re: [Intel-wired-lan] [PATCH iwl-net v2] ice: Do not get coalesce
- settings while in reset
+X-Mailman-Approved-At: Mon, 11 Dec 2023 16:42:26 +0000
+Subject: [Intel-wired-lan] [PATCH] iavf: Fix null pointer dereference in
+ iavf_print_link_message
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,33 +92,41 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Ngai-Mint Kwan <ngai-mint.kwan@intel.com>, netdev@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org,
- Mateusz Polchlopek <mateusz.polchlopek@intel.com>
+Cc: Kunwu Chan <chentao@kylinos.cn>, Kunwu Chan <kunwu.chan@hotmail.com>,
+ przemyslaw.kitszel@intel.com, linux-kernel@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
+ jacob.e.keller@intel.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed, Dec 06, 2023 at 06:39:36PM +0100, Pawel Chmielewski wrote:
-> From: Ngai-Mint Kwan <ngai-mint.kwan@intel.com>
-> 
-> Getting coalesce settings while reset is in progress can cause NULL
-> pointer deference bug.
-> If under reset, abort get coalesce for ethtool.
-> 
-> Fixes: 67fe64d78c437 ("ice: Implement getting and setting ethtool coalesce")
-> Signed-off-by: Ngai-Mint Kwan <ngai-mint.kwan@intel.com>
-> Reviewed-by: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
-> Signed-off-by: Pawel Chmielewski <pawel.chmielewski@intel.com>
-> ---
-> Changes since v1:
->  * Added "Fixes:" tag
->  * targeting iwl-net instead of iwl-next
+kasprintf() returns a pointer to dynamically allocated memory
+which can be NULL upon failure.
 
-Thanks for the update.
+Fixes: 1978d3ead82c ("intel: fix string truncation warnings")
+Cc: Kunwu Chan <kunwu.chan@hotmail.com>
+Signed-off-by: Kunwu Chan <chentao@kylinos.cn>
+---
+ drivers/net/ethernet/intel/iavf/iavf_virtchnl.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-Reviewed-by: Simon Horman <horms@kernel.org>
+diff --git a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
+index 64c4443dbef9..1b50d351f28b 100644
+--- a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
++++ b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
+@@ -1444,6 +1444,8 @@ static void iavf_print_link_message(struct iavf_adapter *adapter)
+ 		speed = kasprintf(GFP_KERNEL, "%d Mbps", link_speed_mbps);
+ 	}
+ 
++	if (!speed)
++		return;
+ 	netdev_info(netdev, "NIC Link is Up Speed is %s Full Duplex\n", speed);
+ 	kfree(speed);
+ }
+-- 
+2.39.2
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
