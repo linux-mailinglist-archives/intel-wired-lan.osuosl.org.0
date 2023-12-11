@@ -2,64 +2,64 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 84CB580CEE5
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 11 Dec 2023 16:02:53 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7E1DF80CEE6
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 11 Dec 2023 16:02:56 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 6862661396;
-	Mon, 11 Dec 2023 15:02:50 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6862661396
+	by smtp3.osuosl.org (Postfix) with ESMTP id 0D734613BB;
+	Mon, 11 Dec 2023 15:02:55 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0D734613BB
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1702306970;
-	bh=/u6x+20Oj6M9nJVxHAPZWtlOyEL+U01KNE+zzrfuygY=;
+	s=default; t=1702306975;
+	bh=EiVJHNr6T6OXPvXJFYMPO6mE2EQQGFwfjVXg8OJ6SPc=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=XjYfVRalkZlSEOWsSA21syjL5+F2gSa8TNjzSYSVQ1bxzFlANpoDNjD4SmCiOmP4O
-	 lypJgfYHCr8tr6rBRqBf2xeLKX1/CjTzycGcZIgufGjZVhXwVJ+BmhCm84hOfZkm+C
-	 GupVEvUfAG4vfo179PnlNkGgxOIS/Kc5fYwBGypRdIsYvZ4CIcHf5WW45yYBPLuJ1L
-	 5FdVtMyz8DOIF0FLAWinE6hhQRDoiEF2UL/GmH+hTLGuJ90p7gcrF7x1/riDWTygVL
-	 pvzFLUHUXStQ6egzibxNSayE0kpYG+rpjxgx5FTBDU1wCtrvvt8HUrNSFmS4s50um3
-	 6Y4VVChWrPqvg==
+	b=wTdVwuSEyLKohFihX1s3AgeLlA18Oj/+e93mwTrk6Ol8yiVQd+bzdp+gixceL11pI
+	 KnA6Qihkfpgjjm9HNziD8nPrkcwPlrIjIdcr0A2dtnum/Zmf74mSIjA5wPwRP5mQ/c
+	 2AQtmQBTTQTR6YMgprukHgeFuhZxMbXRooxyK7B8uYWhDxbZdnUzOzW0LnjbRIjtyl
+	 AMpYXiMpT0yxHMD56Q41+G54cOQcabWRp3u3YlI866i21sYefNyAQwob9fMxCf7YNE
+	 zeCAozL0CtmMHSMdRE4aZxFiU8HaKFXemwi7BGJ3WcMedUAIgZRj3wKsRUSK+j9NDJ
+	 XAeSncdVx5AoQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 4vOGLvO_iu4d; Mon, 11 Dec 2023 15:02:49 +0000 (UTC)
+	with ESMTP id gvn6_b164ANB; Mon, 11 Dec 2023 15:02:54 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 1C54660B48;
-	Mon, 11 Dec 2023 15:02:49 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1C54660B48
+	by smtp3.osuosl.org (Postfix) with ESMTP id A699860B48;
+	Mon, 11 Dec 2023 15:02:53 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A699860B48
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 1DC9B1BF860
- for <intel-wired-lan@lists.osuosl.org>; Mon, 11 Dec 2023 15:02:38 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 3CCFF1BF860
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 11 Dec 2023 15:02:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id EB11881E5E
- for <intel-wired-lan@lists.osuosl.org>; Mon, 11 Dec 2023 15:02:37 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org EB11881E5E
+ by smtp1.osuosl.org (Postfix) with ESMTP id 2309E81E5E
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 11 Dec 2023 15:02:40 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 2309E81E5E
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id KevWwOfb3xVP for <intel-wired-lan@lists.osuosl.org>;
- Mon, 11 Dec 2023 15:02:37 +0000 (UTC)
+ with ESMTP id LclnmR7FGq4K for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 11 Dec 2023 15:02:39 +0000 (UTC)
 Received: from mgamail.intel.com (mgamail.intel.com [192.55.52.120])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 2D2FF81DF7
- for <intel-wired-lan@lists.osuosl.org>; Mon, 11 Dec 2023 15:02:37 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 2D2FF81DF7
-X-IronPort-AV: E=McAfee;i="6600,9927,10921"; a="393532303"
-X-IronPort-AV: E=Sophos;i="6.04,268,1695711600"; d="scan'208";a="393532303"
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 508C281DF7
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 11 Dec 2023 15:02:39 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 508C281DF7
+X-IronPort-AV: E=McAfee;i="6600,9927,10921"; a="393532308"
+X-IronPort-AV: E=Sophos;i="6.04,268,1695711600"; d="scan'208";a="393532308"
 Received: from orsmga002.jf.intel.com ([10.7.209.21])
  by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 11 Dec 2023 07:02:36 -0800
+ 11 Dec 2023 07:02:39 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10921"; a="773090852"
-X-IronPort-AV: E=Sophos;i="6.04,268,1695711600"; d="scan'208";a="773090852"
+X-IronPort-AV: E=McAfee;i="6600,9927,10921"; a="773090861"
+X-IronPort-AV: E=Sophos;i="6.04,268,1695711600"; d="scan'208";a="773090861"
 Received: from kkolacin-desk1.igk.intel.com ([10.102.102.152])
- by orsmga002.jf.intel.com with ESMTP; 11 Dec 2023 07:02:34 -0800
+ by orsmga002.jf.intel.com with ESMTP; 11 Dec 2023 07:02:36 -0800
 From: Karol Kolacinski <karol.kolacinski@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Mon, 11 Dec 2023 16:02:22 +0100
-Message-Id: <20231211150226.295090-3-karol.kolacinski@intel.com>
+Date: Mon, 11 Dec 2023 16:02:23 +0100
+Message-Id: <20231211150226.295090-4-karol.kolacinski@intel.com>
 X-Mailer: git-send-email 2.40.1
 In-Reply-To: <20231211150226.295090-1-karol.kolacinski@intel.com>
 References: <20231211150226.295090-1-karol.kolacinski@intel.com>
@@ -68,22 +68,22 @@ Organization: Intel Technology Poland sp. z o.o. - ul. Slowackiego 173,
  80-298 Gdansk - KRS 101882 - NIP 957-07-52-316
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1702306957; x=1733842957;
+ t=1702306959; x=1733842959;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=ZMQPeV+T6ni4cWo6aMVU6W3sSOK0ZoqXXBmpmlh8Cv4=;
- b=nWbMHW2ALKNoLbWEiI/g7lBlG3ofrJpW0Twc+53g+5nHvQSCoBkGXgH3
- uEtPxOtWvDprkn41AHnnX4DhcruxOFI4eTzlvlf98FBa5Em1RTmcTXTNK
- a0qd8rFtrky2wS9d6ra72zavB3Ky9ygIFMHe9JuecPuuHGyhfxc/vBjgM
- CshReqDJ354lSdGVRu/ilMYxtRxcFKLaFbakPavpC36QKef3XFoLJVO79
- Lo+EUvD9XL4A9Dgs2yEFsDnnvnsmZ4KNHT4PTUJdmQ1I0XRcRxjXuzEuN
- 7WuFwu0PyxKUzF17CY9vQd3LCXPPWdHBHohnLNNqtErGWt4gscQmvYNZj
- A==;
+ bh=SWX+9CupBIPKrMPDbmEqPBQ3L0IdPUdtEpVdkExjkk8=;
+ b=Bh1p+GTDxhOpurTjN1cVzFZUuqyh1/e6fe3IJ0cinu9vn1L1IzyVbVKW
+ 3efjCivoBNQt5UgWa8nvUdAt35+YCaPJBlm5Q6mP8HINGzyJUVa6zrQJN
+ GQ2QEkYBK6lSnFkfS5e7MFGGvAai03EpJyNk1WL76dngZN9bwTjGdPClW
+ KIUYjamYCGKJqnla3xuT7hJVfJ4jaJZ/htKcqeCSZGmeXVcWgca/2520z
+ Nq2NEE+CigmiyCugbIYvvqrr1l2AkQ+cHUwUXbUehl88XfHjLdLiq7hb3
+ eGl+ZfHxdqM0IfNpe2YaaJjV5A/ODV/XKIR0aPg747VyVaKMzsZjmFfWO
+ Q==;
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=nWbMHW2A
-Subject: [Intel-wired-lan] [PATCH v2 iwl-next 2/6] ice: pass reset type to
- PTP reset functions
+ header.a=rsa-sha256 header.s=Intel header.b=Bh1p+GTD
+Subject: [Intel-wired-lan] [PATCH v2 iwl-next 3/6] ice: rename verify_cached
+ to has_ready_bitmap
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -106,141 +106,144 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 From: Jacob Keller <jacob.e.keller@intel.com>
 
-The ice_ptp_prepare_for_reset() and ice_ptp_reset() functions currently
-check the pf->flags ICE_FLAG_PFR_REQ bit to determine if the current
-reset is a PF reset or not.
+The tx->verify_cached flag is used to inform the Tx timestamp tracking
+code whether it needs to verify the cached Tx timestamp value against
+a previous captured value. This is necessary on E810 hardware which does
+not have a Tx timestamp ready bitmap.
 
-This is problematic, because it is possible that a PF reset and a higher
-level reset (CORE reset, GLOBAL reset, EMP reset) are requested
-simultaneously. In that case, the driver performs the highest level
-reset requested. However, the ICE_FLAG_PFR_REQ flag will still be set.
-
-The main driver reset functions take an enum ice_reset_req indicating
-which reset is actually being performed. Pass this data into the PTP
-functions and rely on this instead of relying on the driver flags.
-
-This ensures that the PTP code performs the proper level of reset that
-the driver is actually undergoing.
+In addition, we currently rely on the fact that the
+ice_get_phy_tx_tstamp_ready() function returns all 1s for E810 hardware.
+Instead of introducing a brand new flag, rename and verify_cached to
+has_ready_bitmap, inverting the relevant checks.
 
 Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
 Signed-off-by: Karol Kolacinski <karol.kolacinski@intel.com>
 Reviewed-by: Jacob Keller <jacob.e.keller@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_main.c |  4 ++--
- drivers/net/ethernet/intel/ice/ice_ptp.c  | 13 +++++++------
- drivers/net/ethernet/intel/ice/ice_ptp.h  | 16 ++++++++++++----
- 3 files changed, 21 insertions(+), 12 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_ptp.c | 31 ++++++++++++------------
+ drivers/net/ethernet/intel/ice/ice_ptp.h |  8 +++---
+ 2 files changed, 20 insertions(+), 19 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index cfa584627993..3d2d8728d9e3 100644
---- a/drivers/net/ethernet/intel/ice/ice_main.c
-+++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -613,7 +613,7 @@ ice_prepare_for_reset(struct ice_pf *pf, enum ice_reset_req reset_type)
- 	ice_pf_dis_all_vsi(pf, false);
- 
- 	if (test_bit(ICE_FLAG_PTP_SUPPORTED, pf->flags))
--		ice_ptp_prepare_for_reset(pf);
-+		ice_ptp_prepare_for_reset(pf, reset_type);
- 
- 	if (ice_is_feature_supported(pf, ICE_F_GNSS))
- 		ice_gnss_exit(pf);
-@@ -7497,7 +7497,7 @@ static void ice_rebuild(struct ice_pf *pf, enum ice_reset_req reset_type)
- 	 * fail.
- 	 */
- 	if (test_bit(ICE_FLAG_PTP_SUPPORTED, pf->flags))
--		ice_ptp_reset(pf);
-+		ice_ptp_reset(pf, reset_type);
- 
- 	if (ice_is_feature_supported(pf, ICE_F_GNSS))
- 		ice_gnss_init(pf);
 diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.c b/drivers/net/ethernet/intel/ice/ice_ptp.c
-index 3abec4c1b131..e6309a9fa2d6 100644
+index e6309a9fa2d6..670d4f1c3db9 100644
 --- a/drivers/net/ethernet/intel/ice/ice_ptp.c
 +++ b/drivers/net/ethernet/intel/ice/ice_ptp.c
-@@ -2637,8 +2637,9 @@ static void ice_ptp_periodic_work(struct kthread_work *work)
- /**
-  * ice_ptp_prepare_for_reset - Prepare PTP for reset
-  * @pf: Board private structure
-+ * @reset_type: the reset type being performed
-  */
--void ice_ptp_prepare_for_reset(struct ice_pf *pf)
-+void ice_ptp_prepare_for_reset(struct ice_pf *pf, enum ice_reset_req reset_type)
- {
- 	struct ice_ptp *ptp = &pf->ptp;
- 	u8 src_tmr;
-@@ -2653,7 +2654,7 @@ void ice_ptp_prepare_for_reset(struct ice_pf *pf)
+@@ -601,17 +601,13 @@ void ice_ptp_complete_tx_single_tstamp(struct ice_ptp_tx *tx)
+ 	/* Read the low 32 bit value */
+ 	raw_tstamp |= (u64)rd32(&pf->hw, PF_SB_ATQBAH);
  
- 	kthread_cancel_delayed_work_sync(&ptp->work);
- 
--	if (test_bit(ICE_PFR_REQ, pf->state))
-+	if (reset_type == ICE_RESET_PFR)
+-	/* For PHYs which don't implement a proper timestamp ready bitmap,
+-	 * verify that the timestamp value is different from the last cached
+-	 * timestamp. If it is not, skip this for now assuming it hasn't yet
+-	 * been captured by hardware.
++	/* Devices using this interface always verify the timestamp differs
++	 * relative to the last cached timestamp value.
+ 	 */
+-	if (!drop_ts && tx->verify_cached &&
+-	    raw_tstamp == tx->tstamps[idx].cached_tstamp)
++	if (raw_tstamp == tx->tstamps[idx].cached_tstamp)
  		return;
  
- 	ice_ptp_release_tx_tracker(pf, &pf->ptp.port.tx);
-@@ -2673,8 +2674,9 @@ void ice_ptp_prepare_for_reset(struct ice_pf *pf)
- /**
-  * ice_ptp_reset - Initialize PTP hardware clock support after reset
-  * @pf: Board private structure
-+ * @reset_type: the reset type being performed
-  */
--void ice_ptp_reset(struct ice_pf *pf)
-+void ice_ptp_reset(struct ice_pf *pf, enum ice_reset_req reset_type)
- {
- 	struct ice_ptp *ptp = &pf->ptp;
- 	struct ice_hw *hw = &pf->hw;
-@@ -2684,7 +2686,7 @@ void ice_ptp_reset(struct ice_pf *pf)
+-	if (tx->verify_cached && raw_tstamp)
+-		tx->tstamps[idx].cached_tstamp = raw_tstamp;
++	tx->tstamps[idx].cached_tstamp = raw_tstamp;
+ 	clear_bit(idx, tx->in_use);
+ 	skb = tx->tstamps[idx].skb;
+ 	tx->tstamps[idx].skb = NULL;
+@@ -701,9 +697,11 @@ static void ice_ptp_process_tx_tstamp(struct ice_ptp_tx *tx)
+ 	hw = &pf->hw;
  
- 	if (ptp->state != ICE_PTP_RESETTING) {
- 		if (ptp->state == ICE_PTP_READY) {
--			ice_ptp_prepare_for_reset(pf);
-+			ice_ptp_prepare_for_reset(pf, reset_type);
- 		} else {
- 			err = -EINVAL;
- 			dev_err(ice_pf_to_dev(pf), "PTP was not initialized\n");
-@@ -2692,8 +2694,7 @@ void ice_ptp_reset(struct ice_pf *pf)
- 		}
- 	}
+ 	/* Read the Tx ready status first */
+-	err = ice_get_phy_tx_tstamp_ready(hw, tx->block, &tstamp_ready);
+-	if (err)
+-		return;
++	if (tx->has_ready_bitmap) {
++		err = ice_get_phy_tx_tstamp_ready(hw, tx->block, &tstamp_ready);
++		if (err)
++			return;
++	}
  
--	if (test_bit(ICE_PFR_REQ, pf->state) ||
--	    !ice_pf_src_tmr_owned(pf))
-+	if (reset_type == ICE_RESET_PFR || !ice_pf_src_tmr_owned(pf))
- 		goto pfr;
+ 	/* Drop packets if the link went down */
+ 	link_up = ptp_port->link_up;
+@@ -731,7 +729,8 @@ static void ice_ptp_process_tx_tstamp(struct ice_ptp_tx *tx)
+ 		 * If we do not, the hardware logic for generating a new
+ 		 * interrupt can get stuck on some devices.
+ 		 */
+-		if (!(tstamp_ready & BIT_ULL(phy_idx))) {
++		if (tx->has_ready_bitmap &&
++		    !(tstamp_ready & BIT_ULL(phy_idx))) {
+ 			if (drop_ts)
+ 				goto skip_ts_read;
  
- 	err = ice_ptp_init_phc(hw);
+@@ -751,7 +750,7 @@ static void ice_ptp_process_tx_tstamp(struct ice_ptp_tx *tx)
+ 		 * from the last cached timestamp. If it is not, skip this for
+ 		 * now assuming it hasn't yet been captured by hardware.
+ 		 */
+-		if (!drop_ts && tx->verify_cached &&
++		if (!drop_ts && !tx->has_ready_bitmap &&
+ 		    raw_tstamp == tx->tstamps[idx].cached_tstamp)
+ 			continue;
+ 
+@@ -761,7 +760,7 @@ static void ice_ptp_process_tx_tstamp(struct ice_ptp_tx *tx)
+ 
+ skip_ts_read:
+ 		spin_lock_irqsave(&tx->lock, flags);
+-		if (tx->verify_cached && raw_tstamp)
++		if (!tx->has_ready_bitmap && raw_tstamp)
+ 			tx->tstamps[idx].cached_tstamp = raw_tstamp;
+ 		clear_bit(idx, tx->in_use);
+ 		skb = tx->tstamps[idx].skb;
+@@ -1014,7 +1013,7 @@ ice_ptp_init_tx_e82x(struct ice_pf *pf, struct ice_ptp_tx *tx, u8 port)
+ 	tx->block = port / ICE_PORTS_PER_QUAD;
+ 	tx->offset = (port % ICE_PORTS_PER_QUAD) * INDEX_PER_PORT_E82X;
+ 	tx->len = INDEX_PER_PORT_E82X;
+-	tx->verify_cached = 0;
++	tx->has_ready_bitmap = 1;
+ 
+ 	return ice_ptp_alloc_tx_tracker(tx);
+ }
+@@ -1037,7 +1036,7 @@ ice_ptp_init_tx_e810(struct ice_pf *pf, struct ice_ptp_tx *tx)
+ 	 * verify new timestamps against cached copy of the last read
+ 	 * timestamp.
+ 	 */
+-	tx->verify_cached = 1;
++	tx->has_ready_bitmap = 0;
+ 
+ 	return ice_ptp_alloc_tx_tracker(tx);
+ }
 diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.h b/drivers/net/ethernet/intel/ice/ice_ptp.h
-index e3cc69692405..d1c2454258fb 100644
+index d1c2454258fb..8bc352055ff1 100644
 --- a/drivers/net/ethernet/intel/ice/ice_ptp.h
 +++ b/drivers/net/ethernet/intel/ice/ice_ptp.h
-@@ -315,8 +315,9 @@ enum ice_tx_tstamp_work ice_ptp_process_ts(struct ice_pf *pf);
- void
- ice_ptp_rx_hwtstamp(struct ice_rx_ring *rx_ring,
- 		    union ice_32b_rx_flex_desc *rx_desc, struct sk_buff *skb);
--void ice_ptp_reset(struct ice_pf *pf);
--void ice_ptp_prepare_for_reset(struct ice_pf *pf);
-+void ice_ptp_reset(struct ice_pf *pf, enum ice_reset_req reset_type);
-+void ice_ptp_prepare_for_reset(struct ice_pf *pf,
-+			       enum ice_reset_req reset_type);
- void ice_ptp_init(struct ice_pf *pf);
- void ice_ptp_release(struct ice_pf *pf);
- void ice_ptp_link_change(struct ice_pf *pf, u8 port, bool linkup);
-@@ -351,8 +352,15 @@ static inline bool ice_ptp_process_ts(struct ice_pf *pf)
- static inline void
- ice_ptp_rx_hwtstamp(struct ice_rx_ring *rx_ring,
- 		    union ice_32b_rx_flex_desc *rx_desc, struct sk_buff *skb) { }
--static inline void ice_ptp_reset(struct ice_pf *pf) { }
--static inline void ice_ptp_prepare_for_reset(struct ice_pf *pf) { }
-+static inline void ice_ptp_reset(struct ice_pf *pf,
-+				 enum ice_reset_req reset_type)
-+{
-+}
-+
-+static inline void ice_ptp_prepare_for_reset(struct ice_pf *pf,
-+					     enum ice_reset_req reset_type)
-+{
-+}
- static inline void ice_ptp_init(struct ice_pf *pf) { }
- static inline void ice_ptp_release(struct ice_pf *pf) { }
- static inline void ice_ptp_link_change(struct ice_pf *pf, u8 port, bool linkup)
+@@ -100,7 +100,7 @@ struct ice_perout_channel {
+  * the last timestamp we read for a given index. If the current timestamp
+  * value is the same as the cached value, we assume a new timestamp hasn't
+  * been captured. This avoids reporting stale timestamps to the stack. This is
+- * only done if the verify_cached flag is set in ice_ptp_tx structure.
++ * only done if the has_ready_bitmap flag is not set in ice_ptp_tx structure.
+  */
+ struct ice_tx_tstamp {
+ 	struct sk_buff *skb;
+@@ -130,7 +130,9 @@ enum ice_tx_tstamp_work {
+  * @init: if true, the tracker is initialized;
+  * @calibrating: if true, the PHY is calibrating the Tx offset. During this
+  *               window, timestamps are temporarily disabled.
+- * @verify_cached: if true, verify new timestamp differs from last read value
++ * @has_ready_bitmap: if true, the hardware has a valid Tx timestamp ready
++ *                    bitmap register. If false, fall back to verifying new
++ *                    timestamp values against previously cached copy.
+  * @last_ll_ts_idx_read: index of the last LL TS read by the FW
+  */
+ struct ice_ptp_tx {
+@@ -143,7 +145,7 @@ struct ice_ptp_tx {
+ 	u8 len;
+ 	u8 init : 1;
+ 	u8 calibrating : 1;
+-	u8 verify_cached : 1;
++	u8 has_ready_bitmap : 1;
+ 	s8 last_ll_ts_idx_read;
+ };
+ 
 -- 
 2.40.1
 
