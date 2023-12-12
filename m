@@ -2,96 +2,67 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8919980F222
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 12 Dec 2023 17:14:56 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6EAED80F391
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 12 Dec 2023 17:51:27 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 2038C41B58;
-	Tue, 12 Dec 2023 16:14:55 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2038C41B58
+	by smtp4.osuosl.org (Postfix) with ESMTP id E355D418FD;
+	Tue, 12 Dec 2023 16:51:25 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E355D418FD
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1702397695;
-	bh=lSnTVG1doZgb/45rJuZr8hJUkYDbI6QAGCL1L1ds4mM=;
-	h=References:In-Reply-To:From:Date:To:Subject:List-Id:
+	s=default; t=1702399885;
+	bh=H8Zo1I4T79HDPlwcLR6RJDDa9IzXurCUcbUvn7b9NvI=;
+	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=WqrkvSSsLBm/V0ntciFt2TDCvcy5zh4+1vhkDPbpoZKvE3SZsGvsbMZDBeh0rjVRF
-	 vQ6yqpqeIgSxq3LECPAN3pbspqxo4SatXdKFJjoZDUgUezuhNv8cwx1HhTjgcwH7Z2
-	 0L404Lo1sdalPnxeN2j5GJTWGcZ/qAErv991aMqBmBgSeHwvN0CTc6YvHTnQ+Pxdwm
-	 /Wms3vhbsYxE5HE2PfTooI9M7+6EgCAfsWi1VIsJS7N+zTHCHuSefej26XyEnjH6bI
-	 UQCeqNkCONX8UD8YpsNpKna9LZkLwBkho49WDdmFnDW0sWnGZxk3USPsYmhbRtISzQ
-	 vpl0hxIIuxBjA==
+	b=2D8jovIfrCGbPj+EGSSOFAutHF7xks2XkpkCR4QPxYY8dPRa47gMic2LAiXUuxjMl
+	 EovgKanqE9F4ovYP7KcJV8duthvqpADPExBg38MufWnmd9y6QO/yYL5uVhtLv8cSRF
+	 PHG2M3cpVEInDJD2qSXSu7WgrGN+fKeWkywxmxezPaDLtL05WFAa/lAqH6j3KzdXQP
+	 sgkzhbbNZTCVe1hwQqXt59yUdO1PVBsaH9y7UA7NziR/1viKu1BE72QIoPbDKFEWpO
+	 nqzF3304GGXRdSt6/+d1USJfb0KiOFpArw3sdCpvWL8CVxk1Vug3hQWXSZkspf/bTk
+	 PlRxUIaNQTtew==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id yYCwPRRxykqq; Tue, 12 Dec 2023 16:14:54 +0000 (UTC)
+	with ESMTP id GVmRRIMqlGo4; Tue, 12 Dec 2023 16:51:24 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id C2C154053D;
-	Tue, 12 Dec 2023 16:14:53 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C2C154053D
+	by smtp4.osuosl.org (Postfix) with ESMTP id 44E20418BB;
+	Tue, 12 Dec 2023 16:51:24 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 44E20418BB
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id D45CE1BF429
- for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Dec 2023 16:14:48 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id C78641BF3D2
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Dec 2023 16:51:18 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id B988661539
- for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Dec 2023 16:14:48 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B988661539
+ by smtp3.osuosl.org (Postfix) with ESMTP id 9F1A160BED
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Dec 2023 16:51:18 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9F1A160BED
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id G7FhGOwsaMUV for <intel-wired-lan@lists.osuosl.org>;
- Tue, 12 Dec 2023 16:14:48 +0000 (UTC)
-Received: from mail-lf1-x12c.google.com (mail-lf1-x12c.google.com
- [IPv6:2a00:1450:4864:20::12c])
- by smtp3.osuosl.org (Postfix) with ESMTPS id BDEC660D76
- for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Dec 2023 16:14:47 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org BDEC660D76
-Received: by mail-lf1-x12c.google.com with SMTP id
- 2adb3069b0e04-50dfac6c0beso3304524e87.2
- for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Dec 2023 08:14:47 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1702397685; x=1703002485;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=KPkDhdP4e0RTH+GCxFA+29duj+Ltr9LIDpgourkAuzM=;
- b=XQj5ykofC3miBQjL0MNOmDVYCMcwscUrWjLm5emyxMNqBBqRKk82aaFo+QMX8bKmTA
- paXgQ/7D+RuR5vPTMEpwVmrZ1bahkL7VxvcVdZl6LLhyGZGa4+BpaxcpBIFE/sIFqO/V
- HRkkOEAi74vA72MCFRZQYQ1HIWxXaXeR2OxOr8ZoRqqiyCMIeCpGAGnZ8s+XZ0HxXotW
- UL2ND67KmXDe5ZLsEzWIdeJOZi0poIqyLC+1Aj5cJPKqehpom1qavbGN50txdG9xekqT
- CPnsWRlyGZLpy8IXI/wU4unC3REXYwljcz5Vpd+jIiGpOq1dI9FL7wJVBRRKzj/Esg/K
- wrtQ==
-X-Gm-Message-State: AOJu0YyFvZX9SA/ptLQ5omsLo7se1xc1XHR5Tm/uy/qPcBSr5D9IgINd
- qTqXYx9QlbifLSQmGL/xf72QOhX3GDzUeRQfbAsWlQ==
-X-Google-Smtp-Source: AGHT+IH5HuV5L/CKapxEvujfucVeUx5qR84eQQeowjHbIgMINDX4vKkt9TvKvvUqu2S16CbDPgGfkRTNABJfGkppQG0=
-X-Received: by 2002:a05:6512:108c:b0:50c:fd2:df1a with SMTP id
- j12-20020a056512108c00b0050c0fd2df1amr3778283lfg.78.1702397685556; Tue, 12
- Dec 2023 08:14:45 -0800 (PST)
+ with ESMTP id 5-tTXF6AN4gn for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 12 Dec 2023 16:51:17 +0000 (UTC)
+Received: from mx3.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id CE95060A82
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Dec 2023 16:51:16 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org CE95060A82
+Received: from [141.14.30.220] (rabammel.molgen.mpg.de [141.14.30.220])
+ (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested) (Authenticated sender: pmenzel)
+ by mx.molgen.mpg.de (Postfix) with ESMTPSA id 9796461E5FE03;
+ Tue, 12 Dec 2023 17:50:56 +0100 (CET)
+Message-ID: <78ecdb9f-25e9-4847-87ed-6e8b44a7c71d@molgen.mpg.de>
+Date: Tue, 12 Dec 2023 17:50:55 +0100
 MIME-Version: 1.0
-References: <20231207172010.1441468-1-aleksander.lobakin@intel.com>
- <20231207172010.1441468-7-aleksander.lobakin@intel.com>
-In-Reply-To: <20231207172010.1441468-7-aleksander.lobakin@intel.com>
-From: Ilias Apalodimas <ilias.apalodimas@linaro.org>
-Date: Tue, 12 Dec 2023 18:14:09 +0200
-Message-ID: <CAC_iWjKD4dq_YdhgOzSfgSX=tmu0ofD-2fCijfTinOq7heYitA@mail.gmail.com>
-To: Alexander Lobakin <aleksander.lobakin@intel.com>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1702397685; x=1703002485; darn=lists.osuosl.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=KPkDhdP4e0RTH+GCxFA+29duj+Ltr9LIDpgourkAuzM=;
- b=uyqtUpDW7zS4jmSHzB7bU+WijjqFxiOSvollWYlBrldigov+wtb9/fC4ThGF9f5a40
- Kq4Y8v6LDoj4OuoCO/+R4Svam2ANSxYmgUc39kBL0aT+GBB28OpG5rGlSnFC2aMs+ZaW
- 3Ls0qTfxJ4IKOoSGHJbj+S06BAqM4+CLGtzC1075Dr/gwQnkSfRis3R/pf2Bj4lLVgbG
- R0OFKES1U02IPEEPflxUZN2ggRX632a4UvTXJpGD4Q9Q6nkapuoXlqQDili+/nFunTm8
- lcvGBt0oVBRVwZ3/F/oPmAyJthQWBsQEYNetzMbLducDkj6tSEx7CTic58Jb3UJColJf
- fqPQ==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org
- header.a=rsa-sha256 header.s=google header.b=uyqtUpDW
-Subject: Re: [Intel-wired-lan] [PATCH net-next v6 06/12] page_pool: constify
- some read-only function arguments
+User-Agent: Mozilla Thunderbird
+To: Michal Kubiak <michal.kubiak@intel.com>,
+ Joshua Hay <joshua.a.hay@intel.com>
+References: <20231212145546.396273-1-michal.kubiak@intel.com>
+Content-Language: en-US
+From: Paul Menzel <pmenzel@molgen.mpg.de>
+In-Reply-To: <20231212145546.396273-1-michal.kubiak@intel.com>
+Subject: Re: [Intel-wired-lan] [PATCH iwl-net] idpf: enable WB_ON_ITR
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -104,113 +75,193 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Paul Menzel <pmenzel@molgen.mpg.de>,
- Maciej Fijalkowski <maciej.fijalkowski@intel.com>,
- Jesper Dangaard Brouer <hawk@kernel.org>,
- Larysa Zaremba <larysa.zaremba@intel.com>, netdev@vger.kernel.org,
- Alexander Duyck <alexanderduyck@fb.com>, Yunsheng Lin <linyunsheng@huawei.com>,
- linux-kernel@vger.kernel.org, Eric Dumazet <edumazet@google.com>,
- Michal Kubiak <michal.kubiak@intel.com>, intel-wired-lan@lists.osuosl.org,
- David Christensen <drc@linux.vnet.ibm.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>
+Cc: maciej.fijalkowski@intel.com, emil.s.tantilov@intel.com,
+ larysa.zaremba@intel.com, netdev@vger.kernel.org, aleksander.lobakin@intel.com,
+ intel-wired-lan@lists.osuosl.org, alan.brady@intel.com,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Apologies for the noise,
-Resending without HTML
+Dear Michal, dear Joshua,
 
 
-On Thu, 7 Dec 2023 at 19:22, Alexander Lobakin
-<aleksander.lobakin@intel.com> wrote:
->
-> There are several functions taking pointers to data they don't modify.
-> This includes statistics fetching, page and page_pool parameters, etc.
-> Constify the pointers, so that call sites will be able to pass const
-> pointers as well.
-> No functional changes, no visible changes in functions sizes.
->
-> Signed-off-by: Alexander Lobakin <aleksander.lobakin@intel.com>
+Thank you for your patch.
+
+On 12/12/23 15:55, Michal Kubiak wrote:
+> From: Joshua Hay <joshua.a.hay@intel.com>
+> 
+> Tell hardware to writeback completed descriptors even when interrupts
+
+Should you resend, the verb is spelled with a space: write back.
+
+> are disabled. Otherwise, descriptors might not be written back until
+> the hardware can flush a full cacheline of descriptors. This can cause
+> unnecessary delays when traffic is light (or even trigger Tx queue
+> timeout).
+
+How can the problem be reproduced and the patch be verified?
+
+
+Kind regards,
+
+Paul
+
+
+> Fixes: c2d548cad150 ("idpf: add TX splitq napi poll support")
+> Fixes: a5ab9ee0df0b ("idpf: add singleq start_xmit and napi poll")
+> Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+> Reviewed-by: Alexander Lobakin <aleksander.lobakin@intel.com>
+> Signed-off-by: Joshua Hay <joshua.a.hay@intel.com>
+> Co-developed-by: Michal Kubiak <michal.kubiak@intel.com>
+> Signed-off-by: Michal Kubiak <michal.kubiak@intel.com>
 > ---
->  include/net/page_pool/helpers.h | 10 +++++-----
->  net/core/page_pool.c            |  8 ++++----
->  2 files changed, 9 insertions(+), 9 deletions(-)
->
-> diff --git a/include/net/page_pool/helpers.h b/include/net/page_pool/helpers.h
-> index 7dc65774cde5..c860fad50d00 100644
-> --- a/include/net/page_pool/helpers.h
-> +++ b/include/net/page_pool/helpers.h
-> @@ -58,7 +58,7 @@
->  /* Deprecated driver-facing API, use netlink instead */
->  int page_pool_ethtool_stats_get_count(void);
->  u8 *page_pool_ethtool_stats_get_strings(u8 *data);
-> -u64 *page_pool_ethtool_stats_get(u64 *data, void *stats);
-> +u64 *page_pool_ethtool_stats_get(u64 *data, const void *stats);
->
->  bool page_pool_get_stats(const struct page_pool *pool,
->                          struct page_pool_stats *stats);
-> @@ -73,7 +73,7 @@ static inline u8 *page_pool_ethtool_stats_get_strings(u8 *data)
->         return data;
+>  drivers/net/ethernet/intel/idpf/idpf_dev.c    |  2 ++
+>  .../ethernet/intel/idpf/idpf_singleq_txrx.c   |  6 ++++-
+>  drivers/net/ethernet/intel/idpf/idpf_txrx.c   |  7 +++++-
+>  drivers/net/ethernet/intel/idpf/idpf_txrx.h   | 23 +++++++++++++++++++
+>  drivers/net/ethernet/intel/idpf/idpf_vf_dev.c |  2 ++
+>  5 files changed, 38 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/net/ethernet/intel/idpf/idpf_dev.c b/drivers/net/ethernet/intel/idpf/idpf_dev.c
+> index 34ad1ac46b78..2c6776086130 100644
+> --- a/drivers/net/ethernet/intel/idpf/idpf_dev.c
+> +++ b/drivers/net/ethernet/intel/idpf/idpf_dev.c
+> @@ -96,8 +96,10 @@ static int idpf_intr_reg_init(struct idpf_vport *vport)
+>  		intr->dyn_ctl = idpf_get_reg_addr(adapter,
+>  						  reg_vals[vec_id].dyn_ctl_reg);
+>  		intr->dyn_ctl_intena_m = PF_GLINT_DYN_CTL_INTENA_M;
+> +		intr->dyn_ctl_intena_msk_m = PF_GLINT_DYN_CTL_INTENA_MSK_M;
+>  		intr->dyn_ctl_itridx_s = PF_GLINT_DYN_CTL_ITR_INDX_S;
+>  		intr->dyn_ctl_intrvl_s = PF_GLINT_DYN_CTL_INTERVAL_S;
+> +		intr->dyn_ctl_wb_on_itr_m = PF_GLINT_DYN_CTL_WB_ON_ITR_M;
+>  
+>  		spacing = IDPF_ITR_IDX_SPACING(reg_vals[vec_id].itrn_index_spacing,
+>  					       IDPF_PF_ITR_IDX_SPACING);
+> diff --git a/drivers/net/ethernet/intel/idpf/idpf_singleq_txrx.c b/drivers/net/ethernet/intel/idpf/idpf_singleq_txrx.c
+> index 81288a17da2a..8e1478b7d86c 100644
+> --- a/drivers/net/ethernet/intel/idpf/idpf_singleq_txrx.c
+> +++ b/drivers/net/ethernet/intel/idpf/idpf_singleq_txrx.c
+> @@ -1168,8 +1168,10 @@ int idpf_vport_singleq_napi_poll(struct napi_struct *napi, int budget)
+>  						    &work_done);
+>  
+>  	/* If work not completed, return budget and polling will return */
+> -	if (!clean_complete)
+> +	if (!clean_complete) {
+> +		idpf_vport_intr_set_wb_on_itr(q_vector);
+>  		return budget;
+> +	}
+>  
+>  	work_done = min_t(int, work_done, budget - 1);
+>  
+> @@ -1178,6 +1180,8 @@ int idpf_vport_singleq_napi_poll(struct napi_struct *napi, int budget)
+>  	 */
+>  	if (likely(napi_complete_done(napi, work_done)))
+>  		idpf_vport_intr_update_itr_ena_irq(q_vector);
+> +	else
+> +		idpf_vport_intr_set_wb_on_itr(q_vector);
+>  
+>  	return work_done;
 >  }
->
-> -static inline u64 *page_pool_ethtool_stats_get(u64 *data, void *stats)
-> +static inline u64 *page_pool_ethtool_stats_get(u64 *data, const void *stats)
->  {
->         return data;
+> diff --git a/drivers/net/ethernet/intel/idpf/idpf_txrx.c b/drivers/net/ethernet/intel/idpf/idpf_txrx.c
+> index 1646ff3877ba..b496566ee2aa 100644
+> --- a/drivers/net/ethernet/intel/idpf/idpf_txrx.c
+> +++ b/drivers/net/ethernet/intel/idpf/idpf_txrx.c
+> @@ -3639,6 +3639,7 @@ void idpf_vport_intr_update_itr_ena_irq(struct idpf_q_vector *q_vector)
+>  					      IDPF_NO_ITR_UPDATE_IDX, 0);
+>  
+>  	writel(intval, q_vector->intr_reg.dyn_ctl);
+> +	q_vector->wb_on_itr = false;
 >  }
-> @@ -204,8 +204,8 @@ static inline void *page_pool_dev_alloc_va(struct page_pool *pool,
->   * Get the stored dma direction. A driver might decide to store this locally
->   * and avoid the extra cache line from page_pool to determine the direction.
->   */
-> -static
-> -inline enum dma_data_direction page_pool_get_dma_dir(struct page_pool *pool)
-> +static inline enum dma_data_direction
-> +page_pool_get_dma_dir(const struct page_pool *pool)
->  {
->         return pool->p.dma_dir;
+>  
+>  /**
+> @@ -3930,8 +3931,10 @@ static int idpf_vport_splitq_napi_poll(struct napi_struct *napi, int budget)
+>  	clean_complete &= idpf_tx_splitq_clean_all(q_vector, budget, &work_done);
+>  
+>  	/* If work not completed, return budget and polling will return */
+> -	if (!clean_complete)
+> +	if (!clean_complete) {
+> +		idpf_vport_intr_set_wb_on_itr(q_vector);
+>  		return budget;
+> +	}
+>  
+>  	work_done = min_t(int, work_done, budget - 1);
+>  
+> @@ -3940,6 +3943,8 @@ static int idpf_vport_splitq_napi_poll(struct napi_struct *napi, int budget)
+>  	 */
+>  	if (likely(napi_complete_done(napi, work_done)))
+>  		idpf_vport_intr_update_itr_ena_irq(q_vector);
+> +	else
+> +		idpf_vport_intr_set_wb_on_itr(q_vector);
+>  
+>  	/* Switch to poll mode in the tear-down path after sending disable
+>  	 * queues virtchnl message, as the interrupts will be disabled after
+> diff --git a/drivers/net/ethernet/intel/idpf/idpf_txrx.h b/drivers/net/ethernet/intel/idpf/idpf_txrx.h
+> index df76493faa75..50761c2d9f3b 100644
+> --- a/drivers/net/ethernet/intel/idpf/idpf_txrx.h
+> +++ b/drivers/net/ethernet/intel/idpf/idpf_txrx.h
+> @@ -495,9 +495,11 @@ struct idpf_vec_regs {
+>  struct idpf_intr_reg {
+>  	void __iomem *dyn_ctl;
+>  	u32 dyn_ctl_intena_m;
+> +	u32 dyn_ctl_intena_msk_m;
+>  	u32 dyn_ctl_itridx_s;
+>  	u32 dyn_ctl_itridx_m;
+>  	u32 dyn_ctl_intrvl_s;
+> +	u32 dyn_ctl_wb_on_itr_m;
+>  	void __iomem *rx_itr;
+>  	void __iomem *tx_itr;
+>  	void __iomem *icr_ena;
+> @@ -534,6 +536,7 @@ struct idpf_q_vector {
+>  	struct napi_struct napi;
+>  	u16 v_idx;
+>  	struct idpf_intr_reg intr_reg;
+> +	bool wb_on_itr;
+>  
+>  	u16 num_txq;
+>  	struct idpf_queue **tx;
+> @@ -973,6 +976,26 @@ static inline void idpf_rx_sync_for_cpu(struct idpf_rx_buf *rx_buf, u32 len)
+>  				      page_pool_get_dma_dir(pp));
 >  }
-> @@ -357,7 +357,7 @@ static inline void page_pool_free_va(struct page_pool *pool, void *va,
->   * Fetch the DMA address of the page. The page pool to which the page belongs
->   * must had been created with PP_FLAG_DMA_MAP.
->   */
-> -static inline dma_addr_t page_pool_get_dma_addr(struct page *page)
-> +static inline dma_addr_t page_pool_get_dma_addr(const struct page *page)
->  {
->         dma_addr_t ret = page->dma_addr;
->
-> diff --git a/net/core/page_pool.c b/net/core/page_pool.c
-> index 59aca3339222..4295aec0be40 100644
-> --- a/net/core/page_pool.c
-> +++ b/net/core/page_pool.c
-> @@ -121,9 +121,9 @@ int page_pool_ethtool_stats_get_count(void)
->  }
->  EXPORT_SYMBOL(page_pool_ethtool_stats_get_count);
->
-> -u64 *page_pool_ethtool_stats_get(u64 *data, void *stats)
-> +u64 *page_pool_ethtool_stats_get(u64 *data, const void *stats)
->  {
-> -       struct page_pool_stats *pool_stats = stats;
-> +       const struct page_pool_stats *pool_stats = stats;
->
->         *data++ = pool_stats->alloc_stats.fast;
->         *data++ = pool_stats->alloc_stats.slow;
-> @@ -360,8 +360,8 @@ static struct page *__page_pool_get_cached(struct page_pool *pool)
->         return page;
->  }
->
-> -static void page_pool_dma_sync_for_device(struct page_pool *pool,
-> -                                         struct page *page,
-> +static void page_pool_dma_sync_for_device(const struct page_pool *pool,
-> +                                         const struct page *page,
->                                           unsigned int dma_sync_size)
->  {
->         dma_addr_t dma_addr = page_pool_get_dma_addr(page);
-> --
-> 2.43.0
->
-
-Reviewed-by: Ilias Apalodimas <ilias.apalodimas@linaro.org>
+>  
+> +/**
+> + * idpf_vport_intr_set_wb_on_itr - enable descriptor writeback on disabled interrupts
+> + * @q_vector: pointer to queue vector struct
+> + */
+> +static inline void idpf_vport_intr_set_wb_on_itr(struct idpf_q_vector *q_vector)
+> +{
+> +	struct idpf_intr_reg *reg;
+> +
+> +	if (q_vector->wb_on_itr)
+> +		return;
+> +
+> +	reg = &q_vector->intr_reg;
+> +
+> +	writel(reg->dyn_ctl_wb_on_itr_m | reg->dyn_ctl_intena_msk_m |
+> +	       IDPF_NO_ITR_UPDATE_IDX << reg->dyn_ctl_itridx_s,
+> +	       reg->dyn_ctl);
+> +
+> +	q_vector->wb_on_itr = true;
+> +}
+> +
+>  int idpf_vport_singleq_napi_poll(struct napi_struct *napi, int budget);
+>  void idpf_vport_init_num_qs(struct idpf_vport *vport,
+>  			    struct virtchnl2_create_vport *vport_msg);
+> diff --git a/drivers/net/ethernet/intel/idpf/idpf_vf_dev.c b/drivers/net/ethernet/intel/idpf/idpf_vf_dev.c
+> index 8ade4e3a9fe1..f5b0a0666636 100644
+> --- a/drivers/net/ethernet/intel/idpf/idpf_vf_dev.c
+> +++ b/drivers/net/ethernet/intel/idpf/idpf_vf_dev.c
+> @@ -96,7 +96,9 @@ static int idpf_vf_intr_reg_init(struct idpf_vport *vport)
+>  		intr->dyn_ctl = idpf_get_reg_addr(adapter,
+>  						  reg_vals[vec_id].dyn_ctl_reg);
+>  		intr->dyn_ctl_intena_m = VF_INT_DYN_CTLN_INTENA_M;
+> +		intr->dyn_ctl_intena_msk_m = VF_INT_DYN_CTLN_INTENA_MSK_M;
+>  		intr->dyn_ctl_itridx_s = VF_INT_DYN_CTLN_ITR_INDX_S;
+> +		intr->dyn_ctl_wb_on_itr_m = VF_INT_DYN_CTLN_WB_ON_ITR_M;
+>  
+>  		spacing = IDPF_ITR_IDX_SPACING(reg_vals[vec_id].itrn_index_spacing,
+>  					       IDPF_VF_ITR_IDX_SPACING);
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
