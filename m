@@ -1,80 +1,80 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9A42280E87E
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 12 Dec 2023 11:01:54 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id C93CC80E886
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 12 Dec 2023 11:02:18 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 2CE45614E0;
-	Tue, 12 Dec 2023 10:01:53 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2CE45614E0
+	by smtp3.osuosl.org (Postfix) with ESMTP id 68CDD614C8;
+	Tue, 12 Dec 2023 10:02:17 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 68CDD614C8
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1702375313;
-	bh=tKI8if3NQm1r25IxA7ri+02Xa/Hh4Lc8KiZaOVBnLIA=;
+	s=default; t=1702375337;
+	bh=aX7xGw0G37PRUob4L1/o+YV6+n6RKKGXZi9SM8exRc8=;
 	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=u6zE3fajyc7+KmNizJGG88PxPdHaNrEwYAOMaQcWlH7wzfIWZ/nBgkryY6eRQ+whC
-	 61raaKssgDQ1LVKqfm3mm1fw5h1FKLNNo8YagOOubNzQj9nHJNVKz0msnPGbuaXmo1
-	 WxbRZXExA/VMp6MoHDnrXrO457u1xAT/tu/Rw41oPva8Nor1jCzbthv5dMwqJl476Y
-	 ZZl+AgLL0fCiW5QaMbfnfeEOvbNxth1EHBMeOBgV9v6dJ+CKCz1idprIugMnACogS7
-	 13RjXSo+MguuFQBB1IjqAMUt44KVQTUsAm4hbS/gckT6j8HUeYlA41WbJri1ueTdXE
-	 5upjgbwmdMzhg==
+	b=aURVa07hIRo9Len8CmSwYm+RqL4cWihW6NNCqoEk4Wm8MvgeykDakyOF+PyBr4wiK
+	 iOBcSyTsO2ydRnZNWHTCn7w3hzUsmgOK/IrSCemKZg2xzBuONfpgJYtRN/KI2Xds3M
+	 XRa1aA7fDpktQC4veBBmoxHHP4jKpH5ifJc03a7hgsj0NnGazkzTHNwNye2vt68MrR
+	 SCtkxeTMRGkFdFFYBVFxAz9cMa7iLw4wmQwrzexnQYDFQ/1S+Y/2z8erU9Zx2U2Ns3
+	 +HMT+csk77U21Ql022YO6I9Dn8tiJ187Thk7QdTsfDWjXj21ABl6USa6ijZ9JIuUOe
+	 tdMWYcJOC/69Q==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id buZkZzRB7COy; Tue, 12 Dec 2023 10:01:52 +0000 (UTC)
+	with ESMTP id NtfGOZM4YyXX; Tue, 12 Dec 2023 10:02:16 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 1A7DF60E13;
-	Tue, 12 Dec 2023 10:01:52 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1A7DF60E13
+	by smtp3.osuosl.org (Postfix) with ESMTP id 5452C60E13;
+	Tue, 12 Dec 2023 10:02:16 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5452C60E13
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id D89AA1BF383
- for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Dec 2023 10:01:46 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id A0DDA1BF383
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Dec 2023 10:02:11 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id AFA1040266
- for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Dec 2023 10:01:46 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org AFA1040266
+ by smtp1.osuosl.org (Postfix) with ESMTP id 86E98817AC
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Dec 2023 10:02:11 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 86E98817AC
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Nd98WiZiyemx for <intel-wired-lan@lists.osuosl.org>;
- Tue, 12 Dec 2023 10:01:46 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id mKSOpN1yrL0W for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 12 Dec 2023 10:02:11 +0000 (UTC)
 Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 1C04240267
- for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Dec 2023 10:01:46 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1C04240267
+ by smtp1.osuosl.org (Postfix) with ESMTPS id F16A080ACF
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Dec 2023 10:02:10 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org F16A080ACF
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by dfw.source.kernel.org (Postfix) with ESMTP id CB03D6176A;
- Tue, 12 Dec 2023 10:01:44 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7C1C6C433C8;
- Tue, 12 Dec 2023 10:01:43 +0000 (UTC)
-Date: Tue, 12 Dec 2023 10:01:41 +0000
+ by dfw.source.kernel.org (Postfix) with ESMTP id 29ED761774;
+ Tue, 12 Dec 2023 10:02:10 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E89F1C433C8;
+ Tue, 12 Dec 2023 10:02:08 +0000 (UTC)
+Date: Tue, 12 Dec 2023 10:02:06 +0000
 From: Simon Horman <horms@kernel.org>
 To: Grzegorz Nitka <grzegorz.nitka@intel.com>
-Message-ID: <20231212100141.GV5817@kernel.org>
+Message-ID: <20231212100206.GW5817@kernel.org>
 References: <20231206192919.3826128-1-grzegorz.nitka@intel.com>
- <20231206192919.3826128-3-grzegorz.nitka@intel.com>
+ <20231206192919.3826128-4-grzegorz.nitka@intel.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20231206192919.3826128-3-grzegorz.nitka@intel.com>
+In-Reply-To: <20231206192919.3826128-4-grzegorz.nitka@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1702375304;
- bh=B+5T+s4PK5i1mJ0rTjs0h4mORh1VsN0iffa+WjrSqB4=;
+ d=kernel.org; s=k20201202; t=1702375329;
+ bh=XAmy2BovHe8P4ggR+oAdUOnvdaVfRCZbV3Eb2Hl3vYE=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=BPz4BfaBbLa4e3su/aPgC6VkI/bt02KQ5FkakG1gxwWir+3rfjIo8IQ/vVFpQSRAA
- nQYbAGXs0reTFq8IwAnD0Ks3Rk3yoqos8S3b/pyZlBzoQPYmPXVQYE3EsSFwOozeeH
- SrMnBlq7Cr5R3Yq77t1XRqR5EAAA+LQgQtY2czmdPP1jKMcECXfw0uhZxi2iIw3ONQ
- +EK2UIHT77JcMuTN0GbKUlMaRLmEtSTgFbwQoNLYH/xET9rjGAhZIgd/HmzGK9teuO
- DZ3avsu66QOSF/7VyTxS2hp7dK4L02OgPSIXOfm2DYdWA+Q2dG+HTJpcpvRt47T+RL
- yJKD+LiS1JV1g==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ b=jN5VnVoh82Y9VxLFu6nQ5jKfTM/Ak9HYCZgi8Zce1OPqBxuhv8aVzwbGYhC1/zRIA
+ IqC8rXwcf8ckyR9d19PV8sKPkvigPOzqHxsfKMDr0UKVW7gWYKoLyNs+zS1bhbBfhX
+ aV6a0BZZz0kAXBur2DLy8zCeKCa8v9j12J42T/QwsJyhyI8bcdg4SzQh+zUYRfMm2E
+ IMhWPOY01TqJvwy1wWwivGuWflqn1v4c6Gl0dnXv/z4TTw3Zpjqq6dYVLEs5BtpmYV
+ K0/fkTnHQ3i2PhjX+CEOmINW4cqzFUofeHoCA1Ov9Wqm9w/bo94P4Ov//QTSmQg+mM
+ VLSKExuHp49qg==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=BPz4BfaB
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v1 2/3] ice: Add helper
- function ice_is_generic_mac
+ header.a=rsa-sha256 header.s=k20201202 header.b=jN5VnVoh
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v1 3/3] ice: add support for
+ 3k signing DDP sections for E825C
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,43 +87,19 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org,
- Anirudh Venkataramanan <anirudh.venkataramanan@intel.com>,
- intel-wired-lan@lists.osuosl.org
+Cc: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed, Dec 06, 2023 at 08:29:18PM +0100, Grzegorz Nitka wrote:
-> E800 series devices have a couple of quirks:
-> 1. Sideband control queues are not supported
-> 2. The registers that the driver needs to program for the "Precision
->    Time Protocol (PTP)" feature are different for E800 series devices
->    compared to other devices supported by this driver.
+On Wed, Dec 06, 2023 at 08:29:19PM +0100, Grzegorz Nitka wrote:
+> E825C devices shall support the new signing type of RSA 3K for new DDP
+> section (SEGMENT_SIGN_TYPE_RSA3K_E825 (5) - already in the code).
+> The driver is responsible to verify the presence of correct signing type.
+> Add 3k signinig support for E825C devices based on mac_type:
+> ICE_MAC_GENERIC_3K_E825;
 > 
-> Both these require conditional logic based on the underlying device we
-> are dealing with.
-> 
-> The function ice_is_sbq_supported added by commit 8f5ee3c477a8
-> ("ice: add support for sideband messages") addresses (1).
-> The same function can be used to address (2) as well
-> but this just looks weird readability wise in cases that have nothing
-> to do with sideband control queues:
-> 
-> 	if (ice_is_sbq_supported(hw))
-> 		/* program register A */
-> 	else
-> 		/* program register B */
-> 
-> For these cases, the function ice_is_generic_mac introduced by this
-> patch communicates the idea/intention better. Also rework
-> ice_is_sbq_supported to use this new function.
-> As side-band queue is supported for E825C devices, it's mac_type is
-> considered as generic mac_type.
-> 
-> Co-developed-by: Anirudh Venkataramanan <anirudh.venkataramanan@intel.com>
-> Signed-off-by: Anirudh Venkataramanan <anirudh.venkataramanan@intel.com>
 > Signed-off-by: Grzegorz Nitka <grzegorz.nitka@intel.com>
 
 Reviewed-by: Simon Horman <horms@kernel.org>
