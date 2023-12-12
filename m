@@ -1,68 +1,84 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6EAED80F391
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 12 Dec 2023 17:51:27 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 710AC80F4F4
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 12 Dec 2023 18:52:03 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id E355D418FD;
-	Tue, 12 Dec 2023 16:51:25 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E355D418FD
+	by smtp1.osuosl.org (Postfix) with ESMTP id 0DDEF82B49;
+	Tue, 12 Dec 2023 17:52:02 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0DDEF82B49
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1702399885;
-	bh=H8Zo1I4T79HDPlwcLR6RJDDa9IzXurCUcbUvn7b9NvI=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=2D8jovIfrCGbPj+EGSSOFAutHF7xks2XkpkCR4QPxYY8dPRa47gMic2LAiXUuxjMl
-	 EovgKanqE9F4ovYP7KcJV8duthvqpADPExBg38MufWnmd9y6QO/yYL5uVhtLv8cSRF
-	 PHG2M3cpVEInDJD2qSXSu7WgrGN+fKeWkywxmxezPaDLtL05WFAa/lAqH6j3KzdXQP
-	 sgkzhbbNZTCVe1hwQqXt59yUdO1PVBsaH9y7UA7NziR/1viKu1BE72QIoPbDKFEWpO
-	 nqzF3304GGXRdSt6/+d1USJfb0KiOFpArw3sdCpvWL8CVxk1Vug3hQWXSZkspf/bTk
-	 PlRxUIaNQTtew==
+	s=default; t=1702403522;
+	bh=0O/cAzFdTWeyYy19knMEHusgxAwEviMdT5rK/i13Zco=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=akCfpwo5uarobgplx3HVtq0gPzM3Z+jLzwC9hbxL62YaFWq7BOz2qpCF45XqNolb/
+	 /tYOnowqeFDZFZp0jq1ndA/J6xc3NuY81TTNoNK9k6yuJB8SJcxvko3V+sz7WZxv+U
+	 MNvW8w6wo18A4GVe/Ia1WA/1jxPCO1TQgF/FbJEGFRh9RtkLgemuVCcuWrtAm/e9/q
+	 opTviC44iagt95zahTiaP2+W+94UwE/3XccroG71YBVbwp82xiNApop04grZRIROMg
+	 93G9kghyaU1Z+Kni4af0g4Ohz6AQicImFyG0zBXIn0m9kwqGRKWmaGBwHk+2Loh0BD
+	 z4kBbo6q8VYcg==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id GVmRRIMqlGo4; Tue, 12 Dec 2023 16:51:24 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id WCVkpioMb956; Tue, 12 Dec 2023 17:52:00 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 44E20418BB;
-	Tue, 12 Dec 2023 16:51:24 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 44E20418BB
+	by smtp1.osuosl.org (Postfix) with ESMTP id 4EAC782A6C;
+	Tue, 12 Dec 2023 17:52:00 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4EAC782A6C
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id C78641BF3D2
- for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Dec 2023 16:51:18 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 1791E1BF429
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Dec 2023 17:51:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 9F1A160BED
- for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Dec 2023 16:51:18 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9F1A160BED
+ by smtp4.osuosl.org (Postfix) with ESMTP id 86FE94154E
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Dec 2023 17:51:39 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 86FE94154E
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 5-tTXF6AN4gn for <intel-wired-lan@lists.osuosl.org>;
- Tue, 12 Dec 2023 16:51:17 +0000 (UTC)
-Received: from mx3.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
- by smtp3.osuosl.org (Postfix) with ESMTPS id CE95060A82
- for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Dec 2023 16:51:16 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org CE95060A82
-Received: from [141.14.30.220] (rabammel.molgen.mpg.de [141.14.30.220])
- (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested) (Authenticated sender: pmenzel)
- by mx.molgen.mpg.de (Postfix) with ESMTPSA id 9796461E5FE03;
- Tue, 12 Dec 2023 17:50:56 +0100 (CET)
-Message-ID: <78ecdb9f-25e9-4847-87ed-6e8b44a7c71d@molgen.mpg.de>
-Date: Tue, 12 Dec 2023 17:50:55 +0100
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id uAl-6xbgAatz for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 12 Dec 2023 17:51:38 +0000 (UTC)
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.8])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 3343E403CA
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Dec 2023 17:51:38 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3343E403CA
+X-IronPort-AV: E=McAfee;i="6600,9927,10922"; a="8214845"
+X-IronPort-AV: E=Sophos;i="6.04,270,1695711600"; 
+   d="scan'208";a="8214845"
+Received: from orviesa002.jf.intel.com ([10.64.159.142])
+ by fmvoesa102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 12 Dec 2023 09:48:47 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.04,270,1695711600"; d="scan'208";a="15102030"
+Received: from pmstillw-desk1.amr.corp.intel.com ([10.212.121.197])
+ by orviesa002-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 12 Dec 2023 09:48:47 -0800
+From: Paul M Stillwell Jr <paul.m.stillwell.jr@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Tue, 12 Dec 2023 09:48:30 -0800
+Message-Id: <20231212174835.65-1-paul.m.stillwell.jr@intel.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: Michal Kubiak <michal.kubiak@intel.com>,
- Joshua Hay <joshua.a.hay@intel.com>
-References: <20231212145546.396273-1-michal.kubiak@intel.com>
-Content-Language: en-US
-From: Paul Menzel <pmenzel@molgen.mpg.de>
-In-Reply-To: <20231212145546.396273-1-michal.kubiak@intel.com>
-Subject: Re: [Intel-wired-lan] [PATCH iwl-net] idpf: enable WB_ON_ITR
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1702403498; x=1733939498;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=eeTvkUbTxCjiQqyxh1wNJorQ3+/jZWfpZ4ltT1rhxT4=;
+ b=P/ZULDdtzQBSPGIWcPq4C9BJzr7a1NAVWNx7w6wkKJmaDVQw8JsAKGu8
+ tOHdeme3xKV2UIzZKnFGDMigJZSza91z5KuMDfmFaJuz9+lwGzPDAq9RM
+ 3QfIyg9yriTGcd0Yw+yDxDDWGT02QoeH1WSLXbh94bKddHbI20HSQRPMc
+ bd6Gy2KJBh8FPn6Nl6njg/3wP3MtUihGx6cuyJ54R5f7CfKh7nmv3QeC4
+ 89l9rRWbR8c/RoFCrW6rB6KRl6Hhv6aUn07ZL5qeWeweB+eO61vl35bur
+ FNsFiTVhmmy/LC9FR6jA1K3n+ZJlWWArVuzTNOM4VWVE5YIcdze1BFK+n
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=P/ZULDdt
+Subject: [Intel-wired-lan] [PATCH net-next v20 0/5] add-fwlog-v2-debugfs
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -75,193 +91,273 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: maciej.fijalkowski@intel.com, emil.s.tantilov@intel.com,
- larysa.zaremba@intel.com, netdev@vger.kernel.org, aleksander.lobakin@intel.com,
- intel-wired-lan@lists.osuosl.org, alan.brady@intel.com,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>
+Cc: Paul M Stillwell Jr <paul.m.stillwell.jr@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Dear Michal, dear Joshua,
+Firmware (FW) log support was added to the ice driver, but that version is
+no longer supported. There is a newer version of FW logging (v2) that
+adds more control knobs to get the exact data out of the FW
+for debugging.
 
+The interface for FW logging is debugfs. This was chosen based on
+discussions here:
+https://lore.kernel.org/netdev/20230214180712.53fc8ba2@kernel.org/ and
+https://lore.kernel.org/netdev/20231012164033.1069fb4b@kernel.org/
+We talked about using devlink in a variety of ways, but none of those
+options made any sense for the way the FW reports data. We briefly talked
+about using ethtool, but that seemed to go by the wayside. Ultimately it
+seems like using debugfs is the way to go so re-implement the code to use
+that.
 
-Thank you for your patch.
+FW logging is across all the PFs on the device so restrict the commands to
+only PF0.
 
-On 12/12/23 15:55, Michal Kubiak wrote:
-> From: Joshua Hay <joshua.a.hay@intel.com>
-> 
-> Tell hardware to writeback completed descriptors even when interrupts
+If the device supports FW logging then a directory named 'fwlog' will be
+created under '/sys/kernel/debug/ice/<pci_dev>'. A variety of files will be
+created to manage the behavior of logging. The following files will be
+created:
+- modules/<module>
+- nr_messages
+- enable
+- log_size
+- data
 
-Should you resend, the verb is spelled with a space: write back.
+where
+modules/<module> is used to read/write the log level for a specific module
 
-> are disabled. Otherwise, descriptors might not be written back until
-> the hardware can flush a full cacheline of descriptors. This can cause
-> unnecessary delays when traffic is light (or even trigger Tx queue
-> timeout).
+nr_messages is used to determine how many events should be in each message
+sent to the driver
 
-How can the problem be reproduced and the patch be verified?
+enable is used to start/stop FW logging. This is a boolean value so only 1
+or 0 are permissible values
 
+log_size is used to configure the amount of memory the driver uses for log
+data
 
-Kind regards,
+data is used to read/clear the log data
 
-Paul
+Generally there is a lot of data and dumping that data to syslog will
+result in a loss of data. This causes problems when decoding the data and
+the user doesn't know that data is missing until later. Instead of dumping
+the FW log output to syslog use debugfs. This ensures that all the data the
+driver has gets retrieved correctly.
 
+The FW log data is binary data that the FW team decodes to determine what
+happened in firmware. The binary blob is sent to Intel for decoding.
+---
+v20:
+- update sscanf call to check return code correctly
 
-> Fixes: c2d548cad150 ("idpf: add TX splitq napi poll support")
-> Fixes: a5ab9ee0df0b ("idpf: add singleq start_xmit and napi poll")
-> Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-> Reviewed-by: Alexander Lobakin <aleksander.lobakin@intel.com>
-> Signed-off-by: Joshua Hay <joshua.a.hay@intel.com>
-> Co-developed-by: Michal Kubiak <michal.kubiak@intel.com>
-> Signed-off-by: Michal Kubiak <michal.kubiak@intel.com>
-> ---
->  drivers/net/ethernet/intel/idpf/idpf_dev.c    |  2 ++
->  .../ethernet/intel/idpf/idpf_singleq_txrx.c   |  6 ++++-
->  drivers/net/ethernet/intel/idpf/idpf_txrx.c   |  7 +++++-
->  drivers/net/ethernet/intel/idpf/idpf_txrx.h   | 23 +++++++++++++++++++
->  drivers/net/ethernet/intel/idpf/idpf_vf_dev.c |  2 ++
->  5 files changed, 38 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/intel/idpf/idpf_dev.c b/drivers/net/ethernet/intel/idpf/idpf_dev.c
-> index 34ad1ac46b78..2c6776086130 100644
-> --- a/drivers/net/ethernet/intel/idpf/idpf_dev.c
-> +++ b/drivers/net/ethernet/intel/idpf/idpf_dev.c
-> @@ -96,8 +96,10 @@ static int idpf_intr_reg_init(struct idpf_vport *vport)
->  		intr->dyn_ctl = idpf_get_reg_addr(adapter,
->  						  reg_vals[vec_id].dyn_ctl_reg);
->  		intr->dyn_ctl_intena_m = PF_GLINT_DYN_CTL_INTENA_M;
-> +		intr->dyn_ctl_intena_msk_m = PF_GLINT_DYN_CTL_INTENA_MSK_M;
->  		intr->dyn_ctl_itridx_s = PF_GLINT_DYN_CTL_ITR_INDX_S;
->  		intr->dyn_ctl_intrvl_s = PF_GLINT_DYN_CTL_INTERVAL_S;
-> +		intr->dyn_ctl_wb_on_itr_m = PF_GLINT_DYN_CTL_WB_ON_ITR_M;
->  
->  		spacing = IDPF_ITR_IDX_SPACING(reg_vals[vec_id].itrn_index_spacing,
->  					       IDPF_PF_ITR_IDX_SPACING);
-> diff --git a/drivers/net/ethernet/intel/idpf/idpf_singleq_txrx.c b/drivers/net/ethernet/intel/idpf/idpf_singleq_txrx.c
-> index 81288a17da2a..8e1478b7d86c 100644
-> --- a/drivers/net/ethernet/intel/idpf/idpf_singleq_txrx.c
-> +++ b/drivers/net/ethernet/intel/idpf/idpf_singleq_txrx.c
-> @@ -1168,8 +1168,10 @@ int idpf_vport_singleq_napi_poll(struct napi_struct *napi, int budget)
->  						    &work_done);
->  
->  	/* If work not completed, return budget and polling will return */
-> -	if (!clean_complete)
-> +	if (!clean_complete) {
-> +		idpf_vport_intr_set_wb_on_itr(q_vector);
->  		return budget;
-> +	}
->  
->  	work_done = min_t(int, work_done, budget - 1);
->  
-> @@ -1178,6 +1180,8 @@ int idpf_vport_singleq_napi_poll(struct napi_struct *napi, int budget)
->  	 */
->  	if (likely(napi_complete_done(napi, work_done)))
->  		idpf_vport_intr_update_itr_ena_irq(q_vector);
-> +	else
-> +		idpf_vport_intr_set_wb_on_itr(q_vector);
->  
->  	return work_done;
->  }
-> diff --git a/drivers/net/ethernet/intel/idpf/idpf_txrx.c b/drivers/net/ethernet/intel/idpf/idpf_txrx.c
-> index 1646ff3877ba..b496566ee2aa 100644
-> --- a/drivers/net/ethernet/intel/idpf/idpf_txrx.c
-> +++ b/drivers/net/ethernet/intel/idpf/idpf_txrx.c
-> @@ -3639,6 +3639,7 @@ void idpf_vport_intr_update_itr_ena_irq(struct idpf_q_vector *q_vector)
->  					      IDPF_NO_ITR_UPDATE_IDX, 0);
->  
->  	writel(intval, q_vector->intr_reg.dyn_ctl);
-> +	q_vector->wb_on_itr = false;
->  }
->  
->  /**
-> @@ -3930,8 +3931,10 @@ static int idpf_vport_splitq_napi_poll(struct napi_struct *napi, int budget)
->  	clean_complete &= idpf_tx_splitq_clean_all(q_vector, budget, &work_done);
->  
->  	/* If work not completed, return budget and polling will return */
-> -	if (!clean_complete)
-> +	if (!clean_complete) {
-> +		idpf_vport_intr_set_wb_on_itr(q_vector);
->  		return budget;
-> +	}
->  
->  	work_done = min_t(int, work_done, budget - 1);
->  
-> @@ -3940,6 +3943,8 @@ static int idpf_vport_splitq_napi_poll(struct napi_struct *napi, int budget)
->  	 */
->  	if (likely(napi_complete_done(napi, work_done)))
->  		idpf_vport_intr_update_itr_ena_irq(q_vector);
-> +	else
-> +		idpf_vport_intr_set_wb_on_itr(q_vector);
->  
->  	/* Switch to poll mode in the tear-down path after sending disable
->  	 * queues virtchnl message, as the interrupts will be disabled after
-> diff --git a/drivers/net/ethernet/intel/idpf/idpf_txrx.h b/drivers/net/ethernet/intel/idpf/idpf_txrx.h
-> index df76493faa75..50761c2d9f3b 100644
-> --- a/drivers/net/ethernet/intel/idpf/idpf_txrx.h
-> +++ b/drivers/net/ethernet/intel/idpf/idpf_txrx.h
-> @@ -495,9 +495,11 @@ struct idpf_vec_regs {
->  struct idpf_intr_reg {
->  	void __iomem *dyn_ctl;
->  	u32 dyn_ctl_intena_m;
-> +	u32 dyn_ctl_intena_msk_m;
->  	u32 dyn_ctl_itridx_s;
->  	u32 dyn_ctl_itridx_m;
->  	u32 dyn_ctl_intrvl_s;
-> +	u32 dyn_ctl_wb_on_itr_m;
->  	void __iomem *rx_itr;
->  	void __iomem *tx_itr;
->  	void __iomem *icr_ena;
-> @@ -534,6 +536,7 @@ struct idpf_q_vector {
->  	struct napi_struct napi;
->  	u16 v_idx;
->  	struct idpf_intr_reg intr_reg;
-> +	bool wb_on_itr;
->  
->  	u16 num_txq;
->  	struct idpf_queue **tx;
-> @@ -973,6 +976,26 @@ static inline void idpf_rx_sync_for_cpu(struct idpf_rx_buf *rx_buf, u32 len)
->  				      page_pool_get_dma_dir(pp));
->  }
->  
-> +/**
-> + * idpf_vport_intr_set_wb_on_itr - enable descriptor writeback on disabled interrupts
-> + * @q_vector: pointer to queue vector struct
-> + */
-> +static inline void idpf_vport_intr_set_wb_on_itr(struct idpf_q_vector *q_vector)
-> +{
-> +	struct idpf_intr_reg *reg;
-> +
-> +	if (q_vector->wb_on_itr)
-> +		return;
-> +
-> +	reg = &q_vector->intr_reg;
-> +
-> +	writel(reg->dyn_ctl_wb_on_itr_m | reg->dyn_ctl_intena_msk_m |
-> +	       IDPF_NO_ITR_UPDATE_IDX << reg->dyn_ctl_itridx_s,
-> +	       reg->dyn_ctl);
-> +
-> +	q_vector->wb_on_itr = true;
-> +}
-> +
->  int idpf_vport_singleq_napi_poll(struct napi_struct *napi, int budget);
->  void idpf_vport_init_num_qs(struct idpf_vport *vport,
->  			    struct virtchnl2_create_vport *vport_msg);
-> diff --git a/drivers/net/ethernet/intel/idpf/idpf_vf_dev.c b/drivers/net/ethernet/intel/idpf/idpf_vf_dev.c
-> index 8ade4e3a9fe1..f5b0a0666636 100644
-> --- a/drivers/net/ethernet/intel/idpf/idpf_vf_dev.c
-> +++ b/drivers/net/ethernet/intel/idpf/idpf_vf_dev.c
-> @@ -96,7 +96,9 @@ static int idpf_vf_intr_reg_init(struct idpf_vport *vport)
->  		intr->dyn_ctl = idpf_get_reg_addr(adapter,
->  						  reg_vals[vec_id].dyn_ctl_reg);
->  		intr->dyn_ctl_intena_m = VF_INT_DYN_CTLN_INTENA_M;
-> +		intr->dyn_ctl_intena_msk_m = VF_INT_DYN_CTLN_INTENA_MSK_M;
->  		intr->dyn_ctl_itridx_s = VF_INT_DYN_CTLN_ITR_INDX_S;
-> +		intr->dyn_ctl_wb_on_itr_m = VF_INT_DYN_CTLN_WB_ON_ITR_M;
->  
->  		spacing = IDPF_ITR_IDX_SPACING(reg_vals[vec_id].itrn_index_spacing,
->  					       IDPF_VF_ITR_IDX_SPACING);
+v19 at:
+https://lore.kernel.org/intel-wired-lan/20231211172226.110-1-paul.m.stillwell.jr@intel.com/
+
+v19:
+- use seq_printf() for outputing module info when reading from 'module' file
+- replaced code that created argc and argv for handling command line input
+- remove checks in all the _read() and _write() functions to see if FW logging
+  is supported because the files will not exist if it is not supported
+- removed warnings on allocation failures or on debugfs file creation failures
+
+v18 at:
+https://lore.kernel.org/intel-wired-lan/20231128232647.114-1-paul.m.stillwell.jr@intel.com/
+
+v18:
+- changed the memory allocation from a buffer per ring to a single buffer that
+  gets divided up for each ring
+- updated the documentation to indicate that FW logging must be disabled to
+  clear the data. also clarified that any value written to the 'data' file will
+  clear the data
+
+v17 at:
+https://lore.kernel.org/intel-wired-lan/20231109003830.154-1-paul.m.stillwell.jr@intel.com/
+
+v17:
+- changed the log level configuration from a single file for all modules to a
+  file per module.
+- changed 'nr_buffs' to 'log_size' because users understand memory sizes
+  better than a number of buffers
+- changed 'resolution' to 'nr_messages' to better reflect what it represents
+- updated documentation to reflect these changes
+
+v16 at:
+https://lore.kernel.org/intel-wired-lan/20230823222152.106-1-paul.m.stillwell.jr@intel.com/
+
+v16:
+- removed CONFIG_DEBUG_FS wrapper around code because the debugfs calls handle
+  this case already
+- moved ice_debugfs_exit() call to remove unreachable code issue
+- minor changes to documentation based on community feedback
+
+v15 at:
+https://lore.kernel.org/intel-wired-lan/20230808224310.127-1-paul.m.stillwell.jr@intel.com/
+
+v15:
+- changed PAGE_SIZE to ICE_AQ_MAX_BUF_LEN because PAGE_SIZE can be bigger
+  than 4K
+
+v14 at:
+https://lore.kernel.org/intel-wired-lan/20230713222558.142-1-paul.m.stillwell.jr@intel.com/
+
+v14:
+- fixed an issue where 0 was a valid number for 'nr_buffs'
+- fixed an issue with the output from 'enable' not being a 1 when FW
+  logging was enabled
+
+v13 at:
+https://lore.kernel.org/intel-wired-lan/20230628231402.176-1-paul.m.stillwell.jr@intel.com/
+
+v13:
+- moved the enable code out into it's own patch
+- added linux/vmalloc.h header file in ice_fwlog.c
+- removed NULL check before freeing ring->data
+
+v12 at:
+https://lore.kernel.org/intel-wired-lan/20230607222443.119-1-paul.m.stillwell.jr@intel.com/
+
+v12:
+- re-wrote debugfs code to use individual files for configuration instead
+  of parsing the strings within the driver.
+- use sysfs_match_string() to parse the 2 values we need for configuring
+  the modules instead of strncmp()
+- use ring buffers to contain log data instead of a list. this allows for
+  wrapping the data instead of stopping log capture
+- split documentation into it's own patch
+
+v11 at:
+https://lore.kernel.org/intel-wired-lan/20230313231841.113-1-paul.m.stillwell.jr@intel.com/
+
+v11:
+- changed 'events' variable to be u32 instead of unsigned long since
+  the FW expects a 32-bit value. This caused some changes to a few
+  functions that pass 'events' and changed the parsing in debugfs.
+  Also fixed an issue with i386 cross compile where BIT_ULL() was
+  being used incorrectly and causing compiler issues on i386 because
+  the value was larger than the variable.
+
+v10 at:
+https://lore.kernel.org/intel-wired-lan/20230308235102.170-1-paul.m.stillwell.jr@intel.com/
+
+v10:
+- updated code to only create 'fwlog' file if FW logging is supported
+- combined code under single ifdef in header file
+- removed defines that were not used and added them when the correct patch is
+  applied
+- added newline between defines and variables in structure
+- moved include header into alphabetical order at top of file
+- removed unnecessary casts
+- updated return statements for more efficient code
+- changed BIT() to BIT_ULL() to try to fix i386 cross compile issue
+- fixed RCT issue
+- added documentation in Documentation/networking/device-drivers/ethernet/intel/ice.rst
+- updated commit messages appropriately
+- 
+
+v9 at:
+https://lore.kernel.org/intel-wired-lan/20230302215109.124-1-paul.m.stillwell.jr@intel.com/
+
+v9:
+- rewrote code to use debugfs instead of devlink
+
+v8 at:
+https://lore.kernel.org/intel-wired-lan/20230124221428.114-1-paul.m.stillwell.jr@intel.com/
+
+v8:
+- added vmalloc.h file for correct prototypes
+- moved code change from patch 5 to patch 3 where it was supposed to be
+- fixed a style issue
+
+v7 at:
+https://lore.kernel.org/intel-wired-lan/20230120233511.131-1-paul.m.stillwell.jr@intel.com/
+
+v7:
+- removed dev_info() in ice_debugfs_command_read() since it wasn't needed
+- refactored ice_debugfs_command_read() to split the copying of the data and
+  the freeing of the buffers. This allows for better error recovery in case
+  the copy_to_user() fails
+- changed allocation of fwlog buffers and structure from kernel memory to
+  virtual memory (vmalloc/vzalloc)
+- fixed a compile bug
+
+v6 at:
+https://lore.kernel.org/intel-wired-lan/20230113222319.111-1-paul.m.stillwell.jr@intel.com/
+
+v6:
+- removed cache_cfg() based on feedback
+- a couple of other minor changes based on feedback
+
+v5 at:
+https://lore.kernel.org/intel-wired-lan/20230111191906.131-1-paul.m.stillwell.jr@intel.com/
+
+v5:
+- handle devlink reload path correctly so debugfs directories don't get
+  added twice
+- fix issue where code wrapped with CONFIG_DEBUG_FS was causing sparc
+  compile issues with multiple defines
+
+No v4 cover letter
+
+v4:
+- actually changed the modes in ice.rst for new params
+
+v3 at:
+https://lore.kernel.org/intel-wired-lan/20221217045828.222-1-paul.m.stillwell.jr@intel.com/
+
+v3:
+- fixed ice.rst to have proper mode for new params and fixed formatting 
+
+v2 at:
+https://lore.kernel.org/intel-wired-lan/20221209232748.189-1-paul.m.stillwell.jr@intel.com/
+
+v2:
+- removed some unused admin queue commands
+- updated copyright in ice_fwlog.[ch] to 2022
+- moved defines in structures under the variables and added blank line
+- removed a couple of unused defines
+- changed fwlog_support_ena to fwlog_supported to be clearer
+- consolidated ice_devlink_param_id enum together
+- changed ice_fwlog_set_support_ena() to ice_fwlog_set_supported()
+- consolidated return status logic in ice_devlink_fwlog_enabled_set()
+- pull up functions in ice_fwlog.c where appropriate
+- add newline for FW Logging Commands comment
+- changed any new u[8/16] loop variables to int
+- moved ice_pf_fwlog_deinit() from patch 5 to patch 4
+- changed error message to be clearer
+- updated Documentation/networking/devlink/ice.rst
+- updated commit messages with examples of devlink commands and using
+  debugfs to get log files
+
+v1 at:
+https://lore.kernel.org/intel-wired-lan/20221128214749.110-1-paul.m.stillwell.jr@intel.com/
+
+Paul M Stillwell Jr (5):
+  ice: remove FW logging code
+  ice: configure FW logging
+  ice: enable FW logging
+  ice: add ability to read and configure FW log data
+  ice: add documentation for FW logging
+
+ .../device_drivers/ethernet/intel/ice.rst     | 141 ++++
+ drivers/net/ethernet/intel/ice/Makefile       |   4 +-
+ drivers/net/ethernet/intel/ice/ice.h          |   9 +
+ .../net/ethernet/intel/ice/ice_adminq_cmd.h   | 161 ++--
+ drivers/net/ethernet/intel/ice/ice_common.c   | 219 +-----
+ drivers/net/ethernet/intel/ice/ice_common.h   |   1 -
+ drivers/net/ethernet/intel/ice/ice_debugfs.c  | 698 ++++++++++++++++++
+ drivers/net/ethernet/intel/ice/ice_fwlog.c    | 470 ++++++++++++
+ drivers/net/ethernet/intel/ice/ice_fwlog.h    |  80 ++
+ drivers/net/ethernet/intel/ice/ice_main.c     |  48 +-
+ drivers/net/ethernet/intel/ice/ice_type.h     |  23 +-
+ 11 files changed, 1539 insertions(+), 315 deletions(-)
+ create mode 100644 drivers/net/ethernet/intel/ice/ice_debugfs.c
+ create mode 100644 drivers/net/ethernet/intel/ice/ice_fwlog.c
+ create mode 100644 drivers/net/ethernet/intel/ice/ice_fwlog.h
+
+-- 
+2.35.1
+
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
