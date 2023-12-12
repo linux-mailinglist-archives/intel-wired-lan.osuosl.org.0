@@ -1,78 +1,79 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0E85080F551
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 12 Dec 2023 19:16:17 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0EC6580F7F4
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 12 Dec 2023 21:32:06 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 0229981831;
-	Tue, 12 Dec 2023 18:16:15 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0229981831
+	by smtp4.osuosl.org (Postfix) with ESMTP id 7F9FC41B87;
+	Tue, 12 Dec 2023 20:32:04 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7F9FC41B87
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1702404975;
-	bh=iIC9GwQso2pCL+waaJHGudgMXHYW3qWUlAjcN4HBmEE=;
-	h=Date:From:To:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1702413124;
+	bh=E2tZ/HEHMS0KqhbYgXMNg+BAoklpq3K5C9mvuUqefJE=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=nelLlkBGcwMEbv5Wk3vf5+z43q6geGsiV6UWo7EQjj99IQj0JQRJo2seQQEqbrIbz
-	 vCllPVK0vwX6B/vbyHNvM5CLqcXTPfA4OJ2e8Nxw9/kVIYQX390+k5IyLT78L8hCst
-	 +OXVYgL+zand4P1yV2DkgVM17CG+2Wwu6r+JjseR86CpoecpG6tQm839l6n/Ob3Ilt
-	 dEh2SA8BpPOMy1KiMLdK6vNcaAuoAOrKwTB0uW80ORlH3jR+N6WfoPJbnp9gld9150
-	 MZSwKpu+VxSHGWO2N5dMTptMw5GYexkDhNH8LcZofqlJscgVrm9/2sht86kD9zZXoq
-	 JUv0+BOtOBe/Q==
+	b=C9Pg9ZKUIVxT3mCc9rSwzVUs0t9MxHViGMNW552mM5NFTVdf/NX2YkgMKd40ALJ9q
+	 EqMCDly2agRTUKKkEAowUGaiwezo37Zb4zP9dK0RkJuFWlv76vh8Fi1yo/rBpJjxNA
+	 68fE1HA1NDYcUREifL3Nr+O76kWmYjeuUW07tgls6NQRw+1zcCq+dx6kSOjQEDnPSE
+	 rLoNKae4aXZ4AJ0A6N4fxSzAkYcFcIVcGZ+J4oS1qgLwNQTkjf+kH/NwdrD0Cj5PVm
+	 pOKqspq6BEF39zpoK6Z9LsvOq1Xhc2a6GI2uMwqVDEIvm2K2DnXqO/DQoxzSbn1iC6
+	 ReaQ9Nsl+Ddzg==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id vbutPXmDInbK; Tue, 12 Dec 2023 18:16:14 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id DyB0Qur7gr55; Tue, 12 Dec 2023 20:32:03 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id D6D9381865;
-	Tue, 12 Dec 2023 18:16:13 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D6D9381865
+	by smtp4.osuosl.org (Postfix) with ESMTP id 65C78414BF;
+	Tue, 12 Dec 2023 20:32:03 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 65C78414BF
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 21BBB1BF3D2
- for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Dec 2023 18:16:09 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id F077E1BF5E6
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Dec 2023 20:31:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id ECD1860AC0
- for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Dec 2023 18:16:08 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org ECD1860AC0
+ by smtp3.osuosl.org (Postfix) with ESMTP id C500E60A82
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Dec 2023 20:31:57 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C500E60A82
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id da2X-nYy5s22 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 12 Dec 2023 18:16:07 +0000 (UTC)
-Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
- by smtp3.osuosl.org (Postfix) with ESMTPS id A566C607C1
- for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Dec 2023 18:16:07 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A566C607C1
+ with ESMTP id jDZg66deU9nw for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 12 Dec 2023 20:31:57 +0000 (UTC)
+Received: from ams.source.kernel.org (ams.source.kernel.org [145.40.68.75])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 12CAD60A5D
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Dec 2023 20:31:56 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 12CAD60A5D
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by dfw.source.kernel.org (Postfix) with ESMTP id E5D1F61877;
- Tue, 12 Dec 2023 18:16:06 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0A2F8C433C7;
- Tue, 12 Dec 2023 18:16:05 +0000 (UTC)
-Date: Tue, 12 Dec 2023 10:16:05 -0800
-From: Jakub Kicinski <kuba@kernel.org>
-To: Alexander Lobakin <aleksander.lobakin@intel.com>
-Message-ID: <20231212101605.766fbbcc@kernel.org>
-In-Reply-To: <20231212142752.935000-1-aleksander.lobakin@intel.com>
-References: <20231212142752.935000-1-aleksander.lobakin@intel.com>
+ by ams.source.kernel.org (Postfix) with ESMTP id D9F73B818D0;
+ Tue, 12 Dec 2023 20:31:54 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 744AAC433C7;
+ Tue, 12 Dec 2023 20:31:51 +0000 (UTC)
+Date: Tue, 12 Dec 2023 20:31:48 +0000
+From: Simon Horman <horms@kernel.org>
+To: Jason Xing <kerneljasonxing@gmail.com>
+Message-ID: <20231212203148.GG5817@kernel.org>
+References: <20231209092051.43875-1-kerneljasonxing@gmail.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20231209092051.43875-1-kerneljasonxing@gmail.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1702404966;
- bh=55v2YEAEajqeqknulyuWsJXXATDMpGT7WsJUIr0GI/E=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=cKwKGBqs/hXYX/mV4mPQ1ZwkgUJrnnfWNcTPTyuiWBMJ/leiYEQSgENKdG3sfmvuE
- bSxth5b7ltOcRFcXTlP8+X9n+jOnsalASL5N2T8+CKUnwMTofd6ykO/MA3iEjkEH1I
- vyEo/J55wTxQRcgS8Z26G14QuLjkeJL/++nkTRr5TV82egehIoXsWMvKeHxZW1Xyid
- HlrXsxTNt0sQBUanT+A3LL7p35sHXf4ZvAD3mpjk4w5JT0X9ECdORpdYkQ6uqWc+hj
- S+MdnAXBQoDEF/jxjxTWyYFWDxeb6TrrrvUcE3mDsEqhmpugczKoOVcl1o+k1jfZrz
- hwp9ZTajSJYBA==
+ d=kernel.org; s=k20201202; t=1702413114;
+ bh=9tSF4VzYJt2cB8c5D/JCneS7y1HL4A5N0+ouVo24dco=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=Nkyz2XXBEpkZXkePAITHXeS2DaM/wWdoNvwSkI4wH9og70ySzmeF37L/TC1LJJCo+
+ XMplQPTPUcQdpfJZgFXE4okpncV46w8Z1/OPpkZSS4SPg94cKzWutHZR+BOZ/jkDEQ
+ XQhthqZrrACfFHLkxw23UxikIOmDGg6Yx2hCWP6J0IfxInVqZEVR8awovYL8/zaSBs
+ /1LovrSeT6P9tX2Nq//WAkwCA1xYu/7w+TRrHZsWHXNhxUUsXFauDlqsHzXx0mRWA1
+ iacvAleOQ1/GJmFeHHhrHYWKN+Pb8hHOYR+032mWoR2qGbjnrY5eXFGiFB/WZB06F+
+ 3q7fNdCGTC1VA==
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=cKwKGBqs
-Subject: Re: [Intel-wired-lan] [PATCH net-next 0/2] idpf: add get/set for
- Ethtool's header split ringparam
+ header.a=rsa-sha256 header.s=k20201202 header.b=Nkyz2XXB
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v2] i40e: remove fake support
+ of rx-frames-irq
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,32 +86,34 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Michal Kubecek <mkubecek@suse.cz>, Andrew Lunn <andrew@lunn.ch>,
- Jiri Pirko <jiri@resnulli.us>, Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- linux-kernel@vger.kernel.org, Eric Dumazet <edumazet@google.com>,
- Michal Kubiak <michal.kubiak@intel.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>,
- Vladimir Oltean <vladimir.oltean@nxp.com>,
- Paul Greenwalt <paul.greenwalt@intel.com>, netdev@vger.kernel.org,
- Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>,
- intel-wired-lan@lists.osuosl.org
+Cc: Pucha Himasekhar Reddy <himasekharx.reddy.pucha@intel.com>,
+ intel-wired-lan@lists.osuosl.org, jesse.brandeburg@intel.com,
+ edumazet@google.com, anthony.l.nguyen@intel.com, netdev@vger.kernel.org,
+ kuba@kernel.org, pabeni@redhat.com, davem@davemloft.net,
+ Jason Xing <kernelxing@tencent.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, 12 Dec 2023 15:27:50 +0100 Alexander Lobakin wrote:
-> Currently, the header split feature (putting headers in one smaller
-> buffer and then the data in a separate bigger one) is always enabled
-> in idpf when supported.
-> One may want to not have fragmented frames per each packet, for example,
-> to avoid XDP frags. To better optimize setups for particular workloads,
-> add ability to switch the header split state on and off via Ethtool's
-> ringparams, as well as to query the current status.
-> There's currently only GET in the Ethtool Netlink interface for now,
-> so add SET first. I suspect idpf is not the only one supporting this.
+On Sat, Dec 09, 2023 at 05:20:51PM +0800, Jason Xing wrote:
+> From: Jason Xing <kernelxing@tencent.com>
+> 
+> Since we never support this feature for I40E driver, we don't have to
+> display the value when using 'ethtool -c eth0'.
+> 
+> Before this patch applied, the rx-frames-irq is 256 which is consistent
+> with tx-frames-irq. Apparently it could mislead users.
+> 
+> Signed-off-by: Jason Xing <kernelxing@tencent.com>
+> Tested-by: Pucha Himasekhar Reddy <himasekharx.reddy.pucha@intel.com> (A Contingent worker at Intel)
+> Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
+> ---
+> v2: use the correct params in i40e_ethtool.c file as suggested by Jakub.
 
-Reviewed-by: Jakub Kicinski <kuba@kernel.org>
+Thanks for the update.
+
+Reviewed-by: Simon Horman <horms@kernel.org>
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
