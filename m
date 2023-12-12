@@ -1,79 +1,78 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0EC6580F7F4
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 12 Dec 2023 21:32:06 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9845F80F949
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 12 Dec 2023 22:26:49 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 7F9FC41B87;
-	Tue, 12 Dec 2023 20:32:04 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7F9FC41B87
+	by smtp1.osuosl.org (Postfix) with ESMTP id 267B8819F3;
+	Tue, 12 Dec 2023 21:26:48 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 267B8819F3
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1702413124;
-	bh=E2tZ/HEHMS0KqhbYgXMNg+BAoklpq3K5C9mvuUqefJE=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1702416408;
+	bh=s6QJ0R8iZWZG9rbeGxwb64zbKBPYQR+te+URsYWkvyE=;
+	h=Date:From:To:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=C9Pg9ZKUIVxT3mCc9rSwzVUs0t9MxHViGMNW552mM5NFTVdf/NX2YkgMKd40ALJ9q
-	 EqMCDly2agRTUKKkEAowUGaiwezo37Zb4zP9dK0RkJuFWlv76vh8Fi1yo/rBpJjxNA
-	 68fE1HA1NDYcUREifL3Nr+O76kWmYjeuUW07tgls6NQRw+1zcCq+dx6kSOjQEDnPSE
-	 rLoNKae4aXZ4AJ0A6N4fxSzAkYcFcIVcGZ+J4oS1qgLwNQTkjf+kH/NwdrD0Cj5PVm
-	 pOKqspq6BEF39zpoK6Z9LsvOq1Xhc2a6GI2uMwqVDEIvm2K2DnXqO/DQoxzSbn1iC6
-	 ReaQ9Nsl+Ddzg==
+	b=rQbaphJxqxexuTt/i5orc743IgXiVLqWmj2yr91xFyfn/WTxCL+w10NXuQw20YY6g
+	 0UFZTFkT5hfIiq3p5s3sQcApb4XvXOSlZZzE+sUitjPlAAgR/IXPojZP1SEEfzRy7Z
+	 oIK5yfSh8/OvxXpMyxTPF9G3s0uP7XP6nMpo2sGQ5mkHCfyRpw+A0ulKdmwk3Vd2hB
+	 yWZAmIl9F1/vmKPsxUODEbaP06KmdTGj3x9KXepnqaWat2exJMEYvdDGM7BMl7vjIo
+	 e1dVgaiMMGItltnJ12ICDBzdhBS55LrvkC3I+Tu11aEciR5dGpiJ7RcF7+N6kKpihJ
+	 ZKzSgQSnqq0MQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id DyB0Qur7gr55; Tue, 12 Dec 2023 20:32:03 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id YLYMMt-PrH8B; Tue, 12 Dec 2023 21:26:47 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 65C78414BF;
-	Tue, 12 Dec 2023 20:32:03 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 65C78414BF
+	by smtp1.osuosl.org (Postfix) with ESMTP id 125A9819D1;
+	Tue, 12 Dec 2023 21:26:47 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 125A9819D1
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id F077E1BF5E6
- for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Dec 2023 20:31:57 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 1CE8E1BF2FD
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Dec 2023 21:26:42 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id C500E60A82
- for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Dec 2023 20:31:57 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C500E60A82
+ by smtp1.osuosl.org (Postfix) with ESMTP id E8C49819D1
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Dec 2023 21:26:41 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E8C49819D1
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id jDZg66deU9nw for <intel-wired-lan@lists.osuosl.org>;
- Tue, 12 Dec 2023 20:31:57 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id qN5r5LEH0H-6 for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 12 Dec 2023 21:26:41 +0000 (UTC)
 Received: from ams.source.kernel.org (ams.source.kernel.org [145.40.68.75])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 12CAD60A5D
- for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Dec 2023 20:31:56 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 12CAD60A5D
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 3B0C7819BE
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Dec 2023 21:26:41 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3B0C7819BE
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by ams.source.kernel.org (Postfix) with ESMTP id D9F73B818D0;
- Tue, 12 Dec 2023 20:31:54 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 744AAC433C7;
- Tue, 12 Dec 2023 20:31:51 +0000 (UTC)
-Date: Tue, 12 Dec 2023 20:31:48 +0000
-From: Simon Horman <horms@kernel.org>
-To: Jason Xing <kerneljasonxing@gmail.com>
-Message-ID: <20231212203148.GG5817@kernel.org>
-References: <20231209092051.43875-1-kerneljasonxing@gmail.com>
+ by ams.source.kernel.org (Postfix) with ESMTP id 03E67B8172F;
+ Tue, 12 Dec 2023 21:26:39 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id EBA31C433C8;
+ Tue, 12 Dec 2023 21:26:37 +0000 (UTC)
+Date: Tue, 12 Dec 2023 13:26:37 -0800
+From: Jakub Kicinski <kuba@kernel.org>
+To: Kunwu Chan <chentao@kylinos.cn>
+Message-ID: <20231212132637.1b0fb8aa@kernel.org>
+In-Reply-To: <20231211031336.235634-1-chentao@kylinos.cn>
+References: <20231211031336.235634-1-chentao@kylinos.cn>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20231209092051.43875-1-kerneljasonxing@gmail.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1702413114;
- bh=9tSF4VzYJt2cB8c5D/JCneS7y1HL4A5N0+ouVo24dco=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=Nkyz2XXBEpkZXkePAITHXeS2DaM/wWdoNvwSkI4wH9og70ySzmeF37L/TC1LJJCo+
- XMplQPTPUcQdpfJZgFXE4okpncV46w8Z1/OPpkZSS4SPg94cKzWutHZR+BOZ/jkDEQ
- XQhthqZrrACfFHLkxw23UxikIOmDGg6Yx2hCWP6J0IfxInVqZEVR8awovYL8/zaSBs
- /1LovrSeT6P9tX2Nq//WAkwCA1xYu/7w+TRrHZsWHXNhxUUsXFauDlqsHzXx0mRWA1
- iacvAleOQ1/GJmFeHHhrHYWKN+Pb8hHOYR+032mWoR2qGbjnrY5eXFGiFB/WZB06F+
- 3q7fNdCGTC1VA==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ d=kernel.org; s=k20201202; t=1702416398;
+ bh=7MZqk1hNPj7r4egGXbPOB+Rztv8D/+/C7L1c9OmJaNM=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=flRSOrwLQ6Kc4Jr7ORRXvJ9GkwBbbqmpb4qM7hK2Pq5Mo+ix+PgPwknWPbsyLrJk5
+ ATqdQHydWfdFqN7c1//tDtxjet1++b4i1v5AH8a+DDpq4uEldVokQHHzyzTEu4snaE
+ PHEte5nKs1RG9Td3XkE5pZDvwXd0Al1n19rkQeezl55Mbx636qHNcj2XAigiLYP5I1
+ 8nZMz9R8VtlS6dMY91F5MT1dyZv+mBHsFOeajqHZy8Z6jSX/NyTnzzkn1GuOQEALCY
+ ujUJz7wtIS2l3TqBZ3cA72Q3XKBddfCGVKWrrvtxdIiQR7WlXf2k+1Tju5sYYLA2Mm
+ J5FjKLntIkB8w==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=Nkyz2XXB
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v2] i40e: remove fake support
- of rx-frames-irq
+ header.a=rsa-sha256 header.s=k20201202 header.b=flRSOrwL
+Subject: Re: [Intel-wired-lan] [PATCH] igb: Add null pointer check to
+ igb_set_fw_version
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,34 +85,27 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Pucha Himasekhar Reddy <himasekharx.reddy.pucha@intel.com>,
- intel-wired-lan@lists.osuosl.org, jesse.brandeburg@intel.com,
- edumazet@google.com, anthony.l.nguyen@intel.com, netdev@vger.kernel.org,
- kuba@kernel.org, pabeni@redhat.com, davem@davemloft.net,
- Jason Xing <kernelxing@tencent.com>
+Cc: Kunwu Chan <kunwu.chan@hotmail.com>, przemyslaw.kitszel@intel.com,
+ jesse.brandeburg@intel.com, linux-kernel@vger.kernel.org, edumazet@google.com,
+ anthony.l.nguyen@intel.com, netdev@vger.kernel.org, jacob.e.keller@intel.com,
+ intel-wired-lan@lists.osuosl.org, pabeni@redhat.com, davem@davemloft.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Sat, Dec 09, 2023 at 05:20:51PM +0800, Jason Xing wrote:
-> From: Jason Xing <kernelxing@tencent.com>
+On Mon, 11 Dec 2023 11:13:36 +0800 Kunwu Chan wrote:
+> kasprintf() returns a pointer to dynamically allocated memory
+> which can be NULL upon failure.
 > 
-> Since we never support this feature for I40E driver, we don't have to
-> display the value when using 'ethtool -c eth0'.
-> 
-> Before this patch applied, the rx-frames-irq is 256 which is consistent
-> with tx-frames-irq. Apparently it could mislead users.
-> 
-> Signed-off-by: Jason Xing <kernelxing@tencent.com>
-> Tested-by: Pucha Himasekhar Reddy <himasekharx.reddy.pucha@intel.com> (A Contingent worker at Intel)
-> Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
-> ---
-> v2: use the correct params in i40e_ethtool.c file as suggested by Jakub.
+> Fixes: 1978d3ead82c ("intel: fix string truncation warnings")
+> Cc: Kunwu Chan <kunwu.chan@hotmail.com>
+> Signed-off-by: Kunwu Chan <chentao@kylinos.cn>
 
-Thanks for the update.
-
-Reviewed-by: Simon Horman <horms@kernel.org>
+The allocation is rather pointless here.
+Can you convert this code to use snprintf() instead?
+-- 
+pw-bot: cr
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
