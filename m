@@ -1,183 +1,84 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 000D481087A
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 13 Dec 2023 03:58:44 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id D2827810956
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 13 Dec 2023 06:07:57 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 8398D4052C;
-	Wed, 13 Dec 2023 02:58:43 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 8398D4052C
+	by smtp3.osuosl.org (Postfix) with ESMTP id 6583E60E92;
+	Wed, 13 Dec 2023 05:07:56 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6583E60E92
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1702436323;
-	bh=mW5Z9ULNus7dTjEpxKB9ltdtyG+lc/cPygOwuWGH89I=;
-	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=K8Xmj9q5JNfYtQ0clNR4AwWHP/CDBtiQWwvfv03zrXJlKhKpagrCKWCELdyRBjjd6
-	 shtXgNi1CaptV3hc4PtjMh1tWDJ6hs2KNmWau6fWn8V66vOKJ9c7AsxtlaRpxz/Mhl
-	 BWU2OIrYSEpApiGFCrBg7sfnnXrnA/eUe7F8kd4/aoyV1jW6Eya4kNDvOUzLIFTRuy
-	 G7wey5ahTPd3czXyX///07XqNLiJD1Khm2uSTlHJL5SuSf6G/Yq1XNOrItoTh/fabN
-	 enWTSdcMII/FeoEeCJrX/M75QyA3iPWLL6lsBRECLs3y7+SVCV2oKIeB055ygO1wf9
-	 fFBqkjuD2t/cg==
+	s=default; t=1702444076;
+	bh=lYQWJBaEtU4pj5xoJfqv1vO4l/aufqGCSq+81DJmByg=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=b4UN6ha071IZ0F7sRR76rdTzOiIj9qFhtSMOxAeRibNhTEF8c4KV872yR26kd9wQn
+	 4sM412NjoyWDiViY2OQPEz6qCuwldqBI6Yn+NT/5mvyaWGjLDJDp+7+Q9tpOYvWKOy
+	 J1zseIAJsO3ReqrZlXHSlnXL7AI8Ft2tAbcR4Teer3Sao64K9++F5yb6cfQe9/874X
+	 voo16Mvv2MK2Y0M6E2nQ+qS8stQAZzzGOVSIYW6q5wpVedwKGEUcsJLg5olQntNbsW
+	 V4avxknwSzREP2yejEULBhRKKaOifDKdwRI8+SojgqFdO4aHqilUccVZyjoC2Jth52
+	 Y/eQCkHCZozxQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id uXLW08jbzJOK; Wed, 13 Dec 2023 02:58:42 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id fHWqK03AOAUJ; Wed, 13 Dec 2023 05:07:55 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id E6BF8400CE;
-	Wed, 13 Dec 2023 02:58:41 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org E6BF8400CE
+	by smtp3.osuosl.org (Postfix) with ESMTP id 8B1E260D94;
+	Wed, 13 Dec 2023 05:07:54 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 8B1E260D94
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 36DA91BF2B1
- for <intel-wired-lan@lists.osuosl.org>; Wed, 13 Dec 2023 02:58:27 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 253151BF2CE
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 13 Dec 2023 05:07:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id EF6D04052C
- for <intel-wired-lan@lists.osuosl.org>; Wed, 13 Dec 2023 02:58:26 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org EF6D04052C
+ by smtp2.osuosl.org (Postfix) with ESMTP id 08498400CE
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 13 Dec 2023 05:07:41 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 08498400CE
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Nad8TYlQyahY for <intel-wired-lan@lists.osuosl.org>;
- Wed, 13 Dec 2023 02:58:25 +0000 (UTC)
-Received: from mgamail.intel.com (mgamail.intel.com [192.55.52.43])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 68942400CE
- for <intel-wired-lan@lists.osuosl.org>; Wed, 13 Dec 2023 02:58:25 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 68942400CE
-X-IronPort-AV: E=McAfee;i="6600,9927,10922"; a="481106312"
-X-IronPort-AV: E=Sophos;i="6.04,271,1695711600"; d="scan'208";a="481106312"
-Received: from fmsmga003.fm.intel.com ([10.253.24.29])
- by fmsmga105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 12 Dec 2023 18:58:24 -0800
+ with ESMTP id phdVcM3rn0CH for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 13 Dec 2023 05:07:38 +0000 (UTC)
+Received: from mgamail.intel.com (mgamail.intel.com [134.134.136.20])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 69FFE400BA
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 13 Dec 2023 05:07:38 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 69FFE400BA
+X-IronPort-AV: E=McAfee;i="6600,9927,10922"; a="385332365"
+X-IronPort-AV: E=Sophos;i="6.04,272,1695711600"; d="scan'208";a="385332365"
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+ by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 12 Dec 2023 21:07:25 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10922"; a="864449855"
-X-IronPort-AV: E=Sophos;i="6.04,271,1695711600"; d="scan'208";a="864449855"
-Received: from orsmsx602.amr.corp.intel.com ([10.22.229.15])
- by FMSMGA003.fm.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
- 12 Dec 2023 18:58:24 -0800
-Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
- ORSMSX602.amr.corp.intel.com (10.22.229.15) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.35; Tue, 12 Dec 2023 18:58:23 -0800
-Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
- ORSMSX610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.35; Tue, 12 Dec 2023 18:58:23 -0800
-Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
- orsmsx610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.35 via Frontend Transport; Tue, 12 Dec 2023 18:58:23 -0800
-Received: from NAM04-BN8-obe.outbound.protection.outlook.com (104.47.74.40) by
- edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.35; Tue, 12 Dec 2023 18:58:21 -0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Yluw55OMP8WNmEpFi462Zy3zhSnN2clZiAqimmQkuxOF3qthuLqvHoRJegXE8O2Yf8nkgYp2RaxDIURGYNrOi3craandzalY0el3GBl2XGbn/vjPptewZmMFHG+1oOW/xRBkOI6xG0Iu593vDImQxLocfkT7r2bTZpvYPoo6NPuRbxmsJizoe0mReczmkhhCdDUm3jc+vzrKfLsfKpyTw68tY3w4YJqwU7zlRdElU1GvMbDSIrxpvzUUovog1e1jF83CtKKtaCmZG9ydBNqPTBLqyxXf7QAkHkAa1vg4HMUP9OkuyZPPDdnB7TfEUvfAnWpdS5b2VIlbhY8CiLShCA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=pHz9UM8KMS21TPRX1+8Pt6WVQBdnclQqzcz/oLduS20=;
- b=TrikiKsTgIays34dkVIOwPVNJ5mruIx3SDc1a+157bF8Octh+Bv9dksHt/0oXPdFZesPEhfjzoXMAexNyvDRwN++u8xMpiWjaqzA9m6ks8O7SnvKkQK5MasLKfXOSU8Cfww4kqbyE+V7tz2n+Aa68SY54klfPST5Nxk4gE3y5nPpwfTPCdzkFdFkwWLPUv3B7cs4jljZOla07CLZYWNzDj5q78Fgd3EtMMkkCZeIwEknurs46+U9Yq7jt1bHvWxghF4uiXSymlilJRJKmLHKvWSdDdU8YmJD+b8gYbOtIkOoLdugFMiiJsDmRhxlkyK08zQ7mzuJNH4EMHtBeGJPTQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from BL0PR11MB3122.namprd11.prod.outlook.com (2603:10b6:208:75::32)
- by SJ2PR11MB8451.namprd11.prod.outlook.com (2603:10b6:a03:56e::20)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7091.26; Wed, 13 Dec
- 2023 02:58:10 +0000
-Received: from BL0PR11MB3122.namprd11.prod.outlook.com
- ([fe80::954:6050:f988:740f]) by BL0PR11MB3122.namprd11.prod.outlook.com
- ([fe80::954:6050:f988:740f%4]) with mapi id 15.20.7068.031; Wed, 13 Dec 2023
- 02:58:10 +0000
-From: "Pucha, HimasekharX Reddy" <himasekharx.reddy.pucha@intel.com>
-To: "Brandeburg, Jesse" <jesse.brandeburg@intel.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH iwl-next v2 03/15] intel: legacy: field
- prep conversion
-Thread-Index: AQHaJ9/ntY7KX33i5kq5vTav0ymOhLCmiBtg
-Date: Wed, 13 Dec 2023 02:58:10 +0000
-Message-ID: <BL0PR11MB3122ABC3ADFF9EE08798B721BD8DA@BL0PR11MB3122.namprd11.prod.outlook.com>
-References: <20231206010114.2259388-1-jesse.brandeburg@intel.com>
- <20231206010114.2259388-4-jesse.brandeburg@intel.com>
-In-Reply-To: <20231206010114.2259388-4-jesse.brandeburg@intel.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: BL0PR11MB3122:EE_|SJ2PR11MB8451:EE_
-x-ms-office365-filtering-correlation-id: c8bf16b4-4907-452f-5c0a-08dbfb875718
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: SSrU5fFfR5g3UFvH+4468qKCzdMIBBJ+3pXZ6bNkGVLRt4vx6HDTDPOTNFHPy99dI0F3DgfiR2Yz3s3Qbpc67bkk2AiNrWAC7o2yZD4fvBsf+4hK5YWrEEXtei4SbKy4obZ2esDs1fgLxY+bK4EKKw/gwDdPRl8p7KsaxRXk+52FHNf0FVJDZcPXPA16jN7+HjupjJfaclMVDBMfi8DuJBhHogF/o5zwsAREUC4J09me4f34pXjo1A3SpBfNa+cfwqK3PhrcT6fVrNX/2qVrA6YPLBrV7E4QjrMtTK8plcmHYgmbmbYbL3LE3+5sfzFAGAXEjHDwdI/SJurwUJPqpr7GwgtIr3G+GuyIdCVk8wNAfCYHDds8OpQz9GeZovC4gXxB9BuiNQRsH9oebfORPb67KzEcFRQ3xIbBvkMi++YvXYAWgbxVCAwHWCU8EhV5VWzQ6GrUUlisNGcdpZ8GMC4VJDighqsXCUdcZ61aArYKEpNafgWPG2ukFC+c6o8sEfYenvyeLhn6bDxKkcTdEfuYo1cX/yljAIhn7JnyVwh1XKFHccqb1LDp9h8r3RmSzOGLs2MH7cHXTtmO2NbQyYVTxqG4q/e+px79pYyXzsxON3lONPLLkUmk2yXTp4of
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BL0PR11MB3122.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230031)(39860400002)(366004)(376002)(396003)(346002)(136003)(230922051799003)(186009)(1800799012)(64100799003)(451199024)(8676002)(8936002)(2906002)(4326008)(52536014)(316002)(5660300002)(55016003)(66476007)(76116006)(66556008)(110136005)(66946007)(64756008)(66446008)(54906003)(478600001)(38070700009)(26005)(6506007)(7696005)(53546011)(41300700001)(9686003)(71200400001)(82960400001)(83380400001)(33656002)(86362001)(122000001)(38100700002);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?f96B8HzRS+e7g1rvNTe+BKFKW9sKYM5pN9XpTGOl4l3qHxufMoO644pEeF37?=
- =?us-ascii?Q?6x5j7IRPfYcczjdjatJJHGIJpF30mT6JVsgCjK3LwcduYk4UzQadxqIzkMM6?=
- =?us-ascii?Q?u7jF+J2w5LwOaJOaTvMliJeQKU7JopLrJINDafwq/Aj4hvmPzpnEKGwlvmHM?=
- =?us-ascii?Q?aDYdnj34IgVye4e0wnupUdOzI00z/qgU1AEkuyuTROR8uz2h5oCXMzlFv/U+?=
- =?us-ascii?Q?/AhluOepeifs2jn53KuYVsREbknJXJwkInBTvrRHkTcooJm1PLy+EiQ6zAHT?=
- =?us-ascii?Q?dEOIj4Furl0U/HY2wsmDo/jGONWdVXDYf5/Za97pPWX08Ps4ukatnnph/RT+?=
- =?us-ascii?Q?drXTjj/cBFJCr/TqM01hS22zYU8s9KpdCOmVrD0AlJWj66ckdAud7XHZyYje?=
- =?us-ascii?Q?NyYudvhVA41KwVPV6vc7x4xIR+lXyWCCReVIldfwKN+qgzRz1RLTVkkOTpm+?=
- =?us-ascii?Q?zJFmk3Z+A5aEtzjFHdnBZGIq7KLkyClyhmJ/nGgcLI6F7XjXLNJgXAKO1A0y?=
- =?us-ascii?Q?OTUReFYlIEuZiJ5s6XrA4OvDgd4sDXbwhvC2BDBopbCDnGUTzKBfbujUVARr?=
- =?us-ascii?Q?3kYGKx9cVwm35KD+R6M6A+p8iroPN90rucvaHXdKTCH+wg9rszslquH2gOLs?=
- =?us-ascii?Q?IkXm+MmRMGijfJAivcf1bArYqEe1tvFmmTJ7DqAegHh7zMJ/hV7IZRu879nL?=
- =?us-ascii?Q?7Gdp2Q62Nf+6YyWZB9xQ0Ystm8U4SnnPJPxt1nMbwIWZC3DZ7Wbd3O8m7tfA?=
- =?us-ascii?Q?kqsZsG7dNTnjGKqBofCcGcmiAIc1thvkfjsVFmvknVeKifOq2QD7jimG2OAq?=
- =?us-ascii?Q?CA97itvmO89gl3XGw4UtOJhko154FeSHXssRvkqLDn7sQjNN6TOltMtZLkP+?=
- =?us-ascii?Q?4IX1zB4rm86mOjBAPDA5QItPB1cu027gyVsfGer1rmXBlExQJJ5qCLKQzckh?=
- =?us-ascii?Q?SasSvt9j6/qEqBA1mXyG6Cd3+FTkMqf0vByaJi+bPNNn813v8MjM6TV2VRrx?=
- =?us-ascii?Q?SDfYxdspjQYtEouKtxTS6uTq0JIvq/wIwiCmGfRtuzdpvtK+QsQclheXxBh4?=
- =?us-ascii?Q?1U795zn87/3NZ/jZkaBtcwBY4nhokItIPoVm8WS+r/YJNg5dfgXK3d3YjSTo?=
- =?us-ascii?Q?FmNkfK8Yy69ugDvTKmoSkAgHKeSZflYLN2jXFybpb8Y/dMJbHGmYRCj0mA+d?=
- =?us-ascii?Q?hFBhs8eh4X0EvtK3klKiSlnafReKgYOQHf9zoSeeRswZgagaM/OXBFVIO1ec?=
- =?us-ascii?Q?0u+i/8W/AeQ1RfEy6hw4DXEaVk/ZOSgPMrw0y1yCxBSDumo1CupjJFF9KIOu?=
- =?us-ascii?Q?JSxJhhB7BZHd5ec4tBTWXJSPnEbhBhWTfFFxRL5YNiB3eFdWm8BXVeK5AYEk?=
- =?us-ascii?Q?OL4TyvOC1DdHmtc7aT0MfgvHok3PZNIBlw+2u3Gn1XQmBzHlrZAhKpRu9/2E?=
- =?us-ascii?Q?Mxx7VWIPeuGiO7PP87nauftR25grfQgQtcctoFbQb+t6FBvCNyiP7kmK0qLu?=
- =?us-ascii?Q?Z688cFYgUEYU657MiTvOvsPY/Ns/+m95U6KYhs1QE9+mcFou6jGBQ1ROcBwP?=
- =?us-ascii?Q?dmfye0rBDDneBKs4wSf3dHmdSumbacYBHqbhDdgxyessG3wLekWulO9Hyptn?=
- =?us-ascii?Q?cw=3D=3D?=
+X-IronPort-AV: E=McAfee;i="6600,9927,10922"; a="897192622"
+X-IronPort-AV: E=Sophos;i="6.04,272,1695711600"; d="scan'208";a="897192622"
+Received: from pmstillw-desk1.amr.corp.intel.com ([10.212.121.197])
+ by orsmga004-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 12 Dec 2023 21:07:24 -0800
+From: Paul M Stillwell Jr <paul.m.stillwell.jr@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Tue, 12 Dec 2023 21:07:10 -0800
+Message-Id: <20231213050715.190-1-paul.m.stillwell.jr@intel.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: BL0PR11MB3122.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: c8bf16b4-4907-452f-5c0a-08dbfb875718
-X-MS-Exchange-CrossTenant-originalarrivaltime: 13 Dec 2023 02:58:10.3406 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: b8oi2NlOLluwG81GPi895efaB+I/tFJhZYs/fK2JpLhmM8Z/rq4znsfuTbSiKxrHbyigsaWVBKKeDS9/4yH7TV/emz4Qr/KXRbNJkzCz60BpxECJQvLIJ7jMC9fWa1xs
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ2PR11MB8451
-X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1702436305; x=1733972305;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=vPpSaQ+P8gKrENyfPcPi5ohmeDLjhiuEK5cSSGfEeiY=;
- b=PekI54vchgcT2BpkFVLZ4xhLqNR2ZSjfrGvXzxjj2jfvZ8RJncMKAeGF
- OjdZfiFWCTHbeor0SY3yShCkNCAHbPNFWB3y3xrESYXjm0bwprPo+FkKp
- UzhqVZZktX4Wio731e+GBe40ij5+kgPawN6WEfUak+EU5vukW9+zx5bck
- ZWSW3nd3AseHIteXuSqS9nqdQstl6Drmj2/8orTDBoOJYbfVzJG71pPAJ
- 9t0U6NisC8AYPbxsboAz5T0mWTyfwS9RSYdLc7pXYKfUhmklvTp0qjcRZ
- hZR6PaF8lFpp63Lg1NgbHxCLurr/XbGPIa4Z4QOnhbB7JiNlDwoHZmD4f
+ t=1702444058; x=1733980058;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=+zX9E89Zf54LQbhUN7WOxul99Q9Tfn2n13uIfiRQeFo=;
+ b=YANQpjRCsPcjIBObTvpFAffSUCfHXFaG0GEzV1OCH8QgVvuuZiWJdxGM
+ CjNZl4ZkQFklA+uyWE5R+3Nlb9hJJKeBvSoFi1DGvza+SD6YAkms5H9cJ
+ yfYNJsA0FCcvMriLk+gWWUa16JaHNdDmaXWHKzlZ1A+i5K+xY4BU3LTJ2
+ 3l1ChCq9hm3Kk1prGpVCSnuP7XXq1dun56OMjkPsLwu7OJICzq7EYPJrE
+ CntnDysjoWNRzt5iIXZ/WwENTvNz14FG5gEPh3aTEw3y58Gyilli8Z0WU
+ pIqzOfqUppTD4PFgFduNKvQSS0ky3No/aX6tI8K1Wis7598STqIMtIfBj
  A==;
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=PekI54vc
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v2 03/15] intel: legacy:
- field prep conversion
+ header.a=rsa-sha256 header.s=Intel header.b=YANQpjRC
+Subject: [Intel-wired-lan] [PATCH net-next v21 0/5] add-fwlog-v2-debugfs
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -190,65 +91,284 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "Kitszel, Przemyslaw" <przemyslaw.kitszel@intel.com>, "Brandeburg,
- Jesse" <jesse.brandeburg@intel.com>, Julia Lawall <Julia.Lawall@inria.fr>,
- "Lobakin, Aleksander" <aleksander.lobakin@intel.com>,
- "marcin.szycik@linux.intel.com" <marcin.szycik@linux.intel.com>,
- "horms@kernel.org" <horms@kernel.org>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>
+Cc: Paul M Stillwell Jr <paul.m.stillwell.jr@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-> -----Original Message-----
-> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of Jesse Brandeburg
-> Sent: Wednesday, December 6, 2023 6:31 AM
-> To: intel-wired-lan@lists.osuosl.org
-> Cc: Kitszel, Przemyslaw <przemyslaw.kitszel@intel.com>; Brandeburg, Jesse <jesse.brandeburg@intel.com>; Julia Lawall <Julia.Lawall@inria.fr>; Lobakin, Aleksander <aleksander.lobakin@intel.com>; marcin.szycik@linux.intel.com; horms@kernel.org; netdev@vger.kernel.org
-> Subject: [Intel-wired-lan] [PATCH iwl-next v2 03/15] intel: legacy: field prep conversion
->
-> Refactor several older Intel drivers to use FIELD_PREP(), which reduces
-> lines of code and adds clarity of intent.
->
-> This code was generated by the following coccinelle/spatch script and
-> then manually repaired.
->
-> @prep2@
-> constant shift,mask;
-> type T;
-> expression a;
-> @@
-> -(((T)(a) << shift) & mask)
-> +FIELD_PREP(mask, a)
->
-> @prep@
-> constant shift,mask;
-> type T;
-> expression a;
-> @@
-> -((T)((a) << shift) & mask)
-> +FIELD_PREP(mask, a)
->
-> Cc: Julia Lawall <Julia.Lawall@inria.fr>
-> Reviewed-by: Marcin Szycik <marcin.szycik@linux.intel.com>
-> Reviewed-by: Simon Horman <horms@kernel.org>
-> Signed-off-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
-> ---
-> v2: updated commit message with new script
-> ---
->  drivers/net/ethernet/intel/e1000e/80003es2lan.c | 7 +++----
->  drivers/net/ethernet/intel/e1000e/phy.c         | 7 +++----
->  drivers/net/ethernet/intel/fm10k/fm10k_pf.c     | 3 +--
->  drivers/net/ethernet/intel/igb/e1000_phy.c      | 4 ++--
->  drivers/net/ethernet/intel/igb/igb_ethtool.c    | 3 +--
->  drivers/net/ethernet/intel/igb/igb_main.c       | 9 +++------
->  drivers/net/ethernet/intel/ixgbe/ixgbe_82598.c  | 2 +-
->  drivers/net/ethernet/intel/ixgbe/ixgbe_fcoe.c   | 4 ++--
->  8 files changed, 16 insertions(+), 23 deletions(-)
->
+Firmware (FW) log support was added to the ice driver, but that version is
+no longer supported. There is a newer version of FW logging (v2) that
+adds more control knobs to get the exact data out of the FW
+for debugging.
 
-Tested-by: Pucha Himasekhar Reddy <himasekharx.reddy.pucha@intel.com> (A Contingent worker at Intel)
+The interface for FW logging is debugfs. This was chosen based on
+discussions here:
+https://lore.kernel.org/netdev/20230214180712.53fc8ba2@kernel.org/ and
+https://lore.kernel.org/netdev/20231012164033.1069fb4b@kernel.org/
+We talked about using devlink in a variety of ways, but none of those
+options made any sense for the way the FW reports data. We briefly talked
+about using ethtool, but that seemed to go by the wayside. Ultimately it
+seems like using debugfs is the way to go so re-implement the code to use
+that.
+
+FW logging is across all the PFs on the device so restrict the commands to
+only PF0.
+
+If the device supports FW logging then a directory named 'fwlog' will be
+created under '/sys/kernel/debug/ice/<pci_dev>'. A variety of files will be
+created to manage the behavior of logging. The following files will be
+created:
+- modules/<module>
+- nr_messages
+- enable
+- log_size
+- data
+
+where
+modules/<module> is used to read/write the log level for a specific module
+
+nr_messages is used to determine how many events should be in each message
+sent to the driver
+
+enable is used to start/stop FW logging. This is a boolean value so only 1
+or 0 are permissible values
+
+log_size is used to configure the amount of memory the driver uses for log
+data
+
+data is used to read/clear the log data
+
+Generally there is a lot of data and dumping that data to syslog will
+result in a loss of data. This causes problems when decoding the data and
+the user doesn't know that data is missing until later. Instead of dumping
+the FW log output to syslog use debugfs. This ensures that all the data the
+driver has gets retrieved correctly.
+
+The FW log data is binary data that the FW team decodes to determine what
+happened in firmware. The binary blob is sent to Intel for decoding.
+---
+v21:
+- removed a newline between memory allocation and checking if the memory was
+  allocated
+- fixed a case where we could just return the value from a function call
+  instead of saving the value in a variable
+- moved the check for PFO in ice_fwlog_init() to an earlier patch
+- reworked all of argument scanning in the _write() functions in ice_debugfs.c
+  to remove adding characters past the end of the buffer
+
+v20 at:
+https://lore.kernel.org/intel-wired-lan/20231212174835.65-1-paul.m.stillwell.jr@intel.com/
+
+v20:
+- update sscanf call to check return code correctly
+
+v19 at:
+https://lore.kernel.org/intel-wired-lan/20231211172226.110-1-paul.m.stillwell.jr@intel.com/
+
+v19:
+- use seq_printf() for outputing module info when reading from 'module' file
+- replaced code that created argc and argv for handling command line input
+- remove checks in all the _read() and _write() functions to see if FW logging
+  is supported because the files will not exist if it is not supported
+- removed warnings on allocation failures or on debugfs file creation failures
+
+v18 at:
+https://lore.kernel.org/intel-wired-lan/20231128232647.114-1-paul.m.stillwell.jr@intel.com/
+
+v18:
+- changed the memory allocation from a buffer per ring to a single buffer that
+  gets divided up for each ring
+- updated the documentation to indicate that FW logging must be disabled to
+  clear the data. also clarified that any value written to the 'data' file will
+  clear the data
+
+v17 at:
+https://lore.kernel.org/intel-wired-lan/20231109003830.154-1-paul.m.stillwell.jr@intel.com/
+
+v17:
+- changed the log level configuration from a single file for all modules to a
+  file per module.
+- changed 'nr_buffs' to 'log_size' because users understand memory sizes
+  better than a number of buffers
+- changed 'resolution' to 'nr_messages' to better reflect what it represents
+- updated documentation to reflect these changes
+
+v16 at:
+https://lore.kernel.org/intel-wired-lan/20230823222152.106-1-paul.m.stillwell.jr@intel.com/
+
+v16:
+- removed CONFIG_DEBUG_FS wrapper around code because the debugfs calls handle
+  this case already
+- moved ice_debugfs_exit() call to remove unreachable code issue
+- minor changes to documentation based on community feedback
+
+v15 at:
+https://lore.kernel.org/intel-wired-lan/20230808224310.127-1-paul.m.stillwell.jr@intel.com/
+
+v15:
+- changed PAGE_SIZE to ICE_AQ_MAX_BUF_LEN because PAGE_SIZE can be bigger
+  than 4K
+
+v14 at:
+https://lore.kernel.org/intel-wired-lan/20230713222558.142-1-paul.m.stillwell.jr@intel.com/
+
+v14:
+- fixed an issue where 0 was a valid number for 'nr_buffs'
+- fixed an issue with the output from 'enable' not being a 1 when FW
+  logging was enabled
+
+v13 at:
+https://lore.kernel.org/intel-wired-lan/20230628231402.176-1-paul.m.stillwell.jr@intel.com/
+
+v13:
+- moved the enable code out into it's own patch
+- added linux/vmalloc.h header file in ice_fwlog.c
+- removed NULL check before freeing ring->data
+
+v12 at:
+https://lore.kernel.org/intel-wired-lan/20230607222443.119-1-paul.m.stillwell.jr@intel.com/
+
+v12:
+- re-wrote debugfs code to use individual files for configuration instead
+  of parsing the strings within the driver.
+- use sysfs_match_string() to parse the 2 values we need for configuring
+  the modules instead of strncmp()
+- use ring buffers to contain log data instead of a list. this allows for
+  wrapping the data instead of stopping log capture
+- split documentation into it's own patch
+
+v11 at:
+https://lore.kernel.org/intel-wired-lan/20230313231841.113-1-paul.m.stillwell.jr@intel.com/
+
+v11:
+- changed 'events' variable to be u32 instead of unsigned long since
+  the FW expects a 32-bit value. This caused some changes to a few
+  functions that pass 'events' and changed the parsing in debugfs.
+  Also fixed an issue with i386 cross compile where BIT_ULL() was
+  being used incorrectly and causing compiler issues on i386 because
+  the value was larger than the variable.
+
+v10 at:
+https://lore.kernel.org/intel-wired-lan/20230308235102.170-1-paul.m.stillwell.jr@intel.com/
+
+v10:
+- updated code to only create 'fwlog' file if FW logging is supported
+- combined code under single ifdef in header file
+- removed defines that were not used and added them when the correct patch is
+  applied
+- added newline between defines and variables in structure
+- moved include header into alphabetical order at top of file
+- removed unnecessary casts
+- updated return statements for more efficient code
+- changed BIT() to BIT_ULL() to try to fix i386 cross compile issue
+- fixed RCT issue
+- added documentation in Documentation/networking/device-drivers/ethernet/intel/ice.rst
+- updated commit messages appropriately
+- 
+
+v9 at:
+https://lore.kernel.org/intel-wired-lan/20230302215109.124-1-paul.m.stillwell.jr@intel.com/
+
+v9:
+- rewrote code to use debugfs instead of devlink
+
+v8 at:
+https://lore.kernel.org/intel-wired-lan/20230124221428.114-1-paul.m.stillwell.jr@intel.com/
+
+v8:
+- added vmalloc.h file for correct prototypes
+- moved code change from patch 5 to patch 3 where it was supposed to be
+- fixed a style issue
+
+v7 at:
+https://lore.kernel.org/intel-wired-lan/20230120233511.131-1-paul.m.stillwell.jr@intel.com/
+
+v7:
+- removed dev_info() in ice_debugfs_command_read() since it wasn't needed
+- refactored ice_debugfs_command_read() to split the copying of the data and
+  the freeing of the buffers. This allows for better error recovery in case
+  the copy_to_user() fails
+- changed allocation of fwlog buffers and structure from kernel memory to
+  virtual memory (vmalloc/vzalloc)
+- fixed a compile bug
+
+v6 at:
+https://lore.kernel.org/intel-wired-lan/20230113222319.111-1-paul.m.stillwell.jr@intel.com/
+
+v6:
+- removed cache_cfg() based on feedback
+- a couple of other minor changes based on feedback
+
+v5 at:
+https://lore.kernel.org/intel-wired-lan/20230111191906.131-1-paul.m.stillwell.jr@intel.com/
+
+v5:
+- handle devlink reload path correctly so debugfs directories don't get
+  added twice
+- fix issue where code wrapped with CONFIG_DEBUG_FS was causing sparc
+  compile issues with multiple defines
+
+No v4 cover letter
+
+v4:
+- actually changed the modes in ice.rst for new params
+
+v3 at:
+https://lore.kernel.org/intel-wired-lan/20221217045828.222-1-paul.m.stillwell.jr@intel.com/
+
+v3:
+- fixed ice.rst to have proper mode for new params and fixed formatting 
+
+v2 at:
+https://lore.kernel.org/intel-wired-lan/20221209232748.189-1-paul.m.stillwell.jr@intel.com/
+
+v2:
+- removed some unused admin queue commands
+- updated copyright in ice_fwlog.[ch] to 2022
+- moved defines in structures under the variables and added blank line
+- removed a couple of unused defines
+- changed fwlog_support_ena to fwlog_supported to be clearer
+- consolidated ice_devlink_param_id enum together
+- changed ice_fwlog_set_support_ena() to ice_fwlog_set_supported()
+- consolidated return status logic in ice_devlink_fwlog_enabled_set()
+- pull up functions in ice_fwlog.c where appropriate
+- add newline for FW Logging Commands comment
+- changed any new u[8/16] loop variables to int
+- moved ice_pf_fwlog_deinit() from patch 5 to patch 4
+- changed error message to be clearer
+- updated Documentation/networking/devlink/ice.rst
+- updated commit messages with examples of devlink commands and using
+  debugfs to get log files
+
+v1 at:
+https://lore.kernel.org/intel-wired-lan/20221128214749.110-1-paul.m.stillwell.jr@intel.com/
+
+Paul M Stillwell Jr (5):
+  ice: remove FW logging code
+  ice: configure FW logging
+  ice: enable FW logging
+  ice: add ability to read and configure FW log data
+  ice: add documentation for FW logging
+
+ .../device_drivers/ethernet/intel/ice.rst     | 141 ++++
+ drivers/net/ethernet/intel/ice/Makefile       |   4 +-
+ drivers/net/ethernet/intel/ice/ice.h          |   9 +
+ .../net/ethernet/intel/ice/ice_adminq_cmd.h   | 161 +++--
+ drivers/net/ethernet/intel/ice/ice_common.c   | 219 +-----
+ drivers/net/ethernet/intel/ice/ice_common.h   |   1 -
+ drivers/net/ethernet/intel/ice/ice_debugfs.c  | 667 ++++++++++++++++++
+ drivers/net/ethernet/intel/ice/ice_fwlog.c    | 470 ++++++++++++
+ drivers/net/ethernet/intel/ice/ice_fwlog.h    |  79 +++
+ drivers/net/ethernet/intel/ice/ice_main.c     |  48 +-
+ drivers/net/ethernet/intel/ice/ice_type.h     |  23 +-
+ 11 files changed, 1507 insertions(+), 315 deletions(-)
+ create mode 100644 drivers/net/ethernet/intel/ice/ice_debugfs.c
+ create mode 100644 drivers/net/ethernet/intel/ice/ice_fwlog.c
+ create mode 100644 drivers/net/ethernet/intel/ice/ice_fwlog.h
+
+-- 
+2.35.1
 
 _______________________________________________
 Intel-wired-lan mailing list
