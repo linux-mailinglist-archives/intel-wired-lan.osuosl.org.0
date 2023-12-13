@@ -2,88 +2,88 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 72F1F810FFD
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 13 Dec 2023 12:31:47 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7B6F0810FFE
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 13 Dec 2023 12:31:51 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 11A4983410;
-	Wed, 13 Dec 2023 11:31:46 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 11A4983410
+	by smtp1.osuosl.org (Postfix) with ESMTP id 0C259833CA;
+	Wed, 13 Dec 2023 11:31:50 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0C259833CA
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1702467106;
-	bh=dmI2rhHti8bzZsb/2xXP9gMO7AFwWmi+flqYPvUAXC8=;
+	s=default; t=1702467110;
+	bh=bdIhamsqJZCAFg1gylR0q1MYJH/tPWWsYAX8HurOQGg=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=SeXtTv7AqYE2xSQ+w958Z/+TGDHOCdq+N6Se9WKzJu91yvUvOJnjutng/D2Hs48Xi
-	 I45Pp1QlNU+KQ300DB5CaDPAcvZewRyf2lcQGeYWuVqKsrGA1MgIqzCQJPGqunFsXb
-	 Y/ZyDoMUDSPoq1ufS6flCiIC9hYO1XusLB/42TzN3yk7UG+9Gkpw0Xhhs2sgkQDI/U
-	 +EnYe605Hby74qQnveX+4cRXiRb10tv5vz36ZmvWj1a+HCCULbIHhh6rhbo63qG+5/
-	 b68Yipktk2kTqdsmNe2RbWqWyK2np5GLhc687ts16/OlKoeF5TSh88Ce/xviC2FgrF
-	 R3YsLp+ab/Fqg==
+	b=6Xj6NaHjcQFQHX9rK8fKWK164Zu74PYjMXy9KT+uhZfWo90IcRRGlpgaNCDbkcWXx
+	 RvDjkZ+bJuj7Z+Oh1uJtVQzXGiQh+Z8NV593A/axUcKftBfVZDC1e/kQ98jcNxJYDt
+	 ywId4U0sT4TM8tJJ/EfhublwFmMLZpLn1BPrC0fNNwbiu4VT7DiaSTtQTRjR7RaJsT
+	 b+BVzCShjv40vMlFExJHD5e8Iy3ZBZJoGgdUL6jbzzU1AxGfumdatkUpvENXkJXDK4
+	 3PV3MRAY/TkcWJYyY3VL5PP0njpnnXcwa/rL0q7RRGOYJJ8VXZOEOKGRqblNLgeYV2
+	 Hjm50EsVBTxAg==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id bYql0FJ2039W; Wed, 13 Dec 2023 11:31:44 +0000 (UTC)
+	with ESMTP id MwXVdXPmyVpP; Wed, 13 Dec 2023 11:31:49 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 3C76181AAC;
-	Wed, 13 Dec 2023 11:31:44 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3C76181AAC
+	by smtp1.osuosl.org (Postfix) with ESMTP id B935281A5C;
+	Wed, 13 Dec 2023 11:31:48 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B935281A5C
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 354A51BF5B5
- for <intel-wired-lan@lists.osuosl.org>; Wed, 13 Dec 2023 11:31:14 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id D32281BF5B5
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 13 Dec 2023 11:31:17 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 0DB9741953
- for <intel-wired-lan@lists.osuosl.org>; Wed, 13 Dec 2023 11:31:14 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 0DB9741953
+ by smtp2.osuosl.org (Postfix) with ESMTP id B7A0240608
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 13 Dec 2023 11:31:17 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B7A0240608
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id lGgc2kb5Gt34 for <intel-wired-lan@lists.osuosl.org>;
- Wed, 13 Dec 2023 11:31:12 +0000 (UTC)
+ with ESMTP id w_jLutY2vQe4 for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 13 Dec 2023 11:31:16 +0000 (UTC)
 Received: from mgamail.intel.com (mgamail.intel.com [192.55.52.151])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 8FA0840608
- for <intel-wired-lan@lists.osuosl.org>; Wed, 13 Dec 2023 11:31:12 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 8FA0840608
-X-IronPort-AV: E=McAfee;i="6600,9927,10922"; a="375104039"
-X-IronPort-AV: E=Sophos;i="6.04,272,1695711600"; d="scan'208";a="375104039"
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 9442C41953
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 13 Dec 2023 11:31:16 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 9442C41953
+X-IronPort-AV: E=McAfee;i="6600,9927,10922"; a="375104056"
+X-IronPort-AV: E=Sophos;i="6.04,272,1695711600"; d="scan'208";a="375104056"
 Received: from fmsmga004.fm.intel.com ([10.253.24.48])
  by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 Dec 2023 03:31:12 -0800
+ 13 Dec 2023 03:31:16 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10922"; a="844279536"
-X-IronPort-AV: E=Sophos;i="6.04,272,1695711600"; d="scan'208";a="844279536"
+X-IronPort-AV: E=McAfee;i="6600,9927,10922"; a="844279570"
+X-IronPort-AV: E=Sophos;i="6.04,272,1695711600"; d="scan'208";a="844279570"
 Received: from newjersey.igk.intel.com ([10.102.20.203])
- by fmsmga004.fm.intel.com with ESMTP; 13 Dec 2023 03:31:08 -0800
+ by fmsmga004.fm.intel.com with ESMTP; 13 Dec 2023 03:31:12 -0800
 From: Alexander Lobakin <aleksander.lobakin@intel.com>
 To: "David S. Miller" <davem@davemloft.net>,
  Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
  Paolo Abeni <pabeni@redhat.com>
-Date: Wed, 13 Dec 2023 12:28:31 +0100
-Message-ID: <20231213112835.2262651-9-aleksander.lobakin@intel.com>
+Date: Wed, 13 Dec 2023 12:28:32 +0100
+Message-ID: <20231213112835.2262651-10-aleksander.lobakin@intel.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20231213112835.2262651-1-aleksander.lobakin@intel.com>
 References: <20231213112835.2262651-1-aleksander.lobakin@intel.com>
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1702467072; x=1734003072;
+ t=1702467076; x=1734003076;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=4DiC3NQAzAt61dhtsmHMEP21ETiBi5sJsIY8ZwsJnDA=;
- b=QE8Z4+zgyRLqskrd5O4I1HZiHjyVdOcXZ5QBFW2mi0UA4Zoj6CpBXXWP
- e76PEtPXQ76GspJ9Pk+NaRREAdzXSq4/Xkwf+9Q+2wM3hhp51lvVWNGo2
- aQ4RJDrnUwyeOKlEJffikr48Id/QhQ6yrTO7oTo6U9snTxssP6Fc/mx8p
- aIeCWCjYh417YjmWgV+b3Erm4fZ9g6RjDtqUVqgrZ/abxxP58ZiULwaLK
- q1uCwUL3n1Y8IyJ2XPdCbpw+WSBBu13hm4tApSfKcnbEkJdH1WTZoC7o0
- ZLW92KWXfFWNdw7jMlO7gfZFGxq4BDWOQbnE2FecoQ3Zqn3J6sHy25r9A
- g==;
+ bh=FXDLZynVpDJprI9svhhKmpsFtKz+xWm68yfXi+wp6e8=;
+ b=KdhYqFjmDVGA8cA/bWzbLOVvf1GUf1sjH74Sk0HFLr8v2yc0i416PKiP
+ 3L2odSsJdHBmM1KZpGu6a07besHiIoCUjbMibZBOUpMlB0DyAT4U4XmMZ
+ N0mvqulZp+JieLuVOuQgqX8dm/PxCE08jgN3VCIcLK0W4GGCvUijwXTrO
+ 1vgdXUpd3r3PbRW3yWNm7TG0O/w72DZx/tM1ihCRbA89Mm8kHo6MKTNCI
+ ixhvUxNcDKmJwwOqTWwQA76vfbGA3pxStkALJJN9jPRubmY595PI6yexF
+ 0M2lDyZTWy9G18tUDeSWdgivntun8hKVpsRo4tEm274K3EdY5qQNswV8X
+ A==;
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=QE8Z4+zg
-Subject: [Intel-wired-lan] [PATCH net-next v7 08/12] libie: add Rx buffer
- management (via Page Pool)
+ header.a=rsa-sha256 header.s=Intel header.b=KdhYqFjm
+Subject: [Intel-wired-lan] [PATCH net-next v7 09/12] iavf: pack iavf_ring
+ more efficiently
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -110,265 +110,143 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Add a couple intuitive helpers to hide Rx buffer implementation details
-in the library and not multiplicate it between drivers. The settings are
-optimized for Intel hardware, but nothing really HW-specific here.
-Use the new page_pool_dev_alloc() to dynamically switch between
-split-page and full-page modes depending on MTU, page size, required
-headroom etc. For example, on x86_64 with the default driver settings
-each page is shared between 2 buffers. Turning on XDP (not in this
-series) -> increasing headroom requirement pushes truesize out of 2048
-boundary, leading to that each buffer starts getting a full page.
-The "ceiling" limit is %PAGE_SIZE, as only order-0 pages are used to
-avoid compound overhead. For the above architecture, this means maximum
-linear frame size of 3712 w/o XDP.
-Not that &libie_buf_queue is not a complete queue/ring structure for
-now, rather a shim, but eventually the libie-enabled drivers will move
-to it, with iavf being the first one.
+Before replacing the Rx buffer management with libie, clean up
+&iavf_ring a bit.
+There are several fields not used anywhere in the code -- simply remove
+them. Move ::tail up to remove a hole. Replace ::arm_wb boolean with
+1-bit flag in ::flags to free 1 more byte. Finally, move ::prev_pkt_ctr
+out of &iavf_tx_queue_stats -- it doesn't belong there (used for Tx
+stall detection). Place it next to the stats on the ring itself to fill
+the 4-byte slot.
+The result: no holes and all the hot fields fit into the first 64-byte
+cacheline.
 
 Signed-off-by: Alexander Lobakin <aleksander.lobakin@intel.com>
 ---
- drivers/net/ethernet/intel/libie/Kconfig |   1 +
- drivers/net/ethernet/intel/libie/rx.c    |  69 ++++++++++++
- include/linux/net/intel/libie/rx.h       | 133 ++++++++++++++++++++++-
- 3 files changed, 202 insertions(+), 1 deletion(-)
+ drivers/net/ethernet/intel/iavf/iavf_txrx.c | 12 +++++------
+ drivers/net/ethernet/intel/iavf/iavf_txrx.h | 22 +++------------------
+ 2 files changed, 9 insertions(+), 25 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/libie/Kconfig b/drivers/net/ethernet/intel/libie/Kconfig
-index 1eda4a5faa5a..6e0162fb94d2 100644
---- a/drivers/net/ethernet/intel/libie/Kconfig
-+++ b/drivers/net/ethernet/intel/libie/Kconfig
-@@ -3,6 +3,7 @@
+diff --git a/drivers/net/ethernet/intel/iavf/iavf_txrx.c b/drivers/net/ethernet/intel/iavf/iavf_txrx.c
+index 665ee1feb877..62f976d322ab 100644
+--- a/drivers/net/ethernet/intel/iavf/iavf_txrx.c
++++ b/drivers/net/ethernet/intel/iavf/iavf_txrx.c
+@@ -184,7 +184,7 @@ void iavf_detect_recover_hung(struct iavf_vsi *vsi)
+ 			 * pending work.
+ 			 */
+ 			packets = tx_ring->stats.packets & INT_MAX;
+-			if (tx_ring->tx_stats.prev_pkt_ctr == packets) {
++			if (tx_ring->prev_pkt_ctr == packets) {
+ 				iavf_force_wb(vsi, tx_ring->q_vector);
+ 				continue;
+ 			}
+@@ -193,7 +193,7 @@ void iavf_detect_recover_hung(struct iavf_vsi *vsi)
+ 			 * to iavf_get_tx_pending()
+ 			 */
+ 			smp_rmb();
+-			tx_ring->tx_stats.prev_pkt_ctr =
++			tx_ring->prev_pkt_ctr =
+ 			  iavf_get_tx_pending(tx_ring, true) ? packets : -1;
+ 		}
+ 	}
+@@ -319,7 +319,7 @@ static bool iavf_clean_tx_irq(struct iavf_vsi *vsi,
+ 		    ((j / WB_STRIDE) == 0) && (j > 0) &&
+ 		    !test_bit(__IAVF_VSI_DOWN, vsi->state) &&
+ 		    (IAVF_DESC_UNUSED(tx_ring) != tx_ring->count))
+-			tx_ring->arm_wb = true;
++			tx_ring->flags |= IAVF_TXR_FLAGS_ARM_WB;
+ 	}
  
- config LIBIE
- 	tristate
-+	select PAGE_POOL
- 	help
- 	  libie (Intel Ethernet library) is a common library containing
- 	  routines shared between several Intel Ethernet drivers.
-diff --git a/drivers/net/ethernet/intel/libie/rx.c b/drivers/net/ethernet/intel/libie/rx.c
-index f503476d8eef..04037973cd87 100644
---- a/drivers/net/ethernet/intel/libie/rx.c
-+++ b/drivers/net/ethernet/intel/libie/rx.c
-@@ -3,6 +3,75 @@
+ 	/* notify netdev of completed buffers */
+@@ -674,7 +674,7 @@ int iavf_setup_tx_descriptors(struct iavf_ring *tx_ring)
  
- #include <linux/net/intel/libie/rx.h>
+ 	tx_ring->next_to_use = 0;
+ 	tx_ring->next_to_clean = 0;
+-	tx_ring->tx_stats.prev_pkt_ctr = -1;
++	tx_ring->prev_pkt_ctr = -1;
+ 	return 0;
  
-+/* Rx buffer management */
-+
-+/**
-+ * libie_rx_hw_len - get the actual buffer size to be passed to HW
-+ * @pp: &page_pool_params of the netdev to calculate the size for
-+ *
-+ * Return: HW-writeable length per one buffer to pass it to the HW accounting:
-+ * MTU the @dev has, HW required alignment, minimum and maximum allowed values,
-+ * and system's page size.
-+ */
-+static u32 libie_rx_hw_len(const struct page_pool_params *pp)
-+{
-+	u32 len;
-+
-+	len = READ_ONCE(pp->netdev->mtu) + LIBIE_RX_LL_LEN;
-+	len = ALIGN(len, LIBIE_RX_BUF_LEN_ALIGN);
-+	len = clamp(len, LIBIE_MIN_RX_BUF_LEN, pp->max_len);
-+
-+	return len;
-+}
-+
-+/**
-+ * libie_rx_page_pool_create - create a PP with the default libie settings
-+ * @bq: buffer queue struct to fill
-+ * @napi: &napi_struct covering this PP (no usage outside its poll loops)
-+ *
-+ * Return: 0 on success, -errno on failure.
-+ */
-+int libie_rx_page_pool_create(struct libie_buf_queue *bq,
-+			      struct napi_struct *napi)
-+{
-+	struct page_pool_params pp = {
-+		.flags		= PP_FLAG_DMA_MAP | PP_FLAG_DMA_SYNC_DEV,
-+		.order		= LIBIE_RX_PAGE_ORDER,
-+		.pool_size	= bq->count,
-+		.nid		= NUMA_NO_NODE,
-+		.dev		= napi->dev->dev.parent,
-+		.netdev		= napi->dev,
-+		.napi		= napi,
-+		.dma_dir	= DMA_FROM_DEVICE,
-+		.offset		= LIBIE_SKB_HEADROOM,
-+	};
-+
-+	/* HW-writeable / syncable length per one page */
-+	pp.max_len = LIBIE_RX_BUF_LEN(pp.offset);
-+
-+	/* HW-writeable length per buffer */
-+	bq->rx_buf_len = libie_rx_hw_len(&pp);
-+	/* Buffer size to allocate */
-+	bq->truesize = roundup_pow_of_two(SKB_HEAD_ALIGN(pp.offset +
-+							 bq->rx_buf_len));
-+
-+	bq->pp = page_pool_create(&pp);
-+
-+	return PTR_ERR_OR_ZERO(bq->pp);
-+}
-+EXPORT_SYMBOL_NS_GPL(libie_rx_page_pool_create, LIBIE);
-+
-+/**
-+ * libie_rx_page_pool_destroy - destroy a &page_pool created by libie
-+ * @bq: buffer queue to process
-+ */
-+void libie_rx_page_pool_destroy(struct libie_buf_queue *bq)
-+{
-+	page_pool_destroy(bq->pp);
-+	bq->pp = NULL;
-+}
-+EXPORT_SYMBOL_NS_GPL(libie_rx_page_pool_destroy, LIBIE);
-+
- /* O(1) converting i40e/ice/iavf's 8/10-bit hardware packet type to a parsed
-  * bitfield struct.
+ err:
+@@ -1494,8 +1494,8 @@ int iavf_napi_poll(struct napi_struct *napi, int budget)
+ 			clean_complete = false;
+ 			continue;
+ 		}
+-		arm_wb |= ring->arm_wb;
+-		ring->arm_wb = false;
++		arm_wb |= !!(ring->flags & IAVF_TXR_FLAGS_ARM_WB);
++		ring->flags &= ~IAVF_TXR_FLAGS_ARM_WB;
+ 	}
+ 
+ 	/* Handle case where we are called by netpoll with a budget of 0 */
+diff --git a/drivers/net/ethernet/intel/iavf/iavf_txrx.h b/drivers/net/ethernet/intel/iavf/iavf_txrx.h
+index e01777531635..ed559fa6f214 100644
+--- a/drivers/net/ethernet/intel/iavf/iavf_txrx.h
++++ b/drivers/net/ethernet/intel/iavf/iavf_txrx.h
+@@ -227,7 +227,6 @@ struct iavf_tx_queue_stats {
+ 	u64 tx_done_old;
+ 	u64 tx_linearize;
+ 	u64 tx_force_wb;
+-	int prev_pkt_ctr;
+ 	u64 tx_lost_interrupt;
+ };
+ 
+@@ -237,12 +236,6 @@ struct iavf_rx_queue_stats {
+ 	u64 alloc_buff_failed;
+ };
+ 
+-enum iavf_ring_state_t {
+-	__IAVF_TX_FDIR_INIT_DONE,
+-	__IAVF_TX_XPS_INIT_DONE,
+-	__IAVF_RING_STATE_NBITS /* must be last */
+-};
+-
+ /* some useful defines for virtchannel interface, which
+  * is the only remaining user of header split
   */
-diff --git a/include/linux/net/intel/libie/rx.h b/include/linux/net/intel/libie/rx.h
-index 55263930aa99..71bc9a1a9856 100644
---- a/include/linux/net/intel/libie/rx.h
-+++ b/include/linux/net/intel/libie/rx.h
-@@ -4,7 +4,138 @@
- #ifndef __LIBIE_RX_H
- #define __LIBIE_RX_H
+@@ -264,10 +257,8 @@ struct iavf_ring {
+ 		struct iavf_tx_buffer *tx_bi;
+ 		struct iavf_rx_buffer *rx_bi;
+ 	};
+-	DECLARE_BITMAP(state, __IAVF_RING_STATE_NBITS);
+-	u16 queue_index;		/* Queue number of ring */
+-	u8 dcb_tc;			/* Traffic class of ring */
+ 	u8 __iomem *tail;
++	u16 queue_index;		/* Queue number of ring */
  
--#include <linux/netdevice.h>
-+#include <linux/if_vlan.h>
-+#include <net/page_pool/helpers.h>
-+
-+/* Rx MTU/buffer/truesize helpers. Mostly pure software-side; HW-defined values
-+ * are valid for all Intel HW.
-+ */
-+
-+/* Space reserved in front of each frame */
-+#define LIBIE_SKB_HEADROOM	(NET_SKB_PAD + NET_IP_ALIGN)
-+/* Maximum headroom to calculate max MTU below */
-+#define LIBIE_MAX_HEADROOM	LIBIE_SKB_HEADROOM
-+/* Link layer / L2 overhead: Ethernet, 2 VLAN tags (C + S), FCS */
-+#define LIBIE_RX_LL_LEN		(ETH_HLEN + 2 * VLAN_HLEN + ETH_FCS_LEN)
-+
-+/* Always use order-0 pages */
-+#define LIBIE_RX_PAGE_ORDER	0
-+/* Rx buffer size config is a multiple of 128 */
-+#define LIBIE_RX_BUF_LEN_ALIGN	128
-+/* HW-writeable space in one buffer: truesize - headroom/tailroom,
-+ * HW-aligned
-+ */
-+#define __LIBIE_RX_BUF_LEN(hr)						\
-+	ALIGN_DOWN(SKB_MAX_ORDER(hr, LIBIE_RX_PAGE_ORDER),		\
-+		   LIBIE_RX_BUF_LEN_ALIGN)
-+/* The smallest and largest size for a single descriptor as per HW */
-+#define LIBIE_MIN_RX_BUF_LEN	1024U
-+#define LIBIE_MAX_RX_BUF_LEN	9728U
-+/* "True" HW-writeable space: minimum from SW and HW values */
-+#define LIBIE_RX_BUF_LEN(hr)	min_t(u32, __LIBIE_RX_BUF_LEN(hr),	\
-+				      LIBIE_MAX_RX_BUF_LEN)
-+
-+/* The maximum frame size as per HW (S/G) */
-+#define __LIBIE_MAX_RX_FRM_LEN	16382U
-+/* ATST, HW can chain up to 5 Rx descriptors */
-+#define LIBIE_MAX_RX_FRM_LEN(hr)					\
-+	min_t(u32, __LIBIE_MAX_RX_FRM_LEN, LIBIE_RX_BUF_LEN(hr) * 5)
-+/* Maximum frame size minus LL overhead */
-+#define LIBIE_MAX_MTU							\
-+	(LIBIE_MAX_RX_FRM_LEN(LIBIE_MAX_HEADROOM) - LIBIE_RX_LL_LEN)
-+
-+/* Rx buffer management */
-+
-+/**
-+ * struct libie_rx_buffer - structure representing an Rx buffer
-+ * @page: page holding the buffer
-+ * @offset: offset from the page start (to the headroom)
-+ * @truesize: total space occupied by the buffer (w/ headroom and tailroom)
-+ *
-+ * Depending on the MTU, API switches between one-page-per-frame and shared
-+ * page model (to conserve memory on bigger-page platforms). In case of the
-+ * former, @offset is always 0 and @truesize is always ```PAGE_SIZE```.
-+ */
-+struct libie_rx_buffer {
-+	struct page		*page;
-+	u32			offset;
-+	u32			truesize;
-+};
-+
-+/**
-+ * struct libie_buf_queue - structure representing a buffer queue
-+ * @pp: &page_pool for buffer management
-+ * @rx_bi: array of Rx buffers
-+ * @truesize: size to allocate per buffer, w/overhead
-+ * @count: number of descriptors/buffers the queue has
-+ * @rx_buf_len: HW-writeable length per each buffer
-+ */
-+struct libie_buf_queue {
-+	struct page_pool	*pp;
-+	struct libie_rx_buffer	*rx_bi;
-+
-+	u32			truesize;
-+	u32			count;
-+
-+	/* Cold fields */
-+	u32			rx_buf_len;
-+};
-+
-+int libie_rx_page_pool_create(struct libie_buf_queue *bq,
-+			      struct napi_struct *napi);
-+void libie_rx_page_pool_destroy(struct libie_buf_queue *bq);
-+
-+/**
-+ * libie_rx_alloc - allocate a new Rx buffer
-+ * @bq: buffer queue to allocate for
-+ * @i: index of the buffer within the queue
-+ *
-+ * Return: DMA address to be passed to HW for Rx on successful allocation,
-+ * ```DMA_MAPPING_ERROR``` otherwise.
-+ */
-+static inline dma_addr_t libie_rx_alloc(const struct libie_buf_queue *bq,
-+					u32 i)
-+{
-+	struct libie_rx_buffer *buf = &bq->rx_bi[i];
-+
-+	buf->truesize = bq->truesize;
-+	buf->page = page_pool_dev_alloc(bq->pp, &buf->offset, &buf->truesize);
-+	if (unlikely(!buf->page))
-+		return DMA_MAPPING_ERROR;
-+
-+	return page_pool_get_dma_addr(buf->page) + buf->offset +
-+	       bq->pp->p.offset;
-+}
-+
-+/**
-+ * libie_rx_sync_for_cpu - synchronize or recycle buffer post DMA
-+ * @buf: buffer to process
-+ * @len: frame length from the descriptor
-+ *
-+ * Process the buffer after it's written by HW. The regular path is to
-+ * synchronize DMA for CPU, but in case of no data it will be immediately
-+ * recycled back to its PP.
-+ *
-+ * Return: true when there's data to process, false otherwise.
-+ */
-+static inline bool libie_rx_sync_for_cpu(const struct libie_rx_buffer *buf,
-+					 u32 len)
-+{
-+	struct page *page = buf->page;
-+
-+	/* Very rare, but possible case. The most common reason:
-+	 * the last fragment contained FCS only, which was then
-+	 * stripped by the HW.
-+	 */
-+	if (unlikely(!len)) {
-+		page_pool_recycle_direct(page->pp, page);
-+		return false;
-+	}
-+
-+	page_pool_dma_sync_for_cpu(page->pp, page, buf->offset, len);
-+
-+	return true;
-+}
+ 	/* high bit set means dynamic, use accessors routines to read/write.
+ 	 * hardware only supports 2us resolution for the ITR registers.
+@@ -277,22 +268,14 @@ struct iavf_ring {
+ 	u16 itr_setting;
  
- /* O(1) converting i40e/ice/iavf's 8/10-bit hardware packet type to a parsed
-  * bitfield struct.
+ 	u16 count;			/* Number of descriptors */
+-	u16 reg_idx;			/* HW register index of the ring */
+ 
+ 	/* used in interrupt processing */
+ 	u16 next_to_use;
+ 	u16 next_to_clean;
+ 
+-	u8 atr_sample_rate;
+-	u8 atr_count;
+-
+-	bool ring_active;		/* is ring online or not */
+-	bool arm_wb;		/* do something to arm write back */
+-	u8 packet_stride;
+-
+ 	u16 flags;
+ #define IAVF_TXR_FLAGS_WB_ON_ITR		BIT(0)
+-/* BIT(1) is free, was IAVF_RXR_FLAGS_BUILD_SKB_ENABLED */
++#define IAVF_TXR_FLAGS_ARM_WB			BIT(1)
+ /* BIT(2) is free */
+ #define IAVF_TXRX_FLAGS_VLAN_TAG_LOC_L2TAG1	BIT(3)
+ #define IAVF_TXR_FLAGS_VLAN_TAG_LOC_L2TAG2	BIT(4)
+@@ -306,6 +289,7 @@ struct iavf_ring {
+ 		struct iavf_rx_queue_stats rx_stats;
+ 	};
+ 
++	int prev_pkt_ctr;		/* For Tx stall detection */
+ 	unsigned int size;		/* length of descriptor ring in bytes */
+ 	dma_addr_t dma;			/* physical address of ring */
+ 
 -- 
 2.43.0
 
