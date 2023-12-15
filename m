@@ -1,153 +1,80 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 17690814982
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 15 Dec 2023 14:42:18 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4D8A3814D08
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 15 Dec 2023 17:29:16 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id E949D43812;
-	Fri, 15 Dec 2023 13:42:14 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org E949D43812
+	by smtp4.osuosl.org (Postfix) with ESMTP id B0B3941763;
+	Fri, 15 Dec 2023 16:29:12 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B0B3941763
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1702647735;
-	bh=kQr+tJShsIjpayAFqe6v8TPU/qY+LH2XOaZgj9dV5Gc=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
+	s=default; t=1702657752;
+	bh=Qi931pzx6MkpCuJBD7E4HQ/4rGSurhd5kkZdFtstSLM=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=bnWnKcOhFWX1xZ+CCyJIx4qXgGBegUl3cE7dh8fBuWv31PEPBol7haDKt9A2UEWuh
-	 CXignC8sfVnOl9szHPhvq/BWGFzLcZxGuZmWVUiPPfqK7o+KYaADhulB66zjrDsOfe
-	 arzaWwwQsiBjb/FqVC613oQPowgRWgkUpMp7pDnQSSzfjJnSTz1af8WAZBMqDGsRo/
-	 aoAtA2ya2okH9SN1rM3UpY4N1aT63lWNsfoSmO3kwYA13Xmhc1xwv70V90QkiMULsY
-	 aVwURT5Vv839T+4Qo+ebWM99Tg0FTId6xv2Hlx0aVzaQqmt3IfylmvVvfEe3qoPIfR
-	 SffhTAaYT7WBw==
+	b=tDsJzgd9AfInevisFFfw9xGubuFBF1QIuRFzHItBN8E3NPofEbvJrpQk6tyTNNmwu
+	 scDyz4S4dAlChhqYdPkahyQWfdkdkI6hsVebe/q/Cjt/BSmtVTLlcap+bFoNP6Os0E
+	 zvnfu4ks4XEw6yvsST/R6zl++d0E7F4qdD73XADq45jqkpyXyPeFjPhK6MVNxaLUH8
+	 Q+2S6kMWOFpCMGqR4bjc7lSoz78xyyGvWoEvDscu9gkv0tS38fzZo4jGoYZ/1vYFjQ
+	 qdUHgjE+c1rHH6LphFGNcHgTPGm+eYxyGnKC7Buu4IYfFiWyWl74IV08HBkxWPlzdd
+	 Dy5EM8LxHRC/Q==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id bMUNb2p1iNB8; Fri, 15 Dec 2023 13:42:14 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id FLXtPHQ8yCMv; Fri, 15 Dec 2023 16:29:11 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 6A2FF437FD;
-	Fri, 15 Dec 2023 13:42:13 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 6A2FF437FD
+	by smtp4.osuosl.org (Postfix) with ESMTP id 7B37241756;
+	Fri, 15 Dec 2023 16:29:11 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7B37241756
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 60AC51BF3E5
- for <intel-wired-lan@lists.osuosl.org>; Fri, 15 Dec 2023 13:42:07 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 491361BF31F
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 15 Dec 2023 16:29:06 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 3F6636F55E
- for <intel-wired-lan@lists.osuosl.org>; Fri, 15 Dec 2023 13:42:07 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3F6636F55E
+ by smtp4.osuosl.org (Postfix) with ESMTP id 20E45417FA
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 15 Dec 2023 16:29:06 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 20E45417FA
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id nwvYG6Le0Y2W for <intel-wired-lan@lists.osuosl.org>;
- Fri, 15 Dec 2023 13:42:05 +0000 (UTC)
-Received: from mail-ed1-x532.google.com (mail-ed1-x532.google.com
- [IPv6:2a00:1450:4864:20::532])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 1E9656F67E
- for <intel-wired-lan@lists.osuosl.org>; Fri, 15 Dec 2023 13:42:04 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1E9656F67E
-Received: by mail-ed1-x532.google.com with SMTP id
- 4fb4d7f45d1cf-54dcfca54e0so914903a12.1
- for <intel-wired-lan@lists.osuosl.org>; Fri, 15 Dec 2023 05:42:04 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1702647723; x=1703252523;
- h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
- :to:content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=JWyY+1ZRwB7JSCluGmdigCtNxrtlYQpVrbJS1gPGz5w=;
- b=SiMBTt41i2wEt32RYAKVt/XMmFLaDGl5LA0tCpz6ohXGV3Z+ysJYIzOUMLvxsqJvHE
- Mgo7pHnmVIZyShhzemMOMRIpogPDzvJdgyCwbB11l754mmDzCs+dP39saAfXZt9A/p8T
- JpcSBPN+4xZ4f5filvw+oVL+OzNVT2J/wxzXud3Nnx3Y4O9WyLkloiCmKNKHSVwhN8aS
- O8zkQ8jh2o0LmvpMPP6HJ7rQQAbeVQODW3Zx/19+FA1epeRks2liFxeKLZFHpKdDp5Cp
- fUyLMO912yjH/yZAuFhRasHeDTXfGJ8PlR2PGhYmrHDleQzlY54vjbKRH1U638qnLEVo
- wWxQ==
-X-Gm-Message-State: AOJu0YwL3B/fGeJc35au9hqWTUYepiflhDCBJiNAoBkq07f/KuM11W1e
- VisPFThHlzuv6exgyQlzUsU=
-X-Google-Smtp-Source: AGHT+IF25RzXmMk4vfMp7QaNzOQ98zw63IElqtHzdXCgyMKhef498DDQK2jhu9O5AH8nenEjjEm11w==
-X-Received: by 2002:a17:907:7d8c:b0:a1d:58ff:df2b with SMTP id
- oz12-20020a1709077d8c00b00a1d58ffdf2bmr7117987ejc.17.1702647722883; 
- Fri, 15 Dec 2023 05:42:02 -0800 (PST)
-Received: from ?IPV6:2a01:c23:c4af:da00:753e:3071:8b26:92a4?
- (dynamic-2a01-0c23-c4af-da00-753e-3071-8b26-92a4.c23.pool.telefonica.de.
- [2a01:c23:c4af:da00:753e:3071:8b26:92a4])
- by smtp.googlemail.com with ESMTPSA id
- cw15-20020a170907160f00b00a1937153bddsm10673996ejd.20.2023.12.15.05.42.02
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 15 Dec 2023 05:42:02 -0800 (PST)
-Message-ID: <83dc80d3-1c26-405d-a08d-2db4bc318ac8@gmail.com>
-Date: Fri, 15 Dec 2023 14:42:01 +0100
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id MsUBTlgxPXvb for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 15 Dec 2023 16:29:05 +0000 (UTC)
+Received: from sin.source.kernel.org (sin.source.kernel.org
+ [IPv6:2604:1380:40e1:4800::1])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 6A7C84175B
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 15 Dec 2023 16:29:04 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6A7C84175B
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by sin.source.kernel.org (Postfix) with ESMTP id 66D88CE3068;
+ Fri, 15 Dec 2023 16:28:59 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 09E3EC433C7;
+ Fri, 15 Dec 2023 16:28:55 +0000 (UTC)
+Date: Fri, 15 Dec 2023 16:28:53 +0000
+From: Simon Horman <horms@kernel.org>
+To: Ke Xiao <xiaoke@sangfor.com.cn>
+Message-ID: <20231215162853.GK6288@kernel.org>
+References: <20231213104912.16153-1-xiaoke@sangfor.com.cn>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Content-Language: en-US
-To: Marc MERLIN <marc@merlins.org>, Jakub Kicinski <kuba@kernel.org>
-References: <20231206113934.8d7819857574.I2deb5804ef1739a2af307283d320ef7d82456494@changeid>
- <20231206084448.53b48c49@kernel.org>
- <e6f227ee701e1ee37e8f568b1310d240a2b8935a.camel@sipsolutions.net>
- <a44865f5-3a07-d60a-c333-59c012bfa2fb@intel.com>
- <20231207094021.1419b5d0@kernel.org> <20231211045200.GC24475@merlins.org>
-From: Heiner Kallweit <hkallweit1@gmail.com>
-Autocrypt: addr=hkallweit1@gmail.com; keydata=
- xsFNBF/0ZFUBEAC0eZyktSE7ZNO1SFXL6cQ4i4g6Ah3mOUIXSB4pCY5kQ6OLKHh0FlOD5/5/
- sY7IoIouzOjyFdFPnz4Bl3927ClT567hUJJ+SNaFEiJ9vadI6vZm2gcY4ExdIevYHWe1msJF
- MVE4yNwdS+UsPeCF/6CQQTzHc+n7DomE7fjJD5J1hOJjqz2XWe71fTvYXzxCFLwXXbBiqDC9
- dNqOe5odPsa4TsWZ09T33g5n2nzTJs4Zw8fCy8rLqix/raVsqr8fw5qM66MVtdmEljFaJ9N8
- /W56qGCp+H8Igk/F7CjlbWXiOlKHA25mPTmbVp7VlFsvsmMokr/imQr+0nXtmvYVaKEUwY2g
- 86IU6RAOuA8E0J5bD/BeyZdMyVEtX1kT404UJZekFytJZrDZetwxM/cAH+1fMx4z751WJmxQ
- J7mIXSPuDfeJhRDt9sGM6aRVfXbZt+wBogxyXepmnlv9K4A13z9DVLdKLrYUiu9/5QEl6fgI
- kPaXlAZmJsQfoKbmPqCHVRYj1lpQtDM/2/BO6gHASflWUHzwmBVZbS/XRs64uJO8CB3+V3fa
- cIivllReueGCMsHh6/8wgPAyopXOWOxbLsZ291fmZqIR0L5Y6b2HvdFN1Xhc+YrQ8TKK+Z4R
- mJRDh0wNQ8Gm89g92/YkHji4jIWlp2fwzCcx5+lZCQ1XdqAiHQARAQABzSZIZWluZXIgS2Fs
- bHdlaXQgPGhrYWxsd2VpdDFAZ21haWwuY29tPsLBjgQTAQgAOBYhBGxfqY/yOyXjyjJehXLe
- ig9U8DoMBQJf9GRVAhsDBQsJCAcCBhUKCQgLAgQWAgMBAh4BAheAAAoJEHLeig9U8DoMSycQ
- AJbfg8HZEK0ljV4M8nvdaiNixWAufrcZ+SD8zhbxl8GispK4F3Yo+20Y3UoZ7FcIidJWUUJL
- axAOkpI/70YNhlqAPMsuudlAieeYZKjIv1WV5ucNZ3VJ7dC+dlVqQdAr1iD869FZXvy91KhJ
- wYulyCf+s4T9YgmLC6jLMBZghKIf1uhSd0NzjyCqYWbk2ZxByZHgunEShOhHPHswu3Am0ftt
- ePaYIHgZs+Vzwfjs8I7EuW/5/f5G9w1vibXxtGY/GXwgGGHRDjFM7RSprGOv4F5eMGh+NFUJ
- TU9N96PQYMwXVxnQfRXl8O6ffSVmFx4H9rovxWPKobLmqQL0WKLLVvA/aOHCcMKgfyKRcLah
- 57vGC50Ga8oT2K1g0AhKGkyJo7lGXkMu5yEs0m9O+btqAB261/E3DRxfI1P/tvDZpLJKtq35
- dXsj6sjvhgX7VxXhY1wE54uqLLHY3UZQlmH3QF5t80MS7/KhxB1pO1Cpcmkt9hgyzH8+5org
- +9wWxGUtJWNP7CppY+qvv3SZtKJMKsxqk5coBGwNkMms56z4qfJm2PUtJQGjA65XWdzQACib
- 2iaDQoBqGZfXRdPT0tC1H5kUJuOX4ll1hI/HBMEFCcO8++Bl2wcrUsAxLzGvhINVJX2DAQaF
- aNetToazkCnzubKfBOyiTqFJ0b63c5dqziAgzsFNBF/0ZFUBEADF8UEZmKDl1w/UxvjeyAeX
- kghYkY3bkK6gcIYXdLRfJw12GbvMioSguvVzASVHG8h7NbNjk1yur6AONfbUpXKSNZ0skV8V
- fG+ppbaY+zQofsSMoj5gP0amwbwvPzVqZCYJai81VobefTX2MZM2Mg/ThBVtGyzV3NeCpnBa
- 8AX3s9rrX2XUoCibYotbbxx9afZYUFyflOc7kEpc9uJXIdaxS2Z6MnYLHsyVjiU6tzKCiVOU
- KJevqvzPXJmy0xaOVf7mhFSNQyJTrZpLa+tvB1DQRS08CqYtIMxRrVtC0t0LFeQGly6bOngr
- ircurWJiJKbSXVstLHgWYiq3/GmCSx/82ObeLO3PftklpRj8d+kFbrvrqBgjWtMH4WtK5uN5
- 1WJ71hWJfNchKRlaJ3GWy8KolCAoGsQMovn/ZEXxrGs1ndafu47yXOpuDAozoHTBGvuSXSZo
- ythk/0EAuz5IkwkhYBT1MGIAvNSn9ivE5aRnBazugy0rTRkVggHvt3/7flFHlGVGpBHxFUwb
- /a4UjJBPtIwa4tWR8B1Ma36S8Jk456k2n1id7M0LQ+eqstmp6Y+UB+pt9NX6t0Slw1NCdYTW
- gJezWTVKF7pmTdXszXGxlc9kTrVUz04PqPjnYbv5UWuDd2eyzGjrrFOsJEi8OK2d2j4FfF++
- AzOMdW09JVqejQARAQABwsF2BBgBCAAgFiEEbF+pj/I7JePKMl6Fct6KD1TwOgwFAl/0ZFUC
- GwwACgkQct6KD1TwOgxUfg//eAoYc0Vm4NrxymfcY30UjHVD0LgSvU8kUmXxil3qhFPS7KA+
- y7tgcKLHOkZkXMX5MLFcS9+SmrAjSBBV8omKoHNo+kfFx/dUAtz0lot8wNGmWb+NcHeKM1eb
- nwUMOEa1uDdfZeKef/U/2uHBceY7Gc6zPZPWgXghEyQMTH2UhLgeam8yglyO+A6RXCh+s6ak
- Wje7Vo1wGK4eYxp6pwMPJXLMsI0ii/2k3YPEJPv+yJf90MbYyQSbkTwZhrsokjQEaIfjrIk3
- rQRjTve/J62WIO28IbY/mENuGgWehRlTAbhC4BLTZ5uYS0YMQCR7v9UGMWdNWXFyrOB6PjSu
- Trn9MsPoUc8qI72mVpxEXQDLlrd2ijEWm7Nrf52YMD7hL6rXXuis7R6zY8WnnBhW0uCfhajx
- q+KuARXC0sDLztcjaS3ayXonpoCPZep2Bd5xqE4Ln8/COCslP7E92W1uf1EcdXXIrx1acg21
- H/0Z53okMykVs3a8tECPHIxnre2UxKdTbCEkjkR4V6JyplTS47oWMw3zyI7zkaadfzVFBxk2
- lo/Tny+FX1Azea3Ce7oOnRUEZtWSsUidtIjmL8YUQFZYm+JUIgfRmSpMFq8JP4VH43GXpB/S
- OCrl+/xujzvoUBFV/cHKjEQYBxo+MaiQa1U54ykM2W4DnHb1UiEf5xDkFd4=
-In-Reply-To: <20231211045200.GC24475@merlins.org>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1702647723; x=1703252523; darn=lists.osuosl.org;
- h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
- :to:content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=JWyY+1ZRwB7JSCluGmdigCtNxrtlYQpVrbJS1gPGz5w=;
- b=j0geitJJ3FZA9uy+W4g1ZxivzhOZDk+Ukjlugm6Ue5LTjX4AqcJ2wC/1EOxj0Qp5zM
- IrU91/P6AVYTI9aOhmTZhOJ9kn7nerjTGBgXV0jEFBhW8k51MY2t9Tr+02eqYQxIuYhj
- bOHGl5s0jubZtNh0n1cPK1W6XMAwf0aXoGgLDsoWik96QSYQ/Pfm1x7ls77VEu0SG9Tm
- TPexWflzotTww3rOTs/gZFazVHIVyOz/smsgIEJKFDmnW8jdwVrMvwnxN/gUnkMQw3mk
- Lt+W3P9hTSOcueROb1rM5GqTHREau5R6NSKa4P73kgzD3x95VT7EcdwK6cLacU+4BCDS
- xNkQ==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
- header.a=rsa-sha256 header.s=20230601 header.b=j0geitJJ
-Subject: Re: [Intel-wired-lan] [PATCH net v3] net: ethtool: do runtime PM
- outside RTNL
+Content-Disposition: inline
+In-Reply-To: <20231213104912.16153-1-xiaoke@sangfor.com.cn>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=kernel.org; s=k20201202; t=1702657738;
+ bh=PvK4lHEsSy91ob3n505rV6h36iVUZdMcZREAFz8vIoM=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=Bw58GekOTv1fN132V0rPxC3mTpZ2rfRnVJx2/4yuT1hGdR6+XjVDo8al2PNmMMkss
+ 5N4as3dszFFI8BfXD9Nl565+F+tYn7tDe5/V7JTNAZiUBwl7XKsJuPcWEakTcMyJoV
+ ThInph7/v/oMJNek5nFo4on8mmRPLJYHuNDTtyJ9abgXtXfYAufE3ZiSr+BhVnZ51c
+ /38Mcf5MKn8zkBBMBWZgys+/TBc2oY18mlziMnAX2AtQ2m1pw9iriJoYiWZIvD4h7a
+ +0FGQMMRH8Q9tqpOAG/X2EonSojEwjnFLRhBnAWIcNJDQJLsLjzMbWUWwlzf59mYUp
+ DfFpdK6xWX+UA==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=Bw58GekO
+Subject: Re: [Intel-wired-lan] [net PATCH] i40e: fix use-after-free in
+ i40e_aqc_add_filters()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -160,46 +87,92 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Johannes Berg <johannes@sipsolutions.net>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- netdev@vger.kernel.org
+Cc: zhudi2@huawei.com, intel-wired-lan@lists.osuosl.org, dinghui@sangfor.com.cn,
+ jesse.brandeburg@intel.com, linux-kernel@vger.kernel.org, edumazet@google.com,
+ anthony.l.nguyen@intel.com, netdev@vger.kernel.org, kuba@kernel.org,
+ pabeni@redhat.com, davem@davemloft.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 11.12.2023 05:52, Marc MERLIN wrote:
-> On Thu, Dec 07, 2023 at 09:40:21AM -0800, Jakub Kicinski wrote:
->> On Thu, 7 Dec 2023 11:16:10 +0100 Przemek Kitszel wrote:
->>> I have let know our igc TL, architect, and anybody that could be
->>> interested via cc: IWL. And I'm happy that this could be done at
->>> relaxed pace thanks to Johannes
->>
->> I think you may be expecting us to take Johannes's patch.
->> It's still on the table, but to make things clear -
->> upstream we prefer to wait for the "real fix", so if we agree
->> that fixing igb/igc is a better way (as Heiner pointed out on previous
->> version PM functions are called by the stack under rtnl elsewhere too,
->> just not while device is open) - we'll wait for that. Especially
->> that I'm 80% I complained about the PM in those drivers in
->> the past and nobody seemed to care. It's a constant source of rtnl
->> deadlocks.
+On Wed, Dec 13, 2023 at 06:49:11PM +0800, Ke Xiao wrote:
+> Commit 3116f59c12bd ("i40e: fix use-after-free in
+> i40e_sync_filters_subtask()") avoided use-after-free issues,
+> by increasing refcount during update the VSI filter list to
+> the HW. However, it missed the unicast situation.
 > 
-> For whatever it's worth, I want to be clear that all stock kernels
-> are 100% unusable on lenovo P17gen2 because of this deadlock and that
-> without the temporary patch, my laptop would be usuable.
-> It was also a risk of data loss due to repeated deadlocks and unclean
-> shutdowns.
+> When deleting an unicast FDB entry, the i40e driver will release
+> the mac_filter, and i40e_service_task will concurrently request
+> firmware to add the mac_filter, which will lead to the following
+> use-after-free issue.
 > 
-Why don't you simply disable runtime pm for the affected device as a
-workaround? This can be done via sysfs.
+> Fix again for both netdev->uc and netdev->mc.
+> 
+> BUG: KASAN: use-after-free in i40e_aqc_add_filters+0x55c/0x5b0 [i40e]
+> Read of size 2 at addr ffff888eb3452d60 by task kworker/8:7/6379
+> 
+> CPU: 8 PID: 6379 Comm: kworker/8:7 Kdump: loaded Tainted: G
+> Workqueue: i40e i40e_service_task [i40e]
+> Call Trace:
+>  dump_stack+0x71/0xab
+>  print_address_description+0x6b/0x290
+>  kasan_report+0x14a/0x2b0
+>  i40e_aqc_add_filters+0x55c/0x5b0 [i40e]
+>  i40e_sync_vsi_filters+0x1676/0x39c0 [i40e]
+>  i40e_service_task+0x1397/0x2bb0 [i40e]
+>  process_one_work+0x56a/0x11f0
+>  worker_thread+0x8f/0xf40
+>  kthread+0x2a0/0x390
+>  ret_from_fork+0x1f/0x40
+> 
+> Allocated by task 21948:
+>  kasan_kmalloc+0xa6/0xd0
+>  kmem_cache_alloc_trace+0xdb/0x1c0
+>  i40e_add_filter+0x11e/0x520 [i40e]
+>  i40e_addr_sync+0x37/0x60 [i40e]
+>  __hw_addr_sync_dev+0x1f5/0x2f0
+>  i40e_set_rx_mode+0x61/0x1e0 [i40e]
+>  dev_uc_add_excl+0x137/0x190
+>  i40e_ndo_fdb_add+0x161/0x260 [i40e]
+>  rtnl_fdb_add+0x567/0x950
+>  rtnetlink_rcv_msg+0x5db/0x880
+>  netlink_rcv_skb+0x254/0x380
+>  netlink_unicast+0x454/0x610
+>  netlink_sendmsg+0x747/0xb00
+>  sock_sendmsg+0xe2/0x120
+>  __sys_sendto+0x1ae/0x290
+>  __x64_sys_sendto+0xdd/0x1b0
+>  do_syscall_64+0xa0/0x370
+>  entry_SYSCALL_64_after_hwframe+0x65/0xca
+> 
+> Freed by task 21948:
+>  __kasan_slab_free+0x137/0x190
+>  kfree+0x8b/0x1b0
+>  __i40e_del_filter+0x116/0x1e0 [i40e]
+>  i40e_del_mac_filter+0x16c/0x300 [i40e]
+>  i40e_addr_unsync+0x134/0x1b0 [i40e]
+>  __hw_addr_sync_dev+0xff/0x2f0
+>  i40e_set_rx_mode+0x61/0x1e0 [i40e]
+>  dev_uc_del+0x77/0x90
+>  rtnl_fdb_del+0x6a5/0x860
+>  rtnetlink_rcv_msg+0x5db/0x880
+>  netlink_rcv_skb+0x254/0x380
+>  netlink_unicast+0x454/0x610
+>  netlink_sendmsg+0x747/0xb00
+>  sock_sendmsg+0xe2/0x120
+>  __sys_sendto+0x1ae/0x290
+>  __x64_sys_sendto+0xdd/0x1b0
+>  do_syscall_64+0xa0/0x370
+>  entry_SYSCALL_64_after_hwframe+0x65/0xca
+> 
+> Fixes: 3116f59c12bd ("i40e: fix use-after-free in i40e_sync_filters_subtask()")
+> Fixes: 41c445ff0f48 ("i40e: main driver core")
+> Signed-off-by: Ke Xiao <xiaoke@sangfor.com.cn>
+> Signed-off-by: Ding Hui <dinghui@sangfor.com.cn>
+> Cc: Di Zhu <zhudi2@huawei.com>
 
-> I cannot say what the correct fix is, but I am definitely hoping you
-> will accept some solution for the next stable kernel.
-> 
-> Thank you
-> Marc
+Reviewed-by: Simon Horman <horms@kernel.org>
 
 _______________________________________________
 Intel-wired-lan mailing list
