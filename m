@@ -1,101 +1,91 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 82FA1814E25
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 15 Dec 2023 18:13:47 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0EB36814E71
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 15 Dec 2023 18:22:28 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 8E5AF424FC;
-	Fri, 15 Dec 2023 17:13:45 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8E5AF424FC
+	by smtp4.osuosl.org (Postfix) with ESMTP id 84DFC423E4;
+	Fri, 15 Dec 2023 17:22:26 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 84DFC423E4
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1702660425;
-	bh=oZz48PkHRpCU4/q/qF9ekQvQtdGaXnGz5+8EqZjssLw=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=RO5I6tTULG2BkzmsgGbL1NtLNS18xUMW2FgK6XKqThFmAZenIbmZRHHscVj373jgM
-	 Eb37E92h9p0eZ+1cs9r2dZ+Zhe7iQUvsUAQaU0chYl9I6PPRAVG+vndT+7LNnTTNn5
-	 cJEiDpyX753dmmsJdvGLXWylif8hOPJCKSZ29GhF+tCgjWbcEsjFFsuRLM+m4WVN4x
-	 3mC6q/ozC0CtUzoGEZwUEguIZ4qumOkiqccrAGD1AcxKSFja7OX/aZSYgphxrhXNXM
-	 9kMdKLKfsexnGemVt/QVM4Chcsnk3eij8TwVUZZAlEzbSOi2xysGru8ek2Fw30sYcA
-	 bzL4FGTtTu7jg==
+	s=default; t=1702660946;
+	bh=a9jpwR04Bok06/Y4ds7jbvzKnEYXoft7bbD61xbr6xk=;
+	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=D28kcliORRjmtDvYk9bJvJ9Z61zuzmwDD+uz4E0W8w92vZfvaNd91vW4jpRAn/IbM
+	 5o8r1GLzD36oJFtWhRxZEo/lTz5NvCBTICGzO77QWqeqKxNQ58A+Y/ZVQfvP4LF93u
+	 /PT7XUoTB84zbP5DioG8sfWxuYvkuB/3QT6Wl2oKURJp8gxuhy1wjI62CZRmVt8iPy
+	 XObkJJ0WOe1yJKmkOPXSZrBj/TG2Z1VVKqwybbFpDBcGQRXt4U+6XUjn5R7Kk07bUB
+	 8m6ahtCcFgvv6OHNxeu5VeZ5Ge7/Vm5BWR4vlBBBwvcqcAs2DAvOY/d2sw7Pss4NIf
+	 v3WwQAdpvCMZQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id RdMp_4GloC0D; Fri, 15 Dec 2023 17:13:44 +0000 (UTC)
+	with ESMTP id 1HaFAUtvf0h3; Fri, 15 Dec 2023 17:22:25 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 9A91F42231;
-	Fri, 15 Dec 2023 17:13:43 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9A91F42231
+	by smtp4.osuosl.org (Postfix) with ESMTP id 065EB4227B;
+	Fri, 15 Dec 2023 17:22:24 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 065EB4227B
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 3A51B1BF31F
- for <intel-wired-lan@lists.osuosl.org>; Fri, 15 Dec 2023 16:29:36 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 6A6601BF281
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 15 Dec 2023 17:19:30 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 1121F6106D
- for <intel-wired-lan@lists.osuosl.org>; Fri, 15 Dec 2023 16:29:36 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1121F6106D
+ by smtp3.osuosl.org (Postfix) with ESMTP id 415FE6108F
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 15 Dec 2023 17:19:30 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 415FE6108F
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id W2iVRTtC8dc4 for <intel-wired-lan@lists.osuosl.org>;
- Fri, 15 Dec 2023 16:29:35 +0000 (UTC)
-X-Greylist: delayed 428 seconds by postgrey-1.37 at util1.osuosl.org;
- Fri, 15 Dec 2023 16:29:34 UTC
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 991A860B3D
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.9])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 991A860B3D
- for <intel-wired-lan@lists.osuosl.org>; Fri, 15 Dec 2023 16:29:34 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10924"; a="2145900"
-X-IronPort-AV: E=Sophos;i="6.04,279,1695711600"; 
-   d="scan'208";a="2145900"
-Received: from orsmga002.jf.intel.com ([10.7.209.21])
- by fmvoesa103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 15 Dec 2023 08:22:23 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10924"; a="774814912"
-X-IronPort-AV: E=Sophos;i="6.04,279,1695711600"; d="scan'208";a="774814912"
-Received: from p12ill20yoongsia.png.intel.com ([10.88.227.28])
- by orsmga002.jf.intel.com with ESMTP; 15 Dec 2023 08:22:17 -0800
-From: Song Yoong Siang <yoong.siang.song@intel.com>
-To: Jesse Brandeburg <jesse.brandeburg@intel.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>,
- "David S . Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>,
- Richard Cochran <richardcochran@gmail.com>,
- Alexei Starovoitov <ast@kernel.org>,
- Daniel Borkmann <daniel@iogearbox.net>,
- Jesper Dangaard Brouer <hawk@kernel.org>,
- John Fastabend <john.fastabend@gmail.com>,
- Stanislav Fomichev <sdf@google.com>,
- Vinicius Costa Gomes <vinicius.gomes@intel.com>,
- Florian Bezdeka <florian.bezdeka@siemens.com>
-Date: Sat, 16 Dec 2023 00:21:58 +0800
-Message-Id: <20231215162158.951925-1-yoong.siang.song@intel.com>
-X-Mailer: git-send-email 2.34.1
+ with ESMTP id rE1tKF3YIGwJ for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 15 Dec 2023 17:19:29 +0000 (UTC)
+X-Greylist: delayed 525 seconds by postgrey-1.37 at util1.osuosl.org;
+ Fri, 15 Dec 2023 17:19:28 UTC
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org F1E286108A
+Received: from galois.linutronix.de (Galois.linutronix.de
+ [IPv6:2a0a:51c0:0:12e:550::1])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id F1E286108A
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 15 Dec 2023 17:19:28 +0000 (UTC)
+From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
+To: linux-kernel@vger.kernel.org,
+	netdev@vger.kernel.org
+Date: Fri, 15 Dec 2023 18:07:39 +0100
+Message-ID: <20231215171020.687342-21-bigeasy@linutronix.de>
+In-Reply-To: <20231215171020.687342-1-bigeasy@linutronix.de>
+References: <20231215171020.687342-1-bigeasy@linutronix.de>
 MIME-Version: 1.0
-X-Mailman-Approved-At: Fri, 15 Dec 2023 17:13:39 +0000
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1702657775; x=1734193775;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=tD4p1p3HMFVSksOH5sm0hApRVS7tHyLB56zApWwLofY=;
- b=nvVZv/GZGL92ZFq8zolbl2z061NDH39wlEN6zIhl1L9L1YIDHtNLP6LP
- VOKt2AQu+DoHAMFt9yWn85HWdGt4CoY5GFn0gKOElSLzPyv2kdzm6ZmON
- Gy6LwW5OyE5f6VDc1JsBDQ78xvC0TmSjmodPs62a39kdcQxTuV/jHCJQ7
- 8xpGih7ArQ7F1rkfP+q4Kb8tWoYC8vdHHlCJtQbbKdWHWyfs/4SENflEY
- rCO2YzKAdGl8VG36dcoX17824mct2b2Jx2dwqx+vM0Dq8GjR2VYccHrjF
- gwABx+SnTOO+FwGJpatgAFXNHbIjLTHdi0vJGseyY6o6VWU/5MfKzmFb+
- Q==;
+X-Mailman-Approved-At: Fri, 15 Dec 2023 17:22:20 +0000
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linutronix.de; s=2020; t=1702660241;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=gJvqfL6kfGkcyInYfR34Y5EU2FsYBJr4oMNF68chbko=;
+ b=2frKVfBuTxNCn/YOdDqPDYZ2sctcTtOlZNN7VRsSx5KBQpwgvXQwFEfPLw6meL5XGoMXyu
+ odJ2LoMSj808d8L7BQNEdFJ8NhzX5yli372pUzzryRbWBt4dSR30SMD+us3HkuOsZNtGVl
+ 7SRpX7+5b88RAWlQlXDnwKuY/Zj0drS4EEoNxIUi7s2x65k0c4nlfqbXq5mDT7SzgIUWEe
+ NrokjDvzRvF7PWAG18JNo/ICJZZUWcxpaAbRvrHklPDCkiwtsK3iSqWaTibdYV0L28kr2Q
+ xO7eKDxi7kmQetOaekHkCvzw5cICCTFsegmZRKB+5Q8GsqSAUsK/VJpQkBpBSg==
+X-Mailman-Original-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed;
+ d=linutronix.de; s=2020e; t=1702660241;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=gJvqfL6kfGkcyInYfR34Y5EU2FsYBJr4oMNF68chbko=;
+ b=XDtMmiv9Gk7YQYNN+15d696JweHCRkGPHH6mhMrQi75BId2aTtnMH7bXiiai8t3OnICdC7
+ mpD1I/ZZkX+/hzDQ==
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=nvVZv/GZ
-Subject: [Intel-wired-lan] [PATCH iwl-next,
- v1 1/1] igc: Add Tx hardware timestamp request for AF_XDP zero-copy
- packet
+ dkim=pass (2048-bit key) header.d=linutronix.de header.i=@linutronix.de
+ header.a=rsa-sha256 header.s=2020 header.b=2frKVfBu; 
+ dkim=pass header.d=linutronix.de header.i=@linutronix.de
+ header.a=ed25519-sha256 header.s=2020e header.b=XDtMmiv9
+Subject: [Intel-wired-lan] [PATCH net-next 20/24] net: intel: Use nested-BH
+ locking for XDP redirect.
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -108,345 +98,176 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, bpf@vger.kernel.org, xdp-hints@xdp-project.net,
- intel-wired-lan@lists.osuosl.org, linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: Jesper Dangaard Brouer <hawk@kernel.org>,
+ Daniel Borkmann <daniel@iogearbox.net>, Peter Zijlstra <peterz@infradead.org>,
+ intel-wired-lan@lists.osuosl.org, Frederic Weisbecker <frederic@kernel.org>,
+ bpf@vger.kernel.org, John Fastabend <john.fastabend@gmail.com>,
+ Alexei Starovoitov <ast@kernel.org>, "David S. Miller" <davem@davemloft.net>,
+ Jesse Brandeburg <jesse.brandeburg@intel.com>,
+ Eric Dumazet <edumazet@google.com>, Ingo Molnar <mingo@redhat.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>, Waiman Long <longman@redhat.com>,
+ Jakub Kicinski <kuba@kernel.org>, Thomas Gleixner <tglx@linutronix.de>,
+ Paolo Abeni <pabeni@redhat.com>, Will Deacon <will@kernel.org>,
+ Boqun Feng <boqun.feng@gmail.com>,
+ Sebastian Andrzej Siewior <bigeasy@linutronix.de>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-This patch adds support to per-packet Tx hardware timestamp request to
-AF_XDP zero-copy packet via XDP Tx metadata framework. Please note that
-user needs to enable Tx HW timestamp capability via igc_ioctl() with
-SIOCSHWTSTAMP cmd before sending xsk Tx timestamp request.
-
-Same as implementation in RX timestamp XDP hints kfunc metadata, Timer 0
-(adjustable clock) is used in xsk Tx hardware timestamp. i225/i226 have
-four sets of timestamping registers. A pointer named "xsk_pending_ts"
-is introduced to indicate the timestamping register is already occupied.
-Furthermore, the mentioned pointer also being used to hold the transmit
-completion until the tx hardware timestamp is ready. This is because for
-i225/i226, the timestamp notification comes some time after the transmit
-completion event. The driver will retrigger hardware irq to clean the
-packet after retrieve the tx hardware timestamp.
-
-Besides, a pointer named "xsk_meta" is added into igc_tx_timestamp_request
-structure as a hook to the metadata location of the transmit packet. When
-a Tx timestamp interrupt happens, the interrupt handler will copy the
-value of Tx timestamp into metadata via xsk_tx_metadata_complete().
-
-This patch is tested with tools/testing/selftests/bpf/xdp_hw_metadata
-on Intel ADL-S platform. Below are the test steps and results.
-
-Command on DUT:
-sudo ./xdp_hw_metadata <interface name>
-sudo hwstamp_ctl -i <interface name> -t 1 -r 1
-sudo ./testptp -d /dev/ptp0 -s
-
-Command on Link Partner:
-echo -n xdp | nc -u -q1 <destination IPv4 addr> 9091
-
-Result:
-xsk_ring_cons__peek: 1
-0x555b112ae958: rx_desc[6]->addr=86110 addr=86110 comp_addr=86110 EoP
-rx_hash: 0xBFDEC36E with RSS type:0x1
-HW RX-time:   1677762429190040955 (sec:1677762429.1900) delta to User RX-time sec:0.0001 (100.124 usec)
-XDP RX-time:   1677762429190123163 (sec:1677762429.1901) delta to User RX-time sec:0.0000 (17.916 usec)
-0x555b112ae958: ping-pong with csum=404e (want c59e) csum_start=34 csum_offset=6
-0x555b112ae958: complete tx idx=6 addr=6010
-HW TX-complete-time:   1677762429190173323 (sec:1677762429.1902) delta to User TX-complete-time sec:0.0100 (10035.884 usec)
-XDP RX-time:   1677762429190123163 (sec:1677762429.1901) delta to User TX-complete-time sec:0.0101 (10086.044 usec)
-HW RX-time:   1677762429190040955 (sec:1677762429.1900) delta to HW TX-complete-time sec:0.0001 (132.368 usec)
-0x555b112ae958: complete rx idx=134 addr=86110
-
-Signed-off-by: Song Yoong Siang <yoong.siang.song@intel.com>
----
- drivers/net/ethernet/intel/igc/igc.h      | 15 ++++
- drivers/net/ethernet/intel/igc/igc_main.c | 88 ++++++++++++++++++++++-
- drivers/net/ethernet/intel/igc/igc_ptp.c  | 42 ++++++++---
- 3 files changed, 134 insertions(+), 11 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/igc/igc.h b/drivers/net/ethernet/intel/igc/igc.h
-index ac7c861e83a0..c831dde01662 100644
---- a/drivers/net/ethernet/intel/igc/igc.h
-+++ b/drivers/net/ethernet/intel/igc/igc.h
-@@ -79,6 +79,9 @@ struct igc_tx_timestamp_request {
- 	u32 regl;              /* which TXSTMPL_{X} register should be used */
- 	u32 regh;              /* which TXSTMPH_{X} register should be used */
- 	u32 flags;             /* flags that should be added to the tx_buffer */
-+	u8 xsk_queue_index;    /* Tx queue which requesting timestamp */
-+	bool *xsk_pending_ts;  /* ref to tx ring for waiting timestamp event */
-+	struct xsk_tx_metadata_compl xsk_meta;	/* ref to xsk Tx metadata */
- };
- 
- struct igc_inline_rx_tstamps {
-@@ -319,6 +322,9 @@ void igc_disable_tx_ring(struct igc_ring *ring);
- void igc_enable_tx_ring(struct igc_ring *ring);
- int igc_xsk_wakeup(struct net_device *dev, u32 queue_id, u32 flags);
- 
-+/* AF_XDP TX metadata operations */
-+extern const struct xsk_tx_metadata_ops igc_xsk_tx_metadata_ops;
-+
- /* igc_dump declarations */
- void igc_rings_dump(struct igc_adapter *adapter);
- void igc_regs_dump(struct igc_adapter *adapter);
-@@ -528,6 +534,7 @@ struct igc_tx_buffer {
- 	DEFINE_DMA_UNMAP_ADDR(dma);
- 	DEFINE_DMA_UNMAP_LEN(len);
- 	u32 tx_flags;
-+	bool xsk_pending_ts;
- };
- 
- struct igc_rx_buffer {
-@@ -553,6 +560,14 @@ struct igc_xdp_buff {
- 	struct igc_inline_rx_tstamps *rx_ts; /* data indication bit IGC_RXDADV_STAT_TSIP */
- };
- 
-+struct igc_metadata_request {
-+	struct xsk_tx_metadata *meta;
-+	struct igc_adapter *adapter;
-+	struct igc_ring *tx_ring;
-+	bool *xsk_pending_ts;
-+	u32 *cmd_type;
-+};
-+
- struct igc_q_vector {
- 	struct igc_adapter *adapter;    /* backlink */
- 	void __iomem *itr_register;
-diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
-index 61db1d3bfa0b..311c85f2d82d 100644
---- a/drivers/net/ethernet/intel/igc/igc_main.c
-+++ b/drivers/net/ethernet/intel/igc/igc_main.c
-@@ -1553,7 +1553,7 @@ static bool igc_request_tx_tstamp(struct igc_adapter *adapter, struct sk_buff *s
- 	for (i = 0; i < IGC_MAX_TX_TSTAMP_REGS; i++) {
- 		struct igc_tx_timestamp_request *tstamp = &adapter->tx_tstamp[i];
- 
--		if (tstamp->skb)
-+		if (tstamp->skb || tstamp->xsk_pending_ts)
- 			continue;
- 
- 		tstamp->skb = skb_get(skb);
-@@ -2878,6 +2878,71 @@ static void igc_update_tx_stats(struct igc_q_vector *q_vector,
- 	q_vector->tx.total_packets += packets;
- }
- 
-+static void igc_xsk_request_timestamp(void *_priv)
-+{
-+	struct igc_metadata_request *meta_req = _priv;
-+	struct igc_ring *tx_ring = meta_req->tx_ring;
-+	struct igc_tx_timestamp_request *tstamp;
-+	u32 *cmd_type = meta_req->cmd_type;
-+	u32 tx_flags = IGC_TX_FLAGS_TSTAMP;
-+	struct igc_adapter *adapter;
-+	unsigned long lock_flags;
-+	bool found = 0;
-+	int i;
-+
-+	if (test_bit(IGC_RING_FLAG_TX_HWTSTAMP, &tx_ring->flags)) {
-+		adapter = meta_req->adapter;
-+
-+		spin_lock_irqsave(&adapter->ptp_tx_lock, lock_flags);
-+
-+		for (i = 0; i < IGC_MAX_TX_TSTAMP_REGS; i++) {
-+			tstamp = &adapter->tx_tstamp[i];
-+
-+			if (tstamp->skb || tstamp->xsk_pending_ts)
-+				continue;
-+
-+			found = 1;
-+			break;
-+		}
-+
-+		if (!found) {
-+			adapter->tx_hwtstamp_skipped++;
-+		} else {
-+			tstamp->start = jiffies;
-+			tstamp->xsk_queue_index = tx_ring->queue_index;
-+
-+			tstamp->xsk_pending_ts = meta_req->xsk_pending_ts;
-+			*tstamp->xsk_pending_ts = true;
-+
-+			xsk_tx_metadata_to_compl(meta_req->meta,
-+						 &tstamp->xsk_meta);
-+
-+			/* set timestamp bit based on the _TSTAMP(_X) bit. */
-+			tx_flags |= tstamp->flags;
-+			*cmd_type |= IGC_SET_FLAG(tx_flags, IGC_TX_FLAGS_TSTAMP,
-+						  (IGC_ADVTXD_MAC_TSTAMP));
-+			*cmd_type |= IGC_SET_FLAG(tx_flags, IGC_TX_FLAGS_TSTAMP_1,
-+						  (IGC_ADVTXD_TSTAMP_REG_1));
-+			*cmd_type |= IGC_SET_FLAG(tx_flags, IGC_TX_FLAGS_TSTAMP_2,
-+						  (IGC_ADVTXD_TSTAMP_REG_2));
-+			*cmd_type |= IGC_SET_FLAG(tx_flags, IGC_TX_FLAGS_TSTAMP_3,
-+						  (IGC_ADVTXD_TSTAMP_REG_3));
-+		}
-+
-+		spin_unlock_irqrestore(&adapter->ptp_tx_lock, lock_flags);
-+	}
-+}
-+
-+static u64 igc_xsk_fill_timestamp(void *_priv)
-+{
-+	return *(u64 *)_priv;
-+}
-+
-+const struct xsk_tx_metadata_ops igc_xsk_tx_metadata_ops = {
-+	.tmo_request_timestamp		= igc_xsk_request_timestamp,
-+	.tmo_fill_timestamp		= igc_xsk_fill_timestamp,
-+};
-+
- static void igc_xdp_xmit_zc(struct igc_ring *ring)
- {
- 	struct xsk_buff_pool *pool = ring->xsk_pool;
-@@ -2899,6 +2964,8 @@ static void igc_xdp_xmit_zc(struct igc_ring *ring)
- 	budget = igc_desc_unused(ring);
- 
- 	while (xsk_tx_peek_desc(pool, &xdp_desc) && budget--) {
-+		struct igc_metadata_request meta_req;
-+		struct xsk_tx_metadata *meta = NULL;
- 		u32 cmd_type, olinfo_status;
- 		struct igc_tx_buffer *bi;
- 		dma_addr_t dma;
-@@ -2909,14 +2976,23 @@ static void igc_xdp_xmit_zc(struct igc_ring *ring)
- 		olinfo_status = xdp_desc.len << IGC_ADVTXD_PAYLEN_SHIFT;
- 
- 		dma = xsk_buff_raw_get_dma(pool, xdp_desc.addr);
-+		meta = xsk_buff_get_metadata(pool, xdp_desc.addr);
- 		xsk_buff_raw_dma_sync_for_device(pool, dma, xdp_desc.len);
-+		bi = &ring->tx_buffer_info[ntu];
-+
-+		meta_req.adapter = netdev_priv(ring->netdev);
-+		meta_req.tx_ring = ring;
-+		meta_req.meta = meta;
-+		meta_req.cmd_type = &cmd_type;
-+		meta_req.xsk_pending_ts = &bi->xsk_pending_ts;
-+		xsk_tx_metadata_request(meta, &igc_xsk_tx_metadata_ops,
-+					&meta_req);
- 
- 		tx_desc = IGC_TX_DESC(ring, ntu);
- 		tx_desc->read.cmd_type_len = cpu_to_le32(cmd_type);
- 		tx_desc->read.olinfo_status = cpu_to_le32(olinfo_status);
- 		tx_desc->read.buffer_addr = cpu_to_le64(dma);
- 
--		bi = &ring->tx_buffer_info[ntu];
- 		bi->type = IGC_TX_BUFFER_TYPE_XSK;
- 		bi->protocol = 0;
- 		bi->bytecount = xdp_desc.len;
-@@ -2979,6 +3055,13 @@ static bool igc_clean_tx_irq(struct igc_q_vector *q_vector, int napi_budget)
- 		if (!(eop_desc->wb.status & cpu_to_le32(IGC_TXD_STAT_DD)))
- 			break;
- 
-+		/* Hold the completions while there's a pending tx hardware
-+		 * timestamp request from XDP Tx metadata.
-+		 */
-+		if (tx_buffer->type == IGC_TX_BUFFER_TYPE_XSK &&
-+		    tx_buffer->xsk_pending_ts)
-+			break;
-+
- 		/* clear next_to_watch to prevent false hangs */
- 		tx_buffer->next_to_watch = NULL;
- 
-@@ -6819,6 +6902,7 @@ static int igc_probe(struct pci_dev *pdev,
- 
- 	netdev->netdev_ops = &igc_netdev_ops;
- 	netdev->xdp_metadata_ops = &igc_xdp_metadata_ops;
-+	netdev->xsk_tx_metadata_ops = &igc_xsk_tx_metadata_ops;
- 	igc_ethtool_set_ops(netdev);
- 	netdev->watchdog_timeo = 5 * HZ;
- 
-diff --git a/drivers/net/ethernet/intel/igc/igc_ptp.c b/drivers/net/ethernet/intel/igc/igc_ptp.c
-index 885faaa7b9de..b722bca40309 100644
---- a/drivers/net/ethernet/intel/igc/igc_ptp.c
-+++ b/drivers/net/ethernet/intel/igc/igc_ptp.c
-@@ -11,6 +11,7 @@
- #include <linux/ktime.h>
- #include <linux/delay.h>
- #include <linux/iopoll.h>
-+#include <net/xdp_sock.h>
- 
- #define INCVALUE_MASK		0x7fffffff
- #define ISGN			0x80000000
-@@ -555,8 +556,15 @@ static void igc_ptp_clear_tx_tstamp(struct igc_adapter *adapter)
- 	for (i = 0; i < IGC_MAX_TX_TSTAMP_REGS; i++) {
- 		struct igc_tx_timestamp_request *tstamp = &adapter->tx_tstamp[i];
- 
--		dev_kfree_skb_any(tstamp->skb);
--		tstamp->skb = NULL;
-+		if (tstamp->skb) {
-+			dev_kfree_skb_any(tstamp->skb);
-+			tstamp->skb = NULL;
-+		} else if (tstamp->xsk_pending_ts) {
-+			*tstamp->xsk_pending_ts = false;
-+			tstamp->xsk_pending_ts = NULL;
-+			igc_xsk_wakeup(adapter->netdev, tstamp->xsk_queue_index,
-+				       0);
-+		}
- 	}
- 
- 	spin_unlock_irqrestore(&adapter->ptp_tx_lock, flags);
-@@ -657,8 +665,15 @@ static int igc_ptp_set_timestamp_mode(struct igc_adapter *adapter,
- static void igc_ptp_tx_timeout(struct igc_adapter *adapter,
- 			       struct igc_tx_timestamp_request *tstamp)
- {
--	dev_kfree_skb_any(tstamp->skb);
--	tstamp->skb = NULL;
-+	if (tstamp->skb) {
-+		dev_kfree_skb_any(tstamp->skb);
-+		tstamp->skb = NULL;
-+	} else if (tstamp->xsk_pending_ts) {
-+		*tstamp->xsk_pending_ts = false;
-+		tstamp->xsk_pending_ts = NULL;
-+		igc_xsk_wakeup(adapter->netdev, tstamp->xsk_queue_index, 0);
-+	}
-+
- 	adapter->tx_hwtstamp_timeouts++;
- 
- 	netdev_warn(adapter->netdev, "Tx timestamp timeout\n");
-@@ -677,7 +692,7 @@ void igc_ptp_tx_hang(struct igc_adapter *adapter)
- 	for (i = 0; i < IGC_MAX_TX_TSTAMP_REGS; i++) {
- 		tstamp = &adapter->tx_tstamp[i];
- 
--		if (!tstamp->skb)
-+		if (!tstamp->skb && !tstamp->xsk_pending_ts)
- 			continue;
- 
- 		if (time_is_after_jiffies(tstamp->start + IGC_PTP_TX_TIMEOUT))
-@@ -705,7 +720,7 @@ static void igc_ptp_tx_reg_to_stamp(struct igc_adapter *adapter,
- 	int adjust = 0;
- 
- 	skb = tstamp->skb;
--	if (!skb)
-+	if (!skb && !tstamp->xsk_pending_ts)
- 		return;
- 
- 	if (igc_ptp_systim_to_hwtstamp(adapter, &shhwtstamps, regval))
-@@ -729,10 +744,19 @@ static void igc_ptp_tx_reg_to_stamp(struct igc_adapter *adapter,
- 	shhwtstamps.hwtstamp =
- 		ktime_add_ns(shhwtstamps.hwtstamp, adjust);
- 
--	tstamp->skb = NULL;
-+	if (skb) {
-+		tstamp->skb = NULL;
-+		skb_tstamp_tx(skb, &shhwtstamps);
-+		dev_kfree_skb_any(skb);
-+	} else {
-+		xsk_tx_metadata_complete(&tstamp->xsk_meta,
-+					 &igc_xsk_tx_metadata_ops,
-+					 &shhwtstamps.hwtstamp);
- 
--	skb_tstamp_tx(skb, &shhwtstamps);
--	dev_kfree_skb_any(skb);
-+		*tstamp->xsk_pending_ts = false;
-+		tstamp->xsk_pending_ts = NULL;
-+		igc_xsk_wakeup(adapter->netdev, tstamp->xsk_queue_index, 0);
-+	}
- }
- 
- /**
--- 
-2.34.1
-
-_______________________________________________
-Intel-wired-lan mailing list
-Intel-wired-lan@osuosl.org
-https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
+VGhlIHBlci1DUFUgdmFyaWFibGVzIHVzZWQgZHVyaW5nIGJwZl9wcm9nX3J1bl94ZHAoKSBpbnZv
+Y2F0aW9uIGFuZApsYXRlciBkdXJpbmcgeGRwX2RvX3JlZGlyZWN0KCkgcmVseSBvbiBkaXNhYmxl
+ZCBCSCBmb3IgdGhlaXIgcHJvdGVjdGlvbi4KV2l0aG91dCBsb2NraW5nIGluIGxvY2FsX2JoX2Rp
+c2FibGUoKSBvbiBQUkVFTVBUX1JUIHRoZXNlIGRhdGEgc3RydWN0dXJlCnJlcXVpcmUgZXhwbGlj
+aXQgbG9ja2luZy4KClRoaXMgaXMgYSBmb2xsb3ctdXAgb24gdGhlIHByZXZpb3VzIGNoYW5nZSB3
+aGljaCBpbnRyb2R1Y2VkCmJwZl9ydW5fbG9jay5yZWRpcmVjdF9sb2NrIGFuZCB1c2VzIGl0IG5v
+dyB3aXRoaW4gZHJpdmVycy4KClRoZSBzaW1wbGUgd2F5IGlzIHRvIGFjcXVpcmUgdGhlIGxvY2sg
+YmVmb3JlIGJwZl9wcm9nX3J1bl94ZHAoKSBpcwppbnZva2VkIGFuZCBob2xkIGl0IHVudGlsIHRo
+ZSBlbmQgb2YgZnVuY3Rpb24uClRoaXMgZG9lcyBub3QgYWx3YXlzIHdvcmsgYmVjYXVzZSBzb21l
+IGRyaXZlcnMgKGNwc3csIGF0bGFudGljKSBpbnZva2UKeGRwX2RvX2ZsdXNoKCkgaW4gdGhlIHNh
+bWUgY29udGV4dC4KQWNxdWlyaW5nIHRoZSBsb2NrIGluIGJwZl9wcm9nX3J1bl94ZHAoKSBhbmQg
+ZHJvcHBpbmcgaW4KeGRwX2RvX3JlZGlyZWN0KCkgKHdpdGhvdXQgdG91Y2hpbmcgZHJpdmVycykg
+ZG9lcyBub3Qgd29yayBiZWNhdXNlIG5vdAphbGwgZHJpdmVyLCB3aGljaCB1c2UgYnBmX3Byb2df
+cnVuX3hkcCgpLCBkbyBzdXBwb3J0IFhEUF9SRURJUkVDVCAoYW5kCmludm9rZSB4ZHBfZG9fcmVk
+aXJlY3QoKSkuCgpJZGVhbGx5IHRoZSBtaW5pbWFsIGxvY2tpbmcgc2NvcGUgd291bGQgYmUgYnBm
+X3Byb2dfcnVuX3hkcCgpICsKeGRwX2RvX3JlZGlyZWN0KCkgYW5kIGV2ZXJ5dGhpbmcgZWxzZSAo
+ZXJyb3IgcmVjb3ZlcnksIERNQSB1bm1hcHBpbmcsCmZyZWUvIGFsbG9jIG9mIG1lbW9yeSwg4oCm
+KSB3b3VsZCBoYXBwZW4gb3V0c2lkZSBvZiB0aGUgbG9ja2VkIHNlY3Rpb24uCgpDYzogQWxleGVp
+IFN0YXJvdm9pdG92IDxhc3RAa2VybmVsLm9yZz4KQ2M6IEplc3BlciBEYW5nYWFyZCBCcm91ZXIg
+PGhhd2tAa2VybmVsLm9yZz4KQ2M6IEplc3NlIEJyYW5kZWJ1cmcgPGplc3NlLmJyYW5kZWJ1cmdA
+aW50ZWwuY29tPgpDYzogSm9obiBGYXN0YWJlbmQgPGpvaG4uZmFzdGFiZW5kQGdtYWlsLmNvbT4K
+Q2M6IFRvbnkgTmd1eWVuIDxhbnRob255Lmwubmd1eWVuQGludGVsLmNvbT4KQ2M6IGJwZkB2Z2Vy
+Lmtlcm5lbC5vcmcgKG9wZW4gbGlzdDpYRFAKQ2M6IGludGVsLXdpcmVkLWxhbkBsaXN0cy5vc3Vv
+c2wub3JnClNpZ25lZC1vZmYtYnk6IFNlYmFzdGlhbiBBbmRyemVqIFNpZXdpb3IgPGJpZ2Vhc3lA
+bGludXRyb25peC5kZT4KLS0tCiBkcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pNDBlL2k0MGVf
+dHhyeC5jICAgfCAgMSArCiBkcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pNDBlL2k0MGVfeHNr
+LmMgICAgfCAyMiArKysrKysrKystLS0tLS0tLQogZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwv
+aWNlL2ljZV90eHJ4LmMgICAgIHwgIDEgKwogZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWNl
+L2ljZV94c2suYyAgICAgIHwgMjEgKysrKysrKystLS0tLS0tLQogZHJpdmVycy9uZXQvZXRoZXJu
+ZXQvaW50ZWwvaWdiL2lnYl9tYWluLmMgICAgIHwgIDEgKwogZHJpdmVycy9uZXQvZXRoZXJuZXQv
+aW50ZWwvaWdjL2lnY19tYWluLmMgICAgIHwgIDUgKysrLQogZHJpdmVycy9uZXQvZXRoZXJuZXQv
+aW50ZWwvaXhnYmUvaXhnYmVfbWFpbi5jIHwgIDEgKwogZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50
+ZWwvaXhnYmUvaXhnYmVfeHNrLmMgIHwgMjQgKysrKysrKysrKy0tLS0tLS0tLQogLi4uL25ldC9l
+dGhlcm5ldC9pbnRlbC9peGdiZXZmL2l4Z2JldmZfbWFpbi5jIHwgIDMgKystCiA5IGZpbGVzIGNo
+YW5nZWQsIDQ2IGluc2VydGlvbnMoKyksIDMzIGRlbGV0aW9ucygtKQoKZGlmZiAtLWdpdCBhL2Ry
+aXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2k0MGUvaTQwZV90eHJ4LmMgYi9kcml2ZXJzL25ldC9l
+dGhlcm5ldC9pbnRlbC9pNDBlL2k0MGVfdHhyeC5jCmluZGV4IGRkNDEwYjE1MDAwZjcuLjc2ZTA2
+OWFlMjE4M2EgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2k0MGUvaTQw
+ZV90eHJ4LmMKKysrIGIvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaTQwZS9pNDBlX3R4cngu
+YwpAQCAtMjMyNiw2ICsyMzI2LDcgQEAgc3RhdGljIGludCBpNDBlX3J1bl94ZHAoc3RydWN0IGk0
+MGVfcmluZyAqcnhfcmluZywgc3RydWN0IHhkcF9idWZmICp4ZHAsIHN0cnVjdAogCiAJcHJlZmV0
+Y2h3KHhkcC0+ZGF0YV9oYXJkX3N0YXJ0KTsgLyogeGRwX2ZyYW1lIHdyaXRlICovCiAKKwlndWFy
+ZChsb2NhbF9sb2NrX25lc3RlZF9iaCkoJmJwZl9ydW5fbG9jay5yZWRpcmVjdF9sb2NrKTsKIAlh
+Y3QgPSBicGZfcHJvZ19ydW5feGRwKHhkcF9wcm9nLCB4ZHApOwogCXN3aXRjaCAoYWN0KSB7CiAJ
+Y2FzZSBYRFBfUEFTUzoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2k0
+MGUvaTQwZV94c2suYyBiL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2k0MGUvaTQwZV94c2su
+YwppbmRleCBlOTlmYTg1NGQxN2YxLi4yYjBjMGMxZjNkZGM4IDEwMDY0NAotLS0gYS9kcml2ZXJz
+L25ldC9ldGhlcm5ldC9pbnRlbC9pNDBlL2k0MGVfeHNrLmMKKysrIGIvZHJpdmVycy9uZXQvZXRo
+ZXJuZXQvaW50ZWwvaTQwZS9pNDBlX3hzay5jCkBAIC0yMDEsMTcgKzIwMSwxOSBAQCBzdGF0aWMg
+aW50IGk0MGVfcnVuX3hkcF96YyhzdHJ1Y3QgaTQwZV9yaW5nICpyeF9yaW5nLCBzdHJ1Y3QgeGRw
+X2J1ZmYgKnhkcCwKIAlzdHJ1Y3QgaTQwZV9yaW5nICp4ZHBfcmluZzsKIAl1MzIgYWN0OwogCi0J
+YWN0ID0gYnBmX3Byb2dfcnVuX3hkcCh4ZHBfcHJvZywgeGRwKTsKKwlzY29wZWRfZ3VhcmQobG9j
+YWxfbG9ja19uZXN0ZWRfYmgsICZicGZfcnVuX2xvY2sucmVkaXJlY3RfbG9jaykgeworCQlhY3Qg
+PSBicGZfcHJvZ19ydW5feGRwKHhkcF9wcm9nLCB4ZHApOwogCi0JaWYgKGxpa2VseShhY3QgPT0g
+WERQX1JFRElSRUNUKSkgewotCQllcnIgPSB4ZHBfZG9fcmVkaXJlY3QocnhfcmluZy0+bmV0ZGV2
+LCB4ZHAsIHhkcF9wcm9nKTsKLQkJaWYgKCFlcnIpCi0JCQlyZXR1cm4gSTQwRV9YRFBfUkVESVI7
+Ci0JCWlmICh4c2tfdXNlc19uZWVkX3dha2V1cChyeF9yaW5nLT54c2tfcG9vbCkgJiYgZXJyID09
+IC1FTk9CVUZTKQotCQkJcmVzdWx0ID0gSTQwRV9YRFBfRVhJVDsKLQkJZWxzZQotCQkJcmVzdWx0
+ID0gSTQwRV9YRFBfQ09OU1VNRUQ7Ci0JCWdvdG8gb3V0X2ZhaWx1cmU7CisJCWlmIChsaWtlbHko
+YWN0ID09IFhEUF9SRURJUkVDVCkpIHsKKwkJCWVyciA9IHhkcF9kb19yZWRpcmVjdChyeF9yaW5n
+LT5uZXRkZXYsIHhkcCwgeGRwX3Byb2cpOworCQkJaWYgKCFlcnIpCisJCQkJcmV0dXJuIEk0MEVf
+WERQX1JFRElSOworCQkJaWYgKHhza191c2VzX25lZWRfd2FrZXVwKHJ4X3JpbmctPnhza19wb29s
+KSAmJiBlcnIgPT0gLUVOT0JVRlMpCisJCQkJcmVzdWx0ID0gSTQwRV9YRFBfRVhJVDsKKwkJCWVs
+c2UKKwkJCQlyZXN1bHQgPSBJNDBFX1hEUF9DT05TVU1FRDsKKwkJCWdvdG8gb3V0X2ZhaWx1cmU7
+CisJCX0KIAl9CiAKIAlzd2l0Y2ggKGFjdCkgewpkaWZmIC0tZ2l0IGEvZHJpdmVycy9uZXQvZXRo
+ZXJuZXQvaW50ZWwvaWNlL2ljZV90eHJ4LmMgYi9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9p
+Y2UvaWNlX3R4cnguYwppbmRleCA5ZTk3ZWE4NjMwNjg2Li41ZDRjZmEzNDU1YjM3IDEwMDY0NAot
+LS0gYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pY2UvaWNlX3R4cnguYworKysgYi9kcml2
+ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pY2UvaWNlX3R4cnguYwpAQCAtNTcxLDYgKzU3MSw3IEBA
+IGljZV9ydW5feGRwKHN0cnVjdCBpY2VfcnhfcmluZyAqcnhfcmluZywgc3RydWN0IHhkcF9idWZm
+ICp4ZHAsCiAJaWYgKCF4ZHBfcHJvZykKIAkJZ290byBleGl0OwogCisJZ3VhcmQobG9jYWxfbG9j
+a19uZXN0ZWRfYmgpKCZicGZfcnVuX2xvY2sucmVkaXJlY3RfbG9jayk7CiAJYWN0ID0gYnBmX3By
+b2dfcnVuX3hkcCh4ZHBfcHJvZywgeGRwKTsKIAlzd2l0Y2ggKGFjdCkgewogCWNhc2UgWERQX1BB
+U1M6CmRpZmYgLS1naXQgYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pY2UvaWNlX3hzay5j
+IGIvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaWNlL2ljZV94c2suYwppbmRleCA5OTk1NDUw
+ODE4NGY5Li4wMmY4OWMyMmQxOWUzIDEwMDY0NAotLS0gYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9p
+bnRlbC9pY2UvaWNlX3hzay5jCisrKyBiL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2ljZS9p
+Y2VfeHNrLmMKQEAgLTc2MiwxNyArNzYyLDE4IEBAIGljZV9ydW5feGRwX3pjKHN0cnVjdCBpY2Vf
+cnhfcmluZyAqcnhfcmluZywgc3RydWN0IHhkcF9idWZmICp4ZHAsCiAJaW50IGVyciwgcmVzdWx0
+ID0gSUNFX1hEUF9QQVNTOwogCXUzMiBhY3Q7CiAKKwlzY29wZWRfZ3VhcmQobG9jYWxfbG9ja19u
+ZXN0ZWRfYmgsICZicGZfcnVuX2xvY2sucmVkaXJlY3RfbG9jaykgewogCWFjdCA9IGJwZl9wcm9n
+X3J1bl94ZHAoeGRwX3Byb2csIHhkcCk7Ci0KLQlpZiAobGlrZWx5KGFjdCA9PSBYRFBfUkVESVJF
+Q1QpKSB7Ci0JCWVyciA9IHhkcF9kb19yZWRpcmVjdChyeF9yaW5nLT5uZXRkZXYsIHhkcCwgeGRw
+X3Byb2cpOwotCQlpZiAoIWVycikKLQkJCXJldHVybiBJQ0VfWERQX1JFRElSOwotCQlpZiAoeHNr
+X3VzZXNfbmVlZF93YWtldXAocnhfcmluZy0+eHNrX3Bvb2wpICYmIGVyciA9PSAtRU5PQlVGUykK
+LQkJCXJlc3VsdCA9IElDRV9YRFBfRVhJVDsKLQkJZWxzZQotCQkJcmVzdWx0ID0gSUNFX1hEUF9D
+T05TVU1FRDsKLQkJZ290byBvdXRfZmFpbHVyZTsKKwkJaWYgKGxpa2VseShhY3QgPT0gWERQX1JF
+RElSRUNUKSkgeworCQkJZXJyID0geGRwX2RvX3JlZGlyZWN0KHJ4X3JpbmctPm5ldGRldiwgeGRw
+LCB4ZHBfcHJvZyk7CisJCQlpZiAoIWVycikKKwkJCQlyZXR1cm4gSUNFX1hEUF9SRURJUjsKKwkJ
+CWlmICh4c2tfdXNlc19uZWVkX3dha2V1cChyeF9yaW5nLT54c2tfcG9vbCkgJiYgZXJyID09IC1F
+Tk9CVUZTKQorCQkJCXJlc3VsdCA9IElDRV9YRFBfRVhJVDsKKwkJCWVsc2UKKwkJCQlyZXN1bHQg
+PSBJQ0VfWERQX0NPTlNVTUVEOworCQkJZ290byBvdXRfZmFpbHVyZTsKKwkJfQogCX0KIAogCXN3
+aXRjaCAoYWN0KSB7CmRpZmYgLS1naXQgYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pZ2Iv
+aWdiX21haW4uYyBiL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2lnYi9pZ2JfbWFpbi5jCmlu
+ZGV4IGIyMjk1Y2FhMmYwYWIuLmUwMWJlODA5ZDAzMGUgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvbmV0
+L2V0aGVybmV0L2ludGVsL2lnYi9pZ2JfbWFpbi5jCisrKyBiL2RyaXZlcnMvbmV0L2V0aGVybmV0
+L2ludGVsL2lnYi9pZ2JfbWFpbi5jCkBAIC04NjIxLDYgKzg2MjEsNyBAQCBzdGF0aWMgc3RydWN0
+IHNrX2J1ZmYgKmlnYl9ydW5feGRwKHN0cnVjdCBpZ2JfYWRhcHRlciAqYWRhcHRlciwKIAogCXBy
+ZWZldGNodyh4ZHAtPmRhdGFfaGFyZF9zdGFydCk7IC8qIHhkcF9mcmFtZSB3cml0ZSAqLwogCisJ
+Z3VhcmQobG9jYWxfbG9ja19uZXN0ZWRfYmgpKCZicGZfcnVuX2xvY2sucmVkaXJlY3RfbG9jayk7
+CiAJYWN0ID0gYnBmX3Byb2dfcnVuX3hkcCh4ZHBfcHJvZywgeGRwKTsKIAlzd2l0Y2ggKGFjdCkg
+ewogCWNhc2UgWERQX1BBU1M6CmRpZmYgLS1naXQgYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRl
+bC9pZ2MvaWdjX21haW4uYyBiL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2lnYy9pZ2NfbWFp
+bi5jCmluZGV4IGU5YmI0MDNiYmFjZjkuLjgzMjE0MTliM2EzMDcgMTAwNjQ0Ci0tLSBhL2RyaXZl
+cnMvbmV0L2V0aGVybmV0L2ludGVsL2lnYy9pZ2NfbWFpbi5jCisrKyBiL2RyaXZlcnMvbmV0L2V0
+aGVybmV0L2ludGVsL2lnYy9pZ2NfbWFpbi5jCkBAIC0yNDg1LDcgKzI0ODUsMTAgQEAgc3RhdGlj
+IGludCBfX2lnY194ZHBfcnVuX3Byb2coc3RydWN0IGlnY19hZGFwdGVyICphZGFwdGVyLAogCQkJ
+ICAgICAgc3RydWN0IGJwZl9wcm9nICpwcm9nLAogCQkJICAgICAgc3RydWN0IHhkcF9idWZmICp4
+ZHApCiB7Ci0JdTMyIGFjdCA9IGJwZl9wcm9nX3J1bl94ZHAocHJvZywgeGRwKTsKKwl1MzIgYWN0
+OworCisJZ3VhcmQobG9jYWxfbG9ja19uZXN0ZWRfYmgpKCZicGZfcnVuX2xvY2sucmVkaXJlY3Rf
+bG9jayk7CisJYWN0ID0gYnBmX3Byb2dfcnVuX3hkcChwcm9nLCB4ZHApOwogCiAJc3dpdGNoIChh
+Y3QpIHsKIAljYXNlIFhEUF9QQVNTOgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9uZXQvZXRoZXJuZXQv
+aW50ZWwvaXhnYmUvaXhnYmVfbWFpbi5jIGIvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaXhn
+YmUvaXhnYmVfbWFpbi5jCmluZGV4IDk0YmRlMmNhZDBmNDcuLmRlNTY0ZThiODNiZTIgMTAwNjQ0
+Ci0tLSBhL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2l4Z2JlL2l4Z2JlX21haW4uYworKysg
+Yi9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9peGdiZS9peGdiZV9tYWluLmMKQEAgLTIyMDMs
+NiArMjIwMyw3IEBAIHN0YXRpYyBzdHJ1Y3Qgc2tfYnVmZiAqaXhnYmVfcnVuX3hkcChzdHJ1Y3Qg
+aXhnYmVfYWRhcHRlciAqYWRhcHRlciwKIAogCXByZWZldGNodyh4ZHAtPmRhdGFfaGFyZF9zdGFy
+dCk7IC8qIHhkcF9mcmFtZSB3cml0ZSAqLwogCisJZ3VhcmQobG9jYWxfbG9ja19uZXN0ZWRfYmgp
+KCZicGZfcnVuX2xvY2sucmVkaXJlY3RfbG9jayk7CiAJYWN0ID0gYnBmX3Byb2dfcnVuX3hkcCh4
+ZHBfcHJvZywgeGRwKTsKIAlzd2l0Y2ggKGFjdCkgewogCWNhc2UgWERQX1BBU1M6CmRpZmYgLS1n
+aXQgYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9peGdiZS9peGdiZV94c2suYyBiL2RyaXZl
+cnMvbmV0L2V0aGVybmV0L2ludGVsL2l4Z2JlL2l4Z2JlX3hzay5jCmluZGV4IDU5Nzk4YmMzMzI5
+OGYuLmI5ODhmNzU4YWFkNDkgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVs
+L2l4Z2JlL2l4Z2JlX3hzay5jCisrKyBiL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2l4Z2Jl
+L2l4Z2JlX3hzay5jCkBAIC0xMDQsMTggKzEwNCwyMCBAQCBzdGF0aWMgaW50IGl4Z2JlX3J1bl94
+ZHBfemMoc3RydWN0IGl4Z2JlX2FkYXB0ZXIgKmFkYXB0ZXIsCiAJc3RydWN0IHhkcF9mcmFtZSAq
+eGRwZjsKIAl1MzIgYWN0OwogCi0JeGRwX3Byb2cgPSBSRUFEX09OQ0UocnhfcmluZy0+eGRwX3By
+b2cpOwotCWFjdCA9IGJwZl9wcm9nX3J1bl94ZHAoeGRwX3Byb2csIHhkcCk7CisJc2NvcGVkX2d1
+YXJkKGxvY2FsX2xvY2tfbmVzdGVkX2JoLCAmYnBmX3J1bl9sb2NrLnJlZGlyZWN0X2xvY2spIHsK
+KwkJeGRwX3Byb2cgPSBSRUFEX09OQ0UocnhfcmluZy0+eGRwX3Byb2cpOworCQlhY3QgPSBicGZf
+cHJvZ19ydW5feGRwKHhkcF9wcm9nLCB4ZHApOwogCi0JaWYgKGxpa2VseShhY3QgPT0gWERQX1JF
+RElSRUNUKSkgewotCQllcnIgPSB4ZHBfZG9fcmVkaXJlY3QocnhfcmluZy0+bmV0ZGV2LCB4ZHAs
+IHhkcF9wcm9nKTsKLQkJaWYgKCFlcnIpCi0JCQlyZXR1cm4gSVhHQkVfWERQX1JFRElSOwotCQlp
+ZiAoeHNrX3VzZXNfbmVlZF93YWtldXAocnhfcmluZy0+eHNrX3Bvb2wpICYmIGVyciA9PSAtRU5P
+QlVGUykKLQkJCXJlc3VsdCA9IElYR0JFX1hEUF9FWElUOwotCQllbHNlCi0JCQlyZXN1bHQgPSBJ
+WEdCRV9YRFBfQ09OU1VNRUQ7Ci0JCWdvdG8gb3V0X2ZhaWx1cmU7CisJCWlmIChsaWtlbHkoYWN0
+ID09IFhEUF9SRURJUkVDVCkpIHsKKwkJCWVyciA9IHhkcF9kb19yZWRpcmVjdChyeF9yaW5nLT5u
+ZXRkZXYsIHhkcCwgeGRwX3Byb2cpOworCQkJaWYgKCFlcnIpCisJCQkJcmV0dXJuIElYR0JFX1hE
+UF9SRURJUjsKKwkJCWlmICh4c2tfdXNlc19uZWVkX3dha2V1cChyeF9yaW5nLT54c2tfcG9vbCkg
+JiYgZXJyID09IC1FTk9CVUZTKQorCQkJCXJlc3VsdCA9IElYR0JFX1hEUF9FWElUOworCQkJZWxz
+ZQorCQkJCXJlc3VsdCA9IElYR0JFX1hEUF9DT05TVU1FRDsKKwkJCWdvdG8gb3V0X2ZhaWx1cmU7
+CisJCX0KIAl9CiAKIAlzd2l0Y2ggKGFjdCkgewpkaWZmIC0tZ2l0IGEvZHJpdmVycy9uZXQvZXRo
+ZXJuZXQvaW50ZWwvaXhnYmV2Zi9peGdiZXZmX21haW4uYyBiL2RyaXZlcnMvbmV0L2V0aGVybmV0
+L2ludGVsL2l4Z2JldmYvaXhnYmV2Zl9tYWluLmMKaW5kZXggYTQ0ZTRiZDU2MTQyMS4uMWM1OGMw
+OGFhMTVmZiAxMDA2NDQKLS0tIGEvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaXhnYmV2Zi9p
+eGdiZXZmX21haW4uYworKysgYi9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9peGdiZXZmL2l4
+Z2JldmZfbWFpbi5jCkBAIC0xMDU5LDcgKzEwNTksOCBAQCBzdGF0aWMgc3RydWN0IHNrX2J1ZmYg
+Kml4Z2JldmZfcnVuX3hkcChzdHJ1Y3QgaXhnYmV2Zl9hZGFwdGVyICphZGFwdGVyLAogCWlmICgh
+eGRwX3Byb2cpCiAJCWdvdG8geGRwX291dDsKIAotCWFjdCA9IGJwZl9wcm9nX3J1bl94ZHAoeGRw
+X3Byb2csIHhkcCk7CisJc2NvcGVkX2d1YXJkKGxvY2FsX2xvY2tfbmVzdGVkX2JoLCAmYnBmX3J1
+bl9sb2NrLnJlZGlyZWN0X2xvY2spCisJCWFjdCA9IGJwZl9wcm9nX3J1bl94ZHAoeGRwX3Byb2cs
+IHhkcCk7CiAJc3dpdGNoIChhY3QpIHsKIAljYXNlIFhEUF9QQVNTOgogCQlicmVhazsKLS0gCjIu
+NDMuMAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KSW50
+ZWwtd2lyZWQtbGFuIG1haWxpbmcgbGlzdApJbnRlbC13aXJlZC1sYW5Ab3N1b3NsLm9yZwpodHRw
+czovL2xpc3RzLm9zdW9zbC5vcmcvbWFpbG1hbi9saXN0aW5mby9pbnRlbC13aXJlZC1sYW4K
