@@ -2,90 +2,85 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 70B31815795
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 16 Dec 2023 05:54:26 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 414428157B6
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 16 Dec 2023 06:17:24 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 4D0C4424BF;
-	Sat, 16 Dec 2023 04:54:23 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4D0C4424BF
+	by smtp4.osuosl.org (Postfix) with ESMTP id BB08942483;
+	Sat, 16 Dec 2023 05:17:22 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org BB08942483
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1702702463;
-	bh=FIvaZNjUQiThhexG5hPzHi+w1ZuMF3bi9jUJ3b+Jm4o=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=h0tlT+aQjbDW2yi0/ukwvbnSnn1W48xqBRwqju1UEMSd7se9f5LW7cS6/nMi8P0+p
-	 rDrD31xxazDnM8WPmqHA7jvlcX7rwMkaumaSreVGL6evR94d/scf4bHwncnJr8XkM9
-	 ar8494+1HbW32FJ4TQXpVTwvUj3MfnPFAvOBG+oSyFmSQfm2MvlKv0pFZZPDqfTALK
-	 o1kVyi9jSqiWaybTEFY7ONSkHMMpJpzRrKkxWNjy8butGKX3CiHbBcz1bKRBFQ8Jfx
-	 B3u+80SYb1pXZYCiU/F9LBBYQe8E75akek18ulLJ3TlXdUWGOjc1T66n34J6Tk4QgQ
-	 Tx9ru03W94JdA==
+	s=default; t=1702703842;
+	bh=0jXeGrGEeZKuD7dlaIIbnyz+uiK6LysyCny0D5gMyaI=;
+	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=LyUXtEmRU3gIHV3EkVETpaPlvgFYFXrN2iV6yqOHbSafX0ytnxd4qVTiDco5BfHv/
+	 3b3sKUwJn8PPDiPLPYawqYCrMgwKtme35VhvKCnX5ychAFKNeehj6H2XmWbluzsH57
+	 w2VKo+d62V8FC7ymydOpzJzx3jJQZpxMG3jszc2vc1GEqBYEHRQh1j4/zsmPoFhT2t
+	 YjLsk7l3B1u7hjF3h3CLg8dyIlsSjNFODXPyZEg63fZIscd1oJssOXAEuqwcKn1e69
+	 690qOz2WyIxcbvikrzNUWCUviXVYpuEa6hSlTc8bH+itLzefsgX354WnU0dAGgZr4+
+	 gudXpSpucYHQA==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id KIdxhkQYUwq4; Sat, 16 Dec 2023 04:54:22 +0000 (UTC)
+	with ESMTP id wQ3Znxu17tMF; Sat, 16 Dec 2023 05:17:20 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id CC7DC421CB;
-	Sat, 16 Dec 2023 04:54:21 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org CC7DC421CB
+	by smtp4.osuosl.org (Postfix) with ESMTP id 3AF0D4247F;
+	Sat, 16 Dec 2023 05:17:20 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3AF0D4247F
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 4ED6D1BF2FB
- for <intel-wired-lan@lists.osuosl.org>; Sat, 16 Dec 2023 04:54:17 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 3F1031BF4E2
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 16 Dec 2023 05:17:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 28DAE61026
- for <intel-wired-lan@lists.osuosl.org>; Sat, 16 Dec 2023 04:54:17 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 28DAE61026
+ by smtp2.osuosl.org (Postfix) with ESMTP id 22BB340232
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 16 Dec 2023 05:17:15 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 22BB340232
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id yo6pm8wXj2Y8 for <intel-wired-lan@lists.osuosl.org>;
- Sat, 16 Dec 2023 04:54:13 +0000 (UTC)
-Received: from mgamail.intel.com (mgamail.intel.com [134.134.136.20])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 3439C60B42
- for <intel-wired-lan@lists.osuosl.org>; Sat, 16 Dec 2023 04:54:12 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3439C60B42
-X-IronPort-AV: E=McAfee;i="6600,9927,10925"; a="385777638"
-X-IronPort-AV: E=Sophos;i="6.04,280,1695711600"; d="scan'208";a="385777638"
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 15 Dec 2023 20:54:10 -0800
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id O-SSjBn3XWFx for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 16 Dec 2023 05:17:12 +0000 (UTC)
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.10])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id B0943401E1
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 16 Dec 2023 05:17:12 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B0943401E1
+X-IronPort-AV: E=McAfee;i="6600,9927,10925"; a="2535935"
+X-IronPort-AV: E=Sophos;i="6.04,280,1695711600"; 
+   d="scan'208";a="2535935"
+Received: from fmsmga002.fm.intel.com ([10.253.24.26])
+ by fmvoesa104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 15 Dec 2023 21:17:11 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10925"; a="751162050"
-X-IronPort-AV: E=Sophos;i="6.04,280,1695711600"; d="scan'208";a="751162050"
+X-IronPort-AV: E=McAfee;i="6600,9927,10925"; a="893144840"
+X-IronPort-AV: E=Sophos;i="6.04,280,1695711600"; d="scan'208";a="893144840"
 Received: from lkp-server02.sh.intel.com (HELO b07ab15da5fe) ([10.239.97.151])
- by orsmga006.jf.intel.com with ESMTP; 15 Dec 2023 20:54:04 -0800
+ by fmsmga002.fm.intel.com with ESMTP; 15 Dec 2023 21:17:07 -0800
 Received: from kbuild by b07ab15da5fe with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1rEMga-0001Ac-1s;
- Sat, 16 Dec 2023 04:54:01 +0000
-Date: Sat, 16 Dec 2023 12:53:43 +0800
+ (envelope-from <lkp@intel.com>) id 1rEN2v-0001Bj-2F;
+ Sat, 16 Dec 2023 05:17:05 +0000
+Date: Sat, 16 Dec 2023 13:17:00 +0800
 From: kernel test robot <lkp@intel.com>
-To: Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
- linux-kernel@vger.kernel.org, netdev@vger.kernel.org
-Message-ID: <202312161212.D5tju5i6-lkp@intel.com>
-References: <20231215171020.687342-21-bigeasy@linutronix.de>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20231215171020.687342-21-bigeasy@linutronix.de>
+To: Andrew Morton <akpm@linux-foundation.org>
+Message-ID: <202312161352.wMZ6kGnT-lkp@intel.com>
+User-Agent: s-nail v14.9.24
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1702702453; x=1734238453;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=hbCzV9FRyfR9WQHmArq5wOV7koxOXpFFbjy3k1iOVwE=;
- b=ATQSAxiNUZlxiXxOAsPXv7Pg+hAZe8eznhzIuVM2oWjF1QN8W9b0YAGN
- bKc4tBxClMbaMQCHdnyHPHhk7jF7DQutwuuN/S2N4kXTovQL4u04N2h3J
- iDXXWw7d0U6lcvFZCx6VSEMFoXn2IY30RyMYEi20NlBEhB3suM7l5KOTJ
- 36Wa99rXCCMDwC8AatCbOOnbeqjTg5xJ6yhIkKINsLMtABJSFNV+JpgNO
- kvubtB37vWENApwBWDpJaHfpe3hDnOxJVMe62UIT65MQddC4KgE5mDm7b
- nSbE1L2tzfGL9pQWIVCyT4RHo9vk8S7glDp0aSZZ8XxlUxwbeei6/Wd+Z
- g==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ t=1702703832; x=1734239832;
+ h=date:from:to:cc:subject:message-id;
+ bh=0DJx5tWAZSSJiCmdaCOvf0847AXdqKO1db2kTzxegmQ=;
+ b=jbwKIVx2Y5MFNfUirqf4X+45kY7aBEC7auyGBUFtAaNQegFB+mbj7vhu
+ jR84nsblT1Idbgta7UblTspI7LpgxxpQbFSiM4jhQBJ2X549SNVmnvHAd
+ ULJ7zzJUdXRBJkQ7Q4EDlAuZaafb2wHM+pM14HvqTpYscThgRKeiCQetN
+ oBBymA0caKkAryIC0rMwENkmoTErEphvD6jOvHMp/izGmj2j5hquxAYr6
+ UgYXidrkT+d3PtTeagbyYpeRuJQau6V26Okvw9Y6zcRRW7m/zARZHtg5c
+ UwlXWIeN7tbvCnv7XOK2KDyVcrXZuBmTcYAEdm7ZoqnUet91OpJeisvzT
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=ATQSAxiN
-Subject: Re: [Intel-wired-lan] [PATCH net-next 20/24] net: intel: Use
- nested-BH locking for XDP redirect.
+ header.a=rsa-sha256 header.s=Intel header.b=jbwKIVx2
+Subject: [Intel-wired-lan] [linux-next:master] BUILD REGRESSION
+ 17cb8a20bde66a520a2ca7aad1063e1ce7382240
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,117 +93,398 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Jesper Dangaard Brouer <hawk@kernel.org>,
- Daniel Borkmann <daniel@iogearbox.net>, Peter Zijlstra <peterz@infradead.org>,
- intel-wired-lan@lists.osuosl.org, Frederic Weisbecker <frederic@kernel.org>,
- llvm@lists.linux.dev, John Fastabend <john.fastabend@gmail.com>,
- Alexei Starovoitov <ast@kernel.org>, bpf@vger.kernel.org,
- Jesse Brandeburg <jesse.brandeburg@intel.com>,
- Eric Dumazet <edumazet@google.com>, Ingo Molnar <mingo@redhat.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>, Waiman Long <longman@redhat.com>,
- oe-kbuild-all@lists.linux.dev, Jakub Kicinski <kuba@kernel.org>,
- Thomas Gleixner <tglx@linutronix.de>, Paolo Abeni <pabeni@redhat.com>,
- Will Deacon <will@kernel.org>, Boqun Feng <boqun.feng@gmail.com>,
- Sebastian Andrzej Siewior <bigeasy@linutronix.de>
+Cc: linux-arch@vger.kernel.org, linux-hwmon@vger.kernel.org,
+ linux-bcachefs@vger.kernel.org, linux-arm-msm@vger.kernel.org,
+ amd-gfx@lists.freedesktop.org,
+ Linux Memory Management List <linux-mm@kvack.org>,
+ intel-wired-lan@lists.osuosl.org, linux-csky@vger.kernel.org,
+ linux-leds@vger.kernel.org, linux-input@vger.kernel.org,
+ sparclinux@vger.kernel.org, linux-afs@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi Sebastian,
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git master
+branch HEAD: 17cb8a20bde66a520a2ca7aad1063e1ce7382240  Add linux-next specific files for 20231215
 
-kernel test robot noticed the following build errors:
+Error/Warning reports:
 
-[auto build test ERROR on net-next/main]
+https://lore.kernel.org/oe-kbuild-all/202312151816.munFeE4L-lkp@intel.com
+https://lore.kernel.org/oe-kbuild-all/202312151854.4k8dhWf6-lkp@intel.com
+https://lore.kernel.org/oe-kbuild-all/202312160153.ovUEsxo6-lkp@intel.com
+https://lore.kernel.org/oe-kbuild-all/202312160433.Oz8VJHH3-lkp@intel.com
+https://lore.kernel.org/oe-kbuild-all/202312161324.nZN1zCQT-lkp@intel.com
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Sebastian-Andrzej-Siewior/locking-local_lock-Introduce-guard-definition-for-local_lock/20231216-011911
-base:   net-next/main
-patch link:    https://lore.kernel.org/r/20231215171020.687342-21-bigeasy%40linutronix.de
-patch subject: [PATCH net-next 20/24] net: intel: Use nested-BH locking for XDP redirect.
-config: arm-defconfig (https://download.01.org/0day-ci/archive/20231216/202312161212.D5tju5i6-lkp@intel.com/config)
-compiler: clang version 14.0.6 (https://github.com/llvm/llvm-project.git f28c006a5895fc0e329fe15fead81e37457cb1d1)
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20231216/202312161212.D5tju5i6-lkp@intel.com/reproduce)
+Error/Warning: (recently discovered and may have been fixed)
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202312161212.D5tju5i6-lkp@intel.com/
+arch/arm/include/asm/cmpxchg.h:111:(.text+0xf6c): undefined reference to `__bad_xchg'
+callback.c:(.rodata.cst4+0x18): undefined reference to `__xchg_called_with_bad_pointer'
+callback.c:(.text+0x114): undefined reference to `__xchg_called_with_bad_pointer'
+drivers/net/ethernet/intel/ice/ice_base.c:525:16: error: variable 'desc' has initializer but incomplete type
+drivers/net/ethernet/intel/ice/ice_base.c:525:28: error: storage size of 'desc' isn't known
+drivers/net/ethernet/intel/ice/ice_base.c:525:28: warning: unused variable 'desc' [-Wunused-variable]
+fs/bcachefs/btree_iter.c:3090:36: sparse:    struct btree_path *
+fs/bcachefs/btree_iter.c:3090:36: sparse:    struct btree_path [noderef] __rcu *
+fs/bcachefs/btree_locking.c:309:36: sparse:    struct btree_path *
+fs/bcachefs/btree_locking.c:309:36: sparse:    struct btree_path [noderef] __rcu *
+include/asm-generic/cmpxchg.h:76:(.text+0x1d0): relocation truncated to fit: R_NIOS2_CALL26 against `__generic_xchg_called_with_bad_pointer'
+include/linux/compiler_types.h:435:45: error: call to '__compiletime_assert_38' declared with attribute error: Unsupported size for __xchg_relaxed
+io.c:(.text+0x6): relocation truncated to fit: R_CKCORE_PCREL_IMM16BY4 against `__jump_table'
+m68k-linux-ld: callback.c:(.text+0x228): undefined reference to `__invalid_xchg_size'
+mm/ksm.c:344:13: warning: 'set_advisor_defaults' defined but not used [-Wunused-function]
+rotate.c:(.rodata.cst4+0x30): undefined reference to `__xchg_called_with_bad_pointer'
+scripts/kernel-doc: drivers/spi/spi-pl022.c:397: warning: Excess struct member 'cur_msg' description in 'pl022'
+scripts/kernel-doc: drivers/spi/spi-pl022.c:437: warning: Excess function parameter 'command' description in 'internal_cs_control'
+scripts/kernel-doc: drivers/spi/spi-pl022.c:437: warning: Function parameter or struct member 'enable' not described in 'internal_cs_control'
 
-All errors (new ones prefixed by >>):
+Error/Warning ids grouped by kconfigs:
 
->> drivers/net/ethernet/intel/igb/igb_main.c:8620:3: error: cannot jump from this goto statement to its label
-                   goto xdp_out;
-                   ^
-   drivers/net/ethernet/intel/igb/igb_main.c:8624:2: note: jump bypasses initialization of variable with __attribute__((cleanup))
-           guard(local_lock_nested_bh)(&bpf_run_lock.redirect_lock);
-           ^
-   include/linux/cleanup.h:142:15: note: expanded from macro 'guard'
-           CLASS(_name, __UNIQUE_ID(guard))
-                        ^
-   include/linux/compiler.h:180:29: note: expanded from macro '__UNIQUE_ID'
-   #define __UNIQUE_ID(prefix) __PASTE(__PASTE(__UNIQUE_ID_, prefix), __COUNTER__)
-                               ^
-   include/linux/compiler_types.h:84:22: note: expanded from macro '__PASTE'
-   #define __PASTE(a,b) ___PASTE(a,b)
-                        ^
-   include/linux/compiler_types.h:83:23: note: expanded from macro '___PASTE'
-   #define ___PASTE(a,b) a##b
-                         ^
-   <scratch space>:52:1: note: expanded from here
-   __UNIQUE_ID_guard753
-   ^
-   1 error generated.
+gcc_recent_errors
+|-- arc-randconfig-002-20231215
+|   |-- drivers-net-ethernet-intel-ice-ice_base.c:error:storage-size-of-desc-isn-t-known
+|   |-- drivers-net-ethernet-intel-ice-ice_base.c:error:variable-desc-has-initializer-but-incomplete-type
+|   `-- drivers-net-ethernet-intel-ice-ice_base.c:warning:unused-variable-desc
+|-- arc-randconfig-r132-20231215
+|   |-- drivers-hwmon-max31827.c:sparse:sparse:dubious:x-y
+|   `-- lib-zstd-compress-zstd_fast.c:sparse:sparse:Using-plain-integer-as-NULL-pointer
+|-- arm-buildonly-randconfig-r002-20220918
+|   `-- arch-arm-include-asm-cmpxchg.h:(.text):undefined-reference-to-__bad_xchg
+|-- arm-lpc18xx_defconfig
+|   |-- scripts-kernel-doc:drivers-spi-spi-pl022.c:warning:Excess-function-parameter-command-description-in-internal_cs_control
+|   |-- scripts-kernel-doc:drivers-spi-spi-pl022.c:warning:Excess-struct-member-cur_msg-description-in-pl022
+|   `-- scripts-kernel-doc:drivers-spi-spi-pl022.c:warning:Function-parameter-or-struct-member-enable-not-described-in-internal_cs_control
+|-- csky-randconfig-001-20231215
+|   `-- WARNING:modpost:missing-MODULE_DESCRIPTION()-in-lib-zlib_inflate-zlib_inflate.o
+|-- csky-randconfig-r016-20220425
+|   `-- io.c:(.text):relocation-truncated-to-fit:R_CKCORE_PCREL_IMM16BY4-against-__jump_table
+|-- csky-randconfig-r113-20231215
+|   |-- arch-csky-kernel-vdso-vgettimeofday.c:sparse:sparse:function-__vdso_clock_gettime-with-external-linkage-has-definition
+|   |-- fs-bcachefs-btree_iter.c:sparse:sparse:incompatible-types-in-comparison-expression-(different-address-spaces):
+|   |-- fs-bcachefs-btree_iter.c:sparse:struct-btree_path
+|   |-- fs-bcachefs-btree_iter.c:sparse:struct-btree_path-noderef-__rcu
+|   |-- fs-bcachefs-btree_locking.c:sparse:sparse:incompatible-types-in-comparison-expression-(different-address-spaces):
+|   |-- fs-bcachefs-btree_locking.c:sparse:struct-btree_path
+|   |-- fs-bcachefs-btree_locking.c:sparse:struct-btree_path-noderef-__rcu
+|   `-- lib-zstd-compress-zstd_fast.c:sparse:sparse:Using-plain-integer-as-NULL-pointer
+|-- i386-randconfig-013-20231215
+|   `-- drivers-hid-hid-nintendo.c:error:initializer-element-is-not-constant
+|-- loongarch-defconfig
+|   `-- drivers-gpu-drm-amd-amdgpu-..-display-dc-hwss-dcn35-dcn35_hwseq.c:warning:This-comment-starts-with-but-isn-t-a-kernel-doc-comment.-Refer-Documentation-doc-guide-kernel-doc.rst
+|-- loongarch-randconfig-001-20231215
+|   `-- drivers-gpu-drm-amd-amdgpu-..-display-dc-hwss-dcn35-dcn35_hwseq.c:warning:This-comment-starts-with-but-isn-t-a-kernel-doc-comment.-Refer-Documentation-doc-guide-kernel-doc.rst
+|-- loongarch-randconfig-002-20231215
+|   `-- drivers-gpu-drm-amd-amdgpu-..-display-dc-hwss-dcn35-dcn35_hwseq.c:warning:This-comment-starts-with-but-isn-t-a-kernel-doc-comment.-Refer-Documentation-doc-guide-kernel-doc.rst
+|-- m68k-randconfig-r012-20211002
+|   `-- m68k-linux-ld:callback.c:(.text):undefined-reference-to-__invalid_xchg_size
+|-- microblaze-randconfig-r121-20231215
+|   `-- lib-zstd-compress-zstd_fast.c:sparse:sparse:Using-plain-integer-as-NULL-pointer
+|-- microblaze-randconfig-r122-20231215
+|   |-- drivers-soc-qcom-pmic_pdcharger_ulog.c:sparse:sparse:incorrect-type-in-initializer-(different-base-types)-expected-restricted-__le32-usertype-opcode-got-int
+|   |-- drivers-soc-qcom-pmic_pdcharger_ulog.c:sparse:sparse:incorrect-type-in-initializer-(different-base-types)-expected-restricted-__le32-usertype-owner-got-int
+|   |-- drivers-soc-qcom-pmic_pdcharger_ulog.c:sparse:sparse:incorrect-type-in-initializer-(different-base-types)-expected-restricted-__le32-usertype-type-got-int
+|   `-- lib-zstd-compress-zstd_fast.c:sparse:sparse:Using-plain-integer-as-NULL-pointer
+|-- mips-decstation_64_defconfig
+|   `-- WARNING:modpost:missing-MODULE_DESCRIPTION()-in-lib-zlib_inflate-zlib_inflate.o
+|-- mips-fuloong2e_defconfig
+|   |-- WARNING:modpost:missing-MODULE_DESCRIPTION()-in-drivers-base-regmap-regmap-mmio.o
+|   `-- WARNING:modpost:missing-MODULE_DESCRIPTION()-in-lib-zlib_inflate-zlib_inflate.o
+|-- mips-jazz_defconfig
+|   |-- WARNING:modpost:missing-MODULE_DESCRIPTION()-in-lib-zlib_inflate-zlib_inflate.o
+|   `-- cache.c:(.text):undefined-reference-to-r3k_cache_init
+|-- nios2-allyesconfig
+|   |-- callback.c:(.text):relocation-truncated-to-fit:R_NIOS2_CALL26-against-__generic_xchg_called_with_bad_pointer
+|   `-- rotate.c:(.text):relocation-truncated-to-fit:R_NIOS2_CALL26-against-__generic_xchg_called_with_bad_pointer
+|-- nios2-randconfig-r035-20230329
+|   `-- include-asm-generic-cmpxchg.h:(.text):relocation-truncated-to-fit:R_NIOS2_CALL26-against-__generic_xchg_called_with_bad_pointer
+|-- openrisc-randconfig-r016-20230621
+|   `-- mm-ksm.c:warning:set_advisor_defaults-defined-but-not-used
+|-- openrisc-randconfig-r111-20231215
+|   |-- drivers-hwmon-max31827.c:sparse:sparse:dubious:x-y
+|   `-- lib-zstd-compress-zstd_fast.c:sparse:sparse:Using-plain-integer-as-NULL-pointer
+|-- parisc-randconfig-001-20231215
+|   `-- WARNING:modpost:missing-MODULE_DESCRIPTION()-in-lib-zlib_inflate-zlib_inflate.o
+|-- parisc-randconfig-r015-20220820
+|   |-- callback.c:(.rodata.cst4):undefined-reference-to-__xchg_called_with_bad_pointer
+|   `-- rotate.c:(.rodata.cst4):undefined-reference-to-__xchg_called_with_bad_pointer
+|-- powerpc-randconfig-c003-20220424
+|   `-- include-linux-compiler_types.h:error:call-to-__compiletime_assert_NNN-declared-with-attribute-error:Unsupported-size-for-__xchg_relaxed
+|-- s390-randconfig-r133-20231215
+|   |-- WARNING:modpost:missing-MODULE_DESCRIPTION()-in-lib-zlib_inflate-zlib_inflate.o
+|   |-- drivers-hwmon-max31827.c:sparse:sparse:dubious:x-y
+|   `-- lib-zstd-compress-zstd_fast.c:sparse:sparse:Using-plain-integer-as-NULL-pointer
+|-- sparc-allmodconfig
+|   |-- arch-sparc-kernel-module.c:warning:variable-strtab-set-but-not-used
+|   `-- arch-sparc-mm-init_64.c:warning:variable-hv_pgsz_idx-set-but-not-used
+|-- sparc-allnoconfig
+|   |-- arch-sparc-mm-leon_mm.c:warning:variable-paddrbase-set-but-not-used
+|   `-- arch-sparc-mm-srmmu.c:warning:variable-clear-set-but-not-used
+|-- sparc-defconfig
+|   |-- arch-sparc-kernel-module.c:warning:variable-strtab-set-but-not-used
+|   |-- arch-sparc-mm-leon_mm.c:warning:variable-paddrbase-set-but-not-used
+|   `-- arch-sparc-mm-srmmu.c:warning:variable-clear-set-but-not-used
+|-- sparc-randconfig-001-20231215
+|   |-- (.head.text):relocation-truncated-to-fit:R_SPARC_WDISP22-against-init.text
+|   |-- arch-sparc-kernel-module.c:warning:variable-strtab-set-but-not-used
+|   |-- arch-sparc-mm-leon_mm.c:warning:variable-paddrbase-set-but-not-used
+|   `-- arch-sparc-mm-srmmu.c:warning:variable-clear-set-but-not-used
+|-- sparc-randconfig-002-20231215
+|   |-- (.head.text):relocation-truncated-to-fit:R_SPARC_WDISP22-against-init.text
+|   |-- arch-sparc-mm-leon_mm.c:warning:variable-paddrbase-set-but-not-used
+|   |-- arch-sparc-mm-srmmu.c:warning:variable-clear-set-but-not-used
+|   |-- parport_pc.c:(.text):undefined-reference-to-ebus_dma_enable
+|   |-- parport_pc.c:(.text):undefined-reference-to-ebus_dma_irq_enable
+|   |-- parport_pc.c:(.text):undefined-reference-to-ebus_dma_register
+|   |-- sparc-linux-ld:parport_pc.c:(.text):undefined-reference-to-ebus_dma_enable
+|   |-- sparc-linux-ld:parport_pc.c:(.text):undefined-reference-to-ebus_dma_irq_enable
+|   |-- sparc-linux-ld:parport_pc.c:(.text):undefined-reference-to-ebus_dma_prepare
+|   |-- sparc-linux-ld:parport_pc.c:(.text):undefined-reference-to-ebus_dma_request
+|   |-- sparc-linux-ld:parport_pc.c:(.text):undefined-reference-to-ebus_dma_residue
+|   `-- sparc-linux-ld:parport_pc.c:(.text):undefined-reference-to-ebus_dma_unregister
+|-- sparc64-allmodconfig
+|   |-- arch-sparc-kernel-module.c:warning:variable-strtab-set-but-not-used
+|   `-- arch-sparc-mm-init_64.c:warning:variable-hv_pgsz_idx-set-but-not-used
+|-- sparc64-allyesconfig
+|   |-- arch-sparc-kernel-module.c:warning:variable-strtab-set-but-not-used
+|   `-- arch-sparc-mm-init_64.c:warning:variable-hv_pgsz_idx-set-but-not-used
+|-- sparc64-defconfig
+|   |-- arch-sparc-kernel-module.c:warning:variable-strtab-set-but-not-used
+|   `-- arch-sparc-mm-init_64.c:warning:variable-hv_pgsz_idx-set-but-not-used
+|-- sparc64-randconfig-001-20231215
+|   `-- arch-sparc-mm-init_64.c:warning:variable-hv_pgsz_idx-set-but-not-used
+|-- sparc64-randconfig-002-20231215
+|   `-- arch-sparc-mm-init_64.c:warning:variable-pagecv_flag-set-but-not-used
+|-- sparc64-randconfig-r062-20231215
+|   `-- arch-sparc-kernel-module.c:warning:variable-strtab-set-but-not-used
+|-- x86_64-allnoconfig
+|   `-- Warning:MAINTAINERS-references-a-file-that-doesn-t-exist:Documentation-devicetree-bindings-display-panel-synaptics-r63353.yaml
+|-- x86_64-randconfig-001-20231215
+|   `-- drivers-hid-hid-nintendo.c:error:initializer-element-is-not-constant
+|-- x86_64-randconfig-r131-20231215
+|   |-- drivers-gpu-drm-amd-amdgpu-..-display-dc-hwss-dcn35-dcn35_hwseq.c:warning:This-comment-starts-with-but-isn-t-a-kernel-doc-comment.-Refer-Documentation-doc-guide-kernel-doc.rst
+|   `-- drivers-hwmon-max31827.c:sparse:sparse:dubious:x-y
+`-- xtensa-randconfig-c024-20220216
+    `-- callback.c:(.text):undefined-reference-to-__xchg_called_with_bad_pointer
+clang_recent_errors
+|-- arm-defconfig
+|   |-- WARNING:modpost:vmlinux:section-mismatch-in-reference:at91_poweroff_probe-(section:.text)-at91_wakeup_status-(section:.init.text)
+|   `-- WARNING:modpost:vmlinux:section-mismatch-in-reference:at91_shdwc_probe-(section:.text)-at91_wakeup_status-(section:.init.text)
+|-- arm64-allmodconfig
+|   `-- drivers-leds-leds-max5970.c:warning:variable-num_leds-set-but-not-used
+|-- arm64-allyesconfig
+|   `-- drivers-leds-leds-max5970.c:warning:variable-num_leds-set-but-not-used
+|-- hexagon-allmodconfig
+|   `-- drivers-leds-leds-max5970.c:warning:variable-num_leds-set-but-not-used
+|-- hexagon-allyesconfig
+|   `-- drivers-leds-leds-max5970.c:warning:variable-num_leds-set-but-not-used
+|-- i386-allmodconfig
+|   `-- drivers-leds-leds-max5970.c:warning:variable-num_leds-set-but-not-used
+|-- i386-buildonly-randconfig-006-20231215
+|   |-- WARNING:modpost:missing-MODULE_DESCRIPTION()-in-drivers-base-regmap-regmap-mmio.o
+|   `-- WARNING:modpost:missing-MODULE_DESCRIPTION()-in-lib-zlib_inflate-zlib_inflate.o
+|-- i386-randconfig-063-20231215
+|   |-- fs-afs-main.c:sparse:sparse:cast-removes-address-space-__rcu-of-expression
+|   |-- fs-afs-main.c:sparse:sparse:incorrect-type-in-argument-(different-address-spaces)-expected-struct-callback_head-head-got-struct-callback_head-noderef-__rcu
+|   `-- lib-zstd-compress-zstd_fast.c:sparse:sparse:Using-plain-integer-as-NULL-pointer
+|-- powerpc-allmodconfig
+|   `-- drivers-leds-leds-max5970.c:warning:variable-num_leds-set-but-not-used
+|-- powerpc-allyesconfig
+|   `-- drivers-leds-leds-max5970.c:warning:variable-num_leds-set-but-not-used
+|-- riscv-randconfig-r112-20231215
+|   `-- lib-zstd-compress-zstd_fast.c:sparse:sparse:Using-plain-integer-as-NULL-pointer
+|-- s390-randconfig-r123-20231215
+|   |-- drivers-hwmon-max31827.c:sparse:sparse:dubious:x-y
+|   `-- lib-zstd-compress-zstd_fast.c:sparse:sparse:Using-plain-integer-as-NULL-pointer
+|-- x86_64-allmodconfig
+|   |-- drivers-gpu-drm-amd-amdgpu-..-display-dc-hwss-dcn35-dcn35_hwseq.c:warning:This-comment-starts-with-but-isn-t-a-kernel-doc-comment.-Refer-Documentation-doc-guide-kernel-doc.rst
+|   `-- drivers-leds-leds-max5970.c:warning:variable-num_leds-set-but-not-used
+|-- x86_64-allyesconfig
+|   |-- drivers-gpu-drm-amd-amdgpu-..-display-dc-hwss-dcn35-dcn35_hwseq.c:warning:This-comment-starts-with-but-isn-t-a-kernel-doc-comment.-Refer-Documentation-doc-guide-kernel-doc.rst
+|   `-- drivers-leds-leds-max5970.c:warning:variable-num_leds-set-but-not-used
+`-- x86_64-randconfig-161-20231215
+    |-- lib-zstd-common-bits.h-ZSTD_countLeadingZeros32()-warn:inconsistent-indenting
+    |-- lib-zstd-common-bits.h-ZSTD_countTrailingZeros32()-warn:inconsistent-indenting
+    |-- lib-zstd-compress-..-common-bits.h-ZSTD_countLeadingZeros32()-warn:inconsistent-indenting
+    |-- lib-zstd-compress-..-common-bits.h-ZSTD_countLeadingZeros64()-warn:inconsistent-indenting
+    |-- lib-zstd-compress-..-common-bits.h-ZSTD_countTrailingZeros32()-warn:inconsistent-indenting
+    |-- lib-zstd-compress-..-common-bits.h-ZSTD_countTrailingZeros64()-warn:inconsistent-indenting
+    |-- lib-zstd-decompress-..-common-bits.h-ZSTD_countLeadingZeros32()-warn:inconsistent-indenting
+    `-- lib-zstd-decompress-..-common-bits.h-ZSTD_countTrailingZeros64()-warn:inconsistent-indenting
 
+elapsed time: 1467m
 
-vim +8620 drivers/net/ethernet/intel/igb/igb_main.c
+configs tested: 166
+configs skipped: 2
 
-b1bb2eb0a0deb0 Alexander Duyck           2017-02-06  8608  
-9cbc948b5a20c9 Sven Auhagen              2020-09-02  8609  static struct sk_buff *igb_run_xdp(struct igb_adapter *adapter,
-9cbc948b5a20c9 Sven Auhagen              2020-09-02  8610  				   struct igb_ring *rx_ring,
-9cbc948b5a20c9 Sven Auhagen              2020-09-02  8611  				   struct xdp_buff *xdp)
-9cbc948b5a20c9 Sven Auhagen              2020-09-02  8612  {
-9cbc948b5a20c9 Sven Auhagen              2020-09-02  8613  	int err, result = IGB_XDP_PASS;
-9cbc948b5a20c9 Sven Auhagen              2020-09-02  8614  	struct bpf_prog *xdp_prog;
-9cbc948b5a20c9 Sven Auhagen              2020-09-02  8615  	u32 act;
-9cbc948b5a20c9 Sven Auhagen              2020-09-02  8616  
-9cbc948b5a20c9 Sven Auhagen              2020-09-02  8617  	xdp_prog = READ_ONCE(rx_ring->xdp_prog);
-9cbc948b5a20c9 Sven Auhagen              2020-09-02  8618  
-9cbc948b5a20c9 Sven Auhagen              2020-09-02  8619  	if (!xdp_prog)
-9cbc948b5a20c9 Sven Auhagen              2020-09-02 @8620  		goto xdp_out;
-9cbc948b5a20c9 Sven Auhagen              2020-09-02  8621  
-9cbc948b5a20c9 Sven Auhagen              2020-09-02  8622  	prefetchw(xdp->data_hard_start); /* xdp_frame write */
-9cbc948b5a20c9 Sven Auhagen              2020-09-02  8623  
-d568b111738dbb Sebastian Andrzej Siewior 2023-12-15  8624  	guard(local_lock_nested_bh)(&bpf_run_lock.redirect_lock);
-9cbc948b5a20c9 Sven Auhagen              2020-09-02  8625  	act = bpf_prog_run_xdp(xdp_prog, xdp);
-9cbc948b5a20c9 Sven Auhagen              2020-09-02  8626  	switch (act) {
-9cbc948b5a20c9 Sven Auhagen              2020-09-02  8627  	case XDP_PASS:
-9cbc948b5a20c9 Sven Auhagen              2020-09-02  8628  		break;
-9cbc948b5a20c9 Sven Auhagen              2020-09-02  8629  	case XDP_TX:
-9cbc948b5a20c9 Sven Auhagen              2020-09-02  8630  		result = igb_xdp_xmit_back(adapter, xdp);
-74431c40b9c5fa Magnus Karlsson           2021-05-10  8631  		if (result == IGB_XDP_CONSUMED)
-74431c40b9c5fa Magnus Karlsson           2021-05-10  8632  			goto out_failure;
-9cbc948b5a20c9 Sven Auhagen              2020-09-02  8633  		break;
-9cbc948b5a20c9 Sven Auhagen              2020-09-02  8634  	case XDP_REDIRECT:
-9cbc948b5a20c9 Sven Auhagen              2020-09-02  8635  		err = xdp_do_redirect(adapter->netdev, xdp, xdp_prog);
-74431c40b9c5fa Magnus Karlsson           2021-05-10  8636  		if (err)
-74431c40b9c5fa Magnus Karlsson           2021-05-10  8637  			goto out_failure;
-9cbc948b5a20c9 Sven Auhagen              2020-09-02  8638  		result = IGB_XDP_REDIR;
-9cbc948b5a20c9 Sven Auhagen              2020-09-02  8639  		break;
-9cbc948b5a20c9 Sven Auhagen              2020-09-02  8640  	default:
-c8064e5b4adac5 Paolo Abeni               2021-11-30  8641  		bpf_warn_invalid_xdp_action(adapter->netdev, xdp_prog, act);
-9cbc948b5a20c9 Sven Auhagen              2020-09-02  8642  		fallthrough;
-9cbc948b5a20c9 Sven Auhagen              2020-09-02  8643  	case XDP_ABORTED:
-74431c40b9c5fa Magnus Karlsson           2021-05-10  8644  out_failure:
-9cbc948b5a20c9 Sven Auhagen              2020-09-02  8645  		trace_xdp_exception(rx_ring->netdev, xdp_prog, act);
-9cbc948b5a20c9 Sven Auhagen              2020-09-02  8646  		fallthrough;
-9cbc948b5a20c9 Sven Auhagen              2020-09-02  8647  	case XDP_DROP:
-9cbc948b5a20c9 Sven Auhagen              2020-09-02  8648  		result = IGB_XDP_CONSUMED;
-9cbc948b5a20c9 Sven Auhagen              2020-09-02  8649  		break;
-9cbc948b5a20c9 Sven Auhagen              2020-09-02  8650  	}
-9cbc948b5a20c9 Sven Auhagen              2020-09-02  8651  xdp_out:
-9cbc948b5a20c9 Sven Auhagen              2020-09-02  8652  	return ERR_PTR(-result);
-9cbc948b5a20c9 Sven Auhagen              2020-09-02  8653  }
-9cbc948b5a20c9 Sven Auhagen              2020-09-02  8654  
+tested configs:
+alpha                             allnoconfig   gcc  
+alpha                            allyesconfig   gcc  
+alpha                               defconfig   gcc  
+arc                              allmodconfig   gcc  
+arc                               allnoconfig   gcc  
+arc                              allyesconfig   gcc  
+arc                                 defconfig   gcc  
+arc                            hsdk_defconfig   gcc  
+arc                   randconfig-001-20231215   gcc  
+arc                   randconfig-002-20231215   gcc  
+arm                              allmodconfig   gcc  
+arm                               allnoconfig   gcc  
+arm                              allyesconfig   gcc  
+arm                     am200epdkit_defconfig   clang
+arm                                 defconfig   clang
+arm                            dove_defconfig   clang
+arm                            hisi_defconfig   gcc  
+arm                            mmp2_defconfig   clang
+arm                          pxa168_defconfig   clang
+arm                          pxa3xx_defconfig   gcc  
+arm                   randconfig-001-20231215   clang
+arm                   randconfig-002-20231215   clang
+arm                   randconfig-003-20231215   clang
+arm                   randconfig-004-20231215   clang
+arm                           stm32_defconfig   gcc  
+arm64                            allmodconfig   clang
+arm64                             allnoconfig   gcc  
+arm64                               defconfig   gcc  
+arm64                 randconfig-001-20231215   clang
+arm64                 randconfig-002-20231215   clang
+arm64                 randconfig-003-20231215   clang
+arm64                 randconfig-004-20231215   clang
+csky                             allmodconfig   gcc  
+csky                              allnoconfig   gcc  
+csky                             allyesconfig   gcc  
+csky                                defconfig   gcc  
+csky                  randconfig-001-20231215   gcc  
+csky                  randconfig-002-20231215   gcc  
+hexagon                          allmodconfig   clang
+hexagon                           allnoconfig   clang
+hexagon                          allyesconfig   clang
+hexagon                             defconfig   clang
+hexagon               randconfig-001-20231215   clang
+hexagon               randconfig-002-20231215   clang
+i386                             allmodconfig   clang
+i386                              allnoconfig   clang
+i386                             allyesconfig   clang
+i386         buildonly-randconfig-001-20231215   clang
+i386         buildonly-randconfig-002-20231215   clang
+i386         buildonly-randconfig-003-20231215   clang
+i386         buildonly-randconfig-004-20231215   clang
+i386         buildonly-randconfig-005-20231215   clang
+i386         buildonly-randconfig-006-20231215   clang
+i386                                defconfig   gcc  
+i386                  randconfig-001-20231215   clang
+i386                  randconfig-002-20231215   clang
+i386                  randconfig-003-20231215   clang
+i386                  randconfig-004-20231215   clang
+i386                  randconfig-005-20231215   clang
+i386                  randconfig-006-20231215   clang
+i386                  randconfig-011-20231215   gcc  
+i386                  randconfig-012-20231215   gcc  
+i386                  randconfig-013-20231215   gcc  
+i386                  randconfig-014-20231215   gcc  
+i386                  randconfig-015-20231215   gcc  
+i386                  randconfig-016-20231215   gcc  
+loongarch                        allmodconfig   gcc  
+loongarch                         allnoconfig   gcc  
+loongarch                           defconfig   gcc  
+loongarch             randconfig-001-20231215   gcc  
+loongarch             randconfig-002-20231215   gcc  
+m68k                             allmodconfig   gcc  
+m68k                              allnoconfig   gcc  
+m68k                             allyesconfig   gcc  
+m68k                          atari_defconfig   gcc  
+m68k                                defconfig   gcc  
+microblaze                       allmodconfig   gcc  
+microblaze                        allnoconfig   gcc  
+microblaze                       allyesconfig   gcc  
+microblaze                          defconfig   gcc  
+mips                              allnoconfig   clang
+mips                             allyesconfig   gcc  
+mips                  decstation_64_defconfig   gcc  
+mips                      fuloong2e_defconfig   gcc  
+mips                           jazz_defconfig   gcc  
+mips                      malta_kvm_defconfig   clang
+nios2                            allmodconfig   gcc  
+nios2                             allnoconfig   gcc  
+nios2                            allyesconfig   gcc  
+nios2                               defconfig   gcc  
+nios2                 randconfig-001-20231215   gcc  
+nios2                 randconfig-002-20231215   gcc  
+openrisc                          allnoconfig   gcc  
+openrisc                         allyesconfig   gcc  
+openrisc                            defconfig   gcc  
+openrisc                  or1klitex_defconfig   gcc  
+parisc                           allmodconfig   gcc  
+parisc                            allnoconfig   gcc  
+parisc                           allyesconfig   gcc  
+parisc                              defconfig   gcc  
+parisc                randconfig-001-20231215   gcc  
+parisc                randconfig-002-20231215   gcc  
+parisc64                            defconfig   gcc  
+powerpc                          allmodconfig   clang
+powerpc                           allnoconfig   gcc  
+powerpc                          allyesconfig   clang
+powerpc                  mpc885_ads_defconfig   clang
+powerpc               randconfig-001-20231215   clang
+powerpc               randconfig-002-20231215   clang
+powerpc               randconfig-003-20231215   clang
+powerpc64             randconfig-001-20231215   clang
+powerpc64             randconfig-002-20231215   clang
+powerpc64             randconfig-003-20231215   clang
+riscv                            allmodconfig   gcc  
+riscv                             allnoconfig   clang
+riscv                            allyesconfig   gcc  
+riscv                               defconfig   gcc  
+riscv                 randconfig-001-20231215   clang
+riscv                 randconfig-002-20231215   clang
+riscv                          rv32_defconfig   clang
+s390                             allmodconfig   gcc  
+s390                              allnoconfig   gcc  
+s390                             allyesconfig   gcc  
+s390                                defconfig   gcc  
+s390                  randconfig-001-20231215   gcc  
+s390                  randconfig-002-20231215   gcc  
+sh                               allmodconfig   gcc  
+sh                                allnoconfig   gcc  
+sh                               allyesconfig   gcc  
+sh                                  defconfig   gcc  
+sh                         ecovec24_defconfig   gcc  
+sh                          lboxre2_defconfig   gcc  
+sh                    randconfig-001-20231215   gcc  
+sh                    randconfig-002-20231215   gcc  
+sh                           se7721_defconfig   gcc  
+sh                           se7750_defconfig   gcc  
+sh                            shmin_defconfig   gcc  
+sparc                            allmodconfig   gcc  
+sparc64                          allmodconfig   gcc  
+sparc64                          allyesconfig   gcc  
+sparc64                             defconfig   gcc  
+sparc64               randconfig-001-20231215   gcc  
+sparc64               randconfig-002-20231215   gcc  
+um                               allmodconfig   clang
+um                                allnoconfig   clang
+um                               allyesconfig   clang
+um                                  defconfig   gcc  
+um                             i386_defconfig   gcc  
+um                    randconfig-001-20231215   clang
+um                    randconfig-002-20231215   clang
+um                           x86_64_defconfig   gcc  
+x86_64                            allnoconfig   gcc  
+x86_64                           allyesconfig   clang
+x86_64       buildonly-randconfig-001-20231215   clang
+x86_64       buildonly-randconfig-003-20231215   clang
+x86_64       buildonly-randconfig-005-20231215   clang
+x86_64                              defconfig   gcc  
+x86_64                randconfig-001-20231215   gcc  
+x86_64                randconfig-003-20231215   gcc  
+x86_64                randconfig-004-20231215   gcc  
+x86_64                randconfig-005-20231215   gcc  
+x86_64                randconfig-006-20231215   gcc  
+x86_64                          rhel-8.3-rust   clang
+xtensa                            allnoconfig   gcc  
+xtensa                randconfig-001-20231215   gcc  
+xtensa                randconfig-002-20231215   gcc  
 
 -- 
 0-DAY CI Kernel Test Service
