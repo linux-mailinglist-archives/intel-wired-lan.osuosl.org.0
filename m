@@ -1,76 +1,68 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7DE5D817730
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 18 Dec 2023 17:15:47 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 40AC28174D1
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 18 Dec 2023 16:08:43 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id F2F714059F;
-	Mon, 18 Dec 2023 16:15:45 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org F2F714059F
+	by smtp1.osuosl.org (Postfix) with ESMTP id B8173821A9;
+	Mon, 18 Dec 2023 15:08:41 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B8173821A9
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1702916146;
-	bh=QYxfxiC+BwTd/gKjCQUebSQ8jt4iTK6YK9Gnqu1+IeA=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=Yl3MwG/9JzcE79T0IH92WrD8X0gDv88y8SLlKnsBLWl2ep2ekgMASgDhxx9Pf5IHw
-	 MjuVPL4X/vuwNW/IelULxByeLZZYR7iqTKx+Cm2Ec0u5m9puiBosRfERf9f9vGJVsB
-	 Fb3YjdKlIa4nr+QnR8LZVRxPGGlq/7Uddyzq4y4wI/tlPIOPp44EPQDLRx2PbmtSfA
-	 p0VJetDnHGSXktDD29AVDhNxzqv4zLSGIWf9exZQ0zMo41NCohIh9rUXSzW2mY4ffU
-	 4PrmO2R2O8NFlT/Db8YHEroAIay6bTvtW/v1xqcI+g8QOfq1sEIEYVaLt0dk0cqoeJ
-	 VjpKVvm16Knuw==
+	s=default; t=1702912121;
+	bh=M4C1ZsD/dwjNqui+UwZy1ZuVNUVHF3mI1HH401pHulQ=;
+	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=zNtwM9wzqDmfLWflAsBobt5tkZY/1ueHkXlgN6RGBY8WgR1APiidlYfW62PYaS+bz
+	 gHS0a8PcIx7Q6M3YLG9o7Qz9FGUrbXRTS/SGe5HMp8br6a0o8StQjGFGaefmRaJikP
+	 Snzg4JU2i0DFIOH2F/42iremXiwRyY+pCHRbVdc0fdLQL54xAbUHB91mP78RPEOtTK
+	 7ANU2hy70GP5zySX7/p1jZVkgMpMMxEDJQAgFPIEFcscj7Qo64hGYz0z6AwoaBjUmn
+	 +Hc2QnlRjm3YAEp2xkW+KOdQXfNpQXMkTsgsJDKZYP4Rvohbzu/opMWwMiPUZeICBu
+	 u6aD9PioJ+N3Q==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id HCSXDbvQhS7x; Mon, 18 Dec 2023 16:15:45 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id NU2-tIm7qcJb; Mon, 18 Dec 2023 15:08:40 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id A4995404DD;
-	Mon, 18 Dec 2023 16:15:43 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A4995404DD
+	by smtp1.osuosl.org (Postfix) with ESMTP id 688AE81E6F;
+	Mon, 18 Dec 2023 15:08:40 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 688AE81E6F
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 459491BF3F4
- for <intel-wired-lan@lists.osuosl.org>; Mon, 18 Dec 2023 07:17:40 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id E99421BF345
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 18 Dec 2023 15:08:34 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 1AE7C41693
- for <intel-wired-lan@lists.osuosl.org>; Mon, 18 Dec 2023 07:17:40 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1AE7C41693
+ by smtp2.osuosl.org (Postfix) with ESMTP id B4F0840A4B
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 18 Dec 2023 15:08:34 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B4F0840A4B
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Rm11Sph6vMjf for <intel-wired-lan@lists.osuosl.org>;
- Mon, 18 Dec 2023 07:17:39 +0000 (UTC)
-X-Greylist: delayed 480 seconds by postgrey-1.37 at util1.osuosl.org;
- Mon, 18 Dec 2023 07:17:38 UTC
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 649C341675
-Received: from mail-m127105.qiye.163.com (mail-m127105.qiye.163.com
- [115.236.127.105])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 649C341675
- for <intel-wired-lan@lists.osuosl.org>; Mon, 18 Dec 2023 07:17:37 +0000 (UTC)
-Received: from localhost.localdomain (unknown
- [IPV6:240e:3b7:3270:35d0:f136:8ef4:5e9e:94b4])
- by mail-m12741.qiye.163.com (Hmail) with ESMTPA id EE1229E0608;
- Mon, 18 Dec 2023 15:09:06 +0800 (CST)
-From: Ke Xiao <xiaoke@sangfor.com.cn>
-To: jesse.brandeburg@intel.com, anthony.l.nguyen@intel.com,
- davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
- pabeni@redhat.com
-Date: Mon, 18 Dec 2023 15:08:50 +0800
-Message-Id: <20231218070850.15870-1-xiaoke@sangfor.com.cn>
-X-Mailer: git-send-email 2.17.1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
- tZV1koWUFITzdXWS1ZQUlXWQ8JGhUIEh9ZQVlCT0hNVhpLSh1CQkNMGU9MH1UTARMWGhIXJBQOD1
- lXWRgSC1lBWUlPSx5BSBlMQUhJTEtBSE4fS0EdSkhNQUMeHU9BTh5CHkFCTxlPWVdZFhoPEhUdFF
- lBWU9LSFVKTU9JTE5VSktLVUpCS0tZBg++
-X-HM-Tid: 0a8c7bc1cba9b214kuuuee1229e0608
-X-HM-MType: 1
-X-HM-Sender-Digest: e1kMHhlZQR0aFwgeV1kSHx4VD1lBWUc6MDo6Pxw5CTwwKykpKigqGA0L
- FTcaCwtVSlVKTEtJQ0NISE9DSklMVTMWGhIXVQMSGhQQHjsIGhUcHRQJVRgUFlUYFUVZV1kSC1lB
- WUlPSx5BSBlMQUhJTEtBSE4fS0EdSkhNQUMeHU9BTh5CHkFCTxlPWVdZCAFZQU9CTUI3Bg++
-X-Mailman-Approved-At: Mon, 18 Dec 2023 16:15:33 +0000
-Subject: [Intel-wired-lan] [net PATCH v2] i40e: fix use-after-free in
- i40e_aqc_add_filters()
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id qepPsmVEbfCS for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 18 Dec 2023 15:08:32 +0000 (UTC)
+Received: from mx3.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id AD47740A15
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 18 Dec 2023 15:08:32 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org AD47740A15
+Received: from [141.14.220.40] (g40.guest.molgen.mpg.de [141.14.220.40])
+ (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested) (Authenticated sender: pmenzel)
+ by mx.molgen.mpg.de (Postfix) with ESMTPSA id DFF1861E5FE04;
+ Mon, 18 Dec 2023 16:07:03 +0100 (CET)
+Message-ID: <de9b8611-98c2-48f4-b096-4bb07e133138@molgen.mpg.de>
+Date: Mon, 18 Dec 2023 16:07:03 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Content-Language: en-US
+To: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
+References: <20231218145855.3605898-1-arkadiusz.kubalewski@intel.com>
+From: Paul Menzel <pmenzel@molgen.mpg.de>
+In-Reply-To: <20231218145855.3605898-1-arkadiusz.kubalewski@intel.com>
+Subject: Re: [Intel-wired-lan] [PATCH iwl-net v2] ice: dpll: fix phase
+ offset value
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,127 +75,118 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: jan.sokolowski@intel.com, netdev@vger.kernel.org, dinghui@sangfor.com.cn,
- linux-kernel@vger.kernel.org, zhangrui182@huawei.com,
- intel-wired-lan@lists.osuosl.org, horms@kernel.org, zhudi2@huawei.com,
- Ke Xiao <xiaoke@sangfor.com.cn>, shannon.nelson@amd.com
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
+Cc: Aleksandr Loktionov <aleksandr.loktionov@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ intel-wired-lan@lists.osuosl.org
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Commit 3116f59c12bd ("i40e: fix use-after-free in
-i40e_sync_filters_subtask()") avoided use-after-free issues,
-by increasing refcount during update the VSI filter list to
-the HW. However, it missed the unicast situation.
+Dear Arkadiusz,
 
-When deleting an unicast FDB entry, the i40e driver will release
-the mac_filter, and i40e_service_task will concurrently request
-firmware to add the mac_filter, which will lead to the following
-use-after-free issue.
 
-Fix again for both netdev->uc and netdev->mc.
+Am 18.12.23 um 15:58 schrieb Arkadiusz Kubalewski:
+> Stop dividing the phase_offset value received from firmware. This fault
+> is present since the initial implementation.
+> The phase_offset value received from firmware is in 0.01ps resolution.
+> Dpll subsystem is using the value in 0.001ps, raw value is adjusted
+> before providing it to the user.
+> 
+> The user can observe the value of phase offset with response to
+> `pin-get` netlink message of dpll subsystem for an active pin:
+> $ ./tools/net/ynl/cli.py --spec Documentation/netlink/specs/dpll.yaml \
+> 	--do pin-get --json '{"id":2}'
+> 
+> Where example of correct response would be:
+> {'board-label': 'C827_0-RCLKA',
+>   'capabilities': 6,
+>   'clock-id': 4658613174691613800,
+>   'frequency': 1953125,
+>   'id': 2,
+>   'module-name': 'ice',
+>   'parent-device': [{'direction': 'input',
+>                      'parent-id': 6,
+>                      'phase-offset': -216839550,
+>                      'prio': 9,
+>                      'state': 'connected'},
+>                     {'direction': 'input',
+>                      'parent-id': 7,
+>                      'phase-offset': -42930,
+>                      'prio': 8,
+>                      'state': 'connected'}],
+>   'phase-adjust': 0,
+>   'phase-adjust-max': 16723,
+>   'phase-adjust-min': -16723,
+>   'type': 'mux'}
+> 
+> Provided phase-offset value (-42930) shall be divided by the user with
+> DPLL_PHASE_OFFSET_DIVIDER to get actual value of -42.930 ps.
+> 
+> Before the fix, the response was not correct:
+> {'board-label': 'C827_0-RCLKA',
+>   'capabilities': 6,
+>   'clock-id': 4658613174691613800,
+>   'frequency': 1953125,
+>   'id': 2,
+>   'module-name': 'ice',
+>   'parent-device': [{'direction': 'input',
+>                      'parent-id': 6,
+>                      'phase-offset': -216839,
+>                      'prio': 9,
+>                      'state': 'connected'},
+>                     {'direction': 'input',
+>                      'parent-id': 7,
+>                      'phase-offset': -42,
+>                      'prio': 8,
+>                      'state': 'connected'}],
+>   'phase-adjust': 0,
+>   'phase-adjust-max': 16723,
+>   'phase-adjust-min': -16723,
+>   'type': 'mux'}
+> 
+> Where phase-offset value (-42), after division
+> (DPLL_PHASE_OFFSET_DIVIDER) would be: -0.042 ps.
 
-BUG: KASAN: use-after-free in i40e_aqc_add_filters+0x55c/0x5b0 [i40e]
-Read of size 2 at addr ffff888eb3452d60 by task kworker/8:7/6379
+Thank you for the detailed description.
 
-CPU: 8 PID: 6379 Comm: kworker/8:7 Kdump: loaded Tainted: G
-Workqueue: i40e i40e_service_task [i40e]
-Call Trace:
- dump_stack+0x71/0xab
- print_address_description+0x6b/0x290
- kasan_report+0x14a/0x2b0
- i40e_aqc_add_filters+0x55c/0x5b0 [i40e]
- i40e_sync_vsi_filters+0x1676/0x39c0 [i40e]
- i40e_service_task+0x1397/0x2bb0 [i40e]
- process_one_work+0x56a/0x11f0
- worker_thread+0x8f/0xf40
- kthread+0x2a0/0x390
- ret_from_fork+0x1f/0x40
+> Fixes: 8a3a565ff210 ("ice: add admin commands to access cgu configuration")
+> Fixes: 90e1c90750d7 ("ice: dpll: implement phase related callbacks")
+> Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+> Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+> Signed-off-by: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
+> ---
+>   drivers/net/ethernet/intel/ice/ice_common.c | 4 +---
+>   1 file changed, 1 insertion(+), 3 deletions(-)
+> 
+> diff --git a/drivers/net/ethernet/intel/ice/ice_common.c b/drivers/net/ethernet/intel/ice/ice_common.c
+> index 9a6c25f98632..edac34c796ce 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_common.c
+> +++ b/drivers/net/ethernet/intel/ice/ice_common.c
+> @@ -5332,7 +5332,6 @@ ice_aq_get_cgu_dpll_status(struct ice_hw *hw, u8 dpll_num, u8 *ref_state,
+>   			   u8 *eec_mode)
+>   {
+>   	struct ice_aqc_get_cgu_dpll_status *cmd;
+> -	const s64 nsec_per_psec = 1000LL;
+>   	struct ice_aq_desc desc;
+>   	int status;
+>   
+> @@ -5348,8 +5347,7 @@ ice_aq_get_cgu_dpll_status(struct ice_hw *hw, u8 dpll_num, u8 *ref_state,
+>   		*phase_offset = le32_to_cpu(cmd->phase_offset_h);
+>   		*phase_offset <<= 32;
+>   		*phase_offset += le32_to_cpu(cmd->phase_offset_l);
+> -		*phase_offset = div64_s64(sign_extend64(*phase_offset, 47),
+> -					  nsec_per_psec);
+> +		*phase_offset = sign_extend64(*phase_offset, 47);
+>   		*eec_mode = cmd->eec_mode;
+>   	}
 
-Allocated by task 21948:
- kasan_kmalloc+0xa6/0xd0
- kmem_cache_alloc_trace+0xdb/0x1c0
- i40e_add_filter+0x11e/0x520 [i40e]
- i40e_addr_sync+0x37/0x60 [i40e]
- __hw_addr_sync_dev+0x1f5/0x2f0
- i40e_set_rx_mode+0x61/0x1e0 [i40e]
- dev_uc_add_excl+0x137/0x190
- i40e_ndo_fdb_add+0x161/0x260 [i40e]
- rtnl_fdb_add+0x567/0x950
- rtnetlink_rcv_msg+0x5db/0x880
- netlink_rcv_skb+0x254/0x380
- netlink_unicast+0x454/0x610
- netlink_sendmsg+0x747/0xb00
- sock_sendmsg+0xe2/0x120
- __sys_sendto+0x1ae/0x290
- __x64_sys_sendto+0xdd/0x1b0
- do_syscall_64+0xa0/0x370
- entry_SYSCALL_64_after_hwframe+0x65/0xca
+Reviewed-by: Paul Menzel <pmenzel@molgen.mpg.de>
 
-Freed by task 21948:
- __kasan_slab_free+0x137/0x190
- kfree+0x8b/0x1b0
- __i40e_del_filter+0x116/0x1e0 [i40e]
- i40e_del_mac_filter+0x16c/0x300 [i40e]
- i40e_addr_unsync+0x134/0x1b0 [i40e]
- __hw_addr_sync_dev+0xff/0x2f0
- i40e_set_rx_mode+0x61/0x1e0 [i40e]
- dev_uc_del+0x77/0x90
- rtnl_fdb_del+0x6a5/0x860
- rtnetlink_rcv_msg+0x5db/0x880
- netlink_rcv_skb+0x254/0x380
- netlink_unicast+0x454/0x610
- netlink_sendmsg+0x747/0xb00
- sock_sendmsg+0xe2/0x120
- __sys_sendto+0x1ae/0x290
- __x64_sys_sendto+0xdd/0x1b0
- do_syscall_64+0xa0/0x370
- entry_SYSCALL_64_after_hwframe+0x65/0xca
 
-Fixes: 3116f59c12bd ("i40e: fix use-after-free in i40e_sync_filters_subtask()")
-Fixes: 41c445ff0f48 ("i40e: main driver core")
-Signed-off-by: Ke Xiao <xiaoke@sangfor.com.cn>
-Signed-off-by: Ding Hui <dinghui@sangfor.com.cn>
-Cc: Di Zhu <zhudi2@huawei.com>
-Reviewed-by: Jan Sokolowski <jan.sokolowski@intel.com>
-Reviewed-by: Simon Horman <horms@kernel.org>
----
-v2:
-- Order local variable declarations in Reverse Christmas Tree (RCT)
+Kind regards,
 
----
- drivers/net/ethernet/intel/i40e/i40e_main.c | 8 +++++++-
- 1 file changed, 7 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
-index 1ab8dbe2d880..d5633a440cca 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_main.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
-@@ -107,12 +107,18 @@ static struct workqueue_struct *i40e_wq;
- static void netdev_hw_addr_refcnt(struct i40e_mac_filter *f,
- 				  struct net_device *netdev, int delta)
- {
-+	struct netdev_hw_addr_list *ha_list;
- 	struct netdev_hw_addr *ha;
- 
- 	if (!f || !netdev)
- 		return;
- 
--	netdev_for_each_mc_addr(ha, netdev) {
-+	if (is_unicast_ether_addr(f->macaddr) || is_link_local_ether_addr(f->macaddr))
-+		ha_list = &netdev->uc;
-+	else
-+		ha_list = &netdev->mc;
-+
-+	netdev_hw_addr_list_for_each(ha, ha_list) {
- 		if (ether_addr_equal(ha->addr, f->macaddr)) {
- 			ha->refcount += delta;
- 			if (ha->refcount <= 0)
--- 
-2.17.1
-
+Paul
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
