@@ -1,67 +1,67 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 18BD481BBBE
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 21 Dec 2023 17:18:24 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2355281BBBF
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 21 Dec 2023 17:18:28 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id AA3B742256;
-	Thu, 21 Dec 2023 16:18:22 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org AA3B742256
+	by smtp4.osuosl.org (Postfix) with ESMTP id 99D14418CA;
+	Thu, 21 Dec 2023 16:18:26 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 99D14418CA
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1703175502;
-	bh=hXHpcUCjp07ADd41FwvRTNIHsH7e4WiLoUvv3JiAtoc=;
+	s=default; t=1703175506;
+	bh=lPJzTp/7n6WIWxUZz8KCWcxY3EC1Bt+H+RcD++cgvEs=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=J+3EUg5rr31/9o7Y2rqUuivWjKxq9+sW0bZJ799mOmflgDpl+3N55XW+if/4CgFg4
-	 8IVzWpGaUplj5C1CM8eccSCT7Nf4khtQfw7rNaW9YdPakT1l7s87wi44nAzVup6zwz
-	 FXESdqXKdzlXhzVx5sM3VA1voijUJ0DgHFy969SNWbliiT4iXFwXtMT7FUDj6W5ACU
-	 CnJEnjeZxOG+DQUVRrZII55co0YDCTeJWIJwI8Qo30AEws2lEsMtdDQG3xSYYSEn57
-	 +/JlgtPU7E0Z+OtC7JTcDZ44vGkpd5ATHJ6VXci43+vUNaBAvWx9458OXoczP5iXpx
-	 H0He2g8E+/PAA==
+	b=DYQ2qlii4c+FqLsOLcpoN1VoE5aPdRC4azuGzoMYMLdb7pPOgXd/AAVQYVq+JndsB
+	 lHEjp3S/pKK2JKlrDINJFi3ZLr6//SRBXfi3lmzjT/QboxZOlCLcMwhwHDpPeW1U/x
+	 8Y+l0eSWkSjjQ/mlouveS42ttX5chEShSXnE4VQMbNA2d2z0WVLxzy/cTKWNv5ImOX
+	 /FZ+frY3PBY7GyHrQFMJta9IH4urUbWyAQs000OgslSdtlFn/KIoENOnKEnd78IcKA
+	 4zrE9HLMwCX48+S1n0wKr9rKUwNvFYjz8nTHbMFdBTDuwRzajVXeQa539lEpx+VQVS
+	 3d39mBMUt3ozg==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id sd6FVJzctezL; Thu, 21 Dec 2023 16:18:21 +0000 (UTC)
+	with ESMTP id zANhKtaW0L-b; Thu, 21 Dec 2023 16:18:25 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 41817417D2;
-	Thu, 21 Dec 2023 16:18:21 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 41817417D2
+	by smtp4.osuosl.org (Postfix) with ESMTP id 959584191F;
+	Thu, 21 Dec 2023 16:18:25 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 959584191F
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 258471BF3BF
- for <intel-wired-lan@lists.osuosl.org>; Thu, 21 Dec 2023 09:33:17 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 53B7E1BF3BF
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 21 Dec 2023 09:33:23 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id F12E98381F
- for <intel-wired-lan@lists.osuosl.org>; Thu, 21 Dec 2023 09:33:16 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org F12E98381F
+ by smtp1.osuosl.org (Postfix) with ESMTP id 2D34580C8C
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 21 Dec 2023 09:33:23 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 2D34580C8C
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id avpg1URfuGoX for <intel-wired-lan@lists.osuosl.org>;
- Thu, 21 Dec 2023 09:33:16 +0000 (UTC)
+ with ESMTP id SDBch03AjYwy for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 21 Dec 2023 09:33:22 +0000 (UTC)
 Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.12])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 0C41B8356C
- for <intel-wired-lan@lists.osuosl.org>; Thu, 21 Dec 2023 09:33:15 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0C41B8356C
-X-IronPort-AV: E=McAfee;i="6600,9927,10930"; a="3188480"
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 6A2E680AB4
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 21 Dec 2023 09:33:22 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6A2E680AB4
+X-IronPort-AV: E=McAfee;i="6600,9927,10930"; a="3188516"
 X-IronPort-AV: E=Sophos;i="6.04,293,1695711600"; 
-   d="scan'208";a="3188480"
+   d="scan'208";a="3188516"
 Received: from orsmga001.jf.intel.com ([10.7.209.18])
  by orvoesa104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 21 Dec 2023 01:33:15 -0800
+ 21 Dec 2023 01:33:21 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10930"; a="810918161"
-X-IronPort-AV: E=Sophos;i="6.04,293,1695711600"; d="scan'208";a="810918161"
+X-IronPort-AV: E=McAfee;i="6600,9927,10930"; a="810918187"
+X-IronPort-AV: E=Sophos;i="6.04,293,1695711600"; d="scan'208";a="810918187"
 Received: from inlubt0316.iind.intel.com ([10.191.20.213])
- by orsmga001.jf.intel.com with ESMTP; 21 Dec 2023 01:33:08 -0800
+ by orsmga001.jf.intel.com with ESMTP; 21 Dec 2023 01:33:15 -0800
 From: lakshmi.sowjanya.d@intel.com
 To: tglx@linutronix.de, jstultz@google.com, giometti@enneenne.com,
  corbet@lwn.net, linux-kernel@vger.kernel.org
-Date: Thu, 21 Dec 2023 15:02:46 +0530
-Message-Id: <20231221093254.9599-3-lakshmi.sowjanya.d@intel.com>
+Date: Thu, 21 Dec 2023 15:02:47 +0530
+Message-Id: <20231221093254.9599-4-lakshmi.sowjanya.d@intel.com>
 X-Mailer: git-send-email 2.35.3
 In-Reply-To: <20231221093254.9599-1-lakshmi.sowjanya.d@intel.com>
 References: <20231221093254.9599-1-lakshmi.sowjanya.d@intel.com>
@@ -69,22 +69,22 @@ MIME-Version: 1.0
 X-Mailman-Approved-At: Thu, 21 Dec 2023 16:18:06 +0000
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1703151196; x=1734687196;
+ t=1703151202; x=1734687202;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=w+aeq0HJvcCZ+KS3uPOjGfoNyocIUqM1MwjS66a3tiI=;
- b=oH52UP2pf2Ktrw7bfZN7TEkfGe0xeyydeMo8trW1gEsDSrRhuB+Nfalb
- B8pQ6C8La4P7Ph6a3hUtP1cKnAQcI1046seYSpqOFOob5Mht8QMq0DX8S
- n2Nief63KYCiKjOKPo+OFfI/Fmx0KM2BlqbAOFojuFw4odKjoxu5tNqW+
- c0P1+5pM8XNd8nmJOSAwc++9DslHKKXDeicLY5Ep73wo4KVo/E6lJ3GYA
- AHvGvYf6S5iF/vl8GEN6qwMfkoqgIz2MkvfVpev00VXwlhZYWYj0tEVkK
- 5KmNLjuvtjtnaGVJkZkbmko4JirgUQ1P4lB8kMVwyAMA0T+qzAOR0dBR4
+ bh=PmpIlUpx7+DXd9SlbVWYDCreHkh1wtkoXMr9WfcfHRg=;
+ b=PS9s22oNcCafNoLKz47o1xVCyQ9j9PUPSKuWE5NJeI+bCi7sGOdDOQrM
+ HsKXqAjK9DKs2la99kAFgAjKNSg4PfDMBRga0EWfVPV7Lfj24k9REx84M
+ ulm1KLw+o4hZ7ZrCYklv2EgJ2ocB5dEmb3Mo426eMe20VIMXYxdmqgmOI
+ I5qRZnaLylsx7bY+TSIlNwabxJovFU+jd3oPOXBSD3UKj3MhvVsvkZTLA
+ 9SUFnEjAbJm72ivyc2QZN63U5VYBz0FPLfmNdCBWTsdH7CPdxrTvDFnmh
+ sf/V/4u4XL4Mj8buWOoec0+lDioNbsxOzlZwIPNSL5dj+5+M/eqBNUUYj
  A==;
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=oH52UP2p
-Subject: [Intel-wired-lan] [RFC PATCH v2 02/10] timekeeping: Add function to
- convert realtime to base clock
+ header.a=rsa-sha256 header.s=Intel header.b=PS9s22oN
+Subject: [Intel-wired-lan] [RFC PATCH v2 03/10] e10002: remove
+ convert_art_to_tsc()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -110,187 +110,31 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Lakshmi Sowjanya D <lakshmi.sowjanya.d@intel.com>
+From: Thomas Gleixner <tglx@linutronix.de>
 
-Introduce an interface ktime_real_to_base_clock(), to convert realtime
-to base clock.
+Remove convert_art_to_tsc() function call, Pass system clock cycles and
+clocksource ID as input to get_device_system_crosststamp().
 
-Convert base clock to system clock using convert_base_to_cs() in
-get_device_system_crosststamp().
-
-Add a helper function to check whether the current clocksource has same
-base clock.
-
-Co-developed-by: Thomas Gleixner <tglx@linutronix.de>
 Signed-off-by: Thomas Gleixner <tglx@linutronix.de>
-Co-developed-by: Christopher S. Hall <christopher.s.hall@intel.com>
-Signed-off-by: Christopher S. Hall <christopher.s.hall@intel.com>
 Signed-off-by: Lakshmi Sowjanya D <lakshmi.sowjanya.d@intel.com>
 ---
- include/linux/timekeeping.h |   6 ++
- kernel/time/timekeeping.c   | 112 +++++++++++++++++++++++++++++++++++-
- 2 files changed, 116 insertions(+), 2 deletions(-)
+ drivers/net/ethernet/intel/e1000e/ptp.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/include/linux/timekeeping.h b/include/linux/timekeeping.h
-index 0f00f382bb5d..2c3bc2eac974 100644
---- a/include/linux/timekeeping.h
-+++ b/include/linux/timekeeping.h
-@@ -274,12 +274,18 @@ struct system_device_crosststamp {
-  *		timekeeping code to verify comparability of two cycle values.
-  *		The default ID, CSID_GENERIC, does not identify a specific
-  *		clocksource.
-+ * @nsecs:	@cycles is in nanoseconds.
-  */
- struct system_counterval_t {
- 	u64			cycles;
- 	enum clocksource_ids	cs_id;
-+	bool			nsecs;
- };
+diff --git a/drivers/net/ethernet/intel/e1000e/ptp.c b/drivers/net/ethernet/intel/e1000e/ptp.c
+index 02d871bc112a..9d8be03a9827 100644
+--- a/drivers/net/ethernet/intel/e1000e/ptp.c
++++ b/drivers/net/ethernet/intel/e1000e/ptp.c
+@@ -124,7 +124,8 @@ static int e1000e_phc_get_syncdevicetime(ktime_t *device,
+ 	sys_cycles = er32(PLTSTMPH);
+ 	sys_cycles <<= 32;
+ 	sys_cycles |= er32(PLTSTMPL);
+-	*system = convert_art_to_tsc(sys_cycles);
++	system->cycles = sys_cycles;
++	system->cs_id = CSID_X86_ART;
  
-+extern bool ktime_real_to_base_clock(ktime_t treal,
-+				     enum clocksource_ids base_id, u64 *cycles);
-+extern bool timekeeping_clocksource_has_base(enum clocksource_ids id);
-+
- /*
-  * Get cross timestamp between system clock and device clock
-  */
-diff --git a/kernel/time/timekeeping.c b/kernel/time/timekeeping.c
-index 0ff065c5d25b..e68ecd77ee34 100644
---- a/kernel/time/timekeeping.c
-+++ b/kernel/time/timekeeping.c
-@@ -1191,6 +1191,89 @@ static bool cycle_between(u64 before, u64 test, u64 after)
- 	return false;
+ 	return 0;
  }
- 
-+static bool convert_clock(u64 *val, u32 numerator, u32 denominator)
-+{
-+	u64 rem, res;
-+
-+	if (numerator == 0 || denominator == 0)
-+		return false;
-+
-+	res = div64_u64_rem(*val, denominator, &rem) * numerator;
-+	*val = res + div_u64(rem * numerator, denominator);
-+	return true;
-+}
-+
-+static bool convert_base_to_cs(struct system_counterval_t *scv)
-+{
-+	struct clocksource *cs = tk_core.timekeeper.tkr_mono.clock;
-+	struct clocksource_base *base = cs->base;
-+
-+	/* The timestamp was taken from the time keeper clock source */
-+	if (cs->id == scv->cs_id)
-+		return true;
-+
-+	/* Check whether cs_id matches the base clock */
-+	if (!base || base->id != scv->cs_id)
-+		return false;
-+
-+	/* Avoid conversion to a less precise clock */
-+	if (scv->nsecs && cs->freq_khz != 0 && base->freq_khz < cs->freq_khz) {
-+		if (!convert_clock(&scv->cycles, cs->freq_khz, USEC_PER_SEC))
-+			return false;
-+	} else {
-+		if (scv->nsecs) {
-+			if (!convert_clock(&scv->cycles, base->freq_khz, USEC_PER_SEC))
-+				return false;
-+		}
-+		if (!convert_clock(&scv->cycles, base->numerator, base->denominator))
-+			return false;
-+	}
-+	scv->cycles += base->offset;
-+	return true;
-+}
-+
-+static bool convert_cs_to_base(u64 *cycles, enum clocksource_ids base_id)
-+{
-+	struct clocksource *cs = tk_core.timekeeper.tkr_mono.clock;
-+	struct clocksource_base *base = cs->base;
-+
-+	/* Check whether base_id matches the base clock */
-+	if (!base || base->id != base_id)
-+		return false;
-+
-+	*cycles -= base->offset;
-+	if (!convert_clock(cycles, base->denominator, base->numerator))
-+		return false;
-+	return true;
-+}
-+
-+static u64 convert_ns_to_cs(u64 delta)
-+{
-+	struct tk_read_base *tkr = &tk_core.timekeeper.tkr_mono;
-+
-+	return div_u64((delta << tkr->shift) - tkr->xtime_nsec, tkr->mult);
-+}
-+
-+bool ktime_real_to_base_clock(ktime_t treal, enum clocksource_ids base_id, u64 *cycles)
-+{
-+	struct timekeeper *tk = &tk_core.timekeeper;
-+	unsigned int seq;
-+	u64 delta;
-+
-+	do {
-+		seq = read_seqcount_begin(&tk_core.seq);
-+		delta = (u64)treal - tk->tkr_mono.base_real;
-+		if (delta > tk->tkr_mono.clock->max_idle_ns)
-+			return false;
-+		*cycles = tk->tkr_mono.cycle_last + convert_ns_to_cs(delta);
-+		if (!convert_cs_to_base(cycles, base_id))
-+			return false;
-+	} while (read_seqcount_retry(&tk_core.seq, seq));
-+
-+	return true;
-+}
-+EXPORT_SYMBOL_GPL(ktime_real_to_base_clock);
-+
- /**
-  * get_device_system_crosststamp - Synchronously capture system/device timestamp
-  * @get_time_fn:	Callback to get simultaneous device time and
-@@ -1236,8 +1319,7 @@ int get_device_system_crosststamp(int (*get_time_fn)
- 		 * system counter value is the same as for the currently
- 		 * installed timekeeper clocksource
- 		 */
--		if (system_counterval.cs_id == CSID_GENERIC ||
--		    tk->tkr_mono.clock->id != system_counterval.cs_id)
-+		if (!convert_base_to_cs(&system_counterval))
- 			return -ENODEV;
- 		cycles = system_counterval.cycles;
- 
-@@ -1304,6 +1386,32 @@ int get_device_system_crosststamp(int (*get_time_fn)
- }
- EXPORT_SYMBOL_GPL(get_device_system_crosststamp);
- 
-+/**
-+ * timekeeping_clocksource_has_base - Check whether the current clocksource
-+ *	has a base clock
-+ * @id:		The clocksource ID to check for
-+ *
-+ * Note:	The return value is a snapshot which can become invalid right
-+ *	after the function returns.
-+ *
-+ * Return:	true if the timekeeper clocksource has a base clock with @id,
-+ *	false otherwise
-+ */
-+bool timekeeping_clocksource_has_base(enum clocksource_ids id)
-+{
-+	unsigned int seq;
-+	bool ret;
-+
-+	do {
-+		seq = read_seqcount_begin(&tk_core.seq);
-+		ret = tk_core.timekeeper.tkr_mono.clock->base ?
-+		tk_core.timekeeper.tkr_mono.clock->base->id == id : false;
-+	} while (read_seqcount_retry(&tk_core.seq, seq));
-+
-+	return ret;
-+}
-+EXPORT_SYMBOL_GPL(timekeeping_clocksource_has_base);
-+
- /**
-  * do_settimeofday64 - Sets the time of day.
-  * @ts:     pointer to the timespec64 variable containing the new time
 -- 
 2.35.3
 
