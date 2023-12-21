@@ -2,86 +2,89 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2B54581BBBC
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 21 Dec 2023 17:18:15 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id C09C481BBBD
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 21 Dec 2023 17:18:19 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 9E60042253;
-	Thu, 21 Dec 2023 16:18:13 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9E60042253
+	by smtp4.osuosl.org (Postfix) with ESMTP id 5D31E42243;
+	Thu, 21 Dec 2023 16:18:18 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5D31E42243
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1703175493;
-	bh=tgPy97qEoVW/CkjJSZPEpC1RA9RqVYacRnuJeCipZsk=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=EPbqMXfRtJyvJ5b0coAF9HN8selRpd6BqXAOJQS+t1wsXzcmaYZF5k/dB/ef9AB2I
-	 EkZ1pLfepbaOcwzyqnVQKDcWgzjfnUdaWs5K3TnSE5vncv+338TpRXanwrm99N3IwD
-	 ybNh6wp0NNUZzfCxUfzG4C4TBZdAHGvGOfZdYRv7oA1+EnPp78bCLxik8DAh64utne
-	 ISbJOSTzz70Th1LOyXvbmSher7nartd57jcmglYVLMX5rfJRFsuEJ6NC6xeSvH3trr
-	 JILxGCrnIse45HMHU+z6ov4pRZP5BKe9Ckw4YYfb12kXh2SMx3OuCAusqTmNwFtL8n
-	 nSqsZkX4m7E4Q==
+	s=default; t=1703175498;
+	bh=T8Oj5Bd+at5beTdiIKcoUVmWkcV0fscXpHmUJ7y2OOI=;
+	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=q7delrnFDnyujQugNvxWRIXNo4Kp2tY5o0uuQCPHUUTZPr+nxOT7TkcLU60l4wRSm
+	 zncVVQ5S9bAupEuzVJ6SED8wW0gel/MuK7jAWgvt2XfyxB/g60/shxFPMAOLt5lbxW
+	 AsQwD1KMaZ/0O233kFbhFT9jS2olxZ+QklsVN0WavMIv24S+PS7z+Vr5eXw7EW7TnK
+	 gEkohjug94NAz8QLrUeXtOrEWW7VKZ/wzQA1U98IFIFLNjO696wJsoN4woYNGzTfiA
+	 7tSF/FMR1K64uWNvmsdvWdj1u7Yhkb6nTMbjy8kWe3feKZNfY6YRwGozy4sVaqCp6j
+	 bC0PW/PmOSv1g==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id HuL1MuGREL3C; Thu, 21 Dec 2023 16:18:12 +0000 (UTC)
+	with ESMTP id oi1nlbJKcznQ; Thu, 21 Dec 2023 16:18:17 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 394F34222B;
-	Thu, 21 Dec 2023 16:18:12 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 394F34222B
+	by smtp4.osuosl.org (Postfix) with ESMTP id 933C1417D2;
+	Thu, 21 Dec 2023 16:18:16 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 933C1417D2
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 5F5131BF3BF
- for <intel-wired-lan@lists.osuosl.org>; Thu, 21 Dec 2023 09:33:05 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 07A741BF3BF
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 21 Dec 2023 09:33:10 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 332FA83A0A
- for <intel-wired-lan@lists.osuosl.org>; Thu, 21 Dec 2023 09:33:05 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 332FA83A0A
+ by smtp1.osuosl.org (Postfix) with ESMTP id D1A1C835E4
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 21 Dec 2023 09:33:09 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D1A1C835E4
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id BcWOoZZPxoXf for <intel-wired-lan@lists.osuosl.org>;
- Thu, 21 Dec 2023 09:33:04 +0000 (UTC)
+ with ESMTP id GJ62cZ5Ek1Lo for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 21 Dec 2023 09:33:08 +0000 (UTC)
 Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.12])
- by smtp1.osuosl.org (Postfix) with ESMTPS id AC835833B7
- for <intel-wired-lan@lists.osuosl.org>; Thu, 21 Dec 2023 09:33:03 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org AC835833B7
-X-IronPort-AV: E=McAfee;i="6600,9927,10930"; a="3188438"
+ by smtp1.osuosl.org (Postfix) with ESMTPS id B05C783412
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 21 Dec 2023 09:33:08 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B05C783412
+X-IronPort-AV: E=McAfee;i="6600,9927,10930"; a="3188455"
 X-IronPort-AV: E=Sophos;i="6.04,293,1695711600"; 
-   d="scan'208";a="3188438"
+   d="scan'208";a="3188455"
 Received: from orsmga001.jf.intel.com ([10.7.209.18])
  by orvoesa104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 21 Dec 2023 01:33:02 -0800
+ 21 Dec 2023 01:33:08 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10930"; a="810918114"
-X-IronPort-AV: E=Sophos;i="6.04,293,1695711600"; d="scan'208";a="810918114"
+X-IronPort-AV: E=McAfee;i="6600,9927,10930"; a="810918135"
+X-IronPort-AV: E=Sophos;i="6.04,293,1695711600"; d="scan'208";a="810918135"
 Received: from inlubt0316.iind.intel.com ([10.191.20.213])
- by orsmga001.jf.intel.com with ESMTP; 21 Dec 2023 01:32:55 -0800
+ by orsmga001.jf.intel.com with ESMTP; 21 Dec 2023 01:33:02 -0800
 From: lakshmi.sowjanya.d@intel.com
 To: tglx@linutronix.de, jstultz@google.com, giometti@enneenne.com,
  corbet@lwn.net, linux-kernel@vger.kernel.org
-Date: Thu, 21 Dec 2023 15:02:44 +0530
-Message-Id: <20231221093254.9599-1-lakshmi.sowjanya.d@intel.com>
+Date: Thu, 21 Dec 2023 15:02:45 +0530
+Message-Id: <20231221093254.9599-2-lakshmi.sowjanya.d@intel.com>
 X-Mailer: git-send-email 2.35.3
+In-Reply-To: <20231221093254.9599-1-lakshmi.sowjanya.d@intel.com>
+References: <20231221093254.9599-1-lakshmi.sowjanya.d@intel.com>
 MIME-Version: 1.0
 X-Mailman-Approved-At: Thu, 21 Dec 2023 16:18:06 +0000
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1703151183; x=1734687183;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=RNfmASP2goLFqQvl0CMtUIBdraEA3ADsaIbtIGPBOE4=;
- b=f3J75pkPMSUvKHZIKRbcNdVsRHGp7k1RPk7WAaouxG4Hbb34Oo/vLHve
- LTBVrGhm9Kvnklw0XxucHI0ANsKOxd6cp0akCL4kW8qBkpqy3xJCpz4ua
- k3+IdU1nu8FqFdbAGxv15ZIHt/ZPjqwd+co8HTQsKuUY13s9ejTrJsi+A
- MRvUBLYJdg+z/QVdg5ViazSocuzTPMn/HFsnQC3sYGX8Rq1cx4Vl3ZD/n
- EFPa6086f2taD10bgZ2bDLymdgy3eVzaA/QyDgUnmRS7EZ4/8OcanH4hh
- tJWrePrHS4gmqqJyZo4MN/zS7yb/Qz/YO8ud8VlFw+VeEII84uvJnAZhx
- Q==;
+ t=1703151188; x=1734687188;
+ h=from:to:cc:subject:date:message-id:in-reply-to:
+ references:mime-version:content-transfer-encoding;
+ bh=UDMw+55Cl3aF1QubHYTr8F0l7Gi7wc+yanz1auj4l2s=;
+ b=j6+57GUfIk9UUzJnhAavrak3smVz+x7VkOIJL1ciM8LeLvLL48p11JA/
+ 7/W6RvG6pPaw+2tY9cD6Wt+PNZZU+yD/1YdhHI8DIuS0BlPKZu0FBOj6E
+ DWgw5CtLA2mRtXAsznOwHQSCwoGkj500uyuKoUKNRqaXtMZUw+RXeEyWE
+ v+hqnFj6Vxtokt3C3Fptpq6bqWrvwbmuRwTFIyymcRJwGK8Hw6IkdVzMJ
+ T7XxoVGex0DSEyj1CunVpDYSV+kEYtifzX8Pm/+14VANdvrHdtIdF1hc/
+ QUaVhHbUBzWw3R3In7FdldFoL1F/CDwpgbouEFczkvru6+noXjkn+ERuD
+ A==;
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=f3J75pkP
-Subject: [Intel-wired-lan] [RFC PATCH v2 00/10] Add support for Intel PPS
- Generator
+ header.a=rsa-sha256 header.s=Intel header.b=j6+57GUf
+Subject: [Intel-wired-lan] [RFC PATCH v2 01/10] x86/tsc: Add base clock
+ properties in clocksource structure
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -109,97 +112,276 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 From: Lakshmi Sowjanya D <lakshmi.sowjanya.d@intel.com>
 
-The goal of the PPS(Pulse Per Second) hardware/software is to generate a
-signal from the system on a wire so that some third-party hardware can
-observe that signal and judge how close the system's time is to another
-system or piece of hardware.
+Remove convert_art_to_tsc() and convert_art_ns_to_tsc(), as this patch
+series introduces a generic function ktime_real_to_base_clock() to
+convert realtime to base clock domain.
 
-Existing methods (like parallel ports) require software to flip a bit at
-just the right time to create a PPS signal. Many things can prevent
-software from doing this precisely. This (Timed I/O) method is better
-because software only "arms" the hardware in advance and then depends on
-the hardware to "fire" and flip the signal at just the right time.
+Add hardware abstraction, struct clocksource_base in clocksource.
 
-To generate a PPS signal with this new hardware, the kernel wakes up
-twice a second, once for 1->0 edge and other for the 0->1 edge. It does
-this shortly (~10ms) before the actual change in the signal needs to be
-made. It computes the TSC value at which edge will happen, convert to a
-value hardware understands and program this value to Timed I/O hardware.
-The actual edge transition happens without any further action from the
-kernel.
+Add clocksource ID for x86 ART(Always Running Timer).
 
-The result here is a signal coming out of the system that is roughly
-1,000 times more accurate than the old methods. If the system is heavily
-loaded, the difference in accuracy is larger in old methods.
-Facebook and Google are the customers that use this feature. 
+Co-developed-by: Thomas Gleixner <tglx@linutronix.de>
+Signed-off-by: Thomas Gleixner <tglx@linutronix.de>
+Co-developed-by: Christopher S. Hall <christopher.s.hall@intel.com>
+Signed-off-by: Christopher S. Hall <christopher.s.hall@intel.com>
+Signed-off-by: Lakshmi Sowjanya D <lakshmi.sowjanya.d@intel.com>
+---
+ arch/x86/include/asm/tsc.h      |  3 --
+ arch/x86/kernel/tsc.c           | 94 +++++++--------------------------
+ include/linux/clocksource.h     | 27 ++++++++++
+ include/linux/clocksource_ids.h |  1 +
+ 4 files changed, 47 insertions(+), 78 deletions(-)
 
-Application Interface:
-The API to use Timed I/O is very simple. It is enabled and disabled by
-writing a '1' or '0' value to the sysfs enable attribute associated with
-the Timed I/O PPS device. Each Timed I/O pin is represented by a PPS
-device. When enabled, a pulse-per-second(PPS) synchronized with the
-system clock is continuously produced on the Timed I/O pin, otherwise it
-is pulled low.
-
-The Timed I/O signal on the motherboard is enabled in the BIOS setup.
-
-This patchset is dependent on [1]
-
-References:
-https://en.wikipedia.org/wiki/Pulse-per-second_signal
-https://drive.google.com/file/d/1vkBRRDuELmY8I3FlfOZaEBp-DxLW6t_V/view
-https://youtu.be/JLUTT-lrDqw
-
-Patch 1 adds base clock properties in clocksource structure
-Patch 2 adds function to convert realtime to base clock
-Patch 3 - 7 removes reference to convert_art_to_tsc function across
-drivers
-Patch 8 adds the pps(pulse per second) generator tio driver to the pps
-subsystem.
-Patch 9 documentation and usage of the pps tio generator module.
-Patch 10 includes documentation for sysfs interface.
-
-[1] https://lore.kernel.org/netdev/20231215220612.173603-2-peter.hilber@opensynergy.com/T/
-
-Please help to review the changes.
-
-Thanks in advance,
-Sowjanya
-
-Lakshmi Sowjanya D (5):
-  x86/tsc: Add base clock properties in clocksource structure
-  timekeeping: Add function to convert realtime to base clock
-  pps: generators: Add PPS Generator TIO Driver
-  Documentation: driver-api: pps: Add Intel Timed I/O PPS generator
-  ABI: pps: Add ABI documentation for Intel TIO
-
-Thomas Gleixner (5):
-  e10002: remove convert_art_to_tsc()
-  igc: remove convert_art_to_tsc()
-  stmmac: intel: remove convert_art_to_tsc()
-  ALSA: hda: remove convert_art_to_tsc()
-  ice/ptp: remove convert_art_to_tsc()
-
- .../ABI/testing/sysfs-platform-pps-tio        |   7 +
- Documentation/driver-api/pps.rst              |  22 ++
- arch/x86/include/asm/tsc.h                    |   3 -
- arch/x86/kernel/tsc.c                         |  94 ++-----
- drivers/net/ethernet/intel/e1000e/ptp.c       |   3 +-
- drivers/net/ethernet/intel/ice/ice_ptp.c      |   2 +-
- drivers/net/ethernet/intel/igc/igc_ptp.c      |   6 +-
- .../net/ethernet/stmicro/stmmac/dwmac-intel.c |   3 +-
- drivers/pps/generators/Kconfig                |  16 ++
- drivers/pps/generators/Makefile               |   1 +
- drivers/pps/generators/pps_gen_tio.c          | 238 ++++++++++++++++++
- include/linux/clocksource.h                   |  27 ++
- include/linux/clocksource_ids.h               |   1 +
- include/linux/timekeeping.h                   |   6 +
- kernel/time/timekeeping.c                     | 112 ++++++++-
- sound/pci/hda/hda_controller.c                |   3 +-
- 16 files changed, 459 insertions(+), 85 deletions(-)
- create mode 100644 Documentation/ABI/testing/sysfs-platform-pps-tio
- create mode 100644 drivers/pps/generators/pps_gen_tio.c
-
+diff --git a/arch/x86/include/asm/tsc.h b/arch/x86/include/asm/tsc.h
+index 594fce0ca744..5e36495cc821 100644
+--- a/arch/x86/include/asm/tsc.h
++++ b/arch/x86/include/asm/tsc.h
+@@ -27,9 +27,6 @@ static inline cycles_t get_cycles(void)
+ }
+ #define get_cycles get_cycles
+ 
+-extern struct system_counterval_t convert_art_to_tsc(u64 art);
+-extern struct system_counterval_t convert_art_ns_to_tsc(u64 art_ns);
+-
+ extern void tsc_early_init(void);
+ extern void tsc_init(void);
+ extern void mark_tsc_unstable(char *reason);
+diff --git a/arch/x86/kernel/tsc.c b/arch/x86/kernel/tsc.c
+index 868f09966b0f..b45ce594cfef 100644
+--- a/arch/x86/kernel/tsc.c
++++ b/arch/x86/kernel/tsc.c
+@@ -51,9 +51,9 @@ int tsc_clocksource_reliable;
+ 
+ static int __read_mostly tsc_force_recalibrate;
+ 
+-static u32 art_to_tsc_numerator;
+-static u32 art_to_tsc_denominator;
+-static u64 art_to_tsc_offset;
++static struct clocksource_base art_base_clk = {
++	.id    = CSID_X86_ART,
++};
+ static bool have_art;
+ 
+ struct cyc2ns {
+@@ -1075,7 +1075,7 @@ core_initcall(cpufreq_register_tsc_scaling);
+  */
+ static void __init detect_art(void)
+ {
+-	unsigned int unused[2];
++	unsigned int unused;
+ 
+ 	if (boot_cpu_data.cpuid_level < ART_CPUID_LEAF)
+ 		return;
+@@ -1090,13 +1090,14 @@ static void __init detect_art(void)
+ 	    tsc_async_resets)
+ 		return;
+ 
+-	cpuid(ART_CPUID_LEAF, &art_to_tsc_denominator,
+-	      &art_to_tsc_numerator, unused, unused+1);
++	cpuid(ART_CPUID_LEAF, &art_base_clk.denominator,
++		&art_base_clk.numerator, &art_base_clk.freq_khz, &unused);
+ 
+-	if (art_to_tsc_denominator < ART_MIN_DENOMINATOR)
++	art_base_clk.freq_khz /= KHZ;
++	if (art_base_clk.denominator < ART_MIN_DENOMINATOR)
+ 		return;
+ 
+-	rdmsrl(MSR_IA32_TSC_ADJUST, art_to_tsc_offset);
++	rdmsrl(MSR_IA32_TSC_ADJUST, art_base_clk.offset);
+ 
+ 	/* Make this sticky over multiple CPU init calls */
+ 	setup_force_cpu_cap(X86_FEATURE_ART);
+@@ -1297,69 +1298,6 @@ int unsynchronized_tsc(void)
+ 	return 0;
+ }
+ 
+-/*
+- * Convert ART to TSC given numerator/denominator found in detect_art()
+- */
+-struct system_counterval_t convert_art_to_tsc(u64 art)
+-{
+-	u64 tmp, res, rem;
+-
+-	rem = do_div(art, art_to_tsc_denominator);
+-
+-	res = art * art_to_tsc_numerator;
+-	tmp = rem * art_to_tsc_numerator;
+-
+-	do_div(tmp, art_to_tsc_denominator);
+-	res += tmp + art_to_tsc_offset;
+-
+-	return (struct system_counterval_t) {
+-		.cs_id = have_art ? CSID_X86_TSC : CSID_GENERIC,
+-		.cycles = res
+-	};
+-}
+-EXPORT_SYMBOL(convert_art_to_tsc);
+-
+-/**
+- * convert_art_ns_to_tsc() - Convert ART in nanoseconds to TSC.
+- * @art_ns: ART (Always Running Timer) in unit of nanoseconds
+- *
+- * PTM requires all timestamps to be in units of nanoseconds. When user
+- * software requests a cross-timestamp, this function converts system timestamp
+- * to TSC.
+- *
+- * This is valid when CPU feature flag X86_FEATURE_TSC_KNOWN_FREQ is set
+- * indicating the tsc_khz is derived from CPUID[15H]. Drivers should check
+- * that this flag is set before conversion to TSC is attempted.
+- *
+- * Return:
+- * struct system_counterval_t - system counter value with the ID of the
+- *	corresponding clocksource
+- *	@cycles:	System counter value
+- *	@cs_id:		Clocksource ID corresponding to system counter value.
+- *			Used by timekeeping code to verify comparability of two
+- *			cycle values.
+- */
+-
+-struct system_counterval_t convert_art_ns_to_tsc(u64 art_ns)
+-{
+-	u64 tmp, res, rem;
+-
+-	rem = do_div(art_ns, USEC_PER_SEC);
+-
+-	res = art_ns * tsc_khz;
+-	tmp = rem * tsc_khz;
+-
+-	do_div(tmp, USEC_PER_SEC);
+-	res += tmp;
+-
+-	return (struct system_counterval_t) {
+-		.cs_id = have_art ? CSID_X86_TSC : CSID_GENERIC,
+-		.cycles = res
+-	};
+-}
+-EXPORT_SYMBOL(convert_art_ns_to_tsc);
+-
+-
+ static void tsc_refine_calibration_work(struct work_struct *work);
+ static DECLARE_DELAYED_WORK(tsc_irqwork, tsc_refine_calibration_work);
+ /**
+@@ -1461,8 +1399,10 @@ static void tsc_refine_calibration_work(struct work_struct *work)
+ 	if (tsc_unstable)
+ 		goto unreg;
+ 
+-	if (boot_cpu_has(X86_FEATURE_ART))
++	if (boot_cpu_has(X86_FEATURE_ART)) {
+ 		have_art = true;
++		clocksource_tsc.base = &art_base_clk;
++	}
+ 	clocksource_register_khz(&clocksource_tsc, tsc_khz);
+ unreg:
+ 	clocksource_unregister(&clocksource_tsc_early);
+@@ -1487,8 +1427,10 @@ static int __init init_tsc_clocksource(void)
+ 	 * the refined calibration and directly register it as a clocksource.
+ 	 */
+ 	if (boot_cpu_has(X86_FEATURE_TSC_KNOWN_FREQ)) {
+-		if (boot_cpu_has(X86_FEATURE_ART))
++		if (boot_cpu_has(X86_FEATURE_ART)) {
+ 			have_art = true;
++			clocksource_tsc.base = &art_base_clk;
++		}
+ 		clocksource_register_khz(&clocksource_tsc, tsc_khz);
+ 		clocksource_unregister(&clocksource_tsc_early);
+ 
+@@ -1512,10 +1454,12 @@ static bool __init determine_cpu_tsc_frequencies(bool early)
+ 
+ 	if (early) {
+ 		cpu_khz = x86_platform.calibrate_cpu();
+-		if (tsc_early_khz)
++		if (tsc_early_khz) {
+ 			tsc_khz = tsc_early_khz;
+-		else
++		} else {
+ 			tsc_khz = x86_platform.calibrate_tsc();
++			clocksource_tsc.freq_khz = tsc_khz;
++		}
+ 	} else {
+ 		/* We should not be here with non-native cpu calibration */
+ 		WARN_ON(x86_platform.calibrate_cpu != native_calibrate_cpu);
+diff --git a/include/linux/clocksource.h b/include/linux/clocksource.h
+index 1d42d4b17327..0a1110a0e660 100644
+--- a/include/linux/clocksource.h
++++ b/include/linux/clocksource.h
+@@ -21,6 +21,7 @@
+ #include <asm/div64.h>
+ #include <asm/io.h>
+ 
++struct clocksource_base;
+ struct clocksource;
+ struct module;
+ 
+@@ -48,6 +49,7 @@ struct module;
+  * @archdata:		Optional arch-specific data
+  * @max_cycles:		Maximum safe cycle value which won't overflow on
+  *			multiplication
++ * @freq_khz:		Clocksource frequency in khz.
+  * @name:		Pointer to clocksource name
+  * @list:		List head for registration (internal)
+  * @rating:		Rating value for selection (higher is better)
+@@ -70,6 +72,8 @@ struct module;
+  *			validate the clocksource from which the snapshot was
+  *			taken.
+  * @flags:		Flags describing special properties
++ * @base:		Hardware abstraction for clock on which a clocksource
++ *			is based
+  * @enable:		Optional function to enable the clocksource
+  * @disable:		Optional function to disable the clocksource
+  * @suspend:		Optional suspend function for the clocksource
+@@ -105,12 +109,14 @@ struct clocksource {
+ 	struct arch_clocksource_data archdata;
+ #endif
+ 	u64			max_cycles;
++	u32			freq_khz;
+ 	const char		*name;
+ 	struct list_head	list;
+ 	int			rating;
+ 	enum clocksource_ids	id;
+ 	enum vdso_clock_mode	vdso_clock_mode;
+ 	unsigned long		flags;
++	struct clocksource_base *base;
+ 
+ 	int			(*enable)(struct clocksource *cs);
+ 	void			(*disable)(struct clocksource *cs);
+@@ -294,4 +300,25 @@ static inline void timer_probe(void) {}
+ extern ulong max_cswd_read_retries;
+ void clocksource_verify_percpu(struct clocksource *cs);
+ 
++/**
++ * struct clocksource_base - hardware abstraction for clock on which a clocksource
++ *			is based
++ * @id:			Defaults to CSID_GENERIC. The id value is used for conversion
++ *			functions which require that the current clocksource is based
++ *			on a clocksource_base with a particular ID in certain snapshot
++ *			functions to allow callers to validate the clocksource from
++ *			which the snapshot was taken.
++ * @freq_khz:		Nominal frequency of the base clock in kHz
++ * @offset:		Offset between the base clock and the clocksource
++ * @numerator:		Numerator of the clock ratio between base clock and the clocksource
++ * @denominator:	Denominator of the clock ratio between base clock and the clocksource
++ */
++struct clocksource_base {
++	enum clocksource_ids	id;
++	u32			freq_khz;
++	u64			offset;
++	u32			numerator;
++	u32			denominator;
++};
++
+ #endif /* _LINUX_CLOCKSOURCE_H */
+diff --git a/include/linux/clocksource_ids.h b/include/linux/clocksource_ids.h
+index a4fa3436940c..2bb4d8c2f1b0 100644
+--- a/include/linux/clocksource_ids.h
++++ b/include/linux/clocksource_ids.h
+@@ -9,6 +9,7 @@ enum clocksource_ids {
+ 	CSID_X86_TSC_EARLY,
+ 	CSID_X86_TSC,
+ 	CSID_X86_KVM_CLK,
++	CSID_X86_ART,
+ 	CSID_MAX,
+ };
+ 
 -- 
 2.35.3
 
