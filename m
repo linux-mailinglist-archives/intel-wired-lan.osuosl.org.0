@@ -2,93 +2,92 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9A5D081BBE4
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 21 Dec 2023 17:26:49 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6B49181BBEA
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 21 Dec 2023 17:27:32 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 61D27437EF;
-	Thu, 21 Dec 2023 16:26:46 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 61D27437EF
+	by smtp2.osuosl.org (Postfix) with ESMTP id E9405437EF;
+	Thu, 21 Dec 2023 16:27:30 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org E9405437EF
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1703176006;
-	bh=+YEmlAvVFdbzta87AzC8XaNOkhBe4W/cgb/a9Y5k6Mc=;
+	s=default; t=1703176051;
+	bh=HhNzKyJ7Yy067HsyD4EXhrCZNhDTE/LnEE51/ZVPeGY=;
 	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=1HeNln8Fsxfzkx1XYbfSD9DmnyNbIMWJy5KNALb2Q7xGiEvSo+j9EroAt3J3kNCeF
-	 OPRul9vB5bHGGykZEezuDhw0dFCev3GmGd+Z9c739eE7KpZ7eWqJV8+5mAZMrAT5Ay
-	 RMgolG6vMLsrrxqUFeRdNvdl0X4NB2/RkebLjfJHuwhATBfue35IpYF4u20jN0CkeR
-	 EJ96Get8vm/UBCBWRuWigiMioQGDrbsRXPEC2bf+2Egq9Vk2URWrczc4NJzJ68P9v/
-	 UkcPzCzRbnBlkRgEIYq4WQYPJYc/CROI8hlFD1BxL2Luzpjrr7wQFHThWa0A4BQV1x
-	 5+qZ48Pyh2GoA==
+	b=5k4Jq+JrqXjEyhhBIubjVpA8zXGHq2u/zhZc2hCE9aGsu/PJI1jgj0eEatZR8LyzN
+	 hUdjq9y89plTHs3V+EJ+RJK505aCA7idV6iHwmVAfhQGyfg2jL0553AFg5ocjO8WJ6
+	 gJgJiHvtMSZOXPX+SmsbpNuBC9E7OL66P6/2f7kaOFCv9cX4RZG+RK/VN28waua93Q
+	 ZW2PLpeEx4JyGj0cTTOdVZ/6bv/EUMuDozD7D01/L08aqqoOi0OMGvLxc4uq0BJyiu
+	 Yc28J0FRQx5RxYbEGVR3CJZFraiOJZOYyJ89PGvYqYFFIhVlU5nEsgOVEkTlLtsA3S
+	 lvYNAVYIwq8Hg==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id cSa14lt6hL6C; Thu, 21 Dec 2023 16:26:45 +0000 (UTC)
+	with ESMTP id KZyT2BqvLL2m; Thu, 21 Dec 2023 16:27:30 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 19AF0401F1;
-	Thu, 21 Dec 2023 16:26:44 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 19AF0401F1
+	by smtp2.osuosl.org (Postfix) with ESMTP id ABEA0401F1;
+	Thu, 21 Dec 2023 16:27:29 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org ABEA0401F1
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 3C1231BF33F
- for <intel-wired-lan@lists.osuosl.org>; Thu, 21 Dec 2023 16:26:39 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 966C61BF33F
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 21 Dec 2023 16:27:24 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 1D83B4223B
- for <intel-wired-lan@lists.osuosl.org>; Thu, 21 Dec 2023 16:26:39 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1D83B4223B
+ by smtp3.osuosl.org (Postfix) with ESMTP id 6DE26610B9
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 21 Dec 2023 16:27:24 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6DE26610B9
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ilLwrmbUX1IU for <intel-wired-lan@lists.osuosl.org>;
- Thu, 21 Dec 2023 16:26:38 +0000 (UTC)
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.10])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 6262A42238
- for <intel-wired-lan@lists.osuosl.org>; Thu, 21 Dec 2023 16:26:38 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6262A42238
-X-IronPort-AV: E=McAfee;i="6600,9927,10931"; a="3232834"
-X-IronPort-AV: E=Sophos;i="6.04,293,1695711600"; 
-   d="scan'208";a="3232834"
-Received: from fmsmga004.fm.intel.com ([10.253.24.48])
- by fmvoesa104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 21 Dec 2023 08:26:24 -0800
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id Yc6PnUyHmTag for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 21 Dec 2023 16:27:23 +0000 (UTC)
+Received: from mgamail.intel.com (mgamail.intel.com [192.55.52.93])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id B966660B3D
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 21 Dec 2023 16:27:23 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B966660B3D
+X-IronPort-AV: E=McAfee;i="6600,9927,10931"; a="393163078"
+X-IronPort-AV: E=Sophos;i="6.04,293,1695711600"; d="scan'208";a="393163078"
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+ by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 21 Dec 2023 08:27:22 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10931"; a="847157610"
-X-IronPort-AV: E=Sophos;i="6.04,293,1695711600"; d="scan'208";a="847157610"
+X-IronPort-AV: E=McAfee;i="6600,9927,10931"; a="726475781"
+X-IronPort-AV: E=Sophos;i="6.04,293,1695711600"; d="scan'208";a="726475781"
 Received: from smile.fi.intel.com ([10.237.72.54])
- by fmsmga004.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 21 Dec 2023 08:26:18 -0800
+ by orsmga003.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 21 Dec 2023 08:27:16 -0800
 Received: from andy by smile.fi.intel.com with local (Exim 4.97)
  (envelope-from <andriy.shevchenko@linux.intel.com>)
- id 1rGLsE-00000007tTx-3bFd; Thu, 21 Dec 2023 18:26:14 +0200
-Date: Thu, 21 Dec 2023 18:26:14 +0200
+ id 1rGLtA-00000007tUq-1eGT; Thu, 21 Dec 2023 18:27:12 +0200
+Date: Thu, 21 Dec 2023 18:27:12 +0200
 From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 To: lakshmi.sowjanya.d@intel.com
-Message-ID: <ZYRnJlLJOYqlZSP0@smile.fi.intel.com>
+Message-ID: <ZYRnYJ0ljsvzWLXI@smile.fi.intel.com>
 References: <20231221093254.9599-1-lakshmi.sowjanya.d@intel.com>
- <20231221093254.9599-9-lakshmi.sowjanya.d@intel.com>
+ <20231221093254.9599-11-lakshmi.sowjanya.d@intel.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20231221093254.9599-9-lakshmi.sowjanya.d@intel.com>
+In-Reply-To: <20231221093254.9599-11-lakshmi.sowjanya.d@intel.com>
 Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1703175998; x=1734711998;
+ t=1703176043; x=1734712043;
  h=date:from:to:cc:subject:message-id:references:
  mime-version:in-reply-to;
- bh=hwyVMnz8YfEfXRJSEPnKQv9pdm2VBlr6t+hTTgnb3c4=;
- b=EFd23QKGxwTeKywQx58sDVthcyp+ny2B168FJl9UmPLaUR2VKCFcEccR
- QGq3UhM8QboCMBEgJ99BcupTrDsGGv/x/yXxuWc1wn4Oc8dWUv3diYPw1
- XU77GiFFGJ/aRNVhMNUanrlmWq0+gLUd9EnufVJ1mzDK7tjZi9ZnkVnvt
- nCVdRYPU9jMqeGNgnsOtJlzz6VE0fgdd23SPkAdwUGS9uZxxiBkR1hWLd
- v2I8Peclz/bcdbD+kPuD0aPCwOUa3h0A8Fg4uGaPy0ftovatY7IgcHPJw
- o9MFJbHOFoTrKa8r3IuFfW/Rnfpmgs5IfqXmiUwpirF/J2w1e19Z+hi81
- A==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ bh=Gtx3hXaYOEPt95H7RVRIGbgG0vy7IRlF6DZK8ggX4l0=;
+ b=TQtiZor2LKBVJ2PgpELmkKJmatCqql9A5FgYEIeMNFXzd1PlLJIdqXSh
+ VZds9EmCvgKIAkPBjPV+jFUI19lGHeeINYkdyKAFHvQ7w40eNGELnW2qV
+ Yb+fKFoEzhk3PQPANToLw3kDQyZfdYxTxHutOgRw6Ho+kI2FgoPfpetTI
+ 17slEMWmhBh3KEcFoa+Kj55EC9LFs1jtqQR8Uxwxs5OUJ3UDe4LtHrnph
+ o7Hq+biZmVVmCZwUonVgthxJ1Uq1Qpvlixgte4lCbNe++dwYQdgjeR4Yg
+ dl6Lztc1eVRtoPm2mMspjKloT/S0KP1A2Gwfq/wesJvl9NxDo2E0aCRAE
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=EFd23QKG
-Subject: Re: [Intel-wired-lan] [RFC PATCH v2 08/10] pps: generators: Add PPS
- Generator TIO Driver
+ header.a=rsa-sha256 header.s=Intel header.b=TQtiZor2
+Subject: Re: [Intel-wired-lan] [RFC PATCH v2 10/10] ABI: pps: Add ABI
+ documentation for Intel TIO
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -114,50 +113,17 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Thu, Dec 21, 2023 at 03:02:52PM +0530, lakshmi.sowjanya.d@intel.com wrote:
+On Thu, Dec 21, 2023 at 03:02:54PM +0530, lakshmi.sowjanya.d@intel.com wrote:
 > From: Lakshmi Sowjanya D <lakshmi.sowjanya.d@intel.com>
 > 
-> The Intel Timed IO PPS generator driver outputs a PPS signal using
-> dedicated hardware that is more accurate than software actuated PPS.
-> The Timed IO hardware generates output events using the ART timer.
-> The ART timer period varies based on platform type, but is less than 100
-> nanoseconds for all current platforms. Timed IO output accuracy is
-> within 1 ART period.
-> 
-> PPS output is enabled by writing '1' the 'enable' sysfs attribute. The
-> driver uses hrtimers to schedule a wake-up 10 ms before each event
-> (edge) target time. At wakeup, the driver converts the target time in
-> terms of CLOCK_REALTIME to ART trigger time and writes this to the Timed
-> IO hardware. The Timed IO hardware generates an event precisely at the
-> requested system time without software involvement.
+> Document sysfs interface for Intel Timed I/O PPS driver
 
 ...
 
-> +#include <linux/bits.h>
-> +#include <linux/bitfield.h>
-> +#include <linux/cleanup.h>
+> +Date:		January 2024
+> +KernelVersion	6.8
 
-+ container_of.h
-
-> +#include <linux/cpu.h>
-
-+ device.h
-+ err.h
-+ hrtimer.h
-
-> +#include <linux/io-64-nonatomic-hi-lo.h>
-
-+ kstrtox.h
-
-> +#include <linux/mod_devicetable.h>
-> +#include <linux/module.h>
-> +#include <linux/platform_device.h>
-
-+ spinlock.h
-+ sysfs.h
-
-> +#include <linux/timekeeping.h>
-> +#include <linux/types.h>
+No way, use next one.
 
 -- 
 With Best Regards,
