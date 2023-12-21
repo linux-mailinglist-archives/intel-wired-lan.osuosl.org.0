@@ -1,107 +1,83 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4120181B393
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 21 Dec 2023 11:31:58 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id CAE3981B79B
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 21 Dec 2023 14:27:49 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id BEC0E43766;
-	Thu, 21 Dec 2023 10:31:56 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org BEC0E43766
+	by smtp3.osuosl.org (Postfix) with ESMTP id D40B5615BC;
+	Thu, 21 Dec 2023 13:27:47 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D40B5615BC
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1703154716;
-	bh=lnBZhpyyTEfdaqmG8/obb62D7dchMUHj5HhH7/+Ao+s=;
-	h=References:In-Reply-To:From:Date:To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=55AAbz0vMTn8GNK1SyWrdYYhujGsMihEJrOj1oth9MDjgw/aNcxWipYp8VcECItHC
-	 HcvMMrkFVjJuMrLNVMUpIitlrR7TPLsP+rRJtn3a9/JkjpMdZYx8M/w1nhgSgXtmxA
-	 8RMv/ZIuxvWiOHJuWN8Tid0sBB+lqPKJkVqaaYpx1o0Zx7V/ETcTAt+6qb7RKKukKm
-	 HtffCXmTkW5IvgfhhFlBsVTQiTinkZ6J18jaMcdFwyzRrN3iaDbIW9f09vJnqGXMsw
-	 kzKQmJ/HUfcGFLbcUnuEU1jUkmWozGf7+2GO3BgJLk5cipglwF3Wod6Kwf2s1b0Hri
-	 cN+3EijMlnh+g==
+	s=default; t=1703165267;
+	bh=YPFa3dUAg7LKd6cMyCdJsWrwXYOn3EPyzdsbOlD2WGg=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=wl963VWyAQj+qeszFpYEqpvTns/+3WhV0xAHIZkY6wNLIJGMYpIG9dQCWs/iWlSWJ
+	 YlrsYjTNBhYUs7OkRhWNKdI41+HUVC0/A3oNIH4SHVSMuUlGnf93fz1Pwd2F6otyC3
+	 yM8MDo14A0oSFeprr35AkrkVEEBo/CT80/s0iG5lfr5fkPVWOkA8CtWrAon2voR68c
+	 bcz20gepU2ibFr24xryo3KflmhiXoXUeI8bkN57tUaiJ8j959emYRjx4llTXgVWldk
+	 1/QLMtb64yewxsNRMQdSfAxu3WuBp5sDiETQsG4nO+1VrgfQ6z4siyUN+4dUO2IxxO
+	 nFVViWG4pTl5Q==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id w43yo9_ofISF; Thu, 21 Dec 2023 10:31:55 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id tmBBp0ONpEzU; Thu, 21 Dec 2023 13:27:47 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 84CBF402E4;
-	Thu, 21 Dec 2023 10:31:54 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 84CBF402E4
+	by smtp3.osuosl.org (Postfix) with ESMTP id 926DA615B8;
+	Thu, 21 Dec 2023 13:27:46 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 926DA615B8
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 7D5E81BF38B
- for <intel-wired-lan@lists.osuosl.org>; Thu, 21 Dec 2023 10:31:49 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id E33131BF3A0
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 21 Dec 2023 13:27:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 4F5A240199
- for <intel-wired-lan@lists.osuosl.org>; Thu, 21 Dec 2023 10:31:49 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 4F5A240199
+ by smtp3.osuosl.org (Postfix) with ESMTP id B0231615B8
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 21 Dec 2023 13:27:41 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B0231615B8
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 1ewAS_GVXbYr for <intel-wired-lan@lists.osuosl.org>;
- Thu, 21 Dec 2023 10:31:47 +0000 (UTC)
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.129.124])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 19A774014E
- for <intel-wired-lan@lists.osuosl.org>; Thu, 21 Dec 2023 10:31:46 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 19A774014E
-Received: from mail-ej1-f72.google.com (mail-ej1-f72.google.com
- [209.85.218.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-625-Cz_rTxkFPQ20ZqXKJ8jHQw-1; Thu, 21 Dec 2023 05:31:44 -0500
-X-MC-Unique: Cz_rTxkFPQ20ZqXKJ8jHQw-1
-Received: by mail-ej1-f72.google.com with SMTP id
- a640c23a62f3a-a23575ee664so32028966b.0
- for <intel-wired-lan@lists.osuosl.org>; Thu, 21 Dec 2023 02:31:44 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1703154703; x=1703759503;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=dQWbHPSe7IqaHYsS77POPV5Eeahfsq+mb7kZGCuPy4c=;
- b=Qzt4RtkwbsbIRp9ytHpSmtBOwY8RfobXr6OkNGputV1FHO3qQ8u80cVZkHkMbrjXaY
- w4krg7k0YrZfwpePoSnr3Uijq15/mDp9r0OLCmXyvMfIV0i2k6mooOfyAPaeZ7Nxa9Zm
- vMc125oANOu7eBL2suABm83l0yCy1sMHdCStEfyadk1iEGHAZU+8WAlBze6G+TKaDgxD
- TZ1QS2y0kLMeOu0wSxwaIY7XXRX0vn+9vL00BYgAlDzUkTql0EeW6iRox5CSwfq0oaDT
- /KM3JXLH9yaOOiU2Q0JhxqMdcKb57bHAglScgDytVSJeLCVCJui55TfW4KqowNe2e1Jg
- yliw==
-X-Gm-Message-State: AOJu0YwzL7v2qGJnh+76xHRetdM/TtTaQsV0GrOwb2H1sNdDUfICyzko
- fJ0/vvu9AUBx7I0mlWb2MLXLMpXlQr1a61iQyxxZS4SJTFB4r5ssd2ODS6wvXL/bY1tQKewNTpM
- etE2s3MLLWFPnOk5EcV2GyEK6fPs5WshhaWt4NrUHLX1HsQ==
-X-Received: by 2002:a17:907:944b:b0:a23:52b7:c0c7 with SMTP id
- dl11-20020a170907944b00b00a2352b7c0c7mr4583595ejc.132.1703154703379; 
- Thu, 21 Dec 2023 02:31:43 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGlyX6SfwJ0ZMkfzo8G5jEvjx5SM7sFkrywb0NwFkGisqwDsA/uAEB0NmHs1crEvlNdWQdaj2G5Unx+28P5n2E=
-X-Received: by 2002:a17:907:944b:b0:a23:52b7:c0c7 with SMTP id
- dl11-20020a170907944b00b00a2352b7c0c7mr4583584ejc.132.1703154702996; Thu, 21
- Dec 2023 02:31:42 -0800 (PST)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id wH8wyYLAsiSb for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 21 Dec 2023 13:27:40 +0000 (UTC)
+Received: from mgamail.intel.com (mgamail.intel.com [134.134.136.20])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id B0AAA61026
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 21 Dec 2023 13:27:40 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B0AAA61026
+X-IronPort-AV: E=McAfee;i="6600,9927,10930"; a="386400168"
+X-IronPort-AV: E=Sophos;i="6.04,293,1695711600"; d="scan'208";a="386400168"
+Received: from fmviesa001.fm.intel.com ([10.60.135.141])
+ by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 21 Dec 2023 05:27:39 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.04,293,1695711600"; d="scan'208";a="18683812"
+Received: from unknown (HELO amlin-019-225.igk.intel.com) ([10.102.19.225])
+ by fmviesa001.fm.intel.com with ESMTP; 21 Dec 2023 05:27:37 -0800
+From: Andrii Staikov <andrii.staikov@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Thu, 21 Dec 2023 14:27:35 +0100
+Message-Id: <20231221132735.1246164-1-andrii.staikov@intel.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-References: <20231218145855.3605898-1-arkadiusz.kubalewski@intel.com>
-In-Reply-To: <20231218145855.3605898-1-arkadiusz.kubalewski@intel.com>
-From: Michal Schmidt <mschmidt@redhat.com>
-Date: Thu, 21 Dec 2023 11:31:31 +0100
-Message-ID: <CADEbmW2GpdrMut92v7X9-w8Rchy+=BeX6UAQnybrZSjOgZOXuA@mail.gmail.com>
-To: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=redhat.com; 
- s=mimecast20190719; t=1703154706;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=dQWbHPSe7IqaHYsS77POPV5Eeahfsq+mb7kZGCuPy4c=;
- b=fHSjJp79DZmKGbh67AZ6EAQH/5Ubk8meiGoDQxvQo84yT7/W3mPxDJ7CzuSebJv2eW+X5I
- E8wCgR3T++y3Ria4Rrf44r0QUnTbXmv39Z2Q5Wy+Zs0ZbnEVxcqxgi/fzsSNLjjidCqHnp
- wfdkoMTbArIPdx/lRa9wK48/OqmaRKU=
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
- header.a=rsa-sha256 header.s=mimecast20190719 header.b=fHSjJp79
-Subject: Re: [Intel-wired-lan] [PATCH iwl-net v2] ice: dpll: fix phase
- offset value
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1703165260; x=1734701260;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=aleQJPWuPPAp07EORrmo8USwM+efZBPIKfnkxAkmJec=;
+ b=Yoyme7G6dYoLOjbVKyTvbEM6waYMwXPnkIm67hiQWdQrMTDoa5O7Q35+
+ SNa298BcV1ZZcuuC6xGV4oPvnZs9DBB3O0q4MBsVzEoRYZTUZCzh9GuY6
+ xr0V6HTC/FMyGsdn7FC2PegizLfs1QJbKKCKiZJ0ky7pbPhsqBVuBhgtj
+ +ZYhkiOmbPmOlAz/wxdlZ4qEI9Mca/2AVm+r+SyOQ67/r6jglH5zssl3E
+ V1A4+0LzaePObsiN2xJBTOzdJLnoezb/hNN737L3XcEABXU7dYrtObrKn
+ l9z3KyeHzrt+Kvyz7NN0mq1mkZtq4TM4OZqqmQh7mjwe8r4geF5L7DY1D
+ A==;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=Yoyme7G6
+Subject: [Intel-wired-lan] [PATCH iwl-net v5] i40e: Restore VF MSI-X state
+ during PCI reset
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -114,63 +90,121 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Aleksandr Loktionov <aleksandr.loktionov@intel.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- intel-wired-lan@lists.osuosl.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: Wojciech Drewek <wojciech.drewek@intel.com>,
+ Karen Ostrowska <karen.ostrowska@intel.com>, netdev@vger.kernel.org,
+ Andrii Staikov <andrii.staikov@intel.com>,
+ Mateusz Palczewski <mateusz.palczewski@intel.com>,
+ Przemyslaw Kitszel <przemyslaw.kitszel@intel.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-T24gTW9uLCBEZWMgMTgsIDIwMjMgYXQgNDowMuKAr1BNIEFya2FkaXVzeiBLdWJhbGV3c2tpCjxh
-cmthZGl1c3oua3ViYWxld3NraUBpbnRlbC5jb20+IHdyb3RlOgo+Cj4gU3RvcCBkaXZpZGluZyB0
-aGUgcGhhc2Vfb2Zmc2V0IHZhbHVlIHJlY2VpdmVkIGZyb20gZmlybXdhcmUuIFRoaXMgZmF1bHQK
-PiBpcyBwcmVzZW50IHNpbmNlIHRoZSBpbml0aWFsIGltcGxlbWVudGF0aW9uLgo+IFRoZSBwaGFz
-ZV9vZmZzZXQgdmFsdWUgcmVjZWl2ZWQgZnJvbSBmaXJtd2FyZSBpcyBpbiAwLjAxcHMgcmVzb2x1
-dGlvbi4KPiBEcGxsIHN1YnN5c3RlbSBpcyB1c2luZyB0aGUgdmFsdWUgaW4gMC4wMDFwcywgcmF3
-IHZhbHVlIGlzIGFkanVzdGVkCj4gYmVmb3JlIHByb3ZpZGluZyBpdCB0byB0aGUgdXNlci4KPgo+
-IFRoZSB1c2VyIGNhbiBvYnNlcnZlIHRoZSB2YWx1ZSBvZiBwaGFzZSBvZmZzZXQgd2l0aCByZXNw
-b25zZSB0bwo+IGBwaW4tZ2V0YCBuZXRsaW5rIG1lc3NhZ2Ugb2YgZHBsbCBzdWJzeXN0ZW0gZm9y
-IGFuIGFjdGl2ZSBwaW46Cj4gJCAuL3Rvb2xzL25ldC95bmwvY2xpLnB5IC0tc3BlYyBEb2N1bWVu
-dGF0aW9uL25ldGxpbmsvc3BlY3MvZHBsbC55YW1sIFwKPiAgICAgICAgIC0tZG8gcGluLWdldCAt
-LWpzb24gJ3siaWQiOjJ9Jwo+Cj4gV2hlcmUgZXhhbXBsZSBvZiBjb3JyZWN0IHJlc3BvbnNlIHdv
-dWxkIGJlOgo+IHsnYm9hcmQtbGFiZWwnOiAnQzgyN18wLVJDTEtBJywKPiAgJ2NhcGFiaWxpdGll
-cyc6IDYsCj4gICdjbG9jay1pZCc6IDQ2NTg2MTMxNzQ2OTE2MTM4MDAsCj4gICdmcmVxdWVuY3kn
-OiAxOTUzMTI1LAo+ICAnaWQnOiAyLAo+ICAnbW9kdWxlLW5hbWUnOiAnaWNlJywKPiAgJ3BhcmVu
-dC1kZXZpY2UnOiBbeydkaXJlY3Rpb24nOiAnaW5wdXQnLAo+ICAgICAgICAgICAgICAgICAgICAg
-J3BhcmVudC1pZCc6IDYsCj4gICAgICAgICAgICAgICAgICAgICAncGhhc2Utb2Zmc2V0JzogLTIx
-NjgzOTU1MCwKPiAgICAgICAgICAgICAgICAgICAgICdwcmlvJzogOSwKPiAgICAgICAgICAgICAg
-ICAgICAgICdzdGF0ZSc6ICdjb25uZWN0ZWQnfSwKPiAgICAgICAgICAgICAgICAgICAgeydkaXJl
-Y3Rpb24nOiAnaW5wdXQnLAo+ICAgICAgICAgICAgICAgICAgICAgJ3BhcmVudC1pZCc6IDcsCj4g
-ICAgICAgICAgICAgICAgICAgICAncGhhc2Utb2Zmc2V0JzogLTQyOTMwLAo+ICAgICAgICAgICAg
-ICAgICAgICAgJ3ByaW8nOiA4LAo+ICAgICAgICAgICAgICAgICAgICAgJ3N0YXRlJzogJ2Nvbm5l
-Y3RlZCd9XSwKPiAgJ3BoYXNlLWFkanVzdCc6IDAsCj4gICdwaGFzZS1hZGp1c3QtbWF4JzogMTY3
-MjMsCj4gICdwaGFzZS1hZGp1c3QtbWluJzogLTE2NzIzLAo+ICAndHlwZSc6ICdtdXgnfQo+Cj4g
-UHJvdmlkZWQgcGhhc2Utb2Zmc2V0IHZhbHVlICgtNDI5MzApIHNoYWxsIGJlIGRpdmlkZWQgYnkg
-dGhlIHVzZXIgd2l0aAo+IERQTExfUEhBU0VfT0ZGU0VUX0RJVklERVIgdG8gZ2V0IGFjdHVhbCB2
-YWx1ZSBvZiAtNDIuOTMwIHBzLgo+Cj4gQmVmb3JlIHRoZSBmaXgsIHRoZSByZXNwb25zZSB3YXMg
-bm90IGNvcnJlY3Q6Cj4geydib2FyZC1sYWJlbCc6ICdDODI3XzAtUkNMS0EnLAo+ICAnY2FwYWJp
-bGl0aWVzJzogNiwKPiAgJ2Nsb2NrLWlkJzogNDY1ODYxMzE3NDY5MTYxMzgwMCwKPiAgJ2ZyZXF1
-ZW5jeSc6IDE5NTMxMjUsCj4gICdpZCc6IDIsCj4gICdtb2R1bGUtbmFtZSc6ICdpY2UnLAo+ICAn
-cGFyZW50LWRldmljZSc6IFt7J2RpcmVjdGlvbic6ICdpbnB1dCcsCj4gICAgICAgICAgICAgICAg
-ICAgICAncGFyZW50LWlkJzogNiwKPiAgICAgICAgICAgICAgICAgICAgICdwaGFzZS1vZmZzZXQn
-OiAtMjE2ODM5LAo+ICAgICAgICAgICAgICAgICAgICAgJ3ByaW8nOiA5LAo+ICAgICAgICAgICAg
-ICAgICAgICAgJ3N0YXRlJzogJ2Nvbm5lY3RlZCd9LAo+ICAgICAgICAgICAgICAgICAgICB7J2Rp
-cmVjdGlvbic6ICdpbnB1dCcsCj4gICAgICAgICAgICAgICAgICAgICAncGFyZW50LWlkJzogNywK
-PiAgICAgICAgICAgICAgICAgICAgICdwaGFzZS1vZmZzZXQnOiAtNDIsCj4gICAgICAgICAgICAg
-ICAgICAgICAncHJpbyc6IDgsCj4gICAgICAgICAgICAgICAgICAgICAnc3RhdGUnOiAnY29ubmVj
-dGVkJ31dLAo+ICAncGhhc2UtYWRqdXN0JzogMCwKPiAgJ3BoYXNlLWFkanVzdC1tYXgnOiAxNjcy
-MywKPiAgJ3BoYXNlLWFkanVzdC1taW4nOiAtMTY3MjMsCj4gICd0eXBlJzogJ211eCd9Cj4KPiBX
-aGVyZSBwaGFzZS1vZmZzZXQgdmFsdWUgKC00MiksIGFmdGVyIGRpdmlzaW9uCj4gKERQTExfUEhB
-U0VfT0ZGU0VUX0RJVklERVIpIHdvdWxkIGJlOiAtMC4wNDIgcHMuCgpUaGUgZm9sbG93aW5nIGlz
-IG5vdCBhbiBvYmplY3Rpb24gdG8gdGhlIHBhdGNoLCBqdXN0IGEgcmVsYXRlZCBwb2ludDoKCldo
-eSBkb2VzIHRoZSBkb2N1bWVudGF0aW9uIGZvciAicGhhc2Utb2Zmc2V0LWRpdmlkZXIiIGluCkRv
-Y3VtZW50YXRpb24vbmV0bGluay9zcGVjcy9kcGxsLnlhbWwgbm90IG1lbnRpb24gdGhlIHVuaXRz
-IGF0IGFsbD8gSXQKdGVsbHMgeW91IG9uZSBoYXMgdG8gZGl2aWRlIHRoZSByYXcgdmFsdWUgYnkg
-dGhlIGRpdmlkZXIsIGJ1dCBpdCBkb2VzCm5vdCB0ZWxsIHlvdSB0aGF0IHRoZSByZXN1bHQgaXMg
-dGhlbiBpbiBwaWNvc2Vjb25kcy4KQWN0dWFsbHksIHdoeSBpcyB0aGUgZGl2aWRlciBkZWZpbmVk
-IGF0IGFsbD8gV291bGRuJ3QgaXQgaGF2ZSBiZWVuCmVub3VnaCB0byBkb2N1bWVudCB0aGF0IHRo
-ZSByYXcgdmFsdWUgaXMgaW4gZmVtdG9zZWNvbmRzPwoKTWljaGFsCgpfX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpJbnRlbC13aXJlZC1sYW4gbWFpbGluZyBs
-aXN0CkludGVsLXdpcmVkLWxhbkBvc3Vvc2wub3JnCmh0dHBzOi8vbGlzdHMub3N1b3NsLm9yZy9t
-YWlsbWFuL2xpc3RpbmZvL2ludGVsLXdpcmVkLWxhbgo=
+During a PCI FLR the MSI-X Enable flag in the VF PCI MSI-X capability
+register will be cleared. This can lead to issues when a VF is
+assigned to a VM because in these cases the VF driver receives no
+indication of the PF PCI error/reset and additionally it is incapable
+of restoring the cleared flag in the hypervisor configuration space
+without fully reinitializing the driver interrupt functionality.
+
+Since the VF driver is unable to easily resolve this condition on its own,
+restore the VF MSI-X flag during the PF PCI reset handling.
+
+Fixes: 19b7960b2da1 ("i40e: implement split PCI error reset handler")
+Co-developed-by: Karen Ostrowska <karen.ostrowska@intel.com>
+Signed-off-by: Karen Ostrowska <karen.ostrowska@intel.com>
+Co-developed-by: Mateusz Palczewski <mateusz.palczewski@intel.com>
+Signed-off-by: Mateusz Palczewski <mateusz.palczewski@intel.com>
+Reviewed-by: Wojciech Drewek <wojciech.drewek@intel.com>
+Reviewed-by: Przemyslaw Kitszel <przemyslaw.kitszel@intel.com>
+Signed-off-by: Andrii Staikov <andrii.staikov@intel.com>
+---
+v1 -> v2: Fix signed-off tags
+https://patchwork.ozlabs.org/project/intel-wired-lan/patch/20231204131041.3369693-1-andrii.staikov@intel.com/
+
+v2 -> v3: use @vf_dev in pci_get_device() instead of NULL and remove unnecessary call
+https://patchwork.ozlabs.org/project/intel-wired-lan/patch/20231206125127.218350-1-andrii.staikov@intel.com/
+
+v3 -> v4: wrap the added functionality into the CONFIG_PCI_IOV define as
+this is VF-related functionality
+https://patchwork.ozlabs.org/project/intel-wired-lan/patch/20231212122452.3250691-1-andrii.staikov@intel.com/
+
+v4 -> v5: fix RB tags
+---
+ drivers/net/ethernet/intel/i40e/i40e_main.c   |  3 +++
+ .../ethernet/intel/i40e/i40e_virtchnl_pf.c    | 26 +++++++++++++++++++
+ .../ethernet/intel/i40e/i40e_virtchnl_pf.h    |  3 +++
+ 3 files changed, 32 insertions(+)
+
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
+index 7bb1f64833eb..bbe2d115fb15 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_main.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
+@@ -16513,6 +16513,9 @@ static void i40e_pci_error_reset_done(struct pci_dev *pdev)
+ 		return;
+ 
+ 	i40e_reset_and_rebuild(pf, false, false);
++#ifdef CONFIG_PCI_IOV
++	i40e_restore_all_vfs_msi_state(pdev);
++#endif /* CONFIG_PCI_IOV */
+ }
+ 
+ /**
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
+index 3f99eb198245..d60f5419d6bd 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
+@@ -154,6 +154,32 @@ void i40e_vc_notify_reset(struct i40e_pf *pf)
+ 			     (u8 *)&pfe, sizeof(struct virtchnl_pf_event));
+ }
+ 
++#ifdef CONFIG_PCI_IOV
++void i40e_restore_all_vfs_msi_state(struct pci_dev *pdev)
++{
++	u16 vf_id;
++	u16 pos;
++
++	/* Continue only if this is a PF */
++	if (!pdev->is_physfn)
++		return;
++
++	if (!pci_num_vf(pdev))
++		return;
++
++	pos = pci_find_ext_capability(pdev, PCI_EXT_CAP_ID_SRIOV);
++	if (pos) {
++		struct pci_dev *vf_dev = NULL;
++
++		pci_read_config_word(pdev, pos + PCI_SRIOV_VF_DID, &vf_id);
++		while ((vf_dev = pci_get_device(pdev->vendor, vf_id, vf_dev))) {
++			if (vf_dev->is_virtfn && vf_dev->physfn == pdev)
++				pci_restore_msi_state(vf_dev);
++		}
++	}
++}
++#endif /* CONFIG_PCI_IOV */
++
+ /**
+  * i40e_vc_notify_vf_reset
+  * @vf: pointer to the VF structure
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.h b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.h
+index 2ee0f8a23248..5fd607c0de0a 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.h
++++ b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.h
+@@ -137,6 +137,9 @@ int i40e_ndo_set_vf_spoofchk(struct net_device *netdev, int vf_id, bool enable);
+ 
+ void i40e_vc_notify_link_state(struct i40e_pf *pf);
+ void i40e_vc_notify_reset(struct i40e_pf *pf);
++#ifdef CONFIG_PCI_IOV
++void i40e_restore_all_vfs_msi_state(struct pci_dev *pdev);
++#endif /* CONFIG_PCI_IOV */
+ int i40e_get_vf_stats(struct net_device *netdev, int vf_id,
+ 		      struct ifla_vf_stats *vf_stats);
+ 
+-- 
+2.25.1
+
+_______________________________________________
+Intel-wired-lan mailing list
+Intel-wired-lan@osuosl.org
+https://lists.osuosl.org/mailman/listinfo/intel-wired-lan
