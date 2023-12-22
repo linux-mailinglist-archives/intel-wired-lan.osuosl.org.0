@@ -2,176 +2,90 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6834081C587
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 22 Dec 2023 08:31:25 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id AAB2781CD7B
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 22 Dec 2023 18:09:19 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 01D7C61033;
-	Fri, 22 Dec 2023 07:31:24 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 01D7C61033
+	by smtp3.osuosl.org (Postfix) with ESMTP id C16276F614;
+	Fri, 22 Dec 2023 17:09:17 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C16276F614
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1703230284;
-	bh=+3fCWviJKIE8r1lb0FE6E7O4Y8iSaR4tb8C+NlV1jMU=;
-	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1703264957;
+	bh=Xo+5KC6ljn+zert7+99gtNv+/EHEOODKcy68KurL7qk=;
+	h=From:To:In-Reply-To:References:Date:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=oMgpS0RpSg6L4O0L7rwI4OxR8pFoDNOf74B0bJnP53GJ8EetKK99D9Y6WFMIbQEP0
-	 lP8VBgOpakqtPIBDWmMhWU1QlXzu1FLAZBtZZYwwOwgKwMpyFUS6X418xpEiIbgpkn
-	 wKMO7XWPZIuEOBF6rrVcTfGl0Tuz1RFdb9kx7SruxRvFY69qAdVa4LCo1Dy2Ut/UIP
-	 YwUog+EAj72wrj5gFXVn1Hie1ISDFA+1hb680tvJsPBqEd0dhQ0zx7zvTdC4GZWI4y
-	 uU4SAJjQC0owPw9Zr02tjRsRsSibwX3MsmEGnh3tOM6ulbDQ6tcQUwCXKuKVsybYd/
-	 3ELg5crHQkldg==
+	 Cc:From;
+	b=25ezrE1PP4mIdL61r9Q6rhx4kwd/SUisr/MnWjmcpYQyRGYPttxSB8PgICN1sxucP
+	 BdmC1M5N4ENAM3kfgOsHZwjjHIuFebwKhxnPMZEL6/mpn8boMCz7z96NIsR0hY84dX
+	 ejkNT4tbnZyoikoTPS4LXK8pPxeONiGyxoPQlJ9tq+6odyhnNfiuKvRutt/ZL4oJc+
+	 puz28AhFrPM1chuN/I/w8j4XXfCuXW4dQOtyikPv6inipHULEOcxJFK/2s4f6JUp3o
+	 +Tk8rsM2h+OCTxeKMog+hUoAngHu6PIVbJ8hyIjwPUd8KuZM++FpPHGeShf8DBcEx4
+	 CkIAh0PMEojrQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id LhhEDfJRJoD6; Fri, 22 Dec 2023 07:31:23 +0000 (UTC)
+	with ESMTP id mNg0lhVBSWDj; Fri, 22 Dec 2023 17:09:16 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id C924260B00;
-	Fri, 22 Dec 2023 07:31:22 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C924260B00
+	by smtp3.osuosl.org (Postfix) with ESMTP id 214E46F5F6;
+	Fri, 22 Dec 2023 17:09:16 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 214E46F5F6
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 468651BF330
- for <intel-wired-lan@lists.osuosl.org>; Fri, 22 Dec 2023 07:31:17 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 82ED31BF2B0
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 22 Dec 2023 17:09:11 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 1B58C420F3
- for <intel-wired-lan@lists.osuosl.org>; Fri, 22 Dec 2023 07:31:17 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1B58C420F3
+ by smtp4.osuosl.org (Postfix) with ESMTP id 6637842D5A
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 22 Dec 2023 17:09:11 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6637842D5A
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id JPJlU_BbtOtp for <intel-wired-lan@lists.osuosl.org>;
- Fri, 22 Dec 2023 07:31:16 +0000 (UTC)
-Received: from mgamail.intel.com (mgamail.intel.com [192.55.52.115])
- by smtp4.osuosl.org (Postfix) with ESMTPS id D854D42098
- for <intel-wired-lan@lists.osuosl.org>; Fri, 22 Dec 2023 07:31:15 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D854D42098
-X-IronPort-AV: E=McAfee;i="6600,9927,10931"; a="395821613"
-X-IronPort-AV: E=Sophos;i="6.04,294,1695711600"; d="scan'208";a="395821613"
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
- by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 21 Dec 2023 23:31:14 -0800
+ with ESMTP id pko4E1LyRhpy for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 22 Dec 2023 17:09:10 +0000 (UTC)
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.10])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 0ABFA42892
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 22 Dec 2023 17:09:09 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0ABFA42892
+X-IronPort-AV: E=McAfee;i="6600,9927,10932"; a="9536691"
+X-IronPort-AV: E=Sophos;i="6.04,297,1695711600"; 
+   d="scan'208";a="9536691"
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+ by orvoesa102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 22 Dec 2023 09:09:01 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10931"; a="753186578"
-X-IronPort-AV: E=Sophos;i="6.04,294,1695711600"; d="scan'208";a="753186578"
-Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
- by orsmga006.jf.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
- 21 Dec 2023 23:31:14 -0800
-Received: from orsmsx602.amr.corp.intel.com (10.22.229.15) by
- ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.35; Thu, 21 Dec 2023 23:31:13 -0800
-Received: from ORSEDG601.ED.cps.intel.com (10.7.248.6) by
- orsmsx602.amr.corp.intel.com (10.22.229.15) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.35 via Frontend Transport; Thu, 21 Dec 2023 23:31:13 -0800
-Received: from NAM12-DM6-obe.outbound.protection.outlook.com (104.47.59.168)
- by edgegateway.intel.com (134.134.137.102) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.35; Thu, 21 Dec 2023 23:31:13 -0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Zb18LAMAJV7/hR37LFBYlZfDUObLRj1NyYCpFlYXbRtvvWYwHI4ozzdXO3G4Dt/9i+eQg9ytvkNYB6TeHuqkonMhhiYjoJW6ETSGed7EkQvVrDImPtAEeK2dbS2fzWvuNo0fZ/wm9q7YYgLkZpHv3A2NDYANStfZ7pHtiiD69yooJA9eWsTeBtjJL5NvWtYtIhfwNf7al0sFq78cGqkTKoLf2ANiWqULnoSEa8ejBke43jKdiSVY34ppJw8XhzDzfRfsxzC2UmrTVLmo9nbdHt0L0o7ZLsZGIBgLVqM2wTkmySVbSFkJbPnqjHgCddHOBqQH35NX9SzzHQK5zGmbYA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=sRgl2q48cY04UwafnAHS4KGx+y/Ii6J2/xhiE0Ry/h0=;
- b=QJ/a9cqtwTdvXO2e82aXx6W99nW4LJaRcZSEA0Knz1wL1E4uCMckdUg6SrTnVco64iY4KEWHoTNQd2q/IP02l+SWDB4ZSfWZTHKNaDAeidZvbklvnJXGi+ER69RuZsm47kfzK207pkCCpKwOSRcySbM6vYuIHOdZBCRnztEVIRVOk+qybhkFEoP0lOtlCiSEhe4CkTBIRv8ybiV8PXzh7t7P59qQ/4mHizUS47QsRyXfalf5etcaflnPETZCHuqE2Jz35TFI9qroydi8XkFsf7JIDxQAgeI2VoI/AJatYnYGHdCEumXuKK1Cs5foY7WNLsN90ur7z/gubiSMr8ehwg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from MN2PR11MB3614.namprd11.prod.outlook.com (2603:10b6:208:ea::11)
- by MN2PR11MB4583.namprd11.prod.outlook.com (2603:10b6:208:26a::15)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7113.21; Fri, 22 Dec
- 2023 07:31:07 +0000
-Received: from MN2PR11MB3614.namprd11.prod.outlook.com
- ([fe80::a6ff:804a:56fd:90c8]) by MN2PR11MB3614.namprd11.prod.outlook.com
- ([fe80::a6ff:804a:56fd:90c8%4]) with mapi id 15.20.7113.019; Fri, 22 Dec 2023
- 07:31:06 +0000
-From: "Sreenivas, Bharathi" <bharathi.sreenivas@intel.com>
-To: "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH iwl-net v2] i40e:Fix filter input
- checks to prevent config with invalid values
-Thread-Index: AQHaNKjSCH8HssBM0k2/rOIRw+E2eA==
-Date: Fri, 22 Dec 2023 07:31:06 +0000
-Message-ID: <MN2PR11MB36140810362EBE002109F50A8E94A@MN2PR11MB3614.namprd11.prod.outlook.com>
-References: <20231129102311.2780151-1-aleksandr.loktionov@intel.com>
-In-Reply-To: <20231129102311.2780151-1-aleksandr.loktionov@intel.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: MN2PR11MB3614:EE_|MN2PR11MB4583:EE_
-x-ms-office365-filtering-correlation-id: 16bf0dd8-7c1a-4493-9664-08dc02bff609
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: hlHKy+5Bm8qkErE9nFubrVUJzmMzbWdwgyXbdBM7+SasaxK+H1Z8HAm89azTdQEoCBSl5SIg2xNdS76TaEJJ2hfCu4BUtPimfYk7S9BoYyci4O7laWUx96IifDBKbl8D1K1hjlq/bl/JFzwwM9ObH/xPQQvF+VQkp8PoogMZ0NITQttSrWCtByk2CNeZ2xUk6TX1naME5a0bBAC3NCozvA3UYVMw/YECD34GPbkP06Fhx1vAHnbqZTO+pzGxVqBsgDug3ggidLhaoicQbH4VLcfjZwyDSpN20DyqqKTbvIOrFyNZz8SOqy+PVV5ZgHYw8heuvJ9ReoFRCh9Xp6B1aCT3iS5xMPGZaCEgOg1TZIYLvij2frcbqlUrfbYtg+06dz7wnXG+SSDqqJHQ68k6LwwGeZemAkTgvXQI8OYkzo6e2R8ihQV5w9j51Tnk5H03GhkfXqzmWJtk62QhnwXs7DXFo4pGYsaD34Sze4wsOdqvTc3yk3D/lR8i5kB96oLeWK5OQY89I6StnM1SHyI7udpjEdiqsJGDay0PAfYJIHpfeJvNh1wyYtmKq1UC6FytHZWVkimglRqabqCGJN7ql4W7DYbVtTIFaSnpoUYdo9yAxklff0fgWzsUvCXMlohm
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:MN2PR11MB3614.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230031)(366004)(376002)(136003)(346002)(39860400002)(396003)(230922051799003)(64100799003)(451199024)(1800799012)(186009)(8676002)(8936002)(64756008)(6916009)(5660300002)(76116006)(66946007)(66446008)(66556008)(66476007)(316002)(83380400001)(26005)(7696005)(55016003)(52536014)(122000001)(38100700002)(478600001)(41300700001)(33656002)(86362001)(4744005)(38070700009)(2906002)(82960400001)(6506007)(53546011)(9686003)(71200400001);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?WKyBhw1ntmv9K2iZpjlx24nL1zm7rA1bSVzTIjezZsR63U0P8Isdm9Ns+R8r?=
- =?us-ascii?Q?ePuPg5F5LmL1FrIhrm866kfJtVAkzNr/rNaZELl+pvnPQPPzZqsMjoSQMFnk?=
- =?us-ascii?Q?GV19hBnh5LvGqhXcVm70PjI6Ax8uuqFwfYK7UZSia56W64JtxYJlwWYdzBbH?=
- =?us-ascii?Q?79h3sc1puzDDTUBY5R1vSt2oIsDYlp5RPceDi+5nTNTNgg8iBESMN8DyDcK4?=
- =?us-ascii?Q?6xa87R+uBwfOHFtX2rgCOk2hY5twU4i11cuaFkRkOaO5pC2eTAOyU17/FWR6?=
- =?us-ascii?Q?U/sP8KindENgS+MgrHIVMN7Fvalt53AgRcpT5yeEM81I3ijND9a5MlUY3mbE?=
- =?us-ascii?Q?pKbrtJGi2weW0cwgzFyCoBBxCx8U5YL/54gmBm9k9rXI2d/kVNSvVY8JQWln?=
- =?us-ascii?Q?oWbJy1fPnjZ9BJv6YAqOugyHDGMp1f2Hr7yXNPlSR5QeV5wZnnMfYxZ58kkn?=
- =?us-ascii?Q?NKwVj7IYqxUDGC2QglDEhCY5KJqDazxnxPC/yLY+x94WZWz4HU9bpoQerP6O?=
- =?us-ascii?Q?2/jEggVT0d8TDYr4QzeUq7fK3cakhDeKGD5Snra7ZYRGP9hTEXut/zXqah1X?=
- =?us-ascii?Q?z4JTidEZaLQGeWlmIhsXXlO2xVxqoBeTHy5zGZEDAV6TtsQVZEq0vhwf108s?=
- =?us-ascii?Q?o5CzHXxtVSfKdJ/au74shMosTe9usTmqajPbMfOdhRNBuRfNDWw1QyxMVrMR?=
- =?us-ascii?Q?gM2F+8ZpbZddYKkBhMzffyFzyavlio1rwARbFrVE/uHxeF8kXTMwSGZ4mQYD?=
- =?us-ascii?Q?GFOa75AQ0fqB/TEm8aOtMnbM9kJHjIrb7UFEEjb33ASwsfeUXMCmzw1s1/cM?=
- =?us-ascii?Q?xi/dFbsI3qL95kQCUL2y2cLn0KdGfAmSNEinl3J6G1WseMy49m/qwPu+ZAxl?=
- =?us-ascii?Q?PyHHk+S14t6xjpHtj0/V3L9JkLr9psYcvOvQWJilAFNmZuYfCN4Fp//RYASq?=
- =?us-ascii?Q?SLzEehLXTfMebYEzBMg7/E+ov00/NoBkL2VtK1IgDjKzHnjKmq3G/l0RpRi1?=
- =?us-ascii?Q?0nkurWMYiRbHBjcFWNGw4x3B29cyudOgoWktmGbRjF0zsKro1vnjdAvFxMu0?=
- =?us-ascii?Q?9fMb/U/yVP0f/T8PW783FSf5wdB/At3CkYckbW6xAMTju5l1PGUP3vwvnh1T?=
- =?us-ascii?Q?MQmwCPxq1PAVQbdqdB5qkXruuRQGssum7g90LFD6ED9c569cvspdLV2e1mJ6?=
- =?us-ascii?Q?pu2uXJOeR3qyBeEvX8faZXF9XES9L7CYX6mxPnnMDGLp6SdenBUYiglcmq0H?=
- =?us-ascii?Q?tmE2pvfzUiq09M53O3hns79t5iFeNlElhVyYQYECKaKmzSnRmorfGYr87Jty?=
- =?us-ascii?Q?ZdApKgbqo1A4DpXpBTEBFk+NjYUxlPVpl0oViiCyOZ031qteSNARIBgLuYN8?=
- =?us-ascii?Q?ka9Zv9x8euzL97fdZ2m+LBtaWhPjcQkdOGFPAl7t83TYOBnIUiYKnA0eYuIW?=
- =?us-ascii?Q?5/RHyvQTLJQbcwp3ejCFZSULd8CiBMar1WWxtiKSGT6b6mvyFH4KMRUXcNOM?=
- =?us-ascii?Q?j94CIUWvHz7N453XAtXj4rtkrmZgw700nkGnEgmiLA804oTRwSYubWLShTWi?=
- =?us-ascii?Q?iJa5wMA8RUUdSzLMhXTgcdjI/8+fRCfD/xv15z9P4RJBa8rP9LlGTDc8PVws?=
- =?us-ascii?Q?KA=3D=3D?=
+X-IronPort-AV: E=McAfee;i="6600,9927,10932"; a="1108514958"
+X-IronPort-AV: E=Sophos;i="6.04,297,1695711600"; d="scan'208";a="1108514958"
+Received: from kambika-mobl1.amr.corp.intel.com (HELO vcostago-mobl3)
+ ([10.209.152.51])
+ by fmsmga005-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 22 Dec 2023 09:08:54 -0800
+From: Vinicius Costa Gomes <vinicius.gomes@intel.com>
+To: lakshmi.sowjanya.d@intel.com, tglx@linutronix.de, jstultz@google.com,
+ giometti@enneenne.com, corbet@lwn.net, linux-kernel@vger.kernel.org
+In-Reply-To: <20231221093254.9599-2-lakshmi.sowjanya.d@intel.com>
+References: <20231221093254.9599-1-lakshmi.sowjanya.d@intel.com>
+ <20231221093254.9599-2-lakshmi.sowjanya.d@intel.com>
+Date: Fri, 22 Dec 2023 14:08:51 -0300
+Message-ID: <87v88qjhb0.fsf@intel.com>
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: MN2PR11MB3614.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 16bf0dd8-7c1a-4493-9664-08dc02bff609
-X-MS-Exchange-CrossTenant-originalarrivaltime: 22 Dec 2023 07:31:06.9128 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: +n4lprw1RtbGNUVr2a4VhAoQ/Fl37iUEsG95NPrOgg0s4FB7e+XR/LnP1U3zT9+izr8zWiJf9MFMeVA8WCyKsbqHCbGickGMNjIUhaCBRIY=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR11MB4583
-X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1703230275; x=1734766275;
- h=from:to:subject:date:message-id:references:in-reply-to:
- content-transfer-encoding:mime-version;
- bh=hykxNxxcEGaC7/KKQuWgkhvpnu0t85AxeAj6BdQaf40=;
- b=RcqKEcv9nLMPdlM6CyPrG1Ffd+e0biN+uEFk1x8iVO9KLkookCNFsg2F
- JZcNk2tqaG66Cq8eWd2oPo40IcOYGlUt6+2TLS/WK1HnVtCX/M9o85Jy/
- VVbp8NF08fg1EHkc4pLNQWNctxvTRu+y7SLDPK6R0pX9EQLKaXg98M/+8
- UtHaH+BQyfYCHWl1LEkeXpDtjf9eW7ehqyf3dEfVZKOL9NiIwdWVrkvSs
- dWkYrPoACUmbI9k3cVhNIatJT04tih6adIEAOnrLPIimYST7dd4MF2ns1
- pL9Ij2QB9aGPnDBmGDBGVvFFYlA6ZRxeHtPVl5EV1PUx5UyLDYxXvlYRB
+ t=1703264951; x=1734800951;
+ h=from:to:cc:subject:in-reply-to:references:date:
+ message-id:mime-version;
+ bh=jrbK3JxBO1NzBg6D2UAI0w9iU17c+JQnpCe0XS7kc6Y=;
+ b=IcfgZMIpEziqml/oi0tai7DORLZHj1dKOaBhjrW1GvpdAJsl8AxxcVFe
+ StIsDdIrh+8U3hnnjxx5v8gMWluVQcLpGf3CJA406EAWLgGXYKpX9oSJs
+ tiOG6HMQAyQuyD0wFS00IM70Vn2bdhVBzbgwW8BTWE1xj1w0TAHLknJRv
+ LInl96DvSlxHa1SyCxTlSFse9luLxFE/o3Ef1k1LJyx9uc9ji/VANgbp9
+ e46vVD5AO4eDj6LtSQBJYihFtSJiD0UNhMIEAmyChHVhCR4NXivM4wz88
+ L3VsCNWX9yCyJCMG4fzHoc4np7SQ9LBOUIUD+rpmFQT1oJSlyRlJuB+7T
  w==;
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=RcqKEcv9
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH iwl-net v2] i40e:Fix filter input
- checks to prevent config with invalid values
+ header.a=rsa-sha256 header.s=Intel header.b=IcfgZMIp
+Subject: Re: [Intel-wired-lan] [RFC PATCH v2 01/10] x86/tsc: Add base clock
+ properties in clocksource structure
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -184,42 +98,308 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: christopher.s.hall@intel.com, lakshmi.sowjanya.d@intel.com,
+ linux-doc@vger.kernel.org, netdev@vger.kernel.org, pandith.n@intel.com,
+ x86@kernel.org, eddie.dong@intel.com, jesse.brandeburg@intel.com,
+ linux-sound@vger.kernel.org, alexandre.torgue@foss.st.com,
+ mallikarjunappa.sangannavar@intel.com, joabreu@synopsys.com,
+ intel-wired-lan@lists.osuosl.org, mcoquelin.stm32@gmail.com,
+ thejesh.reddy.t.r@intel.com, perex@perex.cz, anthony.l.nguyen@intel.com,
+ andriy.shevchenko@linux.intel.com, davem@davemloft.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+lakshmi.sowjanya.d@intel.com writes:
 
+> From: Lakshmi Sowjanya D <lakshmi.sowjanya.d@intel.com>
+>
+> Remove convert_art_to_tsc() and convert_art_ns_to_tsc(), as this patch
+> series introduces a generic function ktime_real_to_base_clock() to
+> convert realtime to base clock domain.
+>
+> Add hardware abstraction, struct clocksource_base in clocksource.
+>
+> Add clocksource ID for x86 ART(Always Running Timer).
+>
+> Co-developed-by: Thomas Gleixner <tglx@linutronix.de>
+> Signed-off-by: Thomas Gleixner <tglx@linutronix.de>
+> Co-developed-by: Christopher S. Hall <christopher.s.hall@intel.com>
+> Signed-off-by: Christopher S. Hall <christopher.s.hall@intel.com>
+> Signed-off-by: Lakshmi Sowjanya D <lakshmi.sowjanya.d@intel.com>
+> ---
 
-> -----Original Message-----
-> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
-> Loktionov, Aleksandr
-> Sent: Wednesday, November 29, 2023 3:53 PM
-> To: intel-wired-lan@lists.osuosl.org; Nguyen, Anthony L
-> <anthony.l.nguyen@intel.com>; Loktionov, Aleksandr
-> <aleksandr.loktionov@intel.com>
-> Cc: netdev@vger.kernel.org; Staikov, Andrii <andrii.staikov@intel.com>;
-> Mogilappagari, Sudheer <sudheer.mogilappagari@intel.com>
-> Subject: [Intel-wired-lan] [PATCH iwl-net v2] i40e:Fix filter input checks to
-> prevent config with invalid values
-> 
-> From: Sudheer Mogilappagari <sudheer.mogilappagari@intel.com>
-> 
-> Prevent VF from configuring filters with unsupported actions or use REDIRECT
-> action with invalid tc number. Current checks could cause out of bounds
-> access on PF side.
-> 
-> Fixes: e284fc280473 ("i40e: Add and delete cloud filter")
-> Reviewed-by: Andrii Staikov <andrii.staikov@intel.com>
-> Signed-off-by: Sudheer Mogilappagari <sudheer.mogilappagari@intel.com>
-> Signed-off-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
-> ---
-> v1->v2 add 'Fixes:' tag into commit message
-> ---
->  drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c | 8 ++++----
->  1 file changed, 4 insertions(+), 4 deletions(-)
-> 
-Tested-by: Bharathi Sreenivas <bharathi.sreenivas@intel.com>
+This patch is breaking compilation. I guess it needs to be split into
+two.
+
+You are removing functions that drivers are using. You have to convert
+the drivers to the new abstractions, and only after all in-tree users
+are converted you remove the old functions.
+
+>  arch/x86/include/asm/tsc.h      |  3 --
+>  arch/x86/kernel/tsc.c           | 94 +++++++--------------------------
+>  include/linux/clocksource.h     | 27 ++++++++++
+>  include/linux/clocksource_ids.h |  1 +
+>  4 files changed, 47 insertions(+), 78 deletions(-)
+>
+> diff --git a/arch/x86/include/asm/tsc.h b/arch/x86/include/asm/tsc.h
+> index 594fce0ca744..5e36495cc821 100644
+> --- a/arch/x86/include/asm/tsc.h
+> +++ b/arch/x86/include/asm/tsc.h
+> @@ -27,9 +27,6 @@ static inline cycles_t get_cycles(void)
+>  }
+>  #define get_cycles get_cycles
+>  
+> -extern struct system_counterval_t convert_art_to_tsc(u64 art);
+> -extern struct system_counterval_t convert_art_ns_to_tsc(u64 art_ns);
+> -
+>  extern void tsc_early_init(void);
+>  extern void tsc_init(void);
+>  extern void mark_tsc_unstable(char *reason);
+> diff --git a/arch/x86/kernel/tsc.c b/arch/x86/kernel/tsc.c
+> index 868f09966b0f..b45ce594cfef 100644
+> --- a/arch/x86/kernel/tsc.c
+> +++ b/arch/x86/kernel/tsc.c
+> @@ -51,9 +51,9 @@ int tsc_clocksource_reliable;
+>  
+>  static int __read_mostly tsc_force_recalibrate;
+>  
+> -static u32 art_to_tsc_numerator;
+> -static u32 art_to_tsc_denominator;
+> -static u64 art_to_tsc_offset;
+> +static struct clocksource_base art_base_clk = {
+> +	.id    = CSID_X86_ART,
+> +};
+>  static bool have_art;
+>  
+>  struct cyc2ns {
+> @@ -1075,7 +1075,7 @@ core_initcall(cpufreq_register_tsc_scaling);
+>   */
+>  static void __init detect_art(void)
+>  {
+> -	unsigned int unused[2];
+> +	unsigned int unused;
+>  
+>  	if (boot_cpu_data.cpuid_level < ART_CPUID_LEAF)
+>  		return;
+> @@ -1090,13 +1090,14 @@ static void __init detect_art(void)
+>  	    tsc_async_resets)
+>  		return;
+>  
+> -	cpuid(ART_CPUID_LEAF, &art_to_tsc_denominator,
+> -	      &art_to_tsc_numerator, unused, unused+1);
+> +	cpuid(ART_CPUID_LEAF, &art_base_clk.denominator,
+> +		&art_base_clk.numerator, &art_base_clk.freq_khz, &unused);
+>  
+> -	if (art_to_tsc_denominator < ART_MIN_DENOMINATOR)
+> +	art_base_clk.freq_khz /= KHZ;
+> +	if (art_base_clk.denominator < ART_MIN_DENOMINATOR)
+>  		return;
+>  
+> -	rdmsrl(MSR_IA32_TSC_ADJUST, art_to_tsc_offset);
+> +	rdmsrl(MSR_IA32_TSC_ADJUST, art_base_clk.offset);
+>  
+>  	/* Make this sticky over multiple CPU init calls */
+>  	setup_force_cpu_cap(X86_FEATURE_ART);
+> @@ -1297,69 +1298,6 @@ int unsynchronized_tsc(void)
+>  	return 0;
+>  }
+>  
+> -/*
+> - * Convert ART to TSC given numerator/denominator found in detect_art()
+> - */
+> -struct system_counterval_t convert_art_to_tsc(u64 art)
+> -{
+> -	u64 tmp, res, rem;
+> -
+> -	rem = do_div(art, art_to_tsc_denominator);
+> -
+> -	res = art * art_to_tsc_numerator;
+> -	tmp = rem * art_to_tsc_numerator;
+> -
+> -	do_div(tmp, art_to_tsc_denominator);
+> -	res += tmp + art_to_tsc_offset;
+> -
+> -	return (struct system_counterval_t) {
+> -		.cs_id = have_art ? CSID_X86_TSC : CSID_GENERIC,
+> -		.cycles = res
+> -	};
+> -}
+> -EXPORT_SYMBOL(convert_art_to_tsc);
+> -
+> -/**
+> - * convert_art_ns_to_tsc() - Convert ART in nanoseconds to TSC.
+> - * @art_ns: ART (Always Running Timer) in unit of nanoseconds
+> - *
+> - * PTM requires all timestamps to be in units of nanoseconds. When user
+> - * software requests a cross-timestamp, this function converts system timestamp
+> - * to TSC.
+> - *
+> - * This is valid when CPU feature flag X86_FEATURE_TSC_KNOWN_FREQ is set
+> - * indicating the tsc_khz is derived from CPUID[15H]. Drivers should check
+> - * that this flag is set before conversion to TSC is attempted.
+> - *
+> - * Return:
+> - * struct system_counterval_t - system counter value with the ID of the
+> - *	corresponding clocksource
+> - *	@cycles:	System counter value
+> - *	@cs_id:		Clocksource ID corresponding to system counter value.
+> - *			Used by timekeeping code to verify comparability of two
+> - *			cycle values.
+> - */
+> -
+> -struct system_counterval_t convert_art_ns_to_tsc(u64 art_ns)
+> -{
+> -	u64 tmp, res, rem;
+> -
+> -	rem = do_div(art_ns, USEC_PER_SEC);
+> -
+> -	res = art_ns * tsc_khz;
+> -	tmp = rem * tsc_khz;
+> -
+> -	do_div(tmp, USEC_PER_SEC);
+> -	res += tmp;
+> -
+> -	return (struct system_counterval_t) {
+> -		.cs_id = have_art ? CSID_X86_TSC : CSID_GENERIC,
+> -		.cycles = res
+> -	};
+> -}
+> -EXPORT_SYMBOL(convert_art_ns_to_tsc);
+> -
+> -
+>  static void tsc_refine_calibration_work(struct work_struct *work);
+>  static DECLARE_DELAYED_WORK(tsc_irqwork, tsc_refine_calibration_work);
+>  /**
+> @@ -1461,8 +1399,10 @@ static void tsc_refine_calibration_work(struct work_struct *work)
+>  	if (tsc_unstable)
+>  		goto unreg;
+>  
+> -	if (boot_cpu_has(X86_FEATURE_ART))
+> +	if (boot_cpu_has(X86_FEATURE_ART)) {
+>  		have_art = true;
+> +		clocksource_tsc.base = &art_base_clk;
+> +	}
+>  	clocksource_register_khz(&clocksource_tsc, tsc_khz);
+>  unreg:
+>  	clocksource_unregister(&clocksource_tsc_early);
+> @@ -1487,8 +1427,10 @@ static int __init init_tsc_clocksource(void)
+>  	 * the refined calibration and directly register it as a clocksource.
+>  	 */
+>  	if (boot_cpu_has(X86_FEATURE_TSC_KNOWN_FREQ)) {
+> -		if (boot_cpu_has(X86_FEATURE_ART))
+> +		if (boot_cpu_has(X86_FEATURE_ART)) {
+>  			have_art = true;
+> +			clocksource_tsc.base = &art_base_clk;
+> +		}
+>  		clocksource_register_khz(&clocksource_tsc, tsc_khz);
+>  		clocksource_unregister(&clocksource_tsc_early);
+>  
+> @@ -1512,10 +1454,12 @@ static bool __init determine_cpu_tsc_frequencies(bool early)
+>  
+>  	if (early) {
+>  		cpu_khz = x86_platform.calibrate_cpu();
+> -		if (tsc_early_khz)
+> +		if (tsc_early_khz) {
+>  			tsc_khz = tsc_early_khz;
+> -		else
+> +		} else {
+>  			tsc_khz = x86_platform.calibrate_tsc();
+> +			clocksource_tsc.freq_khz = tsc_khz;
+> +		}
+>  	} else {
+>  		/* We should not be here with non-native cpu calibration */
+>  		WARN_ON(x86_platform.calibrate_cpu != native_calibrate_cpu);
+> diff --git a/include/linux/clocksource.h b/include/linux/clocksource.h
+> index 1d42d4b17327..0a1110a0e660 100644
+> --- a/include/linux/clocksource.h
+> +++ b/include/linux/clocksource.h
+> @@ -21,6 +21,7 @@
+>  #include <asm/div64.h>
+>  #include <asm/io.h>
+>  
+> +struct clocksource_base;
+>  struct clocksource;
+>  struct module;
+>  
+> @@ -48,6 +49,7 @@ struct module;
+>   * @archdata:		Optional arch-specific data
+>   * @max_cycles:		Maximum safe cycle value which won't overflow on
+>   *			multiplication
+> + * @freq_khz:		Clocksource frequency in khz.
+>   * @name:		Pointer to clocksource name
+>   * @list:		List head for registration (internal)
+>   * @rating:		Rating value for selection (higher is better)
+> @@ -70,6 +72,8 @@ struct module;
+>   *			validate the clocksource from which the snapshot was
+>   *			taken.
+>   * @flags:		Flags describing special properties
+> + * @base:		Hardware abstraction for clock on which a clocksource
+> + *			is based
+>   * @enable:		Optional function to enable the clocksource
+>   * @disable:		Optional function to disable the clocksource
+>   * @suspend:		Optional suspend function for the clocksource
+> @@ -105,12 +109,14 @@ struct clocksource {
+>  	struct arch_clocksource_data archdata;
+>  #endif
+>  	u64			max_cycles;
+> +	u32			freq_khz;
+>  	const char		*name;
+>  	struct list_head	list;
+>  	int			rating;
+>  	enum clocksource_ids	id;
+>  	enum vdso_clock_mode	vdso_clock_mode;
+>  	unsigned long		flags;
+> +	struct clocksource_base *base;
+>  
+>  	int			(*enable)(struct clocksource *cs);
+>  	void			(*disable)(struct clocksource *cs);
+> @@ -294,4 +300,25 @@ static inline void timer_probe(void) {}
+>  extern ulong max_cswd_read_retries;
+>  void clocksource_verify_percpu(struct clocksource *cs);
+>  
+> +/**
+> + * struct clocksource_base - hardware abstraction for clock on which a clocksource
+> + *			is based
+> + * @id:			Defaults to CSID_GENERIC. The id value is used for conversion
+> + *			functions which require that the current clocksource is based
+> + *			on a clocksource_base with a particular ID in certain snapshot
+> + *			functions to allow callers to validate the clocksource from
+> + *			which the snapshot was taken.
+> + * @freq_khz:		Nominal frequency of the base clock in kHz
+> + * @offset:		Offset between the base clock and the clocksource
+> + * @numerator:		Numerator of the clock ratio between base clock and the clocksource
+> + * @denominator:	Denominator of the clock ratio between base clock and the clocksource
+> + */
+> +struct clocksource_base {
+> +	enum clocksource_ids	id;
+> +	u32			freq_khz;
+> +	u64			offset;
+> +	u32			numerator;
+> +	u32			denominator;
+> +};
+> +
+>  #endif /* _LINUX_CLOCKSOURCE_H */
+> diff --git a/include/linux/clocksource_ids.h b/include/linux/clocksource_ids.h
+> index a4fa3436940c..2bb4d8c2f1b0 100644
+> --- a/include/linux/clocksource_ids.h
+> +++ b/include/linux/clocksource_ids.h
+> @@ -9,6 +9,7 @@ enum clocksource_ids {
+>  	CSID_X86_TSC_EARLY,
+>  	CSID_X86_TSC,
+>  	CSID_X86_KVM_CLK,
+> +	CSID_X86_ART,
+>  	CSID_MAX,
+>  };
+>  
+> -- 
+> 2.35.3
+>
+>
+
+-- 
+Vinicius
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
