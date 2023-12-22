@@ -2,90 +2,177 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id AAB2781CD7B
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 22 Dec 2023 18:09:19 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7095081CE80
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 22 Dec 2023 19:32:30 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id C16276F614;
-	Fri, 22 Dec 2023 17:09:17 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C16276F614
+	by smtp3.osuosl.org (Postfix) with ESMTP id 413316F72B;
+	Fri, 22 Dec 2023 18:32:28 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 413316F72B
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1703264957;
-	bh=Xo+5KC6ljn+zert7+99gtNv+/EHEOODKcy68KurL7qk=;
-	h=From:To:In-Reply-To:References:Date:Subject:List-Id:
+	s=default; t=1703269948;
+	bh=NVdgry3QjkVqyfrm9aMqdUK/z7VswrcFMSOgiqKehUc=;
+	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=25ezrE1PP4mIdL61r9Q6rhx4kwd/SUisr/MnWjmcpYQyRGYPttxSB8PgICN1sxucP
-	 BdmC1M5N4ENAM3kfgOsHZwjjHIuFebwKhxnPMZEL6/mpn8boMCz7z96NIsR0hY84dX
-	 ejkNT4tbnZyoikoTPS4LXK8pPxeONiGyxoPQlJ9tq+6odyhnNfiuKvRutt/ZL4oJc+
-	 puz28AhFrPM1chuN/I/w8j4XXfCuXW4dQOtyikPv6inipHULEOcxJFK/2s4f6JUp3o
-	 +Tk8rsM2h+OCTxeKMog+hUoAngHu6PIVbJ8hyIjwPUd8KuZM++FpPHGeShf8DBcEx4
-	 CkIAh0PMEojrQ==
+	b=ye8trJIVbBpH6oilCqTQh2GQjJu7msxAzR+W4g28viuDzcesKKGiEWVd9X543aTzn
+	 5UX1ed7V0h4BU/EOoPTvi9Zgdyzx2WERj1loshReyqy1AtpF09ICvjwakj+FZ2VeBY
+	 9/VACaMJRYa8fmlxVLFwoq3FPZt1eepdZa6cnHfG5fzt9wAo9UrI9vFGMdqA79Z4US
+	 H8vihzjFiLvq5COLAJ9243tYFt6B1z67LQohD/au/U2E2SSpP6klNtW3EtIc7sKA4L
+	 hWLVhPazJLiglYfEVrpSsF3Rv86ARAyrBPm8yaa6l284fHfseS+9MKVIP2XbNTDg3v
+	 PrMjuJgdMD+aQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id mNg0lhVBSWDj; Fri, 22 Dec 2023 17:09:16 +0000 (UTC)
+	with ESMTP id yhheRhQIokJN; Fri, 22 Dec 2023 18:32:27 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 214E46F5F6;
-	Fri, 22 Dec 2023 17:09:16 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 214E46F5F6
+	by smtp3.osuosl.org (Postfix) with ESMTP id 8E9866F72C;
+	Fri, 22 Dec 2023 18:32:26 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 8E9866F72C
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 82ED31BF2B0
- for <intel-wired-lan@lists.osuosl.org>; Fri, 22 Dec 2023 17:09:11 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 3523A1BF3EF
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 22 Dec 2023 18:32:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 6637842D5A
- for <intel-wired-lan@lists.osuosl.org>; Fri, 22 Dec 2023 17:09:11 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6637842D5A
+ by smtp1.osuosl.org (Postfix) with ESMTP id F2E2C83F69
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 22 Dec 2023 18:32:21 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org F2E2C83F69
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id pko4E1LyRhpy for <intel-wired-lan@lists.osuosl.org>;
- Fri, 22 Dec 2023 17:09:10 +0000 (UTC)
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.10])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 0ABFA42892
- for <intel-wired-lan@lists.osuosl.org>; Fri, 22 Dec 2023 17:09:09 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0ABFA42892
-X-IronPort-AV: E=McAfee;i="6600,9927,10932"; a="9536691"
-X-IronPort-AV: E=Sophos;i="6.04,297,1695711600"; 
-   d="scan'208";a="9536691"
-Received: from fmsmga005.fm.intel.com ([10.253.24.32])
- by orvoesa102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 22 Dec 2023 09:09:01 -0800
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id z5PqxAPZmueq for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 22 Dec 2023 18:32:21 +0000 (UTC)
+Received: from mgamail.intel.com (mgamail.intel.com [134.134.136.100])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id E0C8C83F6B
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 22 Dec 2023 18:32:20 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E0C8C83F6B
+X-IronPort-AV: E=McAfee;i="6600,9927,10932"; a="462584991"
+X-IronPort-AV: E=Sophos;i="6.04,297,1695711600"; d="scan'208";a="462584991"
+Received: from orsmga001.jf.intel.com ([10.7.209.18])
+ by orsmga105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 22 Dec 2023 10:32:12 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10932"; a="1108514958"
-X-IronPort-AV: E=Sophos;i="6.04,297,1695711600"; d="scan'208";a="1108514958"
-Received: from kambika-mobl1.amr.corp.intel.com (HELO vcostago-mobl3)
- ([10.209.152.51])
- by fmsmga005-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 22 Dec 2023 09:08:54 -0800
-From: Vinicius Costa Gomes <vinicius.gomes@intel.com>
-To: lakshmi.sowjanya.d@intel.com, tglx@linutronix.de, jstultz@google.com,
- giometti@enneenne.com, corbet@lwn.net, linux-kernel@vger.kernel.org
-In-Reply-To: <20231221093254.9599-2-lakshmi.sowjanya.d@intel.com>
-References: <20231221093254.9599-1-lakshmi.sowjanya.d@intel.com>
- <20231221093254.9599-2-lakshmi.sowjanya.d@intel.com>
-Date: Fri, 22 Dec 2023 14:08:51 -0300
-Message-ID: <87v88qjhb0.fsf@intel.com>
+X-IronPort-AV: E=McAfee;i="6600,9927,10932"; a="811382050"
+X-IronPort-AV: E=Sophos;i="6.04,297,1695711600"; d="scan'208";a="811382050"
+Received: from orsmsx602.amr.corp.intel.com ([10.22.229.15])
+ by orsmga001.jf.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
+ 22 Dec 2023 10:32:12 -0800
+Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
+ ORSMSX602.amr.corp.intel.com (10.22.229.15) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.35; Fri, 22 Dec 2023 10:32:11 -0800
+Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
+ orsmsx610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.35 via Frontend Transport; Fri, 22 Dec 2023 10:32:11 -0800
+Received: from NAM02-DM3-obe.outbound.protection.outlook.com (104.47.56.41) by
+ edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.35; Fri, 22 Dec 2023 10:32:10 -0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=MQkmqH/AAMnV0SGuTfFjSdafTOf+lm87sxk/MVQT8OcWw5MC5KoU6mIRX+9pQznoQKAjth/j5rJsCZyN2aA7gVIpaYhVrRN14WVV/QXMLD24NRzR79R9hx4ybS/rZwf7ujUJdPkostfz2svg+SF7lc39m/KdbqZlq1xCPnM7QfXRRo7i36XXjekFY9OOJXNHabe4mdIFyfIOyBPZrOE7Jtk47eFLkb/Ppjw/oy0vf1o2JOJ7TSP/GkZVYnxWtVKEvfa1QPiGEx3dQhrmec4vY1VE6iQMmbVIUmmNJhTLxoVsRb4U4IE7DeNg9Qgcv4OOdVtU8jqqqiZLfZ3z11+/BA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=fQy/OTok74CoPuvwGAKcM91Hy3liBFSqd2gOR/s0XUA=;
+ b=V866KigX9s3StdrDkh/0kCbhkQILBPuETa5/pR13ylO1KdCIy+G5rdcZwHOak7ixgGWo1ZUGCssthaZkJdvz72xmHNEENxVSN3m4RCtI6r0Z4AYPowQfOaQKOxsIqY2ezCfGSSzeYyIDH8oFhhTxUlVqCdjupNuvkkYyG0nQgRJ0G5OybKddmPOj4Fx417E5qHBQu8NWmBnOfWqIEmklBxAu5AoMv0CaG2GC7NiHi/h9LrOFirWBuLQKg1kp1XHr8XHWwVpmk7iAm7ejB3If9dzJXYDt03eT9/qUa8nW3IYpJdnT9LOvukdZCpFAzIcWD7ntcnHKW6xgAy7Wzq9sGA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from CY8PR11MB7195.namprd11.prod.outlook.com (2603:10b6:930:93::19)
+ by PH8PR11MB6975.namprd11.prod.outlook.com (2603:10b6:510:224::16)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7113.21; Fri, 22 Dec
+ 2023 18:32:07 +0000
+Received: from CY8PR11MB7195.namprd11.prod.outlook.com
+ ([fe80::6e9a:e84e:338b:751b]) by CY8PR11MB7195.namprd11.prod.outlook.com
+ ([fe80::6e9a:e84e:338b:751b%7]) with mapi id 15.20.7113.019; Fri, 22 Dec 2023
+ 18:32:06 +0000
+From: "Register, Scott" <scott.register@intel.com>
+To: "Linga, Pavan Kumar" <pavan.kumar.linga@intel.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Thread-Topic: [Intel-wired-lan] [PATCH iwl-net] idpf: avoid compiler
+ introduced padding in virtchnl2_rss_key struct
+Thread-Index: AQHaL7GIvsQaFP4O2UiqYclT6y+uO7C1qnZw
+Date: Fri, 22 Dec 2023 18:32:06 +0000
+Message-ID: <CY8PR11MB7195A879FEDD0AA7BF0566FB9794A@CY8PR11MB7195.namprd11.prod.outlook.com>
+References: <20231215234807.1094344-1-pavan.kumar.linga@intel.com>
+In-Reply-To: <20231215234807.1094344-1-pavan.kumar.linga@intel.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: CY8PR11MB7195:EE_|PH8PR11MB6975:EE_
+x-ms-office365-filtering-correlation-id: b915b0f3-25c6-4cda-6090-08dc031c4cf4
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: s5KhvkBoIyV8Wl+Ztk6F4clyQ2jujkkQ6s+OrNhNxsDywD9lAsVJiZ2uPf+zNgqkb41kgP9iuwT8LQoki1nEDosWAgy9YHIlCO127HrU/U6WAELRYVGrIk4AnIS8UXatyYrQIW6/ZrsdGDwXuLrIFSDlP0N60lH7aspH1ja36I3G4/ET3HqTlrWThgebfI9JJuV9/mZteTT/0J6/UqLCmiWbxbZWirV3iVxC7bvMQIvHIuR2A70H1h7NN7MquoH4pHTMcMvo+ruEswDhl7lRemFCe8htY61fzH3ko8N5om3MR/RrtWEBFDpFEsG3q5Vi91yco1UQkxpWbNaCEVgy+A02XbBOz0Oa/N6PkE4DIo/vlaLQux6RCeW5LWkj5bdtpJILL/qWsLw+JlIfshIVsR+3Z/uH4Hw+K1CoyEbY+gWBO2GfwyPI6Nh8NSDrCsYmWb3nwNCaaXgZsaKWJzXtweiA6Tgs9FWxt4P4+BKyS/+rHoKl9eMvfbta7G54/M9ud2OCL+GSb8y35fHP8td7C8PKj5WqWTtJqo6re2nkQzHgqYtcYWgMgZrnuNC6QlUWYGXSOGzclx5gfn46Pe/u7jBsFUFLvSMlgdtcXpHXOgk3IvPFFfRXT5v8IOTby/BW
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:CY8PR11MB7195.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230031)(366004)(136003)(39860400002)(396003)(346002)(376002)(230922051799003)(451199024)(64100799003)(186009)(1800799012)(38070700009)(86362001)(33656002)(8936002)(9686003)(53546011)(71200400001)(5660300002)(52536014)(4326008)(8676002)(7696005)(6506007)(107886003)(54906003)(2906002)(55016003)(316002)(64756008)(66946007)(66476007)(110136005)(66556008)(76116006)(66446008)(83380400001)(478600001)(122000001)(38100700002)(41300700001)(82960400001);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?bTyaykPfwbGQ47PYuOlFJ6cqdALzNT8W4+YmwSJ2JZSieTjPEpbOUvLBdg7B?=
+ =?us-ascii?Q?QZTcwgUSB+KlQx8kNW7qozzat+57JbVys+O2XNX62CZMTuOxJrQatj9vpm6R?=
+ =?us-ascii?Q?y8ES7ufQV/UONIexkr3rfKNyS9h31hT8LKiU5Qg5H/343WXeMaIM/LsF4QtR?=
+ =?us-ascii?Q?bg7bf0wSKC8JPGZU/AAyb3tSMtamMKdyMABTlOujkai/4TcAeQty+VAnVGrz?=
+ =?us-ascii?Q?wA0wR/EfGHKYuhmri6PtkhmMJXM3ChU655FHub1y1Sz4zmHV2vduDvplMlts?=
+ =?us-ascii?Q?snouNWtF2I9ctKg70wUvxbrhQyzzkuSwcTGkec6krIKPgP+QqdGXZTjBS9i+?=
+ =?us-ascii?Q?h9Q3NE0BYi6ih78nEI0Wlxn6VHuc9npSVrETq8TRavCVja0ZAX1Bfx8bENSU?=
+ =?us-ascii?Q?/Hz7BYzogR7Kmn+8+7ErNAkpk0i5XokLQ9to4tl141DtoRUP0rxCtnHfPdyg?=
+ =?us-ascii?Q?qZ12RhLU4EowZ3HLLchs6139eRIw+wG5jSmNIRtgBW850w7tjEnxE70Syejk?=
+ =?us-ascii?Q?jwkOQwrbfd0AF0gsIR9DEw2fmD3yEOEHn1WDuFx7EH32/KfSyfXEAu6KQIjh?=
+ =?us-ascii?Q?QuiH40ZDek2BqOXOFrCnziG6tPEVtr9kkpud7OWnA9HD69g+NmPRRTtwsvcL?=
+ =?us-ascii?Q?l+p6nmRDWdXyBw07WmHwjiaae7iMikWL7Yjy8WJT5Zx2G5exegzwDzrG0w1U?=
+ =?us-ascii?Q?mDxz4l9awWibXiBPavv9sX7ZU+htFztm9cBui+OkcVrZYkRNVKBmASzsPTcP?=
+ =?us-ascii?Q?Z8CGuVMTGUeOhDXOU5epY+j8f58AHRwtaRbwDdjt12hq/qveMC7qHGby+PRi?=
+ =?us-ascii?Q?NsBnCxCBHiYlpXR7iUeVe/ovBUOh3gQyohm7bA5qG+phGwT+5mpelVOoMV35?=
+ =?us-ascii?Q?usRsLuw+rOP5BA3WAW4LSx6nJJW8meOtmDv9Tuui5DRkD/m55pTluEELyYYw?=
+ =?us-ascii?Q?eTmFTReME27o7txwzfui5yw7HHT7i1+5BOVo3vjJlhjyJgqGQ3s/CMA859c5?=
+ =?us-ascii?Q?gh5qHKq72C2VjaHkF9BamQruENrtIOZC3K1CYC+yR1XFk+AXDDIEmjumKsDV?=
+ =?us-ascii?Q?UtPkFXSPouupVxWvvI6dn+pd9itYQZf4ZZ3aU5tFMK1zePw92cux+o9le3Kd?=
+ =?us-ascii?Q?ogehp3+p4xU8FqKSBUQ+ZOx6xomZoKJucepyb2X84/oeG1/SoGCedge5EWfF?=
+ =?us-ascii?Q?Y8mUz/k06wra64cQmTpBRpjgw25VYKjLXG6QuzQx5UKHMkOg6dfHH7hGXOfa?=
+ =?us-ascii?Q?Zn1FRaMWNhTiYETh+zQvdltYoobpSNkK7cmLdGYZvyfTeFyTEjbvLtk+A3xy?=
+ =?us-ascii?Q?XE8s8eRntIBBNPgWR+fCJMCED/fXVjgPM3FWl27+cGZv/sy3AtChKQdIgesx?=
+ =?us-ascii?Q?z9HRgwHIEFxyIuKm4wdK4Xl7j8G4k0sjEaZOlsmnrxZkZe7Rs0kh/UgQoBpe?=
+ =?us-ascii?Q?jO/SI2lmErdiqna0ab26lvt3n4qUBDytGi6Uz1ECRrrtogArlk/ywzh5J92C?=
+ =?us-ascii?Q?DhKlD2iy74gEOEpFrKPCdOVdY3Oxg4HRrC1njWPt9t9OAMt/gAcxbE5BSuLx?=
+ =?us-ascii?Q?QBmwXVXLdDKJv1hicJvykscqZjyPjZHuYyeMupUuAWTgCD7TyA5/OgO8A42x?=
+ =?us-ascii?Q?xJud7kLVn0AxmZvYHPuMnEW+g25GmNQqu1rArFP17Uv6?=
 MIME-Version: 1.0
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: CY8PR11MB7195.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: b915b0f3-25c6-4cda-6090-08dc031c4cf4
+X-MS-Exchange-CrossTenant-originalarrivaltime: 22 Dec 2023 18:32:06.4778 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: 5qTpNdEZieJk9T5AnY64cjthJtjL9TaoTt/Vms4uZG4aCwgwLnd+P/MNpegnE4D2/28DVoQ/J5S7AGajR1W4KWUWZsuJgMu3llqa1DCxS3s=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH8PR11MB6975
+X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1703264951; x=1734800951;
- h=from:to:cc:subject:in-reply-to:references:date:
- message-id:mime-version;
- bh=jrbK3JxBO1NzBg6D2UAI0w9iU17c+JQnpCe0XS7kc6Y=;
- b=IcfgZMIpEziqml/oi0tai7DORLZHj1dKOaBhjrW1GvpdAJsl8AxxcVFe
- StIsDdIrh+8U3hnnjxx5v8gMWluVQcLpGf3CJA406EAWLgGXYKpX9oSJs
- tiOG6HMQAyQuyD0wFS00IM70Vn2bdhVBzbgwW8BTWE1xj1w0TAHLknJRv
- LInl96DvSlxHa1SyCxTlSFse9luLxFE/o3Ef1k1LJyx9uc9ji/VANgbp9
- e46vVD5AO4eDj6LtSQBJYihFtSJiD0UNhMIEAmyChHVhCR4NXivM4wz88
- L3VsCNWX9yCyJCMG4fzHoc4np7SQ9LBOUIUD+rpmFQT1oJSlyRlJuB+7T
+ t=1703269940; x=1734805940;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=4yypARfTj4SjalriH5k1cKS8traBLNON1ZFkO23uNmc=;
+ b=gZNWfe4aCFqi118pi77BzVqFMtYWkGMBj9wK2Y8uBWRqifgIegAkCgoc
+ XMlwxNeZgw12E8flGzpB8Vy3gq1Qd73bnzIq5hHVSgcHb7vTlkGlwSIa9
+ 4fzyjbe9SxpIqMyNfPumwRS5JfVsIULNhFzBvOOBADIAttcx104/ok6TD
+ jbm7sItbR0APxbVmohj5hebTIiHq5jV0esawD2zll3YNv5mJv5ic9U8X1
+ rEuzQjD0sv3spEOgI82B+r5RFaNgfE8oRQVwMzD610PnAn/XNjJ8JJLeF
+ du5Opy5xnM0biBk3zBmKtElr0WShF/HEGuuqmEMHpfe73wJo41h153Pwj
  w==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=IcfgZMIp
-Subject: Re: [Intel-wired-lan] [RFC PATCH v2 01/10] x86/tsc: Add base clock
- properties in clocksource structure
+ header.a=rsa-sha256 header.s=Intel header.b=gZNWfe4a
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH iwl-net] idpf: avoid compiler
+ introduced padding in virtchnl2_rss_key struct
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,308 +185,50 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: christopher.s.hall@intel.com, lakshmi.sowjanya.d@intel.com,
- linux-doc@vger.kernel.org, netdev@vger.kernel.org, pandith.n@intel.com,
- x86@kernel.org, eddie.dong@intel.com, jesse.brandeburg@intel.com,
- linux-sound@vger.kernel.org, alexandre.torgue@foss.st.com,
- mallikarjunappa.sangannavar@intel.com, joabreu@synopsys.com,
- intel-wired-lan@lists.osuosl.org, mcoquelin.stm32@gmail.com,
- thejesh.reddy.t.r@intel.com, perex@perex.cz, anthony.l.nguyen@intel.com,
- andriy.shevchenko@linux.intel.com, davem@davemloft.net
+Cc: "netdev@vger.kernel.org" <netdev@vger.kernel.org>, "Zaremba,
+ Larysa" <larysa.zaremba@intel.com>, "Linga,
+ Pavan Kumar" <pavan.kumar.linga@intel.com>, "Kitszel,
+ Przemyslaw" <przemyslaw.kitszel@intel.com>, "Lobakin,
+ Aleksander" <aleksander.lobakin@intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-lakshmi.sowjanya.d@intel.com writes:
-
-> From: Lakshmi Sowjanya D <lakshmi.sowjanya.d@intel.com>
->
-> Remove convert_art_to_tsc() and convert_art_ns_to_tsc(), as this patch
-> series introduces a generic function ktime_real_to_base_clock() to
-> convert realtime to base clock domain.
->
-> Add hardware abstraction, struct clocksource_base in clocksource.
->
-> Add clocksource ID for x86 ART(Always Running Timer).
->
-> Co-developed-by: Thomas Gleixner <tglx@linutronix.de>
-> Signed-off-by: Thomas Gleixner <tglx@linutronix.de>
-> Co-developed-by: Christopher S. Hall <christopher.s.hall@intel.com>
-> Signed-off-by: Christopher S. Hall <christopher.s.hall@intel.com>
-> Signed-off-by: Lakshmi Sowjanya D <lakshmi.sowjanya.d@intel.com>
+> -----Original Message-----
+> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
+> Pavan Kumar Linga
+> Sent: Friday, December 15, 2023 3:48 PM
+> To: intel-wired-lan@lists.osuosl.org
+> Cc: netdev@vger.kernel.org; Lobakin, Aleksander
+> <aleksander.lobakin@intel.com>; Linga, Pavan Kumar
+> <pavan.kumar.linga@intel.com>; Kitszel, Przemyslaw
+> <przemyslaw.kitszel@intel.com>; Zaremba, Larysa
+> <larysa.zaremba@intel.com>
+> Subject: [Intel-wired-lan] [PATCH iwl-net] idpf: avoid compiler introduced
+> padding in virtchnl2_rss_key struct
+> 
+> Size of the virtchnl2_rss_key struct should be 7 bytes but the
+> compiler introduces a padding byte for the structure alignment.
+> This results in idpf sending an additional byte of memory to the device
+> control plane than the expected buffer size. As the control plane
+> enforces virtchnl message size checks to validate the message,
+> set RSS key message fails resulting in the driver load failure.
+> 
+> Remove implicit compiler padding by using "__packed" structure
+> attribute for the virtchnl2_rss_key struct.
+> 
+> Also there is no need to use __DECLARE_FLEX_ARRAY macro for the
+> 'key_flex' struct field. So drop it.
+> 
+> Fixes: 0d7502a9b4a7 ("virtchnl: add virtchnl version 2 ops")
+> Reviewed-by: Larysa Zaremba <larysa.zaremba@intel.com>
+> Signed-off-by: Pavan Kumar Linga <pavan.kumar.linga@intel.com>
 > ---
+>  drivers/net/ethernet/intel/idpf/virtchnl2.h | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
 
-This patch is breaking compilation. I guess it needs to be split into
-two.
-
-You are removing functions that drivers are using. You have to convert
-the drivers to the new abstractions, and only after all in-tree users
-are converted you remove the old functions.
-
->  arch/x86/include/asm/tsc.h      |  3 --
->  arch/x86/kernel/tsc.c           | 94 +++++++--------------------------
->  include/linux/clocksource.h     | 27 ++++++++++
->  include/linux/clocksource_ids.h |  1 +
->  4 files changed, 47 insertions(+), 78 deletions(-)
->
-> diff --git a/arch/x86/include/asm/tsc.h b/arch/x86/include/asm/tsc.h
-> index 594fce0ca744..5e36495cc821 100644
-> --- a/arch/x86/include/asm/tsc.h
-> +++ b/arch/x86/include/asm/tsc.h
-> @@ -27,9 +27,6 @@ static inline cycles_t get_cycles(void)
->  }
->  #define get_cycles get_cycles
->  
-> -extern struct system_counterval_t convert_art_to_tsc(u64 art);
-> -extern struct system_counterval_t convert_art_ns_to_tsc(u64 art_ns);
-> -
->  extern void tsc_early_init(void);
->  extern void tsc_init(void);
->  extern void mark_tsc_unstable(char *reason);
-> diff --git a/arch/x86/kernel/tsc.c b/arch/x86/kernel/tsc.c
-> index 868f09966b0f..b45ce594cfef 100644
-> --- a/arch/x86/kernel/tsc.c
-> +++ b/arch/x86/kernel/tsc.c
-> @@ -51,9 +51,9 @@ int tsc_clocksource_reliable;
->  
->  static int __read_mostly tsc_force_recalibrate;
->  
-> -static u32 art_to_tsc_numerator;
-> -static u32 art_to_tsc_denominator;
-> -static u64 art_to_tsc_offset;
-> +static struct clocksource_base art_base_clk = {
-> +	.id    = CSID_X86_ART,
-> +};
->  static bool have_art;
->  
->  struct cyc2ns {
-> @@ -1075,7 +1075,7 @@ core_initcall(cpufreq_register_tsc_scaling);
->   */
->  static void __init detect_art(void)
->  {
-> -	unsigned int unused[2];
-> +	unsigned int unused;
->  
->  	if (boot_cpu_data.cpuid_level < ART_CPUID_LEAF)
->  		return;
-> @@ -1090,13 +1090,14 @@ static void __init detect_art(void)
->  	    tsc_async_resets)
->  		return;
->  
-> -	cpuid(ART_CPUID_LEAF, &art_to_tsc_denominator,
-> -	      &art_to_tsc_numerator, unused, unused+1);
-> +	cpuid(ART_CPUID_LEAF, &art_base_clk.denominator,
-> +		&art_base_clk.numerator, &art_base_clk.freq_khz, &unused);
->  
-> -	if (art_to_tsc_denominator < ART_MIN_DENOMINATOR)
-> +	art_base_clk.freq_khz /= KHZ;
-> +	if (art_base_clk.denominator < ART_MIN_DENOMINATOR)
->  		return;
->  
-> -	rdmsrl(MSR_IA32_TSC_ADJUST, art_to_tsc_offset);
-> +	rdmsrl(MSR_IA32_TSC_ADJUST, art_base_clk.offset);
->  
->  	/* Make this sticky over multiple CPU init calls */
->  	setup_force_cpu_cap(X86_FEATURE_ART);
-> @@ -1297,69 +1298,6 @@ int unsynchronized_tsc(void)
->  	return 0;
->  }
->  
-> -/*
-> - * Convert ART to TSC given numerator/denominator found in detect_art()
-> - */
-> -struct system_counterval_t convert_art_to_tsc(u64 art)
-> -{
-> -	u64 tmp, res, rem;
-> -
-> -	rem = do_div(art, art_to_tsc_denominator);
-> -
-> -	res = art * art_to_tsc_numerator;
-> -	tmp = rem * art_to_tsc_numerator;
-> -
-> -	do_div(tmp, art_to_tsc_denominator);
-> -	res += tmp + art_to_tsc_offset;
-> -
-> -	return (struct system_counterval_t) {
-> -		.cs_id = have_art ? CSID_X86_TSC : CSID_GENERIC,
-> -		.cycles = res
-> -	};
-> -}
-> -EXPORT_SYMBOL(convert_art_to_tsc);
-> -
-> -/**
-> - * convert_art_ns_to_tsc() - Convert ART in nanoseconds to TSC.
-> - * @art_ns: ART (Always Running Timer) in unit of nanoseconds
-> - *
-> - * PTM requires all timestamps to be in units of nanoseconds. When user
-> - * software requests a cross-timestamp, this function converts system timestamp
-> - * to TSC.
-> - *
-> - * This is valid when CPU feature flag X86_FEATURE_TSC_KNOWN_FREQ is set
-> - * indicating the tsc_khz is derived from CPUID[15H]. Drivers should check
-> - * that this flag is set before conversion to TSC is attempted.
-> - *
-> - * Return:
-> - * struct system_counterval_t - system counter value with the ID of the
-> - *	corresponding clocksource
-> - *	@cycles:	System counter value
-> - *	@cs_id:		Clocksource ID corresponding to system counter value.
-> - *			Used by timekeeping code to verify comparability of two
-> - *			cycle values.
-> - */
-> -
-> -struct system_counterval_t convert_art_ns_to_tsc(u64 art_ns)
-> -{
-> -	u64 tmp, res, rem;
-> -
-> -	rem = do_div(art_ns, USEC_PER_SEC);
-> -
-> -	res = art_ns * tsc_khz;
-> -	tmp = rem * tsc_khz;
-> -
-> -	do_div(tmp, USEC_PER_SEC);
-> -	res += tmp;
-> -
-> -	return (struct system_counterval_t) {
-> -		.cs_id = have_art ? CSID_X86_TSC : CSID_GENERIC,
-> -		.cycles = res
-> -	};
-> -}
-> -EXPORT_SYMBOL(convert_art_ns_to_tsc);
-> -
-> -
->  static void tsc_refine_calibration_work(struct work_struct *work);
->  static DECLARE_DELAYED_WORK(tsc_irqwork, tsc_refine_calibration_work);
->  /**
-> @@ -1461,8 +1399,10 @@ static void tsc_refine_calibration_work(struct work_struct *work)
->  	if (tsc_unstable)
->  		goto unreg;
->  
-> -	if (boot_cpu_has(X86_FEATURE_ART))
-> +	if (boot_cpu_has(X86_FEATURE_ART)) {
->  		have_art = true;
-> +		clocksource_tsc.base = &art_base_clk;
-> +	}
->  	clocksource_register_khz(&clocksource_tsc, tsc_khz);
->  unreg:
->  	clocksource_unregister(&clocksource_tsc_early);
-> @@ -1487,8 +1427,10 @@ static int __init init_tsc_clocksource(void)
->  	 * the refined calibration and directly register it as a clocksource.
->  	 */
->  	if (boot_cpu_has(X86_FEATURE_TSC_KNOWN_FREQ)) {
-> -		if (boot_cpu_has(X86_FEATURE_ART))
-> +		if (boot_cpu_has(X86_FEATURE_ART)) {
->  			have_art = true;
-> +			clocksource_tsc.base = &art_base_clk;
-> +		}
->  		clocksource_register_khz(&clocksource_tsc, tsc_khz);
->  		clocksource_unregister(&clocksource_tsc_early);
->  
-> @@ -1512,10 +1454,12 @@ static bool __init determine_cpu_tsc_frequencies(bool early)
->  
->  	if (early) {
->  		cpu_khz = x86_platform.calibrate_cpu();
-> -		if (tsc_early_khz)
-> +		if (tsc_early_khz) {
->  			tsc_khz = tsc_early_khz;
-> -		else
-> +		} else {
->  			tsc_khz = x86_platform.calibrate_tsc();
-> +			clocksource_tsc.freq_khz = tsc_khz;
-> +		}
->  	} else {
->  		/* We should not be here with non-native cpu calibration */
->  		WARN_ON(x86_platform.calibrate_cpu != native_calibrate_cpu);
-> diff --git a/include/linux/clocksource.h b/include/linux/clocksource.h
-> index 1d42d4b17327..0a1110a0e660 100644
-> --- a/include/linux/clocksource.h
-> +++ b/include/linux/clocksource.h
-> @@ -21,6 +21,7 @@
->  #include <asm/div64.h>
->  #include <asm/io.h>
->  
-> +struct clocksource_base;
->  struct clocksource;
->  struct module;
->  
-> @@ -48,6 +49,7 @@ struct module;
->   * @archdata:		Optional arch-specific data
->   * @max_cycles:		Maximum safe cycle value which won't overflow on
->   *			multiplication
-> + * @freq_khz:		Clocksource frequency in khz.
->   * @name:		Pointer to clocksource name
->   * @list:		List head for registration (internal)
->   * @rating:		Rating value for selection (higher is better)
-> @@ -70,6 +72,8 @@ struct module;
->   *			validate the clocksource from which the snapshot was
->   *			taken.
->   * @flags:		Flags describing special properties
-> + * @base:		Hardware abstraction for clock on which a clocksource
-> + *			is based
->   * @enable:		Optional function to enable the clocksource
->   * @disable:		Optional function to disable the clocksource
->   * @suspend:		Optional suspend function for the clocksource
-> @@ -105,12 +109,14 @@ struct clocksource {
->  	struct arch_clocksource_data archdata;
->  #endif
->  	u64			max_cycles;
-> +	u32			freq_khz;
->  	const char		*name;
->  	struct list_head	list;
->  	int			rating;
->  	enum clocksource_ids	id;
->  	enum vdso_clock_mode	vdso_clock_mode;
->  	unsigned long		flags;
-> +	struct clocksource_base *base;
->  
->  	int			(*enable)(struct clocksource *cs);
->  	void			(*disable)(struct clocksource *cs);
-> @@ -294,4 +300,25 @@ static inline void timer_probe(void) {}
->  extern ulong max_cswd_read_retries;
->  void clocksource_verify_percpu(struct clocksource *cs);
->  
-> +/**
-> + * struct clocksource_base - hardware abstraction for clock on which a clocksource
-> + *			is based
-> + * @id:			Defaults to CSID_GENERIC. The id value is used for conversion
-> + *			functions which require that the current clocksource is based
-> + *			on a clocksource_base with a particular ID in certain snapshot
-> + *			functions to allow callers to validate the clocksource from
-> + *			which the snapshot was taken.
-> + * @freq_khz:		Nominal frequency of the base clock in kHz
-> + * @offset:		Offset between the base clock and the clocksource
-> + * @numerator:		Numerator of the clock ratio between base clock and the clocksource
-> + * @denominator:	Denominator of the clock ratio between base clock and the clocksource
-> + */
-> +struct clocksource_base {
-> +	enum clocksource_ids	id;
-> +	u32			freq_khz;
-> +	u64			offset;
-> +	u32			numerator;
-> +	u32			denominator;
-> +};
-> +
->  #endif /* _LINUX_CLOCKSOURCE_H */
-> diff --git a/include/linux/clocksource_ids.h b/include/linux/clocksource_ids.h
-> index a4fa3436940c..2bb4d8c2f1b0 100644
-> --- a/include/linux/clocksource_ids.h
-> +++ b/include/linux/clocksource_ids.h
-> @@ -9,6 +9,7 @@ enum clocksource_ids {
->  	CSID_X86_TSC_EARLY,
->  	CSID_X86_TSC,
->  	CSID_X86_KVM_CLK,
-> +	CSID_X86_ART,
->  	CSID_MAX,
->  };
->  
-> -- 
-> 2.35.3
->
->
-
--- 
-Vinicius
+Tested-by: Scott Register <scott.register@intel.com>
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
