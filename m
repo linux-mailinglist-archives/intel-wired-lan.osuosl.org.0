@@ -2,87 +2,87 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 430BD81D17B
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 23 Dec 2023 04:00:16 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8CB8581D17D
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 23 Dec 2023 04:00:20 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id C578B42DE9;
-	Sat, 23 Dec 2023 03:00:14 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C578B42DE9
+	by smtp4.osuosl.org (Postfix) with ESMTP id 1A8C242DE7;
+	Sat, 23 Dec 2023 03:00:19 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1A8C242DE7
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1703300414;
-	bh=3aXXUU0vFOjUpXmOhWaEqv+hK67yibaZvTFA0NchgzA=;
+	s=default; t=1703300419;
+	bh=hFyBouS7yMM28zA9zfuSVPaYI0zhcfBWB9iHoPpOez8=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=6PN6z3AqCR4pJ3u9FIKgPHWoeHjaHHxrpjPZfZX1z+paw/34TWJPBD9OHM6EdUEAg
-	 NGLnP1FeH7Ot+lqQmbg+QcO3s3rZebiDU20BbeOe2WuMWqEz2ptTgJp6E8l9AD4Otd
-	 NepAy8ZeIC2B2VskFANQRLfWc9bKvyyUk1iDHON2o8VpA/99SeWGO/0rfCfao5Zj/g
-	 6gPDL4793ctGZXpnH5vqqbuU9Yk09P6KRarOEnoCk8v+IFO/aUYqYxd/YZynBskB3X
-	 w7q+rls6ZF0TiwtlwNk+/jA4XRQCmCYTTmVyW5Km/8mMAlQU7WU2PuNDc0Vzh/XYsP
-	 EkkCplVVtglXw==
+	b=JtZTOnFokp+zzqzSxTCYjmmyM08tRFUpXTN2B9XbB1qQbMXMmFrGekKaw/J/044tH
+	 kD2NxAhwgDXEHd+i1QKeyh+BJjErvoZdhTjVPjJIbQrII48LVTHMvIHo+MVesUfhRK
+	 o6WIL1UJ02v5dS5Jr75QNvcTO9YwmCLfbzwn1NGRkgLajf2S6SfZ5Pjql9S0+mGBQr
+	 S5D0wZK2vc2Gji1yntYAoUjZm0SFWqqdbDCOkq8rk2bnXSInqFPVnuiyT9Bujbi7wm
+	 3d32PJhgcBgXMDzGRL/LN7VoijBWpdPRTT7hpKoQ+LhPxyk0uNb5UNF1uYYhAyXQra
+	 YfzO//8UVe8Tw==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id IHyxfQphXh5b; Sat, 23 Dec 2023 03:00:13 +0000 (UTC)
+	with ESMTP id VejA029N5qtj; Sat, 23 Dec 2023 03:00:18 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 80DA242D41;
-	Sat, 23 Dec 2023 03:00:13 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 80DA242D41
+	by smtp4.osuosl.org (Postfix) with ESMTP id CECA6415EF;
+	Sat, 23 Dec 2023 03:00:17 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org CECA6415EF
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id B742E1BF255
- for <intel-wired-lan@lists.osuosl.org>; Sat, 23 Dec 2023 02:59:42 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 3E99E1BF255
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 23 Dec 2023 02:59:47 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 9D6D040348
- for <intel-wired-lan@lists.osuosl.org>; Sat, 23 Dec 2023 02:59:42 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9D6D040348
+ by smtp4.osuosl.org (Postfix) with ESMTP id 2469B42D12
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 23 Dec 2023 02:59:47 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2469B42D12
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id LPFcydA3jHnj for <intel-wired-lan@lists.osuosl.org>;
- Sat, 23 Dec 2023 02:59:42 +0000 (UTC)
+ with ESMTP id K67pGjur_5Ez for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 23 Dec 2023 02:59:46 +0000 (UTC)
 Received: from mgamail.intel.com (mgamail.intel.com [134.134.136.20])
- by smtp4.osuosl.org (Postfix) with ESMTPS id DC4EB42D9B
- for <intel-wired-lan@lists.osuosl.org>; Sat, 23 Dec 2023 02:59:41 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org DC4EB42D9B
-X-IronPort-AV: E=McAfee;i="6600,9927,10932"; a="386611035"
-X-IronPort-AV: E=Sophos;i="6.04,298,1695711600"; d="scan'208";a="386611035"
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 71DED42D6D
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 23 Dec 2023 02:59:46 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 71DED42D6D
+X-IronPort-AV: E=McAfee;i="6600,9927,10932"; a="386611044"
+X-IronPort-AV: E=Sophos;i="6.04,298,1695711600"; d="scan'208";a="386611044"
 Received: from orviesa001.jf.intel.com ([10.64.159.141])
  by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 22 Dec 2023 18:59:41 -0800
+ 22 Dec 2023 18:59:46 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.04,298,1695711600"; d="scan'208";a="25537631"
+X-IronPort-AV: E=Sophos;i="6.04,298,1695711600"; d="scan'208";a="25537644"
 Received: from newjersey.igk.intel.com ([10.102.20.203])
- by orviesa001.jf.intel.com with ESMTP; 22 Dec 2023 18:59:38 -0800
+ by orviesa001.jf.intel.com with ESMTP; 22 Dec 2023 18:59:42 -0800
 From: Alexander Lobakin <aleksander.lobakin@intel.com>
 To: "David S. Miller" <davem@davemloft.net>,
  Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
  Paolo Abeni <pabeni@redhat.com>
-Date: Sat, 23 Dec 2023 03:55:45 +0100
-Message-ID: <20231223025554.2316836-26-aleksander.lobakin@intel.com>
+Date: Sat, 23 Dec 2023 03:55:46 +0100
+Message-ID: <20231223025554.2316836-27-aleksander.lobakin@intel.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20231223025554.2316836-1-aleksander.lobakin@intel.com>
 References: <20231223025554.2316836-1-aleksander.lobakin@intel.com>
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1703300381; x=1734836381;
+ t=1703300386; x=1734836386;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=vBLq+bSc90hU1HHgtTujEszVAfYomJgRRmZIp5oafNw=;
- b=KgpMNTpMHEveGBfy/CV+TPZH3CG5dMunsdBMtmT+eLHkOU1DEGDqparU
- 4Bt/dxr9FdhIUwOowWK9VcqVmHtiLbHCTqCrqyOUBbcYhy9zC8hCcWUps
- X3Zn4l1ElI8vsRM7KSvuQqpnLQ/slNkXc8+byLRaYbPLOrmxKIhhPI4gv
- y3b7Kem20FJT5AO9GO1JtT3zaq/0IqTrJDYGjkXFd3jygyfX4LzUjn6cZ
- Ij2x2Bs0hSZ7vANq4L7/LqsfvPQASEn1y6EWPh1W8jvCdSVRj6gz4xFt/
- IksZy8iAynQg/1PJlcr2EQMwo/7+XbYC3weTTbnTF+hHfiODW3Y2Hf/Ig
+ bh=yxZYHXhn633FddOUdDcraFQxZakRgJVpB7yodhsBcbU=;
+ b=dxWSx7yi1SeULGUBhFjT876DsNvVTOtyQQ0dAZrFGCzV8CIySEA+W1+v
+ wHMA+yazUMdCFC4jxyMK9IdGbwyCzXglg3xQvNr6U5icLLTvlJoCV56Zm
+ ncLvEAegztKXObmFAdup6YWfp/B+CkwxPX+w624azzvf6/Ez09rXEXjmH
+ 2n1vUumI9Y4lledZ8vRdvlCsZGMKnTemvArEt4prEjzBlY50DvbbnVBgH
+ 2J88DeMpAXXZK59Uk2jpMM85TjWuQsY/2x7SR7tFY6bC4VoeJd4GVLQzq
+ EzOb3Iol/4GAX93zQ8uxpcVN5Idxt+9DWwSgJ0eLHSqi228iTld6Hn9EK
  Q==;
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=KgpMNTpM
-Subject: [Intel-wired-lan] [PATCH RFC net-next 25/34] idpf: add support for
- .ndo_xdp_xmit()
+ header.a=rsa-sha256 header.s=Intel header.b=dxWSx7yi
+Subject: [Intel-wired-lan] [PATCH RFC net-next 26/34] xdp: add generic XSk
+ xdp_buff -> skb conversion
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -107,95 +107,99 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Use libie XDP infra to implement .ndo_xdp_xmit() in idpf.
-The Tx callbacks are reused from XDP_TX code. XDP redirect target
-feature is set/cleared depending on the XDP prog presence, as for now
-we still don't allocate XDP Tx queues when there's no program.
+Same as with converting &xdp_buff to skb on Rx, the code which allocates
+a new skb and copies the XSk frame there is identical across the
+drivers, so make it generic.
+Note that this time skb_record_rx_queue() is called unconditionally, as
+it's not intended to call this function with a non-registered RxQ info.
 
 Signed-off-by: Alexander Lobakin <aleksander.lobakin@intel.com>
 ---
- drivers/net/ethernet/intel/idpf/idpf_lib.c |  1 +
- drivers/net/ethernet/intel/idpf/idpf_xdp.c | 34 ++++++++++++++++++++++
- drivers/net/ethernet/intel/idpf/idpf_xdp.h |  2 ++
- 3 files changed, 37 insertions(+)
+ include/net/xdp.h | 11 ++++++++++-
+ net/core/xdp.c    | 41 +++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 51 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/net/ethernet/intel/idpf/idpf_lib.c b/drivers/net/ethernet/intel/idpf/idpf_lib.c
-index a19704c4c421..7c3d45f84e1b 100644
---- a/drivers/net/ethernet/intel/idpf/idpf_lib.c
-+++ b/drivers/net/ethernet/intel/idpf/idpf_lib.c
-@@ -2451,6 +2451,7 @@ static const struct net_device_ops idpf_netdev_ops_splitq = {
- 	.ndo_set_features = idpf_set_features,
- 	.ndo_tx_timeout = idpf_tx_timeout,
- 	.ndo_bpf = idpf_xdp,
-+	.ndo_xdp_xmit = idpf_xdp_xmit,
- };
+diff --git a/include/net/xdp.h b/include/net/xdp.h
+index 66854b755b58..23ada4bb0e69 100644
+--- a/include/net/xdp.h
++++ b/include/net/xdp.h
+@@ -273,7 +273,16 @@ void xdp_warn(const char *msg, const char *func, const int line);
  
- static const struct net_device_ops idpf_netdev_ops_singleq = {
-diff --git a/drivers/net/ethernet/intel/idpf/idpf_xdp.c b/drivers/net/ethernet/intel/idpf/idpf_xdp.c
-index b9952ebda4fb..b4f096186302 100644
---- a/drivers/net/ethernet/intel/idpf/idpf_xdp.c
-+++ b/drivers/net/ethernet/intel/idpf/idpf_xdp.c
-@@ -313,6 +313,35 @@ bool __idpf_xdp_run_prog(struct xdp_buff *xdp, struct libie_xdp_tx_bulk *bq)
- 	return libie_xdp_run_prog(xdp, bq, idpf_xdp_tx_flush_bulk);
- }
- 
-+/**
-+ * idpf_xdp_xmit - submit packets to xdp ring for transmission
-+ * @dev: netdev
-+ * @n: number of xdp frames to be transmitted
-+ * @frames: xdp frames to be transmitted
-+ * @flags: transmit flags
-+ *
-+ * Returns number of frames successfully sent. Frames that fail are
-+ * free'ed via XDP return API.
-+ * For error cases, a negative errno code is returned and no-frames
-+ * are transmitted (caller must handle freeing frames).
-+ */
-+int idpf_xdp_xmit(struct net_device *dev, int n, struct xdp_frame **frames,
-+		  u32 flags)
+ struct sk_buff *__xdp_build_skb_from_buff(struct sk_buff *skb,
+ 					  const struct xdp_buff *xdp);
+-#define xdp_build_skb_from_buff(xdp) __xdp_build_skb_from_buff(NULL, xdp)
++struct sk_buff *xdp_build_skb_from_zc(struct napi_struct *napi,
++				      struct xdp_buff *xdp);
++
++static inline struct sk_buff *xdp_build_skb_from_buff(struct xdp_buff *xdp)
 +{
-+	struct idpf_netdev_priv *np = netdev_priv(dev);
-+	struct idpf_vport *vport = np->vport;
++	if (xdp->rxq->mem.type == MEM_TYPE_XSK_BUFF_POOL)
++		return xdp_build_skb_from_zc(NULL, xdp);
 +
-+	if (unlikely(!netif_carrier_ok(dev) || !vport->link_up))
-+		return -ENETDOWN;
-+	if (unlikely(!idpf_xdp_is_prog_ena(vport)))
-+		return -ENXIO;
-+
-+	return libie_xdp_xmit_do_bulk(dev, n, frames, flags,
-+				      &vport->txqs[vport->xdp_txq_offset],
-+				      vport->num_xdp_txq, idpf_xdp_tx_prep,
-+				      idpf_xdp_tx_xmit, idpf_xdp_tx_finalize);
++	return __xdp_build_skb_from_buff(NULL, xdp);
 +}
-+
- /**
-  * idpf_xdp_reconfig_queues - reconfigure queues after the XDP setup
-  * @vport: vport to load or unload XDP for
-@@ -410,6 +439,11 @@ idpf_xdp_setup_prog(struct idpf_vport *vport, struct bpf_prog *prog,
- 		return err;
- 	}
  
-+	if (prog)
-+		xdp_features_set_redirect_target(vport->netdev, false);
-+	else
-+		xdp_features_clear_redirect_target(vport->netdev);
+ struct xdp_frame *xdp_convert_zc_to_xdp_frame(struct xdp_buff *xdp);
+ struct sk_buff *__xdp_build_skb_from_frame(struct xdp_frame *xdpf,
+diff --git a/net/core/xdp.c b/net/core/xdp.c
+index 8ef1d735a7eb..2bdb1fb8a9b8 100644
+--- a/net/core/xdp.c
++++ b/net/core/xdp.c
+@@ -21,6 +21,8 @@
+ #include <trace/events/xdp.h>
+ #include <net/xdp_sock_drv.h>
+ 
++#include "dev.h"
 +
- 	if (vport_is_up) {
- 		err = idpf_vport_open(vport, false);
- 		if (err) {
-diff --git a/drivers/net/ethernet/intel/idpf/idpf_xdp.h b/drivers/net/ethernet/intel/idpf/idpf_xdp.h
-index 1f299c268ca5..f1444482f69d 100644
---- a/drivers/net/ethernet/intel/idpf/idpf_xdp.h
-+++ b/drivers/net/ethernet/intel/idpf/idpf_xdp.h
-@@ -31,6 +31,8 @@ static inline void idpf_xdp_finalize_rx(struct libie_xdp_tx_bulk *bq)
- 		__idpf_xdp_finalize_rx(bq);
+ #define REG_STATE_NEW		0x0
+ #define REG_STATE_REGISTERED	0x1
+ #define REG_STATE_UNREGISTERED	0x2
+@@ -647,6 +649,45 @@ struct sk_buff *__xdp_build_skb_from_buff(struct sk_buff *skb,
  }
+ EXPORT_SYMBOL_GPL(__xdp_build_skb_from_buff);
  
-+int idpf_xdp_xmit(struct net_device *dev, int n, struct xdp_frame **frames,
-+		  u32 flags);
- int idpf_xdp(struct net_device *netdev, struct netdev_bpf *xdp);
- 
- #endif /* _IDPF_XDP_H_ */
++struct sk_buff *xdp_build_skb_from_zc(struct napi_struct *napi,
++				      struct xdp_buff *xdp)
++{
++	const struct xdp_rxq_info *rxq = xdp->rxq;
++	u32 totalsize, metasize;
++	struct sk_buff *skb;
++
++	if (!napi) {
++		napi = napi_by_id(rxq->napi_id);
++		if (unlikely(!napi))
++			return NULL;
++	}
++
++	totalsize = xdp->data_end - xdp->data_meta;
++
++	skb = __napi_alloc_skb(napi, totalsize, GFP_ATOMIC | __GFP_NOWARN);
++	if (unlikely(!skb))
++		return NULL;
++
++	net_prefetch(xdp->data_meta);
++
++	memcpy(__skb_put(skb, totalsize), xdp->data_meta,
++	       ALIGN(totalsize, sizeof(long)));
++
++	metasize = xdp->data - xdp->data_meta;
++	if (metasize) {
++		skb_metadata_set(skb, metasize);
++		__skb_pull(skb, metasize);
++	}
++
++	skb_record_rx_queue(skb, rxq->queue_index);
++	skb->protocol = eth_type_trans(skb, rxq->dev);
++
++	xsk_buff_free(xdp);
++
++	return skb;
++}
++EXPORT_SYMBOL_GPL(xdp_build_skb_from_zc);
++
+ struct sk_buff *__xdp_build_skb_from_frame(struct xdp_frame *xdpf,
+ 					   struct sk_buff *skb,
+ 					   struct net_device *dev)
 -- 
 2.43.0
 
