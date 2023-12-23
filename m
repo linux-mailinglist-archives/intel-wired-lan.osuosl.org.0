@@ -2,87 +2,87 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4335081D15B
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 23 Dec 2023 03:58:35 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id ADDA481D15C
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 23 Dec 2023 03:58:40 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id BE7F542CEE;
-	Sat, 23 Dec 2023 02:58:33 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org BE7F542CEE
+	by smtp4.osuosl.org (Postfix) with ESMTP id 4786F42D05;
+	Sat, 23 Dec 2023 02:58:39 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4786F42D05
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1703300313;
-	bh=WJ1bjhAN6Rn3Gq0+LczAimIPLK6MFzvJJS84dI7RBeQ=;
+	s=default; t=1703300319;
+	bh=DEAufvgiZvctqW9bNGG8mXnTAQN+fWdEVCJM4Ik9oLk=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=VYsEP8/rwqsU/76HcRmvAcd6EIBEmgTjn2mfd7Hee7Fvp5E47iV8Pbhwgv9eauHSJ
-	 wHy2hHS7jcDzJUV3kLtlOT8KIN5gsIAcRQKT0S27htu1TBWQs/kQvxD/8El4oAHI+A
-	 2g7pgr3vDWDYAhA/P9zEvY0c8LzH+HmlwLxiDjqHoAEQsZQy8ahAb9MjuJYrUJigQK
-	 iiu+wAW8LPk3RzbfbbAsGDsDxoObwb6/v1nsGS2DA7ebvdtD6FBBCRL2Pm/WKlf1nU
-	 lbUr1cofDZPMyAc2SWXpjTPratBl7MgPaMbitoAHD1arc7Ebo0HtpAsU1L4O9LraMd
-	 AY9WoiZvQVOeA==
+	b=txiZBrIZeSrmJiUDVDDpNA91kqdBVcprcE+ReB+husvmlSsclYB5QNnsDwiOA2fHo
+	 myRqIEfOaSGI2vjcXLR70EE0mqs7VxnkjDbXk+cL8zYFaPpzfYZpb+/5UdIzOHDY5T
+	 2UptvyhsDGkk+ovay+T4hhtDZtAwmJSAeRyLh4YukfFoY2kdkep834EhckS22wTPaB
+	 X36eAc2mmXlzqsOmtAmeSL7WXZ7gX4HTOeBkqLy+mpwWqs/mPv+eZknHEAaVSWX4VH
+	 pdSiRRSJqgGmeOg9uTCDevXrp9geaSXKlqDihP+7mOOnrL6cBJEfVzC4uCTtSWD+mb
+	 nS1JBQC8FSGbQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id cWE_K22-iWM0; Sat, 23 Dec 2023 02:58:32 +0000 (UTC)
+	with ESMTP id VAe043NQE7-l; Sat, 23 Dec 2023 02:58:37 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 3B16440348;
-	Sat, 23 Dec 2023 02:58:32 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3B16440348
+	by smtp4.osuosl.org (Postfix) with ESMTP id 398F342CB6;
+	Sat, 23 Dec 2023 02:58:37 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 398F342CB6
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 44C891BF3EC
- for <intel-wired-lan@lists.osuosl.org>; Sat, 23 Dec 2023 02:58:20 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id AAF131BF3EC
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 23 Dec 2023 02:58:25 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 2ADAE6059D
- for <intel-wired-lan@lists.osuosl.org>; Sat, 23 Dec 2023 02:58:20 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2ADAE6059D
+ by smtp3.osuosl.org (Postfix) with ESMTP id 84A6560AFB
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 23 Dec 2023 02:58:25 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 84A6560AFB
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id SYB2K2fxXGZs for <intel-wired-lan@lists.osuosl.org>;
- Sat, 23 Dec 2023 02:58:19 +0000 (UTC)
+ with ESMTP id EKjMX0mc4DU4 for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 23 Dec 2023 02:58:24 +0000 (UTC)
 Received: from mgamail.intel.com (mgamail.intel.com [134.134.136.20])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 4C22060073
- for <intel-wired-lan@lists.osuosl.org>; Sat, 23 Dec 2023 02:58:19 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 4C22060073
-X-IronPort-AV: E=McAfee;i="6600,9927,10932"; a="386610798"
-X-IronPort-AV: E=Sophos;i="6.04,298,1695711600"; d="scan'208";a="386610798"
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 11FD660634
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 23 Dec 2023 02:58:23 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 11FD660634
+X-IronPort-AV: E=McAfee;i="6600,9927,10932"; a="386610807"
+X-IronPort-AV: E=Sophos;i="6.04,298,1695711600"; d="scan'208";a="386610807"
 Received: from orviesa001.jf.intel.com ([10.64.159.141])
  by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 22 Dec 2023 18:58:18 -0800
+ 22 Dec 2023 18:58:23 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.04,298,1695711600"; d="scan'208";a="25537414"
+X-IronPort-AV: E=Sophos;i="6.04,298,1695711600"; d="scan'208";a="25537422"
 Received: from newjersey.igk.intel.com ([10.102.20.203])
- by orviesa001.jf.intel.com with ESMTP; 22 Dec 2023 18:58:15 -0800
+ by orviesa001.jf.intel.com with ESMTP; 22 Dec 2023 18:58:19 -0800
 From: Alexander Lobakin <aleksander.lobakin@intel.com>
 To: "David S. Miller" <davem@davemloft.net>,
  Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
  Paolo Abeni <pabeni@redhat.com>
-Date: Sat, 23 Dec 2023 03:55:24 +0100
-Message-ID: <20231223025554.2316836-5-aleksander.lobakin@intel.com>
+Date: Sat, 23 Dec 2023 03:55:25 +0100
+Message-ID: <20231223025554.2316836-6-aleksander.lobakin@intel.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20231223025554.2316836-1-aleksander.lobakin@intel.com>
 References: <20231223025554.2316836-1-aleksander.lobakin@intel.com>
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1703300299; x=1734836299;
+ t=1703300304; x=1734836304;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=46Vvjei49P7oFRMYlPnyxLohII5Trr+LUZK0y4+x0UE=;
- b=WanKfbTQJ/KyzdANvyWKhwRXQRdK9DEf94K0In7HssAhPvgSXR7u85cE
- jxQxDhvQP9Ux8JqvAti6nFVErJpu0T7XoPnSLEk3a8e2zFt7X3O1Rup71
- NYbX83bwxFRpKZ7YnJQ7qJf8YUBwu9Vxreme8+69am28K/g7DRO4MLTOu
- UQAAeofrLw3NihImBK2iT4tV9izWUy4hgy304V4ZY59cIdU8w591qjV52
- pSZp+0RRmV77wI/k3GaxlVv8gNS0Axoz/kHYTh6KOPFJZjE5g7HFsGctm
- pDQ0rzmD8kwcgqK8++UPpswSTCVYyHMV2ThlyS/3gIcrcfuzn7UE1oOZ/
+ bh=zIAQiD53pI9dF5o2if2XUK918+GApOkA7ZQmUOveiWM=;
+ b=DVoU9KgHlU3W79hX2rhH8kBjceK23XpQq7FrwASuAA/n5uX4VnMagvJJ
+ qcmvPLhosFusnwdl+QmSNe92p+JKanefp7Cg/vNCat7rxxqEkgVe6uwck
+ vS7who3wifCRWRWP4lM691JAe7UQ/F/YE3al1usDMobJxK0c+9vtC+h6a
+ bnH0dgHtf6GDDubXmOzqNa0ts1R7DGUm33JodLuNMP1G7Ob54tUDdJ9P7
+ bv6qf+FiCFjCOAdXeXXcANha8//O/GS0dxp0QbPFQqjTPQ8wY6Fd1JHxV
+ 614NQ5OXBb8b8Zkeg591kK+O5mg+4EMwx3T0e8SJZvXXjxzYJnKV3G1/F
  A==;
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=WanKfbTQ
-Subject: [Intel-wired-lan] [PATCH RFC net-next 04/34] libie: support
- different types of buffers for Rx
+ header.a=rsa-sha256 header.s=Intel header.b=DVoU9KgH
+Subject: [Intel-wired-lan] [PATCH RFC net-next 05/34] idpf: convert header
+ split mode to libie + napi_build_skb()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -107,212 +107,584 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Unlike previous generations, idpf requires more buffer types for optimal
-performance. This includes: header buffers, short buffers, and
-no-overhead buffers (w/o headroom and tailroom, for TCP zerocopy when
-the header split is enabled).
-Introduce libie Rx buffer type and calculate page_pool params
-accordingly. All the HW-related details like buffer alignment are still
-accounted. For the header buffers, pick 256 bytes as in most places in
-the kernel (have you ever seen frames with bigger headers?).
+Currently, idpf uses the following model for the header buffers:
+
+* buffers are allocated via dma_alloc_coherent();
+* when receiving, napi_alloc_skb() is called and then the header is
+  copied to the newly allocated linear part.
+
+This is far from optimal as DMA coherent zone is slow on many systems
+and memcpy() neutralizes the idea and benefits of the header split.
+Instead, use libie to create page_pools for the header buffers, allocate
+them dynamically and then build an skb via napi_build_skb() around them
+with no memory copy. With one exception...
+When you enable header split, you except you'll always have a separate
+header buffer, so that you could reserve headroom and tailroom only
+there and then use full buffers for the data. For example, this is how
+TCP zerocopy works -- you have to have the payload aligned to PAGE_SIZE.
+The current hardware running idpf does *not* guarantee that you'll
+always have headers placed separately. For example, on my setup, even
+ICMP packets are written as one piece to the data buffers. You can't
+build a valid skb around a data buffer in this case.
+To not complicate things and not lose TCP zerocopy etc., when such thing
+happens, use the empty header buffer and pull either full frame (if it's
+short) or the Ethernet header there and build an skb around it. GRO
+layer will pull more from the data buffer later. This W/A will hopefully
+be removed one day.
 
 Signed-off-by: Alexander Lobakin <aleksander.lobakin@intel.com>
 ---
- drivers/net/ethernet/intel/libie/rx.c | 107 +++++++++++++++++++++++---
- include/linux/net/intel/libie/rx.h    |  19 +++++
- 2 files changed, 115 insertions(+), 11 deletions(-)
+ .../ethernet/intel/idpf/idpf_singleq_txrx.c   |   2 +
+ drivers/net/ethernet/intel/idpf/idpf_txrx.c   | 219 +++++++++++-------
+ drivers/net/ethernet/intel/idpf/idpf_txrx.h   |  23 +-
+ .../net/ethernet/intel/idpf/idpf_virtchnl.c   |  14 +-
+ 4 files changed, 159 insertions(+), 99 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/libie/rx.c b/drivers/net/ethernet/intel/libie/rx.c
-index 610f16043bcf..3d3b19d2b40d 100644
---- a/drivers/net/ethernet/intel/libie/rx.c
-+++ b/drivers/net/ethernet/intel/libie/rx.c
-@@ -6,14 +6,14 @@
- /* Rx buffer management */
- 
- /**
-- * libie_rx_hw_len - get the actual buffer size to be passed to HW
-+ * libie_rx_hw_len_mtu - get the actual buffer size to be passed to HW
-  * @pp: &page_pool_params of the netdev to calculate the size for
-  *
-  * Return: HW-writeable length per one buffer to pass it to the HW accounting:
-  * MTU the @dev has, HW required alignment, minimum and maximum allowed values,
-  * and system's page size.
-  */
--static u32 libie_rx_hw_len(const struct page_pool_params *pp)
-+static u32 libie_rx_hw_len_mtu(const struct page_pool_params *pp)
- {
- 	u32 len;
- 
-@@ -24,6 +24,96 @@ static u32 libie_rx_hw_len(const struct page_pool_params *pp)
- 	return len;
+diff --git a/drivers/net/ethernet/intel/idpf/idpf_singleq_txrx.c b/drivers/net/ethernet/intel/idpf/idpf_singleq_txrx.c
+index e58e08c9997d..53ff572ce252 100644
+--- a/drivers/net/ethernet/intel/idpf/idpf_singleq_txrx.c
++++ b/drivers/net/ethernet/intel/idpf/idpf_singleq_txrx.c
+@@ -868,6 +868,8 @@ static void idpf_rx_singleq_process_skb_fields(struct idpf_queue *rx_q,
+ 		idpf_rx_singleq_flex_hash(rx_q, skb, rx_desc, parsed);
+ 		idpf_rx_singleq_flex_csum(rx_q, skb, rx_desc, parsed);
+ 	}
++
++	skb_record_rx_queue(skb, rx_q->idx);
  }
  
-+/**
-+ * libie_rx_hw_len_truesize - get the short buffer size to be passed to HW
-+ * @pp: &page_pool_params of the netdev to calculate the size for
-+ * @truesize: desired truesize for the buffers
-+ *
-+ * Return: HW-writeable length per one buffer to pass it to the HW ignoring the
-+ * MTU and closest to the passed truesize. Can be used for "short" buffer
-+ * queues to fragment pages more efficiently.
-+ */
-+static u32 libie_rx_hw_len_truesize(const struct page_pool_params *pp,
-+				    u32 truesize)
-+{
-+	u32 min, len;
-+
-+	min = SKB_HEAD_ALIGN(pp->offset + LIBIE_RX_BUF_LEN_ALIGN);
-+	truesize = clamp(roundup_pow_of_two(truesize), roundup_pow_of_two(min),
-+			 PAGE_SIZE << LIBIE_RX_PAGE_ORDER);
-+
-+	len = SKB_WITH_OVERHEAD(truesize - pp->offset);
-+	len = ALIGN_DOWN(len, LIBIE_RX_BUF_LEN_ALIGN);
-+	len = clamp(len, LIBIE_MIN_RX_BUF_LEN, pp->max_len);
-+
-+	return len;
-+}
-+
-+static void libie_rx_page_pool_params(struct libie_buf_queue *bq,
-+				      struct page_pool_params *pp)
-+{
-+	pp->offset = LIBIE_SKB_HEADROOM;
-+	/* HW-writeable / syncable length per one page */
-+	pp->max_len = LIBIE_RX_BUF_LEN(pp->offset);
-+
-+	/* HW-writeable length per buffer */
-+	switch (bq->type) {
-+	case LIBIE_RX_BUF_MTU:
-+		bq->rx_buf_len = libie_rx_hw_len_mtu(pp);
-+		break;
-+	case LIBIE_RX_BUF_SHORT:
-+		bq->rx_buf_len = libie_rx_hw_len_truesize(pp, bq->truesize);
-+		break;
-+	case LIBIE_RX_BUF_HDR:
-+		bq->rx_buf_len = ALIGN(LIBIE_MAX_HEAD, LIBIE_RX_BUF_LEN_ALIGN);
-+		break;
-+	default:
-+		break;
-+	}
-+
-+	/* Buffer size to allocate */
-+	bq->truesize = roundup_pow_of_two(SKB_HEAD_ALIGN(pp->offset +
-+							 bq->rx_buf_len));
-+}
-+
-+/**
-+ * libie_rx_page_pool_params_zc - calculate params without the stack overhead
-+ * @bq: buffer queue to calculate the size for
-+ * @pp: &page_pool_params of the netdev
-+ *
-+ * Adjusts the PP params to exclude the stack overhead and sets both the buffer
-+ * lengh and the truesize, which are equal for the data buffers. Note that this
-+ * requires separate header buffers to be always active and account the
-+ * overhead.
-+ * With the MTU == ``PAGE_SIZE``, this allows the kernel to enable the zerocopy
-+ * mode.
-+ */
-+static bool libie_rx_page_pool_params_zc(struct libie_buf_queue *bq,
-+					 struct page_pool_params *pp)
-+{
-+	u32 mtu;
-+
-+	pp->offset = 0;
-+	pp->max_len = PAGE_SIZE << LIBIE_RX_PAGE_ORDER;
-+
-+	switch (bq->type) {
-+	case LIBIE_RX_BUF_MTU:
-+		mtu = READ_ONCE(pp->netdev->mtu);
-+		break;
-+	case LIBIE_RX_BUF_SHORT:
-+		mtu = bq->truesize;
-+		break;
-+	default:
-+		return false;
-+	}
-+
-+	bq->rx_buf_len = clamp(roundup_pow_of_two(mtu), LIBIE_RX_BUF_LEN_ALIGN,
-+			       pp->max_len);
-+	bq->truesize = bq->rx_buf_len;
-+
-+	return true;
-+}
-+
  /**
-  * libie_rx_page_pool_create - create a PP with the default libie settings
-  * @bq: buffer queue struct to fill
-@@ -43,17 +133,12 @@ int libie_rx_page_pool_create(struct libie_buf_queue *bq,
- 		.netdev		= napi->dev,
- 		.napi		= napi,
- 		.dma_dir	= DMA_FROM_DEVICE,
--		.offset		= LIBIE_SKB_HEADROOM,
- 	};
+diff --git a/drivers/net/ethernet/intel/idpf/idpf_txrx.c b/drivers/net/ethernet/intel/idpf/idpf_txrx.c
+index d81eff39a632..f696fd9839fc 100644
+--- a/drivers/net/ethernet/intel/idpf/idpf_txrx.c
++++ b/drivers/net/ethernet/intel/idpf/idpf_txrx.c
+@@ -331,18 +331,17 @@ static int idpf_tx_desc_alloc_all(struct idpf_vport *vport)
  
--	/* HW-writeable / syncable length per one page */
--	pp.max_len = LIBIE_RX_BUF_LEN(pp.offset);
--
--	/* HW-writeable length per buffer */
--	bq->rx_buf_len = libie_rx_hw_len(&pp);
--	/* Buffer size to allocate */
--	bq->truesize = roundup_pow_of_two(SKB_HEAD_ALIGN(pp.offset +
--							 bq->rx_buf_len));
-+	if (!bq->hsplit)
-+		libie_rx_page_pool_params(bq, &pp);
-+	else if (!libie_rx_page_pool_params_zc(bq, &pp))
-+		return -EINVAL;
- 
- 	bq->pp = page_pool_create(&pp);
- 
-diff --git a/include/linux/net/intel/libie/rx.h b/include/linux/net/intel/libie/rx.h
-index 0d6bce19ad6b..87ad8f9e89c7 100644
---- a/include/linux/net/intel/libie/rx.h
-+++ b/include/linux/net/intel/libie/rx.h
-@@ -19,6 +19,8 @@
- #define LIBIE_MAX_HEADROOM	LIBIE_SKB_HEADROOM
- /* Link layer / L2 overhead: Ethernet, 2 VLAN tags (C + S), FCS */
- #define LIBIE_RX_LL_LEN		(ETH_HLEN + 2 * VLAN_HLEN + ETH_FCS_LEN)
-+/* Maximum supported L2-L4 header length */
-+#define LIBIE_MAX_HEAD		256
- 
- /* Always use order-0 pages */
- #define LIBIE_RX_PAGE_ORDER	0
-@@ -64,6 +66,18 @@ struct libie_rx_buffer {
- 	u32			truesize;
- };
- 
-+/**
-+ * enum libie_rx_buf_type - enum representing types of Rx buffers
-+ * @LIBIE_RX_BUF_MTU: buffer size is determined by MTU
-+ * @LIBIE_RX_BUF_SHORT: buffer size is smaller than MTU, for short frames
-+ * @LIBIE_RX_BUF_HDR: buffer size is ```LIBIE_MAX_HEAD```-sized, for headers
-+ */
-+enum libie_rx_buf_type {
-+	LIBIE_RX_BUF_MTU	= 0U,
-+	LIBIE_RX_BUF_SHORT,
-+	LIBIE_RX_BUF_HDR,
-+};
-+
  /**
-  * struct libie_buf_queue - structure representing a buffer queue
-  * @pp: &page_pool for buffer management
-@@ -71,6 +85,8 @@ struct libie_rx_buffer {
-  * @truesize: size to allocate per buffer, w/overhead
-  * @count: number of descriptors/buffers the queue has
-  * @rx_buf_len: HW-writeable length per each buffer
-+ * @type: type of the buffers this queue has
-+ * @hsplit: flag whether header split is enabled
+  * idpf_rx_page_rel - Release an rx buffer page
+- * @rxq: the queue that owns the buffer
+  * @rx_buf: the buffer to free
   */
- struct libie_buf_queue {
- 	struct page_pool	*pp;
-@@ -81,6 +97,9 @@ struct libie_buf_queue {
+-static void idpf_rx_page_rel(struct idpf_queue *rxq, struct idpf_rx_buf *rx_buf)
++static void idpf_rx_page_rel(struct libie_rx_buffer *rx_buf)
+ {
+ 	if (unlikely(!rx_buf->page))
+ 		return;
  
- 	/* Cold fields */
- 	u32			rx_buf_len;
-+	enum libie_rx_buf_type	type:2;
+-	page_pool_put_full_page(rxq->pp, rx_buf->page, false);
++	page_pool_put_full_page(rx_buf->page->pp, rx_buf->page, false);
+ 
+ 	rx_buf->page = NULL;
+-	rx_buf->page_offset = 0;
++	rx_buf->offset = 0;
+ }
+ 
+ /**
+@@ -351,13 +350,17 @@ static void idpf_rx_page_rel(struct idpf_queue *rxq, struct idpf_rx_buf *rx_buf)
+  */
+ static void idpf_rx_hdr_buf_rel_all(struct idpf_queue *rxq)
+ {
+-	struct idpf_adapter *adapter = rxq->vport->adapter;
++	struct libie_buf_queue bq = {
++		.pp	= rxq->hdr_pp,
++	};
 +
-+	bool			hsplit:1;
- };
++	for (u32 i = 0; i < rxq->desc_count; i++)
++		idpf_rx_page_rel(&rxq->rx_buf.hdr_buf[i]);
++
++	libie_rx_page_pool_destroy(&bq);
++	rxq->hdr_pp = bq.pp;
  
- int libie_rx_page_pool_create(struct libie_buf_queue *bq,
+-	dma_free_coherent(&adapter->pdev->dev,
+-			  rxq->desc_count * IDPF_HDR_BUF_SIZE,
+-			  rxq->rx_buf.hdr_buf_va,
+-			  rxq->rx_buf.hdr_buf_pa);
+-	rxq->rx_buf.hdr_buf_va = NULL;
++	kfree(rxq->rx_buf.hdr_buf);
+ }
+ 
+ /**
+@@ -374,7 +377,7 @@ static void idpf_rx_buf_rel_all(struct idpf_queue *rxq)
+ 
+ 	/* Free all the bufs allocated and given to hw on Rx queue */
+ 	for (i = 0; i < rxq->desc_count; i++)
+-		idpf_rx_page_rel(rxq, &rxq->rx_buf.buf[i]);
++		idpf_rx_page_rel(&rxq->rx_buf.buf[i]);
+ 
+ 	if (rxq->rx_hsplit_en)
+ 		idpf_rx_hdr_buf_rel_all(rxq);
+@@ -484,17 +487,33 @@ void idpf_rx_buf_hw_update(struct idpf_queue *rxq, u32 val)
+  */
+ static int idpf_rx_hdr_buf_alloc_all(struct idpf_queue *rxq)
+ {
+-	struct idpf_adapter *adapter = rxq->vport->adapter;
+-
+-	rxq->rx_buf.hdr_buf_va =
+-		dma_alloc_coherent(&adapter->pdev->dev,
+-				   IDPF_HDR_BUF_SIZE * rxq->desc_count,
+-				   &rxq->rx_buf.hdr_buf_pa,
+-				   GFP_KERNEL);
+-	if (!rxq->rx_buf.hdr_buf_va)
++	struct libie_buf_queue bq = {
++		.count		= rxq->desc_count,
++		.type		= LIBIE_RX_BUF_HDR,
++	};
++	struct libie_rx_buffer *hdr_buf;
++	int ret;
++
++	hdr_buf = kcalloc(bq.count, sizeof(*hdr_buf), GFP_KERNEL);
++	if (!hdr_buf)
+ 		return -ENOMEM;
+ 
++	rxq->rx_buf.hdr_buf = hdr_buf;
++
++	ret = libie_rx_page_pool_create(&bq, &rxq->q_vector->napi);
++	if (ret)
++		goto free_hdr;
++
++	rxq->hdr_pp = bq.pp;
++	rxq->hdr_truesize = bq.truesize;
++	rxq->rx_hbuf_size = bq.rx_buf_len;
++
+ 	return 0;
++
++free_hdr:
++	kfree(hdr_buf);
++
++	return ret;
+ }
+ 
+ /**
+@@ -529,6 +548,9 @@ static void idpf_rx_post_buf_refill(struct idpf_sw_queue *refillq, u16 buf_id)
+ static bool idpf_rx_post_buf_desc(struct idpf_queue *bufq, u16 buf_id)
+ {
+ 	struct virtchnl2_splitq_rx_buf_desc *splitq_rx_desc = NULL;
++	struct libie_buf_queue bq = {
++		.count		= bufq->desc_count,
++	};
+ 	u16 nta = bufq->next_to_alloc;
+ 	struct idpf_rx_buf *buf;
+ 	dma_addr_t addr;
+@@ -537,9 +559,15 @@ static bool idpf_rx_post_buf_desc(struct idpf_queue *bufq, u16 buf_id)
+ 	buf = &bufq->rx_buf.buf[buf_id];
+ 
+ 	if (bufq->rx_hsplit_en) {
+-		splitq_rx_desc->hdr_addr =
+-			cpu_to_le64(bufq->rx_buf.hdr_buf_pa +
+-				    (u32)buf_id * IDPF_HDR_BUF_SIZE);
++		bq.pp = bufq->hdr_pp;
++		bq.rx_bi = bufq->rx_buf.hdr_buf;
++		bq.truesize = bufq->hdr_truesize;
++
++		addr = libie_rx_alloc(&bq, buf_id);
++		if (addr == DMA_MAPPING_ERROR)
++			return false;
++
++		splitq_rx_desc->hdr_addr = cpu_to_le64(addr);
+ 	}
+ 
+ 	addr = idpf_alloc_page(bufq->pp, buf, bufq->rx_buf_size);
+@@ -1328,11 +1356,7 @@ static int idpf_rxq_group_alloc(struct idpf_vport *vport, u16 num_rxq)
+ 			q->rx_buf_size = vport->bufq_size[j];
+ 			q->rx_buffer_low_watermark = IDPF_LOW_WATERMARK;
+ 			q->rx_buf_stride = IDPF_RX_BUF_STRIDE;
+-
+-			if (hs) {
+-				q->rx_hsplit_en = true;
+-				q->rx_hbuf_size = IDPF_HDR_BUF_SIZE;
+-			}
++			q->rx_hsplit_en = hs;
+ 
+ 			bufq_set->num_refillqs = num_rxq;
+ 			bufq_set->refillqs = kcalloc(num_rxq, swq_size,
+@@ -1373,10 +1397,7 @@ static int idpf_rxq_group_alloc(struct idpf_vport *vport, u16 num_rxq)
+ 				rx_qgrp->splitq.rxq_sets[j]->refillq1 =
+ 				      &rx_qgrp->splitq.bufq_sets[1].refillqs[j];
+ 
+-			if (hs) {
+-				q->rx_hsplit_en = true;
+-				q->rx_hbuf_size = IDPF_HDR_BUF_SIZE;
+-			}
++			q->rx_hsplit_en = hs;
+ 
+ setup_rxq:
+ 			q->dev = &adapter->pdev->dev;
+@@ -2947,6 +2968,8 @@ static int idpf_rx_process_skb_fields(struct idpf_queue *rxq,
+ 	idpf_rx_splitq_extract_csum_bits(rx_desc, &csum_bits);
+ 	idpf_rx_csum(rxq, skb, csum_bits, parsed);
+ 
++	skb_record_rx_queue(skb, rxq->idx);
++
+ 	return 0;
+ }
+ 
+@@ -2964,7 +2987,7 @@ void idpf_rx_add_frag(struct idpf_rx_buf *rx_buf, struct sk_buff *skb,
+ 		      unsigned int size)
+ {
+ 	skb_add_rx_frag(skb, skb_shinfo(skb)->nr_frags, rx_buf->page,
+-			rx_buf->page_offset, size, rx_buf->truesize);
++			rx_buf->offset, size, rx_buf->truesize);
+ 
+ 	rx_buf->page = NULL;
+ }
+@@ -2987,7 +3010,7 @@ struct sk_buff *idpf_rx_construct_skb(struct idpf_queue *rxq,
+ 	struct sk_buff *skb;
+ 	void *va;
+ 
+-	va = page_address(rx_buf->page) + rx_buf->page_offset;
++	va = page_address(rx_buf->page) + rx_buf->offset;
+ 
+ 	/* prefetch first cache line of first page */
+ 	net_prefetch(va);
+@@ -3000,7 +3023,6 @@ struct sk_buff *idpf_rx_construct_skb(struct idpf_queue *rxq,
+ 		return NULL;
+ 	}
+ 
+-	skb_record_rx_queue(skb, rxq->idx);
+ 	skb_mark_for_recycle(skb);
+ 
+ 	/* Determine available headroom for copy */
+@@ -3019,7 +3041,7 @@ struct sk_buff *idpf_rx_construct_skb(struct idpf_queue *rxq,
+ 		return skb;
+ 	}
+ 
+-	skb_add_rx_frag(skb, 0, rx_buf->page, rx_buf->page_offset + headlen,
++	skb_add_rx_frag(skb, 0, rx_buf->page, rx_buf->offset + headlen,
+ 			size, rx_buf->truesize);
+ 
+ 	/* Since we're giving the page to the stack, clear our reference to it.
+@@ -3031,36 +3053,31 @@ struct sk_buff *idpf_rx_construct_skb(struct idpf_queue *rxq,
+ }
+ 
+ /**
+- * idpf_rx_hdr_construct_skb - Allocate skb and populate it from header buffer
+- * @rxq: Rx descriptor queue
+- * @va: Rx buffer to pull data from
++ * idpf_rx_build_skb - Allocate skb and populate it from header buffer
++ * @buf: Rx buffer to pull data from
+  * @size: the length of the packet
+  *
+  * This function allocates an skb. It then populates it with the page data from
+  * the current receive descriptor, taking care to set up the skb correctly.
+- * This specifically uses a header buffer to start building the skb.
+  */
+-static struct sk_buff *idpf_rx_hdr_construct_skb(struct idpf_queue *rxq,
+-						 const void *va,
+-						 unsigned int size)
++struct sk_buff *idpf_rx_build_skb(const struct libie_rx_buffer *buf, u32 size)
+ {
++	u32 hr = buf->page->pp->p.offset;
+ 	struct sk_buff *skb;
++	void *va;
+ 
+-	/* allocate a skb to store the frags */
+-	skb = __napi_alloc_skb(&rxq->q_vector->napi, size, GFP_ATOMIC);
++	va = page_address(buf->page) + buf->offset;
++	net_prefetch(va + hr);
++
++	skb = napi_build_skb(va, buf->truesize);
+ 	if (unlikely(!skb))
+ 		return NULL;
+ 
+-	skb_record_rx_queue(skb, rxq->idx);
+-
+-	memcpy(__skb_put(skb, size), va, ALIGN(size, sizeof(long)));
+-
+-	/* More than likely, a payload fragment, which will use a page from
+-	 * page_pool will be added to the SKB so mark it for recycle
+-	 * preemptively. And if not, it's inconsequential.
+-	 */
+ 	skb_mark_for_recycle(skb);
+ 
++	skb_reserve(skb, hr);
++	__skb_put(skb, size);
++
+ 	return skb;
+ }
+ 
+@@ -3091,6 +3108,26 @@ static bool idpf_rx_splitq_is_eop(struct virtchnl2_rx_flex_desc_adv_nic_3 *rx_de
+ 						  IDPF_RXD_EOF_SPLITQ));
+ }
+ 
++static u32 idpf_rx_hsplit_wa(struct libie_rx_buffer *hdr,
++			     struct libie_rx_buffer *buf,
++			     u32 data_len)
++{
++	u32 copy = data_len <= SMP_CACHE_BYTES ? data_len : ETH_HLEN;
++	const void *src;
++	void *dst;
++
++	if (!libie_rx_sync_for_cpu(buf, copy))
++		return 0;
++
++	dst = page_address(hdr->page) + hdr->offset + hdr->page->pp->p.offset;
++	src = page_address(buf->page) + buf->offset + buf->page->pp->p.offset;
++	memcpy(dst, src, ALIGN(copy, sizeof(long)));
++
++	buf->offset += copy;
++
++	return copy;
++}
++
+ /**
+  * idpf_rx_splitq_clean - Clean completed descriptors from Rx queue
+  * @rxq: Rx descriptor queue to retrieve receive buffer queue
+@@ -3113,16 +3150,16 @@ static int idpf_rx_splitq_clean(struct idpf_queue *rxq, int budget)
+ 	/* Process Rx packets bounded by budget */
+ 	while (likely(total_rx_pkts < budget)) {
+ 		struct virtchnl2_rx_flex_desc_adv_nic_3 *rx_desc;
++		struct idpf_rx_buf *hdr, *rx_buf = NULL;
+ 		struct idpf_sw_queue *refillq = NULL;
+ 		struct idpf_rxq_set *rxq_set = NULL;
+-		struct idpf_rx_buf *rx_buf = NULL;
+ 		union virtchnl2_rx_desc *desc;
+ 		unsigned int pkt_len = 0;
+ 		unsigned int hdr_len = 0;
+ 		u16 gen_id, buf_id = 0;
+-		 /* Header buffer overflow only valid for header split */
+-		bool hbo = false;
+ 		int bufq_id;
++		 /* Header buffer overflow only valid for header split */
++		bool hbo;
+ 		u8 rxdid;
+ 
+ 		/* get the Rx desc from Rx queue based on 'next_to_clean' */
+@@ -3155,26 +3192,6 @@ static int idpf_rx_splitq_clean(struct idpf_queue *rxq, int budget)
+ 		pkt_len = FIELD_GET(VIRTCHNL2_RX_FLEX_DESC_ADV_LEN_PBUF_M,
+ 				    pkt_len);
+ 
+-		hbo = FIELD_GET(VIRTCHNL2_RX_FLEX_DESC_ADV_STATUS0_HBO_M,
+-				rx_desc->status_err0_qw1);
+-
+-		if (unlikely(hbo)) {
+-			/* If a header buffer overflow, occurs, i.e. header is
+-			 * too large to fit in the header split buffer, HW will
+-			 * put the entire packet, including headers, in the
+-			 * data/payload buffer.
+-			 */
+-			u64_stats_update_begin(&rxq->stats_sync);
+-			u64_stats_inc(&rxq->q_stats.rx.hsplit_buf_ovf);
+-			u64_stats_update_end(&rxq->stats_sync);
+-			goto bypass_hsplit;
+-		}
+-
+-		hdr_len = le16_to_cpu(rx_desc->hdrlen_flags);
+-		hdr_len = FIELD_GET(VIRTCHNL2_RX_FLEX_DESC_ADV_LEN_HDR_M,
+-				    hdr_len);
+-
+-bypass_hsplit:
+ 		bufq_id = le16_to_cpu(rx_desc->pktlen_gen_bufq_id);
+ 		bufq_id = FIELD_GET(VIRTCHNL2_RX_FLEX_DESC_ADV_BUFQ_ID_M,
+ 				    bufq_id);
+@@ -3192,16 +3209,46 @@ static int idpf_rx_splitq_clean(struct idpf_queue *rxq, int budget)
+ 
+ 		rx_buf = &rx_bufq->rx_buf.buf[buf_id];
+ 
+-		if (hdr_len) {
+-			const void *va = (u8 *)rx_bufq->rx_buf.hdr_buf_va +
+-						(u32)buf_id * IDPF_HDR_BUF_SIZE;
++		if (!rx_bufq->hdr_pp)
++			goto payload;
++
++		hbo = FIELD_GET(VIRTCHNL2_RX_FLEX_DESC_ADV_STATUS0_HBO_M,
++				rx_desc->status_err0_qw1);
++		if (likely(!hbo))
++			/* If a header buffer overflow, occurs, i.e. header is
++			 * too large to fit in the header split buffer, HW will
++			 * put the entire packet, including headers, in the
++			 * data/payload buffer.
++			 */
++#define __HDR_LEN_MASK VIRTCHNL2_RX_FLEX_DESC_ADV_LEN_HDR_M
++			hdr_len = le16_get_bits(rx_desc->hdrlen_flags,
++						__HDR_LEN_MASK);
++#undef __HDR_LEN_MASK
++
++		hdr = &rx_bufq->rx_buf.hdr_buf[buf_id];
++
++		if (unlikely(!hdr_len && !skb)) {
++			hdr_len = idpf_rx_hsplit_wa(hdr, rx_buf, pkt_len);
++			pkt_len -= hdr_len;
++
++			u64_stats_update_begin(&rxq->stats_sync);
++			u64_stats_inc(&rxq->q_stats.rx.hsplit_buf_ovf);
++			u64_stats_update_end(&rxq->stats_sync);
++		}
++
++		if (libie_rx_sync_for_cpu(hdr, hdr_len)) {
++			skb = idpf_rx_build_skb(hdr, hdr_len);
++			if (!skb)
++				break;
+ 
+-			skb = idpf_rx_hdr_construct_skb(rxq, va, hdr_len);
+ 			u64_stats_update_begin(&rxq->stats_sync);
+ 			u64_stats_inc(&rxq->q_stats.rx.hsplit_pkts);
+ 			u64_stats_update_end(&rxq->stats_sync);
+ 		}
+ 
++		hdr->page = NULL;
++
++payload:
+ 		if (pkt_len) {
+ 			idpf_rx_sync_for_cpu(rx_buf, pkt_len);
+ 			if (skb)
+@@ -3271,6 +3318,9 @@ static int idpf_rx_splitq_clean(struct idpf_queue *rxq, int budget)
+ static int idpf_rx_update_bufq_desc(struct idpf_queue *bufq, u16 refill_desc,
+ 				    struct virtchnl2_splitq_rx_buf_desc *buf_desc)
+ {
++	struct libie_buf_queue bq = {
++		.count		= bufq->desc_count,
++	};
+ 	struct idpf_rx_buf *buf;
+ 	dma_addr_t addr;
+ 	u16 buf_id;
+@@ -3289,8 +3339,15 @@ static int idpf_rx_update_bufq_desc(struct idpf_queue *bufq, u16 refill_desc,
+ 	if (!bufq->rx_hsplit_en)
+ 		return 0;
+ 
+-	buf_desc->hdr_addr = cpu_to_le64(bufq->rx_buf.hdr_buf_pa +
+-					 (u32)buf_id * IDPF_HDR_BUF_SIZE);
++	bq.pp = bufq->hdr_pp;
++	bq.rx_bi = bufq->rx_buf.hdr_buf;
++	bq.truesize = bufq->hdr_truesize;
++
++	addr = libie_rx_alloc(&bq, buf_id);
++	if (addr == DMA_MAPPING_ERROR)
++		return -ENOMEM;
++
++	buf_desc->hdr_addr = cpu_to_le64(addr);
+ 
+ 	return 0;
+ }
+diff --git a/drivers/net/ethernet/intel/idpf/idpf_txrx.h b/drivers/net/ethernet/intel/idpf/idpf_txrx.h
+index 4a97790cbf68..357683559b57 100644
+--- a/drivers/net/ethernet/intel/idpf/idpf_txrx.h
++++ b/drivers/net/ethernet/intel/idpf/idpf_txrx.h
+@@ -99,8 +99,6 @@ do {								\
+ #define IDPF_RX_BUF_STRIDE			32
+ #define IDPF_RX_BUF_POST_STRIDE			16
+ #define IDPF_LOW_WATERMARK			64
+-/* Size of header buffer specifically for header split */
+-#define IDPF_HDR_BUF_SIZE			256
+ #define IDPF_PACKET_HDR_PAD	\
+ 	(ETH_HLEN + ETH_FCS_LEN + VLAN_HLEN * 2)
+ #define IDPF_TX_TSO_MIN_MSS			88
+@@ -315,16 +313,10 @@ struct idpf_rx_extracted {
+ #define IDPF_TX_MAX_DESC_DATA_ALIGNED \
+ 	ALIGN_DOWN(IDPF_TX_MAX_DESC_DATA, IDPF_TX_MAX_READ_REQ_SIZE)
+ 
+-#define IDPF_RX_DMA_ATTR \
+-	(DMA_ATTR_SKIP_CPU_SYNC | DMA_ATTR_WEAK_ORDERING)
+ #define IDPF_RX_DESC(rxq, i)	\
+ 	(&(((union virtchnl2_rx_desc *)((rxq)->desc_ring))[i]))
+ 
+-struct idpf_rx_buf {
+-	struct page *page;
+-	unsigned int page_offset;
+-	u16 truesize;
+-};
++#define idpf_rx_buf libie_rx_buffer
+ 
+ #define IDPF_RX_MAX_PTYPE_PROTO_IDS    32
+ #define IDPF_RX_MAX_PTYPE_SZ	(sizeof(struct virtchnl2_ptype) + \
+@@ -627,13 +619,15 @@ struct idpf_queue {
+ 	union {
+ 		struct idpf_tx_buf *tx_buf;
+ 		struct {
++			struct libie_rx_buffer *hdr_buf;
+ 			struct idpf_rx_buf *buf;
+-			dma_addr_t hdr_buf_pa;
+-			void *hdr_buf_va;
+ 		} rx_buf;
+ 	};
++	struct page_pool *hdr_pp;
+ 	struct page_pool *pp;
+ 	void *desc_ring;
++
++	u32 hdr_truesize;
+ 	u16 idx;
+ 	u16 q_type;
+ 	u32 q_id;
+@@ -885,7 +879,7 @@ static inline dma_addr_t idpf_alloc_page(struct page_pool *pool,
+ 					 unsigned int buf_size)
+ {
+ 	if (buf_size == IDPF_RX_BUF_2048)
+-		buf->page = page_pool_dev_alloc_frag(pool, &buf->page_offset,
++		buf->page = page_pool_dev_alloc_frag(pool, &buf->offset,
+ 						     buf_size);
+ 	else
+ 		buf->page = page_pool_dev_alloc_pages(pool);
+@@ -895,7 +889,7 @@ static inline dma_addr_t idpf_alloc_page(struct page_pool *pool,
+ 
+ 	buf->truesize = buf_size;
+ 
+-	return page_pool_get_dma_addr(buf->page) + buf->page_offset +
++	return page_pool_get_dma_addr(buf->page) + buf->offset +
+ 	       pool->p.offset;
+ }
+ 
+@@ -922,7 +916,7 @@ static inline void idpf_rx_sync_for_cpu(struct idpf_rx_buf *rx_buf, u32 len)
+ 
+ 	dma_sync_single_range_for_cpu(pp->p.dev,
+ 				      page_pool_get_dma_addr(page),
+-				      rx_buf->page_offset + pp->p.offset, len,
++				      rx_buf->offset + pp->p.offset, len,
+ 				      page_pool_get_dma_dir(pp));
+ }
+ 
+@@ -970,6 +964,7 @@ void idpf_rx_add_frag(struct idpf_rx_buf *rx_buf, struct sk_buff *skb,
+ struct sk_buff *idpf_rx_construct_skb(struct idpf_queue *rxq,
+ 				      struct idpf_rx_buf *rx_buf,
+ 				      unsigned int size);
++struct sk_buff *idpf_rx_build_skb(const struct libie_rx_buffer *buf, u32 size);
+ bool idpf_init_rx_buf_hw_alloc(struct idpf_queue *rxq, struct idpf_rx_buf *buf);
+ void idpf_rx_buf_hw_update(struct idpf_queue *rxq, u32 val);
+ void idpf_tx_buf_hw_update(struct idpf_queue *tx_q, u32 val,
+diff --git a/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c b/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c
+index 98c904f4dcf5..d599c0199e22 100644
+--- a/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c
++++ b/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c
+@@ -1636,32 +1636,38 @@ static int idpf_send_config_rx_queues_msg(struct idpf_vport *vport)
+ 			num_rxq = rx_qgrp->singleq.num_rxq;
+ 
+ 		for (j = 0; j < num_rxq; j++, k++) {
++			const struct idpf_bufq_set *sets;
+ 			struct idpf_queue *rxq;
+ 
+ 			if (!idpf_is_queue_model_split(vport->rxq_model)) {
+ 				rxq = rx_qgrp->singleq.rxqs[j];
+ 				goto common_qi_fields;
+ 			}
++
+ 			rxq = &rx_qgrp->splitq.rxq_sets[j]->rxq;
+-			qi[k].rx_bufq1_id =
+-			  cpu_to_le16(rxq->rxq_grp->splitq.bufq_sets[0].bufq.q_id);
++			sets = rxq->rxq_grp->splitq.bufq_sets;
++
++			qi[k].rx_bufq1_id = cpu_to_le16(sets[0].bufq.q_id);
+ 			if (vport->num_bufqs_per_qgrp > IDPF_SINGLE_BUFQ_PER_RXQ_GRP) {
+ 				qi[k].bufq2_ena = IDPF_BUFQ2_ENA;
+ 				qi[k].rx_bufq2_id =
+-				  cpu_to_le16(rxq->rxq_grp->splitq.bufq_sets[1].bufq.q_id);
++					cpu_to_le16(sets[1].bufq.q_id);
+ 			}
+ 			qi[k].rx_buffer_low_watermark =
+ 				cpu_to_le16(rxq->rx_buffer_low_watermark);
+ 			if (idpf_is_feature_ena(vport, NETIF_F_GRO_HW))
+ 				qi[k].qflags |= cpu_to_le16(VIRTCHNL2_RXQ_RSC);
+ 
+-common_qi_fields:
++			rxq->rx_hbuf_size = sets[0].bufq.rx_hbuf_size;
++
+ 			if (rxq->rx_hsplit_en) {
+ 				qi[k].qflags |=
+ 					cpu_to_le16(VIRTCHNL2_RXQ_HDR_SPLIT);
+ 				qi[k].hdr_buffer_size =
+ 					cpu_to_le16(rxq->rx_hbuf_size);
+ 			}
++
++common_qi_fields:
+ 			qi[k].queue_id = cpu_to_le32(rxq->q_id);
+ 			qi[k].model = cpu_to_le16(vport->rxq_model);
+ 			qi[k].type = cpu_to_le32(rxq->q_type);
 -- 
 2.43.0
 
