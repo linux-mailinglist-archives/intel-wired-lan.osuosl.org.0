@@ -2,87 +2,87 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id A93A881D16E
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 23 Dec 2023 03:59:36 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7E25181D171
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 23 Dec 2023 03:59:43 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 34AC842DB3;
-	Sat, 23 Dec 2023 02:59:35 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 34AC842DB3
+	by smtp4.osuosl.org (Postfix) with ESMTP id 0349742DBC;
+	Sat, 23 Dec 2023 02:59:42 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0349742DBC
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1703300375;
-	bh=L/J6qUis9ZqRO6hgY7xQW2xcNQWCgcxSjNXJJWt+vEA=;
+	s=default; t=1703300382;
+	bh=EqF7AD0vQFY6kcNXe1wHSK0ZJ6wcCL/u4MJ8UmAguSw=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=G5q2kg/T7Y29PriklBSSM/tFG0HHcVucyuTVeC2ts+julxZnVN0EAcdaQWFAcUPn8
-	 wyIUGbMPkfTuX/GGXHXaTwHI1KGwkUWSx9aJ4IjYRovJ3wCtQVTAYktX3lM/met8mo
-	 TQC/HRNHMWUuVMjPnppEG7Mq/KbjpRyhLt2ralafO7KOWjbd15gmHNaJYs+IAizs1B
-	 i0eJFj5QeQwPxiO0m4Cu483wOQ1iLregQttLy0ihG5F3EnJm5QyyLzXWfG5ojVpD15
-	 /16FnS8PYuvMSt6oHhd7tRgn4eIB5oyBc5Gy6rym2xzH9DNiiZ5oKwaPX9tSntzMoQ
-	 TEY50scGb7e4Q==
+	b=qr3kDor9FQTm+hCUp3HBtmRTN2N9q0nCpAYnUunu49qwKqOOSDyPL1jg11YlaYBwb
+	 bPoBEkAXsBH9FsgyAx04KcORNdpZ4suyYqzgYh8+DhdGuFPilUENTNJCZEg6Afsojy
+	 7P/oVaxsgKx2DMm+LsCPt3E/diVulbZ9Q7pt1YPu6/XFKVRI3FCmXKiWwXWcZ7mWkv
+	 xUMyfvMD6FacAUPHYAazEM1niaGoJ0VICS9SVroL+sBWu2nm9c1a7pyLpi73l7wDmE
+	 fwJEdjAmBTNlYcO7zB7UBpHaolYfRQ4Nixm636ypuYDJM7e9fXYkvff55+tXxv6Y05
+	 TjqxhBh4GtCKw==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id yyT887ZTRhwg; Sat, 23 Dec 2023 02:59:34 +0000 (UTC)
+	with ESMTP id s6Z1UIVzvvJe; Sat, 23 Dec 2023 02:59:40 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id CE95D40348;
-	Sat, 23 Dec 2023 02:59:33 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org CE95D40348
+	by smtp4.osuosl.org (Postfix) with ESMTP id E2D3742D28;
+	Sat, 23 Dec 2023 02:59:38 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E2D3742D28
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 2E3781BF255
- for <intel-wired-lan@lists.osuosl.org>; Sat, 23 Dec 2023 02:59:10 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 4CFB01BF255
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 23 Dec 2023 02:59:17 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 0783760AFB
- for <intel-wired-lan@lists.osuosl.org>; Sat, 23 Dec 2023 02:59:10 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0783760AFB
+ by smtp4.osuosl.org (Postfix) with ESMTP id 1DC0E42D6E
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 23 Dec 2023 02:59:17 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1DC0E42D6E
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 5u-HrpnlSCc9 for <intel-wired-lan@lists.osuosl.org>;
- Sat, 23 Dec 2023 02:59:09 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id h2OBKgJDZrEf for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 23 Dec 2023 02:59:15 +0000 (UTC)
 Received: from mgamail.intel.com (mgamail.intel.com [134.134.136.20])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 44C7960A8A
- for <intel-wired-lan@lists.osuosl.org>; Sat, 23 Dec 2023 02:59:09 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 44C7960A8A
-X-IronPort-AV: E=McAfee;i="6600,9927,10932"; a="386610938"
-X-IronPort-AV: E=Sophos;i="6.04,298,1695711600"; d="scan'208";a="386610938"
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 1C8E640072
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 23 Dec 2023 02:59:15 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1C8E640072
+X-IronPort-AV: E=McAfee;i="6600,9927,10932"; a="386610970"
+X-IronPort-AV: E=Sophos;i="6.04,298,1695711600"; d="scan'208";a="386610970"
 Received: from orviesa001.jf.intel.com ([10.64.159.141])
  by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 22 Dec 2023 18:59:08 -0800
+ 22 Dec 2023 18:59:14 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.04,298,1695711600"; d="scan'208";a="25537535"
+X-IronPort-AV: E=Sophos;i="6.04,298,1695711600"; d="scan'208";a="25537553"
 Received: from newjersey.igk.intel.com ([10.102.20.203])
- by orviesa001.jf.intel.com with ESMTP; 22 Dec 2023 18:59:05 -0800
+ by orviesa001.jf.intel.com with ESMTP; 22 Dec 2023 18:59:10 -0800
 From: Alexander Lobakin <aleksander.lobakin@intel.com>
 To: "David S. Miller" <davem@davemloft.net>,
  Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
  Paolo Abeni <pabeni@redhat.com>
-Date: Sat, 23 Dec 2023 03:55:37 +0100
-Message-ID: <20231223025554.2316836-18-aleksander.lobakin@intel.com>
+Date: Sat, 23 Dec 2023 03:55:38 +0100
+Message-ID: <20231223025554.2316836-19-aleksander.lobakin@intel.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20231223025554.2316836-1-aleksander.lobakin@intel.com>
 References: <20231223025554.2316836-1-aleksander.lobakin@intel.com>
 MIME-Version: 1.0
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1703300349; x=1734836349;
+ t=1703300355; x=1734836355;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=VNPt1nK0AOP2pNwVFe078A89NwhgBYFYVPqNFR4BfTE=;
- b=OS8gWTJoJJ0wBk47XVF5PlPL0QGjq/8FzWdu2YwytECsswF3/zbQ2rlU
- mciXwrChmCprP/re8dk51H6a6di8GEBbBC4uf+Wai4K0Fm2Y3t0/0I//a
- sJ4pgO1QRiio0z/b3uAuynWU4zzjk3WbB5w3bkE8hPiB5bZuyBloMvWdV
- cDH1bqFBIbt2gmPlPAbgbx8RoC4HulcR6XaUXnrnawyexHNSCjX2049eF
- Ua02gX7ROOL5ZpAabD0sKsf2I7eMwXYv+DVDwNW15XVAOcBLulfmf9NH1
- zsCCFXX25ryp2h+XNaBxVM2SvDe/qH2lE0Q9aJiQBSIpTqQS5XmfeoaP2
- w==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ bh=8mjt8uDT2YTuKI2B5BvmsRyZnUjtDOJ0AkwsU1g4zI8=;
+ b=iIw9RUsD5nOBAvNlWwU0aZrFK1fF2+xAopyBPJLoMkgjt4qNPWdnymY2
+ CcWV8x9z/MB1ayxyMuNkLwJmA8NJG6H/9jhvpem6u+DQQEzJaYwo0rBg4
+ CUeKuVzf+I8o3yEIaahV59uSmNtHYUoksv0ffrSvsLygnKWjC0cg/F9LA
+ 6WRlNuP2i6hLDxYxMeicYmaRwNKKUtOjFOXbjGf3m07nkavoXVzvbjBPp
+ 8tnCeigSQ+TIunKfX4dE7dPXFni26ciPIxWL2ShJjV76zlDfRWZ/WF+Ov
+ MmViQOZXYt7+6e9FzwyvGEsphRWAtf8Ht42h5LhC1MLwqK6ZN5TipCbeK
+ A==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=OS8gWTJo
-Subject: [Intel-wired-lan] [PATCH RFC net-next 17/34] libie: support native
- XDP and register memory model
+ header.a=rsa-sha256 header.s=Intel header.b=iIw9RUsD
+Subject: [Intel-wired-lan] [PATCH RFC net-next 18/34] libie: add a couple of
+ XDP helpers
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -107,115 +107,961 @@ Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Expand libie's Page Pool functionality by adding native XDP support.
-This means picking the appropriate headroom and DMA direction.
-Also, register all the created &page_pools as XDP memory models.
-A driver then can call xdp_rxq_info_attach_page_pool() when registering
-its RxQ info.
+"Couple" is a bit humbly... Add the following functionality to libie:
+
+* XDP shared queues managing
+* XDP_TX bulk sending infra
+* .ndo_xdp_xmit() infra
+* adding buffers to &xdp_buff
+* running XDP prog and managing its verdict
+* completing XDP Tx buffers
+* ^ repeat everything for XSk
 
 Signed-off-by: Alexander Lobakin <aleksander.lobakin@intel.com>
 ---
- drivers/net/ethernet/intel/libie/rx.c | 32 ++++++++++++++++++++++-----
- include/linux/net/intel/libie/rx.h    |  6 ++++-
- 2 files changed, 32 insertions(+), 6 deletions(-)
+ drivers/net/ethernet/intel/libie/Makefile |   3 +
+ drivers/net/ethernet/intel/libie/tx.c     |  16 +
+ drivers/net/ethernet/intel/libie/xdp.c    |  50 ++
+ drivers/net/ethernet/intel/libie/xsk.c    |  49 ++
+ include/linux/net/intel/libie/tx.h        |   6 +
+ include/linux/net/intel/libie/xdp.h       | 586 ++++++++++++++++++++++
+ include/linux/net/intel/libie/xsk.h       | 172 +++++++
+ 7 files changed, 882 insertions(+)
+ create mode 100644 drivers/net/ethernet/intel/libie/tx.c
+ create mode 100644 drivers/net/ethernet/intel/libie/xdp.c
+ create mode 100644 drivers/net/ethernet/intel/libie/xsk.c
+ create mode 100644 include/linux/net/intel/libie/xdp.h
+ create mode 100644 include/linux/net/intel/libie/xsk.h
 
-diff --git a/drivers/net/ethernet/intel/libie/rx.c b/drivers/net/ethernet/intel/libie/rx.c
-index 3d3b19d2b40d..b4c404958f25 100644
---- a/drivers/net/ethernet/intel/libie/rx.c
-+++ b/drivers/net/ethernet/intel/libie/rx.c
-@@ -52,7 +52,7 @@ static u32 libie_rx_hw_len_truesize(const struct page_pool_params *pp,
- static void libie_rx_page_pool_params(struct libie_buf_queue *bq,
- 				      struct page_pool_params *pp)
- {
--	pp->offset = LIBIE_SKB_HEADROOM;
-+	pp->offset = bq->xdp ? LIBIE_XDP_HEADROOM : LIBIE_SKB_HEADROOM;
- 	/* HW-writeable / syncable length per one page */
- 	pp->max_len = LIBIE_RX_BUF_LEN(pp->offset);
+diff --git a/drivers/net/ethernet/intel/libie/Makefile b/drivers/net/ethernet/intel/libie/Makefile
+index 76f32253481b..7ca353e4ecdf 100644
+--- a/drivers/net/ethernet/intel/libie/Makefile
++++ b/drivers/net/ethernet/intel/libie/Makefile
+@@ -5,3 +5,6 @@ obj-$(CONFIG_LIBIE)	+= libie.o
  
-@@ -132,17 +132,34 @@ int libie_rx_page_pool_create(struct libie_buf_queue *bq,
- 		.dev		= napi->dev->dev.parent,
- 		.netdev		= napi->dev,
- 		.napi		= napi,
--		.dma_dir	= DMA_FROM_DEVICE,
- 	};
-+	struct xdp_mem_info mem;
-+	struct page_pool *pool;
+ libie-objs		+= rx.o
+ libie-objs		+= stats.o
++libie-objs		+= tx.o
++libie-objs		+= xdp.o
++libie-objs		+= xsk.o
+diff --git a/drivers/net/ethernet/intel/libie/tx.c b/drivers/net/ethernet/intel/libie/tx.c
+new file mode 100644
+index 000000000000..9e3b6e3c3c25
+--- /dev/null
++++ b/drivers/net/ethernet/intel/libie/tx.c
+@@ -0,0 +1,16 @@
++// SPDX-License-Identifier: GPL-2.0-only
++/* Copyright(c) 2023 Intel Corporation. */
++
++#include <linux/net/intel/libie/xdp.h>
++
++void libie_tx_complete_any(struct libie_tx_buffer *buf, struct device *dev,
++			   struct xdp_frame_bulk *bq, u32 *xdp_tx_active,
++			   struct libie_sq_onstack_stats *ss)
++{
++	if (buf->type > LIBIE_TX_BUF_SKB)
++		libie_xdp_complete_tx_buf(buf, dev, false, bq, xdp_tx_active,
++					  ss);
++	else
++		libie_tx_complete_buf(buf, dev, false, ss);
++}
++EXPORT_SYMBOL_NS_GPL(libie_tx_complete_any, LIBIE);
+diff --git a/drivers/net/ethernet/intel/libie/xdp.c b/drivers/net/ethernet/intel/libie/xdp.c
+new file mode 100644
+index 000000000000..f47a17ca6e66
+--- /dev/null
++++ b/drivers/net/ethernet/intel/libie/xdp.c
+@@ -0,0 +1,50 @@
++// SPDX-License-Identifier: GPL-2.0-only
++/* Copyright(c) 2023 Intel Corporation. */
++
++#include <linux/net/intel/libie/xdp.h>
++
++/* XDP SQ sharing */
++
++DEFINE_STATIC_KEY_FALSE(libie_xdp_sq_share);
++EXPORT_SYMBOL_NS_GPL(libie_xdp_sq_share, LIBIE);
++
++void __libie_xdp_sq_get(struct libie_xdp_sq_lock *lock,
++			const struct net_device *dev)
++{
++	bool warn;
++
++	spin_lock_init(&lock->lock);
++	lock->share = true;
++
++	warn = !static_key_enabled(&libie_xdp_sq_share);
++	static_branch_inc_cpuslocked(&libie_xdp_sq_share);
++
++	if (warn)
++		netdev_warn(dev, "XDP SQ sharing enabled, possible XDP_TX/XDP_REDIRECT slowdown\n");
++
++}
++EXPORT_SYMBOL_NS_GPL(__libie_xdp_sq_get, LIBIE);
++
++void __libie_xdp_sq_put(struct libie_xdp_sq_lock *lock,
++			const struct net_device *dev)
++{
++	static_branch_dec_cpuslocked(&libie_xdp_sq_share);
++
++	if (!static_key_enabled(&libie_xdp_sq_share))
++		netdev_notice(dev, "XDP SQ sharing disabled\n");
++
++	lock->share = false;
++}
++EXPORT_SYMBOL_NS_GPL(__libie_xdp_sq_put, LIBIE);
++
++/* ``XDP_TX`` bulking */
++
++void libie_xdp_tx_return_bulk(const struct libie_xdp_tx_frame *bq, u32 count)
++{
++	for (u32 i = 0; i < count; i++) {
++		struct page *page = virt_to_page(bq[i].data);
++
++		page_pool_recycle_direct(page->pp, page);
++	}
++}
++EXPORT_SYMBOL_NS_GPL(libie_xdp_tx_return_bulk, LIBIE);
+diff --git a/drivers/net/ethernet/intel/libie/xsk.c b/drivers/net/ethernet/intel/libie/xsk.c
+new file mode 100644
+index 000000000000..ffbdb85586f1
+--- /dev/null
++++ b/drivers/net/ethernet/intel/libie/xsk.c
+@@ -0,0 +1,49 @@
++// SPDX-License-Identifier: GPL-2.0-only
++/* Copyright(c) 2023 Intel Corporation. */
++
++#include <linux/net/intel/libie/xsk.h>
++
++#define LIBIE_XSK_DMA_ATTR	(DMA_ATTR_WEAK_ORDERING |	\
++				 DMA_ATTR_SKIP_CPU_SYNC)
++
++int libie_xsk_enable_pool(struct net_device *dev, u32 qid, unsigned long *map)
++{
++	struct xsk_buff_pool *pool;
 +	int ret;
 +
-+	pp.dma_dir = bq->xdp ? DMA_BIDIRECTIONAL : DMA_FROM_DEVICE;
- 
- 	if (!bq->hsplit)
- 		libie_rx_page_pool_params(bq, &pp);
- 	else if (!libie_rx_page_pool_params_zc(bq, &pp))
- 		return -EINVAL;
- 
--	bq->pp = page_pool_create(&pp);
-+	pool = page_pool_create(&pp);
-+	if (IS_ERR(pool))
-+		return PTR_ERR(pool);
++	if (qid >= min(dev->real_num_rx_queues, dev->real_num_tx_queues))
++		return -EINVAL;
 +
-+	ret = xdp_reg_mem_model(&mem, MEM_TYPE_PAGE_POOL, pool);
++	pool = xsk_get_pool_from_qid(dev, qid);
++	if (!pool)
++		return -EINVAL;
++
++	ret = xsk_pool_dma_map(pool, dev->dev.parent, LIBIE_XSK_DMA_ATTR);
 +	if (ret)
-+		goto err_mem;
++		return ret;
 +
-+	bq->pp = pool;
++	set_bit(qid, map);
 +
 +	return 0;
++}
++EXPORT_SYMBOL_NS_GPL(libie_xsk_enable_pool, LIBIE);
++
++int libie_xsk_disable_pool(struct net_device *dev, u32 qid,
++			   unsigned long *map)
++{
++	struct xsk_buff_pool *pool;
++
++	if (qid >= min(dev->real_num_rx_queues, dev->real_num_tx_queues))
++		return -EINVAL;
++
++	pool = xsk_get_pool_from_qid(dev, qid);
++	if (!pool)
++		return -EINVAL;
++
++	xsk_pool_dma_unmap(pool, LIBIE_XSK_DMA_ATTR);
++
++	clear_bit(qid, map);
++
++	return 0;
++}
++EXPORT_SYMBOL_NS_GPL(libie_xsk_disable_pool, LIBIE);
+diff --git a/include/linux/net/intel/libie/tx.h b/include/linux/net/intel/libie/tx.h
+index 07a19abb72fd..4d4d85af6f7e 100644
+--- a/include/linux/net/intel/libie/tx.h
++++ b/include/linux/net/intel/libie/tx.h
+@@ -85,4 +85,10 @@ static inline void libie_tx_complete_buf(struct libie_tx_buffer *buf,
+ 	buf->type = LIBIE_TX_BUF_EMPTY;
+ }
  
--	return PTR_ERR_OR_ZERO(bq->pp);
-+err_mem:
-+	page_pool_destroy(pool);
++struct xdp_frame_bulk;
++
++void libie_tx_complete_any(struct libie_tx_buffer *buf, struct device *dev,
++			   struct xdp_frame_bulk *bq, u32 *xdp_tx_active,
++			   struct libie_sq_onstack_stats *ss);
++
+ #endif /* __LIBIE_TX_H */
+diff --git a/include/linux/net/intel/libie/xdp.h b/include/linux/net/intel/libie/xdp.h
+new file mode 100644
+index 000000000000..087fc075078f
+--- /dev/null
++++ b/include/linux/net/intel/libie/xdp.h
+@@ -0,0 +1,586 @@
++/* SPDX-License-Identifier: GPL-2.0-only */
++/* Copyright(c) 2023 Intel Corporation. */
++
++#ifndef __LIBIE_XDP_H
++#define __LIBIE_XDP_H
++
++#include <linux/bpf_trace.h>
++#include <linux/net/intel/libie/rx.h>
++#include <linux/net/intel/libie/tx.h>
++
++#include <net/xdp_sock_drv.h>
++
++/* Defined as bits to be able to use them as a mask */
++enum {
++	LIBIE_XDP_PASS			= 0U,
++	LIBIE_XDP_DROP			= BIT(0),
++	LIBIE_XDP_ABORTED		= BIT(1),
++	LIBIE_XDP_TX			= BIT(2),
++	LIBIE_XDP_REDIRECT		= BIT(3),
++};
++
++/* XDP SQ sharing */
++
++struct libie_xdp_sq_lock {
++	spinlock_t			lock;
++	bool				share;
++};
++
++DECLARE_STATIC_KEY_FALSE(libie_xdp_sq_share);
++
++static inline u32 libie_xdp_get_sq_num(u32 rxq, u32 txq, u32 max)
++{
++	return min(max(nr_cpu_ids, rxq), max - txq);
++}
++
++static inline bool libie_xdp_sq_shared(u32 qid)
++{
++	return qid < nr_cpu_ids;
++}
++
++static inline u32 libie_xdp_sq_id(u32 num)
++{
++	u32 ret = smp_processor_id();
++
++	if (static_branch_unlikely(&libie_xdp_sq_share) &&
++	    libie_xdp_sq_shared(num))
++		ret %= num;
 +
 +	return ret;
- }
- EXPORT_SYMBOL_NS_GPL(libie_rx_page_pool_create, LIBIE);
- 
-@@ -152,7 +169,12 @@ EXPORT_SYMBOL_NS_GPL(libie_rx_page_pool_create, LIBIE);
-  */
- void libie_rx_page_pool_destroy(struct libie_buf_queue *bq)
- {
--	page_pool_destroy(bq->pp);
-+	struct xdp_mem_info mem = {
-+		.type	= MEM_TYPE_PAGE_POOL,
-+		.id	= bq->pp->xdp_mem_id,
++}
++
++void __libie_xdp_sq_get(struct libie_xdp_sq_lock *lock,
++			const struct net_device *dev);
++void __libie_xdp_sq_put(struct libie_xdp_sq_lock *lock,
++			const struct net_device *dev);
++
++static inline void libie_xdp_sq_get(struct libie_xdp_sq_lock *lock,
++				    const struct net_device *dev,
++				    bool share)
++{
++	if (unlikely(share))
++		__libie_xdp_sq_get(lock, dev);
++}
++
++static inline void libie_xdp_sq_put(struct libie_xdp_sq_lock *lock,
++				    const struct net_device *dev)
++{
++	if (static_branch_unlikely(&libie_xdp_sq_share) && lock->share)
++		__libie_xdp_sq_put(lock, dev);
++}
++
++static inline void __acquires(&lock->lock)
++libie_xdp_sq_lock(struct libie_xdp_sq_lock *lock)
++{
++	if (static_branch_unlikely(&libie_xdp_sq_share) && lock->share)
++		spin_lock(&lock->lock);
++}
++
++static inline void __releases(&lock->lock)
++libie_xdp_sq_unlock(struct libie_xdp_sq_lock *lock)
++{
++	if (static_branch_unlikely(&libie_xdp_sq_share) && lock->share)
++		spin_unlock(&lock->lock);
++}
++
++/* ``XDP_TX`` bulking */
++
++#define LIBIE_XDP_TX_BULK		XDP_BULK_QUEUE_SIZE
++#define LIBIE_XDP_TX_BATCH		8
++
++#ifdef __clang__
++#define libie_xdp_tx_for		_Pragma("clang loop unroll_count(8)") for
++#elif __GNUC__ >= 8
++#define libie_xdp_tx_for		_Pragma("GCC unroll (8)") for
++#else
++#define libie_xdp_tx_for		for
++#endif
++
++struct libie_xdp_tx_frame {
++	union {
++		struct {
++			void				*data;
++			u16				len;
++
++			enum xdp_buff_flags		flags:16;
++			u32				soff;
++		};
++		struct {
++			struct xdp_frame		*xdpf;
++			dma_addr_t			dma;
++		};
++
++		struct {
++			struct xdp_buff			*xsk;
++			/* u32				len */
++		};
++		struct xdp_desc				desc;
++	};
++};
++static_assert(sizeof(struct libie_xdp_tx_frame) == sizeof(struct xdp_desc));
++
++struct libie_xdp_tx_bulk {
++	const struct bpf_prog		*prog;
++	struct net_device		*dev;
++	void				*xdpq;
++
++	u32				act_mask;
++	u32				count;
++	struct libie_xdp_tx_frame	bulk[LIBIE_XDP_TX_BULK];
++};
++
++
++struct libie_xdp_tx_queue {
++	union {
++		struct device			*dev;
++		struct xsk_buff_pool		*pool;
++	};
++	struct libie_tx_buffer		*tx_buf;
++	void				*desc_ring;
++
++	struct libie_xdp_sq_lock	*xdp_lock;
++	u16				*next_to_use;
++	u32				desc_count;
++
++	u32				*xdp_tx_active;
++};
++
++struct libie_xdp_tx_desc {
++	dma_addr_t			addr;
++	u32				len;
++};
++
++static inline void __libie_xdp_tx_init_bulk(struct libie_xdp_tx_bulk *bq,
++					    const struct bpf_prog *prog,
++					    struct net_device *dev, void *xdpq)
++{
++	bq->prog = prog;
++	bq->dev = dev;
++	bq->xdpq = xdpq;
++
++	bq->act_mask = 0;
++	bq->count = 0;
++}
++
++#define _libie_xdp_tx_init_bulk(bq, prog, dev, xdpqs, num, uniq) ({	 \
++	const struct bpf_prog *uniq = rcu_dereference(prog);		 \
++									 \
++	if (uniq)							 \
++		__libie_xdp_tx_init_bulk(bq, uniq, dev,			 \
++					 (xdpqs)[libie_xdp_sq_id(num)]); \
++})
++
++#define libie_xdp_tx_init_bulk(bq, prog, dev, xdpqs, num)		 \
++	_libie_xdp_tx_init_bulk(bq, prog, dev, xdpqs, num,		 \
++				__UNIQUE_ID(prog_))
++
++static inline void libie_xdp_tx_queue_bulk(struct libie_xdp_tx_bulk *bq,
++					   const struct xdp_buff *xdp)
++{
++	bq->bulk[bq->count++] = (typeof(*bq->bulk)){
++		.data	= xdp->data,
++		.len	= xdp->data_end - xdp->data,
++		.soff	= xdp_data_hard_end(xdp) - xdp->data,
++		.flags	= xdp->flags,
++	};
++}
++
++static inline struct libie_xdp_tx_desc
++libie_xdp_tx_fill_buf(const struct libie_xdp_tx_frame *frm,
++		      const struct libie_xdp_tx_queue *sq)
++{
++	struct libie_xdp_tx_desc desc = {
++		.len	= frm->len,
++	};
++	struct libie_tx_buffer *tx_buf;
++
++	desc.addr = page_pool_dma_sync_va_for_device(frm->data, desc.len);
++
++	tx_buf = &sq->tx_buf[*sq->next_to_use];
++	tx_buf->type = LIBIE_TX_BUF_XDP_TX;
++	tx_buf->gso_segs = 1;
++	tx_buf->bytecount = desc.len;
++	tx_buf->sinfo = frm->data + frm->soff;
++
++	return desc;
++}
++
++static __always_inline u32
++libie_xdp_tx_xmit_bulk(const struct libie_xdp_tx_bulk *bq,
++		       u32 (*prep)(void *xdpq, struct libie_xdp_tx_queue *sq),
++		       struct libie_xdp_tx_desc
++		       (*fill)(const struct libie_xdp_tx_frame *frm,
++			       const struct libie_xdp_tx_queue *sq),
++		       void (*xmit)(struct libie_xdp_tx_desc desc,
++				    const struct libie_xdp_tx_queue *sq))
++{
++	u32 this, batched, leftover, off = 0;
++	struct libie_xdp_tx_queue sq;
++	u32 free, count, ntu, i = 0;
++
++	free = prep(bq->xdpq, &sq);
++	count = min3(bq->count, free, LIBIE_XDP_TX_BULK);
++	ntu = *sq.next_to_use;
++
++again:
++	this = sq.desc_count - ntu;
++	if (likely(this > count))
++		this = count;
++
++	batched = ALIGN_DOWN(this, LIBIE_XDP_TX_BATCH);
++	leftover = this - batched;
++
++	for ( ; i < off + batched; i += LIBIE_XDP_TX_BATCH) {
++		libie_xdp_tx_for (u32 j = 0; j < LIBIE_XDP_TX_BATCH; j++) {
++			struct libie_xdp_tx_desc desc;
++
++			desc = fill(&bq->bulk[i + j], &sq);
++			xmit(desc, &sq);
++
++			ntu++;
++		}
++	}
++
++	for ( ; i < off + batched + leftover; i++) {
++		struct libie_xdp_tx_desc desc;
++
++		desc = fill(&bq->bulk[i], &sq);
++		xmit(desc, &sq);
++
++		ntu++;
++	}
++
++	if (likely(ntu < sq.desc_count))
++		goto out;
++
++	ntu = 0;
++
++	count -= this;
++	if (count) {
++		off = i;
++		goto again;
++	}
++
++out:
++	*sq.next_to_use = ntu;
++	if (sq.xdp_tx_active)
++		*sq.xdp_tx_active += i;
++
++	libie_xdp_sq_unlock(sq.xdp_lock);
++
++	return i;
++}
++
++void libie_xdp_tx_return_bulk(const struct libie_xdp_tx_frame *bq, u32 count);
++
++static __always_inline bool
++__libie_xdp_tx_flush_bulk(struct libie_xdp_tx_bulk *bq,
++			  u32 (*prep)(void *xdpq,
++			  	      struct libie_xdp_tx_queue *sq),
++			  struct libie_xdp_tx_desc
++			  (*fill)(const struct libie_xdp_tx_frame *frm,
++				  const struct libie_xdp_tx_queue *sq),
++			  void (*xmit)(struct libie_xdp_tx_desc desc,
++				       const struct libie_xdp_tx_queue *sq))
++{
++	u32 sent, drops;
++	int err = 0;
++
++	sent = libie_xdp_tx_xmit_bulk(bq, prep, fill, xmit);
++	drops = bq->count - sent;
++	bq->count = 0;
++
++	if (unlikely(drops)) {
++		trace_xdp_exception(bq->dev, bq->prog, XDP_TX);
++		err = -ENXIO;
++
++		libie_xdp_tx_return_bulk(&bq->bulk[sent], drops);
++	}
++
++	trace_xdp_bulk_tx(bq->dev, sent, drops, err);
++
++	return likely(sent);
++}
++
++#define libie_xdp_tx_flush_bulk(bq, prep, xmit)				 \
++	__libie_xdp_tx_flush_bulk(bq, prep, libie_xdp_tx_fill_buf, xmit)
++
++/* .ndo_xdp_xmit() implementation */
++
++static inline bool libie_xdp_xmit_queue_bulk(struct libie_xdp_tx_bulk *bq,
++					     struct xdp_frame *xdpf)
++{
++	struct device *dev = bq->dev->dev.parent;
++	dma_addr_t dma;
++
++	dma = dma_map_single(dev, xdpf->data, xdpf->len, DMA_TO_DEVICE);
++	if (dma_mapping_error(dev, dma))
++		return false;
++
++	bq->bulk[bq->count++] = (typeof(*bq->bulk)){
++		.xdpf		= xdpf,
++		.dma		= dma,
 +	};
 +
-+	xdp_unreg_mem_model(&mem);
- 	bq->pp = NULL;
- }
- EXPORT_SYMBOL_NS_GPL(libie_rx_page_pool_destroy, LIBIE);
-diff --git a/include/linux/net/intel/libie/rx.h b/include/linux/net/intel/libie/rx.h
-index 87ad8f9e89c7..8eda4ac8028c 100644
---- a/include/linux/net/intel/libie/rx.h
-+++ b/include/linux/net/intel/libie/rx.h
-@@ -15,8 +15,10 @@
- 
- /* Space reserved in front of each frame */
- #define LIBIE_SKB_HEADROOM	(NET_SKB_PAD + NET_IP_ALIGN)
-+#define LIBIE_XDP_HEADROOM	(ALIGN(XDP_PACKET_HEADROOM, NET_SKB_PAD) + \
-+				 NET_IP_ALIGN)
- /* Maximum headroom to calculate max MTU below */
--#define LIBIE_MAX_HEADROOM	LIBIE_SKB_HEADROOM
-+#define LIBIE_MAX_HEADROOM	LIBIE_XDP_HEADROOM
- /* Link layer / L2 overhead: Ethernet, 2 VLAN tags (C + S), FCS */
- #define LIBIE_RX_LL_LEN		(ETH_HLEN + 2 * VLAN_HLEN + ETH_FCS_LEN)
- /* Maximum supported L2-L4 header length */
-@@ -87,6 +89,7 @@ enum libie_rx_buf_type {
-  * @rx_buf_len: HW-writeable length per each buffer
-  * @type: type of the buffers this queue has
-  * @hsplit: flag whether header split is enabled
-+ * @xdp: flag indicating whether XDP is enabled
-  */
- struct libie_buf_queue {
- 	struct page_pool	*pp;
-@@ -100,6 +103,7 @@ struct libie_buf_queue {
- 	enum libie_rx_buf_type	type:2;
- 
- 	bool			hsplit:1;
-+	bool			xdp:1;
- };
- 
- int libie_rx_page_pool_create(struct libie_buf_queue *bq,
++	return true;
++}
++
++static inline struct libie_xdp_tx_desc
++libie_xdp_xmit_fill_buf(const struct libie_xdp_tx_frame *frm,
++			const struct libie_xdp_tx_queue *sq)
++{
++	struct xdp_frame *xdpf = frm->xdpf;
++	struct libie_xdp_tx_desc desc = {
++		.addr	= frm->dma,
++		.len	= xdpf->len,
++	};
++	struct libie_tx_buffer *tx_buf;
++
++	tx_buf = &sq->tx_buf[*sq->next_to_use];
++	tx_buf->type = LIBIE_TX_BUF_XDP_XMIT;
++	tx_buf->gso_segs = 1;
++	tx_buf->bytecount = desc.len;
++	tx_buf->xdpf = xdpf;
++
++	dma_unmap_addr_set(tx_buf, dma, frm->dma);
++	dma_unmap_len_set(tx_buf, len, desc.len);
++
++	return desc;
++}
++
++static __always_inline int
++__libie_xdp_xmit_do_bulk(struct libie_xdp_tx_bulk *bq,
++			 struct xdp_frame **frames, u32 n, u32 flags,
++			 u32 (*prep)(void *xdpq,
++				     struct libie_xdp_tx_queue *sq),
++			 void (*xmit)(struct libie_xdp_tx_desc desc,
++				      const struct libie_xdp_tx_queue *sq),
++			 void (*finalize)(void *xdpq, bool tail))
++{
++	int err = -ENXIO;
++	u32 nxmit = 0;
++
++	if (unlikely(flags & ~XDP_XMIT_FLAGS_MASK))
++		return -EINVAL;
++
++	for (u32 i = 0; i < n; i++) {
++		if (!libie_xdp_xmit_queue_bulk(bq, frames[i]))
++			break;
++	}
++
++	if (unlikely(!bq->count))
++		goto out;
++
++	nxmit = libie_xdp_tx_xmit_bulk(bq, prep, libie_xdp_xmit_fill_buf,
++				       xmit);
++	if (unlikely(!nxmit))
++		goto out;
++
++	finalize(bq->xdpq, flags & XDP_XMIT_FLUSH);
++
++	if (likely(nxmit == n))
++		err = 0;
++
++out:
++	trace_xdp_bulk_tx(bq->dev, nxmit, n - nxmit, err);
++
++	return nxmit;
++}
++
++#define libie_xdp_xmit_init_bulk(bq, dev, xdpqs, num)			      \
++	__libie_xdp_tx_init_bulk(bq, NULL, dev,				      \
++				 (xdpqs)[libie_xdp_sq_id(num)])
++
++#define _libie_xdp_xmit_do_bulk(dev, n, fr, fl, xqs, nqs, pr, xm, fin, un) ({ \
++	struct libie_xdp_tx_bulk un;					      \
++									      \
++	libie_xdp_xmit_init_bulk(&un, dev, xqs, nqs);			      \
++	__libie_xdp_xmit_do_bulk(&un, fr, n, fl, pr, xm, fin);		      \
++})
++#define libie_xdp_xmit_do_bulk(dev, n, fr, fl, xqs, nqs, pr, xm, fin)	      \
++	_libie_xdp_xmit_do_bulk(dev, n, fr, fl, xqs, nqs, pr, xm, fin,	      \
++				__UNIQUE_ID(bq_))
++
++/* Rx polling path */
++
++static inline void libie_xdp_init_buff(struct xdp_buff *dst,
++				       const struct xdp_buff *src,
++				       struct xdp_rxq_info *rxq)
++{
++	if (!src->data) {
++		dst->data = NULL;
++		dst->rxq = rxq;
++	} else {
++		*dst = *src;
++	}
++}
++
++#define libie_xdp_save_buff(dst, src)	libie_xdp_init_buff(dst, src, NULL)
++
++/**
++ * libie_xdp_process_buff - process an Rx buffer
++ * @xdp: XDP buffer to attach the buffer to
++ * @buf: Rx buffer to process
++ * @len: received data length from the descriptor
++ *
++ * Return: false if the descriptor must be skipped, true otherwise.
++ */
++static inline bool libie_xdp_process_buff(struct xdp_buff *xdp,
++					  const struct libie_rx_buffer *buf,
++					  u32 len)
++{
++	if (!libie_rx_sync_for_cpu(buf, len))
++		return false;
++
++	if (!xdp->data) {
++		xdp->flags = 0;
++		xdp->frame_sz = buf->truesize;
++
++		xdp_prepare_buff(xdp, page_address(buf->page) + buf->offset,
++				 buf->page->pp->p.offset, len, true);
++	} else if (!xdp_buff_add_frag(xdp, buf->page,
++				      buf->offset + buf->page->pp->p.offset,
++				      len, buf->truesize)) {
++		xdp_return_buff(xdp);
++		xdp->data = NULL;
++
++		return false;
++	}
++
++	return true;
++}
++
++/**
++ * __libie_xdp_run_prog - run XDP program on an XDP buffer
++ * @xdp: XDP buffer to run the prog on
++ * @bq: buffer bulk for ``XDP_TX`` queueing
++ *
++ * Return: LIBIE_XDP_{PASS,DROP,TX,REDIRECT} depending on the prog's verdict.
++ */
++static inline u32 __libie_xdp_run_prog(struct xdp_buff *xdp,
++				       struct libie_xdp_tx_bulk *bq)
++{
++	const struct bpf_prog *prog = bq->prog;
++	u32 act;
++
++	act = bpf_prog_run_xdp(prog, xdp);
++	switch (act) {
++	case XDP_ABORTED:
++err:
++		trace_xdp_exception(bq->dev, prog, act);
++		fallthrough;
++	case XDP_DROP:
++		xdp_return_buff(xdp);
++		xdp->data = NULL;
++
++		return LIBIE_XDP_DROP;
++	case XDP_PASS:
++		return LIBIE_XDP_PASS;
++	case XDP_TX:
++		libie_xdp_tx_queue_bulk(bq, xdp);
++		xdp->data = NULL;
++
++		return LIBIE_XDP_TX;
++	case XDP_REDIRECT:
++		if (unlikely(xdp_do_redirect(bq->dev, xdp, prog)))
++			goto err;
++
++		xdp->data = NULL;
++
++		return LIBIE_XDP_REDIRECT;
++	default:
++		bpf_warn_invalid_xdp_action(bq->dev, prog, act);
++		goto err;
++	}
++}
++
++static __always_inline u32
++__libie_xdp_run_flush(struct xdp_buff *xdp, struct libie_xdp_tx_bulk *bq,
++		      u32 (*run)(struct xdp_buff *xdp,
++				 struct libie_xdp_tx_bulk *bq),
++		      bool (*flush_bulk)(struct libie_xdp_tx_bulk *))
++{
++	u32 act;
++
++	act = run(xdp, bq);
++	if (act == LIBIE_XDP_TX &&
++	    unlikely(bq->count == LIBIE_XDP_TX_BULK && !flush_bulk(bq)))
++		act = LIBIE_XDP_DROP;
++
++	bq->act_mask |= act;
++
++	return act;
++}
++
++#define libie_xdp_run_prog(xdp, bq, fl)					\
++	(__libie_xdp_run_flush(xdp, bq, __libie_xdp_run_prog, fl) ==	\
++	 XDP_PASS)
++
++static __always_inline void
++libie_xdp_finalize_rx(struct libie_xdp_tx_bulk *bq,
++		      bool (*flush_bulk)(struct libie_xdp_tx_bulk *),
++		      void (*finalize)(void *xdpq, bool tail))
++{
++	if (bq->act_mask & LIBIE_XDP_TX) {
++		if (bq->count)
++			flush_bulk(bq);
++		finalize(bq->xdpq, true);
++	}
++	if (bq->act_mask & LIBIE_XDP_REDIRECT)
++		xdp_do_flush();
++}
++
++/* Tx buffer completion */
++
++static inline void libie_xdp_return_sinfo(const struct libie_tx_buffer *buf,
++					  bool napi)
++{
++	const struct skb_shared_info *sinfo = buf->sinfo;
++	struct page *page;
++
++	if (likely(buf->gso_segs == 1))
++		goto return_head;
++
++	for (u32 i = 0; i < sinfo->nr_frags; i++) {
++		page = skb_frag_page(&sinfo->frags[i]);
++		page_pool_put_full_page(page->pp, page, napi);
++	}
++
++return_head:
++	page = virt_to_page(sinfo);
++	page_pool_put_full_page(page->pp, page, napi);
++}
++
++static inline void libie_xdp_complete_tx_buf(struct libie_tx_buffer *buf,
++					     struct device *dev, bool napi,
++					     struct xdp_frame_bulk *bq,
++					     u32 *xdp_tx_active,
++					     struct libie_sq_onstack_stats *ss)
++{
++	switch (buf->type) {
++	case LIBIE_TX_BUF_EMPTY:
++		return;
++	case LIBIE_TX_BUF_XDP_TX:
++		libie_xdp_return_sinfo(buf, napi);
++		break;
++	case LIBIE_TX_BUF_XDP_XMIT:
++		dma_unmap_page(dev, dma_unmap_addr(buf, dma),
++			       dma_unmap_len(buf, len), DMA_TO_DEVICE);
++		xdp_return_frame_bulk(buf->xdpf, bq);
++		break;
++	case LIBIE_TX_BUF_XSK_TX:
++		xsk_buff_free(buf->xdp);
++		break;
++	default:
++		break;
++	}
++
++	(*xdp_tx_active)--;
++
++	ss->packets += buf->gso_segs;
++	ss->bytes += buf->bytecount;
++
++	buf->type = LIBIE_TX_BUF_EMPTY;
++}
++
++#endif /* __LIBIE_XDP_H */
+diff --git a/include/linux/net/intel/libie/xsk.h b/include/linux/net/intel/libie/xsk.h
+new file mode 100644
+index 000000000000..d21fdb69a5e0
+--- /dev/null
++++ b/include/linux/net/intel/libie/xsk.h
+@@ -0,0 +1,172 @@
++/* SPDX-License-Identifier: GPL-2.0-only */
++/* Copyright(c) 2023 Intel Corporation. */
++
++#ifndef __LIBIE_XSK_H
++#define __LIBIE_XSK_H
++
++#include <linux/net/intel/libie/xdp.h>
++
++/* ``XDP_TX`` bulking */
++
++#define libie_xsk_tx_init_bulk(bq, prog, dev, xdpqs, num)		\
++	__libie_xdp_tx_init_bulk(bq, rcu_dereference(prog), dev,	\
++				 (xdpqs)[libie_xdp_sq_id(num)])
++
++static inline void libie_xsk_tx_queue_bulk(struct libie_xdp_tx_bulk *bq,
++					   struct xdp_buff *xdp)
++{
++	bq->bulk[bq->count++] = (typeof(*bq->bulk)){
++		.xsk	= xdp,
++		.len	= xdp->data_end - xdp->data,
++	};
++}
++
++static inline struct libie_xdp_tx_desc
++libie_xsk_tx_fill_buf(const struct libie_xdp_tx_frame *frm,
++		      const struct libie_xdp_tx_queue *sq)
++{
++	struct libie_xdp_tx_desc desc = {
++		.len	= frm->len,
++	};
++	struct xdp_buff *xdp = frm->xsk;
++	struct libie_tx_buffer *tx_buf;
++
++	desc.addr = xsk_buff_xdp_get_dma(xdp);
++	xsk_buff_raw_dma_sync_for_device(sq->pool, desc.addr, desc.len);
++
++	tx_buf = &sq->tx_buf[*sq->next_to_use];
++	tx_buf->type = LIBIE_TX_BUF_XSK_TX;
++	tx_buf->gso_segs = 1;
++	tx_buf->bytecount = desc.len;
++	tx_buf->xdp = xdp;
++
++	return desc;
++}
++
++#define libie_xsk_tx_flush_bulk(bq, prep, xmit)				 \
++	__libie_xdp_tx_flush_bulk(bq, prep, libie_xsk_tx_fill_buf, xmit)
++
++/* XSk xmit implementation */
++
++#define libie_xsk_xmit_init_bulk(bq, xdpq)				 \
++	__libie_xdp_tx_init_bulk(bq, NULL, NULL, xdpq)
++
++static inline struct libie_xdp_tx_desc
++libie_xsk_xmit_fill_buf(const struct libie_xdp_tx_frame *frm,
++			const struct libie_xdp_tx_queue *sq)
++{
++	struct libie_xdp_tx_desc desc = {
++		.len	= frm->desc.len,
++	};
++
++	desc.addr = xsk_buff_raw_get_dma(sq->pool, frm->desc.addr);
++	xsk_buff_raw_dma_sync_for_device(sq->pool, desc.addr, desc.len);
++
++	return desc;
++}
++
++static __always_inline bool
++libie_xsk_xmit_do_bulk(void *xdpq, struct xsk_buff_pool *pool, u32 budget,
++		       u32 (*prep)(void *xdpq, struct libie_xdp_tx_queue *sq),
++		       void (*xmit)(struct libie_xdp_tx_desc desc,
++				    const struct libie_xdp_tx_queue *sq),
++		       void (*finalize)(void *xdpq, bool tail))
++{
++	struct libie_xdp_tx_bulk bq;
++	u32 n, batched;
++
++	n = xsk_tx_peek_release_desc_batch(pool, budget);
++	if (unlikely(!n))
++		return true;
++
++	batched = ALIGN_DOWN(n, LIBIE_XDP_TX_BULK);
++
++	libie_xsk_xmit_init_bulk(&bq, xdpq);
++	bq.count = LIBIE_XDP_TX_BULK;
++
++	for (u32 i = 0; i < batched; i += LIBIE_XDP_TX_BULK) {
++		memcpy(bq.bulk, &pool->tx_descs[i], sizeof(bq.bulk));
++		libie_xdp_tx_xmit_bulk(&bq, prep, libie_xsk_xmit_fill_buf,
++				       xmit);
++	}
++
++	bq.count = n - batched;
++
++	memcpy(bq.bulk, &pool->tx_descs[batched], bq.count * sizeof(*bq.bulk));
++	libie_xdp_tx_xmit_bulk(&bq, prep, libie_xsk_xmit_fill_buf, xmit);
++
++	finalize(bq.xdpq, true);
++
++	if (xsk_uses_need_wakeup(pool))
++		xsk_set_tx_need_wakeup(pool);
++
++	return n < budget;
++}
++
++/* Rx polling path */
++
++/**
++ * __libie_xsk_run_prog - run XDP program on an XDP buffer
++ * @xdp: XDP buffer to run the prog on
++ * @bq: buffer bulk for ``XDP_TX`` queueing
++ *
++ * Return: LIBIE_XDP_{PASS,DROP,ABORTED,TX,REDIRECT} depending on the prog's
++ * verdict.
++ */
++static inline u32 __libie_xsk_run_prog(struct xdp_buff *xdp,
++				       struct libie_xdp_tx_bulk *bq)
++{
++	const struct bpf_prog *prog = bq->prog;
++	u32 act, drop = LIBIE_XDP_DROP;
++	struct xdp_buff_xsk *xsk;
++	int ret;
++
++	act = bpf_prog_run_xdp(prog, xdp);
++	if (unlikely(act != XDP_REDIRECT))
++		goto rest;
++
++	ret = xdp_do_redirect(bq->dev, xdp, prog);
++	if (unlikely(ret))
++		goto check_err;
++
++	return LIBIE_XDP_REDIRECT;
++
++rest:
++	switch (act) {
++	case XDP_ABORTED:
++err:
++		trace_xdp_exception(bq->dev, prog, act);
++		fallthrough;
++	case XDP_DROP:
++		xsk_buff_free(xdp);
++
++		return drop;
++	case XDP_PASS:
++		return LIBIE_XDP_PASS;
++	case XDP_TX:
++		libie_xsk_tx_queue_bulk(bq, xdp);
++
++		return LIBIE_XDP_TX;
++	default:
++		bpf_warn_invalid_xdp_action(bq->dev, prog, act);
++		goto err;
++	}
++
++check_err:
++	xsk = container_of(xdp, typeof(*xsk), xdp);
++	if (xsk_uses_need_wakeup(xsk->pool) && ret == -ENOBUFS)
++		drop = LIBIE_XDP_ABORTED;
++
++	goto err;
++}
++
++#define libie_xsk_run_prog(xdp, bq, fl)					\
++	__libie_xdp_run_flush(xdp, bq, __libie_xsk_run_prog, fl)
++
++/* Externals */
++
++int libie_xsk_enable_pool(struct net_device *dev, u32 qid, unsigned long *map);
++int libie_xsk_disable_pool(struct net_device *dev, u32 qid,
++			   unsigned long *map);
++
++#endif /* __LIBIE_XSK_H */
 -- 
 2.43.0
 
