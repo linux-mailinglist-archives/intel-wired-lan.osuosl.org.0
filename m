@@ -1,81 +1,84 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7D98C81D5C1
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 23 Dec 2023 19:22:29 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2C89D81DCD4
+	for <lists+intel-wired-lan@lfdr.de>; Sun, 24 Dec 2023 22:55:54 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 4E98740165;
-	Sat, 23 Dec 2023 18:22:27 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 4E98740165
+	by smtp1.osuosl.org (Postfix) with ESMTP id 168A381C81;
+	Sun, 24 Dec 2023 21:55:52 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 168A381C81
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1703355747;
-	bh=QzMdA+M38f4WvonmMQsG9eh+LRwBiHP34ymmV9K1TLw=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=Jf5U/2z0CBT6cNvK3ry42Euc+a60Ou76lSZXIyXgkIcyfAZg0ajLdS0fYhtSJ27Zu
-	 lnTcrlh6v8eepkHEwJy7oTRzot/NSNdwUtZLTcKEHKMt0JEJ8izGsvP43nHYoMxgtx
-	 nGUZpKzEdGuz8Amv1D/liNWqmpp0Uc8VfYd21pFlDPDXz/WZsvGcxbVkgPIqBBL/bD
-	 lDbg97sXx7npSDazF+Nc21IERx1bcxHhy46aEZJD7rb3OqYHKh9K8jAoMrdeWc3c0x
-	 l5550uFQ5JaFgjo2QvMDeuYrHj6sRP0XNQFrgm3Ul6665VZpg3htDakkUxBv6QBrpW
-	 Tt32PihBs/LHQ==
+	s=default; t=1703454952;
+	bh=x7cY51lx/eo6/hr/b+n4I0qANweZHtEylfQlwqCwkO8=;
+	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=ndWhatnReME/hhO4sLoucOXTy0vNWsyyfHfWTm8/U6evhZ++IUh4BmGWD2P9zGjAW
+	 IrQfq64uQJnbaGrQ0x4MuzQAeymh5Ibt4eMRL3TC3MD59WB7WY6ameTgrI6xfCP7br
+	 g367NMAKuAMlrSFqC5QPgSsiQmU5HxS3cLa81upJs6LrW71KEhZaJowrdSyvEi82OD
+	 BNc/1mW+xqm3yInwSDX0LuRLuodC+nwcla6mdXnuOPMuzErXYWcpmWLZYYCRz02eZl
+	 9U5dQ80ne7ftztjeV8EIhElsw2B6DWG9rOPpghI5nqmGYi0yAzYK36XozPpcK+p6tz
+	 K8UdLCcOsstyQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id LTd03a-mRh6T; Sat, 23 Dec 2023 18:22:26 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id NeQh8qXnh1rn; Sun, 24 Dec 2023 21:55:51 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id D00384011C;
-	Sat, 23 Dec 2023 18:22:25 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org D00384011C
+	by smtp1.osuosl.org (Postfix) with ESMTP id B531C81BB4;
+	Sun, 24 Dec 2023 21:55:50 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B531C81BB4
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id A62A61BF34C
- for <intel-wired-lan@lists.osuosl.org>; Sat, 23 Dec 2023 18:22:19 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 496E81BF86B
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 24 Dec 2023 21:55:46 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 89ABA41747
- for <intel-wired-lan@lists.osuosl.org>; Sat, 23 Dec 2023 18:22:19 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 89ABA41747
+ by smtp4.osuosl.org (Postfix) with ESMTP id 2025A415D3
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 24 Dec 2023 21:55:46 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2025A415D3
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id zPxxM-vpkbgl for <intel-wired-lan@lists.osuosl.org>;
- Sat, 23 Dec 2023 18:22:19 +0000 (UTC)
-Received: from dfw.source.kernel.org (dfw.source.kernel.org
- [IPv6:2604:1380:4641:c500::1])
- by smtp4.osuosl.org (Postfix) with ESMTPS id DB6A64160D
- for <intel-wired-lan@lists.osuosl.org>; Sat, 23 Dec 2023 18:22:18 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org DB6A64160D
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by dfw.source.kernel.org (Postfix) with ESMTP id 958DE60B05;
- Sat, 23 Dec 2023 18:22:17 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B849AC433C8;
- Sat, 23 Dec 2023 18:22:15 +0000 (UTC)
-Date: Sat, 23 Dec 2023 18:22:13 +0000
-From: Simon Horman <horms@kernel.org>
-To: Karol Kolacinski <karol.kolacinski@intel.com>
-Message-ID: <20231223182213.GK201037@kernel.org>
-References: <20231221100326.1030761-1-karol.kolacinski@intel.com>
- <20231221100326.1030761-3-karol.kolacinski@intel.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20231221100326.1030761-3-karol.kolacinski@intel.com>
+ with ESMTP id 7zTNKqYOugeP for <intel-wired-lan@lists.osuosl.org>;
+ Sun, 24 Dec 2023 21:55:45 +0000 (UTC)
+Received: from mgamail.intel.com (mgamail.intel.com [134.134.136.24])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 1FEC1415D0
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 24 Dec 2023 21:55:44 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1FEC1415D0
+X-IronPort-AV: E=McAfee;i="6600,9927,10934"; a="399034144"
+X-IronPort-AV: E=Sophos;i="6.04,302,1695711600"; d="scan'208";a="399034144"
+Received: from fmviesa002.fm.intel.com ([10.60.135.142])
+ by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 24 Dec 2023 13:55:43 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.04,302,1695711600"; d="scan'208";a="12056801"
+Received: from lkp-server02.sh.intel.com (HELO b07ab15da5fe) ([10.239.97.151])
+ by fmviesa002.fm.intel.com with ESMTP; 24 Dec 2023 13:55:41 -0800
+Received: from kbuild by b07ab15da5fe with local (Exim 4.96)
+ (envelope-from <lkp@intel.com>) id 1rHWRa-000Cg5-1k
+ for intel-wired-lan@lists.osuosl.org; Sun, 24 Dec 2023 21:55:38 +0000
+Date: Mon, 25 Dec 2023 05:54:43 +0800
+From: kernel test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <202312250540.0F7oIDCU-lkp@intel.com>
+User-Agent: s-nail v14.9.24
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1703355737;
- bh=7YgZjgPdz3vwKmJhQ2IYJpvkLXR6GFQjhfBpY5pwTQE=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=DS4lintziKXlrbH/1Z5KCbLcHJ14mdE7uWCg662+xMU30MgHMuS7obF/vD2C1a6yC
- 9/EctNgrYBk391CR3FsWE7bHRdKpsEaAisWGYHqtoqUAchCi1fFwqHWAVTL6YQ/d0n
- tAa+qbzn7zAjmnaAZVnBd1b9qNn2s6M1D7hnjKTLjVks5rSyYYUrSdFz7pUcGWnNGX
- U9cckBeLEGTlKBi8kQzBRmEsTs3Iu/Co1I+E1nzVU+y17NeVFKAqHzkcDcOn/9wj7X
- lVJMnvdSH9l0r8Q/zA0dBqN2VlSNmmru/Hz+Cs3P6SL5rjRt00bhWjd0t+QJybf0/i
- 2T1VKwWfT+WPQ==
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1703454945; x=1734990945;
+ h=date:from:to:subject:message-id;
+ bh=wnhpiXnrrSo3cDJqynVJMDyV8DFWYoL/egRhif33PEY=;
+ b=C5enx2CCkGXB10JzeOHPcl2P5iP/8PTUuZWXJ19EWx9SMgz1ODrBry0H
+ EiXlLbstmNGM9IZlYsbTdGtuOYlRjY7WwX3hcMzKYwuKcD1tvye9U3S66
+ wGG9zXHouMVH3WD9SAtftsXjptJpoUGI9jCEDXwJc9Fzx73Iw+2QoLOX1
+ MYIPmYRZOyMt026+98EAC2Gsml5ES8k6FRhgNdS+uV1nQuxn6P/leWywR
+ Zt4rxZVCfkH3rkJQOjlg0qTMxGZ4achyKNuOgF4iq3s3HzDDEWIpQXGaM
+ ZwE4TrOmT7htpTwnWg8/Un12oCUqi4qL7aEnYvLNof3vxMpP4HVVziq8Q
+ g==;
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=DS4lintz
-Subject: Re: [Intel-wired-lan] [PATCH v4 iwl-next 2/6] ice: pass reset type
- to PTP reset functions
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=C5enx2CC
+Subject: [Intel-wired-lan] [tnguy-next-queue:dev-queue] BUILD SUCCESS
+ d4d6acd5e77ed1edcbfd599d9d6f93f5865a6822
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,63 +91,114 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Jacob Keller <jacob.e.keller@intel.com>, netdev@vger.kernel.org,
- anthony.l.nguyen@intel.com, intel-wired-lan@lists.osuosl.org,
- jesse.brandeburg@intel.com
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Thu, Dec 21, 2023 at 11:03:22AM +0100, Karol Kolacinski wrote:
-> From: Jacob Keller <jacob.e.keller@intel.com>
-> 
-> The ice_ptp_prepare_for_reset() and ice_ptp_reset() functions currently
-> check the pf->flags ICE_FLAG_PFR_REQ bit to determine if the current
-> reset is a PF reset or not.
-> 
-> This is problematic, because it is possible that a PF reset and a higher
-> level reset (CORE reset, GLOBAL reset, EMP reset) are requested
-> simultaneously. In that case, the driver performs the highest level
-> reset requested. However, the ICE_FLAG_PFR_REQ flag will still be set.
-> 
-> The main driver reset functions take an enum ice_reset_req indicating
-> which reset is actually being performed. Pass this data into the PTP
-> functions and rely on this instead of relying on the driver flags.
-> 
-> This ensures that the PTP code performs the proper level of reset that
-> the driver is actually undergoing.
-> 
-> Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
-> Signed-off-by: Karol Kolacinski <karol.kolacinski@intel.com>
-> Reviewed-by: Jacob Keller <jacob.e.keller@intel.com>
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git dev-queue
+branch HEAD: d4d6acd5e77ed1edcbfd599d9d6f93f5865a6822  ixgbe: Refactor returning internal error codes
 
-...
+elapsed time: 2705m
 
-> diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.h b/drivers/net/ethernet/intel/ice/ice_ptp.h
-> index 2457380142e1..bbac053bd099 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_ptp.h
-> +++ b/drivers/net/ethernet/intel/ice/ice_ptp.h
-> @@ -314,8 +314,8 @@ enum ice_tx_tstamp_work ice_ptp_process_ts(struct ice_pf *pf);
->  
->  u64 ice_ptp_get_rx_hwts(const union ice_32b_rx_flex_desc *rx_desc,
->  			const struct ice_pkt_ctx *pkt_ctx);
-> -void ice_ptp_reset(struct ice_pf *pf);
+configs tested: 86
+configs skipped: 0
 
-Hi Karol and Jacob,
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
-I think that the declaration of ice_ptp_reset() is
-needed for the case where CONFIG_PTP_1588_CLOCK=y
-until patch 5/6 of this series.
+tested configs:
+alpha                             allnoconfig   gcc  
+alpha                               defconfig   gcc  
+arc                               allnoconfig   gcc  
+arc                                 defconfig   gcc  
+arc                   randconfig-001-20231224   gcc  
+arc                   randconfig-002-20231224   gcc  
+arm                               allnoconfig   gcc  
+arm                                 defconfig   clang
+arm                   randconfig-001-20231224   gcc  
+arm                   randconfig-002-20231224   gcc  
+arm                   randconfig-003-20231224   gcc  
+arm                   randconfig-004-20231224   gcc  
+arm64                             allnoconfig   gcc  
+arm64                               defconfig   gcc  
+arm64                 randconfig-001-20231224   gcc  
+arm64                 randconfig-002-20231224   gcc  
+arm64                 randconfig-003-20231224   gcc  
+arm64                 randconfig-004-20231224   gcc  
+csky                              allnoconfig   gcc  
+csky                                defconfig   gcc  
+csky                  randconfig-001-20231224   gcc  
+csky                  randconfig-002-20231224   gcc  
+hexagon                           allnoconfig   clang
+hexagon                             defconfig   clang
+hexagon               randconfig-001-20231224   clang
+hexagon               randconfig-002-20231224   clang
+i386                             allmodconfig   clang
+i386                              allnoconfig   clang
+i386                             allyesconfig   clang
+i386         buildonly-randconfig-001-20231224   gcc  
+i386         buildonly-randconfig-002-20231224   gcc  
+i386         buildonly-randconfig-003-20231224   gcc  
+i386         buildonly-randconfig-004-20231224   gcc  
+i386         buildonly-randconfig-005-20231224   gcc  
+i386         buildonly-randconfig-006-20231224   gcc  
+i386                                defconfig   gcc  
+i386                  randconfig-001-20231224   gcc  
+i386                  randconfig-002-20231224   gcc  
+i386                  randconfig-003-20231224   gcc  
+i386                  randconfig-004-20231224   gcc  
+i386                  randconfig-005-20231224   gcc  
+i386                  randconfig-006-20231224   gcc  
+i386                  randconfig-011-20231224   clang
+i386                  randconfig-012-20231224   clang
+i386                  randconfig-013-20231224   clang
+i386                  randconfig-014-20231224   clang
+i386                  randconfig-015-20231224   clang
+i386                  randconfig-016-20231224   clang
+loongarch                         allnoconfig   gcc  
+loongarch             randconfig-001-20231224   gcc  
+loongarch             randconfig-002-20231224   gcc  
+nios2                 randconfig-001-20231224   gcc  
+nios2                 randconfig-002-20231224   gcc  
+parisc                randconfig-001-20231224   gcc  
+parisc                randconfig-002-20231224   gcc  
+powerpc               randconfig-001-20231224   gcc  
+powerpc               randconfig-002-20231224   gcc  
+powerpc               randconfig-003-20231224   gcc  
+powerpc64             randconfig-001-20231224   gcc  
+powerpc64             randconfig-002-20231224   gcc  
+powerpc64             randconfig-003-20231224   gcc  
+riscv                 randconfig-001-20231224   gcc  
+riscv                 randconfig-002-20231224   gcc  
+s390                             allmodconfig   gcc  
+s390                             allyesconfig   gcc  
+s390                  randconfig-001-20231224   clang
+s390                  randconfig-002-20231224   clang
+sh                               allmodconfig   gcc  
+sh                               allyesconfig   gcc  
+sh                    randconfig-001-20231224   gcc  
+sh                    randconfig-002-20231224   gcc  
+sparc                            allmodconfig   gcc  
+sparc64                          allmodconfig   gcc  
+sparc64                          allyesconfig   gcc  
+sparc64               randconfig-001-20231224   gcc  
+sparc64               randconfig-002-20231224   gcc  
+um                               allmodconfig   clang
+um                               allyesconfig   clang
+um                    randconfig-001-20231224   gcc  
+um                    randconfig-002-20231224   gcc  
+x86_64                            allnoconfig   gcc  
+x86_64                           allyesconfig   clang
+x86_64                              defconfig   gcc  
+x86_64                          rhel-8.3-rust   clang
+xtensa                randconfig-001-20231224   gcc  
+xtensa                randconfig-002-20231224   gcc  
 
-> -void ice_ptp_prepare_for_reset(struct ice_pf *pf);
-> +void ice_ptp_prepare_for_reset(struct ice_pf *pf,
-> +			       enum ice_reset_req reset_type);
->  void ice_ptp_init(struct ice_pf *pf);
->  void ice_ptp_release(struct ice_pf *pf);
->  void ice_ptp_link_change(struct ice_pf *pf, u8 port, bool linkup);
-
-...
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 _______________________________________________
 Intel-wired-lan mailing list
 Intel-wired-lan@osuosl.org
