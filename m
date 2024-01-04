@@ -1,87 +1,81 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id E4560824917
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  4 Jan 2024 20:34:16 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id F0BC38249A0
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  4 Jan 2024 21:35:41 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 6A386613C6;
-	Thu,  4 Jan 2024 19:34:15 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6A386613C6
+	by smtp1.osuosl.org (Postfix) with ESMTP id 3C6988330B;
+	Thu,  4 Jan 2024 20:35:40 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3C6988330B
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1704396855;
-	bh=XRsr08bgpJ/WzOBo9B43cbQdTTrzIqpon/GrRSTMCcM=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=553ceHbcLwAHZo/gNpfMw088EVKnDY8bzp8GvKXGhx7Ygh70ErAxOy0Mdj8s5eNhy
-	 9pTPGV1cwi12wBvLbkwM8znXtFy21iLw664ret5JtJX4rKYy3n0JtdykcQPxd55tqT
-	 YXSwS2jfJ3d3j5B+4ICRIah8qFaN2C7tRMx4sySA0Di13Iqq5LSPHfaaF1cGh9VLms
-	 uL3UuScpQxfxpwYNchZ/GMiYGFU3UT7ACkOLH9CCNNcz89/yA7HJ9tDyNrjObAW6oL
-	 j8IXyOk8u4Ztcse8DObuesSgtVtovcQUWCrNTU1UpO2WW130v+IVrLe8bfsorRo6++
-	 f2qhE9tTc7oEQ==
+	s=default; t=1704400540;
+	bh=9R8ThRisw9OUxOwIjb9o1kLKQhewqB8sHa4xsIf3OPQ=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=tIJlmnuyu1EOfH8OBtc9hpYvI0SQgx+Wuc4AuxI3ASySNjYpnRVmYJrvV7ngqUFhc
+	 hAA5Dsngzl53DYNIrTPZLszyupW8zJF4C0XumGQXTlhN2ly19/BevWqr6xi5ttEmIW
+	 G5Ayb+vIWLXRxQtRBkkGlvjvVVVLQOzoTX7/6G6YdjEdIOroSUqHQGOOBS3/JRWXrn
+	 +iAzo9a+Eqmjtw2OpGbRF4XmGKaCNaez1Al3mkI2OQpMsI0xjNxfzXZtOHMC656dRz
+	 vuoHXPzbBqbI3GHTDU4AqRJzUF/42EecZPnrkhuA1mrWHBG8zBYHeot/11LXmom8qH
+	 Zvoq0m/4P3LPQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id l0CWrqljAcCl; Thu,  4 Jan 2024 19:34:14 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id WbnR3oNl6OAE; Thu,  4 Jan 2024 20:35:39 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 6CB62611E2;
-	Thu,  4 Jan 2024 19:34:14 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6CB62611E2
+	by smtp1.osuosl.org (Postfix) with ESMTP id 6542A832EB;
+	Thu,  4 Jan 2024 20:35:39 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6542A832EB
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 1D5C61BF356
- for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Jan 2024 19:34:09 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 0BD111BF853
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Jan 2024 20:35:34 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id E9E5A41946
- for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Jan 2024 19:34:08 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E9E5A41946
+ by smtp2.osuosl.org (Postfix) with ESMTP id D52134360D
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Jan 2024 20:35:33 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org D52134360D
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id V-ULpxKrvzrh for <intel-wired-lan@lists.osuosl.org>;
- Thu,  4 Jan 2024 19:34:08 +0000 (UTC)
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.13])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 3EF7E4192B
- for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Jan 2024 19:34:08 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3EF7E4192B
-X-IronPort-AV: E=McAfee;i="6600,9927,10943"; a="4452289"
-X-IronPort-AV: E=Sophos;i="6.04,331,1695711600"; 
-   d="scan'208";a="4452289"
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
- by orvoesa105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 04 Jan 2024 11:34:07 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10943"; a="899406952"
-X-IronPort-AV: E=Sophos;i="6.04,331,1695711600"; d="scan'208";a="899406952"
-Received: from ccdlinuxdev11.iil.intel.com ([143.185.160.232])
- by fmsmga002.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 04 Jan 2024 11:34:06 -0800
-From: Vitaly Lifshits <vitaly.lifshits@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Thu,  4 Jan 2024 21:34:02 +0200
-Message-Id: <20240104193402.675593-1-vitaly.lifshits@intel.com>
-X-Mailer: git-send-email 2.34.1
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id rXbzJoz_Ha2G for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  4 Jan 2024 20:35:33 +0000 (UTC)
+Received: from dfw.source.kernel.org (dfw.source.kernel.org
+ [IPv6:2604:1380:4641:c500::1])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 1003B4360A
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Jan 2024 20:35:32 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1003B4360A
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by dfw.source.kernel.org (Postfix) with ESMTP id AA47E61805;
+ Thu,  4 Jan 2024 20:35:31 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D56D1C433C8;
+ Thu,  4 Jan 2024 20:35:29 +0000 (UTC)
+Date: Thu, 4 Jan 2024 20:35:27 +0000
+From: Simon Horman <horms@kernel.org>
+To: Jan Sokolowski <jan.sokolowski@intel.com>
+Message-ID: <20240104203527.GM31813@kernel.org>
+References: <20240103141115.9509-1-jan.sokolowski@intel.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240103141115.9509-1-jan.sokolowski@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1704396848; x=1735932848;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=UUzhQ3j8XObhLCMlPDVBMSw5HQPFHzs4APJyk03NnTg=;
- b=n7aapUEOrTcOjvfySwyobgRW61efBawp7nlSaJ7JM0CBrNit/bTxzWMH
- NxUmBLIpnJ6vEpMyRoDtDmmv7PTi6E/AlE2x+37Lfy4JiwSzq4/fGEi04
- Izoo5tIfusgbD1PSMjbJwQRLFCkoiNJn332zYEWlbRnrIKm8uWpBUUHoS
- 9M4blfoRqmJLyB+QLGBYwpiGjbLLL6ra394IHHrVub8ImFSoVT89+/Jg+
- Q1xY02akVnzfjZfbPKVrJIh8h4ov8KfPZof02GFyg1VqxzcCGV8Xm9agg
- oufU2Xkt6Ij3Y4QGo6YF5qCY/eLcmzy3m3tlzLClgt1FmSGb88FKEAfsF
- Q==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=n7aapUEO
-Subject: [Intel-wired-lan] [PATH iwl-next v2 1/1] e1000e: Minor flow
- correction in e1000_shutdown function
+ d=kernel.org; s=k20201202; t=1704400531;
+ bh=Lx3dFp23qsqlF6j+qme3KDLOLqwXoHkGRSPiJLEEph4=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=Z26dCf67Gxllq7qbzGE45rXaQxZsqa59e8l371rT/8TOmPRNUokhKWvrTGrtuUvDE
+ /F5/bVd/GXEO5Wj/xPJTxSwC11O3hazw+YUttJz+vPnm0qsJf0rxITUtXWzYRqvjb8
+ GcA9r/77cPsdhYeTh4uZ9cK3ykN4cMKYsL/wf8cJM9+wbNPZzcWmudDDCrdqF7/DE2
+ eNvlGlUHta/vpyTDYaoamFcrDfbJoho/quKlM2o6dj9C0twSiEWvNWEY2/8G5ZxZeu
+ gXi3coLosWIEi9cvVvYdGolhnTfEJBK5Yx0zN+OzOazyqEh/DCnX5XEOWnDTvkYoxp
+ JSPHypJ3hdtnQ==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=Z26dCf67
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v1] ice: Add a new counter
+ for Rx EIPE errors
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,46 +88,32 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: david.m.ertman@intel.com, Vitaly Lifshits <vitaly.lifshits@intel.com>
+Cc: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Jan Glaza <jan.glaza@intel.com>, Aniruddha Paul <aniruddha.paul@intel.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Add curly braces to avoid entering to an if statement where it is not
-always required in e1000_shutdown function.
-This improves code readability and might prevent a non-deterministic
-behaviour in the future.
+On Wed, Jan 03, 2024 at 03:11:15PM +0100, Jan Sokolowski wrote:
+> From: Aniruddha Paul <aniruddha.paul@intel.com>
+> 
+> HW incorrectly reports EIPE errors on encapsulated packets
+> with L2 padding inside inner packet. HW shows outer UDP/IPV4
+> packet checksum errors as part of the EIPE flags of the
+> Rx descriptor. These are reported only if checksum offload
+> is enabled and L3/L4 parsed flag is valid in Rx descriptor.
+> 
+> When that error is reported by HW, we don't act on it
+> instead of incrementing main Rx errors statistic as it
+> would normally happen.
+> 
+> Add a new statistic to count these errors since we still want
+> to print them.
+> 
+> Signed-off-by: Aniruddha Paul <aniruddha.paul@intel.com>
+> Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+> Reviewed-by: Jan Glaza <jan.glaza@intel.com>
+> Signed-off-by: Jan Sokolowski <jan.sokolowski@intel.com>
 
-Signed-off-by: Vitaly Lifshits <vitaly.lifshits@intel.com>
----
-v2: fix commit message
-v1: initial version
----
- drivers/net/ethernet/intel/e1000e/netdev.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
-index af5d9d97a0d6..cc8c531ec3df 100644
---- a/drivers/net/ethernet/intel/e1000e/netdev.c
-+++ b/drivers/net/ethernet/intel/e1000e/netdev.c
-@@ -6688,14 +6688,14 @@ static int __e1000_shutdown(struct pci_dev *pdev, bool runtime)
- 	if (adapter->hw.phy.type == e1000_phy_igp_3) {
- 		e1000e_igp3_phy_powerdown_workaround_ich8lan(&adapter->hw);
- 	} else if (hw->mac.type >= e1000_pch_lpt) {
--		if (wufc && !(wufc & (E1000_WUFC_EX | E1000_WUFC_MC | E1000_WUFC_BC)))
-+		if (wufc && !(wufc & (E1000_WUFC_EX | E1000_WUFC_MC | E1000_WUFC_BC))) {
- 			/* ULP does not support wake from unicast, multicast
- 			 * or broadcast.
- 			 */
- 			retval = e1000_enable_ulp_lpt_lp(hw, !runtime);
--
--		if (retval)
--			return retval;
-+			if (retval)
-+				return retval;
-+		}
- 	}
- 
- 	/* Ensure that the appropriate bits are set in LPI_CTRL
--- 
-2.34.1
+Reviewed-by: Simon Horman <horms@kernel.org>
 
