@@ -1,101 +1,71 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id B52CE82441A
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  4 Jan 2024 15:47:55 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 08B9882465C
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  4 Jan 2024 17:38:19 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 7D79B611D3;
-	Thu,  4 Jan 2024 14:47:53 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7D79B611D3
+	by smtp2.osuosl.org (Postfix) with ESMTP id D0CAE435FD;
+	Thu,  4 Jan 2024 16:38:16 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org D0CAE435FD
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1704379673;
-	bh=gfVBwkOH/qOR6M4rih0KUy+5jfSd6PJn/IuBN+59/14=;
-	h=Date:From:To:In-Reply-To:Subject:List-Id:List-Unsubscribe:
-	 List-Archive:List-Post:List-Help:List-Subscribe:Cc:From;
-	b=24hpxrHhQa7th6BcpG6RwILafrbu0j+7Nn1FaiTxTQuyvMk5q3YeGDhWRBCPHufaV
-	 wjjRKn+UQ/B2iyA2l3la5X0PM5xLp/Vp/Lcl1w6uNHqBjOEhmTqGLW8WvBSTXoAgfa
-	 CIs+X1mgBtk3GfvJlOhILWP6HnWzKQz3PfVhoFdtHBJcZyjUQuHCaFlWDNcDctQmxA
-	 rSMcgsdXTNKYuAmf78qZDrXpAEd9Q6PZ+hSv637czktRcaE++LUcG1BOIBXyNV38bU
-	 wY8Zox/ih4PpAe6ZMPtH88hEt8xi8TOUSt24Wrf0dJE/0KL8svH54nFcfcYpy0IlkN
-	 7LImAL66d/eCw==
+	s=default; t=1704386296;
+	bh=qQXNVQgSG3EjALWOq4U9bhG2j9kzzvVfaJwYTKFChgU=;
+	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=xL1Vxy8uB04J4QVwQFvFbS4F7liVUXxOQcwVjEcNrc3Btu+sZtCoHQbeY3ieJcnSu
+	 4U21nbkZug8rCq4ih4SNDOPKQER8JO1atbPBcIPH1lspJsvWS1BlpTKCkRVEuepOc1
+	 9mQ7R9qDNKEq0ftYkNAakzUq79FGgyei2jPBSUpoGnOzIb3DNbanoXC+Zh4G2YJ1GI
+	 Kpsb2NY0KDlJ1c3z/zaHVN8y+yLCR60GzyCTznqLYqX5ndx3gfXyxbn24WVV8Scyn4
+	 PGqPGw7vskXQfkihi45mgcFxXD8m3ffRJLm9EWLSlKjaDrxV0oSNg7Hj8HNM+EkdKe
+	 o9R4KcujJoKMQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id rpTSfqz5dvAI; Thu,  4 Jan 2024 14:47:52 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 9T3SjG8TOM2e; Thu,  4 Jan 2024 16:38:16 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 4F782611CE;
-	Thu,  4 Jan 2024 14:47:52 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 4F782611CE
+	by smtp2.osuosl.org (Postfix) with ESMTP id 7B759404F1;
+	Thu,  4 Jan 2024 16:38:15 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 7B759404F1
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 544101BF422
- for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Jan 2024 14:47:47 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 509491BF3F9
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Jan 2024 16:38:10 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 38D55837AC
- for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Jan 2024 14:47:47 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 38D55837AC
+ by smtp3.osuosl.org (Postfix) with ESMTP id 26A4B613BE
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Jan 2024 16:38:10 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 26A4B613BE
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Dr-1NIekWtg0 for <intel-wired-lan@lists.osuosl.org>;
- Thu,  4 Jan 2024 14:47:46 +0000 (UTC)
-Received: from mail-lf1-x12d.google.com (mail-lf1-x12d.google.com
- [IPv6:2a00:1450:4864:20::12d])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 964BE82CCA
- for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Jan 2024 14:47:45 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 964BE82CCA
-Received: by mail-lf1-x12d.google.com with SMTP id
- 2adb3069b0e04-50eabfac2b7so608661e87.0
- for <intel-wired-lan@lists.osuosl.org>; Thu, 04 Jan 2024 06:47:45 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1704379663; x=1704984463;
- h=in-reply-to:content-disposition:mime-version:message-id:subject:cc
- :to:from:date:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=gfVBwkOH/qOR6M4rih0KUy+5jfSd6PJn/IuBN+59/14=;
- b=AtWN37aobnFJ9ug8NBCJtTWHh3m6FHrlC+f3i32NEfj2oNzJCA1c2DM8MazuiqAaJH
- 1q+dNfvDFOagcVSLSyvk0TA80TQJIv83/uHvr9mS30UaM7kpUa44Iby+yIzTe/ENO6ET
- l6jk517G21S45y6yByZbN4Vsq8UehVqWKh/xvX4GBLUFEBLEX2l0yJHZby32MdM8yDTt
- YXwf6gTVEnYCNlpf4W4h2C0otJNx+2mZpnmx8aamqjMa24FBFBWbNd65k6lqGS461pUn
- VziT5mbeXGQTgZiDeNLcwYm8lRgCbu6jJWgjdZy0uJx/id7wW0Vb/xk+mQUUFg9WBDhI
- 1fOA==
-X-Gm-Message-State: AOJu0Ywovg2ZRpYQupuKh2GRH/FVyTbsHAfNH6y9ITASIZvC128l+rfc
- HvM0feXkYPdCHXbOVPg6CuzTDdTJz8DZpQ==
-X-Google-Smtp-Source: AGHT+IF117QXnpuvzxN4k7ZWFQU+WS2Vnv3gcLBVFPn+SbU8WR2VxRUpgBrqVdYwYz6vf0xwXjJxXQ==
-X-Received: by 2002:a05:6512:ba8:b0:50e:7be3:d325 with SMTP id
- b40-20020a0565120ba800b0050e7be3d325mr458204lfv.86.1704379663433; 
- Thu, 04 Jan 2024 06:47:43 -0800 (PST)
-Received: from localhost ([102.140.209.237]) by smtp.gmail.com with ESMTPSA id
- x7-20020a50ba87000000b005527cfaa2dfsm19534526ede.49.2024.01.04.06.47.42
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 04 Jan 2024 06:47:42 -0800 (PST)
-Date: Thu, 4 Jan 2024 17:47:39 +0300
-From: Dan Carpenter <dan.carpenter@linaro.org>
-To: oe-kbuild@lists.linux.dev, Jedrzej Jagielski <jedrzej.jagielski@intel.com>,
- intel-wired-lan@lists.osuosl.org
-Message-ID: <08d8b75e-af80-438b-8006-9121b8444f49@moroto.mountain>
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id zN4kJguetxxR for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  4 Jan 2024 16:38:08 +0000 (UTC)
+Received: from mx3.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 65A01613AD
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Jan 2024 16:38:08 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 65A01613AD
+Received: from [141.14.220.34] (g34.guest.molgen.mpg.de [141.14.220.34])
+ (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested) (Authenticated sender: pmenzel)
+ by mx.molgen.mpg.de (Postfix) with ESMTPSA id 3A5B061E5FE04;
+ Thu,  4 Jan 2024 17:35:26 +0100 (CET)
+Message-ID: <719aced0-d7c2-4f9e-b1b0-ff6910edbd60@molgen.mpg.de>
+Date: Thu, 4 Jan 2024 17:35:25 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20240103101135.386891-1-jedrzej.jagielski@intel.com>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1704379663; x=1704984463; darn=lists.osuosl.org;
- h=in-reply-to:content-disposition:mime-version:message-id:subject:cc
- :to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=gfVBwkOH/qOR6M4rih0KUy+5jfSd6PJn/IuBN+59/14=;
- b=m/f/Wr2GuZYVSCcv8RRD5r5czAVNdEAdhGGdR09CKC9vriO1TNSPAGdRTTvh9hKJ6j
- CZk67NC4bOovUm6ZhDvMfjL/zir90bA9WqWWoSoiMh4114u5i9Ls6HuIGoHKoANJ+EUf
- CXfBpup4wRDD1EMkosXQm6EGXO8sv1RvmzO+U1Eqaf0aQSXyvU4gicWD6pSK4AKJW8Y4
- O94lxz4nF/IBt1fJnTXKwD6t70P1tzxcXVcJZvsZcRhpe3IFx+nVVT+fSqMarcfnriAc
- Bbs6addILfVK5GjqFSwe09EMeaGhzlPxs0qbikOG2tyekfR1PVOyPOxhu95G86xLR9jr
- kJwA==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org
- header.a=rsa-sha256 header.s=google header.b=m/f/Wr2G
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v1] ixgbe: Convert ret val
- type from s32 to int
+User-Agent: Mozilla Thunderbird
+To: Prasad Koya <prasad@arista.com>
+References: <20240104010144.2137857-1-prasad@arista.com>
+Content-Language: en-US
+From: Paul Menzel <pmenzel@molgen.mpg.de>
+In-Reply-To: <20240104010144.2137857-1-prasad@arista.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Subject: Re: [Intel-wired-lan] [PATCH] [iwl-net] igc: write to phy power
+ management and management control registers to power up/power down the phy
+ during interface up/down
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -108,76 +78,123 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, Jedrzej Jagielski <jedrzej.jagielski@intel.com>,
- anthony.l.nguyen@intel.com, oe-kbuild-all@lists.linux.dev,
- Jacob Keller <jacob.e.keller@intel.com>
+Cc: sasha.neftin@intel.com, Naama Meir <naamax.meir@linux.intel.com>,
+ Jesse Brandeburg <jesse.brandeburg@intel.com>, Salam <noureddine@arista.com>,
+ intel-wired-lan@lists.osuosl.org, gilligan@arista.com,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ "David S . Miller" <davem@davemloft.net>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi Jedrzej,
+Dear Prasad,
 
-kernel test robot noticed the following build warnings:
 
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+Thank you very much for your patch. Please remember if you sent an 
+updated version to add the version, cf. `--reroll-count|-v` in 
+git-format-patch(1). Please also add a small change-log for the patch 
+revisions below the --- line.
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Jedrzej-Jagielski/ixgbe-Convert-ret-val-type-from-s32-to-int/20240103-182213
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/horms/ipvs.git master
-patch link:    https://lore.kernel.org/r/20240103101135.386891-1-jedrzej.jagielski%40intel.com
-patch subject: [PATCH iwl-next v1] ixgbe: Convert ret val type from s32 to int
-config: i386-randconfig-141-20240104 (https://download.01.org/0day-ci/archive/20240104/202401041701.6QKTsZmx-lkp@intel.com/config)
-compiler: gcc-12 (Debian 12.2.0-14) 12.2.0
+Also, the git commit message summary (title/subject) is too long. Maybe:
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Reported-by: Dan Carpenter <dan.carpenter@linaro.org>
-| Closes: https://lore.kernel.org/r/202401041701.6QKTsZmx-lkp@intel.com/
+Power PHY up/down on interface up/down
 
-New smatch warnings:
-drivers/net/ethernet/intel/ixgbe/ixgbe_x550.c:2884 ixgbe_get_lcd_t_x550em() warn: missing error code? 'status'
-drivers/net/ethernet/intel/ixgbe/ixgbe_x550.c:3130 ixgbe_enter_lplu_t_x550em() warn: missing error code? 'status'
+Am 04.01.24 um 02:01 schrieb Prasad Koya:
+>   For I225/226 parts, when the interface is set down with "ip
+>   link set <dev> down", interface is down but the PHY (led) continues
+>   to be up. This patch makes the phy to be actually off/on during
+>   interface down/up events.
 
-Old smatch warnings:
-drivers/net/ethernet/intel/ixgbe/ixgbe_x550.c:2890 ixgbe_get_lcd_t_x550em() warn: missing error code? 'status'
+Please do not indent the commit message.
 
-vim +/status +2884 drivers/net/ethernet/intel/ixgbe/ixgbe_x550.c
+Which datasheet did you use for this? Please mention it. How did you 
+test it?
 
-9ea222bfe41f87 Jedrzej Jagielski 2024-01-03  2866  static int ixgbe_get_lcd_t_x550em(struct ixgbe_hw *hw,
-6ac7439459606a Don Skidmore      2015-06-17  2867  				  ixgbe_link_speed *lcd_speed)
-6ac7439459606a Don Skidmore      2015-06-17  2868  {
-6ac7439459606a Don Skidmore      2015-06-17  2869  	u16 an_lp_status;
-9ea222bfe41f87 Jedrzej Jagielski 2024-01-03  2870  	int status;
-6ac7439459606a Don Skidmore      2015-06-17  2871  	u16 word = hw->eeprom.ctrl_word_3;
-6ac7439459606a Don Skidmore      2015-06-17  2872  
-6ac7439459606a Don Skidmore      2015-06-17  2873  	*lcd_speed = IXGBE_LINK_SPEED_UNKNOWN;
-6ac7439459606a Don Skidmore      2015-06-17  2874  
-6ac7439459606a Don Skidmore      2015-06-17  2875  	status = hw->phy.ops.read_reg(hw, IXGBE_AUTO_NEG_LP_STATUS,
-4dc4000b35119f Emil Tantilov     2016-09-26  2876  				      MDIO_MMD_AN,
-6ac7439459606a Don Skidmore      2015-06-17  2877  				      &an_lp_status);
-6ac7439459606a Don Skidmore      2015-06-17  2878  	if (status)
-6ac7439459606a Don Skidmore      2015-06-17  2879  		return status;
-6ac7439459606a Don Skidmore      2015-06-17  2880  
-6ac7439459606a Don Skidmore      2015-06-17  2881  	/* If link partner advertised 1G, return 1G */
-6ac7439459606a Don Skidmore      2015-06-17  2882  	if (an_lp_status & IXGBE_AUTO_NEG_LP_1000BASE_CAP) {
-6ac7439459606a Don Skidmore      2015-06-17  2883  		*lcd_speed = IXGBE_LINK_SPEED_1GB_FULL;
-6ac7439459606a Don Skidmore      2015-06-17 @2884  		return status;
+Sorry for these style comments.
 
-Smatch only warns about missing error codes when the function returns an
-int.  :P  The bug predates your patch obvoiusly.
 
-6ac7439459606a Don Skidmore      2015-06-17  2885  	}
-6ac7439459606a Don Skidmore      2015-06-17  2886  
-6ac7439459606a Don Skidmore      2015-06-17  2887  	/* If 10G disabled for LPLU via NVM D10GMP, then return no valid LCD */
-6ac7439459606a Don Skidmore      2015-06-17  2888  	if ((hw->bus.lan_id && (word & NVM_INIT_CTRL_3_D10GMP_PORT1)) ||
-6ac7439459606a Don Skidmore      2015-06-17  2889  	    (word & NVM_INIT_CTRL_3_D10GMP_PORT0))
-6ac7439459606a Don Skidmore      2015-06-17  2890  		return status;
-6ac7439459606a Don Skidmore      2015-06-17  2891  
-6ac7439459606a Don Skidmore      2015-06-17  2892  	/* Link partner not capable of lower speeds, return 10G */
-6ac7439459606a Don Skidmore      2015-06-17  2893  	*lcd_speed = IXGBE_LINK_SPEED_10GB_FULL;
-6ac7439459606a Don Skidmore      2015-06-17  2894  	return status;
-6ac7439459606a Don Skidmore      2015-06-17  2895  }
+Kind regards,
 
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+Paul
 
+
+> Signed-off-by: Prasad Koya <prasad@arista.com>
+> ---
+>   drivers/net/ethernet/intel/igc/igc_defines.h |  3 ++
+>   drivers/net/ethernet/intel/igc/igc_phy.c     | 42 +++++++++++++-------
+>   2 files changed, 31 insertions(+), 14 deletions(-)
+> 
+> diff --git a/drivers/net/ethernet/intel/igc/igc_defines.h b/drivers/net/ethernet/intel/igc/igc_defines.h
+> index b3037016f31d..6f60f5bd9cc7 100644
+> --- a/drivers/net/ethernet/intel/igc/igc_defines.h
+> +++ b/drivers/net/ethernet/intel/igc/igc_defines.h
+> @@ -684,4 +684,7 @@
+>   #define IGC_LTRMAXV_LSNP_REQ		0x00008000 /* LTR Snoop Requirement */
+>   #define IGC_LTRMAXV_SCALE_SHIFT		10
+>   
+> +/* PHY Power management register */
+> +#define IGC_GO_LINK_DISCONNECT		0x0020	   /* Go Link Disconnect */
+> +
+>   #endif /* _IGC_DEFINES_H_ */
+> diff --git a/drivers/net/ethernet/intel/igc/igc_phy.c b/drivers/net/ethernet/intel/igc/igc_phy.c
+> index 53b77c969c85..319cdf876f4e 100644
+> --- a/drivers/net/ethernet/intel/igc/igc_phy.c
+> +++ b/drivers/net/ethernet/intel/igc/igc_phy.c
+> @@ -107,12 +107,22 @@ s32 igc_phy_has_link(struct igc_hw *hw, u32 iterations,
+>    */
+>   void igc_power_up_phy_copper(struct igc_hw *hw)
+>   {
+> -	u16 mii_reg = 0;
+> +	struct igc_phy_info *phy = &hw->phy;
+> +	u32 phpm, manc;
+> +
+> +	if (phy->ops.acquire(hw))
+> +		return;
+> +
+> +	manc = rd32(IGC_MANC);
+> +	manc &= ~IGC_MANC_BLK_PHY_RST_ON_IDE;
+> +	wr32(IGC_MANC, manc);
+>   
+> -	/* The PHY will retain its settings across a power down/up cycle */
+> -	hw->phy.ops.read_reg(hw, PHY_CONTROL, &mii_reg);
+> -	mii_reg &= ~MII_CR_POWER_DOWN;
+> -	hw->phy.ops.write_reg(hw, PHY_CONTROL, mii_reg);
+> +	phpm = rd32(IGC_I225_PHPM);
+> +	phpm &= ~IGC_GO_LINK_DISCONNECT;
+> +	wr32(IGC_I225_PHPM, phpm);
+> +	usleep_range(100, 200);
+> +
+> +	hw->phy.ops.release(hw);
+>   }
+>   
+>   /**
+> @@ -124,17 +134,21 @@ void igc_power_up_phy_copper(struct igc_hw *hw)
+>    */
+>   void igc_power_down_phy_copper(struct igc_hw *hw)
+>   {
+> -	u16 mii_reg = 0;
+> -
+> -	/* The PHY will retain its settings across a power down/up cycle */
+> -	hw->phy.ops.read_reg(hw, PHY_CONTROL, &mii_reg);
+> -	mii_reg |= MII_CR_POWER_DOWN;
+> +	struct igc_phy_info *phy = &hw->phy;
+> +	u32 phpm, manc;
+>   
+> -	/* Temporary workaround - should be removed when PHY will implement
+> -	 * IEEE registers as properly
+> -	 */
+> -	/* hw->phy.ops.write_reg(hw, PHY_CONTROL, mii_reg);*/
+> +	if (phy->ops.acquire(hw))
+> +		return;
+> +	/* Set "Go Link Disconnect" bit in the PHPM register to turn off the PHY */
+> +	phpm = rd32(IGC_I225_PHPM);
+> +	phpm |= IGC_GO_LINK_DISCONNECT;
+> +	wr32(IGC_I225_PHPM, phpm);
+>   	usleep_range(1000, 2000);
+> +
+> +	manc = rd32(IGC_MANC);
+> +	wr32(IGC_MANC, manc | IGC_MANC_BLK_PHY_RST_ON_IDE);
+> +
+> +	phy->ops.release(hw);
+>   }
+>   
+>   /**
