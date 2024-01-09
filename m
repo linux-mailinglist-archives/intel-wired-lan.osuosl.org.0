@@ -1,156 +1,109 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 968578282A2
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  9 Jan 2024 10:02:55 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5505782877D
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  9 Jan 2024 14:59:43 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 422CA61068;
-	Tue,  9 Jan 2024 09:02:52 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 422CA61068
+	by smtp4.osuosl.org (Postfix) with ESMTP id B846841BBF;
+	Tue,  9 Jan 2024 13:59:36 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B846841BBF
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1704790972;
-	bh=E23pl03ddnTG4hKy9zSyRB7d/BVm7JwW3AyV/88rvQ8=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1704808776;
+	bh=1zbwLQvCGi9ayqIqzz1ygZ1oEKO7pDe3S64K7yitgQ0=;
+	h=Date:From:To:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=anXlIJoyZzd6IKWpO/zj58aMgEMPLOw0UKsL84MqSd1kIH4gS8sBrouAeGfKDSr0P
-	 BmITz0zJVo/fKPPameP/zE0pP/dtDlnUD1Z7j+xIda/MaNqIGWfQOybSLCJjLnvVAG
-	 C4Xnhs1E83++d/Du3BSul+r1/Uey58/QThKTpsZqeOQS73yn73XMwQRdqrxB9ypUTx
-	 qaKBGemwJ2WYHw0y/JeZu0/hq773nFEDA0PclNJWxMc0zxJDVVZB9MEvmh3syZrHet
-	 eb68t1l78Y0f1XCJ5MlakCJt1xJIPliorS761B8a0KcFTAi0YGOeBR2+6LHX/aO1Wu
-	 h5n/+/+3quuNA==
+	b=znayuZlynpKdDdrA46jtKXSQgwGy6B7cNvc589Xk+ovTBxechY+0Lh02QwHUsNkDM
+	 03sIexBzW8cNN0m7rjzKay3Fr0eTQG8vp2CvNwyIu6MbKhubS6DBoPc5PGKVly5hQz
+	 WvHe9DhRiRuEN/U7QAO94w5jIm59cksRc82GQMy9zXGVer41x5wOVByO/P93f6Dv2y
+	 FKVtjI2+evVjvUtyXkLsUoaibiOWnBIp+dmg8kwL9NYzyq8Qg7LPzlU/yxK5RcbLp2
+	 kxO3KgGUA5LM9C+4cP35CZmQe2IqgLWRQ+lf/4S1r+5FnxnEH+3YMPD1GiTK/0rC/v
+	 YSMolOlqXfMLg==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id gWrPMGytcdpr; Tue,  9 Jan 2024 09:02:51 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id ZOBJChuCF3nT; Tue,  9 Jan 2024 13:59:36 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 2B5056060A;
-	Tue,  9 Jan 2024 09:02:51 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2B5056060A
+	by smtp4.osuosl.org (Postfix) with ESMTP id 8F6764088B;
+	Tue,  9 Jan 2024 13:59:35 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8F6764088B
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 3CC941BF94D
- for <intel-wired-lan@lists.osuosl.org>; Tue,  9 Jan 2024 09:02:46 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 01CB11BF23B
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  9 Jan 2024 13:59:30 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 0B65F41D80
- for <intel-wired-lan@lists.osuosl.org>; Tue,  9 Jan 2024 09:02:46 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0B65F41D80
+ by smtp4.osuosl.org (Postfix) with ESMTP id D0AE141BBF
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  9 Jan 2024 13:59:30 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D0AE141BBF
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Gs9afQIoS-MT for <intel-wired-lan@lists.osuosl.org>;
- Tue,  9 Jan 2024 09:02:44 +0000 (UTC)
-Received: from mail-wm1-x329.google.com (mail-wm1-x329.google.com
- [IPv6:2a00:1450:4864:20::329])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 62C4F41BEB
- for <intel-wired-lan@lists.osuosl.org>; Tue,  9 Jan 2024 09:02:44 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 62C4F41BEB
-Received: by mail-wm1-x329.google.com with SMTP id
- 5b1f17b1804b1-40e4f1f519aso3979925e9.0
- for <intel-wired-lan@lists.osuosl.org>; Tue, 09 Jan 2024 01:02:44 -0800 (PST)
+ with ESMTP id n4h14R7lkSSA for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  9 Jan 2024 13:59:29 +0000 (UTC)
+Received: from mail-qk1-x732.google.com (mail-qk1-x732.google.com
+ [IPv6:2607:f8b0:4864:20::732])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 65A814091C
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  9 Jan 2024 13:59:29 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 65A814091C
+Received: by mail-qk1-x732.google.com with SMTP id
+ af79cd13be357-78104f6f692so241039285a.1
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 09 Jan 2024 05:59:29 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1704790962; x=1705395762;
- h=content-transfer-encoding:in-reply-to:organization:autocrypt
- :references:cc:to:from:content-language:subject:user-agent
- :mime-version:date:message-id:x-gm-message-state:from:to:cc:subject
- :date:message-id:reply-to;
- bh=E23pl03ddnTG4hKy9zSyRB7d/BVm7JwW3AyV/88rvQ8=;
- b=Z/qhIwjPLEO+x4/lzL6IbCve+ly3ctej5e8IhiBwpyasXY76qXPYAi+n/JtRS6f6pQ
- D94NFbLQf/dEljUV8B2pRcM0YvWLicxZewicOkHbh7Lx04EZmhOpGC/PLYFwNGbRQZnf
- GbsKsfvKUr67g0r52W1qR34khf/7RAGq8SArQEpYEz0M5rutPNw+VDWQrf3rsjKDn3me
- E7J50IbNjvEHMy/k9fQVhNC/ApiS6N7G9/kSgtD2mTcAcMb04lnwzu0rrDyLPuhpVjQn
- D5zVQyLlF+YaIqYXDtyrEpKOY0xhaKGg6DcBqMSjz3nOSC/PpqjhV10dK/QK9OINkJFU
- vIHg==
-X-Gm-Message-State: AOJu0YyQTDeIItd2CE+aSqa/ZFYlOyvVMk7TPF24GlfuYd8q11Tis7PN
- vtAl3E9nMA79TbpOZD2KgTaIHTy0WcYQEA==
-X-Google-Smtp-Source: AGHT+IFVILFKFViKt13K3k42kzdhkkE4xZNjf6vHTy8q1hs0lod79ieupBIJ+YK4zEuKANV45AgahA==
-X-Received: by 2002:a05:600c:520c:b0:40e:45b0:557f with SMTP id
- fb12-20020a05600c520c00b0040e45b0557fmr1590129wmb.140.1704790962363; 
- Tue, 09 Jan 2024 01:02:42 -0800 (PST)
-Received: from [10.100.10.83] ([57.133.65.178])
- by smtp.gmail.com with ESMTPSA id
- iw14-20020a05600c54ce00b0040d1bd0e716sm2699383wmb.9.2024.01.09.01.02.42
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 09 Jan 2024 01:02:42 -0800 (PST)
-Message-ID: <1ec34cee-bfab-4dc8-81eb-9a9688b9a61e@inovex.de>
-Date: Tue, 9 Jan 2024 10:02:41 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Content-Language: en-US
-From: Christian Rohmann <christian.rohmann@inovex.de>
-To: Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- intel-wired-lan@lists.osuosl.org
-References: <f38a6ca4-af05-48b1-a3e6-17ef2054e525@inovex.de>
- <7bbe621e-52cc-8111-bec7-70632900c3b0@intel.com>
- <e1b2f012-7e0a-4167-bfa9-026d49f1b45b@inovex.de>
-Autocrypt: addr=christian.rohmann@inovex.de; keydata=
- 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
- 6/S+Umx1vXWUG6ol8Oalq8coKRpry3O+ytxj/sc=
-Organization: inovex GmbH
-In-Reply-To: <e1b2f012-7e0a-4167-bfa9-026d49f1b45b@inovex.de>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+ d=1e100.net; s=20230601; t=1704808768; x=1705413568;
+ h=content-transfer-encoding:mime-version:subject:references
+ :in-reply-to:message-id:cc:to:from:date:x-gm-message-state:from:to
+ :cc:subject:date:message-id:reply-to;
+ bh=1zbwLQvCGi9ayqIqzz1ygZ1oEKO7pDe3S64K7yitgQ0=;
+ b=M1Uutvl5A8Qf7lMZDFbRZP+8I8dKViYv4GxWmxpE+NXc6YyHn1SuzbihJN29RGLDwR
+ 350hnRhxRJr2udjYduOafWu6AonZlpGEf/Tph4PnYeClkHCZBEKQ+7Vh014FfITVVzO2
+ z1csC2ck4s/UzWv68sepwN6/eLMUFUDkGRbSNZMtO1O5WYGKuGTGtjafycJ8/8zuz2hH
+ GHfTTsJYFU3RhkqyfTG7lGs6iQzgbTDeMDZP730oT8EkBe2tO5+nBhlpjwZ9sJq81jqL
+ +CTG5NtbfWUddScWERym4IcXMW57EgrigCFPrI8NAn5oOmGCGT7YLZ7VBgqNR/oT7gU5
+ oG6w==
+X-Gm-Message-State: AOJu0YxpLd6Tl0p6V5IpaYQkUe/3qbAP1MiTeCdaR2YNKU+WzpgtRJjd
+ 8KerPHTESTB041IDXNpe5Pc=
+X-Google-Smtp-Source: AGHT+IEp3BCu3ZUnezV9NlJAZ4Av/aGNhE95t0mHb+RdY60yS9YRLqg9GZv6zhC84yBE+s+uuyLI4Q==
+X-Received: by 2002:a37:c20d:0:b0:781:21c6:83a6 with SMTP id
+ i13-20020a37c20d000000b0078121c683a6mr1019863qkm.12.1704808767992; 
+ Tue, 09 Jan 2024 05:59:27 -0800 (PST)
+Received: from localhost (48.230.85.34.bc.googleusercontent.com.
+ [34.85.230.48]) by smtp.gmail.com with ESMTPSA id
+ b2-20020a05620a118200b0076db5b792basm806838qkk.75.2024.01.09.05.59.27
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 09 Jan 2024 05:59:27 -0800 (PST)
+Date: Tue, 09 Jan 2024 08:59:27 -0500
+From: Willem de Bruijn <willemdebruijn.kernel@gmail.com>
+To: Alexander Lobakin <aleksander.lobakin@intel.com>, 
+ Willem de Bruijn <willemdebruijn.kernel@gmail.com>
+Message-ID: <659d513f5c0f6_161283294f5@willemb.c.googlers.com.notmuch>
+In-Reply-To: <c4afc32c-e9c7-47de-9bc4-243df95644a3@intel.com>
+References: <20231223025554.2316836-1-aleksander.lobakin@intel.com>
+ <20231223025554.2316836-6-aleksander.lobakin@intel.com>
+ <658c4328425f7_a33e629412@willemb.c.googlers.com.notmuch>
+ <c4afc32c-e9c7-47de-9bc4-243df95644a3@intel.com>
+Mime-Version: 1.0
+Content-Type: text/plain;
+ charset=utf-8
 Content-Transfer-Encoding: 7bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=inovex.de; s=google; t=1704790962; x=1705395762; darn=lists.osuosl.org;
- h=content-transfer-encoding:in-reply-to:organization:autocrypt
- :references:cc:to:from:content-language:subject:user-agent
- :mime-version:date:message-id:from:to:cc:subject:date:message-id
- :reply-to;
- bh=E23pl03ddnTG4hKy9zSyRB7d/BVm7JwW3AyV/88rvQ8=;
- b=Cn15rGsRCINoh6yk+FZJWMC+jYaT0Sw58KpoE7AtaEtigp8VHte8lH6LOX2kdnvlai
- v138iXyDK7KNVdwlEZ7V4bP+UlGs3sDEVozjSNh8rZaP6u03MAPAiJB0Nk+YKkBuMtMI
- Dgruhc2Bjg49LLQgr7FbHXczGh5kWI2PoQZEk0Ja59Mo9MmcgOXQvi8CrRYJvteS+2Wv
- mLt8CooD+IKT8S9S6eFILkDS8oyRLlTQy1gVA91K5gGX8fGTB7sgpQiMUhvAW+r0a9iY
- t2P5HnFPwEejKoYOi5HxlEKndcDpETLeDT/36bsdnluyoVAeeovVCL2aCAH6RiA1H4X6
- gT6g==
+ d=gmail.com; s=20230601; t=1704808768; x=1705413568; darn=lists.osuosl.org;
+ h=content-transfer-encoding:mime-version:subject:references
+ :in-reply-to:message-id:cc:to:from:date:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=1zbwLQvCGi9ayqIqzz1ygZ1oEKO7pDe3S64K7yitgQ0=;
+ b=Ptbl8lKdgRQ5ufWQl0JXf+XfvRX2CNCrWwAHV7IuxykpFthLLsqALte5oYjGmFzZHr
+ hSwPoygWVTTss8LcMH6c7pol7Ma/RkK8B7e34rhMuUnkst4hF7gtpNp+l4AUBgiVXKuc
+ w2fluq4Ciwomg6Qr6B9qKzAUaE1ovh52wRD6necNjEls4Ec+Gf09GMXNoZYNhBzCb3ik
+ X2q81dGBMtjlXYyiLp/zT1TFltltM3Z/fZHzz/WbSarpT0LdSDc7zLdCIqXD1dontqIz
+ idFE5HCjxNSNmgAywGEyl6kJHAfbPNP8P5uK2yqRchlLmAbPW8rt+HNn0RtM5wSwHkSF
+ KY3g==
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=inovex.de header.i=@inovex.de
- header.a=rsa-sha256 header.s=google header.b=Cn15rGsR
-Subject: Re: [Intel-wired-lan] Counter spikes in /proc/net/dev for
- E810-CQDA2 interfaces (ice driver) on kernel >=6.2
+ dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
+ header.a=rsa-sha256 header.s=20230601 header.b=Ptbl8lKd
+Subject: Re: [Intel-wired-lan] [PATCH RFC net-next 05/34] idpf: convert
+ header split mode to libie + napi_build_skb()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -163,43 +116,86 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: leszek.pepiak@intel.com, "Czapnik, Lukasz" <lukasz.czapnik@intel.com>,
- Nebojsa Stevanovic <nebojsa.stevanovic@gcore.com>
+Cc: Maciej Fijalkowski <maciej.fijalkowski@intel.com>,
+ Daniel Borkmann <daniel@iogearbox.net>,
+ Larysa Zaremba <larysa.zaremba@intel.com>, netdev@vger.kernel.org,
+ Alexei Starovoitov <ast@kernel.org>, linux-kernel@vger.kernel.org,
+ Eric Dumazet <edumazet@google.com>, Michal Kubiak <michal.kubiak@intel.com>,
+ intel-wired-lan@lists.osuosl.org, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hey Przemek!
+Alexander Lobakin wrote:
+> From: Willem De Bruijn <willemdebruijn.kernel@gmail.com>
+> Date: Wed, 27 Dec 2023 10:30:48 -0500
+> 
+> > Alexander Lobakin wrote:
+> >> Currently, idpf uses the following model for the header buffers:
+> >>
+> >> * buffers are allocated via dma_alloc_coherent();
+> >> * when receiving, napi_alloc_skb() is called and then the header is
+> >>   copied to the newly allocated linear part.
+> >>
+> >> This is far from optimal as DMA coherent zone is slow on many systems
+> >> and memcpy() neutralizes the idea and benefits of the header split.
+> > 
+> > Do you have data showing this?
+> 
+> Showing slow coherent DMA or memcpy()?
+> Try MIPS for the first one.
+> For the second -- try comparing performance on ice with the "legacy-rx"
+> private flag disabled and enabled.
+> 
+> > 
+> > The assumption for the current model is that the headers will be
+> > touched shortly after, so the copy just primes the cache.
+> 
+> They won't be touched in many cases. E.g. XDP_DROP.
+> Or headers can be long. memcpy(32) != memcpy(128).
+> The current model allocates a new skb with a linear part, which is a
+> real memory allocation. napi_build_skb() doesn't allocate anything
+> except struct sk_buff, which is usually available in the NAPI percpu cache.
+> If build_skb() wasn't more effective, it wouldn't be introduced.
+> The current model just assumes default socket traffic with ~40-byte
+> headers and no XDP etc.
+> 
+> > 
+> > The single coherently allocated region for all headers reduces
+> > IOTLB pressure.
+> 
+> page_pool pages are mapped once at allocation.
+> 
+> > 
+> > It is possible that the alternative model is faster. But that is not
+> > trivially obvious.
+> > 
+> > I think patches like this can stand on their own. Probably best to
+> > leave them out of the dependency series to enable XDP and AF_XDP.
+> 
+> You can't do XDP on DMA coherent zone. To do this memcpy(), you need
+> allocate a new skb with a linear part, which is usually done after XDP,
+> otherwise it's too much overhead and little-to-no benefits comparing to
+> generic skb XDP.
+> The current idpf code is just not compatible with the XDP code in this
+> series, it's pointless to do double work.
+> 
+> Disabling header split when XDP is enabled (alternative option) means
+> disabling TCP zerocopy and worse performance in general, I don't
+> consider this.
 
-Happy New Year!
+My concern is if optimizations for XDP might degrade the TCP/IP common
+path. XDP_DROP and all of XDP even is a niche feature by comparison.
 
-On 17.11.23 13:05, Christian Rohmann wrote:
-> Hey Przemek,
->
-> thanks for picking up on this so quickly!
->
->
-> On 17.11.23 11:13, Przemek Kitszel wrote:
->
->> Thank you for the report, I will take a look.
->>
->> We have already received similar report from Nebojsa Stevanovic, CCed.
->>
->> Sorry that the issue is not resolved yet. I will review what we have
->> changed in the drivers between 6.1 and 6.2, where bug was introduced. 
+The current driver behavior was not the first for IDPF, but arrived
+at based on extensive performance debugging. An earlier iteration used
+separate header buffers. Switching to a single coherent allocated
+buffer region significantly increased throughput / narrowed the gap
+between header-split and non-header-split mode.
+
+I follow your argument and the heuristics are reasonable. My request
+is only that this decision is based on real data for this driver and
+modern platforms. We cannot regress TCP/IP hot path performance.
 
 
-Nebojsa apparently can also reproduce this issue as he is using 
-Prometheus Node Exporter as well: 
-https://github.com/prometheus/node_exporter/issues/1849
-
-
-May I ask if you did get a change to look into this yet?
-If there anything I can provide that would help you?
-
-
-
-Regards
-
-
-Christian
 
