@@ -1,107 +1,98 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5505782877D
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  9 Jan 2024 14:59:43 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1A363828868
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  9 Jan 2024 15:44:00 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id B846841BBF;
-	Tue,  9 Jan 2024 13:59:36 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B846841BBF
+	by smtp3.osuosl.org (Postfix) with ESMTP id 9979661189;
+	Tue,  9 Jan 2024 14:43:53 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9979661189
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1704808776;
-	bh=1zbwLQvCGi9ayqIqzz1ygZ1oEKO7pDe3S64K7yitgQ0=;
-	h=Date:From:To:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1704811433;
+	bh=7hTSp/621JuWdOzYoBlVmVqh7hDK5oBkPf++B3jV4j8=;
+	h=References:In-Reply-To:From:Date:To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=znayuZlynpKdDdrA46jtKXSQgwGy6B7cNvc589Xk+ovTBxechY+0Lh02QwHUsNkDM
-	 03sIexBzW8cNN0m7rjzKay3Fr0eTQG8vp2CvNwyIu6MbKhubS6DBoPc5PGKVly5hQz
-	 WvHe9DhRiRuEN/U7QAO94w5jIm59cksRc82GQMy9zXGVer41x5wOVByO/P93f6Dv2y
-	 FKVtjI2+evVjvUtyXkLsUoaibiOWnBIp+dmg8kwL9NYzyq8Qg7LPzlU/yxK5RcbLp2
-	 kxO3KgGUA5LM9C+4cP35CZmQe2IqgLWRQ+lf/4S1r+5FnxnEH+3YMPD1GiTK/0rC/v
-	 YSMolOlqXfMLg==
+	b=ZSwfapQBnRPW1RD9YxHOCyBbd+Eqp8OcexZXlFc0+UV4zoDRDlfN7cqECUyWICLp3
+	 INYrBOuUlcZshPbpK6WD7SkA5krTdf5Ybg/f49ylNjYse05RQxGanuCCnwCeWf/Oqj
+	 dEn5ZvrWNuFZeXAmLr1NIa1BRw9DenksIAs6oyJZlm2SspeUsyz5DkU4vCulf017Yq
+	 v/nWi1hHvwp2QQVvZtU+6l4a7uipI5+2wM9IgbF32jfH0CcBcrFQduMo/IPg5z0X99
+	 ViG/vqZ742orlmfOt3w/kv59orEUwynaq8IW6m+r+vuzDFyRjGiuu6QA0xUBAbuip1
+	 jjuIzVM2ocHvw==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ZOBJChuCF3nT; Tue,  9 Jan 2024 13:59:36 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Iu8zECEvt-4x; Tue,  9 Jan 2024 14:43:53 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 8F6764088B;
-	Tue,  9 Jan 2024 13:59:35 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8F6764088B
+	by smtp3.osuosl.org (Postfix) with ESMTP id B152C61155;
+	Tue,  9 Jan 2024 14:43:52 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B152C61155
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 01CB11BF23B
- for <intel-wired-lan@lists.osuosl.org>; Tue,  9 Jan 2024 13:59:30 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id D70031BF34E
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  9 Jan 2024 14:43:47 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id D0AE141BBF
- for <intel-wired-lan@lists.osuosl.org>; Tue,  9 Jan 2024 13:59:30 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D0AE141BBF
+ by smtp2.osuosl.org (Postfix) with ESMTP id A10D843535
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  9 Jan 2024 14:43:47 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A10D843535
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id n4h14R7lkSSA for <intel-wired-lan@lists.osuosl.org>;
- Tue,  9 Jan 2024 13:59:29 +0000 (UTC)
-Received: from mail-qk1-x732.google.com (mail-qk1-x732.google.com
- [IPv6:2607:f8b0:4864:20::732])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 65A814091C
- for <intel-wired-lan@lists.osuosl.org>; Tue,  9 Jan 2024 13:59:29 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 65A814091C
-Received: by mail-qk1-x732.google.com with SMTP id
- af79cd13be357-78104f6f692so241039285a.1
- for <intel-wired-lan@lists.osuosl.org>; Tue, 09 Jan 2024 05:59:29 -0800 (PST)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id roTS9yWl3ndq for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  9 Jan 2024 14:43:46 +0000 (UTC)
+Received: from mail-ed1-x52c.google.com (mail-ed1-x52c.google.com
+ [IPv6:2a00:1450:4864:20::52c])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 964AF41765
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  9 Jan 2024 14:43:46 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 964AF41765
+Received: by mail-ed1-x52c.google.com with SMTP id
+ 4fb4d7f45d1cf-5534180f0e9so10471a12.1
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 09 Jan 2024 06:43:46 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1704808768; x=1705413568;
- h=content-transfer-encoding:mime-version:subject:references
- :in-reply-to:message-id:cc:to:from:date:x-gm-message-state:from:to
- :cc:subject:date:message-id:reply-to;
- bh=1zbwLQvCGi9ayqIqzz1ygZ1oEKO7pDe3S64K7yitgQ0=;
- b=M1Uutvl5A8Qf7lMZDFbRZP+8I8dKViYv4GxWmxpE+NXc6YyHn1SuzbihJN29RGLDwR
- 350hnRhxRJr2udjYduOafWu6AonZlpGEf/Tph4PnYeClkHCZBEKQ+7Vh014FfITVVzO2
- z1csC2ck4s/UzWv68sepwN6/eLMUFUDkGRbSNZMtO1O5WYGKuGTGtjafycJ8/8zuz2hH
- GHfTTsJYFU3RhkqyfTG7lGs6iQzgbTDeMDZP730oT8EkBe2tO5+nBhlpjwZ9sJq81jqL
- +CTG5NtbfWUddScWERym4IcXMW57EgrigCFPrI8NAn5oOmGCGT7YLZ7VBgqNR/oT7gU5
- oG6w==
-X-Gm-Message-State: AOJu0YxpLd6Tl0p6V5IpaYQkUe/3qbAP1MiTeCdaR2YNKU+WzpgtRJjd
- 8KerPHTESTB041IDXNpe5Pc=
-X-Google-Smtp-Source: AGHT+IEp3BCu3ZUnezV9NlJAZ4Av/aGNhE95t0mHb+RdY60yS9YRLqg9GZv6zhC84yBE+s+uuyLI4Q==
-X-Received: by 2002:a37:c20d:0:b0:781:21c6:83a6 with SMTP id
- i13-20020a37c20d000000b0078121c683a6mr1019863qkm.12.1704808767992; 
- Tue, 09 Jan 2024 05:59:27 -0800 (PST)
-Received: from localhost (48.230.85.34.bc.googleusercontent.com.
- [34.85.230.48]) by smtp.gmail.com with ESMTPSA id
- b2-20020a05620a118200b0076db5b792basm806838qkk.75.2024.01.09.05.59.27
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 09 Jan 2024 05:59:27 -0800 (PST)
-Date: Tue, 09 Jan 2024 08:59:27 -0500
-From: Willem de Bruijn <willemdebruijn.kernel@gmail.com>
-To: Alexander Lobakin <aleksander.lobakin@intel.com>, 
- Willem de Bruijn <willemdebruijn.kernel@gmail.com>
-Message-ID: <659d513f5c0f6_161283294f5@willemb.c.googlers.com.notmuch>
-In-Reply-To: <c4afc32c-e9c7-47de-9bc4-243df95644a3@intel.com>
+ d=1e100.net; s=20230601; t=1704811425; x=1705416225;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=7hTSp/621JuWdOzYoBlVmVqh7hDK5oBkPf++B3jV4j8=;
+ b=ZnZhbe3LGEZkw773/NdF8s/bw33WgI1lNDt5rep6K2wOid7DSOIP8YVfWSHh0w2B07
+ H4DIFo5/zRpM0aq+MnIXiXOENj3Ilc0JnkdByqF8qzwYUswKSuTMxTDEQQIfxQBO5tOZ
+ eEhwRZVCX2pg6ro23b+ztYowp3gV1AImqh+C3dbYS5HuIduMv9+6QzdTVFE71buM91ts
+ abtefUu1vfvCPV+KBa/km8rFyqM7/KT+E5YmjG7ZjnleBnVinxAwOQ6ipRHwIToEdLbz
+ bdEG2kmsqB9EAs/JzWWwqPcZFNkWjWG8yRuDRyWR/ViFISfEnrz4vLc1r4NggPdy9dlL
+ 5tWQ==
+X-Gm-Message-State: AOJu0YxwbD5/YbdjVn0x1bKnomspYGqS5qHVFU7e28UA671vH9CEBjWh
+ tufs/NOTUJSvAIxErPHo3txyVEa1c78xFSygFrtAXhWOx2E9
+X-Google-Smtp-Source: AGHT+IGCzpJkHmbkISlJEaLGwgFS/54jBbdaQxFTLs2DxUORYa3GyuTiAnd2AjxmVJ16Ps8zGgj4wzF+PsKfXzpopCc=
+X-Received: by 2002:a50:9548:0:b0:554:1b1c:72c4 with SMTP id
+ v8-20020a509548000000b005541b1c72c4mr101455eda.1.1704811424481; Tue, 09 Jan
+ 2024 06:43:44 -0800 (PST)
+MIME-Version: 1.0
 References: <20231223025554.2316836-1-aleksander.lobakin@intel.com>
  <20231223025554.2316836-6-aleksander.lobakin@intel.com>
- <658c4328425f7_a33e629412@willemb.c.googlers.com.notmuch>
- <c4afc32c-e9c7-47de-9bc4-243df95644a3@intel.com>
-Mime-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: 7bit
+In-Reply-To: <20231223025554.2316836-6-aleksander.lobakin@intel.com>
+From: Eric Dumazet <edumazet@google.com>
+Date: Tue, 9 Jan 2024 15:43:30 +0100
+Message-ID: <CANn89iLbRnakLSuuoAF7eeN8KGqc7wy0bEgCmHCP1mU6LB912A@mail.gmail.com>
+To: Alexander Lobakin <aleksander.lobakin@intel.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1704808768; x=1705413568; darn=lists.osuosl.org;
- h=content-transfer-encoding:mime-version:subject:references
- :in-reply-to:message-id:cc:to:from:date:from:to:cc:subject:date
+ d=google.com; s=20230601; t=1704811425; x=1705416225; darn=lists.osuosl.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=1zbwLQvCGi9ayqIqzz1ygZ1oEKO7pDe3S64K7yitgQ0=;
- b=Ptbl8lKdgRQ5ufWQl0JXf+XfvRX2CNCrWwAHV7IuxykpFthLLsqALte5oYjGmFzZHr
- hSwPoygWVTTss8LcMH6c7pol7Ma/RkK8B7e34rhMuUnkst4hF7gtpNp+l4AUBgiVXKuc
- w2fluq4Ciwomg6Qr6B9qKzAUaE1ovh52wRD6necNjEls4Ec+Gf09GMXNoZYNhBzCb3ik
- X2q81dGBMtjlXYyiLp/zT1TFltltM3Z/fZHzz/WbSarpT0LdSDc7zLdCIqXD1dontqIz
- idFE5HCjxNSNmgAywGEyl6kJHAfbPNP8P5uK2yqRchlLmAbPW8rt+HNn0RtM5wSwHkSF
- KY3g==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
- header.a=rsa-sha256 header.s=20230601 header.b=Ptbl8lKd
+ bh=7hTSp/621JuWdOzYoBlVmVqh7hDK5oBkPf++B3jV4j8=;
+ b=g7VSnX9/eCFri7o1MYw7fj6oFQu+SrjRfIssUxsY8qVHXqtcBt8r6W1xuqQTb69RyC
+ QWkCWnfA0pS+mGOgTgii2VniB3YGmtgZNdLX1Dl1YBuZJzxogDqk87GPXcUHAq3oNIIC
+ rKkkScAbcvKlGll+vdgXNG4VWGZALneWqxwke9/lb9Ps1IJBrm8XnE7DxReTugYWQMjW
+ gEWP403Ulmk47j624NfDy5fMxe1rsmbmNmiX614bLZxFC6kSACveCSrvpU9aZGjW5T+U
+ Uu1LnghQKeyuPvlMzG6fOl9W7Yp+ox42qa+FHgFGNzooKq/+W0wBMhSbOB6g7zl+zcqH
+ zjMQ==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key) header.d=google.com header.i=@google.com
+ header.a=rsa-sha256 header.s=20230601 header.b=g7VSnX9/
 Subject: Re: [Intel-wired-lan] [PATCH RFC net-next 05/34] idpf: convert
  header split mode to libie + napi_build_skb()
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -116,86 +107,48 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Maciej Fijalkowski <maciej.fijalkowski@intel.com>,
+Cc: Willem de Bruijn <willemdebruijn.kernel@gmail.com>,
+ Maciej Fijalkowski <maciej.fijalkowski@intel.com>,
  Daniel Borkmann <daniel@iogearbox.net>,
  Larysa Zaremba <larysa.zaremba@intel.com>, netdev@vger.kernel.org,
  Alexei Starovoitov <ast@kernel.org>, linux-kernel@vger.kernel.org,
- Eric Dumazet <edumazet@google.com>, Michal Kubiak <michal.kubiak@intel.com>,
- intel-wired-lan@lists.osuosl.org, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>
+ Michal Kubiak <michal.kubiak@intel.com>, intel-wired-lan@lists.osuosl.org,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ "David S. Miller" <davem@davemloft.net>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Alexander Lobakin wrote:
-> From: Willem De Bruijn <willemdebruijn.kernel@gmail.com>
-> Date: Wed, 27 Dec 2023 10:30:48 -0500
-> 
-> > Alexander Lobakin wrote:
-> >> Currently, idpf uses the following model for the header buffers:
-> >>
-> >> * buffers are allocated via dma_alloc_coherent();
-> >> * when receiving, napi_alloc_skb() is called and then the header is
-> >>   copied to the newly allocated linear part.
-> >>
-> >> This is far from optimal as DMA coherent zone is slow on many systems
-> >> and memcpy() neutralizes the idea and benefits of the header split.
-> > 
-> > Do you have data showing this?
-> 
-> Showing slow coherent DMA or memcpy()?
-> Try MIPS for the first one.
-> For the second -- try comparing performance on ice with the "legacy-rx"
-> private flag disabled and enabled.
-> 
-> > 
-> > The assumption for the current model is that the headers will be
-> > touched shortly after, so the copy just primes the cache.
-> 
-> They won't be touched in many cases. E.g. XDP_DROP.
-> Or headers can be long. memcpy(32) != memcpy(128).
-> The current model allocates a new skb with a linear part, which is a
-> real memory allocation. napi_build_skb() doesn't allocate anything
-> except struct sk_buff, which is usually available in the NAPI percpu cache.
-> If build_skb() wasn't more effective, it wouldn't be introduced.
-> The current model just assumes default socket traffic with ~40-byte
-> headers and no XDP etc.
-> 
-> > 
-> > The single coherently allocated region for all headers reduces
-> > IOTLB pressure.
-> 
-> page_pool pages are mapped once at allocation.
-> 
-> > 
-> > It is possible that the alternative model is faster. But that is not
-> > trivially obvious.
-> > 
-> > I think patches like this can stand on their own. Probably best to
-> > leave them out of the dependency series to enable XDP and AF_XDP.
-> 
-> You can't do XDP on DMA coherent zone. To do this memcpy(), you need
-> allocate a new skb with a linear part, which is usually done after XDP,
-> otherwise it's too much overhead and little-to-no benefits comparing to
-> generic skb XDP.
-> The current idpf code is just not compatible with the XDP code in this
-> series, it's pointless to do double work.
-> 
-> Disabling header split when XDP is enabled (alternative option) means
-> disabling TCP zerocopy and worse performance in general, I don't
-> consider this.
+On Sat, Dec 23, 2023 at 3:58=E2=80=AFAM Alexander Lobakin
+<aleksander.lobakin@intel.com> wrote:
+>
+> Currently, idpf uses the following model for the header buffers:
+>
+> * buffers are allocated via dma_alloc_coherent();
+> * when receiving, napi_alloc_skb() is called and then the header is
+>   copied to the newly allocated linear part.
+>
+> This is far from optimal as DMA coherent zone is slow on many systems
+> and memcpy() neutralizes the idea and benefits of the header split.
+> Instead, use libie to create page_pools for the header buffers, allocate
+> them dynamically and then build an skb via napi_build_skb() around them
+> with no memory copy. With one exception...
+> When you enable header split, you except you'll always have a separate
+> header buffer, so that you could reserve headroom and tailroom only
+> there and then use full buffers for the data. For example, this is how
+> TCP zerocopy works -- you have to have the payload aligned to PAGE_SIZE.
+> The current hardware running idpf does *not* guarantee that you'll
+> always have headers placed separately. For example, on my setup, even
+> ICMP packets are written as one piece to the data buffers. You can't
+> build a valid skb around a data buffer in this case.
+> To not complicate things and not lose TCP zerocopy etc., when such thing
+> happens, use the empty header buffer and pull either full frame (if it's
+> short) or the Ethernet header there and build an skb around it. GRO
+> layer will pull more from the data buffer later. This W/A will hopefully
+> be removed one day.
 
-My concern is if optimizations for XDP might degrade the TCP/IP common
-path. XDP_DROP and all of XDP even is a niche feature by comparison.
+We definitely want performance numbers here, for systems that truly matter.
 
-The current driver behavior was not the first for IDPF, but arrived
-at based on extensive performance debugging. An earlier iteration used
-separate header buffers. Switching to a single coherent allocated
-buffer region significantly increased throughput / narrowed the gap
-between header-split and non-header-split mode.
+We spent a lot of time trying to make idpf slightly better than it
+was, we do not want regressions.
 
-I follow your argument and the heuristics are reasonable. My request
-is only that this decision is based on real data for this driver and
-modern platforms. We cannot regress TCP/IP hot path performance.
-
-
-
+Thank you.
