@@ -1,100 +1,98 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1A363828868
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  9 Jan 2024 15:44:00 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id C968A829E10
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 10 Jan 2024 16:57:14 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 9979661189;
-	Tue,  9 Jan 2024 14:43:53 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9979661189
+	by smtp4.osuosl.org (Postfix) with ESMTP id 5D51942210;
+	Wed, 10 Jan 2024 15:57:13 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5D51942210
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1704811433;
-	bh=7hTSp/621JuWdOzYoBlVmVqh7hDK5oBkPf++B3jV4j8=;
+	s=default; t=1704902233;
+	bh=9ZYnQDS2/5FzdXIsOPjnH59yNpLPLfRAmFP0X+DJCHg=;
 	h=References:In-Reply-To:From:Date:To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=ZSwfapQBnRPW1RD9YxHOCyBbd+Eqp8OcexZXlFc0+UV4zoDRDlfN7cqECUyWICLp3
-	 INYrBOuUlcZshPbpK6WD7SkA5krTdf5Ybg/f49ylNjYse05RQxGanuCCnwCeWf/Oqj
-	 dEn5ZvrWNuFZeXAmLr1NIa1BRw9DenksIAs6oyJZlm2SspeUsyz5DkU4vCulf017Yq
-	 v/nWi1hHvwp2QQVvZtU+6l4a7uipI5+2wM9IgbF32jfH0CcBcrFQduMo/IPg5z0X99
-	 ViG/vqZ742orlmfOt3w/kv59orEUwynaq8IW6m+r+vuzDFyRjGiuu6QA0xUBAbuip1
-	 jjuIzVM2ocHvw==
+	b=BLxOvsHB0togUOnCn+hsH5qXlYs2XZD73sn6JHamwqlWMzIX/YBV09SRe2BwuUhof
+	 cKCIUaZb8yO0p8jfLnHatSVeC6d19pTneiK5tlPJW5eEGXn0KX6U7NeS7T+K8hVprZ
+	 2NKzKHamVW/lKVMbJacFviIV/ZsrJf12lDrYXvj9KJb9O0h776bSVRRwwykcS4+1ts
+	 UL+9yHuEvNfBIydJq7zD7yn3JiRUD8qpk+dPmPfqLARn1lo/MWK23iolLMFilA6sHY
+	 5p4PaLgHXbhERVdPWmNL+esvCeKLBQEoNn5Ysa888N0xbjxdSWowRftZs+Ze40lGny
+	 xGJzmiN63Nsxw==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Iu8zECEvt-4x; Tue,  9 Jan 2024 14:43:53 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id aJHy_gzB_tmz; Wed, 10 Jan 2024 15:57:12 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id B152C61155;
-	Tue,  9 Jan 2024 14:43:52 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B152C61155
+	by smtp4.osuosl.org (Postfix) with ESMTP id 41333421F2;
+	Wed, 10 Jan 2024 15:57:12 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 41333421F2
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id D70031BF34E
- for <intel-wired-lan@lists.osuosl.org>; Tue,  9 Jan 2024 14:43:47 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 5C5E81BF2BF
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 10 Jan 2024 06:46:16 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id A10D843535
- for <intel-wired-lan@lists.osuosl.org>; Tue,  9 Jan 2024 14:43:47 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A10D843535
+ by smtp4.osuosl.org (Postfix) with ESMTP id 4005F42547
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 10 Jan 2024 06:46:16 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4005F42547
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id roTS9yWl3ndq for <intel-wired-lan@lists.osuosl.org>;
- Tue,  9 Jan 2024 14:43:46 +0000 (UTC)
-Received: from mail-ed1-x52c.google.com (mail-ed1-x52c.google.com
- [IPv6:2a00:1450:4864:20::52c])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 964AF41765
- for <intel-wired-lan@lists.osuosl.org>; Tue,  9 Jan 2024 14:43:46 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 964AF41765
-Received: by mail-ed1-x52c.google.com with SMTP id
- 4fb4d7f45d1cf-5534180f0e9so10471a12.1
- for <intel-wired-lan@lists.osuosl.org>; Tue, 09 Jan 2024 06:43:46 -0800 (PST)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id jp72fUfmczaI for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 10 Jan 2024 06:46:15 +0000 (UTC)
+Received: from mail-wm1-x334.google.com (mail-wm1-x334.google.com
+ [IPv6:2a00:1450:4864:20::334])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 08A5242543
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 10 Jan 2024 06:46:14 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 08A5242543
+Received: by mail-wm1-x334.google.com with SMTP id
+ 5b1f17b1804b1-40b5155e154so49716635e9.3
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 09 Jan 2024 22:46:14 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1704811425; x=1705416225;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=7hTSp/621JuWdOzYoBlVmVqh7hDK5oBkPf++B3jV4j8=;
- b=ZnZhbe3LGEZkw773/NdF8s/bw33WgI1lNDt5rep6K2wOid7DSOIP8YVfWSHh0w2B07
- H4DIFo5/zRpM0aq+MnIXiXOENj3Ilc0JnkdByqF8qzwYUswKSuTMxTDEQQIfxQBO5tOZ
- eEhwRZVCX2pg6ro23b+ztYowp3gV1AImqh+C3dbYS5HuIduMv9+6QzdTVFE71buM91ts
- abtefUu1vfvCPV+KBa/km8rFyqM7/KT+E5YmjG7ZjnleBnVinxAwOQ6ipRHwIToEdLbz
- bdEG2kmsqB9EAs/JzWWwqPcZFNkWjWG8yRuDRyWR/ViFISfEnrz4vLc1r4NggPdy9dlL
- 5tWQ==
-X-Gm-Message-State: AOJu0YxwbD5/YbdjVn0x1bKnomspYGqS5qHVFU7e28UA671vH9CEBjWh
- tufs/NOTUJSvAIxErPHo3txyVEa1c78xFSygFrtAXhWOx2E9
-X-Google-Smtp-Source: AGHT+IGCzpJkHmbkISlJEaLGwgFS/54jBbdaQxFTLs2DxUORYa3GyuTiAnd2AjxmVJ16Ps8zGgj4wzF+PsKfXzpopCc=
-X-Received: by 2002:a50:9548:0:b0:554:1b1c:72c4 with SMTP id
- v8-20020a509548000000b005541b1c72c4mr101455eda.1.1704811424481; Tue, 09 Jan
- 2024 06:43:44 -0800 (PST)
+ d=1e100.net; s=20230601; t=1704869173; x=1705473973;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=9ZYnQDS2/5FzdXIsOPjnH59yNpLPLfRAmFP0X+DJCHg=;
+ b=itP4Xw2tNYxMreg9sBlsf+ng/26iBVctYCPvjTCKol3QNg190RgTYST2USQLUIUlwp
+ bj9DtUpvEdI5/RTi8kevePOKIVBchb9hibK9EhNQRPoZyMxiypfyw9VL4sU53OC8E40X
+ ZxwPV6+WQ7ndBv+26bFT07WFE/hHl9DjS8LCezKr6CFdDA+NIOi6C5ndR2VFmRs7zEyt
+ jrX+oln8a5fQF5F7bnkw+Ptf65PzWvod2VYndpGDtdP3aedusP0+ipJFt2NrwJjpUE11
+ n/Ngw0cESEcAoXkYxRoqtVFynot8TNNSrlgCCCt+5Wquch8G8UyxEoHuzoq+foeYI0do
+ 5Vrw==
+X-Gm-Message-State: AOJu0YwBaykeOrcNRdkdAOLiWS8WWY4jAl0xv6phTZnqLIFft5YO0CX8
+ ZcgAqsRzNPqdoj0RuInmeRVev8DO8UOkPnRIFDJ89i5mSaXB
+X-Google-Smtp-Source: AGHT+IFOZ+mrTXQ+2McfOHq9ggRbCxLCGT6ka/4ljIABoDp9ZDsXEmP3BmJNIB95pKQcBV1ou++9OHf7OOGmzwEG8uY=
+X-Received: by 2002:a05:600c:22d1:b0:40e:4d17:b239 with SMTP id
+ 17-20020a05600c22d100b0040e4d17b239mr232652wmg.60.1704869172840; Tue, 09 Jan
+ 2024 22:46:12 -0800 (PST)
 MIME-Version: 1.0
-References: <20231223025554.2316836-1-aleksander.lobakin@intel.com>
- <20231223025554.2316836-6-aleksander.lobakin@intel.com>
-In-Reply-To: <20231223025554.2316836-6-aleksander.lobakin@intel.com>
-From: Eric Dumazet <edumazet@google.com>
-Date: Tue, 9 Jan 2024 15:43:30 +0100
-Message-ID: <CANn89iLbRnakLSuuoAF7eeN8KGqc7wy0bEgCmHCP1mU6LB912A@mail.gmail.com>
-To: Alexander Lobakin <aleksander.lobakin@intel.com>
+References: <CAK8fFZ7Xi3=1HFY400firmpRWzHDPsi90cUU5bjOkF00KNZWeA@mail.gmail.com>
+In-Reply-To: <CAK8fFZ7Xi3=1HFY400firmpRWzHDPsi90cUU5bjOkF00KNZWeA@mail.gmail.com>
+From: Jaroslav Pulchart <jaroslav.pulchart@gooddata.com>
+Date: Wed, 10 Jan 2024 07:45:47 +0100
+Message-ID: <CAK8fFZ5xHpOr-bQsUMB+kr+pMHvF4S7G7DmEkXVf2f-J1dPi-g@mail.gmail.com>
+To: Jesse Brandeburg <jesse.brandeburg@intel.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>, 
+ intel-wired-lan@lists.osuosl.org, Dave Ertman <david.m.ertman@intel.com>
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+X-Mailman-Approved-At: Wed, 10 Jan 2024 15:57:07 +0000
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1704811425; x=1705416225; darn=lists.osuosl.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=7hTSp/621JuWdOzYoBlVmVqh7hDK5oBkPf++B3jV4j8=;
- b=g7VSnX9/eCFri7o1MYw7fj6oFQu+SrjRfIssUxsY8qVHXqtcBt8r6W1xuqQTb69RyC
- QWkCWnfA0pS+mGOgTgii2VniB3YGmtgZNdLX1Dl1YBuZJzxogDqk87GPXcUHAq3oNIIC
- rKkkScAbcvKlGll+vdgXNG4VWGZALneWqxwke9/lb9Ps1IJBrm8XnE7DxReTugYWQMjW
- gEWP403Ulmk47j624NfDy5fMxe1rsmbmNmiX614bLZxFC6kSACveCSrvpU9aZGjW5T+U
- Uu1LnghQKeyuPvlMzG6fOl9W7Yp+ox42qa+FHgFGNzooKq/+W0wBMhSbOB6g7zl+zcqH
- zjMQ==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=google.com header.i=@google.com
- header.a=rsa-sha256 header.s=20230601 header.b=g7VSnX9/
-Subject: Re: [Intel-wired-lan] [PATCH RFC net-next 05/34] idpf: convert
- header split mode to libie + napi_build_skb()
+ d=gooddata.com; s=google; t=1704869173; x=1705473973; darn=lists.osuosl.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=9ZYnQDS2/5FzdXIsOPjnH59yNpLPLfRAmFP0X+DJCHg=;
+ b=PXqESCutrhIwKQkTyzV1Ul4MiQVCOTGGst7hXMA96XlLTlhMv7EayE51aAlUrEpdrU
+ xpqbHp57ITgh2dXxfRpka8/CzfSGVEUipv8yXq8bAKQylq1AG/2NxQIVvlzLMQgc79VG
+ OqtSJFWe3Xvv+sTrnI0L4Y5117sFGgvlZCxn4=
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (1024-bit key) header.d=gooddata.com header.i=@gooddata.com
+ header.a=rsa-sha256 header.s=google header.b=PXqESCut
+Subject: Re: [Intel-wired-lan] [REGRESSION] Intel ICE Ethernet driver in
+ linux >= 6.6.9 triggers extra memory consumption and cause continous
+ kswapd* usage and continuous swapping
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -107,48 +105,64 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Willem de Bruijn <willemdebruijn.kernel@gmail.com>,
- Maciej Fijalkowski <maciej.fijalkowski@intel.com>,
- Daniel Borkmann <daniel@iogearbox.net>,
- Larysa Zaremba <larysa.zaremba@intel.com>, netdev@vger.kernel.org,
- Alexei Starovoitov <ast@kernel.org>, linux-kernel@vger.kernel.org,
- Michal Kubiak <michal.kubiak@intel.com>, intel-wired-lan@lists.osuosl.org,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- "David S. Miller" <davem@davemloft.net>
+Cc: Igor Raits <igor@gooddata.com>, Daniel Secik <daniel.secik@gooddata.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Sat, Dec 23, 2023 at 3:58=E2=80=AFAM Alexander Lobakin
-<aleksander.lobakin@intel.com> wrote:
 >
-> Currently, idpf uses the following model for the header buffers:
+> Hello
 >
-> * buffers are allocated via dma_alloc_coherent();
-> * when receiving, napi_alloc_skb() is called and then the header is
->   copied to the newly allocated linear part.
+> I would like to report a regression triggered by recent change in
+> Intel ICE Ethernet driver in the 6.6.9 linux kernel. The problem was
+> bisected and the regression is triggered by
+> fc4d6d136d42fab207b3ce20a8ebfd61a13f931f "ice: alter feature support
+> check for SRIOV and LAG" commit and originally reported as part of
+> https://lore.kernel.org/linux-mm/CAK8fFZ4DY+GtBA40Pm7Nn5xCHy+51w3sfxPqkqpqakSXYyX+Wg@mail.gmail.com/T/#m5217c62beb03b3bc75d7dd4b1d9bab64a3e68826
+> thread.
 >
-> This is far from optimal as DMA coherent zone is slow on many systems
-> and memcpy() neutralizes the idea and benefits of the header split.
-> Instead, use libie to create page_pools for the header buffers, allocate
-> them dynamically and then build an skb via napi_build_skb() around them
-> with no memory copy. With one exception...
-> When you enable header split, you except you'll always have a separate
-> header buffer, so that you could reserve headroom and tailroom only
-> there and then use full buffers for the data. For example, this is how
-> TCP zerocopy works -- you have to have the payload aligned to PAGE_SIZE.
-> The current hardware running idpf does *not* guarantee that you'll
-> always have headers placed separately. For example, on my setup, even
-> ICMP packets are written as one piece to the data buffers. You can't
-> build a valid skb around a data buffer in this case.
-> To not complicate things and not lose TCP zerocopy etc., when such thing
-> happens, use the empty header buffer and pull either full frame (if it's
-> short) or the Ethernet header there and build an skb around it. GRO
-> layer will pull more from the data buffer later. This W/A will hopefully
-> be removed one day.
+> > However, after the following patch we see that more NUMA nodes have
+> > such a low amount of memory and  that is causing constant reclaiming
+> > of memory because it looks like something inside of the kernel ate all
+> > the memory. This is right after the start of the system as well.
+>
+>  I'm reporting it here as it is a different problem than the original
+> thread. The commit introduces a low memory problem per each numa node
+> of the first socket (node0 .. node3 in our case) and cause constant
+> kswapd* 100% CPU usage. See attached 6.6.9-kswapd_usage.png. The low
+> memory issue is nicely visible in "numastat -m", see attached files:
+> * numastat_m-6.6.10_28GB_HP_ice_revert.txt   >= 6.6.9 with reverted ice commit
+> * numastat_m-6.6.10_28GB_HP_no_revert.txt    >= 6.6.9 vanilla
+> the server "is fresh" (after reboot), without running any application load.
+>
+> $ grep MemFree numastat_m-6.6.10_28GB_HP_ice_revert.txt
+> numastat_m-6.6.10_28GB_HP_no_revert.txt
+> numastat_m-6.6.10_28GB_HP_ice_revert.txt:MemFree
+> 2756.89         2754.86          100.39         2278.43         < ice
+> fix is reverted, we have ~2GB free per numa, except one, like before
+> == no issue
+> numastat_m-6.6.10_28GB_HP_ice_revert.txt:MemFree
+> 3551.29         1530.52         2212.04         3488.09
+> ...
+> numastat_m-6.6.10_28GB_HP_no_revert.txt:MemFree
+> 127.52           66.49          120.23          263.47               <
+> ice fix is present, we see just few MB free per each node, this will
+> cause kswapd utilization!
+> numastat_m-6.6.10_28GB_HP_no_revert.txt:MemFree
+> 3322.18         3134.47          195.55          879.17
+> ...
+>
+> If you have some hints on how to debug what is actually occupying all
+> that memory and some fix of the problem will be nice. We can provide
+> testing and more reports if needed to analyze the issue. We reverted
+> the commit fc4d6d136d42fab207b3ce20a8ebfd61a13f931f as a workaround
+> till we know a proper fix.
+>
+> Best regards,
+> Jaroslav Pulchart
 
-We definitely want performance numbers here, for systems that truly matter.
+Hello everyone
 
-We spent a lot of time trying to make idpf slightly better than it
-was, we do not want regressions.
+FYI: I try to use linuxk-6.7(.0) kernel and the issue is there as well.
 
-Thank you.
+Best regards,
+Jaroslav Pulchart
