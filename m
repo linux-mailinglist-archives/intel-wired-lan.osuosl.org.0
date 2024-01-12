@@ -2,65 +2,65 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9F7C382BE1F
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 12 Jan 2024 11:10:05 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id A1E2282BE1D
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 12 Jan 2024 11:09:46 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 7E22B42E5F;
-	Fri, 12 Jan 2024 10:09:53 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7E22B42E5F
+	by smtp4.osuosl.org (Postfix) with ESMTP id 3586842E0A;
+	Fri, 12 Jan 2024 10:09:45 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3586842E0A
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1705054193;
-	bh=93IYNYTSQivSR+C4TjUcUiSLxfYl5ZGLUdhQ7ksEFgg=;
+	s=default; t=1705054185;
+	bh=y9Up5Kex7G87pBzjhJvzszbyuPiQc/hb2yupviFCYfk=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=uGZ1FpI5ea0acbVVGHZkp09eESsuPuFzXEfDBB6gu460eLwisJ2Jy7UprSmpWz0bq
-	 gV30n0NGc5L1uJ3O93bCRlpR3xcplW+4i+lH3WLpwUtHmVSu2Fv18QKdFGQ54Js4cV
-	 6ahmZixvSVod+XtOIstAF/qmC3lFMX8wRJiMCnbJ9HspAVE9PaM4+Qe17fFfcjaAKM
-	 PHA+rQxwrmXK6fnoovvbITmzAC7EKzLZZv2eb/Ct1MlUV6cJ+AI+OmZ6Ql6xkrFnCt
-	 rQt8elMINgMNTHX+PpvqMGVd/D21wQ45FiWUxb3wIsavPZc4SRh3lrvSEVaCplonJF
-	 4XLbXPnODZ2PQ==
+	b=FxVgCQKYuCcKS7u98zOP6gVlRHAjmlWWN2JDTWN+uYdSo+ofLoGl73DlGLWf6K54n
+	 0DIMy+GJ11rxJnp5th3r7OUzjUrZGh7eBKdnWPgDP8Z1A6Lz4gKfjIQGF8amlg9bZI
+	 EjjLH05FNjBB+ULHJNxsLZfsTwDVTec9bVp244DZwvNOxWDv7rts21XspGcS4wRSTh
+	 FOP5sSfvuafxAO5Zlof007gXg0s4zpNoDN1s/JDnEpeb05eCKGpiOrzc9AlRz9OosV
+	 FUbVgHeC6saGzpZ3iFN16ve9VRxoP52CjBawwnqCvEoK/FReJQcMp4JqmHpulDdUXb
+	 1Cy8tCFByXyCg==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id siMc-x6GhqlO; Fri, 12 Jan 2024 10:09:52 +0000 (UTC)
+	with ESMTP id axDES6u8-KTQ; Fri, 12 Jan 2024 10:09:44 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 6B57242E3B;
-	Fri, 12 Jan 2024 10:09:52 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6B57242E3B
+	by smtp4.osuosl.org (Postfix) with ESMTP id 165B742DB6;
+	Fri, 12 Jan 2024 10:09:44 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 165B742DB6
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id BA30F1BF5DD
- for <intel-wired-lan@lists.osuosl.org>; Fri, 12 Jan 2024 10:09:47 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 30B0C1BF995
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 12 Jan 2024 10:09:35 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 8F8D183B67
- for <intel-wired-lan@lists.osuosl.org>; Fri, 12 Jan 2024 10:09:47 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8F8D183B67
+ by smtp3.osuosl.org (Postfix) with ESMTP id 09C9F6F652
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 12 Jan 2024 10:09:35 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 09C9F6F652
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 4yOPriugx0CW for <intel-wired-lan@lists.osuosl.org>;
- Fri, 12 Jan 2024 10:09:45 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id InNvvnLnT-_N for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 12 Jan 2024 10:09:34 +0000 (UTC)
 Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.11])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 016E083AC0
- for <intel-wired-lan@lists.osuosl.org>; Fri, 12 Jan 2024 10:09:44 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 016E083AC0
-X-IronPort-AV: E=McAfee;i="6600,9927,10950"; a="5867350"
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 5E0A36FA25
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 12 Jan 2024 10:09:34 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5E0A36FA25
+X-IronPort-AV: E=McAfee;i="6600,9927,10950"; a="5867356"
 X-IronPort-AV: E=Sophos;i="6.04,189,1695711600"; 
-   d="scan'208";a="5867350"
+   d="scan'208";a="5867356"
 Received: from orsmga006.jf.intel.com ([10.7.209.51])
  by fmvoesa105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 12 Jan 2024 02:09:32 -0800
+ 12 Jan 2024 02:09:34 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10950"; a="759083275"
-X-IronPort-AV: E=Sophos;i="6.04,189,1695711600"; d="scan'208";a="759083275"
+X-IronPort-AV: E=McAfee;i="6600,9927,10950"; a="759083278"
+X-IronPort-AV: E=Sophos;i="6.04,189,1695711600"; d="scan'208";a="759083278"
 Received: from os-delivery.igk.intel.com ([10.102.18.218])
- by orsmga006.jf.intel.com with ESMTP; 12 Jan 2024 02:09:29 -0800
+ by orsmga006.jf.intel.com with ESMTP; 12 Jan 2024 02:09:31 -0800
 From: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Fri, 12 Jan 2024 10:59:44 +0100
-Message-Id: <20240112095945.450590-2-jedrzej.jagielski@intel.com>
+Date: Fri, 12 Jan 2024 10:59:45 +0100
+Message-Id: <20240112095945.450590-3-jedrzej.jagielski@intel.com>
 X-Mailer: git-send-email 2.31.1
 In-Reply-To: <20240112095945.450590-1-jedrzej.jagielski@intel.com>
 References: <20240112095945.450590-1-jedrzej.jagielski@intel.com>
@@ -68,22 +68,22 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1705054185; x=1736590185;
+ t=1705054175; x=1736590175;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=KYlwYu/JnYFP0dZJ9hFqUmlC0ICBzK/58VCU/teM4uE=;
- b=Tm4uS8qOdglxuE3DUW/4Y76CJs8YGj3au1wN/ye3y+Aqi57HaydBlNmr
- NKqKjwscJW6mo5wBMSy3i97ZTIRo38uoUmrIjBzpMYfz8qMLM0FRiYO7K
- kV8etb7mof6GzzftLmw5l/I021JsAmc55aOgghW9O5rJVbULl6jwnCO7a
- 1pseOGrcZ5wO5YW/PwVYevxzXmRh3qhxZdFLOlKJ6hPw0z8KlvW499eoW
- O+6Ul6zU5vK8vfZgbt0p0HAYBpNh492LkJ9boCz+vL6Lf0qV3nZYQ/EpN
- oD1DnHmL4JPDkkWk/rZVCZnUDnMxZw5T+hA6DFmh7ZjAsFb/ddzTN8Tie
+ bh=ZvFke+XRGhfOl7Lb4+LszHZJfWeFfUICHvr9mpX/hxs=;
+ b=oJW77k4P7+sAKQmjX7Uju0pqT2EBS+5ttGf7+ZsmUhauud7sXMkAP9tt
+ a1yDG6QtTLkXBtvU0HB0yX9hqDZPpBEllIWykTYdFGj2E2qU84FDyzt9x
+ z98UGx8LaCxI1HECHcMiOlrSqJwdfdoMNYLb9XrDqxSuZSalORhxKNJ9M
+ 13rRei3RPdXSafaqxrljZKIRFCxLevtC57noSm24tc/7pWm5DeO0DZaCU
+ DMgHzm2WF+5a3K9wSeKoMFHp2Awfn2rRL7/oDfVRwcfNi8nA7Cy0viskN
+ 1Snllsi1zXZMCAyoqIsjwUCpKe8ndi7HBr8ghy0WmFdpHkqOMNvmkIDgb
  A==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=Tm4uS8qO
-Subject: [Intel-wired-lan] [PATCH iwl-next v1 1/2] i40e: Add read alternate
- indirect command
+ header.a=rsa-sha256 header.s=Intel header.b=oJW77k4P
+Subject: [Intel-wired-lan] [PATCH iwl-next v1 2/2] i40e-linux: Add support
+ for reading Trace Buffer
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,114 +96,121 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Aleksandr Loktionov <aleksandr.loktionov@intel.com>, netdev@vger.kernel.org,
- Przemyslaw R Karpinski <przemyslaw.r.karpinski@intel.com>,
+Cc: netdev@vger.kernel.org, Jan Sokolowski <jan.sokolowski@intel.com>,
  anthony.l.nguyen@intel.com, Jedrzej Jagielski <jedrzej.jagielski@intel.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Przemyslaw R Karpinski <przemyslaw.r.karpinski@intel.com>
+Currently after entering FW Recovery Mode we have no info in logs
+regarding current FW state.
 
-Introduce implementation of 0x0903 Admin Queue command.
-This indirect command reads a block of data from the alternate structure
-of memory. The command defines the number of Dwords to be read and the
-starting address inside the alternate structure.
+Add function reading content of the alternate RAM storing that info and
+print it into the log. Additionally print state of CSR register.
 
-Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
-Signed-off-by: Przemyslaw R Karpinski <przemyslaw.r.karpinski@intel.com>
+Reviewed-by: Jan Sokolowski <jan.sokolowski@intel.com>
 Signed-off-by: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
 ---
- .../net/ethernet/intel/i40e/i40e_adminq_cmd.h |  4 +-
- drivers/net/ethernet/intel/i40e/i40e_common.c | 40 +++++++++++++++++++
- .../net/ethernet/intel/i40e/i40e_prototype.h  |  3 ++
- 3 files changed, 45 insertions(+), 2 deletions(-)
+ drivers/net/ethernet/intel/i40e/i40e.h        |  2 ++
+ drivers/net/ethernet/intel/i40e/i40e_main.c   | 35 +++++++++++++++++++
+ .../net/ethernet/intel/i40e/i40e_register.h   |  2 ++
+ drivers/net/ethernet/intel/i40e/i40e_type.h   |  5 +++
+ 4 files changed, 44 insertions(+)
 
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_adminq_cmd.h b/drivers/net/ethernet/intel/i40e/i40e_adminq_cmd.h
-index 18a1c3b6d72c..50785f7e6d08 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_adminq_cmd.h
-+++ b/drivers/net/ethernet/intel/i40e/i40e_adminq_cmd.h
-@@ -1983,14 +1983,14 @@ I40E_CHECK_CMD_LENGTH(i40e_aqc_alternate_write);
-  * Indirect read (indirect 0x0903)
-  */
+diff --git a/drivers/net/ethernet/intel/i40e/i40e.h b/drivers/net/ethernet/intel/i40e/i40e.h
+index ba24f3fa92c3..6ebd2fd15e0e 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e.h
++++ b/drivers/net/ethernet/intel/i40e/i40e.h
+@@ -23,6 +23,8 @@
+ /* Useful i40e defaults */
+ #define I40E_MAX_VEB			16
  
--struct i40e_aqc_alternate_ind_write {
-+struct i40e_aqc_alternate_ind_read_write {
- 	__le32 address;
- 	__le32 length;
- 	__le32 addr_high;
- 	__le32 addr_low;
- };
- 
--I40E_CHECK_CMD_LENGTH(i40e_aqc_alternate_ind_write);
-+I40E_CHECK_CMD_LENGTH(i40e_aqc_alternate_ind_read_write);
- 
- /* Done alternate write (direct 0x0904)
-  * uses i40e_aq_desc
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_common.c b/drivers/net/ethernet/intel/i40e/i40e_common.c
-index de6ca6295742..93971c9c98cc 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_common.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_common.c
-@@ -4375,6 +4375,46 @@ static int i40e_aq_alternate_read(struct i40e_hw *hw,
- 	return status;
++#define I40_BYTES_PER_WORD		2
++
+ #define I40E_MAX_NUM_DESCRIPTORS	4096
+ #define I40E_MAX_NUM_DESCRIPTORS_XL710	8160
+ #define I40E_MAX_CSR_SPACE		(4 * 1024 * 1024 - 64 * 1024)
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
+index 4977ff391fed..f5abe8c9a88d 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_main.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
+@@ -15414,6 +15414,39 @@ static int i40e_handle_resets(struct i40e_pf *pf)
+ 	return is_empr ? -EIO : pfr;
  }
  
 +/**
-+ * i40e_aq_alternate_read_indirect
-+ * @hw: pointer to the hardware structure
-+ * @addr: address of the alternate structure field
-+ * @dw_count: number of alternate structure fields to read
-+ * @buffer: pointer to the command buffer
++ * i40e_log_fw_recovery_mode - log current FW state in Recovery Mode
++ * @pf: board private structure
 + *
-+ * Read 'dw_count' dwords from alternate structure starting at 'addr' and
-+ * place them in 'buffer'. The buffer should be allocated by caller.
-+ *
++ * Read alternate RAM and CSR registers and print them to the log
 + **/
-+int i40e_aq_alternate_read_indirect(struct i40e_hw *hw, u32 addr, u32 dw_count,
-+				    void *buffer)
++static void i40e_log_fw_recovery_mode(struct i40e_pf *pf)
 +{
-+	struct i40e_aqc_alternate_ind_read_write *cmd_resp;
-+	struct i40e_aq_desc desc;
-+	int status;
++	u8 buf[I40E_FW_STATE_BUFF_SIZE] = {0};
++	struct i40e_hw *hw = &pf->hw;
++	u8 fws0b, fws1b;
++	u32 fwsts;
++	int ret;
 +
-+	if (!buffer)
-+		return -EINVAL;
++	ret = i40e_aq_alternate_read_indirect(hw, I40E_ALT_CANARY,
++					      I40E_ALT_BUFF_DWORD_SIZE, buf);
++	if (ret) {
++		dev_warn(&pf->pdev->dev,
++			 "Cannot get FW trace buffer due to FW err %d aq_err %s\n",
++			 ret, i40e_aq_str(hw, hw->aq.asq_last_status));
++		return;
++	}
 +
-+	cmd_resp = (struct i40e_aqc_alternate_ind_read_write *)&desc.params.raw;
++	fwsts = rd32(&pf->hw, I40E_GL_FWSTS);
++	fws0b = FIELD_GET(I40E_GL_FWSTS_FWS0B_MASK, fwsts);
++	fws1b = FIELD_GET(I40E_GL_FWSTS_FWS1B_MASK, fwsts);
 +
-+	i40e_fill_default_direct_cmd_desc(&desc,
-+					  i40e_aqc_opc_alternate_read_indirect);
-+
-+	desc.flags |= cpu_to_le16(I40E_AQ_FLAG_RD);
-+	desc.flags |= cpu_to_le16(I40E_AQ_FLAG_BUF);
-+	if (dw_count > I40E_AQ_LARGE_BUF / 4)
-+		desc.flags |= cpu_to_le16((u16)I40E_AQ_FLAG_LB);
-+
-+	cmd_resp->address = cpu_to_le32(addr);
-+	cmd_resp->length = cpu_to_le32(dw_count);
-+
-+	status = i40e_asq_send_command(hw, &desc, buffer,
-+				       lower_16_bits(4 * dw_count), NULL);
-+
-+	return status;
++	print_hex_dump(KERN_DEBUG, "Trace Buffer: ", DUMP_PREFIX_NONE,
++		       BITS_PER_BYTE * I40_BYTES_PER_WORD, 1, buf,
++		       I40E_FW_STATE_BUFF_SIZE, true);
++	dev_dbg(&pf->pdev->dev, "FWS0B=0x%x, FWS1B=0x%x\n", fws0b, fws1b);
 +}
 +
  /**
-  * i40e_aq_suspend_port_tx
-  * @hw: pointer to the hardware structure
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_prototype.h b/drivers/net/ethernet/intel/i40e/i40e_prototype.h
-index af4269330581..37c23a0bded6 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_prototype.h
-+++ b/drivers/net/ethernet/intel/i40e/i40e_prototype.h
-@@ -322,6 +322,9 @@ i40e_aq_rem_cloud_filters_bb(struct i40e_hw *hw, u16 seid,
- 			     u8 filter_count);
- int i40e_read_lldp_cfg(struct i40e_hw *hw,
- 		       struct i40e_lldp_variables *lldp_cfg);
+  * i40e_init_recovery_mode - initialize subsystems needed in recovery mode
+  * @pf: board private structure
+@@ -15497,6 +15530,8 @@ static int i40e_init_recovery_mode(struct i40e_pf *pf, struct i40e_hw *hw)
+ 	mod_timer(&pf->service_timer,
+ 		  round_jiffies(jiffies + pf->service_timer_period));
+ 
++	i40e_log_fw_recovery_mode(pf);
 +
-+int i40e_aq_alternate_read_indirect(struct i40e_hw *hw, u32 addr, u32 dw_count,
-+				    void *buffer);
- int
- i40e_aq_suspend_port_tx(struct i40e_hw *hw, u16 seid,
- 			struct i40e_asq_cmd_details *cmd_details);
+ 	return 0;
+ 
+ err_switch_setup:
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_register.h b/drivers/net/ethernet/intel/i40e/i40e_register.h
+index 14ab642cafdb..8e254ff9c035 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_register.h
++++ b/drivers/net/ethernet/intel/i40e/i40e_register.h
+@@ -169,6 +169,8 @@
+ #define I40E_PRTDCB_TPFCTS_PFCTIMER_SHIFT 0
+ #define I40E_PRTDCB_TPFCTS_PFCTIMER_MASK I40E_MASK(0x3FFF, I40E_PRTDCB_TPFCTS_PFCTIMER_SHIFT)
+ #define I40E_GL_FWSTS 0x00083048 /* Reset: POR */
++#define I40E_GL_FWSTS_FWS0B_SHIFT 0
++#define I40E_GL_FWSTS_FWS0B_MASK  I40E_MASK(0xFF, I40E_GL_FWSTS_FWS0B_SHIFT)
+ #define I40E_GL_FWSTS_FWS1B_SHIFT 16
+ #define I40E_GL_FWSTS_FWS1B_MASK I40E_MASK(0xFF, I40E_GL_FWSTS_FWS1B_SHIFT)
+ #define I40E_GL_FWSTS_FWS1B_EMPR_0 I40E_MASK(0x20, I40E_GL_FWSTS_FWS1B_SHIFT)
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_type.h b/drivers/net/ethernet/intel/i40e/i40e_type.h
+index 725da7edbca3..0372a8d519ad 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_type.h
++++ b/drivers/net/ethernet/intel/i40e/i40e_type.h
+@@ -1372,6 +1372,11 @@ struct i40e_lldp_variables {
+ #define I40E_ALT_BW_VALUE_MASK		0xFF
+ #define I40E_ALT_BW_VALID_MASK		0x80000000
+ 
++/* Alternate Ram Trace Buffer*/
++#define I40E_ALT_CANARY				0xABCDEFAB
++#define I40E_ALT_BUFF_DWORD_SIZE		0x14 /* in dwords */
++#define I40E_FW_STATE_BUFF_SIZE			80
++
+ /* RSS Hash Table Size */
+ #define I40E_PFQF_CTL_0_HASHLUTSIZE_512	0x00010000
+ 
 -- 
 2.31.1
 
