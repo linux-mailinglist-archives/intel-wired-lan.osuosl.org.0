@@ -1,82 +1,81 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id B42CF82C5DE
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 12 Jan 2024 20:28:04 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 677B082CDA7
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 13 Jan 2024 17:07:30 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 4120560D4F;
-	Fri, 12 Jan 2024 19:28:03 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 4120560D4F
+	by smtp1.osuosl.org (Postfix) with ESMTP id 626BE8341E;
+	Sat, 13 Jan 2024 16:07:27 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 626BE8341E
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1705087683;
-	bh=nvCx8/7esfX6t4l0yfeOH4JGQFb1VpHpvLJuqyFwK1A=;
+	s=default; t=1705162047;
+	bh=toCA9Aqe/cYNfbtclX3vRffhXiywzpEGJ6zEe2bbbxg=;
 	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=kHUXAQGjVTxTodsR84CBT8AhaFzwAgYA0hS4ulw2XKIl3Y795WNMWtioXA1B7xOoj
-	 ZdRIGsAYFuptYkWGGyc4cHY8ri7gmd67hNYbHQAsXA/onGdTi5RscbD4RiYtjxXdZk
-	 yXLZzCjIKI6Xp0tX/VnJblz8wXSei8EG0usfx1dDmWptgpdL0AMUouIbqCSY37OiEl
-	 J2uIyQS69GFlBqurLjdFvbpTgmaNX4mKf6pPPbMFQyGsQdOcjp+jFHfG4HA+1VjBG9
-	 BRPYNJ1cpVoM5UHHgg5Ni2vh5nAWl/T2//H3uvWPI/CZrCTgoIznEuN/xZko7USAfl
-	 copQooN4e8yCQ==
+	b=79XHhuBUHi2or1l93XSBWmg7qUSJ0U8u7JYd8kSyMIp5/Xs65h79G5TFj7YLdDNlg
+	 5gk73FGjRUV2qqfZUeOnORR0qz5/BJvrLPHRp3aQeEYTdgDrvwpnBN97HJouM6v+b0
+	 Af2fa6z2s8wNgyujGBCS0nnvR7DKNr9L1/dPySqAkhA3xHz5GUu2UoyRxVLX3SjVLE
+	 dHSpKZfvSZ4IvyT10G8SS+GFd7vLq1qTdH/ad+LQXP1jQvpP6xAC6YUgSE8hUIzU/R
+	 MlpN4aqTavp9DZwMP6SzL/24W/EjYN6N7yEbvMP6BfLB7L2jKfDKjykMe3kLPYaPXV
+	 osKIz2EAc+0cg==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 3mSLyXbYBeV1; Fri, 12 Jan 2024 19:28:02 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id XJmJ0RfRvhi1; Sat, 13 Jan 2024 16:07:26 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 262EF60BE0;
-	Fri, 12 Jan 2024 19:28:02 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 262EF60BE0
+	by smtp1.osuosl.org (Postfix) with ESMTP id 690DA831F5;
+	Sat, 13 Jan 2024 16:07:26 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 690DA831F5
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 790211BF489
- for <intel-wired-lan@lists.osuosl.org>; Fri, 12 Jan 2024 19:27:57 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 339141BF5DF
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 13 Jan 2024 16:07:21 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 41220403B8
- for <intel-wired-lan@lists.osuosl.org>; Fri, 12 Jan 2024 19:27:57 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 41220403B8
+ by smtp2.osuosl.org (Postfix) with ESMTP id 087684061F
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 13 Jan 2024 16:07:21 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 087684061F
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Ysv6VP-c7-f0 for <intel-wired-lan@lists.osuosl.org>;
- Fri, 12 Jan 2024 19:27:54 +0000 (UTC)
-Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 2411540280
- for <intel-wired-lan@lists.osuosl.org>; Fri, 12 Jan 2024 19:27:53 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 2411540280
+ with ESMTP id u_-NZ3LQSRdF for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 13 Jan 2024 16:07:19 +0000 (UTC)
+Received: from ams.source.kernel.org (ams.source.kernel.org [145.40.68.75])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 320B7405B8
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 13 Jan 2024 16:07:19 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 320B7405B8
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by dfw.source.kernel.org (Postfix) with ESMTP id DD5EC61CE8;
- Fri, 12 Jan 2024 19:27:52 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2E296C433C7;
- Fri, 12 Jan 2024 19:27:51 +0000 (UTC)
-Date: Fri, 12 Jan 2024 19:27:48 +0000
+ by ams.source.kernel.org (Postfix) with ESMTP id 6143CB823AB;
+ Sat, 13 Jan 2024 16:07:16 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 87599C433F1;
+ Sat, 13 Jan 2024 16:07:13 +0000 (UTC)
+Date: Sat, 13 Jan 2024 16:07:11 +0000
 From: Simon Horman <horms@kernel.org>
-To: Tony Nguyen <anthony.l.nguyen@intel.com>
-Message-ID: <20240112192748.GB392144@kernel.org>
-References: <20240111003927.2362752-1-anthony.l.nguyen@intel.com>
- <20240111131142.GA45291@kernel.org>
- <81e01a6b-2dd4-731a-570c-58944c5fc9b0@intel.com>
+To: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
+Message-ID: <20240113160711.GK392144@kernel.org>
+References: <20240112095945.450590-1-jedrzej.jagielski@intel.com>
+ <20240112095945.450590-2-jedrzej.jagielski@intel.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <81e01a6b-2dd4-731a-570c-58944c5fc9b0@intel.com>
+In-Reply-To: <20240112095945.450590-2-jedrzej.jagielski@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1705087672;
- bh=/htuLTQELgiq2v9t2djukaAwxAo9F9LALpfsK5RHuVo=;
+ d=kernel.org; s=k20201202; t=1705162034;
+ bh=5GQBHlI5NK+kObariSZGsmsDAQBcXLBxEc91wBGox/c=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=Jb2Cm4XiRM0rFTwhfu9xiC+nda1zDdFa8R2+umuEDwKAzexXPyeRvw6j12kM0CUyi
- YcRjJDXCsA8C7rHMGAhmL58WK9CkwprJ+x6JbjNP17V7wgFiaADKpuPbFty64Qsfeq
- ocggNifBBhmrOZZxTK56qPHONTAYfdApr6TBnMD8iJH/iGDcEPVzhZJ27txvUoGrUZ
- ElNIzk7JfvdbotQIuACUmkZYFxJMrWD/Xjuyon+wAoLRWPAoFlTXl6Vv+zAy5qeffO
- PuiQnZwTcKhfVwcmvt6NkqCvTUTLOHrUMtd1Zb3Jqv98Yk5o3rgxRWgP7t07X0JRt2
- Glxr6i2QJLcIQ==
+ b=Kb7hxkxuwgVTEr4GOxbq8NLUrwbhDyUAU08vl35eeeK6b30ZMXZ2ZSIS0/bFn040l
+ V3H559XWEV8EST9K2X1dCWfqJHhrJ27SXgvXtv1ROQajxV0BBbdnjJq3gmioBgfalt
+ iqaFsVMW/RnL8LDTa+SLnzfWvcIRcHj6WDU8N4nq5e6JebkZsSYdJJDGAhYJ683LNq
+ gIxdFHxnvwqx9t3NnKqABGs+Dyo+tsCYbN8eqvsDL1h4ZWjAw1uPr5J+RWAFZYHPJt
+ 9VlAGJGY91qD7FNLPcGhjC0lW8l4u4mmepc9zXFTEZaeeLAxI9fjshHHx839Gldzix
+ h68sOcTOp4k7g==
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=Jb2Cm4Xi
-Subject: Re: [Intel-wired-lan] [PATCH iwl-net] i40e: Include types.h to some
- headers
+ header.a=rsa-sha256 header.s=k20201202 header.b=Kb7hxkxu
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v1 1/2] i40e: Add read
+ alternate indirect command
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,61 +88,81 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: ivecera@redhat.com, netdev@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org, Martin Zaharinov <micron10@gmail.com>,
- Jesse Brandeburg <jesse.brandeburg@intel.com>
+Cc: Aleksandr Loktionov <aleksandr.loktionov@intel.com>,
+ anthony.l.nguyen@intel.com,
+ Przemyslaw R Karpinski <przemyslaw.r.karpinski@intel.com>,
+ intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Thu, Jan 11, 2024 at 09:00:30AM -0800, Tony Nguyen wrote:
+On Fri, Jan 12, 2024 at 10:59:44AM +0100, Jedrzej Jagielski wrote:
+> From: Przemyslaw R Karpinski <przemyslaw.r.karpinski@intel.com>
 > 
+> Introduce implementation of 0x0903 Admin Queue command.
+> This indirect command reads a block of data from the alternate structure
+> of memory. The command defines the number of Dwords to be read and the
+> starting address inside the alternate structure.
 > 
-> On 1/11/2024 5:11 AM, Simon Horman wrote:
-> > On Wed, Jan 10, 2024 at 04:39:25PM -0800, Tony Nguyen wrote:
-> > > Commit 56df345917c0 ("i40e: Remove circular header dependencies and fix
-> > > headers") redistributed a number of includes from one large header file
-> > > to the locations they were needed. In some environments, types.h is not
-> > > included and causing compile issues. The driver should not rely on
-> > > implicit inclusion from other locations; explicitly include it to these
-> > > files.
-> > > 
-> > > Snippet of issue. Entire log can be seen through the Closes: link.
-> > > 
-> > > In file included from drivers/net/ethernet/intel/i40e/i40e_diag.h:7,
-> > >                   from drivers/net/ethernet/intel/i40e/i40e_diag.c:4:
-> > > drivers/net/ethernet/intel/i40e/i40e_adminq_cmd.h:33:9: error: unknown type name '__le16'
-> > >     33 |         __le16 flags;
-> > >        |         ^~~~~~
-> > > drivers/net/ethernet/intel/i40e/i40e_adminq_cmd.h:34:9: error: unknown type name '__le16'
-> > >     34 |         __le16 opcode;
-> > >        |         ^~~~~~
-> > > ...
-> > > drivers/net/ethernet/intel/i40e/i40e_diag.h:22:9: error: unknown type name 'u32'
-> > >     22 |         u32 elements;   /* number of elements if array */
-> > >        |         ^~~
-> > > drivers/net/ethernet/intel/i40e/i40e_diag.h:23:9: error: unknown type name 'u32'
-> > >     23 |         u32 stride;     /* bytes between each element */
-> > > 
-> > > Reported-by: Martin Zaharinov <micron10@gmail.com>
-> > > Closes: https://lore.kernel.org/netdev/21BBD62A-F874-4E42-B347-93087EEA8126@gmail.com/
-> > > Fixes: 56df345917c0 ("i40e: Remove circular header dependencies and fix headers")
-> > > Reviewed-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
-> > > Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
-> > 
-> > Hi Tony,
-> > 
-> > I agree this is a good change to make.
-> > But I am curious to know if you were able to reproduce
-> > the problem reported at the link above.
-> > Or perhaps more to the point, do you have a config that breaks
-> > without this patch?
-> 
-> Hi Simon,
-> 
-> Unfortunately, I was not able to reproduce the problem. Since it was
-> fairly straightforward on what was happening, I made the patch and Martin
-> confirmed it resolved his issue.
+> Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+> Signed-off-by: Przemyslaw R Karpinski <przemyslaw.r.karpinski@intel.com>
+> Signed-off-by: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
 
-Thanks, I agree this seems straightforward.
+...
 
-Reviewed-by: Simon Horman <horms@kernel.org>
+> diff --git a/drivers/net/ethernet/intel/i40e/i40e_common.c b/drivers/net/ethernet/intel/i40e/i40e_common.c
+> index de6ca6295742..93971c9c98cc 100644
+> --- a/drivers/net/ethernet/intel/i40e/i40e_common.c
+> +++ b/drivers/net/ethernet/intel/i40e/i40e_common.c
+> @@ -4375,6 +4375,46 @@ static int i40e_aq_alternate_read(struct i40e_hw *hw,
+>  	return status;
+>  }
+>  
+> +/**
+> + * i40e_aq_alternate_read_indirect
+> + * @hw: pointer to the hardware structure
+> + * @addr: address of the alternate structure field
+> + * @dw_count: number of alternate structure fields to read
+> + * @buffer: pointer to the command buffer
+> + *
+> + * Read 'dw_count' dwords from alternate structure starting at 'addr' and
+> + * place them in 'buffer'. The buffer should be allocated by caller.
+> + *
+> + **/
+> +int i40e_aq_alternate_read_indirect(struct i40e_hw *hw, u32 addr, u32 dw_count,
+> +				    void *buffer)
+> +{
+> +	struct i40e_aqc_alternate_ind_read_write *cmd_resp;
+> +	struct i40e_aq_desc desc;
+> +	int status;
+> +
+> +	if (!buffer)
+> +		return -EINVAL;
+> +
+> +	cmd_resp = (struct i40e_aqc_alternate_ind_read_write *)&desc.params.raw;
+> +
+> +	i40e_fill_default_direct_cmd_desc(&desc,
+> +					  i40e_aqc_opc_alternate_read_indirect);
+> +
+> +	desc.flags |= cpu_to_le16(I40E_AQ_FLAG_RD);
+> +	desc.flags |= cpu_to_le16(I40E_AQ_FLAG_BUF);
+> +	if (dw_count > I40E_AQ_LARGE_BUF / 4)
+> +		desc.flags |= cpu_to_le16((u16)I40E_AQ_FLAG_LB);
+
+nit: Maybe the cast to (u16) can be dropped?
+     It isn't present in usage of I40E_AQ_FLAG_LB a few lines further up.
+
+> +
+> +	cmd_resp->address = cpu_to_le32(addr);
+> +	cmd_resp->length = cpu_to_le32(dw_count);
+> +
+> +	status = i40e_asq_send_command(hw, &desc, buffer,
+> +				       lower_16_bits(4 * dw_count), NULL);
+> +
+> +	return status;
+> +}
+> +
+>  /**
+>   * i40e_aq_suspend_port_tx
+>   * @hw: pointer to the hardware structure
+
+...
