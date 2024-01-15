@@ -1,82 +1,82 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id F347482D76D
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 15 Jan 2024 11:32:57 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id D88E282D77D
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 15 Jan 2024 11:37:21 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 772E84021B;
-	Mon, 15 Jan 2024 10:32:56 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 772E84021B
+	by smtp4.osuosl.org (Postfix) with ESMTP id 7D5B84167D;
+	Mon, 15 Jan 2024 10:37:13 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7D5B84167D
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1705314776;
-	bh=mYKQFLj9amk7vBp6rgih+XVukHGcYbi56UxRUUSK7to=;
+	s=default; t=1705315033;
+	bh=twN1HzUMzTS/P8qgkp9L/g/7CYt9eF3sWcOoF69TZn8=;
 	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=fQcVHA9jqPUquvGWJ6X1KvcCw1AnYoVMcdAyQdTerkhopwAKGYRGp6jocucmD3Spz
-	 7G8zGiYR7Vqz5pXWxeKcj4ZPdWHUV8DiPW8TtOlw4fzxPmJDtY/eoBJTxrP3BDRR8b
-	 VCltQcFXGe+STZ9ZTNCvr2X5cGbUEKN57WVSd4pMrX+cv+UQRzgmmtz3M6QIDseNWr
-	 eTK+IFApoLCnm7bekMulyz+VeawUreGSToUYCeVm6Ff1KxML+vxMeBgQbIWHvddwOz
-	 mBKrdYiuqkTAcILqVt1m9Apqo6xX0Ic8ARyl5DyVJfJhtFe5MN8jR0ttjTXn9e26nP
-	 4VzLr+zqDYnTg==
+	b=foK3YCoXTeAVx3NQsylHfpJVRyfXHkcxRnFDCIEAJpG50eU94tX3aWZrnd/VMEJZS
+	 D28cxX1X2wdzKRx4eZ1xsEbDf6Q5Yo2MpBBaNXYtLpXy/EY73T8poYTgMIhiQOIRwS
+	 syiQlaEbNQCuGAXK2w/fJh4MNxEvih5TSYZ+/FeKD+tpxYK5z2FXiUKWB1omA8SKJv
+	 3BVhjucsozXZeqlpvNfJcopSEtDajihj88UbE26rSJkthTuu+DxDoyxBal06O6DypT
+	 BmbTRaTxhDgREX9x+j3ddSaRDOL2O/LhIZmAXCMBAsDZvjZ8Vbei/VnDpxPyiXmGTe
+	 3Wk6/zDpCoMhg==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 0jieiPC9ymBz; Mon, 15 Jan 2024 10:32:55 +0000 (UTC)
+	with ESMTP id aiH_qaI-UxUm; Mon, 15 Jan 2024 10:37:13 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 81D314019A;
-	Mon, 15 Jan 2024 10:32:55 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 81D314019A
+	by smtp4.osuosl.org (Postfix) with ESMTP id 79A214167C;
+	Mon, 15 Jan 2024 10:37:12 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 79A214167C
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id AA39F1BF41C
- for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Jan 2024 10:32:49 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 1FD621BF41C
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Jan 2024 10:37:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 8299040080
- for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Jan 2024 10:32:49 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8299040080
+ by smtp3.osuosl.org (Postfix) with ESMTP id EAD1660F4C
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Jan 2024 10:37:06 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org EAD1660F4C
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id T8nfwI5tMMTV for <intel-wired-lan@lists.osuosl.org>;
- Mon, 15 Jan 2024 10:32:49 +0000 (UTC)
-Received: from sin.source.kernel.org (sin.source.kernel.org
- [IPv6:2604:1380:40e1:4800::1])
- by smtp4.osuosl.org (Postfix) with ESMTPS id B9584415D7
- for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Jan 2024 10:32:48 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B9584415D7
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id U-4u1cksSM8F for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 15 Jan 2024 10:37:05 +0000 (UTC)
+Received: from ams.source.kernel.org (ams.source.kernel.org
+ [IPv6:2604:1380:4601:e00::1])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 8EE7860F10
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Jan 2024 10:37:05 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 8EE7860F10
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by sin.source.kernel.org (Postfix) with ESMTP id 1BF84CE0A1A;
- Mon, 15 Jan 2024 10:32:45 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CA597C433F1;
- Mon, 15 Jan 2024 10:32:42 +0000 (UTC)
-Date: Mon, 15 Jan 2024 10:32:40 +0000
+ by ams.source.kernel.org (Postfix) with ESMTP id 5143BB80BA1;
+ Mon, 15 Jan 2024 10:37:02 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4F97EC433C7;
+ Mon, 15 Jan 2024 10:37:00 +0000 (UTC)
+Date: Mon, 15 Jan 2024 10:36:57 +0000
 From: Simon Horman <horms@kernel.org>
 To: Karol Kolacinski <karol.kolacinski@intel.com>
-Message-ID: <20240115103240.GL392144@kernel.org>
+Message-ID: <20240115103657.GM392144@kernel.org>
 References: <20240108124717.1845481-1-karol.kolacinski@intel.com>
- <20240108124717.1845481-2-karol.kolacinski@intel.com>
+ <20240108124717.1845481-4-karol.kolacinski@intel.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20240108124717.1845481-2-karol.kolacinski@intel.com>
+In-Reply-To: <20240108124717.1845481-4-karol.kolacinski@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1705314764;
- bh=3KeBNlQG85wu86o1172m7DM1lMr/QxGKxX/LSwGRrmY=;
+ d=kernel.org; s=k20201202; t=1705315021;
+ bh=AlH6m7R+pm2ANeZNg+yynW5ldbUyIDy0PRzHaQ7Crjw=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=daCnLaQXkmIEfVvDXe4+QoHLM6XOF+t6qMVxQ1uJwSLZqtg/+GGJETaUDQ9bmzzJd
- Gb+NHmUxsWxsFgeBUJnUl4e+GvCCbZXQCVhNT1HwAYXyH4fpLdpuEPQZuEwcXVqr0K
- XCV2HDK2joCzQCngRKgnvvFfmaIgWJCjpRm5DZujzlA9lxQ2wTMw2JN9Xt6J6g4Ttz
- mrFiMOi0PEg/RR9t4SMPZHcKWaieQZStayYlsT5oWAd7LOOb7JTyTGY8y4cn+uryh/
- AIkuC5t72f9DJlQRODfmzvos018U6U902KzK5tKH1BRrA2PLiKXhSka/oe/yfDJ1mV
- wz/wKX7Xel+pw==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ b=JthXMycCwnQoGXYaQeJSQ30+M/hffZh9vt3N41WuJWUUkEFSgFOT7PTyIYLbRlgJ0
+ VYRWtKjG3boPbR2OyMb5JGdGkMoPGpxafGwjZ0cZJRbVYPwXkF67q8t6W8aQQ8np1l
+ lsJgBKAYeUt1JvgtT2PpTGdowKdsHTYsYXbUsLMFMhZUcEuJkNi6aAIGUqGYilJ22T
+ i64bYnHXcj8Yln7aP06wd/6DKjAJviXVP+UKoFJOYqBKnyLmF5ghwf1mhAyi6aGbHV
+ gIDKVSNEEWcWDN5/UDt5w/Pprhgs6QY/TQchReb8aojIkNq0h/C/NTnAiFDtLkovvj
+ 6bMCOIcw7saBw==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=daCnLaQX
-Subject: Re: [Intel-wired-lan] [PATCH v5 iwl-next 1/6] ice: introduce PTP
- state machine
+ header.a=rsa-sha256 header.s=k20201202 header.b=JthXMycC
+Subject: Re: [Intel-wired-lan] [PATCH v5 iwl-next 3/6] ice: rename
+ verify_cached to has_ready_bitmap
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,69 +95,31 @@ Cc: Jacob Keller <jacob.e.keller@intel.com>, netdev@vger.kernel.org,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, Jan 08, 2024 at 01:47:12PM +0100, Karol Kolacinski wrote:
-
-Should there be a "From: Jacob" line here to
-match the Signed-off-by below?
-
-> Add PTP state machine so that the driver can correctly identify PTP
-> state around resets.
-> When the driver got information about ungraceful reset, PTP was not
-> prepared for reset and it returned error. When this situation occurs,
-> prepare PTP before rebuilding its structures.
+On Mon, Jan 08, 2024 at 01:47:14PM +0100, Karol Kolacinski wrote:
+> From: Jacob Keller <jacob.e.keller@intel.com>
 > 
+> The tx->verify_cached flag is used to inform the Tx timestamp tracking
+> code whether it needs to verify the cached Tx timestamp value against
+> a previous captured value. This is necessary on E810 hardware which does
+> not have a Tx timestamp ready bitmap.
+> 
+> In addition, we currently rely on the fact that the
+> ice_get_phy_tx_tstamp_ready() function returns all 1s for E810 hardware.
+> Instead of introducing a brand new flag, rename and verify_cached to
+> has_ready_bitmap, inverting the relevant checks.
+
+From the above I understand what this patch does.
+But not why this change is desirable.
+I think it would be useful to state that.
+
+Also, perhaps it just me, but it seems that
+renaming verify_cached and weeding out assumptions
+about the return value of ice_get_phy_tx_tstamp_ready()
+are separate, albeit related changes:
+I might have gone for two patches instead of one.
+
 > Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
 > Signed-off-by: Karol Kolacinski <karol.kolacinski@intel.com>
 > Reviewed-by: Jacob Keller <jacob.e.keller@intel.com>
-
-Hi Karol and Jacob,
-
-FWIIW, The combination of both a Signed-off-by and Reviewed-by tag from
-Jacob seems a little odd to me. If he authored the patch then I would have
-gone with the following (along with the From line mentioned above):
-
-Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
-Signed-off-by: Karol Kolacinski <karol.kolacinski@intel.com>
-
-Otherwise, if he reviewed the patch I would have gone with:
-
-Reviewed-by: Jacob Keller <jacob.e.keller@intel.com>
-Signed-off-by: Karol Kolacinski <karol.kolacinski@intel.com>
-
-...
-
-> diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.c b/drivers/net/ethernet/intel/ice/ice_ptp.c
-
-...
-
-> @@ -2640,6 +2676,16 @@ void ice_ptp_reset(struct ice_pf *pf)
->  	int err, itr = 1;
->  	u64 time_diff;
->  
-> +	if (ptp->state != ICE_PTP_RESETTING) {
-> +		if (ptp->state == ICE_PTP_READY) {
-> +			ice_ptp_prepare_for_reset(pf);
-> +		} else {
-> +			err = -EINVAL;
-> +			dev_err(ice_pf_to_dev(pf), "PTP was not initialized\n");
-> +			goto err;
-> +		}
-> +	}
-
-nit: perhaps this following is slightly nicer?
-     (completely untested!)
-
-	if (ptp->state == ICE_PTP_READY) {
-		ice_ptp_prepare_for_reset(pf);
-	} else if (ptp->state != ICE_PTP_RESETTING) {
-		err = -EINVAL;
-		dev_err(ice_pf_to_dev(pf), "PTP was not initialized\n");
-		goto err;
-	}
-
-> +
->  	if (test_bit(ICE_PFR_REQ, pf->state) ||
->  	    !ice_pf_src_tmr_owned(pf))
->  		goto pfr;
 
 ...
