@@ -1,86 +1,94 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id ED9A482D0CB
-	for <lists+intel-wired-lan@lfdr.de>; Sun, 14 Jan 2024 15:01:51 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id F018E82D446
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 15 Jan 2024 07:45:29 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id DC88340972;
-	Sun, 14 Jan 2024 14:01:44 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org DC88340972
+	by smtp4.osuosl.org (Postfix) with ESMTP id 47F714176A;
+	Mon, 15 Jan 2024 06:45:28 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 47F714176A
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1705240904;
-	bh=0R/Og10sKaLgB+zzhI5wBT540lDOS8aCVqYEyL/l0EY=;
-	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=DOkvzlduezkemVaZgGxXnNR9FNVrRn+f3GRGzxzvb8y9x7OzQB/QCLUNWY9ZSu+eo
-	 2cV1mgZCXwJGS31LBSPCMTRdoxtQkcezsWYhGOuu8BiG0OdMHA8a53Oj8Iqtmj/n1p
-	 cyCfnM7B0pfPFVRP5nK9HkLi98rbetf64vjPBNZNhJHkWKwewBkK0R+WGSmwvncYd0
-	 W5utxK/VFhKzLKtCuda78Tw8IZSGM35YLpnNy2W9B3dzjryGhR++8ZRtk5ncMP9+TM
-	 7q9mTBlRQuDJvOQvNaFbVFkpbh5uJIk28Hskv41XBVcRS1sRxH67F/9D0d/f8k+XIe
-	 QeT62cyfl/nUQ==
+	s=default; t=1705301128;
+	bh=ZtFz1gcUiPXB8OrKKee5knzgppy0DEspSIeFwMMfDXo=;
+	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=KmLH+k1BuWn/gj7QXup2Bl/kIYdunD0Fh5v+dsC2cKgFKI3YxVfLpByy9QBQcrx8I
+	 98AZwqqtrup6rXnSxKbRdEEHYA1L+CpyeXw+urzGxDITL7Vc2C5zcgqzxr/6IaLUAu
+	 3hl/wYHQ++MyfmsMOlFY/YVkl29B9FGCqs30emg7KxAlvupmzplNEAU/s7J3CuPx2D
+	 J74xldeTPEG794aLjqrRft2Yj1xP8CUl/tfRnqZVPyi3TQ5r+0xfplt479YTNbf34q
+	 QaRaocxiFa35BVdHUf5tWVqn9aTsDOwC+LS9hwy6uJFGgvgJO9Oh0Ph4BcGp8eK0kc
+	 +ofKdOyXeERvw==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id YxtI5Nonn7JW; Sun, 14 Jan 2024 14:01:44 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id OM2FaBlzgx2i; Mon, 15 Jan 2024 06:45:27 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 665814054B;
-	Sun, 14 Jan 2024 14:01:43 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 665814054B
+	by smtp4.osuosl.org (Postfix) with ESMTP id 0816C4030C;
+	Mon, 15 Jan 2024 06:45:26 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0816C4030C
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 2CF211BF372
- for <intel-wired-lan@lists.osuosl.org>; Sun, 14 Jan 2024 14:01:38 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id D87AE1BF2F9
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Jan 2024 06:45:21 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 0DB454054B
- for <intel-wired-lan@lists.osuosl.org>; Sun, 14 Jan 2024 14:01:38 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 0DB454054B
+ by smtp1.osuosl.org (Postfix) with ESMTP id A925E813E9
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Jan 2024 06:45:21 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org A925E813E9
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id x1yGGud9w4Mr for <intel-wired-lan@lists.osuosl.org>;
- Sun, 14 Jan 2024 14:01:36 +0000 (UTC)
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.12])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 931DB40466
- for <intel-wired-lan@lists.osuosl.org>; Sun, 14 Jan 2024 14:01:36 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 931DB40466
-X-IronPort-AV: E=McAfee;i="6600,9927,10952"; a="6830552"
-X-IronPort-AV: E=Sophos;i="6.04,194,1695711600"; 
-   d="scan'208";a="6830552"
-Received: from orsmga003.jf.intel.com ([10.7.209.27])
- by orvoesa104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 14 Jan 2024 06:01:36 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10952"; a="733063029"
-X-IronPort-AV: E=Sophos;i="6.04,194,1695711600"; d="scan'208";a="733063029"
-Received: from lkp-server02.sh.intel.com (HELO b07ab15da5fe) ([10.239.97.151])
- by orsmga003.jf.intel.com with ESMTP; 14 Jan 2024 06:01:34 -0800
-Received: from kbuild by b07ab15da5fe with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1rP13M-000BYE-1n
- for intel-wired-lan@lists.osuosl.org; Sun, 14 Jan 2024 14:01:32 +0000
-Date: Sun, 14 Jan 2024 22:01:09 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <202401142206.DAFt5prc-lkp@intel.com>
-User-Agent: s-nail v14.9.24
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1705240897; x=1736776897;
- h=date:from:to:subject:message-id;
- bh=+2h2INAPqGVWySmG7DzaOiTSJlmEXE2szMc1Z4ZPJmM=;
- b=fUPAruF39O6DfrQIdnvhmHB6PEzGkyvcRhJR6Jbc/EDbrrQmd1Aj9GZM
- taZ+qIHzbjZbbNYcl1rwfi9yitkbhoMDKsXK2gBQhhZb9UPWFT40Km3sC
- ehONPdk72fmMcjhUtX5/7kyDddyVdcZokwpl34TrGWb0qJQLX6fyX4dtm
- g9OfllkIxM1rv6PSNkOkgdvN+pZ5YWRdkxA0RkuJKYxX1ppRdJEMdd2E+
- Fuo7HzJ9f3kH4f4iKFiJDhcqKQqNNx4gtFeLI7RGEwmqSK1OiSTuCGHh0
- b9S6BqnW8SFcx1RcLjAGJHxVKxScC5Be4/1Jh10FhSOadyUDYembq7N8F
- Q==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=fUPAruF3
-Subject: [Intel-wired-lan] [tnguy-next-queue:dev-queue] BUILD SUCCESS
- 227fb90808ad708d1e9cd890d51be1b52db74673
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id I1DrDyWK0acv for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 15 Jan 2024 06:45:20 +0000 (UTC)
+Received: from mailgw.kylinos.cn (mailgw.kylinos.cn [124.126.103.232])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 30006813BA
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Jan 2024 06:45:17 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 30006813BA
+X-UUID: 4c51953df3a6467e910868bb4a01e662-20240115
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.1.35, REQID:01acb116-89e3-42da-9916-1ce7e2a7c975, IP:10,
+ URL:0,TC:0,Content:0,EDM:0,RT:0,SF:-15,FILE:0,BULK:0,RULE:Release_Ham,ACTI
+ ON:release,TS:-5
+X-CID-INFO: VERSION:1.1.35, REQID:01acb116-89e3-42da-9916-1ce7e2a7c975, IP:10,
+ UR
+ L:0,TC:0,Content:0,EDM:0,RT:0,SF:-15,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+ :release,TS:-5
+X-CID-META: VersionHash:5d391d7, CLOUDID:c1ad418e-e2c0-40b0-a8fe-7c7e47299109,
+ B
+ ulkID:240112214822WA9UL4OY,BulkQuantity:6,Recheck:0,SF:44|64|66|24|17|19|1
+ 02,TC:nil,Content:0,EDM:-3,IP:-2,URL:1,File:nil,Bulk:40,QS:nil,BEC:nil,COL
+ :0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0
+X-CID-BVR: 0
+X-CID-BAS: 0,_,0,_
+X-CID-FACTOR: TF_CID_SPAM_FSI, TF_CID_SPAM_ULS, TF_CID_SPAM_SNR,
+ TF_CID_SPAM_FAS, TF_CID_SPAM_FSD
+X-UUID: 4c51953df3a6467e910868bb4a01e662-20240115
+Received: from mail.kylinos.cn [(39.156.73.10)] by mailgw
+ (envelope-from <chentao@kylinos.cn>) (Generic MTA)
+ with ESMTP id 1482343332; Mon, 15 Jan 2024 14:38:13 +0800
+Received: from mail.kylinos.cn (localhost [127.0.0.1])
+ by mail.kylinos.cn (NSMail) with SMTP id 17269E000EBA;
+ Mon, 15 Jan 2024 14:38:13 +0800 (CST)
+X-ns-mid: postfix-65A4D2D4-971834282
+Received: from [172.20.15.234] (unknown [172.20.15.234])
+ by mail.kylinos.cn (NSMail) with ESMTPA id 44150E000EB9;
+ Mon, 15 Jan 2024 14:38:10 +0800 (CST)
+Message-ID: <50f1e711-12a2-432a-b571-c7b4f0e64ab1@kylinos.cn>
+Date: Mon, 15 Jan 2024 14:38:10 +0800
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Content-Language: en-US
+To: Paul Menzel <pmenzel@molgen.mpg.de>
+References: <20240112025853.123048-1-chentao@kylinos.cn>
+ <2a58fed3-1fa9-47eb-b475-3f7c3b291376@molgen.mpg.de>
+From: Kunwu Chan <chentao@kylinos.cn>
+In-Reply-To: <2a58fed3-1fa9-47eb-b475-3f7c3b291376@molgen.mpg.de>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [Intel-wired-lan] [PATCH v2] igb: Fix string truncation
+ warnings in igb_set_fw_version
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,135 +101,190 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: Kunwu Chan <kunwu.chan@hotmail.com>, przemyslaw.kitszel@intel.com,
+ jesse.brandeburg@intel.com, linux-kernel@vger.kernel.org, edumazet@google.com,
+ netdev@vger.kernel.org, anthony.l.nguyen@intel.com,
+ intel-wired-lan@lists.osuosl.org, jacob.e.keller@intel.com, kuba@kernel.org,
+ pabeni@redhat.com, davem@davemloft.net
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git dev-queue
-branch HEAD: 227fb90808ad708d1e9cd890d51be1b52db74673  i40e: Include types.h to some headers
+Hi Paul,
+Thanks for your reply.
 
-elapsed time: 2507m
+On 2024/1/12 21:46, Paul Menzel wrote:
+> Dear Kunwu,
+>=20
+>=20
+> Thank you for your patch. I have some minor nits.
+>=20
+> Am 12.01.24 um 03:58 schrieb Kunwu Chan:
+>> 'commit 1978d3ead82c ("intel: fix string truncation warnings")'
+>=20
+> Please don=E2=80=99t enclose it in '': Commit 1978d3ead82c ("intel: fix=
+ string=20
+> truncation warnings")
+>=20
+>> fix '-Wformat-truncation=3D' warnings in igb_main.c by using kasprintf=
+.
+>=20
+> fix*es*
 
-configs tested: 113
-configs skipped: 0
+Thanks i'll rewirte the commit msg and add some warnings.
+>=20
+>> kasprintf() returns a pointer to dynamically allocated memory
+>> which can be NULL upon failure.
+>=20
+> Maybe paste one warning message.
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+Thanks again.
+>=20
+>> Fix this warning by using a larger space for adapter->fw_version,
+>> and then fall back and continue to use snprintf.
+>>
+>> Fixes: 1978d3ead82c ("intel: fix string truncation warnings")
+>> Signed-off-by: Kunwu Chan <chentao@kylinos.cn>
+>> Cc: Kunwu Chan <kunwu.chan@hotmail.com>
+>> Suggested-by: Jakub Kicinski <kuba@kernel.org>
+>=20
+>=20
+> Kind regards,
+>=20
+> Paul Menzel
+>=20
+>=20
+>> ---
+>> v2: Fall back to use snprintf and a larger space,as suggested by
+>> https://lore.kernel.org/all/20231212132637.1b0fb8aa@kernel.org/
+>> ---
+>> =C2=A0 drivers/net/ethernet/intel/igb/igb.h=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0 |=C2=A0 2 +-
+>> =C2=A0 drivers/net/ethernet/intel/igb/igb_main.c | 35 ++++++++++++----=
+-------
+>> =C2=A0 2 files changed, 19 insertions(+), 18 deletions(-)
+>>
+>> diff --git a/drivers/net/ethernet/intel/igb/igb.h=20
+>> b/drivers/net/ethernet/intel/igb/igb.h
+>> index a2b759531cb7..3c2dc7bdebb5 100644
+>> --- a/drivers/net/ethernet/intel/igb/igb.h
+>> +++ b/drivers/net/ethernet/intel/igb/igb.h
+>> @@ -637,7 +637,7 @@ struct igb_adapter {
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 struct timespec=
+64 period;
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 } perout[IGB_N_PEROUT];
+>> -=C2=A0=C2=A0=C2=A0 char fw_version[32];
+>> +=C2=A0=C2=A0=C2=A0 char fw_version[48];
+>> =C2=A0 #ifdef CONFIG_IGB_HWMON
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 struct hwmon_buff *igb_hwmon_buff;
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 bool ets;
+>> diff --git a/drivers/net/ethernet/intel/igb/igb_main.c=20
+>> b/drivers/net/ethernet/intel/igb/igb_main.c
+>> index b2295caa2f0a..ce762d77d2c1 100644
+>> --- a/drivers/net/ethernet/intel/igb/igb_main.c
+>> +++ b/drivers/net/ethernet/intel/igb/igb_main.c
+>> @@ -3069,7 +3069,6 @@ void igb_set_fw_version(struct igb_adapter=20
+>> *adapter)
+>> =C2=A0 {
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 struct e1000_hw *hw =3D &adapter->hw;
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 struct e1000_fw_version fw;
+>> -=C2=A0=C2=A0=C2=A0 char *lbuf;
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 igb_get_fw_version(hw, &fw);
+>> @@ -3077,34 +3076,36 @@ void igb_set_fw_version(struct igb_adapter=20
+>> *adapter)
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 case e1000_i210:
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 case e1000_i211:
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (!(igb_get_f=
+lash_presence_i210(hw))) {
+>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 lb=
+uf =3D kasprintf(GFP_KERNEL, "%2d.%2d-%d",
+>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 fw.invm_major, fw.inv=
+m_minor,
+>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 fw.invm_img_type);
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 sn=
+printf(adapter->fw_version,
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0 sizeof(adapter->fw_version),
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0 "%2d.%2d-%d",
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0 fw.invm_major, fw.invm_minor,
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0 fw.invm_img_type);
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0 break;
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 fallthrough;
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 default:
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 /* if option ro=
+m is valid, display its version too */
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (fw.or_valid=
+) {
+>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 lb=
+uf =3D kasprintf(GFP_KERNEL, "%d.%d, 0x%08x, %d.%d.%d",
+>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 fw.eep_major, fw.eep_=
+minor,
+>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 fw.etrack_id, fw.or_m=
+ajor, fw.or_build,
+>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 fw.or_patch);
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 sn=
+printf(adapter->fw_version,
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0 sizeof(adapter->fw_version),
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0 "%d.%d, 0x%08x, %d.%d.%d",
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0 fw.eep_major, fw.eep_minor, fw.etrack_id,
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0 fw.or_major, fw.or_build, fw.or_patch);
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 /* no option ro=
+m */
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 } else if (fw.e=
+track_id !=3D 0X0000) {
+>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 lb=
+uf =3D kasprintf(GFP_KERNEL, "%d.%d, 0x%08x",
+>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 fw.eep_major, fw.eep_=
+minor,
+>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 fw.etrack_id);
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 sn=
+printf(adapter->fw_version,
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0 sizeof(adapter->fw_version),
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0 "%d.%d, 0x%08x",
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0 fw.eep_major, fw.eep_minor, fw.etrack_id);
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 } else {
+>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 lb=
+uf =3D kasprintf(GFP_KERNEL, "%d.%d.%d", fw.eep_major,
+>> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 fw.eep_minor, fw.eep_=
+build);
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 sn=
+printf(adapter->fw_version,
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0 sizeof(adapter->fw_version),
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0 "%d.%d.%d",
+>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0 fw.eep_major, fw.eep_minor, fw.eep_build);
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 break;
+>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
+>> -
+>> -=C2=A0=C2=A0=C2=A0 /* the truncate happens here if it doesn't fit */
+>> -=C2=A0=C2=A0=C2=A0 strscpy(adapter->fw_version, lbuf, sizeof(adapter-=
+>fw_version));
+>> -=C2=A0=C2=A0=C2=A0 kfree(lbuf);
+>> =C2=A0 }
+>> =C2=A0 /**
+--=20
+Thanks,
+   Kunwu
 
-tested configs:
-alpha                             allnoconfig   gcc  
-arc                               allnoconfig   gcc  
-arc                            hsdk_defconfig   gcc  
-arc                   randconfig-001-20240114   gcc  
-arc                   randconfig-002-20240114   gcc  
-arm                               allnoconfig   gcc  
-arm                        clps711x_defconfig   gcc  
-arm                                 defconfig   clang
-arm                         nhk8815_defconfig   gcc  
-arm                   randconfig-001-20240114   clang
-arm                   randconfig-002-20240114   clang
-arm                   randconfig-003-20240114   clang
-arm                   randconfig-004-20240114   clang
-arm                        vexpress_defconfig   clang
-arm64                             allnoconfig   gcc  
-arm64                 randconfig-001-20240114   clang
-arm64                 randconfig-002-20240114   clang
-arm64                 randconfig-003-20240114   clang
-arm64                 randconfig-004-20240114   clang
-csky                              allnoconfig   gcc  
-csky                  randconfig-001-20240114   gcc  
-csky                  randconfig-002-20240114   gcc  
-hexagon                           allnoconfig   clang
-hexagon               randconfig-001-20240114   clang
-hexagon               randconfig-002-20240114   clang
-i386                             alldefconfig   gcc  
-i386                             allmodconfig   clang
-i386                              allnoconfig   clang
-i386                             allyesconfig   clang
-i386         buildonly-randconfig-001-20240114   clang
-i386         buildonly-randconfig-002-20240114   clang
-i386         buildonly-randconfig-003-20240114   clang
-i386         buildonly-randconfig-004-20240114   clang
-i386         buildonly-randconfig-005-20240114   clang
-i386         buildonly-randconfig-006-20240114   clang
-i386                                defconfig   gcc  
-i386                  randconfig-001-20240114   clang
-i386                  randconfig-002-20240114   clang
-i386                  randconfig-003-20240114   clang
-i386                  randconfig-004-20240114   clang
-i386                  randconfig-005-20240114   clang
-i386                  randconfig-006-20240114   clang
-i386                  randconfig-011-20240114   gcc  
-i386                  randconfig-012-20240114   gcc  
-i386                  randconfig-013-20240114   gcc  
-i386                  randconfig-014-20240114   gcc  
-i386                  randconfig-015-20240114   gcc  
-i386                  randconfig-016-20240114   gcc  
-loongarch                        allmodconfig   gcc  
-loongarch             randconfig-001-20240114   gcc  
-loongarch             randconfig-002-20240114   gcc  
-m68k                             allmodconfig   gcc  
-m68k                             allyesconfig   gcc  
-m68k                          atari_defconfig   gcc  
-microblaze                       allmodconfig   gcc  
-microblaze                       allyesconfig   gcc  
-mips                             allyesconfig   gcc  
-mips                 decstation_r4k_defconfig   gcc  
-mips                           jazz_defconfig   gcc  
-nios2                            allmodconfig   gcc  
-nios2                            allyesconfig   gcc  
-nios2                 randconfig-001-20240114   gcc  
-nios2                 randconfig-002-20240114   gcc  
-openrisc                         allyesconfig   gcc  
-parisc                           allmodconfig   gcc  
-parisc                           allyesconfig   gcc  
-parisc                randconfig-001-20240114   gcc  
-parisc                randconfig-002-20240114   gcc  
-powerpc                          allmodconfig   clang
-powerpc                     ksi8560_defconfig   gcc  
-powerpc               randconfig-001-20240114   clang
-powerpc               randconfig-002-20240114   clang
-powerpc               randconfig-003-20240114   clang
-powerpc64             randconfig-001-20240114   clang
-powerpc64             randconfig-002-20240114   clang
-powerpc64             randconfig-003-20240114   clang
-riscv                    nommu_k210_defconfig   gcc  
-riscv                 randconfig-001-20240114   clang
-riscv                 randconfig-002-20240114   clang
-s390                             allmodconfig   gcc  
-s390                             allyesconfig   gcc  
-s390                  randconfig-001-20240114   gcc  
-s390                  randconfig-002-20240114   gcc  
-sh                               allmodconfig   gcc  
-sh                               allyesconfig   gcc  
-sh                         ap325rxa_defconfig   gcc  
-sh                        apsh4ad0a_defconfig   gcc  
-sh                          kfr2r09_defconfig   gcc  
-sh                    randconfig-001-20240114   gcc  
-sh                    randconfig-002-20240114   gcc  
-sh                          sdk7780_defconfig   gcc  
-sh                             shx3_defconfig   gcc  
-sparc64                          allyesconfig   gcc  
-sparc64               randconfig-001-20240114   gcc  
-um                               allmodconfig   clang
-um                               allyesconfig   clang
-um                    randconfig-001-20240114   clang
-um                    randconfig-002-20240114   clang
-x86_64                            allnoconfig   gcc  
-x86_64                           allyesconfig   clang
-x86_64       buildonly-randconfig-001-20240114   clang
-x86_64       buildonly-randconfig-002-20240114   clang
-x86_64       buildonly-randconfig-003-20240114   clang
-x86_64       buildonly-randconfig-004-20240114   clang
-x86_64       buildonly-randconfig-005-20240114   clang
-x86_64       buildonly-randconfig-006-20240114   clang
-x86_64                              defconfig   gcc  
-x86_64                randconfig-001-20240114   gcc  
-x86_64                randconfig-002-20240114   gcc  
-x86_64                randconfig-003-20240114   gcc  
-x86_64                randconfig-005-20240114   gcc  
-x86_64                randconfig-006-20240114   gcc  
-x86_64                          rhel-8.3-rust   clang
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
