@@ -1,62 +1,61 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id AE3A182F65A
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 16 Jan 2024 20:57:31 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4A18682F65D
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 16 Jan 2024 20:57:52 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 3EFD440432;
-	Tue, 16 Jan 2024 19:57:30 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3EFD440432
+	by smtp2.osuosl.org (Postfix) with ESMTP id 81D6642F52;
+	Tue, 16 Jan 2024 19:57:50 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 81D6642F52
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1705435050;
-	bh=GxndduKu+x0pIefHBZ4L3xzw17YKn+0xGyspWBU2zKU=;
+	s=default; t=1705435070;
+	bh=R7cD969KfBkZA787xolt119GWX/h4vfCpgkl23sheEA=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=qZX3rbZgPNYtVtOxUJFBRKovP/z+L2Ng1/d0vMqh2ih+BE2Xhq5dxvx5njwzJtCbo
-	 2aWV3ttxCqvPEmPpLVz1QyKFVv1CPHdn43RPJ738AIJ9NBjBBSmOw8yZP4uNtSf31v
-	 PlxD533dqUTk649Za9LIDndTnVzI/XUUzjR1LBsK5qMsx4we7t5eiC6gkvhKOG/EMd
-	 EKJnhSXQsVuN7YqOWXm7guPScYP/t83Rk2BgLUurNYwFTzb3yi3tj5EyVJiHH7StE1
-	 n9Gt3zxx42HqPxbyskRb8QF6y4c90duqQDTNty3DXieM5tzrfPvAmNtagVSBdD74e3
-	 PH/QH9J9DIrpw==
+	b=J7Mjhiavdcioyw5JXmHqX3dV9t62XiEDdjKAk+IrwKqCuVep8XCfbMI8u+tj1POOA
+	 eVyKDbaK+RgbO9BMySFgAiquVLFmQxKOuBHrnY2q589QH+MhkAkLuCN/y4QRuHNc4T
+	 xIGq/U9RhkGw1PX6Lc78D3IIBDhRtOcHJjaoZwkKD6j7sZKYBaGSuWrB/OFzREl/TL
+	 yAL7GoG7elzU8K2slhuXKX8TDg4XbI3OPpyk7u4srvG30sk1W4UsKR8cP8TwqVxsqo
+	 4x4xHTD1TcVKw4hjZbhMMVNPv3oTp7/Q22IOCAA3BDxgCSryI3yRQ/ewRyhgMvjorD
+	 Q7PqjfH35EUwg==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id tw2-ph0ZSOlW; Tue, 16 Jan 2024 19:57:29 +0000 (UTC)
+	with ESMTP id whNI48djJw9N; Tue, 16 Jan 2024 19:57:49 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id D475740382;
-	Tue, 16 Jan 2024 19:57:28 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org D475740382
+	by smtp2.osuosl.org (Postfix) with ESMTP id 2330C400A6;
+	Tue, 16 Jan 2024 19:57:49 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 2330C400A6
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 2A7121BF846
- for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Jan 2024 19:57:23 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 77BD51BF846
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Jan 2024 19:57:44 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 016DC400A6
- for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Jan 2024 19:57:23 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 016DC400A6
+ by smtp1.osuosl.org (Postfix) with ESMTP id 4A60D831EF
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Jan 2024 19:57:44 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4A60D831EF
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 2IIbmC1lB9Nq for <intel-wired-lan@lists.osuosl.org>;
- Tue, 16 Jan 2024 19:57:21 +0000 (UTC)
-Received: from ams.source.kernel.org (ams.source.kernel.org
- [IPv6:2604:1380:4601:e00::1])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 8BADD40382
- for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Jan 2024 19:57:21 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 8BADD40382
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id lEQ-FHO4qfhs for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 16 Jan 2024 19:57:43 +0000 (UTC)
+Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 88B8B83155
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Jan 2024 19:57:43 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 88B8B83155
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by ams.source.kernel.org (Postfix) with ESMTP id 6B432B80FA8;
- Tue, 16 Jan 2024 19:57:19 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 41AB7C433C7;
- Tue, 16 Jan 2024 19:57:17 +0000 (UTC)
+ by dfw.source.kernel.org (Postfix) with ESMTP id C704C60B51;
+ Tue, 16 Jan 2024 19:57:42 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C7AACC433F1;
+ Tue, 16 Jan 2024 19:57:40 +0000 (UTC)
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Date: Tue, 16 Jan 2024 14:53:53 -0500
-Message-ID: <20240116195511.255854-54-sashal@kernel.org>
+Date: Tue, 16 Jan 2024 14:54:05 -0500
+Message-ID: <20240116195511.255854-66-sashal@kernel.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20240116195511.255854-1-sashal@kernel.org>
 References: <20240116195511.255854-1-sashal@kernel.org>
@@ -66,20 +65,20 @@ X-Patchwork-Hint: Ignore
 X-stable-base: Linux 6.1.73
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1705435038;
- bh=pjHNh/JFRD/3JuNNrrZ4PkJHHTn2aBqDsYUtyxgWrPM=;
+ d=kernel.org; s=k20201202; t=1705435062;
+ bh=puRV9+d/Db0XBkDKUHK/iRtAtFxjI+BZTX6e20CdEhI=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=J/bgnOXtcMbwjpha00jb43EGVpkIfYzNyXO1dbzSzR+cheQfD+RNW6NEdE9hvc8il
- Qstq597xNRNcZqAyZ0JOHTpJwe+2u8KWBAF25o2XuMP1/4PUEJJ7NLRoaMsHp7IHfn
- DTZJXTd38ivH6dV8b+k6K4xYbAVnV3o2xUj2Nkv8JkSUmU0grPJv0+J7TqrbdezZke
- V9p8y9cKcEpbqFGRw8IVGx8o6zzYU+7OmlRiPaqQCwkwIgBW5vWalh3vAGMKiKsAgg
- VWW6UuzgdUsMD8vfIxCEg/SzIl56y6MvpqQ9LHJ2R3iW6khbDwVpBOP85BRtGk1+gu
- jnXwoDnHNkLpg==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ b=dudsoOwH5E+JCmjiT1mnj7sBPUkx6d3VpEw7A9YM07ibzWicfUTWWdmB17iRwLVLg
+ ssVu3W2nQWUqEbUQc5p+hw8mzgX3xwKZawHhWOt3RIWi5CkN/WKGxtX9GT9Jmdt4HA
+ RYIhv5y0nqZwKx/xwlCQdXkJ25IsLCwdLusWXn7/phlsfrLgswMpJWa+AFBzZSwRU8
+ gxXv4mL8nU3MBKBDd7X7BXU6DpNH7o6CHE25IAG6rXGUfJKdprHyQBaUSUQ6huRhTk
+ gk0YhjR+8AW2AxyU8+6R097kjo/M4K8P+2UqUwNTm10fY/1qtlgpX/OYBnE/qFpjP9
+ nGFHC3vs0bxDg==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=J/bgnOXt
-Subject: [Intel-wired-lan] [PATCH AUTOSEL 6.1 54/68] ice: fix pre-shifted
- bit usage
+ header.a=rsa-sha256 header.s=k20201202 header.b=dudsoOwH
+Subject: [Intel-wired-lan] [PATCH AUTOSEL 6.1 66/68] i40e: Fix VF disable
+ behavior to block all traffic
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,129 +91,129 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Pucha Himasekhar Reddy <himasekharx.reddy.pucha@intel.com>,
- Sasha Levin <sashal@kernel.org>, intel-wired-lan@lists.osuosl.org,
- Jesse Brandeburg <jesse.brandeburg@intel.com>, edumazet@google.com,
- Marcin Szycik <marcin.szycik@linux.intel.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>, Simon Horman <horms@kernel.org>,
- netdev@vger.kernel.org, kuba@kernel.org, pabeni@redhat.com,
- davem@davemloft.net
+Cc: Sasha Levin <sashal@kernel.org>, Jan Sokolowski <jan.sokolowski@intel.com>,
+ Wojciech Drewek <wojciech.drewek@intel.com>, davem@davemloft.net,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>, jesse.brandeburg@intel.com,
+ Andrii Staikov <andrii.staikov@intel.com>,
+ Aleksandr Loktionov <aleksandr.loktionov@intel.com>, edumazet@google.com,
+ netdev@vger.kernel.org, Tony Nguyen <anthony.l.nguyen@intel.com>,
+ intel-wired-lan@lists.osuosl.org, kuba@kernel.org, pabeni@redhat.com,
+ Rafal Romanowski <rafal.romanowski@intel.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Jesse Brandeburg <jesse.brandeburg@intel.com>
+From: Andrii Staikov <andrii.staikov@intel.com>
 
-[ Upstream commit 7173be21ae29ef50ada42fd4464056a9d3f55bb3 ]
+[ Upstream commit 31deb12e85c35ddd2c037f0107d05d8674cab2c0 ]
 
-While converting to FIELD_PREP() and FIELD_GET(), it was noticed that
-some of the RSS defines had *included* the shift in their definitions.
-This is completely outside of normal, such that a developer could easily
-make a mistake and shift at the usage site (like when using
-FIELD_PREP()).
+Currently, if a VF is disabled using the
+'ip link set dev $ETHX vf $VF_NUM state disable' command, the VF is still
+able to receive traffic.
 
-Rename the defines and set them to the "pre-shifted values" so they
-match the template the driver normally uses for masks and the member
-bits of the mask, which also allows the driver to use FIELD_PREP
-correctly with these values. Use GENMASK() for this changed MASK value.
+Fix the behavior of the 'ip link set dev $ETHX vf $VF_NUM state disable'
+to completely shutdown the VF's queues making it entirely disabled and
+not able to receive or send any traffic.
 
-Do the same for the VLAN EMODE defines as well.
+Modify the behavior of the 'ip link set $ETHX vf $VF_NUM state enable'
+command to make a VF do reinitialization bringing the queues back up.
 
-Reviewed-by: Marcin Szycik <marcin.szycik@linux.intel.com>
-Reviewed-by: Simon Horman <horms@kernel.org>
-Signed-off-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
-Tested-by: Pucha Himasekhar Reddy <himasekharx.reddy.pucha@intel.com> (A Contingent worker at Intel)
+Co-developed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+Signed-off-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+Reviewed-by: Jan Sokolowski <jan.sokolowski@intel.com>
+Reviewed-by: Wojciech Drewek <wojciech.drewek@intel.com>
+Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+Signed-off-by: Andrii Staikov <andrii.staikov@intel.com>
+Tested-by: Rafal Romanowski <rafal.romanowski@intel.com>
 Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/net/ethernet/intel/ice/ice_adminq_cmd.h  | 10 +++++-----
- drivers/net/ethernet/intel/ice/ice_lib.c         |  3 ++-
- .../net/ethernet/intel/ice/ice_vsi_vlan_lib.c    | 16 +++++++++++-----
- 3 files changed, 18 insertions(+), 11 deletions(-)
+ .../ethernet/intel/i40e/i40e_virtchnl_pf.c    | 32 +++++++++++++++++++
+ .../ethernet/intel/i40e/i40e_virtchnl_pf.h    |  1 +
+ 2 files changed, 33 insertions(+)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h b/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
-index a141680f3c1c..fe48164dce1e 100644
---- a/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
-+++ b/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
-@@ -413,10 +413,10 @@ struct ice_aqc_vsi_props {
- #define ICE_AQ_VSI_INNER_VLAN_INSERT_PVID	BIT(2)
- #define ICE_AQ_VSI_INNER_VLAN_EMODE_S		3
- #define ICE_AQ_VSI_INNER_VLAN_EMODE_M		(0x3 << ICE_AQ_VSI_INNER_VLAN_EMODE_S)
--#define ICE_AQ_VSI_INNER_VLAN_EMODE_STR_BOTH	(0x0 << ICE_AQ_VSI_INNER_VLAN_EMODE_S)
--#define ICE_AQ_VSI_INNER_VLAN_EMODE_STR_UP	(0x1 << ICE_AQ_VSI_INNER_VLAN_EMODE_S)
--#define ICE_AQ_VSI_INNER_VLAN_EMODE_STR		(0x2 << ICE_AQ_VSI_INNER_VLAN_EMODE_S)
--#define ICE_AQ_VSI_INNER_VLAN_EMODE_NOTHING	(0x3 << ICE_AQ_VSI_INNER_VLAN_EMODE_S)
-+#define ICE_AQ_VSI_INNER_VLAN_EMODE_STR_BOTH	0x0U
-+#define ICE_AQ_VSI_INNER_VLAN_EMODE_STR_UP	0x1U
-+#define ICE_AQ_VSI_INNER_VLAN_EMODE_STR		0x2U
-+#define ICE_AQ_VSI_INNER_VLAN_EMODE_NOTHING	0x3U
- 	u8 inner_vlan_reserved2[3];
- 	/* ingress egress up sections */
- 	__le32 ingress_table; /* bitmap, 3 bits per up */
-@@ -482,7 +482,7 @@ struct ice_aqc_vsi_props {
- #define ICE_AQ_VSI_Q_OPT_RSS_GBL_LUT_S		2
- #define ICE_AQ_VSI_Q_OPT_RSS_GBL_LUT_M		(0xF << ICE_AQ_VSI_Q_OPT_RSS_GBL_LUT_S)
- #define ICE_AQ_VSI_Q_OPT_RSS_HASH_S		6
--#define ICE_AQ_VSI_Q_OPT_RSS_HASH_M		(0x3 << ICE_AQ_VSI_Q_OPT_RSS_HASH_S)
-+#define ICE_AQ_VSI_Q_OPT_RSS_HASH_M		GENMASK(7, 6)
- #define ICE_AQ_VSI_Q_OPT_RSS_HASH_TPLZ		0x0U
- #define ICE_AQ_VSI_Q_OPT_RSS_HASH_SYM_TPLZ	0x1U
- #define ICE_AQ_VSI_Q_OPT_RSS_HASH_XOR		0x2U
-diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
-index f074a1cf7166..cc6c04a69b28 100644
---- a/drivers/net/ethernet/intel/ice/ice_lib.c
-+++ b/drivers/net/ethernet/intel/ice/ice_lib.c
-@@ -878,7 +878,8 @@ static void ice_set_dflt_vsi_ctx(struct ice_hw *hw, struct ice_vsi_ctx *ctxt)
- 	 */
- 	if (ice_is_dvm_ena(hw)) {
- 		ctxt->info.inner_vlan_flags |=
--			ICE_AQ_VSI_INNER_VLAN_EMODE_NOTHING;
-+			FIELD_PREP(ICE_AQ_VSI_INNER_VLAN_EMODE_M,
-+				   ICE_AQ_VSI_INNER_VLAN_EMODE_NOTHING);
- 		ctxt->info.outer_vlan_flags =
- 			(ICE_AQ_VSI_OUTER_VLAN_TX_MODE_ALL <<
- 			 ICE_AQ_VSI_OUTER_VLAN_TX_MODE_S) &
-diff --git a/drivers/net/ethernet/intel/ice/ice_vsi_vlan_lib.c b/drivers/net/ethernet/intel/ice/ice_vsi_vlan_lib.c
-index 5b4a0abb4607..239266e9d5f1 100644
---- a/drivers/net/ethernet/intel/ice/ice_vsi_vlan_lib.c
-+++ b/drivers/net/ethernet/intel/ice/ice_vsi_vlan_lib.c
-@@ -131,6 +131,7 @@ static int ice_vsi_manage_vlan_stripping(struct ice_vsi *vsi, bool ena)
- {
- 	struct ice_hw *hw = &vsi->back->hw;
- 	struct ice_vsi_ctx *ctxt;
-+	u8 *ivf;
- 	int err;
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
+index cb925baf72ce..21d6deb23f54 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
+@@ -2577,6 +2577,14 @@ static int i40e_vc_enable_queues_msg(struct i40e_vf *vf, u8 *msg)
+ 	int aq_ret = 0;
+ 	int i;
  
- 	/* do not allow modifying VLAN stripping when a port VLAN is configured
-@@ -143,19 +144,24 @@ static int ice_vsi_manage_vlan_stripping(struct ice_vsi *vsi, bool ena)
- 	if (!ctxt)
- 		return -ENOMEM;
- 
-+	ivf = &ctxt->info.inner_vlan_flags;
-+
- 	/* Here we are configuring what the VSI should do with the VLAN tag in
- 	 * the Rx packet. We can either leave the tag in the packet or put it in
- 	 * the Rx descriptor.
- 	 */
--	if (ena)
-+	if (ena) {
- 		/* Strip VLAN tag from Rx packet and put it in the desc */
--		ctxt->info.inner_vlan_flags = ICE_AQ_VSI_INNER_VLAN_EMODE_STR_BOTH;
--	else
-+		*ivf = FIELD_PREP(ICE_AQ_VSI_INNER_VLAN_EMODE_M,
-+				  ICE_AQ_VSI_INNER_VLAN_EMODE_STR_BOTH);
-+	} else {
- 		/* Disable stripping. Leave tag in packet */
--		ctxt->info.inner_vlan_flags = ICE_AQ_VSI_INNER_VLAN_EMODE_NOTHING;
-+		*ivf = FIELD_PREP(ICE_AQ_VSI_INNER_VLAN_EMODE_M,
-+				  ICE_AQ_VSI_INNER_VLAN_EMODE_NOTHING);
++	if (vf->is_disabled_from_host) {
++		aq_ret = -EPERM;
++		dev_info(&pf->pdev->dev,
++			 "Admin has disabled VF %d, will not enable queues\n",
++			 vf->vf_id);
++		goto error_param;
 +	}
++
+ 	if (!test_bit(I40E_VF_STATE_ACTIVE, &vf->vf_states)) {
+ 		aq_ret = I40E_ERR_PARAM;
+ 		goto error_param;
+@@ -4630,9 +4638,12 @@ int i40e_ndo_set_vf_link_state(struct net_device *netdev, int vf_id, int link)
+ 	struct i40e_link_status *ls = &pf->hw.phy.link_info;
+ 	struct virtchnl_pf_event pfe;
+ 	struct i40e_hw *hw = &pf->hw;
++	struct i40e_vsi *vsi;
++	unsigned long q_map;
+ 	struct i40e_vf *vf;
+ 	int abs_vf_id;
+ 	int ret = 0;
++	int tmp;
  
- 	/* Allow all packets untagged/tagged */
--	ctxt->info.inner_vlan_flags |= ICE_AQ_VSI_INNER_VLAN_TX_MODE_ALL;
-+	*ivf |= ICE_AQ_VSI_INNER_VLAN_TX_MODE_ALL;
+ 	if (test_and_set_bit(__I40E_VIRTCHNL_OP_PENDING, pf->state)) {
+ 		dev_warn(&pf->pdev->dev, "Unable to configure VFs, other operation is pending.\n");
+@@ -4655,17 +4666,38 @@ int i40e_ndo_set_vf_link_state(struct net_device *netdev, int vf_id, int link)
+ 	switch (link) {
+ 	case IFLA_VF_LINK_STATE_AUTO:
+ 		vf->link_forced = false;
++		vf->is_disabled_from_host = false;
++		/* reset needed to reinit VF resources */
++		i40e_vc_reset_vf(vf, true);
+ 		i40e_set_vf_link_state(vf, &pfe, ls);
+ 		break;
+ 	case IFLA_VF_LINK_STATE_ENABLE:
+ 		vf->link_forced = true;
+ 		vf->link_up = true;
++		vf->is_disabled_from_host = false;
++		/* reset needed to reinit VF resources */
++		i40e_vc_reset_vf(vf, true);
+ 		i40e_set_vf_link_state(vf, &pfe, ls);
+ 		break;
+ 	case IFLA_VF_LINK_STATE_DISABLE:
+ 		vf->link_forced = true;
+ 		vf->link_up = false;
+ 		i40e_set_vf_link_state(vf, &pfe, ls);
++
++		vsi = pf->vsi[vf->lan_vsi_idx];
++		q_map = BIT(vsi->num_queue_pairs) - 1;
++
++		vf->is_disabled_from_host = true;
++
++		/* Try to stop both Tx&Rx rings even if one of the calls fails
++		 * to ensure we stop the rings even in case of errors.
++		 * If any of them returns with an error then the first
++		 * error that occurred will be returned.
++		 */
++		tmp = i40e_ctrl_vf_tx_rings(vsi, q_map, false);
++		ret = i40e_ctrl_vf_rx_rings(vsi, q_map, false);
++
++		ret = tmp ? tmp : ret;
+ 		break;
+ 	default:
+ 		ret = -EINVAL;
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.h b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.h
+index 358bbdb58795..010e5730465e 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.h
++++ b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.h
+@@ -98,6 +98,7 @@ struct i40e_vf {
+ 	bool link_forced;
+ 	bool link_up;		/* only valid if VF link is forced */
+ 	bool spoofchk;
++	bool is_disabled_from_host; /* PF ctrl of VF enable/disable */
+ 	u16 num_vlan;
  
- 	ctxt->info.valid_sections = cpu_to_le16(ICE_AQ_VSI_PROP_VLAN_VALID);
- 
+ 	/* ADq related variables */
 -- 
 2.43.0
 
