@@ -1,81 +1,82 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id B5053832BA0
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 19 Jan 2024 15:50:02 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0C6A1832BEF
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 19 Jan 2024 15:56:46 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 53E9F42CDC;
-	Fri, 19 Jan 2024 14:50:01 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 53E9F42CDC
+	by smtp1.osuosl.org (Postfix) with ESMTP id 221198463F;
+	Fri, 19 Jan 2024 14:56:43 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 221198463F
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1705675801;
-	bh=/Evk07pOXfDxcBaHw9qxWdw/BUJxVtQ6PwywBrP5GsY=;
+	s=default; t=1705676203;
+	bh=0FJ3u8FQXRoqT7BwVNIx98aq+VUBYB6SO4lY5IMX48M=;
 	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=C9czHl6xpUmTSF5lbyqriyeixkbl+wKvNe2Vb2Nr10/Vg2S3J5HK5MxK7iFcuS5Ps
-	 L5sQXpjY27TUydzJb0+subViSwm6bqbnn56MqF1CwCSiXunDtLEqnbrNVJoPfnt8Bj
-	 1tPlk4hrmfsQLh/i9W9u5SqyHMKwAOzqKl3wEba9dDh47HAaNjYzeY+wLpKvTfLsIU
-	 JA9AVMMKv8LqW2qW9aliEgaBcUNFEMb3jq5FbI2S7lqyv1ye7W7Ngsn/+P1cAWKWUE
-	 cnXbVDppb761Ezfw2TqLfmust9kd7u1ijvxI6LmulydCjJNlXTsJ6y0b3Ohmvs5qrL
-	 EeOaGkWIt57Cw==
+	b=ffPuaogPTXQhPYa21lMSL7wrBG6VR7+W1X7FPyDPJyST6gnqHEi5Bu/x7/bYSzGTG
+	 AZupKnZOfLeM30MhW3UJpMzcgcPQf4rbb1zYFSdwCeTh58oGuV9c/jCZB0Frl2MEur
+	 6NeQq5w8ucAMnJ2ioB0FY3n6Y4yPlNLyUKP9tgf92B7gPsnMPGA49yOoMVbtfeeGJi
+	 sKkys3fk1EPcezyMfbPukw+ZS9buia3BBO2YlDe5olbwUwp14JYRWGAPI6+d7UoBuH
+	 /Ie57y2qwlEr9AY8hozl9UJQJ/aynO4BVSzFK7Bu/VZ1uXUhfMDRijFZTD5Yn7f9gV
+	 VNiyEUk78K2HQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 5v_dLWjsvwPV; Fri, 19 Jan 2024 14:50:00 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Fy0Uqmb7NDKK; Fri, 19 Jan 2024 14:56:42 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 6A236421D1;
-	Fri, 19 Jan 2024 14:50:00 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6A236421D1
+	by smtp1.osuosl.org (Postfix) with ESMTP id 37E8682A87;
+	Fri, 19 Jan 2024 14:56:42 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 37E8682A87
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 501481BF35A
- for <intel-wired-lan@lists.osuosl.org>; Fri, 19 Jan 2024 14:49:35 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 1E2781BF35A
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 19 Jan 2024 14:56:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 26CFC4219D
- for <intel-wired-lan@lists.osuosl.org>; Fri, 19 Jan 2024 14:49:35 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 26CFC4219D
+ by smtp2.osuosl.org (Postfix) with ESMTP id 012774393D
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 19 Jan 2024 14:56:22 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 012774393D
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id I2o1ejsN08hm for <intel-wired-lan@lists.osuosl.org>;
- Fri, 19 Jan 2024 14:49:33 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 8vXJoiB4PrFb for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 19 Jan 2024 14:56:21 +0000 (UTC)
 Received: from dfw.source.kernel.org (dfw.source.kernel.org
  [IPv6:2604:1380:4641:c500::1])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 1D0624218B
- for <intel-wired-lan@lists.osuosl.org>; Fri, 19 Jan 2024 14:49:32 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1D0624218B
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 2BA8A400D6
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 19 Jan 2024 14:56:21 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 2BA8A400D6
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by dfw.source.kernel.org (Postfix) with ESMTP id 031ED619E2;
- Fri, 19 Jan 2024 14:49:32 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8FC55C433F1;
- Fri, 19 Jan 2024 14:49:29 +0000 (UTC)
-Date: Fri, 19 Jan 2024 14:49:26 +0000
+ by dfw.source.kernel.org (Postfix) with ESMTP id 625C8618F6;
+ Fri, 19 Jan 2024 14:56:20 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 57FC9C433F1;
+ Fri, 19 Jan 2024 14:56:17 +0000 (UTC)
+Date: Fri, 19 Jan 2024 14:56:14 +0000
 From: Simon Horman <horms@kernel.org>
-To: Suresh Kumar <suresh2514@gmail.com>
-Message-ID: <20240119144926.GA89683@kernel.org>
-References: <20240119131652.8050-1-suresh2514@gmail.com>
+To: Kunwu Chan <chentao@kylinos.cn>
+Message-ID: <20240119145614.GB89683@kernel.org>
+References: <20240115082825.28343-1-chentao@kylinos.cn>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20240119131652.8050-1-suresh2514@gmail.com>
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20240115082825.28343-1-chentao@kylinos.cn>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1705675771;
- bh=hCsjv91Yj4g0mu9TcH2Xv3lssnwsCBwDQBHzNUt9fjU=;
+ d=kernel.org; s=k20201202; t=1705676180;
+ bh=qHs04bjtpQIRD5zTdGPu5IZXoDqL4hhRu+sEHgltQV0=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=CcUDEGoOFlcLo+0ZJN8vUz0TsUYBvRn2MSjEw9MRuxGor91adf5VbKu9ojYSgtNO4
- kId5csymMPuYgpMxvigwacpP1EHfXn+XdukEQs+mkq0FIXTlFiOO1vs70PVVgY6sBP
- GGmRWFZXPvqkdoMGzh2Zq02GXHL+G8ZRV6Zyv39U9YPCxOzr+WKZJTKOcvrkds3kOm
- kwIMCj6z2iAaOIoYCCyryl9oS6K8Xbk/UCmSauqVHq1SHavRCY17ETnyjN6xVAB1nB
- HPESE3H8wd6ihIoJrc7/u+BqXZSA5mue2NeWPiEE087Z13Oa1ZwvXoRYSi8mLwnekj
- +5iwZ2vt9T5Sw==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ b=saWR+B9B9L6yDQk5YP+UwF5lhmfamU39f5eLZpY4n/aGzCzJoW/G8P2Fw5jVe5+g0
+ nap8LyzoALjJzxEj93SZWbo3LY0K+/LAvi6bNICEO8qmOHzARNK+3PXIe8rMRa8Lri
+ wekHJ1hP1AooS+spxD4UZXQiZdrYkgp/d5MoTvL5otdLzCT2H7DhpSgyfySb+wSNL7
+ FcZq/a2zhkoZ+dujiddJpkvWUdVF0wTRSOVtpJc15aToPSerSjDpbeUiv99XpPmIsc
+ AAdH4j/FftzPN30bzPfwuG8VJCsvTWf+S9L8707gM6uiA4dEZR3kH7gMgh91CEHe04
+ ZCbQSLwkJscqQ==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=CcUDEGoO
-Subject: Re: [Intel-wired-lan] [PATCH] i40e: print correct hw max rss count
- in kernel ring buffer
+ header.a=rsa-sha256 header.s=k20201202 header.b=saWR+B9B
+Subject: Re: [Intel-wired-lan] [PATCH v3] igb: Fix string truncation
+ warnings in igb_set_fw_version
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,61 +89,36 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: intel-wired-lan@lists.osuosl.org, jesse.brandeburg@intel.com,
- linux-kernel@vger.kernel.org, edumazet@google.com, anthony.l.nguyen@intel.com,
- netdev@vger.kernel.org, kuba@kernel.org, pabeni@redhat.com,
- davem@davemloft.net
+Cc: Kunwu Chan <kunwu.chan@hotmail.com>, przemyslaw.kitszel@intel.com,
+ jesse.brandeburg@intel.com, linux-kernel@vger.kernel.org, edumazet@google.com,
+ netdev@vger.kernel.org, anthony.l.nguyen@intel.com,
+ intel-wired-lan@lists.osuosl.org, jacob.e.keller@intel.com, kuba@kernel.org,
+ pabeni@redhat.com, davem@davemloft.net
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Fri, Jan 19, 2024 at 06:46:52PM +0530, Suresh Kumar wrote:
-> The value printed for  "HW max RSS count" is wrong in kernel dmesg for i40e
-> NICs:
+On Mon, Jan 15, 2024 at 04:28:25PM +0800, Kunwu Chan wrote:
+> Commit 1978d3ead82c ("intel: fix string truncation warnings")
+> fixes '-Wformat-truncation=' warnings in igb_main.c by using kasprintf.
 > 
->   ... i40e 0000:63:00.0: User requested queue count/HW max RSS count: 48/64
+> drivers/net/ethernet/intel/igb/igb_main.c:3092:53: warning：‘%d’ directive output may be truncated writing between 1 and 5 bytes into a region of size between 1 and 13 [-Wformat-truncation=]
+>  3092 |                                  "%d.%d, 0x%08x, %d.%d.%d",
+>       |                                                     ^~
+> drivers/net/ethernet/intel/igb/igb_main.c:3092:34: note：directive argument in the range [0, 65535]
+>  3092 |                                  "%d.%d, 0x%08x, %d.%d.%d",
+>       |                                  ^~~~~~~~~~~~~~~~~~~~~~~~~
+> drivers/net/ethernet/intel/igb/igb_main.c:3092:34: note：directive argument in the range [0, 65535]
+> drivers/net/ethernet/intel/igb/igb_main.c:3090:25: note：‘snprintf’ output between 23 and 43 bytes into a destination of size 32
 > 
-> whereas  ethtool reports the correct value from "vsi->num_queue_pairs"
+> kasprintf() returns a pointer to dynamically allocated memory
+> which can be NULL upon failure.
 > 
-> Channel parameters for eno33:
-> Pre-set maximums:
-> RX:     n/a
-> TX:     n/a
-> Other:      1
-> Combined:   96
-> Current hardware settings:
-> RX:     n/a
-> TX:     n/a
-> Other:      1
-> Combined:   96  <-------
+> Fix this warning by using a larger space for adapter->fw_version,
+> and then fall back and continue to use snprintf.
 > 
-> and is misleading.
-> 
-> This value is printed from 'pf->rss_size_max' which seems hardcoded.
-> 
-> Below commit also removed this 64 limit:
-> 
-> Commit e56afa599609d3afe8b0ce24b553ab95e9782502
-> Author: Amritha Nambiar <amritha.nambiar@intel.com>
-> Date:   Wed Nov 8 16:38:43 2017 -0800
-> 
->     i40e: Remove limit of 64 max queues per channel
+> Fixes: 1978d3ead82c ("intel: fix string truncation warnings")
+> Signed-off-by: Kunwu Chan <chentao@kylinos.cn>
+> Cc: Kunwu Chan <kunwu.chan@hotmail.com>
+> Suggested-by: Jakub Kicinski <kuba@kernel.org>
 
-Hi Suresh,
-
-I think it would be more normal to cite this commit something like this:
-
-The limit of 64 was removed by
-commit e56afa599609 ("i40e: Remove limit of 64 max queues per channel")
-
-Also, it's not clear to me if this should be considered a fix or not.
-If not, which I lean towards, then it should probably be targeted
-at iwl-next.
-
-	Subject: [PATCH iwl-next] ...
-
-If it is a fix, then it should have a Fixes tag and probably
-be targeted at iwl.
-
-	Subject: [PATCH iwl] ...
-
-...
+Reviewed-by: Simon Horman <horms@kernel.org>
