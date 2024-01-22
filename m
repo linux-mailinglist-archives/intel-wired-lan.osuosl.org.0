@@ -1,81 +1,84 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 489D78374F5
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 22 Jan 2024 22:11:02 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id AE2938374FF
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 22 Jan 2024 22:11:54 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id AD1B841A08;
-	Mon, 22 Jan 2024 21:11:00 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org AD1B841A08
+	by smtp2.osuosl.org (Postfix) with ESMTP id 454B041A08;
+	Mon, 22 Jan 2024 21:11:53 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 454B041A08
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1705957860;
-	bh=QQuxlIZQ7Oogvx0qykRNuSzmJ0WSw6if2F8B62AR6b4=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=1pwOKmTDjocAhPw1qWfW1ok9JLP0kYcg3sUQwj7T7Q+4h/Sl849Nrjd/lWLWjmusT
-	 x4ltNv3yPvQm522ooGzWocLjIYqVqdpM/mEY8ukzQatcUEBM3VYqfvERHXgkXvTne4
-	 hd3zWp93IS/lSCRfr9f6p+vtPLAwJQKNyl7WWuO+JNL1kZM9qeWYhkaB8MDc6ZfY30
-	 b7LjRvyA4YsZ9uqqQOl5R7oKQiYYKFWevjEVVY9q/l4kTIDNGP76MFhp1F4uC4ErU0
-	 i+2TLJI17Zap8GQjGDfnDaamGJNdlhH+lq5VOW0uxRcmSfJWQ3hpiPebRbXpPgj9wd
-	 1+v+DZFMBkH8A==
+	s=default; t=1705957913;
+	bh=Gwe5M3eNXaTQGN0iuTGm+7ClGEPyoD5BbHJbULEUrLo=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=TdlkuqbQOH6iFoWEmwDl8ADCelLi3a2JAKAA3DLXYWH/qsqZlJkffcr4tau+4BNjc
+	 h7svj1RBw6nINdPV/ko1Th5ushl3C36zVsZ1bWKU+9rT49siW+rEj5hTvvhru6UQ1a
+	 QZbWXiLrjIcQrwj7WQKdlEBYpnm8ZwekPdES9uUVXPpwps2Ma2w2HUWOwEbqR4JlGf
+	 5N6+nzH2aS2GiedwSIEpklKw1EjiRe/rtmhGqBxI4wkr21AaypLkNYDq9lkiFb1GdZ
+	 MuXITWDMuTJ8aWeclOwN1OgXMmJhkhg+9ZhEyThtsVfnno8xSCFKyfAEpASDk5klHd
+	 AWn9/XCfsIxng==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id L28g0heaedz8; Mon, 22 Jan 2024 21:11:00 +0000 (UTC)
+	with ESMTP id 4m5LQQJJNtdx; Mon, 22 Jan 2024 21:11:52 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 8DEEF4097C;
-	Mon, 22 Jan 2024 21:10:59 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 8DEEF4097C
+	by smtp2.osuosl.org (Postfix) with ESMTP id 4468B4097C;
+	Mon, 22 Jan 2024 21:11:52 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 4468B4097C
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 5C7FB1BF3A4
- for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Jan 2024 21:10:54 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 1FDEF1BF3A4
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Jan 2024 21:11:47 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 2EE7141A08
- for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Jan 2024 21:10:54 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 2EE7141A08
+ by smtp4.osuosl.org (Postfix) with ESMTP id 03143409DF
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Jan 2024 21:11:47 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 03143409DF
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id aN7A5sH-s11U for <intel-wired-lan@lists.osuosl.org>;
- Mon, 22 Jan 2024 21:10:53 +0000 (UTC)
-Received: from dfw.source.kernel.org (dfw.source.kernel.org
- [IPv6:2604:1380:4641:c500::1])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 6AAC54097C
- for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Jan 2024 21:10:53 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 6AAC54097C
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by dfw.source.kernel.org (Postfix) with ESMTP id 4D9FF61AF5;
- Mon, 22 Jan 2024 21:10:52 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2F1D7C43390;
- Mon, 22 Jan 2024 21:10:49 +0000 (UTC)
-Date: Mon, 22 Jan 2024 21:10:46 +0000
-From: Simon Horman <horms@kernel.org>
-To: Zhipeng Lu <alexious@zju.edu.cn>
-Message-ID: <20240122211046.GK126470@kernel.org>
-References: <20240122173633.3843715-1-alexious@zju.edu.cn>
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id AW39qVGxrDiN for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 22 Jan 2024 21:11:44 +0000 (UTC)
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.9])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id EE9A84098B
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Jan 2024 21:11:43 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org EE9A84098B
+X-IronPort-AV: E=McAfee;i="6600,9927,10961"; a="19897116"
+X-IronPort-AV: E=Sophos;i="6.05,212,1701158400"; d="scan'208";a="19897116"
+Received: from orviesa002.jf.intel.com ([10.64.159.142])
+ by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 22 Jan 2024 13:11:44 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.05,212,1701158400"; d="scan'208";a="27494313"
+Received: from dev1-atbrady.jf.intel.com ([10.166.241.35])
+ by orviesa002.jf.intel.com with ESMTP; 22 Jan 2024 13:11:43 -0800
+From: Alan Brady <alan.brady@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Mon, 22 Jan 2024 13:11:19 -0800
+Message-Id: <20240122211125.840833-1-alan.brady@intel.com>
+X-Mailer: git-send-email 2.40.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20240122173633.3843715-1-alexious@zju.edu.cn>
+Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1705957851;
- bh=TDViGXXDF62YHlJpIBlrEc0F5ODj676gbujRwRqKUtY=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=L5wjLa6gOcizqQtkvIgi2lycdDBDD1WQZBJR5QPDfYTBF5FHJKR4h3z+x1XnyxSHf
- +gBBIrzMsUiibgEP7xUUXakoEbnrzasfK6DPRix7wfJbcGjoFHTHoqZWdHohsyMOfB
- //BfYKXdio7Px8XckjFam7Ko0P2jas24o/UI4r93TPzx5Xxpaf8GtEvlU7ORdwWS/8
- XoP4MYf+9KdSUYqMQzqPHazQK4/W7Fvn2R8i5lYJZzTrHWImGB0ANygxK16vYvn/nN
- TS2OegnnyGrOMjjuhhj4S9BKTfpC6IEDUCjWRx5S/ZBaUzMPme2C61S4+102pwecXi
- Hn3fMN+zHurKw==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=L5wjLa6g
-Subject: Re: [Intel-wired-lan] [PATCH] i40e: fix a memleak in
- i40e_init_recovery_mode
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1705957904; x=1737493904;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=NMviHsi9EYih85i/6i3JRFfS3Ww6Wn2XLC62VAxNFlc=;
+ b=X0gjvv6lFh0V6Gwa3a1lfQ1SNkf2f36SHzP/fZn6abnDGu5whKX0S2IB
+ I7nGV9j38sCRzem0T4Uvf46T9kUe6ElK4KDgE2h8AFhwnM3PZGvfkQCoL
+ dFglrtvZuHcOTiOH9Hv4Wo2FsbVAZOBUOi564pzxfm1q4vv+o/VZ0aEOL
+ StrgXKUqXmottbZhZqCR4QpnNV4B56O9yXsN6K4vR0jBK+3sXqWEUVh8i
+ FFbKu0qWCLbX6dbMfqqFJAOOLTChSo0H4YOc5AjG7a3FSHW7uq6CX/Nn5
+ Cc/FOlEVf5vhSv0b6f1wT2wHp+HAqgnIvZR2RoBvs9drJEuneXs/ts45L
+ A==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=X0gjvv6l
+Subject: [Intel-wired-lan] [PATCH 0/6 iwl-next] idpf: refactor virtchnl
+ messages
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,23 +91,69 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Alice Michael <alice.michael@intel.com>, intel-wired-lan@lists.osuosl.org,
- Jesse Brandeburg <jesse.brandeburg@intel.com>, linux-kernel@vger.kernel.org,
- Eric Dumazet <edumazet@google.com>, netdev@vger.kernel.org,
- Tony Nguyen <anthony.l.nguyen@intel.com>,
- Jeff Kirsher <jeffrey.t.kirsher@intel.com>,
- Piotr Marczak <piotr.marczak@intel.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>
+Cc: netdev@vger.kernel.org, Alan Brady <alan.brady@intel.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, Jan 23, 2024 at 01:36:33AM +0800, Zhipeng Lu wrote:
-> In i40e_init_recovery_mode, pf->vsi is allocated without free, causing
-> a memleak. This patch adds deallocation operations for pf->vsi in each
-> and every error-handling paths after pf->vsi's.
-> 
-> Fixes: 4ff0ee1af016 ("i40e: Introduce recovery mode support")
-> Signed-off-by: Zhipeng Lu <alexious@zju.edu.cn>
+The motivation for this series has two primary goals. We want to enable
+support of multiple simultaneous messages and make the channel more
+robust. The way it works right now, the driver can only send and receive
+a single message at a time and if something goes really wrong, it can
+lead to data corruption and strange bugs.
 
-Reviewed-by: Simon Horman <horms@kernel.org>
+This works by conceptualizing a send and receive as a "virtchnl
+transaction" (idpf_vc_xn) and introducing a "transaction manager"
+(idpf_vc_xn_manager). The vcxn_mngr will init a ring of transactions
+from which the driver will pop from a bitmap of free transactions to
+track in-flight messages. Instead of needing to handle a complicated
+send/recv for every a message, the driver now just needs to fill out a
+xn_params struct and hand it over to idpf_vc_xn_exec which will take
+care of all the messy bits. Once a message is sent and receives a reply,
+we leverage the completion API to signal the received buffer is ready to
+be used (assuming success, or an error code otherwise).
+
+At a low-level, this implements the "sw cookie" field of the virtchnl
+message descriptor to enable this. We have 16 bits we can put whatever
+we want and the recipient is required to apply the same cookie to the
+reply for that message.  We use the first 8 bits as an index into the
+array of transactions to enable fast lookups and we use the second 8
+bits as a salt to make sure each cookie is unique for that message. As
+transactions are received in arbitrary order, it's possible to reuse a
+transaction index and the salt guards against index conflicts to make
+certain the lookup is correct. As a primitive example, say index 1 is
+used with salt 1. The message times out without receiving a reply so
+index 1 is renewed to be ready for a new transaction, we report the
+timeout, and send the message again. Since index 1 is free to be used
+again now, index 1 is again sent but now salt is 2. This time we do get
+a reply, however it could be that the reply is _actually_ for the
+previous send index 1 with salt 1.  Without the salt we would have no
+way of knowing for sure if it's the correct reply, but with we will know
+for certain.
+
+Through this conversion we also get several other benefits. We can now
+more appropriately handle asynchronously sent messages by providing
+space for a callback to be defined. This notably allows us to handle MAC
+filter failures better; previously we could potentially have stale,
+failed filters in our list, which shouldn't really have a major impact
+but is obviously not correct. I also managed to remove slightly more
+lines than I added which is a win in my book.
+
+Alan Brady (6):
+  idpf: implement virtchnl transaction manager
+  idpf: refactor vport virtchnl messages
+  idpf: refactor queue related virtchnl messages
+  idpf: refactor remaining virtchnl messages
+  idpf: refactor idpf_recv_mb_msg
+  idpf: cleanup virtchnl cruft
+
+ drivers/net/ethernet/intel/idpf/idpf.h        |  192 +-
+ .../ethernet/intel/idpf/idpf_controlq_api.h   |    5 +
+ drivers/net/ethernet/intel/idpf/idpf_lib.c    |   29 +-
+ drivers/net/ethernet/intel/idpf/idpf_main.c   |    3 +-
+ drivers/net/ethernet/intel/idpf/idpf_vf_dev.c |    2 +-
+ .../net/ethernet/intel/idpf/idpf_virtchnl.c   | 1984 ++++++++---------
+ 6 files changed, 1045 insertions(+), 1170 deletions(-)
+
+-- 
+2.40.1
 
