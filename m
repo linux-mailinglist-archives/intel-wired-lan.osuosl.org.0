@@ -2,85 +2,194 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C2E3B83750A
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 22 Jan 2024 22:12:27 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id B214183752B
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 22 Jan 2024 22:26:23 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 5561941A47;
-	Mon, 22 Jan 2024 21:12:26 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 5561941A47
+	by smtp2.osuosl.org (Postfix) with ESMTP id 4717341A40;
+	Mon, 22 Jan 2024 21:26:22 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 4717341A40
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1705957946;
-	bh=ygOu2U56QElzy0V3PTAw4H30lCllPZeMfoCuBJ4L4hU=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1705958782;
+	bh=bvxS9jnUy3OrB1qPea3honxUlo/IWRj4+BbWBY2/sns=;
+	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=04KvSP1TEuCwQx78p9u4HYR5aDSFeHnnTVUFYrJIjJP/n91AH6buvYIj6b/aACkrc
-	 qCrVW+kdbPfU3I6rZoWY7FnchGxqzLcUG2JpJuqGnG9YU44ZMm5GlzSXh3r+vwyO5n
-	 PR0/AEN3GZWrttwABZJl5Z8PPkiQrYqfcmfIPnxfX8ofKXy1Mh/JJ8K/IvBmIcqfBa
-	 7+Y4v09fYY7qk58tj8w4fWF+0eZJY8Qs5NqpaFlpWatCBq3voZSH9O9RL1/7FdCZth
-	 5+uMv+0anrcdtlgv11O1Bh/41reZLp7tsyzvUWc4Zl/osqUxYoYYQnyi1W+3/M0oXQ
-	 Q3oAerS5Fv3uQ==
+	b=yROe8bWDKlsk+YSeK2s0uXt6/V0yyoUz0M5ZCFHYGTFLjFvI7tNMPNxkmFXM57ue2
+	 UZaM8buV8dnA7FIzbk74j+rXgihsrQ0SAaMemFSf7otHXqh1aidVgT0TxV97/aWkJe
+	 n91+E3j6gHkBGzVR5E8opBcNn7pvvjLpz1ku1Ua3YmktG6InyVSP75KSfpiSjRJyvr
+	 DVzJvmCQerx3PYvIFzxTXZH1TgQGCG8KqKptYl7Nwpvzf/5lbWO4Ptbg/2H0VKS2CB
+	 zH52FCCMkRu1Xq6/6+IX4UVEw8FpX9YOH07OGwnXBFId49jng98+dXdvhmhvmRsuod
+	 hmtql6nEXXlWg==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id UsyEjrrZxIQL; Mon, 22 Jan 2024 21:12:25 +0000 (UTC)
+	with ESMTP id bCr34ZjjPlPS; Mon, 22 Jan 2024 21:26:21 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id C25EE40108;
-	Mon, 22 Jan 2024 21:12:24 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C25EE40108
+	by smtp2.osuosl.org (Postfix) with ESMTP id 3A24841A32;
+	Mon, 22 Jan 2024 21:26:21 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3A24841A32
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 128551BF3A4
- for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Jan 2024 21:11:55 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id C60F21BF3A4
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Jan 2024 21:26:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id DDF5B4098B
- for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Jan 2024 21:11:54 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org DDF5B4098B
+ by smtp1.osuosl.org (Postfix) with ESMTP id 9C49282513
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Jan 2024 21:26:15 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9C49282513
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id hd-3DcR6CPds for <intel-wired-lan@lists.osuosl.org>;
- Mon, 22 Jan 2024 21:11:53 +0000 (UTC)
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.9])
- by smtp4.osuosl.org (Postfix) with ESMTPS id B0003409DF
- for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Jan 2024 21:11:53 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B0003409DF
-X-IronPort-AV: E=McAfee;i="6600,9927,10961"; a="19897153"
-X-IronPort-AV: E=Sophos;i="6.05,212,1701158400"; d="scan'208";a="19897153"
-Received: from orviesa002.jf.intel.com ([10.64.159.142])
- by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 22 Jan 2024 13:11:54 -0800
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id xixUQVb0EOsy for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 22 Jan 2024 21:26:15 +0000 (UTC)
+X-Greylist: delayed 427 seconds by postgrey-1.37 at util1.osuosl.org;
+ Mon, 22 Jan 2024 21:26:14 UTC
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E7036824CE
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.14])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id E7036824CE
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Jan 2024 21:26:14 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10961"; a="1217441"
+X-IronPort-AV: E=Sophos;i="6.05,212,1701158400"; 
+   d="scan'208";a="1217441"
+Received: from orviesa003.jf.intel.com ([10.64.159.143])
+ by orvoesa106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 22 Jan 2024 13:19:07 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.05,212,1701158400"; d="scan'208";a="27494345"
-Received: from dev1-atbrady.jf.intel.com ([10.166.241.35])
- by orviesa002.jf.intel.com with ESMTP; 22 Jan 2024 13:11:53 -0800
-From: Alan Brady <alan.brady@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Mon, 22 Jan 2024 13:11:25 -0800
-Message-Id: <20240122211125.840833-7-alan.brady@intel.com>
-X-Mailer: git-send-email 2.40.1
-In-Reply-To: <20240122211125.840833-1-alan.brady@intel.com>
-References: <20240122211125.840833-1-alan.brady@intel.com>
+X-IronPort-AV: E=Sophos;i="6.05,212,1701158400"; 
+   d="scan'208";a="1342315"
+Received: from fmsmsx601.amr.corp.intel.com ([10.18.126.81])
+ by orviesa003.jf.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
+ 22 Jan 2024 13:19:06 -0800
+Received: from fmsmsx612.amr.corp.intel.com (10.18.126.92) by
+ fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.35; Mon, 22 Jan 2024 13:19:05 -0800
+Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
+ fmsmsx612.amr.corp.intel.com (10.18.126.92) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.35; Mon, 22 Jan 2024 13:19:04 -0800
+Received: from fmsedg601.ED.cps.intel.com (10.1.192.135) by
+ fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.35 via Frontend Transport; Mon, 22 Jan 2024 13:19:04 -0800
+Received: from NAM02-DM3-obe.outbound.protection.outlook.com (104.47.56.40) by
+ edgegateway.intel.com (192.55.55.70) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.35; Mon, 22 Jan 2024 13:19:03 -0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=hdhfPy7sL1C++Ln6POtZ3qFVg58EYETKGQaXgasPJ9Kpapd2nB65ZKKnkXJohoPjLrtqe7nR8HtYPNMQ94Ahr4BhYnCcFGDZIrls2KuHE6k7eSMkRSbdrbL09VMi9K+pcpOx6N1D3qH9mpamU63ohC4TVjlq2lrzV/Kap3YiXb+ROnQG53ULEbBBlNrHXaCvKpizoxlfmejEVdB1iv0DHCDkQ8YvZLvXsLJVZDfJjI3i2Us+hk/J9R5XN3lH4H3VTpTfi5ABa2JGjXzn+EYbZ9MZO2t0QIUMCvbrYzazpJfQEsi8/8xe61mYEneqv8RoQ2dWLvNkgninubQOJQ0d2g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=bvxS9jnUy3OrB1qPea3honxUlo/IWRj4+BbWBY2/sns=;
+ b=bFp/Ju8LYKpYMKxdY4Qjw781Sb26PgyVafD+Q96W7CcTrxipIUCdQ/sMEXKOHgseMp4TnN3zNy6Io4jKubQKSwHROBmFahsc3tzZ7Y2XbCnxmgl9JhZnzXcR+3Yu7v9QaaWXyKfJZVBjvDJHLyVDQ8CHSDGS7bEjoXuw9UtbCGjAynnNi7B3ldoTsDy3copP6Tpf4V0skca/vx7QvQ8PaWrNc6I13X/tw8yKbORpuUsx5/rqJwyvyCLSextnXTmNv4ekrcU47jTx1prj49+rEG3SH5lYoDvxCcMuvyZwUkUrP1JqFcxCkjzff2On+mGJN2pqZFgYHE39NHpcxso3VA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from BL3PR11MB6435.namprd11.prod.outlook.com (2603:10b6:208:3bb::9)
+ by SJ0PR11MB4992.namprd11.prod.outlook.com (2603:10b6:a03:2d4::15)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7202.34; Mon, 22 Jan
+ 2024 21:19:01 +0000
+Received: from BL3PR11MB6435.namprd11.prod.outlook.com
+ ([fe80::c164:13f3:4e42:5c83]) by BL3PR11MB6435.namprd11.prod.outlook.com
+ ([fe80::c164:13f3:4e42:5c83%7]) with mapi id 15.20.7202.031; Mon, 22 Jan 2024
+ 21:19:01 +0000
+Message-ID: <e1fc9c7e-20fd-76ac-15e5-b50dcfc1ae9d@intel.com>
+Date: Mon, 22 Jan 2024 13:18:57 -0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
+ Thunderbird/102.6.1
+To: Jedrzej Jagielski <jedrzej.jagielski@intel.com>,
+ <intel-wired-lan@lists.osuosl.org>
+References: <20240118134332.470907-1-jedrzej.jagielski@intel.com>
+Content-Language: en-US
+From: Tony Nguyen <anthony.l.nguyen@intel.com>
+In-Reply-To: <20240118134332.470907-1-jedrzej.jagielski@intel.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 7bit
+X-ClientProxiedBy: MW4PR03CA0097.namprd03.prod.outlook.com
+ (2603:10b6:303:b7::12) To BL3PR11MB6435.namprd11.prod.outlook.com
+ (2603:10b6:208:3bb::9)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: BL3PR11MB6435:EE_|SJ0PR11MB4992:EE_
+X-MS-Office365-Filtering-Correlation-Id: 0432cba1-e4ee-41bc-8e4f-08dc1b8fc13f
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: AaW44A37w/iTwMmgYtT3gn6Mi53HmCHwypW96gXB9ZTxaLqZVR+OkdRH+G4tKLZrOaPwhooag73sA4cZJUKQKytSpKNF/WMosYw1TXfwHo2fGT0tq7KqCVV6+hgWyGTU4+UueSTcJP3t45L8ChFOVNrhL1JgzevrnVa7uT7VAu4VUiHFFDv3LzdWMDYxdqcWvXFMmJfYqv7Bxo6Haqh4grqr2g5ZIjEjtrxSnKRv90pBni8iatY8pwiSmiuR0zHX3czPIHmGL+7hnWrlzyqbGy5QRwLNTM6iJ1bKY8+ePmxSK7gPCUAwAzW4eMOnbXXOOPwTN9S0ORQpkn8i8oKe8NNC63OF/5pT4cvnacjRXV/9LWyufb1Fx64LhPP2BQAUVc07hT5mmhCZ32mLXyrLZeuHAQ0vFYAsplY5BUirDOggPttYPvtSf9VeAbzKjysVQl1uclVV34q5lUivf4IY8T2bwyK9AcbKOzzxRmZ29Cdv8b1NFXvVAYPle9+ouSHXZytvlAv3cBkcukKxW2X5+XgbZeYpn+iLH5KUmFA9+Yzyb7/xgpASNBP1Gqzke6T+6Jn0kJpTAylST8YhBZBeCsWeIv8DPRiDzDF8MmZOavaEf7EaU1QEXsQvL1QD2yoNkW+L7q+VQF7zso+H4/VrigrTdY1he+bZEtHAglrCrbSk0avFn5h+jQX3BzZKo8xZ
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BL3PR11MB6435.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230031)(376002)(346002)(136003)(39860400002)(366004)(396003)(230273577357003)(230173577357003)(230922051799003)(64100799003)(186009)(1800799012)(451199024)(31686004)(31696002)(86362001)(53546011)(6512007)(6486002)(478600001)(36756003)(83380400001)(107886003)(2616005)(82960400001)(38100700002)(26005)(2906002)(4744005)(316002)(5660300002)(6666004)(6506007)(4326008)(66556008)(66946007)(66476007)(41300700001)(8676002)(8936002)(45980500001)(43740500002);
+ DIR:OUT; SFP:1102; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?d3J4ekErRUtQMnI2aEdYU2NZZTdHRDlBdThPSXlORVpVWWhhbUF6RkZwSm5Y?=
+ =?utf-8?B?NGRWUjgzNUUwL0Y0dUF1TU1rbUlSbkVRZkJ2QmNlWWt5Y2ZsNGMyQTc1cjlR?=
+ =?utf-8?B?RUgzdHN0TUowRXRQUnRoQm9xUTNYR1QyRDh5cVNRVTgzR1JlbmExNXhHZlVu?=
+ =?utf-8?B?S2VKckJBcDFGZ0JhU2tSWEJaajhYcFYzTzZLeXRPL2d6NDNucEJSa2cvVE9p?=
+ =?utf-8?B?WHlDRERrVE92YmlwS1BCMWxmTzVqQ2xTUUw2N1FuNnllZHRsZzl0NDJ0cDda?=
+ =?utf-8?B?T2w5NzdJTjBzcllNS0JtbkptckZ2MlZRb2tGN01pL0F3TWdwT0NWL291TnRh?=
+ =?utf-8?B?dFJtZ3FsaGptaS81eHlodk0xWnBWNGRWbnJHOStWdnEzUXgvay9Qam4wTzdC?=
+ =?utf-8?B?TXVqRjJFbWNtMUdlWnhIa2lzSEpVd3RwMFM5b0dSM1N4OFhiUTEwckU0TUpR?=
+ =?utf-8?B?VFFsWXJMRjFkNWFmYmlBYlRwdENUMXNUc09PTlJUdUJQK01rRDZRcm1jRjQ0?=
+ =?utf-8?B?THg3a2lPTmlNOU1OMDB4TDkzV20yc1lZakQ0VUkrUXhWZDJaVEIrUGhTZWN6?=
+ =?utf-8?B?N29ENklaVWFjdzB4dkFXWmRKZ2NRRjVsNVVrRXFIVTNjTjJYZWdKdkJkME9Z?=
+ =?utf-8?B?MTVQanBRNnRCdWNsMy9lRXFWNSsxYllVclBnK2g1dHpFS0pmbnQ3ZFhZWUtr?=
+ =?utf-8?B?ZzB4eHF2d0JDcWw1L2xaYkdoZVB1R1owYlNCanZHN3FwZk5wRnZEQXc0R0NO?=
+ =?utf-8?B?Z2NlSDAwWmJBT0JOWnpjWmtDVytSSGc0TDhVR1liNGw4S0w1TG10Ym80ekZU?=
+ =?utf-8?B?am9BVzY2d3NZVndaTVVHeGdYS0R4RXNFY2cvSEpUSzRiNjBTWHFGNFdSbzZi?=
+ =?utf-8?B?VmF2KzFPQ1lFeUloRjJHeTBxOStSTEQ3SzhGRit3UmdYZHBPUGJma1FLZ0k4?=
+ =?utf-8?B?dGthamZTbWxCd1R2M1hYMGdIZU1nYkJIbDZSYzJNeHB2TWNYZTQ0T2NzLzdR?=
+ =?utf-8?B?U3NWcjNHVUFuNi9TWDFVeWVMSGorTkFtb05xL2Jzc3llc0JWdWMwZzM5Y21R?=
+ =?utf-8?B?RVFPcEllckJOUHAzU1pQUFdXY0VKbFdCL2lvYWNvd0taZHdMUnY5cEhmVEpF?=
+ =?utf-8?B?SFd2dXBsSW5zWkVOaFR0dkJmL2dVOFBnSDQ1VlpVTUtUWmJvajBtVWppUElt?=
+ =?utf-8?B?b1JMdnRuZ1hIR1Ryc1dEQ1ZwTzljcHQwQng4QkdkRVJ0SW1OQlpQY2M4ZHAz?=
+ =?utf-8?B?Rll3bEdTYnFzTkRoOEV2YWl5ZHh5YnVmSURnS3Ird0xSc3U3d080VEcxWGE5?=
+ =?utf-8?B?VU95TXFGRkhZVDNDU0RZNWk2cm1oUXUyU1BXMWpXREF0NElxcG03WlFuNC9G?=
+ =?utf-8?B?UTJsQWhENFhVRmF3c0hKdWFFdUxKWjR4ZHUvY2RiK1FDb0s5bVBFOU9TcThR?=
+ =?utf-8?B?a0dPQXZRUXhzVmV3SkZOSzg2b1hHNGxQdnd1aVQ1UjZObWtwdWg5NVpIYm1F?=
+ =?utf-8?B?ajRnZEMzSmpaUm1IN3pmTGpHdE01dVdtenFNMHdHM0FxRy9qVXBGZ2MvaFYw?=
+ =?utf-8?B?OVl5U3FMWjNoZFBQTlhQZGYvNlh2VjJEU1JMTFEzRU02dHVaNEJEYUh0NWlI?=
+ =?utf-8?B?S003RHJ2V3RHS0w4azBuNnN5cEFsVEd5K3JQYTBlbjN6VTdtZXRzZjFJRTkz?=
+ =?utf-8?B?L3VNSWVOL01mcjZud0xDR1MxS0NqdzBxY2hiRWVJY3k0M3dnOEpiZURLVitn?=
+ =?utf-8?B?L3Y4YjY4REZYRUFlM01xajRFVTBQdGxPOEpuUFl6UHhJTzErdFZWNmM1UUFn?=
+ =?utf-8?B?K3BoOXRQQ0lUT2dSNGxTa1JucTNLOU1acHFac01IRTY4NUVGeDBJZytTR2Fr?=
+ =?utf-8?B?OG5LV0l5Zk14QVFoY0Y4a2pCZm9kWU5ZVEk4Y203NXVqdERqNGdSQ2c0QUtj?=
+ =?utf-8?B?b0FXNUd3RXdCTmdMVnhVRFpJeXNrMlpISC8rWVllWFlSNVl1cCtDMlY4VFd0?=
+ =?utf-8?B?NTFGeC80Wm4zMGh1SGNDdUxKZFU2ODVlTWxEQklSWVQ1ZENQS251YkhHZGJK?=
+ =?utf-8?B?RlkxUnN2TElYZXN2OWxnTElnMjZ2NmVkZU1XL21KWEN1dGsyekZCWHYwRXIz?=
+ =?utf-8?B?MXY3dlg2REtsbHIrTmVtY2ZVNlRPUjdWN01WY01YZ3RNY3ExcUpDMVJWVERM?=
+ =?utf-8?B?OVE9PQ==?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: 0432cba1-e4ee-41bc-8e4f-08dc1b8fc13f
+X-MS-Exchange-CrossTenant-AuthSource: BL3PR11MB6435.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 22 Jan 2024 21:19:01.7905 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: 3vaVdfH2LINtZnPCLlBW3MKy4wjw5D0oNkRR2ZmawZbQmfqfeGCznxsXzUYq+MDhDk68WwImMkdhQYpR+FRnulFvqBTNMNc0p5gjyQMQ0dQ=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ0PR11MB4992
+X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1705957914; x=1737493914;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=GJdAcXFljr6xxxZHJzAWUMhLT//DGujNg3p5pIOEpZI=;
- b=eAeF0cL9hfVzgLfl2N8RSr73lCLSXqS0k3huFIwEKNrhzbPn80jOGFO6
- 1UOMtinXVPuTbZFSBd/Jw3ELuxKoOX4EcLjHhJc6h7vRygUas2Vo4T/wM
- EZh7wQouujfG/UJ5Yi1FXloDNr76/n5HEgE/CxOssI/4rByerdGR49s7W
- c55TyBCZxEO1XzSRUnrwr/x/Z41RunFLXuSBtzZfOR9z+mdR7DFo1/Zrt
- Suj/GZJke7qgGXAk5awmKxFvfEoewL5eiBVBq2KZgrIk6HMuCUE669jlF
- Bm8ne3TxUP/ojfmlo0RTeic2xH5UKoPn85psgxSKs5mSEBUltS02TQU2F
- w==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ t=1705958776; x=1737494776;
+ h=message-id:date:subject:to:cc:references:from:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=+Fv6M5HtLA/4T/gDTDOu7NiZzxS4S/WWujrdg2mAzOs=;
+ b=NttwmbACqI359kd5y2gWdB7c4Jup9wg+KJ0/Qe+K+CfBJvnrJql2SStr
+ zDRevfhgcuxG5OP7/M18m+8ue3Y3H6ubwXhWk9XIWSgxZQuNrFw3AOlC6
+ utPKCz/Rt333rSWzB58v+tP72LgQoeaKY/H5+lqWvn0MOvISd7Y5cZKRi
+ S6Uya3PQtskt415O43fm0w6aV/kbZrXUTud0vxRDsuQHilGnYvTbsCPRO
+ y0D1ipkALK5l/U/I/PqBrQMWbN6KSBgV8xTB9UzF84MXFQ1yx62mGyvTu
+ rrFv/Vast31mOiOP8sKHYBbZzZ9CPVLJPto4bt9e/8VHKTQ61kJrEXtQz
+ g==;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=eAeF0cL9
-Subject: [Intel-wired-lan] [PATCH 6/6 iwl-next] idpf: cleanup virtchnl cruft
+ header.a=rsa-sha256 header.s=Intel header.b=NttwmbAC
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v3 1/3] ixgbe: Convert ret
+ val type from s32 to int
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,289 +202,28 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Przemek Kitszel <przemyslaw.kitszel@intel.com>, netdev@vger.kernel.org,
- Alan Brady <alan.brady@intel.com>, Igor Bagnucki <igor.bagnucki@intel.com>
+Cc: Jacob Keller <jacob.e.keller@intel.com>, netdev@vger.kernel.org
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-We can now remove a bunch of gross code we don't need anymore like the
-vc state bits and vc_buf_lock since everything is using transaction API
-now.
 
-Reviewed-by: Igor Bagnucki <igor.bagnucki@intel.com>
-Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-Signed-off-by: Alan Brady <alan.brady@intel.com>
----
- drivers/net/ethernet/intel/idpf/idpf.h        | 86 -------------------
- drivers/net/ethernet/intel/idpf/idpf_lib.c    | 25 +-----
- drivers/net/ethernet/intel/idpf/idpf_main.c   |  2 -
- .../net/ethernet/intel/idpf/idpf_virtchnl.c   | 13 ---
- 4 files changed, 2 insertions(+), 124 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/idpf/idpf.h b/drivers/net/ethernet/intel/idpf/idpf.h
-index 2d5449b9288a..0793173bb36d 100644
---- a/drivers/net/ethernet/intel/idpf/idpf.h
-+++ b/drivers/net/ethernet/intel/idpf/idpf.h
-@@ -37,8 +37,6 @@ struct idpf_vport_max_q;
- #define IDPF_MB_MAX_ERR			20
- #define IDPF_NUM_CHUNKS_PER_MSG(struct_sz, chunk_sz)	\
- 	((IDPF_CTLQ_MAX_BUF_LEN - (struct_sz)) / (chunk_sz))
--#define IDPF_WAIT_FOR_EVENT_TIMEO_MIN	2000
--#define IDPF_WAIT_FOR_EVENT_TIMEO	60000
- #define IDPF_VC_XN_MIN_TIMEOUT_MSEC	2000
- #define IDPF_VC_XN_DEFAULT_TIMEOUT_MSEC	(60 * 1000)
- #define IDPF_VC_XN_IDX_M		GENMASK(7, 0)
-@@ -212,71 +210,6 @@ struct idpf_dev_ops {
- 	struct idpf_reg_ops reg_ops;
- };
- 
--/* These macros allow us to generate an enum and a matching char * array of
-- * stringified enums that are always in sync. Checkpatch issues a bogus warning
-- * about this being a complex macro; but it's wrong, these are never used as a
-- * statement and instead only used to define the enum and array.
-- */
--#define IDPF_FOREACH_VPORT_VC_STATE(STATE)	\
--	STATE(IDPF_VC_CREATE_VPORT)		\
--	STATE(IDPF_VC_CREATE_VPORT_ERR)		\
--	STATE(IDPF_VC_ENA_VPORT)		\
--	STATE(IDPF_VC_ENA_VPORT_ERR)		\
--	STATE(IDPF_VC_DIS_VPORT)		\
--	STATE(IDPF_VC_DIS_VPORT_ERR)		\
--	STATE(IDPF_VC_DESTROY_VPORT)		\
--	STATE(IDPF_VC_DESTROY_VPORT_ERR)	\
--	STATE(IDPF_VC_CONFIG_TXQ)		\
--	STATE(IDPF_VC_CONFIG_TXQ_ERR)		\
--	STATE(IDPF_VC_CONFIG_RXQ)		\
--	STATE(IDPF_VC_CONFIG_RXQ_ERR)		\
--	STATE(IDPF_VC_ENA_QUEUES)		\
--	STATE(IDPF_VC_ENA_QUEUES_ERR)		\
--	STATE(IDPF_VC_DIS_QUEUES)		\
--	STATE(IDPF_VC_DIS_QUEUES_ERR)		\
--	STATE(IDPF_VC_MAP_IRQ)			\
--	STATE(IDPF_VC_MAP_IRQ_ERR)		\
--	STATE(IDPF_VC_UNMAP_IRQ)		\
--	STATE(IDPF_VC_UNMAP_IRQ_ERR)		\
--	STATE(IDPF_VC_ADD_QUEUES)		\
--	STATE(IDPF_VC_ADD_QUEUES_ERR)		\
--	STATE(IDPF_VC_DEL_QUEUES)		\
--	STATE(IDPF_VC_DEL_QUEUES_ERR)		\
--	STATE(IDPF_VC_ALLOC_VECTORS)		\
--	STATE(IDPF_VC_ALLOC_VECTORS_ERR)	\
--	STATE(IDPF_VC_DEALLOC_VECTORS)		\
--	STATE(IDPF_VC_DEALLOC_VECTORS_ERR)	\
--	STATE(IDPF_VC_SET_SRIOV_VFS)		\
--	STATE(IDPF_VC_SET_SRIOV_VFS_ERR)	\
--	STATE(IDPF_VC_GET_RSS_LUT)		\
--	STATE(IDPF_VC_GET_RSS_LUT_ERR)		\
--	STATE(IDPF_VC_SET_RSS_LUT)		\
--	STATE(IDPF_VC_SET_RSS_LUT_ERR)		\
--	STATE(IDPF_VC_GET_RSS_KEY)		\
--	STATE(IDPF_VC_GET_RSS_KEY_ERR)		\
--	STATE(IDPF_VC_SET_RSS_KEY)		\
--	STATE(IDPF_VC_SET_RSS_KEY_ERR)		\
--	STATE(IDPF_VC_GET_STATS)		\
--	STATE(IDPF_VC_GET_STATS_ERR)		\
--	STATE(IDPF_VC_ADD_MAC_ADDR)		\
--	STATE(IDPF_VC_ADD_MAC_ADDR_ERR)		\
--	STATE(IDPF_VC_DEL_MAC_ADDR)		\
--	STATE(IDPF_VC_DEL_MAC_ADDR_ERR)		\
--	STATE(IDPF_VC_GET_PTYPE_INFO)		\
--	STATE(IDPF_VC_GET_PTYPE_INFO_ERR)	\
--	STATE(IDPF_VC_LOOPBACK_STATE)		\
--	STATE(IDPF_VC_LOOPBACK_STATE_ERR)	\
--	STATE(IDPF_VC_NBITS)
--
--#define IDPF_GEN_ENUM(ENUM) ENUM,
--#define IDPF_GEN_STRING(STRING) #STRING,
--
--enum idpf_vport_vc_state {
--	IDPF_FOREACH_VPORT_VC_STATE(IDPF_GEN_ENUM)
--};
--
--extern const char * const idpf_vport_vc_state_str[];
--
- /**
-  * enum idpf_vport_reset_cause - Vport soft reset causes
-  * @IDPF_SR_Q_CHANGE: Soft reset queue change
-@@ -451,11 +384,7 @@ struct idpf_vc_xn_manager {
-  * @port_stats: per port csum, header split, and other offload stats
-  * @link_up: True if link is up
-  * @link_speed_mbps: Link speed in mbps
-- * @vc_msg: Virtchnl message buffer
-- * @vc_state: Virtchnl message state
-- * @vchnl_wq: Wait queue for virtchnl messages
-  * @sw_marker_wq: workqueue for marker packets
-- * @vc_buf_lock: Lock to protect virtchnl buffer
-  */
- struct idpf_vport {
- 	u16 num_txq;
-@@ -501,12 +430,7 @@ struct idpf_vport {
- 	bool link_up;
- 	u32 link_speed_mbps;
- 
--	char vc_msg[IDPF_CTLQ_MAX_BUF_LEN];
--	DECLARE_BITMAP(vc_state, IDPF_VC_NBITS);
--
--	wait_queue_head_t vchnl_wq;
- 	wait_queue_head_t sw_marker_wq;
--	struct mutex vc_buf_lock;
- };
- 
- /**
-@@ -569,15 +493,11 @@ struct idpf_vport_user_config_data {
-  * enum idpf_vport_config_flags - Vport config flags
-  * @IDPF_VPORT_REG_NETDEV: Register netdev
-  * @IDPF_VPORT_UP_REQUESTED: Set if interface up is requested on core reset
-- * @IDPF_VPORT_ADD_MAC_REQ: Asynchronous add ether address in flight
-- * @IDPF_VPORT_DEL_MAC_REQ: Asynchronous delete ether address in flight
-  * @IDPF_VPORT_CONFIG_FLAGS_NBITS: Must be last
-  */
- enum idpf_vport_config_flags {
- 	IDPF_VPORT_REG_NETDEV,
- 	IDPF_VPORT_UP_REQUESTED,
--	IDPF_VPORT_ADD_MAC_REQ,
--	IDPF_VPORT_DEL_MAC_REQ,
- 	IDPF_VPORT_CONFIG_FLAGS_NBITS,
- };
- 
-@@ -694,9 +614,6 @@ struct idpf_vport_config {
-  * @stats_task: Periodic statistics retrieval task
-  * @stats_wq: Workqueue for statistics task
-  * @caps: Negotiated capabilities with device
-- * @vchnl_wq: Wait queue for virtchnl messages
-- * @vc_state: Virtchnl message state
-- * @vc_msg: Virtchnl message buffer
-  * @vcxn_mngr: Virtchnl transaction manager
-  * @dev_ops: See idpf_dev_ops
-  * @num_vfs: Number of allocated VFs through sysfs. PF does not directly talk
-@@ -754,9 +671,6 @@ struct idpf_adapter {
- 	struct workqueue_struct *stats_wq;
- 	struct virtchnl2_get_capabilities caps;
- 
--	wait_queue_head_t vchnl_wq;
--	DECLARE_BITMAP(vc_state, IDPF_VC_NBITS);
--	char vc_msg[IDPF_CTLQ_MAX_BUF_LEN];
- 	struct idpf_vc_xn_manager vcxn_mngr;
- 	struct idpf_dev_ops dev_ops;
- 	int num_vfs;
-diff --git a/drivers/net/ethernet/intel/idpf/idpf_lib.c b/drivers/net/ethernet/intel/idpf/idpf_lib.c
-index edb47730b697..383c10a63d9b 100644
---- a/drivers/net/ethernet/intel/idpf/idpf_lib.c
-+++ b/drivers/net/ethernet/intel/idpf/idpf_lib.c
-@@ -6,10 +6,6 @@
- static const struct net_device_ops idpf_netdev_ops_splitq;
- static const struct net_device_ops idpf_netdev_ops_singleq;
- 
--const char * const idpf_vport_vc_state_str[] = {
--	IDPF_FOREACH_VPORT_VC_STATE(IDPF_GEN_STRING)
--};
--
- /**
-  * idpf_init_vector_stack - Fill the MSIX vector stack with vector index
-  * @adapter: private data struct
-@@ -973,7 +969,6 @@ static void idpf_vport_rel(struct idpf_vport *vport)
- 	struct idpf_rss_data *rss_data;
- 	struct idpf_vport_max_q max_q;
- 	u16 idx = vport->idx;
--	int i;
- 
- 	vport_config = adapter->vport_config[vport->idx];
- 	idpf_deinit_rss(vport);
-@@ -983,20 +978,6 @@ static void idpf_vport_rel(struct idpf_vport *vport)
- 
- 	idpf_send_destroy_vport_msg(vport);
- 
--	/* Set all bits as we dont know on which vc_state the vport vhnl_wq
--	 * is waiting on and wakeup the virtchnl workqueue even if it is
--	 * waiting for the response as we are going down
--	 */
--	for (i = 0; i < IDPF_VC_NBITS; i++)
--		set_bit(i, vport->vc_state);
--	wake_up(&vport->vchnl_wq);
--
--	mutex_destroy(&vport->vc_buf_lock);
--
--	/* Clear all the bits */
--	for (i = 0; i < IDPF_VC_NBITS; i++)
--		clear_bit(i, vport->vc_state);
--
- 	/* Release all max queues allocated to the adapter's pool */
- 	max_q.max_rxq = vport_config->max_q.max_rxq;
- 	max_q.max_txq = vport_config->max_q.max_txq;
-@@ -1541,9 +1522,7 @@ void idpf_init_task(struct work_struct *work)
- 	vport_config = adapter->vport_config[index];
- 
- 	init_waitqueue_head(&vport->sw_marker_wq);
--	init_waitqueue_head(&vport->vchnl_wq);
- 
--	mutex_init(&vport->vc_buf_lock);
- 	spin_lock_init(&vport_config->mac_filter_list_lock);
- 
- 	INIT_LIST_HEAD(&vport_config->user_config.mac_filter_list);
-@@ -1902,7 +1881,7 @@ int idpf_initiate_soft_reset(struct idpf_vport *vport,
- 	 * mess with. Nothing below should use those variables from new_vport
- 	 * and should instead always refer to them in vport if they need to.
- 	 */
--	memcpy(new_vport, vport, offsetof(struct idpf_vport, vc_state));
-+	memcpy(new_vport, vport, offsetof(struct idpf_vport, link_speed_mbps));
- 
- 	/* Adjust resource parameters prior to reallocating resources */
- 	switch (reset_cause) {
-@@ -1951,7 +1930,7 @@ int idpf_initiate_soft_reset(struct idpf_vport *vport,
- 	/* Same comment as above regarding avoiding copying the wait_queues and
- 	 * mutexes applies here. We do not want to mess with those if possible.
- 	 */
--	memcpy(vport, new_vport, offsetof(struct idpf_vport, vc_state));
-+	memcpy(vport, new_vport, offsetof(struct idpf_vport, link_speed_mbps));
- 
- 	/* Since idpf_vport_queues_alloc was called with new_port, the queue
- 	 * back pointers are currently pointing to the local new_vport. Reset
-diff --git a/drivers/net/ethernet/intel/idpf/idpf_main.c b/drivers/net/ethernet/intel/idpf/idpf_main.c
-index c82233b112bd..c6d7bec95d69 100644
---- a/drivers/net/ethernet/intel/idpf/idpf_main.c
-+++ b/drivers/net/ethernet/intel/idpf/idpf_main.c
-@@ -230,8 +230,6 @@ static int idpf_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
- 	mutex_init(&adapter->queue_lock);
- 	mutex_init(&adapter->vc_buf_lock);
- 
--	init_waitqueue_head(&adapter->vchnl_wq);
--
- 	INIT_DELAYED_WORK(&adapter->init_task, idpf_init_task);
- 	INIT_DELAYED_WORK(&adapter->serv_task, idpf_service_task);
- 	INIT_DELAYED_WORK(&adapter->mbx_task, idpf_mbx_task);
-diff --git a/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c b/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c
-index 0f3788610b43..56e826ed3029 100644
---- a/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c
-+++ b/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c
-@@ -3021,28 +3021,15 @@ int idpf_vc_core_init(struct idpf_adapter *adapter)
-  */
- void idpf_vc_core_deinit(struct idpf_adapter *adapter)
- {
--	int i;
--
- 	idpf_vc_xn_shutdown(&adapter->vcxn_mngr);
- 	idpf_deinit_task(adapter);
- 	idpf_intr_rel(adapter);
--	/* Set all bits as we dont know on which vc_state the vhnl_wq is
--	 * waiting on and wakeup the virtchnl workqueue even if it is waiting
--	 * for the response as we are going down
--	 */
--	for (i = 0; i < IDPF_VC_NBITS; i++)
--		set_bit(i, adapter->vc_state);
--	wake_up(&adapter->vchnl_wq);
- 
- 	cancel_delayed_work_sync(&adapter->serv_task);
- 	cancel_delayed_work_sync(&adapter->mbx_task);
- 
- 	idpf_vport_params_buf_rel(adapter);
- 
--	/* Clear all the bits */
--	for (i = 0; i < IDPF_VC_NBITS; i++)
--		clear_bit(i, adapter->vc_state);
--
- 	kfree(adapter->vports);
- 	adapter->vports = NULL;
- }
--- 
-2.40.1
+On 1/18/2024 5:43 AM, Jedrzej Jagielski wrote:
+> Currently big amount of the functions returning standard error codes
+> are of type s32. Convert them to regular ints as typdefs here are not
+> necessary to return standard error codes.
+> 
+> Suggested-by: Jacob Keller <jacob.e.keller@intel.com>
+> Reviewed-by: Jacob Keller <jacob.e.keller@intel.com>
+> Signed-off-by: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
 
+There's various checkpatch issues being reported:
+
+CHECK: Alignment should match open parenthesis
+ERROR: space prohibited before that ',' (ctx:WxW)
+WARNING: please, no space before tabs
+
+Seems like a number of these can be remedied.
+
+Thanks,
+Tony
