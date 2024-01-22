@@ -1,64 +1,64 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E7B1A837509
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 22 Jan 2024 22:12:22 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id C2E3B83750A
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 22 Jan 2024 22:12:27 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 76BC441A40;
-	Mon, 22 Jan 2024 21:12:21 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 76BC441A40
+	by smtp2.osuosl.org (Postfix) with ESMTP id 5561941A47;
+	Mon, 22 Jan 2024 21:12:26 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 5561941A47
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1705957941;
-	bh=K5D70UhHb/HJU3Qvhwv+OW1wg3tCy/fAf9st5O8ICds=;
+	s=default; t=1705957946;
+	bh=ygOu2U56QElzy0V3PTAw4H30lCllPZeMfoCuBJ4L4hU=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=T5r7wTbU2kHhOJqXlOEd7lD/c/MxdBo8AdbwVUt3PGxVw917mOjlCQYLiAXk1u0in
-	 iC+jiLjoCJRHnsNrmRp76MPztBz80MLkMc7tGS+8ebJPa7nN2JA5FEvFJ8S90V2MZl
-	 ZC1Kgpgtss/MWRU7Y4FNyYReh6po52yqCsicmSjcosUuX5T+skkL7actQf3V+Zp0uc
-	 1Cs8rv082VQ2GfqwaHWXj8y0dZZO1ILtCsyX+kMIc9pSZErJ7P+2v3nvJpLiVS3cFP
-	 HNXi9b+PRCXMtIek/BP76GSzTPE5kq4GE2CQ0TpXChotcUJNmWudJsXH1dwFe0k/EK
-	 99PWlsAr6ZA2A==
+	b=04KvSP1TEuCwQx78p9u4HYR5aDSFeHnnTVUFYrJIjJP/n91AH6buvYIj6b/aACkrc
+	 qCrVW+kdbPfU3I6rZoWY7FnchGxqzLcUG2JpJuqGnG9YU44ZMm5GlzSXh3r+vwyO5n
+	 PR0/AEN3GZWrttwABZJl5Z8PPkiQrYqfcmfIPnxfX8ofKXy1Mh/JJ8K/IvBmIcqfBa
+	 7+Y4v09fYY7qk58tj8w4fWF+0eZJY8Qs5NqpaFlpWatCBq3voZSH9O9RL1/7FdCZth
+	 5+uMv+0anrcdtlgv11O1Bh/41reZLp7tsyzvUWc4Zl/osqUxYoYYQnyi1W+3/M0oXQ
+	 Q3oAerS5Fv3uQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id yXbMa1vzqOgc; Mon, 22 Jan 2024 21:12:20 +0000 (UTC)
+	with ESMTP id UsyEjrrZxIQL; Mon, 22 Jan 2024 21:12:25 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id DFD1A40108;
-	Mon, 22 Jan 2024 21:12:19 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org DFD1A40108
+	by smtp2.osuosl.org (Postfix) with ESMTP id C25EE40108;
+	Mon, 22 Jan 2024 21:12:24 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C25EE40108
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 782B51BF3A4
- for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Jan 2024 21:11:54 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 128551BF3A4
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Jan 2024 21:11:55 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 4FF3940999
- for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Jan 2024 21:11:53 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4FF3940999
+ by smtp4.osuosl.org (Postfix) with ESMTP id DDF5B4098B
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Jan 2024 21:11:54 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org DDF5B4098B
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id h3MGbwtNWLXr for <intel-wired-lan@lists.osuosl.org>;
- Mon, 22 Jan 2024 21:11:52 +0000 (UTC)
+ with ESMTP id hd-3DcR6CPds for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 22 Jan 2024 21:11:53 +0000 (UTC)
 Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.9])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 223C7409DF
- for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Jan 2024 21:11:52 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 223C7409DF
-X-IronPort-AV: E=McAfee;i="6600,9927,10961"; a="19897146"
-X-IronPort-AV: E=Sophos;i="6.05,212,1701158400"; d="scan'208";a="19897146"
+ by smtp4.osuosl.org (Postfix) with ESMTPS id B0003409DF
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Jan 2024 21:11:53 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B0003409DF
+X-IronPort-AV: E=McAfee;i="6600,9927,10961"; a="19897153"
+X-IronPort-AV: E=Sophos;i="6.05,212,1701158400"; d="scan'208";a="19897153"
 Received: from orviesa002.jf.intel.com ([10.64.159.142])
  by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 22 Jan 2024 13:11:52 -0800
+ 22 Jan 2024 13:11:54 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.05,212,1701158400"; d="scan'208";a="27494338"
+X-IronPort-AV: E=Sophos;i="6.05,212,1701158400"; d="scan'208";a="27494345"
 Received: from dev1-atbrady.jf.intel.com ([10.166.241.35])
- by orviesa002.jf.intel.com with ESMTP; 22 Jan 2024 13:11:52 -0800
+ by orviesa002.jf.intel.com with ESMTP; 22 Jan 2024 13:11:53 -0800
 From: Alan Brady <alan.brady@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Mon, 22 Jan 2024 13:11:24 -0800
-Message-Id: <20240122211125.840833-6-alan.brady@intel.com>
+Date: Mon, 22 Jan 2024 13:11:25 -0800
+Message-Id: <20240122211125.840833-7-alan.brady@intel.com>
 X-Mailer: git-send-email 2.40.1
 In-Reply-To: <20240122211125.840833-1-alan.brady@intel.com>
 References: <20240122211125.840833-1-alan.brady@intel.com>
@@ -66,22 +66,21 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1705957913; x=1737493913;
+ t=1705957914; x=1737493914;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=Wg1BSOqUGL2Q418Pq8sOVJHJspd+D03+mf8kMB5/+oo=;
- b=d8K/cR0m5TGLkmrwhE8nXMkB5P+n2I7HGNbX3v4M7bkdL7ByMGIMckkO
- vC2oalW64scvHzDtP2IKvczt5u7NWcnuYKj5EASWM5w4WWuktkt+ZJr1I
- SSJKoIog+HZyNTuDi4WDHCyjy4ALovAiE9iWOZNj+hghvCUdezrr/cRWm
- r5HNSRtA8MG0aZhVOKl5sVkiwGUp9+epZqIiOb37J00KsWegvRX05hvPb
- +14vv70OrwHv9kjb0yzlXZ2xhzbKDXrgqbaLZRbmNYvEuGM4XLoyLd+ne
- SrMFEcfcvAUBe6Maxt/CTMoKvqKiUdRzmwVuhOzVSE1YJAZR8grEZVYt3
+ bh=GJdAcXFljr6xxxZHJzAWUMhLT//DGujNg3p5pIOEpZI=;
+ b=eAeF0cL9hfVzgLfl2N8RSr73lCLSXqS0k3huFIwEKNrhzbPn80jOGFO6
+ 1UOMtinXVPuTbZFSBd/Jw3ELuxKoOX4EcLjHhJc6h7vRygUas2Vo4T/wM
+ EZh7wQouujfG/UJ5Yi1FXloDNr76/n5HEgE/CxOssI/4rByerdGR49s7W
+ c55TyBCZxEO1XzSRUnrwr/x/Z41RunFLXuSBtzZfOR9z+mdR7DFo1/Zrt
+ Suj/GZJke7qgGXAk5awmKxFvfEoewL5eiBVBq2KZgrIk6HMuCUE669jlF
+ Bm8ne3TxUP/ojfmlo0RTeic2xH5UKoPn85psgxSKs5mSEBUltS02TQU2F
  w==;
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=d8K/cR0m
-Subject: [Intel-wired-lan] [PATCH 5/6 iwl-next] idpf: refactor
- idpf_recv_mb_msg
+ header.a=rsa-sha256 header.s=Intel header.b=eAeF0cL9
+Subject: [Intel-wired-lan] [PATCH 6/6 iwl-next] idpf: cleanup virtchnl cruft
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,362 +98,284 @@ Cc: Przemek Kitszel <przemyslaw.kitszel@intel.com>, netdev@vger.kernel.org,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Now that all the messages are using the transaction API, we can rework
-idpf_recv_mb_msg quite a lot to simplify it. Due to this, we remove
-idpf_find_vport as no longer used and alter idpf_recv_event_msg
-slightly.
+We can now remove a bunch of gross code we don't need anymore like the
+vc state bits and vc_buf_lock since everything is using transaction API
+now.
 
 Reviewed-by: Igor Bagnucki <igor.bagnucki@intel.com>
 Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
 Signed-off-by: Alan Brady <alan.brady@intel.com>
 ---
- drivers/net/ethernet/intel/idpf/idpf.h        |   3 +-
- drivers/net/ethernet/intel/idpf/idpf_lib.c    |   2 +-
- .../net/ethernet/intel/idpf/idpf_virtchnl.c   | 254 +++---------------
- 3 files changed, 35 insertions(+), 224 deletions(-)
+ drivers/net/ethernet/intel/idpf/idpf.h        | 86 -------------------
+ drivers/net/ethernet/intel/idpf/idpf_lib.c    | 25 +-----
+ drivers/net/ethernet/intel/idpf/idpf_main.c   |  2 -
+ .../net/ethernet/intel/idpf/idpf_virtchnl.c   | 13 ---
+ 4 files changed, 2 insertions(+), 124 deletions(-)
 
 diff --git a/drivers/net/ethernet/intel/idpf/idpf.h b/drivers/net/ethernet/intel/idpf/idpf.h
-index 393f6e46012f..2d5449b9288a 100644
+index 2d5449b9288a..0793173bb36d 100644
 --- a/drivers/net/ethernet/intel/idpf/idpf.h
 +++ b/drivers/net/ethernet/intel/idpf/idpf.h
-@@ -1031,8 +1031,7 @@ int idpf_send_get_stats_msg(struct idpf_vport *vport);
- int idpf_get_vec_ids(struct idpf_adapter *adapter,
- 		     u16 *vecids, int num_vecids,
- 		     struct virtchnl2_vector_chunks *chunks);
--int idpf_recv_mb_msg(struct idpf_adapter *adapter, u32 op,
--		     void *msg, int msg_size);
-+int idpf_recv_mb_msg(struct idpf_adapter *adapter);
- int idpf_send_mb_msg(struct idpf_adapter *adapter, u32 op,
- 		     u16 msg_size, u8 *msg, u16 cookie);
- void idpf_set_ethtool_ops(struct net_device *netdev);
+@@ -37,8 +37,6 @@ struct idpf_vport_max_q;
+ #define IDPF_MB_MAX_ERR			20
+ #define IDPF_NUM_CHUNKS_PER_MSG(struct_sz, chunk_sz)	\
+ 	((IDPF_CTLQ_MAX_BUF_LEN - (struct_sz)) / (chunk_sz))
+-#define IDPF_WAIT_FOR_EVENT_TIMEO_MIN	2000
+-#define IDPF_WAIT_FOR_EVENT_TIMEO	60000
+ #define IDPF_VC_XN_MIN_TIMEOUT_MSEC	2000
+ #define IDPF_VC_XN_DEFAULT_TIMEOUT_MSEC	(60 * 1000)
+ #define IDPF_VC_XN_IDX_M		GENMASK(7, 0)
+@@ -212,71 +210,6 @@ struct idpf_dev_ops {
+ 	struct idpf_reg_ops reg_ops;
+ };
+ 
+-/* These macros allow us to generate an enum and a matching char * array of
+- * stringified enums that are always in sync. Checkpatch issues a bogus warning
+- * about this being a complex macro; but it's wrong, these are never used as a
+- * statement and instead only used to define the enum and array.
+- */
+-#define IDPF_FOREACH_VPORT_VC_STATE(STATE)	\
+-	STATE(IDPF_VC_CREATE_VPORT)		\
+-	STATE(IDPF_VC_CREATE_VPORT_ERR)		\
+-	STATE(IDPF_VC_ENA_VPORT)		\
+-	STATE(IDPF_VC_ENA_VPORT_ERR)		\
+-	STATE(IDPF_VC_DIS_VPORT)		\
+-	STATE(IDPF_VC_DIS_VPORT_ERR)		\
+-	STATE(IDPF_VC_DESTROY_VPORT)		\
+-	STATE(IDPF_VC_DESTROY_VPORT_ERR)	\
+-	STATE(IDPF_VC_CONFIG_TXQ)		\
+-	STATE(IDPF_VC_CONFIG_TXQ_ERR)		\
+-	STATE(IDPF_VC_CONFIG_RXQ)		\
+-	STATE(IDPF_VC_CONFIG_RXQ_ERR)		\
+-	STATE(IDPF_VC_ENA_QUEUES)		\
+-	STATE(IDPF_VC_ENA_QUEUES_ERR)		\
+-	STATE(IDPF_VC_DIS_QUEUES)		\
+-	STATE(IDPF_VC_DIS_QUEUES_ERR)		\
+-	STATE(IDPF_VC_MAP_IRQ)			\
+-	STATE(IDPF_VC_MAP_IRQ_ERR)		\
+-	STATE(IDPF_VC_UNMAP_IRQ)		\
+-	STATE(IDPF_VC_UNMAP_IRQ_ERR)		\
+-	STATE(IDPF_VC_ADD_QUEUES)		\
+-	STATE(IDPF_VC_ADD_QUEUES_ERR)		\
+-	STATE(IDPF_VC_DEL_QUEUES)		\
+-	STATE(IDPF_VC_DEL_QUEUES_ERR)		\
+-	STATE(IDPF_VC_ALLOC_VECTORS)		\
+-	STATE(IDPF_VC_ALLOC_VECTORS_ERR)	\
+-	STATE(IDPF_VC_DEALLOC_VECTORS)		\
+-	STATE(IDPF_VC_DEALLOC_VECTORS_ERR)	\
+-	STATE(IDPF_VC_SET_SRIOV_VFS)		\
+-	STATE(IDPF_VC_SET_SRIOV_VFS_ERR)	\
+-	STATE(IDPF_VC_GET_RSS_LUT)		\
+-	STATE(IDPF_VC_GET_RSS_LUT_ERR)		\
+-	STATE(IDPF_VC_SET_RSS_LUT)		\
+-	STATE(IDPF_VC_SET_RSS_LUT_ERR)		\
+-	STATE(IDPF_VC_GET_RSS_KEY)		\
+-	STATE(IDPF_VC_GET_RSS_KEY_ERR)		\
+-	STATE(IDPF_VC_SET_RSS_KEY)		\
+-	STATE(IDPF_VC_SET_RSS_KEY_ERR)		\
+-	STATE(IDPF_VC_GET_STATS)		\
+-	STATE(IDPF_VC_GET_STATS_ERR)		\
+-	STATE(IDPF_VC_ADD_MAC_ADDR)		\
+-	STATE(IDPF_VC_ADD_MAC_ADDR_ERR)		\
+-	STATE(IDPF_VC_DEL_MAC_ADDR)		\
+-	STATE(IDPF_VC_DEL_MAC_ADDR_ERR)		\
+-	STATE(IDPF_VC_GET_PTYPE_INFO)		\
+-	STATE(IDPF_VC_GET_PTYPE_INFO_ERR)	\
+-	STATE(IDPF_VC_LOOPBACK_STATE)		\
+-	STATE(IDPF_VC_LOOPBACK_STATE_ERR)	\
+-	STATE(IDPF_VC_NBITS)
+-
+-#define IDPF_GEN_ENUM(ENUM) ENUM,
+-#define IDPF_GEN_STRING(STRING) #STRING,
+-
+-enum idpf_vport_vc_state {
+-	IDPF_FOREACH_VPORT_VC_STATE(IDPF_GEN_ENUM)
+-};
+-
+-extern const char * const idpf_vport_vc_state_str[];
+-
+ /**
+  * enum idpf_vport_reset_cause - Vport soft reset causes
+  * @IDPF_SR_Q_CHANGE: Soft reset queue change
+@@ -451,11 +384,7 @@ struct idpf_vc_xn_manager {
+  * @port_stats: per port csum, header split, and other offload stats
+  * @link_up: True if link is up
+  * @link_speed_mbps: Link speed in mbps
+- * @vc_msg: Virtchnl message buffer
+- * @vc_state: Virtchnl message state
+- * @vchnl_wq: Wait queue for virtchnl messages
+  * @sw_marker_wq: workqueue for marker packets
+- * @vc_buf_lock: Lock to protect virtchnl buffer
+  */
+ struct idpf_vport {
+ 	u16 num_txq;
+@@ -501,12 +430,7 @@ struct idpf_vport {
+ 	bool link_up;
+ 	u32 link_speed_mbps;
+ 
+-	char vc_msg[IDPF_CTLQ_MAX_BUF_LEN];
+-	DECLARE_BITMAP(vc_state, IDPF_VC_NBITS);
+-
+-	wait_queue_head_t vchnl_wq;
+ 	wait_queue_head_t sw_marker_wq;
+-	struct mutex vc_buf_lock;
+ };
+ 
+ /**
+@@ -569,15 +493,11 @@ struct idpf_vport_user_config_data {
+  * enum idpf_vport_config_flags - Vport config flags
+  * @IDPF_VPORT_REG_NETDEV: Register netdev
+  * @IDPF_VPORT_UP_REQUESTED: Set if interface up is requested on core reset
+- * @IDPF_VPORT_ADD_MAC_REQ: Asynchronous add ether address in flight
+- * @IDPF_VPORT_DEL_MAC_REQ: Asynchronous delete ether address in flight
+  * @IDPF_VPORT_CONFIG_FLAGS_NBITS: Must be last
+  */
+ enum idpf_vport_config_flags {
+ 	IDPF_VPORT_REG_NETDEV,
+ 	IDPF_VPORT_UP_REQUESTED,
+-	IDPF_VPORT_ADD_MAC_REQ,
+-	IDPF_VPORT_DEL_MAC_REQ,
+ 	IDPF_VPORT_CONFIG_FLAGS_NBITS,
+ };
+ 
+@@ -694,9 +614,6 @@ struct idpf_vport_config {
+  * @stats_task: Periodic statistics retrieval task
+  * @stats_wq: Workqueue for statistics task
+  * @caps: Negotiated capabilities with device
+- * @vchnl_wq: Wait queue for virtchnl messages
+- * @vc_state: Virtchnl message state
+- * @vc_msg: Virtchnl message buffer
+  * @vcxn_mngr: Virtchnl transaction manager
+  * @dev_ops: See idpf_dev_ops
+  * @num_vfs: Number of allocated VFs through sysfs. PF does not directly talk
+@@ -754,9 +671,6 @@ struct idpf_adapter {
+ 	struct workqueue_struct *stats_wq;
+ 	struct virtchnl2_get_capabilities caps;
+ 
+-	wait_queue_head_t vchnl_wq;
+-	DECLARE_BITMAP(vc_state, IDPF_VC_NBITS);
+-	char vc_msg[IDPF_CTLQ_MAX_BUF_LEN];
+ 	struct idpf_vc_xn_manager vcxn_mngr;
+ 	struct idpf_dev_ops dev_ops;
+ 	int num_vfs;
 diff --git a/drivers/net/ethernet/intel/idpf/idpf_lib.c b/drivers/net/ethernet/intel/idpf/idpf_lib.c
-index f027acd93843..edb47730b697 100644
+index edb47730b697..383c10a63d9b 100644
 --- a/drivers/net/ethernet/intel/idpf/idpf_lib.c
 +++ b/drivers/net/ethernet/intel/idpf/idpf_lib.c
-@@ -1251,7 +1251,7 @@ void idpf_mbx_task(struct work_struct *work)
- 		queue_delayed_work(adapter->mbx_wq, &adapter->mbx_task,
- 				   msecs_to_jiffies(300));
+@@ -6,10 +6,6 @@
+ static const struct net_device_ops idpf_netdev_ops_splitq;
+ static const struct net_device_ops idpf_netdev_ops_singleq;
  
--	idpf_recv_mb_msg(adapter, VIRTCHNL2_OP_UNKNOWN, NULL, 0);
-+	idpf_recv_mb_msg(adapter);
- }
- 
+-const char * const idpf_vport_vc_state_str[] = {
+-	IDPF_FOREACH_VPORT_VC_STATE(IDPF_GEN_STRING)
+-};
+-
  /**
+  * idpf_init_vector_stack - Fill the MSIX vector stack with vector index
+  * @adapter: private data struct
+@@ -973,7 +969,6 @@ static void idpf_vport_rel(struct idpf_vport *vport)
+ 	struct idpf_rss_data *rss_data;
+ 	struct idpf_vport_max_q max_q;
+ 	u16 idx = vport->idx;
+-	int i;
+ 
+ 	vport_config = adapter->vport_config[vport->idx];
+ 	idpf_deinit_rss(vport);
+@@ -983,20 +978,6 @@ static void idpf_vport_rel(struct idpf_vport *vport)
+ 
+ 	idpf_send_destroy_vport_msg(vport);
+ 
+-	/* Set all bits as we dont know on which vc_state the vport vhnl_wq
+-	 * is waiting on and wakeup the virtchnl workqueue even if it is
+-	 * waiting for the response as we are going down
+-	 */
+-	for (i = 0; i < IDPF_VC_NBITS; i++)
+-		set_bit(i, vport->vc_state);
+-	wake_up(&vport->vchnl_wq);
+-
+-	mutex_destroy(&vport->vc_buf_lock);
+-
+-	/* Clear all the bits */
+-	for (i = 0; i < IDPF_VC_NBITS; i++)
+-		clear_bit(i, vport->vc_state);
+-
+ 	/* Release all max queues allocated to the adapter's pool */
+ 	max_q.max_rxq = vport_config->max_q.max_rxq;
+ 	max_q.max_txq = vport_config->max_q.max_txq;
+@@ -1541,9 +1522,7 @@ void idpf_init_task(struct work_struct *work)
+ 	vport_config = adapter->vport_config[index];
+ 
+ 	init_waitqueue_head(&vport->sw_marker_wq);
+-	init_waitqueue_head(&vport->vchnl_wq);
+ 
+-	mutex_init(&vport->vc_buf_lock);
+ 	spin_lock_init(&vport_config->mac_filter_list_lock);
+ 
+ 	INIT_LIST_HEAD(&vport_config->user_config.mac_filter_list);
+@@ -1902,7 +1881,7 @@ int idpf_initiate_soft_reset(struct idpf_vport *vport,
+ 	 * mess with. Nothing below should use those variables from new_vport
+ 	 * and should instead always refer to them in vport if they need to.
+ 	 */
+-	memcpy(new_vport, vport, offsetof(struct idpf_vport, vc_state));
++	memcpy(new_vport, vport, offsetof(struct idpf_vport, link_speed_mbps));
+ 
+ 	/* Adjust resource parameters prior to reallocating resources */
+ 	switch (reset_cause) {
+@@ -1951,7 +1930,7 @@ int idpf_initiate_soft_reset(struct idpf_vport *vport,
+ 	/* Same comment as above regarding avoiding copying the wait_queues and
+ 	 * mutexes applies here. We do not want to mess with those if possible.
+ 	 */
+-	memcpy(vport, new_vport, offsetof(struct idpf_vport, vc_state));
++	memcpy(vport, new_vport, offsetof(struct idpf_vport, link_speed_mbps));
+ 
+ 	/* Since idpf_vport_queues_alloc was called with new_port, the queue
+ 	 * back pointers are currently pointing to the local new_vport. Reset
+diff --git a/drivers/net/ethernet/intel/idpf/idpf_main.c b/drivers/net/ethernet/intel/idpf/idpf_main.c
+index c82233b112bd..c6d7bec95d69 100644
+--- a/drivers/net/ethernet/intel/idpf/idpf_main.c
++++ b/drivers/net/ethernet/intel/idpf/idpf_main.c
+@@ -230,8 +230,6 @@ static int idpf_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
+ 	mutex_init(&adapter->queue_lock);
+ 	mutex_init(&adapter->vc_buf_lock);
+ 
+-	init_waitqueue_head(&adapter->vchnl_wq);
+-
+ 	INIT_DELAYED_WORK(&adapter->init_task, idpf_init_task);
+ 	INIT_DELAYED_WORK(&adapter->serv_task, idpf_service_task);
+ 	INIT_DELAYED_WORK(&adapter->mbx_task, idpf_mbx_task);
 diff --git a/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c b/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c
-index bde7a42206a4..0f3788610b43 100644
+index 0f3788610b43..56e826ed3029 100644
 --- a/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c
 +++ b/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c
-@@ -63,12 +63,12 @@ static void idpf_handle_event_link(struct idpf_adapter *adapter,
- 
- /**
-  * idpf_recv_event_msg - Receive virtchnl event message
-- * @vport: virtual port structure
-+ * @adapter: Driver specific private structure
-  * @ctlq_msg: message to copy from
-  *
-  * Receive virtchnl event message
+@@ -3021,28 +3021,15 @@ int idpf_vc_core_init(struct idpf_adapter *adapter)
   */
--static void idpf_recv_event_msg(struct idpf_vport *vport,
-+static void idpf_recv_event_msg(struct idpf_adapter *adapter,
- 				struct idpf_ctlq_msg *ctlq_msg)
+ void idpf_vc_core_deinit(struct idpf_adapter *adapter)
  {
- 	int payload_size = ctlq_msg->ctx.indirect.payload->size;
-@@ -76,7 +76,7 @@ static void idpf_recv_event_msg(struct idpf_vport *vport,
- 	u32 event;
+-	int i;
+-
+ 	idpf_vc_xn_shutdown(&adapter->vcxn_mngr);
+ 	idpf_deinit_task(adapter);
+ 	idpf_intr_rel(adapter);
+-	/* Set all bits as we dont know on which vc_state the vhnl_wq is
+-	 * waiting on and wakeup the virtchnl workqueue even if it is waiting
+-	 * for the response as we are going down
+-	 */
+-	for (i = 0; i < IDPF_VC_NBITS; i++)
+-		set_bit(i, adapter->vc_state);
+-	wake_up(&adapter->vchnl_wq);
  
- 	if (payload_size < sizeof(*v2e)) {
--		dev_err_ratelimited(&vport->adapter->pdev->dev, "Failed to receive valid payload for event msg (op %d len %d)\n",
-+		dev_err_ratelimited(&adapter->pdev->dev, "Failed to receive valid payload for event msg (op %d len %d)\n",
- 				    ctlq_msg->cookie.mbx.chnl_opcode,
- 				    payload_size);
- 		return;
-@@ -87,10 +87,10 @@ static void idpf_recv_event_msg(struct idpf_vport *vport,
+ 	cancel_delayed_work_sync(&adapter->serv_task);
+ 	cancel_delayed_work_sync(&adapter->mbx_task);
  
- 	switch (event) {
- 	case VIRTCHNL2_EVENT_LINK_CHANGE:
--		idpf_handle_event_link(vport->adapter, v2e);
-+		idpf_handle_event_link(adapter, v2e);
- 		return;
- 	default:
--		dev_err(&vport->adapter->pdev->dev,
-+		dev_err(&adapter->pdev->dev,
- 			"Unknown event %d from PF\n", event);
- 		break;
- 	}
-@@ -212,125 +212,6 @@ int idpf_send_mb_msg(struct idpf_adapter *adapter, u32 op,
- 	return err;
+ 	idpf_vport_params_buf_rel(adapter);
+ 
+-	/* Clear all the bits */
+-	for (i = 0; i < IDPF_VC_NBITS; i++)
+-		clear_bit(i, adapter->vc_state);
+-
+ 	kfree(adapter->vports);
+ 	adapter->vports = NULL;
  }
- 
--/**
-- * idpf_find_vport - Find vport pointer from control queue message
-- * @adapter: driver specific private structure
-- * @vport: address of vport pointer to copy the vport from adapters vport list
-- * @ctlq_msg: control queue message
-- *
-- * Return 0 on success, error value on failure. Also this function does check
-- * for the opcodes which expect to receive payload and return error value if
-- * it is not the case.
-- */
--static int idpf_find_vport(struct idpf_adapter *adapter,
--			   struct idpf_vport **vport,
--			   struct idpf_ctlq_msg *ctlq_msg)
--{
--	bool no_op = false, vid_found = false;
--	int i, err = 0;
--	char *vc_msg;
--	u32 v_id;
--
--	vc_msg = kcalloc(IDPF_CTLQ_MAX_BUF_LEN, sizeof(char), GFP_KERNEL);
--	if (!vc_msg)
--		return -ENOMEM;
--
--	if (ctlq_msg->data_len) {
--		size_t payload_size = ctlq_msg->ctx.indirect.payload->size;
--
--		if (!payload_size) {
--			dev_err(&adapter->pdev->dev, "Failed to receive payload buffer\n");
--			kfree(vc_msg);
--
--			return -EINVAL;
--		}
--
--		memcpy(vc_msg, ctlq_msg->ctx.indirect.payload->va,
--		       min_t(size_t, payload_size, IDPF_CTLQ_MAX_BUF_LEN));
--	}
--
--	switch (ctlq_msg->cookie.mbx.chnl_opcode) {
--	case VIRTCHNL2_OP_VERSION:
--	case VIRTCHNL2_OP_GET_CAPS:
--	case VIRTCHNL2_OP_CREATE_VPORT:
--	case VIRTCHNL2_OP_SET_SRIOV_VFS:
--	case VIRTCHNL2_OP_ALLOC_VECTORS:
--	case VIRTCHNL2_OP_DEALLOC_VECTORS:
--	case VIRTCHNL2_OP_GET_PTYPE_INFO:
--		goto free_vc_msg;
--	case VIRTCHNL2_OP_ENABLE_VPORT:
--	case VIRTCHNL2_OP_DISABLE_VPORT:
--	case VIRTCHNL2_OP_DESTROY_VPORT:
--		v_id = le32_to_cpu(((struct virtchnl2_vport *)vc_msg)->vport_id);
--		break;
--	case VIRTCHNL2_OP_CONFIG_TX_QUEUES:
--		v_id = le32_to_cpu(((struct virtchnl2_config_tx_queues *)vc_msg)->vport_id);
--		break;
--	case VIRTCHNL2_OP_CONFIG_RX_QUEUES:
--		v_id = le32_to_cpu(((struct virtchnl2_config_rx_queues *)vc_msg)->vport_id);
--		break;
--	case VIRTCHNL2_OP_ENABLE_QUEUES:
--	case VIRTCHNL2_OP_DISABLE_QUEUES:
--	case VIRTCHNL2_OP_DEL_QUEUES:
--		v_id = le32_to_cpu(((struct virtchnl2_del_ena_dis_queues *)vc_msg)->vport_id);
--		break;
--	case VIRTCHNL2_OP_ADD_QUEUES:
--		v_id = le32_to_cpu(((struct virtchnl2_add_queues *)vc_msg)->vport_id);
--		break;
--	case VIRTCHNL2_OP_MAP_QUEUE_VECTOR:
--	case VIRTCHNL2_OP_UNMAP_QUEUE_VECTOR:
--		v_id = le32_to_cpu(((struct virtchnl2_queue_vector_maps *)vc_msg)->vport_id);
--		break;
--	case VIRTCHNL2_OP_GET_STATS:
--		v_id = le32_to_cpu(((struct virtchnl2_vport_stats *)vc_msg)->vport_id);
--		break;
--	case VIRTCHNL2_OP_GET_RSS_LUT:
--	case VIRTCHNL2_OP_SET_RSS_LUT:
--		v_id = le32_to_cpu(((struct virtchnl2_rss_lut *)vc_msg)->vport_id);
--		break;
--	case VIRTCHNL2_OP_GET_RSS_KEY:
--	case VIRTCHNL2_OP_SET_RSS_KEY:
--		v_id = le32_to_cpu(((struct virtchnl2_rss_key *)vc_msg)->vport_id);
--		break;
--	case VIRTCHNL2_OP_EVENT:
--		v_id = le32_to_cpu(((struct virtchnl2_event *)vc_msg)->vport_id);
--		break;
--	case VIRTCHNL2_OP_LOOPBACK:
--		v_id = le32_to_cpu(((struct virtchnl2_loopback *)vc_msg)->vport_id);
--		break;
--	case VIRTCHNL2_OP_CONFIG_PROMISCUOUS_MODE:
--		v_id = le32_to_cpu(((struct virtchnl2_promisc_info *)vc_msg)->vport_id);
--		break;
--	case VIRTCHNL2_OP_ADD_MAC_ADDR:
--	case VIRTCHNL2_OP_DEL_MAC_ADDR:
--		v_id = le32_to_cpu(((struct virtchnl2_mac_addr_list *)vc_msg)->vport_id);
--		break;
--	default:
--		no_op = true;
--		break;
--	}
--
--	if (no_op)
--		goto free_vc_msg;
--
--	for (i = 0; i < idpf_get_max_vports(adapter); i++) {
--		if (adapter->vport_ids[i] == v_id) {
--			vid_found = true;
--			break;
--		}
--	}
--
--	if (vid_found)
--		*vport = adapter->vports[i];
--	else
--		err = -EINVAL;
--
--free_vc_msg:
--	kfree(vc_msg);
--
--	return err;
--}
--
- /* API for virtchnl "transaction" support ("xn" for short).
-  *
-  * We are reusing the completion lock to serialize the accesses to the
-@@ -702,119 +583,50 @@ idpf_vc_xn_forward_reply(struct idpf_adapter *adapter,
- /**
-  * idpf_recv_mb_msg - Receive message over mailbox
-  * @adapter: Driver specific private structure
-- * @op: virtchannel operation code
-- * @msg: Received message holding buffer
-- * @msg_size: message size
-  *
-  * Will receive control queue message and posts the receive buffer. Returns 0
-  * on success and negative on failure.
-  */
--int idpf_recv_mb_msg(struct idpf_adapter *adapter, u32 op,
--		     void *msg, int msg_size)
-+int idpf_recv_mb_msg(struct idpf_adapter *adapter)
- {
--	struct idpf_vport *vport = NULL;
- 	struct idpf_ctlq_msg ctlq_msg;
- 	struct idpf_dma_mem *dma_mem;
--	bool work_done = false;
--	int num_retry = 2000;
--	u16 num_q_msg;
--	int err;
--
--	while (1) {
--		/* Try to get one message */
--		num_q_msg = 1;
--		dma_mem = NULL;
--		err = idpf_ctlq_recv(adapter->hw.arq, &num_q_msg, &ctlq_msg);
--		/* If no message then decide if we have to retry based on
--		 * opcode
--		 */
--		if (err || !num_q_msg) {
--			/* Increasing num_retry to consider the delayed
--			 * responses because of large number of VF's mailbox
--			 * messages. If the mailbox message is received from
--			 * the other side, we come out of the sleep cycle
--			 * immediately else we wait for more time.
--			 */
--			if (!op || !num_retry--)
--				break;
--			if (test_bit(IDPF_REMOVE_IN_PROG, adapter->flags)) {
--				err = -EIO;
--				break;
--			}
--			msleep(20);
--			continue;
--		}
-+	int post_err, err = 0;
-+	u16 num_recv;
- 
--		/* If we are here a message is received. Check if we are looking
--		 * for a specific message based on opcode. If it is different
--		 * ignore and post buffers
-+	while (!err) {
-+		/* This will get <= num_recv messages and output how many
-+		 * actually received on num_recv.
- 		 */
--		if (op && ctlq_msg.cookie.mbx.chnl_opcode != op)
--			goto post_buffs;
--
--		err = idpf_find_vport(adapter, &vport, &ctlq_msg);
--		if (err)
--			goto post_buffs;
--
--		/* All conditions are met. Either a message requested is
--		 * received or we received a message to be processed
--		 */
--		switch (ctlq_msg.cookie.mbx.chnl_opcode) {
--		case VIRTCHNL2_OP_VERSION:
--		case VIRTCHNL2_OP_GET_CAPS:
--		case VIRTCHNL2_OP_CREATE_VPORT:
--		case VIRTCHNL2_OP_ENABLE_VPORT:
--		case VIRTCHNL2_OP_DISABLE_VPORT:
--		case VIRTCHNL2_OP_DESTROY_VPORT:
--		case VIRTCHNL2_OP_CONFIG_TX_QUEUES:
--		case VIRTCHNL2_OP_CONFIG_RX_QUEUES:
--		case VIRTCHNL2_OP_ENABLE_QUEUES:
--		case VIRTCHNL2_OP_DISABLE_QUEUES:
--		case VIRTCHNL2_OP_ADD_QUEUES:
--		case VIRTCHNL2_OP_DEL_QUEUES:
--		case VIRTCHNL2_OP_MAP_QUEUE_VECTOR:
--		case VIRTCHNL2_OP_UNMAP_QUEUE_VECTOR:
--		case VIRTCHNL2_OP_GET_STATS:
--		case VIRTCHNL2_OP_GET_RSS_LUT:
--		case VIRTCHNL2_OP_SET_RSS_LUT:
--		case VIRTCHNL2_OP_GET_RSS_KEY:
--		case VIRTCHNL2_OP_SET_RSS_KEY:
--		case VIRTCHNL2_OP_SET_SRIOV_VFS:
--		case VIRTCHNL2_OP_ALLOC_VECTORS:
--		case VIRTCHNL2_OP_DEALLOC_VECTORS:
--		case VIRTCHNL2_OP_GET_PTYPE_INFO:
--		case VIRTCHNL2_OP_LOOPBACK:
--		case VIRTCHNL2_OP_CONFIG_PROMISCUOUS_MODE:
--		case VIRTCHNL2_OP_ADD_MAC_ADDR:
--		case VIRTCHNL2_OP_DEL_MAC_ADDR:
--			err = idpf_vc_xn_forward_reply(adapter, &ctlq_msg);
--			break;
--		case VIRTCHNL2_OP_EVENT:
--			idpf_recv_event_msg(vport, &ctlq_msg);
-+		num_recv = 1;
-+		err = idpf_ctlq_recv(adapter->hw.arq, &num_recv, &ctlq_msg);
-+		if (err || !num_recv)
- 			break;
--		default:
--			dev_warn(&adapter->pdev->dev,
--				 "Unhandled virtchnl response %d\n",
--				 ctlq_msg.cookie.mbx.chnl_opcode);
--			break;
--		}
- 
--post_buffs:
--		if (ctlq_msg.data_len)
-+		if (ctlq_msg.data_len) {
- 			dma_mem = ctlq_msg.ctx.indirect.payload;
-+		} else {
-+			dma_mem = NULL;
-+			num_recv = 0;
-+		}
-+
-+		if (ctlq_msg.cookie.mbx.chnl_opcode == VIRTCHNL2_OP_EVENT)
-+			idpf_recv_event_msg(adapter, &ctlq_msg);
- 		else
--			num_q_msg = 0;
-+			err = idpf_vc_xn_forward_reply(adapter, &ctlq_msg);
- 
--		err = idpf_ctlq_post_rx_buffs(&adapter->hw, adapter->hw.arq,
--					      &num_q_msg, &dma_mem);
--		/* If post failed clear the only buffer we supplied */
--		if (err && dma_mem)
--			dma_free_coherent(&adapter->pdev->dev, dma_mem->size,
--					  dma_mem->va, dma_mem->pa);
-+		post_err = idpf_ctlq_post_rx_buffs(&adapter->hw,
-+						   adapter->hw.arq,
-+						   &num_recv, &dma_mem);
- 
--		/* Applies only if we are looking for a specific opcode */
--		if (work_done)
-+		/* If post failed clear the only buffer we supplied */
-+		if (post_err) {
-+			if (dma_mem)
-+				dmam_free_coherent(&adapter->pdev->dev,
-+						   dma_mem->size, dma_mem->va,
-+						   dma_mem->pa);
- 			break;
-+		}
- 	}
- 
- 	return err;
 -- 
 2.40.1
 
