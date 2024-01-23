@@ -1,82 +1,81 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id DD106839531
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 23 Jan 2024 17:48:13 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id BA616839536
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 23 Jan 2024 17:48:43 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 694AC40414;
-	Tue, 23 Jan 2024 16:48:12 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 694AC40414
+	by smtp2.osuosl.org (Postfix) with ESMTP id 4806E402C3;
+	Tue, 23 Jan 2024 16:48:42 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 4806E402C3
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1706028492;
-	bh=zwYoN4OnpprA91xBuaEPvfgZQ11TM8xE/D00v9Thcj4=;
+	s=default; t=1706028522;
+	bh=J4XnJyMEg5OYRtYI5Yirozk1UhnOj/hZ5M7/gyHBVvU=;
 	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=RjpGMKNY2+cH3cUnbak975kke1VQiCjXvp+szSAyUuUKcmT5b0oOGy8cIo77/q0KS
-	 MBsQpSmuyfdrCHgMy/KXAIcc1Lxpf1CNF/StGo1lscsy045xXLCO1aham4amEkZykd
-	 U2IAV8G+SQQ2kxNJx5kHdijuguSRY5bc5zNo6x0ddpnTP96Pz4Cdv/9FKO1t4kttfc
-	 bt2Jm/IjYbmvYrlz7ucbaEG8np2lvfRcH2zb/+JOOVgzZFR9q3Qwyh0S6CNtp0OlcE
-	 w9jxDFG544pFGPisz/EzfXxDq3PUU83YOn4o3Y7hNZmsVX6lEJT+t9vzExD3ZuTf9v
-	 PjdQjvc98+6ow==
+	b=EDdvG0GT2QrKa9esff0PmYH//IgkaSLi+f8VFkW3iO0SXMl9YqGMvCZogtKMF/APt
+	 /B37CkXX+Jxlrni4ZPdpxqmKzKBq9esv/mYIMrSJewRPvKkay+yS4pxp3tZPgLq/XK
+	 owquhv2x/WT4qIW3tFGBmdGHrmr83uVBfzUYhQ+9Vj2wpmowxnfxphBikQ0kgvboFp
+	 K1tyuD04wB3uRQREpMj1sfYcpzl/vws39YVBJW48vxksk0FeU+Tz8GHVS6CdbUcQiJ
+	 u+yiBTJgJ3H0Yv8YlNsTgBVP+TX3ZZrvJquCxVnRLdE8Vf0ZwVzGT2GPqNdw8+xaT0
+	 1WCqIMfCEc/IQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id rQz6ehIz6YlN; Tue, 23 Jan 2024 16:48:11 +0000 (UTC)
+	with ESMTP id kVfgKHL5H6O6; Tue, 23 Jan 2024 16:48:41 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 3A19E403E5;
-	Tue, 23 Jan 2024 16:48:11 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3A19E403E5
+	by smtp2.osuosl.org (Postfix) with ESMTP id 192D9403E5;
+	Tue, 23 Jan 2024 16:48:41 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 192D9403E5
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id C21911BF3A6
- for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Jan 2024 16:48:05 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 33C701BF3A6
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Jan 2024 16:48:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 9979D607E3
- for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Jan 2024 16:48:05 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9979D607E3
+ by smtp3.osuosl.org (Postfix) with ESMTP id 0BBA1607E3
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Jan 2024 16:48:36 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0BBA1607E3
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Xa7fsUStJ0zp for <intel-wired-lan@lists.osuosl.org>;
- Tue, 23 Jan 2024 16:48:05 +0000 (UTC)
-Received: from dfw.source.kernel.org (dfw.source.kernel.org
- [IPv6:2604:1380:4641:c500::1])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 13173607A1
- for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Jan 2024 16:48:04 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 13173607A1
+ with ESMTP id tPjSQGagBPyK for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 23 Jan 2024 16:48:35 +0000 (UTC)
+Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 7ECC9607A1
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Jan 2024 16:48:35 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7ECC9607A1
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by dfw.source.kernel.org (Postfix) with ESMTP id D2BD161DE3;
- Tue, 23 Jan 2024 16:48:03 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 203C0C433C7;
- Tue, 23 Jan 2024 16:48:01 +0000 (UTC)
-Date: Tue, 23 Jan 2024 16:47:59 +0000
+ by dfw.source.kernel.org (Postfix) with ESMTP id C4933615B8;
+ Tue, 23 Jan 2024 16:48:34 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1B6B0C433C7;
+ Tue, 23 Jan 2024 16:48:32 +0000 (UTC)
+Date: Tue, 23 Jan 2024 16:48:30 +0000
 From: Simon Horman <horms@kernel.org>
 To: Karol Kolacinski <karol.kolacinski@intel.com>
-Message-ID: <20240123164759.GG254773@kernel.org>
+Message-ID: <20240123164830.GH254773@kernel.org>
 References: <20240123105131.2842935-1-karol.kolacinski@intel.com>
- <20240123105131.2842935-2-karol.kolacinski@intel.com>
+ <20240123105131.2842935-3-karol.kolacinski@intel.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20240123105131.2842935-2-karol.kolacinski@intel.com>
+In-Reply-To: <20240123105131.2842935-3-karol.kolacinski@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1706028483;
- bh=s2MvNDMwQDf6Fks/boYZD731v1ByeIuexIheT6lCcUw=;
+ d=kernel.org; s=k20201202; t=1706028514;
+ bh=RYoO9jDumV+r59op/XZ/ktXEsNIugdrzJGVKIDBudlA=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=tZnYjD3wm28FB0uRiRR/EZsHVoYUvKbtuKWwbSV5dU9NHnf4oz+ZVuQceGvl6a4Bs
- mu1M6LhEsXNXzJkItEiMAej44VkLiAVMr198cWcrWo8MzXQjnFO2PGL21kxjqzy2sn
- jIXmd3wkTEF62iBbjIDjZUoO5b6Za50/xfyCzYufIEyHixWULyNLxVCznwxFFYFVG1
- WAZF9dc1+ET59kqurJVXUqMQc55lkBsc/ugUwu/3HmmtyrZAPT4OnF5MTlYszo2dCL
- PowXyq33GEWDVEkfI5OaQpI07R6PlEEzO9JuSzvqpmw+iDbvQDOix70FOFEQcTm96N
- 9Xr5vp88oxUCg==
+ b=r8OS+XSoMyeAvG8ypAPS00QpS8EBN3IMbf/k6IKeiZyhF1K4yzFUCD2AEDdCwv1Av
+ Uo/JGhX/77ZqdpfXkJg3nOGNIQX8yS/pxWYbdfNFH7rTleIiuTJol6LEKIkC6MD8EK
+ en17YNG0181OxkQz5fW3VuDRSVm9KFR96kPTGptsVxGBYfZeyjNc3HWdwRjWx3UZgw
+ +yRSfGFdR58bPHBVLwUtkWhMVU3D75TB33nfRLDsLZJmpvQLSy66m6Tqg6HjKfgHe/
+ GH7QEysBK668Z/r7pCpYWc970nLeUab3y91EB4qL1YJtFTIj0Qm3PHCMvd24gR5pdP
+ NA4wguTvkJcEQ==
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=tZnYjD3w
-Subject: Re: [Intel-wired-lan] [PATCH v7 iwl-next 1/7] ice: introduce PTP
- state machine
+ header.a=rsa-sha256 header.s=k20201202 header.b=r8OS+XSo
+Subject: Re: [Intel-wired-lan] [PATCH v7 iwl-next 2/7] ice: pass reset type
+ to PTP reset functions
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,14 +94,25 @@ Cc: Jacob Keller <jacob.e.keller@intel.com>, netdev@vger.kernel.org,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, Jan 23, 2024 at 11:51:25AM +0100, Karol Kolacinski wrote:
-> Add PTP state machine so that the driver can correctly identify PTP
-> state around resets.
-> When the driver got information about ungraceful reset, PTP was not
-> prepared for reset and it returned error. When this situation occurs,
-> prepare PTP before rebuilding its structures.
+On Tue, Jan 23, 2024 at 11:51:26AM +0100, Karol Kolacinski wrote:
+> From: Jacob Keller <jacob.e.keller@intel.com>
 > 
-> Co-authored-by: Karol Kolacinski <karol.kolacinski@intel.com>
+> The ice_ptp_prepare_for_reset() and ice_ptp_reset() functions currently
+> check the pf->flags ICE_FLAG_PFR_REQ bit to determine if the current
+> reset is a PF reset or not.
+> 
+> This is problematic, because it is possible that a PF reset and a higher
+> level reset (CORE reset, GLOBAL reset, EMP reset) are requested
+> simultaneously. In that case, the driver performs the highest level
+> reset requested. However, the ICE_FLAG_PFR_REQ flag will still be set.
+> 
+> The main driver reset functions take an enum ice_reset_req indicating
+> which reset is actually being performed. Pass this data into the PTP
+> functions and rely on this instead of relying on the driver flags.
+> 
+> This ensures that the PTP code performs the proper level of reset that
+> the driver is actually undergoing.
+> 
 > Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
 > Signed-off-by: Karol Kolacinski <karol.kolacinski@intel.com>
 > Reviewed-by: Jacob Keller <jacob.e.keller@intel.com>
