@@ -1,90 +1,88 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5210F839D44
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 24 Jan 2024 00:32:31 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id D777A839D99
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 24 Jan 2024 01:19:46 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id D55B185435;
-	Tue, 23 Jan 2024 23:32:29 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D55B185435
+	by smtp4.osuosl.org (Postfix) with ESMTP id 7053446D76;
+	Wed, 24 Jan 2024 00:19:45 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7053446D76
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1706052749;
-	bh=Tgm+9p7wVd6zfmLw9/AE3XlcKX6thE0De0/5euthJvQ=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=w/sZGgbI5DtbEFQxsQacy70IsLKCVqaWF9+Y/mzHlPDheBVDCSKJw5UeBh8OdqUD5
-	 hWbu2glWCtBKsTBa3ZWbL7lLkM8t6lLgQtcCJNRASqiIHelcDHjO9ipauu141LZF84
-	 cUsKioA0z3F/wifb5Xr9SPvJ3Cl8jpI9BpRU4XB8ohaNogrot+g1zXIYc/GCysQx2R
-	 usEEI3HlCcA9sCZJcmMY955PTOo3lf4nvgoSH7V757x9tIBK4FsOBSgdIN7zWiRhV/
-	 u1a3p1+xRnPJsAkbAY/bnE/y5Q1mJ1hoaSqj9QVrFiyGTeJUt9uQD5P4wYW8pJQUMR
-	 LvTLemqnp/Mtg==
+	s=default; t=1706055585;
+	bh=EnFvRZBnsvcpI3gHwuga0QTf+dfPhLSs1JazEtKrgbA=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=Ee/6NEj+R/pp1FgQexFlwaN20xatwXozzpG311iBIbTnX00kKnrZK9AFafaFKh/4g
+	 0WMAwN5L1yh8jgm579h9bGhEV8TSOMONGMuX32IroVos9DEh1hkw1+f+IluGjfF16v
+	 BrO7+Wa+TxrU2SUhL5GQUuLP1pJLwWUNnJnmgW81M5D51BUzKk9jJiTixptITBM8Dj
+	 scjPkleY31td0bY2m6IfT3xMR40HRNPjUwH6e1MpY9O3TAtYukyBk13Zt6eQdVzMjt
+	 5Ik9oIb6eiDf68TEk1zqBLZR4UGVFdW7dCPMqi+tcMEwDxwiFvT6u9MZvwAqBDchAo
+	 HK8sL/5vkGgyA==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id vAaiXosIf1Ll; Tue, 23 Jan 2024 23:32:29 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id y1CEPBLOX7_t; Wed, 24 Jan 2024 00:19:44 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id B28CC8542F;
-	Tue, 23 Jan 2024 23:32:28 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B28CC8542F
+	by smtp4.osuosl.org (Postfix) with ESMTP id BAE1646F1F;
+	Wed, 24 Jan 2024 00:19:43 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org BAE1646F1F
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id D7EBD1BF84C
- for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Jan 2024 23:32:23 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id A7FDF1BF27A
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 24 Jan 2024 00:19:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id B01A585435
- for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Jan 2024 23:32:23 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B01A585435
+ by smtp2.osuosl.org (Postfix) with ESMTP id 731FB40278
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 24 Jan 2024 00:19:38 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 731FB40278
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 8x4q112QLyY9 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 23 Jan 2024 23:32:23 +0000 (UTC)
-Received: from mgamail.intel.com (mgamail.intel.com [192.55.52.120])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 0960885420
- for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Jan 2024 23:32:23 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0960885420
-X-IronPort-AV: E=McAfee;i="6600,9927,10962"; a="400552261"
-X-IronPort-AV: E=Sophos;i="6.05,215,1701158400"; d="scan'208";a="400552261"
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
- by fmsmga104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 23 Jan 2024 15:32:22 -0800
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id YkJMJAZ6VfHw for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 24 Jan 2024 00:19:37 +0000 (UTC)
+X-Greylist: delayed 427 seconds by postgrey-1.37 at util1.osuosl.org;
+ Wed, 24 Jan 2024 00:19:37 UTC
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 0DB344026F
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.13])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 0DB344026F
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 24 Jan 2024 00:19:36 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10962"; a="592857"
+X-IronPort-AV: E=Sophos;i="6.05,215,1701158400"; 
+   d="scan'208";a="592857"
+Received: from fmviesa003.fm.intel.com ([10.60.135.143])
+ by fmvoesa107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 23 Jan 2024 16:12:28 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10962"; a="909469586"
-X-IronPort-AV: E=Sophos;i="6.05,215,1701158400"; d="scan'208";a="909469586"
-Received: from gkon-mobl1.ger.corp.intel.com (HELO azaki-desk1.intel.com)
- ([10.252.41.99])
- by orsmga004-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 23 Jan 2024 15:32:06 -0800
-From: Ahmed Zaki <ahmed.zaki@intel.com>
+X-IronPort-AV: E=Sophos;i="6.05,215,1701158400"; 
+   d="scan'208";a="1793470"
+Received: from unknown (HELO localhost.jf.intel.com) ([10.166.80.24])
+ by fmviesa003.fm.intel.com with ESMTP; 23 Jan 2024 16:12:28 -0800
+From: Pavan Kumar Linga <pavan.kumar.linga@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Tue, 23 Jan 2024 16:31:40 -0700
-Message-Id: <20240123233140.309522-3-ahmed.zaki@intel.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20240123233140.309522-1-ahmed.zaki@intel.com>
-References: <20240123233140.309522-1-ahmed.zaki@intel.com>
+Date: Tue, 23 Jan 2024 16:10:26 -0800
+Message-ID: <20240124001026.2627-1-pavan.kumar.linga@intel.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1706052743; x=1737588743;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=q/5vsad5MYoN6BZtaPyi2TJltKyoqLDcM6qesTKrXf8=;
- b=V9EY6PQ6HJbQ7EhO4xDQw+OihFDLVhB4gJLErpsme3l/XbEl5bopD26V
- DovoZuGylxONCLMxgOB5QV/TW12NBejK9iFX2dQb5AWzS1SIjPyaslK/Y
- 9IxnuDLQOP/wOQXua2v/xvk2meKwUXrvkcsOQzMbv8ev8XuvxzzMfGD99
- HdArclu3GTX5CrNNgv1pWeogRf0rvJzTGzDJcz392YQv4Yvv46I65CW7G
- gmmJat6QyuZJqFtTBUEYDkDxCnrYc4TixwpViRH3V27/GC0oR3VYlOoBf
- XSVAN1gVTsmcN2Yak/rdyNAPE5UBYFYxEX6w9KdiFR42UWcte0ITN3uai
- w==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ t=1706055577; x=1737591577;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=VxtsDY4+0bWaGP6Z1n26I6a4V22qrx/u5kJOx/eshW4=;
+ b=Efpbm926w1lbVQ8gpSRMw9HXIQ4okwpnvNgG2Idc4F2qC7ewLTpIcRfq
+ UJnN2ClzbUQsRlM6alX4C9wyJcvcsFlEFRTbwL5krpKjweGe8W+OAKCd0
+ zdP27YHFn0om/NxKrS0JGvdvTPCcVQkGDUGCUrMqQcMLHYuXUKXIma6vS
+ s+7klffHrvyrpgJjMBeJDYfl0JgM17+h3AGEHTa7HkrbLdsf+hbx/bB7e
+ so0ifk/MirG4PXK+7QLXAJ2/FanOGjVXmMK2ZSqM0W5S+K3EnmxQX0xP2
+ q92KmPUXpgApLTm9aG0nBKDyuUfa7KlouhAWfEcwUfStB7n2nsPaxLpmH
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=V9EY6PQ6
-Subject: [Intel-wired-lan] [PATCH iwl-net 2/2] iavf: allow an early reset
- event to be processed
+ header.a=rsa-sha256 header.s=Intel header.b=Efpbm926
+Subject: [Intel-wired-lan] [PATCH iwl-net v4] idpf: avoid compiler padding
+ in virtchnl2_ptype struct
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,69 +95,80 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, Tony Nguyen <anthony.l.nguyen@intel.com>,
- Ahmed Zaki <ahmed.zaki@intel.com>
+Cc: pmenzel@molgen.mpg.de, Pavan Kumar Linga <pavan.kumar.linga@intel.com>,
+ emil.s.tantilov@intel.com, netdev@vger.kernel.org, David.Laight@ACULAB.COM,
+ horms@kernel.org, przemyslaw.kitszel@intel.com
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-If a reset event is received from the PF early in the init cycle, the
-iavf state machine could hang for about 25 seconds. For example:
+In the arm random config file, kconfig option 'CONFIG_AEABI' is
+disabled which results in adding the compiler flag '-mabi=apcs-gnu'.
+This causes the compiler to add padding in virtchnl2_ptype
+structure to align it to 8 bytes, resulting in the following
+size check failure:
 
-    # echo 1 > /sys/class/net/enp175s0np0/device/sriov_numvfs && \
-      ip link set dev enp175s0np0 vf 0 mac <new_mac>
+include/linux/build_bug.h:78:41: error: static assertion failed: "(6) == sizeof(struct virtchnl2_ptype)"
+      78 | #define __static_assert(expr, msg, ...) _Static_assert(expr, msg)
+         |                                         ^~~~~~~~~~~~~~
+include/linux/build_bug.h:77:34: note: in expansion of macro '__static_assert'
+      77 | #define static_assert(expr, ...) __static_assert(expr, ##__VA_ARGS__, #expr)
+         |                                  ^~~~~~~~~~~~~~~
+drivers/net/ethernet/intel/idpf/virtchnl2.h:26:9: note: in expansion of macro 'static_assert'
+      26 |         static_assert((n) == sizeof(struct X))
+         |         ^~~~~~~~~~~~~
+drivers/net/ethernet/intel/idpf/virtchnl2.h:982:1: note: in expansion of macro 'VIRTCHNL2_CHECK_STRUCT_LEN'
+     982 | VIRTCHNL2_CHECK_STRUCT_LEN(6, virtchnl2_ptype);
+         | ^~~~~~~~~~~~~~~~~~~~~~~~~~
 
-the log shows:
+Avoid the compiler padding by using "__packed" structure
+attribute for the virtchnl2_ptype struct. Also align the
+structure by using "__aligned(2)" for better code optimization.
+While at it, swap the static_assert conditional statement
+variables.
 
-    [532.770534] ice 0000:af:00.0: Enabling 1 VFs
-    [532.880439] iavf 0000:af:01.0: enabling device (0000 -> 0002)
-    [532.880983] ice 0000:af:00.0: Enabling 1 VFs with 17 vectors and 16 queues per VF
-    [532.916547] ice 0000:af:00.0 enp175s0np0: Setting MAC 00:60:2f:20:3f:28 on VF 0. VF driver will be reinitialized
-    [553.464990] iavf 0000:af:01.0: Failed to communicate with PF; waiting before retry
-    [558.903000] iavf 0000:af:01.0: Hardware came out of reset. Attempting reinit.
-    [558.984816] iavf 0000:af:01.0: Multiqueue Enabled: Queue pair count = 16
+Fixes: 0d7502a9b4a7 ("virtchnl: add virtchnl version 2 ops")
+Reported-by: kernel test robot <lkp@intel.com>
+Closes: https://lore.kernel.org/oe-kbuild-all/202312220250.ufEm8doQ-lkp@intel.com
+Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+Reviewed-by: Paul Menzel <pmenzel@molgen.mpg.de>
+Reviewed-by: Simon Horman <horms@kernel.org>
+Signed-off-by: Pavan Kumar Linga <pavan.kumar.linga@intel.com>
 
-This happens because reset events are ignored in the early states where
-the misc irq vector is not initialized yet and communicating with the PF
-is through polling the AQ buffer. Fix by scanning the received OP
-codes for a reset event and scheduling the reset task if a reset event
-is received.
-
-Fixes: 5eae00c57f5e ("i40evf: main driver core")
-Reviewed-by: Tony Nguyen <anthony.l.nguyen@intel.com>
-Signed-off-by: Ahmed Zaki <ahmed.zaki@intel.com>
 ---
- .../net/ethernet/intel/iavf/iavf_virtchnl.c    | 18 ++++++++++++++++++
- 1 file changed, 18 insertions(+)
+v4:
+ - swap the static_assert conditional statement variables
 
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
-index 22f2df7c460b..9d8a5d3adcee 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
-@@ -76,6 +76,24 @@ iavf_poll_virtchnl_msg(struct iavf_hw *hw, struct iavf_arq_event_info *event,
- 			return iavf_status_to_errno(status);
- 		received_op =
- 		    (enum virtchnl_ops)le32_to_cpu(event->desc.cookie_high);
-+
-+		if (received_op == VIRTCHNL_OP_EVENT) {
-+			struct iavf_adapter *adapter = hw->back;
-+			struct virtchnl_pf_event *vpe =
-+				(struct virtchnl_pf_event *)event->msg_buf;
-+
-+			if (vpe->event != VIRTCHNL_EVENT_RESET_IMPENDING)
-+				continue;
-+
-+			dev_info(&adapter->pdev->dev, "Reset indication received from the PF\n");
-+			if (!(adapter->flags & IAVF_FLAG_RESET_PENDING)) {
-+				dev_info(&adapter->pdev->dev, "Scheduling reset task\n");
-+				iavf_schedule_reset(adapter,
-+						    IAVF_FLAG_RESET_PENDING);
-+			}
-+			return -EIO;
-+		}
-+
- 		if (op_to_poll == received_op)
- 			break;
- 	}
+v3:
+ - add "__aligned(2)" structure attribute for better code optimization
+
+v2:
+ - add the kconfig option causing the compile failure to the commit message
+---
+ drivers/net/ethernet/intel/idpf/virtchnl2.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/idpf/virtchnl2.h b/drivers/net/ethernet/intel/idpf/virtchnl2.h
+index 8dc83788972..506036e7df0 100644
+--- a/drivers/net/ethernet/intel/idpf/virtchnl2.h
++++ b/drivers/net/ethernet/intel/idpf/virtchnl2.h
+@@ -23,7 +23,7 @@
+  * is not exactly the correct length.
+  */
+ #define VIRTCHNL2_CHECK_STRUCT_LEN(n, X)	\
+-	static_assert((n) == sizeof(struct X))
++	static_assert(sizeof(struct X) == (n))
+ 
+ /* New major set of opcodes introduced and so leaving room for
+  * old misc opcodes to be added in future. Also these opcodes may only
+@@ -978,7 +978,7 @@ struct virtchnl2_ptype {
+ 	u8 proto_id_count;
+ 	__le16 pad;
+ 	__le16 proto_id[];
+-};
++} __packed __aligned(2);
+ VIRTCHNL2_CHECK_STRUCT_LEN(6, virtchnl2_ptype);
+ 
+ /**
 -- 
-2.34.1
+2.43.0
 
