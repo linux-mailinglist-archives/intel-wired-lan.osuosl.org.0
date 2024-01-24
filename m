@@ -1,85 +1,90 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 36E6E83A4A4
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 24 Jan 2024 09:56:24 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4296D83A4A3
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 24 Jan 2024 09:56:19 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id C5724438CA;
-	Wed, 24 Jan 2024 08:56:22 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C5724438CA
+	by smtp4.osuosl.org (Postfix) with ESMTP id C22194363A;
+	Wed, 24 Jan 2024 08:56:17 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C22194363A
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1706086582;
-	bh=X4FuCdhJchif0ZdIzxnHwtgL8xgXCxtiB3b4x2qtgyw=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=rrXe4UVse501fC8IEc5juExrxkpDlGTxu05IR2uqBtlHbdcOrWIrgfqfJJN5U5uvo
-	 Rao7ntJ+FVrHrbCbSXeipG7EP3+Jbxn6uPb0JV2W0djmyt4Cv96ZMZZhri3D+hPQJM
-	 2mxeEh4QoGSt2N7VLoCvcSnkoefFe0hpwLeDMNMye5sI9f/Uzva+bJAMHKnOqD4eaE
-	 emOhnKQTyV/wA9cbyk0Np+cAyBpUPOPYPQPdjjuD3wh1FWDydeREMB8m6BDcNFGRfp
-	 vQaOyKVeUZnFyuwTTDosv4n7VBK8Y0FexO8Aq3xkB1fPUox7VpPIW3ycF79BYM9qRP
-	 pbYcl3sj3z41g==
+	s=default; t=1706086577;
+	bh=PpWQWJpYkDehFFRYCFWE0+2P1/XzZiBiXbECZUVKFfQ=;
+	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=Ykro67doVAFpnGAZto27IH6LvuqswNYnra7+nfXyMbAMvbh5raQmxVkDT1onaGYx0
+	 9KSG8a0AIceX2pEUVHJSeobvRjx/PQQ9GBs6dkEIgt1rTQbI+fBdpjZWzWEJqcp/TO
+	 w8cJv/CRbZbJysfdNaHxoJ+pfpYzNV51Tjx5vB/yZ+Cvwk4x5XmqznxxYATF6k+ilN
+	 bnCpPCrR0OtEsTPcbLYlYAB8H8zVWwQYo2l8QQMMQ5ba45kbQyvgRYJsSkY+NQ/1TN
+	 6/N98GQMXJmR+1cbb7h1y/SdJuhoGp7YtJI/I/L/HRaFiwWfPvDZ8O3qviNHtFGT7m
+	 3WEvrLsmpFUvg==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 2DAy5Ld--Dhs; Wed, 24 Jan 2024 08:56:22 +0000 (UTC)
+	with ESMTP id dVLr5GTACVH3; Wed, 24 Jan 2024 08:56:17 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id CC1E042FCB;
-	Wed, 24 Jan 2024 08:56:21 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org CC1E042FCB
+	by smtp4.osuosl.org (Postfix) with ESMTP id E020D42FCB;
+	Wed, 24 Jan 2024 08:56:16 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E020D42FCB
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 354AE1BF339
- for <intel-wired-lan@lists.osuosl.org>; Wed, 24 Jan 2024 08:56:09 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id C882A42FCB
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 5E21C1BF94D
  for <intel-wired-lan@lists.osuosl.org>; Wed, 24 Jan 2024 08:56:08 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C882A42FCB
+Received: from localhost (localhost [127.0.0.1])
+ by smtp2.osuosl.org (Postfix) with ESMTP id 35BB74026F
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 24 Jan 2024 08:56:08 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 35BB74026F
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Cf-SjWzx_qF7 for <intel-wired-lan@lists.osuosl.org>;
- Wed, 24 Jan 2024 08:56:05 +0000 (UTC)
-Received: from galois.linutronix.de (Galois.linutronix.de
- [IPv6:2a0a:51c0:0:12e:550::1])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 704C442FCA
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 27tIgV_Hzfj2 for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 24 Jan 2024 08:56:04 +0000 (UTC)
+X-Greylist: delayed 1904 seconds by postgrey-1.37 at util1.osuosl.org;
+ Wed, 24 Jan 2024 08:56:04 UTC
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 300D340148
+Received: from galois.linutronix.de (Galois.linutronix.de [193.142.43.55])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 300D340148
  for <intel-wired-lan@lists.osuosl.org>; Wed, 24 Jan 2024 08:56:04 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 704C442FCA
 From: Kurt Kanzenbach <kurt@linutronix.de>
 To: Jesse Brandeburg <jesse.brandeburg@intel.com>,
  Tony Nguyen <anthony.l.nguyen@intel.com>,
  Vinicius Costa Gomes <vinicius.gomes@intel.com>
-Date: Wed, 24 Jan 2024 09:55:29 +0100
-Message-Id: <20240124085532.58841-1-kurt@linutronix.de>
+Date: Wed, 24 Jan 2024 09:55:30 +0100
+Message-Id: <20240124085532.58841-2-kurt@linutronix.de>
+In-Reply-To: <20240124085532.58841-1-kurt@linutronix.de>
+References: <20240124085532.58841-1-kurt@linutronix.de>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linutronix.de; s=2020; t=1706086561;
+ d=linutronix.de; s=2020; t=1706086562;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=X4FuCdhJchif0ZdIzxnHwtgL8xgXCxtiB3b4x2qtgyw=;
- b=viEav9YP9h95SvhqFWpPKp7flAZgvD728Hq8slaOP7HTnpvC467k3GxGGmaRNAIqGBJ6ea
- xMi+Q17RDjT4Nt3D+TveqOY79vG9LwIHBIDiPqTBG64Zk5H0gGnAJH2LIpptRPHeUTixKn
- OLy0Q5+KZC/6+HbGesRtDgWzJMVz0Xm+fVHDztKKeY2Rp0p70SDXmy1U//RX0VTXFEg1BF
- fP+m+2H9nJzqnrdggC+HOsEoVngeaCykHQt3Qxh0jmn7dgVGSfo/jVPIA+9xfKwYlKr30e
- LRqb7XEyxfk6xmX1cj+hMTJ0TtttjHTzdSL5irpEcMEm8glzjWvEIvC6XHkpig==
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=PpWQWJpYkDehFFRYCFWE0+2P1/XzZiBiXbECZUVKFfQ=;
+ b=LCupJw2wd2gwM0FwNCEw8xXbBGMOielC/9ZpbF384ybJCD0+NqeQ/s9llYPJKm9bCoNLq+
+ WxQCdx4q7ElipFh6WilDeo+bleSwVxK5zwp4IsimIldyWlPAJglbgs/2HPOQ4EeOYIBwMa
+ 5QO0vmLcU4twMVUovnTE6Cfch3+xIpE48rY9GWCkmLlq8K19unO4NWYoovp9OsK+ex5p2q
+ KoS9pIfl2SjgmXk1dHMyE9kD5YuIiL0c07Y9gsifMjXGhq6Z/SM1nhPC7TzPG09KP8yAon
+ RkXYAIlLA7Tx0RmxK3qsyms1TRR5DMEmKfG5YqzK9Z/Yh/6r1TDOncUmFd8Y9g==
 X-Mailman-Original-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed;
- d=linutronix.de; s=2020e; t=1706086561;
+ d=linutronix.de; s=2020e; t=1706086562;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=X4FuCdhJchif0ZdIzxnHwtgL8xgXCxtiB3b4x2qtgyw=;
- b=H1QKrWg83OFrQteVHkRykToIvp18kfiD0+X0Q2GEqfCit2/9nkztWKhvauKGhC9QusYHCD
- D09Mw56cp5EqaLCQ==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=PpWQWJpYkDehFFRYCFWE0+2P1/XzZiBiXbECZUVKFfQ=;
+ b=vKSFO5kUm6ModsdQyN1FFAPp/jKtL2kasnvIC722qkxgnNRvODuxCXHZBbYw97Zs7H5Jfu
+ w/fNVaragIb05ABA==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=linutronix.de header.i=@linutronix.de
- header.a=rsa-sha256 header.s=2020 header.b=viEav9YP; 
+ header.a=rsa-sha256 header.s=2020 header.b=LCupJw2w; 
  dkim=pass header.d=linutronix.de header.i=@linutronix.de
- header.a=ed25519-sha256 header.s=2020e header.b=H1QKrWg8
-Subject: [Intel-wired-lan] [PATCH v2 iwl-next 0/3] igc: ethtool: Flex filter
- cleanup
+ header.a=ed25519-sha256 header.s=2020e header.b=vKSFO5kU
+Subject: [Intel-wired-lan] [PATCH v2 iwl-next 1/3] igc: Use reverse xmas tree
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,31 +104,29 @@ Cc: netdev@vger.kernel.org, Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi,
+Use reverse xmas tree coding style convention in igc_add_flex_filter().
 
-this series contains some cosmetics for the flex filter code. The fixes have
-been merged separately via -net already.
+Signed-off-by: Kurt Kanzenbach <kurt@linutronix.de>
+Acked-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
+---
+ drivers/net/ethernet/intel/igc/igc_main.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Changes since v1:
-
- * Add Vinicius Ack
- * Rebase to v6.8-rc1
- * Wrap commit messages at 75 chars
-
-Previous versions:
-
- * v1: https://lore.kernel.org/netdev/20231128074849.16863-1-kurt@linutronix.de/
-
-Kurt Kanzenbach (3):
-  igc: Use reverse xmas tree
-  igc: Use netdev printing functions for flex filters
-  igc: Unify filtering rule fields
-
- drivers/net/ethernet/intel/igc/igc.h         |  2 +-
- drivers/net/ethernet/intel/igc/igc_ethtool.c |  4 ++--
- drivers/net/ethernet/intel/igc/igc_main.c    | 21 ++++++++++----------
- 3 files changed, 14 insertions(+), 13 deletions(-)
-
+diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
+index ba8d3fe186ae..4b3faa9a667f 100644
+--- a/drivers/net/ethernet/intel/igc/igc_main.c
++++ b/drivers/net/ethernet/intel/igc/igc_main.c
+@@ -3577,9 +3577,9 @@ static bool igc_flex_filter_in_use(struct igc_adapter *adapter)
+ static int igc_add_flex_filter(struct igc_adapter *adapter,
+ 			       struct igc_nfc_rule *rule)
+ {
+-	struct igc_flex_filter flex = { };
+ 	struct igc_nfc_filter *filter = &rule->filter;
+ 	unsigned int eth_offset, user_offset;
++	struct igc_flex_filter flex = { };
+ 	int ret, index;
+ 	bool vlan;
+ 
 -- 
 2.39.2
 
