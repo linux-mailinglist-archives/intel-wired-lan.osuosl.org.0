@@ -1,88 +1,85 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id D777A839D99
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 24 Jan 2024 01:19:46 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id CE34883A19E
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 24 Jan 2024 06:56:54 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 7053446D76;
-	Wed, 24 Jan 2024 00:19:45 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7053446D76
+	by smtp3.osuosl.org (Postfix) with ESMTP id 531EE6FB45;
+	Wed, 24 Jan 2024 05:56:53 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 531EE6FB45
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1706055585;
-	bh=EnFvRZBnsvcpI3gHwuga0QTf+dfPhLSs1JazEtKrgbA=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=Ee/6NEj+R/pp1FgQexFlwaN20xatwXozzpG311iBIbTnX00kKnrZK9AFafaFKh/4g
-	 0WMAwN5L1yh8jgm579h9bGhEV8TSOMONGMuX32IroVos9DEh1hkw1+f+IluGjfF16v
-	 BrO7+Wa+TxrU2SUhL5GQUuLP1pJLwWUNnJnmgW81M5D51BUzKk9jJiTixptITBM8Dj
-	 scjPkleY31td0bY2m6IfT3xMR40HRNPjUwH6e1MpY9O3TAtYukyBk13Zt6eQdVzMjt
-	 5Ik9oIb6eiDf68TEk1zqBLZR4UGVFdW7dCPMqi+tcMEwDxwiFvT6u9MZvwAqBDchAo
-	 HK8sL/5vkGgyA==
+	s=default; t=1706075813;
+	bh=g0PHiMiElhrW6soL6QZ3bDs9/Q+9VEvAsCekTMuIHKE=;
+	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=6DyQlNCg0kGbDwnLv2QS2WL8jZ23rpvNkgiMUArcZb9arY6ZZGxkq1WaeIH/nt+ei
+	 fodl/E8IgonYeC4y6bOFtjLFlLHlKiRt2juQVFlh4kxYYqBYwqkQVc2VX9sPCUKKWd
+	 kzMZ8IiuYDZtGx5KGx5Yw9K9TdQzVnYl6IbFYIG57nq1IPy/P9LaiEUXvbStqNcGju
+	 +wCTj8SnHxGKpoQ7KPIKT3lkPjkRGYpNX6TXnt58tgWjbKtk9ZAtbtjBkWG+B/7dJL
+	 jW+Zl4qxBjCVtWkRMOrmSoNpxod2b3HnWmic1uj3UzTyAJOMx8UE3XwVrgdHG+qWDc
+	 nnMGyvA3P5bqw==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id y1CEPBLOX7_t; Wed, 24 Jan 2024 00:19:44 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id zEgBPbBGfINS; Wed, 24 Jan 2024 05:56:52 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id BAE1646F1F;
-	Wed, 24 Jan 2024 00:19:43 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org BAE1646F1F
+	by smtp3.osuosl.org (Postfix) with ESMTP id 64A216F78F;
+	Wed, 24 Jan 2024 05:56:52 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 64A216F78F
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id A7FDF1BF27A
- for <intel-wired-lan@lists.osuosl.org>; Wed, 24 Jan 2024 00:19:38 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 235CE1BF25B
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 24 Jan 2024 05:56:48 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 731FB40278
- for <intel-wired-lan@lists.osuosl.org>; Wed, 24 Jan 2024 00:19:38 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 731FB40278
+ by smtp3.osuosl.org (Postfix) with ESMTP id EF7006F78F
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 24 Jan 2024 05:56:47 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org EF7006F78F
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id YkJMJAZ6VfHw for <intel-wired-lan@lists.osuosl.org>;
- Wed, 24 Jan 2024 00:19:37 +0000 (UTC)
-X-Greylist: delayed 427 seconds by postgrey-1.37 at util1.osuosl.org;
- Wed, 24 Jan 2024 00:19:37 UTC
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 0DB344026F
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.13])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 0DB344026F
- for <intel-wired-lan@lists.osuosl.org>; Wed, 24 Jan 2024 00:19:36 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10962"; a="592857"
-X-IronPort-AV: E=Sophos;i="6.05,215,1701158400"; 
-   d="scan'208";a="592857"
-Received: from fmviesa003.fm.intel.com ([10.60.135.143])
- by fmvoesa107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 23 Jan 2024 16:12:28 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.05,215,1701158400"; 
-   d="scan'208";a="1793470"
-Received: from unknown (HELO localhost.jf.intel.com) ([10.166.80.24])
- by fmviesa003.fm.intel.com with ESMTP; 23 Jan 2024 16:12:28 -0800
-From: Pavan Kumar Linga <pavan.kumar.linga@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Tue, 23 Jan 2024 16:10:26 -0800
-Message-ID: <20240124001026.2627-1-pavan.kumar.linga@intel.com>
-X-Mailer: git-send-email 2.43.0
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id eAaEiSt8BCrx for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 24 Jan 2024 05:56:45 +0000 (UTC)
+Received: from smtp.smtpout.orange.fr (smtp-15.smtpout.orange.fr
+ [80.12.242.15])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 97EA96F690
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 24 Jan 2024 05:56:44 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 97EA96F690
+Received: from [192.168.1.18] ([92.140.202.140]) by smtp.orange.fr with ESMTPA
+ id SWFarRZez8jVDSWFarqsnB; Wed, 24 Jan 2024 06:56:42 +0100
+X-ME-Helo: [192.168.1.18]
+X-ME-Auth: Y2hyaXN0b3BoZS5qYWlsbGV0QHdhbmFkb28uZnI=
+X-ME-Date: Wed, 24 Jan 2024 06:56:42 +0100
+X-ME-IP: 92.140.202.140
+Message-ID: <e2d00e0f-0211-43c6-a868-7a36655847ab@wanadoo.fr>
+Date: Wed, 24 Jan 2024 06:56:37 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+To: "Pucha, HimasekharX Reddy" <himasekharx.reddy.pucha@intel.com>
+References: <d39bbffb8817499cc2ae636cdef3b9c1eba59618.1705771534.git.christophe.jaillet@wanadoo.fr>
+ <CYYPR11MB8429776D3D1D830E140F5D64BD7B2@CYYPR11MB8429.namprd11.prod.outlook.com>
+Content-Language: en-MW
+From: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+In-Reply-To: <CYYPR11MB8429776D3D1D830E140F5D64BD7B2@CYYPR11MB8429.namprd11.prod.outlook.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1706055577; x=1737591577;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=VxtsDY4+0bWaGP6Z1n26I6a4V22qrx/u5kJOx/eshW4=;
- b=Efpbm926w1lbVQ8gpSRMw9HXIQ4okwpnvNgG2Idc4F2qC7ewLTpIcRfq
- UJnN2ClzbUQsRlM6alX4C9wyJcvcsFlEFRTbwL5krpKjweGe8W+OAKCd0
- zdP27YHFn0om/NxKrS0JGvdvTPCcVQkGDUGCUrMqQcMLHYuXUKXIma6vS
- s+7klffHrvyrpgJjMBeJDYfl0JgM17+h3AGEHTa7HkrbLdsf+hbx/bB7e
- so0ifk/MirG4PXK+7QLXAJ2/FanOGjVXmMK2ZSqM0W5S+K3EnmxQX0xP2
- q92KmPUXpgApLTm9aG0nBKDyuUfa7KlouhAWfEcwUfStB7n2nsPaxLpmH
- Q==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=Efpbm926
-Subject: [Intel-wired-lan] [PATCH iwl-net v4] idpf: avoid compiler padding
- in virtchnl2_ptype struct
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=wanadoo.fr; s=t20230301; t=1706075802;
+ bh=g0PHiMiElhrW6soL6QZ3bDs9/Q+9VEvAsCekTMuIHKE=;
+ h=Date:Subject:To:References:From:Cc:In-Reply-To;
+ b=In7+ica4uVuNs9ushLtua0BX9YGc5x3ELrA7TG7V1NfNWpaJS8I4emw0dhbluV5NR
+ IOYz+3rwVI75dfhPKdiwqcnr7ADc1TvWwt08J5aiS85Tc+HXHqSp5id8eU3myridRW
+ bYHGvyZBLpp/nyxJtoYL1jNlOHjWcE+si2MaKy94nQkW/+2AnhRClDOhf5+UKKuSA8
+ wfmi4YaPiEpYVo5A8aZjnFqEI/uxbrEI1P87X4D2Y8O5L8ZfBVRJt9zgMm6MYhysaL
+ eN3RMvYvO80GSRLXub9KfGyHTqi+Ig0nk9rorf8dmqszJ1LYhktkRYx0Pgbelj1TnA
+ CrLkeBcgb9EsQ==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key) header.d=wanadoo.fr header.i=@wanadoo.fr
+ header.a=rsa-sha256 header.s=t20230301 header.b=In7+ica4
+Subject: Re: [Intel-wired-lan] [PATCH] ixgbe: Fix an error handling path in
+ ixgbe_read_iosf_sb_reg_x550()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,80 +92,77 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: pmenzel@molgen.mpg.de, Pavan Kumar Linga <pavan.kumar.linga@intel.com>,
- emil.s.tantilov@intel.com, netdev@vger.kernel.org, David.Laight@ACULAB.COM,
- horms@kernel.org, przemyslaw.kitszel@intel.com
+Cc: intel-wired-lan@lists.osuosl.org, kernel-janitors@vger.kernel.org,
+ Jesse Brandeburg <jesse.brandeburg@intel.com>, linux-kernel@vger.kernel.org,
+ Eric Dumazet <edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Jeff Kirsher <jeffrey.t.kirsher@intel.com>, netdev@vger.kernel.org,
+ Jakub Kicinski <kuba@kernel.org>, Mark Rustad <mark.d.rustad@intel.com>,
+ Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-In the arm random config file, kconfig option 'CONFIG_AEABI' is
-disabled which results in adding the compiler flag '-mabi=apcs-gnu'.
-This causes the compiler to add padding in virtchnl2_ptype
-structure to align it to 8 bytes, resulting in the following
-size check failure:
 
-include/linux/build_bug.h:78:41: error: static assertion failed: "(6) == sizeof(struct virtchnl2_ptype)"
-      78 | #define __static_assert(expr, msg, ...) _Static_assert(expr, msg)
-         |                                         ^~~~~~~~~~~~~~
-include/linux/build_bug.h:77:34: note: in expansion of macro '__static_assert'
-      77 | #define static_assert(expr, ...) __static_assert(expr, ##__VA_ARGS__, #expr)
-         |                                  ^~~~~~~~~~~~~~~
-drivers/net/ethernet/intel/idpf/virtchnl2.h:26:9: note: in expansion of macro 'static_assert'
-      26 |         static_assert((n) == sizeof(struct X))
-         |         ^~~~~~~~~~~~~
-drivers/net/ethernet/intel/idpf/virtchnl2.h:982:1: note: in expansion of macro 'VIRTCHNL2_CHECK_STRUCT_LEN'
-     982 | VIRTCHNL2_CHECK_STRUCT_LEN(6, virtchnl2_ptype);
-         | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+Le 24/01/2024 à 05:00, Pucha, HimasekharX Reddy a écrit :
+> Hi,
+>
+> Can you share testing hints for this patch.
 
-Avoid the compiler padding by using "__packed" structure
-attribute for the virtchnl2_ptype struct. Also align the
-structure by using "__aligned(2)" for better code optimization.
-While at it, swap the static_assert conditional statement
-variables.
+Hi,
 
-Fixes: 0d7502a9b4a7 ("virtchnl: add virtchnl version 2 ops")
-Reported-by: kernel test robot <lkp@intel.com>
-Closes: https://lore.kernel.org/oe-kbuild-all/202312220250.ufEm8doQ-lkp@intel.com
-Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-Reviewed-by: Paul Menzel <pmenzel@molgen.mpg.de>
-Reviewed-by: Simon Horman <horms@kernel.org>
-Signed-off-by: Pavan Kumar Linga <pavan.kumar.linga@intel.com>
+No I can't.
 
----
-v4:
- - swap the static_assert conditional statement variables
+It was spotted by one of my cocci script that tries to find issues 
+related to direct return when a function also has an error handling path 
++ manual review so see if it looks like a real issue.
 
-v3:
- - add "__aligned(2)" structure attribute for better code optimization
+As said in the patch, "This patch is speculative, review with care.". 
+That means that it was not tested from my side.
+I don't have the hardware, and don't know how to trigger the issue.
 
-v2:
- - add the kconfig option causing the compile failure to the commit message
----
- drivers/net/ethernet/intel/idpf/virtchnl2.h | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+All I know is that the code looks wrong *to me*.
 
-diff --git a/drivers/net/ethernet/intel/idpf/virtchnl2.h b/drivers/net/ethernet/intel/idpf/virtchnl2.h
-index 8dc83788972..506036e7df0 100644
---- a/drivers/net/ethernet/intel/idpf/virtchnl2.h
-+++ b/drivers/net/ethernet/intel/idpf/virtchnl2.h
-@@ -23,7 +23,7 @@
-  * is not exactly the correct length.
-  */
- #define VIRTCHNL2_CHECK_STRUCT_LEN(n, X)	\
--	static_assert((n) == sizeof(struct X))
-+	static_assert(sizeof(struct X) == (n))
- 
- /* New major set of opcodes introduced and so leaving room for
-  * old misc opcodes to be added in future. Also these opcodes may only
-@@ -978,7 +978,7 @@ struct virtchnl2_ptype {
- 	u8 proto_id_count;
- 	__le16 pad;
- 	__le16 proto_id[];
--};
-+} __packed __aligned(2);
- VIRTCHNL2_CHECK_STRUCT_LEN(6, virtchnl2_ptype);
- 
- /**
--- 
-2.43.0
+Maybe someone at intel.com could give this hint? :)
 
+CJ
+
+
+> Regards,
+> Himasekhar Reddy.
+>
+> -----Original Message-----
+> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of Christophe JAILLET
+> Sent: Saturday, January 20, 2024 10:56 PM
+> To: Brandeburg, Jesse <jesse.brandeburg@intel.com>; Nguyen, Anthony L <anthony.l.nguyen@intel.com>; David S. Miller <davem@davemloft.net>; Eric Dumazet <edumazet@google.com>; Jakub Kicinski <kuba@kernel.org>; Paolo Abeni <pabeni@redhat.com>; Jeff Kirsher <jeffrey.t.kirsher@intel.com>; Rustad, Mark D <mark.d.rustad@intel.com>
+> Cc: Christophe JAILLET <christophe.jaillet@wanadoo.fr>; intel-wired-lan@lists.osuosl.org; kernel-janitors@vger.kernel.org; linux-kernel@vger.kernel.org; netdev@vger.kernel.org
+> Subject: [Intel-wired-lan] [PATCH] ixgbe: Fix an error handling path in ixgbe_read_iosf_sb_reg_x550()
+>
+> All error handling paths, except this one, go to 'out' where
+> release_swfw_sync() is called.
+> This call balances the acquire_swfw_sync() call done at the beginning of
+> the function.
+>
+> Branch to the error handling path in order to correctly release some
+> resources in case of error.
+>
+> Fixes: ae14a1d8e104 ("ixgbe: Fix IOSF SB access issues")
+> Signed-off-by: Christophe JAILLET <christophe.jaillet@wanadoo.fr>
+> ---
+> This patch is speculative, review with care.
+> ---
+>   drivers/net/ethernet/intel/ixgbe/ixgbe_x550.c | 3 ++-
+>   1 file changed, 2 insertions(+), 1 deletion(-)
+>
+> diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_x550.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_x550.c
+> index 6208923e29a2..c1adc94a5a65 100644
+> --- a/drivers/net/ethernet/intel/ixgbe/ixgbe_x550.c
+> +++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_x550.c
+> @@ -716,7 +716,8 @@ static s32 ixgbe_read_iosf_sb_reg_x550(struct ixgbe_hw *hw, u32 reg_addr,
+>   	if ((command & IXGBE_SB_IOSF_CTRL_RESP_STAT_MASK) != 0) {
+>   		error = FIELD_GET(IXGBE_SB_IOSF_CTRL_CMPL_ERR_MASK, command);
+>   		hw_dbg(hw, "Failed to read, error %x\n", error);
+> -		return -EIO;
+> +		ret = -EIO;
+> +		goto out;
+>   	}
+>   
+>   	if (!ret)
