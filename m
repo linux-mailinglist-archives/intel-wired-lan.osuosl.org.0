@@ -1,80 +1,79 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 03B9083B399
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 24 Jan 2024 22:09:12 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 01E1C83B3E5
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 24 Jan 2024 22:27:09 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id DF83F40199;
-	Wed, 24 Jan 2024 21:09:09 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org DF83F40199
+	by smtp2.osuosl.org (Postfix) with ESMTP id 2D47640A42;
+	Wed, 24 Jan 2024 21:27:07 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 2D47640A42
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1706130549;
-	bh=tXia9XiqsM8kLitPz0hReQf3P4YJM2LFAmtRzg1DiyY=;
+	s=default; t=1706131627;
+	bh=CkxtFHbjk2B8uv/Bp7rwir4anSOwgO1625h1RichXdc=;
 	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=1dOsdiRHUOolEbGPWSk5z3Fhkf3+UW9m6+olbm0rVz/GBD4hAP/h01Pk7x3O0ALjF
-	 4JtCFqhQGfRlUuUKrJnLyV3Nomm7UyiJgFkapgR+7EvYveZrzzp8BLUsyQkvmg6E87
-	 4BVFV4QqVUrp0Rm5WANJ/0uU1aQXtLLEOWMyH/tC4u+Zx7HBvH0pIqtnh/cTpCx28w
-	 71C6c11NePs36IHdL7tInURPeopUuTIEURQ8GGxxANBkOmRoVtDioMioZr+vn+79nb
-	 nnIjQThdT0gsVWwCaJfQtD8Z46o7X2D4L6vHdYgH/RW+CcURoScanIDZ2QapI3CATo
-	 nPePIVZf34Gqg==
+	b=joIEx8p3kUdjCZSC9mOuf/owdiPSRWVgsuYrpGJ1QJR6pI/i40C3LpWEQO4lzMagV
+	 PvLpV+ipEXwUlfwY5bLu46GPtX+53GpgLWlpqLiFR/GsGszwL16m6NHQY2tjccOxea
+	 u3I8piYmxMdEST7DQNkP8NGp3t9CTU0RIWKJzcE4yCwhvVtcPGqK5wD+ft6sAvzAbD
+	 /SuCC+VU1BaeCDOHYiglJo+IHwWC/b5pSSOKwbGSlLmmfeahVnDJfS+tW9Y3huWvbm
+	 jQI9sPntvBbgT14PozjrUX4TgkOFJqriw5lJqvS+ACT0T5DJUPLWc/ki0DttKkl4I6
+	 nGgeSHF7Dk2gA==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id oauVR92sARxo; Wed, 24 Jan 2024 21:09:09 +0000 (UTC)
+	with ESMTP id z0OTmbg2ImUl; Wed, 24 Jan 2024 21:27:06 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 88BF8400B9;
-	Wed, 24 Jan 2024 21:09:08 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 88BF8400B9
+	by smtp2.osuosl.org (Postfix) with ESMTP id 8BD9C40970;
+	Wed, 24 Jan 2024 21:27:05 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 8BD9C40970
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 0E2831BF3BF
- for <intel-wired-lan@lists.osuosl.org>; Wed, 24 Jan 2024 21:09:03 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id C327C1BF3BF
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 24 Jan 2024 21:27:00 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id D5B6F81DFD
- for <intel-wired-lan@lists.osuosl.org>; Wed, 24 Jan 2024 21:09:02 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D5B6F81DFD
+ by smtp1.osuosl.org (Postfix) with ESMTP id 9A24781B0A
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 24 Jan 2024 21:27:00 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9A24781B0A
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 9b8k0aB92u4T for <intel-wired-lan@lists.osuosl.org>;
- Wed, 24 Jan 2024 21:09:02 +0000 (UTC)
+ with ESMTP id 5Tj-cAujQ16Y for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 24 Jan 2024 21:27:00 +0000 (UTC)
 Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 4373C81DF7
- for <intel-wired-lan@lists.osuosl.org>; Wed, 24 Jan 2024 21:09:02 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4373C81DF7
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 0B1CE81778
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 24 Jan 2024 21:26:59 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0B1CE81778
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by dfw.source.kernel.org (Postfix) with ESMTP id 6005A61E91;
- Wed, 24 Jan 2024 21:09:01 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 90652C433C7;
- Wed, 24 Jan 2024 21:08:58 +0000 (UTC)
-Date: Wed, 24 Jan 2024 21:08:55 +0000
+ by dfw.source.kernel.org (Postfix) with ESMTP id EFD8861E57;
+ Wed, 24 Jan 2024 21:26:58 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 69485C433C7;
+ Wed, 24 Jan 2024 21:26:57 +0000 (UTC)
+Date: Wed, 24 Jan 2024 21:26:54 +0000
 From: Simon Horman <horms@kernel.org>
-To: Kurt Kanzenbach <kurt@linutronix.de>
-Message-ID: <20240124210855.GC217708@kernel.org>
-References: <20240124082408.49138-1-kurt@linutronix.de>
+To: Tony Nguyen <anthony.l.nguyen@intel.com>
+Message-ID: <20240124212654.GA348897@kernel.org>
+References: <20240122182419.889727-1-anthony.l.nguyen@intel.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20240124082408.49138-1-kurt@linutronix.de>
+In-Reply-To: <20240122182419.889727-1-anthony.l.nguyen@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1706130541;
- bh=OwqhiirMXNXI3ECk46Nz8ZChmmdmevlnfCw/AuOJ2Do=;
+ d=kernel.org; s=k20201202; t=1706131618;
+ bh=lCOjQOk7wxMizEVQCLQ7fNTuC0MebLxnMQwmgJUQwb4=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=o8UhNJRz0hfEcmfLtHLEYE4SKXgEMhIQDPe/he45noNkcGPAK8iEcOLvmb4O/mcw8
- uBp+Aop5NdoC0a6TTtMoLHUrp4v7t/61OfQoVL1kAVctzrua0FKMPt3MGEaQaugRHm
- V/qNjoIV7ujuYYMdHrEw35JIVmAhQEADBwVdDq7r+IA/qm7OR7w4Jd4librmz8m898
- 9SKkkH8eq/6n0iUnfJlIgzGFrsiwRa+nnWl1P4oChya7GSdw7RtUad+6Clxk0yI7SB
- Id6bZvKu4JiTO/QAjHz2P8FqWzMtDaunJQpOTLxCxKkGvddlYFv1+t9zFzt/HJ21FD
- JON5+jjwyEJJg==
+ b=OzaGWpM7ggNujGT2ILNyXDOxpDxaPfJ6oDnDbvC3QwR3RzPzbcaUEf+Vbeo+FN+1e
+ xlw3j8av8cwhrJtpjIazRp9AYsLcW3MzRahzsxBVYl16tybSoNpWm+w+Gsn5xsAPnM
+ YCTBVPonkr2cvk3n+bhRXMk0FiTFErjUOSXocFF6wmnpIYdXaAO+uN5sHPSSM3A2+f
+ JnBI7unAq8gbSI2vR+hcIyGqF0pY6vFDaXZ21Pa74ZJntiQDqDQYB0bCORfV9RdJeb
+ C0pbGCbtqwFBYOAkFKpaLWykX7ltVrilqh9REMGu3JYinvx9m8q4PtqDVjwA86mHdq
+ xyyTwpGtXieUw==
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=o8UhNJRz
-Subject: Re: [Intel-wired-lan] [PATCH v1 iwl-next] igc: Add support for LEDs
- on i225/i226
+ header.a=rsa-sha256 header.s=k20201202 header.b=OzaGWpM7
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next] ice: remove duplicate comment
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,57 +86,39 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>,
- Vinicius Costa Gomes <vinicius.gomes@intel.com>,
- intel-wired-lan@lists.osuosl.org,
- Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
- Jesse Brandeburg <jesse.brandeburg@intel.com>,
- Eric Dumazet <edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
- netdev@vger.kernel.org, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>
+Cc: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
+ Paul M Stillwell Jr <paul.m.stillwell.jr@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed, Jan 24, 2024 at 09:24:08AM +0100, Kurt Kanzenbach wrote:
+On Mon, Jan 22, 2024 at 10:24:17AM -0800, Tony Nguyen wrote:
+> From: Paul M Stillwell Jr <paul.m.stillwell.jr@intel.com>
+> 
+> Remove a comment that was not correct; this structure has nothing
+> to do with FW alignment.
+> 
+> Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+> Signed-off-by: Paul M Stillwell Jr <paul.m.stillwell.jr@intel.com>
 
-...
+Sure, but the subject doesn't seem to match the patch description.
+And, Tony, your Sob seems to be missing.
 
-> +static int igc_led_hw_control_set(struct led_classdev *led_cdev,
-> +				  unsigned long flags)
-> +{
-> +	struct igc_led_classdev *ldev = lcdev_to_igc_ldev(led_cdev);
-> +	struct igc_adapter *adapter = netdev_priv(ldev->netdev);
-> +	bool blink = false;
-> +	u32 mode;
-> +
-> +	if (flags & BIT(TRIGGER_NETDEV_LINK_10))
-> +		mode = IGC_LEDCTL_MODE_LINK_10;
-> +	if (flags & BIT(TRIGGER_NETDEV_LINK_100))
-> +		mode = IGC_LEDCTL_MODE_LINK_100;
-> +	if (flags & BIT(TRIGGER_NETDEV_LINK_1000))
-> +		mode = IGC_LEDCTL_MODE_LINK_1000;
-> +	if (flags & BIT(TRIGGER_NETDEV_LINK_2500))
-> +		mode = IGC_LEDCTL_MODE_LINK_2500;
-> +	if ((flags & BIT(TRIGGER_NETDEV_TX)) ||
-> +	    (flags & BIT(TRIGGER_NETDEV_RX)))
-> +		mode = IGC_LEDCTL_MODE_ACTIVITY;
-
-Hi Kurt,
-
-I guess this can't happen in practice,
-but if none of the conditions above are met,
-then mode is used uninitialised below.
-
-Flagged by Smatch.
-
-> +
-> +	/* blink is recommended for activity */
-> +	if (mode == IGC_LEDCTL_MODE_ACTIVITY)
-> +		blink = true;
-> +
-> +	igc_led_set(adapter, ldev->index, mode, blink);
-> +
-> +	return 0;
-> +}
-
-...
+> ---
+>  drivers/net/ethernet/intel/ice/ice_debugfs.c | 3 ---
+>  1 file changed, 3 deletions(-)
+> 
+> diff --git a/drivers/net/ethernet/intel/ice/ice_debugfs.c b/drivers/net/ethernet/intel/ice/ice_debugfs.c
+> index c2bfba6b9ead..85aa31dd86b1 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_debugfs.c
+> +++ b/drivers/net/ethernet/intel/ice/ice_debugfs.c
+> @@ -64,9 +64,6 @@ static const char * const ice_fwlog_level_string[] = {
+>  	"verbose",
+>  };
+>  
+> -/* the order in this array is important. it matches the ordering of the
+> - * values in the FW so the index is the same value as in ice_fwlog_level
+> - */
+>  static const char * const ice_fwlog_log_size[] = {
+>  	"128K",
+>  	"256K",
