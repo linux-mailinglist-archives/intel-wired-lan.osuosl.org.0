@@ -1,81 +1,82 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id BD67883C043
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 25 Jan 2024 12:08:00 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id DD7DC83C156
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 25 Jan 2024 12:53:34 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 43678400E0;
-	Thu, 25 Jan 2024 11:07:59 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 43678400E0
+	by smtp2.osuosl.org (Postfix) with ESMTP id 2D86B405D7;
+	Thu, 25 Jan 2024 11:53:33 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 2D86B405D7
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1706180879;
-	bh=dErJIlU0i24tc1Kan8yh5cAvfFDS97y0aS0daApABwY=;
+	s=default; t=1706183613;
+	bh=yZieuJ5Tk20zO1kZN+QaX8JNlnXKZYsB+7yzAz3rpp8=;
 	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=pMMGiEwYW/Ux4GmdFHWSw8+Pm/U9oITu/iX94B7ZR9OLVpnKEDWItURZf1kUupn1J
-	 I0uhQLiyuhwR6y3h6sIn9iFPpGcbXm1dwqwkCgtp2//Yf1iALFUBfjdpUJC+MeHFx+
-	 xIOZFh49uRe3lWgVuXu1QCLgzYwh1HixagxlrTOjw3gm/PSXU9Sjn6FYEN4vMUmZ24
-	 eSt2lBrNTUi+zZ0tAzo2YWHT9BhXuWWt5SO1nV94QGcWx+YKV6pYFR46sXpI5QyxpW
-	 prtiUDJZQXXkqLVC1irvP7sC2E1HQ8CRqRB7mtZruTs8Mq4Cv0BmohPGRG+NFTMVPj
-	 k54o2FcrtS2ig==
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id oi_AaUGBp0x1; Thu, 25 Jan 2024 11:07:58 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 6D9564026E;
-	Thu, 25 Jan 2024 11:07:58 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6D9564026E
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 8C4621BF39A
- for <intel-wired-lan@lists.osuosl.org>; Thu, 25 Jan 2024 11:07:53 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 6E3C24012F
- for <intel-wired-lan@lists.osuosl.org>; Thu, 25 Jan 2024 11:07:53 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 6E3C24012F
+	b=vcH9yWo/wa0Enp9kWj6ofiGThw41ZzVlNFQSRYVuAUXjwgTYTwweBsaNXCZa8Ci/g
+	 SlkQgmFotO8eXpP3ZKGl8FX1cSLHrohAMuTL9lZ6fdAbIseK344lSIPUBTH7kUVx+o
+	 DjFUy+XM4Qxo7kZ5E46Yy90cFBvjLOd1vma9fYdCdKeaPIZltNO8PwpyE0WtPXp9Cl
+	 NB1haG3ctcO73MXRHA4kfMHXu9YmN8UkTesIfnlnzsOdpF76HT8QaKp1h4zaZ8J0If
+	 dsVC0OnPkvdXhVfdsxXqnr72OzJrKuXxmdWDlwIDPtb7l30LKhLGo5YP9jFqf/wIfS
+	 d8L+vkkZ45L5Q==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ibVAxbBwau8W for <intel-wired-lan@lists.osuosl.org>;
- Thu, 25 Jan 2024 11:07:52 +0000 (UTC)
-Received: from sin.source.kernel.org (sin.source.kernel.org
- [IPv6:2604:1380:40e1:4800::1])
- by smtp2.osuosl.org (Postfix) with ESMTPS id EFEBA400C4
- for <intel-wired-lan@lists.osuosl.org>; Thu, 25 Jan 2024 11:07:51 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org EFEBA400C4
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id XWmeW1-gsQMe; Thu, 25 Jan 2024 11:53:32 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp2.osuosl.org (Postfix) with ESMTP id CD69D405CF;
+	Thu, 25 Jan 2024 11:53:31 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org CD69D405CF
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id CD7451BF39A
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 25 Jan 2024 11:53:26 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp3.osuosl.org (Postfix) with ESMTP id A51C060AC4
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 25 Jan 2024 11:53:26 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A51C060AC4
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id DuZBO5ub1yqH for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 25 Jan 2024 11:53:25 +0000 (UTC)
+Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id D187260AC1
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 25 Jan 2024 11:53:25 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D187260AC1
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by sin.source.kernel.org (Postfix) with ESMTP id 4E7CFCE32A6;
- Thu, 25 Jan 2024 11:07:47 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 77E9EC433F1;
- Thu, 25 Jan 2024 11:07:44 +0000 (UTC)
-Date: Thu, 25 Jan 2024 11:07:41 +0000
+ by dfw.source.kernel.org (Postfix) with ESMTP id 8F0E5611C6;
+ Thu, 25 Jan 2024 11:53:24 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 813B1C433F1;
+ Thu, 25 Jan 2024 11:53:21 +0000 (UTC)
+Date: Thu, 25 Jan 2024 11:53:18 +0000
 From: Simon Horman <horms@kernel.org>
-To: Wojciech Drewek <wojciech.drewek@intel.com>
-Message-ID: <20240125110741.GE217708@kernel.org>
-References: <20240123111849.9367-1-wojciech.drewek@intel.com>
+To: Kurt Kanzenbach <kurt@linutronix.de>
+Message-ID: <20240125115318.GI217708@kernel.org>
+References: <20240124082408.49138-1-kurt@linutronix.de>
+ <20240124210855.GC217708@kernel.org>
+ <87h6j1ev5j.fsf@kurt.kurt.home>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20240123111849.9367-1-wojciech.drewek@intel.com>
+In-Reply-To: <87h6j1ev5j.fsf@kurt.kurt.home>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1706180865;
- bh=aYYCJudU8yAUgkMyhB1YwN2Sg7x602RYmD/3GTG+plA=;
+ d=kernel.org; s=k20201202; t=1706183604;
+ bh=h9mu/SRtva+3sHA+94qVBfMLNZBqZZ5vSWU3hU8vWQA=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=pC33db9xAAvNYuBouA84sGa2BAY23nEQ2wCPOlhGs2/nc4PqxRaufVBH7n5noAnsY
- jnYeqjCKVWODNd83CoyWUM9qYJ3poP1F2G7XxprkXa+qExe5JtwJ7u4LrOZWGEVELr
- fXX7z83WvvTiwXjbZGuwIhwOa5HSb346qLCZ57yYPuZf/kRRvY38Vx2tH35bL2N17m
- Q180MYgkv1UJ+hAM1mZSkebsCOKDLnt4q5lAa9mKII7eR4FxU1bbc/t+90OmkxsE/m
- QCXAkH4W5HeVwyliIeRcPo+X1xoCQTb9JC9vUdV6yIpBPTvHi3aA2zO/bOk8JCsNW7
- +xtpvHWkiQ6HA==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ b=WC1vINH1bPG/0VkODv4Qx6BCl4vyaABchLnpyZoPEfAbbadwzZCeJv0R9wJlzfxrr
+ G7AS20fAqh7l2RO6KjehNwNuyRNo4mlxwZcl8/UigMlT9lIG+pxbW3KxUmNJaF2TR6
+ p/5l67kTbt/0YzvBNxXTiiY8NODH7R47y5kdjjeI812pOY1+I+GDfOvoufDKslxCsQ
+ r9E44R2b++GzsOnL3AONqoO9sufnobiqxbJw+Zu3E8Y/oNMkM3d1uGAKp9elGLRzGB
+ Br9UbStPiKPfLKFiX61xPEqqlXdgGC4uC+9HF7f6TjIWaEXiaGDTgP9oSwyetKXKpw
+ 4IXvXi2N+eIsw==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=pC33db9x
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next] ice: Remove and readd netdev
- during devlink reload
+ header.a=rsa-sha256 header.s=k20201202 header.b=WC1vINH1
+Subject: Re: [Intel-wired-lan] [PATCH v1 iwl-next] igc: Add support for LEDs
+ on i225/i226
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,28 +89,68 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: jiri@resnulli.us, netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org
+Cc: Andrew Lunn <andrew@lunn.ch>, Dan Carpenter <carpenter@linaro.org>,
+ Vinicius Costa Gomes <vinicius.gomes@intel.com>,
+ intel-wired-lan@lists.osuosl.org,
+ Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
+ Jesse Brandeburg <jesse.brandeburg@intel.com>,
+ Eric Dumazet <edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
+ netdev@vger.kernel.org, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, Jan 23, 2024 at 12:18:49PM +0100, Wojciech Drewek wrote:
-> Recent changes to the devlink reload (commit 9b2348e2d6c9
-> ("devlink: warn about existing entities during reload-reinit"))
-> force the drivers to destroy devlink ports during reinit.
-> Adjust ice driver to this requirement, unregister netdvice, destroy
-> devlink port. ice_init_eth() was removed and all the common code
-> between probe and reload was moved to ice_load().
-> 
-> During devlink reload we can't take devl_lock (it's already taken)
-> and in ice_probe() we have to lock it. Use devl_* variant of the API
-> which does not acquire and release devl_lock. Guard ice_load()
-> with devl_lock only in case of probe.
-> 
-> Introduce ice_debugfs_fwlog_deinit() in order to release PF's
-> debugfs entries. Move ice_debugfs_exit() call to ice_module_exit().
-> 
-> Suggested-by: Jiri Pirko <jiri@nvidia.com>
-> Signed-off-by: Wojciech Drewek <wojciech.drewek@intel.com>
++ Dan Carpenter <carpenter@linaro.org>
 
-Reviewed-by: Simon Horman <horms@kernel.org>
+On Thu, Jan 25, 2024 at 08:20:40AM +0100, Kurt Kanzenbach wrote:
+> On Wed Jan 24 2024, Simon Horman wrote:
+> > On Wed, Jan 24, 2024 at 09:24:08AM +0100, Kurt Kanzenbach wrote:
+> >
+> > ...
+> >
+> >> +static int igc_led_hw_control_set(struct led_classdev *led_cdev,
+> >> +				  unsigned long flags)
+> >> +{
+> >> +	struct igc_led_classdev *ldev = lcdev_to_igc_ldev(led_cdev);
+> >> +	struct igc_adapter *adapter = netdev_priv(ldev->netdev);
+> >> +	bool blink = false;
+> >> +	u32 mode;
+> >> +
+> >> +	if (flags & BIT(TRIGGER_NETDEV_LINK_10))
+> >> +		mode = IGC_LEDCTL_MODE_LINK_10;
+> >> +	if (flags & BIT(TRIGGER_NETDEV_LINK_100))
+> >> +		mode = IGC_LEDCTL_MODE_LINK_100;
+> >> +	if (flags & BIT(TRIGGER_NETDEV_LINK_1000))
+> >> +		mode = IGC_LEDCTL_MODE_LINK_1000;
+> >> +	if (flags & BIT(TRIGGER_NETDEV_LINK_2500))
+> >> +		mode = IGC_LEDCTL_MODE_LINK_2500;
+> >> +	if ((flags & BIT(TRIGGER_NETDEV_TX)) ||
+> >> +	    (flags & BIT(TRIGGER_NETDEV_RX)))
+> >> +		mode = IGC_LEDCTL_MODE_ACTIVITY;
+> >
+> > Hi Kurt,
+> >
+> > I guess this can't happen in practice,
+> > but if none of the conditions above are met,
+> > then mode is used uninitialised below.
+> 
+> Yes, it shouldn't happen, because the supported modes are
+> checked. However, mode can be initialized to off to avoid the warning.
+
+Thanks.
+
+> > Flagged by Smatch.
+> 
+> Out of curiosity how did you get the warning? I usually run `make W=1 C=1
+> M=...` before sending patches.
+
+Probably there is a better way, but I run Smatch like this:
+
+ .../smatch/smatch_scripts/kchecker a.c
+
+Smatch can be found here:
+
+  https://github.com/error27/smatch
+
+
 
