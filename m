@@ -2,80 +2,81 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8768383C175
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 25 Jan 2024 12:59:10 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id E5F8683C177
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 25 Jan 2024 12:59:23 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id D5D4E408DA;
-	Thu, 25 Jan 2024 11:59:08 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org D5D4E408DA
+	by smtp2.osuosl.org (Postfix) with ESMTP id 571E343567;
+	Thu, 25 Jan 2024 11:59:22 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 571E343567
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1706183948;
-	bh=887w+WfJfFzpSlrkGokTPV05+baQoZjaKxYcT03elr8=;
+	s=default; t=1706183962;
+	bh=biHPs08dT5XzmM/VMCa9rChUlH5shkrQSS3J208w2iI=;
 	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=rfHLfRq+e7PTkkE+sWiWem2oVZHz5x/8ZCOatT4Jq0C94oqelOJIVxpLJLerVB/nX
-	 ts3cVxdzYsoUVLLDHos5nRz7pjm2iA8ESlvDVrER5zXPCPaP6c5qvRC2nKkMDoS0Nv
-	 d6Ku7EY5vZa7KooWutZTgg+C1UAwonQRJgRAwgXJdSnoggebslhgTuMYQosRqNzQSn
-	 KvECkM0WxC1wltdX2Fq8gAS5+o9rdUarAQ7CEPIstjM+ihkiRn68DfBZ1VKe0/tQfo
-	 7L1E6f9uTeTM9E5S+BGzl/35IqiMfI68EAUMTQFgVU7Cr6W56oh5XVzEqMCdfyPTNO
-	 aK3z7LsjMaGeA==
+	b=Vt01/S0hpb9u/Wr2flPPeKWzKl9gTzSjHJtJx8KjSN6AlMI9/1j8yqgaOL2ncV/gb
+	 htHG0IeqBilJgabk3ipib6tKuhto0RVpb92Gh38S/xuhFb+6WX++HOSX8Y+eNYmFuf
+	 Gac9L0D7M/w4YPoc/+xAwHrfAiX0StnwhmQf2zTt3l6iac/iuGJsBI5CzUCccNenYu
+	 r4/0TB9AVZ/7+DR5yp8o6IhpygonAgV8fPPLB6Elgi+LWlATfm6xn3GslpaIVF2Nlz
+	 MVWXNerlvGoG3VA8v7bVHv/1Bw9fqjWqQiVrEgk3tcqUdpcLNV5uY89uABJHETYuZ4
+	 g8SEPN7pd9kIQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id koRbysbDYatz; Thu, 25 Jan 2024 11:59:08 +0000 (UTC)
+	with ESMTP id 1L9UCJdQpyYQ; Thu, 25 Jan 2024 11:59:21 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id B137C40604;
-	Thu, 25 Jan 2024 11:59:07 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B137C40604
+	by smtp2.osuosl.org (Postfix) with ESMTP id 5B18C4051B;
+	Thu, 25 Jan 2024 11:59:21 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 5B18C4051B
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 75D6F1BF20B
- for <intel-wired-lan@lists.osuosl.org>; Thu, 25 Jan 2024 11:59:02 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 165B61BF20B
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 25 Jan 2024 11:59:16 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 4D12480B78
- for <intel-wired-lan@lists.osuosl.org>; Thu, 25 Jan 2024 11:59:02 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4D12480B78
+ by smtp3.osuosl.org (Postfix) with ESMTP id E4E6761422
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 25 Jan 2024 11:59:15 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org E4E6761422
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id CM3DcdqFbkAy for <intel-wired-lan@lists.osuosl.org>;
- Thu, 25 Jan 2024 11:59:01 +0000 (UTC)
-Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
- by smtp1.osuosl.org (Postfix) with ESMTPS id C63BE80B6B
- for <intel-wired-lan@lists.osuosl.org>; Thu, 25 Jan 2024 11:59:01 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org C63BE80B6B
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id bIiL6mqv-3Cw for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 25 Jan 2024 11:59:15 +0000 (UTC)
+Received: from dfw.source.kernel.org (dfw.source.kernel.org
+ [IPv6:2604:1380:4641:c500::1])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 717B7605B3
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 25 Jan 2024 11:59:15 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 717B7605B3
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by dfw.source.kernel.org (Postfix) with ESMTP id 12EB86216A;
- Thu, 25 Jan 2024 11:59:01 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 806E8C433C7;
- Thu, 25 Jan 2024 11:58:58 +0000 (UTC)
-Date: Thu, 25 Jan 2024 11:58:56 +0000
+ by dfw.source.kernel.org (Postfix) with ESMTP id 99FD6620DC;
+ Thu, 25 Jan 2024 11:59:14 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 01821C433F1;
+ Thu, 25 Jan 2024 11:59:11 +0000 (UTC)
+Date: Thu, 25 Jan 2024 11:59:09 +0000
 From: Simon Horman <horms@kernel.org>
 To: Kurt Kanzenbach <kurt@linutronix.de>
-Message-ID: <20240125115856.GJ217708@kernel.org>
+Message-ID: <20240125115909.GK217708@kernel.org>
 References: <20240124085532.58841-1-kurt@linutronix.de>
- <20240124085532.58841-2-kurt@linutronix.de>
+ <20240124085532.58841-3-kurt@linutronix.de>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20240124085532.58841-2-kurt@linutronix.de>
+In-Reply-To: <20240124085532.58841-3-kurt@linutronix.de>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1706183940;
- bh=Kz4bxwlKhxXeto10pI+42QcBi68jNaKp652CDggy7Ko=;
+ d=kernel.org; s=k20201202; t=1706183954;
+ bh=sy9jnTnu4ekf4cfjw+OBOmGCKjYTwRsNcuaX3R73FmY=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=S5zD5MhBkomlMDB4dGU4smJeVgfWJRSu/gi9MQj97Z5RmWDAwc1hcnWK8ESEZWhKB
- gq1iFCzeniTisw06S62fdIaUxVpeFVBC1yn9FsxnZwZ9yU4I5SuaLLze8TKYUqiuTO
- 6lxyu4Xiejfl3r4POI35NRq4qyKhHOsN3tmdRakwYE6dItoG4EH64R+xAR1QRWJUgC
- 1NQBL9l/tGo7Uz2SeXWpDAgK+T0Zji7S5kTDjIvSlFbty1lf9XHks9m50fz7S0OM/9
- mY4/orjpaBAsJEuJxRC2vIYSczqsoedRRgIpgMdifVgt/TtkXVB7Gj1xgLDi8l2LCj
- lsci9IwMarZ+Q==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ b=Z/rv7L1Apr8g+uThWhZEKLyRt2GAuF/PcPSkIfAGWW2iBBScM51/2blHe7ofrnDuf
+ MGLwfH4SSvWcjaczDA833/I/kzmiO7XD1TjlJDK6uHTX0Y6GDDILW5qOCRe05FaJXe
+ JPjM2DjXBWtAsgSqkrZnJ3QD38ga732MLPVUSdOXlWi5id6aNapzgR8SSIlC+bFiWj
+ JYOET5vYHIedEP/RED6XhcTRlicUowSNaBTkN3Rx3PfzcxXrisBtcCOWRfWG3Zbt2r
+ nfzwbhSuFRcsYOLeSPHP9bYc4uIqfG/4FTin4Aae+DjaDgEvBWy5aNMn1FladJ5bHO
+ Kr4M6MrIDnvdA==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=S5zD5MhB
-Subject: Re: [Intel-wired-lan] [PATCH v2 iwl-next 1/3] igc: Use reverse xmas
- tree
+ header.a=rsa-sha256 header.s=k20201202 header.b=Z/rv7L1A
+Subject: Re: [Intel-wired-lan] [PATCH v2 iwl-next 2/3] igc: Use netdev
+ printing functions for flex filters
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,8 +99,9 @@ Cc: Vinicius Costa Gomes <vinicius.gomes@intel.com>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed, Jan 24, 2024 at 09:55:30AM +0100, Kurt Kanzenbach wrote:
-> Use reverse xmas tree coding style convention in igc_add_flex_filter().
+On Wed, Jan 24, 2024 at 09:55:31AM +0100, Kurt Kanzenbach wrote:
+> All igc filter implementations use netdev_*() printing functions except for
+> the flex filters. Unify it.
 > 
 > Signed-off-by: Kurt Kanzenbach <kurt@linutronix.de>
 > Acked-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
