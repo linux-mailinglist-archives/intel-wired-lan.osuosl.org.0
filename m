@@ -1,101 +1,101 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5CD4583D2E2
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 26 Jan 2024 04:14:06 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7293083D31A
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 26 Jan 2024 04:55:43 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id A72EA42E84;
-	Fri, 26 Jan 2024 03:14:04 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A72EA42E84
+	by smtp3.osuosl.org (Postfix) with ESMTP id A302E61B38;
+	Fri, 26 Jan 2024 03:55:39 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A302E61B38
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1706238844;
-	bh=EpxMCECa24DVULXh1Faijfwc0unMyRWhKf+jeqyDsDI=;
+	s=default; t=1706241339;
+	bh=p+Q50Unqtewy7ypSZLUUF993WEutxtAN1ev6lY+kbpA=;
 	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
 	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=p5grUY9o6m05VI2xmhZ0+RDmeNSXuEvhfRVv8ygmDC1gTjUSHpYVfTg9zSmxBsNm0
-	 r0ACknNEVCX/EyI8lOSnDUXji2wPToOzrEk/5YaVeGNVlepMNjA9fjtzCqynENruo7
-	 QbjBENo6QV6JdMDbpV95XcKKVLPB/O3gY8MxR6mqTFkCZKce5DLFpjKmmmOOCn9jJf
-	 Z9QW/VZdI53UnIAd7ZslQMpdPvmLguCWj0x0g+dcBqCOu+HPPpxrC3KP0sP52kIglG
-	 NfzXf/8dlVXvHx+c0Zuswg3P9kjsiiJ72AT9ccRe1xFhqwonKXb61WtYO2X2nxd3wB
-	 7s/tGXaNN3eXA==
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id gZlvFpoJmW6G; Fri, 26 Jan 2024 03:14:03 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 180F042E6D;
-	Fri, 26 Jan 2024 03:14:03 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 180F042E6D
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 35DEB1BF2FC
- for <intel-wired-lan@lists.osuosl.org>; Fri, 26 Jan 2024 03:13:58 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 170A3610A8
- for <intel-wired-lan@lists.osuosl.org>; Fri, 26 Jan 2024 03:13:58 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 170A3610A8
+	b=SEHnaywYEq9a8vVC8MjJF3tt6/KF7UYHh5Hb+fxPrEMciDm43mkeDm631TOF6bmLZ
+	 EYirMkcEbReugYtT5H3c4pWwWfeLQhJxBFDd+N4CqzjQQuIb/nIY9z/W1+ZsjDmCEl
+	 Z9t3x8atLq2J0b+5C+pYv3/o4Ju6akYHihnKzwmlN9MwSZURssUEjJSxsdtB7i39OD
+	 pGolUknzLvfOBY1+XjmgTtBpp9TT+3R80i9FEbuxMGR4LHhbLrvca+FSQH3XmpVu4g
+	 FusRcmjpr3nb4SWUxFL7rr56LGEBcnvKaLJ9KgUykK64seZqRB/qPAj+rCXISug/32
+	 f4ehhI7d4FOyQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Q07k5Dks9ZNs for <intel-wired-lan@lists.osuosl.org>;
- Fri, 26 Jan 2024 03:13:57 +0000 (UTC)
-Received: from mail-oo1-xc33.google.com (mail-oo1-xc33.google.com
- [IPv6:2607:f8b0:4864:20::c33])
- by smtp3.osuosl.org (Postfix) with ESMTPS id D122A60F41
- for <intel-wired-lan@lists.osuosl.org>; Fri, 26 Jan 2024 03:13:56 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D122A60F41
-Received: by mail-oo1-xc33.google.com with SMTP id
- 006d021491bc7-598bcccca79so4167501eaf.2
- for <intel-wired-lan@lists.osuosl.org>; Thu, 25 Jan 2024 19:13:56 -0800 (PST)
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id RA9RxnhDuaXM; Fri, 26 Jan 2024 03:55:38 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp3.osuosl.org (Postfix) with ESMTP id F20AC61B1F;
+	Fri, 26 Jan 2024 03:55:37 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org F20AC61B1F
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 17CA31BF2FC
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 26 Jan 2024 03:55:33 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp1.osuosl.org (Postfix) with ESMTP id EFE358533C
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 26 Jan 2024 03:55:32 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org EFE358533C
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id lfDIcarahrBx for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 26 Jan 2024 03:55:31 +0000 (UTC)
+Received: from mail-pj1-x102b.google.com (mail-pj1-x102b.google.com
+ [IPv6:2607:f8b0:4864:20::102b])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id C10478533B
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 26 Jan 2024 03:55:31 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org C10478533B
+Received: by mail-pj1-x102b.google.com with SMTP id
+ 98e67ed59e1d1-2906dffd8ddso4864599a91.3
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 25 Jan 2024 19:55:31 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1706238836; x=1706843636;
+ d=1e100.net; s=20230601; t=1706241331; x=1706846131;
  h=content-transfer-encoding:mime-version:message-id:date:subject:cc
  :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=EpxMCECa24DVULXh1Faijfwc0unMyRWhKf+jeqyDsDI=;
- b=L6oo90fKc14l/tHAjVQtJSLnxWMva7jIhW2Dm7P7sJMJKE5K7t+YZorIQL20EDPiGF
- 5+7SB/RGv82FVSbQSN3OIuB2YHW2c0whBJg7gfYJ+GygPGWHlZNFdjCxXYH4vwXDEgY0
- kY3VVtOuldpSNQ73DxRY4s1Gc1RHTOLSy5Ced576NmJB8Yjkoldyy7fXOifMCkmx2yoU
- BzeSY4UoPY8WrhP+eKtims1awp07newet8MMormQf5ZlB/rXx1BFWn0n3kuDUCOj5hCJ
- AnHDhM5+nlpSdpB5MWgSdnSPQLgUgkSqXmdwnEAXI57JJEHgugoo8FKSObce1UUFc/9M
- IrDQ==
-X-Gm-Message-State: AOJu0YxhvyLivL55UBOe3vNUiLxjdZWxloEIt0R9IJfX8S0QTeBy5D4f
- lHMI9KuNh5i/ylDX/qjmH51yN0uiIYAMR5ZpaKC32ePwtQy5gFS2
-X-Google-Smtp-Source: AGHT+IEbGrC9ltdBZwrdCuLSE8x6QbApxdPoKEnvqPhZnH602tJ+RQGHdrY1W/8+gJysazJyp37l6g==
-X-Received: by 2002:a05:6358:923:b0:176:58ed:212 with SMTP id
- r35-20020a056358092300b0017658ed0212mr851028rwi.4.1706238835384; 
- Thu, 25 Jan 2024 19:13:55 -0800 (PST)
-Received: from ocxma-dut.. ([153.126.233.62]) by smtp.gmail.com with ESMTPSA id
- t8-20020a17090a024800b00293d54a85f5sm286469pje.32.2024.01.25.19.13.51
+ bh=p+Q50Unqtewy7ypSZLUUF993WEutxtAN1ev6lY+kbpA=;
+ b=HAdGGhd4uE46tu138j0jPifkMeUgJ8LknQTtXbGnSbDiuE23amW2ZpSCO0eHOIeUE1
+ NWyuSqK92d3yIbHMKhhhLEvje8CWNUPc05TTbHTOYbAuv6cIRkLUmwebupb4Qss1NnrY
+ rU6sjSYa4773xx7EfWr1CUpHkkrzPukX6/tXacvGWamAoJe2itWFOfdOd8aWTieR8ZUX
+ KfGtv8LOJUce0jabMhEEBINgAyEYZSm86I47MDYN5945g+aWGbDHJlKhMulV5Xcxy3IP
+ YjRtBiBnv05nf80l+M4Pxl/zhELZSYKK8h4pMhMSkGGC5ZHtjsjsBTZpiv/7mlqxgZWK
+ bCbQ==
+X-Gm-Message-State: AOJu0YzstbwLgD+oe5KlyJMyxYta7zqmEoo6EvLIP1UBOQ15uNjm0lpO
+ 2xzT1zNQBND1dMbBMPRDMUYISCNPkI/49kNtIvvmxTMn6llUPbET
+X-Google-Smtp-Source: AGHT+IH+JRQ64P/+GFe8prxxHVSrMM/ph9ImznDhfAaSoEiuNlEyj+Q0WrWf9nWWGfv2lYBbmPEtcg==
+X-Received: by 2002:a17:903:124f:b0:1d7:5943:21b8 with SMTP id
+ u15-20020a170903124f00b001d7594321b8mr982271plh.16.1706241330935; 
+ Thu, 25 Jan 2024 19:55:30 -0800 (PST)
+Received: from ocxma-dut.. ([153.126.233.61]) by smtp.gmail.com with ESMTPSA id
+ t6-20020a170902bc4600b001d704905e9fsm238888plz.259.2024.01.25.19.55.27
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 25 Jan 2024 19:13:54 -0800 (PST)
+ Thu, 25 Jan 2024 19:55:30 -0800 (PST)
 From: Takeru Hayasaka <hayatake396@gmail.com>
 To: Jesse Brandeburg <jesse.brandeburg@intel.com>,
  Tony Nguyen <anthony.l.nguyen@intel.com>,
  "David S. Miller" <davem@davemloft.net>,
  Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
  Paolo Abeni <pabeni@redhat.com>, Jonathan Corbet <corbet@lwn.net>
-Date: Fri, 26 Jan 2024 03:13:42 +0000
-Message-Id: <20240126031342.770766-1-hayatake396@gmail.com>
+Date: Fri, 26 Jan 2024 03:55:22 +0000
+Message-Id: <20240126035522.857882-1-hayatake396@gmail.com>
 X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1706238836; x=1706843636; darn=lists.osuosl.org;
+ d=gmail.com; s=20230601; t=1706241331; x=1706846131; darn=lists.osuosl.org;
  h=content-transfer-encoding:mime-version:message-id:date:subject:cc
  :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=EpxMCECa24DVULXh1Faijfwc0unMyRWhKf+jeqyDsDI=;
- b=J0/EDiCHC3iyJqj2l4UU+F60tKMMpRxtQPXvTP2pB71pb6KcFJvx/utNzEoG1mMWAs
- zqkUT75Qw+gDQi642mkp/WJS44qE1ST1OSDF8qmN/hJC/e4qtG3ZxioHDgan0G8vZ93N
- 6Vlq3TN8pjoadkd2PlyxCGF7WMOEoIgd+MQRcPe12v+RonIiuSRWh3zk55yZtLpDvu8t
- r87F79L2mdupwt9bzJwesEi9QBzV0XY3hIjwk+s0lrFwnMBnPh9tBC0ZNWRiAiiWxo7V
- FRMvvAb48V03IubcOOsjjQHBQzmlSnyD9SS4mO3aws684vT27d5NcTBDnqL2galZ2Iex
- mzOA==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ bh=p+Q50Unqtewy7ypSZLUUF993WEutxtAN1ev6lY+kbpA=;
+ b=TPaOXTejtAlxRKe3ATmKNh+0N/S3fSb0AwHy9TTV8U9+HW+piGVEBFgD+vVB3wDdHH
+ OPCuO+tecQ3QTmPEyduezX93tjZs23R0HPqY2tO5GYV1NP8t0HzrNK5JfkAcd6R8G2s5
+ j45gi4HhoRT0RDsz3VhkJkmQK/x7XT9ps++oGEMUOy10wueqMsesvtKTghAgIvfGfxCm
+ sFLGglM4dwkLGlAbaxl7QLNc1l3wJnXJueW9i4rUqbI548c7eM4XeVgwQ1sPst6PGtLC
+ WG7cAY0Nie1vqmtrcG/RPybQBpyOPPDYgNSuIM9SnlTu2XIqxOiVEw1nd3clZYxJZxmq
+ eLTg==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
- header.a=rsa-sha256 header.s=20230601 header.b=J0/EDiCH
+ header.a=rsa-sha256 header.s=20230601 header.b=TPaOXTej
 Subject: [Intel-wired-lan] [PATCH net-next v3] ethtool: ice: Support for RSS
  settings to GTP from ethtool
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -150,16 +150,18 @@ This case can be solved by using this patch
 
 Signed-off-by: Takeru Hayasaka <hayatake396@gmail.com>
 ---
-Sorry for the delay; I've been swamped with other work and got behind. 
+Sorry for the delay.
+I've been swamped with other work and fell behind. 
 Since Harald-san has been supportive of the basic structure in the previous patch review,
-I've kept it largely unchanged. 
+I've kept it largely unchanged but added some comments and documentation. 
 I would appreciate it if you could review it again.
+
  .../device_drivers/ethernet/intel/ice.rst     | 23 ++++--
  drivers/net/ethernet/intel/ice/ice_ethtool.c  | 74 +++++++++++++++++++
- drivers/net/ethernet/intel/ice/ice_flow.h     | 14 ++++
+ drivers/net/ethernet/intel/ice/ice_flow.h     | 21 ++++++
  drivers/net/ethernet/intel/ice/ice_lib.c      | 37 ++++++++++
  include/uapi/linux/ethtool.h                  | 35 +++++++++
- 5 files changed, 178 insertions(+), 5 deletions(-)
+ 5 files changed, 185 insertions(+), 5 deletions(-)
 
 diff --git a/Documentation/networking/device_drivers/ethernet/intel/ice.rst b/Documentation/networking/device_drivers/ethernet/intel/ice.rst
 index 5038e54586af..6bc1c6f10617 100644
@@ -321,7 +323,7 @@ index a19b06f18e40..eb5f490c6127 100644
  
  /**
 diff --git a/drivers/net/ethernet/intel/ice/ice_flow.h b/drivers/net/ethernet/intel/ice/ice_flow.h
-index ff82915ab497..6aed5cb744a4 100644
+index ff82915ab497..d5ba2ef0343a 100644
 --- a/drivers/net/ethernet/intel/ice/ice_flow.h
 +++ b/drivers/net/ethernet/intel/ice/ice_flow.h
 @@ -66,6 +66,20 @@
@@ -345,6 +347,20 @@ index ff82915ab497..6aed5cb744a4 100644
  #define ICE_FLOW_HASH_PPPOE_SESS_ID \
  	(BIT_ULL(ICE_FLOW_FIELD_IDX_PPPOE_SESS_ID))
  
+@@ -242,6 +256,13 @@ enum ice_flow_field {
+ #define ICE_FLOW_HASH_FLD_SCTP_DST_PORT	\
+ 	BIT_ULL(ICE_FLOW_FIELD_IDX_SCTP_DST_PORT)
+ 
++#define ICE_FLOW_HASH_FLD_GTPC_TEID	BIT_ULL(ICE_FLOW_FIELD_IDX_GTPC_TEID)
++#define ICE_FLOW_HASH_FLD_GTPU_IP_TEID BIT_ULL(ICE_FLOW_FIELD_IDX_GTPU_IP_TEID)
++#define ICE_FLOW_HASH_FLD_GTPU_EH_TEID BIT_ULL(ICE_FLOW_FIELD_IDX_GTPU_EH_TEID)
++#define ICE_FLOW_HASH_FLD_GTPU_EH_QFI BIT_ULL(ICE_FLOW_FIELD_IDX_GTPU_EH_QFI)
++#define ICE_FLOW_HASH_FLD_GTPU_UP_TEID BIT_ULL(ICE_FLOW_FIELD_IDX_GTPU_UP_TEID)
++#define ICE_FLOW_HASH_FLD_GTPU_DWN_TEID BIT_ULL(ICE_FLOW_FIELD_IDX_GTPU_DWN_TEID)
++
+ /* Flow headers and fields for AVF support */
+ enum ice_flow_avf_hdr_field {
+ 	/* Values 0 - 28 are reserved for future use */
 diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
 index 9be724291ef8..72f737c6c9ba 100644
 --- a/drivers/net/ethernet/intel/ice/ice_lib.c
