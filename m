@@ -2,100 +2,100 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id AE06183D37B
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 26 Jan 2024 05:37:33 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6C66383D3CD
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 26 Jan 2024 05:52:40 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 7DF1E61572;
-	Fri, 26 Jan 2024 04:37:31 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7DF1E61572
+	by smtp3.osuosl.org (Postfix) with ESMTP id F06B26F545;
+	Fri, 26 Jan 2024 04:52:38 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org F06B26F545
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1706243851;
-	bh=9mYLeAukR0u3gm3qWYHyVWVtKS5fKPO237dC7PgFytU=;
+	s=default; t=1706244759;
+	bh=P26+gqwDuoF2xBBQQLZk1oY/V9GgXjV+6KzSOls+agk=;
 	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
 	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=X+W3igPSCdjhuMYKhwtWCLH+wMv5SLbbJAAXOZzf+DV8ELewHb5tj1O1mDd5gqUJA
-	 XhveBZ0XkaBSFyu3op2gCgb1alG1DYD9Tz3SHObt96JcSJf7DlFXV+IkBlHiI1B2xD
-	 S02c13nLAGqMHxMLofposhR/RCKK5EdUgZ5ywORq3X7DFNuiaTipkeGgpMKeZZ+zsa
-	 ev4VFXeArbPbx4WrDNONvaXbfRTncteTdndWK6V/GgYkG4pST8ZwG7GK2Z7fxWCG2m
-	 EX61VdAFWrNlUjvSZrHPV2c8X9qCsymG7e2hbPJgc7EtOc0jg4ElWihP/ih5PggCNo
-	 HouOCqzhV1mSA==
+	b=tgXWNop+I/IZxCaPO6IJsiOPHv5zDI/I7cPAdT51iXghQdQE1iRwU1PZsep8eWHbF
+	 M8f8bScTj2bonDV01IumrUF118Z+uw8f0MOXpHwfOKKxms8ZtD52fAqOV9juZkG0xV
+	 OtNS2/ZInvaI21n7swbkQDO8/dI+D847V5gvtahpGtMY3Xio+4wZ+QMsbt0fTQWb3S
+	 epdqZQRXk/dUakyGdzO+y5Fioaw+rLIULtSvKB6CheH0t/atw+EupuDYva8CcsSg22
+	 cplxPfEi5Q+LBiOSgjT9x61GTP/G0rZN6Fh5Ki9lNstEKCZHIXFEVO71ZR1PvNQKe3
+	 LvTT/jxwciQNg==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id tj7Qf2tOLwZ4; Fri, 26 Jan 2024 04:37:30 +0000 (UTC)
+	with ESMTP id pACxKLchDW6g; Fri, 26 Jan 2024 04:52:37 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id E84B361555;
-	Fri, 26 Jan 2024 04:37:29 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org E84B361555
+	by smtp3.osuosl.org (Postfix) with ESMTP id 3C43761AB2;
+	Fri, 26 Jan 2024 04:52:37 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3C43761AB2
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 00E081BF361
- for <intel-wired-lan@lists.osuosl.org>; Fri, 26 Jan 2024 04:37:24 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 44E961BF361
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 26 Jan 2024 04:52:31 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id BCF3842CED
- for <intel-wired-lan@lists.osuosl.org>; Fri, 26 Jan 2024 04:37:24 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org BCF3842CED
+ by smtp3.osuosl.org (Postfix) with ESMTP id 292BE61AB2
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 26 Jan 2024 04:52:31 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 292BE61AB2
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id U-FZuw_GbFpx for <intel-wired-lan@lists.osuosl.org>;
- Fri, 26 Jan 2024 04:37:23 +0000 (UTC)
-Received: from mail-qk1-x72b.google.com (mail-qk1-x72b.google.com
- [IPv6:2607:f8b0:4864:20::72b])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 3CF2D42CDA
- for <intel-wired-lan@lists.osuosl.org>; Fri, 26 Jan 2024 04:37:23 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3CF2D42CDA
-Received: by mail-qk1-x72b.google.com with SMTP id
- af79cd13be357-783cbc38a78so34085a.1
- for <intel-wired-lan@lists.osuosl.org>; Thu, 25 Jan 2024 20:37:23 -0800 (PST)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id wL4NlazUEPDu for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 26 Jan 2024 04:52:30 +0000 (UTC)
+Received: from mail-pl1-x62d.google.com (mail-pl1-x62d.google.com
+ [IPv6:2607:f8b0:4864:20::62d])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id E37FB61614
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 26 Jan 2024 04:52:29 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org E37FB61614
+Received: by mail-pl1-x62d.google.com with SMTP id
+ d9443c01a7336-1d76671e5a4so35715265ad.0
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 25 Jan 2024 20:52:29 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1706243842; x=1706848642;
+ d=1e100.net; s=20230601; t=1706244749; x=1706849549;
  h=content-transfer-encoding:mime-version:message-id:date:subject:cc
  :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=9mYLeAukR0u3gm3qWYHyVWVtKS5fKPO237dC7PgFytU=;
- b=IBG/F8FpqgRm79o0ieK3Vk5O4OomG/z0s1B37n92JJhs2xNoNy0g/Am91pIa631tJE
- WETath7Gd2Wo7gQqgKFh5/IC7jDYd1onUQSz/60GmJbUcePb/Zy/FpUdeBHNURKkHnx/
- J7jwJAIrKeG21W5uKgPc+QG+q/0G04d5axqphF2CVODUbs0E4fd4v7mB8KGN/8uf1Y4g
- uqEkynweSoFO95T7Y0hHvfG8f16miyRFRM6D8cLh5dgU9K8Q5KNt/Id0YvHiH8mzaiPm
- A0/0rIvC3xiu+/Cgf1S+Sujswn+Y+9I1b6JE3nQlmPKpsnigElxFVN3DWcFhLfCyCJGc
- R5UQ==
-X-Gm-Message-State: AOJu0Yza5HGm52ba4AY4Ra8xuPibLXSgU2RC3vPC940mse59BUKfX2zW
- 9Aza4qqkCCVW4vZv3eMxeppe08Xalx+ge54F9VDKkPCDS8s0jrt3
-X-Google-Smtp-Source: AGHT+IE3WXiGBL87J9d913qF3DcXiT+DX/rqtePPHu6phSTwXrgRIGzujnddTuj2/dC4WoVVANi/Qw==
-X-Received: by 2002:a05:620a:16c5:b0:783:cdca:3bf5 with SMTP id
- a5-20020a05620a16c500b00783cdca3bf5mr465987qkn.98.1706243841897; 
- Thu, 25 Jan 2024 20:37:21 -0800 (PST)
-Received: from ocxma-dut.. ([153.126.233.62]) by smtp.gmail.com with ESMTPSA id
- pt4-20020a17090b3d0400b002943336a1easm99663pjb.12.2024.01.25.20.37.18
+ bh=P26+gqwDuoF2xBBQQLZk1oY/V9GgXjV+6KzSOls+agk=;
+ b=iX1z9IGq/TlBKi3as9cRbhH7c1IHeflZHY2rS4uOBKQlwlu9cv9AV7IfjV2rnnifb+
+ 15Jw8E6dWva0XJHDfvImIKqvfCiLvNk8Ow71dc0Jf935vEQJ8TEE0SeorziLyo66t3F5
+ XACwvQgcRaCm2eDKjH8bWjfglZmoDgsTo38q2yGJ0mkDuJsqYCvQBI/59nKDOQEeEwIP
+ GFgVHA6iD2CKGcPVSXOzcHFZlVSXptGMGxrX4da+HWlcqIzM2rRngW9Wzla6Jq5N5jyB
+ 3/JZ8kuEMNAB2L/oW+7u+ALuzg6shC9PisEgX8lofYu7UNdUQNRXiT1NNvqqm+VqyID+
+ sihQ==
+X-Gm-Message-State: AOJu0Yw83eOCOjBaEmXS/N7xpZi0W3q325m7ed+Qr92/7RofgwuE5zLU
+ ubEeSA4HSSqYwP6kMoFaCYrhqOk/tbZlWUZ+rl/3G83sgCjF73j/
+X-Google-Smtp-Source: AGHT+IE9jwdXNArL6NHF5udFDsw+h2e7CQ9gVUoLcoq+TSLGeYsdGuNhweDxzbMioqJFf5cjv/V0ag==
+X-Received: by 2002:a17:903:40d0:b0:1d7:79c5:8f5a with SMTP id
+ t16-20020a17090340d000b001d779c58f5amr986229pld.134.1706244749125; 
+ Thu, 25 Jan 2024 20:52:29 -0800 (PST)
+Received: from ocxma-dut.. ([153.126.233.61]) by smtp.gmail.com with ESMTPSA id
+ v10-20020a170902d08a00b001d72f145ebdsm307219plv.35.2024.01.25.20.52.25
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 25 Jan 2024 20:37:21 -0800 (PST)
+ Thu, 25 Jan 2024 20:52:28 -0800 (PST)
 From: Takeru Hayasaka <hayatake396@gmail.com>
 To: Jesse Brandeburg <jesse.brandeburg@intel.com>,
  Tony Nguyen <anthony.l.nguyen@intel.com>,
  "David S. Miller" <davem@davemloft.net>,
  Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
  Paolo Abeni <pabeni@redhat.com>, Jonathan Corbet <corbet@lwn.net>
-Date: Fri, 26 Jan 2024 04:37:12 +0000
-Message-Id: <20240126043712.860424-1-hayatake396@gmail.com>
+Date: Fri, 26 Jan 2024 04:52:20 +0000
+Message-Id: <20240126045220.861125-1-hayatake396@gmail.com>
 X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1706243842; x=1706848642; darn=lists.osuosl.org;
+ d=gmail.com; s=20230601; t=1706244749; x=1706849549; darn=lists.osuosl.org;
  h=content-transfer-encoding:mime-version:message-id:date:subject:cc
  :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=9mYLeAukR0u3gm3qWYHyVWVtKS5fKPO237dC7PgFytU=;
- b=PQ3Y5wOHYKRz9PN8HWtlFuvJ3uptUiOwHqqGyMrEdOxWAo6GchLcVMktfORSyoJyXg
- vy5TkQeJ9mmzThX1jCDha8zmNgpPDbE6caLC/DyPJUczhEm3NMl/IFSLGZFpTmfqoPFF
- mUV0rkTSxGJ2V0pBvgOb0QW4Uidpwa9jQUcE/GHuBkALerhCJXAS48zvYX2Ki+41Ce3d
- TcJch/qfbMawi7vbMf9oBuP4ME2kKVdL3tYvFJYr9+TH0NZ5WNY11Y5iSeQI0igf/Sds
- lTpkTka7fRUzumKYfxahI/M5KEBH8Xn3HrJYTIeNev76M7UxDGFyLS12zbNaFMxAnvJY
- XNtw==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ bh=P26+gqwDuoF2xBBQQLZk1oY/V9GgXjV+6KzSOls+agk=;
+ b=SrNE3fh/LCG+FQerHVtiYsso9Zb3TDEsK/e4YLUDnsZJBQc39WdA2E3sZKyFJ1dG4H
+ hRrL3GI2PU/IM2+5HBiN/2LbR068XyPpZnVbwtybsNccGVrnza2V0QRSs1sD4Mz0y3hL
+ mqnDkP+C1SmrLlqEBxxvhv1DuIfkd4VK3wr308WSuU5RNxxfBAknkymy7+MdbLO8Ax8j
+ 2WkfaAZh+LwtjKtqsp1hgkHe5p3LWCoihLvG1Y2f5/R4Wg2hPXyR9a40QKj5WbPLnBb+
+ ATzX6zOPcIvWH6qyfREJoPFLF80auXkLLO2Zq5Q9SLroAQW2gkrMRfYZkLg++CoKoBn9
+ LwnA==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
- header.a=rsa-sha256 header.s=20230601 header.b=PQ3Y5wOH
+ header.a=rsa-sha256 header.s=20230601 header.b=SrNE3fh/
 Subject: [Intel-wired-lan] [PATCH net-next v3] ethtool: ice: Support for RSS
  settings to GTP from ethtool
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -126,12 +126,12 @@ In addition to gtpu(4|6), we now support gtpc(4|6),gtpc(4|6)t,gtpu(4|6)e,
 gtpu(4|6)u, and gtpu(4|6)d.
 
 gtpc(4|6): Used for GTP-C in IPv4 and IPv6, where the GTP header format
-does not include a TEID (Tunnel Endpoint Identifier).
+does not include a TEID.
 gtpc(4|6)t: Used for GTP-C in IPv4 and IPv6, with a GTP header format
 that includes a TEID.
 gtpu(4|6): Used for GTP-U in both IPv4 and IPv6 scenarios.
 gtpu(4|6)e: Used for GTP-U with extended headers in both IPv4 and IPv6.
-gtpu(4|6)u: Used when the PSC (Packet Service Charge) in
+gtpu(4|6)u: Used when the PSC (PDU session container) in
 the GTP-U extended header includes Uplink, applicable to both IPv4 and IPv6.
 gtpu(4|6)d: Used when the PSC in the GTP-U extended header includes
 Downlink, for both IPv4 and IPv6.
