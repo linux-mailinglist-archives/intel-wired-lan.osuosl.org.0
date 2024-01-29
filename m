@@ -1,81 +1,88 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5F4DB840348
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 29 Jan 2024 11:56:04 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id F272D840513
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 29 Jan 2024 13:34:45 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 7ED6D830C1;
-	Mon, 29 Jan 2024 10:56:02 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 7ED6D830C1
+	by smtp4.osuosl.org (Postfix) with ESMTP id 0EDA4410CA;
+	Mon, 29 Jan 2024 12:34:43 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0EDA4410CA
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1706525762;
-	bh=zpNheXLAVFMDhEM4sxBkmZejlD+zFADXBILP2IoHG1U=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=whc6wfk6yL6qTLoM7H+kFl/COf85INvFc+IeOIpxB+M/287FuDJKmQELVgjbqJWbl
-	 m8eX2dXA6CpI+qh+/EgOF7xEukQ3Nx9unCSI1q+4GMfOrmKxAVwbyQEuWJQBU8nAX5
-	 9HMcrRTfZFAdGd5O+giU161Ja4XfARSVbTgsgZLwhmVuVHXZfv+9nvFffHNxN/DHPI
-	 FFOf8wpIEMSaTG86il9xD0yhud36m4hVujbKafc/vSAgd3ScwoT53w7vd8/RaKxd1D
-	 8H3AtoS9bRI516mVoNOp1TMu8nGvTzAlKpuyLEMLz54+t4MqJ7nl93HaQJLZSOgPye
-	 Qc40v6iWq+Qtw==
+	s=default; t=1706531683;
+	bh=ocdUwB1YiXB+L4dSblbb0uvlItxrZJ5y2j5HpSbTmWU=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=0e3S9MROT7vhvmAohXXjLutwGesLJp4fzRehjOT8WfvT9u4NjinDO8/J69lYpil6U
+	 /Vful2tDUOpu6XxAw7/89hFULXRbV8OQih9JR/5+rBH5ZagOfSNMxXCIOelm4KI23y
+	 sHTAqO37UyXMoBU65Lo/nBpUuLmHIVVnqWqKw5af9v/oc//G8YrLNa8wBjeAOVpsv9
+	 jEwvZZWO5oT/6k/BnMtKcvsYnsjo3gC8a0LMvVdNSXJx9GpQ6rao9DqRHkaFkzqRCH
+	 n9c//haZuNEn5LDLkhbd6N2OK6LL+pQoHqWdNgMZx5yQhKb+JRlH/ubs+BXiL9+vPH
+	 ZP7TLO6w13zkw==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id DqmWrheBzf_L; Mon, 29 Jan 2024 10:56:02 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id P_4VegnwJl95; Mon, 29 Jan 2024 12:34:42 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id A241082FE4;
-	Mon, 29 Jan 2024 10:56:01 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org A241082FE4
+	by smtp4.osuosl.org (Postfix) with ESMTP id 2F8BF410C6;
+	Mon, 29 Jan 2024 12:34:41 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2F8BF410C6
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id A651B1BF3EF
- for <intel-wired-lan@lists.osuosl.org>; Mon, 29 Jan 2024 10:55:55 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 5FEA11BF33D
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 29 Jan 2024 12:34:35 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 88B12400DD
- for <intel-wired-lan@lists.osuosl.org>; Mon, 29 Jan 2024 10:55:55 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 88B12400DD
+ by smtp3.osuosl.org (Postfix) with ESMTP id 4508460FA2
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 29 Jan 2024 12:34:35 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 4508460FA2
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id SIxleO_teEL4 for <intel-wired-lan@lists.osuosl.org>;
- Mon, 29 Jan 2024 10:55:51 +0000 (UTC)
-Received: from sin.source.kernel.org (sin.source.kernel.org [145.40.73.55])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 67031400D8
- for <intel-wired-lan@lists.osuosl.org>; Mon, 29 Jan 2024 10:55:51 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 67031400D8
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by sin.source.kernel.org (Postfix) with ESMTP id 07EB5CE10AC;
- Mon, 29 Jan 2024 10:55:47 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CB8EDC433C7;
- Mon, 29 Jan 2024 10:55:43 +0000 (UTC)
-Date: Mon, 29 Jan 2024 10:55:41 +0000
-From: Simon Horman <horms@kernel.org>
-To: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-Message-ID: <20240129105541.GH401354@kernel.org>
-References: <20240125125314.852914-1-michal.swiatkowski@linux.intel.com>
- <20240125125314.852914-5-michal.swiatkowski@linux.intel.com>
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id rfhJF8a4bMoT for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 29 Jan 2024 12:34:33 +0000 (UTC)
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.13])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 6E84860F7E
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 29 Jan 2024 12:34:33 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6E84860F7E
+X-IronPort-AV: E=McAfee;i="6600,9927,10967"; a="10049745"
+X-IronPort-AV: E=Sophos;i="6.05,227,1701158400"; d="scan'208";a="10049745"
+Received: from orsmga004.jf.intel.com ([10.7.209.38])
+ by orvoesa105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 29 Jan 2024 04:34:31 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10967"; a="911047393"
+X-IronPort-AV: E=Sophos;i="6.05,227,1701158400"; d="scan'208";a="911047393"
+Received: from irvmail002.ir.intel.com ([10.43.11.120])
+ by orsmga004.jf.intel.com with ESMTP; 29 Jan 2024 04:34:27 -0800
+Received: from rozewie.igk.intel.com (unknown [10.211.8.69])
+ by irvmail002.ir.intel.com (Postfix) with ESMTP id 91B8A27BA7;
+ Mon, 29 Jan 2024 12:34:25 +0000 (GMT)
+From: Wojciech Drewek <wojciech.drewek@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Mon, 29 Jan 2024 13:32:31 +0100
+Message-Id: <20240129123231.31136-1-wojciech.drewek@intel.com>
+X-Mailer: git-send-email 2.40.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20240125125314.852914-5-michal.swiatkowski@linux.intel.com>
+Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1706525745;
- bh=8T8pTki2cBRkv1Ls62f1/Lkua7FBs03HkkD51F+WL44=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=Kq8GLyxKYAx0vbFdAxXiBvLLvv+4wjlAAFsWEq1lpXaLtv8h9taxNzg3Q2F4vVlUd
- SyppyWK51uRy3vRSATXM0pusJ5OXG1bWRQioQGqWwcoFd+ruJZ1rE0EiehSLIVaD4x
- eY96AaWo7poe8tTtabrLrJBQrK2OoNecSZERG1ba2AxPiml8w0/9/dNSF7pb4eQBRq
- v5c4oK3pSNFfZI6Ge8iasRetyT6rMqb7qEc9NbgnbSnjL3u0Ifmq6yYeVzRFRol+vF
- EsmW/fHaqHCZYlqlx07cW73kO9wEGanl4ioOYc3X7uyzG0WSyRLNRblzN2VVn1znz/
- JsHYIh24m7Csg==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=Kq8GLyxK
-Subject: Re: [Intel-wired-lan] [iwl-next v1 4/8] ice: control default Tx
- rule in lag
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1706531673; x=1738067673;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=Z+lbthaujR/JDYUMDbtNn6DYJ21Ky/xGRrh+EFTpxbo=;
+ b=R2qPvByeVVwq+zklqMBJbKTKmCGuDX4NKrJbcK76DRY8s6EesUQ6/6L+
+ TkaA3BRtk6JVqtMj9U9XBHYocVhOvFOS7Ett/dKXeLJSCNsYoqS9JWPdX
+ sah+vGlWG9D1fNOjtTAhg3Pc5qWLlKd0kKmhj9shUybRc5uvxmsyk2m1w
+ k2JYmHscKm6IMQQd88eOcXET2uC53zLeCrRAN3VscOPWjcjT++h9RY3BX
+ jnfgrxMR21Jh/4ML9na3igDbDnXNOWmQDU6ZzHiWEztmv1HSEMHFCDGc6
+ /ghLvLwuyD/5Plvl7LgKHqU8CJ/W5ewgtuqa8NtNxPfKktkIekNcQryrJ
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=R2qPvBye
+Subject: [Intel-wired-lan] [PATCH iwl-next v3] ice: Remove and readd netdev
+ during devlink reload
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,63 +95,521 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: wojciech.drewek@intel.com, marcin.szycik@intel.com,
- Marcin Szycik <marcin.szycik@linux.intel.com>, netdev@vger.kernel.org,
- sridhar.samudrala@intel.com, intel-wired-lan@lists.osuosl.org,
- przemyslaw.kitszel@intel.com
+Cc: vadim.fedorenko@linux.dev, bcreeley@amd.com, netdev@vger.kernel.org,
+ paul.m.stillwell.jr@intel.com, przemyslaw.kitszel@intel.com, jiri@resnulli.us
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Thu, Jan 25, 2024 at 01:53:10PM +0100, Michal Swiatkowski wrote:
-> Tx rule in switchdev was changed to use PF instead of additional control
-> plane VSI. Because of that during lag we should control it. Control
-> means to add and remove the default Tx rule during lag active/inactive
-> switching.
-> 
-> It can be done the same way as default Rx rule.
+Recent changes to the devlink reload (commit 9b2348e2d6c9
+("devlink: warn about existing entities during reload-reinit"))
+force the drivers to destroy devlink ports during reinit.
+Adjust ice driver to this requirement, unregister netdvice, destroy
+devlink port. ice_init_eth() was removed and all the common code
+between probe and reload was moved to ice_load().
 
-Hi Michal,
+During devlink reload we can't take devl_lock (it's already taken)
+and in ice_probe() we have to lock it. Use devl_* variant of the API
+which does not acquire and release devl_lock. Guard ice_load()
+with devl_lock only in case of probe.
 
-Can I confirm that LAG TX/RX works both before and after this patch?
+Introduce ice_debugfs_fwlog_deinit() in order to release PF's
+debugfs entries. Move ice_debugfs_exit() call to ice_module_exit().
 
-> 
-> Reviewed-by: Wojciech Drewek <wojciech.drewek@intel.com>
-> Reviewed-by: Marcin Szycik <marcin.szycik@linux.intel.com>
-> Signed-off-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-> ---
->  drivers/net/ethernet/intel/ice/ice_lag.c | 39 ++++++++++++++++++------
->  drivers/net/ethernet/intel/ice/ice_lag.h |  3 +-
->  2 files changed, 32 insertions(+), 10 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/intel/ice/ice_lag.c b/drivers/net/ethernet/intel/ice/ice_lag.c
+Suggested-by: Jiri Pirko <jiri@nvidia.com>
+Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+Reviewed-by: Vadim Fedorenko <vadim.fedorenko@linux.dev>
+Reviewed-by: Simon Horman <horms@kernel.org>
+Signed-off-by: Wojciech Drewek <wojciech.drewek@intel.com>
+---
+v2: empty init removed in ice_devlink_reinit_up
+v3: refactor locking pattern as Brett suggested
+---
+ drivers/net/ethernet/intel/ice/ice.h         |   3 +
+ drivers/net/ethernet/intel/ice/ice_debugfs.c |  10 +
+ drivers/net/ethernet/intel/ice/ice_devlink.c |  68 ++++++-
+ drivers/net/ethernet/intel/ice/ice_fwlog.c   |   2 +
+ drivers/net/ethernet/intel/ice/ice_main.c    | 189 ++++++-------------
+ 5 files changed, 139 insertions(+), 133 deletions(-)
 
-...
+diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
+index e841f6c4f1c4..8c3cd78ad60c 100644
+--- a/drivers/net/ethernet/intel/ice/ice.h
++++ b/drivers/net/ethernet/intel/ice/ice.h
+@@ -897,6 +897,7 @@ static inline bool ice_is_adq_active(struct ice_pf *pf)
+ }
+ 
+ void ice_debugfs_fwlog_init(struct ice_pf *pf);
++void ice_debugfs_pf_deinit(struct ice_pf *pf);
+ void ice_debugfs_init(void);
+ void ice_debugfs_exit(void);
+ void ice_pf_fwlog_update_module(struct ice_pf *pf, int log_level, int module);
+@@ -984,6 +985,8 @@ void ice_service_task_schedule(struct ice_pf *pf);
+ int ice_load(struct ice_pf *pf);
+ void ice_unload(struct ice_pf *pf);
+ void ice_adv_lnk_speed_maps_init(void);
++int ice_init_dev(struct ice_pf *pf);
++void ice_deinit_dev(struct ice_pf *pf);
+ 
+ /**
+  * ice_set_rdma_cap - enable RDMA support
+diff --git a/drivers/net/ethernet/intel/ice/ice_debugfs.c b/drivers/net/ethernet/intel/ice/ice_debugfs.c
+index c2bfba6b9ead..ba396b22bb7d 100644
+--- a/drivers/net/ethernet/intel/ice/ice_debugfs.c
++++ b/drivers/net/ethernet/intel/ice/ice_debugfs.c
+@@ -647,6 +647,16 @@ void ice_debugfs_fwlog_init(struct ice_pf *pf)
+ 	kfree(fw_modules);
+ }
+ 
++/**
++ * ice_debugfs_pf_deinit - cleanup PF's debugfs
++ * @pf: pointer to the PF struct
++ */
++void ice_debugfs_pf_deinit(struct ice_pf *pf)
++{
++	debugfs_remove_recursive(pf->ice_debugfs_pf);
++	pf->ice_debugfs_pf = NULL;
++}
++
+ /**
+  * ice_debugfs_init - create root directory for debugfs entries
+  */
+diff --git a/drivers/net/ethernet/intel/ice/ice_devlink.c b/drivers/net/ethernet/intel/ice/ice_devlink.c
+index 97182bacafa3..cc717175178b 100644
+--- a/drivers/net/ethernet/intel/ice/ice_devlink.c
++++ b/drivers/net/ethernet/intel/ice/ice_devlink.c
+@@ -444,6 +444,20 @@ ice_devlink_reload_empr_start(struct ice_pf *pf,
+ 	return 0;
+ }
+ 
++/**
++ * ice_devlink_reinit_down - unload given PF
++ * @pf: pointer to the PF struct
++ */
++static void ice_devlink_reinit_down(struct ice_pf *pf)
++{
++	/* No need to take devl_lock, it's already taken by devlink API */
++	ice_unload(pf);
++	rtnl_lock();
++	ice_vsi_decfg(ice_get_main_vsi(pf));
++	rtnl_unlock();
++	ice_deinit_dev(pf);
++}
++
+ /**
+  * ice_devlink_reload_down - prepare for reload
+  * @devlink: pointer to the devlink instance to reload
+@@ -477,7 +491,7 @@ ice_devlink_reload_down(struct devlink *devlink, bool netns_change,
+ 					   "Remove all VFs before doing reinit\n");
+ 			return -EOPNOTSUPP;
+ 		}
+-		ice_unload(pf);
++		ice_devlink_reinit_down(pf);
+ 		return 0;
+ 	case DEVLINK_RELOAD_ACTION_FW_ACTIVATE:
+ 		return ice_devlink_reload_empr_start(pf, extack);
+@@ -1269,6 +1283,45 @@ static int ice_devlink_set_parent(struct devlink_rate *devlink_rate,
+ 	return status;
+ }
+ 
++/**
++ * ice_devlink_reinit_up - do reinit of the given PF
++ * @pf: pointer to the PF struct
++ */
++static int ice_devlink_reinit_up(struct ice_pf *pf)
++{
++	struct ice_vsi *vsi = ice_get_main_vsi(pf);
++	struct ice_vsi_cfg_params params;
++	int err;
++
++	err = ice_init_dev(pf);
++	if (err)
++		return err;
++
++	params = ice_vsi_to_params(vsi);
++	params.flags = ICE_VSI_FLAG_INIT;
++
++	rtnl_lock();
++	err = ice_vsi_cfg(vsi, &params);
++	rtnl_unlock();
++	if (err)
++		goto err_vsi_cfg;
++
++	/* No need to take devl_lock, it's already taken by devlink API */
++	err = ice_load(pf);
++	if (err)
++		goto err_load;
++
++	return 0;
++
++err_load:
++	rtnl_lock();
++	ice_vsi_decfg(vsi);
++	rtnl_unlock();
++err_vsi_cfg:
++	ice_deinit_dev(pf);
++	return err;
++}
++
+ /**
+  * ice_devlink_reload_up - do reload up after reinit
+  * @devlink: pointer to the devlink instance reloading
+@@ -1289,7 +1342,7 @@ ice_devlink_reload_up(struct devlink *devlink,
+ 	switch (action) {
+ 	case DEVLINK_RELOAD_ACTION_DRIVER_REINIT:
+ 		*actions_performed = BIT(DEVLINK_RELOAD_ACTION_DRIVER_REINIT);
+-		return ice_load(pf);
++		return ice_devlink_reinit_up(pf);
+ 	case DEVLINK_RELOAD_ACTION_FW_ACTIVATE:
+ 		*actions_performed = BIT(DEVLINK_RELOAD_ACTION_FW_ACTIVATE);
+ 		return ice_devlink_reload_empr_finish(pf, extack);
+@@ -1695,6 +1748,7 @@ static const struct devlink_port_ops ice_devlink_port_ops = {
+  * @pf: the PF to create a devlink port for
+  *
+  * Create and register a devlink_port for this PF.
++ * This function has to be called under devl_lock.
+  *
+  * Return: zero on success or an error code on failure.
+  */
+@@ -1707,6 +1761,8 @@ int ice_devlink_create_pf_port(struct ice_pf *pf)
+ 	struct device *dev;
+ 	int err;
+ 
++	devlink = priv_to_devlink(pf);
++
+ 	dev = ice_pf_to_dev(pf);
+ 
+ 	devlink_port = &pf->devlink_port;
+@@ -1727,10 +1783,9 @@ int ice_devlink_create_pf_port(struct ice_pf *pf)
+ 	ice_devlink_set_switch_id(pf, &attrs.switch_id);
+ 
+ 	devlink_port_attrs_set(devlink_port, &attrs);
+-	devlink = priv_to_devlink(pf);
+ 
+-	err = devlink_port_register_with_ops(devlink, devlink_port, vsi->idx,
+-					     &ice_devlink_port_ops);
++	err = devl_port_register_with_ops(devlink, devlink_port, vsi->idx,
++					  &ice_devlink_port_ops);
+ 	if (err) {
+ 		dev_err(dev, "Failed to create devlink port for PF %d, error %d\n",
+ 			pf->hw.pf_id, err);
+@@ -1745,10 +1800,11 @@ int ice_devlink_create_pf_port(struct ice_pf *pf)
+  * @pf: the PF to cleanup
+  *
+  * Unregisters the devlink_port structure associated with this PF.
++ * This function has to be called under devl_lock.
+  */
+ void ice_devlink_destroy_pf_port(struct ice_pf *pf)
+ {
+-	devlink_port_unregister(&pf->devlink_port);
++	devl_port_unregister(&pf->devlink_port);
+ }
+ 
+ /**
+diff --git a/drivers/net/ethernet/intel/ice/ice_fwlog.c b/drivers/net/ethernet/intel/ice/ice_fwlog.c
+index 92b5dac481cd..4fd15387a7e5 100644
+--- a/drivers/net/ethernet/intel/ice/ice_fwlog.c
++++ b/drivers/net/ethernet/intel/ice/ice_fwlog.c
+@@ -188,6 +188,8 @@ void ice_fwlog_deinit(struct ice_hw *hw)
+ 	if (hw->bus.func)
+ 		return;
+ 
++	ice_debugfs_pf_deinit(hw->back);
++
+ 	/* make sure FW logging is disabled to not put the FW in a weird state
+ 	 * for the next driver load
+ 	 */
+diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
+index 77ba737a50df..6c0a621073aa 100644
+--- a/drivers/net/ethernet/intel/ice/ice_main.c
++++ b/drivers/net/ethernet/intel/ice/ice_main.c
+@@ -4574,90 +4574,6 @@ static void ice_decfg_netdev(struct ice_vsi *vsi)
+ 	vsi->netdev = NULL;
+ }
+ 
+-static int ice_start_eth(struct ice_vsi *vsi)
+-{
+-	int err;
+-
+-	err = ice_init_mac_fltr(vsi->back);
+-	if (err)
+-		return err;
+-
+-	err = ice_vsi_open(vsi);
+-	if (err)
+-		ice_fltr_remove_all(vsi);
+-
+-	return err;
+-}
+-
+-static void ice_stop_eth(struct ice_vsi *vsi)
+-{
+-	ice_fltr_remove_all(vsi);
+-	ice_vsi_close(vsi);
+-}
+-
+-static int ice_init_eth(struct ice_pf *pf)
+-{
+-	struct ice_vsi *vsi = ice_get_main_vsi(pf);
+-	int err;
+-
+-	if (!vsi)
+-		return -EINVAL;
+-
+-	/* init channel list */
+-	INIT_LIST_HEAD(&vsi->ch_list);
+-
+-	err = ice_cfg_netdev(vsi);
+-	if (err)
+-		return err;
+-	/* Setup DCB netlink interface */
+-	ice_dcbnl_setup(vsi);
+-
+-	err = ice_init_mac_fltr(pf);
+-	if (err)
+-		goto err_init_mac_fltr;
+-
+-	err = ice_devlink_create_pf_port(pf);
+-	if (err)
+-		goto err_devlink_create_pf_port;
+-
+-	SET_NETDEV_DEVLINK_PORT(vsi->netdev, &pf->devlink_port);
+-
+-	err = ice_register_netdev(vsi);
+-	if (err)
+-		goto err_register_netdev;
+-
+-	err = ice_tc_indir_block_register(vsi);
+-	if (err)
+-		goto err_tc_indir_block_register;
+-
+-	ice_napi_add(vsi);
+-
+-	return 0;
+-
+-err_tc_indir_block_register:
+-	ice_unregister_netdev(vsi);
+-err_register_netdev:
+-	ice_devlink_destroy_pf_port(pf);
+-err_devlink_create_pf_port:
+-err_init_mac_fltr:
+-	ice_decfg_netdev(vsi);
+-	return err;
+-}
+-
+-static void ice_deinit_eth(struct ice_pf *pf)
+-{
+-	struct ice_vsi *vsi = ice_get_main_vsi(pf);
+-
+-	if (!vsi)
+-		return;
+-
+-	ice_vsi_close(vsi);
+-	ice_unregister_netdev(vsi);
+-	ice_devlink_destroy_pf_port(pf);
+-	ice_tc_indir_block_unregister(vsi);
+-	ice_decfg_netdev(vsi);
+-}
+-
+ /**
+  * ice_wait_for_fw - wait for full FW readiness
+  * @hw: pointer to the hardware structure
+@@ -4683,7 +4599,7 @@ static int ice_wait_for_fw(struct ice_hw *hw, u32 timeout)
+ 	return -ETIMEDOUT;
+ }
+ 
+-static int ice_init_dev(struct ice_pf *pf)
++int ice_init_dev(struct ice_pf *pf)
+ {
+ 	struct device *dev = ice_pf_to_dev(pf);
+ 	struct ice_hw *hw = &pf->hw;
+@@ -4776,7 +4692,7 @@ static int ice_init_dev(struct ice_pf *pf)
+ 	return err;
+ }
+ 
+-static void ice_deinit_dev(struct ice_pf *pf)
++void ice_deinit_dev(struct ice_pf *pf)
+ {
+ 	ice_free_irq_msix_misc(pf);
+ 	ice_deinit_pf(pf);
+@@ -5081,31 +4997,47 @@ static void ice_deinit(struct ice_pf *pf)
+ /**
+  * ice_load - load pf by init hw and starting VSI
+  * @pf: pointer to the pf instance
++ *
++ * This function has to be called under devl_lock.
+  */
+ int ice_load(struct ice_pf *pf)
+ {
+-	struct ice_vsi_cfg_params params = {};
+ 	struct ice_vsi *vsi;
+ 	int err;
+ 
+-	err = ice_init_dev(pf);
++	devl_assert_locked(priv_to_devlink(pf));
++
++	vsi = ice_get_main_vsi(pf);
++
++	/* init channel list */
++	INIT_LIST_HEAD(&vsi->ch_list);
++
++	err = ice_cfg_netdev(vsi);
+ 	if (err)
+ 		return err;
+ 
+-	vsi = ice_get_main_vsi(pf);
++	/* Setup DCB netlink interface */
++	ice_dcbnl_setup(vsi);
+ 
+-	params = ice_vsi_to_params(vsi);
+-	params.flags = ICE_VSI_FLAG_INIT;
++	err = ice_init_mac_fltr(pf);
++	if (err)
++		goto err_init_mac_fltr;
+ 
+-	rtnl_lock();
+-	err = ice_vsi_cfg(vsi, &params);
++	err = ice_devlink_create_pf_port(pf);
+ 	if (err)
+-		goto err_vsi_cfg;
++		goto err_devlink_create_pf_port;
++
++	SET_NETDEV_DEVLINK_PORT(vsi->netdev, &pf->devlink_port);
+ 
+-	err = ice_start_eth(ice_get_main_vsi(pf));
++	err = ice_register_netdev(vsi);
++	if (err)
++		goto err_register_netdev;
++
++	err = ice_tc_indir_block_register(vsi);
+ 	if (err)
+-		goto err_start_eth;
+-	rtnl_unlock();
++		goto err_tc_indir_block_register;
++
++	ice_napi_add(vsi);
+ 
+ 	err = ice_init_rdma(pf);
+ 	if (err)
+@@ -5119,29 +5051,35 @@ int ice_load(struct ice_pf *pf)
+ 	return 0;
+ 
+ err_init_rdma:
+-	ice_vsi_close(ice_get_main_vsi(pf));
+-	rtnl_lock();
+-err_start_eth:
+-	ice_vsi_decfg(ice_get_main_vsi(pf));
+-err_vsi_cfg:
+-	rtnl_unlock();
+-	ice_deinit_dev(pf);
++	ice_tc_indir_block_unregister(vsi);
++err_tc_indir_block_register:
++	ice_unregister_netdev(vsi);
++err_register_netdev:
++	ice_devlink_destroy_pf_port(pf);
++err_devlink_create_pf_port:
++err_init_mac_fltr:
++	ice_decfg_netdev(vsi);
+ 	return err;
+ }
+ 
+ /**
+  * ice_unload - unload pf by stopping VSI and deinit hw
+  * @pf: pointer to the pf instance
++ *
++ * This function has to be called under devl_lock.
+  */
+ void ice_unload(struct ice_pf *pf)
+ {
++	struct ice_vsi *vsi = ice_get_main_vsi(pf);
++
++	devl_assert_locked(priv_to_devlink(pf));
++
+ 	ice_deinit_features(pf);
+ 	ice_deinit_rdma(pf);
+-	rtnl_lock();
+-	ice_stop_eth(ice_get_main_vsi(pf));
+-	ice_vsi_decfg(ice_get_main_vsi(pf));
+-	rtnl_unlock();
+-	ice_deinit_dev(pf);
++	ice_tc_indir_block_unregister(vsi);
++	ice_unregister_netdev(vsi);
++	ice_devlink_destroy_pf_port(pf);
++	ice_decfg_netdev(vsi);
+ }
+ 
+ /**
+@@ -5239,27 +5177,23 @@ ice_probe(struct pci_dev *pdev, const struct pci_device_id __always_unused *ent)
+ 	if (err)
+ 		goto err_init;
+ 
+-	err = ice_init_eth(pf);
++	devl_lock(priv_to_devlink(pf));
++	err = ice_load(pf);
++	devl_unlock(priv_to_devlink(pf));
+ 	if (err)
+-		goto err_init_eth;
+-
+-	err = ice_init_rdma(pf);
+-	if (err)
+-		goto err_init_rdma;
++		goto err_load;
+ 
+ 	err = ice_init_devlink(pf);
+ 	if (err)
+ 		goto err_init_devlink;
+ 
+-	ice_init_features(pf);
+-
+ 	return 0;
+ 
+ err_init_devlink:
+-	ice_deinit_rdma(pf);
+-err_init_rdma:
+-	ice_deinit_eth(pf);
+-err_init_eth:
++	devl_lock(priv_to_devlink(pf));
++	ice_unload(pf);
++	devl_unlock(priv_to_devlink(pf));
++err_load:
+ 	ice_deinit(pf);
+ err_init:
+ 	pci_disable_device(pdev);
+@@ -5342,8 +5276,6 @@ static void ice_remove(struct pci_dev *pdev)
+ 		msleep(100);
+ 	}
+ 
+-	ice_debugfs_exit();
+-
+ 	if (test_bit(ICE_FLAG_SRIOV_ENA, pf->flags)) {
+ 		set_bit(ICE_VF_RESETS_DISABLED, pf->state);
+ 		ice_free_vfs(pf);
+@@ -5357,12 +5289,14 @@ static void ice_remove(struct pci_dev *pdev)
+ 
+ 	if (!ice_is_safe_mode(pf))
+ 		ice_remove_arfs(pf);
+-	ice_deinit_features(pf);
++
+ 	ice_deinit_devlink(pf);
+-	ice_deinit_rdma(pf);
+-	ice_deinit_eth(pf);
+-	ice_deinit(pf);
+ 
++	devl_lock(priv_to_devlink(pf));
++	ice_unload(pf);
++	devl_unlock(priv_to_devlink(pf));
++
++	ice_deinit(pf);
+ 	ice_vsi_release_all(pf);
+ 
+ 	ice_setup_mc_magic_wake(pf);
+@@ -5847,6 +5781,7 @@ module_init(ice_module_init);
+ static void __exit ice_module_exit(void)
+ {
+ 	pci_unregister_driver(&ice_driver);
++	ice_debugfs_exit();
+ 	destroy_workqueue(ice_wq);
+ 	destroy_workqueue(ice_lag_wq);
+ 	pr_info("module unloaded\n");
+-- 
+2.40.1
 
-> @@ -266,9 +274,22 @@ ice_lag_cfg_dflt_fltr(struct ice_lag *lag, bool add)
->  {
->  	u32 act = ICE_SINGLE_ACT_VSI_FORWARDING |
->  		ICE_SINGLE_ACT_VALID_BIT | ICE_SINGLE_ACT_LAN_ENABLE;
-> +	int err;
-> +
-> +	err = ice_lag_cfg_fltr(lag, act, lag->pf_recipe, &lag->pf_rx_rule_id,
-> +			       ICE_FLTR_RX, add);
-> +	if (err)
-> +		return err;
-> +
-> +	err = ice_lag_cfg_fltr(lag, act, lag->pf_recipe, &lag->pf_tx_rule_id,
-> +			       ICE_FLTR_TX, add);
-> +	if (err) {
-> +		ice_lag_cfg_fltr(lag, act, lag->pf_recipe, &lag->pf_rx_rule_id,
-> +				 ICE_FLTR_RX, !add);
-> +		return err;
-> +	}
->  
-> -	return ice_lag_cfg_fltr(lag, act, lag->pf_recipe,
-> -				&lag->pf_rule_id, add);
-> +	return 0;
->  }
-
-nit: perhaps this could be more idiomatically written using a
-     goto to unwind on error.
-
-...
