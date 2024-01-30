@@ -2,186 +2,87 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id AA620842144
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 30 Jan 2024 11:29:42 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id E78B7842155
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 30 Jan 2024 11:33:21 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 49E3B4193F;
-	Tue, 30 Jan 2024 10:29:41 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 49E3B4193F
+	by smtp4.osuosl.org (Postfix) with ESMTP id 7E82E41902;
+	Tue, 30 Jan 2024 10:33:20 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7E82E41902
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1706610581;
-	bh=vFz3cTOdGx3HTVwoTamG2deRVL82AyZBJsVzJu1J2nQ=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=1/OveBL7KBMl3WhmjE7XtI8wdl7NO7yZZ99l+oyH+rCwWuREcU2HLELKyleGUMOZA
-	 1ff/LOmKXSwIfvqQObsUHCwLOKZMXI8erdHIGU23UgZRmoKPJFHnSgGwsJtoLSQtBR
-	 6lwgFo+/Hd0wlWlq7ASMR+x1DJ3/Hv3gpbDsZLK+FI7Diy7bGAOyHuasxKlSRgt83p
-	 jU6gQ/26nZQZlto9BaVopQ7L22VI3ckQx39GJmkKpgYG2AwTonSSHgFXiJ8jg6sTeJ
-	 MTK1iev4Y/Ceisv7f8zzs5GR3Rvg9WvEy4O0UhGn0qEaip74k79raUc3A0xFC5hfJC
-	 n2dkANC4Y+AkA==
+	s=default; t=1706610800;
+	bh=XQ6SB/XKE+kWEIpLqhcPnJGqEPd6Wqx0Z0hJsttF9T4=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=mDqend7Z+2TPmQ4tNj1tN2kD+5qooYtOx952c7oxHR2ThSDD3OKK+xRmlFJOwokRI
+	 8Xh0X4YrNAPezESsLfe8nf/EIJKtvf1ipVol1Scg1asBf6G2+gxIvjX8qdQ/eyepAn
+	 zNgG0NdsPktTT6e0JbW5MT4Erd6pp4sq/24QA1simb+UptMA5a0MQU7agnkPXJksCs
+	 pa/OXOXt3fY3cGqLcmHKARWUpKlRcUups4En9FQZXtHAPmrb7ChDP+cxinWRnMFJmw
+	 mbgGvZGOogtAeI7QbPmrgoLxYFLb5gzat11t+iEUkn/GMrrs9j63IA6+y9lQTGwwr6
+	 flWPC5UkuQhIw==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id VMLMBc8UF0TL; Tue, 30 Jan 2024 10:29:40 +0000 (UTC)
+	with ESMTP id jEU9DrvzrTDy; Tue, 30 Jan 2024 10:33:19 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 4801641939;
-	Tue, 30 Jan 2024 10:29:40 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4801641939
+	by smtp4.osuosl.org (Postfix) with ESMTP id CE61B413D3;
+	Tue, 30 Jan 2024 10:33:18 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org CE61B413D3
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 891151BF29C
- for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Jan 2024 10:29:34 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 874D21BF29C
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Jan 2024 10:33:09 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 5DBB661060
- for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Jan 2024 10:29:34 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5DBB661060
+ by smtp2.osuosl.org (Postfix) with ESMTP id 6B25040279
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Jan 2024 10:33:09 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 6B25040279
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id R6tsODAJV613 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 30 Jan 2024 10:29:33 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id yNCN6huOfeM3 for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 30 Jan 2024 10:33:07 +0000 (UTC)
 Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.11])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 644C861056
- for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Jan 2024 10:29:33 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 644C861056
-X-IronPort-AV: E=McAfee;i="6600,9927,10968"; a="9873603"
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 516134012B
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Jan 2024 10:33:07 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 516134012B
+X-IronPort-AV: E=McAfee;i="6600,9927,10968"; a="9874296"
 X-IronPort-AV: E=Sophos;i="6.05,707,1701158400"; 
-   d="scan'208";a="9873603"
+   d="scan'208";a="9874296"
 Received: from fmviesa001.fm.intel.com ([10.60.135.141])
  by orvoesa103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 30 Jan 2024 02:29:31 -0800
+ 30 Jan 2024 02:33:00 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.05,707,1701158400"; d="scan'208";a="30108202"
-Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
- by fmviesa001.fm.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
- 30 Jan 2024 02:29:31 -0800
-Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
- ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.35; Tue, 30 Jan 2024 02:29:30 -0800
-Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
- orsmsx610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.35 via Frontend Transport; Tue, 30 Jan 2024 02:29:30 -0800
-Received: from NAM12-MW2-obe.outbound.protection.outlook.com (104.47.66.41) by
- edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.35; Tue, 30 Jan 2024 02:29:30 -0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=D/w3tpc9lwBj4mRuPPr8EoyVP1V/xEvArrGSgeZqf/JBQuLCnzCfhEL/PsLK4Or3jM+Evc2GJV8WImcT4CObia4DXOUAVl7UihwirJRr3+D7x9njFDVaBGcYbomtrI2zKNazaroMFZ+ehI2/zQ5T1RurJwsTjBvQ9TyeAyf30XIbmRAEPCZPgghMf0JbyyLhLbvAE9arWOs5603S06UddUjlkzlQsymUenZePN60Ldrl6dnYMQmS0dYXmKWwxBp0pbqyrHZ3K7u6ph+ieDFxTCUPGZzNPge+sXSniXYbQ3rQnO5L3vR0dq6uOG7HHkfV+TpZRdD8ofdamutntDTNtQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=vFz3cTOdGx3HTVwoTamG2deRVL82AyZBJsVzJu1J2nQ=;
- b=LNvZKgOE/Z418AEWNblU7k57ZlHYuatRbfu41w6CtqC3gx7fxRXjsamgpJwPZFR+S4rFUTbq4uzahgGoMYe0zTAj2muvLpQRWYhTRqpQQp+WaTSah8m/dDPpjpTdM3aB/PI5hzQAOC4WyjfqTwtN2/el9FGtTwhaZrQrifLs4l/AEM0izkjTUq6DAjLqmkOhEhVc7b5n4bBArrpYEiTU3SCLAyMfqxjjvv11NwPX7zTQxPan/ddIxBIfRdYYWnmY9Oic9nboynxUL8uv3Gx2hTw9Bk8ZDQjI6cv6IXpcnxNgVzetVXIOlVqP2FxQYEESfKi/YkkcrBsZFozg1/cqWw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from MW4PR11MB5776.namprd11.prod.outlook.com (2603:10b6:303:183::9)
- by CH3PR11MB7896.namprd11.prod.outlook.com (2603:10b6:610:131::6)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7228.34; Tue, 30 Jan
- 2024 10:29:28 +0000
-Received: from MW4PR11MB5776.namprd11.prod.outlook.com
- ([fe80::7733:f6b8:e322:f670]) by MW4PR11MB5776.namprd11.prod.outlook.com
- ([fe80::7733:f6b8:e322:f670%4]) with mapi id 15.20.7228.029; Tue, 30 Jan 2024
- 10:29:28 +0000
-Message-ID: <9bbff46f-82ee-422f-8e80-0817f3f28ce4@intel.com>
-Date: Tue, 30 Jan 2024 11:29:21 +0100
-User-Agent: Mozilla Thunderbird
-To: Brett Creeley <bcreeley@amd.com>, <intel-wired-lan@lists.osuosl.org>
-References: <20240129123231.31136-1-wojciech.drewek@intel.com>
- <9f2e462d-e034-47e3-a2b5-6618faf1d470@amd.com>
-Content-Language: en-US
+X-IronPort-AV: E=Sophos;i="6.05,707,1701158400"; d="scan'208";a="30109212"
+Received: from irvmail002.ir.intel.com ([10.43.11.120])
+ by fmviesa001.fm.intel.com with ESMTP; 30 Jan 2024 02:32:56 -0800
+Received: from rozewie.igk.intel.com (unknown [10.211.8.69])
+ by irvmail002.ir.intel.com (Postfix) with ESMTP id B03C2125AF;
+ Tue, 30 Jan 2024 10:32:54 +0000 (GMT)
 From: Wojciech Drewek <wojciech.drewek@intel.com>
-In-Reply-To: <9f2e462d-e034-47e3-a2b5-6618faf1d470@amd.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
-X-ClientProxiedBy: FR3P281CA0094.DEUP281.PROD.OUTLOOK.COM
- (2603:10a6:d10:a1::9) To MW4PR11MB5776.namprd11.prod.outlook.com
- (2603:10b6:303:183::9)
+To: intel-wired-lan@lists.osuosl.org
+Date: Tue, 30 Jan 2024 11:31:01 +0100
+Message-Id: <20240130103101.88175-1-wojciech.drewek@intel.com>
+X-Mailer: git-send-email 2.40.1
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: MW4PR11MB5776:EE_|CH3PR11MB7896:EE_
-X-MS-Office365-Filtering-Correlation-Id: 4b2e57b5-a7be-49c0-b9d0-08dc217e5674
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: mBAc7o2sWAt/dSbAUqJ1m6/tHBPTImrM3icO5ND66odXyH4qwq61M2lFFLLYKQ/qw6IwcQeE5AsS4rwiVzFwLIaS++iisAQm6z40BVTBPOteMJ8ru93J94X7hpNGz5q5xfus6+Iw5rXhpebxfVkcc6XORSYMZlDiC5wE57iETtDjU1MqjVZooqxPtSr0G9PvpJcT4ZbMpKRGWcyHKZhrR9+DvIyI6nYFChvVTv0KVMRf7e9oQ+VFns9TaVqza8E8ZDxwoyE6C6X+KiYBtqSwnrD16qBHoa2zrTgQ9mOd2MuG6+GqzN/wWyh2ErlarcPDrKZSb3WaYvyKQgsTw6iYPlzOk6j/xOQ9prpdf7ys5Qe093SqrgpH+DYFv+aVdmBEWzxEuMfQ2/wEnd/jjXH8ZK1gnUJVaolSmPLbi4WQQjGbb4c6irQLvem009rqniknj/ndu2UXN18Lyd9lgk9sWSYaBiEp2F4drf2Rqc7tyymY++ipCBeuU0N+2+2hB4cH1nUemadZ2+c0cwii8fCuCd9tqr+dEz1IZy+MktyPXgj+zfgrviUtqsmuk2umUJ+kQdchNBY6pAXvrKKKdSWcKLazfedtdeRGG6PKIUSIJTpe9dDOFQStC5TTha2mKBDvT+4+nxAJGnaP0rEMDHyFWxtaaGci5lBfyumV/aO4tV9KsoRr1faR/f3RUe9lEGAS
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:MW4PR11MB5776.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230031)(366004)(39860400002)(346002)(136003)(376002)(396003)(230273577357003)(230173577357003)(230922051799003)(64100799003)(451199024)(1800799012)(186009)(4326008)(5660300002)(31696002)(82960400001)(86362001)(36756003)(38100700002)(478600001)(83380400001)(41300700001)(6486002)(8936002)(26005)(44832011)(316002)(66946007)(2616005)(53546011)(6512007)(2906002)(107886003)(6506007)(6666004)(8676002)(66556008)(66476007)(31686004)(45980500001)(43740500002);
- DIR:OUT; SFP:1102; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?RkF1bWNmbCtFdXA3NGNqUi90eHNYZWJFTDFsTDd4VnNFUVpzWFdlQTI3MG91?=
- =?utf-8?B?TWxWcDdVZG91Yk02NmFTRFJtVHl1Q2Rqb0dWeXQ5ekNqRHQ0RzlLSi9WYlNQ?=
- =?utf-8?B?Rm1RSjZIOGRaNWNsSFdONmU2b3ZtSFlTZ3FpQk4vWDFyRHNsa0ZjS2huUExV?=
- =?utf-8?B?anZncnQxT1pxaXZ6SGJXRnhrNzBDVERBRGtRRGtGLzI5c3grODRXdnJXWDhD?=
- =?utf-8?B?SUFJVEFPZjg1SERJcTNXblVTdEFHZTJRV3htcGNkci9KVTFHanZoblpzWEpE?=
- =?utf-8?B?dWhoVEZyVjF0STdEK1ZXeWV1WjNsanBranFNUzk0WHBacjRmZXlFTUppdWs5?=
- =?utf-8?B?aXBMdHRqUWlidkV3d1Y3Z1RzVWJEc0RXdkNqNnoxMmxOZEdpYTVBUnZ6NGpn?=
- =?utf-8?B?RE0yRmEzRjNhMU9FRGdhRi9NTlRGQ3pxRDREVUlwa0ViRU45Z0w2Z2dRM21r?=
- =?utf-8?B?REEvaVd5V3hqZU9DeFV5MXZ4amZUYjhLbGdzd0NlYzdzSVZKb0NGa0ZZWWFF?=
- =?utf-8?B?YVBoZDdhWDlCMlRvK1RVcDMrbmpHWnhDeCtoMFRzUWxKak1LdFVNUDkrelND?=
- =?utf-8?B?K3dDSUFtTkpHQ1huRyt5dVpoWTB6TEloYkZNZmRQcmU3YzNVakNWRkZKZ25S?=
- =?utf-8?B?emJXMFNwTHVITlNsVC9qaW4wMk1KUGxRK3l1Vi9MTE9aNFkzSlFjRUVsMVNH?=
- =?utf-8?B?Yk80MGl3NnFHSEd0WVVZaTlYcnByb0k4cXI5VzdJanZDVzVGUWVIL3hrU3JE?=
- =?utf-8?B?TDBGMUJkeTA2cjNGYUFUcnVjd0Z1UFlsWEtOZ0ZwL0xmUWF6cERBTEVsM3Yr?=
- =?utf-8?B?QXoraW1PWi84bElhM2xDNE53Y3hjUlJaNHdTOUVwdGlHNjVueXlacVcxQkE2?=
- =?utf-8?B?UUVpZjFhQktqRy9aSzJOeVNyclVmRW8vMnAzZUtzckhlcXg1K1hDZ0V1dXJu?=
- =?utf-8?B?UWgxcTVLaHJOclZsV2kyUlVtMVEwZWtCbGRXclp1c3gzS2ZsQ2ZQcElSNytl?=
- =?utf-8?B?bzB6QzMvdnIyUEdwQytXREc0RE56V2tuWEdxcnZtaitDOW9IMVQ0akFDczhY?=
- =?utf-8?B?U3kxdGgvRUlESjBKZXhmazRRQ0NZeFV2NWE3SkNGK2ZyMld2K1h0Z1pDR0g0?=
- =?utf-8?B?RnlQSG9IRnU1OTk1UVdoUmNhdnpabVJJL1ZoZDJLVnJza2lEVGdpdHpVcXhL?=
- =?utf-8?B?eG1HSWdnc29OcnhoZkxaZURTUkF2WWg2TzlGREsxL1p4QjZycUs1UUg4YldQ?=
- =?utf-8?B?N1hYd0JZb3phVDN4bGVnMVVINXpUM2U4QndidW1jeUw3cTU4Wjcwek85UUh4?=
- =?utf-8?B?cVpIQisrU1pUTm5nWVpCNVJqWFd2b1FwMnFQbnBhWEVuVThUd3RhUWQ0dE5k?=
- =?utf-8?B?bEc4NGdiMXZ4ajVFQlBXL3dORFl5Y3JZNkY0d1JGSmVBS2ZpSU5tRlU0Nndt?=
- =?utf-8?B?MlYrNm84TU80NjlmN0lZaWVRRXA3T01uV0M4cGsyeFp5eW80bTZVa29IbWZ3?=
- =?utf-8?B?NDQyMEJyYkxqNVBHVVZhWmFDeS9XVXFmUm8zWGVWTWpTU0hUcENrRzdzNCsw?=
- =?utf-8?B?UHZtaG1jRDViUElyUEY3QktHRjJFOGdWaHc1Wm5sSkNaRkw5VU1HUFUxbHV5?=
- =?utf-8?B?S3F4U0JxMVlsdlBURUVIdkxtcDNEbkZBZUtXSU5ManBLYmhXeEV6MHgzRG85?=
- =?utf-8?B?NU9yeXhKbWhaaUR3V0NvM3RGWTI4WXB3cTdZNTM1bnAxSnNnWHd5d3NmdzVB?=
- =?utf-8?B?VzRrNFdoRjdrdVdIS0tmVUsvTWorbkgvSXlrZjQyVVA1NTJNNklkZUVaRG5Q?=
- =?utf-8?B?UUdFWDJiaS9XVTRpcEhSU3pGM3d6N3orSVZSV0xHZCszenNXdFNwQ1NZcGQx?=
- =?utf-8?B?NDVqVDdKYVRNR0kxbFd6Y3FjZXVXekhOemkyMWRtWkNpYlpDeFlvUWNlM25W?=
- =?utf-8?B?MGpEUnlYeTZoQm8yUTJSL0JuRzU1M2pNdHRaSDZWNGJXZHFOOVh4NXdRci9S?=
- =?utf-8?B?bEpsZXlHOWMyTDlpOC9NZDR4QkxueWdCTDhqVjR4K1pHcXlvVWdyYWdXMjBo?=
- =?utf-8?B?RHlXMEF2WVJ5dWc5Z21QWStTeHdIYVdDVWx5N3FYNUpUT0FjdTd5L0EvRFZ1?=
- =?utf-8?B?Q2hrZWdzMUZOMjZycURTNFdkRlVWa0cyMDJlNmYyelIySlhhRWttV1ZWSlhG?=
- =?utf-8?B?NkE9PQ==?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: 4b2e57b5-a7be-49c0-b9d0-08dc217e5674
-X-MS-Exchange-CrossTenant-AuthSource: MW4PR11MB5776.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 30 Jan 2024 10:29:28.2369 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: dI7ryWigRkbIUn1lA+Z4e97gY17qG18f4urSt+pj7S0hy+BQiAv73+/EkSL551lw61B97VBVMQGDnitRaR8+wVjTRiCWy48nsDtEIf/3q04=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH3PR11MB7896
-X-OriginatorOrg: intel.com
+Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1706610573; x=1738146573;
- h=message-id:date:subject:to:cc:references:from:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=Aoea/WEJjuQSOngpBCJnMgDahFBPkVDu4Z4OUARgQVQ=;
- b=KwjHsu76S7AkVBD7CpzpgJPu1I1ypKenWsnuiyqo5TZSBCYruzWEffjq
- xSL2RvdfZXrCzkPcZBEof3o7+m0T6KYklEe4XKl7Sn4qqLPZhxkSNUoXE
- VXAc9fto19ZhpLdZWqvfD6bSfdJXh+idLcQZU7WalF4ifG4uC2n6aV17h
- QlH5OX6Mx1eDe1aiQcUviC7VCvV6z01jKFKDMWEhl3RoizMjQ4DTeF80X
- ZDwy9mv6UbBGvFjRcSR8DJwK5siS7VCtL3wDw3sAU6vR4rNy0G2RmjUZ6
- QYMgp850FWddkg9JKFRPj3ToIuZd+w8/9p3i6Z5ClM5JYL+46V07EW8fW
- g==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ t=1706610787; x=1738146787;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=P2OJPA12BrWWEjrzjim8s4E8UsBeWb36xExDMYHIvZg=;
+ b=SYi8/IGsL1YqqD6BrIP6pJ4HB3RuDdPIxNHkG24DAqI8hoVCLin86v6d
+ p1hNY3PnRy++PCPGEZQB19y2KGlECQdoM7xe2boXsWPRBZIErItzfCj1/
+ 7PrGhg0+N7Y4an2N74oibbLDmssya9yhgctQoqbl5do4apz3wp4e8MHnd
+ jM6MIha4OZDA6kLykQErWAL+1BEiQxXaRDg1Iu08s0Ac01AW4U0h3u3mh
+ a1snL/ljS6Vf5fViEWOX1V2T8KEc9/Qi1esvLpYGhIcXLlejCCa50WsZz
+ HPXbP/oH7fKwwG2e/ndfxemW6PpWRa9DajPqOzE4HlObyY7KfHBOMut49
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=KwjHsu76
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v3] ice: Remove and readd
- netdev during devlink reload
+ header.a=rsa-sha256 header.s=Intel header.b=SYi8/IGs
+Subject: [Intel-wired-lan] [PATCH iwl-next v4] ice: Remove and readd netdev
+ during devlink reload
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -194,59 +95,523 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, jiri@resnulli.us, vadim.fedorenko@linux.dev,
- paul.m.stillwell.jr@intel.com, przemyslaw.kitszel@intel.com
+Cc: vadim.fedorenko@linux.dev, bcreeley@amd.com, netdev@vger.kernel.org,
+ paul.m.stillwell.jr@intel.com, przemyslaw.kitszel@intel.com, jiri@resnulli.us
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+Recent changes to the devlink reload (commit 9b2348e2d6c9
+("devlink: warn about existing entities during reload-reinit"))
+force the drivers to destroy devlink ports during reinit.
+Adjust ice driver to this requirement, unregister netdvice, destroy
+devlink port. ice_init_eth() was removed and all the common code
+between probe and reload was moved to ice_load().
 
+During devlink reload we can't take devl_lock (it's already taken)
+and in ice_probe() we have to lock it. Use devl_* variant of the API
+which does not acquire and release devl_lock. Guard ice_load()
+with devl_lock only in case of probe.
 
-On 29.01.2024 19:00, Brett Creeley wrote:
-> 
-> 
-> On 1/29/2024 4:32 AM, Wojciech Drewek wrote:
->> Caution: This message originated from an External Source. Use proper caution when opening attachments, clicking links, or responding.
->>
->>
->> Recent changes to the devlink reload (commit 9b2348e2d6c9
->> ("devlink: warn about existing entities during reload-reinit"))
->> force the drivers to destroy devlink ports during reinit.
->> Adjust ice driver to this requirement, unregister netdvice, destroy
->> devlink port. ice_init_eth() was removed and all the common code
->> between probe and reload was moved to ice_load().
->>
->> During devlink reload we can't take devl_lock (it's already taken)
->> and in ice_probe() we have to lock it. Use devl_* variant of the API
->> which does not acquire and release devl_lock. Guard ice_load()
->> with devl_lock only in case of probe.
->>
->> Introduce ice_debugfs_fwlog_deinit() in order to release PF's
->> debugfs entries. Move ice_debugfs_exit() call to ice_module_exit().
-> 
-> Nit, but the function is no longer ice_debugfs_fwlog_deinit() as it changed from v2->v3.
+Introduce ice_debugfs_pf_deinit() in order to release PF's
+debugfs entries. Move ice_debugfs_exit() call to ice_module_exit().
 
-Right, will be fixed in v4
+Suggested-by: Jiri Pirko <jiri@nvidia.com>
+Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+Reviewed-by: Vadim Fedorenko <vadim.fedorenko@linux.dev>
+Reviewed-by: Simon Horman <horms@kernel.org>
+Reviewed-by: Brett Creeley <brett.creeley@amd.com>
+Signed-off-by: Wojciech Drewek <wojciech.drewek@intel.com>
+---
+v2: empty init removed in ice_devlink_reinit_up
+v3: refactor locking pattern as Brett suggested
+v4: fix wrong function name in commit message
+---
+ drivers/net/ethernet/intel/ice/ice.h         |   3 +
+ drivers/net/ethernet/intel/ice/ice_debugfs.c |  10 +
+ drivers/net/ethernet/intel/ice/ice_devlink.c |  68 ++++++-
+ drivers/net/ethernet/intel/ice/ice_fwlog.c   |   2 +
+ drivers/net/ethernet/intel/ice/ice_main.c    | 189 ++++++-------------
+ 5 files changed, 139 insertions(+), 133 deletions(-)
 
-> 
-> Other than that, LGTM.
-> 
-> Reviewed-by: Brett Creeley <brett.creeley@amd.com>
-> 
->>
->> Suggested-by: Jiri Pirko <jiri@nvidia.com>
->> Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
->> Reviewed-by: Vadim Fedorenko <vadim.fedorenko@linux.dev>
->> Reviewed-by: Simon Horman <horms@kernel.org>
->> Signed-off-by: Wojciech Drewek <wojciech.drewek@intel.com>
->> ---
->> v2: empty init removed in ice_devlink_reinit_up
->> v3: refactor locking pattern as Brett suggested
->> ---
->>   drivers/net/ethernet/intel/ice/ice.h         |   3 +
->>   drivers/net/ethernet/intel/ice/ice_debugfs.c |  10 +
->>   drivers/net/ethernet/intel/ice/ice_devlink.c |  68 ++++++-
->>   drivers/net/ethernet/intel/ice/ice_fwlog.c   |   2 +
->>   drivers/net/ethernet/intel/ice/ice_main.c    | 189 ++++++-------------
->>   5 files changed, 139 insertions(+), 133 deletions(-)
-> 
-> [...]
+diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
+index e841f6c4f1c4..8c3cd78ad60c 100644
+--- a/drivers/net/ethernet/intel/ice/ice.h
++++ b/drivers/net/ethernet/intel/ice/ice.h
+@@ -897,6 +897,7 @@ static inline bool ice_is_adq_active(struct ice_pf *pf)
+ }
+ 
+ void ice_debugfs_fwlog_init(struct ice_pf *pf);
++void ice_debugfs_pf_deinit(struct ice_pf *pf);
+ void ice_debugfs_init(void);
+ void ice_debugfs_exit(void);
+ void ice_pf_fwlog_update_module(struct ice_pf *pf, int log_level, int module);
+@@ -984,6 +985,8 @@ void ice_service_task_schedule(struct ice_pf *pf);
+ int ice_load(struct ice_pf *pf);
+ void ice_unload(struct ice_pf *pf);
+ void ice_adv_lnk_speed_maps_init(void);
++int ice_init_dev(struct ice_pf *pf);
++void ice_deinit_dev(struct ice_pf *pf);
+ 
+ /**
+  * ice_set_rdma_cap - enable RDMA support
+diff --git a/drivers/net/ethernet/intel/ice/ice_debugfs.c b/drivers/net/ethernet/intel/ice/ice_debugfs.c
+index c2bfba6b9ead..ba396b22bb7d 100644
+--- a/drivers/net/ethernet/intel/ice/ice_debugfs.c
++++ b/drivers/net/ethernet/intel/ice/ice_debugfs.c
+@@ -647,6 +647,16 @@ void ice_debugfs_fwlog_init(struct ice_pf *pf)
+ 	kfree(fw_modules);
+ }
+ 
++/**
++ * ice_debugfs_pf_deinit - cleanup PF's debugfs
++ * @pf: pointer to the PF struct
++ */
++void ice_debugfs_pf_deinit(struct ice_pf *pf)
++{
++	debugfs_remove_recursive(pf->ice_debugfs_pf);
++	pf->ice_debugfs_pf = NULL;
++}
++
+ /**
+  * ice_debugfs_init - create root directory for debugfs entries
+  */
+diff --git a/drivers/net/ethernet/intel/ice/ice_devlink.c b/drivers/net/ethernet/intel/ice/ice_devlink.c
+index 97182bacafa3..cc717175178b 100644
+--- a/drivers/net/ethernet/intel/ice/ice_devlink.c
++++ b/drivers/net/ethernet/intel/ice/ice_devlink.c
+@@ -444,6 +444,20 @@ ice_devlink_reload_empr_start(struct ice_pf *pf,
+ 	return 0;
+ }
+ 
++/**
++ * ice_devlink_reinit_down - unload given PF
++ * @pf: pointer to the PF struct
++ */
++static void ice_devlink_reinit_down(struct ice_pf *pf)
++{
++	/* No need to take devl_lock, it's already taken by devlink API */
++	ice_unload(pf);
++	rtnl_lock();
++	ice_vsi_decfg(ice_get_main_vsi(pf));
++	rtnl_unlock();
++	ice_deinit_dev(pf);
++}
++
+ /**
+  * ice_devlink_reload_down - prepare for reload
+  * @devlink: pointer to the devlink instance to reload
+@@ -477,7 +491,7 @@ ice_devlink_reload_down(struct devlink *devlink, bool netns_change,
+ 					   "Remove all VFs before doing reinit\n");
+ 			return -EOPNOTSUPP;
+ 		}
+-		ice_unload(pf);
++		ice_devlink_reinit_down(pf);
+ 		return 0;
+ 	case DEVLINK_RELOAD_ACTION_FW_ACTIVATE:
+ 		return ice_devlink_reload_empr_start(pf, extack);
+@@ -1269,6 +1283,45 @@ static int ice_devlink_set_parent(struct devlink_rate *devlink_rate,
+ 	return status;
+ }
+ 
++/**
++ * ice_devlink_reinit_up - do reinit of the given PF
++ * @pf: pointer to the PF struct
++ */
++static int ice_devlink_reinit_up(struct ice_pf *pf)
++{
++	struct ice_vsi *vsi = ice_get_main_vsi(pf);
++	struct ice_vsi_cfg_params params;
++	int err;
++
++	err = ice_init_dev(pf);
++	if (err)
++		return err;
++
++	params = ice_vsi_to_params(vsi);
++	params.flags = ICE_VSI_FLAG_INIT;
++
++	rtnl_lock();
++	err = ice_vsi_cfg(vsi, &params);
++	rtnl_unlock();
++	if (err)
++		goto err_vsi_cfg;
++
++	/* No need to take devl_lock, it's already taken by devlink API */
++	err = ice_load(pf);
++	if (err)
++		goto err_load;
++
++	return 0;
++
++err_load:
++	rtnl_lock();
++	ice_vsi_decfg(vsi);
++	rtnl_unlock();
++err_vsi_cfg:
++	ice_deinit_dev(pf);
++	return err;
++}
++
+ /**
+  * ice_devlink_reload_up - do reload up after reinit
+  * @devlink: pointer to the devlink instance reloading
+@@ -1289,7 +1342,7 @@ ice_devlink_reload_up(struct devlink *devlink,
+ 	switch (action) {
+ 	case DEVLINK_RELOAD_ACTION_DRIVER_REINIT:
+ 		*actions_performed = BIT(DEVLINK_RELOAD_ACTION_DRIVER_REINIT);
+-		return ice_load(pf);
++		return ice_devlink_reinit_up(pf);
+ 	case DEVLINK_RELOAD_ACTION_FW_ACTIVATE:
+ 		*actions_performed = BIT(DEVLINK_RELOAD_ACTION_FW_ACTIVATE);
+ 		return ice_devlink_reload_empr_finish(pf, extack);
+@@ -1695,6 +1748,7 @@ static const struct devlink_port_ops ice_devlink_port_ops = {
+  * @pf: the PF to create a devlink port for
+  *
+  * Create and register a devlink_port for this PF.
++ * This function has to be called under devl_lock.
+  *
+  * Return: zero on success or an error code on failure.
+  */
+@@ -1707,6 +1761,8 @@ int ice_devlink_create_pf_port(struct ice_pf *pf)
+ 	struct device *dev;
+ 	int err;
+ 
++	devlink = priv_to_devlink(pf);
++
+ 	dev = ice_pf_to_dev(pf);
+ 
+ 	devlink_port = &pf->devlink_port;
+@@ -1727,10 +1783,9 @@ int ice_devlink_create_pf_port(struct ice_pf *pf)
+ 	ice_devlink_set_switch_id(pf, &attrs.switch_id);
+ 
+ 	devlink_port_attrs_set(devlink_port, &attrs);
+-	devlink = priv_to_devlink(pf);
+ 
+-	err = devlink_port_register_with_ops(devlink, devlink_port, vsi->idx,
+-					     &ice_devlink_port_ops);
++	err = devl_port_register_with_ops(devlink, devlink_port, vsi->idx,
++					  &ice_devlink_port_ops);
+ 	if (err) {
+ 		dev_err(dev, "Failed to create devlink port for PF %d, error %d\n",
+ 			pf->hw.pf_id, err);
+@@ -1745,10 +1800,11 @@ int ice_devlink_create_pf_port(struct ice_pf *pf)
+  * @pf: the PF to cleanup
+  *
+  * Unregisters the devlink_port structure associated with this PF.
++ * This function has to be called under devl_lock.
+  */
+ void ice_devlink_destroy_pf_port(struct ice_pf *pf)
+ {
+-	devlink_port_unregister(&pf->devlink_port);
++	devl_port_unregister(&pf->devlink_port);
+ }
+ 
+ /**
+diff --git a/drivers/net/ethernet/intel/ice/ice_fwlog.c b/drivers/net/ethernet/intel/ice/ice_fwlog.c
+index 92b5dac481cd..4fd15387a7e5 100644
+--- a/drivers/net/ethernet/intel/ice/ice_fwlog.c
++++ b/drivers/net/ethernet/intel/ice/ice_fwlog.c
+@@ -188,6 +188,8 @@ void ice_fwlog_deinit(struct ice_hw *hw)
+ 	if (hw->bus.func)
+ 		return;
+ 
++	ice_debugfs_pf_deinit(hw->back);
++
+ 	/* make sure FW logging is disabled to not put the FW in a weird state
+ 	 * for the next driver load
+ 	 */
+diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
+index 77ba737a50df..6c0a621073aa 100644
+--- a/drivers/net/ethernet/intel/ice/ice_main.c
++++ b/drivers/net/ethernet/intel/ice/ice_main.c
+@@ -4574,90 +4574,6 @@ static void ice_decfg_netdev(struct ice_vsi *vsi)
+ 	vsi->netdev = NULL;
+ }
+ 
+-static int ice_start_eth(struct ice_vsi *vsi)
+-{
+-	int err;
+-
+-	err = ice_init_mac_fltr(vsi->back);
+-	if (err)
+-		return err;
+-
+-	err = ice_vsi_open(vsi);
+-	if (err)
+-		ice_fltr_remove_all(vsi);
+-
+-	return err;
+-}
+-
+-static void ice_stop_eth(struct ice_vsi *vsi)
+-{
+-	ice_fltr_remove_all(vsi);
+-	ice_vsi_close(vsi);
+-}
+-
+-static int ice_init_eth(struct ice_pf *pf)
+-{
+-	struct ice_vsi *vsi = ice_get_main_vsi(pf);
+-	int err;
+-
+-	if (!vsi)
+-		return -EINVAL;
+-
+-	/* init channel list */
+-	INIT_LIST_HEAD(&vsi->ch_list);
+-
+-	err = ice_cfg_netdev(vsi);
+-	if (err)
+-		return err;
+-	/* Setup DCB netlink interface */
+-	ice_dcbnl_setup(vsi);
+-
+-	err = ice_init_mac_fltr(pf);
+-	if (err)
+-		goto err_init_mac_fltr;
+-
+-	err = ice_devlink_create_pf_port(pf);
+-	if (err)
+-		goto err_devlink_create_pf_port;
+-
+-	SET_NETDEV_DEVLINK_PORT(vsi->netdev, &pf->devlink_port);
+-
+-	err = ice_register_netdev(vsi);
+-	if (err)
+-		goto err_register_netdev;
+-
+-	err = ice_tc_indir_block_register(vsi);
+-	if (err)
+-		goto err_tc_indir_block_register;
+-
+-	ice_napi_add(vsi);
+-
+-	return 0;
+-
+-err_tc_indir_block_register:
+-	ice_unregister_netdev(vsi);
+-err_register_netdev:
+-	ice_devlink_destroy_pf_port(pf);
+-err_devlink_create_pf_port:
+-err_init_mac_fltr:
+-	ice_decfg_netdev(vsi);
+-	return err;
+-}
+-
+-static void ice_deinit_eth(struct ice_pf *pf)
+-{
+-	struct ice_vsi *vsi = ice_get_main_vsi(pf);
+-
+-	if (!vsi)
+-		return;
+-
+-	ice_vsi_close(vsi);
+-	ice_unregister_netdev(vsi);
+-	ice_devlink_destroy_pf_port(pf);
+-	ice_tc_indir_block_unregister(vsi);
+-	ice_decfg_netdev(vsi);
+-}
+-
+ /**
+  * ice_wait_for_fw - wait for full FW readiness
+  * @hw: pointer to the hardware structure
+@@ -4683,7 +4599,7 @@ static int ice_wait_for_fw(struct ice_hw *hw, u32 timeout)
+ 	return -ETIMEDOUT;
+ }
+ 
+-static int ice_init_dev(struct ice_pf *pf)
++int ice_init_dev(struct ice_pf *pf)
+ {
+ 	struct device *dev = ice_pf_to_dev(pf);
+ 	struct ice_hw *hw = &pf->hw;
+@@ -4776,7 +4692,7 @@ static int ice_init_dev(struct ice_pf *pf)
+ 	return err;
+ }
+ 
+-static void ice_deinit_dev(struct ice_pf *pf)
++void ice_deinit_dev(struct ice_pf *pf)
+ {
+ 	ice_free_irq_msix_misc(pf);
+ 	ice_deinit_pf(pf);
+@@ -5081,31 +4997,47 @@ static void ice_deinit(struct ice_pf *pf)
+ /**
+  * ice_load - load pf by init hw and starting VSI
+  * @pf: pointer to the pf instance
++ *
++ * This function has to be called under devl_lock.
+  */
+ int ice_load(struct ice_pf *pf)
+ {
+-	struct ice_vsi_cfg_params params = {};
+ 	struct ice_vsi *vsi;
+ 	int err;
+ 
+-	err = ice_init_dev(pf);
++	devl_assert_locked(priv_to_devlink(pf));
++
++	vsi = ice_get_main_vsi(pf);
++
++	/* init channel list */
++	INIT_LIST_HEAD(&vsi->ch_list);
++
++	err = ice_cfg_netdev(vsi);
+ 	if (err)
+ 		return err;
+ 
+-	vsi = ice_get_main_vsi(pf);
++	/* Setup DCB netlink interface */
++	ice_dcbnl_setup(vsi);
+ 
+-	params = ice_vsi_to_params(vsi);
+-	params.flags = ICE_VSI_FLAG_INIT;
++	err = ice_init_mac_fltr(pf);
++	if (err)
++		goto err_init_mac_fltr;
+ 
+-	rtnl_lock();
+-	err = ice_vsi_cfg(vsi, &params);
++	err = ice_devlink_create_pf_port(pf);
+ 	if (err)
+-		goto err_vsi_cfg;
++		goto err_devlink_create_pf_port;
++
++	SET_NETDEV_DEVLINK_PORT(vsi->netdev, &pf->devlink_port);
+ 
+-	err = ice_start_eth(ice_get_main_vsi(pf));
++	err = ice_register_netdev(vsi);
++	if (err)
++		goto err_register_netdev;
++
++	err = ice_tc_indir_block_register(vsi);
+ 	if (err)
+-		goto err_start_eth;
+-	rtnl_unlock();
++		goto err_tc_indir_block_register;
++
++	ice_napi_add(vsi);
+ 
+ 	err = ice_init_rdma(pf);
+ 	if (err)
+@@ -5119,29 +5051,35 @@ int ice_load(struct ice_pf *pf)
+ 	return 0;
+ 
+ err_init_rdma:
+-	ice_vsi_close(ice_get_main_vsi(pf));
+-	rtnl_lock();
+-err_start_eth:
+-	ice_vsi_decfg(ice_get_main_vsi(pf));
+-err_vsi_cfg:
+-	rtnl_unlock();
+-	ice_deinit_dev(pf);
++	ice_tc_indir_block_unregister(vsi);
++err_tc_indir_block_register:
++	ice_unregister_netdev(vsi);
++err_register_netdev:
++	ice_devlink_destroy_pf_port(pf);
++err_devlink_create_pf_port:
++err_init_mac_fltr:
++	ice_decfg_netdev(vsi);
+ 	return err;
+ }
+ 
+ /**
+  * ice_unload - unload pf by stopping VSI and deinit hw
+  * @pf: pointer to the pf instance
++ *
++ * This function has to be called under devl_lock.
+  */
+ void ice_unload(struct ice_pf *pf)
+ {
++	struct ice_vsi *vsi = ice_get_main_vsi(pf);
++
++	devl_assert_locked(priv_to_devlink(pf));
++
+ 	ice_deinit_features(pf);
+ 	ice_deinit_rdma(pf);
+-	rtnl_lock();
+-	ice_stop_eth(ice_get_main_vsi(pf));
+-	ice_vsi_decfg(ice_get_main_vsi(pf));
+-	rtnl_unlock();
+-	ice_deinit_dev(pf);
++	ice_tc_indir_block_unregister(vsi);
++	ice_unregister_netdev(vsi);
++	ice_devlink_destroy_pf_port(pf);
++	ice_decfg_netdev(vsi);
+ }
+ 
+ /**
+@@ -5239,27 +5177,23 @@ ice_probe(struct pci_dev *pdev, const struct pci_device_id __always_unused *ent)
+ 	if (err)
+ 		goto err_init;
+ 
+-	err = ice_init_eth(pf);
++	devl_lock(priv_to_devlink(pf));
++	err = ice_load(pf);
++	devl_unlock(priv_to_devlink(pf));
+ 	if (err)
+-		goto err_init_eth;
+-
+-	err = ice_init_rdma(pf);
+-	if (err)
+-		goto err_init_rdma;
++		goto err_load;
+ 
+ 	err = ice_init_devlink(pf);
+ 	if (err)
+ 		goto err_init_devlink;
+ 
+-	ice_init_features(pf);
+-
+ 	return 0;
+ 
+ err_init_devlink:
+-	ice_deinit_rdma(pf);
+-err_init_rdma:
+-	ice_deinit_eth(pf);
+-err_init_eth:
++	devl_lock(priv_to_devlink(pf));
++	ice_unload(pf);
++	devl_unlock(priv_to_devlink(pf));
++err_load:
+ 	ice_deinit(pf);
+ err_init:
+ 	pci_disable_device(pdev);
+@@ -5342,8 +5276,6 @@ static void ice_remove(struct pci_dev *pdev)
+ 		msleep(100);
+ 	}
+ 
+-	ice_debugfs_exit();
+-
+ 	if (test_bit(ICE_FLAG_SRIOV_ENA, pf->flags)) {
+ 		set_bit(ICE_VF_RESETS_DISABLED, pf->state);
+ 		ice_free_vfs(pf);
+@@ -5357,12 +5289,14 @@ static void ice_remove(struct pci_dev *pdev)
+ 
+ 	if (!ice_is_safe_mode(pf))
+ 		ice_remove_arfs(pf);
+-	ice_deinit_features(pf);
++
+ 	ice_deinit_devlink(pf);
+-	ice_deinit_rdma(pf);
+-	ice_deinit_eth(pf);
+-	ice_deinit(pf);
+ 
++	devl_lock(priv_to_devlink(pf));
++	ice_unload(pf);
++	devl_unlock(priv_to_devlink(pf));
++
++	ice_deinit(pf);
+ 	ice_vsi_release_all(pf);
+ 
+ 	ice_setup_mc_magic_wake(pf);
+@@ -5847,6 +5781,7 @@ module_init(ice_module_init);
+ static void __exit ice_module_exit(void)
+ {
+ 	pci_unregister_driver(&ice_driver);
++	ice_debugfs_exit();
+ 	destroy_workqueue(ice_wq);
+ 	destroy_workqueue(ice_lag_wq);
+ 	pr_info("module unloaded\n");
+-- 
+2.40.1
+
