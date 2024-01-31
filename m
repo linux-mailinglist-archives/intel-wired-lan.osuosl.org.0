@@ -1,106 +1,88 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 63553843F4A
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 31 Jan 2024 13:18:02 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3C9B884404E
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 31 Jan 2024 14:17:32 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 2AF7640929;
-	Wed, 31 Jan 2024 12:17:59 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2AF7640929
+	by smtp1.osuosl.org (Postfix) with ESMTP id D2A9B8449F;
+	Wed, 31 Jan 2024 13:17:30 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D2A9B8449F
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1706703479;
-	bh=wXe4LtPoUDxcEkwSyc3xDl5/BDGxRhVH0ZuJoP4XBmM=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=J/+Tqg8jKIfe15rQ3LKFPe8rL/Z8AS+TEL9b3hfnTOEmGlHoT7716a/UZFraVtAMn
-	 Ub+3HGSCajOpxCeP9TaWxpS72tRMUbrm2NHIUaL0o87oZKIEl6ni5AvnpfKDJ2Gr88
-	 kFJzKxhjE5+qOaDSQZvkwd89LY1LUpx8kRF7UqsReOSSuxfj+Ex8NJFmXXex5LIxBW
-	 +fZ5kl1b00kFpXxWRnjDbeRVCVojpNEN2WOD/5tqEmoZWoXlDc58jZZcuyxgyrEHrf
-	 uCa0NsqkQ4Ldlot3mDA14140YIBCELjqH+2HrubICmz9IjRt9/rCJ7n8dXrA8tgdh8
-	 xeXBNye/faruA==
+	s=default; t=1706707050;
+	bh=//z4Y/BgNHdCR9hM9Ii+VZgxSjTBvGsBMSlKT9iydbU=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=Wjn8XTeaRSqInpcvGJmzNYol1tbGbePezp+VHVt5tYycLvKBxiqHQNXodJcyGyfGm
+	 7xwoZ9GnaNUwo2aI56jUHddzfH4j7T7aTElf38ShhIx/UEtGPtFAHFtEIApV/5LZmA
+	 udYv0B/yZV5kUba1buAf9pEdCo8a7XLirjjt+3KG+KrkYZZR1a5vkFSKjVJgD6hcUj
+	 mMeQc4rZYoL1il/7SMKdAaAxpD5oWEjC/EJ9E2RmU/fHGro3pEppUyKETnit257rX4
+	 Hsts/NVyAHW5EKrmRkcijeL0rKAKEgLDW0+hFIPU6ol7hiRIsrEByZstYTUuszuxNt
+	 m1toBaEuWo4Qw==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id TjhAx4kd7dpS; Wed, 31 Jan 2024 12:17:58 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id MZkG6lqR9Xb6; Wed, 31 Jan 2024 13:17:30 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id E0464401C8;
-	Wed, 31 Jan 2024 12:17:57 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E0464401C8
+	by smtp1.osuosl.org (Postfix) with ESMTP id C563A8448F;
+	Wed, 31 Jan 2024 13:17:29 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org C563A8448F
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id A94D41BF5A2
- for <intel-wired-lan@lists.osuosl.org>; Wed, 31 Jan 2024 12:17:52 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 579261BF325
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 31 Jan 2024 13:17:24 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 7FBB940350
- for <intel-wired-lan@lists.osuosl.org>; Wed, 31 Jan 2024 12:17:52 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 7FBB940350
+ by smtp4.osuosl.org (Postfix) with ESMTP id 3C0DA41F37
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 31 Jan 2024 13:17:24 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3C0DA41F37
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id FuJ0ucc51jwO for <intel-wired-lan@lists.osuosl.org>;
- Wed, 31 Jan 2024 12:17:50 +0000 (UTC)
-Received: from mail-lf1-x12c.google.com (mail-lf1-x12c.google.com
- [IPv6:2a00:1450:4864:20::12c])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 646BC400F3
- for <intel-wired-lan@lists.osuosl.org>; Wed, 31 Jan 2024 12:17:49 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 646BC400F3
-Received: by mail-lf1-x12c.google.com with SMTP id
- 2adb3069b0e04-51124d86022so1013851e87.0
- for <intel-wired-lan@lists.osuosl.org>; Wed, 31 Jan 2024 04:17:49 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1706703468; x=1707308268;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=wXe4LtPoUDxcEkwSyc3xDl5/BDGxRhVH0ZuJoP4XBmM=;
- b=TAtxsPeW/kTedpy7h2ouAbrV/8UCrOEwUvshYD+QeKLC2ho8HPh3rdjp8rz9eVmU/t
- Rnuqz+gwsNoCiMGGfu3F9Zr2KZPqP+DMzT1TGXfrXxhOinYk0/xz0IQanu5Zfa+NoBVN
- +xcH6oC1zEtErqnEX2M1+0yzrxJmnioMRy1BXenLKDzbdCrmIRywTAhWaug6uNeVda78
- UR73XI9czdlKz/mAcgFe+IEfgemTOCqzEcPn3wdfduaQmPgELo9voYUOebN37sGCuTRS
- 8SZaBhRj3GdIwSKiGyTfcxYCSipjKFDl+lm5OQ7BD/Onq8TfwR33kRah2Zw3H2bpqqK+
- CP1A==
-X-Gm-Message-State: AOJu0YyWcFJZzOfCmc1cpz0q+QzC8pisRqCtnxuRnx1Cq4ZZ7sk2yQAl
- cQv/c2Tz4e9yNZgCyFZHpC+hu17F1Yj8i0fuDOOYmxqjLFOj88WGg1CfoVxox04=
-X-Google-Smtp-Source: AGHT+IFUFPGIQroV2J5G60/Il9MN8cQnsO4oiEKkBNSi26u7CBrurHiEZzGYyP88mKWGmEMZNSSNNQ==
-X-Received: by 2002:a05:6512:3d9f:b0:511:16df:b31 with SMTP id
- k31-20020a0565123d9f00b0051116df0b31mr1256850lfv.51.1706703467700; 
- Wed, 31 Jan 2024 04:17:47 -0800 (PST)
-X-Forwarded-Encrypted: i=0;
- AJvYcCWIohaufuMJ3i6wFwhAyNtE7sA3ssCtR5KPQ8W48Dkn3IuFScWcWCH4IqJh79DgVP0xKVBtpWfo8jvTe7OebI0j25oBbhLyitAZ63qlVjayxo+faEXEJMRqKR+sey/51NpKSLLE1y1TDrY0sW57iQM/skjCSrsYnomPE0wgDYetnwgs88FXJhl+5twVH5zgaeZMwW/M2ECIC/f0WZSWBAIX+MiD18I40Nx81niwQoodvqHXqeZcRy3OMMVXVRV5ceAoJQ9U8jr+
-Received: from localhost ([193.47.165.251]) by smtp.gmail.com with ESMTPSA id
- hn3-20020a05600ca38300b0040ef67bd244sm1425552wmb.17.2024.01.31.04.17.46
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 31 Jan 2024 04:17:47 -0800 (PST)
-Date: Wed, 31 Jan 2024 13:17:44 +0100
-From: Jiri Pirko <jiri@resnulli.us>
-To: Michal Schmidt <mschmidt@redhat.com>
-Message-ID: <Zbo6aIJMckCdObs1@nanopsycho>
-References: <20240131115823.541317-1-mschmidt@redhat.com>
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id hkznFENfvx6V for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 31 Jan 2024 13:17:23 +0000 (UTC)
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 5F26341C5F
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 31 Jan 2024 13:17:23 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5F26341C5F
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-512-99WzZMLDNzuiVzbZ1JrgMA-1; Wed, 31 Jan 2024 08:17:18 -0500
+X-MC-Unique: 99WzZMLDNzuiVzbZ1JrgMA-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.2])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 4A22C835381;
+ Wed, 31 Jan 2024 13:17:17 +0000 (UTC)
+Received: from p1.luc.cera.cz (unknown [10.45.225.38])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 3FCF7400DF3E;
+ Wed, 31 Jan 2024 13:17:15 +0000 (UTC)
+From: Ivan Vecera <ivecera@redhat.com>
+To: netdev@vger.kernel.org
+Date: Wed, 31 Jan 2024 14:17:14 +0100
+Message-ID: <20240131131714.23497-1-ivecera@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20240131115823.541317-1-mschmidt@redhat.com>
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.2
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=resnulli-us.20230601.gappssmtp.com; s=20230601; t=1706703468; x=1707308268;
- darn=lists.osuosl.org; 
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=wXe4LtPoUDxcEkwSyc3xDl5/BDGxRhVH0ZuJoP4XBmM=;
- b=T1k/GJO5rI2KXXoyHkNBF9K5D5vfxpI2yNAYhQf7ccZeCLgdeaK7lChFdbR3FgjGmQ
- 4cAb8wAhXmCxDuwgEKVZ8qMi4OolpINWwYV1MyTxuqM88hJD4vu5Hg5Px+DoXxNBfoJu
- gAZUJ1zvptXC0TSHgOwn6caLiDebLcFAUJ3ZJdcnojGm7fTPdicmIsZi9Pi0OnIicdW8
- 8nVYni/KYSMUGDeuAx8O1uPFMplWd4hz1SW+pFxlm/9miE0uHWCXgykWdg07t0ulANPK
- R/vtpsAWXxKne9inKzTKyjdhS5azIptaEcndCbnsP+BtM+P0VWsS32Ngf98nYfE9d4j5
- 96yQ==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=resnulli-us.20230601.gappssmtp.com
- header.i=@resnulli-us.20230601.gappssmtp.com header.a=rsa-sha256
- header.s=20230601 header.b=T1k/GJO5
-Subject: Re: [Intel-wired-lan] [PATCH net] ice: fix unaligned access in
- ice_create_lag_recipe
+ d=redhat.com; 
+ s=mimecast20190719; t=1706707042;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=//z4Y/BgNHdCR9hM9Ii+VZgxSjTBvGsBMSlKT9iydbU=;
+ b=Ot2XDO5IuPetsekNuj2TSQqXzBCbf2BpNj7N2qKTXN36eogcpYhlwrv0l/Wg26EyWe8eZC
+ Tw6MTiHF9H1xDCodfgL4msbkuPwu/N77CMxSIVlqleBa4kueCN15VgxFSOl1GTvp8LUeJx
+ igUFBvzHTnQ3jP3jKlOXh8dXo3ZDsL8=
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
+ header.a=rsa-sha256 header.s=mimecast20190719 header.b=Ot2XDO5I
+Subject: [Intel-wired-lan] [PATCH net] i40e: Do not allow untrusted VF to
+ remove administratively set MAC
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -113,109 +95,125 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Daniel Machon <daniel.machon@microchip.com>, netdev@vger.kernel.org,
+Cc: Sylwester Dziedziuch <sylwesterx.dziedziuch@intel.com>,
+ Mitch Williams <mitch.a.williams@intel.com>,
  Jesse Brandeburg <jesse.brandeburg@intel.com>,
+ open list <linux-kernel@vger.kernel.org>, Eric Dumazet <edumazet@google.com>,
  Tony Nguyen <anthony.l.nguyen@intel.com>,
- Dave Ertman <david.m.ertman@intel.com>, intel-wired-lan@lists.osuosl.org
+ Jeff Kirsher <jeffrey.t.kirsher@intel.com>, Simon Horman <horms@kernel.org>,
+ Mateusz Palczewski <mateusz.palczewski@intel.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ "David S. Miller" <davem@davemloft.net>,
+ "moderated list:INTEL ETHERNET DRIVERS" <intel-wired-lan@lists.osuosl.org>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Wed, Jan 31, 2024 at 12:58:23PM CET, mschmidt@redhat.com wrote:
->new_rcp->recipe_bitmap was written to as if it were an aligned bitmap.
->It is an 8-byte array, but aligned only to 4.
->Use put_unaligned to set its value.
->
->Additionally, values in ice commands are typically in little-endian.
->I assume the recipe bitmap should be too, so use the *_le64 conversion.
->I don't have a big-endian system with ice to test this.
->
->I tested that the driver does not crash when probing on aarch64 anymore,
->which is good enough for me. I don't know if the LAG feature actually
->works.
->
->This is what the crash looked like without the fix:
->[   17.599009] Unable to handle kernel paging request at virtual address ffff07ff9c6dc004
->[   17.599011] Mem abort info:
->[   17.599011]   ESR = 0x0000000096000021
->[   17.599012]   EC = 0x25: DABT (current EL), IL = 32 bits
->[   17.599013]   SET = 0, FnV = 0
->[   17.599014]   EA = 0, S1PTW = 0
->[   17.599014]   FSC = 0x21: alignment fault
->[   17.599015] Data abort info:
->[   17.599016]   ISV = 0, ISS = 0x00000021, ISS2 = 0x00000000
->[   17.599016]   CM = 0, WnR = 0, TnD = 0, TagAccess = 0
->[   17.599017]   GCS = 0, Overlay = 0, DirtyBit = 0, Xs = 0
->[   17.599019] swapper pgtable: 4k pages, 48-bit VAs, pgdp=0000080dd6bd0000
->[   17.599020] [ffff07ff9c6dc004] pgd=1800083fffacf003, p4d=1800083fffacf003, pud=1800083ffface003, pmd=1800083fff9ea003, pte=006808001c6dcf07
->[   17.599025] Internal error: Oops: 0000000096000021 [#1] SMP
->[   17.599027] Modules linked in: crct10dif_ce ghash_ce sha2_ce sha256_arm64 mlx5_core sha1_ce sbsa_gwdt ice(+) nvme nvme_core mlxfw igb tls nvme_common psample i2c_algo_bit gnss pci_hyperv_intf i2c_designware_platform i2c_designware_core xgene_hwmon dm_mirror dm_region_hash dm_log dm_mod
->[   17.599043] CPU: 0 PID: 18 Comm: kworker/0:1 Not tainted 5.14.0-407.el9.aarch64 #1
->[   17.599044] Hardware name: GIGABYTE R272-P31-00/MP32-AR1-00, BIOS F31L (SCP: 2.10.20220531) 09/29/2022
->[   17.599046] Workqueue: events work_for_cpu_fn
->[   17.599051] pstate: 60400009 (nZCv daif +PAN -UAO -TCO -DIT -SSBS BTYPE=--)
->[   17.599053] pc : ice_create_lag_recipe.constprop.0+0xbc/0x11c [ice]
->[   17.599091] lr : ice_create_lag_recipe.constprop.0+0x54/0x11c [ice]
->[   17.599121] sp : ffff8000084a3c50
->[   17.599122] x29: ffff8000084a3c50 x28: ffffabc4a6790f00 x27: ffffabc4a6200fa0
->[   17.599124] x26: ffff07ff809e5c34 x25: ffff083e5f41980d x24: ffff07ff8610a0c0
->[   17.599126] x23: 0000000000000000 x22: ffff07ff9fe894c0 x21: ffff07ffb771a460
->[   17.599128] x20: ffff07ff9c6dc000 x19: 0000000000000000 x18: 0000000000000014
->[   17.599130] x17: 00000000c3142fa2 x16: 000000007e77e163 x15: 0000000018c66856
->[   17.599132] x14: 00000000b8afd426 x13: 000000007e8b3b19 x12: 000000004a34fdf7
->[   17.599134] x11: 00000000a7cb2fcc x10: 00000000ffffff8a x9 : 0000000000000000
->[   17.599136] x8 : 0000002000000005 x7 : 0000000000000001 x6 : ffffabc487a054d8
->[   17.599138] x5 : ffff07ff9c6dc004 x4 : 000000000000000a x3 : 0000000000000000
->[   17.599140] x2 : 0000000000000000 x1 : 0000000000000400 x0 : ffff07ff9c6dc004
->[   17.599142] Call trace:
->[   17.599143]  ice_create_lag_recipe.constprop.0+0xbc/0x11c [ice]
->[   17.599172]  ice_init_lag+0xcc/0x22c [ice]
->[   17.599201]  ice_init_features+0x160/0x2b4 [ice]
->[   17.599230]  ice_probe+0x2d0/0x30c [ice]
->[   17.599258]  local_pci_probe+0x58/0xb0
->[   17.599262]  work_for_cpu_fn+0x20/0x30
->[   17.599264]  process_one_work+0x1e4/0x4c0
->[   17.599266]  worker_thread+0x220/0x450
->[   17.599268]  kthread+0xe8/0xf4
->[   17.599270]  ret_from_fork+0x10/0x20
->[   17.599273] Code: 380044a4 f800429f 8b000ca0 d503201f (f821301f)
->[   17.599274] ---[ end trace 168d79e2ecf9f7e3 ]---
->[   17.599275] Kernel panic - not syncing: Oops: Fatal exception
->[   17.893321] SMP: stopping secondary CPUs
->[   17.897374] Kernel Offset: 0x2bc49c400000 from 0xffff800008000000
->[   17.903453] PHYS_OFFSET: 0x80000000
->[   17.906928] CPU features: 0x0,00000001,70028143,1041720b
->[   17.912226] Memory Limit: none
->[   17.915268] ---[ end Kernel panic - not syncing: Oops: Fatal exception ]---
->
->Fixes: 1e0f9881ef79 ("ice: Flesh out implementation of support for SRIOV on bonded interface")
->Signed-off-by: Michal Schmidt <mschmidt@redhat.com>
->---
-> drivers/net/ethernet/intel/ice/ice_lag.c | 4 +---
-> 1 file changed, 1 insertion(+), 3 deletions(-)
->
->diff --git a/drivers/net/ethernet/intel/ice/ice_lag.c b/drivers/net/ethernet/intel/ice/ice_lag.c
->index 2a25323105e5..d4848f6fe919 100644
->--- a/drivers/net/ethernet/intel/ice/ice_lag.c
->+++ b/drivers/net/ethernet/intel/ice/ice_lag.c
->@@ -1829,9 +1829,7 @@ static int ice_create_lag_recipe(struct ice_hw *hw, u16 *rid,
-> 	new_rcp->content.act_ctrl_fwd_priority = prio;
-> 	new_rcp->content.rid = *rid | ICE_AQ_RECIPE_ID_IS_ROOT;
-> 	new_rcp->recipe_indx = *rid;
->-	bitmap_zero((unsigned long *)new_rcp->recipe_bitmap,
->-		    ICE_MAX_NUM_RECIPES);
->-	set_bit(*rid, (unsigned long *)new_rcp->recipe_bitmap);
->+	put_unaligned_le64(BIT_ULL(*rid), new_rcp->recipe_bitmap);
+Currently when PF administratively sets VF's MAC address and the VF
+is put down (VF tries to delete all MACs) then the MAC is removed
+from MAC filters and primary VF MAC is zeroed.
 
-Looks like there might be another incorrect bitmap usage for this in
-ice_add_sw_recipe(). Care to fix it there as well?
+Do not allow untrusted VF to remove primary MAC when it was set
+administratively by PF.
 
-Otherwise, the patch looks fine.
+Reproducer:
+1) Create VF
+2) Set VF interface up
+3) Administratively set the VF's MAC
+4) Put VF interface down
 
+[root@host ~]# echo 1 > /sys/class/net/enp2s0f0/device/sriov_numvfs
+[root@host ~]# ip link set enp2s0f0v0 up
+[root@host ~]# ip link set enp2s0f0 vf 0 mac fe:6c:b5:da:c7:7d
+[root@host ~]# ip link show enp2s0f0
+23: enp2s0f0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP mode DEFAULT group default qlen 1000
+    link/ether 3c:ec:ef:b7:dd:04 brd ff:ff:ff:ff:ff:ff
+    vf 0     link/ether fe:6c:b5:da:c7:7d brd ff:ff:ff:ff:ff:ff, spoof checking on, link-state auto, trust off
+[root@host ~]# ip link set enp2s0f0v0 down
+[root@host ~]# ip link show enp2s0f0
+23: enp2s0f0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP mode DEFAULT group default qlen 1000
+    link/ether 3c:ec:ef:b7:dd:04 brd ff:ff:ff:ff:ff:ff
+    vf 0     link/ether 00:00:00:00:00:00 brd ff:ff:ff:ff:ff:ff, spoof checking on, link-state auto, trust off
 
-> 
-> 	err = ice_aq_add_recipe(hw, new_rcp, 1, NULL);
-> 	if (err)
->-- 
->2.43.0
->
->
+Fixes: 700bbf6c1f9e ("i40e: allow VF to remove any MAC filter")
+Fixes: ceb29474bbbc ("i40e: Add support for VF to specify its primary MAC address")
+Signed-off-by: Ivan Vecera <ivecera@redhat.com>
+---
+ .../ethernet/intel/i40e/i40e_virtchnl_pf.c    | 38 ++++++++++++++++---
+ 1 file changed, 33 insertions(+), 5 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
+index 908cdbd3ec5d..b34c71770887 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
+@@ -2848,6 +2848,24 @@ static int i40e_vc_get_stats_msg(struct i40e_vf *vf, u8 *msg)
+ 				      (u8 *)&stats, sizeof(stats));
+ }
+ 
++/**
++ * i40e_can_vf_change_mac
++ * @vf: pointer to the VF info
++ *
++ * Return true if the VF is allowed to change its MAC filters, false otherwise
++ */
++static bool i40e_can_vf_change_mac(struct i40e_vf *vf)
++{
++	/* If the VF MAC address has been set administratively (via the
++	 * ndo_set_vf_mac command), then deny permission to the VF to
++	 * add/delete unicast MAC addresses, unless the VF is trusted
++	 */
++	if (vf->pf_set_mac && !vf->trusted)
++		return false;
++
++	return true;
++}
++
+ #define I40E_MAX_MACVLAN_PER_HW 3072
+ #define I40E_MAX_MACVLAN_PER_PF(num_ports) (I40E_MAX_MACVLAN_PER_HW /	\
+ 	(num_ports))
+@@ -2907,8 +2925,8 @@ static inline int i40e_check_vf_permission(struct i40e_vf *vf,
+ 		 * The VF may request to set the MAC address filter already
+ 		 * assigned to it so do not return an error in that case.
+ 		 */
+-		if (!test_bit(I40E_VIRTCHNL_VF_CAP_PRIVILEGE, &vf->vf_caps) &&
+-		    !is_multicast_ether_addr(addr) && vf->pf_set_mac &&
++		if (!i40e_can_vf_change_mac(vf) &&
++		    !is_multicast_ether_addr(addr) &&
+ 		    !ether_addr_equal(addr, vf->default_lan_addr.addr)) {
+ 			dev_err(&pf->pdev->dev,
+ 				"VF attempting to override administratively set MAC address, bring down and up the VF interface to resume normal operation\n");
+@@ -3114,19 +3132,29 @@ static int i40e_vc_del_mac_addr_msg(struct i40e_vf *vf, u8 *msg)
+ 			ret = -EINVAL;
+ 			goto error_param;
+ 		}
+-		if (ether_addr_equal(al->list[i].addr, vf->default_lan_addr.addr))
+-			was_unimac_deleted = true;
+ 	}
+ 	vsi = pf->vsi[vf->lan_vsi_idx];
+ 
+ 	spin_lock_bh(&vsi->mac_filter_hash_lock);
+ 	/* delete addresses from the list */
+-	for (i = 0; i < al->num_elements; i++)
++	for (i = 0; i < al->num_elements; i++) {
++		const u8 *addr = al->list[i].addr;
++
++		/* Allow to delete VF primary MAC only if it was not set
++		 * administratively by PF or if VF is trusted.
++		 */
++		if (ether_addr_equal(addr, vf->default_lan_addr.addr) &&
++		    i40e_can_vf_change_mac(vf))
++			was_unimac_deleted = true;
++		else
++			continue;
++
+ 		if (i40e_del_mac_filter(vsi, al->list[i].addr)) {
+ 			ret = -EINVAL;
+ 			spin_unlock_bh(&vsi->mac_filter_hash_lock);
+ 			goto error_param;
+ 		}
++	}
+ 
+ 	spin_unlock_bh(&vsi->mac_filter_hash_lock);
+ 
+-- 
+2.39.3
+
