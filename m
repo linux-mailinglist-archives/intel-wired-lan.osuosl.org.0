@@ -2,96 +2,105 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9695584388F
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 31 Jan 2024 09:11:12 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 357C38439D7
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 31 Jan 2024 09:55:33 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id E341941F30;
-	Wed, 31 Jan 2024 08:11:10 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E341941F30
+	by smtp4.osuosl.org (Postfix) with ESMTP id CB4FC410B5;
+	Wed, 31 Jan 2024 08:55:30 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org CB4FC410B5
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1706688670;
-	bh=Wg08B1khIqon35bYjLh0nNz7ZG8WHYUMXftoecarnmQ=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
+	s=default; t=1706691330;
+	bh=1zAz2+MFVhaNzjF0CUHFlp2iK4QKE8zWsjZLLf44jk4=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=7IHNM5H2XeatWWkaujVgDGDudrgQcbs85w3uTtxtD7zG6zq/BqmTRL+n3//5Nxd7M
-	 0djUhvyNf2sK92TOBSko76jkdZ+Sjl9LemKeSQ86yeyuY1DJfacw2lNBRoLNahDHHC
-	 NgThwoNdzWDgwwm2RSnIqwIZ50JazbPaAwp95TuBbo/PBmhr2DqCVdLHBdQUoHXOeM
-	 IEE+7YdMF8F9HFCCHODba6C0R/diXG1+Fjxu8qh8W1tJk2i/ohn65VqWqrEK3SJsB4
-	 DDgm02KVh9Uvaue7/ykGqLhHsBH2Yr9Z5tytPQCQxCo55SHxbHA4HmIiQ+bMdJyPTJ
-	 t6JkcSOUnAqhQ==
+	 Cc:From;
+	b=SzjdmFtC5Q9lTN7HxT3eiu86bPbFQGyc5qYg0dfsb9/+irZckhpRN7Xeqw6xhYI6i
+	 /BAtgAXJNiBNKyTJtAXqh+W7dkX3wj/rNgQW0N5uMgjXRp/AP7hIdzew1jN4bxZ2KG
+	 zFNnFbyC2wsTL2ZBBfZD+D/44dwc9qoMBNFjwd1cJHy0JFaqtxeDOUyzSZbL9isYrh
+	 TgiZoawrRxH+vz2DTwagboPY2wAZ92qSqXzUUAtCVWitu5jr9LHkjzcx0fYXP2J2eT
+	 OMGhdNyQzTcHhVaL0rrws94VWoh3Y+1a4+4ZlYbfxFY5KBM3y6afyAWlt81vvVbp1q
+	 y+FVt2mkY6bbg==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id BXE3tD6VVJ7c; Wed, 31 Jan 2024 08:11:10 +0000 (UTC)
+	with ESMTP id aN_cRvT_ggvl; Wed, 31 Jan 2024 08:55:30 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 953BA41F25;
-	Wed, 31 Jan 2024 08:11:09 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 953BA41F25
-X-Original-To: intel-wired-lan@osuosl.org
-Delivered-To: intel-wired-lan@osuosl.org
+	by smtp4.osuosl.org (Postfix) with ESMTP id 0720A409C2;
+	Wed, 31 Jan 2024 08:55:29 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0720A409C2
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 436271BF846
- for <intel-wired-lan@osuosl.org>; Wed, 31 Jan 2024 08:11:03 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 21B241BF846
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 31 Jan 2024 08:55:25 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 19D9F41F1E
- for <intel-wired-lan@osuosl.org>; Wed, 31 Jan 2024 08:11:03 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 19D9F41F1E
+ by smtp4.osuosl.org (Postfix) with ESMTP id E86C2409C2
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 31 Jan 2024 08:55:24 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E86C2409C2
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id yLCTzhBUIQ91 for <intel-wired-lan@osuosl.org>;
- Wed, 31 Jan 2024 08:11:02 +0000 (UTC)
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.129.124])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 6396C41F18
- for <intel-wired-lan@osuosl.org>; Wed, 31 Jan 2024 08:11:02 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6396C41F18
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-499-I8WGRlxsP_yoZa-BpYO5UQ-1; Wed, 31 Jan 2024 03:10:59 -0500
-X-MC-Unique: I8WGRlxsP_yoZa-BpYO5UQ-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
- [10.11.54.6])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 6064E87B2A2
- for <intel-wired-lan@osuosl.org>; Wed, 31 Jan 2024 08:10:59 +0000 (UTC)
-Received: from [10.45.225.38] (unknown [10.45.225.38])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 235A72166B31
- for <intel-wired-lan@osuosl.org>; Wed, 31 Jan 2024 08:10:59 +0000 (UTC)
-Message-ID: <8ad04f3f-ff6f-4a16-8740-8bcf32f5cac2@redhat.com>
-Date: Wed, 31 Jan 2024 09:10:58 +0100
+ with ESMTP id DhG77_tDHp6j for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 31 Jan 2024 08:55:23 +0000 (UTC)
+Received: from mail-wr1-x436.google.com (mail-wr1-x436.google.com
+ [IPv6:2a00:1450:4864:20::436])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 60C2D4097A
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 31 Jan 2024 08:55:22 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 60C2D4097A
+Received: by mail-wr1-x436.google.com with SMTP id
+ ffacd0b85a97d-33b0763bbc5so80984f8f.0
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 31 Jan 2024 00:55:22 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1706691321; x=1707296121;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=1zAz2+MFVhaNzjF0CUHFlp2iK4QKE8zWsjZLLf44jk4=;
+ b=DMLe9AZtD4VqGm2whcBmAea2o5uF/RqreX61u34Tt/4zn6XFUymcxyQWahfSo+m4pJ
+ AyKbSyUtZU6oZ+xmJvvYIRgHKPa1aD2ebRLfw+0KqyqX/N8gQvA+hZKRycd+XItNDhtf
+ C3JYOIYfi50V8r9VrCUUZHmFBDkvlTT7WneaZsmfXfJ3DB1DL43riqff9OxLMlvherRB
+ hjI7fkdITlwaAnRxmxp0FY9D8T8Cdfqu/s2tntuVu4d3uOgI+D8sgf7jUSB1yWA2sbd8
+ 2UaYzYnCg3x13V3Unk3QMpanTRKAyQ2kj+B5J3FDu+GPzJuyRSZTvlnzIuO4u2rdqmY+
+ hTpw==
+X-Gm-Message-State: AOJu0YznqElcR/pa7MJRhbatddKFKJpdLa+SjsMwhqpZkppv79ryok8k
+ bQB7dvqMOdOgLwC9/ctFk2wVa19jxFZLn3umgCzUrTuTB2v9v0CBP8EaPoxlY7M=
+X-Google-Smtp-Source: AGHT+IEDaB/xrJB9e/nbcOYh/jzhcipifSUQvbsXwmciEyC3bvRWprUeAzSWNd6QobawgPm3fQCCjQ==
+X-Received: by 2002:adf:ffc8:0:b0:33b:290:253 with SMTP id
+ x8-20020adfffc8000000b0033b02900253mr711420wrs.59.1706691321011; 
+ Wed, 31 Jan 2024 00:55:21 -0800 (PST)
+X-Forwarded-Encrypted: i=0;
+ AJvYcCVijmjMIBMPrVUDqpjOW8DpKrsuG/p+eiyjvljc+dEmxB6q2VcNXli1GoNTXWTgsQuSMqmzskCR7aGyn4nRAwYXYG/UmYNOWWOF1uwNI61zppf43lGmYYizGcUNUFCZZQNUGCpi7w4ZtgCB0WBCIqRnfLxpSC7406NOM6iHs7q8O8FAcRbp9PGzvBG0YR8wPtWvmVSfJPd2E13lM01BVx/i0geEPVTkXUA85quOLBts/lbIapx0m+Jo+E9NT+8V7zgl1CDqyXsAmJTXcg8qrf6IjK7V6+Bm05MpE4tIP18QxWOvc6hJnHXPaG/FBv9hHppA6A2RVm0KvkfqxOQuL2hN0bjIcYdO2SCRlhD74ep7iaQ/4VlTQOZdnqM7BYSCfXvf0IC11iSL8TmQkogGy7tRWyt308LRGyblF0Yop5iZy4AyE/JLjXz8YbuWg/lkm1NH80kP
+Received: from localhost ([193.47.165.251]) by smtp.gmail.com with ESMTPSA id
+ ay12-20020a5d6f0c000000b0033ad47d7b86sm12915043wrb.27.2024.01.31.00.55.19
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 31 Jan 2024 00:55:20 -0800 (PST)
+Date: Wed, 31 Jan 2024 09:55:17 +0100
+From: Jiri Pirko <jiri@resnulli.us>
+To: karthiksundaravel <ksundara@redhat.com>
+Message-ID: <ZboK9aHNTngj71ue@nanopsycho>
+References: <20240131080847.30614-1-ksundara@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: intel-wired-lan@osuosl.org
-References: <20230817192816.969638-1-aleksandr.loktionov@intel.com>
-From: Ivan Vecera <ivecera@redhat.com>
-In-Reply-To: <20230817192816.969638-1-aleksandr.loktionov@intel.com>
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.6
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240131080847.30614-1-ksundara@redhat.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=redhat.com; 
- s=mimecast20190719; t=1706688661;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=Wg08B1khIqon35bYjLh0nNz7ZG8WHYUMXftoecarnmQ=;
- b=Fs1h7foFVVW/XeUKoj4X1fsdej7Yx1A5JYIbiu9vMWo+IrStQw/nRe5gK0l1LwZBN98y9r
- 3nsoUYG4GgSEetRsDQhtvPFmndLNfPr46iRKhbZ8snCd+03YW3FRdF7yncbYM2yGWzw2sD
- GyqvuREHXcgBgqmArV8Z1NGwCdHhPwc=
+ d=resnulli-us.20230601.gappssmtp.com; s=20230601; t=1706691321; x=1707296121;
+ darn=lists.osuosl.org; 
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+ bh=1zAz2+MFVhaNzjF0CUHFlp2iK4QKE8zWsjZLLf44jk4=;
+ b=STssBScGRBNjnUbjXBbyvkemg5TvNBjhLa3gNqkPtWgSff1U0PTaMIhlUMuek5Kp2h
+ 6uMAyi/HP6/ZNH3UKPbG69RFBLSJj3QHxqQ7Kn3vAACP0QWXg9GAoxKXDduYIAamDJeE
+ wC749IbZdLmXdTvOHKMp+CzAArJwPo0cKlgLTRr3rsQ1w0mHssxzxGqzvtVAy2TgcxA+
+ CjklvpiDptuCS+BT192uh+o79EDBdwozZhpmTc1lboWJqwGHeYmk/MuSd8VEfV0W6YWV
+ pzDuY76UCULgG6rT/VTxLB5ucKebPWSSbIlWflUXyiTLDF92PPabzZIR+dJFNTef1n06
+ QjNw==
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
- header.a=rsa-sha256 header.s=mimecast20190719 header.b=Fs1h7foF
-Subject: Re: [Intel-wired-lan] [PATCH iwl-net v3] i40e: fix 32bit FW gtime
- wrapping issue
+ dkim=pass (2048-bit key) header.d=resnulli-us.20230601.gappssmtp.com
+ header.i=@resnulli-us.20230601.gappssmtp.com header.a=rsa-sha256
+ header.s=20230601 header.b=STssBScG
+Subject: Re: [Intel-wired-lan] [PATCH] ice: Add get/set hw address for VF
+ representor ports
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -104,37 +113,26 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: vchundur@redhat.com, aharivel@redhat.com, cfontain@redhat.com,
+ intel-wired-lan@lists.osuosl.org, jesse.brandeburg@intel.com,
+ linux-kernel@vger.kernel.org, edumazet@google.com, anthony.l.nguyen@intel.com,
+ netdev@vger.kernel.org, kuba@kernel.org, rjarry@redhat.com, pabeni@redhat.com,
+ davem@davemloft.net
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 17. 08. 23 21:28, Aleksandr Loktionov wrote:
-> Before the i40e_nvm code didn't take into account that 32bit FW gtime
-> wraps ~70minutes, timeout was calculated as 64bit gtime + NVM_TIMEOUT
-> , so when gtime was ~70minutes, then gtime could not become greater
-> than 64bit timeout value and the semaphore to be considered as expired.
-> 
-> Decrease hw_semaphore_timeout size down to 32bits, because FW
-> I40E_GLVFGEN_TIMER register is 32bits only anyway, but having
-> both variables same u32 size simplifies code.
-> Fix FW write semaphore expiration condition, taking into account
-> that I40E_GLVFGEN_TIMER wraps, by checking the sign of subtraction
-> of two 32 bit values.
-> 
-> Fixes: 56a62fc86895 ("i40e: init code and hardware support")
-> Signed-off-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
-> ---
-> v2->v3 fix commit message
-> v1->v2 in commit message: add 'Fixes' tag, fix a typo
-> ---
-> ---
->   drivers/net/ethernet/intel/i40e/i40e_nvm.c  | 8 ++++----
->   drivers/net/ethernet/intel/i40e/i40e_type.h | 2 +-
->   2 files changed, 5 insertions(+), 5 deletions(-)
-> 
+Wed, Jan 31, 2024 at 09:08:47AM CET, ksundara@redhat.com wrote:
+>Changing the mac address of the VF representor ports are not
+>available via devlink. Add the function handlers to set and get
+>the HW address for the VF representor ports.
 
-The same here, v3 was without any comment but marked as 
-ChangesRequested. The patch is nowhere now... upstream, your dev-queue...
+Wait a sec. The API is there to change the mac of the actual VF. Not the
+representor. Apparently your patch is not doing that, changing mac of
+the representor.
 
-Thanks,
-Ivan
+NAK.
 
+Fix this to change the VF mac address or drop the patch entirely.
+Thanks!
+
+pw-bot: cr
