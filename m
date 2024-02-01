@@ -1,91 +1,84 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9B255845784
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  1 Feb 2024 13:25:41 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id BE091845859
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  1 Feb 2024 14:00:03 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 28E9643670;
-	Thu,  1 Feb 2024 12:25:40 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 28E9643670
+	by smtp2.osuosl.org (Postfix) with ESMTP id 2DF2840571;
+	Thu,  1 Feb 2024 13:00:02 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 2DF2840571
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1706790340;
-	bh=/vYCTvK9FJFvvxrCtPiMuwOe3sk+50eA0cdEfhS2u9U=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=ftnXpPaxsuYiTiXTXPeYbmR+k+W4b+snqPq3kU0IC2OeY+00oNv69OkQh+9hFbkp2
-	 tv/Y5Z53N0LL/f9L+3Fu7iOzdCyJra2ShTnhg+BBHBdnep9sVOzWqrIt18eR5cy2Tb
-	 /WwvMw16vLg30v9qHrCHUagRnTirmZtOj2Kx+WykTomEoLcQE9YEoKRm62O/WFUZ8o
-	 9t5PLyazyIYP+VE/ndoV9YchaJ87UyrTN5bhfBAnCDqFq1bl5ngVAOpHayO3Im8eEX
-	 89K8+O6b0jSm3xqmo1YvYcFeu4OYopX00SLj71gOSZOi3c8WGCLJ3pnAbPIA7TT/j9
-	 hyS4FTa5DStCQ==
+	s=default; t=1706792402;
+	bh=xsMTpk3PG4oBSQP2iwKTDI9GdJqxiySTKVuFI2gBHNU=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=8R9x9zbOOP7KqxRTZdF875kzPNfMPwwAu5KCqVWXBWSTqWO1QoaHa2ADhRlEXXihO
+	 605BPtG7QvcPY2YXpArp8UGatBa1pwF4bLQNw/M/egG008dEGx2zd+8Q3sHBbqRqER
+	 HYxJL+UxdMnHzUdHFqnfgqOip5s6CMkY2JdJPDd/nuS/40lvaLCEk4wlpFho5H59w+
+	 dOq2F0EWCPWEIPlBdMxjOt17QEmZiJGIkecdTJ461U5raw338bA/fI7pozC7GkpLKR
+	 sSBV5/wPjeE2PzI1w4yKghvRE+melaz4WtpiOVaCvSaaRTDcA/4Pq/JhT6H8ltxhWg
+	 mmJgEduafRZoA==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id gkVmdJmmMUsN; Thu,  1 Feb 2024 12:25:38 +0000 (UTC)
+	with ESMTP id ZbYIzxzp_N4D; Thu,  1 Feb 2024 13:00:00 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 207804013F;
-	Thu,  1 Feb 2024 12:25:38 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 207804013F
+	by smtp2.osuosl.org (Postfix) with ESMTP id 348474011D;
+	Thu,  1 Feb 2024 13:00:00 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 348474011D
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id E37911BF2F9
- for <intel-wired-lan@lists.osuosl.org>; Thu,  1 Feb 2024 12:25:28 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 9F1D01BF228
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  1 Feb 2024 12:59:55 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id BA76560B74
- for <intel-wired-lan@lists.osuosl.org>; Thu,  1 Feb 2024 12:25:27 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org BA76560B74
+ by smtp2.osuosl.org (Postfix) with ESMTP id 6F2814011D
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  1 Feb 2024 12:59:55 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 6F2814011D
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id akA7ZUFOtycc for <intel-wired-lan@lists.osuosl.org>;
- Thu,  1 Feb 2024 12:25:26 +0000 (UTC)
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.15])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 4435860B3F
- for <intel-wired-lan@lists.osuosl.org>; Thu,  1 Feb 2024 12:25:26 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 4435860B3F
-X-IronPort-AV: E=McAfee;i="6600,9927,10969"; a="3747326"
-X-IronPort-AV: E=Sophos;i="6.05,234,1701158400"; 
-   d="scan'208";a="3747326"
-Received: from orviesa004.jf.intel.com ([10.64.159.144])
- by orvoesa107.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 01 Feb 2024 04:25:26 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.05,234,1701158400"; 
-   d="scan'208";a="4499238"
-Received: from newjersey.igk.intel.com ([10.102.20.203])
- by orviesa004.jf.intel.com with ESMTP; 01 Feb 2024 04:25:18 -0800
-From: Alexander Lobakin <aleksander.lobakin@intel.com>
-To: "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>
-Date: Thu,  1 Feb 2024 13:22:16 +0100
-Message-ID: <20240201122216.2634007-22-aleksander.lobakin@intel.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20240201122216.2634007-1-aleksander.lobakin@intel.com>
-References: <20240201122216.2634007-1-aleksander.lobakin@intel.com>
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 0zB1jExZt1nA for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  1 Feb 2024 12:59:53 +0000 (UTC)
+Received: from galois.linutronix.de (Galois.linutronix.de [193.142.43.55])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 47C37400E7
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  1 Feb 2024 12:59:53 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 47C37400E7
+From: Kurt Kanzenbach <kurt@linutronix.de>
+To: Jesse Brandeburg <jesse.brandeburg@intel.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Vinicius Costa Gomes <vinicius.gomes@intel.com>
+Date: Thu,  1 Feb 2024 13:59:46 +0100
+Message-Id: <20240201125946.44431-1-kurt@linutronix.de>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1706790327; x=1738326327;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=NkDaTyoibx2WHJr7Ns5qbacNhccmHuOYBaS1TYdKgSU=;
- b=ZaqRkEfyJBPM3Sv6mLKPy/OM6swqFkd3CATXGGbmJcB+vnt9/nfG6l4f
- +Ud06RWXglrRbpXHOwfxmT0f1FfxX52plZFwThBFaukSAtYHwHFUmxA5Q
- tjy6Vt+1psZyHTtzFeKIZtbQJ6VPwBWRPbmlCgav5RoPjJyiYFjbLprbc
- wPhjdYXGeR0DYJeWaMVj1L9rbChOMQTK7SscHC9v8fdeYuJEacrp/1Ilk
- JPXs99KdbpEkd+Yu895zzbN0mB33H6GwZt2CHv/MlyjSA7LiP6r0Mp/04
- P0N2ryMKxXpQ+BYPQVfixdlMWZWA3Q+ik6qrEINLsRvkVbKjhCbr5y4Nc
- A==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=ZaqRkEfy
-Subject: [Intel-wired-lan] [PATCH net-next v5 21/21] ice: Add support for
- PFCP hardware offload in switchdev
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linutronix.de; s=2020; t=1706792390;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=xsMTpk3PG4oBSQP2iwKTDI9GdJqxiySTKVuFI2gBHNU=;
+ b=h1mN1z0HKu2AKzIjbcFGdwLBCzJUacoy32bmQDWLqLadVDsEdFEtDDdi6u5pScycI/FUUs
+ FA0rt2Saf+QduMvW3HuRNDcjEGv4vK0uIKkDgOBZklFHMYfoutPLD9Py6d0AEbwIHD1qwL
+ J0bd7GlrKFw7L0umpbDzaSHLt8mXHr7w7++hzrlBbLDaNdGJ0GHBXkaTTtM4U1mnGIkR1i
+ lR1HORp0s9Wbn8N+hFtjx9e/VbpuSoOrhJ5ptHxzWQSM/pApX4pbUgm+rqNcMDeLyQqYHe
+ Xdyp+B5YFSQ0O7zhVzFCYiN/bbeWT1tO3LXnO3Ua8RYjfLj4kR0AAAgHtAy5Ew==
+X-Mailman-Original-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed;
+ d=linutronix.de; s=2020e; t=1706792390;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=xsMTpk3PG4oBSQP2iwKTDI9GdJqxiySTKVuFI2gBHNU=;
+ b=astL2L5deYvI8pfnVbSEtOWHpxQFa6/Om/7spL3ogRX4NHHV3fnReI3kqIcgmdDSUjl7uZ
+ Bx+jgUSOh4jheVBA==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key) header.d=linutronix.de header.i=@linutronix.de
+ header.a=rsa-sha256 header.s=2020 header.b=h1mN1z0H; 
+ dkim=pass header.d=linutronix.de header.i=@linutronix.de
+ header.a=ed25519-sha256 header.s=2020e header.b=astL2L5d
+Subject: [Intel-wired-lan] [PATCH iwl-next v2] igc: Add support for LEDs on
+ i225/i226
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,452 +91,384 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Andy Shevchenko <andy@kernel.org>, linux-s390@vger.kernel.org,
- Wojciech Drewek <wojciech.drewek@intel.com>, Yury Norov <yury.norov@gmail.com>,
- Ido Schimmel <idosch@nvidia.com>, Rasmus Villemoes <linux@rasmusvillemoes.dk>,
- linux-kernel@vger.kernel.org, Alexander Lobakin <aleksander.lobakin@intel.com>,
- dm-devel@redhat.com, Marcin Szycik <marcin.szycik@linux.intel.com>,
- Alexander Potapenko <glider@google.com>, Simon Horman <horms@kernel.org>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Simon Horman <simon.horman@corigine.com>,
- Michal Swiatkowski <michal.swiatkowski@linux.intel.com>,
- netdev@vger.kernel.org, ntfs3@lists.linux.dev, Jiri Pirko <jiri@resnulli.us>,
- linux-btrfs@vger.kernel.org, intel-wired-lan@lists.osuosl.org
+Cc: Andrew Lunn <andrew@lunn.ch>, netdev@vger.kernel.org,
+ Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
+ Kurt Kanzenbach <kurt@linutronix.de>, Eric Dumazet <edumazet@google.com>,
+ intel-wired-lan@lists.osuosl.org, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Marcin Szycik <marcin.szycik@linux.intel.com>
+Add support for LEDs on i225/i226. The LEDs can be controlled via sysfs
+from user space using the netdev trigger. The LEDs are named as
+igc-<bus><device>-<led> to be easily identified.
 
-Add support for creating PFCP filters in switchdev mode. Add support
-for parsing PFCP-specific tc options: S flag and SEID.
+Offloading link speed is supported. Other modes are simulated in software
+by using on/off. Tested on Intel i225.
 
-To create a PFCP filter, a special netdev must be created and passed
-to tc command:
-
-  ip link add pfcp0 type pfcp
-  tc filter add dev eth0 ingress prio 1 flower pfcp_opts \
-    1:123/ff:fffffffffffffff0 skip_hw action mirred egress redirect \
-    dev pfcp0
-
-Changes in iproute2 [1] are required to be able to use pfcp_opts in tc.
-
-ICE COMMS package is required to create a filter as it contains PFCP
-profiles.
-
-Link: https://lore.kernel.org/netdev/20230614091758.11180-1-marcin.szycik@linux.intel.com [1]
-Signed-off-by: Marcin Szycik <marcin.szycik@linux.intel.com>
-Reviewed-by: Simon Horman <simon.horman@corigine.com>
-Signed-off-by: Alexander Lobakin <aleksander.lobakin@intel.com>
+Signed-off-by: Kurt Kanzenbach <kurt@linutronix.de>
 ---
- .../net/ethernet/intel/ice/ice_flex_type.h    |  4 +-
- .../ethernet/intel/ice/ice_protocol_type.h    | 12 +++
- drivers/net/ethernet/intel/ice/ice_switch.h   |  2 +
- drivers/net/ethernet/intel/ice/ice_tc_lib.h   |  6 ++
- drivers/net/ethernet/intel/ice/ice_ddp.c      |  9 ++
- drivers/net/ethernet/intel/ice/ice_switch.c   | 85 +++++++++++++++++++
- drivers/net/ethernet/intel/ice/ice_tc_lib.c   | 58 +++++++++++--
- 7 files changed, 169 insertions(+), 7 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_flex_type.h b/drivers/net/ethernet/intel/ice/ice_flex_type.h
-index d427a79d001a..817beca591e0 100644
---- a/drivers/net/ethernet/intel/ice/ice_flex_type.h
-+++ b/drivers/net/ethernet/intel/ice/ice_flex_type.h
-@@ -93,6 +93,7 @@ enum ice_tunnel_type {
- 	TNL_GRETAP,
- 	TNL_GTPC,
- 	TNL_GTPU,
-+	TNL_PFCP,
- 	__TNL_TYPE_CNT,
- 	TNL_LAST = 0xFF,
- 	TNL_ALL = 0xFF,
-@@ -358,7 +359,8 @@ enum ice_prof_type {
- 	ICE_PROF_TUN_GRE = 0x4,
- 	ICE_PROF_TUN_GTPU = 0x8,
- 	ICE_PROF_TUN_GTPC = 0x10,
--	ICE_PROF_TUN_ALL = 0x1E,
-+	ICE_PROF_TUN_PFCP = 0x20,
-+	ICE_PROF_TUN_ALL = 0x3E,
- 	ICE_PROF_ALL = 0xFF,
- };
+Changes since v1:
+
+ * Add brightness_set() to allow software control (Andrew)
+ * Remove offloading of activity, because the software control is more flexible
+ * Fix smatch warning (Simon)
+
+Previous versions:
+
+ * v1: https://lore.kernel.org/netdev/20240124082408.49138-1-kurt@linutronix.de/
+
+ drivers/net/ethernet/intel/Kconfig        |   8 +
+ drivers/net/ethernet/intel/igc/Makefile   |   1 +
+ drivers/net/ethernet/intel/igc/igc.h      |   5 +
+ drivers/net/ethernet/intel/igc/igc_leds.c | 252 ++++++++++++++++++++++
+ drivers/net/ethernet/intel/igc/igc_main.c |   6 +
+ drivers/net/ethernet/intel/igc/igc_regs.h |   1 +
+ 6 files changed, 273 insertions(+)
+ create mode 100644 drivers/net/ethernet/intel/igc/igc_leds.c
+
+diff --git a/drivers/net/ethernet/intel/Kconfig b/drivers/net/ethernet/intel/Kconfig
+index d55638ad8704..767358b60507 100644
+--- a/drivers/net/ethernet/intel/Kconfig
++++ b/drivers/net/ethernet/intel/Kconfig
+@@ -368,6 +368,14 @@ config IGC
  
-diff --git a/drivers/net/ethernet/intel/ice/ice_protocol_type.h b/drivers/net/ethernet/intel/ice/ice_protocol_type.h
-index f6f27361c3cf..755a9c55267c 100644
---- a/drivers/net/ethernet/intel/ice/ice_protocol_type.h
-+++ b/drivers/net/ethernet/intel/ice/ice_protocol_type.h
-@@ -43,6 +43,7 @@ enum ice_protocol_type {
- 	ICE_NVGRE,
- 	ICE_GTP,
- 	ICE_GTP_NO_PAY,
-+	ICE_PFCP,
- 	ICE_PPPOE,
- 	ICE_L2TPV3,
- 	ICE_VLAN_EX,
-@@ -61,6 +62,7 @@ enum ice_sw_tunnel_type {
- 	ICE_SW_TUN_NVGRE,
- 	ICE_SW_TUN_GTPU,
- 	ICE_SW_TUN_GTPC,
-+	ICE_SW_TUN_PFCP,
- 	ICE_ALL_TUNNELS /* All tunnel types including NVGRE */
- };
- 
-@@ -202,6 +204,15 @@ struct ice_udp_gtp_hdr {
- 	u8 rsvrd;
- };
- 
-+struct ice_pfcp_hdr {
-+	u8 flags;
-+	u8 msg_type;
-+	__be16 length;
-+	__be64 seid;
-+	__be32 seq;
-+	u8 spare;
-+} __packed __aligned(__alignof__(u16));
+ 	  To compile this driver as a module, choose M here. The module
+ 	  will be called igc.
 +
- struct ice_pppoe_hdr {
- 	u8 rsrvd_ver_type;
- 	u8 rsrvd_code;
-@@ -418,6 +429,7 @@ union ice_prot_hdr {
- 	struct ice_udp_tnl_hdr tnl_hdr;
- 	struct ice_nvgre_hdr nvgre_hdr;
- 	struct ice_udp_gtp_hdr gtp_hdr;
-+	struct ice_pfcp_hdr pfcp_hdr;
- 	struct ice_pppoe_hdr pppoe_hdr;
- 	struct ice_l2tpv3_sess_hdr l2tpv3_sess_hdr;
- 	struct ice_hw_metadata metadata;
-diff --git a/drivers/net/ethernet/intel/ice/ice_switch.h b/drivers/net/ethernet/intel/ice/ice_switch.h
-index db7e501b7e0a..30091a80e7fa 100644
---- a/drivers/net/ethernet/intel/ice/ice_switch.h
-+++ b/drivers/net/ethernet/intel/ice/ice_switch.h
-@@ -21,6 +21,8 @@
- #define ICE_PROFID_IPV6_GTPC_NO_TEID			45
- #define ICE_PROFID_IPV6_GTPU_TEID			46
- #define ICE_PROFID_IPV6_GTPU_IPV6_TCP_INNER		70
-+#define ICE_PROFID_IPV4_PFCP_NODE			79
-+#define ICE_PROFID_IPV6_PFCP_SESSION			82
++config IGC_LEDS
++	def_bool LEDS_TRIGGER_NETDEV
++	depends on IGC && LEDS_CLASS
++	help
++	  Optional support for controlling the NIC LED's with the netdev
++	  LED trigger.
++
+ config IDPF
+ 	tristate "Intel(R) Infrastructure Data Path Function Support"
+ 	depends on PCI_MSI
+diff --git a/drivers/net/ethernet/intel/igc/Makefile b/drivers/net/ethernet/intel/igc/Makefile
+index 95d1e8c490a4..ebffd3054285 100644
+--- a/drivers/net/ethernet/intel/igc/Makefile
++++ b/drivers/net/ethernet/intel/igc/Makefile
+@@ -6,6 +6,7 @@
+ #
  
- #define ICE_SW_RULE_VSI_LIST_SIZE(s, n)		struct_size((s), vsi, (n))
- #define ICE_SW_RULE_RX_TX_HDR_SIZE(s, l)	struct_size((s), hdr_data, (l))
-diff --git a/drivers/net/ethernet/intel/ice/ice_tc_lib.h b/drivers/net/ethernet/intel/ice/ice_tc_lib.h
-index 5d188ad7517a..d84f153517ec 100644
---- a/drivers/net/ethernet/intel/ice/ice_tc_lib.h
-+++ b/drivers/net/ethernet/intel/ice/ice_tc_lib.h
-@@ -4,6 +4,9 @@
- #ifndef _ICE_TC_LIB_H_
- #define _ICE_TC_LIB_H_
+ obj-$(CONFIG_IGC) += igc.o
++igc-$(CONFIG_IGC_LEDS) += igc_leds.o
  
+ igc-objs := igc_main.o igc_mac.o igc_i225.o igc_base.o igc_nvm.o igc_phy.o \
+ igc_diag.o igc_ethtool.o igc_ptp.o igc_dump.o igc_tsn.o igc_xdp.o
+diff --git a/drivers/net/ethernet/intel/igc/igc.h b/drivers/net/ethernet/intel/igc/igc.h
+index 75f7c5ba65e0..a8815e3b2949 100644
+--- a/drivers/net/ethernet/intel/igc/igc.h
++++ b/drivers/net/ethernet/intel/igc/igc.h
+@@ -295,6 +295,9 @@ struct igc_adapter {
+ 		struct timespec64 start;
+ 		struct timespec64 period;
+ 	} perout[IGC_N_PEROUT];
++
++	/* LEDs */
++	struct mutex led_mutex;
+ };
+ 
+ void igc_up(struct igc_adapter *adapter);
+@@ -720,6 +723,8 @@ void igc_ptp_tx_hang(struct igc_adapter *adapter);
+ void igc_ptp_read(struct igc_adapter *adapter, struct timespec64 *ts);
+ void igc_ptp_tx_tstamp_event(struct igc_adapter *adapter);
+ 
++int igc_led_setup(struct igc_adapter *adapter);
++
+ #define igc_rx_pg_size(_ring) (PAGE_SIZE << igc_rx_pg_order(_ring))
+ 
+ #define IGC_TXD_DCMD	(IGC_ADVTXD_DCMD_EOP | IGC_ADVTXD_DCMD_RS)
+diff --git a/drivers/net/ethernet/intel/igc/igc_leds.c b/drivers/net/ethernet/intel/igc/igc_leds.c
+new file mode 100644
+index 000000000000..7a2397826cad
+--- /dev/null
++++ b/drivers/net/ethernet/intel/igc/igc_leds.c
+@@ -0,0 +1,252 @@
++// SPDX-License-Identifier: GPL-2.0
++/* Copyright (C) 2024 Linutronix GmbH */
++
 +#include <linux/bits.h>
-+#include <net/pfcp.h>
++#include <linux/leds.h>
++#include <linux/netdevice.h>
++#include <linux/pm_runtime.h>
++#include <uapi/linux/uleds.h>
 +
- #define ICE_TC_FLWR_FIELD_DST_MAC		BIT(0)
- #define ICE_TC_FLWR_FIELD_SRC_MAC		BIT(1)
- #define ICE_TC_FLWR_FIELD_VLAN			BIT(2)
-@@ -34,6 +37,7 @@
- #define ICE_TC_FLWR_FIELD_VLAN_PRIO		BIT(27)
- #define ICE_TC_FLWR_FIELD_CVLAN_PRIO		BIT(28)
- #define ICE_TC_FLWR_FIELD_VLAN_TPID		BIT(29)
-+#define ICE_TC_FLWR_FIELD_PFCP_OPTS		BIT(30)
- 
- #define ICE_TC_FLOWER_MASK_32   0xFFFFFFFF
- 
-@@ -161,6 +165,8 @@ struct ice_tc_flower_fltr {
- 	__be32 tenant_id;
- 	struct gtp_pdu_session_info gtp_pdu_info_keys;
- 	struct gtp_pdu_session_info gtp_pdu_info_masks;
-+	struct pfcp_metadata pfcp_meta_keys;
-+	struct pfcp_metadata pfcp_meta_masks;
- 	u32 flags;
- 	u8 tunnel_type;
- 	struct ice_tc_flower_action	action;
-diff --git a/drivers/net/ethernet/intel/ice/ice_ddp.c b/drivers/net/ethernet/intel/ice/ice_ddp.c
-index 8b7504a9df31..57278ec71aac 100644
---- a/drivers/net/ethernet/intel/ice/ice_ddp.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ddp.c
-@@ -721,6 +721,12 @@ static bool ice_is_gtp_c_profile(u16 prof_idx)
- 	}
- }
- 
-+static bool ice_is_pfcp_profile(u16 prof_idx)
++#include "igc.h"
++
++#define IGC_NUM_LEDS			3
++
++#define IGC_LEDCTL_LED0_MODE_SHIFT	0
++#define IGC_LEDCTL_LED0_MODE_MASK	GENMASK(3, 0)
++#define IGC_LEDCTL_LED0_BLINK		BIT(7)
++#define IGC_LEDCTL_LED1_MODE_SHIFT	8
++#define IGC_LEDCTL_LED1_MODE_MASK	GENMASK(11, 8)
++#define IGC_LEDCTL_LED1_BLINK		BIT(15)
++#define IGC_LEDCTL_LED2_MODE_SHIFT	16
++#define IGC_LEDCTL_LED2_MODE_MASK	GENMASK(19, 16)
++#define IGC_LEDCTL_LED2_BLINK		BIT(23)
++
++#define IGC_LEDCTL_MODE_ON		0x00
++#define IGC_LEDCTL_MODE_OFF		0x01
++#define IGC_LEDCTL_MODE_LINK_10		0x05
++#define IGC_LEDCTL_MODE_LINK_100	0x06
++#define IGC_LEDCTL_MODE_LINK_1000	0x07
++#define IGC_LEDCTL_MODE_LINK_2500	0x08
++
++#define IGC_SUPPORTED_MODES						 \
++	(BIT(TRIGGER_NETDEV_LINK_2500) | BIT(TRIGGER_NETDEV_LINK_1000) | \
++	 BIT(TRIGGER_NETDEV_LINK_100) | BIT(TRIGGER_NETDEV_LINK_10))
++
++struct igc_led_classdev {
++	struct net_device *netdev;
++	struct led_classdev led;
++	int index;
++};
++
++#define lcdev_to_igc_ldev(lcdev)				\
++	container_of(lcdev, struct igc_led_classdev, led)
++
++static void igc_led_select(struct igc_adapter *adapter, int led,
++			   u32 *mask, u32 *shift, u32 *blink)
 +{
-+	return prof_idx >= ICE_PROFID_IPV4_PFCP_NODE &&
-+	       prof_idx <= ICE_PROFID_IPV6_PFCP_SESSION;
++	switch (led) {
++	case 0:
++		*mask  = IGC_LEDCTL_LED0_MODE_MASK;
++		*shift = IGC_LEDCTL_LED0_MODE_SHIFT;
++		*blink = IGC_LEDCTL_LED0_BLINK;
++		break;
++	case 1:
++		*mask  = IGC_LEDCTL_LED1_MODE_MASK;
++		*shift = IGC_LEDCTL_LED1_MODE_SHIFT;
++		*blink = IGC_LEDCTL_LED1_BLINK;
++		break;
++	case 2:
++		*mask  = IGC_LEDCTL_LED2_MODE_MASK;
++		*shift = IGC_LEDCTL_LED2_MODE_SHIFT;
++		*blink = IGC_LEDCTL_LED2_BLINK;
++		break;
++	default:
++		*mask = *shift = *blink = 0;
++		netdev_err(adapter->netdev, "Unknown LED %d selected!\n", led);
++	}
 +}
 +
- /**
-  * ice_get_sw_prof_type - determine switch profile type
-  * @hw: pointer to the HW structure
-@@ -738,6 +744,9 @@ static enum ice_prof_type ice_get_sw_prof_type(struct ice_hw *hw,
- 	if (ice_is_gtp_u_profile(prof_idx))
- 		return ICE_PROF_TUN_GTPU;
- 
-+	if (ice_is_pfcp_profile(prof_idx))
-+		return ICE_PROF_TUN_PFCP;
++static void igc_led_set(struct igc_adapter *adapter, int led, u32 mode,
++			bool blink)
++{
++	u32 shift, mask, blink_bit, ledctl;
++	struct igc_hw *hw = &adapter->hw;
 +
- 	for (i = 0; i < hw->blk[ICE_BLK_SW].es.fvw; i++) {
- 		/* UDP tunnel will have UDP_OF protocol ID and VNI offset */
- 		if (fv->ew[i].prot_id == (u8)ICE_PROT_UDP_OF &&
-diff --git a/drivers/net/ethernet/intel/ice/ice_switch.c b/drivers/net/ethernet/intel/ice/ice_switch.c
-index f84bab80ca42..0138fc832a23 100644
---- a/drivers/net/ethernet/intel/ice/ice_switch.c
-+++ b/drivers/net/ethernet/intel/ice/ice_switch.c
-@@ -42,6 +42,7 @@ enum {
- 	ICE_PKT_KMALLOC		= BIT(9),
- 	ICE_PKT_PPPOE		= BIT(10),
- 	ICE_PKT_L2TPV3		= BIT(11),
-+	ICE_PKT_PFCP		= BIT(12),
- };
- 
- struct ice_dummy_pkt_offsets {
-@@ -1110,6 +1111,77 @@ ICE_DECLARE_PKT_TEMPLATE(ipv6_gtp) = {
- 	0x00, 0x00,
- };
- 
-+ICE_DECLARE_PKT_OFFSETS(pfcp_session_ipv4) = {
-+	{ ICE_MAC_OFOS,		0 },
-+	{ ICE_ETYPE_OL,		12 },
-+	{ ICE_IPV4_OFOS,	14 },
-+	{ ICE_UDP_ILOS,		34 },
-+	{ ICE_PFCP,		42 },
-+	{ ICE_PROTOCOL_LAST,	0 },
-+};
++	igc_led_select(adapter, led, &mask, &shift, &blink_bit);
 +
-+ICE_DECLARE_PKT_TEMPLATE(pfcp_session_ipv4) = {
-+	0x00, 0x00, 0x00, 0x00, /* ICE_MAC_OFOS 0 */
-+	0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00,
++	pm_runtime_get_sync(&adapter->pdev->dev);
++	mutex_lock(&adapter->led_mutex);
 +
-+	0x08, 0x00,		/* ICE_ETYPE_OL 12 */
++	/* Set mode */
++	ledctl = rd32(IGC_LEDCTL);
++	ledctl &= ~mask;
++	ledctl |= mode << shift;
 +
-+	0x45, 0x00, 0x00, 0x2c, /* ICE_IPV4_OFOS 14 */
-+	0x00, 0x01, 0x00, 0x00,
-+	0x00, 0x11, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00,
++	/* Configure blinking */
++	if (blink)
++		ledctl |= blink_bit;
++	else
++		ledctl &= ~blink_bit;
++	wr32(IGC_LEDCTL, ledctl);
 +
-+	0x00, 0x00, 0x22, 0x65, /* ICE_UDP_ILOS 34 */
-+	0x00, 0x18, 0x00, 0x00,
++	mutex_unlock(&adapter->led_mutex);
++	pm_runtime_put(&adapter->pdev->dev);
++}
 +
-+	0x21, 0x01, 0x00, 0x0c, /* ICE_PFCP 42 */
-+	0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00,
++static u32 igc_led_get(struct igc_adapter *adapter, int led)
++{
++	u32 shift, mask, blink_bit, ledctl;
++	struct igc_hw *hw = &adapter->hw;
 +
-+	0x00, 0x00,		/* 2 bytes for 4 byte alignment */
-+};
++	igc_led_select(adapter, led, &mask, &shift, &blink_bit);
 +
-+ICE_DECLARE_PKT_OFFSETS(pfcp_session_ipv6) = {
-+	{ ICE_MAC_OFOS,		0 },
-+	{ ICE_ETYPE_OL,		12 },
-+	{ ICE_IPV6_OFOS,	14 },
-+	{ ICE_UDP_ILOS,		54 },
-+	{ ICE_PFCP,		62 },
-+	{ ICE_PROTOCOL_LAST,	0 },
-+};
++	pm_runtime_get_sync(&adapter->pdev->dev);
++	mutex_lock(&adapter->led_mutex);
++	ledctl = rd32(IGC_LEDCTL);
++	mutex_unlock(&adapter->led_mutex);
++	pm_runtime_put(&adapter->pdev->dev);
 +
-+ICE_DECLARE_PKT_TEMPLATE(pfcp_session_ipv6) = {
-+	0x00, 0x00, 0x00, 0x00, /* ICE_MAC_OFOS 0 */
-+	0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00,
++	return (ledctl & mask) >> shift;
++}
 +
-+	0x86, 0xdd,		/* ICE_ETYPE_OL 12 */
++static int igc_led_brightness_set_blocking(struct led_classdev *led_cdev,
++					   enum led_brightness brightness)
++{
++	struct igc_led_classdev *ldev = lcdev_to_igc_ldev(led_cdev);
++	struct igc_adapter *adapter = netdev_priv(ldev->netdev);
++	u32 mode;
 +
-+	0x60, 0x00, 0x00, 0x00, /* ICE_IPV6_OFOS 14 */
-+	0x00, 0x10, 0x11, 0x00, /* Next header UDP */
-+	0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00,
++	if (brightness)
++		mode = IGC_LEDCTL_MODE_ON;
++	else
++		mode = IGC_LEDCTL_MODE_OFF;
 +
-+	0x00, 0x00, 0x22, 0x65, /* ICE_UDP_ILOS 54 */
-+	0x00, 0x18, 0x00, 0x00,
++	netdev_dbg(adapter->netdev, "Set brightness for LED %d to mode %u!\n",
++		   ldev->index, mode);
 +
-+	0x21, 0x01, 0x00, 0x0c, /* ICE_PFCP 62 */
-+	0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00,
-+	0x00, 0x00, 0x00, 0x00,
++	igc_led_set(adapter, ldev->index, mode, false);
 +
-+	0x00, 0x00,		/* 2 bytes for 4 byte alignment */
-+};
++	return 0;
++}
 +
- ICE_DECLARE_PKT_OFFSETS(pppoe_ipv4_tcp) = {
- 	{ ICE_MAC_OFOS,		0 },
- 	{ ICE_ETYPE_OL,		12 },
-@@ -1343,6 +1415,8 @@ static const struct ice_dummy_pkt_profile ice_dummy_pkt_profiles[] = {
- 	ICE_PKT_PROFILE(ipv4_gtpu_ipv4_tcp, ICE_PKT_TUN_GTPU),
- 	ICE_PKT_PROFILE(ipv6_gtp, ICE_PKT_TUN_GTPC | ICE_PKT_OUTER_IPV6),
- 	ICE_PKT_PROFILE(ipv4_gtpu_ipv4, ICE_PKT_TUN_GTPC),
-+	ICE_PKT_PROFILE(pfcp_session_ipv6, ICE_PKT_PFCP | ICE_PKT_OUTER_IPV6),
-+	ICE_PKT_PROFILE(pfcp_session_ipv4, ICE_PKT_PFCP),
- 	ICE_PKT_PROFILE(pppoe_ipv6_udp, ICE_PKT_PPPOE | ICE_PKT_OUTER_IPV6 |
- 					ICE_PKT_INNER_UDP),
- 	ICE_PKT_PROFILE(pppoe_ipv6_tcp, ICE_PKT_PPPOE | ICE_PKT_OUTER_IPV6),
-@@ -4526,6 +4600,7 @@ static const struct ice_prot_ext_tbl_entry ice_prot_ext[ICE_PROTOCOL_LAST] = {
- 	ICE_PROTOCOL_ENTRY(ICE_NVGRE, 0, 2, 4, 6),
- 	ICE_PROTOCOL_ENTRY(ICE_GTP, 8, 10, 12, 14, 16, 18, 20, 22),
- 	ICE_PROTOCOL_ENTRY(ICE_GTP_NO_PAY, 8, 10, 12, 14),
-+	ICE_PROTOCOL_ENTRY(ICE_PFCP, 8, 10, 12, 14, 16, 18, 20, 22),
- 	ICE_PROTOCOL_ENTRY(ICE_PPPOE, 0, 2, 4, 6),
- 	ICE_PROTOCOL_ENTRY(ICE_L2TPV3, 0, 2, 4, 6, 8, 10),
- 	ICE_PROTOCOL_ENTRY(ICE_VLAN_EX, 2, 0),
-@@ -4559,6 +4634,7 @@ static struct ice_protocol_entry ice_prot_id_tbl[ICE_PROTOCOL_LAST] = {
- 	{ ICE_NVGRE,		ICE_GRE_OF_HW },
- 	{ ICE_GTP,		ICE_UDP_OF_HW },
- 	{ ICE_GTP_NO_PAY,	ICE_UDP_ILOS_HW },
-+	{ ICE_PFCP,		ICE_UDP_ILOS_HW },
- 	{ ICE_PPPOE,		ICE_PPPOE_HW },
- 	{ ICE_L2TPV3,		ICE_L2TPV3_HW },
- 	{ ICE_VLAN_EX,          ICE_VLAN_OF_HW },
-@@ -5266,6 +5342,9 @@ ice_get_compat_fv_bitmap(struct ice_hw *hw, struct ice_adv_rule_info *rinfo,
- 	case ICE_SW_TUN_GTPC:
- 		prof_type = ICE_PROF_TUN_GTPC;
- 		break;
-+	case ICE_SW_TUN_PFCP:
-+		prof_type = ICE_PROF_TUN_PFCP;
++static int igc_led_hw_control_is_supported(struct led_classdev *led_cdev,
++					   unsigned long flags)
++{
++	if (flags & ~IGC_SUPPORTED_MODES)
++		return -EOPNOTSUPP;
++
++	/* Only one mode can be active at a time */
++	if (flags & (flags - 1))
++		return -EOPNOTSUPP;
++
++	return 0;
++}
++
++static int igc_led_hw_control_set(struct led_classdev *led_cdev,
++				  unsigned long flags)
++{
++	struct igc_led_classdev *ldev = lcdev_to_igc_ldev(led_cdev);
++	struct igc_adapter *adapter = netdev_priv(ldev->netdev);
++	u32 mode = IGC_LEDCTL_MODE_OFF;
++
++	if (flags & BIT(TRIGGER_NETDEV_LINK_10))
++		mode = IGC_LEDCTL_MODE_LINK_10;
++	if (flags & BIT(TRIGGER_NETDEV_LINK_100))
++		mode = IGC_LEDCTL_MODE_LINK_100;
++	if (flags & BIT(TRIGGER_NETDEV_LINK_1000))
++		mode = IGC_LEDCTL_MODE_LINK_1000;
++	if (flags & BIT(TRIGGER_NETDEV_LINK_2500))
++		mode = IGC_LEDCTL_MODE_LINK_2500;
++
++	netdev_dbg(adapter->netdev, "Set HW control for LED %d to mode %u!\n",
++		   ldev->index, mode);
++
++	igc_led_set(adapter, ldev->index, mode, false);
++
++	return 0;
++}
++
++static int igc_led_hw_control_get(struct led_classdev *led_cdev,
++				  unsigned long *flags)
++{
++	struct igc_led_classdev *ldev = lcdev_to_igc_ldev(led_cdev);
++	struct igc_adapter *adapter = netdev_priv(ldev->netdev);
++	u32 mode;
++
++	mode = igc_led_get(adapter, ldev->index);
++
++	switch (mode) {
++	case IGC_LEDCTL_MODE_LINK_10:
++		*flags = BIT(TRIGGER_NETDEV_LINK_10);
 +		break;
- 	case ICE_SW_TUN_AND_NON_TUN:
- 	default:
- 		prof_type = ICE_PROF_ALL;
-@@ -5548,6 +5627,9 @@ ice_find_dummy_packet(struct ice_adv_lkup_elem *lkups, u16 lkups_cnt,
- 	case ICE_SW_TUN_VXLAN:
- 		match |= ICE_PKT_TUN_UDP;
- 		break;
-+	case ICE_SW_TUN_PFCP:
-+		match |= ICE_PKT_PFCP;
++	case IGC_LEDCTL_MODE_LINK_100:
++		*flags = BIT(TRIGGER_NETDEV_LINK_100);
 +		break;
- 	default:
- 		break;
- 	}
-@@ -5688,6 +5770,9 @@ ice_fill_adv_dummy_packet(struct ice_adv_lkup_elem *lkups, u16 lkups_cnt,
- 		case ICE_GTP:
- 			len = sizeof(struct ice_udp_gtp_hdr);
- 			break;
-+		case ICE_PFCP:
-+			len = sizeof(struct ice_pfcp_hdr);
-+			break;
- 		case ICE_PPPOE:
- 			len = sizeof(struct ice_pppoe_hdr);
- 			break;
-diff --git a/drivers/net/ethernet/intel/ice/ice_tc_lib.c b/drivers/net/ethernet/intel/ice/ice_tc_lib.c
-index 80797db9f2b9..2f2fce285ecd 100644
---- a/drivers/net/ethernet/intel/ice/ice_tc_lib.c
-+++ b/drivers/net/ethernet/intel/ice/ice_tc_lib.c
-@@ -38,6 +38,9 @@ ice_tc_count_lkups(u32 flags, struct ice_tc_flower_lyr_2_4_hdrs *headers,
- 	if (flags & ICE_TC_FLWR_FIELD_GTP_OPTS)
- 		lkups_cnt++;
- 
-+	if (flags & ICE_TC_FLWR_FIELD_PFCP_OPTS)
-+		lkups_cnt++;
-+
- 	if (flags & (ICE_TC_FLWR_FIELD_ENC_SRC_IPV4 |
- 		     ICE_TC_FLWR_FIELD_ENC_DEST_IPV4 |
- 		     ICE_TC_FLWR_FIELD_ENC_SRC_IPV6 |
-@@ -138,6 +141,8 @@ ice_proto_type_from_tunnel(enum ice_tunnel_type type)
- 		return ICE_GTP;
- 	case TNL_GTPC:
- 		return ICE_GTP_NO_PAY;
-+	case TNL_PFCP:
-+		return ICE_PFCP;
- 	default:
- 		return 0;
- 	}
-@@ -157,6 +162,8 @@ ice_sw_type_from_tunnel(enum ice_tunnel_type type)
- 		return ICE_SW_TUN_GTPU;
- 	case TNL_GTPC:
- 		return ICE_SW_TUN_GTPC;
-+	case TNL_PFCP:
-+		return ICE_SW_TUN_PFCP;
- 	default:
- 		return ICE_NON_TUN;
- 	}
-@@ -236,6 +243,22 @@ ice_tc_fill_tunnel_outer(u32 flags, struct ice_tc_flower_fltr *fltr,
- 		i++;
- 	}
- 
-+	if (flags & ICE_TC_FLWR_FIELD_PFCP_OPTS) {
-+		struct ice_pfcp_hdr *hdr_h, *hdr_m;
-+
-+		hdr_h = &list[i].h_u.pfcp_hdr;
-+		hdr_m = &list[i].m_u.pfcp_hdr;
-+		list[i].type = ICE_PFCP;
-+
-+		hdr_h->flags = fltr->pfcp_meta_keys.type;
-+		hdr_m->flags = fltr->pfcp_meta_masks.type & 0x01;
-+
-+		hdr_h->seid = fltr->pfcp_meta_keys.seid;
-+		hdr_m->seid = fltr->pfcp_meta_masks.seid;
-+
-+		i++;
++	case IGC_LEDCTL_MODE_LINK_1000:
++		*flags = BIT(TRIGGER_NETDEV_LINK_1000);
++		break;
++	case IGC_LEDCTL_MODE_LINK_2500:
++		*flags = BIT(TRIGGER_NETDEV_LINK_2500);
++		break;
 +	}
 +
- 	if (flags & (ICE_TC_FLWR_FIELD_ENC_SRC_IPV4 |
- 		     ICE_TC_FLWR_FIELD_ENC_DEST_IPV4)) {
- 		list[i].type = ice_proto_type_from_ipv4(false);
-@@ -366,8 +389,11 @@ ice_tc_fill_rules(struct ice_hw *hw, u32 flags,
- 	if (tc_fltr->tunnel_type != TNL_LAST) {
- 		i = ice_tc_fill_tunnel_outer(flags, tc_fltr, list, i);
- 
--		headers = &tc_fltr->inner_headers;
--		inner = true;
-+		/* PFCP is considered non-tunneled - don't swap headers. */
-+		if (tc_fltr->tunnel_type != TNL_PFCP) {
-+			headers = &tc_fltr->inner_headers;
-+			inner = true;
-+		}
- 	}
- 
- 	if (flags & ICE_TC_FLWR_FIELD_ETH_TYPE_ID) {
-@@ -621,6 +647,8 @@ static int ice_tc_tun_get_type(struct net_device *tunnel_dev)
- 	 */
- 	if (netif_is_gtp(tunnel_dev))
- 		return TNL_GTPU;
-+	if (netif_is_pfcp(tunnel_dev))
-+		return TNL_PFCP;
- 	return TNL_LAST;
- }
- 
-@@ -1415,6 +1443,20 @@ ice_parse_tunnel_attr(struct net_device *dev, struct flow_rule *rule,
- 		fltr->flags |= ICE_TC_FLWR_FIELD_GTP_OPTS;
- 	}
- 
-+	if (flow_rule_match_key(rule, FLOW_DISSECTOR_KEY_ENC_OPTS) &&
-+	    fltr->tunnel_type == TNL_PFCP) {
-+		struct flow_match_enc_opts match;
++	return 0;
++}
 +
-+		flow_rule_match_enc_opts(rule, &match);
++static struct device *igc_led_hw_control_get_device(struct led_classdev *led_cdev)
++{
++	struct igc_led_classdev *ldev = lcdev_to_igc_ldev(led_cdev);
 +
-+		memcpy(&fltr->pfcp_meta_keys, match.key->data,
-+		       sizeof(struct pfcp_metadata));
-+		memcpy(&fltr->pfcp_meta_masks, match.mask->data,
-+		       sizeof(struct pfcp_metadata));
++	return &ldev->netdev->dev;
++}
 +
-+		fltr->flags |= ICE_TC_FLWR_FIELD_PFCP_OPTS;
++static void igc_led_get_name(struct igc_adapter *adapter, int index, char *buf,
++			     size_t buf_len)
++{
++	snprintf(buf, buf_len, "igc-%x%x-led%d",
++		 pci_domain_nr(adapter->pdev->bus),
++		 pci_dev_id(adapter->pdev), index);
++}
++
++static void igc_setup_ldev(struct igc_led_classdev *ldev,
++			   struct net_device *netdev, int index)
++{
++	struct igc_adapter *adapter = netdev_priv(netdev);
++	struct led_classdev *led_cdev = &ldev->led;
++	char led_name[LED_MAX_NAME_SIZE];
++
++	ldev->netdev = netdev;
++	ldev->index = index;
++
++	igc_led_get_name(adapter, index, led_name, LED_MAX_NAME_SIZE);
++	led_cdev->name = led_name;
++	led_cdev->flags |= LED_RETAIN_AT_SHUTDOWN;
++	led_cdev->max_brightness = 1;
++	led_cdev->brightness_set_blocking = igc_led_brightness_set_blocking;
++	led_cdev->hw_control_trigger = "netdev";
++	led_cdev->hw_control_is_supported = igc_led_hw_control_is_supported;
++	led_cdev->hw_control_set = igc_led_hw_control_set;
++	led_cdev->hw_control_get = igc_led_hw_control_get;
++	led_cdev->hw_control_get_device = igc_led_hw_control_get_device;
++
++	devm_led_classdev_register(&netdev->dev, led_cdev);
++}
++
++int igc_led_setup(struct igc_adapter *adapter)
++{
++	struct net_device *netdev = adapter->netdev;
++	struct device *dev = &netdev->dev;
++	struct igc_led_classdev *leds;
++	int i;
++
++	mutex_init(&adapter->led_mutex);
++
++	leds = devm_kcalloc(dev, IGC_NUM_LEDS, sizeof(*leds), GFP_KERNEL);
++	if (!leds)
++		return -ENOMEM;
++
++	for (i = 0; i < IGC_NUM_LEDS; i++)
++		igc_setup_ldev(leds + i, netdev, i);
++
++	return 0;
++}
+diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
+index ba8d3fe186ae..5ee26def75a7 100644
+--- a/drivers/net/ethernet/intel/igc/igc_main.c
++++ b/drivers/net/ethernet/intel/igc/igc_main.c
+@@ -6977,6 +6977,12 @@ static int igc_probe(struct pci_dev *pdev,
+ 
+ 	pm_runtime_put_noidle(&pdev->dev);
+ 
++	if (IS_ENABLED(CONFIG_IGC_LEDS)) {
++		err = igc_led_setup(adapter);
++		if (err)
++			goto err_register;
 +	}
 +
  	return 0;
- }
  
-@@ -1473,10 +1515,14 @@ ice_parse_cls_flower(struct net_device *filter_dev, struct ice_vsi *vsi,
- 			return err;
- 		}
+ err_register:
+diff --git a/drivers/net/ethernet/intel/igc/igc_regs.h b/drivers/net/ethernet/intel/igc/igc_regs.h
+index d38c87d7e5e8..e5b893fc5b66 100644
+--- a/drivers/net/ethernet/intel/igc/igc_regs.h
++++ b/drivers/net/ethernet/intel/igc/igc_regs.h
+@@ -12,6 +12,7 @@
+ #define IGC_MDIC		0x00020  /* MDI Control - RW */
+ #define IGC_CONNSW		0x00034  /* Copper/Fiber switch control - RW */
+ #define IGC_VET			0x00038  /* VLAN Ether Type - RW */
++#define IGC_LEDCTL		0x00E00	 /* LED Control - RW */
+ #define IGC_I225_PHPM		0x00E14  /* I225 PHY Power Management */
+ #define IGC_GPHY_VERSION	0x0001E  /* I225 gPHY Firmware Version */
  
--		/* header pointers should point to the inner headers, outer
--		 * header were already set by ice_parse_tunnel_attr
--		 */
--		headers = &fltr->inner_headers;
-+		/* PFCP is considered non-tunneled - don't swap headers. */
-+		if (fltr->tunnel_type != TNL_PFCP) {
-+			/* Header pointers should point to the inner headers,
-+			 * outer header were already set by
-+			 * ice_parse_tunnel_attr().
-+			 */
-+			headers = &fltr->inner_headers;
-+		}
- 	} else if (dissector->used_keys &
- 		  (BIT_ULL(FLOW_DISSECTOR_KEY_ENC_IPV4_ADDRS) |
- 		   BIT_ULL(FLOW_DISSECTOR_KEY_ENC_IPV6_ADDRS) |
 -- 
-2.43.0
+2.39.2
 
