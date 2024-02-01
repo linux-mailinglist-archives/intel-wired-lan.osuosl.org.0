@@ -2,67 +2,67 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C4CC5845767
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  1 Feb 2024 13:24:18 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2C7E8845769
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  1 Feb 2024 13:24:24 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 57E58405EB;
-	Thu,  1 Feb 2024 12:24:17 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 57E58405EB
+	by smtp2.osuosl.org (Postfix) with ESMTP id 9F706435E0;
+	Thu,  1 Feb 2024 12:24:22 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 9F706435E0
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1706790257;
-	bh=XZOpbUnsbtRePmg1TceY2O3lEdM8KQ2pZ30iHF9h8SE=;
+	s=default; t=1706790262;
+	bh=/5h4srct7CrITszYa5MfgpakJZoeexsDOnKXiUMjQg0=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=WLaoI5Ob6DO2MUTIEoewVRk38i6UwKSQO4Z+HyDbZVdDyrwMD1kBU5nM0dpK8AcaK
-	 tu7zpaSRUYGXu4p0w5Fw58hVsBDJcBDn2fGtiiBSr8I+tvhjDw/QLNJv7RYVAPQ5i6
-	 PXClpJxCoAahPSgGSJBbvz4mbPtkSWiEs6bvUfmrW+LKq/ymTLQttEfRDAxn3ifU71
-	 2BjjAXBznnn7frdUkIsX2SlvXJi/tm5ytnpIwzNom9dTmiOrsKj40smrvzMetQ+K5p
-	 4F0Pn510VxpWQguTrXoT+voCYgigbst+DqPrPgXFoyytEGYfxIQZ3Kfc2fnhrhvlgg
-	 pXM9xlJy0O75g==
+	b=6z+lfYWdk+9LNelF6cBoniYfw2nHPC4Tp4rZParR0UBtIAAmsSrudy9I5fkfI43xO
+	 JosM+wmCyv6zSMAtc/tS1viVRghIQMUErv1bk7c8Pddus122M7WPyw8gM3VNdTT+MI
+	 LVdNvEmtVCmkgjMxIP806SitJUZOAdAMfUripRi2/OU91Iqd09OsNonB6MRHMxAQJH
+	 O2v5X7mmB7EWTLdLsljFu/HaZGAmO/2DrAhJofEG815l0QAh/newneYIZc0djnjchR
+	 qtOdrSZ7DGdmz4q5QiQhTBNf5nwWsK1OTnZ5DTRwI/3uOpQTh7SbWK8JCGEyK+6rHh
+	 WFwB4rfNF/+Kg==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ZNdbJlYovn8Z; Thu,  1 Feb 2024 12:24:16 +0000 (UTC)
+	with ESMTP id 4aS2sVmgteT2; Thu,  1 Feb 2024 12:24:22 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 2C06040571;
-	Thu,  1 Feb 2024 12:24:16 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 2C06040571
+	by smtp2.osuosl.org (Postfix) with ESMTP id 8DDAA4013F;
+	Thu,  1 Feb 2024 12:24:21 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 8DDAA4013F
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id BBC2E1BF2F9
- for <intel-wired-lan@lists.osuosl.org>; Thu,  1 Feb 2024 12:24:08 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 8248A1BF2F9
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  1 Feb 2024 12:24:13 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 928CF83E80
- for <intel-wired-lan@lists.osuosl.org>; Thu,  1 Feb 2024 12:24:08 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 928CF83E80
+ by smtp1.osuosl.org (Postfix) with ESMTP id 6829583E80
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  1 Feb 2024 12:24:13 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6829583E80
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id sPUx0yqegvmP for <intel-wired-lan@lists.osuosl.org>;
- Thu,  1 Feb 2024 12:24:08 +0000 (UTC)
+ with ESMTP id ySWi1ASkopnT for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  1 Feb 2024 12:24:12 +0000 (UTC)
 Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.15])
- by smtp1.osuosl.org (Postfix) with ESMTPS id DAD7583DF7
- for <intel-wired-lan@lists.osuosl.org>; Thu,  1 Feb 2024 12:24:07 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org DAD7583DF7
-X-IronPort-AV: E=McAfee;i="6600,9927,10969"; a="3747017"
+ by smtp1.osuosl.org (Postfix) with ESMTPS id C5D1F83DF7
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  1 Feb 2024 12:24:12 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org C5D1F83DF7
+X-IronPort-AV: E=McAfee;i="6600,9927,10969"; a="3747037"
 X-IronPort-AV: E=Sophos;i="6.05,234,1701158400"; 
-   d="scan'208";a="3747017"
+   d="scan'208";a="3747037"
 Received: from orviesa004.jf.intel.com ([10.64.159.144])
  by orvoesa107.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 01 Feb 2024 04:24:08 -0800
+ 01 Feb 2024 04:24:13 -0800
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.05,234,1701158400"; 
-   d="scan'208";a="4499108"
+   d="scan'208";a="4499111"
 Received: from newjersey.igk.intel.com ([10.102.20.203])
- by orviesa004.jf.intel.com with ESMTP; 01 Feb 2024 04:24:03 -0800
+ by orviesa004.jf.intel.com with ESMTP; 01 Feb 2024 04:24:08 -0800
 From: Alexander Lobakin <aleksander.lobakin@intel.com>
 To: "David S. Miller" <davem@davemloft.net>,
  Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
  Paolo Abeni <pabeni@redhat.com>
-Date: Thu,  1 Feb 2024 13:22:02 +0100
-Message-ID: <20240201122216.2634007-8-aleksander.lobakin@intel.com>
+Date: Thu,  1 Feb 2024 13:22:03 +0100
+Message-ID: <20240201122216.2634007-9-aleksander.lobakin@intel.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20240201122216.2634007-1-aleksander.lobakin@intel.com>
 References: <20240201122216.2634007-1-aleksander.lobakin@intel.com>
@@ -70,22 +70,22 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1706790248; x=1738326248;
+ t=1706790253; x=1738326253;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=7hQbTbBHJUnj59SwHJFVRJ8NAAFr11mdikwNORShsF0=;
- b=dhIqul19FerNAfAYtVb3TDX5ktN5m0+m6dEMr545ATqSf8XqCF/+pAL9
- i7ywq3Fuw75Dm9hSUBWY7Vce9JfgkXoHZIi/MW9SU1rrUClCwPdsBr8tS
- xAObjbgygrlfr83pixDlIy93rqxxr0QtvkEwXSXehTbc7HnpiZkfO2WnR
- MMvz1uAfgYAdzePHB9Q1JM2HlrBY7UPBBLCyTpFkW1qavISUVV41KvLsD
- Njfew4vafXNUjuhY5oGX59SBX5zADHcHYnlCQwd2epyULQW/jz1a8TJVw
- 2Mp/3dwaqYc7wp5/nncrSzhGvm4T7n2mo7lF9ESlJ0lMMFw4y0yAo5wI1
+ bh=RrkGElyKDU2amOPgV/R6WFmMaBoS19F9b8KUjyEMIuI=;
+ b=R9Lm+VkLaBp0EycZ0r6CQpXvBo9DdKj4Sr7CWOvgH418npjYK0ac1nPk
+ HsXH02+L9wW86n6sydclap1cBB1SDX9rMHkN03oUQjR/F8PtzsfchV6lQ
+ Pk1qv+2PqEVGGqWyo4PNvcf+PshzVyFKNfQChjTyYypU1gg+01OMdQ8Sv
+ wzSQqfQI0Tyue7pP4nuqBsdkyooqCG9sJGhMBv0QZ2xsalAq4sgQO5Gaw
+ K6P7WQx/oXdPnV8omQRBneJ9CY2NSq3TZtosO1QtpKW0A1qCO7Fq66WKT
+ bnmZMUAAkRGBQxEP2AOcV3RshX68uovcEadFCKXbOIo55Ci9FHSInmedk
  w==;
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=dhIqul19
-Subject: [Intel-wired-lan] [PATCH net-next v5 07/21] linkmode: convert
- linkmode_{test, set, clear, mod}_bit() to macros
+ header.a=rsa-sha256 header.s=Intel header.b=R9Lm+VkL
+Subject: [Intel-wired-lan] [PATCH net-next v5 08/21] s390/cio: rename
+ bitmap_size() -> idset_bitmap_size()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -111,69 +111,57 @@ Cc: Andy Shevchenko <andy@kernel.org>, linux-s390@vger.kernel.org,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Since commit b03fc1173c0c ("bitops: let optimize out non-atomic bitops
-on compile-time constants"), the non-atomic bitops are macros which can
-be expanded by the compilers into compile-time expressions, which will
-result in better optimized object code. Unfortunately, turned out that
-passing `volatile` to those macros discards any possibility of
-optimization, as the compilers then don't even try to look whether
-the passed bitmap is known at compilation time. In addition to that,
-the mentioned linkmode helpers are marked with `inline`, not
-`__always_inline`, meaning that it's not guaranteed some compiler won't
-uninline them for no reason, which will also effectively prevent them
-from being optimized (it's a well-known thing the compilers sometimes
-uninline `2 + 2`).
-Convert linkmode_*_bit() from inlines to macros. Their calling
-convention are 1:1 with the corresponding bitops, so that it's not even
-needed to enumerate and map the arguments, only the names. No changes in
-vmlinux' object code (compiled by LLVM for x86_64) whatsoever, but that
-doesn't necessarily means the change is meaningless.
+bitmap_size() is a pretty generic name and one may want to use it for
+a generic bitmap API function. At the same time, its logic is not
+"generic", i.e. it's not just `nbits -> size of bitmap in bytes`
+converter as it would be expected from its name.
+Add the prefix 'idset_' used throughout the file where the function
+resides.
 
 Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-Acked-by: Jakub Kicinski <kuba@kernel.org>
 Signed-off-by: Alexander Lobakin <aleksander.lobakin@intel.com>
 ---
- include/linux/linkmode.h | 27 ++++-----------------------
- 1 file changed, 4 insertions(+), 23 deletions(-)
+ drivers/s390/cio/idset.c | 10 ++++++----
+ 1 file changed, 6 insertions(+), 4 deletions(-)
 
-diff --git a/include/linux/linkmode.h b/include/linux/linkmode.h
-index 287f590ed56b..d94bfd9ac8cc 100644
---- a/include/linux/linkmode.h
-+++ b/include/linux/linkmode.h
-@@ -43,29 +43,10 @@ static inline int linkmode_andnot(unsigned long *dst, const unsigned long *src1,
- 	return bitmap_andnot(dst, src1, src2,  __ETHTOOL_LINK_MODE_MASK_NBITS);
+diff --git a/drivers/s390/cio/idset.c b/drivers/s390/cio/idset.c
+index 45f9c0736be4..0a1105a483bf 100644
+--- a/drivers/s390/cio/idset.c
++++ b/drivers/s390/cio/idset.c
+@@ -16,7 +16,7 @@ struct idset {
+ 	unsigned long bitmap[];
+ };
+ 
+-static inline unsigned long bitmap_size(int num_ssid, int num_id)
++static inline unsigned long idset_bitmap_size(int num_ssid, int num_id)
+ {
+ 	return BITS_TO_LONGS(num_ssid * num_id) * sizeof(unsigned long);
+ }
+@@ -25,11 +25,12 @@ static struct idset *idset_new(int num_ssid, int num_id)
+ {
+ 	struct idset *set;
+ 
+-	set = vmalloc(sizeof(struct idset) + bitmap_size(num_ssid, num_id));
++	set = vmalloc(sizeof(struct idset) +
++		      idset_bitmap_size(num_ssid, num_id));
+ 	if (set) {
+ 		set->num_ssid = num_ssid;
+ 		set->num_id = num_id;
+-		memset(set->bitmap, 0, bitmap_size(num_ssid, num_id));
++		memset(set->bitmap, 0, idset_bitmap_size(num_ssid, num_id));
+ 	}
+ 	return set;
+ }
+@@ -41,7 +42,8 @@ void idset_free(struct idset *set)
+ 
+ void idset_fill(struct idset *set)
+ {
+-	memset(set->bitmap, 0xff, bitmap_size(set->num_ssid, set->num_id));
++	memset(set->bitmap, 0xff,
++	       idset_bitmap_size(set->num_ssid, set->num_id));
  }
  
--static inline void linkmode_set_bit(int nr, volatile unsigned long *addr)
--{
--	__set_bit(nr, addr);
--}
--
--static inline void linkmode_clear_bit(int nr, volatile unsigned long *addr)
--{
--	__clear_bit(nr, addr);
--}
--
--static inline void linkmode_mod_bit(int nr, volatile unsigned long *addr,
--				    int set)
--{
--	if (set)
--		linkmode_set_bit(nr, addr);
--	else
--		linkmode_clear_bit(nr, addr);
--}
--
--static inline int linkmode_test_bit(int nr, const volatile unsigned long *addr)
--{
--	return test_bit(nr, addr);
--}
-+#define linkmode_test_bit	test_bit
-+#define linkmode_set_bit	__set_bit
-+#define linkmode_clear_bit	__clear_bit
-+#define linkmode_mod_bit	__assign_bit
- 
- static inline void linkmode_set_bit_array(const int *array, int array_size,
- 					  unsigned long *addr)
+ static inline void idset_add(struct idset *set, int ssid, int id)
 -- 
 2.43.0
 
