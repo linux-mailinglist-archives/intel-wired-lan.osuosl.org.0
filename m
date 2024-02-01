@@ -1,103 +1,107 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id BC4FB844FCF
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  1 Feb 2024 04:33:45 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 37DB5844FD1
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  1 Feb 2024 04:34:00 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 4EB3141C5F;
-	Thu,  1 Feb 2024 03:33:44 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4EB3141C5F
+	by smtp4.osuosl.org (Postfix) with ESMTP id BAAD2418A8;
+	Thu,  1 Feb 2024 03:33:58 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org BAAD2418A8
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1706758424;
-	bh=4Ho6tWOUJQG5jwgdiQ+YC/nc1aAPjOngvOC35lqmr7A=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=IqWJN2VNb6+ZZBpPa2iN12VwQFCHHesfX9LOJLUMGgSveNRaUwbbGmre4zGSdM5KY
-	 gt1Vi0gxHh+zCroMpn8JqQbG0oG0IjLg7lkSKgLEBY6M2XzBUnhvdcPxfdwW1NJywh
-	 fYYdgqJDIem7UVlYhTJGSEuf+UBPWLi8V500wSPoXBx/u5johXYXRW3XoOCV/EL2V0
-	 3JgrL2y/i4kdq5U4nc39g000z1tHg/TPVyW5p9MXqBERMEHW0PG2pP10xpsGwRoqqa
-	 K4T/gukV2Y3TuuBPLSEcNqIx+EWa68s9uiawpnG8ZNXCdLsPZHcqupbq6xgoYdwj7x
-	 vUdmvCkkkmQ0A==
+	s=default; t=1706758438;
+	bh=HUVdlwWAjj8cbBkvTW+76Z/trcG39A3eTZ0exUJTSf4=;
+	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=mmN7JSTr2HrjiTNACMjDUDIdOpOpj9LH4UP/UyFg3K2jVi4eEXIPg93HXg+kxwUkH
+	 5Z5JnfR3vPWMN5rkVx8cx6a3/U9oiXoFZciNnrXXshKwg4xLbWq5juSD2QFe7D9dMR
+	 FPrPfYsERgaHKDQLh3DgCvnLhCNT+odRnvYnqSklgRhvMeKzxCCOJhGTohMksXINxO
+	 5Ea5Ok8hUNS7VjgLiVNVRIbminWlI/E6ErWKKD5/k4uZZ+TDahvA7PFMDdQBDhpY3R
+	 4uVDQ1cewuEvYFjpDJvU1aC7CwKwqeL1oHWAyWKs1PDDgbwNxob5RPhpK3mkC28aTu
+	 +QpEYgFLFFazA==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id v5AdOXQgFS4Y; Thu,  1 Feb 2024 03:33:43 +0000 (UTC)
+	with ESMTP id eHm9efmzPkui; Thu,  1 Feb 2024 03:33:57 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id EC70A4020C;
-	Thu,  1 Feb 2024 03:33:42 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org EC70A4020C
+	by smtp4.osuosl.org (Postfix) with ESMTP id 39DAB417FB;
+	Thu,  1 Feb 2024 03:33:57 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 39DAB417FB
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 8C23A1BF951
- for <intel-wired-lan@lists.osuosl.org>; Thu,  1 Feb 2024 03:33:37 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 7C8021BF951
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  1 Feb 2024 03:33:52 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 6D85B8186E
- for <intel-wired-lan@lists.osuosl.org>; Thu,  1 Feb 2024 03:33:37 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6D85B8186E
+ by smtp1.osuosl.org (Postfix) with ESMTP id 55BC781C6E
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  1 Feb 2024 03:33:52 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 55BC781C6E
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id TI5XxjzUSzjp for <intel-wired-lan@lists.osuosl.org>;
- Thu,  1 Feb 2024 03:33:36 +0000 (UTC)
-Received: from mail-oi1-x22c.google.com (mail-oi1-x22c.google.com
- [IPv6:2607:f8b0:4864:20::22c])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 0FFA981854
- for <intel-wired-lan@lists.osuosl.org>; Thu,  1 Feb 2024 03:33:35 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0FFA981854
-Received: by mail-oi1-x22c.google.com with SMTP id
- 5614622812f47-3be78c26850so326712b6e.0
- for <intel-wired-lan@lists.osuosl.org>; Wed, 31 Jan 2024 19:33:35 -0800 (PST)
+ with ESMTP id D_kbu3ISyDkV for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  1 Feb 2024 03:33:51 +0000 (UTC)
+Received: from mail-oi1-x22a.google.com (mail-oi1-x22a.google.com
+ [IPv6:2607:f8b0:4864:20::22a])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 508EE81BCF
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  1 Feb 2024 03:33:51 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 508EE81BCF
+Received: by mail-oi1-x22a.google.com with SMTP id
+ 5614622812f47-3be78c26850so326820b6e.0
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 31 Jan 2024 19:33:51 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1706758415; x=1707363215;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=4Ho6tWOUJQG5jwgdiQ+YC/nc1aAPjOngvOC35lqmr7A=;
- b=VimEazSyLphpWmC1eMgtH7G3pxis4TNjLZBEkHDSqppGo3zK5PBscORO3RvUboHk4H
- SSSwRRZelgTSjKZCz8teIGC0pbIPBwvfcmnmWCyeNF8sC5b3uNkBb8Y5zMK6rqBuR6VQ
- 6w2nb78V1c6RMKnnvMZu/k+z8QQcPxfnONi0KDfLbtBUEAltqAhvANG0sn4xje3RGVrT
- TDn2K5RJtcz3wWfEoopDto5jg10qZqnfA+395oM8W5qlf6kyJPX1/aiDxJYuWQtUtclH
- n1Of4IcYhzbafd4Q7n5WwpjKAWYq4gjTD3lxesm8bDVODhm9tR7TdB+tFP9oOaHTNidq
- y7Zw==
-X-Gm-Message-State: AOJu0YwEsKAHIs7knpzONrcTo8K1eAOF4kEAfloDAo1B3q7+OMfEACBc
- +EfE7RiUshTxNv5TFWrvnrAbEhCbFcK1ejByyXHOAFaf7YXPzvi+
-X-Google-Smtp-Source: AGHT+IENjLvEpE9KD1z9Zpm/r2KpiGmQBztfkkKyMKEkrLlj9O/v/fl7kfS6TC+kgGwW+FX5ejt8SA==
-X-Received: by 2002:a05:6808:170e:b0:3be:58:4a23 with SMTP id
- bc14-20020a056808170e00b003be00584a23mr3686028oib.54.1706758414953; 
- Wed, 31 Jan 2024 19:33:34 -0800 (PST)
+ d=1e100.net; s=20230601; t=1706758430; x=1707363230;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=HUVdlwWAjj8cbBkvTW+76Z/trcG39A3eTZ0exUJTSf4=;
+ b=U+PFkfMH/Dx0/dFDIh1mS15KeyT3RD88lMlIvwCVS/CTLcOFJfcXpXRffHgRQdx0jw
+ 9UAnbPzRcJw2EWv04CrinsRp0CnsBBc47QnLPbYroIgrC5P4p0skBsTNQ0n6CUbYJ1Hg
+ 5CBUVqOG+gyOq/X6V344cZ3zl1g1Y2dMInP9rblBm3SPGAIP0gfEkif+XAeoJX/NhxNP
+ CE03WUeymApMD/FNVG47m/C0k+UbwqQhNVanMOwnK/d8WooWgAhkMevf/xOsjJswOx2N
+ aNpGCkkgVtTOkcvsdmIFv74OaNdlVbSy6SXbeinUC/wwPKJkpP8zHIwbnRO6UyBOeOuR
+ jNiw==
+X-Gm-Message-State: AOJu0YwtNxHC1oMHa4/IYEycFLldAK8tONyzyDnFdDCw2o0Rwrl+HzVE
+ O2xZ5kOA1Q9aq+L1QqdtkzDqecDyg2sAJe/3bzrU+SvbAe6K2ukH
+X-Google-Smtp-Source: AGHT+IEEQt79M0JlAm/N6QYBVf1P5+8iXykqitwBZ0+r/C/s30/Gh+B6WaaGUKshLmWGPL1ZumbTew==
+X-Received: by 2002:a05:6808:eca:b0:3be:97d3:2f68 with SMTP id
+ q10-20020a0568080eca00b003be97d32f68mr3322808oiv.36.1706758430150; 
+ Wed, 31 Jan 2024 19:33:50 -0800 (PST)
 Received: from ocxma-dut.. ([153.126.233.62]) by smtp.gmail.com with ESMTPSA id
- n12-20020aa78a4c000000b006ddd2be2169sm10661625pfa.73.2024.01.31.19.33.31
+ n12-20020aa78a4c000000b006ddd2be2169sm10661625pfa.73.2024.01.31.19.33.46
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 31 Jan 2024 19:33:34 -0800 (PST)
+ Wed, 31 Jan 2024 19:33:49 -0800 (PST)
 From: Takeru Hayasaka <hayatake396@gmail.com>
 To: Jesse Brandeburg <jesse.brandeburg@intel.com>,
  Tony Nguyen <anthony.l.nguyen@intel.com>,
  "David S. Miller" <davem@davemloft.net>,
  Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
  Paolo Abeni <pabeni@redhat.com>, Jonathan Corbet <corbet@lwn.net>
-Date: Thu,  1 Feb 2024 03:33:09 +0000
-Message-Id: <20240201033310.1028154-1-hayatake396@gmail.com>
+Date: Thu,  1 Feb 2024 03:33:10 +0000
+Message-Id: <20240201033310.1028154-2-hayatake396@gmail.com>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20240201033310.1028154-1-hayatake396@gmail.com>
+References: <20240201033310.1028154-1-hayatake396@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1706758415; x=1707363215; darn=lists.osuosl.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=4Ho6tWOUJQG5jwgdiQ+YC/nc1aAPjOngvOC35lqmr7A=;
- b=bIG47xNgw6tbOqG7hAxJmpqNBqm8+nEywIESN+/jkVF0ztDqlf9C4omRj+y1hdXx1K
- OGk4EtLFbH6R0T+wEaIIRq9VlK44rpGnNEGtsjuT2ZXQueHSpMepC6RLcTZuJkxHUU9+
- CH9x2m/LUa2ycmTZwe5Nt1SDMU6ods7NWvYSlq0nx9i7/yvnpIqY9XqIPPVatfB6/0A/
- aEto75gtjLZT7uyYncHxNNEPYtcg6RpCYmKQYb+rS8O1eKYhPKKcRfsk8+rfYn9+4MyM
- /Mr0sa09ApR7o8aDYT7oevIWaOTv71KoFlQHVg6bkxyFYkZbMOIow7rVEqnPrlEPz7j3
- oYng==
+ d=gmail.com; s=20230601; t=1706758430; x=1707363230; darn=lists.osuosl.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=HUVdlwWAjj8cbBkvTW+76Z/trcG39A3eTZ0exUJTSf4=;
+ b=XuLGQeX+PMhYr1V0tDu22QYTPObrkE9NqWSRCyjLml/WGMXHXAXg9G7H+2rQW1d/HY
+ qa8D8OHDFtisyvRp7xSwMGn06ip7XmXmifLimXSuDH5aeQO89l8czOLCgW/KLWu2Oa2f
+ ouMh9xU3OrlmFCb6/7DF9nW/rruJEysORuq0s9Xpzphr+NE4r09kbHMFPviXxVrvSFY1
+ tS/3YeEXMYAmhvLb3RYttPga+mIMH6BfCXA2xYJA8wWmhGETWJdBkzM653pKmp2SR4V7
+ RGvPspO5hEVU/hUTqDMV9LrIyLQkgaG2SJ08viailNXJqztTr/5LQcULrtuNQKspXfYS
+ Wovg==
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
- header.a=rsa-sha256 header.s=20230601 header.b=bIG47xNg
-Subject: [Intel-wired-lan] [PATCH net-next v7 1/2] ethtool: Add GTP RSS hash
- options to ethtool.h
+ header.a=rsa-sha256 header.s=20230601 header.b=XuLGQeX+
+Subject: [Intel-wired-lan] [PATCH net-next v7 2/2] ice: Implement RSS
+ settings for GTP using ethtool
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -117,114 +121,301 @@ Cc: linux-doc@vger.kernel.org, vladimir.oltean@nxp.com,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-This is a patch that enables RSS functionality for GTP packets using ethtool.
+Following the addition of new GTP RSS hash options to ethtool.h, this patch
+implements the corresponding RSS settings for GTP packets in the Intel ice
+driver. It enables users to configure RSS for GTP-U and GTP-C traffic over IPv4
+and IPv6, utilizing the newly defined hash options.
 
-A user can include TEID and make RSS work for GTP-U over IPv4 by doing the
-following:`ethtool -N ens3 rx-flow-hash gtpu4 sde`
-
-In addition to gtpu(4|6), we now support gtpc(4|6),gtpc(4|6)t,gtpu(4|6)e,
-gtpu(4|6)u, and gtpu(4|6)d.
-
-gtpc(4|6): Used for GTP-C in IPv4 and IPv6, where the GTP header format does
-not include a TEID.
-gtpc(4|6)t: Used for GTP-C in IPv4 and IPv6, with a GTP header format that
-includes a TEID.
-gtpu(4|6): Used for GTP-U in both IPv4 and IPv6 scenarios.
-gtpu(4|6)e: Used for GTP-U with extended headers in both IPv4 and IPv6.
-gtpu(4|6)u: Used when the PSC (PDU session container) in the GTP-U extended
-header includes Uplink, applicable to both IPv4 and IPv6.
-gtpu(4|6)d: Used when the PSC in the GTP-U extended header includes Downlink,
-for both IPv4 and IPv6.
-
-GTP generates a flow that includes an ID called TEID to identify the tunnel.
-This tunnel is created for each UE (User Equipment).By performing RSS based on
-this flow, it is possible to apply RSS for each communication unit from the UE.
-Without this, RSS would only be effective within the range of IP addresses. For
-instance, the PGW can only perform RSS within the IP range of the SGW.
-Problematic from a load distribution perspective, especially if there's a bias
-in the terminals connected to a particular base station.This case can be
-solved by using this patch.
+The implementation covers the handling of gtpu(4|6), gtpc(4|6), gtpc(4|6)t,
+gtpu(4|6)e, gtpu(4|6)u, and gtpu(4|6)d traffic, providing enhanced load
+distribution for GTP traffic across multiple processing units.
 
 Signed-off-by: Takeru Hayasaka <hayatake396@gmail.com>
 ---
-v2->v3: Based on Harald-san's review, I added documentation and comments to
-ethtool.h and ice.rst.
-v3->v4: Based on Marcin-san's review, I added the missing code for GTPC and
-GTPC_TEID, and revised the documentation and comments.
-v4->v5: Based on Marcin-san's review, I fixed rename and wrong code regarding
-GTPC
-v5->v6: Based on Marcin-san's review, Undoing the addition of unnecessary
-blank lines.Minor fixes.
-v6->v7 Based on Jakub-san's review, Split the patch.
- include/uapi/linux/ethtool.h | 48 ++++++++++++++++++++++++++++++++++++
- 1 file changed, 48 insertions(+)
+ .../device_drivers/ethernet/intel/ice.rst     | 21 ++++-
+ drivers/net/ethernet/intel/ice/ice_ethtool.c  | 82 +++++++++++++++++++
+ drivers/net/ethernet/intel/ice/ice_flow.h     | 31 +++++--
+ drivers/net/ethernet/intel/ice/ice_lib.c      | 37 +++++++++
+ 4 files changed, 162 insertions(+), 9 deletions(-)
 
-diff --git a/include/uapi/linux/ethtool.h b/include/uapi/linux/ethtool.h
-index 06ef6b78b7de..11fc18988bc2 100644
---- a/include/uapi/linux/ethtool.h
-+++ b/include/uapi/linux/ethtool.h
-@@ -2023,6 +2023,53 @@ static inline int ethtool_validate_duplex(__u8 duplex)
- #define	IPV4_FLOW	0x10	/* hash only */
- #define	IPV6_FLOW	0x11	/* hash only */
- #define	ETHER_FLOW	0x12	/* spec only (ether_spec) */
-+
-+/* Used for GTP-U IPv4 and IPv6.
-+ * The format of GTP packets only includes
-+ * elements such as TEID and GTP version.
-+ * It is primarily intended for data communication of the UE.
-+ */
-+#define GTPU_V4_FLOW 0x13	/* hash only */
-+#define GTPU_V6_FLOW 0x14	/* hash only */
-+
-+/* Use for GTP-C IPv4 and v6.
-+ * The format of these GTP packets does not include TEID.
-+ * Primarily expected to be used for communication
-+ * to create sessions for UE data communication,
-+ * commonly referred to as CSR (Create Session Request).
-+ */
-+#define GTPC_V4_FLOW 0x15	/* hash only */
-+#define GTPC_V6_FLOW 0x16	/* hash only */
-+
-+/* Use for GTP-C IPv4 and v6.
-+ * Unlike GTPC_V4_FLOW, the format of these GTP packets includes TEID.
-+ * After session creation, it becomes this packet.
-+ * This is mainly used for requests to realize UE handover.
-+ */
-+#define GTPC_TEID_V4_FLOW 0x17	/* hash only */
-+#define GTPC_TEID_V6_FLOW 0x18	/* hash only */
-+
-+/* Use for GTP-U and extended headers for the PSC (PDU Session Container).
-+ * The format of these GTP packets includes TEID and QFI.
-+ * In 5G communication using UPF (User Plane Function),
-+ * data communication with this extended header is performed.
-+ */
-+#define GTPU_EH_V4_FLOW 0x19	/* hash only */
-+#define GTPU_EH_V6_FLOW 0x1a	/* hash only */
-+
-+/* Use for GTP-U IPv4 and v6 PSC (PDU Session Container) extended headers.
-+ * This differs from GTPU_EH_V(4|6)_FLOW in that it is distinguished by
-+ * UL/DL included in the PSC.
-+ * There are differences in the data included based on Downlink/Uplink,
-+ * and can be used to distinguish packets.
-+ * The functions described so far are useful when you want to
-+ * handle communication from the mobile network in UPF, PGW, etc.
-+ */
-+#define GTPU_UL_V4_FLOW 0x1b	/* hash only */
-+#define GTPU_UL_V6_FLOW 0x1c	/* hash only */
-+#define GTPU_DL_V4_FLOW 0x1d	/* hash only */
-+#define GTPU_DL_V6_FLOW 0x1e	/* hash only */
-+
- /* Flag to enable additional fields in struct ethtool_rx_flow_spec */
- #define	FLOW_EXT	0x80000000
- #define	FLOW_MAC_EXT	0x40000000
-@@ -2037,6 +2084,7 @@ static inline int ethtool_validate_duplex(__u8 duplex)
- #define	RXH_IP_DST	(1 << 5)
- #define	RXH_L4_B_0_1	(1 << 6) /* src port in case of TCP/UDP/SCTP */
- #define	RXH_L4_B_2_3	(1 << 7) /* dst port in case of TCP/UDP/SCTP */
-+#define	RXH_GTP_TEID	(1 << 8) /* teid in case of GTP */
- #define	RXH_DISCARD	(1 << 31)
+diff --git a/Documentation/networking/device_drivers/ethernet/intel/ice.rst b/Documentation/networking/device_drivers/ethernet/intel/ice.rst
+index 5038e54586af..934752f675ba 100644
+--- a/Documentation/networking/device_drivers/ethernet/intel/ice.rst
++++ b/Documentation/networking/device_drivers/ethernet/intel/ice.rst
+@@ -368,15 +368,28 @@ more options for Receive Side Scaling (RSS) hash byte configuration.
+   # ethtool -N <ethX> rx-flow-hash <type> <option>
  
- #define	RX_CLS_FLOW_DISC	0xffffffffffffffffULL
+   Where <type> is:
+-    tcp4  signifying TCP over IPv4
+-    udp4  signifying UDP over IPv4
+-    tcp6  signifying TCP over IPv6
+-    udp6  signifying UDP over IPv6
++    tcp4    signifying TCP over IPv4
++    udp4    signifying UDP over IPv4
++    gtpc4   signifying GTP-C over IPv4
++    gtpc4t  signifying GTP-C (include TEID) over IPv4
++    gtpu4   signifying GTP-U over IPV4
++    gtpu4e  signifying GTP-U and Extension Header over IPV4
++    gtpu4u  signifying GTP-U PSC Uplink over IPV4
++    gtpu4d  signifying GTP-U PSC Downlink over IPV4
++    tcp6    signifying TCP over IPv6
++    udp6    signifying UDP over IPv6
++    gtpc6   signifying GTP-C over IPv6
++    gtpc6t  signifying GTP-C (include TEID) over IPv6
++    gtpu6   signifying GTP-U over IPV6
++    gtpu6e  signifying GTP-U and Extension Header over IPV6
++    gtpu6u  signifying GTP-U PSC Uplink over IPV6
++    gtpu6d  signifying GTP-U PSC Downlink over IPV6
+   And <option> is one or more of:
+     s     Hash on the IP source address of the Rx packet.
+     d     Hash on the IP destination address of the Rx packet.
+     f     Hash on bytes 0 and 1 of the Layer 4 header of the Rx packet.
+     n     Hash on bytes 2 and 3 of the Layer 4 header of the Rx packet.
++    e     Hash on GTP Packet on TEID (4bytes) of the Rx packet.
+ 
+ 
+ Accelerated Receive Flow Steering (aRFS)
+diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool.c b/drivers/net/ethernet/intel/ice/ice_ethtool.c
+index a19b06f18e40..d0e05032f464 100644
+--- a/drivers/net/ethernet/intel/ice/ice_ethtool.c
++++ b/drivers/net/ethernet/intel/ice/ice_ethtool.c
+@@ -2486,6 +2486,24 @@ static u32 ice_parse_hdrs(struct ethtool_rxnfc *nfc)
+ 	case SCTP_V4_FLOW:
+ 		hdrs |= ICE_FLOW_SEG_HDR_SCTP | ICE_FLOW_SEG_HDR_IPV4;
+ 		break;
++	case GTPU_V4_FLOW:
++		hdrs |= ICE_FLOW_SEG_HDR_GTPU_IP | ICE_FLOW_SEG_HDR_IPV4;
++		break;
++	case GTPC_V4_FLOW:
++		hdrs |= ICE_FLOW_SEG_HDR_GTPC | ICE_FLOW_SEG_HDR_IPV4;
++		break;
++	case GTPC_TEID_V4_FLOW:
++		hdrs |= ICE_FLOW_SEG_HDR_GTPC_TEID | ICE_FLOW_SEG_HDR_IPV4;
++		break;
++	case GTPU_EH_V4_FLOW:
++		hdrs |= ICE_FLOW_SEG_HDR_GTPU_EH | ICE_FLOW_SEG_HDR_IPV4;
++		break;
++	case GTPU_UL_V4_FLOW:
++		hdrs |= ICE_FLOW_SEG_HDR_GTPU_UP | ICE_FLOW_SEG_HDR_IPV4;
++		break;
++	case GTPU_DL_V4_FLOW:
++		hdrs |= ICE_FLOW_SEG_HDR_GTPU_DWN | ICE_FLOW_SEG_HDR_IPV4;
++		break;
+ 	case TCP_V6_FLOW:
+ 		hdrs |= ICE_FLOW_SEG_HDR_TCP | ICE_FLOW_SEG_HDR_IPV6;
+ 		break;
+@@ -2495,6 +2513,24 @@ static u32 ice_parse_hdrs(struct ethtool_rxnfc *nfc)
+ 	case SCTP_V6_FLOW:
+ 		hdrs |= ICE_FLOW_SEG_HDR_SCTP | ICE_FLOW_SEG_HDR_IPV6;
+ 		break;
++	case GTPU_V6_FLOW:
++		hdrs |= ICE_FLOW_SEG_HDR_GTPU_IP | ICE_FLOW_SEG_HDR_IPV6;
++		break;
++	case GTPC_V6_FLOW:
++		hdrs |= ICE_FLOW_SEG_HDR_GTPC | ICE_FLOW_SEG_HDR_IPV6;
++		break;
++	case GTPC_TEID_V6_FLOW:
++		hdrs |= ICE_FLOW_SEG_HDR_GTPC_TEID | ICE_FLOW_SEG_HDR_IPV6;
++		break;
++	case GTPU_EH_V6_FLOW:
++		hdrs |= ICE_FLOW_SEG_HDR_GTPU_EH | ICE_FLOW_SEG_HDR_IPV6;
++		break;
++	case GTPU_UL_V6_FLOW:
++		hdrs |= ICE_FLOW_SEG_HDR_GTPU_UP | ICE_FLOW_SEG_HDR_IPV6;
++		break;
++	case GTPU_DL_V6_FLOW:
++		hdrs |= ICE_FLOW_SEG_HDR_GTPU_DWN | ICE_FLOW_SEG_HDR_IPV6;
++		break;
+ 	default:
+ 		break;
+ 	}
+@@ -2518,6 +2554,12 @@ static u64 ice_parse_hash_flds(struct ethtool_rxnfc *nfc, bool symm)
+ 		case TCP_V4_FLOW:
+ 		case UDP_V4_FLOW:
+ 		case SCTP_V4_FLOW:
++		case GTPU_V4_FLOW:
++		case GTPC_V4_FLOW:
++		case GTPC_TEID_V4_FLOW:
++		case GTPU_EH_V4_FLOW:
++		case GTPU_UL_V4_FLOW:
++		case GTPU_DL_V4_FLOW:
+ 			if (nfc->data & RXH_IP_SRC)
+ 				hfld |= ICE_FLOW_HASH_FLD_IPV4_SA;
+ 			if (nfc->data & RXH_IP_DST)
+@@ -2526,6 +2568,12 @@ static u64 ice_parse_hash_flds(struct ethtool_rxnfc *nfc, bool symm)
+ 		case TCP_V6_FLOW:
+ 		case UDP_V6_FLOW:
+ 		case SCTP_V6_FLOW:
++		case GTPU_V6_FLOW:
++		case GTPC_V6_FLOW:
++		case GTPC_TEID_V6_FLOW:
++		case GTPU_EH_V6_FLOW:
++		case GTPU_UL_V6_FLOW:
++		case GTPU_DL_V6_FLOW:
+ 			if (nfc->data & RXH_IP_SRC)
+ 				hfld |= ICE_FLOW_HASH_FLD_IPV6_SA;
+ 			if (nfc->data & RXH_IP_DST)
+@@ -2564,6 +2612,33 @@ static u64 ice_parse_hash_flds(struct ethtool_rxnfc *nfc, bool symm)
+ 		}
+ 	}
+ 
++	if (nfc->data & RXH_GTP_TEID) {
++		switch (nfc->flow_type) {
++		case GTPC_TEID_V4_FLOW:
++		case GTPC_TEID_V6_FLOW:
++			hfld |= ICE_FLOW_HASH_FLD_GTPC_TEID;
++			break;
++		case GTPU_V4_FLOW:
++		case GTPU_V6_FLOW:
++			hfld |= ICE_FLOW_HASH_FLD_GTPU_IP_TEID;
++			break;
++		case GTPU_EH_V4_FLOW:
++		case GTPU_EH_V6_FLOW:
++			hfld |= ICE_FLOW_HASH_FLD_GTPU_EH_TEID;
++			break;
++		case GTPU_UL_V4_FLOW:
++		case GTPU_UL_V6_FLOW:
++			hfld |= ICE_FLOW_HASH_FLD_GTPU_UP_TEID;
++			break;
++		case GTPU_DL_V4_FLOW:
++		case GTPU_DL_V6_FLOW:
++			hfld |= ICE_FLOW_HASH_FLD_GTPU_DWN_TEID;
++			break;
++		default:
++			break;
++		}
++	}
++
+ 	return hfld;
+ }
+ 
+@@ -2676,6 +2751,13 @@ ice_get_rss_hash_opt(struct ice_vsi *vsi, struct ethtool_rxnfc *nfc)
+ 	    hash_flds & ICE_FLOW_HASH_FLD_UDP_DST_PORT ||
+ 	    hash_flds & ICE_FLOW_HASH_FLD_SCTP_DST_PORT)
+ 		nfc->data |= (u64)RXH_L4_B_2_3;
++
++	if (hash_flds & ICE_FLOW_HASH_FLD_GTPC_TEID ||
++	    hash_flds & ICE_FLOW_HASH_FLD_GTPU_IP_TEID ||
++	    hash_flds & ICE_FLOW_HASH_FLD_GTPU_EH_TEID ||
++	    hash_flds & ICE_FLOW_HASH_FLD_GTPU_UP_TEID ||
++	    hash_flds & ICE_FLOW_HASH_FLD_GTPU_DWN_TEID)
++		nfc->data |= (u64)RXH_GTP_TEID;
+ }
+ 
+ /**
+diff --git a/drivers/net/ethernet/intel/ice/ice_flow.h b/drivers/net/ethernet/intel/ice/ice_flow.h
+index ff82915ab497..2fd2e0cb483d 100644
+--- a/drivers/net/ethernet/intel/ice/ice_flow.h
++++ b/drivers/net/ethernet/intel/ice/ice_flow.h
+@@ -37,13 +37,13 @@
+ #define ICE_HASH_SCTP_IPV4	(ICE_FLOW_HASH_IPV4 | ICE_FLOW_HASH_SCTP_PORT)
+ #define ICE_HASH_SCTP_IPV6	(ICE_FLOW_HASH_IPV6 | ICE_FLOW_HASH_SCTP_PORT)
+ 
+-#define ICE_FLOW_HASH_GTP_TEID \
++#define ICE_FLOW_HASH_GTP_C_TEID \
+ 	(BIT_ULL(ICE_FLOW_FIELD_IDX_GTPC_TEID))
+ 
+-#define ICE_FLOW_HASH_GTP_IPV4_TEID \
+-	(ICE_FLOW_HASH_IPV4 | ICE_FLOW_HASH_GTP_TEID)
+-#define ICE_FLOW_HASH_GTP_IPV6_TEID \
+-	(ICE_FLOW_HASH_IPV6 | ICE_FLOW_HASH_GTP_TEID)
++#define ICE_FLOW_HASH_GTP_C_IPV4_TEID \
++	(ICE_FLOW_HASH_IPV4 | ICE_FLOW_HASH_GTP_C_TEID)
++#define ICE_FLOW_HASH_GTP_C_IPV6_TEID \
++	(ICE_FLOW_HASH_IPV6 | ICE_FLOW_HASH_GTP_C_TEID)
+ 
+ #define ICE_FLOW_HASH_GTP_U_TEID \
+ 	(BIT_ULL(ICE_FLOW_FIELD_IDX_GTPU_IP_TEID))
+@@ -66,6 +66,20 @@
+ 	(ICE_FLOW_HASH_IPV6 | ICE_FLOW_HASH_GTP_U_EH_TEID | \
+ 	 ICE_FLOW_HASH_GTP_U_EH_QFI)
+ 
++#define ICE_FLOW_HASH_GTP_U_UP \
++	(BIT_ULL(ICE_FLOW_FIELD_IDX_GTPU_UP_TEID))
++#define ICE_FLOW_HASH_GTP_U_DWN \
++	(BIT_ULL(ICE_FLOW_FIELD_IDX_GTPU_DWN_TEID))
++
++#define ICE_FLOW_HASH_GTP_U_IPV4_UP \
++	(ICE_FLOW_HASH_IPV4 | ICE_FLOW_HASH_GTP_U_UP)
++#define ICE_FLOW_HASH_GTP_U_IPV6_UP \
++	(ICE_FLOW_HASH_IPV6 | ICE_FLOW_HASH_GTP_U_UP)
++#define ICE_FLOW_HASH_GTP_U_IPV4_DWN \
++	(ICE_FLOW_HASH_IPV4 | ICE_FLOW_HASH_GTP_U_DWN)
++#define ICE_FLOW_HASH_GTP_U_IPV6_DWN \
++	(ICE_FLOW_HASH_IPV6 | ICE_FLOW_HASH_GTP_U_DWN)
++
+ #define ICE_FLOW_HASH_PPPOE_SESS_ID \
+ 	(BIT_ULL(ICE_FLOW_FIELD_IDX_PPPOE_SESS_ID))
+ 
+@@ -242,6 +256,13 @@ enum ice_flow_field {
+ #define ICE_FLOW_HASH_FLD_SCTP_DST_PORT	\
+ 	BIT_ULL(ICE_FLOW_FIELD_IDX_SCTP_DST_PORT)
+ 
++#define ICE_FLOW_HASH_FLD_GTPC_TEID	BIT_ULL(ICE_FLOW_FIELD_IDX_GTPC_TEID)
++#define ICE_FLOW_HASH_FLD_GTPU_IP_TEID BIT_ULL(ICE_FLOW_FIELD_IDX_GTPU_IP_TEID)
++#define ICE_FLOW_HASH_FLD_GTPU_EH_TEID BIT_ULL(ICE_FLOW_FIELD_IDX_GTPU_EH_TEID)
++#define ICE_FLOW_HASH_FLD_GTPU_UP_TEID BIT_ULL(ICE_FLOW_FIELD_IDX_GTPU_UP_TEID)
++#define ICE_FLOW_HASH_FLD_GTPU_DWN_TEID \
++	BIT_ULL(ICE_FLOW_FIELD_IDX_GTPU_DWN_TEID)
++
+ /* Flow headers and fields for AVF support */
+ enum ice_flow_avf_hdr_field {
+ 	/* Values 0 - 28 are reserved for future use */
+diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
+index 9be724291ef8..3c4282019570 100644
+--- a/drivers/net/ethernet/intel/ice/ice_lib.c
++++ b/drivers/net/ethernet/intel/ice/ice_lib.c
+@@ -1618,6 +1618,25 @@ static const struct ice_rss_hash_cfg default_rss_cfgs[] = {
+ 	 */
+ 	{ICE_FLOW_SEG_HDR_SCTP | ICE_FLOW_SEG_HDR_IPV4,
+ 		ICE_HASH_SCTP_IPV4, ICE_RSS_OUTER_HEADERS, false},
++	/* configure RSS for gtpc4 with input set IPv4 src/dst */
++	{ICE_FLOW_SEG_HDR_GTPC | ICE_FLOW_SEG_HDR_IPV4,
++		ICE_FLOW_HASH_IPV4, ICE_RSS_OUTER_HEADERS, false},
++	/* configure RSS for gtpc4t with input set IPv4 src/dst */
++	{ICE_FLOW_SEG_HDR_GTPC_TEID | ICE_FLOW_SEG_HDR_IPV4,
++		ICE_FLOW_HASH_GTP_C_IPV4_TEID, ICE_RSS_OUTER_HEADERS, false},
++	/* configure RSS for gtpu4 with input set IPv4 src/dst */
++	{ICE_FLOW_SEG_HDR_GTPU_IP | ICE_FLOW_SEG_HDR_IPV4,
++		ICE_FLOW_HASH_GTP_U_IPV4_TEID, ICE_RSS_OUTER_HEADERS, false},
++	/* configure RSS for gtpu4e with input set IPv4 src/dst */
++	{ICE_FLOW_SEG_HDR_GTPU_EH | ICE_FLOW_SEG_HDR_IPV4,
++		ICE_FLOW_HASH_GTP_U_IPV4_EH, ICE_RSS_OUTER_HEADERS, false},
++	/* configure RSS for gtpu4u with input set IPv4 src/dst */
++	{ ICE_FLOW_SEG_HDR_GTPU_UP | ICE_FLOW_SEG_HDR_IPV4,
++		ICE_FLOW_HASH_GTP_U_IPV4_UP, ICE_RSS_OUTER_HEADERS, false},
++	/* configure RSS for gtpu4d with input set IPv4 src/dst */
++	{ICE_FLOW_SEG_HDR_GTPU_DWN | ICE_FLOW_SEG_HDR_IPV4,
++		ICE_FLOW_HASH_GTP_U_IPV4_DWN, ICE_RSS_OUTER_HEADERS, false},
++
+ 	/* configure RSS for tcp6 with input set IPv6 src/dst, TCP src/dst */
+ 	{ICE_FLOW_SEG_HDR_TCP | ICE_FLOW_SEG_HDR_IPV6,
+ 				ICE_HASH_TCP_IPV6,  ICE_RSS_ANY_HEADERS, false},
+@@ -1632,6 +1651,24 @@ static const struct ice_rss_hash_cfg default_rss_cfgs[] = {
+ 	/* configure RSS for IPSEC ESP SPI with input set MAC_IPV4_SPI */
+ 	{ICE_FLOW_SEG_HDR_ESP,
+ 		ICE_FLOW_HASH_ESP_SPI, ICE_RSS_OUTER_HEADERS, false},
++	/* configure RSS for gtpc6 with input set IPv6 src/dst */
++	{ICE_FLOW_SEG_HDR_GTPC | ICE_FLOW_SEG_HDR_IPV6,
++		ICE_FLOW_HASH_IPV6, ICE_RSS_OUTER_HEADERS, false},
++	/* configure RSS for gtpc6t with input set IPv6 src/dst */
++	{ICE_FLOW_SEG_HDR_GTPC_TEID | ICE_FLOW_SEG_HDR_IPV6,
++		ICE_FLOW_HASH_GTP_C_IPV6_TEID, ICE_RSS_OUTER_HEADERS, false},
++	/* configure RSS for gtpu6 with input set IPv6 src/dst */
++	{ICE_FLOW_SEG_HDR_GTPU_IP | ICE_FLOW_SEG_HDR_IPV6,
++		ICE_FLOW_HASH_GTP_U_IPV6_TEID, ICE_RSS_OUTER_HEADERS, false},
++	/* configure RSS for gtpu6e with input set IPv6 src/dst */
++	{ICE_FLOW_SEG_HDR_GTPU_EH | ICE_FLOW_SEG_HDR_IPV6,
++		ICE_FLOW_HASH_GTP_U_IPV6_EH, ICE_RSS_OUTER_HEADERS, false},
++	/* configure RSS for gtpu6u with input set IPv6 src/dst */
++	{ ICE_FLOW_SEG_HDR_GTPU_UP | ICE_FLOW_SEG_HDR_IPV6,
++		ICE_FLOW_HASH_GTP_U_IPV6_UP, ICE_RSS_OUTER_HEADERS, false},
++	/* configure RSS for gtpu6d with input set IPv6 src/dst */
++	{ICE_FLOW_SEG_HDR_GTPU_DWN | ICE_FLOW_SEG_HDR_IPV6,
++		ICE_FLOW_HASH_GTP_U_IPV6_DWN, ICE_RSS_OUTER_HEADERS, false},
+ };
+ 
+ /**
 -- 
 2.34.1
 
