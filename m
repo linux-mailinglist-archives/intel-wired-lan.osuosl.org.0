@@ -1,121 +1,82 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id A7E0684601C
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  1 Feb 2024 19:40:32 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id BF06E846283
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  1 Feb 2024 22:15:46 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 040F64218F;
-	Thu,  1 Feb 2024 18:40:31 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 040F64218F
+	by smtp2.osuosl.org (Postfix) with ESMTP id 7B86943780;
+	Thu,  1 Feb 2024 21:15:44 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 7B86943780
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1706812831;
-	bh=e+bng6XVxC/t11ZZID4vMLTIFN/umfC4M7wqJVe9R1U=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
+	s=default; t=1706822144;
+	bh=bdl3JrF+qJvV/Oemkqv+yMS3h8HL6zwH4z8p32I5K98=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=776dtzFye63m4i+dqT9ex+SoHxyZeNDOMGd8Qq7cL6Di3JRM/LPN8olUQlZqhUZ6F
-	 rP7Ss2q23RG7NG0iJTYdAfJD6aOvp3B7/7LyI0TADyx8OJuCg1fFGgpkb4ywo5ZGCY
-	 266pkRhPBjbcW96s1m1ERTCvLzqUbgDo4W+vBNCDQDhIl18jgJ5+p++2W81HQGM1c9
-	 U7O/mgNrPakV9oSsBShe1zB052eVHDUtf4D4V6pTblja71kTlHmAcpf8CYGi9WE8Pj
-	 PFBZ5R7PuJGLtOlN8/gWI6nOJn1lVaOnuvKWWhiKdAEG4u6gVsAIXOc/zC5ud09K+p
-	 +22n2gkWi1l8A==
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id a5jmp_rWUoR6; Thu,  1 Feb 2024 18:40:30 +0000 (UTC)
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 14CA742182;
-	Thu,  1 Feb 2024 18:40:30 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 14CA742182
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 59FD41BF4D6
- for <intel-wired-lan@lists.osuosl.org>; Thu,  1 Feb 2024 18:40:24 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 28269401B1
- for <intel-wired-lan@lists.osuosl.org>; Thu,  1 Feb 2024 18:40:24 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 28269401B1
+	b=f5YrjqkE1qeNtz3MlabM3I1eY04GjGXYwzXO+DzQ0Zs6EQCRCF/hFW84BjVn3Qqsi
+	 N4O9E1y02ETyy89San70HnWcLFidcE4KwiCCVU/b2hL24MYdFRKKNQd1uXrpBjHpc7
+	 qDJFhG0bmZ0I34bAR2EbjAKZN3JERzimjOK0s2vWROXajvqISdFEDuXwTePzjBvltj
+	 T5an8BUn/AFzHF4282oIbD6QABKRp0OYjzXKLJxe07JGPVDI86bMg1XI61wUiDsJtc
+	 kLC/uw44G99IMK9VDfy/ArGEOK1u3PcS9vQruttb+B4Nbk3ePlcZZnebF2I7bD36kG
+	 vPRycxotdWolw==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id tsZ_7Zj8c0Aq for <intel-wired-lan@lists.osuosl.org>;
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id lVHgfCNvRHXu; Thu,  1 Feb 2024 21:15:43 +0000 (UTC)
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp2.osuosl.org (Postfix) with ESMTP id C590843AD8;
+	Thu,  1 Feb 2024 21:15:42 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C590843AD8
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id EE3EA1BF4D6
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  1 Feb 2024 18:40:29 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp1.osuosl.org (Postfix) with ESMTP id D345A83F0B
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  1 Feb 2024 18:40:29 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D345A83F0B
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id aemk97jwLYAK for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  1 Feb 2024 18:40:28 +0000 (UTC)
+Received: from sin.source.kernel.org (sin.source.kernel.org [145.40.73.55])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 4BF6683F03
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  1 Feb 2024 18:40:28 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4BF6683F03
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by sin.source.kernel.org (Postfix) with ESMTP id 38AA1CE276E;
+ Thu,  1 Feb 2024 18:40:24 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5B128C433C7;
  Thu,  1 Feb 2024 18:40:23 +0000 (UTC)
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.133.124])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 0CC9C401A1
- for <intel-wired-lan@lists.osuosl.org>; Thu,  1 Feb 2024 18:40:22 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 0CC9C401A1
-Received: from mail-ej1-f72.google.com (mail-ej1-f72.google.com
- [209.85.218.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-110-3B71esQCMO6JeHbOQx3-0Q-1; Thu, 01 Feb 2024 13:40:20 -0500
-X-MC-Unique: 3B71esQCMO6JeHbOQx3-0Q-1
-Received: by mail-ej1-f72.google.com with SMTP id
- a640c23a62f3a-a365b809240so72537466b.0
- for <intel-wired-lan@lists.osuosl.org>; Thu, 01 Feb 2024 10:40:20 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1706812819; x=1707417619;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=e+bng6XVxC/t11ZZID4vMLTIFN/umfC4M7wqJVe9R1U=;
- b=fbkEAN83dLS8RRF5coF49EWM78p1ydUxzYt/4xKuN4hDLa63QL0SWsdkAFEFZkjvl+
- vzDQRLWDzsgynaO65c/I6T6g9LWg8Gv4/H9v5k3U995QOqwGs7Rve3nBhPOm7TikbA90
- 7m0hkXPutTsMnLKXmON2ZwoZNxPNwnXgqiA6xwG+PyYn0S6mUM6teE/tZux1f4HRM5QY
- CmTCxH4/sA61beWSJzDI5CIEZIsGryesdfAuigBQbnUU9aYqT6oZ0xvt9qYMxhnrfLeT
- SJ4LJ+rz9o4T7rX4fx+nnAaN9PLDSr2qVnF9ewOnVKs7VMPRoorSlVrJF2jeNu/R33eD
- m0Ig==
-X-Gm-Message-State: AOJu0YwWbh89YwkS9wF14X4kltmmA7qAbWQEWNcHzGknOpAAt8zwRkf8
- vbVMwOunRaEhS4R5HOHct/yHJtyYXOeh5oDdnzqz2NQunn4Grr8Vui/dbUJ8FaBf+PhmoclJs6x
- OdiJDnt/qrX97U6M2U21ow7nR/uL9jVbWg86cAqLDhqijtmbQTHFk0Ncgf5tQOEir5fw=
-X-Received: by 2002:a17:906:19d0:b0:a36:71c1:1244 with SMTP id
- h16-20020a17090619d000b00a3671c11244mr4565214ejd.37.1706812819472; 
- Thu, 01 Feb 2024 10:40:19 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGtavPwgfasui9zwW/bxID6sE4aGs2F4byGvh+XKGlKGEYKhoA4nEg3A+zAUHgqKpkQBqYDHg==
-X-Received: by 2002:a17:906:19d0:b0:a36:71c1:1244 with SMTP id
- h16-20020a17090619d000b00a3671c11244mr4565200ejd.37.1706812819182; 
- Thu, 01 Feb 2024 10:40:19 -0800 (PST)
-X-Forwarded-Encrypted: i=0;
- AJvYcCX+Iu01ep0DjiTWVqQ4kQbq/oX+PQEcqNpfcQoJSe3sblPcoDMSvHROZIpLT2JUf2YAsc4XSmnvXqVPzNwaYnGg4f3u/22WJ3utFqtQ5w9HiIIOfsXZfIEQQFpqFCeAZEITXjOAnSBHwHaHv5aoDDSSDuTqkk2Ey5Eo8m/LzaNdSIwyT9DCC7yWAy5t6M0MBEKO/8AriiWlECnhMDJHIf1pK+k23jMyUSV7WoeErjDYCj4y8tuAcUaQfzhSWzCWZvOkIlyoBJ7YX4/XKpQ=
-Received: from [192.168.1.227] (109-81-83-128.rct.o2.cz. [109.81.83.128])
- by smtp.gmail.com with ESMTPSA id
- lj25-20020a170906f9d900b00a35a3e2b90asm51130ejb.149.2024.02.01.10.40.18
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 01 Feb 2024 10:40:18 -0800 (PST)
-Message-ID: <48ce5a45-4d95-4d12-83ef-ee7d15bb9773@redhat.com>
-Date: Thu, 1 Feb 2024 19:40:17 +0100
+Date: Thu, 1 Feb 2024 12:40:22 -0600
+From: Seth Forshee <sforshee@kernel.org>
+To: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+Message-ID: <ZbvlltcGnSsq/Pf7@do-x1extreme>
+References: <20240201154219.607338-1-maciej.fijalkowski@intel.com>
+ <20240201154219.607338-3-maciej.fijalkowski@intel.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: Alexander Lobakin <aleksander.lobakin@intel.com>,
- Jiri Pirko <jiri@resnulli.us>
-References: <20240131115823.541317-1-mschmidt@redhat.com>
- <Zbo6aIJMckCdObs1@nanopsycho>
- <8c35a3f0-26a2-4bdd-afe1-dcd11fb67405@intel.com>
-From: Michal Schmidt <mschmidt@redhat.com>
-In-Reply-To: <8c35a3f0-26a2-4bdd-afe1-dcd11fb67405@intel.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=redhat.com; 
- s=mimecast20190719; t=1706812821;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=e+bng6XVxC/t11ZZID4vMLTIFN/umfC4M7wqJVe9R1U=;
- b=FE1tXchwOS2TgHKQeILwW3Nn9JM3ngADKPZOcAXFsfCGV/d7+cB/8dctDecyA2WumdJhbf
- ZPyldgNN9Kb+7IlxUDCN+AD91Z4i8tQAtVkLIQETTNDWZ+UYxwCgpMitoRycEFNDjePmBB
- mSXtDVz5L2bE2T6CEIkPRjwuedz6A7M=
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
- header.a=rsa-sha256 header.s=mimecast20190719 header.b=FE1tXchw
-Subject: Re: [Intel-wired-lan] [PATCH net] ice: fix unaligned access in
- ice_create_lag_recipe
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240201154219.607338-3-maciej.fijalkowski@intel.com>
+X-Mailman-Approved-At: Thu, 01 Feb 2024 21:15:37 +0000
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=kernel.org; s=k20201202; t=1706812823;
+ bh=EavXvVxLpjlqE3esGFobog0or2KVXWyptDAH7zpW1To=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=on/t3uNS9+aVK3miPDTwjSmCY3tD3ooPbh5RjjfmMKRQzoVew2BAHtxIWYqsah19+
+ RJKanrgi1ISHEdggHxkWG0ECJIHqeAIzJsOa2Cnsu9KFfPlQPyhSNPBfjqeAfK1S2X
+ YwC3HExLHO4PIr0E34Cwsgjy8yKH6XmPbvkG6cVaeS6we6tt40nGKX+jfrn4eUZ66X
+ 0n5+70nJ9zx5ir5H5OzP3TLFwWhXQrdYWD6xRe7jiY9kYYsB3EscZ5iRotgCLyPs8L
+ cg1p+7GETtzavEKDMvmqdhGo63vM+9Iu2K+lCwkOPvhkwKRpncCsxh3/z8lEmKsZji
+ 6VbnRgJd2bNnw==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=on/t3uNS
+Subject: Re: [Intel-wired-lan] [PATCH iwl-net 2/2] i40e: take into account
+ XDP Tx queues when stopping rings
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -128,40 +89,68 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Daniel Machon <daniel.machon@microchip.com>, netdev@vger.kernel.org,
- Jesse Brandeburg <jesse.brandeburg@intel.com>,
- intel-wired-lan@lists.osuosl.org, Dave Ertman <david.m.ertman@intel.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>
+Cc: netdev@vger.kernel.org, anthony.l.nguyen@intel.com,
+ intel-wired-lan@lists.osuosl.org, magnus.karlsson@intel.com
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 1/31/24 17:59, Alexander Lobakin wrote:
-> From: Jiri Pirko <jiri@resnulli.us>
-> Date: Wed, 31 Jan 2024 13:17:44 +0100
+On Thu, Feb 01, 2024 at 04:42:19PM +0100, Maciej Fijalkowski wrote:
+> Seth reported that on his side XDP traffic can not survive a round of
+> down/up against i40e interface. Dmesg output was telling us that we were
+> not able to disable the very first XDP ring. That was due to the fact
+> that in i40e_vsi_stop_rings() in a pre-work that is done before calling
+> i40e_vsi_wait_queues_disabled(), XDP Tx queues were not taken into the
+> account.
 > 
->> Wed, Jan 31, 2024 at 12:58:23PM CET, mschmidt@redhat.com wrote:
->>> diff --git a/drivers/net/ethernet/intel/ice/ice_lag.c b/drivers/net/ethernet/intel/ice/ice_lag.c
->>> index 2a25323105e5..d4848f6fe919 100644
->>> --- a/drivers/net/ethernet/intel/ice/ice_lag.c
->>> +++ b/drivers/net/ethernet/intel/ice/ice_lag.c
->>> @@ -1829,9 +1829,7 @@ static int ice_create_lag_recipe(struct ice_hw *hw, u16 *rid,
->>> 	new_rcp->content.act_ctrl_fwd_priority = prio;
->>> 	new_rcp->content.rid = *rid | ICE_AQ_RECIPE_ID_IS_ROOT;
->>> 	new_rcp->recipe_indx = *rid;
->>> -	bitmap_zero((unsigned long *)new_rcp->recipe_bitmap,
->>> -		    ICE_MAX_NUM_RECIPES);
->>> -	set_bit(*rid, (unsigned long *)new_rcp->recipe_bitmap);
->>> +	put_unaligned_le64(BIT_ULL(*rid), new_rcp->recipe_bitmap);
->>
->> Looks like there might be another incorrect bitmap usage for this in
->> ice_add_sw_recipe(). Care to fix it there as well?
+> To fix this, let us distinguish between Rx and Tx queue boundaries and
+> take into the account XDP queues for Tx side.
 > 
-> Those are already fixed in one switchdev series and will be sent to IWL
-> soon.
-> I believe this patch would also make no sense after it's sent.
+> Reported-by: Seth Forshee <sforshee@kernel.org>
+> Closes: https://lore.kernel.org/netdev/ZbkE7Ep1N1Ou17sA@do-x1extreme/
+> Fixes: 65662a8dcdd0 ("i40e: Fix logic of disabling queues")
+> Signed-off-by: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
 
-Hi Alexander,
-When will the series be sent?
-The bug causes a kernel panic. Will the series target net.git?
-Michal
+This fixes the issue we're seeing. Thanks!
 
+Tested-by: Seth Forshee <sforshee@kernel.org>
+
+> ---
+>  drivers/net/ethernet/intel/i40e/i40e_main.c | 13 +++++++------
+>  1 file changed, 7 insertions(+), 6 deletions(-)
+> 
+> diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
+> index 2c46a5e7d222..907be56965f5 100644
+> --- a/drivers/net/ethernet/intel/i40e/i40e_main.c
+> +++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
+> @@ -4926,21 +4926,22 @@ int i40e_vsi_start_rings(struct i40e_vsi *vsi)
+>  void i40e_vsi_stop_rings(struct i40e_vsi *vsi)
+>  {
+>  	struct i40e_pf *pf = vsi->back;
+> -	int pf_q, q_end;
+> +	u32 pf_q, tx_q_end, rx_q_end;
+>  
+>  	/* When port TX is suspended, don't wait */
+>  	if (test_bit(__I40E_PORT_SUSPENDED, vsi->back->state))
+>  		return i40e_vsi_stop_rings_no_wait(vsi);
+>  
+> -	q_end = vsi->base_queue + vsi->num_queue_pairs;
+> -	for (pf_q = vsi->base_queue; pf_q < q_end; pf_q++)
+> -		i40e_pre_tx_queue_cfg(&pf->hw, (u32)pf_q, false);
+> +	tx_q_end = vsi->alloc_queue_pairs * (i40e_enabled_xdp_vsi(vsi) ? 2 : 1);
+> +	for (pf_q = vsi->base_queue; pf_q < tx_q_end; pf_q++)
+> +		i40e_pre_tx_queue_cfg(&pf->hw, pf_q, false);
+>  
+> -	for (pf_q = vsi->base_queue; pf_q < q_end; pf_q++)
+> +	rx_q_end = vsi->base_queue + vsi->num_queue_pairs;
+> +	for (pf_q = vsi->base_queue; pf_q < rx_q_end; pf_q++)
+>  		i40e_control_rx_q(pf, pf_q, false);
+>  
+>  	msleep(I40E_DISABLE_TX_GAP_MSEC);
+> -	for (pf_q = vsi->base_queue; pf_q < q_end; pf_q++)
+> +	for (pf_q = vsi->base_queue; pf_q < tx_q_end; pf_q++)
+>  		wr32(&pf->hw, I40E_QTX_ENA(pf_q), 0);
+>  
+>  	i40e_vsi_wait_queues_disabled(vsi);
+> -- 
+> 2.34.1
+> 
