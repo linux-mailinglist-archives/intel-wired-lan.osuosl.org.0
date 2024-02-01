@@ -2,67 +2,67 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2C7E8845769
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  1 Feb 2024 13:24:24 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 050DE84576A
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  1 Feb 2024 13:24:29 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 9F706435E0;
-	Thu,  1 Feb 2024 12:24:22 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 9F706435E0
+	by smtp2.osuosl.org (Postfix) with ESMTP id 8F8A94358F;
+	Thu,  1 Feb 2024 12:24:27 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 8F8A94358F
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1706790262;
-	bh=/5h4srct7CrITszYa5MfgpakJZoeexsDOnKXiUMjQg0=;
+	s=default; t=1706790267;
+	bh=lcRUNPyInAKEv1mkGvahJHmp+dIIdi1X+j/XP0cxACY=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=6z+lfYWdk+9LNelF6cBoniYfw2nHPC4Tp4rZParR0UBtIAAmsSrudy9I5fkfI43xO
-	 JosM+wmCyv6zSMAtc/tS1viVRghIQMUErv1bk7c8Pddus122M7WPyw8gM3VNdTT+MI
-	 LVdNvEmtVCmkgjMxIP806SitJUZOAdAMfUripRi2/OU91Iqd09OsNonB6MRHMxAQJH
-	 O2v5X7mmB7EWTLdLsljFu/HaZGAmO/2DrAhJofEG815l0QAh/newneYIZc0djnjchR
-	 qtOdrSZ7DGdmz4q5QiQhTBNf5nwWsK1OTnZ5DTRwI/3uOpQTh7SbWK8JCGEyK+6rHh
-	 WFwB4rfNF/+Kg==
+	b=ndIxdrcMDqnpgoC8Er3YkHLLM8k+3D1NIBinBpIizogcAtRs+qqjZSqjK4bk1sU4v
+	 5VzuFCgpmsp0/wA00yPGouG3qwxkfjnWf+w8BY3nFmwXHTTYC9S0AgVk0i6DnOHI+i
+	 RnYL6SAwsLM9uXdJdOwpd0IxI2kjaOCfxWOjWjw7yzfxT/nFkDxKNWZnC/RDyQC54U
+	 60sC8qc8DIMugWaneLnndA4NSca5IH4quFkA/fIt38RJBz63ATRec4nIqIb32kRXZR
+	 uvakYi6owGn/set2UVlsy2nPtXrEEr0t6g2rTzOQxy8upj+c63oEd3HuTSgaLQktBg
+	 C95Ks+FKLSXxw==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 4aS2sVmgteT2; Thu,  1 Feb 2024 12:24:22 +0000 (UTC)
+	with ESMTP id hoC1aMUNL1d7; Thu,  1 Feb 2024 12:24:26 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 8DDAA4013F;
-	Thu,  1 Feb 2024 12:24:21 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 8DDAA4013F
+	by smtp2.osuosl.org (Postfix) with ESMTP id 1A4DE4013F;
+	Thu,  1 Feb 2024 12:24:26 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1A4DE4013F
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 8248A1BF2F9
- for <intel-wired-lan@lists.osuosl.org>; Thu,  1 Feb 2024 12:24:13 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 5935C1BF2F9
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  1 Feb 2024 12:24:19 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 6829583E80
- for <intel-wired-lan@lists.osuosl.org>; Thu,  1 Feb 2024 12:24:13 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6829583E80
+ by smtp3.osuosl.org (Postfix) with ESMTP id 3FF1360B74
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  1 Feb 2024 12:24:19 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3FF1360B74
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ySWi1ASkopnT for <intel-wired-lan@lists.osuosl.org>;
- Thu,  1 Feb 2024 12:24:12 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id KyhnYETDE23K for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  1 Feb 2024 12:24:18 +0000 (UTC)
 Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.15])
- by smtp1.osuosl.org (Postfix) with ESMTPS id C5D1F83DF7
- for <intel-wired-lan@lists.osuosl.org>; Thu,  1 Feb 2024 12:24:12 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org C5D1F83DF7
-X-IronPort-AV: E=McAfee;i="6600,9927,10969"; a="3747037"
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 77C6760B3F
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  1 Feb 2024 12:24:18 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 77C6760B3F
+X-IronPort-AV: E=McAfee;i="6600,9927,10969"; a="3747062"
 X-IronPort-AV: E=Sophos;i="6.05,234,1701158400"; 
-   d="scan'208";a="3747037"
+   d="scan'208";a="3747062"
 Received: from orviesa004.jf.intel.com ([10.64.159.144])
  by orvoesa107.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 01 Feb 2024 04:24:13 -0800
+ 01 Feb 2024 04:24:18 -0800
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.05,234,1701158400"; 
-   d="scan'208";a="4499111"
+   d="scan'208";a="4499114"
 Received: from newjersey.igk.intel.com ([10.102.20.203])
- by orviesa004.jf.intel.com with ESMTP; 01 Feb 2024 04:24:08 -0800
+ by orviesa004.jf.intel.com with ESMTP; 01 Feb 2024 04:24:13 -0800
 From: Alexander Lobakin <aleksander.lobakin@intel.com>
 To: "David S. Miller" <davem@davemloft.net>,
  Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
  Paolo Abeni <pabeni@redhat.com>
-Date: Thu,  1 Feb 2024 13:22:03 +0100
-Message-ID: <20240201122216.2634007-9-aleksander.lobakin@intel.com>
+Date: Thu,  1 Feb 2024 13:22:04 +0100
+Message-ID: <20240201122216.2634007-10-aleksander.lobakin@intel.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20240201122216.2634007-1-aleksander.lobakin@intel.com>
 References: <20240201122216.2634007-1-aleksander.lobakin@intel.com>
@@ -70,22 +70,22 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1706790253; x=1738326253;
+ t=1706790259; x=1738326259;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=RrkGElyKDU2amOPgV/R6WFmMaBoS19F9b8KUjyEMIuI=;
- b=R9Lm+VkLaBp0EycZ0r6CQpXvBo9DdKj4Sr7CWOvgH418npjYK0ac1nPk
- HsXH02+L9wW86n6sydclap1cBB1SDX9rMHkN03oUQjR/F8PtzsfchV6lQ
- Pk1qv+2PqEVGGqWyo4PNvcf+PshzVyFKNfQChjTyYypU1gg+01OMdQ8Sv
- wzSQqfQI0Tyue7pP4nuqBsdkyooqCG9sJGhMBv0QZ2xsalAq4sgQO5Gaw
- K6P7WQx/oXdPnV8omQRBneJ9CY2NSq3TZtosO1QtpKW0A1qCO7Fq66WKT
- bnmZMUAAkRGBQxEP2AOcV3RshX68uovcEadFCKXbOIo55Ci9FHSInmedk
+ bh=RG5js9dP2LCkjaHuyMBPje0qS5gbpb/z4Xt4qb6+buc=;
+ b=kfQNtAH5AMw9xGfjPfZ0KH50NgPXskegm9fzJJG23uCElH7QjA5Q5GmS
+ IeV2mCcmvVY6GWbGT/da8p3bRPPcI0KEvLfsDicQOD+MA2juibk4XFEsC
+ zO4NJDqVEEuPNaOf28G9ZA3dnVaz8jS2GtebHZJmEqcGr96o6Ebt+6EJR
+ 5SmlKBz8KmC6mu9ZfBn9riUI4sDVtBv7kH4jOh3ezMLFwHO7gdg34tx6H
+ 0FIeQrhjXOUqARLIRA4YhwI81aoLjciAq19nAQ9+tljfNcEAHGoXs7KYO
+ 1PA7/DqQaNCmqOQK0tAm1z5JIuMJYDaqtQJw9WEtXz+1npZFeTrACkAFq
  w==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=R9Lm+VkL
-Subject: [Intel-wired-lan] [PATCH net-next v5 08/21] s390/cio: rename
- bitmap_size() -> idset_bitmap_size()
+ header.a=rsa-sha256 header.s=Intel header.b=kfQNtAH5
+Subject: [Intel-wired-lan] [PATCH net-next v5 09/21] fs/ntfs3: add prefix to
+ bitmap_size() and use BITS_TO_U64()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -112,56 +112,123 @@ Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 bitmap_size() is a pretty generic name and one may want to use it for
-a generic bitmap API function. At the same time, its logic is not
-"generic", i.e. it's not just `nbits -> size of bitmap in bytes`
-converter as it would be expected from its name.
-Add the prefix 'idset_' used throughout the file where the function
-resides.
+a generic bitmap API function. At the same time, its logic is
+NTFS-specific, as it aligns to the sizeof(u64), not the sizeof(long)
+(although it uses ideologically right ALIGN() instead of division).
+Add the prefix 'ntfs3_' used for that FS (not just 'ntfs_' to not mix
+it with the legacy module) and use generic BITS_TO_U64() while at it.
 
+Suggested-by: Yury Norov <yury.norov@gmail.com> # BITS_TO_U64()
 Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
 Signed-off-by: Alexander Lobakin <aleksander.lobakin@intel.com>
 ---
- drivers/s390/cio/idset.c | 10 ++++++----
- 1 file changed, 6 insertions(+), 4 deletions(-)
+ fs/ntfs3/ntfs_fs.h |  4 ++--
+ fs/ntfs3/bitmap.c  |  4 ++--
+ fs/ntfs3/fsntfs.c  |  2 +-
+ fs/ntfs3/index.c   | 11 ++++++-----
+ fs/ntfs3/super.c   |  2 +-
+ 5 files changed, 12 insertions(+), 11 deletions(-)
 
-diff --git a/drivers/s390/cio/idset.c b/drivers/s390/cio/idset.c
-index 45f9c0736be4..0a1105a483bf 100644
---- a/drivers/s390/cio/idset.c
-+++ b/drivers/s390/cio/idset.c
-@@ -16,7 +16,7 @@ struct idset {
- 	unsigned long bitmap[];
- };
- 
--static inline unsigned long bitmap_size(int num_ssid, int num_id)
-+static inline unsigned long idset_bitmap_size(int num_ssid, int num_id)
- {
- 	return BITS_TO_LONGS(num_ssid * num_id) * sizeof(unsigned long);
+diff --git a/fs/ntfs3/ntfs_fs.h b/fs/ntfs3/ntfs_fs.h
+index f6706143d14b..16b84d605cd2 100644
+--- a/fs/ntfs3/ntfs_fs.h
++++ b/fs/ntfs3/ntfs_fs.h
+@@ -961,9 +961,9 @@ static inline bool run_is_empty(struct runs_tree *run)
  }
-@@ -25,11 +25,12 @@ static struct idset *idset_new(int num_ssid, int num_id)
- {
- 	struct idset *set;
  
--	set = vmalloc(sizeof(struct idset) + bitmap_size(num_ssid, num_id));
-+	set = vmalloc(sizeof(struct idset) +
-+		      idset_bitmap_size(num_ssid, num_id));
- 	if (set) {
- 		set->num_ssid = num_ssid;
- 		set->num_id = num_id;
--		memset(set->bitmap, 0, bitmap_size(num_ssid, num_id));
-+		memset(set->bitmap, 0, idset_bitmap_size(num_ssid, num_id));
+ /* NTFS uses quad aligned bitmaps. */
+-static inline size_t bitmap_size(size_t bits)
++static inline size_t ntfs3_bitmap_size(size_t bits)
+ {
+-	return ALIGN((bits + 7) >> 3, 8);
++	return BITS_TO_U64(bits) * sizeof(u64);
+ }
+ 
+ #define _100ns2seconds 10000000
+diff --git a/fs/ntfs3/bitmap.c b/fs/ntfs3/bitmap.c
+index 63f14a0232f6..a19a73ed630b 100644
+--- a/fs/ntfs3/bitmap.c
++++ b/fs/ntfs3/bitmap.c
+@@ -654,7 +654,7 @@ int wnd_init(struct wnd_bitmap *wnd, struct super_block *sb, size_t nbits)
+ 	wnd->total_zeroes = nbits;
+ 	wnd->extent_max = MINUS_ONE_T;
+ 	wnd->zone_bit = wnd->zone_end = 0;
+-	wnd->nwnd = bytes_to_block(sb, bitmap_size(nbits));
++	wnd->nwnd = bytes_to_block(sb, ntfs3_bitmap_size(nbits));
+ 	wnd->bits_last = nbits & (wbits - 1);
+ 	if (!wnd->bits_last)
+ 		wnd->bits_last = wbits;
+@@ -1347,7 +1347,7 @@ int wnd_extend(struct wnd_bitmap *wnd, size_t new_bits)
+ 		return -EINVAL;
+ 
+ 	/* Align to 8 byte boundary. */
+-	new_wnd = bytes_to_block(sb, bitmap_size(new_bits));
++	new_wnd = bytes_to_block(sb, ntfs3_bitmap_size(new_bits));
+ 	new_last = new_bits & (wbits - 1);
+ 	if (!new_last)
+ 		new_last = wbits;
+diff --git a/fs/ntfs3/fsntfs.c b/fs/ntfs3/fsntfs.c
+index fbfe21dbb425..e18de9c4c2fa 100644
+--- a/fs/ntfs3/fsntfs.c
++++ b/fs/ntfs3/fsntfs.c
+@@ -522,7 +522,7 @@ static int ntfs_extend_mft(struct ntfs_sb_info *sbi)
+ 	ni->mi.dirty = true;
+ 
+ 	/* Step 2: Resize $MFT::BITMAP. */
+-	new_bitmap_bytes = bitmap_size(new_mft_total);
++	new_bitmap_bytes = ntfs3_bitmap_size(new_mft_total);
+ 
+ 	err = attr_set_size(ni, ATTR_BITMAP, NULL, 0, &sbi->mft.bitmap.run,
+ 			    new_bitmap_bytes, &new_bitmap_bytes, true, NULL);
+diff --git a/fs/ntfs3/index.c b/fs/ntfs3/index.c
+index cf92b2433f7a..e0cef8f4e414 100644
+--- a/fs/ntfs3/index.c
++++ b/fs/ntfs3/index.c
+@@ -1456,8 +1456,8 @@ static int indx_create_allocate(struct ntfs_index *indx, struct ntfs_inode *ni,
+ 
+ 	alloc->nres.valid_size = alloc->nres.data_size = cpu_to_le64(data_size);
+ 
+-	err = ni_insert_resident(ni, bitmap_size(1), ATTR_BITMAP, in->name,
+-				 in->name_len, &bitmap, NULL, NULL);
++	err = ni_insert_resident(ni, ntfs3_bitmap_size(1), ATTR_BITMAP,
++				 in->name, in->name_len, &bitmap, NULL, NULL);
+ 	if (err)
+ 		goto out2;
+ 
+@@ -1518,8 +1518,9 @@ static int indx_add_allocate(struct ntfs_index *indx, struct ntfs_inode *ni,
+ 	if (bmp) {
+ 		/* Increase bitmap. */
+ 		err = attr_set_size(ni, ATTR_BITMAP, in->name, in->name_len,
+-				    &indx->bitmap_run, bitmap_size(bit + 1),
+-				    NULL, true, NULL);
++				    &indx->bitmap_run,
++				    ntfs3_bitmap_size(bit + 1), NULL, true,
++				    NULL);
+ 		if (err)
+ 			goto out1;
  	}
- 	return set;
- }
-@@ -41,7 +42,8 @@ void idset_free(struct idset *set)
+@@ -2092,7 +2093,7 @@ static int indx_shrink(struct ntfs_index *indx, struct ntfs_inode *ni,
+ 	if (in->name == I30_NAME)
+ 		ni->vfs_inode.i_size = new_data;
  
- void idset_fill(struct idset *set)
- {
--	memset(set->bitmap, 0xff, bitmap_size(set->num_ssid, set->num_id));
-+	memset(set->bitmap, 0xff,
-+	       idset_bitmap_size(set->num_ssid, set->num_id));
- }
+-	bpb = bitmap_size(bit);
++	bpb = ntfs3_bitmap_size(bit);
+ 	if (bpb * 8 == nbits)
+ 		return 0;
  
- static inline void idset_add(struct idset *set, int ssid, int id)
+diff --git a/fs/ntfs3/super.c b/fs/ntfs3/super.c
+index 9153dffde950..0248db1e5c01 100644
+--- a/fs/ntfs3/super.c
++++ b/fs/ntfs3/super.c
+@@ -1331,7 +1331,7 @@ static int ntfs_fill_super(struct super_block *sb, struct fs_context *fc)
+ 
+ 	/* Check bitmap boundary. */
+ 	tt = sbi->used.bitmap.nbits;
+-	if (inode->i_size < bitmap_size(tt)) {
++	if (inode->i_size < ntfs3_bitmap_size(tt)) {
+ 		ntfs_err(sb, "$Bitmap is corrupted.");
+ 		err = -EINVAL;
+ 		goto put_inode_out;
 -- 
 2.43.0
 
