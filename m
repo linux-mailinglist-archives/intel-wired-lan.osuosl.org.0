@@ -1,101 +1,103 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 525D2844E3D
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  1 Feb 2024 01:59:50 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 90CA7844FB8
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  1 Feb 2024 04:28:46 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 03B6742131;
-	Thu,  1 Feb 2024 00:59:48 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 03B6742131
+	by smtp4.osuosl.org (Postfix) with ESMTP id 9E32841C55;
+	Thu,  1 Feb 2024 03:28:44 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9E32841C55
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1706749188;
-	bh=fnA6L1M+2ngP3XBAVkCJ/2X93cQHtcov6Oy79KZ7gIg=;
-	h=References:In-Reply-To:From:Date:To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=h88O56Hgzm/8AF5qmVKdAFAry7QC/wQK0qn+M0zLLH0ZtjhO2EdrkerlFfyjKgztf
-	 1YMuPxjv7gZfDJAXsMwGmLR1PIOtaKDRJdKQoIzU5wV5dCZZRSyq6w7m+NzgTCqeBU
-	 cZF3OTqWFTsJzS5fuvBv60dVxmzQkfms3tngIDpT9tIGSXOffbpNXhzPCFrpesjULI
-	 LVgcCFP4Sgoxg9jVzbJVlyRM7Zt+XPWIxgktfxi+jYM3l+rJofqt4X8OStQM1cSJPW
-	 OuhgA1n6aHaLtIFIVj8pCRDlBxaVoKDrxqUVyc84FyP+qniTl1pIhm3pMA017Q6HDp
-	 fwGluslhZdBZA==
+	s=default; t=1706758124;
+	bh=4Ho6tWOUJQG5jwgdiQ+YC/nc1aAPjOngvOC35lqmr7A=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=OUJCr6DP4R4ul/W7899lsOllcv+HMuvBMOxUXLrECt/lHmlYouy3LmB1/S0SUh0nb
+	 JLWsWWGlQzV9JsSSIuQWyVbZrV3f1QwE98XJHkmtQ9VC2id0dmaavPluO5yNQhLEPk
+	 7SAOPs6u+Xw9y7WPDj/ZIwUKacMZEQAtkHNjbGy1aerYHn/k+g2jCsl8Egf3PaM8kp
+	 aTrxvfWnS/nZW5IkwJyAvLSd2msfzVwClTaQPP3UBqAWjc4+HuB3QGQxxGLAyqSpEB
+	 IYg1dhigWC71xianWj/sRqGuf9+on0ta/t6K66wOeSGESoefWa8kQeF7VA9c6yuiPl
+	 /FMDJbMwtB4xQ==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id i_uig2mQ4MRA; Thu,  1 Feb 2024 00:59:47 +0000 (UTC)
+	with ESMTP id ktcwCCSetbYL; Thu,  1 Feb 2024 03:28:43 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 2258242015;
-	Thu,  1 Feb 2024 00:59:47 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2258242015
+	by smtp4.osuosl.org (Postfix) with ESMTP id 5DEB741BCD;
+	Thu,  1 Feb 2024 03:28:43 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5DEB741BCD
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 7586C1BF228
- for <intel-wired-lan@lists.osuosl.org>; Thu,  1 Feb 2024 00:59:41 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 24A1A1BF951
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  1 Feb 2024 03:28:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 40B0740118
- for <intel-wired-lan@lists.osuosl.org>; Thu,  1 Feb 2024 00:59:41 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 40B0740118
+ by smtp2.osuosl.org (Postfix) with ESMTP id ECBCD403C6
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  1 Feb 2024 03:28:37 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org ECBCD403C6
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id BGCXAZhUQFBC for <intel-wired-lan@lists.osuosl.org>;
- Thu,  1 Feb 2024 00:59:40 +0000 (UTC)
-Received: from mail-yb1-xb36.google.com (mail-yb1-xb36.google.com
- [IPv6:2607:f8b0:4864:20::b36])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 38CEF400CE
- for <intel-wired-lan@lists.osuosl.org>; Thu,  1 Feb 2024 00:59:40 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 38CEF400CE
-Received: by mail-yb1-xb36.google.com with SMTP id
- 3f1490d57ef6-dc236729a2bso364633276.0
- for <intel-wired-lan@lists.osuosl.org>; Wed, 31 Jan 2024 16:59:40 -0800 (PST)
+ with ESMTP id MfQeTKBR37RQ for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  1 Feb 2024 03:28:36 +0000 (UTC)
+Received: from mail-pg1-x536.google.com (mail-pg1-x536.google.com
+ [IPv6:2607:f8b0:4864:20::536])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id A489740280
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  1 Feb 2024 03:28:36 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A489740280
+Received: by mail-pg1-x536.google.com with SMTP id
+ 41be03b00d2f7-5cddc5455aeso410706a12.1
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 31 Jan 2024 19:28:36 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1706749179; x=1707353979;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=fnA6L1M+2ngP3XBAVkCJ/2X93cQHtcov6Oy79KZ7gIg=;
- b=gofswT6h+H40hiS91qhcdhVnK1rb85oR0euYWLOe1H7++a4hef3oZKSwzbbCil+Jrw
- Q5gLDDRHYBIZvs7YyhD05tVg9EhV06zpAxMsY91FtUzoVrr4tZwZpSebIISvb8+6ayQ2
- bl9Wn3CxVfUgxFk+6D1D7TqUaLlSsltGSeBNc3bOLH9eHFDrzxkXpzjRgGGrN2ZUvsKI
- aidLqEoIbTWEX3TQc09XDGHucRZooEe1owDtYULo9y5Ffh6Tm1zGDwbpTC4sZHryfqdU
- DPxWA33bs29GI4e1lpITaUW8UOjaqirGrPtQn/oMgNMJwIFIWTelg7qbOwpAVf8zT4R+
- BT8Q==
-X-Gm-Message-State: AOJu0Yw/tTIM8f8jfQgLZA5HLzpfD8e/mOicLbSMz0jL3Ylxm/v8LPu5
- VMLND3N4moD23PVjq8negKQ5SWWzZWWpQmvRsiBGC1LWU0ItWUEc7AO6k13EGbXUL8ifcfHbsYv
- 6xcw4DB/7+XH3YEQK8e93oQ9/Vk4=
-X-Google-Smtp-Source: AGHT+IH+sI9yJQvIvZr607dY7V2Hw5Wgr4Mq7UB6jdlS+TAeU4Whu2zcygKmUuAXqLwjM6y65ECm9pwU04l3Eq8PBZM=
-X-Received: by 2002:a25:c793:0:b0:dc6:6307:d194 with SMTP id
- w141-20020a25c793000000b00dc66307d194mr796730ybe.48.1706749178945; Wed, 31
- Jan 2024 16:59:38 -0800 (PST)
+ d=1e100.net; s=20230601; t=1706758116; x=1707362916;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=4Ho6tWOUJQG5jwgdiQ+YC/nc1aAPjOngvOC35lqmr7A=;
+ b=KoyXMsX7P2eQRQ1dV1uzCizkaKhysKWoJlspGVC4LRBWLMCdEBh80Im8jApqTDV9m1
+ tQqQHBwI1jlamJAN1RkqMLfAsv6H0qI3zVnqKd+fZwm7Phbsj9p8NKIgk1+hEsaBUb/0
+ 7Nfjvwy0gHShLVYcuCly+grQnfVE/herTZaRugcKI90bW9aXjLd34ZEmu6fj3A9gtubb
+ 8Z7Gmn0fajUN5o9B+CRGBPYHOXuL6xgBFtlzK2f0Q90VobiuhnrQLGLDFws4OTM/4jMV
+ 9bzJbAthtcf9UN3WXRHn1XzcvvwTO02zFObQM4Fs/hdcdGKlF9L6i5BPhTgarpjwtxtu
+ wFtg==
+X-Gm-Message-State: AOJu0YzVC3o1t88J9HrdD8Yk5fGFXZt4tcjDTdmjyxbqvCwGzqnLsFCa
+ Z4UvKqueLqih5bjpxbPSRRaGti9mnH4OwYBZJDdgAZT9n/XxQNbv
+X-Google-Smtp-Source: AGHT+IEg4yxMdZKR72aUWYqIJObTXDnPnApeUkWrbWcBkPgWJ9jQiF6bv9EpHP9LqAQfMdqtWN+v9Q==
+X-Received: by 2002:a05:6a20:d485:b0:19c:881d:78e6 with SMTP id
+ im5-20020a056a20d48500b0019c881d78e6mr3543871pzb.42.1706758115776; 
+ Wed, 31 Jan 2024 19:28:35 -0800 (PST)
+Received: from ocxma-dut.. ([153.126.233.62]) by smtp.gmail.com with ESMTPSA id
+ im23-20020a170902bb1700b001d8c8c903c0sm347852plb.149.2024.01.31.19.28.31
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 31 Jan 2024 19:28:35 -0800 (PST)
+From: Takeru Hayasaka <hayatake396@gmail.com>
+To: Jesse Brandeburg <jesse.brandeburg@intel.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>,
+ "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, Jonathan Corbet <corbet@lwn.net>
+Date: Thu,  1 Feb 2024 03:27:49 +0000
+Message-Id: <20240201032748.1027121-1-hayatake396@gmail.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-References: <20240131134621.1017530-1-hayatake396@gmail.com>
- <20240131131258.47c05b7e@kernel.org>
-In-Reply-To: <20240131131258.47c05b7e@kernel.org>
-From: takeru hayasaka <hayatake396@gmail.com>
-Date: Thu, 1 Feb 2024 09:59:27 +0900
-Message-ID: <CADFiAc+y_SXGtVqZkLoiWw-YBArMovMkuWw3X596QDwEtdBJ2g@mail.gmail.com>
-To: Jakub Kicinski <kuba@kernel.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1706749179; x=1707353979; darn=lists.osuosl.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=fnA6L1M+2ngP3XBAVkCJ/2X93cQHtcov6Oy79KZ7gIg=;
- b=igyOvWosw/aYA/L9tfdaGLL16jdE3ROBSZ702yLEO5x/8vJV+ARjgrCCnO7DIPXdwT
- F7OVfPaAFi+hMZGzhCscCCbdh3KW52///TEikfTYJoWufCzgQVQsBAqF5UA/0t9aL711
- v1oqJBSHW6Ud3OTVbQZAz1ym+00/1OkE7mfo5aDzLP7SKB8Zy/839qHAJWvogn2vEPbi
- lcybIgHjmdrs4g3JBPjGQthgwYS2eXnStVU/F+9LrXHeIU+sRCzIniLN0agOjgzoZNIV
- GbN1r1mqT8oLiKMAJksF2ZBUFxzbRAzPLGO9D/MsxXBN+pVXCxeNQSq2IxaebNxz78zf
- wUeQ==
+ d=gmail.com; s=20230601; t=1706758116; x=1707362916; darn=lists.osuosl.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=4Ho6tWOUJQG5jwgdiQ+YC/nc1aAPjOngvOC35lqmr7A=;
+ b=TAUdXzmJXDBlLP0+vxF2tlpkVfxK2tNHfUNHVcWY96N9IT8XotH+AYyKOiTOSxTx51
+ oBBv+nQPKvyWJC7ZhaW31ZccN0TxhI5BYY2m/gHQCUiKuf/MJ4gDTtCAPFvUMAsRe3w0
+ D1kbZkQ1jYpae1Qg+laxaF5GeVuidKtWnYzuBLCyl0b2N5hURco0oqbPRsfN6NMM27eW
+ tO1UFQ4Ak4ltvTBQz4TXhqrggGEuF249+IyljX6VY0EOacVRuNTyM296gvatNUQ7hU7n
+ yRcdMsGmMqVOl6ohI2k0CtuEis8tnLKbg7pFdr/EUYHC9KaiqvnH6MWxPyjaUE/gOvDs
+ i5rg==
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
- header.a=rsa-sha256 header.s=20230601 header.b=igyOvWos
-Subject: Re: [Intel-wired-lan] [PATCH net-next v6] ethtool: ice: Support for
- RSS settings to GTP from ethtool
+ header.a=rsa-sha256 header.s=20230601 header.b=TAUdXzmJ
+Subject: [Intel-wired-lan] [PATCH net-next v6 1/2] ethtool: Add GTP RSS hash
+ options to ethtool.h
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -108,41 +110,121 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Jonathan Corbet <corbet@lwn.net>, netdev@vger.kernel.org,
- linux-doc@vger.kernel.org, Jesse Brandeburg <jesse.brandeburg@intel.com>,
- laforge@gnumonks.org, linux-kernel@vger.kernel.org,
- Eric Dumazet <edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
- vladimir.oltean@nxp.com, intel-wired-lan@lists.osuosl.org,
- Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>,
- mailhol.vincent@wanadoo.fr
+Cc: linux-doc@vger.kernel.org, vladimir.oltean@nxp.com,
+ linux-kernel@vger.kernel.org, laforge@gnumonks.org,
+ intel-wired-lan@lists.osuosl.org, Takeru Hayasaka <hayatake396@gmail.com>,
+ netdev@vger.kernel.org, mailhol.vincent@wanadoo.fr
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi Jakub-san
-Thank you for your review.
-I apologize for the delay in resubmitting the patch.
+This is a patch that enables RSS functionality for GTP packets using ethtool.
 
-> Could you split the uAPI changes and the driver changes to two separate
-> commits? You should post them as a patch series, but combining them
-> into a single commit makes the uAPI addition to easy to miss.
+A user can include TEID and make RSS work for GTP-U over IPv4 by doing the
+following:`ethtool -N ens3 rx-flow-hash gtpu4 sde`
 
-Understood. I will split the patches and submit them separately in v7.
+In addition to gtpu(4|6), we now support gtpc(4|6),gtpc(4|6)t,gtpu(4|6)e,
+gtpu(4|6)u, and gtpu(4|6)d.
 
-Thanks
-Takeru
+gtpc(4|6): Used for GTP-C in IPv4 and IPv6, where the GTP header format does
+not include a TEID.
+gtpc(4|6)t: Used for GTP-C in IPv4 and IPv6, with a GTP header format that
+includes a TEID.
+gtpu(4|6): Used for GTP-U in both IPv4 and IPv6 scenarios.
+gtpu(4|6)e: Used for GTP-U with extended headers in both IPv4 and IPv6.
+gtpu(4|6)u: Used when the PSC (PDU session container) in the GTP-U extended
+header includes Uplink, applicable to both IPv4 and IPv6.
+gtpu(4|6)d: Used when the PSC in the GTP-U extended header includes Downlink,
+for both IPv4 and IPv6.
 
-2024=E5=B9=B42=E6=9C=881=E6=97=A5(=E6=9C=A8) 6:13 Jakub Kicinski <kuba@kern=
-el.org>:
->
-> On Wed, 31 Jan 2024 13:46:22 +0000 Takeru Hayasaka wrote:
-> >  .../device_drivers/ethernet/intel/ice.rst     | 21 ++++-
-> >  drivers/net/ethernet/intel/ice/ice_ethtool.c  | 82 +++++++++++++++++++
-> >  drivers/net/ethernet/intel/ice/ice_flow.h     | 31 +++++--
-> >  drivers/net/ethernet/intel/ice/ice_lib.c      | 37 +++++++++
-> >  include/uapi/linux/ethtool.h                  | 48 +++++++++++
->
-> Could you split the uAPI changes and the driver changes to two separate
-> commits? You should post them as a patch series, but combining them
-> into a single commit makes the uAPI addition to easy to miss.
-> --
-> pw-bot: cr
+GTP generates a flow that includes an ID called TEID to identify the tunnel.
+This tunnel is created for each UE (User Equipment).By performing RSS based on
+this flow, it is possible to apply RSS for each communication unit from the UE.
+Without this, RSS would only be effective within the range of IP addresses. For
+instance, the PGW can only perform RSS within the IP range of the SGW.
+Problematic from a load distribution perspective, especially if there's a bias
+in the terminals connected to a particular base station.This case can be
+solved by using this patch.
+
+Signed-off-by: Takeru Hayasaka <hayatake396@gmail.com>
+---
+v2->v3: Based on Harald-san's review, I added documentation and comments to 
+ethtool.h and ice.rst.
+v3->v4: Based on Marcin-san's review, I added the missing code for GTPC and 
+GTPC_TEID, and revised the documentation and comments.
+v4->v5: Based on Marcin-san's review, I fixed rename and wrong code regarding
+GTPC
+v5->v6: Based on Marcin-san's review, Undoing the addition of unnecessary
+blank lines.Minor fixes.
+v6->v7 Based on Jakub-san's review, Split the patch.
+ include/uapi/linux/ethtool.h | 48 ++++++++++++++++++++++++++++++++++++
+ 1 file changed, 48 insertions(+)
+
+diff --git a/include/uapi/linux/ethtool.h b/include/uapi/linux/ethtool.h
+index 06ef6b78b7de..11fc18988bc2 100644
+--- a/include/uapi/linux/ethtool.h
++++ b/include/uapi/linux/ethtool.h
+@@ -2023,6 +2023,53 @@ static inline int ethtool_validate_duplex(__u8 duplex)
+ #define	IPV4_FLOW	0x10	/* hash only */
+ #define	IPV6_FLOW	0x11	/* hash only */
+ #define	ETHER_FLOW	0x12	/* spec only (ether_spec) */
++
++/* Used for GTP-U IPv4 and IPv6.
++ * The format of GTP packets only includes
++ * elements such as TEID and GTP version.
++ * It is primarily intended for data communication of the UE.
++ */
++#define GTPU_V4_FLOW 0x13	/* hash only */
++#define GTPU_V6_FLOW 0x14	/* hash only */
++
++/* Use for GTP-C IPv4 and v6.
++ * The format of these GTP packets does not include TEID.
++ * Primarily expected to be used for communication
++ * to create sessions for UE data communication,
++ * commonly referred to as CSR (Create Session Request).
++ */
++#define GTPC_V4_FLOW 0x15	/* hash only */
++#define GTPC_V6_FLOW 0x16	/* hash only */
++
++/* Use for GTP-C IPv4 and v6.
++ * Unlike GTPC_V4_FLOW, the format of these GTP packets includes TEID.
++ * After session creation, it becomes this packet.
++ * This is mainly used for requests to realize UE handover.
++ */
++#define GTPC_TEID_V4_FLOW 0x17	/* hash only */
++#define GTPC_TEID_V6_FLOW 0x18	/* hash only */
++
++/* Use for GTP-U and extended headers for the PSC (PDU Session Container).
++ * The format of these GTP packets includes TEID and QFI.
++ * In 5G communication using UPF (User Plane Function),
++ * data communication with this extended header is performed.
++ */
++#define GTPU_EH_V4_FLOW 0x19	/* hash only */
++#define GTPU_EH_V6_FLOW 0x1a	/* hash only */
++
++/* Use for GTP-U IPv4 and v6 PSC (PDU Session Container) extended headers.
++ * This differs from GTPU_EH_V(4|6)_FLOW in that it is distinguished by
++ * UL/DL included in the PSC.
++ * There are differences in the data included based on Downlink/Uplink,
++ * and can be used to distinguish packets.
++ * The functions described so far are useful when you want to
++ * handle communication from the mobile network in UPF, PGW, etc.
++ */
++#define GTPU_UL_V4_FLOW 0x1b	/* hash only */
++#define GTPU_UL_V6_FLOW 0x1c	/* hash only */
++#define GTPU_DL_V4_FLOW 0x1d	/* hash only */
++#define GTPU_DL_V6_FLOW 0x1e	/* hash only */
++
+ /* Flag to enable additional fields in struct ethtool_rx_flow_spec */
+ #define	FLOW_EXT	0x80000000
+ #define	FLOW_MAC_EXT	0x40000000
+@@ -2037,6 +2084,7 @@ static inline int ethtool_validate_duplex(__u8 duplex)
+ #define	RXH_IP_DST	(1 << 5)
+ #define	RXH_L4_B_0_1	(1 << 6) /* src port in case of TCP/UDP/SCTP */
+ #define	RXH_L4_B_2_3	(1 << 7) /* dst port in case of TCP/UDP/SCTP */
++#define	RXH_GTP_TEID	(1 << 8) /* teid in case of GTP */
+ #define	RXH_DISCARD	(1 << 31)
+ 
+ #define	RX_CLS_FLOW_DISC	0xffffffffffffffffULL
+-- 
+2.34.1
+
