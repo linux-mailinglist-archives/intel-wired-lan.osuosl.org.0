@@ -2,63 +2,63 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9E38E8491BC
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  5 Feb 2024 00:40:46 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 63DF18491BE
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  5 Feb 2024 00:40:51 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id B088C40641;
-	Sun,  4 Feb 2024 23:40:44 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B088C40641
+	by smtp2.osuosl.org (Postfix) with ESMTP id 7BB164064E;
+	Sun,  4 Feb 2024 23:40:49 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 7BB164064E
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1707090044;
-	bh=ofMfbIjqFytnpEYWawM8vASgAHDc01IrEgzRrZALl3A=;
-	h=From:Date:To:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=vRg8z2eKfn56iNVvVKHeMEs9cEIqc1RP0mRw0mkFU2pMvDy8jdOGnatUWvQfEDUI2
-	 HKigckuNVn9G8jl+jiw9+xyi46MOtp0kFxP6NHXD6lvDHybjyUz7qP4oRHX+w6vDO7
-	 1kRdL5jhQkRaOpkIljBXF+WWzPvg5bCIpYEj/TBHSHXCiFiXcgrTpqcXsN+mFIcTFF
-	 z0E04U2iXSmuhvVyhd+47wutgjGN94dDlMsxLoImpp5Jqf0hYO/LZoxxPKK5z9MPeN
-	 Y2TNbEr5a2vNzzLXxYoYgONMItlb4M7eSMlaRkjDW1+Ykhc8fyAvGKXcuRuRXB95Mh
-	 5TC1PvyWmFTog==
+	s=default; t=1707090049;
+	bh=cy2kGO2U2TPr1pnz3CApIMBYaE8Xib0u+l8VUL1Ic70=;
+	h=From:Date:References:In-Reply-To:To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=R15Y3+2oVTBWhuGgmwMJpQJNPQbv6WA/Vu5QEgUU7ndb8k7tBQMIGvysiF4HB2Chy
+	 THPWe2pi3We+d3T+n2UcS2MvTS+N06cpcMn7edjKP1W62nfjIHBkQ5LAyiBe4K2T+r
+	 xiTd5pmanv8EUsFs8dKLHmBkQlBuJE8+yqeQ0u1f4fkmwteiYDqOkEDxajLVlkmfy5
+	 ZguMGz+sQCXcBWaJHUje4G1yjmIHd0Vo5t6kfjlW34BUqJ3PFosyyf4uF0irjp/QVK
+	 XHrr31945mqktOQCURODzYee/CbSTI6WhW8M284Yb9CMWKOi4NiypWb1PkT3LmVScP
+	 5Pgsl4RvJGh4g==
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id SX84IgvLbiHY; Sun,  4 Feb 2024 23:40:44 +0000 (UTC)
+	with ESMTP id Hp8Y8NUjYtMJ; Sun,  4 Feb 2024 23:40:48 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 71C7D4013B;
-	Sun,  4 Feb 2024 23:40:43 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 71C7D4013B
+	by smtp2.osuosl.org (Postfix) with ESMTP id 298B34013B;
+	Sun,  4 Feb 2024 23:40:48 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 298B34013B
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id ABEEE1BF376
- for <intel-wired-lan@lists.osuosl.org>; Sun,  4 Feb 2024 23:40:37 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 28A6E1BF376
+ for <intel-wired-lan@lists.osuosl.org>; Sun,  4 Feb 2024 23:40:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 7FE87607CA
+ by smtp3.osuosl.org (Postfix) with ESMTP id BA1B7607AA
  for <intel-wired-lan@lists.osuosl.org>; Sun,  4 Feb 2024 23:40:37 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7FE87607CA
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org BA1B7607AA
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id MFa6jzXuV8vX for <intel-wired-lan@lists.osuosl.org>;
- Sun,  4 Feb 2024 23:40:36 +0000 (UTC)
+ with ESMTP id Hl-UDH3ezQ3l for <intel-wired-lan@lists.osuosl.org>;
+ Sun,  4 Feb 2024 23:40:37 +0000 (UTC)
 Received: from vps0.lunn.ch (vps0.lunn.ch [156.67.10.101])
- by smtp3.osuosl.org (Postfix) with ESMTPS id BC12D607AA
+ by smtp3.osuosl.org (Postfix) with ESMTPS id B90FF607A1
  for <intel-wired-lan@lists.osuosl.org>; Sun,  4 Feb 2024 23:40:36 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org BC12D607AA
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B90FF607A1
 Received: from c-76-156-36-110.hsd1.mn.comcast.net ([76.156.36.110]
  helo=thinkpad.home.lunn.ch) by vps0.lunn.ch with esmtpsa (TLS1.3) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
  (envelope-from <andrew@lunn.ch>)
- id 1rWm6A-006z7T-0Z; Mon, 05 Feb 2024 00:40:30 +0100
+ id 1rWm6D-006z7T-9A; Mon, 05 Feb 2024 00:40:33 +0100
 From: Andrew Lunn <andrew@lunn.ch>
-Date: Sun, 04 Feb 2024 17:40:17 -0600
-Message-Id: <20240204-keee-u32-cleanup-v1-0-fb6e08329d9a@lunn.ch>
+Date: Sun, 04 Feb 2024 17:40:18 -0600
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-B4-Tracking: v=1; b=H4sIAGEgwGUC/x3M0QpAMBSH8VfRuXZqZrS8ilxgf5xotEVK3t1y+
- bv4vocigiBSkz0UcEmU3ScUeUbj0vsZLC6ZtNJGaWV4BcBnqXnc0Pvz4MHWrramss4qStkRMMn
- 9L9vufT8UihgyYgAAAA==
+Message-Id: <20240204-keee-u32-cleanup-v1-1-fb6e08329d9a@lunn.ch>
+References: <20240204-keee-u32-cleanup-v1-0-fb6e08329d9a@lunn.ch>
+In-Reply-To: <20240204-keee-u32-cleanup-v1-0-fb6e08329d9a@lunn.ch>
 To: "David S. Miller" <davem@davemloft.net>, 
  Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, 
  Paolo Abeni <pabeni@redhat.com>, Ariel Elior <aelior@marvell.com>, 
@@ -66,36 +66,37 @@ To: "David S. Miller" <davem@davemloft.net>,
  Jesse Brandeburg <jesse.brandeburg@intel.com>, 
  Tony Nguyen <anthony.l.nguyen@intel.com>
 X-Mailer: b4 0.12.4
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1999; i=andrew@lunn.ch;
- h=from:subject:message-id; bh=xTLNlRe9zpFCH+NSfLBy79yr+GAoL3YfMnIrGZaTLxU=;
- b=owEBbQKS/ZANAwAKAea/DcumaUyEAcsmYgBlwCBn8ggPNVIXSaz7IAvAixB8ka53ggNMSY2Zc
- vicaxrWtMeJAjMEAAEKAB0WIQRh+xAly1MmORb54bfmvw3LpmlMhAUCZcAgZwAKCRDmvw3LpmlM
- hG+VD/0TtJaWfgHoLdXUBMZQUhJbJSj69wqg80e7HoEDOYeyGWGwJ2wkFhMXkTzvjg011y2gFgj
- zALmvZsfxriALcG44ySLy82tVTE4Hij9IAV8rAcgn8msp1M7p708ctj8xZU+p1G1R9Tt0XtPF8M
- hI1f4AnAdPCAz3Wx0b6cKMl6P6LAYnYG+vLsjTWCiEp6WnW9V+CFgVAGeIrfoRvXTHKAkM4vnqe
- 1DVzDxkalb2adpWWyhqGQmQY+N+dlERDDV8Cdfrw0z5ax2NIiZa3eIf1ovgz/SNgqzF5s2vmvot
- x9T/aoJ7qMBAazsfF4Z3sarXBWkOehFlBQZD0bBkN7MWVx6fBKp9t+f/6jNJRF6ZgIgJWapwGoz
- pa+dv3jwI77GHHq2VXO0kMe5sde/XpLzmavHeuCBZ0a0a//CkuMvjc+eHMVwYpqVAvd7sLrJTOW
- 2yfZX4lt9/RsnCfrhNBjIht7H9KnGSpPShFfvNSKOJ5JRdFYhEbJ3tMdV5ZLNlnifaK5I+uSwVC
- swAFQBR1rgwp3dyCvH8PYwbHorQkGR8+uGphBacdWtMSveS588U5tzQSXaZ1aLosyBvT0Rnenpe
- jsRprUFXHnumRUuSEZnq4IRBK7RxhGYrUjgPRaJjRV2Pf3kv4fYRIR/o1G6NjaUfnf9vKjpEha9
- mLrKi2q/9IJSeBA==
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3506; i=andrew@lunn.ch;
+ h=from:subject:message-id; bh=F0mfdZrj/FgaIdcQuHDCEsazFz0S4bAcsGtKqN8CFVA=;
+ b=owEBbQKS/ZANAwAKAea/DcumaUyEAcsmYgBlwCBosEVBhWdcRq7v/M/7QBQSJoRWKWr+VUNRF
+ Juz9Z/insWJAjMEAAEKAB0WIQRh+xAly1MmORb54bfmvw3LpmlMhAUCZcAgaAAKCRDmvw3LpmlM
+ hHZOEADJyfCKM2B0x5eZEcjZDvkTSuCKtiAJAQ+VLAMB3eh58XyLnRuar4cYyBUONQF3h6EANYL
+ UfbKHe/bd/m++33qitFc7ibDUatYE4qOrIVC6PG0OLaPlePJ6+GrzePmoIMLuv8jlpsoPRJvFKI
+ Zqci5bkDmYgZDjDuAVQqQ8PmbI+uBSeMFhBM4f/C4PsGJRDYKkdBazp8bxPm0S41qHf1r13DbOB
+ sITU2gPfS7j7de5THdg/HnxrdYY4SUz4LMYdldMdimlrs9rd8nXT4q+paIPH0T+AtLMqp0bg4rx
+ qgc4k5TOqPwwf09kBd83hK8JwNTuMSIenx3vbWCsmaHz01HFwz2EHgs5+PWvw6ovBfVJHrKnOht
+ lI3Aq9AdU23qeU0phrPTUXO9twZtjEtLfWfDW5KGRzkMW127mxKxSJNne5zYndHaqMl4FRGMqcQ
+ wQgNcqtxOl0BO2pwrLfNLr3MlRLL5p9osXA7hnOluT/v9+XYgvAeV3C01avNpDfrJZ6iRPqFilk
+ 5LkRzFyvfP9byOUaPfEtr0hnPIIGGrarbubkxV4GF/yIBYRaTyFabpXGaYVHuh0wy2dAL0xKXBK
+ Kbkw3nohgK2+f1MiZaftQTHaKOO7svZgMto9C6kaJt6ymWVY5Ujl6CnFIGM+/QcvuIqQmR3+ZBR
+ mJSkbswk+bBI8rw==
 X-Developer-Key: i=andrew@lunn.ch; a=openpgp;
  fpr=61FB1025CB53263916F9E1B7E6BF0DCBA6694C84
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt;
  c=relaxed/relaxed; d=lunn.ch; 
- s=20171124; h=Cc:To:Content-Transfer-Encoding:Content-Type:MIME-Version:
- Message-Id:Date:Subject:From:From:Sender:Reply-To:Subject:Date:Message-ID:To:
- Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:Content-ID:
- Content-Description:Content-Disposition:In-Reply-To:References;
- bh=ofMfbIjqFytnpEYWawM8vASgAHDc01IrEgzRrZALl3A=; b=eBhb6YHzTA0gYHZgNDf9Zod3lL
- 7NQnM5GNtN6wANB+ki7+CQSFvuLosaBr92vdf+M+HTUXxqSVha4SS8Ch3vm2K0x5oVQgwPiG0pmyw
- mvkoLInmj5SV1jQfNgp1oEZEN5sGAWatxlYodEXiYtBDaXgTenF5pDtodGSN/yBC0fL8=;
+ s=20171124; h=Cc:To:In-Reply-To:References:Message-Id:
+ Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:From:
+ Sender:Reply-To:Subject:Date:Message-ID:To:Cc:MIME-Version:Content-Type:
+ Content-Transfer-Encoding:Content-ID:Content-Description:Content-Disposition:
+ In-Reply-To:References; bh=cy2kGO2U2TPr1pnz3CApIMBYaE8Xib0u+l8VUL1Ic70=; b=39
+ 8yUCJrdNtIZSuZwtLEHMPm2jkANYun+1ozzN1FQ8M6NtnyQVuwMsTNfT63FF+T/139WJJOjhowhLM
+ RT5ZRslw0wFQmL1z5O3KvZsTSuGfjySd9Bf6iVrPcBgBLw66uZgna9S9Xz+ZcF/KK+qQ6srMRynsw
+ XUPle5n8SGRtKzo=;
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (1024-bit key) header.d=lunn.ch header.i=@lunn.ch
- header.a=rsa-sha256 header.s=20171124 header.b=eBhb6YHz
-Subject: [Intel-wired-lan] [PATCH 0/8] drivers: net: Convert EEE handling to
- use linkmode bitmaps
+ header.a=rsa-sha256 header.s=20171124 header.b=398yUCJr
+Subject: [Intel-wired-lan] [PATCH 1/8] net: usb: r8152: Use linkmode helpers
+ for EEE
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -114,45 +115,108 @@ Cc: netdev@vger.kernel.org, linux-usb@vger.kernel.org,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-EEE has until recently been limited to lower speeds due to the use of
-the legacy u32 for link speeds. This restriction has been lifted, with
-the use of linkmode bitmaps. This patchset convert some MAC drivers
-still using the old _u32 to link modes, with the aim of soon being
-able to remove the legacy _u32 members in the keee structure.
+Make use of the existing linkmode helpers for converting PHY EEE
+register values into links modes, now that ethtool_keee uses link
+modes, rather than u32 values.
 
-A couple of Intel drivers do odd things with EEE, setting the autoneg
-bit. It is unclear why, no other driver does, ethtool does not display
-it, and EEE is always negotiated. One patch in this series deletes
-this code. Comments on why its actually useful and should be kept are
-gratefully received.
+Rework determining if EEE is active to make is similar as to how
+phylib decides, and make use of a phylib helper to validate if EEE is
+valid in for the current link mode. This then requires that PHYLIB is
+selected.
 
 Signed-off-by: Andrew Lunn <andrew@lunn.ch>
 ---
-Andrew Lunn (8):
-      net: usb: r8152: Use linkmode helpers for EEE
-      net: usb: ax88179_178a: Use linkmode helpers for EEE
-      net: qlogic: qede: Use linkmode helpers for EEE
-      net: ethernet: ixgbe: Convert EEE to use linkmodes
-      net: intel: i40e/igc: Remove setting Autoneg in EEE capabilities
-      net: intel: e1000e: Use linkmode helpers for EEE
-      net: intel: igb: Use linkmode helpers for EEE
-      net: intel: igc: Use linkmode helpers for EEE
+ drivers/net/usb/Kconfig |  1 +
+ drivers/net/usb/r8152.c | 31 +++++++++++++++----------------
+ 2 files changed, 16 insertions(+), 16 deletions(-)
 
- drivers/net/ethernet/intel/e1000e/ethtool.c      | 17 +++++--
- drivers/net/ethernet/intel/i40e/i40e_ethtool.c   |  7 +--
- drivers/net/ethernet/intel/igb/igb_ethtool.c     | 33 ++++++++-----
- drivers/net/ethernet/intel/igc/igc_ethtool.c     | 13 ++---
- drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c | 48 ++++++++++---------
- drivers/net/ethernet/qlogic/qede/qede_ethtool.c  | 60 +++++++++++++++---------
- drivers/net/usb/Kconfig                          |  1 +
- drivers/net/usb/ax88179_178a.c                   |  9 ++--
- drivers/net/usb/r8152.c                          | 31 ++++++------
- 9 files changed, 123 insertions(+), 96 deletions(-)
----
-base-commit: ffabe98cb576097b77d404d39e8b3df03caa986a
-change-id: 20240204-keee-u32-cleanup-b86d68458d80
+diff --git a/drivers/net/usb/Kconfig b/drivers/net/usb/Kconfig
+index 3fd7dccf0f9c..3c360d4f0635 100644
+--- a/drivers/net/usb/Kconfig
++++ b/drivers/net/usb/Kconfig
+@@ -99,6 +99,7 @@ config USB_RTL8150
+ config USB_RTL8152
+ 	tristate "Realtek RTL8152/RTL8153 Based USB Ethernet Adapters"
+ 	select MII
++	select PHYLIB
+ 	select CRC32
+ 	select CRYPTO
+ 	select CRYPTO_HASH
+diff --git a/drivers/net/usb/r8152.c b/drivers/net/usb/r8152.c
+index 3d806b3ff425..fa5e9b7f3bb4 100644
+--- a/drivers/net/usb/r8152.c
++++ b/drivers/net/usb/r8152.c
+@@ -10,6 +10,7 @@
+ #include <linux/etherdevice.h>
+ #include <linux/mii.h>
+ #include <linux/ethtool.h>
++#include <linux/phy.h>
+ #include <linux/usb.h>
+ #include <linux/crc32.h>
+ #include <linux/if_vlan.h>
+@@ -8924,23 +8925,22 @@ static void rtl8152_get_strings(struct net_device *dev, u32 stringset, u8 *data)
+ 
+ static int r8152_get_eee(struct r8152 *tp, struct ethtool_keee *eee)
+ {
+-	u32 lp, adv, supported = 0;
++	__ETHTOOL_DECLARE_LINK_MODE_MASK(common);
+ 	u16 val;
+ 
+ 	val = r8152_mmd_read(tp, MDIO_MMD_PCS, MDIO_PCS_EEE_ABLE);
+-	supported = mmd_eee_cap_to_ethtool_sup_t(val);
++	mii_eee_cap1_mod_linkmode_t(eee->supported, val);
+ 
+ 	val = r8152_mmd_read(tp, MDIO_MMD_AN, MDIO_AN_EEE_ADV);
+-	adv = mmd_eee_adv_to_ethtool_adv_t(val);
++	mii_eee_cap1_mod_linkmode_t(eee->advertised, val);
+ 
+ 	val = r8152_mmd_read(tp, MDIO_MMD_AN, MDIO_AN_EEE_LPABLE);
+-	lp = mmd_eee_adv_to_ethtool_adv_t(val);
++	mii_eee_cap1_mod_linkmode_t(eee->lp_advertised, val);
+ 
+ 	eee->eee_enabled = tp->eee_en;
+-	eee->eee_active = !!(supported & adv & lp);
+-	eee->supported_u32 = supported;
+-	eee->advertised_u32 = tp->eee_adv;
+-	eee->lp_advertised_u32 = lp;
++
++	linkmode_and(common, eee->advertised, eee->lp_advertised);
++	eee->eee_active = phy_check_valid(tp->speed, tp->duplex, common);
+ 
+ 	return 0;
+ }
+@@ -8959,23 +8959,22 @@ static int r8152_set_eee(struct r8152 *tp, struct ethtool_keee *eee)
+ 
+ static int r8153_get_eee(struct r8152 *tp, struct ethtool_keee *eee)
+ {
+-	u32 lp, adv, supported = 0;
++	__ETHTOOL_DECLARE_LINK_MODE_MASK(common);
+ 	u16 val;
+ 
+ 	val = ocp_reg_read(tp, OCP_EEE_ABLE);
+-	supported = mmd_eee_cap_to_ethtool_sup_t(val);
++	mii_eee_cap1_mod_linkmode_t(eee->supported, val);
+ 
+ 	val = ocp_reg_read(tp, OCP_EEE_ADV);
+-	adv = mmd_eee_adv_to_ethtool_adv_t(val);
++	mii_eee_cap1_mod_linkmode_t(eee->advertised, val);
+ 
+ 	val = ocp_reg_read(tp, OCP_EEE_LPABLE);
+-	lp = mmd_eee_adv_to_ethtool_adv_t(val);
++	mii_eee_cap1_mod_linkmode_t(eee->lp_advertised, val);
+ 
+ 	eee->eee_enabled = tp->eee_en;
+-	eee->eee_active = !!(supported & adv & lp);
+-	eee->supported_u32 = supported;
+-	eee->advertised_u32 = tp->eee_adv;
+-	eee->lp_advertised_u32 = lp;
++
++	linkmode_and(common, eee->advertised, eee->lp_advertised);
++	eee->eee_active = phy_check_valid(tp->speed, tp->duplex, common);
+ 
+ 	return 0;
+ }
 
-Best regards,
 -- 
-Andrew Lunn <andrew@lunn.ch>
+2.43.0
 
