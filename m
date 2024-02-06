@@ -1,151 +1,189 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7FF2484B2F4
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  6 Feb 2024 12:00:01 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id ED33B84B47F
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  6 Feb 2024 13:08:42 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 16A1A41ECC;
-	Tue,  6 Feb 2024 11:00:00 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 16A1A41ECC
+	by smtp3.osuosl.org (Postfix) with ESMTP id 52F1161112;
+	Tue,  6 Feb 2024 12:08:41 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 52F1161112
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1707217200;
-	bh=rUi9N6hNG6yElyw9WIiDTlItlGDE35RyXbDMQsdmWNA=;
-	h=Date:To:From:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=ZpSMYEl1ab6kZ8eHgBWmt6Gq1G/cl4yD2EL0gzpy98OUAYXP+zzXQqEubzMMHxGZE
-	 H8lPI+oB/hM96i2Bi3EvwObRbcoDO0TN8gkuR9kUiMGCW63QLkH2hEKxrXouY/6jH5
-	 qOS68Dfcf3Mto8KIwkGLmcsS/pqTyxuM3+Z6iO2OP0V740iJSc64WO8+rpz8gHyXtY
-	 9l12iBLpZQBXBF6jD/Jlr8f8Z8NtaWDXCG4QYFVIUUM60+3KBzmFuSVLcpXT7Kz1bH
-	 Q5ZtxYZnNAsyAkxOJhQfFAHLLd4VNnqJkKZF6Do9KBKby50C3BLxm3w6Uo8XAczdIs
-	 /D/NJvf5/Q3uQ==
+	s=default; t=1707221321;
+	bh=D0Bt4z3ZXMbO+ucNaNbzQWNfN7uJtLXHGqD6Tw6y0PU=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=PPDQgkpzzOWQI0TuvORPZ/tLJWicd5V1kRS2aM7U4wFdemHsU22zzLRIdpLMrLpe3
+	 TGCoqkV/j8/zajBJ3uuyo4nC6lKMVFPsaSt6BIkkYtwPDqAnCGsmK1opEwDRKm1+Ge
+	 g6xHgyCe6Z9GaRzjPu6XMnG8HI4xwq5H1UyyhtpJZQHezZ69074uDgpxU1yOJnoHA7
+	 CkKrXiNS1uUKUSNSsPRF9Q2u679f7CoADgj8Og3vmTEzdZwtPn7FnOSI7MH2uWhMMM
+	 myqoaMopRsAooOc1b1N/90kuk7dqX5noCAF8YOtrzEIU+NeOfSgFUxC0guN0/pOdOp
+	 2plTVaOEh6Wrw==
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Z4107T7oZLXG; Tue,  6 Feb 2024 10:59:59 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id pZb-tdZw32XV; Tue,  6 Feb 2024 12:08:40 +0000 (UTC)
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id EA61F41EA3;
-	Tue,  6 Feb 2024 10:59:58 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org EA61F41EA3
+	by smtp3.osuosl.org (Postfix) with ESMTP id 29B2E600CA;
+	Tue,  6 Feb 2024 12:08:40 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 29B2E600CA
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id ECF4E1BF27C
- for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Feb 2024 10:59:53 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 246601BF33B
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Feb 2024 12:08:35 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id C3D8441EA3
- for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Feb 2024 10:59:53 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C3D8441EA3
+ by smtp1.osuosl.org (Postfix) with ESMTP id 1A74282288
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Feb 2024 12:08:35 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Fst36cb4O11G for <intel-wired-lan@lists.osuosl.org>;
- Tue,  6 Feb 2024 10:59:53 +0000 (UTC)
-Received: from mail-ej1-x632.google.com (mail-ej1-x632.google.com
- [IPv6:2a00:1450:4864:20::632])
- by smtp4.osuosl.org (Postfix) with ESMTPS id A326B41E91
- for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Feb 2024 10:59:52 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A326B41E91
-Received: by mail-ej1-x632.google.com with SMTP id
- a640c23a62f3a-a30e445602cso98899566b.0
- for <intel-wired-lan@lists.osuosl.org>; Tue, 06 Feb 2024 02:59:52 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1707217191; x=1707821991;
- h=content-transfer-encoding:organization:autocrypt:subject:from
- :content-language:to:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=rUi9N6hNG6yElyw9WIiDTlItlGDE35RyXbDMQsdmWNA=;
- b=e4w/AYduMPpIe3sz9gVAqVzNcFMyXLlL2A+iPg4oiivOsc6ZfiRRXLMuSTbeNDzKPJ
- pO/FTgRIkLs0kxRe8PY56oeN74neBH2kRIISnr+YevPOt07YeRJ1SuBEswVuUSAdroPt
- WQ1ltt2rcLrd0+GnKZ7O5nAG6to/UgbXdaLLBKuCRy4b9ElpE/kTWJmzaDs60NaCV907
- V2msx6L7mf+ckTXXGqwF174o8PpynB2tYxFq4Sp2zgfrnwSx57HbaRmdVwyHLZUo17Fv
- H8os+TRDmEmBZGgYmVWKQyp9zraEkKELmON0FkIz9Ocra3A3NMOiu/3S+d/P9ffRo3RD
- kkww==
-X-Gm-Message-State: AOJu0Yyg2WZTdVKBzfMpBBBGoHCNPQHCg4YiaGr2cUPwftHxukpisSV/
- SgmPcB20dGoDgTM9ZJ6dHKC5YgcgNmCVCgZr+MAChITn9+cTsIzFE/WB9Yeq68Yl7k0WmUsSSAG
- GD7gnLQdp8iLP+rWBS8u+RyVBTciW3uL2cJQmdg0zRDCvCSnFOGpQnhz4DehABAFd4OhJCPyYvD
- r6wlDFQ65QQcuuKBXMLV9kwPKdBwQeJAy/IZ1bgun4ZKFxvNDnCfSG8HyzfscF
-X-Google-Smtp-Source: AGHT+IHNBGjosFMDxEfEydbkHSdOZ61QuGmREQeUqdlYqbbFZTWRAnzz0kRK33GjrhfNuhmGVy1tVg==
-X-Received: by 2002:a17:906:7151:b0:a37:a1b9:c29e with SMTP id
- z17-20020a170906715100b00a37a1b9c29emr2455218ejj.30.1707217190471; 
- Tue, 06 Feb 2024 02:59:50 -0800 (PST)
-Received: from [10.100.10.83] ([57.133.65.178])
- by smtp.gmail.com with ESMTPSA id
- tl27-20020a170907c31b00b00a384810f371sm47490ejc.190.2024.02.06.02.59.49
- for <intel-wired-lan@lists.osuosl.org>
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 06 Feb 2024 02:59:50 -0800 (PST)
-Message-ID: <3e88303b-eada-4ae8-9232-9b42992f890e@inovex.de>
-Date: Tue, 6 Feb 2024 11:59:49 +0100
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id UvSvlXhWsWe6 for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  6 Feb 2024 12:08:33 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.19;
+ helo=mgamail.intel.com; envelope-from=maciej.fijalkowski@intel.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 6084482236
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6084482236
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.19])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 6084482236
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Feb 2024 12:08:33 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10975"; a="620941"
+X-IronPort-AV: E=Sophos;i="6.05,247,1701158400"; 
+   d="scan'208";a="620941"
+Received: from orviesa010.jf.intel.com ([10.64.159.150])
+ by orvoesa111.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 06 Feb 2024 04:08:32 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.05,247,1701158400"; 
+   d="scan'208";a="1033451"
+Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
+ by orviesa010.jf.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
+ 06 Feb 2024 04:08:32 -0800
+Received: from orsmsx611.amr.corp.intel.com (10.22.229.24) by
+ ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.35; Tue, 6 Feb 2024 04:08:31 -0800
+Received: from orsmsx603.amr.corp.intel.com (10.22.229.16) by
+ ORSMSX611.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.35; Tue, 6 Feb 2024 04:08:31 -0800
+Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
+ orsmsx603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.35 via Frontend Transport; Tue, 6 Feb 2024 04:08:31 -0800
+Received: from NAM10-MW2-obe.outbound.protection.outlook.com (104.47.55.100)
+ by edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.35; Tue, 6 Feb 2024 04:08:30 -0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=QTrxDHjKOFtOqKUrp5iaiqnY+sPMKoR6LRrNJgegP4xd8LxxTizdmloHR5q7kYcQfJbh2BD6AOeMy203rEFup374ULOFOFhDJNrcSzi37/tqHn64okHGm/N9dQ3+NFWJcMa6V28wjyl4l7yfuec+PjUXps1TnJP2AsVnRuu5HHsTUuvLrl3mcDNnleirQ1hvUFODcgEi6gk864spePULuTLI51jHthgHXVs1/KswzAgCQgH+9+iGAIncEsZNEgUimbBMzgnA98QoSMI9fKSssrKQqp7xflF3PUGQoKrJ9Ha4AB9zuj679r4fF6MzC/Qsgp8x1yub9WMPavi5Pz+6Xg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=D0Bt4z3ZXMbO+ucNaNbzQWNfN7uJtLXHGqD6Tw6y0PU=;
+ b=OmDZET/1tSeoZXr7ID1NvdOWSFptb/ocC5zRY5kxg2V/x5sAyUhEhjnvliWvT7k0ue87Fm8gJR9iVSM//VYdnicm4zN/WAeOwbEntB5OOU/kBlfndOs0ZHUtYTGK4I4q4N1JvL97R+eb87tUvISF7wbrJ91+6li3xYKuC4u9xPeKOtb2DYbwsshBuR8wFEHqdBbQdMa2cduI8RuHUfbLI0eNFnX+rayXu3hqWOHYsbK7founG8NFx8lG5JWatwOb1WbD7KCaCZnOlBLgXatqtXVrrg3FCpmT2MPt4MzISWa3QmEF8SxRA6jll0P7u51e5+CkHnGCOeQO85jAgjpSQA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from DM4PR11MB6117.namprd11.prod.outlook.com (2603:10b6:8:b3::19) by
+ CY8PR11MB7170.namprd11.prod.outlook.com (2603:10b6:930:91::18) with
+ Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.7249.36; Tue, 6 Feb 2024 12:08:29 +0000
+Received: from DM4PR11MB6117.namprd11.prod.outlook.com
+ ([fe80::ccab:b5f4:e200:ee47]) by DM4PR11MB6117.namprd11.prod.outlook.com
+ ([fe80::ccab:b5f4:e200:ee47%6]) with mapi id 15.20.7249.035; Tue, 6 Feb 2024
+ 12:08:29 +0000
+Date: Tue, 6 Feb 2024 13:08:25 +0100
+From: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+To: Seth Forshee <sforshee@kernel.org>
+Message-ID: <ZcIhOWUU9aqU2kJH@boxer>
+References: <20240201154219.607338-1-maciej.fijalkowski@intel.com>
+ <20240201154219.607338-3-maciej.fijalkowski@intel.com>
+ <ZbvlltcGnSsq/Pf7@do-x1extreme>
+Content-Type: text/plain; charset="us-ascii"
+Content-Disposition: inline
+In-Reply-To: <ZbvlltcGnSsq/Pf7@do-x1extreme>
+X-ClientProxiedBy: FR4P281CA0241.DEUP281.PROD.OUTLOOK.COM
+ (2603:10a6:d10:f5::6) To DM4PR11MB6117.namprd11.prod.outlook.com
+ (2603:10b6:8:b3::19)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: intel-wired-lan@lists.osuosl.org
-Content-Language: en-US
-From: Christian Rohmann <christian.rohmann@inovex.de>
-Autocrypt: addr=christian.rohmann@inovex.de; keydata=
- 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
- jc3KKu3ujhgpmc6agjjBXsDdcwBnOPngItiyCrs=
-Organization: inovex GmbH
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=inovex.de; s=google; t=1707217191; x=1707821991; darn=lists.osuosl.org;
- h=content-transfer-encoding:organization:autocrypt:subject:from
- :content-language:to:user-agent:mime-version:date:message-id:from:to
- :cc:subject:date:message-id:reply-to;
- bh=rUi9N6hNG6yElyw9WIiDTlItlGDE35RyXbDMQsdmWNA=;
- b=dZ/qAmO9BmnW/kwuRlPI96S0ddGU7fy07QgZtKFbcTw2F6Dvava19R+xr80w5KwtDZ
- E0SKPXGYDG76LOlp3nhQWy4w6Oea4R/j+B9LrWVpBeVm4mpxnBzdWu1yqy6rf0dnIukb
- ipqbhs33nKKKAbzs9j6P4ddiRooEW8C4vkdp5I8aRGtr5SwDrD7B18KURf4+2hwc6g+O
- tE/PVC/VQCKbz2V8gDCewY7i8dCv4quDxUbmbR1CRxYJiTP360WyszT4bCgr6TomVBN5
- tDTqQzdFIZqPsShjCPGeYBclOfYOj6BxEmEXImRPZ0nkcqNlPcJFy5b6NGlkYhuk0qBp
- UVkQ==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=inovex.de header.i=@inovex.de
- header.a=rsa-sha256 header.s=google header.b=dZ/qAmO9
-Subject: [Intel-wired-lan] Intel E810-XXVDA2 no link at 25G - 10G works and
- so does forcing 25G via ethtool
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DM4PR11MB6117:EE_|CY8PR11MB7170:EE_
+X-MS-Office365-Filtering-Correlation-Id: 40c11fd1-7ece-4467-d526-08dc270c548f
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: iUj2+Ez8wxKESHsXVTbcO5Y2IAwhGOACOR3s9F56Xw4bS9A8xKt/ArINkzmBqxMH2BqpOVi6gKStYfZf+BbGRERY/bsjHO8UxsW5F3qU0bqVCFFlTQkahjB+LOx80ZypQ480aiF2Dnx+mXVO/De1RfiEMfytjdFJ+SlHPZoukxTK04lY0OJCNTrK6y2+Bs7AB9tbuatXQEbjbFU0ySbmDiuhTVNXWf2+mYXOc2GbQj0uUBSSVY2fhJs6EdpMzTBSW4SP7ctw/fLPjTptFIhlj8+RFLpCA3bGO2yIw2eTU7KSFrpJeoGmsgtZDzgv+H3bH6JyHV0on7mN62s501w8SML03x+kakxiHN6aqk+itRbZ5SyYjYRZDKK5bjPAyBIrzWcfjpuZMhXeLqahxCfmW9Gp/fSZ0jgn1aglOcMh889Sj7km+6iX/TN+FQL/KV6z+wCserZySNF5bq9PNvpR4YXrMJMvWZ7PFOxJKKurMVhg9lboAjZbPJi4q6haOaGfX7J3gCMaEGu/eZK7wIPedfYOAZoqNR0emR6Z1Vojxpc=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:DM4PR11MB6117.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230031)(7916004)(39860400002)(376002)(396003)(366004)(136003)(346002)(230922051799003)(451199024)(64100799003)(1800799012)(186009)(33716001)(41300700001)(86362001)(6486002)(966005)(8936002)(6506007)(6512007)(6666004)(66556008)(478600001)(6916009)(66946007)(66476007)(8676002)(316002)(4326008)(9686003)(82960400001)(38100700002)(83380400001)(107886003)(26005)(15650500001)(44832011)(2906002)(5660300002);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?0c0MeeduCF1dWgT+y7q1MTuqf+2dFCxrHPNSkoj4YzJZK8PUUanwXoZtFHo0?=
+ =?us-ascii?Q?NG7NLkpvY6wXVfkWB211O2tytH19RMyNFoZeJgLqGF0ol2BTLY5wz2xruD19?=
+ =?us-ascii?Q?pvGHEbbSKfJLHuHfVQsELZhw344hv3jfyEsKF6V9hkB1zJGApmLx8UhqbKxw?=
+ =?us-ascii?Q?dqIBRwZGyLFvfGziomE3cSQoh0JKIaVfGWEsAQqIPylwYUrKgb0z832u5JNw?=
+ =?us-ascii?Q?209wLr1MEuByy5KK3Imszx0zQvj4bKpCZgvb/wq4TQKxCFbpxb77sHhJ0+j1?=
+ =?us-ascii?Q?iOkUDIBe8RgrqtOas2Qmqmh4XETI1ch+w2nC0EG5tQQI+2BzmT3SaJ+UA8Rn?=
+ =?us-ascii?Q?V3ok2A3TU5S1+c+vttVFFEKDZSp8H2SQ1/r+Uc3a4Y0oza2WirdOR4zJioH7?=
+ =?us-ascii?Q?fgH52cXLK0+Hw6WMSfNRnQTugBztgZhX8cLZqGih61ar6c0wu7gWQXpYmGch?=
+ =?us-ascii?Q?srGd+fyO9T3t1+X+3HGVV72OwltoMLeL7BqizYmP8/YBpQzqCyZInpE3DRC5?=
+ =?us-ascii?Q?467TvcAlEk6GNSgdUaRBv42+G+9zEPeYLOGwnMsaZL0TaynaIUF10LibwtgN?=
+ =?us-ascii?Q?nEIF4m2JMRQmLRS6YQjtEnNQF9P+uUVxT7ud6Ro3sjmPbnore0pPwDUG6pyc?=
+ =?us-ascii?Q?yH1EObVa1IGvOE3C+sBfnVtBDKGG0f/okymFuc4Oc+jN3tdAjoQgqdLt8HAJ?=
+ =?us-ascii?Q?Q1AVVJPDZQTS3jhb4LO03/Vs7jMR5A00mboWBwz/st679UcnkkxAy59Rm0Vq?=
+ =?us-ascii?Q?hhpZEALQAu0FLQRyb8nSX5rFpsJQRiFeqV/yH3gvwFPTpYgX3PF4wiYSBMUE?=
+ =?us-ascii?Q?R8QjyUvwJElyxv1TvBOL5KQMn6kzEPCeIw1XiDo0S7A/EoqS73lDhidsPsWU?=
+ =?us-ascii?Q?2Ta2kabfzNw4fBpUYCZv/4ORLrXR+t1HaIGQyWYOA6uqEhSy3GYbJF29Or1R?=
+ =?us-ascii?Q?8A/tKMiG1WQ8hAQUXFeuTHglJYE5kv7kKkGB57tr9moHn7glqIN16FB27taO?=
+ =?us-ascii?Q?tDWXkR+MFhoQGNOcL7vpeqthmvbGj+93785iqeU5OBXlrm7vEJbmMKzXJnuh?=
+ =?us-ascii?Q?5uCfSdjp3Av+gan1WxSQJ7K+msHBaortKnyKS2T5vcgipo7Obl6syRM2rfXs?=
+ =?us-ascii?Q?ech1cvG0hD+O5C0PukUQq9sDU20Hudcz05ppXxINXLII4ZavuAavPm+fFTy3?=
+ =?us-ascii?Q?FSTlTux1FcYirFxq3OWN39yH8+zQKsWrtKZcXCrNMpVTUo/ZgAlfzjs8lKc5?=
+ =?us-ascii?Q?O+nKiMxg/1lSpZ3T9jLp9mf9FD/4OoMZ/i/D/6AvNJz12wJXpvmuNOqYjc89?=
+ =?us-ascii?Q?7aG98Bm+jxPniXY2GzMuETCJ3+3gJHFKWr2b1lrgipIfDJusCiI35qfZw2H8?=
+ =?us-ascii?Q?XZMeY+ngpZuXLJOPlD6/eu9W+nnXHJqhxkbv2MeTHcm/IfSqln/dzi2HdwiC?=
+ =?us-ascii?Q?R8C/tCd6x7bAGroBsDq9X6nZBVlBfwzVlsw5fOqP9EVnpPOZSVDU9rtucbxH?=
+ =?us-ascii?Q?QdHzD0vbhRSVsv2mgVAxPr1xFbDIKrc+GBJaAZoy8aubF9lFrJHC9ElYqrKF?=
+ =?us-ascii?Q?P4cf0gb5xw01Vb1vsyHj1fca+EuPKJ4KS7wnSWZBGbPMCY/4CkqCPKW98NST?=
+ =?us-ascii?Q?xg=3D=3D?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: 40c11fd1-7ece-4467-d526-08dc270c548f
+X-MS-Exchange-CrossTenant-AuthSource: DM4PR11MB6117.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 06 Feb 2024 12:08:29.2492 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: 6D6uOw/2GQke1Rj3iEbwV4wsV3bdAVM1ZsCkzztcuMFjkUU0J9SBt03cAsLeh4ZZcUXAgl7m6jbTiajfRFVwzP8XWYC0XPj7YDPMsWqAfsQ=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY8PR11MB7170
+X-OriginatorOrg: intel.com
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1707221313; x=1738757313;
+ h=date:from:to:cc:subject:message-id:references:
+ in-reply-to:mime-version;
+ bh=uPZKgNz71N228G3GasT8rmDNmtZkVZO1SZm44J6ZpNU=;
+ b=i3kwnwasbanG8rG1fgNs+Jzj/nZGb1+9L8kPlMDm6K1uP7Clo0QW/r99
+ KhtzP9kb338Ayuqy1/4Zq38mX+nb+L1n0BkM1q8cw5kYJP0FOh21McC46
+ 59DPB1Urhgum4DRtya2B8f3koiSaGyqOF/HQx2l/I3kIG44qYKegpHaAQ
+ XKujrFJTEu4f+csxzviI2WXnNApCb0aK91jg2a1GFnGqwMUFfgfvLcgrv
+ Relt1tDDBhTiEe5O4eN4ZNKMpkwCYnNs0EdItwpNAQE0wsUeXJvX/vH8R
+ lWxGK3C9tKQ4iHYghTITp/aZbG+V5Q5jIZk6K5njtxU6c8JHRVjmyUQU5
+ g==;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=intel.com
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=i3kwnwas
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH iwl-net 2/2] i40e: take into account
+ XDP Tx queues when stopping rings
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -158,177 +196,78 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: netdev@vger.kernel.org, anthony.l.nguyen@intel.com,
+ intel-wired-lan@lists.osuosl.org, magnus.karlsson@intel.com
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hello intel-wired-lan,
+On Thu, Feb 01, 2024 at 12:40:22PM -0600, Seth Forshee wrote:
+> On Thu, Feb 01, 2024 at 04:42:19PM +0100, Maciej Fijalkowski wrote:
+> > Seth reported that on his side XDP traffic can not survive a round of
+> > down/up against i40e interface. Dmesg output was telling us that we were
+> > not able to disable the very first XDP ring. That was due to the fact
+> > that in i40e_vsi_stop_rings() in a pre-work that is done before calling
+> > i40e_vsi_wait_queues_disabled(), XDP Tx queues were not taken into the
+> > account.
+> > 
+> > To fix this, let us distinguish between Rx and Tx queue boundaries and
+> > take into the account XDP queues for Tx side.
+> > 
+> > Reported-by: Seth Forshee <sforshee@kernel.org>
+> > Closes: https://lore.kernel.org/netdev/ZbkE7Ep1N1Ou17sA@do-x1extreme/
+> > Fixes: 65662a8dcdd0 ("i40e: Fix logic of disabling queues")
+> > Signed-off-by: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+> 
+> This fixes the issue we're seeing. Thanks!
+> 
+> Tested-by: Seth Forshee <sforshee@kernel.org>
+> 
+> > ---
+> >  drivers/net/ethernet/intel/i40e/i40e_main.c | 13 +++++++------
+> >  1 file changed, 7 insertions(+), 6 deletions(-)
+> > 
+> > diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
+> > index 2c46a5e7d222..907be56965f5 100644
+> > --- a/drivers/net/ethernet/intel/i40e/i40e_main.c
+> > +++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
+> > @@ -4926,21 +4926,22 @@ int i40e_vsi_start_rings(struct i40e_vsi *vsi)
+> >  void i40e_vsi_stop_rings(struct i40e_vsi *vsi)
+> >  {
+> >  	struct i40e_pf *pf = vsi->back;
+> > -	int pf_q, q_end;
+> > +	u32 pf_q, tx_q_end, rx_q_end;
+> >  
+> >  	/* When port TX is suspended, don't wait */
+> >  	if (test_bit(__I40E_PORT_SUSPENDED, vsi->back->state))
+> >  		return i40e_vsi_stop_rings_no_wait(vsi);
+> >  
+> > -	q_end = vsi->base_queue + vsi->num_queue_pairs;
+> > -	for (pf_q = vsi->base_queue; pf_q < q_end; pf_q++)
+> > -		i40e_pre_tx_queue_cfg(&pf->hw, (u32)pf_q, false);
+> > +	tx_q_end = vsi->alloc_queue_pairs * (i40e_enabled_xdp_vsi(vsi) ? 2 : 1);
 
-I might post to the wrong place /ML as this issue could not be caused by 
-an issue with the driver / kernel module.
-But I already tried my luck with Intel support (ticket# 06047421). 
-Support was active at first, but now the conversation there seems to 
-have died off unfortunately.
+While this fixes one thing, it breaks another ;) vsi->base_queue needs to
+be involved into tx_q_end, otherwise anything besides PF0 would not go
+through Tx loops. I noticed that FDIR VSI started to get Tx disable
+timeouts with this patch.
 
+Will send a v2.
 
-Please let me me explain the observed issue and kindly point me to the 
-right channel (NIC firmware, NVM, ... ) if this is the wrong place after 
-all:
-
-
-1)
-We purchased a bunch of Intel E810-XXVDA2 adapters and hooked them up 
-using 100G->4x25G breakout cables (fs.com) to Arista switches.
-Unfortunately we cannot get a link up with 25G at boot. Looping the NIC 
-with a simple SFP28 DAC (fs.com) works fine though.
-
-
-2)
-Certainly we updated the NVM to 4.40 (latest) and power cycled the servers.
-
-
-3)
-We forced / set the correct speed on the Arista switches and we tried 
-different FEC settings (none or reed-solomon), but no luck there.
-
-4)
-The issue seems to be, that the advertised speeds of the NIC don't 
-contain 25G by default!
-Right after boot it looks like this:
-
-> # ethtool eth3
->
-> Settings for eth3:
-> Supported ports: [ FIBRE ]
-> Supported link modes: 1000baseT/Full
-> 10000baseT/Full
-> 25000baseCR/Full
-> 25000baseSR/Full
-> 1000baseX/Full
-> 10000baseSR/Full
-> 10000baseLR/Full
-> Supported pause frame use: Symmetric
-> Supports auto-negotiation: No
-> Supported FEC modes: None
-> Advertised link modes: 10000baseT/Full
-> Advertised pause frame use: No
-> Advertised auto-negotiation: No
-> Advertised FEC modes: None
-> Speed: Unknown!
-> Duplex: Unknown! (255)
-> Auto-negotiation: off
-> Port: Direct Attach Copper
-> PHYAD: 0
-> Transceiver: internal
-> Supports Wake-on: d
-> Wake-on: d
-> Current message level: 0x00000007 (7)
-> drv probe link
-> Link detected: no
-
-Notice the list with advertised speeds contains only "10000baseT/Full".
-When explicitly setting this to 25G via:
-
-> # ethtool -s eth3 advertise 0x80000000
-
-the links comes right up at 25G and ethtool reports:
-
-> # ethtool eth3
-> Settings for eth3:
-> Supported ports: [ FIBRE ]
-> Supported link modes: 1000baseT/Full
-> 10000baseT/Full
-> 25000baseCR/Full
-> 25000baseSR/Full
-> 1000baseX/Full
-> 10000baseSR/Full
-> 10000baseLR/Full
-> Supported pause frame use: Symmetric
-> Supports auto-negotiation: No
-> Supported FEC modes: None
-> Advertised link modes: 25000baseCR/Full
-> 25000baseSR/Full
-> Advertised pause frame use: No
-> Advertised auto-negotiation: No
-> Advertised FEC modes: None
-> Speed: 25000Mb/s
-> Duplex: Full
-> Auto-negotiation: off
-> Port: FIBRE
-> PHYAD: 0
-> Transceiver: internal
-> Supports Wake-on: d
-> Wake-on: d
-> Current message level: 0x00000007 (7)
-> drv probe link
-> Link detected: yes
-
-I can also set both speeds via:
-
-> # ethtool -s eth3 advertise 0x80001000 (10G AND 25G)
-so the ethtool output changes from:
-> Advertised link modes: 10000baseT/Full
-to
-> Advertised link modes: 10000baseT/Full
-> 25000baseCR/Full
-> 25000baseSR/Full
-> 10000baseSR/Full
-> 10000baseLR/Full
-and the link still comes right up with 25G!
-I can even play with the FEC setting to be either none, RS or auto. All 
-of them work fine - so FEC seems to not be related to the issue.
-
-
-5)
-The servers are Supermicro machines of different models (
-On a different machine the reported speeds after bootup looks like this 
-with the supported link modes even reduced to one entry: "10000baseCR/Full"
-
-> # ethtool ens2f0np0
-> Settings for ens2f0np0:
->         Supported ports: [ FIBRE ]
->         Supported link modes:   10000baseCR/Full
->         Supported pause frame use: Symmetric
->         Supports auto-negotiation: No
->         Supported FEC modes: None
->         Advertised link modes:  10000baseCR/Full
->         Advertised pause frame use: No
->         Advertised auto-negotiation: No
->         Advertised FEC modes: None
->         Speed: 10000Mb/s
->         Duplex: Full
->         Auto-negotiation: off
->         Port: Direct Attach Copper
->         PHYAD: 0
->         Transceiver: internal
->         Supports Wake-on: d
->         Wake-on: d
->         Current message level: 0x00000007 (7)
->                                drv probe link
->         Link detected: yes
-
-
-6) While I can now get a link-up at 25G, this is NOT a solution for me 
-(and this issue), as this is
-   a) not reboot safe
-   b) does not work for PXE boot
-
-
-
-
-So could this still be a linux driver issue, why the nic is not offering 
-all of its capabilities?
-Why is the NIC not advertising 25G? Or 10G AND 25G if possible? Could 
-this be the server BIOS not correctly initializing the NIC?
-Is there any way to set this permanently in / via NVM?
-Is there any other debugging I could enable at the driver level to help 
-finding the cause of this?
-
-
-
-Regards and thanks for your time,
-
-
-Christian
-
-
-
+> > +	for (pf_q = vsi->base_queue; pf_q < tx_q_end; pf_q++)
+> > +		i40e_pre_tx_queue_cfg(&pf->hw, pf_q, false);
+> >  
+> > -	for (pf_q = vsi->base_queue; pf_q < q_end; pf_q++)
+> > +	rx_q_end = vsi->base_queue + vsi->num_queue_pairs;
+> > +	for (pf_q = vsi->base_queue; pf_q < rx_q_end; pf_q++)
+> >  		i40e_control_rx_q(pf, pf_q, false);
+> >  
+> >  	msleep(I40E_DISABLE_TX_GAP_MSEC);
+> > -	for (pf_q = vsi->base_queue; pf_q < q_end; pf_q++)
+> > +	for (pf_q = vsi->base_queue; pf_q < tx_q_end; pf_q++)
+> >  		wr32(&pf->hw, I40E_QTX_ENA(pf_q), 0);
+> >  
+> >  	i40e_vsi_wait_queues_disabled(vsi);
+> > -- 
+> > 2.34.1
+> > 
+> 
