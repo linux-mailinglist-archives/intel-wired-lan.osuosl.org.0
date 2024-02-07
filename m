@@ -1,109 +1,95 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 50F7484D676
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  8 Feb 2024 00:04:46 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id C5BE384D689
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  8 Feb 2024 00:24:23 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id BA3A242FE4;
-	Wed,  7 Feb 2024 23:04:44 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 65FC64312F;
+	Wed,  7 Feb 2024 23:24:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id X9bN8C_moXxw; Wed,  7 Feb 2024 23:04:43 +0000 (UTC)
+	with ESMTP id LSaUc67nyajo; Wed,  7 Feb 2024 23:24:21 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 93ECF4336C
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A63F942D49
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1707347083;
-	bh=7aLthinSDbfqOxm/qwgXXi45DFGsKwn+jlZHtBC4Jjo=;
+	s=default; t=1707348260;
+	bh=7G/D/MZV+9ign5X9CCZzBe87yHbpPygcYb20WXFi/iI=;
 	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
 	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=CSbWFs8t2guV67gKesd3+cYa9hQbvAGPm9/BcWU53cDpyTcAoiL1ruuOAUpD4oQYz
-	 jnlBJtKZQ/pFmbIgIOQrBwY7/PHQCja+tSu8uGOYnu0mM93NcymY/sFY81tFSlWutd
-	 bm1mkP7OMBjAZ6rWeLbRX1Gu3SxxGxD7kY+TkLostbGvJSYEd8MPlnG49CCjsk6rJY
-	 PiB12Hk94/ygEV61Xve4pqOgrIEktQxt6NWoYyc6gYnZwLiviMoEG6bhxN7x+4CM+0
-	 JQHUPcdzxx2XuU8A9iqyFN1abHwc0kxLvEtl++J97JT9V9+qBv2xA1J9/OICI7kksK
-	 j7nwFljl+3Xuw==
+	b=B9Hl8yk4ILwq6GKNfyXk0krr1RgwV2jg1aGahtE+7u5KnLbiiC/MkUwiOaiDoxMd0
+	 eLKQkR6hRoNjEkIs3/Uf7qTa3tik5KBDazjWu3nnHmsEMPxmiffpDVBUAWaUKOVFDq
+	 DRuzEQ0g5WTGH1YbmG2QXAeEgwMmwE/DoncWwP8wmNj4rGd0t3rS1x7sJgU7wehecx
+	 fvcrZlEJC2DE3jwFQnVTxccjxdnZHaSVjV1FLQfWmfpOxmYMr8OjK5JWfObvvb9wlW
+	 A5SmeRTK+Mhf+HpbWc+q7wgkn7cTETfO9DKnShSuAwrhp9u9s14kr1NULz9cRvFvfA
+	 weFFOqfCYHbDg==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 93ECF4336C;
-	Wed,  7 Feb 2024 23:04:43 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 7ACE41BF3C9
- for <intel-wired-lan@lists.osuosl.org>; Wed,  7 Feb 2024 23:04:41 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id A63F942D49;
+	Wed,  7 Feb 2024 23:24:20 +0000 (UTC)
+X-Original-To: intel-wired-lan@osuosl.org
+Delivered-To: intel-wired-lan@osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id C628B1BF82C
+ for <intel-wired-lan@osuosl.org>; Wed,  7 Feb 2024 23:24:17 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 675C742FDD
- for <intel-wired-lan@lists.osuosl.org>; Wed,  7 Feb 2024 23:04:41 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id B161785087
+ for <intel-wired-lan@osuosl.org>; Wed,  7 Feb 2024 23:24:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id X0tw_Dy_iM41 for <intel-wired-lan@lists.osuosl.org>;
- Wed,  7 Feb 2024 23:04:40 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2607:f8b0:4864:20::635; helo=mail-pl1-x635.google.com;
- envelope-from=jmaxwell37@gmail.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 634B142FE4
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 634B142FE4
-Received: from mail-pl1-x635.google.com (mail-pl1-x635.google.com
- [IPv6:2607:f8b0:4864:20::635])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 634B142FE4
- for <intel-wired-lan@lists.osuosl.org>; Wed,  7 Feb 2024 23:04:40 +0000 (UTC)
-Received: by mail-pl1-x635.google.com with SMTP id
- d9443c01a7336-1d93f2c3701so7341215ad.3
- for <intel-wired-lan@lists.osuosl.org>; Wed, 07 Feb 2024 15:04:40 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1707347080; x=1707951880;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=7aLthinSDbfqOxm/qwgXXi45DFGsKwn+jlZHtBC4Jjo=;
- b=k/zRK2PPauFZo/7awRK2ownoNCPt4Tjj5lbH2BoupJ+EGWqj3ISBMbV/HCxO1+TzMa
- 9pGRAW3mw4efUHXhfK54GGpxSwjdDlmmUqaGMxJ4GmzlIVaPNdsESlTVjVgLI1t6EL4w
- Hj03Wx2lw2LYZlzMlqu9FbRsYyWj+jywGTtZC3d5cJMVlSrYn6XnADZYtDO7dco+sQCD
- Uld3mjdrSxJ3RZctLPU2dELn2QIgyIZqQC6EtEDwFCVjubWQOUcnP4+og3mBd4S0ND/U
- rRoXQ5nP/na3E+oCyMgQRU6hw7QL0RRSi1ol856spktvRsD5J7USZ1sKlG2hnuwbK76m
- ksKA==
-X-Gm-Message-State: AOJu0YzccMdf/x5mw7+QOmrx2TykcOnTi5cqUG8PaDcPDUzf+4th2y00
- E5GQ/cdyPx5JRIr/xnripJdhgDUFd7RjWqMB2YdV0+TaBamhu6Vv
-X-Google-Smtp-Source: AGHT+IGrWxgjE/tlbQm7JxTpNgXkvtA3tKPX9j970UvRHJ0jYkBuv6PnESI3VslLcyYS8rFPu+TD/Q==
-X-Received: by 2002:a17:902:d54b:b0:1d9:7c1e:2f33 with SMTP id
- z11-20020a170902d54b00b001d97c1e2f33mr9392524plf.39.1707347079609; 
- Wed, 07 Feb 2024 15:04:39 -0800 (PST)
-X-Forwarded-Encrypted: i=1;
- AJvYcCWO3Ev9a+oA+EkSFoR7mvytaYy+pidk3t2RhAlUuxJ/LK2zIyS4TfNPIqlTwZ30/h6pZGRi8tiI5g5Wbu/cvhmv20zkLHhaQ4V/iidCvJq1kuHnIgcMNHfi+qP3cGlAXr6r7Vmdp1b0PqbD9+BGRSn9coWzxb+8XnZ6vAG1eBVckXN2waLqE/KlhUS0rhBOGjAUDdpBXPU+0Aiu5CEvS23pqazUhOeqfRB10CJiH+40hAJd24ibF+EzlR1GrtrC4YjgaWdlO1qKrEhylyEIQYgoe3Nvlc5rIUihVzWWqUjQROXhPq9tPoOdPTE=
-Received: from jmaxwell.com ([203.220.178.35])
- by smtp.gmail.com with ESMTPSA id
- i12-20020a17090332cc00b001d6f7875f57sm2003695plr.162.2024.02.07.15.04.35
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 07 Feb 2024 15:04:39 -0800 (PST)
-From: Jon Maxwell <jmaxwell37@gmail.com>
-To: jesse.brandeburg@intel.com
-Date: Thu,  8 Feb 2024 10:04:30 +1100
-Message-Id: <20240207230430.82801-1-jmaxwell37@gmail.com>
-X-Mailer: git-send-email 2.39.3
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id BZUDcvwaTfQD for <intel-wired-lan@osuosl.org>;
+ Wed,  7 Feb 2024 23:24:16 +0000 (UTC)
+X-Greylist: delayed 487 seconds by postgrey-1.37 at util1.osuosl.org;
+ Wed, 07 Feb 2024 23:24:16 UTC
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 618C585082
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 618C585082
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=17.58.6.47;
+ helo=pv50p00im-zteg10021401.me.com; envelope-from=ernesto@castellotti.net;
+ receiver=<UNKNOWN> 
+Received: from pv50p00im-zteg10021401.me.com (pv50p00im-zteg10021401.me.com
+ [17.58.6.47]) by smtp1.osuosl.org (Postfix) with ESMTPS id 618C585082
+ for <intel-wired-lan@osuosl.org>; Wed,  7 Feb 2024 23:24:16 +0000 (UTC)
+Received: from localhost.localdomain (pv50p00im-dlb-asmtp-mailmevip.me.com
+ [17.56.9.10])
+ by pv50p00im-zteg10021401.me.com (Postfix) with ESMTPSA id 629A58E001E;
+ Wed,  7 Feb 2024 23:16:06 +0000 (UTC)
+From: Ernesto Castellotti <ernesto@castellotti.net>
+To: anthony.l.nguyen@intel.com, intel-wired-lan@osuosl.org,
+ piotr.kwapulinski@intel.com
+Date: Thu,  8 Feb 2024 00:15:21 +0100
+Message-ID: <20240207231524.51753-1-ernesto@castellotti.net>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
+X-Proofpoint-GUID: -r3MuP5d8tkvdrHTykfitOF41qPJjLYa
+X-Proofpoint-ORIG-GUID: -r3MuP5d8tkvdrHTykfitOF41qPJjLYa
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.272,Aquarius:18.0.1011,Hydra:6.0.619,FMLib:17.11.176.26
+ definitions=2024-02-07_09,2024-02-07_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0
+ suspectscore=0
+ phishscore=0 bulkscore=0 clxscore=1030 mlxlogscore=999 malwarescore=0
+ mlxscore=0 spamscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.19.0-2308100000 definitions=main-2402070170
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1707347080; x=1707951880; darn=lists.osuosl.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=7aLthinSDbfqOxm/qwgXXi45DFGsKwn+jlZHtBC4Jjo=;
- b=b2wKc7H22fgwC1EDGr9LcJI15qgIHeFt1YqfE5qGTk6qrLq88apAIMu8F5/B5sm8Rn
- eo70ErFHcsT2c581tIwUV8dHN2vld0kSmjZ+xZ8cpG+4eGYkNlAWDUrDTQFGGGLYDTE4
- 76BfTW/vnRHvv3is8Ne8coH8NolVhSUjglPqLIMDee6h+hD0+wJUoOu27/SNHm9Qoryc
- OfDrgb6+O6R9veN2kWGWHbojUoc+ji8nfwluW2T12NwsLj+D9WjwRuvd8AnF5atWanm1
- YxaOFYVOkmbmMiHfweb3/rv6mu0bdC2q8aq16tW9fpIUa9iZafHW4L4isxv0yXIUAZWu
- VPiQ==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ d=castellotti.net; s=sig1; t=1707347769;
+ bh=7G/D/MZV+9ign5X9CCZzBe87yHbpPygcYb20WXFi/iI=;
+ h=From:To:Subject:Date:Message-ID:MIME-Version;
+ b=VXcJ0fEa284gO7YWHMUFMAX0J3rCLE0IpRlKNz7Jqxlc/RRPl+eam/BpZ2K57excO
+ e2W2Q7vuTeqHyh9w3wtGil0d7Jnym/seuEjweCO9yW8NnKBUeLzx+0kgksOXB3XIlH
+ EGynd/polyt4/0m5ujxJolTvs7kbfIy6ezycLO6h5WUImy8H5e/C1C3seeENR0sHs2
+ pMlsQWv3GfBxFZ1sSA4U6kmfV1hRI33E/b5aMLIBTfjHkxzrlG/VXe+67EhMtMu1Cc
+ HVqNo/Uty6Ss+bph/epTnbdI7dX5PTUeFh8xM7r56goN0dAR99dMcBIEN2IogRPX+m
+ SBubYkhsULapA==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=gmail.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ header.from=castellotti.net
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256
- header.s=20230601 header.b=b2wKc7H2
-Subject: [Intel-wired-lan] [net-next] intel: make module parameters readable
- in sys filesystem
+ unprotected) header.d=castellotti.net header.i=@castellotti.net
+ header.a=rsa-sha256 header.s=sig1 header.b=VXcJ0fEa
+Subject: [Intel-wired-lan] [PATCH iwl-next v2] ixgbe: Add 1000BASE-BX support
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -116,174 +102,251 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: intel-wired-lan@lists.osuosl.org, linux-kernel@vger.kernel.org,
- edumazet@google.com, anthony.l.nguyen@intel.com, netdev@vger.kernel.org,
- kuba@kernel.org, pabeni@redhat.com, jmaxwell37@gmail.com, davem@davemloft.net
+Cc: Ernesto Castellotti <ernesto@castellotti.net>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Linux users sometimes need an easy way to check current values of module
-parameters. For example the module may be manually reloaded with different
-parameters. Make these visible and readable in the /sys filesystem to allow
-that.
+Added support for 1000BASE-BX, i.e. Gigabit Ethernet over single strand
+of single-mode fiber.
+The initialization of a 1000BASE-BX SFP is the same as 1000BASE-SX/LX
+with the only difference that the Bit Rate Nominal Value must be
+checked to make sure it is a Gigabit Ethernet transceiver, as described
+by the SFF-8472 specification.
 
-Signed-off-by: Jon Maxwell <jmaxwell37@gmail.com>
+This was tested with the FS.com SFP-GE-BX 1310/1490nm 10km transceiver:
+$ ethtool -m eth4
+        Identifier                                : 0x03 (SFP)
+        Extended identifier                       : 0x04 (GBIC/SFP defined by 2-wire interface ID)
+        Connector                                 : 0x07 (LC)
+        Transceiver codes                         : 0x00 0x00 0x00 0x40 0x00 0x00 0x00 0x00 0x00
+        Transceiver type                          : Ethernet: BASE-BX10
+        Encoding                                  : 0x01 (8B/10B)
+        BR, Nominal                               : 1300MBd
+        Rate identifier                           : 0x00 (unspecified)
+        Length (SMF,km)                           : 10km
+        Length (SMF)                              : 10000m
+        Length (50um)                             : 0m
+        Length (62.5um)                           : 0m
+        Length (Copper)                           : 0m
+        Length (OM3)                              : 0m
+        Laser wavelength                          : 1310nm
+        Vendor name                               : FS
+        Vendor OUI                                : 64:9d:99
+        Vendor PN                                 : SFP-GE-BX
+        Vendor rev                                :
+        Option values                             : 0x20 0x0a
+        Option                                    : RX_LOS implemented
+        Option                                    : TX_FAULT implemented
+        Option                                    : Power level 3 requirement
+        BR margin, max                            : 0%
+        BR margin, min                            : 0%
+        Vendor SN                                 : S2202359108
+        Date code                                 : 220307
+        Optical diagnostics support               : Yes
+        Laser bias current                        : 17.650 mA
+        Laser output power                        : 0.2132 mW / -6.71 dBm
+        Receiver signal average optical power     : 0.2740 mW / -5.62 dBm
+        Module temperature                        : 47.30 degrees C / 117.13 degrees F
+        Module voltage                            : 3.2576 V
+        Alarm/warning flags implemented           : Yes
+        Laser bias current high alarm             : Off
+        Laser bias current low alarm              : Off
+        Laser bias current high warning           : Off
+        Laser bias current low warning            : Off
+        Laser output power high alarm             : Off
+        Laser output power low alarm              : Off
+        Laser output power high warning           : Off
+        Laser output power low warning            : Off
+        Module temperature high alarm             : Off
+        Module temperature low alarm              : Off
+        Module temperature high warning           : Off
+        Module temperature low warning            : Off
+        Module voltage high alarm                 : Off
+        Module voltage low alarm                  : Off
+        Module voltage high warning               : Off
+        Module voltage low warning                : Off
+        Laser rx power high alarm                 : Off
+        Laser rx power low alarm                  : Off
+        Laser rx power high warning               : Off
+        Laser rx power low warning                : Off
+        Laser bias current high alarm threshold   : 110.000 mA
+        Laser bias current low alarm threshold    : 1.000 mA
+        Laser bias current high warning threshold : 100.000 mA
+        Laser bias current low warning threshold  : 1.000 mA
+        Laser output power high alarm threshold   : 0.7079 mW / -1.50 dBm
+        Laser output power low alarm threshold    : 0.0891 mW / -10.50 dBm
+        Laser output power high warning threshold : 0.6310 mW / -2.00 dBm
+        Laser output power low warning threshold  : 0.1000 mW / -10.00 dBm
+        Module temperature high alarm threshold   : 90.00 degrees C / 194.00 degrees F
+        Module temperature low alarm threshold    : -45.00 degrees C / -49.00 degrees F
+        Module temperature high warning threshold : 85.00 degrees C / 185.00 degrees F
+        Module temperature low warning threshold  : -40.00 degrees C / -40.00 degrees F
+        Module voltage high alarm threshold       : 3.7950 V
+        Module voltage low alarm threshold        : 2.8050 V
+        Module voltage high warning threshold     : 3.4650 V
+        Module voltage low warning threshold      : 3.1350 V
+        Laser rx power high alarm threshold       : 0.7079 mW / -1.50 dBm
+        Laser rx power low alarm threshold        : 0.0028 mW / -25.53 dBm
+        Laser rx power high warning threshold     : 0.6310 mW / -2.00 dBm
+        Laser rx power low warning threshold      : 0.0032 mW / -24.95 dBm
+
+Signed-off-by: Ernesto Castellotti <ernesto@castellotti.net>
 ---
- drivers/net/ethernet/intel/e100.c                 | 6 +++---
- drivers/net/ethernet/intel/e1000/e1000_main.c     | 2 +-
- drivers/net/ethernet/intel/e1000e/netdev.c        | 2 +-
- drivers/net/ethernet/intel/i40e/i40e_main.c       | 2 +-
- drivers/net/ethernet/intel/igb/igb_main.c         | 4 ++--
- drivers/net/ethernet/intel/igbvf/netdev.c         | 2 +-
- drivers/net/ethernet/intel/igc/igc_main.c         | 2 +-
- drivers/net/ethernet/intel/ixgbe/ixgbe_main.c     | 6 +++---
- drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c | 2 +-
- 9 files changed, 14 insertions(+), 14 deletions(-)
+v2: Fixed indentation/style issues as per review by Tony Nguyen
+v1: https://lore.kernel.org/intel-wired-lan/20240127174803.20793-1-ernesto@castellotti.net/
+---
+ .../net/ethernet/intel/ixgbe/ixgbe_82599.c    |  4 ++-
+ .../net/ethernet/intel/ixgbe/ixgbe_ethtool.c  |  2 ++
+ drivers/net/ethernet/intel/ixgbe/ixgbe_phy.c  | 32 ++++++++++++++++---
+ drivers/net/ethernet/intel/ixgbe/ixgbe_phy.h  |  2 ++
+ drivers/net/ethernet/intel/ixgbe/ixgbe_type.h |  3 ++
+ 5 files changed, 38 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/e100.c b/drivers/net/ethernet/intel/e100.c
-index 01f0f12035caeb7ca1657387538fcebf5c608322..2d879579fc888abda880e7105304941db5d4e263 100644
---- a/drivers/net/ethernet/intel/e100.c
-+++ b/drivers/net/ethernet/intel/e100.c
-@@ -170,9 +170,9 @@ MODULE_FIRMWARE(FIRMWARE_D102E);
- static int debug = 3;
- static int eeprom_bad_csum_allow = 0;
- static int use_io = 0;
--module_param(debug, int, 0);
--module_param(eeprom_bad_csum_allow, int, 0);
--module_param(use_io, int, 0);
-+module_param(debug, int, 0444);
-+module_param(eeprom_bad_csum_allow, int, 0444);
-+module_param(use_io, int, 0444);
- MODULE_PARM_DESC(debug, "Debug level (0=none,...,16=all)");
- MODULE_PARM_DESC(eeprom_bad_csum_allow, "Allow bad eeprom checksums");
- MODULE_PARM_DESC(use_io, "Force use of i/o access mode");
-diff --git a/drivers/net/ethernet/intel/e1000/e1000_main.c b/drivers/net/ethernet/intel/e1000/e1000_main.c
-index 1d1e93686af2bc44c9d9330cc12096c88895339b..a20f23f36eb0acb26dfaffe30c6dc3cb88d9e1b0 100644
---- a/drivers/net/ethernet/intel/e1000/e1000_main.c
-+++ b/drivers/net/ethernet/intel/e1000/e1000_main.c
-@@ -195,7 +195,7 @@ MODULE_LICENSE("GPL v2");
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_82599.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_82599.c
+index 339e106a5732..7943e8c59f2f 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_82599.c
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_82599.c
+@@ -334,7 +334,9 @@ static s32 ixgbe_get_link_capabilities_82599(struct ixgbe_hw *hw,
+ 	    hw->phy.sfp_type == ixgbe_sfp_type_1g_lx_core0 ||
+ 	    hw->phy.sfp_type == ixgbe_sfp_type_1g_lx_core1 ||
+ 	    hw->phy.sfp_type == ixgbe_sfp_type_1g_sx_core0 ||
+-	    hw->phy.sfp_type == ixgbe_sfp_type_1g_sx_core1) {
++	    hw->phy.sfp_type == ixgbe_sfp_type_1g_sx_core1 ||
++	    hw->phy.sfp_type == ixgbe_sfp_type_1g_bx_core0 ||
++	    hw->phy.sfp_type == ixgbe_sfp_type_1g_bx_core1) {
+ 		*speed = IXGBE_LINK_SPEED_1GB_FULL;
+ 		*autoneg = true;
+ 		return 0;
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c
+index 9a63457712c7..4387beeda1ad 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c
+@@ -349,6 +349,8 @@ static int ixgbe_get_link_ksettings(struct net_device *netdev,
+ 		case ixgbe_sfp_type_1g_sx_core1:
+ 		case ixgbe_sfp_type_1g_lx_core0:
+ 		case ixgbe_sfp_type_1g_lx_core1:
++		case ixgbe_sfp_type_1g_bx_core0:
++		case ixgbe_sfp_type_1g_bx_core1:
+ 			ethtool_link_ksettings_add_link_mode(cmd, supported,
+ 							     FIBRE);
+ 			ethtool_link_ksettings_add_link_mode(cmd, advertising,
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_phy.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_phy.c
+index f28140a05f09..e398ad00b851 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_phy.c
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_phy.c
+@@ -1537,6 +1537,7 @@ s32 ixgbe_identify_sfp_module_generic(struct ixgbe_hw *hw)
+ 	u8 comp_codes_1g = 0;
+ 	u8 comp_codes_10g = 0;
+ 	u8 oui_bytes[3] = {0, 0, 0};
++	u8 bitrate_nominal = 0;
+ 	u8 cable_tech = 0;
+ 	u8 cable_spec = 0;
+ 	u16 enforce_sfp = 0;
+@@ -1576,7 +1577,12 @@ s32 ixgbe_identify_sfp_module_generic(struct ixgbe_hw *hw)
+ 	status = hw->phy.ops.read_i2c_eeprom(hw,
+ 					     IXGBE_SFF_CABLE_TECHNOLOGY,
+ 					     &cable_tech);
++	if (status)
++		goto err_read_i2c_eeprom;
  
- #define DEFAULT_MSG_ENABLE (NETIF_MSG_DRV|NETIF_MSG_PROBE|NETIF_MSG_LINK)
- static int debug = -1;
--module_param(debug, int, 0);
-+module_param(debug, int, 0444);
- MODULE_PARM_DESC(debug, "Debug level (0=none,...,16=all)");
++	status = hw->phy.ops.read_i2c_eeprom(hw,
++					     IXGBE_SFF_BITRATE_NOMINAL,
++					     &bitrate_nominal);
+ 	if (status)
+ 		goto err_read_i2c_eeprom;
  
- /**
-diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
-index af5d9d97a0d6cb93d18cc8e6c5ea54a1bafe46ea..231dbb02c70a5abe79148bc4f4d62dc4ab33e3e0 100644
---- a/drivers/net/ethernet/intel/e1000e/netdev.c
-+++ b/drivers/net/ethernet/intel/e1000e/netdev.c
-@@ -34,7 +34,7 @@ char e1000e_driver_name[] = "e1000e";
+@@ -1659,6 +1665,18 @@ s32 ixgbe_identify_sfp_module_generic(struct ixgbe_hw *hw)
+ 			else
+ 				hw->phy.sfp_type =
+ 					ixgbe_sfp_type_1g_lx_core1;
++		/* Support only Ethernet 1000BASE-BX10, checking the Bit Rate
++		 * Nominal Value as per SFF-8472 by convention 1.25 Gb/s should
++		 * be rounded up to 0Dh (13 in units of 100 MBd) for 1000BASE-BX
++		 */
++		} else if ((comp_codes_1g & IXGBE_SFF_BASEBX10_CAPABLE) &&
++			   (bitrate_nominal == 0xD)) {
++			if (hw->bus.lan_id == 0)
++				hw->phy.sfp_type =
++					ixgbe_sfp_type_1g_bx_core0;
++			else
++				hw->phy.sfp_type =
++					ixgbe_sfp_type_1g_bx_core1;
+ 		} else {
+ 			hw->phy.sfp_type = ixgbe_sfp_type_unknown;
+ 		}
+@@ -1747,7 +1765,9 @@ s32 ixgbe_identify_sfp_module_generic(struct ixgbe_hw *hw)
+ 	      hw->phy.sfp_type == ixgbe_sfp_type_1g_lx_core0 ||
+ 	      hw->phy.sfp_type == ixgbe_sfp_type_1g_lx_core1 ||
+ 	      hw->phy.sfp_type == ixgbe_sfp_type_1g_sx_core0 ||
+-	      hw->phy.sfp_type == ixgbe_sfp_type_1g_sx_core1)) {
++	      hw->phy.sfp_type == ixgbe_sfp_type_1g_sx_core1 ||
++	      hw->phy.sfp_type == ixgbe_sfp_type_1g_bx_core0 ||
++	      hw->phy.sfp_type == ixgbe_sfp_type_1g_bx_core1)) {
+ 		hw->phy.type = ixgbe_phy_sfp_unsupported;
+ 		return -EOPNOTSUPP;
+ 	}
+@@ -1763,7 +1783,9 @@ s32 ixgbe_identify_sfp_module_generic(struct ixgbe_hw *hw)
+ 	      hw->phy.sfp_type == ixgbe_sfp_type_1g_lx_core0 ||
+ 	      hw->phy.sfp_type == ixgbe_sfp_type_1g_lx_core1 ||
+ 	      hw->phy.sfp_type == ixgbe_sfp_type_1g_sx_core0 ||
+-	      hw->phy.sfp_type == ixgbe_sfp_type_1g_sx_core1)) {
++	      hw->phy.sfp_type == ixgbe_sfp_type_1g_sx_core1 ||
++	      hw->phy.sfp_type == ixgbe_sfp_type_1g_bx_core0 ||
++	      hw->phy.sfp_type == ixgbe_sfp_type_1g_bx_core1)) {
+ 		/* Make sure we're a supported PHY type */
+ 		if (hw->phy.type == ixgbe_phy_sfp_intel)
+ 			return 0;
+@@ -1999,12 +2021,14 @@ s32 ixgbe_get_sfp_init_sequence_offsets(struct ixgbe_hw *hw,
+ 	if (sfp_type == ixgbe_sfp_type_da_act_lmt_core0 ||
+ 	    sfp_type == ixgbe_sfp_type_1g_lx_core0 ||
+ 	    sfp_type == ixgbe_sfp_type_1g_cu_core0 ||
+-	    sfp_type == ixgbe_sfp_type_1g_sx_core0)
++	    sfp_type == ixgbe_sfp_type_1g_sx_core0 ||
++	    sfp_type == ixgbe_sfp_type_1g_bx_core0)
+ 		sfp_type = ixgbe_sfp_type_srlr_core0;
+ 	else if (sfp_type == ixgbe_sfp_type_da_act_lmt_core1 ||
+ 		 sfp_type == ixgbe_sfp_type_1g_lx_core1 ||
+ 		 sfp_type == ixgbe_sfp_type_1g_cu_core1 ||
+-		 sfp_type == ixgbe_sfp_type_1g_sx_core1)
++		 sfp_type == ixgbe_sfp_type_1g_sx_core1 ||
++		 sfp_type == ixgbe_sfp_type_1g_bx_core1)
+ 		sfp_type = ixgbe_sfp_type_srlr_core1;
  
- #define DEFAULT_MSG_ENABLE (NETIF_MSG_DRV|NETIF_MSG_PROBE|NETIF_MSG_LINK)
- static int debug = -1;
--module_param(debug, int, 0);
-+module_param(debug, int, 0444);
- MODULE_PARM_DESC(debug, "Debug level (0=none,...,16=all)");
- 
- static const struct e1000_info *e1000_info_tbl[] = {
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
-index 6e7fd473abfd001eb45e8b5bda8978fff9eec26b..0abe169df7ff6e9e381e47657f377e3afeca6ff7 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_main.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
-@@ -95,7 +95,7 @@ MODULE_DEVICE_TABLE(pci, i40e_pci_tbl);
- 
- #define I40E_MAX_VF_COUNT 128
- static int debug = -1;
--module_param(debug, uint, 0);
-+module_param(debug, uint, 0444);
- MODULE_PARM_DESC(debug, "Debug level (0=none,...,16=all), Debug mask (0x8XXXXXXX)");
- 
- MODULE_AUTHOR("Intel Corporation, <e1000-devel@lists.sourceforge.net>");
-diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
-index 4df8d4153aa5f5ce7ac9dd566180d552be9f5b4f..1e8dbf9b700ba71f25a6c8c906633a4baa88941d 100644
---- a/drivers/net/ethernet/intel/igb/igb_main.c
-+++ b/drivers/net/ethernet/intel/igb/igb_main.c
-@@ -202,7 +202,7 @@ static struct notifier_block dca_notifier = {
- #endif
- #ifdef CONFIG_PCI_IOV
- static unsigned int max_vfs;
--module_param(max_vfs, uint, 0);
-+module_param(max_vfs, uint, 0444);
- MODULE_PARM_DESC(max_vfs, "Maximum number of virtual functions to allocate per physical function");
- #endif /* CONFIG_PCI_IOV */
- 
-@@ -238,7 +238,7 @@ MODULE_LICENSE("GPL v2");
- 
- #define DEFAULT_MSG_ENABLE (NETIF_MSG_DRV|NETIF_MSG_PROBE|NETIF_MSG_LINK)
- static int debug = -1;
--module_param(debug, int, 0);
-+module_param(debug, int, 0444);
- MODULE_PARM_DESC(debug, "Debug level (0=none,...,16=all)");
- 
- struct igb_reg_info {
-diff --git a/drivers/net/ethernet/intel/igbvf/netdev.c b/drivers/net/ethernet/intel/igbvf/netdev.c
-index a4d4f00e6a8761673857feb019de7ebaf34900ef..dc6a4f14cc28db60e849e674cda89118041245e3 100644
---- a/drivers/net/ethernet/intel/igbvf/netdev.c
-+++ b/drivers/net/ethernet/intel/igbvf/netdev.c
-@@ -32,7 +32,7 @@ static const char igbvf_copyright[] =
- 
- #define DEFAULT_MSG_ENABLE (NETIF_MSG_DRV|NETIF_MSG_PROBE|NETIF_MSG_LINK)
- static int debug = -1;
--module_param(debug, int, 0);
-+module_param(debug, int, 0444);
- MODULE_PARM_DESC(debug, "Debug level (0=none,...,16=all)");
- 
- static int igbvf_poll(struct napi_struct *napi, int budget);
-diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
-index ba8d3fe186aedacd5a7959e6fd9da3408fe71843..704bb8f830df5ea7be733c529990f8fa891942c3 100644
---- a/drivers/net/ethernet/intel/igc/igc_main.c
-+++ b/drivers/net/ethernet/intel/igc/igc_main.c
-@@ -34,7 +34,7 @@ static int debug = -1;
- MODULE_AUTHOR("Intel Corporation, <linux.nics@intel.com>");
- MODULE_DESCRIPTION(DRV_SUMMARY);
- MODULE_LICENSE("GPL v2");
--module_param(debug, int, 0);
-+module_param(debug, int, 0444);
- MODULE_PARM_DESC(debug, "Debug level (0=none,...,16=all)");
- 
- char igc_driver_name[] = "igc";
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-index bd541527c8c74d6922e8683e2f4493d9b361f67b..296baa10cb21e02252080f951f82d83774088719 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-@@ -147,19 +147,19 @@ static struct notifier_block dca_notifier = {
- 
- #ifdef CONFIG_PCI_IOV
- static unsigned int max_vfs;
--module_param(max_vfs, uint, 0);
-+module_param(max_vfs, uint, 0444);
- MODULE_PARM_DESC(max_vfs,
- 		 "Maximum number of virtual functions to allocate per physical function - default is zero and maximum value is 63. (Deprecated)");
- #endif /* CONFIG_PCI_IOV */
- 
- static bool allow_unsupported_sfp;
--module_param(allow_unsupported_sfp, bool, 0);
-+module_param(allow_unsupported_sfp, bool, 0444);
- MODULE_PARM_DESC(allow_unsupported_sfp,
- 		 "Allow unsupported and untested SFP+ modules on 82599-based adapters");
- 
- #define DEFAULT_MSG_ENABLE (NETIF_MSG_DRV|NETIF_MSG_PROBE|NETIF_MSG_LINK)
- static int debug = -1;
--module_param(debug, int, 0);
-+module_param(debug, int, 0444);
- MODULE_PARM_DESC(debug, "Debug level (0=none,...,16=all)");
- 
- MODULE_AUTHOR("Intel Corporation, <linux.nics@intel.com>");
-diff --git a/drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c b/drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c
-index a44e4bd561421a5ee398f29464ec591af32c8857..fc82d0914bdbb96c9548d17b3de47d064308a95c 100644
---- a/drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c
-+++ b/drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c
-@@ -82,7 +82,7 @@ MODULE_LICENSE("GPL v2");
- 
- #define DEFAULT_MSG_ENABLE (NETIF_MSG_DRV|NETIF_MSG_PROBE|NETIF_MSG_LINK)
- static int debug = -1;
--module_param(debug, int, 0);
-+module_param(debug, int, 0444);
- MODULE_PARM_DESC(debug, "Debug level (0=none,...,16=all)");
- 
- static struct workqueue_struct *ixgbevf_wq;
+ 	/* Read offset to PHY init contents */
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_phy.h b/drivers/net/ethernet/intel/ixgbe/ixgbe_phy.h
+index ef72729d7c93..b5bc60916402 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_phy.h
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_phy.h
+@@ -17,6 +17,7 @@
+ #define IXGBE_SFF_1GBE_COMP_CODES	0x6
+ #define IXGBE_SFF_10GBE_COMP_CODES	0x3
+ #define IXGBE_SFF_CABLE_TECHNOLOGY	0x8
++#define IXGBE_SFF_BITRATE_NOMINAL	0xC
+ #define IXGBE_SFF_CABLE_SPEC_COMP	0x3C
+ #define IXGBE_SFF_SFF_8472_SWAP		0x5C
+ #define IXGBE_SFF_SFF_8472_COMP		0x5E
+@@ -39,6 +40,7 @@
+ #define IXGBE_SFF_1GBASESX_CAPABLE		0x1
+ #define IXGBE_SFF_1GBASELX_CAPABLE		0x2
+ #define IXGBE_SFF_1GBASET_CAPABLE		0x8
++#define IXGBE_SFF_BASEBX10_CAPABLE		0x64
+ #define IXGBE_SFF_10GBASESR_CAPABLE		0x10
+ #define IXGBE_SFF_10GBASELR_CAPABLE		0x20
+ #define IXGBE_SFF_SOFT_RS_SELECT_MASK		0x8
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h b/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h
+index 61b9774b3d31..f111a671ee82 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h
+@@ -3210,6 +3210,9 @@ enum ixgbe_sfp_type {
+ 	ixgbe_sfp_type_1g_sx_core1 = 12,
+ 	ixgbe_sfp_type_1g_lx_core0 = 13,
+ 	ixgbe_sfp_type_1g_lx_core1 = 14,
++	ixgbe_sfp_type_1g_bx_core0 = 15,
++	ixgbe_sfp_type_1g_bx_core1 = 16,
++
+ 	ixgbe_sfp_type_not_present = 0xFFFE,
+ 	ixgbe_sfp_type_unknown = 0xFFFF
+ };
 -- 
-2.39.3
+2.43.0
 
