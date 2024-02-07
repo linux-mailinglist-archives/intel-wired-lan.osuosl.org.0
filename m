@@ -1,87 +1,96 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3984F84CD9F
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  7 Feb 2024 16:05:49 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 84D0784CE5C
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  7 Feb 2024 16:47:08 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id B446783777;
-	Wed,  7 Feb 2024 15:05:47 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 2154B83B81;
+	Wed,  7 Feb 2024 15:47:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 8pxr-gAkKrw5; Wed,  7 Feb 2024 15:05:47 +0000 (UTC)
+	with ESMTP id bId8p-eeuO6v; Wed,  7 Feb 2024 15:47:06 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org CF16783474
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 5B77E83B46
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1707318346;
-	bh=i2S00ligjC8o6J+Fndqd1bd8BX6bFYtJ3JEaZadHA0o=;
-	h=Date:From:To:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1707320826;
+	bh=c04kwZUxrvzi0qvbSSBFwoEI3C7fipYQbJIv4qBO2mM=;
+	h=From:To:In-Reply-To:References:Date:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=lBUtQw10xTgspyDCKvZivAwH62XRJvNH81r78Mb2wHNfS3gBdHmN9WlyJZ0kAuZae
-	 qF55+VSYEQ5YrVeeJ9elZec0LmUgI6/pML87lxDMCdA2gDFETCFNsKOacjPxedka8s
-	 KZndNeAJZqRtDtl4JtQRmfFCZhHvTUNhN5Gj5sE1TuHSLB9T1CTGG/6eNyV8iCmTTA
-	 EJwpFALsLJzRtKpYGG8RQXTJjVwFecRqcPRzVv3qcCnPqOlVt12W7nwa3bDHLQyfJw
-	 XBX50oxeOJURUUqar6MtAcQMdeFfpuVrd25UnUp+ercUpgLhm1zchzQGWsukqPgBXb
-	 QKrNJxnZYGp3w==
+	b=1QRb/+jjx5lSGatLeQJolze3NoCkLBRzq2lvncsy3YqDYE070Tcz/PMbBWD5jnpff
+	 acQnJPyfq5iaeyXVi2phFmLcDbfUK6CXOm7Djmt/43nHvLg5/PlVcuF98KZgAThZNA
+	 fsx0BWynTEJAJbaCd+nj69GGZKd61VMFJ21EyaB5qWwsgDoNTqobQ9vobjGVCf4AB1
+	 Vb7yDcbloJuGris0xhgWWFNKq7ANSG5Fy3LqtzjVApNYqJCVOJOlI6SEM4qJRIZurn
+	 mrWAk7F3YGtnCMaWD59dTlCJNsSD/Bf1jQl65m4yS3XtYSmSKuyH7Qix5bjGC2hppr
+	 Lsj2dY504KIGQ==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id CF16783474;
-	Wed,  7 Feb 2024 15:05:46 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 5B77E83B46;
+	Wed,  7 Feb 2024 15:47:06 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 653201BF471
- for <intel-wired-lan@lists.osuosl.org>; Wed,  7 Feb 2024 15:05:44 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 552771BF471
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  7 Feb 2024 15:47:04 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 50D2541D89
- for <intel-wired-lan@lists.osuosl.org>; Wed,  7 Feb 2024 15:05:44 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 3F0D24060B
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  7 Feb 2024 15:47:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id qlNW7XDRV2LF for <intel-wired-lan@lists.osuosl.org>;
- Wed,  7 Feb 2024 15:05:43 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=145.40.73.55;
- helo=sin.source.kernel.org; envelope-from=kuba@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 7E00141924
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7E00141924
-Received: from sin.source.kernel.org (sin.source.kernel.org [145.40.73.55])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 7E00141924
- for <intel-wired-lan@lists.osuosl.org>; Wed,  7 Feb 2024 15:05:43 +0000 (UTC)
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by sin.source.kernel.org (Postfix) with ESMTP id 1B5D3CE12F3;
- Wed,  7 Feb 2024 15:05:38 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0AB56C433C7;
- Wed,  7 Feb 2024 15:05:36 +0000 (UTC)
-Date: Wed, 7 Feb 2024 07:05:35 -0800
-From: Jakub Kicinski <kuba@kernel.org>
-To: Alexander Lobakin <aleksander.lobakin@intel.com>
-Message-ID: <20240207070535.37223e13@kernel.org>
-In-Reply-To: <c90e7c78-47e9-46d0-a4e5-cb4aca737d11@intel.com>
-References: <20240201122216.2634007-1-aleksander.lobakin@intel.com>
- <c90e7c78-47e9-46d0-a4e5-cb4aca737d11@intel.com>
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 5kZniDYb-Onh for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  7 Feb 2024 15:47:03 +0000 (UTC)
+X-Greylist: delayed 600 seconds by postgrey-1.37 at util1.osuosl.org;
+ Wed, 07 Feb 2024 15:47:03 UTC
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 2E0FF40568
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 2E0FF40568
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2a0a:51c0:0:12e:550::1; helo=galois.linutronix.de;
+ envelope-from=tglx@linutronix.de; receiver=<UNKNOWN> 
+Received: from galois.linutronix.de (Galois.linutronix.de
+ [IPv6:2a0a:51c0:0:12e:550::1])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 2E0FF40568
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  7 Feb 2024 15:47:03 +0000 (UTC)
+From: Thomas Gleixner <tglx@linutronix.de>
+To: lakshmi.sowjanya.d@intel.com, jstultz@google.com, giometti@enneenne.com,
+ corbet@lwn.net, linux-kernel@vger.kernel.org
+In-Reply-To: <20240207060854.6524-8-lakshmi.sowjanya.d@intel.com>
+References: <20240207060854.6524-1-lakshmi.sowjanya.d@intel.com>
+ <20240207060854.6524-8-lakshmi.sowjanya.d@intel.com>
+Date: Wed, 07 Feb 2024 16:31:02 +0100
+Message-ID: <87bk8smguh.ffs@tglx>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1707318336;
- bh=xdYb7yvdmUvbOrysZ8nVH2p13juopXq78Qj4JrTKaYg=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=TBQ8kVxUG3u2NzR7vI0RyO7FcuDhOI5tK4ZCjq+i0nGarriA6z0+OMNNLw9BQRhhF
- QYGEG5Q+jAxdGz8V6LHRYhGKjEuMzD58gtHIRXbWHPsBQgxQVVrn+kcnCB+uDnxZqn
- FJo3I3Li5AEcbnecnLjkzDPzQigIPC2hUURhCt96+LnPIVPXcTRPVdIF3lXXojkHEs
- hv819gKkeEvra5H4sVpaDSFTBBZilFrO46/nIBURzzMJ6ag79dw7nBKF35uhGAVAHJ
- uagDuNzGyhi2e4cjjG/HVhyAhkRt3J+jkWDn3fCc3zjUL3IfcpO4eI80MrOoc1uncB
- kfa5ZsGA6uXQg==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+Content-Type: text/plain
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linutronix.de; s=2020; t=1707319863;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=c04kwZUxrvzi0qvbSSBFwoEI3C7fipYQbJIv4qBO2mM=;
+ b=pX3LTP6jV2sgdSLm1wYHtfx8ErZl1KpxVfPY9rb03KkNx8HshqzA+MQcD1oD+pi1+98JnT
+ hukHm/rQE4T/Lr0aLnUxVqVvqkE0SolHJ/yHRTHKhMDUDtp0CvUlgAXyz3HCF10+FoOdYz
+ IJEsyZlpaw3Vl+KUtMsDd3Ev5iCeIl3bNmEbHx0zde9t7+1gvIJ2x2N2xH0LzDgNQxSKj3
+ 9yTiqHI/Ds4eZBsIRW9Lgdb+gtmkus9yy91OC+l1pbflBSuHxvfOEsSJ+IJZmVXCyL3zmN
+ TxDv/fPfWOpMNNhgZ4GKkOJlg/J7BeDb/iQCkcKbXsDjLp3f/uk2NESKg/0wFw==
+X-Mailman-Original-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed;
+ d=linutronix.de; s=2020e; t=1707319863;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=c04kwZUxrvzi0qvbSSBFwoEI3C7fipYQbJIv4qBO2mM=;
+ b=rd8/9nVMjgPNsldK9YDX7YWT5kRNdt7AE4DtqnZ0JUjYD/Rpywr6xjdjT/asiFcpRtTF+B
+ CWRJeVKy5QeunoCw==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20201202 header.b=TBQ8kVxU
-Subject: Re: [Intel-wired-lan] [PATCH net-next v5 00/21] ice: add PFCP
- filter support
+ header.from=linutronix.de
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key, unprotected) header.d=linutronix.de
+ header.i=@linutronix.de header.a=rsa-sha256 header.s=2020 header.b=pX3LTP6j; 
+ dkim=pass header.d=linutronix.de header.i=@linutronix.de
+ header.a=ed25519-sha256 header.s=2020e header.b=rd8/9nVM
+Subject: Re: [Intel-wired-lan] [PATCH v4 07/11] ice/ptp: remove
+ convert_art_to_tsc()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,29 +103,40 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Andy Shevchenko <andy@kernel.org>, linux-s390@vger.kernel.org,
- ntfs3@lists.linux.dev, Wojciech Drewek <wojciech.drewek@intel.com>,
- Yury Norov <yury.norov@gmail.com>, Ido Schimmel <idosch@nvidia.com>,
- Rasmus Villemoes <linux@rasmusvillemoes.dk>, dm-devel@redhat.com,
- linux-kernel@vger.kernel.org, Jiri Pirko <jiri@resnulli.us>,
- Eric Dumazet <edumazet@google.com>,
- Marcin Szycik <marcin.szycik@linux.intel.com>,
- Alexander Potapenko <glider@google.com>, Simon Horman <horms@kernel.org>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Michal Swiatkowski <michal.swiatkowski@linux.intel.com>,
- netdev@vger.kernel.org, Paolo Abeni <pabeni@redhat.com>,
- "David S. Miller" <davem@davemloft.net>, linux-btrfs@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org
+Cc: christopher.s.hall@intel.com, subramanian.mohan@intel.com,
+ lakshmi.sowjanya.d@intel.com, linux-doc@vger.kernel.org,
+ netdev@vger.kernel.org, pandith.n@intel.com, x86@kernel.org,
+ eddie.dong@intel.com, jesse.brandeburg@intel.com, linux-sound@vger.kernel.org,
+ alexandre.torgue@foss.st.com, peter.hilber@opensynergy.com,
+ mallikarjunappa.sangannavar@intel.com, joabreu@synopsys.com,
+ intel-wired-lan@lists.osuosl.org, mcoquelin.stm32@gmail.com,
+ thejesh.reddy.t.r@intel.com, perex@perex.cz, anthony.l.nguyen@intel.com,
+ andriy.shevchenko@linux.intel.com, davem@davemloft.net
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, 6 Feb 2024 13:46:44 +0100 Alexander Lobakin wrote:
-> > Add support for creating PFCP filters in switchdev mode. Add pfcp module
-> > that allows to create a PFCP-type netdev. The netdev then can be passed to
-> > tc when creating a filter to indicate that PFCP filter should be created.  
-> 
-> I believe folks agreed that bitmap_{read,write}() should stay inline,
-> ping then?
+On Wed, Feb 07 2024 at 11:38, lakshmi sowjanya d. wrote:
 
-Well, Dave dropped this from PW, again. Can you ping people to give you
-the acks and repost? What's your plan?
+> From: Thomas Gleixner <tglx@linutronix.de>
+>
+> Remove convert_art_to_tsc() function call, Pass system clock cycles and
+> clocksource ID as input to get_device_system_crosststamp().
+>
+> Signed-off-by: Thomas Gleixner <tglx@linutronix.de>
+> Signed-off-by: Lakshmi Sowjanya D <lakshmi.sowjanya.d@intel.com>
+> ---
+>  drivers/net/ethernet/intel/ice/ice_ptp.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.c b/drivers/net/ethernet/intel/ice/ice_ptp.c
+> index 3b6605c8585e..104b3f7a7cfc 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_ptp.c
+> +++ b/drivers/net/ethernet/intel/ice/ice_ptp.c
+> @@ -2101,7 +2101,7 @@ ice_ptp_get_syncdevicetime(ktime_t *device,
+>  			hh_ts_lo = rd32(hw, GLHH_ART_TIME_L);
+>  			hh_ts_hi = rd32(hw, GLHH_ART_TIME_H);
+>  			hh_ts = ((u64)hh_ts_hi << 32) | hh_ts_lo;
+> -			*system = convert_art_ns_to_tsc(hh_ts);
+> +			system->cycles = hh_ts;
+
+Fails to set the ID.
