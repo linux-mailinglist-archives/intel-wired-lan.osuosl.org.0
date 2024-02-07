@@ -2,95 +2,90 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 84D0784CE5C
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  7 Feb 2024 16:47:08 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 44D5F84CECE
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  7 Feb 2024 17:22:55 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 2154B83B81;
-	Wed,  7 Feb 2024 15:47:07 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id C029583C10;
+	Wed,  7 Feb 2024 16:22:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id bId8p-eeuO6v; Wed,  7 Feb 2024 15:47:06 +0000 (UTC)
+	with ESMTP id USvQb4yX-p_Q; Wed,  7 Feb 2024 16:22:53 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 5B77E83B46
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 040CA83BDC
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1707320826;
-	bh=c04kwZUxrvzi0qvbSSBFwoEI3C7fipYQbJIv4qBO2mM=;
-	h=From:To:In-Reply-To:References:Date:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=1QRb/+jjx5lSGatLeQJolze3NoCkLBRzq2lvncsy3YqDYE070Tcz/PMbBWD5jnpff
-	 acQnJPyfq5iaeyXVi2phFmLcDbfUK6CXOm7Djmt/43nHvLg5/PlVcuF98KZgAThZNA
-	 fsx0BWynTEJAJbaCd+nj69GGZKd61VMFJ21EyaB5qWwsgDoNTqobQ9vobjGVCf4AB1
-	 Vb7yDcbloJuGris0xhgWWFNKq7ANSG5Fy3LqtzjVApNYqJCVOJOlI6SEM4qJRIZurn
-	 mrWAk7F3YGtnCMaWD59dTlCJNsSD/Bf1jQl65m4yS3XtYSmSKuyH7Qix5bjGC2hppr
-	 Lsj2dY504KIGQ==
+	s=default; t=1707322973;
+	bh=yw7lDn+8iW/MOxeffN3vmkg/Ca+0cKRdLCk/DsktPW8=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=Vbqxew3gHXhNwXLHvMae+hgRQq7Ow9VZrGR2JkvNCbW/cExRQWVjihZ+Qz3aA3Yxc
+	 EayXGtfM9punK7pbRgh1zxZaxhTtceo+yMoupb4HfkJ4Qehga0cD/7/JC+GWK4waYU
+	 3ySFYohyhhcFLWKLo5p3l1cSfArEhhVT/CjlSwar2e/lib4ARPvfsAM6AvtWzbmZ5q
+	 oYqzohSuIFp3o2NGzPT1id/Aicv64xvBB8PtJ0vOSMZiqqC7XkBUexSJ6dnvG2Re1E
+	 MwMsmRqeiqEYBnkDA4s6f2ZvFoAtP/GS1jqWDv0HaSlnNDsfm2dqdEWbUSAalvVXFX
+	 um00y99V4ICfw==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 5B77E83B46;
-	Wed,  7 Feb 2024 15:47:06 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 040CA83BDC;
+	Wed,  7 Feb 2024 16:22:53 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 552771BF471
- for <intel-wired-lan@lists.osuosl.org>; Wed,  7 Feb 2024 15:47:04 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 98A8D1BF3DF
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  7 Feb 2024 16:22:50 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 3F0D24060B
- for <intel-wired-lan@lists.osuosl.org>; Wed,  7 Feb 2024 15:47:04 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 8DE95403E7
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  7 Feb 2024 16:22:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 5kZniDYb-Onh for <intel-wired-lan@lists.osuosl.org>;
- Wed,  7 Feb 2024 15:47:03 +0000 (UTC)
-X-Greylist: delayed 600 seconds by postgrey-1.37 at util1.osuosl.org;
- Wed, 07 Feb 2024 15:47:03 UTC
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 2E0FF40568
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 2E0FF40568
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2a0a:51c0:0:12e:550::1; helo=galois.linutronix.de;
- envelope-from=tglx@linutronix.de; receiver=<UNKNOWN> 
-Received: from galois.linutronix.de (Galois.linutronix.de
- [IPv6:2a0a:51c0:0:12e:550::1])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 2E0FF40568
- for <intel-wired-lan@lists.osuosl.org>; Wed,  7 Feb 2024 15:47:03 +0000 (UTC)
-From: Thomas Gleixner <tglx@linutronix.de>
-To: lakshmi.sowjanya.d@intel.com, jstultz@google.com, giometti@enneenne.com,
- corbet@lwn.net, linux-kernel@vger.kernel.org
-In-Reply-To: <20240207060854.6524-8-lakshmi.sowjanya.d@intel.com>
-References: <20240207060854.6524-1-lakshmi.sowjanya.d@intel.com>
- <20240207060854.6524-8-lakshmi.sowjanya.d@intel.com>
-Date: Wed, 07 Feb 2024 16:31:02 +0100
-Message-ID: <87bk8smguh.ffs@tglx>
+ with ESMTP id 52U4-0Icf0u6 for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  7 Feb 2024 16:22:48 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.13;
+ helo=mgamail.intel.com; envelope-from=arkadiusz.kubalewski@intel.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 62CFB400CB
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 62CFB400CB
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.13])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 62CFB400CB
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  7 Feb 2024 16:22:48 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10977"; a="12109066"
+X-IronPort-AV: E=Sophos;i="6.05,251,1701158400"; d="scan'208";a="12109066"
+Received: from orviesa002.jf.intel.com ([10.64.159.142])
+ by orvoesa105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 07 Feb 2024 08:22:48 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.05,251,1701158400"; d="scan'208";a="32183203"
+Received: from amlin-018-114.igk.intel.com ([10.102.18.114])
+ by orviesa002.jf.intel.com with ESMTP; 07 Feb 2024 08:22:46 -0800
+From: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Wed,  7 Feb 2024 17:19:20 +0100
+Message-Id: <20240207161923.710014-1-arkadiusz.kubalewski@intel.com>
+X-Mailer: git-send-email 2.38.1
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linutronix.de; s=2020; t=1707319863;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=c04kwZUxrvzi0qvbSSBFwoEI3C7fipYQbJIv4qBO2mM=;
- b=pX3LTP6jV2sgdSLm1wYHtfx8ErZl1KpxVfPY9rb03KkNx8HshqzA+MQcD1oD+pi1+98JnT
- hukHm/rQE4T/Lr0aLnUxVqVvqkE0SolHJ/yHRTHKhMDUDtp0CvUlgAXyz3HCF10+FoOdYz
- IJEsyZlpaw3Vl+KUtMsDd3Ev5iCeIl3bNmEbHx0zde9t7+1gvIJ2x2N2xH0LzDgNQxSKj3
- 9yTiqHI/Ds4eZBsIRW9Lgdb+gtmkus9yy91OC+l1pbflBSuHxvfOEsSJ+IJZmVXCyL3zmN
- TxDv/fPfWOpMNNhgZ4GKkOJlg/J7BeDb/iQCkcKbXsDjLp3f/uk2NESKg/0wFw==
-X-Mailman-Original-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed;
- d=linutronix.de; s=2020e; t=1707319863;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=c04kwZUxrvzi0qvbSSBFwoEI3C7fipYQbJIv4qBO2mM=;
- b=rd8/9nVMjgPNsldK9YDX7YWT5kRNdt7AE4DtqnZ0JUjYD/Rpywr6xjdjT/asiFcpRtTF+B
- CWRJeVKy5QeunoCw==
+Content-Transfer-Encoding: 8bit
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1707322969; x=1738858969;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=aQ1b2CLhzOW29z9KuXP20eojFRrCjJNS04mGts5OQcg=;
+ b=TWdaSCnJHd3P4trqi9o3mH/Rk1DbfhY1n4qdls+R1+FVYy0uyjjcFPWM
+ rrELMbCydocnxvSOTgRfJRRZAc3p20wTfa0yNcftlgBXekGSejZiKdvAi
+ Y2ySDdv1dUGduNoh7C2g9BocQo6mhkg3k8ipK937PSByzho9onsIcNRME
+ 44lGeF/zqABmnJUA0yTVCfy28tUJiWIEqKPyD5V4v2qX9Z/Rmf2uNT0Ce
+ Y6NFyAzXeM4xxByJ38ZWtDgky0sTjMYWPBfDkEXYI1B1pqx7ykcVmXjHP
+ I+v2scQluKcPNuSolsBe1IHzYwJ7v1B8Pknne1qFNvHX16oaMqL7n5IuT
+ Q==;
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=linutronix.de
+ header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key, unprotected) header.d=linutronix.de
- header.i=@linutronix.de header.a=rsa-sha256 header.s=2020 header.b=pX3LTP6j; 
- dkim=pass header.d=linutronix.de header.i=@linutronix.de
- header.a=ed25519-sha256 header.s=2020e header.b=rd8/9nVM
-Subject: Re: [Intel-wired-lan] [PATCH v4 07/11] ice/ptp: remove
- convert_art_to_tsc()
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=TWdaSCnJ
+Subject: [Intel-wired-lan] [PATCH iwl-net 0/3] ice: fix dpll data access on
+ PF reset
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -103,40 +98,23 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: christopher.s.hall@intel.com, subramanian.mohan@intel.com,
- lakshmi.sowjanya.d@intel.com, linux-doc@vger.kernel.org,
- netdev@vger.kernel.org, pandith.n@intel.com, x86@kernel.org,
- eddie.dong@intel.com, jesse.brandeburg@intel.com, linux-sound@vger.kernel.org,
- alexandre.torgue@foss.st.com, peter.hilber@opensynergy.com,
- mallikarjunappa.sangannavar@intel.com, joabreu@synopsys.com,
- intel-wired-lan@lists.osuosl.org, mcoquelin.stm32@gmail.com,
- thejesh.reddy.t.r@intel.com, perex@perex.cz, anthony.l.nguyen@intel.com,
- andriy.shevchenko@linux.intel.com, davem@davemloft.net
+Cc: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed, Feb 07 2024 at 11:38, lakshmi sowjanya d. wrote:
+Do not allow to acquire data or alter configuration of dpll and pins if PF
+reset is in progress.
 
-> From: Thomas Gleixner <tglx@linutronix.de>
->
-> Remove convert_art_to_tsc() function call, Pass system clock cycles and
-> clocksource ID as input to get_device_system_crosststamp().
->
-> Signed-off-by: Thomas Gleixner <tglx@linutronix.de>
-> Signed-off-by: Lakshmi Sowjanya D <lakshmi.sowjanya.d@intel.com>
-> ---
->  drivers/net/ethernet/intel/ice/ice_ptp.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.c b/drivers/net/ethernet/intel/ice/ice_ptp.c
-> index 3b6605c8585e..104b3f7a7cfc 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_ptp.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_ptp.c
-> @@ -2101,7 +2101,7 @@ ice_ptp_get_syncdevicetime(ktime_t *device,
->  			hh_ts_lo = rd32(hw, GLHH_ART_TIME_L);
->  			hh_ts_hi = rd32(hw, GLHH_ART_TIME_H);
->  			hh_ts = ((u64)hh_ts_hi << 32) | hh_ts_lo;
-> -			*system = convert_art_ns_to_tsc(hh_ts);
-> +			system->cycles = hh_ts;
+Arkadiusz Kubalewski (3):
+  ice: fix dpll and dpll_pin data access on PF reset
+  ice: fix dpll periodic work data updates on PF reset
+  ice: fix pin phase adjust updates on PF reset
 
-Fails to set the ID.
+ drivers/net/ethernet/intel/ice/ice_dpll.c | 46 ++++++++++++++++++++++-
+ 1 file changed, 45 insertions(+), 1 deletion(-)
+
+
+base-commit: cef6969786db632a7948eed6a43ef9a71414ca5b
+-- 
+2.38.1
+
