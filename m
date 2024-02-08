@@ -2,105 +2,194 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7F53D84E19F
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  8 Feb 2024 14:13:57 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0EE8084E1F9
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  8 Feb 2024 14:29:52 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 2F7A748AB4;
-	Thu,  8 Feb 2024 13:13:56 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 8B6654891C;
+	Thu,  8 Feb 2024 13:29:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id P3M48b1Of8Qg; Thu,  8 Feb 2024 13:13:55 +0000 (UTC)
+	with ESMTP id wCBN0_r5NJqe; Thu,  8 Feb 2024 13:29:49 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B9D0148D88
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B8EEA487DC
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1707398034;
-	bh=qPXEBhfpF1CN4Qdxme+Q5NHy1FcQJHMMeeC+SrNpk/A=;
-	h=References:In-Reply-To:From:Date:To:Subject:List-Id:
+	s=default; t=1707398988;
+	bh=/oo50hR/XisAZJSLjUjWlRPTTMQwSkBR4J0iXfYXUf0=;
+	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=XdKWKksgqbCXSpsrpxSjTCLTiumFb62y6qZDAK09c3y45Of9FIXfFzNad/PqYYvKF
-	 MbvLl3RKQ4mO9vhwG2Bfoh1vzPEb44Kc8juI/TAcI/0GMz6pjjiQM68mz/wermf4tl
-	 +yBtbkqOw4kEi+3PP+3hcfdX/sfnK01wBc/hFxxtu2g+iRJZFDWxmAkb0pP5K5fNu2
-	 MNBPpC5nsqT8U8VdZCGqVxjoBjtI63MFuDVEAdKdvpv1b4brH9n5/sjTWMDma077dY
-	 l3actpkU577z9COiB+tnm3w2mUagK/a1sSJiGqfXN5Yxp5ZysViefPEkW3nd9yF2++
-	 oPRJe4ptyho/w==
+	b=i0Ti0IrtW3JECsum67OQ94bMf2Do+UOZdo6z524JVCW8pkuviVpnkoRuOT7w3sTyQ
+	 aR/sdHjR1OE8+ntqR7BO0qnKheDBwTXms0wzODbcXTx8x7R0Jq21lOWtoP65vdfBmX
+	 NXj1q4mAyJPbLaB8LxZDeo1DtYIvJKtKmjckKIQ9joye2A3xMxM9LeaAygaX0DjQ63
+	 1O7eNfCGMNSzpnTjhHb7Xyc46OeQvkvyyQgnxO++4qfGfP1aBdsfDWgwbiN6AHM/QD
+	 2ckwNhuLS8L+xHH8Od1byIJRB5mjmODimu1ekiBToawrXy2EP2fE2HizwxskrWMxJD
+	 QniNvZpUtKEFg==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id B9D0148D88;
-	Thu,  8 Feb 2024 13:13:54 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id B8EEA487DC;
+	Thu,  8 Feb 2024 13:29:48 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 5D4091BF403
- for <intel-wired-lan@lists.osuosl.org>; Thu,  8 Feb 2024 13:13:52 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 65ABB1BF403
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  8 Feb 2024 13:29:46 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 4515B41D5D
- for <intel-wired-lan@lists.osuosl.org>; Thu,  8 Feb 2024 13:13:52 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 5120644625
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  8 Feb 2024 13:29:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id qUJ6CMDPO94v for <intel-wired-lan@lists.osuosl.org>;
- Thu,  8 Feb 2024 13:13:51 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2607:f8b0:4864:20::112e; helo=mail-yw1-x112e.google.com;
- envelope-from=suresh2514@gmail.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org B189741AB6
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B189741AB6
-Received: from mail-yw1-x112e.google.com (mail-yw1-x112e.google.com
- [IPv6:2607:f8b0:4864:20::112e])
- by smtp2.osuosl.org (Postfix) with ESMTPS id B189741AB6
- for <intel-wired-lan@lists.osuosl.org>; Thu,  8 Feb 2024 13:13:50 +0000 (UTC)
-Received: by mail-yw1-x112e.google.com with SMTP id
- 00721157ae682-604966eaf6eso15739407b3.1
- for <intel-wired-lan@lists.osuosl.org>; Thu, 08 Feb 2024 05:13:50 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1707398029; x=1708002829;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=qPXEBhfpF1CN4Qdxme+Q5NHy1FcQJHMMeeC+SrNpk/A=;
- b=TWXMnkwkM96HmYWPdeTkCBFASbzQO0ekMBHpx3r1++YTD9Of2dRj7hEwFWx0o8kfef
- EJKUUBmtj7DZDHRQL9hKFnfcsQvLxekpYINWMhEf1NpKCcyuGZUeuxSfERtlqwI7M5We
- ZsJYrUyKxdGbVX5M3UGKLLlWXjdcLRW4yKquBTvx75oXYPTO8EXqx6rDofLywH5WnpgH
- T1kbT6h+ocH4dasg7tdlhfGW4BGdGBCQS7SZDqPr5oRAk8Ux9dKWhE8DCq9mUeyAu4+h
- 9BI90pM0JPp2SNyBUJ2yEqzfskMP0TDwqa+0Jjrjhaylf3fKoHRrWFShHVuqj8uguL3O
- jOSw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUBxyw5qqsZIe1/zyIMQgcQIMkOV5O8i2r4NMVTuO+3D8HaRT/qvJr3Idu0OpKxABJCWwzqOGWAzQkstsd3Q+E2AmKn1HnhA09fWQJ4GKLsAQ==
-X-Gm-Message-State: AOJu0Yxakx2Uwebm1kTtD9r+rSL2jveQAejBbeIViCukurg61J5UMOHE
- zkJL31o7JZfkQP7x4Ea+Lh1evdvTGgoGUHARoBYm4QrSqWql7EGa2suU6S9SMMRynPU3oVAACQR
- r4icDJc+e8RS526jJ2Bjm5+HNn98=
-X-Google-Smtp-Source: AGHT+IEr/zmWeF82dE3ZLpar5KxiIQm3qz3JmDJNIFsWw7ma3T6JES9/faO88VoGDpMNGyrV+mSQ0nr3Na1OkuE5QZs=
-X-Received: by 2002:a81:ed07:0:b0:5ee:6471:53e2 with SMTP id
- k7-20020a81ed07000000b005ee647153e2mr7868380ywm.23.1707398029452; Thu, 08 Feb
- 2024 05:13:49 -0800 (PST)
-MIME-Version: 1.0
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id D7rEO-KhoD10 for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  8 Feb 2024 13:29:45 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.9;
+ helo=mgamail.intel.com; envelope-from=aleksandr.loktionov@intel.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org AFF7C485C2
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org AFF7C485C2
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.9])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id AFF7C485C2
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  8 Feb 2024 13:29:44 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10977"; a="11949920"
+X-IronPort-AV: E=Sophos;i="6.05,253,1701158400"; d="scan'208,217";a="11949920"
+Received: from fmviesa002.fm.intel.com ([10.60.135.142])
+ by fmvoesa103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 08 Feb 2024 05:29:44 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.05,253,1701158400"; d="scan'208,217";a="24898665"
+Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
+ by fmviesa002.fm.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
+ 08 Feb 2024 05:29:43 -0800
+Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
+ ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.35; Thu, 8 Feb 2024 05:29:42 -0800
+Received: from ORSEDG601.ED.cps.intel.com (10.7.248.6) by
+ orsmsx610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.35 via Frontend Transport; Thu, 8 Feb 2024 05:29:42 -0800
+Received: from NAM10-MW2-obe.outbound.protection.outlook.com (104.47.55.101)
+ by edgegateway.intel.com (134.134.137.102) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.35; Thu, 8 Feb 2024 05:29:42 -0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=UNCImoMZbKjf1CPbw8/DG+MHLURUcyz3ERozSDzO9H0QEYmH9DPjFjFfjcn2Pz/5cwNRn3F/PBQCVzmm+IKpIG9hC4PvEZ1UHnANLt8DxjnKs2jcd1BMdlJBS47wBFFqmxLwH/4a1kQ70eFntiW8ErdI9umzG93JeuEryU163eOmt6U8kEWkFbRAUaq/3s6WnDnmjhxo6wwe6GNxXR2xBcLS+McOtuVovChXS9eXTCK9ftv5x9oDrO6jTXIFdKKc3eSM7Dvn8oKqY5irv4Kcxg1qiHjc5jlnYtUBqnRL4U3ZGcjCctIcK/sceldsymDCGbrlACLNC8vuZB9hsVKg0A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=/oo50hR/XisAZJSLjUjWlRPTTMQwSkBR4J0iXfYXUf0=;
+ b=RlTs2ldbFyTAOMI26gOCzfi2BtkVAEKJuG39l0wC9pu88EqBOlhyXIutCNVo87tOQyFzspYe+A6Xgm6FdILlmoIuM7EaHAUvKhuh14W3Z+OtYMRCzdDCxT4oQTVy2bnSofavB/5KG7K0kk9NyUsEkjZdSsMuJIVJDD+0e2NsRsn4tpyEhzlhB/AQi/KmA9qPdDiMIG2GLusWMkixVfaOUkY/ToRBQwmORx4bArJMB1fk3D/PzfF8MgEPoU2P8r+FDAvnjF/q/oDZTY0RzdW7YrEB0EHgfxhT9EM9cqHxAC+sh+O0ZNBCHIiQwPCvVGJNnp4aleRxy8jdbulBR5Xyaw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from SJ0PR11MB5866.namprd11.prod.outlook.com (2603:10b6:a03:429::10)
+ by CY8PR11MB7800.namprd11.prod.outlook.com (2603:10b6:930:72::20)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7249.36; Thu, 8 Feb
+ 2024 13:29:38 +0000
+Received: from SJ0PR11MB5866.namprd11.prod.outlook.com
+ ([fe80::c9fc:2945:7b2f:70e3]) by SJ0PR11MB5866.namprd11.prod.outlook.com
+ ([fe80::c9fc:2945:7b2f:70e3%6]) with mapi id 15.20.7249.035; Thu, 8 Feb 2024
+ 13:29:38 +0000
+From: "Loktionov, Aleksandr" <aleksandr.loktionov@intel.com>
+To: suresh ks <suresh2514@gmail.com>
+Thread-Topic: [PATCH iwl v2] i40e: print correct hw max rss count in kernel
+ ring buffer
+Thread-Index: AQHaU1YGwLKgtO7XO0SZEBb5xKIVdLDyBrcwgA5z3gCAAAOcYA==
+Date: Thu, 8 Feb 2024 13:29:38 +0000
+Message-ID: <SJ0PR11MB5866DBA283326399CE4F7EE2E5442@SJ0PR11MB5866.namprd11.prod.outlook.com>
 References: <20240120072806.8554-1-suresh2514@gmail.com>
  <e524c57e-fe43-4582-bb05-c50f3e529848@intel.com>
  <SJ0PR11MB5866EAA3CBAF4E28842305D5E57D2@SJ0PR11MB5866.namprd11.prod.outlook.com>
-In-Reply-To: <SJ0PR11MB5866EAA3CBAF4E28842305D5E57D2@SJ0PR11MB5866.namprd11.prod.outlook.com>
-From: suresh ks <suresh2514@gmail.com>
-Date: Thu, 8 Feb 2024 18:43:38 +0530
-Message-ID: <CABAyFk5E6Ga5kvPaL2u5mJNLGUN-jSZxmhQZ6BUZwEmRfrOXMw@mail.gmail.com>
-To: "Loktionov, Aleksandr" <aleksandr.loktionov@intel.com>
-Content-Type: multipart/alternative; boundary="0000000000000929460610de955d"
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1707398029; x=1708002829; darn=lists.osuosl.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=qPXEBhfpF1CN4Qdxme+Q5NHy1FcQJHMMeeC+SrNpk/A=;
- b=BPvLwfAT+wt9KuKIIO0vNbk4g7cDAKLPZsaQlX6VLFhL2vW8k6CYraIWNaA63fWOoH
- 6TP1CiEUzvbxayFirrl31YB1HK9zas112C80QrNSF0+0fe0xHhy7k5b/83ZCC0pAaUyJ
- r66YbJ81o+CZ0YwMvo/SrXH7dJQoiTmLLpvwJLdWIPiobDlkjGVGNilzs+7Jus9OCRNb
- haViYyMcAA8xSmwVBJDeLKRQmw99cjgkZHvKexmrbeLAEAK9TZR/f+oYgc2wiwy+FwQ4
- nNERuYu1UrTpmJHaNpZ3Nl4w2VvPiYuBGukKU5fWs5qMzz+W8r/pFRVCsOCJdsCT2w/f
- ANsg==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ <CABAyFk5E6Ga5kvPaL2u5mJNLGUN-jSZxmhQZ6BUZwEmRfrOXMw@mail.gmail.com>
+In-Reply-To: <CABAyFk5E6Ga5kvPaL2u5mJNLGUN-jSZxmhQZ6BUZwEmRfrOXMw@mail.gmail.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: SJ0PR11MB5866:EE_|CY8PR11MB7800:EE_
+x-ms-office365-filtering-correlation-id: 1fd90acf-c375-4697-656c-08dc28a9fff1
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: KG9FtCzsjqPFxEChmTrB6u2ESZSGfUqQkrbIKGH4TNh1p8icB2/ufm0eMJQvZwDMSHBNDngj7yErmDDwYPFVl+R7E3nrcQgaLC3VXexnhRlHGuk2BxTBYK8QOcpERi3gYm0Zc/i2JqVC7DRpJiqc+Jsf1cr1JyzSOzkVKaXDW+RwnRwncyVFdDybx0+hbnHRtQT2vaZ6JU3jp2Hkp7nZ3QDZ4G6PQbW0lX+LR7m6LDWAW3GfCCh+kphaJr8ZQ+WZ9d83Oz7594ZTbE+14GgpHcXr7Gus+QmypmrMor5gSlaE8BQYtLS8EzeMuQAsjK0q53vfB8bt7tdcgFgFBjUjPannpMYixzU+mzQRzIAeG4aQpogWjvGzOAtJWQ5kv45X2eoqbOuOb9C2wJNXp6N3MCbKr15ckKbNKnCs+LAsGDCRcfGYom3anQ+hsTdngcWgbwmhPXt0Kw13/49oN5QNHZqYQ5sPl0tLVuTos6VDhX98DlThY854MMI8ZN32GnyHxncifgu+4XcAs2ZpwTyUmiTng2Iw0rtrotQYU7hBfW/ylSHJPVRDQ/U0U/OkQJXUTJ8FDXo7nPXbvKOXH8gdVDzBivlf7jyS4w1pLt6+NQrF5e4q4CC6ZQGVvLuBM+Ow
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SJ0PR11MB5866.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230031)(366004)(396003)(136003)(376002)(346002)(39860400002)(230922051799003)(64100799003)(1800799012)(186009)(451199024)(9686003)(86362001)(26005)(41300700001)(5660300002)(2906002)(478600001)(66446008)(54906003)(76116006)(66946007)(66476007)(6916009)(38070700009)(64756008)(316002)(66556008)(8676002)(8936002)(4326008)(52536014)(71200400001)(7696005)(53546011)(6506007)(33656002)(38100700002)(82960400001)(55016003)(122000001)(83380400001);
+ DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?ZWtaTS8vdWZHRmVoT1NaWG4vMXZhMkRwQmR3UVdZTmJBWXJuNlBubGViamE2?=
+ =?utf-8?B?d2hwWkZpaXZTOHdIQ20wTEJzVUFSYUlyMGM0bWFyVkZEckxVeEtTYkp6UlJp?=
+ =?utf-8?B?dkQ4NER5alVGY2JjY0RZV21rQzkxUWJobWZONHpqUWpBM1BBN1QwSHVNTTBL?=
+ =?utf-8?B?Z1RVL2VjSXIrRjBqditrRUlTY2RhNlhzczFYYmtQYWdFaTRRTGlBN3VZWGZD?=
+ =?utf-8?B?YWtoeDVpNGRvQy9xN2kxdzBrZjZmZmgvYlNrcWhaVFRYUW1NSk9vaHpqUGsx?=
+ =?utf-8?B?ZXpROXkzeWt0MVEvVldkSlk4dmpoSHRRdXo0d0NDWDlSOHZaQkErK2ZMcEVo?=
+ =?utf-8?B?TnkzcVNDcHM2Tkp6Wld4c0hwYlFYbzlkS2wrRm5TTXY3dkdOdkFWU0k4dkZt?=
+ =?utf-8?B?RDBpU1k1ZHRiQnlwU21VZWZ0OEFIQUpKdmJSeUNWWHpoWVNzOVMrLzgrbmx3?=
+ =?utf-8?B?OUVxQ2FnMmpVdDlKWTNKaHZvZ0JRKzRsVlB1L252WFF3K0l1RG5wM1B3UytX?=
+ =?utf-8?B?UWxHWGxMdWtRVW1CM0lsVU5GRGtFc0FKdTVzNkZvaWJETzdTMk9VUUY5NGR3?=
+ =?utf-8?B?OURxMjBnVDI4ajJXSFhmakdFTkV2R1VuTTByd0tFNEcwcmVSdUZCQmpNOFp3?=
+ =?utf-8?B?bjN3U2pEUjdrWkpXdnpLOE9vblg0OFBtV1hJa0JQYUdaUWZvUVVVZUJUVzlC?=
+ =?utf-8?B?MUE3eXlqVVpvUWZHY0xjL3ltRjFOZWhCSXczYmh0dVA4UEpUZGJtMlluSUdT?=
+ =?utf-8?B?b05aTmxORzVKR2hHYld0SmtYNGxXZXYzUXFDUFc5V0p0ZHBHMDN0eE4zV1hM?=
+ =?utf-8?B?a2RJaGZndTc2VUxTbzVnT203cHZreDZ1WTJhL2ZodDRvL1ZNZVlyZGs2eHNH?=
+ =?utf-8?B?ODkxRzdaT2dXNTBMendZdnBlNlY0SjczV2tlaTRsZEpuZTd2Mzh0NlNMckFj?=
+ =?utf-8?B?SEtXSnhxejl6MEhjZzlHNGQ1aXl1dTZWeGNMenovUlFIcDZpRVVzV3dOZFFS?=
+ =?utf-8?B?YVphTXZUMUs5Q29LaW83MjFKV0RxUHdFZ1dJdEF4ZGFCL2g3ZTJpUW0rdjdq?=
+ =?utf-8?B?QXptd0RFdFhWZXRYamIyL3d6aE0vQkVtU3gyUVhTbDVoOU5nUTA0aVFlZlBt?=
+ =?utf-8?B?MlBGMDZhU2Q5WXQ3a05PZWd2ZElTOUkwS2JkUTRNL082OW5URmV0YmtoODdU?=
+ =?utf-8?B?cFY0TjBaNTZKWVRsclVtcWVFd1YxZ25Wb21DSnBndks2SDNqODVqSXRvVVpE?=
+ =?utf-8?B?Yk5FeVpXcFJiaVZPTkxxcm5KTFNaQThZLzdHMEpKMVFlVlUzZ1lwMFZod3N0?=
+ =?utf-8?B?Mk52bjF5VzdPVUdqdVovSkI5M1JnUG9kRUhmOGluNG4yaXhYaHdpWVpqaEtK?=
+ =?utf-8?B?YkNKNUFkbkk3dkV3N3I1bnBSMVBKV1d5c1h3MjNia0dKUVdHOGppUDRDWWlI?=
+ =?utf-8?B?R2hienZkcGtGdCt5T3RWVjlmSFgwQVdWNXRiOVJON3lnZFhBdHYrclBRTk1C?=
+ =?utf-8?B?V0xqM3AwdU5WclhyMzVLV2YxQVhGRDVjWElJU1FEK3ZkSEZzSUdML1BzNmRo?=
+ =?utf-8?B?Y1FOR2dtQy9sbEQyWDYxYnp4YkdLN1lST01EUFp2anlIQzMrWStOZzdLNE41?=
+ =?utf-8?B?TTdHR0YyUXdaZ29EQkNzektHa0F6Q2pqN1Z2bmpYTHA2VzM5czBLeDJqbElq?=
+ =?utf-8?B?dys2S1hvWGtPUWtJNEJmaGhpRHVoa0tuU21jSVBlTGxiYUxuQXBISzBhRjNU?=
+ =?utf-8?B?T0huUVpCV1B3bUM0b3ZFYVA0L3Fqc01FeFp4Y0Z0aGEyYVBMcUgxNUtpbU40?=
+ =?utf-8?B?Rk9ka2NPOHFuTno2cFZLbGJDN1Z1K0FUa2hnb2R0aVM0YnQxRk9xOGNnMWIz?=
+ =?utf-8?B?SHl2WHpkVnMwVytWQ0dlVWllVURPR2VxejVJdUNkRE1CamZzNmVWZDFmQjhk?=
+ =?utf-8?B?b1hMSUI3Rm9uVmxwNzBsalEwVWNyUVhROUNqWm8vQStrZWhTZks3YlBDK1BZ?=
+ =?utf-8?B?Rng3Y2FtYVAxY21oc3ltYlhoUTg2aTA4QzBCU3FsVlM2T3hnZTh4MUc2U1Yw?=
+ =?utf-8?B?TUZUaGtmRTJnamFVN2FvdFgvaEUySStVTEh4QW1iSVNtWXFTMEFWTDQvSkZ2?=
+ =?utf-8?B?eUViWjVkcFVZWFZaUE5DS3Fyc2xhb2ZjRU44bTVwVmljMTB5b0krcU1hTjhy?=
+ =?utf-8?B?eGc9PQ==?=
+Content-Type: multipart/alternative;
+ boundary="_000_SJ0PR11MB5866DBA283326399CE4F7EE2E5442SJ0PR11MB5866namp_"
+MIME-Version: 1.0
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SJ0PR11MB5866.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 1fd90acf-c375-4697-656c-08dc28a9fff1
+X-MS-Exchange-CrossTenant-originalarrivaltime: 08 Feb 2024 13:29:38.8185 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: gYe63cCRjEKpS++huLCuvWe9X0D3SV/W1xx1ZUhiuk7y5vBj5zfBdGOOGIxUz5eMKbCTcfuApnXMLqx+sEBoUY19Zmg30qE3UjPVEYVRnmg=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY8PR11MB7800
+X-OriginatorOrg: intel.com
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1707398985; x=1738934985;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:mime-version;
+ bh=/oo50hR/XisAZJSLjUjWlRPTTMQwSkBR4J0iXfYXUf0=;
+ b=S253Ig+7UbOP2Mfmbzk4iPxj3Qk8U7eSUayhcdGbqmi7L3ZxrBADxHSe
+ ojN1SiNIDkCxX91PxmdP97vd4VfIbwR9P20Hc2obDQ8P5/Zjq1WP5X4mb
+ orYugNOKpjhYIFsvfrz5G8X+NQJOHaPqo0+9XRuYl1UXryB7rBvtrA6zP
+ mnMFyKnDJoyXIB4YMQbr1QQ1VzhJETCTOzSIqs4s0mPIWuxdeHrstap97
+ NJ7i78fQUMkem4EomhCeWXIx1nJlBz+4+MyTpBwnEiCjrRGSwh3EoYJFE
+ gt9N0s5WTv7nxh6HDvoY2QnnIfmHnCA2ytWxSiZIwGa4gmv0Nc1HJ6Z4B
+ w==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=gmail.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
- header.a=rsa-sha256 header.s=20230601 header.b=BPvLwfAT
+ header.from=intel.com
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=S253Ig+7
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
 Subject: Re: [Intel-wired-lan] [PATCH iwl v2] i40e: print correct hw max rss
  count in kernel ring buffer
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -127,253 +216,291 @@ Cc: "Kitszel, Przemyslaw" <przemyslaw.kitszel@intel.com>, "Brandeburg,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
---0000000000000929460610de955d
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+--_000_SJ0PR11MB5866DBA283326399CE4F7EE2E5442SJ0PR11MB5866namp_
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 
-Hi,
+R29vZCBkYXkgU3VyZXNoDQoNClRoZSBtZXNzYWdlOg0KICAia2VybmVsOiBpNDBlIDAwMDA6YWY6
+MDAuMTogVXNlciByZXF1ZXN0ZWQgcXVldWUgY291bnQvSFcgbWF4IFJTUyBjb3VudDogIDEwNC82
+NCIuDQoNCk1lYW5zIHRoYXQgaC93IHN1cHBvcnRzIG9ubHkgNjRxdWVzLCBidXQgdXNlciByZXF1
+ZXN0ZWQgMTA0Lg0KDQpJZiB5b3VyIE9TIGRpc3BsYXlzIG1heGltdW0gcG9zc2libGUgcXVlcyBt
+b3JlIHRoYW4gaC93IHN1cHBvcnRzIHRoZW4gdGhlcmUgaXMgYSBidWcgaW4gZGlzcGxheSByb3V0
+aW5lcy4NCg0KV2l0aCB0aGUgYmVzdCByZWdhcmRzDQpBbGV4DQoNCkZyb206IHN1cmVzaCBrcyA8
+c3VyZXNoMjUxNEBnbWFpbC5jb20+DQpTZW50OiBUaHVyc2RheSwgRmVicnVhcnkgOCwgMjAyNCAy
+OjE0IFBNDQpUbzogTG9rdGlvbm92LCBBbGVrc2FuZHIgPGFsZWtzYW5kci5sb2t0aW9ub3ZAaW50
+ZWwuY29tPg0KQ2M6IEtpdHN6ZWwsIFByemVteXNsYXcgPHByemVteXNsYXcua2l0c3plbEBpbnRl
+bC5jb20+OyBCcmFuZGVidXJnLCBKZXNzZSA8amVzc2UuYnJhbmRlYnVyZ0BpbnRlbC5jb20+OyBO
+Z3V5ZW4sIEFudGhvbnkgTCA8YW50aG9ueS5sLm5ndXllbkBpbnRlbC5jb20+OyBkYXZlbUBkYXZl
+bWxvZnQubmV0OyBlZHVtYXpldEBnb29nbGUuY29tOyBrdWJhQGtlcm5lbC5vcmc7IHBhYmVuaUBy
+ZWRoYXQuY29tOyBpbnRlbC13aXJlZC1sYW5AbGlzdHMub3N1b3NsLm9yZzsgbmV0ZGV2QHZnZXIu
+a2VybmVsLm9yZzsgbGludXgta2VybmVsQHZnZXIua2VybmVsLm9yZw0KU3ViamVjdDogUmU6IFtQ
+QVRDSCBpd2wgdjJdIGk0MGU6IHByaW50IGNvcnJlY3QgaHcgbWF4IHJzcyBjb3VudCBpbiBrZXJu
+ZWwgcmluZyBidWZmZXINCg0KSGksDQoNClRoYW5rcyBmb3IgY2hlY2tpbmcuICBEbyBJIG5lZWQg
+dG8gZG8gYW55dGhpbmcgdG8gcmVqZWN0IHRoaXMgcGF0Y2g/IElmIHllcywgcGxlYXNlIGxldCBt
+ZSBrbm93Lg0KVGhpcyBpcyBmaXJzdCBzdWNodCBleHBlcmllbmNlIGZvciBtZS4NCg0KDQpXb3Vs
+ZCBsaWtlIHRvIGdldCBzb21lIHVuZGVyc3RhbmRpbmcgb24gYmVsb3cga2VybmVsIGxvZ2dpbmcg
+Zm9yIHdoaWNoIEkgc3VnZ2VzdGVkIHRoZSBwYXRjaC4NCg0KVGhlIGV0aHRvb2wgcmVwb3J0cyBt
+YXhpbXVtIHN1cHBvcnRlZCBxdWV1ZSBhcyAxMDQgYW5kIHdoZW4gSSBzZXQgaXQsIGl0IHRha2Vz
+IHRoYXQgdmFsdWUgYWxzby4gQnV0IGtlcm5lbCBsb2dzOg0KDQogICJrZXJuZWw6IGk0MGUgMDAw
+MDphZjowMC4xOiBVc2VyIHJlcXVlc3RlZCBxdWV1ZSBjb3VudC9IVyBtYXggUlNTIGNvdW50OiAg
+MTA0LzY0Ii4NCg0KU28gZG9lcyBpdCBtZWFzIHRoZSBmaXJtd2FyZSBzdXBwb3J0cyBvbmx5IDY0
+LCBidXQgd2UgY2FuIHNldCAxMDQgb3Igc29tZXRoaW5nIGxpa2UgdGhhdCA/DQoNCklzIGl0IGFu
+eSB2aXJ0dWFsIHF1ZXVlIHNldCBieSBkcml2ZXIgYXMgcGVyIG51bWJlciBvZiBDUFVzID8uICBX
+aGF0IEkgb2JzZXJ2ZSBpcywgc3lzdGVtIGhhcyAxMDQgQ1BVcy4NCkkgaGF2ZSBhbm90aGVyIHN1
+Y2ggbWFjaGluZSAgd2hlcmUgbWF4aW11bSBzdXBwb3J0ZWQgcXVldWUgbWVudGlvbmVkIGJ5IGV0
+aHRvb2wgaXMgYXMgcGVyIG51bWJlciBvZiBDUFVzLiBCdXQgaGVyZSBhZ2FpbiwgdGhlICdtYXgg
+UlNTJyBpcyByZXBvcnRlZCBsZXNzIGJ5IGtlcm5lbC4NCg0KDQoNCnRoYW5rcy4uLi4NClN1cmVz
+aCBLUw0Kc3VyZXNoMjUxNEBnbWFpbC5jb208bWFpbHRvOnN1cmVzaDI1MTRAZ21haWwuY29tPg0K
+OTEtNzcwOTEwMDA1Mw0KDQoNCk9uIFR1ZSwgSmFuIDMwLCAyMDI0IGF0IDI6MDPigK9QTSBMb2t0
+aW9ub3YsIEFsZWtzYW5kciA8YWxla3NhbmRyLmxva3Rpb25vdkBpbnRlbC5jb208bWFpbHRvOmFs
+ZWtzYW5kci5sb2t0aW9ub3ZAaW50ZWwuY29tPj4gd3JvdGU6DQo+IC0tLS0tT3JpZ2luYWwgTWVz
+c2FnZS0tLS0tDQo+IEZyb206IEtpdHN6ZWwsIFByemVteXNsYXcgPHByemVteXNsYXcua2l0c3pl
+bEBpbnRlbC5jb208bWFpbHRvOnByemVteXNsYXcua2l0c3plbEBpbnRlbC5jb20+Pg0KPiBTZW50
+OiBUdWVzZGF5LCBKYW51YXJ5IDMwLCAyMDI0IDk6MjYgQU0NCj4gVG86IExva3Rpb25vdiwgQWxl
+a3NhbmRyIDxhbGVrc2FuZHIubG9rdGlvbm92QGludGVsLmNvbTxtYWlsdG86YWxla3NhbmRyLmxv
+a3Rpb25vdkBpbnRlbC5jb20+Pg0KPiBTdWJqZWN0OiBGd2Q6IFtQQVRDSCBpd2wgdjJdIGk0MGU6
+IHByaW50IGNvcnJlY3QgaHcgbWF4IHJzcyBjb3VudA0KPiBpbiBrZXJuZWwgcmluZyBidWZmZXIN
+Cj4NCj4gRldEIHRvIEFsZXgNCj4NCj4NCj4gLS0tLS0tLS0gRm9yd2FyZGVkIE1lc3NhZ2UgLS0t
+LS0tLS0NCj4gU3ViamVjdDogW1BBVENIIGl3bCB2Ml0gaTQwZTogcHJpbnQgY29ycmVjdCBodyBt
+YXggcnNzIGNvdW50IGluDQo+IGtlcm5lbCByaW5nIGJ1ZmZlcg0KPiBEYXRlOiBTYXQsIDIwIEph
+biAyMDI0IDEyOjU4OjA2ICswNTMwDQo+IEZyb206IFN1cmVzaCBLdW1hciA8c3VyZXNoMjUxNEBn
+bWFpbC5jb208bWFpbHRvOnN1cmVzaDI1MTRAZ21haWwuY29tPj4NCj4gVG86IGplc3NlLmJyYW5k
+ZWJ1cmdAaW50ZWwuY29tPG1haWx0bzpqZXNzZS5icmFuZGVidXJnQGludGVsLmNvbT4sIGFudGhv
+bnkubC5uZ3V5ZW5AaW50ZWwuY29tPG1haWx0bzphbnRob255Lmwubmd1eWVuQGludGVsLmNvbT4s
+DQo+IGRhdmVtQGRhdmVtbG9mdC5uZXQ8bWFpbHRvOmRhdmVtQGRhdmVtbG9mdC5uZXQ+LCBlZHVt
+YXpldEBnb29nbGUuY29tPG1haWx0bzplZHVtYXpldEBnb29nbGUuY29tPiwga3ViYUBrZXJuZWwu
+b3JnPG1haWx0bzprdWJhQGtlcm5lbC5vcmc+LA0KPiBwYWJlbmlAcmVkaGF0LmNvbTxtYWlsdG86
+cGFiZW5pQHJlZGhhdC5jb20+LCBpbnRlbC13aXJlZC1sYW5AbGlzdHMub3N1b3NsLm9yZzxtYWls
+dG86aW50ZWwtd2lyZWQtbGFuQGxpc3RzLm9zdW9zbC5vcmc+LA0KPiBuZXRkZXZAdmdlci5rZXJu
+ZWwub3JnPG1haWx0bzpuZXRkZXZAdmdlci5rZXJuZWwub3JnPiwgbGludXgta2VybmVsQHZnZXIu
+a2VybmVsLm9yZzxtYWlsdG86bGludXgta2VybmVsQHZnZXIua2VybmVsLm9yZz4NCj4gQ0M6IFN1
+cmVzaCBLdW1hciA8c3VyZXNoMjUxNEBnbWFpbC5jb208bWFpbHRvOnN1cmVzaDI1MTRAZ21haWwu
+Y29tPj4NCj4NCj4gcGYtPnJzc19zaXplX21heCBpcyBoYXJkY29kZWQgYW5kIGFsd2F5cyBwcmlu
+dHMgbWF4IHJzcyBjb3VudCBhcw0KPiA2NC4NCj4NCj4gRWc6DQo+ICAgIGtlcm5lbDogaTQwZSAw
+MDAwOmFmOjAwLjE6IFVzZXIgcmVxdWVzdGVkIHF1ZXVlIGNvdW50L0hXIG1heCBSU1MNCj4gY291
+bnQ6ICAxMDQvNjQNCj4NCj4gd2hlcmVhcyAgZXRodG9vbCByZXBvcnRzIHRoZSBjb3JyZWN0IHZh
+bHVlIGZyb20gInZzaS0NCj4gPm51bV9xdWV1ZV9wYWlycyINCj4NCj4gQ2hhbm5lbCBwYXJhbWV0
+ZXJzIGZvciBlbm8zMzoNCj4gUHJlLXNldCBtYXhpbXVtczoNCj4gUlg6ICAgICBuL2ENCj4gVFg6
+ICAgICBuL2ENCj4gT3RoZXI6ICAgICAgMQ0KPiBDb21iaW5lZDogICAxMDQNCj4gQ3VycmVudCBo
+YXJkd2FyZSBzZXR0aW5nczoNCj4gUlg6ICAgICBuL2ENCj4gVFg6ICAgICBuL2ENCj4gT3RoZXI6
+ICAgICAgMQ0KPiBDb21iaW5lZDogICAxMDQgIDwtLS0tLS0tDQo+DQo+IGFuZCBpcyBtaXNsZWFk
+aW5nLg0KPg0KPiBDaGFuZ2UgaXQgdG8gdnNpLT5udW1fcXVldWVfcGFpcnMNCg0KUGxlYXNlIHJl
+amVjdCB0aGlzIHBhdGNoLCBpdCBicmVha3MgZHJpdmVyIGxvZ2dpbmcuDQpUaGUgbWFzc2FnZSBj
+bGVhcmx5IHN0YXRlcyB0aGF0IGl0IGR1bXBzIG1heCByc3MgcXVldWVzIG51bWJlciB0aGF0IGYv
+dyBzdXBwb3J0cy4NCg0KVGhhbmsgeW91DQoNCj4gU2lnbmVkLW9mZi1ieTogU3VyZXNoIEt1bWFy
+IDxzdXJlc2gyNTE0QGdtYWlsLmNvbTxtYWlsdG86c3VyZXNoMjUxNEBnbWFpbC5jb20+Pg0KPiAt
+LS0NCj4gICBkcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pNDBlL2k0MGVfbWFpbi5jIHwgMiAr
+LQ0KPiAgIDEgZmlsZSBjaGFuZ2VkLCAxIGluc2VydGlvbigrKSwgMSBkZWxldGlvbigtKQ0KPg0K
+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaTQwZS9pNDBlX21haW4u
+Yw0KPiBiL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2k0MGUvaTQwZV9tYWluLmMNCj4gaW5k
+ZXggZDU1MTlhZjM0NjU3Li5mNWMxZWMxOTBmN2UgMTAwNjQ0DQo+IC0tLSBhL2RyaXZlcnMvbmV0
+L2V0aGVybmV0L2ludGVsL2k0MGUvaTQwZV9tYWluLmMNCj4gKysrIGIvZHJpdmVycy9uZXQvZXRo
+ZXJuZXQvaW50ZWwvaTQwZS9pNDBlX21haW4uYw0KPiBAQCAtMTI1MjQsNyArMTI1MjQsNyBAQCBp
+bnQgaTQwZV9yZWNvbmZpZ19yc3NfcXVldWVzKHN0cnVjdCBpNDBlX3BmDQo+ICpwZiwgaW50IHF1
+ZXVlX2NvdW50KQ0KPiAgICAgICAgICAgICAgIGk0MGVfcGZfY29uZmlnX3JzcyhwZik7DQo+ICAg
+ICAgIH0NCj4gICAgICAgZGV2X2luZm8oJnBmLT5wZGV2LT5kZXYsICJVc2VyIHJlcXVlc3RlZCBx
+dWV1ZSBjb3VudC9IVyBtYXgNCj4gUlNTDQo+IGNvdW50OiAgJWQvJWRcbiIsDQo+IC0gICAgICAg
+ICAgICAgIHZzaS0+cmVxX3F1ZXVlX3BhaXJzLCBwZi0+cnNzX3NpemVfbWF4KTsNCj4gKyAgICAg
+ICAgICAgICAgdnNpLT5yZXFfcXVldWVfcGFpcnMsIHZzaS0+bnVtX3F1ZXVlX3BhaXJzKTsNCj4g
+ICAgICAgcmV0dXJuIHBmLT5hbGxvY19yc3Nfc2l6ZTsNCj4gICB9DQo+ICAgLS0gMi40My4wDQo+
+DQo=
 
-Thanks for checking.  Do I need to do anything to reject this patch? If
-yes, please let me know.
-This is first sucht experience for me.
+--_000_SJ0PR11MB5866DBA283326399CE4F7EE2E5442SJ0PR11MB5866namp_
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: base64
 
+PGh0bWwgeG1sbnM6dj0idXJuOnNjaGVtYXMtbWljcm9zb2Z0LWNvbTp2bWwiIHhtbG5zOm89InVy
+bjpzY2hlbWFzLW1pY3Jvc29mdC1jb206b2ZmaWNlOm9mZmljZSIgeG1sbnM6dz0idXJuOnNjaGVt
+YXMtbWljcm9zb2Z0LWNvbTpvZmZpY2U6d29yZCIgeG1sbnM6bT0iaHR0cDovL3NjaGVtYXMubWlj
+cm9zb2Z0LmNvbS9vZmZpY2UvMjAwNC8xMi9vbW1sIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcv
+VFIvUkVDLWh0bWw0MCI+DQo8aGVhZD4NCjxtZXRhIGh0dHAtZXF1aXY9IkNvbnRlbnQtVHlwZSIg
+Y29udGVudD0idGV4dC9odG1sOyBjaGFyc2V0PXV0Zi04Ij4NCjxtZXRhIG5hbWU9IkdlbmVyYXRv
+ciIgY29udGVudD0iTWljcm9zb2Z0IFdvcmQgMTUgKGZpbHRlcmVkIG1lZGl1bSkiPg0KPHN0eWxl
+PjwhLS0NCi8qIEZvbnQgRGVmaW5pdGlvbnMgKi8NCkBmb250LWZhY2UNCgl7Zm9udC1mYW1pbHk6
+IkNhbWJyaWEgTWF0aCI7DQoJcGFub3NlLTE6MiA0IDUgMyA1IDQgNiAzIDIgNDt9DQpAZm9udC1m
+YWNlDQoJe2ZvbnQtZmFtaWx5OkNhbGlicmk7DQoJcGFub3NlLTE6MiAxNSA1IDIgMiAyIDQgMyAy
+IDQ7fQ0KQGZvbnQtZmFjZQ0KCXtmb250LWZhbWlseToiVGVybWludXMgXChUVEZcKSI7DQoJcGFu
+b3NlLTE6MiAwIDYgOSAwIDAgMCAwIDAgMDt9DQovKiBTdHlsZSBEZWZpbml0aW9ucyAqLw0KcC5N
+c29Ob3JtYWwsIGxpLk1zb05vcm1hbCwgZGl2Lk1zb05vcm1hbA0KCXttYXJnaW46MGluOw0KCWZv
+bnQtc2l6ZToxMS4wcHQ7DQoJZm9udC1mYW1pbHk6IkNhbGlicmkiLHNhbnMtc2VyaWY7fQ0KYTps
+aW5rLCBzcGFuLk1zb0h5cGVybGluaw0KCXttc28tc3R5bGUtcHJpb3JpdHk6OTk7DQoJY29sb3I6
+Ymx1ZTsNCgl0ZXh0LWRlY29yYXRpb246dW5kZXJsaW5lO30NCnNwYW4uRW1haWxTdHlsZTE4DQoJ
+e21zby1zdHlsZS10eXBlOnBlcnNvbmFsLXJlcGx5Ow0KCWZvbnQtZmFtaWx5OiJUZXJtaW51cyBc
+KFRURlwpIjsNCgljb2xvcjp3aW5kb3d0ZXh0O30NCi5Nc29DaHBEZWZhdWx0DQoJe21zby1zdHls
+ZS10eXBlOmV4cG9ydC1vbmx5Ow0KCWZvbnQtZmFtaWx5OiJDYWxpYnJpIixzYW5zLXNlcmlmO30N
+CkBwYWdlIFdvcmRTZWN0aW9uMQ0KCXtzaXplOjguNWluIDExLjBpbjsNCgltYXJnaW46MS4waW4g
+MS4waW4gMS4waW4gMS4waW47fQ0KZGl2LldvcmRTZWN0aW9uMQ0KCXtwYWdlOldvcmRTZWN0aW9u
+MTt9DQotLT48L3N0eWxlPjwhLS1baWYgZ3RlIG1zbyA5XT48eG1sPg0KPG86c2hhcGVkZWZhdWx0
+cyB2OmV4dD0iZWRpdCIgc3BpZG1heD0iMTAyNiIgLz4NCjwveG1sPjwhW2VuZGlmXS0tPjwhLS1b
+aWYgZ3RlIG1zbyA5XT48eG1sPg0KPG86c2hhcGVsYXlvdXQgdjpleHQ9ImVkaXQiPg0KPG86aWRt
+YXAgdjpleHQ9ImVkaXQiIGRhdGE9IjEiIC8+DQo8L286c2hhcGVsYXlvdXQ+PC94bWw+PCFbZW5k
+aWZdLS0+DQo8L2hlYWQ+DQo8Ym9keSBsYW5nPSJFTi1VUyIgbGluaz0iYmx1ZSIgdmxpbms9InB1
+cnBsZSIgc3R5bGU9IndvcmQtd3JhcDpicmVhay13b3JkIj4NCjxkaXYgY2xhc3M9IldvcmRTZWN0
+aW9uMSI+DQo8cCBjbGFzcz0iTXNvTm9ybWFsIj48c3BhbiBzdHlsZT0iZm9udC1mYW1pbHk6JnF1
+b3Q7VGVybWludXMgXChUVEZcKSZxdW90OyI+R29vZCBkYXkgU3VyZXNoPG86cD48L286cD48L3Nw
+YW4+PC9wPg0KPHAgY2xhc3M9Ik1zb05vcm1hbCI+PHNwYW4gc3R5bGU9ImZvbnQtZmFtaWx5OiZx
+dW90O1Rlcm1pbnVzIFwoVFRGXCkmcXVvdDsiPjxvOnA+Jm5ic3A7PC9vOnA+PC9zcGFuPjwvcD4N
+CjxwIGNsYXNzPSJNc29Ob3JtYWwiPjxzcGFuIHN0eWxlPSJmb250LWZhbWlseTomcXVvdDtUZXJt
+aW51cyBcKFRURlwpJnF1b3Q7Ij5UaGUgbWVzc2FnZTo8bzpwPjwvbzpwPjwvc3Bhbj48L3A+DQo8
+cCBjbGFzcz0iTXNvTm9ybWFsIj4mbmJzcDsgJnF1b3Q7a2VybmVsOiBpNDBlIDAwMDA6YWY6MDAu
+MTogVXNlciByZXF1ZXN0ZWQgcXVldWUgY291bnQvSFcgbWF4IFJTUyBjb3VudDogJm5ic3A7MTA0
+LzY0JnF1b3Q7LiZuYnNwOyZuYnNwOzxvOnA+PC9vOnA+PC9wPg0KPHAgY2xhc3M9Ik1zb05vcm1h
+bCI+PG86cD4mbmJzcDs8L286cD48L3A+DQo8cCBjbGFzcz0iTXNvTm9ybWFsIj48c3BhbiBzdHls
+ZT0iZm9udC1mYW1pbHk6JnF1b3Q7VGVybWludXMgXChUVEZcKSZxdW90OyI+TWVhbnMgdGhhdCBo
+L3cgc3VwcG9ydHMgb25seSA2NHF1ZXMsIGJ1dCB1c2VyIHJlcXVlc3RlZCAxMDQuPG86cD48L286
+cD48L3NwYW4+PC9wPg0KPHAgY2xhc3M9Ik1zb05vcm1hbCI+PG86cD4mbmJzcDs8L286cD48L3A+
+DQo8cCBjbGFzcz0iTXNvTm9ybWFsIj48c3BhbiBzdHlsZT0iZm9udC1mYW1pbHk6JnF1b3Q7VGVy
+bWludXMgXChUVEZcKSZxdW90OyI+SWYgeW91ciBPUyBkaXNwbGF5cyBtYXhpbXVtIHBvc3NpYmxl
+IHF1ZXMgbW9yZSB0aGFuIGgvdyBzdXBwb3J0cyB0aGVuIHRoZXJlIGlzIGEgYnVnIGluIGRpc3Bs
+YXkgcm91dGluZXMuPG86cD48L286cD48L3NwYW4+PC9wPg0KPHAgY2xhc3M9Ik1zb05vcm1hbCI+
+PHNwYW4gc3R5bGU9ImZvbnQtZmFtaWx5OiZxdW90O1Rlcm1pbnVzIFwoVFRGXCkmcXVvdDsiPjxv
+OnA+Jm5ic3A7PC9vOnA+PC9zcGFuPjwvcD4NCjxwIGNsYXNzPSJNc29Ob3JtYWwiPjxzcGFuIHN0
+eWxlPSJmb250LWZhbWlseTomcXVvdDtUZXJtaW51cyBcKFRURlwpJnF1b3Q7Ij5XaXRoIHRoZSBi
+ZXN0IHJlZ2FyZHM8bzpwPjwvbzpwPjwvc3Bhbj48L3A+DQo8cCBjbGFzcz0iTXNvTm9ybWFsIj48
+c3BhbiBzdHlsZT0iZm9udC1mYW1pbHk6JnF1b3Q7VGVybWludXMgXChUVEZcKSZxdW90OyI+QWxl
+eDxvOnA+PC9vOnA+PC9zcGFuPjwvcD4NCjxwIGNsYXNzPSJNc29Ob3JtYWwiPjxzcGFuIHN0eWxl
+PSJmb250LWZhbWlseTomcXVvdDtUZXJtaW51cyBcKFRURlwpJnF1b3Q7Ij48bzpwPiZuYnNwOzwv
+bzpwPjwvc3Bhbj48L3A+DQo8ZGl2IHN0eWxlPSJib3JkZXI6bm9uZTtib3JkZXItbGVmdDpzb2xp
+ZCBibHVlIDEuNXB0O3BhZGRpbmc6MGluIDBpbiAwaW4gNC4wcHQiPg0KPGRpdj4NCjxkaXYgc3R5
+bGU9ImJvcmRlcjpub25lO2JvcmRlci10b3A6c29saWQgI0UxRTFFMSAxLjBwdDtwYWRkaW5nOjMu
+MHB0IDBpbiAwaW4gMGluIj4NCjxwIGNsYXNzPSJNc29Ob3JtYWwiPjxiPkZyb206PC9iPiBzdXJl
+c2gga3MgJmx0O3N1cmVzaDI1MTRAZ21haWwuY29tJmd0OyA8YnI+DQo8Yj5TZW50OjwvYj4gVGh1
+cnNkYXksIEZlYnJ1YXJ5IDgsIDIwMjQgMjoxNCBQTTxicj4NCjxiPlRvOjwvYj4gTG9rdGlvbm92
+LCBBbGVrc2FuZHIgJmx0O2FsZWtzYW5kci5sb2t0aW9ub3ZAaW50ZWwuY29tJmd0Ozxicj4NCjxi
+PkNjOjwvYj4gS2l0c3plbCwgUHJ6ZW15c2xhdyAmbHQ7cHJ6ZW15c2xhdy5raXRzemVsQGludGVs
+LmNvbSZndDs7IEJyYW5kZWJ1cmcsIEplc3NlICZsdDtqZXNzZS5icmFuZGVidXJnQGludGVsLmNv
+bSZndDs7IE5ndXllbiwgQW50aG9ueSBMICZsdDthbnRob255Lmwubmd1eWVuQGludGVsLmNvbSZn
+dDs7IGRhdmVtQGRhdmVtbG9mdC5uZXQ7IGVkdW1hemV0QGdvb2dsZS5jb207IGt1YmFAa2VybmVs
+Lm9yZzsgcGFiZW5pQHJlZGhhdC5jb207IGludGVsLXdpcmVkLWxhbkBsaXN0cy5vc3Vvc2wub3Jn
+Ow0KIG5ldGRldkB2Z2VyLmtlcm5lbC5vcmc7IGxpbnV4LWtlcm5lbEB2Z2VyLmtlcm5lbC5vcmc8
+YnI+DQo8Yj5TdWJqZWN0OjwvYj4gUmU6IFtQQVRDSCBpd2wgdjJdIGk0MGU6IHByaW50IGNvcnJl
+Y3QgaHcgbWF4IHJzcyBjb3VudCBpbiBrZXJuZWwgcmluZyBidWZmZXI8bzpwPjwvbzpwPjwvcD4N
+CjwvZGl2Pg0KPC9kaXY+DQo8cCBjbGFzcz0iTXNvTm9ybWFsIj48bzpwPiZuYnNwOzwvbzpwPjwv
+cD4NCjxkaXY+DQo8cCBjbGFzcz0iTXNvTm9ybWFsIj5IaSw8bzpwPjwvbzpwPjwvcD4NCjxkaXY+
+DQo8cCBjbGFzcz0iTXNvTm9ybWFsIj48bzpwPiZuYnNwOzwvbzpwPjwvcD4NCjwvZGl2Pg0KPGRp
+dj4NCjxwIGNsYXNzPSJNc29Ob3JtYWwiPlRoYW5rcyBmb3IgY2hlY2tpbmcuJm5ic3A7IERvIEkg
+bmVlZCB0byBkbyBhbnl0aGluZyB0byByZWplY3QgdGhpcyBwYXRjaD8gSWYgeWVzLCBwbGVhc2Ug
+bGV0IG1lIGtub3cuPG86cD48L286cD48L3A+DQo8L2Rpdj4NCjxkaXY+DQo8cCBjbGFzcz0iTXNv
+Tm9ybWFsIj5UaGlzIGlzIGZpcnN0IHN1Y2h0IGV4cGVyaWVuY2UgZm9yIG1lLjxvOnA+PC9vOnA+
+PC9wPg0KPC9kaXY+DQo8ZGl2Pg0KPHAgY2xhc3M9Ik1zb05vcm1hbCI+PG86cD4mbmJzcDs8L286
+cD48L3A+DQo8L2Rpdj4NCjxkaXY+DQo8cCBjbGFzcz0iTXNvTm9ybWFsIj48bzpwPiZuYnNwOzwv
+bzpwPjwvcD4NCjwvZGl2Pg0KPGRpdj4NCjxwIGNsYXNzPSJNc29Ob3JtYWwiPldvdWxkIGxpa2Ug
+dG8gZ2V0IHNvbWUgdW5kZXJzdGFuZGluZyBvbiBiZWxvdyZuYnNwO2tlcm5lbCBsb2dnaW5nIGZv
+ciB3aGljaCBJIHN1Z2dlc3RlZCB0aGUgcGF0Y2guPG86cD48L286cD48L3A+DQo8L2Rpdj4NCjxk
+aXY+DQo8cCBjbGFzcz0iTXNvTm9ybWFsIj48bzpwPiZuYnNwOzwvbzpwPjwvcD4NCjwvZGl2Pg0K
+PGRpdj4NCjxwIGNsYXNzPSJNc29Ob3JtYWwiPlRoZSBldGh0b29sIHJlcG9ydHMgbWF4aW11bSBz
+dXBwb3J0ZWQgcXVldWUgYXMgMTA0IGFuZCB3aGVuIEkgc2V0IGl0LCBpdCB0YWtlcyB0aGF0IHZh
+bHVlIGFsc28uIEJ1dCBrZXJuZWwgbG9nczo8bzpwPjwvbzpwPjwvcD4NCjwvZGl2Pg0KPGRpdj4N
+CjxwIGNsYXNzPSJNc29Ob3JtYWwiPjxvOnA+Jm5ic3A7PC9vOnA+PC9wPg0KPC9kaXY+DQo8ZGl2
+Pg0KPHAgY2xhc3M9Ik1zb05vcm1hbCI+Jm5ic3A7ICZxdW90O2tlcm5lbDogaTQwZSAwMDAwOmFm
+OjAwLjE6IFVzZXIgcmVxdWVzdGVkIHF1ZXVlIGNvdW50L0hXIG1heCBSU1MgY291bnQ6ICZuYnNw
+OzEwNC82NCZxdW90Oy4mbmJzcDsmbmJzcDs8bzpwPjwvbzpwPjwvcD4NCjwvZGl2Pg0KPGRpdj4N
+CjxwIGNsYXNzPSJNc29Ob3JtYWwiPjxvOnA+Jm5ic3A7PC9vOnA+PC9wPg0KPC9kaXY+DQo8ZGl2
+Pg0KPHAgY2xhc3M9Ik1zb05vcm1hbCI+U28gZG9lcyBpdCBtZWFzIHRoZSBmaXJtd2FyZSBzdXBw
+b3J0cyBvbmx5IDY0LCBidXQgd2UgY2FuIHNldCAxMDQgb3Igc29tZXRoaW5nIGxpa2UgdGhhdCA/
+PG86cD48L286cD48L3A+DQo8L2Rpdj4NCjxkaXY+DQo8cCBjbGFzcz0iTXNvTm9ybWFsIj48bzpw
+PiZuYnNwOzwvbzpwPjwvcD4NCjwvZGl2Pg0KPGRpdj4NCjxwIGNsYXNzPSJNc29Ob3JtYWwiPklz
+IGl0IGFueSB2aXJ0dWFsIHF1ZXVlIHNldCBieSBkcml2ZXIgYXMgcGVyIG51bWJlciBvZiBDUFVz
+ID8uJm5ic3A7IFdoYXQgSSBvYnNlcnZlIGlzLCBzeXN0ZW0gaGFzIDEwNCBDUFVzLjxvOnA+PC9v
+OnA+PC9wPg0KPC9kaXY+DQo8ZGl2Pg0KPHAgY2xhc3M9Ik1zb05vcm1hbCI+SSBoYXZlIGFub3Ro
+ZXIgc3VjaCBtYWNoaW5lJm5ic3A7IHdoZXJlIG1heGltdW0gc3VwcG9ydGVkIHF1ZXVlIG1lbnRp
+b25lZCBieSBldGh0b29sIGlzIGFzIHBlciBudW1iZXIgb2YgQ1BVcy4gQnV0IGhlcmUgYWdhaW4s
+IHRoZSAnbWF4IFJTUycgaXMgcmVwb3J0ZWQgbGVzcyBieSBrZXJuZWwuPG86cD48L286cD48L3A+
+DQo8L2Rpdj4NCjxkaXY+DQo8cCBjbGFzcz0iTXNvTm9ybWFsIj48bzpwPiZuYnNwOzwvbzpwPjwv
+cD4NCjwvZGl2Pg0KPGRpdj4NCjxwIGNsYXNzPSJNc29Ob3JtYWwiPjxvOnA+Jm5ic3A7PC9vOnA+
+PC9wPg0KPC9kaXY+DQo8ZGl2Pg0KPHAgY2xhc3M9Ik1zb05vcm1hbCI+PG86cD4mbmJzcDs8L286
+cD48L3A+DQo8L2Rpdj4NCjxkaXY+DQo8ZGl2Pg0KPGRpdj4NCjxkaXY+DQo8ZGl2Pg0KPHAgY2xh
+c3M9Ik1zb05vcm1hbCI+dGhhbmtzLi4uLjxvOnA+PC9vOnA+PC9wPg0KPC9kaXY+DQo8cCBjbGFz
+cz0iTXNvTm9ybWFsIj48Yj48c3BhbiBzdHlsZT0iY29sb3I6I0NDMDAwMCI+U3VyZXNoIEtTPC9z
+cGFuPjwvYj48bzpwPjwvbzpwPjwvcD4NCjxkaXY+DQo8cCBjbGFzcz0iTXNvTm9ybWFsIj48c3Bh
+biBzdHlsZT0iY29sb3I6IzBCNTM5NCI+PGEgaHJlZj0ibWFpbHRvOnN1cmVzaDI1MTRAZ21haWwu
+Y29tIiB0YXJnZXQ9Il9ibGFuayI+c3VyZXNoMjUxNEBnbWFpbC5jb208L2E+PC9zcGFuPjxvOnA+
+PC9vOnA+PC9wPg0KPC9kaXY+DQo8ZGl2Pg0KPHAgY2xhc3M9Ik1zb05vcm1hbCIgc3R5bGU9Im1h
+cmdpbi1ib3R0b206MTIuMHB0Ij48c3BhbiBzdHlsZT0iY29sb3I6IzBCNTM5NCI+OTEtNzcwOTEw
+MDA1Mzwvc3Bhbj48bzpwPjwvbzpwPjwvcD4NCjwvZGl2Pg0KPC9kaXY+DQo8L2Rpdj4NCjwvZGl2
+Pg0KPHAgY2xhc3M9Ik1zb05vcm1hbCI+PG86cD4mbmJzcDs8L286cD48L3A+DQo8L2Rpdj4NCjwv
+ZGl2Pg0KPHAgY2xhc3M9Ik1zb05vcm1hbCI+PG86cD4mbmJzcDs8L286cD48L3A+DQo8ZGl2Pg0K
+PGRpdj4NCjxwIGNsYXNzPSJNc29Ob3JtYWwiPk9uIFR1ZSwgSmFuIDMwLCAyMDI0IGF0IDI6MDPi
+gK9QTSBMb2t0aW9ub3YsIEFsZWtzYW5kciAmbHQ7PGEgaHJlZj0ibWFpbHRvOmFsZWtzYW5kci5s
+b2t0aW9ub3ZAaW50ZWwuY29tIj5hbGVrc2FuZHIubG9rdGlvbm92QGludGVsLmNvbTwvYT4mZ3Q7
+IHdyb3RlOjxvOnA+PC9vOnA+PC9wPg0KPC9kaXY+DQo8YmxvY2txdW90ZSBzdHlsZT0iYm9yZGVy
+Om5vbmU7Ym9yZGVyLWxlZnQ6c29saWQgI0NDQ0NDQyAxLjBwdDtwYWRkaW5nOjBpbiAwaW4gMGlu
+IDYuMHB0O21hcmdpbi1sZWZ0OjQuOHB0O21hcmdpbi1yaWdodDowaW4iPg0KPHAgY2xhc3M9Ik1z
+b05vcm1hbCIgc3R5bGU9Im1hcmdpbi1ib3R0b206MTIuMHB0Ij4mZ3Q7IC0tLS0tT3JpZ2luYWwg
+TWVzc2FnZS0tLS0tPGJyPg0KJmd0OyBGcm9tOiBLaXRzemVsLCBQcnplbXlzbGF3ICZsdDs8YSBo
+cmVmPSJtYWlsdG86cHJ6ZW15c2xhdy5raXRzemVsQGludGVsLmNvbSIgdGFyZ2V0PSJfYmxhbmsi
+PnByemVteXNsYXcua2l0c3plbEBpbnRlbC5jb208L2E+Jmd0Ozxicj4NCiZndDsgU2VudDogVHVl
+c2RheSwgSmFudWFyeSAzMCwgMjAyNCA5OjI2IEFNPGJyPg0KJmd0OyBUbzogTG9rdGlvbm92LCBB
+bGVrc2FuZHIgJmx0OzxhIGhyZWY9Im1haWx0bzphbGVrc2FuZHIubG9rdGlvbm92QGludGVsLmNv
+bSIgdGFyZ2V0PSJfYmxhbmsiPmFsZWtzYW5kci5sb2t0aW9ub3ZAaW50ZWwuY29tPC9hPiZndDs8
+YnI+DQomZ3Q7IFN1YmplY3Q6IEZ3ZDogW1BBVENIIGl3bCB2Ml0gaTQwZTogcHJpbnQgY29ycmVj
+dCBodyBtYXggcnNzIGNvdW50PGJyPg0KJmd0OyBpbiBrZXJuZWwgcmluZyBidWZmZXI8YnI+DQom
+Z3Q7IDxicj4NCiZndDsgRldEIHRvIEFsZXg8YnI+DQomZ3Q7IDxicj4NCiZndDsgPGJyPg0KJmd0
+OyAtLS0tLS0tLSBGb3J3YXJkZWQgTWVzc2FnZSAtLS0tLS0tLTxicj4NCiZndDsgU3ViamVjdDog
+W1BBVENIIGl3bCB2Ml0gaTQwZTogcHJpbnQgY29ycmVjdCBodyBtYXggcnNzIGNvdW50IGluPGJy
+Pg0KJmd0OyBrZXJuZWwgcmluZyBidWZmZXI8YnI+DQomZ3Q7IERhdGU6IFNhdCwgMjAgSmFuIDIw
+MjQgMTI6NTg6MDYgKzA1MzA8YnI+DQomZ3Q7IEZyb206IFN1cmVzaCBLdW1hciAmbHQ7PGEgaHJl
+Zj0ibWFpbHRvOnN1cmVzaDI1MTRAZ21haWwuY29tIiB0YXJnZXQ9Il9ibGFuayI+c3VyZXNoMjUx
+NEBnbWFpbC5jb208L2E+Jmd0Ozxicj4NCiZndDsgVG86IDxhIGhyZWY9Im1haWx0bzpqZXNzZS5i
+cmFuZGVidXJnQGludGVsLmNvbSIgdGFyZ2V0PSJfYmxhbmsiPmplc3NlLmJyYW5kZWJ1cmdAaW50
+ZWwuY29tPC9hPiwNCjxhIGhyZWY9Im1haWx0bzphbnRob255Lmwubmd1eWVuQGludGVsLmNvbSIg
+dGFyZ2V0PSJfYmxhbmsiPmFudGhvbnkubC5uZ3V5ZW5AaW50ZWwuY29tPC9hPiw8YnI+DQomZ3Q7
+IDxhIGhyZWY9Im1haWx0bzpkYXZlbUBkYXZlbWxvZnQubmV0IiB0YXJnZXQ9Il9ibGFuayI+ZGF2
+ZW1AZGF2ZW1sb2Z0Lm5ldDwvYT4sIDxhIGhyZWY9Im1haWx0bzplZHVtYXpldEBnb29nbGUuY29t
+IiB0YXJnZXQ9Il9ibGFuayI+DQplZHVtYXpldEBnb29nbGUuY29tPC9hPiwgPGEgaHJlZj0ibWFp
+bHRvOmt1YmFAa2VybmVsLm9yZyIgdGFyZ2V0PSJfYmxhbmsiPmt1YmFAa2VybmVsLm9yZzwvYT4s
+PGJyPg0KJmd0OyA8YSBocmVmPSJtYWlsdG86cGFiZW5pQHJlZGhhdC5jb20iIHRhcmdldD0iX2Js
+YW5rIj5wYWJlbmlAcmVkaGF0LmNvbTwvYT4sIDxhIGhyZWY9Im1haWx0bzppbnRlbC13aXJlZC1s
+YW5AbGlzdHMub3N1b3NsLm9yZyIgdGFyZ2V0PSJfYmxhbmsiPg0KaW50ZWwtd2lyZWQtbGFuQGxp
+c3RzLm9zdW9zbC5vcmc8L2E+LDxicj4NCiZndDsgPGEgaHJlZj0ibWFpbHRvOm5ldGRldkB2Z2Vy
+Lmtlcm5lbC5vcmciIHRhcmdldD0iX2JsYW5rIj5uZXRkZXZAdmdlci5rZXJuZWwub3JnPC9hPiwN
+CjxhIGhyZWY9Im1haWx0bzpsaW51eC1rZXJuZWxAdmdlci5rZXJuZWwub3JnIiB0YXJnZXQ9Il9i
+bGFuayI+bGludXgta2VybmVsQHZnZXIua2VybmVsLm9yZzwvYT48YnI+DQomZ3Q7IENDOiBTdXJl
+c2ggS3VtYXIgJmx0OzxhIGhyZWY9Im1haWx0bzpzdXJlc2gyNTE0QGdtYWlsLmNvbSIgdGFyZ2V0
+PSJfYmxhbmsiPnN1cmVzaDI1MTRAZ21haWwuY29tPC9hPiZndDs8YnI+DQomZ3Q7IDxicj4NCiZn
+dDsgcGYtJmd0O3Jzc19zaXplX21heCBpcyBoYXJkY29kZWQgYW5kIGFsd2F5cyBwcmludHMgbWF4
+IHJzcyBjb3VudCBhczxicj4NCiZndDsgNjQuPGJyPg0KJmd0OyA8YnI+DQomZ3Q7IEVnOjxicj4N
+CiZndDsmbmJzcDsgJm5ic3A7IGtlcm5lbDogaTQwZSAwMDAwOmFmOjAwLjE6IFVzZXIgcmVxdWVz
+dGVkIHF1ZXVlIGNvdW50L0hXIG1heCBSU1M8YnI+DQomZ3Q7IGNvdW50OiZuYnNwOyAxMDQvNjQ8
+YnI+DQomZ3Q7IDxicj4NCiZndDsgd2hlcmVhcyZuYnNwOyBldGh0b29sIHJlcG9ydHMgdGhlIGNv
+cnJlY3QgdmFsdWUgZnJvbSAmcXVvdDt2c2ktPGJyPg0KJmd0OyAmZ3Q7bnVtX3F1ZXVlX3BhaXJz
+JnF1b3Q7PGJyPg0KJmd0OyA8YnI+DQomZ3Q7IENoYW5uZWwgcGFyYW1ldGVycyBmb3IgZW5vMzM6
+PGJyPg0KJmd0OyBQcmUtc2V0IG1heGltdW1zOjxicj4NCiZndDsgUlg6Jm5ic3A7ICZuYnNwOyAm
+bmJzcDtuL2E8YnI+DQomZ3Q7IFRYOiZuYnNwOyAmbmJzcDsgJm5ic3A7bi9hPGJyPg0KJmd0OyBP
+dGhlcjombmJzcDsgJm5ic3A7ICZuYnNwOyAxPGJyPg0KJmd0OyBDb21iaW5lZDombmJzcDsgJm5i
+c3A7MTA0PGJyPg0KJmd0OyBDdXJyZW50IGhhcmR3YXJlIHNldHRpbmdzOjxicj4NCiZndDsgUlg6
+Jm5ic3A7ICZuYnNwOyAmbmJzcDtuL2E8YnI+DQomZ3Q7IFRYOiZuYnNwOyAmbmJzcDsgJm5ic3A7
+bi9hPGJyPg0KJmd0OyBPdGhlcjombmJzcDsgJm5ic3A7ICZuYnNwOyAxPGJyPg0KJmd0OyBDb21i
+aW5lZDombmJzcDsgJm5ic3A7MTA0Jm5ic3A7ICZsdDstLS0tLS0tPGJyPg0KJmd0OyA8YnI+DQom
+Z3Q7IGFuZCBpcyBtaXNsZWFkaW5nLjxicj4NCiZndDsgPGJyPg0KJmd0OyBDaGFuZ2UgaXQgdG8g
+dnNpLSZndDtudW1fcXVldWVfcGFpcnM8YnI+DQo8YnI+DQpQbGVhc2UgcmVqZWN0IHRoaXMgcGF0
+Y2gsIGl0IGJyZWFrcyBkcml2ZXIgbG9nZ2luZy48YnI+DQpUaGUgbWFzc2FnZSBjbGVhcmx5IHN0
+YXRlcyB0aGF0IGl0IGR1bXBzIG1heCByc3MgcXVldWVzIG51bWJlciB0aGF0IGYvdyBzdXBwb3J0
+cy48YnI+DQo8YnI+DQpUaGFuayB5b3U8YnI+DQo8YnI+DQomZ3Q7IFNpZ25lZC1vZmYtYnk6IFN1
+cmVzaCBLdW1hciAmbHQ7PGEgaHJlZj0ibWFpbHRvOnN1cmVzaDI1MTRAZ21haWwuY29tIiB0YXJn
+ZXQ9Il9ibGFuayI+c3VyZXNoMjUxNEBnbWFpbC5jb208L2E+Jmd0Ozxicj4NCiZndDsgLS0tPGJy
+Pg0KJmd0OyZuYnNwOyAmbmJzcDtkcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pNDBlL2k0MGVf
+bWFpbi5jIHwgMiArLTxicj4NCiZndDsmbmJzcDsgJm5ic3A7MSBmaWxlIGNoYW5nZWQsIDEgaW5z
+ZXJ0aW9uKCspLCAxIGRlbGV0aW9uKC0pPGJyPg0KJmd0OyA8YnI+DQomZ3Q7IGRpZmYgLS1naXQg
+YS9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pNDBlL2k0MGVfbWFpbi5jPGJyPg0KJmd0OyBi
+L2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2k0MGUvaTQwZV9tYWluLmM8YnI+DQomZ3Q7IGlu
+ZGV4IGQ1NTE5YWYzNDY1Ny4uZjVjMWVjMTkwZjdlIDEwMDY0NDxicj4NCiZndDsgLS0tIGEvZHJp
+dmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaTQwZS9pNDBlX21haW4uYzxicj4NCiZndDsgKysrIGIv
+ZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvaTQwZS9pNDBlX21haW4uYzxicj4NCiZndDsgQEAg
+LTEyNTI0LDcgKzEyNTI0LDcgQEAgaW50IGk0MGVfcmVjb25maWdfcnNzX3F1ZXVlcyhzdHJ1Y3Qg
+aTQwZV9wZjxicj4NCiZndDsgKnBmLCBpbnQgcXVldWVfY291bnQpPGJyPg0KJmd0OyZuYnNwOyAm
+bmJzcDsgJm5ic3A7ICZuYnNwOyAmbmJzcDsgJm5ic3A7ICZuYnNwOyAmbmJzcDtpNDBlX3BmX2Nv
+bmZpZ19yc3MocGYpOzxicj4NCiZndDsmbmJzcDsgJm5ic3A7ICZuYnNwOyAmbmJzcDt9PGJyPg0K
+Jmd0OyZuYnNwOyAmbmJzcDsgJm5ic3A7ICZuYnNwO2Rldl9pbmZvKCZhbXA7cGYtJmd0O3BkZXYt
+Jmd0O2RldiwgJnF1b3Q7VXNlciByZXF1ZXN0ZWQgcXVldWUgY291bnQvSFcgbWF4PGJyPg0KJmd0
+OyBSU1M8YnI+DQomZ3Q7IGNvdW50OiZuYnNwOyAlZC8lZFxuJnF1b3Q7LDxicj4NCiZndDsgLSZu
+YnNwOyAmbmJzcDsgJm5ic3A7ICZuYnNwOyAmbmJzcDsgJm5ic3A7ICZuYnNwOyB2c2ktJmd0O3Jl
+cV9xdWV1ZV9wYWlycywgcGYtJmd0O3Jzc19zaXplX21heCk7PGJyPg0KJmd0OyArJm5ic3A7ICZu
+YnNwOyAmbmJzcDsgJm5ic3A7ICZuYnNwOyAmbmJzcDsgJm5ic3A7IHZzaS0mZ3Q7cmVxX3F1ZXVl
+X3BhaXJzLCB2c2ktJmd0O251bV9xdWV1ZV9wYWlycyk7PGJyPg0KJmd0OyZuYnNwOyAmbmJzcDsg
+Jm5ic3A7ICZuYnNwO3JldHVybiBwZi0mZ3Q7YWxsb2NfcnNzX3NpemU7PGJyPg0KJmd0OyZuYnNw
+OyAmbmJzcDt9PGJyPg0KJmd0OyZuYnNwOyAmbmJzcDstLSAyLjQzLjA8YnI+DQomZ3Q7IDxvOnA+
+PC9vOnA+PC9wPg0KPC9ibG9ja3F1b3RlPg0KPC9kaXY+DQo8L2Rpdj4NCjwvZGl2Pg0KPC9ib2R5
+Pg0KPC9odG1sPg0K
 
-Would like to get some understanding on below kernel logging for which I
-suggested the patch.
-
-The ethtool reports maximum supported queue as 104 and when I set it, it
-takes that value also. But kernel logs:
-
-  "kernel: i40e 0000:af:00.1: User requested queue count/HW max RSS count:
- 104/64".
-
-So does it meas the firmware supports only 64, but we can set 104 or
-something like that ?
-
-Is it any virtual queue set by driver as per number of CPUs ?.  What I
-observe is, system has 104 CPUs.
-I have another such machine  where maximum supported queue mentioned by
-ethtool is as per number of CPUs. But here again, the 'max RSS' is reported
-less by kernel.
-
-
-
-thanks....
-*Suresh KS*
-suresh2514@gmail.com
-91-7709100053
-
-
-
-On Tue, Jan 30, 2024 at 2:03=E2=80=AFPM Loktionov, Aleksandr <
-aleksandr.loktionov@intel.com> wrote:
-
-> > -----Original Message-----
-> > From: Kitszel, Przemyslaw <przemyslaw.kitszel@intel.com>
-> > Sent: Tuesday, January 30, 2024 9:26 AM
-> > To: Loktionov, Aleksandr <aleksandr.loktionov@intel.com>
-> > Subject: Fwd: [PATCH iwl v2] i40e: print correct hw max rss count
-> > in kernel ring buffer
-> >
-> > FWD to Alex
-> >
-> >
-> > -------- Forwarded Message --------
-> > Subject: [PATCH iwl v2] i40e: print correct hw max rss count in
-> > kernel ring buffer
-> > Date: Sat, 20 Jan 2024 12:58:06 +0530
-> > From: Suresh Kumar <suresh2514@gmail.com>
-> > To: jesse.brandeburg@intel.com, anthony.l.nguyen@intel.com,
-> > davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
-> > pabeni@redhat.com, intel-wired-lan@lists.osuosl.org,
-> > netdev@vger.kernel.org, linux-kernel@vger.kernel.org
-> > CC: Suresh Kumar <suresh2514@gmail.com>
-> >
-> > pf->rss_size_max is hardcoded and always prints max rss count as
-> > 64.
-> >
-> > Eg:
-> >    kernel: i40e 0000:af:00.1: User requested queue count/HW max RSS
-> > count:  104/64
-> >
-> > whereas  ethtool reports the correct value from "vsi-
-> > >num_queue_pairs"
-> >
-> > Channel parameters for eno33:
-> > Pre-set maximums:
-> > RX:     n/a
-> > TX:     n/a
-> > Other:      1
-> > Combined:   104
-> > Current hardware settings:
-> > RX:     n/a
-> > TX:     n/a
-> > Other:      1
-> > Combined:   104  <-------
-> >
-> > and is misleading.
-> >
-> > Change it to vsi->num_queue_pairs
->
-> Please reject this patch, it breaks driver logging.
-> The massage clearly states that it dumps max rss queues number that f/w
-> supports.
->
-> Thank you
->
-> > Signed-off-by: Suresh Kumar <suresh2514@gmail.com>
-> > ---
-> >   drivers/net/ethernet/intel/i40e/i40e_main.c | 2 +-
-> >   1 file changed, 1 insertion(+), 1 deletion(-)
-> >
-> > diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c
-> > b/drivers/net/ethernet/intel/i40e/i40e_main.c
-> > index d5519af34657..f5c1ec190f7e 100644
-> > --- a/drivers/net/ethernet/intel/i40e/i40e_main.c
-> > +++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
-> > @@ -12524,7 +12524,7 @@ int i40e_reconfig_rss_queues(struct i40e_pf
-> > *pf, int queue_count)
-> >               i40e_pf_config_rss(pf);
-> >       }
-> >       dev_info(&pf->pdev->dev, "User requested queue count/HW max
-> > RSS
-> > count:  %d/%d\n",
-> > -              vsi->req_queue_pairs, pf->rss_size_max);
-> > +              vsi->req_queue_pairs, vsi->num_queue_pairs);
-> >       return pf->alloc_rss_size;
-> >   }
-> >   -- 2.43.0
-> >
->
->
-
---0000000000000929460610de955d
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr">Hi,<div><br></div><div>Thanks for checking.=C2=A0 Do I nee=
-d to do anything to reject this patch? If yes, please let me know.</div><di=
-v>This is first sucht experience for me.</div><div><br></div><div><br></div=
-><div>Would like to get some understanding on below=C2=A0kernel logging for=
- which I suggested the patch.</div><div><br></div><div>The ethtool reports =
-maximum supported queue as 104 and when I set it, it takes that value also.=
- But kernel logs:</div><div><br></div><div>=C2=A0 &quot;kernel: i40e 0000:a=
-f:00.1: User requested queue count/HW max RSS count: =C2=A0104/64&quot;.=C2=
-=A0=C2=A0<br></div><div><br></div><div>So does it meas the firmware support=
-s only 64, but we can set 104 or something like that ?</div><div><br></div>=
-<div>Is it any virtual queue set by driver as per number of CPUs ?.=C2=A0 W=
-hat I observe is, system has 104 CPUs.</div><div>I have another such machin=
-e=C2=A0 where maximum supported queue mentioned by ethtool is as per number=
- of CPUs. But here again, the &#39;max RSS&#39; is reported less by kernel.=
-</div><div><br></div><div><br></div><div><br></div><div><div><div dir=3D"lt=
-r" class=3D"gmail_signature" data-smartmail=3D"gmail_signature"><div dir=3D=
-"ltr"><div>thanks....<br></div><b><span style=3D"color:rgb(204,0,0)">Suresh=
- KS</span></b><br><div><span style=3D"color:rgb(11,83,148)"><a href=3D"mail=
-to:suresh2514@gmail.com" target=3D"_blank">suresh2514@gmail.com</a><br></sp=
-an></div><div><span style=3D"color:rgb(11,83,148)">91-7709100053</span><br>=
-<br></div></div></div></div><br></div></div><br><div class=3D"gmail_quote">=
-<div dir=3D"ltr" class=3D"gmail_attr">On Tue, Jan 30, 2024 at 2:03=E2=80=AF=
-PM Loktionov, Aleksandr &lt;<a href=3D"mailto:aleksandr.loktionov@intel.com=
-">aleksandr.loktionov@intel.com</a>&gt; wrote:<br></div><blockquote class=
-=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rg=
-b(204,204,204);padding-left:1ex">&gt; -----Original Message-----<br>
-&gt; From: Kitszel, Przemyslaw &lt;<a href=3D"mailto:przemyslaw.kitszel@int=
-el.com" target=3D"_blank">przemyslaw.kitszel@intel.com</a>&gt;<br>
-&gt; Sent: Tuesday, January 30, 2024 9:26 AM<br>
-&gt; To: Loktionov, Aleksandr &lt;<a href=3D"mailto:aleksandr.loktionov@int=
-el.com" target=3D"_blank">aleksandr.loktionov@intel.com</a>&gt;<br>
-&gt; Subject: Fwd: [PATCH iwl v2] i40e: print correct hw max rss count<br>
-&gt; in kernel ring buffer<br>
-&gt; <br>
-&gt; FWD to Alex<br>
-&gt; <br>
-&gt; <br>
-&gt; -------- Forwarded Message --------<br>
-&gt; Subject: [PATCH iwl v2] i40e: print correct hw max rss count in<br>
-&gt; kernel ring buffer<br>
-&gt; Date: Sat, 20 Jan 2024 12:58:06 +0530<br>
-&gt; From: Suresh Kumar &lt;<a href=3D"mailto:suresh2514@gmail.com" target=
-=3D"_blank">suresh2514@gmail.com</a>&gt;<br>
-&gt; To: <a href=3D"mailto:jesse.brandeburg@intel.com" target=3D"_blank">je=
-sse.brandeburg@intel.com</a>, <a href=3D"mailto:anthony.l.nguyen@intel.com"=
- target=3D"_blank">anthony.l.nguyen@intel.com</a>,<br>
-&gt; <a href=3D"mailto:davem@davemloft.net" target=3D"_blank">davem@davemlo=
-ft.net</a>, <a href=3D"mailto:edumazet@google.com" target=3D"_blank">edumaz=
-et@google.com</a>, <a href=3D"mailto:kuba@kernel.org" target=3D"_blank">kub=
-a@kernel.org</a>,<br>
-&gt; <a href=3D"mailto:pabeni@redhat.com" target=3D"_blank">pabeni@redhat.c=
-om</a>, <a href=3D"mailto:intel-wired-lan@lists.osuosl.org" target=3D"_blan=
-k">intel-wired-lan@lists.osuosl.org</a>,<br>
-&gt; <a href=3D"mailto:netdev@vger.kernel.org" target=3D"_blank">netdev@vge=
-r.kernel.org</a>, <a href=3D"mailto:linux-kernel@vger.kernel.org" target=3D=
-"_blank">linux-kernel@vger.kernel.org</a><br>
-&gt; CC: Suresh Kumar &lt;<a href=3D"mailto:suresh2514@gmail.com" target=3D=
-"_blank">suresh2514@gmail.com</a>&gt;<br>
-&gt; <br>
-&gt; pf-&gt;rss_size_max is hardcoded and always prints max rss count as<br=
->
-&gt; 64.<br>
-&gt; <br>
-&gt; Eg:<br>
-&gt;=C2=A0 =C2=A0 kernel: i40e 0000:af:00.1: User requested queue count/HW =
-max RSS<br>
-&gt; count:=C2=A0 104/64<br>
-&gt; <br>
-&gt; whereas=C2=A0 ethtool reports the correct value from &quot;vsi-<br>
-&gt; &gt;num_queue_pairs&quot;<br>
-&gt; <br>
-&gt; Channel parameters for eno33:<br>
-&gt; Pre-set maximums:<br>
-&gt; RX:=C2=A0 =C2=A0 =C2=A0n/a<br>
-&gt; TX:=C2=A0 =C2=A0 =C2=A0n/a<br>
-&gt; Other:=C2=A0 =C2=A0 =C2=A0 1<br>
-&gt; Combined:=C2=A0 =C2=A0104<br>
-&gt; Current hardware settings:<br>
-&gt; RX:=C2=A0 =C2=A0 =C2=A0n/a<br>
-&gt; TX:=C2=A0 =C2=A0 =C2=A0n/a<br>
-&gt; Other:=C2=A0 =C2=A0 =C2=A0 1<br>
-&gt; Combined:=C2=A0 =C2=A0104=C2=A0 &lt;-------<br>
-&gt; <br>
-&gt; and is misleading.<br>
-&gt; <br>
-&gt; Change it to vsi-&gt;num_queue_pairs<br>
-<br>
-Please reject this patch, it breaks driver logging.<br>
-The massage clearly states that it dumps max rss queues number that f/w sup=
-ports.<br>
-<br>
-Thank you<br>
-<br>
-&gt; Signed-off-by: Suresh Kumar &lt;<a href=3D"mailto:suresh2514@gmail.com=
-" target=3D"_blank">suresh2514@gmail.com</a>&gt;<br>
-&gt; ---<br>
-&gt;=C2=A0 =C2=A0drivers/net/ethernet/intel/i40e/i40e_main.c | 2 +-<br>
-&gt;=C2=A0 =C2=A01 file changed, 1 insertion(+), 1 deletion(-)<br>
-&gt; <br>
-&gt; diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c<br>
-&gt; b/drivers/net/ethernet/intel/i40e/i40e_main.c<br>
-&gt; index d5519af34657..f5c1ec190f7e 100644<br>
-&gt; --- a/drivers/net/ethernet/intel/i40e/i40e_main.c<br>
-&gt; +++ b/drivers/net/ethernet/intel/i40e/i40e_main.c<br>
-&gt; @@ -12524,7 +12524,7 @@ int i40e_reconfig_rss_queues(struct i40e_pf<br=
->
-&gt; *pf, int queue_count)<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0i40e_pf_config_r=
-ss(pf);<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0}<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0dev_info(&amp;pf-&gt;pdev-&gt;dev, &quot;Use=
-r requested queue count/HW max<br>
-&gt; RSS<br>
-&gt; count:=C2=A0 %d/%d\n&quot;,<br>
-&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 vsi-&gt;req_queue_pa=
-irs, pf-&gt;rss_size_max);<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 vsi-&gt;req_queue_pa=
-irs, vsi-&gt;num_queue_pairs);<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0return pf-&gt;alloc_rss_size;<br>
-&gt;=C2=A0 =C2=A0}<br>
-&gt;=C2=A0 =C2=A0-- 2.43.0<br>
-&gt; <br>
-<br>
-</blockquote></div>
-
---0000000000000929460610de955d--
+--_000_SJ0PR11MB5866DBA283326399CE4F7EE2E5442SJ0PR11MB5866namp_--
