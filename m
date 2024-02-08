@@ -1,102 +1,89 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5FDA984E4AC
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  8 Feb 2024 17:06:39 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 34EA084E3C4
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  8 Feb 2024 16:14:27 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id E8E4F6FAD3;
-	Thu,  8 Feb 2024 16:06:36 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id D765F80D8C;
+	Thu,  8 Feb 2024 15:14:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id LfT1hSjjvC-n; Thu,  8 Feb 2024 16:06:36 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id fzoiEzm4Us4M; Thu,  8 Feb 2024 15:14:23 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2BF16617B8
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0461C80847
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1707408396;
-	bh=m2b1cGoGE6O9wuUG9B9+7/YSXWO8H0LBstm+bY//wdM=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=R6BvmH+cElCxw6ZCgD9Pc2p0400kMNa4vpPRr04dbjK2V2kejJ94Xay4S+orNQ2GE
-	 29Op1I5PXoQt7j2TAzRzYNqttnDje5L7Tu0I6iNKu9WhRv6n2yJRqZ4JbygmExSKTy
-	 M+mjOSpkQT88Z2Qy1GbjMmnDbHHAhWCmUnmZQP0asdqNt2pEQm6ZR71BKLrY5WNhYu
-	 JAT+cofrgRuoTSrfGyDE6B2btuXtYCY3Y3tjerfNhsEBzzWGgxx1ztC8VaOahcR567
-	 or4osFDBNzwWO8573OViX01F/CRIljLRJ18nHKfBiWjOX3BAxaEi9cGq3aicigDZey
-	 hM8muhZWlC2ng==
+	s=default; t=1707405263;
+	bh=Y/mJ4V5ODp1OjO5K7WAULxON8je6JT7lSJcesdF0zwA=;
+	h=From:To:In-Reply-To:Date:Subject:List-Id:List-Unsubscribe:
+	 List-Archive:List-Post:List-Help:List-Subscribe:Cc:From;
+	b=eVk0+cnBqKNyybQ2FZNGmrBAMxPLV4o9cm3N6FqFqhczbPCCbJvD4edcR2qwoUu+z
+	 fxrZPhy9Av5zPXRedVHyphbhFcrGos/KCBhhQL9/ppp3bw2pBfqUHAlrixhyWGXIjF
+	 Ob1eE0+5TtfIQOyWolxzJibqwqu+NPv0r9uMVEOFP/JtUQtpGaRJQC2HBiZLnq/qzU
+	 aRF6j1knwstntH7UXqLeBUuY1RcNKy7XYDEwZQtDaxsU23wwVUPyn2PuTwpQj0bz6g
+	 UWuj3L/0HjaQ6zB81T4r5l/H3arMHI3nLOX84dufWou278lf7Mrj8nIxXUiKlqLMEL
+	 7y4XcclmuPIMA==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 2BF16617B8;
-	Thu,  8 Feb 2024 16:06:36 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 0461C80847;
+	Thu,  8 Feb 2024 15:14:23 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 772071BF831
- for <intel-wired-lan@lists.osuosl.org>; Thu,  8 Feb 2024 08:25:18 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id B98571BF2C8
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  8 Feb 2024 15:14:20 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 647CA84179
- for <intel-wired-lan@lists.osuosl.org>; Thu,  8 Feb 2024 08:25:18 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id B27EC85179
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  8 Feb 2024 15:14:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id GbrbFit3FbSU for <intel-wired-lan@lists.osuosl.org>;
- Thu,  8 Feb 2024 08:25:17 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.129.124;
- helo=us-smtp-delivery-124.mimecast.com; envelope-from=ksundara@redhat.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 7896E8413D
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 7896E8413D
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.129.124])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 7896E8413D
- for <intel-wired-lan@lists.osuosl.org>; Thu,  8 Feb 2024 08:25:17 +0000 (UTC)
-Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
- by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-537-8Ve1q2OOOySylLJQVxvjlw-1; Thu,
- 08 Feb 2024 03:25:12 -0500
-X-MC-Unique: 8Ve1q2OOOySylLJQVxvjlw-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
- [10.11.54.5])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 4C6D229AA2D2;
- Thu,  8 Feb 2024 08:25:12 +0000 (UTC)
-Received: from ksundara-mac.redhat.com (unknown [10.74.17.171])
- by smtp.corp.redhat.com (Postfix) with ESMTP id BB8BA111F9;
- Thu,  8 Feb 2024 08:25:06 +0000 (UTC)
-From: Karthik Sundaravel <ksundara@redhat.com>
-To: jesse.brandeburg@intel.com, anthony.l.nguyen@intel.com,
- davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
- pabeni@redhat.com, intel-wired-lan@lists.osuosl.org,
- netdev@vger.kernel.org, linux-kernel@vger.kernel.org
-Date: Thu,  8 Feb 2024 13:54:55 +0530
-Message-Id: <20240208082455.66726-2-ksundara@redhat.com>
-In-Reply-To: <20240208082455.66726-1-ksundara@redhat.com>
-References: <20240208082455.66726-1-ksundara@redhat.com>
+ with ESMTP id eBj00wiJUCHp for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  8 Feb 2024 15:14:20 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2a0a:51c0:0:12e:550::1; helo=galois.linutronix.de;
+ envelope-from=tglx@linutronix.de; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org DA0278516E
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org DA0278516E
+Received: from galois.linutronix.de (Galois.linutronix.de
+ [IPv6:2a0a:51c0:0:12e:550::1])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id DA0278516E
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  8 Feb 2024 15:14:19 +0000 (UTC)
+From: Thomas Gleixner <tglx@linutronix.de>
+To: lakshmi.sowjanya.d@intel.com, jstultz@google.com, giometti@enneenne.com,
+ corbet@lwn.net, linux-kernel@vger.kernel.org
+In-Reply-To: <20240207060854.6524-3-lakshmi.sowjanya.d@intel.com>
+Date: Thu, 08 Feb 2024 16:14:15 +0100
+Message-ID: <8734u3m1iw.ffs@tglx>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.5
-X-Mailman-Approved-At: Thu, 08 Feb 2024 16:06:32 +0000
+Content-Type: text/plain
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=redhat.com; 
- s=mimecast20190719; t=1707380716;
+ d=linutronix.de; s=2020; t=1707405255;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=m2b1cGoGE6O9wuUG9B9+7/YSXWO8H0LBstm+bY//wdM=;
- b=hoSVrYLZrEEEc9G6pk+N2R+hcTpajJvHmVPZEAy5T/SjzWOmwme8ckqNBwOTOLWzceVAIw
- AJVMGwR4r1pVCOL6pwCSZK3jBaw0Ig4AROWOqiFRHxw92yZjoiSiFjfcm6rmxfqquw4XnT
- a1tcLywGnldghrhjfi3T6V0zMZdPhYQ=
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to; bh=Y/mJ4V5ODp1OjO5K7WAULxON8je6JT7lSJcesdF0zwA=;
+ b=lR5Xv308pjT/LKI8IM8xB/XSaI0Dnb5HSiiNZEcP1GG/X0J2TGhY5RsRXxvUquFtK5Kaba
+ 2qgKUqQBYDes23bT/Oti60rd/dLpmC1C6XEqg+UvsrvCqKxYP8nb1k+B33QKNOcpSSXcSH
+ IQPxQ3pK41vKwjXsCNbCA3PAbnYM1W7QICBM1MV5LoQ2zE3IzztFmaabhkdZfFzLdOHs+5
+ 7M6dJ1Ndv1+8RVk6GLIpY425f7WzV+O406O+gK3Z05xJ8j5gQbnT1hfCZo8YXAzE9tRiep
+ Wnooz6ezxZ+T2sO6f5ps2Yzx44+QTLTYOd45CVawJ6cJNBJV9wuWjjGU6jQ4yg==
+X-Mailman-Original-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed;
+ d=linutronix.de; s=2020e; t=1707405255;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to; bh=Y/mJ4V5ODp1OjO5K7WAULxON8je6JT7lSJcesdF0zwA=;
+ b=lX2vlCRvmWLLnz1TXzYs9CGXtjOII9OYpB8OU/Wn0AEnymAqvTvw87UIVMVFJVX3rNXkG2
+ DyClVZlotGwKEmBw==
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=redhat.com
+ header.from=linutronix.de
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
- header.a=rsa-sha256 header.s=mimecast20190719 header.b=hoSVrYLZ
-Subject: [Intel-wired-lan] [PATCH v2] ice: Add get/set hw address for VFs
- using devlink commands
+ dkim=pass (2048-bit key, unprotected) header.d=linutronix.de
+ header.i=@linutronix.de header.a=rsa-sha256 header.s=2020 header.b=lR5Xv308; 
+ dkim=pass header.d=linutronix.de header.i=@linutronix.de
+ header.a=ed25519-sha256 header.s=2020e header.b=lX2vlCRv
+Subject: Re: [Intel-wired-lan] [PATCH v4 02/11] timekeeping: Add function to
+ convert realtime to base clock
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -109,128 +96,96 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: pmenzel@molgen.mpg.de, aharivel@redhat.com, jiri@resnulli.us,
- cfontain@redhat.com, vchundur@redhat.com, ksundara@redhat.com,
- michal.swiatkowski@linux.intel.com, rjarry@redhat.com
+Cc: christopher.s.hall@intel.com, subramanian.mohan@intel.com,
+ lakshmi.sowjanya.d@intel.com, linux-doc@vger.kernel.org,
+ netdev@vger.kernel.org, pandith.n@intel.com, x86@kernel.org,
+ eddie.dong@intel.com, jesse.brandeburg@intel.com, linux-sound@vger.kernel.org,
+ alexandre.torgue@foss.st.com, peter.hilber@opensynergy.com,
+ mallikarjunappa.sangannavar@intel.com, joabreu@synopsys.com,
+ intel-wired-lan@lists.osuosl.org, mcoquelin.stm32@gmail.com,
+ thejesh.reddy.t.r@intel.com, perex@perex.cz, anthony.l.nguyen@intel.com,
+ andriy.shevchenko@linux.intel.com, davem@davemloft.net
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Changing the MAC address of the VF ports are not available
-via devlink. Add the function handlers to set and get
-the HW address for the VF ports.
+On Wed, Feb 07 2024 at 11:38, lakshmi sowjanya d. wrote:
+> From: Lakshmi Sowjanya D <lakshmi.sowjanya.d@intel.com>
+>
+> Introduce an interface, ktime_real_to_base_clock() to convert realtime
+> to base clock.
+>
+> Convert the base clock to the system clock using convert_base_to_cs() in
+> get_device_system_crosststamp().
+>
+> Add the helper function timekeeping_clocksource_has_base(), to check
+> whether the current clocksource has the same base clock.
 
-Signed-off-by: Karthik Sundaravel <ksundara@redhat.com>
----
- drivers/net/ethernet/intel/ice/ice_devlink.c | 89 +++++++++++++++++++-
- 1 file changed, 88 insertions(+), 1 deletion(-)
+Neither ktime_real_to_base_clock() nor
+timekeeping_clocksource_has_base() are used anywhere.
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_devlink.c b/drivers/net/ethernet/intel/ice/ice_devlink.c
-index 80dc5445b50d..8455fa94a687 100644
---- a/drivers/net/ethernet/intel/ice/ice_devlink.c
-+++ b/drivers/net/ethernet/intel/ice/ice_devlink.c
-@@ -1576,6 +1576,92 @@ void ice_devlink_destroy_pf_port(struct ice_pf *pf)
- 	devlink_port_unregister(&pf->devlink_port);
- }
- 
-+/**
-+ * ice_devlink_port_get_vf_mac_address - .port_fn_hw_addr_get devlink handler
-+ * @port: devlink port structure
-+ * @hw_addr: MAC address of the port
-+ * @hw_addr_len: length of MAC address
-+ * @extack: extended netdev ack structure
-+ *
-+ * Callback for the devlink .port_fn_hw_addr_get operation
-+ * Return: zero on success or an error code on failure.
-+ */
-+
-+static int ice_devlink_port_get_vf_mac_address(struct devlink_port *port,
-+					       u8 *hw_addr, int *hw_addr_len,
-+					       struct netlink_ext_ack *extack)
-+{
-+	struct devlink *devlink = port->devlink;
-+	struct ice_pf *pf = devlink_priv(devlink);
-+	struct device *dev = ice_pf_to_dev(pf);
-+	struct devlink_port_attrs *attrs = &port->attrs;
-+	struct devlink_port_pci_vf_attrs *pci_vf;
-+	int vf_id;
-+	struct ice_vf *vf;
-+
-+	if (attrs->flavour == DEVLINK_PORT_FLAVOUR_PCI_VF) {
-+		pci_vf = &attrs->pci_vf;
-+		vf_id = pci_vf->vf;
-+	} else {
-+		dev_err(dev, "Unable to get the vf id for PF %d\n", pf->hw.pf_id);
-+		return -EADDRNOTAVAIL;
-+	}
-+	vf = ice_get_vf_by_id(pf, vf_id);
-+	if (!vf) {
-+		dev_err(dev, "Unable to get the vf for PF %d\n", pf->hw.pf_id);
-+		return -EINVAL;
-+	}
-+	ether_addr_copy(hw_addr, vf->dev_lan_addr);
-+	*hw_addr_len = ETH_ALEN;
-+	return 0;
-+}
-+
-+/**
-+ * ice_devlink_port_set_vf_mac_address - .port_fn_hw_addr_set devlink handler
-+ * @port: devlink port structure
-+ * @hw_addr: MAC address of the port
-+ * @hw_addr_len: length of MAC address
-+ * @extack: extended netdev ack structure
-+ *
-+ * Callback for the devlink .port_fn_hw_addr_set operation
-+ * Return: zero on success or an error code on failure.
-+ */
-+static int ice_devlink_port_set_vf_mac_address(struct devlink_port *port,
-+					       const u8 *hw_addr,
-+					       int hw_addr_len,
-+					       struct netlink_ext_ack *extack)
-+{
-+	struct devlink *devlink = port->devlink;
-+	struct ice_pf *pf = devlink_priv(devlink);
-+	struct device *dev = ice_pf_to_dev(pf);
-+	struct net_device *netdev = port->type_eth.netdev;
-+	struct devlink_port_attrs *attrs = &port->attrs;
-+	struct devlink_port_pci_vf_attrs *pci_vf;
-+	int vf_id;
-+	u8 mac[ETH_ALEN];
-+
-+	if (attrs->flavour == DEVLINK_PORT_FLAVOUR_PCI_VF) {
-+		pci_vf = &attrs->pci_vf;
-+		vf_id = pci_vf->vf;
-+	} else {
-+		dev_err(dev, "Unable to get the vf id for PF %d\n", pf->hw.pf_id);
-+		return -EADDRNOTAVAIL;
-+	}
-+
-+	if (!netdev) {
-+		dev_err(dev, "Unable to get the netdev for PF %d\n", pf->hw.pf_id);
-+		return -EADDRNOTAVAIL;
-+	}
-+	ether_addr_copy(mac, hw_addr);
-+
-+	return ice_set_vf_mac(netdev, vf_id, mac);
-+}
-+
-+static const struct devlink_port_ops ice_devlink_vf_port_ops = {
-+	.port_fn_hw_addr_get = ice_devlink_port_get_vf_mac_address,
-+	.port_fn_hw_addr_set = ice_devlink_port_set_vf_mac_address,
-+};
-+
- /**
-  * ice_devlink_create_vf_port - Create a devlink port for this VF
-  * @vf: the VF to create a port for
-@@ -1611,7 +1697,8 @@ int ice_devlink_create_vf_port(struct ice_vf *vf)
- 	devlink_port_attrs_set(devlink_port, &attrs);
- 	devlink = priv_to_devlink(pf);
- 
--	err = devlink_port_register(devlink, devlink_port, vsi->idx);
-+	err = devlink_port_register_with_ops(devlink, devlink_port,
-+					     vsi->idx, &ice_devlink_vf_port_ops);
- 	if (err) {
- 		dev_err(dev, "Failed to create devlink port for VF %d, error %d\n",
- 			vf->vf_id, err);
--- 
-2.39.3 (Apple Git-145)
+What's the point of having them in the first place?
 
+Your changelog explains the WHAT but not the WHY....
+
+> +static bool convert_clock(u64 *val, u32 numerator, u32 denominator)
+> +{
+> +	u64 rem, res;
+> +
+> +	if (numerator == 0 || denominator == 0)
+> +		return false;
+
+What's wrong with the usual (!numerator || !denominator) notation?
+
+> +
+> +	res = div64_u64_rem(*val, denominator, &rem) * numerator;
+> +	*val = res + div_u64(rem * numerator, denominator);
+> +	return true;
+> +}
+> +
+> +static bool convert_base_to_cs(struct system_counterval_t *scv)
+> +{
+> +	struct clocksource *cs = tk_core.timekeeper.tkr_mono.clock;
+> +	struct clocksource_base *base = cs->base;
+> +
+> +	/* The timestamp was taken from the time keeper clock source */
+> +	if (cs->id == scv->cs_id)
+> +		return true;
+> +
+> +	/* Check whether cs_id matches the base clock */
+> +	if (!base || base->id != scv->cs_id)
+> +		return false;
+> +
+> +	/* Avoid conversion to a less precise clock */
+> +	if (scv->nsecs && cs->freq_khz != 0 && base->freq_khz < cs->freq_khz) {
+> +		if (!convert_clock(&scv->cycles, cs->freq_khz, USEC_PER_SEC))
+> +			return false;
+> +	} else {
+> +		if (scv->nsecs) {
+> +			if (!convert_clock(&scv->cycles, base->freq_khz, USEC_PER_SEC))
+> +				return false;
+> +		}
+> +		if (!convert_clock(&scv->cycles, base->numerator, base->denominator))
+> +			return false;
+> +	}
+
+The above logic makes my brain hurt.
+
+It's a reaonable requirement that cs->freq must be != 0 when sc->base !=
+NULL and then converting from nanoseconds can always use cs->freq no
+matter what the value of the base frequency is. Even for the case where
+the base frequency is larger than cs->freq because the double conversion
+does not give you more precision, right?
+
+> +	scv->cycles += base->offset;
+
+So the whole thing can be reduced to:
+
+   nom = scv->nsecs ? cs->freq_khz : base->numerator;
+   den = scv->nsecs ? USEC_PER_SEC : base->denominator;
+
+   convert(&scv->cycles, nom, den);
+   scv->cycles += base->offset;
+
+Thanks,
+
+        tglx
