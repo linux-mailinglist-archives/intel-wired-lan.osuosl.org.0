@@ -1,97 +1,100 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5972B84E4AB
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  8 Feb 2024 17:06:37 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5FDA984E4AC
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  8 Feb 2024 17:06:39 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id C4C336F7B4;
-	Thu,  8 Feb 2024 16:06:35 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id E8E4F6FAD3;
+	Thu,  8 Feb 2024 16:06:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ZcDloFWOjqCx; Thu,  8 Feb 2024 16:06:35 +0000 (UTC)
+	with ESMTP id LfT1hSjjvC-n; Thu,  8 Feb 2024 16:06:36 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D756E615F4
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2BF16617B8
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1707408394;
-	bh=SAalLMEPsSD/09IiHiwS+PzKyKGItg6LwK/MHBE68Iw=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=0MlrctjDfojs3ZBwhkoLskVHk/Jpd5ShoApwxg784/ykUpkRqtDZ+hZHuIahX3J03
-	 Ms1UtioE+DtJWlKNppumoaSdvBPJ1y3aJNpyRsgOldeCRcyHtGfWYr8CH6Vwtk3MOH
-	 QmHJzayF+bSIu/JE5djlP17TZTGFTXnDe+ITfg8Jn/dPraP/bt16tAiiRF/M3tUKsD
-	 J7hf2i4poCeuzuPSbl17sAM8uruNXSu/UJVY62zItD3XxcDXkty0yPzIPAGW7ioJ3Y
-	 TzpCU/eGjHSBgV9C7RWgvzrD8SFff+3unbOiIKQ57b9oL7IhlENUHLBq3a4uO+An8x
-	 rxrblb/QhKB8Q==
+	s=default; t=1707408396;
+	bh=m2b1cGoGE6O9wuUG9B9+7/YSXWO8H0LBstm+bY//wdM=;
+	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=R6BvmH+cElCxw6ZCgD9Pc2p0400kMNa4vpPRr04dbjK2V2kejJ94Xay4S+orNQ2GE
+	 29Op1I5PXoQt7j2TAzRzYNqttnDje5L7Tu0I6iNKu9WhRv6n2yJRqZ4JbygmExSKTy
+	 M+mjOSpkQT88Z2Qy1GbjMmnDbHHAhWCmUnmZQP0asdqNt2pEQm6ZR71BKLrY5WNhYu
+	 JAT+cofrgRuoTSrfGyDE6B2btuXtYCY3Y3tjerfNhsEBzzWGgxx1ztC8VaOahcR567
+	 or4osFDBNzwWO8573OViX01F/CRIljLRJ18nHKfBiWjOX3BAxaEi9cGq3aicigDZey
+	 hM8muhZWlC2ng==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id D756E615F4;
-	Thu,  8 Feb 2024 16:06:34 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 2BF16617B8;
+	Thu,  8 Feb 2024 16:06:36 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 644ED1BF831
- for <intel-wired-lan@lists.osuosl.org>; Thu,  8 Feb 2024 08:25:09 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 772071BF831
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  8 Feb 2024 08:25:18 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 4F514840D9
- for <intel-wired-lan@lists.osuosl.org>; Thu,  8 Feb 2024 08:25:09 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 647CA84179
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  8 Feb 2024 08:25:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id XvdA8tVVgZmg for <intel-wired-lan@lists.osuosl.org>;
- Thu,  8 Feb 2024 08:25:08 +0000 (UTC)
+ with ESMTP id GbrbFit3FbSU for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  8 Feb 2024 08:25:17 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.129.124;
  helo=us-smtp-delivery-124.mimecast.com; envelope-from=ksundara@redhat.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 7343A840D1
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 7343A840D1
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 7896E8413D
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 7896E8413D
 Received: from us-smtp-delivery-124.mimecast.com
  (us-smtp-delivery-124.mimecast.com [170.10.129.124])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 7343A840D1
- for <intel-wired-lan@lists.osuosl.org>; Thu,  8 Feb 2024 08:25:08 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 7896E8413D
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  8 Feb 2024 08:25:17 +0000 (UTC)
 Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
  by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-5--56nbYMXOe67JYmp2I98qA-1; Thu,
- 08 Feb 2024 03:25:05 -0500
-X-MC-Unique: -56nbYMXOe67JYmp2I98qA-1
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-537-8Ve1q2OOOySylLJQVxvjlw-1; Thu,
+ 08 Feb 2024 03:25:12 -0500
+X-MC-Unique: 8Ve1q2OOOySylLJQVxvjlw-1
 Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
  [10.11.54.5])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 81FAE38143B7;
- Thu,  8 Feb 2024 08:25:04 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 4C6D229AA2D2;
+ Thu,  8 Feb 2024 08:25:12 +0000 (UTC)
 Received: from ksundara-mac.redhat.com (unknown [10.74.17.171])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 597301103A;
- Thu,  8 Feb 2024 08:24:58 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id BB8BA111F9;
+ Thu,  8 Feb 2024 08:25:06 +0000 (UTC)
 From: Karthik Sundaravel <ksundara@redhat.com>
 To: jesse.brandeburg@intel.com, anthony.l.nguyen@intel.com,
  davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
  pabeni@redhat.com, intel-wired-lan@lists.osuosl.org,
  netdev@vger.kernel.org, linux-kernel@vger.kernel.org
-Date: Thu,  8 Feb 2024 13:54:54 +0530
-Message-Id: <20240208082455.66726-1-ksundara@redhat.com>
+Date: Thu,  8 Feb 2024 13:54:55 +0530
+Message-Id: <20240208082455.66726-2-ksundara@redhat.com>
+In-Reply-To: <20240208082455.66726-1-ksundara@redhat.com>
+References: <20240208082455.66726-1-ksundara@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.5
 X-Mailman-Approved-At: Thu, 08 Feb 2024 16:06:32 +0000
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=redhat.com; 
- s=mimecast20190719; t=1707380706;
+ s=mimecast20190719; t=1707380716;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=SAalLMEPsSD/09IiHiwS+PzKyKGItg6LwK/MHBE68Iw=;
- b=KZpihYXhCI2x3bGvObI44gJkgCqn7w+hZ96t0mFy3xBFY5xLMfL6z3ILh71mDmn160lOAV
- qEhoCOCzO7fNle41rPbYp7VGqDcTc5RM0sebdgtpQV1Pu0buu3i1pB70+nFUahndwIS5E5
- larvv2LqzFQDzBS5/4SbXyoDuvjb6Wg=
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=m2b1cGoGE6O9wuUG9B9+7/YSXWO8H0LBstm+bY//wdM=;
+ b=hoSVrYLZrEEEc9G6pk+N2R+hcTpajJvHmVPZEAy5T/SjzWOmwme8ckqNBwOTOLWzceVAIw
+ AJVMGwR4r1pVCOL6pwCSZK3jBaw0Ig4AROWOqiFRHxw92yZjoiSiFjfcm6rmxfqquw4XnT
+ a1tcLywGnldghrhjfi3T6V0zMZdPhYQ=
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=redhat.com
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (1024-bit key,
- unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256
- header.s=mimecast20190719 header.b=KZpihYXh
+ dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
+ header.a=rsa-sha256 header.s=mimecast20190719 header.b=hoSVrYLZ
 Subject: [Intel-wired-lan] [PATCH v2] ice: Add get/set hw address for VFs
  using devlink commands
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -112,86 +115,122 @@ Cc: pmenzel@molgen.mpg.de, aharivel@redhat.com, jiri@resnulli.us,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+Changing the MAC address of the VF ports are not available
+via devlink. Add the function handlers to set and get
+the HW address for the VF ports.
 
+Signed-off-by: Karthik Sundaravel <ksundara@redhat.com>
+---
+ drivers/net/ethernet/intel/ice/ice_devlink.c | 89 +++++++++++++++++++-
+ 1 file changed, 88 insertions(+), 1 deletion(-)
 
-Thanks for the review comments and suggestions.
-In the V2 version of the patch, I have called ice_set_vf_mac() directly from the devlink port function handlers.
-
-I did the following testing to verify the changes.
-
-root@10:~# ethtool -i enp8s0f0np0 | grep bus
-bus-info: 0000:08:00.0
-
-root@10:~# devlink dev eswitch set pci/0000:08:00.0 mode switchdev
-Warning: ice: Changed eswitch mode to switchdev.
-
-root@10:~# echo 4 > /sys/class/net/enp8s0f0np0/device/sriov_numvfs 
-
-root@10:~# devlink port show
-pci/0000:08:00.0/0: type eth netdev enp8s0f0np0 flavour physical port 0 splittable true lanes 8
-pci/0000:08:00.0/2: type eth netdev enp8s0f0npf0vf0 flavour pcivf controller 0 pfnum 0 vfnum 0 external false splittable false
-  function:
-    hw_addr 1a:33:f2:e7:64:d8
-pci/0000:08:00.0/3: type eth netdev enp8s0f0npf0vf3 flavour pcivf controller 0 pfnum 0 vfnum 3 external false splittable false
-  function:
-    hw_addr 4e:ef:ca:9e:e7:5d
-pci/0000:08:00.0/4: type eth netdev enp8s0f0npf0vf1 flavour pcivf controller 0 pfnum 0 vfnum 1 external false splittable false
-  function:
-    hw_addr 5a:f0:e3:f8:41:93
-pci/0000:08:00.0/5: type eth netdev enp8s0f0npf0vf2 flavour pcivf controller 0 pfnum 0 vfnum 2 external false splittable false
-  function:
-    hw_addr 1a:62:c6:4b:d2:f0
-pci/0000:08:00.1/0: type eth netdev enp8s0f1np1 flavour physical port 1 splittable false
-
-root@10:~# devlink port function set  pci/0000:08:00.0/5 hw_addr 00:11:22:33:44:55
-
-root@10:~# devlink port show
-pci/0000:08:00.0/0: type eth netdev enp8s0f0np0 flavour physical port 0 splittable true lanes 8
-pci/0000:08:00.0/2: type eth netdev enp8s0f0npf0vf0 flavour pcivf controller 0 pfnum 0 vfnum 0 external false splittable false
-  function:
-    hw_addr 1a:33:f2:e7:64:d8
-pci/0000:08:00.0/3: type eth netdev enp8s0f0npf0vf3 flavour pcivf controller 0 pfnum 0 vfnum 3 external false splittable false
-  function:
-    hw_addr 4e:ef:ca:9e:e7:5d
-pci/0000:08:00.0/4: type eth netdev enp8s0f0npf0vf1 flavour pcivf controller 0 pfnum 0 vfnum 1 external false splittable false
-  function:
-    hw_addr 5a:f0:e3:f8:41:93
-pci/0000:08:00.0/5: type eth netdev enp8s0f0npf0vf2 flavour pcivf controller 0 pfnum 0 vfnum 2 external false splittable false
-  function:
-    hw_addr 00:11:22:33:44:55
-pci/0000:08:00.1/0: type eth netdev enp8s0f1np1 flavour physical port 1 splittable false
-
-root@10:~# ip link show enp8s0f0np0
-12: enp8s0f0np0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP mode DEFAULT group default qlen 1000
-    link/ether 40:a6:b7:18:dd:68 brd ff:ff:ff:ff:ff:ff
-    vf 0     link/ether 1a:33:f2:e7:64:d8 brd ff:ff:ff:ff:ff:ff, spoof checking on, link-state enable, trust off
-    vf 1     link/ether 5a:f0:e3:f8:41:93 brd ff:ff:ff:ff:ff:ff, spoof checking on, link-state enable, trust off
-    vf 2     link/ether 00:11:22:33:44:55 brd ff:ff:ff:ff:ff:ff, spoof checking on, link-state enable, trust off
-    vf 3     link/ether 4e:ef:ca:9e:e7:5d brd ff:ff:ff:ff:ff:ff, spoof checking on, link-state enable, trust off
-    
-root@10:~# ip link set dev enp8s0f0np0 vf 2 mac AA:BB:CC:DD:EE:FF
-
-root@10:~# ip link show enp8s0f0np0
-12: enp8s0f0np0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP mode DEFAULT group default qlen 1000
-    link/ether 40:a6:b7:18:dd:68 brd ff:ff:ff:ff:ff:ff
-    vf 0     link/ether 1a:33:f2:e7:64:d8 brd ff:ff:ff:ff:ff:ff, spoof checking on, link-state enable, trust off
-    vf 1     link/ether 5a:f0:e3:f8:41:93 brd ff:ff:ff:ff:ff:ff, spoof checking on, link-state enable, trust off
-    vf 2     link/ether aa:bb:cc:dd:ee:ff brd ff:ff:ff:ff:ff:ff, spoof checking on, link-state enable, trust off
-    vf 3     link/ether 4e:ef:ca:9e:e7:5d brd ff:ff:ff:ff:ff:ff, spoof checking on, link-state enable, trust off
-
-root@10:~# devlink port show
-pci/0000:08:00.0/0: type eth netdev enp8s0f0np0 flavour physical port 0 splittable true lanes 8
-pci/0000:08:00.0/2: type eth netdev enp8s0f0npf0vf0 flavour pcivf controller 0 pfnum 0 vfnum 0 external false splittable false
-  function:
-    hw_addr 1a:33:f2:e7:64:d8
-pci/0000:08:00.0/3: type eth netdev enp8s0f0npf0vf3 flavour pcivf controller 0 pfnum 0 vfnum 3 external false splittable false
-  function:
-    hw_addr 4e:ef:ca:9e:e7:5d
-pci/0000:08:00.0/4: type eth netdev enp8s0f0npf0vf1 flavour pcivf controller 0 pfnum 0 vfnum 1 external false splittable false
-  function:
-    hw_addr 5a:f0:e3:f8:41:93
-pci/0000:08:00.0/5: type eth netdev enp8s0f0npf0vf2 flavour pcivf controller 0 pfnum 0 vfnum 2 external false splittable false
-  function:
-    hw_addr aa:bb:cc:dd:ee:ff
-pci/0000:08:00.1/0: type eth netdev enp8s0f1np1 flavour physical port 1 splittable false
+diff --git a/drivers/net/ethernet/intel/ice/ice_devlink.c b/drivers/net/ethernet/intel/ice/ice_devlink.c
+index 80dc5445b50d..8455fa94a687 100644
+--- a/drivers/net/ethernet/intel/ice/ice_devlink.c
++++ b/drivers/net/ethernet/intel/ice/ice_devlink.c
+@@ -1576,6 +1576,92 @@ void ice_devlink_destroy_pf_port(struct ice_pf *pf)
+ 	devlink_port_unregister(&pf->devlink_port);
+ }
+ 
++/**
++ * ice_devlink_port_get_vf_mac_address - .port_fn_hw_addr_get devlink handler
++ * @port: devlink port structure
++ * @hw_addr: MAC address of the port
++ * @hw_addr_len: length of MAC address
++ * @extack: extended netdev ack structure
++ *
++ * Callback for the devlink .port_fn_hw_addr_get operation
++ * Return: zero on success or an error code on failure.
++ */
++
++static int ice_devlink_port_get_vf_mac_address(struct devlink_port *port,
++					       u8 *hw_addr, int *hw_addr_len,
++					       struct netlink_ext_ack *extack)
++{
++	struct devlink *devlink = port->devlink;
++	struct ice_pf *pf = devlink_priv(devlink);
++	struct device *dev = ice_pf_to_dev(pf);
++	struct devlink_port_attrs *attrs = &port->attrs;
++	struct devlink_port_pci_vf_attrs *pci_vf;
++	int vf_id;
++	struct ice_vf *vf;
++
++	if (attrs->flavour == DEVLINK_PORT_FLAVOUR_PCI_VF) {
++		pci_vf = &attrs->pci_vf;
++		vf_id = pci_vf->vf;
++	} else {
++		dev_err(dev, "Unable to get the vf id for PF %d\n", pf->hw.pf_id);
++		return -EADDRNOTAVAIL;
++	}
++	vf = ice_get_vf_by_id(pf, vf_id);
++	if (!vf) {
++		dev_err(dev, "Unable to get the vf for PF %d\n", pf->hw.pf_id);
++		return -EINVAL;
++	}
++	ether_addr_copy(hw_addr, vf->dev_lan_addr);
++	*hw_addr_len = ETH_ALEN;
++	return 0;
++}
++
++/**
++ * ice_devlink_port_set_vf_mac_address - .port_fn_hw_addr_set devlink handler
++ * @port: devlink port structure
++ * @hw_addr: MAC address of the port
++ * @hw_addr_len: length of MAC address
++ * @extack: extended netdev ack structure
++ *
++ * Callback for the devlink .port_fn_hw_addr_set operation
++ * Return: zero on success or an error code on failure.
++ */
++static int ice_devlink_port_set_vf_mac_address(struct devlink_port *port,
++					       const u8 *hw_addr,
++					       int hw_addr_len,
++					       struct netlink_ext_ack *extack)
++{
++	struct devlink *devlink = port->devlink;
++	struct ice_pf *pf = devlink_priv(devlink);
++	struct device *dev = ice_pf_to_dev(pf);
++	struct net_device *netdev = port->type_eth.netdev;
++	struct devlink_port_attrs *attrs = &port->attrs;
++	struct devlink_port_pci_vf_attrs *pci_vf;
++	int vf_id;
++	u8 mac[ETH_ALEN];
++
++	if (attrs->flavour == DEVLINK_PORT_FLAVOUR_PCI_VF) {
++		pci_vf = &attrs->pci_vf;
++		vf_id = pci_vf->vf;
++	} else {
++		dev_err(dev, "Unable to get the vf id for PF %d\n", pf->hw.pf_id);
++		return -EADDRNOTAVAIL;
++	}
++
++	if (!netdev) {
++		dev_err(dev, "Unable to get the netdev for PF %d\n", pf->hw.pf_id);
++		return -EADDRNOTAVAIL;
++	}
++	ether_addr_copy(mac, hw_addr);
++
++	return ice_set_vf_mac(netdev, vf_id, mac);
++}
++
++static const struct devlink_port_ops ice_devlink_vf_port_ops = {
++	.port_fn_hw_addr_get = ice_devlink_port_get_vf_mac_address,
++	.port_fn_hw_addr_set = ice_devlink_port_set_vf_mac_address,
++};
++
+ /**
+  * ice_devlink_create_vf_port - Create a devlink port for this VF
+  * @vf: the VF to create a port for
+@@ -1611,7 +1697,8 @@ int ice_devlink_create_vf_port(struct ice_vf *vf)
+ 	devlink_port_attrs_set(devlink_port, &attrs);
+ 	devlink = priv_to_devlink(pf);
+ 
+-	err = devlink_port_register(devlink, devlink_port, vsi->idx);
++	err = devlink_port_register_with_ops(devlink, devlink_port,
++					     vsi->idx, &ice_devlink_vf_port_ops);
+ 	if (err) {
+ 		dev_err(dev, "Failed to create devlink port for VF %d, error %d\n",
+ 			vf->vf_id, err);
+-- 
+2.39.3 (Apple Git-145)
 
