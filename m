@@ -2,86 +2,91 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id EA47484FAFF
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  9 Feb 2024 18:27:21 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1B30884FB25
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  9 Feb 2024 18:38:52 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 8C83B41DAF;
-	Fri,  9 Feb 2024 17:27:20 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 2764341D94;
+	Fri,  9 Feb 2024 17:38:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id LAOsBIT9FFcL; Fri,  9 Feb 2024 17:27:20 +0000 (UTC)
+	with ESMTP id PlWS8PrK5M8P; Fri,  9 Feb 2024 17:38:49 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 4AA8F41D36
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org BA70941DAF
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1707499639;
-	bh=/TO+ybPkS88o0Bgxb1pWNDY4seuQxVLEM6ufXH313xk=;
+	s=default; t=1707500328;
+	bh=DG2WHeJau3ZS6nua2SHtQcUTlmHlZBdMsHr/53YpF2Q=;
 	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=a/98TG5Ce+XkB5oztTCRZIuqaI7a0u3i7RbCzk/et7obB342G+Vb2FL/nQxmMfx94
-	 N40JLGp4P7519KbYFTpoiap2DYn8TC39KuWRS2lCA8C6KAzZCjbZc8LvzNU6dKLdrt
-	 m9T+aNoDKo8wv3uhnHV6ru4upCaJjQNISu9FlK08BOTZARZ+eweXNFREcX5Bkt4Jaz
-	 3ucICO9brVLyWVFxF7JJ8Mo0Bq4S473VZVMv8bikeMslzpHWHEczyJ7QHoOfoNEC/n
-	 mcMt6ywX030jb/NuRwGXZ3CDT23ytNqxAatxDi/AAip6pqbjY0p9PQTkMCYp1Jm8B4
-	 WamxYv9ZeAH6Q==
+	b=zXcCl6HpnPdjfrqF3cJwoYoG6FdgFFxa9E686OhD3fQPloIjV7CnNyLhHLEcTE0zJ
+	 LJ/sI8LDYg/SvpJo1w7VKqNyOfunJ60mTswUfpkOR2yqibE4UANv0lg/5hkZpJpR6q
+	 Ey9D8Vr7TllaN1sTSHQ7GGAyKCEFVDTVLy8lQORA/u1rg1UbA/WQQK6WRuBxPxXClR
+	 AgfXlQKOEMoou5b+DXi/IWwKMa5IjELgFE84b7oDNNi8q0L3IvntfMFf4ZHfNoF2MP
+	 aucvin7i0ajVGfWMGo/X/ewsfOwEBd8+MMT/HNKQd9LvEtZn51Q+TeScV8Oofw8ePe
+	 BqN5sr9zSIJKA==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 4AA8F41D36;
-	Fri,  9 Feb 2024 17:27:19 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id BA70941DAF;
+	Fri,  9 Feb 2024 17:38:48 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id EBB9B1BF40F
- for <intel-wired-lan@lists.osuosl.org>; Fri,  9 Feb 2024 17:27:16 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 61A4F1BF40F
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  9 Feb 2024 17:38:46 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id E4BD1607D6
- for <intel-wired-lan@lists.osuosl.org>; Fri,  9 Feb 2024 17:27:16 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 4CF654256B
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  9 Feb 2024 17:38:46 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id m0BWEZ2OUtGn for <intel-wired-lan@lists.osuosl.org>;
- Fri,  9 Feb 2024 17:27:15 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=139.178.84.217;
- helo=dfw.source.kernel.org; envelope-from=horms@kernel.org;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org D5B29607BD
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D5B29607BD
-Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
- by smtp3.osuosl.org (Postfix) with ESMTPS id D5B29607BD
- for <intel-wired-lan@lists.osuosl.org>; Fri,  9 Feb 2024 17:27:14 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id QecPe7HiYesg for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  9 Feb 2024 17:38:45 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2604:1380:4641:c500::1; helo=dfw.source.kernel.org;
+ envelope-from=horms@kernel.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 81E0342514
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 81E0342514
+Received: from dfw.source.kernel.org (dfw.source.kernel.org
+ [IPv6:2604:1380:4641:c500::1])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 81E0342514
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  9 Feb 2024 17:38:45 +0000 (UTC)
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by dfw.source.kernel.org (Postfix) with ESMTP id 9A15262073;
- Fri,  9 Feb 2024 17:27:13 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 97822C433C7;
- Fri,  9 Feb 2024 17:27:11 +0000 (UTC)
-Date: Fri, 9 Feb 2024 17:25:39 +0000
+ by dfw.source.kernel.org (Postfix) with ESMTP id A51FA62097;
+ Fri,  9 Feb 2024 17:38:44 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 712F2C433F1;
+ Fri,  9 Feb 2024 17:38:41 +0000 (UTC)
+Date: Fri, 9 Feb 2024 17:38:38 +0000
 From: Simon Horman <horms@kernel.org>
-To: Wojciech Drewek <wojciech.drewek@intel.com>
-Message-ID: <20240209172539.GG1533412@kernel.org>
-References: <20240205130357.106665-1-wojciech.drewek@intel.com>
- <20240205130357.106665-3-wojciech.drewek@intel.com>
+To: Takeru Hayasaka <hayatake396@gmail.com>
+Message-ID: <20240209173838.GH1533412@kernel.org>
+References: <20240131134621.1017530-1-hayatake396@gmail.com>
+ <20240131131258.47c05b7e@kernel.org>
+ <CADFiAc+y_SXGtVqZkLoiWw-YBArMovMkuWw3X596QDwEtdBJ2g@mail.gmail.com>
+ <CADFiAcK_XjLNjzZuF+OZDWjZA4tFB8VgeYXVJHR8+N3XryGxwA@mail.gmail.com>
+ <20240208072351.3a806dda@kernel.org>
+ <CADFiAc+i9i29SL0PM8gzmDG6o=ARS6fSrTPKNyqh9RLmWWB78A@mail.gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20240205130357.106665-3-wojciech.drewek@intel.com>
+In-Reply-To: <CADFiAc+i9i29SL0PM8gzmDG6o=ARS6fSrTPKNyqh9RLmWWB78A@mail.gmail.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1707499633;
- bh=fJ6NONlFF7HHwdpssZytfNNj+QKkFtEm5uaVaeAR3HY=;
+ d=kernel.org; s=k20201202; t=1707500324;
+ bh=HravDwgHEdCMpMGa6CrqloF7sVySm2L8D8y1O2Do7lc=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=GD6mT/AYXR6MPkeJBHTv/5fMb5ykQN1CQTj+B8bHPSyueMiEuEfXScMtueL+bKB7n
- jfXOQbu6yTBSfPAtMkcRyLinZQgLmjDPhmgJpAmHPAxL5GdTQIUs4aN5UPgCYIvF9l
- Hta1EWpr/9saahDd2nc70OAxsC13uMK2XA8jqdaEIENf+esSRx/Cj6UU9G+kekJc5X
- kgiLUI85cmj7kGIsBa35KN9O/o7LXl8gdHxtqWd89vQXaNLmXAlm3CNFOsLRh57sL9
- qHeyUvOiAyNHTNIYPxFsxqxWwHkSZcH5y2ZT8/ddpyLNC/qoh2Mg7930gjhBami9Qb
- ji4U/gjMELF4Q==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ b=kerfjuN5jyjh7Iq+1DOcDabahKbMAmoRDLrtb30fs4WS1zuswq4yoePYrSk7sLA5B
+ ABE3qeI81FOY0b3nQF3bBfYoTzpxXpxvOvvVZZY+tKW3Iqcb8FEurBWf8UOkQqkpsF
+ hvUcYu6Al9JHWShocndQW1QrIOYHqdhJ22jeSiZKaw/3hvAnljZJVrgVBd8SX6K6YD
+ RK+e0HrHMlpB1/dNfmnLLHbm2mKCcjaj1xBakrPbywxz1VQO0UTm+ZTBgtrKnSvQR2
+ Jv/pTzO/mhp5gmKijD4th/XDi81p8TaNWTeXTLjRptBuYqz0jb0yTQWdwi80RAKVH4
+ 4AnarJn9OZzbg==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=GD6mT/AY
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v5 2/2] ice: Fix debugfs with
- devlink reload
+ header.a=rsa-sha256 header.s=k20201202 header.b=kerfjuN5
+Subject: Re: [Intel-wired-lan] [PATCH net-next v6] ethtool: ice: Support for
+ RSS settings to GTP from ethtool
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,23 +99,37 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: jiri@resnulli.us, netdev@vger.kernel.org, bcreeley@amd.com,
- intel-wired-lan@lists.osuosl.org, paul.m.stillwell.jr@intel.com,
- przemyslaw.kitszel@intel.com, vadim.fedorenko@linux.dev
+Cc: Jonathan Corbet <corbet@lwn.net>, intel-wired-lan@lists.osuosl.org,
+ linux-doc@vger.kernel.org, Jesse Brandeburg <jesse.brandeburg@intel.com>,
+ laforge@gnumonks.org, linux-kernel@vger.kernel.org, vladimir.oltean@nxp.com,
+ Eric Dumazet <edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
+ netdev@vger.kernel.org, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>,
+ mailhol.vincent@wanadoo.fr
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, Feb 05, 2024 at 02:03:57PM +0100, Wojciech Drewek wrote:
-> During devlink reload it is needed to remove debugfs entries
-> correlated with only one PF. ice_debugfs_exit() removes all
-> entries created by ice driver so we can't use it.
+On Fri, Feb 09, 2024 at 02:25:50AM +0900, Takeru Hayasaka wrote:
+> Hi Jakub-san
 > 
-> Introduce ice_debugfs_pf_deinit() in order to release PF's
-> debugfs entries. Move ice_debugfs_exit() call to ice_module_exit(),
-> it makes more sense since ice_debugfs_init() is called in
-> ice_module_init() and not in ice_probe().
+> Thank you for your reply.
 > 
-> Signed-off-by: Wojciech Drewek <wojciech.drewek@intel.com>
+> > We're expecting a v7 with the patch split into two.
+> 
+> I see, I had not informed you that we have released v7. My apologies.
+> The split patch for v7 has already been submitted. Could you please
+> check this link?
+> https://patchwork.kernel.org/project/netdevbpf/patch/20240201033310.1028154-1-hayatake396@gmail.com/
+> https://patchwork.kernel.org/project/netdevbpf/patch/20240201033310.1028154-2-hayatake396@gmail.com/
 
-Reviewed-by: Simon Horman <horms@kernel.org>
+Hi Hayasaka-san,
 
+It appears that the series at the link above has been marked as
+"Changes Requested" in patchwork. Although I am unsure why.
+
+I would suggest reposting it, say with the tags supplied by Marcin Szycik
+as [PATCH net-next v8].
+
+Also, please don't top-post on the Kernel MLs [1]
+
+[1] https://www.kernel.org/doc/html/latest/process/submitting-patches.html#use-trimmed-interleaved-replies-in-email-discussions
