@@ -2,88 +2,82 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id BE6EA84FA75
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  9 Feb 2024 18:02:14 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7281C84FADD
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  9 Feb 2024 18:19:21 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id E8CF541DAF;
-	Fri,  9 Feb 2024 17:02:12 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 23FCF42AC1;
+	Fri,  9 Feb 2024 17:19:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id gt7y21SyWl9I; Fri,  9 Feb 2024 17:02:12 +0000 (UTC)
+	with ESMTP id l1o3Cl45NHLl; Fri,  9 Feb 2024 17:19:19 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org D70DE41C13
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 500DB42A97
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1707498132;
-	bh=iG44eswF+02dyR8FkmsxSAMtrPVQDcHharHQd4YJAXY=;
+	s=default; t=1707499159;
+	bh=mCTkf7Uhk05htdUngOFotI43lknoNa0E5lP/jBopk84=;
 	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=xEtaA9THEwhBMygpfLEz3fSwv7ciABwYqAhyCqk4ScGfaZDkiTydIcBotu0ZPG77r
-	 aVUaz8iwwi5XOIufpHL1ATYm8y+Tw8PE2axCg3UOYS3LFK+cRLTur91eWUc29McYjI
-	 dkPHUA3xe7+B51eZcuYddOo9j8ztL1AU2ENFyMIYLWyoBqEGI5N0TRRPvE+rE0sEi9
-	 T1oNgL5I5cUY/x3SL1Q58UBZd3ideociyBkhXixdoTkqqqlLE27KVoLhe8ioNcyJ/f
-	 AbTv2ZSoPHvUzTZ+TU3LRIfOKmkHDIVlf0YVf5zMMavesg0waBHrt924de+Zru5gu/
-	 yGGigXOTb11MA==
+	b=tkTGUiJQpf/pCHqC0x2UjJ4NpJKImrH/kXhuFFWDK1f6yl+HfrxWQFgkenqflea4g
+	 T/SO7i2V20ASl6/8vUS167JXQe04U5YMQNxJBKNkc4TV412bvg5As+fB233p0ezHlY
+	 uB6kkqLj1OQpVfSCcnvx4Pih7r18mWA+6RrwJc77Ej+AuhIZQaWl63FR+Brh0EWtKd
+	 u5/3ShZXVAr4zoLrXTYGlu1v9M7WL7f6wG8hFE0IZiMy6bwzNl9p8/u29dqtQFlhdv
+	 AeoHuviWeKZeQ1OzjklrxEx2l9u4bbGTJt+MC9gzCWykSI5a9MW9+B9SpbDpF6WU9t
+	 8qlqEG4l2YqUg==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id D70DE41C13;
-	Fri,  9 Feb 2024 17:02:11 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 500DB42A97;
+	Fri,  9 Feb 2024 17:19:19 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 3D3701BF389
- for <intel-wired-lan@lists.osuosl.org>; Fri,  9 Feb 2024 17:02:09 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 2DD2E1BF318
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  9 Feb 2024 17:19:17 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 34E1541A79
- for <intel-wired-lan@lists.osuosl.org>; Fri,  9 Feb 2024 17:02:09 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 2708242265
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  9 Feb 2024 17:19:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 3UzjCZVLmRIp for <intel-wired-lan@lists.osuosl.org>;
- Fri,  9 Feb 2024 17:02:06 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2604:1380:40e1:4800::1; helo=sin.source.kernel.org;
- envelope-from=horms@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org EFE1641AC9
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org EFE1641AC9
-Received: from sin.source.kernel.org (sin.source.kernel.org
- [IPv6:2604:1380:40e1:4800::1])
- by smtp2.osuosl.org (Postfix) with ESMTPS id EFE1641AC9
- for <intel-wired-lan@lists.osuosl.org>; Fri,  9 Feb 2024 17:02:05 +0000 (UTC)
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by sin.source.kernel.org (Postfix) with ESMTP id CA548CE0224;
- Fri,  9 Feb 2024 17:02:01 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2FAFDC433F1;
- Fri,  9 Feb 2024 17:01:59 +0000 (UTC)
-Date: Fri, 9 Feb 2024 17:00:26 +0000
-From: Simon Horman <horms@kernel.org>
-To: Lukasz Plachno <lukasz.plachno@intel.com>
-Message-ID: <20240209170026.GB1533412@kernel.org>
-References: <20240209101823.27922-1-lukasz.plachno@intel.com>
- <20240209101823.27922-3-lukasz.plachno@intel.com>
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id cfnAku7qgTgy for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  9 Feb 2024 17:19:16 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=156.67.10.101;
+ helo=vps0.lunn.ch; envelope-from=andrew@lunn.ch; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 14C1541703
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 14C1541703
+Received: from vps0.lunn.ch (vps0.lunn.ch [156.67.10.101])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 14C1541703
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  9 Feb 2024 17:19:15 +0000 (UTC)
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+ (envelope-from <andrew@lunn.ch>)
+ id 1rYUWo-007P7U-3P; Fri, 09 Feb 2024 18:19:06 +0100
+Date: Fri, 9 Feb 2024 18:19:06 +0100
+From: Andrew Lunn <andrew@lunn.ch>
+To: Jon Maxwell <jmaxwell37@gmail.com>
+Message-ID: <135d4123-29f5-46dd-b06e-d5a66bd7f598@lunn.ch>
+References: <20240208221802.131087-1-jmaxwell37@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20240209101823.27922-3-lukasz.plachno@intel.com>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1707498121;
- bh=qhbgSvAgxPjP/9ZwtR46TunoUtvWH6BA76JdIbxr7k0=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=Fn1NBWl0V5uL6nOT8L+D3b7lp5CfAJ2taUHdg1oqVpEH2vM7MMWsgLa+CzDVGSMj5
- bmew4w+hpYcn3hoD4z9D1Q52KEeLlNZbIatKDtSJo5CWlfH3vp/nxqjYmtXu4/jegi
- s6sVQZZV/vq7IDV/iXe8crwbud262KbZSfEz/3VDauA7ycJaDYKVZ/QvVCJaOAbOl8
- sDqC26HWaWA9PoYeJR0gchNqer4LF703NmFfhf7HzvvafccflVfBMpXL10v+PudrjN
- +T+K3LtZnQhyl3V92qYUoYp/kiEqzQfz0YLVnFvqhLxu9Z/M1cwRBmCNSaegRUdJm3
- mjJywghtoFMsQ==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+In-Reply-To: <20240208221802.131087-1-jmaxwell37@gmail.com>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt;
+ c=relaxed/relaxed; d=lunn.ch; 
+ s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+ References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+ Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+ Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+ bh=mCTkf7Uhk05htdUngOFotI43lknoNa0E5lP/jBopk84=; b=LHznyKEGKRt7UxP+B/ChINmYVD
+ fZWLUuYEyPS5FhCXMRw/ImIQBWn503zlvLefjzwSgOG+QwOlAnW06F8p38bPX+ksKWjDOi9ORuN+3
+ LWP4qJOtgpJ10JjchxgOVW4PEHkw4jZY/a4xnYq7ss0K3AJ62uOBJUjcntUZYILHyJaA=;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20201202 header.b=Fn1NBWl0
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v6 2/2] ice: Implement
- 'flow-type ether' rules
+ header.from=lunn.ch
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (1024-bit key,
+ unprotected) header.d=lunn.ch header.i=@lunn.ch header.a=rsa-sha256
+ header.s=20171124 header.b=LHznyKEG
+Subject: Re: [Intel-wired-lan] [net-next v2] intel: make module parameters
+ readable in sys filesystem
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,30 +90,22 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: pmenzel@molgen.mpg.de, brett.creeley@amd.com, netdev@vger.kernel.org,
- Jakub Buchocki <jakubx.buchocki@intel.com>, aleksander.lobakin@intel.com,
- intel-wired-lan@lists.osuosl.org,
- Mateusz Pacuszka <mateuszx.pacuszka@intel.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>
+Cc: intel-wired-lan@lists.osuosl.org, jesse.brandeburg@intel.com,
+ linux-kernel@vger.kernel.org, edumazet@google.com, anthony.l.nguyen@intel.com,
+ netdev@vger.kernel.org, kuba@kernel.org, pabeni@redhat.com,
+ davem@davemloft.net
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Fri, Feb 09, 2024 at 11:18:23AM +0100, Lukasz Plachno wrote:
+On Fri, Feb 09, 2024 at 09:18:02AM +1100, Jon Maxwell wrote:
+> v2: Remove the "debug" module parameter as per Andrew Lunns suggestion.
+>     It's not really needed as ethtool msglvl can control that.
 
-...
+It is normal to places comments like the above under the ---. In its
+current place, it will be part of the commit message. Under the --- it
+gets dropped when the patch is applied.
 
-> diff --git a/drivers/net/ethernet/intel/ice/ice_fdir.c b/drivers/net/ethernet/intel/ice/ice_fdir.c
-> index 1f7b26f38818..ec8a84b80a73 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_fdir.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_fdir.c
-> @@ -4,6 +4,8 @@
->  #include "ice_common.h"
->  
->  /* These are training packet headers used to program flow director filters. */
-> +static const u8 ice_fdir_eth_pkt[22] = {0};
-> +
+    Andrew
 
-I think it was agreed to drop the "{0}" in the review of v5 as it is
-unnecessary.
-
-...
+---
+pw-bot: cr
