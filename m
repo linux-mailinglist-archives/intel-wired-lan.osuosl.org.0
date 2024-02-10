@@ -1,93 +1,87 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 015BC850219
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 10 Feb 2024 03:10:17 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6840F8502BF
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 10 Feb 2024 07:27:54 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 7708B60878;
-	Sat, 10 Feb 2024 02:10:16 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 1D8D64274D;
+	Sat, 10 Feb 2024 06:27:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id tN1wj2G_Zlut; Sat, 10 Feb 2024 02:10:14 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id L7Eq94azu6WM; Sat, 10 Feb 2024 06:27:50 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 231CB6087D
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C701342854
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1707531014;
-	bh=yRkjLp7+NJQ25U61llSBie9gINcrkYfO9QW77vfi8ag=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=5aJ2BbHZss6JT98ITolh4+DZCCMETswV5laU6EZdZ2cY5rw9VCMiki0KCLur7DeG6
-	 yPFTsBkpr3sB3+hbs29YyArrHgli1KwDh2m/2++HTCM6v5ctB0q1Q5UNcTa2mGYgmZ
-	 Ta1n2R0lenz9UrneX2vH85Ly+a0R0FlWwr0DEk5mWKvXw3NmciIqByq1QCd2L1tl0F
-	 RSqs4BU/M5J+1XljmqG+lLrxw6ZZSJksuT/m5Pj8a3sijtr+W3lroaAzf3mKDtuA7j
-	 W3zarVTOgqTUaD+ilC/BVIMRNzC1IGbywg524+jr8Q2nP04f8sXycl8M73bL8WJeDB
-	 oUDxeI+BG7/VQ==
+	s=default; t=1707546469;
+	bh=awcl9nTBbGyoozcIIg4CPpVcrgYzlNS1lnXh/qHGk5c=;
+	h=Date:From:To:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=TSwd9Pb73oHmTHyu4hbYweS4x1RBrRKaSAFYt6d1X96APGwHTm+wDTmDf7o3t4Ztr
+	 36wdiEiGix+7UqWXX6korX13Ueuvz/kkFqNEHR5WwjiEI/lrKfHQXCD7EIh9/SssGe
+	 8KsUE/yPaMznXOWYTMzsj82GbCrw+pb1rrxR7Nd9Dx/4l8XyaH2uDbhnue07Br4xmE
+	 ntoSoG+JY35yFC/PRaNIiLwtfg8OadllIQYzkP0nZwCFP+qx0wHr+0iO/92qbAyxrd
+	 7sqCDRDiaXEqcLUHK+hQcA53tJ4KfU974toSut1joM/uqluOia3cbzri6+Sycn6tXH
+	 8jYVolF3x7WDQ==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 231CB6087D;
-	Sat, 10 Feb 2024 02:10:14 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id C701342854;
+	Sat, 10 Feb 2024 06:27:49 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id B36E41BF326
- for <intel-wired-lan@lists.osuosl.org>; Sat, 10 Feb 2024 02:10:12 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 406F01BF345
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 10 Feb 2024 06:27:47 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 9E98084290
- for <intel-wired-lan@lists.osuosl.org>; Sat, 10 Feb 2024 02:10:12 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 1623F42717
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 10 Feb 2024 06:27:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id V12AdEdziY7W for <intel-wired-lan@lists.osuosl.org>;
- Sat, 10 Feb 2024 02:10:11 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.12;
- helo=mgamail.intel.com; envelope-from=jesse.brandeburg@intel.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org E6FE584277
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E6FE584277
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.12])
- by smtp1.osuosl.org (Postfix) with ESMTPS id E6FE584277
- for <intel-wired-lan@lists.osuosl.org>; Sat, 10 Feb 2024 02:10:10 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10979"; a="12913553"
-X-IronPort-AV: E=Sophos;i="6.05,258,1701158400"; d="scan'208";a="12913553"
-Received: from orviesa003.jf.intel.com ([10.64.159.143])
- by orvoesa104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 09 Feb 2024 18:10:08 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.05,258,1701158400"; 
-   d="scan'208";a="6739958"
-Received: from jbrandeb-coyote30.jf.intel.com ([10.166.29.19])
- by ORVIESA003-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 09 Feb 2024 18:10:07 -0800
-From: Jesse Brandeburg <jesse.brandeburg@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Fri,  9 Feb 2024 18:09:57 -0800
-Message-Id: <20240210021000.2011419-1-jesse.brandeburg@intel.com>
-X-Mailer: git-send-email 2.39.3
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id elahfTvHgS2t for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 10 Feb 2024 06:27:45 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=145.40.73.55;
+ helo=sin.source.kernel.org; envelope-from=kuba@kernel.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 2A02D426B6
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2A02D426B6
+Received: from sin.source.kernel.org (sin.source.kernel.org [145.40.73.55])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 2A02D426B6
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 10 Feb 2024 06:27:44 +0000 (UTC)
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by sin.source.kernel.org (Postfix) with ESMTP id 916DBCE217C;
+ Sat, 10 Feb 2024 06:27:40 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 59DA3C433C7;
+ Sat, 10 Feb 2024 06:27:39 +0000 (UTC)
+Date: Fri, 9 Feb 2024 22:27:38 -0800
+From: Jakub Kicinski <kuba@kernel.org>
+To: Saeed Mahameed <saeed@kernel.org>
+Message-ID: <20240209222738.4cf9f25b@kernel.org>
+In-Reply-To: <20240208035352.387423-16-saeed@kernel.org>
+References: <20240208035352.387423-1-saeed@kernel.org>
+ <20240208035352.387423-16-saeed@kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1707531011; x=1739067011;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=fLgeJ7EXIuki7yDq2VZpQSWedocXdbs1uC+OWXjr+BA=;
- b=gBGoTAVGTsz4LyVy3wi+ldCUYE8ILDDn1S9mqWrJbdwQwTRamaNNJRik
- UutEEtJOj+yTNeUxwzGAQe1QaMCIsb4Ki9HijDO/QCZGwPb5bOfjH1Z40
- GGR5uDa4mlPjj4mvqL79DBpCsou38EtzZ1N0zpyuB465LiuRPd1xABfpU
- TnpYjb5lC6p3K+biDtn3tWf3M97LmxSQ7fE+wf4u4Q+FgLS1ZpWMOBM1t
- lgfOmqav7H15/yat7dj62S90iXKiRmOfvV54JOjeKShRUksEfXs65EvNW
- zVzwgKGMzrn6TcxUcbZJEF1GxA68sVF3e5w5e3goOBXdwVTSZXbsLdH3E
- A==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ d=kernel.org; s=k20201202; t=1707546459;
+ bh=//ztP7QnwQKI0oQKGlfRNG3+CmCQaT6clwljA0nWTII=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=aSJjWUwBY7hU+n5p69HJF+MsQroKgZuYSpIZEVY32+JsQzVTjK7zHGDHVqKtnChAA
+ BDhy9S0KS+6u1ZrHXcAOgrd/jtGXa4zIkuti60kMkKRUCA18rTraHmr9yxWxvguVKh
+ NvCnFsOkq/FL5qdFus5s7nUdJFrWgKP3c6yst9CvDz7rfsSzTXVqft72WhBXHyI6XU
+ uUAttgTlywZyBX4uh5ttXiiY78bjLM6aPLqy8dXHIgIlK1MPIIHjFka271vRjpo7LA
+ 9OhnssJ+vBeuo0I0WEEXn8r+P4blpIwYmXkfsKsZreUf2zdcdlX14GUmXf1aQFsJre
+ x/+iMZO0lwZHA==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ header.from=kernel.org
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=gBGoTAVG
-Subject: [Intel-wired-lan] [PATCH RFC net-next v1] net: rework FCOE and RFS
- ops
+ unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
+ header.s=k20201202 header.b=aSJjWUwB
+Subject: Re: [Intel-wired-lan] [net-next V2 15/15] Documentation: net/mlx5:
+ Add description for Socket-Direct netdev combining
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,412 +94,195 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Kory Maincent <kory.maincent@bootlin.com>, Ariel Elior <aelior@marvell.com>,
- Manish Chopra <manishc@marvell.com>, netdev@vger.kernel.org,
- Richard Cochran <richardcochran@gmail.com>,
- Jesse Brandeburg <jesse.brandeburg@intel.com>,
- Sudarsana Kalluru <skalluru@marvell.com>, Emeel Hakim <ehakim@nvidia.com>,
- Eric Dumazet <edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
- Vadim Fedorenko <vadim.fedorenko@linux.dev>,
- Subbaraya Sundeep <sbhatta@marvell.com>, Raju Rangoju <rajur@chelsio.com>,
- Maxim Georgiev <glipus@gmail.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>
+Cc: netdev@vger.kernel.org, Gal Pressman <gal@nvidia.com>,
+ Tariq Toukan <tariqt@nvidia.com>, Eric Dumazet <edumazet@google.com>,
+ intel-wired-lan@lists.osuosl.org, Andy Gospodarek <andy@greyhouse.net>,
+ Michael Chan <michael.chan@broadcom.com>, Paolo Abeni <pabeni@redhat.com>,
+ Saeed Mahameed <saeedm@nvidia.com>, "David S. Miller" <davem@davemloft.net>,
+ Leon Romanovsky <leonro@nvidia.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-[ Sent as RFC to gauge whether this is better than what we have ]
+On Wed,  7 Feb 2024 19:53:52 -0800 Saeed Mahameed wrote:
+> From: Tariq Toukan <tariqt@nvidia.com>
+> 
+> Add documentation for the feature and some details on some design decisions.
 
-As demonstrated with the macros in include/linux/pm.h, from commit
-1a3c7bb08826 ("PM: core: Add new *_PM_OPS macros, deprecate old ones"),
-the networking layer can benefit from some of the same logic to remove
-ifdef CONFIG_FOO blocks from code and move the complicated management of
-=y and =m variants causing "unused function" warnings from the
-developer, and put them into the header file.
+Thanks.
 
-This adds several new helpers for drivers to use instead of ifdefs
-SET_FCOE_OPS()
-SET_FCOE_GET_WWN_OPS()
-SET_RFS_ACCEL_OPS()
+> diff --git a/Documentation/networking/device_drivers/ethernet/mellanox/mlx5/sd.rst b/Documentation/networking/device_drivers/ethernet/mellanox/mlx5/sd.rst
 
-And the idea is that you can get rid of #ifdef CONFIG_BLAH around the
-declarations of these functions that are only called from an ops
-pointer, and you can declare the population of the ops members with the
-new macros which avoid filling in values when the ifdef is not enabled.
+SD which is not same SD which Jiri and William are talking about?
+Please spell out the name.
 
-NOTE:
-There is a bunch of code in ixgbe under IXGBE_FCOE defines which is only
-defined when CONFIG_FCOE is defined, but I didn't want to fix hundreds
-of those so just left most of them.
+Please make this a general networking/ documentation file.
 
-Signed-off-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
----
- .../net/ethernet/broadcom/bnx2x/bnx2x_cmn.c   |  2 --
- .../net/ethernet/broadcom/bnx2x/bnx2x_cmn.h   |  2 --
- .../net/ethernet/broadcom/bnx2x/bnx2x_main.c  |  5 +--
- .../net/ethernet/chelsio/cxgb4/cxgb4_main.c   |  4 +--
- drivers/net/ethernet/intel/ice/ice_arfs.h     |  8 -----
- drivers/net/ethernet/intel/ice/ice_main.c     |  4 +--
- drivers/net/ethernet/intel/ixgbe/ixgbe.h      |  7 ----
- drivers/net/ethernet/intel/ixgbe/ixgbe_main.c | 21 +++++-------
- .../net/ethernet/intel/ixgbe/ixgbe_sriov.c    |  8 ++---
- include/linux/netdevice.h                     | 34 +++++++++++++++++--
- net/8021q/vlan_dev.c                          | 18 +++-------
- 11 files changed, 49 insertions(+), 64 deletions(-)
+If other vendors could take a look and make sure this behavior makes
+sense for their plans / future devices that'd be great.
 
-diff --git a/drivers/net/ethernet/broadcom/bnx2x/bnx2x_cmn.c b/drivers/net/ethernet/broadcom/bnx2x/bnx2x_cmn.c
-index e9c1e1bb5580..0300e40c7ca6 100644
---- a/drivers/net/ethernet/broadcom/bnx2x/bnx2x_cmn.c
-+++ b/drivers/net/ethernet/broadcom/bnx2x/bnx2x_cmn.c
-@@ -4860,7 +4860,6 @@ int bnx2x_get_link_cfg_idx(struct bnx2x *bp)
- 	return LINK_CONFIG_IDX(sel_phy_idx);
- }
- 
--#ifdef NETDEV_FCOE_WWNN
- int bnx2x_fcoe_get_wwn(struct net_device *dev, u64 *wwn, int type)
- {
- 	struct bnx2x *bp = netdev_priv(dev);
-@@ -4882,7 +4881,6 @@ int bnx2x_fcoe_get_wwn(struct net_device *dev, u64 *wwn, int type)
- 
- 	return 0;
- }
--#endif
- 
- /* called with rtnl_lock */
- int bnx2x_change_mtu(struct net_device *dev, int new_mtu)
-diff --git a/drivers/net/ethernet/broadcom/bnx2x/bnx2x_cmn.h b/drivers/net/ethernet/broadcom/bnx2x/bnx2x_cmn.h
-index d8b1824c334d..afcef4a4d680 100644
---- a/drivers/net/ethernet/broadcom/bnx2x/bnx2x_cmn.h
-+++ b/drivers/net/ethernet/broadcom/bnx2x/bnx2x_cmn.h
-@@ -594,7 +594,6 @@ void bnx2x_free_mem_bp(struct bnx2x *bp);
-  */
- int bnx2x_change_mtu(struct net_device *dev, int new_mtu);
- 
--#ifdef NETDEV_FCOE_WWNN
- /**
-  * bnx2x_fcoe_get_wwn - return the requested WWN value for this port
-  *
-@@ -604,7 +603,6 @@ int bnx2x_change_mtu(struct net_device *dev, int new_mtu);
-  *
-  */
- int bnx2x_fcoe_get_wwn(struct net_device *dev, u64 *wwn, int type);
--#endif
- 
- netdev_features_t bnx2x_fix_features(struct net_device *dev,
- 				     netdev_features_t features);
-diff --git a/drivers/net/ethernet/broadcom/bnx2x/bnx2x_main.c b/drivers/net/ethernet/broadcom/bnx2x/bnx2x_main.c
-index 0d8e61c63c7c..e2795a6047b8 100644
---- a/drivers/net/ethernet/broadcom/bnx2x/bnx2x_main.c
-+++ b/drivers/net/ethernet/broadcom/bnx2x/bnx2x_main.c
-@@ -13030,10 +13030,7 @@ static const struct net_device_ops bnx2x_netdev_ops = {
- 	.ndo_get_vf_config	= bnx2x_get_vf_config,
- 	.ndo_set_vf_spoofchk	= bnx2x_set_vf_spoofchk,
- #endif
--#ifdef NETDEV_FCOE_WWNN
--	.ndo_fcoe_get_wwn	= bnx2x_fcoe_get_wwn,
--#endif
--
-+	SET_FCOE_GET_WWN_OPS(bnx2x_fcoe_get_wwn)
- 	.ndo_get_phys_port_id	= bnx2x_get_phys_port_id,
- 	.ndo_set_vf_link_state	= bnx2x_set_vf_link_state,
- 	.ndo_features_check	= bnx2x_features_check,
-diff --git a/drivers/net/ethernet/chelsio/cxgb4/cxgb4_main.c b/drivers/net/ethernet/chelsio/cxgb4/cxgb4_main.c
-index 2eb33a727bba..48dd7c89374d 100644
---- a/drivers/net/ethernet/chelsio/cxgb4/cxgb4_main.c
-+++ b/drivers/net/ethernet/chelsio/cxgb4/cxgb4_main.c
-@@ -3877,8 +3877,8 @@ static const struct net_device_ops cxgb4_netdev_ops = {
- 	.ndo_poll_controller  = cxgb_netpoll,
- #endif
- #ifdef CONFIG_CHELSIO_T4_FCOE
--	.ndo_fcoe_enable      = cxgb_fcoe_enable,
--	.ndo_fcoe_disable     = cxgb_fcoe_disable,
-+	SET_FCOE_OPS(cxgb_fcoe_enable, cxgb_fcoe_disable,
-+		     NULL, NULL, NULL, NULL)
- #endif /* CONFIG_CHELSIO_T4_FCOE */
- 	.ndo_set_tx_maxrate   = cxgb_set_tx_maxrate,
- 	.ndo_setup_tc         = cxgb_setup_tc,
-diff --git a/drivers/net/ethernet/intel/ice/ice_arfs.h b/drivers/net/ethernet/intel/ice/ice_arfs.h
-index 9669ad9bf7b5..e09fff33fcdd 100644
---- a/drivers/net/ethernet/intel/ice/ice_arfs.h
-+++ b/drivers/net/ethernet/intel/ice/ice_arfs.h
-@@ -67,14 +67,6 @@ static inline int ice_set_cpu_rx_rmap(struct ice_vsi __always_unused *vsi)
- 	return 0;
- }
- 
--static inline int
--ice_rx_flow_steer(struct net_device __always_unused *netdev,
--		  const struct sk_buff __always_unused *skb,
--		  u16 __always_unused rxq_idx, u32 __always_unused flow_id)
--{
--	return -EOPNOTSUPP;
--}
--
- static inline bool
- ice_is_arfs_using_perfect_flow(struct ice_hw __always_unused *hw,
- 			       enum ice_fltr_ptype __always_unused flow_type)
-diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index dd4a9bc0dfdc..970bf53b4823 100644
---- a/drivers/net/ethernet/intel/ice/ice_main.c
-+++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -9516,11 +9516,9 @@ static const struct net_device_ops ice_netdev_ops = {
- 	.ndo_bridge_setlink = ice_bridge_setlink,
- 	.ndo_fdb_add = ice_fdb_add,
- 	.ndo_fdb_del = ice_fdb_del,
--#ifdef CONFIG_RFS_ACCEL
--	.ndo_rx_flow_steer = ice_rx_flow_steer,
--#endif
- 	.ndo_tx_timeout = ice_tx_timeout,
- 	.ndo_bpf = ice_xdp,
- 	.ndo_xdp_xmit = ice_xdp_xmit,
- 	.ndo_xsk_wakeup = ice_xsk_wakeup,
-+	SET_RFS_ACCEL_OPS(ice_rx_flow_steer)
- };
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe.h b/drivers/net/ethernet/intel/ixgbe/ixgbe.h
-index b6f0376e42f4..1459dced175e 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe.h
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe.h
-@@ -406,10 +406,7 @@ enum ixgbe_ring_f_enum {
- 	RING_F_VMDQ,  /* SR-IOV uses the same ring feature */
- 	RING_F_RSS,
- 	RING_F_FDIR,
--#ifdef IXGBE_FCOE
- 	RING_F_FCOE,
--#endif /* IXGBE_FCOE */
--
- 	RING_F_ARRAY_SIZE      /* must be last in enum set */
- };
- 
-@@ -567,10 +564,8 @@ static inline u16 ixgbe_desc_unused(struct ixgbe_ring *ring)
- 	(&(((struct ixgbe_adv_tx_context_desc *)((R)->desc))[i]))
- 
- #define IXGBE_MAX_JUMBO_FRAME_SIZE	9728 /* Maximum Supported Size 9.5KB */
--#ifdef IXGBE_FCOE
- /* Use 3K as the baby jumbo frame size for FCoE */
- #define IXGBE_FCOE_JUMBO_FRAME_SIZE       3072
--#endif /* IXGBE_FCOE */
- 
- #define OTHER_VECTOR 1
- #define NON_Q_VECTORS (OTHER_VECTOR)
-@@ -980,7 +975,6 @@ void ixgbe_do_reset(struct net_device *netdev);
- void ixgbe_sysfs_exit(struct ixgbe_adapter *adapter);
- int ixgbe_sysfs_init(struct ixgbe_adapter *adapter);
- #endif /* CONFIG_IXGBE_HWMON */
--#ifdef IXGBE_FCOE
- void ixgbe_configure_fcoe(struct ixgbe_adapter *adapter);
- int ixgbe_fso(struct ixgbe_ring *tx_ring, struct ixgbe_tx_buffer *first,
- 	      u8 *hdr_len);
-@@ -999,7 +993,6 @@ int ixgbe_fcoe_get_wwn(struct net_device *netdev, u64 *wwn, int type);
- int ixgbe_fcoe_get_hbainfo(struct net_device *netdev,
- 			   struct netdev_fcoe_hbainfo *info);
- u8 ixgbe_fcoe_get_tc(struct ixgbe_adapter *adapter);
--#endif /* IXGBE_FCOE */
- #ifdef CONFIG_DEBUG_FS
- void ixgbe_dbg_adapter_init(struct ixgbe_adapter *adapter);
- void ixgbe_dbg_adapter_exit(struct ixgbe_adapter *adapter);
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-index bd541527c8c7..8c9265a04dc6 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-@@ -10416,14 +10416,11 @@ static const struct net_device_ops ixgbe_netdev_ops = {
- 	.ndo_setup_tc		= __ixgbe_setup_tc,
- #ifdef IXGBE_FCOE
- 	.ndo_select_queue	= ixgbe_select_queue,
--	.ndo_fcoe_ddp_setup = ixgbe_fcoe_ddp_get,
--	.ndo_fcoe_ddp_target = ixgbe_fcoe_ddp_target,
--	.ndo_fcoe_ddp_done = ixgbe_fcoe_ddp_put,
--	.ndo_fcoe_enable = ixgbe_fcoe_enable,
--	.ndo_fcoe_disable = ixgbe_fcoe_disable,
--	.ndo_fcoe_get_wwn = ixgbe_fcoe_get_wwn,
--	.ndo_fcoe_get_hbainfo = ixgbe_fcoe_get_hbainfo,
- #endif /* IXGBE_FCOE */
-+	SET_FCOE_OPS(ixgbe_fcoe_enable, ixgbe_fcoe_disable,
-+		     ixgbe_fcoe_ddp_target, ixgbe_fcoe_ddp_get,
-+		     ixgbe_fcoe_ddp_put, ixgbe_fcoe_get_hbainfo)
-+	SET_FCOE_GET_WWN_OPS(ixgbe_fcoe_get_wwn)
- 	.ndo_set_features = ixgbe_set_features,
- 	.ndo_fix_features = ixgbe_fix_features,
- 	.ndo_fdb_add		= ixgbe_ndo_fdb_add,
-@@ -10761,9 +10758,6 @@ static int ixgbe_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
- 	u8 part_str[IXGBE_PBANUM_LENGTH];
- 	int i, err, expected_gts;
- 	bool disable_dev = false;
--#ifdef IXGBE_FCOE
--	u16 device_caps;
--#endif
- 	u32 eec;
- 
- 	/* Catch broken hardware that put the wrong VF device ID in
-@@ -11012,9 +11006,10 @@ static int ixgbe_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
- 		netdev->dcbnl_ops = &ixgbe_dcbnl_ops;
- #endif
- 
--#ifdef IXGBE_FCOE
--	if (adapter->flags & IXGBE_FLAG_FCOE_CAPABLE) {
-+	if (IS_ENABLED(CONFIG_FCOE) &&
-+	    adapter->flags & IXGBE_FLAG_FCOE_CAPABLE) {
- 		unsigned int fcoe_l;
-+		u16 device_caps;
- 
- 		if (hw->mac.ops.get_device_caps) {
- 			hw->mac.ops.get_device_caps(hw, &device_caps);
-@@ -11033,7 +11028,7 @@ static int ixgbe_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
- 					 NETIF_F_FCOE_CRC |
- 					 NETIF_F_FCOE_MTU;
- 	}
--#endif /* IXGBE_FCOE */
-+
- 	if (adapter->flags2 & IXGBE_FLAG2_RSC_CAPABLE)
- 		netdev->hw_features |= NETIF_F_LRO;
- 	if (adapter->flags2 & IXGBE_FLAG2_RSC_ENABLED)
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_sriov.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_sriov.c
-index 7299a830f6e4..683a68a43bd2 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_sriov.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_sriov.c
-@@ -494,12 +494,10 @@ static int ixgbe_set_vf_lpe(struct ixgbe_adapter *adapter, u32 max_frame, u32 vf
- 		u32 reg_offset, vf_shift, vfre;
- 		s32 err = 0;
- 
--#ifdef CONFIG_FCOE
--		if (dev->features & NETIF_F_FCOE_MTU)
-+		if (IS_ENABLED(CONFIG_FCOE) && dev->features & NETIF_F_FCOE_MTU)
- 			pf_max_frame = max_t(int, pf_max_frame,
- 					     IXGBE_FCOE_JUMBO_FRAME_SIZE);
- 
--#endif /* CONFIG_FCOE */
- 		switch (adapter->vfinfo[vf].vf_api) {
- 		case ixgbe_mbox_api_11:
- 		case ixgbe_mbox_api_12:
-@@ -856,11 +854,9 @@ static void ixgbe_set_vf_rx_tx(struct ixgbe_adapter *adapter, int vf)
- 		struct net_device *dev = adapter->netdev;
- 		int pf_max_frame = dev->mtu + ETH_HLEN;
- 
--#if IS_ENABLED(CONFIG_FCOE)
--		if (dev->features & NETIF_F_FCOE_MTU)
-+		if (IS_ENABLED(CONFIG_FCOE) && dev->features & NETIF_F_FCOE_MTU)
- 			pf_max_frame = max_t(int, pf_max_frame,
- 					     IXGBE_FCOE_JUMBO_FRAME_SIZE);
--#endif /* CONFIG_FCOE */
- 
- 		if (pf_max_frame > ETH_FRAME_LEN)
- 			reg_req_rx = reg_cur_rx & ~(1 << vf_shift);
-diff --git a/include/linux/netdevice.h b/include/linux/netdevice.h
-index 118c40258d07..22ae80271e57 100644
---- a/include/linux/netdevice.h
-+++ b/include/linux/netdevice.h
-@@ -869,7 +869,6 @@ struct netdev_tc_txq {
- 	u16 offset;
- };
- 
--#if defined(CONFIG_FCOE) || defined(CONFIG_FCOE_MODULE)
- /*
-  * This structure is to hold information about the device
-  * configured to run FCoE protocol stack.
-@@ -884,7 +883,6 @@ struct netdev_fcoe_hbainfo {
- 	char	model[256];
- 	char	model_description[256];
- };
--#endif
- 
- #define MAX_PHYS_ITEM_ID_LEN 32
- 
-@@ -1549,9 +1547,9 @@ struct net_device_ops {
- 							struct netdev_fcoe_hbainfo *hbainfo);
- #endif
- 
--#if IS_ENABLED(CONFIG_LIBFCOE)
- #define NETDEV_FCOE_WWNN 0
- #define NETDEV_FCOE_WWPN 1
-+#if IS_ENABLED(CONFIG_LIBFCOE)
- 	int			(*ndo_fcoe_get_wwn)(struct net_device *dev,
- 						    u64 *wwn, int type);
- #endif
-@@ -1681,6 +1679,36 @@ struct net_device_ops {
- 						    struct netlink_ext_ack *extack);
- };
- 
-+#define rfs_accel_ptr(_ptr) PTR_IF(IS_ENABLED(CONFIG_RFS_ACCEL), (_ptr))
-+
-+#if IS_ENABLED(CONFIG_RFS_ACCEL)
-+#define SET_RFS_ACCEL_OPS(flow_fn) \
-+	.ndo_rx_flow_steer = rfs_accel_ptr(flow_fn),
-+#else
-+#define SET_RFS_ACCEL_OPS(flow_fn)
-+#endif
-+
-+#define fcoe_ptr(_ptr) PTR_IF(IS_ENABLED(CONFIG_FCOE), (_ptr))
-+#if IS_ENABLED(CONFIG_FCOE)
-+#define SET_FCOE_OPS(enable_fn, disable_fn, ddp_target_fn, ddp_setup_fn, ddp_done_fn, get_hbainfo_fn) \
-+	.ndo_fcoe_enable = fcoe_ptr(enable_fn), \
-+	.ndo_fcoe_disable = fcoe_ptr(disable_fn), \
-+	.ndo_fcoe_ddp_target = fcoe_ptr(ddp_target_fn), \
-+	.ndo_fcoe_ddp_setup = fcoe_ptr(ddp_setup_fn), \
-+	.ndo_fcoe_ddp_done = fcoe_ptr(ddp_done_fn), \
-+	.ndo_fcoe_get_hbainfo = fcoe_ptr(get_hbainfo_fn),
-+#else
-+#define SET_FCOE_OPS(enable_fn, disable_fn, ddp_setup_fn, ddp_done_fn, ddp_target_fn, get_hbainfo_fn)
-+#endif /* CONFIG_FCOE */
-+
-+#define fcoe_wwn_ptr(_ptr) PTR_IF(IS_ENABLED(CONFIG_LIBFCOE), (_ptr))
-+#if IS_ENABLED(CONFIG_LIBFCOE)
-+#define SET_FCOE_GET_WWN_OPS(get_wwn_fn) \
-+	.ndo_fcoe_get_wwn = fcoe_wwn_ptr(get_wwn_fn),
-+#else
-+#define SET_FCOE_GET_WWN_OPS(get_wwn_fn)
-+#endif /* CONFIG_LIBFCOE */
-+
- /**
-  * enum netdev_priv_flags - &struct net_device priv_flags
-  *
-diff --git a/net/8021q/vlan_dev.c b/net/8021q/vlan_dev.c
-index 407b2335f091..7b5cb64a839a 100644
---- a/net/8021q/vlan_dev.c
-+++ b/net/8021q/vlan_dev.c
-@@ -411,7 +411,6 @@ static int vlan_dev_neigh_setup(struct net_device *dev, struct neigh_parms *pa)
- 	return err;
- }
- 
--#if IS_ENABLED(CONFIG_FCOE)
- static int vlan_dev_fcoe_ddp_setup(struct net_device *dev, u16 xid,
- 				   struct scatterlist *sgl, unsigned int sgc)
- {
-@@ -471,9 +470,7 @@ static int vlan_dev_fcoe_ddp_target(struct net_device *dev, u16 xid,
- 
- 	return rc;
- }
--#endif
- 
--#ifdef NETDEV_FCOE_WWNN
- static int vlan_dev_fcoe_get_wwn(struct net_device *dev, u64 *wwn, int type)
- {
- 	struct net_device *real_dev = vlan_dev_priv(dev)->real_dev;
-@@ -484,7 +481,6 @@ static int vlan_dev_fcoe_get_wwn(struct net_device *dev, u64 *wwn, int type)
- 		rc = ops->ndo_fcoe_get_wwn(real_dev, wwn, type);
- 	return rc;
- }
--#endif
- 
- static void vlan_dev_change_rx_flags(struct net_device *dev, int change)
- {
-@@ -1065,16 +1061,10 @@ static const struct net_device_ops vlan_netdev_ops = {
- 	.ndo_eth_ioctl		= vlan_dev_ioctl,
- 	.ndo_neigh_setup	= vlan_dev_neigh_setup,
- 	.ndo_get_stats64	= vlan_dev_get_stats64,
--#if IS_ENABLED(CONFIG_FCOE)
--	.ndo_fcoe_ddp_setup	= vlan_dev_fcoe_ddp_setup,
--	.ndo_fcoe_ddp_done	= vlan_dev_fcoe_ddp_done,
--	.ndo_fcoe_enable	= vlan_dev_fcoe_enable,
--	.ndo_fcoe_disable	= vlan_dev_fcoe_disable,
--	.ndo_fcoe_ddp_target	= vlan_dev_fcoe_ddp_target,
--#endif
--#ifdef NETDEV_FCOE_WWNN
--	.ndo_fcoe_get_wwn	= vlan_dev_fcoe_get_wwn,
--#endif
-+	SET_FCOE_OPS(vlan_dev_fcoe_enable, vlan_dev_fcoe_disable,
-+		     vlan_dev_fcoe_ddp_target, vlan_dev_fcoe_ddp_setup,
-+		     vlan_dev_fcoe_ddp_done, NULL)
-+	SET_FCOE_GET_WWN_OPS(vlan_dev_fcoe_get_wwn)
- #ifdef CONFIG_NET_POLL_CONTROLLER
- 	.ndo_poll_controller	= vlan_dev_poll_controller,
- 	.ndo_netpoll_setup	= vlan_dev_netpoll_setup,
--- 
-2.39.3
+> new file mode 100644
+> index 000000000000..c8b4d8025a81
+> --- /dev/null
+> +++ b/Documentation/networking/device_drivers/ethernet/mellanox/mlx5/sd.rst
+> @@ -0,0 +1,134 @@
+> +.. SPDX-License-Identifier: GPL-2.0 OR Linux-OpenIB
+> +.. include:: <isonum.txt>
+> +
+> +==============================
+> +Socket-Direct Netdev Combining
+> +==============================
+> +
+> +:Copyright: |copy| 2024, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+> +
+> +Contents
+> +========
+> +
+> +- `Background`_
+> +- `Overview`_
+> +- `Channels distribution`_
+> +- `Steering`_
+> +- `Mutually exclusive features`_
+> +
+> +Background
+> +==========
+> +
+> +NVIDIA Mellanox Socket Direct technology enables several CPUs within a multi-socket server to
+
+Please make it sound a little less like a marketing leaflet.
+Isn't multi-PF netdev not a better name for the construct?
+We don't call aRFS "queue direct", also socket has BSD socket meaning.
+
+> +connect directly to the network, each through its own dedicated PCIe interface. Through either a
+> +connection harness that splits the PCIe lanes between two cards or by bifurcating a PCIe slot for a
+> +single card. This results in eliminating the network traffic traversing over the internal bus
+> +between the sockets, significantly reducing overhead and latency, in addition to reducing CPU
+> +utilization and increasing network throughput.
+> +
+> +Overview
+> +========
+> +
+> +This feature adds support for combining multiple devices (PFs) of the same port in a Socket Direct
+> +environment under one netdev instance. Passing traffic through different devices belonging to
+> +different NUMA sockets saves cross-numa traffic and allows apps running on the same netdev from
+> +different numas to still feel a sense of proximity to the device and acheive improved performance.
+> +
+> +We acheive this by grouping PFs together, and creating the netdev only once all group members are
+> +probed. Symmetrically, we destroy the netdev once any of the PFs is removed.
+
+s/once/whenever/
+
+> +The channels are distributed between all devices, a proper configuration would utilize the correct
+> +close numa when working on a certain app/cpu.
+> +
+> +We pick one device to be a primary (leader), and it fills a special role. The other devices
+
+"device" is probably best avoided, users may think device == card,
+IIUC there's only one NIC ASIC here?
+
+> +(secondaries) are disconnected from the network in the chip level (set to silent mode). All RX/TX
+
+s/in/at/
+
+> +traffic is steered through the primary to/from the secondaries.
+
+I don't understand the "silent" part. I mean - you do pass traffic thru
+them, what's the silence referring to?
+
+> +Currently, we limit the support to PFs only, and up to two devices (sockets).
+> +
+> +Channels distribution
+> +=====================
+> +
+> +Distribute the channels between the different SD-devices to acheive local numa node performance on
+
+Something's missing in this sentence, subject "we"? 
+
+> +multiple numas.
+
+NUMA nodes
+
+> +Each channel works against one specific mdev, creating all datapath queues against it. We distribute
+
+The mix of channel and queue does not compute in this sentence for me.
+
+Also mdev -> PF?
+
+> +channels to mdevs in a round-robin policy.
+> +
+> +Example for 2 PFs and 6 channels:
+> ++-------+-------+
+> +| ch ix | PF ix |
+
+ix? id or idx or index.
+
+> ++-------+-------+
+> +|   0   |   0   |
+> +|   1   |   1   |
+> +|   2   |   0   |
+> +|   3   |   1   |
+> +|   4   |   0   |
+> +|   5   |   1   |
+> ++-------+-------+
+> +
+> +This round-robin distribution policy is preferred over another suggested intuitive distribution, in
+> +which we first distribute one half of the channels to PF0 and then the second half to PF1.
+
+Preferred.. by whom? Just say that's the most broadly useful and therefore default config.
+
+> +The reason we prefer round-robin is, it is less influenced by changes in the number of channels. The
+> +mapping between a channel index and a PF is fixed, no matter how many channels the user configures.
+> +As the channel stats are persistent to channels closure, changing the mapping every single time
+
+to -> across
+channels -> channel or channel's or channel closures
+
+> +would turn the accumulative stats less representing of the channel's history.
+> +
+> +This is acheived by using the correct core device instance (mdev) in each channel, instead of them
+> +all using the same instance under "priv->mdev".
+> +
+> +Steering
+> +========
+> +Secondary PFs are set to "silent" mode, meaning they are disconnected from the network.
+> +
+> +In RX, the steering tables belong to the primary PF only, and it is its role to distribute incoming
+> +traffic to other PFs, via advanced HW cross-vhca steering capabilities.
+
+s/advanced HW//
+
+You should cover how RSS looks - single table which functions exactly as
+it would for a 1-PF device? Two-tier setup?
+
+> +In TX, the primary PF creates a new TX flow table, which is aliased by the secondaries, so they can
+> +go out to the network through it.
+> +
+> +In addition, we set default XPS configuration that, based on the cpu, selects an SQ belonging to the
+> +PF on the same node as the cpu.
+> +
+> +XPS default config example:
+> +
+> +NUMA node(s):          2
+> +NUMA node0 CPU(s):     0-11
+> +NUMA node1 CPU(s):     12-23
+> +
+> +PF0 on node0, PF1 on node1.
+
+You didn't cover how users are supposed to discover the topology. 
+netdev is linked to a single device in sysfs, which is how we get
+netdev <> NUMA node mapping today. What's the expected way to get
+the NUMA nodes here?
+
+And obviously this can't get merged until mlx5 exposes queue <> NAPI <>
+IRQ mapping via the netdev genl.
+
+<snip>
+
+> +Mutually exclusive features
+> +===========================
+> +
+> +The nature of socket direct, where different channels work with different PFs, conflicts with
+> +stateful features where the state is maintained in one of the PFs.
+> +For exmaple, in the TLS device-offload feature, special context objects are created per connection
+> +and maintained in the PF.  Transitioning between different RQs/SQs would break the feature. Hence,
+> +we disable this combination for now.
 
