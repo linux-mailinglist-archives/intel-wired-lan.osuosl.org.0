@@ -2,116 +2,99 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id DCD14852F73
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 13 Feb 2024 12:35:15 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id A6EA1852FD5
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 13 Feb 2024 12:51:25 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 6FC9441030;
-	Tue, 13 Feb 2024 11:35:14 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 5714740CB3;
+	Tue, 13 Feb 2024 11:51:24 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id qmbps1bBEFBu; Tue, 13 Feb 2024 11:35:13 +0000 (UTC)
+	with ESMTP id Y2Lyt39NG42t; Tue, 13 Feb 2024 11:51:23 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C525F40C1C
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 42E6A40482
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1707824113;
-	bh=DQ8bp23+ggv8wr3fBlwZDd44tUu1TI0wSokojBTeNU8=;
+	s=default; t=1707825083;
+	bh=jLW4b9HW+XWNKXKllSXN2kgG3NiuVZ0glYw5AkkFB24=;
 	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=Sfh2lvuxHLyoKLuYBk4JvslEfsq5DRa2V82eQx1MzBihg+ZD30mjSefn3WDRf4Vis
-	 55/m7EL2yxTP6X8yFit9+9HPQsspK6A7IjtV+yEQ9Uq79Zw5aBhDj3JTh+kHR9KoqG
-	 QbjCgWfUM4bKVJ4zhcEgiiMbTUaIun8IY8GDaNOK4u4L4GBQoinCyxCMcjz7G+zO73
-	 M9AeuP5lzF3IbHjBlpdmYrKuYZBiq8aYbiQZbp8jZKDXHPiwQTGONNwmDIEIRmQnEG
-	 5d/tPBOlS4d1+la1/YiyaoPNcbmdl1zY7mmtYS2ykE+/agY9VhYh7KCPbH8xYGkK0K
-	 9BQkP7QCQhVtA==
+	b=Bkp8U/o1BBshQvPM6aSe4zEHrDrorXbEUKKGOrgf7RewrioiMfO2LhTf3co2O5h4A
+	 oLY03WCbmGoLibmxxL9k8Ax+wNg2dgtkRDTu0Z6S4Wt9BM3wRncwyIL0omiJDW+wze
+	 pdfMC94er1LQvZbrKjeQmBvMx54j94Z4JIXZ9ZaOBv7nyQF+w6nc91Uk9P650PWIpR
+	 fbsbd0AwoFDY9YX5BLVS538fss2MqvCDUa7plqMgO6z2+cGrCTsAmvrsuI3ZboZRDg
+	 zi6t7C5PHNOH2wza7C7q/PYDr7Rk5Q7EMZEtM0FyGxigZ1hDOQ1KOzA7KfruNsoZn2
+	 xWn536xMqokHg==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id C525F40C1C;
-	Tue, 13 Feb 2024 11:35:12 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 42E6A40482;
+	Tue, 13 Feb 2024 11:51:23 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 620341BF421
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Feb 2024 11:35:10 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 8C9C01BF421
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Feb 2024 11:51:21 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 5B21C40673
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Feb 2024 11:35:10 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 7860180C4B
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Feb 2024 11:51:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id B0a3twt-ySrq for <intel-wired-lan@lists.osuosl.org>;
- Tue, 13 Feb 2024 11:35:09 +0000 (UTC)
-Received-SPF: None (mailfrom) identity=mailfrom;
- client-ip=2a00:1450:4864:20::231; helo=mail-lj1-x231.google.com;
- envelope-from=jiri@resnulli.us; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org ED4CD40655
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org ED4CD40655
-Received: from mail-lj1-x231.google.com (mail-lj1-x231.google.com
- [IPv6:2a00:1450:4864:20::231])
- by smtp4.osuosl.org (Postfix) with ESMTPS id ED4CD40655
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Feb 2024 11:35:08 +0000 (UTC)
-Received: by mail-lj1-x231.google.com with SMTP id
- 38308e7fff4ca-2d10d2da73dso4179781fa.1
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Feb 2024 03:35:08 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1707824107; x=1708428907;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=DQ8bp23+ggv8wr3fBlwZDd44tUu1TI0wSokojBTeNU8=;
- b=l9GyG0il/Xk6voQJDQaZxATuMwDpqeY2d0+ONYtYNaZKvpVYO4AGRnpkCi19aPXbpc
- OmSGGxQap9vV+oCne3O7hldWsm72nQUjWD1BXhzr6dmCFu9+z1JVrZ+kots7yBPXqCaR
- Fk+9UA8x8vGMSU/DNFlqDZ2/SN+id4zHZ86orOs9nJhnTHk2wtSRXxY45fnPTfn/0AH4
- vRmlss4GbL6QvjMHObCTcK9B6uIdHUKvCaK7ygovZh0xhLIEAVvSyuVLPH5oJG4tpk7R
- K6k/exG33+DDkMR/febrZ3u8Hsct2ZTNaw1ekTH0X6ttHzoR35fx3D7RTBzYwPRU3Glh
- sDYg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWeH0mSo3ZGscl1Kt7jLi1yfMTIH7V2xMZa5NdKL5BA/O130u7KJDKJWBNFUtJi7mAGr8zS1gCvE3Yl29MC/EcttZOsUk+Mp1u3g37d1zvuIQ==
-X-Gm-Message-State: AOJu0YzEVCzC5z1smgav3be1ROov709QaEZssPqzplv6m1d+W33XQUC1
- XZTRJqLcy25rTz+Kahld9NB44wySAq1ZYYWELXe5bxQL+NpGQ5tbwRGIhOPOa3k=
-X-Google-Smtp-Source: AGHT+IGZNa4xV9rDYQSuFFlBbPC6+OB2Cxc6GrXsRPziFgnG3taFMBKsuDpM/LyVZs/3XMa8oKuWPg==
-X-Received: by 2002:a2e:7d03:0:b0:2d0:e666:5b4d with SMTP id
- y3-20020a2e7d03000000b002d0e6665b4dmr6816611ljc.21.1707824106579; 
- Tue, 13 Feb 2024 03:35:06 -0800 (PST)
-X-Forwarded-Encrypted: i=1;
- AJvYcCXUwBsGYhH5jC4Cf+AVJ4WELV1Q/TjcJnUZUT7GClfYev4BcDvOGRziDsBQPtWlEuFhQqpbJezZjRumdeZTZKWJl0IfQjMvMucXw8BpGbXWoeTxW2oxfSoziG69Jl3VK0rSxftDGOzgMlsTqekZ6BsJbH3ag81Pu7lihsp2n5K+xSXZ/rX1BVj+yl253CSB6UE2sn/7zG6wEVCsdswJI7LJ2NTHdGC+MJfkFsPLtNHoubvQTOJcIwps5bTyv1A7BBQwOpORY0maPvLmkia9sSr2Z9UlLc6C2oJ4F5hqjOHOMek4cUuM2ahyfW8jirx7z1nuRejPB5tV0ySAFzXdKME+kaTgpwSHfCE0CDLPf0C/28jvhmw84hNrIn5f1cF8GEZXnvNebZWsMEQMrZUPHBxzsf4irCnRUxwbG84OAHUMj80QIBKU1cYPhHCU/VnqyTLSuehAskci8weaY1KmfL3zBYJzt0BkutVA9GEkHBI4BySdiiCE
-Received: from localhost ([193.47.165.251]) by smtp.gmail.com with ESMTPSA id
- c6-20020a05600c0a4600b004117e45f12esm3640188wmq.22.2024.02.13.03.35.05
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 13 Feb 2024 03:35:06 -0800 (PST)
-Date: Tue, 13 Feb 2024 12:35:02 +0100
-From: Jiri Pirko <jiri@resnulli.us>
-To: Wojciech Drewek <wojciech.drewek@intel.com>
-Message-ID: <ZctT5kBdbjcxygQT@nanopsycho>
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id fEeG26al0yKh for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 13 Feb 2024 11:51:20 +0000 (UTC)
+Received-SPF: None (mailfrom) identity=mailfrom; client-ip=198.175.65.19;
+ helo=mgamail.intel.com; envelope-from=michal.swiatkowski@linux.intel.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 90CDE80BD0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 90CDE80BD0
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.19])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 90CDE80BD0
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Feb 2024 11:51:20 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10982"; a="1680941"
+X-IronPort-AV: E=Sophos;i="6.06,157,1705392000"; 
+   d="scan'208";a="1680941"
+Received: from fmviesa005.fm.intel.com ([10.60.135.145])
+ by orvoesa111.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 13 Feb 2024 03:51:19 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.06,157,1705392000"; 
+   d="scan'208";a="7507615"
+Received: from unknown (HELO mev-dev) ([10.237.112.144])
+ by fmviesa005-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 13 Feb 2024 03:51:17 -0800
+Date: Tue, 13 Feb 2024 12:51:09 +0100
+From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+To: Jiri Pirko <jiri@resnulli.us>
+Message-ID: <ZctXrfWiYkopStMt@mev-dev>
 References: <20240213073509.77622-1-michal.swiatkowski@linux.intel.com>
- <20240213073509.77622-7-michal.swiatkowski@linux.intel.com>
- <ZcsxRRrVvnhjLxn3@nanopsycho> <Zcs9XeZmd2E1IHKs@mev-dev>
- <bb501538-29d5-4930-97b6-1c02f1b7ecba@intel.com>
+ <20240213073509.77622-2-michal.swiatkowski@linux.intel.com>
+ <ZcswSYA5GqtOb3ll@nanopsycho> <Zcs95HiZz5g4QUwt@mev-dev>
+ <ZctTL05gEf_7XbhX@nanopsycho>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <bb501538-29d5-4930-97b6-1c02f1b7ecba@intel.com>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=resnulli-us.20230601.gappssmtp.com; s=20230601; t=1707824107; x=1708428907;
- darn=lists.osuosl.org; 
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=DQ8bp23+ggv8wr3fBlwZDd44tUu1TI0wSokojBTeNU8=;
- b=gTb3Uy/u5cxpXoeXLah8TzSIOXUDrVr9pM4rc2Z8LLr36U9H5riWOc22Jh07U+ls1v
- V8IzBbUPrKsSlpggiGYDrtrWBB5Hl7PC7nWxBemC6nMuP7buF4ZdqBZKBkvxW5FE4d0c
- cRCi+Grfa4nqlB0syeJ95i0VQ/OP597WQrEDffuKSh92IONp33WdbdU1+O7Ttkna2n0L
- SGHwLwD5RHEZo2e/oQ53gh3+UcTXIcNR31SEdGmIxiDbnMFe2s77nFPW5u4UpDxjQETA
- 05a1tCOMRN6MfxNYam80pUMvMKP+iYNVSCe1hQLZim3jLPqWOqhBChCczdYfvMDhdejP
- Afsw==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+In-Reply-To: <ZctTL05gEf_7XbhX@nanopsycho>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1707825080; x=1739361080;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:in-reply-to;
+ bh=uS4M8+vsGmkHQK0cf9nAqcZUWp7CBWnXPvPw6e0tukM=;
+ b=EYEwYK5Q/8OTx7973NW3xJA8X+Sz/0/oE7pRI2bPXBivLNrwGjsF+Owf
+ KZA1mM0vK4YjUzXAEDYYXDpMkCA6KK3Qt8eBzId3ijLZTJ9g9qzyLutGq
+ PQ8moumkKl1+7joslZPrMpD6ZV6N2ihGU4G7GEh3D2qLgldkHGFRg3KuY
+ IMmXop0EayZ1LI5WES2WtuZzmXX2jqPlsMNzJlNohHnhBQvnBeetHxgpy
+ AkHKYp7so997u8R5nFHqKIsxkhHRA5vyEsviiaIUZHTZq4fPUKfJ9lrOu
+ UaQLzlTYR11Tvh7Z7/IRwdYnMD9tCzRSn6Fy8wS4E49RL8LPQkxaZdJuk
+ w==;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=none (p=none dis=none)
- header.from=resnulli.us
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=resnulli-us.20230601.gappssmtp.com
- header.i=@resnulli-us.20230601.gappssmtp.com header.a=rsa-sha256
- header.s=20230601 header.b=gTb3Uy/u
-Subject: Re: [Intel-wired-lan] [iwl-next v1 6/7] ice: enable_rdma devlink
- param
+ header.from=linux.intel.com
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=EYEwYK5Q
+Subject: Re: [Intel-wired-lan] [iwl-next v1 1/7] ice: devlink PF MSI-X max
+ and min parameter
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -124,189 +107,117 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Jan Sokolowski <jan.sokolowski@intel.com>, marcin.szycik@intel.com,
- sridhar.samudrala@intel.com, konrad.knitter@intel.com,
- pawel.chmielewski@intel.com, intel-wired-lan@lists.osuosl.org,
- nex.sw.ncis.nat.hpm.dev@intel.com, pio.raczynski@gmail.com,
- netdev@vger.kernel.org, jacob.e.keller@intel.com,
- Michal Swiatkowski <michal.swiatkowski@linux.intel.com>,
+Cc: wojciech.drewek@intel.com, marcin.szycik@intel.com, netdev@vger.kernel.org,
+ konrad.knitter@intel.com, pawel.chmielewski@intel.com,
+ intel-wired-lan@lists.osuosl.org, nex.sw.ncis.nat.hpm.dev@intel.com,
+ pio.raczynski@gmail.com, sridhar.samudrala@intel.com, jacob.e.keller@intel.com,
  przemyslaw.kitszel@intel.com
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Tue, Feb 13, 2024 at 11:19:49AM CET, wojciech.drewek@intel.com wrote:
->
->
->On 13.02.2024 10:58, Michal Swiatkowski wrote:
->> On Tue, Feb 13, 2024 at 10:07:17AM +0100, Jiri Pirko wrote:
->>> Tue, Feb 13, 2024 at 08:35:08AM CET, michal.swiatkowski@linux.intel.com wrote:
->>>> Implement enable_rdma devlink parameter to allow user to turn RDMA
->>>> feature on and off.
->>>>
->>>> It is useful when there is no enough interrupts and user doesn't need
->>>> RDMA feature.
->>>>
->>>> Reviewed-by: Jan Sokolowski <jan.sokolowski@intel.com>
->>>> Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
->>>> Signed-off-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
->>>> ---
->>>> drivers/net/ethernet/intel/ice/ice_devlink.c | 32 ++++++++++++++++++--
->>>> drivers/net/ethernet/intel/ice/ice_lib.c     |  8 ++++-
->>>> drivers/net/ethernet/intel/ice/ice_main.c    | 18 +++++------
->>>> 3 files changed, 45 insertions(+), 13 deletions(-)
->>>>
->>>> diff --git a/drivers/net/ethernet/intel/ice/ice_devlink.c b/drivers/net/ethernet/intel/ice/ice_devlink.c
->>>> index b82ff9556a4b..4f048268db72 100644
->>>> --- a/drivers/net/ethernet/intel/ice/ice_devlink.c
->>>> +++ b/drivers/net/ethernet/intel/ice/ice_devlink.c
->>>> @@ -1675,6 +1675,19 @@ ice_devlink_msix_min_pf_validate(struct devlink *devlink, u32 id,
->>>> 	return 0;
->>>> }
->>>>
->>>> +static int ice_devlink_enable_rdma_validate(struct devlink *devlink, u32 id,
->>>> +					    union devlink_param_value val,
->>>> +					    struct netlink_ext_ack *extack)
->>>> +{
->>>> +	struct ice_pf *pf = devlink_priv(devlink);
->>>> +	bool new_state = val.vbool;
->>>> +
->>>> +	if (new_state && !test_bit(ICE_FLAG_RDMA_ENA, pf->flags))
->>>> +		return -EOPNOTSUPP;
->>>> +
->>>> +	return 0;
->>>> +}
->>>> +
->>>> static const struct devlink_param ice_devlink_params[] = {
->>>> 	DEVLINK_PARAM_GENERIC(ENABLE_ROCE, BIT(DEVLINK_PARAM_CMODE_RUNTIME),
->>>> 			      ice_devlink_enable_roce_get,
->>>> @@ -1700,6 +1713,8 @@ static const struct devlink_param ice_devlink_params[] = {
->>>> 			      ice_devlink_msix_min_pf_get,
->>>> 			      ice_devlink_msix_min_pf_set,
->>>> 			      ice_devlink_msix_min_pf_validate),
->>>> +	DEVLINK_PARAM_GENERIC(ENABLE_RDMA, BIT(DEVLINK_PARAM_CMODE_DRIVERINIT),
->>>> +			      NULL, NULL, ice_devlink_enable_rdma_validate),
->>>> };
->>>>
->>>> static void ice_devlink_free(void *devlink_ptr)
->>>> @@ -1776,9 +1791,22 @@ ice_devlink_set_switch_id(struct ice_pf *pf, struct netdev_phys_item_id *ppid)
->>>> int ice_devlink_register_params(struct ice_pf *pf)
->>>> {
->>>> 	struct devlink *devlink = priv_to_devlink(pf);
->>>> +	union devlink_param_value value;
->>>> +	int err;
->>>> +
->>>> +	err = devlink_params_register(devlink, ice_devlink_params,
->>>
->>> Interesting, can't you just take the lock before this and call
->>> devl_params_register()?
->>>
->> I mess up a locking here and also in subfunction patchset. I will follow
->> you suggestion and take lock for whole init/cleanup. Thanks.
->> 
->>> Moreover, could you please fix your init/cleanup paths for hold devlink
->>> instance lock the whole time?
->>>
->> You right, I will prepare patch for it.
->
->I think my patch implements your suggestion Jiri:
->https://lore.kernel.org/netdev/20240212211202.1051990-5-anthony.l.nguyen@intel.com/
+On Tue, Feb 13, 2024 at 12:31:59PM +0100, Jiri Pirko wrote:
+> Tue, Feb 13, 2024 at 11:01:08AM CET, michal.swiatkowski@linux.intel.com wrote:
+> >On Tue, Feb 13, 2024 at 10:03:05AM +0100, Jiri Pirko wrote:
+> >> Tue, Feb 13, 2024 at 08:35:03AM CET, michal.swiatkowski@linux.intel.com wrote:
+> >> >Use generic devlink PF MSI-X parameter to allow user to change MSI-X
+> >> >range.
+> >> >
+> >> >Reviewed-by: Wojciech Drewek <wojciech.drewek@intel.com>
+> >> >Signed-off-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+> >> >---
+> >> > drivers/net/ethernet/intel/ice/ice.h         |  8 ++
+> >> > drivers/net/ethernet/intel/ice/ice_devlink.c | 82 ++++++++++++++++++++
+> >> > drivers/net/ethernet/intel/ice/ice_irq.c     |  6 ++
+> >> > 3 files changed, 96 insertions(+)
+> >> >
+> >> >diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
+> >> >index c4127d5f2be3..24085f3c0966 100644
+> >> >--- a/drivers/net/ethernet/intel/ice/ice.h
+> >> >+++ b/drivers/net/ethernet/intel/ice/ice.h
+> >> >@@ -94,6 +94,7 @@
+> >> > #define ICE_MIN_LAN_TXRX_MSIX	1
+> >> > #define ICE_MIN_LAN_OICR_MSIX	1
+> >> > #define ICE_MIN_MSIX		(ICE_MIN_LAN_TXRX_MSIX + ICE_MIN_LAN_OICR_MSIX)
+> >> >+#define ICE_MAX_MSIX		256
+> >> > #define ICE_FDIR_MSIX		2
+> >> > #define ICE_RDMA_NUM_AEQ_MSIX	4
+> >> > #define ICE_MIN_RDMA_MSIX	2
+> >> >@@ -535,6 +536,12 @@ struct ice_agg_node {
+> >> > 	u8 valid;
+> >> > };
+> >> > 
+> >> >+struct ice_pf_msix {
+> >> >+	u16 cur;
+> >> >+	u16 min;
+> >> >+	u16 max;
+> >> >+};
+> >> >+
+> >> > struct ice_pf {
+> >> > 	struct pci_dev *pdev;
+> >> > 
+> >> >@@ -604,6 +611,7 @@ struct ice_pf {
+> >> > 	struct msi_map ll_ts_irq;	/* LL_TS interrupt MSIX vector */
+> >> > 	u16 max_pf_txqs;	/* Total Tx queues PF wide */
+> >> > 	u16 max_pf_rxqs;	/* Total Rx queues PF wide */
+> >> >+	struct ice_pf_msix msix;
+> >> > 	u16 num_lan_msix;	/* Total MSIX vectors for base driver */
+> >> > 	u16 num_lan_tx;		/* num LAN Tx queues setup */
+> >> > 	u16 num_lan_rx;		/* num LAN Rx queues setup */
+> >> >diff --git a/drivers/net/ethernet/intel/ice/ice_devlink.c b/drivers/net/ethernet/intel/ice/ice_devlink.c
+> >> >index cc717175178b..b82ff9556a4b 100644
+> >> >--- a/drivers/net/ethernet/intel/ice/ice_devlink.c
+> >> >+++ b/drivers/net/ethernet/intel/ice/ice_devlink.c
+> >> >@@ -1603,6 +1603,78 @@ enum ice_param_id {
+> >> > 	ICE_DEVLINK_PARAM_ID_LOOPBACK,
+> >> > };
+> >> > 
+> >> >+static int
+> >> >+ice_devlink_msix_max_pf_get(struct devlink *devlink, u32 id,
+> >> >+			    struct devlink_param_gset_ctx *ctx)
+> >> >+{
+> >> >+	struct ice_pf *pf = devlink_priv(devlink);
+> >> >+
+> >> >+	ctx->val.vu16 = pf->msix.max;
+> >> >+
+> >> >+	return 0;
+> >> >+}
+> >> >+
+> >> >+static int
+> >> >+ice_devlink_msix_max_pf_set(struct devlink *devlink, u32 id,
+> >> >+			    struct devlink_param_gset_ctx *ctx)
+> >> >+{
+> >> >+	struct ice_pf *pf = devlink_priv(devlink);
+> >> >+	u16 max = ctx->val.vu16;
+> >> >+
+> >> >+	pf->msix.max = max;
+> >> 
+> >> What's permanent about this exactly?
+> >> 
+> >
+> >I want to store the value here after driver reinit. Isn't it enough to
+> >use this parameter type? Which one should be used for this purpose?
+> 
+> Documentation/networking/devlink/devlink-params.rst say:
+> 
+> .. list-table:: Possible configuration modes
+>    :widths: 5 90
+> 
+>    * - Name
+>      - Description
+>    * - ``runtime``
+>      - set while the driver is running, and takes effect immediately. No
+>        reset is required.
+>    * - ``driverinit``
+>      - applied while the driver initializes. Requires the user to restart
+>        the driver using the ``devlink`` reload command.
+>    * - ``permanent``
+>      - written to the device's non-volatile memory. A hard reset is required
+>        for it to take effect.
+> 
+> 
+> [...]
+Thanks for pointing it, I changed the idea during developing it (at
+first I wanted to store it in NVM) and forgot to change the type.
 
-This patch is based on the one in your link apparently. I think it is
-incomplete. Idk
+I will go with driverinit param.
 
-
->
->> 
->>>
->>> pw-bot: cr
->>>
->>>
->>>> +				      ARRAY_SIZE(ice_devlink_params));
->>>> +	if (err)
->>>> +		return err;
->>>>
->>>> -	return devlink_params_register(devlink, ice_devlink_params,
->>>> -				       ARRAY_SIZE(ice_devlink_params));
->>>> +	devl_lock(devlink);
->>>> +	value.vbool = test_bit(ICE_FLAG_RDMA_ENA, pf->flags);
->>>> +	devl_param_driverinit_value_set(devlink,
->>>> +					DEVLINK_PARAM_GENERIC_ID_ENABLE_RDMA,
->>>> +					value);
->>>> +	devl_unlock(devlink);
->>>> +
->>>> +	return 0;
->>>> }
->>>>
->>>> void ice_devlink_unregister_params(struct ice_pf *pf)
->>>> diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
->>>> index a30d2d2b51c1..4d5c3d699044 100644
->>>> --- a/drivers/net/ethernet/intel/ice/ice_lib.c
->>>> +++ b/drivers/net/ethernet/intel/ice/ice_lib.c
->>>> @@ -829,7 +829,13 @@ bool ice_is_safe_mode(struct ice_pf *pf)
->>>>  */
->>>> bool ice_is_rdma_ena(struct ice_pf *pf)
->>>> {
->>>> -	return test_bit(ICE_FLAG_RDMA_ENA, pf->flags);
->>>> +	union devlink_param_value value;
->>>> +	int err;
->>>> +
->>>> +	err = devl_param_driverinit_value_get(priv_to_devlink(pf),
->>>> +					      DEVLINK_PARAM_GENERIC_ID_ENABLE_RDMA,
->>>> +					      &value);
->>>> +	return err ? false : value.vbool;
->>>> }
->>>>
->>>> /**
->>>> diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
->>>> index 824732f16112..4dd59d888ec7 100644
->>>> --- a/drivers/net/ethernet/intel/ice/ice_main.c
->>>> +++ b/drivers/net/ethernet/intel/ice/ice_main.c
->>>> @@ -5177,23 +5177,21 @@ ice_probe(struct pci_dev *pdev, const struct pci_device_id __always_unused *ent)
->>>> 	if (err)
->>>> 		goto err_init;
->>>>
->>>> +	err = ice_init_devlink(pf);
->>>> +	if (err)
->>>> +		goto err_init_devlink;
->>>> +
->>>> 	devl_lock(priv_to_devlink(pf));
->>>> 	err = ice_load(pf);
->>>> 	devl_unlock(priv_to_devlink(pf));
->>>> 	if (err)
->>>> 		goto err_load;
->>>>
->>>> -	err = ice_init_devlink(pf);
->>>> -	if (err)
->>>> -		goto err_init_devlink;
->>>> -
->>>> 	return 0;
->>>>
->>>> -err_init_devlink:
->>>> -	devl_lock(priv_to_devlink(pf));
->>>> -	ice_unload(pf);
->>>> -	devl_unlock(priv_to_devlink(pf));
->>>> err_load:
->>>> +	ice_deinit_devlink(pf);
->>>> +err_init_devlink:
->>>> 	ice_deinit(pf);
->>>> err_init:
->>>> 	pci_disable_device(pdev);
->>>> @@ -5290,12 +5288,12 @@ static void ice_remove(struct pci_dev *pdev)
->>>> 	if (!ice_is_safe_mode(pf))
->>>> 		ice_remove_arfs(pf);
->>>>
->>>> -	ice_deinit_devlink(pf);
->>>> -
->>>> 	devl_lock(priv_to_devlink(pf));
->>>> 	ice_unload(pf);
->>>> 	devl_unlock(priv_to_devlink(pf));
->>>>
->>>> +	ice_deinit_devlink(pf);
->>>> +
->>>> 	ice_deinit(pf);
->>>> 	ice_vsi_release_all(pf);
->>>>
->>>> -- 
->>>> 2.42.0
->>>>
->>>>
