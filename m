@@ -1,69 +1,69 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5E2208529C3
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 13 Feb 2024 08:23:50 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 63BE68529C4
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 13 Feb 2024 08:23:52 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 157B860B0F;
-	Tue, 13 Feb 2024 07:23:48 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id E441460B4C;
+	Tue, 13 Feb 2024 07:23:49 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id jZEpq_20zhAc; Tue, 13 Feb 2024 07:23:47 +0000 (UTC)
+	with ESMTP id oFQR56D3T9gd; Tue, 13 Feb 2024 07:23:49 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1A0DA60B27
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2567160B3E
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1707809027;
-	bh=iPc7ih5YVmfYEHqozsXkG7ygIkyWfrT1oCibOYMNyMA=;
+	s=default; t=1707809029;
+	bh=TCi8F5/6DXYyKkBxxeeqYOUOJ2WHUDKi7rFRFBFhLQI=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=0mLb2RkBk9kfrYGXIpwAY5iA1SS3pTaF9vszd1qi/2FxjQqmfVm6df2CjQEV1/Bvi
-	 7L5TLsYfsXFlHSmGKJqqeQzsON+XZ8ao48hLs94a7bjzu/wWrD30ui5WlCYw5hzoA0
-	 Ou4yeB+4MztIiPp0IU0dqKZ76JiPUNLXRx2puKew/KXPnvwZ+CYYw3sxXgI1ZEXJEu
-	 oQBk/rv+RmBGT+eIEujhtKpxJ47fTBpn0OvXY83dI2NpQy5sFE83c2yDF4n0wP1vnK
-	 nfrgy+itsO6y25jwbKZ/aUrycGGk2T5K6AyO64AdCFgzCMHLsbPlmp//ILTFHxwgWg
-	 BspYpl4XgZ+wg==
+	b=UOmz49ht6bELWoVVzmVE9B8ikc8wo2+si26lC63Yqw1uNY4b2GkNuF3dBZVKFcoMB
+	 bCp+LQ4sB45QwsiBIYLVB4s9TxLE3+MD6kbj+eh4ULip9kQZW30wYwoN86/xJo2d+C
+	 81hJqfoPEfx/3dU8T6/fmcfm/Ufq5uUMfjQhErmMTjjF/n0qyiGf3c8CQV9aTYdV26
+	 ZZHuU4yKLoRBErxXscCc0hZ8MLhsnGDTLjX6QEpGPQi9XkaT3E9UhthZQHWPLf0XhT
+	 Cpkvu+m2tdb0SNBDuHBD6c4h3SBucA4Mv5nJtoeJ0E66o/0TlHJJRHgPqbo5iELGC9
+	 82Nm3g+jvCbDQ==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 1A0DA60B27;
-	Tue, 13 Feb 2024 07:23:47 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 2567160B3E;
+	Tue, 13 Feb 2024 07:23:49 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id A252D1BF5F5
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Feb 2024 07:23:41 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 5B0D61BF5F5
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Feb 2024 07:23:45 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 8ECA14089F
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Feb 2024 07:23:41 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 468064085C
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Feb 2024 07:23:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id erWglUDTrIqs for <intel-wired-lan@lists.osuosl.org>;
- Tue, 13 Feb 2024 07:23:40 +0000 (UTC)
+ with ESMTP id 1smQSja-Z1dj for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 13 Feb 2024 07:23:44 +0000 (UTC)
 Received-SPF: None (mailfrom) identity=mailfrom; client-ip=192.198.163.7;
  helo=mgamail.intel.com; envelope-from=michal.swiatkowski@linux.intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org BB10040898
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org BB10040898
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 6259940833
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6259940833
 Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.7])
- by smtp4.osuosl.org (Postfix) with ESMTPS id BB10040898
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Feb 2024 07:23:40 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10982"; a="27248006"
-X-IronPort-AV: E=Sophos;i="6.06,156,1705392000"; d="scan'208";a="27248006"
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 6259940833
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Feb 2024 07:23:44 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10982"; a="27248038"
+X-IronPort-AV: E=Sophos;i="6.06,156,1705392000"; d="scan'208";a="27248038"
 Received: from fmviesa003.fm.intel.com ([10.60.135.143])
  by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 12 Feb 2024 23:23:40 -0800
+ 12 Feb 2024 23:23:43 -0800
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.06,156,1705392000"; 
-   d="scan'208";a="7385451"
+   d="scan'208";a="7385481"
 Received: from wasp.igk.intel.com (HELO GK3153-DR2-R750-36946.localdomain.com)
  ([10.102.20.192])
- by fmviesa003.fm.intel.com with ESMTP; 12 Feb 2024 23:23:38 -0800
+ by fmviesa003.fm.intel.com with ESMTP; 12 Feb 2024 23:23:40 -0800
 From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Tue, 13 Feb 2024 08:27:21 +0100
-Message-ID: <20240213072724.77275-13-michal.swiatkowski@linux.intel.com>
+Date: Tue, 13 Feb 2024 08:27:22 +0100
+Message-ID: <20240213072724.77275-14-michal.swiatkowski@linux.intel.com>
 X-Mailer: git-send-email 2.42.0
 In-Reply-To: <20240213072724.77275-1-michal.swiatkowski@linux.intel.com>
 References: <20240213072724.77275-1-michal.swiatkowski@linux.intel.com>
@@ -71,25 +71,25 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1707809021; x=1739345021;
+ t=1707809024; x=1739345024;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=2hLUxP1834Vl8fx9RVqq/1AoUwKtwNJO0XHMhBgEsYg=;
- b=OBLQScZqxx5g3sv7eozgb0a78pI0/GbfsMy/2RccKm7+CPUt4PpMnQSN
- 4K+tWAxuEFvvc8BdWLgmJW10VrO+JlaChV+Deka7vEcJbh8BoAueml/J5
- y/BVWMlD4qYdIoX+vx96imubTSszvd7/geyuqv84FJeM7+6z6NSvLo+1f
- vqbE/WJyWsENEIXkauI/3VvZXBrsrCZhtTsTRhJH9cGNSLSyraccLE8Yt
- qLbJLlpvgC4bybN1e4nYk6jza0nNaIoWflxM12wi/ekFfCS1tzXWtrqiq
- CsTPM38uBmWkAy18lI6je1fS2AiBP8SCqWhxA1EBUO/Mfn/H264QyhDOK
- A==;
+ bh=VmI/PtpXcW9Gvn2IejRZMeIizERy58OcwOlW6tQ82MA=;
+ b=YigdkLWPUmFaeHE94ah84GCA2MZ5cle7hupchNNyx/7nzJhSqJloN0Ye
+ dd3jvQKOwSbQomTNKXshTzz92e0MCtxJqkDAdPRituEpxD+8ddy/p3o7i
+ FLpWFlIaNfU82McwgaA3HLBTi9vUpkxg/VrTk9HeQKDj4PU+duKDkYxkQ
+ oyTae34arUlj4NAwFYiH7HxHJNQhRen+yDdwJyP8xuE4QELgqP6P0Vhez
+ 8xnH5kF8nU23VHa6Dd2tE88QrJgll0gTb5NS+Bs5rq5FHdKeM5eKKmy0S
+ SxmwgC527/NAsHDhmtSYXPG40pRQjtYVOHF+5EQwyTSBtR4F6Z7TtseCC
+ w==;
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=none (p=none dis=none)
  header.from=linux.intel.com
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=OBLQScZq
-Subject: [Intel-wired-lan] [iwl-next v1 12/15] ice: netdevice ops for SF
- representor
+ header.a=rsa-sha256 header.s=Intel header.b=YigdkLWP
+Subject: [Intel-wired-lan] [iwl-next v1 13/15] ice: support subfunction
+ devlink Tx topology
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -110,175 +110,124 @@ Cc: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Subfunction port representor needs the basic netdevice ops to work
-correctly. Create them.
+Flow for creating Tx topology is the same as for VF port representors,
+but the devlink port is stored in different place (sf->devlink_port).
 
+When creating VF devlink lock isn't taken, when creating subfunction it
+is. Setting Tx topology function needs to take this lock, check if it
+was taken before to not do it twice.
+
+Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
 Reviewed-by: Wojciech Drewek <wojciech.drewek@intel.com>
 Signed-off-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_repr.c | 63 +++++++++++++++++------
- 1 file changed, 48 insertions(+), 15 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_devlink.c | 14 ++++++++++++--
+ drivers/net/ethernet/intel/ice/ice_repr.c    | 14 +++++++++-----
+ 2 files changed, 21 insertions(+), 7 deletions(-)
 
+diff --git a/drivers/net/ethernet/intel/ice/ice_devlink.c b/drivers/net/ethernet/intel/ice/ice_devlink.c
+index 6278ff3eb7c9..503e175140ad 100644
+--- a/drivers/net/ethernet/intel/ice/ice_devlink.c
++++ b/drivers/net/ethernet/intel/ice/ice_devlink.c
+@@ -595,6 +595,7 @@ static void ice_traverse_tx_tree(struct devlink *devlink, struct ice_sched_node
+ 				 struct ice_sched_node *tc_node, struct ice_pf *pf)
+ {
+ 	struct devlink_rate *rate_node = NULL;
++	struct ice_dynamic_port *sf;
+ 	struct ice_vf *vf;
+ 	int i;
+ 
+@@ -606,6 +607,7 @@ static void ice_traverse_tx_tree(struct devlink *devlink, struct ice_sched_node
+ 		/* create root node */
+ 		rate_node = devl_rate_node_create(devlink, node, node->name, NULL);
+ 	} else if (node->vsi_handle &&
++		   pf->vsi[node->vsi_handle]->type == ICE_VSI_VF &&
+ 		   pf->vsi[node->vsi_handle]->vf) {
+ 		vf = pf->vsi[node->vsi_handle]->vf;
+ 		if (!vf->devlink_port.devlink_rate)
+@@ -614,6 +616,16 @@ static void ice_traverse_tx_tree(struct devlink *devlink, struct ice_sched_node
+ 			 */
+ 			devl_rate_leaf_create(&vf->devlink_port, node,
+ 					      node->parent->rate_node);
++	} else if (node->vsi_handle &&
++		   pf->vsi[node->vsi_handle]->type == ICE_VSI_SF &&
++		   pf->vsi[node->vsi_handle]->sf) {
++		sf = pf->vsi[node->vsi_handle]->sf;
++		if (!sf->devlink_port.devlink_rate)
++			/* leaf nodes doesn't have children
++			 * so we don't set rate_node
++			 */
++			devl_rate_leaf_create(&sf->devlink_port, node,
++					      node->parent->rate_node);
+ 	} else if (node->info.data.elem_type != ICE_AQC_ELEM_TYPE_LEAF &&
+ 		   node->parent->rate_node) {
+ 		rate_node = devl_rate_node_create(devlink, node, node->name,
+@@ -645,10 +657,8 @@ int ice_devlink_rate_init_tx_topology(struct devlink *devlink, struct ice_vsi *v
+ 
+ 	tc_node = pi->root->children[0];
+ 	mutex_lock(&pi->sched_lock);
+-	devl_lock(devlink);
+ 	for (i = 0; i < tc_node->num_children; i++)
+ 		ice_traverse_tx_tree(devlink, tc_node->children[i], tc_node, pf);
+-	devl_unlock(devlink);
+ 	mutex_unlock(&pi->sched_lock);
+ 
+ 	return 0;
 diff --git a/drivers/net/ethernet/intel/ice/ice_repr.c b/drivers/net/ethernet/intel/ice/ice_repr.c
-index f0ae7a9000b4..125bcf2e4c00 100644
+index 125bcf2e4c00..fb0171afa43e 100644
 --- a/drivers/net/ethernet/intel/ice/ice_repr.c
 +++ b/drivers/net/ethernet/intel/ice/ice_repr.c
-@@ -32,7 +32,10 @@ ice_repr_get_phys_port_name(struct net_device *netdev, char *buf, size_t len)
- 	int res;
+@@ -380,19 +380,17 @@ static void ice_repr_rem_vf(struct ice_repr *repr)
  
- 	/* Devlink port is registered and devlink core is taking care of name formatting. */
--	if (repr->vf->devlink_port.devlink)
-+	if ((repr->type == ICE_REPR_TYPE_VF &&
-+	     repr->vf->devlink_port.devlink) ||
-+	    (repr->type == ICE_REPR_TYPE_SF &&
-+	     repr->sf->devlink_port.devlink))
- 		return -EOPNOTSUPP;
- 
- 	res = snprintf(buf, len, "pf%dvfr%d", ice_repr_get_sw_port_id(repr),
-@@ -92,12 +95,13 @@ static void
- ice_repr_get_stats64(struct net_device *netdev, struct rtnl_link_stats64 *stats)
+ static void ice_repr_rem_sf(struct ice_repr *repr)
  {
- 	struct ice_netdev_priv *np = netdev_priv(netdev);
-+	struct ice_repr *repr = np->repr;
- 	struct ice_eth_stats *eth_stats;
- 	struct ice_vsi *vsi;
++	devl_rate_leaf_destroy(&repr->sf->devlink_port);
+ 	unregister_netdev(repr->netdev);
+ }
  
--	if (ice_is_vf_disabled(np->repr->vf))
-+	if (repr->ops.ready(repr))
+-static void ice_repr_set_tx_topology(struct ice_pf *pf)
++static void ice_repr_set_tx_topology(struct ice_pf *pf, struct devlink *devlink)
+ {
+-	struct devlink *devlink;
+-
+ 	/* only export if ADQ and DCB disabled and eswitch enabled*/
+ 	if (ice_is_adq_active(pf) || ice_is_dcb_active(pf) ||
+ 	    !ice_is_switchdev_running(pf))
  		return;
--	vsi = np->repr->src_vsi;
-+	vsi = repr->src_vsi;
  
- 	ice_update_vsi_stats(vsi);
- 	eth_stats = &vsi->eth_stats;
-@@ -126,7 +130,7 @@ struct ice_repr *ice_netdev_to_repr(const struct net_device *netdev)
+-	devlink = priv_to_devlink(pf);
+ 	ice_devlink_rate_init_tx_topology(devlink, ice_get_main_vsi(pf));
  }
  
- /**
-- * ice_repr_open - Enable port representor's network interface
-+ * ice_repr_vf_open - Enable port representor's network interface
-  * @netdev: network interface device structure
-  *
-  * The open entry point is called when a port representor's network
-@@ -135,7 +139,7 @@ struct ice_repr *ice_netdev_to_repr(const struct net_device *netdev)
-  *
-  * Returns 0 on success
-  */
--static int ice_repr_open(struct net_device *netdev)
-+static int ice_repr_vf_open(struct net_device *netdev)
+@@ -444,6 +442,7 @@ static struct ice_repr *ice_repr_create(struct ice_vsi *src_vsi)
+ static int ice_repr_add_vf(struct ice_repr *repr)
  {
- 	struct ice_repr *repr = ice_netdev_to_repr(netdev);
- 	struct ice_vf *vf;
-@@ -151,8 +155,16 @@ static int ice_repr_open(struct net_device *netdev)
- 	return 0;
- }
+ 	struct ice_vf *vf = repr->vf;
++	struct devlink *devlink;
+ 	int err;
  
-+static int ice_repr_sf_open(struct net_device *netdev)
-+{
-+	netif_carrier_on(netdev);
-+	netif_tx_start_all_queues(netdev);
-+
-+	return 0;
-+}
-+
- /**
-- * ice_repr_stop - Disable port representor's network interface
-+ * ice_repr_vf_stop - Disable port representor's network interface
-  * @netdev: network interface device structure
-  *
-  * The stop entry point is called when a port representor's network
-@@ -161,7 +173,7 @@ static int ice_repr_open(struct net_device *netdev)
-  *
-  * Returns 0 on success
-  */
--static int ice_repr_stop(struct net_device *netdev)
-+static int ice_repr_vf_stop(struct net_device *netdev)
- {
- 	struct ice_repr *repr = ice_netdev_to_repr(netdev);
- 	struct ice_vf *vf;
-@@ -177,6 +189,14 @@ static int ice_repr_stop(struct net_device *netdev)
- 	return 0;
- }
- 
-+static int ice_repr_sf_stop(struct net_device *netdev)
-+{
-+	netif_carrier_off(netdev);
-+	netif_tx_stop_all_queues(netdev);
-+
-+	return 0;
-+}
-+
- /**
-  * ice_repr_sp_stats64 - get slow path stats for port representor
-  * @dev: network interface device structure
-@@ -278,11 +298,22 @@ ice_repr_setup_tc(struct net_device *netdev, enum tc_setup_type type,
- 	}
- }
- 
--static const struct net_device_ops ice_repr_netdev_ops = {
-+static const struct net_device_ops ice_repr_vf_netdev_ops = {
-+	.ndo_get_phys_port_name = ice_repr_get_phys_port_name,
-+	.ndo_get_stats64 = ice_repr_get_stats64,
-+	.ndo_open = ice_repr_vf_open,
-+	.ndo_stop = ice_repr_vf_stop,
-+	.ndo_start_xmit = ice_eswitch_port_start_xmit,
-+	.ndo_setup_tc = ice_repr_setup_tc,
-+	.ndo_has_offload_stats = ice_repr_ndo_has_offload_stats,
-+	.ndo_get_offload_stats = ice_repr_ndo_get_offload_stats,
-+};
-+
-+static const struct net_device_ops ice_repr_sf_netdev_ops = {
- 	.ndo_get_phys_port_name = ice_repr_get_phys_port_name,
- 	.ndo_get_stats64 = ice_repr_get_stats64,
--	.ndo_open = ice_repr_open,
--	.ndo_stop = ice_repr_stop,
-+	.ndo_open = ice_repr_sf_open,
-+	.ndo_stop = ice_repr_sf_stop,
- 	.ndo_start_xmit = ice_eswitch_port_start_xmit,
- 	.ndo_setup_tc = ice_repr_setup_tc,
- 	.ndo_has_offload_stats = ice_repr_ndo_has_offload_stats,
-@@ -295,18 +326,20 @@ static const struct net_device_ops ice_repr_netdev_ops = {
-  */
- bool ice_is_port_repr_netdev(const struct net_device *netdev)
- {
--	return netdev && (netdev->netdev_ops == &ice_repr_netdev_ops);
-+	return netdev && (netdev->netdev_ops == &ice_repr_vf_netdev_ops ||
-+			  netdev->netdev_ops == &ice_repr_sf_netdev_ops);
- }
- 
- /**
-  * ice_repr_reg_netdev - register port representor netdev
-  * @netdev: pointer to port representor netdev
-+ * @ops: new ops for netdev
-  */
- static int
--ice_repr_reg_netdev(struct net_device *netdev)
-+ice_repr_reg_netdev(struct net_device *netdev, const struct net_device_ops *ops)
- {
- 	eth_hw_addr_random(netdev);
--	netdev->netdev_ops = &ice_repr_netdev_ops;
-+	netdev->netdev_ops = ops;
- 	ice_set_ethtool_repr_ops(netdev);
- 
- 	netdev->hw_features |= NETIF_F_HW_TC;
-@@ -418,7 +451,7 @@ static int ice_repr_add_vf(struct ice_repr *repr)
- 		return err;
- 
- 	SET_NETDEV_DEVLINK_PORT(repr->netdev, &vf->devlink_port);
--	err = ice_repr_reg_netdev(repr->netdev);
-+	err = ice_repr_reg_netdev(repr->netdev, &ice_repr_vf_netdev_ops);
- 	if (err)
+ 	err = ice_devlink_create_vf_port(vf);
+@@ -456,7 +455,9 @@ static int ice_repr_add_vf(struct ice_repr *repr)
  		goto err_netdev;
  
-@@ -460,7 +493,7 @@ static int ice_repr_add_sf(struct ice_repr *repr)
+ 	ice_virtchnl_set_repr_ops(vf);
+-	ice_repr_set_tx_topology(vf->pf);
++
++	devlink = priv_to_devlink(vf->pf);
++	ice_repr_set_tx_topology(vf->pf, devlink);
+ 
+ 	return 0;
+ 
+@@ -493,6 +494,9 @@ static int ice_repr_add_sf(struct ice_repr *repr)
  	struct ice_dynamic_port *sf = repr->sf;
  
  	SET_NETDEV_DEVLINK_PORT(repr->netdev, &sf->devlink_port);
--	return ice_repr_reg_netdev(repr->netdev);
-+	return ice_repr_reg_netdev(repr->netdev, &ice_repr_sf_netdev_ops);
++
++	ice_repr_set_tx_topology(sf->vsi->back, priv_to_devlink(sf->vsi->back));
++
+ 	return ice_repr_reg_netdev(repr->netdev, &ice_repr_sf_netdev_ops);
  }
  
- struct ice_repr *ice_repr_create_sf(struct ice_dynamic_port *sf)
 -- 
 2.42.0
 
