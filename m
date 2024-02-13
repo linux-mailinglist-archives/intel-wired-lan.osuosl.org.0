@@ -1,93 +1,92 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 570B4853AF5
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 13 Feb 2024 20:31:31 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 990EE60E1D;
-	Tue, 13 Feb 2024 19:31:29 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id jyj-se372egA; Tue, 13 Feb 2024 19:31:28 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 8020C60E0B
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1707852688;
-	bh=h2obgJbsgNYWowqeRPcglL0vL9RmLnYCr94H1eK7CZM=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=tCeVZNYHhB6yuQlqYW8TmhzRkEFwrfFxPO5jM7jfyFMmRvQqTGNOIqfRl3G7Dr3AT
-	 KRuVDdrE82VeRAVTInY0Q5/JM+eKA8G1DefZqHdZRZe/3N7kpn5aaqRjyIuKMArJv3
-	 RvvHuJ/aTd0dOr562Uv4gL8m/Drf8yLkD+y3QXYBfCFXdu7FwhGgLsopcEp8Im8My/
-	 9uMlslzXgsFX8Le2YOMEqFJXnlHQjJs97h34g1S8y6YUpRUWneiae8dvgw315E3XcH
-	 IPndLZaZTn/qfdoIipFCDHkf2A2kUipGC115alJorxgGIf5Y3K6CWIjd2xlO2M/Mvs
-	 VjpMNp6G59BKA==
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 8020C60E0B;
-	Tue, 13 Feb 2024 19:31:28 +0000 (UTC)
-X-Original-To: intel-wired-lan@osuosl.org
-Delivered-To: intel-wired-lan@osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 202DF1BF977
- for <intel-wired-lan@osuosl.org>; Tue, 13 Feb 2024 19:31:27 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 55B77853DC4
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 13 Feb 2024 22:57:28 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 0B5908224F
- for <intel-wired-lan@osuosl.org>; Tue, 13 Feb 2024 19:31:27 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 044D8812D4;
+	Tue, 13 Feb 2024 21:57:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 6MCuyy2wQOST for <intel-wired-lan@osuosl.org>;
- Tue, 13 Feb 2024 19:31:26 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.9;
- helo=mgamail.intel.com; envelope-from=amritha.nambiar@intel.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 0A07F82237
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0A07F82237
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.9])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 0A07F82237
- for <intel-wired-lan@osuosl.org>; Tue, 13 Feb 2024 19:31:24 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10982"; a="24350298"
-X-IronPort-AV: E=Sophos;i="6.06,158,1705392000"; d="scan'208";a="24350298"
-Received: from orviesa010.jf.intel.com ([10.64.159.150])
- by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 Feb 2024 11:31:22 -0800
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id iKVpgU3ch_05; Tue, 13 Feb 2024 21:57:25 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 79E7D812DC
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1707861445;
+	bh=0zVKRlAEwUuykRU9BhLVIFx//y+pUgxn5uGvZKpSk3Q=;
+	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=DORUsCSy0vf66zTBMdwnvyBTcLeqUcxfbphX/Uqtjy9tBjI+4HbqovDOt9wJzGPLO
+	 kVqqznIwolrOgHX8h6smq+tpNx0xEb3dBB4E7XC11aSzmqH8dB1uC8UOSD1eg+xIf3
+	 L5nZ9flkra4EIFB4eBd9Uhk3iehl0m4BwbSppi0gVUuYVZ2Bw5Um8eBHxa2iN7vt4I
+	 LP2XhiMI7nYuLE92ZH+MM8ILdsk1fwqERu/SUoT2ISfF0j5kNN/7y20pIu95+DMLzK
+	 6lqcjABH0xLoxto1BhyC+qpOKHZd23SbypEK/+AqjWYlmngfY0uuGiz7C6zDKm3mef
+	 gAGWmbnB05eLw==
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp1.osuosl.org (Postfix) with ESMTP id 79E7D812DC;
+	Tue, 13 Feb 2024 21:57:25 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id E85341BF310
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Feb 2024 21:57:22 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp2.osuosl.org (Postfix) with ESMTP id D28BD405C3
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Feb 2024 21:57:22 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 3pEmnrNwa2Gq for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 13 Feb 2024 21:57:21 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.13;
+ helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 51B6240597
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 51B6240597
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.13])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 51B6240597
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Feb 2024 21:57:20 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10982"; a="4858802"
+X-IronPort-AV: E=Sophos;i="6.06,158,1705392000"; 
+   d="scan'208";a="4858802"
+Received: from fmviesa009.fm.intel.com ([10.60.135.149])
+ by fmvoesa107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 13 Feb 2024 13:57:19 -0800
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.06,158,1705392000"; 
-   d="scan'208";a="3019894"
-Received: from anambiarhost.jf.intel.com ([10.166.29.163])
- by orviesa010.jf.intel.com with ESMTP; 13 Feb 2024 11:31:21 -0800
-From: Amritha Nambiar <amritha.nambiar@intel.com>
-To: intel-wired-lan@osuosl.org
-Date: Tue, 13 Feb 2024 11:48:50 -0800
-Message-ID: <170785373072.3325.9129916579186572531.stgit@anambiarhost.jf.intel.com>
-User-Agent: StGit/unknown-version
-MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
+   d="scan'208";a="2984568"
+Received: from lkp-server01.sh.intel.com (HELO 01f0647817ea) ([10.239.97.150])
+ by fmviesa009.fm.intel.com with ESMTP; 13 Feb 2024 13:57:18 -0800
+Received: from kbuild by 01f0647817ea with local (Exim 4.96)
+ (envelope-from <lkp@intel.com>) id 1ra0mC-00086H-09
+ for intel-wired-lan@lists.osuosl.org; Tue, 13 Feb 2024 21:57:16 +0000
+Date: Wed, 14 Feb 2024 05:57:09 +0800
+From: kernel test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <202402140507.w0T3Je0U-lkp@intel.com>
+User-Agent: s-nail v14.9.24
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1707852686; x=1739388686;
- h=subject:from:to:cc:date:message-id:mime-version:
- content-transfer-encoding;
- bh=JJIlTxfySUYf1MIHW+4tv/+DNYOdyyIi9+ZEwtZ8m6U=;
- b=RKxApBvFAyhECN4iY0pkKfQXWs7/mH/HUCvJuTSGrAJa46wGizIMPFQX
- bVked2gnGsMykneYuxoLjw0xfG3c+u673VTEbcOa/GPC24SdKT+RfSQDO
- zsfhGwfXwMu9aj/HTFlOW/b/Cz+j4mZJPqPZhe6wDGFrxvaubmAPqPvom
- iGoXKwxuCvDo+2NRBevR86IBSGyKHBoqA47e4EsxS4pTWsZ6vHSjZD237
- AavH21VOaaXR3dn357DEFcn1SfE3mVWljWXBOeAcfl758ugIljLj6xzix
- JICr9RylA11cV6csUVBu8XuJvtkowoI49t62/kU/59K8BxeuR3mx+Azyj
+ t=1707861441; x=1739397441;
+ h=date:from:to:subject:message-id;
+ bh=CwMnvk36eyeTDxqEhzNv2x0wznxgVQOvRHT0x1qO5PE=;
+ b=iceri5g8cjj6wArRgDaPmr3YquVD8uiVRzssgnd+ng4nrbApf6/8Tx0j
+ 0rdRcqU5uIfOHEGtSNqbcNz/c9XkDFbX/4hQq+2GL4AQ2Ss77Ek1O8kUl
+ uI9BqEPQpomoAdfKr/dhS95K0aCrPMDikH/GvqGsD8bNbUOeSFrK1xr2N
+ QSYLIGAKNZktsX0QSY8zdCWY+kZwNrRfPmgigU/KnaMH73lNliXaSTfLA
+ fbd7OTuZkXfQwBwl6iUIPZeedUvmoSudLLqYQocURNADVEiGcA2mFXX7e
+ OLuoccxzInGqsa77Y5B2HW5uemZMm5qpOvupbulT2DRbjPwaADgk9Fefr
  A==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=RKxApBvF
-Subject: [Intel-wired-lan] [net PATCH] ice: Fix ASSERT_RTNL() warning during
- certain scenarios
+ header.s=Intel header.b=iceri5g8
+Subject: [Intel-wired-lan] [tnguy-next-queue:100GbE] BUILD SUCCESS
+ 500d0df5b4b2394a06b949bab05f7ed0242b9858
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,249 +99,257 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: sridhar.samudrala@intel.com, anthony.l.nguyen@intel.com,
- jesse.brandeburg@intel.com, amritha.nambiar@intel.com
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Commit 91fdbce7e8d6 ("ice: Add support in the driver for associating
-queue with napi") invoked the netif_queue_set_napi() call. This
-kernel function requires to be called with rtnl_lock taken,
-otherwise ASSERT_RTNL() warning will be triggered. ice_vsi_rebuild()
-initiating this call is under rntl_lock when the rebuild is in
-response to configuration changes from external interfaces (such as
-tc, ethtool etc. which holds the lock). But, the VSI rebuild
-generated from service tasks and resets (PFR/CORER/GLOBR) is not
-under rtnl lock protection. Handle these cases as well to hold lock
-before the kernel call (by setting the 'locked' boolean to false).
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git 100GbE
+branch HEAD: 500d0df5b4b2394a06b949bab05f7ed0242b9858  ice: Fix debugfs with devlink reload
 
-netif_queue_set_napi() is also used to clear previously set napi
-in the q_vector unroll flow. Handle this for locked/lockless execution
-paths.
+elapsed time: 1450m
 
-Fixes: 91fdbce7e8d6 ("ice: Add support in the driver for associating queue with napi")
-Signed-off-by: Amritha Nambiar <amritha.nambiar@intel.com>
-Reviewed-by: Sridhar Samudrala <sridhar.samudrala@intel.com>
----
- drivers/net/ethernet/intel/ice/ice_base.c |   10 +--
- drivers/net/ethernet/intel/ice/ice_lib.c  |   86 +++++++++++++++++++++++------
- drivers/net/ethernet/intel/ice/ice_lib.h  |   10 +++
- drivers/net/ethernet/intel/ice/ice_main.c |    3 +
- 4 files changed, 83 insertions(+), 26 deletions(-)
+configs tested: 235
+configs skipped: 3
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_base.c b/drivers/net/ethernet/intel/ice/ice_base.c
-index 79485c944c9d..662fc395edcc 100644
---- a/drivers/net/ethernet/intel/ice/ice_base.c
-+++ b/drivers/net/ethernet/intel/ice/ice_base.c
-@@ -190,15 +190,13 @@ static void ice_free_q_vector(struct ice_vsi *vsi, int v_idx)
- 	q_vector = vsi->q_vectors[v_idx];
- 
- 	ice_for_each_tx_ring(tx_ring, q_vector->tx) {
--		if (vsi->netdev)
--			netif_queue_set_napi(vsi->netdev, tx_ring->q_index,
--					     NETDEV_QUEUE_TYPE_TX, NULL);
-+		ice_queue_set_napi(vsi, tx_ring->q_index, NETDEV_QUEUE_TYPE_TX,
-+				   NULL);
- 		tx_ring->q_vector = NULL;
- 	}
- 	ice_for_each_rx_ring(rx_ring, q_vector->rx) {
--		if (vsi->netdev)
--			netif_queue_set_napi(vsi->netdev, rx_ring->q_index,
--					     NETDEV_QUEUE_TYPE_RX, NULL);
-+		ice_queue_set_napi(vsi, rx_ring->q_index, NETDEV_QUEUE_TYPE_RX,
-+				   NULL);
- 		rx_ring->q_vector = NULL;
- 	}
- 
-diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
-index 718cb8df7853..e81b563e34a3 100644
---- a/drivers/net/ethernet/intel/ice/ice_lib.c
-+++ b/drivers/net/ethernet/intel/ice/ice_lib.c
-@@ -2251,7 +2251,7 @@ ice_vsi_cfg_def(struct ice_vsi *vsi, struct ice_vsi_cfg_params *params)
- 		ice_vsi_map_rings_to_vectors(vsi);
- 
- 		/* Associate q_vector rings to napi */
--		ice_vsi_set_napi_queues(vsi, true);
-+		ice_vsi_set_napi_queues(vsi);
- 
- 		vsi->stat_offsets_loaded = false;
- 
-@@ -2728,19 +2728,19 @@ void ice_vsi_dis_irq(struct ice_vsi *vsi)
- }
- 
- /**
-- * ice_queue_set_napi - Set the napi instance for the queue
-+ * __ice_queue_set_napi - Set the napi instance for the queue
-  * @dev: device to which NAPI and queue belong
-  * @queue_index: Index of queue
-  * @type: queue type as RX or TX
-  * @napi: NAPI context
-  * @locked: is the rtnl_lock already held
-  *
-- * Set the napi instance for the queue
-+ * Set the napi instance for the queue. Caller indicates the lock status.
-  */
- static void
--ice_queue_set_napi(struct net_device *dev, unsigned int queue_index,
--		   enum netdev_queue_type type, struct napi_struct *napi,
--		   bool locked)
-+__ice_queue_set_napi(struct net_device *dev, unsigned int queue_index,
-+		     enum netdev_queue_type type, struct napi_struct *napi,
-+		     bool locked)
- {
- 	if (!locked)
- 		rtnl_lock();
-@@ -2750,26 +2750,79 @@ ice_queue_set_napi(struct net_device *dev, unsigned int queue_index,
- }
- 
- /**
-- * ice_q_vector_set_napi_queues - Map queue[s] associated with the napi
-+ * ice_queue_set_napi - Set the napi instance for the queue
-+ * @vsi: VSI being configured
-+ * @queue_index: Index of queue
-+ * @type: queue type as RX or TX
-+ * @napi: NAPI context
-+ *
-+ * Set the napi instance for the queue. The rtnl lock state is derived from the
-+ * execution path.
-+ */
-+void
-+ice_queue_set_napi(struct ice_vsi *vsi, unsigned int queue_index,
-+		   enum netdev_queue_type type, struct napi_struct *napi)
-+{
-+	struct ice_pf *pf = vsi->back;
-+
-+	if (!vsi->netdev)
-+		return;
-+
-+	if (current_work() == &pf->serv_task ||
-+	    test_bit(ICE_PREPARED_FOR_RESET, pf->state) ||
-+	    test_bit(ICE_DOWN, pf->state) ||
-+	    test_bit(ICE_SUSPENDED, pf->state))
-+		__ice_queue_set_napi(vsi->netdev, queue_index, type, napi,
-+				     false);
-+	else
-+		__ice_queue_set_napi(vsi->netdev, queue_index, type, napi,
-+				     true);
-+}
-+
-+/**
-+ * __ice_q_vector_set_napi_queues - Map queue[s] associated with the napi
-  * @q_vector: q_vector pointer
-  * @locked: is the rtnl_lock already held
-  *
-+ * Associate the q_vector napi with all the queue[s] on the vector.
-+ * Caller indicates the lock status.
-+ */
-+void __ice_q_vector_set_napi_queues(struct ice_q_vector *q_vector, bool locked)
-+{
-+	struct ice_rx_ring *rx_ring;
-+	struct ice_tx_ring *tx_ring;
-+
-+	ice_for_each_rx_ring(rx_ring, q_vector->rx)
-+		__ice_queue_set_napi(q_vector->vsi->netdev, rx_ring->q_index,
-+				     NETDEV_QUEUE_TYPE_RX, &q_vector->napi,
-+				     locked);
-+
-+	ice_for_each_tx_ring(tx_ring, q_vector->tx)
-+		__ice_queue_set_napi(q_vector->vsi->netdev, tx_ring->q_index,
-+				     NETDEV_QUEUE_TYPE_TX, &q_vector->napi,
-+				     locked);
-+	/* Also set the interrupt number for the NAPI */
-+	netif_napi_set_irq(&q_vector->napi, q_vector->irq.virq);
-+}
-+
-+/**
-+ * ice_q_vector_set_napi_queues - Map queue[s] associated with the napi
-+ * @q_vector: q_vector pointer
-+ *
-  * Associate the q_vector napi with all the queue[s] on the vector
-  */
--void ice_q_vector_set_napi_queues(struct ice_q_vector *q_vector, bool locked)
-+void ice_q_vector_set_napi_queues(struct ice_q_vector *q_vector)
- {
- 	struct ice_rx_ring *rx_ring;
- 	struct ice_tx_ring *tx_ring;
- 
- 	ice_for_each_rx_ring(rx_ring, q_vector->rx)
--		ice_queue_set_napi(q_vector->vsi->netdev, rx_ring->q_index,
--				   NETDEV_QUEUE_TYPE_RX, &q_vector->napi,
--				   locked);
-+		ice_queue_set_napi(q_vector->vsi, rx_ring->q_index,
-+				   NETDEV_QUEUE_TYPE_RX, &q_vector->napi);
- 
- 	ice_for_each_tx_ring(tx_ring, q_vector->tx)
--		ice_queue_set_napi(q_vector->vsi->netdev, tx_ring->q_index,
--				   NETDEV_QUEUE_TYPE_TX, &q_vector->napi,
--				   locked);
-+		ice_queue_set_napi(q_vector->vsi, tx_ring->q_index,
-+				   NETDEV_QUEUE_TYPE_TX, &q_vector->napi);
- 	/* Also set the interrupt number for the NAPI */
- 	netif_napi_set_irq(&q_vector->napi, q_vector->irq.virq);
- }
-@@ -2777,11 +2830,10 @@ void ice_q_vector_set_napi_queues(struct ice_q_vector *q_vector, bool locked)
- /**
-  * ice_vsi_set_napi_queues
-  * @vsi: VSI pointer
-- * @locked: is the rtnl_lock already held
-  *
-  * Associate queue[s] with napi for all vectors
-  */
--void ice_vsi_set_napi_queues(struct ice_vsi *vsi, bool locked)
-+void ice_vsi_set_napi_queues(struct ice_vsi *vsi)
- {
- 	int i;
- 
-@@ -2789,7 +2841,7 @@ void ice_vsi_set_napi_queues(struct ice_vsi *vsi, bool locked)
- 		return;
- 
- 	ice_for_each_q_vector(vsi, i)
--		ice_q_vector_set_napi_queues(vsi->q_vectors[i], locked);
-+		ice_q_vector_set_napi_queues(vsi->q_vectors[i]);
- }
- 
- /**
-diff --git a/drivers/net/ethernet/intel/ice/ice_lib.h b/drivers/net/ethernet/intel/ice/ice_lib.h
-index 0c77d581416a..b5a1ed7cc4b1 100644
---- a/drivers/net/ethernet/intel/ice/ice_lib.h
-+++ b/drivers/net/ethernet/intel/ice/ice_lib.h
-@@ -81,9 +81,15 @@ void ice_vsi_cfg_netdev_tc(struct ice_vsi *vsi, u8 ena_tc);
- struct ice_vsi *
- ice_vsi_setup(struct ice_pf *pf, struct ice_vsi_cfg_params *params);
- 
--void ice_q_vector_set_napi_queues(struct ice_q_vector *q_vector, bool locked);
-+void
-+ice_queue_set_napi(struct ice_vsi *vsi, unsigned int queue_index,
-+		   enum netdev_queue_type type, struct napi_struct *napi);
-+
-+void __ice_q_vector_set_napi_queues(struct ice_q_vector *q_vector, bool locked);
-+
-+void ice_q_vector_set_napi_queues(struct ice_q_vector *q_vector);
- 
--void ice_vsi_set_napi_queues(struct ice_vsi *vsi, bool locked);
-+void ice_vsi_set_napi_queues(struct ice_vsi *vsi);
- 
- int ice_vsi_release(struct ice_vsi *vsi);
- 
-diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index 824732f16112..0dbbda218ec5 100644
---- a/drivers/net/ethernet/intel/ice/ice_main.c
-+++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -3497,7 +3497,7 @@ static void ice_napi_add(struct ice_vsi *vsi)
- 	ice_for_each_q_vector(vsi, v_idx) {
- 		netif_napi_add(vsi->netdev, &vsi->q_vectors[v_idx]->napi,
- 			       ice_napi_poll);
--		ice_q_vector_set_napi_queues(vsi->q_vectors[v_idx], false);
-+		__ice_q_vector_set_napi_queues(vsi->q_vectors[v_idx], false);
- 	}
- }
- 
-@@ -5383,6 +5383,7 @@ static int ice_reinit_interrupt_scheme(struct ice_pf *pf)
- 		if (ret)
- 			goto err_reinit;
- 		ice_vsi_map_rings_to_vectors(pf->vsi[v]);
-+		ice_vsi_set_napi_queues(pf->vsi[v]);
- 	}
- 
- 	ret = ice_req_irq_msix_misc(pf);
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
+tested configs:
+alpha                            alldefconfig   gcc  
+alpha                             allnoconfig   gcc  
+alpha                            allyesconfig   gcc  
+alpha                               defconfig   gcc  
+arc                              allmodconfig   gcc  
+arc                               allnoconfig   gcc  
+arc                              allyesconfig   gcc  
+arc                                 defconfig   gcc  
+arc                        nsim_700_defconfig   gcc  
+arc                   randconfig-001-20240213   gcc  
+arc                   randconfig-001-20240214   gcc  
+arc                   randconfig-002-20240213   gcc  
+arc                   randconfig-002-20240214   gcc  
+arm                              allmodconfig   gcc  
+arm                               allnoconfig   clang
+arm                              allyesconfig   gcc  
+arm                          collie_defconfig   gcc  
+arm                                 defconfig   clang
+arm                            mmp2_defconfig   gcc  
+arm                       netwinder_defconfig   gcc  
+arm                           omap1_defconfig   gcc  
+arm                             pxa_defconfig   gcc  
+arm                   randconfig-001-20240213   gcc  
+arm                   randconfig-002-20240213   gcc  
+arm                   randconfig-002-20240214   gcc  
+arm                   randconfig-003-20240213   gcc  
+arm                   randconfig-004-20240213   clang
+arm                        shmobile_defconfig   gcc  
+arm                          sp7021_defconfig   gcc  
+arm64                            allmodconfig   clang
+arm64                             allnoconfig   gcc  
+arm64                               defconfig   gcc  
+arm64                 randconfig-001-20240213   gcc  
+arm64                 randconfig-002-20240213   gcc  
+arm64                 randconfig-003-20240213   gcc  
+arm64                 randconfig-003-20240214   gcc  
+arm64                 randconfig-004-20240213   gcc  
+csky                             allmodconfig   gcc  
+csky                              allnoconfig   gcc  
+csky                             allyesconfig   gcc  
+csky                                defconfig   gcc  
+csky                  randconfig-001-20240213   gcc  
+csky                  randconfig-001-20240214   gcc  
+csky                  randconfig-002-20240213   gcc  
+csky                  randconfig-002-20240214   gcc  
+hexagon                          allmodconfig   clang
+hexagon                           allnoconfig   clang
+hexagon                          allyesconfig   clang
+hexagon                             defconfig   clang
+hexagon               randconfig-001-20240213   clang
+hexagon               randconfig-002-20240213   clang
+i386                             allmodconfig   gcc  
+i386                              allnoconfig   gcc  
+i386                             allyesconfig   gcc  
+i386         buildonly-randconfig-001-20240213   clang
+i386         buildonly-randconfig-001-20240214   clang
+i386         buildonly-randconfig-002-20240213   gcc  
+i386         buildonly-randconfig-002-20240214   clang
+i386         buildonly-randconfig-003-20240213   gcc  
+i386         buildonly-randconfig-003-20240214   clang
+i386         buildonly-randconfig-004-20240213   clang
+i386         buildonly-randconfig-005-20240213   gcc  
+i386         buildonly-randconfig-006-20240213   clang
+i386         buildonly-randconfig-006-20240214   clang
+i386                                defconfig   clang
+i386                  randconfig-001-20240213   clang
+i386                  randconfig-001-20240214   clang
+i386                  randconfig-002-20240213   gcc  
+i386                  randconfig-002-20240214   clang
+i386                  randconfig-003-20240213   gcc  
+i386                  randconfig-003-20240214   clang
+i386                  randconfig-004-20240213   clang
+i386                  randconfig-005-20240213   gcc  
+i386                  randconfig-005-20240214   clang
+i386                  randconfig-006-20240213   gcc  
+i386                  randconfig-011-20240213   clang
+i386                  randconfig-011-20240214   clang
+i386                  randconfig-012-20240213   gcc  
+i386                  randconfig-013-20240213   gcc  
+i386                  randconfig-014-20240213   gcc  
+i386                  randconfig-015-20240213   gcc  
+i386                  randconfig-015-20240214   clang
+i386                  randconfig-016-20240213   gcc  
+i386                  randconfig-016-20240214   clang
+loongarch                        allmodconfig   gcc  
+loongarch                         allnoconfig   gcc  
+loongarch                        allyesconfig   gcc  
+loongarch                           defconfig   gcc  
+loongarch             randconfig-001-20240213   gcc  
+loongarch             randconfig-001-20240214   gcc  
+loongarch             randconfig-002-20240213   gcc  
+loongarch             randconfig-002-20240214   gcc  
+m68k                             allmodconfig   gcc  
+m68k                              allnoconfig   gcc  
+m68k                             allyesconfig   gcc  
+m68k                                defconfig   gcc  
+m68k                       m5208evb_defconfig   gcc  
+m68k                        mvme147_defconfig   gcc  
+microblaze                       allmodconfig   gcc  
+microblaze                        allnoconfig   gcc  
+microblaze                       allyesconfig   gcc  
+microblaze                          defconfig   gcc  
+microblaze                      mmu_defconfig   gcc  
+mips                             allmodconfig   gcc  
+mips                              allnoconfig   gcc  
+mips                             allyesconfig   gcc  
+mips                          ath79_defconfig   gcc  
+mips                           ip22_defconfig   gcc  
+mips                          rm200_defconfig   gcc  
+nios2                         10m50_defconfig   gcc  
+nios2                            allmodconfig   gcc  
+nios2                             allnoconfig   gcc  
+nios2                            allyesconfig   gcc  
+nios2                               defconfig   gcc  
+nios2                 randconfig-001-20240213   gcc  
+nios2                 randconfig-001-20240214   gcc  
+nios2                 randconfig-002-20240213   gcc  
+nios2                 randconfig-002-20240214   gcc  
+openrisc                         allmodconfig   gcc  
+openrisc                          allnoconfig   gcc  
+openrisc                         allyesconfig   gcc  
+openrisc                            defconfig   gcc  
+openrisc                 simple_smp_defconfig   gcc  
+parisc                           allmodconfig   gcc  
+parisc                            allnoconfig   gcc  
+parisc                           allyesconfig   gcc  
+parisc                              defconfig   gcc  
+parisc                randconfig-001-20240213   gcc  
+parisc                randconfig-001-20240214   gcc  
+parisc                randconfig-002-20240213   gcc  
+parisc                randconfig-002-20240214   gcc  
+parisc64                            defconfig   gcc  
+powerpc                          allmodconfig   gcc  
+powerpc                           allnoconfig   gcc  
+powerpc                          allyesconfig   clang
+powerpc                      arches_defconfig   gcc  
+powerpc                        icon_defconfig   gcc  
+powerpc                      ppc6xx_defconfig   gcc  
+powerpc               randconfig-001-20240213   clang
+powerpc               randconfig-002-20240213   gcc  
+powerpc               randconfig-003-20240213   gcc  
+powerpc                    sam440ep_defconfig   gcc  
+powerpc                     tqm5200_defconfig   gcc  
+powerpc                     tqm8560_defconfig   gcc  
+powerpc64             randconfig-001-20240213   gcc  
+powerpc64             randconfig-002-20240213   gcc  
+powerpc64             randconfig-003-20240213   clang
+riscv                            allmodconfig   clang
+riscv                             allnoconfig   gcc  
+riscv                            allyesconfig   clang
+riscv                               defconfig   clang
+riscv                 randconfig-001-20240213   gcc  
+riscv                 randconfig-002-20240213   gcc  
+s390                             allmodconfig   clang
+s390                              allnoconfig   clang
+s390                             allyesconfig   gcc  
+s390                          debug_defconfig   gcc  
+s390                                defconfig   clang
+s390                  randconfig-001-20240213   gcc  
+s390                  randconfig-002-20240213   clang
+s390                  randconfig-002-20240214   gcc  
+sh                               allmodconfig   gcc  
+sh                                allnoconfig   gcc  
+sh                               allyesconfig   gcc  
+sh                                  defconfig   gcc  
+sh                     magicpanelr2_defconfig   gcc  
+sh                          polaris_defconfig   gcc  
+sh                    randconfig-001-20240213   gcc  
+sh                    randconfig-001-20240214   gcc  
+sh                    randconfig-002-20240213   gcc  
+sh                    randconfig-002-20240214   gcc  
+sh                          rsk7201_defconfig   gcc  
+sh                      rts7751r2d1_defconfig   gcc  
+sh                           se7619_defconfig   gcc  
+sh                        sh7785lcr_defconfig   gcc  
+sh                            shmin_defconfig   gcc  
+sparc                            allmodconfig   gcc  
+sparc                             allnoconfig   gcc  
+sparc                            allyesconfig   gcc  
+sparc                               defconfig   gcc  
+sparc                       sparc64_defconfig   gcc  
+sparc64                          alldefconfig   gcc  
+sparc64                          allmodconfig   gcc  
+sparc64                          allyesconfig   gcc  
+sparc64                             defconfig   gcc  
+sparc64               randconfig-001-20240213   gcc  
+sparc64               randconfig-001-20240214   gcc  
+sparc64               randconfig-002-20240213   gcc  
+sparc64               randconfig-002-20240214   gcc  
+um                               allmodconfig   clang
+um                                allnoconfig   clang
+um                               allyesconfig   gcc  
+um                                  defconfig   clang
+um                    randconfig-001-20240213   clang
+um                    randconfig-002-20240213   gcc  
+um                    randconfig-002-20240214   gcc  
+um                           x86_64_defconfig   clang
+x86_64                            allnoconfig   clang
+x86_64                           allyesconfig   clang
+x86_64       buildonly-randconfig-001-20240213   clang
+x86_64       buildonly-randconfig-002-20240213   gcc  
+x86_64       buildonly-randconfig-003-20240213   clang
+x86_64       buildonly-randconfig-004-20240213   gcc  
+x86_64       buildonly-randconfig-005-20240213   gcc  
+x86_64       buildonly-randconfig-006-20240213   gcc  
+x86_64                              defconfig   gcc  
+x86_64                randconfig-001-20240213   gcc  
+x86_64                randconfig-002-20240213   clang
+x86_64                randconfig-003-20240213   clang
+x86_64                randconfig-004-20240213   gcc  
+x86_64                randconfig-005-20240213   clang
+x86_64                randconfig-006-20240213   clang
+x86_64                randconfig-011-20240213   clang
+x86_64                randconfig-012-20240213   clang
+x86_64                randconfig-013-20240213   clang
+x86_64                randconfig-014-20240213   gcc  
+x86_64                randconfig-015-20240213   clang
+x86_64                randconfig-016-20240213   clang
+x86_64                randconfig-071-20240213   gcc  
+x86_64                randconfig-072-20240213   gcc  
+x86_64                randconfig-073-20240213   clang
+x86_64                randconfig-074-20240213   gcc  
+x86_64                randconfig-075-20240213   gcc  
+x86_64                randconfig-076-20240213   gcc  
+x86_64                          rhel-8.3-func   gcc  
+x86_64                          rhel-8.3-rust   clang
+x86_64                               rhel-8.3   gcc  
+xtensa                            allnoconfig   gcc  
+xtensa                           allyesconfig   gcc  
+xtensa                  nommu_kc705_defconfig   gcc  
+xtensa                randconfig-001-20240213   gcc  
+xtensa                randconfig-001-20240214   gcc  
+xtensa                randconfig-002-20240213   gcc  
+xtensa                randconfig-002-20240214   gcc  
+xtensa                    smp_lx200_defconfig   gcc  
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
