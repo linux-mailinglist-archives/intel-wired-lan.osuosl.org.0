@@ -1,102 +1,117 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 45C0C852E72
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 13 Feb 2024 11:55:29 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 37EDA852F35
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 13 Feb 2024 12:27:36 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id EA49C81F63;
-	Tue, 13 Feb 2024 10:55:25 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 6025E40BF5;
+	Tue, 13 Feb 2024 11:27:34 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id x0Frltdrb1QN; Tue, 13 Feb 2024 10:55:25 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id XwNE-tiuXNLr; Tue, 13 Feb 2024 11:27:33 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 98B1281E87
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org DBC6040BDD
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1707821724;
-	bh=EaV8pWELML5ZasD4ZgLJGdtzFtd9YIeSG+kjBkUwpDk=;
+	s=default; t=1707823653;
+	bh=s0oFTV7M7pCTGeqj600LQdU9PccVXar4+hpgoAPCV2o=;
 	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=CJZsJn+4AYRSIHIXk5Q1am6JBsh7sBOZNohgtqk3qEYo1N8d/aDQM8ebMS1u+wCmb
-	 +TZUpEFHTYpkyBcBQrYcYYmEpr1PFttoZL4L96D7bWqsMXUDjlSqWeO5ScROlkujqQ
-	 d+am8Eni8Jpq8wy6TX0NqOyt2lweGsafdufwqfqXKFavLC6WPXd+qgDYggBVIgK8Kw
-	 cpxNrCLNjwucryuIGmSINTu1lvmUNqZ7ELTO2SlWZqOxKsNggsHjFIwzKaK1A1INW5
-	 7e+Wt9rbtrAMFQsHjP7MQZhkU8D3cvEiWxCkWC6OGb1AmYSDbHXQI6kniGu0UPF6Sp
-	 HltT4kB4Iu9Ug==
+	b=sM8zRypSzFeKCQSWPTXQuXg6Wd7XlTtCXv5OZXwSpiHFVPbRwuOS+ex2oh/b5Xf77
+	 OFKU1sFaF3EkNMI0P+pSLodxAwiCiKf5Vqa1XILLWZoxOGcGv6g4bpu2F1w/mw8zmy
+	 co6NWDHkjL1/oYww7bfXP2hlOCtF3Poq7I2xcNrqmA5rcKinQPiQhzTbvbUZgMevNo
+	 OdFYsnO1T77p29Fb6o9EnC2kaJuNHipEf0DGaI6zToEv6FMczOtyDO+MD5SAnyT4sl
+	 jPvYbrcC6xbBKG7oMDL3ThWxVGiIHXJG2/qnuYbcyD8xuyb+jRudsJyHeMilDTHFcA
+	 oNFK3xZDH5ydQ==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 98B1281E87;
-	Tue, 13 Feb 2024 10:55:24 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id DBC6040BDD;
+	Tue, 13 Feb 2024 11:27:32 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id C50231BF47E
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Feb 2024 10:55:22 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 07DCD1BF421
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Feb 2024 11:27:30 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id B16E360AD0
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Feb 2024 10:55:22 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id E7C1160B39
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Feb 2024 11:27:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id v_IhPv-OwyUq for <intel-wired-lan@lists.osuosl.org>;
- Tue, 13 Feb 2024 10:55:21 +0000 (UTC)
-X-Greylist: delayed 427 seconds by postgrey-1.37 at util1.osuosl.org;
- Tue, 13 Feb 2024 10:55:21 UTC
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 9175A60AB1
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9175A60AB1
-Received-SPF: None (mailfrom) identity=mailfrom; client-ip=192.198.163.14;
- helo=mgamail.intel.com; envelope-from=michal.swiatkowski@linux.intel.com;
- receiver=<UNKNOWN> 
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.14])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 9175A60AB1
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Feb 2024 10:55:21 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10982"; a="1965508"
-X-IronPort-AV: E=Sophos;i="6.06,156,1705392000"; 
-   d="scan'208";a="1965508"
-Received: from fmviesa010.fm.intel.com ([10.60.135.150])
- by fmvoesa108.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 Feb 2024 02:48:13 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.06,156,1705392000"; 
-   d="scan'208";a="2805482"
-Received: from unknown (HELO mev-dev) ([10.237.112.144])
- by fmviesa010-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 Feb 2024 02:48:10 -0800
-Date: Tue, 13 Feb 2024 11:48:06 +0100
-From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-To: Wojciech Drewek <wojciech.drewek@intel.com>
-Message-ID: <ZctI5v99LmGx285J@mev-dev>
-References: <20240213073509.77622-1-michal.swiatkowski@linux.intel.com>
- <20240213073509.77622-7-michal.swiatkowski@linux.intel.com>
- <ZcsxRRrVvnhjLxn3@nanopsycho> <Zcs9XeZmd2E1IHKs@mev-dev>
- <bb501538-29d5-4930-97b6-1c02f1b7ecba@intel.com>
+ with ESMTP id MlXj-X524lDf for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 13 Feb 2024 11:27:28 +0000 (UTC)
+Received-SPF: None (mailfrom) identity=mailfrom;
+ client-ip=2a00:1450:4864:20::334; helo=mail-wm1-x334.google.com;
+ envelope-from=jiri@resnulli.us; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org D590460B31
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D590460B31
+Received: from mail-wm1-x334.google.com (mail-wm1-x334.google.com
+ [IPv6:2a00:1450:4864:20::334])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id D590460B31
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Feb 2024 11:27:26 +0000 (UTC)
+Received: by mail-wm1-x334.google.com with SMTP id
+ 5b1f17b1804b1-40fd2f7ef55so29655605e9.0
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Feb 2024 03:27:26 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1707823644; x=1708428444;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=s0oFTV7M7pCTGeqj600LQdU9PccVXar4+hpgoAPCV2o=;
+ b=Na7W16Wt6FZGod9brLKyGRV7cowlm4DwqITMWDUR43l4xS0eQlCtzBd0jVXMI5xEDz
+ 5JYkHkXETZ0iscw67O4Z5SSUthEaoS1+RMHuwbv5hBulENqwGjo3JUWPcMpQOXJZmO+q
+ Pcag5VAsiN4a88QZKE+D906CdQvHrk0iq+fP+DLqogrIVdjZOhbdEYjE0owM4EwV3kQm
+ Aga7ng0nO72bxa9bzzv42FjXQCNioQoizReWYDvdrqDAHnIMqckVqEYoYx6FZMRAbAnD
+ 6lgknUPhyygjj0Vxzj+kroMXi0xbp/mB0GIGSQ/v+Y70pOCiVpio+aCoyShxn40xxMjR
+ DCsw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXlSBMqJ2XA7TD1H/qFpbVkUg64EA3JV0OkW7So1ZjRwjzVOOYu97uS1aMtKBVeGZXYDh0+bwu8YDHnxs4S3wYFsIBnl4CzwPr6j8aAvMaXhA==
+X-Gm-Message-State: AOJu0Yx7+xCAB3/nYVXFjHTLCrp2Ao860CYyUmmnnrD/QTVTAc45qeBd
+ eDjGnFZ7tXry28pTVSyU31i/R0tqKtb/Vs7AgMOsO9ux6BXAJQuFxkWP8hBP4bw=
+X-Google-Smtp-Source: AGHT+IGLMTKSyUTDt/yFpKqUIDeJUe1926b29O5oL5iorvrPw1kAFJ4zr5130/7FelDHRuSgEOZjQg==
+X-Received: by 2002:a05:600c:3554:b0:40f:c2f0:7ed3 with SMTP id
+ i20-20020a05600c355400b0040fc2f07ed3mr1993044wmq.18.1707823644495; 
+ Tue, 13 Feb 2024 03:27:24 -0800 (PST)
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXShbnh8qEn/BJU9R9Ar0jEimSrsjJfcQkCNwBAdlTQJl+0JOps2h4xKacHyjpe0r1PM4c8/OiXNPaAOCv4K1aCL6f1PZ6GBegSS2z01fbifApH6ZAA39mCublAYEoo6X9V5vzNScktjyqO6BB7QEHw2zUNlr3ZPUtO9Q9Iel4XvfDUAqvsreTCbF6nckd6CV4r16JENKWfN/H4PR40RSbtbPBriPtnJr0d6oHjavY8NQgBVasZEjgJErBKksRbnZT1qgIDVCW3hvvcPI4jZ71wyT7Tj0y8pVFlBRd+YbpYNX+iHbbBvZ3qxVebi6pxi5Nh8WiNN24H7F48wW/laCqJgAmast2L/RnWpOJCkWOQkWJKCejSnn1zuL45fPIPfKlsqon5gaBjHmlonzzPT93NVJu7jEzmVQ==
+Received: from localhost ([193.47.165.251]) by smtp.gmail.com with ESMTPSA id
+ iv15-20020a05600c548f00b004107686650esm11592367wmb.36.2024.02.13.03.27.23
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 13 Feb 2024 03:27:23 -0800 (PST)
+Date: Tue, 13 Feb 2024 12:27:20 +0100
+From: Jiri Pirko <jiri@resnulli.us>
+To: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+Message-ID: <ZctSGPf6v0QlfMUu@nanopsycho>
+References: <20240213072724.77275-1-michal.swiatkowski@linux.intel.com>
+ <20240213072724.77275-5-michal.swiatkowski@linux.intel.com>
+ <ZcsueJ1tr-GdseIt@nanopsycho> <Zcs442A/+nuLJw6j@mev-dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <bb501538-29d5-4930-97b6-1c02f1b7ecba@intel.com>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1707821722; x=1739357722;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=4GUHNDaRCENI+49HL5C3GvSf7Y5oYykz9STLkEm7TsU=;
- b=IUn8UR3596J1R8I/ZixLmQ7A9KKlibBrUuyvFYIZx9E0KIwD+9FZXs06
- onETFL9osdep/T7WVfkpYa4qOp2r5nrZe9CwM3QFuK/xi4Jzk2OuSJ9g0
- EcNheE/TJ3GIIbt3Grx2J3dKQbx+9FO75sZaLUPI7fF3RUHNeScM4PnBG
- rjF9Rmwo+clAS/zQsS+v/1J6eEHotVPKlRWTWs8OvdvLTE572+VYhoMJG
- OjTaTI9Oj35IjepYY/vV3Op5BP07zzhYs7NLT5F1AGsFtw2Z9Xi57vsWf
- qrKjBQ3EFawhTohpoXIC5UPEDOWSUjT2dfpTBNu4E5IqDoebjIe9lmAJA
- w==;
+In-Reply-To: <Zcs442A/+nuLJw6j@mev-dev>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=resnulli-us.20230601.gappssmtp.com; s=20230601; t=1707823644; x=1708428444;
+ darn=lists.osuosl.org; 
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+ bh=s0oFTV7M7pCTGeqj600LQdU9PccVXar4+hpgoAPCV2o=;
+ b=oqVKA86SQud53KlrjxYCAaT1RPrCsE47QksaNAUNbk5nHq2LIXMfFgWHrIh7KMdz95
+ GwhEmjUlmlk9w0oLiOZ+UolT/5Fp9cLjT3+MyQk6rf0z6D8l/nn8BG92xl3Pf8t3ISGs
+ OyXsqv/mbhqCh8rorROjlY4CAq8fYcw+qVipWfahKvD5E7HrHkRq+nozQ3anZDVLfI8q
+ j5rNeVB/c0a4dLuREKD16yLJrCeiZdYCZ135G7kxNF1GRoqxKZzhPsNZdWvf4fs75eMK
+ 5nah/VMEKpUx8UkE4XeDVVwVsdjtYk4jUKx47bpsEqL6q3CNO8yL15W103KjenyAHSwG
+ G0iw==
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=none (p=none dis=none)
- header.from=linux.intel.com
+ header.from=resnulli.us
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=IUn8UR35
-Subject: Re: [Intel-wired-lan] [iwl-next v1 6/7] ice: enable_rdma devlink
- param
+ unprotected) header.d=resnulli-us.20230601.gappssmtp.com
+ header.i=@resnulli-us.20230601.gappssmtp.com header.a=rsa-sha256
+ header.s=20230601 header.b=oqVKA86S
+Subject: Re: [Intel-wired-lan] [iwl-next v1 04/15] ice: add basic devlink
+ subfunctions support
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -109,190 +124,141 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Jan Sokolowski <jan.sokolowski@intel.com>, Jiri Pirko <jiri@resnulli.us>,
- marcin.szycik@intel.com, sridhar.samudrala@intel.com, konrad.knitter@intel.com,
- pawel.chmielewski@intel.com, intel-wired-lan@lists.osuosl.org,
- nex.sw.ncis.nat.hpm.dev@intel.com, pio.raczynski@gmail.com,
- netdev@vger.kernel.org, jacob.e.keller@intel.com, przemyslaw.kitszel@intel.com
+Cc: maciej.fijalkowski@intel.com, sridhar.samudrala@intel.com,
+ michal.kubiak@intel.com, intel-wired-lan@lists.osuosl.org,
+ pio.raczynski@gmail.com, netdev@vger.kernel.org, jacob.e.keller@intel.com,
+ wojciech.drewek@intel.com, Piotr Raczynski <piotr.raczynski@intel.com>,
+ przemyslaw.kitszel@intel.com
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, Feb 13, 2024 at 11:19:49AM +0100, Wojciech Drewek wrote:
-> 
-> 
-> On 13.02.2024 10:58, Michal Swiatkowski wrote:
-> > On Tue, Feb 13, 2024 at 10:07:17AM +0100, Jiri Pirko wrote:
-> >> Tue, Feb 13, 2024 at 08:35:08AM CET, michal.swiatkowski@linux.intel.com wrote:
-> >>> Implement enable_rdma devlink parameter to allow user to turn RDMA
-> >>> feature on and off.
-> >>>
-> >>> It is useful when there is no enough interrupts and user doesn't need
-> >>> RDMA feature.
-> >>>
-> >>> Reviewed-by: Jan Sokolowski <jan.sokolowski@intel.com>
-> >>> Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-> >>> Signed-off-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-> >>> ---
-> >>> drivers/net/ethernet/intel/ice/ice_devlink.c | 32 ++++++++++++++++++--
-> >>> drivers/net/ethernet/intel/ice/ice_lib.c     |  8 ++++-
-> >>> drivers/net/ethernet/intel/ice/ice_main.c    | 18 +++++------
-> >>> 3 files changed, 45 insertions(+), 13 deletions(-)
-> >>>
-> >>> diff --git a/drivers/net/ethernet/intel/ice/ice_devlink.c b/drivers/net/ethernet/intel/ice/ice_devlink.c
-> >>> index b82ff9556a4b..4f048268db72 100644
-> >>> --- a/drivers/net/ethernet/intel/ice/ice_devlink.c
-> >>> +++ b/drivers/net/ethernet/intel/ice/ice_devlink.c
-> >>> @@ -1675,6 +1675,19 @@ ice_devlink_msix_min_pf_validate(struct devlink *devlink, u32 id,
-> >>> 	return 0;
-> >>> }
-> >>>
-> >>> +static int ice_devlink_enable_rdma_validate(struct devlink *devlink, u32 id,
-> >>> +					    union devlink_param_value val,
-> >>> +					    struct netlink_ext_ack *extack)
-> >>> +{
-> >>> +	struct ice_pf *pf = devlink_priv(devlink);
-> >>> +	bool new_state = val.vbool;
-> >>> +
-> >>> +	if (new_state && !test_bit(ICE_FLAG_RDMA_ENA, pf->flags))
-> >>> +		return -EOPNOTSUPP;
-> >>> +
-> >>> +	return 0;
-> >>> +}
-> >>> +
-> >>> static const struct devlink_param ice_devlink_params[] = {
-> >>> 	DEVLINK_PARAM_GENERIC(ENABLE_ROCE, BIT(DEVLINK_PARAM_CMODE_RUNTIME),
-> >>> 			      ice_devlink_enable_roce_get,
-> >>> @@ -1700,6 +1713,8 @@ static const struct devlink_param ice_devlink_params[] = {
-> >>> 			      ice_devlink_msix_min_pf_get,
-> >>> 			      ice_devlink_msix_min_pf_set,
-> >>> 			      ice_devlink_msix_min_pf_validate),
-> >>> +	DEVLINK_PARAM_GENERIC(ENABLE_RDMA, BIT(DEVLINK_PARAM_CMODE_DRIVERINIT),
-> >>> +			      NULL, NULL, ice_devlink_enable_rdma_validate),
-> >>> };
-> >>>
-> >>> static void ice_devlink_free(void *devlink_ptr)
-> >>> @@ -1776,9 +1791,22 @@ ice_devlink_set_switch_id(struct ice_pf *pf, struct netdev_phys_item_id *ppid)
-> >>> int ice_devlink_register_params(struct ice_pf *pf)
-> >>> {
-> >>> 	struct devlink *devlink = priv_to_devlink(pf);
-> >>> +	union devlink_param_value value;
-> >>> +	int err;
-> >>> +
-> >>> +	err = devlink_params_register(devlink, ice_devlink_params,
-> >>
-> >> Interesting, can't you just take the lock before this and call
-> >> devl_params_register()?
-> >>
-> > I mess up a locking here and also in subfunction patchset. I will follow
-> > you suggestion and take lock for whole init/cleanup. Thanks.
-> > 
-> >> Moreover, could you please fix your init/cleanup paths for hold devlink
-> >> instance lock the whole time?
-> >>
-> > You right, I will prepare patch for it.
-> 
-> I think my patch implements your suggestion Jiri:
-> https://lore.kernel.org/netdev/20240212211202.1051990-5-anthony.l.nguyen@intel.com/
-> 
+Tue, Feb 13, 2024 at 10:39:47AM CET, michal.swiatkowski@linux.intel.com wrote:
+>On Tue, Feb 13, 2024 at 09:55:20AM +0100, Jiri Pirko wrote:
+>> Tue, Feb 13, 2024 at 08:27:13AM CET, michal.swiatkowski@linux.intel.com wrote:
+>> >From: Piotr Raczynski <piotr.raczynski@intel.com>
 
-Right, I based my patchset before your changes was applied to Tony's
-tree. Thanks Wojtek.
+[...]
 
-So, in v2 there will be dev_version.
 
-Thanks
-Michal
-> > 
-> >>
-> >> pw-bot: cr
-> >>
-> >>
-> >>> +				      ARRAY_SIZE(ice_devlink_params));
-> >>> +	if (err)
-> >>> +		return err;
-> >>>
-> >>> -	return devlink_params_register(devlink, ice_devlink_params,
-> >>> -				       ARRAY_SIZE(ice_devlink_params));
-> >>> +	devl_lock(devlink);
-> >>> +	value.vbool = test_bit(ICE_FLAG_RDMA_ENA, pf->flags);
-> >>> +	devl_param_driverinit_value_set(devlink,
-> >>> +					DEVLINK_PARAM_GENERIC_ID_ENABLE_RDMA,
-> >>> +					value);
-> >>> +	devl_unlock(devlink);
-> >>> +
-> >>> +	return 0;
-> >>> }
-> >>>
-> >>> void ice_devlink_unregister_params(struct ice_pf *pf)
-> >>> diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
-> >>> index a30d2d2b51c1..4d5c3d699044 100644
-> >>> --- a/drivers/net/ethernet/intel/ice/ice_lib.c
-> >>> +++ b/drivers/net/ethernet/intel/ice/ice_lib.c
-> >>> @@ -829,7 +829,13 @@ bool ice_is_safe_mode(struct ice_pf *pf)
-> >>>  */
-> >>> bool ice_is_rdma_ena(struct ice_pf *pf)
-> >>> {
-> >>> -	return test_bit(ICE_FLAG_RDMA_ENA, pf->flags);
-> >>> +	union devlink_param_value value;
-> >>> +	int err;
-> >>> +
-> >>> +	err = devl_param_driverinit_value_get(priv_to_devlink(pf),
-> >>> +					      DEVLINK_PARAM_GENERIC_ID_ENABLE_RDMA,
-> >>> +					      &value);
-> >>> +	return err ? false : value.vbool;
-> >>> }
-> >>>
-> >>> /**
-> >>> diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-> >>> index 824732f16112..4dd59d888ec7 100644
-> >>> --- a/drivers/net/ethernet/intel/ice/ice_main.c
-> >>> +++ b/drivers/net/ethernet/intel/ice/ice_main.c
-> >>> @@ -5177,23 +5177,21 @@ ice_probe(struct pci_dev *pdev, const struct pci_device_id __always_unused *ent)
-> >>> 	if (err)
-> >>> 		goto err_init;
-> >>>
-> >>> +	err = ice_init_devlink(pf);
-> >>> +	if (err)
-> >>> +		goto err_init_devlink;
-> >>> +
-> >>> 	devl_lock(priv_to_devlink(pf));
-> >>> 	err = ice_load(pf);
-> >>> 	devl_unlock(priv_to_devlink(pf));
-> >>> 	if (err)
-> >>> 		goto err_load;
-> >>>
-> >>> -	err = ice_init_devlink(pf);
-> >>> -	if (err)
-> >>> -		goto err_init_devlink;
-> >>> -
-> >>> 	return 0;
-> >>>
-> >>> -err_init_devlink:
-> >>> -	devl_lock(priv_to_devlink(pf));
-> >>> -	ice_unload(pf);
-> >>> -	devl_unlock(priv_to_devlink(pf));
-> >>> err_load:
-> >>> +	ice_deinit_devlink(pf);
-> >>> +err_init_devlink:
-> >>> 	ice_deinit(pf);
-> >>> err_init:
-> >>> 	pci_disable_device(pdev);
-> >>> @@ -5290,12 +5288,12 @@ static void ice_remove(struct pci_dev *pdev)
-> >>> 	if (!ice_is_safe_mode(pf))
-> >>> 		ice_remove_arfs(pf);
-> >>>
-> >>> -	ice_deinit_devlink(pf);
-> >>> -
-> >>> 	devl_lock(priv_to_devlink(pf));
-> >>> 	ice_unload(pf);
-> >>> 	devl_unlock(priv_to_devlink(pf));
-> >>>
-> >>> +	ice_deinit_devlink(pf);
-> >>> +
-> >>> 	ice_deinit(pf);
-> >>> 	ice_vsi_release_all(pf);
-> >>>
-> >>> -- 
-> >>> 2.42.0
-> >>>
-> >>>
+>
+>> 
+>> >+}
+>> >+
+>> >+/**
+>> >+ * ice_dealloc_dynamic_port - Deallocate and remove a dynamic port
+>> >+ * @dyn_port: dynamic port instance to deallocate
+>> >+ *
+>> >+ * Free resources associated with a dynamically added devlink port. Will
+>> >+ * deactivate the port if its currently active.
+>> >+ */
+>> >+static void ice_dealloc_dynamic_port(struct ice_dynamic_port *dyn_port)
+>> >+{
+>> >+	struct devlink_port *devlink_port = &dyn_port->devlink_port;
+>> >+	struct ice_pf *pf = dyn_port->pf;
+>> >+
+>> >+	if (dyn_port->active)
+>> >+		ice_deactivate_dynamic_port(dyn_port);
+>> >+
+>> >+	if (devlink_port->attrs.flavour == DEVLINK_PORT_FLAVOUR_PCI_SF)
+>> 
+>> I don't understand how this check could be false. Remove it.
+>>
+>Yeah, will remove
+>
+>> 
+>> >+		xa_erase(&pf->sf_nums, devlink_port->attrs.pci_sf.sf);
+>> >+
+>> >+	devl_port_unregister(devlink_port);
+>> >+	ice_vsi_free(dyn_port->vsi);
+>> >+	xa_erase(&pf->dyn_ports, dyn_port->vsi->idx);
+>> >+	kfree(dyn_port);
+>> >+}
+>> >+
+>> >+/**
+>> >+ * ice_dealloc_all_dynamic_ports - Deallocate all dynamic devlink ports
+>> >+ * @pf: pointer to the pf structure
+>> >+ */
+>> >+void ice_dealloc_all_dynamic_ports(struct ice_pf *pf)
+>> >+{
+>> >+	struct devlink *devlink = priv_to_devlink(pf);
+>> >+	struct ice_dynamic_port *dyn_port;
+>> >+	unsigned long index;
+>> >+
+>> >+	devl_lock(devlink);
+>> >+	xa_for_each(&pf->dyn_ports, index, dyn_port)
+>> >+		ice_dealloc_dynamic_port(dyn_port);
+>> >+	devl_unlock(devlink);
+>> 
+>> Hmm, I would assume that the called should already hold the devlink
+>> instance lock when doing remove. What is stopping user from issuing
+>> port_new command here, after devl_unlock()?
+>>
+>It is only called from remove path, but I can move it upper.
+
+I know it is called on remove path. Again, what is stopping user from
+issuing port_new after ice_dealloc_all_dynamic_ports() is called?
+
+[...]
+
+
+>> 
+>> >+	struct device *dev = ice_pf_to_dev(pf);
+>> >+	int err;
+>> >+
+>> >+	dev_dbg(dev, "%s flavour:%d index:%d pfnum:%d\n", __func__,
+>> >+		new_attr->flavour, new_attr->port_index, new_attr->pfnum);
+>> 
+>> How this message could ever help anyone?
+>>
+>Probably only developer of the code :p, will remove it
+
+How exactly?
+
+[...]
+
+
+>> >+static int ice_sf_cfg_netdev(struct ice_dynamic_port *dyn_port)
+>> >+{
+>> >+	struct net_device *netdev;
+>> >+	struct ice_vsi *vsi = dyn_port->vsi;
+>> >+	struct ice_netdev_priv *np;
+>> >+	int err;
+>> >+
+>> >+	netdev = alloc_etherdev_mqs(sizeof(*np), vsi->alloc_txq,
+>> >+				    vsi->alloc_rxq);
+>> >+	if (!netdev)
+>> >+		return -ENOMEM;
+>> >+
+>> >+	SET_NETDEV_DEV(netdev, &vsi->back->pdev->dev);
+>> >+	set_bit(ICE_VSI_NETDEV_ALLOCD, vsi->state);
+>> >+	vsi->netdev = netdev;
+>> >+	np = netdev_priv(netdev);
+>> >+	np->vsi = vsi;
+>> >+
+>> >+	ice_set_netdev_features(netdev);
+>> >+
+>> >+	netdev->xdp_features = NETDEV_XDP_ACT_BASIC | NETDEV_XDP_ACT_REDIRECT |
+>> >+			       NETDEV_XDP_ACT_XSK_ZEROCOPY |
+>> >+			       NETDEV_XDP_ACT_RX_SG;
+>> >+
+>> >+	eth_hw_addr_set(netdev, dyn_port->hw_addr);
+>> >+	ether_addr_copy(netdev->perm_addr, dyn_port->hw_addr);
+>> >+	netdev->netdev_ops = &ice_sf_netdev_ops;
+>> >+	SET_NETDEV_DEVLINK_PORT(netdev, &dyn_port->devlink_port);
+>> >+
+>> >+	err = register_netdev(netdev);
+>> 
+>> It the the actual subfunction or eswitch port representor of the
+>> subfunction. Looks like the port representor. In that case. It should be
+>> created no matter if the subfunction is activated, when it it created.
+>> 
+>> If this is the actual subfunction netdev, you should not link it to
+>> devlink port here.
+>>
+>This is the actual subfunction netdev. Where in this case it should be
+>linked?
+
+To the SF auxdev, obviously.
+
+Here, you should have eswitch port representor netdev.
+
