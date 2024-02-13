@@ -1,69 +1,69 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id CA0D88529B3
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 13 Feb 2024 08:23:21 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5E18D8529B4
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 13 Feb 2024 08:23:24 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id A6C7260AF2;
-	Tue, 13 Feb 2024 07:23:19 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 570E360B05;
+	Tue, 13 Feb 2024 07:23:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Ww0PYE-GZExJ; Tue, 13 Feb 2024 07:23:17 +0000 (UTC)
+	with ESMTP id VWLWmlDlrDVh; Tue, 13 Feb 2024 07:23:20 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 924FC60AF9
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B219A60AF9
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1707808996;
-	bh=La2rCK2fIirBIX3hT/Mf7kGRtDDVBDSfVZhgyU/Qbfg=;
+	s=default; t=1707809000;
+	bh=NHfNnfoNyORYaqInFfsuDE1g9yr1ER09rHGqu9Hwc7o=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=Ifp21euIOIKZ7JiW1npjXF5xZzutE/2khW2rDu9jsgkmYgc+REodAHX09AY7y7FKS
-	 1Eg5Bv+VhswPVzLjwUVTU4ExnKnIwIxB75lVPhUQnCLUefkSjbL5jCDvjxMBxUnskr
-	 nykJV/3ZgvUBBrhic3Q4vbTiv0FG5RPnvA8zwUHiI0J5RcuOJ0mlmujxJBway+KoLo
-	 pIwd+DrcMjJZLcqGJahU2wKhv8Anv44SbWSQ/rUz4JGG7GsgZU+7HNyg+ACjyMFulI
-	 vQ2pLoHbqVYc7Crz/z1JLkpjqhdCdF98uMfGC6MV+UaDlC3h/Dj9ZZkyjRugedXmf0
-	 ZkIIpXPMiX7gw==
+	b=0brABEb0fphe+rXWRzO1WaeAEqwwprzNF3YKn2eTPXm2ieTMUN0ErLK0ho+o1Bat6
+	 qWYBEHYckX3HNOe7SsF3jaaatRy6cLYVXlMcDCki8qKygElDXrvhh+j2Y6dqLh850x
+	 2lF2/1BzccnzloX5xH1hJdBwdNF9Q58N5tuMawY5jsI2GglPzrHozjJ23Acg1tgyHW
+	 VNQqiOqY1QKFVmHoLVCyJTMSz5xpnbTcBdXyB+OZ9lZA89niTtNWtfP+TlyVMJcSVI
+	 UsBW4ls5WcqLtWlq5+OXQdvAXudaw2uQbq8rYTEw/sz6bXC2GwZtOemzGKTcu3QXlG
+	 wuq0f99alGK/g==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 924FC60AF9;
-	Tue, 13 Feb 2024 07:23:16 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id B219A60AF9;
+	Tue, 13 Feb 2024 07:23:19 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id BAE411BF5F5
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Feb 2024 07:23:13 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 597261BF5F5
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Feb 2024 07:23:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id B33E540898
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Feb 2024 07:23:13 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 45E5C40898
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Feb 2024 07:23:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id NZU3jfAD-DGU for <intel-wired-lan@lists.osuosl.org>;
- Tue, 13 Feb 2024 07:23:12 +0000 (UTC)
+ with ESMTP id x_UTXL9cAkWU for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 13 Feb 2024 07:23:14 +0000 (UTC)
 Received-SPF: None (mailfrom) identity=mailfrom; client-ip=192.198.163.7;
  helo=mgamail.intel.com; envelope-from=michal.swiatkowski@linux.intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org BCF2B40833
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org BCF2B40833
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 6379340833
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6379340833
 Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.7])
- by smtp4.osuosl.org (Postfix) with ESMTPS id BCF2B40833
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Feb 2024 07:23:11 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10982"; a="27247937"
-X-IronPort-AV: E=Sophos;i="6.06,156,1705392000"; d="scan'208";a="27247937"
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 6379340833
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Feb 2024 07:23:14 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10982"; a="27247943"
+X-IronPort-AV: E=Sophos;i="6.06,156,1705392000"; d="scan'208";a="27247943"
 Received: from fmviesa003.fm.intel.com ([10.60.135.143])
  by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 12 Feb 2024 23:23:11 -0800
+ 12 Feb 2024 23:23:14 -0800
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.06,156,1705392000"; 
-   d="scan'208";a="7385197"
+   d="scan'208";a="7385205"
 Received: from wasp.igk.intel.com (HELO GK3153-DR2-R750-36946.localdomain.com)
  ([10.102.20.192])
- by fmviesa003.fm.intel.com with ESMTP; 12 Feb 2024 23:23:08 -0800
+ by fmviesa003.fm.intel.com with ESMTP; 12 Feb 2024 23:23:11 -0800
 From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Tue, 13 Feb 2024 08:27:10 +0100
-Message-ID: <20240213072724.77275-2-michal.swiatkowski@linux.intel.com>
+Date: Tue, 13 Feb 2024 08:27:11 +0100
+Message-ID: <20240213072724.77275-3-michal.swiatkowski@linux.intel.com>
 X-Mailer: git-send-email 2.42.0
 In-Reply-To: <20240213072724.77275-1-michal.swiatkowski@linux.intel.com>
 References: <20240213072724.77275-1-michal.swiatkowski@linux.intel.com>
@@ -71,25 +71,25 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1707808992; x=1739344992;
+ t=1707808994; x=1739344994;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=U/cDhggXSu2PpOfdXwJRqwD0sqeYNVjUEDiAeNWwttA=;
- b=Defd8kWdxXPbcOZuwDp1SlSiTdAU+T8VEL3in0szc2fxpBWg+/QVXuXF
- LwOpbLeTcXKdffDzumfGfSarQNk6+tpFIkWC4C9db7G9zg/iV/fI+8XYp
- +EN0UBQFkfcZ1Cc6ZEDvtlaLwRl6BUMDuUZhGoC3yIAXAgo2opYe56TSA
- 5puTKAGi4wQHHUaWW18AGNv0mEiP2/KXe6y7Cg1lieGSrZm5UTkDJxcd+
- NpLrKkQ8KyQmJ9BtLED20tXb8dgRc67bXvA0R9UtCcV1/UaqAv09uWqNo
- tlEkQ+xT0fPwOB7XkB8ujGlY+/8fjdFgzhgL8NsbXp2/h6uHBIgr0Hrg/
- Q==;
+ bh=JFYZDTJEVQFGO5WZZUTAL6K3TKDxq2Ymm0HcwO6+qFw=;
+ b=FLlxA2FwoLoJBLMg2P5I9bymZFj1h09eYND9ZMQa21vkVYJFbCow8/v6
+ zUbko+Eq+SjcpsWLWyHY71IxmtdP48Z3SJz4tcC6cr15gEFaMDC5x+pLD
+ TWwBm99xh7HO4RC35J+cKdSRxkc6G7rkCf+ifXSvVMgmzI0udkF5NQ4mD
+ 0DToDcrjUoZ29uNmPf8QHdZcPZ0Yrshcy1anTZsryOw95IZ+mduVz3yjM
+ dHYWHbY9+OhlQbFD8CiYXDqJd9jXlITB4etnY0dA99PNS2aIo8+bAv0ST
+ /6GLmvpliK2RxKlLsUd8I/pE91DpChuOnzR4xxK5IMloWzc8eQyR32rnm
+ g==;
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=none (p=none dis=none)
  header.from=linux.intel.com
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=Defd8kWd
-Subject: [Intel-wired-lan] [iwl-next v1 01/15] ice: move devlink port code
- to a separate file
+ header.a=rsa-sha256 header.s=Intel header.b=FLlxA2Fw
+Subject: [Intel-wired-lan] [iwl-next v1 02/15] ice: add new VSI type for
+ subfunctions
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -112,995 +112,217 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 From: Piotr Raczynski <piotr.raczynski@intel.com>
 
-Keep devlink related code in a separate file. More devlink port code and
-handlers will be added here for other port operations.
+Add required plumbing for new VSI type dedicated to devlink subfunctions.
+Make sure that the vsi is properly configured and destroyed. Also allow
+loading XDP and AF_XDP sockets.
 
-On this occasion, remove unnecessary ice_devlink.h include in ice_lib.c.
+The first implementation of devlink subfunctions supports only one Tx/Rx
+queue pair per given subfunction.
 
+Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
 Reviewed-by: Wojciech Drewek <wojciech.drewek@intel.com>
 Signed-off-by: Piotr Raczynski <piotr.raczynski@intel.com>
 Signed-off-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
 ---
- drivers/net/ethernet/intel/ice/Makefile       |   2 +
- .../intel/ice/devlink/ice_devlink_port.c      | 434 ++++++++++++++++++
- .../intel/ice/devlink/ice_devlink_port.h      |  12 +
- drivers/net/ethernet/intel/ice/ice_devlink.c  | 423 -----------------
- drivers/net/ethernet/intel/ice/ice_lib.c      |   1 -
- drivers/net/ethernet/intel/ice/ice_main.c     |   1 +
- drivers/net/ethernet/intel/ice/ice_repr.c     |   1 +
- 7 files changed, 450 insertions(+), 424 deletions(-)
- create mode 100644 drivers/net/ethernet/intel/ice/devlink/ice_devlink_port.c
- create mode 100644 drivers/net/ethernet/intel/ice/devlink/ice_devlink_port.h
+ drivers/net/ethernet/intel/ice/ice_base.c    |  5 +++-
+ drivers/net/ethernet/intel/ice/ice_dcb_lib.c |  1 +
+ drivers/net/ethernet/intel/ice/ice_lib.c     | 25 ++++++++++++++++++--
+ drivers/net/ethernet/intel/ice/ice_main.c    |  7 ++++--
+ drivers/net/ethernet/intel/ice/ice_type.h    |  1 +
+ drivers/net/ethernet/intel/ice/ice_xsk.c     |  2 +-
+ 6 files changed, 35 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/Makefile b/drivers/net/ethernet/intel/ice/Makefile
-index cddd82d4ca0f..cd4ab46d72a7 100644
---- a/drivers/net/ethernet/intel/ice/Makefile
-+++ b/drivers/net/ethernet/intel/ice/Makefile
-@@ -5,6 +5,7 @@
- # Makefile for the Intel(R) Ethernet Connection E800 Series Linux Driver
- #
+diff --git a/drivers/net/ethernet/intel/ice/ice_base.c b/drivers/net/ethernet/intel/ice/ice_base.c
+index 79485c944c9d..8ca944d0fa51 100644
+--- a/drivers/net/ethernet/intel/ice/ice_base.c
++++ b/drivers/net/ethernet/intel/ice/ice_base.c
+@@ -331,6 +331,9 @@ ice_setup_tx_ctx(struct ice_tx_ring *ring, struct ice_tlan_ctx *tlan_ctx, u16 pf
+ 		tlan_ctx->vmvf_num = hw->func_caps.vf_base_id + vsi->vf->vf_id;
+ 		tlan_ctx->vmvf_type = ICE_TLAN_CTX_VMVF_TYPE_VF;
+ 		break;
++	case ICE_VSI_SF:
++		tlan_ctx->vmvf_type = ICE_TLAN_CTX_VMVF_TYPE_VMQ;
++		break;
+ 	default:
+ 		return;
+ 	}
+@@ -527,7 +530,7 @@ static int ice_vsi_cfg_rxq(struct ice_rx_ring *ring)
  
-+subdir-ccflags-y += -I$(src)
- obj-$(CONFIG_ICE) += ice.o
+ 	ring->rx_buf_len = ring->vsi->rx_buf_len;
  
- ice-y := ice_main.o	\
-@@ -29,6 +30,7 @@ ice-y := ice_main.o	\
- 	 ice_flow.o	\
- 	 ice_idc.o	\
- 	 ice_devlink.o	\
-+	 devlink/ice_devlink_port.o	\
- 	 ice_ddp.o	\
- 	 ice_fw_update.o \
- 	 ice_lag.o	\
-diff --git a/drivers/net/ethernet/intel/ice/devlink/ice_devlink_port.c b/drivers/net/ethernet/intel/ice/devlink/ice_devlink_port.c
-new file mode 100644
-index 000000000000..c8c823467fcf
---- /dev/null
-+++ b/drivers/net/ethernet/intel/ice/devlink/ice_devlink_port.c
-@@ -0,0 +1,434 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/* Copyright (c) 2020, Intel Corporation. */
-+
-+#include <linux/vmalloc.h>
-+
-+#include "ice.h"
-+#include "ice_lib.h"
-+#include "ice_devlink.h"
-+#include "ice_devlink_port.h"
-+#include "ice_eswitch.h"
-+#include "ice_fw_update.h"
-+#include "ice_dcb_lib.h"
-+
-+static int ice_active_port_option = -1;
-+
-+/**
-+ * ice_devlink_port_opt_speed_str - convert speed to a string
-+ * @speed: speed value
-+ */
-+static const char *ice_devlink_port_opt_speed_str(u8 speed)
-+{
-+	switch (speed & ICE_AQC_PORT_OPT_MAX_LANE_M) {
-+	case ICE_AQC_PORT_OPT_MAX_LANE_100M:
-+		return "0.1";
-+	case ICE_AQC_PORT_OPT_MAX_LANE_1G:
-+		return "1";
-+	case ICE_AQC_PORT_OPT_MAX_LANE_2500M:
-+		return "2.5";
-+	case ICE_AQC_PORT_OPT_MAX_LANE_5G:
-+		return "5";
-+	case ICE_AQC_PORT_OPT_MAX_LANE_10G:
-+		return "10";
-+	case ICE_AQC_PORT_OPT_MAX_LANE_25G:
-+		return "25";
-+	case ICE_AQC_PORT_OPT_MAX_LANE_50G:
-+		return "50";
-+	case ICE_AQC_PORT_OPT_MAX_LANE_100G:
-+		return "100";
-+	}
-+
-+	return "-";
-+}
-+
-+#define ICE_PORT_OPT_DESC_LEN	50
-+/**
-+ * ice_devlink_port_options_print - Print available port split options
-+ * @pf: the PF to print split port options
-+ *
-+ * Prints a table with available port split options and max port speeds
-+ */
-+static void ice_devlink_port_options_print(struct ice_pf *pf)
-+{
-+	u8 i, j, options_count, cnt, speed, pending_idx, active_idx;
-+	struct ice_aqc_get_port_options_elem *options, *opt;
-+	struct device *dev = ice_pf_to_dev(pf);
-+	bool active_valid, pending_valid;
-+	char desc[ICE_PORT_OPT_DESC_LEN];
-+	const char *str;
-+	int status;
-+
-+	options = kcalloc(ICE_AQC_PORT_OPT_MAX * ICE_MAX_PORT_PER_PCI_DEV,
-+			  sizeof(*options), GFP_KERNEL);
-+	if (!options)
-+		return;
-+
-+	for (i = 0; i < ICE_MAX_PORT_PER_PCI_DEV; i++) {
-+		opt = options + i * ICE_AQC_PORT_OPT_MAX;
-+		options_count = ICE_AQC_PORT_OPT_MAX;
-+		active_valid = 0;
-+
-+		status = ice_aq_get_port_options(&pf->hw, opt, &options_count,
-+						 i, true, &active_idx,
-+						 &active_valid, &pending_idx,
-+						 &pending_valid);
-+		if (status) {
-+			dev_dbg(dev, "Couldn't read port option for port %d, err %d\n",
-+				i, status);
-+			goto err;
-+		}
-+	}
-+
-+	dev_dbg(dev, "Available port split options and max port speeds (Gbps):\n");
-+	dev_dbg(dev, "Status  Split      Quad 0          Quad 1\n");
-+	dev_dbg(dev, "        count  L0  L1  L2  L3  L4  L5  L6  L7\n");
-+
-+	for (i = 0; i < options_count; i++) {
-+		cnt = 0;
-+
-+		if (i == ice_active_port_option)
-+			str = "Active";
-+		else if ((i == pending_idx) && pending_valid)
-+			str = "Pending";
-+		else
-+			str = "";
-+
-+		cnt += snprintf(&desc[cnt], ICE_PORT_OPT_DESC_LEN - cnt,
-+				"%-8s", str);
-+
-+		cnt += snprintf(&desc[cnt], ICE_PORT_OPT_DESC_LEN - cnt,
-+				"%-6u", options[i].pmd);
-+
-+		for (j = 0; j < ICE_MAX_PORT_PER_PCI_DEV; ++j) {
-+			speed = options[i + j * ICE_AQC_PORT_OPT_MAX].max_lane_speed;
-+			str = ice_devlink_port_opt_speed_str(speed);
-+			cnt += snprintf(&desc[cnt], ICE_PORT_OPT_DESC_LEN - cnt,
-+					"%3s ", str);
-+		}
-+
-+		dev_dbg(dev, "%s\n", desc);
-+	}
-+
-+err:
-+	kfree(options);
-+}
-+
-+/**
-+ * ice_devlink_aq_set_port_option - Send set port option admin queue command
-+ * @pf: the PF to print split port options
-+ * @option_idx: selected port option
-+ * @extack: extended netdev ack structure
-+ *
-+ * Sends set port option admin queue command with selected port option and
-+ * calls NVM write activate.
-+ */
-+static int
-+ice_devlink_aq_set_port_option(struct ice_pf *pf, u8 option_idx,
-+			       struct netlink_ext_ack *extack)
-+{
-+	struct device *dev = ice_pf_to_dev(pf);
-+	int status;
-+
-+	status = ice_aq_set_port_option(&pf->hw, 0, true, option_idx);
-+	if (status) {
-+		dev_dbg(dev, "ice_aq_set_port_option, err %d aq_err %d\n",
-+			status, pf->hw.adminq.sq_last_status);
-+		NL_SET_ERR_MSG_MOD(extack, "Port split request failed");
-+		return -EIO;
-+	}
-+
-+	status = ice_acquire_nvm(&pf->hw, ICE_RES_WRITE);
-+	if (status) {
-+		dev_dbg(dev, "ice_acquire_nvm failed, err %d aq_err %d\n",
-+			status, pf->hw.adminq.sq_last_status);
-+		NL_SET_ERR_MSG_MOD(extack, "Failed to acquire NVM semaphore");
-+		return -EIO;
-+	}
-+
-+	status = ice_nvm_write_activate(&pf->hw, ICE_AQC_NVM_ACTIV_REQ_EMPR, NULL);
-+	if (status) {
-+		dev_dbg(dev, "ice_nvm_write_activate failed, err %d aq_err %d\n",
-+			status, pf->hw.adminq.sq_last_status);
-+		NL_SET_ERR_MSG_MOD(extack, "Port split request failed to save data");
-+		ice_release_nvm(&pf->hw);
-+		return -EIO;
-+	}
-+
-+	ice_release_nvm(&pf->hw);
-+
-+	NL_SET_ERR_MSG_MOD(extack, "Reboot required to finish port split");
-+	return 0;
-+}
-+
-+/**
-+ * ice_devlink_port_split - .port_split devlink handler
-+ * @devlink: devlink instance structure
-+ * @port: devlink port structure
-+ * @count: number of ports to split to
-+ * @extack: extended netdev ack structure
-+ *
-+ * Callback for the devlink .port_split operation.
-+ *
-+ * Unfortunately, the devlink expression of available options is limited
-+ * to just a number, so search for an FW port option which supports
-+ * the specified number. As there could be multiple FW port options with
-+ * the same port split count, allow switching between them. When the same
-+ * port split count request is issued again, switch to the next FW port
-+ * option with the same port split count.
-+ *
-+ * Return: zero on success or an error code on failure.
-+ */
-+static int
-+ice_devlink_port_split(struct devlink *devlink, struct devlink_port *port,
-+		       unsigned int count, struct netlink_ext_ack *extack)
-+{
-+	struct ice_aqc_get_port_options_elem options[ICE_AQC_PORT_OPT_MAX];
-+	u8 i, j, active_idx, pending_idx, new_option;
-+	struct ice_pf *pf = devlink_priv(devlink);
-+	u8 option_count = ICE_AQC_PORT_OPT_MAX;
-+	struct device *dev = ice_pf_to_dev(pf);
-+	bool active_valid, pending_valid;
-+	int status;
-+
-+	status = ice_aq_get_port_options(&pf->hw, options, &option_count,
-+					 0, true, &active_idx, &active_valid,
-+					 &pending_idx, &pending_valid);
-+	if (status) {
-+		dev_dbg(dev, "Couldn't read port split options, err = %d\n",
-+			status);
-+		NL_SET_ERR_MSG_MOD(extack, "Failed to get available port split options");
-+		return -EIO;
-+	}
-+
-+	new_option = ICE_AQC_PORT_OPT_MAX;
-+	active_idx = pending_valid ? pending_idx : active_idx;
-+	for (i = 1; i <= option_count; i++) {
-+		/* In order to allow switching between FW port options with
-+		 * the same port split count, search for a new option starting
-+		 * from the active/pending option (with array wrap around).
-+		 */
-+		j = (active_idx + i) % option_count;
-+
-+		if (count == options[j].pmd) {
-+			new_option = j;
-+			break;
-+		}
-+	}
-+
-+	if (new_option == active_idx) {
-+		dev_dbg(dev, "request to split: count: %u is already set and there are no other options\n",
-+			count);
-+		NL_SET_ERR_MSG_MOD(extack, "Requested split count is already set");
-+		ice_devlink_port_options_print(pf);
-+		return -EINVAL;
-+	}
-+
-+	if (new_option == ICE_AQC_PORT_OPT_MAX) {
-+		dev_dbg(dev, "request to split: count: %u not found\n", count);
-+		NL_SET_ERR_MSG_MOD(extack, "Port split requested unsupported port config");
-+		ice_devlink_port_options_print(pf);
-+		return -EINVAL;
-+	}
-+
-+	status = ice_devlink_aq_set_port_option(pf, new_option, extack);
-+	if (status)
-+		return status;
-+
-+	ice_devlink_port_options_print(pf);
-+
-+	return 0;
-+}
-+
-+/**
-+ * ice_devlink_port_unsplit - .port_unsplit devlink handler
-+ * @devlink: devlink instance structure
-+ * @port: devlink port structure
-+ * @extack: extended netdev ack structure
-+ *
-+ * Callback for the devlink .port_unsplit operation.
-+ * Calls ice_devlink_port_split with split count set to 1.
-+ * There could be no FW option available with split count 1.
-+ *
-+ * Return: zero on success or an error code on failure.
-+ */
-+
-+static int
-+ice_devlink_port_unsplit(struct devlink *devlink, struct devlink_port *port,
-+			 struct netlink_ext_ack *extack)
-+{
-+	return ice_devlink_port_split(devlink, port, 1, extack);
-+}
-+
-+/**
-+ * ice_devlink_set_port_split_options - Set port split options
-+ * @pf: the PF to set port split options
-+ * @attrs: devlink attributes
-+ *
-+ * Sets devlink port split options based on available FW port options
-+ */
-+static void
-+ice_devlink_set_port_split_options(struct ice_pf *pf,
-+				   struct devlink_port_attrs *attrs)
-+{
-+	struct ice_aqc_get_port_options_elem options[ICE_AQC_PORT_OPT_MAX];
-+	u8 i, active_idx, pending_idx, option_count = ICE_AQC_PORT_OPT_MAX;
-+	bool active_valid, pending_valid;
-+	int status;
-+
-+	status = ice_aq_get_port_options(&pf->hw, options, &option_count,
-+					 0, true, &active_idx, &active_valid,
-+					 &pending_idx, &pending_valid);
-+	if (status) {
-+		dev_dbg(ice_pf_to_dev(pf), "Couldn't read port split options, err = %d\n",
-+			status);
-+		return;
-+	}
-+
-+	/* find the biggest available port split count */
-+	for (i = 0; i < option_count; i++)
-+		attrs->lanes = max_t(int, attrs->lanes, options[i].pmd);
-+
-+	attrs->splittable = attrs->lanes ? 1 : 0;
-+	ice_active_port_option = active_idx;
-+}
-+
-+static const struct devlink_port_ops ice_devlink_port_ops = {
-+	.port_split = ice_devlink_port_split,
-+	.port_unsplit = ice_devlink_port_unsplit,
-+};
-+
-+/**
-+ * ice_devlink_set_switch_id - Set unique switch id based on pci dsn
-+ * @pf: the PF to create a devlink port for
-+ * @ppid: struct with switch id information
-+ */
-+static void
-+ice_devlink_set_switch_id(struct ice_pf *pf, struct netdev_phys_item_id *ppid)
-+{
-+	struct pci_dev *pdev = pf->pdev;
-+	u64 id;
-+
-+	id = pci_get_dsn(pdev);
-+
-+	ppid->id_len = sizeof(id);
-+	put_unaligned_be64(id, &ppid->id);
-+}
-+
-+/**
-+ * ice_devlink_create_pf_port - Create a devlink port for this PF
-+ * @pf: the PF to create a devlink port for
-+ *
-+ * Create and register a devlink_port for this PF.
-+ *
-+ * Return: zero on success or an error code on failure.
-+ */
-+int ice_devlink_create_pf_port(struct ice_pf *pf)
-+{
-+	struct devlink_port_attrs attrs = {};
-+	struct devlink_port *devlink_port;
-+	struct devlink *devlink;
-+	struct ice_vsi *vsi;
-+	struct device *dev;
-+	int err;
-+
-+	dev = ice_pf_to_dev(pf);
-+
-+	devlink_port = &pf->devlink_port;
-+
-+	vsi = ice_get_main_vsi(pf);
-+	if (!vsi)
-+		return -EIO;
-+
-+	attrs.flavour = DEVLINK_PORT_FLAVOUR_PHYSICAL;
-+	attrs.phys.port_number = pf->hw.bus.func;
-+
-+	/* As FW supports only port split options for whole device,
-+	 * set port split options only for first PF.
-+	 */
-+	if (pf->hw.pf_id == 0)
-+		ice_devlink_set_port_split_options(pf, &attrs);
-+
-+	ice_devlink_set_switch_id(pf, &attrs.switch_id);
-+
-+	devlink_port_attrs_set(devlink_port, &attrs);
-+	devlink = priv_to_devlink(pf);
-+
-+	err = devl_port_register_with_ops(devlink, devlink_port, vsi->idx,
-+					     &ice_devlink_port_ops);
-+	if (err) {
-+		dev_err(dev, "Failed to create devlink port for PF %d, error %d\n",
-+			pf->hw.pf_id, err);
-+		return err;
-+	}
-+
-+	return 0;
-+}
-+
-+/**
-+ * ice_devlink_destroy_pf_port - Destroy the devlink_port for this PF
-+ * @pf: the PF to cleanup
-+ *
-+ * Unregisters the devlink_port structure associated with this PF.
-+ */
-+void ice_devlink_destroy_pf_port(struct ice_pf *pf)
-+{
-+	devl_port_unregister(&pf->devlink_port);
-+}
-+
-+/**
-+ * ice_devlink_create_vf_port - Create a devlink port for this VF
-+ * @vf: the VF to create a port for
-+ *
-+ * Create and register a devlink_port for this VF.
-+ *
-+ * Return: zero on success or an error code on failure.
-+ */
-+int ice_devlink_create_vf_port(struct ice_vf *vf)
-+{
-+	struct devlink_port_attrs attrs = {};
-+	struct devlink_port *devlink_port;
-+	struct devlink *devlink;
-+	struct ice_vsi *vsi;
-+	struct device *dev;
-+	struct ice_pf *pf;
-+	int err;
-+
-+	pf = vf->pf;
-+	dev = ice_pf_to_dev(pf);
-+	devlink_port = &vf->devlink_port;
-+
-+	vsi = ice_get_vf_vsi(vf);
-+	if (!vsi)
-+		return -EINVAL;
-+
-+	attrs.flavour = DEVLINK_PORT_FLAVOUR_PCI_VF;
-+	attrs.pci_vf.pf = pf->hw.bus.func;
-+	attrs.pci_vf.vf = vf->vf_id;
-+
-+	ice_devlink_set_switch_id(pf, &attrs.switch_id);
-+
-+	devlink_port_attrs_set(devlink_port, &attrs);
-+	devlink = priv_to_devlink(pf);
-+
-+	err = devlink_port_register(devlink, devlink_port, vsi->idx);
-+	if (err) {
-+		dev_err(dev, "Failed to create devlink port for VF %d, error %d\n",
-+			vf->vf_id, err);
-+		return err;
-+	}
-+
-+	return 0;
-+}
-+
-+/**
-+ * ice_devlink_destroy_vf_port - Destroy the devlink_port for this VF
-+ * @vf: the VF to cleanup
-+ *
-+ * Unregisters the devlink_port structure associated with this VF.
-+ */
-+void ice_devlink_destroy_vf_port(struct ice_vf *vf)
-+{
-+	devl_rate_leaf_destroy(&vf->devlink_port);
-+	devlink_port_unregister(&vf->devlink_port);
-+}
-+
-diff --git a/drivers/net/ethernet/intel/ice/devlink/ice_devlink_port.h b/drivers/net/ethernet/intel/ice/devlink/ice_devlink_port.h
-new file mode 100644
-index 000000000000..983d136f5ddf
---- /dev/null
-+++ b/drivers/net/ethernet/intel/ice/devlink/ice_devlink_port.h
-@@ -0,0 +1,12 @@
-+/* SPDX-License-Identifier: GPL-2.0 */
-+/* Copyright (c) 2023, Intel Corporation. */
-+
-+#ifndef _ICE_DEVLINK_PORT_H_
-+#define _ICE_DEVLINK_PORT_H_
-+
-+int ice_devlink_create_pf_port(struct ice_pf *pf);
-+void ice_devlink_destroy_pf_port(struct ice_pf *pf);
-+int ice_devlink_create_vf_port(struct ice_vf *vf);
-+void ice_devlink_destroy_vf_port(struct ice_vf *vf);
-+
-+#endif /* _ICE_DEVLINK_PORT_H_ */
-diff --git a/drivers/net/ethernet/intel/ice/ice_devlink.c b/drivers/net/ethernet/intel/ice/ice_devlink.c
-index cc717175178b..e5f275ca82e5 100644
---- a/drivers/net/ethernet/intel/ice/ice_devlink.c
-+++ b/drivers/net/ethernet/intel/ice/ice_devlink.c
-@@ -10,8 +10,6 @@
- #include "ice_fw_update.h"
- #include "ice_dcb_lib.h"
- 
--static int ice_active_port_option = -1;
--
- /* context for devlink info version reporting */
- struct ice_info_ctx {
- 	char buf[128];
-@@ -525,251 +523,6 @@ ice_devlink_reload_empr_finish(struct ice_pf *pf,
- 	return 0;
- }
- 
--/**
-- * ice_devlink_port_opt_speed_str - convert speed to a string
-- * @speed: speed value
-- */
--static const char *ice_devlink_port_opt_speed_str(u8 speed)
--{
--	switch (speed & ICE_AQC_PORT_OPT_MAX_LANE_M) {
--	case ICE_AQC_PORT_OPT_MAX_LANE_100M:
--		return "0.1";
--	case ICE_AQC_PORT_OPT_MAX_LANE_1G:
--		return "1";
--	case ICE_AQC_PORT_OPT_MAX_LANE_2500M:
--		return "2.5";
--	case ICE_AQC_PORT_OPT_MAX_LANE_5G:
--		return "5";
--	case ICE_AQC_PORT_OPT_MAX_LANE_10G:
--		return "10";
--	case ICE_AQC_PORT_OPT_MAX_LANE_25G:
--		return "25";
--	case ICE_AQC_PORT_OPT_MAX_LANE_50G:
--		return "50";
--	case ICE_AQC_PORT_OPT_MAX_LANE_100G:
--		return "100";
--	}
--
--	return "-";
--}
--
--#define ICE_PORT_OPT_DESC_LEN	50
--/**
-- * ice_devlink_port_options_print - Print available port split options
-- * @pf: the PF to print split port options
-- *
-- * Prints a table with available port split options and max port speeds
-- */
--static void ice_devlink_port_options_print(struct ice_pf *pf)
--{
--	u8 i, j, options_count, cnt, speed, pending_idx, active_idx;
--	struct ice_aqc_get_port_options_elem *options, *opt;
--	struct device *dev = ice_pf_to_dev(pf);
--	bool active_valid, pending_valid;
--	char desc[ICE_PORT_OPT_DESC_LEN];
--	const char *str;
--	int status;
--
--	options = kcalloc(ICE_AQC_PORT_OPT_MAX * ICE_MAX_PORT_PER_PCI_DEV,
--			  sizeof(*options), GFP_KERNEL);
--	if (!options)
--		return;
--
--	for (i = 0; i < ICE_MAX_PORT_PER_PCI_DEV; i++) {
--		opt = options + i * ICE_AQC_PORT_OPT_MAX;
--		options_count = ICE_AQC_PORT_OPT_MAX;
--		active_valid = 0;
--
--		status = ice_aq_get_port_options(&pf->hw, opt, &options_count,
--						 i, true, &active_idx,
--						 &active_valid, &pending_idx,
--						 &pending_valid);
--		if (status) {
--			dev_dbg(dev, "Couldn't read port option for port %d, err %d\n",
--				i, status);
--			goto err;
--		}
--	}
--
--	dev_dbg(dev, "Available port split options and max port speeds (Gbps):\n");
--	dev_dbg(dev, "Status  Split      Quad 0          Quad 1\n");
--	dev_dbg(dev, "        count  L0  L1  L2  L3  L4  L5  L6  L7\n");
--
--	for (i = 0; i < options_count; i++) {
--		cnt = 0;
--
--		if (i == ice_active_port_option)
--			str = "Active";
--		else if ((i == pending_idx) && pending_valid)
--			str = "Pending";
--		else
--			str = "";
--
--		cnt += snprintf(&desc[cnt], ICE_PORT_OPT_DESC_LEN - cnt,
--				"%-8s", str);
--
--		cnt += snprintf(&desc[cnt], ICE_PORT_OPT_DESC_LEN - cnt,
--				"%-6u", options[i].pmd);
--
--		for (j = 0; j < ICE_MAX_PORT_PER_PCI_DEV; ++j) {
--			speed = options[i + j * ICE_AQC_PORT_OPT_MAX].max_lane_speed;
--			str = ice_devlink_port_opt_speed_str(speed);
--			cnt += snprintf(&desc[cnt], ICE_PORT_OPT_DESC_LEN - cnt,
--					"%3s ", str);
--		}
--
--		dev_dbg(dev, "%s\n", desc);
--	}
--
--err:
--	kfree(options);
--}
--
--/**
-- * ice_devlink_aq_set_port_option - Send set port option admin queue command
-- * @pf: the PF to print split port options
-- * @option_idx: selected port option
-- * @extack: extended netdev ack structure
-- *
-- * Sends set port option admin queue command with selected port option and
-- * calls NVM write activate.
-- */
--static int
--ice_devlink_aq_set_port_option(struct ice_pf *pf, u8 option_idx,
--			       struct netlink_ext_ack *extack)
--{
--	struct device *dev = ice_pf_to_dev(pf);
--	int status;
--
--	status = ice_aq_set_port_option(&pf->hw, 0, true, option_idx);
--	if (status) {
--		dev_dbg(dev, "ice_aq_set_port_option, err %d aq_err %d\n",
--			status, pf->hw.adminq.sq_last_status);
--		NL_SET_ERR_MSG_MOD(extack, "Port split request failed");
--		return -EIO;
--	}
--
--	status = ice_acquire_nvm(&pf->hw, ICE_RES_WRITE);
--	if (status) {
--		dev_dbg(dev, "ice_acquire_nvm failed, err %d aq_err %d\n",
--			status, pf->hw.adminq.sq_last_status);
--		NL_SET_ERR_MSG_MOD(extack, "Failed to acquire NVM semaphore");
--		return -EIO;
--	}
--
--	status = ice_nvm_write_activate(&pf->hw, ICE_AQC_NVM_ACTIV_REQ_EMPR, NULL);
--	if (status) {
--		dev_dbg(dev, "ice_nvm_write_activate failed, err %d aq_err %d\n",
--			status, pf->hw.adminq.sq_last_status);
--		NL_SET_ERR_MSG_MOD(extack, "Port split request failed to save data");
--		ice_release_nvm(&pf->hw);
--		return -EIO;
--	}
--
--	ice_release_nvm(&pf->hw);
--
--	NL_SET_ERR_MSG_MOD(extack, "Reboot required to finish port split");
--	return 0;
--}
--
--/**
-- * ice_devlink_port_split - .port_split devlink handler
-- * @devlink: devlink instance structure
-- * @port: devlink port structure
-- * @count: number of ports to split to
-- * @extack: extended netdev ack structure
-- *
-- * Callback for the devlink .port_split operation.
-- *
-- * Unfortunately, the devlink expression of available options is limited
-- * to just a number, so search for an FW port option which supports
-- * the specified number. As there could be multiple FW port options with
-- * the same port split count, allow switching between them. When the same
-- * port split count request is issued again, switch to the next FW port
-- * option with the same port split count.
-- *
-- * Return: zero on success or an error code on failure.
-- */
--static int
--ice_devlink_port_split(struct devlink *devlink, struct devlink_port *port,
--		       unsigned int count, struct netlink_ext_ack *extack)
--{
--	struct ice_aqc_get_port_options_elem options[ICE_AQC_PORT_OPT_MAX];
--	u8 i, j, active_idx, pending_idx, new_option;
--	struct ice_pf *pf = devlink_priv(devlink);
--	u8 option_count = ICE_AQC_PORT_OPT_MAX;
--	struct device *dev = ice_pf_to_dev(pf);
--	bool active_valid, pending_valid;
--	int status;
--
--	status = ice_aq_get_port_options(&pf->hw, options, &option_count,
--					 0, true, &active_idx, &active_valid,
--					 &pending_idx, &pending_valid);
--	if (status) {
--		dev_dbg(dev, "Couldn't read port split options, err = %d\n",
--			status);
--		NL_SET_ERR_MSG_MOD(extack, "Failed to get available port split options");
--		return -EIO;
--	}
--
--	new_option = ICE_AQC_PORT_OPT_MAX;
--	active_idx = pending_valid ? pending_idx : active_idx;
--	for (i = 1; i <= option_count; i++) {
--		/* In order to allow switching between FW port options with
--		 * the same port split count, search for a new option starting
--		 * from the active/pending option (with array wrap around).
--		 */
--		j = (active_idx + i) % option_count;
--
--		if (count == options[j].pmd) {
--			new_option = j;
--			break;
--		}
--	}
--
--	if (new_option == active_idx) {
--		dev_dbg(dev, "request to split: count: %u is already set and there are no other options\n",
--			count);
--		NL_SET_ERR_MSG_MOD(extack, "Requested split count is already set");
--		ice_devlink_port_options_print(pf);
--		return -EINVAL;
--	}
--
--	if (new_option == ICE_AQC_PORT_OPT_MAX) {
--		dev_dbg(dev, "request to split: count: %u not found\n", count);
--		NL_SET_ERR_MSG_MOD(extack, "Port split requested unsupported port config");
--		ice_devlink_port_options_print(pf);
--		return -EINVAL;
--	}
--
--	status = ice_devlink_aq_set_port_option(pf, new_option, extack);
--	if (status)
--		return status;
--
--	ice_devlink_port_options_print(pf);
--
--	return 0;
--}
--
--/**
-- * ice_devlink_port_unsplit - .port_unsplit devlink handler
-- * @devlink: devlink instance structure
-- * @port: devlink port structure
-- * @extack: extended netdev ack structure
-- *
-- * Callback for the devlink .port_unsplit operation.
-- * Calls ice_devlink_port_split with split count set to 1.
-- * There could be no FW option available with split count 1.
-- *
-- * Return: zero on success or an error code on failure.
-- */
--static int
--ice_devlink_port_unsplit(struct devlink *devlink, struct devlink_port *port,
--			 struct netlink_ext_ack *extack)
--{
--	return ice_devlink_port_split(devlink, port, 1, extack);
--}
--
- /**
-  * ice_tear_down_devlink_rate_tree - removes devlink-rate exported tree
-  * @pf: pf struct
-@@ -1674,23 +1427,6 @@ void ice_devlink_unregister(struct ice_pf *pf)
- 	devlink_unregister(priv_to_devlink(pf));
- }
- 
--/**
-- * ice_devlink_set_switch_id - Set unique switch id based on pci dsn
-- * @pf: the PF to create a devlink port for
-- * @ppid: struct with switch id information
-- */
--static void
--ice_devlink_set_switch_id(struct ice_pf *pf, struct netdev_phys_item_id *ppid)
--{
--	struct pci_dev *pdev = pf->pdev;
--	u64 id;
--
--	id = pci_get_dsn(pdev);
--
--	ppid->id_len = sizeof(id);
--	put_unaligned_be64(id, &ppid->id);
--}
--
- int ice_devlink_register_params(struct ice_pf *pf)
- {
- 	struct devlink *devlink = priv_to_devlink(pf);
-@@ -1705,165 +1441,6 @@ void ice_devlink_unregister_params(struct ice_pf *pf)
- 				  ARRAY_SIZE(ice_devlink_params));
- }
- 
--/**
-- * ice_devlink_set_port_split_options - Set port split options
-- * @pf: the PF to set port split options
-- * @attrs: devlink attributes
-- *
-- * Sets devlink port split options based on available FW port options
-- */
--static void
--ice_devlink_set_port_split_options(struct ice_pf *pf,
--				   struct devlink_port_attrs *attrs)
--{
--	struct ice_aqc_get_port_options_elem options[ICE_AQC_PORT_OPT_MAX];
--	u8 i, active_idx, pending_idx, option_count = ICE_AQC_PORT_OPT_MAX;
--	bool active_valid, pending_valid;
--	int status;
--
--	status = ice_aq_get_port_options(&pf->hw, options, &option_count,
--					 0, true, &active_idx, &active_valid,
--					 &pending_idx, &pending_valid);
--	if (status) {
--		dev_dbg(ice_pf_to_dev(pf), "Couldn't read port split options, err = %d\n",
--			status);
--		return;
--	}
--
--	/* find the biggest available port split count */
--	for (i = 0; i < option_count; i++)
--		attrs->lanes = max_t(int, attrs->lanes, options[i].pmd);
--
--	attrs->splittable = attrs->lanes ? 1 : 0;
--	ice_active_port_option = active_idx;
--}
--
--static const struct devlink_port_ops ice_devlink_port_ops = {
--	.port_split = ice_devlink_port_split,
--	.port_unsplit = ice_devlink_port_unsplit,
--};
--
--/**
-- * ice_devlink_create_pf_port - Create a devlink port for this PF
-- * @pf: the PF to create a devlink port for
-- *
-- * Create and register a devlink_port for this PF.
-- * This function has to be called under devl_lock.
-- *
-- * Return: zero on success or an error code on failure.
-- */
--int ice_devlink_create_pf_port(struct ice_pf *pf)
--{
--	struct devlink_port_attrs attrs = {};
--	struct devlink_port *devlink_port;
--	struct devlink *devlink;
--	struct ice_vsi *vsi;
--	struct device *dev;
--	int err;
--
--	devlink = priv_to_devlink(pf);
--
--	dev = ice_pf_to_dev(pf);
--
--	devlink_port = &pf->devlink_port;
--
--	vsi = ice_get_main_vsi(pf);
--	if (!vsi)
--		return -EIO;
--
--	attrs.flavour = DEVLINK_PORT_FLAVOUR_PHYSICAL;
--	attrs.phys.port_number = pf->hw.bus.func;
--
--	/* As FW supports only port split options for whole device,
--	 * set port split options only for first PF.
--	 */
--	if (pf->hw.pf_id == 0)
--		ice_devlink_set_port_split_options(pf, &attrs);
--
--	ice_devlink_set_switch_id(pf, &attrs.switch_id);
--
--	devlink_port_attrs_set(devlink_port, &attrs);
--
--	err = devl_port_register_with_ops(devlink, devlink_port, vsi->idx,
--					  &ice_devlink_port_ops);
--	if (err) {
--		dev_err(dev, "Failed to create devlink port for PF %d, error %d\n",
--			pf->hw.pf_id, err);
--		return err;
--	}
--
--	return 0;
--}
--
--/**
-- * ice_devlink_destroy_pf_port - Destroy the devlink_port for this PF
-- * @pf: the PF to cleanup
-- *
-- * Unregisters the devlink_port structure associated with this PF.
-- * This function has to be called under devl_lock.
-- */
--void ice_devlink_destroy_pf_port(struct ice_pf *pf)
--{
--	devl_port_unregister(&pf->devlink_port);
--}
--
--/**
-- * ice_devlink_create_vf_port - Create a devlink port for this VF
-- * @vf: the VF to create a port for
-- *
-- * Create and register a devlink_port for this VF.
-- *
-- * Return: zero on success or an error code on failure.
-- */
--int ice_devlink_create_vf_port(struct ice_vf *vf)
--{
--	struct devlink_port_attrs attrs = {};
--	struct devlink_port *devlink_port;
--	struct devlink *devlink;
--	struct ice_vsi *vsi;
--	struct device *dev;
--	struct ice_pf *pf;
--	int err;
--
--	pf = vf->pf;
--	dev = ice_pf_to_dev(pf);
--	devlink_port = &vf->devlink_port;
--
--	vsi = ice_get_vf_vsi(vf);
--	if (!vsi)
--		return -EINVAL;
--
--	attrs.flavour = DEVLINK_PORT_FLAVOUR_PCI_VF;
--	attrs.pci_vf.pf = pf->hw.bus.func;
--	attrs.pci_vf.vf = vf->vf_id;
--
--	ice_devlink_set_switch_id(pf, &attrs.switch_id);
--
--	devlink_port_attrs_set(devlink_port, &attrs);
--	devlink = priv_to_devlink(pf);
--
--	err = devlink_port_register(devlink, devlink_port, vsi->idx);
--	if (err) {
--		dev_err(dev, "Failed to create devlink port for VF %d, error %d\n",
--			vf->vf_id, err);
--		return err;
--	}
--
--	return 0;
--}
--
--/**
-- * ice_devlink_destroy_vf_port - Destroy the devlink_port for this VF
-- * @vf: the VF to cleanup
-- *
-- * Unregisters the devlink_port structure associated with this VF.
-- */
--void ice_devlink_destroy_vf_port(struct ice_vf *vf)
--{
--	devl_rate_leaf_destroy(&vf->devlink_port);
--	devlink_port_unregister(&vf->devlink_port);
--}
--
- #define ICE_DEVLINK_READ_BLK_SIZE (1024 * 1024)
- 
- static const struct devlink_region_ops ice_nvm_region_ops;
+-	if (ring->vsi->type == ICE_VSI_PF) {
++	if (ring->vsi->type == ICE_VSI_PF || ring->vsi->type == ICE_VSI_SF) {
+ 		if (!xdp_rxq_info_is_reg(&ring->xdp_rxq)) {
+ 			err = __xdp_rxq_info_reg(&ring->xdp_rxq, ring->netdev,
+ 						 ring->q_index,
+diff --git a/drivers/net/ethernet/intel/ice/ice_dcb_lib.c b/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
+index ceb17c004d79..63ce4920de4e 100644
+--- a/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
++++ b/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
+@@ -187,6 +187,7 @@ void ice_vsi_set_dcb_tc_cfg(struct ice_vsi *vsi)
+ 		vsi->tc_cfg.numtc = ice_dcb_get_num_tc(cfg);
+ 		break;
+ 	case ICE_VSI_CHNL:
++	case ICE_VSI_SF:
+ 		vsi->tc_cfg.ena_tc = BIT(ice_get_first_droptc(vsi));
+ 		vsi->tc_cfg.numtc = 1;
+ 		break;
 diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
-index 718cb8df7853..b2d7e3c0edcc 100644
+index b2d7e3c0edcc..572d9b345f66 100644
 --- a/drivers/net/ethernet/intel/ice/ice_lib.c
 +++ b/drivers/net/ethernet/intel/ice/ice_lib.c
-@@ -7,7 +7,6 @@
- #include "ice_lib.h"
- #include "ice_fltr.h"
- #include "ice_dcb_lib.h"
--#include "ice_devlink.h"
- #include "ice_vsi_vlan_ops.h"
+@@ -20,6 +20,8 @@ const char *ice_vsi_type_str(enum ice_vsi_type vsi_type)
+ 		return "ICE_VSI_PF";
+ 	case ICE_VSI_VF:
+ 		return "ICE_VSI_VF";
++	case ICE_VSI_SF:
++		return "ICE_VSI_SF";
+ 	case ICE_VSI_CTRL:
+ 		return "ICE_VSI_CTRL";
+ 	case ICE_VSI_CHNL:
+@@ -141,6 +143,7 @@ static void ice_vsi_set_num_desc(struct ice_vsi *vsi)
+ {
+ 	switch (vsi->type) {
+ 	case ICE_VSI_PF:
++	case ICE_VSI_SF:
+ 	case ICE_VSI_CTRL:
+ 	case ICE_VSI_LB:
+ 		/* a user could change the values of num_[tr]x_desc using
+@@ -207,6 +210,12 @@ static void ice_vsi_set_num_qs(struct ice_vsi *vsi)
+ 					   max_t(int, vsi->alloc_rxq,
+ 						 vsi->alloc_txq));
+ 		break;
++	case ICE_VSI_SF:
++		vsi->alloc_txq = 1;
++		vsi->alloc_rxq = 1;
++		vsi->num_q_vectors = 1;
++		vsi->irq_dyn_alloc = true;
++		break;
+ 	case ICE_VSI_VF:
+ 		if (vf->num_req_qs)
+ 			vf->num_vf_qs = vf->num_req_qs;
+@@ -566,6 +575,7 @@ ice_vsi_alloc_def(struct ice_vsi *vsi, struct ice_channel *ch)
  
- /**
+ 	switch (vsi->type) {
+ 	case ICE_VSI_PF:
++	case ICE_VSI_SF:
+ 		/* Setup default MSIX irq handler for VSI */
+ 		vsi->irq_handler = ice_msix_clean_rings;
+ 		break;
+@@ -894,6 +904,11 @@ static void ice_vsi_set_rss_params(struct ice_vsi *vsi)
+ 					      max_rss_size);
+ 		vsi->rss_lut_type = ICE_LUT_PF;
+ 		break;
++	case ICE_VSI_SF:
++		vsi->rss_table_size = ICE_LUT_VSI_SIZE;
++		vsi->rss_size = min_t(u16, num_online_cpus(), max_rss_size);
++		vsi->rss_lut_type = ICE_LUT_VSI;
++		break;
+ 	case ICE_VSI_VF:
+ 		/* VF VSI will get a small RSS table.
+ 		 * For VSI_LUT, LUT size should be set to 64 bytes.
+@@ -1141,6 +1156,7 @@ static void ice_set_rss_vsi_ctx(struct ice_vsi_ctx *ctxt, struct ice_vsi *vsi)
+ 		lut_type = ICE_AQ_VSI_Q_OPT_RSS_LUT_PF;
+ 		break;
+ 	case ICE_VSI_VF:
++	case ICE_VSI_SF:
+ 		/* VF VSI will gets a small RSS table which is a VSI LUT type */
+ 		lut_type = ICE_AQ_VSI_Q_OPT_RSS_LUT_VSI;
+ 		break;
+@@ -1219,6 +1235,7 @@ static int ice_vsi_init(struct ice_vsi *vsi, u32 vsi_flags)
+ 	case ICE_VSI_PF:
+ 		ctxt->flags = ICE_AQ_VSI_TYPE_PF;
+ 		break;
++	case ICE_VSI_SF:
+ 	case ICE_VSI_CHNL:
+ 		ctxt->flags = ICE_AQ_VSI_TYPE_VMDQ2;
+ 		break;
+@@ -2063,6 +2080,7 @@ static void ice_set_agg_vsi(struct ice_vsi *vsi)
+ 	case ICE_VSI_CHNL:
+ 	case ICE_VSI_LB:
+ 	case ICE_VSI_PF:
++	case ICE_VSI_SF:
+ 		max_agg_nodes = ICE_MAX_PF_AGG_NODES;
+ 		agg_node_id_start = ICE_PF_AGG_NODE_ID_START;
+ 		agg_node_iter = &pf->pf_agg_node[0];
+@@ -2234,6 +2252,7 @@ ice_vsi_cfg_def(struct ice_vsi *vsi, struct ice_vsi_cfg_params *params)
+ 
+ 	switch (vsi->type) {
+ 	case ICE_VSI_CTRL:
++	case ICE_VSI_SF:
+ 	case ICE_VSI_PF:
+ 		ret = ice_vsi_alloc_q_vectors(vsi);
+ 		if (ret)
+@@ -2625,7 +2644,8 @@ int ice_ena_vsi(struct ice_vsi *vsi, bool locked)
+ 
+ 	clear_bit(ICE_VSI_NEEDS_RESTART, vsi->state);
+ 
+-	if (vsi->netdev && vsi->type == ICE_VSI_PF) {
++	if (vsi->netdev && (vsi->type == ICE_VSI_PF ||
++			    vsi->type == ICE_VSI_SF)) {
+ 		if (netif_running(vsi->netdev)) {
+ 			if (!locked)
+ 				rtnl_lock();
+@@ -2654,7 +2674,8 @@ void ice_dis_vsi(struct ice_vsi *vsi, bool locked)
+ 
+ 	set_bit(ICE_VSI_NEEDS_RESTART, vsi->state);
+ 
+-	if (vsi->type == ICE_VSI_PF && vsi->netdev) {
++	if (vsi->netdev && (vsi->type == ICE_VSI_PF ||
++			    vsi->type == ICE_VSI_SF)) {
+ 		if (netif_running(vsi->netdev)) {
+ 			if (!locked)
+ 				rtnl_lock();
 diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index 824732f16112..fbf1d56c50e9 100644
+index fbf1d56c50e9..ebab03b16596 100644
 --- a/drivers/net/ethernet/intel/ice/ice_main.c
 +++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -15,6 +15,7 @@
- #include "ice_dcb_nl.h"
- #include "ice_devlink.h"
- #include "ice_hwmon.h"
-+#include "devlink/ice_devlink_port.h"
- /* Including ice_trace.h with CREATE_TRACE_POINTS defined will generate the
-  * ice tracepoint functions. This must be done exactly once across the
-  * ice driver.
-diff --git a/drivers/net/ethernet/intel/ice/ice_repr.c b/drivers/net/ethernet/intel/ice/ice_repr.c
-index 2429727d5562..7d066ea0caa0 100644
---- a/drivers/net/ethernet/intel/ice/ice_repr.c
-+++ b/drivers/net/ethernet/intel/ice/ice_repr.c
-@@ -4,6 +4,7 @@
- #include "ice.h"
- #include "ice_eswitch.h"
- #include "ice_devlink.h"
-+#include "devlink/ice_devlink_port.h"
- #include "ice_sriov.h"
- #include "ice_tc_lib.h"
- #include "ice_dcb_lib.h"
+@@ -2911,6 +2911,9 @@ int ice_vsi_determine_xdp_res(struct ice_vsi *vsi)
+ 	if (avail < cpus / 2)
+ 		return -ENOMEM;
+ 
++	if (vsi->type == ICE_VSI_SF)
++		avail = vsi->alloc_txq;
++
+ 	vsi->num_xdp_txq = min_t(u16, avail, cpus);
+ 
+ 	if (vsi->num_xdp_txq < cpus)
+@@ -3026,8 +3029,8 @@ static int ice_xdp(struct net_device *dev, struct netdev_bpf *xdp)
+ 	struct ice_netdev_priv *np = netdev_priv(dev);
+ 	struct ice_vsi *vsi = np->vsi;
+ 
+-	if (vsi->type != ICE_VSI_PF) {
+-		NL_SET_ERR_MSG_MOD(xdp->extack, "XDP can be loaded only on PF VSI");
++	if (vsi->type != ICE_VSI_PF && vsi->type != ICE_VSI_SF) {
++		NL_SET_ERR_MSG_MOD(xdp->extack, "XDP can be loaded only on PF or SF VSI");
+ 		return -EINVAL;
+ 	}
+ 
+diff --git a/drivers/net/ethernet/intel/ice/ice_type.h b/drivers/net/ethernet/intel/ice/ice_type.h
+index 32386aecd6c5..636c30487cc8 100644
+--- a/drivers/net/ethernet/intel/ice/ice_type.h
++++ b/drivers/net/ethernet/intel/ice/ice_type.h
+@@ -150,6 +150,7 @@ enum ice_vsi_type {
+ 	ICE_VSI_CTRL = 3,	/* equates to ICE_VSI_PF with 1 queue pair */
+ 	ICE_VSI_CHNL = 4,
+ 	ICE_VSI_LB = 6,
++	ICE_VSI_SF = 9,
+ };
+ 
+ struct ice_link_status {
+diff --git a/drivers/net/ethernet/intel/ice/ice_xsk.c b/drivers/net/ethernet/intel/ice/ice_xsk.c
+index 8a051420fa19..fe1726526e4f 100644
+--- a/drivers/net/ethernet/intel/ice/ice_xsk.c
++++ b/drivers/net/ethernet/intel/ice/ice_xsk.c
+@@ -287,7 +287,7 @@ ice_xsk_pool_enable(struct ice_vsi *vsi, struct xsk_buff_pool *pool, u16 qid)
+ {
+ 	int err;
+ 
+-	if (vsi->type != ICE_VSI_PF)
++	if (vsi->type != ICE_VSI_PF && vsi->type != ICE_VSI_SF)
+ 		return -EINVAL;
+ 
+ 	if (qid >= vsi->netdev->real_num_rx_queues ||
 -- 
 2.42.0
 
