@@ -1,101 +1,77 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1A7268542C6
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 14 Feb 2024 07:26:34 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id BFBF885435B
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 14 Feb 2024 08:23:10 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 3745182052;
-	Wed, 14 Feb 2024 06:26:31 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 3610141737;
+	Wed, 14 Feb 2024 07:23:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 2KbH-EuBWW7M; Wed, 14 Feb 2024 06:26:30 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id x2Qtdxzn_QQs; Wed, 14 Feb 2024 07:23:08 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4890B81DF4
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 48B3141734
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1707891990;
-	bh=yS+lNQLc/gzwR4Wt9NaQFyT90oM22I6EGi5vzb/RGVQ=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1707895388;
+	bh=riog4IDpUEuUEGY/EuunMILvxtA5XzhRZDxYfdr8OwM=;
+	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=u9la55AXJGX71jYC1ARBdo/ItFf3T/76OY5aNsQ8WBB7DaL0ahnfayH/otBoZPZjM
-	 ZJwkaMUnmRIa5hCeYd2v9icCx+2dfl15kw+YV3dRE0yThceUy/W6LspkvF6ZpZidcs
-	 m+vcgj9V5u6DFG4Cx//Z9FtfJZuf5a10574qBXt3ARw8p5cFKfxWg1GdO8Ih3AIOyc
-	 tNj1mi503n7/SLqavLFLAfzcgpz9siXcHryXgic5Ksk7/GfoxzjACQ9VufstVdkvVa
-	 es9zYyeLqsKxSbf3+oWMnMwu2TGEJjn6AbbhZQF/JnsY50FxL0VqvUb/484LPhvanf
-	 cYLSmJV5S+I5Q==
+	b=JyDFNmU1H2vXOWQ3bncRU4TNzuszae4jTV6bax6MvEYe37EtdpYH3BeN3MMfSiCVz
+	 lqX6NqA5rtOul+I9ojL77qEEqjSUOdS2DwJ2Bm92gPY59MqguX2B6y9rG81CbU08ti
+	 WpHcIHiVa/+MhSTquLHorIp/MMoJHofCwpj1ueS/XMugeLwEqprekae38UXtCv68Bz
+	 G7CnMM6nXbyd0Lbj1kEZyNw5CaP8IfqIDk4D26Unpf61R/wrikisX4ffGzDPGY5404
+	 ytB0Yw+f2j4tI3UqxEQqYvsfRdu8hX9Eo/wVOFvOfs0aGzELkOOXZmkaS9FEZmx59B
+	 SmXeheyMm9+SA==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 4890B81DF4;
-	Wed, 14 Feb 2024 06:26:30 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 48B3141734;
+	Wed, 14 Feb 2024 07:23:08 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id C188B1BF5B3
- for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Feb 2024 06:26:27 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id A0D691BF2C0
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Feb 2024 07:23:05 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id B542D60E90
- for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Feb 2024 06:26:27 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 86D9060EE2
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Feb 2024 07:23:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id oXzX30ejjP5g for <intel-wired-lan@lists.osuosl.org>;
- Wed, 14 Feb 2024 06:26:27 +0000 (UTC)
-Received-SPF: None (mailfrom) identity=mailfrom; client-ip=192.198.163.18;
- helo=mgamail.intel.com; envelope-from=michal.swiatkowski@linux.intel.com;
+ with ESMTP id Cx3kQX7oZVAi for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 14 Feb 2024 07:23:04 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=141.14.17.11;
+ helo=mx3.molgen.mpg.de; envelope-from=pmenzel@molgen.mpg.de;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 4E91F60BF1
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 4E91F60BF1
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.18])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 4E91F60BF1
- for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Feb 2024 06:26:26 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10982"; a="1798488"
-X-IronPort-AV: E=Sophos;i="6.06,159,1705392000"; 
-   d="scan'208";a="1798488"
-Received: from orviesa007.jf.intel.com ([10.64.159.147])
- by fmvoesa112.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 Feb 2024 22:26:24 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.06,159,1705392000"; 
-   d="scan'208";a="3422285"
-Received: from unknown (HELO mev-dev) ([10.237.112.144])
- by orviesa007-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 Feb 2024 22:26:22 -0800
-Date: Wed, 14 Feb 2024 07:26:17 +0100
-From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-To: Jiri Pirko <jiri@resnulli.us>
-Message-ID: <ZcxdCU/yo0R5cRAq@mev-dev>
-References: <20240213072724.77275-1-michal.swiatkowski@linux.intel.com>
- <20240213072724.77275-5-michal.swiatkowski@linux.intel.com>
- <ZcsueJ1tr-GdseIt@nanopsycho> <Zcs442A/+nuLJw6j@mev-dev>
- <ZctSGPf6v0QlfMUu@nanopsycho> <ZctaY7AfjS/N2J9X@mev-dev>
- <ZcuDd4ajkQnxJz77@nanopsycho>
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 0CADF60EC0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0CADF60EC0
+Received: from mx3.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 0CADF60EC0
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Feb 2024 07:23:01 +0000 (UTC)
+Received: from [192.168.0.224] (ip5f5aea4b.dynamic.kabel-deutschland.de
+ [95.90.234.75])
+ (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested) (Authenticated sender: pmenzel)
+ by mx.molgen.mpg.de (Postfix) with ESMTPSA id 1916E61E5FE05;
+ Wed, 14 Feb 2024 08:22:21 +0100 (CET)
+Message-ID: <926b5031-47d2-42d7-938d-01fc4ebc9dc0@molgen.mpg.de>
+Date: Wed, 14 Feb 2024 08:22:19 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <ZcuDd4ajkQnxJz77@nanopsycho>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1707891986; x=1739427986;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=Rr60Xpfs0ugTI2/zGgJVJ36z4D+ssHoGg27XnCH7Mqk=;
- b=VOgcpSYEJX8lM54C1YteOWkbx6W7SeoNPkmm6t881v1XeBIoJUInI5HM
- JYDTd2l2JEweeAi6VUemTFjZWphnTAI5jtWP6Hjrgj3u0dVu6aeWB2NCx
- c3I/iFHxrQ4J3i8kRqjESfMSK02FgML21V6FYxMPrMEuKX4P+zj9TvXLC
- 48b/RpUgHHzA+HS329BYYcOERNNFa8nKLRXAbcZMbK2SyFvqNMUKkzFpy
- UJCTfojhO6MIC69NbLjPqHXNVAZMHSx1pNp3h6/gSambnDELTIId6Wvt7
- bMXBlLqy9wwjBMDOH3k31Bo6JrCfSEA0cdONXTyrfaAk8r2Xhf+mnVyBS
- w==;
+User-Agent: Mozilla Thunderbird
+To: Jon Maxwell <jmaxwell37@gmail.com>, jesse.brandeburg@intel.com
+References: <20240213222344.195885-1-jmaxwell37@gmail.com>
+Content-Language: en-US
+From: Paul Menzel <pmenzel@molgen.mpg.de>
+In-Reply-To: <20240213222344.195885-1-jmaxwell37@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=none (p=none dis=none)
- header.from=linux.intel.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=VOgcpSYE
-Subject: Re: [Intel-wired-lan] [iwl-next v1 04/15] ice: add basic devlink
- subfunctions support
+ header.from=molgen.mpg.de
+Subject: Re: [Intel-wired-lan] [net-next v3] intel: make module parameters
+ readable in sys filesystem
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -108,164 +84,87 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: maciej.fijalkowski@intel.com, sridhar.samudrala@intel.com,
- michal.kubiak@intel.com, intel-wired-lan@lists.osuosl.org,
- pio.raczynski@gmail.com, netdev@vger.kernel.org, jacob.e.keller@intel.com,
- wojciech.drewek@intel.com, Piotr Raczynski <piotr.raczynski@intel.com>,
- przemyslaw.kitszel@intel.com
+Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org, edumazet@google.com,
+ anthony.l.nguyen@intel.com, kuba@kernel.org, intel-wired-lan@lists.osuosl.org,
+ pabeni@redhat.com, davem@davemloft.net
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, Feb 13, 2024 at 03:57:59PM +0100, Jiri Pirko wrote:
-> Tue, Feb 13, 2024 at 01:02:43PM CET, michal.swiatkowski@linux.intel.com wrote:
-> >On Tue, Feb 13, 2024 at 12:27:20PM +0100, Jiri Pirko wrote:
-> >> Tue, Feb 13, 2024 at 10:39:47AM CET, michal.swiatkowski@linux.intel.com wrote:
-> >> >On Tue, Feb 13, 2024 at 09:55:20AM +0100, Jiri Pirko wrote:
-> >> >> Tue, Feb 13, 2024 at 08:27:13AM CET, michal.swiatkowski@linux.intel.com wrote:
-> >> >> >From: Piotr Raczynski <piotr.raczynski@intel.com>
-> >> 
-> >> [...]
-> >> 
-> >> 
-> >> >
-> >> >> 
-> >> >> >+}
-> >> >> >+
-> >> >> >+/**
-> >> >> >+ * ice_dealloc_dynamic_port - Deallocate and remove a dynamic port
-> >> >> >+ * @dyn_port: dynamic port instance to deallocate
-> >> >> >+ *
-> >> >> >+ * Free resources associated with a dynamically added devlink port. Will
-> >> >> >+ * deactivate the port if its currently active.
-> >> >> >+ */
-> >> >> >+static void ice_dealloc_dynamic_port(struct ice_dynamic_port *dyn_port)
-> >> >> >+{
-> >> >> >+	struct devlink_port *devlink_port = &dyn_port->devlink_port;
-> >> >> >+	struct ice_pf *pf = dyn_port->pf;
-> >> >> >+
-> >> >> >+	if (dyn_port->active)
-> >> >> >+		ice_deactivate_dynamic_port(dyn_port);
-> >> >> >+
-> >> >> >+	if (devlink_port->attrs.flavour == DEVLINK_PORT_FLAVOUR_PCI_SF)
-> >> >> 
-> >> >> I don't understand how this check could be false. Remove it.
-> >> >>
-> >> >Yeah, will remove
-> >> >
-> >> >> 
-> >> >> >+		xa_erase(&pf->sf_nums, devlink_port->attrs.pci_sf.sf);
-> >> >> >+
-> >> >> >+	devl_port_unregister(devlink_port);
-> >> >> >+	ice_vsi_free(dyn_port->vsi);
-> >> >> >+	xa_erase(&pf->dyn_ports, dyn_port->vsi->idx);
-> >> >> >+	kfree(dyn_port);
-> >> >> >+}
-> >> >> >+
-> >> >> >+/**
-> >> >> >+ * ice_dealloc_all_dynamic_ports - Deallocate all dynamic devlink ports
-> >> >> >+ * @pf: pointer to the pf structure
-> >> >> >+ */
-> >> >> >+void ice_dealloc_all_dynamic_ports(struct ice_pf *pf)
-> >> >> >+{
-> >> >> >+	struct devlink *devlink = priv_to_devlink(pf);
-> >> >> >+	struct ice_dynamic_port *dyn_port;
-> >> >> >+	unsigned long index;
-> >> >> >+
-> >> >> >+	devl_lock(devlink);
-> >> >> >+	xa_for_each(&pf->dyn_ports, index, dyn_port)
-> >> >> >+		ice_dealloc_dynamic_port(dyn_port);
-> >> >> >+	devl_unlock(devlink);
-> >> >> 
-> >> >> Hmm, I would assume that the called should already hold the devlink
-> >> >> instance lock when doing remove. What is stopping user from issuing
-> >> >> port_new command here, after devl_unlock()?
-> >> >>
-> >> >It is only called from remove path, but I can move it upper.
-> >> 
-> >> I know it is called on remove path. Again, what is stopping user from
-> >> issuing port_new after ice_dealloc_all_dynamic_ports() is called?
-> >> 
-> >> [...]
-> >> 
-> >What is a problem here? Calling port_new from user perspective will have
-> >devlink lock, right? Do you mean that devlink lock should be taken for
-> >whole cleanup, so from the start to the moment when devlink is
-> >unregister? I wrote that, I will do that in next version (moving it
-> 
-> Yep, otherwise you can ice_dealloc_all_dynamic_ports() and end up with
-> another port created after that which nobody cleans-up.
-> 
+Dear Jon,
 
-Thanks for pointing it, as you mentioned in other patch, I will take a
-lock for whole init/cleanup.
 
-> >upper).
-> >
-> >> 
-> >> >> 
-> >> >> >+	struct device *dev = ice_pf_to_dev(pf);
-> >> >> >+	int err;
-> >> >> >+
-> >> >> >+	dev_dbg(dev, "%s flavour:%d index:%d pfnum:%d\n", __func__,
-> >> >> >+		new_attr->flavour, new_attr->port_index, new_attr->pfnum);
-> >> >> 
-> >> >> How this message could ever help anyone?
-> >> >>
-> >> >Probably only developer of the code :p, will remove it
-> >> 
-> >> How exactly?
-> >>
-> >I meant this code developer, it probably was used to check if number and
-> >indexes are correct, but now it should be removed. Like, leftover after
-> >developing, sorry.
-> >
-> >> [...]
-> >> 
-> >> 
-> >> >> >+static int ice_sf_cfg_netdev(struct ice_dynamic_port *dyn_port)
-> >> >> >+{
-> >> >> >+	struct net_device *netdev;
-> >> >> >+	struct ice_vsi *vsi = dyn_port->vsi;
-> >> >> >+	struct ice_netdev_priv *np;
-> >> >> >+	int err;
-> >> >> >+
-> >> >> >+	netdev = alloc_etherdev_mqs(sizeof(*np), vsi->alloc_txq,
-> >> >> >+				    vsi->alloc_rxq);
-> >> >> >+	if (!netdev)
-> >> >> >+		return -ENOMEM;
-> >> >> >+
-> >> >> >+	SET_NETDEV_DEV(netdev, &vsi->back->pdev->dev);
-> >> >> >+	set_bit(ICE_VSI_NETDEV_ALLOCD, vsi->state);
-> >> >> >+	vsi->netdev = netdev;
-> >> >> >+	np = netdev_priv(netdev);
-> >> >> >+	np->vsi = vsi;
-> >> >> >+
-> >> >> >+	ice_set_netdev_features(netdev);
-> >> >> >+
-> >> >> >+	netdev->xdp_features = NETDEV_XDP_ACT_BASIC | NETDEV_XDP_ACT_REDIRECT |
-> >> >> >+			       NETDEV_XDP_ACT_XSK_ZEROCOPY |
-> >> >> >+			       NETDEV_XDP_ACT_RX_SG;
-> >> >> >+
-> >> >> >+	eth_hw_addr_set(netdev, dyn_port->hw_addr);
-> >> >> >+	ether_addr_copy(netdev->perm_addr, dyn_port->hw_addr);
-> >> >> >+	netdev->netdev_ops = &ice_sf_netdev_ops;
-> >> >> >+	SET_NETDEV_DEVLINK_PORT(netdev, &dyn_port->devlink_port);
-> >> >> >+
-> >> >> >+	err = register_netdev(netdev);
-> >> >> 
-> >> >> It the the actual subfunction or eswitch port representor of the
-> >> >> subfunction. Looks like the port representor. In that case. It should be
-> >> >> created no matter if the subfunction is activated, when it it created.
-> >> >> 
-> >> >> If this is the actual subfunction netdev, you should not link it to
-> >> >> devlink port here.
-> >> >>
-> >> >This is the actual subfunction netdev. Where in this case it should be
-> >> >linked?
-> >> 
-> >> To the SF auxdev, obviously.
-> >> 
-> >> Here, you should have eswitch port representor netdev.
-> >> 
-> >Oh, ok, thanks, will link it correctly in next version.
-> >
+Thank you very much for your patch.
+
+Am 13.02.24 um 11:23 PM schrieb Jon Maxwell:
+> Linux users sometimes need an easy way to check current values of module
+> parameters. For example the module may be manually reloaded with different
+> parameters. Make these visible and readable in the /sys filesystem to allow
+> that.
+> 
+> Signed-off-by: Jon Maxwell <jmaxwell37@gmail.com>
+> ---
+> V2: Remove the "debug" module parameter as per Andrew Lunns suggestion.
+
+Please mention this in the commit message, why `debug` should not be 
+exposed.
+
+
+Kind regards,
+
+Paul
+
+
+> V3: Correctly format v2.
+>   drivers/net/ethernet/intel/e100.c             | 4 ++--
+>   drivers/net/ethernet/intel/igb/igb_main.c     | 2 +-
+>   drivers/net/ethernet/intel/ixgbe/ixgbe_main.c | 4 ++--
+>   3 files changed, 5 insertions(+), 5 deletions(-)
+> 
+> diff --git a/drivers/net/ethernet/intel/e100.c b/drivers/net/ethernet/intel/e100.c
+> index 01f0f12035caeb7ca1657387538fcebf5c608322..3fcb8daaa2437fa3fe7b98ba9f606dbbb1844e58 100644
+> --- a/drivers/net/ethernet/intel/e100.c
+> +++ b/drivers/net/ethernet/intel/e100.c
+> @@ -171,8 +171,8 @@ static int debug = 3;
+>   static int eeprom_bad_csum_allow = 0;
+>   static int use_io = 0;
+>   module_param(debug, int, 0);
+> -module_param(eeprom_bad_csum_allow, int, 0);
+> -module_param(use_io, int, 0);
+> +module_param(eeprom_bad_csum_allow, int, 0444);
+> +module_param(use_io, int, 0444);
+>   MODULE_PARM_DESC(debug, "Debug level (0=none,...,16=all)");
+>   MODULE_PARM_DESC(eeprom_bad_csum_allow, "Allow bad eeprom checksums");
+>   MODULE_PARM_DESC(use_io, "Force use of i/o access mode");
+> diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
+> index 4df8d4153aa5f5ce7ac9dd566180d552be9f5b4f..31d0a43a908c0a4eab4fe1147064a5f5677c9f0b 100644
+> --- a/drivers/net/ethernet/intel/igb/igb_main.c
+> +++ b/drivers/net/ethernet/intel/igb/igb_main.c
+> @@ -202,7 +202,7 @@ static struct notifier_block dca_notifier = {
+>   #endif
+>   #ifdef CONFIG_PCI_IOV
+>   static unsigned int max_vfs;
+> -module_param(max_vfs, uint, 0);
+> +module_param(max_vfs, uint, 0444);
+>   MODULE_PARM_DESC(max_vfs, "Maximum number of virtual functions to allocate per physical function");
+>   #endif /* CONFIG_PCI_IOV */
+>   
+> diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+> index bd541527c8c74d6922e8683e2f4493d9b361f67b..9d26ff82a397d4939cf7adea78c217e4071aa166 100644
+> --- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+> +++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+> @@ -147,13 +147,13 @@ static struct notifier_block dca_notifier = {
+>   
+>   #ifdef CONFIG_PCI_IOV
+>   static unsigned int max_vfs;
+> -module_param(max_vfs, uint, 0);
+> +module_param(max_vfs, uint, 0444);
+>   MODULE_PARM_DESC(max_vfs,
+>   		 "Maximum number of virtual functions to allocate per physical function - default is zero and maximum value is 63. (Deprecated)");
+>   #endif /* CONFIG_PCI_IOV */
+>   
+>   static bool allow_unsupported_sfp;
+> -module_param(allow_unsupported_sfp, bool, 0);
+> +module_param(allow_unsupported_sfp, bool, 0444);
+>   MODULE_PARM_DESC(allow_unsupported_sfp,
+>   		 "Allow unsupported and untested SFP+ modules on 82599-based adapters");
+>   
