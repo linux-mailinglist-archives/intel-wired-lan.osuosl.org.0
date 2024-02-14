@@ -2,165 +2,90 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B464E8550C9
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 14 Feb 2024 18:51:22 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7A1C785517A
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 14 Feb 2024 19:06:43 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 4A16D40182;
-	Wed, 14 Feb 2024 17:51:21 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 2C23F41826;
+	Wed, 14 Feb 2024 18:06:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id OtRMgJsvnlsX; Wed, 14 Feb 2024 17:51:20 +0000 (UTC)
+	with ESMTP id 0ft5ZezSHnr3; Wed, 14 Feb 2024 18:06:39 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org DAF934060C
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 5C92741839
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1707933079;
-	bh=wkYB26EsovgS1lqkDKSs9iGWTpP44YnVqI2Zsxq8eKg=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=TFlSqLQJP4d7cL+TE1Jos2cl7OvuCuEfZ7QOKAorLS0d9A41d5g+TEJ2YKkNmbCtb
-	 0a/aKLYyxwsE1621ELW8MBb1KSVs8CeKhCROorc2/dxI+Ecm9VK6nRkikQJrLjrvhs
-	 AErgK/rD8ZATRfLF5peNFEZKgrvnHFNpzxSoj1bjNpBuKAbFLWRVGQ0fZPwUrvmA8h
-	 qrH0XUmWrPqbajuHkMdOnD4cwrBz158FFNW2fDjLJ0CORnMz0OU0Ot4ef+wtFjV/NR
-	 sKOGi8237QJ6cP6TyfQUcWAgdnXe1DsW7DEhGdCzQJCk5sFFLYvbMEmlAzy+hn0J4h
-	 Qqs/PpPUNuQzw==
+	s=default; t=1707933999;
+	bh=8f3FgOrXyx1ng9W68f8VtZFYOyp1eh2q/ODGL931J1Y=;
+	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=NqucN3/UXJ3a1SUFQGqGk6RaFzgsM24TE2EmAvNDCwsD5aATPcngE7StNiO7d1ItI
+	 ttvyvIBNaDvdQayZDR7sho2elrYuLUe7U6MTOwS1zpLZTiya0sF76q34lTQmWUKtm0
+	 HlXJDSPkOvMbmJQcvFAbXgoHUT5SjGVJgPH5YhCTZ2/Hkp5GceTWaJv5OYq6mykdFI
+	 HG9qCTzFEV9ljErbiMxGmQoxiWVEJdJ2Ru7EBGkE06gw97z1Pbxuhi4iHbun6wm9bC
+	 7PbyJSDo3OSz9pZlqLUdXDqXhS1qyl2ZJMgDn6YgaQRzTbZ0jk5QmK/Fmnnj9gKlvd
+	 Q98B1AwpKISaw==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id DAF934060C;
-	Wed, 14 Feb 2024 17:51:19 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 5C92741839;
+	Wed, 14 Feb 2024 18:06:39 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 75BCC1BF293
- for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Feb 2024 17:51:17 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id B11CD1BF57C
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Feb 2024 18:06:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 6E8656077D
- for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Feb 2024 17:51:17 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 9B19C607B5
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Feb 2024 18:06:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id jDYHpGHyEnPZ for <intel-wired-lan@lists.osuosl.org>;
- Wed, 14 Feb 2024 17:51:16 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=40.107.244.64;
- helo=nam12-mw2-obe.outbound.protection.outlook.com;
- envelope-from=shannon.nelson@amd.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 6D2FF60772
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6D2FF60772
-Received: from NAM12-MW2-obe.outbound.protection.outlook.com
- (mail-mw2nam12on2064.outbound.protection.outlook.com [40.107.244.64])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 6D2FF60772
- for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Feb 2024 17:51:16 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=QEruh299xXeomzeOTCgYsgCgdZZ0leRsx/A4QWdOaZzz2s2IipFjlqvzICd1we69Vty/e6ltiQNnPV8U/anOZ1zs6bmVfVeNuMA8BqvyLQDXssMjcW5/bgYNmZjIqlxSBj8LOCO9/ddLUC9YXQfar/oEwS1TOKw2Gy3vyGjlZOtBJ453WfWO8p240r9yLEl8Js5sNID3WY8RweW13qNVXtr73rwyWXfgWsOIcfyRPezlpvUXhr6o5Nr4f9CR8QrLUr461ZaFsAD8fDLwtm+0HTIfSf0gq/i/7R0uPAuvYMSsFx+e75OYVsEZNAxgSG7QeOslCN1xfVNbWCbIMwkeTA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=wkYB26EsovgS1lqkDKSs9iGWTpP44YnVqI2Zsxq8eKg=;
- b=Nr0B9PG/1oxRbuBcvyjyUv9JDP41dYb+IH/HwyTBJy/pJTB2DV0fZuhyFYbCsRjINa3X3n7WBbJs+0CC1MDeLDw3YIdc4ZQ37z3TYnz0rzulWGq4r8C1gdCXDIpk31yYx6kacNAeLKBMx5ZBcDXqhpwe1Yd4DnA4fqiHXMLLZfdiy0wmL4mzd9TSuvxabo+pBthoD0QiICqfQAZD8cdgxvR90BQczFPxnFS0eiuKHb22SzW7YAG33q7SJQffehs9YmUQaOOKvqMAFOj8UqW+/kBGCiYzqWgkrGJa/nPUpq7Lki/0ocxryTvZKm5qsU/bpo6HrHdQGL4qtHiMd7g4UQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=amd.com; dmarc=pass action=none header.from=amd.com; dkim=pass
- header.d=amd.com; arc=none
-Received: from DS0PR12MB6583.namprd12.prod.outlook.com (2603:10b6:8:d1::12) by
- SJ0PR12MB8115.namprd12.prod.outlook.com (2603:10b6:a03:4e3::13) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7292.28; Wed, 14 Feb
- 2024 17:51:14 +0000
-Received: from DS0PR12MB6583.namprd12.prod.outlook.com
- ([fe80::e4b7:89f7:ca60:1b12]) by DS0PR12MB6583.namprd12.prod.outlook.com
- ([fe80::e4b7:89f7:ca60:1b12%4]) with mapi id 15.20.7292.022; Wed, 14 Feb 2024
- 17:51:13 +0000
-Message-ID: <4d232fe7-3cb6-4896-8d81-0e9726e5e7bd@amd.com>
-Date: Wed, 14 Feb 2024 09:51:10 -0800
-User-Agent: Mozilla Thunderbird
-To: Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Jesse Brandeburg <jesse.brandeburg@intel.com>,
- Jacob Keller <jacob.e.keller@intel.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>
-References: <db31a0b0-4d9f-4e6b-aed8-88266eb5665c@moroto.mountain>
- <b5b28ce2-4322-4d39-93ac-46d32bb336fe@amd.com>
- <93ed20ec-848e-4c72-8c01-e47acd4e1d8f@intel.com>
-Content-Language: en-US
-From: "Nelson, Shannon" <shannon.nelson@amd.com>
-In-Reply-To: <93ed20ec-848e-4c72-8c01-e47acd4e1d8f@intel.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-ClientProxiedBy: SJ0PR05CA0088.namprd05.prod.outlook.com
- (2603:10b6:a03:332::33) To DS0PR12MB6583.namprd12.prod.outlook.com
- (2603:10b6:8:d1::12)
-MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DS0PR12MB6583:EE_|SJ0PR12MB8115:EE_
-X-MS-Office365-Filtering-Correlation-Id: 9a4d5a6c-f072-4f54-e865-08dc2d8588ef
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: JVq1w5vgariK3YPOfllpDTyYNXg4535g4mSSbPCnJzsorE20ojdutdH8WIC/8cweHz/FdgMd6ESMM3QLNR8Cc9v9kdq3CR7RNq6j6ImurFuqVWhO3wLph8QzN2MMNLigJ4JX3sY3bS++ELbWSh+IT+o9mQfDF0TsJgm3or0F9dY2nsHh54Xwa0S3/Qw4Zoo+OzYyZEhPlTW3Zpt7fe5WrbpG+kmuuQ7dLdL0dIY4+9o2CDa50vaB5HqQ3PHnde357l6JvxXSbzTB1Y2RnIWLbHIeQSxDuLkGPjZBfhKAoDwR2FEkhJ+GtHNLXQ5FK3yfZowVRn4+4YrVprqWgO7jFWJa+1KRUM0gfKp5HuyoSjshGFScO9oD512xGoSq/IXshl12TmL96xBi9zala/aI7LRZXRE8MgwBt1RnvaUJBcjSRYS+m5r+r2x8XhIfQqSSk9Nfn9AlIdnIUdFyKNdazNhYSITUjtGCATknyQNlGzbxClJocYp6mh7d0uAjimVHxHm13qnoUbqknpnGS/DB+Q9UIKGlarKuTVxYo31p3GJhKfQ2eGQUtbTxfSOsf/gN
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:DS0PR12MB6583.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230031)(39860400002)(136003)(366004)(396003)(346002)(376002)(230273577357003)(230922051799003)(186009)(451199024)(1800799012)(64100799003)(41300700001)(478600001)(6486002)(36756003)(316002)(66556008)(86362001)(66476007)(83380400001)(66946007)(110136005)(31696002)(2616005)(26005)(38100700002)(53546011)(6506007)(6512007)(2906002)(5660300002)(4326008)(8676002)(8936002)(31686004);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?ZUhESUp3RWdRcVBVbHRaOVZpOHZKQWdBVHE0THNnRWNGNWFhUHZhcHhjUkVa?=
- =?utf-8?B?bVpJa0QxSml5dG51aFJ1azZlYmpoVUFSQnkwWnp1eVFLMGFqY0dGdDlXb1ht?=
- =?utf-8?B?NUphSzFCL0l0UklQT0Z6NkZHei9ZU1Z2R0QvNnZMNUFIOFZZeHZxa3JUWHl6?=
- =?utf-8?B?NFpUdjZPRG84TlhCQlBscTRCcEVLS1ZLWmc0TFlXZytxS1doQ0toR3F3TkFH?=
- =?utf-8?B?eFkxUE9UVVNMeW9DSkE0L0hjVDgrblFVeHVpUHpqTEtQaURmQ0l0Ykw4TUJn?=
- =?utf-8?B?UE5yVEFOM2E3Y3B2OVVFRDRISE5panBNZjIrb0oyYkVrdU5INGFaWFZ0TjJB?=
- =?utf-8?B?UjRtaUNDdE5pbzlZOU1DYmwwMUlWZVNZRzYwUEpvY0xCUDREVlkxU2IrUFNv?=
- =?utf-8?B?ZlBMNWJNMkltbGRHMW5XRHZOSTI0bnJGSklnNnNEaHozNU1mYmMzQVdUNkNp?=
- =?utf-8?B?VGgzb1Q0azBYRWt5Zkg4UjNRQndURnNkaituN09vVXRibWl4MkMzWjc0RGZo?=
- =?utf-8?B?MUl6UGduUkQrNGZoaGEvakQxK3dFSGV2T0J6TjlpQ0pHYVVnWkk0YUhUL0VL?=
- =?utf-8?B?SGJKSm5CdXNBbURHdnNSQ1NZSitwWWZvbC83R1pLUFBxZXp5aHdLY2tDVzM4?=
- =?utf-8?B?L20rOWFqYUZBQ3FoYUtRcjBFbC94aHJ6RmNYTXRRYVdGQjNrbzl6MXpGcHNu?=
- =?utf-8?B?RXNITVAwU0phQXFGQ3FVd0lacnBCa09QLzR1ZnJjdGI4WSs5YXQwT0lWY3JS?=
- =?utf-8?B?ckQ5a1hHdHNIV2g5N09ZT25sVmpNTnJUbDZBcERFZlljNlF4QUx0a0F1UmFS?=
- =?utf-8?B?M0hDTzhmRWRrbGthcjcrNndWcGFLL21ubTNXbFo3U3EyNzFNR05JQ3ZoWFVP?=
- =?utf-8?B?L1VkUlVpeWJlNlRpV0ZHTFVyZ2lnY2ZFNHhIa2duK3RTUUl0S1g4dnFZVlQ0?=
- =?utf-8?B?UjFQUlprZWZjeUNwOWJPUjBBUUs3aTFsM3FvOXBJaDZ5UXZtT0NLQXFYYmc0?=
- =?utf-8?B?QkNiY05WZ0c2eERVSmozQ0dIdjhQZEN6YXVROEdBUEdqRnVCeElKMVBLQUFi?=
- =?utf-8?B?VXdiUmdPT2k0ODJ3Z2FqUmRRTnlRbWpwemlCUEFRSTdTbzd4eEZzV0Y5cSty?=
- =?utf-8?B?U0lCaGUzaW5xNG1YbExldTN0ZXJPVDg0VU40aWJHcGhlV0ZUVE5UR0E0b3JC?=
- =?utf-8?B?R1djTVBjam0wSGpKTUZ5YnVwaW14MDAzZU5GVE9SNmxvWFJhUCtuVFlNSzRE?=
- =?utf-8?B?R2txMDRMdzl3aG1BNkd6N3RocjNwN3kwVmVhQ0VFdFg3ZTZSM2lEdmJKb1Y3?=
- =?utf-8?B?b3dWaVVaaTBUWkFnWVRiNDV3bHpKT24rR2ErTEIrK2FBWHAxeStxNCtERld0?=
- =?utf-8?B?YmhHNkxjSDdYNEwrUUFXKzJFUk84dnNueTlKWTF6THFoRWQ3QVpxVkE1WUhS?=
- =?utf-8?B?ZTN3aDJpV2dzSHlRcDROWWYvek5SV0s3M3N2dmlhU2hZZC9RMjFFT0xxS1ZZ?=
- =?utf-8?B?bWNZMWppak1hUjNMems2WjNXMVFyaFJLUTRFMkNWQmZMVE9LUE1MbXJORVph?=
- =?utf-8?B?UmhGM1BuSlRnNHVIcnBKZ0txQzU3Qng2MTZYNm40WDlWRWt4TG5YU3R2ODNl?=
- =?utf-8?B?bGZGRVc1bG1rTVV4UkF3NmpVMlhwQ3JWalZYc2VsbEc3TGI3Nm9mYmhkZ01V?=
- =?utf-8?B?bVJFTFJGdXlmSDErc1dVZGlqdGdJRlNnbTJTUkZQTExyVlRKVldvQVZvMHM4?=
- =?utf-8?B?YVk5NE13R0pKVUN2eE1lQ2JoRUdFNGRhVXRSSVoxZnJ6c3AwQTFPbDB5S3Av?=
- =?utf-8?B?QUFJYlpKcDI0am5YdEZzSDkvZnVXSm1sOXhmQnVhUzI2c3VJdEE3dDhPNHR3?=
- =?utf-8?B?d21xM2pHRis5THpMZ09oUFZkU3ZsQWFRUEk1bU1nV0xFa0YrK0lRM0M3NS8v?=
- =?utf-8?B?cDk3NTFpY1VRZWNZN2NlYmdMTWNLek5sNk1DSEF0UXM3d0FVQmJnWTM0VEhp?=
- =?utf-8?B?M3kzWXlXM2ExdVEwbnJkMjZ3UC9QaWRUKzlQSzFTQ0p2amRoWjNyRlBUU1Y1?=
- =?utf-8?B?WnkzN3J5WkNRTWNCK1V1TWg5Yjc2aW5zZHZoN0gwaEM1eDhzMVVzU2tlQ2U1?=
- =?utf-8?Q?ChJGNDSO+J6xHV+bYvv56zcKs?=
-X-OriginatorOrg: amd.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 9a4d5a6c-f072-4f54-e865-08dc2d8588ef
-X-MS-Exchange-CrossTenant-AuthSource: DS0PR12MB6583.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 14 Feb 2024 17:51:13.2403 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: Y36Pjv+eXbPqNAdHDaspldccE5fkEFs9WBeQJae8o8P6aiqgKMdOqb7PvID2IQ2Xaclq2mUu6jRZS1U4BjRChA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ0PR12MB8115
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=amd.com; s=selector1; 
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=wkYB26EsovgS1lqkDKSs9iGWTpP44YnVqI2Zsxq8eKg=;
- b=TXQ5aZF7j8i2wIyXsRK73oVV+FvptM1LmHpAv0q54rh/2aUdGdVD7PSrl0joPaCoDQCVTBx6mFDnMBr6x687ie6jeAb1ednmK1Pk5k6lfpSGmDit0GcbZOLjNubDkth7GHfQebYAZlm8e/LVh4R2nGshyMHWJOA4oP8UvhdmvLI=
+ with ESMTP id 3e0vzK4gAI80 for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 14 Feb 2024 18:06:35 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.7;
+ helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 27EB0607B4
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 27EB0607B4
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.7])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 27EB0607B4
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Feb 2024 18:06:33 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10984"; a="27444990"
+X-IronPort-AV: E=Sophos;i="6.06,160,1705392000"; d="scan'208";a="27444990"
+Received: from fmviesa008.fm.intel.com ([10.60.135.148])
+ by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 14 Feb 2024 10:06:32 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.06,160,1705392000"; 
+   d="scan'208";a="3436946"
+Received: from lkp-server01.sh.intel.com (HELO 323e10984596) ([10.239.97.150])
+ by fmviesa008.fm.intel.com with ESMTP; 14 Feb 2024 10:06:32 -0800
+Received: from kbuild by 323e10984596 with local (Exim 4.96)
+ (envelope-from <lkp@intel.com>) id 1raJeP-00007j-2q
+ for intel-wired-lan@lists.osuosl.org; Wed, 14 Feb 2024 18:06:29 +0000
+Date: Thu, 15 Feb 2024 02:06:08 +0800
+From: kernel test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <202402150207.tRjR3UP5-lkp@intel.com>
+User-Agent: s-nail v14.9.24
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1707933995; x=1739469995;
+ h=date:from:to:subject:message-id;
+ bh=RAe21LD7Q7g5XWVuqVS8tPoaqfw6kvlPa/on9RNKwSk=;
+ b=OaSt2hUn9QU4Fu9vbPwu0merChftixw3mpuPzZx9Kn/m88qm5IBeDYAL
+ avuFWrhpMMH6fNhc7KMJrRpE4IXE3y26reZjV/X0HJzy2bAQfuBDNjNhn
+ Cfna4z4C1Ufo/qcoJNqoVLXv9fSzp2n+Be/cY9Hc6PLM9+ZZczt9NW42j
+ iEGn42g9By1cV4SIL/haeowFMbeQN22VsKSfT4Sss+Q8cgJhlAHlE7CEE
+ ssoc4yBRnq7ow9MX0Lz1FJlqKcf+/zPrg5uyRmM+etf0HeXq5qhmD3xJJ
+ UxuFUvXeTpAkSEkERZDtWsEcWK5pWIWzO9sIAHg2yOqrCncsv76eNvvVS
+ g==;
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=amd.com
+ dmarc=pass (p=none dis=none)
+ header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (1024-bit key,
- unprotected) header.d=amd.com header.i=@amd.com header.a=rsa-sha256
- header.s=selector1 header.b=TXQ5aZF7
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=amd.com;
-Subject: Re: [Intel-wired-lan] [bug report] ixgbe: add VF IPsec management
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=OaSt2hUn
+Subject: [Intel-wired-lan] [tnguy-next-queue:10GbE] BUILD SUCCESS
+ bed90b06b6812d9c8c848414b090ddf38f0e6cc1
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -173,121 +98,206 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: intel-wired-lan@lists.osuosl.org, Dan Carpenter <dan.carpenter@linaro.org>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 2/14/2024 5:58 AM, Przemek Kitszel wrote:
-> 
-> On 2/9/24 18:57, Nelson, Shannon wrote:
->> On 2/9/2024 4:59 AM, Dan Carpenter wrote:
->>>
->>> Hello Shannon Nelson,
->>>
->>> The patch eda0333ac293: "ixgbe: add VF IPsec management" from Aug 13,
->>> 2018 (linux-next), leads to the following Smatch static checker
->>> warning:
->>>
->>>          drivers/net/ethernet/intel/ixgbe/ixgbe_ipsec.c:917
->>> ixgbe_ipsec_vf_add_sa()
->>>          warn: sleeping in IRQ context
->>>
->>> drivers/net/ethernet/intel/ixgbe/ixgbe_ipsec.c
->>>      890 int ixgbe_ipsec_vf_add_sa(struct ixgbe_adapter *adapter, u32
->>> *msgbuf, u32 vf)
->>>      891 {
->>>      892         struct ixgbe_ipsec *ipsec = adapter->ipsec;
->>>      893         struct xfrm_algo_desc *algo;
->>>      894         struct sa_mbx_msg *sam;
->>>      895         struct xfrm_state *xs;
->>>      896         size_t aead_len;
->>>      897         u16 sa_idx;
->>>      898         u32 pfsa;
->>>      899         int err;
->>>      900
->>>      901         sam = (struct sa_mbx_msg *)(&msgbuf[1]);
->>>      902         if (!adapter->vfinfo[vf].trusted ||
->>>      903             !(adapter->flags2 & 
->>> IXGBE_FLAG2_VF_IPSEC_ENABLED)) {
->>>      904                 e_warn(drv, "VF %d attempted to add an IPsec
->>> SA\n", vf);
->>>      905                 err = -EACCES;
->>>      906                 goto err_out;
->>>      907         }
->>>      908
->>>      909         /* Tx IPsec offload doesn't seem to work on this
->>>      910          * device, so block these requests for now.
->>>      911          */
->>>      912         if (sam->dir != XFRM_DEV_OFFLOAD_IN) {
->>>      913                 err = -EOPNOTSUPP;
->>>      914                 goto err_out;
->>>      915         }
->>>      916
->>> --> 917         xs = kzalloc(sizeof(*xs), GFP_KERNEL);
->>>                                            ^^^^^^^^^^
->>> Sleeping allocation.
-> 
-> what about using GFP_ATOMIC instead of the "default" GFP_KERNEL?
-> that would be quickest fix possible, not sure how often such
-> alloc would fail
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git 10GbE
+branch HEAD: bed90b06b6812d9c8c848414b090ddf38f0e6cc1  net: phy: aquantia: clear PMD Global Transmit Disable bit during init
 
-That certainly is another quick option, and may be perfectly reasonable. 
-  Can you run with it?
+elapsed time: 1594m
 
-sln
+configs tested: 184
+configs skipped: 3
 
-> 
->>>
->>> The call tree that Smatch is worried about is:
->>>
->>> ixgbe_msix_other() <- IRQ handler
->>> -> ixgbe_msg_task()
->>>     -> ixgbe_rcv_msg_from_vf()
->>>        -> ixgbe_ipsec_vf_add_sa()
->>>
->>> This is a fairly new warning and those have a higher risk of false
->>> positives.  Plus the longer the call tree the higher the chance of
->>> false positives.  However, I did review it and the warning looks
->>> reasonable.
->>>
->>> regards,
->>> dan carpenter
->>
->> Hmmm... yes, this does look to be a valid issue.  Nothing like getting
->> haunted by code from the past.  Thanks (?) for digging this up :-) .
-> 
-> :)
-> 
->>
->> I'm not sure offhand what the right answer might be.  I suppose choices
->> include
->>    (a) pre-allocating some number of these xfrm_state structs
->>    (b) shoving the sa creation into a workthread
->>    (c) remove the VF xfrm offload feature
->> Neither of these options seem very appetizing.
->>
->> I would guess that (b) is the "correct" answer, but I don't know how
->> well the PF<->VF mailbox protocol can tolerate the need for a delayed
->> response - it looks like the PF's handler wants to send an immediate
->> ACK/NACK.
->>
->> The pre-allocations for choice (a) would allow for not messing with the
->> timing of the result message, but would require guessing at how many 744
->> byte xfrm_state structs should be lying around for potential use.  The
->> device has 1k slots available, but I don't think we want to store up
->> that many nearly 1k structs that likely won't be used.  Maybe add a
->> switch in the PF for enabling this, which defaults to off?
->>
->> Meanwhile, (c) is the quick and dirty answer for a feature that likely
->> doesn't see much use (I have no data for this assertion, just a guess),
->> and shouldn't be relied upon anyway.
->>
->> I'm not in a position at the moment to be able to address this issue,
->> but I'm happy to try to answer questions for anyone who can get to it.
->> I'm hoping that Jesse, Jake, or Tony might have a better idea what to do
->> with this.
->>
->> Thanks,
->> sln
->>
-> 
+The following configs have been built successfully.
+More configs may be tested in the coming days.
+
+tested configs:
+alpha                             allnoconfig   gcc  
+alpha                            allyesconfig   gcc  
+alpha                               defconfig   gcc  
+arc                              allmodconfig   gcc  
+arc                               allnoconfig   gcc  
+arc                              allyesconfig   gcc  
+arc                                 defconfig   gcc  
+arc                     nsimosci_hs_defconfig   gcc  
+arc                   randconfig-001-20240214   gcc  
+arc                   randconfig-002-20240214   gcc  
+arc                    vdk_hs38_smp_defconfig   gcc  
+arm                              allmodconfig   gcc  
+arm                               allnoconfig   clang
+arm                              allyesconfig   gcc  
+arm                     am200epdkit_defconfig   gcc  
+arm                                 defconfig   clang
+arm                        keystone_defconfig   gcc  
+arm                   randconfig-001-20240214   clang
+arm                   randconfig-002-20240214   gcc  
+arm                   randconfig-003-20240214   clang
+arm                   randconfig-004-20240214   clang
+arm                           sunxi_defconfig   gcc  
+arm                    vt8500_v6_v7_defconfig   gcc  
+arm64                            allmodconfig   clang
+arm64                             allnoconfig   gcc  
+arm64                               defconfig   gcc  
+arm64                 randconfig-001-20240214   clang
+arm64                 randconfig-002-20240214   clang
+arm64                 randconfig-003-20240214   gcc  
+arm64                 randconfig-004-20240214   clang
+csky                             allmodconfig   gcc  
+csky                              allnoconfig   gcc  
+csky                             allyesconfig   gcc  
+csky                                defconfig   gcc  
+csky                  randconfig-001-20240214   gcc  
+csky                  randconfig-002-20240214   gcc  
+hexagon                          allmodconfig   clang
+hexagon                           allnoconfig   clang
+hexagon                          allyesconfig   clang
+hexagon                             defconfig   clang
+hexagon               randconfig-001-20240214   clang
+hexagon               randconfig-002-20240214   clang
+i386                             allmodconfig   gcc  
+i386                              allnoconfig   gcc  
+i386                             allyesconfig   gcc  
+i386         buildonly-randconfig-001-20240214   clang
+i386         buildonly-randconfig-002-20240214   clang
+i386         buildonly-randconfig-003-20240214   clang
+i386         buildonly-randconfig-004-20240214   gcc  
+i386         buildonly-randconfig-005-20240214   gcc  
+i386         buildonly-randconfig-006-20240214   clang
+i386                                defconfig   clang
+i386                  randconfig-001-20240214   clang
+i386                  randconfig-002-20240214   clang
+i386                  randconfig-003-20240214   clang
+i386                  randconfig-004-20240214   gcc  
+i386                  randconfig-005-20240214   clang
+i386                  randconfig-006-20240214   gcc  
+i386                  randconfig-011-20240214   clang
+i386                  randconfig-012-20240214   gcc  
+i386                  randconfig-013-20240214   gcc  
+i386                  randconfig-014-20240214   gcc  
+i386                  randconfig-015-20240214   clang
+i386                  randconfig-016-20240214   clang
+loongarch                        allmodconfig   gcc  
+loongarch                         allnoconfig   gcc  
+loongarch                        allyesconfig   gcc  
+loongarch                           defconfig   gcc  
+loongarch             randconfig-001-20240214   gcc  
+loongarch             randconfig-002-20240214   gcc  
+m68k                             allmodconfig   gcc  
+m68k                              allnoconfig   gcc  
+m68k                             allyesconfig   gcc  
+m68k                                defconfig   gcc  
+m68k                        m5272c3_defconfig   gcc  
+m68k                       m5275evb_defconfig   gcc  
+microblaze                       allmodconfig   gcc  
+microblaze                        allnoconfig   gcc  
+microblaze                       allyesconfig   gcc  
+microblaze                          defconfig   gcc  
+mips                             allmodconfig   gcc  
+mips                              allnoconfig   gcc  
+mips                             allyesconfig   gcc  
+mips                         bigsur_defconfig   gcc  
+mips                  decstation_64_defconfig   gcc  
+mips                 decstation_r4k_defconfig   gcc  
+mips                      pic32mzda_defconfig   gcc  
+nios2                            allmodconfig   gcc  
+nios2                             allnoconfig   gcc  
+nios2                            allyesconfig   gcc  
+nios2                               defconfig   gcc  
+nios2                 randconfig-001-20240214   gcc  
+nios2                 randconfig-002-20240214   gcc  
+openrisc                         allmodconfig   gcc  
+openrisc                          allnoconfig   gcc  
+openrisc                         allyesconfig   gcc  
+openrisc                            defconfig   gcc  
+parisc                           allmodconfig   gcc  
+parisc                            allnoconfig   gcc  
+parisc                           allyesconfig   gcc  
+parisc                              defconfig   gcc  
+parisc                randconfig-001-20240214   gcc  
+parisc                randconfig-002-20240214   gcc  
+parisc64                            defconfig   gcc  
+powerpc                          allmodconfig   gcc  
+powerpc                           allnoconfig   gcc  
+powerpc                          allyesconfig   clang
+powerpc                        icon_defconfig   gcc  
+powerpc                 mpc8313_rdb_defconfig   gcc  
+powerpc               randconfig-001-20240214   clang
+powerpc               randconfig-002-20240214   clang
+powerpc               randconfig-003-20240214   clang
+powerpc                      walnut_defconfig   gcc  
+powerpc                        warp_defconfig   gcc  
+powerpc                         wii_defconfig   gcc  
+powerpc64             randconfig-001-20240214   clang
+powerpc64             randconfig-002-20240214   clang
+powerpc64             randconfig-003-20240214   clang
+riscv                            allmodconfig   clang
+riscv                             allnoconfig   gcc  
+riscv                            allyesconfig   clang
+riscv                               defconfig   clang
+riscv                 randconfig-001-20240214   clang
+riscv                 randconfig-002-20240214   clang
+s390                             allmodconfig   clang
+s390                              allnoconfig   clang
+s390                             allyesconfig   gcc  
+s390                                defconfig   clang
+s390                  randconfig-001-20240214   clang
+s390                  randconfig-002-20240214   gcc  
+sh                               allmodconfig   gcc  
+sh                                allnoconfig   gcc  
+sh                               allyesconfig   gcc  
+sh                                  defconfig   gcc  
+sh                        dreamcast_defconfig   gcc  
+sh                ecovec24-romimage_defconfig   gcc  
+sh                         ecovec24_defconfig   gcc  
+sh                          landisk_defconfig   gcc  
+sh                    randconfig-001-20240214   gcc  
+sh                    randconfig-002-20240214   gcc  
+sh                          rsk7203_defconfig   gcc  
+sh                          sdk7780_defconfig   gcc  
+sh                           se7705_defconfig   gcc  
+sh                           se7722_defconfig   gcc  
+sh                           se7724_defconfig   gcc  
+sh                     sh7710voipgw_defconfig   gcc  
+sh                            shmin_defconfig   gcc  
+sparc                            allmodconfig   gcc  
+sparc                             allnoconfig   gcc  
+sparc                            allyesconfig   gcc  
+sparc                               defconfig   gcc  
+sparc64                          allmodconfig   gcc  
+sparc64                          allyesconfig   gcc  
+sparc64                             defconfig   gcc  
+sparc64               randconfig-001-20240214   gcc  
+sparc64               randconfig-002-20240214   gcc  
+um                               allmodconfig   clang
+um                                allnoconfig   clang
+um                               allyesconfig   gcc  
+um                                  defconfig   clang
+um                    randconfig-001-20240214   clang
+um                    randconfig-002-20240214   gcc  
+um                           x86_64_defconfig   clang
+x86_64                            allnoconfig   clang
+x86_64                           allyesconfig   clang
+x86_64       buildonly-randconfig-001-20240214   gcc  
+x86_64       buildonly-randconfig-003-20240214   gcc  
+x86_64       buildonly-randconfig-004-20240214   gcc  
+x86_64       buildonly-randconfig-005-20240214   gcc  
+x86_64                              defconfig   gcc  
+x86_64                randconfig-002-20240214   gcc  
+x86_64                randconfig-004-20240214   gcc  
+x86_64                randconfig-013-20240214   gcc  
+x86_64                randconfig-014-20240214   gcc  
+x86_64                randconfig-071-20240214   gcc  
+x86_64                randconfig-073-20240214   gcc  
+x86_64                randconfig-076-20240214   gcc  
+x86_64                          rhel-8.3-rust   clang
+x86_64                               rhel-8.3   gcc  
+xtensa                            allnoconfig   gcc  
+xtensa                           allyesconfig   gcc  
+xtensa                randconfig-001-20240214   gcc  
+xtensa                randconfig-002-20240214   gcc  
+xtensa                         virt_defconfig   gcc  
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
