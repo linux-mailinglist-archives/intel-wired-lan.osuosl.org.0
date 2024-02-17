@@ -1,64 +1,64 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9B045859180
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 17 Feb 2024 19:09:28 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5E70D859183
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 17 Feb 2024 19:09:31 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 3167E60E2A;
-	Sat, 17 Feb 2024 18:09:27 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 8345460E77;
+	Sat, 17 Feb 2024 18:09:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id GBI7qey2EChT; Sat, 17 Feb 2024 18:09:26 +0000 (UTC)
+	with ESMTP id bLXsyrI89FHH; Sat, 17 Feb 2024 18:09:27 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6124960BD4
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A5DA160C0E
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1708193366;
-	bh=N1CZYG16uNIIX1bzINMMJKicgWAqJc4xUccwHeGoHyI=;
+	s=default; t=1708193367;
+	bh=aFRnThzSsM1GB0U7YhBosyITi6QEbbLLMwyncP4eReU=;
 	h=From:Date:References:In-Reply-To:To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=eCr3tK/5hpKETUD+80K512OTuym+hcCJITPIoW4QHAuQ1ZIw9G796ywbPV8QM2Uaa
-	 oQKW+UGLCerjef5VmHrgPeEGAjm1E7NCBxlYubx/OGS4CfKmdWaBtH7W3j2roh/N64
-	 P/rYz6NRjjcEgeojFwfgz3VWgq6tX6D+FWWPZPYXyNaQFVpGOVjuKRxP+WpybwuYG4
-	 XRhWNHSX4TaSmK9hxN+WqVJdqHBmSk4N/Ep8jIauAU5SRq6jpzoyX1wWYx76F9b+Y3
-	 TAH5rHSl+uieM9q8OgROA9u/srujET+1GOWp2JM9TMq/3USD+aFnjun5QR9fy4eiA6
-	 GThQtuC1FUCRQ==
+	b=2hMlpZ48DqAnmDSZZO1kbPUAGFmpnZZsbv18FvOkH4fcPTEi+oTGTeuR1DO2mPua3
+	 7HlSM+eJ4FFcs2cFIbAqVqglwjKaH319RiSPC/xJOO0L0XMCNiMk4BnyGxoztZuXRo
+	 3jNdqLhDD5TE873cQCWaVqukpzcRMxs+k+dcjYc3jlWtF5ET1li+kSBqbkWbrrbaht
+	 LIUb1V61g87LI6TGcN1kiFgFOKXojDt4fzyogO3QxH+N8dzQOcszpQxWa5olfRyWWn
+	 CV4LjNwdXHmEAeQGWH6eG7/dgCHxb7ErgdTYo4QN+I5yGsKShAEwqiGGdejowDwHMv
+	 8KLkS4LvPzhuA==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 6124960BD4;
-	Sat, 17 Feb 2024 18:09:26 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id A5DA160C0E;
+	Sat, 17 Feb 2024 18:09:27 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 2F2E61BF299
- for <intel-wired-lan@lists.osuosl.org>; Sat, 17 Feb 2024 18:09:21 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 1D7B81BF299
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 17 Feb 2024 18:09:25 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 1AC9640883
- for <intel-wired-lan@lists.osuosl.org>; Sat, 17 Feb 2024 18:09:21 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 09AB3401D8
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 17 Feb 2024 18:09:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id P9uY11c5HjBq for <intel-wired-lan@lists.osuosl.org>;
- Sat, 17 Feb 2024 18:09:20 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id NJjXaeAH7BIy for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 17 Feb 2024 18:09:24 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=156.67.10.101;
  helo=vps0.lunn.ch; envelope-from=andrew@lunn.ch; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 360D64087C
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 360D64087C
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org D463D40132
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org D463D40132
 Received: from vps0.lunn.ch (vps0.lunn.ch [156.67.10.101])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 360D64087C
- for <intel-wired-lan@lists.osuosl.org>; Sat, 17 Feb 2024 18:09:20 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTPS id D463D40132
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 17 Feb 2024 18:09:23 +0000 (UTC)
 Received: from c-76-156-36-110.hsd1.mn.comcast.net ([76.156.36.110]
  helo=thinkpad.home.lunn.ch) by vps0.lunn.ch with esmtpsa (TLS1.3) tls
  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.94.2)
  (envelope-from <andrew@lunn.ch>)
- id 1rbP80-0084hf-3V; Sat, 17 Feb 2024 19:09:32 +0100
+ id 1rbP83-0084hf-Pd; Sat, 17 Feb 2024 19:09:36 +0100
 From: Andrew Lunn <andrew@lunn.ch>
-Date: Sat, 17 Feb 2024 12:08:25 -0600
+Date: Sat, 17 Feb 2024 12:08:26 -0600
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20240217-keee-u32-cleanup-v3-4-fcf6b62a0c7f@lunn.ch>
+Message-Id: <20240217-keee-u32-cleanup-v3-5-fcf6b62a0c7f@lunn.ch>
 References: <20240217-keee-u32-cleanup-v3-0-fcf6b62a0c7f@lunn.ch>
 In-Reply-To: <20240217-keee-u32-cleanup-v3-0-fcf6b62a0c7f@lunn.ch>
 To: "David S. Miller" <davem@davemloft.net>, 
@@ -68,20 +68,20 @@ To: "David S. Miller" <davem@davemloft.net>,
  Jesse Brandeburg <jesse.brandeburg@intel.com>, 
  Tony Nguyen <anthony.l.nguyen@intel.com>
 X-Mailer: b4 0.12.4
-X-Developer-Signature: v=1; a=openpgp-sha256; l=4488; i=andrew@lunn.ch;
- h=from:subject:message-id; bh=6WQbQolAq5WAPWukfrjltstk+z0qZj+AW55w271U/ic=;
- b=owEBbQKS/ZANAwAKAea/DcumaUyEAcsmYgBl0PY6xzJip9b+Ys/6/moZRoD886ziSVg1X2tSJ
- pFVf0xirFaJAjMEAAEKAB0WIQRh+xAly1MmORb54bfmvw3LpmlMhAUCZdD2OgAKCRDmvw3LpmlM
- hJxmEACLm8vGvPo7Z2FgLb7KH1kwL9wQZJthCGRy2NaPog/Oo76x3SaYUE+DDEPaYqB2JpACDT6
- Lg6euJv+rawMgEK7RUWZkc5w1bOe1GiXhVAa3BgV+XBA8YV+x7y6Qq3zt5ZTE0czZP+Ug+fB2kG
- FQmhGoc7Z5IK0/b/f3F1WWhf5Zda7UE6VTNBFOl88g+AIOCh3gWzMxElGl2KJgnq+1JpZSEy4gz
- HtwaiN6vS5yeC0q91rCB5/ymmm59lN2Lm58HWw/7ZZIvCWErZ4voCDAhzEzRrp2JXYNtvy6g6cP
- amXqfATLVlw8PnHn9ghuyhyTOV1Ptw8W7wxPq/BQayZ9oTt4YLrKdh/cGpYDm+ywJPl6xoSSQL0
- cBq4kBvyTiV+hCOVRwKKfZUHhNokXQ1o7b7UimYA+DHfb8o8WnNzX5kBsMoAKu8j96ZVmI3uEul
- lU+f9LhhpQJxcKrWaY44G+1VLdt1sDZopDsdOIwmZx6VdICHydiWxH9NTf7QUpLrjjEtGWBrXNz
- TqNuMVXEH76/aPjTtX01hAfQ2iZD8vG2lmm2iGm/Q4PVZH6T/EvFquz7hVHL1ETy5pSuhqdUhhS
- HpG9PKiIlg5YisUnNKz/vb2SNQx5YWETj41D5DjUuTEaNlWF/ulug6MnDYWpPKeG36ILn8kTdlC
- 5PeNLrDqkY9huGQ==
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2711; i=andrew@lunn.ch;
+ h=from:subject:message-id; bh=jBShEoehGOiH3XARbTLV/6y5l6NHG5lC8OunACxocoE=;
+ b=owEBbQKS/ZANAwAKAea/DcumaUyEAcsmYgBl0PY7k7SN/4S228ROAzg7ZuMLyNMUmBTSrVMwB
+ alKMwysKQqJAjMEAAEKAB0WIQRh+xAly1MmORb54bfmvw3LpmlMhAUCZdD2OwAKCRDmvw3LpmlM
+ hIAMD/9/if2OuCb4y445VS2/pfmVOV65uM3dKPOUIpYfYE4pqnEqNUHN09yJtOtOgAPCn+7nPsQ
+ 78NihovKh+pxO3ScOCoKfGkzcz6j3rRx9DX5yU2Mz7xGZh/AYfDDeKj2I9Pzl+UqGDIllEUscbn
+ zExhnK3Gb0B+HGFIqF74KgN8AzoOenG8VLz7MXBe7v1/gzl/ZRXOQXA9lxokuotfV0UNl2nhrwC
+ QW+hQcvwSY5qFu+u9kwqld+pfIGnFdn8TmflpUlD4MFXnaivCLZxVk2H1Bl0I9BwIL7v+IOKD+R
+ HYPwoBO+NwFZZEq60YZGG66ciN5vlB6OEEv73u/AROr01D9OlwBJLlTSY/fctnk3Zaaer5Fcu4g
+ s+a+p3Z2JEuA+1Jc5PqulsOLRBsfULx/EPPSnoMdpYnko7IgWMs1b/Qg61XPp3/ne7xYnXpKnUt
+ HwLlKSoGp4/iTiejU5oZuf7MfKpj3ROHHr7lSBBMdLpH1dhGccG0El1naxVPpQsV9PnHp4Wf6tv
+ 30ZIMHfvXtMPIYFQDk6eKQtYZSEetgZk3CoLj4Ks0CeAfRnhgjuh5hfUUY8MJyKai8Zm3EfqU9D
+ JHThBufm38cB/4OpIoUPWl6VeJUPr+4cP26J2SKGhc5rDfH7v7ysyCtrhA3BBGuqjWCYobqcyU6
+ YWMovgekCvgh2/g==
 X-Developer-Key: i=andrew@lunn.ch; a=openpgp;
  fpr=61FB1025CB53263916F9E1B7E6BF0DCBA6694C84
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt;
@@ -90,18 +90,19 @@ X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt;
  Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:From:
  Sender:Reply-To:Subject:Date:Message-ID:To:Cc:MIME-Version:Content-Type:
  Content-Transfer-Encoding:Content-ID:Content-Description:Content-Disposition:
- In-Reply-To:References; bh=N1CZYG16uNIIX1bzINMMJKicgWAqJc4xUccwHeGoHyI=; b=2X
- xJKIdIjACY4CXrdtGNuJ/4hgAiCHadwOA5QMtv8EWoBcbjZf5ykSBnAp2UcxUhgIW51R74mdxdYT1
- uYYpnxPb5GZSc+ig9AeIDIjKiRIjpkaexe7I3k7uKZYa7jjf7k7Sk3+LmbBdK9uFcFPyMd/yCDjEC
- DT0ShDFgWDeWUIU=;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ In-Reply-To:References; bh=aFRnThzSsM1GB0U7YhBosyITi6QEbbLLMwyncP4eReU=; b=Ge
+ WsZXvzoyXc6KytUoTSElPJ81kUgrOBxVQMMXwq/hJZ5AXQLyE7SCZLntg8sAeW6AXesLM1E45iXaB
+ BTDz+Nx1ZdAznhc4az/tOjzyD+vIGkWsG5SZ3V51fgel3mWJO/yc2M3luzHDlujROrPQvuwWBnW+G
+ W5Hy0PRH7sSpwzE=;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=lunn.ch
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (1024-bit key) header.d=lunn.ch header.i=@lunn.ch
- header.a=rsa-sha256 header.s=20171124 header.b=2XxJKIdI
-Subject: [Intel-wired-lan] [PATCH net-next v3 4/8] net: ethernet: ixgbe:
- Convert EEE to use linkmodes
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (1024-bit key,
+ unprotected) header.d=lunn.ch header.i=@lunn.ch header.a=rsa-sha256
+ header.s=20171124 header.b=GeWsZXvz
+Subject: [Intel-wired-lan] [PATCH net-next v3 5/8] net: intel: i40e/igc:
+ Remove setting Autoneg in EEE capabilities
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -114,119 +115,77 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, linux-usb@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org, linux-kernel@vger.kernel.org,
- Andrew Lunn <andrew@lunn.ch>
+Cc: Andrew Lunn <andrew@lunn.ch>, netdev@vger.kernel.org,
+ linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org, Jacob Keller <jacob.e.keller@intel.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Convert the tables to make use of ETHTOOL link mode bits, rather than
-the old u32 SUPPORTED speeds. Make use of the linkmode helps to set
-bits and compare linkmodes. As a result, the _u32 members of keee are
-no longer used, a step towards removing them.
+Energy Efficient Ethernet should always be negotiated with the link
+peer. Don't include SUPPORTED_Autoneg in the results of get_eee() for
+supported, advertised or lp_advertised, since it is
+assumed. Additionally, ethtool(1) ignores the set bit, and no other
+driver sets this.
 
+Reviewed-by: Jacob Keller <jacob.e.keller@intel.com>
 Signed-off-by: Andrew Lunn <andrew@lunn.ch>
 ---
- drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c | 48 ++++++++++++------------
- 1 file changed, 25 insertions(+), 23 deletions(-)
+ drivers/net/ethernet/intel/i40e/i40e_ethtool.c | 7 +------
+ drivers/net/ethernet/intel/igc/igc_ethtool.c   | 4 ----
+ 2 files changed, 1 insertion(+), 10 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c
-index b1e7338a4ed1..a0879f125146 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c
-@@ -3403,30 +3403,31 @@ static int ixgbe_get_module_eeprom(struct net_device *dev,
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_ethtool.c b/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
+index 1b5473358e1a..42e7e6cdaa6d 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
+@@ -5664,16 +5664,12 @@ static int i40e_get_eee(struct net_device *netdev, struct ethtool_keee *edata)
+ 	if (phy_cfg.eee_capability == 0)
+ 		return -EOPNOTSUPP;
  
- static const struct {
- 	ixgbe_link_speed mac_speed;
--	u32 supported;
-+	u32 link_mode;
- } ixgbe_ls_map[] = {
--	{ IXGBE_LINK_SPEED_10_FULL, SUPPORTED_10baseT_Full },
--	{ IXGBE_LINK_SPEED_100_FULL, SUPPORTED_100baseT_Full },
--	{ IXGBE_LINK_SPEED_1GB_FULL, SUPPORTED_1000baseT_Full },
--	{ IXGBE_LINK_SPEED_2_5GB_FULL, SUPPORTED_2500baseX_Full },
--	{ IXGBE_LINK_SPEED_10GB_FULL, SUPPORTED_10000baseT_Full },
-+	{ IXGBE_LINK_SPEED_10_FULL, ETHTOOL_LINK_MODE_10baseT_Full_BIT },
-+	{ IXGBE_LINK_SPEED_100_FULL, ETHTOOL_LINK_MODE_100baseT_Full_BIT },
-+	{ IXGBE_LINK_SPEED_1GB_FULL, ETHTOOL_LINK_MODE_1000baseT_Full_BIT },
-+	{ IXGBE_LINK_SPEED_2_5GB_FULL, ETHTOOL_LINK_MODE_2500baseX_Full_BIT },
-+	{ IXGBE_LINK_SPEED_10GB_FULL, ETHTOOL_LINK_MODE_10000baseT_Full_BIT },
- };
+-	edata->supported_u32 = SUPPORTED_Autoneg;
+-	edata->lp_advertised_u32 = edata->supported_u32;
+-
+ 	/* Get current configuration */
+ 	status = i40e_aq_get_phy_capabilities(hw, false, false, &phy_cfg, NULL);
+ 	if (status)
+ 		return -EAGAIN;
  
- static const struct {
- 	u32 lp_advertised;
--	u32 mac_speed;
-+	u32 link_mode;
- } ixgbe_lp_map[] = {
--	{ FW_PHY_ACT_UD_2_100M_TX_EEE, SUPPORTED_100baseT_Full },
--	{ FW_PHY_ACT_UD_2_1G_T_EEE, SUPPORTED_1000baseT_Full },
--	{ FW_PHY_ACT_UD_2_10G_T_EEE, SUPPORTED_10000baseT_Full },
--	{ FW_PHY_ACT_UD_2_1G_KX_EEE, SUPPORTED_1000baseKX_Full },
--	{ FW_PHY_ACT_UD_2_10G_KX4_EEE, SUPPORTED_10000baseKX4_Full },
--	{ FW_PHY_ACT_UD_2_10G_KR_EEE, SUPPORTED_10000baseKR_Full},
-+	{ FW_PHY_ACT_UD_2_100M_TX_EEE, ETHTOOL_LINK_MODE_100baseT_Full_BIT },
-+	{ FW_PHY_ACT_UD_2_1G_T_EEE, ETHTOOL_LINK_MODE_1000baseT_Full_BIT },
-+	{ FW_PHY_ACT_UD_2_10G_T_EEE, ETHTOOL_LINK_MODE_10000baseT_Full_BIT },
-+	{ FW_PHY_ACT_UD_2_1G_KX_EEE, ETHTOOL_LINK_MODE_1000baseKX_Full_BIT },
-+	{ FW_PHY_ACT_UD_2_10G_KX4_EEE, ETHTOOL_LINK_MODE_10000baseKX4_Full_BIT },
-+	{ FW_PHY_ACT_UD_2_10G_KR_EEE, ETHTOOL_LINK_MODE_10000baseKR_Full_BIT},
- };
- 
- static int
- ixgbe_get_eee_fw(struct ixgbe_adapter *adapter, struct ethtool_keee *edata)
- {
-+	__ETHTOOL_DECLARE_LINK_MODE_MASK(common);
- 	u32 info[FW_PHY_ACT_DATA_COUNT] = { 0 };
- 	struct ixgbe_hw *hw = &adapter->hw;
- 	int rc;
-@@ -3436,28 +3437,29 @@ ixgbe_get_eee_fw(struct ixgbe_adapter *adapter, struct ethtool_keee *edata)
- 	if (rc)
- 		return rc;
- 
--	edata->lp_advertised_u32 = 0;
- 	for (i = 0; i < ARRAY_SIZE(ixgbe_lp_map); ++i) {
- 		if (info[0] & ixgbe_lp_map[i].lp_advertised)
--			edata->lp_advertised_u32 |= ixgbe_lp_map[i].mac_speed;
-+			linkmode_set_bit(ixgbe_lp_map[i].link_mode,
-+					 edata->lp_advertised);
- 	}
- 
--	edata->supported_u32 = 0;
- 	for (i = 0; i < ARRAY_SIZE(ixgbe_ls_map); ++i) {
- 		if (hw->phy.eee_speeds_supported & ixgbe_ls_map[i].mac_speed)
--			edata->supported_u32 |= ixgbe_ls_map[i].supported;
-+			linkmode_set_bit(ixgbe_lp_map[i].link_mode,
-+					 edata->lp_advertised);
- 	}
- 
--	edata->advertised_u32 = 0;
- 	for (i = 0; i < ARRAY_SIZE(ixgbe_ls_map); ++i) {
- 		if (hw->phy.eee_speeds_advertised & ixgbe_ls_map[i].mac_speed)
--			edata->advertised_u32 |= ixgbe_ls_map[i].supported;
-+			linkmode_set_bit(ixgbe_lp_map[i].link_mode,
-+					 edata->advertised);
- 	}
- 
+-	edata->advertised_u32 = phy_cfg.eee_capability ? SUPPORTED_Autoneg : 0U;
 -	edata->eee_enabled = !!edata->advertised_u32;
-+	edata->eee_enabled = !linkmode_empty(edata->advertised);
- 	edata->tx_lpi_enabled = edata->eee_enabled;
--	if (edata->advertised_u32 & edata->lp_advertised_u32)
--		edata->eee_active = true;
-+
-+	linkmode_and(common, edata->advertised, edata->lp_advertised);
-+	edata->eee_active = !linkmode_empty(common);
++	edata->eee_enabled = !!phy_cfg.eee_capability;
+ 	edata->tx_lpi_enabled = pf->stats.tx_lpi_status;
  
- 	return 0;
- }
-@@ -3504,7 +3506,7 @@ static int ixgbe_set_eee(struct net_device *netdev, struct ethtool_keee *edata)
- 			return -EINVAL;
- 		}
+ 	edata->eee_active = pf->stats.tx_lpi_status && pf->stats.rx_lpi_status;
+@@ -5691,7 +5687,6 @@ static int i40e_is_eee_param_supported(struct net_device *netdev,
+ 		u32 value;
+ 		const char *name;
+ 	} param[] = {
+-		{edata->advertised_u32 & ~SUPPORTED_Autoneg, "advertise"},
+ 		{edata->tx_lpi_timer, "tx-timer"},
+ 		{edata->tx_lpi_enabled != pf->stats.tx_lpi_status, "tx-lpi"}
+ 	};
+diff --git a/drivers/net/ethernet/intel/igc/igc_ethtool.c b/drivers/net/ethernet/intel/igc/igc_ethtool.c
+index 47c797dd2cd9..ac92d10a3e97 100644
+--- a/drivers/net/ethernet/intel/igc/igc_ethtool.c
++++ b/drivers/net/ethernet/intel/igc/igc_ethtool.c
+@@ -1634,7 +1634,6 @@ static int igc_ethtool_get_eee(struct net_device *netdev,
+ 			mmd_eee_adv_to_ethtool_adv_t(adapter->eee_advert);
  
--		if (eee_data.advertised_u32 != edata->advertised_u32) {
-+		if (!linkmode_equal(eee_data.advertised, edata->advertised)) {
- 			e_err(drv,
- 			      "Setting EEE advertised speeds is not supported\n");
- 			return -EINVAL;
+ 	*edata = adapter->eee;
+-	edata->supported_u32 = SUPPORTED_Autoneg;
+ 
+ 	eeer = rd32(IGC_EEER);
+ 
+@@ -1647,9 +1646,6 @@ static int igc_ethtool_get_eee(struct net_device *netdev,
+ 
+ 	edata->eee_enabled = hw->dev_spec._base.eee_enable;
+ 
+-	edata->advertised_u32 = SUPPORTED_Autoneg;
+-	edata->lp_advertised_u32 = SUPPORTED_Autoneg;
+-
+ 	/* Report correct negotiated EEE status for devices that
+ 	 * wrongly report EEE at half-duplex
+ 	 */
 
 -- 
 2.43.0
