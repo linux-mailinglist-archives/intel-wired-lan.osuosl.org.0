@@ -1,88 +1,95 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8BE7C859F92
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 19 Feb 2024 10:22:29 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8CE3A85A0A9
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 19 Feb 2024 11:13:31 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id C4DA54074D;
-	Mon, 19 Feb 2024 09:22:25 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id EC328405F9;
+	Mon, 19 Feb 2024 10:13:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id W9oebdCI7aTc; Mon, 19 Feb 2024 09:22:25 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Juu7nsa1M8MK; Mon, 19 Feb 2024 10:13:29 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 109A740720
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 979B2408F0
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1708334545;
-	bh=7nlB9kTiW551c1uhV269PifLlRanP+p/PkrngkuvCLM=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=7mo17VSN2+VlYiUTbSIa9vmimgWwedMn3WN5JMlRV6eV/5TDBMA05P6Ea+0TNhnVX
-	 S4IMM9doicYW09zO53aFjGh777nzO0j2p9GI6HmTwdCKTAYtjiFub9l6HfwB/hiypy
-	 2yJRVQPPiT/55ZekMv+bgysduP2EOhqv9lXQPjFmvZvzTHvXlPISl4WB15pk22reI5
-	 +16QV+JmGEuRi6NFUBL95XIeIAK82SN2whA1mJPHmLJ7W/WpR4GwV1IcMax7zrN6aB
-	 zAX4eFWAlfTqnIj/RV1OApDAZ2LNkObLczRDYqpbRvK8ax4Ank2ecqbMoC6Oi3AWkU
-	 4KxYqS7ZIFmNg==
+	s=default; t=1708337608;
+	bh=gV5bG5tdc3hnlQvVwCTsHILVevTGYd7t2x+ndVqIYBM=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=lzZEbymkC9Zzmh8iLeYX4NVLsI+16R+DOsmaZ35JUd2baulLfg8J/K2JPJmVVXCpn
+	 Y3ZukrKkV+5fgQe8nRVOdIO17x615qoiYji68PVEQY9325cU9ROqu0UddhT73qNk0c
+	 JKi4tWNUGGgJZtHxAfLBLdq5YywJx0RwD/lhgIdv5/fR8u7VtQuL0mnoKTxzhp+a7K
+	 tIcf2KzJNTMw8wsFYaCKMILN0N/3EKRe2P8tPTFSQNudImYiEe8w10t1htkpsDcZ4H
+	 fclMHPZXsZigwpswZI8BuN/oEadE+ivyROWB1mfJsmchW5UUFCelb+n7IW9SM36QoJ
+	 fYU7A6qPA17RQ==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 109A740720;
-	Mon, 19 Feb 2024 09:22:25 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 979B2408F0;
+	Mon, 19 Feb 2024 10:13:28 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 10AC31BF5E9
- for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Feb 2024 09:22:23 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id F219A1BF3DB
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Feb 2024 10:13:26 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id EFC5540736
- for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Feb 2024 09:22:22 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id DCEB2407CA
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Feb 2024 10:13:26 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 94jHQZbrG060 for <intel-wired-lan@lists.osuosl.org>;
- Mon, 19 Feb 2024 09:22:22 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2604:1380:4641:c500::1; helo=dfw.source.kernel.org;
- envelope-from=horms@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 4C5EC40720
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4C5EC40720
-Received: from dfw.source.kernel.org (dfw.source.kernel.org
- [IPv6:2604:1380:4641:c500::1])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 4C5EC40720
- for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Feb 2024 09:22:21 +0000 (UTC)
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by dfw.source.kernel.org (Postfix) with ESMTP id CD26960204;
- Mon, 19 Feb 2024 09:22:20 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9B5CAC433C7;
- Mon, 19 Feb 2024 09:22:18 +0000 (UTC)
-Date: Mon, 19 Feb 2024 09:22:16 +0000
-From: Simon Horman <horms@kernel.org>
-To: Jesse Brandeburg <jesse.brandeburg@intel.com>
-Message-ID: <20240219092216.GT40273@kernel.org>
-References: <20240210220109.3179408-1-jesse.brandeburg@intel.com>
- <20240210220109.3179408-3-jesse.brandeburg@intel.com>
+ with ESMTP id WRMa4tX21RMB for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 19 Feb 2024 10:13:25 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.7;
+ helo=mgamail.intel.com; envelope-from=mateusz.polchlopek@intel.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org BB7AB407C5
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org BB7AB407C5
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.7])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id BB7AB407C5
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Feb 2024 10:13:24 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10988"; a="27855998"
+X-IronPort-AV: E=Sophos;i="6.06,170,1705392000"; d="scan'208";a="27855998"
+Received: from orviesa004.jf.intel.com ([10.64.159.144])
+ by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 19 Feb 2024 02:13:24 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.06,170,1705392000"; 
+   d="scan'208";a="9123295"
+Received: from irvmail002.ir.intel.com ([10.43.11.120])
+ by orviesa004.jf.intel.com with ESMTP; 19 Feb 2024 02:13:22 -0800
+Received: from fedora.igk.intel.com (Metan_eth.igk.intel.com [10.123.220.124])
+ by irvmail002.ir.intel.com (Postfix) with ESMTP id 6890D12429;
+ Mon, 19 Feb 2024 10:13:21 +0000 (GMT)
+From: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Mon, 19 Feb 2024 05:05:50 -0500
+Message-Id: <20240219100555.7220-1-mateusz.polchlopek@intel.com>
+X-Mailer: git-send-email 2.38.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20240210220109.3179408-3-jesse.brandeburg@intel.com>
+Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1708334540;
- bh=cqhT+74jMS/y3CvA29elHMcdXkWm7rk1p2NPRXtt7Jg=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=YVjO1g5qgZhdv5kKrgNWOVv9jQadckfvjZbQKGe8FI4Y7QUlkLA0W+jM1P56nCHu0
- XPNF7PNzlnaykbCFmUSMdmFVQMgWkgmDhcBzzAcvtwGbdMljPkUrXYCIT0iZb8EcGx
- u+du8QtWtY2hfuiutoHbY+977duM8+37Hv7dsezPQP3vwvDf5txqLRpCv8gRjsCH5R
- ZWtJ536c7lD/wllWWkpgPMGPoqnGPp716fsDGqM38NlLO6iMsQjq/4clZDmh4wLcgz
- Wdn0UL/QTFgqsS6W1qUAQS3NAwup9z6ErQx+jegpiTfadwHSzFcJmHIYJbO1SGYykl
- jZsJh7VhgzOxQ==
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1708337604; x=1739873604;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=c+9i/Hpy+GGiqTCB/ogIjQDd+5p6PB4nAvRyyj069qU=;
+ b=Hh8UgArIjf9yR6kmuLbmUx4zYmdeZ3CRh81ARZFFAGSpwBDtkatWRbib
+ aObXIcQz7VL0sOj9Vb3vBXSSqdMXLlWKwLbFxTKDqcuzMZ7eXz+9mXR2t
+ AF8bj9NXGRIwUn4rM4okZUfaFBPxY5k84loSVEPvBVOpsEaghUPnd1BJw
+ 6CaFXG2OAS5qaX6GrhUDAWxNDls3bKlwBsuMBCOaaGlyARWviTEb3CazI
+ F245Tl6ipor55qgh6wByoN2YhGIA4JiNbpHQhQ22TZ7w7QiR9cPJlfTVU
+ 9ZHiQS9/YubpgbmahSWLED/W2C+QCxilrM3cni5ScjaU4Ta9mwalJS1xz
+ w==;
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=kernel.org
+ header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=YVjO1g5q
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v1 2/2] net: intel: implement
- modern PM ops declarations
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=Hh8UgArI
+Subject: [Intel-wired-lan] [PATCH iwl-next v4 0/5] ice: Support 5 layer Tx
+ scheduler topology
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,31 +102,73 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, Eric Dumazet <edumazet@google.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>, Alan Brady <alan.brady@intel.com>,
- Jakub Kicinski <kuba@kernel.org>, intel-wired-lan@lists.osuosl.org,
- Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>
+Cc: netdev@vger.kernel.org, Mateusz Polchlopek <mateusz.polchlopek@intel.com>,
+ horms@kernel.org, przemyslaw.kitszel@intel.com
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Sat, Feb 10, 2024 at 02:01:09PM -0800, Jesse Brandeburg wrote:
-> Switch the Intel networking drivers to use the new power management ops
-> declaration formats and macros, which allows us to drop __maybe_unused,
-> as well as a bunch of ifdef checking CONFIG_PM.
-> 
-> This is safe to do because the compiler drops the unused functions,
-> verified by checking for any of the power management function symbols
-> being present in System.map for a build without CONFIG_PM.
-> 
-> If a driver has runtime PM, define the ops with pm_ptr(), and if the
-> driver has Simple PM, use pm_sleep_ptr(), as well as the new versions of
-> the macros for declaring the members of the pm_ops structs.
-> 
-> Checked with network-enabled allnoconfig, allyesconfig, allmodconfig on
-> x64_64.
-> 
-> Reviewed-by: Alan Brady <alan.brady@intel.com>
-> Signed-off-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
+For performance reasons there is a need to have support for selectable
+Tx scheduler topology. Currently firmware supports only the default
+9-layer and 5-layer topology. This patch series enables switch from
+default to 5-layer topology, if user decides to opt-in.
 
-Reviewed-by: Simon Horman <horms@kernel.org>
+---
+v4:
+- restored the initial way of passing firmware data to ice_cfg_tx_topo
+  function in ice_init_tx_topology function in ice_main.c file. In v2
+  and v3 version it was passed as const u8 parameter which caused kernel
+  crash. Because of this change I decided to drop all Reviewed-by tags.
+
+v3:
+- fixed documentation warnings
+https://lore.kernel.org/netdev/20231009090711.136777-1-mateusz.polchlopek@intel.com/
+
+v2:
+- updated documentation
+- reorder of variables list (default-init first)
+- comments changed to be more descriptive
+- added elseif's instead of few if's
+- returned error when ice_request_fw fails
+- ice_cfg_tx_topo() changed to take const u8 as parameter (get rid of copy
+  buffer)
+- renamed all "balance" occurences to the new one
+- prevent fail of ice_aq_read_nvm() function
+- unified variables names (int err instead of int status in few
+  functions)
+- some smaller fixes, typo fixes
+https://lore.kernel.org/netdev/20231006110212.96305-1-mateusz.polchlopek@intel.com/
+
+v1:
+https://lore.kernel.org/netdev/20230523174008.3585300-1-anthony.l.nguyen@intel.com/
+---
+
+Lukasz Czapnik (1):
+  ice: Add tx_scheduling_layers devlink param
+
+Michal Wilczynski (2):
+  ice: Enable switching default Tx scheduler topology
+  ice: Document tx_scheduling_layers parameter
+
+Raj Victor (2):
+  ice: Support 5 layer topology
+  ice: Adjust the VSI/Aggregator layers
+
+ Documentation/networking/devlink/ice.rst      |  41 ++++
+ .../net/ethernet/intel/ice/ice_adminq_cmd.h   |  31 +++
+ drivers/net/ethernet/intel/ice/ice_common.c   |   5 +
+ drivers/net/ethernet/intel/ice/ice_ddp.c      | 199 ++++++++++++++++++
+ drivers/net/ethernet/intel/ice/ice_ddp.h      |   2 +
+ drivers/net/ethernet/intel/ice/ice_devlink.c  | 169 +++++++++++++++
+ .../net/ethernet/intel/ice/ice_fw_update.c    |   7 +-
+ .../net/ethernet/intel/ice/ice_fw_update.h    |   3 +
+ drivers/net/ethernet/intel/ice/ice_main.c     | 102 +++++++--
+ drivers/net/ethernet/intel/ice/ice_nvm.c      |   7 +-
+ drivers/net/ethernet/intel/ice/ice_nvm.h      |   3 +
+ drivers/net/ethernet/intel/ice/ice_sched.c    |  37 ++--
+ drivers/net/ethernet/intel/ice/ice_sched.h    |   3 +
+ drivers/net/ethernet/intel/ice/ice_type.h     |   1 +
+ 14 files changed, 565 insertions(+), 45 deletions(-)
+
+-- 
+2.38.1
 
