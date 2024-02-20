@@ -1,89 +1,98 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7CC0085BB6A
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 20 Feb 2024 13:07:00 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 82DB485BBF4
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 20 Feb 2024 13:24:42 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 205F740808;
-	Tue, 20 Feb 2024 12:06:59 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id D9DDC406EC;
+	Tue, 20 Feb 2024 12:24:40 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id X0KULd51dkH5; Tue, 20 Feb 2024 12:06:58 +0000 (UTC)
+	with ESMTP id 4NuPNwdZBePq; Tue, 20 Feb 2024 12:24:40 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4658B4089C
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 139B340164
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1708430817;
-	bh=E9mY4beHsfe+BK40ieBuMr+KYav5lxsPw1O8+eV9SQQ=;
+	s=default; t=1708431880;
+	bh=o+4UZpRoG+pfAj7R4sV0GGBfc7VJ8gf/qpqQ0VZ8BzU=;
 	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=1nUHux+byrWmkWSeiE9pu4022BtICkTvwxwVN8G+DkP/6DVy/roKAVLujfL4c/AJl
-	 XjuGS0kWCezJiVUFfJ3+HUJ1CH1RITZEvg5eYFrqIMA+MjtOciIp3OEoQHtX9KDPb2
-	 qpM/lTllHXgh4KYKa5vp4Vx4NkiF/97R8XaYHwlSqNM9Myg3fZnQZuywUMAORnw17u
-	 Xug0Ig2MG8EBOwu98x232xnPdlz0V7Fm8tcgLdQbp5qjUrM2iuP7bUhlhTi4WWjLvP
-	 UnPIBUgtCVIB4A3xASS7k5F0wSAXM8X0jMpwniyMMLfb0ng1Yb109Marl7+8bcn/US
-	 Nlop/v8+b1NBA==
+	b=W8B0kU+gD0i/JgXrte3WTbctUr5bx1EgskELbcbf/F8I7zRTdzYQCRccqbMsDuwPd
+	 TufJ9M3WTDJOx3kBYSBaapLtRLl9llQXHYkYh19WenhsnCelMGnVebAVT7wooMKz85
+	 RIUvZdwF5+2Vb0xK5CfAsq1EN77Njgb5zep9EFwQLNP05GM+j7ECKTCsvqKcsdpUWt
+	 HgbwcPBzb42RWYgxDNcd5VxF1N42Nv6itS7Gvybj8YwWAgn/izHfphKo7aXUoG7i78
+	 svtxvsFHvA2ufKSMbhPGOwJ/MZkZpH2R/gYr074eNlskCKxVtQ4PW835FCZLKPcBRC
+	 6ReORu7gCtc0A==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 4658B4089C;
-	Tue, 20 Feb 2024 12:06:57 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 139B340164;
+	Tue, 20 Feb 2024 12:24:40 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 548F21BF3A7
- for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Feb 2024 12:06:55 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id C92831BF3A7
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Feb 2024 12:24:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 409FE60743
- for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Feb 2024 12:06:55 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id C2012401D9
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Feb 2024 12:24:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 68kMTla9myW9 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 20 Feb 2024 12:06:53 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2604:1380:40e1:4800::1; helo=sin.source.kernel.org;
- envelope-from=horms@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org E8CA660719
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org E8CA660719
-Received: from sin.source.kernel.org (sin.source.kernel.org
- [IPv6:2604:1380:40e1:4800::1])
- by smtp3.osuosl.org (Postfix) with ESMTPS id E8CA660719
- for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Feb 2024 12:06:52 +0000 (UTC)
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by sin.source.kernel.org (Postfix) with ESMTP id 8F5E5CE1821;
- Tue, 20 Feb 2024 12:06:48 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3C2E0C433C7;
- Tue, 20 Feb 2024 12:06:45 +0000 (UTC)
-Date: Tue, 20 Feb 2024 12:06:43 +0000
-From: Simon Horman <horms@kernel.org>
-To: Andrew Lunn <andrew@lunn.ch>
-Message-ID: <20240220120643.GZ40273@kernel.org>
-References: <20240218-keee-u32-cleanup-v4-0-71f13b7c3e60@lunn.ch>
- <20240218-keee-u32-cleanup-v4-4-71f13b7c3e60@lunn.ch>
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id bl39moX8gWtb for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 20 Feb 2024 12:24:38 +0000 (UTC)
+Received-SPF: None (mailfrom) identity=mailfrom; client-ip=198.175.65.12;
+ helo=mgamail.intel.com; envelope-from=michal.swiatkowski@linux.intel.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 8673640164
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8673640164
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.12])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 8673640164
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Feb 2024 12:24:37 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10989"; a="13942159"
+X-IronPort-AV: E=Sophos;i="6.06,172,1705392000"; d="scan'208";a="13942159"
+Received: from orviesa001.jf.intel.com ([10.64.159.141])
+ by orvoesa104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 20 Feb 2024 04:24:36 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.06,172,1705392000"; d="scan'208";a="42258584"
+Received: from unknown (HELO mev-dev) ([10.237.112.144])
+ by smtpauth.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 20 Feb 2024 04:24:33 -0800
+Date: Tue, 20 Feb 2024 13:24:29 +0100
+From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+To: Paul Menzel <pmenzel@molgen.mpg.de>
+Message-ID: <ZdSZ/ZWKXidgHkAB@mev-dev>
+References: <20240220105950.6814-1-michal.swiatkowski@linux.intel.com>
+ <20240220105950.6814-2-michal.swiatkowski@linux.intel.com>
+ <30416589-7340-4ad3-8749-bef1f82743cb@molgen.mpg.de>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20240218-keee-u32-cleanup-v4-4-71f13b7c3e60@lunn.ch>
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <30416589-7340-4ad3-8749-bef1f82743cb@molgen.mpg.de>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1708430807;
- bh=g7OWh2V1T0jWuCWOpLghLxY/l/z2kpl8hgQUF80BDLk=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=IsU1gpx6BLHMdxvwzV2splWpbqoYa6PWyr4iVc0LZEQTV6AUeKVxCp7HM0rvMoTRs
- JXhqKr4qcuCtMvQx9mO7FcroqUtYg4XPI9KC0azUZI1Ftea729VOTL59xrSQKsJqM6
- GwVZLjjaNiLgDxk7hxB2QTzw5Shxg6QkjWyasn59ei5xf2cPcIqN/x30PaBuQRB0zf
- KazOn5NIGF2ZJIr+mRvp+UDjviLAR+o2Om3voD9dgke7DPyohmDaK/jMCQOOyJV77r
- WyW630lB2Lmvf3mMoVt6jD5xweAjYAshlQVDV2KkDWSGKJDeH9vR2eh//bv3zOsGhv
- 5eorKcz+qy36w==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1708431878; x=1739967878;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:content-transfer-encoding:in-reply-to;
+ bh=dsiLJ11h741l5GbdJat1YmQ4KzPfYnGD2H8KwKTyIaQ=;
+ b=CSShEnXFJnXoMydfyxRjojbbrr970RHkORPCMxxT7Fn8WN45UwLh7CH3
+ SXurGjAcaA2QOunCdbfHu70Se/5hQg+LTawSvRvAWwCmf16gGia7lrpM/
+ 2TfAilXlV6LMpcZLPVeKthcHnFoPCgAyd8jFFIm4QV+Zhb11eQcbsaSJU
+ DHGd3liyGQxcMFv6s6hAbSzqDKLXb3k7bj2VmLxFXj/WXKqiaA45Lu5TW
+ tGohGN9UiIGK07qs0nGq6EcHJTnOuhnJOIR8nezflD178EPgPMi8BwUNp
+ d4acYBc6VMy+HyMPtypkdGk5mJ+LFqZkTwMFN2mkfK8+iVWBSyL3YU//Y
+ A==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dmarc=none (p=none dis=none)
+ header.from=linux.intel.com
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20201202 header.b=IsU1gpx6
-Subject: Re: [Intel-wired-lan] [PATCH net-next v4 4/9] net: ethernet: ixgbe:
- Convert EEE to use linkmodes
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=CSShEnXF
+Subject: Re: [Intel-wired-lan] [iwl-next v1 1/2] ice: tc: check src_vsi in
+ case of traffic from VF
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,73 +105,94 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Ariel Elior <aelior@marvell.com>, Manish Chopra <manishc@marvell.com>,
- netdev@vger.kernel.org, linux-usb@vger.kernel.org,
- Jesse Brandeburg <jesse.brandeburg@intel.com>, linux-kernel@vger.kernel.org,
- Eric Dumazet <edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
- intel-wired-lan@lists.osuosl.org, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>
+Cc: wojciech.drewek@intel.com, marcin.szycik@intel.com,
+ sridhar.samudrala@intel.com, Jedrzej Jagielski <jedrzej.jagielski@intel.com>,
+ intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Sun, Feb 18, 2024 at 11:07:01AM -0600, Andrew Lunn wrote:
-> Convert the tables to make use of ETHTOOL link mode bits, rather than
-> the old u32 SUPPORTED speeds. Make use of the linkmode helps to set
-> bits and compare linkmodes. As a result, the _u32 members of keee are
-> no longer used, a step towards removing them.
+On Tue, Feb 20, 2024 at 12:23:11PM +0100, Paul Menzel wrote:
+> Dear Michal,
 > 
-> Signed-off-by: Andrew Lunn <andrew@lunn.ch>
-> ---
->  drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c | 48 ++++++++++++------------
->  1 file changed, 25 insertions(+), 23 deletions(-)
 > 
-> diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c
+> Thank you for the patch.
+>
 
-...
+Thanks for the review.
 
-> @@ -3436,28 +3437,29 @@ ixgbe_get_eee_fw(struct ixgbe_adapter *adapter, struct ethtool_keee *edata)
->  	if (rc)
->  		return rc;
->  
-> -	edata->lp_advertised_u32 = 0;
->  	for (i = 0; i < ARRAY_SIZE(ixgbe_lp_map); ++i) {
->  		if (info[0] & ixgbe_lp_map[i].lp_advertised)
-> -			edata->lp_advertised_u32 |= ixgbe_lp_map[i].mac_speed;
-> +			linkmode_set_bit(ixgbe_lp_map[i].link_mode,
-> +					 edata->lp_advertised);
->  	}
->  
-> -	edata->supported_u32 = 0;
->  	for (i = 0; i < ARRAY_SIZE(ixgbe_ls_map); ++i) {
->  		if (hw->phy.eee_speeds_supported & ixgbe_ls_map[i].mac_speed)
-> -			edata->supported_u32 |= ixgbe_ls_map[i].supported;
-> +			linkmode_set_bit(ixgbe_lp_map[i].link_mode,
-> +					 edata->lp_advertised);
+> Am 20.02.24 um 11:59 schrieb Michal Swiatkowski:
+> > In case of traffic going from the VF (so ingress for port representor)
+> > there should be a check for source VSI. It is needed for hardware to not
+> > match packets from different port with filters added on other port.
+> 
+> … from different port*s* …?
+> 
 
-Hi Andrew,
+Will fix it.
 
-should this be edata->supported rather than edata->lp_advertised?
+> > It is only for "from VF" traffic, because other traffic direction
+> > doesn't have source VSI.
+> 
+> Do you have a test case to reproduce this?
+>
 
->  	}
->  
-> -	edata->advertised_u32 = 0;
->  	for (i = 0; i < ARRAY_SIZE(ixgbe_ls_map); ++i) {
->  		if (hw->phy.eee_speeds_advertised & ixgbe_ls_map[i].mac_speed)
-> -			edata->advertised_u32 |= ixgbe_ls_map[i].supported;
-> +			linkmode_set_bit(ixgbe_lp_map[i].link_mode,
-> +					 edata->advertised);
->  	}
->  
-> -	edata->eee_enabled = !!edata->advertised_u32;
-> +	edata->eee_enabled = !linkmode_empty(edata->advertised);
->  	edata->tx_lpi_enabled = edata->eee_enabled;
-> -	if (edata->advertised_u32 & edata->lp_advertised_u32)
-> -		edata->eee_active = true;
-> +
-> +	linkmode_and(common, edata->advertised, edata->lp_advertised);
-> +	edata->eee_active = !linkmode_empty(common);
->  
->  	return 0;
->  }
+I can add tc fileter call in v2. In short, any redirect from VF0 to
+uplink should allow going packets only from VF0, but currently it is
+also matching traffic from other VFs (like VF1, VF2, etc.)
 
-...
+> > Reviewed-by: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
+> > Reviewed-by: Sridhar Samudrala <sridhar.samudrala@intel.com>
+> > Signed-off-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+> > ---
+> >   drivers/net/ethernet/intel/ice/ice_tc_lib.c | 8 ++++++++
+> >   1 file changed, 8 insertions(+)
+> > 
+> > diff --git a/drivers/net/ethernet/intel/ice/ice_tc_lib.c b/drivers/net/ethernet/intel/ice/ice_tc_lib.c
+> > index b890410a2bc0..49ed5fd7db10 100644
+> > --- a/drivers/net/ethernet/intel/ice/ice_tc_lib.c
+> > +++ b/drivers/net/ethernet/intel/ice/ice_tc_lib.c
+> > @@ -28,6 +28,8 @@ ice_tc_count_lkups(u32 flags, struct ice_tc_flower_lyr_2_4_hdrs *headers,
+> >   	 * - ICE_TC_FLWR_FIELD_VLAN_TPID (present if specified)
+> >   	 * - Tunnel flag (present if tunnel)
+> >   	 */
+> > +	if (fltr->direction == ICE_ESWITCH_FLTR_EGRESS)
+> > +		lkups_cnt++;
+> 
+> Why does the count variable need to be incremented?
+>
+AS you wrote belowe it is needed to add another lookup.
+
+> >   	if (flags & ICE_TC_FLWR_FIELD_TENANT_ID)
+> >   		lkups_cnt++;
+> > @@ -363,6 +365,11 @@ ice_tc_fill_rules(struct ice_hw *hw, u32 flags,
+> >   	/* Always add direction metadata */
+> >   	ice_rule_add_direction_metadata(&list[ICE_TC_METADATA_LKUP_IDX]);
+> > +	if (tc_fltr->direction == ICE_ESWITCH_FLTR_EGRESS) {
+> > +		ice_rule_add_src_vsi_metadata(&list[i]);
+> > +		i++;
+> > +	}
+> > +
+> >   	rule_info->tun_type = ice_sw_type_from_tunnel(tc_fltr->tunnel_type);
+> >   	if (tc_fltr->tunnel_type != TNL_LAST) {
+> >   		i = ice_tc_fill_tunnel_outer(flags, tc_fltr, list, i);
+> > @@ -820,6 +827,7 @@ ice_eswitch_add_tc_fltr(struct ice_vsi *vsi, struct ice_tc_flower_fltr *fltr)
+> >   	/* specify the cookie as filter_rule_id */
+> >   	rule_info.fltr_rule_id = fltr->cookie;
+> > +	rule_info.src_vsi = vsi->idx;
+> 
+> Besides the comment above being redundant (as the code does exactly that),
+> the new line looks like to belong to the comment. Please excuse my
+> ignorance, but the commit message only talks about adding checks and not
+> overwriting the `src_vsi`. It’d be great, if you could elaborate.
+>
+
+I will rephrase commit message to mark that it is not checking in code,
+but matching in hardware, thanks.
+
+> >   	ret = ice_add_adv_rule(hw, list, lkups_cnt, &rule_info, &rule_added);
+> >   	if (ret == -EEXIST) {
+> 
+> 
+> Kind regards,
+> 
+> Paul
