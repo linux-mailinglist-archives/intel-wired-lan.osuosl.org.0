@@ -2,74 +2,91 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id EF0BB85B009
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 20 Feb 2024 01:31:33 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4D44285B9AB
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 20 Feb 2024 11:55:48 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id A6D0540BDC;
-	Tue, 20 Feb 2024 00:31:31 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 5AFA24148E;
+	Tue, 20 Feb 2024 10:55:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id irMd7LecwEL9; Tue, 20 Feb 2024 00:31:31 +0000 (UTC)
+	with ESMTP id SN22DyUyTxZR; Tue, 20 Feb 2024 10:55:44 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 5C3F040BD6
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 7AA4241192
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1708389090;
-	bh=F/IULp2vIFWvkqZhCRUdiMxN6SqvjUq/KC1PBO9UxLA=;
-	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=z10it/Nqp+7Rh91RpfMtRSt/4QOu44IM6tQxW86dTPi+DnOa2lKxHiYQBGtEeuUUl
-	 1AIIoDXIYHAyqUvnFm+chR8rXTExj4LagvrJVKULtmLN7aZN6oM68xDM395tCze3XD
-	 A0XyvqAjFWDw9bETuZVsXura8ZITrnwhr2CjF653zGFzeN8nuk3uXboyA2ahrFmWki
-	 KeMWm6jMuDcHAo0/RseYMG6mnYNAnih/RKdncv1sz4gC3AomqL02xqASPsoZrm2vvD
-	 iI6sI8axxIpG4/gFnqsEBMxNZ8StfiBJfZfuSBHXjNbtaoVlv2hSQlYXcL/d6VlaZ/
-	 +iGcaXphNkT9Q==
+	s=default; t=1708426544;
+	bh=9bvIwoKgd+YMN9aJpsdiwkl1aJqihy6VhDsQR6HMyo4=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=7xFn6hl4/6Ik6cbEmuNMs6g577UObsvOAIOOE78b+cp6J/iYpAs3St+MPGrJeuVT9
+	 Xty5+RRAb3rtwvwUiJdntMDD6IG13QflWrCmad1xiUX/SHolWCJV7sVQgDPjQX7R+G
+	 h3YL9bA19aryiUYAN9Sczxwww7GUbLipqZx36YaYzDeUT2DbkKLOIjI2Q7QwOiWaNT
+	 XlLlnfUXgKO0aKUIKdykM9IHOQjKgf0X7qCQemXkNHmfWm0I3vfGiTiYcU3spHs/ct
+	 rnodamw+jleAnZdrqCokFZaib+6U8ojSWNOW8OCly8PxUKEL+wBXaHkvBZRwSJwyH8
+	 OEi+uQqhjNvdQ==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 5C3F040BD6;
-	Tue, 20 Feb 2024 00:31:30 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 7AA4241192;
+	Tue, 20 Feb 2024 10:55:44 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id E41241BF20B
- for <intel-wired-lan@lists.osuosl.org>; Sat, 17 Feb 2024 10:59:53 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 9B21A1BF279
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Feb 2024 10:55:42 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id CFB8A405E8
- for <intel-wired-lan@lists.osuosl.org>; Sat, 17 Feb 2024 10:59:53 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 93A7941583
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Feb 2024 10:55:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id VfTnJ06p-C0J for <intel-wired-lan@lists.osuosl.org>;
- Sat, 17 Feb 2024 10:59:53 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=115.124.28.62;
- helo=out28-62.mail.aliyun.com; envelope-from=wangyugui@e16-tech.com;
+ with ESMTP id x_k4kpg2FmCr for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 20 Feb 2024 10:55:42 +0000 (UTC)
+Received-SPF: None (mailfrom) identity=mailfrom; client-ip=198.175.65.12;
+ helo=mgamail.intel.com; envelope-from=michal.swiatkowski@linux.intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org D0A88405CC
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D0A88405CC
-Received: from out28-62.mail.aliyun.com (out28-62.mail.aliyun.com
- [115.124.28.62])
- by smtp4.osuosl.org (Postfix) with ESMTPS id D0A88405CC
- for <intel-wired-lan@lists.osuosl.org>; Sat, 17 Feb 2024 10:59:49 +0000 (UTC)
-X-Alimail-AntiSpam: AC=CONTINUE; BC=0.05184339|-1; CH=green;
- DM=|CONTINUE|false|; DS=CONTINUE|ham_alarm|0.178155-0.00516797-0.816677;
- FP=0|0|0|0|0|-1|-1|-1; HT=ay29a033018047205; MF=wangyugui@e16-tech.com; NM=1;
- PH=DS; RN=1; RT=1; SR=0; TI=SMTPD_---.WTST.Np_1708167583; 
-Received: from 192.168.2.112(mailfrom:wangyugui@e16-tech.com
- fp:SMTPD_---.WTST.Np_1708167583) by smtp.aliyun-inc.com;
- Sat, 17 Feb 2024 18:59:44 +0800
-Date: Sat, 17 Feb 2024 18:59:45 +0800
-From: Wang Yugui <wangyugui@e16-tech.com>
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org E1A104155D
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E1A104155D
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.12])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id E1A104155D
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Feb 2024 10:55:41 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10989"; a="13934158"
+X-IronPort-AV: E=Sophos;i="6.06,172,1705392000"; d="scan'208";a="13934158"
+Received: from fmviesa010.fm.intel.com ([10.60.135.150])
+ by orvoesa104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 20 Feb 2024 02:55:40 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.06,172,1705392000"; 
+   d="scan'208";a="4734485"
+Received: from wasp.igk.intel.com (HELO GK3153-DR2-R750-36946.localdomain.com)
+ ([10.102.20.192])
+ by fmviesa010.fm.intel.com with ESMTP; 20 Feb 2024 02:55:39 -0800
+From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Message-Id: <20240217185944.28C9.409509F4@e16-tech.com>
+Date: Tue, 20 Feb 2024 11:59:48 +0100
+Message-ID: <20240220105950.6814-1-michal.swiatkowski@linux.intel.com>
+X-Mailer: git-send-email 2.42.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="US-ASCII"
-Content-Transfer-Encoding: 7bit
-X-Mailer: Becky! ver. 2.81.05 [en]
-X-Mailman-Approved-At: Tue, 20 Feb 2024 00:31:28 +0000
+Content-Transfer-Encoding: 8bit
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1708426542; x=1739962542;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=FOQu5qKbXJVFuxXYfcyWb7ERDO73+C1UvTc0Xxrvbj8=;
+ b=VRjPQyfAqyYiocNRnDf5FQE7+BCTUYFAfXLGc3mguk294L9/WRkOAeCS
+ DR2C8tU5+qCUyGn+znfyviRgpJjptavEo7lwbyG2qtI6WfwW9K1wJrcw6
+ i81YZjKisAqyFY5ps7hfNZSZOuRxOGSZe6sOUsTlq/dpTNWsTiF6cUQim
+ GOm2w9iYEYArFiGZdrRqMW2FRdW+J+jvIUdeQSLxUtZ2fKb0ysGE/HcqI
+ vKFPTsurEAKiBjfiY7ppyLCcRgfHaK6o52A0BxvBR4o6ZwkjFpUlacOra
+ cqJ5NooBalSBlQ48qAHcnAqTaIt/sqxdmXkJSjHQNVpcv/xdVedRf4rJ9
+ w==;
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=none (p=none dis=none)
- header.from=e16-tech.com
-Subject: [Intel-wired-lan] irdma of kernel 5.15.147 compile error when
- in-bracnh ice is placed by 1.13.7/1.12.18
+ header.from=linux.intel.com
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=VRjPQyfA
+Subject: [Intel-wired-lan] [iwl-next v1 0/2] ice: extend tc flower offload
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,31 +99,24 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: netdev@vger.kernel.org,
+ Michal Swiatkowski <michal.swiatkowski@linux.intel.com>,
+ wojciech.drewek@intel.com, marcin.szycik@intel.com,
+ sridhar.samudrala@intel.com
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi,
+Extend hardware support for tc flower to match ip_proto field (patch 2)
+and source VSI metadata when the packets are sent from VF (patch 1).
 
-When  kernel 5.15.147 in-branch ice is placed by ice-1.13.7/1.12.18
-- ice.ko is OK to build
-- irdma failed to build
+Michal Swiatkowski (2):
+  ice: tc: check src_vsi in case of traffic from VF
+  ice: tc: allow ip_proto matching
 
-In file included from drivers/infiniband/hw/irdma/../../../net/ethernet/intel/ice/ice.h:84,
-                 from drivers/infiniband/hw/irdma/main.c:4:
-drivers/infiniband/hw/irdma/../../../net/ethernet/intel/ice/ice_idc_int.h:14:31: warning: 'struct iidc_core_dev_info' declared inside parameter list will not be visible outside of this definition or declaration
- *ice_get_auxiliary_drv(struct iidc_core_dev_info *cdev_info);
-                               ^~~~~~~~~~~~~~~~~~
-drivers/infiniband/hw/irdma/../../../net/ethernet/intel/ice/ice_idc_int.h:15:43: warning: 'struct iidc_core_dev_info' declared inside parameter list will not be visible outside of this definition or declaration
- void ice_send_event_to_aux_no_lock(struct iidc_core_dev_info *cdev, void *data);
-                                           ^~~~~~~~~~~~~~~~~~
-drivers/infiniband/hw/irdma/../../../net/ethernet/intel/ice/ice_idc_int.h:17:38: warning: 'struct iidc_core_dev_info' declared inside parameter list will not be visible outside of this definition or declaration
- void ice_cdev_info_update_vsi(struct iidc_core_dev_info *cdev_info,
+ drivers/net/ethernet/intel/ice/ice_tc_lib.c | 25 +++++++++++++++++++--
+ drivers/net/ethernet/intel/ice/ice_tc_lib.h |  1 +
+ 2 files changed, 24 insertions(+), 2 deletions(-)
 
-Any advice to fix it?
-or any advice to update the ice driver of 5.15.y?
-
-Best Regards
-Wang Yugui (wangyugui@e16-tech.com)
-2024/02/02
-
+-- 
+2.42.0
 
