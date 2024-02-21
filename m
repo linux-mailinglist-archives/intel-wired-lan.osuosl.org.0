@@ -2,93 +2,92 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6D6C985CC55
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 21 Feb 2024 00:57:32 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 297B985CCFD
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 21 Feb 2024 01:50:33 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 4C15D416D6;
-	Tue, 20 Feb 2024 23:57:29 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id B0F7840630;
+	Wed, 21 Feb 2024 00:50:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id b6waK0W93woh; Tue, 20 Feb 2024 23:57:28 +0000 (UTC)
+	with ESMTP id Yl4Gf8P4d-Wn; Wed, 21 Feb 2024 00:50:30 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6C77D4162C
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 82E7040659
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1708473448;
-	bh=uwhXeMFvnwzLRRCY4uk8mHwPXTisk+CveRfGO0MWYMU=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=5C0DhK/qvNfZpWi3Nlr0pQgav15Y5NUAAnx5hQE9LV5x6Hzu833j+gh7DQD3m4rey
-	 Jaf8lMoBdraAlMwARtXYLmzlvSuyg4WTmu1+/vtj4yKKELTP4U8uMxEiEqG9qnlu7I
-	 rWNVxIfrtMmhZXTUD9114h5i7c+oG9WuHlQPe/Y6sHoBxQGxzSDHlAkYpMm4FnvKsY
-	 qg4ZGanOVdW2bcIZxTZ0f2XSOlXxBJa6/JmsQcyVjYYaboyG4s0gMIM2N8BcXh4JKD
-	 EL6Ny+FHqyeeQikeRs0YFE9k41X9cil70tKruRFsSd+dSgZ+/3yk+Mwr5GJwPJBi11
-	 IEyHfgOqFT7kw==
+	s=default; t=1708476630;
+	bh=GiXe1FeiM5N3pK8HZS1zhQoKwhRbDX6iCxbPRGCUhZs=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=l/9z4gpZVXvj0JBIwBM+mefHcwkVZj2G7NkCoDCwbl1oI482GTR4axL/bnYoXugso
+	 skZW39kBhXpAFsiise0S5w9QCmGBzSRih5KTyBLtv/KYb26SuKEngbzjvM/+XGu//8
+	 eCFGc38ROF3Ajg1zJI65ima8q3yKyvwgRFBxxzvqeczSrAKkYLN3apyAXkT/Ij+x4X
+	 kutAzzOHk1m+B0SOkSYRTz9SvAxvAOoAQFfNeUmPu0OCHoaeEBwxCpRgoVHhvw3Byq
+	 qskspQgO0VCVcPafHMCptU0NLBypH5kaCFf3EMwGJ5zcKQFHJswr07as28wqy5j5/s
+	 TwcbCikUEmv6A==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 6C77D4162C;
-	Tue, 20 Feb 2024 23:57:28 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 82E7040659;
+	Wed, 21 Feb 2024 00:50:30 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 913A41BF4E3
- for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Feb 2024 23:57:24 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 9E1681BF39D
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Feb 2024 00:50:28 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 786F34043A
- for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Feb 2024 23:57:23 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 85D6F405F5
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Feb 2024 00:50:28 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id bW8aWVc7hy4E for <intel-wired-lan@lists.osuosl.org>;
- Tue, 20 Feb 2024 23:57:22 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.10;
- helo=mgamail.intel.com; envelope-from=vinicius.gomes@intel.com;
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id PEZesiBMWbuz for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 21 Feb 2024 00:50:27 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.18;
+ helo=mgamail.intel.com; envelope-from=alan.brady@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 62AAD402D0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 62AAD402D0
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.10])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 62AAD402D0
- for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Feb 2024 23:57:22 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10990"; a="20041773"
-X-IronPort-AV: E=Sophos;i="6.06,174,1705392000"; d="scan'208";a="20041773"
-Received: from fmviesa008.fm.intel.com ([10.60.135.148])
- by orvoesa102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 20 Feb 2024 15:57:21 -0800
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 4E2F6405C5
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4E2F6405C5
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.18])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 4E2F6405C5
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Feb 2024 00:50:26 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10990"; a="2500693"
+X-IronPort-AV: E=Sophos;i="6.06,174,1705392000"; 
+   d="scan'208";a="2500693"
+Received: from fmviesa004.fm.intel.com ([10.60.135.144])
+ by fmvoesa112.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 20 Feb 2024 16:50:25 -0800
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.06,174,1705392000"; 
-   d="scan'208";a="5092390"
-Received: from vcostago-mobl3.jf.intel.com ([10.24.14.83])
- by fmviesa008-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 20 Feb 2024 15:57:20 -0800
-From: Vinicius Costa Gomes <vinicius.gomes@intel.com>
+   d="scan'208";a="9550825"
+Received: from dev1-atbrady.jf.intel.com ([10.166.241.35])
+ by fmviesa004.fm.intel.com with ESMTP; 20 Feb 2024 16:50:25 -0800
+From: Alan Brady <alan.brady@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Tue, 20 Feb 2024 15:57:11 -0800
-Message-ID: <20240220235712.241552-3-vinicius.gomes@intel.com>
-X-Mailer: git-send-email 2.43.2
-In-Reply-To: <20240220235712.241552-1-vinicius.gomes@intel.com>
-References: <20240220235712.241552-1-vinicius.gomes@intel.com>
+Date: Tue, 20 Feb 2024 16:49:39 -0800
+Message-ID: <20240221004949.2561972-1-alan.brady@intel.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1708473443; x=1740009443;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=j7Zixg1QER2i+fNcEEtAoe4JXGnkdFEd25ICHCfBynA=;
- b=ZAbjiCeXfa+wu0OmsptlyKcyRl4U1iKxxeSvuw+dAb4NVduFhtG1W4x/
- b75i/mSaF1kiQBKQAtL3TXjbBsuYKjeiDxlqAONcMfhCYZ+pHP2QcSjJR
- eIQFRJF5CFy0GfWE2JEE9K0BP6c7Xbb8dmDWxLN8YdohzsLDcLWkzdu/F
- UU98IcYeTh5kOg6r8fnPR8NuIS7vEjyCl0YZeX9e7WfLW9PdGKxLuFIyQ
- dlRrtC/omvegG5IyMp9STzCBZfw7H+vR251N72GWzlAvvKyZgQEQ9Thhf
- lUhkrQI9aBPWZhZy3baPEHOIbynff7iJm6u2sI9NAjMqrmQjgZiQWpNkI
+ t=1708476627; x=1740012627;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=b3K6fKvWYQ/SjUrArgoOKBdVwFRSn6xScwQTXGpC9rs=;
+ b=F2+nNSOKNsookBOko9mf5zQ+FSOfCf9K57EOSUuEfV8glPDJYctb76bj
+ yszmAHAa4PdB4yrHYrSaMelryjbn96ZL1S7R5ushpk9hRLnYNOm+PqTsG
+ VVSjCYnSRra2lHGoVXZh4oWHpHPL7hUJ4fIBSUZx0BHbJ4jNeF7J2y6Ge
+ QL6kcdd1hqXCmDJL2JOzD/ASeoeut3Ozo6v0+H9uoovJKJXdoFlpCRa2L
+ M0ei6osd2mz+TfQGx6SCxovIRP3yUPTwOy9Oi4zoA4FlxINTYs+WL9hg5
+ wNDdtlILOf6SN5F0VCUXAisE5hEHJZ2nyUcA6dz7aZILNdIOsHDpM7e73
  Q==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=ZAbjiCeX
-Subject: [Intel-wired-lan] [iwl-net v2 2/2] igb: Fix missing time sync events
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=F2+nNSOK
+Subject: [Intel-wired-lan] [PATCH v5 00/10 iwl-next] idpf: refactor virtchnl
+ messages
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -101,94 +100,107 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: sasha.neftin@intel.com, Vinicius Costa Gomes <vinicius.gomes@intel.com>,
- netdev@vger.kernel.org, richardcochran@gmail.com, kurt@linutronix.de,
- jesse.brandeburg@intel.com, linux-kernel@vger.kernel.org,
- Eric Dumazet <edumazet@google.com>, anthony.l.nguyen@intel.com,
- Jeff Kirsher <jeffrey.t.kirsher@intel.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>
+Cc: netdev@vger.kernel.org, Alan Brady <alan.brady@intel.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Fix "double" clearing of interrupts, which can cause external events
-or timestamps to be missed.
+The motivation for this series has two primary goals. We want to enable
+support of multiple simultaneous messages and make the channel more
+robust. The way it works right now, the driver can only send and receive
+a single message at a time and if something goes really wrong, it can
+lead to data corruption and strange bugs.
 
-The E1000_TSIRC Time Sync Interrupt Cause register can be cleared in two
-ways, by either reading it or by writing '1' into the specific cause
-bit. This is documented in section 8.16.1.
+This works by conceptualizing a send and receive as a "virtchnl
+transaction" (idpf_vc_xn) and introducing a "transaction manager"
+(idpf_vc_xn_manager). The vcxn_mngr will init a ring of transactions
+from which the driver will pop from a bitmap of free transactions to
+track in-flight messages. Instead of needing to handle a complicated
+send/recv for every a message, the driver now just needs to fill out a
+xn_params struct and hand it over to idpf_vc_xn_exec which will take
+care of all the messy bits. Once a message is sent and receives a reply,
+we leverage the completion API to signal the received buffer is ready to
+be used (assuming success, or an error code otherwise).
 
-The following flow was used:
-    1. read E1000_TSIRC into 'tsicr';
-    2. handle the interrupts present into 'tsirc' and mark them in 'ack';
-    3. write 'ack' into E1000_TSICR;
+At a low-level, this implements the "sw cookie" field of the virtchnl
+message descriptor to enable this. We have 16 bits we can put whatever
+we want and the recipient is required to apply the same cookie to the
+reply for that message.  We use the first 8 bits as an index into the
+array of transactions to enable fast lookups and we use the second 8
+bits as a salt to make sure each cookie is unique for that message. As
+transactions are received in arbitrary order, it's possible to reuse a
+transaction index and the salt guards against index conflicts to make
+certain the lookup is correct. As a primitive example, say index 1 is
+used with salt 1. The message times out without receiving a reply so
+index 1 is renewed to be ready for a new transaction, we report the
+timeout, and send the message again. Since index 1 is free to be used
+again now, index 1 is again sent but now salt is 2. This time we do get
+a reply, however it could be that the reply is _actually_ for the
+previous send index 1 with salt 1.  Without the salt we would have no
+way of knowing for sure if it's the correct reply, but with we will know
+for certain.
 
-As both (1) and (3) will clear the interrupt cause, if the same
-interrupt happens again between (1) and (3) it will be ignored,
-causing events to be missed.
+Through this conversion we also get several other benefits. We can now
+more appropriately handle asynchronously sent messages by providing
+space for a callback to be defined. This notably allows us to handle MAC
+filter failures better; previously we could potentially have stale,
+failed filters in our list, which shouldn't really have a major impact
+but is obviously not correct. I also managed to remove fairly
+significant more lines than I added which is a win in my book.
 
-Remove the extra clear in (3).
+Additionally, this converts some variables to use auto-variables where
+appropriate. This makes the alloc paths much cleaner and less prone to
+memory leaks. We also fix a few virtchnl related bugs while we're here.
 
-Fixes: 00c65578b47b ("igb: enable internal PPS for the i210")
-Acked-by: Richard Cochran <richardcochran@gmail.com>
-Signed-off-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
 ---
- drivers/net/ethernet/intel/igb/igb_main.c | 23 +++++------------------
- 1 file changed, 5 insertions(+), 18 deletions(-)
+v1 -> v2:
+    - don't take spin_lock in idpf_vc_xn_init, it's not needed
+    - fix set but unused error on payload_size var in idpf_recv_mb_msg
+    - prefer bitmap_fill and bitmap_zero if not setting an explicit
+      range per documention
+    - remove a couple unnecessary casts in idpf_send_get_stats_msg and
+      idpf_send_get_rx_ptype_msg
+    - split patch 4/6 such that the added functionality for MAC filters
+      is separate
+v2 -> v3:
+    - fix 'mac' -> 'MAC' in async handler error messages
+    - fix size_t format specifier in async handler error message
+    - change some variables to use auto-variables instead
+v3 -> v4:
+    - revert changes to idpf_send_mb_msg that were introduced in v3,
+      this will be addressed in future patch
+    - tweak idpf_recv_mb_msg refactoring to avoid bailing out of the
+      while loop when there are more messages to process and add comment
+      in idpf_vc_xn_forward_reply about ENXIO
+    - include some minor fixes to lower level ctrlq that seem like good
+      candidates to add here
+    - include fix to prevent deinit uninitialized vc core
+    - remove idpf_send_dealloc_vectors_msg error
+v4 -> v5:
+    - change signature on idpf_vc_xn_exec to accept a pointer @params
+      argument instead of passing by value, also make it const
+---
 
-diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
-index cebb44f51d5f..7662c42e35c1 100644
---- a/drivers/net/ethernet/intel/igb/igb_main.c
-+++ b/drivers/net/ethernet/intel/igb/igb_main.c
-@@ -6985,44 +6985,31 @@ static void igb_extts(struct igb_adapter *adapter, int tsintr_tt)
- static void igb_tsync_interrupt(struct igb_adapter *adapter)
- {
- 	struct e1000_hw *hw = &adapter->hw;
--	u32 ack = 0, tsicr = rd32(E1000_TSICR);
-+	u32 tsicr = rd32(E1000_TSICR);
- 	struct ptp_clock_event event;
- 
- 	if (tsicr & TSINTR_SYS_WRAP) {
- 		event.type = PTP_CLOCK_PPS;
- 		if (adapter->ptp_caps.pps)
- 			ptp_clock_event(adapter->ptp_clock, &event);
--		ack |= TSINTR_SYS_WRAP;
- 	}
- 
- 	if (tsicr & E1000_TSICR_TXTS) {
- 		/* retrieve hardware timestamp */
- 		schedule_work(&adapter->ptp_tx_work);
--		ack |= E1000_TSICR_TXTS;
- 	}
- 
--	if (tsicr & TSINTR_TT0) {
-+	if (tsicr & TSINTR_TT0)
- 		igb_perout(adapter, 0);
--		ack |= TSINTR_TT0;
--	}
- 
--	if (tsicr & TSINTR_TT1) {
-+	if (tsicr & TSINTR_TT1)
- 		igb_perout(adapter, 1);
--		ack |= TSINTR_TT1;
--	}
- 
--	if (tsicr & TSINTR_AUTT0) {
-+	if (tsicr & TSINTR_AUTT0)
- 		igb_extts(adapter, 0);
--		ack |= TSINTR_AUTT0;
--	}
- 
--	if (tsicr & TSINTR_AUTT1) {
-+	if (tsicr & TSINTR_AUTT1)
- 		igb_extts(adapter, 1);
--		ack |= TSINTR_AUTT1;
--	}
--
--	/* acknowledge the interrupts */
--	wr32(E1000_TSICR, ack);
- }
- 
- static irqreturn_t igb_msix_other(int irq, void *data)
+Alan Brady (10):
+  idpf: implement virtchnl transaction manager
+  idpf: refactor vport virtchnl messages
+  idpf: refactor queue related virtchnl messages
+  idpf: refactor remaining virtchnl messages
+  idpf: add async_handler for MAC filter messages
+  idpf: refactor idpf_recv_mb_msg
+  idpf: cleanup virtchnl cruft
+  idpf: prevent deinit uninitialized virtchnl core
+  idpf: fix minor controlq issues
+  idpf: remove dealloc vector msg err in idpf_intr_rel
+
+ drivers/net/ethernet/intel/idpf/idpf.h        |  194 +-
+ .../net/ethernet/intel/idpf/idpf_controlq.c   |    7 +-
+ .../ethernet/intel/idpf/idpf_controlq_api.h   |    5 +
+ drivers/net/ethernet/intel/idpf/idpf_lib.c    |   38 +-
+ drivers/net/ethernet/intel/idpf/idpf_main.c   |    3 +-
+ drivers/net/ethernet/intel/idpf/idpf_vf_dev.c |    2 +-
+ .../net/ethernet/intel/idpf/idpf_virtchnl.c   | 2175 ++++++++---------
+ 7 files changed, 1096 insertions(+), 1328 deletions(-)
+
 -- 
-2.43.2
+2.43.0
 
