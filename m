@@ -1,85 +1,92 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2E80C85F538
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 22 Feb 2024 11:03:43 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0322685F57B
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 22 Feb 2024 11:18:43 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id EC11D41B54;
-	Thu, 22 Feb 2024 10:03:40 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id AF7C741B81;
+	Thu, 22 Feb 2024 10:18:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id InR4TYRBkT2j; Thu, 22 Feb 2024 10:03:40 +0000 (UTC)
+	with ESMTP id xZJhMUrdSoyW; Thu, 22 Feb 2024 10:18:41 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 422EA41B4C
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0D6CD41B72
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1708596220;
-	bh=K7mhh/+tGSokKC9hoWu6KuTY/yZf2g0GFbeGM7yMr08=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=uC7B/HV2DHSXQXKSaJ31v+Ma1GHPRL/jgfdrwCErCvcrNa1nnjLOyDLEMSlK2mLXW
-	 m1D4vKiFMrQ8xHlt32crKT1gbzMBignOROn8LPccQAbXPc7jbjNsW8U/B0qYU/nLCn
-	 KAZGdmm9WbR6ysycFN4TKYWKBwrsuvAl8XjjBEPMiJr8y1TcLm4so8TJcbl1xthU/R
-	 KV4RHdlcY1G8j6EoZBtjsgyp/QI8o0yPJHlDT7HiZrpfSysd+Re2a6a86Ardx/t3yt
-	 zZogjTUZpcrJjVyD4nyJUz/56yf2IS/zf+CKT1TK5BSovO/UlQUpu/aBKvbzpuezCL
-	 yVy2DDVYISKDw==
+	s=default; t=1708597121;
+	bh=af17vFA+XR0PLVSDztuSWa2TbDGEHKWUkQWkSMZboyo=;
+	h=From:To:In-Reply-To:References:Date:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=gPlNf11GtKgyIpoFE6NFGig4N99eLmh2M0hJDm01q+6BdxBPHBUuK/ydg1JIWpniF
+	 tjDbxvW+KM6alDxTkt+GHNglFul/u1ddaWnSrjJRCQGSGl0wH7baOWP2B1eqBPmCbt
+	 GT7cHGXH/itpaIKTE/LKSLDMv2ElVMkDcr/R5CgW/4fxZcMzh3es6z/8K5nwzOhaTd
+	 YFk8ZrQhcsAScnPaq9x0Ern59480CSAtFLQXhgn6ZVhBwHwphrqDqm+gWmW5S9A6jt
+	 DcipEkIwo4CUsLrPo8Z5sOKXZNuMBLZXt5vXbP82CL6KO+dGB28qpn0MEcYUXh/xR/
+	 rKTw8DJCZfqDw==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 422EA41B4C;
-	Thu, 22 Feb 2024 10:03:40 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 0D6CD41B72;
+	Thu, 22 Feb 2024 10:18:41 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 94DA41BF4DA
- for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Feb 2024 10:03:37 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 92EB21BF3FF
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Feb 2024 10:18:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 8E1C260C11
- for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Feb 2024 10:03:37 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 8AFDB41856
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Feb 2024 10:18:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id if5_o0s2As97 for <intel-wired-lan@lists.osuosl.org>;
- Thu, 22 Feb 2024 10:03:37 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2604:1380:40e1:4800::1; helo=sin.source.kernel.org;
- envelope-from=arnd@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org BD083600B8
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org BD083600B8
-Received: from sin.source.kernel.org (sin.source.kernel.org
- [IPv6:2604:1380:40e1:4800::1])
- by smtp3.osuosl.org (Postfix) with ESMTPS id BD083600B8
- for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Feb 2024 10:03:36 +0000 (UTC)
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by sin.source.kernel.org (Postfix) with ESMTP id 523DCCE21E0;
- Thu, 22 Feb 2024 10:03:32 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1A975C433F1;
- Thu, 22 Feb 2024 10:03:28 +0000 (UTC)
-From: Arnd Bergmann <arnd@kernel.org>
-To: Jesse Brandeburg <jesse.brandeburg@intel.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>
-Date: Thu, 22 Feb 2024 11:02:13 +0100
-Message-Id: <20240222100324.453272-1-arnd@kernel.org>
-X-Mailer: git-send-email 2.39.2
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id mcftD0b1a5xa for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 22 Feb 2024 10:18:37 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=193.142.43.55;
+ helo=galois.linutronix.de; envelope-from=kurt@linutronix.de;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 97DD441851
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 97DD441851
+Received: from galois.linutronix.de (Galois.linutronix.de [193.142.43.55])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 97DD441851
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Feb 2024 10:18:37 +0000 (UTC)
+From: Kurt Kanzenbach <kurt@linutronix.de>
+To: Arnd Bergmann <arnd@kernel.org>, Jesse Brandeburg
+ <jesse.brandeburg@intel.com>, Tony Nguyen <anthony.l.nguyen@intel.com>
+In-Reply-To: <20240222100324.453272-1-arnd@kernel.org>
+References: <20240222100324.453272-1-arnd@kernel.org>
+Date: Thu, 22 Feb 2024 11:18:33 +0100
+Message-ID: <87y1bcajk6.fsf@kurt.kurt.home>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1708596211;
- bh=0AggU31CGt9Ylb7dMMATQT5arx+9ift1Y5YR/y3R+MU=;
- h=From:To:Cc:Subject:Date:From;
- b=M6Fe4TK8tyMXPrN5n3UA3CMidv/F0/zv9WlgWVDiLyjsRIvkZDgUECgErqur0N4/d
- BEpUb6hdqeYViHQjlHxqcFvFJFlQUOZKDI44b3/cKgAIZL1F/wooyjj9ABOEOu9p5Y
- 1277HuwsBDyZrDwlOY77ie08vHxOXchwQ6pmHGZjWQzOfZ6947Rte+CCDWLgxHBQmS
- XtenB0iA0TJlpvSv5CKPxN/aYbDQhVfv4iYUKnENXlCLFwBwYO5mtI56klb44M0XhB
- SclZjstRT4iLXKZGNMIrScxEAacBniTrTWufVS32T1dd7aKO8kjYQKxFNb/IlmUxcF
- keHbag2tHwuZQ==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+Content-Type: multipart/signed; boundary="=-=-=";
+ micalg=pgp-sha512; protocol="application/pgp-signature"
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linutronix.de; s=2020; t=1708597115;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=af17vFA+XR0PLVSDztuSWa2TbDGEHKWUkQWkSMZboyo=;
+ b=3qgITIenivVJDEfsgXlDnVaO8ihsP7cjE+l+89ikE3tZsXtzMFglAoQJ4XTCsjc3Bn+Ak3
+ I/8JSIqEkduAsTMgsUQDaaruPiTeA5V6xtlQ4d1XYecW01D8h8/QAqTFV13Cy0I25+yf0M
+ 970TfJOdkHbzecg/VNYX8B/uC8skUg7ZlA/Mbf2fDKhOUyI3fdJCO58AqAPqk6+0gE5/0i
+ 93Ju3DPLyN+j5y8TnC4xokeoJcTNULX/au6ZP0/yHD569EsxCi1QVWLpwzWn+BCe2akj7o
+ 4Md8R2oyWVZXbg4LYDPNsjSGge9hAlJdAM3i4NVV8ynyta5HChClSOnegMZ5gg==
+X-Mailman-Original-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed;
+ d=linutronix.de; s=2020e; t=1708597115;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=af17vFA+XR0PLVSDztuSWa2TbDGEHKWUkQWkSMZboyo=;
+ b=TZ+jyXJpIAX6ztCb0kRdlAbld1WAkSq07gQbwTdprN//TSEisBt28LHuNkZ4E5gbQUaYA+
+ GcIlL2DSCe3dZIBw==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20201202 header.b=M6Fe4TK8
-Subject: [Intel-wired-lan] [PATCH] igc: fix LEDS_CLASS dependency
+ header.from=linutronix.de
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key, unprotected) header.d=linutronix.de
+ header.i=@linutronix.de header.a=rsa-sha256 header.s=2020 header.b=3qgITIen; 
+ dkim=pass header.d=linutronix.de header.i=@linutronix.de
+ header.a=ed25519-sha256 header.s=2020e header.b=TZ+jyXJp
+Subject: Re: [Intel-wired-lan] [PATCH] igc: fix LEDS_CLASS dependency
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,34 +107,46 @@ Cc: Andrew Lunn <andrew@lunn.ch>, Arnd Bergmann <arnd@arndb.de>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Arnd Bergmann <arnd@arndb.de>
+--=-=-=
+Content-Type: text/plain
 
-When IGC is built-in but LEDS_CLASS is a loadable module, there is
-a link failure:
+On Thu Feb 22 2024, Arnd Bergmann wrote:
+> From: Arnd Bergmann <arnd@arndb.de>
+>
+> When IGC is built-in but LEDS_CLASS is a loadable module, there is
+> a link failure:
+>
+> x86_64-linux-ld: drivers/net/ethernet/intel/igc/igc_leds.o: in function `igc_led_setup':
+> igc_leds.c:(.text+0x75c): undefined reference to `devm_led_classdev_register_ext'
+>
+> Add another dependency that prevents this combination.
+>
+> Fixes: ea578703b03d ("igc: Add support for LEDs on i225/i226")
+> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
 
-x86_64-linux-ld: drivers/net/ethernet/intel/igc/igc_leds.o: in function `igc_led_setup':
-igc_leds.c:(.text+0x75c): undefined reference to `devm_led_classdev_register_ext'
+Ops, sorry. I tried to build all different combinations, but obviously
+failed. Thanks for fixing this.
 
-Add another dependency that prevents this combination.
+Reviewed-by: Kurt Kanzenbach <kurt@linutronix.de>
 
-Fixes: ea578703b03d ("igc: Add support for LEDs on i225/i226")
-Signed-off-by: Arnd Bergmann <arnd@arndb.de>
----
- drivers/net/ethernet/intel/Kconfig | 1 +
- 1 file changed, 1 insertion(+)
+--=-=-=
+Content-Type: application/pgp-signature; name="signature.asc"
 
-diff --git a/drivers/net/ethernet/intel/Kconfig b/drivers/net/ethernet/intel/Kconfig
-index af7fa6856707..6e7901e12699 100644
---- a/drivers/net/ethernet/intel/Kconfig
-+++ b/drivers/net/ethernet/intel/Kconfig
-@@ -372,6 +372,7 @@ config IGC
- config IGC_LEDS
- 	def_bool LEDS_TRIGGER_NETDEV
- 	depends on IGC && LEDS_CLASS
-+	depends on LEDS_CLASS=y || IGC=m
- 	help
- 	  Optional support for controlling the NIC LED's with the netdev
- 	  LED trigger.
--- 
-2.39.2
+-----BEGIN PGP SIGNATURE-----
 
+iQJHBAEBCgAxFiEEvLm/ssjDfdPf21mSwZPR8qpGc4IFAmXXH3kTHGt1cnRAbGlu
+dXRyb25peC5kZQAKCRDBk9HyqkZzgpgsD/wL4ALVODXchFjqCM3M42Q/Cc903SsI
+C1OkwJfeXL9PHV3NRF/st5Xb9C4ijdRlvOqKe9uoGFv2Hj0vV4cXMXqeOzgHIHLp
+Ka0GPGR2yYJF2l1rzXepkLVKAKkUP/UDq97rOtV8q5Z4dLcvxLOCx+HPnKV3Eo+Q
+eumqHTx9BUmgrXq0ji/Z9t2AqvUoYOgJpw7BO/mQpyUCm55rwYKwJ0FCuD+7Fjfv
+wTW3RhkKOSSCK3AAIXporCITQr07ZxYaNEnOfPPI/xYoNgCkBIvjovPq4ghTPWm1
+Rja3kmLUOmMG0nq2mvJeUzJSuaJWL6hnngk3FaJH9QbDN5fIBdTbGY9Mr5VmoCqO
+JRYcdPym5xI57ahcCtZXK9YFtUpO8FWCUAVW7pXYL+owkNtBmo2odVrhgW2fozAi
+EhO3X9/5AUOjBb9WonmnOe5o3pWWT3vO/ez3f5GaWuDZ74n6u34XIC9enlrI4Z4Z
+zixs1ElctrE8fll+TNraf8SQ7o3V71HTadXKgjB0tszDqn/a8Q2jxxLfP9rMTwP6
+UDUrpgbHBlw2SjbINMDOkRvTbEX1wgYc2Gw7z5svwGwkeyWHDy9lHz82NGaPafxF
+qlannbnjglAp6LO+A6iy8KQEkeSN/8fZpJr2rW4yjTW+WmDkHMPxbNHpLcNeth28
+g38yKoe48d7Ldw==
+=yN6/
+-----END PGP SIGNATURE-----
+--=-=-=--
