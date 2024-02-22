@@ -2,66 +2,66 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4FDA6860226
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 22 Feb 2024 20:05:22 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5C653860227
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 22 Feb 2024 20:05:24 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 4022E41A1A;
-	Thu, 22 Feb 2024 19:05:19 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 47F9341A3F;
+	Thu, 22 Feb 2024 19:05:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id GAbTm-rAtFDr; Thu, 22 Feb 2024 19:05:18 +0000 (UTC)
+	with ESMTP id cUJkBmgIMhmC; Thu, 22 Feb 2024 19:05:19 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 7A5A841A1C
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 882E741A1C
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1708628718;
-	bh=yL6l0/ievOPy+tGZylMMCB4qrW6Tuo1Gr4DyK1KX3B4=;
+	s=default; t=1708628719;
+	bh=5kbKjt3s3/NHySTHNZkoqGU2sKcZlNVzXXfXTF78UIY=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=zqzZW7Acs9tj3erfwecZjMbjX9sh+zMWuW9QHiXvukut66m4xw2sS3dYhU0fezoVR
-	 aL4eXd5yvmlYUwQtFJhy6VNqm09pb5TaLgg3sXv2dkO7lixCe2jRDuVsWf8u2cf44F
-	 wdzooVvKf4Jfs4WiDVnbSrEJS6c296rzNMufu9ZUgFTTZeWUXFKI8UrjZX1OP2kI7W
-	 vhCxgo3ExSxStgDGTahNzOOFET7BLoxj6xPjFQ4UoybL+qQPwmLw/99Acb9HWnY57z
-	 nzwChw1yvtOoAJyw6WWCCcOzjGcUnfWkTtNUqHvyHKQku0lT7wnSCvomy4iNQc+Eub
-	 T0ijgWdLRPVsw==
+	b=GxtxHH7PzLznosV1VZfRVealRFE5DwflrXnja+aB143Xzvdg8iqUVGi3TdI3MigwT
+	 lnuKQ7uxFVRyLHw3Cuo2Ij13v99A0iSWlPVnIsVVpF8CX99fMY439PZ6UObaSfKfYJ
+	 5JWiJ2XMZ10rDMCYKXnyxoHvpJWLZ8WUjxC1HBIIH21IFp41sYyCCLk3rEwIBNILhO
+	 U0COZKSRv65UX9gcVZrNDsGPndGcyt6F0DapZsFw+MT4vmlPljBObsBXtuKaKStM4Y
+	 FtAxv54h9TDAT7FFqMd5ZEngUhIvR6iM/PfCWjJ/EmjxYBSZUG4XJ5dkPg2mgTEaB0
+	 p8vPoX1YqUSPg==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 7A5A841A1C;
-	Thu, 22 Feb 2024 19:05:18 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 882E741A1C;
+	Thu, 22 Feb 2024 19:05:19 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 5429D1BF2F6
- for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Feb 2024 19:05:10 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 015821BF2F6
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Feb 2024 19:05:12 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 2D9AA40103
- for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Feb 2024 19:05:10 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id D89D5419D1
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Feb 2024 19:05:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 6s0dIqu9VK3S for <intel-wired-lan@lists.osuosl.org>;
- Thu, 22 Feb 2024 19:05:09 +0000 (UTC)
+ with ESMTP id JUTvfN8OZfyZ for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 22 Feb 2024 19:05:11 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.11;
  helo=mgamail.intel.com; envelope-from=alan.brady@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org BE481419F6
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org BE481419F6
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org D78AC41978
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org D78AC41978
 Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.11])
- by smtp2.osuosl.org (Postfix) with ESMTPS id BE481419F6
- for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Feb 2024 19:05:08 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10992"; a="13506397"
-X-IronPort-AV: E=Sophos;i="6.06,179,1705392000"; d="scan'208";a="13506397"
+ by smtp2.osuosl.org (Postfix) with ESMTPS id D78AC41978
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Feb 2024 19:05:10 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10992"; a="13506401"
+X-IronPort-AV: E=Sophos;i="6.06,179,1705392000"; d="scan'208";a="13506401"
 Received: from fmviesa004.fm.intel.com ([10.60.135.144])
  by fmvoesa105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 22 Feb 2024 11:05:09 -0800
+ 22 Feb 2024 11:05:11 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.06,179,1705392000"; d="scan'208";a="10171393"
+X-IronPort-AV: E=Sophos;i="6.06,179,1705392000"; d="scan'208";a="10171422"
 Received: from dev1-atbrady.jf.intel.com ([10.166.241.35])
- by fmviesa004.fm.intel.com with ESMTP; 22 Feb 2024 11:05:08 -0800
+ by fmviesa004.fm.intel.com with ESMTP; 22 Feb 2024 11:05:10 -0800
 From: Alan Brady <alan.brady@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Thu, 22 Feb 2024 11:04:39 -0800
-Message-ID: <20240222190441.2610930-10-alan.brady@intel.com>
+Date: Thu, 22 Feb 2024 11:04:40 -0800
+Message-ID: <20240222190441.2610930-11-alan.brady@intel.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20240222190441.2610930-1-alan.brady@intel.com>
 References: <20240222190441.2610930-1-alan.brady@intel.com>
@@ -69,25 +69,25 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1708628709; x=1740164709;
+ t=1708628711; x=1740164711;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=cWJeW5MHlMpqXjOeEjoOrbFkjvB0IZ2p+tB7LA0Zb9Q=;
- b=DQrt32/eivTLjE+s079C8hN1/YLXqi4QK75ZtG1bYeSJsBzzoL07E74c
- NK6C+WizKLySThLFO0Wo1ZxyD+vxv8WZoFdPmyMV/L/tMZ15SYbDSX5Ak
- cEi+A0Zwm7e0EpDpoOpvKRbpTurwleAPT4B63+apk6f1s3ViprdVsZbeZ
- jqOwGgSBqQQqeWx4jbDa6aKfj4PXHg1xi9dAW24Xw4Nryz6TQ16QNluaL
- kJyzfyXk8ExeGE0t71Gn8fVXbCOB0Qbkexb4V70Uat3+xt4nL6qau7W0U
- 19XOeO21Qu35ZK7amJ8hl9Q97uiRefSEB/bMNSzgfcbqJQtgWwMlub31Y
- A==;
+ bh=9eIBb6bWagUzQQoX287zEEWkvYERQxEq7punHXUjISE=;
+ b=fecaTwyOyFCwfpo4Q+o8Z6d8+C+tgPndlTAB+/iG1CmcRLkgxL34O77t
+ oplfAEsj3m4dxFUIu4xr3BGo5VFfgq2njOl+HO1KiBortGRty/N/fSy6i
+ VeZEYIw2uX9gJ98NZ7MU7reN25ZNunHltBd1dyn5eW6JASebn/tN3sGWL
+ 9Q3ca2XLsWtwVE0/314HTEu0P1re4NdAIWxkYRAe5MTulq38bvPIhCYIZ
+ RMVnPTHYwOrREiC9C0A1rb61Tz7OYnkFUwm+1RHUE7yrFcx3bjQ042/69
+ son8FkU5cwvq7omopCmpUfFkdHxi+0MsmR13P1A9+0Ku9nxbAoDgDM6H/
+ w==;
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=DQrt32/e
-Subject: [Intel-wired-lan] [PATCH v6 09/11 iwl-next] idpf: prevent deinit
- uninitialized virtchnl core
+ header.a=rsa-sha256 header.s=Intel header.b=fecaTwyO
+Subject: [Intel-wired-lan] [PATCH v6 10/11 iwl-next] idpf: fix minor
+ controlq issues
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -105,86 +105,48 @@ Cc: netdev@vger.kernel.org, Alan Brady <alan.brady@intel.com>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-In idpf_remove we need to tear down the virtchnl core with
-idpf_vc_core_deinit so we can free up resources and leave things in a
-good state. However, in the case where we failed to establish VC
-communications we may not have ever actually successfully initialized
-the virtchnl core.
+While we're here improving virtchnl we can include two minor fixes for
+the lower level ctrlq flow.
 
-This fixes it by setting a bit once we successfully init the virtchnl
-core.  Then, in deinit, we'll check for it before going on further,
-otherwise we just return. Also clear the bit at the end of deinit so we
-know it's gone now.
+This adds a memory barrier to idpf_post_rx_buffs before we update tail
+on the controlq.  We should make sure our writes have had a chance to
+finish before we tell HW it can touch them.
+
+This also removes some defensive programming in idpf_ctrlq_recv. The
+caller should not be using a num_q_msg value of zero or more than the
+ring size and it's their responsibility to call functions sanely.
 
 Tested-by: Alexander Lobakin <aleksander.lobakin@intel.com>
 Signed-off-by: Alan Brady <alan.brady@intel.com>
 ---
- drivers/net/ethernet/intel/idpf/idpf.h          |  2 ++
- drivers/net/ethernet/intel/idpf/idpf_virtchnl.c | 10 ++++++++--
- 2 files changed, 10 insertions(+), 2 deletions(-)
+ drivers/net/ethernet/intel/idpf/idpf_controlq.c | 7 ++-----
+ 1 file changed, 2 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/idpf/idpf.h b/drivers/net/ethernet/intel/idpf/idpf.h
-index 5ed08be1dbc0..e7a036538246 100644
---- a/drivers/net/ethernet/intel/idpf/idpf.h
-+++ b/drivers/net/ethernet/intel/idpf/idpf.h
-@@ -83,6 +83,7 @@ enum idpf_state {
-  * @IDPF_HR_RESET_IN_PROG: Reset in progress
-  * @IDPF_REMOVE_IN_PROG: Driver remove in progress
-  * @IDPF_MB_INTR_MODE: Mailbox in interrupt mode
-+ * @IDPF_VC_CORE_INIT: virtchnl core has been init
-  * @IDPF_FLAGS_NBITS: Must be last
-  */
- enum idpf_flags {
-@@ -91,6 +92,7 @@ enum idpf_flags {
- 	IDPF_HR_RESET_IN_PROG,
- 	IDPF_REMOVE_IN_PROG,
- 	IDPF_MB_INTR_MODE,
-+	IDPF_VC_CORE_INIT,
- 	IDPF_FLAGS_NBITS,
- };
+diff --git a/drivers/net/ethernet/intel/idpf/idpf_controlq.c b/drivers/net/ethernet/intel/idpf/idpf_controlq.c
+index c7f43d2fcd13..4849590a5591 100644
+--- a/drivers/net/ethernet/intel/idpf/idpf_controlq.c
++++ b/drivers/net/ethernet/intel/idpf/idpf_controlq.c
+@@ -516,6 +516,8 @@ int idpf_ctlq_post_rx_buffs(struct idpf_hw *hw, struct idpf_ctlq_info *cq,
+ 			/* Wrap to end of end ring since current ntp is 0 */
+ 			cq->next_to_post = cq->ring_size - 1;
  
-diff --git a/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c b/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c
-index e89e2bad460d..a602ff8d74e0 100644
---- a/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c
-+++ b/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c
-@@ -2990,7 +2990,9 @@ int idpf_vc_core_init(struct idpf_adapter *adapter)
- 	queue_delayed_work(adapter->init_wq, &adapter->init_task,
- 			   msecs_to_jiffies(5 * (adapter->pdev->devfn & 0x07)));
- 
--	goto no_err;
-+	set_bit(IDPF_VC_CORE_INIT, adapter->flags);
++		dma_wmb();
 +
-+	return 0;
+ 		wr32(hw, cq->reg.tail, cq->next_to_post);
+ 	}
  
- err_intr_req:
- 	cancel_delayed_work_sync(&adapter->serv_task);
-@@ -2999,7 +3001,6 @@ int idpf_vc_core_init(struct idpf_adapter *adapter)
- err_netdev_alloc:
- 	kfree(adapter->vports);
- 	adapter->vports = NULL;
--no_err:
- 	return err;
+@@ -546,11 +548,6 @@ int idpf_ctlq_recv(struct idpf_ctlq_info *cq, u16 *num_q_msg,
+ 	int err = 0;
+ 	u16 i;
  
- init_failed:
-@@ -3034,6 +3035,9 @@ int idpf_vc_core_init(struct idpf_adapter *adapter)
-  */
- void idpf_vc_core_deinit(struct idpf_adapter *adapter)
- {
-+	if (!test_bit(IDPF_VC_CORE_INIT, adapter->flags))
-+		return;
-+
- 	idpf_vc_xn_shutdown(adapter->vcxn_mngr);
- 	idpf_deinit_task(adapter);
- 	idpf_intr_rel(adapter);
-@@ -3045,6 +3049,8 @@ void idpf_vc_core_deinit(struct idpf_adapter *adapter)
+-	if (*num_q_msg == 0)
+-		return 0;
+-	else if (*num_q_msg > cq->ring_size)
+-		return -EBADR;
+-
+ 	/* take the lock before we start messing with the ring */
+ 	mutex_lock(&cq->cq_lock);
  
- 	kfree(adapter->vports);
- 	adapter->vports = NULL;
-+
-+	clear_bit(IDPF_VC_CORE_INIT, adapter->flags);
- }
- 
- /**
 -- 
 2.43.0
 
