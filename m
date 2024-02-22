@@ -1,87 +1,93 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 127F785FBEA
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 22 Feb 2024 16:11:14 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0AD1085FE0A
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 22 Feb 2024 17:27:27 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id BCFEA41B49;
-	Thu, 22 Feb 2024 15:11:12 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 2363E83260;
+	Thu, 22 Feb 2024 16:27:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id GTsTxW41QGy3; Thu, 22 Feb 2024 15:11:12 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id cxV2MR81qhj5; Thu, 22 Feb 2024 16:27:24 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org F0A4D41B5B
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4C54A83267
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1708614672;
-	bh=wMH/YxCjPZ+y9HsN5oGyh1S5l+4RS/ggKj3jV/RYk0o=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=bqXrbv1xpdomcjquTB+MtayVlqLg060I0eJmv+89beoAGqdyHOV3skTKrSxnIeWMc
-	 1h3nHjQn5eOnxhSAiUgPOfv+CGl5BERILxvzznav5sbRp5eODHp0UpWb7LEnzjqW42
-	 C85X7Ql1yu4kNjxiK0KDCDc1c4kcwvzDlgZjtXSqZZUM5fBwCIgUw0hcD96U982ZSp
-	 nPnM2BBvvazRj0pOBC8sjbufxnU8AYjeFLI/0REz0y6Rsa0zcEnxybeKuLU5yS4CL4
-	 wBK27bf4xm497VDqGT8xWQ1fLymI3ObTPRK4XwGsxS2K/6xnS8yv4mfrttphaPNfBj
-	 y42OJ0TnRfsyw==
+	s=default; t=1708619244;
+	bh=gQ8k9gxqDr+NhkJpWULLvyV7u+9vvgEGyusqY8hLLXQ=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=CWnXgR3KIZz364jN9WG+ovVy8ECSh3KPzklYpfLY8mHkOP2vT4rk3H74vwoaNqH9B
+	 r98PMm8mP4sPXZrWf2pH3UXqXuH67/FTMIVI4PL3ueYwbvbrH9fgoronI1kRZEQYcc
+	 lr1zQeWoQXckIYhU6k0m+uvmCDz8xKYs4fPrc+bY96xG72cSNTpm7hKd5eypNKMXJs
+	 Qz7EZIlduXGArCLuOtD5D3lpGrYf+10XyNj0JV7vLSPavgg5ORAauc3mOawJ25H9Tr
+	 XD43H2mH7t8eSQtJMpUxtcukved5+gEifz0LsSyo1ScByiSJXk5gA7KUlGbUVy/Al2
+	 D0xfaF8ScAosQ==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id F0A4D41B5B;
-	Thu, 22 Feb 2024 15:11:11 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 4C54A83267;
+	Thu, 22 Feb 2024 16:27:24 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 2FF0A1BF40B
- for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Feb 2024 15:11:10 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 64BFA1BF2CE
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Feb 2024 16:27:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 27BA341908
- for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Feb 2024 15:11:10 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 5DA0B40948
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Feb 2024 16:27:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id fTcpxxCibQZ9 for <intel-wired-lan@lists.osuosl.org>;
- Thu, 22 Feb 2024 15:11:09 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=156.67.10.101;
- helo=vps0.lunn.ch; envelope-from=andrew@lunn.ch; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 33EC14029F
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 33EC14029F
-Received: from vps0.lunn.ch (vps0.lunn.ch [156.67.10.101])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 33EC14029F
- for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Feb 2024 15:11:09 +0000 (UTC)
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
- (envelope-from <andrew@lunn.ch>)
- id 1rdAj7-008S6N-L3; Thu, 22 Feb 2024 16:11:09 +0100
-Date: Thu, 22 Feb 2024 16:11:09 +0100
-From: Andrew Lunn <andrew@lunn.ch>
-To: Simon Horman <horms@kernel.org>
-Message-ID: <68088998-4486-4930-90a4-96a32f08c490@lunn.ch>
-References: <20240218-keee-u32-cleanup-v4-0-71f13b7c3e60@lunn.ch>
- <20240218-keee-u32-cleanup-v4-3-71f13b7c3e60@lunn.ch>
- <20240220124405.GB40273@kernel.org>
- <a52361ef-66ab-41bd-b245-ccd26fcbd957@lunn.ch>
- <20240221102851.GA352018@kernel.org>
+ with ESMTP id cpIMvG1YNatk for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 22 Feb 2024 16:27:21 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.18;
+ helo=mgamail.intel.com; envelope-from=maciej.fijalkowski@intel.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 5548740166
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 5548740166
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.18])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 5548740166
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Feb 2024 16:27:20 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10992"; a="2963364"
+X-IronPort-AV: E=Sophos;i="6.06,179,1705392000"; 
+   d="scan'208";a="2963364"
+Received: from orviesa008.jf.intel.com ([10.64.159.148])
+ by orvoesa110.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 22 Feb 2024 08:27:20 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.06,179,1705392000"; 
+   d="scan'208";a="5932294"
+Received: from boxer.igk.intel.com ([10.102.20.173])
+ by orviesa008.jf.intel.com with ESMTP; 22 Feb 2024 08:27:18 -0800
+From: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Thu, 22 Feb 2024 17:27:12 +0100
+Message-Id: <20240222162712.722914-1-maciej.fijalkowski@intel.com>
+X-Mailer: git-send-email 2.35.3
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20240221102851.GA352018@kernel.org>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt;
- c=relaxed/relaxed; d=lunn.ch; 
- s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
- References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
- Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
- Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
- bh=wMH/YxCjPZ+y9HsN5oGyh1S5l+4RS/ggKj3jV/RYk0o=; b=PlwPp4qsKfFwbW6SZDrR5NPnMQ
- bR7XdWqPB+3yentT0+DlCP3iWQUbcAbX468on34w/o/3vMxOcbjXYYQWet4npgIE2qKzq8kE44oHM
- JT5IhGFCO0YIF5P7A3+uL6bdTE3C3jSwdtnPLreSxTDspO8QL54S9WVu7na1/VEbCscc=;
+Content-Transfer-Encoding: 8bit
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1708619242; x=1740155242;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=DsNzO7fFajPMIW7btn9lHHhqZKjHYCknlu6PRuyC+hk=;
+ b=ntreHXZGoC5MJpUyFqjNPxmvaMjhjmEER2Ml/ua+Sxi0R9twpwKcZUAR
+ 6YuZ+mVGFgXXnwTAeFvA0JnvhEmbL1OZP9hY5+RP4zbUQ+8E2YofU0HZS
+ cVuUzzZ3U5Izp+9HOj3O5v9ZbKIlmmktdw1ABNQM8tCpZLhnsydH1WoS3
+ W8AYjywBrAEJUQR4aLOULjG6KzxstB7mGpkoYnrMAYwoELla5p1eRI7su
+ ELd3Z08122ifrkyMvVWmAG8hPAeteArKDAnhmFcuS61Rpj5K05JqoUPRj
+ 77bI+jaugEWagbg1vI9BMSFZVsZ4Iz0kntWqeYQRcay439nWXSyEbDTkw
+ g==;
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=lunn.ch
+ header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (1024-bit key,
- unprotected) header.d=lunn.ch header.i=@lunn.ch header.a=rsa-sha256
- header.s=20171124 header.b=PlwPp4qs
-Subject: Re: [Intel-wired-lan] [PATCH net-next v4 3/9] net: qlogic: qede:
- Use linkmode helpers for EEE
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=ntreHXZG
+Subject: [Intel-wired-lan] [PATCH RFC iwl-net] ixgbe: do not account for XDP
+ rings in Tx watchdog
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,39 +100,88 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Ariel Elior <aelior@marvell.com>, Manish Chopra <manishc@marvell.com>,
- netdev@vger.kernel.org, linux-usb@vger.kernel.org,
- Jesse Brandeburg <jesse.brandeburg@intel.com>, linux-kernel@vger.kernel.org,
- Eric Dumazet <edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
- intel-wired-lan@lists.osuosl.org, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>
+Cc: jacob.e.keller@intel.com, Maciej Fijalkowski <maciej.fijalkowski@intel.com>,
+ jesse.brandeburg@intel.com, magnus.karlsson@intel.com
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed, Feb 21, 2024 at 10:28:51AM +0000, Simon Horman wrote:
-> On Tue, Feb 20, 2024 at 03:45:28PM +0100, Andrew Lunn wrote:
-> > > > +	unsupp = linkmode_andnot(tmp, edata->advertised, supported);
-> > > 
-> > > nit: Given the types involved, I might have written this as:
-> > > 
-> > > 	unsupp = !!linkmode_andnot(tmp, edata->advertised, supported);
-> > 
-> > linkmode_andnot() calls bitmap_andnot():
-> > 
-> > static inline bool bitmap_andnot(unsigned long *dst, const unsigned long *src1,
-> > 			const unsigned long *src2, unsigned int nbits)
-> > 
-> > It already returns a bool, so there is no need to force an int to bool
-> > conversion using !!.
-> 
-> Good point, sorry for missing that.
+Fix issue where ixgbe driver triggers resets in endless manner. A
+snippet from dmesg:
 
-> I assume there is a reason that the return type of
-> linkmode_andnot is not bool.
+[1879966.583523] ixgbe 0000:86:00.0 enp134s0f0: initiating reset to clear Tx work after link loss
+[1879968.405694] ixgbe 0000:86:00.0 enp134s0f0: Reset adapter
+[1879968.925689] ixgbe 0000:86:00.0 enp134s0f0: detected SFP+: 3
+[1879969.185504] ixgbe 0000:86:00.0 enp134s0f0: NIC Link is Up 10 Gbps, Flow Control: RX/TX
+[1879969.592433] ixgbe 0000:86:00.0 enp134s0f0: NIC Link is Down
+[1879969.592539] ixgbe 0000:86:00.0 enp134s0f0: initiating reset to clear Tx work after link loss
+[1879971.413253] ixgbe 0000:86:00.0 enp134s0f0: Reset adapter
+[1879971.901400] ixgbe 0000:86:00.0 enp134s0f0: detected SFP+: 3
+[1879972.161224] ixgbe 0000:86:00.0 enp134s0f0: NIC Link is Up 10 Gbps, Flow Control: RX/TX
+[1879972.567922] ixgbe 0000:86:00.0 enp134s0f0: NIC Link is Down
+[1879972.568023] ixgbe 0000:86:00.0 enp134s0f0: initiating reset to clear Tx work after link loss
+[...]
 
-Either i got it wrong when i added the wrapper, or bitmap_andnot() has
-changed since then?
+This can happen when user launches multiple xdpsock in txonly mode and
+flap the link few times. Commit c685c69fba71 ("ixgbe: don't do any
+AF_XDP zero-copy transmit if netif is not OK") tried to address same
+thing by calling netif_carrier_ok() in ZC Tx path, however as shown
+above I am still able to trigger reset loop.
 
-It probably can be changed to a bool.
+In watchdog subtask, when bringing link up, messages that are shown in
+dmesg are:
+Link is up
+Link is down <--- at this state, !netif_carrier_ok() xsk managed to
+                  produce tx desc, ixgbe_ring_tx_pending() will see
+                  ntc != ntu at XDP ring at will schedule reset
+Link is up
 
-	Andrew
+I am not sure if sequence of events when bringing interface up is
+correct. I would expect that link would go just from downed state to up,
+not up/down/up.
+
+For now, do not look at XDP rings within watchdog. It is not common to
+do so. After that it is no longer needed to call netif_carrier_ok() in
+ZC Tx.
+
+Fixes: 33fdc82f0883 ("ixgbe: add support for XDP_TX action")
+Signed-off-by: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+---
+ drivers/net/ethernet/intel/ixgbe/ixgbe_main.c | 7 -------
+ drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c  | 3 ---
+ 2 files changed, 10 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+index bd541527c8c7..083f7e75f67c 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+@@ -7624,13 +7624,6 @@ static bool ixgbe_ring_tx_pending(struct ixgbe_adapter *adapter)
+ 			return true;
+ 	}
+ 
+-	for (i = 0; i < adapter->num_xdp_queues; i++) {
+-		struct ixgbe_ring *ring = adapter->xdp_ring[i];
+-
+-		if (ring->next_to_use != ring->next_to_clean)
+-			return true;
+-	}
+-
+ 	return false;
+ }
+ 
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c
+index 59798bc33298..7d617a309967 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c
+@@ -409,9 +409,6 @@ static bool ixgbe_xmit_zc(struct ixgbe_ring *xdp_ring, unsigned int budget)
+ 			break;
+ 		}
+ 
+-		if (!netif_carrier_ok(xdp_ring->netdev))
+-			break;
+-
+ 		if (!xsk_tx_peek_desc(pool, &desc))
+ 			break;
+ 
+-- 
+2.34.1
+
