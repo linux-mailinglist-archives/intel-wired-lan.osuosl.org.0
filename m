@@ -2,94 +2,86 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5F40285FB99
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 22 Feb 2024 15:50:47 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 127F785FBEA
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 22 Feb 2024 16:11:14 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 7EA4B41D9E;
-	Thu, 22 Feb 2024 14:50:44 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id BCFEA41B49;
+	Thu, 22 Feb 2024 15:11:12 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id kTxVUCKlBOG0; Thu, 22 Feb 2024 14:50:43 +0000 (UTC)
+	with ESMTP id GTsTxW41QGy3; Thu, 22 Feb 2024 15:11:12 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8996340880
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org F0A4D41B5B
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1708613443;
-	bh=5cpcPYY5yH1K1jGdqV/EjndPYmL+oT6s0K4Rb+mNqA4=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1708614672;
+	bh=wMH/YxCjPZ+y9HsN5oGyh1S5l+4RS/ggKj3jV/RYk0o=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=9xbDY4DvHaplmkGE2lsCzgRx6yY1eooaUF1ZQ/Lyuw9jfsvGn6AC1NCvUOOQDPUT1
-	 q75lLLkHtyBADGG9CiuRIDD6DsMes3EAzWXyg+iXhrEheQnJb+vzLt4ATupVCulOik
-	 y1vpazoir9aSuJ8mObkpCStzd7Cfk2gvRyizf/NDRRC6UxvhjXT7FzjjJem/NmdWaG
-	 YGC9r0aVjksuTi1bpmrHcLCL9PkmGhqJRV+do2m1G7CCcJtma/B48gw0mRw0R6WZsf
-	 HDG2ZAwL14p7l8MOb+uM9WGIRoTsiMsf5hNIbZEql6JCl+o3xXk9ejdYG/oYjS3GuL
-	 x/z+tZSvMBLqQ==
+	b=bqXrbv1xpdomcjquTB+MtayVlqLg060I0eJmv+89beoAGqdyHOV3skTKrSxnIeWMc
+	 1h3nHjQn5eOnxhSAiUgPOfv+CGl5BERILxvzznav5sbRp5eODHp0UpWb7LEnzjqW42
+	 C85X7Ql1yu4kNjxiK0KDCDc1c4kcwvzDlgZjtXSqZZUM5fBwCIgUw0hcD96U982ZSp
+	 nPnM2BBvvazRj0pOBC8sjbufxnU8AYjeFLI/0REz0y6Rsa0zcEnxybeKuLU5yS4CL4
+	 wBK27bf4xm497VDqGT8xWQ1fLymI3ObTPRK4XwGsxS2K/6xnS8yv4mfrttphaPNfBj
+	 y42OJ0TnRfsyw==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 8996340880;
-	Thu, 22 Feb 2024 14:50:43 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id F0A4D41B5B;
+	Thu, 22 Feb 2024 15:11:11 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 6DFA51BF59A
- for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Feb 2024 14:50:39 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 2FF0A1BF40B
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Feb 2024 15:11:10 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 5E29541D62
- for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Feb 2024 14:50:39 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 27BA341908
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Feb 2024 15:11:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id dRJbx5hKFmr8 for <intel-wired-lan@lists.osuosl.org>;
- Thu, 22 Feb 2024 14:50:38 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.18;
- helo=mgamail.intel.com; envelope-from=maciej.fijalkowski@intel.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 5263441D7C
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5263441D7C
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.18])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 5263441D7C
- for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Feb 2024 14:50:38 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10992"; a="2949314"
-X-IronPort-AV: E=Sophos;i="6.06,179,1705392000"; 
-   d="scan'208";a="2949314"
-Received: from fmviesa008.fm.intel.com ([10.60.135.148])
- by orvoesa110.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 22 Feb 2024 06:50:37 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.06,179,1705392000"; 
-   d="scan'208";a="5670967"
-Received: from boxer.igk.intel.com ([10.102.20.173])
- by fmviesa008.fm.intel.com with ESMTP; 22 Feb 2024 06:50:36 -0800
-From: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Thu, 22 Feb 2024 15:50:25 +0100
-Message-Id: <20240222145025.722515-4-maciej.fijalkowski@intel.com>
-X-Mailer: git-send-email 2.35.3
-In-Reply-To: <20240222145025.722515-1-maciej.fijalkowski@intel.com>
-References: <20240222145025.722515-1-maciej.fijalkowski@intel.com>
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id fTcpxxCibQZ9 for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 22 Feb 2024 15:11:09 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=156.67.10.101;
+ helo=vps0.lunn.ch; envelope-from=andrew@lunn.ch; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 33EC14029F
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 33EC14029F
+Received: from vps0.lunn.ch (vps0.lunn.ch [156.67.10.101])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 33EC14029F
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Feb 2024 15:11:09 +0000 (UTC)
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+ (envelope-from <andrew@lunn.ch>)
+ id 1rdAj7-008S6N-L3; Thu, 22 Feb 2024 16:11:09 +0100
+Date: Thu, 22 Feb 2024 16:11:09 +0100
+From: Andrew Lunn <andrew@lunn.ch>
+To: Simon Horman <horms@kernel.org>
+Message-ID: <68088998-4486-4930-90a4-96a32f08c490@lunn.ch>
+References: <20240218-keee-u32-cleanup-v4-0-71f13b7c3e60@lunn.ch>
+ <20240218-keee-u32-cleanup-v4-3-71f13b7c3e60@lunn.ch>
+ <20240220124405.GB40273@kernel.org>
+ <a52361ef-66ab-41bd-b245-ccd26fcbd957@lunn.ch>
+ <20240221102851.GA352018@kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1708613438; x=1740149438;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=9ltIlHFtQ/B9aDC7Wb4gqDk5rk8GxOMve1JyJc0Ftgo=;
- b=b01UIBtjOUR7bijvd5TEfK7dKXLoq2e2mgT4XsoFMcQZ1E0R44lYIM5y
- F+AuAFpAguEAVY81iPO/8vuwjLUjx5SGE2rt1ppK1220mi6HoB42xlE8t
- 8acm0VupPE/oW5txP33G6ohglbHnoA+8jAjcL48CBZFcMxvA0SJWp9E1g
- NKh3t2cL2gdZ9Sdbzur7dfXPkAcU1YyrT/6hoJtxfqOcFVEnR39n9X/7d
- ZmJtU0C78+U8+xzq+i/sWf3CHCfrpxihWFzqFKwYXFhGLeO2SsDUwr86U
- Ln8tp6I/TIT+2Uhz57C4ZKQMbCJndEWoE3j6GEZPDGweZaWO8icclGigM
- A==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240221102851.GA352018@kernel.org>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt;
+ c=relaxed/relaxed; d=lunn.ch; 
+ s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+ References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+ Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+ Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+ bh=wMH/YxCjPZ+y9HsN5oGyh1S5l+4RS/ggKj3jV/RYk0o=; b=PlwPp4qsKfFwbW6SZDrR5NPnMQ
+ bR7XdWqPB+3yentT0+DlCP3iWQUbcAbX468on34w/o/3vMxOcbjXYYQWet4npgIE2qKzq8kE44oHM
+ JT5IhGFCO0YIF5P7A3+uL6bdTE3C3jSwdtnPLreSxTDspO8QL54S9WVu7na1/VEbCscc=;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=b01UIBtj
-Subject: [Intel-wired-lan] [PATCH iwl-next 3/3] ixgbe: pull out stats update
- to common routines
+ header.from=lunn.ch
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (1024-bit key,
+ unprotected) header.d=lunn.ch header.i=@lunn.ch header.a=rsa-sha256
+ header.s=20171124 header.b=PlwPp4qs
+Subject: Re: [Intel-wired-lan] [PATCH net-next v4 3/9] net: qlogic: qede:
+ Use linkmode helpers for EEE
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -102,151 +94,39 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, Maciej Fijalkowski <maciej.fijalkowski@intel.com>,
- anthony.l.nguyen@intel.com, magnus.karlsson@intel.com
+Cc: Ariel Elior <aelior@marvell.com>, Manish Chopra <manishc@marvell.com>,
+ netdev@vger.kernel.org, linux-usb@vger.kernel.org,
+ Jesse Brandeburg <jesse.brandeburg@intel.com>, linux-kernel@vger.kernel.org,
+ Eric Dumazet <edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
+ intel-wired-lan@lists.osuosl.org, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Introduce ixgbe_update_{r,t}x_ring_stats() that will be used by both
-standard and ZC datapath.
+On Wed, Feb 21, 2024 at 10:28:51AM +0000, Simon Horman wrote:
+> On Tue, Feb 20, 2024 at 03:45:28PM +0100, Andrew Lunn wrote:
+> > > > +	unsupp = linkmode_andnot(tmp, edata->advertised, supported);
+> > > 
+> > > nit: Given the types involved, I might have written this as:
+> > > 
+> > > 	unsupp = !!linkmode_andnot(tmp, edata->advertised, supported);
+> > 
+> > linkmode_andnot() calls bitmap_andnot():
+> > 
+> > static inline bool bitmap_andnot(unsigned long *dst, const unsigned long *src1,
+> > 			const unsigned long *src2, unsigned int nbits)
+> > 
+> > It already returns a bool, so there is no need to force an int to bool
+> > conversion using !!.
+> 
+> Good point, sorry for missing that.
 
-Signed-off-by: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
----
- drivers/net/ethernet/intel/ixgbe/ixgbe_main.c | 54 ++++++++++++++-----
- .../ethernet/intel/ixgbe/ixgbe_txrx_common.h  |  7 +++
- drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c  | 17 ++----
- 3 files changed, 53 insertions(+), 25 deletions(-)
+> I assume there is a reason that the return type of
+> linkmode_andnot is not bool.
 
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-index bd541527c8c7..ee0321db61f8 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-@@ -1105,6 +1105,44 @@ static int ixgbe_tx_maxrate(struct net_device *netdev,
- 	return 0;
- }
- 
-+/**
-+ * ixgbe_update_tx_ring_stats - Update Tx ring specific counters
-+ * @tx_ring: ring to update
-+ * @q_vector: queue vector ring belongs to
-+ * @pkts: number of processed packets
-+ * @bytes: number of processed bytes
-+ */
-+void ixgbe_update_tx_ring_stats(struct ixgbe_ring *tx_ring,
-+				struct ixgbe_q_vector *q_vector, u64 pkts,
-+				u64 bytes)
-+{
-+	u64_stats_update_begin(&tx_ring->syncp);
-+	tx_ring->stats.bytes += bytes;
-+	tx_ring->stats.packets += pkts;
-+	u64_stats_update_end(&tx_ring->syncp);
-+	q_vector->tx.total_bytes += bytes;
-+	q_vector->tx.total_packets += pkts;
-+}
-+
-+/**
-+ * ixgbe_update_rx_ring_stats - Update Rx ring specific counters
-+ * @rx_ring: ring to update
-+ * @q_vector: queue vector ring belongs to
-+ * @pkts: number of processed packets
-+ * @bytes: number of processed bytes
-+ */
-+void ixgbe_update_rx_ring_stats(struct ixgbe_ring *rx_ring,
-+				struct ixgbe_q_vector *q_vector, u64 pkts,
-+				u64 bytes)
-+{
-+	u64_stats_update_begin(&rx_ring->syncp);
-+	rx_ring->stats.bytes += bytes;
-+	rx_ring->stats.packets += pkts;
-+	u64_stats_update_end(&rx_ring->syncp);
-+	q_vector->rx.total_bytes += bytes;
-+	q_vector->rx.total_packets += pkts;
-+}
-+
- /**
-  * ixgbe_clean_tx_irq - Reclaim resources after transmit completes
-  * @q_vector: structure containing interrupt and ring information
-@@ -1207,12 +1245,8 @@ static bool ixgbe_clean_tx_irq(struct ixgbe_q_vector *q_vector,
- 
- 	i += tx_ring->count;
- 	tx_ring->next_to_clean = i;
--	u64_stats_update_begin(&tx_ring->syncp);
--	tx_ring->stats.bytes += total_bytes;
--	tx_ring->stats.packets += total_packets;
--	u64_stats_update_end(&tx_ring->syncp);
--	q_vector->tx.total_bytes += total_bytes;
--	q_vector->tx.total_packets += total_packets;
-+	ixgbe_update_tx_ring_stats(tx_ring, q_vector, total_packets,
-+				   total_bytes);
- 	adapter->tx_ipsec += total_ipsec;
- 
- 	if (check_for_tx_hang(tx_ring) && ixgbe_check_tx_hang(tx_ring)) {
-@@ -2429,12 +2463,8 @@ static int ixgbe_clean_rx_irq(struct ixgbe_q_vector *q_vector,
- 		ixgbe_xdp_ring_update_tail_locked(ring);
- 	}
- 
--	u64_stats_update_begin(&rx_ring->syncp);
--	rx_ring->stats.packets += total_rx_packets;
--	rx_ring->stats.bytes += total_rx_bytes;
--	u64_stats_update_end(&rx_ring->syncp);
--	q_vector->rx.total_packets += total_rx_packets;
--	q_vector->rx.total_bytes += total_rx_bytes;
-+	ixgbe_update_rx_ring_stats(rx_ring, q_vector, total_rx_packets,
-+				   total_rx_bytes);
- 
- 	return total_rx_packets;
- }
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_txrx_common.h b/drivers/net/ethernet/intel/ixgbe/ixgbe_txrx_common.h
-index f1f69ce67420..78deea5ec536 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_txrx_common.h
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_txrx_common.h
-@@ -46,4 +46,11 @@ bool ixgbe_clean_xdp_tx_irq(struct ixgbe_q_vector *q_vector,
- int ixgbe_xsk_wakeup(struct net_device *dev, u32 queue_id, u32 flags);
- void ixgbe_xsk_clean_tx_ring(struct ixgbe_ring *tx_ring);
- 
-+void ixgbe_update_tx_ring_stats(struct ixgbe_ring *tx_ring,
-+				struct ixgbe_q_vector *q_vector, u64 pkts,
-+				u64 bytes);
-+void ixgbe_update_rx_ring_stats(struct ixgbe_ring *rx_ring,
-+				struct ixgbe_q_vector *q_vector, u64 pkts,
-+				u64 bytes);
-+
- #endif /* #define _IXGBE_TXRX_COMMON_H_ */
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c
-index 59798bc33298..d34d715c59eb 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c
-@@ -359,12 +359,8 @@ int ixgbe_clean_rx_irq_zc(struct ixgbe_q_vector *q_vector,
- 		ixgbe_xdp_ring_update_tail_locked(ring);
- 	}
- 
--	u64_stats_update_begin(&rx_ring->syncp);
--	rx_ring->stats.packets += total_rx_packets;
--	rx_ring->stats.bytes += total_rx_bytes;
--	u64_stats_update_end(&rx_ring->syncp);
--	q_vector->rx.total_packets += total_rx_packets;
--	q_vector->rx.total_bytes += total_rx_bytes;
-+	ixgbe_update_rx_ring_stats(rx_ring, q_vector, total_rx_packets,
-+				   total_rx_bytes);
- 
- 	if (xsk_uses_need_wakeup(rx_ring->xsk_pool)) {
- 		if (failure || rx_ring->next_to_clean == rx_ring->next_to_use)
-@@ -499,13 +495,8 @@ bool ixgbe_clean_xdp_tx_irq(struct ixgbe_q_vector *q_vector,
- 	}
- 
- 	tx_ring->next_to_clean = ntc;
--
--	u64_stats_update_begin(&tx_ring->syncp);
--	tx_ring->stats.bytes += total_bytes;
--	tx_ring->stats.packets += total_packets;
--	u64_stats_update_end(&tx_ring->syncp);
--	q_vector->tx.total_bytes += total_bytes;
--	q_vector->tx.total_packets += total_packets;
-+	ixgbe_update_tx_ring_stats(tx_ring, q_vector, total_packets,
-+				   total_bytes);
- 
- 	if (xsk_frames)
- 		xsk_tx_completed(pool, xsk_frames);
--- 
-2.34.1
+Either i got it wrong when i added the wrapper, or bitmap_andnot() has
+changed since then?
 
+It probably can be changed to a bool.
+
+	Andrew
