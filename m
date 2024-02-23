@@ -1,68 +1,68 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 964498616EC
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 23 Feb 2024 17:06:45 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 563048616EE
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 23 Feb 2024 17:06:48 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 3EBCD41CB4;
-	Fri, 23 Feb 2024 16:06:44 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 3EE8A41CB6;
+	Fri, 23 Feb 2024 16:06:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 7aWUFgPflA9c; Fri, 23 Feb 2024 16:06:43 +0000 (UTC)
+	with ESMTP id OSu39iz7RjTk; Fri, 23 Feb 2024 16:06:44 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 0CABB41CAA
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 78D0241C9F
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1708704403;
-	bh=wlIP5SjA3B2naeMY2CXebItmlmRAiBJvGBk2W9BgPuE=;
+	s=default; t=1708704404;
+	bh=5cpcPYY5yH1K1jGdqV/EjndPYmL+oT6s0K4Rb+mNqA4=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=4drAhcEHjjIwWXGjSAKs35g599Il1yd+R/1XIU8GHLibkkrcn/TYUiW5ft7G4OBml
-	 zQp+dKrdnZ0X1X8xtSoNWuACpgo/PkBdlJ/2/La+2nJG9I5GzYMXbEVQRPGtjXYodZ
-	 8oAgb4PhE8nY+ec7hfYiGVh7XmRcLqouDliOY1vaVU61F4AoTbxZXeRpNw/foJhhpD
-	 l1rjwMHUkLnyCAFgA3CJllH3HOUF1UTf31zX+hh0hmqgbsevGamp8FlWEVrHERIwla
-	 0HwLQ8H2HSAGfkqNh9EXLcQt8q9qdUPSsngDLN+qaY12POVqFaH7RaKGYbdemgd7oE
-	 CdMKfOifZ33NA==
+	b=b8Mb8L/ZZjUf3IhmaWf2IAcq8mVtwf9wMu8eXl5etTCcZEHILnqJuF5nzlexA+hR0
+	 EtoVgyS5FnZUkB6nPosJXy9yy9lc265jC2g56lGGWSWX13gl2c0wG0HYUVY44t7yQf
+	 WrilH88jYfJA6itSCi75XZmVqhxIDWjFHhg3xVcWoIoxBjzefftDzaxxhpBsoIgqvr
+	 UxCCrMPNvuWmfjnhQJ2bRzUNSnR8QT5EmKY0k7bKJYK6iJBKErrndsIMkAO3OutSmI
+	 T2eVJ2heq0gdkVXZdA61xZTALlMjxknM/rDkYzKek6PceB1wl4E/fEe4TjZEYBDm+q
+	 txGwY1XVwuRjQ==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 0CABB41CAA;
-	Fri, 23 Feb 2024 16:06:43 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 78D0241C9F;
+	Fri, 23 Feb 2024 16:06:44 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 5B6711BF990
- for <intel-wired-lan@lists.osuosl.org>; Fri, 23 Feb 2024 16:06:39 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 194F91BF41D
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 23 Feb 2024 16:06:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 489B560909
- for <intel-wired-lan@lists.osuosl.org>; Fri, 23 Feb 2024 16:06:39 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 0753960909
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 23 Feb 2024 16:06:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id J6T17iFJ-R6j for <intel-wired-lan@lists.osuosl.org>;
- Fri, 23 Feb 2024 16:06:38 +0000 (UTC)
+ with ESMTP id GWmyWqx_wJdB for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 23 Feb 2024 16:06:40 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.12;
  helo=mgamail.intel.com; envelope-from=maciej.fijalkowski@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 6229E608D9
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6229E608D9
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 3CBDD608D9
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3CBDD608D9
 Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.12])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 6229E608D9
- for <intel-wired-lan@lists.osuosl.org>; Fri, 23 Feb 2024 16:06:38 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10993"; a="14454678"
-X-IronPort-AV: E=Sophos;i="6.06,180,1705392000"; d="scan'208";a="14454678"
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 3CBDD608D9
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 23 Feb 2024 16:06:40 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10993"; a="14454683"
+X-IronPort-AV: E=Sophos;i="6.06,180,1705392000"; d="scan'208";a="14454683"
 Received: from fmviesa006.fm.intel.com ([10.60.135.146])
  by orvoesa104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 23 Feb 2024 08:06:38 -0800
+ 23 Feb 2024 08:06:40 -0800
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.06,180,1705392000"; 
-   d="scan'208";a="6161967"
+   d="scan'208";a="6161982"
 Received: from boxer.igk.intel.com ([10.102.20.173])
- by fmviesa006.fm.intel.com with ESMTP; 23 Feb 2024 08:06:36 -0800
+ by fmviesa006.fm.intel.com with ESMTP; 23 Feb 2024 08:06:38 -0800
 From: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Fri, 23 Feb 2024 17:06:28 +0100
-Message-Id: <20240223160629.729433-3-maciej.fijalkowski@intel.com>
+Date: Fri, 23 Feb 2024 17:06:29 +0100
+Message-Id: <20240223160629.729433-4-maciej.fijalkowski@intel.com>
 X-Mailer: git-send-email 2.35.3
 In-Reply-To: <20240223160629.729433-1-maciej.fijalkowski@intel.com>
 References: <20240223160629.729433-1-maciej.fijalkowski@intel.com>
@@ -70,25 +70,25 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1708704399; x=1740240399;
+ t=1708704400; x=1740240400;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=0iiCC+b5YFY1rm3bvCk7VuHahm1aDlPhHiz0U2+D2yQ=;
- b=nxYMEKsdz38pFo0hSoSsa5V05Ini2QWN9M1WFo3sW4hmp6vPyDtuTPSz
- Yr56ZWG3dvkbuBnzSGfBwwGPuC5usq3D1yj38c8gc/EFcA7FX36d42/1o
- bTj9A+X3h+yvCLxlOE0hnVyyQWHh2BUb9A5f7fzfdsSV+k6jZMGnC9CGT
- SB0xoNFy8Q36MHHobeGgqMTva43KMqo77J9qxAxWbDNtJ7tBa/Pc/v2mm
- N+a0dnIfPGRHdktBrbI6Z60aSv/jKbbC5MVWdTUnfPP6506lofMcz0OG5
- GgI4ndbqaNKeZv+mtikOpC7LNzNP6yktn0raHic52rPi9XzyOYy3FU/Kv
- g==;
+ bh=9ltIlHFtQ/B9aDC7Wb4gqDk5rk8GxOMve1JyJc0Ftgo=;
+ b=VdyJtzlTEIUIlZXUC8T3G1oFIPzBfFSU1UUTXKfvwOv9oOwRZjMHLUJH
+ jVN8DblINiMa7wOEqayNgww4dzTAsF+ro299YObuMpcMZ5+cJlPDsT0Zw
+ 0AZaobsgURWplal/coNvPMT8YYrPYZh25xjopra+gL1fMNqowHR5PNS6+
+ KgQph7uGXMTf+vWATMkAKoGJbD1CY72cWpJJUOyNWGRG9h0J2t/xGjiMA
+ gfHwz3zsgKRUQtkcZCpUWCCTLa+qC9HVO9Zo+antIWvAo3K/bkeoDRmx/
+ uSMDQdC2UMQBbnRtWHA3tZ68jQ5qSWxh7kk9Vm5ukPsEUPS5VaU7DF9cY
+ A==;
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=nxYMEKsd
-Subject: [Intel-wired-lan] [PATCH v2 iwl-next 2/3] ice: avoid unnecessary
- devm_ usage
+ header.a=rsa-sha256 header.s=Intel header.b=VdyJtzlT
+Subject: [Intel-wired-lan] [PATCH v2 iwl-next 3/3] ixgbe: pull out stats
+ update to common routines
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -107,183 +107,146 @@ Cc: netdev@vger.kernel.org, Maciej Fijalkowski <maciej.fijalkowski@intel.com>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-1. pcaps are free'd right after AQ routines are done, no need for
-   devm_'s
-2. a test frame for loopback test in ethtool -t is destroyed at the end
-   of the test so we don't need devm_ here either.
+Introduce ixgbe_update_{r,t}x_ring_stats() that will be used by both
+standard and ZC datapath.
 
 Signed-off-by: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_common.c  | 34 +++++++-------------
- drivers/net/ethernet/intel/ice/ice_ethtool.c | 10 ++----
- 2 files changed, 14 insertions(+), 30 deletions(-)
+ drivers/net/ethernet/intel/ixgbe/ixgbe_main.c | 54 ++++++++++++++-----
+ .../ethernet/intel/ixgbe/ixgbe_txrx_common.h  |  7 +++
+ drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c  | 17 ++----
+ 3 files changed, 53 insertions(+), 25 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_common.c b/drivers/net/ethernet/intel/ice/ice_common.c
-index 10c32cd80fff..a987dc063946 100644
---- a/drivers/net/ethernet/intel/ice/ice_common.c
-+++ b/drivers/net/ethernet/intel/ice/ice_common.c
-@@ -965,9 +965,9 @@ static void ice_get_itr_intrl_gran(struct ice_hw *hw)
-  */
- int ice_init_hw(struct ice_hw *hw)
- {
--	struct ice_aqc_get_phy_caps_data *pcaps;
-+	struct ice_aqc_get_phy_caps_data *pcaps __free(kfree);
-+	void *mac_buf __free(kfree);
- 	u16 mac_buf_len;
--	void *mac_buf;
- 	int status;
- 
- 	/* Set MAC type based on DeviceID */
-@@ -1045,7 +1045,7 @@ int ice_init_hw(struct ice_hw *hw)
- 	if (status)
- 		goto err_unroll_sched;
- 
--	pcaps = devm_kzalloc(ice_hw_to_dev(hw), sizeof(*pcaps), GFP_KERNEL);
-+	pcaps = kzalloc(sizeof(*pcaps), GFP_KERNEL);
- 	if (!pcaps) {
- 		status = -ENOMEM;
- 		goto err_unroll_sched;
-@@ -1055,7 +1055,6 @@ int ice_init_hw(struct ice_hw *hw)
- 	status = ice_aq_get_phy_caps(hw->port_info, false,
- 				     ICE_AQC_REPORT_TOPO_CAP_MEDIA, pcaps,
- 				     NULL);
--	devm_kfree(ice_hw_to_dev(hw), pcaps);
- 	if (status)
- 		dev_warn(ice_hw_to_dev(hw), "Get PHY capabilities failed status = %d, continuing anyway\n",
- 			 status);
-@@ -1082,18 +1081,15 @@ int ice_init_hw(struct ice_hw *hw)
- 
- 	/* Get MAC information */
- 	/* A single port can report up to two (LAN and WoL) addresses */
--	mac_buf = devm_kcalloc(ice_hw_to_dev(hw), 2,
--			       sizeof(struct ice_aqc_manage_mac_read_resp),
--			       GFP_KERNEL);
--	mac_buf_len = 2 * sizeof(struct ice_aqc_manage_mac_read_resp);
--
-+	mac_buf = kcalloc(2, sizeof(struct ice_aqc_manage_mac_read_resp),
-+			  GFP_KERNEL);
- 	if (!mac_buf) {
- 		status = -ENOMEM;
- 		goto err_unroll_fltr_mgmt_struct;
- 	}
- 
-+	mac_buf_len = 2 * sizeof(struct ice_aqc_manage_mac_read_resp);
- 	status = ice_aq_manage_mac_read(hw, mac_buf, mac_buf_len, NULL);
--	devm_kfree(ice_hw_to_dev(hw), mac_buf);
- 
- 	if (status)
- 		goto err_unroll_fltr_mgmt_struct;
-@@ -3240,19 +3236,14 @@ int ice_update_link_info(struct ice_port_info *pi)
- 		return status;
- 
- 	if (li->link_info & ICE_AQ_MEDIA_AVAILABLE) {
--		struct ice_aqc_get_phy_caps_data *pcaps;
--		struct ice_hw *hw;
-+		struct ice_aqc_get_phy_caps_data *pcaps __free(kfree);
- 
--		hw = pi->hw;
--		pcaps = devm_kzalloc(ice_hw_to_dev(hw), sizeof(*pcaps),
--				     GFP_KERNEL);
-+		pcaps = kzalloc(sizeof(*pcaps), GFP_KERNEL);
- 		if (!pcaps)
- 			return -ENOMEM;
- 
- 		status = ice_aq_get_phy_caps(pi, false, ICE_AQC_REPORT_TOPO_CAP_MEDIA,
- 					     pcaps, NULL);
--
--		devm_kfree(ice_hw_to_dev(hw), pcaps);
- 	}
- 
- 	return status;
-@@ -3393,8 +3384,8 @@ ice_cfg_phy_fc(struct ice_port_info *pi, struct ice_aqc_set_phy_cfg_data *cfg,
- int
- ice_set_fc(struct ice_port_info *pi, u8 *aq_failures, bool ena_auto_link_update)
- {
-+	struct ice_aqc_get_phy_caps_data *pcaps __free(kfree);
- 	struct ice_aqc_set_phy_cfg_data cfg = { 0 };
--	struct ice_aqc_get_phy_caps_data *pcaps;
- 	struct ice_hw *hw;
- 	int status;
- 
-@@ -3404,7 +3395,7 @@ ice_set_fc(struct ice_port_info *pi, u8 *aq_failures, bool ena_auto_link_update)
- 	*aq_failures = 0;
- 	hw = pi->hw;
- 
--	pcaps = devm_kzalloc(ice_hw_to_dev(hw), sizeof(*pcaps), GFP_KERNEL);
-+	pcaps = kzalloc(sizeof(*pcaps), GFP_KERNEL);
- 	if (!pcaps)
- 		return -ENOMEM;
- 
-@@ -3456,7 +3447,6 @@ ice_set_fc(struct ice_port_info *pi, u8 *aq_failures, bool ena_auto_link_update)
- 	}
- 
- out:
--	devm_kfree(ice_hw_to_dev(hw), pcaps);
- 	return status;
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+index bd541527c8c7..ee0321db61f8 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+@@ -1105,6 +1105,44 @@ static int ixgbe_tx_maxrate(struct net_device *netdev,
+ 	return 0;
  }
  
-@@ -3535,7 +3525,7 @@ int
- ice_cfg_phy_fec(struct ice_port_info *pi, struct ice_aqc_set_phy_cfg_data *cfg,
- 		enum ice_fec_mode fec)
- {
--	struct ice_aqc_get_phy_caps_data *pcaps;
-+	struct ice_aqc_get_phy_caps_data *pcaps __free(kfree);
- 	struct ice_hw *hw;
- 	int status;
++/**
++ * ixgbe_update_tx_ring_stats - Update Tx ring specific counters
++ * @tx_ring: ring to update
++ * @q_vector: queue vector ring belongs to
++ * @pkts: number of processed packets
++ * @bytes: number of processed bytes
++ */
++void ixgbe_update_tx_ring_stats(struct ixgbe_ring *tx_ring,
++				struct ixgbe_q_vector *q_vector, u64 pkts,
++				u64 bytes)
++{
++	u64_stats_update_begin(&tx_ring->syncp);
++	tx_ring->stats.bytes += bytes;
++	tx_ring->stats.packets += pkts;
++	u64_stats_update_end(&tx_ring->syncp);
++	q_vector->tx.total_bytes += bytes;
++	q_vector->tx.total_packets += pkts;
++}
++
++/**
++ * ixgbe_update_rx_ring_stats - Update Rx ring specific counters
++ * @rx_ring: ring to update
++ * @q_vector: queue vector ring belongs to
++ * @pkts: number of processed packets
++ * @bytes: number of processed bytes
++ */
++void ixgbe_update_rx_ring_stats(struct ixgbe_ring *rx_ring,
++				struct ixgbe_q_vector *q_vector, u64 pkts,
++				u64 bytes)
++{
++	u64_stats_update_begin(&rx_ring->syncp);
++	rx_ring->stats.bytes += bytes;
++	rx_ring->stats.packets += pkts;
++	u64_stats_update_end(&rx_ring->syncp);
++	q_vector->rx.total_bytes += bytes;
++	q_vector->rx.total_packets += pkts;
++}
++
+ /**
+  * ixgbe_clean_tx_irq - Reclaim resources after transmit completes
+  * @q_vector: structure containing interrupt and ring information
+@@ -1207,12 +1245,8 @@ static bool ixgbe_clean_tx_irq(struct ixgbe_q_vector *q_vector,
  
-@@ -3604,8 +3594,6 @@ ice_cfg_phy_fec(struct ice_port_info *pi, struct ice_aqc_set_phy_cfg_data *cfg,
+ 	i += tx_ring->count;
+ 	tx_ring->next_to_clean = i;
+-	u64_stats_update_begin(&tx_ring->syncp);
+-	tx_ring->stats.bytes += total_bytes;
+-	tx_ring->stats.packets += total_packets;
+-	u64_stats_update_end(&tx_ring->syncp);
+-	q_vector->tx.total_bytes += total_bytes;
+-	q_vector->tx.total_packets += total_packets;
++	ixgbe_update_tx_ring_stats(tx_ring, q_vector, total_packets,
++				   total_bytes);
+ 	adapter->tx_ipsec += total_ipsec;
+ 
+ 	if (check_for_tx_hang(tx_ring) && ixgbe_check_tx_hang(tx_ring)) {
+@@ -2429,12 +2463,8 @@ static int ixgbe_clean_rx_irq(struct ixgbe_q_vector *q_vector,
+ 		ixgbe_xdp_ring_update_tail_locked(ring);
  	}
  
- out:
--	kfree(pcaps);
--
- 	return status;
+-	u64_stats_update_begin(&rx_ring->syncp);
+-	rx_ring->stats.packets += total_rx_packets;
+-	rx_ring->stats.bytes += total_rx_bytes;
+-	u64_stats_update_end(&rx_ring->syncp);
+-	q_vector->rx.total_packets += total_rx_packets;
+-	q_vector->rx.total_bytes += total_rx_bytes;
++	ixgbe_update_rx_ring_stats(rx_ring, q_vector, total_rx_packets,
++				   total_rx_bytes);
+ 
+ 	return total_rx_packets;
  }
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_txrx_common.h b/drivers/net/ethernet/intel/ixgbe/ixgbe_txrx_common.h
+index f1f69ce67420..78deea5ec536 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_txrx_common.h
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_txrx_common.h
+@@ -46,4 +46,11 @@ bool ixgbe_clean_xdp_tx_irq(struct ixgbe_q_vector *q_vector,
+ int ixgbe_xsk_wakeup(struct net_device *dev, u32 queue_id, u32 flags);
+ void ixgbe_xsk_clean_tx_ring(struct ixgbe_ring *tx_ring);
  
-diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool.c b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-index a19b06f18e40..8a260a468a81 100644
---- a/drivers/net/ethernet/intel/ice/ice_ethtool.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-@@ -801,7 +801,7 @@ static int ice_lbtest_create_frame(struct ice_pf *pf, u8 **ret_data, u16 size)
- 	if (!pf)
- 		return -EINVAL;
- 
--	data = devm_kzalloc(ice_pf_to_dev(pf), size, GFP_KERNEL);
-+	data = kzalloc(size, GFP_KERNEL);
- 	if (!data)
- 		return -ENOMEM;
- 
-@@ -944,11 +944,9 @@ static u64 ice_loopback_test(struct net_device *netdev)
- 	int num_frames, valid_frames;
- 	struct ice_tx_ring *tx_ring;
- 	struct ice_rx_ring *rx_ring;
--	struct device *dev;
--	u8 *tx_frame;
-+	u8 *tx_frame __free(kfree);
- 	int i;
- 
--	dev = ice_pf_to_dev(pf);
- 	netdev_info(netdev, "loopback test\n");
- 
- 	test_vsi = ice_lb_vsi_setup(pf, pf->hw.port_info);
-@@ -993,7 +991,7 @@ static u64 ice_loopback_test(struct net_device *netdev)
- 	for (i = 0; i < num_frames; i++) {
- 		if (ice_diag_send(tx_ring, tx_frame, ICE_LB_FRAME_SIZE)) {
- 			ret = 8;
--			goto lbtest_free_frame;
-+			goto remove_mac_filters;
- 		}
++void ixgbe_update_tx_ring_stats(struct ixgbe_ring *tx_ring,
++				struct ixgbe_q_vector *q_vector, u64 pkts,
++				u64 bytes);
++void ixgbe_update_rx_ring_stats(struct ixgbe_ring *rx_ring,
++				struct ixgbe_q_vector *q_vector, u64 pkts,
++				u64 bytes);
++
+ #endif /* #define _IXGBE_TXRX_COMMON_H_ */
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c
+index 59798bc33298..d34d715c59eb 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c
+@@ -359,12 +359,8 @@ int ixgbe_clean_rx_irq_zc(struct ixgbe_q_vector *q_vector,
+ 		ixgbe_xdp_ring_update_tail_locked(ring);
  	}
  
-@@ -1003,8 +1001,6 @@ static u64 ice_loopback_test(struct net_device *netdev)
- 	else if (valid_frames != num_frames)
- 		ret = 10;
+-	u64_stats_update_begin(&rx_ring->syncp);
+-	rx_ring->stats.packets += total_rx_packets;
+-	rx_ring->stats.bytes += total_rx_bytes;
+-	u64_stats_update_end(&rx_ring->syncp);
+-	q_vector->rx.total_packets += total_rx_packets;
+-	q_vector->rx.total_bytes += total_rx_bytes;
++	ixgbe_update_rx_ring_stats(rx_ring, q_vector, total_rx_packets,
++				   total_rx_bytes);
  
--lbtest_free_frame:
--	devm_kfree(dev, tx_frame);
- remove_mac_filters:
- 	if (ice_fltr_remove_mac(test_vsi, broadcast, ICE_FWD_TO_VSI))
- 		netdev_err(netdev, "Could not remove MAC filter for the test VSI\n");
+ 	if (xsk_uses_need_wakeup(rx_ring->xsk_pool)) {
+ 		if (failure || rx_ring->next_to_clean == rx_ring->next_to_use)
+@@ -499,13 +495,8 @@ bool ixgbe_clean_xdp_tx_irq(struct ixgbe_q_vector *q_vector,
+ 	}
+ 
+ 	tx_ring->next_to_clean = ntc;
+-
+-	u64_stats_update_begin(&tx_ring->syncp);
+-	tx_ring->stats.bytes += total_bytes;
+-	tx_ring->stats.packets += total_packets;
+-	u64_stats_update_end(&tx_ring->syncp);
+-	q_vector->tx.total_bytes += total_bytes;
+-	q_vector->tx.total_packets += total_packets;
++	ixgbe_update_tx_ring_stats(tx_ring, q_vector, total_packets,
++				   total_bytes);
+ 
+ 	if (xsk_frames)
+ 		xsk_tx_completed(pool, xsk_frames);
 -- 
 2.34.1
 
