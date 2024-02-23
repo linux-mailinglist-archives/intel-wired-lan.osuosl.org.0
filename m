@@ -1,98 +1,117 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 223D8860E12
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 23 Feb 2024 10:36:12 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7DC9B860E73
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 23 Feb 2024 10:45:15 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 637D241C4C;
-	Fri, 23 Feb 2024 09:36:09 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 52D8741C4F;
+	Fri, 23 Feb 2024 09:45:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ATgrSrfTQJUA; Fri, 23 Feb 2024 09:36:08 +0000 (UTC)
+	with ESMTP id PJehtbmuq3_h; Fri, 23 Feb 2024 09:45:12 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org AB52041C4E
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1400540124
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1708680967;
-	bh=jmfrFuAsWi0wpEKGbQ5raIcMFQUbp2C8gp4TJDXaw/4=;
+	s=default; t=1708681512;
+	bh=+nH1F52q4rLe3ymlUZMyRqVEVVMZkXwzmavUZRGEwv4=;
 	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=BrByMZO2XSIcsLv6GSrIn4mkJT56V8Km489v9j33y0XiTHHZy/G77b5s8cKndz1Rp
-	 EsvsUzqpnNi1hcHb0Z6ddc2Ik+9JUJI0wbGGhNjYUSfgv5yV08xaPGLGWjD5x/FsGz
-	 a8+kku+tX1igpJdOEdSrCzT6gtgUIwJ8a553Mx2VDduv3T4A1fY2PySEwq0nE271FR
-	 tg5+HY5vd4oKZl6AgElD6n5aP/NhVFL+J9ui5aQ3QDNpqkIi51KytsQjxsrJ/fRbrY
-	 TLvWET0vsA5XsL5Jrw2YarV24fw9Ob3ciOOfMWOV/i2fwsTsdF5Uk0YoMZJzUYFyoG
-	 Cmn+PeETSjpTQ==
+	b=S/MMpdTo3iShCjOoILwxU85no5L16HxY3uHSkjVRy4rTZm7pQRrBsO0VrRU0KcgQE
+	 BHoF9GfguIPVH5Xcu9FeQh8OjlZgP6T9xWC1pkoPbccNds/3/QR9JyTQhqiKsrAW2k
+	 Fe6H4FyF1vnZct/KJpqDIUGFI5ppyOKSRg5DltFni+Km4UPAb7elayyd5nlW61qRlc
+	 6Y49edRF0ZtvLDjdALMFmtlNF80jF0dLKPDD5hnpCu3Z5hklbeQNRjvg1XaomGpZcM
+	 jUdzyq0v+LqRLgPwOqExC6BpyABFqa9I5bJwCG9PaeWeCa7ffSsZXhT5YPuhC0duHO
+	 rtcu45jnRSzwg==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id AB52041C4E;
-	Fri, 23 Feb 2024 09:36:07 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 1400540124;
+	Fri, 23 Feb 2024 09:45:12 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id EC24A1BF3C3
- for <intel-wired-lan@lists.osuosl.org>; Fri, 23 Feb 2024 09:36:04 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id B9D551BF3C3
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 23 Feb 2024 09:45:09 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id DF87C41E1D
- for <intel-wired-lan@lists.osuosl.org>; Fri, 23 Feb 2024 09:36:04 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id B26CB41C41
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 23 Feb 2024 09:45:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id dWOFBTAqGMek for <intel-wired-lan@lists.osuosl.org>;
- Fri, 23 Feb 2024 09:36:02 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.14;
- helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org B6D9741DFC
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B6D9741DFC
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.14])
- by smtp4.osuosl.org (Postfix) with ESMTPS id B6D9741DFC
- for <intel-wired-lan@lists.osuosl.org>; Fri, 23 Feb 2024 09:36:01 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10992"; a="6799480"
-X-IronPort-AV: E=Sophos;i="6.06,179,1705392000"; 
-   d="scan'208";a="6799480"
-Received: from fmviesa002.fm.intel.com ([10.60.135.142])
- by orvoesa106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 23 Feb 2024 01:35:59 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.06,179,1705392000"; d="scan'208";a="29019500"
-Received: from lkp-server02.sh.intel.com (HELO 3c78fa4d504c) ([10.239.97.151])
- by fmviesa002.fm.intel.com with ESMTP; 23 Feb 2024 01:35:57 -0800
-Received: from kbuild by 3c78fa4d504c with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1rdRxh-0007Hc-1J;
- Fri, 23 Feb 2024 09:35:33 +0000
-Date: Fri, 23 Feb 2024 17:35:12 +0800
-From: kernel test robot <lkp@intel.com>
-To: Maciej Fijalkowski <maciej.fijalkowski@intel.com>,
- intel-wired-lan@lists.osuosl.org
-Message-ID: <202402231718.8mWcBppj-lkp@intel.com>
-References: <20240222145025.722515-3-maciej.fijalkowski@intel.com>
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 5y5zkS87Rh8J for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 23 Feb 2024 09:45:08 +0000 (UTC)
+Received-SPF: None (mailfrom) identity=mailfrom;
+ client-ip=2a00:1450:4864:20::42b; helo=mail-wr1-x42b.google.com;
+ envelope-from=jiri@resnulli.us; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org C028640124
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C028640124
+Received: from mail-wr1-x42b.google.com (mail-wr1-x42b.google.com
+ [IPv6:2a00:1450:4864:20::42b])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id C028640124
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 23 Feb 2024 09:45:05 +0000 (UTC)
+Received: by mail-wr1-x42b.google.com with SMTP id
+ ffacd0b85a97d-33d509ab80eso90585f8f.3
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 23 Feb 2024 01:45:05 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1708681503; x=1709286303;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=+nH1F52q4rLe3ymlUZMyRqVEVVMZkXwzmavUZRGEwv4=;
+ b=UXYesaVhu6CkgYzlgbFGMzI67nIalJi+nCfkToWs09gDKV4+ax5eQX7pOFeUKm5M8E
+ p/awjznQrheWwPdgJRY2VZ2z2tuvL2YSpeU/CwjZtEGctQk/1xpIEysXy9TEC2fJv+7j
+ m6JVJ6TJlhl0ZyI2AJ6b7d3qt/h9NUKGgetovyLwchmvAfYezYtsI4HXObPu3tdSvwLb
+ 35qeZwdnEJy+5to/0ZLwjgRawT+4o/tpCHjp8+7spbd5dLNKwIB7ZDGqdP+ZsBWr90Lt
+ rTCWCmOndO0Sk3iglxbCMMngjzjN/nXNAUf6cEW1yuhn4dfSEY+Zccutrv+pZJAxxKqB
+ PbBA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWMiqzfPLyVdjuUXEZ6KBePvwC9gvnSgx8Nl3rk3CnTZZA4WegZKzD1+1REHl54vZXyTgy9Vqs6Fx+J7teAaaR3+7BX9y6Ia5kNa1v+PdWBDA==
+X-Gm-Message-State: AOJu0YwmXHSakrHmwR1mta0EE7CE3bJ1YvLqCxCv49g987zzdZ5mpwbL
+ 89JdymVEBpHHMDMprhxSD7HAZzA3UxiqAET+SU4ircrgSXTqrrBV3BBOQKfYS2w=
+X-Google-Smtp-Source: AGHT+IEMYZMDyaCNjC5G1U1WTbH2JglqVVhiwwy0U9OE9LYAfJieqXydgfrrbq/8v5nS0XunwGDuQQ==
+X-Received: by 2002:a5d:4e89:0:b0:33d:746b:f360 with SMTP id
+ e9-20020a5d4e89000000b0033d746bf360mr956434wru.51.1708681503176; 
+ Fri, 23 Feb 2024 01:45:03 -0800 (PST)
+Received: from localhost ([86.61.181.4]) by smtp.gmail.com with ESMTPSA id
+ r5-20020adff105000000b003392206c808sm2139169wro.105.2024.02.23.01.45.02
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 23 Feb 2024 01:45:02 -0800 (PST)
+Date: Fri, 23 Feb 2024 10:45:01 +0100
+From: Jiri Pirko <jiri@resnulli.us>
+To: Jakub Kicinski <kuba@kernel.org>
+Message-ID: <ZdhpHSWIbcTE-LQh@nanopsycho>
+References: <20240219100555.7220-1-mateusz.polchlopek@intel.com>
+ <20240219100555.7220-5-mateusz.polchlopek@intel.com>
+ <ZdNLkJm2qr1kZCis@nanopsycho> <20240221153805.20fbaf47@kernel.org>
+ <df7b6859-ff8f-4489-97b2-6fd0b95fff58@intel.com>
+ <20240222150717.627209a9@kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20240222145025.722515-3-maciej.fijalkowski@intel.com>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1708680961; x=1740216961;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=P62c/gW3qUy4OC1LLVXVfdGjVFXf5PvIZI0YSta30b4=;
- b=foMV3AXFTEp0YMmvAZxmTLuWpXPOINv3iU4296W6OShwk90ceD8GERTL
- yjNA76LbbUYFsu7VegxwZ99wMH88aaBvfXnoqbgqRp/ZnhXcWlHzBSbIB
- WXLl05fJWoHpD/98EUwuD/Sg/3jyW4BJyt24YttnGD2IsUYQ5uv6w19KC
- IS76InYPkdKMoKpGMXb2owk7NUb9SBc149OTWkJeauAF5b5dZq6dxsPY5
- kpodT6F0hqGMppx/tA5Z/F1jlzUHFve9zi/eJWKZsMASNx6GKcypr3oIa
- QRbxB1AFOSyWgtkZmU1H9vdtkrrsr5LNwte9H75gMupjQrkn9Jzya5I2Y
- A==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+In-Reply-To: <20240222150717.627209a9@kernel.org>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=resnulli-us.20230601.gappssmtp.com; s=20230601; t=1708681503; x=1709286303;
+ darn=lists.osuosl.org; 
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+ bh=+nH1F52q4rLe3ymlUZMyRqVEVVMZkXwzmavUZRGEwv4=;
+ b=DbJAnnML1kvSiyj/uH6u3GZuTgTf1ithg2eqWK9UP6jMEf0t8qw2Cyog71SlVfu6l7
+ sV1nTbHef+Rgu35ljduqCHnZePCTdeo42Ek811/gU8/7GftUeM+1l70On1nylj9RqV+X
+ Om6nky5I9rPv8m36fkJuRRgDhprObWhPWMkilCC7glEWAanhjptCoBkC4khhwXHlzV+N
+ ptZ2pOR9PlPFnHBNihKl7zsbP8udqBHvouQQQ0eIf3i1/AAWCfFIO8puo5VXbRVBeSEq
+ fAlNNRxnrf9Vbhy+lyHx+T0BdfAizxc7Rj4wc+Rr9wsdnpr9Ta5tpmc90pQ45QXttmqO
+ LDjQ==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dmarc=none (p=none dis=none)
+ header.from=resnulli.us
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=foMV3AXF
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next 2/3] ice: avoid unnecessary
- devm_ usage
+ unprotected) header.d=resnulli-us.20230601.gappssmtp.com
+ header.i=@resnulli-us.20230601.gappssmtp.com header.a=rsa-sha256
+ header.s=20230601 header.b=DbJAnnML
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v4 4/5] ice: Add
+ tx_scheduling_layers devlink param
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -105,89 +124,37 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, Maciej Fijalkowski <maciej.fijalkowski@intel.com>,
- anthony.l.nguyen@intel.com, magnus.karlsson@intel.com,
- oe-kbuild-all@lists.linux.dev
+Cc: Mateusz Polchlopek <mateusz.polchlopek@intel.com>, netdev@vger.kernel.org,
+ Lukasz Czapnik <lukasz.czapnik@intel.com>, intel-wired-lan@lists.osuosl.org,
+ horms@kernel.org, przemyslaw.kitszel@intel.com
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi Maciej,
+Fri, Feb 23, 2024 at 12:07:17AM CET, kuba@kernel.org wrote:
+>On Thu, 22 Feb 2024 14:25:21 +0100 Mateusz Polchlopek wrote:
+>> >> This is kind of proprietary param similar to number of which were shot
+>> >> down for mlx5 in past. Jakub?  
+>> > 
+>> > I remain somewhat confused about what this does.
+>> > Specifically IIUC the problem is that the radix of each node is
+>> > limited, so we need to start creating multi-layer hierarchies
+>> > if we want a higher radix. Or in the "5-layer mode" the radix
+>> > is automatically higher?  
+>> 
+>> Basically, switching from 9 to 5 layers topology allows us to have 512 
+>> leaves instead of 8 leaves which improves performance. I will add this 
+>> information to the commit message and Documentation too, when we get an 
+>> ACK for devlink parameter.
+>
+>Sounds fine. Please update the doc to focus on the radix, rather than
+>the layers. Layers are not so important to the user. And maybe give an
+>example of things which won't be possible with 5-layer config.
+>
+>Jiri, I'm not aware of any other devices with this sort of trade off.
+>We shouldn't add the param if either:
+> - this can be changed dynamically as user instantiates rate limiters;
+> - we know other devices have similar needs.
+>If neither of those is true, param seems fine to me..
 
-kernel test robot noticed the following build warnings:
-
-[auto build test WARNING on v6.8-rc5]
-[also build test WARNING on linus/master next-20240223]
-[cannot apply to tnguy-next-queue/dev-queue tnguy-net-queue/dev-queue horms-ipvs/master]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
-
-url:    https://github.com/intel-lab-lkp/linux/commits/Maciej-Fijalkowski/ice-do-not-disable-Tx-queues-twice-in-ice_down/20240222-225134
-base:   v6.8-rc5
-patch link:    https://lore.kernel.org/r/20240222145025.722515-3-maciej.fijalkowski%40intel.com
-patch subject: [PATCH iwl-next 2/3] ice: avoid unnecessary devm_ usage
-config: alpha-allyesconfig (https://download.01.org/0day-ci/archive/20240223/202402231718.8mWcBppj-lkp@intel.com/config)
-compiler: alpha-linux-gcc (GCC) 13.2.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20240223/202402231718.8mWcBppj-lkp@intel.com/reproduce)
-
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202402231718.8mWcBppj-lkp@intel.com/
-
-All warnings (new ones prefixed by >>):
-
-   drivers/net/ethernet/intel/ice/ice_common.c: In function 'ice_update_link_info':
->> drivers/net/ethernet/intel/ice/ice_common.c:3242:32: warning: variable 'hw' set but not used [-Wunused-but-set-variable]
-    3242 |                 struct ice_hw *hw;
-         |                                ^~
---
-   drivers/net/ethernet/intel/ice/ice_ethtool.c: In function 'ice_loopback_test':
->> drivers/net/ethernet/intel/ice/ice_ethtool.c:947:24: warning: variable 'dev' set but not used [-Wunused-but-set-variable]
-     947 |         struct device *dev;
-         |                        ^~~
-
-
-vim +/hw +3242 drivers/net/ethernet/intel/ice/ice_common.c
-
-fcea6f3da546b9 Anirudh Venkataramanan 2018-03-20  3221  
-fcea6f3da546b9 Anirudh Venkataramanan 2018-03-20  3222  /**
-fcea6f3da546b9 Anirudh Venkataramanan 2018-03-20  3223   * ice_update_link_info - update status of the HW network link
-fcea6f3da546b9 Anirudh Venkataramanan 2018-03-20  3224   * @pi: port info structure of the interested logical port
-fcea6f3da546b9 Anirudh Venkataramanan 2018-03-20  3225   */
-5e24d5984c805c Tony Nguyen            2021-10-07  3226  int ice_update_link_info(struct ice_port_info *pi)
-fcea6f3da546b9 Anirudh Venkataramanan 2018-03-20  3227  {
-092a33d4031205 Bruce Allan            2019-04-16  3228  	struct ice_link_status *li;
-5e24d5984c805c Tony Nguyen            2021-10-07  3229  	int status;
-fcea6f3da546b9 Anirudh Venkataramanan 2018-03-20  3230  
-fcea6f3da546b9 Anirudh Venkataramanan 2018-03-20  3231  	if (!pi)
-d54699e27d506f Tony Nguyen            2021-10-07  3232  		return -EINVAL;
-fcea6f3da546b9 Anirudh Venkataramanan 2018-03-20  3233  
-092a33d4031205 Bruce Allan            2019-04-16  3234  	li = &pi->phy.link_info;
-fcea6f3da546b9 Anirudh Venkataramanan 2018-03-20  3235  
-fcea6f3da546b9 Anirudh Venkataramanan 2018-03-20  3236  	status = ice_aq_get_link_info(pi, true, NULL, NULL);
-fcea6f3da546b9 Anirudh Venkataramanan 2018-03-20  3237  	if (status)
-092a33d4031205 Bruce Allan            2019-04-16  3238  		return status;
-092a33d4031205 Bruce Allan            2019-04-16  3239  
-092a33d4031205 Bruce Allan            2019-04-16  3240  	if (li->link_info & ICE_AQ_MEDIA_AVAILABLE) {
-092a33d4031205 Bruce Allan            2019-04-16  3241  		struct ice_aqc_get_phy_caps_data *pcaps;
-092a33d4031205 Bruce Allan            2019-04-16 @3242  		struct ice_hw *hw;
-092a33d4031205 Bruce Allan            2019-04-16  3243  
-092a33d4031205 Bruce Allan            2019-04-16  3244  		hw = pi->hw;
-f8543c3af0dcb2 Maciej Fijalkowski     2024-02-22  3245  		pcaps = kzalloc(sizeof(*pcaps), GFP_KERNEL);
-092a33d4031205 Bruce Allan            2019-04-16  3246  		if (!pcaps)
-d54699e27d506f Tony Nguyen            2021-10-07  3247  			return -ENOMEM;
-fcea6f3da546b9 Anirudh Venkataramanan 2018-03-20  3248  
-d6730a871e68f1 Anirudh Venkataramanan 2021-03-25  3249  		status = ice_aq_get_phy_caps(pi, false, ICE_AQC_REPORT_TOPO_CAP_MEDIA,
-fcea6f3da546b9 Anirudh Venkataramanan 2018-03-20  3250  					     pcaps, NULL);
-fcea6f3da546b9 Anirudh Venkataramanan 2018-03-20  3251  
-f8543c3af0dcb2 Maciej Fijalkowski     2024-02-22  3252  		kfree(pcaps);
-092a33d4031205 Bruce Allan            2019-04-16  3253  	}
-092a33d4031205 Bruce Allan            2019-04-16  3254  
-fcea6f3da546b9 Anirudh Venkataramanan 2018-03-20  3255  	return status;
-fcea6f3da546b9 Anirudh Venkataramanan 2018-03-20  3256  }
-fcea6f3da546b9 Anirudh Venkataramanan 2018-03-20  3257  
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+Where is this policy documented? If not, could you please? Let's make
+this policy clear for now and for the future.
