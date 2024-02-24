@@ -2,115 +2,116 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 237AF8624B4
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 24 Feb 2024 12:48:33 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 73EBA8624C2
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 24 Feb 2024 12:52:57 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 5F89B60A4E;
-	Sat, 24 Feb 2024 11:48:31 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id B94F660A58;
+	Sat, 24 Feb 2024 11:52:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 3GTu06AltJyA; Sat, 24 Feb 2024 11:48:30 +0000 (UTC)
+	with ESMTP id C4SQ5lgL3Nhb; Sat, 24 Feb 2024 11:52:55 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 29098608C2
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org E783E60A50
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1708775310;
-	bh=ARtDupyOv0uAPA1UjC0KwkM1ld0qhdrIfysuvYlGcUQ=;
+	s=default; t=1708775575;
+	bh=SVWQffDK/ZUjAh++ittTy+1YShatNEsUrXGS8707I/s=;
 	h=References:In-Reply-To:From:Date:To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=jeuWwls8QFfaFnp4IB8t6ZGtL0BGVQE9LbHw3nOr2FZUq/sC63GbTGPB2O7lEZReU
-	 U+qzpmVGEfUKGh3PTtAfUm3+JABNjRugh/p2DwbL+1ra3Ct91yZaewtCtjervFn8ao
-	 3NgDDtk3jf3Dw+VXBClPWWv8XS2MSZtIJHRENTEO9gdHldbg/uKS6ZZZcymz/CK8Zn
-	 OiiUTZlxHtbjNlOb89pFVC6dajlmQlg9ugTb9kNCWwiWLFppRE5vGApJ9pJKtVgUuF
-	 7etovIci9w6aFyD8bP0dJn48zfINqRSjqhn8Dd+q2vwya1NbCgHX8QBJwSCDFtFzSb
-	 CNuQJ+63hL3RA==
+	b=l07ZO08JS365hMSBgQjB2RhqmFLE5XKj9Ysk+A+v4clCKr384zhZCOSl3tOK62gs2
+	 QDi/IXgkN7hUtLUnyBLr06zudocLoqbvZwiUgcHna6dJO1Z6Mx5jndJuy6LY/jaiOM
+	 F25iaQaO2O3WNtvI4ZE9ysAugcooMNbvERwqfPb3LhETnLXxO4clac6O5kifZUFgkW
+	 kJbc6Cwy1ZhgcaY284Inv47UZ/3Qpi/+rinbLHUqHgMKSHW0oMGrLpu7tdLp8L4Lh6
+	 2vGLxFYAJ7mHJLSTDGUwCKACa3rxY7gCjqvsVuo5xxD2WLD5VcZTxfgDet6eacu3sX
+	 sQ4k45DDJ7Riw==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 29098608C2;
-	Sat, 24 Feb 2024 11:48:30 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id E783E60A50;
+	Sat, 24 Feb 2024 11:52:54 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 5FADE1BF576
- for <intel-wired-lan@lists.osuosl.org>; Sat, 24 Feb 2024 11:48:28 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id B21341BF576
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 24 Feb 2024 11:52:52 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 4AD3082055
- for <intel-wired-lan@lists.osuosl.org>; Sat, 24 Feb 2024 11:48:28 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 9E0D582055
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 24 Feb 2024 11:52:52 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ya6WrqrGJ-49 for <intel-wired-lan@lists.osuosl.org>;
- Sat, 24 Feb 2024 11:48:27 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.129.124;
+ with ESMTP id p6mgI-IaQ-G9 for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 24 Feb 2024 11:52:49 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.133.124;
  helo=us-smtp-delivery-124.mimecast.com; envelope-from=ksundara@redhat.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 1562782030
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1562782030
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 9F09382030
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9F09382030
 Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.129.124])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 1562782030
- for <intel-wired-lan@lists.osuosl.org>; Sat, 24 Feb 2024 11:48:26 +0000 (UTC)
-Received: from mail-qv1-f69.google.com (mail-qv1-f69.google.com
- [209.85.219.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 9F09382030
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 24 Feb 2024 11:52:49 +0000 (UTC)
+Received: from mail-qv1-f71.google.com (mail-qv1-f71.google.com
+ [209.85.219.71]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-333-Aok5fmdPNHOqjt2sd9iw5A-1; Sat, 24 Feb 2024 06:48:21 -0500
-X-MC-Unique: Aok5fmdPNHOqjt2sd9iw5A-1
-Received: by mail-qv1-f69.google.com with SMTP id
- 6a1803df08f44-68f47e46658so18945066d6.3
- for <intel-wired-lan@lists.osuosl.org>; Sat, 24 Feb 2024 03:48:21 -0800 (PST)
+ us-mta-644-67scNt0ENwmrItNnnblmLg-1; Sat, 24 Feb 2024 06:52:46 -0500
+X-MC-Unique: 67scNt0ENwmrItNnnblmLg-1
+Received: by mail-qv1-f71.google.com with SMTP id
+ 6a1803df08f44-68f447d1d6bso12239316d6.1
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 24 Feb 2024 03:52:46 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1708775300; x=1709380100;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=ARtDupyOv0uAPA1UjC0KwkM1ld0qhdrIfysuvYlGcUQ=;
- b=pQjLjdR9Cnz1FmhP97dZpNVJb/suPzUch3aAEO2NfKMQPIqzFkM5mSpts0wPlWKiQu
- i8miwVXQdv/fJ/Vj9vIBvhUS+stuRqnxfKAo1nIsQkR3htZKLG4J0i4I1+urH1UtoQni
- rLi9tXe5DsCEyaHGWofXwpitZERDlD4a1MHqz0/txOaKK4QL/wFMfr+4AyTdVkWE2xqw
- BlCTWGcs+vSCUJxwa6BbMwSguADpAn+K5hg9hAU28FOi9FqsC6uGlDv25UrcWv+1bdsV
- k6zTIAoUAMGoSaVpMLBiQuoZXQ5C309XY3ZxlHHZecSJOaJGPYVhsKuba8/LZAJ5r54q
- 7ILA==
+ d=1e100.net; s=20230601; t=1708775566; x=1709380366;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=SVWQffDK/ZUjAh++ittTy+1YShatNEsUrXGS8707I/s=;
+ b=C+O1RzKJn21RuYGC/hvtlTlwa0EAYTNu6TlFJlBUIOwvGl37jp3C/8/W79ZJbtYUnN
+ w2Ir665fID6PPpN97Gx8KqshBlDvPmrtcgaVKrghi7M8Rm7f5/q73xk2ssGJH8qcS/tx
+ 3Cuwytexlan1QtLDatiAdn8mtGZgc7EjJ9vQZlG1fYVhTr7lwluiTyQ8gaRr3PvO0eyO
+ 4pbcHsfFvU+GZtu74P4ce/nCAD+y0GbjRTsHeFIonVsszPoE0jciluj65S6HU7cVg/mC
+ vFtskYUCRSqT0H7BC8Ta+R0q/3Kbs4tntVTV/9gthLaJck6nm+96u6OVsN6buw0vmtm3
+ oEAQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWuNpQMudthzrvT69iNAzDu3Grzix071qDxzosvc940ZL1hnPw3gwbDQUrzkSg14oZinG0ZjH/lyFHWj1Wy6EJGWfLVTOe4/OozjdohKyU/vg==
-X-Gm-Message-State: AOJu0YylvmFgFNIDsvux5PM175sgLndJp9woMvrseSPC44EdHYfGMfEl
- PI4vY+RQkSmyj80lcAvbWZjDlw1jcVvBDxW5SMCdmcQhWxEWzXXFqak5H4YU4Ji3wy7s68G5Klk
- GUDAdYaZkgQCPQ+PnCuKmTgcfOIdkConSx3NKMZM9Q5GKjZtZv8YM8MOGFbt70b7/j3pXnGXwzR
- f0FKhGQmX6s3Cqeov1HBwl+9Tv5oGsjWaQVCoOQ2A6Lw==
-X-Received: by 2002:a05:6214:21ec:b0:68f:e46b:47f with SMTP id
- p12-20020a05621421ec00b0068fe46b047fmr2649497qvj.17.1708775300703; 
- Sat, 24 Feb 2024 03:48:20 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGMvdirnqB0wBh3BWcEteWPFOAhhtrJ0sHYxLUnAq7HoIRQZtF4SW3fCcX5vz2DQieUtp1DR633thHR41uwqwA=
-X-Received: by 2002:a05:6214:21ec:b0:68f:e46b:47f with SMTP id
- p12-20020a05621421ec00b0068fe46b047fmr2649482qvj.17.1708775300381; Sat, 24
- Feb 2024 03:48:20 -0800 (PST)
+ AJvYcCWVwM3xbAOJqI+y1zceP65TP1zI7WtibR6oDLdg9hd0Vg9w/RDGQghIr9R5InUBkhpmPGMjH2fIiwtB3g5P0vLWSFWpEMd2+2aTfbzAySw5zA==
+X-Gm-Message-State: AOJu0YwlNeFupoqYA1TpfFF1DnKuj4e3qMp+4fcVW7fAg1hBOxscsj4q
+ vU+pljRigeQ17TwlvIPccOvvktMTnWw4JmvIPsvJlB8P7qgFeBqHP4mtNfV7tHKk4qKVLh2oyKA
+ MFUkM34N/VDEU3+dOJgdft+H5qIFGHHX/QQnsOo5KQSTZepkF2tI3iyxraCFdKhz1C926ss288t
+ QSMQT9xpFmyLawkotkZ5Pvkd4y7+p+wrpIHj0n9J8/Cg==
+X-Received: by 2002:a0c:f051:0:b0:68f:d23c:9c40 with SMTP id
+ b17-20020a0cf051000000b0068fd23c9c40mr2163231qvl.30.1708775566330; 
+ Sat, 24 Feb 2024 03:52:46 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFqFfJNn3YyEHSZdbCj5QSsTY41zQB8+5mJC0GreQRD8BADwcjsJXHeMW2gR+qhAamQCfaMVGW3tSUYdKdsc/E=
+X-Received: by 2002:a0c:f051:0:b0:68f:d23c:9c40 with SMTP id
+ b17-20020a0cf051000000b0068fd23c9c40mr2163211qvl.30.1708775566058; Sat, 24
+ Feb 2024 03:52:46 -0800 (PST)
 MIME-Version: 1.0
 References: <20240209100912.82473-1-ksundara@redhat.com>
  <ZctlswYbV1RHU2ip@mev-dev>
 In-Reply-To: <ZctlswYbV1RHU2ip@mev-dev>
 From: Karthik Sundaravel <ksundara@redhat.com>
-Date: Sat, 24 Feb 2024 17:18:09 +0530
-Message-ID: <CAPh+B4+DaFRPDX_sq+3jg8LSWP3OyM-6rKGmQe8_0=HUezO4+g@mail.gmail.com>
+Date: Sat, 24 Feb 2024 17:22:35 +0530
+Message-ID: <CAPh+B4KrsKiN=QOU4HntCQh4OrJR=NpxJcOzvB05yxnc1WgKzw@mail.gmail.com>
 To: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: multipart/alternative; boundary="000000000000c7d09506121f40b8"
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=redhat.com; 
- s=mimecast20190719; t=1708775305;
+ s=mimecast20190719; t=1708775568;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=ARtDupyOv0uAPA1UjC0KwkM1ld0qhdrIfysuvYlGcUQ=;
- b=LdDgKcnsN7ePFadU7KrpgepNNHRrZsbh9xhXddeqzFfy/u94iD8zUy0gZsckQrIhpZFl4b
- gVDwVIVbOXie5xKSgnJ+h9v2oKorZ3sUD+kMNyzkcrybxCFIt2r2TQVitQUj4An3a8BYjg
- Ui9V59jsWRoLanZVsbJjwCMwbfVS+kE=
+ bh=SVWQffDK/ZUjAh++ittTy+1YShatNEsUrXGS8707I/s=;
+ b=h+GVFbGois68P0WrqvjqPze2RFSPLymwBrC+WyfWMDSrhEvZDwVGD/rZFluhhkcGt1OUsz
+ JLa+1YI1YBLJeBWOUEl8o7Pl0QwQVNV7OZ3gKKOh+LddFg+YsROlbSUvOZ8eMXdtsRLZJp
+ 0PWWlGhdcAl0QZOpu8fw427Q/7BNuIs=
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=redhat.com
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (1024-bit key,
- unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256
- header.s=mimecast20190719 header.b=LdDgKcns
+ dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
+ header.a=rsa-sha256 header.s=mimecast20190719 header.b=h+GVFbGo
 Subject: Re: [Intel-wired-lan] [PATCH v3] ice: Add get/set hw address for
  VFs using devlink commands
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -134,13 +135,9 @@ Cc: pmenzel@molgen.mpg.de, aharivel@redhat.com, jiri@resnulli.us,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
---000000000000c7d09506121f40b8
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-On Tue, Feb 13, 2024 at 6:21=E2=80=AFPM Michal Swiatkowski <
-michal.swiatkowski@linux.intel.com> wrote:
-
+On Tue, Feb 13, 2024 at 6:21=E2=80=AFPM Michal Swiatkowski
+<michal.swiatkowski@linux.intel.com> wrote:
+>
 > On Fri, Feb 09, 2024 at 03:39:12PM +0530, Karthik Sundaravel wrote:
 > > Changing the MAC address of the VFs are not available
 > > via devlink. Add the function handlers to set and get
@@ -151,19 +148,19 @@ michal.swiatkowski@linux.intel.com> wrote:
 > >  drivers/net/ethernet/intel/ice/ice_devlink.c | 86 +++++++++++++++++++-
 > >  1 file changed, 85 insertions(+), 1 deletion(-)
 > >
-> > diff --git a/drivers/net/ethernet/intel/ice/ice_devlink.c
-> b/drivers/net/ethernet/intel/ice/ice_devlink.c
+> > diff --git a/drivers/net/ethernet/intel/ice/ice_devlink.c b/drivers/net=
+/ethernet/intel/ice/ice_devlink.c
 > > index 80dc5445b50d..7ed61b10312c 100644
 > > --- a/drivers/net/ethernet/intel/ice/ice_devlink.c
 > > +++ b/drivers/net/ethernet/intel/ice/ice_devlink.c
-> > @@ -1576,6 +1576,89 @@ void ice_devlink_destroy_pf_port(struct ice_pf
-> *pf)
+> > @@ -1576,6 +1576,89 @@ void ice_devlink_destroy_pf_port(struct ice_pf *=
+pf)
 > >       devlink_port_unregister(&pf->devlink_port);
 > >  }
 > >
 > > +/**
-> > + * ice_devlink_port_get_vf_mac_address - .port_fn_hw_addr_get devlink
-> handler
+> > + * ice_devlink_port_get_vf_mac_address - .port_fn_hw_addr_get devlink =
+handler
 > > + * @port: devlink port structure
 > > + * @hw_addr: MAC address of the port
 > > + * @hw_addr_len: length of MAC address
@@ -173,12 +170,12 @@ michal.swiatkowski@linux.intel.com> wrote:
 > > + * Return: zero on success or an error code on failure.
 > > + */
 > > +
-> > +static int ice_devlink_port_get_vf_mac_address(struct devlink_port
-> *port,
-> > +                                            u8 *hw_addr, int
-> *hw_addr_len,
-> > +                                            struct netlink_ext_ack
-> *extack)
+> > +static int ice_devlink_port_get_vf_mac_address(struct devlink_port *po=
+rt,
+> > +                                            u8 *hw_addr, int *hw_addr_=
+len,
+> > +                                            struct netlink_ext_ack *ex=
+tack)
 > > +{
 > > +     struct devlink_port_attrs *attrs =3D &port->attrs;
 > > +     struct devlink_port_pci_vf_attrs *pci_vf;
@@ -212,8 +209,8 @@ michal.swiatkowski@linux.intel.com> wrote:
 > > +}
 > > +
 > > +/**
-> > + * ice_devlink_port_set_vf_mac_address - .port_fn_hw_addr_set devlink
-> handler
+> > + * ice_devlink_port_set_vf_mac_address - .port_fn_hw_addr_set devlink =
+handler
 > > + * @port: devlink port structure
 > > + * @hw_addr: MAC address of the port
 > > + * @hw_addr_len: length of MAC address
@@ -222,18 +219,16 @@ michal.swiatkowski@linux.intel.com> wrote:
 > > + * Callback for the devlink .port_fn_hw_addr_set operation
 > > + * Return: zero on success or an error code on failure.
 > > + */
-> > +static int ice_devlink_port_set_vf_mac_address(struct devlink_port
-> *port,
+> > +static int ice_devlink_port_set_vf_mac_address(struct devlink_port *po=
+rt,
 > > +                                            const u8 *hw_addr,
 > > +                                            int hw_addr_len,
-> > +                                            struct netlink_ext_ack
-> *extack)
+> > +                                            struct netlink_ext_ack *ex=
+tack)
 > > +{
 > > +     struct net_device *netdev =3D port->type_eth.netdev;
 > Is it PF netdev?
->
-its VF netdev
-
+Its VF netdev
 >
 > > +     struct devlink_port_attrs *attrs =3D &port->attrs;
 > > +     struct devlink_port_pci_vf_attrs *pci_vf;
@@ -271,205 +266,14 @@ its VF netdev
 > >
 > > -     err =3D devlink_port_register(devlink, devlink_port, vsi->idx);
 > > +     err =3D devlink_port_register_with_ops(devlink, devlink_port,
-> > +                                          vsi->idx,
-> &ice_devlink_vf_port_ops);
+> > +                                          vsi->idx, &ice_devlink_vf_po=
+rt_ops);
 > >       if (err) {
-> >               dev_err(dev, "Failed to create devlink port for VF %d,
-> error %d\n",
+> >               dev_err(dev, "Failed to create devlink port for VF %d, er=
+ror %d\n",
 > >                       vf->vf_id, err);
 > > --
 > > 2.39.3 (Apple Git-145)
 > >
 >
->
-
---000000000000c7d09506121f40b8
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
-<div dir=3D"ltr" class=3D"gmail_attr">On Tue, Feb 13, 2024 at 6:21=E2=80=AF=
-PM Michal Swiatkowski &lt;<a href=3D"mailto:michal.swiatkowski@linux.intel.=
-com">michal.swiatkowski@linux.intel.com</a>&gt; wrote:<br></div><blockquote=
- class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px so=
-lid rgb(204,204,204);padding-left:1ex">On Fri, Feb 09, 2024 at 03:39:12PM +=
-0530, Karthik Sundaravel wrote:<br>
-&gt; Changing the MAC address of the VFs are not available<br>
-&gt; via devlink. Add the function handlers to set and get<br>
-&gt; the HW address for the VFs.<br>
-&gt; <br>
-&gt; Signed-off-by: Karthik Sundaravel &lt;<a href=3D"mailto:ksundara@redha=
-t.com" target=3D"_blank">ksundara@redhat.com</a>&gt;<br>
-&gt; ---<br>
-&gt;=C2=A0 drivers/net/ethernet/intel/ice/ice_devlink.c | 86 ++++++++++++++=
-+++++-<br>
-&gt;=C2=A0 1 file changed, 85 insertions(+), 1 deletion(-)<br>
-&gt; <br>
-&gt; diff --git a/drivers/net/ethernet/intel/ice/ice_devlink.c b/drivers/ne=
-t/ethernet/intel/ice/ice_devlink.c<br>
-&gt; index 80dc5445b50d..7ed61b10312c 100644<br>
-&gt; --- a/drivers/net/ethernet/intel/ice/ice_devlink.c<br>
-&gt; +++ b/drivers/net/ethernet/intel/ice/ice_devlink.c<br>
-&gt; @@ -1576,6 +1576,89 @@ void ice_devlink_destroy_pf_port(struct ice_pf =
-*pf)<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0devlink_port_unregister(&amp;pf-&gt;devlink_=
-port);<br>
-&gt;=C2=A0 }<br>
-&gt;=C2=A0 <br>
-&gt; +/**<br>
-&gt; + * ice_devlink_port_get_vf_mac_address - .port_fn_hw_addr_get devlink=
- handler<br>
-&gt; + * @port: devlink port structure<br>
-&gt; + * @hw_addr: MAC address of the port<br>
-&gt; + * @hw_addr_len: length of MAC address<br>
-&gt; + * @extack: extended netdev ack structure<br>
-&gt; + *<br>
-&gt; + * Callback for the devlink .port_fn_hw_addr_get operation<br>
-&gt; + * Return: zero on success or an error code on failure.<br>
-&gt; + */<br>
-&gt; +<br>
-&gt; +static int ice_devlink_port_get_vf_mac_address(struct devlink_port *p=
-ort,<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 u8 *hw_addr, int *hw_addr_len,<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 struct netlink_ext_ack *extack)<br>
-&gt; +{<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0struct devlink_port_attrs *attrs =3D &amp;port-&g=
-t;attrs;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0struct devlink_port_pci_vf_attrs *pci_vf;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0struct devlink *devlink =3D port-&gt;devlink;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0struct ice_pf *pf;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0struct ice_vf *vf;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0int vf_id;<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0pf =3D devlink_priv(devlink);<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0if (attrs-&gt;flavour =3D=3D DEVLINK_PORT_FLAVOUR=
-_PCI_VF) {<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0pci_vf =3D &amp;attrs=
--&gt;pci_vf;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0vf_id =3D pci_vf-&gt;=
-vf;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0} else {<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0NL_SET_ERR_MSG_MOD(ex=
-tack, &quot;Unable to get the vf id&quot;);<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0return -EADDRNOTAVAIL=
-;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0}<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0vf =3D ice_get_vf_by_id(pf, vf_id);<br>
-You need to call ice_put_vf(vf); when you finish with vf.<br>
-<br>
-This way to get vf pointer is fine, I wonder if it can be done using<br>
-container_of on port variable. Jake, what do you think?<br>
-CC: Jacob Keller<br>
-<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0if (!vf) {<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0NL_SET_ERR_MSG_MOD(ex=
-tack, &quot;Unable to get the vf&quot;);<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0return -EINVAL;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0}<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0ether_addr_copy(hw_addr, vf-&gt;dev_lan_addr);<br=
->
-&gt; +=C2=A0 =C2=A0 =C2=A0*hw_addr_len =3D ETH_ALEN;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0return 0;<br>
-&gt; +}<br>
-&gt; +<br>
-&gt; +/**<br>
-&gt; + * ice_devlink_port_set_vf_mac_address - .port_fn_hw_addr_set devlink=
- handler<br>
-&gt; + * @port: devlink port structure<br>
-&gt; + * @hw_addr: MAC address of the port<br>
-&gt; + * @hw_addr_len: length of MAC address<br>
-&gt; + * @extack: extended netdev ack structure<br>
-&gt; + *<br>
-&gt; + * Callback for the devlink .port_fn_hw_addr_set operation<br>
-&gt; + * Return: zero on success or an error code on failure.<br>
-&gt; + */<br>
-&gt; +static int ice_devlink_port_set_vf_mac_address(struct devlink_port *p=
-ort,<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 const u8 *hw_addr,<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 int hw_addr_len,<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 struct netlink_ext_ack *extack)<br>
-&gt; +{<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0struct net_device *netdev =3D port-&gt;type_eth.n=
-etdev;<br>
-Is it PF netdev?<br></blockquote><div>its VF netdev=C2=A0</div><blockquote =
-class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px sol=
-id rgb(204,204,204);padding-left:1ex">
-<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0struct devlink_port_attrs *attrs =3D &amp;port-&g=
-t;attrs;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0struct devlink_port_pci_vf_attrs *pci_vf;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0u8 mac[ETH_ALEN];<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0int vf_id;<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0if (attrs-&gt;flavour =3D=3D DEVLINK_PORT_FLAVOUR=
-_PCI_VF) {<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0pci_vf =3D &amp;attrs=
--&gt;pci_vf;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0vf_id =3D pci_vf-&gt;=
-vf;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0} else {<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0NL_SET_ERR_MSG_MOD(ex=
-tack, &quot;Unable to get the vf id&quot;);<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0return -EADDRNOTAVAIL=
-;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0}<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0if (!netdev) {<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0NL_SET_ERR_MSG_MOD(ex=
-tack, &quot;Unable to get the netdev&quot;);<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0return -EADDRNOTAVAIL=
-;<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0}<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0ether_addr_copy(mac, hw_addr);<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0return ice_set_vf_mac(netdev, vf_id, mac);<br>
-&gt; +}<br>
-&gt; +<br>
-&gt; +static const struct devlink_port_ops ice_devlink_vf_port_ops =3D {<br=
->
-&gt; +=C2=A0 =C2=A0 =C2=A0.port_fn_hw_addr_get =3D ice_devlink_port_get_vf_=
-mac_address,<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0.port_fn_hw_addr_set =3D ice_devlink_port_set_vf_=
-mac_address,<br>
-&gt; +};<br>
-&gt; +<br>
-&gt;=C2=A0 /**<br>
-&gt;=C2=A0 =C2=A0* ice_devlink_create_vf_port - Create a devlink port for t=
-his VF<br>
-&gt;=C2=A0 =C2=A0* @vf: the VF to create a port for<br>
-&gt; @@ -1611,7 +1694,8 @@ int ice_devlink_create_vf_port(struct ice_vf *vf=
-)<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0devlink_port_attrs_set(devlink_port, &amp;at=
-trs);<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0devlink =3D priv_to_devlink(pf);<br>
-&gt;=C2=A0 <br>
-&gt; -=C2=A0 =C2=A0 =C2=A0err =3D devlink_port_register(devlink, devlink_po=
-rt, vsi-&gt;idx);<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0err =3D devlink_port_register_with_ops(devlink, d=
-evlink_port,<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 vsi-&gt;idx, &amp;ice_devlink_vf_port_ops);<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0if (err) {<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0dev_err(dev, &qu=
-ot;Failed to create devlink port for VF %d, error %d\n&quot;,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0vf-&gt;vf_id, err);<br>
-&gt; -- <br>
-&gt; 2.39.3 (Apple Git-145)<br>
-&gt; <br>
-<br>
-</blockquote></div></div>
-
---000000000000c7d09506121f40b8--
 
