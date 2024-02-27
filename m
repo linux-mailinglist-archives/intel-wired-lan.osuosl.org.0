@@ -1,70 +1,70 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 46E2E8684EE
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 27 Feb 2024 01:15:13 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4B2F98684EF
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 27 Feb 2024 01:15:15 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id E762B60B20;
-	Tue, 27 Feb 2024 00:15:11 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 176B360B24;
+	Tue, 27 Feb 2024 00:15:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id tKq4tRpZmI0G; Tue, 27 Feb 2024 00:15:11 +0000 (UTC)
+	with ESMTP id PWhv93WE_Tu3; Tue, 27 Feb 2024 00:15:12 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1E66C60B0B
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 4625360B12
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1708992911;
-	bh=TgssAil9N4ZeHvn4JX5d+SdlvcJIGrRLYoM9s+Cp1QI=;
+	s=default; t=1708992912;
+	bh=idIMnUCvLby8rtoYfm+sCZFba58MTKhEqQtY0vSsNUA=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=Se5fH7Z6k4Mzrmx9Tz/p8BMl4oBanPADrkACmM659aqBxuE8DuOXnX+/F1rKwsmE4
-	 pXF5PUsTtWkyi1P4jZc+pPXQI/Ixf+RfeK/x4cvwao+PP7lo7mpz6FVAVC8E67USMx
-	 xEYygDoRvtq/887sFbg6aEPDSbu2LPinrkOwshj1H7Ev/aNWR+Bc9Rd1i3CP23+ooT
-	 y1IqKw/cA9XK1rsy49pajUieUzR+Ht0W2g7ZRLFJ3oTi6h4t51WgwW1Oj3vTtIvUl2
-	 0/GuCGU1+SEGBQJHrr1HGCKTaTkrETJ3B+mGPg86qaLln6S8dK+uuNhgO7ukylr1J8
-	 5Cf04K+mOU16w==
+	b=8YqW9r5N6VdupIRkVYafIjR9LdvDyWvdu3mJcAqcSHq3RteI9t/Y1+qEm93RymUm4
+	 nVBmjMUSGJMum91HqIHo9hM51TJDjsA5JQ68PEYjiPRc+uHUcMfxtadYybW43MSIxP
+	 mAbhDCWWHYXinJGXEnHZwpZpYKnvMEyz94iEJAnEzzjiqBPbbNrdE3pvKHGsL74Q3H
+	 RiCGVnH4dSUW3HaZibYiuasn27OR4rwcYsVo8hvwFZAHMr8DTlmYPztMHvEIgOtTrb
+	 vnxWC/AHyD4ygGiTPbstMG8W3GllrsKEFUr906nGSse+esE165kygUzrj2nc3qdy1j
+	 vud0iGJCdLwmQ==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 1E66C60B0B;
-	Tue, 27 Feb 2024 00:15:11 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 4625360B12;
+	Tue, 27 Feb 2024 00:15:12 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 7932F1BF35D
- for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Feb 2024 00:15:06 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 8D0551BF35D
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Feb 2024 00:15:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id B1EDF40497
- for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Feb 2024 00:15:03 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 55F9340AD6
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Feb 2024 00:15:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id gH_WmKCzcJIv for <intel-wired-lan@lists.osuosl.org>;
+ with ESMTP id l6nBylU6UP5E for <intel-wired-lan@lists.osuosl.org>;
  Tue, 27 Feb 2024 00:15:02 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.14;
  helo=mgamail.intel.com; envelope-from=jacob.e.keller@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 75D7B40B2E
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 75D7B40B2E
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 99CE040B31
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 99CE040B31
 Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.14])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 75D7B40B2E
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 99CE040B31
  for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Feb 2024 00:15:02 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10996"; a="7128811"
+X-IronPort-AV: E=McAfee;i="6600,9927,10996"; a="7128812"
 X-IronPort-AV: E=Sophos;i="6.06,187,1705392000"; 
-   d="scan'208";a="7128811"
+   d="scan'208";a="7128812"
 Received: from orviesa010.jf.intel.com ([10.64.159.150])
  by orvoesa106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  26 Feb 2024 16:15:01 -0800
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.06,187,1705392000"; 
-   d="scan'208";a="6816128"
+   d="scan'208";a="6816131"
 Received: from jekeller-desk.amr.corp.intel.com ([10.166.241.1])
  by orviesa010-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  26 Feb 2024 16:15:00 -0800
 From: Jacob Keller <jacob.e.keller@intel.com>
 To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Date: Mon, 26 Feb 2024 16:14:55 -0800
-Message-ID: <20240227001456.3858886-3-jacob.e.keller@intel.com>
+Date: Mon, 26 Feb 2024 16:14:56 -0800
+Message-ID: <20240227001456.3858886-4-jacob.e.keller@intel.com>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20240227001456.3858886-1-jacob.e.keller@intel.com>
 References: <20240227001456.3858886-1-jacob.e.keller@intel.com>
@@ -75,22 +75,22 @@ X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  t=1708992903; x=1740528903;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=Z2M4+X4p7bKiKkSTQyZjyJW22EvXQ9wyM9v65awwhDE=;
- b=WjNxnT8SWqXW/BCitPkkEKlLSs/ug2pnW15yk0sNdKE9oEJcMzeFZQPw
- yn7MLhDXa1mXm1HYIONcO4MBkjMgQPHsxGBOzJVa1emNdQqSsxxME0zv3
- Z1xaFPeyWMTZdDHMjjevA2QyXRyF0igLi2JpIg9x0CJMXyxzsx/QuBytU
- 8jWGtNJhjKO98Yi7SIu+7+pmpfx+we4dEj0TBzrtULicMDqZdDUQ3d4X/
- d+nUWHPBxfvZ8N5lyvr5Ph5wgebyjKY/sKs/iR2g6P4kHnMb0nfWZ5zzA
- XhEnxDHKjGSSLvbqhmT5sI85nESvcN0IDJ7DLz8CgP0PRXXaHozZ401y8
- g==;
+ bh=GsCePI1DqrWoww1qukrW6bcYWmXEgtccb1XVI0Rr6zM=;
+ b=C8r+IjClduaQCaXI3HLHrrF1JkHXnfXowFcehBLy14yesxmLU1fN//e2
+ I71iyF82DQZu3RStTrjxFIeXu4PlIs1RyGCLx7gyio56IPFBfgpWeJ6W0
+ 4vZMNJ2gQWGohW35fJcWpcEfX5r4zEmB1osVyV9m/DHRB/QvhmwfqY0jq
+ oRmE+D/+fv86rlIIcgjnarnYQNXo0VDFO3DF+hSvkwY0xr6RuAShGO+2E
+ Lvj0D1V9FKC4LbL4FTmJ0CvWZFI8QREA2FiZIqkb+Yl1KjWQ1ghaMH9Ja
+ ZguVRGvitwVw3E8xddPwQasfh+SMv7uEACsbTYaCckwJck3FKAcTrWTNY
+ A==;
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=WjNxnT8S
-Subject: [Intel-wired-lan] [PATCH iwl-next 2/3] ice: use GENMASK instead of
- BIT(n) - 1 in pack functions
+ header.a=rsa-sha256 header.s=Intel header.b=C8r+IjCl
+Subject: [Intel-wired-lan] [PATCH iwl-next 3/3] ice: cleanup line splitting
+ for context set functions
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -109,122 +109,84 @@ Cc: Jacob Keller <jacob.e.keller@intel.com>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The functions used to pack the Tx and Rx context into the hardware format
-rely on using BIT() and then subtracting 1 to get a bitmask. These
-functions even have a comment about how x86 machines can't use this method
-for certain widths because the SHL instructions will not work properly.
+The indentation for ice_set_ctx and ice_write_rxq_ctx breaks the function
+name after the return type. This style of breaking is used a lot throughout
+the ice driver, even in cases where its not actually helpful for
+readability. We no longer prefer this style of line splitting in the
+driver, and new code is avoiding it.
 
-The Linux kernel already provides the GENMASK macro for generating a
-suitable bitmask. Further, GENMASK is capable of generating the mask
-including the shift_width. Since width is the total field width, take care
-to subtract one to get the final bit position.
-
-Since we now include the shifted bits as part of the mask, shift the source
-value first before applying the mask.
+Normally, I would leave this alone unless the actual function contents or
+description needed updating. However, a future change is going to add
+inverse functions for converting packed context to unpacked context
+structures. To keep this code uniform with the existing set functions, fix
+up the style to the modern format of keeping the type on the same line.
 
 Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
 Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_common.c | 44 ++++-----------------
- 1 file changed, 8 insertions(+), 36 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_common.c | 12 +++++-------
+ drivers/net/ethernet/intel/ice/ice_common.h | 10 ++++------
+ 2 files changed, 9 insertions(+), 13 deletions(-)
 
 diff --git a/drivers/net/ethernet/intel/ice/ice_common.c b/drivers/net/ethernet/intel/ice/ice_common.c
-index d8bcc8bd91d8..ffe44f2d3dc5 100644
+index ffe44f2d3dc5..ae97b248261a 100644
 --- a/drivers/net/ethernet/intel/ice/ice_common.c
 +++ b/drivers/net/ethernet/intel/ice/ice_common.c
-@@ -4373,14 +4373,11 @@ static void ice_pack_ctx_byte(u8 *src_ctx, u8 *dest_ctx,
+@@ -1397,9 +1397,8 @@ static const struct ice_ctx_ele ice_rlan_ctx_info[] = {
+  * it to HW register space and enables the hardware to prefetch descriptors
+  * instead of only fetching them on demand
+  */
+-int
+-ice_write_rxq_ctx(struct ice_hw *hw, struct ice_rlan_ctx *rlan_ctx,
+-		  u32 rxq_index)
++int ice_write_rxq_ctx(struct ice_hw *hw, struct ice_rlan_ctx *rlan_ctx,
++		      u32 rxq_index)
+ {
+ 	u8 ctx_buf[ICE_RXQ_CTX_SZ] = { 0 };
  
- 	/* prepare the bits and mask */
- 	shift_width = ce_info->lsb % 8;
--	mask = (u8)(BIT(ce_info->width) - 1);
-+	mask = GENMASK(ce_info->width - 1 + shift_width, shift_width);
+@@ -4516,11 +4515,10 @@ static void ice_pack_ctx_qword(u8 *src_ctx, u8 *dest_ctx,
+  * @hw: pointer to the hardware structure
+  * @src_ctx:  pointer to a generic non-packed context structure
+  * @dest_ctx: pointer to memory for the packed structure
+- * @ce_info:  a description of the structure to be transformed
++ * @ce_info: List of Rx context elements
+  */
+-int
+-ice_set_ctx(struct ice_hw *hw, u8 *src_ctx, u8 *dest_ctx,
+-	    const struct ice_ctx_ele *ce_info)
++int ice_set_ctx(struct ice_hw *hw, u8 *src_ctx, u8 *dest_ctx,
++		const struct ice_ctx_ele *ce_info)
+ {
+ 	int f;
  
- 	src_byte = *from;
--	src_byte &= mask;
--
--	/* shift to correct alignment */
--	mask <<= shift_width;
- 	src_byte <<= shift_width;
-+	src_byte &= mask;
+diff --git a/drivers/net/ethernet/intel/ice/ice_common.h b/drivers/net/ethernet/intel/ice/ice_common.h
+index 32fd10de620c..ffb22c7ce28b 100644
+--- a/drivers/net/ethernet/intel/ice/ice_common.h
++++ b/drivers/net/ethernet/intel/ice/ice_common.h
+@@ -53,9 +53,8 @@ int ice_get_caps(struct ice_hw *hw);
  
- 	/* get the current bits from the target bit string */
- 	dest = dest_ctx + (ce_info->lsb / 8);
-@@ -4413,17 +4410,14 @@ static void ice_pack_ctx_word(u8 *src_ctx, u8 *dest_ctx,
+ void ice_set_safe_mode_caps(struct ice_hw *hw);
  
- 	/* prepare the bits and mask */
- 	shift_width = ce_info->lsb % 8;
--	mask = BIT(ce_info->width) - 1;
-+	mask = GENMASK(ce_info->width - 1 + shift_width, shift_width);
+-int
+-ice_write_rxq_ctx(struct ice_hw *hw, struct ice_rlan_ctx *rlan_ctx,
+-		  u32 rxq_index);
++int ice_write_rxq_ctx(struct ice_hw *hw, struct ice_rlan_ctx *rlan_ctx,
++		      u32 rxq_index);
  
- 	/* don't swizzle the bits until after the mask because the mask bits
- 	 * will be in a different bit position on big endian machines
- 	 */
- 	src_word = *(u16 *)from;
--	src_word &= mask;
--
--	/* shift to correct alignment */
--	mask <<= shift_width;
- 	src_word <<= shift_width;
-+	src_word &= mask;
+ int
+ ice_aq_get_rss_lut(struct ice_hw *hw, struct ice_aq_get_set_rss_lut_params *get_params);
+@@ -72,9 +71,8 @@ bool ice_check_sq_alive(struct ice_hw *hw, struct ice_ctl_q_info *cq);
+ int ice_aq_q_shutdown(struct ice_hw *hw, bool unloading);
+ void ice_fill_dflt_direct_cmd_desc(struct ice_aq_desc *desc, u16 opcode);
+ extern const struct ice_ctx_ele ice_tlan_ctx_info[];
+-int
+-ice_set_ctx(struct ice_hw *hw, u8 *src_ctx, u8 *dest_ctx,
+-	    const struct ice_ctx_ele *ce_info);
++int ice_set_ctx(struct ice_hw *hw, u8 *src_ctx, u8 *dest_ctx,
++		const struct ice_ctx_ele *ce_info);
  
- 	/* get the current bits from the target bit string */
- 	dest = dest_ctx + (ce_info->lsb / 8);
-@@ -4456,25 +4450,14 @@ static void ice_pack_ctx_dword(u8 *src_ctx, u8 *dest_ctx,
+ extern struct mutex ice_global_cfg_lock_sw;
  
- 	/* prepare the bits and mask */
- 	shift_width = ce_info->lsb % 8;
--
--	/* if the field width is exactly 32 on an x86 machine, then the shift
--	 * operation will not work because the SHL instructions count is masked
--	 * to 5 bits so the shift will do nothing
--	 */
--	if (ce_info->width < 32)
--		mask = BIT(ce_info->width) - 1;
--	else
--		mask = (u32)~0;
-+	mask = GENMASK(ce_info->width - 1 + shift_width, shift_width);
- 
- 	/* don't swizzle the bits until after the mask because the mask bits
- 	 * will be in a different bit position on big endian machines
- 	 */
- 	src_dword = *(u32 *)from;
--	src_dword &= mask;
--
--	/* shift to correct alignment */
--	mask <<= shift_width;
- 	src_dword <<= shift_width;
-+	src_dword &= mask;
- 
- 	/* get the current bits from the target bit string */
- 	dest = dest_ctx + (ce_info->lsb / 8);
-@@ -4507,25 +4490,14 @@ static void ice_pack_ctx_qword(u8 *src_ctx, u8 *dest_ctx,
- 
- 	/* prepare the bits and mask */
- 	shift_width = ce_info->lsb % 8;
--
--	/* if the field width is exactly 64 on an x86 machine, then the shift
--	 * operation will not work because the SHL instructions count is masked
--	 * to 6 bits so the shift will do nothing
--	 */
--	if (ce_info->width < 64)
--		mask = BIT_ULL(ce_info->width) - 1;
--	else
--		mask = (u64)~0;
-+	mask = GENMASK_ULL(ce_info->width - 1 + shift_width, shift_width);
- 
- 	/* don't swizzle the bits until after the mask because the mask bits
- 	 * will be in a different bit position on big endian machines
- 	 */
- 	src_qword = *(u64 *)from;
--	src_qword &= mask;
--
--	/* shift to correct alignment */
--	mask <<= shift_width;
- 	src_qword <<= shift_width;
-+	src_qword &= mask;
- 
- 	/* get the current bits from the target bit string */
- 	dest = dest_ctx + (ce_info->lsb / 8);
 -- 
 2.41.0
 
