@@ -1,124 +1,190 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 183F2868A8D
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 27 Feb 2024 09:11:17 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7CC64868FA0
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 27 Feb 2024 13:05:00 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 4E1A681C6F;
-	Tue, 27 Feb 2024 08:11:15 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 8E19180C0F;
+	Tue, 27 Feb 2024 12:04:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id AlfPbXnIzHyD; Tue, 27 Feb 2024 08:11:14 +0000 (UTC)
+	with ESMTP id f0Ad99mjmYRo; Tue, 27 Feb 2024 12:04:58 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 2F74E81AEF
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org AA48180C1F
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1709021474;
-	bh=a6piSwraRWXigsSpLo1mJkUOURoZoNM0+ReFijy4zgE=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
+	s=default; t=1709035497;
+	bh=g+tWnR9KUmuBsCRi8f7lVqoyMkSSXys/E8itunR84DQ=;
+	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=D2nahQPAVW4hkkRS1vFRQo2w6RlSmc7DmG/lrj8ttKi1EFj7nqIrgnFAOEvD6JY+c
-	 Uy2NXwb/b24ukEOmO03++hCXeA3A+OOyh+iHxL14bHuxsRXSNfueEfuS7OaJQ53ICO
-	 CeKg/kKmk7UlE59iqCKGNmJtwgon7OFVrwORNW0nKtXYy/XPsp+2Ka491Ri9/SORma
-	 06PWmTyhAsLf0pyLAVCTiQXPhqjFufwAilkKqL1bIOq8QjS3JmNEodX7Cu2r65k0Pp
-	 OY/+j9+q7iH3FpGEuC2qYuE+TfjNzXEpktQloRT6TLmnEVquhO2ATIwRyJK1S6mtdW
-	 DZi98tlVttLGA==
+	b=GBJIPgkDWzOhqSw3JOGz4GGwZQH+/b1g5Qps34D1kKQTM7mDhphV7dqRkGiU//C9K
+	 Rza4APgwk+GcF91Fj7xmuo86IkJwsweSHD3myuaa51ucQGjATgeXzVjsVegyTUR6pM
+	 8iAWIuvpVM6IhGXk9VXwXofnQBcW1jmV4wE71zf9E7Mbzzr6GZCpQPzdzqUxuo/HNf
+	 FYpkaxSq+xXDS64A7Z8gdE0t/adfvmQgcX8bQleoQpydBJiFqTpFamxrW0knPXLI1/
+	 qHB/klch4QDVypLpolwHkP2hu3icDNighJt174S/jHnFYp4mHE8e3OniLuaxBl0snh
+	 urxZ0sA7/lWgg==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 2F74E81AEF;
-	Tue, 27 Feb 2024 08:11:14 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id AA48180C1F;
+	Tue, 27 Feb 2024 12:04:57 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id A00511BF314
- for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Feb 2024 08:11:11 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 0DDE31BF345
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Feb 2024 12:04:55 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 895FF40373
- for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Feb 2024 08:11:11 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 05C65405D3
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Feb 2024 12:04:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id i2Xk1pIiTmpJ for <intel-wired-lan@lists.osuosl.org>;
- Tue, 27 Feb 2024 08:11:10 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.133.124;
- helo=us-smtp-delivery-124.mimecast.com; envelope-from=mschmidt@redhat.com;
+ with ESMTP id klbpY9IXyD0f for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 27 Feb 2024 12:04:54 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.8;
+ helo=mgamail.intel.com; envelope-from=himasekharx.reddy.pucha@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org C2B164011C
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C2B164011C
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.133.124])
- by smtp2.osuosl.org (Postfix) with ESMTPS id C2B164011C
- for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Feb 2024 08:11:09 +0000 (UTC)
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-592-LpX6uJbhMY27dgCLxyljHw-1; Tue, 27 Feb 2024 03:11:07 -0500
-X-MC-Unique: LpX6uJbhMY27dgCLxyljHw-1
-Received: by mail-wm1-f70.google.com with SMTP id
- 5b1f17b1804b1-412977dd5a1so12446785e9.1
- for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Feb 2024 00:11:07 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1709021466; x=1709626266;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=a6piSwraRWXigsSpLo1mJkUOURoZoNM0+ReFijy4zgE=;
- b=kH+UUwjnLKFXWgBspdq3hvwBml2Mgs30POV2vdueOWC8jtbbPz/+LiDuVOD59gEN3A
- 5pZg4IUxr+THUK/bcwprsJYuKyoJpIKzN69xOMANS0nObtTULuAskYLebrN0m57oo7k3
- cu0WtopTgPmnuy33sWzUAwZrFmiUxXcvYoJ21rrKdvIvzUYdzETvLZPlV3VPDPW3uRTS
- mXdh+iC4qamcxo9JxCf6DvXYikf1mAsmC/cyJy9xrVEqW8ml0MlmgF6R1qDSrDdPwXd5
- 25GCJYJC1fKBytl8qxRLFrGpbffVpRz5jAIZOncFThDpRtOH/kirAql+p50slSJVPBeA
- 1rPw==
-X-Gm-Message-State: AOJu0YyvGAv5QZjxvD9pYoaiGqFdQCzLQjJzZJYAb5UU+inZShSV7gi8
- 3Q0LM+qGNaU5hHrTwrToqyN2+9I4GrWg+dvluqLN2NZQwiBcJE6+vkIQsiiX8SkqcmS5OpP0u9C
- l0RpB1wyqK6Ht6bOdR6lYbApizMxD9T7J6Wh5P6APti5ZYZACh+xy1wfUp67r/m+GMnA=
-X-Received: by 2002:a05:6000:543:b0:33d:1cc1:bb08 with SMTP id
- b3-20020a056000054300b0033d1cc1bb08mr6479117wrf.22.1709021466142; 
- Tue, 27 Feb 2024 00:11:06 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IF/6MsCvDlDBzEAD2kHoP7xH4bJls44k+euCH2Jy+sXwYW1QJ5MsJbNsJeC3EZSDAqi5wmzJw==
-X-Received: by 2002:a05:6000:543:b0:33d:1cc1:bb08 with SMTP id
- b3-20020a056000054300b0033d1cc1bb08mr6479102wrf.22.1709021465753; 
- Tue, 27 Feb 2024 00:11:05 -0800 (PST)
-Received: from [10.43.2.89] (nat-pool-brq-t.redhat.com. [213.175.37.10])
- by smtp.gmail.com with ESMTPSA id
- ch12-20020a5d5d0c000000b0033dabeacab2sm10648037wrb.39.2024.02.27.00.11.05
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 27 Feb 2024 00:11:05 -0800 (PST)
-Message-ID: <af1b28e3-dd5f-4e31-a891-9dc038a92a34@redhat.com>
-Date: Tue, 27 Feb 2024 09:11:04 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: Jiri Pirko <jiri@resnulli.us>
-References: <20240226151125.45391-1-mschmidt@redhat.com>
- <20240226151125.45391-2-mschmidt@redhat.com> <Zd2JuVAyHigIy5NR@nanopsycho>
-From: Michal Schmidt <mschmidt@redhat.com>
-In-Reply-To: <Zd2JuVAyHigIy5NR@nanopsycho>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 846BF40459
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 846BF40459
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.8])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 846BF40459
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Feb 2024 12:04:53 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10996"; a="20914273"
+X-IronPort-AV: E=Sophos;i="6.06,187,1705392000"; d="scan'208";a="20914273"
+Received: from orviesa004.jf.intel.com ([10.64.159.144])
+ by fmvoesa102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 27 Feb 2024 04:04:52 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.06,187,1705392000"; d="scan'208";a="11689214"
+Received: from fmsmsx603.amr.corp.intel.com ([10.18.126.83])
+ by orviesa004.jf.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
+ 27 Feb 2024 04:04:51 -0800
+Received: from fmsmsx611.amr.corp.intel.com (10.18.126.91) by
+ fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.35; Tue, 27 Feb 2024 04:04:50 -0800
+Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
+ fmsmsx611.amr.corp.intel.com (10.18.126.91) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.35; Tue, 27 Feb 2024 04:04:49 -0800
+Received: from fmsedg601.ED.cps.intel.com (10.1.192.135) by
+ fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.35 via Frontend Transport; Tue, 27 Feb 2024 04:04:49 -0800
+Received: from NAM11-CO1-obe.outbound.protection.outlook.com (104.47.56.169)
+ by edgegateway.intel.com (192.55.55.70) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.35; Tue, 27 Feb 2024 04:04:49 -0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=l3d0uVJhIzXN1dos1ZRZHtqlXZQyjkFqld8EIzyaL+iXnUE7XuSKUQkaMM7V8Lzz/VmZHcYwk7ts7lbPY8V0QsijV1ma1eF0ScrVspJ2coLLIrEYDG3ddm9z2/gcKfICTKcp3dkB2MDGLuudofUhvV6V0ic4sD0yJboq4WwOXcnAoIYrebkvLIgZ3/Iwn+UH2Ek1mnBNjUuCeN13TP68UOltsnwLWqPhn4I6Fs+xzw6sunyYXmZaa/yh5c1W5e/L93+WDkR77etelk8IqqNDkKCHF1BPhSwLceiBvJpBKp+HMzvDZexYTOJ3YYeLxj6PllUtQqJx9pE1Vcjc3ssYTA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=g+tWnR9KUmuBsCRi8f7lVqoyMkSSXys/E8itunR84DQ=;
+ b=Hu507WjlsT4b/Cqnq9TV1wbSq/5fogc5cIqHDmciEix+5ptuhiY+X5RoaLdOH1iRuRnudjVE0SwzDjsCqApn9kac07uteRLa2t13S1zF7RPKIhuOl514qjgNLKmWWd8eqS6efv8IHwqEvr1k4n721k16x79fkh/9vHra7kz0rdR7UrJNitrr6FesFhsyKZJdSPSsHMVe1ohn7dw4s+LZQTKSAksytwVG7qMhRa/3GsG3AG9AGTxcRg1jaYGPCkflPF0CSTp5kFnfwepIeL2B/jlCFYfOgJqjD46gWYOiwkyfbmLY9m/5rMP4t3HWJDl0dcTHb94H48Yam2hJCaQqfQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from CYYPR11MB8429.namprd11.prod.outlook.com (2603:10b6:930:c2::15)
+ by BL1PR11MB5304.namprd11.prod.outlook.com (2603:10b6:208:316::20)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7339.25; Tue, 27 Feb
+ 2024 12:04:42 +0000
+Received: from CYYPR11MB8429.namprd11.prod.outlook.com
+ ([fe80::4434:a739:7bae:39a9]) by CYYPR11MB8429.namprd11.prod.outlook.com
+ ([fe80::4434:a739:7bae:39a9%2]) with mapi id 15.20.7339.022; Tue, 27 Feb 2024
+ 12:04:42 +0000
+From: "Pucha, HimasekharX Reddy" <himasekharx.reddy.pucha@intel.com>
+To: "Gomes, Vinicius" <vinicius.gomes@intel.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Thread-Topic: [Intel-wired-lan] [iwl-net v2 2/2] igb: Fix missing time sync
+ events
+Thread-Index: AQHaZFicYiO+YWPXJ0KsPZBJcKpe8LEeISfg
+Date: Tue, 27 Feb 2024 12:04:42 +0000
+Message-ID: <CYYPR11MB84294B0232543C809F7B060FBD592@CYYPR11MB8429.namprd11.prod.outlook.com>
+References: <20240220235712.241552-1-vinicius.gomes@intel.com>
+ <20240220235712.241552-3-vinicius.gomes@intel.com>
+In-Reply-To: <20240220235712.241552-3-vinicius.gomes@intel.com>
+Accept-Language: en-US
 Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=redhat.com; 
- s=mimecast20190719; t=1709021468;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=a6piSwraRWXigsSpLo1mJkUOURoZoNM0+ReFijy4zgE=;
- b=apy/+cQs+WoEBQEMVc/mryMt6mfIemZMNcqRPcmavKuy5RHFedruYv0pvFwh6tp9spCfMT
- AAbVJ2JCDZwJlL7Tm0zv6iGGYC6e3NOqUeRbJXoUuxLeRuLaj60rGJ0L06wo25c1BmGtno
- ISnxq8PG6b5cnqCQryett8dVFOpj55Y=
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: CYYPR11MB8429:EE_|BL1PR11MB5304:EE_
+x-ms-office365-filtering-correlation-id: 2d142c34-480f-4d50-720c-08dc378c4829
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: JLPjFruzPyQr3KQL4TZBE1E3kaK1upS0/XCSKqDWG7EY4pBx16hFY1g62ufQA5ZlYQdoTb2f9S+39tDqYHeXV8u6CZEBH9YdwOLCS/JRKHv36YOtrVzQ6bKKxnHTjbzrMtWZmsZ6X+4sbAWCDATygtIDXFJk0LLLc2HKuhy2duu66obJT3wobBYkaPpOt0utdO9BrEzjGBuni2LtfI321hI+AMDGRs9ZxXSvE9MtuaYBDDhBP2sgFz8HVhm+jT2CPPf7zK71caHf1TevbqG8HORejtduU2T3j9XYts3yWsxPytB4RznK9PH509mTMehE2PtDuN5ih+Spzi1XWvesA0SXO9fsx5nWNnHdJSGIk+JR/FWzDyEr3bN2MUUx7DMwD/9vw2KgmdlkK2k0PMuwJibQ0Ef3Wp/V+cC0Tnd5cMHIi8Qjl1pEYXm2KmvhjGyNn9DrFpg3jfeHeqnl0jAJo2n33l7WBocXDZrZDcRJr6QbcrdApYmhpyTSIsGM6l3tjcQFCK88j986A5+BWhR0yZK1Fwufp/w2gGbh6vZVdSquHGLJqyTWNddy/Rdz+Z8zOBPYQsLRQBJgdUGB2oNtAzbMcT2IV1DVtZasTmBNgJmdQ7qCXGZA6YLikyXvFLwtuZl4KTsbRs+04psk++L+/NdZNxkai8I6sXx4qbA0c5RKwSKr9zaOfcIbef+uXSIHl699J6FYi/Ay3LjK1Qt0CA==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:CYYPR11MB8429.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230031)(230273577357003)(38070700009); DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?R8639r3p4zMkUT/kKTtUPi43jl8aWRnJpzE9ucccPgWlLQszIalnjkDeqdF4?=
+ =?us-ascii?Q?w7Qr/CtBEhP4QiMRPok5xvZxR4f4nWUq8CQ+pPnxF4LkClsO9uWjyTdFHDkQ?=
+ =?us-ascii?Q?M42Mi6O5zXvzctSWTWafJXnQPJlsJdnMhlvnD6rtSTU8GT7W38uT7LSD+pjz?=
+ =?us-ascii?Q?tetD9nO9+cmiWUYNzk1NJsa9N2iJWHZ6rKvUv16dgl+ALayI2LmSqppn0v2N?=
+ =?us-ascii?Q?ubAt9ZlLUI3q9ClER6wVoPM207P1EGQ5SdA/imtAztijF0tYpsf2Ytj9pUTt?=
+ =?us-ascii?Q?li2lXvHGCV/t6xB9M9qxJyfqAS/5ftqQJxe00gqstrbTxnkcJlLqSCnuDJfB?=
+ =?us-ascii?Q?YRjmnlrO+uqpfIXfHhCQNm+rKEzjfBUjiuesARjorY+XS6gRqB2BRnjNd0b/?=
+ =?us-ascii?Q?WUFshprocSq1Dt5dJsy2a/Si+doiT5dUanaC9rr+m4MN01aCgbFrYufbF5dB?=
+ =?us-ascii?Q?qIgNVeV39yMLwciLR51kZ57qtJOEK5IA/q6AEsmU1D4UQSnFCDGY2QXZDWCE?=
+ =?us-ascii?Q?mznNM99ACDK82AicDDw2JvMKFAmOECr9sR0V7IDR9rT9JIdylgTqMTo8bNYA?=
+ =?us-ascii?Q?vt6a8gRxQdElWUKT9BHqCE3GjQX5LVYbyo8smDE4mCVIRNzRdqJoXc1We453?=
+ =?us-ascii?Q?A9772Z9GWjfi4nOomBglK5mmPP+/N9+ApTBSncerskRPBbj0AkjfjPYUxArA?=
+ =?us-ascii?Q?2ZbScWtM5Gp3Irea6ehFyivw0UdFuPInwUXEs2bBYHTFsXc6866ql7zdBtJ3?=
+ =?us-ascii?Q?ZWUDzShmm8pWqwGT/n/Rba8m0HAar7Q+QvbOHvFt2M6fwAMNw4VOJqx0oZgj?=
+ =?us-ascii?Q?XMH0zGj5F7D4YX12LA4wm0MYwezsmbuBGkWHjJzK069gMm8WgZMkjLFf02mX?=
+ =?us-ascii?Q?zlBYoRFCNfQm8I6cmn12YDDjqacS0WwpxD8uVGjv7AD3TH8R2pHjsxAfapoy?=
+ =?us-ascii?Q?+qG4RhpOuevPi9ZUFCRc4XNrir6qibcyPuH5EglgT/aRCUeqO18mwtWoNda/?=
+ =?us-ascii?Q?makwEhv2Uj1YZU4SQyiODJQlXGhSM6S1nB5xfvLSHv0fFiLo+07UXiqTM89l?=
+ =?us-ascii?Q?2FQy6ZmVsQI4LYrT23N7cCX6+ss6IO5VTXkbJEM89ef3Bg3OcWLMrYP+z2Qm?=
+ =?us-ascii?Q?cRsapIKg/l6WHdOpd9YyHFnRhqHGi16jjqWwwxUch7IwPDwBLh8W4Vrsc4TI?=
+ =?us-ascii?Q?Ml4Td9F0LGI2mKdxd90iBoH6nCdHCb/UcOGeH3mA1YxhSmoNfrNQBiAP/Cgo?=
+ =?us-ascii?Q?yb/UujoBPDssVdeB6oKAR+885Dv7G0tXbTUIVTUhI5g8E+QsYG4hE86D2uvX?=
+ =?us-ascii?Q?8BABrHL8R7gWAM/LmaZGpQUhetg1e6pTOanBCbHx5n81lGcXAjd7fvx/HiDq?=
+ =?us-ascii?Q?hXFDOXReOXlxWzHZp4/HZ5S3oppaOoOsLDs0NB7vFJOKxhjdIy8gvHBXMLIu?=
+ =?us-ascii?Q?lrGzKiz0gSpmDpuWeDQuNKcUOMzwXlok6xZEuQ/yWe7azNYfqhgo35FSBJAu?=
+ =?us-ascii?Q?jngCpPlFysiyHsuim0Uv5BHw3tbuS8IzPK+nWw6X5zQDH7/8DI0S+hlPdZmE?=
+ =?us-ascii?Q?Gf/iZegwP0FJX9B1w0HrfjU3pM2MsIuKv3wvzJQJ7oUaJnmgntZsESZExTjE?=
+ =?us-ascii?Q?UA=3D=3D?=
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: CYYPR11MB8429.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 2d142c34-480f-4d50-720c-08dc378c4829
+X-MS-Exchange-CrossTenant-originalarrivaltime: 27 Feb 2024 12:04:42.4937 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: AsR/tFEIxvw0B4kYc00/EKG86uZTFUCSNSOna2CHy6ijMPcon8CcqptNp8/SA1RnXNRfQlS7Q2UNYxf5wGInPMZmxL56W8f6U8+wlO81cgddaN3mqCR3bxU3aHtqLquy
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BL1PR11MB5304
+X-OriginatorOrg: intel.com
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1709035494; x=1740571494;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=VsICZEZ6j4ujaZM2ST4XZi3nOnMQT8NfynUBjzAlr5Y=;
+ b=Of9cffMSbLHrQsZO4NQOwIdBwOp6pHf3D9X7J472s4qHtstVz756iQhZ
+ nZXkW5zIQEk5osSR6roIK5GseAu/G8SxwA8bqe6uQ92BGItV83AYWlsfx
+ oS+67yXIvK3gtXkGdTauc3qtJoihOhZl9thug4M6nfPmHZaoJNLYXAPDK
+ /fEsgz/R41gy4JceI2ZUhHIUuaZvTDrJP6xMVOCWBuhs9auSlm9rQeB89
+ co5uOX9y2Ab4sr+AjvskCwcCAfT6cVZJLkSy7FXAP0+lHZCT6dq0L/Igl
+ SSTLaDN3+iuGGFU91DG7y230djATqa/XTRtebhVK8PqcgSbiwLVFWHxcs
+ w==;
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=redhat.com
+ header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (1024-bit key,
- unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256
- header.s=mimecast20190719 header.b=apy/+cQs
-Subject: Re: [Intel-wired-lan] [PATCH net-next 1/3] ice: add ice_adapter for
- shared data across PFs on the same NIC
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=Of9cffMS
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [iwl-net v2 2/2] igb: Fix missing time sync
+ events
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -131,225 +197,61 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, Richard Cochran <richardcochran@gmail.com>,
- Jesse Brandeburg <jesse.brandeburg@intel.com>,
- Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>,
- Karol Kolacinski <karol.kolacinski@intel.com>,
- intel-wired-lan@lists.osuosl.org, Jacob Keller <jacob.e.keller@intel.com>
+Cc: "Neftin, Sasha" <sasha.neftin@intel.com>, "Gomes,
+ Vinicius" <vinicius.gomes@intel.com>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ "richardcochran@gmail.com" <richardcochran@gmail.com>,
+ "kurt@linutronix.de" <kurt@linutronix.de>, "Brandeburg,
+ Jesse" <jesse.brandeburg@intel.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ Eric Dumazet <edumazet@google.com>, "Nguyen,
+ Anthony L" <anthony.l.nguyen@intel.com>,
+ Jeff Kirsher <jeffrey.t.kirsher@intel.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 2/27/24 08:05, Jiri Pirko wrote:
-> Mon, Feb 26, 2024 at 04:11:23PM CET, mschmidt@redhat.com wrote:
->> There is a need for synchronization between ice PFs on the same physical
->> adapter.
->>
->> Add a "struct ice_adapter" for holding data shared between PFs of the
->> same multifunction PCI device. The struct is refcounted - each ice_pf
->> holds a reference to it.
->>
->> Its first use will be for PTP. I expect it will be useful also to
->> improve the ugliness that is ice_prot_id_tbl.
->>
->> Signed-off-by: Michal Schmidt <mschmidt@redhat.com>
->> ---
->> drivers/net/ethernet/intel/ice/Makefile      |  3 +-
->> drivers/net/ethernet/intel/ice/ice.h         |  2 +
->> drivers/net/ethernet/intel/ice/ice_adapter.c | 67 ++++++++++++++++++++
->> drivers/net/ethernet/intel/ice/ice_adapter.h | 22 +++++++
->> drivers/net/ethernet/intel/ice/ice_main.c    |  8 +++
->> 5 files changed, 101 insertions(+), 1 deletion(-)
->> create mode 100644 drivers/net/ethernet/intel/ice/ice_adapter.c
->> create mode 100644 drivers/net/ethernet/intel/ice/ice_adapter.h
->>
->> diff --git a/drivers/net/ethernet/intel/ice/Makefile b/drivers/net/ethernet/intel/ice/Makefile
->> index cddd82d4ca0f..4fa09c321440 100644
->> --- a/drivers/net/ethernet/intel/ice/Makefile
->> +++ b/drivers/net/ethernet/intel/ice/Makefile
->> @@ -36,7 +36,8 @@ ice-y := ice_main.o	\
->> 	 ice_repr.o	\
->> 	 ice_tc_lib.o	\
->> 	 ice_fwlog.o	\
->> -	 ice_debugfs.o
->> +	 ice_debugfs.o  \
->> +	 ice_adapter.o
->> ice-$(CONFIG_PCI_IOV) +=	\
->> 	ice_sriov.o		\
->> 	ice_virtchnl.o		\
->> diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
->> index 365c03d1c462..1ffecbdd361a 100644
->> --- a/drivers/net/ethernet/intel/ice/ice.h
->> +++ b/drivers/net/ethernet/intel/ice/ice.h
->> @@ -77,6 +77,7 @@
->> #include "ice_gnss.h"
->> #include "ice_irq.h"
->> #include "ice_dpll.h"
->> +#include "ice_adapter.h"
->>
->> #define ICE_BAR0		0
->> #define ICE_REQ_DESC_MULTIPLE	32
->> @@ -544,6 +545,7 @@ struct ice_agg_node {
->>
->> struct ice_pf {
->> 	struct pci_dev *pdev;
->> +	struct ice_adapter *adapter;
->>
->> 	struct devlink_region *nvm_region;
->> 	struct devlink_region *sram_region;
->> diff --git a/drivers/net/ethernet/intel/ice/ice_adapter.c b/drivers/net/ethernet/intel/ice/ice_adapter.c
->> new file mode 100644
->> index 000000000000..deb063401238
->> --- /dev/null
->> +++ b/drivers/net/ethernet/intel/ice/ice_adapter.c
->> @@ -0,0 +1,67 @@
->> +// SPDX-License-Identifier: GPL-2.0-only
->> +// SPDX-FileCopyrightText: Copyright Red Hat
->> +
->> +#include <linux/cleanup.h>
->> +#include <linux/mutex.h>
->> +#include <linux/pci.h>
->> +#include <linux/slab.h>
->> +#include <linux/xarray.h>
->> +#include "ice_adapter.h"
->> +
->> +static DEFINE_MUTEX(ice_adapters_lock);
-> 
-> Why you need and extra mutex and not just rely on xarray lock?
+> -----Original Message-----
+> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of V=
+inicius Costa Gomes
+> Sent: Wednesday, February 21, 2024 5:27 AM
+> To: intel-wired-lan@lists.osuosl.org
+> Cc: Neftin, Sasha <sasha.neftin@intel.com>; Gomes, Vinicius <vinicius.gom=
+es@intel.com>; netdev@vger.kernel.org; richardcochran@gmail.com; kurt@linut=
+ronix.de; Brandeburg, Jesse <jesse.brandeburg@intel.com>; linux-kernel@vger=
+.kernel.org; Eric Dumazet <edumazet@google.com>; Nguyen, Anthony L <anthony=
+.l.nguyen@intel.com>; Jeff Kirsher <jeffrey.t.kirsher@intel.com>; Jakub Kic=
+inski <kuba@kernel.org>; Paolo Abeni <pabeni@redhat.com>; David S. Miller <=
+davem@davemloft.net>
+> Subject: [Intel-wired-lan] [iwl-net v2 2/2] igb: Fix missing time sync ev=
+ents
+>
+> Fix "double" clearing of interrupts, which can cause external events
+> or timestamps to be missed.
+>
+> The E1000_TSIRC Time Sync Interrupt Cause register can be cleared in two
+> ways, by either reading it or by writing '1' into the specific cause
+> bit. This is documented in section 8.16.1.
+>
+> The following flow was used:
+>     1. read E1000_TSIRC into 'tsicr';
+>     2. handle the interrupts present into 'tsirc' and mark them in 'ack';
+>     3. write 'ack' into E1000_TSICR;
+>
+> As both (1) and (3) will clear the interrupt cause, if the same
+> interrupt happens again between (1) and (3) it will be ignored,
+> causing events to be missed.
+>
+> Remove the extra clear in (3).
+>
+> Fixes: 00c65578b47b ("igb: enable internal PPS for the i210")
+> Acked-by: Richard Cochran <richardcochran@gmail.com>
+> Signed-off-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
+> ---
+>  drivers/net/ethernet/intel/igb/igb_main.c | 23 +++++------------------
+>  1 file changed, 5 insertions(+), 18 deletions(-)
+>
 
-I suppose I could use xa_lock() and the __xa_{load,store} calls. 
-Alright, let's see what it will look like...
-Thanks,
-Michal
-
-
->> +static DEFINE_XARRAY(ice_adapters);
->> +
->> +static unsigned long ice_adapter_index(const struct pci_dev *pdev)
->> +{
->> +	unsigned int domain = pci_domain_nr(pdev->bus);
->> +
->> +	WARN_ON((unsigned long)domain >> (BITS_PER_LONG - 13));
->> +	return ((unsigned long)domain << 13) |
->> +	       ((unsigned long)pdev->bus->number << 5) |
->> +	       PCI_SLOT(pdev->devfn);
->> +}
->> +
->> +struct ice_adapter *ice_adapter_get(const struct pci_dev *pdev)
->> +{
->> +	unsigned long index = ice_adapter_index(pdev);
->> +	struct ice_adapter *a;
->> +
->> +	guard(mutex)(&ice_adapters_lock);
->> +
->> +	a = xa_load(&ice_adapters, index);
->> +	if (a) {
->> +		refcount_inc(&a->refcount);
->> +		return a;
->> +	}
->> +
->> +	a = kzalloc(sizeof(*a), GFP_KERNEL);
->> +	if (!a)
->> +		return NULL;
->> +
->> +	refcount_set(&a->refcount, 1);
->> +
->> +	if (xa_is_err(xa_store(&ice_adapters, index, a, GFP_KERNEL))) {
->> +		kfree(a);
->> +		return NULL;
->> +	}
->> +
->> +	return a;
->> +}
->> +
->> +void ice_adapter_put(const struct pci_dev *pdev)
->> +{
->> +	unsigned long index = ice_adapter_index(pdev);
->> +	struct ice_adapter *a;
->> +
->> +	guard(mutex)(&ice_adapters_lock);
->> +
->> +	a = xa_load(&ice_adapters, index);
->> +	if (WARN_ON(!a))
->> +		return;
->> +
->> +	if (!refcount_dec_and_test(&a->refcount))
->> +		return;
->> +
->> +	WARN_ON(xa_erase(&ice_adapters, index) != a);
->> +	kfree(a);
->> +}
->> diff --git a/drivers/net/ethernet/intel/ice/ice_adapter.h b/drivers/net/ethernet/intel/ice/ice_adapter.h
->> new file mode 100644
->> index 000000000000..cb5a02eb24c1
->> --- /dev/null
->> +++ b/drivers/net/ethernet/intel/ice/ice_adapter.h
->> @@ -0,0 +1,22 @@
->> +/* SPDX-License-Identifier: GPL-2.0-only */
->> +/* SPDX-FileCopyrightText: Copyright Red Hat */
->> +
->> +#ifndef _ICE_ADAPTER_H_
->> +#define _ICE_ADAPTER_H_
->> +
->> +#include <linux/refcount_types.h>
->> +
->> +struct pci_dev;
->> +
->> +/**
->> + * struct ice_adapter - PCI adapter resources shared across PFs
->> + * @refcount: Reference count. struct ice_pf objects hold the references.
->> + */
->> +struct ice_adapter {
->> +	refcount_t refcount;
->> +};
->> +
->> +struct ice_adapter *ice_adapter_get(const struct pci_dev *pdev);
->> +void ice_adapter_put(const struct pci_dev *pdev);
->> +
->> +#endif /* _ICE_ADAPTER_H */
->> diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
->> index 9c2c8637b4a7..4a60957221fc 100644
->> --- a/drivers/net/ethernet/intel/ice/ice_main.c
->> +++ b/drivers/net/ethernet/intel/ice/ice_main.c
->> @@ -5093,6 +5093,7 @@ static int
->> ice_probe(struct pci_dev *pdev, const struct pci_device_id __always_unused *ent)
->> {
->> 	struct device *dev = &pdev->dev;
->> +	struct ice_adapter *adapter;
->> 	struct ice_pf *pf;
->> 	struct ice_hw *hw;
->> 	int err;
->> @@ -5145,7 +5146,12 @@ ice_probe(struct pci_dev *pdev, const struct pci_device_id __always_unused *ent)
->>
->> 	pci_set_master(pdev);
->>
->> +	adapter = ice_adapter_get(pdev);
->> +	if (!adapter)
->> +		return -ENOMEM;
->> +
->> 	pf->pdev = pdev;
->> +	pf->adapter = adapter;
->> 	pci_set_drvdata(pdev, pf);
->> 	set_bit(ICE_DOWN, pf->state);
->> 	/* Disable service task until DOWN bit is cleared */
->> @@ -5196,6 +5202,7 @@ ice_probe(struct pci_dev *pdev, const struct pci_device_id __always_unused *ent)
->> err_load:
->> 	ice_deinit(pf);
->> err_init:
->> +	ice_adapter_put(pdev);
->> 	pci_disable_device(pdev);
->> 	return err;
->> }
->> @@ -5302,6 +5309,7 @@ static void ice_remove(struct pci_dev *pdev)
->> 	ice_setup_mc_magic_wake(pf);
->> 	ice_set_wake(pf);
->>
->> +	ice_adapter_put(pdev);
->> 	pci_disable_device(pdev);
->> }
->>
->> -- 
->> 2.43.2
->>
->>
-> 
+Tested-by: Pucha Himasekhar Reddy <himasekharx.reddy.pucha@intel.com> (A Co=
+ntingent worker at Intel)
 
