@@ -1,138 +1,94 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id E2D258684DA
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 27 Feb 2024 01:07:46 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9A2C98684EC
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 27 Feb 2024 01:15:07 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id B4EE840854;
-	Tue, 27 Feb 2024 00:07:43 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 2F50B605F6;
+	Tue, 27 Feb 2024 00:15:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ZkTkGQU9NeVu; Tue, 27 Feb 2024 00:07:43 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id hrpiGOHs8klD; Tue, 27 Feb 2024 00:15:05 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org F35224084D
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 255426060E
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1708992461;
-	bh=7EiwRdm/V3a7kLEUdExazAqNGWLSc4lYEtu/GG4qUJ0=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=Xy90BrxFZdBikmkx8ac8wPJ6XwoGqOEskyMu6q9512mHbwm+NGmJp1oG/0we3GcSA
-	 zOVAlk2JOK2ZSGg821csrnQ+JmavI4/KX5xwVHE6lGmmf2/z8deYVkNTgQDURaP76c
-	 PK8hDQ6CBTv72DSOeFLK67HbyE8PE50FFE8Yd6pE1TFJSu0qsokkzi+B++MC/LrOi0
-	 KSF321sc6g6JKsO2QNVY2wde/Nf6ENsr4N9wH8aLCQegsVVWmLCoVa3KLq18QEsXXr
-	 lBBj6dR5hxzQNybKC8v70gtovyh7rJsvoH35lHViiIjmY8NYodXeVvgdTWXs7qWpB+
-	 WwGskPcAgI+sw==
+	s=default; t=1708992905;
+	bh=79FV3HI2R99syc+UrsQNNmc60NQ0krQEB/HhenqZOKQ=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=LX1oD71Rl779d/c1ICU7VEqxi9BGkBt/MaD2oaOdQkWAmtQAEGROFQhjUMsZFF8UV
+	 MhdbilCZTyeTXn/lHI/3Ihi6vt3vbZsuzjfTXmHbFbE8ITHSCNeLrH0MWNqA4uMBKf
+	 tiUe7PGHhuy12sxuSXetRXZqkKYmPuPYoiOCPl/mp6RDbqLSDEKur7rDYcoZNDZqBY
+	 CHsqP37TZZ2MYhEVuZlqshB40OOps2bjmnIebVtQFzx0x2/xX2nAg6sCpWnsBVNinH
+	 dQnHDE87ViwMdApzwcIbC+QuRlRv5DXTxLpr3aT66L9h9eWagJ7sWFtsY7Fa8Cbwgy
+	 i6KwsK2UQ8Qmw==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id F35224084D;
-	Tue, 27 Feb 2024 00:07:40 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 255426060E;
+	Tue, 27 Feb 2024 00:15:05 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 1851B1BF3E9
- for <intel-wired-lan@lists.osuosl.org>; Mon, 26 Feb 2024 17:14:30 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id CA9521BF35D
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Feb 2024 00:15:02 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 03FEC81F34
- for <intel-wired-lan@lists.osuosl.org>; Mon, 26 Feb 2024 17:14:30 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id BF5FB40B32
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Feb 2024 00:15:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id vw9PlwZVhYlH for <intel-wired-lan@lists.osuosl.org>;
- Mon, 26 Feb 2024 17:14:29 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=148.163.158.5;
- helo=mx0b-001b2d01.pphosted.com; envelope-from=oberpar@linux.ibm.com;
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id PjASrjTprH0m for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 27 Feb 2024 00:15:01 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.14;
+ helo=mgamail.intel.com; envelope-from=jacob.e.keller@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org D8D1681F32
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D8D1681F32
-Received: from mx0b-001b2d01.pphosted.com (mx0b-001b2d01.pphosted.com
- [148.163.158.5])
- by smtp1.osuosl.org (Postfix) with ESMTPS id D8D1681F32
- for <intel-wired-lan@lists.osuosl.org>; Mon, 26 Feb 2024 17:14:28 +0000 (UTC)
-Received: from pps.filterd (m0353723.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
- 41QGwR0e032270; Mon, 26 Feb 2024 17:14:19 GMT
-Received: from pps.reinject (localhost [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3wgxmm8fmc-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 26 Feb 2024 17:14:19 +0000
-Received: from m0353723.ppops.net (m0353723.ppops.net [127.0.0.1])
- by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 41QGx2Rw001319;
- Mon, 26 Feb 2024 17:14:18 GMT
-Received: from ppma22.wdc07v.mail.ibm.com
- (5c.69.3da9.ip4.static.sl-reverse.com [169.61.105.92])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3wgxmm8fkh-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 26 Feb 2024 17:14:18 +0000
-Received: from pps.filterd (ppma22.wdc07v.mail.ibm.com [127.0.0.1])
- by ppma22.wdc07v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id
- 41QGTLLA021808; Mon, 26 Feb 2024 17:14:17 GMT
-Received: from smtprelay05.fra02v.mail.ibm.com ([9.218.2.225])
- by ppma22.wdc07v.mail.ibm.com (PPS) with ESMTPS id 3wfu5ytquv-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 26 Feb 2024 17:14:17 +0000
-Received: from smtpav06.fra02v.mail.ibm.com (smtpav06.fra02v.mail.ibm.com
- [10.20.54.105])
- by smtprelay05.fra02v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 41QHEDNQ9372320
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 26 Feb 2024 17:14:15 GMT
-Received: from smtpav06.fra02v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 2CBAF2004D;
- Mon, 26 Feb 2024 17:14:13 +0000 (GMT)
-Received: from smtpav06.fra02v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id E8E6520049;
- Mon, 26 Feb 2024 17:14:11 +0000 (GMT)
-Received: from [9.171.4.124] (unknown [9.171.4.124])
- by smtpav06.fra02v.mail.ibm.com (Postfix) with ESMTP;
- Mon, 26 Feb 2024 17:14:11 +0000 (GMT)
-Message-ID: <3aae1410-e30f-4cd5-8c6c-3f1c6362ffee@linux.ibm.com>
-Date: Mon, 26 Feb 2024 18:13:41 +0100
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 878E540497
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 878E540497
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.14])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 878E540497
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Feb 2024 00:15:01 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10996"; a="7128809"
+X-IronPort-AV: E=Sophos;i="6.06,187,1705392000"; 
+   d="scan'208";a="7128809"
+Received: from orviesa010.jf.intel.com ([10.64.159.150])
+ by orvoesa106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 26 Feb 2024 16:15:01 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.06,187,1705392000"; 
+   d="scan'208";a="6816122"
+Received: from jekeller-desk.amr.corp.intel.com ([10.166.241.1])
+ by orviesa010-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 26 Feb 2024 16:15:00 -0800
+From: Jacob Keller <jacob.e.keller@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Date: Mon, 26 Feb 2024 16:14:53 -0800
+Message-ID: <20240227001456.3858886-1-jacob.e.keller@intel.com>
+X-Mailer: git-send-email 2.41.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Content-Language: en-US
-To: Alexander Lobakin <aleksander.lobakin@intel.com>,
- "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>
-References: <20240201122216.2634007-1-aleksander.lobakin@intel.com>
- <20240201122216.2634007-9-aleksander.lobakin@intel.com>
-From: Peter Oberparleiter <oberpar@linux.ibm.com>
-In-Reply-To: <20240201122216.2634007-9-aleksander.lobakin@intel.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-X-TM-AS-GCONF: 00
-X-Proofpoint-ORIG-GUID: kJ2xFVSXDENYmSmRhicxbmrwDujXC5lV
-X-Proofpoint-GUID: yP0KC4JJEtYmY4bzsPQdnvQdAB2lXb3v
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.272,Aquarius:18.0.1011,Hydra:6.0.619,FMLib:17.11.176.26
- definitions=2024-02-26_11,2024-02-26_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- malwarescore=0 clxscore=1011
- suspectscore=0 lowpriorityscore=0 mlxlogscore=961 adultscore=0 spamscore=0
- impostorscore=0 priorityscore=1501 mlxscore=0 bulkscore=0 phishscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2311290000
- definitions=main-2402260131
-X-Mailman-Approved-At: Tue, 27 Feb 2024 00:07:38 +0000
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=ibm.com; h=message-id : date :
- mime-version : subject : to : cc : references : from : in-reply-to :
- content-type : content-transfer-encoding; s=pp1;
- bh=7EiwRdm/V3a7kLEUdExazAqNGWLSc4lYEtu/GG4qUJ0=;
- b=MbvrA4liD26UBVHzakTuYr0t60g3p3lFTN8BkLwRvT6ziymLUJgzI6fpxn7PD76+wLYs
- 42zVAplEkClN8YKbxIWO9I2ImjJjU4TN7EXFs0W8o9bFwHYEjAsXqrRnK56xb2nTGaOA
- KN3ipTfcuAl3/MK4gfpgW5P2zURHSb7LIcZTsQ7kHewvZt3jUZIh+vONFX0QylQg+Sal
- kcJrpGJPFncGuJ9dvdCzwds4jJzgBqbVCbgHsGcZ5M/rWOJ3S+GLU4SKAk+bJbLuiYrd
- AzmfWdwoYduR6JzUZNwRCfPZE9ijUt5hd4bPVU5Q3QrWcl3TazbX+OlvqHPIuAmdpgZH aQ== 
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=linux.ibm.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=ibm.com header.i=@ibm.com
- header.a=rsa-sha256 header.s=pp1 header.b=MbvrA4li
-Subject: Re: [Intel-wired-lan] [PATCH net-next v5 08/21] s390/cio: rename
- bitmap_size() -> idset_bitmap_size()
+Content-Transfer-Encoding: 8bit
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1708992902; x=1740528902;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=bxDhr9OiTIBNvxEjk4FXrRTEuPr4y6L571AKTDBAbKk=;
+ b=gV+d4Wk+8O7SPQ2++fCypSjc123Uow75hfdMBKLnSlQYojiOKltFGt+T
+ jjusB2vKLWXrQhLSMCS69wnzDlpN0E5FTZvkZxUBvQXvx4HRVWSIXzsTU
+ SaWlryOuie9XedxiARirFYgbImRL3ilbqNcF+8Do+4Q7C00IlDQT7yDVp
+ rR0bsUFXUTd5s8/K+vuGV7NGYgmDbiLH38s9poAn9oktKzI15DyQtmYIh
+ M3soN0zWwBacA8j8Nkx9AH4rduq5Y4bwkQb0QZlC0vAdrdRNnqnLa2Ysn
+ eEpe/bzcT/gd3dOhmr8m1gCbajBn6LssVq4DWE1vY7jYjQsi9anOE0hL7
+ w==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=intel.com
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=gV+d4Wk+
+Subject: [Intel-wired-lan] [PATCH iwl-next 0/3] ice: cleanup Tx/Rx context
+ functions
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -145,36 +101,38 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Andy Shevchenko <andy@kernel.org>, linux-s390@vger.kernel.org,
- Wojciech Drewek <wojciech.drewek@intel.com>, Yury Norov <yury.norov@gmail.com>,
- Ido Schimmel <idosch@nvidia.com>, Rasmus Villemoes <linux@rasmusvillemoes.dk>,
- linux-kernel@vger.kernel.org, dm-devel@redhat.com,
- Marcin Szycik <marcin.szycik@linux.intel.com>,
- Alexander Potapenko <glider@google.com>, Simon Horman <horms@kernel.org>,
+Cc: Jacob Keller <jacob.e.keller@intel.com>,
  Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Michal Swiatkowski <michal.swiatkowski@linux.intel.com>,
- netdev@vger.kernel.org, ntfs3@lists.linux.dev, Jiri Pirko <jiri@resnulli.us>,
- linux-btrfs@vger.kernel.org, intel-wired-lan@lists.osuosl.org
+ Anthony Nguyen <anthony.l.nguyen@intel.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 01.02.2024 13:22, Alexander Lobakin wrote:
-> bitmap_size() is a pretty generic name and one may want to use it for
-> a generic bitmap API function. At the same time, its logic is not
-> "generic", i.e. it's not just `nbits -> size of bitmap in bytes`
-> converter as it would be expected from its name.
-> Add the prefix 'idset_' used throughout the file where the function
-> resides.
-> 
-> Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-> Signed-off-by: Alexander Lobakin <aleksander.lobakin@intel.com>
+The ice driver has a handful of functions used for packing Tx and Rx context
+data from the structured software layout to the bit-packed hardware layout.
 
-Apologies for the delay.
+The function names are uninformative, being named "ice_write_<size>". While
+they are static to the file, it is still not a good idea to use such broad
+names for specific functions.
 
-Acked-by: Peter Oberparleiter <oberpar@linux.ibm.com>
+In addition, the implementation of the functions use BIT() to generate
+bitmasks, while the kernel provides a more robust GENMASK() for this
+purpose.
+
+This series cleans up these functions in preparation for the live migration
+driver series that will extend the functions and add inverse operations for
+unpacking the hardware data format into the software structure.
+
+Jacob Keller (3):
+  ice: rename ice_write_* functions to ice_pack_ctx_*
+  ice: use GENMASK instead of BIT(n) - 1 in pack functions
+  ice: cleanup line splitting for context set functions
+
+ drivers/net/ethernet/intel/ice/ice_common.c | 112 +++++++-------------
+ drivers/net/ethernet/intel/ice/ice_common.h |  10 +-
+ 2 files changed, 45 insertions(+), 77 deletions(-)
 
 
+base-commit: c47bd2f22b2f457920138cacd3a53a403fa5cf92
 -- 
-Peter Oberparleiter
-Linux on IBM Z Development - IBM Germany R&D
+2.41.0
 
