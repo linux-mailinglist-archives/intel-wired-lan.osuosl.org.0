@@ -1,92 +1,112 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 28A2A868747
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 27 Feb 2024 03:37:09 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 9A1526088C;
-	Tue, 27 Feb 2024 02:37:07 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id DqJUWmyuxckK; Tue, 27 Feb 2024 02:37:07 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C202F60709
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1709001426;
-	bh=vYr+WCq4NgMAyrS2j/t34ahlxgLcp31YT88qFXeb6xI=;
-	h=Date:From:To:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=RTNt7tK//Nsx+bAoRFlMs/a2FT/+A1WFZicDFHttbB1n+TXDH/ekz75OaP0bF04dh
-	 TZx2fNkOXaAMQWiywaKp3N3iGsVjpY/2HfG8s9kMmCMweri7QlnFHJnQ3Azi39E+jp
-	 FIWSn8EvGs0dzlx6sVDBGP72pLndLZqaCy96DNv9fmvZDoBf3zoBtwxtDFXrR2VVzo
-	 DnbkiYA2FWiPk4YAnmMKE+neR5jXZqFarL1/uf4lVlgHKFgtzGfhCNTpx2Ic1l7Y8c
-	 yXeZA0EqNUWEkiWl2o5WOXx1A6M/QXrKP+ozJxyaVDugO554lE0urZs4geQ8GZMC3B
-	 mMbGAXt3n5l8g==
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id C202F60709;
-	Tue, 27 Feb 2024 02:37:06 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 5F6F11BF35C
- for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Feb 2024 02:37:04 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 44421868983
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 27 Feb 2024 08:05:45 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 57FFA40569
- for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Feb 2024 02:37:04 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 866CA40735;
+	Tue, 27 Feb 2024 07:05:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id tFZ-fK8jO_TN for <intel-wired-lan@lists.osuosl.org>;
- Tue, 27 Feb 2024 02:37:03 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2604:1380:4641:c500::1; helo=dfw.source.kernel.org;
- envelope-from=kuba@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 82B6140550
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 82B6140550
-Received: from dfw.source.kernel.org (dfw.source.kernel.org
- [IPv6:2604:1380:4641:c500::1])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 82B6140550
- for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Feb 2024 02:37:03 +0000 (UTC)
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by dfw.source.kernel.org (Postfix) with ESMTP id 4406A60AED;
- Tue, 27 Feb 2024 02:37:02 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id AB64CC433C7;
- Tue, 27 Feb 2024 02:37:01 +0000 (UTC)
-Date: Mon, 26 Feb 2024 18:37:00 -0800
-From: Jakub Kicinski <kuba@kernel.org>
-To: Jiri Pirko <jiri@resnulli.us>
-Message-ID: <20240226183700.226f887d@kernel.org>
-In-Reply-To: <ZdrpqCF3GWrMpt-t@nanopsycho>
-References: <20240219100555.7220-1-mateusz.polchlopek@intel.com>
- <20240219100555.7220-5-mateusz.polchlopek@intel.com>
- <ZdNLkJm2qr1kZCis@nanopsycho> <20240221153805.20fbaf47@kernel.org>
- <df7b6859-ff8f-4489-97b2-6fd0b95fff58@intel.com>
- <20240222150717.627209a9@kernel.org> <ZdhpHSWIbcTE-LQh@nanopsycho>
- <20240223062757.788e686d@kernel.org> <ZdrpqCF3GWrMpt-t@nanopsycho>
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id M92DJEscYAqy; Tue, 27 Feb 2024 07:05:41 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5E0DE4076D
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1709017541;
+	bh=TXtEex9VuQR1EP3e/5JdrfpeNpYD0e7hgfGq456hgR8=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=9DSSrAS9TB5mPQOloMw0YtJLYXQEOJbrZgefCJOD5/ti6vXmMT+X3ijbF0tb2xZT+
+	 YnbHammD4PM18E99KnWxjCxEorzFpg1tagqivzs0q+UKyH57ckf4C6GUlbInOosLWg
+	 BLQwEUh6W/czJZ2Y8NQ19wgaJPkBZtkxqj2e+hhnb/KysF7WO7Qos3XCFqhgYLajIP
+	 vwmOJXPmnwlex+l9Qq82IzFlk7o/apyIIbxkNmeGG39Wu5DxSko+yVKJM4EJIjM0DB
+	 TK0YAPVM9BdxuJFe4wxD7VDvVNHPf3af50zZxLNNrRl89OBUsp5Cqmpjpy5FSFuvdY
+	 MfuMHmR9gF4rA==
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp4.osuosl.org (Postfix) with ESMTP id 5E0DE4076D;
+	Tue, 27 Feb 2024 07:05:41 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id EBC5E1BF326
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Feb 2024 07:05:38 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp1.osuosl.org (Postfix) with ESMTP id C62EC81491
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Feb 2024 07:05:38 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id vmS242otIqyT for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 27 Feb 2024 07:05:37 +0000 (UTC)
+Received-SPF: None (mailfrom) identity=mailfrom;
+ client-ip=2a00:1450:4864:20::22f; helo=mail-lj1-x22f.google.com;
+ envelope-from=jiri@resnulli.us; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org EE38181470
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org EE38181470
+Received: from mail-lj1-x22f.google.com (mail-lj1-x22f.google.com
+ [IPv6:2a00:1450:4864:20::22f])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id EE38181470
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Feb 2024 07:05:34 +0000 (UTC)
+Received: by mail-lj1-x22f.google.com with SMTP id
+ 38308e7fff4ca-2d23a22233fso39615341fa.2
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 26 Feb 2024 23:05:34 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1709017532; x=1709622332;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=TXtEex9VuQR1EP3e/5JdrfpeNpYD0e7hgfGq456hgR8=;
+ b=jli1OsZnBc2RnB5yHy0Z3GPz36I+c2TegcKH3DRZoMeLEpy63Yq8n+tNotc6W9pLwm
+ crh9jzfm44reyZ6G6HOpmrZHNfthgNavv2dcsW49bCNfT/cvLJyUXJHV3zWDHUj6lPpS
+ UrEp7UOGnMMj8AwsEklhvlKY1zIWiVtp9vFdbjn9/JDn1Cb57ckgNIYnzYgdj0N1+Vw3
+ Ulzy1YCF/4hfdmoeiFHef6B/RJ+G2LRmAwHXLz+z8xjub72ppJ2BJb7jUpZUY5osuW7r
+ 5xLuCb4yzsarNYssNIHeIawxM4b9Y/cebPBn4NRU497gUiCg3ALaOD+XICzoQSjITzCG
+ ypSQ==
+X-Gm-Message-State: AOJu0YztqalO4bXzCE8RNXsWfJh9v1I43cAW4jkMklH07kKN9gmTp/Hu
+ Crga/t9SwrCZqq3ycBJv2Ci+/aw76GF1YYgiV17j9ZtbgkTM4App5oKLngvXXII=
+X-Google-Smtp-Source: AGHT+IHMIHGl/kzP+ATyzsjuczq1RY307sP0jV7fhxbh+RXvsF+7aiwa5DH2o5hrqgxIZaIX+9nM9w==
+X-Received: by 2002:ac2:4203:0:b0:512:ab3d:d551 with SMTP id
+ y3-20020ac24203000000b00512ab3dd551mr5703787lfh.19.1709017532294; 
+ Mon, 26 Feb 2024 23:05:32 -0800 (PST)
+Received: from localhost ([193.47.165.251]) by smtp.gmail.com with ESMTPSA id
+ u20-20020a05600c00d400b00410b0ce91b1sm14061609wmm.25.2024.02.26.23.05.31
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 26 Feb 2024 23:05:31 -0800 (PST)
+Date: Tue, 27 Feb 2024 08:05:29 +0100
+From: Jiri Pirko <jiri@resnulli.us>
+To: Michal Schmidt <mschmidt@redhat.com>
+Message-ID: <Zd2JuVAyHigIy5NR@nanopsycho>
+References: <20240226151125.45391-1-mschmidt@redhat.com>
+ <20240226151125.45391-2-mschmidt@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1709001421;
- bh=NPHkntyNQWs/c+91Q/vIgp3rM+4cUdlquzRTakc8a70=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=g6od7+rIBZNSmCzw7lJF7UMevm/THf6dbI783m5tG5mmsEjM1Fvzh2HS0c0yrmcNw
- UJkoig4YMJr1Mjj1PWWIS9ys+DX4oV0LjYq+d9X2vu+kWSgkmk9TeGt9YeELLKaCcD
- wAJSVVLx3VP9PDs02pS15FsXNq1rAeX2irbWxp3lCrMrLqbLGRP2RJJOQaokqf6389
- Yz2dwmiYZ40+k4Tb6+IaSaIPOckpoiy0N+h55NRxsOyTg16OmQwo2j72+Wis7k5Zuf
- mGqkfsU5xro5G4YMdQFrK0wvZOlNLJknTMV1ZcRLFK02P931xbDNUTx5xDXr+LURtF
- i+0F+KcjxsTnQ==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=g6od7+rI
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v4 4/5] ice: Add
- tx_scheduling_layers devlink param
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240226151125.45391-2-mschmidt@redhat.com>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=resnulli-us.20230601.gappssmtp.com; s=20230601; t=1709017532; x=1709622332;
+ darn=lists.osuosl.org; 
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+ bh=TXtEex9VuQR1EP3e/5JdrfpeNpYD0e7hgfGq456hgR8=;
+ b=XTF7gP0H0sFgjuenLcKKHAPpcX7V73dX1T6Kt/0ErilkZOHcG3xHju17K+2g9uRtZV
+ kK0JvU1MSFajqIx1P9I3vhk3IFHtk8k0v99naQpuQuIDcfO4sWd60qZU3jqbTpz6vITG
+ Jlk78A+RGZaQfmELbWBSnYYybZtBy9dccy6M9+Q/bDhV8X1HeJsd+wxUQ9RgSt2CPrA1
+ UUyhHmxL4SkXAEprJ68Q/pXDDi1CcyKLUUB9iQPrG+RNM71N3NbeiG6IV4PsD5yk6vBG
+ 2QRPz3q1J6MQLyiz9FZryzhKA0Q16Woc/gDeNiUYSM72GRZrk5OebT6OgJ58MSAsAhye
+ FmqA==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dmarc=none (p=none dis=none)
+ header.from=resnulli.us
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=resnulli-us.20230601.gappssmtp.com
+ header.i=@resnulli-us.20230601.gappssmtp.com header.a=rsa-sha256
+ header.s=20230601 header.b=XTF7gP0H
+Subject: Re: [Intel-wired-lan] [PATCH net-next 1/3] ice: add ice_adapter for
+ shared data across PFs on the same NIC
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,79 +119,217 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Mateusz Polchlopek <mateusz.polchlopek@intel.com>, netdev@vger.kernel.org,
- Lukasz Czapnik <lukasz.czapnik@intel.com>, intel-wired-lan@lists.osuosl.org,
- horms@kernel.org, przemyslaw.kitszel@intel.com
+Cc: netdev@vger.kernel.org, Richard Cochran <richardcochran@gmail.com>,
+ Jesse Brandeburg <jesse.brandeburg@intel.com>,
+ Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>,
+ Karol Kolacinski <karol.kolacinski@intel.com>,
+ intel-wired-lan@lists.osuosl.org, Jacob Keller <jacob.e.keller@intel.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Sun, 25 Feb 2024 08:18:00 +0100 Jiri Pirko wrote:
-> >Do you recall any specific param that got rejected from mlx5?
-> >Y'all were allowed to add the eq sizing params, which I think
-> >is not going to be mlx5-only for long. Otherwise I only remember
-> >cases where I'd try to push people to use the resource API, which
-> >IMO is better for setting limits and delegating resources.  
+Mon, Feb 26, 2024 at 04:11:23PM CET, mschmidt@redhat.com wrote:
+>There is a need for synchronization between ice PFs on the same physical
+>adapter.
+>
+>Add a "struct ice_adapter" for holding data shared between PFs of the
+>same multifunction PCI device. The struct is refcounted - each ice_pf
+>holds a reference to it.
+>
+>Its first use will be for PTP. I expect it will be useful also to
+>improve the ugliness that is ice_prot_id_tbl.
+>
+>Signed-off-by: Michal Schmidt <mschmidt@redhat.com>
+>---
+> drivers/net/ethernet/intel/ice/Makefile      |  3 +-
+> drivers/net/ethernet/intel/ice/ice.h         |  2 +
+> drivers/net/ethernet/intel/ice/ice_adapter.c | 67 ++++++++++++++++++++
+> drivers/net/ethernet/intel/ice/ice_adapter.h | 22 +++++++
+> drivers/net/ethernet/intel/ice/ice_main.c    |  8 +++
+> 5 files changed, 101 insertions(+), 1 deletion(-)
+> create mode 100644 drivers/net/ethernet/intel/ice/ice_adapter.c
+> create mode 100644 drivers/net/ethernet/intel/ice/ice_adapter.h
+>
+>diff --git a/drivers/net/ethernet/intel/ice/Makefile b/drivers/net/ethernet/intel/ice/Makefile
+>index cddd82d4ca0f..4fa09c321440 100644
+>--- a/drivers/net/ethernet/intel/ice/Makefile
+>+++ b/drivers/net/ethernet/intel/ice/Makefile
+>@@ -36,7 +36,8 @@ ice-y := ice_main.o	\
+> 	 ice_repr.o	\
+> 	 ice_tc_lib.o	\
+> 	 ice_fwlog.o	\
+>-	 ice_debugfs.o
+>+	 ice_debugfs.o  \
+>+	 ice_adapter.o
+> ice-$(CONFIG_PCI_IOV) +=	\
+> 	ice_sriov.o		\
+> 	ice_virtchnl.o		\
+>diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
+>index 365c03d1c462..1ffecbdd361a 100644
+>--- a/drivers/net/ethernet/intel/ice/ice.h
+>+++ b/drivers/net/ethernet/intel/ice/ice.h
+>@@ -77,6 +77,7 @@
+> #include "ice_gnss.h"
+> #include "ice_irq.h"
+> #include "ice_dpll.h"
+>+#include "ice_adapter.h"
 > 
-> I don't have anything solid in mind, I would have to look it up. But
-> there is certainly quite big amount of uncertainties among my
-> colleagues to jundge is some param would or would not be acceptable to
-> you. That's why I believe it would save a lot of people time to write
-> the policy down in details, with examples, etc. Could you please?
+> #define ICE_BAR0		0
+> #define ICE_REQ_DESC_MULTIPLE	32
+>@@ -544,6 +545,7 @@ struct ice_agg_node {
+> 
+> struct ice_pf {
+> 	struct pci_dev *pdev;
+>+	struct ice_adapter *adapter;
+> 
+> 	struct devlink_region *nvm_region;
+> 	struct devlink_region *sram_region;
+>diff --git a/drivers/net/ethernet/intel/ice/ice_adapter.c b/drivers/net/ethernet/intel/ice/ice_adapter.c
+>new file mode 100644
+>index 000000000000..deb063401238
+>--- /dev/null
+>+++ b/drivers/net/ethernet/intel/ice/ice_adapter.c
+>@@ -0,0 +1,67 @@
+>+// SPDX-License-Identifier: GPL-2.0-only
+>+// SPDX-FileCopyrightText: Copyright Red Hat
+>+
+>+#include <linux/cleanup.h>
+>+#include <linux/mutex.h>
+>+#include <linux/pci.h>
+>+#include <linux/slab.h>
+>+#include <linux/xarray.h>
+>+#include "ice_adapter.h"
+>+
+>+static DEFINE_MUTEX(ice_adapters_lock);
 
-How about this? (BTW took me half an hour to write, just in case 
-you're wondering)
+Why you need and extra mutex and not just rely on xarray lock?
 
-diff --git a/Documentation/networking/devlink/devlink-params.rst b/Documentation/networking/devlink/devlink-params.rst
-index 4e01dc32bc08..f1eef6d065be 100644
---- a/Documentation/networking/devlink/devlink-params.rst
-+++ b/Documentation/networking/devlink/devlink-params.rst
-@@ -9,10 +9,12 @@ level device functionality. Since devlink can operate at the device-wide
- level, it can be used to provide configuration that may affect multiple
- ports on a single device.
- 
--This document describes a number of generic parameters that are supported
--across multiple drivers. Each driver is also free to add their own
--parameters. Each driver must document the specific parameters they support,
--whether generic or not.
-+There are two categories of devlink parameters - generic parameters
-+and device-specific quirks. Generic devlink parameters are configuration
-+knobs which don't fit into any larger API, but are supported across multiple
-+drivers. This document describes a number of generic parameters.
-+Each driver can also add its own parameters, which are documented in driver
-+specific files.
- 
- Configuration modes
- ===================
-@@ -137,3 +139,32 @@ own name.
-    * - ``event_eq_size``
-      - u32
-      - Control the size of asynchronous control events EQ.
-+
-+Adding new params
-+=================
-+
-+Addition of new devlink params is carefully scrutinized upstream.
-+More complete APIs (in devlink, ethtool, netdev etc.) are always preferred,
-+devlink params should never be used in their place e.g. to allow easier
-+delivery via out-of-tree modules, or to save development time.
-+
-+devlink parameters must always be thoroughly documented, both from technical
-+perspective (to allow meaningful upstream review), and from user perspective
-+(to allow users to make informed decisions).
-+
-+The requirements above should make it obvious that any "automatic" /
-+"pass-through" registration of devlink parameters, based on strings
-+read from the device, will not be accepted.
-+
-+There are two broad categories of devlink params which had been accepted
-+in the past:
-+
-+ - device-specific configuration knobs, which cannot be inferred from
-+   other device configuration. Note that the author is expected to study
-+   other drivers to make sure that the configuration is in fact unique
-+   to the implementation.
-+
-+ - configuration which must be set at device initialization time.
-+   Allowing user to enable features at runtime is always preferable
-+   but in reality most devices allow certain features to be enabled/disabled
-+   only by changing configuration stored in NVM.
+
+>+static DEFINE_XARRAY(ice_adapters);
+>+
+>+static unsigned long ice_adapter_index(const struct pci_dev *pdev)
+>+{
+>+	unsigned int domain = pci_domain_nr(pdev->bus);
+>+
+>+	WARN_ON((unsigned long)domain >> (BITS_PER_LONG - 13));
+>+	return ((unsigned long)domain << 13) |
+>+	       ((unsigned long)pdev->bus->number << 5) |
+>+	       PCI_SLOT(pdev->devfn);
+>+}
+>+
+>+struct ice_adapter *ice_adapter_get(const struct pci_dev *pdev)
+>+{
+>+	unsigned long index = ice_adapter_index(pdev);
+>+	struct ice_adapter *a;
+>+
+>+	guard(mutex)(&ice_adapters_lock);
+>+
+>+	a = xa_load(&ice_adapters, index);
+>+	if (a) {
+>+		refcount_inc(&a->refcount);
+>+		return a;
+>+	}
+>+
+>+	a = kzalloc(sizeof(*a), GFP_KERNEL);
+>+	if (!a)
+>+		return NULL;
+>+
+>+	refcount_set(&a->refcount, 1);
+>+
+>+	if (xa_is_err(xa_store(&ice_adapters, index, a, GFP_KERNEL))) {
+>+		kfree(a);
+>+		return NULL;
+>+	}
+>+
+>+	return a;
+>+}
+>+
+>+void ice_adapter_put(const struct pci_dev *pdev)
+>+{
+>+	unsigned long index = ice_adapter_index(pdev);
+>+	struct ice_adapter *a;
+>+
+>+	guard(mutex)(&ice_adapters_lock);
+>+
+>+	a = xa_load(&ice_adapters, index);
+>+	if (WARN_ON(!a))
+>+		return;
+>+
+>+	if (!refcount_dec_and_test(&a->refcount))
+>+		return;
+>+
+>+	WARN_ON(xa_erase(&ice_adapters, index) != a);
+>+	kfree(a);
+>+}
+>diff --git a/drivers/net/ethernet/intel/ice/ice_adapter.h b/drivers/net/ethernet/intel/ice/ice_adapter.h
+>new file mode 100644
+>index 000000000000..cb5a02eb24c1
+>--- /dev/null
+>+++ b/drivers/net/ethernet/intel/ice/ice_adapter.h
+>@@ -0,0 +1,22 @@
+>+/* SPDX-License-Identifier: GPL-2.0-only */
+>+/* SPDX-FileCopyrightText: Copyright Red Hat */
+>+
+>+#ifndef _ICE_ADAPTER_H_
+>+#define _ICE_ADAPTER_H_
+>+
+>+#include <linux/refcount_types.h>
+>+
+>+struct pci_dev;
+>+
+>+/**
+>+ * struct ice_adapter - PCI adapter resources shared across PFs
+>+ * @refcount: Reference count. struct ice_pf objects hold the references.
+>+ */
+>+struct ice_adapter {
+>+	refcount_t refcount;
+>+};
+>+
+>+struct ice_adapter *ice_adapter_get(const struct pci_dev *pdev);
+>+void ice_adapter_put(const struct pci_dev *pdev);
+>+
+>+#endif /* _ICE_ADAPTER_H */
+>diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
+>index 9c2c8637b4a7..4a60957221fc 100644
+>--- a/drivers/net/ethernet/intel/ice/ice_main.c
+>+++ b/drivers/net/ethernet/intel/ice/ice_main.c
+>@@ -5093,6 +5093,7 @@ static int
+> ice_probe(struct pci_dev *pdev, const struct pci_device_id __always_unused *ent)
+> {
+> 	struct device *dev = &pdev->dev;
+>+	struct ice_adapter *adapter;
+> 	struct ice_pf *pf;
+> 	struct ice_hw *hw;
+> 	int err;
+>@@ -5145,7 +5146,12 @@ ice_probe(struct pci_dev *pdev, const struct pci_device_id __always_unused *ent)
+> 
+> 	pci_set_master(pdev);
+> 
+>+	adapter = ice_adapter_get(pdev);
+>+	if (!adapter)
+>+		return -ENOMEM;
+>+
+> 	pf->pdev = pdev;
+>+	pf->adapter = adapter;
+> 	pci_set_drvdata(pdev, pf);
+> 	set_bit(ICE_DOWN, pf->state);
+> 	/* Disable service task until DOWN bit is cleared */
+>@@ -5196,6 +5202,7 @@ ice_probe(struct pci_dev *pdev, const struct pci_device_id __always_unused *ent)
+> err_load:
+> 	ice_deinit(pf);
+> err_init:
+>+	ice_adapter_put(pdev);
+> 	pci_disable_device(pdev);
+> 	return err;
+> }
+>@@ -5302,6 +5309,7 @@ static void ice_remove(struct pci_dev *pdev)
+> 	ice_setup_mc_magic_wake(pf);
+> 	ice_set_wake(pf);
+> 
+>+	ice_adapter_put(pdev);
+> 	pci_disable_device(pdev);
+> }
+> 
+>-- 
+>2.43.2
+>
+>
