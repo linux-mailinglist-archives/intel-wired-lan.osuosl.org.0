@@ -1,119 +1,112 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id B2D20869B89
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 27 Feb 2024 17:04:58 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5A278869BBD
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 27 Feb 2024 17:13:25 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 6434160BD1;
-	Tue, 27 Feb 2024 16:04:57 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 22ECB40662;
+	Tue, 27 Feb 2024 16:13:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id nc-ahIfbIIGO; Tue, 27 Feb 2024 16:04:56 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id cDfWjJ64VQhr; Tue, 27 Feb 2024 16:13:22 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org AD97560BCF
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org DBA7A40682
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1709049896;
-	bh=A2KSc1kXng4vnsnFRz8+dsnD1ubtZKrqhs97kWLQn+8=;
+	s=default; t=1709050401;
+	bh=U0zlUbDRUti/0fQkXKr609F+U7sVS+VPdTOuFz0F/Bk=;
 	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=qdKc4spYHBfqY/CIUdTzAgk0UY+lBbzj5OLUSqzP6DcStf3ZbfJhhuPy6f/zrglPb
-	 Abqe+j/h+zVjXWb+mIsstyE32fgjtsw8r/uEnvLs/tpfHWBWLWJwgG9UOWMM2ocZhb
-	 UhwyOwt1wiAy8lsMQGAqw3wiX7DAhaId/fnYa3zO0nlZfssL1fhLsCtB5Gyj9JzeGK
-	 ook/CCo3os1wQTBAzpb0eX4t4yit14tUUOBqSHoTE6/MCkRMeBHAXapKvUjop/VfJL
-	 +V1JxAhStxviwFF7dL63MZPUE0/RDuoxpq0z50fP6ZxcUxVyFohpUywEHJA0aHiuFR
-	 dBYajSqCFPi0w==
+	b=nuNVvyHswQa3ULIUX1QUH3t4obKD8eQxIGEe92ntum0PRGYZnDYD6O48Au/YWDM6a
+	 kPVoSWLCwdThPIgX7u5rhSQ1dlIeE9c52KawXBpMgbmlfkQQPmkxjyh5MVBwqIWpzA
+	 s12a5SKYV/s10H3q3PPecMeXlXnPt2n3XpvHR/yBon7hHvdQM20OHIqGTx/juKtgW8
+	 yfM/H/dZn6h6ValUkX/AoM8xLu1+z4O2MgnD4DBDf3KFIMLXBiJQkwQwIaIO4Ij7Ku
+	 RnQBmM1s0liekM/q89FR3xc8ZbCAPRk4fdcwSoTdRCZ5tY5FoXIL8TbEBV87mjw1QS
+	 3aJR9vaQr9PPQ==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id AD97560BCF;
-	Tue, 27 Feb 2024 16:04:56 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id DBA7A40682;
+	Tue, 27 Feb 2024 16:13:21 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 9E00F1BF30A
- for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Feb 2024 16:04:54 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 818EE1BF30A
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Feb 2024 16:13:19 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 96D8D40735
- for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Feb 2024 16:04:54 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 6CEC781E14
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Feb 2024 16:13:19 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id w3AJs-VVlQrC for <intel-wired-lan@lists.osuosl.org>;
- Tue, 27 Feb 2024 16:04:53 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id aXudolial0AJ for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 27 Feb 2024 16:13:18 +0000 (UTC)
 Received-SPF: None (mailfrom) identity=mailfrom;
- client-ip=2a00:1450:4864:20::436; helo=mail-wr1-x436.google.com;
+ client-ip=2a00:1450:4864:20::12c; helo=mail-lf1-x12c.google.com;
  envelope-from=jiri@resnulli.us; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org F3431404E9
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org F3431404E9
-Received: from mail-wr1-x436.google.com (mail-wr1-x436.google.com
- [IPv6:2a00:1450:4864:20::436])
- by smtp4.osuosl.org (Postfix) with ESMTPS id F3431404E9
- for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Feb 2024 16:04:52 +0000 (UTC)
-Received: by mail-wr1-x436.google.com with SMTP id
- ffacd0b85a97d-33d509ab80eso2103340f8f.3
- for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Feb 2024 08:04:52 -0800 (PST)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org D7B928128D
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D7B928128D
+Received: from mail-lf1-x12c.google.com (mail-lf1-x12c.google.com
+ [IPv6:2a00:1450:4864:20::12c])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id D7B928128D
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Feb 2024 16:13:16 +0000 (UTC)
+Received: by mail-lf1-x12c.google.com with SMTP id
+ 2adb3069b0e04-512f54c81d2so3069788e87.2
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Feb 2024 08:13:16 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1709049890; x=1709654690;
+ d=1e100.net; s=20230601; t=1709050394; x=1709655194;
  h=in-reply-to:content-disposition:mime-version:references:message-id
  :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=A2KSc1kXng4vnsnFRz8+dsnD1ubtZKrqhs97kWLQn+8=;
- b=DdWolmxxbFbkbxGxQHJ+7vKxEzDdYJfYRXkP+6yuNq5fF/7AjdkClCCSWToA9NSFvj
- 3Qzcqidmex6VGlH6c9FHDrZHjBbqZIP6E1983v4FcmIZtJS7ArlFi4kYm58Hjoqalhr0
- 9mhFSKj/p/S3U5dot7EcQwQjtSQnpQ/LsqGQ8mjCB6AFYcCwQ6h61Zi05K7GY967eTai
- Elz5Xi1/eI0p9fTTSjLXgbboMiDD/iuQ0uuJkaNJLs7zzunTb92U7xX7hzFj9L9/DEB5
- 4/WFEEwAV9+cfvK7KGwD6Y35XEv11umfgYSr6ec+pqqNhKeLJ1mtViz3c+cNtR65bqdU
- /oyw==
+ bh=U0zlUbDRUti/0fQkXKr609F+U7sVS+VPdTOuFz0F/Bk=;
+ b=cbvJ/R+/IoqHa5i7en/BieUIJ6/QQhpJkA361gF6b6m5I5o/YC/h5pvzHIemBHPl/R
+ ie7pGyEp0OsXaACZFG0myBGzsnf+T0YTU64PwVKaixzLr2q5nRflZBHXi78Y0Hsxvxwf
+ ZapMeODPuFFprazYBTCVRItWCXXw/8tFMqj79Q0WIjjHL86soUTg9mQsPyBHcT4wHr4c
+ djQ1UvPGxx6TBfbtX4eX9cDVD7r3FHiwOdGlBicqggeCH6cRV0ITSQa5nFcp4N5uwBSM
+ gPeSpgeHuFw1CXXj0caLUh+X+kOBaFGDAdnfcPbAix0zOCl7h5psPdq0FFVpL5DUF+Si
+ iGKw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCW7yaSpXX2CP99rpOEYRrSaxiqSAUwYFOHTGUyDABe071oasG7EUIXBmMcNMFiYI3BoO33Tjx5Y4GIQnwSLKHw4GBBeASPK7RA0Cv01q3VwBw==
-X-Gm-Message-State: AOJu0Yx5z3ee/lCNjpppe02XjUcdqiU757+X+dMbnEXeL1JPbjoETEgo
- EqixrcKiNPRZ2FPoj52xghF3mHX5jnDqxGUhaB05YWO2tQQenOq4eR5+1Xuw0nw=
-X-Google-Smtp-Source: AGHT+IE7AVJJxuP/gDh319ZarFVTxtj+VRIQ0zC+hJVXEmgo7jSldIgMMYdgKgIzh6lYXxrdjukdMw==
-X-Received: by 2002:adf:f390:0:b0:33d:8d44:5c99 with SMTP id
- m16-20020adff390000000b0033d8d445c99mr8372043wro.1.1709049890446; 
- Tue, 27 Feb 2024 08:04:50 -0800 (PST)
+ AJvYcCUo1ACo5SDfB+Ml63dGU7s2Mjjkp6GQ2JqGWsEUaYcf/tEzyShE+kmV6lsmDxNXMIyeBsdPltb7tIFPY/UWyESD8cjNIGgIccLVBIj3S1bQow==
+X-Gm-Message-State: AOJu0YyeS0aCkGLmpdkBZO2LSdVyvkAqE7cad+gns+qRaiNypk5DWN4J
+ zEKnGO628wbkhmYpuvjP9Gr7lM0hF5+mpbYb58s+j3SP45sw1DSTsshYjqmPBlU=
+X-Google-Smtp-Source: AGHT+IGdncA4Y+RRQwxvVBuwQR7ctR1zSWoNVd6L0U1b5mZoDC5tYdlxznJIjlJBo0jpK+3MajGWdg==
+X-Received: by 2002:ac2:5e3c:0:b0:512:a959:af3d with SMTP id
+ o28-20020ac25e3c000000b00512a959af3dmr5733841lfg.52.1709050394044; 
+ Tue, 27 Feb 2024 08:13:14 -0800 (PST)
 Received: from localhost ([193.47.165.251]) by smtp.gmail.com with ESMTPSA id
- q17-20020adff951000000b0033dd1a3ed0dsm8096378wrr.97.2024.02.27.08.04.49
+ k2-20020a5d6d42000000b0033b79d385f6sm11694326wri.47.2024.02.27.08.13.12
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 27 Feb 2024 08:04:49 -0800 (PST)
-Date: Tue, 27 Feb 2024 17:04:47 +0100
+ Tue, 27 Feb 2024 08:13:12 -0800 (PST)
+Date: Tue, 27 Feb 2024 17:13:09 +0100
 From: Jiri Pirko <jiri@resnulli.us>
-To: Andrew Lunn <andrew@lunn.ch>
-Message-ID: <Zd4IH1XUhC92zaVP@nanopsycho>
-References: <20240221153805.20fbaf47@kernel.org>
- <df7b6859-ff8f-4489-97b2-6fd0b95fff58@intel.com>
- <20240222150717.627209a9@kernel.org> <ZdhpHSWIbcTE-LQh@nanopsycho>
- <20240223062757.788e686d@kernel.org> <ZdrpqCF3GWrMpt-t@nanopsycho>
- <20240226183700.226f887d@kernel.org> <Zd3S6EXCiiwOCTs8@nanopsycho>
- <10fbc4c8-7901-470b-8d72-678f000b260b@intel.com>
- <327ae9b5-6e7d-4f8b-90b3-ee6f8d164c0d@lunn.ch>
+To: Karthik Sundaravel <ksundara@redhat.com>
+Message-ID: <Zd4KFZINps0CloD-@nanopsycho>
+References: <20240224124406.11369-1-ksundara@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <327ae9b5-6e7d-4f8b-90b3-ee6f8d164c0d@lunn.ch>
+In-Reply-To: <20240224124406.11369-1-ksundara@redhat.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=resnulli-us.20230601.gappssmtp.com; s=20230601; t=1709049890; x=1709654690;
+ d=resnulli-us.20230601.gappssmtp.com; s=20230601; t=1709050394; x=1709655194;
  darn=lists.osuosl.org; 
  h=in-reply-to:content-disposition:mime-version:references:message-id
  :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=A2KSc1kXng4vnsnFRz8+dsnD1ubtZKrqhs97kWLQn+8=;
- b=wsEeNyo2QnYo72Gs8k3yMse5LCdRUpUJRe6p+ElOp8uUxprTgz2qHnEq/xB7dIgN5f
- NOpC8gdgvN+NuBY20ns6nW46L6GuchsEEBd7NWBV6M40ulJoiaWpMx4OMov6QDP6EgfS
- GJ8TMgA17G9/h4D9XMT5xo0E6pG6vbaMzuvrBitP393pbec4zfxL2dSulzEmn7eOwPZV
- /B1LBj0HUbDmnQqj+dYxg2rETKJd0qqhSllnV8saKvFyYYZx7eIJ+smjerQN9gs9O7IU
- Q3Vf6A39hspzol7XEE8m+7b1vvDnilBUamXqpJ+Gk+zyfgk77LOfR2D9r2rGyx+qQ8Zz
- n3tQ==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ bh=U0zlUbDRUti/0fQkXKr609F+U7sVS+VPdTOuFz0F/Bk=;
+ b=pn8kqiHWJdSga/f1UmbLvO4R4CKmV33VY/Yrm0mQGHFP5Q23s27QPGN2gmNH6la92B
+ rZFpxhZdXesptDD7iORHGIHJ5Y3S5gi17HhOZHWxlG36WdfyIVMG3lehdNo9EBnUKO25
+ t6Ma+LmhVdcHOaneIIF/ilwvpoU9cubkdX3gScg3zvSsDJfqvdBa7CGDH2Lqe+rTUF6o
+ AzkfvJ2A4VMy3UqJPCkmwiVJC5cmyAKNO+o4tGcKMXmb0en4REzD9GROHV1kKNfavnjS
+ mRLaysQo1AI8Jv+u4DLouzP/M3RrZkiDJcMes8o03k/a1GInLih2p6kp0v/tBo9TJKQe
+ FYHA==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=none (p=none dis=none)
  header.from=resnulli.us
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=resnulli-us.20230601.gappssmtp.com
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key) header.d=resnulli-us.20230601.gappssmtp.com
  header.i=@resnulli-us.20230601.gappssmtp.com header.a=rsa-sha256
- header.s=20230601 header.b=wsEeNyo2
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v4 4/5] ice: Add
- tx_scheduling_layers devlink param
+ header.s=20230601 header.b=pn8kqiHW
+Subject: Re: [Intel-wired-lan] [PATCH v4] ice: Add get/set hw address for
+ VFs using devlink commands
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -126,40 +119,158 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Lukasz Czapnik <lukasz.czapnik@intel.com>, netdev@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org, horms@kernel.org,
- Mateusz Polchlopek <mateusz.polchlopek@intel.com>,
- Jakub Kicinski <kuba@kernel.org>
+Cc: pmenzel@molgen.mpg.de, aharivel@redhat.com,
+ michal.swiatkowski@linux.intel.com, cfontain@redhat.com,
+ intel-wired-lan@lists.osuosl.org, jesse.brandeburg@intel.com,
+ linux-kernel@vger.kernel.org, edumazet@google.com, anthony.l.nguyen@intel.com,
+ vchundur@redhat.com, netdev@vger.kernel.org, kuba@kernel.org,
+ rjarry@redhat.com, pabeni@redhat.com, davem@davemloft.net
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Tue, Feb 27, 2024 at 04:41:52PM CET, andrew@lunn.ch wrote:
->> What if it would not be unique, should they then proceed to add generic
->> (other word would be "common") param, and make the other driver/s use
->> it? Without deprecating the old method ofc.
+Sat, Feb 24, 2024 at 01:44:06PM CET, ksundara@redhat.com wrote:
+>Changing the MAC address of the VFs are not available
+>via devlink. Add the function handlers to set and get
+>the HW address for the VFs.
 >
->If it is useful, somebody else will copy it and it will become
->common. If nobody copies it, its probably not useful :-)
+>Signed-off-by: Karthik Sundaravel <ksundara@redhat.com>
+>---
+> drivers/net/ethernet/intel/ice/ice_devlink.c | 88 +++++++++++++++++++-
+> 1 file changed, 87 insertions(+), 1 deletion(-)
 >
->A lot of what we do in networking comes from standard. Its the
->standards which gives us interoperability. Also, there is the saying,
->form follows function. There are only so many ways you can implement
->the same thing.
->
->Is anybody truly building unique hardware, whos form somehow does not
->follow function and is yet still standards compliant? More likely,
->they are just the first, and others will copy or re-invent it sooner
->or later.
+>diff --git a/drivers/net/ethernet/intel/ice/ice_devlink.c b/drivers/net/ethernet/intel/ice/ice_devlink.c
+>index 80dc5445b50d..c3813edd6a76 100644
+>--- a/drivers/net/ethernet/intel/ice/ice_devlink.c
+>+++ b/drivers/net/ethernet/intel/ice/ice_devlink.c
+>@@ -1576,6 +1576,91 @@ void ice_devlink_destroy_pf_port(struct ice_pf *pf)
+> 	devlink_port_unregister(&pf->devlink_port);
+> }
+> 
+>+/**
+>+ * ice_devlink_port_get_vf_mac_address - .port_fn_hw_addr_get devlink handler
+>+ * @port: devlink port structure
+>+ * @hw_addr: MAC address of the port
+>+ * @hw_addr_len: length of MAC address
+>+ * @extack: extended netdev ack structure
+>+ *
+>+ * Callback for the devlink .port_fn_hw_addr_get operation
+>+ * Return: zero on success or an error code on failure.
+>+ */
+>+
+>+static int ice_devlink_port_get_vf_mac_address(struct devlink_port *port,
+>+					       u8 *hw_addr, int *hw_addr_len,
+>+					       struct netlink_ext_ack *extack)
+>+{
+>+	struct devlink_port_attrs *attrs = &port->attrs;
+>+	struct devlink_port_pci_vf_attrs *pci_vf;
+>+	struct devlink *devlink = port->devlink;
+>+	struct ice_pf *pf;
+>+	struct ice_vf *vf;
+>+	int vf_id;
+>+
+>+	pf = devlink_priv(devlink);
+>+	if (attrs->flavour == DEVLINK_PORT_FLAVOUR_PCI_VF) {
+>+		pci_vf = &attrs->pci_vf;
+>+		vf_id = pci_vf->vf;
+>+	} else {
+>+		NL_SET_ERR_MSG_MOD(extack, "Unable to get the vf id");
+>+		return -EADDRNOTAVAIL;
+>+	}
+>+	vf = ice_get_vf_by_id(pf, vf_id);
+>+	if (!vf) {
+>+		NL_SET_ERR_MSG_MOD(extack, "Unable to get the vf");
+>+		return -EINVAL;
+>+	}
+>+	ether_addr_copy(hw_addr, vf->dev_lan_addr);
+>+	*hw_addr_len = ETH_ALEN;
+>+
+>+	ice_put_vf(vf);
+>+	return 0;
+>+}
+>+
+>+/**
+>+ * ice_devlink_port_set_vf_mac_address - .port_fn_hw_addr_set devlink handler
+>+ * @port: devlink port structure
+>+ * @hw_addr: MAC address of the port
+>+ * @hw_addr_len: length of MAC address
+>+ * @extack: extended netdev ack structure
+>+ *
+>+ * Callback for the devlink .port_fn_hw_addr_set operation
+>+ * Return: zero on success or an error code on failure.
+>+ */
+>+static int ice_devlink_port_set_vf_mac_address(struct devlink_port *port,
 
-Wait, standard in protocol sense is completely parallel to the hw/fw
-implementations. They may be (and in reality they are) a lots of
-tunables to tweak specific hw/fw internals. So modern nics are very
-unique. Still providing the same inputs and outputs, protocol-wise.
+Better to have "fn" in the name of the function, so it is clear this
+sets the mac of function itself.
 
 
+>+					       const u8 *hw_addr,
+>+					       int hw_addr_len,
+>+					       struct netlink_ext_ack *extack)
+>+{
+>+	struct net_device *netdev = port->type_eth.netdev;
+>+	struct devlink_port_attrs *attrs = &port->attrs;
+>+	struct devlink_port_pci_vf_attrs *pci_vf;
+>+	u8 mac[ETH_ALEN];
+>+	int vf_id;
+>+
+>+	if (attrs->flavour == DEVLINK_PORT_FLAVOUR_PCI_VF) {
+>+		pci_vf = &attrs->pci_vf;
+>+		vf_id = pci_vf->vf;
+>+	} else {
+>+		NL_SET_ERR_MSG_MOD(extack, "Unable to get the vf id");
+
+How exactly this can happen? I'm pretty sure it can't.
+
+
+>+		return -EADDRNOTAVAIL;
+>+	}
+>+
+>+	if (!netdev) {
+
+How exactly this can happen? I'm pretty sure it can't.
+
+
+>+		NL_SET_ERR_MSG_MOD(extack, "Unable to get the netdev");
+>+		return -EADDRNOTAVAIL;
+>+	}
+>+	ether_addr_copy(mac, hw_addr);
+>+
+>+	return ice_set_vf_mac(netdev, vf_id, mac);
+
+It's misleading to call ice_set_vf_mac like this. It is originally used
+by legacy ip vf api, where the netdev is the PF netdev. Here you pass
+devlink port representor netdev. Internally ice_set_vf_mac() gets
+pointer to struct ice_pf.
+
+Could you please use:
+struct ice_pf *pf = devlink_priv(devlink);
+and pass it to some variant of ice_set_vf_mac() function?
+
+
+pw-bot: cr
+
+
+>+}
+>+
+>+static const struct devlink_port_ops ice_devlink_vf_port_ops = {
+>+	.port_fn_hw_addr_get = ice_devlink_port_get_vf_mac_address,
+>+	.port_fn_hw_addr_set = ice_devlink_port_set_vf_mac_address,
+>+};
+>+
+> /**
+>  * ice_devlink_create_vf_port - Create a devlink port for this VF
+>  * @vf: the VF to create a port for
+>@@ -1611,7 +1696,8 @@ int ice_devlink_create_vf_port(struct ice_vf *vf)
+> 	devlink_port_attrs_set(devlink_port, &attrs);
+> 	devlink = priv_to_devlink(pf);
+> 
+>-	err = devlink_port_register(devlink, devlink_port, vsi->idx);
+>+	err = devlink_port_register_with_ops(devlink, devlink_port,
+>+					     vsi->idx, &ice_devlink_vf_port_ops);
+> 	if (err) {
+> 		dev_err(dev, "Failed to create devlink port for VF %d, error %d\n",
+> 			vf->vf_id, err);
+>-- 
+>2.39.3 (Apple Git-145)
 >
->So for me, unique is a pretty high bar to reach.
->
->	Andrew
->	
