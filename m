@@ -1,112 +1,93 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 44421868983
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 27 Feb 2024 08:05:45 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id C47688689CB
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 27 Feb 2024 08:22:58 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 866CA40735;
-	Tue, 27 Feb 2024 07:05:42 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 2627D40B69;
+	Tue, 27 Feb 2024 07:22:57 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id M92DJEscYAqy; Tue, 27 Feb 2024 07:05:41 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id TsMKEFtOSeLg; Tue, 27 Feb 2024 07:22:56 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5E0DE4076D
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A920040B5D
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1709017541;
-	bh=TXtEex9VuQR1EP3e/5JdrfpeNpYD0e7hgfGq456hgR8=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1709018575;
+	bh=CsnrFim6EYDuNuWnC6WWL5wPbMRzROScb1KO6aPlOsw=;
+	h=From:To:In-Reply-To:References:Date:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=9DSSrAS9TB5mPQOloMw0YtJLYXQEOJbrZgefCJOD5/ti6vXmMT+X3ijbF0tb2xZT+
-	 YnbHammD4PM18E99KnWxjCxEorzFpg1tagqivzs0q+UKyH57ckf4C6GUlbInOosLWg
-	 BLQwEUh6W/czJZ2Y8NQ19wgaJPkBZtkxqj2e+hhnb/KysF7WO7Qos3XCFqhgYLajIP
-	 vwmOJXPmnwlex+l9Qq82IzFlk7o/apyIIbxkNmeGG39Wu5DxSko+yVKJM4EJIjM0DB
-	 TK0YAPVM9BdxuJFe4wxD7VDvVNHPf3af50zZxLNNrRl89OBUsp5Cqmpjpy5FSFuvdY
-	 MfuMHmR9gF4rA==
+	b=xXqZNosew0d+TzEoEIGnStFDMdlpg8bfgmd69yAqPDtTFgX4kB7cdSoLARhUV2mTx
+	 ghrqxuIK7FVMrUVphXiL3Gc3bdl445+X7oPjlYw4puvEkXbJ0393EukNZMBgBsxv9u
+	 JO0rJmMQMsc64lXFFElur/vO9HsxxTEkm1peuVNvMQ72qF8qNnu20WNqu1UVknD6lI
+	 MXeFNJNBc3HnoKqnkXxsjupQxbILirUcMrijF1n0OLU2TUaqYTnzmAl47/D2PQhg/p
+	 lPcx5J6OZopzjlJlDz1Se1Z6vYng1AzM2pQJNToSpSDgH5ci0Mi+xlx/FDHaY3abin
+	 Vcq1jCBPfhaoA==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 5E0DE4076D;
-	Tue, 27 Feb 2024 07:05:41 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id A920040B5D;
+	Tue, 27 Feb 2024 07:22:55 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id EBC5E1BF326
- for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Feb 2024 07:05:38 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 8DEDB1BF326
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Feb 2024 07:22:53 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id C62EC81491
- for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Feb 2024 07:05:38 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 79D7781FEF
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Feb 2024 07:22:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id vmS242otIqyT for <intel-wired-lan@lists.osuosl.org>;
- Tue, 27 Feb 2024 07:05:37 +0000 (UTC)
-Received-SPF: None (mailfrom) identity=mailfrom;
- client-ip=2a00:1450:4864:20::22f; helo=mail-lj1-x22f.google.com;
- envelope-from=jiri@resnulli.us; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org EE38181470
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org EE38181470
-Received: from mail-lj1-x22f.google.com (mail-lj1-x22f.google.com
- [IPv6:2a00:1450:4864:20::22f])
- by smtp1.osuosl.org (Postfix) with ESMTPS id EE38181470
- for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Feb 2024 07:05:34 +0000 (UTC)
-Received: by mail-lj1-x22f.google.com with SMTP id
- 38308e7fff4ca-2d23a22233fso39615341fa.2
- for <intel-wired-lan@lists.osuosl.org>; Mon, 26 Feb 2024 23:05:34 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1709017532; x=1709622332;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=TXtEex9VuQR1EP3e/5JdrfpeNpYD0e7hgfGq456hgR8=;
- b=jli1OsZnBc2RnB5yHy0Z3GPz36I+c2TegcKH3DRZoMeLEpy63Yq8n+tNotc6W9pLwm
- crh9jzfm44reyZ6G6HOpmrZHNfthgNavv2dcsW49bCNfT/cvLJyUXJHV3zWDHUj6lPpS
- UrEp7UOGnMMj8AwsEklhvlKY1zIWiVtp9vFdbjn9/JDn1Cb57ckgNIYnzYgdj0N1+Vw3
- Ulzy1YCF/4hfdmoeiFHef6B/RJ+G2LRmAwHXLz+z8xjub72ppJ2BJb7jUpZUY5osuW7r
- 5xLuCb4yzsarNYssNIHeIawxM4b9Y/cebPBn4NRU497gUiCg3ALaOD+XICzoQSjITzCG
- ypSQ==
-X-Gm-Message-State: AOJu0YztqalO4bXzCE8RNXsWfJh9v1I43cAW4jkMklH07kKN9gmTp/Hu
- Crga/t9SwrCZqq3ycBJv2Ci+/aw76GF1YYgiV17j9ZtbgkTM4App5oKLngvXXII=
-X-Google-Smtp-Source: AGHT+IHMIHGl/kzP+ATyzsjuczq1RY307sP0jV7fhxbh+RXvsF+7aiwa5DH2o5hrqgxIZaIX+9nM9w==
-X-Received: by 2002:ac2:4203:0:b0:512:ab3d:d551 with SMTP id
- y3-20020ac24203000000b00512ab3dd551mr5703787lfh.19.1709017532294; 
- Mon, 26 Feb 2024 23:05:32 -0800 (PST)
-Received: from localhost ([193.47.165.251]) by smtp.gmail.com with ESMTPSA id
- u20-20020a05600c00d400b00410b0ce91b1sm14061609wmm.25.2024.02.26.23.05.31
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 26 Feb 2024 23:05:31 -0800 (PST)
-Date: Tue, 27 Feb 2024 08:05:29 +0100
-From: Jiri Pirko <jiri@resnulli.us>
-To: Michal Schmidt <mschmidt@redhat.com>
-Message-ID: <Zd2JuVAyHigIy5NR@nanopsycho>
-References: <20240226151125.45391-1-mschmidt@redhat.com>
- <20240226151125.45391-2-mschmidt@redhat.com>
+ with ESMTP id yJnd_rVsi9lD for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 27 Feb 2024 07:22:52 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=193.142.43.55;
+ helo=galois.linutronix.de; envelope-from=kurt@linutronix.de;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 4B5AA81FED
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4B5AA81FED
+Received: from galois.linutronix.de (Galois.linutronix.de [193.142.43.55])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 4B5AA81FED
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Feb 2024 07:22:52 +0000 (UTC)
+From: Kurt Kanzenbach <kurt@linutronix.de>
+To: Paul Menzel <pmenzel@molgen.mpg.de>
+In-Reply-To: <fa67869c-3060-430e-a1c5-c67305e848c2@molgen.mpg.de>
+References: <20240212-igc_mqprio-v1-1-7aed95b736db@linutronix.de>
+ <fa67869c-3060-430e-a1c5-c67305e848c2@molgen.mpg.de>
+Date: Tue, 27 Feb 2024 08:22:47 +0100
+Message-ID: <87zfvm2wxk.fsf@kurt.kurt.home>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20240226151125.45391-2-mschmidt@redhat.com>
+Content-Type: multipart/signed; boundary="=-=-=";
+ micalg=pgp-sha512; protocol="application/pgp-signature"
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=resnulli-us.20230601.gappssmtp.com; s=20230601; t=1709017532; x=1709622332;
- darn=lists.osuosl.org; 
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=TXtEex9VuQR1EP3e/5JdrfpeNpYD0e7hgfGq456hgR8=;
- b=XTF7gP0H0sFgjuenLcKKHAPpcX7V73dX1T6Kt/0ErilkZOHcG3xHju17K+2g9uRtZV
- kK0JvU1MSFajqIx1P9I3vhk3IFHtk8k0v99naQpuQuIDcfO4sWd60qZU3jqbTpz6vITG
- Jlk78A+RGZaQfmELbWBSnYYybZtBy9dccy6M9+Q/bDhV8X1HeJsd+wxUQ9RgSt2CPrA1
- UUyhHmxL4SkXAEprJ68Q/pXDDi1CcyKLUUB9iQPrG+RNM71N3NbeiG6IV4PsD5yk6vBG
- 2QRPz3q1J6MQLyiz9FZryzhKA0Q16Woc/gDeNiUYSM72GRZrk5OebT6OgJ58MSAsAhye
- FmqA==
+ d=linutronix.de; s=2020; t=1709018569;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=CsnrFim6EYDuNuWnC6WWL5wPbMRzROScb1KO6aPlOsw=;
+ b=0lpmQT0CLJYRThNE52s0XJ7+4hce4BCN13PUw08fo5D70H/1tLA08WDephXXU/1I7HDgaX
+ TO/18LLULIPhDtqnnrp+xuHXALXxvgX58s0EBqNCQNYtRYp6atr7Ow33cxv0BPZsWaxi2D
+ JIIjVSH2IyvTigNTcvQannHigawAbuX+HnFnFtJ+0VrANTBD9f450D//CRG+sgjy9nkT45
+ 3SNSGUC0bxskgCPORdg8NL0+Qmev1RvAMOlKArYlCTgtXwz4P7Fy+KpboPYbSONnpJSMUh
+ 35mHFIeV2dhTEa0JGh8Ep5/wEZAznzJnGrBeCoGsZFQpvuqZaBwnm9RuC6MaNw==
+X-Mailman-Original-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed;
+ d=linutronix.de; s=2020e; t=1709018569;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=CsnrFim6EYDuNuWnC6WWL5wPbMRzROScb1KO6aPlOsw=;
+ b=TuwC+KHy0v/vrA5XA1qUmOk9aHqvEAH5uD4h178mx/KJGe8mLD8qCDl/Oc9U8sXuyk1NUH
+ 4WOmKjstFSrWtsDA==
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=resnulli.us
+ dmarc=pass (p=none dis=none)
+ header.from=linutronix.de
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=resnulli-us.20230601.gappssmtp.com
- header.i=@resnulli-us.20230601.gappssmtp.com header.a=rsa-sha256
- header.s=20230601 header.b=XTF7gP0H
-Subject: Re: [Intel-wired-lan] [PATCH net-next 1/3] ice: add ice_adapter for
- shared data across PFs on the same NIC
+ dkim=pass (2048-bit key, unprotected) header.d=linutronix.de
+ header.i=@linutronix.de header.a=rsa-sha256 header.s=2020 header.b=0lpmQT0C; 
+ dkim=pass header.d=linutronix.de header.i=@linutronix.de
+ header.a=ed25519-sha256 header.s=2020e header.b=TuwC+KHy
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next] igc: Add MQPRIO offload
+ support
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -119,217 +100,241 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, Richard Cochran <richardcochran@gmail.com>,
+Cc: Vinicius Costa Gomes <vinicius.gomes@intel.com>, netdev@vger.kernel.org,
+ Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
  Jesse Brandeburg <jesse.brandeburg@intel.com>,
- Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>,
- Karol Kolacinski <karol.kolacinski@intel.com>,
- intel-wired-lan@lists.osuosl.org, Jacob Keller <jacob.e.keller@intel.com>
+ Eric Dumazet <edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
+ intel-wired-lan@lists.osuosl.org, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Mon, Feb 26, 2024 at 04:11:23PM CET, mschmidt@redhat.com wrote:
->There is a need for synchronization between ice PFs on the same physical
->adapter.
->
->Add a "struct ice_adapter" for holding data shared between PFs of the
->same multifunction PCI device. The struct is refcounted - each ice_pf
->holds a reference to it.
->
->Its first use will be for PTP. I expect it will be useful also to
->improve the ugliness that is ice_prot_id_tbl.
->
->Signed-off-by: Michal Schmidt <mschmidt@redhat.com>
->---
-> drivers/net/ethernet/intel/ice/Makefile      |  3 +-
-> drivers/net/ethernet/intel/ice/ice.h         |  2 +
-> drivers/net/ethernet/intel/ice/ice_adapter.c | 67 ++++++++++++++++++++
-> drivers/net/ethernet/intel/ice/ice_adapter.h | 22 +++++++
-> drivers/net/ethernet/intel/ice/ice_main.c    |  8 +++
-> 5 files changed, 101 insertions(+), 1 deletion(-)
-> create mode 100644 drivers/net/ethernet/intel/ice/ice_adapter.c
-> create mode 100644 drivers/net/ethernet/intel/ice/ice_adapter.h
->
->diff --git a/drivers/net/ethernet/intel/ice/Makefile b/drivers/net/ethernet/intel/ice/Makefile
->index cddd82d4ca0f..4fa09c321440 100644
->--- a/drivers/net/ethernet/intel/ice/Makefile
->+++ b/drivers/net/ethernet/intel/ice/Makefile
->@@ -36,7 +36,8 @@ ice-y := ice_main.o	\
-> 	 ice_repr.o	\
-> 	 ice_tc_lib.o	\
-> 	 ice_fwlog.o	\
->-	 ice_debugfs.o
->+	 ice_debugfs.o  \
->+	 ice_adapter.o
-> ice-$(CONFIG_PCI_IOV) +=	\
-> 	ice_sriov.o		\
-> 	ice_virtchnl.o		\
->diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
->index 365c03d1c462..1ffecbdd361a 100644
->--- a/drivers/net/ethernet/intel/ice/ice.h
->+++ b/drivers/net/ethernet/intel/ice/ice.h
->@@ -77,6 +77,7 @@
-> #include "ice_gnss.h"
-> #include "ice_irq.h"
-> #include "ice_dpll.h"
->+#include "ice_adapter.h"
-> 
-> #define ICE_BAR0		0
-> #define ICE_REQ_DESC_MULTIPLE	32
->@@ -544,6 +545,7 @@ struct ice_agg_node {
-> 
-> struct ice_pf {
-> 	struct pci_dev *pdev;
->+	struct ice_adapter *adapter;
-> 
-> 	struct devlink_region *nvm_region;
-> 	struct devlink_region *sram_region;
->diff --git a/drivers/net/ethernet/intel/ice/ice_adapter.c b/drivers/net/ethernet/intel/ice/ice_adapter.c
->new file mode 100644
->index 000000000000..deb063401238
->--- /dev/null
->+++ b/drivers/net/ethernet/intel/ice/ice_adapter.c
->@@ -0,0 +1,67 @@
->+// SPDX-License-Identifier: GPL-2.0-only
->+// SPDX-FileCopyrightText: Copyright Red Hat
->+
->+#include <linux/cleanup.h>
->+#include <linux/mutex.h>
->+#include <linux/pci.h>
->+#include <linux/slab.h>
->+#include <linux/xarray.h>
->+#include "ice_adapter.h"
->+
->+static DEFINE_MUTEX(ice_adapters_lock);
+--=-=-=
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 
-Why you need and extra mutex and not just rely on xarray lock?
+Hello Paul,
 
-
->+static DEFINE_XARRAY(ice_adapters);
->+
->+static unsigned long ice_adapter_index(const struct pci_dev *pdev)
->+{
->+	unsigned int domain = pci_domain_nr(pdev->bus);
->+
->+	WARN_ON((unsigned long)domain >> (BITS_PER_LONG - 13));
->+	return ((unsigned long)domain << 13) |
->+	       ((unsigned long)pdev->bus->number << 5) |
->+	       PCI_SLOT(pdev->devfn);
->+}
->+
->+struct ice_adapter *ice_adapter_get(const struct pci_dev *pdev)
->+{
->+	unsigned long index = ice_adapter_index(pdev);
->+	struct ice_adapter *a;
->+
->+	guard(mutex)(&ice_adapters_lock);
->+
->+	a = xa_load(&ice_adapters, index);
->+	if (a) {
->+		refcount_inc(&a->refcount);
->+		return a;
->+	}
->+
->+	a = kzalloc(sizeof(*a), GFP_KERNEL);
->+	if (!a)
->+		return NULL;
->+
->+	refcount_set(&a->refcount, 1);
->+
->+	if (xa_is_err(xa_store(&ice_adapters, index, a, GFP_KERNEL))) {
->+		kfree(a);
->+		return NULL;
->+	}
->+
->+	return a;
->+}
->+
->+void ice_adapter_put(const struct pci_dev *pdev)
->+{
->+	unsigned long index = ice_adapter_index(pdev);
->+	struct ice_adapter *a;
->+
->+	guard(mutex)(&ice_adapters_lock);
->+
->+	a = xa_load(&ice_adapters, index);
->+	if (WARN_ON(!a))
->+		return;
->+
->+	if (!refcount_dec_and_test(&a->refcount))
->+		return;
->+
->+	WARN_ON(xa_erase(&ice_adapters, index) != a);
->+	kfree(a);
->+}
->diff --git a/drivers/net/ethernet/intel/ice/ice_adapter.h b/drivers/net/ethernet/intel/ice/ice_adapter.h
->new file mode 100644
->index 000000000000..cb5a02eb24c1
->--- /dev/null
->+++ b/drivers/net/ethernet/intel/ice/ice_adapter.h
->@@ -0,0 +1,22 @@
->+/* SPDX-License-Identifier: GPL-2.0-only */
->+/* SPDX-FileCopyrightText: Copyright Red Hat */
->+
->+#ifndef _ICE_ADAPTER_H_
->+#define _ICE_ADAPTER_H_
->+
->+#include <linux/refcount_types.h>
->+
->+struct pci_dev;
->+
->+/**
->+ * struct ice_adapter - PCI adapter resources shared across PFs
->+ * @refcount: Reference count. struct ice_pf objects hold the references.
->+ */
->+struct ice_adapter {
->+	refcount_t refcount;
->+};
->+
->+struct ice_adapter *ice_adapter_get(const struct pci_dev *pdev);
->+void ice_adapter_put(const struct pci_dev *pdev);
->+
->+#endif /* _ICE_ADAPTER_H */
->diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
->index 9c2c8637b4a7..4a60957221fc 100644
->--- a/drivers/net/ethernet/intel/ice/ice_main.c
->+++ b/drivers/net/ethernet/intel/ice/ice_main.c
->@@ -5093,6 +5093,7 @@ static int
-> ice_probe(struct pci_dev *pdev, const struct pci_device_id __always_unused *ent)
-> {
-> 	struct device *dev = &pdev->dev;
->+	struct ice_adapter *adapter;
-> 	struct ice_pf *pf;
-> 	struct ice_hw *hw;
-> 	int err;
->@@ -5145,7 +5146,12 @@ ice_probe(struct pci_dev *pdev, const struct pci_device_id __always_unused *ent)
-> 
-> 	pci_set_master(pdev);
-> 
->+	adapter = ice_adapter_get(pdev);
->+	if (!adapter)
->+		return -ENOMEM;
->+
-> 	pf->pdev = pdev;
->+	pf->adapter = adapter;
-> 	pci_set_drvdata(pdev, pf);
-> 	set_bit(ICE_DOWN, pf->state);
-> 	/* Disable service task until DOWN bit is cleared */
->@@ -5196,6 +5202,7 @@ ice_probe(struct pci_dev *pdev, const struct pci_device_id __always_unused *ent)
-> err_load:
-> 	ice_deinit(pf);
-> err_init:
->+	ice_adapter_put(pdev);
-> 	pci_disable_device(pdev);
-> 	return err;
-> }
->@@ -5302,6 +5309,7 @@ static void ice_remove(struct pci_dev *pdev)
-> 	ice_setup_mc_magic_wake(pf);
-> 	ice_set_wake(pf);
-> 
->+	ice_adapter_put(pdev);
-> 	pci_disable_device(pdev);
-> }
-> 
->-- 
->2.43.2
+On Mon Feb 26 2024, Paul Menzel wrote:
+> Dear Kurt,
 >
 >
+> Thank you for the patch. Some nits from my side.
+>
+> Am 26.02.24 um 09:51 schrieb Kurt Kanzenbach:
+>> Add support for offloading MQPRIO. The hardware has four priorities as w=
+ell
+>> as four queues. Each queue must be a assigned with a unique priority.
+>>=20
+>> However, the priorities are only considered in TSN Tx mode. There are two
+>> TSN Tx modes. In case of MQPRIO the Qbv capability is not
+>> required. Therefore, use the legacy TSN Tx mode, which performs strict
+>> priority arbitration.
+>
+> You could reflow this paragraph. The second line breaks too early.
+
+Indeed, it does.
+
+>
+>> Example for mqprio with hardware offload:
+>>=20
+>> |tc qdisc replace dev ${INTERFACE} handle 100 parent root mqprio num_tc =
+4 \
+>> |   map 0 0 0 0 0 1 2 3 0 0 0 0 0 0 0 0 \
+>> |   queues 1@0 1@1 1@2 1@3 \
+>> |   hw 1
+>
+> Thank you for the example. How can you check that it actually works? No=20
+> errors are shown?
+
+When using tc for setting up Qdisc(s) the command just returns without
+any messages. In case there's an error the user will see messages
+configured below with `extack`.
+
+>
+> Also, could you please mention the datasheet name, revision and section,=
+=20
+> and on what exact device you tested this?
+
+Sure.
+
+>
+>> Signed-off-by: Kurt Kanzenbach <kurt@linutronix.de>
+>> ---
+>>   drivers/net/ethernet/intel/igc/igc.h         | 10 +++-
+>>   drivers/net/ethernet/intel/igc/igc_defines.h |  9 ++++
+>>   drivers/net/ethernet/intel/igc/igc_main.c    | 69 ++++++++++++++++++++=
++++++++
+>>   drivers/net/ethernet/intel/igc/igc_regs.h    |  2 +
+>>   drivers/net/ethernet/intel/igc/igc_tsn.c     | 71 ++++++++++++++++++++=
++++++++-
+>>   5 files changed, 157 insertions(+), 4 deletions(-)
+>>=20
+>> diff --git a/drivers/net/ethernet/intel/igc/igc.h b/drivers/net/ethernet=
+/intel/igc/igc.h
+>> index 45430e246e9c..c95919f085eb 100644
+>> --- a/drivers/net/ethernet/intel/igc/igc.h
+>> +++ b/drivers/net/ethernet/intel/igc/igc.h
+>> @@ -227,6 +227,10 @@ struct igc_adapter {
+>>   	 */
+>>   	spinlock_t qbv_tx_lock;
+>>=20=20=20
+>> +	bool strict_priority_enable;
+>> +	u8 num_tc;
+>> +	u16 queue_per_tc[IGC_MAX_TX_QUEUES];
+>> +
+>>   	/* OS defined structs */
+>>   	struct pci_dev *pdev;
+>>   	/* lock for statistics */
+>> @@ -343,9 +347,11 @@ extern char igc_driver_name[];
+>>   #define IGC_FLAG_RX_LEGACY		BIT(16)
+>>   #define IGC_FLAG_TSN_QBV_ENABLED	BIT(17)
+>>   #define IGC_FLAG_TSN_QAV_ENABLED	BIT(18)
+>> +#define IGC_FLAG_TSN_LEGACY_ENABLED	BIT(19)
+>>=20=20=20
+>> -#define IGC_FLAG_TSN_ANY_ENABLED \
+>> -	(IGC_FLAG_TSN_QBV_ENABLED | IGC_FLAG_TSN_QAV_ENABLED)
+>> +#define IGC_FLAG_TSN_ANY_ENABLED				\
+>> +	(IGC_FLAG_TSN_QBV_ENABLED | IGC_FLAG_TSN_QAV_ENABLED |	\
+>> +	 IGC_FLAG_TSN_LEGACY_ENABLED)
+>>=20=20=20
+>>   #define IGC_FLAG_RSS_FIELD_IPV4_UDP	BIT(6)
+>>   #define IGC_FLAG_RSS_FIELD_IPV6_UDP	BIT(7)
+>> diff --git a/drivers/net/ethernet/intel/igc/igc_defines.h b/drivers/net/=
+ethernet/intel/igc/igc_defines.h
+>> index 5f92b3c7c3d4..73502a0b4df7 100644
+>> --- a/drivers/net/ethernet/intel/igc/igc_defines.h
+>> +++ b/drivers/net/ethernet/intel/igc/igc_defines.h
+>> @@ -547,6 +547,15 @@
+>>=20=20=20
+>>   #define IGC_MAX_SR_QUEUES		2
+>>=20=20=20
+>> +#define IGC_TXARB_TXQ_PRIO_0_SHIFT	0
+>> +#define IGC_TXARB_TXQ_PRIO_1_SHIFT	2
+>> +#define IGC_TXARB_TXQ_PRIO_2_SHIFT	4
+>> +#define IGC_TXARB_TXQ_PRIO_3_SHIFT	6
+>> +#define IGC_TXARB_TXQ_PRIO_0_MASK	GENMASK(1, 0)
+>> +#define IGC_TXARB_TXQ_PRIO_1_MASK	GENMASK(3, 2)
+>> +#define IGC_TXARB_TXQ_PRIO_2_MASK	GENMASK(5, 4)
+>> +#define IGC_TXARB_TXQ_PRIO_3_MASK	GENMASK(7, 6)
+>> +
+>>   /* Receive Checksum Control */
+>>   #define IGC_RXCSUM_CRCOFL	0x00000800   /* CRC32 offload enable */
+>>   #define IGC_RXCSUM_PCSD		0x00002000   /* packet checksum disabled */
+>> diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/eth=
+ernet/intel/igc/igc_main.c
+>> index ba8d3fe186ae..c5d3cc3c4fa9 100644
+>> --- a/drivers/net/ethernet/intel/igc/igc_main.c
+>> +++ b/drivers/net/ethernet/intel/igc/igc_main.c
+>> @@ -6424,6 +6424,13 @@ static int igc_tc_query_caps(struct igc_adapter *=
+adapter,
+>>   	struct igc_hw *hw =3D &adapter->hw;
+>>=20=20=20
+>>   	switch (base->type) {
+>> +	case TC_SETUP_QDISC_MQPRIO: {
+>> +		struct tc_mqprio_caps *caps =3D base->caps;
+>> +
+>> +		caps->validate_queue_counts =3D true;
+>> +
+>> +		return 0;
+>> +	}
+>>   	case TC_SETUP_QDISC_TAPRIO: {
+>>   		struct tc_taprio_caps *caps =3D base->caps;
+>>=20=20=20
+>> @@ -6441,6 +6448,65 @@ static int igc_tc_query_caps(struct igc_adapter *=
+adapter,
+>>   	}
+>>   }
+>>=20=20=20
+>> +static void igc_save_mqprio_params(struct igc_adapter *adapter, u8 num_=
+tc,
+>> +				   u16 *offset)
+>> +{
+>> +	int i;
+>> +
+>> +	adapter->strict_priority_enable =3D true;
+>> +	adapter->num_tc =3D num_tc;
+>> +
+>> +	for (i =3D 0; i < num_tc; i++)
+>> +		adapter->queue_per_tc[i] =3D offset[i];
+>> +}
+>> +
+>> +static int igc_tsn_enable_mqprio(struct igc_adapter *adapter,
+>> +				 struct tc_mqprio_qopt_offload *mqprio)
+>> +{
+>> +	struct igc_hw *hw =3D &adapter->hw;
+>> +	int i;
+>> +
+>> +	if (hw->mac.type !=3D igc_i225)
+>> +		return -EOPNOTSUPP;
+>> +
+>> +	if (!mqprio->qopt.num_tc) {
+>> +		adapter->strict_priority_enable =3D false;
+>> +		goto apply;
+>> +	}
+>> +
+>> +	/* There are as many TCs as Tx queues. */
+>> +	if (mqprio->qopt.num_tc !=3D adapter->num_tx_queues) {
+>> +		NL_SET_ERR_MSG_FMT_MOD(mqprio->extack,
+>> +				       "Only %d traffic classes supported",
+>> +				       adapter->num_tx_queues);
+>
+> I=E2=80=99d also log `mqprio->qopt.num_tc`.
+
+num_tc is provided by the user.
+
+>
+>> +		return -EOPNOTSUPP;
+>> +	}
+>> +
+>> +	/* Only one queue per TC is supported. */
+>> +	for (i =3D 0; i < mqprio->qopt.num_tc; i++) {
+>> +		if (mqprio->qopt.count[i] !=3D 1) {
+>> +			NL_SET_ERR_MSG_MOD(mqprio->extack,
+>> +					   "Only one queue per TC supported");
+>
+> I=E2=80=99d also log the i and the count value.
+
+Oki.
+
+>
+>> +			return -EOPNOTSUPP;
+>> +		}
+>> +	}
+>> +
+>> +	/* Preemption is not supported yet. */
+>> +	if (mqprio->preemptible_tcs) {
+>> +		NL_SET_ERR_MSG_MOD(mqprio->extack,
+>> +				   "Preemption is not supported yet");
+>> +		return -EOPNOTSUPP;
+>> +	}
+>
+> Please mention this in the commit message, maybe also included, if a=20
+> patch is coming soon, or what would need to be done to implement it.
+
+Oki. At some point i'd like to see FPE implemented for igc :-).
+
+Thanks,
+Kurt
+
+--=-=-=
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQJHBAEBCgAxFiEEvLm/ssjDfdPf21mSwZPR8qpGc4IFAmXdjcgTHGt1cnRAbGlu
+dXRyb25peC5kZQAKCRDBk9HyqkZzguTcEACvXPtfCPia4Ol3aRhNR0fDuHGPzb/G
+KuDliMMYkwJZb8NEQ4mrgM7D8USf4VfTs8pq8bafkMxzCyeoz5dLQZ63uVvLKXIz
+TIuYAUOf2sZYzIWxZXLYTB/Gq9HCqOm+2jVipd1VZYCdZ1lIzL3rtsF1eqIW36y+
+oe7QZhHjvk5cO2oWWO37WYAEb5k+ntfq7qeStj6fkkDQQBgDXxtzrCaBsL9puD8q
+/bHFw/qAJObBOz7TE9CJOne2h9G1SVl85OBJTzxV0IMwSm1suZa/gWYwxIPORolW
+3qsCpSCTsg2NhuHzpCgmFSPiqUEPlHEJ1Ln+/ORAOzmtwWTmSlmtNNQQBQ4BYsQl
+migZlf1+69xvuVjXz6/bWKdr6gXSm7mxgWg4e2R6vCtKLpiCYWFTkW9w/YtnuxiY
++ZLEh1J8+uop2bIEtI38+c9CdNZzkR4GDoHtcgs4n01eKecI/UzB0liSA2IsTQwm
+M4LCcUZ7cO3JmQLoiUge9mvg7g4O/XFgzohsWnymwt7qlaj+IgCWO994WhNIfVXE
+Pmvvxr94d6ySsfRzpvqh3J1/HdHhucDF8Gnep/6ylXFaG4qT7bZBD1sW/5nvFBFY
+ViA4XQkaxErnIjK1Rb3Ji4fo8xJSLOsj+6I3cQaePsld5FMu0tur0KxN85f3i7Ya
+qZEaC5DmVMlTXw==
+=a1gq
+-----END PGP SIGNATURE-----
+--=-=-=--
