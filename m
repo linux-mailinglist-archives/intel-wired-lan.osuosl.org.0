@@ -2,93 +2,90 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8E8E3869855
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 27 Feb 2024 15:31:57 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3766F869909
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 27 Feb 2024 15:51:12 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 414C640A7E;
-	Tue, 27 Feb 2024 14:31:54 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id B42BE40BEB;
+	Tue, 27 Feb 2024 14:51:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id YrNnqDxD9q7r; Tue, 27 Feb 2024 14:31:52 +0000 (UTC)
+	with ESMTP id 8sRkHrs_cv2W; Tue, 27 Feb 2024 14:51:09 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C728540ADB
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 7D0DB40469
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1709044311;
-	bh=ei5ofjA2EzTGNDZsjGccbci2Bi3aRo2uxA0OiL49xH0=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=470FfK82YL37Sh7bZOBTM+T9M2CFeV9Jp8hqQj8aWskfNeXa3JLktA9rsgmWLWsud
-	 62+uPdVNFtPNxStWrqR4+QpXlbIrWF8Xc6V85u0BeIK14Uj2wWheIOeIA1lio34VXf
-	 OYYSF7uKQRroc02s65Xp3AH1utmqS7a/sR8GLYdcQX4PcrsqaZ+ZEZShtgzHmqt+BZ
-	 0EHUaMsDjRSQyYzxTetAxC9cCxSPFO0i4W4l6C0tuG/Zn9hyNz+RBCgLa6uP2JAnM5
-	 Pm8Ropc2DH26bygIvWJwKKmTC3KhaHkG4N5KL6+x78ScBTaqUv8/QWbjcyvVgSO5Jr
-	 QLUe2F4bBMjFQ==
+	s=default; t=1709045469;
+	bh=38Xz7udXv0y23b3I7zGl7ADE7LMR54R/PxPut9R7g9U=;
+	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=SCVo3LxQ5jhWnRAXte7ZZ6Rfqkgf6S4cJkmN3K188uuYydGoYtLDC5pdirtZxh2BF
+	 PeAHI3a6pv9qMF98nXIOGaIbIvrxIfetqu64hTBeUjCdkhDMHHbBd9PyWK7e8kqvGb
+	 hivYOoPh6a9Hfosg3LOMf4j7rfrstOfcfqhH+64S1IisnuFtVCS2bAC4z6ske/5KmZ
+	 aHQUUy2h+p/xtefQ24pXXAj/TGG6LV2rImYVgb+bd5DkDOI0V8vLN7/KnnP8m0pQIj
+	 IyKilBCZZM9rxwDjjptZ1aINm0kLmjffTPhxfgisfDl1jhpIG7AVD3+3JdI2FotcI4
+	 1Xc1bEbCpe6Jw==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id C728540ADB;
-	Tue, 27 Feb 2024 14:31:51 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 7D0DB40469;
+	Tue, 27 Feb 2024 14:51:09 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id D2BFB1BF3B8
- for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Feb 2024 14:31:49 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 6F61E1BF3B8
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Feb 2024 14:51:06 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id BE12B82050
- for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Feb 2024 14:31:49 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 5A8A960BA6
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Feb 2024 14:51:06 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ARDBS5JUjJvd for <intel-wired-lan@lists.osuosl.org>;
- Tue, 27 Feb 2024 14:31:48 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.13;
- helo=mgamail.intel.com; envelope-from=przemyslaw.kitszel@intel.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org AE3B081E05
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org AE3B081E05
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.13])
- by smtp1.osuosl.org (Postfix) with ESMTPS id AE3B081E05
- for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Feb 2024 14:31:48 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10996"; a="14534100"
-X-IronPort-AV: E=Sophos;i="6.06,188,1705392000"; d="scan'208";a="14534100"
-Received: from fmviesa001.fm.intel.com ([10.60.135.141])
- by orvoesa105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 27 Feb 2024 06:31:46 -0800
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 7KQ3d1786rAE for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 27 Feb 2024 14:51:05 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.11;
+ helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 1EA5F60662
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1EA5F60662
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.11])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 1EA5F60662
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Feb 2024 14:51:04 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10996"; a="14025563"
+X-IronPort-AV: E=Sophos;i="6.06,188,1705392000"; d="scan'208";a="14025563"
+Received: from fmviesa008.fm.intel.com ([10.60.135.148])
+ by fmvoesa105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 27 Feb 2024 06:51:03 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.06,188,1705392000"; d="scan'208";a="38100128"
-Received: from irvmail002.ir.intel.com ([10.43.11.120])
- by fmviesa001.fm.intel.com with ESMTP; 27 Feb 2024 06:31:43 -0800
-Received: from pkitszel-desk.intel.com (unknown [10.254.152.204])
- by irvmail002.ir.intel.com (Postfix) with ESMTP id 40674125BD;
- Tue, 27 Feb 2024 14:31:40 +0000 (GMT)
-From: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Tue, 27 Feb 2024 15:31:06 +0100
-Message-ID: <20240227143124.21015-1-przemyslaw.kitszel@intel.com>
-X-Mailer: git-send-email 2.43.0
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+X-IronPort-AV: E=Sophos;i="6.06,188,1705392000"; 
+   d="scan'208";a="7211579"
+Received: from lkp-server02.sh.intel.com (HELO 3c78fa4d504c) ([10.239.97.151])
+ by fmviesa008.fm.intel.com with ESMTP; 27 Feb 2024 06:51:02 -0800
+Received: from kbuild by 3c78fa4d504c with local (Exim 4.96)
+ (envelope-from <lkp@intel.com>) id 1reynM-000BHb-07
+ for intel-wired-lan@lists.osuosl.org; Tue, 27 Feb 2024 14:51:00 +0000
+Date: Tue, 27 Feb 2024 22:41:56 +0800
+From: kernel test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <202402272253.WY97th9Y-lkp@intel.com>
+User-Agent: s-nail v14.9.24
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1709044308; x=1740580308;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=x22hhBiLB45AUr7ettB8S5dFgc3aNNjrNGCtp8BcbuY=;
- b=SdiGCtKcRX3LByYiqvlfYjj0gPy8l7zK2wGwubVOFr/NMlXlHP5XiSio
- 2ay9rN0hy5H7XW07/K+QZcdyGY9wNsKxWXqDoeJadMo6Uprgdpv9V6mYZ
- cIQFiKDrif5JhFPFt6c+raqPSwkde55b0XHcj8mbfL9b1Ovr7zBrxFW7+
- 6Fh27dbJzB+C1AewzM2B4qFLT5bL5zfJbkxetGUT5AjziA1W9e4a6gVCE
- UbnMjd10y90lcQiIJuH24r7NZK3YLT5qybpoH12TafeGXjPt+Y2SK3Ie3
- WL9auCKXn1KhuQkEPU54+PYUE4PQmp/BQWFQbi7I/BLpIdtLoU0PJxrtW
- A==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ t=1709045465; x=1740581465;
+ h=date:from:to:subject:message-id;
+ bh=odO+pMTa7abzrFf68gCQKrgdCDYmaHu7RZ1OQnxVnZA=;
+ b=Qbtocz+xNIPXsj9GUFbvSyPPrbLNRaw68LnweRZv6uK/m0FxinxoYCrE
+ VpWcBdnHiIjiLQkSWQUNuFaJuliVucQ8uoBzsifxr0qy0KFjguVmLe/PD
+ pZAWEyyoS+LIuhoNKAa3TlgEY952+GiirdoYohtZ9LA9Xgi6OQ7IdtPrc
+ aFI1Dt1Yh/cyKTutI6EhOkZRyB/AVyyMzPVSz5l8384eQF0famE//RKJv
+ Fi09Gv4he1xnsdBRXPVoyUtpvYiodxpbBu9dFigdABcWqZ+rWumIdw58r
+ e2bjVxBd1trT4iKq8Y8QHlKWZQtiZnAVC9iv/c3+T8FngrHUtW34XwRs8
+ w==;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=SdiGCtKc
-Subject: [Intel-wired-lan] [PATCH iwl-net] ice: fix stats being updated by
- way too large values
+ header.s=Intel header.b=Qbtocz+x
+Subject: [Intel-wired-lan] [tnguy-net-queue:dev-queue] BUILD SUCCESS
+ ee912e70ea165a10bc7b954743d3a258805332b7
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -101,91 +98,194 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Nebojsa Stevanovic <nebojsa.stevanovic@gcore.com>, netdev@vger.kernel.org,
- lukasz.czapnik@intel.com, Alexander Lobakin <aleksander.lobakin@intel.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Jacob Keller <jacob.e.keller@intel.com>,
- Christian Rohmann <christian.rohmann@inovex.de>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Simplify stats accumulation logic to fix the case where we don't take
-previous stat value into account, we should always respect it.
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git dev-queue
+branch HEAD: ee912e70ea165a10bc7b954743d3a258805332b7  ice: reconfig host after changing MSI-X on VF
 
-Main netdev stats of our PF (Tx/Rx packets/bytes) were reported orders of
-magnitude too big during OpenStack reconfiguration events, possibly other
-reconfiguration cases too.
+elapsed time: 935m
 
-The regression was reported to be between 6.1 and 6.2, so I was almost
-certain that on of the two "preserve stats over reset" commits were the
-culprit. While reading the code, it was found that in some cases we will
-increase the stats by arbitrarily large number (thanks to ignoring "-prev"
-part of condition, after zeroing it).
+configs tested: 172
+configs skipped: 3
 
-Note that this fixes also the case where we were around limits of u64, but
-that was not the regression reported.
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
-Full disclosure: I remember suggesting this particular piece of code to
-Ben a few years ago, so blame on me.
+tested configs:
+alpha                             allnoconfig   gcc  
+alpha                            allyesconfig   gcc  
+alpha                               defconfig   gcc  
+arc                              allmodconfig   gcc  
+arc                               allnoconfig   gcc  
+arc                              allyesconfig   gcc  
+arc                                 defconfig   gcc  
+arc                   randconfig-001-20240227   gcc  
+arc                   randconfig-002-20240227   gcc  
+arc                    vdk_hs38_smp_defconfig   gcc  
+arm                              allmodconfig   gcc  
+arm                               allnoconfig   clang
+arm                              allyesconfig   gcc  
+arm                                 defconfig   clang
+arm                        keystone_defconfig   gcc  
+arm                   randconfig-001-20240227   gcc  
+arm                   randconfig-002-20240227   gcc  
+arm                   randconfig-003-20240227   gcc  
+arm                   randconfig-004-20240227   gcc  
+arm                         socfpga_defconfig   gcc  
+arm64                            allmodconfig   clang
+arm64                             allnoconfig   gcc  
+arm64                               defconfig   gcc  
+arm64                 randconfig-002-20240227   gcc  
+arm64                 randconfig-003-20240227   gcc  
+arm64                 randconfig-004-20240227   gcc  
+csky                             allmodconfig   gcc  
+csky                              allnoconfig   gcc  
+csky                             allyesconfig   gcc  
+csky                                defconfig   gcc  
+csky                  randconfig-001-20240227   gcc  
+csky                  randconfig-002-20240227   gcc  
+hexagon                          allmodconfig   clang
+hexagon                           allnoconfig   clang
+hexagon                          allyesconfig   clang
+hexagon                             defconfig   clang
+i386                             allmodconfig   gcc  
+i386                              allnoconfig   gcc  
+i386                             allyesconfig   gcc  
+i386         buildonly-randconfig-001-20240227   gcc  
+i386         buildonly-randconfig-002-20240227   gcc  
+i386         buildonly-randconfig-003-20240227   clang
+i386         buildonly-randconfig-004-20240227   gcc  
+i386         buildonly-randconfig-005-20240227   gcc  
+i386         buildonly-randconfig-006-20240227   gcc  
+i386                                defconfig   clang
+i386                  randconfig-001-20240227   gcc  
+i386                  randconfig-002-20240227   gcc  
+i386                  randconfig-003-20240227   clang
+i386                  randconfig-004-20240227   clang
+i386                  randconfig-005-20240227   clang
+i386                  randconfig-006-20240227   gcc  
+i386                  randconfig-011-20240227   clang
+i386                  randconfig-012-20240227   clang
+i386                  randconfig-013-20240227   clang
+i386                  randconfig-014-20240227   clang
+i386                  randconfig-015-20240227   clang
+i386                  randconfig-016-20240227   gcc  
+loongarch                        allmodconfig   gcc  
+loongarch                         allnoconfig   gcc  
+loongarch                        allyesconfig   gcc  
+loongarch                           defconfig   gcc  
+loongarch             randconfig-001-20240227   gcc  
+loongarch             randconfig-002-20240227   gcc  
+m68k                             allmodconfig   gcc  
+m68k                              allnoconfig   gcc  
+m68k                             allyesconfig   gcc  
+m68k                                defconfig   gcc  
+m68k                       m5249evb_defconfig   gcc  
+m68k                        stmark2_defconfig   gcc  
+m68k                           sun3_defconfig   gcc  
+microblaze                       alldefconfig   gcc  
+microblaze                       allmodconfig   gcc  
+microblaze                        allnoconfig   gcc  
+microblaze                       allyesconfig   gcc  
+microblaze                          defconfig   gcc  
+mips                             allmodconfig   gcc  
+mips                              allnoconfig   gcc  
+mips                             allyesconfig   gcc  
+mips                       bmips_be_defconfig   gcc  
+mips                 decstation_r4k_defconfig   gcc  
+mips                       lemote2f_defconfig   gcc  
+mips                malta_qemu_32r6_defconfig   gcc  
+nios2                            allmodconfig   gcc  
+nios2                             allnoconfig   gcc  
+nios2                            allyesconfig   gcc  
+nios2                               defconfig   gcc  
+nios2                 randconfig-001-20240227   gcc  
+nios2                 randconfig-002-20240227   gcc  
+openrisc                         allmodconfig   gcc  
+openrisc                          allnoconfig   gcc  
+openrisc                         allyesconfig   gcc  
+openrisc                            defconfig   gcc  
+parisc                           allmodconfig   gcc  
+parisc                            allnoconfig   gcc  
+parisc                           allyesconfig   gcc  
+parisc                              defconfig   gcc  
+parisc                randconfig-001-20240227   gcc  
+parisc                randconfig-002-20240227   gcc  
+parisc64                            defconfig   gcc  
+powerpc                          allmodconfig   gcc  
+powerpc                           allnoconfig   gcc  
+powerpc                          allyesconfig   clang
+powerpc                        cell_defconfig   gcc  
+powerpc                      ep88xc_defconfig   gcc  
+powerpc                 mpc837x_rdb_defconfig   gcc  
+powerpc               randconfig-002-20240227   gcc  
+powerpc                      walnut_defconfig   gcc  
+powerpc64             randconfig-002-20240227   gcc  
+powerpc64             randconfig-003-20240227   gcc  
+riscv                            allmodconfig   clang
+riscv                             allnoconfig   gcc  
+riscv                            allyesconfig   clang
+riscv                               defconfig   clang
+riscv                 randconfig-001-20240227   gcc  
+s390                             allmodconfig   clang
+s390                              allnoconfig   clang
+s390                             allyesconfig   gcc  
+s390                                defconfig   clang
+s390                  randconfig-001-20240227   gcc  
+sh                               allmodconfig   gcc  
+sh                                allnoconfig   gcc  
+sh                               allyesconfig   gcc  
+sh                                  defconfig   gcc  
+sh                     magicpanelr2_defconfig   gcc  
+sh                            migor_defconfig   gcc  
+sh                    randconfig-001-20240227   gcc  
+sh                    randconfig-002-20240227   gcc  
+sh                   rts7751r2dplus_defconfig   gcc  
+sh                           se7343_defconfig   gcc  
+sh                           se7722_defconfig   gcc  
+sh                             sh03_defconfig   gcc  
+sh                            titan_defconfig   gcc  
+sh                              ul2_defconfig   gcc  
+sparc                            allmodconfig   gcc  
+sparc                             allnoconfig   gcc  
+sparc                            allyesconfig   gcc  
+sparc                               defconfig   gcc  
+sparc64                          allmodconfig   gcc  
+sparc64                          allyesconfig   gcc  
+sparc64                             defconfig   gcc  
+sparc64               randconfig-001-20240227   gcc  
+sparc64               randconfig-002-20240227   gcc  
+um                               allmodconfig   clang
+um                                allnoconfig   clang
+um                               allyesconfig   gcc  
+um                                  defconfig   clang
+um                             i386_defconfig   gcc  
+um                           x86_64_defconfig   clang
+x86_64                            allnoconfig   clang
+x86_64                           allyesconfig   clang
+x86_64       buildonly-randconfig-001-20240227   clang
+x86_64       buildonly-randconfig-003-20240227   clang
+x86_64       buildonly-randconfig-004-20240227   clang
+x86_64       buildonly-randconfig-005-20240227   clang
+x86_64                              defconfig   gcc  
+x86_64                randconfig-001-20240227   clang
+x86_64                randconfig-002-20240227   clang
+x86_64                randconfig-013-20240227   clang
+x86_64                randconfig-072-20240227   clang
+x86_64                randconfig-074-20240227   clang
+x86_64                randconfig-075-20240227   clang
+x86_64                randconfig-076-20240227   clang
+x86_64                          rhel-8.3-rust   clang
+x86_64                               rhel-8.3   gcc  
+xtensa                            allnoconfig   gcc  
+xtensa                           allyesconfig   gcc  
+xtensa                  audio_kc705_defconfig   gcc  
+xtensa                          iss_defconfig   gcc  
+xtensa                randconfig-001-20240227   gcc  
+xtensa                randconfig-002-20240227   gcc  
+xtensa                    smp_lx200_defconfig   gcc  
 
-Fixes: 2fd5e433cd26 ("ice: Accumulate HW and Netdev statistics over reset")
-Reported-by: Nebojsa Stevanovic <nebojsa.stevanovic@gcore.com>
-Link: https://lore.kernel.org/intel-wired-lan/VI1PR02MB439744DEDAA7B59B9A2833FE912EA@VI1PR02MB4397.eurprd02.prod.outlook.com
-Reported-by: Christian Rohmann <christian.rohmann@inovex.de>
-Link: https://lore.kernel.org/intel-wired-lan/f38a6ca4-af05-48b1-a3e6-17ef2054e525@inovex.de
-Reviewed-by: Jacob Keller <jacob.e.keller@intel.com>
-Signed-off-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
----
- drivers/net/ethernet/intel/ice/ice_main.c | 24 +++++++++++------------
- 1 file changed, 11 insertions(+), 13 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index dd4a9bc0dfdc..a7c7b1b633a5 100644
---- a/drivers/net/ethernet/intel/ice/ice_main.c
-+++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -6736,6 +6736,7 @@ static void ice_update_vsi_ring_stats(struct ice_vsi *vsi)
- {
- 	struct rtnl_link_stats64 *net_stats, *stats_prev;
- 	struct rtnl_link_stats64 *vsi_stats;
-+	struct ice_pf *pf = vsi->back;
- 	u64 pkts, bytes;
- 	int i;
- 
-@@ -6781,21 +6782,18 @@ static void ice_update_vsi_ring_stats(struct ice_vsi *vsi)
- 	net_stats = &vsi->net_stats;
- 	stats_prev = &vsi->net_stats_prev;
- 
--	/* clear prev counters after reset */
--	if (vsi_stats->tx_packets < stats_prev->tx_packets ||
--	    vsi_stats->rx_packets < stats_prev->rx_packets) {
--		stats_prev->tx_packets = 0;
--		stats_prev->tx_bytes = 0;
--		stats_prev->rx_packets = 0;
--		stats_prev->rx_bytes = 0;
-+	/* Update netdev counters, but keep in mind that values could start at
-+	 * random value after PF reset. And as we increase the reported stat by
-+	 * diff of Prev-Cur, we need to be sure that Prev is valid. If it's not,
-+	 * let's skip this round.
-+	 */
-+	if (likely(pf->stat_prev_loaded)) {
-+		net_stats->tx_packets += vsi_stats->tx_packets - stats_prev->tx_packets;
-+		net_stats->tx_bytes += vsi_stats->tx_bytes - stats_prev->tx_bytes;
-+		net_stats->rx_packets += vsi_stats->rx_packets - stats_prev->rx_packets;
-+		net_stats->rx_bytes += vsi_stats->rx_bytes - stats_prev->rx_bytes;
- 	}
- 
--	/* update netdev counters */
--	net_stats->tx_packets += vsi_stats->tx_packets - stats_prev->tx_packets;
--	net_stats->tx_bytes += vsi_stats->tx_bytes - stats_prev->tx_bytes;
--	net_stats->rx_packets += vsi_stats->rx_packets - stats_prev->rx_packets;
--	net_stats->rx_bytes += vsi_stats->rx_bytes - stats_prev->rx_bytes;
--
- 	stats_prev->tx_packets = vsi_stats->tx_packets;
- 	stats_prev->tx_bytes = vsi_stats->tx_bytes;
- 	stats_prev->rx_packets = vsi_stats->rx_packets;
-
-base-commit: 9b23fceb4158a3636ce4a2bda28ab03dcfa6a26f
 -- 
-2.43.0
-
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
