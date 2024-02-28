@@ -2,111 +2,112 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1969486B4AF
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 28 Feb 2024 17:23:18 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 34F4086B4B9
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 28 Feb 2024 17:24:50 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 8633860E7F;
-	Wed, 28 Feb 2024 16:23:16 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id E404F60E8F;
+	Wed, 28 Feb 2024 16:24:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id BUKUyR43hdXz; Wed, 28 Feb 2024 16:23:15 +0000 (UTC)
+	with ESMTP id 9K546aZOne3g; Wed, 28 Feb 2024 16:24:48 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 94A5A60E81
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 42CA960E7D
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1709137395;
-	bh=HbOEijThNH46+MKcExlVA1bAK6/6kIlRSRkEOFZjgxo=;
+	s=default; t=1709137488;
+	bh=6yiyiSurF95Yilk417AKvUkFM0dsA83koDFik74Ewi4=;
 	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=NMc+im8QxLyq5cadzUS0tUcN2vGkhJLzQ3XEUx8ubiMi57ahyrebNSLelGabUydmE
-	 8/HM4dQYV+zzSAo61vYXYCDLVG9NKXPl+evKbUDyXk0AuC15iCwCoacteFTM4QKi3k
-	 ewSJPmk/2HR5THIvE59ND/a91l69aw1OaQIZOSsxM8Q3dWEwg5GXoNdczEzBFSVypN
-	 /SThbN6xyGJrbtUbqEW6KXTHLDvquxj2sjpeKwOgq5dqksP9b3XqXSGolWa1RNaLoC
-	 o9plKcKsX67L5L3cYXVUxOMf2+k8W8Lqiny1UVd33rOkT2DHF0Oi0fWxhtn6S+uKLJ
-	 lXqLKaDz9xsCw==
+	b=FKpddLOBNrr+Ia7mGCpETzRHfKGnnFFxyf4J422ZYnn5f9mkQ3wk9bQfgNhP6oj0y
+	 +lyvxe0Z+I9OnY7gbflQxgF0oSHqAfLe5rc2zVj2NEvw9HR5J0aX+RZ9guL2IXv2Pe
+	 yUT3a0Csq5Qu5yU0LtMZXvY/lKGqix201gayeTyDJ7qCBtpJ78jREHaNeT1JXzcagN
+	 zkQHOX+PyiokMz7FdCBCINZ348qetBsIbhKFg6v3aJst5mnnHLjM13sgLqwYBZu7Ux
+	 GfYR+/xTM+0Ju+tABSodXt7ZxZZJ+LHs3V2HMEwD0oIjwGpgtvxBUDtXChGgZAPKj9
+	 13JPddzfPrtpA==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 94A5A60E81;
-	Wed, 28 Feb 2024 16:23:15 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 42CA960E7D;
+	Wed, 28 Feb 2024 16:24:48 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 56F561BF2B3
- for <intel-wired-lan@lists.osuosl.org>; Wed, 28 Feb 2024 16:23:13 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id E7A881BF2B3
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 28 Feb 2024 16:24:45 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 424D3400E7
- for <intel-wired-lan@lists.osuosl.org>; Wed, 28 Feb 2024 16:23:13 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id D45A360E7F
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 28 Feb 2024 16:24:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id MM7Zs-eTOv0t for <intel-wired-lan@lists.osuosl.org>;
- Wed, 28 Feb 2024 16:23:12 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id lYssmu21OrAq for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 28 Feb 2024 16:24:45 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2607:f8b0:4864:20::1134; helo=mail-yw1-x1134.google.com;
+ client-ip=2607:f8b0:4864:20::b2d; helo=mail-yb1-xb2d.google.com;
  envelope-from=yury.norov@gmail.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 29F72400D9
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 29F72400D9
-Received: from mail-yw1-x1134.google.com (mail-yw1-x1134.google.com
- [IPv6:2607:f8b0:4864:20::1134])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 29F72400D9
- for <intel-wired-lan@lists.osuosl.org>; Wed, 28 Feb 2024 16:23:11 +0000 (UTC)
-Received: by mail-yw1-x1134.google.com with SMTP id
- 00721157ae682-60943ad307fso6669097b3.1
- for <intel-wired-lan@lists.osuosl.org>; Wed, 28 Feb 2024 08:23:11 -0800 (PST)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 263A960E7D
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 263A960E7D
+Received: from mail-yb1-xb2d.google.com (mail-yb1-xb2d.google.com
+ [IPv6:2607:f8b0:4864:20::b2d])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 263A960E7D
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 28 Feb 2024 16:24:44 +0000 (UTC)
+Received: by mail-yb1-xb2d.google.com with SMTP id
+ 3f1490d57ef6-dc6d24737d7so5182129276.0
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 28 Feb 2024 08:24:44 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1709137391; x=1709742191;
+ d=1e100.net; s=20230601; t=1709137484; x=1709742284;
  h=in-reply-to:content-disposition:mime-version:references:message-id
  :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=HbOEijThNH46+MKcExlVA1bAK6/6kIlRSRkEOFZjgxo=;
- b=JlTofc6Dx+VBQdNLuIcr8Uxe+cVjEOWM64+fOFI75s/QUjVF+1UFs2QyuclomZFDWy
- W9Xmfq0+Z7tXA1OkRy+dVInSkakXmW72zPHafcp5I5D9y8I0dxQh3HEw5UcEA/xsMxN5
- v8xrfQftmgzdcVktSlilMg/pkjQF1V7A+GpfHLTRzqWnlJ3EuC2ZQVoxH4Q0TXw9s7B+
- fD/vv5KRt2G4ALnn6eUwyXR8eklvyhdi7MWCIhHShL4DodGIcsIqSmD2muZsN2iNtk/B
- QePy37DSgYUXerDIdGg6bX0A8NHvU095YL05F7ToSsPUxPRdeR4UrulAlX9VPty4IVcP
- u0Gg==
+ bh=6yiyiSurF95Yilk417AKvUkFM0dsA83koDFik74Ewi4=;
+ b=vs3UZJF2pQbGxPezq4m2QFbCYKZiAxRA0rpl6GOhSdb+JUtOJvHKZCIaNjooXkQYef
+ 8edD58JVkumBMqhP2DjwLTRBnWP0I5yQmW5ejLiaANqMsCZMRMzIP5cAgDqRhwJ3CAlA
+ 3PcCATYWJaN3Upnw51PJGaP69YcAB5rsClog55stwUgyPEvMPEMPqFezMVoGTdulAkpg
+ Vcv/i0nfyy3ApxRhwbp4ljs7CuCJuq7//0rX9BPGrJVXDTg0cm1tlv+jPYglY0Uxwmv+
+ QKboFOBiQc5HRE7el1ZKbAgdDCW0S/DT70yaIjynN+PKMctMP0zceRNS4FW5HQgcbtsQ
+ frgQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXaq7/LNalZODWbiuJBswrF8XwfsPUtRZFx3UZApWUr5fH5ku3FGi0efiD8NA5JFLBuOmQlktQrXpetPDHnci4mb1A/Z7LVzNrEajiPj8GKZA==
-X-Gm-Message-State: AOJu0YzTfpiFoMrJtY0bZLch2GoKo0t/PxcoCJp5wF92mlGdnjfagqQG
- tDxHGkMfJIW43aVleF2QSPWYJZXgoVLu+14zVtwb/LSS0oZKzua0
-X-Google-Smtp-Source: AGHT+IGv4dKbA2FgkfgFeim73NTZL194kVoyen/ECEHKASPW+ceHW/ESvGQ3LlWv++LKuBu1H0b1TQ==
-X-Received: by 2002:a81:4054:0:b0:609:205c:82b2 with SMTP id
- m20-20020a814054000000b00609205c82b2mr5476474ywn.0.1709137390676; 
- Wed, 28 Feb 2024 08:23:10 -0800 (PST)
+ AJvYcCUefoW0Cmrzwc4vW6i8cv5Qd33GQZNUqOwcXHsKr1O0XkWViN6EGVLiPOpbJA8seuD7KT9otdGepKI220M/xiNbQ1L4k2EaVbrWG2GdaV+A3A==
+X-Gm-Message-State: AOJu0YxD8d1l86evywszLPrT0uDnki5WtAHxA4UbwT1mK0676gG8xnt7
+ NDbNcZQIKCcKpa+Odt87GGJ1911gUkmpX/8p8YZDGmtEOZMNuy8E
+X-Google-Smtp-Source: AGHT+IE97AzDCtBDNO2Sn49xrnDEk1v4Xi/j9mx5F7dqZo00YL4uAX4pijipgcc3CcWP0xNp3S6Muw==
+X-Received: by 2002:a5b:c0b:0:b0:dcf:2cfe:c82e with SMTP id
+ f11-20020a5b0c0b000000b00dcf2cfec82emr2516397ybq.55.1709137483760; 
+ Wed, 28 Feb 2024 08:24:43 -0800 (PST)
 Received: from localhost ([2601:344:8301:57f0:2256:57ae:919c:373f])
  by smtp.gmail.com with ESMTPSA id
- o15-20020a81de4f000000b00607fe5723e6sm2380884ywl.109.2024.02.28.08.23.10
+ z1-20020a25a101000000b00dcc234241c4sm2063668ybh.55.2024.02.28.08.24.43
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 28 Feb 2024 08:23:10 -0800 (PST)
-Date: Wed, 28 Feb 2024 08:23:09 -0800
+ Wed, 28 Feb 2024 08:24:43 -0800 (PST)
+Date: Wed, 28 Feb 2024 08:24:42 -0800
 From: Yury Norov <yury.norov@gmail.com>
 To: Alexander Lobakin <aleksander.lobakin@intel.com>
-Message-ID: <Zd9d7XS+TtOx73zP@yury-ThinkPad>
+Message-ID: <Zd9eStoaYFlz/ck6@yury-ThinkPad>
 References: <20240201122216.2634007-1-aleksander.lobakin@intel.com>
- <20240201122216.2634007-7-aleksander.lobakin@intel.com>
+ <20240201122216.2634007-8-aleksander.lobakin@intel.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20240201122216.2634007-7-aleksander.lobakin@intel.com>
+In-Reply-To: <20240201122216.2634007-8-aleksander.lobakin@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1709137391; x=1709742191; darn=lists.osuosl.org;
+ d=gmail.com; s=20230601; t=1709137484; x=1709742284; darn=lists.osuosl.org;
  h=in-reply-to:content-disposition:mime-version:references:message-id
  :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=HbOEijThNH46+MKcExlVA1bAK6/6kIlRSRkEOFZjgxo=;
- b=Ox5O5j8FOPVvZ0RXfxK5hfNjGp8idnohuFoYBpabrzn/XqCqWxj103kKcdFfgqs/0e
- 9PE3yIPg/J5DNCfH9uQS5xfI0I3y9LAm8Mdnhu2qSYUSq4iXyGrKHR/NP2vH2BbTGx+D
- wMPk01vaZkytXz4XyDHzjUpKQu4LfN9cTXvZ7M0A355X4/cIf7rX4L8Sjzu1UI+vB/iF
- xh3CRt93va3F8ekM6zkTEy1TXlfwJMfVkJyAY6cXLpkHVquAXgoCM+bA1d619RgQlqam
- pWgIEa5lDqGPM/5LMUIDAx1VXu03MESLq8GP0xWUkEpPb58D+ToJHxzRrfpCfv6goDkw
- +geA==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ bh=6yiyiSurF95Yilk417AKvUkFM0dsA83koDFik74Ewi4=;
+ b=Fu45ehQr9x1cYFKyhYY2GSQaXOxYXM2qwscRtyO3gZvZoVRPo60LZT6HMOUyEbntNF
+ yCo9P7QZ9IHbbb2lE0O5hHd5yNAqtozsuEu4KklArE0b7cLWS8WS1/JMIf2sQz4VKNIj
+ J2TJj9XS77P5w6O0yw6FYjfbICrh5sXyWOstlH0cQPwxKJQqO0Cof89GSCHf2MOB38Z2
+ YUOUbNjrrjZAxdtKiWObn+db4zSkKLgwb/oFEoT8nxEDFqZZ4ShFtbB87JHubwJpN7HP
+ FLhyYaNMP8yNo2rkp2DDCRLoOAcQ1cqIFCjsS/ioqYoxVXfhS+AJS5TBOIwQuiXH0sUZ
+ 3GGw==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=gmail.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
- header.a=rsa-sha256 header.s=20230601 header.b=Ox5O5j8F
-Subject: Re: [Intel-wired-lan] [PATCH net-next v5 06/21] bitops: let the
- compiler optimize {__, }assign_bit()
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256
+ header.s=20230601 header.b=Fu45ehQr
+Subject: Re: [Intel-wired-lan] [PATCH net-next v5 07/21] linkmode: convert
+ linkmode_{test, set, clear, mod}_bit() to macros
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -119,67 +120,42 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Rasmus Villemoes <linux@rasmusvillemoes.dk>, dm-devel@redhat.com,
- Alexander Potapenko <glider@google.com>, Jiri Pirko <jiri@resnulli.us>,
- linux-s390@vger.kernel.org, Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- intel-wired-lan@lists.osuosl.org, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Wojciech Drewek <wojciech.drewek@intel.com>,
- Ido Schimmel <idosch@nvidia.com>,
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- Andy Shevchenko <andy@kernel.org>, Eric Dumazet <edumazet@google.com>,
- netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- Marcin Szycik <marcin.szycik@linux.intel.com>, Simon Horman <horms@kernel.org>,
- Michal Swiatkowski <michal.swiatkowski@linux.intel.com>, ntfs3@lists.linux.dev,
- "David S. Miller" <davem@davemloft.net>, linux-btrfs@vger.kernel.org
+Cc: Andy Shevchenko <andy@kernel.org>, linux-s390@vger.kernel.org,
+ ntfs3@lists.linux.dev, Wojciech Drewek <wojciech.drewek@intel.com>,
+ Ido Schimmel <idosch@nvidia.com>, Rasmus Villemoes <linux@rasmusvillemoes.dk>,
+ dm-devel@redhat.com, linux-kernel@vger.kernel.org,
+ Jiri Pirko <jiri@resnulli.us>, Eric Dumazet <edumazet@google.com>,
+ Marcin Szycik <marcin.szycik@linux.intel.com>,
+ Alexander Potapenko <glider@google.com>, Simon Horman <horms@kernel.org>,
+ Michal Swiatkowski <michal.swiatkowski@linux.intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Jakub Kicinski <kuba@kernel.org>, netdev@vger.kernel.org,
+ Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>,
+ linux-btrfs@vger.kernel.org, intel-wired-lan@lists.osuosl.org
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Thu, Feb 01, 2024 at 01:22:01PM +0100, Alexander Lobakin wrote:
+On Thu, Feb 01, 2024 at 01:22:02PM +0100, Alexander Lobakin wrote:
 > Since commit b03fc1173c0c ("bitops: let optimize out non-atomic bitops
-> on compile-time constants"), the compilers are able to expand inline
-> bitmap operations to compile-time initializers when possible.
-> However, during the round of replacement if-__set-else-__clear with
-> __assign_bit() as per Andy's advice, bloat-o-meter showed +1024 bytes
-> difference in object code size for one module (even one function),
-> where the pattern:
+> on compile-time constants"), the non-atomic bitops are macros which can
+> be expanded by the compilers into compile-time expressions, which will
+> result in better optimized object code. Unfortunately, turned out that
+> passing `volatile` to those macros discards any possibility of
+> optimization, as the compilers then don't even try to look whether
+> the passed bitmap is known at compilation time. In addition to that,
+> the mentioned linkmode helpers are marked with `inline`, not
+> `__always_inline`, meaning that it's not guaranteed some compiler won't
+> uninline them for no reason, which will also effectively prevent them
+> from being optimized (it's a well-known thing the compilers sometimes
+> uninline `2 + 2`).
+> Convert linkmode_*_bit() from inlines to macros. Their calling
+> convention are 1:1 with the corresponding bitops, so that it's not even
+> needed to enumerate and map the arguments, only the names. No changes in
+> vmlinux' object code (compiled by LLVM for x86_64) whatsoever, but that
+> doesn't necessarily means the change is meaningless.
 > 
-> 	DECLARE_BITMAP(foo) = { }; // on the stack, zeroed
-> 
-> 	if (a)
-> 		__set_bit(const_bit_num, foo);
-> 	if (b)
-> 		__set_bit(another_const_bit_num, foo);
-> 	...
-> 
-> is heavily used, although there should be no difference: the bitmap is
-> zeroed, so the second half of __assign_bit() should be compiled-out as
-> a no-op.
-> I either missed the fact that __assign_bit() has bitmap pointer marked
-> as `volatile` (as we usually do for bitops) or was hoping that the
-> compilers would at least try to look past the `volatile` for
-> __always_inline functions. Anyhow, due to that attribute, the compilers
-> were always compiling the whole expression and no mentioned compile-time
-> optimizations were working.
-> 
-> Convert __assign_bit() to a macro since it's a very simple if-else and
-> all of the checks are performed inside __set_bit() and __clear_bit(),
-> thus that wrapper has to be as transparent as possible. After that
-> change, despite it showing only -20 bytes change for vmlinux (due to
-> that it's still relatively unpopular), no drastic code size changes
-> happen when replacing if-set-else-clear for onstack bitmaps with
-> __assign_bit(), meaning the compiler now expands them to the actual
-> operations will all the expected optimizations.
-> 
-> Atomic assign_bit() is less affected due to its nature, but let's
-> convert it to a macro as well to keep the code consistent and not
-> leave a place for possible suboptimal codegen. Moreover, with certain
-> kernel configuration it actually gives some saves (x86):
-> 
-> do_ip_setsockopt    4154    4099     -55
-> 
-> Suggested-by: Yury Norov <yury.norov@gmail.com> # assign_bit(), too
-> Cc: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 > Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+> Acked-by: Jakub Kicinski <kuba@kernel.org>
 > Signed-off-by: Alexander Lobakin <aleksander.lobakin@intel.com>
 
 Acked-by: Yury Norov <yury.norov@gmail.com>
