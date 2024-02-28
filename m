@@ -1,88 +1,100 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3F7A486ABF1
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 28 Feb 2024 11:12:36 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 590B386AC44
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 28 Feb 2024 11:39:02 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id D849E60E15;
-	Wed, 28 Feb 2024 10:12:34 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 1E684821E1;
+	Wed, 28 Feb 2024 10:38:59 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 1gBgllxcPpxb; Wed, 28 Feb 2024 10:12:34 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id LLYb6KFQ4MnN; Wed, 28 Feb 2024 10:38:58 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org DB89260E09
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 7A17381E5D
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1709115153;
-	bh=FYqUybZinlqZKKCqEpvFgd9fW/asnSztxhG3iU0XloY=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1709116738;
+	bh=ggJVL+5UVyRqJgOapcR+xGiUFSeARq97a8i4Fx7brbU=;
+	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=Xy8PW3Fxlj7ZEzVfxs8vcD7GC52Cn18ceDV+Wv8lQuz5P752GBGjZu+tPjlanIWm/
-	 avMAYP+Kx2b8Vo07PNO+LgBCvsEThDjy8aysIIR6KNCcfWn825JLmoR2QqXbrKM0Ou
-	 kX6wHPmB3QuHPRr4TqZezzL6+tKr8dl9BfCb1VcxxJoKznnCf2PRiaMmjmjDBoQknw
-	 tIzp8PSmJ4NRAK9OgcXBwwJn+W/ZdmnPfvWNDrlSXGFVyAtPOLVcJiVQ5jmGWlASP5
-	 2HhFrWTxalSgQfY/wEkRcSRGZvsI8ngrlTqfXvsCYtRMesueNKAtzaV+ovvnV8LBCi
-	 Th1aiNHv0fZHg==
+	b=2rL1xaR82fGN8TiE7EtMSQReAHDNTQ3jLJmPur8Sx0rGyYKHpN+nMf1cB1l1Im2yP
+	 lx9Zx9cQv1+wPG3SC9956FMjQWhzkDxmhU86GafHjLO7apAFIDEJDXtoSzT5qrWj6T
+	 L69K9vmqkgRjFTkSz1f2VXpqtHtqRnPSPHguUqtPef1XO8GsxzDY6ECfU6ZDCYh9RF
+	 kHGO6KPpqL6VF9CJXJCbKfdxZAw+3Olr56xpWaqknR055tkH2NU7OJDNZU7uuQ80bc
+	 sR5YTcA88k1qSBIlD9zLEb5JXi60/5NIVjwj1u2B96ZehOdO4LrtmFXHddaijc3ZFQ
+	 ORf2Vo2g3JtQg==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id DB89260E09;
-	Wed, 28 Feb 2024 10:12:33 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 7A17381E5D;
+	Wed, 28 Feb 2024 10:38:58 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 10EE81BF59C
- for <intel-wired-lan@lists.osuosl.org>; Wed, 28 Feb 2024 10:12:31 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 1D73F1BF31C
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 28 Feb 2024 10:38:56 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id F0F2F60AA1
- for <intel-wired-lan@lists.osuosl.org>; Wed, 28 Feb 2024 10:12:30 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 16AF3608EE
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 28 Feb 2024 10:38:56 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id v0yYRM2QP6Xc for <intel-wired-lan@lists.osuosl.org>;
- Wed, 28 Feb 2024 10:12:30 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2604:1380:40e1:4800::1; helo=sin.source.kernel.org;
- envelope-from=horms@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org D904460A36
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D904460A36
-Received: from sin.source.kernel.org (sin.source.kernel.org
- [IPv6:2604:1380:40e1:4800::1])
- by smtp3.osuosl.org (Postfix) with ESMTPS id D904460A36
- for <intel-wired-lan@lists.osuosl.org>; Wed, 28 Feb 2024 10:12:29 +0000 (UTC)
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by sin.source.kernel.org (Postfix) with ESMTP id 0064DCE20CC;
- Wed, 28 Feb 2024 10:12:23 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 61A43C43394;
- Wed, 28 Feb 2024 10:12:20 +0000 (UTC)
-Date: Wed, 28 Feb 2024 10:12:18 +0000
-From: Simon Horman <horms@kernel.org>
-To: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-Message-ID: <20240228101218.GB292522@kernel.org>
-References: <20240227143124.21015-1-przemyslaw.kitszel@intel.com>
+ with ESMTP id tpKJZiss1odZ for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 28 Feb 2024 10:38:55 +0000 (UTC)
+Received-SPF: None (mailfrom) identity=mailfrom; client-ip=198.175.65.21;
+ helo=mgamail.intel.com; envelope-from=naamax.meir@linux.intel.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 1C01B608DA
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1C01B608DA
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.21])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 1C01B608DA
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 28 Feb 2024 10:38:54 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,10996"; a="3431156"
+X-IronPort-AV: E=Sophos;i="6.06,190,1705392000"; 
+   d="scan'208";a="3431156"
+Received: from fmviesa004.fm.intel.com ([10.60.135.144])
+ by orvoesa113.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 28 Feb 2024 02:38:54 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.06,190,1705392000"; d="scan'208";a="11996196"
+Received: from naamamex-mobl.ger.corp.intel.com (HELO [10.12.48.215])
+ ([10.12.48.215])
+ by fmviesa004-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 28 Feb 2024 02:38:52 -0800
+Message-ID: <aea66510-a12e-423f-87cf-92c2405e4e27@linux.intel.com>
+Date: Wed, 28 Feb 2024 12:38:50 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20240227143124.21015-1-przemyslaw.kitszel@intel.com>
+User-Agent: Mozilla Thunderbird
+To: Sasha Neftin <sasha.neftin@intel.com>, intel-wired-lan@lists.osuosl.org,
+ jesse.brandeburg@intel.com
+References: <20240218074221.108927-1-sasha.neftin@intel.com>
+Content-Language: en-US
+From: "naamax.meir" <naamax.meir@linux.intel.com>
+In-Reply-To: <20240218074221.108927-1-sasha.neftin@intel.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1709115142;
- bh=QFYQUoP97qt1SySTRyNAKrKSlup8Ut/g9RM8S9am1mM=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=n96fHgZoOdwmwYupMkJDHIcXKFSXtzfuPciA6Q42WzIjAQyyy5pHqrp4mmDiktMvD
- XmBa/boDMeU+a2wslPm1yJwkAavc1N3w7ZIxdZg4gKwzBJVQJbovMVGpcGxmSgCp/3
- pyzEoAr8fum7GOtxgFr/sWyqJG/z49bfpW0rkKsqWv9apEaND2hzEjpQOt4zuEodZM
- MpGNikI0U3z4djHIey7UyYG/LGLBdJSKJPRDfyUAhwGnlQq0pGrxqvSLT/ghrmrUbH
- frHRNk9eoVqaCj7WPme6IOFcYS/699pd7GMHJyuHoEo9ylWRavq+/gaib+VQ3BeQyo
- N8O+BlpjtjD1g==
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1709116736; x=1740652736;
+ h=message-id:date:mime-version:subject:to:cc:references:
+ from:in-reply-to:content-transfer-encoding;
+ bh=9y1jw3wHyLe6aeMWxted6EhNKF9AhjZdcmUCa3qVbTg=;
+ b=AdBpzc57YtgiUaVv5DQVjAkyy6HTasOvFawcufWsgFBoLXcfGQiMDrTN
+ 0cGzYTplyPTuRlBiEVq5lExcxfN1rnqbj5I2NvKWmCnpwBHdWwICJkDJ1
+ pDWmjynGQFYRLlCVM+fonED1FvFriQbvLYGav5/cb0FJrSj4ukDLZ0kRG
+ WmnwUrLg4cKLxiu90JCli2u1Yn84CZnKrpAldN9wsasNpETVl7jexig5F
+ N2KYrIT+xiZ9PDteeAy/Y8cbsbSfhi499sBuZPruqRu9Axb0CLrJkUbpX
+ oIDJtbbUZeb2NfFfe18L/eqKmEuI+C9IBiqqSGbn4Xi7u+16FHGh6i1p0
+ A==;
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=kernel.org
+ dmarc=none (p=none dis=none)
+ header.from=linux.intel.com
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20201202 header.b=n96fHgZo
-Subject: Re: [Intel-wired-lan] [PATCH iwl-net] ice: fix stats being updated
- by way too large values
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=AdBpzc57
+Subject: Re: [Intel-wired-lan] [PATCH iwl-net v1 1/1] intel: legacy:
+ Partially revert of field get conversion
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,41 +107,20 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Nebojsa Stevanovic <nebojsa.stevanovic@gcore.com>, netdev@vger.kernel.org,
- lukasz.czapnik@intel.com, Alexander Lobakin <aleksander.lobakin@intel.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>,
- Jacob Keller <jacob.e.keller@intel.com>, intel-wired-lan@lists.osuosl.org,
- Christian Rohmann <christian.rohmann@inovex.de>
+Cc: Vitaly Lifshits <vitaly.lifshits@intel.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, Feb 27, 2024 at 03:31:06PM +0100, Przemek Kitszel wrote:
-> Simplify stats accumulation logic to fix the case where we don't take
-> previous stat value into account, we should always respect it.
+On 2/18/2024 09:42, Sasha Neftin wrote:
+> Refactoring of the field gets conversion introduced a regression in the
+> legacy Wake On Lan from a magic packet with i219 devices. Rx address
+> copied not correctly from MAC to PHY with FIELD_GET macro.
 > 
-> Main netdev stats of our PF (Tx/Rx packets/bytes) were reported orders of
-> magnitude too big during OpenStack reconfiguration events, possibly other
-> reconfiguration cases too.
-> 
-> The regression was reported to be between 6.1 and 6.2, so I was almost
-> certain that on of the two "preserve stats over reset" commits were the
-> culprit. While reading the code, it was found that in some cases we will
-> increase the stats by arbitrarily large number (thanks to ignoring "-prev"
-> part of condition, after zeroing it).
-> 
-> Note that this fixes also the case where we were around limits of u64, but
-> that was not the regression reported.
-> 
-> Full disclosure: I remember suggesting this particular piece of code to
-> Ben a few years ago, so blame on me.
-> 
-> Fixes: 2fd5e433cd26 ("ice: Accumulate HW and Netdev statistics over reset")
-> Reported-by: Nebojsa Stevanovic <nebojsa.stevanovic@gcore.com>
-> Link: https://lore.kernel.org/intel-wired-lan/VI1PR02MB439744DEDAA7B59B9A2833FE912EA@VI1PR02MB4397.eurprd02.prod.outlook.com
-> Reported-by: Christian Rohmann <christian.rohmann@inovex.de>
-> Link: https://lore.kernel.org/intel-wired-lan/f38a6ca4-af05-48b1-a3e6-17ef2054e525@inovex.de
-> Reviewed-by: Jacob Keller <jacob.e.keller@intel.com>
-> Signed-off-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+> Fixes: b9a452545075 ("intel: legacy: field get conversion")
+> Suggested-by: Vitaly Lifshits <vitaly.lifshits@intel.com>
+> Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
+> ---
+>   drivers/net/ethernet/intel/e1000e/ich8lan.c | 3 ++-
+>   1 file changed, 2 insertions(+), 1 deletion(-)
 
-Reviewed-by: Simon Horman <horms@kernel.org>
-
+Tested-by: Naama Meir <naamax.meir@linux.intel.com>
