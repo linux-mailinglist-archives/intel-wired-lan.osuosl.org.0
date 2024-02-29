@@ -2,89 +2,78 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 49B5A86CBA2
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 29 Feb 2024 15:31:57 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 54EDB86CBA6
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 29 Feb 2024 15:32:23 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id E84F8417C0;
-	Thu, 29 Feb 2024 14:31:55 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 07369417C0;
+	Thu, 29 Feb 2024 14:32:22 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id m0Z9Fggqj0UF; Thu, 29 Feb 2024 14:31:54 +0000 (UTC)
+	with ESMTP id vAp9bgtMTkye; Thu, 29 Feb 2024 14:32:21 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org DCEF0417B4
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C715C417C1
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1709217114;
-	bh=Qc6wk9DRiWYdHhcsl62TSyf6OCaWy3QU6Z4Ens6oR4o=;
-	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=ZE8QFxkluVaR1yxiUGkbIjmqQXRVDstTrVfVJyLcktcuWEDF8sXekKqu3DaoYv1jK
-	 9l6vs1k2cmjnIE9TCgbn8ZVs354f+go/9QI4DHbS0tJwwiDfkvrt06F4h/MYhJHKnW
-	 1jsfnTyCwErHUC3I8U4igJLqat0bxRFjsU9Dwfk3R6DFpV5Jy9injY38A+zhiegsba
-	 9cA4oMEpib4hGRQ/LAQ8taeS5TGYlj0YqKg/LrUZ5Lf8QfWRYoHOWSykVLLLUHsXDI
-	 YpSqRHMJXY9i+PG/NgSRwe3egOXn+q8pKWOwqhO4vWDk7gBz2L/Hd8vkKMrWPPAYbg
-	 30Y3Gy+G3CTrw==
+	s=default; t=1709217140;
+	bh=0piA/rZ+P4gJORZgJNtGWG6OfWS97Gu7m8x8HRIvSL8=;
+	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=ZudbnH3ZWQrSPXfLLUtmDtSEHyhuc5Fh57RqxdyrLSgwfuES/tyUjj7dodkoRSqNC
+	 J6OXDVmRYrISKRvM9DPL2g9zZDZ2K5Os4ACnARAT9Hy7CfESFvFORE+74BKP8D99ns
+	 CqIJwSVggMQCAhkiC1QLkDgmTSvmfSjnjlNTLmtRJd6dtXhd4wPv+GuOWrJZtJhfWD
+	 xAAG0I++folLzAB8dfwOYxNT37bnrXQLGoR/AD3sCtlJsgbSsWpLY26N+YIfQw2wps
+	 oVmVoCz4hkCxwrZWmFVVR234bou2Tp97FzJuU7Ep6IY7huazPSR8jydV7vTylIT359
+	 sE8HjuOtWV8Pw==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id DCEF0417B4;
-	Thu, 29 Feb 2024 14:31:53 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id C715C417C1;
+	Thu, 29 Feb 2024 14:32:20 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id F18831BF3FB
- for <intel-wired-lan@lists.osuosl.org>; Thu, 29 Feb 2024 14:31:51 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 9F52C1BF3FB
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 29 Feb 2024 14:32:18 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id DDD97820C4
- for <intel-wired-lan@lists.osuosl.org>; Thu, 29 Feb 2024 14:31:51 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 87A1341899
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 29 Feb 2024 14:32:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id s1YeLqWBpARr for <intel-wired-lan@lists.osuosl.org>;
- Thu, 29 Feb 2024 14:31:51 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.8;
- helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org BF70782030
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org BF70782030
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.8])
- by smtp1.osuosl.org (Postfix) with ESMTPS id BF70782030
- for <intel-wired-lan@lists.osuosl.org>; Thu, 29 Feb 2024 14:31:50 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,10998"; a="21231388"
-X-IronPort-AV: E=Sophos;i="6.06,194,1705392000"; d="scan'208";a="21231388"
-Received: from orviesa005.jf.intel.com ([10.64.159.145])
- by fmvoesa102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 29 Feb 2024 06:31:50 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.06,194,1705392000"; d="scan'208";a="12528166"
-Received: from lkp-server02.sh.intel.com (HELO 3c78fa4d504c) ([10.239.97.151])
- by orviesa005.jf.intel.com with ESMTP; 29 Feb 2024 06:31:49 -0800
-Received: from kbuild by 3c78fa4d504c with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1rfhRq-000D0V-0c
- for intel-wired-lan@lists.osuosl.org; Thu, 29 Feb 2024 14:31:46 +0000
-Date: Thu, 29 Feb 2024 22:31:10 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <202402292207.7Nl26P3j-lkp@intel.com>
-User-Agent: s-nail v14.9.24
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1709217111; x=1740753111;
- h=date:from:to:subject:message-id;
- bh=NPnZ70vqRRr2Agm6JgY6AZbMotfqehbUiPrlqKbqjWI=;
- b=GJRTEtNY+x0QbIVAJYlJgyHgvRXcWFiwOSoSvT3fEImjOtsaIPh95Rpb
- 3u1G2aEbpiPuR1ZAYSJ50mNa1r5j33zDd/99ttPwgLuFfC2PBAvF+BtXu
- omjvb1wO4yKS5O47KEyuJQrCzXxLHhcgA/2vlXUQu/chjnCAw9hlq0nnb
- eqZ3y/ZvIRTVb7IbdD4ZguRNc+mavjL3UPrzlH4ZYDyeifn4FEefly8+8
- r0IwGvRkmqC3P1mHcacRdOHFP/2ywXloJq+P4LAX8YH7BvOnHRvnMtHpf
- iJOD2lWr31X2PesB1BXb0JcGMWw5EafXeTvupCer2bczrw03H+s2elRoT
- Q==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=GJRTEtNY
-Subject: [Intel-wired-lan] [tnguy-next-queue:dev-queue] BUILD SUCCESS
- 0d8770396a1894f6bddb80ce3f3d96466a74b83f
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 62WxvAPFr8oo for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 29 Feb 2024 14:32:17 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=141.14.17.11;
+ helo=mx3.molgen.mpg.de; envelope-from=pmenzel@molgen.mpg.de;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org EDD894182E
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org EDD894182E
+Received: from mx3.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id EDD894182E
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 29 Feb 2024 14:32:15 +0000 (UTC)
+Received: from [192.168.0.53] (ip5f5aeddf.dynamic.kabel-deutschland.de
+ [95.90.237.223])
+ (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested) (Authenticated sender: pmenzel)
+ by mx.molgen.mpg.de (Postfix) with ESMTPSA id 7984D61E5FE05;
+ Thu, 29 Feb 2024 15:31:56 +0100 (CET)
+Message-ID: <168e588a-9271-46ea-b2a7-005127ce8ff4@molgen.mpg.de>
+Date: Thu, 29 Feb 2024 15:31:55 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Content-Language: en-US
+To: Vitaly Lifshits <vitaly.lifshits@intel.com>
+References: <20240211151245.811320-1-vitaly.lifshits@intel.com>
+ <c2b8c45e-1986-41a4-89cb-7db48512eccf@molgen.mpg.de>
+ <daa81688-b453-42f8-a8c0-999b7d9fafd4@intel.com>
+From: Paul Menzel <pmenzel@molgen.mpg.de>
+In-Reply-To: <daa81688-b453-42f8-a8c0-999b7d9fafd4@intel.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dmarc=none (p=none dis=none)
+ header.from=molgen.mpg.de
+Subject: Re: [Intel-wired-lan] [PATCH iwl-net v1 1/1] e1000e: move force
+ SMBUS from enable ulp function to avoid PHY loss issue
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,178 +86,129 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: Dima Ruinskiy <dima.ruinskiy@intel.com>, intel-wired-lan@lists.osuosl.org
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git dev-queue
-branch HEAD: 0d8770396a1894f6bddb80ce3f3d96466a74b83f  igc: fix LEDS_CLASS dependency
+Dear Vitaly,
 
-elapsed time: 851m
 
-configs tested: 156
-configs skipped: 3
+Thank you for your reply.
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
 
-tested configs:
-alpha                             allnoconfig   gcc  
-alpha                            allyesconfig   gcc  
-alpha                               defconfig   gcc  
-arc                              allmodconfig   gcc  
-arc                               allnoconfig   gcc  
-arc                              allyesconfig   gcc  
-arc                                 defconfig   gcc  
-arc                   randconfig-001-20240229   gcc  
-arc                   randconfig-002-20240229   gcc  
-arm                              allmodconfig   gcc  
-arm                               allnoconfig   clang
-arm                              allyesconfig   gcc  
-arm                                 defconfig   clang
-arm                   randconfig-001-20240229   gcc  
-arm                   randconfig-002-20240229   gcc  
-arm                   randconfig-003-20240229   clang
-arm                   randconfig-004-20240229   gcc  
-arm64                            allmodconfig   clang
-arm64                             allnoconfig   gcc  
-arm64                               defconfig   gcc  
-arm64                 randconfig-001-20240229   clang
-arm64                 randconfig-002-20240229   gcc  
-arm64                 randconfig-003-20240229   clang
-arm64                 randconfig-004-20240229   clang
-csky                             allmodconfig   gcc  
-csky                              allnoconfig   gcc  
-csky                             allyesconfig   gcc  
-csky                                defconfig   gcc  
-csky                  randconfig-001-20240229   gcc  
-csky                  randconfig-002-20240229   gcc  
-hexagon                          allmodconfig   clang
-hexagon                           allnoconfig   clang
-hexagon                          allyesconfig   clang
-hexagon                             defconfig   clang
-hexagon               randconfig-001-20240229   clang
-hexagon               randconfig-002-20240229   clang
-i386                             allmodconfig   gcc  
-i386                              allnoconfig   gcc  
-i386                             allyesconfig   gcc  
-i386         buildonly-randconfig-001-20240229   clang
-i386         buildonly-randconfig-002-20240229   gcc  
-i386         buildonly-randconfig-003-20240229   gcc  
-i386         buildonly-randconfig-004-20240229   clang
-i386         buildonly-randconfig-005-20240229   gcc  
-i386         buildonly-randconfig-006-20240229   gcc  
-i386                                defconfig   clang
-i386                  randconfig-001-20240229   clang
-i386                  randconfig-002-20240229   gcc  
-i386                  randconfig-003-20240229   clang
-i386                  randconfig-004-20240229   gcc  
-i386                  randconfig-005-20240229   gcc  
-i386                  randconfig-006-20240229   gcc  
-i386                  randconfig-011-20240229   gcc  
-i386                  randconfig-012-20240229   gcc  
-i386                  randconfig-013-20240229   clang
-i386                  randconfig-014-20240229   clang
-i386                  randconfig-015-20240229   clang
-i386                  randconfig-016-20240229   clang
-loongarch                        allmodconfig   gcc  
-loongarch                         allnoconfig   gcc  
-loongarch                           defconfig   gcc  
-loongarch             randconfig-001-20240229   gcc  
-loongarch             randconfig-002-20240229   gcc  
-m68k                             allmodconfig   gcc  
-m68k                              allnoconfig   gcc  
-m68k                             allyesconfig   gcc  
-m68k                                defconfig   gcc  
-microblaze                       allmodconfig   gcc  
-microblaze                        allnoconfig   gcc  
-microblaze                       allyesconfig   gcc  
-microblaze                          defconfig   gcc  
-mips                              allnoconfig   gcc  
-mips                             allyesconfig   gcc  
-nios2                            allmodconfig   gcc  
-nios2                             allnoconfig   gcc  
-nios2                            allyesconfig   gcc  
-nios2                               defconfig   gcc  
-nios2                 randconfig-001-20240229   gcc  
-nios2                 randconfig-002-20240229   gcc  
-openrisc                          allnoconfig   gcc  
-openrisc                         allyesconfig   gcc  
-openrisc                            defconfig   gcc  
-parisc                           allmodconfig   gcc  
-parisc                            allnoconfig   gcc  
-parisc                           allyesconfig   gcc  
-parisc                              defconfig   gcc  
-parisc                randconfig-001-20240229   gcc  
-parisc                randconfig-002-20240229   gcc  
-parisc64                            defconfig   gcc  
-powerpc                          allmodconfig   gcc  
-powerpc                           allnoconfig   gcc  
-powerpc                          allyesconfig   clang
-powerpc               randconfig-001-20240229   clang
-powerpc               randconfig-002-20240229   gcc  
-powerpc               randconfig-003-20240229   clang
-powerpc64             randconfig-001-20240229   gcc  
-powerpc64             randconfig-002-20240229   clang
-powerpc64             randconfig-003-20240229   clang
-riscv                            allmodconfig   clang
-riscv                             allnoconfig   gcc  
-riscv                            allyesconfig   clang
-riscv                               defconfig   clang
-riscv                 randconfig-001-20240229   clang
-riscv                 randconfig-002-20240229   clang
-s390                             allmodconfig   clang
-s390                              allnoconfig   clang
-s390                             allyesconfig   gcc  
-s390                                defconfig   clang
-s390                  randconfig-001-20240229   clang
-s390                  randconfig-002-20240229   gcc  
-sh                               allmodconfig   gcc  
-sh                                allnoconfig   gcc  
-sh                               allyesconfig   gcc  
-sh                                  defconfig   gcc  
-sh                    randconfig-001-20240229   gcc  
-sh                    randconfig-002-20240229   gcc  
-sparc                            allmodconfig   gcc  
-sparc                             allnoconfig   gcc  
-sparc                               defconfig   gcc  
-sparc64                          allmodconfig   gcc  
-sparc64                          allyesconfig   gcc  
-sparc64                             defconfig   gcc  
-sparc64               randconfig-001-20240229   gcc  
-sparc64               randconfig-002-20240229   gcc  
-um                               allmodconfig   clang
-um                                allnoconfig   clang
-um                               allyesconfig   gcc  
-um                                  defconfig   clang
-um                             i386_defconfig   gcc  
-um                    randconfig-001-20240229   gcc  
-um                    randconfig-002-20240229   gcc  
-um                           x86_64_defconfig   clang
-x86_64                            allnoconfig   clang
-x86_64                           allyesconfig   clang
-x86_64       buildonly-randconfig-001-20240229   gcc  
-x86_64       buildonly-randconfig-002-20240229   clang
-x86_64       buildonly-randconfig-003-20240229   gcc  
-x86_64       buildonly-randconfig-004-20240229   gcc  
-x86_64       buildonly-randconfig-005-20240229   gcc  
-x86_64       buildonly-randconfig-006-20240229   gcc  
-x86_64                              defconfig   gcc  
-x86_64                randconfig-001-20240229   clang
-x86_64                randconfig-002-20240229   clang
-x86_64                randconfig-003-20240229   clang
-x86_64                randconfig-004-20240229   clang
-x86_64                randconfig-005-20240229   clang
-x86_64                randconfig-006-20240229   clang
-x86_64                randconfig-011-20240229   gcc  
-x86_64                randconfig-012-20240229   gcc  
-x86_64                randconfig-013-20240229   gcc  
-x86_64                randconfig-014-20240229   gcc  
-x86_64                randconfig-015-20240229   gcc  
-x86_64                          rhel-8.3-rust   clang
-xtensa                            allnoconfig   gcc  
-xtensa                randconfig-001-20240229   gcc  
-xtensa                randconfig-002-20240229   gcc  
+Am 29.02.24 um 11:34 schrieb Lifshits, Vitaly:
 
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+> On 2/12/2024 11:00 AM, Paul Menzel wrote:
+
+>> Am 11.02.24 um 16:12 schrieb Vitaly Lifshits:
+>>> Forcing SMBUS inside the ULP enabling flow leads to sporadic PHY loss on
+>>> some systems.
+>>
+>> Please list the systems you know of.
+> On some Meteor-lake systems, we also suspect that on some legacy 
+> platforms this issue happened with some low probability.
+
+It’d be great if you could be more specific about the Meteor Lake 
+systems. What model and what firmware versions?
+
+>>> It is suspected to be caused by initiating PHY transactions before the
+>>> the interface settles.
+>>
+>> No new paragraph is needed here. Please do not break the line, just 
+>> because a sentence ends. (If you use paragraphs, please separate them 
+>> by a blank line.
+> Will be fixed in a v2.
+
+Thank you.
+
+>>> Separating this configuration from the ULP enabling flow avoids this
+>>> issue.
+>>>
+>>> Fixes: 6607c99e7034 ("e1000e: i219 - fix to enable both ULP and EEE in Sx state")
+>>> Signed-off-by: Vitaly Lifshits <vitaly.lifshits@intel.com>
+>>> Co-developed-by: Dima Ruinskiy <dima.ruinskiy@intel.com>
+>>> Signed-off-by: Dima Ruinskiy <dima.ruinskiy@intel.com>
+>>> ---
+>>>   drivers/net/ethernet/intel/e1000e/ich8lan.c | 19 -------------------
+>>>   drivers/net/ethernet/intel/e1000e/netdev.c  | 18 ++++++++++++++++++
+>>>   2 files changed, 18 insertions(+), 19 deletions(-)
+>>>
+>>> diff --git a/drivers/net/ethernet/intel/e1000e/ich8lan.c 
+>>> b/drivers/net/ethernet/intel/e1000e/ich8lan.c
+>>> index 717c52913e84..4d83c9a0c023 100644
+>>> --- a/drivers/net/ethernet/intel/e1000e/ich8lan.c
+>>> +++ b/drivers/net/ethernet/intel/e1000e/ich8lan.c
+>>> @@ -1165,25 +1165,6 @@ s32 e1000_enable_ulp_lpt_lp(struct e1000_hw *hw, bool to_sx)
+>>>       if (ret_val)
+>>>           goto out;
+>>> -    /* Switching PHY interface always returns MDI error
+>>> -     * so disable retry mechanism to avoid wasting time
+>>> -     */
+>>> -    e1000e_disable_phy_retry(hw);
+>>> -
+>>> -    /* Force SMBus mode in PHY */
+>>> -    ret_val = e1000_read_phy_reg_hv_locked(hw, CV_SMB_CTRL, &phy_reg);
+>>> -    if (ret_val)
+>>> -        goto release;
+>>> -    phy_reg |= CV_SMB_CTRL_FORCE_SMBUS;
+>>> -    e1000_write_phy_reg_hv_locked(hw, CV_SMB_CTRL, phy_reg);
+>>> -
+>>> -    e1000e_enable_phy_retry(hw);
+>>> -
+>>> -    /* Force SMBus mode in MAC */
+>>> -    mac_reg = er32(CTRL_EXT);
+>>> -    mac_reg |= E1000_CTRL_EXT_FORCE_SMBUS;
+>>> -    ew32(CTRL_EXT, mac_reg);
+>>> -
+>>>       /* Si workaround for ULP entry flow on i127/rev6 h/w.  Enable
+>>>        * LPLU and disable Gig speed when entering ULP
+>>>        */
+>>> diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c 
+>>> b/drivers/net/ethernet/intel/e1000e/netdev.c
+>>> index af5d9d97a0d6..8fcf8f11f5a4 100644
+>>> --- a/drivers/net/ethernet/intel/e1000e/netdev.c
+>>> +++ b/drivers/net/ethernet/intel/e1000e/netdev.c
+>>> @@ -6622,6 +6622,7 @@ static int __e1000_shutdown(struct pci_dev 
+>>> *pdev, bool runtime)
+>>>       struct e1000_adapter *adapter = netdev_priv(netdev);
+>>>       struct e1000_hw *hw = &adapter->hw;
+>>>       u32 ctrl, ctrl_ext, rctl, status, wufc;
+>>> +    u16 smb_ctrl;
+>>>       int retval = 0;
+>>>       /* Runtime suspend should only enable wakeup for link changes */
+>>> @@ -6696,6 +6697,23 @@ static int __e1000_shutdown(struct pci_dev *pdev, bool runtime)
+>>>           if (retval)
+>>>               return retval;
+>>> +
+>>> +        /* Force SMBUS to allow WOL */
+>>> +        /* Switching PHY interface always returns MDI error
+>>> +         * so disable retry mechanism to avoid wasting time
+>>> +         */
+>>> +        e1000e_disable_phy_retry(hw);
+>>> +
+>>> +        e1e_rphy(hw, CV_SMB_CTRL, &smb_ctrl);
+>>> +        smb_ctrl |= CV_SMB_CTRL_FORCE_SMBUS;
+>>> +        e1e_wphy(hw, CV_SMB_CTRL, smb_ctrl);
+>>> +
+>>> +        e1000e_enable_phy_retry(hw);
+>>> +
+>>> +        /* Force SMBus mode in MAC */
+>>> +        ctrl_ext = er32(CTRL_EXT);
+>>> +        ctrl_ext |= E1000_CTRL_EXT_FORCE_SMBUS;
+>>> +        ew32(CTRL_EXT, ctrl_ext);
+>>>       }
+>>>       /* Ensure that the appropriate bits are set in LPI_CTRL
+>>
+>> Why is `__e1000_shutdown()` the correct place, where it was in 
+>> `e1000_enable_ulp_lpt_lp()` before?
+> First of all because forcing the SMBUS is not related to ULP enabling 
+> flow, but rather a configuration that is related to shutdown. Secondly, 
+> moving the function to shutdown function allows enough time for the 
+> interface to settle and avoids adding a delay.
+
+Please add that clarification to the commit message.
+
+
+Kind regards,
+
+Paul
