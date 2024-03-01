@@ -2,87 +2,129 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2564F86E6CB
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  1 Mar 2024 18:08:47 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 364D686E71D
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  1 Mar 2024 18:24:06 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id AF63061AB7;
-	Fri,  1 Mar 2024 17:08:44 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 8B4CC61AB4;
+	Fri,  1 Mar 2024 17:24:04 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id oSXGoclnOHfB; Fri,  1 Mar 2024 17:08:44 +0000 (UTC)
+	with ESMTP id wuUilJUmz_CM; Fri,  1 Mar 2024 17:24:04 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 12DF561AB1
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C9C1461ABC
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1709312924;
-	bh=HNMmUne/Yqfu1vvSCIO2TJ01IwsJBexeRJmnJDqOCPs=;
+	s=default; t=1709313843;
+	bh=RyyU1KTZ+u7IZU/ZLxa5MUX+oMEqsxDrKnYwc61Y+0Q=;
 	h=Date:From:To:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=yO1yk1GCE0v2c9/ZuJGUsskco41R5pcANMEdc66ugDhny2ZC8DYvHR1xVeDrztV6h
-	 G+JMX+lDTfs1YpCi/ZadvbrHqVEQvistN73RNiF6wlVs90cVowCUbSPC2M8T6uU0Fp
-	 PjgAHFREO596GrzzCa+MgKvay5+Ci6eUe9FHNqa5zcIv39xB5pYAwisLnpwF/vv5VN
-	 7OG2LRZH/hwbzUfykfFH5UrpafiUTyXHn3474IPsxd0pUERdrwLbXCPV5n89QtNY0R
-	 FoT2wxTnk8EWH3ZUxlmcexDUllRXIISHUGnIyQqv0ESq+H9qH7sZOSL4Fo+Zj7Er+y
-	 141gy9uuPEIKg==
+	b=uisVvaMij6niXAldxoss6h0o+UQnVgroUQ+5PIWGF7x5vw4rY8qEVMd/ZDpWxzGzk
+	 M4EXrlPW1bfPATzb/yZaMYWKR8RMGRR6ptBL1eQjFs69gAWlpKe3rMJ8boLzZ20HYU
+	 MCxPJnDDHWqjb7rfNiprkG2xuNuH71FLKcNjhsaXwCOFQgPla1EfDc70K8aa/F2+xx
+	 gGyX2uI4n15cro/jVHcUV5DJAngVlSwqsHkXhFOf2QicPDtkskzRPfp+/m9fyi52i8
+	 m3cJ2kill0hsahaVO1PlfArgnUqqd7FlsoS7mlj0Dfw2aR3EmvN3BVznaK4dt6L8zC
+	 4RYm9IcAGiC9A==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 12DF561AB1;
-	Fri,  1 Mar 2024 17:08:44 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id C9C1461ABC;
+	Fri,  1 Mar 2024 17:24:03 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 0CA6F1BF2F7
- for <intel-wired-lan@lists.osuosl.org>; Fri,  1 Mar 2024 17:08:42 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id E21791BF2F7
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  1 Mar 2024 17:24:00 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id ECB6A41EF8
- for <intel-wired-lan@lists.osuosl.org>; Fri,  1 Mar 2024 17:08:41 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id CDF06837A1
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  1 Mar 2024 17:24:00 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 2YZPlG0VW8Jj for <intel-wired-lan@lists.osuosl.org>;
- Fri,  1 Mar 2024 17:08:41 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=139.178.84.217;
- helo=dfw.source.kernel.org; envelope-from=kuba@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 4B73B41EE7
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4B73B41EE7
-Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 4B73B41EE7
- for <intel-wired-lan@lists.osuosl.org>; Fri,  1 Mar 2024 17:08:39 +0000 (UTC)
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by dfw.source.kernel.org (Postfix) with ESMTP id D5FEC60FE8;
- Fri,  1 Mar 2024 17:08:38 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E6D44C433F1;
- Fri,  1 Mar 2024 17:08:37 +0000 (UTC)
-Date: Fri, 1 Mar 2024 09:08:36 -0800
-From: Jakub Kicinski <kuba@kernel.org>
-To: Larysa Zaremba <larysa.zaremba@intel.com>
-Message-ID: <20240301090836.185e3b79@kernel.org>
-In-Reply-To: <ZeDb8Dr8mBvov9fc@lzaremba-mobl.ger.corp.intel.com>
-References: <20240228155957.408036-1-larysa.zaremba@intel.com>
- <20240228084745.2c0fef0e@kernel.org> <ZeBMRXUjVSwUHxU-@nanopsycho>
- <20240229072813.5d7614c3@kernel.org>
- <ZeDb8Dr8mBvov9fc@lzaremba-mobl.ger.corp.intel.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id C0x00924lLco for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  1 Mar 2024 17:24:00 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2607:f8b0:4864:20::536; helo=mail-pg1-x536.google.com;
+ envelope-from=john.fastabend@gmail.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 1D0C483709
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1D0C483709
+Received: from mail-pg1-x536.google.com (mail-pg1-x536.google.com
+ [IPv6:2607:f8b0:4864:20::536])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 1D0C483709
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  1 Mar 2024 17:23:59 +0000 (UTC)
+Received: by mail-pg1-x536.google.com with SMTP id
+ 41be03b00d2f7-5d8b887bb0cso2017647a12.2
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 01 Mar 2024 09:23:59 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1709313839; x=1709918639;
+ h=content-transfer-encoding:mime-version:subject:references
+ :in-reply-to:message-id:cc:to:from:date:x-gm-message-state:from:to
+ :cc:subject:date:message-id:reply-to;
+ bh=RyyU1KTZ+u7IZU/ZLxa5MUX+oMEqsxDrKnYwc61Y+0Q=;
+ b=Lg7HW72nFdvmAwSHErczEWARTua27lpVflI7T9f+Gdco4q5tuU7Ca12DMGwo+F9eoC
+ v4kWR2VDSw/+MiDZD3MtjKrutmR9JSFKmQJho41N/479FuX6tXgZnWxlcifo38KSdSE+
+ YmkQl2LpbGs9ynkopckxcJhGcwdObeLj4fk5NtUoMQJt5rG2RRN3H8WVMRNBJcdQ4t9z
+ joZyWCKM6Mp/qtN+YWcMYl9yrXSu4nKNl/dIAOPht+v2Uh3FpE/MRhgG5nLkTi1NojQg
+ ftqiAUJP/6qi1HZaWAVtx73WJheJ0fVYtM2GBlClj1bMA16FDAs58i6RUP4Q3RRFrirm
+ SYWQ==
+X-Gm-Message-State: AOJu0YwMyfEaZ7Dqh0rpgEVmp+BmLfiZlwPd5+5IRpdMR++m6fq4Kc9m
+ p6n1elkjeylmjq1idF94vSrBl4EfABnO/AvjYCqdWDk7FxzoURME
+X-Google-Smtp-Source: AGHT+IERqxQxkRkE14VITG6EjQITNnYMzffw4XzcbvyQqW4Wc7ZerAs9c1302bg9Ijqngdcp3rSclw==
+X-Received: by 2002:a05:6a20:4283:b0:1a0:e3c6:18da with SMTP id
+ o3-20020a056a20428300b001a0e3c618damr2372160pzj.27.1709313839390; 
+ Fri, 01 Mar 2024 09:23:59 -0800 (PST)
+Received: from localhost ([98.97.43.160]) by smtp.gmail.com with ESMTPSA id
+ i37-20020a635865000000b005dc5289c4edsm3219408pgm.64.2024.03.01.09.23.58
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 01 Mar 2024 09:23:58 -0800 (PST)
+Date: Fri, 01 Mar 2024 09:23:57 -0800
+From: John Fastabend <john.fastabend@gmail.com>
+To: Song Yoong Siang <yoong.siang.song@intel.com>, 
+ Jesse Brandeburg <jesse.brandeburg@intel.com>, 
+ Tony Nguyen <anthony.l.nguyen@intel.com>, 
+ "David S . Miller" <davem@davemloft.net>, 
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, 
+ Paolo Abeni <pabeni@redhat.com>, 
+ Richard Cochran <richardcochran@gmail.com>, 
+ Alexei Starovoitov <ast@kernel.org>, 
+ Daniel Borkmann <daniel@iogearbox.net>, 
+ Jesper Dangaard Brouer <hawk@kernel.org>, 
+ John Fastabend <john.fastabend@gmail.com>, 
+ Stanislav Fomichev <sdf@google.com>, 
+ Vinicius Costa Gomes <vinicius.gomes@intel.com>, 
+ Florian Bezdeka <florian.bezdeka@siemens.com>, 
+ Andrii Nakryiko <andrii@kernel.org>, 
+ Eduard Zingerman <eddyz87@gmail.com>, Mykola Lysenko <mykolal@fb.com>, 
+ Martin KaFai Lau <martin.lau@linux.dev>, Song Liu <song@kernel.org>, 
+ Yonghong Song <yonghong.song@linux.dev>, KP Singh <kpsingh@kernel.org>, 
+ Hao Luo <haoluo@google.com>, Jiri Olsa <jolsa@kernel.org>, 
+ Shuah Khan <shuah@kernel.org>
+Message-ID: <65e20f2d314bd_5dcfe20857@john.notmuch>
+In-Reply-To: <20240301162348.898619-2-yoong.siang.song@intel.com>
+References: <20240301162348.898619-1-yoong.siang.song@intel.com>
+ <20240301162348.898619-2-yoong.siang.song@intel.com>
+Mime-Version: 1.0
+Content-Type: text/plain;
+ charset=utf-8
 Content-Transfer-Encoding: 7bit
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1709312918;
- bh=dQWhTKqicP29reyqSeNu/vMazISZHdnkYuuXEej6Pz4=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=rHcos0PzRuz4UdjZjyMoX73NdGAjqFbDAr1Jd8vyGXu3BayLGaB7uwICV/c8BU1m9
- agaOQYfKzMN5o71Azn12aXvklX/paZlRt/2ibz8nMsmUNJGsKhgYUqL9tcPirqRsC7
- Zdo/QgNfo9NQYkasAp+Rp8vDyfGLW8Zwqou9ADlOg9lXRvo5Tmrd3eS57IB5YB8Rax
- T6/XOoD4ejiZ4B+rJzWjwVvqRwagMPfj3mKx5lHMAGHqHSOwf3hYLncHHANvCphqba
- D7zEThR8hRDP/CK/5LYHDLJCleFEU+zfBuSjU1FsANZACmVniTpf3q9iMkStOuuMR4
- skExEjJ0Owx2g==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1709313839; x=1709918639; darn=lists.osuosl.org;
+ h=content-transfer-encoding:mime-version:subject:references
+ :in-reply-to:message-id:cc:to:from:date:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=RyyU1KTZ+u7IZU/ZLxa5MUX+oMEqsxDrKnYwc61Y+0Q=;
+ b=m1xVdMOtTvK4DQJqqRjzDLKYyuGoJcHHoOx4u99/FZa12W7xBA6a5rYqrFsL1zpj13
+ 8jv+GCnrPNWBqXeTuZtbjY0S8/mPwloGO5wrbPBkr/LgE0Vj9QT7oI7fM4AuvWhTYF3/
+ 15LU4ueQDlo7ATzjfqcnwyBy3vCsGT0gl3d3ZXtny7HHLVPT2NrKbVCXo6MEfooJbr+d
+ tImg5Uvp8rwKdwWEDFdWZBA2FQ9EH4xaOhy9mOZfNNCb3efgjOy0D+m2QOpQcPkd6TXw
+ 45wwOGWpOzHdLLm0gZOjbHIzYiTbdxVFe/0GRuk89fG3gdyUZI79TyKXvPht8KXBptiJ
+ MHWg==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20201202 header.b=rHcos0Pz
-Subject: Re: [Intel-wired-lan] [PATCH iwl-net 0/5] ice: LLDP support for VFs
+ header.from=gmail.com
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
+ header.a=rsa-sha256 header.s=20230601 header.b=m1xVdMOt
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next,
+ v2 1/2] selftests/bpf: xdp_hw_metadata reduce sleep interval
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,39 +137,45 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>,
- Jiri Pirko <jiri@resnulli.us>, Eric Dumazet <edumazet@google.com>,
- "David S. Miller" <davem@davemloft.net>,
- Mateusz Pacuszka <mateuszx.pacuszka@intel.com>,
- Mateusz Polchlopek <mateusz.polchlopek@intel.com>,
- linux-kernel@vger.kernel.org, Jakub Buchocki <jakubx.buchocki@intel.com>,
- Pawel Chmielewski <pawel.chmielewski@intel.com>,
- Jesse Brandeburg <jesse.brandeburg@intel.com>,
- Lukasz Plachno <lukasz.plachno@intel.com>, intel-wired-lan@lists.osuosl.org,
- Pawel Kaminski <pawel.kaminski@intel.com>, netdev@vger.kernel.org,
- Tony Nguyen <anthony.l.nguyen@intel.com>, Paolo Abeni <pabeni@redhat.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>
+Cc: xdp-hints@xdp-project.net, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
+ linux-kselftest@vger.kernel.org, bpf@vger.kernel.org
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Thu, 29 Feb 2024 20:33:04 +0100 Larysa Zaremba wrote:
-> > This is an LLDP agent which runs as part of the NIC FW, AFAIU, not about
-> > forwarding or filtering.
-> > 
-> > They already have the priv flag, so best to reuse that. If not possible
-> > we can explore options, but as Larysa mentioned herself in the cover
-> > letter sysfs is probably low on the preference list :(
+Song Yoong Siang wrote:
+> In current ping-pong design, xdp_hw_metadata will wait until the packet
+> transmition completely done, then only start to receive the next packet.
 > 
-> FW agent is disabled NIC-wide, so only PF should be able to set such flag.
-
-Sorry, then I misread. If it's about which VF gets the LLDP traffic
-from the _wire_, then I'm with Jiri. It's a basic forwarding problem,
-isn't it? Match on EtherType and forward?
-
-> The lazy part of me likes the private flag direction, because just
-> replacing sysfs entries with corresponding private flags would make
-> patch look better while not changing the implementation much.
+> The current sleep interval is 10ms, which is unnecessary large. Typically,
+> a NIC does not need such a long time to transmit a packet. Furthermore,
+> during this 10ms sleep time, the app is unable to receive incoming packets.
 > 
-> I guess, treating it like a normal eswitch configuration would be
-> ideal, but it would not be purely generic, as there is an added level
-> of complexity because of FW Agent interactions.
+> Therefore, this commit reduce sleep interval to 10us, so that
+> xdp_hw_metadata able to support periodic packets with shorter interval.
+> 10us * 500 = 5ms should be enough for packet transmission and status
+> retrival.
+> 
+> Signed-off-by: Song Yoong Siang <yoong.siang.song@intel.com>
+> ---
+>  tools/testing/selftests/bpf/xdp_hw_metadata.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/tools/testing/selftests/bpf/xdp_hw_metadata.c b/tools/testing/selftests/bpf/xdp_hw_metadata.c
+> index 878d68db0325..bdf5d8180067 100644
+> --- a/tools/testing/selftests/bpf/xdp_hw_metadata.c
+> +++ b/tools/testing/selftests/bpf/xdp_hw_metadata.c
+> @@ -480,7 +480,7 @@ static int verify_metadata(struct xsk *rx_xsk, int rxq, int server_fd, clockid_t
+>  					for (int j = 0; j < 500; j++) {
+>  						if (complete_tx(xsk, clock_id))
+>  							break;
+> -						usleep(10*1000);
+> +						usleep(10);
+>  					}
+>  				}
+>  			}
+> -- 
+> 2.34.1
+> 
+
+Acked-by: John Fastabend <john.fastabend@gmail.com>
