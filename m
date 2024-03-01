@@ -2,107 +2,83 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id C855C86E7FE
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  1 Mar 2024 19:10:51 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id E640386E866
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  1 Mar 2024 19:29:38 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 413474151D;
-	Fri,  1 Mar 2024 18:10:50 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 9C83341CAA;
+	Fri,  1 Mar 2024 18:29:37 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 2aNWvQ5qwP_f; Fri,  1 Mar 2024 18:10:49 +0000 (UTC)
+	with ESMTP id SqUfH_jqPQh3; Fri,  1 Mar 2024 18:29:36 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 8169241CA2
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B561641C9C
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1709316649;
-	bh=pgwkJ5zBKIvalm1RJIrALe5y36weQ/YKYrh2qwof5jE=;
-	h=Date:In-Reply-To:References:From:To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=MtJ9L8crCGeEFJ2It5SPY/ung6HAFwnlUr/9AHdsHiglAuVTwNMnAU/hB8Dofxmtr
-	 rFWDAwIq2VH32uUITB0nnstwsnh5mloF16NI7rGGarinB5AOUYuL1V+lejWZtywOah
-	 gFYfFvuCUQewf0Ivov1dM6EuScTnz2OpJOU/lZNW5jfFtVVvpGaANa44zUGLVlTvxR
-	 F+4MyRK8MlFqM+KLnLRnxRn+rovmc6gIKM3aOV6GbEiHkxklv7Ob4tvv339aEISY7N
-	 +zxZpjkYQF+Zj3oVpCY2UDBhBL/FPicGNRBfB7n4IgewYnDxQFHz6eeKbLm/A89/P7
-	 CKrucndiKjzOQ==
+	s=default; t=1709317776;
+	bh=27MwlZUyHjDoMWsw+GSNvc+2e8+BFADErkn7KgOSt64=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=t1uIxBwCyhievCmjsn/rdTf23J/wLOXV5q+yaZjoXn+xyO5jSuJwr+kd7guH5+jE3
+	 sdm3LPg9uWbursWp2avUA+pszKBykC0MapMm54BDgbiIKeNBrf3kxmulBD1MF3EvFU
+	 IrrwUvE4j4/e9rzU0YKqnk15EpIy9U9g/bR8tqBh4BbOdz4T6AsCgr93cWFEItSxJf
+	 TfXBqL/gihTUM7gEv3riFk54XrLMwyio408zguUiFs9+YOiMDCmmZSmIz2NgOvU0gG
+	 4bqsosq5+2R3067e8+9X+CenEJ3u0NySeP4zXOrZrw3Igg+1cuaYCe4lmw86qeEgq8
+	 ryu92bLfw9yNw==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 8169241CA2;
-	Fri,  1 Mar 2024 18:10:49 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id B561641C9C;
+	Fri,  1 Mar 2024 18:29:36 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id A8EFB1BF354
- for <intel-wired-lan@lists.osuosl.org>; Fri,  1 Mar 2024 18:10:47 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id EA1CF1BF354
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  1 Mar 2024 18:28:26 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 5CEBD41CA2
- for <intel-wired-lan@lists.osuosl.org>; Fri,  1 Mar 2024 18:10:47 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 1C5E2610C7
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  1 Mar 2024 18:28:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id TXgBwUADcinP for <intel-wired-lan@lists.osuosl.org>;
- Fri,  1 Mar 2024 18:10:46 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2607:f8b0:4864:20::1049; helo=mail-pj1-x1049.google.com;
- envelope-from=3jrrizqmkdxgg134cc492.0ca6bh29-k6f21-9yb96ghg.cgicg9.cf4@flex--sdf.bounces.google.com;
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id zOYN9eVTkNzN for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  1 Mar 2024 18:28:26 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=145.40.73.55;
+ helo=sin.source.kernel.org; envelope-from=javi.merino@kernel.org;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org D234B4151D
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org D234B4151D
-Received: from mail-pj1-x1049.google.com (mail-pj1-x1049.google.com
- [IPv6:2607:f8b0:4864:20::1049])
- by smtp2.osuosl.org (Postfix) with ESMTPS id D234B4151D
- for <intel-wired-lan@lists.osuosl.org>; Fri,  1 Mar 2024 18:10:45 +0000 (UTC)
-Received: by mail-pj1-x1049.google.com with SMTP id
- 98e67ed59e1d1-299c12daea5so2893674a91.1
- for <intel-wired-lan@lists.osuosl.org>; Fri, 01 Mar 2024 10:10:45 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1709316645; x=1709921445;
- h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
- :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=pgwkJ5zBKIvalm1RJIrALe5y36weQ/YKYrh2qwof5jE=;
- b=owV5eMVP367Xh0Tdxc1V4SNt4+sE1y/4/XxG/e1irqAPDSorcuQmLOkuALBpPX1fz0
- QgwSS8CUDxGJ2qSvHCxKgOIFiVFocVdE4/Fr15lu223yfzdqkceDP8/bIqK7xrMiEzhd
- /3d1/z+1Q53ZoO/sYa5wK0wdldtpx94+g9+uLMuQHUEXyS0/lSymMNtNtjGwGDUuHXjM
- njUTV31K3zURG3C/RyemTBjsYeBZTCaIpEC/pB9XpiiJhd/Cn/UzBXHMTAToj8/JVd3r
- B2c/Bi0ntnEBvQqCR/nSZfCQWTx1lDT6OvwCdbWMkVQkWMhc0z3F9ML9BG3PB8485mg5
- EIwQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWH4GclRzEP6F9gokjRGbgBDPJNZJFgP2GarkQqthNDYJSKg4e7vq4BRS3RaQZHWXC4M2F/FdHG9V628BnvFP+fVbKmyo6Mj1eTJbrk7c4VNw==
-X-Gm-Message-State: AOJu0YzGhPsEq1hm+SiytH2MlJOgoA0KzZEUvtwn0PNmBLc3U35Gl249
- /NTCWNfwFANCWupYVqvYSYC/feSCgge3Y1LkvZEK03LU1y8BU5xEsHzWjZOpleTs/A==
-X-Google-Smtp-Source: AGHT+IEGDx0IBS91RwXiEWVsOKX4bVPCV9F+AXiFnctjT3PsNi+Tc0z/aXyoMVHCH/0MRr3/ArbUUwo=
-X-Received: from sdf.c.googlers.com ([fda3:e722:ac3:cc00:7f:e700:c0a8:5935])
- (user=sdf job=sendgmr) by 2002:a17:90b:3741:b0:29a:a70d:e5ce with SMTP id
- ne1-20020a17090b374100b0029aa70de5cemr24534pjb.3.1709316645070; Fri, 01 Mar
- 2024 10:10:45 -0800 (PST)
-Date: Fri, 1 Mar 2024 10:10:43 -0800
-In-Reply-To: <20240301162348.898619-2-yoong.siang.song@intel.com>
-Mime-Version: 1.0
-References: <20240301162348.898619-1-yoong.siang.song@intel.com>
- <20240301162348.898619-2-yoong.siang.song@intel.com>
-Message-ID: <ZeIaI4TNqXSxU4LX@google.com>
-From: Stanislav Fomichev <sdf@google.com>
-To: Song Yoong Siang <yoong.siang.song@intel.com>
-Content-Type: text/plain; charset="utf-8"
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1709316645; x=1709921445; darn=lists.osuosl.org;
- h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
- :date:from:to:cc:subject:date:message-id:reply-to;
- bh=pgwkJ5zBKIvalm1RJIrALe5y36weQ/YKYrh2qwof5jE=;
- b=HLuk4EVk5wYWup5M7tIGwBrcsZVVD0GWFO0iQivPnqWmvarUq3skHv3b9b3zJaI+AY
- zb4CELifhGE11ZhCoJE7I3obTpN6pSxwoEEuHFfXWGwjoA1DB+4Gs+IqyhaW1o2vvbzu
- VycRjuupDBGmqkro+1opo0cSWVDaQRMjQ7iWweee4IN2p1Y5AoXWl+y+Q7XBF9Jp3TKO
- YN8lqNW8WKl0gup0x2HDF22sxEFkBpq32R60FU78PpMDO6vVfymLs7fWyIzGV3NKz/wv
- q79cQecuITZX41OcavgKNWAIYxiC8s+YQUmbOT2lXvYJx4LhK4WsDuJ1gz31+uQn6jBL
- hgCg==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=pass (p=reject dis=none)
- header.from=google.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 152A160880
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 152A160880
+Received: from sin.source.kernel.org (sin.source.kernel.org [145.40.73.55])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 152A160880
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  1 Mar 2024 18:28:25 +0000 (UTC)
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by sin.source.kernel.org (Postfix) with ESMTP id C0637CE265F;
+ Fri,  1 Mar 2024 18:28:21 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 57720C433C7;
+ Fri,  1 Mar 2024 18:28:19 +0000 (UTC)
+From: javi.merino@kernel.org
+To: netdev@vger.kernel.org
+Date: Fri,  1 Mar 2024 18:28:10 +0000
+Message-ID: <20240301182810.9808-1-javi.merino@kernel.org>
+X-Mailer: git-send-email 2.43.1
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+X-Mailman-Approved-At: Fri, 01 Mar 2024 18:29:34 +0000
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=kernel.org; s=k20201202; t=1709317701;
+ bh=gKnBsvJL+Rlqj45zIhXN0kOtWX68tNTT+TRkUrzgaTo=;
+ h=From:To:Cc:Subject:Date:From;
+ b=V7sN3gOA29+iTau9CUWlthkny4oJdspBiBCA4kDTyxOcxz2QXmpQWUr+/mXNS3jlY
+ G9clYV0Wc7nul4wdzy1schx3yADsVdNQW5iZoFvQxD4e7WRz73iYz2DZ9dUeh72Hpt
+ EO4XF9Zl8C5TIFa5/O78D8tyIvCL6j/2TKj5CmUe6ic4ttbDswbP8CxA/9OhaFsx2U
+ 7J0gPY6WZhi9aCqO3M6ywH2PcA62AuCrMMQ1Rd3caiXRNOuJCLMoA3aRsRj0leyzRZ
+ rqxjNn73aWTvBDeHoBXH1tAno2EMFKVMP6tn1XfxlUOYDlj+ZpwxggyJ8wRIP2aP+p
+ M+1ePvETqT7hA==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=kernel.org
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=google.com header.i=@google.com header.a=rsa-sha256
- header.s=20230601 header.b=HLuk4EVk
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next,
- v2 1/2] selftests/bpf: xdp_hw_metadata reduce sleep interval
+ unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
+ header.s=k20201202 header.b=V7sN3gOA
+Subject: [Intel-wired-lan] [PATCH] ice: Fix enabling SR-IOV with Xen
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -115,41 +91,95 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: linux-kselftest@vger.kernel.org,
- Florian Bezdeka <florian.bezdeka@siemens.com>,
- Alexei Starovoitov <ast@kernel.org>, Andrii Nakryiko <andrii@kernel.org>,
- Song Liu <song@kernel.org>, Eric Dumazet <edumazet@google.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>,
- Yonghong Song <yonghong.song@linux.dev>, Shuah Khan <shuah@kernel.org>,
- Mykola Lysenko <mykolal@fb.com>, xdp-hints@xdp-project.net,
- Daniel Borkmann <daniel@iogearbox.net>,
- Vinicius Costa Gomes <vinicius.gomes@intel.com>,
- John Fastabend <john.fastabend@gmail.com>,
- Jesse Brandeburg <jesse.brandeburg@intel.com>,
- intel-wired-lan@lists.osuosl.org, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Jesper Dangaard Brouer <hawk@kernel.org>,
- Richard Cochran <richardcochran@gmail.com>, KP Singh <kpsingh@kernel.org>,
- Hao Luo <haoluo@google.com>, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, Eduard Zingerman <eddyz87@gmail.com>,
- Jiri Olsa <jolsa@kernel.org>, bpf@vger.kernel.org,
- Martin KaFai Lau <martin.lau@linux.dev>,
- "David S . Miller" <davem@davemloft.net>
+Cc: Ross Lagerwall <ross.lagerwall@citrix.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>, Javi Merino <javi.merino@kernel.org>,
+ intel-wired-lan@lists.osuosl.org,
+ Jesse Brandeburg <jesse.brandeburg@intel.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 03/02, Song Yoong Siang wrote:
-> In current ping-pong design, xdp_hw_metadata will wait until the packet
-> transmition completely done, then only start to receive the next packet.
-> 
-> The current sleep interval is 10ms, which is unnecessary large. Typically,
-> a NIC does not need such a long time to transmit a packet. Furthermore,
-> during this 10ms sleep time, the app is unable to receive incoming packets.
-> 
-> Therefore, this commit reduce sleep interval to 10us, so that
-> xdp_hw_metadata able to support periodic packets with shorter interval.
-> 10us * 500 = 5ms should be enough for packet transmission and status
-> retrival.
-> 
-> Signed-off-by: Song Yoong Siang <yoong.siang.song@intel.com>
+From: Ross Lagerwall <ross.lagerwall@citrix.com>
 
-Acked-by: Stanislav Fomichev <sdf@google.com>
+When the PCI functions are created, Xen is informed about them and
+caches the number of MSI-X entries each function has.  However, the
+number of MSI-X entries is not set until after the hardware has been
+configured and the VFs have been started. This prevents
+PCI-passthrough from working because Xen rejects mapping MSI-X
+interrupts to domains because it thinks the MSI-X interrupts don't
+exist.
+
+Fix this by moving the call to pci_enable_sriov() later so that the
+number of MSI-X entries is set correctly in hardware by the time Xen
+reads it.
+
+Cc: Jesse Brandeburg <jesse.brandeburg@intel.com>
+Cc: Tony Nguyen <anthony.l.nguyen@intel.com>
+Signed-off-by: Ross Lagerwall <ross.lagerwall@citrix.com>
+Signed-off-by: Javi Merino <javi.merino@kernel.org>
+---
+
+I'm unsure about the error path if `pci_enable_sriov()` fails.  Do we
+have to undo what `ice_start_vfs()` has started?  I can see that
+`ice_start_vfs()` has a teardown at the end, so maybe we need the same
+code if `pci_enable_sriov()` fails?
+
+ drivers/net/ethernet/intel/ice/ice_sriov.c | 16 +++++++---------
+ 1 file changed, 7 insertions(+), 9 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/ice/ice_sriov.c b/drivers/net/ethernet/intel/ice/ice_sriov.c
+index a94a1c48c3de..8a9c8a2fe834 100644
+--- a/drivers/net/ethernet/intel/ice/ice_sriov.c
++++ b/drivers/net/ethernet/intel/ice/ice_sriov.c
+@@ -878,24 +878,20 @@ static int ice_ena_vfs(struct ice_pf *pf, u16 num_vfs)
+ 	set_bit(ICE_OICR_INTR_DIS, pf->state);
+ 	ice_flush(hw);
+ 
+-	ret = pci_enable_sriov(pf->pdev, num_vfs);
+-	if (ret)
+-		goto err_unroll_intr;
+-
+ 	mutex_lock(&pf->vfs.table_lock);
+ 
+ 	ret = ice_set_per_vf_res(pf, num_vfs);
+ 	if (ret) {
+ 		dev_err(dev, "Not enough resources for %d VFs, err %d. Try with fewer number of VFs\n",
+ 			num_vfs, ret);
+-		goto err_unroll_sriov;
++		goto err_unroll_intr;
+ 	}
+ 
+ 	ret = ice_create_vf_entries(pf, num_vfs);
+ 	if (ret) {
+ 		dev_err(dev, "Failed to allocate VF entries for %d VFs\n",
+ 			num_vfs);
+-		goto err_unroll_sriov;
++		goto err_unroll_intr;
+ 	}
+ 
+ 	ice_eswitch_reserve_cp_queues(pf, num_vfs);
+@@ -906,6 +902,10 @@ static int ice_ena_vfs(struct ice_pf *pf, u16 num_vfs)
+ 		goto err_unroll_vf_entries;
+ 	}
+ 
++	ret = pci_enable_sriov(pf->pdev, num_vfs);
++	if (ret)
++		goto err_unroll_vf_entries;
++
+ 	clear_bit(ICE_VF_DIS, pf->state);
+ 
+ 	/* rearm global interrupts */
+@@ -918,10 +918,8 @@ static int ice_ena_vfs(struct ice_pf *pf, u16 num_vfs)
+ 
+ err_unroll_vf_entries:
+ 	ice_free_vf_entries(pf);
+-err_unroll_sriov:
+-	mutex_unlock(&pf->vfs.table_lock);
+-	pci_disable_sriov(pf->pdev);
+ err_unroll_intr:
++	mutex_unlock(&pf->vfs.table_lock);
+ 	/* rearm interrupts here */
+ 	ice_irq_dynamic_ena(hw, NULL, NULL);
+ 	clear_bit(ICE_OICR_INTR_DIS, pf->state);
+-- 
+2.43.1
+
