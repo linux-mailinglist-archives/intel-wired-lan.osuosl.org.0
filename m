@@ -1,91 +1,77 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6B11A86EF70
-	for <lists+intel-wired-lan@lfdr.de>; Sat,  2 Mar 2024 09:10:13 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7C3FA86EF77
+	for <lists+intel-wired-lan@lfdr.de>; Sat,  2 Mar 2024 09:19:55 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id C8B7140912;
-	Sat,  2 Mar 2024 08:10:11 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id AC5ED41BC1;
+	Sat,  2 Mar 2024 08:19:53 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id B2xnURxAuSZC; Sat,  2 Mar 2024 08:10:10 +0000 (UTC)
+	with ESMTP id SOzG_W4sJJm0; Sat,  2 Mar 2024 08:19:52 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org D3BEE415B3
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 92D6F4095E
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1709367009;
-	bh=oK7wWpb3fHHWxgT77kEWbMePyhHvpm71AlvZxOSXiGU=;
-	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=oMMX0yLf4g6TKd61zI+JdPEb8jmedrqKLJqKcdH9wnpwpL0zPqOHVBDSLWsStOikH
-	 9Hzja7Ffif+8pb7nlYNDAVa0hRoNkaIReSwuYfmvipyNHoWNWBdKiQ+8MexQZpVhmo
-	 CDb+jEKUNqEiqPwTGbm5q5CGS5h/ASbpwU10CKjBDKhSUSknvEfEM1mhi+4TfkfTzl
-	 ARLlwSSYsTsTcgQI65O0hgO4HpscUFLMbgSPNphVEdTZGw5SGCY1cWLZhn/kkztNTE
-	 GryfDsV1jlqCJvXRC0PxBAtKISFcQV16MMkVvkT8muiJaPq/4EL2wwqWtdk+rmu2Fq
-	 +R4tGMdYJCZyA==
+	s=default; t=1709367592;
+	bh=Us5iaY3zrecGucIuG0sAon7Ztbk6qEAMXzpMkcxhXY4=;
+	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=51+qmUMwUJDpUJ5bSE+H56pIE28BSsTeOlhWnVpKnii4f1y8Q2khh+g4f5KvAuCLZ
+	 l99nHnYfOt2TCsHBswOlSs4TFaNCkSXq1+yx2MMN+7IvxF0pKgMv9glV0bJ3ok53TJ
+	 N7aoO8eD7s6WWCTnbX+4xm10wx2PlJnSZzWv1VI1wBsAAkvHS+PJZ1OmjcZVacpFnp
+	 OIe8zW4sAiew+5gAJHaXgnPkiKl4elscuxhYRaxDf7Iz2HfNezV1ngsK1fhyjVrlZu
+	 FIVYebZlL+fA2yD1FKjyZ1fW4qLmihMG3WGHjRwc/A/No16Q3ZkAfSJMzQESHJD9hr
+	 LwONJ+4G90nvA==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id D3BEE415B3;
-	Sat,  2 Mar 2024 08:10:09 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 92D6F4095E;
+	Sat,  2 Mar 2024 08:19:52 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id E83881BF28F
- for <intel-wired-lan@lists.osuosl.org>; Sat,  2 Mar 2024 08:10:06 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 7DB441BF28F
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  2 Mar 2024 08:19:50 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id D49EB40912
- for <intel-wired-lan@lists.osuosl.org>; Sat,  2 Mar 2024 08:10:06 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 6A52C40812
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  2 Mar 2024 08:19:50 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id PBqgs-Im_ANS for <intel-wired-lan@lists.osuosl.org>;
- Sat,  2 Mar 2024 08:10:05 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.10;
- helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 8D15941532
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 8D15941532
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.10])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 8D15941532
- for <intel-wired-lan@lists.osuosl.org>; Sat,  2 Mar 2024 08:10:05 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,11000"; a="15324247"
-X-IronPort-AV: E=Sophos;i="6.06,199,1705392000"; d="scan'208";a="15324247"
-Received: from orviesa007.jf.intel.com ([10.64.159.147])
- by fmvoesa104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 02 Mar 2024 00:10:04 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.06,199,1705392000"; 
-   d="scan'208";a="8806442"
-Received: from lkp-server02.sh.intel.com (HELO 3c78fa4d504c) ([10.239.97.151])
- by orviesa007.jf.intel.com with ESMTP; 02 Mar 2024 00:10:03 -0800
-Received: from kbuild by 3c78fa4d504c with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1rgKRV-000ERm-0U
- for intel-wired-lan@lists.osuosl.org; Sat, 02 Mar 2024 08:10:01 +0000
-Date: Sat, 02 Mar 2024 16:09:59 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <202403021656.NbFFfkx9-lkp@intel.com>
-User-Agent: s-nail v14.9.24
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1709367005; x=1740903005;
- h=date:from:to:subject:message-id;
- bh=xfvpgkSRuU7KZ3Xd0zT7STFFOqUGYkDbnWZLV7kIWMc=;
- b=T+Zwnotng1dkr5HlK7OqXFNFJ3Q9uPkwQ7vL31b4uJj1x+D5w63FbKTy
- kUWjC88jADB24NVWe8N74hCID2hyKfLbuaghx2j4E3BgKg5pzV/u12eLL
- eZRJs/hILIqL3KnK9M3iNGpC3NMB4Xn6TJs+DNaAdTmOTgWiIU3WWdjTF
- NH8VWE+7H7PYciuescdxHg+SxC5u9XI9lG6kH84QbWW7owskARBKCpAzf
- grJGUSug5ZXSukpLuXYIGsX6Ok1GLSfpeR66gCAbqc1D1MpPgDHNCT8IK
- SBglU/8K3Txv9T41qcU7QJqUmV1L3RPL8iuv7nw7CQJ19UMavtlSex9XY
- g==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=T+Zwnotn
-Subject: [Intel-wired-lan] [tnguy-next-queue:1GbE] BUILD SUCCESS
- f948feb2e6fb3b5cced38f9c5ec89bc1556015e1
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id lwpuHC-sPDQb for <intel-wired-lan@lists.osuosl.org>;
+ Sat,  2 Mar 2024 08:19:49 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=141.14.17.11;
+ helo=mx3.molgen.mpg.de; envelope-from=pmenzel@molgen.mpg.de;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org EFA0D4080F
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org EFA0D4080F
+Received: from mx3.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id EFA0D4080F
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  2 Mar 2024 08:19:47 +0000 (UTC)
+Received: from [192.168.0.224] (ip5f5aeb37.dynamic.kabel-deutschland.de
+ [95.90.235.55])
+ (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested) (Authenticated sender: pmenzel)
+ by mx.molgen.mpg.de (Postfix) with ESMTPSA id BAD2661E5FE05;
+ Sat,  2 Mar 2024 09:19:06 +0100 (CET)
+Message-ID: <51b6c48b-a33e-46cd-9b00-5568ccc529ca@molgen.mpg.de>
+Date: Sat, 2 Mar 2024 09:19:05 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+To: Yifei Liu <yifei.l.liu@oracle.com>
+References: <20240301235837.3741422-1-yifei.l.liu@oracle.com>
+Content-Language: en-US
+From: Paul Menzel <pmenzel@molgen.mpg.de>
+In-Reply-To: <20240301235837.3741422-1-yifei.l.liu@oracle.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dmarc=none (p=none dis=none)
+ header.from=molgen.mpg.de
+Subject: Re: [Intel-wired-lan] [PATCH Linux-6.8-rc5 1/1] ixgbevf: start
+ negotiate with api version 1.4
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,161 +84,92 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: lihong.yang@intel.com, jack.vogel@oracle.com,
+ intel-wired-lan@lists.osuosl.org, jesse.brandeburg@intel.com,
+ linux-kernel@vger.kernel.org, edumazet@google.com, anthony.l.nguyen@intel.com,
+ harshit.m.mogalapalli@oracle.com, netdev@vger.kernel.org, kuba@kernel.org,
+ pabeni@redhat.com, ramanan.govindarajan@oracle.com, davem@davemloft.net
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git 1GbE
-branch HEAD: f948feb2e6fb3b5cced38f9c5ec89bc1556015e1  e1000e: Minor flow correction in e1000_shutdown function
+Dear Yifei,
 
-elapsed time: 733m
 
-configs tested: 139
-configs skipped: 3
+Thank you very much for your patch.
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+Am 02.03.24 um 00:58 schrieb Yifei Liu:
+> ixgbevf updates to api version to 1.5 via
+> 	commit 339f28964147d ("ixgbevf: Add support for new mailbox
+> 	communication between PF and VF")
+> while the pf side is not updated to 1.5 properly. It will lead to a
+> failure of negotiation of api version 1.5 This commit will enforce
+> the negotiation to start with 1.4 which is working fine.
+> 
+> Normally the pf and vf side should be updated together. Example:
+> 	commit adef9a26d6c39 ("ixgbevf: add defines for IPsec offload request")
+> 	commit 7269824046376 ("ixgbe: add VF IPsec offload request message handling")
 
-tested configs:
-alpha                             allnoconfig   gcc  
-alpha                            allyesconfig   gcc  
-alpha                               defconfig   gcc  
-arc                              allmodconfig   gcc  
-arc                               allnoconfig   gcc  
-arc                              allyesconfig   gcc  
-arc                                 defconfig   gcc  
-arc                   randconfig-001-20240302   gcc  
-arc                   randconfig-002-20240302   gcc  
-arm                              allmodconfig   gcc  
-arm                               allnoconfig   clang
-arm                              allyesconfig   gcc  
-arm                                 defconfig   clang
-arm                   randconfig-001-20240302   gcc  
-arm                   randconfig-002-20240302   gcc  
-arm                   randconfig-003-20240302   gcc  
-arm                   randconfig-004-20240302   clang
-arm64                            allmodconfig   clang
-arm64                             allnoconfig   gcc  
-arm64                               defconfig   gcc  
-arm64                 randconfig-001-20240302   gcc  
-arm64                 randconfig-002-20240302   gcc  
-arm64                 randconfig-003-20240302   clang
-arm64                 randconfig-004-20240302   gcc  
-csky                             allmodconfig   gcc  
-csky                              allnoconfig   gcc  
-csky                             allyesconfig   gcc  
-csky                                defconfig   gcc  
-csky                  randconfig-001-20240302   gcc  
-csky                  randconfig-002-20240302   gcc  
-hexagon                          allmodconfig   clang
-hexagon                           allnoconfig   clang
-hexagon                          allyesconfig   clang
-hexagon                             defconfig   clang
-hexagon               randconfig-001-20240302   clang
-hexagon               randconfig-002-20240302   clang
-i386                             allmodconfig   gcc  
-i386                              allnoconfig   gcc  
-i386                             allyesconfig   gcc  
-i386         buildonly-randconfig-001-20240302   clang
-i386         buildonly-randconfig-002-20240302   gcc  
-i386         buildonly-randconfig-003-20240302   gcc  
-i386         buildonly-randconfig-004-20240302   clang
-i386         buildonly-randconfig-005-20240302   gcc  
-i386         buildonly-randconfig-006-20240302   gcc  
-i386                                defconfig   clang
-i386                  randconfig-001-20240302   clang
-i386                  randconfig-002-20240302   gcc  
-i386                  randconfig-003-20240302   clang
-i386                  randconfig-004-20240302   gcc  
-i386                  randconfig-005-20240302   gcc  
-i386                  randconfig-006-20240302   clang
-i386                  randconfig-011-20240302   gcc  
-i386                  randconfig-012-20240302   gcc  
-i386                  randconfig-013-20240302   gcc  
-i386                  randconfig-014-20240302   gcc  
-i386                  randconfig-015-20240302   clang
-i386                  randconfig-016-20240302   gcc  
-loongarch                        allmodconfig   gcc  
-loongarch                         allnoconfig   gcc  
-loongarch                           defconfig   gcc  
-loongarch             randconfig-001-20240302   gcc  
-loongarch             randconfig-002-20240302   gcc  
-m68k                             allmodconfig   gcc  
-m68k                              allnoconfig   gcc  
-m68k                             allyesconfig   gcc  
-m68k                                defconfig   gcc  
-microblaze                       allmodconfig   gcc  
-microblaze                        allnoconfig   gcc  
-microblaze                       allyesconfig   gcc  
-microblaze                          defconfig   gcc  
-mips                              allnoconfig   gcc  
-mips                             allyesconfig   gcc  
-nios2                            allmodconfig   gcc  
-nios2                             allnoconfig   gcc  
-nios2                            allyesconfig   gcc  
-nios2                               defconfig   gcc  
-nios2                 randconfig-001-20240302   gcc  
-nios2                 randconfig-002-20240302   gcc  
-openrisc                          allnoconfig   gcc  
-openrisc                         allyesconfig   gcc  
-openrisc                            defconfig   gcc  
-parisc                           allmodconfig   gcc  
-parisc                            allnoconfig   gcc  
-parisc                           allyesconfig   gcc  
-parisc                              defconfig   gcc  
-parisc                randconfig-001-20240302   gcc  
-parisc                randconfig-002-20240302   gcc  
-parisc64                            defconfig   gcc  
-powerpc                          allmodconfig   gcc  
-powerpc                           allnoconfig   gcc  
-powerpc                          allyesconfig   clang
-powerpc               randconfig-001-20240302   clang
-powerpc               randconfig-002-20240302   clang
-powerpc               randconfig-003-20240302   gcc  
-powerpc64             randconfig-001-20240302   clang
-powerpc64             randconfig-002-20240302   gcc  
-powerpc64             randconfig-003-20240302   gcc  
-riscv                            allmodconfig   clang
-riscv                             allnoconfig   gcc  
-riscv                            allyesconfig   clang
-riscv                               defconfig   clang
-riscv                 randconfig-001-20240302   gcc  
-riscv                 randconfig-002-20240302   gcc  
-s390                             allmodconfig   clang
-s390                              allnoconfig   clang
-s390                             allyesconfig   gcc  
-s390                                defconfig   clang
-s390                  randconfig-001-20240302   gcc  
-s390                  randconfig-002-20240302   clang
-sh                               allmodconfig   gcc  
-sh                                allnoconfig   gcc  
-sh                               allyesconfig   gcc  
-sh                                  defconfig   gcc  
-sh                    randconfig-001-20240302   gcc  
-sh                    randconfig-002-20240302   gcc  
-sparc                            allmodconfig   gcc  
-sparc                             allnoconfig   gcc  
-sparc                               defconfig   gcc  
-sparc64                          allmodconfig   gcc  
-sparc64                          allyesconfig   gcc  
-sparc64                             defconfig   gcc  
-sparc64               randconfig-001-20240302   gcc  
-sparc64               randconfig-002-20240302   gcc  
-um                               allmodconfig   clang
-um                                allnoconfig   clang
-um                               allyesconfig   gcc  
-um                                  defconfig   clang
-um                             i386_defconfig   gcc  
-um                    randconfig-001-20240302   gcc  
-um                    randconfig-002-20240302   clang
-um                           x86_64_defconfig   clang
-x86_64                            allnoconfig   clang
-x86_64                           allyesconfig   clang
-x86_64                              defconfig   gcc  
-x86_64                          rhel-8.3-rust   clang
-xtensa                            allnoconfig   gcc  
-xtensa                randconfig-001-20240302   gcc  
-xtensa                randconfig-002-20240302   gcc  
+Why can’t the PF side not be updated to version 1.5 too?
 
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+If you don’t mind, I’d format the commit message like below.
+
+Commit 339f28964147d ("ixgbevf: Add support for new mailbox communication
+between PF and VF") updates the driver ixgbevf to API version 1.5 while the
+pf side is not updated to 1.5 properly. This leads to a negotiation failure
+of api version 1.5. So, enforce the negotiation to start with 1.4 which is
+working fine.
+
+Normally the pf and vf side should be updated together. Example:
+
+1.  commit adef9a26d6c39 ("ixgbevf: add defines for IPsec offload request")
+2.  commit 7269824046376 ("ixgbe: add VF IPsec offload request message 
+handling")
+
+> Reported-by: Manjunatha Gowda <manjunatha.gowda@oracle.com>
+> Signed-off-by: Yifei Liu <yifei.l.liu@oracle.com>
+> Reviewed-by: Jack Vogel <jack.vogel@oracle.com>
+
+Please add a Fixes: tag.
+
+Fixes: 39f28964147d ("ixgbevf: Add support for new mailbox communication 
+between PF and VF")
+
+Unfortunately, I am unable to find this commit hash. What archive/tree 
+is it from?
+
+> ---
+>   drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c | 6 ++++++
+>   1 file changed, 6 insertions(+)
+> 
+> diff --git a/drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c b/drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c
+> index a44e4bd56142..a1b9b789d1d4 100644
+> --- a/drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c
+> +++ b/drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c
+> @@ -2286,6 +2286,12 @@ static void ixgbevf_negotiate_api(struct ixgbevf_adapter *adapter)
+>   
+>   	spin_lock_bh(&adapter->mbx_lock);
+>   
+> +	/* There is no corresponding drivers in pf for
+> +	 * api version 1.5. Try to negociate with version
+
+negotiate
+
+> +	 * 1.5 will always fail. Start to negociate with
+> +	 * version 1.4.
+
+Could you please use the fully allowed line length, so less lines are used?
+
+> +	 */
+> +	idx = 1; >   	while (api[idx] != ixgbe_mbox_api_unknown) {
+>   		err = hw->mac.ops.negotiate_api_version(hw, api[idx]);
+>   		if (!err)
+
+Where is `idx` set before?
+
+Unrelated to the problem at hand, but enums or macros should be used for 
+the API version.
+
+
+Kind regards,
+
+Paul
