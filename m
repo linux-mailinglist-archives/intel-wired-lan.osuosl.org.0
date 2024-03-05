@@ -1,76 +1,94 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id BCF528722E8
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  5 Mar 2024 16:36:41 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id C8ABC87253E
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  5 Mar 2024 18:09:24 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id CFE3660E41;
-	Tue,  5 Mar 2024 15:36:39 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 7F1AE417AB;
+	Tue,  5 Mar 2024 17:09:23 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ZnVtjyjocJZb; Tue,  5 Mar 2024 15:36:38 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id T6Z_DQa_UXmG; Tue,  5 Mar 2024 17:09:22 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A921660E47
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 8245B417B5
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1709652998;
-	bh=giMQIRF3XlJXlwm6r0Pq2U+VMIyq9uo9BFMK/YB+Cl8=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=QDkbMHzNkTC182N6FuLK8bACe42cT1lR7AXbqA3JNoGJ7wdULQm29D3ciVyprvU7w
-	 SlJ+ay9nqPuPXg78xTGghuc9SzEjM6BmIeucunIcVGUlw8X/lE4yOMS779r3qKIug0
-	 MslML088sQw0Jtx+lc2CsJP5kE916Wb1doYKx/Ws4kL4rjF/ATzkvIb2fWf9G4hYmX
-	 CLHNPVLxonBV7ghw7V19o8/XSIL7BpYpxlFgCzAu93dDX7OrOrRiIq+73g4hDYam2G
-	 U5jgMGsury/Fnlp3zQPln4gH8omG86xZfX50FdJsQKxtv0UA+8IPYnE7jNNWuEzo0k
-	 GnPT2Vt98H+3g==
+	s=default; t=1709658562;
+	bh=LL7rvlFR072ZAiMQNUSu97Sy5tKGaUEfkrSLhQ05gdE=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=Z3Z2/xPnJbUzXdqs8lzwc6kYr6tmGkVeYj2QCmNxU7HvC+JcNSAuD8/jlqKEi0wUA
+	 uEsZRAqH3uNzd5C9AZn50RTktEaEzLwf9/ViSoysFh21dHcBG3Z25MBwfGKofFQ5Fj
+	 GfwAdvpr+AGjYoLsPu6qH6+liSHfnQ1cSuZiyMiZxFxVRfFB6jcRKELu6PxVBgE5ME
+	 dkwLJpV8/IGleVsMi9+EdYExmyDz6LiaoOYnMBFW0GlnlmnEbwoyMaWGhvVXTKXoKN
+	 Q4s5abZyt+D32ekLGP3ASala0LRRJfste1z4TnR0eLfiJw+etYZZ/H0PHp23IxCs4U
+	 c/+cv5+UdAXIQ==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id A921660E47;
-	Tue,  5 Mar 2024 15:36:38 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 8245B417B5;
+	Tue,  5 Mar 2024 17:09:22 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 745851BF2C9
- for <intel-wired-lan@lists.osuosl.org>; Tue,  5 Mar 2024 15:36:37 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 859D01BF3A4
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  5 Mar 2024 17:09:20 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 6C9E060E3B
- for <intel-wired-lan@lists.osuosl.org>; Tue,  5 Mar 2024 15:36:37 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 7EEF141790
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  5 Mar 2024 17:09:20 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 3TsUu8wgdNNl for <intel-wired-lan@lists.osuosl.org>;
- Tue,  5 Mar 2024 15:36:36 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=141.14.17.11;
- helo=mx3.molgen.mpg.de; envelope-from=pmenzel@molgen.mpg.de;
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id vOAGUZ2nBoyN for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  5 Mar 2024 17:09:19 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.17;
+ helo=mgamail.intel.com; envelope-from=przemyslaw.kitszel@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org C9F0F60E35
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C9F0F60E35
-Received: from mx3.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
- by smtp3.osuosl.org (Postfix) with ESMTPS id C9F0F60E35
- for <intel-wired-lan@lists.osuosl.org>; Tue,  5 Mar 2024 15:36:34 +0000 (UTC)
-Received: from [141.14.220.34] (g34.guest.molgen.mpg.de [141.14.220.34])
- (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested) (Authenticated sender: pmenzel)
- by mx.molgen.mpg.de (Postfix) with ESMTPSA id D6E2A61E5FE38;
- Tue,  5 Mar 2024 16:35:48 +0100 (CET)
-Message-ID: <14cf3adb-7915-424e-b5ad-2c100cec183e@molgen.mpg.de>
-Date: Tue, 5 Mar 2024 16:35:48 +0100
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 6F0A540A3E
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 6F0A540A3E
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.17])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 6F0A540A3E
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  5 Mar 2024 17:09:19 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,11003"; a="4085254"
+X-IronPort-AV: E=Sophos;i="6.06,206,1705392000"; 
+   d="scan'208";a="4085254"
+Received: from orviesa002.jf.intel.com ([10.64.159.142])
+ by fmvoesa111.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 05 Mar 2024 09:08:37 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.06,205,1705392000"; d="scan'208";a="40324709"
+Received: from irvmail002.ir.intel.com ([10.43.11.120])
+ by orviesa002.jf.intel.com with ESMTP; 05 Mar 2024 09:08:34 -0800
+Received: from pkitszel-desk.tendawifi.com (unknown [10.254.153.213])
+ by irvmail002.ir.intel.com (Postfix) with ESMTP id 71F58397D2;
+ Tue,  5 Mar 2024 16:03:12 +0000 (GMT)
+From: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Tue,  5 Mar 2024 17:02:02 +0100
+Message-ID: <20240305160252.68708-1-przemyslaw.kitszel@intel.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Content-Language: en-US
-To: Karthik Sundaravel <ksundara@redhat.com>
-References: <20240305152641.53489-1-ksundara@redhat.com>
-From: Paul Menzel <pmenzel@molgen.mpg.de>
-In-Reply-To: <20240305152641.53489-1-ksundara@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=molgen.mpg.de
-Subject: Re: [Intel-wired-lan] [PATCH v5] ice: Add get/set hw address for
- VFs using devlink commands
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1709658559; x=1741194559;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=1Ttryv65xjQQ9A5IdThtYsIeWh9vhLYLdU8wVPWkY1s=;
+ b=RhX/3hFuDS0d3yF9bpbp4fY/nVQBHPGfkl+juxCS52FrWL7k3xQgmTs2
+ qU+qQgv1zqRAanY7li1j3EUtrPHXhffcyDa0T8d08k7jmWZND8zqFVSCp
+ 7Ant04C7POEMQOLQkiKbXFgiih+gRITC3+NLgHfYm3kbxjPeKXZHCtjMu
+ Pi7GtrHnyPgcQmK1IepilyknyEfDH6RaR1MmbtLDmQ8aYxY0QWdvsJ0j9
+ shx6jnCbMhWF+5IMxVhfNLqYTGXcqwYgDxSSRQpVL57V1KJkt4LRTRD2i
+ Fo2P6+aJm7MrPJHLCZSG9XlNKO6HaVxx8tSdliSutY5j3I1WAsMLV1W8o
+ w==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=intel.com
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=RhX/3hFu
+Subject: [Intel-wired-lan] [PATCH iwl-net] ixgbe: avoid sleeping allocation
+ in ixgbe_ipsec_vf_add_sa()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,251 +101,75 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: vchundur@redhat.com, aharivel@redhat.com,
- michal.swiatkowski@linux.intel.com, jiri@resnulli.us, cfontain@redhat.com,
- intel-wired-lan@lists.osuosl.org, linux-kernel@vger.kernel.org,
- edumazet@google.com, anthony.l.nguyen@intel.com, netdev@vger.kernel.org,
- kuba@kernel.org, rjarry@redhat.com, pabeni@redhat.com, davem@davemloft.net
+Cc: netdev@vger.kernel.org, lukasz.czapnik@intel.com,
+ Michal Kubiak <michal.kubiak@intel.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Dan Carpenter <dan.carpenter@linaro.org>,
+ Shannon Nelson <shannon.nelson@amd.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Dear Karthik,
+Change kzalloc() flags used in ixgbe_ipsec_vf_add_sa() to GFP_ATOMIC, to
+avoid sleeping in IRQ context.
 
+Dan Carpenter, with the help of Smatch, has found following issue:
+The patch eda0333ac293: "ixgbe: add VF IPsec management" from Aug 13,
+2018 (linux-next), leads to the following Smatch static checker
+warning: drivers/net/ethernet/intel/ixgbe/ixgbe_ipsec.c:917 ixgbe_ipsec_vf_add_sa()
+	warn: sleeping in IRQ context
 
-Thank you for your patch.
+The call tree that Smatch is worried about is:
+ixgbe_msix_other() <- IRQ handler
+-> ixgbe_msg_task()
+   -> ixgbe_rcv_msg_from_vf()
+      -> ixgbe_ipsec_vf_add_sa()
 
-Am 05.03.24 um 16:26 schrieb Karthik Sundaravel:
-> Changing the MAC address of the VFs are not available
+Reported-by: Dan Carpenter <dan.carpenter@linaro.org>
+Link: https://lore.kernel.org/intel-wired-lan/db31a0b0-4d9f-4e6b-aed8-88266eb5665c@moroto.mountain
+Reviewed-by: Michal Kubiak <michal.kubiak@intel.com>
+Signed-off-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+---
+ drivers/net/ethernet/intel/ixgbe/ixgbe_ipsec.c | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
 
-Maybe:
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_ipsec.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_ipsec.c
+index 13a6fca31004..866024f2b9ee 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_ipsec.c
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_ipsec.c
+@@ -914,7 +914,13 @@ int ixgbe_ipsec_vf_add_sa(struct ixgbe_adapter *adapter, u32 *msgbuf, u32 vf)
+ 		goto err_out;
+ 	}
+ 
+-	xs = kzalloc(sizeof(*xs), GFP_KERNEL);
++	algo = xfrm_aead_get_byname(aes_gcm_name, IXGBE_IPSEC_AUTH_BITS, 1);
++	if (unlikely(!algo)) {
++		err = -ENOENT;
++		goto err_out;
++	}
++
++	xs = kzalloc(sizeof(*xs), GFP_ATOMIC);
+ 	if (unlikely(!xs)) {
+ 		err = -ENOMEM;
+ 		goto err_out;
+@@ -930,14 +936,8 @@ int ixgbe_ipsec_vf_add_sa(struct ixgbe_adapter *adapter, u32 *msgbuf, u32 vf)
+ 		memcpy(&xs->id.daddr.a4, sam->addr, sizeof(xs->id.daddr.a4));
+ 	xs->xso.dev = adapter->netdev;
+ 
+-	algo = xfrm_aead_get_byname(aes_gcm_name, IXGBE_IPSEC_AUTH_BITS, 1);
+-	if (unlikely(!algo)) {
+-		err = -ENOENT;
+-		goto err_xs;
+-	}
+-
+ 	aead_len = sizeof(*xs->aead) + IXGBE_IPSEC_KEY_BITS / 8;
+-	xs->aead = kzalloc(aead_len, GFP_KERNEL);
++	xs->aead = kzalloc(aead_len, GFP_ATOMIC);
+ 	if (unlikely(!xs->aead)) {
+ 		err = -ENOMEM;
+ 		goto err_xs;
 
-… is currently unsupported …
+base-commit: 9b23fceb4158a3636ce4a2bda28ab03dcfa6a26f
+-- 
+2.43.0
 
-or
-
-… is currently impossible …
-
-> via devlink. Add the function handlers to set and get
-> the HW address for the VFs.
-
-This fits into two lines (with a line length of 75 characters)
-
-> Signed-off-by: Karthik Sundaravel <ksundara@redhat.com>
-> ---
-
-Could you please add a change-log for each patch iteration?
-
->   drivers/net/ethernet/intel/ice/ice_devlink.c | 78 +++++++++++++++++++-
->   drivers/net/ethernet/intel/ice/ice_sriov.c   | 62 ++++++++++++++++
->   drivers/net/ethernet/intel/ice/ice_sriov.h   |  8 ++
->   3 files changed, 147 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/net/ethernet/intel/ice/ice_devlink.c b/drivers/net/ethernet/intel/ice/ice_devlink.c
-> index 80dc5445b50d..39d4d79ac731 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_devlink.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_devlink.c
-> @@ -1576,6 +1576,81 @@ void ice_devlink_destroy_pf_port(struct ice_pf *pf)
->   	devlink_port_unregister(&pf->devlink_port);
->   }
->   
-> +/**
-> + * ice_devlink_port_get_vf_fn_mac - .port_fn_hw_addr_get devlink handler
-> + * @port: devlink port structure
-> + * @hw_addr: MAC address of the port
-> + * @hw_addr_len: length of MAC address
-> + * @extack: extended netdev ack structure
-> + *
-> + * Callback for the devlink .port_fn_hw_addr_get operation
-> + * Return: zero on success or an error code on failure.
-> + */
-> +
-> +static int ice_devlink_port_get_vf_fn_mac(struct devlink_port *port,
-> +					  u8 *hw_addr, int *hw_addr_len,
-> +					  struct netlink_ext_ack *extack)
-> +{
-> +	struct devlink_port_attrs *attrs = &port->attrs;
-> +	struct devlink_port_pci_vf_attrs *pci_vf;
-> +	struct devlink *devlink = port->devlink;
-> +	struct ice_pf *pf;
-> +	struct ice_vf *vf;
-> +	int vf_id;
-
-The signature of `ice_get_vf_by_id()` uses u16 as type.
-
-> +
-> +	pf = devlink_priv(devlink);
-> +	pci_vf = &attrs->pci_vf;
-> +	vf_id = pci_vf->vf;
-> +
-> +	vf = ice_get_vf_by_id(pf, vf_id);
-> +	if (!vf) {
-> +		NL_SET_ERR_MSG_MOD(extack, "Unable to get the vf");
-
-Maybe also add the vf_id to theh error message?
-
-> +		return -EINVAL;
-> +	}
-> +	ether_addr_copy(hw_addr, vf->dev_lan_addr);
-> +	*hw_addr_len = ETH_ALEN;
-> +
-> +	ice_put_vf(vf);
-> +	return 0;
-> +}
-> +
-> +/**
-> + * ice_devlink_port_set_vf_fn_mac - .port_fn_hw_addr_set devlink handler
-> + * @port: devlink port structure
-> + * @hw_addr: MAC address of the port
-> + * @hw_addr_len: length of MAC address
-> + * @extack: extended netdev ack structure
-> + *
-> + * Callback for the devlink .port_fn_hw_addr_set operation
-> + * Return: zero on success or an error code on failure.
-> + */
-> +static int ice_devlink_port_set_vf_fn_mac(struct devlink_port *port,
-> +					  const u8 *hw_addr,
-> +					  int hw_addr_len,
-> +					  struct netlink_ext_ack *extack)
-> +
-> +{
-> +	struct devlink_port_attrs *attrs = &port->attrs;
-> +	struct devlink_port_pci_vf_attrs *pci_vf;
-> +	struct devlink *devlink = port->devlink;
-> +	struct ice_pf *pf;
-> +	u8 mac[ETH_ALEN];
-> +	int vf_id;
-> +
-> +	pf = devlink_priv(devlink);
-> +	pci_vf = &attrs->pci_vf;
-> +	vf_id = pci_vf->vf;
-> +
-> +	ether_addr_copy(mac, hw_addr);
-> +
-> +	return ice_set_vf_fn_mac(pf, vf_id, mac);
-> +}
-> +
-> +static const struct devlink_port_ops ice_devlink_vf_port_ops = {
-> +	.port_fn_hw_addr_get = ice_devlink_port_get_vf_fn_mac,
-> +	.port_fn_hw_addr_set = ice_devlink_port_set_vf_fn_mac,
-> +};
-> +
->   /**
->    * ice_devlink_create_vf_port - Create a devlink port for this VF
->    * @vf: the VF to create a port for
-> @@ -1611,7 +1686,8 @@ int ice_devlink_create_vf_port(struct ice_vf *vf)
->   	devlink_port_attrs_set(devlink_port, &attrs);
->   	devlink = priv_to_devlink(pf);
->   
-> -	err = devlink_port_register(devlink, devlink_port, vsi->idx);
-> +	err = devlink_port_register_with_ops(devlink, devlink_port,
-> +					     vsi->idx, &ice_devlink_vf_port_ops);
->   	if (err) {
->   		dev_err(dev, "Failed to create devlink port for VF %d, error %d\n",
->   			vf->vf_id, err);
-> diff --git a/drivers/net/ethernet/intel/ice/ice_sriov.c b/drivers/net/ethernet/intel/ice/ice_sriov.c
-> index 31314e7540f8..73cf1d9e9daa 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_sriov.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_sriov.c
-> @@ -1216,6 +1216,68 @@ ice_get_vf_cfg(struct net_device *netdev, int vf_id, struct ifla_vf_info *ivi)
->   	return ret;
->   }
->   
-> +/**
-> + * ice_set_vf_fn_mac
-> + * @pf: PF to be configure
-> + * @vf_id: VF identifier
-> + * @mac: MAC address
-> + *
-> + * program VF MAC address
-> + */
-> +int ice_set_vf_fn_mac(struct ice_pf *pf, int vf_id, u8 *mac)
-
-Also use u16 for `vf_id`?
-
-> +{
-> +	struct device *dev;
-> +	struct ice_vf *vf;
-> +	int ret;
-> +
-> +	dev = ice_pf_to_dev(pf);
-> +	if (is_multicast_ether_addr(mac)) {
-> +		dev_err(dev, "%pM not a valid unicast address\n", mac);
-> +		return -EINVAL;
-> +	}
-> +
-> +	vf = ice_get_vf_by_id(pf, vf_id);
-> +	if (!vf)
-> +		return -EINVAL;
-> +
-> +	/* nothing left to do, unicast MAC already set */
-> +	if (ether_addr_equal(vf->dev_lan_addr, mac) &&
-> +	    ether_addr_equal(vf->hw_lan_addr, mac)) {
-> +		ret = 0;
-> +		goto out_put_vf;
-> +	}
-> +
-> +	ret = ice_check_vf_ready_for_cfg(vf);
-> +	if (ret)
-> +		goto out_put_vf;
-> +
-> +	mutex_lock(&vf->cfg_lock);
-> +
-> +	/* VF is notified of its new MAC via the PF's response to the
-> +	 * VIRTCHNL_OP_GET_VF_RESOURCES message after the VF has been reset
-> +	 */
-> +	ether_addr_copy(vf->dev_lan_addr, mac);
-> +	ether_addr_copy(vf->hw_lan_addr, mac);
-> +	if (is_zero_ether_addr(mac)) {
-> +		/* VF will send VIRTCHNL_OP_ADD_ETH_ADDR message with its MAC */
-> +		vf->pf_set_mac = false;
-> +		dev_info(dev, "Removing MAC on VF %d. VF driver will be reinitialized\n",
-> +			 vf->vf_id);
-> +	} else {
-> +		/* PF will add MAC rule for the VF */
-> +		vf->pf_set_mac = true;
-> +		dev_info(dev, "Setting MAC %pM on VF %d. VF driver will be reinitialized\n",
-> +			 mac, vf_id);
-> +	}
-> +
-> +	ice_reset_vf(vf, ICE_VF_RESET_NOTIFY);
-> +	mutex_unlock(&vf->cfg_lock);
-> +
-> +out_put_vf:
-> +	ice_put_vf(vf);
-> +	return ret;
-> +}
-> +
->   /**
->    * ice_set_vf_mac
->    * @netdev: network interface device structure
-> diff --git a/drivers/net/ethernet/intel/ice/ice_sriov.h b/drivers/net/ethernet/intel/ice/ice_sriov.h
-> index 346cb2666f3a..a03be184a806 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_sriov.h
-> +++ b/drivers/net/ethernet/intel/ice/ice_sriov.h
-> @@ -28,6 +28,7 @@
->   #ifdef CONFIG_PCI_IOV
->   void ice_process_vflr_event(struct ice_pf *pf);
->   int ice_sriov_configure(struct pci_dev *pdev, int num_vfs);
-> +int ice_set_vf_fn_mac(struct ice_pf *pf, int vf_id, u8 *mac);
->   int ice_set_vf_mac(struct net_device *netdev, int vf_id, u8 *mac);
->   int
->   ice_get_vf_cfg(struct net_device *netdev, int vf_id, struct ifla_vf_info *ivi);
-> @@ -76,6 +77,13 @@ ice_sriov_configure(struct pci_dev __always_unused *pdev,
->   	return -EOPNOTSUPP;
->   }
->   
-> +static inline int
-> +ice_set_vf_fn_mac(struct ice_pf __always_unused *pf,
-> +		  int __always_unused vf_id, u8 __always_unused *mac)
-> +{
-> +	return -EOPNOTSUPP;
-> +}
-> +
->   static inline int
->   ice_set_vf_mac(struct net_device __always_unused *netdev,
->   	       int __always_unused vf_id, u8 __always_unused *mac)
-
-
-Kind regards,
-
-Paul
