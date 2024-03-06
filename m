@@ -1,94 +1,126 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9C445872D02
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  6 Mar 2024 03:50:50 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 52E94415BE;
-	Wed,  6 Mar 2024 02:50:49 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
-	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id dUt7WL7ehIRQ; Wed,  6 Mar 2024 02:50:46 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A11F2413D3
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1709693446;
-	bh=oZqea570RvjuZtJKgvdFuxY9tsHPEGLO1lLrsgxjFE4=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=DhMaIMKvhUmBvqOavG0MltS06bIis2NN2qlyqh+9Wziffh1RVtJuKQ8a9dNxIzG38
-	 dvjj31cMpUEQBwHIkikZYUtkQw2TdSZy4cYzpxr8KqzMQG/Lr9V8VV1kj1itMrf1FE
-	 5/HlcUON8ZwSeC9y8YwMp+k+IFT0sXvJnS3YMrv9FNttTelqLZvsIp+9o1jlU6G7Vp
-	 r7HZutQKf4CSnzTFlxWPuyiPs/xtmBCnmBMKv5wmvScsJGsw5KmvVttaMFnqEOvPMu
-	 ZYBrqIsnRKo2hY18ZTeAC3u2lpdora2p+/ZkW5eGvUOTH1cjxl8Mocd6r+hdIgNAft
-	 y4u0Xw1Q14iQA==
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id A11F2413D3;
-	Wed,  6 Mar 2024 02:50:46 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id EE5941BF3BB
- for <intel-wired-lan@lists.osuosl.org>; Wed,  6 Mar 2024 02:50:40 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 50583872D8C
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  6 Mar 2024 04:33:12 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id DB121608C4
- for <intel-wired-lan@lists.osuosl.org>; Wed,  6 Mar 2024 02:50:40 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id D858060ECE;
+	Wed,  6 Mar 2024 03:33:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id nb-AfRP7HkcZ for <intel-wired-lan@lists.osuosl.org>;
- Wed,  6 Mar 2024 02:50:38 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.10;
- helo=mgamail.intel.com; envelope-from=jesse.brandeburg@intel.com;
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id fGPkL1aaz7ZY; Wed,  6 Mar 2024 03:33:10 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 182E860EB6
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1709695990;
+	bh=hA5anOLDf9hOII6ZL+mpHqZgQ3rs+L/N8KnCrTRwBMY=;
+	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=LEp0jQ52E2uCwQpoHEy+KZ7EHORT5KMsKFVZrLGDmA9kBGYYD8PrGeIhEhg3O9RhD
+	 byBb76Jc1gQGFWXjLs8pPRejy0xGDEHzzLVZH0zDKOijUFycMeHtdX5X1QehXeNNBj
+	 GeQMa80h2LnVwslPIOJeDDD6yMyPDH/sJ3aE+nmyHtcOcCm5JbWGdQjfTlXxFAS0bm
+	 U/YmOulwkI4TqgUbeAaLwuSJ9cX9LY9SN2u37NrB5NbiJY9+fj+ZhSDBJjZ/Phk+fQ
+	 9zIng1buW1uZLEjTjOBudON8iRiLFs+vMN9hrIIgROEjjfh6vr+6+xOdApSxCEM9Hy
+	 w7mbLLDFtVnOw==
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp3.osuosl.org (Postfix) with ESMTP id 182E860EB6;
+	Wed,  6 Mar 2024 03:33:10 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id E54E91BF215
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  6 Mar 2024 03:33:07 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp1.osuosl.org (Postfix) with ESMTP id CD124822BA
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  6 Mar 2024 03:33:07 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id EKcfo0DazLGn for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  6 Mar 2024 03:33:07 +0000 (UTC)
+X-Greylist: delayed 430 seconds by postgrey-1.37 at util1.osuosl.org;
+ Wed, 06 Mar 2024 03:33:06 UTC
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org D5C3382266
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D5C3382266
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=44.202.169.39;
+ helo=omta040.useast.a.cloudfilter.net; envelope-from=gustavo@embeddedor.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 2B54160A44
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2B54160A44
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.10])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 2B54160A44
- for <intel-wired-lan@lists.osuosl.org>; Wed,  6 Mar 2024 02:50:38 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,11004"; a="21741392"
-X-IronPort-AV: E=Sophos;i="6.06,207,1705392000"; d="scan'208";a="21741392"
-Received: from fmviesa005.fm.intel.com ([10.60.135.145])
- by orvoesa102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 05 Mar 2024 18:50:32 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.06,207,1705392000"; d="scan'208";a="14088542"
-Received: from jbrandeb-coyote30.jf.intel.com ([10.166.29.19])
- by fmviesa005-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 05 Mar 2024 18:50:31 -0800
-From: Jesse Brandeburg <jesse.brandeburg@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Tue,  5 Mar 2024 18:50:22 -0800
-Message-Id: <20240306025023.800029-3-jesse.brandeburg@intel.com>
-X-Mailer: git-send-email 2.39.3
-In-Reply-To: <20240306025023.800029-1-jesse.brandeburg@intel.com>
-References: <20240306025023.800029-1-jesse.brandeburg@intel.com>
+Received: from omta040.useast.a.cloudfilter.net
+ (omta040.useast.a.cloudfilter.net [44.202.169.39])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id D5C3382266
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  6 Mar 2024 03:33:06 +0000 (UTC)
+Received: from eig-obgw-5002a.ext.cloudfilter.net ([10.0.29.215])
+ by cmsmtp with ESMTPS
+ id hfiSrKfYTl9dRhhulr965A; Wed, 06 Mar 2024 03:25:55 +0000
+Received: from gator4166.hostgator.com ([108.167.133.22]) by cmsmtp with ESMTPS
+ id hhukr672UTJ7whhulrgUiu; Wed, 06 Mar 2024 03:25:55 +0000
+X-Authority-Analysis: v=2.4 cv=XcmPzp55 c=1 sm=1 tr=0 ts=65e7e243
+ a=1YbLdUo/zbTtOZ3uB5T3HA==:117 a=VhncohosazJxI00KdYJ/5A==:17
+ a=IkcTkHD0fZMA:10 a=K6JAEmCyrfEA:10 a=wYkD_t78qR0A:10 a=cm27Pg_UAAAA:8
+ a=XVdhlGlpZy0Tqqe4dGwA:9 a=QEXdDO2ut3YA:10 a=xmb-EsYY8bH0VWELuYED:22
+Received: from [201.172.172.225] (port=46818 helo=[192.168.15.14])
+ by gator4166.hostgator.com with esmtpsa (TLS1.2) tls
+ TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 (Exim 4.96.2)
+ (envelope-from <gustavo@embeddedor.com>) id 1rhhuj-001ukg-2u;
+ Tue, 05 Mar 2024 21:25:53 -0600
+Message-ID: <9c2990f0-7407-49c6-9e3a-b92de82ea437@embeddedor.com>
+Date: Tue, 5 Mar 2024 21:25:51 -0600
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1709693438; x=1741229438;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=UPuZBrQvWS6NhKxz2fbZdD7E8p9RwtqSgF4i3HGBrC8=;
- b=ZVLaOrU2chqdy6C1iVJubz4L+nORD3ZjP4Y5UlUpTi1H3fenyVHVw3fA
- 3f0k6jf+fdO3f5Hwi87HJy1ab239WvETzgn9famEyKQwTzzqURNmasqsc
- YSYvMCWSNFor6n1U0UmbB8tNT9LBtlXQrGeGnMSP3anaNdAP4O74rrJ5z
- J3FfM89a3HOYrXbKU+866gaRjgTObNvV/ykAbs2htQ/ZkAIGbVDpgc2HI
- jAaEz8/gccIe6+MflHzh0DF+yNH7f6NgMG4n4O9i6UUZNJ9eUcXshrVL+
- v4KUDd+p8Y7f+dr2E8DuIJXmp+1FX1e/5S0b+gC7x2X+9u62eIUsor1XW
- A==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=ZVLaOrU2
-Subject: [Intel-wired-lan] [PATCH iwl-next v2 2/2] net: intel: implement
- modern PM ops declarations
+User-Agent: Mozilla Thunderbird
+Content-Language: en-US
+To: Kees Cook <keescook@chromium.org>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>
+References: <20240306010746.work.678-kees@kernel.org>
+From: "Gustavo A. R. Silva" <gustavo@embeddedor.com>
+In-Reply-To: <20240306010746.work.678-kees@kernel.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-AntiAbuse: This header was added to track abuse,
+ please include it with any abuse report
+X-AntiAbuse: Primary Hostname - gator4166.hostgator.com
+X-AntiAbuse: Original Domain - lists.osuosl.org
+X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
+X-AntiAbuse: Sender Address Domain - embeddedor.com
+X-BWhitelist: no
+X-Source-IP: 201.172.172.225
+X-Source-L: No
+X-Exim-ID: 1rhhuj-001ukg-2u
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: 
+X-Source-Sender: ([192.168.15.14]) [201.172.172.225]:46818
+X-Source-Auth: gustavo@embeddedor.com
+X-Email-Count: 5
+X-Org: HG=hgshared;ORG=hostgator;
+X-Source-Cap: Z3V6aWRpbmU7Z3V6aWRpbmU7Z2F0b3I0MTY2Lmhvc3RnYXRvci5jb20=
+X-Local-Domain: yes
+X-CMAE-Envelope: MS4xfCcFlCak5+Yadu2hQn6oa6siHdZk7iFNOrWp+1kKqTxioy9XSi04S91QN/5zIEAsnZqtL101ZfVVeIrvLzizwuK5ppIm7cJG8yb7Xw8c99nK7SsAOqd7
+ EqWwjEnmSDIAijzjUGdEnsgF2IFE9MCAvMo6jX6NKVN7yf9AFQBOSPWHTowh18Q3mLGiuqY68O/xGiI6VK+vyLHwWM/a5S7F/jcUxcCWgN+K6sErmpkOhhbc
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt;
+ c=relaxed/relaxed; 
+ d=embeddedor.com; s=default; h=Content-Transfer-Encoding:Content-Type:
+ In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:Sender
+ :Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+ Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
+ List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=hA5anOLDf9hOII6ZL+mpHqZgQ3rs+L/N8KnCrTRwBMY=; b=OgJGzG5urvOSye6X4o/ZpFKHHX
+ TbW58mPd5ZZTTYRrOfSOsYbTltFxdq/haZS2WgK4RzIVvF6vv1E2KwmkmgVoaO8ts84sRaGGGLy4A
+ JpAIy29MWILwYRBPY6ygZJ4Xb6JkMkR0A+20gaC9EyZPjW7qw9J/ld6ZpVB27UL+u2Dci3Tm7caLY
+ 5OAiRCHSdvKjD8WrqiQCXOTi3bKUV0622cYY7YWN3zFrPjmKNiCaL6qnNrlGk/iGjnlFYrTqYcKAm
+ wU5U99v5vc0nvjAba/Ymv1j9eur9ovuP/TcwFBetIXAZgib48WQgdySJx0DyGVd/JeGNheFLMa1kv
+ vArK3QuQ==;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dmarc=none (p=none dis=none)
+ header.from=embeddedor.com
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=embeddedor.com header.i=@embeddedor.com
+ header.a=rsa-sha256 header.s=default header.b=OgJGzG5u
+Subject: Re: [Intel-wired-lan] [PATCH] overflow: Change DEFINE_FLEX to take
+ __counted_by member
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -101,661 +133,50 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: pmenzel@molgen.mpg.de, netdev@vger.kernel.org,
+Cc: intel-wired-lan@lists.osuosl.org,
+ "Gustavo A. R. Silva" <gustavoars@kernel.org>,
  Eric Dumazet <edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
- Alan Brady <alan.brady@intel.com>, horms@kernel.org,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- "David S. Miller" <davem@davemloft.net>
+ linux-hardening@vger.kernel.org, netdev@vger.kernel.org,
+ Jakub Kicinski <kuba@kernel.org>, Andrew Morton <akpm@linux-foundation.org>,
+ Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>,
+ linux-kernel@vger.kernel.org
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Switch the Intel networking drivers to use the new power management ops
-declaration formats and macros, which allows us to drop __maybe_unused,
-as well as a bunch of ifdef checking CONFIG_PM.
 
-This is safe to do because the compiler drops the unused functions,
-verified by checking for any of the power management function symbols
-being present in System.map for a build without CONFIG_PM.
 
-If a driver has runtime PM, define the ops with pm_ptr(), and if the
-driver has Simple PM, use pm_sleep_ptr(), as well as the new versions of
-the macros for declaring the members of the pm_ops structs.
+On 05/03/24 19:07, Kees Cook wrote:
+> The norm should be flexible array structures with __counted_by
+> annotations, so DEFINE_FLEX() is updated to expect that. Rename
+> the non-annotated version to DEFINE_RAW_FLEX(), and update the few
+> existing users. Additionally add self-tests to validate syntax and
+> size calculations.
+> 
+> Signed-off-by: Kees Cook <keescook@chromium.org>
+> ---
 
-Checked with network-enabled allnoconfig, allyesconfig, allmodconfig on
-x64_64.
+[..]
 
-Reviewed-by: Alan Brady <alan.brady@intel.com>
-Signed-off-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
----
-v2: added ice driver changes to series
-v1: original net-next posting
-    all changes except for ice were reviewed by Simon Horman
-    no other changes besides to ice
----
- drivers/net/ethernet/intel/e100.c             |  8 +++---
- drivers/net/ethernet/intel/e1000/e1000_main.c | 14 +++++-----
- drivers/net/ethernet/intel/e1000e/netdev.c    | 22 +++++++---------
- drivers/net/ethernet/intel/fm10k/fm10k_pci.c  | 10 +++----
- drivers/net/ethernet/intel/i40e/i40e_main.c   | 10 +++----
- drivers/net/ethernet/intel/iavf/iavf_main.c   |  8 +++---
- drivers/net/ethernet/intel/ice/ice_main.c     | 12 +++------
- drivers/net/ethernet/intel/igb/igb_main.c     | 26 +++++++------------
- drivers/net/ethernet/intel/igbvf/netdev.c     |  6 ++---
- drivers/net/ethernet/intel/igc/igc_main.c     | 24 ++++++-----------
- drivers/net/ethernet/intel/ixgbe/ixgbe_main.c |  8 +++---
- .../net/ethernet/intel/ixgbevf/ixgbevf_main.c |  8 +++---
- 12 files changed, 64 insertions(+), 92 deletions(-)
+> +/**
+> + * DEFINE_FLEX() - Define an on-stack instance of structure with a trailing
+> + * flexible array member.
+> + *
+> + * @TYPE: structure type name, including "struct" keyword.
+> + * @NAME: Name for a variable to define.
+> + * @COUNTER: Name of the __counted_by member.
+> + * @MEMBER: Name of the array member.
+> + * @COUNT: Number of elements in the array; must be compile-time const.
+> + *
+> + * Define a zeroed, on-stack, instance of @TYPE structure with a trailing
+> + * flexible array member.
+> + * Use __struct_size(@NAME) to get compile-time size of it afterwards.
+> + */
+> +#define DEFINE_FLEX(TYPE, NAME, COUNTER, MEMBER, COUNT)	\
 
-diff --git a/drivers/net/ethernet/intel/e100.c b/drivers/net/ethernet/intel/e100.c
-index 3fcb8daaa243..9b068d40778d 100644
---- a/drivers/net/ethernet/intel/e100.c
-+++ b/drivers/net/ethernet/intel/e100.c
-@@ -3037,7 +3037,7 @@ static int __e100_power_off(struct pci_dev *pdev, bool wake)
- 	return 0;
- }
- 
--static int __maybe_unused e100_suspend(struct device *dev_d)
-+static int e100_suspend(struct device *dev_d)
- {
- 	bool wake;
- 
-@@ -3046,7 +3046,7 @@ static int __maybe_unused e100_suspend(struct device *dev_d)
- 	return 0;
- }
- 
--static int __maybe_unused e100_resume(struct device *dev_d)
-+static int e100_resume(struct device *dev_d)
- {
- 	struct net_device *netdev = dev_get_drvdata(dev_d);
- 	struct nic *nic = netdev_priv(netdev);
-@@ -3163,7 +3163,7 @@ static const struct pci_error_handlers e100_err_handler = {
- 	.resume = e100_io_resume,
- };
- 
--static SIMPLE_DEV_PM_OPS(e100_pm_ops, e100_suspend, e100_resume);
-+static DEFINE_SIMPLE_DEV_PM_OPS(e100_pm_ops, e100_suspend, e100_resume);
- 
- static struct pci_driver e100_driver = {
- 	.name =         DRV_NAME,
-@@ -3172,7 +3172,7 @@ static struct pci_driver e100_driver = {
- 	.remove =       e100_remove,
- 
- 	/* Power Management hooks */
--	.driver.pm =	&e100_pm_ops,
-+	.driver.pm =	pm_sleep_ptr(&e100_pm_ops),
- 
- 	.shutdown =     e100_shutdown,
- 	.err_handler = &e100_err_handler,
-diff --git a/drivers/net/ethernet/intel/e1000/e1000_main.c b/drivers/net/ethernet/intel/e1000/e1000_main.c
-index 1d1e93686af2..5b43f9b194fc 100644
---- a/drivers/net/ethernet/intel/e1000/e1000_main.c
-+++ b/drivers/net/ethernet/intel/e1000/e1000_main.c
-@@ -149,8 +149,8 @@ static int e1000_vlan_rx_kill_vid(struct net_device *netdev,
- 				  __be16 proto, u16 vid);
- static void e1000_restore_vlan(struct e1000_adapter *adapter);
- 
--static int __maybe_unused e1000_suspend(struct device *dev);
--static int __maybe_unused e1000_resume(struct device *dev);
-+static int e1000_suspend(struct device *dev);
-+static int e1000_resume(struct device *dev);
- static void e1000_shutdown(struct pci_dev *pdev);
- 
- #ifdef CONFIG_NET_POLL_CONTROLLER
-@@ -175,16 +175,14 @@ static const struct pci_error_handlers e1000_err_handler = {
- 	.resume = e1000_io_resume,
- };
- 
--static SIMPLE_DEV_PM_OPS(e1000_pm_ops, e1000_suspend, e1000_resume);
-+static DEFINE_SIMPLE_DEV_PM_OPS(e1000_pm_ops, e1000_suspend, e1000_resume);
- 
- static struct pci_driver e1000_driver = {
- 	.name     = e1000_driver_name,
- 	.id_table = e1000_pci_tbl,
- 	.probe    = e1000_probe,
- 	.remove   = e1000_remove,
--	.driver = {
--		.pm = &e1000_pm_ops,
--	},
-+	.driver.pm = pm_sleep_ptr(&e1000_pm_ops),
- 	.shutdown = e1000_shutdown,
- 	.err_handler = &e1000_err_handler
- };
-@@ -5135,7 +5133,7 @@ static int __e1000_shutdown(struct pci_dev *pdev, bool *enable_wake)
- 	return 0;
- }
- 
--static int __maybe_unused e1000_suspend(struct device *dev)
-+static int e1000_suspend(struct device *dev)
- {
- 	int retval;
- 	struct pci_dev *pdev = to_pci_dev(dev);
-@@ -5147,7 +5145,7 @@ static int __maybe_unused e1000_suspend(struct device *dev)
- 	return retval;
- }
- 
--static int __maybe_unused e1000_resume(struct device *dev)
-+static int e1000_resume(struct device *dev)
- {
- 	struct pci_dev *pdev = to_pci_dev(dev);
- 	struct net_device *netdev = pci_get_drvdata(pdev);
-diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
-index cc8c531ec3df..1c91dece75a8 100644
---- a/drivers/net/ethernet/intel/e1000e/netdev.c
-+++ b/drivers/net/ethernet/intel/e1000e/netdev.c
-@@ -6950,13 +6950,13 @@ static int __e1000_resume(struct pci_dev *pdev)
- 	return 0;
- }
- 
--static __maybe_unused int e1000e_pm_prepare(struct device *dev)
-+static int e1000e_pm_prepare(struct device *dev)
- {
- 	return pm_runtime_suspended(dev) &&
- 		pm_suspend_via_firmware();
- }
- 
--static __maybe_unused int e1000e_pm_suspend(struct device *dev)
-+static int e1000e_pm_suspend(struct device *dev)
- {
- 	struct net_device *netdev = pci_get_drvdata(to_pci_dev(dev));
- 	struct e1000_adapter *adapter = netdev_priv(netdev);
-@@ -6979,7 +6979,7 @@ static __maybe_unused int e1000e_pm_suspend(struct device *dev)
- 	return rc;
- }
- 
--static __maybe_unused int e1000e_pm_resume(struct device *dev)
-+static int e1000e_pm_resume(struct device *dev)
- {
- 	struct net_device *netdev = pci_get_drvdata(to_pci_dev(dev));
- 	struct e1000_adapter *adapter = netdev_priv(netdev);
-@@ -7013,7 +7013,7 @@ static __maybe_unused int e1000e_pm_runtime_idle(struct device *dev)
- 	return -EBUSY;
- }
- 
--static __maybe_unused int e1000e_pm_runtime_resume(struct device *dev)
-+static int e1000e_pm_runtime_resume(struct device *dev)
- {
- 	struct pci_dev *pdev = to_pci_dev(dev);
- 	struct net_device *netdev = pci_get_drvdata(pdev);
-@@ -7032,7 +7032,7 @@ static __maybe_unused int e1000e_pm_runtime_resume(struct device *dev)
- 	return rc;
- }
- 
--static __maybe_unused int e1000e_pm_runtime_suspend(struct device *dev)
-+static int e1000e_pm_runtime_suspend(struct device *dev)
- {
- 	struct pci_dev *pdev = to_pci_dev(dev);
- 	struct net_device *netdev = pci_get_drvdata(pdev);
-@@ -7919,8 +7919,7 @@ static const struct pci_device_id e1000_pci_tbl[] = {
- };
- MODULE_DEVICE_TABLE(pci, e1000_pci_tbl);
- 
--static const struct dev_pm_ops e1000_pm_ops = {
--#ifdef CONFIG_PM_SLEEP
-+static const struct dev_pm_ops e1000e_pm_ops = {
- 	.prepare	= e1000e_pm_prepare,
- 	.suspend	= e1000e_pm_suspend,
- 	.resume		= e1000e_pm_resume,
-@@ -7928,9 +7927,8 @@ static const struct dev_pm_ops e1000_pm_ops = {
- 	.thaw		= e1000e_pm_thaw,
- 	.poweroff	= e1000e_pm_suspend,
- 	.restore	= e1000e_pm_resume,
--#endif
--	SET_RUNTIME_PM_OPS(e1000e_pm_runtime_suspend, e1000e_pm_runtime_resume,
--			   e1000e_pm_runtime_idle)
-+	RUNTIME_PM_OPS(e1000e_pm_runtime_suspend, e1000e_pm_runtime_resume,
-+		       e1000e_pm_runtime_idle)
- };
- 
- /* PCI Device API Driver */
-@@ -7939,9 +7937,7 @@ static struct pci_driver e1000_driver = {
- 	.id_table = e1000_pci_tbl,
- 	.probe    = e1000_probe,
- 	.remove   = e1000_remove,
--	.driver   = {
--		.pm = &e1000_pm_ops,
--	},
-+	.driver.pm = pm_ptr(&e1000e_pm_ops),
- 	.shutdown = e1000_shutdown,
- 	.err_handler = &e1000_err_handler
- };
-diff --git a/drivers/net/ethernet/intel/fm10k/fm10k_pci.c b/drivers/net/ethernet/intel/fm10k/fm10k_pci.c
-index d748b98274e7..92de609b7218 100644
---- a/drivers/net/ethernet/intel/fm10k/fm10k_pci.c
-+++ b/drivers/net/ethernet/intel/fm10k/fm10k_pci.c
-@@ -2342,7 +2342,7 @@ static int fm10k_handle_resume(struct fm10k_intfc *interface)
-  * suspend or hibernation. This function does not need to handle lower PCIe
-  * device state as the stack takes care of that for us.
-  **/
--static int __maybe_unused fm10k_resume(struct device *dev)
-+static int fm10k_resume(struct device *dev)
- {
- 	struct fm10k_intfc *interface = dev_get_drvdata(dev);
- 	struct net_device *netdev = interface->netdev;
-@@ -2369,7 +2369,7 @@ static int __maybe_unused fm10k_resume(struct device *dev)
-  * system suspend or hibernation. This function does not need to handle lower
-  * PCIe device state as the stack takes care of that for us.
-  **/
--static int __maybe_unused fm10k_suspend(struct device *dev)
-+static int fm10k_suspend(struct device *dev)
- {
- 	struct fm10k_intfc *interface = dev_get_drvdata(dev);
- 	struct net_device *netdev = interface->netdev;
-@@ -2502,16 +2502,14 @@ static const struct pci_error_handlers fm10k_err_handler = {
- 	.reset_done = fm10k_io_reset_done,
- };
- 
--static SIMPLE_DEV_PM_OPS(fm10k_pm_ops, fm10k_suspend, fm10k_resume);
-+static DEFINE_SIMPLE_DEV_PM_OPS(fm10k_pm_ops, fm10k_suspend, fm10k_resume);
- 
- static struct pci_driver fm10k_driver = {
- 	.name			= fm10k_driver_name,
- 	.id_table		= fm10k_pci_tbl,
- 	.probe			= fm10k_probe,
- 	.remove			= fm10k_remove,
--	.driver = {
--		.pm		= &fm10k_pm_ops,
--	},
-+	.driver.pm		= pm_sleep_ptr(&fm10k_pm_ops),
- 	.sriov_configure	= fm10k_iov_configure,
- 	.err_handler		= &fm10k_err_handler
- };
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
-index 3fada49b8ae2..0628abeb5674 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_main.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
-@@ -16509,7 +16509,7 @@ static void i40e_shutdown(struct pci_dev *pdev)
-  * i40e_suspend - PM callback for moving to D3
-  * @dev: generic device information structure
-  **/
--static int __maybe_unused i40e_suspend(struct device *dev)
-+static int i40e_suspend(struct device *dev)
- {
- 	struct i40e_pf *pf = dev_get_drvdata(dev);
- 	struct i40e_hw *hw = &pf->hw;
-@@ -16560,7 +16560,7 @@ static int __maybe_unused i40e_suspend(struct device *dev)
-  * i40e_resume - PM callback for waking up from D3
-  * @dev: generic device information structure
-  **/
--static int __maybe_unused i40e_resume(struct device *dev)
-+static int i40e_resume(struct device *dev)
- {
- 	struct i40e_pf *pf = dev_get_drvdata(dev);
- 	int err;
-@@ -16606,16 +16606,14 @@ static const struct pci_error_handlers i40e_err_handler = {
- 	.resume = i40e_pci_error_resume,
- };
- 
--static SIMPLE_DEV_PM_OPS(i40e_pm_ops, i40e_suspend, i40e_resume);
-+static DEFINE_SIMPLE_DEV_PM_OPS(i40e_pm_ops, i40e_suspend, i40e_resume);
- 
- static struct pci_driver i40e_driver = {
- 	.name     = i40e_driver_name,
- 	.id_table = i40e_pci_tbl,
- 	.probe    = i40e_probe,
- 	.remove   = i40e_remove,
--	.driver   = {
--		.pm = &i40e_pm_ops,
--	},
-+	.driver.pm = pm_sleep_ptr(&i40e_pm_ops),
- 	.shutdown = i40e_shutdown,
- 	.err_handler = &i40e_err_handler,
- 	.sriov_configure = i40e_pci_sriov_configure,
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
-index aefec6bd3b67..6010ce71fd66 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_main.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
-@@ -5032,7 +5032,7 @@ static int iavf_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
-  *
-  * Called when the system (VM) is entering sleep/suspend.
-  **/
--static int __maybe_unused iavf_suspend(struct device *dev_d)
-+static int iavf_suspend(struct device *dev_d)
- {
- 	struct net_device *netdev = dev_get_drvdata(dev_d);
- 	struct iavf_adapter *adapter = netdev_priv(netdev);
-@@ -5060,7 +5060,7 @@ static int __maybe_unused iavf_suspend(struct device *dev_d)
-  *
-  * Called when the system (VM) is resumed from sleep/suspend.
-  **/
--static int __maybe_unused iavf_resume(struct device *dev_d)
-+static int iavf_resume(struct device *dev_d)
- {
- 	struct pci_dev *pdev = to_pci_dev(dev_d);
- 	struct iavf_adapter *adapter;
-@@ -5247,14 +5247,14 @@ static void iavf_shutdown(struct pci_dev *pdev)
- 		pci_set_power_state(pdev, PCI_D3hot);
- }
- 
--static SIMPLE_DEV_PM_OPS(iavf_pm_ops, iavf_suspend, iavf_resume);
-+static DEFINE_SIMPLE_DEV_PM_OPS(iavf_pm_ops, iavf_suspend, iavf_resume);
- 
- static struct pci_driver iavf_driver = {
- 	.name      = iavf_driver_name,
- 	.id_table  = iavf_pci_tbl,
- 	.probe     = iavf_probe,
- 	.remove    = iavf_remove,
--	.driver.pm = &iavf_pm_ops,
-+	.driver.pm = pm_sleep_ptr(&iavf_pm_ops),
- 	.shutdown  = iavf_shutdown,
- };
- 
-diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index 8f73ba77e835..48fdcf883365 100644
---- a/drivers/net/ethernet/intel/ice/ice_main.c
-+++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -5321,7 +5321,6 @@ static void ice_shutdown(struct pci_dev *pdev)
- 	}
- }
- 
--#ifdef CONFIG_PM
- /**
-  * ice_prepare_for_shutdown - prep for PCI shutdown
-  * @pf: board private structure
-@@ -5410,7 +5409,7 @@ static int ice_reinit_interrupt_scheme(struct ice_pf *pf)
-  * Power Management callback to quiesce the device and prepare
-  * for D3 transition.
-  */
--static int __maybe_unused ice_suspend(struct device *dev)
-+static int ice_suspend(struct device *dev)
- {
- 	struct pci_dev *pdev = to_pci_dev(dev);
- 	struct ice_pf *pf;
-@@ -5477,7 +5476,7 @@ static int __maybe_unused ice_suspend(struct device *dev)
-  * ice_resume - PM callback for waking up from D3
-  * @dev: generic device information structure
-  */
--static int __maybe_unused ice_resume(struct device *dev)
-+static int ice_resume(struct device *dev)
- {
- 	struct pci_dev *pdev = to_pci_dev(dev);
- 	enum ice_reset_req reset_type;
-@@ -5528,7 +5527,6 @@ static int __maybe_unused ice_resume(struct device *dev)
- 
- 	return 0;
- }
--#endif /* CONFIG_PM */
- 
- /**
-  * ice_pci_err_detected - warning that PCI error has been detected
-@@ -5702,7 +5700,7 @@ static const struct pci_device_id ice_pci_tbl[] = {
- };
- MODULE_DEVICE_TABLE(pci, ice_pci_tbl);
- 
--static __maybe_unused SIMPLE_DEV_PM_OPS(ice_pm_ops, ice_suspend, ice_resume);
-+static DEFINE_SIMPLE_DEV_PM_OPS(ice_pm_ops, ice_suspend, ice_resume);
- 
- static const struct pci_error_handlers ice_pci_err_handler = {
- 	.error_detected = ice_pci_err_detected,
-@@ -5717,9 +5715,7 @@ static struct pci_driver ice_driver = {
- 	.id_table = ice_pci_tbl,
- 	.probe = ice_probe,
- 	.remove = ice_remove,
--#ifdef CONFIG_PM
--	.driver.pm = &ice_pm_ops,
--#endif /* CONFIG_PM */
-+	.driver.pm = pm_sleep_ptr(&ice_pm_ops),
- 	.shutdown = ice_shutdown,
- 	.sriov_configure = ice_sriov_configure,
- 	.sriov_get_vf_total_msix = ice_sriov_get_vf_total_msix,
-diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
-index e749bf5164b8..820f6688ce38 100644
---- a/drivers/net/ethernet/intel/igb/igb_main.c
-+++ b/drivers/net/ethernet/intel/igb/igb_main.c
-@@ -9439,12 +9439,12 @@ static void igb_deliver_wake_packet(struct net_device *netdev)
- 	netif_rx(skb);
- }
- 
--static int __maybe_unused igb_suspend(struct device *dev)
-+static int igb_suspend(struct device *dev)
- {
- 	return __igb_shutdown(to_pci_dev(dev), NULL, 0);
- }
- 
--static int __maybe_unused __igb_resume(struct device *dev, bool rpm)
-+static int __igb_resume(struct device *dev, bool rpm)
- {
- 	struct pci_dev *pdev = to_pci_dev(dev);
- 	struct net_device *netdev = pci_get_drvdata(pdev);
-@@ -9500,12 +9500,12 @@ static int __maybe_unused __igb_resume(struct device *dev, bool rpm)
- 	return err;
- }
- 
--static int __maybe_unused igb_resume(struct device *dev)
-+static int igb_resume(struct device *dev)
- {
- 	return __igb_resume(dev, false);
- }
- 
--static int __maybe_unused igb_runtime_idle(struct device *dev)
-+static int igb_runtime_idle(struct device *dev)
- {
- 	struct net_device *netdev = dev_get_drvdata(dev);
- 	struct igb_adapter *adapter = netdev_priv(netdev);
-@@ -9516,12 +9516,12 @@ static int __maybe_unused igb_runtime_idle(struct device *dev)
- 	return -EBUSY;
- }
- 
--static int __maybe_unused igb_runtime_suspend(struct device *dev)
-+static int igb_runtime_suspend(struct device *dev)
- {
- 	return __igb_shutdown(to_pci_dev(dev), NULL, 1);
- }
- 
--static int __maybe_unused igb_runtime_resume(struct device *dev)
-+static int igb_runtime_resume(struct device *dev)
- {
- 	return __igb_resume(dev, true);
- }
-@@ -10144,22 +10144,16 @@ static void igb_nfc_filter_restore(struct igb_adapter *adapter)
- 	spin_unlock(&adapter->nfc_lock);
- }
- 
--#ifdef CONFIG_PM
--static const struct dev_pm_ops igb_pm_ops = {
--	SET_SYSTEM_SLEEP_PM_OPS(igb_suspend, igb_resume)
--	SET_RUNTIME_PM_OPS(igb_runtime_suspend, igb_runtime_resume,
--			   igb_runtime_idle)
--};
--#endif
-+static _DEFINE_DEV_PM_OPS(igb_pm_ops, igb_suspend, igb_resume,
-+			  igb_runtime_suspend, igb_runtime_resume,
-+			  igb_runtime_idle);
- 
- static struct pci_driver igb_driver = {
- 	.name     = igb_driver_name,
- 	.id_table = igb_pci_tbl,
- 	.probe    = igb_probe,
- 	.remove   = igb_remove,
--#ifdef CONFIG_PM
--	.driver.pm = &igb_pm_ops,
--#endif
-+	.driver.pm = pm_ptr(&igb_pm_ops),
- 	.shutdown = igb_shutdown,
- 	.sriov_configure = igb_pci_sriov_configure,
- 	.err_handler = &igb_err_handler
-diff --git a/drivers/net/ethernet/intel/igbvf/netdev.c b/drivers/net/ethernet/intel/igbvf/netdev.c
-index b0cf310e6f7b..40ccd24ffc53 100644
---- a/drivers/net/ethernet/intel/igbvf/netdev.c
-+++ b/drivers/net/ethernet/intel/igbvf/netdev.c
-@@ -2470,7 +2470,7 @@ static int igbvf_suspend(struct device *dev_d)
- 	return 0;
- }
- 
--static int __maybe_unused igbvf_resume(struct device *dev_d)
-+static int igbvf_resume(struct device *dev_d)
- {
- 	struct pci_dev *pdev = to_pci_dev(dev_d);
- 	struct net_device *netdev = pci_get_drvdata(pdev);
-@@ -2957,7 +2957,7 @@ static const struct pci_device_id igbvf_pci_tbl[] = {
- };
- MODULE_DEVICE_TABLE(pci, igbvf_pci_tbl);
- 
--static SIMPLE_DEV_PM_OPS(igbvf_pm_ops, igbvf_suspend, igbvf_resume);
-+static DEFINE_SIMPLE_DEV_PM_OPS(igbvf_pm_ops, igbvf_suspend, igbvf_resume);
- 
- /* PCI Device API Driver */
- static struct pci_driver igbvf_driver = {
-@@ -2965,7 +2965,7 @@ static struct pci_driver igbvf_driver = {
- 	.id_table	= igbvf_pci_tbl,
- 	.probe		= igbvf_probe,
- 	.remove		= igbvf_remove,
--	.driver.pm	= &igbvf_pm_ops,
-+	.driver.pm	= pm_sleep_ptr(&igbvf_pm_ops),
- 	.shutdown	= igbvf_shutdown,
- 	.err_handler	= &igbvf_err_handler
- };
-diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
-index 34820f6a78b9..8d1415ca70bb 100644
---- a/drivers/net/ethernet/intel/igc/igc_main.c
-+++ b/drivers/net/ethernet/intel/igc/igc_main.c
-@@ -7120,8 +7120,7 @@ static int __igc_shutdown(struct pci_dev *pdev, bool *enable_wake,
- 	return 0;
- }
- 
--#ifdef CONFIG_PM
--static int __maybe_unused igc_runtime_suspend(struct device *dev)
-+static int igc_runtime_suspend(struct device *dev)
- {
- 	return __igc_shutdown(to_pci_dev(dev), NULL, 1);
- }
-@@ -7156,7 +7155,7 @@ static void igc_deliver_wake_packet(struct net_device *netdev)
- 	netif_rx(skb);
- }
- 
--static int __maybe_unused igc_resume(struct device *dev)
-+static int igc_resume(struct device *dev)
- {
- 	struct pci_dev *pdev = to_pci_dev(dev);
- 	struct net_device *netdev = pci_get_drvdata(pdev);
-@@ -7209,12 +7208,12 @@ static int __maybe_unused igc_resume(struct device *dev)
- 	return err;
- }
- 
--static int __maybe_unused igc_runtime_resume(struct device *dev)
-+static int igc_runtime_resume(struct device *dev)
- {
- 	return igc_resume(dev);
- }
- 
--static int __maybe_unused igc_suspend(struct device *dev)
-+static int igc_suspend(struct device *dev)
- {
- 	return __igc_shutdown(to_pci_dev(dev), NULL, 0);
- }
-@@ -7229,7 +7228,6 @@ static int __maybe_unused igc_runtime_idle(struct device *dev)
- 
- 	return -EBUSY;
- }
--#endif /* CONFIG_PM */
- 
- static void igc_shutdown(struct pci_dev *pdev)
- {
-@@ -7344,22 +7342,16 @@ static const struct pci_error_handlers igc_err_handler = {
- 	.resume = igc_io_resume,
- };
- 
--#ifdef CONFIG_PM
--static const struct dev_pm_ops igc_pm_ops = {
--	SET_SYSTEM_SLEEP_PM_OPS(igc_suspend, igc_resume)
--	SET_RUNTIME_PM_OPS(igc_runtime_suspend, igc_runtime_resume,
--			   igc_runtime_idle)
--};
--#endif
-+static _DEFINE_DEV_PM_OPS(igc_pm_ops, igc_suspend, igc_resume,
-+			  igc_runtime_suspend, igc_runtime_resume,
-+			  igc_runtime_idle);
- 
- static struct pci_driver igc_driver = {
- 	.name     = igc_driver_name,
- 	.id_table = igc_pci_tbl,
- 	.probe    = igc_probe,
- 	.remove   = igc_remove,
--#ifdef CONFIG_PM
--	.driver.pm = &igc_pm_ops,
--#endif
-+	.driver.pm = pm_ptr(&igc_pm_ops),
- 	.shutdown = igc_shutdown,
- 	.err_handler = &igc_err_handler,
- };
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-index 595098a4c488..4fec48143035 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-@@ -6944,7 +6944,7 @@ int ixgbe_close(struct net_device *netdev)
- 	return 0;
- }
- 
--static int __maybe_unused ixgbe_resume(struct device *dev_d)
-+static int ixgbe_resume(struct device *dev_d)
- {
- 	struct pci_dev *pdev = to_pci_dev(dev_d);
- 	struct ixgbe_adapter *adapter = pci_get_drvdata(pdev);
-@@ -7052,7 +7052,7 @@ static int __ixgbe_shutdown(struct pci_dev *pdev, bool *enable_wake)
- 	return 0;
- }
- 
--static int __maybe_unused ixgbe_suspend(struct device *dev_d)
-+static int ixgbe_suspend(struct device *dev_d)
- {
- 	struct pci_dev *pdev = to_pci_dev(dev_d);
- 	int retval;
-@@ -11516,14 +11516,14 @@ static const struct pci_error_handlers ixgbe_err_handler = {
- 	.resume = ixgbe_io_resume,
- };
- 
--static SIMPLE_DEV_PM_OPS(ixgbe_pm_ops, ixgbe_suspend, ixgbe_resume);
-+static DEFINE_SIMPLE_DEV_PM_OPS(ixgbe_pm_ops, ixgbe_suspend, ixgbe_resume);
- 
- static struct pci_driver ixgbe_driver = {
- 	.name      = ixgbe_driver_name,
- 	.id_table  = ixgbe_pci_tbl,
- 	.probe     = ixgbe_probe,
- 	.remove    = ixgbe_remove,
--	.driver.pm = &ixgbe_pm_ops,
-+	.driver.pm = pm_sleep_ptr(&ixgbe_pm_ops),
- 	.shutdown  = ixgbe_shutdown,
- 	.sriov_configure = ixgbe_pci_sriov_configure,
- 	.err_handler = &ixgbe_err_handler
-diff --git a/drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c b/drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c
-index 9c960017a6de..3161a13079fe 100644
---- a/drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c
-+++ b/drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c
-@@ -4300,7 +4300,7 @@ static int ixgbevf_change_mtu(struct net_device *netdev, int new_mtu)
- 	return 0;
- }
- 
--static int __maybe_unused ixgbevf_suspend(struct device *dev_d)
-+static int ixgbevf_suspend(struct device *dev_d)
- {
- 	struct net_device *netdev = dev_get_drvdata(dev_d);
- 	struct ixgbevf_adapter *adapter = netdev_priv(netdev);
-@@ -4317,7 +4317,7 @@ static int __maybe_unused ixgbevf_suspend(struct device *dev_d)
- 	return 0;
- }
- 
--static int __maybe_unused ixgbevf_resume(struct device *dev_d)
-+static int ixgbevf_resume(struct device *dev_d)
- {
- 	struct pci_dev *pdev = to_pci_dev(dev_d);
- 	struct net_device *netdev = pci_get_drvdata(pdev);
-@@ -4854,7 +4854,7 @@ static const struct pci_error_handlers ixgbevf_err_handler = {
- 	.resume = ixgbevf_io_resume,
- };
- 
--static SIMPLE_DEV_PM_OPS(ixgbevf_pm_ops, ixgbevf_suspend, ixgbevf_resume);
-+static DEFINE_SIMPLE_DEV_PM_OPS(ixgbevf_pm_ops, ixgbevf_suspend, ixgbevf_resume);
- 
- static struct pci_driver ixgbevf_driver = {
- 	.name		= ixgbevf_driver_name,
-@@ -4863,7 +4863,7 @@ static struct pci_driver ixgbevf_driver = {
- 	.remove		= ixgbevf_remove,
- 
- 	/* Power Management Hooks */
--	.driver.pm	= &ixgbevf_pm_ops,
-+	.driver.pm	= pm_sleep_ptr(&ixgbevf_pm_ops),
- 
- 	.shutdown	= ixgbevf_shutdown,
- 	.err_handler	= &ixgbevf_err_handler
--- 
-2.39.3
+Probably, swapping COUNTER and MEMBER is better?
 
+	DEFINE_FLEX(TYPE, NAME, MEMBER, COUNTER, COUNT)
+
+Thanks
+--
+Gustavo
