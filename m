@@ -2,81 +2,168 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id A6C88873C4F
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  6 Mar 2024 17:31:17 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 91A9E873C86
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  6 Mar 2024 17:46:18 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 4F6614079D;
-	Wed,  6 Mar 2024 16:31:16 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 4285E410D7;
+	Wed,  6 Mar 2024 16:46:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 7LA2UmdRdZcy; Wed,  6 Mar 2024 16:31:14 +0000 (UTC)
+	with ESMTP id U_5B9Np7O4mz; Wed,  6 Mar 2024 16:46:16 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 35B96407BB
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C42B540690
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1709742672;
-	bh=JsipzGurwSJA3Mj4gIlGXEjYwrJROWwxmaqjJ+UJPnc=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=Qu8+FFGIIV4Y6oMeeNYMJ4do6h9odkc45Kp5nnxaH5HspQA2BiVmmyy5pONhq+dZn
-	 8JdioHGo5t835EtWRnZHkkzuz/GbiZ+4XQ+CVzGjY3m+1DLmE2CiCJ0ZMsqJggoNyc
-	 tkBMlsDWcpiVdzSIUvpX+/BpjZ9MfR5c1AehFaojboXHnD5nuqHIukAOcS8ONnbj6R
-	 zDi6Kw0vBWTRHJdtAhnbbPgRBndl67A0vFilNobcb6BjKu6SJICFfZxKbRt2ityyuz
-	 1HDM4cO7yd/DS/UAKZqJEfcHccQVdPTUnxbuwr7Z7qHz25fNxekmR+nCWtLwnppzy+
-	 rj+0uE+foEDyQ==
+	s=default; t=1709743576;
+	bh=IR+FX+hgmGE7Y9G44qdCVEnvXTGQcl3gILv+Q5dM9bY=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=tb6Q+5imb5oZ/Z4+Eg/fCunu+a67WP3NSmdEAd3dq1jlZ5UVb8+lXAlDbeEZz3lPZ
+	 6wPBrB/kRL4O9cntJgpivD+8+75cuAzwJZ/+fa9vA1ksPJ1dy4n4WYBDcfF4tig7DN
+	 soZIti6fZmRvoy0hlaDerbgzv3AMqooeQNLGzrnAQpgFS2pqcqUhmUoHIbcvz6gOKO
+	 aepkdn/TrV5fYsfO+aQEEMtb1yYUDKTrlzAPQfWPNuT52orbeULwVOfgmnEbMj4uH+
+	 7l//ccLNXHZEEElUMTCQIB1e85zi4iloy44t3uTSc4wBoWmuPTrUOsMPQx42ZqjZRE
+	 2qE8zJTaN9UgA==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 35B96407BB;
-	Wed,  6 Mar 2024 16:31:12 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id C42B540690;
+	Wed,  6 Mar 2024 16:46:15 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id DBC371BF3C1
- for <intel-wired-lan@lists.osuosl.org>; Wed,  6 Mar 2024 16:31:09 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 18DC01BF3FD
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  6 Mar 2024 16:46:14 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id D4CF04013B
- for <intel-wired-lan@lists.osuosl.org>; Wed,  6 Mar 2024 16:31:09 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 0CC1941852
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  6 Mar 2024 16:46:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id OaES1f0o-iAr for <intel-wired-lan@lists.osuosl.org>;
- Wed,  6 Mar 2024 16:31:07 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.19;
+ with ESMTP id Gt7O68Vz4fRh for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  6 Mar 2024 16:46:13 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.9;
  helo=mgamail.intel.com; envelope-from=maciej.fijalkowski@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 0E29640448
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 0E29640448
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.19])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 0E29640448
- for <intel-wired-lan@lists.osuosl.org>; Wed,  6 Mar 2024 16:31:06 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,11005"; a="4225199"
-X-IronPort-AV: E=Sophos;i="6.06,208,1705392000"; 
-   d="scan'208";a="4225199"
-Received: from orviesa002.jf.intel.com ([10.64.159.142])
- by orvoesa111.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 06 Mar 2024 08:31:06 -0800
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org BCC7E41867
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org BCC7E41867
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.9])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id BCC7E41867
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  6 Mar 2024 16:46:12 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,11005"; a="15088884"
+X-IronPort-AV: E=Sophos;i="6.06,208,1705392000"; d="scan'208";a="15088884"
+Received: from orviesa004.jf.intel.com ([10.64.159.144])
+ by fmvoesa103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 06 Mar 2024 08:46:11 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.06,208,1705392000"; d="scan'208";a="40700127"
-Received: from boxer.igk.intel.com ([10.102.20.173])
- by orviesa002.jf.intel.com with ESMTP; 06 Mar 2024 08:31:04 -0800
+X-IronPort-AV: E=Sophos;i="6.06,208,1705392000"; d="scan'208";a="14463343"
+Received: from orsmsx601.amr.corp.intel.com ([10.22.229.14])
+ by orviesa004.jf.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
+ 06 Mar 2024 08:46:12 -0800
+Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
+ ORSMSX601.amr.corp.intel.com (10.22.229.14) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.35; Wed, 6 Mar 2024 08:46:11 -0800
+Received: from ORSEDG602.ED.cps.intel.com (10.7.248.7) by
+ orsmsx610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.35 via Frontend Transport; Wed, 6 Mar 2024 08:46:11 -0800
+Received: from NAM10-MW2-obe.outbound.protection.outlook.com (104.47.55.101)
+ by edgegateway.intel.com (134.134.137.103) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.35; Wed, 6 Mar 2024 08:46:10 -0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=gSA1aS6DMfD/UbZ2B3bm3OKFTzWD7HGwAPRq59BAjby5fRuDGSaJK2iJno4n095t5qRu80/qV6VAWtdSedubR/Fdr8UfzquUjF4nXiY+YrkNXu77/2t1c8tsh9vPoK6rj4omqF0fs7/4cCeWoIikuT7oDPEY9WVQmibXPYGElQ85NFjcUSYYhfgfovfawpKOQrSnRHcAfStqPT6Ei6whcOpaZNlrY/fhtR55QNawDys1AFkEUEuypLp7ukC17r+TLg/jXwWmieWFAudZnxag0N5nTOfVZEkJz3uTFIkxQlKbY2lDHEuu7ZU+pWQ5n47aCc1dqXze0UsINYKcPwa3RA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=IR+FX+hgmGE7Y9G44qdCVEnvXTGQcl3gILv+Q5dM9bY=;
+ b=grad+5fk4C+ZxUxqiEJUZz7WwnXNQqskHj9e1ndfd3liq1XH9UeyFl0gpdt/CkQ52pSFqU42KnI98g3iG6IGafhVlLGGTplxH+q7pQ5igx959XwnxZ0Prikom8SiqYDib0hGsPa9cqkC9yVwul7XGDi9sVpjM1ZDgVLu0i2DlAKBz6xBkKqVFPZJ/u1SuAJ3Yc8LfQHqU1K82Veprqj6+hMT1gVy5EERwSEi3OpaUA3oMZCd7wX/ESIFZ0gF7FqGxPoIOPNp7ySqRhZ24tc9/vksOpBUDGDyk5i+/yWBU+PXXiNRyrMnp/LTTljfY5YE1NslXaJFNt6AnRL5OOGUjQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from DM4PR11MB6117.namprd11.prod.outlook.com (2603:10b6:8:b3::19) by
+ CY8PR11MB7172.namprd11.prod.outlook.com (2603:10b6:930:93::10) with
+ Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.7362.23; Wed, 6 Mar 2024 16:46:08 +0000
+Received: from DM4PR11MB6117.namprd11.prod.outlook.com
+ ([fe80::ccab:b5f4:e200:ee47]) by DM4PR11MB6117.namprd11.prod.outlook.com
+ ([fe80::ccab:b5f4:e200:ee47%6]) with mapi id 15.20.7362.019; Wed, 6 Mar 2024
+ 16:46:08 +0000
+Date: Wed, 6 Mar 2024 17:46:02 +0100
 From: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Wed,  6 Mar 2024 17:30:54 +0100
-Message-Id: <20240306163054.90627-1-maciej.fijalkowski@intel.com>
-X-Mailer: git-send-email 2.35.3
+To: Jesse Brandeburg <jesse.brandeburg@intel.com>
+Message-ID: <ZeidykgnELeMx6xm@boxer>
+References: <20240304230845.14934-1-jesse.brandeburg@intel.com>
+Content-Type: text/plain; charset="us-ascii"
+Content-Disposition: inline
+In-Reply-To: <20240304230845.14934-1-jesse.brandeburg@intel.com>
+X-ClientProxiedBy: WA1P291CA0023.POLP291.PROD.OUTLOOK.COM
+ (2603:10a6:1d0:19::7) To DM4PR11MB6117.namprd11.prod.outlook.com
+ (2603:10b6:8:b3::19)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DM4PR11MB6117:EE_|CY8PR11MB7172:EE_
+X-MS-Office365-Filtering-Correlation-Id: 64d3b616-3aba-4a59-afa2-08dc3dfcebfd
+X-LD-Processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 19CiFtZeioekA+eBApnAVRvIdr45+3pIDbnacgnVZpGOz05aG5Pg28uZzGun9K2Vvqo2llf2UhDVwYwqlDDsVitK7eWAZ0t7xkJVIdBvXZ04biuVvlquy6u/BncPr+D5pa3mjAs1d8hwQH1rY2maRIsjPQYS+O9hIL6zM4PGA7ewFK8HhUxmB5DOoB7Ws35g11SJZRWGvMO+qo8Mh4LLhvifExGDtAC0URwgHLmmDXp7L6da4d0eMOY1ldAoL3Qo13ap8RAPX4km0l1My+nDMxHGfMsrPeOLyFgy0fGURe7ipH/MiWd/nyb+FIjsfPX2fFNGNrj2iPwuKRAEyittTWMrqJJORyD+RIJ4BG4XRH7cXKu+urWkzcOYv+F33wsG/UlWkNGFA0wlbnpmB6rsKJUIN1yxliGeQ7JYB+HD4BdiEm80lmgNLeIr5ERWgNwhdJrtfueguUycBnxLQKeBTNSz+0N3+l2F9NkGqIQeazgOpoUzLfB2wRgh1HVU1QzDKEPmgCWWr71UB3cYO9j4pjuzE/hROQ7PsOJFgCyia90zCYtLrHnOYHrW1ZLfXn356IHR/GpqkJyfcPt4sdXJu/1NeuBrjGOBu9Ay0xAi3obiUG1+hRqjdh7LeDUgasYeUFwc3gwqgmgg1JgXnHUFHKCkTcjvd5bMxLWOxPTFqyo=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:DM4PR11MB6117.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230031)(376005); DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?6QPZWhq9Lj+rHWXjx6HglorNmzwXmvenLfla5HYYeI6Kv25ZhJHfNcIOW4Ul?=
+ =?us-ascii?Q?MF3Q9i4vf7c8KTnGlmhpIs4EYSN9l4BimnRGAmyAEHodnRIrEMOQghb9eI1u?=
+ =?us-ascii?Q?VMsjYu9KcrYbhM1Qro9qpbUwk6PMIz7B2Hve2ue+NB9cWTMAxmAyRtvz2+il?=
+ =?us-ascii?Q?DofczTj9rQmabLJ1HtK0cUlwmMRK+cQrCDf6l7XKhFlQUkTbFvM85VaX/hn+?=
+ =?us-ascii?Q?TXcuqjTHmq6nQCk9O/tFiO7MT+36vYsbsw1or3DRF7/T7HMTPB77izrTUC6p?=
+ =?us-ascii?Q?o2EVyNW57eTOggnbgmEDFs3GWIPVUgalhJvfLmVe3UcuAQ4CM6OQ+EHebOoS?=
+ =?us-ascii?Q?2O5+Tq6f56W9Cgxe1k9ORxkWW47dhaBAqh5SZJMdsLdQLk7IfPU4gJqcE3uT?=
+ =?us-ascii?Q?fqeAH8uZexBmVW/9SkGYRTt4qq/a1bBHWeZyronFkscNAiIq8bMN4HlcZiV2?=
+ =?us-ascii?Q?lSzTc3ZruGDITEHXjY3TOZjZouOyBAOEi98cYSQ5kEPUT8oPxQ85q2Usbad1?=
+ =?us-ascii?Q?ffypn647o7wg9HEDymrKd4TrJjtlrnqJpppolKaGB2L/pCagNHby2bJi2VtX?=
+ =?us-ascii?Q?hBhXWeHjUlVoKkoWc7nP20Vt1UjAXc4k75WP7IFi+ha/NC/ILK/LaPSzeVPK?=
+ =?us-ascii?Q?Aofk4uxmJ/IQKxcIMcSmb75O/jgaCjiFZu0KHg9H388ycsL2YziWVpDm/ug2?=
+ =?us-ascii?Q?tajHMSCic0orC0m/2MqFPp2iysWzsRcLlXuZXmW2i38fSC17skA/InrWv4Xh?=
+ =?us-ascii?Q?hZM/ZzlqHaQVsYb/C4H9XCvwK1K/jnNPthBmLDBOPnCPWOtmZ5a3KIkQHCtt?=
+ =?us-ascii?Q?vi/aXnqieFJeaVjUT72gioErN60cfZIWl/+l/Py/QbXlbpDCfopGYTb6No/z?=
+ =?us-ascii?Q?XLyTij5pqqt6GUJQPLju5ZfBzz+OYUTCDPrAPn7X7REScCqqKGTlzbJHduZy?=
+ =?us-ascii?Q?Cqwkm+j04emJjsmurdImKXKSEU5ksxNlAmlo+7RqzUNEUNAxP6rRoOeC1Mev?=
+ =?us-ascii?Q?D/n6Y/YpaEfESmdP7b2rcVNdrwneYz8NLs0KXgcaPWFVBOqlVunobH4fwDO3?=
+ =?us-ascii?Q?RniwkOCmAJK4yMyEghvZmzXF/bcly+pIxZEZHKkW+Z4rcPtIfCVpsJy0Qg+0?=
+ =?us-ascii?Q?bM1IsIdgsdzxLjCgRY0c+yxnYuYRzenzQD4wPNXDc8P9vG/pEMcDv1heY+F3?=
+ =?us-ascii?Q?Sk02pKgUpTe9WQ9e6UzHVpJMTehkJ4j6qxK2dMrP60DYFMNSJeSLW3BGW0LC?=
+ =?us-ascii?Q?/tZcoDXTFHzcKOW47vSlUacJmwPnljuC+qpRF6B+krx0e4arcdHGXGORHEW3?=
+ =?us-ascii?Q?uTK/x7hho7cv5zE2tH3dTXsAhZit2pfigip5jv06i/bge7zUDymaStsg4cf0?=
+ =?us-ascii?Q?LuMNrvpGEve2ItguO/CENxa3iQdt1QnyEC/4gwQPIouGWkvJIdnpD6P7TQv0?=
+ =?us-ascii?Q?GE3E8DEAx15qj6Nq7VquljM8nzZocp+l6oh8zGmRhwD+qS/957KU+wgRUm7A?=
+ =?us-ascii?Q?Vx1HSgAt4Lxcj9xGjMzeRLrddZsslXXiSCrsqrg8GVpHV4lVpz1EFzVnCo5T?=
+ =?us-ascii?Q?XPAmVU5lefdwTGMvwT4OoYNVQobwxHK4KpvEJD7XLJQ8v3hBkrtnTeUISA79?=
+ =?us-ascii?Q?Mg=3D=3D?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: 64d3b616-3aba-4a59-afa2-08dc3dfcebfd
+X-MS-Exchange-CrossTenant-AuthSource: DM4PR11MB6117.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 06 Mar 2024 16:46:08.1498 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: El0evzYXZ1cSedyz6CVxR8d9+aD4saJ6YclW/FuLPY+AHy6bEOxwGUygGaQqXVnRp4DRkl3M/ah23qvAIB1Gf0quWIvY2TNkO4ay9O3mgZU=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY8PR11MB7172
+X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1709742667; x=1741278667;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=26HU5veMx66f3G/8DZ83GrwUHTsw/T08UX/R7dl5mz4=;
- b=KwWLURtUaYoKrDYm5Hd+T0jEjiR60c7vJnzg5TDuOVstpbYOZTnphcSI
- aFRj31n52B6Q1x2w4L/Ql88F1giu0vzPZ8xm6jq8jdVZ6ytchY/cHpQbe
- jdCTc6XIVyQH1OwjBhx6Z7n6QIXP0FlhLf2WXb71IWLatcHB5ORrcfUyt
- 6Gg3h1h+XFoDH0TNu6G36cLJ8Id6d034Mxlh7s2Nz/CRuFUyWR1GsKXh4
- vWYD0+wcUUVbspIsWbZ2p1c2KgBOPHHwdCD6I/jgiR0VykTGVr3Ry/pSb
- hcqexs2OXITJVPbYjRU5mkurQaq5Ymdsx9sQ/YToSEwYNd2rAuusNC7mr
+ t=1709743572; x=1741279572;
+ h=date:from:to:cc:subject:message-id:references:
+ in-reply-to:mime-version;
+ bh=fquboVnU31HdpBFYeMutCIVFwFUmGUREhPKKWRri2I4=;
+ b=I9smm3MONMNSBqQIlUdwFT/uRUNSMI8WAgGXVsKXM6Dhz5kSmxKJ11tc
+ GxoKXpLT+Nm/QJY9bbroD9ZD9Y3DaqWxcMbbcy8LaBPomT9OVDGB2lypJ
+ udEgrbdJBI4CeFm+gy+HHhLNc/10Aci/uwE+21dfY+CARyalu8QND7aqa
+ fmGdHifDKMjc5e8iIkUieTVB++A9iGXgRPEOMp7NXtNigux6aE2fXec4u
+ L+JTSpKaVZYgsTVOC5KoFSKYOI+Jgw0+ed7D9k8VJfmmsHxC/Oq2yjIan
+ pThH/VbTa2NsY0YTgWq81od8SvyTa8422SDmYcwd+lg6wMJOZtg2A7AID
  g==;
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
@@ -84,9 +171,11 @@ X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=KwWLURtU
-Subject: [Intel-wired-lan] [PATCH iwl-next] i40e: avoid forward declarations
- in i40e_nvm.c
+ header.s=Intel header.b=I9smm3MO
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH iwl-net v1] ice: fix bug with suspend
+ and rebuild
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,1237 +188,155 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, Maciej Fijalkowski <maciej.fijalkowski@intel.com>,
- anthony.l.nguyen@intel.com, magnus.karlsson@intel.com
+Cc: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>,
+ netdev@vger.kernel.org, Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Eric Dumazet <edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Simon Horman <horms@kernel.org>, Jakub
+ Kicinski <kuba@kernel.org>, intel-wired-lan@lists.osuosl.org,
+ Paolo Abeni <pabeni@redhat.com>, "David
+ S. Miller" <davem@davemloft.net>, Robert Elliott <elliott@hpe.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Move code around to get rid of forward declarations. No functional
-changes.
+On Mon, Mar 04, 2024 at 03:08:44PM -0800, Jesse Brandeburg wrote:
+> The ice driver would previously panic during suspend. This is caused
+> from the driver *only* calling the ice_vsi_free_q_vectors() function by
+> itself, when it is suspending. Since commit b3e7b3a6ee92 ("ice: prevent
+> NULL pointer deref during reload") the driver has zeroed out
+> num_q_vectors, and only restored it in ice_vsi_cfg_def().
+> 
+> This further causes the ice_rebuild() function to allocate a zero length
+> buffer, after which num_q_vectors is updated, and then the new value of
+> num_q_vectors is used to index into the zero length buffer, which
+> corrupts memory.
+> 
+> The fix entails making sure all the code referencing num_q_vectors only
+> does so after it has been reset via ice_vsi_cfg_def().
+> 
+> I didn't perform a full bisect, but I was able to test against 6.1.77
+> kernel and that ice driver works fine for suspend/resume with no panic,
+> so sometime since then, this problem was introduced.
+> 
+> Also clean up an un-needed init of a local variable in the function
+> being modified.
+> 
+> PANIC from 6.8.0-rc1:
+> 
+> [1026674.915596] PM: suspend exit
+> [1026675.664697] ice 0000:17:00.1: PTP reset successful
+> [1026675.664707] ice 0000:17:00.1: 2755 msecs passed between update to cached PHC time
+> [1026675.667660] ice 0000:b1:00.0: PTP reset successful
+> [1026675.675944] ice 0000:b1:00.0: 2832 msecs passed between update to cached PHC time
+> [1026677.137733] ixgbe 0000:31:00.0 ens787: NIC Link is Up 1 Gbps, Flow Control: None
+> [1026677.190201] BUG: kernel NULL pointer dereference, address: 0000000000000010
+> [1026677.192753] ice 0000:17:00.0: PTP reset successful
+> [1026677.192764] ice 0000:17:00.0: 4548 msecs passed between update to cached PHC time
+> [1026677.197928] #PF: supervisor read access in kernel mode
+> [1026677.197933] #PF: error_code(0x0000) - not-present page
+> [1026677.197937] PGD 1557a7067 P4D 0
+> [1026677.212133] ice 0000:b1:00.1: PTP reset successful
+> [1026677.212143] ice 0000:b1:00.1: 4344 msecs passed between update to cached PHC time
+> [1026677.212575]
+> [1026677.243142] Oops: 0000 [#1] PREEMPT SMP NOPTI
+> [1026677.247918] CPU: 23 PID: 42790 Comm: kworker/23:0 Kdump: loaded Tainted: G        W          6.8.0-rc1+ #1
+> [1026677.257989] Hardware name: Intel Corporation M50CYP2SBSTD/M50CYP2SBSTD, BIOS SE5C620.86B.01.01.0005.2202160810 02/16/2022
+> [1026677.269367] Workqueue: ice ice_service_task [ice]
+> [1026677.274592] RIP: 0010:ice_vsi_rebuild_set_coalesce+0x130/0x1e0 [ice]
+> [1026677.281421] Code: 0f 84 3a ff ff ff 41 0f b7 74 ec 02 66 89 b0 22 02 00 00 81 e6 ff 1f 00 00 e8 ec fd ff ff e9 35 ff ff ff 48 8b 43 30 49 63 ed <41> 0f b7 34 24 41 83 c5 01 48 8b 3c e8 66 89 b7 aa 02 00 00 81 e6
+> [1026677.300877] RSP: 0018:ff3be62a6399bcc0 EFLAGS: 00010202
+> [1026677.306556] RAX: ff28691e28980828 RBX: ff28691e41099828 RCX: 0000000000188000
+> [1026677.314148] RDX: 0000000000000000 RSI: 0000000000000010 RDI: ff28691e41099828
+> [1026677.321730] RBP: 0000000000000000 R08: 0000000000000000 R09: 0000000000000000
+> [1026677.329311] R10: 0000000000000007 R11: ffffffffffffffc0 R12: 0000000000000010
+> [1026677.336896] R13: 0000000000000000 R14: 0000000000000000 R15: ff28691e0eaa81a0
+> [1026677.344472] FS:  0000000000000000(0000) GS:ff28693cbffc0000(0000) knlGS:0000000000000000
+> [1026677.353000] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+> [1026677.359195] CR2: 0000000000000010 CR3: 0000000128df4001 CR4: 0000000000771ef0
+> [1026677.366779] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+> [1026677.374369] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+> [1026677.381952] PKRU: 55555554
+> [1026677.385116] Call Trace:
+> [1026677.388023]  <TASK>
+> [1026677.390589]  ? __die+0x20/0x70
+> [1026677.394105]  ? page_fault_oops+0x82/0x160
+> [1026677.398576]  ? do_user_addr_fault+0x65/0x6a0
+> [1026677.403307]  ? exc_page_fault+0x6a/0x150
+> [1026677.407694]  ? asm_exc_page_fault+0x22/0x30
+> [1026677.412349]  ? ice_vsi_rebuild_set_coalesce+0x130/0x1e0 [ice]
+> [1026677.418614]  ice_vsi_rebuild+0x34b/0x3c0 [ice]
+> [1026677.423583]  ice_vsi_rebuild_by_type+0x76/0x180 [ice]
+> [1026677.429147]  ice_rebuild+0x18b/0x520 [ice]
+> [1026677.433746]  ? delay_tsc+0x8f/0xc0
+> [1026677.437630]  ice_do_reset+0xa3/0x190 [ice]
+> [1026677.442231]  ice_service_task+0x26/0x440 [ice]
+> [1026677.447180]  process_one_work+0x174/0x340
+> [1026677.451669]  worker_thread+0x27e/0x390
+> [1026677.455890]  ? __pfx_worker_thread+0x10/0x10
+> [1026677.460627]  kthread+0xee/0x120
+> [1026677.464235]  ? __pfx_kthread+0x10/0x10
+> [1026677.468445]  ret_from_fork+0x2d/0x50
+> [1026677.472476]  ? __pfx_kthread+0x10/0x10
+> [1026677.476671]  ret_from_fork_asm+0x1b/0x30
+> [1026677.481050]  </TASK>
+> 
+> Fixes: b3e7b3a6ee92 ("ice: prevent NULL pointer deref during reload")
+> Reported-by: Robert Elliott <elliott@hpe.com>
+> Signed-off-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
 
-After a plain code juggling, checkpatch reported:
-total: 0 errors, 7 warnings, 12 checks, 1581 lines checked
+Reviewed-by: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
 
-so while at it let's address old issues as well. Should we ever address
-the remaining unnecessary forward declarations within
-drivers/net/ethernet/intel/, consider this change as a starting
-point/reference.
+Well, that refactor of config path introduced lots of issues. Could
+validation folks include a short list of tests they tried out against
+tested patch?
 
-As reported in [0], there would be a lot more of work to do...if we
-care.
-
-[0]: https://lore.kernel.org/intel-wired-lan/Zeh8qadiTGf413YU@boxer/T/#u
-Signed-off-by: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
----
- drivers/net/ethernet/intel/i40e/i40e_nvm.c | 1050 ++++++++++----------
- 1 file changed, 509 insertions(+), 541 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_nvm.c b/drivers/net/ethernet/intel/i40e/i40e_nvm.c
-index 605fd82f5d20..7f0936f4e05e 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_nvm.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_nvm.c
-@@ -734,37 +734,7 @@ int i40e_validate_nvm_checksum(struct i40e_hw *hw,
- 	return ret_code;
- }
- 
--static int i40e_nvmupd_state_init(struct i40e_hw *hw,
--				  struct i40e_nvm_access *cmd,
--				  u8 *bytes, int *perrno);
--static int i40e_nvmupd_state_reading(struct i40e_hw *hw,
--				     struct i40e_nvm_access *cmd,
--				     u8 *bytes, int *perrno);
--static int i40e_nvmupd_state_writing(struct i40e_hw *hw,
--				     struct i40e_nvm_access *cmd,
--				     u8 *bytes, int *errno);
--static enum i40e_nvmupd_cmd i40e_nvmupd_validate_command(struct i40e_hw *hw,
--						struct i40e_nvm_access *cmd,
--						int *perrno);
--static int i40e_nvmupd_nvm_erase(struct i40e_hw *hw,
--				 struct i40e_nvm_access *cmd,
--				 int *perrno);
--static int i40e_nvmupd_nvm_write(struct i40e_hw *hw,
--				 struct i40e_nvm_access *cmd,
--				 u8 *bytes, int *perrno);
--static int i40e_nvmupd_nvm_read(struct i40e_hw *hw,
--				struct i40e_nvm_access *cmd,
--				u8 *bytes, int *perrno);
--static int i40e_nvmupd_exec_aq(struct i40e_hw *hw,
--			       struct i40e_nvm_access *cmd,
--			       u8 *bytes, int *perrno);
--static int i40e_nvmupd_get_aq_result(struct i40e_hw *hw,
--				     struct i40e_nvm_access *cmd,
--				     u8 *bytes, int *perrno);
--static int i40e_nvmupd_get_aq_event(struct i40e_hw *hw,
--				    struct i40e_nvm_access *cmd,
--				    u8 *bytes, int *perrno);
--static inline u8 i40e_nvmupd_get_module(u32 val)
-+static u8 i40e_nvmupd_get_module(u32 val)
- {
- 	return (u8)(val & I40E_NVM_MOD_PNT_MASK);
- }
-@@ -799,146 +769,433 @@ static const char * const i40e_nvm_update_state_str[] = {
- };
- 
- /**
-- * i40e_nvmupd_command - Process an NVM update command
-+ * i40e_nvmupd_validate_command - Validate given command
-  * @hw: pointer to hardware structure
-- * @cmd: pointer to nvm update command
-- * @bytes: pointer to the data buffer
-+ * @cmd: pointer to nvm update command buffer
-  * @perrno: pointer to return error code
-  *
-- * Dispatches command depending on what update state is current
-+ * Return one of the valid command types or I40E_NVMUPD_INVALID
-  **/
--int i40e_nvmupd_command(struct i40e_hw *hw,
--			struct i40e_nvm_access *cmd,
--			u8 *bytes, int *perrno)
-+static enum i40e_nvmupd_cmd
-+i40e_nvmupd_validate_command(struct i40e_hw *hw, struct i40e_nvm_access *cmd,
-+			     int *perrno)
- {
- 	enum i40e_nvmupd_cmd upd_cmd;
--	int status;
--
--	/* assume success */
--	*perrno = 0;
-+	u8 module, transaction;
- 
--	/* early check for status command and debug msgs */
--	upd_cmd = i40e_nvmupd_validate_command(hw, cmd, perrno);
-+	/* anything that doesn't match a recognized case is an error */
-+	upd_cmd = I40E_NVMUPD_INVALID;
- 
--	i40e_debug(hw, I40E_DEBUG_NVM, "%s state %d nvm_release_on_hold %d opc 0x%04x cmd 0x%08x config 0x%08x offset 0x%08x data_size 0x%08x\n",
--		   i40e_nvm_update_state_str[upd_cmd],
--		   hw->nvmupd_state,
--		   hw->nvm_release_on_done, hw->nvm_wait_opcode,
--		   cmd->command, cmd->config, cmd->offset, cmd->data_size);
-+	transaction = i40e_nvmupd_get_transaction(cmd->config);
-+	module = i40e_nvmupd_get_module(cmd->config);
- 
--	if (upd_cmd == I40E_NVMUPD_INVALID) {
--		*perrno = -EFAULT;
-+	/* limits on data size */
-+	if (cmd->data_size < 1 || cmd->data_size > I40E_NVMUPD_MAX_DATA) {
- 		i40e_debug(hw, I40E_DEBUG_NVM,
--			   "i40e_nvmupd_validate_command returns %d errno %d\n",
--			   upd_cmd, *perrno);
-+			   "%s data_size %d\n", __func__, cmd->data_size);
-+		*perrno = -EFAULT;
-+		return I40E_NVMUPD_INVALID;
- 	}
- 
--	/* a status request returns immediately rather than
--	 * going into the state machine
--	 */
--	if (upd_cmd == I40E_NVMUPD_STATUS) {
--		if (!cmd->data_size) {
--			*perrno = -EFAULT;
--			return -EINVAL;
-+	switch (cmd->command) {
-+	case I40E_NVM_READ:
-+		switch (transaction) {
-+		case I40E_NVM_CON:
-+			upd_cmd = I40E_NVMUPD_READ_CON;
-+			break;
-+		case I40E_NVM_SNT:
-+			upd_cmd = I40E_NVMUPD_READ_SNT;
-+			break;
-+		case I40E_NVM_LCB:
-+			upd_cmd = I40E_NVMUPD_READ_LCB;
-+			break;
-+		case I40E_NVM_SA:
-+			upd_cmd = I40E_NVMUPD_READ_SA;
-+			break;
-+		case I40E_NVM_EXEC:
-+			if (module == 0xf)
-+				upd_cmd = I40E_NVMUPD_STATUS;
-+			else if (module == 0)
-+				upd_cmd = I40E_NVMUPD_GET_AQ_RESULT;
-+			break;
-+		case I40E_NVM_AQE:
-+			upd_cmd = I40E_NVMUPD_GET_AQ_EVENT;
-+			break;
- 		}
-+		break;
- 
--		bytes[0] = hw->nvmupd_state;
--
--		if (cmd->data_size >= 4) {
--			bytes[1] = 0;
--			*((u16 *)&bytes[2]) = hw->nvm_wait_opcode;
-+	case I40E_NVM_WRITE:
-+		switch (transaction) {
-+		case I40E_NVM_CON:
-+			upd_cmd = I40E_NVMUPD_WRITE_CON;
-+			break;
-+		case I40E_NVM_SNT:
-+			upd_cmd = I40E_NVMUPD_WRITE_SNT;
-+			break;
-+		case I40E_NVM_LCB:
-+			upd_cmd = I40E_NVMUPD_WRITE_LCB;
-+			break;
-+		case I40E_NVM_SA:
-+			upd_cmd = I40E_NVMUPD_WRITE_SA;
-+			break;
-+		case I40E_NVM_ERA:
-+			upd_cmd = I40E_NVMUPD_WRITE_ERA;
-+			break;
-+		case I40E_NVM_CSUM:
-+			upd_cmd = I40E_NVMUPD_CSUM_CON;
-+			break;
-+		case (I40E_NVM_CSUM | I40E_NVM_SA):
-+			upd_cmd = I40E_NVMUPD_CSUM_SA;
-+			break;
-+		case (I40E_NVM_CSUM | I40E_NVM_LCB):
-+			upd_cmd = I40E_NVMUPD_CSUM_LCB;
-+			break;
-+		case I40E_NVM_EXEC:
-+			if (module == 0)
-+				upd_cmd = I40E_NVMUPD_EXEC_AQ;
-+			break;
- 		}
-+		break;
-+	}
- 
--		/* Clear error status on read */
--		if (hw->nvmupd_state == I40E_NVMUPD_STATE_ERROR)
--			hw->nvmupd_state = I40E_NVMUPD_STATE_INIT;
-+	return upd_cmd;
-+}
- 
--		return 0;
--	}
-+/**
-+ * i40e_nvmupd_nvm_erase - Erase an NVM module
-+ * @hw: pointer to hardware structure
-+ * @cmd: pointer to nvm update command buffer
-+ * @perrno: pointer to return error code
-+ *
-+ * module, offset, data_size and data are in cmd structure
-+ **/
-+static int i40e_nvmupd_nvm_erase(struct i40e_hw *hw,
-+				 struct i40e_nvm_access *cmd,
-+				 int *perrno)
-+{
-+	struct i40e_asq_cmd_details cmd_details;
-+	u8 module, transaction;
-+	int status = 0;
-+	bool last;
- 
--	/* Clear status even it is not read and log */
--	if (hw->nvmupd_state == I40E_NVMUPD_STATE_ERROR) {
-+	transaction = i40e_nvmupd_get_transaction(cmd->config);
-+	module = i40e_nvmupd_get_module(cmd->config);
-+	last = (transaction & I40E_NVM_LCB);
-+
-+	memset(&cmd_details, 0, sizeof(cmd_details));
-+	cmd_details.wb_desc = &hw->nvm_wb_desc;
-+
-+	status = i40e_aq_erase_nvm(hw, module, cmd->offset, (u16)cmd->data_size,
-+				   last, &cmd_details);
-+	if (status) {
- 		i40e_debug(hw, I40E_DEBUG_NVM,
--			   "Clearing I40E_NVMUPD_STATE_ERROR state without reading\n");
--		hw->nvmupd_state = I40E_NVMUPD_STATE_INIT;
-+			   "%s mod 0x%x  off 0x%x len 0x%x\n",
-+			   __func__, module, cmd->offset, cmd->data_size);
-+		i40e_debug(hw, I40E_DEBUG_NVM,
-+			   "%s status %d aq %d\n",
-+			   __func__, status, hw->aq.asq_last_status);
-+		*perrno = i40e_aq_rc_to_posix(status, hw->aq.asq_last_status);
- 	}
- 
--	/* Acquire lock to prevent race condition where adminq_task
--	 * can execute after i40e_nvmupd_nvm_read/write but before state
--	 * variables (nvm_wait_opcode, nvm_release_on_done) are updated.
--	 *
--	 * During NVMUpdate, it is observed that lock could be held for
--	 * ~5ms for most commands. However lock is held for ~60ms for
--	 * NVMUPD_CSUM_LCB command.
--	 */
--	mutex_lock(&hw->aq.arq_mutex);
--	switch (hw->nvmupd_state) {
--	case I40E_NVMUPD_STATE_INIT:
--		status = i40e_nvmupd_state_init(hw, cmd, bytes, perrno);
--		break;
--
--	case I40E_NVMUPD_STATE_READING:
--		status = i40e_nvmupd_state_reading(hw, cmd, bytes, perrno);
--		break;
-+	return status;
-+}
- 
--	case I40E_NVMUPD_STATE_WRITING:
--		status = i40e_nvmupd_state_writing(hw, cmd, bytes, perrno);
--		break;
-+/**
-+ * i40e_nvmupd_nvm_write - Write NVM
-+ * @hw: pointer to hardware structure
-+ * @cmd: pointer to nvm update command buffer
-+ * @bytes: pointer to the data buffer
-+ * @perrno: pointer to return error code
-+ *
-+ * module, offset, data_size and data are in cmd structure
-+ **/
-+static int i40e_nvmupd_nvm_write(struct i40e_hw *hw,
-+				 struct i40e_nvm_access *cmd,
-+				 u8 *bytes, int *perrno)
-+{
-+	struct i40e_asq_cmd_details cmd_details;
-+	u8 module, transaction;
-+	u8 preservation_flags;
-+	int status = 0;
-+	bool last;
- 
--	case I40E_NVMUPD_STATE_INIT_WAIT:
--	case I40E_NVMUPD_STATE_WRITE_WAIT:
--		/* if we need to stop waiting for an event, clear
--		 * the wait info and return before doing anything else
--		 */
--		if (cmd->offset == 0xffff) {
--			i40e_nvmupd_clear_wait_state(hw);
--			status = 0;
--			break;
--		}
-+	transaction = i40e_nvmupd_get_transaction(cmd->config);
-+	module = i40e_nvmupd_get_module(cmd->config);
-+	last = (transaction & I40E_NVM_LCB);
-+	preservation_flags = i40e_nvmupd_get_preservation_flags(cmd->config);
- 
--		status = -EBUSY;
--		*perrno = -EBUSY;
--		break;
-+	memset(&cmd_details, 0, sizeof(cmd_details));
-+	cmd_details.wb_desc = &hw->nvm_wb_desc;
- 
--	default:
--		/* invalid state, should never happen */
-+	status = i40e_aq_update_nvm(hw, module, cmd->offset,
-+				    (u16)cmd->data_size, bytes, last,
-+				    preservation_flags, &cmd_details);
-+	if (status) {
- 		i40e_debug(hw, I40E_DEBUG_NVM,
--			   "NVMUPD: no such state %d\n", hw->nvmupd_state);
--		status = -EOPNOTSUPP;
--		*perrno = -ESRCH;
--		break;
-+			   "%s mod 0x%x off 0x%x len 0x%x\n",
-+			   __func__, module, cmd->offset, cmd->data_size);
-+		i40e_debug(hw, I40E_DEBUG_NVM,
-+			   "%s status %d aq %d\n",
-+			   __func__, status, hw->aq.asq_last_status);
-+		*perrno = i40e_aq_rc_to_posix(status, hw->aq.asq_last_status);
- 	}
- 
--	mutex_unlock(&hw->aq.arq_mutex);
- 	return status;
- }
- 
- /**
-- * i40e_nvmupd_state_init - Handle NVM update state Init
-+ * i40e_nvmupd_nvm_read - Read NVM
-  * @hw: pointer to hardware structure
-  * @cmd: pointer to nvm update command buffer
-  * @bytes: pointer to the data buffer
-  * @perrno: pointer to return error code
-  *
-- * Process legitimate commands of the Init state and conditionally set next
-- * state. Reject all other commands.
-+ * cmd structure contains identifiers and data buffer
-  **/
--static int i40e_nvmupd_state_init(struct i40e_hw *hw,
--				  struct i40e_nvm_access *cmd,
--				  u8 *bytes, int *perrno)
-+static int i40e_nvmupd_nvm_read(struct i40e_hw *hw,
-+				struct i40e_nvm_access *cmd,
-+				u8 *bytes, int *perrno)
- {
--	enum i40e_nvmupd_cmd upd_cmd;
--	int status = 0;
-+	struct i40e_asq_cmd_details cmd_details;
-+	u8 module, transaction;
-+	int status;
-+	bool last;
- 
--	upd_cmd = i40e_nvmupd_validate_command(hw, cmd, perrno);
-+	transaction = i40e_nvmupd_get_transaction(cmd->config);
-+	module = i40e_nvmupd_get_module(cmd->config);
-+	last = (transaction == I40E_NVM_LCB) || (transaction == I40E_NVM_SA);
- 
--	switch (upd_cmd) {
--	case I40E_NVMUPD_READ_SA:
--		status = i40e_acquire_nvm(hw, I40E_RESOURCE_READ);
--		if (status) {
--			*perrno = i40e_aq_rc_to_posix(status,
--						     hw->aq.asq_last_status);
--		} else {
-+	memset(&cmd_details, 0, sizeof(cmd_details));
-+	cmd_details.wb_desc = &hw->nvm_wb_desc;
-+
-+	status = i40e_aq_read_nvm(hw, module, cmd->offset, (u16)cmd->data_size,
-+				  bytes, last, &cmd_details);
-+	if (status) {
-+		i40e_debug(hw, I40E_DEBUG_NVM,
-+			   "%s mod 0x%x  off 0x%x  len 0x%x\n",
-+			   __func__, module, cmd->offset, cmd->data_size);
-+		i40e_debug(hw, I40E_DEBUG_NVM,
-+			   "%s status %d aq %d\n",
-+			   __func__, status, hw->aq.asq_last_status);
-+		*perrno = i40e_aq_rc_to_posix(status, hw->aq.asq_last_status);
-+	}
-+
-+	return status;
-+}
-+
-+/**
-+ * i40e_nvmupd_exec_aq - Run an AQ command
-+ * @hw: pointer to hardware structure
-+ * @cmd: pointer to nvm update command buffer
-+ * @bytes: pointer to the data buffer
-+ * @perrno: pointer to return error code
-+ *
-+ * cmd structure contains identifiers and data buffer
-+ **/
-+static int i40e_nvmupd_exec_aq(struct i40e_hw *hw,
-+			       struct i40e_nvm_access *cmd,
-+			       u8 *bytes, int *perrno)
-+{
-+	struct i40e_asq_cmd_details cmd_details;
-+	struct i40e_aq_desc *aq_desc;
-+	u32 buff_size = 0;
-+	u8 *buff = NULL;
-+	u32 aq_desc_len;
-+	u32 aq_data_len;
-+	int status;
-+
-+	i40e_debug(hw, I40E_DEBUG_NVM, "NVMUPD: %s\n", __func__);
-+	if (cmd->offset == 0xffff)
-+		return 0;
-+
-+	memset(&cmd_details, 0, sizeof(cmd_details));
-+	cmd_details.wb_desc = &hw->nvm_wb_desc;
-+
-+	aq_desc_len = sizeof(struct i40e_aq_desc);
-+	memset(&hw->nvm_wb_desc, 0, aq_desc_len);
-+
-+	/* get the aq descriptor */
-+	if (cmd->data_size < aq_desc_len) {
-+		i40e_debug(hw, I40E_DEBUG_NVM,
-+			   "NVMUPD: not enough aq desc bytes for exec, size %d < %d\n",
-+			   cmd->data_size, aq_desc_len);
-+		*perrno = -EINVAL;
-+		return -EINVAL;
-+	}
-+	aq_desc = (struct i40e_aq_desc *)bytes;
-+
-+	/* if data buffer needed, make sure it's ready */
-+	aq_data_len = cmd->data_size - aq_desc_len;
-+	buff_size = max_t(u32, aq_data_len, le16_to_cpu(aq_desc->datalen));
-+	if (buff_size) {
-+		if (!hw->nvm_buff.va) {
-+			status = i40e_allocate_virt_mem(hw, &hw->nvm_buff,
-+							hw->aq.asq_buf_size);
-+			if (status)
-+				i40e_debug(hw, I40E_DEBUG_NVM,
-+					   "NVMUPD: i40e_allocate_virt_mem for exec buff failed, %d\n",
-+					   status);
-+		}
-+
-+		if (hw->nvm_buff.va) {
-+			buff = hw->nvm_buff.va;
-+			memcpy(buff, &bytes[aq_desc_len], aq_data_len);
-+		}
-+	}
-+
-+	if (cmd->offset)
-+		memset(&hw->nvm_aq_event_desc, 0, aq_desc_len);
-+
-+	/* and away we go! */
-+	status = i40e_asq_send_command(hw, aq_desc, buff,
-+				       buff_size, &cmd_details);
-+	if (status) {
-+		i40e_debug(hw, I40E_DEBUG_NVM,
-+			   "%s err %pe aq_err %s\n",
-+			   __func__, ERR_PTR(status),
-+			   i40e_aq_str(hw, hw->aq.asq_last_status));
-+		*perrno = i40e_aq_rc_to_posix(status, hw->aq.asq_last_status);
-+		return status;
-+	}
-+
-+	/* should we wait for a followup event? */
-+	if (cmd->offset) {
-+		hw->nvm_wait_opcode = cmd->offset;
-+		hw->nvmupd_state = I40E_NVMUPD_STATE_INIT_WAIT;
-+	}
-+
-+	return status;
-+}
-+
-+/**
-+ * i40e_nvmupd_get_aq_result - Get the results from the previous exec_aq
-+ * @hw: pointer to hardware structure
-+ * @cmd: pointer to nvm update command buffer
-+ * @bytes: pointer to the data buffer
-+ * @perrno: pointer to return error code
-+ *
-+ * cmd structure contains identifiers and data buffer
-+ **/
-+static int i40e_nvmupd_get_aq_result(struct i40e_hw *hw,
-+				     struct i40e_nvm_access *cmd,
-+				     u8 *bytes, int *perrno)
-+{
-+	u32 aq_total_len;
-+	u32 aq_desc_len;
-+	int remainder;
-+	u8 *buff;
-+
-+	i40e_debug(hw, I40E_DEBUG_NVM, "NVMUPD: %s\n", __func__);
-+
-+	aq_desc_len = sizeof(struct i40e_aq_desc);
-+	aq_total_len = aq_desc_len + le16_to_cpu(hw->nvm_wb_desc.datalen);
-+
-+	/* check offset range */
-+	if (cmd->offset > aq_total_len) {
-+		i40e_debug(hw, I40E_DEBUG_NVM, "%s: offset too big %d > %d\n",
-+			   __func__, cmd->offset, aq_total_len);
-+		*perrno = -EINVAL;
-+		return -EINVAL;
-+	}
-+
-+	/* check copylength range */
-+	if (cmd->data_size > (aq_total_len - cmd->offset)) {
-+		int new_len = aq_total_len - cmd->offset;
-+
-+		i40e_debug(hw, I40E_DEBUG_NVM, "%s: copy length %d too big, trimming to %d\n",
-+			   __func__, cmd->data_size, new_len);
-+		cmd->data_size = new_len;
-+	}
-+
-+	remainder = cmd->data_size;
-+	if (cmd->offset < aq_desc_len) {
-+		u32 len = aq_desc_len - cmd->offset;
-+
-+		len = min(len, cmd->data_size);
-+		i40e_debug(hw, I40E_DEBUG_NVM, "%s: aq_desc bytes %d to %d\n",
-+			   __func__, cmd->offset, cmd->offset + len);
-+
-+		buff = ((u8 *)&hw->nvm_wb_desc) + cmd->offset;
-+		memcpy(bytes, buff, len);
-+
-+		bytes += len;
-+		remainder -= len;
-+		buff = hw->nvm_buff.va;
-+	} else {
-+		buff = hw->nvm_buff.va + (cmd->offset - aq_desc_len);
-+	}
-+
-+	if (remainder > 0) {
-+		int start_byte = buff - (u8 *)hw->nvm_buff.va;
-+
-+		i40e_debug(hw, I40E_DEBUG_NVM, "%s: databuf bytes %d to %d\n",
-+			   __func__, start_byte, start_byte + remainder);
-+		memcpy(bytes, buff, remainder);
-+	}
-+
-+	return 0;
-+}
-+
-+/**
-+ * i40e_nvmupd_get_aq_event - Get the Admin Queue event from previous exec_aq
-+ * @hw: pointer to hardware structure
-+ * @cmd: pointer to nvm update command buffer
-+ * @bytes: pointer to the data buffer
-+ * @perrno: pointer to return error code
-+ *
-+ * cmd structure contains identifiers and data buffer
-+ **/
-+static int i40e_nvmupd_get_aq_event(struct i40e_hw *hw,
-+				    struct i40e_nvm_access *cmd,
-+				    u8 *bytes, int *perrno)
-+{
-+	u32 aq_total_len;
-+	u32 aq_desc_len;
-+
-+	i40e_debug(hw, I40E_DEBUG_NVM, "NVMUPD: %s\n", __func__);
-+
-+	aq_desc_len = sizeof(struct i40e_aq_desc);
-+	aq_total_len = aq_desc_len + le16_to_cpu(hw->nvm_aq_event_desc.datalen);
-+
-+	/* check copylength range */
-+	if (cmd->data_size > aq_total_len) {
-+		i40e_debug(hw, I40E_DEBUG_NVM,
-+			   "%s: copy length %d too big, trimming to %d\n",
-+			   __func__, cmd->data_size, aq_total_len);
-+		cmd->data_size = aq_total_len;
-+	}
-+
-+	memcpy(bytes, &hw->nvm_aq_event_desc, cmd->data_size);
-+
-+	return 0;
-+}
-+
-+/**
-+ * i40e_nvmupd_state_init - Handle NVM update state Init
-+ * @hw: pointer to hardware structure
-+ * @cmd: pointer to nvm update command buffer
-+ * @bytes: pointer to the data buffer
-+ * @perrno: pointer to return error code
-+ *
-+ * Process legitimate commands of the Init state and conditionally set next
-+ * state. Reject all other commands.
-+ **/
-+static int i40e_nvmupd_state_init(struct i40e_hw *hw,
-+				  struct i40e_nvm_access *cmd,
-+				  u8 *bytes, int *perrno)
-+{
-+	enum i40e_nvmupd_cmd upd_cmd;
-+	int status = 0;
-+
-+	upd_cmd = i40e_nvmupd_validate_command(hw, cmd, perrno);
-+
-+	switch (upd_cmd) {
-+	case I40E_NVMUPD_READ_SA:
-+		status = i40e_acquire_nvm(hw, I40E_RESOURCE_READ);
-+		if (status) {
-+			*perrno = i40e_aq_rc_to_posix(status,
-+						      hw->aq.asq_last_status);
-+		} else {
- 			status = i40e_nvmupd_nvm_read(hw, cmd, bytes, perrno);
- 			i40e_release_nvm(hw);
- 		}
-@@ -948,7 +1205,7 @@ static int i40e_nvmupd_state_init(struct i40e_hw *hw,
- 		status = i40e_acquire_nvm(hw, I40E_RESOURCE_READ);
- 		if (status) {
- 			*perrno = i40e_aq_rc_to_posix(status,
--						     hw->aq.asq_last_status);
-+						      hw->aq.asq_last_status);
- 		} else {
- 			status = i40e_nvmupd_nvm_read(hw, cmd, bytes, perrno);
- 			if (status)
-@@ -962,7 +1219,7 @@ static int i40e_nvmupd_state_init(struct i40e_hw *hw,
- 		status = i40e_acquire_nvm(hw, I40E_RESOURCE_WRITE);
- 		if (status) {
- 			*perrno = i40e_aq_rc_to_posix(status,
--						     hw->aq.asq_last_status);
-+						      hw->aq.asq_last_status);
- 		} else {
- 			status = i40e_nvmupd_nvm_erase(hw, cmd, perrno);
- 			if (status) {
-@@ -979,7 +1236,7 @@ static int i40e_nvmupd_state_init(struct i40e_hw *hw,
- 		status = i40e_acquire_nvm(hw, I40E_RESOURCE_WRITE);
- 		if (status) {
- 			*perrno = i40e_aq_rc_to_posix(status,
--						     hw->aq.asq_last_status);
-+						      hw->aq.asq_last_status);
- 		} else {
- 			status = i40e_nvmupd_nvm_write(hw, cmd, bytes, perrno);
- 			if (status) {
-@@ -996,7 +1253,7 @@ static int i40e_nvmupd_state_init(struct i40e_hw *hw,
- 		status = i40e_acquire_nvm(hw, I40E_RESOURCE_WRITE);
- 		if (status) {
- 			*perrno = i40e_aq_rc_to_posix(status,
--						     hw->aq.asq_last_status);
-+						      hw->aq.asq_last_status);
- 		} else {
- 			status = i40e_nvmupd_nvm_write(hw, cmd, bytes, perrno);
- 			if (status) {
-@@ -1012,7 +1269,7 @@ static int i40e_nvmupd_state_init(struct i40e_hw *hw,
- 		status = i40e_acquire_nvm(hw, I40E_RESOURCE_WRITE);
- 		if (status) {
- 			*perrno = i40e_aq_rc_to_posix(status,
--						     hw->aq.asq_last_status);
-+						      hw->aq.asq_last_status);
- 		} else {
- 			status = i40e_update_nvm_checksum(hw);
- 			if (status) {
-@@ -1185,7 +1442,7 @@ static int i40e_nvmupd_state_writing(struct i40e_hw *hw,
- 	 * so here we try to reacquire the semaphore then retry the write.
- 	 * We only do one retry, then give up.
- 	 */
--	if (status && (hw->aq.asq_last_status == I40E_AQ_RC_EBUSY) &&
-+	if (status && hw->aq.asq_last_status == I40E_AQ_RC_EBUSY &&
- 	    !retry_attempt) {
- 		u32 old_asq_status = hw->aq.asq_last_status;
- 		int old_status = status;
-@@ -1215,457 +1472,168 @@ static int i40e_nvmupd_state_writing(struct i40e_hw *hw,
- }
- 
- /**
-- * i40e_nvmupd_clear_wait_state - clear wait state on hw
-- * @hw: pointer to the hardware structure
-+ * i40e_nvmupd_command - Process an NVM update command
-+ * @hw: pointer to hardware structure
-+ * @cmd: pointer to nvm update command
-+ * @bytes: pointer to the data buffer
-+ * @perrno: pointer to return error code
-+ *
-+ * Dispatches command depending on what update state is current
-  **/
--void i40e_nvmupd_clear_wait_state(struct i40e_hw *hw)
-+int i40e_nvmupd_command(struct i40e_hw *hw,
-+			struct i40e_nvm_access *cmd,
-+			u8 *bytes, int *perrno)
- {
--	i40e_debug(hw, I40E_DEBUG_NVM,
--		   "NVMUPD: clearing wait on opcode 0x%04x\n",
--		   hw->nvm_wait_opcode);
--
--	if (hw->nvm_release_on_done) {
--		i40e_release_nvm(hw);
--		hw->nvm_release_on_done = false;
--	}
--	hw->nvm_wait_opcode = 0;
-+	enum i40e_nvmupd_cmd upd_cmd;
-+	int status;
- 
--	if (hw->aq.arq_last_status) {
--		hw->nvmupd_state = I40E_NVMUPD_STATE_ERROR;
--		return;
--	}
-+	/* assume success */
-+	*perrno = 0;
- 
--	switch (hw->nvmupd_state) {
--	case I40E_NVMUPD_STATE_INIT_WAIT:
--		hw->nvmupd_state = I40E_NVMUPD_STATE_INIT;
--		break;
-+	/* early check for status command and debug msgs */
-+	upd_cmd = i40e_nvmupd_validate_command(hw, cmd, perrno);
- 
--	case I40E_NVMUPD_STATE_WRITE_WAIT:
--		hw->nvmupd_state = I40E_NVMUPD_STATE_WRITING;
--		break;
-+	i40e_debug(hw, I40E_DEBUG_NVM, "%s state %d nvm_release_on_hold %d opc 0x%04x cmd 0x%08x config 0x%08x offset 0x%08x data_size 0x%08x\n",
-+		   i40e_nvm_update_state_str[upd_cmd],
-+		   hw->nvmupd_state,
-+		   hw->nvm_release_on_done, hw->nvm_wait_opcode,
-+		   cmd->command, cmd->config, cmd->offset, cmd->data_size);
- 
--	default:
--		break;
-+	if (upd_cmd == I40E_NVMUPD_INVALID) {
-+		*perrno = -EFAULT;
-+		i40e_debug(hw, I40E_DEBUG_NVM,
-+			   "i40e_nvmupd_validate_command returns %d errno %d\n",
-+			   upd_cmd, *perrno);
- 	}
--}
- 
--/**
-- * i40e_nvmupd_check_wait_event - handle NVM update operation events
-- * @hw: pointer to the hardware structure
-- * @opcode: the event that just happened
-- * @desc: AdminQ descriptor
-- **/
--void i40e_nvmupd_check_wait_event(struct i40e_hw *hw, u16 opcode,
--				  struct i40e_aq_desc *desc)
--{
--	u32 aq_desc_len = sizeof(struct i40e_aq_desc);
-+	/* a status request returns immediately rather than
-+	 * going into the state machine
-+	 */
-+	if (upd_cmd == I40E_NVMUPD_STATUS) {
-+		if (!cmd->data_size) {
-+			*perrno = -EFAULT;
-+			return -EINVAL;
-+		}
- 
--	if (opcode == hw->nvm_wait_opcode) {
--		memcpy(&hw->nvm_aq_event_desc, desc, aq_desc_len);
--		i40e_nvmupd_clear_wait_state(hw);
--	}
--}
-+		bytes[0] = hw->nvmupd_state;
- 
--/**
-- * i40e_nvmupd_validate_command - Validate given command
-- * @hw: pointer to hardware structure
-- * @cmd: pointer to nvm update command buffer
-- * @perrno: pointer to return error code
-- *
-- * Return one of the valid command types or I40E_NVMUPD_INVALID
-- **/
--static enum i40e_nvmupd_cmd i40e_nvmupd_validate_command(struct i40e_hw *hw,
--						 struct i40e_nvm_access *cmd,
--						 int *perrno)
--{
--	enum i40e_nvmupd_cmd upd_cmd;
--	u8 module, transaction;
-+		if (cmd->data_size >= 4) {
-+			bytes[1] = 0;
-+			*((u16 *)&bytes[2]) = hw->nvm_wait_opcode;
-+		}
- 
--	/* anything that doesn't match a recognized case is an error */
--	upd_cmd = I40E_NVMUPD_INVALID;
-+		/* Clear error status on read */
-+		if (hw->nvmupd_state == I40E_NVMUPD_STATE_ERROR)
-+			hw->nvmupd_state = I40E_NVMUPD_STATE_INIT;
- 
--	transaction = i40e_nvmupd_get_transaction(cmd->config);
--	module = i40e_nvmupd_get_module(cmd->config);
-+		return 0;
-+	}
- 
--	/* limits on data size */
--	if ((cmd->data_size < 1) ||
--	    (cmd->data_size > I40E_NVMUPD_MAX_DATA)) {
-+	/* Clear status even it is not read and log */
-+	if (hw->nvmupd_state == I40E_NVMUPD_STATE_ERROR) {
- 		i40e_debug(hw, I40E_DEBUG_NVM,
--			   "i40e_nvmupd_validate_command data_size %d\n",
--			   cmd->data_size);
--		*perrno = -EFAULT;
--		return I40E_NVMUPD_INVALID;
-+			   "Clearing I40E_NVMUPD_STATE_ERROR state without reading\n");
-+		hw->nvmupd_state = I40E_NVMUPD_STATE_INIT;
- 	}
- 
--	switch (cmd->command) {
--	case I40E_NVM_READ:
--		switch (transaction) {
--		case I40E_NVM_CON:
--			upd_cmd = I40E_NVMUPD_READ_CON;
--			break;
--		case I40E_NVM_SNT:
--			upd_cmd = I40E_NVMUPD_READ_SNT;
--			break;
--		case I40E_NVM_LCB:
--			upd_cmd = I40E_NVMUPD_READ_LCB;
--			break;
--		case I40E_NVM_SA:
--			upd_cmd = I40E_NVMUPD_READ_SA;
--			break;
--		case I40E_NVM_EXEC:
--			if (module == 0xf)
--				upd_cmd = I40E_NVMUPD_STATUS;
--			else if (module == 0)
--				upd_cmd = I40E_NVMUPD_GET_AQ_RESULT;
--			break;
--		case I40E_NVM_AQE:
--			upd_cmd = I40E_NVMUPD_GET_AQ_EVENT;
--			break;
--		}
-+	/* Acquire lock to prevent race condition where adminq_task
-+	 * can execute after i40e_nvmupd_nvm_read/write but before state
-+	 * variables (nvm_wait_opcode, nvm_release_on_done) are updated.
-+	 *
-+	 * During NVMUpdate, it is observed that lock could be held for
-+	 * ~5ms for most commands. However lock is held for ~60ms for
-+	 * NVMUPD_CSUM_LCB command.
-+	 */
-+	mutex_lock(&hw->aq.arq_mutex);
-+	switch (hw->nvmupd_state) {
-+	case I40E_NVMUPD_STATE_INIT:
-+		status = i40e_nvmupd_state_init(hw, cmd, bytes, perrno);
- 		break;
- 
--	case I40E_NVM_WRITE:
--		switch (transaction) {
--		case I40E_NVM_CON:
--			upd_cmd = I40E_NVMUPD_WRITE_CON;
--			break;
--		case I40E_NVM_SNT:
--			upd_cmd = I40E_NVMUPD_WRITE_SNT;
--			break;
--		case I40E_NVM_LCB:
--			upd_cmd = I40E_NVMUPD_WRITE_LCB;
--			break;
--		case I40E_NVM_SA:
--			upd_cmd = I40E_NVMUPD_WRITE_SA;
--			break;
--		case I40E_NVM_ERA:
--			upd_cmd = I40E_NVMUPD_WRITE_ERA;
--			break;
--		case I40E_NVM_CSUM:
--			upd_cmd = I40E_NVMUPD_CSUM_CON;
--			break;
--		case (I40E_NVM_CSUM|I40E_NVM_SA):
--			upd_cmd = I40E_NVMUPD_CSUM_SA;
--			break;
--		case (I40E_NVM_CSUM|I40E_NVM_LCB):
--			upd_cmd = I40E_NVMUPD_CSUM_LCB;
--			break;
--		case I40E_NVM_EXEC:
--			if (module == 0)
--				upd_cmd = I40E_NVMUPD_EXEC_AQ;
--			break;
--		}
-+	case I40E_NVMUPD_STATE_READING:
-+		status = i40e_nvmupd_state_reading(hw, cmd, bytes, perrno);
- 		break;
--	}
--
--	return upd_cmd;
--}
--
--/**
-- * i40e_nvmupd_exec_aq - Run an AQ command
-- * @hw: pointer to hardware structure
-- * @cmd: pointer to nvm update command buffer
-- * @bytes: pointer to the data buffer
-- * @perrno: pointer to return error code
-- *
-- * cmd structure contains identifiers and data buffer
-- **/
--static int i40e_nvmupd_exec_aq(struct i40e_hw *hw,
--			       struct i40e_nvm_access *cmd,
--			       u8 *bytes, int *perrno)
--{
--	struct i40e_asq_cmd_details cmd_details;
--	struct i40e_aq_desc *aq_desc;
--	u32 buff_size = 0;
--	u8 *buff = NULL;
--	u32 aq_desc_len;
--	u32 aq_data_len;
--	int status;
--
--	i40e_debug(hw, I40E_DEBUG_NVM, "NVMUPD: %s\n", __func__);
--	if (cmd->offset == 0xffff)
--		return 0;
--
--	memset(&cmd_details, 0, sizeof(cmd_details));
--	cmd_details.wb_desc = &hw->nvm_wb_desc;
- 
--	aq_desc_len = sizeof(struct i40e_aq_desc);
--	memset(&hw->nvm_wb_desc, 0, aq_desc_len);
--
--	/* get the aq descriptor */
--	if (cmd->data_size < aq_desc_len) {
--		i40e_debug(hw, I40E_DEBUG_NVM,
--			   "NVMUPD: not enough aq desc bytes for exec, size %d < %d\n",
--			   cmd->data_size, aq_desc_len);
--		*perrno = -EINVAL;
--		return -EINVAL;
--	}
--	aq_desc = (struct i40e_aq_desc *)bytes;
--
--	/* if data buffer needed, make sure it's ready */
--	aq_data_len = cmd->data_size - aq_desc_len;
--	buff_size = max_t(u32, aq_data_len, le16_to_cpu(aq_desc->datalen));
--	if (buff_size) {
--		if (!hw->nvm_buff.va) {
--			status = i40e_allocate_virt_mem(hw, &hw->nvm_buff,
--							hw->aq.asq_buf_size);
--			if (status)
--				i40e_debug(hw, I40E_DEBUG_NVM,
--					   "NVMUPD: i40e_allocate_virt_mem for exec buff failed, %d\n",
--					   status);
--		}
-+	case I40E_NVMUPD_STATE_WRITING:
-+		status = i40e_nvmupd_state_writing(hw, cmd, bytes, perrno);
-+		break;
- 
--		if (hw->nvm_buff.va) {
--			buff = hw->nvm_buff.va;
--			memcpy(buff, &bytes[aq_desc_len], aq_data_len);
-+	case I40E_NVMUPD_STATE_INIT_WAIT:
-+	case I40E_NVMUPD_STATE_WRITE_WAIT:
-+		/* if we need to stop waiting for an event, clear
-+		 * the wait info and return before doing anything else
-+		 */
-+		if (cmd->offset == 0xffff) {
-+			i40e_nvmupd_clear_wait_state(hw);
-+			status = 0;
-+			break;
- 		}
--	}
- 
--	if (cmd->offset)
--		memset(&hw->nvm_aq_event_desc, 0, aq_desc_len);
-+		status = -EBUSY;
-+		*perrno = -EBUSY;
-+		break;
- 
--	/* and away we go! */
--	status = i40e_asq_send_command(hw, aq_desc, buff,
--				       buff_size, &cmd_details);
--	if (status) {
-+	default:
-+		/* invalid state, should never happen */
- 		i40e_debug(hw, I40E_DEBUG_NVM,
--			   "%s err %pe aq_err %s\n",
--			   __func__, ERR_PTR(status),
--			   i40e_aq_str(hw, hw->aq.asq_last_status));
--		*perrno = i40e_aq_rc_to_posix(status, hw->aq.asq_last_status);
--		return status;
--	}
--
--	/* should we wait for a followup event? */
--	if (cmd->offset) {
--		hw->nvm_wait_opcode = cmd->offset;
--		hw->nvmupd_state = I40E_NVMUPD_STATE_INIT_WAIT;
-+			   "NVMUPD: no such state %d\n", hw->nvmupd_state);
-+		status = -EOPNOTSUPP;
-+		*perrno = -ESRCH;
-+		break;
- 	}
- 
-+	mutex_unlock(&hw->aq.arq_mutex);
- 	return status;
- }
- 
- /**
-- * i40e_nvmupd_get_aq_result - Get the results from the previous exec_aq
-- * @hw: pointer to hardware structure
-- * @cmd: pointer to nvm update command buffer
-- * @bytes: pointer to the data buffer
-- * @perrno: pointer to return error code
-- *
-- * cmd structure contains identifiers and data buffer
-- **/
--static int i40e_nvmupd_get_aq_result(struct i40e_hw *hw,
--				     struct i40e_nvm_access *cmd,
--				     u8 *bytes, int *perrno)
--{
--	u32 aq_total_len;
--	u32 aq_desc_len;
--	int remainder;
--	u8 *buff;
--
--	i40e_debug(hw, I40E_DEBUG_NVM, "NVMUPD: %s\n", __func__);
--
--	aq_desc_len = sizeof(struct i40e_aq_desc);
--	aq_total_len = aq_desc_len + le16_to_cpu(hw->nvm_wb_desc.datalen);
--
--	/* check offset range */
--	if (cmd->offset > aq_total_len) {
--		i40e_debug(hw, I40E_DEBUG_NVM, "%s: offset too big %d > %d\n",
--			   __func__, cmd->offset, aq_total_len);
--		*perrno = -EINVAL;
--		return -EINVAL;
--	}
--
--	/* check copylength range */
--	if (cmd->data_size > (aq_total_len - cmd->offset)) {
--		int new_len = aq_total_len - cmd->offset;
--
--		i40e_debug(hw, I40E_DEBUG_NVM, "%s: copy length %d too big, trimming to %d\n",
--			   __func__, cmd->data_size, new_len);
--		cmd->data_size = new_len;
--	}
--
--	remainder = cmd->data_size;
--	if (cmd->offset < aq_desc_len) {
--		u32 len = aq_desc_len - cmd->offset;
--
--		len = min(len, cmd->data_size);
--		i40e_debug(hw, I40E_DEBUG_NVM, "%s: aq_desc bytes %d to %d\n",
--			   __func__, cmd->offset, cmd->offset + len);
--
--		buff = ((u8 *)&hw->nvm_wb_desc) + cmd->offset;
--		memcpy(bytes, buff, len);
--
--		bytes += len;
--		remainder -= len;
--		buff = hw->nvm_buff.va;
--	} else {
--		buff = hw->nvm_buff.va + (cmd->offset - aq_desc_len);
--	}
--
--	if (remainder > 0) {
--		int start_byte = buff - (u8 *)hw->nvm_buff.va;
--
--		i40e_debug(hw, I40E_DEBUG_NVM, "%s: databuf bytes %d to %d\n",
--			   __func__, start_byte, start_byte + remainder);
--		memcpy(bytes, buff, remainder);
--	}
--
--	return 0;
--}
--
--/**
-- * i40e_nvmupd_get_aq_event - Get the Admin Queue event from previous exec_aq
-- * @hw: pointer to hardware structure
-- * @cmd: pointer to nvm update command buffer
-- * @bytes: pointer to the data buffer
-- * @perrno: pointer to return error code
-- *
-- * cmd structure contains identifiers and data buffer
-+ * i40e_nvmupd_clear_wait_state - clear wait state on hw
-+ * @hw: pointer to the hardware structure
-  **/
--static int i40e_nvmupd_get_aq_event(struct i40e_hw *hw,
--				    struct i40e_nvm_access *cmd,
--				    u8 *bytes, int *perrno)
-+void i40e_nvmupd_clear_wait_state(struct i40e_hw *hw)
- {
--	u32 aq_total_len;
--	u32 aq_desc_len;
--
--	i40e_debug(hw, I40E_DEBUG_NVM, "NVMUPD: %s\n", __func__);
--
--	aq_desc_len = sizeof(struct i40e_aq_desc);
--	aq_total_len = aq_desc_len + le16_to_cpu(hw->nvm_aq_event_desc.datalen);
-+	i40e_debug(hw, I40E_DEBUG_NVM,
-+		   "NVMUPD: clearing wait on opcode 0x%04x\n",
-+		   hw->nvm_wait_opcode);
- 
--	/* check copylength range */
--	if (cmd->data_size > aq_total_len) {
--		i40e_debug(hw, I40E_DEBUG_NVM,
--			   "%s: copy length %d too big, trimming to %d\n",
--			   __func__, cmd->data_size, aq_total_len);
--		cmd->data_size = aq_total_len;
-+	if (hw->nvm_release_on_done) {
-+		i40e_release_nvm(hw);
-+		hw->nvm_release_on_done = false;
- 	}
-+	hw->nvm_wait_opcode = 0;
- 
--	memcpy(bytes, &hw->nvm_aq_event_desc, cmd->data_size);
--
--	return 0;
--}
--
--/**
-- * i40e_nvmupd_nvm_read - Read NVM
-- * @hw: pointer to hardware structure
-- * @cmd: pointer to nvm update command buffer
-- * @bytes: pointer to the data buffer
-- * @perrno: pointer to return error code
-- *
-- * cmd structure contains identifiers and data buffer
-- **/
--static int i40e_nvmupd_nvm_read(struct i40e_hw *hw,
--				struct i40e_nvm_access *cmd,
--				u8 *bytes, int *perrno)
--{
--	struct i40e_asq_cmd_details cmd_details;
--	u8 module, transaction;
--	int status;
--	bool last;
--
--	transaction = i40e_nvmupd_get_transaction(cmd->config);
--	module = i40e_nvmupd_get_module(cmd->config);
--	last = (transaction == I40E_NVM_LCB) || (transaction == I40E_NVM_SA);
--
--	memset(&cmd_details, 0, sizeof(cmd_details));
--	cmd_details.wb_desc = &hw->nvm_wb_desc;
--
--	status = i40e_aq_read_nvm(hw, module, cmd->offset, (u16)cmd->data_size,
--				  bytes, last, &cmd_details);
--	if (status) {
--		i40e_debug(hw, I40E_DEBUG_NVM,
--			   "i40e_nvmupd_nvm_read mod 0x%x  off 0x%x  len 0x%x\n",
--			   module, cmd->offset, cmd->data_size);
--		i40e_debug(hw, I40E_DEBUG_NVM,
--			   "i40e_nvmupd_nvm_read status %d aq %d\n",
--			   status, hw->aq.asq_last_status);
--		*perrno = i40e_aq_rc_to_posix(status, hw->aq.asq_last_status);
-+	if (hw->aq.arq_last_status) {
-+		hw->nvmupd_state = I40E_NVMUPD_STATE_ERROR;
-+		return;
- 	}
- 
--	return status;
--}
--
--/**
-- * i40e_nvmupd_nvm_erase - Erase an NVM module
-- * @hw: pointer to hardware structure
-- * @cmd: pointer to nvm update command buffer
-- * @perrno: pointer to return error code
-- *
-- * module, offset, data_size and data are in cmd structure
-- **/
--static int i40e_nvmupd_nvm_erase(struct i40e_hw *hw,
--				 struct i40e_nvm_access *cmd,
--				 int *perrno)
--{
--	struct i40e_asq_cmd_details cmd_details;
--	u8 module, transaction;
--	int status = 0;
--	bool last;
--
--	transaction = i40e_nvmupd_get_transaction(cmd->config);
--	module = i40e_nvmupd_get_module(cmd->config);
--	last = (transaction & I40E_NVM_LCB);
-+	switch (hw->nvmupd_state) {
-+	case I40E_NVMUPD_STATE_INIT_WAIT:
-+		hw->nvmupd_state = I40E_NVMUPD_STATE_INIT;
-+		break;
- 
--	memset(&cmd_details, 0, sizeof(cmd_details));
--	cmd_details.wb_desc = &hw->nvm_wb_desc;
-+	case I40E_NVMUPD_STATE_WRITE_WAIT:
-+		hw->nvmupd_state = I40E_NVMUPD_STATE_WRITING;
-+		break;
- 
--	status = i40e_aq_erase_nvm(hw, module, cmd->offset, (u16)cmd->data_size,
--				   last, &cmd_details);
--	if (status) {
--		i40e_debug(hw, I40E_DEBUG_NVM,
--			   "i40e_nvmupd_nvm_erase mod 0x%x  off 0x%x len 0x%x\n",
--			   module, cmd->offset, cmd->data_size);
--		i40e_debug(hw, I40E_DEBUG_NVM,
--			   "i40e_nvmupd_nvm_erase status %d aq %d\n",
--			   status, hw->aq.asq_last_status);
--		*perrno = i40e_aq_rc_to_posix(status, hw->aq.asq_last_status);
-+	default:
-+		break;
- 	}
--
--	return status;
- }
- 
- /**
-- * i40e_nvmupd_nvm_write - Write NVM
-- * @hw: pointer to hardware structure
-- * @cmd: pointer to nvm update command buffer
-- * @bytes: pointer to the data buffer
-- * @perrno: pointer to return error code
-- *
-- * module, offset, data_size and data are in cmd structure
-+ * i40e_nvmupd_check_wait_event - handle NVM update operation events
-+ * @hw: pointer to the hardware structure
-+ * @opcode: the event that just happened
-+ * @desc: AdminQ descriptor
-  **/
--static int i40e_nvmupd_nvm_write(struct i40e_hw *hw,
--				 struct i40e_nvm_access *cmd,
--				 u8 *bytes, int *perrno)
-+void i40e_nvmupd_check_wait_event(struct i40e_hw *hw, u16 opcode,
-+				  struct i40e_aq_desc *desc)
- {
--	struct i40e_asq_cmd_details cmd_details;
--	u8 module, transaction;
--	u8 preservation_flags;
--	int status = 0;
--	bool last;
--
--	transaction = i40e_nvmupd_get_transaction(cmd->config);
--	module = i40e_nvmupd_get_module(cmd->config);
--	last = (transaction & I40E_NVM_LCB);
--	preservation_flags = i40e_nvmupd_get_preservation_flags(cmd->config);
--
--	memset(&cmd_details, 0, sizeof(cmd_details));
--	cmd_details.wb_desc = &hw->nvm_wb_desc;
-+	u32 aq_desc_len = sizeof(struct i40e_aq_desc);
- 
--	status = i40e_aq_update_nvm(hw, module, cmd->offset,
--				    (u16)cmd->data_size, bytes, last,
--				    preservation_flags, &cmd_details);
--	if (status) {
--		i40e_debug(hw, I40E_DEBUG_NVM,
--			   "i40e_nvmupd_nvm_write mod 0x%x off 0x%x len 0x%x\n",
--			   module, cmd->offset, cmd->data_size);
--		i40e_debug(hw, I40E_DEBUG_NVM,
--			   "i40e_nvmupd_nvm_write status %d aq %d\n",
--			   status, hw->aq.asq_last_status);
--		*perrno = i40e_aq_rc_to_posix(status, hw->aq.asq_last_status);
-+	if (opcode == hw->nvm_wait_opcode) {
-+		memcpy(&hw->nvm_aq_event_desc, desc, aq_desc_len);
-+		i40e_nvmupd_clear_wait_state(hw);
- 	}
--
--	return status;
- }
--- 
-2.34.1
-
-
-
+> ---
+>  drivers/net/ethernet/intel/ice/ice_lib.c | 16 ++++++++--------
+>  1 file changed, 8 insertions(+), 8 deletions(-)
+> 
+> diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
+> index 097bf8fd6bf0..0f5a92a6b1e6 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_lib.c
+> +++ b/drivers/net/ethernet/intel/ice/ice_lib.c
+> @@ -3238,7 +3238,7 @@ int ice_vsi_rebuild(struct ice_vsi *vsi, u32 vsi_flags)
+>  {
+>  	struct ice_vsi_cfg_params params = {};
+>  	struct ice_coalesce_stored *coalesce;
+> -	int prev_num_q_vectors = 0;
+> +	int prev_num_q_vectors;
+>  	struct ice_pf *pf;
+>  	int ret;
+>  
+> @@ -3252,13 +3252,6 @@ int ice_vsi_rebuild(struct ice_vsi *vsi, u32 vsi_flags)
+>  	if (WARN_ON(vsi->type == ICE_VSI_VF && !vsi->vf))
+>  		return -EINVAL;
+>  
+> -	coalesce = kcalloc(vsi->num_q_vectors,
+> -			   sizeof(struct ice_coalesce_stored), GFP_KERNEL);
+> -	if (!coalesce)
+> -		return -ENOMEM;
+> -
+> -	prev_num_q_vectors = ice_vsi_rebuild_get_coalesce(vsi, coalesce);
+> -
+>  	ret = ice_vsi_realloc_stat_arrays(vsi);
+>  	if (ret)
+>  		goto err_vsi_cfg;
+> @@ -3268,6 +3261,13 @@ int ice_vsi_rebuild(struct ice_vsi *vsi, u32 vsi_flags)
+>  	if (ret)
+>  		goto err_vsi_cfg;
+>  
+> +	coalesce = kcalloc(vsi->num_q_vectors,
+> +			   sizeof(struct ice_coalesce_stored), GFP_KERNEL);
+> +	if (!coalesce)
+> +		return -ENOMEM;
+> +
+> +	prev_num_q_vectors = ice_vsi_rebuild_get_coalesce(vsi, coalesce);
+> +
+>  	ret = ice_vsi_cfg_tc_lan(pf, vsi);
+>  	if (ret) {
+>  		if (vsi_flags & ICE_VSI_FLAG_INIT) {
+> 
+> base-commit: 6923134fc6b62d7909169b3ad913ab72ee04233a
+> -- 
+> 2.39.3
+> 
+> 
