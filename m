@@ -2,191 +2,121 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1C25F8744A5
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  7 Mar 2024 00:44:26 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 2869B8744C0
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  7 Mar 2024 00:51:47 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 2FBE081E7C;
-	Wed,  6 Mar 2024 23:44:24 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id C3B1281CAF;
+	Wed,  6 Mar 2024 23:51:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id Lu8D3p2S9J5E; Wed,  6 Mar 2024 23:44:23 +0000 (UTC)
+	with ESMTP id Ef2AfDDAPok2; Wed,  6 Mar 2024 23:51:44 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 503DE820C4
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8894B81DA3
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1709768663;
-	bh=f1qFCAwVbiscrhouwZvzrrlw+5TfdQWUkGuyZHdSCc4=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=781Xyk4SqZQVPLMyx4okJ/A/53MzOM2a+irBDZDS3Gc+FtPOiZjAW+Slk/Sf4WpWH
-	 78Fi/0pnKCrH70e1EU/A3Nxt1mcuxQiOKaPTVpFDIUasMx0l2uM8ZR5dLveyCqxn8l
-	 iCUo80MhEwom/wEXrms3Zhy14LtKnhBGivDTblHUpq5RgU5IiIXr39N/jIVE/AJMhy
-	 1I65rrlLDY5DHcYjDbFhCUdvaM9uL5mdQ0coNuAobUZxVFk/jCb8ri1jm+9ZsnfSdV
-	 xidRpa7a8DG4Wff4I7uIY180QbHO0U8ph0TbGrT67Z+uZ2EZALVKvbOG65PhCOjJ3+
-	 QG2aSJIAL5/0Q==
+	s=default; t=1709769103;
+	bh=8/qOHT0FrXz/jk25N5t4D87h17X9rY+PHleRKIhqTA0=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=v79r9U/INMJTd36KSt9iF2vhp7Xvcv7j253Qlcmvck4tuTOEa9aOlZMs+DiHaRcyL
+	 iyTCnfTCG2TQ58ArhYTq+6PagNxl/Y1pN2YrnQ3KuS1WlU2N6+3YP8ihDsTljVIQgG
+	 b0q0ulSMpaDkNGEVmuH3TOhxspdEzvhq3CjQOBCKeZ52EkB4gJa/wSufBMMJrN6GOD
+	 qej9+J40rqt7y1w7tiYb5mG3Hm4eZJfh5Wc7PwnbHZarjVFecJRfVJSKFxf0fPApdo
+	 MWZxxEBkpyh9mCilBD/uPefYuoEqVRMXsAg+DCRTezriT/VGY3bcEsYC+2QWZWmwxQ
+	 7zAAHCumtLzRQ==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 503DE820C4;
-	Wed,  6 Mar 2024 23:44:23 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 8894B81DA3;
+	Wed,  6 Mar 2024 23:51:43 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 80D3B1BF5E9
- for <intel-wired-lan@lists.osuosl.org>; Wed,  6 Mar 2024 23:44:21 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 1B84D1BF5E9
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  6 Mar 2024 23:51:42 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 6C59340385
- for <intel-wired-lan@lists.osuosl.org>; Wed,  6 Mar 2024 23:44:21 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 05C23400D0
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  6 Mar 2024 23:51:42 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id S0SuxIovIuvl for <intel-wired-lan@lists.osuosl.org>;
- Wed,  6 Mar 2024 23:44:20 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.15;
- helo=mgamail.intel.com; envelope-from=anthony.l.nguyen@intel.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org CC081400D0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org CC081400D0
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.15])
- by smtp2.osuosl.org (Postfix) with ESMTPS id CC081400D0
- for <intel-wired-lan@lists.osuosl.org>; Wed,  6 Mar 2024 23:44:19 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,11005"; a="4582186"
-X-IronPort-AV: E=Sophos;i="6.06,209,1705392000"; 
-   d="scan'208";a="4582186"
-Received: from fmviesa003.fm.intel.com ([10.60.135.143])
- by fmvoesa109.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 06 Mar 2024 15:44:18 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.06,209,1705392000"; d="scan'208";a="14480892"
-Received: from fmsmsx603.amr.corp.intel.com ([10.18.126.83])
- by fmviesa003.fm.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
- 06 Mar 2024 15:44:18 -0800
-Received: from fmsmsx603.amr.corp.intel.com (10.18.126.83) by
- fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.35; Wed, 6 Mar 2024 15:44:17 -0800
-Received: from fmsedg601.ED.cps.intel.com (10.1.192.135) by
- fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.35 via Frontend Transport; Wed, 6 Mar 2024 15:44:17 -0800
-Received: from NAM12-BN8-obe.outbound.protection.outlook.com (104.47.55.169)
- by edgegateway.intel.com (192.55.55.70) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.35; Wed, 6 Mar 2024 15:44:17 -0800
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=VTUmicA/cwyd0qMchsDzlTgRqGwKcQr+doyNN/vhE7SZmjR8w1lHmm4fQQL9sXzy7kOUH6WtjJ1Y5sh3vveBAbuok1/ah3FE+M9aYhu09CUg+a7pGf5ZEzLC45iC0QKoWEG4r0QNLryS8BYAvmmmUrQB6EUgayBJkhsyMFNNspt+VfVhfvKMAA+Qk3atvXY6IWHP35jkbam0X+bIdTgm9y7quMvgLDPXGREp1A4/TdVyrskxDZ96GJOG36y3ouSIkBtX9MFLUDD01v1PNHnNhCkq5U+HuBrBkBdxlfbJEhySS5dD2MpE407KORCr2aEm8DqbG8U7KGiBcZX+wXyzjQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=f1qFCAwVbiscrhouwZvzrrlw+5TfdQWUkGuyZHdSCc4=;
- b=Q1fNPk5pqt9ReRybevk3nWXF4Iq7vhuOhG2aCTCwEIlMA/C4XPtavz8gEORMReB+R2keDlLqxoa+cWtk93f9xKDLzlFzJnk+1rkVBfyA0YfQrJe+TR0l7pwuyfWVbWsw3onFikl5fPQU6TQ7bLE+znByMA4aKLUvGKjmhsA/0W+kYhiJmMXMGVFacGw85MBsVTGp0ChhHtpO01B9sAQZnmC7cdHfy9QwyLb1No3pmyMryn1PFYSpbbZEy+A50od+pwLzsj3o/Rw4ecG9cjLFGzLPXVgO4ayTFydtOHWF09Vu8Qil7CfrqmJRjcIxTqyN5ZIuGiLQSBgtoaXpTRSEJw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from BL3PR11MB6435.namprd11.prod.outlook.com (2603:10b6:208:3bb::9)
- by SJ1PR11MB6179.namprd11.prod.outlook.com (2603:10b6:a03:45a::17)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7362.24; Wed, 6 Mar
- 2024 23:44:15 +0000
-Received: from BL3PR11MB6435.namprd11.prod.outlook.com
- ([fe80::9c80:a200:48a2:b308]) by BL3PR11MB6435.namprd11.prod.outlook.com
- ([fe80::9c80:a200:48a2:b308%4]) with mapi id 15.20.7362.019; Wed, 6 Mar 2024
- 23:44:15 +0000
-Message-ID: <713a5e32-d998-4510-a82f-cc3dc51c725c@intel.com>
-Date: Wed, 6 Mar 2024 15:44:11 -0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.1
-Content-Language: en-US
-To: <javi.merino@kernel.org>, <netdev@vger.kernel.org>
-References: <20240301182810.9808-1-javi.merino@kernel.org>
-From: Tony Nguyen <anthony.l.nguyen@intel.com>
-In-Reply-To: <20240301182810.9808-1-javi.merino@kernel.org>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 7bit
-X-ClientProxiedBy: MW4PR03CA0199.namprd03.prod.outlook.com
- (2603:10b6:303:b8::24) To BL3PR11MB6435.namprd11.prod.outlook.com
- (2603:10b6:208:3bb::9)
+ with ESMTP id yLoCjV8ZJIOR for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  6 Mar 2024 23:51:40 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2607:f8b0:4864:20::62a; helo=mail-pl1-x62a.google.com;
+ envelope-from=keescook@chromium.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 8430E40385
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 8430E40385
+Received: from mail-pl1-x62a.google.com (mail-pl1-x62a.google.com
+ [IPv6:2607:f8b0:4864:20::62a])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 8430E40385
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  6 Mar 2024 23:51:40 +0000 (UTC)
+Received: by mail-pl1-x62a.google.com with SMTP id
+ d9443c01a7336-1dc0e5b223eso2414645ad.1
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 06 Mar 2024 15:51:40 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1709769100; x=1710373900;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=8/qOHT0FrXz/jk25N5t4D87h17X9rY+PHleRKIhqTA0=;
+ b=fYhU9zJdenlmst9F6jNJD5G3n+NVt1CX6KpzghizwOW88JgcvwyMwv5scQKN24jJEz
+ 07H/oMNmkC0FCcO64W5pbQfew4gJ4BI4wto7JZmVpSRUtq3LS7Ck6YSEzGt1xRFfkiqR
+ EhFvDAVDOF0B+VWsHljxv8CoyDmtUB+CU2PgpJu8c173TOKzMZHWg34ltVVnJqel6Yrs
+ 5cBjextIZi6DQppAGJrwunzH50DLEqYR5qR3A9Vs1hE0/2I285ouB47jZXqfXmay2ATp
+ 9uM824V3Tg+qI5JL4/jSPI1c7Io9V0MoMEXBQQCr0ZvJFZNysL1vm+fIJ9MJwA0Gr1X7
+ tOWA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXolYV7HhcQbWnrrs1IrmNC+3oUqSj6Rzc4EIM6NvWoHzwre4yLt5U8/FjyGpn2SPW9nrl88Vqf9N/s1HNTcNbIhfo3RBxPda6m2w5t8Y/4+A==
+X-Gm-Message-State: AOJu0YwXFv5x/GIVV+vh+NoIFqsH5V29eLt/KuORuacZN9ibIGF4obRD
+ Zf3QxAG3t+iALYHj9K9LisloRdTVvNQgmsSZORM+PmK9ynwOr23g6BFTQMJl9w==
+X-Google-Smtp-Source: AGHT+IE+NKCIeOLd0oynlJyaM7Qjc9sYGTUxRdsQeKvXZf1AORTGmLID2QxlOJQ28IlrXJVJZL7wtw==
+X-Received: by 2002:a17:903:2289:b0:1dd:4064:9f2a with SMTP id
+ b9-20020a170903228900b001dd40649f2amr3014579plh.38.1709769099655; 
+ Wed, 06 Mar 2024 15:51:39 -0800 (PST)
+Received: from www.outflux.net ([198.0.35.241])
+ by smtp.gmail.com with ESMTPSA id
+ k11-20020a170902c40b00b001dba98889a3sm13153733plk.71.2024.03.06.15.51.38
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 06 Mar 2024 15:51:39 -0800 (PST)
+From: Kees Cook <keescook@chromium.org>
+To: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+Date: Wed,  6 Mar 2024 15:51:36 -0800
+Message-Id: <20240306235128.it.933-kees@kernel.org>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: BL3PR11MB6435:EE_|SJ1PR11MB6179:EE_
-X-MS-Office365-Filtering-Correlation-Id: c4c31335-33c5-490b-f2d0-08dc3e3754e1
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: g8KKvb50doDaSVHIgCnGf1ECRx/gt+H5dX5n0pq34XqSzFjuxn0nM7pqTWerht2g4ujo6dUmacy78Isgan60dD+oW8kFVzTgE2zXZJHyw/geS/rS7OZ+PAb2qjdp5n9zpXzp61xykDWhFJVofA3KIwwEO8fUVToHBtQIV/5h0jXrBmbvxfIGVWiRJJ+dPZ2JZDuSpNmd55hsJd6cpwOV9FmBcaGR13oso66soOd4zxvzVWc6q4CB/FzsrWsFxgYeohYIeT9f69tkqz8bF+aZMbhSWGR3qX0+gy4vq8Fwr8PE5WaM7hvRQKXCOw9S8Oa9pmtlad9Smkr84Ge+8ejelZTgym8q/nfd1+4boZEDDzeKHdMowKP2c2tZjQGnpGC4wVIy2BWZuturIMvvVvDY21aesr34MoQoGi3xPHaFH+46nFFnDuQ2dK6oOiT049yDb3NSPk4EkA6YD8e8rAJANPNpHWeCaIlGS4+YBdbocl2gvyILcsJuKxwWzLBzm4Jgg+33BN2a/QeDYxZ69I0JIfVDE/k6e2n/qTwzzPJgmUPmOZFrDA8b0lUA2VQkNUt+MyGNvZ0RdrgZtj5Zk44q7k90/smVypZy/nsVAW5MlRNzPJGCCaDjUSidrNW8nG4TtmJWwxl7JjwnC0IjIxgoiFg3/DM+pTyIMRWR4e5dwQI=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BL3PR11MB6435.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230031)(376005); DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?bVZKZmpFZ0xpTUVCNjhXL0hpcXBrbTFhL3ZHOWYwbW9zSFpjVzM2ekNlUS9l?=
- =?utf-8?B?dnozdit6aXNnQUdHRlRrOEdheHNBSHZTa1ltTFZsNlY2bUQ0OUpTT2V3V0Zk?=
- =?utf-8?B?MjNMeExIQ0QyZnZSaHYzZGlzYlNBOVBoYzlZUHVQaFlRYldiMm1wb2xlYXFJ?=
- =?utf-8?B?L0RTazI0VVpYZU52NDZoL2tadEtEdGJIenc3cFJQU1hqUXpoVjJvWVArQ3I1?=
- =?utf-8?B?OCsyNFRuWjR3UUhMK0FSaWoxdksvenROVUk3M1o0VzJ1K1VLZkx3Z1JzamFn?=
- =?utf-8?B?SDBSNEY1bUNRTE9hZFNoY1NOcXpiUmdvYzY1YUtpM0hhUGVuNGYvZEhMWnYx?=
- =?utf-8?B?N1hTTlp5ZUdYelRTelU0WHp6TmRRUXBwaGZKZTZ6NThaM0pQdFlmeFpPWXlY?=
- =?utf-8?B?aGQ3cWZvNzRqSVpjeTdkU2wybnNVUXA2TnBSZFk2U1ViYi9VaEpnZjhMd3pP?=
- =?utf-8?B?a3NFQy81aGtCWksrNmhQdWJmYUJVL0RsVFBUMGJ5NzhveWlEWGdwT1V4aFNT?=
- =?utf-8?B?UjRJcElOK0lRN1pTampyRFpTaEpaTGZjOWFLQ3Y3Q2dOY0VHKzB1dXZVaWU1?=
- =?utf-8?B?WXkzcVRiS05IN1RJbFpESkNEYnJya0xiSWJ3WXY1OE9SeDNuQjBYWHo1TmFS?=
- =?utf-8?B?L3JjaHRBQlRMSExqdVFrTnh4VmlkaUdISjRPMnUwc0lVNERUdVR3SkVmSUtS?=
- =?utf-8?B?L2g2SEFmemtoMXA5SEhHS1MzMXVpNEFzeWo4TllqZE8rL0l1MVRVK2t3VTF3?=
- =?utf-8?B?akpPeWgyYTlkTTZsdUtUMVM1NnpLTFE3bmlEb0NORS9kYk9PR1pKSGJoam9v?=
- =?utf-8?B?dE1EdDUwQndHNHRBTW9SS294TW5OQ290ZTlUUzZBQ3drcWNUUm93Lzk4NUNB?=
- =?utf-8?B?amxHZEl4NkMvRE44VVFkV2ZZWVMwNjBMMkpmRVZYbVYrcHo5cVI4TTZTamhG?=
- =?utf-8?B?MkhqMHpSR0NlM2VET0p6RWwwWjh3eUs2Mk42V3hZZFpxNGVQa21xd1N4Z1E5?=
- =?utf-8?B?bG9iN0ZFMnIrOS9xd2xBNXprU3R6TjBlQkwwQVJFMndacHhrdDdCdmZ4OUpt?=
- =?utf-8?B?ZDc1c0wveTFseDM2MkFTU25nVGNoajRLVnlNc3FxQmNwR0ZDZzJCcTR5eW1j?=
- =?utf-8?B?NjJzZmwzNmtFWHFPYnA3QXlibG41TndhZXNBWjJwaHFTazZUUTZHMEppSFF5?=
- =?utf-8?B?QmplUlpHSnMwSjJYdE1xMEJ6TXlXVjBEYVhEOHNUaW1rYVlhZjUvWk5JYkl1?=
- =?utf-8?B?R2piQ1JIV21WWjdKVzZoL2VNTXBKbUFXOGFjbzMzWkVtNEtnYXZRN1J6U09N?=
- =?utf-8?B?OWU4MnVYZ2ZFU1B6YWI3K2dwSzN1L0RZRGdqdGF1UHZ3aEQzcm0zdjI5TUU5?=
- =?utf-8?B?SGtRSCtaZEdTb0ZtN1FIUC83MnFQUzBaNzhCdFVMRit2TjdYVVE0YjhiY2Nl?=
- =?utf-8?B?YnZKNCsxbnNCdlE1SkVsN1lkOEVtNjVtNUlaeWUyeTlUdzl2MWlCa1N5YTkw?=
- =?utf-8?B?aHcrc1R1QU1RVzRHR2RRVkZUVWZWT0xVbjFhSzZPQTlOczdFSGdLM1ZFdXlk?=
- =?utf-8?B?SEJoUmQzQnBNL1hXays1WjBHMncybHl1elhLUkNHbWR3Q2x1bTh4aDhRRjI4?=
- =?utf-8?B?U0hmblV4dWdxSm4wSkJqa2hPbldzd0pTaWYxanoyM3BIdEVFdHFNcUV1eExR?=
- =?utf-8?B?aXBHSURJQTF0ZExZTHY2RGRZUEhJcFc2MmRBL2thYk90bVBoanY1ZlpzeEl5?=
- =?utf-8?B?dkdaeGdBVUdwL1lERnBpSzNocVJZR2Erb2M5UzhUWHBkYkxPZGNGUnZFeFV1?=
- =?utf-8?B?NEZuTjJDeDNhRFNGZm1OdlZETFlwVk4zNG9KTVpSb0ZaVWc2RWxwR3pnSE5Y?=
- =?utf-8?B?K3hDUGRuOEx2bXBNWXFqakY0R2xzNjdhQXhJOXhzek5Cd3RxZklFNlpKMHNC?=
- =?utf-8?B?VDZxQUJoNlNqYmpiR1V3WWYxVXpyM3hESzlVQWZtY1ZLU1p5U1pSRFVYbWV3?=
- =?utf-8?B?ZHRXYklpUWlRK1pHampRd1NtY01PYTVJWUxPSTFiSzBLN29ENlFTek80OC9o?=
- =?utf-8?B?Um1yMUg5eGxpeGlPM0ZQUTZtVGNSQTY0a1hPdTV1T2xkS203R2J3WjV3YmxV?=
- =?utf-8?B?dnA1U3BmQ0RzRS8zcWhDOVlOQk5QSWdpY05xcVduemx0bXJEQ3B5Z2JOTisz?=
- =?utf-8?B?VkE9PQ==?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: c4c31335-33c5-490b-f2d0-08dc3e3754e1
-X-MS-Exchange-CrossTenant-AuthSource: BL3PR11MB6435.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 06 Mar 2024 23:44:15.0088 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: NVbqlHL4Qv5Zfcvrp6Zoo3Xq9RhZJ9cwRWs/sJvwxFC8o7PWUefaN7GPOxhHQ0DfM1DLhIE4ic5SUgXz4fs1/8gTP2OZKYw1TT7LGgpLotk=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ1PR11MB6179
-X-OriginatorOrg: intel.com
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1709768659; x=1741304659;
- h=message-id:date:subject:to:cc:references:from:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=QKLfosTpeiKmzWprSLJDyGXzEuD5KpQDVTcmww4TUEI=;
- b=TRe5lzz0zFCjfP8/uy3ewlN5CaL88ib9oJAx1tfcR1JLHkck2uA4lt53
- BRan2YanyZuaT7iBQBZWMe8xq4IIz2zimZn4Ide/2DWI8CIejT0BQ4CPn
- VLBzSY1MMCA7GupZZZphANP5M9y93Qf+HKMsl4r/rWF762K2DKSRGzn5D
- xAwZG3NB+6BqofeE+Dh/SLUjkNWY4FjbXxfYIY7Fo3e9rRU84uCaYWORp
- DqO9XU6olUBeC9c3+MDlu0LSQmp8V3tFsH4VBlbE/1/xf4y45MbTyaO3b
- Bek3DI46t15tvYTXX53sBVQ5Tih81dYBd/9nzNv2SUczOSeBfLAdnccTJ
- g==;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=13054; i=keescook@chromium.org;
+ h=from:subject:message-id; bh=kniFRnBCwG2rtM99m/dBlmUFBoQG+cJidyFisAZSBmo=;
+ b=owEBbQKS/ZANAwAKAYly9N/cbcAmAcsmYgBl6QGIq6qEj9nAtP/Hd8ILwEU+OKOpsRRqP9w8G
+ A99LVP1JseJAjMEAAEKAB0WIQSlw/aPIp3WD3I+bhOJcvTf3G3AJgUCZekBiAAKCRCJcvTf3G3A
+ JiV/D/989Wm7nRRGUuhrbWs4Q23qF9hCTtWGHHjozWeiXXcNph/LiO7snp7NDjegFbvWGGN0q8g
+ 7z504ffBh9xBSttljWSciOKxgysSSyg8dathEyRLIJ9mLHyPC1qIb4reP7W74pYWww8bHmF23Yj
+ dESZd3Y4gJXka/ITZPhurHnIsqtXfVS6E5UHYmMu4YbPqmNfg85yvn2owKEpTMZ4KB8rrxdPEEa
+ QC06bJsVoib2ilAt/TLjHJkzVKWnr2ONGS8GCx98G1rjCiU08+q/XoKRsKjMLjOnQzeWGlZee7M
+ 6UwR43tDyBZMysUuK8FdSxDVGNYJ939ZAXVReRr+42MqEK+pnwh78GKBHB/fOTV56cgLOj17/1l
+ yLoIWJGTATYxoI+RN2CCeSC2N0JvUVJRGCzNpCNDCWj3J9H2xZXNSEy4gsP1u4WxnTRKttnqhjr
+ Tv/1764wcWBM3l3wWQnyPUMO9iY415td9XW5zMmLEB+KXAgJoUyYoB3+g4ILm9yfnsxB3Sy89NS
+ zEt0DFfKkLkR81TltumdLXKtYVJDo0SshcYbix6ocipmvovqu9qLEPBmPoVmn6uW+XfOFKLvZua
+ bVQ8z4aav9z9FNpjBvszD/ebecrdw5IzNGUyQkXSz5Ls8/4y1wOJto6T8XYjJJDLjuqxHHWueRg
+ T5P7j8 Ws8vWaEkw==
+X-Developer-Key: i=keescook@chromium.org; a=openpgp;
+ fpr=A5C3F68F229DD60F723E6E138972F4DFDC6DC026
+Content-Transfer-Encoding: 8bit
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=chromium.org; s=google; t=1709769100; x=1710373900; darn=lists.osuosl.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=8/qOHT0FrXz/jk25N5t4D87h17X9rY+PHleRKIhqTA0=;
+ b=V7Lw0g+z4FfNYpIUcaaVY0QT6HkMdefSOhVDDFdi/11jNU8fPxJHMZrX4Ff3cIk4dj
+ irHvTMcD/9zW+e0Nc4o1cn2uUe7XEOfi/wUTvgpgw0gupJv5yQoDeLmByJcPDOa+f0dw
+ /DlBI5k/a5fwQuERVzf5Y/HN2/0od7um4+Pvc=
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=intel.com
+ header.from=chromium.org
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=TRe5lzz0
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH] ice: Fix enabling SR-IOV with Xen
+ dkim=pass (1024-bit key,
+ unprotected) header.d=chromium.org header.i=@chromium.org header.a=rsa-sha256
+ header.s=google header.b=V7Lw0g+z
+Subject: [Intel-wired-lan] [PATCH v2] overflow: Change DEFINE_FLEX to take
+ __counted_by member
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -199,21 +129,323 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Ross Lagerwall <ross.lagerwall@citrix.com>,
- intel-wired-lan@lists.osuosl.org
+Cc: Kees Cook <keescook@chromium.org>, intel-wired-lan@lists.osuosl.org,
+ "Gustavo A. R. Silva" <gustavoars@kernel.org>,
+ Eric Dumazet <edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
+ linux-hardening@vger.kernel.org, netdev@vger.kernel.org,
+ Jakub Kicinski <kuba@kernel.org>, Andrew Morton <akpm@linux-foundation.org>,
+ Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>,
+ linux-kernel@vger.kernel.org
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 3/1/2024 10:28 AM, javi.merino@kernel.org wrote:
-> From: Ross Lagerwall <ross.lagerwall@citrix.com>
->
-> I'm unsure about the error path if `pci_enable_sriov()` fails.  Do we
-> have to undo what `ice_start_vfs()` has started?  I can see that
-> `ice_start_vfs()` has a teardown at the end, so maybe we need the same
-> code if `pci_enable_sriov()` fails?
+The norm should be flexible array structures with __counted_by
+annotations, so DEFINE_FLEX() is updated to expect that. Rename
+the non-annotated version to DEFINE_RAW_FLEX(), and update the
+few existing users.
 
-Yes, we should teardown the ice_start_vfs() work if pci_enable_sriov() 
-fails.
+Signed-off-by: Kees Cook <keescook@chromium.org>
+---
+Cc: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+Cc: Jesse Brandeburg <jesse.brandeburg@intel.com>
+Cc: Tony Nguyen <anthony.l.nguyen@intel.com>
+Cc: "David S. Miller" <davem@davemloft.net>
+Cc: Eric Dumazet <edumazet@google.com>
+Cc: Jakub Kicinski <kuba@kernel.org>
+Cc: Paolo Abeni <pabeni@redhat.com>
+Cc: "Gustavo A. R. Silva" <gustavoars@kernel.org>
+Cc: intel-wired-lan@lists.osuosl.org
+Cc: netdev@vger.kernel.org
+Cc: linux-hardening@vger.kernel.org
+ v2: swap member/counter args
+ v1: https://lore.kernel.org/lkml/20240306010746.work.678-kees@kernel.org/
+---
+ drivers/net/ethernet/intel/ice/ice_common.c |  4 +--
+ drivers/net/ethernet/intel/ice/ice_ddp.c    |  8 +++---
+ drivers/net/ethernet/intel/ice/ice_lag.c    |  6 ++---
+ drivers/net/ethernet/intel/ice/ice_lib.c    |  4 +--
+ drivers/net/ethernet/intel/ice/ice_sched.c  |  4 +--
+ drivers/net/ethernet/intel/ice/ice_switch.c | 10 ++++----
+ drivers/net/ethernet/intel/ice/ice_xsk.c    |  2 +-
+ include/linux/overflow.h                    | 27 +++++++++++++++++----
+ lib/overflow_kunit.c                        | 19 +++++++++++++++
+ 9 files changed, 60 insertions(+), 24 deletions(-)
 
-Thanks,
-Tony
+diff --git a/drivers/net/ethernet/intel/ice/ice_common.c b/drivers/net/ethernet/intel/ice/ice_common.c
+index 10c32cd80fff..ce50a322daa9 100644
+--- a/drivers/net/ethernet/intel/ice/ice_common.c
++++ b/drivers/net/ethernet/intel/ice/ice_common.c
+@@ -4700,7 +4700,7 @@ ice_dis_vsi_txq(struct ice_port_info *pi, u16 vsi_handle, u8 tc, u8 num_queues,
+ 		enum ice_disq_rst_src rst_src, u16 vmvf_num,
+ 		struct ice_sq_cd *cd)
+ {
+-	DEFINE_FLEX(struct ice_aqc_dis_txq_item, qg_list, q_id, 1);
++	DEFINE_RAW_FLEX(struct ice_aqc_dis_txq_item, qg_list, q_id, 1);
+ 	u16 i, buf_size = __struct_size(qg_list);
+ 	struct ice_q_ctx *q_ctx;
+ 	int status = -ENOENT;
+@@ -4922,7 +4922,7 @@ int
+ ice_dis_vsi_rdma_qset(struct ice_port_info *pi, u16 count, u32 *qset_teid,
+ 		      u16 *q_id)
+ {
+-	DEFINE_FLEX(struct ice_aqc_dis_txq_item, qg_list, q_id, 1);
++	DEFINE_RAW_FLEX(struct ice_aqc_dis_txq_item, qg_list, q_id, 1);
+ 	u16 qg_size = __struct_size(qg_list);
+ 	struct ice_hw *hw;
+ 	int status = 0;
+diff --git a/drivers/net/ethernet/intel/ice/ice_ddp.c b/drivers/net/ethernet/intel/ice/ice_ddp.c
+index 8b7504a9df31..03efb2521ca7 100644
+--- a/drivers/net/ethernet/intel/ice/ice_ddp.c
++++ b/drivers/net/ethernet/intel/ice/ice_ddp.c
+@@ -1934,8 +1934,8 @@ static enum ice_ddp_state ice_init_pkg_info(struct ice_hw *hw,
+  */
+ static enum ice_ddp_state ice_get_pkg_info(struct ice_hw *hw)
+ {
+-	DEFINE_FLEX(struct ice_aqc_get_pkg_info_resp, pkg_info, pkg_info,
+-		    ICE_PKG_CNT);
++	DEFINE_RAW_FLEX(struct ice_aqc_get_pkg_info_resp, pkg_info, pkg_info,
++			ICE_PKG_CNT);
+ 	u16 size = __struct_size(pkg_info);
+ 	u32 i;
+ 
+@@ -1986,8 +1986,8 @@ static enum ice_ddp_state ice_chk_pkg_compat(struct ice_hw *hw,
+ 					     struct ice_pkg_hdr *ospkg,
+ 					     struct ice_seg **seg)
+ {
+-	DEFINE_FLEX(struct ice_aqc_get_pkg_info_resp, pkg, pkg_info,
+-		    ICE_PKG_CNT);
++	DEFINE_RAW_FLEX(struct ice_aqc_get_pkg_info_resp, pkg, pkg_info,
++			ICE_PKG_CNT);
+ 	u16 size = __struct_size(pkg);
+ 	enum ice_ddp_state state;
+ 	u32 i;
+diff --git a/drivers/net/ethernet/intel/ice/ice_lag.c b/drivers/net/ethernet/intel/ice/ice_lag.c
+index 2a25323105e5..da38edac1c42 100644
+--- a/drivers/net/ethernet/intel/ice/ice_lag.c
++++ b/drivers/net/ethernet/intel/ice/ice_lag.c
+@@ -470,7 +470,7 @@ static void
+ ice_lag_move_vf_node_tc(struct ice_lag *lag, u8 oldport, u8 newport,
+ 			u16 vsi_num, u8 tc)
+ {
+-	DEFINE_FLEX(struct ice_aqc_move_elem, buf, teid, 1);
++	DEFINE_RAW_FLEX(struct ice_aqc_move_elem, buf, teid, 1);
+ 	struct device *dev = ice_pf_to_dev(lag->pf);
+ 	u16 numq, valq, num_moved, qbuf_size;
+ 	u16 buf_size = __struct_size(buf);
+@@ -828,7 +828,7 @@ static void
+ ice_lag_reclaim_vf_tc(struct ice_lag *lag, struct ice_hw *src_hw, u16 vsi_num,
+ 		      u8 tc)
+ {
+-	DEFINE_FLEX(struct ice_aqc_move_elem, buf, teid, 1);
++	DEFINE_RAW_FLEX(struct ice_aqc_move_elem, buf, teid, 1);
+ 	struct device *dev = ice_pf_to_dev(lag->pf);
+ 	u16 numq, valq, num_moved, qbuf_size;
+ 	u16 buf_size = __struct_size(buf);
+@@ -1852,7 +1852,7 @@ static void
+ ice_lag_move_vf_nodes_tc_sync(struct ice_lag *lag, struct ice_hw *dest_hw,
+ 			      u16 vsi_num, u8 tc)
+ {
+-	DEFINE_FLEX(struct ice_aqc_move_elem, buf, teid, 1);
++	DEFINE_RAW_FLEX(struct ice_aqc_move_elem, buf, teid, 1);
+ 	struct device *dev = ice_pf_to_dev(lag->pf);
+ 	u16 numq, valq, num_moved, qbuf_size;
+ 	u16 buf_size = __struct_size(buf);
+diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
+index 9be724291ef8..6819e95cec32 100644
+--- a/drivers/net/ethernet/intel/ice/ice_lib.c
++++ b/drivers/net/ethernet/intel/ice/ice_lib.c
+@@ -1805,7 +1805,7 @@ int ice_vsi_cfg_single_rxq(struct ice_vsi *vsi, u16 q_idx)
+ 
+ int ice_vsi_cfg_single_txq(struct ice_vsi *vsi, struct ice_tx_ring **tx_rings, u16 q_idx)
+ {
+-	DEFINE_FLEX(struct ice_aqc_add_tx_qgrp, qg_buf, txqs, 1);
++	DEFINE_RAW_FLEX(struct ice_aqc_add_tx_qgrp, qg_buf, txqs, 1);
+ 
+ 	if (q_idx >= vsi->alloc_txq || !tx_rings || !tx_rings[q_idx])
+ 		return -EINVAL;
+@@ -1854,7 +1854,7 @@ int ice_vsi_cfg_rxqs(struct ice_vsi *vsi)
+ static int
+ ice_vsi_cfg_txqs(struct ice_vsi *vsi, struct ice_tx_ring **rings, u16 count)
+ {
+-	DEFINE_FLEX(struct ice_aqc_add_tx_qgrp, qg_buf, txqs, 1);
++	DEFINE_RAW_FLEX(struct ice_aqc_add_tx_qgrp, qg_buf, txqs, 1);
+ 	int err = 0;
+ 	u16 q_idx;
+ 
+diff --git a/drivers/net/ethernet/intel/ice/ice_sched.c b/drivers/net/ethernet/intel/ice/ice_sched.c
+index d174a4eeb899..a1525992d14b 100644
+--- a/drivers/net/ethernet/intel/ice/ice_sched.c
++++ b/drivers/net/ethernet/intel/ice/ice_sched.c
+@@ -237,7 +237,7 @@ static int
+ ice_sched_remove_elems(struct ice_hw *hw, struct ice_sched_node *parent,
+ 		       u32 node_teid)
+ {
+-	DEFINE_FLEX(struct ice_aqc_delete_elem, buf, teid, 1);
++	DEFINE_RAW_FLEX(struct ice_aqc_delete_elem, buf, teid, 1);
+ 	u16 buf_size = __struct_size(buf);
+ 	u16 num_groups_removed = 0;
+ 	int status;
+@@ -2219,7 +2219,7 @@ int
+ ice_sched_move_nodes(struct ice_port_info *pi, struct ice_sched_node *parent,
+ 		     u16 num_items, u32 *list)
+ {
+-	DEFINE_FLEX(struct ice_aqc_move_elem, buf, teid, 1);
++	DEFINE_RAW_FLEX(struct ice_aqc_move_elem, buf, teid, 1);
+ 	u16 buf_len = __struct_size(buf);
+ 	struct ice_sched_node *node;
+ 	u16 i, grps_movd = 0;
+diff --git a/drivers/net/ethernet/intel/ice/ice_switch.c b/drivers/net/ethernet/intel/ice/ice_switch.c
+index f84bab80ca42..d4baae8c3b72 100644
+--- a/drivers/net/ethernet/intel/ice/ice_switch.c
++++ b/drivers/net/ethernet/intel/ice/ice_switch.c
+@@ -1812,7 +1812,7 @@ ice_aq_alloc_free_vsi_list(struct ice_hw *hw, u16 *vsi_list_id,
+ 			   enum ice_sw_lkup_type lkup_type,
+ 			   enum ice_adminq_opc opc)
+ {
+-	DEFINE_FLEX(struct ice_aqc_alloc_free_res_elem, sw_buf, elem, 1);
++	DEFINE_RAW_FLEX(struct ice_aqc_alloc_free_res_elem, sw_buf, elem, 1);
+ 	u16 buf_len = __struct_size(sw_buf);
+ 	struct ice_aqc_res_elem *vsi_ele;
+ 	int status;
+@@ -2081,7 +2081,7 @@ ice_aq_get_recipe_to_profile(struct ice_hw *hw, u32 profile_id, u8 *r_bitmap,
+  */
+ int ice_alloc_recipe(struct ice_hw *hw, u16 *rid)
+ {
+-	DEFINE_FLEX(struct ice_aqc_alloc_free_res_elem, sw_buf, elem, 1);
++	DEFINE_RAW_FLEX(struct ice_aqc_alloc_free_res_elem, sw_buf, elem, 1);
+ 	u16 buf_len = __struct_size(sw_buf);
+ 	int status;
+ 
+@@ -4418,7 +4418,7 @@ int
+ ice_alloc_res_cntr(struct ice_hw *hw, u8 type, u8 alloc_shared, u16 num_items,
+ 		   u16 *counter_id)
+ {
+-	DEFINE_FLEX(struct ice_aqc_alloc_free_res_elem, buf, elem, 1);
++	DEFINE_RAW_FLEX(struct ice_aqc_alloc_free_res_elem, buf, elem, 1);
+ 	u16 buf_len = __struct_size(buf);
+ 	int status;
+ 
+@@ -4446,7 +4446,7 @@ int
+ ice_free_res_cntr(struct ice_hw *hw, u8 type, u8 alloc_shared, u16 num_items,
+ 		  u16 counter_id)
+ {
+-	DEFINE_FLEX(struct ice_aqc_alloc_free_res_elem, buf, elem, 1);
++	DEFINE_RAW_FLEX(struct ice_aqc_alloc_free_res_elem, buf, elem, 1);
+ 	u16 buf_len = __struct_size(buf);
+ 	int status;
+ 
+@@ -4476,7 +4476,7 @@ ice_free_res_cntr(struct ice_hw *hw, u8 type, u8 alloc_shared, u16 num_items,
+  */
+ int ice_share_res(struct ice_hw *hw, u16 type, u8 shared, u16 res_id)
+ {
+-	DEFINE_FLEX(struct ice_aqc_alloc_free_res_elem, buf, elem, 1);
++	DEFINE_RAW_FLEX(struct ice_aqc_alloc_free_res_elem, buf, elem, 1);
+ 	u16 buf_len = __struct_size(buf);
+ 	u16 res_type;
+ 	int status;
+diff --git a/drivers/net/ethernet/intel/ice/ice_xsk.c b/drivers/net/ethernet/intel/ice/ice_xsk.c
+index 8b81a1677045..92ffa8de5171 100644
+--- a/drivers/net/ethernet/intel/ice/ice_xsk.c
++++ b/drivers/net/ethernet/intel/ice/ice_xsk.c
+@@ -217,7 +217,7 @@ static int ice_qp_dis(struct ice_vsi *vsi, u16 q_idx)
+  */
+ static int ice_qp_ena(struct ice_vsi *vsi, u16 q_idx)
+ {
+-	DEFINE_FLEX(struct ice_aqc_add_tx_qgrp, qg_buf, txqs, 1);
++	DEFINE_RAW_FLEX(struct ice_aqc_add_tx_qgrp, qg_buf, txqs, 1);
+ 	u16 size = __struct_size(qg_buf);
+ 	struct ice_q_vector *q_vector;
+ 	struct ice_tx_ring *tx_ring;
+diff --git a/include/linux/overflow.h b/include/linux/overflow.h
+index aa691f2119b0..677b03c4c84f 100644
+--- a/include/linux/overflow.h
++++ b/include/linux/overflow.h
+@@ -396,9 +396,9 @@ static inline size_t __must_check size_sub(size_t minuend, size_t subtrahend)
+  * @name: Name for a variable to define.
+  * @member: Name of the array member.
+  * @count: Number of elements in the array; must be compile-time const.
+- * @initializer: initializer expression (could be empty for no init).
++ * @initializer...: initializer expression (could be empty for no init).
+  */
+-#define _DEFINE_FLEX(type, name, member, count, initializer)			\
++#define _DEFINE_FLEX(type, name, member, count, initializer...)			\
+ 	_Static_assert(__builtin_constant_p(count),				\
+ 		       "onstack flex array members require compile-time const count"); \
+ 	union {									\
+@@ -408,8 +408,8 @@ static inline size_t __must_check size_sub(size_t minuend, size_t subtrahend)
+ 	type *name = (type *)&name##_u
+ 
+ /**
+- * DEFINE_FLEX() - Define an on-stack instance of structure with a trailing
+- * flexible array member.
++ * DEFINE_RAW_FLEX() - Define an on-stack instance of structure with a trailing
++ * flexible array member, when it does not have a __counted_by annotation.
+  *
+  * @type: structure type name, including "struct" keyword.
+  * @name: Name for a variable to define.
+@@ -420,7 +420,24 @@ static inline size_t __must_check size_sub(size_t minuend, size_t subtrahend)
+  * flexible array member.
+  * Use __struct_size(@name) to get compile-time size of it afterwards.
+  */
+-#define DEFINE_FLEX(type, name, member, count)			\
++#define DEFINE_RAW_FLEX(type, name, member, count)	\
+ 	_DEFINE_FLEX(type, name, member, count, = {})
+ 
++/**
++ * DEFINE_FLEX() - Define an on-stack instance of structure with a trailing
++ * flexible array member.
++ *
++ * @TYPE: structure type name, including "struct" keyword.
++ * @NAME: Name for a variable to define.
++ * @MEMBER: Name of the array member.
++ * @COUNTER: Name of the __counted_by member.
++ * @COUNT: Number of elements in the array; must be compile-time const.
++ *
++ * Define a zeroed, on-stack, instance of @TYPE structure with a trailing
++ * flexible array member.
++ * Use __struct_size(@NAME) to get compile-time size of it afterwards.
++ */
++#define DEFINE_FLEX(TYPE, NAME, MEMBER, COUNTER, COUNT)	\
++	_DEFINE_FLEX(TYPE, NAME, MEMBER, COUNT, = { .obj.COUNTER = COUNT, })
++
+ #endif /* __LINUX_OVERFLOW_H */
+diff --git a/lib/overflow_kunit.c b/lib/overflow_kunit.c
+index 65e8a72a83bf..4ef31b0bb74d 100644
+--- a/lib/overflow_kunit.c
++++ b/lib/overflow_kunit.c
+@@ -1172,6 +1172,24 @@ static void castable_to_type_test(struct kunit *test)
+ #undef TEST_CASTABLE_TO_TYPE
+ }
+ 
++struct foo {
++	int a;
++	u32 counter;
++	s16 array[] __counted_by(counter);
++};
++
++static void DEFINE_FLEX_test(struct kunit *test)
++{
++	DEFINE_RAW_FLEX(struct foo, two, array, 2);
++	DEFINE_FLEX(struct foo, eight, array, counter, 8);
++	DEFINE_FLEX(struct foo, empty, array, counter, 0);
++
++	KUNIT_EXPECT_EQ(test, __struct_size(two),
++			sizeof(struct foo) + sizeof(s16) + sizeof(s16));
++	KUNIT_EXPECT_EQ(test, __struct_size(eight), 24);
++	KUNIT_EXPECT_EQ(test, __struct_size(empty), sizeof(struct foo));
++}
++
+ static struct kunit_case overflow_test_cases[] = {
+ 	KUNIT_CASE(u8_u8__u8_overflow_test),
+ 	KUNIT_CASE(s8_s8__s8_overflow_test),
+@@ -1194,6 +1212,7 @@ static struct kunit_case overflow_test_cases[] = {
+ 	KUNIT_CASE(overflows_type_test),
+ 	KUNIT_CASE(same_type_test),
+ 	KUNIT_CASE(castable_to_type_test),
++	KUNIT_CASE(DEFINE_FLEX_test),
+ 	{}
+ };
+ 
+-- 
+2.34.1
+
