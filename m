@@ -1,118 +1,87 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8E471874047
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  6 Mar 2024 20:20:58 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 11BEF874111
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  6 Mar 2024 21:04:41 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 281C641923;
-	Wed,  6 Mar 2024 19:20:57 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 6495B4191B;
+	Wed,  6 Mar 2024 20:04:39 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id hysgfM2tyj-2; Wed,  6 Mar 2024 19:20:56 +0000 (UTC)
+	with ESMTP id NVOWAvlhbLvl; Wed,  6 Mar 2024 20:04:38 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org E7E9641925
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 126E740197
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1709752856;
-	bh=92n/2V/ZZRBf/txj6fFiiPCDY877S/i43eKFF6hUfSc=;
-	h=References:In-Reply-To:From:Date:To:Subject:List-Id:
+	s=default; t=1709755478;
+	bh=OlxQ0p8Ws9q0HxYLgysO1upVxWI0FnJDbBVeNbt+RWw=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=7m00fOhZufW6cxqaaAqC+LMYqtRWu/eV1xk6P5nfdlo7i5wKRNWna0OJObZa9MGVw
-	 LSHJ8QdWTzf/+3Ab5LcJgiBSycAx2ph6q13sFnfzdQ5au1FkQEvBfd1WMvrn/tWqPP
-	 MSKUY2kN71kjBsL5c9vBVs2GvIEy4ehHmFEMpTaw+fwr9h1UEqb8KRO96iwvcvJoQp
-	 DHAS6fjWPjGy6u9HwUF1x7wtjrZlcYmPvQZ2z6jA0VpDVmBy56t1uLrSVtv5H6TtK5
-	 IR7m+wiJvkk4uMoDIjrZuCHlzwZLUgoMscyvUZZaTtsxjOsIuufgF4UMKUEzaEimaG
-	 i0yl/FJTzF6iw==
+	b=Y3fBMq170zd7oWakXdD0SRwzLmfSHCRJua9QVA2uatUq65A1RFVdxpeFvNO/r/f66
+	 qnSBRhqokDklmZIjj/6KD39+mQHnEyaGEmBj9qxPp2hiY+qNAHsUh8+oD7ErkGlAvi
+	 9i4omCAAtUPFtKhwusvunD+AzsHDNPNuna+ijeGpsKhmaXpRmkW5DKsIQpVnOkXhSm
+	 fXazepAuMBnQ4yRZy1Kv8N3r+1RaCsOpWisFBm9r0pU/BsI/kxYaFJJQdnOmK5rEss
+	 Q2i5XLgMzzgpc4KWz8T4eKgiQbKIx6UJ29d8cnqtIzBWEAwUHM2u5GPInimfvpIiYG
+	 Z6TmZVQWMrz6Q==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id E7E9641925;
-	Wed,  6 Mar 2024 19:20:55 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 126E740197;
+	Wed,  6 Mar 2024 20:04:38 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 6FDCA1BF3DD
- for <intel-wired-lan@lists.osuosl.org>; Wed,  6 Mar 2024 19:20:53 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 2CF6E1BF2F9
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  6 Mar 2024 20:04:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 5BCBA4191D
- for <intel-wired-lan@lists.osuosl.org>; Wed,  6 Mar 2024 19:20:53 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 1863382213
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  6 Mar 2024 20:04:36 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id qKaDtOK8CID6 for <intel-wired-lan@lists.osuosl.org>;
- Wed,  6 Mar 2024 19:20:52 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.129.124;
- helo=us-smtp-delivery-124.mimecast.com; envelope-from=mschmidt@redhat.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 511494191B
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 511494191B
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.129.124])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 511494191B
- for <intel-wired-lan@lists.osuosl.org>; Wed,  6 Mar 2024 19:20:52 +0000 (UTC)
-Received: from mail-ed1-f70.google.com (mail-ed1-f70.google.com
- [209.85.208.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-173-q025EP0lMxG7cQjXR3ayFg-1; Wed, 06 Mar 2024 14:20:46 -0500
-X-MC-Unique: q025EP0lMxG7cQjXR3ayFg-1
-Received: by mail-ed1-f70.google.com with SMTP id
- 4fb4d7f45d1cf-566ae32611eso1257222a12.1
- for <intel-wired-lan@lists.osuosl.org>; Wed, 06 Mar 2024 11:20:45 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1709752845; x=1710357645;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=92n/2V/ZZRBf/txj6fFiiPCDY877S/i43eKFF6hUfSc=;
- b=DkpOCH2ZAWfEGHpI01L3I/4F+XBUSnW0EZg+Fx7aUiQ+d/rCDYQF6jCAGRJW6BkQH7
- mlyLKKTA45ILFVRsug1dGESjZ0vYoJbhNlumtfluJv/MpacSlbJOXwPv1bOOZXdycVU0
- fbOBCrFJXNwdozAUJJx88sTB9EejFdKFqMeBH1Lv9sJmhGVPVXX9uYoWoatOTuD3YUCV
- 9zuODmRKvZRJYtquxCChUdU78g9LYABFJG7pUVS7K7n+uoSb/t5PjAKMM7gl99rCJUGF
- F6/Aw2ij5CzM2SeaMd2OrHxfgstsOFnY4EUvTY2Be8p4PVAb5MeBvSXtkDed9avoTnFk
- uLow==
-X-Gm-Message-State: AOJu0Yy1i4ILZrcRL3t+b/PxTpxWqK6Fey8qbAQafGhJ2czcs9mfCt3k
- XVrjgAuE0Ri66hNPtolxxhUmIY7BdywHkBsGjK0rvw+25TNbkRYslQUqLV9VEA3oJWqw9DF/2JA
- aajI55bSJgPjJc41sj/aXXMV74ZcTkCfcrvp76rP5PHBg/uVs6KUVchikj7B5xvtkJp1E4wxeDb
- hj2HrUyTRdUQJDz5uXTsZU+TNH0/UwnvN6uJsR4WTxXA==
-X-Received: by 2002:a05:6402:1e87:b0:566:d083:df68 with SMTP id
- f7-20020a0564021e8700b00566d083df68mr5844908edf.21.1709752844853; 
- Wed, 06 Mar 2024 11:20:44 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGJ+4MZ+S5iLviZ/Ho7O7H4DVf6nENriFc6UckU20uADT4vFV6ZITae9v4aD6avyEGzhhCiskVSQ5N4bwxtaI4=
-X-Received: by 2002:a05:6402:1e87:b0:566:d083:df68 with SMTP id
- f7-20020a0564021e8700b00566d083df68mr5844891edf.21.1709752844530; Wed, 06 Mar
- 2024 11:20:44 -0800 (PST)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 973yx8ZJX9yT for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  6 Mar 2024 20:04:35 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2604:1380:4641:c500::1; helo=dfw.source.kernel.org;
+ envelope-from=horms@kernel.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 0C1B3821B3
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0C1B3821B3
+Received: from dfw.source.kernel.org (dfw.source.kernel.org
+ [IPv6:2604:1380:4641:c500::1])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 0C1B3821B3
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  6 Mar 2024 20:04:34 +0000 (UTC)
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by dfw.source.kernel.org (Postfix) with ESMTP id 9FCAD61B20;
+ Wed,  6 Mar 2024 20:04:33 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8E04CC43390;
+ Wed,  6 Mar 2024 20:04:30 +0000 (UTC)
+Date: Wed, 6 Mar 2024 20:04:28 +0000
+From: Simon Horman <horms@kernel.org>
+To: Jesse Brandeburg <jesse.brandeburg@intel.com>
+Message-ID: <20240306200428.GG281974@kernel.org>
+References: <20240305230204.448724-1-jesse.brandeburg@intel.com>
 MIME-Version: 1.0
-References: <20240306162907.84247-1-mschmidt@redhat.com>
- <20240306162907.84247-2-mschmidt@redhat.com>
- <ZeihFVgwBBLOZ4CL@nanopsycho>
-In-Reply-To: <ZeihFVgwBBLOZ4CL@nanopsycho>
-From: Michal Schmidt <mschmidt@redhat.com>
-Date: Wed, 6 Mar 2024 20:20:33 +0100
-Message-ID: <CADEbmW1CtULCvYxW+yyB1=PRzAkAUMOE6LYfk3v6kODJTwXcsA@mail.gmail.com>
-To: Jiri Pirko <jiri@resnulli.us>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=redhat.com; 
- s=mimecast20190719; t=1709752849;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=92n/2V/ZZRBf/txj6fFiiPCDY877S/i43eKFF6hUfSc=;
- b=VUud0gd71EujeX6IDHUTsbsHUjx5Dwn2g/vWNOFVBk09x9XBrI9HLKKsKpI6t+XWNidZiq
- upSDXtTv+2+e3O3406EXWc9tP2e5Bg2jP+CuOMJUpUWDBzxqObmssTJVHxFGMcM+GSwNgo
- Tcr+o7SQkBIvqoEb43G6d7A6MuZtU1E=
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240305230204.448724-1-jesse.brandeburg@intel.com>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=kernel.org; s=k20201202; t=1709755473;
+ bh=Xh5X2Zm7c9a45kdOcFtBMuh4AQiLV1jCQ8Q5eBO4MYU=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=CFxH8RI8Ll9bL6LDY7NDaf3lmx2Ue1uhkmZfJvPzUXTJF/ceVSt0KnO+k9zwcHKFt
+ lZfRinZ1f1T8lRu5/WuDovwv2kVflOeTlm4j6VXs9FtWRIFg+0c6S5ZtwVLOXHE4AG
+ lK43ha96++kKI4y4D1Uvg3qJI7anc38eE5OGkF5BP2e/q9vuwwLTkMEZ3ioqLJOZM8
+ YpbOqYvjm46YQpYFCy2xi6XDtvyn5Z8gpKoulKv/zHdhQ51E/4UamBmXgd3vbtU2AB
+ 0oIvLUjZNNg5koPZsSAPDDvw2RTUUITJnW4b/Lm1e0c5EyOchIWWdFOPybewSUKX/2
+ IWSZLnNZ5UccA==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=redhat.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
- header.a=rsa-sha256 header.s=mimecast20190719 header.b=VUud0gd7
-Subject: Re: [Intel-wired-lan] [PATCH net-next v2 1/3] ice: add ice_adapter
- for shared data across PFs on the same NIC
+ header.from=kernel.org
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=CFxH8RI8
+Subject: Re: [Intel-wired-lan] [PATCH iwl-net v2] ice: fix memory corruption
+ bug with suspend and rebuild
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -125,266 +94,167 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org,
- Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>,
- Karol Kolacinski <karol.kolacinski@intel.com>,
- intel-wired-lan@lists.osuosl.org, Jacob Keller <jacob.e.keller@intel.com>,
- Jakub Kicinski <kuba@kernel.org>
+Cc: pmenzel@molgen.mpg.de,
+ Michal Swiatkowski <michal.swiatkowski@linux.intel.com>,
+ netdev@vger.kernel.org, Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Eric Dumazet <edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Jakub Kicinski <kuba@kernel.org>, intel-wired-lan@lists.osuosl.org,
+ Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>,
+ Robert Elliott <elliott@hpe.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed, Mar 6, 2024 at 6:00=E2=80=AFPM Jiri Pirko <jiri@resnulli.us> wrote:
-> Wed, Mar 06, 2024 at 05:29:05PM CET, mschmidt@redhat.com wrote:
-> >There is a need for synchronization between ice PFs on the same physical
-> >adapter.
-> >
-> >Add a "struct ice_adapter" for holding data shared between PFs of the
-> >same multifunction PCI device. The struct is refcounted - each ice_pf
-> >holds a reference to it.
-> >
-> >Its first use will be for PTP. I expect it will be useful also to
-> >improve the ugliness that is ice_prot_id_tbl.
-> >
-> >Signed-off-by: Michal Schmidt <mschmidt@redhat.com>
-> >---
-> > drivers/net/ethernet/intel/ice/Makefile      |  3 +-
-> > drivers/net/ethernet/intel/ice/ice.h         |  2 +
-> > drivers/net/ethernet/intel/ice/ice_adapter.c | 85 ++++++++++++++++++++
-> > drivers/net/ethernet/intel/ice/ice_adapter.h | 22 +++++
-> > drivers/net/ethernet/intel/ice/ice_main.c    |  8 ++
-> > 5 files changed, 119 insertions(+), 1 deletion(-)
-> > create mode 100644 drivers/net/ethernet/intel/ice/ice_adapter.c
-> > create mode 100644 drivers/net/ethernet/intel/ice/ice_adapter.h
-> >
-> >diff --git a/drivers/net/ethernet/intel/ice/Makefile b/drivers/net/ether=
-net/intel/ice/Makefile
-> >index cddd82d4ca0f..4fa09c321440 100644
-> >--- a/drivers/net/ethernet/intel/ice/Makefile
-> >+++ b/drivers/net/ethernet/intel/ice/Makefile
-> >@@ -36,7 +36,8 @@ ice-y :=3D ice_main.o  \
-> >        ice_repr.o     \
-> >        ice_tc_lib.o   \
-> >        ice_fwlog.o    \
-> >-       ice_debugfs.o
-> >+       ice_debugfs.o  \
-> >+       ice_adapter.o
-> > ice-$(CONFIG_PCI_IOV) +=3D      \
-> >       ice_sriov.o             \
-> >       ice_virtchnl.o          \
-> >diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet=
-/intel/ice/ice.h
-> >index 365c03d1c462..1ffecbdd361a 100644
-> >--- a/drivers/net/ethernet/intel/ice/ice.h
-> >+++ b/drivers/net/ethernet/intel/ice/ice.h
-> >@@ -77,6 +77,7 @@
-> > #include "ice_gnss.h"
-> > #include "ice_irq.h"
-> > #include "ice_dpll.h"
-> >+#include "ice_adapter.h"
-> >
-> > #define ICE_BAR0              0
-> > #define ICE_REQ_DESC_MULTIPLE 32
-> >@@ -544,6 +545,7 @@ struct ice_agg_node {
-> >
-> > struct ice_pf {
-> >       struct pci_dev *pdev;
-> >+      struct ice_adapter *adapter;
-> >
-> >       struct devlink_region *nvm_region;
-> >       struct devlink_region *sram_region;
-> >diff --git a/drivers/net/ethernet/intel/ice/ice_adapter.c b/drivers/net/=
-ethernet/intel/ice/ice_adapter.c
-> >new file mode 100644
-> >index 000000000000..b93b4db4c04c
-> >--- /dev/null
-> >+++ b/drivers/net/ethernet/intel/ice/ice_adapter.c
-> >@@ -0,0 +1,85 @@
-> >+// SPDX-License-Identifier: GPL-2.0-only
-> >+// SPDX-FileCopyrightText: Copyright Red Hat
-> >+
-> >+#include <linux/cleanup.h>
-> >+#include <linux/mutex.h>
-> >+#include <linux/pci.h>
-> >+#include <linux/slab.h>
-> >+#include <linux/xarray.h>
-> >+#include "ice_adapter.h"
-> >+
-> >+static DEFINE_XARRAY(ice_adapters);
-> >+
-> >+static unsigned long ice_adapter_index(const struct pci_dev *pdev)
-> >+{
-> >+      unsigned int domain =3D pci_domain_nr(pdev->bus);
-> >+
-> >+      WARN_ON((unsigned long)domain >> (BITS_PER_LONG - 13));
-> >+      return ((unsigned long)domain << 13) |
-> >+             ((unsigned long)pdev->bus->number << 5) |
-> >+             PCI_SLOT(pdev->devfn);
-> >+}
-> >+
-> >+static struct ice_adapter *ice_adapter_new(void)
-> >+{
-> >+      struct ice_adapter *a;
-> >+
-> >+      a =3D kzalloc(sizeof(*a), GFP_KERNEL);
-> >+      if (!a)
-> >+              return NULL;
-> >+
-> >+      refcount_set(&a->refcount, 1);
-> >+
-> >+      return a;
-> >+}
-> >+
-> >+static void ice_adapter_free(struct ice_adapter *a)
-> >+{
-> >+      kfree(a);
-> >+}
-> >+
-> >+DEFINE_FREE(ice_adapter_free, struct ice_adapter*, if (_T) ice_adapter_=
-free(_T))
-> >+
-> >+struct ice_adapter *ice_adapter_get(const struct pci_dev *pdev)
-> >+{
-> >+      struct ice_adapter *ret, __free(ice_adapter_free) *a =3D NULL;
-> >+      unsigned long index =3D ice_adapter_index(pdev);
-> >+
-> >+      a =3D ice_adapter_new();
->
-> Please consider some non-single-letter variable name.
+On Tue, Mar 05, 2024 at 03:02:03PM -0800, Jesse Brandeburg wrote:
+> The ice driver would previously panic after suspend. This is caused
+> from the driver *only* calling the ice_vsi_free_q_vectors() function by
+> itself, when it is suspending. Since commit b3e7b3a6ee92 ("ice: prevent
+> NULL pointer deref during reload") the driver has zeroed out
+> num_q_vectors, and only restored it in ice_vsi_cfg_def().
+> 
+> This further causes the ice_rebuild() function to allocate a zero length
+> buffer, after which num_q_vectors is updated, and then the new value of
+> num_q_vectors is used to index into the zero length buffer, which
+> corrupts memory.
+> 
+> The fix entails making sure all the code referencing num_q_vectors only
+> does so after it has been reset via ice_vsi_cfg_def().
+> 
+> I didn't perform a full bisect, but I was able to test against 6.1.77
+> kernel and that ice driver works fine for suspend/resume with no panic,
+> so sometime since then, this problem was introduced.
+> 
+> Also clean up an un-needed init of a local variable in the function
+> being modified.
+> 
+> PANIC from 6.8.0-rc1:
+> 
+> [1026674.915596] PM: suspend exit
+> [1026675.664697] ice 0000:17:00.1: PTP reset successful
+> [1026675.664707] ice 0000:17:00.1: 2755 msecs passed between update to cached PHC time
+> [1026675.667660] ice 0000:b1:00.0: PTP reset successful
+> [1026675.675944] ice 0000:b1:00.0: 2832 msecs passed between update to cached PHC time
+> [1026677.137733] ixgbe 0000:31:00.0 ens787: NIC Link is Up 1 Gbps, Flow Control: None
+> [1026677.190201] BUG: kernel NULL pointer dereference, address: 0000000000000010
+> [1026677.192753] ice 0000:17:00.0: PTP reset successful
+> [1026677.192764] ice 0000:17:00.0: 4548 msecs passed between update to cached PHC time
+> [1026677.197928] #PF: supervisor read access in kernel mode
+> [1026677.197933] #PF: error_code(0x0000) - not-present page
+> [1026677.197937] PGD 1557a7067 P4D 0
+> [1026677.212133] ice 0000:b1:00.1: PTP reset successful
+> [1026677.212143] ice 0000:b1:00.1: 4344 msecs passed between update to cached PHC time
+> [1026677.212575]
+> [1026677.243142] Oops: 0000 [#1] PREEMPT SMP NOPTI
+> [1026677.247918] CPU: 23 PID: 42790 Comm: kworker/23:0 Kdump: loaded Tainted: G        W          6.8.0-rc1+ #1
+> [1026677.257989] Hardware name: Intel Corporation M50CYP2SBSTD/M50CYP2SBSTD, BIOS SE5C620.86B.01.01.0005.2202160810 02/16/2022
+> [1026677.269367] Workqueue: ice ice_service_task [ice]
+> [1026677.274592] RIP: 0010:ice_vsi_rebuild_set_coalesce+0x130/0x1e0 [ice]
+> [1026677.281421] Code: 0f 84 3a ff ff ff 41 0f b7 74 ec 02 66 89 b0 22 02 00 00 81 e6 ff 1f 00 00 e8 ec fd ff ff e9 35 ff ff ff 48 8b 43 30 49 63 ed <41> 0f b7 34 24 41 83 c5 01 48 8b 3c e8 66 89 b7 aa 02 00 00 81 e6
+> [1026677.300877] RSP: 0018:ff3be62a6399bcc0 EFLAGS: 00010202
+> [1026677.306556] RAX: ff28691e28980828 RBX: ff28691e41099828 RCX: 0000000000188000
+> [1026677.314148] RDX: 0000000000000000 RSI: 0000000000000010 RDI: ff28691e41099828
+> [1026677.321730] RBP: 0000000000000000 R08: 0000000000000000 R09: 0000000000000000
+> [1026677.329311] R10: 0000000000000007 R11: ffffffffffffffc0 R12: 0000000000000010
+> [1026677.336896] R13: 0000000000000000 R14: 0000000000000000 R15: ff28691e0eaa81a0
+> [1026677.344472] FS:  0000000000000000(0000) GS:ff28693cbffc0000(0000) knlGS:0000000000000000
+> [1026677.353000] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+> [1026677.359195] CR2: 0000000000000010 CR3: 0000000128df4001 CR4: 0000000000771ef0
+> [1026677.366779] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+> [1026677.374369] DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
+> [1026677.381952] PKRU: 55555554
+> [1026677.385116] Call Trace:
+> [1026677.388023]  <TASK>
+> [1026677.390589]  ? __die+0x20/0x70
+> [1026677.394105]  ? page_fault_oops+0x82/0x160
+> [1026677.398576]  ? do_user_addr_fault+0x65/0x6a0
+> [1026677.403307]  ? exc_page_fault+0x6a/0x150
+> [1026677.407694]  ? asm_exc_page_fault+0x22/0x30
+> [1026677.412349]  ? ice_vsi_rebuild_set_coalesce+0x130/0x1e0 [ice]
+> [1026677.418614]  ice_vsi_rebuild+0x34b/0x3c0 [ice]
+> [1026677.423583]  ice_vsi_rebuild_by_type+0x76/0x180 [ice]
+> [1026677.429147]  ice_rebuild+0x18b/0x520 [ice]
+> [1026677.433746]  ? delay_tsc+0x8f/0xc0
+> [1026677.437630]  ice_do_reset+0xa3/0x190 [ice]
+> [1026677.442231]  ice_service_task+0x26/0x440 [ice]
+> [1026677.447180]  process_one_work+0x174/0x340
+> [1026677.451669]  worker_thread+0x27e/0x390
+> [1026677.455890]  ? __pfx_worker_thread+0x10/0x10
+> [1026677.460627]  kthread+0xee/0x120
+> [1026677.464235]  ? __pfx_kthread+0x10/0x10
+> [1026677.468445]  ret_from_fork+0x2d/0x50
+> [1026677.472476]  ? __pfx_kthread+0x10/0x10
+> [1026677.476671]  ret_from_fork_asm+0x1b/0x30
+> [1026677.481050]  </TASK>
+> 
+> Fixes: b3e7b3a6ee92 ("ice: prevent NULL pointer deref during reload")
+> Reported-by: Robert Elliott <elliott@hpe.com>
+> Signed-off-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
+> ---
+> v2: fix uninitialized coalesce pointer on the exit path by moving the
+> kfree to the later goto (simon), reword commit message (paul)
 
-Alright, I can change the name.
+Thanks for the update.
 
-> >+      if (!a)
-> >+              return NULL;
-> >+
-> >+      xa_lock(&ice_adapters);
-> >+      ret =3D __xa_cmpxchg(&ice_adapters, index, NULL, a, GFP_KERNEL);
->
-> This is atomic section, can't sleep.
+Reviewed-by: Simon Horman <horms@kernel.org>
 
-It is not atomic. __xa_cmpxchg releases xa_lock before it allocates
-memory, then reacquires it.
+> ---
+>  drivers/net/ethernet/intel/ice/ice_lib.c | 18 +++++++++---------
+>  1 file changed, 9 insertions(+), 9 deletions(-)
+> 
+> diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
+> index fc23dbe302b4..cfc20684f25a 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_lib.c
+> +++ b/drivers/net/ethernet/intel/ice/ice_lib.c
+> @@ -3238,7 +3238,7 @@ int ice_vsi_rebuild(struct ice_vsi *vsi, u32 vsi_flags)
+>  {
+>  	struct ice_vsi_cfg_params params = {};
+>  	struct ice_coalesce_stored *coalesce;
+> -	int prev_num_q_vectors = 0;
+> +	int prev_num_q_vectors;
+>  	struct ice_pf *pf;
+>  	int ret;
+>  
+> @@ -3252,13 +3252,6 @@ int ice_vsi_rebuild(struct ice_vsi *vsi, u32 vsi_flags)
+>  	if (WARN_ON(vsi->type == ICE_VSI_VF && !vsi->vf))
+>  		return -EINVAL;
+>  
+> -	coalesce = kcalloc(vsi->num_q_vectors,
+> -			   sizeof(struct ice_coalesce_stored), GFP_KERNEL);
+> -	if (!coalesce)
+> -		return -ENOMEM;
+> -
+> -	prev_num_q_vectors = ice_vsi_rebuild_get_coalesce(vsi, coalesce);
+> -
+>  	ret = ice_vsi_realloc_stat_arrays(vsi);
+>  	if (ret)
+>  		goto err_vsi_cfg;
+> @@ -3268,6 +3261,13 @@ int ice_vsi_rebuild(struct ice_vsi *vsi, u32 vsi_flags)
+>  	if (ret)
+>  		goto err_vsi_cfg;
+>  
+> +	coalesce = kcalloc(vsi->num_q_vectors,
+> +			   sizeof(struct ice_coalesce_stored), GFP_KERNEL);
+> +	if (!coalesce)
+> +		return -ENOMEM;
+> +
+> +	prev_num_q_vectors = ice_vsi_rebuild_get_coalesce(vsi, coalesce);
+> +
+>  	ret = ice_vsi_cfg_tc_lan(pf, vsi);
+>  	if (ret) {
+>  		if (vsi_flags & ICE_VSI_FLAG_INIT) {
+> @@ -3286,8 +3286,8 @@ int ice_vsi_rebuild(struct ice_vsi *vsi, u32 vsi_flags)
+>  
+>  err_vsi_cfg_tc_lan:
+>  	ice_vsi_decfg(vsi);
+> -err_vsi_cfg:
+>  	kfree(coalesce);
+> +err_vsi_cfg:
 
-> >+      if (xa_is_err(ret)) {
-> >+              ret =3D NULL;
->
-> Why don't you propagate err through ERR_PTR() ?
+FWIIW, I might have dropped the err_vsi_cfg label all together
+and simply returned at points that previously used it.
 
-It seemed unnecessary. ENOMEM is the only failure that can possibly
-happen. EINVAL could be returned only if attempting to store an
-unaligned pointer, which won't happen here.
+But that would not be functionally different to what you have done.
 
->
-> >+              goto unlock;
-> >+      }
-> >+      if (ret) {
-> >+              refcount_inc(&ret->refcount);
-> >+              goto unlock;
-> >+      }
-> >+      ret =3D no_free_ptr(a);
-> >+unlock:
-> >+      xa_unlock(&ice_adapters);
-> >+      return ret;
-> >+}
-> >+
-> >+void ice_adapter_put(const struct pci_dev *pdev)
-> >+{
-> >+      unsigned long index =3D ice_adapter_index(pdev);
-> >+      struct ice_adapter *a;
-> >+
-> >+      xa_lock(&ice_adapters);
-> >+      a =3D xa_load(&ice_adapters, index);
-> >+      if (WARN_ON(!a))
-> >+              goto unlock;
-> >+
-> >+      if (!refcount_dec_and_test(&a->refcount))
-> >+              goto unlock;
-> >+
-> >+      WARN_ON(__xa_erase(&ice_adapters, index) !=3D a);
->
-> Nice paranoia level :)
->
->
-> >+      ice_adapter_free(a);
-> >+unlock:
-> >+      xa_unlock(&ice_adapters);
-> >+}
-> >diff --git a/drivers/net/ethernet/intel/ice/ice_adapter.h b/drivers/net/=
-ethernet/intel/ice/ice_adapter.h
-> >new file mode 100644
-> >index 000000000000..cb5a02eb24c1
-> >--- /dev/null
-> >+++ b/drivers/net/ethernet/intel/ice/ice_adapter.h
-> >@@ -0,0 +1,22 @@
-> >+/* SPDX-License-Identifier: GPL-2.0-only */
-> >+/* SPDX-FileCopyrightText: Copyright Red Hat */
-> >+
-> >+#ifndef _ICE_ADAPTER_H_
-> >+#define _ICE_ADAPTER_H_
-> >+
-> >+#include <linux/refcount_types.h>
-> >+
-> >+struct pci_dev;
-> >+
-> >+/**
-> >+ * struct ice_adapter - PCI adapter resources shared across PFs
-> >+ * @refcount: Reference count. struct ice_pf objects hold the reference=
-s.
-> >+ */
-> >+struct ice_adapter {
-> >+      refcount_t refcount;
-> >+};
-> >+
-> >+struct ice_adapter *ice_adapter_get(const struct pci_dev *pdev);
-> >+void ice_adapter_put(const struct pci_dev *pdev);
-> >+
-> >+#endif /* _ICE_ADAPTER_H */
-> >diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/eth=
-ernet/intel/ice/ice_main.c
-> >index 8f73ba77e835..413219d81a12 100644
-> >--- a/drivers/net/ethernet/intel/ice/ice_main.c
-> >+++ b/drivers/net/ethernet/intel/ice/ice_main.c
-> >@@ -5093,6 +5093,7 @@ static int
-> > ice_probe(struct pci_dev *pdev, const struct pci_device_id __always_unu=
-sed *ent)
-> > {
-> >       struct device *dev =3D &pdev->dev;
-> >+      struct ice_adapter *adapter;
-> >       struct ice_pf *pf;
-> >       struct ice_hw *hw;
-> >       int err;
-> >@@ -5145,7 +5146,12 @@ ice_probe(struct pci_dev *pdev, const struct pci_=
-device_id __always_unused *ent)
-> >
-> >       pci_set_master(pdev);
-> >
-> >+      adapter =3D ice_adapter_get(pdev);
-> >+      if (!adapter)
-> >+              return -ENOMEM;
-> >+
-> >       pf->pdev =3D pdev;
-> >+      pf->adapter =3D adapter;
-> >       pci_set_drvdata(pdev, pf);
-> >       set_bit(ICE_DOWN, pf->state);
-> >       /* Disable service task until DOWN bit is cleared */
-> >@@ -5196,6 +5202,7 @@ ice_probe(struct pci_dev *pdev, const struct pci_d=
-evice_id __always_unused *ent)
-> > err_load:
-> >       ice_deinit(pf);
-> > err_init:
-> >+      ice_adapter_put(pdev);
-> >       pci_disable_device(pdev);
-> >       return err;
-> > }
-> >@@ -5302,6 +5309,7 @@ static void ice_remove(struct pci_dev *pdev)
-> >       ice_setup_mc_magic_wake(pf);
-> >       ice_set_wake(pf);
-> >
-> >+      ice_adapter_put(pdev);
-> >       pci_disable_device(pdev);
-> > }
-> >
-> >--
-> >2.43.2
-> >
->
+>  	return ret;
+>  }
 
+...
