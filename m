@@ -2,107 +2,192 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7DF56875211
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  7 Mar 2024 15:40:07 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 38D1E875316
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  7 Mar 2024 16:24:50 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 0BCE960EFD;
-	Thu,  7 Mar 2024 14:40:06 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 5FDEB6081E;
+	Thu,  7 Mar 2024 15:24:48 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ed2AQKgvka0y; Thu,  7 Mar 2024 14:40:04 +0000 (UTC)
+	with ESMTP id 8gdMvPS7txb6; Thu,  7 Mar 2024 15:24:47 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 55BD860A46
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C90FC60762
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1709822404;
-	bh=iUcwY9/2T9bqLb+CvftXtrsYFSi4UBFa2fJuJAv1fuM=;
-	h=References:In-Reply-To:From:Date:To:Subject:List-Id:
+	s=default; t=1709825086;
+	bh=4SvJEXO1hSlfg+e1G3NKYSmojMdBGJaBosirQHdjGBI=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=tNVWPYlzaui86rqzHr0tDs6tMJYDHqvHrDtZ9l3oP5Zddto5KsvnfJRiksSTw1eUy
-	 2R/uWH89HsPLj0THHjMgzEC1MOMhZSMI9c7vdGYHmeMovkQZ/oeWZceGvKEvf/OH55
-	 J498RgMu2Dr/zYSAKxdZS5CpXN21s7mAabE6a2hxskwr4hqiqv4PMz3Cu2MXeHlI3a
-	 9aPlGnPBHlC9pzkRUddUZSEy8uSC3hjaOQxNOyTTfkjIEX1nS9i/D37gvnh5ToLHm6
-	 Zq6lUkszMW0L+U/ysQuHueLiPLpTti4Rs30TRXcOfSOtj/hS68ftsYUQJ6GlfHYBkd
-	 fLhMe7QAAJbDw==
+	b=f1QyVfL21o+Y26dROiPoyq2v8kf728AZIYx9TPL2REw2dZwVOaW8PuTffyIVe3h7p
+	 p+jO0RAECmVXZLudewbaRcyW40aP0y/6L10VkAd9wcfkdVm9+IeQOc1Z+L8KpiRN7L
+	 FYaePUWl62GO+EKfJ7uPesIy54EWA7RNjsGYDCekunr+8pDYSXrKzbN8gCV+i4drUK
+	 yLjsl66nbuMJAJq+vgnsr33UFOn5qNIGtQXMypBoNJ8T/6dt/E1jveLeEt4NbMuxiH
+	 wY8qfd4EIr8Z3x7iQiaizyjT80UveuPBaRdrMIoSn6rt3ahz6Dakmxgk90H9eK4D3q
+	 KP3VGX0qKESvg==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 55BD860A46;
-	Thu,  7 Mar 2024 14:40:04 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id C90FC60762;
+	Thu,  7 Mar 2024 15:24:46 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 880BD1BF2AB
- for <intel-wired-lan@lists.osuosl.org>; Thu,  7 Mar 2024 14:40:01 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 686531BF59A
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  7 Mar 2024 15:24:45 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 73F5280D50
- for <intel-wired-lan@lists.osuosl.org>; Thu,  7 Mar 2024 14:40:01 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 556AD81FF9
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  7 Mar 2024 15:24:45 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 2wQHFlK1Va_O for <intel-wired-lan@lists.osuosl.org>;
- Thu,  7 Mar 2024 14:40:00 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2607:f8b0:4864:20::1129; helo=mail-yw1-x1129.google.com;
- envelope-from=suresh2514@gmail.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org E55D980D47
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E55D980D47
-Received: from mail-yw1-x1129.google.com (mail-yw1-x1129.google.com
- [IPv6:2607:f8b0:4864:20::1129])
- by smtp1.osuosl.org (Postfix) with ESMTPS id E55D980D47
- for <intel-wired-lan@lists.osuosl.org>; Thu,  7 Mar 2024 14:39:59 +0000 (UTC)
-Received: by mail-yw1-x1129.google.com with SMTP id
- 00721157ae682-609fd5fbe50so2720987b3.0
- for <intel-wired-lan@lists.osuosl.org>; Thu, 07 Mar 2024 06:39:59 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1709822399; x=1710427199;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=iUcwY9/2T9bqLb+CvftXtrsYFSi4UBFa2fJuJAv1fuM=;
- b=tfK4BBN5D9v8jYDysgXWO4XSi+rwYVpQ8xljP7kRHA2lM6MnVDi4aYSc5JXjg9/Uus
- G9kO8nidn5l6LQswNIPcYWZphYMxCve8vvanYYoKCvjQOt7hzVtZmonnAb0HOvQRytTy
- ev6yPva1GBvN3Fgwj6JBJViutCEgvmPcv8RyhyzR0DFAUpNlKbWw4RS6VqQZMEbiQ2aM
- KM3KwbjS+DjakpLS3X4ixOxWXB1DSnAL+ZHp6drbtwVHZR7owBVHE6Jp3JIPu2ygIuUH
- kRjk24ctE8Z7Iv5hlJH3xgOUCkwR3xWK4/tivS5RLQh39zo73kZwrfSRV9gism+aMOPK
- j4Zg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWhBdMCHtBj6hWK54X1GfB4Ul21o0hQZSc9qg2h0RwK66ZceQOuAGqdw/FgUJo6e8sGwPaXwFrW0GRqqij0HIaQVQEOEDFRmBafGhv4jNS30Q==
-X-Gm-Message-State: AOJu0YweDwafjH5EXhSGB8aBrXzTlppBppRbyfxm+eIcmII9iOqgTWLg
- NUqsUh2tCnue4Eb3k8eQjIpCs8oynCXzRqZ1K6LXiA5vEaXWYiSWtubAcjbLRr+3NV+iMt0ywqk
- 6OLLvIyNbxWTno0Hd71AgDiORcBk=
-X-Google-Smtp-Source: AGHT+IEtfxkRcBxpRPYk+JbPmA9ifmoGFtkmosAp/TG2wabAkx1hR4OEhFG0PSSBMcOMhY46NSuPilVSMItFbOhtSSY=
-X-Received: by 2002:a81:6284:0:b0:609:96b0:90d6 with SMTP id
- w126-20020a816284000000b0060996b090d6mr16393351ywb.25.1709822398653; Thu, 07
- Mar 2024 06:39:58 -0800 (PST)
-MIME-Version: 1.0
+ with ESMTP id RWyihDt_G9Yv for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  7 Mar 2024 15:24:41 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.17;
+ helo=mgamail.intel.com; envelope-from=maciej.fijalkowski@intel.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 3EC5E81FED
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3EC5E81FED
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.17])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 3EC5E81FED
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  7 Mar 2024 15:24:41 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,11006"; a="4364221"
+X-IronPort-AV: E=Sophos;i="6.07,211,1708416000"; 
+   d="scan'208";a="4364221"
+Received: from fmviesa004.fm.intel.com ([10.60.135.144])
+ by fmvoesa111.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 07 Mar 2024 07:24:41 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.07,211,1708416000"; d="scan'208";a="14731489"
+Received: from fmsmsx601.amr.corp.intel.com ([10.18.126.81])
+ by fmviesa004.fm.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
+ 07 Mar 2024 07:24:40 -0800
+Received: from fmsmsx612.amr.corp.intel.com (10.18.126.92) by
+ fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.35; Thu, 7 Mar 2024 07:24:40 -0800
+Received: from FMSEDG603.ED.cps.intel.com (10.1.192.133) by
+ fmsmsx612.amr.corp.intel.com (10.18.126.92) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.35 via Frontend Transport; Thu, 7 Mar 2024 07:24:40 -0800
+Received: from NAM11-BN8-obe.outbound.protection.outlook.com (104.47.58.168)
+ by edgegateway.intel.com (192.55.55.68) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.35; Thu, 7 Mar 2024 07:24:39 -0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=VT9ls4f7dd5nx0oWytiN8JLNCTPMboi9/RgMdv4RrJxRrE++RGcZhxdPZWJ7deQdmtUqpk4lqsrCHU0xur8CoIkcVHhEg0LNM9czI1s77UqTC/MNtNcYZLjyjf/TBbpiG0vl075Y6zWajvpD12hWd9QGI+7dn74AerRI/kJzUsLHpHLtXkrkCgGIIksST6ZVsdlPPCpx3qIq8TT7AMl/0MjalLF7EgEITSS/1r9W1x6zOmgNFqkWrPdM17aRxe6byO/Hnp3nBbjLV8LMmqJ62R6W/lCQfHBMIVxIrU31KEQ+37Kd6f5I/EVvgg6JxRwnvtQtdVWwiRrywxD4i2yk1A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=4SvJEXO1hSlfg+e1G3NKYSmojMdBGJaBosirQHdjGBI=;
+ b=KqCjobGS0jD/rauev3x2V2FSwSUj3SrpG5LxfErsPJlFqLTiPOjijsqt+Kys9Is5HLt/265hNeG47Z5VaXLg1HyBS98ZKctedWuJ7y9o9Ws8Gmm8KJQEdqkt3gHMtU5VCfTW5apf4mC+ckNTionyLn6ctP7hcfBDyS26spKJ6re3Ji8mG4/OpizYyAIadjnl6r27xEOd9p7JZg0J6ZA/82cyHB5Pf8ObYB5IiDph5I/R0OB5B8HF7zmPzCpWyiPe3qPhpkhMi0ytVlGzAD71YaX3iMSl4hr7QthIxFhtsnA6joQwhVhwakPp3yIhQRoitcmk9k8o8LxMdFLef525tg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from DM4PR11MB6117.namprd11.prod.outlook.com (2603:10b6:8:b3::19) by
+ MN2PR11MB4535.namprd11.prod.outlook.com (2603:10b6:208:24e::21) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7386.8; Thu, 7 Mar
+ 2024 15:24:37 +0000
+Received: from DM4PR11MB6117.namprd11.prod.outlook.com
+ ([fe80::ccab:b5f4:e200:ee47]) by DM4PR11MB6117.namprd11.prod.outlook.com
+ ([fe80::ccab:b5f4:e200:ee47%6]) with mapi id 15.20.7362.019; Thu, 7 Mar 2024
+ 15:24:37 +0000
+Date: Thu, 7 Mar 2024 16:24:27 +0100
+From: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+To: suresh ks <suresh2514@gmail.com>
+Message-ID: <ZencK4bR0R1igXb5@boxer>
 References: <20240120072806.8554-1-suresh2514@gmail.com>
  <e524c57e-fe43-4582-bb05-c50f3e529848@intel.com>
  <SJ0PR11MB5866EAA3CBAF4E28842305D5E57D2@SJ0PR11MB5866.namprd11.prod.outlook.com>
  <Zc46QEBEpCOL75qN@boxer>
-In-Reply-To: <Zc46QEBEpCOL75qN@boxer>
-From: suresh ks <suresh2514@gmail.com>
-Date: Thu, 7 Mar 2024 20:09:47 +0530
-Message-ID: <CABAyFk54urKYzroBt5ii=h8hMHJ=rgPpGwivK1DjNS+pWDFq5Q@mail.gmail.com>
-To: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
-Content-Type: multipart/alternative; boundary="000000000000b370aa0613130c5a"
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1709822399; x=1710427199; darn=lists.osuosl.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=iUcwY9/2T9bqLb+CvftXtrsYFSi4UBFa2fJuJAv1fuM=;
- b=Y73h1s+wK/38FxTbNbhSoI4aQTYzKhxOaZs6klUmAvsABezrIvPDMXgC10BoQatzFj
- FziCap+S99owvRT3jj/gWUn9Xq5keQcx4nFGKb5aMAGa8yPA8m/dra5thpPdTXV0Kw6r
- SMgVkPLh3UPiYtGwG8asa6VWW7RX0XJRUXz1OmLDbB9ur8UXvHErZiJf9nSUjTcG2/0v
- fSHfd2ffKiSu+ay1PLk9rcZko9KKbUixINgBKvyWokQc6fsF/U4Xq660C/pXjAloMW1t
- 600/FVybiHehKo3ZdyYCHA+zVD/mamy4lj5Fw81g1+gz9vMrOSuDfuJI68vbPDHNyA+t
- cy2A==
+ <CABAyFk54urKYzroBt5ii=h8hMHJ=rgPpGwivK1DjNS+pWDFq5Q@mail.gmail.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <CABAyFk54urKYzroBt5ii=h8hMHJ=rgPpGwivK1DjNS+pWDFq5Q@mail.gmail.com>
+X-ClientProxiedBy: WA2P291CA0040.POLP291.PROD.OUTLOOK.COM
+ (2603:10a6:1d0:1f::24) To DM4PR11MB6117.namprd11.prod.outlook.com
+ (2603:10b6:8:b3::19)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DM4PR11MB6117:EE_|MN2PR11MB4535:EE_
+X-MS-Office365-Filtering-Correlation-Id: a766fd9e-e0fe-4dd8-dc75-08dc3ebab385
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: pBnbs5HGxEYtqeKXMmGhy0elbrel5jmbOL7tBoj46HNpmbat2eYXZnDVwUeK0H37wNIWnKRIhb1ysZ3firw1eS1rgPyfTsxBQEK9xhcqglt602NfBh6QIOxdzmxA2MFmO0HrD/zod+nWh0d45nEY8QicuE8fa4EMmVbw2j8hyiXQzIYFskBs5qXJMMqAYKdQH9jukUo0jQSL4op/Xa3VJto9UyZOiC+7iAijQEBvXEskSMnf6NxymOUq+K5VtF+UPeM8pAqVSvurv93pXndiM/DVrzUwvnmUkdX9mOra3xJPtEQdOxVA+ViDHFtbPLUNKpD/1VV/RCNU1oYeJ2znaOHe3l6kolAIcXebg0uv4jgzUa5Q+b3QKd4HCYSN1FLXMjP1+ZYZlFRKLLf+YGgDHHoVKz3QI0Cbl8q4SpZ6wEfhdsRXMBceQvV2h9q5E3UOcZ05iILPdiC1XsdhkGm3xuhz/qHjwUsNjcSwCg4ZWDM7bGeRXUKbDT0NSbTvx+WetL/3NJCosBatVPMD9IvjiTdBkDyCyp1qrhfzYeAaLp9NCTEcS4dqXVYzR5+fZjCTHskX5JkOuCYRvoXzqoLCcxtbb8oIJ4pvDV1ijINJ3Fw=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:DM4PR11MB6117.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230031)(376005); DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?dys4VlV1cytRNys1YkFKa3A3bEZTNE4rQi9RZlZkdmJieWo0TVdpbWZCNzRv?=
+ =?utf-8?B?RElmTE9ITmUrelVQV2p3T2k4bDkrZnBNZXFqTlJRTzlHbkZncWcxQlJlOFU0?=
+ =?utf-8?B?eUJWNjB1ME45WHlmdlJIVUNuU2ZqSGU1YWc1U2N1Vmxza0RGWlBpSUlPWjdz?=
+ =?utf-8?B?NnkvcUc1QUVlWGthRm5oY3VpV0VmVzlqN09yMk8yYjRhRHRGMk5hcC9KYWo0?=
+ =?utf-8?B?UnpJWG1aMDJHRmdwN1M2TjgxOTF4NC9TNkNPUGhRdW85VHRmN0xFeE96M0xT?=
+ =?utf-8?B?b1JYS3FieDlkeWF2dmU5Uko3Z3JZdk1TYWpkekN1NG1Gck13MzhCN0ZldXpE?=
+ =?utf-8?B?TXNDU1laOWVnRUpYdWV2a1BaNENIOE40ekk2Q1Q2azN4WUlER2R0d3hScVd5?=
+ =?utf-8?B?bGVHTVdBNjk5d0dJNkxZdDQ5aWJ3c1ZtdUNxbWY1YnErOGNOb1J5VXdEcE1y?=
+ =?utf-8?B?N1B1OTdLMmduUXNQMks5ZU5XSHJHeElJTWErOUZoWFBJS3BLNk9qNVpUbWo5?=
+ =?utf-8?B?TEd0WUk2bVVqcTgrRUphMnd3ZDJqVjVOMU9FVmMyWnJaWVdoalNQQ2c2OWhJ?=
+ =?utf-8?B?UGVSWHUrQ1JZcUFJMGdkWFhYNkIrUFlnU01HRmFKUStVTjlZcGJsRE0zQ3lu?=
+ =?utf-8?B?UmJ0dmFoN1dBQmZGc0xGWXVzakt0bmRMRlJCRE5iQURHNVg5K2UybGY4TlFC?=
+ =?utf-8?B?dCs0b1pud2QrY2pnWkVVY244RFZzMUtWY2IzaCt3ajYreTBqbXBNa3VtL3pt?=
+ =?utf-8?B?OExmTFBhd3BRK2R0RWVtUDY5TC9mdmhaVDBSYTBDZnVhNjBzS3FFSnQvVXd3?=
+ =?utf-8?B?eGRaOWU0MlZpNzBUWjc5L1VLZ2ZjTTFld21NUjhFS3NqTDQ5RXRnZ21oVWFZ?=
+ =?utf-8?B?WmEzMm11eXVBRFpsSThaSkl4dTByZzFzU2JGZ1h0MDRHSFFqV05JTWlrSmto?=
+ =?utf-8?B?NVM3akJJT2plYzNrVmEyYitQeGFzYllQMkNVK3NNMkRKNzhhK1cxZjJuWllu?=
+ =?utf-8?B?T1ByWWVXT0UwSlZhVFJocllNanBQTHc3M25lYm4zaHphSWttdDlMeVdsaitP?=
+ =?utf-8?B?c2lIRWJ1T29iSGJwOGsram5GakVqT3ZmbWtPTnJFUi8ySklvNnhJMFovU1RG?=
+ =?utf-8?B?UDdGK0RyUjVpSEdvZHYvZFVIdzJ6b2hQZHpMSmlIOVlBTTJpYkY3cThpN2Uv?=
+ =?utf-8?B?Q2s2VXVWZmFzVkRRNFU4eGM4eTFnemxiRDE0dXQ4cVlranpvUEpJNGZkSlc1?=
+ =?utf-8?B?UFNHRU9WdjBsL2dZTm5DWmx4Tno3THVNdWhRUWNxRE1iRm9kSitIeDdJSHAy?=
+ =?utf-8?B?ZjlabC96UitoS2JOdDBvYy9ibmd4UUo5NloxeDF2R0t2SmxXUi9MK1p3SXpM?=
+ =?utf-8?B?cy85UjlyWnBGUkxoMWdjUXdJUkRpZElUQVQ0TkU1Vyt0ZWtPZHV1bWRhanE5?=
+ =?utf-8?B?Y05mUFRYM0c4cjNvYlJISmtzWXFLdWw5Mmg3NjA3dzBDd1lOa2RjeGZtZjRh?=
+ =?utf-8?B?SklTSjM5RVRKRjJNRHAwOElnbko1UzlJRkV6dUVVT1Nwbm8vUFV0ZVhBa3F1?=
+ =?utf-8?B?ZFVzUnFXcWRJbzJBamlRZDBJczJaUzZGUHVpVi9wbDVrTzA1bXRpdnlRWVcy?=
+ =?utf-8?B?aHpueUg0RDVLTytWamNqZjh6RlpwM3RmeGg1dHRwY1VWU3ltRExFS25IOTFi?=
+ =?utf-8?B?ODFwY09SUzF0b0p2L2x3b3BQVkU2eEdReXdsRCtYdklzNjZuTTJPeDFmL01R?=
+ =?utf-8?B?cHkvU3UzNkcweXhFa2J3b1oyajhyUVA3a1VZbEo0WTRSQytVbHhvM2xJOW5L?=
+ =?utf-8?B?UTRjR2ozZXpTMmxHc01pUFQ0ZlQ4akozRVZhZlJ0akJ2M0ZjRG1IZm13T3lT?=
+ =?utf-8?B?U0NIVlNKejFabmh5RmEwVlZpS3Y0Qm4rdGlJQmU3b2dub21MSzVqakNnSGNj?=
+ =?utf-8?B?WWlEWDVCdWlvRmVmNW9rdkhlbEhvd2xEdGdPSzdDT1ZiVFh1anMrWlhHZkNp?=
+ =?utf-8?B?eVZjcWFSODJ5OFliUXZhWTZTNU1nUkduQWE3cGxCSjhTVkxxQ0tlUjNqWnFy?=
+ =?utf-8?B?YlBvS3ZzNTdNclNuZTRSNkpCK0l6V0NFWU8xajVPMnVIQ0pRL0Ryc3BaRTJl?=
+ =?utf-8?B?M1l2N2FadWdZUm8vQzNKUTZpdGhVaThkOUpMQzlvaDJvK0huNEpzMEZxblFC?=
+ =?utf-8?B?Z0E9PQ==?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: a766fd9e-e0fe-4dd8-dc75-08dc3ebab385
+X-MS-Exchange-CrossTenant-AuthSource: DM4PR11MB6117.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 07 Mar 2024 15:24:37.7954 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: xal3yI2o52VKz2PH6j/QvdvI1peBplMcQk2unuDDcwb0IIg/bBaLE8ycnZuXnuwT6A3wyWmijVeUAt0PBGSSa9Mp4fy6bMuI2bl3dTsghvQ=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR11MB4535
+X-OriginatorOrg: intel.com
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1709825081; x=1741361081;
+ h=date:from:to:cc:subject:message-id:references:
+ content-transfer-encoding:in-reply-to:mime-version;
+ bh=mvK0sF5kFlzNccFn57LYI+EVORCuTLLbtujHY5+LAsA=;
+ b=NuFZ5Azgf0gMIAg4tipF9R19xj88j6KVPh7JcpNFnj9g0hrm1x0Z5bWE
+ t447I5VVZJ7S6qmrOUbJpRF65HMkgZjPxFP2lwv2Q/71q7Bu5Hv7Hj/z/
+ vFIcJk/MHpzTezEj9I+zPMVohp9e4YL/i7aLMgKjXfw1jPlW40jN+qsAZ
+ tW6HMv2deRh56gXZGkm9K06xZQjeylh5D8AuL+nWQrf6i3Cal7IxHwtkT
+ 8kAb6/s1cF5paKgMOhQkynNiNaFkgBtIXvzzMOieMvOHJNyd0gkJ0NGiP
+ ZjNdLdvPysaNQPERgbfl2e9jbwxFZBXD+krrnZYhF007ovPuJVkuKK3dT
+ A==;
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=gmail.com
+ header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256
- header.s=20230601 header.b=Y73h1s+w
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=NuFZ5Azg
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
 Subject: Re: [Intel-wired-lan] [PATCH iwl v2] i40e: print correct hw max rss
  count in kernel ring buffer
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -129,278 +214,132 @@ Cc: "Kitszel, Przemyslaw" <przemyslaw.kitszel@intel.com>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
---000000000000b370aa0613130c5a
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+On Thu, Mar 07, 2024 at 08:09:47PM +0530, suresh ks wrote:
+> Hi Maciej,
+> 
+> Thanks for the links and taking time to review.
 
-Hi Maciej,
+No problem, but please don't top post on linux mailing lists nor don't
+respond in HTML. These are 101 rules to participate in upstream
+discussions.
 
-Thanks for the links and taking time to review.
+> 
+> I was following the ethtool codes and suggested vsi->num_queue_pairs.
+> Maybe vsi->alloc_queue_pairs is the right option as you suggested. I have
+> not read much of i40e codes. Just that one of our customers reported this
+> issue and I was reviewing the codes.
+> 
+> I also felt rss_size_max comes from the early i40e days. So I was not sure
+> what I would add in the 'Fixes:' tag.
 
-I was following the ethtool codes and suggested vsi->num_queue_pairs.
-Maybe vsi->alloc_queue_pairs is the right option as you suggested. I have
-not read much of i40e codes. Just that one of our customers reported this
-issue and I was reviewing the codes.
+submitting-patches.html has it explained ;)
 
-I also felt rss_size_max comes from the early i40e days. So I was not sure
-what I would add in the 'Fixes:' tag.
-
-Sorry for getting late here. Was on a vacation.
-
-
-thanks....
-*Suresh KS*
-suresh2514@gmail.com
-91-7709100053
-
-
-
-On Thu, Feb 15, 2024 at 9:52=E2=80=AFPM Maciej Fijalkowski <
-maciej.fijalkowski@intel.com> wrote:
-
-> On Tue, Jan 30, 2024 at 08:33:43AM +0000, Loktionov, Aleksandr wrote:
-> > > -----Original Message-----
-> > > From: Kitszel, Przemyslaw <przemyslaw.kitszel@intel.com>
-> > > Sent: Tuesday, January 30, 2024 9:26 AM
-> > > To: Loktionov, Aleksandr <aleksandr.loktionov@intel.com>
-> > > Subject: Fwd: [PATCH iwl v2] i40e: print correct hw max rss count
->
-> Subject should be iwl-net and you should have Fixes: tag.
-> I also would like you to go through
-> https://docs.kernel.org/process/submitting-patches.html
->
-> or any other document that would prepare you for your first submission.
->
-> > > in kernel ring buffer
-> > >
-> > > FWD to Alex
-> > >
-> > >
-> > > -------- Forwarded Message --------
-> > > Subject: [PATCH iwl v2] i40e: print correct hw max rss count in
-> > > kernel ring buffer
-> > > Date: Sat, 20 Jan 2024 12:58:06 +0530
-> > > From: Suresh Kumar <suresh2514@gmail.com>
-> > > To: jesse.brandeburg@intel.com, anthony.l.nguyen@intel.com,
-> > > davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
-> > > pabeni@redhat.com, intel-wired-lan@lists.osuosl.org,
-> > > netdev@vger.kernel.org, linux-kernel@vger.kernel.org
-> > > CC: Suresh Kumar <suresh2514@gmail.com>
-> > >
-> > > pf->rss_size_max is hardcoded and always prints max rss count as
-> > > 64.
-> > >
-> > > Eg:
-> > >    kernel: i40e 0000:af:00.1: User requested queue count/HW max RSS
-> > > count:  104/64
-> > >
-> > > whereas  ethtool reports the correct value from "vsi-
-> > > >num_queue_pairs"
-> > >
-> > > Channel parameters for eno33:
-> > > Pre-set maximums:
-> > > RX:     n/a
-> > > TX:     n/a
-> > > Other:      1
-> > > Combined:   104
-> > > Current hardware settings:
-> > > RX:     n/a
-> > > TX:     n/a
-> > > Other:      1
-> > > Combined:   104  <-------
-> > >
-> > > and is misleading.
-> > >
-> > > Change it to vsi->num_queue_pairs
+> 
+> Sorry for getting late here. Was on a vacation.
+> 
+> 
+> thanks....
+> *Suresh KS*
+> suresh2514@gmail.com
+> 91-7709100053
+> 
+> 
+> 
+> On Thu, Feb 15, 2024 at 9:52 PM Maciej Fijalkowski <
+> maciej.fijalkowski@intel.com> wrote:
+> 
+> > On Tue, Jan 30, 2024 at 08:33:43AM +0000, Loktionov, Aleksandr wrote:
+> > > > -----Original Message-----
+> > > > From: Kitszel, Przemyslaw <przemyslaw.kitszel@intel.com>
+> > > > Sent: Tuesday, January 30, 2024 9:26 AM
+> > > > To: Loktionov, Aleksandr <aleksandr.loktionov@intel.com>
+> > > > Subject: Fwd: [PATCH iwl v2] i40e: print correct hw max rss count
 > >
-> > Please reject this patch, it breaks driver logging.
-> > The massage clearly states that it dumps max rss queues number that f/w
-> supports.
->
-> ...which would imply that you would be able to work with anything more
-> than 64 queues. From a quick glance rss_size_max comes from early i40e
-> days and if that would be the limit indeed then driver allowing 104 queue=
-s
-> would be a disaster, no?
->
+> > Subject should be iwl-net and you should have Fixes: tag.
+> > I also would like you to go through
+> > https://docs.kernel.org/process/submitting-patches.html
 > >
-> > Thank you
+> > or any other document that would prepare you for your first submission.
 > >
-> > > Signed-off-by: Suresh Kumar <suresh2514@gmail.com>
-> > > ---
-> > >   drivers/net/ethernet/intel/i40e/i40e_main.c | 2 +-
-> > >   1 file changed, 1 insertion(+), 1 deletion(-)
+> > > > in kernel ring buffer
+> > > >
+> > > > FWD to Alex
+> > > >
+> > > >
+> > > > -------- Forwarded Message --------
+> > > > Subject: [PATCH iwl v2] i40e: print correct hw max rss count in
+> > > > kernel ring buffer
+> > > > Date: Sat, 20 Jan 2024 12:58:06 +0530
+> > > > From: Suresh Kumar <suresh2514@gmail.com>
+> > > > To: jesse.brandeburg@intel.com, anthony.l.nguyen@intel.com,
+> > > > davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
+> > > > pabeni@redhat.com, intel-wired-lan@lists.osuosl.org,
+> > > > netdev@vger.kernel.org, linux-kernel@vger.kernel.org
+> > > > CC: Suresh Kumar <suresh2514@gmail.com>
+> > > >
+> > > > pf->rss_size_max is hardcoded and always prints max rss count as
+> > > > 64.
+> > > >
+> > > > Eg:
+> > > >    kernel: i40e 0000:af:00.1: User requested queue count/HW max RSS
+> > > > count:  104/64
+> > > >
+> > > > whereas  ethtool reports the correct value from "vsi-
+> > > > >num_queue_pairs"
+> > > >
+> > > > Channel parameters for eno33:
+> > > > Pre-set maximums:
+> > > > RX:     n/a
+> > > > TX:     n/a
+> > > > Other:      1
+> > > > Combined:   104
+> > > > Current hardware settings:
+> > > > RX:     n/a
+> > > > TX:     n/a
+> > > > Other:      1
+> > > > Combined:   104  <-------
+> > > >
+> > > > and is misleading.
+> > > >
+> > > > Change it to vsi->num_queue_pairs
 > > >
-> > > diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c
-> > > b/drivers/net/ethernet/intel/i40e/i40e_main.c
-> > > index d5519af34657..f5c1ec190f7e 100644
-> > > --- a/drivers/net/ethernet/intel/i40e/i40e_main.c
-> > > +++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
-> > > @@ -12524,7 +12524,7 @@ int i40e_reconfig_rss_queues(struct i40e_pf
-> > > *pf, int queue_count)
-> > >             i40e_pf_config_rss(pf);
-> > >     }
-> > >     dev_info(&pf->pdev->dev, "User requested queue count/HW max
-> > > RSS
-> > > count:  %d/%d\n",
-> > > -            vsi->req_queue_pairs, pf->rss_size_max);
-> > > +            vsi->req_queue_pairs, vsi->num_queue_pairs);
->
-> IMHO this should be vsi->alloc_queue_pairs instead.
->
-> > >     return pf->alloc_rss_size;
-> > >   }
-> > >   -- 2.43.0
+> > > Please reject this patch, it breaks driver logging.
+> > > The massage clearly states that it dumps max rss queues number that f/w
+> > supports.
+> >
+> > ...which would imply that you would be able to work with anything more
+> > than 64 queues. From a quick glance rss_size_max comes from early i40e
+> > days and if that would be the limit indeed then driver allowing 104 queues
+> > would be a disaster, no?
+> >
+> > >
+> > > Thank you
+> > >
+> > > > Signed-off-by: Suresh Kumar <suresh2514@gmail.com>
+> > > > ---
+> > > >   drivers/net/ethernet/intel/i40e/i40e_main.c | 2 +-
+> > > >   1 file changed, 1 insertion(+), 1 deletion(-)
+> > > >
+> > > > diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c
+> > > > b/drivers/net/ethernet/intel/i40e/i40e_main.c
+> > > > index d5519af34657..f5c1ec190f7e 100644
+> > > > --- a/drivers/net/ethernet/intel/i40e/i40e_main.c
+> > > > +++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
+> > > > @@ -12524,7 +12524,7 @@ int i40e_reconfig_rss_queues(struct i40e_pf
+> > > > *pf, int queue_count)
+> > > >             i40e_pf_config_rss(pf);
+> > > >     }
+> > > >     dev_info(&pf->pdev->dev, "User requested queue count/HW max
+> > > > RSS
+> > > > count:  %d/%d\n",
+> > > > -            vsi->req_queue_pairs, pf->rss_size_max);
+> > > > +            vsi->req_queue_pairs, vsi->num_queue_pairs);
+> >
+> > IMHO this should be vsi->alloc_queue_pairs instead.
+> >
+> > > >     return pf->alloc_rss_size;
+> > > >   }
+> > > >   -- 2.43.0
+> > > >
 > > >
 > >
->
-
---000000000000b370aa0613130c5a
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr">Hi=C2=A0Maciej,<div><br></div><div>Thanks for the links an=
-d taking time to review.</div><div><br></div><div>I was following the ethto=
-ol codes and suggested=C2=A0vsi-&gt;num_queue_pairs.=C2=A0=C2=A0</div><div>=
-Maybe=C2=A0vsi-&gt;alloc_queue_pairs is the right option as you suggested. =
-I have not read much of i40e codes. Just that one of our customers reported=
- this issue and I was reviewing the codes.</div><div><br></div><div>I also =
-felt=C2=A0rss_size_max comes from the early i40e days. So I was not sure wh=
-at I would add in the &#39;Fixes:&#39; tag.=C2=A0</div><div><br></div><div>=
-Sorry for getting late here. Was on a vacation.</div><div><br></div><div><b=
-r></div><div><div><div dir=3D"ltr" class=3D"gmail_signature" data-smartmail=
-=3D"gmail_signature"><div dir=3D"ltr"><div>thanks....<br></div><b><span sty=
-le=3D"color:rgb(204,0,0)">Suresh KS</span></b><br><div><span style=3D"color=
-:rgb(11,83,148)"><a href=3D"mailto:suresh2514@gmail.com" target=3D"_blank">=
-suresh2514@gmail.com</a><br></span></div><div><span style=3D"color:rgb(11,8=
-3,148)">91-7709100053</span><br><br></div></div></div></div><br></div></div=
-><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Th=
-u, Feb 15, 2024 at 9:52=E2=80=AFPM Maciej Fijalkowski &lt;<a href=3D"mailto=
-:maciej.fijalkowski@intel.com">maciej.fijalkowski@intel.com</a>&gt; wrote:<=
-br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8e=
-x;border-left:1px solid rgb(204,204,204);padding-left:1ex">On Tue, Jan 30, =
-2024 at 08:33:43AM +0000, Loktionov, Aleksandr wrote:<br>
-&gt; &gt; -----Original Message-----<br>
-&gt; &gt; From: Kitszel, Przemyslaw &lt;<a href=3D"mailto:przemyslaw.kitsze=
-l@intel.com" target=3D"_blank">przemyslaw.kitszel@intel.com</a>&gt;<br>
-&gt; &gt; Sent: Tuesday, January 30, 2024 9:26 AM<br>
-&gt; &gt; To: Loktionov, Aleksandr &lt;<a href=3D"mailto:aleksandr.loktiono=
-v@intel.com" target=3D"_blank">aleksandr.loktionov@intel.com</a>&gt;<br>
-&gt; &gt; Subject: Fwd: [PATCH iwl v2] i40e: print correct hw max rss count=
-<br>
-<br>
-Subject should be iwl-net and you should have Fixes: tag.<br>
-I also would like you to go through<br>
-<a href=3D"https://docs.kernel.org/process/submitting-patches.html" rel=3D"=
-noreferrer" target=3D"_blank">https://docs.kernel.org/process/submitting-pa=
-tches.html</a><br>
-<br>
-or any other document that would prepare you for your first submission.<br>
-<br>
-&gt; &gt; in kernel ring buffer<br>
-&gt; &gt; <br>
-&gt; &gt; FWD to Alex<br>
-&gt; &gt; <br>
-&gt; &gt; <br>
-&gt; &gt; -------- Forwarded Message --------<br>
-&gt; &gt; Subject: [PATCH iwl v2] i40e: print correct hw max rss count in<b=
-r>
-&gt; &gt; kernel ring buffer<br>
-&gt; &gt; Date: Sat, 20 Jan 2024 12:58:06 +0530<br>
-&gt; &gt; From: Suresh Kumar &lt;<a href=3D"mailto:suresh2514@gmail.com" ta=
-rget=3D"_blank">suresh2514@gmail.com</a>&gt;<br>
-&gt; &gt; To: <a href=3D"mailto:jesse.brandeburg@intel.com" target=3D"_blan=
-k">jesse.brandeburg@intel.com</a>, <a href=3D"mailto:anthony.l.nguyen@intel=
-.com" target=3D"_blank">anthony.l.nguyen@intel.com</a>,<br>
-&gt; &gt; <a href=3D"mailto:davem@davemloft.net" target=3D"_blank">davem@da=
-vemloft.net</a>, <a href=3D"mailto:edumazet@google.com" target=3D"_blank">e=
-dumazet@google.com</a>, <a href=3D"mailto:kuba@kernel.org" target=3D"_blank=
-">kuba@kernel.org</a>,<br>
-&gt; &gt; <a href=3D"mailto:pabeni@redhat.com" target=3D"_blank">pabeni@red=
-hat.com</a>, <a href=3D"mailto:intel-wired-lan@lists.osuosl.org" target=3D"=
-_blank">intel-wired-lan@lists.osuosl.org</a>,<br>
-&gt; &gt; <a href=3D"mailto:netdev@vger.kernel.org" target=3D"_blank">netde=
-v@vger.kernel.org</a>, <a href=3D"mailto:linux-kernel@vger.kernel.org" targ=
-et=3D"_blank">linux-kernel@vger.kernel.org</a><br>
-&gt; &gt; CC: Suresh Kumar &lt;<a href=3D"mailto:suresh2514@gmail.com" targ=
-et=3D"_blank">suresh2514@gmail.com</a>&gt;<br>
-&gt; &gt; <br>
-&gt; &gt; pf-&gt;rss_size_max is hardcoded and always prints max rss count =
-as<br>
-&gt; &gt; 64.<br>
-&gt; &gt; <br>
-&gt; &gt; Eg:<br>
-&gt; &gt;=C2=A0 =C2=A0 kernel: i40e 0000:af:00.1: User requested queue coun=
-t/HW max RSS<br>
-&gt; &gt; count:=C2=A0 104/64<br>
-&gt; &gt; <br>
-&gt; &gt; whereas=C2=A0 ethtool reports the correct value from &quot;vsi-<b=
-r>
-&gt; &gt; &gt;num_queue_pairs&quot;<br>
-&gt; &gt; <br>
-&gt; &gt; Channel parameters for eno33:<br>
-&gt; &gt; Pre-set maximums:<br>
-&gt; &gt; RX:=C2=A0 =C2=A0 =C2=A0n/a<br>
-&gt; &gt; TX:=C2=A0 =C2=A0 =C2=A0n/a<br>
-&gt; &gt; Other:=C2=A0 =C2=A0 =C2=A0 1<br>
-&gt; &gt; Combined:=C2=A0 =C2=A0104<br>
-&gt; &gt; Current hardware settings:<br>
-&gt; &gt; RX:=C2=A0 =C2=A0 =C2=A0n/a<br>
-&gt; &gt; TX:=C2=A0 =C2=A0 =C2=A0n/a<br>
-&gt; &gt; Other:=C2=A0 =C2=A0 =C2=A0 1<br>
-&gt; &gt; Combined:=C2=A0 =C2=A0104=C2=A0 &lt;-------<br>
-&gt; &gt; <br>
-&gt; &gt; and is misleading.<br>
-&gt; &gt; <br>
-&gt; &gt; Change it to vsi-&gt;num_queue_pairs<br>
-&gt; <br>
-&gt; Please reject this patch, it breaks driver logging.<br>
-&gt; The massage clearly states that it dumps max rss queues number that f/=
-w supports.<br>
-<br>
-...which would imply that you would be able to work with anything more<br>
-than 64 queues. From a quick glance rss_size_max comes from early i40e<br>
-days and if that would be the limit indeed then driver allowing 104 queues<=
-br>
-would be a disaster, no?<br>
-<br>
-&gt; <br>
-&gt; Thank you<br>
-&gt;=C2=A0 <br>
-&gt; &gt; Signed-off-by: Suresh Kumar &lt;<a href=3D"mailto:suresh2514@gmai=
-l.com" target=3D"_blank">suresh2514@gmail.com</a>&gt;<br>
-&gt; &gt; ---<br>
-&gt; &gt;=C2=A0 =C2=A0drivers/net/ethernet/intel/i40e/i40e_main.c | 2 +-<br=
->
-&gt; &gt;=C2=A0 =C2=A01 file changed, 1 insertion(+), 1 deletion(-)<br>
-&gt; &gt; <br>
-&gt; &gt; diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c<br>
-&gt; &gt; b/drivers/net/ethernet/intel/i40e/i40e_main.c<br>
-&gt; &gt; index d5519af34657..f5c1ec190f7e 100644<br>
-&gt; &gt; --- a/drivers/net/ethernet/intel/i40e/i40e_main.c<br>
-&gt; &gt; +++ b/drivers/net/ethernet/intel/i40e/i40e_main.c<br>
-&gt; &gt; @@ -12524,7 +12524,7 @@ int i40e_reconfig_rss_queues(struct i40e_=
-pf<br>
-&gt; &gt; *pf, int queue_count)<br>
-&gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0i40e_pf_config_rss=
-(pf);<br>
-&gt; &gt;=C2=A0 =C2=A0 =C2=A0}<br>
-&gt; &gt;=C2=A0 =C2=A0 =C2=A0dev_info(&amp;pf-&gt;pdev-&gt;dev, &quot;User =
-requested queue count/HW max<br>
-&gt; &gt; RSS<br>
-&gt; &gt; count:=C2=A0 %d/%d\n&quot;,<br>
-&gt; &gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 vsi-&gt;req_queue_pair=
-s, pf-&gt;rss_size_max);<br>
-&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 vsi-&gt;req_queue_pair=
-s, vsi-&gt;num_queue_pairs);<br>
-<br>
-IMHO this should be vsi-&gt;alloc_queue_pairs instead.<br>
-<br>
-&gt; &gt;=C2=A0 =C2=A0 =C2=A0return pf-&gt;alloc_rss_size;<br>
-&gt; &gt;=C2=A0 =C2=A0}<br>
-&gt; &gt;=C2=A0 =C2=A0-- 2.43.0<br>
-&gt; &gt; <br>
-&gt; <br>
-</blockquote></div>
-
---000000000000b370aa0613130c5a--
