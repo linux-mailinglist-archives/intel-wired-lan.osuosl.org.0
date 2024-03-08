@@ -2,96 +2,89 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7978D87639E
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  8 Mar 2024 12:47:57 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id B2506876384
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  8 Mar 2024 12:44:57 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 8AE19834FC;
-	Fri,  8 Mar 2024 11:47:51 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 5756D8087B;
+	Fri,  8 Mar 2024 11:44:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id todGjYbC0QpD; Fri,  8 Mar 2024 11:47:50 +0000 (UTC)
+	with ESMTP id ECSr31x30DUL; Fri,  8 Mar 2024 11:44:54 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org AC22D834F1
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 61AAE831D6
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1709898470;
-	bh=2iduFzqB3ZKJI/Sgc+YcRvADD3IBQx7yAH+5405VQus=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=YN6P5N0CBUxnY65Pev9EMDRC9nGSOCCmsSwZxzF+ChBnIWrUs1KSPIdesfdk0PSCu
-	 TOsmgiXifk1VoAjD4QTBpdOOzTa4EdAV4V7ZGfRuxDKLQGrEyV+H6i1eorNIykk7lE
-	 /Vqms7ISGx9XEQWB9KPYcWHbJYJyQCzR36V6Ytr/SezJh6m/KmAbzQuoftDkRjJrRC
-	 G8ZbmBEfqOVvdEsxsqctX94jYJTvZuE0/8QLcKUEFbkpbWKNUi9eJv/KEVyC3VezRH
-	 9FCOSbLG3SzGkTczlGvvhL3pqXqpxszpy+TngIjEZXw1nj2Ra3ZeIGsGLPDzuDO2K6
-	 PB8DF75a3wKxg==
+	s=default; t=1709898294;
+	bh=zdPdxoAbFCd8NCjbUEodBinFyqnHIVVqaKPu4Dkqkvc=;
+	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=jK64JoqqXTcn81yosCILDhtdXsjsV15ACz2cVAvEl6dWfDL2UxXsGvI14J0fNefGJ
+	 MKSM6gRKmyOYY879mtB0sxo7Af1U5pMZkMxa1LYt3uSu5zCXDPXdr+KGEUzV6NfBnH
+	 eIyQF4wQHz2PTqs0ny9OWF2xyHpojdi51eJ7iskz0JI2cqklDlWRQ47kQYsWMOM7R2
+	 8K0zrfSmAll/xiu6vjX7UsoFd7Nn2K7cYDZLpq8mLXZbC2xF8xF8pZVsiLejN5pTNt
+	 95vV+r20lq/6VnM5L8cLy3MeYPXqerglXM8f7tP+Bl1hFtgJajnba3EAA5l0ZQ8TGn
+	 sk6GRZ6KNLFdg==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id AC22D834F1;
-	Fri,  8 Mar 2024 11:47:50 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 61AAE831D6;
+	Fri,  8 Mar 2024 11:44:54 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 4C9E01BF317
- for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Mar 2024 11:47:46 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id AE42E1BF317
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Mar 2024 11:44:51 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 3983C610FA
- for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Mar 2024 11:47:46 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 9A63583147
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Mar 2024 11:44:51 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id kp11Opb2OOig for <intel-wired-lan@lists.osuosl.org>;
- Fri,  8 Mar 2024 11:47:45 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.15;
- helo=mgamail.intel.com; envelope-from=mateusz.polchlopek@intel.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 70943610FE
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 70943610FE
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.15])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 70943610FE
- for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Mar 2024 11:47:45 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,11006"; a="4782432"
-X-IronPort-AV: E=Sophos;i="6.07,109,1708416000"; 
-   d="scan'208";a="4782432"
-Received: from orviesa006.jf.intel.com ([10.64.159.146])
- by fmvoesa109.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 Mar 2024 03:47:45 -0800
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id fpiIgtIAAvAN for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  8 Mar 2024 11:44:50 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.10;
+ helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 89E9183139
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 89E9183139
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.10])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 89E9183139
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  8 Mar 2024 11:44:50 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,11006"; a="16022261"
+X-IronPort-AV: E=Sophos;i="6.07,109,1708416000"; d="scan'208";a="16022261"
+Received: from fmviesa001.fm.intel.com ([10.60.135.141])
+ by fmvoesa104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 08 Mar 2024 03:44:50 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.07,109,1708416000"; d="scan'208";a="10849547"
-Received: from irvmail002.ir.intel.com ([10.43.11.120])
- by orviesa006.jf.intel.com with ESMTP; 08 Mar 2024 03:47:42 -0800
-Received: from fedora.igk.intel.com (Metan_eth.igk.intel.com [10.123.220.124])
- by irvmail002.ir.intel.com (Postfix) with ESMTP id 6D666312EB;
- Fri,  8 Mar 2024 11:47:40 +0000 (GMT)
-From: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Fri,  8 Mar 2024 06:39:19 -0500
-Message-Id: <20240308113919.11787-7-mateusz.polchlopek@intel.com>
-X-Mailer: git-send-email 2.38.1
-In-Reply-To: <20240308113919.11787-1-mateusz.polchlopek@intel.com>
-References: <20240308113919.11787-1-mateusz.polchlopek@intel.com>
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+X-IronPort-AV: E=Sophos;i="6.07,109,1708416000"; d="scan'208";a="41418338"
+Received: from lkp-server01.sh.intel.com (HELO b21307750695) ([10.239.97.150])
+ by fmviesa001.fm.intel.com with ESMTP; 08 Mar 2024 03:44:49 -0800
+Received: from kbuild by b21307750695 with local (Exim 4.96)
+ (envelope-from <lkp@intel.com>) id 1riYec-0006LN-2I
+ for intel-wired-lan@lists.osuosl.org; Fri, 08 Mar 2024 11:44:46 +0000
+Date: Fri, 08 Mar 2024 19:43:58 +0800
+From: kernel test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <202403081955.ySVEnxtw-lkp@intel.com>
+User-Agent: s-nail v14.9.24
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1709898465; x=1741434465;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=wkr6lOyqSC8jTNXgtiotMJJJznG/KbVhia8zrYkWnLY=;
- b=jbEcO7J4tbGJHRtKbQyyMkSXe+GUdPvV7iGRfR9QBFhhNrmEAUIKq5Io
- Td7jnM9hQkITeqPXfmNvK834rzg+itl9NNM2s54JPb1BKAYzRH83aMnCL
- JgiCZsQRMObmuUuN+kLVHLb8oHMmHScVNc/UPlH/GjOCzIhNdcb+k/vf/
- tF28fhxfOZFl/n1QLYD3Gx8Yqs0BgfEoHiDhA/JcVilX44TSQA8DIA7Kn
- K1fKVoUZW5uQG5q7ly5HASOgdAHbqM2+dFIsNz6paS0U9H4h1uaUfqEVi
- Y3D9Z7azpx4/ZOu4ahr2Ly4vJ4d6ILjYIQjrUW88nNMSPLmW+djuCyokV
- A==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ t=1709898291; x=1741434291;
+ h=date:from:to:subject:message-id;
+ bh=YohXMyTD6IV3Zc+uAwmoADf6LTsn2A2LhUrvphewfYE=;
+ b=Hx6Uwbwi8XOCY0mDKu4ubV9jMFi4X3VJf9AF8TQmiHbqhT113qkmx75y
+ Coyrv64Aim5suN/qOK/fX9Pw7Tb22xSPdy0CKsnlU9ssPLvmx5DWpcEfA
+ bGolXjLfOah1PJQVZCwZdn/OcGEz+0Ovz2ppIzyeIQyxHKf8exk1LX2F1
+ nlLG5HJyVuC62dd8XwLjWDAOhnYFyzybfFfMxBshMBtLDJGuaeFKHxHAN
+ WCPeF/6+oukS7ikSCuNHPXBDtsTjupp6PBHcCGWK46ZCV1VO+UWRw7g04
+ dXOSQItRzrcbQZrUkeOAG4C6Wdf4WGimw4IETHPuMKVZLlLHBYPJSpaAi
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=jbEcO7J4
-Subject: [Intel-wired-lan] [PATCH iwl-next v7 6/6] ice: Document
- tx_scheduling_layers parameter
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=Hx6Uwbwi
+Subject: [Intel-wired-lan] [tnguy-next-queue:dev-queue] BUILD SUCCESS
+ a1f784942c7d906a1cf40d03fbaf4da4b00ea9ab
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -104,86 +97,123 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: andrew@lunn.ch, jiri@resnulli.us, michal.wilczynski@intel.com,
- Mateusz Polchlopek <mateusz.polchlopek@intel.com>, netdev@vger.kernel.org,
- lukasz.czapnik@intel.com, victor.raj@intel.com, Jiri Pirko <jiri@nvidia.com>,
- anthony.l.nguyen@intel.com, horms@kernel.org, przemyslaw.kitszel@intel.com,
- kuba@kernel.org
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Michal Wilczynski <michal.wilczynski@intel.com>
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git dev-queue
+branch HEAD: a1f784942c7d906a1cf40d03fbaf4da4b00ea9ab  e1000e: move force SMBUS from enable ulp function to avoid PHY loss
 
-New driver specific parameter 'tx_scheduling_layers' was introduced.
-Describe parameter in the documentation.
+elapsed time: 910m
 
-Signed-off-by: Michal Wilczynski <michal.wilczynski@intel.com>
-Acked-by: Jakub Kicinski <kuba@kernel.org>
-Reviewed-by: Jiri Pirko <jiri@nvidia.com>
-Co-developed-by: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
-Signed-off-by: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
----
- Documentation/networking/devlink/ice.rst | 47 ++++++++++++++++++++++++
- 1 file changed, 47 insertions(+)
+configs tested: 101
+configs skipped: 3
 
-diff --git a/Documentation/networking/devlink/ice.rst b/Documentation/networking/devlink/ice.rst
-index 7f30ebd5debb..830c04354222 100644
---- a/Documentation/networking/devlink/ice.rst
-+++ b/Documentation/networking/devlink/ice.rst
-@@ -21,6 +21,53 @@ Parameters
-    * - ``enable_iwarp``
-      - runtime
-      - mutually exclusive with ``enable_roce``
-+   * - ``tx_scheduling_layers``
-+     - permanent
-+     - The ice hardware uses hierarchical scheduling for Tx with a fixed
-+       number of layers in the scheduling tree. Each of them are decision
-+       points. Root node represents a port, while all the leaves represent
-+       the queues. This way of configuring the Tx scheduler allows features
-+       like DCB or devlink-rate (documented below) to configure how much
-+       bandwidth is given to any given queue or group of queues, enabling
-+       fine-grained control because scheduling parameters can be configured
-+       at any given layer of the tree.
-+
-+       The default 9-layer tree topology was deemed best for most workloads,
-+       as it gives an optimal ratio of performance to configurability. However,
-+       for some specific cases, this 9-layer topology might not be desired.
-+       One example would be sending traffic to queues that are not a multiple
-+       of 8. Because the maximum radix is limited to 8 in 9-layer topology,
-+       the 9th queue has a different parent than the rest, and it's given
-+       more bandwidth credits. This causes a problem when the system is
-+       sending traffic to 9 queues:
-+
-+       | tx_queue_0_packets: 24163396
-+       | tx_queue_1_packets: 24164623
-+       | tx_queue_2_packets: 24163188
-+       | tx_queue_3_packets: 24163701
-+       | tx_queue_4_packets: 24163683
-+       | tx_queue_5_packets: 24164668
-+       | tx_queue_6_packets: 23327200
-+       | tx_queue_7_packets: 24163853
-+       | tx_queue_8_packets: 91101417 < Too much traffic is sent from 9th
-+
-+       To address this need, you can switch to a 5-layer topology, which
-+       changes the maximum topology radix to 512. With this enhancement,
-+       the performance characteristic is equal as all queues can be assigned
-+       to the same parent in the tree. The obvious drawback of this solution
-+       is a lower configuration depth of the tree.
-+
-+       Use the ``tx_scheduling_layer`` parameter with the devlink command
-+       to change the transmit scheduler topology. To use 5-layer topology,
-+       use a value of 5. For example:
-+       $ devlink dev param set pci/0000:16:00.0 name tx_scheduling_layers
-+       value 5 cmode permanent
-+       Use a value of 9 to set it back to the default value.
-+
-+       You must do PCI slot powercycle for the selected topology to take effect.
-+
-+       To verify that value has been set:
-+       $ devlink dev param show pci/0000:16:00.0 name tx_scheduling_layers
- 
- Info versions
- =============
+The following configs have been built successfully.
+More configs may be tested in the coming days.
+
+tested configs:
+alpha                             allnoconfig   gcc  
+alpha                            allyesconfig   gcc  
+alpha                               defconfig   gcc  
+arc                              allmodconfig   gcc  
+arc                               allnoconfig   gcc  
+arc                              allyesconfig   gcc  
+arc                                 defconfig   gcc  
+arm                              allmodconfig   gcc  
+arm                               allnoconfig   clang
+arm                              allyesconfig   gcc  
+arm                                 defconfig   clang
+arm64                            allmodconfig   clang
+arm64                             allnoconfig   gcc  
+arm64                               defconfig   gcc  
+csky                             allmodconfig   gcc  
+csky                              allnoconfig   gcc  
+csky                             allyesconfig   gcc  
+csky                                defconfig   gcc  
+hexagon                          allmodconfig   clang
+hexagon                           allnoconfig   clang
+hexagon                          allyesconfig   clang
+hexagon                             defconfig   clang
+i386                             allmodconfig   gcc  
+i386                              allnoconfig   gcc  
+i386                             allyesconfig   gcc  
+i386         buildonly-randconfig-001-20240308   clang
+i386         buildonly-randconfig-002-20240308   clang
+i386         buildonly-randconfig-003-20240308   gcc  
+i386         buildonly-randconfig-004-20240308   gcc  
+i386         buildonly-randconfig-005-20240308   gcc  
+i386         buildonly-randconfig-006-20240308   clang
+i386                                defconfig   clang
+i386                  randconfig-001-20240308   clang
+i386                  randconfig-002-20240308   clang
+i386                  randconfig-003-20240308   clang
+i386                  randconfig-004-20240308   gcc  
+i386                  randconfig-005-20240308   clang
+i386                  randconfig-006-20240308   clang
+i386                  randconfig-011-20240308   gcc  
+i386                  randconfig-012-20240308   clang
+i386                  randconfig-013-20240308   clang
+i386                  randconfig-014-20240308   clang
+i386                  randconfig-015-20240308   gcc  
+i386                  randconfig-016-20240308   gcc  
+loongarch                        allmodconfig   gcc  
+loongarch                         allnoconfig   gcc  
+loongarch                           defconfig   gcc  
+m68k                             allmodconfig   gcc  
+m68k                              allnoconfig   gcc  
+m68k                             allyesconfig   gcc  
+m68k                                defconfig   gcc  
+microblaze                       allmodconfig   gcc  
+microblaze                        allnoconfig   gcc  
+microblaze                       allyesconfig   gcc  
+microblaze                          defconfig   gcc  
+mips                              allnoconfig   gcc  
+mips                             allyesconfig   gcc  
+nios2                            allmodconfig   gcc  
+nios2                             allnoconfig   gcc  
+nios2                            allyesconfig   gcc  
+nios2                               defconfig   gcc  
+openrisc                          allnoconfig   gcc  
+openrisc                         allyesconfig   gcc  
+openrisc                            defconfig   gcc  
+parisc                           allmodconfig   gcc  
+parisc                            allnoconfig   gcc  
+parisc                           allyesconfig   gcc  
+parisc                              defconfig   gcc  
+parisc64                            defconfig   gcc  
+powerpc                          allmodconfig   gcc  
+powerpc                           allnoconfig   gcc  
+powerpc                          allyesconfig   clang
+riscv                            allmodconfig   clang
+riscv                             allnoconfig   gcc  
+riscv                            allyesconfig   clang
+riscv                               defconfig   clang
+s390                             allmodconfig   clang
+s390                              allnoconfig   clang
+s390                             allyesconfig   gcc  
+s390                                defconfig   clang
+sh                               allmodconfig   gcc  
+sh                                allnoconfig   gcc  
+sh                               allyesconfig   gcc  
+sh                                  defconfig   gcc  
+sparc                            allmodconfig   gcc  
+sparc                             allnoconfig   gcc  
+sparc                               defconfig   gcc  
+sparc64                          allmodconfig   gcc  
+sparc64                          allyesconfig   gcc  
+sparc64                             defconfig   gcc  
+um                               allmodconfig   clang
+um                                allnoconfig   clang
+um                               allyesconfig   gcc  
+um                                  defconfig   clang
+um                             i386_defconfig   gcc  
+um                           x86_64_defconfig   clang
+x86_64                            allnoconfig   clang
+x86_64                           allyesconfig   clang
+x86_64                              defconfig   gcc  
+x86_64                          rhel-8.3-rust   clang
+xtensa                            allnoconfig   gcc  
+
 -- 
-2.38.1
-
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
