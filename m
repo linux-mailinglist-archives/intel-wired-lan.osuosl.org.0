@@ -1,106 +1,105 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2508B8791C8
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 12 Mar 2024 11:18:36 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0912A87920A
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 12 Mar 2024 11:30:02 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 1471F405A3;
-	Tue, 12 Mar 2024 10:18:34 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id CCC9A404D2;
+	Tue, 12 Mar 2024 10:29:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id WhpncNny4sm2; Tue, 12 Mar 2024 10:18:33 +0000 (UTC)
+	with ESMTP id 0Cm8YMO6NAKd; Tue, 12 Mar 2024 10:29:58 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3586E4059E
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E969140528
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1710238713;
-	bh=v/TtoKF7cuacbpGcpjgtdgMi1EiHHySKw9WaAnGkjzM=;
+	s=default; t=1710239398;
+	bh=7BQBZQEZWzGbgfKljnIs0QsvUZnCKzK+sDNiXyr3xc0=;
 	h=References:In-Reply-To:From:Date:To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=SPVYkXXn6uvwz5FhrhE2FvNiv5/AFF3+eWXwkv6hqMMzA+S5E33Kfeh+JTY8gyHcF
-	 lm67h7kxKX2c69S1RDP01eb111N61x6GzefxgaAx0iq3P3SLtoCYuA0EsoxazOfiV3
-	 hncB98k5d5T9gFxp01HP7XCOUTDGrZZNx3a+id+H09JAZ0DWiU15MVlbPqVUuVpHlN
-	 U1KEQxijbZK8Eg7oZQdFAXp1XXvRNkRvyKj71Gb71oK/MZr28VmpeVbd/LZI6e/kWV
-	 AT6X/Ddr/g4VQI9r9DUs1VG7DYFYN1zx3X1nalklwXmc9dCnKxJXw0JIsRBW/svwpO
-	 3NeNxCuiLZQHA==
+	b=OXo2w55jrzJipC93bS8Kgwe0pi3TdQZrPl0CAfCV/y/eZznXU874CK4h782GrQgnV
+	 mUpaSw9V2Vp9ZTLiys7DHbo+ECN+7NoUlONfKN6L6wAIHWG4AP/BoKPZ7fXsa9WjS0
+	 szFuH0KkrZcYMAwc2W0EY+E0k+Tse+CcOQcnVHfPmYDN6S6RaK2XgKVrZLNJjqaWkS
+	 uzINJh3DH+1RIGnlznOjlKzjSTJHdxjZF3U4k1AA8EcYsBcVNH86pd6DG5nY+SqQvF
+	 0jDY5t+If9oYuflo3ZocX5EoRMuyRK17RPYf4HlKLwwEuQE8lJyO6nsnLRzPYsPhL/
+	 otWeedXl/9nVA==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 3586E4059E;
-	Tue, 12 Mar 2024 10:18:33 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id E969140528;
+	Tue, 12 Mar 2024 10:29:57 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 46DA21BF34F
- for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Mar 2024 10:18:31 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id F37021BF34F
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Mar 2024 10:29:54 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 307654048C
- for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Mar 2024 10:18:31 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id DFAB88145F
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Mar 2024 10:29:54 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id qULbNEVOA66O for <intel-wired-lan@lists.osuosl.org>;
- Tue, 12 Mar 2024 10:18:30 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id Xa0dkywUGiIo for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 12 Mar 2024 10:29:53 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2607:f8b0:4864:20::92d; helo=mail-ua1-x92d.google.com;
+ client-ip=2607:f8b0:4864:20::e34; helo=mail-vs1-xe34.google.com;
  envelope-from=erwanaliasr1@gmail.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 5F5E5404A8
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 5F5E5404A8
-Received: from mail-ua1-x92d.google.com (mail-ua1-x92d.google.com
- [IPv6:2607:f8b0:4864:20::92d])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 5F5E5404A8
- for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Mar 2024 10:18:30 +0000 (UTC)
-Received: by mail-ua1-x92d.google.com with SMTP id
- a1e0cc1a2514c-7db797c5c93so1901371241.0
- for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Mar 2024 03:18:30 -0700 (PDT)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 948C98145C
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 948C98145C
+Received: from mail-vs1-xe34.google.com (mail-vs1-xe34.google.com
+ [IPv6:2607:f8b0:4864:20::e34])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 948C98145C
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Mar 2024 10:29:53 +0000 (UTC)
+Received: by mail-vs1-xe34.google.com with SMTP id
+ ada2fe7eead31-472967264e7so1751775137.3
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 12 Mar 2024 03:29:53 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1710238709; x=1710843509;
+ d=1e100.net; s=20230601; t=1710239392; x=1710844192;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=v/TtoKF7cuacbpGcpjgtdgMi1EiHHySKw9WaAnGkjzM=;
- b=Zxmr17y65a0EVAe0Q9JfpKF6UEexqZA2DzrYb0B0WnkrhrQ1cYL1TI1yH/WLM/Kdh4
- 9oF0F2IOAD0fA9hdAoNoOP7zK3fHSOCJ+wQGDcUp7Zj2sSVI2fkec5WB64QboEzgWtBZ
- tq1u2FlUb0pUsXyIxf0Qf8FWKzRyH2v7GTlp6XTscUBD6MiaMG1tMB7a5YZxuUfJf/Bi
- 5hrjaxQmo1TfU6T5jYw/bCEA1N6ro21Rb4T7Jn9GGbgudrp3WZo3c03ndjrQAZw2lTW9
- SW/4fwXfwqFZm9tnkZTlAS/+uQ2dDw00mcNK4KdjP6RvkFr/3lw02Fls4wQzK3S4MTiv
- KWlQ==
+ bh=7BQBZQEZWzGbgfKljnIs0QsvUZnCKzK+sDNiXyr3xc0=;
+ b=TDhWoP9DVQqAwrUQvnDDHUnk2xvc4afpJgoyXt44HF6CVSkud5rZz2zpc4FyzwMzKf
+ hijbMQHPHQG7u7AH3EBSS3u5C1v2Jy1Ja0ZyRz+QqueCr8st2uzdJM5CSNbR7ib3tCVF
+ gEeyAHWOwt3w+ziaiOkbACN38ikhkb+YfuhhY8n97TMfPR17Osc7U17FovQ9ruL3bLAv
+ xT6u31D4xhOgLvGbfGUFld2GyF/51qfdw/4/5tO07GmdyS20fmKGBB6uY+fpw2EPxeEG
+ 5f1tDk5tHKG9hCnUnZhETP8iuGpZ+qDDwKwnXxBWF8Tx4t1qcCiXg1w1wfpqiZ58c60O
+ tDXA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVNofopCpOmpy4zItr8zD2kg6d5WKnd5LL1CPLBJIWk/pEUG+oTMcuD7azNZnniV6RJ20EhFiWIb7RE/q+zydnoYfGRJx/z7mtHImhTPi1AyA==
-X-Gm-Message-State: AOJu0YxIVWSBsAQX+XcC0JoAnGNbEj4bExZoEr/DsgbZGBiy48CIZsvH
- 0/zahQT5j8cGi4XqS7xZOxLv6JP/qNFCRdigoPhgQ9OGV1TsK7pOJ4ZvjEYV0vOWBb5umULptgK
- 5Ooe7jsCByuuuMEXVUe9krxQitlw=
-X-Google-Smtp-Source: AGHT+IHg34ksh5Vb8nFOPwXj8ahKVbhIjUruuiOlKBdvSNe99Anup77tCH67cK21OhJVVEyLM9Hc3BDc70tkwVkn0OQ=
-X-Received: by 2002:a67:f041:0:b0:472:64f5:f0a5 with SMTP id
- q1-20020a67f041000000b0047264f5f0a5mr5959821vsm.18.1710238708956; Tue, 12 Mar
- 2024 03:18:28 -0700 (PDT)
+ AJvYcCWw3QsEIQQwvuPp+XeU4WJJ4h65KJrjmNfr1AWndsnFFqkZZA6SSyg1q3hrRoEMmdKRB7L46vcY3cO+wQhFSV6ODvBbtoLS68Sz75KaW4uSZA==
+X-Gm-Message-State: AOJu0YxYD91G8hWPU5YPbTzY9+yl2EbV5H+5PRXOWvmzbeYjFmif77ua
+ SmBWOVGhX8yIBsanHZ7Ps5Xi99Jf5+8NjyTQrF62exOMVzCCY4d0jrOnzdvM9g6+Z7GRj8/1Gc6
+ 4DiVA4OKEcM3Ijvq8PIQGwnr3Tuo=
+X-Google-Smtp-Source: AGHT+IGkD0P7F8tx7lwSIyxICJzqzXGcCdhHe2449N4OpO89nUTsr1Ql+xRN06Bb7z+1VPWcuB0lRUbKcsBeXplOK0I=
+X-Received: by 2002:a67:b347:0:b0:474:acae:f3c3 with SMTP id
+ b7-20020a67b347000000b00474acaef3c3mr710675vsm.25.1710239392315; Tue, 12 Mar
+ 2024 03:29:52 -0700 (PDT)
 MIME-Version: 1.0
 References: <20240312094259.770554-1-e.velu@criteo.com>
- <fd37860e-306f-42bf-9a1d-e4d98ddf338c@molgen.mpg.de>
-In-Reply-To: <fd37860e-306f-42bf-9a1d-e4d98ddf338c@molgen.mpg.de>
+ <7169b33e1e4487370a530fb60d97dc096a24acfc.camel@redhat.com>
+In-Reply-To: <7169b33e1e4487370a530fb60d97dc096a24acfc.camel@redhat.com>
 From: Erwan Velu <erwanaliasr1@gmail.com>
-Date: Tue, 12 Mar 2024 11:18:17 +0100
-Message-ID: <CAL2JzuzjRTHzKPVU9+zfFeEgfDQPeRDUuaUjsqgDfgQ865en8Q@mail.gmail.com>
-To: Paul Menzel <pmenzel@molgen.mpg.de>
+Date: Tue, 12 Mar 2024 11:29:41 +0100
+Message-ID: <CAL2JzuxA1h=L=0cr+Q6CZ9UDbHB6ptbzCQ7gZddZLi2JumdLQQ@mail.gmail.com>
+To: Paolo Abeni <pabeni@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1710238709; x=1710843509; darn=lists.osuosl.org;
+ d=gmail.com; s=20230601; t=1710239392; x=1710844192; darn=lists.osuosl.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=v/TtoKF7cuacbpGcpjgtdgMi1EiHHySKw9WaAnGkjzM=;
- b=Bfjpn7s2IwSBX7mnv9xKRNwZxzxfDBOTK8Ou1MIO5Q5juJb6d6XCEXDi8jzTfXo6ER
- cWicKbEP9oChIf4VfwP96Qph1ZXFKbMdvo1bqMyvpf6/WymsPi6p4WwolZg0sBd0KyGT
- FINH33YzaByp9jRjaFbA/+lYrefYOCQ5IJVyc+SiHo0T61RYr1CF1yXMYKAmld5qsQRv
- O/6oK7G9GyGp48CSdMxb2+ZGOTUw0AjOatsDNlOriKygi8a7UzczwNfEuvRHtsL22eHh
- jqAY4KiNDqxk1jjNjCOyIl2h4BuW+HFDNsUEs0wzAc9HbDleD4nw8QhQOlCyDBztpRN+
- ClCQ==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ bh=7BQBZQEZWzGbgfKljnIs0QsvUZnCKzK+sDNiXyr3xc0=;
+ b=fll61iwmUjCm78Y5A+YpIpOyC10IPQJO2038PjjjS6HaXh4OT2iytakhR0bXq7W5d9
+ u1msiTcI/CFYPmu6+XEcPR53FwyWwcvi5dAz5hocentFTK4LF5r/seM0bN45n8bMG0og
+ 7olc4ajSypXJlfzEgSPIrgXcsBXGyySoAQ8TbEWouedbwRN3crr9Obs9tSX3a4VftHA5
+ Lc0Opuejhh1eOExgIbvCvbxkbAGA6uISRVYJJ5b+GMpgFJEm8t5N67N5kWE2zpdT0+Bw
+ v2NNOMah32GpnpIPVvIMkB3GOm5U6tQ9BqwjVoDHOBUohRt63tiQCvf8mHtxEOHdawlh
+ ELng==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=gmail.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256
- header.s=20230601 header.b=Bfjpn7s2
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
+ header.a=rsa-sha256 header.s=20230601 header.b=fll61iwm
 Subject: Re: [Intel-wired-lan] [PATCH v3] i40e: Prevent setting MTU if
  greater than MFS
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -116,56 +115,27 @@ List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Cc: Erwan Velu <e.velu@criteo.com>, linux-kernel@vger.kernel.org,
- Jakub Kicinski <kuba@kernel.org>, Eric Dumazet <edumazet@google.com>,
- intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
- Tony Nguyen <anthony.l.nguyen@intel.com>, Paolo Abeni <pabeni@redhat.com>,
- "David S. Miller" <davem@davemloft.net>
+ Eric Dumazet <edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
+ netdev@vger.kernel.org, Jakub Kicinski <kuba@kernel.org>,
+ intel-wired-lan@lists.osuosl.org, "David S. Miller" <davem@davemloft.net>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-> Am 12.03.24 um 10:42 schrieb Erwan Velu:
+> On Tue, 2024-03-12 at 10:42 +0100, Erwan Velu wrote:
 > > Commit 6871a7de705b6f6a4046f0d19da9bcd689c3bc8e from iPXE project is
-> > setting the MFS to 0x600 = 1536.
 >
-> Please add a link, as most people do not have the iPXE archive checked
-> out. Maybe also add the commit message summary.
-I will, thanks.
-
-> > At boot time the i40e driver complains about it with
-> > the following message but continues.
-> >
-> >       MFS for port 1 has been set below the default: 600
-> Hmm, but 1536 > 600. So the log message is incorrect?
-
-As mentioned earlier in the commit message, the 600 is 0x600 = 1536.
-I can offer a patch to report it in decimal or add an explicit 0x prefix.
-
-> > If the MTU size is increased, the driver accept it but large packets will not
-> accept*s*
-Fixed.
-
-
-[...]
-> > At least, this commit prevents setting up an MTU greater than the current MFS.
-> > It will avoid being in the position of having an MTU set to 9000 on the
-> > netdev with a firmware refusing packets larger than 1536.
-> Maybe add the new log message.
+> Please use the checkpatch-friendly commit reference: <12char hash>
+> ("<title>")
 Done.
 
-> One last formal nit: Please use a line length limit of 75 characters per
-> line.
-Done.
+> This looks like a legit fix that should target the 'net' tree, @Tony:
+> do you agree?
+> If so, Erwan, please include a suitable fixes tag in the next revision.
+> Please include into the subj prefix a suitable target tree. I think
+> this should go first via the intel tree for testing, so 'iwl-net'
+> should fit.
+Oh I didn't knew that part, thx. I'll wait @Tony to see what target I
+should use.
 
-> > +     mfs = pf->hw.phy.link_info.max_frame_size;
-> > +     max_mtu = mfs - I40E_PACKET_HDR_PAD;
-> > +     if (new_mtu > max_mtu) {
-> > +             netdev_err(netdev, "Error changing mtu to %d, Max is %d. MFS is too small.\n",
-> > +                        new_mtu, max_mtu);
->
-> The other log messages capitalize MTU.
-Yeah but the exact previous one was in the same case. Shall I bump all
-of them to upper or lower cast ?
-
-
-> The rest looks reasonable.
-Thx for the review.
+> In any case please respect the 24h grace period when posting on netdev:
+Yeah sorry for the v3 ... I shouldn't have done that way, that fast.
