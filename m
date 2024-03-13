@@ -1,102 +1,100 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9E4F887AA38
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 13 Mar 2024 16:16:08 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0DD2A87AB00
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 13 Mar 2024 17:23:18 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 7280B812A1;
-	Wed, 13 Mar 2024 15:16:05 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 5B4ED60C06;
+	Wed, 13 Mar 2024 16:23:16 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id zyViL3YYewyE; Wed, 13 Mar 2024 15:16:04 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id UKOeMC0_PD5w; Wed, 13 Mar 2024 16:23:15 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B38B481277
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org AC61D60071
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1710342964;
-	bh=zitympJcMqQpZuvfBggEaIHiO0WpMlfnPdF8UjN+huc=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
+	s=default; t=1710346995;
+	bh=OP4XfExdgKALT49FLHn2A5xMOxDTx6HKoV0OjVzMEsw=;
+	h=From:To:In-Reply-To:References:Date:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=2sqjHtknyxeWa8WZhyvDd1HTDg7DyFNisZtLLzcJ9cYZcYyBIivc2rMg4k8jEZ8ny
-	 qrUyb1ngZFB1HluNveBuxjO0jWC/t1Zg0czvhm6//tTAeDUS5YyhRWAOrOWSiTNHzc
-	 IeCm1NeN9pVBUs8wkikrw8Hn3TF3YBIJfbIVnE9WVhxOy4uU3h5MMRy9veNgs26FYZ
-	 Q147GXXWXVKDZhJ9U3T0adQEo5hO3E5XHlFjehu1K0C806rP8KIhfEKRbt5BJwyhXs
-	 LvU8HWPh+axjnPOChWLIeScU5PzU6EcdI66TnyrLTzKWaa7qo58VylVeWVzQnaAodT
-	 KCry+qtxC4hZQ==
+	b=U3JLTtrpun90WMmCTuml0o1TCDklENDGPAnj8lfIkxHV21ALQrV0t5OLOJtQjgHLz
+	 CxKtG0scMao5XUjllU4b+glpu1ceYuE+FvIkI8ZhMgpNYE2mqioZDgGcJ62owH2z4G
+	 zJ2V0MYVw27lqf3sTzqUod5vFi8o8TcEpVSYkf7Yg8hk9BMggFQR2n9Nt1dBvGbKsW
+	 QX/zoPYMX67LmRk5ZL1lGaV0s19/VbrLtATxiwrC6RFHnpGcEGAf0wieqbv/soQe3q
+	 sMooaKn9oRYAt8dPGZkoWDnOcRoEy7k3ecFWfBoAur8ojZShUjJoG9sRRZUnSbfWbV
+	 S3yHO5C8F9RAQ==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id B38B481277;
-	Wed, 13 Mar 2024 15:16:04 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id AC61D60071;
+	Wed, 13 Mar 2024 16:23:15 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id E394B1BF4E6
- for <intel-wired-lan@lists.osuosl.org>; Wed, 13 Mar 2024 15:16:01 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 24B7E1BF239
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 13 Mar 2024 16:23:14 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id D02A94031D
- for <intel-wired-lan@lists.osuosl.org>; Wed, 13 Mar 2024 15:16:01 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 1C69B6076D
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 13 Mar 2024 16:23:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id iZIJH_JfoJ4P for <intel-wired-lan@lists.osuosl.org>;
- Wed, 13 Mar 2024 15:16:01 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.133.124;
- helo=us-smtp-delivery-124.mimecast.com; envelope-from=ivecera@redhat.com;
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id zvNahjGwqDjf for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 13 Mar 2024 16:23:13 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.13;
+ helo=mgamail.intel.com; envelope-from=vinicius.gomes@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 14D42400B8
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 14D42400B8
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.133.124])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 14D42400B8
- for <intel-wired-lan@lists.osuosl.org>; Wed, 13 Mar 2024 15:16:00 +0000 (UTC)
-Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
- by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-632-HkdNa89aMmqpz2KCcnIf3g-1; Wed,
- 13 Mar 2024 11:15:54 -0400
-X-MC-Unique: HkdNa89aMmqpz2KCcnIf3g-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com
- [10.11.54.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 8FDD43C0C8A1;
- Wed, 13 Mar 2024 15:15:53 +0000 (UTC)
-Received: from [10.45.224.236] (unknown [10.45.224.236])
- by smtp.corp.redhat.com (Postfix) with ESMTP id C0D213C23;
- Wed, 13 Mar 2024 15:15:51 +0000 (UTC)
-Message-ID: <3f934c7b-867c-4550-93ea-4f567807fa98@redhat.com>
-Date: Wed, 13 Mar 2024 16:15:51 +0100
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 1E7ED60071
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1E7ED60071
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.13])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 1E7ED60071
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 13 Mar 2024 16:23:12 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,11012"; a="8068759"
+X-IronPort-AV: E=Sophos;i="6.07,123,1708416000"; 
+   d="scan'208";a="8068759"
+Received: from fmviesa004.fm.intel.com ([10.60.135.144])
+ by fmvoesa107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 13 Mar 2024 09:23:12 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.07,123,1708416000"; d="scan'208";a="16572134"
+Received: from unknown (HELO vcostago-mobl3) ([10.125.110.77])
+ by fmviesa004-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 13 Mar 2024 09:23:11 -0700
+From: Vinicius Costa Gomes <vinicius.gomes@intel.com>
+To: Kurt Kanzenbach <kurt@linutronix.de>, Jesse Brandeburg
+ <jesse.brandeburg@intel.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet
+ <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni
+ <pabeni@redhat.com>, Vladimir Oltean <vladimir.oltean@nxp.com>, Muhammad
+ Husaini Zulkifli <muhammad.husaini.zulkifli@intel.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: Michal Schmidt <mschmidt@redhat.com>
-References: <20240313125457.19475-1-ivecera@redhat.com>
- <CADEbmW3NQ7SQpccOqTD=p_czpBbOY=41kS7krwx2ZEDmFfcgrg@mail.gmail.com>
-Content-Language: en-US
-From: Ivan Vecera <ivecera@redhat.com>
-In-Reply-To: <CADEbmW3NQ7SQpccOqTD=p_czpBbOY=41kS7krwx2ZEDmFfcgrg@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.1
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=redhat.com; 
- s=mimecast20190719; t=1710342959;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=zitympJcMqQpZuvfBggEaIHiO0WpMlfnPdF8UjN+huc=;
- b=cSlUNBLbVpjv9sk0YX6pZkD79Ln+kzDRjra3Av6qSYopP+SLIksl/H3EXQOdIgA/RKSFUz
- fg+tI6wvekdLJPbZAmFV04RO0wSbwPAZ6GNb12cNirTHrLK6PRyaayRhMWAp5Os+S7cvDp
- kGp+Z8sv4N/8rpIqpB5MdwD8eyTgYeU=
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+Content-Type: text/plain
+In-Reply-To: <20240313-igc_txts_comment-v1-1-4e8438739323@linutronix.de>
+References: <20240313-igc_txts_comment-v1-1-4e8438739323@linutronix.de>
+Date: Wed, 13 Mar 2024 09:23:11 -0700
+Message-ID: <87v85qp0cw.fsf@intel.com>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1710346993; x=1741882993;
+ h=from:to:cc:mime-version:subject:in-reply-to:references:
+ date:message-id;
+ bh=bIh/N/2R/W06MlUKTSgW8YZVPxC6qNVJHsYSfuglBYI=;
+ b=CMEW6VcFOqInQ+wsvRvUG2KdJhLEtcqQGt01plK0HrS3N2RrvBNtTSDQ
+ oTGfTqRQhqvKeMDpCcX7Ysay6U+t1JoY8dThE71ZcdqGMBo/vv7HwDt/W
+ sslFrdxAs8Rp4IxHCEv3gfMwUutNercdhAf06ijtc2tjp/3eGd5ULrwxd
+ QeMk3z91olNwZeky4mTOIgSd6d2vkbJiCMG6lMdwPpwg9rpaAxfUjUm0H
+ 3TYlaaZ5HtN4ClUcusRF8SEYST8mIJdsO9/0FQEklAC8277HgSh0ipOTY
+ uiZLG9Mn8kClgSkuMmi+hTlLAJ7QpDb8/4lFr7T6hhOis8mxgM6GUO4kv
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=redhat.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
- header.a=rsa-sha256 header.s=mimecast20190719 header.b=cSlUNBLb
-Subject: Re: [Intel-wired-lan] [PATCH net] i40e: Enforce software interrupt
- during busy-poll exit
+ header.from=intel.com
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=CMEW6VcF
+Subject: Re: [Intel-wired-lan] [PATCH iwl-net] igc: Remove stale comment
+ about Tx timestamping
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -109,43 +107,27 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: aleksandr.loktionov@intel.com, netdev@vger.kernel.org,
- open list <linux-kernel@vger.kernel.org>, pawel.chmielewski@intel.com,
- Eric Dumazet <edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
- Hugo Ferreira <hferreir@redhat.com>,
- "moderated list:INTEL ETHERNET DRIVERS" <intel-wired-lan@lists.osuosl.org>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- "David S. Miller" <davem@davemloft.net>
+Cc: netdev@vger.kernel.org, Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
+ Kurt Kanzenbach <kurt@linutronix.de>, intel-wired-lan@lists.osuosl.org
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+Kurt Kanzenbach <kurt@linutronix.de> writes:
+
+> The initial igc Tx timestamping implementation used only one register for
+> retrieving Tx timestamps. Commit 3ed247e78911 ("igc: Add support for
+> multiple in-flight TX timestamps") added support for utilizing all four of
+> them e.g., for multiple domain support. Remove the stale comment/FIXME.
+>
+> Fixes: 3ed247e78911 ("igc: Add support for multiple in-flight TX timestamps")
+> Signed-off-by: Kurt Kanzenbach <kurt@linutronix.de>
+> ---
+
+Ugh, sorry for forgetting about that.
+
+Acked-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
 
 
-On 13. 03. 24 14:47, Michal Schmidt wrote:
->> -/* a small macro to shorten up some long lines */
->> -#define INTREG I40E_PFINT_DYN_CTLN
->> +static inline u32 i40e_buildreg_swint(int type)
->> +{
->> +       u32 val;
->> +
->> +       /* 1. Enable the interrupt
->> +        * 2. Do not modify any ITR interval
->> +        * 3. Trigger a SW interrupt specified by type
->> +        */
->> +       val = I40E_PFINT_DYN_CTLN_INTENA_MASK |
->> +             I40E_PFINT_DYN_CTLN_ITR_INDX_MASK | /* set noitr */
->> +             I40E_PFINT_DYN_CTLN_SWINT_TRIG_MASK |
->> +             I40E_PFINT_DYN_CTLN_SW_ITR_INDX_ENA_MASK |
->> +             FIELD_PREP(I40E_PFINT_DYN_CTLN_SW_ITR_INDX_MASK, type);
->> +
->> +       return val;
->> +}
-> This function is called only from one place and with a constant
-> argument. Does it  really need to be a function, as opposed to a
-> constant? Or are you going to add more callers soon?
-
-This can be reused also from i40e_force_wb() but I didn't want to make 
-such refactors in this fix. Lets do it later in -next.
-
-Ivan
-
+Cheers,
+-- 
+Vinicius
