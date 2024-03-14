@@ -2,85 +2,162 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9590B87C1F6
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 14 Mar 2024 18:16:24 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7529A87C246
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 14 Mar 2024 18:55:14 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 42F41410EA;
-	Thu, 14 Mar 2024 17:16:23 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 19A0B410E4;
+	Thu, 14 Mar 2024 17:55:13 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id r6YP5HeqMHvG; Thu, 14 Mar 2024 17:16:22 +0000 (UTC)
+	with ESMTP id UfYt-3T3dfQl; Thu, 14 Mar 2024 17:55:12 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 25AF8410DF
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3042D4084E
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1710436582;
-	bh=Vv5+GJ2H72OtZp5Q7FjppK435Qe+DXqy2DrBspVR6Y0=;
-	h=Date:From:To:In-Reply-To:Subject:List-Id:List-Unsubscribe:
-	 List-Archive:List-Post:List-Help:List-Subscribe:Cc:From;
-	b=XZlye5SErqVPtnB6d6lKKOmdp/WhGcRujJzKljma9DHKOTz7CU7bFgdk2uJamw/2e
-	 RMD55jc5moxpkO0gXV0NxN7Cw3WuHdrrcBS7aAxoCa/pkSgVUNJAsm78/foLIKtMMJ
-	 3y3uUbFHJNaRgzjuZu33623/xt+/MA2awyWs6G12u8CbQeLs9RFXncyHhzmF1vDfT/
-	 B80Qo03/j1I6qX8zrD2bf9ekjNg0vqS406XfQK498GKgTK89/og+s+8Z2rDD+qPEEf
-	 n0F3t8UzHPy6e5Lcikx/KcO7IGlMyRMuZfh6nbToiJhMdyWoyPoTW0bmmJfDw4t9zC
-	 W9R+VknLHLs1A==
+	s=default; t=1710438912;
+	bh=PzrQyRn8FOBWwAHFeXZtVylHvT3IsyT9SrWdZbsN4go=;
+	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=NQcl+5ncC9ctgch3i9iKH3fLU6TeDzcGVWm59p0wAslN2icjCTefgWv3jqpOil9T0
+	 Cnht1avMijTVvgUNF9tyKcStG8d6eRktoRhCEsOtHGktH++AODrEPeIA9nQp24tIF9
+	 oELUxSpjA6XZ1D6WRWYNw3ywq71Iz8N/7vrl73+IQn5jcMfSD6Moj+v4EHVtFqbzYC
+	 jJYJ6J8iK6YqwjLXhk9C4U4B46qJii+Y+ypIrEPDSWyy9t9u+0XD0E7Dg/6+dyu0dj
+	 ircVH/yF1S4V05jIg5rA2Bc5HoudL8gHcQlES54zFIF7ar//nhCAQaGqcOGykiTWtD
+	 1yTP7sxtw+3zw==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 25AF8410DF;
-	Thu, 14 Mar 2024 17:16:22 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 3042D4084E;
+	Thu, 14 Mar 2024 17:55:12 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 324971BF3E8
- for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Mar 2024 17:16:20 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 4E9161BF3E8
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Mar 2024 17:55:10 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 2AADC410C6
- for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Mar 2024 17:16:20 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 3A1A5402C6
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Mar 2024 17:55:10 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id LhJE_H0WzYJK for <intel-wired-lan@lists.osuosl.org>;
- Thu, 14 Mar 2024 17:16:19 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=145.40.73.55;
- helo=sin.source.kernel.org; envelope-from=helgaas@kernel.org;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 7C048410BB
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7C048410BB
-Received: from sin.source.kernel.org (sin.source.kernel.org [145.40.73.55])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 7C048410BB
- for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Mar 2024 17:16:18 +0000 (UTC)
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by sin.source.kernel.org (Postfix) with ESMTP id 0B278CE1E18;
- Thu, 14 Mar 2024 17:16:14 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 05C6BC433F1;
- Thu, 14 Mar 2024 17:16:12 +0000 (UTC)
-Date: Thu, 14 Mar 2024 12:16:11 -0500
-From: Bjorn Helgaas <helgaas@kernel.org>
-To: Ilpo =?utf-8?B?SsOkcnZpbmVu?= <ilpo.jarvinen@linux.intel.com>
-Message-ID: <20240314171611.GA958323@bhelgaas>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 5tdg7kI92juL for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 14 Mar 2024 17:55:09 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=40.107.236.40;
+ helo=nam11-bn8-obe.outbound.protection.outlook.com;
+ envelope-from=brett.creeley@amd.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 42CDE4029B
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 42CDE4029B
+Received: from NAM11-BN8-obe.outbound.protection.outlook.com
+ (mail-bn8nam11on2040.outbound.protection.outlook.com [40.107.236.40])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 42CDE4029B
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Mar 2024 17:55:09 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=KWtVFKznc8AsmmbQ8GrCz8NeBzrjEABbO7cuAO6FlIUDN8KGQ4qKLYLm+6ZCtkVB++tG96jPymtxZirD9RvSczqcHpLyRUEOs5OyofybQtsHTMj4OsUbEVWFvdVrV+xiUO/Ft6x3aMkGpxs5J1xkc9miFdAl3an8PQpyx3bDdS/d5vut3f5RMY+P4hI19+sXLqlOIOhSXLRUMv/8qdwSY4zBD1NGeMw6I1li5yLLTOMCP2FRB4/uJ+orYjizMETnFK1sqN2s5N1yLy8hHUFG5liv8/2nlUZHK7NIZ8AbVkOdlLJ/wWy5aS7igN+8CSvqlGngDJp58G6FusZ/dXSUQQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=PzrQyRn8FOBWwAHFeXZtVylHvT3IsyT9SrWdZbsN4go=;
+ b=m6338/jdTgg7pEvVYRuxPPRwGMFTi7tuttsYPwv9RWxMjFs9wQVzZFAU9R2H6J1U2kw0PT//Moytzn/0etM/CKPxvr9VAGboocizXjeWx/4m7R4f4QHPyY0gmdykWwA5xCznrr5gW5xWBPTv7R6fCZ/h2m1IoEKignWS7Ip8QttXVjdGaMHzPT+/EGBJgDkNpXenp5GToBjUdO+J4QreNN21arB7KbyRrbGUfiihopcRFuWFoljj5cNyV+t1tnpPWE0FYUkBESYbJcAQyZ0P2kubNqMj4FLNgQO8cTffbgDqVAbm9/UgQOPUP5KjWKUlbHGuHP1MEPTtzSmq+E4bXg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=amd.com; dmarc=pass action=none header.from=amd.com; dkim=pass
+ header.d=amd.com; arc=none
+Received: from PH0PR12MB7982.namprd12.prod.outlook.com (2603:10b6:510:28d::5)
+ by MW4PR12MB6921.namprd12.prod.outlook.com (2603:10b6:303:208::8)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7362.35; Thu, 14 Mar
+ 2024 17:55:05 +0000
+Received: from PH0PR12MB7982.namprd12.prod.outlook.com
+ ([fe80::c325:df95:6683:b429]) by PH0PR12MB7982.namprd12.prod.outlook.com
+ ([fe80::c325:df95:6683:b429%6]) with mapi id 15.20.7362.035; Thu, 14 Mar 2024
+ 17:55:05 +0000
+Message-ID: <d16ff01c-4a01-4871-93de-a5c26a352301@amd.com>
+Date: Thu, 14 Mar 2024 10:55:02 -0700
+User-Agent: Mozilla Thunderbird
+Content-Language: en-US
+To: Erwan Velu <e.velu@criteo.com>, Erwan Velu <erwanaliasr1@gmail.com>
+References: <20240313090719.33627-2-e.velu@criteo.com>
+ <4e203331-62f7-44e7-acd9-f684c30662de@amd.com>
+ <c0ccaef6-44eb-4851-b336-cdb06647e1d2@criteo.com>
+From: Brett Creeley <bcreeley@amd.com>
+In-Reply-To: <c0ccaef6-44eb-4851-b336-cdb06647e1d2@criteo.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20240206135717.8565-3-ilpo.jarvinen@linux.intel.com>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1710436573;
- bh=L79tdLUwzaaRgRXL97CbprC3UX8xdukYNWJfNJ9rn8Y=;
- h=Date:From:To:Cc:Subject:In-Reply-To:From;
- b=bLCoITag/SuEtTrsO/sMEjHd4BnWeVtJvXB6210xjO0cdkxYMA8vA1JIb6pEd2Kfy
- Id8hEuP4GShaNC+PpogaxARWBhxMId5O2Cie8lL7/14MzwoABw+v7vAtpZtvsqvwVm
- j+7ReyKeR/gEjByLQxpMlRsVYXDEGyGeHFdCK6t+sjpJtjaZP9s/5wAN9lzVmWJr7r
- pLa+CQidixlNP3GHezj2k/ubGEQYBhmB8PMTnGZbFPbhqQ4aFXAmuJp6RUqrSv3XnA
- 050p8/o022AJfkYOdhHhi7dvoS2VTcsuMhDFAH55Xucdvzdz4Rqw4PKJtaUCOfiv+R
- zUf5Dv5K5Grxg==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20201202 header.b=bLCoITag
-Subject: Re: [Intel-wired-lan] [PATCH 2/4] PCI: Generalize TLP Header Log
- reading
+X-ClientProxiedBy: SJ0PR13CA0226.namprd13.prod.outlook.com
+ (2603:10b6:a03:2c1::21) To PH0PR12MB7982.namprd12.prod.outlook.com
+ (2603:10b6:510:28d::5)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: PH0PR12MB7982:EE_|MW4PR12MB6921:EE_
+X-MS-Office365-Filtering-Correlation-Id: 66187f94-b92e-4f45-a9c8-08dc444fe13b
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: ZNNaQY6K/ovxfeOhuozFklahIQ2GsTXTyiSpAHCVIhSI2o3gO3k0AdgJtbcDY5qQyQKrI9vnyBltZARNalMMPm6dR4zWjb/jhAlHWFVtbxEGjBjjCc9jiyt5CfP3jyDsqqQGyEQBIlk1XE5CdyqAEkSeh431jqiqDMYPhdxYhGSs8O8J2OoA35QQVdn9IlMEFGPPBjwhm8tlVpdcAh5+yDE//FACawhTUwgT7C1RoRQAmeAVa2QipdNb8XDkHEp1v0uLf4JJ6YFy5PV2tZwOgxDOltCKlEUoN07JG7a23RHCaENUJf8B+0p1TluVNDRbzUqweJsF9/5qtGlSQEvST9SRXZ2DvY6O/cfnNrn5gfWZ47hKpr1RZ2W4/osgpPIQ0eaeo38VC8h+YOYNbPc7BIcgfg7sOdsMOptq/xTBU7kW6SpiasOJ71EauHiRVSAh9p77rLSvZG2NnL+LP/RFQlRrFuEhKSOkTklxoNjwEkWHdHCrqluNXXO0jEbyUv5I4Y3vq/iQ+6/BEoTXYGNwZ41WBiqhZ4NvkHDQ6Q1BNHhBErGZ3HaKJD0KPNo7tkUhebYWw8Kj5U8biB8Pnwp+vuAnUGDrjFpRq0VlCBU0YK9/tcy1+r1Yy+EHqy4Uc4uosnVw9HtoslTOoKaEjlIakA==
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:PH0PR12MB7982.namprd12.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230031)(1800799015)(376005)(7416005); DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?OVh5clQ0ZmdDRTJPSXQ1TVlLLzdUTFg3NWY5VHZzVnVSNGhWTnVzQjNuTlVU?=
+ =?utf-8?B?cy9GNE9wN3JqbDhmK1Y4UmdWcW9vWEsyc05xbmJQeUMxTk1GRWFqbTM1dVo1?=
+ =?utf-8?B?NDNQWmw2cTVmWGNCN1VxM0tEdEVHdVpHWkNSY0M3eXJISDJ5ZUpON1FNRGFr?=
+ =?utf-8?B?QWZkeDNrZGx6QWJWL05IaENSa3VMOWZlaWU4bnA3VnlZKzJSVGltQlhjTDhE?=
+ =?utf-8?B?dTAvaWU2ZVJKdU95L1VTUHRldnhNRDNab0VyZXVXb0xMT2pYYjhIWFZ1dThW?=
+ =?utf-8?B?dDRTZnZ1aHJ3dDBDM1BUUkFYY29yd1hNd25OQUNpN1E1REp3bm5jdmNlN1Bo?=
+ =?utf-8?B?d0J5ZnJsUHZ6d25WWm10TzhMVzRQVDJVYkEyODJteHFSVHdSRXcrdnF3emI1?=
+ =?utf-8?B?K0NmZjVUYUhZZlNsdk1zVTBpalpOOU1mSXNoVCtmVVJ3UG9TMTNGUVFCcUd3?=
+ =?utf-8?B?NmNZK2FOTVZnVWlneUtrcVRCZ0Z2OFcrbHVRQWlEVGNKd1dxUGJIbXI2UlNC?=
+ =?utf-8?B?M3N2bXgrNy9aNkl0NHQ2SW9lTVJtOUtkWFFuWVdiMGdrWkRxdkFRbEMwcFlm?=
+ =?utf-8?B?WXlkcFRXNEMvb1Z5bkxiRktBVGQ0NzlUZ1JtemZvRGNZYUVuaUhPL1BYSWN4?=
+ =?utf-8?B?bklIbUU1djFZWEp5UkNnMnFxTHdqazZ0enNwRlQvT21MdVd3cENjRFZDV1FE?=
+ =?utf-8?B?cVlDVnpoaElBd0VuZFM2QnJ0ek9zOGNvazc5cFJBOFBUUC9KcXlPazdYY0RR?=
+ =?utf-8?B?OHQ4bExrOENaY2pZa1R2aWhvVlhVdEZmdFhsYXVRbXN4UmJSSFhHZDMydU1E?=
+ =?utf-8?B?L1RWNEllYVduK3RQSnVTcFk2Z3pQdjQyR3cxUHdtVGFyY1FWQkkrZUoxVTVl?=
+ =?utf-8?B?NlZ3VkRlNThGeG91Z1pOZ2RMemJRL2krTGpyelB5NHY3b2kvOXhBV2xCbHRk?=
+ =?utf-8?B?d093YzJmcHJORFY0MWd0RHl0LzNDWUNUV2F3c29kMUdqVktITFdYcmNiNk56?=
+ =?utf-8?B?SWFCVk1SZGE5Wk1HRkpDa1RBazFMSXZSMWpnd3gzandsRjdLQ2UyRllQV1hv?=
+ =?utf-8?B?SHNJN3EzZ2o4NDZ4VDJSL0VCVnVBVWpseWYrM3AySmwyU3J4QzFIK3J3alp5?=
+ =?utf-8?B?WUkzeERIM3o3VkFNaDkrMDAyUUsxOFJFOXdOQmF3UWhOR1ZuQzBTWGtvNXdJ?=
+ =?utf-8?B?dWlwaHo2WVNMdlZyRDdXUnVsSHRrbWZTT1NSV21tN1FxN1RGcXIyWVJtd0RF?=
+ =?utf-8?B?bEZLblR2L08rTTFoQmtXR2NUcDZ5YzRLd3VYVjVxbUJ2S1ZpZ1hGUVBXTFhj?=
+ =?utf-8?B?dWZNMUF1ZGQ3TXZFejZOaWVFdkhkKzVXc0sweTZiSW5vbG9EcHl1d0R3clFy?=
+ =?utf-8?B?RS9wSlhBUitvcXBqRGF5T1pkM3czZUZPV1V6eEs1dmFUMnlLT0VOdXFaK0lw?=
+ =?utf-8?B?dXZybU4vOWJGSVR4dHpQUjBjWURZQXBIVnBaNnR4VDd2WlRBaGhOMmdhakJU?=
+ =?utf-8?B?bTIrZFdia1Y2b0FBaEc3L25FcEdJenJET3pJNGYvNC9jcUtjT1pQbzk1K1E1?=
+ =?utf-8?B?WURsL2JhMUM1TTNsak5kSDcvQXM5RG90S1lQOXRud2NJWXpvUWFzbWFtWGV5?=
+ =?utf-8?B?ckI2d0Q0TmpMakVYVTgzajdGZXFSZ2IrUXdVc3lFQm1qelVReVluTy9HNzB5?=
+ =?utf-8?B?QTZDS2NJbUF5MW5XL1RQVmZvbEJwa2J0dWtRbEtHQSt5MnU3aStYYklWem90?=
+ =?utf-8?B?bTBxN2NpS2syYi91eHdnWHpSZFlQVndpNWR1dS9LNUkwNVlMblpzeHFEQ0cz?=
+ =?utf-8?B?bHRIT0dXNHlBbHRndEhDYWtrWERmT3VkM1gzV1UxckJ3SVovQ2RkaHZpbDFt?=
+ =?utf-8?B?SGphdHdPZjV2aEk0SmpjdTc2eDdzM2RrTlhoWUhnYmdCbno0K3FwRnYvdHpQ?=
+ =?utf-8?B?Qy9saWh3d093VHdQOUhYRXRtL0RvQkpYV2ZqTEIvTmxQc05kYllpMDFHaGhy?=
+ =?utf-8?B?N3I3QVFOTjF0SVJGWGxmdHpPSXlQZWc5ZUZiY1R5ZXZ2L3BOL1d6bXhVUHli?=
+ =?utf-8?B?T2EyMlVuclFxdXIxTC9rSmM1c0c5eVhvRURsTDlzTnhlc1hycER6NDlmZGxZ?=
+ =?utf-8?Q?lgnNW6x+Fz3KAh0SjqNvpWa1M?=
+X-OriginatorOrg: amd.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 66187f94-b92e-4f45-a9c8-08dc444fe13b
+X-MS-Exchange-CrossTenant-AuthSource: PH0PR12MB7982.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 14 Mar 2024 17:55:05.3054 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: 1H9SH7N1n7dxCPeM3b5ste5Y84zUr2pyTVAR93VLxtQlCNKkM+vJN5eKcAv6AfU/j0kuBQOl8Vwm+p72daCPzA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MW4PR12MB6921
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=amd.com; s=selector1; 
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=PzrQyRn8FOBWwAHFeXZtVylHvT3IsyT9SrWdZbsN4go=;
+ b=OPF0BqaaD+Tvw+k0kQQkvqpdxBcGwG9yN7ebIx8avDK6BhwdLpSAIp7HQeXwKnvZNvV74y2A3FhX7TqjKrlkpxQcSioq/MOLS+a0tv8Bh1JtJOcoxW9U2zpbl+jf5JocZWLxdLm+9abr2VKbL1eJTkJathCPcQoDk8bRGzasjUs=
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dmarc=pass (p=quarantine dis=none)
+ header.from=amd.com
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (1024-bit key,
+ unprotected) header.d=amd.com header.i=@amd.com header.a=rsa-sha256
+ header.s=selector1 header.b=OPF0Bqaa
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=amd.com;
+Subject: Re: [Intel-wired-lan] [PATCH v4 iwl-net] i40e: Prevent setting MTU
+ if greater than MFS
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,131 +170,49 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Oliver O'Halloran <oohall@gmail.com>, Tony Luck <tony.luck@intel.com>,
- Mahesh J Salgaonkar <mahesh@linux.ibm.com>, Borislav Petkov <bp@alien8.de>,
- linux-pci@vger.kernel.org, Greg Rose <gvrose8192@gmail.com>,
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- linux-efi@vger.kernel.org, Tony Nguyen <anthony.l.nguyen@intel.com>,
- Jakub Kicinski <kuba@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
- intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
- Paolo Abeni <pabeni@redhat.com>, linuxppc-dev@lists.ozlabs.org,
- Ard Biesheuvel <ardb@kernel.org>, linux-kernel@vger.kernel.org,
- linux-edac@vger.kernel.org
+Cc: intel-wired-lan@lists.osuosl.org, linux-kernel@vger.kernel.org,
+ Eric Dumazet <edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
+ netdev@vger.kernel.org, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-[+cc Greg, Jeff -- ancient history, I know, sorry!]
 
-On Tue, Feb 06, 2024 at 03:57:15PM +0200, Ilpo Järvinen wrote:
-> Both AER and DPC RP PIO provide TLP Header Log registers (PCIe r6.1
-> secs 7.8.4 & 7.9.14) to convey error diagnostics but the struct is
-> named after AER as the struct aer_header_log_regs. Also, not all places
-> that handle TLP Header Log use the struct and the struct members are
-> named individually.
+
+On 3/14/2024 10:10 AM, Erwan Velu wrote:
+> Caution: This message originated from an External Source. Use proper 
+> caution when opening attachments, clicking links, or responding.
 > 
-> Generalize the struct name and members, and use it consistently where
-> TLP Header Log is being handled so that a pcie_read_tlp_log() helper
-> can be easily added.
 > 
-> Signed-off-by: Ilpo Järvinen <ilpo.jarvinen@linux.intel.com>
+> Le 14/03/2024 à 17:10, Brett Creeley a écrit :
+> [...]
+>> If this is how the max_mtu is determined, does it make sense to set this
+>> before registering the netdev, i.e. netdev->max_mtu in
+>> i40e_config_netdev()?
+> 
+> 
+> The absolute max is properly set but I think that's only true if we
+> ensure the value of the MFS.
+> 
+> So if with another patch to set the MFS to the right value when asking a
+> bigger MTU, having this value makes sense this is the absolute max for
+> this device.
 
-> diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-> index bd541527c8c7..5fdf37968b2d 100644
-> --- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-> +++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-> @@ -1,6 +1,7 @@
->  // SPDX-License-Identifier: GPL-2.0
->  /* Copyright(c) 1999 - 2018 Intel Corporation. */
->  
-> +#include <linux/aer.h>
->  #include <linux/types.h>
->  #include <linux/module.h>
->  #include <linux/pci.h>
-> @@ -391,22 +392,6 @@ u16 ixgbe_read_pci_cfg_word(struct ixgbe_hw *hw, u32 reg)
->  	return value;
->  }
->  
-> -#ifdef CONFIG_PCI_IOV
-> -static u32 ixgbe_read_pci_cfg_dword(struct ixgbe_hw *hw, u32 reg)
-> -{
-> -	struct ixgbe_adapter *adapter = hw->back;
-> -	u32 value;
-> -
-> -	if (ixgbe_removed(hw->hw_addr))
-> -		return IXGBE_FAILED_READ_CFG_DWORD;
-> -	pci_read_config_dword(adapter->pdev, reg, &value);
-> -	if (value == IXGBE_FAILED_READ_CFG_DWORD &&
-> -	    ixgbe_check_cfg_remove(hw, adapter->pdev))
-> -		return IXGBE_FAILED_READ_CFG_DWORD;
-> -	return value;
-> -}
-> -#endif /* CONFIG_PCI_IOV */
-> -
->  void ixgbe_write_pci_cfg_word(struct ixgbe_hw *hw, u32 reg, u16 value)
->  {
->  	struct ixgbe_adapter *adapter = hw->back;
-> @@ -11332,8 +11317,8 @@ static pci_ers_result_t ixgbe_io_error_detected(struct pci_dev *pdev,
->  #ifdef CONFIG_PCI_IOV
->  	struct ixgbe_hw *hw = &adapter->hw;
->  	struct pci_dev *bdev, *vfdev;
-> -	u32 dw0, dw1, dw2, dw3;
-> -	int vf, pos;
-> +	struct pcie_tlp_log tlp_log;
-> +	int vf, pos, ret;
->  	u16 req_id, pf_func;
->  
->  	if (adapter->hw.mac.type == ixgbe_mac_82598EB ||
-> @@ -11351,14 +11336,13 @@ static pci_ers_result_t ixgbe_io_error_detected(struct pci_dev *pdev,
->  	if (!pos)
->  		goto skip_bad_vf_detection;
->  
-> -	dw0 = ixgbe_read_pci_cfg_dword(hw, pos + PCI_ERR_HEADER_LOG);
-> -	dw1 = ixgbe_read_pci_cfg_dword(hw, pos + PCI_ERR_HEADER_LOG + 4);
-> -	dw2 = ixgbe_read_pci_cfg_dword(hw, pos + PCI_ERR_HEADER_LOG + 8);
-> -	dw3 = ixgbe_read_pci_cfg_dword(hw, pos + PCI_ERR_HEADER_LOG + 12);
-> -	if (ixgbe_removed(hw->hw_addr))
-> +	ret = pcie_read_tlp_log(pdev, pos + PCI_ERR_HEADER_LOG, &tlp_log);
-> +	if (ret < 0) {
-> +		ixgbe_check_cfg_remove(hw, pdev);
->  		goto skip_bad_vf_detection;
-> +	}
->  
-> -	req_id = dw1 >> 16;
-> +	req_id = tlp_log.dw[1] >> 16;
->  	/* On the 82599 if bit 7 of the requestor ID is set then it's a VF */
->  	if (!(req_id & 0x0080))
->  		goto skip_bad_vf_detection;
-> @@ -11369,9 +11353,8 @@ static pci_ers_result_t ixgbe_io_error_detected(struct pci_dev *pdev,
->  
->  		vf = FIELD_GET(0x7F, req_id);
->  		e_dev_err("VF %d has caused a PCIe error\n", vf);
-> -		e_dev_err("TLP: dw0: %8.8x\tdw1: %8.8x\tdw2: "
-> -				"%8.8x\tdw3: %8.8x\n",
-> -		dw0, dw1, dw2, dw3);
-> +		e_dev_err("TLP: dw0: %8.8x\tdw1: %8.8x\tdw2: %8.8x\tdw3: %8.8x\n",
-> +			  tlp_log.dw[0], tlp_log.dw[1], tlp_log.dw[2], tlp_log.dw[3]);
->  		switch (adapter->hw.mac.type) {
->  		case ixgbe_mac_82599EB:
->  			device_id = IXGBE_82599_VF_DEVICE_ID;
+AFAIK there is no API for a user to change the max_mtu, so the only way 
+the device's MFS would need to change is if it's done during 
+initialization time, which should be done before netdev registration anyway.
 
-The rest of this patch is headed for v6.10, but I dropped this ixgbe
-change for now.
+I guess it's also possible that the driver's XDP configuration could 
+cause a change in the device's MFS and netdev->max_mtu, but that would 
+be under the rtnl_lock.
 
-These TLP Log registers are generic, not device-specific, and if
-there's something lacking in the PCI core that leads to ixgbe reading
-and dumping them itself, I'd rather improve the PCI core so all
-drivers will benefit without having to add code like this.
+Seems like others are happy with it, but FWIW that's my 2 cents, 
+otherwise LGTM.
 
-83c61fa97a7d ("ixgbe: Add protection from VF invalid target DMA") [1]
-added the ixgbe TLP Log dumping way back in v3.2 (2012).  It does do
-some device-specific VF checking and so on, but even back then, it
-looks like the PCI core would have dumped the log itself [2], so I
-don't know why we needed the extra dumping in ixgbe.
+Reviewed-by: Brett Creeley <brett.creeley@amd.com>
 
-So what I'd really like is to remove the TLP Log reading and printing
-from ixgbe completely, but keep the VF checking.
 
-Bjorn
-
-[1] https://git.kernel.org/linus/83c61fa97a7d
-[2] https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/drivers/pci/pcie/aer/aerdrv_errprint.c?id=83c61fa97a7d#n181
+> 
+> 
+> Erwan,
+> 
