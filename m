@@ -1,97 +1,118 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id CE53987BBAB
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 14 Mar 2024 12:03:57 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 1B88760E03;
-	Thu, 14 Mar 2024 11:03:56 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id X4oHT_8CyS4p; Thu, 14 Mar 2024 11:03:55 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7817860E06
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1710414232;
-	bh=HjSqroCgRCGcOD0VO1w3/APH46SNEOLNC+kZ5QpqXAE=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=3fdUlnqKnJcmvAsMWRSKAIG6wLBXWRTjW/z5+vgc6znNNrNd36F+EuwnAZpsBuCEg
-	 WjsdlfpT5QV8NPFz8HZ4tSM8tNXhYV/wliTQU6w17JIVVMUUtTBrhSl3U0QOsIdBRY
-	 2KdXjxxUWi29cXbOpSLC19XBZ8jfCnBb6WICk6a2lAjTRpMZZoyBIEncCkXYpjwOUE
-	 bs43V9RZR0sG4jntpOF6pIOjNLnhBb1wOmvJ1eugiRS3GoJyzkYJYb07X27uqNsdA0
-	 4tN4pojK8sJJNPeoeW/o4+ybDbW6z/eC0hHCEHyP6/QRv3Phsuu3bF1Y6wXt4bc19C
-	 6V4XchQgufOqQ==
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 7817860E06;
-	Thu, 14 Mar 2024 11:03:52 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id AB8121BF267
- for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Mar 2024 11:03:49 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id C033E87BC5F
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 14 Mar 2024 12:57:31 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id A40EA40937
- for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Mar 2024 11:03:49 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 7FA9640AB9;
+	Thu, 14 Mar 2024 11:57:29 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id rbdEpQ0pCaoM for <intel-wired-lan@lists.osuosl.org>;
- Thu, 14 Mar 2024 11:03:48 +0000 (UTC)
-Received-SPF: None (mailfrom) identity=mailfrom; client-ip=192.198.163.14;
- helo=mgamail.intel.com; envelope-from=michal.swiatkowski@linux.intel.com;
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id wkXM3Mh70j22; Thu, 14 Mar 2024 11:57:28 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 81D68409F5
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1710417448;
+	bh=W6Yj68QAc/GDKe4pAWzzjDhY33mBI0iwde75NIqen9o=;
+	h=References:In-Reply-To:From:Date:To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=w8yCso4GRDImeLj2cUjasUEfVO+T3X/iziwzsl/UvKtE5bY4TfIsBRcOHTI81Olxx
+	 8t5INiW9OV1lADidyllvW3UwZhb7BjXHqhzvhfsl+04CWyCC+bROV+nRowbU6IBANT
+	 7Ea4Lg9rlH5ckoNTsUe0Nvd6pqkWSN5+8Y9Xx+boWVIPLWfMixwLZ2XVSjXHcs3ZVt
+	 ZNW/crdW/HD50R8icSK/REdWO3Z5yi5bcw5PfIZcjfKeCqm00i+tzmvHyBiIph4YuX
+	 fRyl6Qz3KdR/Skzc9VlWw/8JxLWGIylM4CeqfgqmEkSnoD9LYeCamT6SjKbJBbb2Is
+	 JVI6jnHh1Nf8A==
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp4.osuosl.org (Postfix) with ESMTP id 81D68409F5;
+	Thu, 14 Mar 2024 11:57:28 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 917E41BF3F3
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Mar 2024 11:57:25 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp3.osuosl.org (Postfix) with ESMTP id 7BD6D60DFA
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Mar 2024 11:57:25 +0000 (UTC)
+X-Virus-Scanned: amavisd-new at osuosl.org
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id hPa1Oqe2DBEq for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 14 Mar 2024 11:57:24 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.129.124;
+ helo=us-smtp-delivery-124.mimecast.com; envelope-from=mschmidt@redhat.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 69FCA408E5
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 69FCA408E5
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.14])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 69FCA408E5
- for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Mar 2024 11:03:48 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,11012"; a="5420686"
-X-IronPort-AV: E=Sophos;i="6.07,125,1708416000"; 
-   d="scan'208";a="5420686"
-Received: from fmviesa002.fm.intel.com ([10.60.135.142])
- by fmvoesa108.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 14 Mar 2024 04:03:47 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.07,125,1708416000"; d="scan'208";a="35382493"
-Received: from unknown (HELO mev-dev) ([10.237.112.144])
- by fmviesa002-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 14 Mar 2024 04:03:45 -0700
-Date: Thu, 14 Mar 2024 12:03:41 +0100
-From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Message-ID: <ZfLZjUZiQwJzJ445@mev-dev>
-References: <20240222123956.2393-1-michal.swiatkowski@linux.intel.com>
- <20240222123956.2393-3-michal.swiatkowski@linux.intel.com>
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 9912760DEF
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9912760DEF
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 9912760DEF
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Mar 2024 11:57:24 +0000 (UTC)
+Received: from mail-ej1-f72.google.com (mail-ej1-f72.google.com
+ [209.85.218.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-641-QJpmtcfUNUKGiOcZw1Fatw-1; Thu, 14 Mar 2024 07:57:20 -0400
+X-MC-Unique: QJpmtcfUNUKGiOcZw1Fatw-1
+Received: by mail-ej1-f72.google.com with SMTP id
+ a640c23a62f3a-a465b4e0dafso38977166b.3
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Mar 2024 04:57:20 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1710417439; x=1711022239;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=W6Yj68QAc/GDKe4pAWzzjDhY33mBI0iwde75NIqen9o=;
+ b=aZB2W+bAKQzN7nZ4wbq/pA1xi826B8WJjNqW1RS2NHfhBjOXOMiVxwxxbuCbWgf8jI
+ xgSk4ras6Au5gqXCLWkXCY1PXm4nQ8XDVH+EvkPpipY+JZTm8c+Ok+n5hDE3LtECrQLw
+ +CvfdHW9+wQCNvzCk74azV5kXlGmlHOVf62Ei/txAu5QUFAlIMTb1cOUZICLZ+r6y04b
+ GdgywDopFuSdWs/08y/ldcXiL4VkMPoksuKC3FzmsLL/q+7Lim+tqO+eUrfwyHfC0hv3
+ vVm7RFqqLBsz8ekpdFd+eapQs9ToYculqnwAMb3zW2NVkQEFRXyUwWmCVnHiWxoAIwxC
+ 1W+A==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWQU1ES/IY5RTc9kqsDIYLUfoaVKCHBXYR9ejrX79ip7ntXplSZ+X6QYnxy/wt67QARqi5a+dqdRDrN2Urzn4RpOSIX8SoCz/j4Gr5zTnYENg==
+X-Gm-Message-State: AOJu0Yxliz4W4BgWgrGIhTuHaVv7zUDrUVOyO0OsZD+cGr9/Q6Pk4xrY
+ g3cjlMA2sZfa3QdNMiBEvIJHkzeQbCqHNXkeebAXEgO6H0vCjrZgNWBxLdEVq6nuEk0ujMHn8ly
+ CM6DMJ7cLNb+AoRlxnPTQ457d8IOZyRX+DpIH364IzjlOGP954jVWXtf9d3l5Jbqn1wy3zNI9rn
+ k4SOVwxvzvfFkkI/jcdNjhSUpfBQVMJWO791C/JP+bPQ==
+X-Received: by 2002:a17:906:1194:b0:a45:c1a0:5c07 with SMTP id
+ n20-20020a170906119400b00a45c1a05c07mr908077eja.17.1710417439438; 
+ Thu, 14 Mar 2024 04:57:19 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEDd2Jv4Umtbk8PWZFo/vG9CwetRXLttChfYOuW/Phrx3fnFIjOrGAyZYjYrVlq16O3RjQTW7e3G7Su6kU5hIw=
+X-Received: by 2002:a17:906:1194:b0:a45:c1a0:5c07 with SMTP id
+ n20-20020a170906119400b00a45c1a05c07mr908069eja.17.1710417439108; Thu, 14 Mar
+ 2024 04:57:19 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20240222123956.2393-3-michal.swiatkowski@linux.intel.com>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1710414229; x=1741950229;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=O50/8D9DlRidJxRUCY4jlU7tdjizRH8/aSa6obSpSxU=;
- b=gjMEPszAOMDHdXCib/f37c7gcM9vyMJLvbiAuPXhtOAXQ9jJsPGt1mRC
- NqAJAK0brfGYsDSK2EZPC2qbeXeIIbADCiL+va+mwIZ88q6VTGoFMIAmi
- w6c61ZhjysZl9bj04z22yAJI3LxZ9jDX3PEwrNkk2d3lMl8MSNN6NAXx1
- KyFJuv+HBBCaxeCsgWH+Pyi3XzGjS/iAQKxW+hTQSAIMiQMR6WuIWczu5
- lZ7x/H6gYA1X+byzh3j0Rmo/waZA4WE2d57mkCuh0L0+FRBf6bWOJXGfu
- XiUFjp4Q2L7ewWTCpFPEV9MoR5PWZIPgZ81a45AOxp0/W/BhSn8jRJIbC
- Q==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=linux.intel.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=gjMEPszA
-Subject: Re: [Intel-wired-lan] [iwl-next v2 2/2] ice: tc: allow ip_proto
- matching
+References: <20240313135618.20930-1-ivecera@redhat.com>
+In-Reply-To: <20240313135618.20930-1-ivecera@redhat.com>
+From: Michal Schmidt <mschmidt@redhat.com>
+Date: Thu, 14 Mar 2024 12:57:07 +0100
+Message-ID: <CADEbmW1vis35ACawye9d2S11NHA-Zpemv1m_+6eurkroLCtqqQ@mail.gmail.com>
+To: Ivan Vecera <ivecera@redhat.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=redhat.com; 
+ s=mimecast20190719; t=1710417443;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=W6Yj68QAc/GDKe4pAWzzjDhY33mBI0iwde75NIqen9o=;
+ b=dPSXTrzIMoV7B6aeCwoSvQ9J2gBNxTwLmLltloXuFQgBEAJvnktGnu3ySRx7ZAveTxlbYh
+ bi4y/01xbBlwWQ8racZ48YdTtc6IU7hvXUi7IIwIlmAahqZ62JB4zJ6XE108nPkJzyQYn6
+ eRCbYw2FE6hDOXwkX01pBh7stmKhpW0=
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=redhat.com
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (1024-bit key,
+ unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256
+ header.s=mimecast20190719 header.b=dPSXTrzI
+Subject: Re: [Intel-wired-lan] [PATCH net] i40e: Fix VF MAC filter removal
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -104,108 +125,73 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: pmenzel@molgen.mpg.de, wojciech.drewek@intel.com, marcin.szycik@intel.com,
- netdev@vger.kernel.org, Jedrzej Jagielski <jedrzej.jagielski@intel.com>,
- sridhar.samudrala@intel.com
+Cc: netdev@vger.kernel.org, open list <linux-kernel@vger.kernel.org>,
+ aleksandr.loktionov@intel.com, Eric Dumazet <edumazet@google.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>, horms@kernel.org,
+ "moderated list:INTEL ETHERNET DRIVERS" <intel-wired-lan@lists.osuosl.org>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ "David S. Miller" <davem@davemloft.net>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Thu, Feb 22, 2024 at 01:39:56PM +0100, Michal Swiatkowski wrote:
-> Add new matching type for ip_proto.
-> 
-> Use it in the same lookup type as for TTL. In hardware it has the same
-> protocol ID, but different offset.
-> 
-> Example command to add filter with ip_proto:
-> $tc filter add dev eth10 ingress protocol ip flower ip_proto icmp \
->  skip_sw action mirred egress redirect dev eth0
-> 
-> Reviewed-by: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
-> Signed-off-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+On Wed, Mar 13, 2024 at 2:56=E2=80=AFPM Ivan Vecera <ivecera@redhat.com> wr=
+ote:
+> Commit 73d9629e1c8c ("i40e: Do not allow untrusted VF to remove
+> administratively set MAC") fixed an issue where untrusted VF was
+> allowed to remove its own MAC address although this was assigned
+> administratively from PF. Unfortunately the introduced check
+> is wrong because it causes that MAC filters for other MAC addresses
+> including multi-cast ones are not removed.
+>
+> <snip>
+>         if (ether_addr_equal(addr, vf->default_lan_addr.addr) &&
+>             i40e_can_vf_change_mac(vf))
+>                 was_unimac_deleted =3D true;
+>         else
+>                 continue;
+>
+>         if (i40e_del_mac_filter(vsi, al->list[i].addr)) {
+>         ...
+> </snip>
+>
+> The else path with `continue` effectively skips any MAC filter
+> removal except one for primary MAC addr when VF is allowed to do so.
+> Fix the check condition so the `continue` is only done for primary
+> MAC address.
+>
+> Fixes: 73d9629e1c8c ("i40e: Do not allow untrusted VF to remove administr=
+atively set MAC")
+> Signed-off-by: Ivan Vecera <ivecera@redhat.com>
 > ---
->  drivers/net/ethernet/intel/ice/ice_tc_lib.c | 17 +++++++++++++++--
->  drivers/net/ethernet/intel/ice/ice_tc_lib.h |  1 +
->  2 files changed, 16 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/intel/ice/ice_tc_lib.c b/drivers/net/ethernet/intel/ice/ice_tc_lib.c
-> index 49ed5fd7db10..f7c0f62fb730 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_tc_lib.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_tc_lib.c
-> @@ -78,7 +78,8 @@ ice_tc_count_lkups(u32 flags, struct ice_tc_flower_lyr_2_4_hdrs *headers,
->  		     ICE_TC_FLWR_FIELD_DEST_IPV6 | ICE_TC_FLWR_FIELD_SRC_IPV6))
->  		lkups_cnt++;
->  
-> -	if (flags & (ICE_TC_FLWR_FIELD_IP_TOS | ICE_TC_FLWR_FIELD_IP_TTL))
-> +	if (flags & (ICE_TC_FLWR_FIELD_IP_TOS | ICE_TC_FLWR_FIELD_IP_TTL |
-> +		     ICE_TC_FLWR_FIELD_IP_PROTO))
->  		lkups_cnt++;
+>  drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c | 11 ++++++-----
+>  1 file changed, 6 insertions(+), 5 deletions(-)
+>
+> diff --git a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c b/drivers=
+/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
+> index b34c71770887..10267a300770 100644
+> --- a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
+> +++ b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
+> @@ -3143,11 +3143,12 @@ static int i40e_vc_del_mac_addr_msg(struct i40e_v=
+f *vf, u8 *msg)
+>                 /* Allow to delete VF primary MAC only if it was not set
+>                  * administratively by PF or if VF is trusted.
+>                  */
+> -               if (ether_addr_equal(addr, vf->default_lan_addr.addr) &&
+> -                   i40e_can_vf_change_mac(vf))
+> -                       was_unimac_deleted =3D true;
+> -               else
+> -                       continue;
+> +               if (ether_addr_equal(addr, vf->default_lan_addr.addr)) {
+> +                       if (i40e_can_vf_change_mac(vf))
+> +                               was_unimac_deleted =3D true;
+> +                       else
+> +                               continue;
+> +               }
+>
+>                 if (i40e_del_mac_filter(vsi, al->list[i].addr)) {
+>                         ret =3D -EINVAL;
+> --
+> 2.43.0
 
-There is an issue here. In case of ipv6 it shouldn't be count as there is no
-support for next header in ipv6.
+Reviewed-by: Michal Schmidt <mschmidt@redhat.com>
 
-Example command to reproduce the problem:
-tc filter add dev eth0 ingress protocol ipv6 prio 103 flower skip_sw \
-	dst_mac fa:16:3e:13:e9:a1 ip_proto udp src_port 547 dst_port 546 \
-	dst_ip fe80::/64 action drop
-
-Filter won't be added because of mismatch between filled and counted
-lookups.
-
-I will send v3 with fix.
-
-Thanks,
-Michal
-
->  
->  	/* are L2TPv3 options specified? */
-> @@ -530,7 +531,8 @@ ice_tc_fill_rules(struct ice_hw *hw, u32 flags,
->  	}
->  
->  	if (headers->l2_key.n_proto == htons(ETH_P_IP) &&
-> -	    (flags & (ICE_TC_FLWR_FIELD_IP_TOS | ICE_TC_FLWR_FIELD_IP_TTL))) {
-> +	    (flags & (ICE_TC_FLWR_FIELD_IP_TOS | ICE_TC_FLWR_FIELD_IP_TTL |
-> +		      ICE_TC_FLWR_FIELD_IP_PROTO))) {
->  		list[i].type = ice_proto_type_from_ipv4(inner);
->  
->  		if (flags & ICE_TC_FLWR_FIELD_IP_TOS) {
-> @@ -545,6 +547,13 @@ ice_tc_fill_rules(struct ice_hw *hw, u32 flags,
->  				headers->l3_mask.ttl;
->  		}
->  
-> +		if (flags & ICE_TC_FLWR_FIELD_IP_PROTO) {
-> +			list[i].h_u.ipv4_hdr.protocol =
-> +				headers->l3_key.ip_proto;
-> +			list[i].m_u.ipv4_hdr.protocol =
-> +				headers->l3_mask.ip_proto;
-> +		}
-> +
->  		i++;
->  	}
->  
-> @@ -1515,7 +1524,11 @@ ice_parse_cls_flower(struct net_device *filter_dev, struct ice_vsi *vsi,
->  
->  		headers->l2_key.n_proto = cpu_to_be16(n_proto_key);
->  		headers->l2_mask.n_proto = cpu_to_be16(n_proto_mask);
-> +
-> +		if (match.key->ip_proto)
-> +			fltr->flags |= ICE_TC_FLWR_FIELD_IP_PROTO;
->  		headers->l3_key.ip_proto = match.key->ip_proto;
-> +		headers->l3_mask.ip_proto = match.mask->ip_proto;
->  	}
->  
->  	if (flow_rule_match_key(rule, FLOW_DISSECTOR_KEY_ETH_ADDRS)) {
-> diff --git a/drivers/net/ethernet/intel/ice/ice_tc_lib.h b/drivers/net/ethernet/intel/ice/ice_tc_lib.h
-> index 65d387163a46..856f371d0687 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_tc_lib.h
-> +++ b/drivers/net/ethernet/intel/ice/ice_tc_lib.h
-> @@ -34,6 +34,7 @@
->  #define ICE_TC_FLWR_FIELD_VLAN_PRIO		BIT(27)
->  #define ICE_TC_FLWR_FIELD_CVLAN_PRIO		BIT(28)
->  #define ICE_TC_FLWR_FIELD_VLAN_TPID		BIT(29)
-> +#define ICE_TC_FLWR_FIELD_IP_PROTO		BIT(30)
->  
->  #define ICE_TC_FLOWER_MASK_32   0xFFFFFFFF
->  
-> -- 
-> 2.42.0
-> 
