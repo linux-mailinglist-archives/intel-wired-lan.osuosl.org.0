@@ -1,166 +1,118 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8C05887C40F
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 14 Mar 2024 21:11:37 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id C57F287C30A
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 14 Mar 2024 19:50:15 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id CF26D80C3E;
-	Thu, 14 Mar 2024 20:11:33 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 75C83410D1;
+	Thu, 14 Mar 2024 18:50:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
-	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 7hQ1-zm7UgR3; Thu, 14 Mar 2024 20:11:32 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id W3dlzrpnbDOz; Thu, 14 Mar 2024 18:50:13 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 7E4DC82172
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1AFC9409D3
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1710447088;
-	bh=spRLlQgRVyV2BMsAxSfRIspEWUQSNw6hmzfnSDAnKRU=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
+	s=default; t=1710442213;
+	bh=HkHbKx45Q3L1ZP5rRqbPmhlu/JcXI6MggY9Mklvo1v4=;
+	h=References:In-Reply-To:From:Date:To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=2gJrAKXbtszQ0iG2EH9Yvi1rilfgDB5m2wGgzxWDrlDRSZKeJmB4A6L4CL/cJOa2n
-	 Q7KmzMkBaG2faodqQ+1vM5uOSrtVuL5G29hkTwnYa/fFmY7snNku7yz3pL0z04aIuY
-	 IM1iMjDUDrGJzpt53vWsvyBQph7vTvTsj3YgTCuLGIRWPwdQ6dEfAWq6oJe7Nqcz2X
-	 INoBeV+LKkbgZl8CqB7/DGyg8d5Eo+iwlhi7feyFeD0V/Y7ZbcFSaljpX0kYlORfvo
-	 213sXUNTVx/GASe4QPqJjOGLAVE6zP4TjqTPxQ7Rdo9zzXJWLW1qwKuW+p3jqYyxUw
-	 Zj4KqZ9ngdu9g==
+	b=WnC9inTg1mvrgz4eBwFdjWWi+kV6QtKQBpBCJpxjP30rI095M5z9XEKNIelJ+foe0
+	 rQf098GgBQWsHIn9WuFAEJfL+r6j415xNCiDkh1mpqfFG6EZ9MEp0zcJU3V361I6OR
+	 5VIBaVFyHYTDpKZQMqQR92k/Z3ERyuktH1FEmjl+Rk/FXJfz8+TMbQegssFiHBoeDf
+	 bgx2is5uJSVHP/Tm531pO37w1gbjUFjfk/gWx0VzZEuLpOwLZpI/ErKUVUeuRWPN83
+	 mkm3Q7fPcX4UZN4qHavwcUw9kiWJRTUStzkrkXyoHrmzgQDxzgsnE1Nlybp4S8SZOM
+	 snOCW2yumPS6Q==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 7E4DC82172;
-	Thu, 14 Mar 2024 20:11:28 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 1AFC9409D3;
+	Thu, 14 Mar 2024 18:50:13 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 2AE9F1BF422
- for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Mar 2024 18:04:24 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 533241BF422
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Mar 2024 18:50:11 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 233F382147
- for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Mar 2024 18:04:24 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 3F2214029B
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Mar 2024 18:50:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id lCjGo5SLivWt for <intel-wired-lan@lists.osuosl.org>;
- Thu, 14 Mar 2024 18:04:23 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=40.107.22.48;
- helo=eur05-am6-obe.outbound.protection.outlook.com;
- envelope-from=e.velu@criteo.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org F049882144
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org F049882144
-Received: from EUR05-AM6-obe.outbound.protection.outlook.com
- (mail-am6eur05on2048.outbound.protection.outlook.com [40.107.22.48])
- by smtp1.osuosl.org (Postfix) with ESMTPS id F049882144
- for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Mar 2024 18:04:22 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=PF8z94l7aHGERMs9O/H9VL+9uyQNnLmSN1OBtXFpLMkaB56he8gTQ9o/0PimoG4JFHGwhihsIzXMr8lBj+gfyNC9Af6Jxck7llNw2mB/7lAES/bEpqe4Y4uKQL0DjFItJ98jPIGBMvTq4/N0Wbttyt+50lSuUtqG06ckZhRQ0qy0ac+NhMi+SV5LyMa1VRPf+BFZNWVimV+E3XNx3ahgLHoJuaVu0R6Och+Gfg0XbVNt+m278ykJzDHV23vAmzddHiVYlQdUe5Wy4AX+Q+ZglJsDPPiJM3+aewZMz4cWR9QyvOOwu36pl12bxtcmhfJiNeI+ZDjWRqRCw/2JrMtg4g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=spRLlQgRVyV2BMsAxSfRIspEWUQSNw6hmzfnSDAnKRU=;
- b=myFy/tJFU8QL0/3PaKo2+r602roL4oOGgxIiaA/oM61W046jjEJ+kfBJSFEb7XrFUfex6hNTg4rVZgbwJluKrTsCJiCJZBsUsZm/qsNOLBr2jrES6Lm+cXjR+aWxk/DQHTn1mYfE0szql4QoKjlqRfuFOAGjXSLnk8dIpnh1eVwgInUilZTgPEJASKN5fqEZFTC5zkXXtWLfoEKIoUTc810CEr04WDXNbYBaiDdTEySevPdscSkPxUuCXHFKs3HC6Bfe2dY3dp46J3rK6K7xlvwf9rR7TtrPlAfa71wu3ZKh/Z/fCW6OJzLEHyBbk2iSh0hw6mCJpId/tn5XJnuNpQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=criteo.com; dmarc=pass action=none header.from=criteo.com;
- dkim=pass header.d=criteo.com; arc=none
-Received: from PAXPR04MB8989.eurprd04.prod.outlook.com (2603:10a6:102:20c::11)
- by AS8PR04MB8691.eurprd04.prod.outlook.com (2603:10a6:20b:42a::15)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7386.21; Thu, 14 Mar
- 2024 18:04:19 +0000
-Received: from PAXPR04MB8989.eurprd04.prod.outlook.com
- ([fe80::c508:de0c:3808:6f2]) by PAXPR04MB8989.eurprd04.prod.outlook.com
- ([fe80::c508:de0c:3808:6f2%4]) with mapi id 15.20.7386.020; Thu, 14 Mar 2024
- 18:04:18 +0000
-Message-ID: <7b612db6-cec6-4873-8a38-fb4c97192aa2@criteo.com>
-Date: Thu, 14 Mar 2024 19:04:17 +0100
-User-Agent: Mozilla Thunderbird
-Content-Language: en-US
-To: Brett Creeley <bcreeley@amd.com>, Erwan Velu <erwanaliasr1@gmail.com>
-References: <20240313090719.33627-2-e.velu@criteo.com>
- <4e203331-62f7-44e7-acd9-f684c30662de@amd.com>
- <c0ccaef6-44eb-4851-b336-cdb06647e1d2@criteo.com>
- <d16ff01c-4a01-4871-93de-a5c26a352301@amd.com>
-From: Erwan Velu <e.velu@criteo.com>
-In-Reply-To: <d16ff01c-4a01-4871-93de-a5c26a352301@amd.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-ClientProxiedBy: PA7P264CA0136.FRAP264.PROD.OUTLOOK.COM
- (2603:10a6:102:377::11) To PAXPR04MB8989.eurprd04.prod.outlook.com
- (2603:10a6:102:20c::11)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id RCn3a_w3Vo1y for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 14 Mar 2024 18:50:10 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.133.124;
+ helo=us-smtp-delivery-124.mimecast.com; envelope-from=mschmidt@redhat.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org E5B30401F6
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org E5B30401F6
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id E5B30401F6
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Mar 2024 18:50:09 +0000 (UTC)
+Received: from mail-lf1-f71.google.com (mail-lf1-f71.google.com
+ [209.85.167.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-360-zeTsjQdPMg-hh95Yi1uvJw-1; Thu, 14 Mar 2024 14:50:02 -0400
+X-MC-Unique: zeTsjQdPMg-hh95Yi1uvJw-1
+Received: by mail-lf1-f71.google.com with SMTP id
+ 2adb3069b0e04-513ca6dcd64so1741660e87.1
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 14 Mar 2024 11:50:02 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1710442201; x=1711047001;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=HkHbKx45Q3L1ZP5rRqbPmhlu/JcXI6MggY9Mklvo1v4=;
+ b=kaKO/FVIhFzGM0RrLQsDt1m6cMGrPWT2vsT6Gbfa2TGbqt+NL312GUOJIyBYLoxa9u
+ 9tvPyShoFQ2NeLhkTLKE1zq/0EUUyekUS+wpJJU4HLQhkIzJ8hO54D1zMvvWk8ygBeLj
+ MtSX0Uka9ga1iTYqieOuAi9Y3XXpcqBpghe8+hGkNXDlCN4k1tQmbP3TkvCCh+sc6KuC
+ LTWAkPjAyivOmGdxnh34BitYHK6BNp8Ouqhl8X7tmNC6xpHzvIs/ZqPPWLt2cmeEJIYi
+ jmSz9pFiT+Dqndhe7NRglh9lJYttpMmRiFQ6x9xHfnyp/GzH0FSemsD1z73UR7FotycV
+ DMwg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUgIEMbbxGMPJ+wfK1BsknGCbmg0DvZoWZg40GReDfHF2mjQs5nE3QYJfURambefODaAbUgTDL5pkonJa5E8/Uy5k+Jh2cRfiAidFxzx1OSWQ==
+X-Gm-Message-State: AOJu0YyhZmgpNN8NVWkR8pVZAmRDkllM5w/TfDRF8932HoeoL0X1YCXq
+ uClneezSEvTQYCOhrud0op5WT2BfaFEksvKkeJwM7Py0NsIDYUuYHIqdLZppi4WhOnaRSlKSynB
+ qzYorp6rPiuRJK/MWdrFMEU+wbezwdgQML1jOMf9GpSbitkPzcszJPTKr0ZUAq4rvWAhmE86Pwb
+ 9LBfopzMQEBJIQBJpeHPW8w23KWHfCGEsLtGl4S5jXIQ==
+X-Received: by 2002:a05:6512:32a6:b0:513:a83b:6761 with SMTP id
+ q6-20020a05651232a600b00513a83b6761mr1885583lfe.18.1710442201110; 
+ Thu, 14 Mar 2024 11:50:01 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEtghzZpirTx7uWUx1wqC+kUfNpMI7U42XIL0zBH0JEsKvGaTG8pDZ0YAkiVa7RCY7lobB0BVqCikGH4ZvJahE=
+X-Received: by 2002:a05:6512:32a6:b0:513:a83b:6761 with SMTP id
+ q6-20020a05651232a600b00513a83b6761mr1885557lfe.18.1710442200593; Thu, 14 Mar
+ 2024 11:50:00 -0700 (PDT)
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: PAXPR04MB8989:EE_|AS8PR04MB8691:EE_
-X-MS-Office365-Filtering-Correlation-Id: b5fdcd62-6f44-40a5-bf29-08dc44512b0e
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 511utUVBFjqbdZ5wlwpYrkEzGk5RuRiTH4Q9aJvcDshgJxCYK6G7flCsZgysBnYZRVthUUSrmHzvbY0YBSOYdGOMn0vH9FKsgj+PUX93zDt4TOPNr2hcJODWfRKByh2NQ+yzvou5wEEYikwpN8Gwv8vS0q/rbyQ+i3RzpVZlKtQwqYlS0tVKMP0dHK89K83ew7gry0NyKwrCFdQeUd6phcglUmpb5zt7omViGynSS522DyZTGPcaQ4QsrLrmqJdg781bnnupCRDnEpM/xuxQHmpuH2TiHpdrKnWwtWJ/LJ8a7bQ2cg2i/IgeUtADJuXqtLQt9tO6VsDia9dCW2RpLMkRFnNFbN9lnnzIP5Ong8sa1me+pLSHoBQNLgmvW+T/f34FPhVIeZa0a/Rwr1BTSdla7eJ66QIZs3AcIFMcBNfUExqd4L/iQPrk8mrMy2vGLAp8uZgPDjFEK4ICgYwA3pOIINsyv08RZluCB7P1GEY6i5lnQrzxH2pVjzdk7eD/e02Q7l55vaabzfnRlzX4VjokY3hKo9dzB23Ky5yEBZQfWTm3RZqrtM3/SjGhu8YTN/+Ye3xyMIcnADtAPfnS8tBuUufP3cfskatwIaXLYocxZ9S2kdd3R7kUVqwzrZfKJ7Wo9NE4Wq85XnCCctkhE/BoZla5KcOyE7bWWUGfzF0=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:PAXPR04MB8989.eurprd04.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230031)(1800799015)(7416005)(376005); DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?VHMzbW8ybWZ5TndnVFNhbzNETFpyN2ZaemR5MWJua2xCVzRORjI3S0xxckxs?=
- =?utf-8?B?RFordHBtQW9xV3k1aXhZaEJpcmszdTNEUE0zSThuVTB4OWdaOGVKZm5MZm9i?=
- =?utf-8?B?U1FLdTNBYjhGeDFWUGlkRVB0WFlQWlM1ZWJqTFRxU0tSQXkrNExkamsxbDZn?=
- =?utf-8?B?QjJiNjR1LzdLYzU0YVpUVnNRYm0wL0tPY05OZ0ZCM0I2WG5tcWxmRVJWSVZZ?=
- =?utf-8?B?Y2NHQzVTa1ZrOUUreWJBck1senpibzlBRUpuY3JEa2FpZTlhL1htYjl1OTB1?=
- =?utf-8?B?Ry84WjRRekZ2eDdGSG5rS3NRZm9KYThWK1FhV0M5Q3hLV0lVaHVDbEFsZWtI?=
- =?utf-8?B?Qk9pUXpSQVcvM3NldE9wZ2wwSDFqSms5RVI0bkp3VGQ3N2FSMEZOMzhGSkM1?=
- =?utf-8?B?SGFNR1NJVHVpMHI1VGFSMndjZ0FHSGFKVGRBZEtZN3ZHUlluWlFPdXYydHRp?=
- =?utf-8?B?UE5QZDVKcnhQUU02TG1uMzJKcnA2ZitlN1g2eGFlVXJQZkRaWUlRWm9JcUpx?=
- =?utf-8?B?VWsvcnF1Wk1LM09vd2p6L0IrOWZ4eWovZjRWU09rdFZldnprV1BJRHhaSTlL?=
- =?utf-8?B?WUw1SlY5UFl4U3VoeGcwNEJMSTE1Ull2c0kyb1p4cmUzeCtQaDV2TkRITVRs?=
- =?utf-8?B?cWxwb0hnZnM2MkpZbVg1UkdyNGVXRHAyOXBxb3NTYUZUbEJ4MUN3YWhGRzJh?=
- =?utf-8?B?N3VWVjl3eVNROXNKcUdLSEF0VW5IUDQ2Mm1RckNvVUZjbDFVeWRydTFwWWVr?=
- =?utf-8?B?elByTDh4c1hvV21OQ2IvaWJsT00zTmRwRzFCaXcyUXdlLzdvVE9QVitjYmFp?=
- =?utf-8?B?Z2piU3EyWUZYWnpGcUZLTGVQbTdjTHR1TDBWZCt3YjlBZUgvSXZWZUJNdURa?=
- =?utf-8?B?VWFkZDdIaVZoWkh5cWpXaXhkajJWQ0RHRFJqVExYb3l0Qi9SNXdMVGgzSWNu?=
- =?utf-8?B?anh5bEJYc214dDZVOVFvdURXV3dtcjg3RGUwNjFNV0VOOGIzUllDQm1FWUZS?=
- =?utf-8?B?cXdJcHExWU1lZ2FUVlFhUmZBRFRURmlYaDc5RkYwaDJST1hXYlYrSk8ycGxT?=
- =?utf-8?B?VjRDdyttZFZDUmFteU5HZ25qUlNPZ0I0Q1RTN0hPZ0hodXQ5cnUxUVpJVGVY?=
- =?utf-8?B?d3IzbTYxY1R0a2hhdzU2VDBlcG9JTEszd1huNERtdzF5VnVvOThtek9zT2Jq?=
- =?utf-8?B?TGZpWGx6RDhNVEV2OWR5OWp3S01ZSkxFbWNUSnNCZWxKUkFPMmFMY2dTeS90?=
- =?utf-8?B?aW5OYW5tY2FJZ2p5SEJyNm1Gc1RwUlZla3dzQklYdVA5ME56RUp3bzJ2eXBO?=
- =?utf-8?B?VFJzVFc5cVZQbWJjY3d1d0pTL3lNdklJVDVUZEhxSVF5dEpaYTBxdXBRUmVG?=
- =?utf-8?B?SnY0STR2ZVZWSkFZK2lPWm5oRndjclJXWjhEdmwyTDNFTGZNSXRZR3hJbW9S?=
- =?utf-8?B?ZVpXU1hJck9ZUmJZbVdzaFNJanpVNmViODZVWGVPd0FpRWprL1g3M2hVRGNo?=
- =?utf-8?B?eDV3eGJZZy8wVDFMV3JkTndxcFJUdVRvSHRYM2Z4M3Y3TFdBTGRIMVBmaG85?=
- =?utf-8?B?NEFCdmxXZzY4VkNsOXg1eGU2NlhZRFV5M2MvRXF4azlQZjZCeDAwQ2xEZitM?=
- =?utf-8?B?Zk8zZDYvOVYzWHlKZzNrRm1NY3dXRVV4bFVaQ04yZEJHNmd1cDhYN1JrOVJY?=
- =?utf-8?B?eTA1Tjk4czFHT2dqM3VpdTlvZ3NVM0VVUzhsc0trQmNEaG5SRkxrTVFFSU4r?=
- =?utf-8?B?NFBNYXVTS3JISFZ3ajRXUXlnVjIzbXd2SkdPWWxFbzlucitxN1BoTDh6TkIx?=
- =?utf-8?B?SDcyVjRxeEgzVUE4aUVxbVFBc1Q2czNDOE8wSC9CeGw4c0pVcUxyUEVvbno0?=
- =?utf-8?B?ZWtnSzFkWS85S2dTL2V0UnNVSStXRXkwUExPaGNCUEE4VFJudkJVSjM4VXhD?=
- =?utf-8?B?d05jc3dOeEJGQlRLVlJYUlR6THRPWVUrSjZ3SkZ0N3RKUjFvNXZqajg1dVRQ?=
- =?utf-8?B?WFp2dUVMb2MvSUhiR2pnR0RKbGZ4dGtSNTNLK3E5dEpBa1MvSHEwNER3NTRh?=
- =?utf-8?B?b05hNHdPYjNEZVk5dXBOU0RNSTUvVkh2eGszME56b1ZodXN1Q0cxd0pnbnhH?=
- =?utf-8?B?T3FuaUhUc0E0aGwyTFBUcW9qVzc5ZXZMRzJuZ2MwL1lhRDZjZUNNaTd0U3Fl?=
- =?utf-8?Q?b92th+kZzWdnHjottPO7ZxFXsLVSWyv2RdlxW8E3HfPZ?=
-X-OriginatorOrg: criteo.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: b5fdcd62-6f44-40a5-bf29-08dc44512b0e
-X-MS-Exchange-CrossTenant-AuthSource: PAXPR04MB8989.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 14 Mar 2024 18:04:18.8658 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 2a35d8fd-574d-48e3-927c-8c398e225a01
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: cwb+Xws/MF3bCtNsK2L297GLIybtz15bGOgM2mAjJ2Rt4QewvEGeW0RlNVAnXof93ILg4GG6WoX9Mq9osvugoA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: AS8PR04MB8691
-X-Mailman-Approved-At: Thu, 14 Mar 2024 20:11:25 +0000
+References: <20240314120049.111241-1-ivecera@redhat.com>
+In-Reply-To: <20240314120049.111241-1-ivecera@redhat.com>
+From: Michal Schmidt <mschmidt@redhat.com>
+Date: Thu, 14 Mar 2024 19:49:49 +0100
+Message-ID: <CADEbmW2iX9BnUSh5vWY7tC6dtXX1-XJrY5Ox1K1JPjkemwBM9g@mail.gmail.com>
+To: Ivan Vecera <ivecera@redhat.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=criteo.com; s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=spRLlQgRVyV2BMsAxSfRIspEWUQSNw6hmzfnSDAnKRU=;
- b=cdkrXKI4OVlhOepE8/SenYHLFCNe1rx0Rkz9Mqjay10lpZKV1S0eqa6xiAoHbLuLdhu5zg7e4Hvp1BiU0e8dS8YwzSbJCdGdbwLWpLJfyMopRzt9Q96vK6Yi8hOZaLfpwHjyvHMLC6A/vT1S5HMuJpjfSERZLpBCO/t3MIroqgdoGjKcjH8oBfexlG4SpHIbcDwDLRS0YKuRQiS3fZoJUMCVIT9lFQReHVqt1NyBEPAnvu1BbGVOjK5LWRTlmMwDa1b6p/SuehzeP5HYURBNVWjMj30AqP53nP0FfPdTfD5eNBhHw169Kl6tgHhdh2twqskVygUimRuJMd5HPT5I3w==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=reject dis=none)
- header.from=criteo.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=criteo.com header.i=@criteo.com header.a=rsa-sha256
- header.s=selector2 header.b=cdkrXKI4
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=criteo.com;
-Subject: Re: [Intel-wired-lan] [PATCH v4 iwl-net] i40e: Prevent setting MTU
- if greater than MFS
+ d=redhat.com; 
+ s=mimecast20190719; t=1710442208;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=HkHbKx45Q3L1ZP5rRqbPmhlu/JcXI6MggY9Mklvo1v4=;
+ b=X5VgITfgWoPjrmhKwJSVjZuxNvrFcIlSVXPAvea45QqWgHQ9Xj1z2+T9Ub1bokt6a4G2Tm
+ OiASuPrk2ntkIildP45VvKcwgGXZvK0LEIdJkeqj9SkHEOiHsbobt+LoK28vhE0QzGmnOZ
+ faGI017mxr0O5pkRjjVoac7T+SDRFT8=
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=redhat.com
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
+ header.a=rsa-sha256 header.s=mimecast20190719 header.b=X5VgITfg
+Subject: Re: [Intel-wired-lan] [PATCH net v2] i40e: Enforce software
+ interrupt during busy-poll exit
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -173,32 +125,303 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: intel-wired-lan@lists.osuosl.org, linux-kernel@vger.kernel.org,
+Cc: aleksandr.loktionov@intel.com, netdev@vger.kernel.org,
+ open list <linux-kernel@vger.kernel.org>, pawel.chmielewski@intel.com,
  Eric Dumazet <edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
- netdev@vger.kernel.org, Jakub Kicinski <kuba@kernel.org>,
+ Hugo Ferreira <hferreir@redhat.com>,
+ "moderated list:INTEL ETHERNET DRIVERS" <intel-wired-lan@lists.osuosl.org>,
+ Jacob Keller <jacob.e.keller@intel.com>, Jakub Kicinski <kuba@kernel.org>,
  Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+On Thu, Mar 14, 2024 at 1:00=E2=80=AFPM Ivan Vecera <ivecera@redhat.com> wr=
+ote:
+>
+> As for ice bug fixed by commit b7306b42beaf ("ice: manage interrupts
+> during poll exit") followed by commit 23be7075b318 ("ice: fix software
+> generating extra interrupts") I'm seeing the similar issue also with
+> i40e driver.
+>
+> In certain situation when busy-loop is enabled together with adaptive
+> coalescing, the driver occasionally misses that there are outstanding
+> descriptors to clean when exiting busy poll.
+>
+> Try to catch the remaining work by triggering a software interrupt
+> when exiting busy poll. No extra interrupts will be generated when
+> busy polling is not used.
+>
+> The issue was found when running sockperf ping-pong tcp test with
+> adaptive coalescing and busy poll enabled (50 as value busy_pool
+> and busy_read sysctl knobs) and results in huge latency spikes
+> with more than 100000us.
+>
+> The fix is inspired from the ice driver and do the following:
+> 1) During napi poll exit in case of busy-poll (napo_complete_done()
+>    returns false) this is recorded to q_vector that we were in busy
+>    loop.
+> 2) In i40e_update_enable_itr()
+>    - updates refreshed ITR intervals directly using PFINT_ITRN register
+>    - if we are exiting ordinary poll then just enables the interrupt
+>      using PFINT_DYN_CTLN
+>    - if we are exiting busy poll then enables the interrupt and
+>      additionally triggers an immediate software interrupt to catch any
+>      pending clean-ups
+> 3) Reuses unused 3rd ITR (interrupt throttle) index and set it to
+>    20K interrupts per second to limit the number of these sw interrupts.
+>
+> Test results
+> =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+> Prior:
+> [root@dell-per640-07 net]# sockperf ping-pong -i 10.9.9.1 --tcp -m 1000 -=
+-mps=3Dmax -t 120
+> sockperf: =3D=3D version #3.10-no.git =3D=3D
+> sockperf[CLIENT] send on:sockperf: using recvfrom() to block on socket(s)
+>
+> [ 0] IP =3D 10.9.9.1        PORT =3D 11111 # TCP
+> sockperf: Warmup stage (sending a few dummy messages)...
+> sockperf: Starting test...
+> sockperf: Test end (interrupted by timer)
+> sockperf: Test ended
+> sockperf: [Total Run] RunTime=3D119.999 sec; Warm up time=3D400 msec; Sen=
+tMessages=3D2438563; ReceivedMessages=3D2438562
+> sockperf: =3D=3D=3D=3D=3D=3D=3D=3D=3D Printing statistics for Server No: =
+0
+> sockperf: [Valid Duration] RunTime=3D119.549 sec; SentMessages=3D2429473;=
+ ReceivedMessages=3D2429473
+> sockperf: =3D=3D=3D=3D> avg-latency=3D24.571 (std-dev=3D93.297, mean-ad=
+=3D4.904, median-ad=3D1.510, siqr=3D1.063, cv=3D3.797, std-error=3D0.060, 9=
+9.0% ci=3D[24.417, 24.725])
+> sockperf: # dropped messages =3D 0; # duplicated messages =3D 0; # out-of=
+-order messages =3D 0
+> sockperf: Summary: Latency is 24.571 usec
+> sockperf: Total 2429473 observations; each percentile contains 24294.73 o=
+bservations
+> sockperf: ---> <MAX> observation =3D 103294.331
+> sockperf: ---> percentile 99.999 =3D   45.633
+> sockperf: ---> percentile 99.990 =3D   37.013
+> sockperf: ---> percentile 99.900 =3D   35.910
+> sockperf: ---> percentile 99.000 =3D   33.390
+> sockperf: ---> percentile 90.000 =3D   28.626
+> sockperf: ---> percentile 75.000 =3D   27.741
+> sockperf: ---> percentile 50.000 =3D   26.743
+> sockperf: ---> percentile 25.000 =3D   25.614
+> sockperf: ---> <MIN> observation =3D   12.220
+>
+> After:
+> [root@dell-per640-07 net]# sockperf ping-pong -i 10.9.9.1 --tcp -m 1000 -=
+-mps=3Dmax -t 120
+> sockperf: =3D=3D version #3.10-no.git =3D=3D
+> sockperf[CLIENT] send on:sockperf: using recvfrom() to block on socket(s)
+>
+> [ 0] IP =3D 10.9.9.1        PORT =3D 11111 # TCP
+> sockperf: Warmup stage (sending a few dummy messages)...
+> sockperf: Starting test...
+> sockperf: Test end (interrupted by timer)
+> sockperf: Test ended
+> sockperf: [Total Run] RunTime=3D119.999 sec; Warm up time=3D400 msec; Sen=
+tMessages=3D2400055; ReceivedMessages=3D2400054
+> sockperf: =3D=3D=3D=3D=3D=3D=3D=3D=3D Printing statistics for Server No: =
+0
+> sockperf: [Valid Duration] RunTime=3D119.549 sec; SentMessages=3D2391186;=
+ ReceivedMessages=3D2391186
+> sockperf: =3D=3D=3D=3D> avg-latency=3D24.965 (std-dev=3D5.934, mean-ad=3D=
+4.642, median-ad=3D1.485, siqr=3D1.067, cv=3D0.238, std-error=3D0.004, 99.0=
+% ci=3D[24.955, 24.975])
+> sockperf: # dropped messages =3D 0; # duplicated messages =3D 0; # out-of=
+-order messages =3D 0
+> sockperf: Summary: Latency is 24.965 usec
+> sockperf: Total 2391186 observations; each percentile contains 23911.86 o=
+bservations
+> sockperf: ---> <MAX> observation =3D  195.841
+> sockperf: ---> percentile 99.999 =3D   45.026
+> sockperf: ---> percentile 99.990 =3D   39.009
+> sockperf: ---> percentile 99.900 =3D   35.922
+> sockperf: ---> percentile 99.000 =3D   33.482
+> sockperf: ---> percentile 90.000 =3D   28.902
+> sockperf: ---> percentile 75.000 =3D   27.821
+> sockperf: ---> percentile 50.000 =3D   26.860
+> sockperf: ---> percentile 25.000 =3D   25.685
+> sockperf: ---> <MIN> observation =3D   12.277
+>
+> Fixes: 0bcd952feec7 ("ethernet/intel: consolidate NAPI and NAPI exit")
+> Reported-by: Hugo Ferreira <hferreir@redhat.com>
+> Signed-off-by: Ivan Vecera <ivecera@redhat.com>
+> ---
+>  drivers/net/ethernet/intel/i40e/i40e.h        |  1 +
+>  drivers/net/ethernet/intel/i40e/i40e_main.c   |  6 +++
+>  .../net/ethernet/intel/i40e/i40e_register.h   |  2 +
+>  drivers/net/ethernet/intel/i40e/i40e_txrx.c   | 46 ++++++++++++++-----
+>  drivers/net/ethernet/intel/i40e/i40e_txrx.h   |  1 +
+>  5 files changed, 45 insertions(+), 11 deletions(-)
+>
+> diff --git a/drivers/net/ethernet/intel/i40e/i40e.h b/drivers/net/etherne=
+t/intel/i40e/i40e.h
+> index ba24f3fa92c3..2fbabcdb5bb5 100644
+> --- a/drivers/net/ethernet/intel/i40e/i40e.h
+> +++ b/drivers/net/ethernet/intel/i40e/i40e.h
+> @@ -955,6 +955,7 @@ struct i40e_q_vector {
+>         struct rcu_head rcu;    /* to avoid race with update stats on fre=
+e */
+>         char name[I40E_INT_NAME_STR_LEN];
+>         bool arm_wb_state;
+> +       bool in_busy_poll;
+>         int irq_num;            /* IRQ assigned to this q_vector */
+>  } ____cacheline_internodealigned_in_smp;
+>
+> diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/et=
+hernet/intel/i40e/i40e_main.c
+> index f86578857e8a..6576a0081093 100644
+> --- a/drivers/net/ethernet/intel/i40e/i40e_main.c
+> +++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
+> @@ -3911,6 +3911,12 @@ static void i40e_vsi_configure_msix(struct i40e_vs=
+i *vsi)
+>                      q_vector->tx.target_itr >> 1);
+>                 q_vector->tx.current_itr =3D q_vector->tx.target_itr;
+>
+> +               /* Set ITR for software interrupts triggered after exitin=
+g
+> +                * busy-loop polling.
+> +                */
+> +               wr32(hw, I40E_PFINT_ITRN(I40E_SW_ITR, vector - 1),
+> +                    I40E_ITR_20K);
+> +
+>                 wr32(hw, I40E_PFINT_RATEN(vector - 1),
+>                      i40e_intrl_usec_to_reg(vsi->int_rate_limit));
+>
+> diff --git a/drivers/net/ethernet/intel/i40e/i40e_register.h b/drivers/ne=
+t/ethernet/intel/i40e/i40e_register.h
+> index 14ab642cafdb..baa6bb68bcf8 100644
+> --- a/drivers/net/ethernet/intel/i40e/i40e_register.h
+> +++ b/drivers/net/ethernet/intel/i40e/i40e_register.h
+> @@ -335,6 +335,8 @@
+>  #define I40E_PFINT_DYN_CTLN_INTERVAL_SHIFT 5
+>  #define I40E_PFINT_DYN_CTLN_SW_ITR_INDX_ENA_SHIFT 24
+>  #define I40E_PFINT_DYN_CTLN_SW_ITR_INDX_ENA_MASK I40E_MASK(0x1, I40E_PFI=
+NT_DYN_CTLN_SW_ITR_INDX_ENA_SHIFT)
+> +#define I40E_PFINT_DYN_CTLN_SW_ITR_INDX_SHIFT 25
+> +#define I40E_PFINT_DYN_CTLN_SW_ITR_INDX_MASK I40E_MASK(0x3, I40E_PFINT_D=
+YN_CTLN_SW_ITR_INDX_SHIFT)
+>  #define I40E_PFINT_ICR0 0x00038780 /* Reset: CORER */
+>  #define I40E_PFINT_ICR0_INTEVENT_SHIFT 0
+>  #define I40E_PFINT_ICR0_INTEVENT_MASK I40E_MASK(0x1, I40E_PFINT_ICR0_INT=
+EVENT_SHIFT)
+> diff --git a/drivers/net/ethernet/intel/i40e/i40e_txrx.c b/drivers/net/et=
+hernet/intel/i40e/i40e_txrx.c
+> index 0d7177083708..356c3140adf3 100644
+> --- a/drivers/net/ethernet/intel/i40e/i40e_txrx.c
+> +++ b/drivers/net/ethernet/intel/i40e/i40e_txrx.c
+> @@ -2658,8 +2658,22 @@ static inline u32 i40e_buildreg_itr(const int type=
+, u16 itr)
+>         return val;
+>  }
+>
+> -/* a small macro to shorten up some long lines */
+> -#define INTREG I40E_PFINT_DYN_CTLN
+> +static inline u32 i40e_buildreg_swint(int type)
+> +{
+> +       u32 val;
+> +
+> +       /* 1. Enable the interrupt
+> +        * 2. Do not modify any ITR interval
+> +        * 3. Trigger a SW interrupt specified by type
+> +        */
+> +       val =3D I40E_PFINT_DYN_CTLN_INTENA_MASK |
+> +             I40E_PFINT_DYN_CTLN_ITR_INDX_MASK | /* set noitr */
+> +             I40E_PFINT_DYN_CTLN_SWINT_TRIG_MASK |
+> +             I40E_PFINT_DYN_CTLN_SW_ITR_INDX_ENA_MASK |
+> +             FIELD_PREP(I40E_PFINT_DYN_CTLN_SW_ITR_INDX_MASK, type);
+> +
+> +       return val;
+> +}
+>
+>  /* The act of updating the ITR will cause it to immediately trigger. In =
+order
+>   * to prevent this from throwing off adaptive update statistics we defer=
+ the
+> @@ -2702,8 +2716,8 @@ static inline void i40e_update_enable_itr(struct i4=
+0e_vsi *vsi,
+>          */
+>         if (q_vector->rx.target_itr < q_vector->rx.current_itr) {
+>                 /* Rx ITR needs to be reduced, this is highest priority *=
+/
+> -               intval =3D i40e_buildreg_itr(I40E_RX_ITR,
+> -                                          q_vector->rx.target_itr);
+> +               wr32(hw, I40E_PFINT_ITRN(I40E_RX_ITR, q_vector->reg_idx),
+> +                    q_vector->rx.target_itr >> 1);
+>                 q_vector->rx.current_itr =3D q_vector->rx.target_itr;
+>                 q_vector->itr_countdown =3D ITR_COUNTDOWN_START;
+>         } else if ((q_vector->tx.target_itr < q_vector->tx.current_itr) |=
+|
+> @@ -2712,25 +2726,33 @@ static inline void i40e_update_enable_itr(struct =
+i40e_vsi *vsi,
+>                 /* Tx ITR needs to be reduced, this is second priority
+>                  * Tx ITR needs to be increased more than Rx, fourth prio=
+rity
+>                  */
+> -               intval =3D i40e_buildreg_itr(I40E_TX_ITR,
+> -                                          q_vector->tx.target_itr);
+> +               wr32(hw, I40E_PFINT_ITRN(I40E_TX_ITR, q_vector->reg_idx),
+> +                    q_vector->tx.target_itr >> 1);
+>                 q_vector->tx.current_itr =3D q_vector->tx.target_itr;
+>                 q_vector->itr_countdown =3D ITR_COUNTDOWN_START;
+>         } else if (q_vector->rx.current_itr !=3D q_vector->rx.target_itr)=
+ {
+>                 /* Rx ITR needs to be increased, third priority */
+> -               intval =3D i40e_buildreg_itr(I40E_RX_ITR,
+> -                                          q_vector->rx.target_itr);
+> +               wr32(hw, I40E_PFINT_ITRN(I40E_RX_ITR, q_vector->reg_idx),
+> +                    q_vector->rx.target_itr >> 1);
+>                 q_vector->rx.current_itr =3D q_vector->rx.target_itr;
+>                 q_vector->itr_countdown =3D ITR_COUNTDOWN_START;
+>         } else {
+>                 /* No ITR update, lowest priority */
+> -               intval =3D i40e_buildreg_itr(I40E_ITR_NONE, 0);
+>                 if (q_vector->itr_countdown)
+>                         q_vector->itr_countdown--;
+>         }
+>
+> -       if (!test_bit(__I40E_VSI_DOWN, vsi->state))
+> -               wr32(hw, INTREG(q_vector->reg_idx), intval);
+> +       /* Do not enable interrupt if VSI is down */
+> +       if (test_bit(__I40E_VSI_DOWN, vsi->state))
+> +               return;
+> +
+> +       if (!q_vector->in_busy_poll) {
+> +               intval =3D i40e_buildreg_itr(I40E_ITR_NONE, 0);
+> +       } else {
+> +               q_vector->in_busy_poll =3D false;
+> +               intval =3D i40e_buildreg_swint(I40E_SW_ITR);
+> +       }
+> +       wr32(hw, I40E_PFINT_DYN_CTLN(q_vector->reg_idx), intval);
+>  }
+>
+>  /**
+> @@ -2845,6 +2867,8 @@ int i40e_napi_poll(struct napi_struct *napi, int bu=
+dget)
+>          */
+>         if (likely(napi_complete_done(napi, work_done)))
+>                 i40e_update_enable_itr(vsi, q_vector);
+> +       else
+> +               q_vector->in_busy_poll =3D true;
+>
+>         return min(work_done, budget - 1);
+>  }
+> diff --git a/drivers/net/ethernet/intel/i40e/i40e_txrx.h b/drivers/net/et=
+hernet/intel/i40e/i40e_txrx.h
+> index abf15067eb5d..2cdc7de6301c 100644
+> --- a/drivers/net/ethernet/intel/i40e/i40e_txrx.h
+> +++ b/drivers/net/ethernet/intel/i40e/i40e_txrx.h
+> @@ -68,6 +68,7 @@ enum i40e_dyn_idx {
+>  /* these are indexes into ITRN registers */
+>  #define I40E_RX_ITR    I40E_IDX_ITR0
+>  #define I40E_TX_ITR    I40E_IDX_ITR1
+> +#define I40E_SW_ITR    I40E_IDX_ITR2
+>
+>  /* Supported RSS offloads */
+>  #define I40E_DEFAULT_RSS_HENA ( \
+> --
+> 2.43.0
 
-Le 14/03/2024 à 18:55, Brett Creeley a écrit :
-> [...]
-> AFAIK there is no API for a user to change the max_mtu, so the only way
-> the device's MFS would need to change is if it's done during
-> initialization time, which should be done before netdev registration 
-> anyway.
-
-Sorry Brett, I was probably unclear and please note that I'm not a 
-network developer, just a user that faced a bug.
-
-My initial though was to check the mfs size in i40e_change_mtu() and if 
-mfs is too small, then let's increase it.
-
-Maybe just resetting it at init time to the largest value (which seems 
-to be the default fw behavior) is a best approach.
-
-I'd love to ear from Intel dev that knows this driver/cards/fw better on 
-what's the best approach here.
-
-Erwan,
+Reviewed-by: Michal Schmidt <mschmidt@redhat.com>
 
