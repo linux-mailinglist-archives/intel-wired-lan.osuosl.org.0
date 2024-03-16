@@ -1,193 +1,103 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 319B187D652
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 15 Mar 2024 22:40:11 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4B63F87EC10
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 18 Mar 2024 16:24:42 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 32F2740289;
-	Fri, 15 Mar 2024 21:40:09 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id F265440A57;
+	Mon, 18 Mar 2024 15:24:38 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 6Szjle91Y4sq; Fri, 15 Mar 2024 21:40:05 +0000 (UTC)
+	with ESMTP id z8O6h2gFewEK; Mon, 18 Mar 2024 15:24:36 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1E284402E4
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org F2D0640A4A
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1710538802;
-	bh=qCt5hxWZKWGkXM3sRjq8jeMBiv9ZP1WRCREsVd9yXpc=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=ZBajmuNSdChyW3g1I7AcdxJoBHVKJAZYZAshhFtcuecAjKNgRjAxch7PEGmBJEI+7
-	 wmwbx+QBAe+KQGZQfJSHeG3Meoi5dcuJ8aNPlszFRpjDF2wryeDJkdL71WZC9YkVh6
-	 3HniuI117FdAPlb8SmhDjMOTr6/ClE3M1gjcaJOrX0MkrvRu+kPh7xdwh2l3YNUFZs
-	 2GhStiDsAF1Sj6svGxLTRdsW8yo1XT2Rbzo93ITrdzwjoi918YRi4Zz6VeLQt/M6TH
-	 +UFVzR85ohB4pPcwqInoUMcHivVWUlQ9O7mgERg0hm1YaCK59U4p9dy11KsVuM7o9O
-	 Bm9t0bFGEOh3w==
+	s=default; t=1710775476;
+	bh=Cgf8DgxHUjitbx8VzHDjQyw83nPToBtCwrDSRoMwYHc=;
+	h=From:Date:To:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=K8PseaTG+Rc6CUw9r3ABeDXF38wjRc9RdNVgrQjY2xrMkBsKyRsfXJIs9XOs+G9LG
+	 oDNSQ7NQRGR/FcIKwdRexd2A9xoL/gzWxZ62ELnDgquxC0aZclrFsjxA7jGrIe9vAc
+	 LKwOCU/Ro6SS3ymv9LB7goS1IbVjmuBnTBd7K8/noTHeq77SSndM8EUsAlQfo+QisY
+	 RgYnw4NoZM/I0cR7YBjmv063xCJaT3V2lidiiSTdXJYG1Z7ZHZzqTMRrslCFlzcdrv
+	 8ynD447jb7+0uIJfJm9reyRiwuWAaBxJ2nE1jlsxOItXbEpTfRybD+Bp+0SKYzkrhY
+	 ftLj/u+/wu+1Q==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 1E284402E4;
-	Fri, 15 Mar 2024 21:40:02 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id F2D0640A4A;
+	Mon, 18 Mar 2024 15:24:35 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id D05191BF3BC
- for <intel-wired-lan@lists.osuosl.org>; Fri, 15 Mar 2024 21:39:59 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 495531BF3B9
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 16 Mar 2024 03:42:47 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id C89AB417B6
- for <intel-wired-lan@lists.osuosl.org>; Fri, 15 Mar 2024 21:39:59 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 34A3E40105
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 16 Mar 2024 03:42:47 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 59SHqnhC_VrC for <intel-wired-lan@lists.osuosl.org>;
- Fri, 15 Mar 2024 21:39:55 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.15;
- helo=mgamail.intel.com; envelope-from=anthony.l.nguyen@intel.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 76F60408F1
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 76F60408F1
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.15])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 76F60408F1
- for <intel-wired-lan@lists.osuosl.org>; Fri, 15 Mar 2024 21:39:55 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,11014"; a="5618220"
-X-IronPort-AV: E=Sophos;i="6.07,129,1708416000"; 
-   d="scan'208";a="5618220"
-Received: from orviesa010.jf.intel.com ([10.64.159.150])
- by fmvoesa109.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 15 Mar 2024 14:39:54 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.07,129,1708416000"; d="scan'208";a="12729905"
-Received: from orsmsx601.amr.corp.intel.com ([10.22.229.14])
- by orviesa010.jf.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
- 15 Mar 2024 14:39:54 -0700
-Received: from orsmsx612.amr.corp.intel.com (10.22.229.25) by
- ORSMSX601.amr.corp.intel.com (10.22.229.14) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.35; Fri, 15 Mar 2024 14:39:53 -0700
-Received: from ORSEDG602.ED.cps.intel.com (10.7.248.7) by
- orsmsx612.amr.corp.intel.com (10.22.229.25) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.35 via Frontend Transport; Fri, 15 Mar 2024 14:39:53 -0700
-Received: from NAM11-CO1-obe.outbound.protection.outlook.com (104.47.56.169)
- by edgegateway.intel.com (134.134.137.103) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.35; Fri, 15 Mar 2024 14:39:53 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=ctID1kafdOgAEPnVfx4jz5HgqEnw4u/H9IN/GTcdgkBy63I3ufcLyaufH20T20sKEYufzqPM5Q2nD7RTnUeEFpOibDxQoC+AfeotivOYsfv2+jKCE038gAMHRZU/bTtoKuUaOZdO1hlAHNyj5cVdLK+2QVk4NIpvI7Gvrz6ppxGeejbGXDqDL71JjTje1zlIuYwnvPhB+mX8eZCu81DT3CoL2EFltgHeVDt1wFelEYvcuYnu0uO9v/dGF2NiKLqWMOGHlCpD7zbD2U8nXBWlMg7jVc+pYQZ72sD0iFUpKYyfajBeAVT93g+PT5rufR7YWD69CKCLy5haeSGaLaOsgQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=qCt5hxWZKWGkXM3sRjq8jeMBiv9ZP1WRCREsVd9yXpc=;
- b=fMdZ+kAD4YSShGaPC5PHNMG/Gseoqo8Wc6GQByVFWzsifSZNE4Pkjdr3ctGKynz9JKcsyB87SayiKGHhh76LdvrjXUdHQUMoa+8nGB2YkGxC5YPVRNGfxST6iHuIgBQoLfbuWAEq4mjEkDA5mZOgggYXbf2HQp3bG8K1FIMWvpyxC0OL3YNx6lW/ED4/9d6Vi5iewA+AK8bvk3qJWomPJsH6t61yetDJfp3F0+CaeqLdDNZSD3DReLyZPckrkrkbZIauMGXVRVtLnZ4Ry9pLT/6kOqKX7cHAddw+O2bUhYUpQFRkck7j3SqmMehi/ikz4FngIIAhU4gUsbmOWPgLjw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from BL3PR11MB6435.namprd11.prod.outlook.com (2603:10b6:208:3bb::9)
- by DS0PR11MB8113.namprd11.prod.outlook.com (2603:10b6:8:127::11) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7386.17; Fri, 15 Mar
- 2024 21:39:52 +0000
-Received: from BL3PR11MB6435.namprd11.prod.outlook.com
- ([fe80::9c80:a200:48a2:b308]) by BL3PR11MB6435.namprd11.prod.outlook.com
- ([fe80::9c80:a200:48a2:b308%4]) with mapi id 15.20.7362.019; Fri, 15 Mar 2024
- 21:39:52 +0000
-Message-ID: <0f9e719a-04bc-0dbf-637b-ff5914de0875@intel.com>
-Date: Fri, 15 Mar 2024 14:39:49 -0700
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
- Thunderbird/102.6.1
-Content-Language: en-US
-To: Ulrich Weber <ulrich.weber@gmail.com>, <intel-wired-lan@lists.osuosl.org>
-References: <20240314091513.25984-1-ulrich.weber@gmail.com>
-From: Tony Nguyen <anthony.l.nguyen@intel.com>
-In-Reply-To: <20240314091513.25984-1-ulrich.weber@gmail.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 7bit
-X-ClientProxiedBy: MW4PR03CA0223.namprd03.prod.outlook.com
- (2603:10b6:303:b9::18) To BL3PR11MB6435.namprd11.prod.outlook.com
- (2603:10b6:208:3bb::9)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id nebmOUwhuKu1 for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 16 Mar 2024 03:42:45 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2a00:1450:4864:20::12f; helo=mail-lf1-x12f.google.com;
+ envelope-from=zzqq0103.hey@gmail.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 4B52840025
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 4B52840025
+Received: from mail-lf1-x12f.google.com (mail-lf1-x12f.google.com
+ [IPv6:2a00:1450:4864:20::12f])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 4B52840025
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 16 Mar 2024 03:42:44 +0000 (UTC)
+Received: by mail-lf1-x12f.google.com with SMTP id
+ 2adb3069b0e04-513d599dbabso2555461e87.1
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 15 Mar 2024 20:42:44 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1710560562; x=1711165362;
+ h=cc:to:subject:message-id:date:from:mime-version:x-gm-message-state
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=Cgf8DgxHUjitbx8VzHDjQyw83nPToBtCwrDSRoMwYHc=;
+ b=iq9Y9ZWOe//Nnm7N0uBX1hHvarOzlD8LapVn7XrDLyEHaviwON8jJ7a3dwaSfVY5z3
+ a01TMOdUtZBrFmttXuBY1YLnQsWOLTRZiKp8cft3ZDMTtpQtQUtEjVa6MCkqdGVbziq0
+ jJnJY9rNGuwBPAqeS9GM2CNQgF8s49QYx4tDDSOwaQW7Fkr8TyfRTXAtD1oowzXgFu6/
+ V+n4mUMW9cwpviEvYfxuQGBCHvB1Y+dCjYXlcMd/wMs8qXEp9eRfx5S9xAGMmvUn4e3w
+ FsKd/R93ADtxydxFjkBwoXFTeQwqrWhyHQh3AMfHkDsRYDi3wo2kDz5WxY7f+HAnxnYQ
+ by4w==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWvKN0RHl/R/U8nlQ6FQgs5Yz4+d47SH4QrIq5f9ELNdwtEkmg8Zk2WsjIdAZ35xdZU8I6gq++7R7jn0UGjg/DjIslXgyvW62xx8CSJ+9kqxQ==
+X-Gm-Message-State: AOJu0Ywn5LQ7k6ejoHZ5idTomRK2Ud4F+X/FdTxX1Iow9KfzEPbUTxHm
+ /qq+qZNb8Vga4SU5fJBvWPPXLhNwtrIlJ5L2ygsCuxLmd36Jd1DTfM14+yp3iCTclnh4q92zyje
+ mO/Av+LJx/o95DT/EY+b46FxJ/io=
+X-Google-Smtp-Source: AGHT+IEjTxPgog4y7kx8jtZrkI/l2TrXT6vyaTeDllwh6ScXCC88X2vifwiIzAWLkjBrBmgu2X3jxvGz4GkKK+c4MNs=
+X-Received: by 2002:ac2:464c:0:b0:513:c4d9:a0d9 with SMTP id
+ s12-20020ac2464c000000b00513c4d9a0d9mr4535557lfo.22.1710560562097; Fri, 15
+ Mar 2024 20:42:42 -0700 (PDT)
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: BL3PR11MB6435:EE_|DS0PR11MB8113:EE_
-X-MS-Office365-Filtering-Correlation-Id: d0c986d4-b83c-4123-9c98-08dc4538726e
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: NjQs6WQA2370stLWTgS4VLA2y6486JUnutpC5mtdpcAKPEaK5vt1Mvo7/kkEXP/hM9rmcEcb+ZJ4sltPiY06M5tTiN5AH9TcteuJ+z2vhZgcDWZwZZXs9va0FO5TvYwpzh3owgDOY/qugNLF2H5S/Iw2FpC9kjnPM2hNiV0FNy1RE69rfU279muoxY48slGZ4vhbnLOasr8DQLdxL55D0T6Yn4sKheAaOfbT4fH5g/aZFMeYacEv42zao+cjuyBEf1LzOhkHsBo0LjVoK9sjoczOPiYwYzzrDqQIEbw16+D3BOOPgq/oJhMM8/EDettEtZttXMNCMzet88FozgtSMEtH8wWuZaQetRrq8/Rm4eSCJEAnRzo6YhXoykOOqiSH14fQr3qzoFBGnIH0tp4ZF9Yp7hfpjW3lFf6g4mscpnuTu5USefMvI4zWnC1vBLC54CXVGk2TdByJVyMN7saXJxK5BRuYRgTR7Q2W59QICyFPucwChrk82wIIjXks/YSxCbbUTUM+5oko3dfszkdB3IxA+8OjqH/jhqVES4T4KuXt5F7sSzQjAihGEZ/P/N2zDPRtZDQBfP9gauMS4klRxzG7FUBEVVRuT2CSrhZzvE3lekTTCBDRUu/K6YFWsH7V0tnJ0SNj7lahTfHzsCEfINzqTss/3VhJ4tvYuaCAjVY=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BL3PR11MB6435.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230031)(376005)(1800799015)(366007); DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?eWM5aG1XQ2VRb01naFFLYjZWVU1pTUdiUFZZN2JpSHpNZkdhem9FV21KcjFq?=
- =?utf-8?B?aUp1VXVVRTV0WXdlMmtJaWsybzBqZlpwTjM4alRxL0ZIMHVUZWZWNTlYMWFw?=
- =?utf-8?B?N0FkYXYrbXVHUzE4Nyt4NExkQWM1bE9SMVAxcDRWUVRhdXNRNjJNT0U4MXl2?=
- =?utf-8?B?aTJ4OU9ZaTJjb2tPUVQyK1RLRW1yenlOMTdFTkszMHREdFVHMW9waVRKcXM0?=
- =?utf-8?B?Z0NuMXJvYlBCNTc0WVkwL3ZzK1dHZGxZM01IMlNSTmN0MWJvQlZUMFd6NGxL?=
- =?utf-8?B?YVdvbjBDVGVnT1FabWNuYXdYK29Kek11d0N0Q3B1Y2tRTnZRakFzYk55OUdV?=
- =?utf-8?B?OGYrY0dLREpuK2RSeTlQM0RQYWhud3hsdm5scjdPVXVxNlRJaGEzRnVGU3Mw?=
- =?utf-8?B?bmlySFhiR1VvRlY0K1htQzluRmtmNUVTR3d3Zzk4cXh3eVlEQzRDb2ZQelc0?=
- =?utf-8?B?WjRaVS9GdWRlUjNLQVZDS0M0RGtYMk55c2E2VEJVUlZVMlUyVFFhTmhUMHBK?=
- =?utf-8?B?Q204YWlFcVY0QnoyNC9FN1dacHY2UjdSZ0VxdndxejJEdUJNTUxPVzUyZUd1?=
- =?utf-8?B?cFU3TmphQlU5RTlUbFgzNjRjcnhqaXVLSCsraE96TnhjaGVzQjV0Z2x3K2p3?=
- =?utf-8?B?am0xa3lZcVpqbHlWL1pKbE9qS1VibDB1QWRiVnBlRDNGdUxZS3N6MXV5VEdB?=
- =?utf-8?B?OW9CT3BXbTJRRklBbEkxRlFEYU83eWZPODljd3kwSW1ZQjV5MHdkZXhhWUNv?=
- =?utf-8?B?YU1LQ083MWtsTFlRTHV0aGROTGhndXNoSnVuTGcvbDlPaHQvTFpSNU1tVnp6?=
- =?utf-8?B?b0h4ZmZTWElFRFp5OFJsdWpIYkN3NnVBYUxxWjdUQnh2SXkrb0REMmZTWUg5?=
- =?utf-8?B?bEtQamJNQlY4VkNiakZ5RkpwMXRxbkRCWmdwZmhpYjEyZi9IN0ozSW1pbDBl?=
- =?utf-8?B?aHoxb1A2ZldPMHZVcGR2SWpRMzBVSXo0dk5pY2lIOWpLMERHSWdZSFU1Zmc4?=
- =?utf-8?B?NC9GT2xHbUJtS2FiL2dYYWRzM3k2TEROZGdsSmdhL2dPYk9rQmI0VW5Hbld2?=
- =?utf-8?B?M0Z4aGVWbk5wT0V1TUtqSFg4akpTaGtqSTFmdUx4M3JQZkFYSUJCV2VQcHRR?=
- =?utf-8?B?NlFVeFRVSFJOdGNUck9SRWFZQUxaUWNKa2xuNUtRaVJpZStPdlpZSC85UHA4?=
- =?utf-8?B?eGh2SG50dkZVeFdXZnVOamRuUEMrUk1yQkJkd01mNEZHSHRRMDBva2FsQmQ1?=
- =?utf-8?B?MEZybDBFcEJNQk5XYjNzODg2TWFkNmYxYVJEMTM3NWtRUEhOUGx5MjAyNm5U?=
- =?utf-8?B?dlBJdmZXSDM4cmtUOEVoNmlVVUhLanZ2akJhcHBZOWEzMkZZNVdBb1RJWXIy?=
- =?utf-8?B?TVhBbDZPWjdBbjFJVTJxREZ4RTlMMW9Md1JDVC9DdGU2QmFFZ0pSMDdjclRy?=
- =?utf-8?B?TnMrUnBZSm5sN00wKzJLL3BxYVZuWXlKb1laZnU4am9xM2tQM29aMGxzTlJO?=
- =?utf-8?B?M2xhNzZsMHJ6QnpEWFlBN2h5T2JES3Vsc1FkUWlIdm1DVTJUOXZhVitWeVdk?=
- =?utf-8?B?ZmNkQzMrc2RzSHZMUXVldmRQTkQ1eWtvbXdHV0FsamVYMHpVN1ZUa1BCSTRH?=
- =?utf-8?B?OVZRZHhLWEJWeG1MWWF0Z2ptMG01dGd0cGU0YWVOSllzR2dxU1NGS3JVeE1s?=
- =?utf-8?B?V0cvcUY0N1UzNlF2WFZ1RGh0ZzhkSWVXYVpYaDcxYjdlNEUwdEJ5eU9GeTUr?=
- =?utf-8?B?MzFsMG1NdFY0c0Zjd3hFVU9sakVxZUFhVGtpZDZ5RnJseEtwVlF5VFU3QTlj?=
- =?utf-8?B?T1RCUDR0TUtJYWk0dEZmYzZ2WC9DRmtzVkxidSs0cmxhWU5RU1M5YVZqSGJi?=
- =?utf-8?B?U2ZVWE0vS3VMRzk3Rkptbzh3a01RWU53VFUwcE5RZm4wNC9CRTg1eWdkaHhs?=
- =?utf-8?B?Y1RUYnEvaUZESm52YnRRTFU5akNWcmpYeHQwbkgzU3Qxb0lzQzZEUVo1K25E?=
- =?utf-8?B?d3lNc0Qwa3NoQ08xc2xjYUw1WlZYMGpmVVJWa2JGTWloRHJ0NnZCcG5nSWVM?=
- =?utf-8?B?cytMcDRSRXJpMVpGbzJpc3hvRnFhMXg4QzhoL2c4d3hqZ0s4Vkd4cGRXTEJq?=
- =?utf-8?B?TW9CblRlQ1dGeGFxeDNOT083ME1VaXQrWnVFSXozaUJLZ0gwSE9vR210cFZi?=
- =?utf-8?B?UGc9PQ==?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: d0c986d4-b83c-4123-9c98-08dc4538726e
-X-MS-Exchange-CrossTenant-AuthSource: BL3PR11MB6435.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 15 Mar 2024 21:39:52.1491 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: jQEZeDSypRo+9eFcB/eukzKg/Go19G0VDfXSO4HkmwJIBKlZKkXUytc2M7RR2MPm8mx9pec8llvNP8Hu3qYV2Pp5xEzC7G/t71nw7l+T0Js=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS0PR11MB8113
-X-OriginatorOrg: intel.com
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1710538795; x=1742074795;
- h=message-id:date:subject:to:references:from:in-reply-to:
- content-transfer-encoding:mime-version;
- bh=FvQtNbUx4kPtgMT1EA6USD/5Nfz13gBiRgfzyzWLcc4=;
- b=P0Ot/1dGVvVovmbYvsSTM/St6xoge78HoVwhnFOPjafQNTB73pIq6KZH
- 8QY4jABmQk9brSfAl3qfkWOYAJ4TdDrcI+XONHR6TmT3Wn/aUmgps3T21
- Uf9kzmvg583wAKPiTENEgYCPtg0XLGTJEECv8TWCZ9eFRX53/iCnyC8A1
- UxVLfAmPLJnK0ByxMNvH0JTn+OSg+ai8CSSbY2SGz152KhR/943ekiXTc
- Rr7LO5fhxFuA2h5VBU2wYwOA65haDNVOK2LLsNnC7ODrkboCA7idncMku
- q/G67eKce43D5FTd7GSY2GtpBMWYPXOp+bebAX3U9Dzw5Z2QL8RJTgrio
- Q==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+From: cheung wall <zzqq0103.hey@gmail.com>
+Date: Sat, 16 Mar 2024 11:42:30 +0800
+Message-ID: <CAKHoSAshN6b3sCkWDLsHJ42Wqa0R_82horK_Owvy0fjBq6seuQ@mail.gmail.com>
+To: Jesse Brandeburg <jesse.brandeburg@intel.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>
+Content-Type: text/plain; charset="UTF-8"
+X-Mailman-Approved-At: Mon, 18 Mar 2024 15:24:34 +0000
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1710560562; x=1711165362; darn=lists.osuosl.org;
+ h=cc:to:subject:message-id:date:from:mime-version:from:to:cc:subject
+ :date:message-id:reply-to;
+ bh=Cgf8DgxHUjitbx8VzHDjQyw83nPToBtCwrDSRoMwYHc=;
+ b=Hl9C8XY2LrI0cQ7now3BXmhXUM3mioh+SZu7Cpl+QNgrjLooMc9hLEDRVNKXtcgFWh
+ oBMd6Xw7m6BdkLz9FP98LJ1IEQDDSc+DqX7lmighFvXkYbmSJ2ROOKJ6FPqsSJ8IVkPu
+ Q4UjlL4VL3O7KVPUlrHzEMpriJ3saVA+T8XuuZeiVgQzSa/XScK5FGH1YsvOvTz1809a
+ x9diQfSvBeuMFvTdbp0pFt9keyjiqN+vLNy1oTyrnzRVfyrRCisRpHOH4/+1ecTXv53s
+ IVwljEsX31GbHfYuPdUPaL15H4zURjjYfLxod4L268K4dSP7eZJF/yY+LNlpcOBpR9qN
+ bRlA==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=P0Ot/1dG
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH] ice: set ethtool autoneg based on
- active cfg
+ header.from=gmail.com
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
+ header.a=rsa-sha256 header.s=20230601 header.b=Hl9C8XY2
+Subject: [Intel-wired-lan] INFO: rcu detected stall in gc_worker
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -200,76 +110,240 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Eric Dumazet <edumazet@google.com>, intel-wired-lan@lists.osuosl.org,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ "David S. Miller" <davem@davemloft.net>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+Hello,
 
 
-On 3/14/2024 2:15 AM, Ulrich Weber wrote:
-> Current logic uses ICE_AQ_AN_COMPLETED information to
-> flag if autonegotiation is enabled or disabled.
-> 
-> Since new ethtool netlink interface checks if there is
-> a configuration change or not and ignores the call, if
-> there is no change, this makes is impossible to disable
-> autonegotiation on links without established autoneg.
-> 
-> This will change the logic to check the active phy
-> configuration if autoneg is enabled or not.
-> 
+when using Healer to fuzz the latest Linux Kernel, the following crash
 
-Sounds like a bug fix, so you should target this to 'iwl-net' and also 
-add a Fixes:
+was triggered on:
 
-> Signed-off-by: Ulrich Weber <ulrich.weber@gmail.com>
-> ---
->   src/ice_ethtool.c | 10 +++++-----
 
-What tree are you using? This is not a kernel path.
+HEAD commit: 0dd3ee31125508cd67f7e7172247f05b7fd1753a  (tag: v6.7)
 
->   1 file changed, 5 insertions(+), 5 deletions(-)
-> 
-> diff --git a/src/ice_ethtool.c b/src/ice_ethtool.c
-> index e1eeb16babb3..8fe475944f2c 100644
-> --- a/src/ice_ethtool.c
-> +++ b/src/ice_ethtool.c
-> @@ -2857,10 +2857,6 @@ ice_get_link_ksettings(struct net_device *netdev,
->   	else
->   		ice_get_settings_link_down(ks, netdev);
->   
-> -	/* set autoneg settings */
-> -	ks->base.autoneg = (hw_link_info->an_info & ICE_AQ_AN_COMPLETED) ?
-> -		AUTONEG_ENABLE : AUTONEG_DISABLE;
-> -
->   	/* set media type settings */
->   
->   	switch (vsi->port_info->phy.media_type) {
-> @@ -2912,6 +2908,10 @@ ice_get_link_ksettings(struct net_device *netdev,
->   	if (err)
->   		goto done;
->   
-> +	/* set autoneg settings based on active configuration */
-> +	ks->base.autoneg = ice_is_phy_caps_an_enabled(caps) ?
-> +		AUTONEG_ENABLE : AUTONEG_DISABLE;
+git tree: upstream
 
-Since this needs to move to after the PHY capabilities call anyways, 
-it'd be nicer to put this with the rest of the autoneg code. You could 
-probably utilize the existing ice_is_phy_caps_an_enabled check and not 
-add a second call as well.
+console output: https://pastebin.com/raw/0bRkEgvF
 
-Thanks,
-Tony
+kernel config: https://pastebin.com/raw/VecrLrRN
 
-> +
->   	/* Set the advertised flow control based on the PHY capability */
->   	if ((caps->caps & ICE_AQC_PHY_EN_TX_LINK_PAUSE) &&
->   	    (caps->caps & ICE_AQC_PHY_EN_RX_LINK_PAUSE)) {
-> @@ -2960,7 +2960,7 @@ ice_get_link_ksettings(struct net_device *netdev,
->   		ethtool_link_ksettings_add_link_mode(ks, supported, FEC_RS);
->   #endif /* ETHTOOL_GFECPARAM */
->   
-> -	/* Set supported and advertised autoneg */
-> +	/* Set supported and advertised autoneg based on media */
->   	if (ice_is_phy_caps_an_enabled(caps)) {
->   		ethtool_link_ksettings_add_link_mode(ks, supported, Autoneg);
->   		ethtool_link_ksettings_add_link_mode(ks, advertising, Autoneg);
+C reproducer: https://pastebin.com/raw/k6HDMmac
+
+Syzlang reproducer: https://pastebin.com/raw/uX82h1ks
+
+
+If you fix this issue, please add the following tag to the commit:
+
+Reported-by: Qiang Zhang <zzqq0103.hey@gmail.com>
+
+----------------------------------------------------------
+
+rcu: INFO: rcu_preempt detected stalls on CPUs/tasks:
+systemd-journal (124) used greatest stack depth: 24160 bytes left
+systemd[1]: systemd-journald.service: Main process exited,
+code=killed, status=6/ABRT
+systemd[1]: systemd-journald.service: Failed with result 'watchdog'.
+systemd[1]: systemd-journald.service: Scheduled restart job, restart
+counter is at 1.
+rcu: 0-...0: (4 ticks this GP) idle=c6ec/1/0x4000000000000000
+softirq=1263/1265 fqs=4551
+rcu: 2-...0: (1 GPs behind) idle=4f1c/1/0x4000000000000000
+softirq=993/993 fqs=4551
+rcu: 3-....: (1 GPs behind) idle=8b4c/0/0x3 softirq=1112/1113 fqs=4551
+rcu: (detected by 5, t=355128 jiffies, g=2045, q=163 ncpus=8)
+Sending NMI from CPU 5 to CPUs 0:
+NMI backtrace for cpu 0
+CPU: 0 PID: 10 Comm: kworker/0:1 Not tainted 6.7.0 #2
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+Workqueue: events e1000_watchdog
+RIP: 0010:e1000_update_stats+0xb6f/0x1d70
+drivers/net/ethernet/intel/e1000/e1000_main.c:3660
+Code: df 48 89 f9 48 c1 e9 03 80 3c 01 00 0f 85 d8 11 00 00 45 89 ed
+48 8b 83 80 04 00 00 4c 01 ab 40 07 00 00 44 8b a8 e4 40 00 00 <48> 8d
+bb 48 07 00 00 48 b8 00 00 00 00 00 fc ff df 48 89 f9 48 c1
+RSP: 0018:ffff88810031fbd0 EFLAGS: 00000002
+RAX: ffffc90001040000 RBX: ffff888104964900 RCX: 1ffff1102092ca08
+RDX: ffff888100302200 RSI: 0000000000000004 RDI: ffff888104965040
+RBP: 1ffff11020063f89 R08: 0000000000000001 R09: ffffed1020063f6e
+R10: 0000000000000003 R11: dead000000000100 R12: ffff888104964b18
+R13: 0000000000000000 R14: ffff888104964000 R15: ffff888104964900
+FS:  0000000000000000(0000) GS:ffff8881f7000000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007f348ff56328 CR3: 00000001b60a4002 CR4: 0000000000770ef0
+PKRU: 55555554
+Call Trace:
+ <NMI>
+ </NMI>
+ <TASK>
+ e1000_watchdog+0x2f1/0x1300 drivers/net/ethernet/intel/e1000/e1000_main.c:2499
+ process_one_work+0x583/0xda0 kernel/workqueue.c:2627
+ process_scheduled_works kernel/workqueue.c:2700 [inline]
+ worker_thread+0x981/0x11e0 kernel/workqueue.c:2781
+ kthread+0x263/0x330 kernel/kthread.c:388
+ ret_from_fork+0x48/0x80 arch/x86/kernel/process.c:147
+ ret_from_fork_asm+0x1b/0x30 arch/x86/entry/entry_64.S:242
+ </TASK>
+INFO: NMI handler (nmi_cpu_backtrace_handler) took too long to run: 2.146 msecs
+Sending NMI from CPU 5 to CPUs 2:
+NMI backtrace for cpu 2
+CPU: 2 PID: 89 Comm: kworker/2:1H Not tainted 6.7.0 #2
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+Workqueue: kblockd blk_mq_requeue_work
+RIP: 0010:bytes_is_nonzero mm/kasan/generic.c:85 [inline]
+RIP: 0010:memory_is_nonzero mm/kasan/generic.c:102 [inline]
+RIP: 0010:memory_is_poisoned_n mm/kasan/generic.c:127 [inline]
+RIP: 0010:memory_is_poisoned mm/kasan/generic.c:159 [inline]
+RIP: 0010:check_region_inline mm/kasan/generic.c:178 [inline]
+RIP: 0010:kasan_check_range+0x164/0x1c0 mm/kasan/generic.c:187
+Code: c2 48 85 c0 75 b0 48 89 da 4c 89 d8 4c 29 da e9 49 ff ff ff 48
+85 d2 74 b3 48 01 ea eb 09 48 83 c0 01 48 39 d0 74 a5 80 38 00 <74> f2
+e9 74 ff ff ff b8 01 00 00 00 e9 16 7c 85 02 48 29 c3 48 89
+RSP: 0018:ffff8881f7109df0 EFLAGS: 00000046
+RAX: fffffbfff7b84000 RBX: fffffbfff7b84001 RCX: ffffffffbcb6ec4a
+RDX: fffffbfff7b84001 RSI: 0000000000000004 RDI: ffffffffbdc20000
+RBP: fffffbfff7b84000 R08: 0000000000000000 R09: fffffbfff7b84000
+R10: ffffffffbdc20003 R11: ffff8881f7109ff8 R12: 0000000000000001
+R13: 0000000000000003 R14: fffffbfff7b84000 R15: 0000000000000001
+FS:  0000000000000000(0000) GS:ffff8881f7100000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007f70dae1ab40 CR3: 000000011209e003 CR4: 0000000000770ef0
+PKRU: 55555554
+Call Trace:
+ <NMI>
+ </NMI>
+ <IRQ>
+ instrument_atomic_read include/linux/instrumented.h:68 [inline]
+ atomic_read include/linux/atomic/atomic-instrumented.h:32 [inline]
+ virt_spin_lock arch/x86/include/asm/qspinlock.h:98 [inline]
+ queued_spin_lock_slowpath+0xba/0xbe0 kernel/locking/qspinlock.c:327
+ queued_spin_lock include/asm-generic/qspinlock.h:114 [inline]
+ do_raw_spin_lock include/linux/spinlock.h:187 [inline]
+ __raw_spin_lock include/linux/spinlock_api_smp.h:134 [inline]
+ _raw_spin_lock+0xe8/0xf0 kernel/locking/spinlock.c:154
+ rcu_iw_handler+0x3c/0xe0 kernel/rcu/tree_stall.h:226
+ irq_work_single+0xc8/0x160 kernel/irq_work.c:221
+ __flush_smp_call_function_queue+0x4f0/0xa00 kernel/smp.c:545
+ __sysvec_call_function_single+0x25/0x1d0 arch/x86/kernel/smp.c:267
+ sysvec_call_function_single+0x8c/0xa0 arch/x86/kernel/smp.c:262
+ </IRQ>
+ <TASK>
+ asm_sysvec_call_function_single+0x1a/0x20 arch/x86/include/asm/idtentry.h:656
+RIP: 0010:__sanitizer_cov_trace_pc+0x0/0x70 kernel/kcov.c:200
+Code: e9 c0 cf b1 02 48 89 f7 e9 8d fd ff ff 66 66 2e 0f 1f 84 00 00
+00 00 00 66 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 <f3> 0f
+1e fa 48 8b 0c 24 65 48 8b 14 25 40 6f 03 00 65 8b 05 c0 fd
+RSP: 0018:ffff888105d87810 EFLAGS: 00000293
+RAX: 0000000000000000 RBX: ffff888101785000 RCX: ffffffffbcb6d7b4
+RDX: ffff888105d61100 RSI: 0000000000000293 RDI: ffff888101785000
+RBP: 0000000000000293 R08: 0000000000000002 R09: 0000000000000475
+R10: ffffffffbf2d3787 R11: 000000000038d918 R12: 0000000000000000
+R13: ffff888104850000 R14: 0000000000000293 R15: ffff888104850010
+ __raw_spin_unlock_irqrestore include/linux/spinlock_api_smp.h:152 [inline]
+ _raw_spin_unlock_irqrestore+0x4a/0x80 kernel/locking/spinlock.c:194
+ spin_unlock_irqrestore include/linux/spinlock.h:406 [inline]
+ ata_scsi_queuecmd+0x19d/0x200 drivers/ata/libata-scsi.c:4204
+ scsi_dispatch_cmd drivers/scsi/scsi_lib.c:1516 [inline]
+ scsi_queue_rq+0xb84/0x2bf0 drivers/scsi/scsi_lib.c:1758
+ blk_mq_dispatch_rq_list+0x3b6/0x1af0 block/blk-mq.c:2049
+ __blk_mq_do_dispatch_sched block/blk-mq-sched.c:170 [inline]
+ blk_mq_do_dispatch_sched block/blk-mq-sched.c:184 [inline]
+ __blk_mq_sched_dispatch_requests+0xbf4/0x13c0 block/blk-mq-sched.c:309
+ blk_mq_sched_dispatch_requests+0xeb/0x150 block/blk-mq-sched.c:333
+ blk_mq_run_hw_queue+0x44f/0x530 block/blk-mq.c:2264
+ blk_mq_run_hw_queues+0x105/0x270 block/blk-mq.c:2313
+ blk_mq_requeue_work+0x525/0x850 block/blk-mq.c:1498
+ process_one_work+0x583/0xda0 kernel/workqueue.c:2627
+ process_scheduled_works kernel/workqueue.c:2700 [inline]
+ worker_thread+0x981/0x11e0 kernel/workqueue.c:2781
+ kthread+0x263/0x330 kernel/kthread.c:388
+ ret_from_fork+0x48/0x80 arch/x86/kernel/process.c:147
+ ret_from_fork_asm+0x1b/0x30 arch/x86/entry/entry_64.S:242
+ </TASK>
+INFO: NMI handler (nmi_cpu_backtrace_handler) took too long to run: 2.407 msecs
+Sending NMI from CPU 5 to CPUs 3:
+NMI backtrace for cpu 3
+CPU: 3 PID: 76 Comm: kworker/3:1 Not tainted 6.7.0 #2
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.15.0-1 04/01/2014
+Workqueue: events_power_efficient gc_worker
+RIP: 0010:arch_atomic_read arch/x86/include/asm/atomic.h:23 [inline]
+RIP: 0010:raw_atomic_read
+include/linux/atomic/atomic-arch-fallback.h:457 [inline]
+RIP: 0010:atomic_read include/linux/atomic/atomic-instrumented.h:33 [inline]
+RIP: 0010:virt_spin_lock arch/x86/include/asm/qspinlock.h:98 [inline]
+RIP: 0010:queued_spin_lock_slowpath+0xba/0xbe0 kernel/locking/qspinlock.c:327
+Code: c1 ee 03 41 83 e5 07 48 b8 00 00 00 00 00 fc ff df 49 01 c6 41
+83 c5 03 e8 33 85 67 fd be 04 00 00 00 48 89 ef e8 c6 e5 93 fd <41> 0f
+b6 06 41 38 c5 7c 08 84 c0 0f 85 bb 09 00 00 44 8b 65 00 45
+RSP: 0018:ffff8881035c78e8 EFLAGS: 00000046
+RAX: 0000000000000001 RBX: 1ffff110206b8f1e RCX: ffffffffbcb6ec4a
+RDX: fffffbfff7b84001 RSI: 0000000000000004 RDI: ffffffffbdc20000
+RBP: ffffffffbdc20000 R08: 0000000000000000 R09: fffffbfff7b84000
+R10: ffffffffbdc20003 R11: ffffffffbda0b9c0 R12: 0000000000000001
+R13: 0000000000000003 R14: fffffbfff7b84000 R15: 0000000000000001
+FS:  0000000000000000(0000) GS:ffff8881f7180000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007f7a857bcff0 CR3: 00000001121dc006 CR4: 0000000000770ef0
+PKRU: 55555554
+Call Trace:
+ <NMI>
+ </NMI>
+ <TASK>
+ queued_spin_lock include/asm-generic/qspinlock.h:114 [inline]
+ do_raw_spin_lock include/linux/spinlock.h:187 [inline]
+ __raw_spin_lock include/linux/spinlock_api_smp.h:134 [inline]
+ _raw_spin_lock+0xe8/0xf0 kernel/locking/spinlock.c:154
+ rcu_note_context_switch+0x2d0/0x1770 kernel/rcu/tree_plugin.h:326
+ __schedule+0x16b/0x2230 kernel/sched/core.c:6587
+ preempt_schedule_irq+0x59/0x90 kernel/sched/core.c:7008
+ irqentry_exit+0x21/0x50 kernel/entry/common.c:432
+ asm_sysvec_apic_timer_interrupt+0x1a/0x20 arch/x86/include/asm/idtentry.h:649
+RIP: 0010:__rcu_read_unlock+0x0/0x100 kernel/rcu/tree_plugin.h:419
+Code: e8 65 98 3e 00 e9 fc fe ff ff 48 89 ef e8 48 97 3e 00 e9 55 ff
+ff ff 0f 1f 00 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 <f3> 0f
+1e fa 41 54 55 65 48 8b 2c 25 40 6f 03 00 53 48 8d bd fc 03
+RSP: 0018:ffff8881035c7cb0 EFLAGS: 00000293
+RAX: 0000000000000000 RBX: dffffc0000000000 RCX: ffffffffbc220217
+RDX: ffff888101d8a200 RSI: 0000000000040000 RDI: ffff888101d8a5fc
+RBP: ffff88810610f190 R08: 0000000000000001 R09: fffffbfff7e66d44
+R10: ffffffffbf336a27 R11: ffff8881f71b8460 R12: 0000000000043c65
+R13: ffff8881f71b7100 R14: 000000000000ea60 R15: 0000000000040000
+ rcu_read_unlock include/linux/rcupdate.h:779 [inline]
+ gc_worker+0x7cc/0x1110 net/netfilter/nf_conntrack_core.c:1565
+ process_one_work+0x583/0xda0 kernel/workqueue.c:2627
+ process_scheduled_works kernel/workqueue.c:2700 [inline]
+ worker_thread+0x981/0x11e0 kernel/workqueue.c:2781
+ kthread+0x263/0x330 kernel/kthread.c:388
+ ret_from_fork+0x48/0x80 arch/x86/kernel/process.c:147
+ ret_from_fork_asm+0x1b/0x30 arch/x86/entry/entry_64.S:242
+ </TASK>
+rcu: rcu_preempt kthread timer wakeup didn't happen for 334296
+jiffies! g2045 f0x0 RCU_GP_WAIT_FQS(5) ->state=0x402
+rcu: Possible timer handling issue on cpu=5 timer-softirq=7633
+systemd[1]: Stopping Flush Journal to Persistent Storage...
+systemd[1]: systemd-journal-flush.service: Stopping timed out. Terminating.
+systemd[1]: systemd-journal-flush.service: Control process exited,
+code=killed, status=15/TERM
+systemd[1]: systemd-journal-flush.service: Failed with result 'timeout'.
+systemd[1]: Stopped Flush Journal to Persistent Storage.
+systemd[1]: Stopped Journal Service.
+systemd[1]: Starting Journal Service...
+systemd-journald[289]: File
+/var/log/journal/495cb7baaf694f459d942b793c107665/system.journal
+corrupted or uncleanly shut down, renaming and replacing.
+systemd[1]: Started Journal Service.
+systemd-journald[289]: Received client request to flush runtime journal.
+cgroup: Unknown subsys name 'net'
+cgroup: Unknown subsys name 'rlimit'
+cgroup: Unknown subsys name 'memory'
+Adding 124996k swap on ./swap-file.  Priority:0 extents:1 across:124996k
+audit: type=1400 audit(1710145844.746:6): avc:  denied  { execmem }
+for  pid=353 comm="syz-executor.1"
+scontext=system_u:system_r:kernel_t:s0
+tcontext=system_u:system_r:kernel_t:s0 tclass=process permissive=1
+modprobe (652) used greatest stack depth: 24064 bytes left
