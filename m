@@ -1,94 +1,91 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id F2F9E87D9FA
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 16 Mar 2024 12:38:53 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id E1B8887DB4A
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 16 Mar 2024 20:08:10 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 8AE546081F;
-	Sat, 16 Mar 2024 11:38:52 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 045F4408D0;
+	Sat, 16 Mar 2024 19:08:09 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id B7pq9WdO5P7p; Sat, 16 Mar 2024 11:38:50 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id DbfsD9i_pdYD; Sat, 16 Mar 2024 19:08:08 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2183960833
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7B1AC408FF
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1710589130;
-	bh=9vsWcP/wxYIU+ZhWAgRvZuL1xwQ2Pnzz5G1ruzTkMnM=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=qYyYcKWzodm1lfJMaAjjOEDoMMNwAY5kPx4rqH27xFLMlB5xanqou4x/S1z61d7Wt
-	 NIaKJCkkb3MLzvMxNeqnjP3bCLtfg+J/HGDn9rLdb1mWpKQSw+ZzS3uI4nDXHteWc/
-	 aOZspO9/UN5JZ9x7S1jS+8tk21yRu5pVBtUmGVo0ZEH2DUFjv4VoZlWgZuVQVel93g
-	 CYKjbZs/fzOd6mqYrt5Z1mitETsv73CPDqFulphCHbFdAPFKLsJrxbQY0HjIHyBdqh
-	 M6j48Q/UHo580C30BaryPim3bb1f0O7Lx9taQFHOHVYtmmm91Pj6BSbhUaS7zWJPjq
-	 ZasJXMEoIDO5Q==
+	s=default; t=1710616087;
+	bh=8bBrUgEhXOyx8H/dcVO0lweQ1iyi/fwaHUccaADiWKk=;
+	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=6nAeAuECqapul31JpKGKIvjp9u2ckLt/d43kCfYSjqpz5IW4wYS3cXBE1VQO4+LZU
+	 1zyxpqLytX9WKJ1I0bYigFBLpmDVV7p6LTbnVsQU8j2Lwr6pzpE2ApoOYhBJfklxmK
+	 7hXIV0pB/6oKq2x68vwqoxLsMLukz9yTDv/MLcqqYlkCghf7DyOFrzGky1cHWJCNWy
+	 TtcxIq1VLIruCoTvZdh1hkdHiptqt/cMgobGFayWAJgny5O3fDVyaiF29zujJOw9FB
+	 EmPIYoAD9LqIm/Lu3oxIZrbTowRq7tC16Tkq6vMbXCbSg/ytmECMCiVCA2pbEGJJwL
+	 p6YXI46Vy25kw==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 2183960833;
-	Sat, 16 Mar 2024 11:38:50 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 7B1AC408FF;
+	Sat, 16 Mar 2024 19:08:07 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id B6C001BF369
- for <intel-wired-lan@lists.osuosl.org>; Sat, 16 Mar 2024 11:38:47 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 6571E1BF294
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 16 Mar 2024 19:08:05 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id A1D7340488
- for <intel-wired-lan@lists.osuosl.org>; Sat, 16 Mar 2024 11:38:47 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 5F44682134
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 16 Mar 2024 19:08:05 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id zlZHfXQ8KAj4 for <intel-wired-lan@lists.osuosl.org>;
- Sat, 16 Mar 2024 11:38:46 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.133.124;
- helo=us-smtp-delivery-124.mimecast.com; envelope-from=ivecera@redhat.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 3C8574031D
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3C8574031D
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.133.124])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 3C8574031D
- for <intel-wired-lan@lists.osuosl.org>; Sat, 16 Mar 2024 11:38:45 +0000 (UTC)
-Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
- by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-322-Sle73eeZOmmxU_fVdPsjxA-1; Sat,
- 16 Mar 2024 07:38:37 -0400
-X-MC-Unique: Sle73eeZOmmxU_fVdPsjxA-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.rdu2.redhat.com
- [10.11.54.8])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 2F9532824782;
- Sat, 16 Mar 2024 11:38:37 +0000 (UTC)
-Received: from p1.luc.cera.cz (unknown [10.45.224.33])
- by smtp.corp.redhat.com (Postfix) with ESMTP id D7DD9C1576F;
- Sat, 16 Mar 2024 11:38:34 +0000 (UTC)
-From: Ivan Vecera <ivecera@redhat.com>
-To: netdev@vger.kernel.org
-Date: Sat, 16 Mar 2024 12:38:29 +0100
-Message-ID: <20240316113830.230718-1-ivecera@redhat.com>
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.8
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=redhat.com; 
- s=mimecast20190719; t=1710589124;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=9vsWcP/wxYIU+ZhWAgRvZuL1xwQ2Pnzz5G1ruzTkMnM=;
- b=Xsi3XfekVislb1LeAvD9/mJjpjSPuPRIZC9gkpFTpWmQ74pYwD/OkWcWb3oQtcdtYp+D+K
- WiDwye8hmjXZTIfOZjP3X79vFEvibVeXSo4FJV2J3XPj7/9BDuy0UOdfqTIc4bLPOjTrvJ
- rN8VwxQQfctex3U+f+QURE3cf5DmxVA=
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 2gTJ3ThbAjUv for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 16 Mar 2024 19:08:04 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.16;
+ helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org E4C018212A
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E4C018212A
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.16])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id E4C018212A
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 16 Mar 2024 19:08:02 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,11015"; a="5603022"
+X-IronPort-AV: E=Sophos;i="6.07,131,1708416000"; 
+   d="scan'208";a="5603022"
+Received: from orviesa002.jf.intel.com ([10.64.159.142])
+ by orvoesa108.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 16 Mar 2024 12:08:01 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.07,131,1708416000"; d="scan'208";a="43936217"
+Received: from lkp-server01.sh.intel.com (HELO b21307750695) ([10.239.97.150])
+ by orviesa002.jf.intel.com with ESMTP; 16 Mar 2024 12:07:58 -0700
+Received: from kbuild by b21307750695 with local (Exim 4.96)
+ (envelope-from <lkp@intel.com>) id 1rlZNr-000FiF-2r
+ for intel-wired-lan@lists.osuosl.org; Sat, 16 Mar 2024 19:07:55 +0000
+Date: Sun, 17 Mar 2024 03:07:36 +0800
+From: kernel test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <202403170333.YcBGDgO6-lkp@intel.com>
+User-Agent: s-nail v14.9.24
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1710616084; x=1742152084;
+ h=date:from:to:subject:message-id;
+ bh=ovTy4JCqeqTIuYoeurgik9+4oTpKgSLx1Ztjbfs6EHk=;
+ b=fw/0D8ZmZakQWGIhVreLyNr9B3S0oAbLb/4/Gk+vVGebQkElSLy1I3bI
+ xOeKA59HF6d6kD49UWKK1DkvBFK1HbphVBtO2kByaJv3K9e0+JGtLO7Jy
+ /ta/MVSdqgQuuBpBM34+15cbFVOdtBH7WryOa5ro+xNpGBPloln//pPCQ
+ APY0BX55H1+YXSKxHYUDPHMEPDgleOugxDZjXl8lJAKMhetJKF+rHgWKd
+ zf9SP4Oq1gnNO0Ig3Ox0znM9N2oIDBV2KerE4HUE64qLf3COQU56KpHxv
+ PjZmxUBeiZ6OYX6xiNzjoSq+PAkHmZwzpRF8E5xuGrdEmnO/2NFSjijAT
+ w==;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=redhat.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
- header.a=rsa-sha256 header.s=mimecast20190719 header.b=Xsi3Xfek
-Subject: [Intel-wired-lan] [PATCH net v4] i40e: Enforce software interrupt
- during busy-poll exit
+ header.from=intel.com
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=fw/0D8Zm
+Subject: [Intel-wired-lan] [tnguy-next-queue:dev-queue] BUILD SUCCESS
+ 0d17421bc5d8e430617c62ad53fbbb2821a1bd56
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -101,327 +98,184 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: aleksandr.loktionov@intel.com,
- "moderated list:INTEL ETHERNET DRIVERS" <intel-wired-lan@lists.osuosl.org>,
- open list <linux-kernel@vger.kernel.org>, pawel.chmielewski@intel.com,
- Eric Dumazet <edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
- Hugo Ferreira <hferreir@redhat.com>, Jacob Keller <jacob.e.keller@intel.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- "David S. Miller" <davem@davemloft.net>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-As for ice bug fixed by commit b7306b42beaf ("ice: manage interrupts
-during poll exit") followed by commit 23be7075b318 ("ice: fix software
-generating extra interrupts") I'm seeing the similar issue also with
-i40e driver.
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git dev-queue
+branch HEAD: 0d17421bc5d8e430617c62ad53fbbb2821a1bd56  i40e: Fix VF MAC filter removal
 
-In certain situation when busy-loop is enabled together with adaptive
-coalescing, the driver occasionally misses that there are outstanding
-descriptors to clean when exiting busy poll.
+elapsed time: 1203m
 
-Try to catch the remaining work by triggering a software interrupt
-when exiting busy poll. No extra interrupts will be generated when
-busy polling is not used.
+configs tested: 162
+configs skipped: 3
 
-The issue was found when running sockperf ping-pong tcp test with
-adaptive coalescing and busy poll enabled (50 as value busy_pool
-and busy_read sysctl knobs) and results in huge latency spikes
-with more than 100000us.
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
-The fix is inspired from the ice driver and do the following:
-1) During napi poll exit in case of busy-poll (napo_complete_done()
-   returns false) this is recorded to q_vector that we were in busy
-   loop.
-2) Extends i40e_buildreg_itr() to be able to add an enforced software
-   interrupt into built value
-2) In i40e_update_enable_itr() enforces a software interrupt trigger
-   if we are exiting busy poll to catch any pending clean-ups
-3) Reuses unused 3rd ITR (interrupt throttle) index and set it to
-   20K interrupts per second to limit the number of these sw interrupts.
+tested configs:
+alpha                             allnoconfig   gcc  
+alpha                            allyesconfig   gcc  
+alpha                               defconfig   gcc  
+arc                              allmodconfig   gcc  
+arc                               allnoconfig   gcc  
+arc                              allyesconfig   gcc  
+arc                                 defconfig   gcc  
+arc                   randconfig-001-20240316   gcc  
+arc                   randconfig-002-20240316   gcc  
+arm                              allmodconfig   gcc  
+arm                               allnoconfig   clang
+arm                              allyesconfig   gcc  
+arm                        clps711x_defconfig   clang
+arm                                 defconfig   clang
+arm                          exynos_defconfig   clang
+arm                   milbeaut_m10v_defconfig   clang
+arm                            mps2_defconfig   clang
+arm                   randconfig-001-20240316   gcc  
+arm                   randconfig-002-20240316   gcc  
+arm                   randconfig-003-20240316   gcc  
+arm                   randconfig-004-20240316   gcc  
+arm64                            allmodconfig   clang
+arm64                             allnoconfig   gcc  
+arm64                               defconfig   gcc  
+arm64                 randconfig-001-20240316   gcc  
+arm64                 randconfig-002-20240316   clang
+arm64                 randconfig-003-20240316   clang
+arm64                 randconfig-004-20240316   gcc  
+csky                             allmodconfig   gcc  
+csky                              allnoconfig   gcc  
+csky                             allyesconfig   gcc  
+csky                                defconfig   gcc  
+csky                  randconfig-001-20240316   gcc  
+csky                  randconfig-002-20240316   gcc  
+hexagon                          allmodconfig   clang
+hexagon                           allnoconfig   clang
+hexagon                          allyesconfig   clang
+hexagon                             defconfig   clang
+hexagon               randconfig-001-20240316   clang
+hexagon               randconfig-002-20240316   clang
+i386                             allmodconfig   gcc  
+i386                              allnoconfig   gcc  
+i386                             allyesconfig   gcc  
+i386         buildonly-randconfig-001-20240316   clang
+i386         buildonly-randconfig-002-20240316   gcc  
+i386         buildonly-randconfig-003-20240316   gcc  
+i386         buildonly-randconfig-004-20240316   gcc  
+i386         buildonly-randconfig-005-20240316   gcc  
+i386         buildonly-randconfig-006-20240316   gcc  
+i386                                defconfig   clang
+i386                  randconfig-001-20240316   gcc  
+i386                  randconfig-002-20240316   gcc  
+i386                  randconfig-003-20240316   gcc  
+i386                  randconfig-004-20240316   gcc  
+i386                  randconfig-005-20240316   clang
+i386                  randconfig-006-20240316   gcc  
+i386                  randconfig-011-20240316   clang
+i386                  randconfig-012-20240316   clang
+i386                  randconfig-013-20240316   clang
+i386                  randconfig-014-20240316   clang
+i386                  randconfig-015-20240316   clang
+i386                  randconfig-016-20240316   clang
+loongarch                        allmodconfig   gcc  
+loongarch                         allnoconfig   gcc  
+loongarch                        allyesconfig   gcc  
+loongarch                           defconfig   gcc  
+loongarch             randconfig-001-20240316   gcc  
+loongarch             randconfig-002-20240316   gcc  
+m68k                             allmodconfig   gcc  
+m68k                              allnoconfig   gcc  
+m68k                             allyesconfig   gcc  
+m68k                                defconfig   gcc  
+microblaze                       allmodconfig   gcc  
+microblaze                        allnoconfig   gcc  
+microblaze                       allyesconfig   gcc  
+microblaze                          defconfig   gcc  
+mips                             allmodconfig   gcc  
+mips                              allnoconfig   gcc  
+mips                             allyesconfig   gcc  
+nios2                            allmodconfig   gcc  
+nios2                             allnoconfig   gcc  
+nios2                            allyesconfig   gcc  
+nios2                               defconfig   gcc  
+nios2                 randconfig-001-20240316   gcc  
+nios2                 randconfig-002-20240316   gcc  
+openrisc                         allmodconfig   gcc  
+openrisc                          allnoconfig   gcc  
+openrisc                         allyesconfig   gcc  
+openrisc                            defconfig   gcc  
+parisc                           allmodconfig   gcc  
+parisc                            allnoconfig   gcc  
+parisc                           allyesconfig   gcc  
+parisc                              defconfig   gcc  
+parisc                randconfig-001-20240316   gcc  
+parisc                randconfig-002-20240316   gcc  
+parisc64                            defconfig   gcc  
+powerpc                          allmodconfig   gcc  
+powerpc                           allnoconfig   gcc  
+powerpc                          allyesconfig   clang
+powerpc                     kilauea_defconfig   clang
+powerpc                      ppc40x_defconfig   clang
+powerpc               randconfig-001-20240316   clang
+powerpc               randconfig-002-20240316   clang
+powerpc               randconfig-003-20240316   gcc  
+powerpc                     tqm8555_defconfig   clang
+powerpc64             randconfig-001-20240316   gcc  
+powerpc64             randconfig-002-20240316   gcc  
+powerpc64             randconfig-003-20240316   clang
+riscv                            allmodconfig   clang
+riscv                             allnoconfig   gcc  
+riscv                            allyesconfig   clang
+riscv                               defconfig   clang
+riscv                 randconfig-001-20240316   gcc  
+riscv                 randconfig-002-20240316   clang
+s390                             allmodconfig   clang
+s390                              allnoconfig   clang
+s390                             allyesconfig   gcc  
+s390                                defconfig   clang
+s390                  randconfig-001-20240316   clang
+s390                  randconfig-002-20240316   clang
+sh                               allmodconfig   gcc  
+sh                                allnoconfig   gcc  
+sh                               allyesconfig   gcc  
+sh                                  defconfig   gcc  
+sh                    randconfig-001-20240316   gcc  
+sh                    randconfig-002-20240316   gcc  
+sparc                            allmodconfig   gcc  
+sparc                             allnoconfig   gcc  
+sparc                            allyesconfig   gcc  
+sparc                               defconfig   gcc  
+sparc64                          allmodconfig   gcc  
+sparc64                          allyesconfig   gcc  
+sparc64                             defconfig   gcc  
+sparc64               randconfig-001-20240316   gcc  
+sparc64               randconfig-002-20240316   gcc  
+um                               allmodconfig   clang
+um                                allnoconfig   clang
+um                               allyesconfig   gcc  
+um                                  defconfig   clang
+um                             i386_defconfig   gcc  
+um                    randconfig-001-20240316   clang
+um                    randconfig-002-20240316   gcc  
+um                           x86_64_defconfig   clang
+x86_64                            allnoconfig   clang
+x86_64                           allyesconfig   clang
+x86_64       buildonly-randconfig-001-20240316   clang
+x86_64       buildonly-randconfig-006-20240316   clang
+x86_64                              defconfig   gcc  
+x86_64                randconfig-002-20240316   clang
+x86_64                randconfig-003-20240316   clang
+x86_64                randconfig-004-20240316   clang
+x86_64                randconfig-005-20240316   clang
+x86_64                randconfig-011-20240316   clang
+x86_64                randconfig-014-20240316   clang
+x86_64                randconfig-071-20240316   clang
+x86_64                randconfig-075-20240316   clang
+x86_64                          rhel-8.3-rust   clang
+x86_64                               rhel-8.3   gcc  
+xtensa                            allnoconfig   gcc  
+xtensa                           allyesconfig   gcc  
+xtensa                randconfig-001-20240316   gcc  
+xtensa                randconfig-002-20240316   gcc  
 
-Test results
-============
-Prior:
-[root@dell-per640-07 net]# sockperf ping-pong -i 10.9.9.1 --tcp -m 1000 --mps=max -t 120
-sockperf: == version #3.10-no.git ==
-sockperf[CLIENT] send on:sockperf: using recvfrom() to block on socket(s)
-
-[ 0] IP = 10.9.9.1        PORT = 11111 # TCP
-sockperf: Warmup stage (sending a few dummy messages)...
-sockperf: Starting test...
-sockperf: Test end (interrupted by timer)
-sockperf: Test ended
-sockperf: [Total Run] RunTime=119.999 sec; Warm up time=400 msec; SentMessages=2438563; ReceivedMessages=2438562
-sockperf: ========= Printing statistics for Server No: 0
-sockperf: [Valid Duration] RunTime=119.549 sec; SentMessages=2429473; ReceivedMessages=2429473
-sockperf: ====> avg-latency=24.571 (std-dev=93.297, mean-ad=4.904, median-ad=1.510, siqr=1.063, cv=3.797, std-error=0.060, 99.0% ci=[24.417, 24.725])
-sockperf: # dropped messages = 0; # duplicated messages = 0; # out-of-order messages = 0
-sockperf: Summary: Latency is 24.571 usec
-sockperf: Total 2429473 observations; each percentile contains 24294.73 observations
-sockperf: ---> <MAX> observation = 103294.331
-sockperf: ---> percentile 99.999 =   45.633
-sockperf: ---> percentile 99.990 =   37.013
-sockperf: ---> percentile 99.900 =   35.910
-sockperf: ---> percentile 99.000 =   33.390
-sockperf: ---> percentile 90.000 =   28.626
-sockperf: ---> percentile 75.000 =   27.741
-sockperf: ---> percentile 50.000 =   26.743
-sockperf: ---> percentile 25.000 =   25.614
-sockperf: ---> <MIN> observation =   12.220
-
-After:
-[root@dell-per640-07 net]# sockperf ping-pong -i 10.9.9.1 --tcp -m 1000 --mps=max -t 120
-sockperf: == version #3.10-no.git ==
-sockperf[CLIENT] send on:sockperf: using recvfrom() to block on socket(s)
-
-[ 0] IP = 10.9.9.1        PORT = 11111 # TCP
-sockperf: Warmup stage (sending a few dummy messages)...
-sockperf: Starting test...
-sockperf: Test end (interrupted by timer)
-sockperf: Test ended
-sockperf: [Total Run] RunTime=119.999 sec; Warm up time=400 msec; SentMessages=2400055; ReceivedMessages=2400054
-sockperf: ========= Printing statistics for Server No: 0
-sockperf: [Valid Duration] RunTime=119.549 sec; SentMessages=2391186; ReceivedMessages=2391186
-sockperf: ====> avg-latency=24.965 (std-dev=5.934, mean-ad=4.642, median-ad=1.485, siqr=1.067, cv=0.238, std-error=0.004, 99.0% ci=[24.955, 24.975])
-sockperf: # dropped messages = 0; # duplicated messages = 0; # out-of-order messages = 0
-sockperf: Summary: Latency is 24.965 usec
-sockperf: Total 2391186 observations; each percentile contains 23911.86 observations
-sockperf: ---> <MAX> observation =  195.841
-sockperf: ---> percentile 99.999 =   45.026
-sockperf: ---> percentile 99.990 =   39.009
-sockperf: ---> percentile 99.900 =   35.922
-sockperf: ---> percentile 99.000 =   33.482
-sockperf: ---> percentile 90.000 =   28.902
-sockperf: ---> percentile 75.000 =   27.821
-sockperf: ---> percentile 50.000 =   26.860
-sockperf: ---> percentile 25.000 =   25.685
-sockperf: ---> <MIN> observation =   12.277
-
-Fixes: 0bcd952feec7 ("ethernet/intel: consolidate NAPI and NAPI exit")
-Reported-by: Hugo Ferreira <hferreir@redhat.com>
-Reviewed-by: Michal Schmidt <mschmidt@redhat.com>
-Signed-off-by: Ivan Vecera <ivecera@redhat.com>
----
-Changes since v3
- - fixed kdoc warnings (thx Tony)
-Changes since v2
- - eliminated two writes in hot-path (thx Jesse)
-Changes since v1
- - added Fixes: tag
-
- drivers/net/ethernet/intel/i40e/i40e.h        |  1 +
- drivers/net/ethernet/intel/i40e/i40e_main.c   |  6 ++
- .../net/ethernet/intel/i40e/i40e_register.h   |  3 +
- drivers/net/ethernet/intel/i40e/i40e_txrx.c   | 82 ++++++++++++++-----
- drivers/net/ethernet/intel/i40e/i40e_txrx.h   |  1 +
- 5 files changed, 72 insertions(+), 21 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/i40e/i40e.h b/drivers/net/ethernet/intel/i40e/i40e.h
-index ba24f3fa92c3..2fbabcdb5bb5 100644
---- a/drivers/net/ethernet/intel/i40e/i40e.h
-+++ b/drivers/net/ethernet/intel/i40e/i40e.h
-@@ -955,6 +955,7 @@ struct i40e_q_vector {
- 	struct rcu_head rcu;	/* to avoid race with update stats on free */
- 	char name[I40E_INT_NAME_STR_LEN];
- 	bool arm_wb_state;
-+	bool in_busy_poll;
- 	int irq_num;		/* IRQ assigned to this q_vector */
- } ____cacheline_internodealigned_in_smp;
- 
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
-index 83c020ae9625..70ead95af2c1 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_main.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
-@@ -3922,6 +3922,12 @@ static void i40e_vsi_configure_msix(struct i40e_vsi *vsi)
- 		     q_vector->tx.target_itr >> 1);
- 		q_vector->tx.current_itr = q_vector->tx.target_itr;
- 
-+		/* Set ITR for software interrupts triggered after exiting
-+		 * busy-loop polling.
-+		 */
-+		wr32(hw, I40E_PFINT_ITRN(I40E_SW_ITR, vector - 1),
-+		     I40E_ITR_20K);
-+
- 		wr32(hw, I40E_PFINT_RATEN(vector - 1),
- 		     i40e_intrl_usec_to_reg(vsi->int_rate_limit));
- 
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_register.h b/drivers/net/ethernet/intel/i40e/i40e_register.h
-index 14ab642cafdb..432afbb64201 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_register.h
-+++ b/drivers/net/ethernet/intel/i40e/i40e_register.h
-@@ -333,8 +333,11 @@
- #define I40E_PFINT_DYN_CTLN_ITR_INDX_SHIFT 3
- #define I40E_PFINT_DYN_CTLN_ITR_INDX_MASK I40E_MASK(0x3, I40E_PFINT_DYN_CTLN_ITR_INDX_SHIFT)
- #define I40E_PFINT_DYN_CTLN_INTERVAL_SHIFT 5
-+#define I40E_PFINT_DYN_CTLN_INTERVAL_MASK I40E_MASK(0xFFF, I40E_PFINT_DYN_CTLN_INTERVAL_SHIFT)
- #define I40E_PFINT_DYN_CTLN_SW_ITR_INDX_ENA_SHIFT 24
- #define I40E_PFINT_DYN_CTLN_SW_ITR_INDX_ENA_MASK I40E_MASK(0x1, I40E_PFINT_DYN_CTLN_SW_ITR_INDX_ENA_SHIFT)
-+#define I40E_PFINT_DYN_CTLN_SW_ITR_INDX_SHIFT 25
-+#define I40E_PFINT_DYN_CTLN_SW_ITR_INDX_MASK I40E_MASK(0x3, I40E_PFINT_DYN_CTLN_SW_ITR_INDX_SHIFT)
- #define I40E_PFINT_ICR0 0x00038780 /* Reset: CORER */
- #define I40E_PFINT_ICR0_INTEVENT_SHIFT 0
- #define I40E_PFINT_ICR0_INTEVENT_MASK I40E_MASK(0x1, I40E_PFINT_ICR0_INTEVENT_SHIFT)
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_txrx.c b/drivers/net/ethernet/intel/i40e/i40e_txrx.c
-index 0d7177083708..1a12b732818e 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_txrx.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_txrx.c
-@@ -2630,7 +2630,22 @@ static int i40e_clean_rx_irq(struct i40e_ring *rx_ring, int budget,
- 	return failure ? budget : (int)total_rx_packets;
- }
- 
--static inline u32 i40e_buildreg_itr(const int type, u16 itr)
-+/**
-+ * i40e_buildreg_itr - build a value for writing to I40E_PFINT_DYN_CTLN register
-+ * @itr_idx: interrupt throttling index
-+ * @interval: interrupt throttling interval value in usecs
-+ * @force_swint: force software interrupt
-+ *
-+ * The function builds a value for I40E_PFINT_DYN_CTLN register that
-+ * is used to update interrupt throttling interval for specified ITR index
-+ * and optionally enforces a software interrupt. If the @itr_idx is equal
-+ * to I40E_ITR_NONE then no interval change is applied and only @force_swint
-+ * parameter is taken into account. If the interval change and enforced
-+ * software interrupt are not requested then the built value just enables
-+ * appropriate vector interrupt.
-+ **/
-+static u32 i40e_buildreg_itr(enum i40e_dyn_idx itr_idx, u16 interval,
-+			     bool force_swint)
- {
- 	u32 val;
- 
-@@ -2644,23 +2659,33 @@ static inline u32 i40e_buildreg_itr(const int type, u16 itr)
- 	 * an event in the PBA anyway so we need to rely on the automask
- 	 * to hold pending events for us until the interrupt is re-enabled
- 	 *
--	 * The itr value is reported in microseconds, and the register
--	 * value is recorded in 2 microsecond units. For this reason we
--	 * only need to shift by the interval shift - 1 instead of the
--	 * full value.
-+	 * We have to shift the given value as it is reported in microseconds
-+	 * and the register value is recorded in 2 microsecond units.
- 	 */
--	itr &= I40E_ITR_MASK;
-+	interval >>= 1;
- 
-+	/* 1. Enable vector interrupt
-+	 * 2. Update the interval for the specified ITR index
-+	 *    (I40E_ITR_NONE in the register is used to indicate that
-+	 *     no interval update is requested)
-+	 */
- 	val = I40E_PFINT_DYN_CTLN_INTENA_MASK |
--	      (type << I40E_PFINT_DYN_CTLN_ITR_INDX_SHIFT) |
--	      (itr << (I40E_PFINT_DYN_CTLN_INTERVAL_SHIFT - 1));
-+	      FIELD_PREP(I40E_PFINT_DYN_CTLN_ITR_INDX_MASK, itr_idx) |
-+	      FIELD_PREP(I40E_PFINT_DYN_CTLN_INTERVAL_MASK, interval);
-+
-+	/* 3. Enforce software interrupt trigger if requested
-+	 *    (These software interrupts rate is limited by ITR2 that is
-+	 *     set to 20K interrupts per second)
-+	 */
-+	if (force_swint)
-+		val |= I40E_PFINT_DYN_CTLN_SWINT_TRIG_MASK |
-+		       I40E_PFINT_DYN_CTLN_SW_ITR_INDX_ENA_MASK |
-+		       FIELD_PREP(I40E_PFINT_DYN_CTLN_SW_ITR_INDX_MASK,
-+				  I40E_SW_ITR);
- 
- 	return val;
- }
- 
--/* a small macro to shorten up some long lines */
--#define INTREG I40E_PFINT_DYN_CTLN
--
- /* The act of updating the ITR will cause it to immediately trigger. In order
-  * to prevent this from throwing off adaptive update statistics we defer the
-  * update so that it can only happen so often. So after either Tx or Rx are
-@@ -2679,8 +2704,10 @@ static inline u32 i40e_buildreg_itr(const int type, u16 itr)
- static inline void i40e_update_enable_itr(struct i40e_vsi *vsi,
- 					  struct i40e_q_vector *q_vector)
- {
-+	enum i40e_dyn_idx itr_idx = I40E_ITR_NONE;
- 	struct i40e_hw *hw = &vsi->back->hw;
--	u32 intval;
-+	u16 interval = 0;
-+	u32 itr_val;
- 
- 	/* If we don't have MSIX, then we only need to re-enable icr0 */
- 	if (!test_bit(I40E_FLAG_MSIX_ENA, vsi->back->flags)) {
-@@ -2702,8 +2729,8 @@ static inline void i40e_update_enable_itr(struct i40e_vsi *vsi,
- 	 */
- 	if (q_vector->rx.target_itr < q_vector->rx.current_itr) {
- 		/* Rx ITR needs to be reduced, this is highest priority */
--		intval = i40e_buildreg_itr(I40E_RX_ITR,
--					   q_vector->rx.target_itr);
-+		itr_idx = I40E_RX_ITR;
-+		interval = q_vector->rx.target_itr;
- 		q_vector->rx.current_itr = q_vector->rx.target_itr;
- 		q_vector->itr_countdown = ITR_COUNTDOWN_START;
- 	} else if ((q_vector->tx.target_itr < q_vector->tx.current_itr) ||
-@@ -2712,25 +2739,36 @@ static inline void i40e_update_enable_itr(struct i40e_vsi *vsi,
- 		/* Tx ITR needs to be reduced, this is second priority
- 		 * Tx ITR needs to be increased more than Rx, fourth priority
- 		 */
--		intval = i40e_buildreg_itr(I40E_TX_ITR,
--					   q_vector->tx.target_itr);
-+		itr_idx = I40E_TX_ITR;
-+		interval = q_vector->tx.target_itr;
- 		q_vector->tx.current_itr = q_vector->tx.target_itr;
- 		q_vector->itr_countdown = ITR_COUNTDOWN_START;
- 	} else if (q_vector->rx.current_itr != q_vector->rx.target_itr) {
- 		/* Rx ITR needs to be increased, third priority */
--		intval = i40e_buildreg_itr(I40E_RX_ITR,
--					   q_vector->rx.target_itr);
-+		itr_idx = I40E_RX_ITR;
-+		interval = q_vector->rx.target_itr;
- 		q_vector->rx.current_itr = q_vector->rx.target_itr;
- 		q_vector->itr_countdown = ITR_COUNTDOWN_START;
- 	} else {
- 		/* No ITR update, lowest priority */
--		intval = i40e_buildreg_itr(I40E_ITR_NONE, 0);
- 		if (q_vector->itr_countdown)
- 			q_vector->itr_countdown--;
- 	}
- 
--	if (!test_bit(__I40E_VSI_DOWN, vsi->state))
--		wr32(hw, INTREG(q_vector->reg_idx), intval);
-+	/* Do not update interrupt control register if VSI is down */
-+	if (test_bit(__I40E_VSI_DOWN, vsi->state))
-+		return;
-+
-+	/* Update ITR interval if necessary and enforce software interrupt
-+	 * if we are exiting busy poll.
-+	 */
-+	if (q_vector->in_busy_poll) {
-+		itr_val = i40e_buildreg_itr(itr_idx, interval, true);
-+		q_vector->in_busy_poll = false;
-+	} else {
-+		itr_val = i40e_buildreg_itr(itr_idx, interval, false);
-+	}
-+	wr32(hw, I40E_PFINT_DYN_CTLN(q_vector->reg_idx), itr_val);
- }
- 
- /**
-@@ -2845,6 +2883,8 @@ int i40e_napi_poll(struct napi_struct *napi, int budget)
- 	 */
- 	if (likely(napi_complete_done(napi, work_done)))
- 		i40e_update_enable_itr(vsi, q_vector);
-+	else
-+		q_vector->in_busy_poll = true;
- 
- 	return min(work_done, budget - 1);
- }
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_txrx.h b/drivers/net/ethernet/intel/i40e/i40e_txrx.h
-index abf15067eb5d..2cdc7de6301c 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_txrx.h
-+++ b/drivers/net/ethernet/intel/i40e/i40e_txrx.h
-@@ -68,6 +68,7 @@ enum i40e_dyn_idx {
- /* these are indexes into ITRN registers */
- #define I40E_RX_ITR    I40E_IDX_ITR0
- #define I40E_TX_ITR    I40E_IDX_ITR1
-+#define I40E_SW_ITR    I40E_IDX_ITR2
- 
- /* Supported RSS offloads */
- #define I40E_DEFAULT_RSS_HENA ( \
 -- 
-2.43.0
-
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
