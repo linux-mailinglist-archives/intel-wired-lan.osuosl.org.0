@@ -1,77 +1,87 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 946E187EF21
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 18 Mar 2024 18:44:55 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7EAE987EF26
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 18 Mar 2024 18:45:19 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 6A98D81372;
-	Mon, 18 Mar 2024 17:44:52 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 336BB813CC;
+	Mon, 18 Mar 2024 17:45:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id So9JiuP8_c5f; Mon, 18 Mar 2024 17:44:51 +0000 (UTC)
+	with ESMTP id RfkumcxxtifN; Mon, 18 Mar 2024 17:45:17 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B4B6B812CC
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1DFE78130A
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1710783891;
-	bh=GBaf98OQB8zlBLxhUGiBk0xneVmrhvL5HTQbu/LQKAI=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
+	s=default; t=1710783917;
+	bh=SDubdJQb9S5xrG6JQ6lzVQjoThoj9QRF2ZFHFATteFg=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=p03F0jwrJauny1u8d5lcOc2uJg11Ifj3XVoob+ueVc6Ocm35pqfCp7LzE76P34bGq
-	 goA3xBZM2YABub5C1ln5C0/2OjjyWIPnCFu2huS5mPFtVTBMmAtLM+9Rh/ERdnoSRr
-	 u27elpAXYwuMuC3xYGhuUupqt4pzqqMKDCbqphRUfBrxWcblY1X7/4dyRYKIOwji0y
-	 v5Ws7RkeNr2a5KY5vuHoi4UjmIcD0WxREO4ySlh4euuIrJQz2SutGS2DeildB+yMLS
-	 qZusTLlu/FPKwAQUJ7mk3d9DpdSx1pIE2xE9aDTMk87G0+FAUFcLDzOUKekilE5kIQ
-	 i9L4hxxSbqriw==
+	b=KeTdJEQ9SzBdcv7XjkkMiqbBwSAWb9uZALieMK2vKIkRqQHqRndbxpTEzPYW9V2OT
+	 WVWBaqyeR4McD5O8amp3jzpz77YTj33spqxBk1JUcWY57haAaVMB6zfYRuusBaYSgi
+	 oOK3V9LoHFCHFqNIr68ICZmtOTUv6tHX6B1jCfNsSnBcT6rp7Jqk0X6fmjHY3D2lUd
+	 alVqVxqyHztk5z9dKpL45tURRfFJKA2krmu1LMaHQs+lbU6WQcNDvzrElcqMfpSxlj
+	 v31HEJs7hcakr/RPkvVLLWoIB17oCiDTQON/OCIkGw+Kbg8j+VP3uPgGnsuUgci9V2
+	 u4XH8P8yWAp7g==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id B4B6B812CC;
-	Mon, 18 Mar 2024 17:44:51 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 1DFE78130A;
+	Mon, 18 Mar 2024 17:45:17 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id A3DEA1BF377
- for <intel-wired-lan@lists.osuosl.org>; Mon, 18 Mar 2024 17:44:49 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 47B151BF377
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 18 Mar 2024 17:45:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 9CFCE812CC
- for <intel-wired-lan@lists.osuosl.org>; Mon, 18 Mar 2024 17:44:49 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 4173B40510
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 18 Mar 2024 17:45:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ZId5nW7pDQtn for <intel-wired-lan@lists.osuosl.org>;
- Mon, 18 Mar 2024 17:44:48 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=141.14.17.11;
- helo=mx3.molgen.mpg.de; envelope-from=pmenzel@molgen.mpg.de;
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id TmOinKNPyY3H for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 18 Mar 2024 17:45:14 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=145.40.73.55;
+ helo=sin.source.kernel.org; envelope-from=horms@kernel.org;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 6343E80C0B
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6343E80C0B
-Received: from mx3.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 6343E80C0B
- for <intel-wired-lan@lists.osuosl.org>; Mon, 18 Mar 2024 17:44:46 +0000 (UTC)
-Received: from [192.168.178.112] (p57b378ee.dip0.t-ipconnect.de
- [87.179.120.238])
- (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested) (Authenticated sender: pmenzel)
- by mx.molgen.mpg.de (Postfix) with ESMTPSA id C0F3C61E5FE01;
- Mon, 18 Mar 2024 18:44:29 +0100 (CET)
-Message-ID: <0021db2e-5b15-457c-af35-fb1e1ac7cb2b@molgen.mpg.de>
-Date: Mon, 18 Mar 2024 18:44:28 +0100
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org B568240176
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B568240176
+Received: from sin.source.kernel.org (sin.source.kernel.org [145.40.73.55])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id B568240176
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 18 Mar 2024 17:45:13 +0000 (UTC)
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by sin.source.kernel.org (Postfix) with ESMTP id 55314CE0B00;
+ Mon, 18 Mar 2024 17:45:09 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5570FC433C7;
+ Mon, 18 Mar 2024 17:45:06 +0000 (UTC)
+Date: Mon, 18 Mar 2024 17:45:03 +0000
+From: Simon Horman <horms@kernel.org>
+To: Erwan Velu <erwanaliasr1@gmail.com>
+Message-ID: <20240318174503.GE1623@kernel.org>
+References: <20240313090719.33627-2-e.velu@criteo.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Content-Language: en-US
-To: Paul Greenwalt <paul.greenwalt@intel.com>
-References: <20240318162958.991829-1-paul.greenwalt@intel.com>
-From: Paul Menzel <pmenzel@molgen.mpg.de>
-In-Reply-To: <20240318162958.991829-1-paul.greenwalt@intel.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=molgen.mpg.de
-Subject: Re: [Intel-wired-lan] [PATCH iwl-net v1] ice: Fix package download
- algorithm
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240313090719.33627-2-e.velu@criteo.com>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=kernel.org; s=k20201202; t=1710783908;
+ bh=Rv/2CA5wPLokC7VCqSey3DSFL6DXzXxuAMNj1og1Kh8=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=WWaNDbWTEAAmKf9IeOXu65Mq96lSZxdoIzl57Yufwp7sGduxsN9HEXIrYzX7xVFRB
+ Hy1mtA1Are4jKEG2IACOEirgKrPxv9Zs1dp7fdnMC0bfOtcyEQQneb+Sq2IR+LNeuJ
+ Qm4PaSYyJSYzEW1PyUQ3GA1oW4uCUo9cP2Kl9ZFUVbePgoZjMoBtm4yIL6lG3iI5Y6
+ Ap2yMBGMzoB+Ep1+VDrr0mYHjUf9hszzwqUb9eC2syA33HpPQrMK2u0+nfb9oVk6BT
+ M0dwO4pTylvIrS88SdlZVkZ9B3ZjCplzmiIWt/w24KRM8YTMndNRvb32gsfsIG37Lt
+ rRb95s82iaBfg==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=kernel.org
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
+ header.s=k20201202 header.b=WWaNDbWT
+Subject: Re: [Intel-wired-lan] [PATCH v4 iwl-net] i40e: Prevent setting MTU
+ if greater than MFS
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,67 +94,100 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Dan Nowlin <dan.nowlin@intel.com>, intel-wired-lan@lists.osuosl.org,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>
+Cc: Erwan Velu <e.velu@criteo.com>, linux-kernel@vger.kernel.org,
+ Eric Dumazet <edumazet@google.com>, netdev@vger.kernel.org,
+ Tony Nguyen <anthony.l.nguyen@intel.com>, intel-wired-lan@lists.osuosl.org,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ "David S. Miller" <davem@davemloft.net>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Dear Paul, dear Dan,
-
-
-Thank you for the patch.
-
-Am 18.03.24 um 17:29 schrieb Paul Greenwalt:
-> From: Dan Nowlin <dan.nowlin@intel.com>
+On Wed, Mar 13, 2024 at 10:07:16AM +0100, Erwan Velu wrote:
+> Commit 6871a7de705 ("[intelxl] Use admin queue to set port MAC address
+> and maximum frame size") from iPXE project set the MFS to 0x600 = 1536.
+> See https://github.com/ipxe/ipxe/commit/6871a7de705
 > 
-> Previously, the code would assume that only "Modular Signature Segment"
-> existed. Given a package with both a "Reference Signature Segment" and a
-> "Modular Signature Segment" the download would not have been successful
-> because an incorrect sequence of buffers would be sent to the firmware.
+> At boot time the i40e driver complains about it with
+> the following message but continues.
 > 
-> Update download flow to detect a "Reference Signature Segment" and to
-> only download the buffers in the signature segment in this case, and to
-> skip downloading any buffers from the configuration segment.
+> 	MFS for port 1 has been set below the default: 600
+> 
+> If the MTU size is increased, the driver accepts it but large packets will
+> not be processed by the firmware generating tx_errors. The issue is pretty
+> silent for users. i.e doing TCP in such context will generates lots of
+> retransmissions until the proper window size (below 1500) will be used.
+> 
+> To fix this case, it would have been ideal to increase the MFS,
+> via i40e_aqc_opc_set_mac_config, incoming patch will take care of it.
+> 
+> At least, commit prevents setting up an MTU greater than the current MFS.
+> It will avoid being in the position of having an MTU set to 9000 on the
+> netdev with a firmware refusing packets larger than 1536.
+> 
+> A typical trace looks like:
+> [  377.548696] i40e 0000:5d:00.0 eno5: Error changing mtu to 9000, Max is 1500. MFS is too small.
+> 
 
-Could you please document the test setup (with firmware version) so 
-people can reproduce the error and fix?
+Hi Erwan, all,
 
-> Fixes: 3cbdb0343022 ("ice: Add support for E830 DDP package segment")
-> Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-> Signed-off-by: Dan Nowlin <dan.nowlin@intel.com>
-> Signed-off-by: Paul Greenwalt <paul.greenwalt@intel.com>
+As a fix, I think this patch warrants a fixes tag.
+Perhaps this one is appropriate?
+
+Fixes: 41c445ff0f48 ("i40e: main driver core")
+
+> Signed-off-by: Erwan Velu <e.velu@criteo.com>
 > ---
->   drivers/net/ethernet/intel/ice/ice_ddp.c | 8 ++++----
->   1 file changed, 4 insertions(+), 4 deletions(-)
+>  drivers/net/ethernet/intel/i40e/i40e_main.c | 10 +++++++++-
+>  1 file changed, 9 insertions(+), 1 deletion(-)
 > 
-> diff --git a/drivers/net/ethernet/intel/ice/ice_ddp.c b/drivers/net/ethernet/intel/ice/ice_ddp.c
-> index 8b7504a9df31..90b9e28ddba9 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_ddp.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_ddp.c
-> @@ -1424,14 +1424,14 @@ ice_dwnld_sign_and_cfg_segs(struct ice_hw *hw, struct ice_pkg_hdr *pkg_hdr,
->   		goto exit;
->   	}
->   
-> -	conf_idx = le32_to_cpu(seg->signed_seg_idx);
-> -	start = le32_to_cpu(seg->signed_buf_start);
->   	count = le32_to_cpu(seg->signed_buf_count);
-> -
->   	state = ice_download_pkg_sig_seg(hw, seg);
-> -	if (state)
-> +	if (state || !count)
->   		goto exit;
->   
-> +	conf_idx = le32_to_cpu(seg->signed_seg_idx);
-> +	start = le32_to_cpu(seg->signed_buf_start);
+> diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
+> index f86578857e8a..85ecf2f3de18 100644
+> --- a/drivers/net/ethernet/intel/i40e/i40e_main.c
+> +++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
+> @@ -2946,7 +2946,7 @@ static int i40e_change_mtu(struct net_device *netdev, int new_mtu)
+>  	struct i40e_netdev_priv *np = netdev_priv(netdev);
+>  	struct i40e_vsi *vsi = np->vsi;
+>  	struct i40e_pf *pf = vsi->back;
+> -	int frame_size;
+> +	int frame_size, mfs, max_mtu;
+>  
+>  	frame_size = i40e_max_vsi_frame_size(vsi, vsi->xdp_prog);
+>  	if (new_mtu > frame_size - I40E_PACKET_HDR_PAD) {
+
+I am fine with this patch, so please take what follows as a suggestion
+for improvement, possibly as a follow-up. Not as a hard requirement from
+my side.
+
+The part of this function between the two hunks of this patch is:
+
+		netdev_err(netdev, "Error changing mtu to %d, Max is %d\n",
+			   new_mtu, frame_size - I40E_PACKET_HDR_PAD);
+
+My reading is that with this patch two different limits are
+checked wrt maximum MTU size:
+
+1. A VSI level limit, which relates to RX buffer size
+2. A PHY level limit that relates to the MFS
+
+That seems fine to me. But the log message for 1 (above) does
+not seem particularly informative wrt which limit has been exceeded.
+
+> @@ -2955,6 +2955,14 @@ static int i40e_change_mtu(struct net_device *netdev, int new_mtu)
+>  		return -EINVAL;
+>  	}
+>  
+> +	mfs = pf->hw.phy.link_info.max_frame_size;
+> +	max_mtu = mfs - I40E_PACKET_HDR_PAD;
+> +	if (new_mtu > max_mtu) {
+> +		netdev_err(netdev, "Error changing mtu to %d, Max is %d. MFS is too small.\n",
+> +			   new_mtu, max_mtu);
+> +		return -EINVAL;
+> +	}
 > +
->   	state = ice_download_pkg_config_seg(hw, pkg_hdr, conf_idx, start,
->   					    count);
-
-Sorry, just reading the diff, it’s not clear to me why skipping is 
-correct. Isn’t now nothing read, if the Modular and Reference Signature 
-Segment exist? Maybe comments would be nice.
-
-
-Kind regards,
-
-Paul
+>  	netdev_dbg(netdev, "changing MTU from %d to %d\n",
+>  		   netdev->mtu, new_mtu);
+>  	netdev->mtu = new_mtu;
+> -- 
+> 2.44.0
+> 
+> 
