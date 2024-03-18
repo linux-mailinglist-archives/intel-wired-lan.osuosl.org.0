@@ -1,87 +1,97 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 702E587F006
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 18 Mar 2024 19:56:12 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id A84E887F3DB
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 19 Mar 2024 00:15:32 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id C31EB40AD7;
-	Mon, 18 Mar 2024 18:56:10 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 19D9F40B26;
+	Mon, 18 Mar 2024 23:15:31 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 29zy7g7Ik4QV; Mon, 18 Mar 2024 18:56:10 +0000 (UTC)
+	with ESMTP id k4oTXPwrfAix; Mon, 18 Mar 2024 23:15:29 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 0CE0340AC3
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 4AFD840B17
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1710788170;
-	bh=duuddDut5vlrYRvIm1t6aLVZyhCGlTS0L2ycdkckqvg=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1710803729;
+	bh=nXMR1FCsrUhKFpyVvzZjuepPGDVSJhviOw6VBxNUnww=;
+	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=pbg7j44njgiEAQkBJk2Ig0sehrFzDmrpodctmt74MY31DK3cOabb1H66sDHLvqRpO
-	 nM0i7ue+zjcA1UvTPAFPtXSZBHqYaoEZzRXqX+z6t5uhQGGdu/C+pZur+KTJY1y6pY
-	 BoF2KoP9KZAZQaSzRbZfYZ66jXYz4XxiQLIVkaISYWicjgFRKE6HPCxQsIcRiLKvEv
-	 awf8cqKL4b5oIKmor06l8bU/CEe4M+qh3IyrOzLti4TfcY7AR1Spx76vjnIlWREgDo
-	 ZzacQE32Rt7Nf0PhGtIngq3Zmnsum/kVrTQ+hIJ/s/06Z5OIwijvGhlIghqfDu5Fuo
-	 0aWuxSsHDAM6A==
+	 From;
+	b=JdeicVhDpiv7WaFaY942W8iRjDh6gY40x8fRKonj4YNzt/hMva/FmD7/JENYT2ITP
+	 INnZj+oncDeZA/EhGtRbsMEIXf+hgNssgiZNrkQnkqOINdxgxYGCE2k/Rs/az1BZih
+	 cA4/OSl484CiyxllgCVHlU48mhDsFpyi8hCUfYlkYKBjGwvrkMaPnbZip/gHnXuFSd
+	 bBp2MVseBV7XF34WOkpfC8X+Xesy7q/w/3PHes4tTcLyCL8u8TXMs9Dgy4JYaDtamt
+	 vMYcxn4i75QUQA8Qs2US2MkTV7hi4RTEiM+cHY/lhdaS7WscIL2cnO25RCoOBhHnVQ
+	 cMHBRSy+JTdhQ==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 0CE0340AC3;
-	Mon, 18 Mar 2024 18:56:10 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
+	by smtp2.osuosl.org (Postfix) with ESMTP id 4AFD840B17;
+	Mon, 18 Mar 2024 23:15:29 +0000 (UTC)
+X-Original-To: intel-wired-lan@osuosl.org
+Delivered-To: intel-wired-lan@osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 87E2E1BF2EC
- for <intel-wired-lan@lists.osuosl.org>; Mon, 18 Mar 2024 18:56:07 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 35D9C1BF2C1
+ for <intel-wired-lan@osuosl.org>; Mon, 18 Mar 2024 19:06:25 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 80D01402EF
- for <intel-wired-lan@lists.osuosl.org>; Mon, 18 Mar 2024 18:56:07 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 20E7D404D9
+ for <intel-wired-lan@osuosl.org>; Mon, 18 Mar 2024 19:06:25 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Oe5Z_4BPflvT for <intel-wired-lan@lists.osuosl.org>;
- Mon, 18 Mar 2024 18:56:05 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=139.178.84.217;
- helo=dfw.source.kernel.org; envelope-from=horms@kernel.org;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 28B41402D8
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 28B41402D8
-Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 28B41402D8
- for <intel-wired-lan@lists.osuosl.org>; Mon, 18 Mar 2024 18:56:04 +0000 (UTC)
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by dfw.source.kernel.org (Postfix) with ESMTP id B5CF860C6F;
- Mon, 18 Mar 2024 18:56:03 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4F01EC433F1;
- Mon, 18 Mar 2024 18:56:02 +0000 (UTC)
-Date: Mon, 18 Mar 2024 18:55:59 +0000
-From: Simon Horman <horms@kernel.org>
-To: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-Message-ID: <20240318185559.GF1623@kernel.org>
-References: <20240312105259.2450-1-michal.swiatkowski@linux.intel.com>
+ with ESMTP id 26x0BrhlQoty for <intel-wired-lan@osuosl.org>;
+ Mon, 18 Mar 2024 19:06:23 +0000 (UTC)
+X-Greylist: delayed 408 seconds by postgrey-1.37 at util1.osuosl.org;
+ Mon, 18 Mar 2024 19:06:23 UTC
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 5E7614042F
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5E7614042F
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2a02:6b8:c0e:500:1:45:d181:d502; helo=forward502a.mail.yandex.net;
+ envelope-from=me@0upti.me; receiver=<UNKNOWN> 
+Received: from forward502a.mail.yandex.net (forward502a.mail.yandex.net
+ [IPv6:2a02:6b8:c0e:500:1:45:d181:d502])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 5E7614042F
+ for <intel-wired-lan@osuosl.org>; Mon, 18 Mar 2024 19:06:22 +0000 (UTC)
+Received: from mail-nwsmtp-smtp-production-main-39.vla.yp-c.yandex.net
+ (mail-nwsmtp-smtp-production-main-39.vla.yp-c.yandex.net
+ [IPv6:2a02:6b8:c0d:1c00:0:640:7760:0])
+ by forward502a.mail.yandex.net (Yandex) with ESMTPS id B283860FD5
+ for <intel-wired-lan@osuosl.org>; Mon, 18 Mar 2024 21:59:30 +0300 (MSK)
+Received: by mail-nwsmtp-smtp-production-main-39.vla.yp-c.yandex.net
+ (smtp/Yandex) with ESMTPSA id TxIUs2BIZiE0-pGRABrCg; 
+ Mon, 18 Mar 2024 21:59:30 +0300
+X-Yandex-Fwd: 1
+Message-ID: <5f3a02e1-4311-4a94-a5ae-d93c1f8c8370@0upti.me>
+Date: Mon, 18 Mar 2024 21:59:30 +0300
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20240312105259.2450-1-michal.swiatkowski@linux.intel.com>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1710788163;
- bh=kYvnPw14h8YwaEiRVbmaKUb01aCbhWa/d3miwMevjjY=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=PDmCrTskdIiTzZR1A9vrrHmKD2qUtg/MwBGgCcND7gvMiXbKsNPRDajX5L5J+Evvj
- c4NQDzAc1rOzd4sxeYQYX64MIl3ARqhxyMOcBh3TCK297FKAn7lr4O3LU2vNzIzS19
- CaBjqT8EEW6+0Ow7XxrcFb7Wa1ayZjRs82dsO6Kp3GXjoxQyY4LME+iUvdeal5Y9ae
- nd4gvC0kJtAA3qMUUXJ+XxEISdG1yejZCPUPjcmFedxmfqblQQfgmvVVeiM0c3wVut
- N0/8N8gEH54/3O+bsya6N+2rdYfuXSX9cgQ+dqrJf9PjdnKNbJqmpJU780Ui+BgKJI
- 06QYZowBGDGzQ==
+User-Agent: Mozilla Thunderbird
+Content-Language: en-US
+To: intel-wired-lan@osuosl.org
+References: <3179622f-7090-4a57-98ba-9042809a0d2a@its-lehmann.de>
+ <9cf005c3-913f-47e2-a354-cba2ce968c48@its-lehmann.de>
+From: Ilya K <me@0upti.me>
+In-Reply-To: <9cf005c3-913f-47e2-a354-cba2ce968c48@its-lehmann.de>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+X-Mailman-Approved-At: Mon, 18 Mar 2024 23:15:27 +0000
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=0upti.me; s=mail; 
+ t=1710788370; bh=nXMR1FCsrUhKFpyVvzZjuepPGDVSJhviOw6VBxNUnww=;
+ h=In-Reply-To:From:Date:References:To:Subject:Message-ID;
+ b=nhhkJbY79x5jW1cqlceFJADmnMN/c3RCJk7P7j779SItYPzyilno+WvQM9HHBJ/nE
+ UJjFevJnucW+Dc2X0ExHCItd9j5SriHaSh7t17Zh749KPtivu4hxhZmDJFo8Ci1Gfq
+ VxBLf/rRUHVEnFvHlVNXpxnF3tlZz4xOXzeZTF+A=
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=kernel.org
+ dmarc=pass (p=quarantine dis=none)
+ header.from=0upti.me
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20201202 header.b=PDmCrTsk
-Subject: Re: [Intel-wired-lan] [iwl-net v1] ice: tc: do default match on all
- profiles
+ dkim=pass (1024-bit key,
+ unprotected) header.d=0upti.me header.i=@0upti.me header.a=rsa-sha256
+ header.s=mail header.b=nhhkJbY7
+X-Mailman-Original-Authentication-Results: mail-nwsmtp-smtp-production-main-39.vla.yp-c.yandex.net;
+ dkim=pass header.i=@0upti.me
+Subject: Re: [Intel-wired-lan] intel i225 NIC loses PCIe link,
+ network becomes unusable)
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,32 +104,29 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, Marcin Szycik <marcin.szycik@linux.intel.com>,
- intel-wired-lan@lists.osuosl.org, Michal Kubiak <michal.kubiak@intel.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, Mar 12, 2024 at 11:52:59AM +0100, Michal Swiatkowski wrote:
-> A simple non-tunnel rule (e.g. matching only on destination MAC) in
-> hardware will be hit only if the packet isn't a tunnel. In software
-> execution of the same command, the rule will match both tunnel and
-> non-tunnel packets.
+On 2024-02-26 17:10, Arno Lehmann wrote:
+> Hi all,
 > 
-> Change the hardware behaviour to match tunnel and non-tunnel packets in
-> this case. Do this by considering all profiles when adding non-tunnel rule
-> (rule not added on tunnel, or not redirecting to tunnel).
+> I couldn't see any replies to this issue (but I'm also not subscribed to the list, probably something I should consider...) but I have another instance of the issue reported.
 > 
-> Example command:
-> tc filter add dev pf0 ingress protocol ip flower skip_sw action mirred \
-> 	egress redirect dev pr0
+> Now cc'ing other parties in the hope to get indication this is already solved (somehow) or will be looked into.
 > 
-> It should match also tunneled packets, the same as command with skip_hw
-> will do in software.
-> 
-> Fixes: 9e300987d4a8 ("ice: VXLAN and Geneve TC support")
-> Reviewed-by: Marcin Szycik <marcin.szycik@linux.intel.com>
-> Reviewed-by: Michal Kubiak <michal.kubiak@intel.com>
-> Signed-off-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+Hi! Another affected user here, and it still happens pretty consistently on my Asus motherboard.
 
-Reviewed-by: Simon Horman <horms@kernel.org>
+There are also more cases of this reported online:
 
+- https://bugzilla.kernel.org/show_bug.cgi?id=216652
+- https://forums.unraid.net/topic/133803-intel-ethernet-adapter-sporadically-losing-connectivity-until-reboot/
+- https://forums.unraid.net/topic/138177-6115-igc-000009000-eth0-pcie-link-lost-ryzen-9-7950x-solved/
+- https://www.reddit.com/r/buildapc/comments/xypn1m/network_card_intel_ethernet_controller_i225v_igc/
+- https://bugs.launchpad.net/ubuntu/+source/linux/+bug/2043307
+
+I've tried every workaround (which mostly involve fiddling with power settings), but the card still locks up under load occasionally. I am also running a dual boot system with Windows 11, and this does not happen on the Windows side, so presumably it has something to do with software.
+
+Is there any information I can provide to help debug this? It is extremely annoying.
+
+Thanks in advance,
+K
