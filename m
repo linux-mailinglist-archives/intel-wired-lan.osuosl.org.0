@@ -1,110 +1,94 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 69A1587EA09
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 18 Mar 2024 14:25:05 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4155887EAF4
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 18 Mar 2024 15:31:16 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 11BEA40A17;
-	Mon, 18 Mar 2024 13:25:04 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id BE19B40550;
+	Mon, 18 Mar 2024 14:31:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 3BqhmbBxIjUn; Mon, 18 Mar 2024 13:25:03 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id I2td2HDvFEdV; Mon, 18 Mar 2024 14:31:14 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C14CD409F3
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D704F40568
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1710768302;
-	bh=gxBaZxVDLZCrwJigvKM8zzz/+ZEevtMgSs8pq9Bps94=;
-	h=From:Date:In-Reply-To:To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=s46oA2lHK5cG/fBPK5tQxLYqUa3ST34xylRK03BdDJ+5YyYYFsslCCtqfQnIYi6Wr
-	 bulI3c7ifh96M3Wp/mAAe7BdBLcRbmVchXD4ho3T+FL1sLLeOvPk2NxIoNYvMvLEHh
-	 NC/JZA6PJXGQ/4ze5nKx1MXjNCRwuaxPX/xYlbFuK5fJgyLuvWxu06XSFfvQSSStUt
-	 Ok5qFipSP1WKI4wSFfdlBLNANXtJLZSQiRCySkHYJrDwJbRkPpeYR+SMJJxr1P1UdZ
-	 Lrya9CQbuNueA5juTwxQw5cYpHXu6IT8BC00uCtDopDgp8ZXc5pxXAv12Zy91sARfb
-	 EU/j1DyYvRA5Q==
+	s=default; t=1710772274;
+	bh=wMCscNMvoCJEBqT1qx48y7ZP+gNtu/wO9dEvpTchfrE=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=3mATi6C/5lKQ5A4ozMIO7zEjogzYpfR+YrL2vtm86kz6JxO55ia80x2Jno8YAdC9L
+	 CC13YtRvvgigFamncewekqVdUMiELK4ANyuSuXPx49k/qTIirxmKgT+T6jG9TcrJ0b
+	 D5eR4CbOPQB+dzSGCPdgZgtStp0nC6zUdngC4O4NqOZlCnINbF3A+Qij9AtxUnGwL8
+	 /gIxZMDLNTn6mJsGSoz/sKeA5CtLLuU1TVB3R5oU+ITAoLdTtKeyv6GxYdkdrEEe0q
+	 6Cls4CNCDgzsmdjwINvinE0Niztiv7iUMKF7blHq//eEnT23ZtDFJiH2Zv4QMwLAJf
+	 V7ziSZvKAuHGw==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id C14CD409F3;
-	Mon, 18 Mar 2024 13:25:02 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id D704F40568;
+	Mon, 18 Mar 2024 14:31:13 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 2DD6D1BF363
- for <intel-wired-lan@lists.osuosl.org>; Mon, 18 Mar 2024 13:25:01 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id E97041BF5A0
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 18 Mar 2024 14:31:11 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id B194C80B96
- for <intel-wired-lan@lists.osuosl.org>; Mon, 18 Mar 2024 13:25:00 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id D64C560624
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 18 Mar 2024 14:31:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 0Zxr-m1bQMrp for <intel-wired-lan@lists.osuosl.org>;
- Mon, 18 Mar 2024 13:25:00 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2a00:1450:4864:20::52a; helo=mail-ed1-x52a.google.com;
- envelope-from=ulrich.weber@gmail.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 5FAE280B1A
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 5FAE280B1A
-Received: from mail-ed1-x52a.google.com (mail-ed1-x52a.google.com
- [IPv6:2a00:1450:4864:20::52a])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 5FAE280B1A
- for <intel-wired-lan@lists.osuosl.org>; Mon, 18 Mar 2024 13:24:59 +0000 (UTC)
-Received: by mail-ed1-x52a.google.com with SMTP id
- 4fb4d7f45d1cf-5687e7662a5so5842009a12.0
- for <intel-wired-lan@lists.osuosl.org>; Mon, 18 Mar 2024 06:24:59 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1710768297; x=1711373097;
- h=references:to:cc:in-reply-to:date:subject:mime-version:message-id
- :from:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=gxBaZxVDLZCrwJigvKM8zzz/+ZEevtMgSs8pq9Bps94=;
- b=DpbD/87ifawOmOCuT+REpaO7Yenm5HxjuIEpaz37yxjT9Vk1KlOGvBsH6tfN5sta/O
- cRYe5v0ZURs6Ai8N6eXKrZKI8WX2LJVOjz4XUU5FDkFLpH0XNj8M5CBSGr+LDfWUJjwp
- c1LR6Q9c+6LfJmlWW84tGMrSp4RXL5//JuFgMtrk9e88UV0KVJAZ+6uN/FHhPDtM8JZ+
- CGgMwHEtZq4hqk/pOPcFjRAlN+/iPxNaX1ct4H3+rKZIXswM3BIbDDAlJlD8Et03hBEW
- GwfMxKT3CrREnShcN0NgajYiMfl+Ofn4ZHq+h7Hy0lcZTVK4+hHL2HR8sHpn7EpqJgNx
- kONg==
-X-Gm-Message-State: AOJu0YzrXjm+Nj1n3+cM91Kd4janIIY03/GXVO3s63fkTOfZfll8mYyf
- r/EY2vK5HFIvZPxTUnhUthKvoa2dt/kFDa2Mlh+6vn3jud3fmdj7
-X-Google-Smtp-Source: AGHT+IEhYg1jCgcfk/4gedRvRs+VyaSTvpG4b50Ifr973UY/MHxsQYaG9CuglNtBg30VI67lONkWyw==
-X-Received: by 2002:a05:6402:1ccd:b0:566:c167:4ac1 with SMTP id
- ds13-20020a0564021ccd00b00566c1674ac1mr8882454edb.26.1710768296674; 
- Mon, 18 Mar 2024 06:24:56 -0700 (PDT)
-Received: from smtpclient.apple ([2001:16b8:a6b4:3200:ba27:ebff:fea2:5693])
- by smtp.gmail.com with ESMTPSA id
- ck5-20020a0564021c0500b00568d37c53fbsm1557892edb.78.2024.03.18.06.24.56
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Mon, 18 Mar 2024 06:24:56 -0700 (PDT)
-From: Ulrich Weber <ulrich.weber@gmail.com>
-Message-Id: <862BB94C-2EC6-4609-964E-8E4DCF70EA98@gmail.com>
-Content-Type: multipart/alternative;
- boundary="Apple-Mail=_418E0241-F043-45CA-8726-8B6ABB022E66"
-Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3731.700.6.1.1\))
-Date: Mon, 18 Mar 2024 14:24:45 +0100
-In-Reply-To: <0f9e719a-04bc-0dbf-637b-ff5914de0875@intel.com>
-To: Tony Nguyen <anthony.l.nguyen@intel.com>
-References: <20240314091513.25984-1-ulrich.weber@gmail.com>
- <0f9e719a-04bc-0dbf-637b-ff5914de0875@intel.com>
-X-Mailer: Apple Mail (2.3731.700.6.1.1)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id uhd4gKTKctVh for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 18 Mar 2024 14:31:11 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.133.124;
+ helo=us-smtp-delivery-124.mimecast.com; envelope-from=ivecera@redhat.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org A0DB560592
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A0DB560592
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id A0DB560592
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 18 Mar 2024 14:31:10 +0000 (UTC)
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-644-PBDka7Q1NqK3FaIdCdvZag-1; Mon, 18 Mar 2024 10:31:05 -0400
+X-MC-Unique: PBDka7Q1NqK3FaIdCdvZag-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.3])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id CE5E885CE41;
+ Mon, 18 Mar 2024 14:31:04 +0000 (UTC)
+Received: from p1.luc.cera.cz (unknown [10.45.224.33])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 4DCAB111E406;
+ Mon, 18 Mar 2024 14:31:03 +0000 (UTC)
+From: Ivan Vecera <ivecera@redhat.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Mon, 18 Mar 2024 15:30:44 +0100
+Message-ID: <20240318143058.287014-1-ivecera@redhat.com>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.3
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1710768297; x=1711373097; darn=lists.osuosl.org;
- h=references:to:cc:in-reply-to:date:subject:mime-version:message-id
- :from:from:to:cc:subject:date:message-id:reply-to;
- bh=gxBaZxVDLZCrwJigvKM8zzz/+ZEevtMgSs8pq9Bps94=;
- b=KnvXSejLx0OiFDh+B0VwmFBJmeXqqnCuqRe4wyQSWMVwGafwb8XKqJsV+D/KWIe6CD
- zqsX1+VHc6mEylvFgDA69O5/+Vl6v+0sK2QD8oNzkG/0nDdJ7smk3Q749VnRphZVOqJS
- XzJa/T7qEmpsK5fYNiuWUPVAy1n7ekNMRXAMoYXrn0iRAQRRDjeuedulginVTfV172D7
- XYNSlGZgwcWvsR4VxQyQpeTjRI6pOYNaOVcOzs5LGfN+J2ZA/4snQiuHrB6pZ4qYGZ2g
- 6IFvELEqgqJrzi1kTRuxjoZ+tRlCdH+/YJtvQcEyCSXCwps+axD7dp6z6gBEL/uhS1mD
- LNpA==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ d=redhat.com; 
+ s=mimecast20190719; t=1710772269;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=wMCscNMvoCJEBqT1qx48y7ZP+gNtu/wO9dEvpTchfrE=;
+ b=Tn6toWaHjuD3mIqNSzB4n5+utIB4KfqAxApk9vpZg1crM8AxmWl7Xuz/cbSJope1ejdyuF
+ Hp393s6tzxxAIctvBPNvuSIq0Cl7B+j5eiQ7pgWcMQv6M+edLCdtnW/CDnK5IOheHcYq5Q
+ rFaOiMmWvbFJmMdYarUdTgkp0uSP6A4=
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=gmail.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
- header.a=rsa-sha256 header.s=20230601 header.b=KnvXSejL
-Subject: Re: [Intel-wired-lan] [PATCH] ice: set ethtool autoneg based on
- active cfg
+ header.from=redhat.com
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (1024-bit key,
+ unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256
+ header.s=mimecast20190719 header.b=Tn6toWaH
+Subject: [Intel-wired-lan] [PATCH iwl-next 0/7] i40e: cleanups & refactors
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -117,339 +101,49 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: intel-wired-lan@lists.osuosl.org
+Cc: "open list:NETWORKING DRIVERS" <netdev@vger.kernel.org>,
+ Richard Cochran <richardcochran@gmail.com>,
+ open list <linux-kernel@vger.kernel.org>, Eric Dumazet <edumazet@google.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+This series do following:
+Patch 1 - Removes write-only flags field from i40e_veb structure and
+          from i40e_veb_setup() parameters
+Patch 2 - Changes parameter of i40e_notify_client_of_l2_param_changes()
+          and i40e_notify_client_of_netdev_close()
+Patch 3 - Changes parameter of i40e_detect_recover_hung()
+Patch 4 - Adds helper i40e_pf_get_main_vsi() to get main VSI and uses it
+          in existing code
+Patch 5 - Consolidates checks whether given VSI is the main one
+Patch 6 - Adds helper i40e_pf_get_main_veb() to get main VEB and uses it
+          in existing code
+Patch 7 - Adds helper i40e_vsi_reconfig_tc() to reconfigure TC for
+          particular and uses it to replace existing open-coded pieces
 
---Apple-Mail=_418E0241-F043-45CA-8726-8B6ABB022E66
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain;
-	charset=utf-8
+Ivan Vecera (7):
+  i40e: Remove flags field from i40e_veb
+  i40e: Change argument of several client notification functions
+  i40e: Change argument of i40e_detect_recover_hung()
+  i40e: Add helper to access main VSI
+  i40e: Consolidate checks whether given VSI is main
+  i40e: Add helper to access main VEB
+  i40e: Add and use helper to reconfigure TC for given VSI
 
-Hi Tony,
+ drivers/net/ethernet/intel/i40e/i40e.h        |  29 ++-
+ drivers/net/ethernet/intel/i40e/i40e_client.c |  28 +--
+ drivers/net/ethernet/intel/i40e/i40e_ddp.c    |   3 +-
+ .../net/ethernet/intel/i40e/i40e_debugfs.c    |  36 ++--
+ .../net/ethernet/intel/i40e/i40e_ethtool.c    |  29 ++-
+ drivers/net/ethernet/intel/i40e/i40e_main.c   | 199 ++++++++++--------
+ drivers/net/ethernet/intel/i40e/i40e_ptp.c    |   6 +-
+ drivers/net/ethernet/intel/i40e/i40e_txrx.c   |  16 +-
+ drivers/net/ethernet/intel/i40e/i40e_txrx.h   |   2 +-
+ .../ethernet/intel/i40e/i40e_virtchnl_pf.c    |  14 +-
+ 10 files changed, 210 insertions(+), 152 deletions(-)
 
-> On 15. Mar 2024, at 22:39, Tony Nguyen <anthony.l.nguyen@intel.com> =
-wrote:
->=20
->=20
->=20
-> On 3/14/2024 2:15 AM, Ulrich Weber wrote:
->> Current logic uses ICE_AQ_AN_COMPLETED information to
->> flag if autonegotiation is enabled or disabled.
->> Since new ethtool netlink interface checks if there is
->> a configuration change or not and ignores the call, if
->> there is no change, this makes is impossible to disable
->> autonegotiation on links without established autoneg.
->> This will change the logic to check the active phy
->> configuration if autoneg is enabled or not.
->=20
-> Sounds like a bug fix, so you should target this to 'iwl-net' and also =
-add a Fixes:
->=20
->> Signed-off-by: Ulrich Weber <ulrich.weber@gmail.com =
-<mailto:ulrich.weber@gmail.com>>
->> ---
->>  src/ice_ethtool.c | 10 +++++-----
->=20
-> What tree are you using? This is not a kernel path.
-Wasn=E2=80=99t sure about where the patches should apply to,
-So I used the latest sf release. Will adopt to net-next then.
+-- 
+2.43.0
 
->=20
->>  1 file changed, 5 insertions(+), 5 deletions(-)
->> diff --git a/src/ice_ethtool.c b/src/ice_ethtool.c
->> index e1eeb16babb3..8fe475944f2c 100644
->> --- a/src/ice_ethtool.c
->> +++ b/src/ice_ethtool.c
->> @@ -2857,10 +2857,6 @@ ice_get_link_ksettings(struct net_device =
-*netdev,
->>  	else
->>  		ice_get_settings_link_down(ks, netdev);
->>  -	/* set autoneg settings */
->> -	ks->base.autoneg =3D (hw_link_info->an_info & =
-ICE_AQ_AN_COMPLETED) ?
->> -		AUTONEG_ENABLE : AUTONEG_DISABLE;
->> -
->>  	/* set media type settings */
->>    	switch (vsi->port_info->phy.media_type) {
->> @@ -2912,6 +2908,10 @@ ice_get_link_ksettings(struct net_device =
-*netdev,
->>  	if (err)
->>  		goto done;
->>  +	/* set autoneg settings based on active configuration */
->> +	ks->base.autoneg =3D ice_is_phy_caps_an_enabled(caps) ?
->> +		AUTONEG_ENABLE : AUTONEG_DISABLE;
->=20
-> Since this needs to move to after the PHY capabilities call anyways, =
-it'd be nicer to put this with the rest of the autoneg code. You could =
-probably utilize the existing ice_is_phy_caps_an_enabled check and not =
-add a second call as well.
-That=E2=80=99s what I tried first, but it didn=E2=80=99t work for me. =
-That=E2=80=99s also the reason I changed the comment on the second =
-ice_is_phy_caps_an_enabled() call.
-
-I disabled autoeng by explicitly setting config.low_power_ctrl_an to 0:
-ICE_AQC_REPORT_ACTIVE_CFG shows autoneg as disabled then,
-while ICE_AQC_REPORT_TOPO_CAP_MEDIA shows it still as enabled.
-
-Chers
- Ulrich
-
->=20
-> Thanks,
-> Tony
->=20
->> +
->>  	/* Set the advertised flow control based on the PHY capability =
-*/
->>  	if ((caps->caps & ICE_AQC_PHY_EN_TX_LINK_PAUSE) &&
->>  	    (caps->caps & ICE_AQC_PHY_EN_RX_LINK_PAUSE)) {
->> @@ -2960,7 +2960,7 @@ ice_get_link_ksettings(struct net_device =
-*netdev,
->>  		ethtool_link_ksettings_add_link_mode(ks, supported, =
-FEC_RS);
->>  #endif /* ETHTOOL_GFECPARAM */
->>  -	/* Set supported and advertised autoneg */
->> +	/* Set supported and advertised autoneg based on media */
->>  	if (ice_is_phy_caps_an_enabled(caps)) {
->>  		ethtool_link_ksettings_add_link_mode(ks, supported, =
-Autoneg);
->>  		ethtool_link_ksettings_add_link_mode(ks, advertising, =
-Autoneg);
-
-
---Apple-Mail=_418E0241-F043-45CA-8726-8B6ABB022E66
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/html;
-	charset=utf-8
-
-<html><head><meta http-equiv=3D"content-type" content=3D"text/html; =
-charset=3Dutf-8"></head><body style=3D"overflow-wrap: break-word; =
--webkit-nbsp-mode: space; line-break: after-white-space;"><div =
-dir=3D"auto" style=3D"overflow-wrap: break-word; -webkit-nbsp-mode: =
-space; line-break: after-white-space;"><div dir=3D"auto" =
-style=3D"overflow-wrap: break-word; -webkit-nbsp-mode: space; =
-line-break: after-white-space;">Hi Tony,<br><div><br><blockquote =
-type=3D"cite"><div>On 15. Mar 2024, at 22:39, Tony Nguyen =
-&lt;anthony.l.nguyen@intel.com&gt; wrote:</div><br =
-class=3D"Apple-interchange-newline"><div><meta charset=3D"UTF-8"><br =
-style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
-12px; font-style: normal; font-variant-caps: normal; font-weight: 400; =
-letter-spacing: normal; text-align: start; text-indent: 0px; =
-text-transform: none; white-space: normal; word-spacing: 0px; =
--webkit-text-stroke-width: 0px; text-decoration: none;"><br =
-style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
-12px; font-style: normal; font-variant-caps: normal; font-weight: 400; =
-letter-spacing: normal; text-align: start; text-indent: 0px; =
-text-transform: none; white-space: normal; word-spacing: 0px; =
--webkit-text-stroke-width: 0px; text-decoration: none;"><span =
-style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
-12px; font-style: normal; font-variant-caps: normal; font-weight: 400; =
-letter-spacing: normal; text-align: start; text-indent: 0px; =
-text-transform: none; white-space: normal; word-spacing: 0px; =
--webkit-text-stroke-width: 0px; text-decoration: none; float: none; =
-display: inline !important;">On 3/14/2024 2:15 AM, Ulrich Weber =
-wrote:</span><br style=3D"caret-color: rgb(0, 0, 0); font-family: =
-Helvetica; font-size: 12px; font-style: normal; font-variant-caps: =
-normal; font-weight: 400; letter-spacing: normal; text-align: start; =
-text-indent: 0px; text-transform: none; white-space: normal; =
-word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration: =
-none;"><blockquote type=3D"cite" style=3D"font-family: Helvetica; =
-font-size: 12px; font-style: normal; font-variant-caps: normal; =
-font-weight: 400; letter-spacing: normal; orphans: auto; text-align: =
-start; text-indent: 0px; text-transform: none; white-space: normal; =
-widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; =
-text-decoration: none;">Current logic uses ICE_AQ_AN_COMPLETED =
-information to<br>flag if autonegotiation is enabled or =
-disabled.<br>Since new ethtool netlink interface checks if there is<br>a =
-configuration change or not and ignores the call, if<br>there is no =
-change, this makes is impossible to disable<br>autonegotiation on links =
-without established autoneg.<br>This will change the logic to check the =
-active phy<br>configuration if autoneg is enabled or =
-not.<br></blockquote><br style=3D"caret-color: rgb(0, 0, 0); =
-font-family: Helvetica; font-size: 12px; font-style: normal; =
-font-variant-caps: normal; font-weight: 400; letter-spacing: normal; =
-text-align: start; text-indent: 0px; text-transform: none; white-space: =
-normal; word-spacing: 0px; -webkit-text-stroke-width: 0px; =
-text-decoration: none;"><span style=3D"caret-color: rgb(0, 0, 0); =
-font-family: Helvetica; font-size: 12px; font-style: normal; =
-font-variant-caps: normal; font-weight: 400; letter-spacing: normal; =
-text-align: start; text-indent: 0px; text-transform: none; white-space: =
-normal; word-spacing: 0px; -webkit-text-stroke-width: 0px; =
-text-decoration: none; float: none; display: inline !important;">Sounds =
-like a bug fix, so you should target this to 'iwl-net' and also add a =
-Fixes:</span><br style=3D"caret-color: rgb(0, 0, 0); font-family: =
-Helvetica; font-size: 12px; font-style: normal; font-variant-caps: =
-normal; font-weight: 400; letter-spacing: normal; text-align: start; =
-text-indent: 0px; text-transform: none; white-space: normal; =
-word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration: =
-none;"><br style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; =
-font-size: 12px; font-style: normal; font-variant-caps: normal; =
-font-weight: 400; letter-spacing: normal; text-align: start; =
-text-indent: 0px; text-transform: none; white-space: normal; =
-word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration: =
-none;"><blockquote type=3D"cite" style=3D"font-family: Helvetica; =
-font-size: 12px; font-style: normal; font-variant-caps: normal; =
-font-weight: 400; letter-spacing: normal; orphans: auto; text-align: =
-start; text-indent: 0px; text-transform: none; white-space: normal; =
-widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; =
-text-decoration: none;">Signed-off-by: Ulrich Weber &lt;<a =
-href=3D"mailto:ulrich.weber@gmail.com">ulrich.weber@gmail.com</a>&gt;<br>-=
---<br>&nbsp;src/ice_ethtool.c | 10 +++++-----<br></blockquote><br =
-style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
-12px; font-style: normal; font-variant-caps: normal; font-weight: 400; =
-letter-spacing: normal; text-align: start; text-indent: 0px; =
-text-transform: none; white-space: normal; word-spacing: 0px; =
--webkit-text-stroke-width: 0px; text-decoration: none;"><span =
-style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
-12px; font-style: normal; font-variant-caps: normal; font-weight: 400; =
-letter-spacing: normal; text-align: start; text-indent: 0px; =
-text-transform: none; white-space: normal; word-spacing: 0px; =
--webkit-text-stroke-width: 0px; text-decoration: none; float: none; =
-display: inline !important;">What tree are you using? This is not a =
-kernel path.</span><br style=3D"caret-color: rgb(0, 0, 0); font-family: =
-Helvetica; font-size: 12px; font-style: normal; font-variant-caps: =
-normal; font-weight: 400; letter-spacing: normal; text-align: start; =
-text-indent: 0px; text-transform: none; white-space: normal; =
-word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration: =
-none;"></div></blockquote>Wasn=E2=80=99t sure about where the patches =
-should apply to,</div><div>So I used the latest sf release. Will adopt =
-to net-next then.</div><div><br><blockquote type=3D"cite"><div><br =
-style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
-12px; font-style: normal; font-variant-caps: normal; font-weight: 400; =
-letter-spacing: normal; text-align: start; text-indent: 0px; =
-text-transform: none; white-space: normal; word-spacing: 0px; =
--webkit-text-stroke-width: 0px; text-decoration: none;"><blockquote =
-type=3D"cite" style=3D"font-family: Helvetica; font-size: 12px; =
-font-style: normal; font-variant-caps: normal; font-weight: 400; =
-letter-spacing: normal; orphans: auto; text-align: start; text-indent: =
-0px; text-transform: none; white-space: normal; widows: auto; =
-word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration: =
-none;">&nbsp;1 file changed, 5 insertions(+), 5 deletions(-)<br>diff =
---git a/src/ice_ethtool.c b/src/ice_ethtool.c<br>index =
-e1eeb16babb3..8fe475944f2c 100644<br>--- a/src/ice_ethtool.c<br>+++ =
-b/src/ice_ethtool.c<br>@@ -2857,10 +2857,6 @@ =
-ice_get_link_ksettings(struct net_device *netdev,<br>&nbsp;<span =
-class=3D"Apple-tab-span" style=3D"white-space: pre;">	=
-</span>else<br>&nbsp;<span class=3D"Apple-tab-span" style=3D"white-space: =
-pre;">	</span><span class=3D"Apple-tab-span" style=3D"white-space: =
-pre;">	</span>ice_get_settings_link_down(ks, netdev);<br>&nbsp;-<span =
-class=3D"Apple-tab-span" style=3D"white-space: pre;">	</span>/* set =
-autoneg settings */<br>-<span class=3D"Apple-tab-span" =
-style=3D"white-space: pre;">	</span>ks-&gt;base.autoneg =3D =
-(hw_link_info-&gt;an_info &amp; ICE_AQ_AN_COMPLETED) ?<br>-<span =
-class=3D"Apple-tab-span" style=3D"white-space: pre;">	</span><span =
-class=3D"Apple-tab-span" style=3D"white-space: pre;">	=
-</span>AUTONEG_ENABLE : AUTONEG_DISABLE;<br>-<br>&nbsp;<span =
-class=3D"Apple-tab-span" style=3D"white-space: pre;">	</span>/* set =
-media type settings */<br>&nbsp;&nbsp;&nbsp;<span class=3D"Apple-tab-span"=
- style=3D"white-space: pre;">	</span>switch =
-(vsi-&gt;port_info-&gt;phy.media_type) {<br>@@ -2912,6 +2908,10 @@ =
-ice_get_link_ksettings(struct net_device *netdev,<br>&nbsp;<span =
-class=3D"Apple-tab-span" style=3D"white-space: pre;">	</span>if =
-(err)<br>&nbsp;<span class=3D"Apple-tab-span" style=3D"white-space: =
-pre;">	</span><span class=3D"Apple-tab-span" style=3D"white-space: =
-pre;">	</span>goto done;<br>&nbsp;+<span class=3D"Apple-tab-span" =
-style=3D"white-space: pre;">	</span>/* set autoneg settings based on =
-active configuration */<br>+<span class=3D"Apple-tab-span" =
-style=3D"white-space: pre;">	</span>ks-&gt;base.autoneg =3D =
-ice_is_phy_caps_an_enabled(caps) ?<br>+<span class=3D"Apple-tab-span" =
-style=3D"white-space: pre;">	</span><span class=3D"Apple-tab-span" =
-style=3D"white-space: pre;">	</span>AUTONEG_ENABLE : =
-AUTONEG_DISABLE;<br></blockquote><br style=3D"caret-color: rgb(0, 0, 0); =
-font-family: Helvetica; font-size: 12px; font-style: normal; =
-font-variant-caps: normal; font-weight: 400; letter-spacing: normal; =
-text-align: start; text-indent: 0px; text-transform: none; white-space: =
-normal; word-spacing: 0px; -webkit-text-stroke-width: 0px; =
-text-decoration: none;"><span style=3D"caret-color: rgb(0, 0, 0); =
-font-family: Helvetica; font-size: 12px; font-style: normal; =
-font-variant-caps: normal; font-weight: 400; letter-spacing: normal; =
-text-align: start; text-indent: 0px; text-transform: none; white-space: =
-normal; word-spacing: 0px; -webkit-text-stroke-width: 0px; =
-text-decoration: none; float: none; display: inline !important;">Since =
-this needs to move to after the PHY capabilities call anyways, it'd be =
-nicer to put this with the rest of the autoneg code. You could probably =
-utilize the existing ice_is_phy_caps_an_enabled check and not add a =
-second call as well.</span><br style=3D"caret-color: rgb(0, 0, 0); =
-font-family: Helvetica; font-size: 12px; font-style: normal; =
-font-variant-caps: normal; font-weight: 400; letter-spacing: normal; =
-text-align: start; text-indent: 0px; text-transform: none; white-space: =
-normal; word-spacing: 0px; -webkit-text-stroke-width: 0px; =
-text-decoration: none;"></div></blockquote><div>That=E2=80=99s what I =
-tried first, but it didn=E2=80=99t work for me. That=E2=80=99s also the =
-reason I changed the comment on the =
-second&nbsp;ice_is_phy_caps_an_enabled() =
-call.</div><div><br></div><div>I disabled autoeng by explicitly =
-setting&nbsp;config.low_power_ctrl_an to =
-0:</div><div>ICE_AQC_REPORT_ACTIVE_CFG shows autoneg as disabled =
-then,</div><div>while&nbsp;ICE_AQC_REPORT_TOPO_CAP_MEDIA shows it still =
-as =
-enabled.</div><div><br></div><div>Chers</div><div>&nbsp;Ulrich</div><br><b=
-lockquote type=3D"cite"><div><br style=3D"caret-color: rgb(0, 0, 0); =
-font-family: Helvetica; font-size: 12px; font-style: normal; =
-font-variant-caps: normal; font-weight: 400; letter-spacing: normal; =
-text-align: start; text-indent: 0px; text-transform: none; white-space: =
-normal; word-spacing: 0px; -webkit-text-stroke-width: 0px; =
-text-decoration: none;"><span style=3D"caret-color: rgb(0, 0, 0); =
-font-family: Helvetica; font-size: 12px; font-style: normal; =
-font-variant-caps: normal; font-weight: 400; letter-spacing: normal; =
-text-align: start; text-indent: 0px; text-transform: none; white-space: =
-normal; word-spacing: 0px; -webkit-text-stroke-width: 0px; =
-text-decoration: none; float: none; display: inline =
-!important;">Thanks,</span><br style=3D"caret-color: rgb(0, 0, 0); =
-font-family: Helvetica; font-size: 12px; font-style: normal; =
-font-variant-caps: normal; font-weight: 400; letter-spacing: normal; =
-text-align: start; text-indent: 0px; text-transform: none; white-space: =
-normal; word-spacing: 0px; -webkit-text-stroke-width: 0px; =
-text-decoration: none;"><span style=3D"caret-color: rgb(0, 0, 0); =
-font-family: Helvetica; font-size: 12px; font-style: normal; =
-font-variant-caps: normal; font-weight: 400; letter-spacing: normal; =
-text-align: start; text-indent: 0px; text-transform: none; white-space: =
-normal; word-spacing: 0px; -webkit-text-stroke-width: 0px; =
-text-decoration: none; float: none; display: inline =
-!important;">Tony</span><br style=3D"caret-color: rgb(0, 0, 0); =
-font-family: Helvetica; font-size: 12px; font-style: normal; =
-font-variant-caps: normal; font-weight: 400; letter-spacing: normal; =
-text-align: start; text-indent: 0px; text-transform: none; white-space: =
-normal; word-spacing: 0px; -webkit-text-stroke-width: 0px; =
-text-decoration: none;"><br style=3D"caret-color: rgb(0, 0, 0); =
-font-family: Helvetica; font-size: 12px; font-style: normal; =
-font-variant-caps: normal; font-weight: 400; letter-spacing: normal; =
-text-align: start; text-indent: 0px; text-transform: none; white-space: =
-normal; word-spacing: 0px; -webkit-text-stroke-width: 0px; =
-text-decoration: none;"><blockquote type=3D"cite" style=3D"font-family: =
-Helvetica; font-size: 12px; font-style: normal; font-variant-caps: =
-normal; font-weight: 400; letter-spacing: normal; orphans: auto; =
-text-align: start; text-indent: 0px; text-transform: none; white-space: =
-normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; =
-text-decoration: none;">+<br>&nbsp;<span class=3D"Apple-tab-span" =
-style=3D"white-space: pre;">	</span>/* Set the advertised flow =
-control based on the PHY capability */<br>&nbsp;<span =
-class=3D"Apple-tab-span" style=3D"white-space: pre;">	</span>if =
-((caps-&gt;caps &amp; ICE_AQC_PHY_EN_TX_LINK_PAUSE) =
-&amp;&amp;<br>&nbsp;<span class=3D"Apple-tab-span" style=3D"white-space: =
-pre;">	</span><span =
-class=3D"Apple-converted-space">&nbsp;</span>&nbsp;&nbsp;&nbsp;(caps-&gt;c=
-aps &amp; ICE_AQC_PHY_EN_RX_LINK_PAUSE)) {<br>@@ -2960,7 +2960,7 @@ =
-ice_get_link_ksettings(struct net_device *netdev,<br>&nbsp;<span =
-class=3D"Apple-tab-span" style=3D"white-space: pre;">	</span><span =
-class=3D"Apple-tab-span" style=3D"white-space: pre;">	=
-</span>ethtool_link_ksettings_add_link_mode(ks, supported, =
-FEC_RS);<br>&nbsp;#endif /* ETHTOOL_GFECPARAM */<br>&nbsp;-<span =
-class=3D"Apple-tab-span" style=3D"white-space: pre;">	</span>/* Set =
-supported and advertised autoneg */<br>+<span class=3D"Apple-tab-span" =
-style=3D"white-space: pre;">	</span>/* Set supported and advertised =
-autoneg based on media */<br>&nbsp;<span class=3D"Apple-tab-span" =
-style=3D"white-space: pre;">	</span>if =
-(ice_is_phy_caps_an_enabled(caps)) {<br>&nbsp;<span =
-class=3D"Apple-tab-span" style=3D"white-space: pre;">	</span><span =
-class=3D"Apple-tab-span" style=3D"white-space: pre;">	=
-</span>ethtool_link_ksettings_add_link_mode(ks, supported, =
-Autoneg);<br>&nbsp;<span class=3D"Apple-tab-span" style=3D"white-space: =
-pre;">	</span><span class=3D"Apple-tab-span" style=3D"white-space: =
-pre;">	</span>ethtool_link_ksettings_add_link_mode(ks, advertising, =
-Autoneg);</blockquote></div></blockquote></div><br></div></div></body></ht=
-ml>=
-
---Apple-Mail=_418E0241-F043-45CA-8726-8B6ABB022E66--
