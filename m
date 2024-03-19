@@ -1,88 +1,94 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id D7ECF880595
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 19 Mar 2024 20:43:26 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 62F43880612
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 19 Mar 2024 21:33:45 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 37CEB4148C;
-	Tue, 19 Mar 2024 19:43:24 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 022C480BCE;
+	Tue, 19 Mar 2024 20:33:43 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id a0A_vu-eF5E3; Tue, 19 Mar 2024 19:43:23 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id g11Pm03wBvmj; Tue, 19 Mar 2024 20:33:43 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 8492341184
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3D27E80BEC
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1710877403;
-	bh=cXi257JwpClcyBFTjwZNV/lnEYXUnxNwn0P+hzh0Jwo=;
-	h=Date:From:To:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=MPKcPsG+klLjUXw37rU1jRL+1e9yhxT+kDnKYoCsiDZku6pPemANUrwkVKqu5YHEz
-	 00jRs+OnSI1/OHh2LZLG/bxNpW/0pYgVEDrxfORTGJjYhvC7Zc+tlPtxUVTfU3LAu+
-	 FQSgXdNTccM6tex9yNoMSUcsEw092ErmDsZMBYeCT5Kkg13ocWd1C5h9eaKeIlWqDu
-	 s936avb2wWcMVDX01WceZN18s7vm62sE6mEQcpzggV5Sa39P2qGPQEu/bR12hF+Zre
-	 85lo6LC079/mLGFACEoEQjqEvwm8f4RiXuHCNZchF8aDf9vPCbGyDFv3hMetPiEmZk
-	 ppu0HGIbuEbKg==
+	s=default; t=1710880423;
+	bh=cByx4L78HrI+q9+ftgKqt0OD/TKAEi7X6IOL5E+ueqo=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=ot17ZiKwGTIzVVjuuiQtAxpQuck1j/KJdYT5FufBbGozX4My0ICGm0NIP4e0XzZVn
+	 GMdBQBla+Bv8IhiosFOkUeJZT2UvFXYrfliKO82QVbrmeW23Ebx9Pg5cgbntwwUMu9
+	 TbEBHkH1NYuPDAgPGyAEs4Z7HDVLExGBEKXhqIE14EUxGJtITgJRU2la9XtrJDZveG
+	 3EyRFvLQdpVCSNXNQ8lc5M2y2yHVLkhV5GbasliwI50J+fiwejID+Kw9ScMi5Z8EOq
+	 VXYsVT+bwIGtTbsXui9kqh8q/Tg3ExmZAUfy7UcfQII2j7wczGWVPTLIU+a7Gu2QoS
+	 PzvWjiXvSpxmg==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 8492341184;
-	Tue, 19 Mar 2024 19:43:23 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 3D27E80BEC;
+	Tue, 19 Mar 2024 20:33:43 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 9A92F1BF3C6
- for <intel-wired-lan@lists.osuosl.org>; Tue, 19 Mar 2024 19:43:21 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id AAC691BF834
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 19 Mar 2024 20:33:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 83C2F400C5
- for <intel-wired-lan@lists.osuosl.org>; Tue, 19 Mar 2024 19:43:21 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 95F75606CA
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 19 Mar 2024 20:33:41 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id wfjOTh-Fw9PX for <intel-wired-lan@lists.osuosl.org>;
- Tue, 19 Mar 2024 19:43:20 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2604:1380:4641:c500::1; helo=dfw.source.kernel.org;
- envelope-from=kuba@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org BAB7E400B4
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org BAB7E400B4
-Received: from dfw.source.kernel.org (dfw.source.kernel.org
- [IPv6:2604:1380:4641:c500::1])
- by smtp4.osuosl.org (Postfix) with ESMTPS id BAB7E400B4
- for <intel-wired-lan@lists.osuosl.org>; Tue, 19 Mar 2024 19:43:20 +0000 (UTC)
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by dfw.source.kernel.org (Postfix) with ESMTP id 7CDCF60EBA;
- Tue, 19 Mar 2024 19:43:19 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A102DC433C7;
- Tue, 19 Mar 2024 19:43:18 +0000 (UTC)
-Date: Tue, 19 Mar 2024 12:43:17 -0700
-From: Jakub Kicinski <kuba@kernel.org>
-To: Dan Carpenter <dan.carpenter@linaro.org>
-Message-ID: <20240319124317.3c3f16cd@kernel.org>
-In-Reply-To: <77145930-e3df-4e77-a22d-04851cf3a426@moroto.mountain>
-References: <77145930-e3df-4e77-a22d-04851cf3a426@moroto.mountain>
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id aQbEOA5G8hP8 for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 19 Mar 2024 20:33:40 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.16;
+ helo=mgamail.intel.com; envelope-from=jacob.e.keller@intel.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org D05326059A
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D05326059A
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.16])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id D05326059A
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 19 Mar 2024 20:33:39 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,11018"; a="5899782"
+X-IronPort-AV: E=Sophos;i="6.07,138,1708416000"; 
+   d="scan'208";a="5899782"
+Received: from fmviesa004.fm.intel.com ([10.60.135.144])
+ by orvoesa108.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 19 Mar 2024 13:33:37 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.07,138,1708416000"; d="scan'208";a="18578754"
+Received: from jekeller-desk.amr.corp.intel.com (HELO
+ jekeller-desk.jekeller.internal) ([10.166.241.1])
+ by fmviesa004-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 19 Mar 2024 13:33:33 -0700
+From: Jacob Keller <jacob.e.keller@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Date: Tue, 19 Mar 2024 13:33:26 -0700
+Message-ID: <20240319203328.890350-1-jacob.e.keller@intel.com>
+X-Mailer: git-send-email 2.44.0.53.g0f9d4d28b7e6
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1710877399;
- bh=4c0gTY5ILrK0uD6EsujNoi/J2gWpLE0huRdLKPHIfwg=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=hPj5lcGsZBFbWYX9sTipBmth0flulHxveKZSdSIYL9f9rnIFdPotJ6AjMBKD9E1Wx
- Sfu6LWJqHTQmjEHpqD7W6UVFp526dSluffT6r6Lkpy/tN0s0b0eV8IT1jY2Iuy0ot7
- FnynRVm1UV0bQlEwjm7EfDD7x0rScmrqtfrz55YX5uqHh9z4my7KKb48L0CT3ZtJuj
- qhKbGM2CLqEXiHYNK2QyoEZaVjw82vdlfv2xfLQdrsFCy13lnNP+4BKRMzGuuO/lJx
- D309CxTY3kt0I5KXRslduxBgSvTFNf56Iju2LDEyAkGaQO0op5UzVkkZGzhYH46qsB
- 6mtHcRQkiIalA==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1710880420; x=1742416420;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=6y+7kqwfeH8UeaCHBT0/T2nNjDhxJ2hziz5vDIMEk4M=;
+ b=lmCmYqVV+s5UdNZekU1YNIkR1RTzN1Upjz0U5twVvz/BWeiqvTwareKC
+ g93Vti03ce+SFJb8g4izqaUSSnS5lhRloUjDNWC3/RBT84We2YS/xn4I2
+ n69J5kApxCx7zZzRvihd9vpVmKI9HI+IpxauM9FXqU6kHCt2j7/uAZEa4
+ HGPuaU9dYFozjK+p+cjEk4JBqHo+SgPFyGYwRhdCltGqtcHUzmgFwHD4a
+ VY9YByCaoQ9EI0zFfXnhhx+qEUU8j2tMeOaBwn0GCfwgit9X9GFb/On/z
+ +gRigUfzCPfI2ItbQsr0GjOrKXVOwK3rr6Gjv79sAsczzecPj88/mhK7q
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ header.from=intel.com
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20201202 header.b=hPj5lcGs
-Subject: Re: [Intel-wired-lan] [PATCH net] ice: Fix freeing uninitialized
- pointers
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=lmCmYqVV
+Subject: [Intel-wired-lan] [PATCH iwl-next 0/2] ice: minor cleanups for VF
+ IRQ logic
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,23 +101,45 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Maciej Fijalkowski <maciej.fijalkowski@intel.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org,
- Eric Dumazet <edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
- netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
- Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>
+Cc: Jacob Keller <jacob.e.keller@intel.com>,
+ Anthony Nguyen <anthony.l.nguyen@intel.com>, jesse
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Sat, 16 Mar 2024 12:44:40 +0300 Dan Carpenter wrote:
-> -	struct ice_aqc_get_phy_caps_data *pcaps __free(kfree);
-> -	void *mac_buf __free(kfree);
-> +	struct ice_aqc_get_phy_caps_data *pcaps __free(kfree) = NULL;
-> +	void *mac_buf __free(kfree) = NULL;
+While working on implementing Scalable IOV support for the ice driver, I
+found a few minor gotchas in the VF logic where the existing code is not
+ready to handle Scalable VFs.
 
-This is just trading one kind of bug for another, and the __free()
-magic is at a cost of readability.
+First, the recent support to allow programming the VF MSI-X count
+initialized some values in ice_sriov.c in the for loop for creating VFs
+using the sriov_numvfs interface. We will need to initialize these values
+for Scalable VFs as well, and this should belong in
+ice_initialize_vf_entry().
 
-I think we should ban the use of __free() in all of networking,
-until / unless it cleanly handles the NULL init case.
+Second, when programming the VF IRQs in response to virtchnl commands, the
+current virtchnl logic hardcodes the assumption that hardware IRQ indexes
+are VF relative. This is true for Single Root IOV, but is not true for
+Scalable IOV where the interrupts come from the PF space. Cleanup the logic
+to look up the IRQ index from the q_vector, making this flow more agnostic
+of the VF functionality type.
+
+Neither of these changes is critical for current SR-IOV support, but they do
+prepare the way for Scalable IOV VF support. I'd rather have these cleanups
+already taken care now instead of carrying them until the Scalable IOV code
+is submitted.
+
+Jacob Keller (2):
+  ice: set vf->num_msix in ice_initialize_vf_entry()
+  ice: look up VF MSI-X index from q_vector->irq.index
+
+ drivers/net/ethernet/intel/ice/ice_base.c     |  6 ++++++
+ drivers/net/ethernet/intel/ice/ice_sriov.c    |  5 -----
+ drivers/net/ethernet/intel/ice/ice_vf_lib.c   |  5 ++++-
+ drivers/net/ethernet/intel/ice/ice_virtchnl.c | 12 +++++-------
+ 4 files changed, 15 insertions(+), 13 deletions(-)
+
+
+base-commit: 237bb5f7f7f55ec5f773469a974c61a49c298625
+-- 
+2.44.0.53.g0f9d4d28b7e6
+
