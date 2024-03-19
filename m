@@ -1,96 +1,111 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id AB61A880613
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 19 Mar 2024 21:33:47 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 42CC8881429
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 20 Mar 2024 16:07:58 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 3D6EC8144C;
-	Tue, 19 Mar 2024 20:33:46 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 6151D820A8;
+	Wed, 20 Mar 2024 15:07:55 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id MVJ6AgTwOtsL; Tue, 19 Mar 2024 20:33:45 +0000 (UTC)
+	with ESMTP id iOIKdFhc9pW8; Wed, 20 Mar 2024 15:07:54 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 42597812CA
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1F2EC820B3
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1710880425;
-	bh=Pg/ycTk30YWyw+T6ijTrx686ICoL2Iy1q38wmaObXvo=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1710947274;
+	bh=t8EtD8zegIhUQWzA/oDS70j+Z9o9c4kykZ4EUai9up0=;
+	h=References:In-Reply-To:From:Date:To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=pxUCbzHL1cNIbRlDLp/6qfcuz9OkKQWYI9mgon52pRORhv3kI+VINHT0eDfstOLhj
-	 wckYvapPu0iKApYwUgWXggjh1EjHLnyJqRZeBmM480qU9ErvlXROEvAOoSZz0J4KnG
-	 BH7Raq3Mdl+uE3LcBubiwQO/B10CcA+X3mJEzS4SB4z+7MLBn8eNq3f2nfxS1Cb8X5
-	 Y2KR33nWkBVq/eBwOVa2dwaDua6LdhKC20lgB3wCuqg7cQ3ORip3JpsmFE/Asz36KV
-	 NbBBBXnbksXrXLlp2p6yjhsqD7oqY1rRr8k5sOxSKA7r8huKpiT6O6OgjvKOJaD6MB
-	 TEI4rPE59xB9g==
+	b=t1zECAzdPgG0eDMz2dHi9O7+T7tRpS01vdO7dLmvu8ZYJPrLo7PCaqQirpg+/Wh8F
+	 YO8MwVOesJOCbsR5GJ0OvUVk2g1Aabz53WvPXxhpecmjkMTXpmpOqkzQMWrrf+KLrp
+	 BSwcMGoTL0Lehae2GLgdvsu0qBtaHGwKEkPjN8VP3mH1NANR6a57oWoI5p1NMCs4kg
+	 Zmz4fV8NtZbVIDJVix0gImNc26kB22KJmAklfjOx976lRrce96QRZG90aH7gDtFxFp
+	 wq1+FrJ5xa16j+2VMXXyRkD0nTgBwnm0SBksPzwdf7oWss7svbHgDVQt2YeEoFkbA2
+	 7Xo7ULUcf83Qw==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 42597812CA;
-	Tue, 19 Mar 2024 20:33:45 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 1F2EC820B3;
+	Wed, 20 Mar 2024 15:07:54 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 479021BF834
- for <intel-wired-lan@lists.osuosl.org>; Tue, 19 Mar 2024 20:33:42 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 12E731BF28F
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 19 Mar 2024 22:30:09 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 348AE6059A
- for <intel-wired-lan@lists.osuosl.org>; Tue, 19 Mar 2024 20:33:42 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id F2FC0414B5
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 19 Mar 2024 22:30:08 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 9GFf5fmfb2ZW for <intel-wired-lan@lists.osuosl.org>;
- Tue, 19 Mar 2024 20:33:41 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.16;
- helo=mgamail.intel.com; envelope-from=jacob.e.keller@intel.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 052C860671
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 052C860671
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.16])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 052C860671
- for <intel-wired-lan@lists.osuosl.org>; Tue, 19 Mar 2024 20:33:40 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,11018"; a="5899784"
-X-IronPort-AV: E=Sophos;i="6.07,138,1708416000"; 
-   d="scan'208";a="5899784"
-Received: from fmviesa004.fm.intel.com ([10.60.135.144])
- by orvoesa108.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 19 Mar 2024 13:33:38 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.07,138,1708416000"; d="scan'208";a="18578762"
-Received: from jekeller-desk.amr.corp.intel.com (HELO
- jekeller-desk.jekeller.internal) ([10.166.241.1])
- by fmviesa004-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 19 Mar 2024 13:33:34 -0700
-From: Jacob Keller <jacob.e.keller@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Date: Tue, 19 Mar 2024 13:33:28 -0700
-Message-ID: <20240319203328.890350-3-jacob.e.keller@intel.com>
-X-Mailer: git-send-email 2.44.0.53.g0f9d4d28b7e6
-In-Reply-To: <20240319203328.890350-1-jacob.e.keller@intel.com>
-References: <20240319203328.890350-1-jacob.e.keller@intel.com>
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id TmihqQ3dtqbL for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 19 Mar 2024 22:30:07 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2a00:1450:4864:20::330; helo=mail-wm1-x330.google.com;
+ envelope-from=jstultz@google.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 8D928414B6
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 8D928414B6
+Received: from mail-wm1-x330.google.com (mail-wm1-x330.google.com
+ [IPv6:2a00:1450:4864:20::330])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 8D928414B6
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 19 Mar 2024 22:30:06 +0000 (UTC)
+Received: by mail-wm1-x330.google.com with SMTP id
+ 5b1f17b1804b1-41467b42b98so14345e9.1
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 19 Mar 2024 15:30:06 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1710887404; x=1711492204;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=t8EtD8zegIhUQWzA/oDS70j+Z9o9c4kykZ4EUai9up0=;
+ b=Je+UOhoVl3xNHf58dSg8Z4F0M4p7pQXyK71wWTZBIpZe4JGhShhnEXpZPNgtPKCgzq
+ SeFHTTnSetJXoiTNo3BGlm2tVcIjZeHMh4pIm4YhYFfwpQ0FoIXl0mCtzBP8jfQTuBGU
+ DWeembpzvuH1BBua7xuJWmgyJDvBij8gPaGZw/bx/qJ4ZOPFKi5sow40axHFd5QnyOcb
+ MOAihV0X3YmuvgHAgEOVuawTVg4/p6vD3ZGQmbymEKg+k2tt2k244Ut2cULO6n4Jgoxl
+ Xo7LZIhoAZektUmHHq1MN8NfIhqsS6xQ9L2STn2UwPcFpNOhp3Fn/YsgvmpqRP52P+Px
+ tkxg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWEgyb6vtbmQtcpPl0psbMxg8vSotAwDQiLaJIHv5+pCPhXC/4wEPZwCyf07+kdfda5aTgRsSI0COtlBWdvsXuDuh8htoCk3o1HryCS9gyyCg==
+X-Gm-Message-State: AOJu0YxVdDrhxNxGGXIXp+12jKL2FiO4jQMfY8ZZ7PepfLFcbdIagKbO
+ kHPzN1/EILJruGmh2a+93UVwXeLP9GD03zX9m4EIwlTSMP/LS/KqsV6MWFE7nL5HBidbdAF5XIY
+ cPJxEtrijKi2OlgI8XFR8h7suAJksdngXVE8=
+X-Google-Smtp-Source: AGHT+IFnGQzm4jMjcrzDlbzN56akGGgkj3uAyRKTIsnW0UhcIBF+MbiMv0KxT6M+rBMt9Ny+pOt1FU4BU9vpN+72B78=
+X-Received: by 2002:a05:600c:3051:b0:414:1ee:f399 with SMTP id
+ n17-20020a05600c305100b0041401eef399mr89401wmh.2.1710887404353; Tue, 19 Mar
+ 2024 15:30:04 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1710880422; x=1742416422;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=0l9pGvVEa9jT1VKMD1wXS5tqRMEbn3SV9e6jpYgGbl0=;
- b=L03xj1nbSLX116dEQ1Rcg7lwgNelSzrTQNnwQ57JxkFB0NDANXSgskHI
- Nn+OT+6FtOddGapag9q/1ahXVR8PXIG/9xT4VZshf35ef+hFo6f0hzZc8
- TkliF6Kt07BNx6KtwdbCfdSfU4AbPrzgllgkXh+WnMOSfPsubniE8fTU1
- NFoHcOgWUJPCZ4+SMLyu57r9fXewecW6sNMElJ+PNXrHlKMXx9QnrO20w
- xzjoQrm+68J/nJ0rZWQx9QmA7Xdr54cdJyw4Pm9DFQ+C1aYUYhIu+6S7P
- kFwA5OOzx337O4KGj6EPt0HFQwY5Qj6wzD8hF3vlbQ3tyHeMrtyhI2TIO
- g==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=L03xj1nb
-Subject: [Intel-wired-lan] [PATCH iwl-next 2/2] ice: look up VF MSI-X index
- from q_vector->irq.index
+References: <20240319130547.4195-1-lakshmi.sowjanya.d@intel.com>
+ <20240319130547.4195-3-lakshmi.sowjanya.d@intel.com>
+In-Reply-To: <20240319130547.4195-3-lakshmi.sowjanya.d@intel.com>
+From: John Stultz <jstultz@google.com>
+Date: Tue, 19 Mar 2024 15:29:51 -0700
+Message-ID: <CANDhNCpP6Nd_iYtdgW+RyH1g7c-eyHR+j-LV4gv8rKWu9QkzhQ@mail.gmail.com>
+To: lakshmi.sowjanya.d@intel.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-Mailman-Approved-At: Wed, 20 Mar 2024 15:07:52 +0000
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=google.com; s=20230601; t=1710887404; x=1711492204; darn=lists.osuosl.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=t8EtD8zegIhUQWzA/oDS70j+Z9o9c4kykZ4EUai9up0=;
+ b=kHbmY+HZOuLep3Ulvnzh0eIoOp1VEkpcyXcVgKvs91TFHDOwmSav+IQOTgBfQaHYZs
+ 4+tdROi0+c4ovIQDRsFOCMpmVuo17MuCeGM5rSaU8YEQPtB1EFjQ3ZJXyYTWhDhmFcmw
+ 4NKIfhxy2ZZs9/Y2AT8NUPg/OgVGdlNp0ynLEHU5CsPONfvg/7wHT1c8B1AUQ7sIJB/k
+ Vr2p+oczBZZbsowK2/2Jp4Gv6nW4FetWn82flVs3vjNef0Efxi2TmAUDSVZsDSEPSTlg
+ XxA5t+NOTf1ExpyVtLjIK/4+GRZ5Xu2JkqwHQa15OL7OX5BVc5gWdkqfDGB+Z89PJAnT
+ 5yrg==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dmarc=pass (p=reject dis=none)
+ header.from=google.com
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=google.com header.i=@google.com header.a=rsa-sha256
+ header.s=20230601 header.b=kHbmY+HZ
+Subject: Re: [Intel-wired-lan] [PATCH v5 02/11] timekeeping: Add function to
+ convert realtime to base clock
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -103,116 +118,86 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Jacob Keller <jacob.e.keller@intel.com>,
- Anthony Nguyen <anthony.l.nguyen@intel.com>, jesse
+Cc: linux-doc@vger.kernel.org, mallikarjunappa.sangannavar@intel.com,
+ alexandre.torgue@foss.st.com, perex@perex.cz, anthony.l.nguyen@intel.com,
+ thejesh.reddy.t.r@intel.com, christopher.s.hall@intel.com, corbet@lwn.net,
+ x86@kernel.org, joabreu@synopsys.com, peter.hilber@opensynergy.com,
+ intel-wired-lan@lists.osuosl.org, subramanian.mohan@intel.com,
+ linux-sound@vger.kernel.org, tglx@linutronix.de,
+ andriy.shevchenko@linux.intel.com, giometti@enneenne.com,
+ netdev@vger.kernel.org, pandith.n@intel.com, eddie.dong@intel.com,
+ linux-kernel@vger.kernel.org, mcoquelin.stm32@gmail.com,
+ basavaraj.goudar@intel.com, davem@davemloft.net
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The ice physical function driver needs to configure the association of
-queues and interrupts on behalf of its virtual functions. This is done over
-virtchnl by the VF sending messages during its initialization phase. These
-messages contain a vector_id which the VF wants to associate with a given
-queue. This ID is relative to the VF space, where 0 indicates the control
-IRQ for non-queue interrupts.
+On Tue, Mar 19, 2024 at 6:06=E2=80=AFAM <lakshmi.sowjanya.d@intel.com> wrot=
+e:
+>
+> From: Lakshmi Sowjanya D <lakshmi.sowjanya.d@intel.com>
+>
+> PPS(Pulse Per Second) generates signals in realtime, but Timed IO
+> hardware understands time in base clock reference. Add an interface,
+> ktime_real_to_base_clock() to convert realtime to base clock.
+>
+> Convert the base clock to the system clock using convert_base_to_cs() in
+> get_device_system_crosststamp().
+>
+> Add the helper function timekeeping_clocksource_has_base(), to check
+> whether the current clocksource has the same base clock. This will be
+> used by Timed IO device to check if the base clock is X86_ART(Always
+> Running Timer).
+>
+> Co-developed-by: Thomas Gleixner <tglx@linutronix.de>
+> Signed-off-by: Thomas Gleixner <tglx@linutronix.de>
+> Co-developed-by: Christopher S. Hall <christopher.s.hall@intel.com>
+> Signed-off-by: Christopher S. Hall <christopher.s.hall@intel.com>
+> Signed-off-by: Lakshmi Sowjanya D <lakshmi.sowjanya.d@intel.com>
+> ---
+>  include/linux/timekeeping.h |   6 +++
+>  kernel/time/timekeeping.c   | 105 +++++++++++++++++++++++++++++++++++-
+>  2 files changed, 109 insertions(+), 2 deletions(-)
+>
+> diff --git a/include/linux/timekeeping.h b/include/linux/timekeeping.h
+> index 7e50cbd97f86..1b2a4a37bf93 100644
+> --- a/include/linux/timekeeping.h
+> +++ b/include/linux/timekeeping.h
+> @@ -275,12 +275,18 @@ struct system_device_crosststamp {
+>   *             timekeeping code to verify comparability of two cycle val=
+ues.
+>   *             The default ID, CSID_GENERIC, does not identify a specifi=
+c
+>   *             clocksource.
+> + * @nsecs:     @cycles is in nanoseconds.
+>   */
+>  struct system_counterval_t {
+>         u64                     cycles;
+>         enum clocksource_ids    cs_id;
+> +       bool                    nsecs;
 
-When programming the mapping, the PF driver currently passes this vector_id
-directly to the low level functions for programming. This works for SR-IOV,
-because the hardware uses the VF-based indexing for interrupts.
+Apologies, this is a bit of an annoying bikeshed request, but maybe
+use_nsecs here?
+There are plenty of places where nsecs fields hold actual nanoseconds,
+so what you have might be easy to misread in the future.
 
-The future Scalable IOV work does not use VF-based indexing, as the
-interrupts are used from the PF space and mapped via VFIO into the VM.
-Thus, the interrupt indexes used on the PF are PF-based. To handle this,
-the driver will need to be able to locate the proper index for programming
-the hardware registers. For standard IRQs allocated from the PF area, this
-would just  be the irq.index field.
+Also, at least in this series, I'm not sure I see where this nsecs
+value gets set? Maybe something to split out and add in a separate
+patch, where its use is more clear?
 
-This field is currently unused for SR-IOV. When initializing the queue
-vectors for ICE_VSI_VF, populate the irq.index field appropriately. Replace
-the direct use of the vector_id parameter passed from VF with the
-q_vector->irq.index when programming the queues.
+> +bool timekeeping_clocksource_has_base(enum clocksource_ids id)
+> +{
+> +       unsigned int seq;
+> +       bool ret;
+> +
+> +       do {
+> +               seq =3D read_seqcount_begin(&tk_core.seq);
+> +               ret =3D tk_core.timekeeper.tkr_mono.clock->base ?
+> +               tk_core.timekeeper.tkr_mono.clock->base->id =3D=3D id : f=
+alse;
 
-Now that we lookup the vector_id from the q_vector structure, we no longer
-need to pass the value as a parameter in ice_cfg_interrupt. Also notice
-that this function returns an int, but then is cast to the virtchnl error
-enumeration, virtchnl_status_code. Update the return type to indicate it
-does not return an integer error code. We can't use normal error codes here
-because the return values are passed across the virtchnl interface.
+Again, bikeshed nit: I know folks like ternaries for conciseness, but
+once you've crossed a single line, I'd often prefer to read an if
+statement.
 
-This prepares the virtchnl logic for configuring interrupts to support the
-upcoming Scalable IOV VFs, without breaking existing SR-IOV functionality.
-
-Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
-Reviewed-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
----
- drivers/net/ethernet/intel/ice/ice_base.c     |  6 ++++++
- drivers/net/ethernet/intel/ice/ice_virtchnl.c | 12 +++++-------
- 2 files changed, 11 insertions(+), 7 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/ice/ice_base.c b/drivers/net/ethernet/intel/ice/ice_base.c
-index 662fc395edcc..013b3509028a 100644
---- a/drivers/net/ethernet/intel/ice/ice_base.c
-+++ b/drivers/net/ethernet/intel/ice/ice_base.c
-@@ -122,6 +122,12 @@ static int ice_vsi_alloc_q_vector(struct ice_vsi *vsi, u16 v_idx)
- 
- 	if (vsi->type == ICE_VSI_VF) {
- 		q_vector->reg_idx = ice_calc_vf_reg_idx(vsi->vf, q_vector);
-+		/* The index value is used to configure the hardware when
-+		 * programming the Tx and Rx queues. It is relative to each VF
-+		 * but must account for the non-queue vectors associated with
-+		 * that VF.
-+		 */
-+		q_vector->irq.index = v_idx + ICE_NONQ_VECS_VF;
- 		goto out;
- 	} else if (vsi->type == ICE_VSI_CTRL && vsi->vf) {
- 		struct ice_vsi *ctrl_vsi = ice_get_vf_ctrl_vsi(pf, vsi);
-diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl.c b/drivers/net/ethernet/intel/ice/ice_virtchnl.c
-index 1ff9818b4c84..2d20cfc97647 100644
---- a/drivers/net/ethernet/intel/ice/ice_virtchnl.c
-+++ b/drivers/net/ethernet/intel/ice/ice_virtchnl.c
-@@ -1505,13 +1505,12 @@ static int ice_vc_dis_qs_msg(struct ice_vf *vf, u8 *msg)
-  * ice_cfg_interrupt
-  * @vf: pointer to the VF info
-  * @vsi: the VSI being configured
-- * @vector_id: vector ID
-  * @map: vector map for mapping vectors to queues
-  * @q_vector: structure for interrupt vector
-  * configure the IRQ to queue map
-  */
--static int
--ice_cfg_interrupt(struct ice_vf *vf, struct ice_vsi *vsi, u16 vector_id,
-+static enum virtchnl_status_code
-+ice_cfg_interrupt(struct ice_vf *vf, struct ice_vsi *vsi,
- 		  struct virtchnl_vector_map *map,
- 		  struct ice_q_vector *q_vector)
- {
-@@ -1531,7 +1530,7 @@ ice_cfg_interrupt(struct ice_vf *vf, struct ice_vsi *vsi, u16 vector_id,
- 		q_vector->num_ring_rx++;
- 		q_vector->rx.itr_idx = map->rxitr_idx;
- 		vsi->rx_rings[vsi_q_id]->q_vector = q_vector;
--		ice_cfg_rxq_interrupt(vsi, vsi_q_id, vector_id,
-+		ice_cfg_rxq_interrupt(vsi, vsi_q_id, q_vector->irq.index,
- 				      q_vector->rx.itr_idx);
- 	}
- 
-@@ -1545,7 +1544,7 @@ ice_cfg_interrupt(struct ice_vf *vf, struct ice_vsi *vsi, u16 vector_id,
- 		q_vector->num_ring_tx++;
- 		q_vector->tx.itr_idx = map->txitr_idx;
- 		vsi->tx_rings[vsi_q_id]->q_vector = q_vector;
--		ice_cfg_txq_interrupt(vsi, vsi_q_id, vector_id,
-+		ice_cfg_txq_interrupt(vsi, vsi_q_id, q_vector->irq.index,
- 				      q_vector->tx.itr_idx);
- 	}
- 
-@@ -1619,8 +1618,7 @@ static int ice_vc_cfg_irq_map_msg(struct ice_vf *vf, u8 *msg)
- 		}
- 
- 		/* lookout for the invalid queue index */
--		v_ret = (enum virtchnl_status_code)
--			ice_cfg_interrupt(vf, vsi, vector_id, map, q_vector);
-+		v_ret = ice_cfg_interrupt(vf, vsi, map, q_vector);
- 		if (v_ret)
- 			goto error_param;
- 	}
--- 
-2.44.0.53.g0f9d4d28b7e6
-
+thanks
+-john
