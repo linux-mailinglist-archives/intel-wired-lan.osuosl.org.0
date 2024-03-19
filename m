@@ -2,68 +2,68 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4452487FE64
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 19 Mar 2024 14:14:05 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id A4ABD87FE66
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 19 Mar 2024 14:14:12 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id EB55540709;
-	Tue, 19 Mar 2024 13:14:03 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 5FDAA4070A;
+	Tue, 19 Mar 2024 13:14:11 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 5f95Td2vc99h; Tue, 19 Mar 2024 13:14:03 +0000 (UTC)
+	with ESMTP id a8WFXJEkxYqK; Tue, 19 Mar 2024 13:14:10 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 20DEE400F6
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D37D240111
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1710854043;
-	bh=ZWKSxVp3g6FEjhFzqkaVaCjjN5LOOivC34XYpajGkYQ=;
+	s=default; t=1710854049;
+	bh=2QljlU7E2sJGrvdaG/a5w15mv5n+W3LSwChxBU+8OKg=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=oOx304kT2X+C+xRmEIWR5KdCEDbil6ooFIqRU6r1QiNKiwhAmOxlPDKxH47L7I8fy
-	 u4Nv9wJJOf1fGrsOVMHclZzZePgEl6olAPGv0LVvIhYrOHbIfsZsfHvMtfT/bgcLmi
-	 z6i8oqFwdqRt5SmkM3khdY0PzJotmYvVsmOg6TZzPiak+2S/hyJYlGkb9vX0kReziQ
-	 W20at54rbXTf3BFvS5yiYGe4oNhByuI74/aKOyneIBEnXO+5tIga3ANU2r6JTL7tNm
-	 ddMwyZPemgEvQ3YY/0aE190UqAct6kW22QmF7m7h1IIusWkIcbhXZerEM2FLlfRfti
-	 xkE9xOeg9NdcA==
+	b=ABVkQM5RpnvIAUduPy7wUNJ6OXx9nFOOyHmdbr24MJwLvyx6jjDoycmQ3lDeNMP+Q
+	 zcOHFiZg5Kq1UsN5DBTTuOCIhieD1T3FZlC8n8Pes+u6bfsofvHlptumdrl3ePlvUI
+	 khMybOHH+jv0Bg+AVFqETz7+itWTLQIWFWOdZu3mOKQtPgA7hEDNYFbT+FaXYJB1gh
+	 JF0oxMt1GUjSHJYE7GQ90qtV725AixI1fbiPPdamPwIceLIPxflctgSm3aKoK//8CF
+	 ogU7FThSqHRlBYuVfriPUsYIzA21AA6KoX3SpA0icH6itqncqCMvKHTL3B1vpPdY7w
+	 /weFDkwxWIowA==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 20DEE400F6;
-	Tue, 19 Mar 2024 13:14:03 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id D37D240111;
+	Tue, 19 Mar 2024 13:14:09 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id BE3E01BF95F
- for <intel-wired-lan@lists.osuosl.org>; Tue, 19 Mar 2024 13:14:00 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 26A721BF976
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 19 Mar 2024 13:14:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id B847940192
- for <intel-wired-lan@lists.osuosl.org>; Tue, 19 Mar 2024 13:14:00 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 205BD4048A
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 19 Mar 2024 13:14:07 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id Ato378Ud-zea for <intel-wired-lan@lists.osuosl.org>;
- Tue, 19 Mar 2024 13:14:00 +0000 (UTC)
+ with ESMTP id IGjOrsAdZYn9 for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 19 Mar 2024 13:14:06 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.16;
  helo=mgamail.intel.com; envelope-from=lakshmi.sowjanya.d@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org E109E40327
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org E109E40327
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org EE0A440BB8
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org EE0A440BB8
 Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.16])
- by smtp2.osuosl.org (Postfix) with ESMTPS id E109E40327
- for <intel-wired-lan@lists.osuosl.org>; Tue, 19 Mar 2024 13:13:59 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,11017"; a="5843055"
+ by smtp2.osuosl.org (Postfix) with ESMTPS id EE0A440BB8
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 19 Mar 2024 13:14:05 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,11017"; a="5843076"
 X-IronPort-AV: E=Sophos;i="6.07,137,1708416000"; 
-   d="scan'208";a="5843055"
+   d="scan'208";a="5843076"
 Received: from fmviesa001.fm.intel.com ([10.60.135.141])
  by orvoesa108.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 19 Mar 2024 06:06:53 -0700
+ 19 Mar 2024 06:07:00 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.07,137,1708416000"; d="scan'208";a="44883246"
+X-IronPort-AV: E=Sophos;i="6.07,137,1708416000"; d="scan'208";a="44883252"
 Received: from inlubt0316.iind.intel.com ([10.191.20.213])
- by fmviesa001.fm.intel.com with ESMTP; 19 Mar 2024 06:06:45 -0700
+ by fmviesa001.fm.intel.com with ESMTP; 19 Mar 2024 06:06:52 -0700
 From: lakshmi.sowjanya.d@intel.com
 To: tglx@linutronix.de, jstultz@google.com, giometti@enneenne.com,
  corbet@lwn.net, linux-kernel@vger.kernel.org
-Date: Tue, 19 Mar 2024 18:35:44 +0530
-Message-Id: <20240319130547.4195-9-lakshmi.sowjanya.d@intel.com>
+Date: Tue, 19 Mar 2024 18:35:45 +0530
+Message-Id: <20240319130547.4195-10-lakshmi.sowjanya.d@intel.com>
 X-Mailer: git-send-email 2.35.3
 In-Reply-To: <20240319130547.4195-1-lakshmi.sowjanya.d@intel.com>
 References: <20240319130547.4195-1-lakshmi.sowjanya.d@intel.com>
@@ -71,25 +71,25 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1710854040; x=1742390040;
+ t=1710854046; x=1742390046;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=KlV5CDUrB1wYm3hhtjGk3UkaNzeKBnXpOQYydmU3iM4=;
- b=SlUljDC7SDa/EeTrO2Wc2KW3KVhCRlTdAlbBZMblJpU69Vsc/QAsKu0W
- B1fP04nAg03FSdBfJpBm/RksN9b7kuRDJKuMKcYE0XEsT1cMtaqAB7My6
- S6L0Tdz+coUUpiW9XOyb11LFZ47MnGcxw30UCp0fOlUV+uLXgFiLgvdIz
- +m5UAuWto7OhvcDtyFgA3ucE+K+IM+0fqjDKBxtq6NM35T4FVMZdATlzp
- rFiOfxacpYz5HllXwptqwrFX52Huy9WyWG1gRnql/sjj6ShzyPU9Anavy
- yrxge6q6lBUJvRuTZ3eNtTZWb9/d9sF8KdXEG4iNs5EaKBETPcpKn7EdD
+ bh=vQX8zNWVTLYYy3JY3x1fHcqNprd6z6ajaQA72ST/yRk=;
+ b=e2A4Qs/tgVvboOUJQMdEpxj4vNRF53lwEFO7n7K3vFszBrJ5NdodQi1p
+ 8XAc67MaoYj2Jmfh92Q+irDSOVOqhC/xx/lSVkO6+WBrhxzd/Xy4zY9BJ
+ w9lG4a6Gs6/0bKSv97F1jGsRCZnsNatY3eEuEXWkcIMypCus5U14gv8Dd
+ 5/lDpFtwfhwruxayzoQQ3HchBg0rTDu5fPfi2yL6iWiSh+2leeMXJFaIE
+ wHk8hlLeaeoW7tw4uaFtiE2ZYMvpXND+z5e4DHz54RA6ozyN5lCNsnE4H
+ GZT5k+qdGruS8lKN+xiHY5lRTQ9BipnTayaO++rayyTb00L9NhrB5nO9g
  Q==;
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=SlUljDC7
-Subject: [Intel-wired-lan] [PATCH v5 08/11] x86/tsc: Remove art to tsc
- conversion functions which are obsolete
+ header.a=rsa-sha256 header.s=Intel header.b=e2A4Qs/t
+Subject: [Intel-wired-lan] [PATCH v5 09/11] pps: generators: Add PPS
+ Generator TIO Driver
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -116,101 +116,323 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 From: Lakshmi Sowjanya D <lakshmi.sowjanya.d@intel.com>
 
-The convert_art_to_tsc() and convert_art_ns_to_tsc() interfaces are no
-longer required. This conversion is internally done in
-get_device_system_crosststamp() using convert_base_to_cs().
+The Intel Timed IO PPS generator driver outputs a PPS signal using
+dedicated hardware that is more accurate than software actuated PPS.
+The Timed IO hardware generates output events using the ART timer.
+The ART timer period varies based on platform type, but is less than 100
+nanoseconds for all current platforms. Timed IO output accuracy is
+within 1 ART period.
 
+PPS output is enabled by writing '1' the 'enable' sysfs attribute. The
+driver uses hrtimers to schedule a wake-up 10 ms before each event
+(edge) target time. At wakeup, the driver converts the target time in
+terms of CLOCK_REALTIME to ART trigger time and writes this to the Timed
+IO hardware. The Timed IO hardware generates an event precisely at the
+requested system time without software involvement.
+
+Co-developed-by: Christopher Hall <christopher.s.hall@intel.com>
+Signed-off-by: Christopher Hall <christopher.s.hall@intel.com>
+Co-developed-by: Pandith N <pandith.n@intel.com>
+Signed-off-by: Pandith N <pandith.n@intel.com>
+Co-developed-by: Thejesh Reddy T R <thejesh.reddy.t.r@intel.com>
+Signed-off-by: Thejesh Reddy T R <thejesh.reddy.t.r@intel.com>
 Signed-off-by: Lakshmi Sowjanya D <lakshmi.sowjanya.d@intel.com>
+Reviewed-by: Eddie Dong <eddie.dong@intel.com>
+Reviewed-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 ---
- arch/x86/include/asm/tsc.h |  3 --
- arch/x86/kernel/tsc.c      | 60 --------------------------------------
- 2 files changed, 63 deletions(-)
+ drivers/pps/generators/Kconfig       |  16 ++
+ drivers/pps/generators/Makefile      |   1 +
+ drivers/pps/generators/pps_gen_tio.c | 245 +++++++++++++++++++++++++++
+ 3 files changed, 262 insertions(+)
+ create mode 100644 drivers/pps/generators/pps_gen_tio.c
 
-diff --git a/arch/x86/include/asm/tsc.h b/arch/x86/include/asm/tsc.h
-index 405efb3e4996..94408a784c8e 100644
---- a/arch/x86/include/asm/tsc.h
-+++ b/arch/x86/include/asm/tsc.h
-@@ -28,9 +28,6 @@ static inline cycles_t get_cycles(void)
- }
- #define get_cycles get_cycles
+diff --git a/drivers/pps/generators/Kconfig b/drivers/pps/generators/Kconfig
+index d615e640fcad..0f090932336f 100644
+--- a/drivers/pps/generators/Kconfig
++++ b/drivers/pps/generators/Kconfig
+@@ -12,3 +12,19 @@ config PPS_GENERATOR_PARPORT
+ 	  If you say yes here you get support for a PPS signal generator which
+ 	  utilizes STROBE pin of a parallel port to send PPS signals. It uses
+ 	  parport abstraction layer and hrtimers to precisely control the signal.
++
++config PPS_GENERATOR_TIO
++	tristate "TIO PPS signal generator"
++	depends on X86 && CPU_SUP_INTEL
++	help
++	  If you say yes here you get support for a PPS TIO signal generator
++	  which generates a pulse at a prescribed time based on the system clock.
++	  It uses time translation and hrtimers to precisely generate a pulse.
++	  This hardware is present on 2019 and newer Intel CPUs. However, this
++	  driver is not useful without adding highly specialized hardware outside
++	  the Linux system to observe these pulses.
++
++	  To compile this driver as a module, choose M here: the module
++	  will be called pps_gen_tio.
++
++	  If unsure, say N.
+diff --git a/drivers/pps/generators/Makefile b/drivers/pps/generators/Makefile
+index 2d56dd0495d5..07004cfd3996 100644
+--- a/drivers/pps/generators/Makefile
++++ b/drivers/pps/generators/Makefile
+@@ -4,6 +4,7 @@
+ #
  
--extern struct system_counterval_t convert_art_to_tsc(u64 art);
--extern struct system_counterval_t convert_art_ns_to_tsc(u64 art_ns);
--
- extern void tsc_early_init(void);
- extern void tsc_init(void);
- extern void mark_tsc_unstable(char *reason);
-diff --git a/arch/x86/kernel/tsc.c b/arch/x86/kernel/tsc.c
-index 45bf2f6d0ffa..5f0bd441ed4d 100644
---- a/arch/x86/kernel/tsc.c
-+++ b/arch/x86/kernel/tsc.c
-@@ -1297,66 +1297,6 @@ int unsynchronized_tsc(void)
- 	return 0;
- }
+ obj-$(CONFIG_PPS_GENERATOR_PARPORT) += pps_gen_parport.o
++obj-$(CONFIG_PPS_GENERATOR_TIO) += pps_gen_tio.o
  
--/*
-- * Convert ART to TSC given numerator/denominator found in detect_art()
-- */
--struct system_counterval_t convert_art_to_tsc(u64 art)
--{
--	u64 tmp, res, rem;
--
--	rem = do_div(art, art_base_clk.denominator);
--
--	res = art * art_base_clk.numerator;
--	tmp = rem * art_base_clk.numerator;
--
--	do_div(tmp, art_base_clk.denominator);
--	res += tmp + art_base_clk.offset;
--
--	return (struct system_counterval_t) {
--		.cs_id	= have_art ? CSID_X86_TSC : CSID_GENERIC,
--		.cycles	= res,
--	};
--}
--EXPORT_SYMBOL(convert_art_to_tsc);
--
--/**
-- * convert_art_ns_to_tsc() - Convert ART in nanoseconds to TSC.
-- * @art_ns: ART (Always Running Timer) in unit of nanoseconds
-- *
-- * PTM requires all timestamps to be in units of nanoseconds. When user
-- * software requests a cross-timestamp, this function converts system timestamp
-- * to TSC.
-- *
-- * This is valid when CPU feature flag X86_FEATURE_TSC_KNOWN_FREQ is set
-- * indicating the tsc_khz is derived from CPUID[15H]. Drivers should check
-- * that this flag is set before conversion to TSC is attempted.
-- *
-- * Return:
-- * struct system_counterval_t - system counter value with the ID of the
-- *	corresponding clocksource:
-- *	cycles:		System counter value
-- *	cs_id:		The clocksource ID for validating comparability
-- */
--
--struct system_counterval_t convert_art_ns_to_tsc(u64 art_ns)
--{
--	u64 tmp, res, rem;
--
--	rem = do_div(art_ns, USEC_PER_SEC);
--
--	res = art_ns * tsc_khz;
--	tmp = rem * tsc_khz;
--
--	do_div(tmp, USEC_PER_SEC);
--	res += tmp;
--
--	return (struct system_counterval_t) {
--		.cs_id	= have_art ? CSID_X86_TSC : CSID_GENERIC,
--		.cycles	= res,
--	};
--}
--EXPORT_SYMBOL(convert_art_ns_to_tsc);
--
- static void tsc_refine_calibration_work(struct work_struct *work);
- static DECLARE_DELAYED_WORK(tsc_irqwork, tsc_refine_calibration_work);
- /**
+ ifeq ($(CONFIG_PPS_DEBUG),y)
+ EXTRA_CFLAGS += -DDEBUG
+diff --git a/drivers/pps/generators/pps_gen_tio.c b/drivers/pps/generators/pps_gen_tio.c
+new file mode 100644
+index 000000000000..3ee271524482
+--- /dev/null
++++ b/drivers/pps/generators/pps_gen_tio.c
+@@ -0,0 +1,245 @@
++// SPDX-License-Identifier: GPL-2.0-only
++/*
++ * Intel PPS signal Generator Driver
++ *
++ * Copyright (C) 2023 Intel Corporation
++ */
++
++#include <linux/bits.h>
++#include <linux/bitfield.h>
++#include <linux/cleanup.h>
++#include <linux/container_of.h>
++#include <linux/cpu.h>
++#include <linux/device.h>
++#include <linux/err.h>
++#include <linux/hrtimer.h>
++#include <linux/io-64-nonatomic-hi-lo.h>
++#include <linux/kstrtox.h>
++#include <linux/mod_devicetable.h>
++#include <linux/module.h>
++#include <linux/platform_device.h>
++#include <linux/spinlock.h>
++#include <linux/sysfs.h>
++#include <linux/timekeeping.h>
++#include <linux/types.h>
++
++#include <asm/cpu_device_id.h>
++
++#define TIOCTL			0x00
++#define TIOCOMPV		0x10
++
++/* Control Register */
++#define TIOCTL_EN			BIT(0)
++#define TIOCTL_DIR			BIT(1)
++#define TIOCTL_EP			GENMASK(3, 2)
++#define TIOCTL_EP_RISING_EDGE		FIELD_PREP(TIOCTL_EP, 0)
++#define TIOCTL_EP_FALLING_EDGE		FIELD_PREP(TIOCTL_EP, 1)
++#define TIOCTL_EP_TOGGLE_EDGE		FIELD_PREP(TIOCTL_EP, 2)
++
++#define SAFE_TIME_NS			(10 * NSEC_PER_MSEC) /* Safety time to set hrtimer early */
++#define MAGIC_CONST			(NSEC_PER_SEC - SAFE_TIME_NS)
++#define ART_HW_DELAY_CYCLES		2
++
++struct pps_tio {
++	struct hrtimer timer;
++	struct device *dev;
++	spinlock_t lock;
++	struct attribute_group attrs;
++	void __iomem *base;
++	bool enabled;
++};
++
++static inline u32 pps_ctl_read(struct pps_tio *tio)
++{
++	return readl(tio->base + TIOCTL);
++}
++
++static inline void pps_ctl_write(struct pps_tio *tio, u32 value)
++{
++	writel(value, tio->base + TIOCTL);
++}
++
++/* For COMPV register, It's safer to write higher 32-bit followed by lower 32-bit */
++static inline void pps_compv_write(struct pps_tio *tio, u64 value)
++{
++	hi_lo_writeq(value, tio->base + TIOCOMPV);
++}
++
++static inline ktime_t first_event(struct pps_tio *tio)
++{
++	return ktime_set(ktime_get_real_seconds() + 1, MAGIC_CONST);
++}
++
++static u32 pps_tio_disable(struct pps_tio *tio)
++{
++	u32 ctrl;
++
++	ctrl = pps_ctl_read(tio);
++	pps_compv_write(tio, 0);
++
++	ctrl &= ~TIOCTL_EN;
++	pps_ctl_write(tio, ctrl);
++
++	return ctrl;
++}
++
++static void pps_tio_direction_output(struct pps_tio *tio)
++{
++	u32 ctrl;
++
++	ctrl = pps_tio_disable(tio);
++
++	/* We enable the device, be sure that the 'compare' value is invalid */
++	pps_compv_write(tio, 0);
++
++	ctrl &= ~(TIOCTL_DIR | TIOCTL_EP);
++	ctrl |= TIOCTL_EP_TOGGLE_EDGE;
++	pps_ctl_write(tio, ctrl);
++
++	ctrl |= TIOCTL_EN;
++	pps_ctl_write(tio, ctrl);
++}
++
++static bool pps_generate_next_pulse(struct pps_tio *tio, ktime_t expires)
++{
++	u64 art;
++
++	if (!ktime_real_to_base_clock(expires, CSID_X86_ART, &art)) {
++		pps_tio_disable(tio);
++		return false;
++	}
++
++	pps_compv_write(tio, art - ART_HW_DELAY_CYCLES);
++	return true;
++}
++
++static enum hrtimer_restart hrtimer_callback(struct hrtimer *timer)
++{
++	struct pps_tio *tio = container_of(timer, struct pps_tio, timer);
++	ktime_t expires, now;
++
++	guard(spinlock)(&tio->lock);
++
++	expires = hrtimer_get_expires(timer);
++	now = ktime_get_real();
++
++	if (now - expires < SAFE_TIME_NS) {
++		if (!pps_generate_next_pulse(tio, expires + SAFE_TIME_NS))
++			return HRTIMER_NORESTART;
++	}
++
++	hrtimer_forward(timer, now, NSEC_PER_SEC / 2);
++	return HRTIMER_RESTART;
++}
++
++static ssize_t enable_store(struct device *dev, struct device_attribute *attr, const char *buf,
++			    size_t count)
++{
++	struct pps_tio *tio = dev_get_drvdata(dev);
++	bool enable;
++	int err;
++
++	err = kstrtobool(buf, &enable);
++	if (err)
++		return err;
++
++	guard(spinlock_irqsave)(&tio->lock);
++	if (enable && !tio->enabled) {
++		if (!timekeeping_clocksource_has_base(CSID_X86_ART)) {
++			dev_err(tio->dev, "PPS cannot be started as clock is not related to ART");
++			return -EPERM;
++		}
++		pps_tio_direction_output(tio);
++		hrtimer_start(&tio->timer, first_event(tio), HRTIMER_MODE_ABS);
++		tio->enabled = true;
++	} else if (!enable && tio->enabled) {
++		hrtimer_cancel(&tio->timer);
++		pps_tio_disable(tio);
++		tio->enabled = false;
++	}
++	return count;
++}
++
++static ssize_t enable_show(struct device *dev, struct device_attribute *devattr, char *buf)
++{
++	struct pps_tio *tio = dev_get_drvdata(dev);
++	u32 ctrl;
++
++	ctrl = pps_ctl_read(tio);
++	ctrl &= TIOCTL_EN;
++
++	return sysfs_emit(buf, "%u\n", ctrl);
++}
++static DEVICE_ATTR_RW(enable);
++
++static struct attribute *pps_tio_attrs[] = {
++	&dev_attr_enable.attr,
++	NULL
++};
++ATTRIBUTE_GROUPS(pps_tio);
++
++static int pps_tio_probe(struct platform_device *pdev)
++{
++	struct pps_tio *tio;
++
++	if (!(cpu_feature_enabled(X86_FEATURE_TSC_KNOWN_FREQ) &&
++	      cpu_feature_enabled(X86_FEATURE_ART))) {
++		dev_warn(&pdev->dev, "TSC/ART is not enabled");
++		return -ENODEV;
++	}
++
++	tio = devm_kzalloc(&pdev->dev, sizeof(*tio), GFP_KERNEL);
++	if (!tio)
++		return -ENOMEM;
++
++	tio->dev = &pdev->dev;
++	tio->base = devm_platform_ioremap_resource(pdev, 0);
++	if (IS_ERR(tio->base))
++		return PTR_ERR(tio->base);
++
++	pps_tio_disable(tio);
++	hrtimer_init(&tio->timer, CLOCK_REALTIME, HRTIMER_MODE_ABS);
++	tio->timer.function = hrtimer_callback;
++	spin_lock_init(&tio->lock);
++	tio->enabled = false;
++	platform_set_drvdata(pdev, tio);
++
++	return 0;
++}
++
++static int pps_tio_remove(struct platform_device *pdev)
++{
++	struct pps_tio *tio = platform_get_drvdata(pdev);
++
++	hrtimer_cancel(&tio->timer);
++	pps_tio_disable(tio);
++
++	return 0;
++}
++
++static const struct acpi_device_id intel_pmc_tio_acpi_match[] = {
++	{ "INTC1021" },
++	{ "INTC1022" },
++	{ "INTC1023" },
++	{ "INTC1024" },
++	{}
++};
++MODULE_DEVICE_TABLE(acpi, intel_pmc_tio_acpi_match);
++
++static struct platform_driver pps_tio_driver = {
++	.probe          = pps_tio_probe,
++	.remove         = pps_tio_remove,
++	.driver         = {
++		.name                   = "intel-pps-generator",
++		.acpi_match_table       = intel_pmc_tio_acpi_match,
++		.dev_groups             = pps_tio_groups,
++	},
++};
++module_platform_driver(pps_tio_driver);
++
++MODULE_AUTHOR("Lakshmi Sowjanya D <lakshmi.sowjanya.d@intel.com>");
++MODULE_AUTHOR("Christopher Hall <christopher.s.hall@intel.com>");
++MODULE_AUTHOR("Pandith N <pandith.n@intel.com>");
++MODULE_AUTHOR("Thejesh Reddy T R <thejesh.reddy.t.r@intel.com>");
++MODULE_DESCRIPTION("Intel PMC Time-Aware IO Generator Driver");
++MODULE_LICENSE("GPL");
 -- 
 2.35.3
 
