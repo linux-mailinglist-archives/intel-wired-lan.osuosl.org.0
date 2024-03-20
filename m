@@ -1,90 +1,113 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 28411881167
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 20 Mar 2024 12:59:17 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2D5EE8811B3
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 20 Mar 2024 13:33:04 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id D30DA40839;
-	Wed, 20 Mar 2024 11:59:15 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id E99DE4089D;
+	Wed, 20 Mar 2024 12:33:01 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
 	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id rC7hWOE-KAmh; Wed, 20 Mar 2024 11:59:14 +0000 (UTC)
+	with ESMTP id h6L_Dwmcx8CN; Wed, 20 Mar 2024 12:33:01 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6AD2E4084C
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1E6F540894
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1710935954;
-	bh=xEz/ywJwbp2nKL+DLAkZTmL3i3QxY1LcI0ajfNNzYhc=;
-	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=axad4z/diqG66HFN9P5ow/7+m9twtNBBaqsYFuM+ebw9n8FLJSsI4YJs/xLrEFKUq
-	 lCgwmRXu4xLBY42JC2GAXaN7FU1hiGSKchGSzBmReev9Efg/HTjVUQ7GBlgCOuxLgu
-	 XIMDe77/jhBJsWxw+rvn9kQVR6TLtBnookCHn2gDSkDwCJ94fKYVOjdLxenEk+5h/J
-	 jpE+Q2osGT1XZOqYPtEhLDAkd6Ou7SqmebJyQqbRC8KiRQeqv1xe/dh/A21X7LTtV3
-	 w98u0WKCRynMDpSN+jNlAGGayjOasxaAuO2+UKApxEBfrPmc+07yYOgTuZ8sj8DM3h
-	 6/IOqSNhEr2eg==
+	s=default; t=1710937981;
+	bh=KhP5z213JRHgg+2Y4l04p0agR635gtrVnTmlg2I++II=;
+	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=iJ/6zJtN783A7GvZnM+8xY33ItJby05gn64uryBX9psUmFbmLblYOO/15DGrC48uu
+	 EfzVLFW5WfH4JlepmVi+qbDZlJqamBRputJXt+zituJGsJOLqvydCghpT2HKGeq+kZ
+	 AfO6jqZC8Pp5WcTsR1aSr7nfp5z9eI9f3dNJ53EbevjrPpKzuxj1mLkVSAlRPIMmB/
+	 ewvdQ4Wvl5a8y1HY32spoF1MXqQFMQdg/ZdLLitjJPxGDxL3bKCzJlgyZKZwokc7o+
+	 HzaWSmsUfVjwOuKUxy3K/HtkLfRER8UuRCHzA/NU8YkGRcY4ggHJur07WtLrvaBtbM
+	 FtC+ExfaYsYAA==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 6AD2E4084C;
-	Wed, 20 Mar 2024 11:59:14 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 1E6F540894;
+	Wed, 20 Mar 2024 12:33:01 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 0D4891BF21A
- for <intel-wired-lan@lists.osuosl.org>; Wed, 20 Mar 2024 11:59:12 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 65E821BF5F8
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 20 Mar 2024 12:32:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id ED43781242
- for <intel-wired-lan@lists.osuosl.org>; Wed, 20 Mar 2024 11:59:11 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 519DB60676
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 20 Mar 2024 12:32:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 9W8LG56kM6EZ for <intel-wired-lan@lists.osuosl.org>;
- Wed, 20 Mar 2024 11:59:11 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.7;
- helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 8CC3380F52
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8CC3380F52
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.7])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 8CC3380F52
- for <intel-wired-lan@lists.osuosl.org>; Wed, 20 Mar 2024 11:59:10 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,11018"; a="31291743"
-X-IronPort-AV: E=Sophos;i="6.07,140,1708416000"; d="scan'208";a="31291743"
-Received: from fmviesa010.fm.intel.com ([10.60.135.150])
- by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 20 Mar 2024 04:59:09 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.07,140,1708416000"; d="scan'208";a="14018523"
-Received: from lkp-server01.sh.intel.com (HELO b21307750695) ([10.239.97.150])
- by fmviesa010.fm.intel.com with ESMTP; 20 Mar 2024 04:59:08 -0700
-Received: from kbuild by b21307750695 with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1rmub4-000IaV-2D
- for intel-wired-lan@lists.osuosl.org; Wed, 20 Mar 2024 11:59:06 +0000
-Date: Wed, 20 Mar 2024 19:59:05 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <202403201901.NdAdc5Gt-lkp@intel.com>
-User-Agent: s-nail v14.9.24
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1710935950; x=1742471950;
- h=date:from:to:subject:message-id;
- bh=BxT+iNbOhGO6HLsMv4THzM9BJZg3UBd+P1QPfAY7cwI=;
- b=f8te0BXZTK/TLvd5dKZNw4Jbc11LnZItuWptjPz1/9b8FD+c+WntdJhi
- 61bagRCtjikxyzIHy335jBovXvuA7cPHaNr0bFUauQaJOpgzZQJvSD8M7
- oZBAeJyTyGoG/ldktpMZbStAE8+1JTTnfjZcMU6kL9w1hRWSzL1xL0jRc
- F5PBVdbiRUWwIlCnevbDfjMes2kB6E1mwjCuFSEF5ZK/4/m1HgThRVZGk
- nCtDYNMf/6O46uDws55q10C5Mq03I8/59Nc0FjSyHFCCgLaZx7leboLt5
- VP0n/G1zaNSdNR/IRWTUyiTuPR1+tT2vRyzbHxW74/vvDGnEf+tS1ZKT4
- g==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id E8KVH-mZb4YD for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 20 Mar 2024 12:32:57 +0000 (UTC)
+X-Greylist: delayed 484 seconds by postgrey-1.37 at util1.osuosl.org;
+ Wed, 20 Mar 2024 12:32:55 UTC
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 6AFBB60625
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6AFBB60625
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=212.227.17.11;
+ helo=mout.web.de; envelope-from=markus.elfring@web.de; receiver=<UNKNOWN> 
+Received: from mout.web.de (mout.web.de [212.227.17.11])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 6AFBB60625
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 20 Mar 2024 12:32:55 +0000 (UTC)
+X-UI-Sender-Class: 814a7b36-bfc1-4dae-8640-3722d8ec6cd6
+Received: from [192.168.178.21] ([94.31.90.95]) by smtp.web.de (mrweb106
+ [213.165.67.124]) with ESMTPSA (Nemesis) id 1N9LIc-1qjpQC2DWG-015dwE; Wed, 20
+ Mar 2024 13:18:48 +0100
+Message-ID: <4b8ee072-70bc-4a0a-8e43-e244f8ee2f22@web.de>
+Date: Wed, 20 Mar 2024 13:18:33 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+To: Dan Carpenter <dan.carpenter@linaro.org>,
+ kernel-janitors@vger.kernel.org, netdev@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org,
+ Maciej Fijalkowski <maciej.fijalkowski@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>
+References: <77145930-e3df-4e77-a22d-04851cf3a426@moroto.mountain>
+Content-Language: en-GB
+From: Markus Elfring <Markus.Elfring@web.de>
+In-Reply-To: <77145930-e3df-4e77-a22d-04851cf3a426@moroto.mountain>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-Provags-ID: V03:K1:PTUuB43Z3DS7y5k1LlzvJWE5GpgoYr2z888JWO4A8Mid5gKORZl
+ MkpJK4sPj0ibCEfU/Pw4f5+CIFy2gNMghqQLHOhx/qdJ2joepGCvIS4FT/vzNi3ZISYJm5m
+ W0rWME1EqkcsjFu2+pZtTZTKhWraCRg+epsZkoQ6DCHkmtw8Mxj9kbPwzJj8jb9ofEii8JW
+ 9eLlGudzZsRxA81ao1Igw==
+UI-OutboundReport: notjunk:1;M01:P0:I/COkzrdeRM=;q6ywcjjufhBAyy/52jzodOn5/r0
+ GSS4Vh4hH9B2zcNwlsWf6O+HsZwdZ7L/aH60pv0JzXw6rtXreVBY3boo27BqZSQJW1OC0iJJ5
+ zrhvHu4KA25genAPnGpk9VoJCecPJPSqyndPYSiiimFi3icsDDB+t4QWv+uPGfFweZ9x7ylcp
+ ILy+L0iwHtTlavA7dhkUnM69nCEYNLBdz7w49uz+LD8eAaJVkCEKl79i8udgNFju5/mDkPINL
+ xS+4vTW/MrKo8kTzhg5uiCNFd/cVs0WKrPEJ6cKbhI5GO9nZhII1BRiZw3w6n1R2fXm0ASAx0
+ P5ja5y+aIu07hAW4GmX6fkFfb+oNVD1pE6BIPy1n93zHPAcuPRvTgYDTGENXo/d0VpZmyupxP
+ Ig33Dh3va/p8JmdwDNX1CHHNHdt6DAAUksGgTBiXl44fSyTHMgxBCQgvAeW5M9EBTrYA9r/Ii
+ P0kC07s1sjkBYWHsZvEo4e7Ulp335gjgtmH4za/hTCLfOQBM8xNV0CwcHf/kj4dRTJDqtwEnP
+ /lnppqPS7kWKpoUARE/17+at6eCzANbH4uOaM+z5UNtWOZ8bgn9L6ywT0u9aJze2Q2jBUlNEy
+ 00uJpVuaW979Aj0jICPJZLPmShJVXnP4OpiEdWE8SMVmRygeSEKZXyaxBbzdeiZ6JJ9UD4iNj
+ G+20dv/DXGrQQUxHLSEnU/4AxkWZrV1tPM9mC3epcFHkl/GQPY+NikfLtWCFzmgZ4c0ymj1ep
+ FK3dwYVrsEuUJK3KJbYKHTvBX6F4HOMgUxUyzVMNN/eonX6pflgQbnQ7tD/WtIfNzqwVtjZFn
+ lSKd/G7oTSQa0OC6tpVfrrmcWcaRXVgIIDCtRVXAXkbJI=
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=web.de; 
+ s=s29768273; t=1710937973; x=1711542773; i=markus.elfring@web.de;
+ bh=KhP5z213JRHgg+2Y4l04p0agR635gtrVnTmlg2I++II=;
+ h=X-UI-Sender-Class:Date:To:Cc:References:Subject:From:
+ In-Reply-To;
+ b=uKzeO9Rck+sh1+twjJYM5Z8gmlGzv2YtFvWXYYz6P1m7T5buiGATOxrrKAiiMV0D
+ EORYfKdcJheLTgDTUO9fVz6FIR5hluZ06p5Hr0oA2Hc7Rc7h+wxO8YkWAjhIYH34r
+ lkn0QFVXL4rrWZIM1JYOiQJmX/VnD/Zheu6bXQpl9X29NfIgCGwQOY3Z9SLbKQ9TG
+ vVDEdUuf3MxIpclIF6DTHt100VTh4csobr5gnlyk4na6KIzPBv1lCzD6qBiZLvGa2
+ ofVmBcUFCixruXHr81gwTOb0G1p4RdlsqeQ1KXgQ5fHr5Ld7UMlanrt6843Txj0Kx
+ UctDiird1cQOdHrZwQ==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dmarc=pass (p=quarantine dis=none)
+ header.from=web.de
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=f8te0BXZ
-Subject: [Intel-wired-lan] [tnguy-net-queue:dev-queue] BUILD SUCCESS
- e343aa3989b97d13cadcdd3a1c38dbc5c9ed4c04
+ unprotected) header.d=web.de header.i=markus.elfring@web.de
+ header.a=rsa-sha256 header.s=s29768273 header.b=uKzeO9Rc
+Subject: Re: [Intel-wired-lan] [PATCH net] ice: Fix freeing uninitialized
+ pointers
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,200 +120,60 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: Pucha Himasekhar Reddy <himasekharx.reddy.pucha@intel.com>,
+ Jiri Pirko <jiri@resnulli.us>, LKML <linux-kernel@vger.kernel.org>,
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git dev-queue
-branch HEAD: e343aa3989b97d13cadcdd3a1c38dbc5c9ed4c04  i40e: Enforce software interrupt during busy-poll exit
+> Automatically cleaned up pointers need to be initialized before exiting
+> their scope.  In this case, they need to be initialized to NULL before
+> any return statement.
 
-elapsed time: 927m
+I suggest to reconsider such information a bit more.
 
-configs tested: 178
-configs skipped: 4
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+=E2=80=A6
+> +++ b/drivers/net/ethernet/intel/ice/ice_common.c
+> @@ -1002,8 +1002,8 @@ static void ice_get_itr_intrl_gran(struct ice_hw *=
+hw)
+>   */
+>  int ice_init_hw(struct ice_hw *hw)
+>  {
+> -	struct ice_aqc_get_phy_caps_data *pcaps __free(kfree);
+> -	void *mac_buf __free(kfree);
+> +	struct ice_aqc_get_phy_caps_data *pcaps __free(kfree) =3D NULL;
+> +	void *mac_buf __free(kfree) =3D NULL;
+>  	u16 mac_buf_len;
+>  	int status;
 
-tested configs:
-alpha                             allnoconfig   gcc  
-alpha                            allyesconfig   gcc  
-alpha                               defconfig   gcc  
-arc                              allmodconfig   gcc  
-arc                               allnoconfig   gcc  
-arc                              allyesconfig   gcc  
-arc                          axs103_defconfig   gcc  
-arc                                 defconfig   gcc  
-arc                     haps_hs_smp_defconfig   gcc  
-arc                   randconfig-001-20240320   gcc  
-arc                   randconfig-002-20240320   gcc  
-arm                              allmodconfig   gcc  
-arm                               allnoconfig   clang
-arm                              allyesconfig   gcc  
-arm                                 defconfig   clang
-arm                          ixp4xx_defconfig   gcc  
-arm                        multi_v7_defconfig   gcc  
-arm                   randconfig-001-20240320   gcc  
-arm                   randconfig-002-20240320   gcc  
-arm                   randconfig-003-20240320   gcc  
-arm                   randconfig-004-20240320   gcc  
-arm                           spitz_defconfig   gcc  
-arm64                            allmodconfig   clang
-arm64                             allnoconfig   gcc  
-arm64                               defconfig   gcc  
-arm64                 randconfig-001-20240320   clang
-arm64                 randconfig-002-20240320   gcc  
-arm64                 randconfig-003-20240320   clang
-arm64                 randconfig-004-20240320   clang
-csky                             allmodconfig   gcc  
-csky                              allnoconfig   gcc  
-csky                             allyesconfig   gcc  
-csky                                defconfig   gcc  
-csky                  randconfig-001-20240320   gcc  
-csky                  randconfig-002-20240320   gcc  
-hexagon                          allmodconfig   clang
-hexagon                           allnoconfig   clang
-hexagon                          allyesconfig   clang
-hexagon                             defconfig   clang
-hexagon               randconfig-001-20240320   clang
-hexagon               randconfig-002-20240320   clang
-i386                             allmodconfig   gcc  
-i386                              allnoconfig   gcc  
-i386                             allyesconfig   gcc  
-i386         buildonly-randconfig-001-20240320   clang
-i386         buildonly-randconfig-002-20240320   gcc  
-i386         buildonly-randconfig-003-20240320   gcc  
-i386         buildonly-randconfig-004-20240320   clang
-i386         buildonly-randconfig-005-20240320   gcc  
-i386         buildonly-randconfig-006-20240320   gcc  
-i386                                defconfig   clang
-i386                  randconfig-001-20240320   clang
-i386                  randconfig-002-20240320   clang
-i386                  randconfig-003-20240320   clang
-i386                  randconfig-004-20240320   clang
-i386                  randconfig-005-20240320   clang
-i386                  randconfig-006-20240320   gcc  
-i386                  randconfig-011-20240320   clang
-i386                  randconfig-012-20240320   clang
-i386                  randconfig-013-20240320   clang
-i386                  randconfig-014-20240320   clang
-i386                  randconfig-015-20240320   gcc  
-i386                  randconfig-016-20240320   clang
-loongarch                        allmodconfig   gcc  
-loongarch                         allnoconfig   gcc  
-loongarch                           defconfig   gcc  
-loongarch             randconfig-001-20240320   gcc  
-loongarch             randconfig-002-20240320   gcc  
-m68k                              allnoconfig   gcc  
-m68k                             allyesconfig   gcc  
-m68k                                defconfig   gcc  
-microblaze                       allmodconfig   gcc  
-microblaze                        allnoconfig   gcc  
-microblaze                       allyesconfig   gcc  
-microblaze                          defconfig   gcc  
-mips                              allnoconfig   gcc  
-mips                             allyesconfig   gcc  
-nios2                            allmodconfig   gcc  
-nios2                             allnoconfig   gcc  
-nios2                            allyesconfig   gcc  
-nios2                               defconfig   gcc  
-nios2                 randconfig-001-20240320   gcc  
-nios2                 randconfig-002-20240320   gcc  
-openrisc                          allnoconfig   gcc  
-openrisc                         allyesconfig   gcc  
-openrisc                            defconfig   gcc  
-parisc                           allmodconfig   gcc  
-parisc                            allnoconfig   gcc  
-parisc                           allyesconfig   gcc  
-parisc                              defconfig   gcc  
-parisc                generic-32bit_defconfig   gcc  
-parisc                randconfig-001-20240320   gcc  
-parisc                randconfig-002-20240320   gcc  
-parisc64                            defconfig   gcc  
-powerpc                      acadia_defconfig   clang
-powerpc                          allmodconfig   gcc  
-powerpc                           allnoconfig   gcc  
-powerpc                          allyesconfig   clang
-powerpc                     kmeter1_defconfig   gcc  
-powerpc                       maple_defconfig   clang
-powerpc               randconfig-001-20240320   gcc  
-powerpc               randconfig-002-20240320   clang
-powerpc               randconfig-003-20240320   gcc  
-powerpc                     stx_gp3_defconfig   clang
-powerpc                     tqm8540_defconfig   gcc  
-powerpc                     tqm8555_defconfig   clang
-powerpc64             randconfig-001-20240320   gcc  
-powerpc64             randconfig-002-20240320   gcc  
-powerpc64             randconfig-003-20240320   gcc  
-riscv                            allmodconfig   clang
-riscv                             allnoconfig   gcc  
-riscv                            allyesconfig   clang
-riscv                               defconfig   clang
-riscv                 randconfig-001-20240320   clang
-riscv                 randconfig-002-20240320   gcc  
-s390                             allmodconfig   clang
-s390                              allnoconfig   clang
-s390                             allyesconfig   gcc  
-s390                          debug_defconfig   gcc  
-s390                                defconfig   clang
-s390                  randconfig-001-20240320   clang
-s390                  randconfig-002-20240320   clang
-sh                               allmodconfig   gcc  
-sh                                allnoconfig   gcc  
-sh                               allyesconfig   gcc  
-sh                                  defconfig   gcc  
-sh                             espt_defconfig   gcc  
-sh                          lboxre2_defconfig   gcc  
-sh                    randconfig-001-20240320   gcc  
-sh                    randconfig-002-20240320   gcc  
-sh                             shx3_defconfig   gcc  
-sparc                            allmodconfig   gcc  
-sparc                             allnoconfig   gcc  
-sparc                               defconfig   gcc  
-sparc64                          allmodconfig   gcc  
-sparc64                          allyesconfig   gcc  
-sparc64                             defconfig   gcc  
-sparc64               randconfig-001-20240320   gcc  
-sparc64               randconfig-002-20240320   gcc  
-um                               allmodconfig   clang
-um                                allnoconfig   clang
-um                               allyesconfig   gcc  
-um                                  defconfig   clang
-um                             i386_defconfig   gcc  
-um                    randconfig-001-20240320   gcc  
-um                    randconfig-002-20240320   gcc  
-um                           x86_64_defconfig   clang
-x86_64                            allnoconfig   clang
-x86_64                           allyesconfig   clang
-x86_64       buildonly-randconfig-001-20240320   gcc  
-x86_64       buildonly-randconfig-002-20240320   clang
-x86_64       buildonly-randconfig-003-20240320   clang
-x86_64       buildonly-randconfig-004-20240320   clang
-x86_64       buildonly-randconfig-005-20240320   gcc  
-x86_64       buildonly-randconfig-006-20240320   clang
-x86_64                              defconfig   gcc  
-x86_64                randconfig-001-20240320   clang
-x86_64                randconfig-002-20240320   clang
-x86_64                randconfig-003-20240320   gcc  
-x86_64                randconfig-004-20240320   clang
-x86_64                randconfig-005-20240320   clang
-x86_64                randconfig-006-20240320   clang
-x86_64                randconfig-011-20240320   gcc  
-x86_64                randconfig-012-20240320   gcc  
-x86_64                randconfig-013-20240320   gcc  
-x86_64                randconfig-014-20240320   gcc  
-x86_64                randconfig-015-20240320   clang
-x86_64                randconfig-016-20240320   gcc  
-x86_64                randconfig-071-20240320   clang
-x86_64                randconfig-072-20240320   gcc  
-x86_64                randconfig-073-20240320   clang
-x86_64                randconfig-074-20240320   gcc  
-x86_64                randconfig-075-20240320   gcc  
-x86_64                randconfig-076-20240320   clang
-x86_64                          rhel-8.3-rust   clang
-xtensa                            allnoconfig   gcc  
-xtensa                randconfig-001-20240320   gcc  
-xtensa                randconfig-002-20240320   gcc  
+How do you think about to reduce the scope for affected local variables in=
+stead
+with the help of a small script (like the following) for the semantic patc=
+h language?
 
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+
+@movement1@
+attribute name __free;
+@@
+-struct ice_aqc_get_phy_caps_data *pcaps __free(kfree);
+ ... when any
++struct ice_aqc_get_phy_caps_data *
+ pcaps
++__free(kfree)
+ =3D kzalloc(sizeof(*pcaps), ...);
+
+@movement2@
+attribute name __free;
+@@
+-void *mac_buf __free(kfree);
+ ... when any
++void *
+ mac_buf
++__free(kfree)
+ =3D kcalloc(2, sizeof(struct ice_aqc_manage_mac_read_resp), ...);
+
+
+Regards,
+Markus
