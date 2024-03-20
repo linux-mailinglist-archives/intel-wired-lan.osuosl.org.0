@@ -1,199 +1,112 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 26A6C880771
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 19 Mar 2024 23:52:23 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7F785880A82
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 20 Mar 2024 06:02:05 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 383B260B4C;
-	Tue, 19 Mar 2024 22:52:21 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 1158140800;
+	Wed, 20 Mar 2024 05:02:02 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
-	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 373l1Vqs3q_q; Tue, 19 Mar 2024 22:52:20 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+	by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id F2I3-mEmGfJR; Wed, 20 Mar 2024 05:02:01 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 38559608D8
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 356484075C
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1710888740;
-	bh=HeI4PfHQ9WyRvxU6SdHrcQ/IiU4Su7dhX1tVnySwbKI=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
+	s=default; t=1710910921;
+	bh=S0B7vWKH9/N5Rr83D0ntmMC2zkFMIdP3Ld+bd82Q6BI=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=fzBaz0v+h9mL9k0gV0eXTH40QFSb8hOHJxBFLPJdkJ7Q3Rzm/jL2nZEdlPxg3/uHN
-	 gSGvJjB1Jo6relUP5olEYPHlDQxUlbBVdALshjkRzpEN+JGWcQkSlJzGBEmvocjIAr
-	 LwqA0kPRu543ScsKsrZyN9wfrHqQOfzmBDT3UUx8XNAA6fSHYyqJXRYOmVf0jRmEj8
-	 fFAoFRH/jrKJNt56zJSQhAReQx/IJK0/wz891dWgwthvoF2+Ywg1/x4VjHbxG6AsBF
-	 GCjptRToJV9oXn+Q0ocmM7U421jSk+ksN40VTBqYQbDJdmc/wq1dYnTB9+FQsQdsxB
-	 5x6IS10o4d9HA==
+	b=2OqEetlN9MHwgiUVoLcLiPvWlB+FbHDC6E6sUld2yqDdbaUMda3fSFeZx+jCGJOjn
+	 G3IWcWIkjLhJrdlE6NW+RFOp417o4uNWXehLr1cpUJpnU6ao3o4zEOaU+tdZ4WSLQC
+	 dkw43rmIACQW18eCiHTwCn4iPXy0lPEXVarrJk/D3M4KkOVNHweARcIc40U6bewLun
+	 FrBiI/q/ytPTvHoKVJ4KsmwJr1ztGA04hjJLVW+Hhd/N2rasyw5F4YVQusv6dcIRB9
+	 mIbZCbCxjx8SbWm60P1jhDvyCOEVDSqf6x3eqI2Aq3ieL6YPklGhHCXuATHkATZHih
+	 OSid6IKOkybGQ==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 38559608D8;
-	Tue, 19 Mar 2024 22:52:20 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 356484075C;
+	Wed, 20 Mar 2024 05:02:01 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 894911BF28F
- for <intel-wired-lan@lists.osuosl.org>; Tue, 19 Mar 2024 22:52:17 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 9E2551BF2CC
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 20 Mar 2024 05:01:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 6F8F76074D
- for <intel-wired-lan@lists.osuosl.org>; Tue, 19 Mar 2024 22:52:17 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 95DE4407F7
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 20 Mar 2024 05:01:58 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 1hnPxj4sclB3 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 19 Mar 2024 22:52:16 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.17;
- helo=mgamail.intel.com; envelope-from=jacob.e.keller@intel.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 6C80060692
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6C80060692
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.17])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 6C80060692
- for <intel-wired-lan@lists.osuosl.org>; Tue, 19 Mar 2024 22:52:16 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,11018"; a="5913513"
-X-IronPort-AV: E=Sophos;i="6.07,138,1708416000"; 
-   d="scan'208";a="5913513"
-Received: from fmviesa007.fm.intel.com ([10.60.135.147])
- by orvoesa109.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 19 Mar 2024 15:52:14 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.07,138,1708416000"; d="scan'208";a="13945594"
-Received: from fmsmsx603.amr.corp.intel.com ([10.18.126.83])
- by fmviesa007.fm.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
- 19 Mar 2024 15:52:14 -0700
-Received: from fmsmsx612.amr.corp.intel.com (10.18.126.92) by
- fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.35; Tue, 19 Mar 2024 15:52:13 -0700
-Received: from fmsmsx611.amr.corp.intel.com (10.18.126.91) by
- fmsmsx612.amr.corp.intel.com (10.18.126.92) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.35; Tue, 19 Mar 2024 15:52:13 -0700
-Received: from fmsedg602.ED.cps.intel.com (10.1.192.136) by
- fmsmsx611.amr.corp.intel.com (10.18.126.91) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.35 via Frontend Transport; Tue, 19 Mar 2024 15:52:13 -0700
-Received: from NAM12-MW2-obe.outbound.protection.outlook.com (104.47.66.40) by
- edgegateway.intel.com (192.55.55.71) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.35; Tue, 19 Mar 2024 15:52:13 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=IzewBy3tZm2UcX7mPCAZ8cMxmNgxfviNo+RZOC9MRdbRIzhpbU7hkHge18fRyvDs/N5rXHuSMG0NzHn/ntWhaDl5LjB8h7xRRz0YXRufkml0VmU/lEmnVKnsB7+AyAp131ext4LRnd7mNOQPxJ8M0fAtO/GqhwvAvFfd0r6fii1W+4dEmj7D0rdZuwmcCcKedNSLOXKxV4SgQEnjiTkIlMeN2cC505A7CJsJYXc76CiQIYXBWdFQyHnhSfE8M1tple6/B040fzcka4kAJ+soePmOlQIFYF+ZWA36cwSR79YBawsSQJjNoC79/FmxKpaBWA2TT3Z/Rp2cpgzEEgr+Cg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=HeI4PfHQ9WyRvxU6SdHrcQ/IiU4Su7dhX1tVnySwbKI=;
- b=PZUIioVDFc6ABBzIiPN4sJOz8VdA0vkmS81xAvKxq3jsLOCttBnBcjWaALWrSjdsi3mMC3x3BPO058pCU3LELk5cyrLyyVW+KSKw0vBo93VgexfMzYSXBD5R6zQqx7BWwB2uElhHc/7bvTpydjgbZi3KCR94HoQIhJzo1yKZorBtwmIA5v9MNEZ+Jy+rQtJEVVBZGOnRIt7uKALNllHLX8BiJHl+pFeaI2L+N10gXF/Myhgf5G328UA9OcpRUToah34qRxF99oAnPxuYHYcgJjVWU01jAHiHEHdx1gOKYHcpFi3369FjwzGpTrNQSMdkIc+9HbQ1j8KqSytivOf8Ow==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from CO1PR11MB5089.namprd11.prod.outlook.com (2603:10b6:303:9b::16)
- by SJ2PR11MB7425.namprd11.prod.outlook.com (2603:10b6:a03:4c0::17)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7409.11; Tue, 19 Mar
- 2024 22:52:10 +0000
-Received: from CO1PR11MB5089.namprd11.prod.outlook.com
- ([fe80::b383:e86d:874:245a]) by CO1PR11MB5089.namprd11.prod.outlook.com
- ([fe80::b383:e86d:874:245a%5]) with mapi id 15.20.7409.010; Tue, 19 Mar 2024
- 22:52:10 +0000
-Message-ID: <ed784a56-1266-4d59-9b75-767490ed376c@intel.com>
-Date: Tue, 19 Mar 2024 15:52:08 -0700
-User-Agent: Mozilla Thunderbird
-Content-Language: en-US
-To: Wojciech Drewek <wojciech.drewek@intel.com>, Karthik Sundaravel
- <ksundara@redhat.com>, Suman Ghosh <sumang@marvell.com>
-References: <20240305152641.53489-1-ksundara@redhat.com>
- <SJ0PR18MB5216589DBE2D5345BD016BE0DB272@SJ0PR18MB5216.namprd18.prod.outlook.com>
- <CAPh+B4JH-Wb1qetsqfnCeLcxTpOM72TSTwreqP9H6sxnP9Kn9A@mail.gmail.com>
- <0a152a46-3800-443a-b370-50cf071f7c13@intel.com>
-From: Jacob Keller <jacob.e.keller@intel.com>
-In-Reply-To: <0a152a46-3800-443a-b370-50cf071f7c13@intel.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
-X-ClientProxiedBy: MW4PR04CA0036.namprd04.prod.outlook.com
- (2603:10b6:303:6a::11) To CO1PR11MB5089.namprd11.prod.outlook.com
- (2603:10b6:303:9b::16)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id voW2JT3hDVbT for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 20 Mar 2024 05:01:57 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2a00:1450:4864:20::334; helo=mail-wm1-x334.google.com;
+ envelope-from=dan.carpenter@linaro.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 6372F4075C
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6372F4075C
+Received: from mail-wm1-x334.google.com (mail-wm1-x334.google.com
+ [IPv6:2a00:1450:4864:20::334])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 6372F4075C
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 20 Mar 2024 05:01:56 +0000 (UTC)
+Received: by mail-wm1-x334.google.com with SMTP id
+ 5b1f17b1804b1-41409fd8b6bso27474065e9.1
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 19 Mar 2024 22:01:56 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1710910914; x=1711515714;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=S0B7vWKH9/N5Rr83D0ntmMC2zkFMIdP3Ld+bd82Q6BI=;
+ b=f9qaw2LMA4sGlccCb4LibDMLwcpwuMMaJ5I9D5TO3nN19IAuwg5SwfVosIqGQnB1KF
+ +Eioo96JHuU9d32iAEAvfW99vpJHHGRRflEmEOm7Egfv1AFQvfNJjzcbEAzzSIKZhQH/
+ Uz4CxyzFWzqc/jUSLXovrW/swhulTqDed0YyaXf4ZJHVa0T1web1jK2BCO0ktdzfbviP
+ NRQTuV7EzT1krkOfYwbmDHXTdVzy6XZI6+RzmgEz3/R8ho/c7OVw+I01FMUJbIeYeChS
+ UW9/xw4NTs6gty85ABeF+aVPsJsdvGk53F9vJ5G3y5CSOTCnzjACtNMRqHG0v4eZYmpz
+ T6aQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXNCEngCsUDaYczWQ4Vre9+XIczJZ4a7BSuqxaIq49ijyxhGi1cn02depm8mEDR/AOm0HooMxjxZaGialcKQox0ED7fMFDGosbfqSc3PI13jA==
+X-Gm-Message-State: AOJu0YweoWvCO388WYQZcWhmD6Zj2AIBY3yYvwq7yp9OKbYXM24C14QC
+ 75SzRkzqC0hcIjeRioAdH7H+muE4jnWaFxhkgyyMznaRmj6Ka7FZx9BP+rad9Jc=
+X-Google-Smtp-Source: AGHT+IFGGKSK87rcnJmgzexq+3rYiVKaJtZ99H0a3zsNHEKEaF3v2b0OfuXy/cpjUcYbMSTlWTKjgQ==
+X-Received: by 2002:a05:600c:3546:b0:414:ca1:6531 with SMTP id
+ i6-20020a05600c354600b004140ca16531mr833716wmq.41.1710910914424; 
+ Tue, 19 Mar 2024 22:01:54 -0700 (PDT)
+Received: from localhost ([102.222.70.76]) by smtp.gmail.com with ESMTPSA id
+ s14-20020a05600c45ce00b00414618bea7csm893210wmo.37.2024.03.19.22.01.53
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 19 Mar 2024 22:01:53 -0700 (PDT)
+Date: Wed, 20 Mar 2024 08:01:49 +0300
+From: Dan Carpenter <dan.carpenter@linaro.org>
+To: Jakub Kicinski <kuba@kernel.org>
+Message-ID: <facf5615-d7ac-4167-b23c-6bab7c123138@moroto.mountain>
+References: <77145930-e3df-4e77-a22d-04851cf3a426@moroto.mountain>
+ <20240319124317.3c3f16cd@kernel.org>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: CO1PR11MB5089:EE_|SJ2PR11MB7425:EE_
-X-MS-Office365-Filtering-Correlation-Id: 893de315-93c4-4304-6467-08dc4867360b
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: GUuCTNZKTI7htSYUVsn1JdPsPP+YbTKfkmQXDeh+l7toqu2waemnzsRJ62475JdC39XkgtPdv3kBrb7xQP3YKeQf0P4rvg6AqHUw0cP0ne0iC8gBHGTKyd7eJ+jLu2o/aH8rSw+e/n8A//vsv3Js8PcgddbIK/agC0U9DUv0/MZpbGGoUan/GEWRn4mxJFunC1dDQ8wdxyf0v9cLZ4cyMDCtGXSvim8cQGgAwHppGmqhUC+TrjXL9KCeuI80Ok5zTtGsi0MwV7bam3/a2iSkbTpw5ovJ2v7ZaV4ZBtK0MA6CgfaU7I3UCNxBCh4ObpoccZraJUms44TtewS7ZgHoG8rp3KHojMKAahMJtoLh3zEnaWtyd5/Lo00JipzkSiZskH8HgEjNx6Vk6kb55/FBJp38HdE+gG9gVZkV2N+g0tXS5//d7aiFk665WrIlpuJh67CUZry5bn4uAtob/piVW0BXEez9SPQxp9QioUBdEKA+eUarSRYGTCTBylEO3cF2NzSDBjhz4e7HmzBSImogM3NkQgWAYDMGG6JQiwOeVrq9y5oXYGZPywS9Ojxm+IikEM6zrokEga9ozDXFRogqFlkD45bd/SPuDxh/6OFysqi2YxkCxhIgmPLVDIDeD++LQxCi2veadqHVw9R10N7Ug7yCctlyIZieVBFUg7+6X3E=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:CO1PR11MB5089.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230031)(376005)(7416005)(366007)(1800799015); DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?WGcwK3FpZm40M081bmxlUWZZVW1TOG8xamFsSDIzeHJwK3ppZFA4L0tZYm9Y?=
- =?utf-8?B?OVBRMkdMdEtoZ0Z2SzlWQWR1MHB0bDZNV0hXNDRKSWNJVkpIVy9zS0RPVDRi?=
- =?utf-8?B?cGRVSGNSUlNSS25hVE85MnRGemdrR2VCWkJ0dVpOZmtGRjJpOFdWZ0w0TWdj?=
- =?utf-8?B?WC9TZTl1bXhzdzMxcGJVTVI0Y0tvSnVpdzlKc0YyTmk3a2xFU1lEMTFWRm9n?=
- =?utf-8?B?U2kzL3dkMTd1MFBtVmtIWTFESW12ZEZmV0Z4dyt3YlN0eW9lay9LTG5ud3NX?=
- =?utf-8?B?eFVRQUdMbWx6cDNRd043M2FzUWFnUWRKUFhiYlhnMytJaHZHQ25ZaElmYXNn?=
- =?utf-8?B?djhzRGRWam16SzhiVjZ1NzFiZ25LaG9oSldIUkVzdk9LTlZQcTNQQ3ZVRnBo?=
- =?utf-8?B?d3c2SGN6U2JYeW5OdDNTYUtqMEMwZzd1czRtaUQ4NmFOemo3eG51UWJTMXh2?=
- =?utf-8?B?ZDdQNTlGMGV0UEZDRVZBWEVXZHVmRXFBajdTMG1YdTZGMlQrYzVudThUL2Nm?=
- =?utf-8?B?cDE1MUVmeVo3VWVjbjA1TFprWmNNWHRDNW9qVEZMZHhnb0xqZ3N1MHFVS2ht?=
- =?utf-8?B?RGNJaEs1NUwrTEc1V0JsWVhkMjVGWFdMelRvM04xTVZlbG4vM1hGeURYVnYv?=
- =?utf-8?B?OUkvS0hFZkMwbmdSRFBjbWVjdi9BYVYwSkxsb1dobklVMzdDbWJzMHRNN040?=
- =?utf-8?B?NU5qeThhUERCUmVRQng2RGpoWVQ5RmRURnlxdGM4b292NS9vNnRZOFo1K3RB?=
- =?utf-8?B?MkFJeXppYTJCTEd3a3hpMnF6enY1L2tIN3hwV0hjVEt5QnVOUlU0MXRnaVJa?=
- =?utf-8?B?eVlCN0h1bXRUMDhPV1UzYmV3UHBFVHZLOHR1V1hWT3MrbGsvL21MNEJxTE0x?=
- =?utf-8?B?bkg5OGliRUtKdDY2ZWl0by8xZEhpalhnaEswcGdQYUF6UWNyTXJSYk42L1JQ?=
- =?utf-8?B?dDRZUmZNVVlwTERjejM0YWZ6T1lDV080bVpBY01UbWhkM2pDZktiaHd5NGNP?=
- =?utf-8?B?M0U5U1RmaldwcVNvRGR6WEdQak5COS8wN1JJK01SL3JOOGxZRFhqSHdVTWt2?=
- =?utf-8?B?dGYzUW44aHE3UnVjRmY5UHRCQW5ZZGV1RFFCY1BmaG0rWmQ4d0ozSDhnYnM1?=
- =?utf-8?B?QlBMeUNRRW92bUZsQUZpSUd0UjVUS0hyakRWZ2N2Sm9RRWtGZ0NlNE94YlBy?=
- =?utf-8?B?YVFDNlk2TFMrVk5VUEZtL0lsaW0ydkx4MlJuWW5NQjl1WENxaHB3OElVSThk?=
- =?utf-8?B?YzVqc21GKzZOdVU0anRjd3hjRStrNDdtbXlBRnRBTksxY0FYZVd4clFlN01h?=
- =?utf-8?B?bWI1Tms2RWZFQjl2QmtzbVhXcmZtRzhjcG85YjlTN2o2alJFMDZMejYzNVJ2?=
- =?utf-8?B?WHNTVFc0cUwxL0JIUjVScTN6U050K2g4NlVjaE95UkhGWWxsdjlsZXFSRkgr?=
- =?utf-8?B?SXdQTHljMGZYNUtpVTBkUUMvWWlrSTZWUU5teTVEeGgyYlFUeDJWVUNLOVc0?=
- =?utf-8?B?d1A1NDN0dndvSzNSMDVGSkRkMENEVXZlZWNNdkN2VU5jRXMzOGptMktLbXdM?=
- =?utf-8?B?QWx6aWRFdjlQbEdUSWlVVmNVVkRBZkJxK05MSEJCQVlGRHFtL2R2amdhUWwz?=
- =?utf-8?B?TDRqR1hqWWxlSjRoaENabTJxMUZPT3oxR3ltc3MrMWJ5N2QyL2g4ZXE1MmQ4?=
- =?utf-8?B?UXo5SjBNN3AxREpPMHFqR3JnTkE5VGpKcXhONUFXbkxKQnNnRU9SWmsyOU5O?=
- =?utf-8?B?YTc5aVF0SWRkcHVjUWhqVlhneTFyazZ5eHZZd05ISE9KbGdFZGZjdENra2p6?=
- =?utf-8?B?VGJkcjB6RkNxSng5M09BQ1ZJdzRndjhGMUxiZlJ6WmljOEQ2Y3VFRUkrQW50?=
- =?utf-8?B?bUMwRFZBbGE5akJIZmRkcmdOem1QT2RWNk4yUHJleksyUjlGZW5VSVZjelU3?=
- =?utf-8?B?Sk1zWG5LcUw3R2JXTUpaZ1RydndDbitCU01hdmNuMktWdXZtRkZYd2pLV0s0?=
- =?utf-8?B?YkhuOTlGcUp3dHJtRDN4OVBzNmEzVE82YkF0SGxZcFVsUVRsbEdtdVBrWXhE?=
- =?utf-8?B?dlBWU0R4OFcxZEFsWEozOGNlQ0lXaUhIRXVLQlBtd3NzbzNKa0tVSk5TUFdl?=
- =?utf-8?B?eEN0Y2plL2hiRlY1V3NVMHdhbTB5ZFk5OU51K3Y5MHFZbEUzeXIyRURWNlJz?=
- =?utf-8?B?R3c9PQ==?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: 893de315-93c4-4304-6467-08dc4867360b
-X-MS-Exchange-CrossTenant-AuthSource: CO1PR11MB5089.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 19 Mar 2024 22:52:10.6074 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: jd4chLtbifvmcy7suPlFtBrnDvB7JoP2YigS6wtS5gs8NZacDVMXszy+uZX2xRlhwv4VnYtc4etZ+fc7Yh8qCAjEDl9n4zKXN/Bf6e1FOyY=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ2PR11MB7425
-X-OriginatorOrg: intel.com
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1710888736; x=1742424736;
- h=message-id:date:subject:to:cc:references:from:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=UKN8/nBQgZHKPlrJ3N+RHm+8X2U7U4mXG230CVul/p8=;
- b=AOoLLAZtog9kimuP7uSqSXhwP7mHN+YrnccUtLr7X2TsbQ8/+TZquvH1
- xqzIMn2g82YjZF3Ff7EXC42klRi6+IUCq+rPPMg3PjoGIfqPXwxwyHxMi
- wyST1gmE1Ktka7KFfgYMKTxYvC2593txDUyfU3lczvXprDW0WvgLDJhvp
- O4C6eYzqZnxDPbsjg11exji9puPaj3sc1gYCJw1m/D8MAoUQR0Q928w0f
- A2rvMSERHvM6ozqFoONA6pb0hkXBZdfEd1WL9VRz1VEH0eXoPq+SQFsww
- GMpxmnJGIcDJn0BRCiF4SzUwbNCZUAvyQJ/mMTvIqKZGRR1bDNJFUy4LQ
- w==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240319124317.3c3f16cd@kernel.org>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1710910914; x=1711515714; darn=lists.osuosl.org;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+ bh=S0B7vWKH9/N5Rr83D0ntmMC2zkFMIdP3Ld+bd82Q6BI=;
+ b=RVLK3orhLOpTQ2fuJ0M5Px5g030gK3qro+doLpXReVkD5tQGz1m1/1bXRTGZVm8Qhh
+ Vc4ND3LeMZAKpUKTxyNloyoND0sNW5cgxltUqnudWcGtedngL2B8btqcLp0AJm8Y3681
+ 12kMLRfH99Zv26vpFGaNbrwPOfXsHK34OYHO5hf2/23mwBc5jQCssiJQttK7OBZZj7Ri
+ j7pobO2I+eCTYeoHpcCJvH7Jgs6xr6qM3/+ouOCAsY0+pQrFqF+UuLzSmffEslQU080m
+ +hChjx7T8b9WYMULQ4FXoAgmJO30vj9QAoOwhqJqnudSH20bxMyB17DJ+sk1kuqhwZVv
+ D8SQ==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=AOoLLAZt
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [EXTERNAL] [PATCH v5] ice: Add get/set hw
- address for VFs using devlink commands
+ header.from=linaro.org
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256
+ header.s=google header.b=RVLK3orh
+Subject: Re: [Intel-wired-lan] [PATCH net] ice: Fix freeing uninitialized
+ pointers
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -206,124 +119,38 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "pmenzel@molgen.mpg.de" <pmenzel@molgen.mpg.de>,
- "aharivel@redhat.com" <aharivel@redhat.com>,
- "jiri@resnulli.us" <jiri@resnulli.us>,
- "cfontain@redhat.com" <cfontain@redhat.com>,
- "anthony.l.nguyen@intel.com" <anthony.l.nguyen@intel.com>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "vchundur@redhat.com" <vchundur@redhat.com>,
- "edumazet@google.com" <edumazet@google.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "kuba@kernel.org" <kuba@kernel.org>,
- "michal.swiatkowski@linux.intel.com" <michal.swiatkowski@linux.intel.com>,
- "rjarry@redhat.com" <rjarry@redhat.com>,
- "pabeni@redhat.com" <pabeni@redhat.com>,
- "davem@davemloft.net" <davem@davemloft.net>
+Cc: Maciej Fijalkowski <maciej.fijalkowski@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Eric Dumazet <edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
+ netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
+ Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-
-
-On 3/18/2024 8:04 AM, Wojciech Drewek wrote:
+On Tue, Mar 19, 2024 at 12:43:17PM -0700, Jakub Kicinski wrote:
+> On Sat, 16 Mar 2024 12:44:40 +0300 Dan Carpenter wrote:
+> > -	struct ice_aqc_get_phy_caps_data *pcaps __free(kfree);
+> > -	void *mac_buf __free(kfree);
+> > +	struct ice_aqc_get_phy_caps_data *pcaps __free(kfree) = NULL;
+> > +	void *mac_buf __free(kfree) = NULL;
 > 
+> This is just trading one kind of bug for another, and the __free()
+> magic is at a cost of readability.
 > 
-> On 18.03.2024 12:55, Karthik Sundaravel wrote:
->> On Fri, Mar 8, 2024 at 3:28 PM Suman Ghosh <sumang@marvell.com> wrote:
->>>
->>>> ----------------------------------------------------------------------
->>>> Changing the MAC address of the VFs are not available via devlink. Add
->>>> the function handlers to set and get the HW address for the VFs.
->>>>
->>>> Signed-off-by: Karthik Sundaravel <ksundara@redhat.com>
->>>> ---
->>>> drivers/net/ethernet/intel/ice/ice_devlink.c | 78 +++++++++++++++++++-
->>>> drivers/net/ethernet/intel/ice/ice_sriov.c   | 62 ++++++++++++++++
->>>> drivers/net/ethernet/intel/ice/ice_sriov.h   |  8 ++
->>>> 3 files changed, 147 insertions(+), 1 deletion(-)
->>>>
->>>> diff --git a/drivers/net/ethernet/intel/ice/ice_devlink.c
->>>> b/drivers/net/ethernet/intel/ice/ice_devlink.c
->>>> index 80dc5445b50d..39d4d79ac731 100644
->>>> --- a/drivers/net/ethernet/intel/ice/ice_devlink.c
->>>> +++ b/drivers/net/ethernet/intel/ice/ice_devlink.c
->>>> @@ -1576,6 +1576,81 @@ void ice_devlink_destroy_pf_port(struct ice_pf
->>>> *pf)
->>>>       devlink_port_unregister(&pf->devlink_port);
->>>> }
->>>>
->>>> +/**
->>>> + * ice_devlink_port_get_vf_fn_mac - .port_fn_hw_addr_get devlink
->>>> +handler
->>>> + * @port: devlink port structure
->>>> + * @hw_addr: MAC address of the port
->>>> + * @hw_addr_len: length of MAC address
->>>> + * @extack: extended netdev ack structure
->>>> + *
->>>> + * Callback for the devlink .port_fn_hw_addr_get operation
->>>> + * Return: zero on success or an error code on failure.
->>>> + */
->>>> +
->>>> +static int ice_devlink_port_get_vf_fn_mac(struct devlink_port *port,
->>>> +                                        u8 *hw_addr, int *hw_addr_len,
->>>> +                                        struct netlink_ext_ack *extack)
->>>> +{
->>>> +      struct devlink_port_attrs *attrs = &port->attrs;
->>> [Suman] I agree with Wojciech about using container_of:
->>
->> [Karthik] when I use container_of(), on some occasions I get core dump
->> in get and set functions.
->> These issues were not seen in the earlier versions.
->> Can you please suggest any pointers on what could have gone wrong ?
->>
->> struct ice_vf *vf = container_of(port, struct ice_vf, devlink_port);
->>
->> [  597.658325] ------------[ cut here ]------------
->> [  597.658329] refcount_t: underflow; use-after-free.
->> [  597.658430] CPU: 18 PID: 1926 Comm: devlink Not tainted 6.8.0-rc5-dirty #1
->> [  ...]
->> [  597.658506]  ? refcount_warn_saturate+0xbe/0x110
->> [  597.658509]  ice_devlink_port_get_vf_fn_mac+0x39/0x70 [ice]
->> [  597.658607]  ? __pfx_ice_devlink_port_get_vf_fn_mac+0x10/0x10 [ice]
->> [  597.658676]  devlink_nl_port_fill+0x314/0xa30
->> [  ...]
->> [  597.658835] ---[ end trace 0000000000000000 ]---
->>
->>
->> [  859.989482] ------------[ cut here ]------------
->> [  859.989485] refcount_t: saturated; leaking memory.
->> [  859.989500] WARNING: CPU: 0 PID: 1965 at lib/refcount.c:19
->> refcount_warn_saturate+0x9b/0x110
->> [  ...]
->> [  859.989671]  ? refcount_warn_saturate+0x9b/0x110
->> [  859.989674]  ice_get_vf_by_id+0x87/0xa0 [ice]
->> [  859.989777]  ice_set_vf_fn_mac+0x33/0x150 [ice]
->> [  859.989858]  ice_devlink_port_set_vf_fn_mac+0x61/0x90 [ice]
->> [  859.989940]  devlink_nl_port_set_doit+0x1d3/0x610
->> [  ...]
->> [  952.413933] ---[ end trace 0000000000000000 ]---
-> 
-> Ok, I think we forgot about kref here.
-> Once you have a VF pointer you have to inc the ref count using
-> kref_get_unless_zero and you have to check return value because the VF
-> might be already freed. When you don't need the VF's pointer anymore call ice_put_vf.
-> Would be cool to have Jake's opinion on that though since he implemented it.
-> 
+> I think we should ban the use of __free() in all of networking,
+> until / unless it cleanly handles the NULL init case.
 
-If you can get a VF from a devlink_port which is embedded in the ice_vf
-structure, then you must guarantee that port is still valid for as long
-as the VF is. This means that you can't delete the last reference of the
-VF until the port is removed I think. This is tricky because we have
-multiple ways to get to the VF now.
+Free handles the NULL init case, it doesn't handle the uninitialized
+case.  I had previously argued that checkpatch should complain about
+every __free() pointer if the declaration doesn't have an assignment.
 
-What manages the life cycle of the devlink port associated with the VF?
+The = NULL assignment is unnecessary if the pointer is assigned to
+something else before the first return, so this might cause "unused
+assignment" warnings?  I don't know if there are any tools which
+complain about that in that situation.  I think probably we should just
+make that an exception and do the checkpatch thing because it's such a
+simple rule to implement.
 
-If you obtain the pointer to the VF via "container_of" on a valid
-devlink port, you have to assume that having the port implies having a
-reference to the VF, and that the port won't be destroyed before the VF.
-For this reason ,you would a) not use get_vf_by_id, and also b) not
-dereference the refcount using ice_put_vf.
-
-I suspect that you accidentally still called ice_put_vf() in the case
-where you used container of?
+regards,
+dan carpenter
