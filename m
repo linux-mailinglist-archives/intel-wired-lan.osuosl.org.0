@@ -1,87 +1,94 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2A3D18810C4
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 20 Mar 2024 12:19:41 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1CEB38810F4
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 20 Mar 2024 12:30:19 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 6E6FD60A4D;
-	Wed, 20 Mar 2024 11:19:39 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id C5FFF60BC6;
+	Wed, 20 Mar 2024 11:30:17 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
 	by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id XLxx9902vO8X; Wed, 20 Mar 2024 11:19:38 +0000 (UTC)
+	with ESMTP id huDMDiKjmnsq; Wed, 20 Mar 2024 11:30:17 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 95ED360838
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 19CC7608AD
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1710933578;
-	bh=KvYdVeqUMadXTpMnQ/h0XsRMF6GHv7ldsxO1YZKthF8=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1710934217;
+	bh=aTym/nC5xD61zbRK5hpctTKsJawMwlPvb8OVQ2E/Od4=;
+	h=From:To:In-Reply-To:References:Date:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=QL3yyczhGrt9P4WTZl0al/HgAsI2acXTJ0lIP/mozDlLOSBRQbRfcI1UNcGD8IF//
-	 skq6KT1ePIyciWYhXBOfKbJcCv+T9TLFe50NcrUoeBfgp1bCyLz1WpypN7f9Ul0HxT
-	 ojDnD9WGzKMAdLNWov+M4Jqg9fAyHmP461cgEyDxlVx9LhVIlfGkzg8PnHWXlIfaCa
-	 DG1MQv0uxSs/qDyLUJ8EGR2JooARZAY1Hcs/nZ8QFWwGRfjcd3OnGHuXA0bF+0++GY
-	 jERV/CORT8W+x0Cwap2iPT0529YEzuQLvyZqva96OxoMJ4dT0XxwT6fC07SkLr+zWi
-	 hp2D1nSRRz32A==
+	b=w/CkAPJxEgU6OMB1twt9J7OH1OIBUf+oINrCigzUbT5WkkrNiV3X79EhhULq6PfxP
+	 gmLDP6MFP/BTsZHoiFExJSaIGQ5s8BkoF21lXq9IKv7QwSNR9qWVWJJsSF3gBxt5y9
+	 4VOq4PiKLrKFYWWAIRAOxjWMLpqe8Z70ID/uGFbPOTTzErPDMNWvbeqrkGTDXiVhHz
+	 IEv1RAoCvj3c11ERGrbeT43nltlF/oLWcr3yxFkwkt/IiD+9CFG2jEFA2uL2JDycdT
+	 37rL1twdKpBAaBHMFoHhSRAWXLHZJnEv6QMw8N4u1OlSL1ixQNzIgg3DankdeWzEwg
+	 Qx+ud7gG/j3+w==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 95ED360838;
-	Wed, 20 Mar 2024 11:19:38 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 19CC7608AD;
+	Wed, 20 Mar 2024 11:30:17 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 020A51BF2F5
- for <intel-wired-lan@lists.osuosl.org>; Wed, 20 Mar 2024 11:19:37 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id BB25A1BF2F5
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 20 Mar 2024 11:30:14 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id E30DC60838
- for <intel-wired-lan@lists.osuosl.org>; Wed, 20 Mar 2024 11:19:36 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id B417A608AD
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 20 Mar 2024 11:30:14 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id sl5zPT2iXnIi for <intel-wired-lan@lists.osuosl.org>;
- Wed, 20 Mar 2024 11:19:36 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=145.40.73.55;
- helo=sin.source.kernel.org; envelope-from=horms@kernel.org;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org F27B260675
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org F27B260675
-Received: from sin.source.kernel.org (sin.source.kernel.org [145.40.73.55])
- by smtp3.osuosl.org (Postfix) with ESMTPS id F27B260675
- for <intel-wired-lan@lists.osuosl.org>; Wed, 20 Mar 2024 11:19:35 +0000 (UTC)
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by sin.source.kernel.org (Postfix) with ESMTP id 38997CE10F6;
- Wed, 20 Mar 2024 11:19:31 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2CCF9C433C7;
- Wed, 20 Mar 2024 11:19:28 +0000 (UTC)
-Date: Wed, 20 Mar 2024 11:19:26 +0000
-From: Simon Horman <horms@kernel.org>
-To: Erwan Velu <erwanaliasr1@gmail.com>
-Message-ID: <20240320111926.GR185808@kernel.org>
-References: <20240319141657.2783609-1-e.velu@criteo.com>
+ with ESMTP id XtmVwKetSI_z for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 20 Mar 2024 11:30:14 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2a0a:51c0:0:12e:550::1; helo=galois.linutronix.de;
+ envelope-from=tglx@linutronix.de; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org DCA816063F
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org DCA816063F
+Received: from galois.linutronix.de (Galois.linutronix.de
+ [IPv6:2a0a:51c0:0:12e:550::1])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id DCA816063F
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 20 Mar 2024 11:30:13 +0000 (UTC)
+From: Thomas Gleixner <tglx@linutronix.de>
+To: lakshmi.sowjanya.d@intel.com, jstultz@google.com, giometti@enneenne.com,
+ corbet@lwn.net, linux-kernel@vger.kernel.org
+In-Reply-To: <20240319130547.4195-2-lakshmi.sowjanya.d@intel.com>
+References: <20240319130547.4195-1-lakshmi.sowjanya.d@intel.com>
+ <20240319130547.4195-2-lakshmi.sowjanya.d@intel.com>
+Date: Wed, 20 Mar 2024 12:23:37 +0100
+Message-ID: <875xxhi1ty.ffs@tglx>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20240319141657.2783609-1-e.velu@criteo.com>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1710933570;
- bh=ZGjdmKze+W8MptFXyZLv1/NCN4+JrhWDnVc972JzEF8=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=fyN1zphyJpnuHnDx7UpdrrSMXLAs8FwjMy2i14ohff6IKAt3jk1kD8DQw1aWs60J+
- X0lDM0yCzd7FRs21GUXslXmcDacFrUGk3IEXB9hYyuYdBgDd0lipaVEfv5jycSape/
- iD/V9tMzSENbTM2tUTL+7VsAiwbN/QvYW3rhiIdPhR7vdy/DAQ6JAybzhJYXoOJ2TG
- r3uDzb0cYcbrbVBzhmJlOYOuTylN9j0N2aYJpnnDNnUTnrz1NqunH3vBwm2cVFnL9a
- W9tCJPpU7YaIE3LImFQ++UjFmgZTfl8bjcM4UxQb1cAaJ4XJJXwPfNpizq77QT+8xq
- O4WTAkzZvulJA==
+Content-Type: text/plain
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linutronix.de; s=2020; t=1710933818;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=aTym/nC5xD61zbRK5hpctTKsJawMwlPvb8OVQ2E/Od4=;
+ b=KvlwfhtKxgD4GRV4La6sGDGFZr+2/2uQrcTfqM3vprppbQRBkL/TLG6IXU/hXtuEdKTRWU
+ 8j62Nfc078Ao9H36UHuTIm9El2GoZ0LbJ4UnXyyIh2KtBC0/qwC14k1SmTqRP/f177mK7B
+ DlIuApaSsLAFcCx09fnG5xqcxZf/lewP6w/aPQFYdFLQkKbMHzXVPSVQTwD4g380A5a0nR
+ bohRu65iUTWfJXh2G9qDlxCeLHYbtn/1RxX6elSI50rVI25EjfOaq1jApa+jCL4PJS35ME
+ 6FOW71TXq+emFfTlbaT2VVOyWI/HQuDjjudpJRADjjmMZ+Gw/YNJKYhb0SCrew==
+X-Mailman-Original-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed;
+ d=linutronix.de; s=2020e; t=1710933818;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=aTym/nC5xD61zbRK5hpctTKsJawMwlPvb8OVQ2E/Od4=;
+ b=5S4OJ0Bqq8GLmgf1t47z3Wr7Pn74Q0Z8hp6uTTCi/CglQBez4Y7PgP+9Y8m7R18/ZWh6QO
+ 7N63F1Og9OVrh6Aw==
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=kernel.org
+ header.from=linutronix.de
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20201202 header.b=fyN1zphy
-Subject: Re: [Intel-wired-lan] [PATCH iwl-net] i40e: Report MFS in decimal
- base instead of hex
+ dkim=pass (2048-bit key, unprotected) header.d=linutronix.de
+ header.i=@linutronix.de header.a=rsa-sha256 header.s=2020 header.b=KvlwfhtK; 
+ dkim=pass header.d=linutronix.de header.i=@linutronix.de
+ header.a=ed25519-sha256 header.s=2020e header.b=5S4OJ0Bq
+Subject: Re: [Intel-wired-lan] [PATCH v5 01/11] x86/tsc: Add base clock
+ properties in clocksource structure
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,45 +101,37 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Erwan Velu <e.velu@criteo.com>, linux-kernel@vger.kernel.org,
- Eric Dumazet <edumazet@google.com>, netdev@vger.kernel.org,
- Tony Nguyen <anthony.l.nguyen@intel.com>, intel-wired-lan@lists.osuosl.org,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- "David S. Miller" <davem@davemloft.net>
+Cc: linux-doc@vger.kernel.org, mallikarjunappa.sangannavar@intel.com,
+ alexandre.torgue@foss.st.com, perex@perex.cz, basavaraj.goudar@intel.com,
+ thejesh.reddy.t.r@intel.com, christopher.s.hall@intel.com, x86@kernel.org,
+ joabreu@synopsys.com, peter.hilber@opensynergy.com,
+ intel-wired-lan@lists.osuosl.org, subramanian.mohan@intel.com,
+ linux-sound@vger.kernel.org, lakshmi.sowjanya.d@intel.com,
+ andriy.shevchenko@linux.intel.com, netdev@vger.kernel.org, pandith.n@intel.com,
+ eddie.dong@intel.com, mcoquelin.stm32@gmail.com, anthony.l.nguyen@intel.com,
+ davem@davemloft.net
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, Mar 19, 2024 at 03:16:55PM +0100, Erwan Velu wrote:
-> If the MFS is set below the default (0x2600), a warning message is
-> reported like the following :
-> 
-> 	MFS for port 1 has been set below the default: 600
-> 
-> This message is a bit confusing as the number shown here (600) is in
-> fact an hexa number: 0x600 = 1536
-> 
-> Without any explicit "0x" prefix, this message is read like the MFS is
-> set to 600 bytes.
-> 
-> MFS, as per MTUs, are usually expressed in decimal base.
-> 
-> This commit reports both current and default MFS values in decimal
-> so it's less confusing for end-users.
-> 
-> A typical warning message looks like the following :
-> 
-> 	MFS for port 1 (1536) has been set below the default (9728)
-> 
+On Tue, Mar 19 2024 at 18:35, lakshmi.sowjanya.d@intel.com wrote:
+> From: Lakshmi Sowjanya D <lakshmi.sowjanya.d@intel.com>
+>
+> Add base clock hardware abstraction in clocksource structure.
+>
+> Add clocksource ID for x86 ART(Always Running Timer).
 
-Hi Erwan,
+This change log tells the WHAT but not the WHY. You have to add context
+and explanation WHY this change is required and why it makes sense.
 
-If this is for (iwl-)net, then it should probably have a Fixes tag.
-I expect it is sufficient to respond to this email with an appropriate tag.
+Also I think this should be ordered differently:
 
-> Signed-off-by: Erwan Velu <e.velu@criteo.com>
+  1) Add the clocksource_base struct and provide the infrastructure in
+     get_device_system_crosststamp()
 
-That not withstanding, this looks good to me.
+  2) Make TSC/ART use it
 
-Reviewed-by: Simon Horman <horms@kernel.org>
+  3) Add the realtime muck
 
-...
+Thanks,
+
+        tglx
