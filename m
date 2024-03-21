@@ -1,108 +1,95 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E33DE885B01
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 21 Mar 2024 15:42:26 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1E36F885B31
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 21 Mar 2024 15:53:32 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 7D59B4172A;
-	Thu, 21 Mar 2024 14:42:23 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 65CC740433;
+	Thu, 21 Mar 2024 14:53:30 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
 	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id e1p9E72QYxEc; Thu, 21 Mar 2024 14:42:22 +0000 (UTC)
+	with ESMTP id 3itqjfI5m73H; Thu, 21 Mar 2024 14:53:29 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 93ABA4174C
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 47BB34048E
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1711032142;
-	bh=cLs/dDV1UD9+YTTOWzQvPyGzkwzyhPvhdwP32+SNXh8=;
-	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=UYaTteBK43+Nq4zLNGELTT0m9NWqIPo7JHhkIQ/s6/9uEJ49XB+iZ1cD3HEbjQXzy
-	 k4Z+vIhTo0VpHu01MMJ49++n6YFy5LNN5sinTSW9eV1jB+VBR9Kfc5APd8XF9LkRFO
-	 a+o81+SpubCcXWFqoRmjTkCGv5zl96zJsnhzCVwfIQEj1Cd8caA7hTCcB0mzEor0b+
-	 u2STDVCiWGOLLtZclwLVggcQntEv7Xr0ajKsGQaTwFiH1skdqG5h+8VuF1aGEdisi9
-	 0Aq1El08w/lX6+Ev7DB4U2dBQ0d4jcheGyd3WxsQDxUthB/uXo7ZASq/q1J7xowJYQ
-	 XrHT7l10r9B7g==
+	s=default; t=1711032809;
+	bh=2r4kmlwH724Y4qI43//rL/0kpwyX9e5Eqqy+Tzlxna4=;
+	h=From:To:In-Reply-To:References:Date:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=dX8+X0iak9p5TjOEVNgJbgLPDoO0u/4hzSp5W4xYcDtetVQYWzYFQunPdx9CClmHG
+	 dVrewpAdzBYfSKWsCEuiLxMdml0NqitUzpzvOqixFvAnPuWGOU/n9UtVRn8Paebzt1
+	 iksiFPw4v2/Uo2fG3hrBnPa8n7fAXLyhZX+fqUJKMiqg1RHJGT4VX8K5/DC2eXhM0d
+	 YjUfLyiOWOyWqfyR0leAphKnEUiSKfmdBqNPYVO1AT0luSiGvS4qtFO0/WxlBPMI6q
+	 1YMXTXPWz8hUpyGD1iGp14WzeqV0NcCyeUBl29pQ8NRy84jvxGYkU9Loz97AEfFrKb
+	 Wj1qoBwvG0RNA==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 93ABA4174C;
-	Thu, 21 Mar 2024 14:42:22 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 47BB34048E;
+	Thu, 21 Mar 2024 14:53:29 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 374CC1BF575
- for <intel-wired-lan@lists.osuosl.org>; Thu, 21 Mar 2024 14:42:20 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 8A3321BF575
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 21 Mar 2024 14:53:27 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 22A92821F7
- for <intel-wired-lan@lists.osuosl.org>; Thu, 21 Mar 2024 14:42:20 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 74E31400F9
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 21 Mar 2024 14:53:27 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id tEzsvDG4L81M for <intel-wired-lan@lists.osuosl.org>;
- Thu, 21 Mar 2024 14:42:19 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2a00:1450:4864:20::32f; helo=mail-wm1-x32f.google.com;
- envelope-from=dan.carpenter@linaro.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org EE9A28144C
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org EE9A28144C
-Received: from mail-wm1-x32f.google.com (mail-wm1-x32f.google.com
- [IPv6:2a00:1450:4864:20::32f])
- by smtp1.osuosl.org (Postfix) with ESMTPS id EE9A28144C
- for <intel-wired-lan@lists.osuosl.org>; Thu, 21 Mar 2024 14:42:18 +0000 (UTC)
-Received: by mail-wm1-x32f.google.com with SMTP id
- 5b1f17b1804b1-414701303f7so10045645e9.2
- for <intel-wired-lan@lists.osuosl.org>; Thu, 21 Mar 2024 07:42:18 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1711032137; x=1711636937;
- h=content-disposition:mime-version:message-id:subject:cc:to:from:date
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=cLs/dDV1UD9+YTTOWzQvPyGzkwzyhPvhdwP32+SNXh8=;
- b=kwtK6bRf6OKv6P+ODoQ+qDZL/9cq5OpP7huWAbUIIbBiaG9QOc79fBCxDjOPQP1DSt
- +jVhZvEpNpxvCSJIEbal8PnrSYS8ZjpJAk2pdBNTvChiBcveqFXkW4W2ct/nPzPKs7mN
- wtdg9w9C47EZMF+XavJUqxFxZDZbPpTamiDqcD/86JcLw/1GY5QwfG+guzT3jwrIFQAj
- wfzcMkyQIswOz6K4pP1U8uIC9E9IGmQ3FC5OmGlGibOah5Cmvi1D9qehNJjZ1xwYu0X8
- QvmPK4olsMr8M90CEMdsQFJdUX1uT50GbI29whfOnAWMXP9aZtCJRg1V9pwhgTxVj49q
- acOg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXCFE/3uC6lF+qfC/70zpZZLNxKskT0fA44PsC7J4akT1v6sqPBzElncO2lStNErZcLPo/7trxFZ1CHvg6wBhEYaWPVMMZo5bhtGm+eJ31mQQ==
-X-Gm-Message-State: AOJu0YxtlfANIqVZVVRN1Xsh/tEVU8nhbURkv2yTzDrtlQXDpqXqZwkS
- boZ/1rTBniPjIpW2LTUkSj5xwVfLfbROKf6Va4IkViu6rOiI5Tg5DNRZ+oSkWaE=
-X-Google-Smtp-Source: AGHT+IHuznWK1fDYECLfnbOiy0mQQtyDxu46Imz0+SQb6QkWQ7xPr240wa5yVilN5FQsTLQzECoF3Q==
-X-Received: by 2002:a05:600c:3546:b0:413:feed:b309 with SMTP id
- i6-20020a05600c354600b00413feedb309mr2132109wmq.6.1711032136402; 
- Thu, 21 Mar 2024 07:42:16 -0700 (PDT)
-Received: from localhost ([102.222.70.76]) by smtp.gmail.com with ESMTPSA id
- n31-20020a05600c3b9f00b00414037f27a9sm5870295wms.31.2024.03.21.07.42.15
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 21 Mar 2024 07:42:16 -0700 (PDT)
-Date: Thu, 21 Mar 2024 17:42:12 +0300
-From: Dan Carpenter <dan.carpenter@linaro.org>
-To: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
-Message-ID: <0efe132b-b343-4438-bb00-5a4b82722ed3@moroto.mountain>
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 2nCaquOT3EX7 for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 21 Mar 2024 14:53:26 +0000 (UTC)
+X-Greylist: delayed 98655 seconds by postgrey-1.37 at util1.osuosl.org;
+ Thu, 21 Mar 2024 14:53:25 UTC
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org EBA40400F5
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org EBA40400F5
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=193.142.43.55;
+ helo=galois.linutronix.de; envelope-from=tglx@linutronix.de;
+ receiver=<UNKNOWN> 
+Received: from galois.linutronix.de (Galois.linutronix.de [193.142.43.55])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id EBA40400F5
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 21 Mar 2024 14:53:25 +0000 (UTC)
+From: Thomas Gleixner <tglx@linutronix.de>
+To: lakshmi.sowjanya.d@intel.com, jstultz@google.com, giometti@enneenne.com,
+ corbet@lwn.net, linux-kernel@vger.kernel.org
+In-Reply-To: <20240319130547.4195-3-lakshmi.sowjanya.d@intel.com>
+References: <20240319130547.4195-1-lakshmi.sowjanya.d@intel.com>
+ <20240319130547.4195-3-lakshmi.sowjanya.d@intel.com>
+Date: Thu, 21 Mar 2024 15:53:22 +0100
+Message-ID: <87le6bhc0t.ffs@tglx>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-X-Mailer: git-send-email haha only kidding
+Content-Type: text/plain
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1711032137; x=1711636937; darn=lists.osuosl.org;
- h=content-disposition:mime-version:message-id:subject:cc:to:from:date
- :from:to:cc:subject:date:message-id:reply-to;
- bh=cLs/dDV1UD9+YTTOWzQvPyGzkwzyhPvhdwP32+SNXh8=;
- b=Dr4Btu0LOinvxs79rcg7MS2laDusp923engOZOwQ/ubCyTvYzqZWJ5QhOGC1FVNyDh
- b06IMVbmuos5WY3/o17Oid6evBwh3oUrxWU0irFKBeSyI5vrlFH7GW+1hT/bZZjzt+T4
- cu9f/ZOFMt/MS9tDPCsWYtXqHMpscafB22SaBY6TnetQyZcqGnPhMAkf20ULt6Vq3A7Q
- Z+ny/WljpUS3XdvWZJaOQZ2ShuzrPN9jfgHBVvW6SE7sA6i3pVh1YA+1mu08RM8HrIil
- jiWHFcd6vZhH1eCM968pBto5o6C+ngnhnaGDtUkifMNl2AhkrSnENWIcBk1naplqjOdU
- c4rQ==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ d=linutronix.de; s=2020; t=1711032802;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=2r4kmlwH724Y4qI43//rL/0kpwyX9e5Eqqy+Tzlxna4=;
+ b=Bo1mXDrdv9XN9ZfmeP7xgJh41zMLO8nOEsx6Tq0pqTkcVSOjDALigxXRNqQR8I0ICkjnfE
+ jKO/rVkdvlpkv5QW3DdVSUE4ZpI6JNA5PUc3upt94pt9Nne/B2u264SiabjnUjwD2L0TvP
+ nviHQ1omFuOg+DMG4rX7W/RNABhShvvJfJ6ph9bQLYwJbxU4c3B+hFv6o3gbZL6IO1et4L
+ Ea2A6wYiuyQJAU+QkrkR+1uaIIBGH4tu9wPipDWhkzBy9amAzqt4KSNAnaeYkgXyRKtEan
+ ZKOg7m+zHEJ3/7TT611E4X5nrcCwVRrIumMmrk9MKxUMp7ci7AOVlnh1U81J0g==
+X-Mailman-Original-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed;
+ d=linutronix.de; s=2020e; t=1711032802;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=2r4kmlwH724Y4qI43//rL/0kpwyX9e5Eqqy+Tzlxna4=;
+ b=72pv6KOlbz95mP5aFQ19r1gYUoZf8dUWfzAVreSPhDIR2yaW8/hAvL1hmsHdgv1+EU9W0K
+ esvYdHhzFZEGnZDg==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=linaro.org
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256
- header.s=google header.b=Dr4Btu0L
-Subject: [Intel-wired-lan] [PATCH v2 net] ice: Fix freeing uninitialized
- pointers
+ header.from=linutronix.de
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key, unprotected) header.d=linutronix.de
+ header.i=@linutronix.de header.a=rsa-sha256 header.s=2020 header.b=Bo1mXDrd; 
+ dkim=pass header.d=linutronix.de header.i=@linutronix.de
+ header.a=ed25519-sha256 header.s=2020e header.b=72pv6KOl
+Subject: Re: [Intel-wired-lan] [PATCH v5 02/11] timekeeping: Add function to
+ convert realtime to base clock
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -115,99 +102,125 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- kernel-janitors@vger.kernel.org, linux-kernel@vger.kernel.org,
- Eric Dumazet <edumazet@google.com>, netdev@vger.kernel.org,
- Tony Nguyen <anthony.l.nguyen@intel.com>, intel-wired-lan@lists.osuosl.org,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- "David S. Miller" <davem@davemloft.net>
+Cc: linux-doc@vger.kernel.org, mallikarjunappa.sangannavar@intel.com,
+ alexandre.torgue@foss.st.com, perex@perex.cz, basavaraj.goudar@intel.com,
+ thejesh.reddy.t.r@intel.com, christopher.s.hall@intel.com, x86@kernel.org,
+ joabreu@synopsys.com, peter.hilber@opensynergy.com,
+ intel-wired-lan@lists.osuosl.org, subramanian.mohan@intel.com,
+ linux-sound@vger.kernel.org, lakshmi.sowjanya.d@intel.com,
+ andriy.shevchenko@linux.intel.com, netdev@vger.kernel.org, pandith.n@intel.com,
+ eddie.dong@intel.com, mcoquelin.stm32@gmail.com, anthony.l.nguyen@intel.com,
+ davem@davemloft.net
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Automatically cleaned up pointers need to be initialized before exiting
-their scope.  In this case, they need to be initialized to NULL before
-any return statement.
+On Tue, Mar 19 2024 at 18:35, lakshmi.sowjanya.d@intel.com wrote:
+> +bool ktime_real_to_base_clock(ktime_t treal, enum clocksource_ids base_id, u64 *cycles)
+> +{
+> +	struct timekeeper *tk = &tk_core.timekeeper;
+> +	unsigned int seq;
+> +	u64 delta;
+> +
+> +	do {
+> +		seq = read_seqcount_begin(&tk_core.seq);
+> +		delta = (u64)treal - tk->tkr_mono.base_real;
+> +		if (delta > tk->tkr_mono.clock->max_idle_ns)
+> +			return false;
 
-Fixes: 90f821d72e11 ("ice: avoid unnecessary devm_ usage")
-Signed-off-by: Dan Carpenter <dan.carpenter@linaro.org>
----
-v2: I missed a couple pointers in v1.
+I don't think this cutoff is valid. There is no guarantee that this is
+linear unless:
 
-The change to ice_update_link_info() isn't required because it's
-assigned on the very next line...  But I did that because it's harmless
-and makes __free() stuff easier to verify.  I felt like moving the
-declarations into the code would be controversial and it also ends up
-making the lines really long.
+       Treal[last timekeeper update] <= treal < Treal[next timekeeper update]
 
-		goto goto err_unroll_sched;
+Look at the dance in get_device_system_crosststamp() and
+adjust_historical_crosststamp() to see why.
 
-	struct ice_aqc_get_phy_caps_data *pcaps __free(kfree) =
-		kzalloc(sizeof(*pcaps), GFP_KERNEL);
+> +		*cycles = tk->tkr_mono.cycle_last + convert_ns_to_cs(delta);
+> +		if (!convert_cs_to_base(cycles, base_id))
+> +			return false;
+> +	} while (read_seqcount_retry(&tk_core.seq, seq));
+> +
+> +	return true;
+> +}
+> +EXPORT_SYMBOL_GPL(ktime_real_to_base_clock);
 
- drivers/net/ethernet/intel/ice/ice_common.c | 10 +++++-----
- drivers/net/ethernet/intel/ice/ice_ethtool.c | 2 +-
- 2 file changed, 6 insertion(+), 6 deletion(-)
+Looking at the usage site:
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_common.c b/drivers/net/ethernet/intel/ice/ice_common.c
-index 4d8111aeb0ff..6f2db603b36e 100644
---- a/drivers/net/ethernet/intel/ice/ice_common.c
-+++ b/drivers/net/ethernet/intel/ice/ice_common.c
-@@ -1002,8 +1002,8 @@ static void ice_get_itr_intrl_gran(struct ice_hw *hw)
-  */
- int ice_init_hw(struct ice_hw *hw)
- {
--	struct ice_aqc_get_phy_caps_data *pcaps __free(kfree);
--	void *mac_buf __free(kfree);
-+	struct ice_aqc_get_phy_caps_data *pcaps __free(kfree) = NULL;
-+	void *mac_buf __free(kfree) = NULL;
- 	u16 mac_buf_len;
- 	int status;
- 
-@@ -3272,7 +3272,7 @@ int ice_update_link_info(struct ice_port_info *pi)
- 		return status;
- 
- 	if (li->link_info & ICE_AQ_MEDIA_AVAILABLE) {
--		struct ice_aqc_get_phy_caps_data *pcaps __free(kfree);
-+		struct ice_aqc_get_phy_caps_data *pcaps __free(kfree) = NULL;
- 
- 		pcaps = kzalloc(sizeof(*pcaps), GFP_KERNEL);
- 		if (!pcaps)
-@@ -3420,7 +3420,7 @@ ice_cfg_phy_fc(struct ice_port_info *pi, struct ice_aqc_set_phy_cfg_data *cfg,
- int
- ice_set_fc(struct ice_port_info *pi, u8 *aq_failures, bool ena_auto_link_update)
- {
--	struct ice_aqc_get_phy_caps_data *pcaps __free(kfree);
-+	struct ice_aqc_get_phy_caps_data *pcaps __free(kfree) = NULL;
- 	struct ice_aqc_set_phy_cfg_data cfg = { 0 };
- 	struct ice_hw *hw;
- 	int status;
-@@ -3561,7 +3561,7 @@ int
- ice_cfg_phy_fec(struct ice_port_info *pi, struct ice_aqc_set_phy_cfg_data *cfg,
- 		enum ice_fec_mode fec)
- {
--	struct ice_aqc_get_phy_caps_data *pcaps __free(kfree);
-+	struct ice_aqc_get_phy_caps_data *pcaps __free(kfree) = NULL;
- 	struct ice_hw *hw;
- 	int status;
- 
-diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool.c b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-index 255a9c8151b4..78b833b3e1d7 100644
---- a/drivers/net/ethernet/intel/ice/ice_ethtool.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-@@ -941,11 +941,11 @@ static u64 ice_loopback_test(struct net_device *netdev)
- 	struct ice_netdev_priv *np = netdev_priv(netdev);
- 	struct ice_vsi *orig_vsi = np->vsi, *test_vsi;
- 	struct ice_pf *pf = orig_vsi->back;
-+	u8 *tx_frame __free(kfree) = NULL;
- 	u8 broadcast[ETH_ALEN], ret = 0;
- 	int num_frames, valid_frames;
- 	struct ice_tx_ring *tx_ring;
- 	struct ice_rx_ring *rx_ring;
--	u8 *tx_frame __free(kfree);
- 	int i;
- 
- 	netdev_info(netdev, "loopback test\n");
--- 
-2.43.0
+> +static bool pps_generate_next_pulse(struct pps_tio *tio, ktime_t expires)
+> +{
+> +	u64 art;
+> +
+> +	if (!ktime_real_to_base_clock(expires, CSID_X86_ART, &art)) {
+> +		pps_tio_disable(tio);
 
+I'm pretty sure this can happen when there is sufficient delay between
+the check for (now - expires < SAFE_TIME_NS) and the delta computation
+in ktime_real_to_base_clock() if there is a timerkeeper update
+interleaving which brings tkr_mono.base_real in front of expires.
 
+Is that intentional and correct?
+
+If so, then it's inconsistent with the behaviour of the hrtimer
+callback:
+
+> +		return false;
+> +	}
+> +
+> +	pps_compv_write(tio, art - ART_HW_DELAY_CYCLES);
+> +	return true;
+> +}
+> +
+> +static enum hrtimer_restart hrtimer_callback(struct hrtimer *timer)
+> +{
+> +	struct pps_tio *tio = container_of(timer, struct pps_tio, timer);
+> +	ktime_t expires, now;
+> +
+> +	guard(spinlock)(&tio->lock);
+> +
+> +	expires = hrtimer_get_expires(timer);
+> +	now = ktime_get_real();
+> +
+> +	if (now - expires < SAFE_TIME_NS) {
+> +		if (!pps_generate_next_pulse(tio, expires + SAFE_TIME_NS))
+> +			return HRTIMER_NORESTART;
+> +	}
+
+This safe guard does not care about time being set. I'm not familiar
+with the PPS logic, but is it expected that the pulse pattern will be
+like this:
+
+         
+
+    ---|-----|-----|-----|----------------->
+       P     P  ^        P
+                |
+        clock_settime(CLOCK_REALTIME, now - 2 seconds)         
+        
+        Obviously the pulse gap will be as big as the time is set
+        backwards, which might be way more than 2 seconds.
+        
+
+    ---|-----|-----|-----|----------------->
+       P     P  ^  P     P
+                |
+        clock_settime(CLOCK_REALTIME, now + 2 seconds)         
+
+I don't see anything in this code which cares about CLOCK_REALTIME being
+set via clock_settime() or adjtimex().
+
+Aside of that I have a question about how the TIO hardware treats this
+case:
+
+   ktime_real_to_base_clock(expires, &art);
+
+-> GAP which makes @art get into the past
+
+   pps_compv_write(tio, art - ART_HW_DELAY_CYCLES);
+
+Will the hardware ignore that already expired value or just emit a pulse
+immediately? In the latter case the pulse will be at a random point in
+time, which does not sound correct.
+
+Thanks,
+
+        tglx
