@@ -1,110 +1,90 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 45025886171
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 21 Mar 2024 21:06:23 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id B1DC288618A
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 21 Mar 2024 21:20:22 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 26C8D82291;
-	Thu, 21 Mar 2024 20:06:20 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 5C10C8229A;
+	Thu, 21 Mar 2024 20:20:21 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
 	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id IEMerqs0yPzU; Thu, 21 Mar 2024 20:06:19 +0000 (UTC)
+	with ESMTP id DbFx2XQzRG68; Thu, 21 Mar 2024 20:20:20 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E65E2822D2
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org AB32B822AD
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1711051579;
-	bh=HP94er+kV3GasVjf02u3F9ZYkvcXZGx9D3xC+m1al/k=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
+	s=default; t=1711052420;
+	bh=eFrHAh7BJNnqflbNawWUWzv1wOsF6n2g6fArJ0mZMlY=;
+	h=From:Date:References:In-Reply-To:To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=3h+g15zqJQ760s7+t/rlwhtV7PEGOiHE0IkujkeN/G9p5Z9JldBaPiKb2rt7mNHFL
-	 vxglaYWJ7B/A46/cOouRyJ0k9XNeUsr8AKZVldubjjzH3ZHtSMt86O53wr7O128cLR
-	 MBN7tJYM4U8E+5/fmryCbyOjXajGgMwFjfJFBWPMoU+qZNfoudAUe9EHHFCK5eqlni
-	 Qs9IIqZHNuqVqSSZv30W2EvTDnHZd6KH4IGAcjVmvUnhJ5287vBiM1DIQax4x+qiCn
-	 j2AwkTrej+PCp33dHkpROyVMCxuu5C42aLO+be3ApLa51qV2x7YOQB5xYxcrNchOpi
-	 IgEVLp0jL1T/g==
+	b=pz8v+1PQNT0ZktZkci5LHAz24xMRWpFmfMKOKQ/MQPOKH9VLazIJ45JFmRHjqoH/k
+	 2Gy0GqkIeYsmqgHftujhbh6zIUl0A8qqw8ul1KeZvXLqE5WnIJdVIVEP/m793oh4ca
+	 WtmYdNT1facQJESAV8WKkRZzD/1s0S3DhdnnsAlHiOztu0nFI5RmrMtm9P1IkBvnOh
+	 giN48N0dwbmLz7MTPaZDVh05JLAiqE/NIzHgLUTH1vSC7vZ8ZpvFf2+9mI3nprNG6B
+	 QRG0MtmlTXSmWk9mBcwvPiTUK+JbEJxgIAw5Bal7IpbrHRzbz/v2z36vejgv8vz2c1
+	 Qj+Q50c+8gpaw==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id E65E2822D2;
-	Thu, 21 Mar 2024 20:06:18 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id AB32B822AD;
+	Thu, 21 Mar 2024 20:20:20 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 9F10D1BF2BD
- for <intel-wired-lan@lists.osuosl.org>; Thu, 21 Mar 2024 20:06:16 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id C708A1BF2BD
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 21 Mar 2024 20:20:18 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 8A4CC608DA
- for <intel-wired-lan@lists.osuosl.org>; Thu, 21 Mar 2024 20:06:16 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id B2ABE60699
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 21 Mar 2024 20:20:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id v0YsvtYJDDm3 for <intel-wired-lan@lists.osuosl.org>;
- Thu, 21 Mar 2024 20:06:15 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=212.227.15.14;
- helo=mout.web.de; envelope-from=markus.elfring@web.de; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org EE631608BC
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org EE631608BC
-Received: from mout.web.de (mout.web.de [212.227.15.14])
- by smtp3.osuosl.org (Postfix) with ESMTPS id EE631608BC
- for <intel-wired-lan@lists.osuosl.org>; Thu, 21 Mar 2024 20:06:13 +0000 (UTC)
-X-UI-Sender-Class: 814a7b36-bfc1-4dae-8640-3722d8ec6cd6
-Received: from [192.168.178.21] ([94.31.90.95]) by smtp.web.de (mrweb005
- [213.165.67.108]) with ESMTPSA (Nemesis) id 1M8C07-1rjnlJ0KNn-00CkW1; Thu, 21
- Mar 2024 21:05:38 +0100
-Message-ID: <0d7062e1-995b-42bc-8a62-d57c8cb588ee@web.de>
-Date: Thu, 21 Mar 2024 21:05:35 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: Dan Carpenter <dan.carpenter@linaro.org>,
- kernel-janitors@vger.kernel.org, netdev@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org,
- Maciej Fijalkowski <maciej.fijalkowski@intel.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>
-References: <0efe132b-b343-4438-bb00-5a4b82722ed3@moroto.mountain>
-Content-Language: en-GB
-From: Markus Elfring <Markus.Elfring@web.de>
-In-Reply-To: <0efe132b-b343-4438-bb00-5a4b82722ed3@moroto.mountain>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-X-Provags-ID: V03:K1:f30MnlCTiWPDt1zm7PlXXn3w8Vl/ZOlATngou/8kstVjQ3Vtjmc
- NwEr7iAZYqjF/kCilniZdpv/ZLPs3A65OoLDtTMhNEIpAf2F3c8X9j/zin2Z/6rxkVK/bL3
- Wd7ZA7beckUcLMwzclkVVdoZI80PLUcb7qXLoHdtCIh0JsPV3Ctj3JBF/3V2PoYrWqycho0
- 7onxYACnS19+yZ9c1V4Ag==
-UI-OutboundReport: notjunk:1;M01:P0:vSwOZJur5Ns=;wS5OBqL4d9dCxlOuH0VOMqS/4fF
- HPZwiGCb9Nlttel1o32s4uj/FZR0A0C6SNqOHaJSVg9ggtffeyg58NdSiRKIJfsKDDJSi3xdh
- 0YkTlLhDYYssZ8YCy56Ouhf9QIopO9Q50b19LqUrhttvuMDTrhzU5SDNOe+J0gs6Nk0Rmeq9Y
- mvlNydIjXKpuXhzRs30scWOYVCbB8CxB06a26pzJUOh2JyCCKqq8HCPd4Ma6sWoBKM4LnhsT5
- NE8XMeS2h4sLzP8HcTd+D0RZJkrS+ZLlvMpLCIo49solQBCeySd7mwOU4M3eqv7sgj3O8CcGQ
- qZ+ekFU182m22nN2bkM8q9nuJg2koKKKzkxY6e5XJPqGSS2Mco0CbNM2rFu//KXZxgq2Z4vRU
- HL9L6wgBsg669W3Q2jeTE7sTtQFNC5ITlZFfnpRbGWGA9aC11gKoyULFqzmMk2xIYLR21xBzs
- HjWRLx8ZhSAvwtZztfSfWlP5RUf5pKQfPt5EBu0JO61eSCgQ1yF5Qq936VuF1HUO1ihs69J/z
- MSBYfX3hKpefhCCMl+wceKpxUFjtHuUJncwIXYQyZynPKTaXhlMu1gEzB7OyjP3MDjikgpgV5
- ljuHMeLllwYLKw9id/h1cypsNLg7s1o3IiK6/7ToPXGn+UGUfTf3qcpQLLAb8G9NV6viALNdk
- mI2L8Dqr1rJSfonWVMHFQ2AtKrik/lGmOV7iH1UghickcXvIvGwBTkK3FJHKCaa1gqZ17Nam+
- 0TSNIHGC719GGxYr9suh+LwAY4S/SLY3u1NcBL2Ax8zWoaafV6y9s0gKfapr3BQ6MPdSk4wtW
- 30APu4CHbyD9mLL68vAJgE6E1rsWASCzEflgAOaGREIHw=
+ with ESMTP id XPn90QcpVVkb for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 21 Mar 2024 20:20:18 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.134.164.104;
+ helo=mail3-relais-sop.national.inria.fr; envelope-from=julia.lawall@inria.fr;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 595AD60685
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 595AD60685
+Received: from mail3-relais-sop.national.inria.fr
+ (mail3-relais-sop.national.inria.fr [192.134.164.104])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 595AD60685
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 21 Mar 2024 20:20:16 +0000 (UTC)
+X-IronPort-AV: E=Sophos;i="6.07,143,1708383600"; d="scan'208";a="82803127"
+Received: from 184-074-243-067.biz.spectrum.com (HELO smtpclient.apple)
+ ([184.74.243.67]) by mail3-relais-sop.national.inria.fr with
+ ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 21 Mar 2024 21:20:12 +0100
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+From: Julia Lawall <Julia.Lawall@inria.fr>
+Mime-Version: 1.0 (1.0)
+Date: Thu, 21 Mar 2024 16:20:09 -0400
+Message-Id: <F2FBADE8-EDF9-4987-A97B-CF4D2D1452E0@inria.fr>
+References: <e5172afb-427b-423e-877a-10352cf4a007@web.de>
+In-Reply-To: <e5172afb-427b-423e-877a-10352cf4a007@web.de>
+To: Markus Elfring <Markus.Elfring@web.de>
+X-Mailer: iPhone Mail (19H384)
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=web.de; 
- s=s29768273; t=1711051538; x=1711656338; i=markus.elfring@web.de;
- bh=HP94er+kV3GasVjf02u3F9ZYkvcXZGx9D3xC+m1al/k=;
- h=X-UI-Sender-Class:Date:To:Cc:References:Subject:From:
- In-Reply-To;
- b=fqcHwKs0Z9CmLmHt7YoDokHEsZL4T4a+q94cc/relg9REm3EpXqYzNFgy0Sd7xli
- bi2aKmCEYhRbcsq0L9ewnsH0llPKc4UfUvkEx51h1jD5sfsrJ6uZdXeYZGR7RpUJG
- np1ABDyBsolp78K1lKCcb6oiO72t1Sdar8GRX+q5ziLhWFIOX0lORTzDNUYZYtmk2
- uUepsdGtmGYAIvf0CsgXQgrxW3kEKHWgHiuEbG8WgjeM6xswbkym5fHqZVKeZhpMz
- yk13oJE73uzZ0+yZ2RVGbOZjUTDym9M4dJOYSEQoUA73oMJXpJ3DUrXIJHAyD3pZm
- CrBbCv7IsXUwtOpk7Q==
+ d=inria.fr; s=dc;
+ h=content-transfer-encoding:from:mime-version:subject:date:
+ message-id:references:cc:in-reply-to:to;
+ bh=eFrHAh7BJNnqflbNawWUWzv1wOsF6n2g6fArJ0mZMlY=;
+ b=b+iOeAwyum6sXPaLJdb+fWcvioaIay6A5QdvQAH59gWJUsmGC9jNdIvf
+ /ahM63HH30yJBWqhsW2vS2WPc5h/9lkl9FlcxgEizgMNTAwfqQZw4FHWI
+ d57CFM4Nc+XCYjiqBF+Y6RbCzR99H+QXO1yy2H4bghO54mhDp3Cik0xCj
+ 0=;
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=web.de
+ dmarc=pass (p=none dis=none)
+ header.from=inria.fr
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=web.de header.i=markus.elfring@web.de
- header.a=rsa-sha256 header.s=s29768273 header.b=fqcHwKs0
-Subject: Re: [Intel-wired-lan] [PATCH v2 net] ice: Fix freeing uninitialized
+ dkim=pass (1024-bit key,
+ unprotected) header.d=inria.fr header.i=@inria.fr header.a=rsa-sha256
+ header.s=dc header.b=b+iOeAwy
+X-Mailman-Original-Authentication-Results: mail3-relais-sop.national.inria.fr;
+ dkim=none (message not signed)
+ header.i=none; spf=SoftFail smtp.mailfrom=Julia.Lawall@inria.fr;
+ dmarc=fail (p=none dis=none) d=inria.fr
+Subject: Re: [Intel-wired-lan] [PATCH net] ice: Fix freeing uninitialized
  pointers
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -118,71 +98,65 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Pucha Himasekhar Reddy <himasekharx.reddy.pucha@intel.com>,
- Paolo Abeni <pabeni@redhat.com>, Jiri Pirko <jiri@resnulli.us>,
- Kees Cook <keescook@chromium.org>, Lukasz Czapnik <lukasz.czapnik@intel.com>,
- LKML <linux-kernel@vger.kernel.org>, Julia Lawall <julia.lawall@inria.fr>,
+Cc: Jiri Pirko <jiri@resnulli.us>,
+ Pucha Himasekhar Reddy <himasekharx.reddy.pucha@intel.com>,
+ Paolo Abeni <pabeni@redhat.com>,
+ Maciej Fijalkowski <maciej.fijalkowski@intel.com>,
+ Kees Cook <keescook@chromium.org>, netdev@vger.kernel.org,
+ Lukasz Czapnik <lukasz.czapnik@intel.com>, kernel-janitors@vger.kernel.org,
+ LKML <linux-kernel@vger.kernel.org>,
  Alexander Lobakin <aleksander.lobakin@intel.com>,
  Eric Dumazet <edumazet@google.com>, David Laight <David.Laight@aculab.com>,
+ intel-wired-lan@lists.osuosl.org, Jonathan Cameron <jic23@kernel.org>,
  Jakub Kicinski <kuba@kernel.org>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>,
  Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- "David S. Miller" <davem@davemloft.net>, Jonathan Cameron <jic23@kernel.org>
+ "David S. Miller" <davem@davemloft.net>,
+ Dan Carpenter <dan.carpenter@linaro.org>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-> Automatically cleaned up pointers need to be initialized before exiting
-> their scope.  In this case, they need to be initialized to NULL before
-> any return statement.
+Does one prefer an initialization of null at the top of the function or an i=
+nitialization to a meaningful value in the middle of the function ?
 
-Will any adjustments become relevant also for this change description
-if scope reductions would become more appealing for affected local variables?
-
-How much can a small script (like the following) for the semantic patch language
-(Coccinelle software) help to achieve a better common understanding for
-possible source code transformations?
-
-// See also:
-// drivers/net/ethernet/intel/ice/ice_common.c
-@movement1@
-attribute name __free;
-@@
--struct ice_aqc_get_phy_caps_data *pcaps __free(kfree);
- ... when any
-+struct ice_aqc_get_phy_caps_data *
- pcaps
-+__free(kfree)
- = kzalloc(sizeof(*pcaps), ...);
-
-@movement2@
-attribute name __free;
-@@
--void *mac_buf __free(kfree);
- ... when any
-+void *
- mac_buf
-+__free(kfree)
- = kcalloc(2, sizeof(struct ice_aqc_manage_mac_read_resp), ...);
-
-// See also:
-// drivers/net/ethernet/intel/ice/ice_ethtool.c
-@movement3@
-attribute name __free;
-@@
--u8 *tx_frame __free(kfree);
- int i;
- ... when any
- if (ice_fltr_add_mac(test_vsi, ...))
- { ... }
-+
-+{
-+u8 *tx_frame __free(kfree) = NULL;
- if (ice_lbtest_create_frame(pf, &tx_frame, ...))
- { ... }
- ... when any
-+}
-+
- valid_frames = ice_lbtest_receive_frames(...);
+(Sorry for top posting)
 
 
-Regards,
-Markus
+Sent from my iPhone
+
+> On 21 Mar 2024, at 14:14, Markus Elfring <Markus.Elfring@web.de> wrote:
+>=20
+> =EF=BB=BF
+>>=20
+>>> How do you think about to reduce the scope for the affected local variab=
+le instead
+>>> with the help of a small script (like the following) for the semantic pa=
+tch language?
+>>>=20
+>>> @movement@
+>>> attribute name __free;
+>>> @@
+>>> -u8 *tx_frame __free(kfree);
+>>> int i;
+>>> ... when any
+>>> if (ice_fltr_add_mac(test_vsi, ...))
+>>> { ... }
+>>> +
+>>> +{
+>>> +u8 *tx_frame __free(kfree) =3D NULL;
+>>> if (ice_lbtest_create_frame(pf, &tx_frame, ...))
+>>> { ... }
+>>> ... when any
+>>> +}
+>>> +
+>>> valid_frames =3D ice_lbtest_receive_frames(...);
+>>=20
+>> I believe you don't understand what the scope of the above can be.
+>=20
+> Will the understanding improve for the proposed source code transformation=
+?
+>=20
+> Regards,
+> Markus
+
