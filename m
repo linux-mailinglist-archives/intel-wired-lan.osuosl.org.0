@@ -1,111 +1,91 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 72DA0886631
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 22 Mar 2024 06:32:15 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id F277B886770
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 22 Mar 2024 08:25:19 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 27131417FB;
-	Fri, 22 Mar 2024 05:32:14 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 1F9048238C;
+	Fri, 22 Mar 2024 07:25:18 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id FSZLIiYOgzzx; Fri, 22 Mar 2024 05:32:13 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+	by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id VrHhx7Q6ztZe; Fri, 22 Mar 2024 07:25:17 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 21BBC417EB
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 375E08238E
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1711085533;
-	bh=k+glO5iNDnOJRX1bMlWGx35LFvgqhLSy12w38sJ7h5I=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1711092317;
+	bh=ZlmxMcxkID2APtdDfuPjyw9p7ZsnzMLqcX7Pogi+DwM=;
+	h=Date:From:To:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=s9RIGvdoBOis5GALyPLoKFMcIhtJMeX3WgfNliFhEG3YGA33p2IeLPx+Od73DA31i
-	 6/FgIJ62tk7Kpvwod1IdDB5//IZyydi4R7YmICwt8P3p+8jwXXQafXFtDFytBjxH5d
-	 kMzIyS+GY4j0hFr/J55pYaNFDpD3xk6oaw5iqvqyTdE6IuJPfNtHkRQnuiDFfMSAu0
-	 XO2jqbRxENgaNYBooZu5dBpLGsozeElPTBqpaXdHGRvQRiQJTMjxFLMuoLS7YsAP2y
-	 1WtgIlYyFACsYk6vb1VfoW577fAF4LmKY55sIretBpCqa82quKldkgVCDlYbofEBRE
-	 OuAwmrXv0DtyQ==
+	b=TjHgO/siNmRZ7hoipyL6QrQNt7lJiZGrHrWQ1Wzuos3/i9gaZvjqJ5wFasUmC79MU
+	 fRp8cQ9xFzpeuZX0ARtNR+IdzgrNYroyLJBbyIneWoDa2+LpfTbK+JuKcNm+P+BLhy
+	 xc2kNIpGCTxoGH572gsfFFR367VS19H3UwQ7A8vrZ57098EsqKjtEK7TBkIIS456gq
+	 TsffXwmCMHsGuvqfUT5BIxkJkOlfeU4c1pgQPitJVkX4iFmTM8dHAIi8ijxGL3i/SI
+	 uHla5KRwk4tVZqEMuXaGrNXsPjaJmotGRU76eyunZKWus4hRDzMPPm3uU/GJOSiidc
+	 16qRmMj9RttkQ==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 21BBC417EB;
-	Fri, 22 Mar 2024 05:32:13 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 375E08238E;
+	Fri, 22 Mar 2024 07:25:17 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id CDD3C1BF421
- for <intel-wired-lan@lists.osuosl.org>; Fri, 22 Mar 2024 05:32:10 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 79A701BF3C2
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 22 Mar 2024 07:25:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id B6A2A41714
- for <intel-wired-lan@lists.osuosl.org>; Fri, 22 Mar 2024 05:32:10 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 725B78238B
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 22 Mar 2024 07:25:15 +0000 (UTC)
 X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id I3jRH4DUlsok for <intel-wired-lan@lists.osuosl.org>;
- Fri, 22 Mar 2024 05:32:10 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2a00:1450:4864:20::329; helo=mail-wm1-x329.google.com;
- envelope-from=dan.carpenter@linaro.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 7524841703
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7524841703
-Received: from mail-wm1-x329.google.com (mail-wm1-x329.google.com
- [IPv6:2a00:1450:4864:20::329])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 7524841703
- for <intel-wired-lan@lists.osuosl.org>; Fri, 22 Mar 2024 05:32:09 +0000 (UTC)
-Received: by mail-wm1-x329.google.com with SMTP id
- 5b1f17b1804b1-414787c73c7so4595545e9.0
- for <intel-wired-lan@lists.osuosl.org>; Thu, 21 Mar 2024 22:32:09 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1711085527; x=1711690327;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=k+glO5iNDnOJRX1bMlWGx35LFvgqhLSy12w38sJ7h5I=;
- b=PLX0xUiHbggMbktt/jC14ISNq8Wkne8NN4WqjI4gW8RGOj4XvUIkRY4UwW+P8L9mM5
- xHi17p9tLz+hvdtsgwOSAkpzf5vsGMR/grhfDEI2ATcZWcmrRWRfFI5LFr5SSTYcPB9D
- djgovy6Ytekmbos9Eqz4ovrNZdmFKn1rJkAasBAXmldL6NM8OR8Bfwa19JtdhEKX2/aF
- bSeKclb9GB/x5n8nRXgkaXy/OFb9HWlQgydzbVjf2GHcG9BjjpxlFr3fq/p2vOxq8Shb
- y34ZSkzVGHou6u7Fd877WOcmpjmD2BMtPmkbAtnNNrmw8Uep8/rRSJuSUiFhdvvNp2rQ
- MK/g==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXDMkKCZSvUdtTZQNCa7FpoAK4yQrXwmU00z3oTJFxUe2oGfMoMhm9S+IxlXkdQ/MK1IoKM4/evUdgqdlX5qzBwm2b6vu9XKqxGwrXfghjKFg==
-X-Gm-Message-State: AOJu0YyPXybnmQLxz5/i3wFX94u7dm3y9L7WhvcU7fNBmiC29K5G1Q67
- HYYxUAIBFeV7RQijOEVLBSNgX1KxtWzA9kOfw3mDlraQ583NW517t0CHKJ7rjuQ=
-X-Google-Smtp-Source: AGHT+IFUrNidyaL2odjdKfD+FtYadw4MHtswbb1LkvUM7SXIPYO/YUG7URif4e21XfDKyIOZxaierw==
-X-Received: by 2002:a05:600c:3502:b0:414:7909:6680 with SMTP id
- h2-20020a05600c350200b0041479096680mr751469wmq.16.1711085527043; 
- Thu, 21 Mar 2024 22:32:07 -0700 (PDT)
-Received: from localhost ([102.222.70.76]) by smtp.gmail.com with ESMTPSA id
- z18-20020a5d4d12000000b0033ec8f3ca9bsm1190810wrt.49.2024.03.21.22.32.06
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 21 Mar 2024 22:32:06 -0700 (PDT)
-Date: Fri, 22 Mar 2024 08:32:02 +0300
-From: Dan Carpenter <dan.carpenter@linaro.org>
-To: Markus Elfring <Markus.Elfring@web.de>
-Message-ID: <7ca4a907-2a9c-4711-a13c-22cbfec15e0e@moroto.mountain>
-References: <0efe132b-b343-4438-bb00-5a4b82722ed3@moroto.mountain>
- <0d7062e1-995b-42bc-8a62-d57c8cb588ee@web.de>
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id S87MZJyOA-6j for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 22 Mar 2024 07:25:14 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.134.164.83;
+ helo=mail2-relais-roc.national.inria.fr; envelope-from=julia.lawall@inria.fr;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 0C8558238A
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0C8558238A
+Received: from mail2-relais-roc.national.inria.fr
+ (mail2-relais-roc.national.inria.fr [192.134.164.83])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 0C8558238A
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 22 Mar 2024 07:25:13 +0000 (UTC)
+X-IronPort-AV: E=Sophos;i="6.07,145,1708383600"; d="scan'208";a="157923739"
+Received: from 184-074-243-067.biz.spectrum.com (HELO [172.20.17.26])
+ ([184.74.243.67]) by mail2-relais-roc.national.inria.fr with
+ ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 22 Mar 2024 08:25:08 +0100
+Date: Fri, 22 Mar 2024 03:24:56 -0400 (EDT)
+From: Julia Lawall <julia.lawall@inria.fr>
+To: Jakub Kicinski <kuba@kernel.org>
+In-Reply-To: <20240321184828.3e22c698@kernel.org>
+Message-ID: <82b49991-eb5a-7e8c-67e0-b0fd932f40b4@inria.fr>
+References: <e5172afb-427b-423e-877a-10352cf4a007@web.de>
+ <F2FBADE8-EDF9-4987-A97B-CF4D2D1452E0@inria.fr>
+ <b9dc2c7a-2688-4a7b-8482-1e762c39449c@intel.com>
+ <20240321184828.3e22c698@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <0d7062e1-995b-42bc-8a62-d57c8cb588ee@web.de>
+Content-Type: multipart/mixed; boundary="8323329-551105037-1711092310=:3390"
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1711085527; x=1711690327; darn=lists.osuosl.org;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=k+glO5iNDnOJRX1bMlWGx35LFvgqhLSy12w38sJ7h5I=;
- b=zNyz2nEs0xGMF1X1Am6iWpNdAiRp+tIHBX2na+WFiJqhh4OnGgfwyAvnYmt2s2sxJl
- Bf7Ekc22GF/tziMmuTz2irMLWNSR8MDwWLV7EClG84vSWY0XXf/NdSiZSz9WLqNfkOga
- yPvNJUlnxKg8uy8ehOmYKEyjUvYYqwIXDvH4DNb9PXavOgCIz6LBlfed782mw1DOickw
- CVFx1UJjYjlqr5dgMyTHXyKWlYfGlIO8j62+L6HL04B3y3qT3ZLqty5JFSx+mobgWegm
- TMnAnykOE65Z1WI0S0VxT1xHp8D/FWLBVogWqxF1v9bQIMukif/aaXPjHRjyRzu+HIJ1
- CZ0w==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ d=inria.fr; s=dc;
+ h=date:from:to:cc:subject:in-reply-to:message-id:
+ references:mime-version;
+ bh=ZlmxMcxkID2APtdDfuPjyw9p7ZsnzMLqcX7Pogi+DwM=;
+ b=S3gBIDuJwtLpODXitOZtu7d+JPZWfXlEKDDRrdpd91mZdDnU9XwPNv8W
+ A/DxwGKelRp0rlpAxQ1BO9ZhYMblxfbkn2sIqF2ykNh785PtT94jrqPBV
+ WFQKUyPTqj7gip27FdT+S/UnWpXzytrLuU2RB35RjvKHJ/0bs80Z9Xdlv
+ 0=;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=linaro.org
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256
- header.s=google header.b=zNyz2nEs
-Subject: Re: [Intel-wired-lan] [PATCH v2 net] ice: Fix freeing uninitialized
+ header.from=inria.fr
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (1024-bit key,
+ unprotected) header.d=inria.fr header.i=@inria.fr header.a=rsa-sha256
+ header.s=dc header.b=S3gBIDuJ
+X-Mailman-Original-Authentication-Results: mail2-relais-roc.national.inria.fr;
+ dkim=none (message not signed)
+ header.i=none; spf=SoftFail smtp.mailfrom=julia.lawall@inria.fr;
+ dmarc=fail (p=none dis=none) d=inria.fr
+Subject: Re: [Intel-wired-lan] [PATCH net] ice: Fix freeing uninitialized
  pointers
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -119,27 +99,57 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Jiri Pirko <jiri@resnulli.us>,
- Pucha Himasekhar Reddy <himasekharx.reddy.pucha@intel.com>,
- Paolo Abeni <pabeni@redhat.com>,
+Cc: kernel-janitors@vger.kernel.org, Eric Dumazet <edumazet@google.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>,
  Maciej Fijalkowski <maciej.fijalkowski@intel.com>,
- Kees Cook <keescook@chromium.org>, netdev@vger.kernel.org,
- Lukasz Czapnik <lukasz.czapnik@intel.com>, kernel-janitors@vger.kernel.org,
- LKML <linux-kernel@vger.kernel.org>, Julia Lawall <julia.lawall@inria.fr>,
- Alexander Lobakin <aleksander.lobakin@intel.com>,
- Eric Dumazet <edumazet@google.com>, David Laight <David.Laight@aculab.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>, Jakub Kicinski <kuba@kernel.org>,
+ Dan Carpenter <dan.carpenter@linaro.org>,
  Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- intel-wired-lan@lists.osuosl.org,
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ intel-wired-lan@lists.osuosl.org, Paolo Abeni <pabeni@redhat.com>,
+ Pucha Himasekhar Reddy <himasekharx.reddy.pucha@intel.com>,
+ Jiri Pirko <jiri@resnulli.us>, Kees Cook <keescook@chromium.org>,
+ Lukasz Czapnik <lukasz.czapnik@intel.com>,
+ Dan Williams <dan.j.williams@intel.com>,
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>, netdev@vger.kernel.org,
+ LKML <linux-kernel@vger.kernel.org>, Julia Lawall <Julia.Lawall@inria.fr>,
+ Alexander Lobakin <aleksander.lobakin@intel.com>,
+ David Laight <David.Laight@aculab.com>,
  "David S. Miller" <davem@davemloft.net>, Jonathan Cameron <jic23@kernel.org>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Markus please don't do this.  Don't take a controversial opinion and
-start trying to force it on everyone via review comments and an
-automatic converstion script.
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-regards,
-dan carpenter
+--8323329-551105037-1711092310=:3390
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8BIT
 
+
+
+On Thu, 21 Mar 2024, Jakub Kicinski wrote:
+
+> On Thu, 21 Mar 2024 15:27:47 -0700 Jesse Brandeburg wrote:
+> > The gist of it is that we should instead be using inline declarations,
+> > which I also agree is a reasonable style for this. It more clearly shows
+> > the __free(kfree) and the allocation (kzalloc, kcalloc, etc) on the same
+> > (or virtually the same) line of code.
+> >
+> > I'm curious if Jakub would dislike this less? Accept?
+>
+> At present I find this construct unreadable.
+> I may get used to it, hard to say.
+>
+> Also I don't see the benefit of the auto-freeing construct,
+> I'd venture a guess that all the bugs it may prevent would
+> have been caught by smatch. But I'm an old curmudgeon stuck
+> in my ways. Feel free to experiment in Intel drivers, and we'll
+> see how it works out 🤷️
+
+In my experiments with of_node_put, there seem to be many functions where
+removing the frees makes the function much more readable.  But
+kmalloc/kfree may be used in different contexts, where the management of
+the memory is a smaller percentage of the overall code.  So the tradeoffs
+may be different.
+
+julia
+--8323329-551105037-1711092310=:3390--
