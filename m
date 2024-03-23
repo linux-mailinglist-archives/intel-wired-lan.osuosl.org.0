@@ -1,95 +1,91 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5676888748A
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 22 Mar 2024 22:45:01 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 230078878AB
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 23 Mar 2024 13:31:09 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 044FD4195B;
-	Fri, 22 Mar 2024 21:44:59 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
-	by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id C0kS-HeE3d9f; Fri, 22 Mar 2024 21:44:57 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 06024417DF;
+	Sat, 23 Mar 2024 12:31:07 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id glwHq-PTI1au; Sat, 23 Mar 2024 12:31:05 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A72A941950
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3C57441831
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1711143897;
-	bh=Y8SJaRO3opwvj9357fjpoxG9nXozUWAvccwL/P2qHyc=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=T2RzLo+7iTvCo5UnRArAz2K4Vn+1N3Aw9Pyw5ULZj4NcJyVxJdqxkO/j4EuYUVPuM
-	 Dl17LJxycHf3edyf0mGpc7gg4vjxWwOCIx7WypCwf9R5kGe2GPXDrsu9r5qHbtUKsR
-	 p7j+pvSz4N7ggRXwvfJbbJfnTth/ai7vFZPLMv1yfoHc6xmaRzm9PbDhi4zVmSbRzC
-	 jCLqO+LWBN1ah/QO1Mh1F1OBRuzGFpXvb55olebUZb4Mlk/AQyL68QXbNsk7tg+8au
-	 E2xDkKYnwjSHLUDlSW/p1mdknyVhNVxuxAJn2AIjsSE4Zf/0NiytfkEkrZLr79qCR5
-	 L4c45z60Nj86A==
+	s=default; t=1711197065;
+	bh=qNkNfuckCITNRnP/PMCSOy01YPWaaUEunRGXJ7+4O84=;
+	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=ME4190lzpXi6vMncpolD4kKGI2n7Li+CtVFGMAggIUKikd3c4vRLEZEJganH2/k3t
+	 WK8LHGVCyP9+A08AxRpEm5a9MOccjrEfO378eIl5rqXOnb1vdNCDaenmJxyeSrVQdL
+	 vOrTAxVU0iylRfvo1133OKoQWKEQMNx9YJS7Jm4oUhTMsCSjWHRV3aO7CfbICCXQEy
+	 YS6a2kPvTPnvjH9R0YhWgun8SIaIO511k4Atrch1vJ+JIbuWMSpnT1qQoh6nb8UZMS
+	 jGAJjPX2PKh6S9nvBiOlt/ZboaqbF4xx1eANJVdlwnvr3y1RdI1PTTU4S5Gln1B8pr
+	 FJhMMIH0B2YMw==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id A72A941950;
-	Fri, 22 Mar 2024 21:44:57 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 3C57441831;
+	Sat, 23 Mar 2024 12:31:05 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 1EB421BF2C9
- for <intel-wired-lan@lists.osuosl.org>; Fri, 22 Mar 2024 21:44:52 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 9D0621BF3E1
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 23 Mar 2024 12:31:02 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id A9D9741947
- for <intel-wired-lan@lists.osuosl.org>; Fri, 22 Mar 2024 21:44:51 +0000 (UTC)
-X-Virus-Scanned: amavisd-new at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id AFwZyOl6oVVK for <intel-wired-lan@lists.osuosl.org>;
- Fri, 22 Mar 2024 21:44:50 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.9;
- helo=mgamail.intel.com; envelope-from=jacob.e.keller@intel.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 9D675408CB
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 9D675408CB
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.9])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 9D675408CB
- for <intel-wired-lan@lists.osuosl.org>; Fri, 22 Mar 2024 21:44:50 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,11021"; a="28689863"
-X-IronPort-AV: E=Sophos;i="6.07,147,1708416000"; d="scan'208";a="28689863"
-Received: from orviesa004.jf.intel.com ([10.64.159.144])
- by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 22 Mar 2024 14:44:49 -0700
+ by smtp3.osuosl.org (Postfix) with ESMTP id 8892B60654
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 23 Mar 2024 12:31:02 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id HRXPw_XBM6vE for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 23 Mar 2024 12:31:01 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.13;
+ helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 0FDCC6064A
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0FDCC6064A
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.13])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 0FDCC6064A
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 23 Mar 2024 12:31:00 +0000 (UTC)
+X-IronPort-AV: E=McAfee;i="6600,9927,11021"; a="9193048"
+X-IronPort-AV: E=Sophos;i="6.07,149,1708416000"; 
+   d="scan'208";a="9193048"
+Received: from fmviesa007.fm.intel.com ([10.60.135.147])
+ by fmvoesa107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 23 Mar 2024 05:30:59 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.07,147,1708416000"; d="scan'208";a="19733212"
-Received: from jekeller-desk.amr.corp.intel.com (HELO
- jekeller-desk.jekeller.internal) ([10.166.241.1])
- by orviesa004-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 22 Mar 2024 14:44:49 -0700
-From: Jacob Keller <jacob.e.keller@intel.com>
+X-IronPort-AV: E=Sophos;i="6.07,149,1708416000"; d="scan'208";a="15147998"
+Received: from lkp-server01.sh.intel.com (HELO b21307750695) ([10.239.97.150])
+ by fmviesa007.fm.intel.com with ESMTP; 23 Mar 2024 05:30:59 -0700
+Received: from kbuild by b21307750695 with local (Exim 4.96)
+ (envelope-from <lkp@intel.com>) id 1ro0WW-000L9Y-2H
+ for intel-wired-lan@lists.osuosl.org; Sat, 23 Mar 2024 12:30:56 +0000
+Date: Sat, 23 Mar 2024 20:30:39 +0800
+From: kernel test robot <lkp@intel.com>
 To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Date: Fri, 22 Mar 2024 14:44:45 -0700
-Message-ID: <20240322214445.1653263-3-jacob.e.keller@intel.com>
-X-Mailer: git-send-email 2.44.0.53.g0f9d4d28b7e6
-In-Reply-To: <20240322214445.1653263-1-jacob.e.keller@intel.com>
-References: <20240322214445.1653263-1-jacob.e.keller@intel.com>
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Message-ID: <202403232036.relJ2Ih1-lkp@intel.com>
+User-Agent: s-nail v14.9.24
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1711143891; x=1742679891;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=1DB1gLvY4disXn3Qc/gNEVCqQLLk/513QzTxokQBi88=;
- b=bJVdwTdu2Lt80lBdpSwoehBQcPrIDYU9GaODutMBTGJvO5rT5f5pT25I
- mvKsKs/d1iKx1KNY/1TwPVjYHlTiH+hwaabyAcIX0vwH8D22ZSal11hPZ
- 46K2YRaE5ODilgbEqFhoqsthSGpoufQUz+eOGVyW8SYo3L3Pe3yv5BzbV
- lNVsTLFuW6m2NxRzzgBmlGELS52EHj0HmNcLN56wy/RBW4MQh94JOscug
- meJjdn5J2EqrZQm1adWkW1ZCeNnM5XCRL932zhMusCbxrNK7Iszi1YzK0
- ICUFNCk8VPsx6IsuX0Wq6iNoyXLEAsDPHlKnWOlRNKrxCBabZsges5oaB
+ t=1711197061; x=1742733061;
+ h=date:from:to:subject:message-id;
+ bh=JvE7nWxgmUjG7mJ433dk/qI7/UxOvHCV8HHO7ajnXjQ=;
+ b=VXNs8rgItNYHtJ9hTAWguNxjbI3zAq6dQwEIekkBt8Ea1gEb1IuEKHtt
+ 1dbqws+Qk5TsTF/z82NaHDiRLjiRuy4YuGKtbtF4/jsKMjNm65Jn92oLh
+ YFS/ge6QBc7ZQl2/AVWWdKDg1JXPNRbcdSptsK8Bq8Mb+b4VHfyuLLGO2
+ kD3/DSmS6wve9NOFqFqxXYMaR0r+vqIWtJA53EuxZJVPTqUGrP0FyBphF
+ dja1il5s+seEpe2a3OUsmpZ0cCVRQNEhD0wz0g5Us/CM2yqNrQhOTOKzV
+ 3irFRFEQkMM1jnlxM963r31kl5XLpm++j3UX6IT1CFHZ7oGDZuXl3H55j
  w==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=bJVdwTdu
-Subject: [Intel-wired-lan] [PATCH iwl-next v2 2/2] ice: store VF relative
- MSI-X index in q_vector->vf_reg_idx
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=VXNs8rgI
+Subject: [Intel-wired-lan] [tnguy-next-queue:dev-queue] BUILD SUCCESS
+ 8ab6a161fded64772a7bcf0745dc13f3cfb04c97
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -102,206 +98,191 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Jacob Keller <jacob.e.keller@intel.com>,
- Anthony Nguyen <anthony.l.nguyen@intel.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The ice physical function driver needs to configure the association of
-queues and interrupts on behalf of its virtual functions. This is done over
-virtchnl by the VF sending messages during its initialization phase. These
-messages contain a vector_id which the VF wants to associate with a given
-queue. This ID is relative to the VF space, where 0 indicates the control
-IRQ for non-queue interrupts.
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git dev-queue
+branch HEAD: 8ab6a161fded64772a7bcf0745dc13f3cfb04c97  idpf: fix kernel panic on unknown packet types
 
-When programming the mapping, the PF driver currently passes this vector_id
-directly to the low level functions for programming. This works for SR-IOV,
-because the hardware uses the VF-based indexing for interrupts.
+elapsed time: 850m
 
-This won't work for Scalable IOV, which uses PF-based indexing for
-programming its VSIs. To handle this, the driver needs to be able to look
-up the proper index to use for programming. For typical IRQs, this would be
-the q_vector->reg_idx field.
+configs tested: 169
+configs skipped: 3
 
-The q_vector->reg_idx can't be set to a VF relative value, because it is
-used when the PF needs to control the interrupt, such as when triggering a
-software interrupt on stopping the Tx queue. Thus, introduce a new
-q_vector->vf_reg_idx which can store the VF relative index for registers
-which expect this.
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
-Use this in ice_cfg_interrupt to look up the VF index from the q_vector.
-This allows removing the vector ID parameter of ice_cfg_interrupt. Also
-notice that this function returns an int, but then is cast to the virtchnl
-error enumeration, virtchnl_status_code. Update the return type to indicate
-it does not return an integer error code. We can't use normal error codes
-here because the return values are passed across the virtchnl interface.
+tested configs:
+alpha                             allnoconfig   gcc  
+alpha                            allyesconfig   gcc  
+alpha                               defconfig   gcc  
+arc                              allmodconfig   gcc  
+arc                               allnoconfig   gcc  
+arc                              allyesconfig   gcc  
+arc                                 defconfig   gcc  
+arc                 nsimosci_hs_smp_defconfig   gcc  
+arc                   randconfig-001-20240323   gcc  
+arc                   randconfig-002-20240323   gcc  
+arm                              allmodconfig   gcc  
+arm                               allnoconfig   clang
+arm                              allyesconfig   gcc  
+arm                     am200epdkit_defconfig   gcc  
+arm                                 defconfig   clang
+arm                   randconfig-001-20240323   clang
+arm                   randconfig-002-20240323   clang
+arm                   randconfig-003-20240323   clang
+arm                   randconfig-004-20240323   gcc  
+arm                        vexpress_defconfig   gcc  
+arm64                            allmodconfig   clang
+arm64                             allnoconfig   gcc  
+arm64                               defconfig   gcc  
+arm64                 randconfig-001-20240323   gcc  
+arm64                 randconfig-002-20240323   gcc  
+arm64                 randconfig-003-20240323   clang
+arm64                 randconfig-004-20240323   clang
+csky                             allmodconfig   gcc  
+csky                              allnoconfig   gcc  
+csky                             allyesconfig   gcc  
+csky                                defconfig   gcc  
+csky                  randconfig-001-20240323   gcc  
+csky                  randconfig-002-20240323   gcc  
+hexagon                          allmodconfig   clang
+hexagon                           allnoconfig   clang
+hexagon                          allyesconfig   clang
+hexagon                             defconfig   clang
+hexagon               randconfig-001-20240323   clang
+hexagon               randconfig-002-20240323   clang
+i386                             allmodconfig   gcc  
+i386                              allnoconfig   gcc  
+i386                             allyesconfig   gcc  
+i386         buildonly-randconfig-001-20240323   gcc  
+i386         buildonly-randconfig-002-20240323   clang
+i386         buildonly-randconfig-003-20240323   clang
+i386         buildonly-randconfig-004-20240323   gcc  
+i386         buildonly-randconfig-005-20240323   gcc  
+i386         buildonly-randconfig-006-20240323   clang
+i386                                defconfig   clang
+i386                  randconfig-001-20240323   clang
+i386                  randconfig-002-20240323   clang
+i386                  randconfig-003-20240323   gcc  
+i386                  randconfig-004-20240323   gcc  
+i386                  randconfig-005-20240323   gcc  
+i386                  randconfig-006-20240323   gcc  
+i386                  randconfig-011-20240323   gcc  
+i386                  randconfig-012-20240323   gcc  
+i386                  randconfig-013-20240323   clang
+i386                  randconfig-014-20240323   gcc  
+i386                  randconfig-015-20240323   gcc  
+i386                  randconfig-016-20240323   gcc  
+loongarch                        allmodconfig   gcc  
+loongarch                         allnoconfig   gcc  
+loongarch                           defconfig   gcc  
+loongarch             randconfig-001-20240323   gcc  
+loongarch             randconfig-002-20240323   gcc  
+m68k                             allmodconfig   gcc  
+m68k                              allnoconfig   gcc  
+m68k                             allyesconfig   gcc  
+m68k                                defconfig   gcc  
+microblaze                       allmodconfig   gcc  
+microblaze                        allnoconfig   gcc  
+microblaze                       allyesconfig   gcc  
+microblaze                          defconfig   gcc  
+mips                              allnoconfig   gcc  
+mips                             allyesconfig   gcc  
+mips                  decstation_64_defconfig   gcc  
+mips                           rs90_defconfig   gcc  
+nios2                            allmodconfig   gcc  
+nios2                             allnoconfig   gcc  
+nios2                            allyesconfig   gcc  
+nios2                               defconfig   gcc  
+nios2                 randconfig-001-20240323   gcc  
+nios2                 randconfig-002-20240323   gcc  
+openrisc                          allnoconfig   gcc  
+openrisc                         allyesconfig   gcc  
+openrisc                            defconfig   gcc  
+parisc                           allmodconfig   gcc  
+parisc                            allnoconfig   gcc  
+parisc                           allyesconfig   gcc  
+parisc                              defconfig   gcc  
+parisc                randconfig-001-20240323   gcc  
+parisc                randconfig-002-20240323   gcc  
+parisc64                            defconfig   gcc  
+powerpc                          allmodconfig   gcc  
+powerpc                           allnoconfig   gcc  
+powerpc                          allyesconfig   clang
+powerpc                     ep8248e_defconfig   gcc  
+powerpc               randconfig-001-20240323   gcc  
+powerpc               randconfig-002-20240323   gcc  
+powerpc               randconfig-003-20240323   clang
+powerpc64             randconfig-001-20240323   clang
+powerpc64             randconfig-002-20240323   clang
+powerpc64             randconfig-003-20240323   gcc  
+riscv                            allmodconfig   clang
+riscv                             allnoconfig   gcc  
+riscv                            allyesconfig   clang
+riscv                               defconfig   clang
+riscv                 randconfig-001-20240323   clang
+riscv                 randconfig-002-20240323   gcc  
+s390                             allmodconfig   clang
+s390                              allnoconfig   clang
+s390                             allyesconfig   gcc  
+s390                                defconfig   clang
+s390                  randconfig-001-20240323   clang
+s390                  randconfig-002-20240323   clang
+sh                               allmodconfig   gcc  
+sh                                allnoconfig   gcc  
+sh                               allyesconfig   gcc  
+sh                                  defconfig   gcc  
+sh                        dreamcast_defconfig   gcc  
+sh                          kfr2r09_defconfig   gcc  
+sh                    randconfig-001-20240323   gcc  
+sh                    randconfig-002-20240323   gcc  
+sh                             sh03_defconfig   gcc  
+sh                     sh7710voipgw_defconfig   gcc  
+sparc                            allmodconfig   gcc  
+sparc                             allnoconfig   gcc  
+sparc                               defconfig   gcc  
+sparc64                          allmodconfig   gcc  
+sparc64                          allyesconfig   gcc  
+sparc64                             defconfig   gcc  
+sparc64               randconfig-001-20240323   gcc  
+sparc64               randconfig-002-20240323   gcc  
+um                               allmodconfig   clang
+um                                allnoconfig   clang
+um                               allyesconfig   gcc  
+um                                  defconfig   clang
+um                             i386_defconfig   gcc  
+um                    randconfig-001-20240323   gcc  
+um                    randconfig-002-20240323   clang
+um                           x86_64_defconfig   clang
+x86_64                            allnoconfig   clang
+x86_64                           allyesconfig   clang
+x86_64       buildonly-randconfig-001-20240323   clang
+x86_64       buildonly-randconfig-002-20240323   clang
+x86_64       buildonly-randconfig-003-20240323   clang
+x86_64       buildonly-randconfig-005-20240323   clang
+x86_64       buildonly-randconfig-006-20240323   clang
+x86_64                              defconfig   gcc  
+x86_64                randconfig-001-20240323   clang
+x86_64                randconfig-003-20240323   clang
+x86_64                randconfig-004-20240323   clang
+x86_64                randconfig-011-20240323   clang
+x86_64                randconfig-013-20240323   clang
+x86_64                randconfig-014-20240323   clang
+x86_64                randconfig-015-20240323   clang
+x86_64                randconfig-016-20240323   clang
+x86_64                randconfig-071-20240323   clang
+x86_64                randconfig-072-20240323   clang
+x86_64                randconfig-073-20240323   clang
+x86_64                randconfig-074-20240323   clang
+x86_64                randconfig-076-20240323   clang
+x86_64                          rhel-8.3-rust   clang
+x86_64                               rhel-8.3   gcc  
+xtensa                            allnoconfig   gcc  
+xtensa                  audio_kc705_defconfig   gcc  
+xtensa                randconfig-001-20240323   gcc  
+xtensa                randconfig-002-20240323   gcc  
 
-This will allow the future Scalable IOV VFs to correctly look up the index
-needed for programming the VF queues without breaking SR-IOV.
-
-Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
----
-I found a bug during further testing in the v1 case because the irq.index
-field is used to determine if the IRQ vector was actually allocated. I then
-investigated if q_vector->reg_idx was necessary or if it could be replaced.
-It turns out that it is used during the shutdown path for the Tx queues as
-part of the stop queue procedure. Thus, I opted to replace the functionality
-by using a separate vf_reg_idx field that fits in a 2-byte gap in the
-current q_vector structure.
-
-Changes since v2:
-* introduce new vf_reg_idx instead of (ab)using msi_map index field
-* Keep ice_calc_vf_reg_idx and use it to assign both the PF-relative
-  register index as well as the VF index needed for virtchnl
-* Assign vf_reg_idx to the same as reg_idx for all non-ICE_VSI_VF VSIs.
-
- drivers/net/ethernet/intel/ice/ice.h          |  3 ++-
- drivers/net/ethernet/intel/ice/ice_base.c     |  3 ++-
- drivers/net/ethernet/intel/ice/ice_sriov.c    |  7 ++++---
- drivers/net/ethernet/intel/ice/ice_sriov.h    |  5 ++---
- drivers/net/ethernet/intel/ice/ice_virtchnl.c | 14 +++++++-------
- 5 files changed, 17 insertions(+), 15 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
-index a7e88d797d4c..67a3236ab1fc 100644
---- a/drivers/net/ethernet/intel/ice/ice.h
-+++ b/drivers/net/ethernet/intel/ice/ice.h
-@@ -459,7 +459,7 @@ struct ice_q_vector {
- 	struct ice_vsi *vsi;
- 
- 	u16 v_idx;			/* index in the vsi->q_vector array. */
--	u16 reg_idx;
-+	u16 reg_idx;			/* PF relative register index */
- 	u8 num_ring_rx;			/* total number of Rx rings in vector */
- 	u8 num_ring_tx;			/* total number of Tx rings in vector */
- 	u8 wb_on_itr:1;			/* if true, WB on ITR is enabled */
-@@ -481,6 +481,7 @@ struct ice_q_vector {
- 	char name[ICE_INT_NAME_STR_LEN];
- 
- 	u16 total_events;	/* net_dim(): number of interrupts processed */
-+	u16 vf_reg_idx;		/* VF relative register index */
- 	struct msi_map irq;
- } ____cacheline_internodealigned_in_smp;
- 
-diff --git a/drivers/net/ethernet/intel/ice/ice_base.c b/drivers/net/ethernet/intel/ice/ice_base.c
-index 662fc395edcc..5e1d5a76ee00 100644
---- a/drivers/net/ethernet/intel/ice/ice_base.c
-+++ b/drivers/net/ethernet/intel/ice/ice_base.c
-@@ -121,7 +121,7 @@ static int ice_vsi_alloc_q_vector(struct ice_vsi *vsi, u16 v_idx)
- 	q_vector->irq.index = -ENOENT;
- 
- 	if (vsi->type == ICE_VSI_VF) {
--		q_vector->reg_idx = ice_calc_vf_reg_idx(vsi->vf, q_vector);
-+		ice_calc_vf_reg_idx(vsi->vf, q_vector);
- 		goto out;
- 	} else if (vsi->type == ICE_VSI_CTRL && vsi->vf) {
- 		struct ice_vsi *ctrl_vsi = ice_get_vf_ctrl_vsi(pf, vsi);
-@@ -145,6 +145,7 @@ static int ice_vsi_alloc_q_vector(struct ice_vsi *vsi, u16 v_idx)
- 
- skip_alloc:
- 	q_vector->reg_idx = q_vector->irq.index;
-+	q_vector->vf_reg_idx = q_vector->irq.index;
- 
- 	/* only set affinity_mask if the CPU is online */
- 	if (cpu_online(v_idx))
-diff --git a/drivers/net/ethernet/intel/ice/ice_sriov.c b/drivers/net/ethernet/intel/ice/ice_sriov.c
-index 5e9521876617..fb2e96db647e 100644
---- a/drivers/net/ethernet/intel/ice/ice_sriov.c
-+++ b/drivers/net/ethernet/intel/ice/ice_sriov.c
-@@ -360,13 +360,14 @@ static void ice_ena_vf_mappings(struct ice_vf *vf)
-  * @vf: VF to calculate the register index for
-  * @q_vector: a q_vector associated to the VF
-  */
--int ice_calc_vf_reg_idx(struct ice_vf *vf, struct ice_q_vector *q_vector)
-+void ice_calc_vf_reg_idx(struct ice_vf *vf, struct ice_q_vector *q_vector)
- {
- 	if (!vf || !q_vector)
--		return -EINVAL;
-+		return;
- 
- 	/* always add one to account for the OICR being the first MSIX */
--	return vf->first_vector_idx + q_vector->v_idx + 1;
-+	q_vector->vf_reg_idx = q_vector->v_idx + ICE_NONQ_VECS_VF;
-+	q_vector->reg_idx = vf->first_vector_idx + q_vector->vf_reg_idx;
- }
- 
- /**
-diff --git a/drivers/net/ethernet/intel/ice/ice_sriov.h b/drivers/net/ethernet/intel/ice/ice_sriov.h
-index 8488df38b586..4ba8fb53aea1 100644
---- a/drivers/net/ethernet/intel/ice/ice_sriov.h
-+++ b/drivers/net/ethernet/intel/ice/ice_sriov.h
-@@ -49,7 +49,7 @@ int ice_set_vf_link_state(struct net_device *netdev, int vf_id, int link_state);
- 
- int ice_set_vf_spoofchk(struct net_device *netdev, int vf_id, bool ena);
- 
--int ice_calc_vf_reg_idx(struct ice_vf *vf, struct ice_q_vector *q_vector);
-+void ice_calc_vf_reg_idx(struct ice_vf *vf, struct ice_q_vector *q_vector);
- 
- int
- ice_get_vf_stats(struct net_device *netdev, int vf_id,
-@@ -130,11 +130,10 @@ ice_set_vf_bw(struct net_device __always_unused *netdev,
- 	return -EOPNOTSUPP;
- }
- 
--static inline int
-+static inline void
- ice_calc_vf_reg_idx(struct ice_vf __always_unused *vf,
- 		    struct ice_q_vector __always_unused *q_vector)
- {
--	return 0;
- }
- 
- static inline int
-diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl.c b/drivers/net/ethernet/intel/ice/ice_virtchnl.c
-index 1ff9818b4c84..1c6ce0c4ed4e 100644
---- a/drivers/net/ethernet/intel/ice/ice_virtchnl.c
-+++ b/drivers/net/ethernet/intel/ice/ice_virtchnl.c
-@@ -1505,13 +1505,12 @@ static int ice_vc_dis_qs_msg(struct ice_vf *vf, u8 *msg)
-  * ice_cfg_interrupt
-  * @vf: pointer to the VF info
-  * @vsi: the VSI being configured
-- * @vector_id: vector ID
-  * @map: vector map for mapping vectors to queues
-  * @q_vector: structure for interrupt vector
-  * configure the IRQ to queue map
-  */
--static int
--ice_cfg_interrupt(struct ice_vf *vf, struct ice_vsi *vsi, u16 vector_id,
-+static enum virtchnl_status_code
-+ice_cfg_interrupt(struct ice_vf *vf, struct ice_vsi *vsi,
- 		  struct virtchnl_vector_map *map,
- 		  struct ice_q_vector *q_vector)
- {
-@@ -1531,7 +1530,8 @@ ice_cfg_interrupt(struct ice_vf *vf, struct ice_vsi *vsi, u16 vector_id,
- 		q_vector->num_ring_rx++;
- 		q_vector->rx.itr_idx = map->rxitr_idx;
- 		vsi->rx_rings[vsi_q_id]->q_vector = q_vector;
--		ice_cfg_rxq_interrupt(vsi, vsi_q_id, vector_id,
-+		ice_cfg_rxq_interrupt(vsi, vsi_q_id,
-+				      q_vector->vf_reg_idx,
- 				      q_vector->rx.itr_idx);
- 	}
- 
-@@ -1545,7 +1545,8 @@ ice_cfg_interrupt(struct ice_vf *vf, struct ice_vsi *vsi, u16 vector_id,
- 		q_vector->num_ring_tx++;
- 		q_vector->tx.itr_idx = map->txitr_idx;
- 		vsi->tx_rings[vsi_q_id]->q_vector = q_vector;
--		ice_cfg_txq_interrupt(vsi, vsi_q_id, vector_id,
-+		ice_cfg_txq_interrupt(vsi, vsi_q_id,
-+				      q_vector->vf_reg_idx,
- 				      q_vector->tx.itr_idx);
- 	}
- 
-@@ -1619,8 +1620,7 @@ static int ice_vc_cfg_irq_map_msg(struct ice_vf *vf, u8 *msg)
- 		}
- 
- 		/* lookout for the invalid queue index */
--		v_ret = (enum virtchnl_status_code)
--			ice_cfg_interrupt(vf, vsi, vector_id, map, q_vector);
-+		v_ret = ice_cfg_interrupt(vf, vsi, map, q_vector);
- 		if (v_ret)
- 			goto error_param;
- 	}
 -- 
-2.44.0.53.g0f9d4d28b7e6
-
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
