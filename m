@@ -1,94 +1,88 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4CF1788B2CB
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 25 Mar 2024 22:30:19 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5939E88B412
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 25 Mar 2024 23:30:13 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id BDDF681B3E;
-	Mon, 25 Mar 2024 21:30:17 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 919FD608E9;
+	Mon, 25 Mar 2024 22:30:10 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id oJolrj_Iom6J; Mon, 25 Mar 2024 21:30:17 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id SE_KVTYockPf; Mon, 25 Mar 2024 22:30:10 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8FEFC817A6
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org DFE68608DC
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1711402216;
-	bh=y3nLlNh+jljU6SWCVbc8liE5U4jOwTwl/l8v/7agXKI=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=6N0OVPt3eiDmqeBO4ugw6JNDFgZRfeMKN1y+WP9cyg9ufXG2qmisWsS2mIZhF7kRt
-	 Qn2Kr6gm6C2tKlN+uDq+SnX7LUM0HljhGzJ279yIzIpIIKNY9a1U7+VdQoWBV/Z6uT
-	 ozZBTHuxYN9h+H8DxHQbFvjlcQgqj8BjCz1s0XRJApzVmkJmUmpOGo+db8zUj02kG5
-	 0+xSAxHyKjYMbvgIN6TfyatJHqAk1TbvBfstsASS/+IR5WffgG1jfPyhaZy574dtSk
-	 ii1i+hvm6dxLEeQ4SCIxeEuhyFYZyaVKFweP8EyZ3jOPVRT0TRxuIoVOTrPK0W5op1
-	 wP5Bx/EvBGcgg==
+	s=default; t=1711405810;
+	bh=tAQlwVWYFz0DCGZt++IXnhgr4sduoZGI7/seZp7kiBg=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=J2d8WHOecI8jrVb6LoqiVrsdiIhn7c8TkMALdeYbc+O9tpJTJfuB6lh+qGkE8FJcd
+	 3GJpRk06zyZJEVGPvqZqKaN2DbnXCSairbxlTjrxvXSivZvPJwWoNOL9xGIjVHKzd7
+	 E/Ibfz3x1tcbVK0UblSJEzBbuBGCEl1B8ClpJRWy03BlnWIabwdslje6DBWiPSYX/m
+	 1B4tVTg53EcpK+Fm4K/twUppEtcOAksm6BaxT/RrQ3vR6lmv50zontPmAAjYX+aOiF
+	 4Gb4Dk+4dzqM6U8mhGVhhaI28eK9z2hCUafVFiOuP+3TpIRhkBa1Th+Qmg4fW/xo7m
+	 HG6y02vYwNsqw==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 8FEFC817A6;
-	Mon, 25 Mar 2024 21:30:16 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id DFE68608DC;
+	Mon, 25 Mar 2024 22:30:09 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 72E111BF2CB
- for <intel-wired-lan@lists.osuosl.org>; Mon, 25 Mar 2024 21:30:11 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id A76041BF2A9
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 25 Mar 2024 22:30:05 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 514E9406D4
- for <intel-wired-lan@lists.osuosl.org>; Mon, 25 Mar 2024 21:30:11 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id A0203608CE
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 25 Mar 2024 22:30:05 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 6kCONbreBubj for <intel-wired-lan@lists.osuosl.org>;
- Mon, 25 Mar 2024 21:30:10 +0000 (UTC)
-Received-SPF: None (mailfrom) identity=mailfrom; client-ip=192.198.163.11;
- helo=mgamail.intel.com; envelope-from=michal.swiatkowski@linux.intel.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org CD8B240745
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org CD8B240745
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.11])
- by smtp4.osuosl.org (Postfix) with ESMTPS id CD8B240745
- for <intel-wired-lan@lists.osuosl.org>; Mon, 25 Mar 2024 21:30:08 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,11024"; a="17064555"
-X-IronPort-AV: E=Sophos;i="6.07,154,1708416000"; d="scan'208";a="17064555"
-Received: from orviesa009.jf.intel.com ([10.64.159.149])
- by fmvoesa105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 25 Mar 2024 14:30:08 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.07,154,1708416000"; d="scan'208";a="15713512"
-Received: from wasp.igk.intel.com (HELO GK3153-DR2-R750-36946.localdomain.com)
- ([10.102.20.192])
- by orviesa009.jf.intel.com with ESMTP; 25 Mar 2024 14:30:06 -0700
-From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Mon, 25 Mar 2024 22:34:33 +0100
-Message-ID: <20240325213433.829161-4-michal.swiatkowski@linux.intel.com>
-X-Mailer: git-send-email 2.42.0
-In-Reply-To: <20240325213433.829161-1-michal.swiatkowski@linux.intel.com>
-References: <20240325213433.829161-1-michal.swiatkowski@linux.intel.com>
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id p8Gv8SKiMhuB for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 25 Mar 2024 22:30:03 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2604:1380:40e1:4800::1; helo=sin.source.kernel.org;
+ envelope-from=helgaas@kernel.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 601E46082F
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 601E46082F
+Received: from sin.source.kernel.org (sin.source.kernel.org
+ [IPv6:2604:1380:40e1:4800::1])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 601E46082F
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 25 Mar 2024 22:30:03 +0000 (UTC)
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by sin.source.kernel.org (Postfix) with ESMTP id B3465CE1D50;
+ Mon, 25 Mar 2024 22:29:59 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B34CEC433F1;
+ Mon, 25 Mar 2024 22:29:58 +0000 (UTC)
+From: Bjorn Helgaas <helgaas@kernel.org>
+To: Jesse Brandeburg <jesse.brandeburg@intel.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>,
+ "David S . Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>
+Date: Mon, 25 Mar 2024 17:29:48 -0500
+Message-Id: <20240325222951.1460656-1-helgaas@kernel.org>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1711402209; x=1742938209;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=svMfBlLUAhgw33LS7DXsoVKFb0fJ5tSWXIWUQCBDyjs=;
- b=CVVDUOn2qb5z29xEGb1hfEuN751f9s4wAjRMNBG489BR6tvfDE8m9gG0
- vgJzKxVzvS4JQOF6DHggBnYSAzgnpQ896+/9nSApU0Bh/paZQ5i8rqK4N
- sm49cxIrFMjM2x0cTa4kPoLE069eGDkK6NUD29Oj9fNhrsIzf+VdHenVf
- cflsfGoSmrFQsWpfRErNzNjgEPRctXiqom2QqngVnFrNR2DPKSJ36ffl4
- HQPpOqRioQqBb21JGvrskf4E+JHI1N2aUglS+Qjofrc+dIBLI5EfImWHm
- /shAmMnYbefsuFro1biscbtARETvJzLvMJfID707mw7Wy/qUUkNEWOys4
- Q==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=linux.intel.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=CVVDUOn2
-Subject: [Intel-wired-lan] [iwl-next v1 3/3] ice: hold devlink lock for
- whole init/cleanup
+ d=kernel.org; s=k20201202; t=1711405799;
+ bh=s6f0H6C9JKUP0UFu/98JgZPoNS9zucvQkAEttBGZoDY=;
+ h=From:To:Cc:Subject:Date:From;
+ b=atuGH1dkaJFc6beHU9/dXrtXnZVohJuLwacVykwe7JIcmAVH5e3J1KxmkEAbeugkF
+ DgKyPy0nETCy+CO7aO3A0AJYTPlWC3KigEur69U9yJeAL+t+vFhmxLHGhpCwj6WVdG
+ q//063yDQXIo1H1a/2ysO1wueZ5PFmVDV3eRSraUD4ixrraJ21iKzmL5chHT2dOVTB
+ 3v/JzlB5MHuurUelrCGzwIZ/ZkMIqHgwxqyh6Yg0LmZ7bn3p+uTSk92LBsrcCZouDn
+ mlWOMaM3I0kyyM/qX2Bj68xJQfkAET8j8pwCSUGhVuORqd4t3lBwhksArarmov6ZRx
+ vY2vpxxClIVqg==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=kernel.org
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=atuGH1dk
+Subject: [Intel-wired-lan] [PATCH 0/3] net/e1000e, igb,
+ igc: Remove redundant runtime resume
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -101,153 +95,34 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Wojciech Drewek <wojciech.drewek@intel.com>, netdev@vger.kernel.org,
- Jiri Pirko <jiri@resnulli.us>,
- Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+Cc: Sasha Neftin <sasha.neftin@intel.com>, netdev@vger.kernel.org,
+ "Rafael J . Wysocki" <rafael.j.wysocki@intel.com>,
+ linux-kernel@vger.kernel.org, Bjorn Helgaas <bhelgaas@google.com>,
+ intel-wired-lan@lists.osuosl.org, Zheng Yan <zheng.z.yan@intel.com>,
+ Konstantin Khlebnikov <khlebnikov@openvz.org>,
+ Heiner Kallweit <hkallweit1@gmail.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Simplify devlink lock code in driver by taking it for whole init/cleanup
-path. Instead of calling devlink functions that taking lock call the
-lockless versions.
+From: Bjorn Helgaas <bhelgaas@google.com>
 
-Suggested-by: Jiri Pirko <jiri@resnulli.us>
-Reviewed-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
-Reviewed-by: Wojciech Drewek <wojciech.drewek@intel.com>
-Signed-off-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
----
- .../net/ethernet/intel/ice/devlink/devlink.c  | 32 +++++++++----------
- drivers/net/ethernet/intel/ice/ice_main.c     |  7 ++--
- 2 files changed, 19 insertions(+), 20 deletions(-)
+e1000e, igb, and igc all have code to runtime resume the device during
+ethtool operations.
 
-diff --git a/drivers/net/ethernet/intel/ice/devlink/devlink.c b/drivers/net/ethernet/intel/ice/devlink/devlink.c
-index 71c2f30984d8..8b57e455160d 100644
---- a/drivers/net/ethernet/intel/ice/devlink/devlink.c
-+++ b/drivers/net/ethernet/intel/ice/devlink/devlink.c
-@@ -1287,7 +1287,7 @@ void ice_devlink_register(struct ice_pf *pf)
- {
- 	struct devlink *devlink = priv_to_devlink(pf);
- 
--	devlink_register(devlink);
-+	devl_register(devlink);
- }
- 
- /**
-@@ -1298,21 +1298,21 @@ void ice_devlink_register(struct ice_pf *pf)
-  */
- void ice_devlink_unregister(struct ice_pf *pf)
- {
--	devlink_unregister(priv_to_devlink(pf));
-+	devl_unregister(priv_to_devlink(pf));
- }
- 
- int ice_devlink_register_params(struct ice_pf *pf)
- {
- 	struct devlink *devlink = priv_to_devlink(pf);
- 
--	return devlink_params_register(devlink, ice_devlink_params,
--				       ARRAY_SIZE(ice_devlink_params));
-+	return devl_params_register(devlink, ice_devlink_params,
-+				    ARRAY_SIZE(ice_devlink_params));
- }
- 
- void ice_devlink_unregister_params(struct ice_pf *pf)
- {
--	devlink_params_unregister(priv_to_devlink(pf), ice_devlink_params,
--				  ARRAY_SIZE(ice_devlink_params));
-+	devl_params_unregister(priv_to_devlink(pf), ice_devlink_params,
-+			       ARRAY_SIZE(ice_devlink_params));
- }
- 
- #define ICE_DEVLINK_READ_BLK_SIZE (1024 * 1024)
-@@ -1553,8 +1553,8 @@ void ice_devlink_init_regions(struct ice_pf *pf)
- 	u64 nvm_size, sram_size;
- 
- 	nvm_size = pf->hw.flash.flash_size;
--	pf->nvm_region = devlink_region_create(devlink, &ice_nvm_region_ops, 1,
--					       nvm_size);
-+	pf->nvm_region = devl_region_create(devlink, &ice_nvm_region_ops, 1,
-+					    nvm_size);
- 	if (IS_ERR(pf->nvm_region)) {
- 		dev_err(dev, "failed to create NVM devlink region, err %ld\n",
- 			PTR_ERR(pf->nvm_region));
-@@ -1562,17 +1562,17 @@ void ice_devlink_init_regions(struct ice_pf *pf)
- 	}
- 
- 	sram_size = pf->hw.flash.sr_words * 2u;
--	pf->sram_region = devlink_region_create(devlink, &ice_sram_region_ops,
--						1, sram_size);
-+	pf->sram_region = devl_region_create(devlink, &ice_sram_region_ops,
-+					     1, sram_size);
- 	if (IS_ERR(pf->sram_region)) {
- 		dev_err(dev, "failed to create shadow-ram devlink region, err %ld\n",
- 			PTR_ERR(pf->sram_region));
- 		pf->sram_region = NULL;
- 	}
- 
--	pf->devcaps_region = devlink_region_create(devlink,
--						   &ice_devcaps_region_ops, 10,
--						   ICE_AQ_MAX_BUF_LEN);
-+	pf->devcaps_region = devl_region_create(devlink,
-+						&ice_devcaps_region_ops, 10,
-+						ICE_AQ_MAX_BUF_LEN);
- 	if (IS_ERR(pf->devcaps_region)) {
- 		dev_err(dev, "failed to create device-caps devlink region, err %ld\n",
- 			PTR_ERR(pf->devcaps_region));
-@@ -1589,11 +1589,11 @@ void ice_devlink_init_regions(struct ice_pf *pf)
- void ice_devlink_destroy_regions(struct ice_pf *pf)
- {
- 	if (pf->nvm_region)
--		devlink_region_destroy(pf->nvm_region);
-+		devl_region_destroy(pf->nvm_region);
- 
- 	if (pf->sram_region)
--		devlink_region_destroy(pf->sram_region);
-+		devl_region_destroy(pf->sram_region);
- 
- 	if (pf->devcaps_region)
--		devlink_region_destroy(pf->devcaps_region);
-+		devl_region_destroy(pf->devcaps_region);
- }
-diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index b8b7a47c3b8a..31e7c74c289f 100644
---- a/drivers/net/ethernet/intel/ice/ice_main.c
-+++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -5180,21 +5180,20 @@ ice_probe(struct pci_dev *pdev, const struct pci_device_id __always_unused *ent)
- 
- 	devl_lock(priv_to_devlink(pf));
- 	err = ice_load(pf);
--	devl_unlock(priv_to_devlink(pf));
- 	if (err)
- 		goto err_load;
- 
- 	err = ice_init_devlink(pf);
- 	if (err)
- 		goto err_init_devlink;
-+	devl_unlock(priv_to_devlink(pf));
- 
- 	return 0;
- 
- err_init_devlink:
--	devl_lock(priv_to_devlink(pf));
- 	ice_unload(pf);
--	devl_unlock(priv_to_devlink(pf));
- err_load:
-+	devl_unlock(priv_to_devlink(pf));
- 	ice_deinit(pf);
- err_init:
- 	pci_disable_device(pdev);
-@@ -5291,9 +5290,9 @@ static void ice_remove(struct pci_dev *pdev)
- 	if (!ice_is_safe_mode(pf))
- 		ice_remove_arfs(pf);
- 
-+	devl_lock(priv_to_devlink(pf));
- 	ice_deinit_devlink(pf);
- 
--	devl_lock(priv_to_devlink(pf));
- 	ice_unload(pf);
- 	devl_unlock(priv_to_devlink(pf));
- 
+Since f32a21376573 ("ethtool: runtime-resume netdev parent before ethtool
+ioctl ops"), dev_ethtool() does this for us, so remove it from the
+individual drivers.
+
+Bjorn Helgaas (3):
+  e1000e: Remove redundant runtime resume for ethtool_ops
+  igb: Remove redundant runtime resume for ethtool_ops
+  igc: Remove redundant runtime resume for ethtool ops
+
+ drivers/net/ethernet/intel/e1000e/ethtool.c  | 62 ++------------------
+ drivers/net/ethernet/intel/igb/igb_ethtool.c | 15 -----
+ drivers/net/ethernet/intel/igc/igc_ethtool.c | 17 ------
+ 3 files changed, 6 insertions(+), 88 deletions(-)
+
 -- 
-2.42.0
+2.34.1
 
