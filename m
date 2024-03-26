@@ -2,96 +2,95 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5843088C994
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 26 Mar 2024 17:42:10 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 566B388C9A0
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 26 Mar 2024 17:43:51 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 85D6941532;
-	Tue, 26 Mar 2024 16:42:07 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 0A23E40430;
+	Tue, 26 Mar 2024 16:43:50 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 19fgvsP9D28b; Tue, 26 Mar 2024 16:42:06 +0000 (UTC)
+ id woIvQhdYqNKK; Tue, 26 Mar 2024 16:43:48 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 8DDAB40516
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 89F5E40484
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1711471326;
-	bh=UjGIJHamcAeatfR39Own/Ljg+dFDNhC7sTkvVZQPiB0=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=tJ96CAqDMU3fdb6p5G5/QciX9xqBJncCi6v0ZRS6ZhWT+h6D5OwWjySp6eiqrix8b
-	 6BVfIKHpRbzf0XkYJukwN2JGNaO/u7jYrubb0c8yqar6mID0jJ/+V/OOm79/5cmmgU
-	 FMTlUnhT1Tktocaawge8jkPJ+ad5EeC/zVDshHY+ssVvHPqYuWjWwwCfasIZXvbiy+
-	 CnzXM5f909L103EEQcKOFvtu2jh7bJlA/UQo4LMivNagRLQ8AKHo7OJOMTPgJi3kGf
-	 bgaQkLk1kS8weweNUhsvdExgy5dFFt7uMYluwim+Md44GpCDp58Qer91cSv87KkMnT
-	 tNFyo3VE4fOjQ==
+	s=default; t=1711471428;
+	bh=U/1hkNBP5idNBurXuib3kKILOq1SL7lRT5UWYjTgBo4=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=vv9WENJ0lcI870KnuusIVY7IsLl2btoQjBLfvVMSaOh0uGYQiEbioh/xhw+6B5CMl
+	 X9OAO+aQH1v60qr0JiWqphwPNWHvXmD0h6l5tpXYXOi63ICrGHrCG4sXNzwWPH50xN
+	 RI1W20wJMTVSnNdhjigKlDqXgyjgl6xPU4zJ2u8+xp77jcOxIoadySFhFmPYSSyOiO
+	 1p3bsxNkacpLXOcoawXPfN6ajUsamrKbszmHel92LBvtbGBEN3HvgQZtUIzuDvjx6v
+	 aRSlGB1FO/T+MdvGL8H4xeK7k9wXMZ4l5MgqA3zKSixm8RjJpEyLWVWJY9U4Vj5Axn
+	 wqxjtBE77D7ZQ==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 8DDAB40516;
-	Tue, 26 Mar 2024 16:42:06 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 89F5E40484;
+	Tue, 26 Mar 2024 16:43:48 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 594771BF364
- for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Mar 2024 16:42:02 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 197EE1BF364
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Mar 2024 16:43:47 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 462EB605DE
- for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Mar 2024 16:42:02 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 1301D403FC
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Mar 2024 16:43:47 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id jO765LguP_0K for <intel-wired-lan@lists.osuosl.org>;
- Tue, 26 Mar 2024 16:42:01 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.8;
- helo=mgamail.intel.com; envelope-from=aleksander.lobakin@intel.com;
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id uFUzeFSA_MGc for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 26 Mar 2024 16:43:46 +0000 (UTC)
+Received-SPF: None (mailfrom) identity=mailfrom; client-ip=192.198.163.19;
+ helo=mgamail.intel.com; envelope-from=marcin.szycik@linux.intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 7486B60ABE
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7486B60ABE
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.8])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 7486B60ABE
- for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Mar 2024 16:42:01 +0000 (UTC)
-X-CSE-ConnectionGUID: rANzHMh3TOmEl0rop4MLAQ==
-X-CSE-MsgGUID: IHsTqqHOSnqNAuYDIRu/PA==
-X-IronPort-AV: E=McAfee;i="6600,9927,11025"; a="24023343"
-X-IronPort-AV: E=Sophos;i="6.07,156,1708416000"; d="scan'208";a="24023343"
-Received: from orviesa003.jf.intel.com ([10.64.159.143])
- by fmvoesa102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 26 Mar 2024 09:41:55 -0700
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 9968440196
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 9968440196
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.19])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 9968440196
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Mar 2024 16:43:45 +0000 (UTC)
+X-CSE-ConnectionGUID: We7SbziPTgOKzqFHO0m9jg==
+X-CSE-MsgGUID: +bg1pLWZRv2u5PhelbXO+g==
+X-IronPort-AV: E=McAfee;i="6600,9927,11025"; a="6400085"
+X-IronPort-AV: E=Sophos;i="6.07,156,1708416000"; 
+   d="scan'208";a="6400085"
+Received: from fmviesa005.fm.intel.com ([10.60.135.145])
+ by fmvoesa113.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 26 Mar 2024 09:43:45 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.07,156,1708416000"; d="scan'208";a="20667408"
-Received: from newjersey.igk.intel.com ([10.102.20.203])
- by orviesa003.jf.intel.com with ESMTP; 26 Mar 2024 09:41:52 -0700
-From: Alexander Lobakin <aleksander.lobakin@intel.com>
-To: "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>
-Date: Tue, 26 Mar 2024 17:41:16 +0100
-Message-ID: <20240326164116.645718-4-aleksander.lobakin@intel.com>
-X-Mailer: git-send-email 2.44.0
-In-Reply-To: <20240326164116.645718-1-aleksander.lobakin@intel.com>
-References: <20240326164116.645718-1-aleksander.lobakin@intel.com>
+X-IronPort-AV: E=Sophos;i="6.07,156,1708416000"; d="scan'208";a="20491767"
+Received: from irvmail002.ir.intel.com ([10.43.11.120])
+ by fmviesa005.fm.intel.com with ESMTP; 26 Mar 2024 09:43:42 -0700
+Received: from mystra-4.igk.intel.com (mystra-4.igk.intel.com [10.123.220.40])
+ by irvmail002.ir.intel.com (Postfix) with ESMTP id 444F52819C;
+ Tue, 26 Mar 2024 16:43:41 +0000 (GMT)
+From: Marcin Szycik <marcin.szycik@linux.intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Tue, 26 Mar 2024 17:44:55 +0100
+Message-ID: <20240326164455.735739-1-marcin.szycik@linux.intel.com>
+X-Mailer: git-send-email 2.41.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1711471321; x=1743007321;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=0M19hZnqA3jl1JLaoqiVosY36hhwzDxnFIUtxgxHlNI=;
- b=RZpTMcYYTCBB5Cy3MXE6HDNBumocMB5gLVGNMDbNeLTCOo28wLhIa/Kd
- 94ZlsjbloV5uCTpELj4d6kpldBhN2egMNX1Lq9awdrhAqcSIyBftDnAP6
- bKvgzrGY1rJh/rze5U9tlKHfTEgiCl6S7/+oPuV/V/CXRkbNT6z4vREx+
- EWuWvDmJ+Q/gXCGDdjC6F2IKC3SgrPw3uGrl6pkTXOkwMFIDgt/cU/O5x
- 3HAgaGdcQH+9u6x1UTF8eSQSknHOQNSEQowygIGUruwhhetPlBvN2nCD3
- zz/d7s1NHC0MTACf2UqwlJU4zUulemHrHATRQuRRPX6cicneMGcQAo9rl
- A==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=RZpTMcYY
-Subject: [Intel-wired-lan] [PATCH net-next 3/3] idpf: sprinkle __counted_by{,
- _le}() in the virtchnl2 header
+ t=1711471426; x=1743007426;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=IUHvMlawWzgPfC0WV4QxC1756pzh9dMdtNUM8GIIUCc=;
+ b=QA8Zf54+lDLJ5FLUleyN2RocV4B5mUFXK4lWfUcsFLdroVQevc8e14ai
+ 3OlsRrcN/bBitg5vuSYQLh7uT1J11z0V9hcY2q5+s4NiSklLiEx9DdDgK
+ CQKEfBdmnbETmMckDkX7W741h8SP5t5pNMSrIBMKeJ+ZnBj59Jy6LkYj2
+ 1dK8zgErcmONgJ3h99f0IgcHOOYO6xcSjd0Emp8SBKnRZTpE4wlUw4pcg
+ F0OfzcSwaxhzTcD5WAQDHul97taSZvYcsuoI3cv+l1cMgu/Q5NYZZZ1GR
+ DeLJYd82Ny1XJ9LU+WBswcygWoZHexdXaqCAsmIUiRChE2iXXPr/VnEen
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dmarc=none (p=none dis=none)
+ header.from=linux.intel.com
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=QA8Zf54+
+Subject: [Intel-wired-lan] [PATCH iwl-next v3] ice: Reset VF on Tx MDD event
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -104,126 +103,186 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Kees Cook <keescook@chromium.org>, netdev@vger.kernel.org,
- "Gustavo A. R. Silva" <gustavoars@kernel.org>, linux-kernel@vger.kernel.org,
- Nathan Chancellor <nathan@kernel.org>,
- Alexander Lobakin <aleksander.lobakin@intel.com>,
- intel-wired-lan@lists.osuosl.org, linux-hardening@vger.kernel.org,
- Simon Horman <horms@kernel.org>, nex.sw.ncis.osdt.itp.upstreaming@intel.com
+Cc: Wojciech Drewek <wojciech.drewek@intel.com>, netdev@vger.kernel.org,
+ pawel.chmielewski@intel.com, Marcin Szycik <marcin.szycik@linux.intel.com>,
+ anthony.l.nguyen@intel.com, Liang-Min Wang <liang-min.wang@intel.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Both virtchnl2.h and its consumer idpf_virtchnl.c are very error-prone.
-There are 10 structures with flexible arrays at the end, but 9 of them
-has flex member counter in Little Endian.
-Make the code a bit more robust by applying __counted_by_le() to those
-9. LE platforms is the main target for this driver, so they would
-receive additional protection.
-While we're here, add __counted_by() to virtchnl2_ptype::proto_id, as
-its counter is `u8` regardless of the Endianness.
-Compile test on x86_64 (LE) didn't reveal any new issues after applying
-the attributes.
+In cases when VF sends malformed packets that are classified as malicious,
+sometimes it causes Tx queue to freeze. This frozen queue can be stuck
+for several minutes being unusable. This behavior can be reproduced with
+a faulty userspace app running on VF.
 
-Acked-by: Kees Cook <keescook@chromium.org>
-Signed-off-by: Alexander Lobakin <aleksander.lobakin@intel.com>
+When Malicious Driver Detection event occurs and the mdd-auto-reset-vf
+private flag is set, perform a graceful VF reset to quickly bring VF back
+to operational state. Add a log message to notify about the cause of
+the reset. Add a helper for this to be reused for both TX and RX events.
+
+Reviewed-by: Wojciech Drewek <wojciech.drewek@intel.com>
+Co-developed-by: Liang-Min Wang <liang-min.wang@intel.com>
+Signed-off-by: Liang-Min Wang <liang-min.wang@intel.com>
+Signed-off-by: Marcin Szycik <marcin.szycik@linux.intel.com>
 ---
- drivers/net/ethernet/intel/idpf/virtchnl2.h | 20 ++++++++++----------
- 1 file changed, 10 insertions(+), 10 deletions(-)
+v3: Only auto reset VF if the mdd-auto-reset-vf flag is set
+v2 [1]: Revert an unneeded formatting change, fix commit message, fix a log
+    message with a correct event name
 
-diff --git a/drivers/net/ethernet/intel/idpf/virtchnl2.h b/drivers/net/ethernet/intel/idpf/virtchnl2.h
-index 29419211b3d9..63deb120359c 100644
---- a/drivers/net/ethernet/intel/idpf/virtchnl2.h
-+++ b/drivers/net/ethernet/intel/idpf/virtchnl2.h
-@@ -555,7 +555,7 @@ VIRTCHNL2_CHECK_STRUCT_LEN(32, virtchnl2_queue_reg_chunk);
- struct virtchnl2_queue_reg_chunks {
- 	__le16 num_chunks;
- 	u8 pad[6];
--	struct virtchnl2_queue_reg_chunk chunks[];
-+	struct virtchnl2_queue_reg_chunk chunks[] __counted_by_le(num_chunks);
- };
- VIRTCHNL2_CHECK_STRUCT_LEN(8, virtchnl2_queue_reg_chunks);
+[1] https://lore.kernel.org/netdev/20231102155149.2574209-1-pawel.chmielewski@intel.com
+---
+ drivers/net/ethernet/intel/ice/ice_main.c  | 47 +++++++++++++++++-----
+ drivers/net/ethernet/intel/ice/ice_sriov.c | 14 ++++---
+ drivers/net/ethernet/intel/ice/ice_sriov.h |  4 +-
+ 3 files changed, 46 insertions(+), 19 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
+index 3dea0d4c767c..e5d00491e41e 100644
+--- a/drivers/net/ethernet/intel/ice/ice_main.c
++++ b/drivers/net/ethernet/intel/ice/ice_main.c
+@@ -1744,6 +1744,35 @@ static void ice_service_timer(struct timer_list *t)
+ 	ice_service_task_schedule(pf);
+ }
  
-@@ -703,7 +703,7 @@ struct virtchnl2_config_tx_queues {
- 	__le32 vport_id;
- 	__le16 num_qinfo;
- 	u8 pad[10];
--	struct virtchnl2_txq_info qinfo[];
-+	struct virtchnl2_txq_info qinfo[] __counted_by_le(num_qinfo);
- };
- VIRTCHNL2_CHECK_STRUCT_LEN(16, virtchnl2_config_tx_queues);
++/**
++ * ice_mdd_maybe_reset_vf - reset VF after MDD event
++ * @pf: pointer to the PF structure
++ * @vf: pointer to the VF structure
++ * @is_rx: true for RX event, false for TX event
++ *
++ * Since the queue can get stuck on VF MDD events, the PF can be configured to
++ * automatically reset the VF by enabling the private ethtool flag
++ * mdd-auto-reset-vf.
++ */
++static void ice_mdd_maybe_reset_vf(struct ice_pf *pf, struct ice_vf *vf,
++				   bool is_rx)
++{
++	struct device *dev = ice_pf_to_dev(pf);
++
++	if (!test_bit(ICE_FLAG_MDD_AUTO_RESET_VF, pf->flags))
++		return;
++
++	/* VF MDD event counters will be cleared by reset, so print the event
++	 * prior to reset.
++	 */
++	ice_print_vf_mdd_event(vf, is_rx);
++
++	dev_info(dev, "PF-to-VF reset on VF %d due to %s MDD event\n",
++		 vf->vf_id,
++		 is_rx ? "Rx" : "Tx");
++	ice_reset_vf(vf, ICE_VF_RESET_NOTIFY | ICE_VF_RESET_LOCK);
++}
++
+ /**
+  * ice_handle_mdd_event - handle malicious driver detect event
+  * @pf: pointer to the PF structure
+@@ -1845,6 +1874,8 @@ static void ice_handle_mdd_event(struct ice_pf *pf)
+ 			if (netif_msg_tx_err(pf))
+ 				dev_info(dev, "Malicious Driver Detection event TX_PQM detected on VF %d\n",
+ 					 vf->vf_id);
++
++			ice_mdd_maybe_reset_vf(pf, vf, false);
+ 		}
  
-@@ -782,7 +782,7 @@ struct virtchnl2_config_rx_queues {
- 	__le32 vport_id;
- 	__le16 num_qinfo;
- 	u8 pad[18];
--	struct virtchnl2_rxq_info qinfo[];
-+	struct virtchnl2_rxq_info qinfo[] __counted_by_le(num_qinfo);
- };
- VIRTCHNL2_CHECK_STRUCT_LEN(24, virtchnl2_config_rx_queues);
+ 		reg = rd32(hw, VP_MDET_TX_TCLAN(vf->vf_id));
+@@ -1855,6 +1886,8 @@ static void ice_handle_mdd_event(struct ice_pf *pf)
+ 			if (netif_msg_tx_err(pf))
+ 				dev_info(dev, "Malicious Driver Detection event TX_TCLAN detected on VF %d\n",
+ 					 vf->vf_id);
++
++			ice_mdd_maybe_reset_vf(pf, vf, false);
+ 		}
  
-@@ -868,7 +868,7 @@ VIRTCHNL2_CHECK_STRUCT_LEN(32, virtchnl2_vector_chunk);
- struct virtchnl2_vector_chunks {
- 	__le16 num_vchunks;
- 	u8 pad[14];
--	struct virtchnl2_vector_chunk vchunks[];
-+	struct virtchnl2_vector_chunk vchunks[] __counted_by_le(num_vchunks);
- };
- VIRTCHNL2_CHECK_STRUCT_LEN(16, virtchnl2_vector_chunks);
+ 		reg = rd32(hw, VP_MDET_TX_TDPU(vf->vf_id));
+@@ -1865,6 +1898,8 @@ static void ice_handle_mdd_event(struct ice_pf *pf)
+ 			if (netif_msg_tx_err(pf))
+ 				dev_info(dev, "Malicious Driver Detection event TX_TDPU detected on VF %d\n",
+ 					 vf->vf_id);
++
++			ice_mdd_maybe_reset_vf(pf, vf, false);
+ 		}
  
-@@ -912,7 +912,7 @@ struct virtchnl2_rss_lut {
- 	__le16 lut_entries_start;
- 	__le16 lut_entries;
- 	u8 pad[4];
--	__le32 lut[];
-+	__le32 lut[] __counted_by_le(lut_entries);
- };
- VIRTCHNL2_CHECK_STRUCT_LEN(12, virtchnl2_rss_lut);
+ 		reg = rd32(hw, VP_MDET_RX(vf->vf_id));
+@@ -1876,17 +1911,7 @@ static void ice_handle_mdd_event(struct ice_pf *pf)
+ 				dev_info(dev, "Malicious Driver Detection event RX detected on VF %d\n",
+ 					 vf->vf_id);
  
-@@ -977,7 +977,7 @@ struct virtchnl2_ptype {
- 	u8 ptype_id_8;
- 	u8 proto_id_count;
- 	__le16 pad;
--	__le16 proto_id[];
-+	__le16 proto_id[] __counted_by(proto_id_count);
- } __packed __aligned(2);
- VIRTCHNL2_CHECK_STRUCT_LEN(6, virtchnl2_ptype);
+-			/* Since the queue is disabled on VF Rx MDD events, the
+-			 * PF can be configured to reset the VF through ethtool
+-			 * private flag mdd-auto-reset-vf.
+-			 */
+-			if (test_bit(ICE_FLAG_MDD_AUTO_RESET_VF, pf->flags)) {
+-				/* VF MDD event counters will be cleared by
+-				 * reset, so print the event prior to reset.
+-				 */
+-				ice_print_vf_rx_mdd_event(vf);
+-				ice_reset_vf(vf, ICE_VF_RESET_LOCK);
+-			}
++			ice_mdd_maybe_reset_vf(pf, vf, true);
+ 		}
+ 	}
+ 	mutex_unlock(&pf->vfs.table_lock);
+diff --git a/drivers/net/ethernet/intel/ice/ice_sriov.c b/drivers/net/ethernet/intel/ice/ice_sriov.c
+index 65e1986af777..b56bda9f66e3 100644
+--- a/drivers/net/ethernet/intel/ice/ice_sriov.c
++++ b/drivers/net/ethernet/intel/ice/ice_sriov.c
+@@ -1848,19 +1848,21 @@ ice_set_vf_port_vlan(struct net_device *netdev, int vf_id, u16 vlan_id, u8 qos,
+ }
  
-@@ -1104,7 +1104,7 @@ struct virtchnl2_rss_key {
- 	__le32 vport_id;
- 	__le16 key_len;
- 	u8 pad;
--	u8 key_flex[];
-+	u8 key_flex[] __counted_by_le(key_len);
- } __packed;
- VIRTCHNL2_CHECK_STRUCT_LEN(7, virtchnl2_rss_key);
+ /**
+- * ice_print_vf_rx_mdd_event - print VF Rx malicious driver detect event
++ * ice_print_vf_mdd_event - print VF Rx malicious driver detect event
+  * @vf: pointer to the VF structure
++ * @is_rx: true for RX event, false for TX event
+  */
+-void ice_print_vf_rx_mdd_event(struct ice_vf *vf)
++void ice_print_vf_mdd_event(struct ice_vf *vf, bool is_rx)
+ {
+ 	struct ice_pf *pf = vf->pf;
+ 	struct device *dev;
  
-@@ -1131,7 +1131,7 @@ VIRTCHNL2_CHECK_STRUCT_LEN(16, virtchnl2_queue_chunk);
- struct virtchnl2_queue_chunks {
- 	__le16 num_chunks;
- 	u8 pad[6];
--	struct virtchnl2_queue_chunk chunks[];
-+	struct virtchnl2_queue_chunk chunks[] __counted_by_le(num_chunks);
- };
- VIRTCHNL2_CHECK_STRUCT_LEN(8, virtchnl2_queue_chunks);
+ 	dev = ice_pf_to_dev(pf);
  
-@@ -1195,7 +1195,7 @@ struct virtchnl2_queue_vector_maps {
- 	__le32 vport_id;
- 	__le16 num_qv_maps;
- 	u8 pad[10];
--	struct virtchnl2_queue_vector qv_maps[];
-+	struct virtchnl2_queue_vector qv_maps[] __counted_by_le(num_qv_maps);
- };
- VIRTCHNL2_CHECK_STRUCT_LEN(16, virtchnl2_queue_vector_maps);
+-	dev_info(dev, "%d Rx Malicious Driver Detection events detected on PF %d VF %d MAC %pM. mdd-auto-reset-vfs=%s\n",
+-		 vf->mdd_rx_events.count, pf->hw.pf_id, vf->vf_id,
+-		 vf->dev_lan_addr,
++	dev_info(dev, "%d %s Malicious Driver Detection events detected on PF %d VF %d MAC %pM. mdd-auto-reset-vfs=%s\n",
++		 is_rx ? vf->mdd_rx_events.count : vf->mdd_tx_events.count,
++		 is_rx ? "Rx" : "Tx",
++		 pf->hw.pf_id, vf->vf_id, vf->dev_lan_addr,
+ 		 test_bit(ICE_FLAG_MDD_AUTO_RESET_VF, pf->flags)
+ 			  ? "on" : "off");
+ }
+@@ -1894,7 +1896,7 @@ void ice_print_vfs_mdd_events(struct ice_pf *pf)
+ 		if (vf->mdd_rx_events.count != vf->mdd_rx_events.last_printed) {
+ 			vf->mdd_rx_events.last_printed =
+ 							vf->mdd_rx_events.count;
+-			ice_print_vf_rx_mdd_event(vf);
++			ice_print_vf_mdd_event(vf, true);
+ 		}
  
-@@ -1247,7 +1247,7 @@ struct virtchnl2_mac_addr_list {
- 	__le32 vport_id;
- 	__le16 num_mac_addr;
- 	u8 pad[2];
--	struct virtchnl2_mac_addr mac_addr_list[];
-+	struct virtchnl2_mac_addr mac_addr_list[] __counted_by_le(num_mac_addr);
- };
- VIRTCHNL2_CHECK_STRUCT_LEN(8, virtchnl2_mac_addr_list);
+ 		/* only print Tx MDD event message if there are new events */
+diff --git a/drivers/net/ethernet/intel/ice/ice_sriov.h b/drivers/net/ethernet/intel/ice/ice_sriov.h
+index 8488df38b586..a9d3ee36d0df 100644
+--- a/drivers/net/ethernet/intel/ice/ice_sriov.h
++++ b/drivers/net/ethernet/intel/ice/ice_sriov.h
+@@ -57,7 +57,7 @@ ice_get_vf_stats(struct net_device *netdev, int vf_id,
+ void
+ ice_vf_lan_overflow_event(struct ice_pf *pf, struct ice_rq_event_info *event);
+ void ice_print_vfs_mdd_events(struct ice_pf *pf);
+-void ice_print_vf_rx_mdd_event(struct ice_vf *vf);
++void ice_print_vf_mdd_event(struct ice_vf *vf, bool is_tx);
+ bool
+ ice_vc_validate_pattern(struct ice_vf *vf, struct virtchnl_proto_hdrs *proto);
+ u32 ice_sriov_get_vf_total_msix(struct pci_dev *pdev);
+@@ -68,7 +68,7 @@ static inline void ice_free_vfs(struct ice_pf *pf) { }
+ static inline
+ void ice_vf_lan_overflow_event(struct ice_pf *pf, struct ice_rq_event_info *event) { }
+ static inline void ice_print_vfs_mdd_events(struct ice_pf *pf) { }
+-static inline void ice_print_vf_rx_mdd_event(struct ice_vf *vf) { }
++static inline void ice_print_vf_mdd_event(struct ice_vf *vf, bool is_tx) { }
+ static inline void ice_restore_all_vfs_msi_state(struct ice_pf *pf) { }
  
+ static inline int
 -- 
-2.44.0
+2.41.0
 
