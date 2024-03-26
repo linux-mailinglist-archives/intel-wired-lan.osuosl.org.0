@@ -1,98 +1,88 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5265988C565
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 26 Mar 2024 15:40:44 +0100 (CET)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0449588C53E
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 26 Mar 2024 15:35:56 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 9530B407F9;
-	Tue, 26 Mar 2024 14:40:41 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id A9F17407F9;
+	Tue, 26 Mar 2024 14:35:54 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id RbQ7veJuNF0b; Tue, 26 Mar 2024 14:40:40 +0000 (UTC)
+ id GEsT6ZADxcwV; Tue, 26 Mar 2024 14:35:53 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org BBA004083D
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9D33F40800
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1711464040;
-	bh=LcUjuUZcMtKLNC3jdwiYywI1vJoFmdq1GbFODxD3OSo=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1711463753;
+	bh=oXBFibEBiPM4VCyCNwTgs7WkYgc3NnouQzCupROCtGM=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=6OFJsSoB7yaO+ZolDamQcYa3GZAMfQSIfWhYb3sdZNf5I+9pPuAuR+T6c0gxRKU8Q
-	 8JsVNqYrVE8P09OGP3AaOrpEhaqypWbF0BaetILuKyMm145Bo0eluZhWveQ/B4zRdn
-	 XmMuUC+rZ+69mBZKYrAWSp5Mxi6Rxv3LQ7u2SSQskbg0SVbmMYFnYokQt9X5NZTm5c
-	 l6OVY8kgZWlfyfqr3V6f+cG/Uts3WMoB5lUoR6x3ifz717+HRPlhfVlWBstsuSBIrA
-	 yf1+IIOEVowyqbzLYBB0uK71wzN8mbzRvBxR2K2RA0vIPcfumn4Owa/HPkMdR/gUpt
-	 0jIF/kFgTon9g==
+	b=zWX6LLMkSTHqjv61Qmu7xJ9awRhAeXI7KR3vlLcyRAE3FQF2VMaZ4uw6eQNpaScVY
+	 5fNTm8CRtAZfjRh/ry8IwCtNWcbYjJGXgMhmjg0K2YIodFiybEjdbUzPW/DyX4faOo
+	 cWTbg/wKqFbePuAOG7XjIAKPM8r8sGiiTNFhLO8otTMyyb8pXskqq4+a/SlW3SmsJk
+	 gPoyOyfti1ZgQxbINFK7eprRVptxF4RiE8PHE/VesvAYRrU7BfbWaz6MQxs24WAUB0
+	 7JIQoFOsqgTNppJcYUO7ifLI2Ph5/Kvt+D/PX67Sn3hgeqZPW4SFmESwHnZPEROEsi
+	 gE41Bg0TzuFxQ==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id BBA004083D;
-	Tue, 26 Mar 2024 14:40:40 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 9D33F40800;
+	Tue, 26 Mar 2024 14:35:53 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 88E071BF4E2
- for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Mar 2024 14:40:38 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 8BE761BF4E2
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Mar 2024 14:35:51 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 75DE0414EF
- for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Mar 2024 14:40:38 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 77CA56082F
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Mar 2024 14:35:51 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id rIUlEMRJHyK2 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 26 Mar 2024 14:40:37 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.12;
- helo=mgamail.intel.com; envelope-from=mateusz.polchlopek@intel.com;
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id uuEZotZP3eRN for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 26 Mar 2024 14:35:50 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=139.178.84.217;
+ helo=dfw.source.kernel.org; envelope-from=horms@kernel.org;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 4EFA5414DE
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 4EFA5414DE
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.12])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 4EFA5414DE
- for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Mar 2024 14:40:37 +0000 (UTC)
-X-CSE-ConnectionGUID: Nb+bSO6vSjiZExbZP98ECw==
-X-CSE-MsgGUID: iIQoiG5mSk6/idH0LtQ87g==
-X-IronPort-AV: E=McAfee;i="6600,9927,11025"; a="10296887"
-X-IronPort-AV: E=Sophos;i="6.07,156,1708416000"; d="scan'208";a="10296887"
-Received: from orviesa006.jf.intel.com ([10.64.159.146])
- by fmvoesa106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 26 Mar 2024 07:40:27 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.07,156,1708416000"; d="scan'208";a="16412479"
-Received: from irvmail002.ir.intel.com ([10.43.11.120])
- by orviesa006.jf.intel.com with ESMTP; 26 Mar 2024 07:40:23 -0700
-Received: from fedora.igk.intel.com (Metan_eth.igk.intel.com [10.123.220.124])
- by irvmail002.ir.intel.com (Postfix) with ESMTP id C4C322819E;
- Tue, 26 Mar 2024 14:40:21 +0000 (GMT)
-From: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Tue, 26 Mar 2024 10:30:42 -0400
-Message-Id: <20240326143042.9240-7-mateusz.polchlopek@intel.com>
-X-Mailer: git-send-email 2.38.1
-In-Reply-To: <20240326143042.9240-1-mateusz.polchlopek@intel.com>
-References: <20240326143042.9240-1-mateusz.polchlopek@intel.com>
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org B70E7607B9
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B70E7607B9
+Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id B70E7607B9
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Mar 2024 14:35:50 +0000 (UTC)
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by dfw.source.kernel.org (Postfix) with ESMTP id D23116122C;
+ Tue, 26 Mar 2024 14:35:49 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 67517C433F1;
+ Tue, 26 Mar 2024 14:35:46 +0000 (UTC)
+Date: Tue, 26 Mar 2024 14:35:44 +0000
+From: Simon Horman <horms@kernel.org>
+To: Bjorn Helgaas <helgaas@kernel.org>
+Message-ID: <20240326143544.GY403975@kernel.org>
+References: <20240325222951.1460656-1-helgaas@kernel.org>
+ <20240325222951.1460656-2-helgaas@kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240325222951.1460656-2-helgaas@kernel.org>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1711464037; x=1743000037;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=ayp3w+xzqn0hd9fHMdrwa/nbYUX3VcDmHtiOLt5hPWs=;
- b=GU40hR2ffG+diaJ633t5eJ1BXilgnjHN3YrXj1LXpWjvIcvnkC6v//Nl
- Zg0MVjekWfxeuNoteSx/FbDlgTpqazm7BJXB7YT2ASWBkUxD+GRIiBjM8
- 3nvZ0y7no0s6HPW7l2hQ1aiu2NSM6JI5GGros2Y6Os3QQf7XWjK2yLpEv
- scESdEdUOWHyo3gOr6QeS2edLc1Av/SnYnrObNqaeFmG3uh+sYAGw2Cfc
- y7O4qB1qMgMrDvvxslcmumXUSpo3dZvQ1vZTBzN6pTwunAawJeNkitXR1
- Fu9KGRSonIsaaB4uYvSTDxi4JKcqNTzXNsGNqmWIwehBZ4WLVcOkTz8va
- A==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ d=kernel.org; s=k20201202; t=1711463749;
+ bh=Ni4Cb8d+9/UtZWDS1MJ8TsKOaKB5beJmlBXXrWRHe/I=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=ljOk2w0Zq6ZBjwoNgc5qsqetXQWZmTaojsWyb4v2XxO43hoAfYg8lGvzDZDaieq/F
+ Dw6U/mn3/Cr60E3fGpxQ96TdizogFMEn4pserO15OvwzLFRz+U6mHZFLTVv2qOcEJg
+ lbpFSXHuUX3JdnzuFEXUt5TJhX+4SfVBhgcHosNerAhkIGwtMINQqM5dNASgF4guHv
+ +diZgWE7Ecr4m5YEgNirWGkme+EArfZw9tEg25ZDGVzPxqpDfmXb8rNgTQ4tCZzo+9
+ mwv0xDYZyGHfagGaScGs9ry9dDrnxjcD5bYe6AICWUKg1LNCPyGOlYD7do/3vHYhi7
+ fzJMSBkVa99nw==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=GU40hR2f
-Subject: [Intel-wired-lan] [PATCH net-next v8 6/6] ice: Document
- tx_scheduling_layers parameter
+ header.from=kernel.org
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
+ header.s=k20201202 header.b=ljOk2w0Z
+Subject: Re: [Intel-wired-lan] [PATCH 1/3] e1000e: Remove redundant runtime
+ resume for ethtool_ops
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -105,87 +95,56 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: andrew@lunn.ch, jiri@resnulli.us, michal.wilczynski@intel.com,
- Mateusz Polchlopek <mateusz.polchlopek@intel.com>, netdev@vger.kernel.org,
- lukasz.czapnik@intel.com, victor.raj@intel.com, Jiri Pirko <jiri@nvidia.com>,
- anthony.l.nguyen@intel.com, horms@kernel.org, przemyslaw.kitszel@intel.com,
- kuba@kernel.org
+Cc: Konstantin Khlebnikov <khlebnikov@openvz.org>,
+ Sasha Neftin <sasha.neftin@intel.com>, intel-wired-lan@lists.osuosl.org,
+ "Rafael J . Wysocki" <rafael.j.wysocki@intel.com>,
+ linux-kernel@vger.kernel.org, Bjorn Helgaas <bhelgaas@google.com>,
+ Eric Dumazet <edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
+ netdev@vger.kernel.org, Zheng Yan <zheng.z.yan@intel.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ "David S . Miller" <davem@davemloft.net>,
+ Heiner Kallweit <hkallweit1@gmail.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Michal Wilczynski <michal.wilczynski@intel.com>
+On Mon, Mar 25, 2024 at 05:29:49PM -0500, Bjorn Helgaas wrote:
+> From: Bjorn Helgaas <bhelgaas@google.com>
+> 
+> e60b22c5b7e5 ("e1000e: fix accessing to suspended device") added
+> ethtool_ops.begin() and .complete(), which used pm_runtime_get_sync() to
+> resume suspended devices before any ethtool_ops callback and allow suspend
+> after it completed.
+> 
+> 3ef672ab1862 ("e1000e: ethtool unnecessarily takes device out of RPM
+> suspend") removed ethtool_ops.begin() and .complete() and instead did
+> pm_runtime_get_sync() only in the individual ethtool_ops callbacks that
+> access device registers.
+> 
+> Subsequently, f32a21376573 ("ethtool: runtime-resume netdev parent before
+> ethtool ioctl ops") added pm_runtime_get_sync() in the dev_ethtool() path,
+> so the device is resumed before *any* ethtool_ops callback, as it was
+> before 3ef672ab1862.
+> 
+> Remove most runtime resumes from ethtool_ops, which are now redundant
+> because the resume has already been done by dev_ethtool().  This is
+> essentially a revert of 3ef672ab1862 ("e1000e: ethtool unnecessarily takes
+> device out of RPM suspend").
+> 
+> There are a couple subtleties:
+> 
+>   - Prior to 3ef672ab1862, the device was resumed only for the duration of
+>     a single ethtool callback.  3ef672ab1862 changed e1000_set_phys_id() so
+>     the device was resumed for ETHTOOL_ID_ACTIVE and remained resumed until
+>     a subsequent callback for ETHTOOL_ID_INACTIVE.  Preserve that part of
+>     3ef672ab1862 so the device will not be runtime suspended while in the
+>     ETHTOOL_ID_ACTIVE state.
+> 
+>   - 3ef672ab1862 added "if (!pm_runtime_suspended())" in before reading the
+>     STATUS register in e1000_get_settings().  This was racy and is now
+>     unnecessary because dev_ethtool() has resumed the device already, so
+>     revert that.
+> 
+> Signed-off-by: Bjorn Helgaas <bhelgaas@google.com>
 
-New driver specific parameter 'tx_scheduling_layers' was introduced.
-Describe parameter in the documentation.
-
-Signed-off-by: Michal Wilczynski <michal.wilczynski@intel.com>
-Acked-by: Jakub Kicinski <kuba@kernel.org>
-Reviewed-by: Jiri Pirko <jiri@nvidia.com>
-Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-Co-developed-by: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
-Signed-off-by: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
----
- Documentation/networking/devlink/ice.rst | 47 ++++++++++++++++++++++++
- 1 file changed, 47 insertions(+)
-
-diff --git a/Documentation/networking/devlink/ice.rst b/Documentation/networking/devlink/ice.rst
-index 7f30ebd5debb..830c04354222 100644
---- a/Documentation/networking/devlink/ice.rst
-+++ b/Documentation/networking/devlink/ice.rst
-@@ -21,6 +21,53 @@ Parameters
-    * - ``enable_iwarp``
-      - runtime
-      - mutually exclusive with ``enable_roce``
-+   * - ``tx_scheduling_layers``
-+     - permanent
-+     - The ice hardware uses hierarchical scheduling for Tx with a fixed
-+       number of layers in the scheduling tree. Each of them are decision
-+       points. Root node represents a port, while all the leaves represent
-+       the queues. This way of configuring the Tx scheduler allows features
-+       like DCB or devlink-rate (documented below) to configure how much
-+       bandwidth is given to any given queue or group of queues, enabling
-+       fine-grained control because scheduling parameters can be configured
-+       at any given layer of the tree.
-+
-+       The default 9-layer tree topology was deemed best for most workloads,
-+       as it gives an optimal ratio of performance to configurability. However,
-+       for some specific cases, this 9-layer topology might not be desired.
-+       One example would be sending traffic to queues that are not a multiple
-+       of 8. Because the maximum radix is limited to 8 in 9-layer topology,
-+       the 9th queue has a different parent than the rest, and it's given
-+       more bandwidth credits. This causes a problem when the system is
-+       sending traffic to 9 queues:
-+
-+       | tx_queue_0_packets: 24163396
-+       | tx_queue_1_packets: 24164623
-+       | tx_queue_2_packets: 24163188
-+       | tx_queue_3_packets: 24163701
-+       | tx_queue_4_packets: 24163683
-+       | tx_queue_5_packets: 24164668
-+       | tx_queue_6_packets: 23327200
-+       | tx_queue_7_packets: 24163853
-+       | tx_queue_8_packets: 91101417 < Too much traffic is sent from 9th
-+
-+       To address this need, you can switch to a 5-layer topology, which
-+       changes the maximum topology radix to 512. With this enhancement,
-+       the performance characteristic is equal as all queues can be assigned
-+       to the same parent in the tree. The obvious drawback of this solution
-+       is a lower configuration depth of the tree.
-+
-+       Use the ``tx_scheduling_layer`` parameter with the devlink command
-+       to change the transmit scheduler topology. To use 5-layer topology,
-+       use a value of 5. For example:
-+       $ devlink dev param set pci/0000:16:00.0 name tx_scheduling_layers
-+       value 5 cmode permanent
-+       Use a value of 9 to set it back to the default value.
-+
-+       You must do PCI slot powercycle for the selected topology to take effect.
-+
-+       To verify that value has been set:
-+       $ devlink dev param show pci/0000:16:00.0 name tx_scheduling_layers
- 
- Info versions
- =============
--- 
-2.38.1
+Reviewed-by: Simon Horman <horms@kernel.org>
 
