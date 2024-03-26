@@ -1,102 +1,89 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0176588BF22
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 26 Mar 2024 11:18:38 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 427F388C075
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 26 Mar 2024 12:19:48 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 3FB6640578;
-	Tue, 26 Mar 2024 10:18:36 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 3997260AB2;
+	Tue, 26 Mar 2024 11:19:45 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id XsBmS4e4n1Ym; Tue, 26 Mar 2024 10:18:35 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id hKRy7Pj_ghbW; Tue, 26 Mar 2024 11:19:44 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 83E7E404ED
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 843EE60AC1
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1711448315;
-	bh=rYmkEHi4VavxMXgDPhKWUPnIcThKgoTAuUBbdxJ2wus=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
+	s=default; t=1711451984;
+	bh=ZixrxqYJPrTlRGSPP1N8PGyvyaSBqmgAPCWqc2abnXg=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=S6ssUivyuO3CGdRoesC48EBqzIWwV4xd53SRvXPqSoRBv7jB/Z+qn+27WAhYscVqq
-	 SOgDEVX4BKzs0lOgsRz2O7BLjiCvF7bPXgq8rLoeF4tSXD7dsGgo1MBAccLmBYo0Q8
-	 gcxlEAbUd2c0gzMriUNMdCQbRKTCmHMDw5c2xlArvdmp46NnvOUx1Cjl937njajYEU
-	 4zBy6LafdvRJj+UrfNgAG9SD3+vgDlRKvjacTPB9XVlglkzyitNvYWIHn3E2IdRkCS
-	 Izyl/mGbajBNfxTdz/U9Nqbs4RgLAs4KxpEPo5xi44uH28WtUu5hN36U4B2WONQo/3
-	 1ELoKr/X4OTRw==
+	b=1FLz9wN6opRQW1pJmp+vRtGPqa1RzLUAJhkSM89ZRbEehovtMfzSzZiVh+wcgls1X
+	 FX+61nQnLZ0+1wiZXZz5QRQH8bV6V90FcuR6mMg1FjcL/HnH386fi+BCqcVpFo/TG5
+	 ffBhiXym2oAt/G1cYAXE+q3UGFBDzHQYm3t9IOqxQhb7kqA2zG7Z9eJajCG8cUd/Eh
+	 hwk8y6/J4HiDeVusazJKojT+huzwGLwO92SDP5zelNCMOO6fJUKQglSeO5vEuVIblj
+	 RZKRm+PArdaWaCDP//HkERLkTmbLcOcBiUt8SBbpDqdobVss8TR55NiXp3/wvJGVoE
+	 xIBKy10Dv/FJw==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 83E7E404ED;
-	Tue, 26 Mar 2024 10:18:35 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 843EE60AC1;
+	Tue, 26 Mar 2024 11:19:44 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 735BC1BF383
- for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Mar 2024 10:18:33 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 5F3AC1BF45A
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Mar 2024 11:19:42 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 5F19140578
- for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Mar 2024 10:18:33 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 15C7A81767
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Mar 2024 11:19:38 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id UrRMfbaCvVTN for <intel-wired-lan@lists.osuosl.org>;
- Tue, 26 Mar 2024 10:18:32 +0000 (UTC)
-Received-SPF: None (mailfrom) identity=mailfrom; client-ip=192.198.163.14;
- helo=mgamail.intel.com; envelope-from=naamax.meir@linux.intel.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org A1408404ED
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A1408404ED
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.14])
- by smtp2.osuosl.org (Postfix) with ESMTPS id A1408404ED
- for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Mar 2024 10:18:32 +0000 (UTC)
-X-CSE-ConnectionGUID: Ixdmc9j4ToyVug1AaRM6yw==
-X-CSE-MsgGUID: 9Y0lZcc+SseloAfVwYkySg==
-X-IronPort-AV: E=McAfee;i="6600,9927,11024"; a="6701996"
-X-IronPort-AV: E=Sophos;i="6.07,156,1708416000"; 
-   d="scan'208";a="6701996"
-Received: from orviesa004.jf.intel.com ([10.64.159.144])
- by fmvoesa108.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 26 Mar 2024 03:18:32 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.07,156,1708416000"; d="scan'208";a="20603452"
-Received: from naamamex-mobl.ger.corp.intel.com (HELO [10.12.48.215])
- ([10.12.48.215])
- by orviesa004-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 26 Mar 2024 03:18:31 -0700
-Message-ID: <9eb5694c-cab6-43fd-bfbe-f696c1ec08df@linux.intel.com>
-Date: Tue, 26 Mar 2024 12:18:28 +0200
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id fvgQxAZk-vyp for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 26 Mar 2024 11:19:37 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2604:1380:40e1:4800::1; helo=sin.source.kernel.org;
+ envelope-from=horms@kernel.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 3604B81415
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3604B81415
+Received: from sin.source.kernel.org (sin.source.kernel.org
+ [IPv6:2604:1380:40e1:4800::1])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 3604B81415
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Mar 2024 11:19:37 +0000 (UTC)
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by sin.source.kernel.org (Postfix) with ESMTP id D8369CE1C0A;
+ Tue, 26 Mar 2024 11:19:32 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 253FBC433C7;
+ Tue, 26 Mar 2024 11:19:30 +0000 (UTC)
+Date: Tue, 26 Mar 2024 11:19:28 +0000
+From: Simon Horman <horms@kernel.org>
+To: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+Message-ID: <20240326111928.GJ403975@kernel.org>
+References: <20240325213433.829161-1-michal.swiatkowski@linux.intel.com>
+ <20240325213433.829161-2-michal.swiatkowski@linux.intel.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Content-Language: en-US
-To: Vitaly Lifshits <vitaly.lifshits@intel.com>,
- intel-wired-lan@lists.osuosl.org
-References: <20240303105132.2696814-1-vitaly.lifshits@intel.com>
-From: "naamax.meir" <naamax.meir@linux.intel.com>
-In-Reply-To: <20240303105132.2696814-1-vitaly.lifshits@intel.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240325213433.829161-2-michal.swiatkowski@linux.intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1711448312; x=1742984312;
- h=message-id:date:mime-version:subject:to:cc:references:
- from:in-reply-to:content-transfer-encoding;
- bh=VCibbg6d7djel/0sBTu3bJf8AEwblpFIA4OLyIEmDa0=;
- b=frIRfNL/aA0QzjcamhFEf9BzxvutcRsg/KjMZ8TjcXtgoeIQ2wQhwD0m
- 2rXPJ22CoP5UZC6diX7hBN18GN57PJ0Ii4qnlTuHDV7I+MsS3o76Y7Q7L
- KffHFv/Rek0quBEaiLWLLnDGGk0wZIE9IXtRTglYIP2jE38S1oB3CNTA5
- Xq1e+h5QWNEDcwWtzX1SodEu+Y33QKjwgDSImUnlsGH7p2e1DQWEIynmL
- fuon051SgUesZtqNAdq/2sz5J+/xfscVPB+RdI/cJqviuY6f7hL5HOYoE
- ppDOJ1MaJ4qaqSFsWYYxD6+qEr6EEzWTeXH66GdUniD4lyZ9PMFRNyXjJ
- g==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=linux.intel.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ d=kernel.org; s=k20201202; t=1711451972;
+ bh=bNHwSFK5J5KJCN6ynz/h2BWMHs0N01XYMQZfrfLHog0=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=I6KwdY2/03TrnMP9jFHPP5ZYPV6U8jC9oLs+/9i1cKgocZg0Y5GXLcjXyTioS4xmw
+ spjyfXbuYgvI3aUkTKFC5WkyEQvHFgFTbqlxmX4ETUHbGXRtCsOMSjmse31FpKXp3q
+ +Sot5nU9xL+vDO6tbimRYzRk/7dOaso/f/tqa3kP46nICIWEYqj02n4tHiq1aPRygz
+ AHKSCRi0ns+rECdhrzz8E92LirQxFbu129blxj+9JT3tdv2vw2uhACEI9q2BCqtHHa
+ zg/xlAAOjOgJPqkxOEqNqjG0jt2O0ufO6FKBRZY4sHLCPmxtcZ4Ri3oWq039j+uxUi
+ okt9uYRdOpD4A==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=kernel.org
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=frIRfNL/
-Subject: Re: [Intel-wired-lan] [PATCH RESEND iwl-net v2 1/1] e1000e: move
- force SMBUS from enable ulp function to avoid PHY loss issue
+ unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
+ header.s=k20201202 header.b=I6KwdY2/
+Subject: Re: [Intel-wired-lan] [iwl-next v1 1/3] ice: move ice_devlink.[ch]
+ to devlink folder
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -109,29 +96,22 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Dima Ruinskiy <dima.ruinskiy@intel.com>
+Cc: Aleksandr Loktionov <aleksandr.loktionov@intel.com>, netdev@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 3/3/2024 12:51, Vitaly Lifshits wrote:
-> Forcing SMBUS inside the ULP enabling flow leads to sporadic PHY loss on
-> some systems. It is suspected to be caused by initiating PHY transactions
-> before the interface settles.
+On Mon, Mar 25, 2024 at 10:34:31PM +0100, Michal Swiatkowski wrote:
+> Only moving whole files, fixing Makefile and bunch of includes.
 > 
-> Separating this configuration from the ULP enabling flow and moving it to
-> the shutdown function allows enough time for the interface to settle and
-> avoids adding a delay.
+> Some changes to ice_devlink file was done even in representor part (Tx
+> topology), so keep it as final patch to not mess up with rebasing.
 > 
-> Fixes: 6607c99e7034 ("e1000e: i219 - fix to enable both ULP and EEE in Sx state")
-> Signed-off-by: Vitaly Lifshits <vitaly.lifshits@intel.com>
-> Co-developed-by: Dima Ruinskiy <dima.ruinskiy@intel.com>
-> Signed-off-by: Dima Ruinskiy <dima.ruinskiy@intel.com>
-> ---
-> v2: address community review
-> v1: initial version
-> ---
->   drivers/net/ethernet/intel/e1000e/ich8lan.c | 19 -------------------
->   drivers/net/ethernet/intel/e1000e/netdev.c  | 18 ++++++++++++++++++
->   2 files changed, 18 insertions(+), 19 deletions(-)
+> After moving to devlink folder there is no need to have such long name
+> for these files. Rename them to simple devlink.
+> 
+> Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+> Signed-off-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
 
-Tested-by: Naama Meir <naamax.meir@linux.intel.com>
+Reviewed-by: Simon Horman <horms@kernel.org>
+
