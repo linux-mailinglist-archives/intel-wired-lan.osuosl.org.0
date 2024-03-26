@@ -2,101 +2,130 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id EA2E688B76B
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 26 Mar 2024 03:29:13 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9B05688C613
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 26 Mar 2024 15:58:53 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 9BDA840770;
-	Tue, 26 Mar 2024 02:29:12 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 4997540592;
+	Tue, 26 Mar 2024 14:58:52 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id IxCi5ZU2qt6W; Tue, 26 Mar 2024 02:29:11 +0000 (UTC)
+ id XSqPfeHWeLwo; Tue, 26 Mar 2024 14:58:51 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E2AB340773
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6D8E640558
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1711420151;
-	bh=bXrSxgtP7el5B/ve+S8nbnonEaRZlU6TCiJKw0OawWY=;
-	h=From:To:In-Reply-To:References:Date:Subject:List-Id:
+	s=default; t=1711465131;
+	bh=2NnN3yr0wpdVoxDzh4ChyQUmMIKdzLGg6sxkzDgAI3o=;
+	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=HHkh2K5m+Z3PqCTtHItEMua21hejjV6in89c53Qq/RvyGl55TBeQ3qcp3mwXJGUD6
-	 hHKeZkScpI/1lwM7XdwqQR4kOqYEmrIrh0Q5aDi6RAbcNnrna3xyksQQphNjHpedQW
-	 SNqA6YPMlJII2f9M41voiXcioVzX3wFzshF51J10WI17eNNiv7W8m035h4QpCJdJ4S
-	 FfmL6vNv/MLRGL34F/f3QWlYf2H1bRBtTk8i4qRvkr/f8tdIve5qYxAmLlW8T0MjER
-	 c9/QgJMOrLsuKNH//yamDHhMoym/oOXwj13aq+OK6f+tdRszPiuvadczaHUM4lMdS/
-	 HRKJdPTWT2TsA==
+	b=VCXxMRD9zZMXFXJ7q4RyWRl4tksfEX9aIJnZ4O6Ck+TNHzo8AJmYBKNOr+QhT0UYG
+	 GZPc0jfQ6eI3UIkcJVcB5fCaSG5DB1Sb/zEym8l8h8ksrzPhjHWNGmgMD7HqgaJ6p3
+	 CpnuS+MzJAGiNBGPFAwtxVgDvF/171zyURcI4x/EGAUI2HNVQa5XKXb0kd34fMXQQq
+	 SSwfGVSJnEI9KD51gLm36liCGR4tg9xQrwt8u48Ch1+H5GaW+crR1VqRstfeo1rty0
+	 NuMlZ10zUbr6o8Yt5H4MStTMoo8L2xwusmK4jXTFUCAghnvo+WD8CFwadeHL2pGr11
+	 UC7qwFnV6gPzg==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id E2AB340773;
-	Tue, 26 Mar 2024 02:29:10 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 6D8E640558;
+	Tue, 26 Mar 2024 14:58:51 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id E88DD1BF316
- for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Mar 2024 02:29:07 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id AC31B1BF3A9
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Mar 2024 09:03:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id E182F40CB3
- for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Mar 2024 02:29:07 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 95DF6407CE
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Mar 2024 09:03:15 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id v1LEJn--RYvp for <intel-wired-lan@lists.osuosl.org>;
- Tue, 26 Mar 2024 02:29:06 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.13;
- helo=mgamail.intel.com; envelope-from=vinicius.gomes@intel.com;
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id eJ8sXIU_i1eP for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 26 Mar 2024 09:03:14 +0000 (UTC)
+X-Greylist: delayed 314 seconds by postgrey-1.37 at util1.osuosl.org;
+ Tue, 26 Mar 2024 09:03:12 UTC
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 00BF4407DC
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 00BF4407DC
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=185.136.64.227;
+ helo=mta-64-227.siemens.flowmailer.net;
+ envelope-from=fm-68982-2024032608565655986cc1717746bf8d-8rrdfa@rts-flowmailer.siemens.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 9949841176
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 9949841176
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.13])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 9949841176
- for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Mar 2024 02:29:06 +0000 (UTC)
-X-IronPort-AV: E=McAfee;i="6600,9927,11024"; a="17595649"
-X-IronPort-AV: E=Sophos;i="6.07,154,1708416000"; d="scan'208";a="17595649"
-Received: from orviesa003.jf.intel.com ([10.64.159.143])
- by orvoesa105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 25 Mar 2024 19:29:05 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.07,154,1708416000"; d="scan'208";a="20480787"
-Received: from unknown (HELO vcostago-mobl3) ([10.124.221.210])
- by ORVIESA003-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 25 Mar 2024 19:29:05 -0700
-From: Vinicius Costa Gomes <vinicius.gomes@intel.com>
+Received: from mta-64-227.siemens.flowmailer.net
+ (mta-64-227.siemens.flowmailer.net [185.136.64.227])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 00BF4407DC
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Mar 2024 09:03:12 +0000 (UTC)
+Received: by mta-64-227.siemens.flowmailer.net with ESMTPSA id
+ 2024032608565655986cc1717746bf8d
+ for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 26 Mar 2024 09:57:51 +0100
+Message-ID: <d2623ac0f1cb07a23976416cdcf9eee1986747b0.camel@siemens.com>
+From: Florian Bezdeka <florian.bezdeka@siemens.com>
 To: Song Yoong Siang <yoong.siang.song@intel.com>, Jesse Brandeburg
- <jesse.brandeburg@intel.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
- "David S . Miller" <davem@davemloft.net>, Eric
- Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo
- Abeni <pabeni@redhat.com>, Richard Cochran <richardcochran@gmail.com>,
- Alexei
+ <jesse.brandeburg@intel.com>, Tony Nguyen <anthony.l.nguyen@intel.com>, 
+ "David S . Miller" <davem@davemloft.net>, Eric Dumazet
+ <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni
+ <pabeni@redhat.com>, Richard Cochran <richardcochran@gmail.com>, Alexei
  Starovoitov <ast@kernel.org>, Daniel Borkmann <daniel@iogearbox.net>,
  Jesper Dangaard Brouer <hawk@kernel.org>, John Fastabend
- <john.fastabend@gmail.com>, Stanislav Fomichev <sdf@google.com>, Florian
- Bezdeka <florian.bezdeka@siemens.com>, Kurt Kanzenbach
+ <john.fastabend@gmail.com>, Stanislav Fomichev <sdf@google.com>, Vinicius
+ Costa Gomes <vinicius.gomes@intel.com>, Kurt Kanzenbach
  <kurt@linutronix.de>, Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+Date: Tue, 26 Mar 2024 09:56:54 +0100
 In-Reply-To: <20240325020928.1987947-1-yoong.siang.song@intel.com>
 References: <20240325020928.1987947-1-yoong.siang.song@intel.com>
-Date: Mon, 25 Mar 2024 19:29:04 -0700
-Message-ID: <87h6gtpvyn.fsf@intel.com>
+Autocrypt: =?US-ASCII?Q?addr=3Dflorian.bezdeka@siemen?=
+ =?US-ASCII?Q?s.com;_prefer-encrypt=3Dmutual?=
+ =?US-ASCII?Q?;_keydata=3DmQENBFwsf8QBCAC2f4AQWu92LZC4bKyUYRxWIpWqGz790s?=
+ =?US-ASCII?Q?pcYkXO7M8kfea4iC8qMxv2hT4HT0LTncRP6WiovVN2PeoOBfN5BSa5z?=
+ =?US-ASCII?Q?LIrZGVXh7KmbdKhwhVU+ynoTq9G5uaO2Kos7Vv7nNCuatIq8tSNILuoB?=
+ =?US-ASCII?Q?DFTAZnJW3y1V7YOwhDCPl5gbLSYqUY3OE0yksbtCcVI5istT4ED6mjQ?=
+ =?US-ASCII?Q?9W+3uH1LrgFeEF0oxTjrEPxO5ZYATz0f/TYC8WiM0sMrV+n0eMDntlzA?=
+ =?US-ASCII?Q?63D6lcRi5mNp2jPsJkq3tbWqyCrAe1sKPVJB44ekFwCk0kDIuhR13Q3R?=
+ =?US-ASCII?Q?HE4Or/9sznhMUQjYueWXvTZfzH/VsQJHABEBAAG0LUZsb3JpYW4gQmV6?=
+ =?US-ASCII?Q?ZGVrYSA8Zmxvcmlhbi5iZXpkZWthQHNpZW1lbnMuY29tPokBVAQTAQg?=
+ =?US-ASCII?Q?APhYhBAzL4P3jiTHdthsq4cj0O1fnOEBVBQJcLH/FAhsDBQkB4TOABQs?=
+ =?US-ASCII?Q?JCAcCBhUKCQgLAgQWAgMBAh4BAheAAAoJEMj0O1fnOEBVc6YIAJ8oO4x?=
+ =?US-ASCII?Q?TjOCpjxaS8XQE6VW50HE9I6ShbQVWUEGhF4qzJaACTQDjdg/aio7qNRa?=
+ =?US-ASCII?Q?mnAy83Hy9sAxKVhXs+1R1fstN+JO8zgD3tJspucUkCiXlYu+Qcv2d6C?=
+ =?US-ASCII?Q?ostv+h4nv8fkSoeLfsQu3GJt6W0RN7t+8H/9fUMXyuB8GWo4bhaZcti6?=
+ =?US-ASCII?Q?78CotGLs6UGZpYEGiAMto8+9zVO/tdY1BkREM6bCVeQ9FnnpTRQy/tU5?=
+ =?US-ASCII?Q?xemMWJI64UUP92TUIbQ3TZKAz4iG/Mle+YjiHBGrJM7TxjE3sDg5J2Fa?=
+ =?US-ASCII?Q?HX4wmZPKGdB6wANKupf6HMMt2y7gduVmMKzgb8PDMLPZwWBSvjELQqz?=
+ =?US-ASCII?Q?hiZAQ0EYLSqZwEIAIR4HMTQC4F4YxatIl6MIDY03zD4M3ZQpgyQ6QFL9?=
+ =?US-ASCII?Q?Dq0I+PGc7A6z5rsGl76+D8pDFSN2BBJiLLlQadxKc3ZyTTlRp4bc=09bf?=
+ =?US-ASCII?Q?FZRmsAXwVfLtBauXxGo9pkyhk8Vcjb2EJm6XR8PH99buGOXlFfTLsmeA?=
+ =?US-ASCII?Q?ji/F4jU3qlUnwZMBvHZwRSFqOGdwKPMvW3FppfmREQ0o4xJ4b/bxGXx?=
+ =?US-ASCII?Q?ko21uyR/S5rEJx6X8Ukw95h3JinXHx/g2cjbKHrWBDKoqtX9IZCamDny?=
+ =?US-ASCII?Q?R+sfLWQbOKOrLNYLwLAQwOTVlZWTgue10G1q6Zi0r8RQ2T1Uy+ZLYagv?=
+ =?US-ASCII?Q?Cbzp/lT7p3mv3ba68llX896c0AEQEAAbQ/QmV6ZGVrYSwgRmxvcmlhbj?=
+ =?US-ASCII?Q?sgQmV6ZGVrYSBGbG9yaWFuIDxmbG9yaWFuLmJlemRla2FAc2llbWVuc?=
+ =?US-ASCII?Q?y5jb20+iQEcBBABCAAGBQJgtKpnAAoJEEoHyE9rG1dPpJYH+gPnqpu7h?=
+ =?US-ASCII?Q?4fsWOxco38e74MsazoUdfndTYP5tgaYTVE51ZhOZBl+4jYaywsmmFm9g?=
+ =?US-ASCII?Q?6N4Tw3GiMEDB4YU1X7gQZ60fDKpYL5SnCu5qZirJ4RCV4LDA0789ir+6?=
+ =?US-ASCII?Q?8/zfwXBTV5QoMH0+MkXB4BL+Km3f7X/GdN5oRoItAyKDBcEfGJo6afT?=
+ =?US-ASCII?Q?PtcUdI9n7ExCSfJwb0SBvvkvUsdNppFDGOOHSioINbEHBs2VUvE43toM?=
+ =?US-ASCII?Q?4mPLfhFIAtDcn5Byt80/kotU8v3Iyf86NYCa+0h77xTsKHcCUqe8Rvow?=
+ =?US-ASCII?Q?bCIbig9GGbbd54TasfqQQOiAkn/WeGl33+UIVX1Q8zo7eyMJHzLJQ3I=3D?=
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1711420146; x=1742956146;
- h=from:to:cc:subject:in-reply-to:references:date:
- message-id:mime-version;
- bh=DzbYHLscCUSnCTsi0cUZu2GsJUAq1ezQAtFLnEB1Pis=;
- b=KfzYT6QyRaisMRIc8px1e6Rn8KQodiqRHncCdBhy4KkeqMrDeZr1uM84
- alug+x2F217ErFdwlCt0Q1gXN4M697TpOeBfGkLtFTFc3Zve8EakxSVnF
- CQ2Md5A4IA9E6xvosT2F80xa1LT1KKWHGpHgHwRb02G0Urih1idkLqRro
- xSbuxjbPSl8JJVO9o+5+dIZnn4DYluo3feZTO3y16Hxy+txLTJyQ1z473
- VY3TFkMJCCCeKgXsH3gwp+zEdY27/nbPe9GXKNkvCzZMT0pEAfEa+hqZo
- vXRPa1BHpzsy54rgGVMoJi8qohegSG+bfXh2xFagdnfENYnAuVkRvI04E
- w==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=KfzYT6Qy
+X-Flowmailer-Platform: Siemens
+Feedback-ID: 519:519-68982:519-21489:flowmailer
+X-Mailman-Approved-At: Tue, 26 Mar 2024 14:58:49 +0000
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt;
+ c=relaxed/relaxed; s=fm1; 
+ d=siemens.com; i=florian.bezdeka@siemens.com;
+ h=Date:From:Subject:To:Message-ID:MIME-Version:Content-Type:Content-Transfer-Encoding:Cc:References:In-Reply-To;
+ bh=2NnN3yr0wpdVoxDzh4ChyQUmMIKdzLGg6sxkzDgAI3o=;
+ b=ZnoEPez1s9mkret+84aiVoBbI7kPnBo2K4g9LdoGjJ6Vk+54YX25G3Z0y+4eJYiwYj9198
+ nShsv9+TKBXTbNRidg9c/ePK/1HTATRNvXrX5F8nP9DbiWexkWFe2E3jYfd0oSnZt4QonXdX
+ PS7EotffJHiFxuv+AOwqR675HZ0WQ=;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dmarc=pass (p=reject dis=none)
+ header.from=siemens.com
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (1024-bit key,
+ unprotected) header.d=siemens.com header.i=florian.bezdeka@siemens.com
+ header.a=rsa-sha256 header.s=fm1 header.b=ZnoEPez1
 Subject: Re: [Intel-wired-lan] [PATCH iwl-next,
  v4 1/1] igc: Add Tx hardware timestamp request for AF_XDP zero-copy
  packet
@@ -117,175 +146,45 @@ Cc: netdev@vger.kernel.org, bpf@vger.kernel.org, xdp-hints@xdp-project.net,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Song Yoong Siang <yoong.siang.song@intel.com> writes:
-
+On Mon, 2024-03-25 at 10:09 +0800, Song Yoong Siang wrote:
 > This patch adds support to per-packet Tx hardware timestamp request to
 > AF_XDP zero-copy packet via XDP Tx metadata framework. Please note that
 > user needs to enable Tx HW timestamp capability via igc_ioctl() with
 > SIOCSHWTSTAMP cmd before sending xsk Tx hardware timestamp request.
->
+>=20
 > Same as implementation in RX timestamp XDP hints kfunc metadata, Timer 0
 > (adjustable clock) is used in xsk Tx hardware timestamp. i225/i226 have
 > four sets of timestamping registers. *skb and *xsk_tx_buffer pointers
-> are used to indicate whether the timestamping register is already occupied.
->
+> are used to indicate whether the timestamping register is already occupie=
+d.
+
+Let me make sure that I fully understand that: In my own words:
+
+With that applied I'm able to get the point in time from the device
+when a specific frame made it to the wire. I have to enable that
+functionality using the mentioned ioctl() call first, and then check
+the meta area (located in the umem right before the frame payload)
+while consuming the completion queue/ring. Correct?
+
+If so, we now have a feedback channel for meta information for/from TX.
+Are there any plans - or would it be possible - to support Earliest
+TxTime First (NET_SCHED_ETF) QDisc based on that channel? In the past
+we had the problem that we we're missing a feedback channel to
+communicate back invalid lunch times.
+=20
+>=20
 > Furthermore, a boolean variable named xsk_pending_ts is used to hold the
 > transmit completion until the tx hardware timestamp is ready. This is
 > because, for i225/i226, the timestamp notification event comes some time
-> after the transmit completion event. The driver will retrigger hardware irq
+> after the transmit completion event. The driver will retrigger hardware i=
+rq
 > to clean the packet after retrieve the tx hardware timestamp.
->
+>=20
 > Besides, xsk_meta is added into struct igc_tx_timestamp_request as a hook
 > to the metadata location of the transmit packet. When the Tx timestamp
 > interrupt is fired, the interrupt handler will copy the value of Tx hwts
 > into metadata location via xsk_tx_metadata_complete().
->
+>=20
 > This patch is tested with tools/testing/selftests/bpf/xdp_hw_metadata
 > on Intel ADL-S platform. Below are the test steps and results.
->
-> Test Step 1: Run xdp_hw_metadata app
->  ./xdp_hw_metadata <iface> > /dev/shm/result.log
->
-> Test Step 2: Enable Tx hardware timestamp
->  hwstamp_ctl -i <iface> -t 1 -r 1
->
-> Test Step 3: Run ptp4l and phc2sys for time synchronization
->
-> Test Step 4: Generate UDP packets with 1ms interval for 10s
->  trafgen --dev <iface> '{eth(da=<addr>), udp(dp=9091)}' -t 1ms -n 10000
->
-> Test Step 5: Rerun Step 1-3 with 10s iperf3 as background traffic
->
-> Test Step 6: Rerun Step 1-4 with 10s iperf3 as background traffic
->
-> Based on iperf3 results below, the impact of holding tx completion to
-> throughput is not observable.
->
-> Result of last UDP packet (no. 10000) in Step 4:
-> poll: 1 (0) skip=99 fail=0 redir=10000
-> xsk_ring_cons__peek: 1
-> 0x5640a37972d0: rx_desc[9999]->addr=f2110 addr=f2110 comp_addr=f2110 EoP
-> rx_hash: 0x2049BE1D with RSS type:0x1
-> HW RX-time:   1679819246792971268 (sec:1679819246.7930) delta to User RX-time sec:0.0000 (14.990 usec)
-> XDP RX-time:   1679819246792981987 (sec:1679819246.7930) delta to User RX-time sec:0.0000 (4.271 usec)
-> No rx_vlan_tci or rx_vlan_proto, err=-95
-> 0x5640a37972d0: ping-pong with csum=ab19 (want 315b) csum_start=34 csum_offset=6
-> 0x5640a37972d0: complete tx idx=9999 addr=f010
-> HW TX-complete-time:   1679819246793036971 (sec:1679819246.7930) delta to User TX-complete-time sec:0.0001 (77.656 usec)
-> XDP RX-time:   1679819246792981987 (sec:1679819246.7930) delta to User TX-complete-time sec:0.0001 (132.640 usec)
-> HW RX-time:   1679819246792971268 (sec:1679819246.7930) delta to HW TX-complete-time sec:0.0001 (65.703 usec)
-> 0x5640a37972d0: complete rx idx=10127 addr=f2110
->
-> Result of iperf3 without tx hwts request in step 5:
-> [ ID] Interval           Transfer     Bitrate         Retr
-> [  5]   0.00-10.00  sec  2.74 GBytes  2.36 Gbits/sec    0             sender
-> [  5]   0.00-10.05  sec  2.74 GBytes  2.34 Gbits/sec                  receiver
->
-> Result of iperf3 running parallel with trafgen command in step 6:
-> [ ID] Interval           Transfer     Bitrate         Retr
-> [  5]   0.00-10.00  sec  2.74 GBytes  2.36 Gbits/sec    0             sender
-> [  5]   0.00-10.04  sec  2.74 GBytes  2.34 Gbits/sec                  receiver
->
-> Co-developed-by: Lai Peter Jun Ann <jun.ann.lai@intel.com>
-> Signed-off-by: Lai Peter Jun Ann <jun.ann.lai@intel.com>
-> Signed-off-by: Song Yoong Siang <yoong.siang.song@intel.com>
-> Acked-by: John Fastabend <john.fastabend@gmail.com>
-> ---
-> V1: https://patchwork.kernel.org/project/netdevbpf/patch/20231215162158.951925-1-yoong.siang.song@intel.com/
-> V2: https://patchwork.kernel.org/project/netdevbpf/cover/20240301162348.898619-1-yoong.siang.song@intel.com/
-> V3: https://patchwork.kernel.org/project/netdevbpf/cover/20240303083225.1184165-1-yoong.siang.song@intel.com/
->
-> changelog:
-> V1 -> V2
-> - In struct igc_tx_timestamp_request, keep a pointer to igc_tx_buffer,
->   instead of pointing xsk_pending_ts (Vinicius).
-> - In struct igc_tx_timestamp_request, introduce buffer_type to indicate
->   whether skb or igc_tx_buffer pointer should be use (Vinicius).
-> - In struct igc_metadata_request, remove igc_adapter pointer (Vinicius).
-> - When request tx hwts, copy the value of cmd_type, instead of using
->   pointer (Vinicius).
-> - For boolean variable, use true and false, instead of 1 and 0 (Vinicius).
-> - In igc_xsk_request_timestamp(), make an early return if none of the 4 ts
->   registers is available (Vinicius).
-> - Create helper functions to clear tx buffer and skb for tstamp (John).
-> - Perform throughput test with mix traffic (Vinicius & John).
-> V2 -> V3
-> - Improve tstamp reg searching loop for better readability (John).
-> - In igc_ptp_free_tx_buffer(), add comment to inform user that
->   tstamp->xsk_tx_buffer and tstamp->skb are in union (John).
-> V3 -> V4
-> - Add protection with xp_tx_metadata_enabled (Kurt & Maciej).
-> ---
-> ---
->  drivers/net/ethernet/intel/igc/igc.h      |  71 ++++++++------
->  drivers/net/ethernet/intel/igc/igc_main.c | 113 ++++++++++++++++++++--
->  drivers/net/ethernet/intel/igc/igc_ptp.c  |  51 ++++++++--
->  3 files changed, 195 insertions(+), 40 deletions(-)
->
 
-[...]
-
-> diff --git a/drivers/net/ethernet/intel/igc/igc_ptp.c b/drivers/net/ethernet/intel/igc/igc_ptp.c
-> index 885faaa7b9de..1bb026232efc 100644
-> --- a/drivers/net/ethernet/intel/igc/igc_ptp.c
-> +++ b/drivers/net/ethernet/intel/igc/igc_ptp.c
-> @@ -11,6 +11,7 @@
->  #include <linux/ktime.h>
->  #include <linux/delay.h>
->  #include <linux/iopoll.h>
-> +#include <net/xdp_sock_drv.h>
->  
->  #define INCVALUE_MASK		0x7fffffff
->  #define ISGN			0x80000000
-> @@ -545,6 +546,30 @@ static void igc_ptp_enable_rx_timestamp(struct igc_adapter *adapter)
->  	wr32(IGC_TSYNCRXCTL, val);
->  }
->  
-> +static void igc_ptp_free_tx_buffer(struct igc_adapter *adapter,
-> +				   struct igc_tx_timestamp_request *tstamp)
-> +{
-> +	if (tstamp->buffer_type == IGC_TX_BUFFER_TYPE_XSK) {
-> +		/* Release the transmit completion */
-> +		tstamp->xsk_tx_buffer->xsk_pending_ts = false;
-> +
-> +		/* Note: tstamp->skb and tstamp->xsk_tx_buffer are in union.
-> +		 * By setting tstamp->xsk_tx_buffer to NULL, tstamp->skb will
-> +		 * become NULL as well.
-> +		 */
-> +		tstamp->xsk_tx_buffer = NULL;
-> +		tstamp->buffer_type = 0;
-> +
-> +		/* Trigger txrx interrupt for transmit completion */
-> +		igc_xsk_wakeup(adapter->netdev, tstamp->xsk_queue_index, 0);
-> +
-> +		return;
-> +	}
-> +
-> +	dev_kfree_skb_any(tstamp->skb);
-> +	tstamp->skb = NULL;
-> +}
-> +
->  static void igc_ptp_clear_tx_tstamp(struct igc_adapter *adapter)
->  {
->  	unsigned long flags;
-> @@ -555,8 +580,8 @@ static void igc_ptp_clear_tx_tstamp(struct igc_adapter *adapter)
->  	for (i = 0; i < IGC_MAX_TX_TSTAMP_REGS; i++) {
->  		struct igc_tx_timestamp_request *tstamp = &adapter->tx_tstamp[i];
->  
-> -		dev_kfree_skb_any(tstamp->skb);
-> -		tstamp->skb = NULL;
-> +		if (tstamp->skb)
-> +			igc_ptp_free_tx_buffer(adapter, tstamp);
->  	}
->  
-
-More a question: you are potentially triggering an interrupt from
-igc_ptp_clear_tx_tstamp() (igc_xsk_wakeup()) which can be called from
-igc_down(). So, how does it work when there's a pending timestamp and
-you remove the igc module? (example of a situation that it might be
-problematic).
-
-
-Cheers,
--- 
-Vinicius
