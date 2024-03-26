@@ -1,134 +1,102 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9B05688C613
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 26 Mar 2024 15:58:53 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id E328F88BE59
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 26 Mar 2024 10:51:59 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 4997540592;
-	Tue, 26 Mar 2024 14:58:52 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 6CCCC40578;
+	Tue, 26 Mar 2024 09:51:58 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id XSqPfeHWeLwo; Tue, 26 Mar 2024 14:58:51 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id zwMqSwlgvw9X; Tue, 26 Mar 2024 09:51:57 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6D8E640558
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3503840ADF
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1711465131;
-	bh=2NnN3yr0wpdVoxDzh4ChyQUmMIKdzLGg6sxkzDgAI3o=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1711446717;
+	bh=lsgIHZ6t47RKFF+C8jcAgd5UADfhu+shQ4EaON+pya0=;
+	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=VCXxMRD9zZMXFXJ7q4RyWRl4tksfEX9aIJnZ4O6Ck+TNHzo8AJmYBKNOr+QhT0UYG
-	 GZPc0jfQ6eI3UIkcJVcB5fCaSG5DB1Sb/zEym8l8h8ksrzPhjHWNGmgMD7HqgaJ6p3
-	 CpnuS+MzJAGiNBGPFAwtxVgDvF/171zyURcI4x/EGAUI2HNVQa5XKXb0kd34fMXQQq
-	 SSwfGVSJnEI9KD51gLm36liCGR4tg9xQrwt8u48Ch1+H5GaW+crR1VqRstfeo1rty0
-	 NuMlZ10zUbr6o8Yt5H4MStTMoo8L2xwusmK4jXTFUCAghnvo+WD8CFwadeHL2pGr11
-	 UC7qwFnV6gPzg==
+	b=JopHMnOAMVhVUn50ETxINvKnbeGeIszNnCcWBYLrIxQd7B46DyrAELfSKmrTmjP3W
+	 KYP/S34jZhqm6uAdS6fKgCIDQUF/5m1HswI5RSVM+9Dw7y7yf/1cTvpxiZ2e4YwD7q
+	 0EvmFH9Cf6GkGE+nLfJbbzSXUbgkqHAuEFZnyGS6pc8t5IHUFzo2JNPeoUGuI4g8QL
+	 ZmJDcEZ8pJu26hxf1E103aCZeaNygvxHGmp8qk/TsUgwNQzqk0qSJwJ8c4yx1VKwNh
+	 gsaEy3Yd8y+zQ7lqxoHaK4kjbDfM7SO/J6Xr5VFlkhx5zd/0xzMpwqLn70d+uE/aEc
+	 YpMKfBQBx0NxQ==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 6D8E640558;
-	Tue, 26 Mar 2024 14:58:51 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 3503840ADF;
+	Tue, 26 Mar 2024 09:51:57 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id AC31B1BF3A9
- for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Mar 2024 09:03:15 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id A7CC71BF397
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Mar 2024 09:51:54 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 95DF6407CE
- for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Mar 2024 09:03:15 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 9FDFB60657
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Mar 2024 09:51:54 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id eJ8sXIU_i1eP for <intel-wired-lan@lists.osuosl.org>;
- Tue, 26 Mar 2024 09:03:14 +0000 (UTC)
-X-Greylist: delayed 314 seconds by postgrey-1.37 at util1.osuosl.org;
- Tue, 26 Mar 2024 09:03:12 UTC
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 00BF4407DC
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 00BF4407DC
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=185.136.64.227;
- helo=mta-64-227.siemens.flowmailer.net;
- envelope-from=fm-68982-2024032608565655986cc1717746bf8d-8rrdfa@rts-flowmailer.siemens.com;
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id SNjGYheciVsJ for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 26 Mar 2024 09:51:53 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.129.124;
+ helo=us-smtp-delivery-124.mimecast.com; envelope-from=ivecera@redhat.com;
  receiver=<UNKNOWN> 
-Received: from mta-64-227.siemens.flowmailer.net
- (mta-64-227.siemens.flowmailer.net [185.136.64.227])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 00BF4407DC
- for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Mar 2024 09:03:12 +0000 (UTC)
-Received: by mta-64-227.siemens.flowmailer.net with ESMTPSA id
- 2024032608565655986cc1717746bf8d
- for <intel-wired-lan@lists.osuosl.org>;
- Tue, 26 Mar 2024 09:57:51 +0100
-Message-ID: <d2623ac0f1cb07a23976416cdcf9eee1986747b0.camel@siemens.com>
-From: Florian Bezdeka <florian.bezdeka@siemens.com>
-To: Song Yoong Siang <yoong.siang.song@intel.com>, Jesse Brandeburg
- <jesse.brandeburg@intel.com>, Tony Nguyen <anthony.l.nguyen@intel.com>, 
- "David S . Miller" <davem@davemloft.net>, Eric Dumazet
- <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni
- <pabeni@redhat.com>, Richard Cochran <richardcochran@gmail.com>, Alexei
- Starovoitov <ast@kernel.org>, Daniel Borkmann <daniel@iogearbox.net>,
- Jesper Dangaard Brouer <hawk@kernel.org>, John Fastabend
- <john.fastabend@gmail.com>, Stanislav Fomichev <sdf@google.com>, Vinicius
- Costa Gomes <vinicius.gomes@intel.com>, Kurt Kanzenbach
- <kurt@linutronix.de>, Maciej Fijalkowski <maciej.fijalkowski@intel.com>
-Date: Tue, 26 Mar 2024 09:56:54 +0100
-In-Reply-To: <20240325020928.1987947-1-yoong.siang.song@intel.com>
-References: <20240325020928.1987947-1-yoong.siang.song@intel.com>
-Autocrypt: =?US-ASCII?Q?addr=3Dflorian.bezdeka@siemen?=
- =?US-ASCII?Q?s.com;_prefer-encrypt=3Dmutual?=
- =?US-ASCII?Q?;_keydata=3DmQENBFwsf8QBCAC2f4AQWu92LZC4bKyUYRxWIpWqGz790s?=
- =?US-ASCII?Q?pcYkXO7M8kfea4iC8qMxv2hT4HT0LTncRP6WiovVN2PeoOBfN5BSa5z?=
- =?US-ASCII?Q?LIrZGVXh7KmbdKhwhVU+ynoTq9G5uaO2Kos7Vv7nNCuatIq8tSNILuoB?=
- =?US-ASCII?Q?DFTAZnJW3y1V7YOwhDCPl5gbLSYqUY3OE0yksbtCcVI5istT4ED6mjQ?=
- =?US-ASCII?Q?9W+3uH1LrgFeEF0oxTjrEPxO5ZYATz0f/TYC8WiM0sMrV+n0eMDntlzA?=
- =?US-ASCII?Q?63D6lcRi5mNp2jPsJkq3tbWqyCrAe1sKPVJB44ekFwCk0kDIuhR13Q3R?=
- =?US-ASCII?Q?HE4Or/9sznhMUQjYueWXvTZfzH/VsQJHABEBAAG0LUZsb3JpYW4gQmV6?=
- =?US-ASCII?Q?ZGVrYSA8Zmxvcmlhbi5iZXpkZWthQHNpZW1lbnMuY29tPokBVAQTAQg?=
- =?US-ASCII?Q?APhYhBAzL4P3jiTHdthsq4cj0O1fnOEBVBQJcLH/FAhsDBQkB4TOABQs?=
- =?US-ASCII?Q?JCAcCBhUKCQgLAgQWAgMBAh4BAheAAAoJEMj0O1fnOEBVc6YIAJ8oO4x?=
- =?US-ASCII?Q?TjOCpjxaS8XQE6VW50HE9I6ShbQVWUEGhF4qzJaACTQDjdg/aio7qNRa?=
- =?US-ASCII?Q?mnAy83Hy9sAxKVhXs+1R1fstN+JO8zgD3tJspucUkCiXlYu+Qcv2d6C?=
- =?US-ASCII?Q?ostv+h4nv8fkSoeLfsQu3GJt6W0RN7t+8H/9fUMXyuB8GWo4bhaZcti6?=
- =?US-ASCII?Q?78CotGLs6UGZpYEGiAMto8+9zVO/tdY1BkREM6bCVeQ9FnnpTRQy/tU5?=
- =?US-ASCII?Q?xemMWJI64UUP92TUIbQ3TZKAz4iG/Mle+YjiHBGrJM7TxjE3sDg5J2Fa?=
- =?US-ASCII?Q?HX4wmZPKGdB6wANKupf6HMMt2y7gduVmMKzgb8PDMLPZwWBSvjELQqz?=
- =?US-ASCII?Q?hiZAQ0EYLSqZwEIAIR4HMTQC4F4YxatIl6MIDY03zD4M3ZQpgyQ6QFL9?=
- =?US-ASCII?Q?Dq0I+PGc7A6z5rsGl76+D8pDFSN2BBJiLLlQadxKc3ZyTTlRp4bc=09bf?=
- =?US-ASCII?Q?FZRmsAXwVfLtBauXxGo9pkyhk8Vcjb2EJm6XR8PH99buGOXlFfTLsmeA?=
- =?US-ASCII?Q?ji/F4jU3qlUnwZMBvHZwRSFqOGdwKPMvW3FppfmREQ0o4xJ4b/bxGXx?=
- =?US-ASCII?Q?ko21uyR/S5rEJx6X8Ukw95h3JinXHx/g2cjbKHrWBDKoqtX9IZCamDny?=
- =?US-ASCII?Q?R+sfLWQbOKOrLNYLwLAQwOTVlZWTgue10G1q6Zi0r8RQ2T1Uy+ZLYagv?=
- =?US-ASCII?Q?Cbzp/lT7p3mv3ba68llX896c0AEQEAAbQ/QmV6ZGVrYSwgRmxvcmlhbj?=
- =?US-ASCII?Q?sgQmV6ZGVrYSBGbG9yaWFuIDxmbG9yaWFuLmJlemRla2FAc2llbWVuc?=
- =?US-ASCII?Q?y5jb20+iQEcBBABCAAGBQJgtKpnAAoJEEoHyE9rG1dPpJYH+gPnqpu7h?=
- =?US-ASCII?Q?4fsWOxco38e74MsazoUdfndTYP5tgaYTVE51ZhOZBl+4jYaywsmmFm9g?=
- =?US-ASCII?Q?6N4Tw3GiMEDB4YU1X7gQZ60fDKpYL5SnCu5qZirJ4RCV4LDA0789ir+6?=
- =?US-ASCII?Q?8/zfwXBTV5QoMH0+MkXB4BL+Km3f7X/GdN5oRoItAyKDBcEfGJo6afT?=
- =?US-ASCII?Q?PtcUdI9n7ExCSfJwb0SBvvkvUsdNppFDGOOHSioINbEHBs2VUvE43toM?=
- =?US-ASCII?Q?4mPLfhFIAtDcn5Byt80/kotU8v3Iyf86NYCa+0h77xTsKHcCUqe8Rvow?=
- =?US-ASCII?Q?bCIbig9GGbbd54TasfqQQOiAkn/WeGl33+UIVX1Q8zo7eyMJHzLJQ3I=3D?=
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 925D960628
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 925D960628
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 925D960628
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 26 Mar 2024 09:51:53 +0000 (UTC)
+Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
+ by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-335-IgCT65hGNAKssCJkJ7K1nw-1; Tue,
+ 26 Mar 2024 05:51:48 -0400
+X-MC-Unique: IgCT65hGNAKssCJkJ7K1nw-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.2])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id DBA1D382C463;
+ Tue, 26 Mar 2024 09:51:47 +0000 (UTC)
+Received: from [10.43.2.69] (cera.brq.redhat.com [10.43.2.69])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id C7C8F40438B7;
+ Tue, 26 Mar 2024 09:51:45 +0000 (UTC)
+Message-ID: <65b02586-1322-4eb3-b46d-36cf4bf6a3bf@redhat.com>
+Date: Tue, 26 Mar 2024 10:51:44 +0100
 MIME-Version: 1.0
-X-Flowmailer-Platform: Siemens
-Feedback-ID: 519:519-68982:519-21489:flowmailer
-X-Mailman-Approved-At: Tue, 26 Mar 2024 14:58:49 +0000
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt;
- c=relaxed/relaxed; s=fm1; 
- d=siemens.com; i=florian.bezdeka@siemens.com;
- h=Date:From:Subject:To:Message-ID:MIME-Version:Content-Type:Content-Transfer-Encoding:Cc:References:In-Reply-To;
- bh=2NnN3yr0wpdVoxDzh4ChyQUmMIKdzLGg6sxkzDgAI3o=;
- b=ZnoEPez1s9mkret+84aiVoBbI7kPnBo2K4g9LdoGjJ6Vk+54YX25G3Z0y+4eJYiwYj9198
- nShsv9+TKBXTbNRidg9c/ePK/1HTATRNvXrX5F8nP9DbiWexkWFe2E3jYfd0oSnZt4QonXdX
- PS7EotffJHiFxuv+AOwqR675HZ0WQ=;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dmarc=pass (p=reject dis=none)
- header.from=siemens.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+User-Agent: Mozilla Thunderbird
+To: Michal Schmidt <mschmidt@redhat.com>, intel-wired-lan@lists.osuosl.org
+References: <20240325232039.76836-1-mschmidt@redhat.com>
+Content-Language: en-US
+From: Ivan Vecera <ivecera@redhat.com>
+In-Reply-To: <20240325232039.76836-1-mschmidt@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.2
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=redhat.com; 
+ s=mimecast20190719; t=1711446712;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=lsgIHZ6t47RKFF+C8jcAgd5UADfhu+shQ4EaON+pya0=;
+ b=Gepqmo3qkB9JQBA1QRcymcDiNlVtIkCFggoA3tnjgYUCHrxgj9gUom3aQzTL1uy0IFODO+
+ C5YCgcvzyGBmf/gI/pCjXztYW0OCVwhM9jFeFhlSciRXiMTB+LZGZ6fuhLKVwOJSwLJwvy
+ 4YWVZzvXgOa0WDN3FktCwiUM8PxO7lw=
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=redhat.com
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (1024-bit key,
- unprotected) header.d=siemens.com header.i=florian.bezdeka@siemens.com
- header.a=rsa-sha256 header.s=fm1 header.b=ZnoEPez1
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next,
- v4 1/1] igc: Add Tx hardware timestamp request for AF_XDP zero-copy
- packet
+ unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256
+ header.s=mimecast20190719 header.b=Gepqmo3q
+Subject: Re: [Intel-wired-lan] [PATCH net-next v4 0/3] ice: lighter locking
+ for PTP time reading
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -141,50 +109,62 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, bpf@vger.kernel.org, xdp-hints@xdp-project.net,
- intel-wired-lan@lists.osuosl.org, linux-kernel@vger.kernel.org
+Cc: Jiri Pirko <jiri@resnulli.us>, "Temerkhanov,
+ Sergey" <sergey.temerkhanov@intel.com>, netdev@vger.kernel.org,
+ Richard Cochran <richardcochran@gmail.com>,
+ Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>,
+ Karol Kolacinski <karol.kolacinski@intel.com>,
+ Marcin Szycik <marcin.szycik@linux.intel.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Jacob Keller <jacob.e.keller@intel.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, 2024-03-25 at 10:09 +0800, Song Yoong Siang wrote:
-> This patch adds support to per-packet Tx hardware timestamp request to
-> AF_XDP zero-copy packet via XDP Tx metadata framework. Please note that
-> user needs to enable Tx HW timestamp capability via igc_ioctl() with
-> SIOCSHWTSTAMP cmd before sending xsk Tx hardware timestamp request.
->=20
-> Same as implementation in RX timestamp XDP hints kfunc metadata, Timer 0
-> (adjustable clock) is used in xsk Tx hardware timestamp. i225/i226 have
-> four sets of timestamping registers. *skb and *xsk_tx_buffer pointers
-> are used to indicate whether the timestamping register is already occupie=
-d.
 
-Let me make sure that I fully understand that: In my own words:
 
-With that applied I'm able to get the point in time from the device
-when a specific frame made it to the wire. I have to enable that
-functionality using the mentioned ioctl() call first, and then check
-the meta area (located in the umem right before the frame payload)
-while consuming the completion queue/ring. Correct?
-
-If so, we now have a feedback channel for meta information for/from TX.
-Are there any plans - or would it be possible - to support Earliest
-TxTime First (NET_SCHED_ETF) QDisc based on that channel? In the past
-we had the problem that we we're missing a feedback channel to
-communicate back invalid lunch times.
-=20
->=20
-> Furthermore, a boolean variable named xsk_pending_ts is used to hold the
-> transmit completion until the tx hardware timestamp is ready. This is
-> because, for i225/i226, the timestamp notification event comes some time
-> after the transmit completion event. The driver will retrigger hardware i=
-rq
-> to clean the packet after retrieve the tx hardware timestamp.
->=20
-> Besides, xsk_meta is added into struct igc_tx_timestamp_request as a hook
-> to the metadata location of the transmit packet. When the Tx timestamp
-> interrupt is fired, the interrupt handler will copy the value of Tx hwts
-> into metadata location via xsk_tx_metadata_complete().
->=20
-> This patch is tested with tools/testing/selftests/bpf/xdp_hw_metadata
-> on Intel ADL-S platform. Below are the test steps and results.
+On 26. 03. 24 0:20, Michal Schmidt wrote:
+> This series removes the use of the heavy-weight PTP hardware semaphore
+> in the gettimex64 path. Instead, serialization of access to the time
+> register is done using a host-side spinlock. The timer hardware is
+> shared between PFs on the PCI adapter, so the spinlock must be shared
+> between ice_pf instances too.
+> 
+> Replacing the PTP hardware semaphore entirely with a mutex is also
+> possible and you can see it done in my git branch[1], but I am not
+> posting those patches yet to keep the scope of this series limited.
+> 
+> [1] https://gitlab.com/mschmidt2/linux/-/commits/ice-ptp-host-side-lock-10
+> 
+> v4:
+>   - Patch 1: Use named GENMASK macros and FIELD_PREP.
+> 
+> v3:
+>   - Longer variable name ("a" -> "adapter").
+>   - Propagate xarray error in ice_adapter_get with ERR_PTR.
+>   - Added kernel-doc comments for ice_adapter_{get,put}.
+> 
+> v2:
+>   - Patch 1: Rely on xarray's own lock. (Suggested by Jiri Pirko)
+>   - Patch 2: Do not use *_irqsave with ptp_gltsyn_time_lock, as it's used
+>     only in process contexts.
+> 
+> 
+> Michal Schmidt (3):
+>    ice: add ice_adapter for shared data across PFs on the same NIC
+>    ice: avoid the PTP hardware semaphore in gettimex64 path
+>    ice: fold ice_ptp_read_time into ice_ptp_gettimex64
+> 
+>   drivers/net/ethernet/intel/ice/Makefile      |   3 +-
+>   drivers/net/ethernet/intel/ice/ice.h         |   2 +
+>   drivers/net/ethernet/intel/ice/ice_adapter.c | 116 +++++++++++++++++++
+>   drivers/net/ethernet/intel/ice/ice_adapter.h |  28 +++++
+>   drivers/net/ethernet/intel/ice/ice_main.c    |   8 ++
+>   drivers/net/ethernet/intel/ice/ice_ptp.c     |  33 +-----
+>   drivers/net/ethernet/intel/ice/ice_ptp_hw.c  |   3 +
+>   7 files changed, 163 insertions(+), 30 deletions(-)
+>   create mode 100644 drivers/net/ethernet/intel/ice/ice_adapter.c
+>   create mode 100644 drivers/net/ethernet/intel/ice/ice_adapter.h
+> 
+Reviewed-by: Ivan Vecera <ivecera@redhat.com>
 
