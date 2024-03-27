@@ -1,72 +1,72 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id BFD9B88E5FD
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 27 Mar 2024 15:30:34 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 838F088E5FB
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 27 Mar 2024 15:30:30 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 8DB1F81FEB;
-	Wed, 27 Mar 2024 14:30:31 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 3DD5281FFB;
+	Wed, 27 Mar 2024 14:30:29 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id QVtOKZRruTRE; Wed, 27 Mar 2024 14:30:30 +0000 (UTC)
+ id CwkPkN0ssTIG; Wed, 27 Mar 2024 14:30:28 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org A126981FC9
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 7BBE481F8B
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1711549830;
-	bh=bhtrMxRIBaBdE7YxwV2QkkpGLkKtGlJ4PAWik8sHAL8=;
+	s=default; t=1711549828;
+	bh=2D6hMsCKaK4MZNl1YkYcAUXn7Rvxn8bww+TuYT9wsiE=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=mzC6VrQR8y1EAFbMZLhfSZxDIfcjEmBOvb+UErS5Y18yccakFEALhm5udXnriwOA7
-	 G6NKJtRTNTT6UlyZ3ZHVyxfnP1IZq+3asFbpHb4jo41+3KyC2aqdLRebJY/caPUCdo
-	 Lt93OaYjdyX+dqTvwRpkbaI3vz+IMQwG19BplfjGwdkGPNneI1RVzZOq2jLswb0EI2
-	 fWPj3BnLOr+c8ZOzVxBSW7X0NsRhFM+jlNLpaNai3WnRN0lu73+1w/XSBhcclwzx1C
-	 SpCHrVisB4YUgCR65pDln02Tqdm2IgFHz7may5kHOFO7Yxpr3rZ66wTJtHO+c7FGfo
-	 OepvczaDR4FvQ==
+	b=vkX2j6d1SHYJ4DUqf2yl7ieLCJI6rt/2FXPglabSvm/jQtTT88xqosmvNLcBUd2Yt
+	 PLs6b+AGMRIQ2NMOowKz9PoLjjfAXUhVxAQg9lPWUQl1iBmcLUhA7lP2EBHwddtc3g
+	 9bG6atook9jW3tVp1TxHdNcyvQYEoRvH58rOv+2rARWHQIMM9st37ONI3UCNb7zx3b
+	 vkWqXRfTFQad32igaDHUzCe1L4ScCc0KRhL/UPTYrGIoA0c1S1geAUYPzjrXioEniJ
+	 B07SDuSugJ984Sc2EQjFI5mEX7un1Krxqe8YcOXazKa9Vs73bKtf6KwrHiJfqAWNMM
+	 1BGHXr5NOA9gQ==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id A126981FC9;
-	Wed, 27 Mar 2024 14:30:30 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 7BBE481F8B;
+	Wed, 27 Mar 2024 14:30:28 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id BDD3E1BF279
- for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Mar 2024 14:30:26 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 758461BF279
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Mar 2024 14:30:24 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id B34E581FC7
- for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Mar 2024 14:30:26 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id E808181F69
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Mar 2024 14:30:23 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id rw-8UR6vDvq3 for <intel-wired-lan@lists.osuosl.org>;
- Wed, 27 Mar 2024 14:30:21 +0000 (UTC)
+ id PVOq-LrfdH9U for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 27 Mar 2024 14:30:23 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.21;
  helo=mgamail.intel.com; envelope-from=aleksander.lobakin@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 3AF1181F88
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3AF1181F88
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 3AF3B81F8B
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3AF3B81F8B
 Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.21])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 3AF1181F88
- for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Mar 2024 14:30:21 +0000 (UTC)
-X-CSE-ConnectionGUID: 5XkUH/aWSyukDcoatrx3Aw==
-X-CSE-MsgGUID: 1KFZCkgMSAKTKh0Y9xDCiA==
-X-IronPort-AV: E=McAfee;i="6600,9927,11026"; a="6592526"
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 3AF3B81F8B
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Mar 2024 14:30:23 +0000 (UTC)
+X-CSE-ConnectionGUID: EI7fGFYjQAmDJkkfCfe2mw==
+X-CSE-MsgGUID: 9YbroHf3TOKhjW++rPiMrA==
+X-IronPort-AV: E=McAfee;i="6600,9927,11026"; a="6592536"
 X-IronPort-AV: E=Sophos;i="6.07,159,1708416000"; 
-   d="scan'208";a="6592526"
+   d="scan'208";a="6592536"
 Received: from fmviesa004.fm.intel.com ([10.60.135.144])
  by orvoesa113.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 27 Mar 2024 07:23:15 -0700
+ 27 Mar 2024 07:23:18 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.07,159,1708416000"; d="scan'208";a="20973064"
+X-IronPort-AV: E=Sophos;i="6.07,159,1708416000"; d="scan'208";a="20973081"
 Received: from newjersey.igk.intel.com ([10.102.20.203])
- by fmviesa004.fm.intel.com with ESMTP; 27 Mar 2024 07:23:13 -0700
+ by fmviesa004.fm.intel.com with ESMTP; 27 Mar 2024 07:23:16 -0700
 From: Alexander Lobakin <aleksander.lobakin@intel.com>
 To: "David S. Miller" <davem@davemloft.net>,
  Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
  Paolo Abeni <pabeni@redhat.com>
-Date: Wed, 27 Mar 2024 15:22:39 +0100
-Message-ID: <20240327142241.1745989-2-aleksander.lobakin@intel.com>
+Date: Wed, 27 Mar 2024 15:22:40 +0100
+Message-ID: <20240327142241.1745989-3-aleksander.lobakin@intel.com>
 X-Mailer: git-send-email 2.44.0
 In-Reply-To: <20240327142241.1745989-1-aleksander.lobakin@intel.com>
 References: <20240327142241.1745989-1-aleksander.lobakin@intel.com>
@@ -74,25 +74,25 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1711549821; x=1743085821;
+ t=1711549823; x=1743085823;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=7vqygDDKbWmFw/FAY/rPhdZQEFODtjXCpRmC6ygQulQ=;
- b=ABoQ932FpObMU3svpOu8YlDknHUDY8c19Bh+muYElSSsyK2F3+5LX7yr
- BH2JTJ3Qk25d31lfnT7AYP9jY0XvaYP26jK/6eGNMIrtpbqoU1IBIp+2R
- L9mdtzT539e/vx4YGgJ1AIID/9LLte6N7ZD2Si/FW7MgbnK0Z+NakC/EZ
- EJP7yFxjwxAiLLOj9rvj5TIOsDP6p+DYapYe7FYhw8grmETXKWgoWQ6Ki
- pYD/RZNnI50jLBuvfHV25Qu9zBwiC2bfwDWWVFxdfHXYDlYbMndOBiBZ3
- /hgrmTL5FNLrVBRNXKYzQkvD3ZevkApAyxY5jxd+hL/lNguwDg6hNImu7
- w==;
+ bh=XdOmxjY9WLGSoqpYiIHq0/c596ZAW41172TmKdUdESs=;
+ b=ADElLRHvPDC7Y6k2ke3YEpCDSGpdNqz6jXUW60OBcJ23b+riDLruU5nD
+ EewDNQBOcly+HwPrhzYdfMBZLF4iBXZ3jGW8F6MKlgLczRUukq9cEAPBp
+ w/oTlgt1rXXp9cyDCjTPYkW665MeiRwrqq3b7svXr+XRxudiLzGvsC/cl
+ /U9jGg5NqCuCTFivuxEI2tKwkLzTaBzgCcTlhC+x64jcj3b44doTYCsk+
+ eexrZSETCXhnXN+5dM27RS4KcxVNYVvpO+PEk1KD8VEdiaSVwBG3KZA3d
+ COKIaB0ZyzJzm3i+EEUf6NrIRILciUadVFzkvtiWPY3iYdTlXjIF/NHaM
+ g==;
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=ABoQ932F
-Subject: [Intel-wired-lan] [PATCH net-next v2 1/3] compiler_types: add
- Endianness-dependent __counted_by_{le, be}
+ header.a=rsa-sha256 header.s=Intel header.b=ADElLRHv
+Subject: [Intel-wired-lan] [PATCH net-next v2 2/3] idpf: make virtchnl2.h
+ self-contained
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -114,73 +114,55 @@ Cc: Kees Cook <keescook@chromium.org>, netdev@vger.kernel.org,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Some structures contain flexible arrays at the end and the counter for
-them, but the counter has explicit Endianness and thus __counted_by()
-can't be used directly.
-
-To increase test coverage for potential problems without breaking
-anything, introduce __counted_by_{le,be}() defined depending on
-platform's Endianness to either __counted_by() when applicable or noop
-otherwise.
-Maybe it would be a good idea to introduce such attributes on compiler
-level if possible, but for now let's stop on what we have.
+To ease maintaining of virtchnl2.h, which already is messy enough,
+make it self-contained by adding missing if_ether.h include due to
+%ETH_ALEN usage.
+At the same time, virtchnl2_lan_desc.h is not used anywhere in the
+file, so move this include to idpf_txrx.h to speed up C preprocessing.
 
 Acked-by: Kees Cook <keescook@chromium.org>
 Acked-by: Gustavo A. R. Silva <gustavoars@kernel.org>
 Signed-off-by: Alexander Lobakin <aleksander.lobakin@intel.com>
 ---
- Documentation/conf.py          |  2 ++
- scripts/kernel-doc             |  1 +
- include/linux/compiler_types.h | 11 +++++++++++
- 3 files changed, 14 insertions(+)
+ drivers/net/ethernet/intel/idpf/idpf_txrx.h | 2 ++
+ drivers/net/ethernet/intel/idpf/virtchnl2.h | 4 ++--
+ 2 files changed, 4 insertions(+), 2 deletions(-)
 
-diff --git a/Documentation/conf.py b/Documentation/conf.py
-index d148f3e8dd57..0c2205d536b3 100644
---- a/Documentation/conf.py
-+++ b/Documentation/conf.py
-@@ -75,6 +75,8 @@ if major >= 3:
-             "__rcu",
-             "__user",
-             "__force",
-+            "__counted_by_le",
-+            "__counted_by_be",
+diff --git a/drivers/net/ethernet/intel/idpf/idpf_txrx.h b/drivers/net/ethernet/intel/idpf/idpf_txrx.h
+index df76493faa75..3d046b81e507 100644
+--- a/drivers/net/ethernet/intel/idpf/idpf_txrx.h
++++ b/drivers/net/ethernet/intel/idpf/idpf_txrx.h
+@@ -8,6 +8,8 @@
+ #include <net/tcp.h>
+ #include <net/netdev_queues.h>
  
-             # include/linux/compiler_attributes.h:
-             "__alias",
-diff --git a/scripts/kernel-doc b/scripts/kernel-doc
-index 967f1abb0edb..1474e95dbe4f 100755
---- a/scripts/kernel-doc
-+++ b/scripts/kernel-doc
-@@ -1143,6 +1143,7 @@ sub dump_struct($$) {
-         $members =~ s/\s*$attribute/ /gi;
-         $members =~ s/\s*__aligned\s*\([^;]*\)/ /gos;
-         $members =~ s/\s*__counted_by\s*\([^;]*\)/ /gos;
-+        $members =~ s/\s*__counted_by_(le|be)\s*\([^;]*\)/ /gos;
-         $members =~ s/\s*__packed\s*/ /gos;
-         $members =~ s/\s*CRYPTO_MINALIGN_ATTR/ /gos;
-         $members =~ s/\s*____cacheline_aligned_in_smp/ /gos;
-diff --git a/include/linux/compiler_types.h b/include/linux/compiler_types.h
-index 2abaa3a825a9..a29ba6ef1e27 100644
---- a/include/linux/compiler_types.h
-+++ b/include/linux/compiler_types.h
-@@ -282,6 +282,17 @@ struct ftrace_likely_data {
- #define __no_sanitize_or_inline __always_inline
- #endif
- 
-+/*
-+ * Apply __counted_by() when the Endianness matches to increase test coverage.
-+ */
-+#ifdef __LITTLE_ENDIAN
-+#define __counted_by_le(member)	__counted_by(member)
-+#define __counted_by_be(member)
-+#else
-+#define __counted_by_le(member)
-+#define __counted_by_be(member)	__counted_by(member)
-+#endif
++#include "virtchnl2_lan_desc.h"
 +
- /* Do not trap wrapping arithmetic within an annotated function. */
- #ifdef CONFIG_UBSAN_SIGNED_WRAP
- # define __signed_wrap __attribute__((no_sanitize("signed-integer-overflow")))
+ #define IDPF_LARGE_MAX_Q			256
+ #define IDPF_MAX_Q				16
+ #define IDPF_MIN_Q				2
+diff --git a/drivers/net/ethernet/intel/idpf/virtchnl2.h b/drivers/net/ethernet/intel/idpf/virtchnl2.h
+index 4a3c4454d25a..29419211b3d9 100644
+--- a/drivers/net/ethernet/intel/idpf/virtchnl2.h
++++ b/drivers/net/ethernet/intel/idpf/virtchnl2.h
+@@ -4,6 +4,8 @@
+ #ifndef _VIRTCHNL2_H_
+ #define _VIRTCHNL2_H_
+ 
++#include <linux/if_ether.h>
++
+ /* All opcodes associated with virtchnl2 are prefixed with virtchnl2 or
+  * VIRTCHNL2. Any future opcodes, offloads/capabilities, structures,
+  * and defines must be prefixed with virtchnl2 or VIRTCHNL2 to avoid confusion.
+@@ -17,8 +19,6 @@
+  * must remain unchanged over time, so we specify explicit values for all enums.
+  */
+ 
+-#include "virtchnl2_lan_desc.h"
+-
+ /* This macro is used to generate compilation errors if a structure
+  * is not exactly the correct length.
+  */
 -- 
 2.44.0
 
