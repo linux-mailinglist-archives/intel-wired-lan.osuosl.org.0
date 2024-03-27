@@ -2,91 +2,83 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9127488D53D
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 27 Mar 2024 04:52:21 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id A176F88D546
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 27 Mar 2024 05:02:25 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id F0AA581E8B;
-	Wed, 27 Mar 2024 03:52:19 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 4369B81E78;
+	Wed, 27 Mar 2024 04:02:24 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id pjx4VeENT2VS; Wed, 27 Mar 2024 03:52:19 +0000 (UTC)
+ id EBF4Z4jZL9SW; Wed, 27 Mar 2024 04:02:23 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org BA49D81E6E
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org C91C481E29
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1711511538;
-	bh=a1RItCBOuEikhI02ra/PnTND34aI8MC3lbu+4FCkp3c=;
-	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=WgxnWgUK0NosDXD4NQQz4q6acL2fnHhYCT49lN8Td8ytHaiiqfFB1NReMfdbtjj/o
-	 7Lz1wuRBcNMqtpY4KjSSfFAUkSJhRu4FSGx2q75HQkVNC/yua64L0RfvB+Iz+Duw5+
-	 NV3ySY9LZVQbk452mq5eO6+Q5ABJ6gfN44JGB0Muxcezd/ASi9J+YcTW0jbVjIP1s4
-	 ABSQZvQKXTOGpANM/OHKj9oDtRu5OmmsenMWKBtvGPbHzRdGZWUHCJF8vsZ05yHfDC
-	 3T0ua21tH32sj67c7G4VPqFOjyrisaWC9VlDf0LP0Na8L/pCZr5HJeWu6UsrkstWBZ
-	 Na9Rs4BQaduzw==
+	s=default; t=1711512141;
+	bh=MvvQ5Jjd12xcdVW3LbA/6LkMNUl2dqUYGtIBO28Qd1k=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=rfUdxZMUhp7g/p9joqnH47y0EX24ZXgGY4A8BqWTnC7CB/ukzlLHJUGM9Ih3D6EM/
+	 slzgmsKAlgwr4GrBkOtRuEN1Tv17Va1AsYmicD/JxxqwQCifVF7Y0L6i2wc/1VpdZ/
+	 NTqMMdSYs4gBWf3dq2V+bvMK8MQRBiltcIa6vRhGeX8Obzz6weofnpW/i4xVb+G6Jj
+	 2HqDklS2h4NdETxISVrW7VfpNvyX5l1AC89QFF6qJOlts6HqzONEDGP9JAfqLfaAY6
+	 holtuc9sWD0BsUefvBDW0DxMiErzy7t3vNM6LTl/vZVuXmKYsuP+StoOO26HlBN7Yc
+	 7GuLW2DOUKTMA==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id BA49D81E6E;
-	Wed, 27 Mar 2024 03:52:18 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id C91C481E29;
+	Wed, 27 Mar 2024 04:02:21 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 81B371BF48D
- for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Mar 2024 03:52:17 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id C43B01BF48D
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Mar 2024 04:02:19 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 6AF564074E
- for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Mar 2024 03:52:17 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 9F66C60892
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Mar 2024 04:02:19 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id sBXJKMdya4Hr for <intel-wired-lan@lists.osuosl.org>;
- Wed, 27 Mar 2024 03:52:16 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.14;
- helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org B0B4F406EF
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B0B4F406EF
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.14])
- by smtp4.osuosl.org (Postfix) with ESMTPS id B0B4F406EF
- for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Mar 2024 03:52:14 +0000 (UTC)
-X-CSE-ConnectionGUID: Ue+O2Pn6T9C6gpCcwVYhJg==
-X-CSE-MsgGUID: ZcWljWEPQJiXhuJlT0KyPA==
-X-IronPort-AV: E=McAfee;i="6600,9927,11025"; a="10389135"
-X-IronPort-AV: E=Sophos;i="6.07,157,1708416000"; d="scan'208";a="10389135"
-Received: from fmviesa003.fm.intel.com ([10.60.135.143])
- by orvoesa106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 26 Mar 2024 20:52:14 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.07,157,1708416000"; d="scan'208";a="20712220"
-Received: from lkp-server01.sh.intel.com (HELO be39aa325d23) ([10.239.97.150])
- by fmviesa003.fm.intel.com with ESMTP; 26 Mar 2024 20:52:12 -0700
-Received: from kbuild by be39aa325d23 with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1rpKKg-0000ik-0v
- for intel-wired-lan@lists.osuosl.org; Wed, 27 Mar 2024 03:52:10 +0000
-Date: Wed, 27 Mar 2024 11:51:47 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <202403271145.6ddip9sB-lkp@intel.com>
-User-Agent: s-nail v14.9.24
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id SHmsTTJv-Wk3 for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 27 Mar 2024 04:02:18 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=139.178.84.217;
+ helo=dfw.source.kernel.org; envelope-from=kuba@kernel.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 1E17960790
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1E17960790
+Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 1E17960790
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Mar 2024 04:02:17 +0000 (UTC)
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by dfw.source.kernel.org (Postfix) with ESMTP id 88956614CA;
+ Wed, 27 Mar 2024 04:02:16 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 77FB8C433F1;
+ Wed, 27 Mar 2024 04:02:15 +0000 (UTC)
+From: Jakub Kicinski <kuba@kernel.org>
+To: davem@davemloft.net
+Date: Tue, 26 Mar 2024 21:02:12 -0700
+Message-ID: <20240327040213.3153864-1-kuba@kernel.org>
+X-Mailer: git-send-email 2.44.0
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1711511536; x=1743047536;
- h=date:from:to:subject:message-id;
- bh=uYUzaEb3OimfDnaHtcttuuBwQtN025ePZhU5puQb8hg=;
- b=JTABagYDignEgkXYWhxzujstxZo58/tOtfYuSHdrRXaRZCaqy80UT/sD
- BUdsLkqmE25IELAfylJk7hLVO4ONKjwSJMjFI29p8eOknERb2QZehWrDq
- tas7x/V9tC2lMfJW8IotzvXGt5Qw9jp+UYMfxJUl3T7qMhTIgjtn0k5jn
- C0sIj2OOpRECCR+vKOAoMZ6CP9sGO8OCgjUm+iJwBh/TA5bfJmPPbuc2S
- LYZ1ytYd67V9A69r2g2n6EKttoXGGV4GxzsUVxJJhHqlzEhPWYsXuw7fi
- iIIRNQkqKXzNCOAtA6p5je7yLA2mFOTI0mCLbjTnbxE8Xc0SoD3U6MzVm
- w==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ d=kernel.org; s=k20201202; t=1711512136;
+ bh=TmENDlIcXs27hmm/ORF/iOSARbuBFBF5a03Roxnirds=;
+ h=From:To:Cc:Subject:Date:From;
+ b=B5IIYjDGbVkQoSqTBcPXqyE8lSVL4m82fMn/KEh1vKgmZD+poihpet07/QYbGvTna
+ RXxfB0NaCc/efNUSqe9jKgw0wvmX4cpQIfu0Fe0lH3vKXL3uH+ydWnxkllWm2VySkK
+ gTNMM+1pgQnpI58FQ+XEi/G5n+lOQEiALnSDIMHfp/4uY0PObyuTgQRXo8j/kxlI2f
+ SM7qQpdrZO8dttLtViLpwpGBt2UXmCIyhpSlyo3YkPMdK30CpozaJWAn2OZrarCVJH
+ u9net1c+MB/ic4nmGSv0kENa7dMwgM04uQskQTX+zzDfpR2bOlX6MEMYaf3tYqsxSg
+ dWwrF7gmkjljQ==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ header.from=kernel.org
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=JTABagYD
-Subject: [Intel-wired-lan] [tnguy-next-queue:main] BUILD SUCCESS
- 6e06312035032924fc97f2050bfe85e63ca26514
+ unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
+ header.s=k20201202 header.b=B5IIYjDG
+Subject: [Intel-wired-lan] [PATCH net-next v2] net: remove gfp_mask from
+ napi_alloc_skb()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,213 +91,284 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: siyanteng@loongson.cn, netdev@vger.kernel.org, alexandre.torgue@foss.st.com,
+ Alexander Lobakin <aleksander.lobakin@intel.com>, edumazet@google.com,
+ joabreu@synopsys.com, anthony.l.nguyen@intel.com, mcoquelin.stm32@gmail.com,
+ intel-wired-lan@lists.osuosl.org, Jakub Kicinski <kuba@kernel.org>,
+ pabeni@redhat.com, alexs@kernel.org
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/netdev/net-next.git main
-branch HEAD: 6e06312035032924fc97f2050bfe85e63ca26514  net: remove skb_free_datagram_locked()
+__napi_alloc_skb() is napi_alloc_skb() with the added flexibility
+of choosing gfp_mask. This is a NAPI function, so GFP_ATOMIC is
+implied. The only practical choice the caller has is whether to
+set __GFP_NOWARN. But that's a false choice, too, allocation failures
+in atomic context will happen, and printing warnings in logs,
+effectively for a packet drop, is both too much and very likely
+non-actionable.
 
-elapsed time: 770m
+This leads me to a conclusion that most uses of napi_alloc_skb()
+are simply misguided, and should use __GFP_NOWARN in the first
+place. We also have a "standard" way of reporting allocation
+failures via the queue stat API (qstats::rx-alloc-fail).
 
-configs tested: 191
-configs skipped: 3
+The direct motivation for this patch is that one of the drivers
+used at Meta calls napi_alloc_skb() (so prior to this patch without
+__GFP_NOWARN), and the resulting OOM warning is the top networking
+warning in our fleet.
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+Reviewed-by: Alexander Lobakin <aleksander.lobakin@intel.com>
+Signed-off-by: Jakub Kicinski <kuba@kernel.org>
+---
+v2:
+ - remove gfp_mask from kdoc
+v1: https://lore.kernel.org/all/20240325224116.2585741-1-kuba@kernel.org/
 
-tested configs:
-alpha                             allnoconfig   gcc  
-alpha                            allyesconfig   gcc  
-alpha                               defconfig   gcc  
-arc                              allmodconfig   gcc  
-arc                               allnoconfig   gcc  
-arc                              allyesconfig   gcc  
-arc                                 defconfig   gcc  
-arc                     nsimosci_hs_defconfig   gcc  
-arc                   randconfig-001-20240327   gcc  
-arc                   randconfig-002-20240327   gcc  
-arm                              allmodconfig   gcc  
-arm                               allnoconfig   clang
-arm                              allyesconfig   gcc  
-arm                                 defconfig   clang
-arm                            mmp2_defconfig   gcc  
-arm                   randconfig-001-20240327   clang
-arm                   randconfig-002-20240327   clang
-arm                   randconfig-003-20240327   clang
-arm                   randconfig-004-20240327   gcc  
-arm                          sp7021_defconfig   gcc  
-arm                       spear13xx_defconfig   gcc  
-arm64                            allmodconfig   clang
-arm64                             allnoconfig   gcc  
-arm64                            allyesconfig   clang
-arm64                               defconfig   gcc  
-arm64                 randconfig-001-20240327   clang
-arm64                 randconfig-002-20240327   clang
-arm64                 randconfig-003-20240327   gcc  
-arm64                 randconfig-004-20240327   clang
-csky                             allmodconfig   gcc  
-csky                              allnoconfig   gcc  
-csky                             allyesconfig   gcc  
-csky                                defconfig   gcc  
-csky                  randconfig-001-20240327   gcc  
-csky                  randconfig-002-20240327   gcc  
-hexagon                          allmodconfig   clang
-hexagon                           allnoconfig   clang
-hexagon                          allyesconfig   clang
-hexagon                             defconfig   clang
-hexagon               randconfig-001-20240327   clang
-hexagon               randconfig-002-20240327   clang
-i386                             allmodconfig   gcc  
-i386                              allnoconfig   gcc  
-i386                             allyesconfig   gcc  
-i386         buildonly-randconfig-001-20240327   gcc  
-i386         buildonly-randconfig-002-20240327   gcc  
-i386         buildonly-randconfig-003-20240327   clang
-i386         buildonly-randconfig-004-20240327   clang
-i386         buildonly-randconfig-005-20240327   clang
-i386         buildonly-randconfig-006-20240327   clang
-i386                                defconfig   clang
-i386                  randconfig-001-20240327   gcc  
-i386                  randconfig-002-20240327   gcc  
-i386                  randconfig-003-20240327   clang
-i386                  randconfig-004-20240327   gcc  
-i386                  randconfig-005-20240327   clang
-i386                  randconfig-006-20240327   gcc  
-i386                  randconfig-011-20240327   gcc  
-i386                  randconfig-012-20240327   clang
-i386                  randconfig-013-20240327   gcc  
-i386                  randconfig-014-20240327   clang
-i386                  randconfig-015-20240327   gcc  
-i386                  randconfig-016-20240327   clang
-loongarch                        allmodconfig   gcc  
-loongarch                         allnoconfig   gcc  
-loongarch                           defconfig   gcc  
-loongarch             randconfig-001-20240327   gcc  
-loongarch             randconfig-002-20240327   gcc  
-m68k                             allmodconfig   gcc  
-m68k                              allnoconfig   gcc  
-m68k                             allyesconfig   gcc  
-m68k                          atari_defconfig   gcc  
-m68k                                defconfig   gcc  
-m68k                        stmark2_defconfig   gcc  
-microblaze                       allmodconfig   gcc  
-microblaze                        allnoconfig   gcc  
-microblaze                       allyesconfig   gcc  
-microblaze                          defconfig   gcc  
-mips                              allnoconfig   gcc  
-mips                             allyesconfig   gcc  
-mips                          ath79_defconfig   gcc  
-mips                           ip27_defconfig   gcc  
-nios2                         10m50_defconfig   gcc  
-nios2                            allmodconfig   gcc  
-nios2                             allnoconfig   gcc  
-nios2                            allyesconfig   gcc  
-nios2                               defconfig   gcc  
-nios2                 randconfig-001-20240327   gcc  
-nios2                 randconfig-002-20240327   gcc  
-openrisc                          allnoconfig   gcc  
-openrisc                         allyesconfig   gcc  
-openrisc                            defconfig   gcc  
-openrisc                  or1klitex_defconfig   gcc  
-parisc                           allmodconfig   gcc  
-parisc                            allnoconfig   gcc  
-parisc                           allyesconfig   gcc  
-parisc                              defconfig   gcc  
-parisc                generic-64bit_defconfig   gcc  
-parisc                randconfig-001-20240327   gcc  
-parisc                randconfig-002-20240327   gcc  
-parisc64                            defconfig   gcc  
-powerpc                          allmodconfig   gcc  
-powerpc                           allnoconfig   gcc  
-powerpc                          allyesconfig   clang
-powerpc                   microwatt_defconfig   gcc  
-powerpc               randconfig-001-20240327   clang
-powerpc               randconfig-002-20240327   gcc  
-powerpc               randconfig-003-20240327   clang
-powerpc                    socrates_defconfig   gcc  
-powerpc                     tqm8560_defconfig   gcc  
-powerpc                 xes_mpc85xx_defconfig   gcc  
-powerpc64             randconfig-001-20240327   clang
-powerpc64             randconfig-002-20240327   gcc  
-powerpc64             randconfig-003-20240327   gcc  
-riscv                            alldefconfig   gcc  
-riscv                            allmodconfig   clang
-riscv                             allnoconfig   gcc  
-riscv                            allyesconfig   clang
-riscv                               defconfig   clang
-riscv                 randconfig-001-20240327   clang
-riscv                 randconfig-002-20240327   gcc  
-s390                             allmodconfig   clang
-s390                              allnoconfig   clang
-s390                             allyesconfig   gcc  
-s390                                defconfig   clang
-s390                  randconfig-001-20240327   clang
-s390                  randconfig-002-20240327   gcc  
-sh                               allmodconfig   gcc  
-sh                                allnoconfig   gcc  
-sh                               allyesconfig   gcc  
-sh                         apsh4a3a_defconfig   gcc  
-sh                                  defconfig   gcc  
-sh                    randconfig-001-20240327   gcc  
-sh                    randconfig-002-20240327   gcc  
-sh                          rsk7269_defconfig   gcc  
-sh                           se7712_defconfig   gcc  
-sh                        sh7757lcr_defconfig   gcc  
-sh                  sh7785lcr_32bit_defconfig   gcc  
-sh                          urquell_defconfig   gcc  
-sparc                            allmodconfig   gcc  
-sparc                             allnoconfig   gcc  
-sparc                               defconfig   gcc  
-sparc                       sparc32_defconfig   gcc  
-sparc                       sparc64_defconfig   gcc  
-sparc64                          allmodconfig   gcc  
-sparc64                          allyesconfig   gcc  
-sparc64                             defconfig   gcc  
-sparc64               randconfig-001-20240327   gcc  
-sparc64               randconfig-002-20240327   gcc  
-um                               allmodconfig   clang
-um                                allnoconfig   clang
-um                               allyesconfig   gcc  
-um                                  defconfig   clang
-um                             i386_defconfig   gcc  
-um                    randconfig-001-20240327   clang
-um                    randconfig-002-20240327   clang
-um                           x86_64_defconfig   clang
-x86_64                            allnoconfig   clang
-x86_64                           allyesconfig   clang
-x86_64       buildonly-randconfig-001-20240327   gcc  
-x86_64       buildonly-randconfig-002-20240327   gcc  
-x86_64       buildonly-randconfig-003-20240327   gcc  
-x86_64       buildonly-randconfig-004-20240327   clang
-x86_64       buildonly-randconfig-005-20240327   gcc  
-x86_64       buildonly-randconfig-006-20240327   gcc  
-x86_64                              defconfig   gcc  
-x86_64                randconfig-001-20240327   clang
-x86_64                randconfig-002-20240327   gcc  
-x86_64                randconfig-003-20240327   gcc  
-x86_64                randconfig-004-20240327   gcc  
-x86_64                randconfig-005-20240327   clang
-x86_64                randconfig-006-20240327   clang
-x86_64                randconfig-011-20240327   gcc  
-x86_64                randconfig-012-20240327   clang
-x86_64                randconfig-013-20240327   clang
-x86_64                randconfig-014-20240327   clang
-x86_64                randconfig-015-20240327   clang
-x86_64                randconfig-016-20240327   clang
-x86_64                randconfig-071-20240327   gcc  
-x86_64                randconfig-072-20240327   clang
-x86_64                randconfig-073-20240327   clang
-x86_64                randconfig-074-20240327   clang
-x86_64                randconfig-075-20240327   clang
-x86_64                randconfig-076-20240327   clang
-x86_64                          rhel-8.3-rust   clang
-x86_64                               rhel-8.3   gcc  
-xtensa                           alldefconfig   gcc  
-xtensa                            allnoconfig   gcc  
-xtensa                       common_defconfig   gcc  
-xtensa                randconfig-001-20240327   gcc  
-xtensa                randconfig-002-20240327   gcc  
+CC: alexs@kernel.org
+CC: siyanteng@loongson.cn
+CC: jesse.brandeburg@intel.com
+CC: anthony.l.nguyen@intel.com
+CC: alexandre.torgue@foss.st.com
+CC: joabreu@synopsys.com
+CC: mcoquelin.stm32@gmail.com
+CC: intel-wired-lan@lists.osuosl.org
+---
+ Documentation/mm/page_frags.rst                    | 2 +-
+ Documentation/translations/zh_CN/mm/page_frags.rst | 2 +-
+ drivers/net/ethernet/intel/i40e/i40e_txrx.c        | 4 +---
+ drivers/net/ethernet/intel/i40e/i40e_xsk.c         | 3 +--
+ drivers/net/ethernet/intel/iavf/iavf_txrx.c        | 4 +---
+ drivers/net/ethernet/intel/ice/ice_txrx.c          | 3 +--
+ drivers/net/ethernet/intel/ice/ice_xsk.c           | 3 +--
+ drivers/net/ethernet/intel/idpf/idpf_txrx.c        | 5 ++---
+ drivers/net/ethernet/intel/igc/igc_main.c          | 3 +--
+ drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c       | 3 +--
+ drivers/net/ethernet/stmicro/stmmac/stmmac_main.c  | 5 ++---
+ include/linux/skbuff.h                             | 8 +-------
+ net/core/skbuff.c                                  | 9 ++++-----
+ 13 files changed, 18 insertions(+), 36 deletions(-)
 
+diff --git a/Documentation/mm/page_frags.rst b/Documentation/mm/page_frags.rst
+index a81617e688a8..503ca6cdb804 100644
+--- a/Documentation/mm/page_frags.rst
++++ b/Documentation/mm/page_frags.rst
+@@ -25,7 +25,7 @@ to be disabled when executing the fragment allocation.
+ The network stack uses two separate caches per CPU to handle fragment
+ allocation.  The netdev_alloc_cache is used by callers making use of the
+ netdev_alloc_frag and __netdev_alloc_skb calls.  The napi_alloc_cache is
+-used by callers of the __napi_alloc_frag and __napi_alloc_skb calls.  The
++used by callers of the __napi_alloc_frag and napi_alloc_skb calls.  The
+ main difference between these two calls is the context in which they may be
+ called.  The "netdev" prefixed functions are usable in any context as these
+ functions will disable interrupts, while the "napi" prefixed functions are
+diff --git a/Documentation/translations/zh_CN/mm/page_frags.rst b/Documentation/translations/zh_CN/mm/page_frags.rst
+index 20bd3fafdc8c..a5b22486a913 100644
+--- a/Documentation/translations/zh_CN/mm/page_frags.rst
++++ b/Documentation/translations/zh_CN/mm/page_frags.rst
+@@ -25,7 +25,7 @@ 个CPU的限制，或者每个CPU的限制，并在执行碎片分配时强制
+ 
+ 网络堆栈在每个CPU使用两个独立的缓存来处理碎片分配。netdev_alloc_cache被使用
+ netdev_alloc_frag和__netdev_alloc_skb调用的调用者使用。napi_alloc_cache
+-被调用__napi_alloc_frag和__napi_alloc_skb的调用者使用。这两个调用的主要区别是
++被调用__napi_alloc_frag和napi_alloc_skb的调用者使用。这两个调用的主要区别是
+ 它们可能被调用的环境。“netdev” 前缀的函数可以在任何上下文中使用，因为这些函数
+ 将禁用中断，而 ”napi“ 前缀的函数只可以在softirq上下文中使用。
+ 
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_txrx.c b/drivers/net/ethernet/intel/i40e/i40e_txrx.c
+index 0d7177083708..ac2fcc5ac595 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_txrx.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_txrx.c
+@@ -2144,9 +2144,7 @@ static struct sk_buff *i40e_construct_skb(struct i40e_ring *rx_ring,
+ 	 */
+ 
+ 	/* allocate a skb to store the frags */
+-	skb = __napi_alloc_skb(&rx_ring->q_vector->napi,
+-			       I40E_RX_HDR_SIZE,
+-			       GFP_ATOMIC | __GFP_NOWARN);
++	skb = napi_alloc_skb(&rx_ring->q_vector->napi, I40E_RX_HDR_SIZE);
+ 	if (unlikely(!skb))
+ 		return NULL;
+ 
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_xsk.c b/drivers/net/ethernet/intel/i40e/i40e_xsk.c
+index 11500003af0d..a85b425794df 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_xsk.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_xsk.c
+@@ -301,8 +301,7 @@ static struct sk_buff *i40e_construct_skb_zc(struct i40e_ring *rx_ring,
+ 	net_prefetch(xdp->data_meta);
+ 
+ 	/* allocate a skb to store the frags */
+-	skb = __napi_alloc_skb(&rx_ring->q_vector->napi, totalsize,
+-			       GFP_ATOMIC | __GFP_NOWARN);
++	skb = napi_alloc_skb(&rx_ring->q_vector->napi, totalsize);
+ 	if (unlikely(!skb))
+ 		goto out;
+ 
+diff --git a/drivers/net/ethernet/intel/iavf/iavf_txrx.c b/drivers/net/ethernet/intel/iavf/iavf_txrx.c
+index b71484c87a84..32bb604a1382 100644
+--- a/drivers/net/ethernet/intel/iavf/iavf_txrx.c
++++ b/drivers/net/ethernet/intel/iavf/iavf_txrx.c
+@@ -1334,9 +1334,7 @@ static struct sk_buff *iavf_construct_skb(struct iavf_ring *rx_ring,
+ 	net_prefetch(va);
+ 
+ 	/* allocate a skb to store the frags */
+-	skb = __napi_alloc_skb(&rx_ring->q_vector->napi,
+-			       IAVF_RX_HDR_SIZE,
+-			       GFP_ATOMIC | __GFP_NOWARN);
++	skb = napi_alloc_skb(&rx_ring->q_vector->napi, IAVF_RX_HDR_SIZE);
+ 	if (unlikely(!skb))
+ 		return NULL;
+ 
+diff --git a/drivers/net/ethernet/intel/ice/ice_txrx.c b/drivers/net/ethernet/intel/ice/ice_txrx.c
+index 97d41d6ebf1f..8bb743f78fcb 100644
+--- a/drivers/net/ethernet/intel/ice/ice_txrx.c
++++ b/drivers/net/ethernet/intel/ice/ice_txrx.c
+@@ -1051,8 +1051,7 @@ ice_construct_skb(struct ice_rx_ring *rx_ring, struct xdp_buff *xdp)
+ 	}
+ 
+ 	/* allocate a skb to store the frags */
+-	skb = __napi_alloc_skb(&rx_ring->q_vector->napi, ICE_RX_HDR_SIZE,
+-			       GFP_ATOMIC | __GFP_NOWARN);
++	skb = napi_alloc_skb(&rx_ring->q_vector->napi, ICE_RX_HDR_SIZE);
+ 	if (unlikely(!skb))
+ 		return NULL;
+ 
+diff --git a/drivers/net/ethernet/intel/ice/ice_xsk.c b/drivers/net/ethernet/intel/ice/ice_xsk.c
+index 1857220d27fe..aa81d1162b81 100644
+--- a/drivers/net/ethernet/intel/ice/ice_xsk.c
++++ b/drivers/net/ethernet/intel/ice/ice_xsk.c
+@@ -555,8 +555,7 @@ ice_construct_skb_zc(struct ice_rx_ring *rx_ring, struct xdp_buff *xdp)
+ 	}
+ 	net_prefetch(xdp->data_meta);
+ 
+-	skb = __napi_alloc_skb(&rx_ring->q_vector->napi, totalsize,
+-			       GFP_ATOMIC | __GFP_NOWARN);
++	skb = napi_alloc_skb(&rx_ring->q_vector->napi, totalsize);
+ 	if (unlikely(!skb))
+ 		return NULL;
+ 
+diff --git a/drivers/net/ethernet/intel/idpf/idpf_txrx.c b/drivers/net/ethernet/intel/idpf/idpf_txrx.c
+index 6dd7a66bb897..f940f650cd78 100644
+--- a/drivers/net/ethernet/intel/idpf/idpf_txrx.c
++++ b/drivers/net/ethernet/intel/idpf/idpf_txrx.c
+@@ -3005,8 +3005,7 @@ struct sk_buff *idpf_rx_construct_skb(struct idpf_queue *rxq,
+ 	/* prefetch first cache line of first page */
+ 	net_prefetch(va);
+ 	/* allocate a skb to store the frags */
+-	skb = __napi_alloc_skb(&rxq->q_vector->napi, IDPF_RX_HDR_SIZE,
+-			       GFP_ATOMIC);
++	skb = napi_alloc_skb(&rxq->q_vector->napi, IDPF_RX_HDR_SIZE);
+ 	if (unlikely(!skb)) {
+ 		idpf_rx_put_page(rx_buf);
+ 
+@@ -3060,7 +3059,7 @@ static struct sk_buff *idpf_rx_hdr_construct_skb(struct idpf_queue *rxq,
+ 	struct sk_buff *skb;
+ 
+ 	/* allocate a skb to store the frags */
+-	skb = __napi_alloc_skb(&rxq->q_vector->napi, size, GFP_ATOMIC);
++	skb = napi_alloc_skb(&rxq->q_vector->napi, size);
+ 	if (unlikely(!skb))
+ 		return NULL;
+ 
+diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
+index 2e1cfbd82f4f..6ba4b8d1f1b1 100644
+--- a/drivers/net/ethernet/intel/igc/igc_main.c
++++ b/drivers/net/ethernet/intel/igc/igc_main.c
+@@ -2716,8 +2716,7 @@ static struct sk_buff *igc_construct_skb_zc(struct igc_ring *ring,
+ 
+ 	net_prefetch(xdp->data_meta);
+ 
+-	skb = __napi_alloc_skb(&ring->q_vector->napi, totalsize,
+-			       GFP_ATOMIC | __GFP_NOWARN);
++	skb = napi_alloc_skb(&ring->q_vector->napi, totalsize);
+ 	if (unlikely(!skb))
+ 		return NULL;
+ 
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c
+index d34d715c59eb..397cb773fabb 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_xsk.c
+@@ -220,8 +220,7 @@ static struct sk_buff *ixgbe_construct_skb_zc(struct ixgbe_ring *rx_ring,
+ 	net_prefetch(xdp->data_meta);
+ 
+ 	/* allocate a skb to store the frags */
+-	skb = __napi_alloc_skb(&rx_ring->q_vector->napi, totalsize,
+-			       GFP_ATOMIC | __GFP_NOWARN);
++	skb = napi_alloc_skb(&rx_ring->q_vector->napi, totalsize);
+ 	if (unlikely(!skb))
+ 		return NULL;
+ 
+diff --git a/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c b/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
+index 24cd80490d19..bcdde68a099a 100644
+--- a/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
++++ b/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
+@@ -5109,9 +5109,8 @@ static struct sk_buff *stmmac_construct_skb_zc(struct stmmac_channel *ch,
+ 	unsigned int datasize = xdp->data_end - xdp->data;
+ 	struct sk_buff *skb;
+ 
+-	skb = __napi_alloc_skb(&ch->rxtx_napi,
+-			       xdp->data_end - xdp->data_hard_start,
+-			       GFP_ATOMIC | __GFP_NOWARN);
++	skb = napi_alloc_skb(&ch->rxtx_napi,
++			     xdp->data_end - xdp->data_hard_start);
+ 	if (unlikely(!skb))
+ 		return NULL;
+ 
+diff --git a/include/linux/skbuff.h b/include/linux/skbuff.h
+index 0c7c67b3a87b..dadd3f55d549 100644
+--- a/include/linux/skbuff.h
++++ b/include/linux/skbuff.h
+@@ -3355,13 +3355,7 @@ static inline void *napi_alloc_frag_align(unsigned int fragsz,
+ 	return __napi_alloc_frag_align(fragsz, -align);
+ }
+ 
+-struct sk_buff *__napi_alloc_skb(struct napi_struct *napi,
+-				 unsigned int length, gfp_t gfp_mask);
+-static inline struct sk_buff *napi_alloc_skb(struct napi_struct *napi,
+-					     unsigned int length)
+-{
+-	return __napi_alloc_skb(napi, length, GFP_ATOMIC);
+-}
++struct sk_buff *napi_alloc_skb(struct napi_struct *napi, unsigned int length);
+ void napi_consume_skb(struct sk_buff *skb, int budget);
+ 
+ void napi_skb_free_stolen_head(struct sk_buff *skb);
+diff --git a/net/core/skbuff.c b/net/core/skbuff.c
+index b99127712e67..031e36317e6e 100644
+--- a/net/core/skbuff.c
++++ b/net/core/skbuff.c
+@@ -775,10 +775,9 @@ struct sk_buff *__netdev_alloc_skb(struct net_device *dev, unsigned int len,
+ EXPORT_SYMBOL(__netdev_alloc_skb);
+ 
+ /**
+- *	__napi_alloc_skb - allocate skbuff for rx in a specific NAPI instance
++ *	napi_alloc_skb - allocate skbuff for rx in a specific NAPI instance
+  *	@napi: napi instance this buffer was allocated for
+  *	@len: length to allocate
+- *	@gfp_mask: get_free_pages mask, passed to alloc_skb and alloc_pages
+  *
+  *	Allocate a new sk_buff for use in NAPI receive.  This buffer will
+  *	attempt to allocate the head from a special reserved region used
+@@ -787,9 +786,9 @@ EXPORT_SYMBOL(__netdev_alloc_skb);
+  *
+  *	%NULL is returned if there is no free memory.
+  */
+-struct sk_buff *__napi_alloc_skb(struct napi_struct *napi, unsigned int len,
+-				 gfp_t gfp_mask)
++struct sk_buff *napi_alloc_skb(struct napi_struct *napi, unsigned int len)
+ {
++	gfp_t gfp_mask = GFP_ATOMIC | __GFP_NOWARN;
+ 	struct napi_alloc_cache *nc;
+ 	struct sk_buff *skb;
+ 	bool pfmemalloc;
+@@ -860,7 +859,7 @@ struct sk_buff *__napi_alloc_skb(struct napi_struct *napi, unsigned int len,
+ skb_fail:
+ 	return skb;
+ }
+-EXPORT_SYMBOL(__napi_alloc_skb);
++EXPORT_SYMBOL(napi_alloc_skb);
+ 
+ void skb_add_rx_frag_netmem(struct sk_buff *skb, int i, netmem_ref netmem,
+ 			    int off, int size, unsigned int truesize)
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+2.44.0
+
