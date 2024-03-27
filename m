@@ -1,98 +1,85 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4FFC088E5FF
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 27 Mar 2024 15:30:37 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 74E5788E734
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 27 Mar 2024 15:50:27 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 8E1968201C;
-	Wed, 27 Mar 2024 14:30:32 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 783B68175D;
+	Wed, 27 Mar 2024 14:50:25 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id WQ8zY3MTNGNo; Wed, 27 Mar 2024 14:30:32 +0000 (UTC)
+ id 4Yw4sPVl8YRg; Wed, 27 Mar 2024 14:50:25 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D329A81FC9
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org DE32B81678
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1711549831;
-	bh=Lrv8dEqMlGqmX6pygY1tFYnSYid6I3scJBTixQw16B4=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1711551024;
+	bh=SXcSrZdl5GfAm4CtP2GTrlByIyo/0/zBB0b/nhcuue4=;
+	h=Date:From:To:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=boNh3W1T1lGZ3APX2tkkyFyLLH/+koJgGky9XKELVXXwJyOUGucAzhILMjSkY96Jm
-	 oTUuTVEhSKdgtRM5Z5ExY5VB8RGVyiUI/QpvCxf6HnYwarwso5guD2/aTx+sgbJRXk
-	 9fsFaez8mB4CUAPSzd91brrRlZYbjdnAwNR08luuIXkyLULb5QgXb2ZP62fE3grALp
-	 /Z8mdFKahWyBL5j5TuVnK2eDmsQ41IY4BMo84utfcRJkeJO7I/htZgf/KwLoOLoiRH
-	 +RCNA3Ng4dxYELzow9oGHESSrp7Y0DY5PaM8rPF1qrucxgZhtSDVKRy2IIxpFoUVIq
-	 HqXZTQCKYS4Qg==
+	b=tUz9zRhHMLCddiEPskGLt/EJvsEkVsU+KYV1qjtWIADpeo+jtZYK5vf5eFYlwy6yP
+	 a6fqAzNy623BmD6xTRa7/TlBIE8X8S/OoMIgFJG2Wx+MCOQrZMHBg8wjR2wdWI06OD
+	 AmjgbJsTa8+KttJu922puMfdaz9Wk0r+IlHs55l4Ehq8UZ5I2GRI2OMG+y0+Tb/caG
+	 qnv/n/sPmT2Ge64gAepMfHBkPvGxUiWzp5YgyIYSom4DTSVUbmMSW37HLJCrwwJBvi
+	 2ttzf/pCitdbWa546jlKSc/9AL8wUsd7PdFOGLBpQRXu919Pi+xjq0Naa8vf4EWy7B
+	 hb39i9Z34mqXw==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id D329A81FC9;
-	Wed, 27 Mar 2024 14:30:31 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id DE32B81678;
+	Wed, 27 Mar 2024 14:50:24 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 0CA2C1BF279
- for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Mar 2024 14:30:28 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id E12E81BF279
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Mar 2024 14:50:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 039A381FD0
- for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Mar 2024 14:30:28 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id D9F0840547
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Mar 2024 14:50:22 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id yYIn1sUCZ2n9 for <intel-wired-lan@lists.osuosl.org>;
- Wed, 27 Mar 2024 14:30:27 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.21;
- helo=mgamail.intel.com; envelope-from=aleksander.lobakin@intel.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 2DC9E81F88
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 2DC9E81F88
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.21])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 2DC9E81F88
- for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Mar 2024 14:30:27 +0000 (UTC)
-X-CSE-ConnectionGUID: 1dAzg/LiSdWya278nnU24Q==
-X-CSE-MsgGUID: rR6fbPJ9QrmZTz/063ehxg==
-X-IronPort-AV: E=McAfee;i="6600,9927,11026"; a="6592547"
-X-IronPort-AV: E=Sophos;i="6.07,159,1708416000"; 
-   d="scan'208";a="6592547"
-Received: from fmviesa004.fm.intel.com ([10.60.135.144])
- by orvoesa113.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 27 Mar 2024 07:23:21 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.07,159,1708416000"; d="scan'208";a="20973106"
-Received: from newjersey.igk.intel.com ([10.102.20.203])
- by fmviesa004.fm.intel.com with ESMTP; 27 Mar 2024 07:23:19 -0700
-From: Alexander Lobakin <aleksander.lobakin@intel.com>
-To: "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>
-Date: Wed, 27 Mar 2024 15:22:41 +0100
-Message-ID: <20240327142241.1745989-4-aleksander.lobakin@intel.com>
-X-Mailer: git-send-email 2.44.0
-In-Reply-To: <20240327142241.1745989-1-aleksander.lobakin@intel.com>
-References: <20240327142241.1745989-1-aleksander.lobakin@intel.com>
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id jdvc1BpCZmhV for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 27 Mar 2024 14:50:22 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=145.40.73.55;
+ helo=sin.source.kernel.org; envelope-from=kuba@kernel.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 04C6C4015A
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 04C6C4015A
+Received: from sin.source.kernel.org (sin.source.kernel.org [145.40.73.55])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 04C6C4015A
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 27 Mar 2024 14:50:21 +0000 (UTC)
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by sin.source.kernel.org (Postfix) with ESMTP id 3C9DACE26CA;
+ Wed, 27 Mar 2024 14:50:17 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3ED60C433C7;
+ Wed, 27 Mar 2024 14:50:16 +0000 (UTC)
+Date: Wed, 27 Mar 2024 07:50:15 -0700
+From: Jakub Kicinski <kuba@kernel.org>
+To: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
+Message-ID: <20240327075015.7c13a71b@kernel.org>
+In-Reply-To: <20240327132543.15923-1-mateusz.polchlopek@intel.com>
+References: <20240327132543.15923-1-mateusz.polchlopek@intel.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1711549827; x=1743085827;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=iiy+IT/DztQVWAIWT58TrPOTIu+zB11vMHnxpdfkMvE=;
- b=c199Jt+VyKa9TV/6Ht2YM0/VMmo64kdkEU5kuroPxKSIlTXWtN/W5dyp
- Q9TpEoCuoLHBwuEiz7vZEptwsssO1YileUynqDFbe+qJ28hLz/+AbNIRv
- Kr32kzGn5M6EbdpFFRXp3h92OwTmMoRtErUDCWmcmpa7dmgza+vskqtbt
- BUbl9jjD8+zV1eEHuNMEwKlBvJd2FJT5IEVdcCE5XiokY8SXAW1yPsJkw
- wVvjNW58KLP0TsbjSKRN6jm324wfVwz1IeJqH3R3OdAg4l4famByiumOf
- DjJoGgdc4ZjM0uxpAXCmgImyYsOxvE5Hp4KueMQiiDICofVEfduZtICMy
- g==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ d=kernel.org; s=k20201202; t=1711551016;
+ bh=lxcOWeusmPSxt7j/dpCPZEwYKj+CCXjeiAYCqK4Aj40=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=oD5PkY21xIbvo7zIlxtygT9UAXEPoV3R6qKI27CeDj3xo8vXgnDPNrGGQ6+m2faHG
+ VYAIklWFHx+DMBmpy5MHdZ8TPnNvafESLc/jEdESTkr75Tc5sF0Q8m9XtJ4UOsRehY
+ JnlqnA8QM0zOWp+lFTRfQ16B/+RU695u0zRgn4yk/hLO5+q8yngLHkskXcrGz20NPR
+ ytCO9hVkLuGc2NnIAHI8P1IQlHyBgrINyFO5jqArev7BuKFtMqauW+1/Mc7zgTD4ti
+ qRfU4u7EkR3DCqdxQVYsO0c6cCFI4wVFviNKI1TbqxDBKIn2238Ev2GiutYSqfNuko
+ Rq5xJ+73xpZGA==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=c199Jt+V
-Subject: [Intel-wired-lan] [PATCH net-next v2 3/3] idpf: sprinkle
- __counted_by{, _le}() in the virtchnl2 header
+ header.from=kernel.org
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=oD5PkY21
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v2 00/12] Add support for Rx
+ timestamping for both ice and iavf drivers.
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -105,127 +92,17 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Kees Cook <keescook@chromium.org>, netdev@vger.kernel.org,
- "Gustavo A. R. Silva" <gustavoars@kernel.org>, linux-kernel@vger.kernel.org,
- Nathan Chancellor <nathan@kernel.org>,
- Alexander Lobakin <aleksander.lobakin@intel.com>,
- intel-wired-lan@lists.osuosl.org, linux-hardening@vger.kernel.org,
- Simon Horman <horms@kernel.org>, nex.sw.ncis.osdt.itp.upstreaming@intel.com
+Cc: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Both virtchnl2.h and its consumer idpf_virtchnl.c are very error-prone.
-There are 10 structures with flexible arrays at the end, but 9 of them
-has flex member counter in Little Endian.
-Make the code a bit more robust by applying __counted_by_le() to those
-9. LE platforms is the main target for this driver, so they would
-receive additional protection.
-While we're here, add __counted_by() to virtchnl2_ptype::proto_id, as
-its counter is `u8` regardless of the Endianness.
-Compile test on x86_64 (LE) didn't reveal any new issues after applying
-the attributes.
+On Wed, 27 Mar 2024 09:25:31 -0400 Mateusz Polchlopek wrote:
+> v2:
+> - fixed warning related to wrong specifier to dev_err_once in
+>   commit 7
+> - fixed warnings related to unused variables in commit 9
 
-Acked-by: Kees Cook <keescook@chromium.org>
-Acked-by: Gustavo A. R. Silva <gustavoars@kernel.org>
-Signed-off-by: Alexander Lobakin <aleksander.lobakin@intel.com>
----
- drivers/net/ethernet/intel/idpf/virtchnl2.h | 20 ++++++++++----------
- 1 file changed, 10 insertions(+), 10 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/idpf/virtchnl2.h b/drivers/net/ethernet/intel/idpf/virtchnl2.h
-index 29419211b3d9..63deb120359c 100644
---- a/drivers/net/ethernet/intel/idpf/virtchnl2.h
-+++ b/drivers/net/ethernet/intel/idpf/virtchnl2.h
-@@ -555,7 +555,7 @@ VIRTCHNL2_CHECK_STRUCT_LEN(32, virtchnl2_queue_reg_chunk);
- struct virtchnl2_queue_reg_chunks {
- 	__le16 num_chunks;
- 	u8 pad[6];
--	struct virtchnl2_queue_reg_chunk chunks[];
-+	struct virtchnl2_queue_reg_chunk chunks[] __counted_by_le(num_chunks);
- };
- VIRTCHNL2_CHECK_STRUCT_LEN(8, virtchnl2_queue_reg_chunks);
- 
-@@ -703,7 +703,7 @@ struct virtchnl2_config_tx_queues {
- 	__le32 vport_id;
- 	__le16 num_qinfo;
- 	u8 pad[10];
--	struct virtchnl2_txq_info qinfo[];
-+	struct virtchnl2_txq_info qinfo[] __counted_by_le(num_qinfo);
- };
- VIRTCHNL2_CHECK_STRUCT_LEN(16, virtchnl2_config_tx_queues);
- 
-@@ -782,7 +782,7 @@ struct virtchnl2_config_rx_queues {
- 	__le32 vport_id;
- 	__le16 num_qinfo;
- 	u8 pad[18];
--	struct virtchnl2_rxq_info qinfo[];
-+	struct virtchnl2_rxq_info qinfo[] __counted_by_le(num_qinfo);
- };
- VIRTCHNL2_CHECK_STRUCT_LEN(24, virtchnl2_config_rx_queues);
- 
-@@ -868,7 +868,7 @@ VIRTCHNL2_CHECK_STRUCT_LEN(32, virtchnl2_vector_chunk);
- struct virtchnl2_vector_chunks {
- 	__le16 num_vchunks;
- 	u8 pad[14];
--	struct virtchnl2_vector_chunk vchunks[];
-+	struct virtchnl2_vector_chunk vchunks[] __counted_by_le(num_vchunks);
- };
- VIRTCHNL2_CHECK_STRUCT_LEN(16, virtchnl2_vector_chunks);
- 
-@@ -912,7 +912,7 @@ struct virtchnl2_rss_lut {
- 	__le16 lut_entries_start;
- 	__le16 lut_entries;
- 	u8 pad[4];
--	__le32 lut[];
-+	__le32 lut[] __counted_by_le(lut_entries);
- };
- VIRTCHNL2_CHECK_STRUCT_LEN(12, virtchnl2_rss_lut);
- 
-@@ -977,7 +977,7 @@ struct virtchnl2_ptype {
- 	u8 ptype_id_8;
- 	u8 proto_id_count;
- 	__le16 pad;
--	__le16 proto_id[];
-+	__le16 proto_id[] __counted_by(proto_id_count);
- } __packed __aligned(2);
- VIRTCHNL2_CHECK_STRUCT_LEN(6, virtchnl2_ptype);
- 
-@@ -1104,7 +1104,7 @@ struct virtchnl2_rss_key {
- 	__le32 vport_id;
- 	__le16 key_len;
- 	u8 pad;
--	u8 key_flex[];
-+	u8 key_flex[] __counted_by_le(key_len);
- } __packed;
- VIRTCHNL2_CHECK_STRUCT_LEN(7, virtchnl2_rss_key);
- 
-@@ -1131,7 +1131,7 @@ VIRTCHNL2_CHECK_STRUCT_LEN(16, virtchnl2_queue_chunk);
- struct virtchnl2_queue_chunks {
- 	__le16 num_chunks;
- 	u8 pad[6];
--	struct virtchnl2_queue_chunk chunks[];
-+	struct virtchnl2_queue_chunk chunks[] __counted_by_le(num_chunks);
- };
- VIRTCHNL2_CHECK_STRUCT_LEN(8, virtchnl2_queue_chunks);
- 
-@@ -1195,7 +1195,7 @@ struct virtchnl2_queue_vector_maps {
- 	__le32 vport_id;
- 	__le16 num_qv_maps;
- 	u8 pad[10];
--	struct virtchnl2_queue_vector qv_maps[];
-+	struct virtchnl2_queue_vector qv_maps[] __counted_by_le(num_qv_maps);
- };
- VIRTCHNL2_CHECK_STRUCT_LEN(16, virtchnl2_queue_vector_maps);
- 
-@@ -1247,7 +1247,7 @@ struct virtchnl2_mac_addr_list {
- 	__le32 vport_id;
- 	__le16 num_mac_addr;
- 	u8 pad[2];
--	struct virtchnl2_mac_addr mac_addr_list[];
-+	struct virtchnl2_mac_addr mac_addr_list[] __counted_by_le(num_mac_addr);
- };
- VIRTCHNL2_CHECK_STRUCT_LEN(8, virtchnl2_mac_addr_list);
- 
--- 
-2.44.0
-
+You posted this yesterday and got no feedback.
+You're not posting to the list just to get the code build tested, right?
+There's a lot of code getting posted, give people more time to take 
+a look. v2 feels a bit rushed.
