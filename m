@@ -1,87 +1,194 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 63F06892353
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 29 Mar 2024 19:28:28 +0100 (CET)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id A33A389257C
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 29 Mar 2024 21:47:01 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 99EBB60780;
-	Fri, 29 Mar 2024 18:28:25 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 30CB540BAB;
+	Fri, 29 Mar 2024 20:47:00 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id kQyCCX8jb-BO; Fri, 29 Mar 2024 18:28:24 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 5xW1EolUkm2T; Fri, 29 Mar 2024 20:46:59 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 60ECE6078B
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 70A0140A15
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1711736904;
-	bh=3OWPCtod0s9Dy1ji3IOtVRg0LS2Gm1Ks1HoOcb8wm1g=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1711745219;
+	bh=CX2vHtBbI9qqg/q0TRV1qETrkmc07CDFL0CyPCDq3J0=;
+	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=Nxqv2sFve6T4jpAIKZlLcKUpYZBeWuiqRIGcje55ppXiWWGqCR28yCmzBsv5kajQy
-	 rcPdUYRmgRdUrGTzNT5nklWADXe+0FPbT6knmiFV7l/PBW9ZBKCr8qwX9kAG1uEgL2
-	 cbDhK+MRHOiqXLX9BXxRoiA75BU0aky+gyqOuNSBh+VsDh+5bxm77RGTWnDmruBILd
-	 qgJQ7jMhz9B1HpVBu6oaxb1n1PgVXp/V3H5g3VfQeh/bmBI34f3sovEohgA5Njbqnc
-	 WXMhOIoZbnul4/n4VXnffzcmHes+axYgti9xw3UVcly4zka+A71xHMth4WPQZuKMa8
-	 9DZXwUd04GuwA==
+	b=JuTe/oN/W/9FEBw3dJA/5jaFkoNz0x6CJK/kbARKVIBedLiE16cn30vLrpfZo2Bkh
+	 wBt+m6vO3xF9z5XnjM0gOtKB8Wkjo0k4mKqfkvi7BaFefyEcoJ09cUUjD6tT1/LvcH
+	 y88pkJB3wwea5RXRy5bVIED6dC9FSS58yk2f93MjPDStPz1zndkg1jy/V2DrPWAyh/
+	 M4EdUlr96b2Czox/jjor4hDv6tyDJqQuE5EqtX3Web6BKJdKJULKAXQ3PfoBqPlknE
+	 08VBWG0JtjSHPwSTaK95vJgY3rQZTKGwhk2WT1r+nHbO7/m50+HCB2lXmNy6bBE+LQ
+	 Eto6yam5AXVxQ==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 60ECE6078B;
-	Fri, 29 Mar 2024 18:28:24 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 70A0140A15;
+	Fri, 29 Mar 2024 20:46:59 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 3A71A1BF3ED
- for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Mar 2024 18:28:22 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id BD1871BF681
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Mar 2024 20:46:56 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 261F082B1B
- for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Mar 2024 18:28:22 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id B5F048246F
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Mar 2024 20:46:56 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id P63Nfmb_K7y8 for <intel-wired-lan@lists.osuosl.org>;
- Fri, 29 Mar 2024 18:28:21 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=139.178.84.217;
- helo=dfw.source.kernel.org; envelope-from=horms@kernel.org;
+ id qSRiVpaDTt1m for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 29 Mar 2024 20:46:54 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.16;
+ helo=mgamail.intel.com; envelope-from=anthony.l.nguyen@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 08C8182AEF
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 08C8182AEF
-Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 08C8182AEF
- for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Mar 2024 18:28:20 +0000 (UTC)
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by dfw.source.kernel.org (Postfix) with ESMTP id 22A6E619CB;
- Fri, 29 Mar 2024 18:28:20 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6D404C433C7;
- Fri, 29 Mar 2024 18:28:18 +0000 (UTC)
-Date: Fri, 29 Mar 2024 18:28:16 +0000
-From: Simon Horman <horms@kernel.org>
-To: Piotr Kwapulinski <piotr.kwapulinski@intel.com>
-Message-ID: <20240329182816.GP651713@kernel.org>
-References: <20240327155422.25424-1-piotr.kwapulinski@intel.com>
- <20240327155422.25424-2-piotr.kwapulinski@intel.com>
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 60C3482446
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 60C3482446
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.16])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 60C3482446
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Mar 2024 20:46:51 +0000 (UTC)
+X-CSE-ConnectionGUID: bPwoc/fITV66lKGI3nLYow==
+X-CSE-MsgGUID: /wEP4vwARQqBHo795erOzA==
+X-IronPort-AV: E=McAfee;i="6600,9927,11028"; a="7062626"
+X-IronPort-AV: E=Sophos;i="6.07,165,1708416000"; 
+   d="scan'208";a="7062626"
+Received: from orviesa009.jf.intel.com ([10.64.159.149])
+ by orvoesa108.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 29 Mar 2024 13:46:50 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.07,165,1708416000"; d="scan'208";a="17056286"
+Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
+ by orviesa009.jf.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
+ 29 Mar 2024 13:46:50 -0700
+Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
+ ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.35; Fri, 29 Mar 2024 13:46:49 -0700
+Received: from ORSEDG602.ED.cps.intel.com (10.7.248.7) by
+ orsmsx610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.35 via Frontend Transport; Fri, 29 Mar 2024 13:46:49 -0700
+Received: from NAM11-DM6-obe.outbound.protection.outlook.com (104.47.57.169)
+ by edgegateway.intel.com (134.134.137.103) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.35; Fri, 29 Mar 2024 13:46:49 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=TOw77p6bDHulD1sUgk2apPvNvQqlPbVPNUvZeS+JWW4Pp3CBgVmxzUnLXgAFuhWtTYv/kVmT5pg8PJyTKaGycVEViXIkEugHGxeOOXFGqO1vapRpUT4Dj1vGwBmN/Yqe/W8Y18XXAKKyG0KNrFNebRQyymgH1txZy+PgjLwayQYCNKNuH+UGG01L6pynkCDDnfnh2yUiGRmYymmmqp/sXZy/ngTF5gxymAwuvI7i15gzxi7vk1kYfGO+cQQ5GbgK4DqrzlqE3E49ZvQHnkdr1Lqt44+75PEzhiVXv9kc8A6Fl2VrdiYXl1p2WZxjf33icDEEZIBMxkJevBzQZFwUMw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=CX2vHtBbI9qqg/q0TRV1qETrkmc07CDFL0CyPCDq3J0=;
+ b=mGrMNqv4ysPSmgN7wEYqNcTNEc+pI7GcyR07j3ryYrqEXiRIQwyamSmabnE/RT6N6oIO/7QQec9dJ/XFd8iLkn2Eep5kro7b+x152dYLzPkEWSDnGjYPb5iwmGzlntyAK7gY7DOWDMg0gwwIWSpcilSl9XiZY5+exJUvd1YFG2DQkVSYpxKpjpNPH7281JVvR6A/nHEQeNcvCtViVEcWgzcUDrE6hcDHJ7+fSHRv+ghCWcDIWcKtB9ZdQXchcVzTwq09gqWsU500XVfd+TrohUI5W7BQPE3zf0nBIM9gvT6IImBoC1548VeFov+DF42opgsJc5gt+PjXZgf5sGIOtA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from BL3PR11MB6435.namprd11.prod.outlook.com (2603:10b6:208:3bb::9)
+ by DS0PR11MB7190.namprd11.prod.outlook.com (2603:10b6:8:132::5) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7409.40; Fri, 29 Mar
+ 2024 20:46:47 +0000
+Received: from BL3PR11MB6435.namprd11.prod.outlook.com
+ ([fe80::9c80:a200:48a2:b308]) by BL3PR11MB6435.namprd11.prod.outlook.com
+ ([fe80::9c80:a200:48a2:b308%4]) with mapi id 15.20.7409.031; Fri, 29 Mar 2024
+ 20:46:47 +0000
+Message-ID: <ba809a2a-3850-27ab-5836-f6705150f0a4@intel.com>
+Date: Fri, 29 Mar 2024 13:46:44 -0700
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
+ Thunderbird/102.6.1
+To: Mateusz Polchlopek <mateusz.polchlopek@intel.com>,
+ <intel-wired-lan@lists.osuosl.org>
+References: <20240327132543.15923-1-mateusz.polchlopek@intel.com>
+ <20240327132543.15923-10-mateusz.polchlopek@intel.com>
+Content-Language: en-US
+From: Tony Nguyen <anthony.l.nguyen@intel.com>
+In-Reply-To: <20240327132543.15923-10-mateusz.polchlopek@intel.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 7bit
+X-ClientProxiedBy: MW4PR04CA0123.namprd04.prod.outlook.com
+ (2603:10b6:303:84::8) To BL3PR11MB6435.namprd11.prod.outlook.com
+ (2603:10b6:208:3bb::9)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20240327155422.25424-2-piotr.kwapulinski@intel.com>
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: BL3PR11MB6435:EE_|DS0PR11MB7190:EE_
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: aQR7gzJpvGbGWdczuueAUgY27xwKkg8DeTNUHRshyA2aJ/iufvOUrB6jU6Lmww/7ESr1N3BFc0+sGAdU1i8yWA1b1ggIEctXakPezyf6roOdskSUtpbdfMH5GznesFrqjiBCqK4lo/WtxhKxA/h+t/oemBxZ1m4tixQDVlcbPAV+bpweEL6Pht2paUox2YuYZdJ63mLB+RVHsPQ66tz8x5hBjKd6R5LRsFxzfGY/m8d/7RBoA1KFetcsqPGHTE4VGpRz1r8px6jZFyXObHGKQfJnD2Cus7OdIUeAyyvJod2hGJwgKReJW9sDTu2iuS9YR06zqS6221E1cEcyhCGAU16thBDo1r2TZHH+YGLepE7A9YDOuZ1QG0Q7mAfysvjNYxQUHfucbAX+BPz+VRVqdnxm8Z4sXJYaWSFzcmNQ8DXMlpRziV3Q2iDtoJTdCTC7qFwODFsycNkK+M7qDeVZGE/ZFjCYgLjkNGsNSg5rvorA1Ok8VtBeTWVZY2UGHH5kjbd+qd/QvgyYsqnzyjTPGbA5ESkTs47ObSDCy+vR0m3WuuRDoy18o6LgjJMpozSEYvlKYjApDc8W2RyHpSC1SYji5/Pd1F9EblK0MW2UDWJcRU9i1gv/XlfcPaR/wLYi9B8d9z6c5QegkNs5/alZ+w==
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BL3PR11MB6435.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230031)(366007)(376005)(1800799015); DIR:OUT; SFP:1102; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?ZmJVZVMxZ0JSNDAwR0tEMms4WmhTNXMvSUlGM3RRWGdhQ0FSZHlLbUNINTJ0?=
+ =?utf-8?B?QjdiU0NQMVFGRVlkOEFpbW5FWkM0dEYrMVVlT1NIRThtd3o4UWZlT1Zrd0g2?=
+ =?utf-8?B?eGxUQ3NQby9zQzNqYmh2UU1HRzlXS1dsUDdjdkRENXNEM2xCTkdObEpXdHFz?=
+ =?utf-8?B?aFNxSFpvY0hlakRUZFFaNktQaWl5R3V4QlREQjhwVnE3Slhkci82WlErcWdE?=
+ =?utf-8?B?RW8yRUhqNWJwclBtWEt2YzZySEhadHdib0JEcGFHNUJKWDh4dFBhU044eE5J?=
+ =?utf-8?B?ZFB2Q0VMUDFEM3d0T3VYSmJMTStLSDNJQkxWYW1oYmpJK1NMNzNmLy9pSGxl?=
+ =?utf-8?B?WUFKQ1JQZWtrU1FNeExIMFJZU3FaMlo4ZHlUNkNxSGpZZk5QVFArUjRMQWRB?=
+ =?utf-8?B?cm43c0hheFdXZ3FsZmt5ZUYySGN0MlAxblJwQ1lWQldkRlllZTgySzFZQ1Iw?=
+ =?utf-8?B?MktsZ2pMbWFmRzNYV1k0cWdKNm9jTzVCZktqL3NBdjFqQmVDbUZVcDIwdWZQ?=
+ =?utf-8?B?dEhTdWNvdjNpUlQrUEF4dEY2WC9wRGx5NVRqSEJFbU1BNTlGL2Q0TkpSRUpZ?=
+ =?utf-8?B?c3grVlNxbGxNMDhqWWd3Mkg3bFlnTDJCVWpJNVo1QXJSTFd2QnF3WVVLeHJV?=
+ =?utf-8?B?ZEg4YTZaYjlESmE3L3FGN2k3STNaV3FmbHhjT3o3NDRrMFJUbWFqelk3Y1FP?=
+ =?utf-8?B?ZW9JVlM2YytIYWZJQXl0azlyZnNLUVRPT2o1Vm1VN0ZIY0dtYzd4RmdETGFr?=
+ =?utf-8?B?djJzaUdnR0d5dG5TNmplayszM3p0RXEvMzJ4TmFYdEZzT2MyOU4rNjc3WnpN?=
+ =?utf-8?B?dGZLNVZVSnBpQ21qTVhwdElCMFFxNE9GcTBuTFJ2dTB0cWpFRFB1U00yNXNz?=
+ =?utf-8?B?TzJjM0dOZjU4aWhyNmRVKzM5WllibFBtdWFJcHNjVHdSSlhKR1VHckdtck9X?=
+ =?utf-8?B?OUdIakk2blZ6dzViTDNaZVlJb2VTcUF6RXBtVVYxZ2poYit1VDRKb0w5TnFG?=
+ =?utf-8?B?LzZDaTlBbnpzeGc4U3lSRnRnZURub2NNYno3Y2M0YzJ3M0pET3NxZU5mNnBD?=
+ =?utf-8?B?cTUvSUh3cFJlbDRVUEJGN2Y2MUt4cGVITjZySFNWdXlsWHBtTEJaeHFBbGNo?=
+ =?utf-8?B?aDNwMWhmMDgzL2xMUTdNclZzdjJLSVpYMzRzamdVM0c0bkpudlNGbTlKVmhs?=
+ =?utf-8?B?TDZEd3gvZEo5ODZyM1o2Vm5XTE5BcDIwcmhzdVhTME83WFJaOG1TVVhOb0VU?=
+ =?utf-8?B?bHpjSkFpNlF5YTRveHdDWmdXMHlOTnZSWFFlNnk0UjRTSVNTK2p5ZVdUVHl4?=
+ =?utf-8?B?aERwRjdvYkFoOGNyVktEUUxWajJQWnUrU00wbzk2cTl0ZVBPSzh2a0ZCWkw3?=
+ =?utf-8?B?czBFbUoxNjJpeTU1T3dML2dtMmdhd2l5QjB4T2dLYkE0YmJtdkJoSGdlcWdV?=
+ =?utf-8?B?NlhodzZ4OFNsdjFUeHVtZnRjSElueVp6cktQeVB6ZFBDbi9JVW5kYXhFMEZL?=
+ =?utf-8?B?T0JxemwxdE1ScmFuNU9JMXRuZ2trMmdZdXoxRTI5WW9aTlQvQjF5RXBwOHM5?=
+ =?utf-8?B?RUhNMWl4aklVbndBYkNhZlVoem8wZWMxczluU3gydXZIdDdKQUVna2hqN3Vj?=
+ =?utf-8?B?Tld2U0pGY0FYWnBqMW9ZcU15ajhWd1pPZ2I5VSswSVZYRW8xSFN6T29SY255?=
+ =?utf-8?B?dXNRZVZhTTFCejJQNGJKWkFJazdGN1h5L3FSQldISUx6K0hkbUR3emUxUHIz?=
+ =?utf-8?B?UUViNUtBTk1WaUNmYngxdEZMQytTdXdHczFGMlpWUTdQYkFwRk9Pb25mR05t?=
+ =?utf-8?B?ZitaYlpZRFdleCt3cDkvRDRodCsrKzQzUUFJQytCeVNCWlFqNWZCOS8wdWk1?=
+ =?utf-8?B?dGhrSEI2R3FEQ3FkYkVYMWc2SS85akwwV3FVbFRvcXpwSndhWk0yVXpaUk1W?=
+ =?utf-8?B?MEdVSVk4Q29PUGl5TFBKOUV5SGllWW1hd0N5clhTZTQ1LzdNbzBiempKYkNy?=
+ =?utf-8?B?UnFFTXFQWHZUeG9nNTdGSG5XZlFlRjhJYSttVWpKVUkxRDFHSnlWNFdTRGhq?=
+ =?utf-8?B?WTNST0cvRFowcHhKZFM1T0RoZG5Oak51WDN2cWg5NEwyRDJEOEZFYzUvcGRD?=
+ =?utf-8?B?TzRWbVVneWxodm5wZFpDc3BiUTJBRUJRUTBIYXhmc0YyMFVwY1FKVmdBQWNY?=
+ =?utf-8?B?SXc9PQ==?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: 05c0ce0d-669b-4350-f9cc-08dc50315a0d
+X-MS-Exchange-CrossTenant-AuthSource: BL3PR11MB6435.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 29 Mar 2024 20:46:47.6218 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: 42PuwosqQtAMyTcy9wYJ3OAdeZ4COjreAxG4pfD9oN7Sa/IJDQ9lwYU5Q7qepPoIElrYpoeP0FqpOWoLl726lzF8sCRUO5BJGjXOGP94JRM=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS0PR11MB7190
+X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1711736899;
- bh=aaTxx/gxFQ4PytepyKlYYbI3sL2CzQNsV3HkRrmNumU=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=Hq5sy/8oIsmtqsHP7KbybzBi1Q46Xnl+aOvV1MHAc7FGXfsGFvU7DlecZ4+kcivV3
- yt3Kmk7xRQWxyiXiAqfqh6yRFlxXsCe6gTDnVKaP9Xdja2G0MRp+qxt5tYBRjVuyTQ
- 5s9f+xHvK5WWRho5/HtV51ZKwhMov0PWoVwt4k7yusk9CmnGlud+j8YKeJ3AOskuUj
- 5McCtrihxIEH8E6zN9LtAyMibiPlCIWt82cITUwiDYW++J//beyGAxvJxMrhhK4p8Q
- agc22RiosSfMwOs9OqB3mSpu10eCJ2AV/8DyjOEZA/HSRVQSqqzgzeAqOedJxj1iUb
- HNmmGAOEpTyhw==
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1711745215; x=1743281215;
+ h=message-id:date:subject:to:cc:references:from:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=T0W/vcVcQMWX87w1VyY2NuTB5lHo0SBiBl0eXikknTo=;
+ b=C8bIZhiynNEcs58xwf4HnKavY8p+v0L+gqW7BG8GC0RfmWSUpYM8ctgk
+ XDvz0TVxSOiRaB4mZNSwxe0y7on440iSYsWx/T5NOOS2ZlySoCPWCtKOA
+ EgU8ZwWIaSJPG8f1zDOm38Y7xu1JEBwuJ0cb2UMTr+ZyPCbDZH5SSNrVN
+ 5d5zvNGtnI1MnaX2UTAWHOL0nfvxj1YP9ejgGXCT0F39K09XmGdKzxc8i
+ sf1bK1T0VQ05nE474CXzrOVgQ/BteK5LcVObdp+nEDqmNaf4W0JYdcpQq
+ c9MGHg5jgjfaHY/0YpNB6Nrgi5uEqEJksPvDlVzknyH7uPwfteS8b+/jp
+ Q==;
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=kernel.org
+ header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=Hq5sy/8o
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v1 1/5] ixgbe: Add support
- for E610 FW Admin Command Interface
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=C8bIZhiy
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v2 09/12] iavf: refactor
+ iavf_clean_rx_irq to support legacy and flex descriptors
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,299 +201,39 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Stefan Wegrzyn <stefan.wegrzyn@intel.com>, netdev@vger.kernel.org,
- Michal Swiatkowski <michal.swiatkowski@linux.intel.com>,
- intel-wired-lan@lists.osuosl.org,
- Jedrzej Jagielski <jedrzej.jagielski@intel.com>
+Cc: Jacob Keller <jacob.e.keller@intel.com>, netdev@vger.kernel.org,
+ Wojciech Drewek <wojciech.drewek@intel.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed, Mar 27, 2024 at 04:54:18PM +0100, Piotr Kwapulinski wrote:
-> Add low level support for Admin Command Interface (ACI). ACI is the
-> Firmware interface used by a driver to communicate with E610 adapter. Add
-> the following ACI features:
-> - data structures, macros, register definitions
-> - commands handling
-> - events handling
-> 
-> Co-developed-by: Stefan Wegrzyn <stefan.wegrzyn@intel.com>
-> Signed-off-by: Stefan Wegrzyn <stefan.wegrzyn@intel.com>
-> Co-developed-by: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
-> Signed-off-by: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
-> Reviewed-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-> Signed-off-by: Piotr Kwapulinski <piotr.kwapulinski@intel.com>
-> ---
->  drivers/net/ethernet/intel/ixgbe/Makefile     |    4 +-
->  drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c |  505 ++++++++
->  drivers/net/ethernet/intel/ixgbe/ixgbe_e610.h |   19 +
->  drivers/net/ethernet/intel/ixgbe/ixgbe_type.h |   71 +-
->  .../ethernet/intel/ixgbe/ixgbe_type_e610.h    | 1063 +++++++++++++++++
->  drivers/net/ethernet/intel/ixgbe/ixgbe_x550.h |   15 +
->  6 files changed, 1671 insertions(+), 6 deletions(-)
->  create mode 100644 drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c
->  create mode 100644 drivers/net/ethernet/intel/ixgbe/ixgbe_e610.h
->  create mode 100644 drivers/net/ethernet/intel/ixgbe/ixgbe_type_e610.h
->  create mode 100644 drivers/net/ethernet/intel/ixgbe/ixgbe_x550.h
-> 
-> diff --git a/drivers/net/ethernet/intel/ixgbe/Makefile b/drivers/net/ethernet/intel/ixgbe/Makefile
-> index 4fb0d9e..e0444ae 100644
-> --- a/drivers/net/ethernet/intel/ixgbe/Makefile
-> +++ b/drivers/net/ethernet/intel/ixgbe/Makefile
-> @@ -1,5 +1,5 @@
->  # SPDX-License-Identifier: GPL-2.0
-> -# Copyright(c) 1999 - 2018 Intel Corporation.
-> +# Copyright(c) 1999 - 2024 Intel Corporation.
->  #
->  # Makefile for the Intel(R) 10GbE PCI Express ethernet driver
->  #
-> @@ -9,7 +9,7 @@ obj-$(CONFIG_IXGBE) += ixgbe.o
->  ixgbe-objs := ixgbe_main.o ixgbe_common.o ixgbe_ethtool.o \
->                ixgbe_82599.o ixgbe_82598.o ixgbe_phy.o ixgbe_sriov.o \
->                ixgbe_mbx.o ixgbe_x540.o ixgbe_x550.o ixgbe_lib.o ixgbe_ptp.o \
-> -              ixgbe_xsk.o
-> +              ixgbe_xsk.o ixgbe_e610.o
->  
->  ixgbe-$(CONFIG_IXGBE_DCB) +=  ixgbe_dcb.o ixgbe_dcb_82598.o \
->                                ixgbe_dcb_82599.o ixgbe_dcb_nl.o
-> diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c
+On 3/27/2024 6:25 AM, Mateusz Polchlopek wrote:
 
 ...
 
-> +/**
-> + * ixgbe_aci_send_cmd_execute - execute sending FW Admin Command to FW Admin
-> + * Command Interface
-> + * @hw: pointer to the HW struct
-> + * @desc: descriptor describing the command
-> + * @buf: buffer to use for indirect commands (NULL for direct commands)
-> + * @buf_size: size of buffer for indirect commands (0 for direct commands)
-> + *
-> + * Admin Command is sent using CSR by setting descriptor and buffer in specific
-> + * registers.
-> + *
-> + * Return: the exit code of the operation.
-> + * * - 0 - success.
-> + * * - -EIO - CSR mechanism is not enabled.
-> + * * - -EBUSY - CSR mechanism is busy.
-> + * * - -EINVAL - buf_size is too big or
-> + * invalid argument buf or buf_size.
-> + * * - -ETIME - Admin Command X command timeout.
-> + * * - -EIO - Admin Command X invalid state of HICR register or
-> + * Admin Command failed because of bad opcode was returned or
-> + * Admin Command failed with error Y.
-> + */
-> +static int ixgbe_aci_send_cmd_execute(struct ixgbe_hw *hw,
-> +				      struct ixgbe_aci_desc *desc,
-> +				      void *buf, u16 buf_size)
-> +{
-> +	u32 *tmp_buf __free(kfree) = NULL;
-> +	u32 *raw_desc = (u32 *)desc;
-> +	u32 hicr, i, tmp_buf_size;
-> +	bool valid_buf = false;
-> +	u16 opcode;
-> +
-> +	hw->aci.last_status = IXGBE_ACI_RC_OK;
-> +
-> +	/* It's necessary to check if mechanism is enabled */
-> +	hicr = IXGBE_READ_REG(hw, IXGBE_PF_HICR);
-> +
-> +	if (!(hicr & IXGBE_PF_HICR_EN))
-> +		return -EIO;
-> +
-> +	if (hicr & IXGBE_PF_HICR_C)
-> +		return -EBUSY;
-> +
-> +	opcode = desc->opcode;
-
-The type of opcode is u16, host byte order.
-But the type of desc->opcode is __le16, little endien.
-This does not seem right.
-
-Flagged by Sparse.
-
-There are a number of problems flagged by Sparse in this patch-set.
-Please make sure the patchset is Sparse-clean..
-
-> +
-> +	if (buf_size > IXGBE_ACI_MAX_BUFFER_SIZE)
-> +		return -EINVAL;
-> +
-> +	if (buf)
-> +		desc->flags |= cpu_to_le16(IXGBE_ACI_FLAG_BUF);
-> +
-> +	if (desc->flags & cpu_to_le16(IXGBE_ACI_FLAG_BUF)) {
-> +		if ((buf && !buf_size) ||
-> +		    (!buf && buf_size))
-> +			return -EINVAL;
-> +		if (buf && buf_size)
-> +			valid_buf = true;
-> +	}
-> +
-> +	if (valid_buf) {
-> +		if (buf_size % 4 == 0)
-> +			tmp_buf_size = buf_size;
-> +		else
-> +			/* Allow aligned PF_HIBA access */
-> +			tmp_buf_size = (buf_size & (u16)(~0x03)) + 4;
-> +
-> +		tmp_buf = kmalloc(tmp_buf_size, GFP_KERNEL);
-> +		if (!tmp_buf)
-> +			return -ENOMEM;
-> +
-> +		/* tmp_buf will be firstly filled with 0xFF and after
-> +		 * that the content of buf will be written into it.
-> +		 * This approach lets us use valid buf_size and
-> +		 * prevents us from reading past buf area
-> +		 * when buf_size mod 4 not equal to 0.
-> +		 */
-> +		memset(tmp_buf, 0xFF, tmp_buf_size);
-> +		memcpy(tmp_buf, buf, buf_size);
-> +
-> +		if (tmp_buf_size > IXGBE_ACI_LG_BUF)
-> +			desc->flags |= cpu_to_le16(IXGBE_ACI_FLAG_LB);
-> +
-> +		desc->datalen = cpu_to_le16(buf_size);
-> +
-> +		if (desc->flags & cpu_to_le16(IXGBE_ACI_FLAG_RD))
-> +			for (i = 0; i < tmp_buf_size / 4; i++)
-> +				IXGBE_WRITE_REG(hw, IXGBE_PF_HIBA(i),
-> +						le32_to_cpu(tmp_buf[i]));
-> +	}
-> +
-> +	/* Descriptor is written to specific registers */
-> +	for (i = 0; i < IXGBE_ACI_DESC_SIZE_IN_DWORDS; i++)
-> +		IXGBE_WRITE_REG(hw, IXGBE_PF_HIDA(i),
-> +				le32_to_cpu(raw_desc[i]));
-> +
-> +	/* SW has to set PF_HICR.C bit and clear PF_HICR.SV and
-> +	 * PF_HICR_EV
-> +	 */
-> +	hicr = (IXGBE_READ_REG(hw, IXGBE_PF_HICR) | IXGBE_PF_HICR_C) &
-> +	       ~(IXGBE_PF_HICR_SV | IXGBE_PF_HICR_EV);
-> +	IXGBE_WRITE_REG(hw, IXGBE_PF_HICR, hicr);
-> +
-> +#define MAX_SLEEP_RESP_US 1000
-> +#define MAX_TMOUT_RESP_SYNC_US 100000000
-> +
-> +	/* Wait for sync Admin Command response */
-> +	read_poll_timeout(IXGBE_READ_REG, hicr,
-> +			  (hicr & IXGBE_PF_HICR_SV) ||
-> +			  !(hicr & IXGBE_PF_HICR_C),
-> +			  MAX_SLEEP_RESP_US, MAX_TMOUT_RESP_SYNC_US, true, hw,
-> +			  IXGBE_PF_HICR);
-> +
-> +#define MAX_TMOUT_RESP_ASYNC_US 150000000
-> +
-> +	/* Wait for async Admin Command response */
-> +	read_poll_timeout(IXGBE_READ_REG, hicr,
-> +			  (hicr & IXGBE_PF_HICR_EV) ||
-> +			  !(hicr & IXGBE_PF_HICR_C),
-> +			  MAX_SLEEP_RESP_US, MAX_TMOUT_RESP_ASYNC_US, true, hw,
-> +			  IXGBE_PF_HICR);
-> +
-> +	/* Read sync Admin Command response */
-> +	if ((hicr & IXGBE_PF_HICR_SV)) {
-> +		for (i = 0; i < IXGBE_ACI_DESC_SIZE_IN_DWORDS; i++) {
-> +			raw_desc[i] = IXGBE_READ_REG(hw, IXGBE_PF_HIDA(i));
-> +			raw_desc[i] = cpu_to_le32(raw_desc[i]);
-> +		}
-> +	}
-> +
-> +	/* Read async Admin Command response */
-> +	if ((hicr & IXGBE_PF_HICR_EV) && !(hicr & IXGBE_PF_HICR_C)) {
-> +		for (i = 0; i < IXGBE_ACI_DESC_SIZE_IN_DWORDS; i++) {
-> +			raw_desc[i] = IXGBE_READ_REG(hw, IXGBE_PF_HIDA_2(i));
-> +			raw_desc[i] = cpu_to_le32(raw_desc[i]);
-> +		}
-> +	}
-> +
-> +	/* Handle timeout and invalid state of HICR register */
-> +	if (hicr & IXGBE_PF_HICR_C)
-> +		return -ETIME;
-> +
-> +	if (!(hicr & IXGBE_PF_HICR_SV) && !(hicr & IXGBE_PF_HICR_EV))
-> +		return -EIO;
-> +
-> +	/* For every command other than 0x0014 treat opcode mismatch
-> +	 * as an error. Response to 0x0014 command read from HIDA_2
-> +	 * is a descriptor of an event which is expected to contain
-> +	 * different opcode than the command.
-> +	 */
-> +	if (desc->opcode != opcode &&
-> +	    opcode != cpu_to_le16(ixgbe_aci_opc_get_fw_event))
-> +		return -EIO;
-> +
-> +	if (desc->retval) {
-> +		hw->aci.last_status = (enum ixgbe_aci_err)desc->retval;
-> +		return -EIO;
-> +	}
-> +
-> +	/* Write a response values to a buf */
-> +	if (valid_buf) {
-> +		for (i = 0; i < tmp_buf_size / 4; i++) {
-> +			tmp_buf[i] = IXGBE_READ_REG(hw, IXGBE_PF_HIBA(i));
-> +			tmp_buf[i] = cpu_to_le32(tmp_buf[i]);
-> +		}
-> +		memcpy(buf, tmp_buf, buf_size);
-> +	}
-> +
-> +	return 0;
-> +}
+> diff --git a/drivers/net/ethernet/intel/iavf/iavf_txrx.c b/drivers/net/ethernet/intel/iavf/iavf_txrx.c
+> index b71484c87a84..c9c4f255bc8b 100644
+> --- a/drivers/net/ethernet/intel/iavf/iavf_txrx.c
+> +++ b/drivers/net/ethernet/intel/iavf/iavf_txrx.c
 
 ...
 
-> diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_type_e610.h b/drivers/net/ethernet/intel/ixgbe/ixgbe_type_e610.h
+>   /**
+> - * iavf_rx_checksum - Indicate in skb if hw indicated a good cksum
+> + * iavf_rx_csum - Indicate in skb if hw indicated a good checksum
+>    * @vsi: the VSI we care about
+>    * @skb: skb currently being received and modified
+> - * @rx_desc: the receive descriptor
+> + * @ptype: decoded ptype information
+> + * @csum_bits: decoded Rx descriptor information
+>    **/
+> -static void iavf_rx_checksum(struct iavf_vsi *vsi,
+> -			     struct sk_buff *skb,
+> -			     union iavf_rx_desc *rx_desc)
+> +static inline void iavf_rx_csum(struct iavf_vsi *vsi, struct sk_buff *skb,
 
-...
+Please don't use 'inline' in c files. More usages throughout this patch 
+as well.
 
-> +/**
-> + * struct ixgbe_aq_desc - Admin Command (AC) descriptor
-
-nit: ixgbe_aci_desc
-
-     ./scripts/kernel-doc -none is your friend here
-
-> + * @flags: IXGBE_ACI_FLAG_* flags
-> + * @opcode: Admin command opcode
-> + * @datalen: length in bytes of indirect/external data buffer
-> + * @retval: return value from firmware
-> + * @cookie_high: opaque data high-half
-> + * @cookie_low: opaque data low-half
-> + * @params: command-specific parameters
-> + *
-> + * Descriptor format for commands the driver posts via the
-> + * Admin Command Interface (ACI).
-> + * The firmware writes back onto the command descriptor and returns
-> + * the result of the command. Asynchronous events that are not an immediate
-> + * result of the command are written to the Admin Command Interface (ACI) using
-> + * the same descriptor format. Descriptors are in little-endian notation with
-> + * 32-bit words.
-> + */
-> +struct ixgbe_aci_desc {
-> +	__le16 flags;
-> +	__le16 opcode;
-> +	__le16 datalen;
-> +	__le16 retval;
-> +	__le32 cookie_high;
-> +	__le32 cookie_low;
-> +	union {
-> +		u8 raw[16];
-> +		struct ixgbe_aci_cmd_get_ver get_ver;
-> +		struct ixgbe_aci_cmd_driver_ver driver_ver;
-> +		struct ixgbe_aci_cmd_get_exp_err exp_err;
-> +		struct ixgbe_aci_cmd_req_res res_owner;
-> +		struct ixgbe_aci_cmd_list_caps get_cap;
-> +		struct ixgbe_aci_cmd_disable_rxen disable_rxen;
-> +		struct ixgbe_aci_cmd_get_phy_caps get_phy;
-> +		struct ixgbe_aci_cmd_set_phy_cfg set_phy;
-> +		struct ixgbe_aci_cmd_restart_an restart_an;
-> +		struct ixgbe_aci_cmd_get_link_status get_link_status;
-> +		struct ixgbe_aci_cmd_set_event_mask set_event_mask;
-> +		struct ixgbe_aci_cmd_get_link_topo get_link_topo;
-> +		struct ixgbe_aci_cmd_get_link_topo_pin get_link_topo_pin;
-> +		struct ixgbe_aci_cmd_sff_eeprom read_write_sff_param;
-> +		struct ixgbe_aci_cmd_nvm nvm;
-> +		struct ixgbe_aci_cmd_nvm_checksum nvm_checksum;
-> +	} params;
-> +};
-
-...
+> +				struct iavf_rx_ptype_decoded *ptype,
+> +				struct iavf_rx_csum_decoded *csum_bits)
+>   {
