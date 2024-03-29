@@ -1,87 +1,87 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id B3D80892336
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 29 Mar 2024 19:18:08 +0100 (CET)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 63F06892353
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 29 Mar 2024 19:28:28 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id EE7E560624;
-	Fri, 29 Mar 2024 18:18:06 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 99EBB60780;
+	Fri, 29 Mar 2024 18:28:25 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 3aY8kLa5Gvld; Fri, 29 Mar 2024 18:18:05 +0000 (UTC)
+ id kQyCCX8jb-BO; Fri, 29 Mar 2024 18:28:24 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org BCF7760780
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 60ECE6078B
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1711736284;
-	bh=ScjApGupL0WXdUGBVmbgYRJ6DvwN3eVgSIyaLY3OADc=;
+	s=default; t=1711736904;
+	bh=3OWPCtod0s9Dy1ji3IOtVRg0LS2Gm1Ks1HoOcb8wm1g=;
 	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=U9v5Rglxvw+w9xYiDnq0HVfhg7YZ+3RTSBrePBifQ8ELAobQO2GIyrWHv5nsBZ3+L
-	 g4ytC0YDNmA7M2znL4V4C9Bb6/6BpDgA50rkWP5Cu8U6fjQ25rZXPdkDykpSBIjb94
-	 gWK+0OxPqx6qCXfOBsegsq35UaiEAd3GwGEpUMZW893Fo2s1XFBFqYJkZqIu1ywsaE
-	 o/OfP6jUhcaHCf0xCD5yVnIsX+tXNbfDnZaIA2hvoOTzWIE/wCrhBdHVXT1FeNG0Dg
-	 QRVIoiNYK2nV9Vnxv+1zqMaNoDrl6tU78+CDEBBwV5uYoXzVTZaQrP5WJlaB9IBz4Z
-	 B6Zg2+fAwNPSw==
+	b=Nxqv2sFve6T4jpAIKZlLcKUpYZBeWuiqRIGcje55ppXiWWGqCR28yCmzBsv5kajQy
+	 rcPdUYRmgRdUrGTzNT5nklWADXe+0FPbT6knmiFV7l/PBW9ZBKCr8qwX9kAG1uEgL2
+	 cbDhK+MRHOiqXLX9BXxRoiA75BU0aky+gyqOuNSBh+VsDh+5bxm77RGTWnDmruBILd
+	 qgJQ7jMhz9B1HpVBu6oaxb1n1PgVXp/V3H5g3VfQeh/bmBI34f3sovEohgA5Njbqnc
+	 WXMhOIoZbnul4/n4VXnffzcmHes+axYgti9xw3UVcly4zka+A71xHMth4WPQZuKMa8
+	 9DZXwUd04GuwA==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id BCF7760780;
-	Fri, 29 Mar 2024 18:18:04 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 60ECE6078B;
+	Fri, 29 Mar 2024 18:28:24 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 916501BF3ED
- for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Mar 2024 18:18:02 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 3A71A1BF3ED
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Mar 2024 18:28:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 7CF3940490
- for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Mar 2024 18:18:02 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 261F082B1B
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Mar 2024 18:28:22 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id VCG_KmTirI9X for <intel-wired-lan@lists.osuosl.org>;
- Fri, 29 Mar 2024 18:18:01 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=145.40.73.55;
- helo=sin.source.kernel.org; envelope-from=horms@kernel.org;
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id P63Nfmb_K7y8 for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 29 Mar 2024 18:28:21 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=139.178.84.217;
+ helo=dfw.source.kernel.org; envelope-from=horms@kernel.org;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org A907E4048A
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A907E4048A
-Received: from sin.source.kernel.org (sin.source.kernel.org [145.40.73.55])
- by smtp2.osuosl.org (Postfix) with ESMTPS id A907E4048A
- for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Mar 2024 18:18:00 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 08C8182AEF
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 08C8182AEF
+Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 08C8182AEF
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Mar 2024 18:28:20 +0000 (UTC)
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by sin.source.kernel.org (Postfix) with ESMTP id 93B4ECE2FC5;
- Fri, 29 Mar 2024 18:17:57 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A2A73C433C7;
- Fri, 29 Mar 2024 18:17:55 +0000 (UTC)
-Date: Fri, 29 Mar 2024 18:17:53 +0000
+ by dfw.source.kernel.org (Postfix) with ESMTP id 22A6E619CB;
+ Fri, 29 Mar 2024 18:28:20 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6D404C433C7;
+ Fri, 29 Mar 2024 18:28:18 +0000 (UTC)
+Date: Fri, 29 Mar 2024 18:28:16 +0000
 From: Simon Horman <horms@kernel.org>
-To: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
-Message-ID: <20240329181753.GO651713@kernel.org>
-References: <20240326115116.10040-1-mateusz.polchlopek@intel.com>
- <20240326115116.10040-10-mateusz.polchlopek@intel.com>
+To: Piotr Kwapulinski <piotr.kwapulinski@intel.com>
+Message-ID: <20240329182816.GP651713@kernel.org>
+References: <20240327155422.25424-1-piotr.kwapulinski@intel.com>
+ <20240327155422.25424-2-piotr.kwapulinski@intel.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20240326115116.10040-10-mateusz.polchlopek@intel.com>
+In-Reply-To: <20240327155422.25424-2-piotr.kwapulinski@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1711736276;
- bh=VcoeznHpZFHLFNF7TWIK98y5roBFW7jXy6HVtZFOjOU=;
+ d=kernel.org; s=k20201202; t=1711736899;
+ bh=aaTxx/gxFQ4PytepyKlYYbI3sL2CzQNsV3HkRrmNumU=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=bZ7y+uJsEb6im0F34jp1Fu0x1Ip3Q7FG0FD8+XDn0jsHDSerpRJlcwXSOoI08S9oF
- mgCHt3lMoKpH9zv778hra11UsuJnRSkqAV/OEFrByOGAQ+KRrdbP85WyP7y2+wZ7oF
- ou0gKpbpjGycrg5QxImdvCJ5iBkoI3XHFhFNQSQHfq1WVWZ+TckcR0Ih3gaK7QX5hH
- n7bG1DSqg7/WYZGaeASevG0wcrRGycccEHrl5KqZiHIexvlIwY4WErgNyZTU7+7yhJ
- HqNLDVNZdFo8kxENxuuiT1l/pquvCZdNUl/kQ9/Zo6MEm3DixT4XhTAXC8D/sgk5Ii
- Kw9vRAYhVeLXg==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ b=Hq5sy/8oIsmtqsHP7KbybzBi1Q46Xnl+aOvV1MHAc7FGXfsGFvU7DlecZ4+kcivV3
+ yt3Kmk7xRQWxyiXiAqfqh6yRFlxXsCe6gTDnVKaP9Xdja2G0MRp+qxt5tYBRjVuyTQ
+ 5s9f+xHvK5WWRho5/HtV51ZKwhMov0PWoVwt4k7yusk9CmnGlud+j8YKeJ3AOskuUj
+ 5McCtrihxIEH8E6zN9LtAyMibiPlCIWt82cITUwiDYW++J//beyGAxvJxMrhhK4p8Q
+ agc22RiosSfMwOs9OqB3mSpu10eCJ2AV/8DyjOEZA/HSRVQSqqzgzeAqOedJxj1iUb
+ HNmmGAOEpTyhw==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=bZ7y+uJs
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v1 09/12] iavf: refactor
- iavf_clean_rx_irq to support legacy and flex descriptors
+ header.a=rsa-sha256 header.s=k20201202 header.b=Hq5sy/8o
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v1 1/5] ixgbe: Add support
+ for E610 FW Admin Command Interface
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,511 +94,299 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Jacob Keller <jacob.e.keller@intel.com>, netdev@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org, Wojciech Drewek <wojciech.drewek@intel.com>
+Cc: Stefan Wegrzyn <stefan.wegrzyn@intel.com>, netdev@vger.kernel.org,
+ Michal Swiatkowski <michal.swiatkowski@linux.intel.com>,
+ intel-wired-lan@lists.osuosl.org,
+ Jedrzej Jagielski <jedrzej.jagielski@intel.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, Mar 26, 2024 at 07:51:14AM -0400, Mateusz Polchlopek wrote:
-> From: Jacob Keller <jacob.e.keller@intel.com>
+On Wed, Mar 27, 2024 at 04:54:18PM +0100, Piotr Kwapulinski wrote:
+> Add low level support for Admin Command Interface (ACI). ACI is the
+> Firmware interface used by a driver to communicate with E610 adapter. Add
+> the following ACI features:
+> - data structures, macros, register definitions
+> - commands handling
+> - events handling
 > 
-> Using VIRTCHNL_VF_OFFLOAD_FLEX_DESC, the iAVF driver is capable of
-> negotiating to enable the advanced flexible descriptor layout. Add the
-> flexible NIC layout (RXDID=2) as a member of the Rx descriptor union.
-> 
-> Also add bit position definitions for the status and error indications
-> that are needed.
-> 
-> The iavf_clean_rx_irq function needs to extract a few fields from the Rx
-> descriptor, including the size, rx_ptype, and vlan_tag.
-> Move the extraction to a separate function that decodes the fields into
-> a structure. This will reduce the burden for handling multiple
-> descriptor types by keeping the relevant extraction logic in one place.
-> 
-> To support handling an additional descriptor format with minimal code
-> duplication, refactor Rx checksum handling so that the general logic
-> is separated from the bit calculations. Introduce an iavf_rx_desc_decoded
-> structure which holds the relevant bits decoded from the Rx descriptor.
-> This will enable implementing flexible descriptor handling without
-> duplicating the general logic twice.
-> 
-> Introduce an iavf_extract_flex_rx_fields, iavf_flex_rx_hash, and
-> iavf_flex_rx_csum functions which operate on the flexible NIC descriptor
-> format instead of the legacy 32 byte format. Based on the negotiated
-> RXDID, select the correct function for processing the Rx descriptors.
-> 
-> With this change, the Rx hot path should be functional when using either
-> the default legacy 32byte format or when we switch to the flexible NIC
-> layout.
-> 
-> Modify the Rx hot path to add support for the flexible descriptor
-> format and add request enabling Rx timestamps for all queues.
-> 
-> As in ice, make sure we bump the checksum level if the hardware detected
-> a packet type which could have an outer checksum. This is important
-> because hardware only verifies the inner checksum.
-> 
-> Reviewed-by: Wojciech Drewek <wojciech.drewek@intel.com>
-> Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
-> Co-developed-by: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
-> Signed-off-by: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
+> Co-developed-by: Stefan Wegrzyn <stefan.wegrzyn@intel.com>
+> Signed-off-by: Stefan Wegrzyn <stefan.wegrzyn@intel.com>
+> Co-developed-by: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
+> Signed-off-by: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
+> Reviewed-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+> Signed-off-by: Piotr Kwapulinski <piotr.kwapulinski@intel.com>
 > ---
->  drivers/net/ethernet/intel/iavf/iavf_txrx.c   | 356 +++++++++++++-----
->  drivers/net/ethernet/intel/iavf/iavf_txrx.h   |   8 +
->  drivers/net/ethernet/intel/iavf/iavf_type.h   | 149 ++++++--
->  .../net/ethernet/intel/iavf/iavf_virtchnl.c   |   6 +
->  4 files changed, 393 insertions(+), 126 deletions(-)
+>  drivers/net/ethernet/intel/ixgbe/Makefile     |    4 +-
+>  drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c |  505 ++++++++
+>  drivers/net/ethernet/intel/ixgbe/ixgbe_e610.h |   19 +
+>  drivers/net/ethernet/intel/ixgbe/ixgbe_type.h |   71 +-
+>  .../ethernet/intel/ixgbe/ixgbe_type_e610.h    | 1063 +++++++++++++++++
+>  drivers/net/ethernet/intel/ixgbe/ixgbe_x550.h |   15 +
+>  6 files changed, 1671 insertions(+), 6 deletions(-)
+>  create mode 100644 drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c
+>  create mode 100644 drivers/net/ethernet/intel/ixgbe/ixgbe_e610.h
+>  create mode 100644 drivers/net/ethernet/intel/ixgbe/ixgbe_type_e610.h
+>  create mode 100644 drivers/net/ethernet/intel/ixgbe/ixgbe_x550.h
 > 
-> diff --git a/drivers/net/ethernet/intel/iavf/iavf_txrx.c b/drivers/net/ethernet/intel/iavf/iavf_txrx.c
+> diff --git a/drivers/net/ethernet/intel/ixgbe/Makefile b/drivers/net/ethernet/intel/ixgbe/Makefile
+> index 4fb0d9e..e0444ae 100644
+> --- a/drivers/net/ethernet/intel/ixgbe/Makefile
+> +++ b/drivers/net/ethernet/intel/ixgbe/Makefile
+> @@ -1,5 +1,5 @@
+>  # SPDX-License-Identifier: GPL-2.0
+> -# Copyright(c) 1999 - 2018 Intel Corporation.
+> +# Copyright(c) 1999 - 2024 Intel Corporation.
+>  #
+>  # Makefile for the Intel(R) 10GbE PCI Express ethernet driver
+>  #
+> @@ -9,7 +9,7 @@ obj-$(CONFIG_IXGBE) += ixgbe.o
+>  ixgbe-objs := ixgbe_main.o ixgbe_common.o ixgbe_ethtool.o \
+>                ixgbe_82599.o ixgbe_82598.o ixgbe_phy.o ixgbe_sriov.o \
+>                ixgbe_mbx.o ixgbe_x540.o ixgbe_x550.o ixgbe_lib.o ixgbe_ptp.o \
+> -              ixgbe_xsk.o
+> +              ixgbe_xsk.o ixgbe_e610.o
+>  
+>  ixgbe-$(CONFIG_IXGBE_DCB) +=  ixgbe_dcb.o ixgbe_dcb_82598.o \
+>                                ixgbe_dcb_82599.o ixgbe_dcb_nl.o
+> diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c
 
 ...
 
 > +/**
-> + * iavf_flex_rx_csum - Indicate in skb if hw indicated a good cksum
-> + * @vsi: the VSI we care about
-> + * @skb: skb currently being received and modified
-> + * @rx_desc: the receive descriptor
+> + * ixgbe_aci_send_cmd_execute - execute sending FW Admin Command to FW Admin
+> + * Command Interface
+> + * @hw: pointer to the HW struct
+> + * @desc: descriptor describing the command
+> + * @buf: buffer to use for indirect commands (NULL for direct commands)
+> + * @buf_size: size of buffer for indirect commands (0 for direct commands)
 > + *
-> + * This function only operates on the VIRTCHNL_RXDID_2_FLEX_SQ_NIC flexible
-> + * descriptor writeback format.
-> + **/
-> +static inline void iavf_flex_rx_csum(struct iavf_vsi *vsi, struct sk_buff *skb,
-> +				     union iavf_rx_desc *rx_desc)
+> + * Admin Command is sent using CSR by setting descriptor and buffer in specific
+> + * registers.
+> + *
+> + * Return: the exit code of the operation.
+> + * * - 0 - success.
+> + * * - -EIO - CSR mechanism is not enabled.
+> + * * - -EBUSY - CSR mechanism is busy.
+> + * * - -EINVAL - buf_size is too big or
+> + * invalid argument buf or buf_size.
+> + * * - -ETIME - Admin Command X command timeout.
+> + * * - -EIO - Admin Command X invalid state of HICR register or
+> + * Admin Command failed because of bad opcode was returned or
+> + * Admin Command failed with error Y.
+> + */
+> +static int ixgbe_aci_send_cmd_execute(struct ixgbe_hw *hw,
+> +				      struct ixgbe_aci_desc *desc,
+> +				      void *buf, u16 buf_size)
 > +{
-> +	struct iavf_rx_csum_decoded csum_bits;
-> +	struct iavf_rx_ptype_decoded decoded;
-> +	u16 rx_status0, rx_status1, ptype;
+> +	u32 *tmp_buf __free(kfree) = NULL;
+> +	u32 *raw_desc = (u32 *)desc;
+> +	u32 hicr, i, tmp_buf_size;
+> +	bool valid_buf = false;
+> +	u16 opcode;
 > +
-> +	rx_status0 = le16_to_cpu(rx_desc->flex_wb.status_error0);
-> +	rx_status1 = le16_to_cpu(rx_desc->flex_wb.status_error1);
-> +	ptype = le16_to_cpu(FIELD_GET(IAVF_RX_FLEX_DESC_PTYPE_M,
-> +				      rx_desc->flex_wb.ptype_flexi_flags0));
-
-Sparse seems a bit unhappy about this:
-
-1. IAVF_RX_FLEX_DESC_PTYPE_M is host byte order,
-   but x_desc->flex_wb.ptype_flexi_flags0 is little endien.
-2. FIELD_GET expects it's arguments to be host byte order (AFAICT)
-
-So perhaps this should be:
-
-	ptype = FIELD_GET(IAVF_RX_FLEX_DESC_PTYPE_M,
-			  le16_to_cpu(rx_desc->flex_wb.ptype_flexi_flags0));
-
-> +	decoded = decode_rx_desc_ptype(ptype);
+> +	hw->aci.last_status = IXGBE_ACI_RC_OK;
 > +
-> +	csum_bits.ipe = FIELD_GET(IAVF_RX_FLEX_DESC_STATUS0_XSUM_IPE_M,
-> +				  rx_status0);
-> +	csum_bits.eipe = FIELD_GET(IAVF_RX_FLEX_DESC_STATUS0_XSUM_EIPE_M,
-> +				   rx_status0);
-> +	csum_bits.l4e = FIELD_GET(IAVF_RX_FLEX_DESC_STATUS0_XSUM_L4E_M,
-> +				  rx_status0);
-> +	csum_bits.eudpe = FIELD_GET(IAVF_RX_FLEX_DESC_STATUS0_XSUM_EUDPE_M,
-> +				    rx_status0);
-> +	csum_bits.l3l4p = FIELD_GET(IAVF_RX_FLEX_DESC_STATUS0_L3L4P_M,
-> +				    rx_status0);
-> +	csum_bits.ipv6exadd = FIELD_GET(IAVF_RX_FLEX_DESC_STATUS0_IPV6EXADD_M,
-> +					rx_status0);
-> +	csum_bits.nat = FIELD_GET(IAVF_RX_FLEX_DESC_STATUS1_NAT_M, rx_status0);
-> +	csum_bits.pprs = 0;
+> +	/* It's necessary to check if mechanism is enabled */
+> +	hicr = IXGBE_READ_REG(hw, IXGBE_PF_HICR);
 > +
-> +	iavf_rx_csum(vsi, skb, &decoded, &csum_bits);
-> +}
+> +	if (!(hicr & IXGBE_PF_HICR_EN))
+> +		return -EIO;
 > +
->  /**
->   * iavf_ptype_to_htype - get a hash type
->   * @ptype: the ptype value from the descriptor
->   *
->   * Returns a hash type to be used by skb_set_hash
->   **/
-> -static int iavf_ptype_to_htype(u8 ptype)
-> +static int iavf_ptype_to_htype(u16 ptype)
->  {
->  	struct iavf_rx_ptype_decoded decoded = decode_rx_desc_ptype(ptype);
->  
-> @@ -1078,21 +1165,21 @@ static int iavf_ptype_to_htype(u8 ptype)
->  }
->  
->  /**
-> - * iavf_rx_hash - set the hash value in the skb
-> + * iavf_legacy_rx_hash - set the hash value in the skb
->   * @ring: descriptor ring
->   * @rx_desc: specific descriptor
->   * @skb: skb currently being received and modified
->   * @rx_ptype: Rx packet type
-> + *
-> + * This function only operates on the VIRTCHNL_RXDID_1_32B_BASE legacy 32byte
-> + * descriptor writeback format.
->   **/
-> -static void iavf_rx_hash(struct iavf_ring *ring,
-> -			 union iavf_rx_desc *rx_desc,
-> -			 struct sk_buff *skb,
-> -			 u8 rx_ptype)
-> +static inline void iavf_legacy_rx_hash(struct iavf_ring *ring,
-> +				       union iavf_rx_desc *rx_desc,
-> +				       struct sk_buff *skb, u8 rx_ptype)
->  {
->  	u32 hash;
-> -	const __le64 rss_mask =
-> -		cpu_to_le64((u64)IAVF_RX_DESC_FLTSTAT_RSS_HASH <<
-> -			    IAVF_RX_DESC_STATUS_FLTSTAT_SHIFT);
-> +	const __le64 rss_mask = IAVF_RX_DESC_STATUS_FLTSTAT_MASK;
+> +	if (hicr & IXGBE_PF_HICR_C)
+> +		return -EBUSY;
+> +
+> +	opcode = desc->opcode;
 
-IAVF_RX_DESC_STATUS_FLTSTAT_MASK is host byte order.
-So it seems that a call to cpu_to_le64 is needed here.
+The type of opcode is u16, host byte order.
+But the type of desc->opcode is __le16, little endien.
+This does not seem right.
 
 Flagged by Sparse.
 
-Also, nit, please consider arrange local variables in reverse xmas
-tree order - longest line to shortest.
+There are a number of problems flagged by Sparse in this patch-set.
+Please make sure the patchset is Sparse-clean..
 
-
->  
->  	if (!(ring->netdev->features & NETIF_F_RXHASH))
->  		return;
-
-> @@ -1103,6 +1190,33 @@ static void iavf_rx_hash(struct iavf_ring *ring,
->  	}
->  }
->  
-> +/**
-> + * iavf_flex_rx_hash - set the hash value in the skb
-> + * @ring: descriptor ring
-> + * @rx_desc: specific descriptor
-> + * @skb: skb currently being received and modified
-> + * @rx_ptype: Rx packet type
-> + *
-> + * This function only operates on the VIRTCHNL_RXDID_2_FLEX_SQ_NIC flexible
-> + * descriptor writeback format.
-> + **/
-> +static inline void iavf_flex_rx_hash(struct iavf_ring *ring,
-> +				     union iavf_rx_desc *rx_desc,
-> +				     struct sk_buff *skb, u16 rx_ptype)
-> +{
-> +	__le16 status0;
 > +
-> +	if (!(ring->netdev->features & NETIF_F_RXHASH))
-> +		return;
+> +	if (buf_size > IXGBE_ACI_MAX_BUFFER_SIZE)
+> +		return -EINVAL;
 > +
-> +	status0 = rx_desc->flex_wb.status_error0;
-> +	if (status0 & cpu_to_le16(IAVF_RX_FLEX_DESC_STATUS0_RSS_VALID_M)) {
-> +		u32 hash = le32_to_cpu(rx_desc->flex_wb.rss_hash);
+> +	if (buf)
+> +		desc->flags |= cpu_to_le16(IXGBE_ACI_FLAG_BUF);
 > +
-> +		skb_set_hash(skb, hash, iavf_ptype_to_htype(rx_ptype));
+> +	if (desc->flags & cpu_to_le16(IXGBE_ACI_FLAG_BUF)) {
+> +		if ((buf && !buf_size) ||
+> +		    (!buf && buf_size))
+> +			return -EINVAL;
+> +		if (buf && buf_size)
+> +			valid_buf = true;
 > +	}
-> +}
 > +
->  /**
->   * iavf_process_skb_fields - Populate skb header fields from Rx descriptor
->   * @rx_ring: rx descriptor ring packet is being transacted on
-> @@ -1114,14 +1228,19 @@ static void iavf_rx_hash(struct iavf_ring *ring,
->   * order to populate the hash, checksum, VLAN, protocol, and
->   * other fields within the skb.
->   **/
-> -static void
-> -iavf_process_skb_fields(struct iavf_ring *rx_ring,
-> -			union iavf_rx_desc *rx_desc, struct sk_buff *skb,
-> -			u8 rx_ptype)
-> +static void iavf_process_skb_fields(struct iavf_ring *rx_ring,
-> +				    union iavf_rx_desc *rx_desc,
-> +				    struct sk_buff *skb, u16 rx_ptype)
->  {
-> -	iavf_rx_hash(rx_ring, rx_desc, skb, rx_ptype);
-> +	if (rx_ring->rxdid == VIRTCHNL_RXDID_1_32B_BASE) {
-> +		iavf_legacy_rx_hash(rx_ring, rx_desc, skb, rx_ptype);
+> +	if (valid_buf) {
+> +		if (buf_size % 4 == 0)
+> +			tmp_buf_size = buf_size;
+> +		else
+> +			/* Allow aligned PF_HIBA access */
+> +			tmp_buf_size = (buf_size & (u16)(~0x03)) + 4;
 > +
-> +		iavf_legacy_rx_csum(rx_ring->vsi, skb, rx_desc);
-> +	} else {
-> +		iavf_flex_rx_hash(rx_ring, rx_desc, skb, rx_ptype);
->  
-> -	iavf_rx_checksum(rx_ring->vsi, skb, rx_desc);
-> +		iavf_flex_rx_csum(rx_ring->vsi, skb, rx_desc);
+> +		tmp_buf = kmalloc(tmp_buf_size, GFP_KERNEL);
+> +		if (!tmp_buf)
+> +			return -ENOMEM;
+> +
+> +		/* tmp_buf will be firstly filled with 0xFF and after
+> +		 * that the content of buf will be written into it.
+> +		 * This approach lets us use valid buf_size and
+> +		 * prevents us from reading past buf area
+> +		 * when buf_size mod 4 not equal to 0.
+> +		 */
+> +		memset(tmp_buf, 0xFF, tmp_buf_size);
+> +		memcpy(tmp_buf, buf, buf_size);
+> +
+> +		if (tmp_buf_size > IXGBE_ACI_LG_BUF)
+> +			desc->flags |= cpu_to_le16(IXGBE_ACI_FLAG_LB);
+> +
+> +		desc->datalen = cpu_to_le16(buf_size);
+> +
+> +		if (desc->flags & cpu_to_le16(IXGBE_ACI_FLAG_RD))
+> +			for (i = 0; i < tmp_buf_size / 4; i++)
+> +				IXGBE_WRITE_REG(hw, IXGBE_PF_HIBA(i),
+> +						le32_to_cpu(tmp_buf[i]));
 > +	}
->  
->  	skb_record_rx_queue(skb, rx_ring->queue_index);
->  
-> @@ -1450,7 +1569,7 @@ static void iavf_put_rx_buffer(struct iavf_ring *rx_ring,
->  /**
->   * iavf_is_non_eop - process handling of non-EOP buffers
->   * @rx_ring: Rx ring being processed
-> - * @rx_desc: Rx descriptor for current buffer
-> + * @fields: Rx descriptor extracted fields
->   * @skb: Current socket buffer containing buffer in progress
->   *
->   * This function updates next to clean.  If the buffer is an EOP buffer
-> @@ -1459,7 +1578,7 @@ static void iavf_put_rx_buffer(struct iavf_ring *rx_ring,
->   * that this is in fact a non-EOP buffer.
->   **/
->  static bool iavf_is_non_eop(struct iavf_ring *rx_ring,
-> -			    union iavf_rx_desc *rx_desc,
-> +			    struct iavf_rx_extracted *fields,
->  			    struct sk_buff *skb)
->  {
->  	u32 ntc = rx_ring->next_to_clean + 1;
-> @@ -1471,8 +1590,7 @@ static bool iavf_is_non_eop(struct iavf_ring *rx_ring,
->  	prefetch(IAVF_RX_DESC(rx_ring, ntc));
->  
->  	/* if we are the last buffer then there is nothing else to do */
-> -#define IAVF_RXD_EOF BIT(IAVF_RX_DESC_STATUS_EOF_SHIFT)
-> -	if (likely(iavf_test_staterr(rx_desc, IAVF_RXD_EOF)))
-> +	if (likely(fields->end_of_packet))
->  		return false;
->  
->  	rx_ring->rx_stats.non_eop_descs++;
-> @@ -1480,6 +1598,92 @@ static bool iavf_is_non_eop(struct iavf_ring *rx_ring,
->  	return true;
->  }
->  
-> +/**
-> + * iavf_extract_legacy_rx_fields - Extract fields from the Rx descriptor
-> + * @rx_ring: rx descriptor ring
-> + * @rx_desc: the descriptor to process
-> + * @fields: storage for extracted values
-> + *
-> + * Decode the Rx descriptor and extract relevant information including the
-> + * size, VLAN tag, Rx packet type, end of packet field and RXE field value.
-> + *
-> + * This function only operates on the VIRTCHNL_RXDID_1_32B_BASE legacy 32byte
-> + * descriptor writeback format.
-> + */
-> +static inline void iavf_extract_legacy_rx_fields(struct iavf_ring *rx_ring,
-> +						 union iavf_rx_desc *rx_desc,
-> +						 struct iavf_rx_extracted *fields)
-> +{
-> +	u64 qword = le64_to_cpu(rx_desc->wb.qword1.status_error_len);
 > +
-> +	fields->size = FIELD_GET(IAVF_RXD_QW1_LENGTH_PBUF_MASK, qword);
-> +	fields->rx_ptype = FIELD_GET(IAVF_RXD_QW1_PTYPE_MASK, qword);
+> +	/* Descriptor is written to specific registers */
+> +	for (i = 0; i < IXGBE_ACI_DESC_SIZE_IN_DWORDS; i++)
+> +		IXGBE_WRITE_REG(hw, IXGBE_PF_HIDA(i),
+> +				le32_to_cpu(raw_desc[i]));
 > +
-> +	if (qword & IAVF_RX_DESC_STATUS_L2TAG1P_MASK &&
-> +	    rx_ring->flags & IAVF_TXRX_FLAGS_VLAN_TAG_LOC_L2TAG1)
-> +		fields->vlan_tag = le16_to_cpu(rx_desc->wb.qword0.lo_dword.l2tag1);
+> +	/* SW has to set PF_HICR.C bit and clear PF_HICR.SV and
+> +	 * PF_HICR_EV
+> +	 */
+> +	hicr = (IXGBE_READ_REG(hw, IXGBE_PF_HICR) | IXGBE_PF_HICR_C) &
+> +	       ~(IXGBE_PF_HICR_SV | IXGBE_PF_HICR_EV);
+> +	IXGBE_WRITE_REG(hw, IXGBE_PF_HICR, hicr);
 > +
-> +	if (rx_desc->wb.qword2.ext_status &
-> +	    cpu_to_le16(BIT(IAVF_RX_DESC_EXT_STATUS_L2TAG2P_SHIFT)) &&
-> +	    rx_ring->flags & IAVF_RXR_FLAGS_VLAN_TAG_LOC_L2TAG2_2)
-> +		fields->vlan_tag = le16_to_cpu(rx_desc->wb.qword2.l2tag2_2);
+> +#define MAX_SLEEP_RESP_US 1000
+> +#define MAX_TMOUT_RESP_SYNC_US 100000000
 > +
-> +	fields->end_of_packet = FIELD_GET(IAVF_RX_DESC_STATUS_EOF_MASK, qword);
-> +	fields->rxe = FIELD_GET(BIT(IAVF_RXD_QW1_ERROR_SHIFT), qword);
+> +	/* Wait for sync Admin Command response */
+> +	read_poll_timeout(IXGBE_READ_REG, hicr,
+> +			  (hicr & IXGBE_PF_HICR_SV) ||
+> +			  !(hicr & IXGBE_PF_HICR_C),
+> +			  MAX_SLEEP_RESP_US, MAX_TMOUT_RESP_SYNC_US, true, hw,
+> +			  IXGBE_PF_HICR);
+> +
+> +#define MAX_TMOUT_RESP_ASYNC_US 150000000
+> +
+> +	/* Wait for async Admin Command response */
+> +	read_poll_timeout(IXGBE_READ_REG, hicr,
+> +			  (hicr & IXGBE_PF_HICR_EV) ||
+> +			  !(hicr & IXGBE_PF_HICR_C),
+> +			  MAX_SLEEP_RESP_US, MAX_TMOUT_RESP_ASYNC_US, true, hw,
+> +			  IXGBE_PF_HICR);
+> +
+> +	/* Read sync Admin Command response */
+> +	if ((hicr & IXGBE_PF_HICR_SV)) {
+> +		for (i = 0; i < IXGBE_ACI_DESC_SIZE_IN_DWORDS; i++) {
+> +			raw_desc[i] = IXGBE_READ_REG(hw, IXGBE_PF_HIDA(i));
+> +			raw_desc[i] = cpu_to_le32(raw_desc[i]);
+> +		}
+> +	}
+> +
+> +	/* Read async Admin Command response */
+> +	if ((hicr & IXGBE_PF_HICR_EV) && !(hicr & IXGBE_PF_HICR_C)) {
+> +		for (i = 0; i < IXGBE_ACI_DESC_SIZE_IN_DWORDS; i++) {
+> +			raw_desc[i] = IXGBE_READ_REG(hw, IXGBE_PF_HIDA_2(i));
+> +			raw_desc[i] = cpu_to_le32(raw_desc[i]);
+> +		}
+> +	}
+> +
+> +	/* Handle timeout and invalid state of HICR register */
+> +	if (hicr & IXGBE_PF_HICR_C)
+> +		return -ETIME;
+> +
+> +	if (!(hicr & IXGBE_PF_HICR_SV) && !(hicr & IXGBE_PF_HICR_EV))
+> +		return -EIO;
+> +
+> +	/* For every command other than 0x0014 treat opcode mismatch
+> +	 * as an error. Response to 0x0014 command read from HIDA_2
+> +	 * is a descriptor of an event which is expected to contain
+> +	 * different opcode than the command.
+> +	 */
+> +	if (desc->opcode != opcode &&
+> +	    opcode != cpu_to_le16(ixgbe_aci_opc_get_fw_event))
+> +		return -EIO;
+> +
+> +	if (desc->retval) {
+> +		hw->aci.last_status = (enum ixgbe_aci_err)desc->retval;
+> +		return -EIO;
+> +	}
+> +
+> +	/* Write a response values to a buf */
+> +	if (valid_buf) {
+> +		for (i = 0; i < tmp_buf_size / 4; i++) {
+> +			tmp_buf[i] = IXGBE_READ_REG(hw, IXGBE_PF_HIBA(i));
+> +			tmp_buf[i] = cpu_to_le32(tmp_buf[i]);
+> +		}
+> +		memcpy(buf, tmp_buf, buf_size);
+> +	}
+> +
+> +	return 0;
 > +}
-> +
-> +/**
-> + * iavf_extract_flex_rx_fields - Extract fields from the Rx descriptor
-> + * @rx_ring: rx descriptor ring
-> + * @rx_desc: the descriptor to process
-> + * @fields: storage for extracted values
-> + *
-> + * Decode the Rx descriptor and extract relevant information including the
-> + * size, VLAN tag, Rx packet type, end of packet field and RXE field value.
-> + *
-> + * This function only operates on the VIRTCHNL_RXDID_2_FLEX_SQ_NIC flexible
-> + * descriptor writeback format.
-> + */
-> +static inline void iavf_extract_flex_rx_fields(struct iavf_ring *rx_ring,
-> +					       union iavf_rx_desc *rx_desc,
-> +					       struct iavf_rx_extracted *fields)
-> +{
-> +	__le16 status0, status1, flexi_flags0;
-> +
-> +	fields->size = FIELD_GET(IAVF_RX_FLEX_DESC_PKT_LEN_M,
-> +				 le16_to_cpu(rx_desc->flex_wb.pkt_len));
-> +
-> +	flexi_flags0 = rx_desc->flex_wb.ptype_flexi_flags0;
-> +
-> +	fields->rx_ptype = FIELD_GET(IAVF_RX_FLEX_DESC_PTYPE_M,
-> +				     le16_to_cpu(flexi_flags0));
-> +
-> +	status0 = rx_desc->flex_wb.status_error0;
-> +	if (status0 & cpu_to_le16(IAVF_RX_FLEX_DESC_STATUS0_L2TAG1P_M) &&
-> +	    rx_ring->flags & IAVF_TXRX_FLAGS_VLAN_TAG_LOC_L2TAG1)
-> +		fields->vlan_tag = le16_to_cpu(rx_desc->flex_wb.l2tag1);
-> +
-> +	status1 = rx_desc->flex_wb.status_error1;
-> +	if (status1 & cpu_to_le16(IAVF_RX_FLEX_DESC_STATUS1_L2TAG2P_M) &&
-> +	    rx_ring->flags & IAVF_RXR_FLAGS_VLAN_TAG_LOC_L2TAG2_2)
-> +		fields->vlan_tag = le16_to_cpu(rx_desc->flex_wb.l2tag2_2nd);
-> +
-> +	fields->end_of_packet = FIELD_GET(IAVF_RX_FLEX_DESC_STATUS_ERR0_EOP_BIT,
-> +					  le16_to_cpu(status0));
-> +	fields->rxe = FIELD_GET(IAVF_RX_FLEX_DESC_STATUS_ERR0_RXE_BIT,
-> +				le16_to_cpu(status0));
-> +}
-> +
-> +static inline void iavf_extract_rx_fields(struct iavf_ring *rx_ring,
-> +					  union iavf_rx_desc *rx_desc,
-> +					  struct iavf_rx_extracted *fields)
-> +{
-> +	if (rx_ring->rxdid == VIRTCHNL_RXDID_1_32B_BASE)
-> +		iavf_extract_legacy_rx_fields(rx_ring, rx_desc, fields);
-> +	else
-> +		iavf_extract_flex_rx_fields(rx_ring, rx_desc, fields);
-> +}
-> +
->  /**
->   * iavf_clean_rx_irq - Clean completed descriptors from Rx ring - bounce buf
->   * @rx_ring: rx descriptor ring to transact packets on
-> @@ -1500,12 +1704,9 @@ static int iavf_clean_rx_irq(struct iavf_ring *rx_ring, int budget)
->  	bool failure = false;
->  
->  	while (likely(total_rx_packets < (unsigned int)budget)) {
-> +		struct iavf_rx_extracted fields = {};
->  		struct iavf_rx_buffer *rx_buffer;
->  		union iavf_rx_desc *rx_desc;
-> -		unsigned int size;
-> -		u16 vlan_tag = 0;
-> -		u8 rx_ptype;
-> -		u64 qword;
->  
->  		/* return some buffers to hardware, one at a time is too slow */
->  		if (cleaned_count >= IAVF_RX_BUFFER_WRITE) {
-> @@ -1516,39 +1717,32 @@ static int iavf_clean_rx_irq(struct iavf_ring *rx_ring, int budget)
->  
->  		rx_desc = IAVF_RX_DESC(rx_ring, rx_ring->next_to_clean);
->  
-> -		/* status_error_len will always be zero for unused descriptors
-> -		 * because it's cleared in cleanup, and overlaps with hdr_addr
-> -		 * which is always zero because packet split isn't used, if the
-> -		 * hardware wrote DD then the length will be non-zero
-> -		 */
-> -		qword = le64_to_cpu(rx_desc->wb.qword1.status_error_len);
-> -
->  		/* This memory barrier is needed to keep us from reading
->  		 * any other fields out of the rx_desc until we have
->  		 * verified the descriptor has been written back.
->  		 */
->  		dma_rmb();
-> -#define IAVF_RXD_DD BIT(IAVF_RX_DESC_STATUS_DD_SHIFT)
-> -		if (!iavf_test_staterr(rx_desc, IAVF_RXD_DD))
-> +		if (!iavf_test_staterr(rx_desc, IAVF_RX_DESC_STATUS_DD_MASK))
->  			break;
->  
-> -		size = FIELD_GET(IAVF_RXD_QW1_LENGTH_PBUF_MASK, qword);
-> +		iavf_extract_rx_fields(rx_ring, rx_desc, &fields);
->  
->  		iavf_trace(clean_rx_irq, rx_ring, rx_desc, skb);
-> -		rx_buffer = iavf_get_rx_buffer(rx_ring, size);
-> +		rx_buffer = iavf_get_rx_buffer(rx_ring, fields.size);
->  
->  		/* retrieve a buffer from the ring */
->  		if (skb)
-> -			iavf_add_rx_frag(rx_ring, rx_buffer, skb, size);
-> +			iavf_add_rx_frag(rx_ring, rx_buffer, skb, fields.size);
->  		else if (ring_uses_build_skb(rx_ring))
-> -			skb = iavf_build_skb(rx_ring, rx_buffer, size);
-> +			skb = iavf_build_skb(rx_ring, rx_buffer, fields.size);
->  		else
-> -			skb = iavf_construct_skb(rx_ring, rx_buffer, size);
-> +			skb = iavf_construct_skb(rx_ring, rx_buffer,
-> +						 fields.size);
->  
->  		/* exit if we failed to retrieve a buffer */
->  		if (!skb) {
->  			rx_ring->rx_stats.alloc_buff_failed++;
-> -			if (rx_buffer && size)
-> +			if (rx_buffer && fields.size)
->  				rx_buffer->pagecnt_bias++;
->  			break;
->  		}
-> @@ -1556,15 +1750,14 @@ static int iavf_clean_rx_irq(struct iavf_ring *rx_ring, int budget)
->  		iavf_put_rx_buffer(rx_ring, rx_buffer);
->  		cleaned_count++;
->  
-> -		if (iavf_is_non_eop(rx_ring, rx_desc, skb))
-> +		if (iavf_is_non_eop(rx_ring, &fields, skb))
->  			continue;
->  
-> -		/* ERR_MASK will only have valid bits if EOP set, and
-> -		 * what we are doing here is actually checking
-> -		 * IAVF_RX_DESC_ERROR_RXE_SHIFT, since it is the zeroth bit in
-> -		 * the error field
-> +		/* RXE field in descriptor is an indication of the MAC errors
-> +		 * (like CRC, alignment, oversize etc). If it is set then iavf
-> +		 * should finish.
->  		 */
-> -		if (unlikely(iavf_test_staterr(rx_desc, BIT(IAVF_RXD_QW1_ERROR_SHIFT)))) {
-> +		if (unlikely(fields.rxe)) {
->  			dev_kfree_skb_any(skb);
->  			skb = NULL;
->  			continue;
-> @@ -1578,22 +1771,11 @@ static int iavf_clean_rx_irq(struct iavf_ring *rx_ring, int budget)
->  		/* probably a little skewed due to removing CRC */
->  		total_rx_bytes += skb->len;
->  
-> -		qword = le64_to_cpu(rx_desc->wb.qword1.status_error_len);
-> -		rx_ptype = FIELD_GET(IAVF_RXD_QW1_PTYPE_MASK, qword);
-> -
->  		/* populate checksum, VLAN, and protocol */
-> -		iavf_process_skb_fields(rx_ring, rx_desc, skb, rx_ptype);
-> -
-> -		if (qword & BIT(IAVF_RX_DESC_STATUS_L2TAG1P_SHIFT) &&
-> -		    rx_ring->flags & IAVF_TXRX_FLAGS_VLAN_TAG_LOC_L2TAG1)
-> -			vlan_tag = le16_to_cpu(rx_desc->wb.qword0.lo_dword.l2tag1);
-> -		if (rx_desc->wb.qword2.ext_status &
-> -		    cpu_to_le16(BIT(IAVF_RX_DESC_EXT_STATUS_L2TAG2P_SHIFT)) &&
-> -		    rx_ring->flags & IAVF_RXR_FLAGS_VLAN_TAG_LOC_L2TAG2_2)
-> -			vlan_tag = le16_to_cpu(rx_desc->wb.qword2.l2tag2_2);
-> +		iavf_process_skb_fields(rx_ring, rx_desc, skb, fields.rx_ptype);
->  
->  		iavf_trace(clean_rx_irq_rx, rx_ring, rx_desc, skb);
-> -		iavf_receive_skb(rx_ring, skb, vlan_tag);
-> +		iavf_receive_skb(rx_ring, skb, fields.vlan_tag);
->  		skb = NULL;
->  
->  		/* update budget accounting */
-> diff --git a/drivers/net/ethernet/intel/iavf/iavf_txrx.h b/drivers/net/ethernet/intel/iavf/iavf_txrx.h
-> index 97055c63e866..67e51b4883bc 100644
-> --- a/drivers/net/ethernet/intel/iavf/iavf_txrx.h
-> +++ b/drivers/net/ethernet/intel/iavf/iavf_txrx.h
-> @@ -170,6 +170,14 @@ static inline bool iavf_test_staterr(union iavf_rx_desc *rx_desc,
->  		  cpu_to_le64(stat_err_bits));
->  }
->  
-> +struct iavf_rx_extracted {
-> +	unsigned int size;
-> +	u16 vlan_tag;
-> +	u16 rx_ptype;
-> +	u8 end_of_packet:1;
-> +	u8 rxe:1;
-> +};
-> +
->  /* How many Rx Buffers do we bundle into one write to the hardware ? */
->  #define IAVF_RX_INCREMENT(r, i) \
->  	do {					\
-> diff --git a/drivers/net/ethernet/intel/iavf/iavf_type.h b/drivers/net/ethernet/intel/iavf/iavf_type.h
 
 ...
 
-> @@ -255,35 +294,34 @@ union iavf_32byte_rx_desc {
->  			} hi_dword;
->  		} qword3;
->  	} wb;  /* writeback */
-> -};
-> +	struct iavf_32byte_rx_flex_wb flex_wb;
-> +};
-> +
-> +/* Note: These are predefined bit offsets */
-> +#define IAVF_RX_DESC_STATUS_DD_MASK		BIT(0)
-> +#define IAVF_RX_DESC_STATUS_EOF_MASK		BIT(1)
-> +#define IAVF_RX_DESC_STATUS_L2TAG1P_MASK	BIT(2)
-> +#define IAVF_RX_DESC_STATUS_L3L4P_MASK		BIT(3)
-> +#define IAVF_RX_DESC_STATUS_CRCP_MASK		BIT(4)
-> +#define IAVF_RX_DESC_STATUS_TSYNINDX_MASK	(0x3ULL << 5) /* 2 BITS */
-> +#define IAVF_RX_DESC_STATUS_TSYNVALID_MASK	BIT(7)
-> +/* Note: Bit 8 is reserved in X710 and XL710 */
-> +#define IAVF_RX_DESC_STATUS_EXT_UDP_0_MASK	BIT(8)
-> +#define IAVF_RX_DESC_STATUS_UMBCAST_MASK	(0x3ULL << 9) /* 2 BITS */
-> +#define IAVF_RX_DESC_STATUS_FLM_MASK		BIT(11)
-> +#define IAVF_RX_DESC_STATUS_FLTSTAT_MASK	(0x3ULL << 12) /* 2 BITS */
+> diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_type_e610.h b/drivers/net/ethernet/intel/ixgbe/ixgbe_type_e610.h
 
-nit: probably this could use GENMASK_ULL.
+...
 
-> +#define IAVF_RX_DESC_STATUS_LPBK_MASK		BIT(14)
-> +#define IAVF_RX_DESC_STATUS_IPV6EXADD_MASK	BIT(15)
-> +#define IAVF_RX_DESC_STATUS_RESERVED_MASK	(0x3UL << 16) /* 2 BITS */
-> +/* Note: For non-tunnel packets INT_UDP_0 is the right status for
-> + * UDP header
+> +/**
+> + * struct ixgbe_aq_desc - Admin Command (AC) descriptor
+
+nit: ixgbe_aci_desc
+
+     ./scripts/kernel-doc -none is your friend here
+
+> + * @flags: IXGBE_ACI_FLAG_* flags
+> + * @opcode: Admin command opcode
+> + * @datalen: length in bytes of indirect/external data buffer
+> + * @retval: return value from firmware
+> + * @cookie_high: opaque data high-half
+> + * @cookie_low: opaque data low-half
+> + * @params: command-specific parameters
+> + *
+> + * Descriptor format for commands the driver posts via the
+> + * Admin Command Interface (ACI).
+> + * The firmware writes back onto the command descriptor and returns
+> + * the result of the command. Asynchronous events that are not an immediate
+> + * result of the command are written to the Admin Command Interface (ACI) using
+> + * the same descriptor format. Descriptors are in little-endian notation with
+> + * 32-bit words.
 > + */
-> +#define IAVF_RX_DESC_STATUS_INT_UDP_0_MASK	BIT(18)
+> +struct ixgbe_aci_desc {
+> +	__le16 flags;
+> +	__le16 opcode;
+> +	__le16 datalen;
+> +	__le16 retval;
+> +	__le32 cookie_high;
+> +	__le32 cookie_low;
+> +	union {
+> +		u8 raw[16];
+> +		struct ixgbe_aci_cmd_get_ver get_ver;
+> +		struct ixgbe_aci_cmd_driver_ver driver_ver;
+> +		struct ixgbe_aci_cmd_get_exp_err exp_err;
+> +		struct ixgbe_aci_cmd_req_res res_owner;
+> +		struct ixgbe_aci_cmd_list_caps get_cap;
+> +		struct ixgbe_aci_cmd_disable_rxen disable_rxen;
+> +		struct ixgbe_aci_cmd_get_phy_caps get_phy;
+> +		struct ixgbe_aci_cmd_set_phy_cfg set_phy;
+> +		struct ixgbe_aci_cmd_restart_an restart_an;
+> +		struct ixgbe_aci_cmd_get_link_status get_link_status;
+> +		struct ixgbe_aci_cmd_set_event_mask set_event_mask;
+> +		struct ixgbe_aci_cmd_get_link_topo get_link_topo;
+> +		struct ixgbe_aci_cmd_get_link_topo_pin get_link_topo_pin;
+> +		struct ixgbe_aci_cmd_sff_eeprom read_write_sff_param;
+> +		struct ixgbe_aci_cmd_nvm nvm;
+> +		struct ixgbe_aci_cmd_nvm_checksum nvm_checksum;
+> +	} params;
+> +};
 
 ...
