@@ -2,98 +2,103 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id BD473891522
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 29 Mar 2024 09:25:52 +0100 (CET)
+	by mail.lfdr.de (Postfix) with ESMTPS id D2CEA891536
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 29 Mar 2024 09:35:41 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 085EB41820;
-	Fri, 29 Mar 2024 08:25:51 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 77C3541811;
+	Fri, 29 Mar 2024 08:35:40 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id U6xERtB2Vj0I; Fri, 29 Mar 2024 08:25:50 +0000 (UTC)
+ id CWP5WV0C_1EL; Fri, 29 Mar 2024 08:35:39 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 323B04040D
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 6C07941821
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1711700750;
-	bh=/jJxQwptvj8RJCMkfRlF4UnaW3XMz6CxOSy1bys/2d8=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1711701339;
+	bh=r/9fF/7jFB885jT0PX3nNvERZ+I0qvJliTnASh6dgww=;
+	h=References:In-Reply-To:From:Date:To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=ukdnpdd7jt82FaTWgICnRWoS7ib7AhntbnaDjXNTpRdpj09ZFkz3xhCeSQouJQ1j5
-	 CkPQXnEwJ1ScHpzTufmTcPAOGDDCA+vrRyWZx32elMTtYj2OkoZnt/IonMEwGXvw9S
-	 ohnIBORA0mj7f9aPD2JdMKCMj4D4/gK1hiN+2Dzd1GnwvY/tYmgOJ9THNGODXSXvi6
-	 n4xMWZj3VhWrp4pAsj3BBC8YZhlo6/zjUauXsQ9JSgwP20fG+T5NqG5WGgXqE6E/Rs
-	 1Q1lP/Mu1Vs9/V/0Mn0OeVW2osSK/HPBjq1NReu/gvSZ3/3zP8J2F2jdBb4V3uCIJD
-	 IG3gD4st6rUwg==
+	b=pbxsko9wyxFHsGiDCv50bC1rtUjSVs16RXsJidetApbyglL9JvMzzNyAnCixBaU/b
+	 rGM5z+TBgOrK75BxdNpgPVMVTMNpdQIGD0S18Xof57GAWkaPlDuRraPtYvAEbt4J+R
+	 Hreq5Y0fM3Ait7SzKjyrmwWBJk4EQfYfYCI2YTVgGW0tFkUSYsrK4bmwa6nymBeLlr
+	 q3duMSK+SFWzZs9dt65l9jnEh/Jv2YJi2JIsLcScVsmvbXeSbP8gHx8o1Pfi+yyR98
+	 BHh+Km1djTYnezOy6gTch9KX/25Dw8S3rZkuQGRepJZYPtn9JcwcWjeyImyBMwS1LQ
+	 xJPR81NrNLaUQ==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 323B04040D;
-	Fri, 29 Mar 2024 08:25:50 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 6C07941821;
+	Fri, 29 Mar 2024 08:35:39 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id D0CD61BF285
- for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Mar 2024 08:25:47 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 6A4DE1BF285
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Mar 2024 08:35:37 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id BCC0E60D6D
- for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Mar 2024 08:25:47 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 567DC40B1A
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Mar 2024 08:35:37 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id EMYfaR_BYfPD for <intel-wired-lan@lists.osuosl.org>;
- Fri, 29 Mar 2024 08:25:47 +0000 (UTC)
-Received-SPF: None (mailfrom) identity=mailfrom; client-ip=192.198.163.17;
- helo=mgamail.intel.com; envelope-from=michal.swiatkowski@linux.intel.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org BA53A6074E
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org BA53A6074E
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.17])
- by smtp3.osuosl.org (Postfix) with ESMTPS id BA53A6074E
- for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Mar 2024 08:25:46 +0000 (UTC)
-X-CSE-ConnectionGUID: SD5M3sDEShWXc0KO7iMVEA==
-X-CSE-MsgGUID: o7ER0t6UTvyJFqXCkWwsnA==
-X-IronPort-AV: E=McAfee;i="6600,9927,11027"; a="6748961"
-X-IronPort-AV: E=Sophos;i="6.07,164,1708416000"; 
-   d="scan'208";a="6748961"
-Received: from fmviesa009.fm.intel.com ([10.60.135.149])
- by fmvoesa111.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 29 Mar 2024 01:25:45 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.07,164,1708416000"; d="scan'208";a="16965983"
-Received: from unknown (HELO mev-dev) ([10.237.112.144])
- by fmviesa009-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 29 Mar 2024 01:25:44 -0700
-Date: Fri, 29 Mar 2024 09:25:35 +0100
-From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-To: "Buvaneswaran, Sujai" <sujai.buvaneswaran@intel.com>
-Message-ID: <ZgZ6/6/R+5EfQvbb@mev-dev>
-References: <20240312105259.2450-1-michal.swiatkowski@linux.intel.com>
- <PH0PR11MB50130FD5A519919523197C7C96362@PH0PR11MB5013.namprd11.prod.outlook.com>
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 3ROw4IikrLa7 for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 29 Mar 2024 08:35:36 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2a00:1450:4864:20::22b; helo=mail-lj1-x22b.google.com;
+ envelope-from=kalesh-anakkur.purayil@broadcom.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org A29A3401CE
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A29A3401CE
+Received: from mail-lj1-x22b.google.com (mail-lj1-x22b.google.com
+ [IPv6:2a00:1450:4864:20::22b])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id A29A3401CE
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Mar 2024 08:35:35 +0000 (UTC)
+Received: by mail-lj1-x22b.google.com with SMTP id
+ 38308e7fff4ca-2d6ee81bc87so16056301fa.1
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 29 Mar 2024 01:35:35 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1711701333; x=1712306133;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=r/9fF/7jFB885jT0PX3nNvERZ+I0qvJliTnASh6dgww=;
+ b=nErkCQgOZ4RX5fR30WX+Q3sSkPMGHRTPeyUWvV1KGPKnxJ8kLDzIqMeNnocUxjPRof
+ zNeUp5vCLY1gzbFFlYnaoQ79ZCBNFjFItomTPIKwql/hCo1EPL6zCNBGVpTnG0MnHmNl
+ MIrfGk+gvjxCW0BmCOqIoQ73IGyeOE4LUG7yn78936v7KyMGpPBrTioh+nAdJc6d74RU
+ 6kVNRb5/aGcmNePCwTaQKcF+Yk0OzVI0y4/1Vi7Ea7QiZNiZJzN7MXnFO/9sZv5kqR00
+ gL4t8BimmO7F+A8A6kF7Htje/iEO97nSE8ZPhTDYBFmR0XxyhVIRtIdJyA+qWIrd29ls
+ KBgA==
+X-Gm-Message-State: AOJu0YzFaWLnhPV+/fDd4NOZJPnJNuF0MIxEI4ED8X7k29P5KrlEHyw/
+ 8F/MIf9q20X5nO5D7UqTzxwlidCKhG5zmZHzvRzLIGgk/wfA5WZL+Wxh9fmBaEkcxWd64QV8CX7
+ 7fZzlBAmlIk8rc0jgxqKdvhDCG2/7Fqgdpa50
+X-Google-Smtp-Source: AGHT+IGwbqmDDuhlaHheh6cXhZbZKQ4vWcSeVWBlKEoAoV73mLTKSYpOfG1R4pZV+Td3Tfo8kucB3KHbkQk5gAIBnq4=
+X-Received: by 2002:a05:651c:49a:b0:2d2:d0ba:2586 with SMTP id
+ s26-20020a05651c049a00b002d2d0ba2586mr763979ljc.24.1711701332834; Fri, 29 Mar
+ 2024 01:35:32 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <PH0PR11MB50130FD5A519919523197C7C96362@PH0PR11MB5013.namprd11.prod.outlook.com>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1711700747; x=1743236747;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=v+cbkxJzxF/YcfwnjeRh08GfHVnQ93gPGcW75G6xRTA=;
- b=UpuPC3mxZpBhHRBPEiNxXWVBaUkyfvcezJKNoFU1DQScNc173p170tkd
- JMmCXF9Z7MZ4DJQ/d3OwIPoaky7CG2Svv8oYafxenFGalYOzehrl1CtNX
- I1JkJpboFd87nac2qJwxaMjJskLj1Xn1H4uZe6oymk+wW5Lfvy2+ZUL2G
- Q37gZwr9m0UvDfZkBaKNoDncBNtWkPbhqvdaplo55ct4Ux8zul6qPlkIy
- ToaTbhynSlBFAf2DTjocMQULllHkYFM+cjmEjAIydCn5nzyJ1xG0ZC9eB
- nGZtu4WOOSblquDr2KbW4UfCdLzNbh59HcimMQGKn+Hd1+LHXgcRHzPwr
- A==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=linux.intel.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=UpuPC3mx
-Subject: Re: [Intel-wired-lan] [iwl-net v1] ice: tc: do default match on all
- profiles
+References: <20240325232039.76836-1-mschmidt@redhat.com>
+ <20240325232039.76836-4-mschmidt@redhat.com>
+In-Reply-To: <20240325232039.76836-4-mschmidt@redhat.com>
+From: Kalesh Anakkur Purayil <kalesh-anakkur.purayil@broadcom.com>
+Date: Fri, 29 Mar 2024 14:05:20 +0530
+Message-ID: <CAH-L+nPBf2RNM2=ec1H1WN4DOwfvp5nQAwcfLW4NiTNU_Kk4rQ@mail.gmail.com>
+To: Michal Schmidt <mschmidt@redhat.com>
+Content-Type: multipart/signed; protocol="application/pkcs7-signature";
+ micalg=sha-256; boundary="000000000000ee7b7f0614c885d3"
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=broadcom.com; s=google; t=1711701333; x=1712306133; darn=lists.osuosl.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=r/9fF/7jFB885jT0PX3nNvERZ+I0qvJliTnASh6dgww=;
+ b=CkHpmMgNEWEGeIP9FoELc+lZjKsNpeE2ZgfSMxFJ6i+l0TBkXcACHIMAPZ8q/vg4Hr
+ GWc/BZgXXQoFqZYwMmh8SrytzG/+p+WDdEzrBmLsn6wQIgOzXFc+wJR272lNUWRihIBX
+ SfVDPoNBILcnPeO6Iy4mfLxt359msGDXK2yzQ=
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dmarc=pass (p=quarantine dis=none)
+ header.from=broadcom.com
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (1024-bit key,
+ unprotected) header.d=broadcom.com header.i=@broadcom.com header.a=rsa-sha256
+ header.s=google header.b=CkHpmMgN
+Subject: Re: [Intel-wired-lan] [PATCH net-next v4 3/3] ice: fold
+ ice_ptp_read_time into ice_ptp_gettimex64
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -106,73 +111,174 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+Cc: Jiri Pirko <jiri@resnulli.us>, "Temerkhanov,
+ Sergey" <sergey.temerkhanov@intel.com>, netdev@vger.kernel.org,
+ Richard Cochran <richardcochran@gmail.com>,
+ Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>,
+ Karol Kolacinski <karol.kolacinski@intel.com>,
  Marcin Szycik <marcin.szycik@linux.intel.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>, "Kubiak,
- Michal" <michal.kubiak@intel.com>
+ Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Jacob Keller <jacob.e.keller@intel.com>, intel-wired-lan@lists.osuosl.org
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, Mar 25, 2024 at 06:36:56AM +0000, Buvaneswaran, Sujai wrote:
-> > -----Original Message-----
-> > From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
-> > Michal Swiatkowski
-> > Sent: Tuesday, March 12, 2024 4:23 PM
-> > To: intel-wired-lan@lists.osuosl.org
-> > Cc: netdev@vger.kernel.org; Marcin Szycik <marcin.szycik@linux.intel.com>;
-> > Kubiak, Michal <michal.kubiak@intel.com>; Michal Swiatkowski
-> > <michal.swiatkowski@linux.intel.com>
-> > Subject: [Intel-wired-lan] [iwl-net v1] ice: tc: do default match on all profiles
-> > 
-> > A simple non-tunnel rule (e.g. matching only on destination MAC) in
-> > hardware will be hit only if the packet isn't a tunnel. In software execution of
-> > the same command, the rule will match both tunnel and non-tunnel packets.
-> > 
-> > Change the hardware behaviour to match tunnel and non-tunnel packets in
-> > this case. Do this by considering all profiles when adding non-tunnel rule
-> > (rule not added on tunnel, or not redirecting to tunnel).
-> > 
-> > Example command:
-> > tc filter add dev pf0 ingress protocol ip flower skip_sw action mirred \
-> > 	egress redirect dev pr0
-> > 
-> > It should match also tunneled packets, the same as command with skip_hw
-> > will do in software.
-> > 
-> > Fixes: 9e300987d4a8 ("ice: VXLAN and Geneve TC support")
-> > Reviewed-by: Marcin Szycik <marcin.szycik@linux.intel.com>
-> > Reviewed-by: Michal Kubiak <michal.kubiak@intel.com>
-> > Signed-off-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-> > ---
-> > v1 --> v2:
-> >  * fix commit message sugested by Marcin
-> > ---
-> >  drivers/net/ethernet/intel/ice/ice_tc_lib.c | 2 +-
-> >  1 file changed, 1 insertion(+), 1 deletion(-)
-> > 
-> Hi,
-> 
-> We are seeing error while adding HW tc rules on PF with the latest net-queue patches. This issue is blocking the validation of latest net-queue Switchdev patches.
-> 
-> + tc filter add dev ens5f0np0 ingress protocol ip prio 1 flower src_mac b4:96:91:9f:65:58 dst_mac 52:54:00:00:16:01 skip_sw action mirred egress redirect dev eth0
-> Error: ice: Unable to add filter due to error.
-> We have an error talking to the kernel
-> + tc filter add dev ens5f0np0 ingress protocol ip prio 1 flower src_mac b4:96:91:9f:65:58 dst_mac 52:54:00:00:16:02 skip_sw action mirred egress redirect dev eth1
-> Error: ice: Unable to add filter due to error.
-> We have an error talking to the kernel
+--000000000000ee7b7f0614c885d3
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Hi,
+On Tue, Mar 26, 2024 at 6:07=E2=80=AFAM Michal Schmidt <mschmidt@redhat.com=
+> wrote:
+>
+> This is a cleanup. It is unnecessary to have this function just to call
+> another function.
+>
+> Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+> Signed-off-by: Michal Schmidt <mschmidt@redhat.com>
 
-The same command is working fine on my setup. I suspect that it isn't
-related to this patch. The change is only in command validation, there
-is no functional changes here that can cause error during adding filters
-which previously was working fine.
+Reviewed-by: Kalesh AP <kalesh-anakkur.purayil@broadcom.com>
+> ---
+>  drivers/net/ethernet/intel/ice/ice_ptp.c | 25 +++---------------------
+>  1 file changed, 3 insertions(+), 22 deletions(-)
+>
+> diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.c b/drivers/net/ether=
+net/intel/ice/ice_ptp.c
+> index 0875f37add78..0f17fc1181d2 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_ptp.c
+> +++ b/drivers/net/ethernet/intel/ice/ice_ptp.c
+> @@ -1166,26 +1166,6 @@ static void ice_ptp_reset_cached_phctime(struct ic=
+e_pf *pf)
+>         ice_ptp_mark_tx_tracker_stale(&pf->ptp.port.tx);
+>  }
+>
+> -/**
+> - * ice_ptp_read_time - Read the time from the device
+> - * @pf: Board private structure
+> - * @ts: timespec structure to hold the current time value
+> - * @sts: Optional parameter for holding a pair of system timestamps from
+> - *       the system clock. Will be ignored if NULL is given.
+> - *
+> - * This function reads the source clock registers and stores them in a t=
+imespec.
+> - * However, since the registers are 64 bits of nanoseconds, we must conv=
+ert the
+> - * result to a timespec before we can return.
+> - */
+> -static void
+> -ice_ptp_read_time(struct ice_pf *pf, struct timespec64 *ts,
+> -                 struct ptp_system_timestamp *sts)
+> -{
+> -       u64 time_ns =3D ice_ptp_read_src_clk_reg(pf, sts);
+> -
+> -       *ts =3D ns_to_timespec64(time_ns);
+> -}
+> -
+>  /**
+>   * ice_ptp_write_init - Set PHC time to provided value
+>   * @pf: Board private structure
+> @@ -1926,9 +1906,10 @@ ice_ptp_gettimex64(struct ptp_clock_info *info, st=
+ruct timespec64 *ts,
+>                    struct ptp_system_timestamp *sts)
+>  {
+>         struct ice_pf *pf =3D ptp_info_to_pf(info);
+> +       u64 time_ns;
+>
+> -       ice_ptp_read_time(pf, ts, sts);
+> -
+> +       time_ns =3D ice_ptp_read_src_clk_reg(pf, sts);
+> +       *ts =3D ns_to_timespec64(time_ns);
+>         return 0;
+>  }
+>
+> --
+> 2.43.2
+>
+>
 
-Can you share more information about the setup? It was the first filter
-added on the PF? Did you do sth else before checking tc?
 
-Thanks,
-Michal
-> 
-> Thanks,
-> Sujai B
+--=20
+Regards,
+Kalesh A P
+
+--000000000000ee7b7f0614c885d3
+Content-Type: application/pkcs7-signature; name="smime.p7s"
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="smime.p7s"
+Content-Description: S/MIME Cryptographic Signature
+
+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
+riBJ/K1AFUjRAjFhGV64l++td7dkmnq/X8ET75ti+w1s4FRpFqkD2m7pg5NxdsZphYIXAgMBAAGj
+QjBAMA4GA1UdDwEB/wQEAwIBBjAPBgNVHRMBAf8EBTADAQH/MB0GA1UdDgQWBBSP8Et/qC5FJK5N
+UPpjmove4t0bvDANBgkqhkiG9w0BAQsFAAOCAQEAS0DbwFCq/sgM7/eWVEVJu5YACUGssxOGhigH
+M8pr5nS5ugAtrqQK0/Xx8Q+Kv3NnSoPHRHt44K9ubG8DKY4zOUXDjuS5V2yq/BKW7FPGLeQkbLmU
+Y/vcU2hnVj6DuM81IcPJaP7O2sJTqsyQiunwXUaMld16WCgaLx3ezQA3QY/tRG3XUyiXfvNnBB4V
+14qWtNPeTCekTBtzc3b0F5nCH3oO4y0IrQocLP88q1UOD5F+NuvDV0m+4S4tfGCLw0FREyOdzvcy
+a5QBqJnnLDMfOjsl0oZAzjsshnjJYS8Uuu7bVW/fhO4FCU29KNhyztNiUGUe65KXgzHZs7XKR1g/
+XzCCBWowggRSoAMCAQICDDfBRQmwNSI92mit0zANBgkqhkiG9w0BAQsFADBbMQswCQYDVQQGEwJC
+RTEZMBcGA1UEChMQR2xvYmFsU2lnbiBudi1zYTExMC8GA1UEAxMoR2xvYmFsU2lnbiBHQ0MgUjMg
+UGVyc29uYWxTaWduIDIgQ0EgMjAyMDAeFw0yMjA5MTAwODI5NTZaFw0yNTA5MTAwODI5NTZaMIGi
+MQswCQYDVQQGEwJJTjESMBAGA1UECBMJS2FybmF0YWthMRIwEAYDVQQHEwlCYW5nYWxvcmUxFjAU
+BgNVBAoTDUJyb2FkY29tIEluYy4xHzAdBgNVBAMTFkthbGVzaCBBbmFra3VyIFB1cmF5aWwxMjAw
+BgkqhkiG9w0BCQEWI2thbGVzaC1hbmFra3VyLnB1cmF5aWxAYnJvYWRjb20uY29tMIIBIjANBgkq
+hkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxnv1Reaeezfr6NEmg3xZlh4cz9m7QCN13+j4z1scrX+b
+JfnV8xITT5yvwdQv3R3p7nzD/t29lTRWK3wjodUd2nImo6vBaH3JbDwleIjIWhDXLNZ4u7WIXYwx
+aQ8lYCdKXRsHXgGPY0+zSx9ddpqHZJlHwcvas3oKnQN9WgzZtsM7A8SJefWkNvkcOtef6bL8Ew+3
+FBfXmtsPL9I2vita8gkYzunj9Nu2IM+MnsP7V/+Coy/yZDtFJHp30hDnYGzuOhJchDF9/eASvE8T
+T1xqJODKM9xn5xXB1qezadfdgUs8k8QAYyP/oVBafF9uqDudL6otcBnziyDBQdFCuAQN7wIDAQAB
+o4IB5DCCAeAwDgYDVR0PAQH/BAQDAgWgMIGjBggrBgEFBQcBAQSBljCBkzBOBggrBgEFBQcwAoZC
+aHR0cDovL3NlY3VyZS5nbG9iYWxzaWduLmNvbS9jYWNlcnQvZ3NnY2NyM3BlcnNvbmFsc2lnbjJj
+YTIwMjAuY3J0MEEGCCsGAQUFBzABhjVodHRwOi8vb2NzcC5nbG9iYWxzaWduLmNvbS9nc2djY3Iz
+cGVyc29uYWxzaWduMmNhMjAyMDBNBgNVHSAERjBEMEIGCisGAQQBoDIBKAowNDAyBggrBgEFBQcC
+ARYmaHR0cHM6Ly93d3cuZ2xvYmFsc2lnbi5jb20vcmVwb3NpdG9yeS8wCQYDVR0TBAIwADBJBgNV
+HR8EQjBAMD6gPKA6hjhodHRwOi8vY3JsLmdsb2JhbHNpZ24uY29tL2dzZ2NjcjNwZXJzb25hbHNp
+Z24yY2EyMDIwLmNybDAuBgNVHREEJzAlgSNrYWxlc2gtYW5ha2t1ci5wdXJheWlsQGJyb2FkY29t
+LmNvbTATBgNVHSUEDDAKBggrBgEFBQcDBDAfBgNVHSMEGDAWgBSWM9HmWBdbNHWKgVZk1b5I3qGP
+zzAdBgNVHQ4EFgQUI3+tdStI+ABRGSqksMsiCmO9uDAwDQYJKoZIhvcNAQELBQADggEBAGfe1o9b
+4wUud0FMjb/FNdc433meL15npjdYWUeioHdlCGB5UvEaMGu71QysfoDOfUNeyO9YKp0h0fm7clvo
+cBqeWe4CPv9TQbmLEtXKdEpj5kFZBGmav69mGTlu1A9KDQW3y0CDzCPG2Fdm4s73PnkwvemRk9E2
+u9/kcZ8KWVeS+xq+XZ78kGTKQ6Wii3dMK/EHQhnDfidadoN/n+x2ySC8yyDNvy81BocnblQzvbuB
+a30CvRuhokNO6Jzh7ZFtjKVMzYas3oo6HXgA+slRszMu4pc+fRPO41FHjeDM76e6P5OnthhnD+NY
+x6xokUN65DN1bn2MkeNs0nQpizDqd0QxggJtMIICaQIBATBrMFsxCzAJBgNVBAYTAkJFMRkwFwYD
+VQQKExBHbG9iYWxTaWduIG52LXNhMTEwLwYDVQQDEyhHbG9iYWxTaWduIEdDQyBSMyBQZXJzb25h
+bFNpZ24gMiBDQSAyMDIwAgw3wUUJsDUiPdpordMwDQYJYIZIAWUDBAIBBQCggdQwLwYJKoZIhvcN
+AQkEMSIEIHadM6lrftzNlzizcFBmR1LkjCV5IduCBoeY0BdS5j7dMBgGCSqGSIb3DQEJAzELBgkq
+hkiG9w0BBwEwHAYJKoZIhvcNAQkFMQ8XDTI0MDMyOTA4MzUzM1owaQYJKoZIhvcNAQkPMVwwWjAL
+BglghkgBZQMEASowCwYJYIZIAWUDBAEWMAsGCWCGSAFlAwQBAjAKBggqhkiG9w0DBzALBgkqhkiG
+9w0BAQowCwYJKoZIhvcNAQEHMAsGCWCGSAFlAwQCATANBgkqhkiG9w0BAQEFAASCAQDABKsMZVKZ
+QC8zF0KT9HC8WtPPMM0h81kNeJ+Yg2nPLH8EsmkHQZxVlYVYlpjmsyZf7BhoufFSG53riX3r0gME
+ouyYcxbPBO3VHNfV5aJ6uy2s7pGsQOArCVq4t6AlL8A2xaTKKrirVbytiT8I0YKknMNtGBelKk7f
+6u8SN0UOrlBuk1+/yO7cmScNu3Qj45wEImRluJ8BYsylYYDXOIFJdKE8AVSMbvW7rhr/29Um0PLi
+dPaWQ2HzW6vk/L8BR/Ro1mDcB3WFpQXHdkX+id4QLKH2kMGKPKbO41jltG7ftPL257S0GJik3Q8H
+dU8Qr8I9D/yLK5pmX/HoGLEVbWr/
+--000000000000ee7b7f0614c885d3--
