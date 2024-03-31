@@ -1,84 +1,93 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 80F83892D98
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 30 Mar 2024 23:14:20 +0100 (CET)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1721C892E24
+	for <lists+intel-wired-lan@lfdr.de>; Sun, 31 Mar 2024 01:43:15 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 2D2FF6075B;
-	Sat, 30 Mar 2024 22:14:19 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id rtbekrVkvfUp; Sat, 30 Mar 2024 22:14:18 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2711260781
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1711836858;
-	bh=E3M9C94KlYgWkxVnJ7peUnv4RFU6IKeHU/i44aG+ovM=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=c060Y6r8ToUhLFgCAYPDPMPXvlG8sSXSG0boDbTOU2FzYwgMP1NdXLTkK5JBJFvMw
-	 Wmqbp983zMrxmtC5Dx36T24GKTFiGjJ4W1gvYhChhjxargMow6DCQGJbfJYho1PO1/
-	 FD9PpzBVlG1vPx2i+o0Mdqoa0JGeVziTHSZ9udJFTwbsbuBSrUrkKmOjboAxWOrVTM
-	 Pfluwh5Z6+nC95+hPjBa+hF65g98aTs6QOB+lue3Di15TtulHwi9w40UjyUR1Dwwe/
-	 MQFHjGMB3Q/ObnKe3K4aqgxi1q6WLpFfVqlJTQb9yXEIVEIC3JL8W7s+UUv/88AOmN
-	 QkQ2oZfNL1faw==
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 2711260781;
-	Sat, 30 Mar 2024 22:14:18 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 185821BF239
- for <intel-wired-lan@lists.osuosl.org>; Sat, 30 Mar 2024 22:14:16 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 0479A81287
- for <intel-wired-lan@lists.osuosl.org>; Sat, 30 Mar 2024 22:14:16 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 529F482321;
+	Sun, 31 Mar 2024 00:43:13 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 4hu5M_jyTD7i for <intel-wired-lan@lists.osuosl.org>;
- Sat, 30 Mar 2024 22:14:15 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=156.67.10.101;
- helo=vps0.lunn.ch; envelope-from=andrew@lunn.ch; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org A1EC68126A
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org A1EC68126A
-Received: from vps0.lunn.ch (vps0.lunn.ch [156.67.10.101])
- by smtp1.osuosl.org (Postfix) with ESMTPS id A1EC68126A
- for <intel-wired-lan@lists.osuosl.org>; Sat, 30 Mar 2024 22:14:14 +0000 (UTC)
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
- (envelope-from <andrew@lunn.ch>)
- id 1rqgxm-00BkRL-2u; Sat, 30 Mar 2024 23:14:10 +0100
-Date: Sat, 30 Mar 2024 23:14:10 +0100
-From: Andrew Lunn <andrew@lunn.ch>
-To: Wojciech Drewek <wojciech.drewek@intel.com>
-Message-ID: <07572365-1c9f-4948-ad2f-4d56c6d4e4ab@lunn.ch>
-References: <20240329092321.16843-1-wojciech.drewek@intel.com>
- <20240329092321.16843-3-wojciech.drewek@intel.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20240329092321.16843-3-wojciech.drewek@intel.com>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt;
- c=relaxed/relaxed; d=lunn.ch; 
- s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
- References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
- Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
- Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
- bh=E3M9C94KlYgWkxVnJ7peUnv4RFU6IKeHU/i44aG+ovM=; b=WAQ3uGBNwM5q1A2jNEp8fqa4y4
- JAPFdkTelMrUfMAR1POls1sGXQYtQhs18rv/qsFXdzweD1Q+mSVouU8wxfgek9U/hyINTk4SSk4Kx
- yGhGJ2J93d1KR7+sE78wwu9AikmLOwitEiZB3TRceJ7vybO9GqK7qDxwvkkMuc+q6+TM=;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ id u_zfFP238Zie; Sun, 31 Mar 2024 00:43:12 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 404238219C
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1711845792;
+	bh=U054tacVhHMaiswiMhni+W7uUQUDt6W2CVd9YFamPP0=;
+	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=G4FQGq7HK0g39ojyAtrc+NL3Zbr9pf1BKOlGpLg/UPICmMRwwMsFeXISnkJ2GN/4u
+	 YJH5Rso2q27O8zhSk6vNh2Yj59Zgr4VT+VLYAYI6MJfIv0BulbcHZaFcjwa22ZAdr/
+	 F26/3IKJrpngyXJFcr9Natz3uDTWexoSJWYxAZ0z9PTFGp/dM7A+WMmEeyDoZJlhwp
+	 8/6E6leVj2vJzw+7S7KK9H4PjX2ffeJebHKL6kHkgmghPzh4c8F3iGWonnTTOXXK5J
+	 SFdjzSJHrpPzw1B47S6HV85w8t0OyS8V6GveNYAKq7zH46gmfDYSyqJXnd56qEaibP
+	 p4TfNDU08ILmg==
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp1.osuosl.org (Postfix) with ESMTP id 404238219C;
+	Sun, 31 Mar 2024 00:43:12 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 0D9991BF947
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 31 Mar 2024 00:43:10 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp2.osuosl.org (Postfix) with ESMTP id 06952401CE
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 31 Mar 2024 00:43:10 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id NtqqVqXMtd6g for <intel-wired-lan@lists.osuosl.org>;
+ Sun, 31 Mar 2024 00:43:08 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.16;
+ helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org A3512401FE
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A3512401FE
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.16])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id A3512401FE
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 31 Mar 2024 00:43:08 +0000 (UTC)
+X-CSE-ConnectionGUID: aDKhQuBFQG64knNtJhoLhg==
+X-CSE-MsgGUID: 83tyw1JaSWmqQqvkadelKA==
+X-IronPort-AV: E=McAfee;i="6600,9927,11029"; a="7125681"
+X-IronPort-AV: E=Sophos;i="6.07,169,1708416000"; 
+   d="scan'208";a="7125681"
+Received: from orviesa001.jf.intel.com ([10.64.159.141])
+ by orvoesa108.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 30 Mar 2024 17:43:08 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.07,169,1708416000"; d="scan'208";a="54784218"
+Received: from lkp-server01.sh.intel.com (HELO 3d808bfd2502) ([10.239.97.150])
+ by orviesa001.jf.intel.com with ESMTP; 30 Mar 2024 17:43:07 -0700
+Received: from kbuild by 3d808bfd2502 with local (Exim 4.96)
+ (envelope-from <lkp@intel.com>) id 1rqjHs-0000Z4-2B
+ for intel-wired-lan@lists.osuosl.org; Sun, 31 Mar 2024 00:43:04 +0000
+Date: Sun, 31 Mar 2024 08:43:01 +0800
+From: kernel test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <202403310800.MY9ZPtHl-lkp@intel.com>
+User-Agent: s-nail v14.9.24
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1711845789; x=1743381789;
+ h=date:from:to:subject:message-id;
+ bh=5zjc51Yh/9yK5J1uHWzp4g/B3hNoVW/E9qMJuDoz3Kg=;
+ b=bGwmlnbq+nalZwbOw0wJFxxNNjiWEuYvMdLSlS7VZvdID/2GCBXU0j8n
+ RRWlA+9MnWM9SVlGR6RUZ/FAGL54pD4qXZCjIEoUk4bJ7OXuUrhG206x9
+ dEUHpsZX1YiBZ9Rmsmz50/rfBUxb9E1EiFKgRjpheTE1S0z9Nipe5BRki
+ Rx33ysLvwRkat9bbSMNeVMolah/u3FW+yeDhgYc89h1hDAlT6gSLDF/0y
+ 3JtsCtjhS7ZALZliXwUpji32gpMSEezK4v1kpklp2ZBL8rAaKaR7E4K6D
+ a91sA47pA2Qf3H5J+U8xIyI11npFqkl3HAPrqxDdnVpZvba8NqGh6QcTy
+ w==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=lunn.ch
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (1024-bit key,
- unprotected) header.d=lunn.ch header.i=@lunn.ch header.a=rsa-sha256
- header.s=20171124 header.b=WAQ3uGBN
-Subject: Re: [Intel-wired-lan] [PATCH net-next 2/3] ethtool: Introduce max
- power support
+ header.from=intel.com
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=bGwmlnbq
+Subject: [Intel-wired-lan] [tnguy-next-queue:dev-queue] BUILD SUCCESS
+ f018240f20e060fa5c0e76107cb303ecad42e1f8
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,46 +100,152 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, idosch@nvidia.com, edumazet@google.com,
- marcin.szycik@linux.intel.com, anthony.l.nguyen@intel.com, kuba@kernel.org,
- simon.horman@corigine.com, intel-wired-lan@lists.osuosl.org, pabeni@redhat.com,
- przemyslaw.kitszel@intel.com
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Fri, Mar 29, 2024 at 10:23:20AM +0100, Wojciech Drewek wrote:
-> Some modules use nonstandard power levels. Adjust ethtool
-> module implementation to support new attributes that will allow user
-> to change maximum power.
-> 
-> Add three new get attributes:
-> ETHTOOL_A_MODULE_MAX_POWER_SET (used for set as well) - currently set
->   maximum power in the cage
-> ETHTOOL_A_MODULE_MIN_POWER_ALLOWED - minimum power allowed in the
->   cage reported by device
-> ETHTOOL_A_MODULE_MAX_POWER_ALLOWED - maximum power allowed in the
->   cage reported by device
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git dev-queue
+branch HEAD: f018240f20e060fa5c0e76107cb303ecad42e1f8  ice: update E830 device ids and comments
 
-I'm confused. The cage has two power pins, if you look at the table
-here:
+elapsed time: 1451m
 
-https://www.embrionix.com/resource/how-to-design-with-video-SFP
+configs tested: 130
+configs skipped: 3
 
-There is VccT and VccR. I would expect there is a power regulator
-supplying these pins. By default, you can draw 1W from that
-regulator. The board however might be designed to support more power,
-so those regulators could supply more power. And the board has also
-been designed to dump the heat if more power is consumed.
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
-So, ETHTOOL_A_MODULE_MIN_POWER_ALLOWED is about the minimum power that
-regulator can supply? Does that make any sense?
+tested configs:
+alpha                             allnoconfig   gcc  
+alpha                            allyesconfig   gcc  
+alpha                               defconfig   gcc  
+arc                              allmodconfig   gcc  
+arc                               allnoconfig   gcc  
+arc                              allyesconfig   gcc  
+arc                                 defconfig   gcc  
+arc                   randconfig-001-20240330   gcc  
+arc                   randconfig-002-20240330   gcc  
+arm                              allmodconfig   gcc  
+arm                               allnoconfig   clang
+arm                              allyesconfig   gcc  
+arm                                 defconfig   clang
+arm                   randconfig-001-20240330   clang
+arm                   randconfig-002-20240330   clang
+arm                   randconfig-003-20240330   gcc  
+arm                   randconfig-004-20240330   gcc  
+arm64                            allmodconfig   clang
+arm64                             allnoconfig   gcc  
+arm64                               defconfig   gcc  
+arm64                 randconfig-001-20240330   clang
+arm64                 randconfig-002-20240330   clang
+arm64                 randconfig-003-20240330   clang
+arm64                 randconfig-004-20240330   clang
+csky                             allmodconfig   gcc  
+csky                              allnoconfig   gcc  
+csky                             allyesconfig   gcc  
+csky                                defconfig   gcc  
+csky                  randconfig-001-20240330   gcc  
+csky                  randconfig-002-20240330   gcc  
+hexagon                          allmodconfig   clang
+hexagon                           allnoconfig   clang
+hexagon                          allyesconfig   clang
+hexagon                             defconfig   clang
+hexagon               randconfig-001-20240330   clang
+hexagon               randconfig-002-20240330   clang
+i386         buildonly-randconfig-001-20240331   clang
+i386         buildonly-randconfig-002-20240331   clang
+i386         buildonly-randconfig-003-20240331   clang
+i386         buildonly-randconfig-004-20240331   gcc  
+i386         buildonly-randconfig-005-20240331   gcc  
+i386         buildonly-randconfig-006-20240331   gcc  
+i386                  randconfig-001-20240331   gcc  
+i386                  randconfig-002-20240331   gcc  
+i386                  randconfig-003-20240331   clang
+i386                  randconfig-004-20240331   gcc  
+i386                  randconfig-005-20240331   gcc  
+i386                  randconfig-006-20240331   gcc  
+i386                  randconfig-011-20240331   clang
+i386                  randconfig-012-20240331   gcc  
+i386                  randconfig-013-20240331   gcc  
+i386                  randconfig-014-20240331   gcc  
+i386                  randconfig-015-20240331   clang
+i386                  randconfig-016-20240331   gcc  
+loongarch                        allmodconfig   gcc  
+loongarch                         allnoconfig   gcc  
+loongarch                           defconfig   gcc  
+loongarch             randconfig-001-20240330   gcc  
+loongarch             randconfig-002-20240330   gcc  
+m68k                             allmodconfig   gcc  
+m68k                              allnoconfig   gcc  
+m68k                             allyesconfig   gcc  
+m68k                                defconfig   gcc  
+microblaze                       allmodconfig   gcc  
+microblaze                        allnoconfig   gcc  
+microblaze                       allyesconfig   gcc  
+microblaze                          defconfig   gcc  
+mips                              allnoconfig   gcc  
+mips                             allyesconfig   gcc  
+nios2                            allmodconfig   gcc  
+nios2                             allnoconfig   gcc  
+nios2                            allyesconfig   gcc  
+nios2                               defconfig   gcc  
+nios2                 randconfig-001-20240330   gcc  
+nios2                 randconfig-002-20240330   gcc  
+openrisc                          allnoconfig   gcc  
+openrisc                         allyesconfig   gcc  
+openrisc                            defconfig   gcc  
+parisc                           allmodconfig   gcc  
+parisc                            allnoconfig   gcc  
+parisc                           allyesconfig   gcc  
+parisc                              defconfig   gcc  
+parisc                randconfig-001-20240330   gcc  
+parisc                randconfig-002-20240330   gcc  
+parisc64                            defconfig   gcc  
+powerpc                          allmodconfig   gcc  
+powerpc                           allnoconfig   gcc  
+powerpc                          allyesconfig   clang
+powerpc               randconfig-001-20240330   gcc  
+powerpc               randconfig-002-20240330   clang
+powerpc               randconfig-003-20240330   clang
+powerpc64             randconfig-001-20240330   gcc  
+powerpc64             randconfig-002-20240330   gcc  
+powerpc64             randconfig-003-20240330   gcc  
+riscv                            allmodconfig   clang
+riscv                             allnoconfig   gcc  
+riscv                               defconfig   clang
+riscv                 randconfig-001-20240330   gcc  
+riscv                 randconfig-002-20240330   clang
+s390                             allmodconfig   clang
+s390                              allnoconfig   clang
+s390                             allyesconfig   gcc  
+s390                                defconfig   clang
+s390                  randconfig-001-20240330   clang
+s390                  randconfig-002-20240330   clang
+sh                               allmodconfig   gcc  
+sh                                allnoconfig   gcc  
+sh                               allyesconfig   gcc  
+sh                                  defconfig   gcc  
+sh                    randconfig-001-20240330   gcc  
+sh                    randconfig-002-20240330   gcc  
+sparc                            allmodconfig   gcc  
+sparc                             allnoconfig   gcc  
+sparc                               defconfig   gcc  
+sparc64                          allmodconfig   gcc  
+sparc64                          allyesconfig   gcc  
+sparc64                             defconfig   gcc  
+sparc64               randconfig-001-20240330   gcc  
+sparc64               randconfig-002-20240330   gcc  
+um                               allmodconfig   clang
+um                                allnoconfig   clang
+um                               allyesconfig   gcc  
+um                                  defconfig   clang
+um                             i386_defconfig   gcc  
+um                    randconfig-001-20240330   clang
+um                    randconfig-002-20240330   gcc  
+um                           x86_64_defconfig   clang
+xtensa                            allnoconfig   gcc  
+xtensa                randconfig-001-20240330   gcc  
+xtensa                randconfig-002-20240330   gcc  
 
-ETHTOOL_A_MODULE_MAX_POWER_ALLOWED is about the maximum power the
-regulator can supply and the cooling system can dump heat?
-
-Then what does ETHTOOL_A_MODULE_MAX_POWER_SET mean? power in the cage?
-The cage is passive. It does not consume power. It is the module which
-does. Is this telling the module it can consume up to this amount of
-power?
-
-	Andrew
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
