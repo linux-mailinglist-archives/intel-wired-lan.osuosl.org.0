@@ -1,90 +1,91 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 15F5689568D
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  2 Apr 2024 16:25:58 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id CB2198956D3
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  2 Apr 2024 16:34:30 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 998D440551;
-	Tue,  2 Apr 2024 14:25:54 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 798C340766;
+	Tue,  2 Apr 2024 14:34:29 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id SNyMIF-MdCjv; Tue,  2 Apr 2024 14:25:54 +0000 (UTC)
+ id E7uCMJDauY7N; Tue,  2 Apr 2024 14:34:28 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C09CE404E7
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A3A07406D0
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1712067954;
-	bh=5R32dYH4+lOvrWDcci4EnK6nNfNzY0nULyXBIk+gZR8=;
+	s=default; t=1712068468;
+	bh=07kio1SdxJnWMJjOhaKtqlFrt3AjBJCC1sjzym6WBLk=;
 	h=Date:From:To:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=Zhj0b6hu1luHarWy38DXIsmZ0dZ070Ax7agufYh/x8Fb48Awl67OMLUlf38VztGe8
-	 FHuR07klgl1pRyvrrUqp0pZJdlCzDhHu9RemEJFQ5AP+mWuaOhuT+JkhC1vL9CZein
-	 cf9dUnaOF8+n/c9eHNl4Uj3qM4ObJXuX3yXFsOeEp8eySMPfoJT2kAld/c97pEBMfN
-	 Shpwjv60U/R5KKAzP2mH/G7bdfv5sS6j9Ak4eS8Pkw2ryyevVFnzoQ0RsMw7ltVNDv
-	 EFQ7LjpET7BpxQPtZvsKF007phi4jDBqGvgzgmLdOMjf3UtMH8x5XkxE3PbpA3koBX
-	 1ttNCj47InfQA==
+	b=PTWdBVqY2NITig6Sj/Gxhhk64lidmkbY8KNL2DKRsO8Zxk/4kH9+lk3mM+w6PSkq6
+	 I7857hNZQyFqt31TWoIIXl5hu9/KOSkTmktVvtuApOTrIMnhfGuCZP6AYNj7jNXvpt
+	 8aaOzNN93BcOyQq1V6sBnYqfvKQXC65UV9zagyL8fwpZb4dwhUqtb6+oOdefSe3mWO
+	 J1O7AYWz8wWcHwdOjMKdheWORYXUTEeRaqePcPYxjnCHE2H8px+xpo49bf8wIOjEQ4
+	 iTCKeyzLpubNDLT8KcquPeBDCdEZUaJMU7ZPaKJjnDEQcsH9D7kO2AKvvxnOmJAizC
+	 Fy3BJkuqKXaDQ==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id C09CE404E7;
-	Tue,  2 Apr 2024 14:25:53 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id A3A07406D0;
+	Tue,  2 Apr 2024 14:34:28 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id C50681BF389
- for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Apr 2024 14:25:51 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id F08F91BF389
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Apr 2024 14:34:25 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id BDF9382046
- for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Apr 2024 14:25:51 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id DC4A560BB8
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Apr 2024 14:34:25 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id sRyTAQDkz15p for <intel-wired-lan@lists.osuosl.org>;
- Tue,  2 Apr 2024 14:25:51 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id jYtdg4FMsN_P for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  2 Apr 2024 14:34:25 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
  client-ip=2604:1380:4641:c500::1; helo=dfw.source.kernel.org;
  envelope-from=kuba@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org F12638203F
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org F12638203F
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 058C360B6B
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 058C360B6B
 Received: from dfw.source.kernel.org (dfw.source.kernel.org
  [IPv6:2604:1380:4641:c500::1])
- by smtp1.osuosl.org (Postfix) with ESMTPS id F12638203F
- for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Apr 2024 14:25:50 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 058C360B6B
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Apr 2024 14:34:24 +0000 (UTC)
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by dfw.source.kernel.org (Postfix) with ESMTP id B7CAF60B87;
- Tue,  2 Apr 2024 14:25:49 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D338FC433C7;
- Tue,  2 Apr 2024 14:25:48 +0000 (UTC)
-Date: Tue, 2 Apr 2024 07:25:47 -0700
+ by dfw.source.kernel.org (Postfix) with ESMTP id 3392261036;
+ Tue,  2 Apr 2024 14:34:24 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 56BC5C433B1;
+ Tue,  2 Apr 2024 14:34:22 +0000 (UTC)
+Date: Tue, 2 Apr 2024 07:34:21 -0700
 From: Jakub Kicinski <kuba@kernel.org>
 To: Wojciech Drewek <wojciech.drewek@intel.com>
-Message-ID: <20240402072547.0ac0f186@kernel.org>
-In-Reply-To: <a3fd2b83-93af-4a59-a651-1ffe0dbddbe4@intel.com>
+Message-ID: <20240402073421.2528ce4f@kernel.org>
+In-Reply-To: <f7c6264e-9a16-4232-aba2-fde91eb51fb7@intel.com>
 References: <20240329092321.16843-1-wojciech.drewek@intel.com>
- <38d874e3-f25b-4af2-8c1c-946ab74c1925@lunn.ch>
- <a3fd2b83-93af-4a59-a651-1ffe0dbddbe4@intel.com>
+ <20240329092321.16843-3-wojciech.drewek@intel.com>
+ <20240329152954.26a7ce75@kernel.org>
+ <f7c6264e-9a16-4232-aba2-fde91eb51fb7@intel.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1712067949;
- bh=cjKN5hbtCPmpzdSHcCawK2S+8/qL/Ksj9dPaudgrNeQ=;
+ d=kernel.org; s=k20201202; t=1712068462;
+ bh=mEPYYlyv9uOcM/SzKft0D50DeLT0ZyyD7O2KlxAsQWc=;
  h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=e1kyeqs+mVApLka41jrcEPhGi2XtTDLVZijg91eIslOiToJyHw97oDPnlNvoYnJEs
- +nSlXeIdxGzF4u0nqszEIG5gT4HJHGU2CGWmhk4LYO/xKYy3KjuubPYH2k2niJiPUv
- UOScB+KvgpJ8TaCOFZ71eGFUCfoNUunWhQUW3JFi5opa8PO4Nmdm/nHr/x3aubDIKe
- d7+OHjGPp10F2XTIl3CPnOqW3TvbgR0bD1/4lBZQsq0DhqKvAvqRJswQUs25rYr8nR
- f2BUC39/qIAQfM3hQZx/vi9N6K9ks4b9rMKrPFrodZMZP6bd1N1q7PlT3mjDmyNSaY
- wga5TdOcOfSUw==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ b=SDX7jZl7CzU94TyD3N+d4QFLVs6kYq6Os8LXlk6YC4IlXTQZogGnBv9UhOPWjMSU/
+ 0+g43cSfo1bN4JN+FQBJeG339vKqsuQU9XzMPM1N5ODsdZKtHNZcxlTSK2+28zwU1j
+ 9TF9O2f6uNerHY2iWXTiZWJw1v+XsIaTB9y1gf3n/gCV0XnkjNXujG1tLWDY2UEfc7
+ zXDhaVJ0WQKcAVx19NTwneQDLwuw1x2kiWjADDHxnbHVKCdrR/kgoWTdUUEiCwVThX
+ IoEsK2zkqKSfqxH/RmctztvA6KA6+gmlfBy5Fs8kufs+FaEx92ZV1/9uZmTdkKeSpB
+ OxXZ9fi0MOJvw==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20201202 header.b=e1kyeqs+
-Subject: Re: [Intel-wired-lan] [PATCH net-next 0/3] ethtool: Max power
- support
+ header.s=k20201202 header.b=SDX7jZl7
+Subject: Re: [Intel-wired-lan] [PATCH net-next 2/3] ethtool: Introduce max
+ power support
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,21 +98,100 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>, idosch@nvidia.com, edumazet@google.com,
- marcin.szycik@linux.intel.com, anthony.l.nguyen@intel.com,
- netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org, pabeni@redhat.com,
+Cc: netdev@vger.kernel.org, edumazet@google.com, marcin.szycik@linux.intel.com,
+ anthony.l.nguyen@intel.com, idosch@nvidia.com,
+ intel-wired-lan@lists.osuosl.org, pabeni@redhat.com,
  przemyslaw.kitszel@intel.com
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, 2 Apr 2024 13:38:59 +0200 Wojciech Drewek wrote:
-> > Also, this is about the board, the SFP cage, not the actual SFP
-> > module?  Maybe the word cage needs to be in these names?  
-> 
-> It's about cage. Thanks for bringing it to my attention because now I
-> see it might be misleading. I'm extending {set|show}-module command
-> but the changes are about max power in the cage. With that in mind
-> I agree that adding 'cage' to the names makes sense.
+On Tue, 2 Apr 2024 13:25:07 +0200 Wojciech Drewek wrote:
+> On 29.03.2024 23:29, Jakub Kicinski wrote:
+> > On Fri, 29 Mar 2024 10:23:20 +0100 Wojciech Drewek wrote: =20
+> >> Some modules use nonstandard power levels. Adjust ethtool
+> >> module implementation to support new attributes that will allow user
+> >> to change maximum power.
+> >>
+> >> Add three new get attributes:
+> >> ETHTOOL_A_MODULE_MAX_POWER_SET (used for set as well) - currently set
+> >>   maximum power in the cage =20
+> >=20
+> > 1) I'd keep the ETHTOOL_A_MODULE_POWER_ prefix, consistently.
+> >=20
+> > 2) The _SET makes it sound like an action. Can we go with
+> >    ETHTOOL_A_MODULE_POWER_MAX ? Or ETHTOOL_A_MODULE_POWER_LIMIT?
+> >    Yes, ETHTOOL_A_MODULE_POWER_LIMIT
+> >         ETHTOOL_A_MODULE_POWER_MAX
+> >         ETHTOOL_A_MODULE_POWER_MIN
+> >    would sound pretty good to me. =20
+>=20
+> Makes sense, although ETHTOOL_A_MODULE_POWER_LIMIT does not say if
+> it's max or min limit. What about:
+> ETHTOOL_A_MODULE_POWER_MAX_LIMIT
+> ETHTOOL_A_MODULE_POWER_UPPER_LIMIT
 
-Noob question, what happens if you plug a module with higher power
-needs into the cage?
+Is it possible to "limit" min power? =F0=9F=A7=90=EF=B8=8F
+This is not HTB where "unused power" can go to the sibling cage...
+> >> +		} else if (power_new.max_pwr_set < power.min_pwr_allowed) {
+> >> +			NL_SET_ERR_MSG(info->extack, "Provided value is lower than minimum=
+ allowed");
+> >> +			return -EINVAL;
+> >> +		}
+> >> +	}
+> >> +
+> >> +	ethnl_update_policy(&power_new.policy,
+> >> +			    tb[ETHTOOL_A_MODULE_POWER_MODE_POLICY], &mod);
+> >> +	ethnl_update_u8(&power_new.max_pwr_reset,
+> >> +			tb[ETHTOOL_A_MODULE_MAX_POWER_RESET], &mod); =20
+> >=20
+> > I reckon reset should not be allowed if none of the max_pwr values=20
+> > are set (i.e. most likely driver doesn't support the config)? =20
+>=20
+> Hmmm, I think we can allow to reset if the currently set limit is the def=
+ault one.
+> Right now only the driver could catch such scenario because we don't have=
+ a parameter
+> that driver could use to inform the ethtool about the default value.
+> I hope that answers your question since I'm not 100% sure if that's what =
+you asked about :)
+
+Let me put it differently. How do we know that the driver doesn't
+support setting the power policy? AFAIU we assume driver supports
+it when it reports min_pwr_allowed || max_pwr_allowed from get.
+If that's not the case we should add a cap bit like
+cap_link_lanes_supported.
+
+So what I'm saying is that if driver doesn't support the feature,
+we should error out if user space gave us any=20
+tb[ETHTOOL_A_MODULE_MAX_POWER* attribute.
+
+> >> +	if (!mod)
+> >>  		return 0;
+> >> =20
+> >> +	if (power_new.max_pwr_reset && power_new.max_pwr_set) { =20
+> >=20
+> > Mmm. How is that gonna work? The driver is going to set max_pwr_set
+> > to what's currently configured. So the user is expected to send
+> > ETHTOOL_A_MODULE_MAX_POWER_SET =3D 0
+> > ETHTOOL_A_MODULE_MAX_POWER_RESET =3D 1
+> > to reset? =20
+>=20
+> Yes, that was my intention. Using both of those attributes at the same ti=
+me is not allowed.
+
+To be clear the code is:
+
+ 	ret =3D ops->get_module_power_cfg(dev, &power, info->extack);
+ 	if (ret < 0)
+ 		return ret;
+
+	power_new.max_pwr_set =3D power.max_pwr_set;
+
+	ethnl_update_u32(&power_new.max_pwr_set,
+			 tb[ETHTOOL_A_MODULE_MAX_POWER_SET], &mod);
+ 	// ...
+=20
+	if (power_new.max_pwr_reset && power_new.max_pwr_set) {
+
+so if driver reports .max_pwr_set from get we may fall into this if
+I think you got it but anyway..
