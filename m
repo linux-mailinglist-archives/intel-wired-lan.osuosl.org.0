@@ -1,60 +1,60 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 71BA4897157
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  3 Apr 2024 15:40:27 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id B40CD89718D
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  3 Apr 2024 15:49:51 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 1BE07400A6;
-	Wed,  3 Apr 2024 13:40:26 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 5F2134177E;
+	Wed,  3 Apr 2024 13:49:50 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id l9Jz9G_h0k_F; Wed,  3 Apr 2024 13:40:25 +0000 (UTC)
+ id JapTeL2mbosz; Wed,  3 Apr 2024 13:49:49 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org CD5F341772
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org BC4E741731
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1712151624;
-	bh=u8sbv7OhCWTzdUmHM6hfOPKlrc7untzhQsAD3ri/EUY=;
+	s=default; t=1712152189;
+	bh=p5ed33sJQnP+0D/KgfgliQpZCAocWMCLPbVfEtxjLdE=;
 	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=L7FxKdPgSYkPhCdbinrS5Y88EEhlQOSYOaekY33U/OQKx68rjjLmul91T+pBkUR9B
-	 /SwmrijaVxVfLd452AtaONZTz5ZCktIDTz5C0WnrCPKy47LJX9ASGVvuiv1syZ7Uof
-	 KyBWrsZxcnyeGiTig7MnPa1T1UYI5rB4jd1atbL8oZ+qz9hmH4QmDACnmknaxb3mA0
-	 kxEUotVOEmVBvNpWkeVVWBfsbXNMyxJgciIbrA53cbE8yVHJb32/UF1E59EVGw+sSZ
-	 tnOx5pYksBbyXBSMyUlylZb39ORPUTsAqy4Dm6bYqiO969zeh+PCHNdYDNy/lRmLd6
-	 qmSSpvo9QZdtw==
+	b=KPtwRPf8Bmf07/3kuIPuWSnzByWn4w6xWsqYdFgyUaMuuEz7k2+wc5wBGTq0QTALN
+	 VEPUdbGar5DzqYZwT8BBJjJpPajVwo022CTca3D62La2MqTneGX6Pl6pZTuRlfZbO1
+	 qwu2M5SoACDQ7Zm4qRAQNb1wM3LVufcsPTAle+bfnv+Qu1nW0MMejNaAwblYdC4mdr
+	 THvaKyxx+qnkyHeQyA/V2dZ6mw+Eph31Di9nGO4z3FoTfTJs7nSthaGPK8ZjVPI47M
+	 hOsQxB4Rxc0WFvfEY1NiPZDoVnYc3LovSgCo1fqpg28H1ZQTmkMst0nIfU7bAsc1Wj
+	 SrpSeSPgZVGBQ==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id CD5F341772;
-	Wed,  3 Apr 2024 13:40:24 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id BC4E741731;
+	Wed,  3 Apr 2024 13:49:49 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 0F7371BF3C5
- for <intel-wired-lan@lists.osuosl.org>; Wed,  3 Apr 2024 13:40:23 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 9640F1BF3C5
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  3 Apr 2024 13:49:47 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 0804C81F1F
- for <intel-wired-lan@lists.osuosl.org>; Wed,  3 Apr 2024 13:40:23 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 8276F41772
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  3 Apr 2024 13:49:47 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id dtVh7AhGXNn7 for <intel-wired-lan@lists.osuosl.org>;
- Wed,  3 Apr 2024 13:40:22 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id OIKNbRZtnT0j for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  3 Apr 2024 13:49:47 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=156.67.10.101;
  helo=vps0.lunn.ch; envelope-from=andrew@lunn.ch; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org E69D481E49
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E69D481E49
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org C0C1641731
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C0C1641731
 Received: from vps0.lunn.ch (vps0.lunn.ch [156.67.10.101])
- by smtp1.osuosl.org (Postfix) with ESMTPS id E69D481E49
- for <intel-wired-lan@lists.osuosl.org>; Wed,  3 Apr 2024 13:40:21 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTPS id C0C1641731
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  3 Apr 2024 13:49:46 +0000 (UTC)
 Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
  (envelope-from <andrew@lunn.ch>)
- id 1rs0qV-00C54I-HE; Wed, 03 Apr 2024 15:40:07 +0200
-Date: Wed, 3 Apr 2024 15:40:07 +0200
+ id 1rs0zh-00C57n-L0; Wed, 03 Apr 2024 15:49:37 +0200
+Date: Wed, 3 Apr 2024 15:49:37 +0200
 From: Andrew Lunn <andrew@lunn.ch>
 To: Wojciech Drewek <wojciech.drewek@intel.com>
-Message-ID: <7b0b3d27-c21d-4765-875b-2dd4681a2ba4@lunn.ch>
+Message-ID: <61a89488-e79a-4175-8868-3de36af7f62d@lunn.ch>
 References: <20240329092321.16843-1-wojciech.drewek@intel.com>
  <38d874e3-f25b-4af2-8c1c-946ab74c1925@lunn.ch>
  <a3fd2b83-93af-4a59-a651-1ffe0dbddbe4@intel.com>
@@ -70,15 +70,15 @@ X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt;
  References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
  Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
  Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
- bh=u8sbv7OhCWTzdUmHM6hfOPKlrc7untzhQsAD3ri/EUY=; b=hXVfmlFHIk5JMt7p++pZrTxAiP
- 6IVs8+h3VpIBOs5t0fMS84AdqOE7ix0d11SXeIewczp3QWbbnW4vqil1lLWY1N5NX3EqBFy3D9Otg
- ujsI5S1ZB9nfaGzP7QR2tpZaIysLJDWVVMLOWxFEAdvFugaBGIcQVS/Pml5RK2yLACP0=;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ bh=p5ed33sJQnP+0D/KgfgliQpZCAocWMCLPbVfEtxjLdE=; b=dLM3bGsp8kfQY+jq/s4pafhJvF
+ Rk4DkpCSiQPAFCN97eIgG59j2AdranIBj4trmXHi0Whsy3ZYTSjoeZZijYFF8mPLVbN6wmxHvlvDf
+ fvUAsp4+S64oLW7ZC1EvhoHJzBSwpleHJwCeVrVZrfhx1xrXbUpZLUioTQK9uPDj2xdM=;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=lunn.ch
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (1024-bit key) header.d=lunn.ch header.i=@lunn.ch
- header.a=rsa-sha256 header.s=20171124 header.b=hXVfmlFH
+ header.a=rsa-sha256 header.s=20171124 header.b=dLM3bGsp
 Subject: Re: [Intel-wired-lan] [PATCH net-next 0/3] ethtool: Max power
  support
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -100,75 +100,31 @@ Cc: pabeni@redhat.com, netdev@vger.kernel.org, edumazet@google.com,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed, Apr 03, 2024 at 03:18:44PM +0200, Wojciech Drewek wrote:
+> > $ ethtool --set-module enp1s0f0np0 power-max-set 4000
+> > 
+> > actually talk to the SFP module and tell it the maximum power it can
+> > consume. So in this case, it is not the cage, but the module?
 > 
+> It does not work that way in ice example.
+> > 
+> > Or is it talking to some entity which is managing the overall power
+> > consumption of a number of cages, and asking it to allocate a maximum
+> > of 4W to this cage. It might return an error message saying there is
+> > no power budget left?
 > 
-> On 02.04.2024 16:46, Andrew Lunn wrote:
-> > On Tue, Apr 02, 2024 at 01:38:59PM +0200, Wojciech Drewek wrote:
-> >>
-> >>
-> >> On 30.03.2024 22:57, Andrew Lunn wrote:
-> >>> On Fri, Mar 29, 2024 at 10:23:18AM +0100, Wojciech Drewek wrote:
-> >>>> Some ethernet modules use nonstandard power levels [1]. Extend ethtool
-> >>>> module implementation to support new attributes that will allow user
-> >>>> to change maximum power. Rename structures and functions to be more
-> >>>> generic. Introduce an example of the new API in ice driver.
-> >>>>
-> >>>> Ethtool examples:
-> >>>> $ ethtool --show-module enp1s0f0np0
-> >>>> Module parameters for enp1s0f0np0:
-> >>>> power-min-allowed: 1000 mW
-> >>>> power-max-allowed: 3000 mW
-> >>>> power-max-set: 1500 mW
-> >>>>
-> >>>> $ ethtool --set-module enp1s0f0np0 power-max-set 4000
-> >>>
-> >>> We have had a device tree property for a long time:
-> >>>
-> >>>   maximum-power-milliwatt:
-> >>>     minimum: 1000
-> >>>     default: 1000
-> >>>     description:
-> >>>       Maximum module power consumption Specifies the maximum power consumption
-> >>>       allowable by a module in the slot, in milli-Watts. Presently, modules can
-> >>>       be up to 1W, 1.5W or 2W.
-> >>>
-> >>> Could you flip the name around to be consistent with DT?
-> >>
-> >> Yea, I'm open to any name suggestion although I don't like the unit in the parameter name :) 
-> > 
-> > That is a DT thing. Helps make the units of an ABI obvious. However,
-> > milliwatts is pretty standard with the kernel of user APIs, e.g. all
-> > hwmon calls use milliwatts.
-> > 
-> >>>> minimum-power-allowed: 1000 mW
-> >>>> maximum-power-allowed: 3000 mW
-> >>>> maximum-power-set: 1500 mW
-> >>>
-> >>> Also, what does minimum-power-allowed actually tell us? Do you imagine
-> >>> it will ever be below 1W because of bad board design? Do you have a
-> >>> bad board design which does not allow 1W?
-> >>
-> >> Yes. in case of QSFP we don't support 1W, 1.5W is the minimum.
-> > 
-> > So if i plug in a 1W QSFP device, it will let the magic smoke out
-> > because it is force fed 1.5W?
-> > 
-> > Looking at
-> > https://www.optcore.net/wp-content/uploads/2017/04/QSFP-MSA.pdf table
-> > 7 it indicates different power budget classifications. Power level 1
-> > is a Maximum power of 1.5W. So does your parameter represent this?  It
-> > is the minimum maximum power? And your other parameter is the maximum
-> > maximum power?
-> 
-> Exactly as you described, minimum-power-allowed is in fact minimum value
-> which maximum-power-set can be set to (so minimum maximum). the other
-> parameter is maximim maximum.
+> That's right, we talk to firmware to set those restrictions.
+> In the ice implementation, the driver is responsible for checking if the
+> overall board budget is not exceeded.
 
-Table 7 in that document is titled "Power Budget Classification". So
-how about
+So i can get the board to agree that the cage can supply 3W to the
+module, but how do i then tell the module this?
 
-minimum-power-class-allowed: 1000 mW
-maximum-power-class-allowed: 3000 mW
+I would also suggest you don't focus too much on ICE. I find it better
+to think about an abstract system. A board with a power supply to a
+number of SFP cages, and some cages have modules in them. What does
+the kAPI look like, the use cases for this abstract system.
 
-	Andrew
+    Andrew
+
+
+
