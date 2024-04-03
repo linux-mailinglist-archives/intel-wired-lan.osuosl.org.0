@@ -1,100 +1,94 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 56E0C89672D
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  3 Apr 2024 09:50:45 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 413D88966EB
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  3 Apr 2024 09:45:06 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 8866060D96;
-	Wed,  3 Apr 2024 07:50:42 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id CA31660D70;
+	Wed,  3 Apr 2024 07:45:04 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id rt1kdR91fErp; Wed,  3 Apr 2024 07:50:41 +0000 (UTC)
+ id p7zLq_8bRXCd; Wed,  3 Apr 2024 07:45:04 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org CE6F460D87
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 165B860D65
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1712130641;
-	bh=LcUjuUZcMtKLNC3jdwiYywI1vJoFmdq1GbFODxD3OSo=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1712130304;
+	bh=ONtAaHGTcn6BZJJfwlKtYss4wDqYiooZmD8ycswc5Zg=;
+	h=From:To:In-Reply-To:References:Date:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=3vWQsyAPHrYXNQMamzd/B+1QAIemmpZkkicaDUtmlKl0hSCQSeNCy597zX+Xu5wex
-	 XNnuuSc0natvm+A0EdzPRrlauReTjjytSazSfzyt11EeuLMwldPwvUWyjKU3lbaiWB
-	 NAnAI8NdM5UcMxvKP4/S1Y0DLAoFB9I6v4OgZ2dGFmgaX4lVwzpHr5BjvPI7Lqxrv2
-	 oUsmBdprMuP1aL5kj27H7S3x1pzk7g9GHRtNDDkMJAWgjdRDSFGSYNHstvSUxSuW9Z
-	 TAdC9ELYig5JbEuXbm9iPCxOUmXYNiZJXARYZSLBY/NMgVKLYQUixqX1L6VGU88Kgv
-	 XJ/OhJSTD7R3Q==
+	b=2B9SMB8VQbmMfVLoej9VRP3mBmklqPeRwJLQ3MucE4hHuOyl5+6EFuSGJVUdgu2EN
+	 bEYg7mKODTPz+KE/h17irCKst32Yk3UIARnFpp8uTWeWRmGftE3GgV5dl+kkE3ps1q
+	 xl4lX8OTlENflb23fZAcNiKQg6KwRL8gQKb5JnXf+AGXLgGNrXMKLO5YnczVv8LKbH
+	 SV9yfej1AL8i9hRkAYUf0vgboOYXcJyYbIWn42GVBab/qGOYPEwcBouCI9Im0767OX
+	 kAO7/tPrW9g6x5PHISDPtQaOU6omooujXLdp5zuy+lfBv68J+Q4t3sB/1pJYJx7SnO
+	 /Z7DXaunMNuTQ==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id CE6F460D87;
-	Wed,  3 Apr 2024 07:50:41 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 165B860D65;
+	Wed,  3 Apr 2024 07:45:04 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 1802C1BF36A
- for <intel-wired-lan@lists.osuosl.org>; Wed,  3 Apr 2024 07:50:38 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 701C71BF36A
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  3 Apr 2024 07:45:02 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id AA79A60D74
- for <intel-wired-lan@lists.osuosl.org>; Wed,  3 Apr 2024 07:50:37 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 5BD078129B
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  3 Apr 2024 07:45:02 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id nIYvhjNl21Fb for <intel-wired-lan@lists.osuosl.org>;
- Wed,  3 Apr 2024 07:50:37 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.13;
- helo=mgamail.intel.com; envelope-from=mateusz.polchlopek@intel.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org E1AE960D7B
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org E1AE960D7B
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.13])
- by smtp3.osuosl.org (Postfix) with ESMTPS id E1AE960D7B
- for <intel-wired-lan@lists.osuosl.org>; Wed,  3 Apr 2024 07:50:36 +0000 (UTC)
-X-CSE-ConnectionGUID: EIoZMIJ1Rw2y6tFy3OwyGQ==
-X-CSE-MsgGUID: N0VrIHKFRfeV24WW1omY2g==
-X-IronPort-AV: E=McAfee;i="6600,9927,11032"; a="10311935"
-X-IronPort-AV: E=Sophos;i="6.07,176,1708416000"; d="scan'208";a="10311935"
-Received: from orviesa001.jf.intel.com ([10.64.159.141])
- by fmvoesa107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 03 Apr 2024 00:50:36 -0700
-X-CSE-ConnectionGUID: LDqx5cFcRvm6jfBxxSepYQ==
-X-CSE-MsgGUID: cJ3mVfk0T9aRBbtHxQHizw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.07,176,1708416000"; d="scan'208";a="55790938"
-Received: from irvmail002.ir.intel.com ([10.43.11.120])
- by orviesa001.jf.intel.com with ESMTP; 03 Apr 2024 00:50:32 -0700
-Received: from fedora.igk.intel.com (Metan_eth.igk.intel.com [10.123.220.124])
- by irvmail002.ir.intel.com (Postfix) with ESMTP id C035E369F7;
- Wed,  3 Apr 2024 08:50:30 +0100 (IST)
-From: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Wed,  3 Apr 2024 03:41:12 -0400
-Message-Id: <20240403074112.7758-7-mateusz.polchlopek@intel.com>
-X-Mailer: git-send-email 2.38.1
-In-Reply-To: <20240403074112.7758-1-mateusz.polchlopek@intel.com>
-References: <20240403074112.7758-1-mateusz.polchlopek@intel.com>
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 6cMYOCRklWWk for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  3 Apr 2024 07:45:01 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2a0a:51c0:0:12e:550::1; helo=galois.linutronix.de;
+ envelope-from=kurt@linutronix.de; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 453FA81286
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 453FA81286
+Received: from galois.linutronix.de (Galois.linutronix.de
+ [IPv6:2a0a:51c0:0:12e:550::1])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 453FA81286
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  3 Apr 2024 07:45:00 +0000 (UTC)
+From: Kurt Kanzenbach <kurt@linutronix.de>
+To: Simon Horman <horms@kernel.org>
+In-Reply-To: <20240328114633.GI403975@kernel.org>
+References: <20240212-igc_mqprio-v2-1-587924e6b18c@linutronix.de>
+ <20240328114633.GI403975@kernel.org>
+Date: Wed, 03 Apr 2024 09:44:55 +0200
+Message-ID: <87a5malwjs.fsf@kurt.kurt.home>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1712130636; x=1743666636;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=ayp3w+xzqn0hd9fHMdrwa/nbYUX3VcDmHtiOLt5hPWs=;
- b=dMckBxje6SRfrr+nCJ6rqcYVFU05zMwjLhc9dOT42oWlxWj+Eb1F/WOj
- tiIEa4FJmXlJkg4mmQ0sz3/GKvgTo3kE7DaC5IS3wfEVldpcwZOJrkc2p
- uNBx6aAFUwH1Ni1CXEMKlsRP7VRXUfH19t2G1qNaGFETxUXGkiIykIGku
- A8MLp7q/KMaOdkvzrYnfS5Ac7rjmaeSOTiX/is/nX09cP1lBy999A5XzC
- d3SJqdeURDklCxwr2kafus2svJYP6Yo0PyixK2KLRcEOewOx/4SoSPQLO
- 0aIC0GPwrk1nLa7Uq9LknSt4Bi830Jwo9Y7wcOfMo+miPhOjFn1SqCfkB
- g==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+Content-Type: multipart/signed; boundary="=-=-=";
+ micalg=pgp-sha512; protocol="application/pgp-signature"
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linutronix.de; s=2020; t=1712130297;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=ONtAaHGTcn6BZJJfwlKtYss4wDqYiooZmD8ycswc5Zg=;
+ b=NWzmiTxnqFcyAvtmPhZb+48E/+0EKKdLJbXOLknewhQlz3eJ67rLOpoJyZtIJ2MiPWlYcx
+ EHkOquOkkKIomjWGq4ZHrRnwWSz2IQQPfaxL5Qr6LVilzZo5dvfjqQI1lGcArjaCGXLxDs
+ M7+ezjLfSiwceXQZTGpSllUhI08XQPIfpmKpYZNK+ATGQVqbIBfNfZp9SLnLnYtXOG47eU
+ ETXyHh//aKbyYWEz8MASDBbfB7jERP0VDvwuR1ffORhYrZHSTGsveI/kjhfghLueomfWvO
+ ITESDuyCStmQ7G9Zliah68XDlJUYN7NQKHqhLDcwvUNN1e4FXwT6ZkzkyxTeUg==
+X-Mailman-Original-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed;
+ d=linutronix.de; s=2020e; t=1712130297;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=ONtAaHGTcn6BZJJfwlKtYss4wDqYiooZmD8ycswc5Zg=;
+ b=2GYhReMFWqD2cXtsRpymLKowU9cQIzBwnRZEkUiZ92cKnwCmmeZEs4Bgv5LfU0FhfBTvLe
+ tRYRDt5hm+uEt7CQ==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=dMckBxje
-Subject: [Intel-wired-lan] [PATCH net-next v9 6/6] ice: Document
- tx_scheduling_layers parameter
+ header.from=linutronix.de
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key, unprotected) header.d=linutronix.de
+ header.i=@linutronix.de header.a=rsa-sha256 header.s=2020 header.b=NWzmiTxn; 
+ dkim=pass header.d=linutronix.de header.i=@linutronix.de
+ header.a=ed25519-sha256 header.s=2020e header.b=2GYhReMF
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v2] igc: Add MQPRIO offload
+ support
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -107,87 +101,137 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: andrew@lunn.ch, jiri@resnulli.us, michal.wilczynski@intel.com,
- Mateusz Polchlopek <mateusz.polchlopek@intel.com>, netdev@vger.kernel.org,
- lukasz.czapnik@intel.com, victor.raj@intel.com, Jiri Pirko <jiri@nvidia.com>,
- anthony.l.nguyen@intel.com, horms@kernel.org, przemyslaw.kitszel@intel.com,
- kuba@kernel.org
+Cc: Vinicius Costa Gomes <vinicius.gomes@intel.com>,
+ intel-wired-lan@lists.osuosl.org,
+ Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
+ Eric Dumazet <edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
+ netdev@vger.kernel.org, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Michal Wilczynski <michal.wilczynski@intel.com>
+--=-=-=
+Content-Type: text/plain
+Content-Transfer-Encoding: quoted-printable
 
-New driver specific parameter 'tx_scheduling_layers' was introduced.
-Describe parameter in the documentation.
+On Thu Mar 28 2024, Simon Horman wrote:
+> On Tue, Mar 26, 2024 at 02:34:54PM +0100, Kurt Kanzenbach wrote:
+>> Add support for offloading MQPRIO. The hardware has four priorities as w=
+ell
+>> as four queues. Each queue must be a assigned with a unique priority.
+>>=20
+>> However, the priorities are only considered in TSN Tx mode. There are two
+>> TSN Tx modes. In case of MQPRIO the Qbv capability is not required.
+>> Therefore, use the legacy TSN Tx mode, which performs strict priority
+>> arbitration.
+>>=20
+>> Example for mqprio with hardware offload:
+>>=20
+>> |tc qdisc replace dev ${INTERFACE} handle 100 parent root mqprio num_tc =
+4 \
+>> |   map 0 0 0 0 0 1 2 3 0 0 0 0 0 0 0 0 \
+>> |   queues 1@0 1@1 1@2 1@3 \
+>> |   hw 1
+>>=20
+>> The mqprio Qdisc also allows to configure the `preemptible_tcs'. However,
+>> frame preemption is not supported yet.
+>>=20
+>> Tested on Intel i225 and implemented by following data sheet section 7.5=
+.2,
+>> Transmit Scheduling.
+>>=20
+>> Signed-off-by: Kurt Kanzenbach <kurt@linutronix.de>
+>
+> ...
+>
+>> diff --git a/drivers/net/ethernet/intel/igc/igc_defines.h b/drivers/net/=
+ethernet/intel/igc/igc_defines.h
+>> index 5f92b3c7c3d4..73502a0b4df7 100644
+>> --- a/drivers/net/ethernet/intel/igc/igc_defines.h
+>> +++ b/drivers/net/ethernet/intel/igc/igc_defines.h
+>> @@ -547,6 +547,15 @@
+>>=20=20
+>>  #define IGC_MAX_SR_QUEUES		2
+>>=20=20
+>> +#define IGC_TXARB_TXQ_PRIO_0_SHIFT	0
+>> +#define IGC_TXARB_TXQ_PRIO_1_SHIFT	2
+>> +#define IGC_TXARB_TXQ_PRIO_2_SHIFT	4
+>> +#define IGC_TXARB_TXQ_PRIO_3_SHIFT	6
+>> +#define IGC_TXARB_TXQ_PRIO_0_MASK	GENMASK(1, 0)
+>> +#define IGC_TXARB_TXQ_PRIO_1_MASK	GENMASK(3, 2)
+>> +#define IGC_TXARB_TXQ_PRIO_2_MASK	GENMASK(5, 4)
+>> +#define IGC_TXARB_TXQ_PRIO_3_MASK	GENMASK(7, 6)
+>> +
+>>  /* Receive Checksum Control */
+>>  #define IGC_RXCSUM_CRCOFL	0x00000800   /* CRC32 offload enable */
+>>  #define IGC_RXCSUM_PCSD		0x00002000   /* packet checksum disabled */
+>> diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/eth=
+ernet/intel/igc/igc_main.c
+>
+> ...
+>
+>> diff --git a/drivers/net/ethernet/intel/igc/igc_tsn.c b/drivers/net/ethe=
+rnet/intel/igc/igc_tsn.c
+>
+> ...
+>
+>> @@ -106,7 +109,26 @@ static int igc_tsn_disable_offload(struct igc_adapt=
+er *adapter)
+>>  	wr32(IGC_QBVCYCLET_S, 0);
+>>  	wr32(IGC_QBVCYCLET, NSEC_PER_SEC);
+>>=20=20
+>> +	/* Reset mqprio TC configuration. */
+>> +	netdev_reset_tc(adapter->netdev);
+>> +
+>> +	/* Restore the default Tx arbitration: Priority 0 has the highest
+>> +	 * priority and is assigned to queue 0 and so on and so forth.
+>> +	 */
+>> +	txarb =3D rd32(IGC_TXARB);
+>> +	txarb &=3D ~(IGC_TXARB_TXQ_PRIO_0_MASK |
+>> +		   IGC_TXARB_TXQ_PRIO_1_MASK |
+>> +		   IGC_TXARB_TXQ_PRIO_2_MASK |
+>> +		   IGC_TXARB_TXQ_PRIO_3_MASK);
+>> +
+>> +	txarb |=3D 0x00 << IGC_TXARB_TXQ_PRIO_0_SHIFT;
+>> +	txarb |=3D 0x01 << IGC_TXARB_TXQ_PRIO_1_SHIFT;
+>> +	txarb |=3D 0x02 << IGC_TXARB_TXQ_PRIO_2_SHIFT;
+>> +	txarb |=3D 0x03 << IGC_TXARB_TXQ_PRIO_3_SHIFT;
+>> +	wr32(IGC_TXARB, txarb);
+>
+> Hi Kurt,
+>
+> It looks like the above would be a good candidate for using FIELD_PREP,
+> in which case the _SHIFT #defines can likely be removed.
 
-Signed-off-by: Michal Wilczynski <michal.wilczynski@intel.com>
-Acked-by: Jakub Kicinski <kuba@kernel.org>
-Reviewed-by: Jiri Pirko <jiri@nvidia.com>
-Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-Co-developed-by: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
-Signed-off-by: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
----
- Documentation/networking/devlink/ice.rst | 47 ++++++++++++++++++++++++
- 1 file changed, 47 insertions(+)
+OK.
 
-diff --git a/Documentation/networking/devlink/ice.rst b/Documentation/networking/devlink/ice.rst
-index 7f30ebd5debb..830c04354222 100644
---- a/Documentation/networking/devlink/ice.rst
-+++ b/Documentation/networking/devlink/ice.rst
-@@ -21,6 +21,53 @@ Parameters
-    * - ``enable_iwarp``
-      - runtime
-      - mutually exclusive with ``enable_roce``
-+   * - ``tx_scheduling_layers``
-+     - permanent
-+     - The ice hardware uses hierarchical scheduling for Tx with a fixed
-+       number of layers in the scheduling tree. Each of them are decision
-+       points. Root node represents a port, while all the leaves represent
-+       the queues. This way of configuring the Tx scheduler allows features
-+       like DCB or devlink-rate (documented below) to configure how much
-+       bandwidth is given to any given queue or group of queues, enabling
-+       fine-grained control because scheduling parameters can be configured
-+       at any given layer of the tree.
-+
-+       The default 9-layer tree topology was deemed best for most workloads,
-+       as it gives an optimal ratio of performance to configurability. However,
-+       for some specific cases, this 9-layer topology might not be desired.
-+       One example would be sending traffic to queues that are not a multiple
-+       of 8. Because the maximum radix is limited to 8 in 9-layer topology,
-+       the 9th queue has a different parent than the rest, and it's given
-+       more bandwidth credits. This causes a problem when the system is
-+       sending traffic to 9 queues:
-+
-+       | tx_queue_0_packets: 24163396
-+       | tx_queue_1_packets: 24164623
-+       | tx_queue_2_packets: 24163188
-+       | tx_queue_3_packets: 24163701
-+       | tx_queue_4_packets: 24163683
-+       | tx_queue_5_packets: 24164668
-+       | tx_queue_6_packets: 23327200
-+       | tx_queue_7_packets: 24163853
-+       | tx_queue_8_packets: 91101417 < Too much traffic is sent from 9th
-+
-+       To address this need, you can switch to a 5-layer topology, which
-+       changes the maximum topology radix to 512. With this enhancement,
-+       the performance characteristic is equal as all queues can be assigned
-+       to the same parent in the tree. The obvious drawback of this solution
-+       is a lower configuration depth of the tree.
-+
-+       Use the ``tx_scheduling_layer`` parameter with the devlink command
-+       to change the transmit scheduler topology. To use 5-layer topology,
-+       use a value of 5. For example:
-+       $ devlink dev param set pci/0000:16:00.0 name tx_scheduling_layers
-+       value 5 cmode permanent
-+       Use a value of 9 to set it back to the default value.
-+
-+       You must do PCI slot powercycle for the selected topology to take effect.
-+
-+       To verify that value has been set:
-+       $ devlink dev param show pci/0000:16:00.0 name tx_scheduling_layers
- 
- Info versions
- =============
--- 
-2.38.1
+>
+> Also, the logic above seems to be replicated in igc_tsn_enable_offload.
+> Perhaps a helper is appropriate.
 
+Makes sense.
+
+Thanks,
+Kurt
+
+--=-=-=
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQJHBAEBCgAxFiEEvLm/ssjDfdPf21mSwZPR8qpGc4IFAmYNCPgTHGt1cnRAbGlu
+dXRyb25peC5kZQAKCRDBk9HyqkZzgoAvD/0TsxVB/pfQbR/D7CGQ8gWHZm344s0h
+ynZRvRWRUglmEG0rCZWv6Bhe7t1618j/hvA9vh8pzBo10G4lwekgCmH1Iln4CoYJ
+VMbJ7iypnvCtBdyfoSia7VXLfRuyGux8VQ2eYfl8t5lpYbdn8ZE77rCm5ZYUJ3cW
+asLQg/neobrTOETEbgzTKHmJcsd5Rl5pt9NNuUJ7MrSthwS6ck27d1RhqNnC5buR
+c+34+djZNfxLhS44f7wr3EM7nfOjbdZnx+QYqi9NUI+BrizynDQTuWnqb6xSgIJh
+vQWhOCGciOr3p7aUp9N8Mpq4JJsTlUj1bkhl1fCBp2YQ6c1f8LJt/DHExEmfYn71
+03G0j8XFg5nRMQgNk5w//BANF3ptTrVOooFk9tyaUXYjJ+BLKZ2UHpXlk4+HiXP5
+DqzUi896rdrpX3xcEq0BHYpCqpAZwqkcLjdBVkgayoUn19wSUM25U9NpSNZN2g1z
+T4+GnEdjVcCe2zhUdxsOAfsBFJuK72DAUjGAkRRTpD/8StYDGwBPB7cwMxJ8aPA7
+fi0QejZ1TSNPVTQCsBqepgSbzOIhIy22CcXafwOxGhlDZxufzauhX5hR6znvHCc3
+5oioNykWFvdorxiCiyw/piuDZEvG7+70RkTI7X8mlF5vFcN00O5dAUcM7YB/L7PM
+LPOy9vROZKM6Xw==
+=xNbN
+-----END PGP SIGNATURE-----
+--=-=-=--
