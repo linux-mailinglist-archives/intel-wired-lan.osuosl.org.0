@@ -1,98 +1,198 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id D5EA4898B73
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  4 Apr 2024 17:46:30 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id CAF3D898B86
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  4 Apr 2024 17:49:32 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 8618841C1B;
-	Thu,  4 Apr 2024 15:46:29 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 7667441BBB;
+	Thu,  4 Apr 2024 15:49:31 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 083I0EQ9Unyw; Thu,  4 Apr 2024 15:46:28 +0000 (UTC)
+ id 0NJdur4tPXth; Thu,  4 Apr 2024 15:49:30 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org DA9B941BF8
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A138941B3F
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1712245587;
-	bh=/GNCxfOGA2FFwieD7uyxix76lecgVRzR17bz1hjtvEs=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1712245770;
+	bh=0DD3kpEXv8UOFyh+YfcoaP2iFjnlJ32iQtaczenQuEM=;
+	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=PKpK9/ZlEL6Nzr452TQ9Xj8+txpQJVEEIc38qP39HoFojthRvpzXnmWJstR+drD/8
-	 oM+adg8QaBYM4/KpOfUIScIK2gL5BBlMr77mBuDPJtCN4HboM9qnIjIOb5/5bYNbAb
-	 Zhh+mCghJc9OEk00+AZYZ2sU0j2foSjBTVDpTKaInPSOU5Zyk9d4JTdTnG19zDvtRK
-	 8q5hNOA/68Inmo7imp7X9IR5XH5Ap8VGZkldlf2Psvc4eOor3RCgUd83FZQSdryJf4
-	 bONyYP2ca5L/6vDqInzHSRz2T7sUu3rdJyFuF17nMXSsgH0cfZj3Zh28JGmKA4tQAr
-	 PNvsir3y07oww==
+	b=shPO7zYX5q8jeNGP4gXgZJmIGonKbvx2vW4HiSd2QGgyqka8Yugd+109kNSfTsouZ
+	 BbgYnWg3suc5Tyf0olFgq7pd4CHBh+M6FJpmV4mxbqOvVm4ep/2rcqUcdwwLYr4FxM
+	 emBOCgBb+S2q4sn4KV0+HNaauJ39gJnBtJrh9PXVEOET+Y4SS1UJIWZwF/NluIqa2A
+	 hvJ6WjfRYh125WIUNkVvfOee2q6KRysGtvvs7xRykKaxmUF1y+WWh3N8/tkZv7dg5C
+	 /vBvx7fuE4V+hAbq8JSSYPv3ZfXPRdoGZTL3EEWSpgxZYvNoxQJIXPg1G72En8zdDR
+	 1GZKc9cxwOmYw==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id DA9B941BF8;
-	Thu,  4 Apr 2024 15:46:26 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id A138941B3F;
+	Thu,  4 Apr 2024 15:49:30 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 8D2171BF232
- for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Apr 2024 15:46:24 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id AB2B41BF232
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Apr 2024 15:49:27 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 791526076D
- for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Apr 2024 15:46:24 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id A473482150
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Apr 2024 15:49:27 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id j1OOgaQEbRdt for <intel-wired-lan@lists.osuosl.org>;
- Thu,  4 Apr 2024 15:46:23 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.12;
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id Rvav7faBZun8 for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  4 Apr 2024 15:49:27 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.10;
  helo=mgamail.intel.com; envelope-from=aleksander.lobakin@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 884CF60761
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 884CF60761
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.12])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 884CF60761
- for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Apr 2024 15:46:22 +0000 (UTC)
-X-CSE-ConnectionGUID: wtzBOxBYTLm2tTITfWXuQg==
-X-CSE-MsgGUID: YMiY0DmoR2urX6/Qj0EYsQ==
-X-IronPort-AV: E=McAfee;i="6600,9927,11034"; a="11312310"
-X-IronPort-AV: E=Sophos;i="6.07,179,1708416000"; d="scan'208";a="11312310"
-Received: from fmviesa005.fm.intel.com ([10.60.135.145])
- by fmvoesa106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 04 Apr 2024 08:46:22 -0700
-X-CSE-ConnectionGUID: ywm4lFaQQum9ux5Ag5ecDA==
-X-CSE-MsgGUID: Xy/3cMo/QMG9Yqw1Wm9BnQ==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org CBB7682139
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org CBB7682139
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.10])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id CBB7682139
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  4 Apr 2024 15:49:26 +0000 (UTC)
+X-CSE-ConnectionGUID: Q05q6BFuTsyXpR2zb9my1g==
+X-CSE-MsgGUID: nzu6nr1pSkyUoDUdd99Rdg==
+X-IronPort-AV: E=McAfee;i="6600,9927,11034"; a="18897909"
+X-IronPort-AV: E=Sophos;i="6.07,179,1708416000"; d="scan'208";a="18897909"
+Received: from orviesa009.jf.intel.com ([10.64.159.149])
+ by fmvoesa104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 04 Apr 2024 08:49:08 -0700
+X-CSE-ConnectionGUID: 09bMXkTgR0mKzFlDyRst4A==
+X-CSE-MsgGUID: SuKmVpTcQymvVaNTVAJmNA==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.07,179,1708416000"; d="scan'208";a="23288247"
-Received: from newjersey.igk.intel.com ([10.102.20.203])
- by fmviesa005.fm.intel.com with ESMTP; 04 Apr 2024 08:46:18 -0700
+X-IronPort-AV: E=Sophos;i="6.07,179,1708416000"; d="scan'208";a="18803916"
+Received: from orsmsx602.amr.corp.intel.com ([10.22.229.15])
+ by orviesa009.jf.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
+ 04 Apr 2024 08:49:08 -0700
+Received: from orsmsx611.amr.corp.intel.com (10.22.229.24) by
+ ORSMSX602.amr.corp.intel.com (10.22.229.15) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.35; Thu, 4 Apr 2024 08:49:07 -0700
+Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
+ ORSMSX611.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.35; Thu, 4 Apr 2024 08:49:06 -0700
+Received: from ORSEDG602.ED.cps.intel.com (10.7.248.7) by
+ orsmsx610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.35 via Frontend Transport; Thu, 4 Apr 2024 08:49:06 -0700
+Received: from NAM11-DM6-obe.outbound.protection.outlook.com (104.47.57.169)
+ by edgegateway.intel.com (134.134.137.103) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.35; Thu, 4 Apr 2024 08:49:06 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=kF8ZTiBLU4PHIdjTwgOZjmXYHoz0Al8b4PfCDZGbqJUo939C/M7QiqHzlqRBphqa4C27iiVn+VNLsk+kmJgroACMfcPSQ0YMGcaNar9xF+XFmbqB79EzHdVZv8aYMU0Rz5SCcvyclaEZ1a149s0sFbw6dq2lukAkXy5WupPaLq9tlaZ7Q0IecbeTgEQujEPW6XqCoRlvMCjaaC1jE+ghIGNFcFL/r3B58mmADJ8mHngmOnpdNzKoTVdqWZqRoegz9rKbU6IuQpqjFiAPYJA+5HVNhynLSK2B+GEl82ZOc6DGYz2b2oWPxVtC5tiDq0Q5QpWwSEsap2wkcw/+9BLa1Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=0DD3kpEXv8UOFyh+YfcoaP2iFjnlJ32iQtaczenQuEM=;
+ b=TTNwtigIlx3RpHWPkG8lASyJ0RRfquvnQqAv8kn+VGycTVKEEQczlQP+EX6YZjUw/9Trhl8OhQOhGSbD84AuR4UeFk6WZDm1MSoQf44L/Hts4B/hg7rUiYstjAs8hMroQBOsKIrAUftaVDl0cuHWcIGKld9wg1T/gafgKSZyauCXHY8qNLDL1Zv5BO/Rfb2rY/5oSwzU4DNxxvwGdE5Yk0r/TKOoqI2/fDka3LBuYxfv6Kk+4K4mTgxeQqqsX7rOE+7+IG6URcHci5WrnI9upNjju0ktSYyKxA6KbklLfGABiJXrwhOllcfK5PUYCBZwQ4qqUDrNi9zHTqqb1fhk6Q==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from DS0PR11MB8718.namprd11.prod.outlook.com (2603:10b6:8:1b9::20)
+ by DS7PR11MB6223.namprd11.prod.outlook.com (2603:10b6:8:98::19) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7452.25; Thu, 4 Apr
+ 2024 15:48:26 +0000
+Received: from DS0PR11MB8718.namprd11.prod.outlook.com
+ ([fe80::654c:d66a:ec8e:45e9]) by DS0PR11MB8718.namprd11.prod.outlook.com
+ ([fe80::654c:d66a:ec8e:45e9%6]) with mapi id 15.20.7452.019; Thu, 4 Apr 2024
+ 15:48:22 +0000
+Message-ID: <77f48552-5919-4a7b-b55e-f4895f90f81d@intel.com>
+Date: Thu, 4 Apr 2024 17:47:01 +0200
+User-Agent: Mozilla Thunderbird
+To: Dan Carpenter <dan.carpenter@linaro.org>
+References: <20240327152358.2368467-1-aleksander.lobakin@intel.com>
+ <20240327152358.2368467-16-aleksander.lobakin@intel.com>
+ <5f63dd25-de94-4ca3-84e6-14095953db13@moroto.mountain>
 From: Alexander Lobakin <aleksander.lobakin@intel.com>
-To: "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>
-Date: Thu,  4 Apr 2024 17:44:02 +0200
-Message-ID: <20240404154402.3581254-10-aleksander.lobakin@intel.com>
-X-Mailer: git-send-email 2.44.0
-In-Reply-To: <20240404154402.3581254-1-aleksander.lobakin@intel.com>
-References: <20240404154402.3581254-1-aleksander.lobakin@intel.com>
+Content-Language: en-US
+In-Reply-To: <5f63dd25-de94-4ca3-84e6-14095953db13@moroto.mountain>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+X-ClientProxiedBy: MI1P293CA0029.ITAP293.PROD.OUTLOOK.COM
+ (2603:10a6:290:3::15) To DS0PR11MB8718.namprd11.prod.outlook.com
+ (2603:10b6:8:1b9::20)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DS0PR11MB8718:EE_|DS7PR11MB6223:EE_
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: FXZXr/Cwu0UKpKn5b+lVxtsctlOuDpXZltIYzZICtaaAdy/8czFUNUK1lq9ULPJ3ljcYwnoIUrXEirOVWiRKDRIj+Rsyfsr6SmvN5UI+N8UrmOtEPYpsVRHPLC2l6Ut3Wwq2hT/0K6I/YN35lHvUiPUQIp/mXN2KQlERdPltrngG9fBhrdHrkaFpb5ktE7GTPx4hFWJzYbHSFftwH8ZqPpEVtFUSDradP6Mz4+0RBUTpUcofGHMe599KI3CmVMzgxJMJlbQLO9VyqvCaaaEAERp/L0arVdL22R3jXykARmsyngVgmUr4ve9kgBjpHKS6SqZNanYdvAF9/0dvjw9h6UbSiP0nrh41ZOA66ZywAS/QmiEDQ3KosW4wbHTKcvtaG0OWWLmVl39JsAap1xmxRku6b5mEWVnnWuB9ffDJ1eJdx8Yc4xDNW3Ysmb4o3TtzmbfVeEhB68VZkUfpCDfI/PN4aOQvO7PHlpYGFAi/+mksLNVCtZNOsJ113bXZgLJFfvW2NS3c1VvkwvstKhGggrsHjH7nrhBsTebu9r7C2SZ3VBi2dnTrYJdCqVK70ZWRY6qEsLQLc5RqtM0j8cggqs8OaUrd652RUKITCs6o+8yyK1KAbysyoMc81QvDDLuqGaHlB+EivJIt1nMr8TSTs4nOvMsQboczKq/UuNekkc8=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:DS0PR11MB8718.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230031)(366007)(1800799015)(376005)(7416005); DIR:OUT; SFP:1102; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?OWlON2Rva21HUzljVjlwbVBCVkZvcGFIdVA3WU15YktpM1gwYm1nTUdsN3dS?=
+ =?utf-8?B?bGVSZFpGdHA5bjBpbGRaQ1VqUmd2dWUvdzl0aERwblZHbWFnd21RWmNYd0lj?=
+ =?utf-8?B?OERtVlk2L25LMFIrKzY4eGJKQjNKdDJOc2VOeDVnZWc3Q3pGRmZWaHNDQlhG?=
+ =?utf-8?B?aUw1WjR5MGZFZG8xV2ExWitYaEZjK3VkRUk5TnprQ1UyVTZVQmYycnRhOWFm?=
+ =?utf-8?B?eG9FQWVxMzlFa3N6aG5ndXV3YWVDa1d4emUrQlhkVWJhaXRyUVRCOHFneUg2?=
+ =?utf-8?B?RFRybVIxQXBzdmVlL1YrUWs5dVliZlhiZFpGN1FQaDZvYmQ3dU8ybzVCVjB4?=
+ =?utf-8?B?OTJMTEFIRGU0WG1aMVBNbFFrYlE4N3NTM0dRTzFoYTBSYzZvYXN6ejg0d1ln?=
+ =?utf-8?B?YnY1WThZdkNDL0xnYWVJaTdtREw0allyTmtNV0tBME1CZWhEQU8zSTVvWm4w?=
+ =?utf-8?B?TU5WYmZTTlFjYjlyT0RlVWtJbWxXOW84cHUxQUYvNDdwMVRNdWp3Z2RZam5o?=
+ =?utf-8?B?Z1JLSDRhelg1SnNrSEVpM0poejJjdFUycFQ0Q1hEZk84cmdPckFNSmdNcWln?=
+ =?utf-8?B?aXVmRVhTZThTSWJtd2NGdUh6MHVzNGw4RFNadmIwRjZaQWpObEl3Q0xWQXA2?=
+ =?utf-8?B?SW91SFo3MlhPSzRud1pJa2psV2J2NmI2OGp2QmZKSEQ4Z0VuRmJHdXpjRlhi?=
+ =?utf-8?B?bGxuYWxvU0tyMGZqeVFCc052UjVOVmlMYlFtZVViRDErdC9yZEFrN0N1c21S?=
+ =?utf-8?B?WEVqTzNvVVVuZUh6SGNMNzlYVmlHcDdGbDcwU0ZQbXZCS3NvcWJqN3ZTRnhm?=
+ =?utf-8?B?TWU3ZzBjTGdMWkVWRWwxeWx6amZ6YlRQTTRKVFJ1azNpcENydG4wcGlGcEtL?=
+ =?utf-8?B?OVB3dXd6R3V4Q1dFODRNVis5U00zeFh1cHc5d1RqVnN4dEZNR2swR2lpTTB2?=
+ =?utf-8?B?SEY4TmpZVXNlNThYcnJUTit3TW1uY1d3MmZ3dndGbnNRbTdXekdXdXlaTzNZ?=
+ =?utf-8?B?NlpkeERsMmdneW9UenA1NVRvVW44aFpBQ2hOWGZvWVZZL3FXa2NaTUhlSW5J?=
+ =?utf-8?B?Wk5WaGNyUmYydmhDbEc0Tk40THA5VGYvVW4zOUZ0ZlNZUEV3MDNHNVlPZm03?=
+ =?utf-8?B?T1VUOUhSQ0J3SlVZeWJWTG81MmNJMUY0aXFiZ205ZDlGTm5KaUgrWHU4NlJ3?=
+ =?utf-8?B?cEJtWFpZUCs5TFlPNkxYc05FdXg4R2k2TG4zditUem8wWjNQaVR0VnM0M3Q4?=
+ =?utf-8?B?aks2NUdNRXFlZDd6Q1hCMWN2dWpRMUdKcjlMbVhSOGo3a3FhVlJSVXpBbjlV?=
+ =?utf-8?B?bGtGUkNUR29DcWJ1RDdQZ0U2MDJ1OEZoWlpaNFhvQUQ1TDUzU0NVQmdpOXVn?=
+ =?utf-8?B?K0ZjOFJvaUYxUHVQbGs5blRuNW5HMzY2ZHBORHN2Sm5NZmpmR00rVXEyT0Nh?=
+ =?utf-8?B?dFhxUGFBVU1tZmlia1ZpUnhIRnRURzl6TVpMMVJoUzNxcDlFL1pDTXVQSWFp?=
+ =?utf-8?B?VVBjQjk0cHJhR0R1ZXl0SHE4bUNINEZ6QzNvaGpWOFZ6Q2MxYzFPYTJaeXZY?=
+ =?utf-8?B?VFRSQVlRYzJUTDMxeE0vRVB1S0pRQjhzdzhqdkdWVU8xN0NiMUswbndmZDE2?=
+ =?utf-8?B?ekhVSVFnRUxGN00vRUhkUklwREo2ZnA3c3YwNVJwOTJ4RGg3YzhuQnhoZFI2?=
+ =?utf-8?B?UXJmNHg5VlhkWXNnMUVQc2ZscElKZ0Q0bFR3TkRtQ1F2NDJlaStWNGtsU2hU?=
+ =?utf-8?B?amhpb2JSUG9jWnVnWmZhOVhwZGs1MU1odUltUEh1OWI4UmxwZG1JeTRvUUps?=
+ =?utf-8?B?SWxGbHNPOEtYdmh2bVFpVWdoMWZkM1Y2VWlZUVBGUkZtQzBtcklUZ2EvUWsv?=
+ =?utf-8?B?T01YVElUdFQrV2VMekIyT0IzYnhxS2VBUHBqS3dGWDlCdUJuWUpwdC9QendS?=
+ =?utf-8?B?dE45N2xKM0VkYVRxTnRERmRLRSsrT3JNOXk1ZlpneVdNdzB3dGZ3QzRSNW5l?=
+ =?utf-8?B?MjgvRFQ3VTcwM21WUDBzWUdvRFNDSGV0azdzcDkyS2FDYUg1MElrYXQvNHBR?=
+ =?utf-8?B?QWZGK0xpbnlSS1NWbFdzWWM1TlE0R1FsMk45anVzV1QzYnV6dXZLQmUyR1By?=
+ =?utf-8?B?bm40MWhNZ3d4a2NObXkyRmQ4NkZMdEFLOVY1YlFET253UFhkNnRUenMwdmdl?=
+ =?utf-8?B?VHc9PQ==?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: b868d52b-6586-49a5-1eaf-08dc54bea81f
+X-MS-Exchange-CrossTenant-AuthSource: DS0PR11MB8718.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 04 Apr 2024 15:48:22.3246 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: uogoPLm4C6yKBF4ZLGXXlTHwMXV6WRZgBUIixrdiueNb5ieMyz94wpLEaYB7LYNjOmHGRUMPnN/PlGCz9ucMTgAqvZBUCFbyp4IsN7NxaMY=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS7PR11MB6223
+X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1712245583; x=1743781583;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=vjsY2nVHl5yn6IbTx+aoWub4CIDNxtDh/nMAxMjdNAQ=;
- b=SLrsWoFfvc2sGBrosr2zo7zAkIAQVkim33pVQtI6sS56l79QAwmS7Toi
- WVtTVWDrYnRwlWbQKimC3v/Hvj2b8Mq/VWLXikD2Xx6b/FNkxv0TaNTat
- ifEZnMNiYBaQiqZjoqtBxpxioPnJI3i0l5foJV4sC031gCs6e7PcyQaHX
- rjiADJgEGnc4Pgddx8OZFF6KuX+RnCD3mqb3QB00Y5lH/E0kGxKVMvpvL
- 4xvUrWHxBLP1M5sn5zD+Po7bluVObRBrnAUvGQzLad8J+KO+P1v2lswUf
- iRyptl7khQ44+xQQBJOD2pMAj/L0CRtJoYyeLeFUo9411x5wBDkejTpPj
+ t=1712245766; x=1743781766;
+ h=message-id:date:subject:to:cc:references:from:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=RTEf2TIJnfbEgPrX2XKPSxPotJPrwGrPl0V6qk353Ow=;
+ b=KUe0utHttIDVky1lj235FsaJNw9sRftxPQIDqduejI/nNSwlAh4wU+XF
+ qIRadSGUZczqZf4+s+2zsolevXAeT4D/SN4qcL3IPpYU+UdpQif29TtpN
+ tgdSZnqIHYV3lWHXtGgIxaz/XDLIEI8hZ7/U6IaL29QY2FGaRP2RPWag4
+ oU5AA2YoXvtbdhCCsOjQ/DmI7hL3A+yBFuONHGlL+Ul3ayXMIyumBOpaH
+ EE31GTzJoO7hD4MPFHJOGz9Anu/ydD5KUpF1RukuajF6rf9bd8mC0JK2M
+ iQpJwlLOos5938HWs8WKoBnFr6Jymd6ybvkzHfYRt46nsg0JSbMV1l5Cn
  g==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=SLrsWoFf
-Subject: [Intel-wired-lan] [PATCH net-next v9 9/9] iavf: switch to Page Pool
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=KUe0utHt
+Subject: Re: [Intel-wired-lan] [PATCH net-next v6 15/21] ip_tunnel: use a
+ separate struct to store tunnel params in the kernel
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -105,654 +205,46 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Jesper Dangaard Brouer <hawk@kernel.org>, linux-mm@kvack.org,
- netdev@vger.kernel.org, Alexander Duyck <alexanderduyck@fb.com>,
- Ilias Apalodimas <ilias.apalodimas@linaro.org>, linux-kernel@vger.kernel.org,
- Alexander Lobakin <aleksander.lobakin@intel.com>,
- Yunsheng Lin <linyunsheng@huawei.com>, intel-wired-lan@lists.osuosl.org,
- nex.sw.ncis.osdt.itp.upstreaming@intel.com, Christoph Lameter <cl@linux.com>,
- Andrew Morton <akpm@linux-foundation.org>, Vlastimil Babka <vbabka@suse.cz>
+Cc: Yury Norov <yury.norov@gmail.com>, intel-wired-lan@lists.osuosl.org,
+ linux-kernel@vger.kernel.org, Eric Dumazet <edumazet@google.com>,
+ netdev@vger.kernel.org, Alexander Potapenko <glider@google.com>,
+ Simon Horman <horms@kernel.org>, nex.sw.ncis.osdt.itp.upstreaming@intel.com,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ "David S. Miller" <davem@davemloft.net>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Now that the IAVF driver simply uses dev_alloc_page() + free_page() with
-no custom recycling logics, it can easily be switched to using Page
-Pool / libeth API instead.
-This allows to removing the whole dancing around headroom, HW buffer
-size, and page order. All DMA-for-device is now done in the PP core,
-for-CPU -- in the libeth helper.
-Use skb_mark_for_recycle() to bring back the recycling and restore the
-performance. Speaking of performance: on par with the baseline and
-faster with the PP optimization series applied. But the memory usage for
-1500b MTU is now almost 2x lower (x86_64) thanks to allocating a page
-every second descriptor.
+From: Dan Carpenter <dan.carpenter@linaro.org>
+Date: Thu, 4 Apr 2024 17:24:23 +0300
 
-Signed-off-by: Alexander Lobakin <aleksander.lobakin@intel.com>
----
- drivers/net/ethernet/intel/iavf/iavf_txrx.h   |  34 +--
- include/linux/net/intel/libie/rx.h            |  17 ++
- drivers/net/ethernet/intel/iavf/iavf_main.c   |   7 +-
- drivers/net/ethernet/intel/iavf/iavf_txrx.c   | 257 +++++-------------
- .../net/ethernet/intel/iavf/iavf_virtchnl.c   |  10 +-
- 5 files changed, 111 insertions(+), 214 deletions(-)
+> On Wed, Mar 27, 2024 at 04:23:52PM +0100, Alexander Lobakin wrote:
+>> +bool ip_tunnel_parm_to_user(void __user *data, struct ip_tunnel_parm_kern *kp)
+>> +{
+>> +	struct ip_tunnel_parm p;
+>> +
+>> +	strscpy(p.name, kp->name);
+> 
+> We need to clear out p before copying to user space to avoid an
+> information leak.  So this strscpy() needs to be strcpy_pad()
+> 
+>> +	p.link = kp->link;
+>> +	p.i_flags = kp->i_flags;
+>> +	p.o_flags = kp->o_flags;
+>> +	p.i_key = kp->i_key;
+>> +	p.o_key = kp->o_key;
+>> +	memcpy(&p.iph, &kp->iph, min(sizeof(p.iph), sizeof(kp->iph)));
+> 
+> And this memcpy() doesn't necessarily clear the whole of p.iph.
 
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_txrx.h b/drivers/net/ethernet/intel/iavf/iavf_txrx.h
-index ed559fa6f214..d7b5587aeb8e 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_txrx.h
-+++ b/drivers/net/ethernet/intel/iavf/iavf_txrx.h
-@@ -80,18 +80,8 @@ enum iavf_dyn_idx_t {
- 	BIT_ULL(IAVF_FILTER_PCTYPE_NONF_UNICAST_IPV6_UDP) | \
- 	BIT_ULL(IAVF_FILTER_PCTYPE_NONF_MULTICAST_IPV6_UDP))
- 
--/* Supported Rx Buffer Sizes (a multiple of 128) */
--#define IAVF_RXBUFFER_3072  3072  /* Used for large frames w/ padding */
--#define IAVF_MAX_RXBUFFER   9728  /* largest size for single descriptor */
--
--#define IAVF_PACKET_HDR_PAD (ETH_HLEN + ETH_FCS_LEN + (VLAN_HLEN * 2))
- #define iavf_rx_desc iavf_32byte_rx_desc
- 
--#define IAVF_RX_DMA_ATTR \
--	(DMA_ATTR_SKIP_CPU_SYNC | DMA_ATTR_WEAK_ORDERING)
--
--#define IAVF_SKB_PAD (NET_SKB_PAD + NET_IP_ALIGN)
--
- /**
-  * iavf_test_staterr - tests bits in Rx descriptor status and error fields
-  * @rx_desc: pointer to receive descriptor (in le64 format)
-@@ -210,12 +200,6 @@ struct iavf_tx_buffer {
- 	u32 tx_flags;
- };
- 
--struct iavf_rx_buffer {
--	dma_addr_t dma;
--	struct page *page;
--	__u32 page_offset;
--};
--
- struct iavf_queue_stats {
- 	u64 packets;
- 	u64 bytes;
-@@ -251,13 +235,18 @@ struct iavf_rx_queue_stats {
- struct iavf_ring {
- 	struct iavf_ring *next;		/* pointer to next ring in q_vector */
- 	void *desc;			/* Descriptor ring memory */
--	struct device *dev;		/* Used for DMA mapping */
-+	union {
-+		struct page_pool *pp;	/* Used on Rx for buffer management */
-+		struct device *dev;	/* Used on Tx for DMA mapping */
-+	};
- 	struct net_device *netdev;	/* netdev ring maps to */
- 	union {
-+		struct libeth_fqe *rx_fqes;
- 		struct iavf_tx_buffer *tx_bi;
--		struct iavf_rx_buffer *rx_bi;
- 	};
- 	u8 __iomem *tail;
-+	u32 truesize;
-+
- 	u16 queue_index;		/* Queue number of ring */
- 
- 	/* high bit set means dynamic, use accessors routines to read/write.
-@@ -305,6 +294,8 @@ struct iavf_ring {
- 					 * iavf_clean_rx_ring_irq() is called
- 					 * for this ring.
- 					 */
-+
-+	u32 rx_buf_len;
- } ____cacheline_internodealigned_in_smp;
- 
- #define IAVF_ITR_ADAPTIVE_MIN_INC	0x0002
-@@ -328,13 +319,6 @@ struct iavf_ring_container {
- #define iavf_for_each_ring(pos, head) \
- 	for (pos = (head).ring; pos != NULL; pos = pos->next)
- 
--static inline unsigned int iavf_rx_pg_order(struct iavf_ring *ring)
--{
--	return 0;
--}
--
--#define iavf_rx_pg_size(_ring) (PAGE_SIZE << iavf_rx_pg_order(_ring))
--
- bool iavf_alloc_rx_buffers(struct iavf_ring *rxr, u16 cleaned_count);
- netdev_tx_t iavf_xmit_frame(struct sk_buff *skb, struct net_device *netdev);
- int iavf_setup_tx_descriptors(struct iavf_ring *tx_ring);
-diff --git a/include/linux/net/intel/libie/rx.h b/include/linux/net/intel/libie/rx.h
-index ab9ffe1e93d8..be6cfb59bc6c 100644
---- a/include/linux/net/intel/libie/rx.h
-+++ b/include/linux/net/intel/libie/rx.h
-@@ -6,6 +6,23 @@
- 
- #include <net/libeth/rx.h>
- 
-+/* Rx buffer management */
-+
-+/* The largest size for a single descriptor as per HW */
-+#define LIBIE_MAX_RX_BUF_LEN	9728U
-+/* "True" HW-writeable space: minimum from SW and HW values */
-+#define LIBIE_RX_BUF_LEN(hr)	min_t(u32, LIBETH_RX_PAGE_LEN(hr),	\
-+				      LIBIE_MAX_RX_BUF_LEN)
-+
-+/* The maximum frame size as per HW (S/G) */
-+#define __LIBIE_MAX_RX_FRM_LEN	16382U
-+/* ATST, HW can chain up to 5 Rx descriptors */
-+#define LIBIE_MAX_RX_FRM_LEN(hr)					\
-+	min_t(u32, __LIBIE_MAX_RX_FRM_LEN, LIBIE_RX_BUF_LEN(hr) * 5)
-+/* Maximum frame size minus LL overhead */
-+#define LIBIE_MAX_MTU							\
-+	(LIBIE_MAX_RX_FRM_LEN(LIBETH_MAX_HEADROOM) - LIBETH_RX_LL_LEN)
-+
- /* O(1) converting i40e/ice/iavf's 8/10-bit hardware packet type to a parsed
-  * bitfield struct.
-  */
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
-index ffb71a62b105..7e0de0a9b883 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_main.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
-@@ -1,6 +1,8 @@
- // SPDX-License-Identifier: GPL-2.0
- /* Copyright(c) 2013 - 2018 Intel Corporation. */
- 
-+#include <linux/net/intel/libie/rx.h>
-+
- #include "iavf.h"
- #include "iavf_prototype.h"
- /* All iavf tracepoints are defined by the include below, which must
-@@ -45,6 +47,7 @@ MODULE_DEVICE_TABLE(pci, iavf_pci_tbl);
- MODULE_ALIAS("i40evf");
- MODULE_AUTHOR("Intel Corporation, <linux.nics@intel.com>");
- MODULE_DESCRIPTION("Intel(R) Ethernet Adaptive Virtual Function Network Driver");
-+MODULE_IMPORT_NS(LIBETH);
- MODULE_IMPORT_NS(LIBIE);
- MODULE_LICENSE("GPL v2");
- 
-@@ -1586,7 +1589,6 @@ static int iavf_alloc_queues(struct iavf_adapter *adapter)
- 		rx_ring = &adapter->rx_rings[i];
- 		rx_ring->queue_index = i;
- 		rx_ring->netdev = adapter->netdev;
--		rx_ring->dev = &adapter->pdev->dev;
- 		rx_ring->count = adapter->rx_desc_count;
- 		rx_ring->itr_setting = IAVF_ITR_RX_DEF;
- 	}
-@@ -2613,9 +2615,8 @@ static void iavf_init_config_adapter(struct iavf_adapter *adapter)
- 	iavf_set_ethtool_ops(netdev);
- 	netdev->watchdog_timeo = 5 * HZ;
- 
--	/* MTU range: 68 - 9710 */
- 	netdev->min_mtu = ETH_MIN_MTU;
--	netdev->max_mtu = IAVF_MAX_RXBUFFER - IAVF_PACKET_HDR_PAD;
-+	netdev->max_mtu = LIBIE_MAX_MTU;
- 
- 	if (!is_valid_ether_addr(adapter->hw.mac.addr)) {
- 		dev_info(&pdev->dev, "Invalid MAC address %pM, using random\n",
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_txrx.c b/drivers/net/ethernet/intel/iavf/iavf_txrx.c
-index 1a27fa613f6d..02cda84bcb9a 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_txrx.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_txrx.c
-@@ -690,11 +690,8 @@ int iavf_setup_tx_descriptors(struct iavf_ring *tx_ring)
-  **/
- static void iavf_clean_rx_ring(struct iavf_ring *rx_ring)
- {
--	unsigned long bi_size;
--	u16 i;
--
- 	/* ring already cleared, nothing to do */
--	if (!rx_ring->rx_bi)
-+	if (!rx_ring->rx_fqes)
- 		return;
- 
- 	if (rx_ring->skb) {
-@@ -702,40 +699,16 @@ static void iavf_clean_rx_ring(struct iavf_ring *rx_ring)
- 		rx_ring->skb = NULL;
- 	}
- 
--	/* Free all the Rx ring sk_buffs */
--	for (i = 0; i < rx_ring->count; i++) {
--		struct iavf_rx_buffer *rx_bi = &rx_ring->rx_bi[i];
-+	/* Free all the Rx ring buffers */
-+	for (u32 i = rx_ring->next_to_clean; i != rx_ring->next_to_use; ) {
-+		const struct libeth_fqe *rx_fqes = &rx_ring->rx_fqes[i];
- 
--		if (!rx_bi->page)
--			continue;
-+		page_pool_put_full_page(rx_ring->pp, rx_fqes->page, false);
- 
--		/* Invalidate cache lines that may have been written to by
--		 * device so that we avoid corrupting memory.
--		 */
--		dma_sync_single_range_for_cpu(rx_ring->dev,
--					      rx_bi->dma,
--					      rx_bi->page_offset,
--					      IAVF_RXBUFFER_3072,
--					      DMA_FROM_DEVICE);
--
--		/* free resources associated with mapping */
--		dma_unmap_page_attrs(rx_ring->dev, rx_bi->dma,
--				     iavf_rx_pg_size(rx_ring),
--				     DMA_FROM_DEVICE,
--				     IAVF_RX_DMA_ATTR);
--
--		__free_page(rx_bi->page);
--
--		rx_bi->page = NULL;
--		rx_bi->page_offset = 0;
-+		if (unlikely(++i == rx_ring->count))
-+			i = 0;
- 	}
- 
--	bi_size = sizeof(struct iavf_rx_buffer) * rx_ring->count;
--	memset(rx_ring->rx_bi, 0, bi_size);
--
--	/* Zero out the descriptor ring */
--	memset(rx_ring->desc, 0, rx_ring->size);
--
- 	rx_ring->next_to_clean = 0;
- 	rx_ring->next_to_use = 0;
- }
-@@ -748,15 +721,22 @@ static void iavf_clean_rx_ring(struct iavf_ring *rx_ring)
-  **/
- void iavf_free_rx_resources(struct iavf_ring *rx_ring)
- {
-+	struct libeth_fq fq = {
-+		.fqes	= rx_ring->rx_fqes,
-+		.pp	= rx_ring->pp,
-+	};
-+
- 	iavf_clean_rx_ring(rx_ring);
--	kfree(rx_ring->rx_bi);
--	rx_ring->rx_bi = NULL;
- 
- 	if (rx_ring->desc) {
--		dma_free_coherent(rx_ring->dev, rx_ring->size,
-+		dma_free_coherent(rx_ring->pp->p.dev, rx_ring->size,
- 				  rx_ring->desc, rx_ring->dma);
- 		rx_ring->desc = NULL;
- 	}
-+
-+	libeth_rx_fq_destroy(&fq);
-+	rx_ring->rx_fqes = NULL;
-+	rx_ring->pp = NULL;
- }
- 
- /**
-@@ -767,26 +747,32 @@ void iavf_free_rx_resources(struct iavf_ring *rx_ring)
-  **/
- int iavf_setup_rx_descriptors(struct iavf_ring *rx_ring)
- {
--	struct device *dev = rx_ring->dev;
--	int bi_size;
--
--	/* warn if we are about to overwrite the pointer */
--	WARN_ON(rx_ring->rx_bi);
--	bi_size = sizeof(struct iavf_rx_buffer) * rx_ring->count;
--	rx_ring->rx_bi = kzalloc(bi_size, GFP_KERNEL);
--	if (!rx_ring->rx_bi)
--		goto err;
-+	struct libeth_fq fq = {
-+		.count		= rx_ring->count,
-+		.buf_len	= LIBIE_MAX_RX_BUF_LEN,
-+		.nid		= NUMA_NO_NODE,
-+	};
-+	int ret;
-+
-+	ret = libeth_rx_fq_create(&fq, &rx_ring->q_vector->napi);
-+	if (ret)
-+		return ret;
-+
-+	rx_ring->pp = fq.pp;
-+	rx_ring->rx_fqes = fq.fqes;
-+	rx_ring->truesize = fq.truesize;
-+	rx_ring->rx_buf_len = fq.buf_len;
- 
- 	u64_stats_init(&rx_ring->syncp);
- 
- 	/* Round up to nearest 4K */
- 	rx_ring->size = rx_ring->count * sizeof(union iavf_32byte_rx_desc);
- 	rx_ring->size = ALIGN(rx_ring->size, 4096);
--	rx_ring->desc = dma_alloc_coherent(dev, rx_ring->size,
-+	rx_ring->desc = dma_alloc_coherent(fq.pp->p.dev, rx_ring->size,
- 					   &rx_ring->dma, GFP_KERNEL);
- 
- 	if (!rx_ring->desc) {
--		dev_info(dev, "Unable to allocate memory for the Rx descriptor ring, size=%d\n",
-+		dev_info(fq.pp->p.dev, "Unable to allocate memory for the Rx descriptor ring, size=%d\n",
- 			 rx_ring->size);
- 		goto err;
- 	}
-@@ -795,9 +781,12 @@ int iavf_setup_rx_descriptors(struct iavf_ring *rx_ring)
- 	rx_ring->next_to_use = 0;
- 
- 	return 0;
-+
- err:
--	kfree(rx_ring->rx_bi);
--	rx_ring->rx_bi = NULL;
-+	libeth_rx_fq_destroy(&fq);
-+	rx_ring->rx_fqes = NULL;
-+	rx_ring->pp = NULL;
-+
- 	return -ENOMEM;
- }
- 
-@@ -819,49 +808,6 @@ static void iavf_release_rx_desc(struct iavf_ring *rx_ring, u32 val)
- 	writel(val, rx_ring->tail);
- }
- 
--/**
-- * iavf_alloc_mapped_page - recycle or make a new page
-- * @rx_ring: ring to use
-- * @bi: rx_buffer struct to modify
-- *
-- * Returns true if the page was successfully allocated or
-- * reused.
-- **/
--static bool iavf_alloc_mapped_page(struct iavf_ring *rx_ring,
--				   struct iavf_rx_buffer *bi)
--{
--	struct page *page = bi->page;
--	dma_addr_t dma;
--
--	/* alloc new page for storage */
--	page = dev_alloc_pages(iavf_rx_pg_order(rx_ring));
--	if (unlikely(!page)) {
--		rx_ring->rx_stats.alloc_page_failed++;
--		return false;
--	}
--
--	/* map page for use */
--	dma = dma_map_page_attrs(rx_ring->dev, page, 0,
--				 iavf_rx_pg_size(rx_ring),
--				 DMA_FROM_DEVICE,
--				 IAVF_RX_DMA_ATTR);
--
--	/* if mapping failed free memory back to system since
--	 * there isn't much point in holding memory we can't use
--	 */
--	if (dma_mapping_error(rx_ring->dev, dma)) {
--		__free_pages(page, iavf_rx_pg_order(rx_ring));
--		rx_ring->rx_stats.alloc_page_failed++;
--		return false;
--	}
--
--	bi->dma = dma;
--	bi->page = page;
--	bi->page_offset = IAVF_SKB_PAD;
--
--	return true;
--}
--
- /**
-  * iavf_receive_skb - Send a completed packet up the stack
-  * @rx_ring:  rx ring in play
-@@ -892,38 +838,37 @@ static void iavf_receive_skb(struct iavf_ring *rx_ring,
-  **/
- bool iavf_alloc_rx_buffers(struct iavf_ring *rx_ring, u16 cleaned_count)
- {
-+	const struct libeth_fq_fp fq = {
-+		.pp		= rx_ring->pp,
-+		.fqes		= rx_ring->rx_fqes,
-+		.truesize	= rx_ring->truesize,
-+		.count		= rx_ring->count,
-+	};
- 	u16 ntu = rx_ring->next_to_use;
- 	union iavf_rx_desc *rx_desc;
--	struct iavf_rx_buffer *bi;
- 
- 	/* do nothing if no valid netdev defined */
- 	if (!rx_ring->netdev || !cleaned_count)
- 		return false;
- 
- 	rx_desc = IAVF_RX_DESC(rx_ring, ntu);
--	bi = &rx_ring->rx_bi[ntu];
- 
- 	do {
--		if (!iavf_alloc_mapped_page(rx_ring, bi))
--			goto no_buffers;
-+		dma_addr_t addr;
- 
--		/* sync the buffer for use by the device */
--		dma_sync_single_range_for_device(rx_ring->dev, bi->dma,
--						 bi->page_offset,
--						 IAVF_RXBUFFER_3072,
--						 DMA_FROM_DEVICE);
-+		addr = libeth_rx_alloc(&fq, ntu);
-+		if (addr == DMA_MAPPING_ERROR)
-+			goto no_buffers;
- 
- 		/* Refresh the desc even if buffer_addrs didn't change
- 		 * because each write-back erases this info.
- 		 */
--		rx_desc->read.pkt_addr = cpu_to_le64(bi->dma + bi->page_offset);
-+		rx_desc->read.pkt_addr = cpu_to_le64(addr);
- 
- 		rx_desc++;
--		bi++;
- 		ntu++;
- 		if (unlikely(ntu == rx_ring->count)) {
- 			rx_desc = IAVF_RX_DESC(rx_ring, 0);
--			bi = rx_ring->rx_bi;
- 			ntu = 0;
- 		}
- 
-@@ -942,6 +887,8 @@ bool iavf_alloc_rx_buffers(struct iavf_ring *rx_ring, u16 cleaned_count)
- 	if (rx_ring->next_to_use != ntu)
- 		iavf_release_rx_desc(rx_ring, ntu);
- 
-+	rx_ring->rx_stats.alloc_page_failed++;
-+
- 	/* make sure to come back via polling to try again after
- 	 * allocation failure
- 	 */
-@@ -1090,9 +1037,8 @@ static bool iavf_cleanup_headers(struct iavf_ring *rx_ring, struct sk_buff *skb)
- 
- /**
-  * iavf_add_rx_frag - Add contents of Rx buffer to sk_buff
-- * @rx_ring: rx descriptor ring to transact packets on
-- * @rx_buffer: buffer containing page to add
-  * @skb: sk_buff to place the data into
-+ * @rx_buffer: buffer containing page to add
-  * @size: packet length from rx_desc
-  *
-  * This function will add the data contained in rx_buffer->page to the skb.
-@@ -1100,105 +1046,49 @@ static bool iavf_cleanup_headers(struct iavf_ring *rx_ring, struct sk_buff *skb)
-  *
-  * The function will then update the page offset.
-  **/
--static void iavf_add_rx_frag(struct iavf_ring *rx_ring,
--			     struct iavf_rx_buffer *rx_buffer,
--			     struct sk_buff *skb,
-+static void iavf_add_rx_frag(struct sk_buff *skb,
-+			     const struct libeth_fqe *rx_buffer,
- 			     unsigned int size)
- {
--	unsigned int truesize = SKB_DATA_ALIGN(size + IAVF_SKB_PAD);
--
--	if (!size)
--		return;
-+	u32 hr = rx_buffer->page->pp->p.offset;
- 
- 	skb_add_rx_frag(skb, skb_shinfo(skb)->nr_frags, rx_buffer->page,
--			rx_buffer->page_offset, size, truesize);
--}
--
--/**
-- * iavf_get_rx_buffer - Fetch Rx buffer and synchronize data for use
-- * @rx_ring: rx descriptor ring to transact packets on
-- * @size: size of buffer to add to skb
-- *
-- * This function will pull an Rx buffer from the ring and synchronize it
-- * for use by the CPU.
-- */
--static struct iavf_rx_buffer *iavf_get_rx_buffer(struct iavf_ring *rx_ring,
--						 const unsigned int size)
--{
--	struct iavf_rx_buffer *rx_buffer;
--
--	rx_buffer = &rx_ring->rx_bi[rx_ring->next_to_clean];
--	prefetchw(rx_buffer->page);
--	if (!size)
--		return rx_buffer;
--
--	/* we are reusing so sync this buffer for CPU use */
--	dma_sync_single_range_for_cpu(rx_ring->dev,
--				      rx_buffer->dma,
--				      rx_buffer->page_offset,
--				      size,
--				      DMA_FROM_DEVICE);
--
--	return rx_buffer;
-+			rx_buffer->offset + hr, size, rx_buffer->truesize);
- }
- 
- /**
-  * iavf_build_skb - Build skb around an existing buffer
-- * @rx_ring: Rx descriptor ring to transact packets on
-  * @rx_buffer: Rx buffer to pull data from
-  * @size: size of buffer to add to skb
-  *
-  * This function builds an skb around an existing Rx buffer, taking care
-  * to set up the skb correctly and avoid any memcpy overhead.
-  */
--static struct sk_buff *iavf_build_skb(struct iavf_ring *rx_ring,
--				      struct iavf_rx_buffer *rx_buffer,
-+static struct sk_buff *iavf_build_skb(const struct libeth_fqe *rx_buffer,
- 				      unsigned int size)
- {
--	void *va;
--	unsigned int truesize = SKB_DATA_ALIGN(sizeof(struct skb_shared_info)) +
--				SKB_DATA_ALIGN(IAVF_SKB_PAD + size);
-+	u32 hr = rx_buffer->page->pp->p.offset;
- 	struct sk_buff *skb;
-+	void *va;
- 
--	if (!rx_buffer || !size)
--		return NULL;
- 	/* prefetch first cache line of first page */
--	va = page_address(rx_buffer->page) + rx_buffer->page_offset;
--	net_prefetch(va);
-+	va = page_address(rx_buffer->page) + rx_buffer->offset;
-+	net_prefetch(va + hr);
- 
- 	/* build an skb around the page buffer */
--	skb = napi_build_skb(va - IAVF_SKB_PAD, truesize);
-+	skb = napi_build_skb(va, rx_buffer->truesize);
- 	if (unlikely(!skb))
- 		return NULL;
- 
-+	skb_mark_for_recycle(skb);
-+
- 	/* update pointers within the skb to store the data */
--	skb_reserve(skb, IAVF_SKB_PAD);
-+	skb_reserve(skb, hr);
- 	__skb_put(skb, size);
- 
- 	return skb;
- }
- 
--/**
-- * iavf_put_rx_buffer - Unmap used buffer
-- * @rx_ring: rx descriptor ring to transact packets on
-- * @rx_buffer: rx buffer to pull data from
-- *
-- * This function will unmap the buffer after it's written by HW.
-- */
--static void iavf_put_rx_buffer(struct iavf_ring *rx_ring,
--			       struct iavf_rx_buffer *rx_buffer)
--{
--	if (!rx_buffer)
--		return;
--
--	/* we are not reusing the buffer so unmap it */
--	dma_unmap_page_attrs(rx_ring->dev, rx_buffer->dma, PAGE_SIZE,
--			     DMA_FROM_DEVICE, IAVF_RX_DMA_ATTR);
--
--	/* clear contents of buffer_info */
--	rx_buffer->page = NULL;
--}
--
- /**
-  * iavf_is_non_eop - process handling of non-EOP buffers
-  * @rx_ring: Rx ring being processed
-@@ -1252,7 +1142,7 @@ static int iavf_clean_rx_irq(struct iavf_ring *rx_ring, int budget)
- 	bool failure = false;
- 
- 	while (likely(total_rx_packets < (unsigned int)budget)) {
--		struct iavf_rx_buffer *rx_buffer;
-+		struct libeth_fqe *rx_buffer;
- 		union iavf_rx_desc *rx_desc;
- 		unsigned int size;
- 		u16 vlan_tag = 0;
-@@ -1287,13 +1177,16 @@ static int iavf_clean_rx_irq(struct iavf_ring *rx_ring, int budget)
- 		size = FIELD_GET(IAVF_RXD_QW1_LENGTH_PBUF_MASK, qword);
- 
- 		iavf_trace(clean_rx_irq, rx_ring, rx_desc, skb);
--		rx_buffer = iavf_get_rx_buffer(rx_ring, size);
-+
-+		rx_buffer = &rx_ring->rx_fqes[rx_ring->next_to_clean];
-+		if (!libeth_rx_sync_for_cpu(rx_buffer, size))
-+			goto skip_data;
- 
- 		/* retrieve a buffer from the ring */
- 		if (skb)
--			iavf_add_rx_frag(rx_ring, rx_buffer, skb, size);
-+			iavf_add_rx_frag(skb, rx_buffer, size);
- 		else
--			skb = iavf_build_skb(rx_ring, rx_buffer, size);
-+			skb = iavf_build_skb(rx_buffer, size);
- 
- 		/* exit if we failed to retrieve a buffer */
- 		if (!skb) {
-@@ -1301,10 +1194,10 @@ static int iavf_clean_rx_irq(struct iavf_ring *rx_ring, int budget)
- 			break;
- 		}
- 
--		iavf_put_rx_buffer(rx_ring, rx_buffer);
-+skip_data:
- 		cleaned_count++;
- 
--		if (iavf_is_non_eop(rx_ring, rx_desc, skb))
-+		if (iavf_is_non_eop(rx_ring, rx_desc, skb) || unlikely(!skb))
- 			continue;
- 
- 		/* ERR_MASK will only have valid bits if EOP set, and
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
-index f8e9f859a4f1..1e543f6a7c30 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
-@@ -1,6 +1,8 @@
- // SPDX-License-Identifier: GPL-2.0
- /* Copyright(c) 2013 - 2018 Intel Corporation. */
- 
-+#include <linux/net/intel/libie/rx.h>
-+
- #include "iavf.h"
- #include "iavf_prototype.h"
- 
-@@ -268,13 +270,13 @@ int iavf_get_vf_vlan_v2_caps(struct iavf_adapter *adapter)
- void iavf_configure_queues(struct iavf_adapter *adapter)
- {
- 	struct virtchnl_vsi_queue_config_info *vqci;
--	int i, max_frame = adapter->vf_res->max_mtu;
- 	int pairs = adapter->num_active_queues;
- 	struct virtchnl_queue_pair_info *vqpi;
-+	u32 i, max_frame;
- 	size_t len;
- 
--	if (max_frame > IAVF_MAX_RXBUFFER || !max_frame)
--		max_frame = IAVF_MAX_RXBUFFER;
-+	max_frame = LIBIE_MAX_RX_FRM_LEN(adapter->rx_rings->pp->p.offset);
-+	max_frame = min_not_zero(adapter->vf_res->max_mtu, max_frame);
- 
- 	if (adapter->current_op != VIRTCHNL_OP_UNKNOWN) {
- 		/* bail because we already have a command pending */
-@@ -304,7 +306,7 @@ void iavf_configure_queues(struct iavf_adapter *adapter)
- 		vqpi->rxq.ring_len = adapter->rx_rings[i].count;
- 		vqpi->rxq.dma_ring_addr = adapter->rx_rings[i].dma;
- 		vqpi->rxq.max_pkt_size = max_frame;
--		vqpi->rxq.databuffer_size = IAVF_RXBUFFER_3072;
-+		vqpi->rxq.databuffer_size = adapter->rx_rings[i].rx_buf_len;
- 		if (CRC_OFFLOAD_ALLOWED(adapter))
- 			vqpi->rxq.crc_disable = !!(adapter->netdev->features &
- 						   NETIF_F_RXFCS);
--- 
-2.44.0
+Oh, let me send a follow-up covering all this.
 
+> 
+>> +
+>> +	return !copy_to_user(data, &p, sizeof(p));
+>> +}
+> 
+> regards,
+> dan carpenter
+
+Thanks!
+Olek
