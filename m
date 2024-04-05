@@ -1,100 +1,102 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 78BF0899381
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  5 Apr 2024 05:00:10 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 007BA899846
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  5 Apr 2024 10:43:30 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id F06C5606CF;
-	Fri,  5 Apr 2024 03:00:08 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 51B90821A2;
+	Fri,  5 Apr 2024 08:43:29 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id OqBGFhV_N82I; Fri,  5 Apr 2024 03:00:08 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id u_GyBldtOB8O; Fri,  5 Apr 2024 08:43:28 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 61FCB606AF
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org F16F5821A7
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1712286008;
-	bh=QR9jCZZBwYIDks7aqIOeqpa6vdbKSWGYYw8zcF5Lgo0=;
-	h=From:Date:To:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=JW//83tjTVJBXBP5N43pRRJFMwNSVeo58APY/sCFVdmA609wLeflpsGdw/WgMXAdX
-	 EbTPXL78AkmblMK2FjeTUiqJdAGS9RdJV1/5r/M0LlRLJp0JNMKcE9zvXG2JtJnxMP
-	 tPa+gId1PDRRH3ZLOg4ldXYC9pqvNMFFJW4rdhos+g4ua3hmfZtNLkPlXUjoqEJw7m
-	 4/LVYHot5MklN/5nWSl1KlgZWA6APNs7cdEogPK4g8L6JXvDpYVFrv3GGu+L69L0wu
-	 efvIQNSI/2ktHILk16VUQxIVoDpeF35t/BGqaUi28+Nf+KVUYahseDZiFEjHkXMmT2
-	 cBPhB6TgFJr4g==
+	s=default; t=1712306608;
+	bh=8TkHp2vFXT74t0+QaEDAbu7HJubApmWO1dRJf8j9Vs4=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=gw/SPO7RkXM1wNWh5icwTDpWaDExs8h8gSFwL1qrH7juhRSJj8z82TNbOhUm4MA5Q
+	 69sH4yJI5J42eltgD1kHW+STXjlA5nkjbEB3kOAPCCZBJ32naApT75kQTUsedmReS2
+	 HoKa7leF8ybgKTb8mHuC6w9favgMy6FEgM0vJ/H6GS1l0DmOmTEZ+Z/RCpEjI3VT5X
+	 15jjXvlIo5JVLggRNReaPEVPPeGyjCgxcTCSru6tAF07becK+5qerTpMIabp2pfE5z
+	 aQ3flrm+2GRNpu/DHHvfg9rjxnndb0UxetMYm0p8JcJ0f+sqtO/hyZgTbTxdPNVLuO
+	 0uXqm6C4lzyuQ==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 61FCB606AF;
-	Fri,  5 Apr 2024 03:00:08 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id F16F5821A7;
+	Fri,  5 Apr 2024 08:43:27 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id F038B1BF39C
- for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Apr 2024 03:00:06 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 33C431BF27A
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Apr 2024 08:43:26 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id DB18B4157C
- for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Apr 2024 03:00:06 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 1F38740150
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Apr 2024 08:43:26 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id g0XX0dzuErWg for <intel-wired-lan@lists.osuosl.org>;
- Fri,  5 Apr 2024 03:00:04 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2a00:1450:4864:20::632; helo=mail-ej1-x632.google.com;
- envelope-from=james.dutton@gmail.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org C0890410DF
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C0890410DF
-Received: from mail-ej1-x632.google.com (mail-ej1-x632.google.com
- [IPv6:2a00:1450:4864:20::632])
- by smtp4.osuosl.org (Postfix) with ESMTPS id C0890410DF
- for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Apr 2024 03:00:03 +0000 (UTC)
-Received: by mail-ej1-x632.google.com with SMTP id
- a640c23a62f3a-a51a8749478so1132366b.2
- for <intel-wired-lan@lists.osuosl.org>; Thu, 04 Apr 2024 20:00:03 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1712286001; x=1712890801;
- h=to:subject:message-id:date:from:mime-version:x-gm-message-state
- :from:to:cc:subject:date:message-id:reply-to;
- bh=QR9jCZZBwYIDks7aqIOeqpa6vdbKSWGYYw8zcF5Lgo0=;
- b=M6ZYPlXWF8VyDvIToXffe6e9FsWCEymqQQ+v5CO66dU1/YvWrkp1kRYyCrZK31c3vb
- Kzo+yDCxIE6NtlICJ5C1xtxb+hdxHfaJ7gnn0E6Z2lY+/4y8fy+0HcmwzEx1n4k+T/hF
- HMiYWrwSqSoOR9S7HoZvlBkrGSUJrAu+zeZESBrkkbgUCwAELnv6jPsVD8O28cA95jC5
- Rq2mFkXlXZCxJ+O1I2SLHsH9F0OHBMmV1ETkuIUSTAgPh+e2XJI6cjCbXAOf2CgfjLCb
- X41oi4Rywq9yhmJWeNQGf7NOFPJcOkCQKQltcygc10HKKKWML/FQdqxtcoimcaTTVD6h
- +7wQ==
-X-Gm-Message-State: AOJu0YyizTYKSQ3i4u4UANgKJHRrsPYwZz4KDe7RzJoAWTINHOO4K3tx
- /MGoQq2KXjU3JCND3mdZ+L1v6Zvi5VhaXVSuzHcdPv/9DO+NiBriDpGh2fOigHqvQiKtNRflN5J
- fXv4QR4LH6cTjy3sBM+A2vxRXHfCR9fHz
-X-Google-Smtp-Source: AGHT+IFabFfyCJu4chpuFdpGLYSbyG6IM/gYo1ISQQjjBjleHI15etH/lfq7x+I7UAYlYfCqjlEDbEgjTf7mkKqqp1I=
-X-Received: by 2002:a17:907:971d:b0:a46:a1d0:8451 with SMTP id
- jg29-20020a170907971d00b00a46a1d08451mr125223ejc.16.1712286001086; Thu, 04
- Apr 2024 20:00:01 -0700 (PDT)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 9Wi68-8OI_5y for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  5 Apr 2024 08:43:25 +0000 (UTC)
+Received-SPF: None (mailfrom) identity=mailfrom; client-ip=192.198.163.7;
+ helo=mgamail.intel.com; envelope-from=michal.swiatkowski@linux.intel.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 8696F4011F
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 8696F4011F
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.7])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 8696F4011F
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Apr 2024 08:43:24 +0000 (UTC)
+X-CSE-ConnectionGUID: pRiWxUwURVeYdjV7DKBbdg==
+X-CSE-MsgGUID: fkL+rcm8Qo2TMmKTDnH/mw==
+X-IronPort-AV: E=McAfee;i="6600,9927,11034"; a="33023482"
+X-IronPort-AV: E=Sophos;i="6.07,181,1708416000"; d="scan'208";a="33023482"
+Received: from orviesa004.jf.intel.com ([10.64.159.144])
+ by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 05 Apr 2024 01:43:23 -0700
+X-CSE-ConnectionGUID: S3yFI09+QWGtYBRGxYV1Pw==
+X-CSE-MsgGUID: TrZFISqHSPq5OKSd6pg0Fg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.07,181,1708416000"; d="scan'208";a="23814485"
+Received: from unknown (HELO mev-dev) ([10.237.112.144])
+ by orviesa004-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 05 Apr 2024 01:43:21 -0700
+Date: Fri, 5 Apr 2024 10:43:04 +0200
+From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+To: "Buvaneswaran, Sujai" <sujai.buvaneswaran@intel.com>
+Message-ID: <Zg+5mIUtMruFRck0@mev-dev>
+References: <20240312105259.2450-1-michal.swiatkowski@linux.intel.com>
+ <PH0PR11MB50130FD5A519919523197C7C96362@PH0PR11MB5013.namprd11.prod.outlook.com>
+ <ZgZ6/6/R+5EfQvbb@mev-dev>
+ <PH0PR11MB5013EC7967F8B7694B2F5C8C963F2@PH0PR11MB5013.namprd11.prod.outlook.com>
 MIME-Version: 1.0
-From: James Dutton <james.dutton@gmail.com>
-Date: Fri, 5 Apr 2024 03:59:25 +0100
-Message-ID: <CAAMvbhGb1mrkFA10=86a-KrzLbyOt13pMk+ZWKwgJ7vzMOcqaQ@mail.gmail.com>
-To: intel-wired-lan@lists.osuosl.org
-Content-Type: text/plain; charset="UTF-8"
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1712286001; x=1712890801; darn=lists.osuosl.org;
- h=to:subject:message-id:date:from:mime-version:from:to:cc:subject
- :date:message-id:reply-to;
- bh=QR9jCZZBwYIDks7aqIOeqpa6vdbKSWGYYw8zcF5Lgo0=;
- b=N8YXwvZD74ePNePvU5q/khybVSCl+fLV474ae1ttdIJMKBlg/DrPzeQUKS3a/DlCId
- Y30FiGLAJ7A4j05u6LSEu7ZZQvCzRwygF+ZiA9pcOjQsRHCmj9AzKYB7hHpbTklh9Rky
- 4maPYUCG0MTBKyafnTQD0Uffug2b5pODWKwao0im3ri5i02+Ku9VJPz3X7/WeG7+WLrk
- ospJtfMq86FslwSEjiq84sRJghtloV/pFtshCOsnVXeSFzQM+n/YoR0OC9FZ/lw2B4WL
- zq2Tl9guGp24/yp22GslKQ+b6KcAFG91OLw3gwZgA8H/Jm0y4PTgVvb844xT16j1nAjr
- D3cA==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=gmail.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <PH0PR11MB5013EC7967F8B7694B2F5C8C963F2@PH0PR11MB5013.namprd11.prod.outlook.com>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1712306605; x=1743842605;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:in-reply-to;
+ bh=l02dn70i51wUrkwv5ZNoBFyKNpyPl0y3pIsw1ver82o=;
+ b=XUAPGZVhxMv6OaSTXsuqnKQTg5nnO1xiBUxaMZrbjEEt2li3YP+zLlrA
+ c3m4dYb6gM0mtQxZ0FUtzSTrZq3mdQ5CYshBfyAoePoUcI/N+/EPZARAG
+ ZdIjN6aJmGXjy86yXGitOXq3RkXiCKJnVk3N0Bjw/1F4ICRXLQNVAMdiI
+ gn8RBt70dXAOb6wZcwAEIP0kd15jhjgn8EbRF3emb6Rm25FthG8TPnSu5
+ y6Cvx3c4h7m8WC+i6t8fTIgpcYG5LpdyvAlQsMECx4voMD0e5FhFvRnnR
+ 88wk315Kg+qBHJC3lAAC6Z7qZ6Hp7GcZC2yTtiFpUcng84+t/XvA1Fwpu
+ w==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dmarc=none (p=none dis=none)
+ header.from=linux.intel.com
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256
- header.s=20230601 header.b=N8YXwvZD
-Subject: [Intel-wired-lan] How to set interface up / down ?
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=XUAPGZVh
+Subject: Re: [Intel-wired-lan] [iwl-net v1] ice: tc: do default match on all
+ profiles
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -107,20 +109,115 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ Marcin Szycik <marcin.szycik@linux.intel.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>, "Kubiak,
+ Michal" <michal.kubiak@intel.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi,
+On Mon, Apr 01, 2024 at 09:28:30AM +0000, Buvaneswaran, Sujai wrote:
+> > -----Original Message-----
+> > From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+> > Sent: Friday, March 29, 2024 1:56 PM
+> > To: Buvaneswaran, Sujai <sujai.buvaneswaran@intel.com>
+> > Cc: intel-wired-lan@lists.osuosl.org; netdev@vger.kernel.org; Marcin Szycik
+> > <marcin.szycik@linux.intel.com>; Kubiak, Michal <michal.kubiak@intel.com>
+> > Subject: Re: [Intel-wired-lan] [iwl-net v1] ice: tc: do default match on all
+> > profiles
+> > 
+> > On Mon, Mar 25, 2024 at 06:36:56AM +0000, Buvaneswaran, Sujai wrote:
+> > > > -----Original Message-----
+> > > > From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf
+> > > > Of Michal Swiatkowski
+> > > > Sent: Tuesday, March 12, 2024 4:23 PM
+> > > > To: intel-wired-lan@lists.osuosl.org
+> > > > Cc: netdev@vger.kernel.org; Marcin Szycik
+> > > > <marcin.szycik@linux.intel.com>; Kubiak, Michal
+> > > > <michal.kubiak@intel.com>; Michal Swiatkowski
+> > > > <michal.swiatkowski@linux.intel.com>
+> > > > Subject: [Intel-wired-lan] [iwl-net v1] ice: tc: do default match on
+> > > > all profiles
+> > > >
+> > > > A simple non-tunnel rule (e.g. matching only on destination MAC) in
+> > > > hardware will be hit only if the packet isn't a tunnel. In software
+> > > > execution of the same command, the rule will match both tunnel and
+> > non-tunnel packets.
+> > > >
+> > > > Change the hardware behaviour to match tunnel and non-tunnel packets
+> > > > in this case. Do this by considering all profiles when adding
+> > > > non-tunnel rule (rule not added on tunnel, or not redirecting to tunnel).
+> > > >
+> > > > Example command:
+> > > > tc filter add dev pf0 ingress protocol ip flower skip_sw action mirred \
+> > > > 	egress redirect dev pr0
+> > > >
+> > > > It should match also tunneled packets, the same as command with
+> > > > skip_hw will do in software.
+> > > >
+> > > > Fixes: 9e300987d4a8 ("ice: VXLAN and Geneve TC support")
+> > > > Reviewed-by: Marcin Szycik <marcin.szycik@linux.intel.com>
+> > > > Reviewed-by: Michal Kubiak <michal.kubiak@intel.com>
+> > > > Signed-off-by: Michal Swiatkowski
+> > > > <michal.swiatkowski@linux.intel.com>
+> > > > ---
+> > > > v1 --> v2:
+> > > >  * fix commit message sugested by Marcin
+> > > > ---
+> > > >  drivers/net/ethernet/intel/ice/ice_tc_lib.c | 2 +-
+> > > >  1 file changed, 1 insertion(+), 1 deletion(-)
+> > > >
+> > > Hi,
+> > >
+> > > We are seeing error while adding HW tc rules on PF with the latest net-
+> > queue patches. This issue is blocking the validation of latest net-queue
+> > Switchdev patches.
+> > >
+> > > + tc filter add dev ens5f0np0 ingress protocol ip prio 1 flower
+> > > + src_mac b4:96:91:9f:65:58 dst_mac 52:54:00:00:16:01 skip_sw action
+> > > + mirred egress redirect dev eth0
+> > > Error: ice: Unable to add filter due to error.
+> > > We have an error talking to the kernel
+> > > + tc filter add dev ens5f0np0 ingress protocol ip prio 1 flower
+> > > + src_mac b4:96:91:9f:65:58 dst_mac 52:54:00:00:16:02 skip_sw action
+> > > + mirred egress redirect dev eth1
+> > > Error: ice: Unable to add filter due to error.
+> > > We have an error talking to the kernel
+> > 
+> > Hi,
+> > 
+> > The same command is working fine on my setup. I suspect that it isn't related
+> > to this patch. The change is only in command validation, there is no
+> > functional changes here that can cause error during adding filters which
+> > previously was working fine.
+> > 
+> > Can you share more information about the setup? It was the first filter added
+> > on the PF? Did you do sth else before checking tc?
+> 
+> Hi Michal,
+> I have used the setup with latest upstream dev-queue kernel and this issue is observed while adding HW tc rules on PF using
+> 'Script A' from below link.
+> https://edc.intel.com/content/www/us/en/design/products/ethernet/appnote-e810-eswitch-switchdev-mode-config-guide/script-a-switchdev-mode-with-linux-bridge-configuration/
+> 
+> This issue is reproducible on two of our setups with latest upstream kernel - 6.9.0-rc1+. Please check and let me know if more information is needed.
+> 
 
-I have source code for a sfp phy that is setting
-phydev->link = 1
-What else do I have to do to make ethtool think the
-Link detected: yes
+I tried script from the link and it is working. I am aware of the
+problem when the same rule is being added with different destination.
+Are you sure there are no more exsisting rule before calling the script?
+In the script VFs are removed, but PF qdisc isn't removed. Old rule can
+exsist there. I suggest to add sth like, before adding new qdiscs:
+$tc qdisc del dev $PF1 ingress
 
-Is there a function I need to call from the phy code to cause the
-carrier state to be UP ?
-ethtool always shows "Link detected: no" state.
+I tested on 6.9.0-rc1+ kernel.
 
-Kind Regards
-
-James
+Thanks,
+Michal
+> Thanks,
+> Sujai B
+> > 
+> > Thanks,
+> > Michal
+> > >
+> > > Thanks,
+> > > Sujai B
