@@ -2,95 +2,97 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 59FBE899A37
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  5 Apr 2024 12:07:04 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 72048899A39
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  5 Apr 2024 12:07:12 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id C3F9482204;
-	Fri,  5 Apr 2024 10:07:02 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 0EDA08222A;
+	Fri,  5 Apr 2024 10:07:11 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 76UbEkLGPC2F; Fri,  5 Apr 2024 10:07:02 +0000 (UTC)
+ id zgqv_Nhd6R3j; Fri,  5 Apr 2024 10:07:08 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org F2A4C82214
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 737E58223B
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1712311622;
-	bh=ngqHIn4+OjIcfhy6AZ/BPGb4EQeme4pAoUZd4TQrojo=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=PTUcOgaisBsp6HZEyLKP2AJvYyX6NsulfawGWYsB/Ryck4R+77g+v25yHFc4uuSwt
-	 vsCzBMoBfPVH7lN7vPBdJ35MUyKkkuGKjTsJl8cXpS/mWj8fas4I8ItomLvCW5Wrob
-	 Veswp9RcksszeJVYLr84P0m041aeHgsl9rlR//8sTVp7TAB3PeEYoAee8HMWhaVmh1
-	 +t0ho8fnmu5i5uvJkxnS+d78gZebGYGRSHqTB/YxA8T/L8PQKz97OOcB21IyAmfyCo
-	 33/MfmdH5l6exCFOC/ah4d+1SqRXkFqeDPMRHuvGo5FF6jpvgUuL2p9OmeN+KmEqFT
-	 f83v5TePQfFBg==
+	s=default; t=1712311627;
+	bh=gbJSwzzg/UOBLLsupnF7lB4OI5hq7Eimzr2N8ERj3rw=;
+	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=lkl0Yfomju78wEVPwbDtIypz2+Y/aPqWUG7jVo+e8Dgwmoecff7VtJ/y8L2BDl8st
+	 3VZTHEFB6op6ygiY3tIBmZ21BPDnQQwIX7KTvjhrq98CZmXS3uBDTNNHI22Lb8seja
+	 jYcu13yLU2pzaeC6Szh2al4YJxawFzoNqr57NEYqjgr9OqLupx99yXDQiTnRC5P2wI
+	 7nire0ahXgas/aApIY1X2GWo7jNsHJmj6Ob3BV0fr0FdhdmApWBXtZKwEnAcB0U63l
+	 OCLqXG2AUUgDxMnaAxuGWRaG6NvjL6JOlj1Utkz2dJcHle4mvhTmhKjI5TBtPT6ebb
+	 i5xZr059sriYQ==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id F2A4C82214;
-	Fri,  5 Apr 2024 10:07:01 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 737E58223B;
+	Fri,  5 Apr 2024 10:07:07 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 0315C1BF385
- for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Apr 2024 10:06:59 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 744F61BF385
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Apr 2024 10:07:01 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id E9DD282214
- for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Apr 2024 10:06:59 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 5DB6282204
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Apr 2024 10:07:00 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id sQfc2mu4cNIS for <intel-wired-lan@lists.osuosl.org>;
- Fri,  5 Apr 2024 10:06:58 +0000 (UTC)
+ id tfiiRhSmptCt for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  5 Apr 2024 10:06:59 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.19;
  helo=mgamail.intel.com; envelope-from=karol.kolacinski@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 65A6382204
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 65A6382204
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org E9FAA8220B
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E9FAA8220B
 Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.19])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 65A6382204
+ by smtp1.osuosl.org (Postfix) with ESMTPS id E9FAA8220B
  for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Apr 2024 10:06:58 +0000 (UTC)
-X-CSE-ConnectionGUID: 0oGnnliARVaKBUF6OvAIiA==
-X-CSE-MsgGUID: zU6vdSzYQI+BLGRDJ/8YqQ==
-X-IronPort-AV: E=McAfee;i="6600,9927,11034"; a="7493920"
+X-CSE-ConnectionGUID: OV0ipoxVQwK7yeM2zUSqaQ==
+X-CSE-MsgGUID: YE/+0nvUTiyM4fJTO4vWyw==
+X-IronPort-AV: E=McAfee;i="6600,9927,11034"; a="7493928"
 X-IronPort-AV: E=Sophos;i="6.07,181,1708416000"; 
-   d="scan'208";a="7493920"
+   d="scan'208";a="7493928"
 Received: from orviesa007.jf.intel.com ([10.64.159.147])
  by fmvoesa113.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 05 Apr 2024 03:06:57 -0700
-X-CSE-ConnectionGUID: hArtSAm8Su2qSmrc5hebDQ==
-X-CSE-MsgGUID: U+yr5OLdQkyd/p384kIrzg==
+ 05 Apr 2024 03:06:58 -0700
+X-CSE-ConnectionGUID: gblN0Q2/TByVvGWXFz9yDA==
+X-CSE-MsgGUID: U3Ih68UoS4y8o7LjZ9Og5Q==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.07,181,1708416000"; d="scan'208";a="19536083"
+X-IronPort-AV: E=Sophos;i="6.07,181,1708416000"; d="scan'208";a="19536097"
 Received: from kkolacin-desk1.igk.intel.com ([10.102.102.152])
- by orviesa007.jf.intel.com with ESMTP; 05 Apr 2024 03:06:56 -0700
+ by orviesa007.jf.intel.com with ESMTP; 05 Apr 2024 03:06:57 -0700
 From: Karol Kolacinski <karol.kolacinski@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Fri,  5 Apr 2024 11:57:12 +0200
-Message-ID: <20240405100648.144756-14-karol.kolacinski@intel.com>
+Date: Fri,  5 Apr 2024 11:57:13 +0200
+Message-ID: <20240405100648.144756-15-karol.kolacinski@intel.com>
 X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20240405100648.144756-14-karol.kolacinski@intel.com>
+References: <20240405100648.144756-14-karol.kolacinski@intel.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1712311618; x=1743847618;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=SoyjNGlki52gHtWEtTa0V4mjRrOqn9ZjWpMmSIycJ1c=;
- b=lNqtCY2Dpun/8Yywxssxa9qrk7GHCvaxzpT5ZQ3k3497QVTdQQQtr8As
- fYTVNdXex8EO4E9uIyNc8OpFOpQdKkC262T2ZZfTp0aXmbfwTJBg+7EaK
- bOsmF3OP75NH7hL0EvVXT6eXITFHofEvwqkMQRh3GSZDNiDkzKq0isMQP
- +jvmvU/jSQDlDQeyrAAwiAMtO4ppTQb/xxCRh4zk/24bkYatlG9itlbXR
- 2Nk2y1AtXoc6/A4mOYBDTHIUtGAyaeMS2UboKnmmytl/3XLs8KR2/VfMq
- UE9DvlyZLNbhCkF84csM6Jdm4iT4ryW6jceADBqMbbE/OLOj7KJWCM2BY
- A==;
+ t=1712311619; x=1743847619;
+ h=from:to:cc:subject:date:message-id:in-reply-to:
+ references:mime-version:content-transfer-encoding;
+ bh=GkBj0NJza9I36wu8qdTOtQ4meUArjr6zpQao/ngQQns=;
+ b=Xi5qTtRuA+dbNQrvnGodqgczCUGgvLttgYgCT0d/+tjDySj3uQsUau7i
+ tCUPBgnAJygMJzJuF3B0YS80GAZ3umicQK9BF3zisC68zHvXjOGPm0LRc
+ BgmI0BBwMYnfsCzF3G6/5401rvwcdHdiOrXpcRayHlvtSk+8KgQsFhqxA
+ htrsVwY2EG6v5aaI6Opqgw/aIHkGH/dCSk5WswsPkmAeBbcW+vqs60XHd
+ dNQoZ1i0qZp20SchsuUKWkXIgsVRZZ2s0ZOlHKfjtXiIihtdTLojc40zk
+ X1Km22pCjeDDnwJutv0p4Uc0bedrrHOOITdF/isivknS9p0Zp0SUq1M5o
+ g==;
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=lNqtCY2D
-Subject: [Intel-wired-lan] [PATCH v6 iwl-next 00/12] Introduce ETH56G PHY
- model for E825C products
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=Xi5qTtRu
+Subject: [Intel-wired-lan] [PATCH v6 iwl-next 01/12] ice: Introduce
+ ice_ptp_hw struct
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -103,69 +105,623 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, Karol Kolacinski <karol.kolacinski@intel.com>,
- anthony.l.nguyen@intel.com
+Cc: netdev@vger.kernel.org,
+ Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>,
+ Karol Kolacinski <karol.kolacinski@intel.com>, anthony.l.nguyen@intel.com,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-E825C products have a different PHY model than E822, E823 and E810 products.
-This PHY is ETH56G and its support is necessary to have functional PTP stack
-for E825C products.
+Create new ice_ptp_hw struct and use it for all HW and PTP-related
+fields from struct ice_hw.
+Replace definitions with struct fields, which values are set accordingly
+to a specific device.
 
-Grzegorz Nitka (2):
-  ice: Add NAC Topology device capability parser
-  ice: Adjust PTP init for 2x50G E825C devices
+Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+Reviewed-by: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
+Signed-off-by: Karol Kolacinski <karol.kolacinski@intel.com>
+---
+V4 -> V5: Adjusted RCT in ice_base_incval
 
-Jacob Keller (2):
-  ice: Introduce helper to get tmr_cmd_reg values
-  ice: Introduce ice_get_base_incval() helper
+ drivers/net/ethernet/intel/ice/ice_common.c |  24 ++++
+ drivers/net/ethernet/intel/ice/ice_common.h |   1 +
+ drivers/net/ethernet/intel/ice/ice_ptp.c    |  22 ++--
+ drivers/net/ethernet/intel/ice/ice_ptp_hw.c | 128 +++++++++++---------
+ drivers/net/ethernet/intel/ice/ice_ptp_hw.h |   4 +-
+ drivers/net/ethernet/intel/ice/ice_type.h   |  17 +--
+ 6 files changed, 120 insertions(+), 76 deletions(-)
 
-Karol Kolacinski (4):
-  ice: Introduce ice_ptp_hw struct
-  ice: Add PHY OFFSET_READY register clearing
-  ice: Change CGU regs struct to anonymous
-  ice: Support 2XNAC configuration using auxbus
-
-Michal Michalik (1):
-  ice: Add support for E825-C TS PLL handling
-
-Sergey Temerkhanov (3):
-  ice: Implement Tx interrupt enablement functions
-  ice: Move CGU block
-  ice: Introduce ETH56G PHY model for E825C products
-
-V5 -> V6: Changes in:
-          - ice: Implement Tx interrupt enablement functions
-          - ice: Move CGU block
-
-V4 -> V5: Changes in:
-          - ice: Introduce ice_ptp_hw struct
-          - ice: Introduce helper to get tmr_cmd_reg values
-          - ice: Introduce ice_get_base_incval() helper
-          - ice: Introduce ETH56G PHY model for E825C products
-          - ice: Add support for E825-C TS PLL handling
-          - ice: Adjust PTP init for 2x50G E825C devices
-
-V1 -> V4: Changes in:
-          - ice: Introduce ETH56G PHY model for E825C products
-
- drivers/net/ethernet/intel/ice/ice.h          |   23 +-
- .../net/ethernet/intel/ice/ice_adminq_cmd.h   |    1 +
- drivers/net/ethernet/intel/ice/ice_cgu_regs.h |   77 +-
- drivers/net/ethernet/intel/ice/ice_common.c   |   58 +-
- drivers/net/ethernet/intel/ice/ice_common.h   |    2 +
- .../net/ethernet/intel/ice/ice_hw_autogen.h   |    4 +
- drivers/net/ethernet/intel/ice/ice_ptp.c      |  265 +-
- drivers/net/ethernet/intel/ice/ice_ptp.h      |    1 +
- .../net/ethernet/intel/ice/ice_ptp_consts.h   |  402 ++
- drivers/net/ethernet/intel/ice/ice_ptp_hw.c   | 3595 +++++++++++++----
- drivers/net/ethernet/intel/ice/ice_ptp_hw.h   |  290 +-
- drivers/net/ethernet/intel/ice/ice_sbq_cmd.h  |   10 +-
- drivers/net/ethernet/intel/ice/ice_type.h     |   60 +-
- 13 files changed, 3874 insertions(+), 914 deletions(-)
-
-
-base-commit: 0a3074e5b4b523fb60f4ae9fb32bb180ea1fb6ef
+diff --git a/drivers/net/ethernet/intel/ice/ice_common.c b/drivers/net/ethernet/intel/ice/ice_common.c
+index 55fdb4400b90..ae79160af4da 100644
+--- a/drivers/net/ethernet/intel/ice/ice_common.c
++++ b/drivers/net/ethernet/intel/ice/ice_common.c
+@@ -239,6 +239,30 @@ bool ice_is_e810t(struct ice_hw *hw)
+ 	return false;
+ }
+ 
++/**
++ * ice_is_e822
++ * @hw: pointer to the hardware structure
++ *
++ * returns true if the device is E822 based, false if not.
++ */
++bool ice_is_e822(struct ice_hw *hw)
++{
++	switch (hw->device_id) {
++	case ICE_DEV_ID_E822C_BACKPLANE:
++	case ICE_DEV_ID_E822C_QSFP:
++	case ICE_DEV_ID_E822C_SFP:
++	case ICE_DEV_ID_E822C_10G_BASE_T:
++	case ICE_DEV_ID_E822C_SGMII:
++	case ICE_DEV_ID_E822L_BACKPLANE:
++	case ICE_DEV_ID_E822L_SFP:
++	case ICE_DEV_ID_E822L_10G_BASE_T:
++	case ICE_DEV_ID_E822L_SGMII:
++		return true;
++	default:
++		return false;
++	}
++}
++
+ /**
+  * ice_is_e823
+  * @hw: pointer to the hardware structure
+diff --git a/drivers/net/ethernet/intel/ice/ice_common.h b/drivers/net/ethernet/intel/ice/ice_common.h
+index ffb22c7ce28b..70f57340eb0d 100644
+--- a/drivers/net/ethernet/intel/ice/ice_common.h
++++ b/drivers/net/ethernet/intel/ice/ice_common.h
+@@ -249,6 +249,7 @@ void
+ ice_stat_update32(struct ice_hw *hw, u32 reg, bool prev_stat_loaded,
+ 		  u64 *prev_stat, u64 *cur_stat);
+ bool ice_is_e810t(struct ice_hw *hw);
++bool ice_is_e822(struct ice_hw *hw);
+ bool ice_is_e823(struct ice_hw *hw);
+ bool ice_is_e825c(struct ice_hw *hw);
+ int
+diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.c b/drivers/net/ethernet/intel/ice/ice_ptp.c
+index 0f17fc1181d2..cca9d09b2d61 100644
+--- a/drivers/net/ethernet/intel/ice/ice_ptp.c
++++ b/drivers/net/ethernet/intel/ice/ice_ptp.c
+@@ -813,7 +813,7 @@ static enum ice_tx_tstamp_work ice_ptp_tx_tstamp_owner(struct ice_pf *pf)
+ 	}
+ 	mutex_unlock(&pf->ptp.ports_owner.lock);
+ 
+-	for (i = 0; i < ICE_MAX_QUAD; i++) {
++	for (i = 0; i < ICE_GET_QUAD_NUM(pf->hw.ptp.num_lports); i++) {
+ 		u64 tstamp_ready;
+ 		int err;
+ 
+@@ -1027,7 +1027,7 @@ ice_ptp_release_tx_tracker(struct ice_pf *pf, struct ice_ptp_tx *tx)
+ static int
+ ice_ptp_init_tx_e82x(struct ice_pf *pf, struct ice_ptp_tx *tx, u8 port)
+ {
+-	tx->block = port / ICE_PORTS_PER_QUAD;
++	tx->block = ICE_GET_QUAD_NUM(port);
+ 	tx->offset = (port % ICE_PORTS_PER_QUAD) * INDEX_PER_PORT_E82X;
+ 	tx->len = INDEX_PER_PORT_E82X;
+ 	tx->has_ready_bitmap = 1;
+@@ -1229,8 +1229,8 @@ static u64 ice_base_incval(struct ice_pf *pf)
+  */
+ static int ice_ptp_check_tx_fifo(struct ice_ptp_port *port)
+ {
+-	int quad = port->port_num / ICE_PORTS_PER_QUAD;
+ 	int offs = port->port_num % ICE_PORTS_PER_QUAD;
++	int quad = ICE_GET_QUAD_NUM(port->port_num);
+ 	struct ice_pf *pf;
+ 	struct ice_hw *hw;
+ 	u32 val, phy_sts;
+@@ -1429,7 +1429,7 @@ void ice_ptp_link_change(struct ice_pf *pf, u8 port, bool linkup)
+ 	if (pf->ptp.state != ICE_PTP_READY)
+ 		return;
+ 
+-	if (WARN_ON_ONCE(port >= ICE_NUM_EXTERNAL_PORTS))
++	if (WARN_ON_ONCE(port >= hw->ptp.num_lports))
+ 		return;
+ 
+ 	ptp_port = &pf->ptp.port;
+@@ -1439,7 +1439,7 @@ void ice_ptp_link_change(struct ice_pf *pf, u8 port, bool linkup)
+ 	/* Update cached link status for this port immediately */
+ 	ptp_port->link_up = linkup;
+ 
+-	switch (hw->phy_model) {
++	switch (hw->ptp.phy_model) {
+ 	case ICE_PHY_E810:
+ 		/* Do not reconfigure E810 PHY */
+ 		return;
+@@ -1468,7 +1468,7 @@ static int ice_ptp_cfg_phy_interrupt(struct ice_pf *pf, bool ena, u32 threshold)
+ 
+ 	ice_ptp_reset_ts_memory(hw);
+ 
+-	for (quad = 0; quad < ICE_MAX_QUAD; quad++) {
++	for (quad = 0; quad < ICE_GET_QUAD_NUM(hw->ptp.num_lports); quad++) {
+ 		err = ice_read_quad_reg_e82x(hw, quad, Q_REG_TX_MEM_GBL_CFG,
+ 					     &val);
+ 		if (err)
+@@ -1953,7 +1953,7 @@ ice_ptp_settime64(struct ptp_clock_info *info, const struct timespec64 *ts)
+ 	ice_ptp_enable_all_clkout(pf);
+ 
+ 	/* Recalibrate and re-enable timestamp blocks for E822/E823 */
+-	if (hw->phy_model == ICE_PHY_E82X)
++	if (hw->ptp.phy_model == ICE_PHY_E82X)
+ 		ice_ptp_restart_all_phy(pf);
+ exit:
+ 	if (err) {
+@@ -2578,7 +2578,7 @@ static void ice_ptp_maybe_trigger_tx_interrupt(struct ice_pf *pf)
+ 	if (!ice_pf_src_tmr_owned(pf))
+ 		return;
+ 
+-	for (i = 0; i < ICE_MAX_QUAD; i++) {
++	for (i = 0; i < ICE_GET_QUAD_NUM(hw->ptp.num_lports); i++) {
+ 		u64 tstamp_ready;
+ 		int err;
+ 
+@@ -3076,7 +3076,7 @@ static int ice_ptp_init_port(struct ice_pf *pf, struct ice_ptp_port *ptp_port)
+ 
+ 	mutex_init(&ptp_port->ps_lock);
+ 
+-	switch (hw->phy_model) {
++	switch (hw->ptp.phy_model) {
+ 	case ICE_PHY_E810:
+ 		return ice_ptp_init_tx_e810(pf, &ptp_port->tx);
+ 	case ICE_PHY_E82X:
+@@ -3171,7 +3171,7 @@ static void ice_ptp_remove_auxbus_device(struct ice_pf *pf)
+  */
+ static void ice_ptp_init_tx_interrupt_mode(struct ice_pf *pf)
+ {
+-	switch (pf->hw.phy_model) {
++	switch (pf->hw.ptp.phy_model) {
+ 	case ICE_PHY_E82X:
+ 		/* E822 based PHY has the clock owner process the interrupt
+ 		 * for all ports.
+@@ -3207,7 +3207,7 @@ void ice_ptp_init(struct ice_pf *pf)
+ 
+ 	ptp->state = ICE_PTP_INITIALIZING;
+ 
+-	ice_ptp_init_phy_model(hw);
++	ice_ptp_init_hw(hw);
+ 
+ 	ice_ptp_init_tx_interrupt_mode(pf);
+ 
+diff --git a/drivers/net/ethernet/intel/ice/ice_ptp_hw.c b/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
+index 2b9423a173bb..e86ca6cada79 100644
+--- a/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
++++ b/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
+@@ -288,18 +288,21 @@ static void ice_ptp_exec_tmr_cmd(struct ice_hw *hw)
+ 
+ /**
+  * ice_fill_phy_msg_e82x - Fill message data for a PHY register access
++ * @hw: pointer to the HW struct
+  * @msg: the PHY message buffer to fill in
+  * @port: the port to access
+  * @offset: the register offset
+  */
+-static void
+-ice_fill_phy_msg_e82x(struct ice_sbq_msg_input *msg, u8 port, u16 offset)
++static void ice_fill_phy_msg_e82x(struct ice_hw *hw,
++				  struct ice_sbq_msg_input *msg, u8 port,
++				  u16 offset)
+ {
+ 	int phy_port, phy, quadtype;
+ 
+-	phy_port = port % ICE_PORTS_PER_PHY_E82X;
+-	phy = port / ICE_PORTS_PER_PHY_E82X;
+-	quadtype = (port / ICE_PORTS_PER_QUAD) % ICE_QUADS_PER_PHY_E82X;
++	phy_port = port % hw->ptp.ports_per_phy;
++	phy = port / hw->ptp.ports_per_phy;
++	quadtype = ICE_GET_QUAD_NUM(port) %
++		   ICE_GET_QUAD_NUM(hw->ptp.ports_per_phy);
+ 
+ 	if (quadtype == 0) {
+ 		msg->msg_addr_low = P_Q0_L(P_0_BASE + offset, phy_port);
+@@ -430,7 +433,7 @@ ice_read_phy_reg_e82x(struct ice_hw *hw, u8 port, u16 offset, u32 *val)
+ 	struct ice_sbq_msg_input msg = {0};
+ 	int err;
+ 
+-	ice_fill_phy_msg_e82x(&msg, port, offset);
++	ice_fill_phy_msg_e82x(hw, &msg, port, offset);
+ 	msg.opcode = ice_sbq_msg_rd;
+ 
+ 	err = ice_sbq_rw_reg(hw, &msg);
+@@ -507,7 +510,7 @@ ice_write_phy_reg_e82x(struct ice_hw *hw, u8 port, u16 offset, u32 val)
+ 	struct ice_sbq_msg_input msg = {0};
+ 	int err;
+ 
+-	ice_fill_phy_msg_e82x(&msg, port, offset);
++	ice_fill_phy_msg_e82x(hw, &msg, port, offset);
+ 	msg.opcode = ice_sbq_msg_wr;
+ 	msg.data = val;
+ 
+@@ -617,6 +620,7 @@ ice_write_64b_phy_reg_e82x(struct ice_hw *hw, u8 port, u16 low_addr, u64 val)
+ 
+ /**
+  * ice_fill_quad_msg_e82x - Fill message data for quad register access
++ * @hw: pointer to the HW struct
+  * @msg: the PHY message buffer to fill in
+  * @quad: the quad to access
+  * @offset: the register offset
+@@ -624,17 +628,18 @@ ice_write_64b_phy_reg_e82x(struct ice_hw *hw, u8 port, u16 low_addr, u64 val)
+  * Fill a message buffer for accessing a register in a quad shared between
+  * multiple PHYs.
+  */
+-static int
+-ice_fill_quad_msg_e82x(struct ice_sbq_msg_input *msg, u8 quad, u16 offset)
++static int ice_fill_quad_msg_e82x(struct ice_hw *hw,
++				  struct ice_sbq_msg_input *msg, u8 quad,
++				  u16 offset)
+ {
+ 	u32 addr;
+ 
+-	if (quad >= ICE_MAX_QUAD)
++	if (quad >= ICE_GET_QUAD_NUM(hw->ptp.num_lports))
+ 		return -EINVAL;
+ 
+ 	msg->dest_dev = rmn_0;
+ 
+-	if ((quad % ICE_QUADS_PER_PHY_E82X) == 0)
++	if (!(quad % ICE_GET_QUAD_NUM(hw->ptp.ports_per_phy)))
+ 		addr = Q_0_BASE + offset;
+ 	else
+ 		addr = Q_1_BASE + offset;
+@@ -661,7 +666,7 @@ ice_read_quad_reg_e82x(struct ice_hw *hw, u8 quad, u16 offset, u32 *val)
+ 	struct ice_sbq_msg_input msg = {0};
+ 	int err;
+ 
+-	err = ice_fill_quad_msg_e82x(&msg, quad, offset);
++	err = ice_fill_quad_msg_e82x(hw, &msg, quad, offset);
+ 	if (err)
+ 		return err;
+ 
+@@ -695,7 +700,7 @@ ice_write_quad_reg_e82x(struct ice_hw *hw, u8 quad, u16 offset, u32 val)
+ 	struct ice_sbq_msg_input msg = {0};
+ 	int err;
+ 
+-	err = ice_fill_quad_msg_e82x(&msg, quad, offset);
++	err = ice_fill_quad_msg_e82x(hw, &msg, quad, offset);
+ 	if (err)
+ 		return err;
+ 
+@@ -816,7 +821,7 @@ static void ice_ptp_reset_ts_memory_e82x(struct ice_hw *hw)
+ {
+ 	unsigned int quad;
+ 
+-	for (quad = 0; quad < ICE_MAX_QUAD; quad++)
++	for (quad = 0; quad < ICE_GET_QUAD_NUM(hw->ptp.num_lports); quad++)
+ 		ice_ptp_reset_ts_memory_quad_e82x(hw, quad);
+ }
+ 
+@@ -1113,7 +1118,7 @@ static int ice_ptp_set_vernier_wl(struct ice_hw *hw)
+ {
+ 	u8 port;
+ 
+-	for (port = 0; port < ICE_NUM_EXTERNAL_PORTS; port++) {
++	for (port = 0; port < hw->ptp.num_lports; port++) {
+ 		int err;
+ 
+ 		err = ice_write_phy_reg_e82x(hw, port, P_REG_WL,
+@@ -1178,7 +1183,7 @@ ice_ptp_prep_phy_time_e82x(struct ice_hw *hw, u32 time)
+ 	 */
+ 	phy_time = (u64)time << 32;
+ 
+-	for (port = 0; port < ICE_NUM_EXTERNAL_PORTS; port++) {
++	for (port = 0; port < hw->ptp.num_lports; port++) {
+ 		/* Tx case */
+ 		err = ice_write_64b_phy_reg_e82x(hw, port,
+ 						 P_REG_TX_TIMER_INC_PRE_L,
+@@ -1281,7 +1286,7 @@ ice_ptp_prep_phy_adj_e82x(struct ice_hw *hw, s32 adj)
+ 	else
+ 		cycles = -(((s64)-adj) << 32);
+ 
+-	for (port = 0; port < ICE_NUM_EXTERNAL_PORTS; port++) {
++	for (port = 0; port < hw->ptp.num_lports; port++) {
+ 		int err;
+ 
+ 		err = ice_ptp_prep_port_adj_e82x(hw, port, cycles);
+@@ -1307,7 +1312,7 @@ ice_ptp_prep_phy_incval_e82x(struct ice_hw *hw, u64 incval)
+ 	int err;
+ 	u8 port;
+ 
+-	for (port = 0; port < ICE_NUM_EXTERNAL_PORTS; port++) {
++	for (port = 0; port < hw->ptp.num_lports; port++) {
+ 		err = ice_write_40b_phy_reg_e82x(hw, port, P_REG_TIMETUS_L,
+ 						 incval);
+ 		if (err)
+@@ -1463,7 +1468,7 @@ ice_ptp_one_port_cmd(struct ice_hw *hw, u8 configured_port,
+ {
+ 	u8 port;
+ 
+-	for (port = 0; port < ICE_NUM_EXTERNAL_PORTS; port++) {
++	for (port = 0; port < hw->ptp.num_lports; port++) {
+ 		enum ice_ptp_tmr_cmd cmd;
+ 		int err;
+ 
+@@ -1493,7 +1498,7 @@ ice_ptp_port_cmd_e82x(struct ice_hw *hw, enum ice_ptp_tmr_cmd cmd)
+ {
+ 	u8 port;
+ 
+-	for (port = 0; port < ICE_NUM_EXTERNAL_PORTS; port++) {
++	for (port = 0; port < hw->ptp.num_lports; port++) {
+ 		int err;
+ 
+ 		err = ice_ptp_write_port_cmd_e82x(hw, port, cmd);
+@@ -1606,7 +1611,7 @@ static void ice_phy_cfg_lane_e82x(struct ice_hw *hw, u8 port)
+ 		return;
+ 	}
+ 
+-	quad = port / ICE_PORTS_PER_QUAD;
++	quad = ICE_GET_QUAD_NUM(port);
+ 
+ 	err = ice_read_quad_reg_e82x(hw, quad, Q_REG_TX_MEM_GBL_CFG, &val);
+ 	if (err) {
+@@ -2636,6 +2641,17 @@ ice_get_phy_tx_tstamp_ready_e82x(struct ice_hw *hw, u8 quad, u64 *tstamp_ready)
+ 	return 0;
+ }
+ 
++/**
++ * ice_ptp_init_phy_e82x - initialize PHY parameters
++ * @ptp: pointer to the PTP HW struct
++ */
++static void ice_ptp_init_phy_e82x(struct ice_ptp_hw *ptp)
++{
++	ptp->phy_model = ICE_PHY_E82X;
++	ptp->num_lports = 8;
++	ptp->ports_per_phy = 8;
++}
++
+ /* E810 functions
+  *
+  * The following functions operate on the E810 series devices which use
+@@ -2863,17 +2879,19 @@ static int ice_clear_phy_tstamp_e810(struct ice_hw *hw, u8 lport, u8 idx)
+ }
+ 
+ /**
+- * ice_ptp_init_phy_e810 - Enable PTP function on the external PHY
++ * ice_ptp_init_phc_e810 - Perform E810 specific PHC initialization
+  * @hw: pointer to HW struct
+  *
+- * Enable the timesync PTP functionality for the external PHY connected to
+- * this function.
++ * Perform E810-specific PTP hardware clock initialization steps.
+  */
+-int ice_ptp_init_phy_e810(struct ice_hw *hw)
++static int ice_ptp_init_phc_e810(struct ice_hw *hw)
+ {
+ 	u8 tmr_idx;
+ 	int err;
+ 
++	/* Ensure synchronization delay is zero */
++	wr32(hw, GLTSYN_SYNC_DLAY, 0);
++
+ 	tmr_idx = hw->func_caps.ts_func_info.tmr_index_owned;
+ 	err = ice_write_phy_reg_e810(hw, ETH_GLTSYN_ENA(tmr_idx),
+ 				     GLTSYN_ENA_TSYN_ENA_M);
+@@ -2884,21 +2902,6 @@ int ice_ptp_init_phy_e810(struct ice_hw *hw)
+ 	return err;
+ }
+ 
+-/**
+- * ice_ptp_init_phc_e810 - Perform E810 specific PHC initialization
+- * @hw: pointer to HW struct
+- *
+- * Perform E810-specific PTP hardware clock initialization steps.
+- */
+-static int ice_ptp_init_phc_e810(struct ice_hw *hw)
+-{
+-	/* Ensure synchronization delay is zero */
+-	wr32(hw, GLTSYN_SYNC_DLAY, 0);
+-
+-	/* Initialize the PHY */
+-	return ice_ptp_init_phy_e810(hw);
+-}
+-
+ /**
+  * ice_ptp_prep_phy_time_e810 - Prepare PHY port with initial time
+  * @hw: Board private structure
+@@ -3242,6 +3245,17 @@ int ice_read_pca9575_reg_e810t(struct ice_hw *hw, u8 offset, u8 *data)
+ 	return ice_aq_read_i2c(hw, link_topo, 0, addr, 1, data, NULL);
+ }
+ 
++/**
++ * ice_ptp_init_phy_e810 - initialize PHY parameters
++ * @ptp: pointer to the PTP HW struct
++ */
++static void ice_ptp_init_phy_e810(struct ice_ptp_hw *ptp)
++{
++	ptp->phy_model = ICE_PHY_E810;
++	ptp->num_lports = 8;
++	ptp->ports_per_phy = 4;
++}
++
+ /* Device agnostic functions
+  *
+  * The following functions implement shared behavior common to both E822 and
+@@ -3299,18 +3313,22 @@ void ice_ptp_unlock(struct ice_hw *hw)
+ }
+ 
+ /**
+- * ice_ptp_init_phy_model - Initialize hw->phy_model based on device type
++ * ice_ptp_init_hw - Initialize hw based on device type
+  * @hw: pointer to the HW structure
+  *
+- * Determine the PHY model for the device, and initialize hw->phy_model
++ * Determine the PHY model for the device, and initialize hw
+  * for use by other functions.
+  */
+-void ice_ptp_init_phy_model(struct ice_hw *hw)
++void ice_ptp_init_hw(struct ice_hw *hw)
+ {
+-	if (ice_is_e810(hw))
+-		hw->phy_model = ICE_PHY_E810;
++	struct ice_ptp_hw *ptp = &hw->ptp;
++
++	if (ice_is_e822(hw) || ice_is_e823(hw))
++		ice_ptp_init_phy_e82x(ptp);
++	else if (ice_is_e810(hw))
++		ice_ptp_init_phy_e810(ptp);
+ 	else
+-		hw->phy_model = ICE_PHY_E82X;
++		ptp->phy_model = ICE_PHY_UNSUP;
+ }
+ 
+ /**
+@@ -3331,7 +3349,7 @@ static int ice_ptp_tmr_cmd(struct ice_hw *hw, enum ice_ptp_tmr_cmd cmd)
+ 	ice_ptp_src_cmd(hw, cmd);
+ 
+ 	/* Next, prepare the ports */
+-	switch (hw->phy_model) {
++	switch (hw->ptp.phy_model) {
+ 	case ICE_PHY_E810:
+ 		err = ice_ptp_port_cmd_e810(hw, cmd);
+ 		break;
+@@ -3383,7 +3401,7 @@ int ice_ptp_init_time(struct ice_hw *hw, u64 time)
+ 
+ 	/* PHY timers */
+ 	/* Fill Rx and Tx ports and send msg to PHY */
+-	switch (hw->phy_model) {
++	switch (hw->ptp.phy_model) {
+ 	case ICE_PHY_E810:
+ 		err = ice_ptp_prep_phy_time_e810(hw, time & 0xFFFFFFFF);
+ 		break;
+@@ -3425,7 +3443,7 @@ int ice_ptp_write_incval(struct ice_hw *hw, u64 incval)
+ 	wr32(hw, GLTSYN_SHADJ_L(tmr_idx), lower_32_bits(incval));
+ 	wr32(hw, GLTSYN_SHADJ_H(tmr_idx), upper_32_bits(incval));
+ 
+-	switch (hw->phy_model) {
++	switch (hw->ptp.phy_model) {
+ 	case ICE_PHY_E810:
+ 		err = ice_ptp_prep_phy_incval_e810(hw, incval);
+ 		break;
+@@ -3491,7 +3509,7 @@ int ice_ptp_adj_clock(struct ice_hw *hw, s32 adj)
+ 	wr32(hw, GLTSYN_SHADJ_L(tmr_idx), 0);
+ 	wr32(hw, GLTSYN_SHADJ_H(tmr_idx), adj);
+ 
+-	switch (hw->phy_model) {
++	switch (hw->ptp.phy_model) {
+ 	case ICE_PHY_E810:
+ 		err = ice_ptp_prep_phy_adj_e810(hw, adj);
+ 		break;
+@@ -3521,7 +3539,7 @@ int ice_ptp_adj_clock(struct ice_hw *hw, s32 adj)
+  */
+ int ice_read_phy_tstamp(struct ice_hw *hw, u8 block, u8 idx, u64 *tstamp)
+ {
+-	switch (hw->phy_model) {
++	switch (hw->ptp.phy_model) {
+ 	case ICE_PHY_E810:
+ 		return ice_read_phy_tstamp_e810(hw, block, idx, tstamp);
+ 	case ICE_PHY_E82X:
+@@ -3549,7 +3567,7 @@ int ice_read_phy_tstamp(struct ice_hw *hw, u8 block, u8 idx, u64 *tstamp)
+  */
+ int ice_clear_phy_tstamp(struct ice_hw *hw, u8 block, u8 idx)
+ {
+-	switch (hw->phy_model) {
++	switch (hw->ptp.phy_model) {
+ 	case ICE_PHY_E810:
+ 		return ice_clear_phy_tstamp_e810(hw, block, idx);
+ 	case ICE_PHY_E82X:
+@@ -3610,7 +3628,7 @@ static int ice_get_pf_c827_idx(struct ice_hw *hw, u8 *idx)
+  */
+ void ice_ptp_reset_ts_memory(struct ice_hw *hw)
+ {
+-	switch (hw->phy_model) {
++	switch (hw->ptp.phy_model) {
+ 	case ICE_PHY_E82X:
+ 		ice_ptp_reset_ts_memory_e82x(hw);
+ 		break;
+@@ -3636,7 +3654,7 @@ int ice_ptp_init_phc(struct ice_hw *hw)
+ 	/* Clear event err indications for auxiliary pins */
+ 	(void)rd32(hw, GLTSYN_STAT(src_idx));
+ 
+-	switch (hw->phy_model) {
++	switch (hw->ptp.phy_model) {
+ 	case ICE_PHY_E810:
+ 		return ice_ptp_init_phc_e810(hw);
+ 	case ICE_PHY_E82X:
+@@ -3659,7 +3677,7 @@ int ice_ptp_init_phc(struct ice_hw *hw)
+  */
+ int ice_get_phy_tx_tstamp_ready(struct ice_hw *hw, u8 block, u64 *tstamp_ready)
+ {
+-	switch (hw->phy_model) {
++	switch (hw->ptp.phy_model) {
+ 	case ICE_PHY_E810:
+ 		return ice_get_phy_tx_tstamp_ready_e810(hw, block,
+ 							tstamp_ready);
+diff --git a/drivers/net/ethernet/intel/ice/ice_ptp_hw.h b/drivers/net/ethernet/intel/ice/ice_ptp_hw.h
+index 1f3e03124430..3dce09af0d78 100644
+--- a/drivers/net/ethernet/intel/ice/ice_ptp_hw.h
++++ b/drivers/net/ethernet/intel/ice/ice_ptp_hw.h
+@@ -212,6 +212,7 @@ int ice_read_phy_tstamp(struct ice_hw *hw, u8 block, u8 idx, u64 *tstamp);
+ int ice_clear_phy_tstamp(struct ice_hw *hw, u8 block, u8 idx);
+ void ice_ptp_reset_ts_memory(struct ice_hw *hw);
+ int ice_ptp_init_phc(struct ice_hw *hw);
++void ice_ptp_init_hw(struct ice_hw *hw);
+ int ice_get_phy_tx_tstamp_ready(struct ice_hw *hw, u8 block, u64 *tstamp_ready);
+ 
+ /* E822 family functions */
+@@ -266,7 +267,6 @@ int ice_phy_cfg_tx_offset_e82x(struct ice_hw *hw, u8 port);
+ int ice_phy_cfg_rx_offset_e82x(struct ice_hw *hw, u8 port);
+ 
+ /* E810 family functions */
+-int ice_ptp_init_phy_e810(struct ice_hw *hw);
+ int ice_read_sma_ctrl_e810t(struct ice_hw *hw, u8 *data);
+ int ice_write_sma_ctrl_e810t(struct ice_hw *hw, u8 data);
+ int ice_read_pca9575_reg_e810t(struct ice_hw *hw, u8 offset, u8 *data);
+@@ -280,8 +280,6 @@ int ice_get_cgu_state(struct ice_hw *hw, u8 dpll_idx,
+ 		      u8 *ref_state, u8 *eec_mode, s64 *phase_offset,
+ 		      enum dpll_lock_status *dpll_state);
+ int ice_get_cgu_rclk_pin_info(struct ice_hw *hw, u8 *base_idx, u8 *pin_num);
+-
+-void ice_ptp_init_phy_model(struct ice_hw *hw);
+ int ice_cgu_get_output_pin_state_caps(struct ice_hw *hw, u8 pin_id,
+ 				      unsigned long *caps);
+ 
+diff --git a/drivers/net/ethernet/intel/ice/ice_type.h b/drivers/net/ethernet/intel/ice/ice_type.h
+index 08ec5efdafe6..5802009ed0c6 100644
+--- a/drivers/net/ethernet/intel/ice/ice_type.h
++++ b/drivers/net/ethernet/intel/ice/ice_type.h
+@@ -816,6 +816,9 @@ struct ice_mbx_data {
+ 	u16 async_watermark_val;
+ };
+ 
++#define ICE_PORTS_PER_QUAD	4
++#define ICE_GET_QUAD_NUM(port) ((port) / ICE_PORTS_PER_QUAD)
++
+ /* PHY model */
+ enum ice_phy_model {
+ 	ICE_PHY_UNSUP = -1,
+@@ -823,6 +826,12 @@ enum ice_phy_model {
+ 	ICE_PHY_E82X,
+ };
+ 
++struct ice_ptp_hw {
++	enum ice_phy_model phy_model;
++	u8 num_lports;
++	u8 ports_per_phy;
++};
++
+ /* Port hardware description */
+ struct ice_hw {
+ 	u8 __iomem *hw_addr;
+@@ -844,7 +853,6 @@ struct ice_hw {
+ 	u8 revision_id;
+ 
+ 	u8 pf_id;		/* device profile info */
+-	enum ice_phy_model phy_model;
+ 
+ 	u16 max_burst_size;	/* driver sets this value */
+ 
+@@ -907,12 +915,7 @@ struct ice_hw {
+ 	/* INTRL granularity in 1 us */
+ 	u8 intrl_gran;
+ 
+-#define ICE_MAX_QUAD			2
+-#define ICE_QUADS_PER_PHY_E82X		2
+-#define ICE_PORTS_PER_PHY_E82X		8
+-#define ICE_PORTS_PER_QUAD		4
+-#define ICE_PORTS_PER_PHY_E810		4
+-#define ICE_NUM_EXTERNAL_PORTS		(ICE_MAX_QUAD * ICE_PORTS_PER_QUAD)
++	struct ice_ptp_hw ptp;
+ 
+ 	/* Active package version (currently active) */
+ 	struct ice_pkg_ver active_pkg_ver;
 -- 
 2.43.0
 
