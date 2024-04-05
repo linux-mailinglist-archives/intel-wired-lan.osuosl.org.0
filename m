@@ -1,100 +1,95 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 94E34899EE1
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  5 Apr 2024 16:00:05 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id C677C899FBF
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  5 Apr 2024 16:30:57 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 48A994016D;
-	Fri,  5 Apr 2024 14:00:04 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 7C87D41595;
+	Fri,  5 Apr 2024 14:30:56 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id rsxbJ6AePGZJ; Fri,  5 Apr 2024 14:00:03 +0000 (UTC)
+ id 0nfjq_jfnzXO; Fri,  5 Apr 2024 14:30:55 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org CEEA441580
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1D9204157A
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1712325602;
-	bh=2Kv6qMWAmnaqt3cgud+S76vNqEBfICL6nSWnd2Ljxzc=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=LgcFxoaNf65zophsK9eJhedrLf3tQoG82LrtCBlORAxsS5mNhV8j5cCZODT77Pfsj
-	 Y7U24QuLbcmmzO5A8cmb5YIIwIOPDLcGesGO5s0Mlm+tABq/o5t/aq9sjFpLfP2yUg
-	 FwnBdJQTuZLRtqU1w0gGPjRYvukJPvAxnwfsDnZgXLETRWJXb+ovANaMaCdzGqmGJh
-	 fI0YwOTqt9Om+yY7PBuLvtJI9JRv7KvYBUJHPRE+P0ZtjS9N+JTeFjaX9BtdafNqve
-	 iQRBmfG41FyaLat+u8hPmTdXxf+bLzZeiDTHIgNvKRvu/Qx04pCcf9C73TanuQCUd1
-	 ZeEsZN29OXrPQ==
+	s=default; t=1712327455;
+	bh=lD6JB5/fBdo+UhxK1yP57Sxn/tMVYSmhq+XZU+zVfLw=;
+	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=qVZuqiKkVhB2Kzmqmjfrcm0nDCL+3JLmq5e29dso4tB5J79gOrt7IbT9EsWaYLE+q
+	 ipqwvS9SwgwKH5fQolWpezlrd34Jw5iu/f5Hgljr6UMqLtEvx1dePHAj1H16mcUUTY
+	 DiI3ShNKCE37Ylxg1xbDFF/fyuKWXH5zE7gFiGY5mPqiZwSWDPK8TyNLjvWRrkjbXC
+	 E7Z0thzFmvj1U00IMAZOdIC6grHS3DWGKxHs+hPFI2t/h89KoIzq4EiKOs+Q3u9CGy
+	 /mY/GfIL+FW9sdvdU7m2D46MwgsdQFaf8Xtrj3K0iuIRWh00VIgTnsPPXCKT5CtZLG
+	 8vZ/1fegscvOw==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id CEEA441580;
-	Fri,  5 Apr 2024 14:00:02 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 1D9204157A;
+	Fri,  5 Apr 2024 14:30:55 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 98F6A1BF232
- for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Apr 2024 13:59:54 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 6BBCD1BF2C3
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Apr 2024 14:30:53 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 8301F41592
- for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Apr 2024 13:59:54 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 5722E4055D
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Apr 2024 14:30:53 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 0dq2uQrUYMQI for <intel-wired-lan@lists.osuosl.org>;
- Fri,  5 Apr 2024 13:59:53 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.13;
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 0vtMsQZRlJua for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  5 Apr 2024 14:30:52 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.18;
  helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org DAA864016D
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org DAA864016D
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.13])
- by smtp2.osuosl.org (Postfix) with ESMTPS id DAA864016D
- for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Apr 2024 13:59:52 +0000 (UTC)
-X-CSE-ConnectionGUID: JRSbavVfQ9eeyYOIxmtCNg==
-X-CSE-MsgGUID: U5yCPTuXRW+fjAJd3IquSg==
-X-IronPort-AV: E=McAfee;i="6600,9927,11035"; a="10625018"
-X-IronPort-AV: E=Sophos;i="6.07,181,1708416000"; d="scan'208";a="10625018"
-Received: from fmviesa009.fm.intel.com ([10.60.135.149])
- by fmvoesa107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 05 Apr 2024 06:59:51 -0700
-X-CSE-ConnectionGUID: BwDrBxxWQ82yQRx8HnmAug==
-X-CSE-MsgGUID: VtAYIJv0QNmKeaVe/X/lwA==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org C588940547
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C588940547
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.18])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id C588940547
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Apr 2024 14:30:51 +0000 (UTC)
+X-CSE-ConnectionGUID: k1BH5JKtRs62WVjDQrQmzQ==
+X-CSE-MsgGUID: T91y0hPyRuOWqvRK4Kh8Wg==
+X-IronPort-AV: E=McAfee;i="6600,9927,11035"; a="7821199"
+X-IronPort-AV: E=Sophos;i="6.07,181,1708416000"; 
+   d="scan'208";a="7821199"
+Received: from orviesa005.jf.intel.com ([10.64.159.145])
+ by orvoesa110.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 05 Apr 2024 07:30:50 -0700
+X-CSE-ConnectionGUID: CFFsi2MGRLqkWlqFmeR9nA==
+X-CSE-MsgGUID: 4MssgrrZQbWpEDA5cCqH8A==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.07,181,1708416000"; d="scan'208";a="19194085"
+X-IronPort-AV: E=Sophos;i="6.07,181,1708416000"; d="scan'208";a="23879357"
 Received: from lkp-server01.sh.intel.com (HELO e61807b1d151) ([10.239.97.150])
- by fmviesa009.fm.intel.com with ESMTP; 05 Apr 2024 06:59:48 -0700
+ by orviesa005.jf.intel.com with ESMTP; 05 Apr 2024 07:30:49 -0700
 Received: from kbuild by e61807b1d151 with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1rsk6c-0002LC-0U;
- Fri, 05 Apr 2024 13:59:46 +0000
-Date: Fri, 5 Apr 2024 21:58:56 +0800
+ (envelope-from <lkp@intel.com>) id 1rskac-0002MO-2Z
+ for intel-wired-lan@lists.osuosl.org; Fri, 05 Apr 2024 14:30:46 +0000
+Date: Fri, 05 Apr 2024 22:29:50 +0800
 From: kernel test robot <lkp@intel.com>
-To: Karol Kolacinski <karol.kolacinski@intel.com>,
- intel-wired-lan@lists.osuosl.org
-Message-ID: <202404052136.o9Cbreqn-lkp@intel.com>
-References: <20240405100648.144756-19-karol.kolacinski@intel.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20240405100648.144756-19-karol.kolacinski@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <202404052248.LMVtvWGB-lkp@intel.com>
+User-Agent: s-nail v14.9.24
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1712325593; x=1743861593;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=F85+f1rlvH5QrZHeUd9aBhK9Uht+YIMvPImsvnkMVnE=;
- b=LHIjff4UrfkWCXHw9XHGPZ9gKkquBjSTUwPx+93y//vPYoSZSTRuxBKF
- JDkn9L05gSVGmJwFSsfDCyawNOdbwZhA+am6IteeTbDqRKqzogmTIv1xB
- HdRvIr0i8gARA+S3PEU1EVkjxxQdCG0fBjsNgrsMKgGW0aenQOt35S284
- 81uzBPSgiyyioTYKmOhAuBXSZ8SpczlyhfolFVoIH4r8unXKMFx7gVy2b
- eGlZarkoVyb053Q+ncXohVE2EA8gj0GzWdxLKPxyOlnlMpZJwKvvAUd1z
- YlNdIOwFRoqRiRQmxRGyl+zl03qM9vsjTtQkxTR5fwklBgpn0u32qcwVD
- w==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ t=1712327452; x=1743863452;
+ h=date:from:to:subject:message-id;
+ bh=mpmrw5w0cLUjI+tebdLVLaQeqMgUaoFTfcGZ9HZisns=;
+ b=BZgZbzab56IPt6AR7/09bSPiJKHX1kBva/2tMSu5NLvHJ26C/h97ZrUJ
+ 1NMaqgas0Xnay11+yHh4a86dZlPTxCrogn9pvx71kPvXqPKn6ry1OTzPN
+ hvU1/esNYTVrVs0eRIzVPyNv1OTO1ADCqh8DZybVJMVRVk0vB7mlNwAOS
+ kFhAOkNg33qcw39zs75ZcpOl9wzmoHtkOZYpX4LIQVGrk2CHCSE6yloe1
+ fvQdGS1Qb66wVDtMh/Wia/eNRpr/ZsdzMz9Fmhpozz3y66/t5iRzi2Fle
+ SyYy8b7kt+O0I2ppePjyqHduruSw0ObMH/WGrtCtdMq1ZIzIpdw8G6aHy
+ A==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=LHIjff4U
-Subject: Re: [Intel-wired-lan] [PATCH v6 iwl-next 05/12] ice: Move CGU block
+ header.s=Intel header.b=BZgZbzab
+Subject: [Intel-wired-lan] [tnguy-net-queue:dev-queue] BUILD SUCCESS
+ a492c2b597db11fab1eb7d23500bcd2c7c621a66
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -107,178 +102,185 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Sergey Temerkhanov <sergey.temerkhanov@intel.com>, netdev@vger.kernel.org,
- oe-kbuild-all@lists.linux.dev,
- Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>,
- Karol Kolacinski <karol.kolacinski@intel.com>, anthony.l.nguyen@intel.com,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi Karol,
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git dev-queue
+branch HEAD: a492c2b597db11fab1eb7d23500bcd2c7c621a66  iavf: Fix TC config comparison with existing adapter TC config
 
-kernel test robot noticed the following build warnings:
+elapsed time: 1245m
 
-[auto build test WARNING on 0a3074e5b4b523fb60f4ae9fb32bb180ea1fb6ef]
+configs tested: 164
+configs skipped: 3
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Karol-Kolacinski/ice-Introduce-ice_ptp_hw-struct/20240405-180941
-base:   0a3074e5b4b523fb60f4ae9fb32bb180ea1fb6ef
-patch link:    https://lore.kernel.org/r/20240405100648.144756-19-karol.kolacinski%40intel.com
-patch subject: [PATCH v6 iwl-next 05/12] ice: Move CGU block
-config: i386-allmodconfig (https://download.01.org/0day-ci/archive/20240405/202404052136.o9Cbreqn-lkp@intel.com/config)
-compiler: gcc-13 (Ubuntu 13.2.0-4ubuntu3) 13.2.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20240405/202404052136.o9Cbreqn-lkp@intel.com/reproduce)
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202404052136.o9Cbreqn-lkp@intel.com/
-
-All warnings (new ones prefixed by >>):
-
-   drivers/net/ethernet/intel/ice/ice_ptp_hw.c: In function 'ice_read_cgu_reg_e82x':
->> drivers/net/ethernet/intel/ice/ice_ptp_hw.c:244:25: warning: initialization of 'unsigned int' from 'u32 *' {aka 'unsigned int *'} makes integer from pointer without a cast [-Wint-conversion]
-     244 |                 .data = val
-         |                         ^~~
-   drivers/net/ethernet/intel/ice/ice_ptp_hw.c:244:25: note: (near initialization for 'cgu_msg.data')
-   In file included from <command-line>:
-   drivers/net/ethernet/intel/ice/ice_ptp_hw.c: In function 'ice_write_40b_phy_reg_e82x':
-   include/uapi/linux/bits.h:9:19: warning: right shift count is negative [-Wshift-count-negative]
-       9 |          (~_UL(0) >> (__BITS_PER_LONG - 1 - (h))))
-         |                   ^~
-   include/linux/compiler_types.h:440:23: note: in definition of macro '__compiletime_assert'
-     440 |                 if (!(condition))                                       \
-         |                       ^~~~~~~~~
-   include/linux/compiler_types.h:460:9: note: in expansion of macro '_compiletime_assert'
-     460 |         _compiletime_assert(condition, msg, __compiletime_assert_, __COUNTER__)
-         |         ^~~~~~~~~~~~~~~~~~~
-   include/linux/build_bug.h:39:37: note: in expansion of macro 'compiletime_assert'
-      39 | #define BUILD_BUG_ON_MSG(cond, msg) compiletime_assert(!(cond), msg)
-         |                                     ^~~~~~~~~~~~~~~~~~
-   include/linux/bitfield.h:65:17: note: in expansion of macro 'BUILD_BUG_ON_MSG'
-      65 |                 BUILD_BUG_ON_MSG(!__builtin_constant_p(_mask),          \
-         |                 ^~~~~~~~~~~~~~~~
-   include/linux/bitfield.h:155:17: note: in expansion of macro '__BF_FIELD_CHECK'
-     155 |                 __BF_FIELD_CHECK(_mask, _reg, 0U, "FIELD_GET: ");       \
-         |                 ^~~~~~~~~~~~~~~~
-   drivers/net/ethernet/intel/ice/ice_ptp_hw.c:908:16: note: in expansion of macro 'FIELD_GET'
-     908 |         high = FIELD_GET(P_REG_40B_HIGH_M, val);
-         |                ^~~~~~~~~
-   include/linux/bits.h:35:38: note: in expansion of macro '__GENMASK'
-      35 |         (GENMASK_INPUT_CHECK(h, l) + __GENMASK(h, l))
-         |                                      ^~~~~~~~~
-   drivers/net/ethernet/intel/ice/ice_ptp_hw.h:381:41: note: in expansion of macro 'GENMASK'
-     381 | #define P_REG_40B_HIGH_M                GENMASK(39, 8)
-         |                                         ^~~~~~~
-   drivers/net/ethernet/intel/ice/ice_ptp_hw.c:908:26: note: in expansion of macro 'P_REG_40B_HIGH_M'
-     908 |         high = FIELD_GET(P_REG_40B_HIGH_M, val);
-         |                          ^~~~~~~~~~~~~~~~
-   include/uapi/linux/bits.h:9:19: warning: right shift count is negative [-Wshift-count-negative]
-       9 |          (~_UL(0) >> (__BITS_PER_LONG - 1 - (h))))
-         |                   ^~
-   include/linux/compiler_types.h:440:23: note: in definition of macro '__compiletime_assert'
-     440 |                 if (!(condition))                                       \
-         |                       ^~~~~~~~~
-   include/linux/compiler_types.h:460:9: note: in expansion of macro '_compiletime_assert'
-     460 |         _compiletime_assert(condition, msg, __compiletime_assert_, __COUNTER__)
-         |         ^~~~~~~~~~~~~~~~~~~
-   include/linux/build_bug.h:39:37: note: in expansion of macro 'compiletime_assert'
-      39 | #define BUILD_BUG_ON_MSG(cond, msg) compiletime_assert(!(cond), msg)
-         |                                     ^~~~~~~~~~~~~~~~~~
-   include/linux/bitfield.h:67:17: note: in expansion of macro 'BUILD_BUG_ON_MSG'
-      67 |                 BUILD_BUG_ON_MSG((_mask) == 0, _pfx "mask is zero");    \
-         |                 ^~~~~~~~~~~~~~~~
-   include/linux/bitfield.h:155:17: note: in expansion of macro '__BF_FIELD_CHECK'
-     155 |                 __BF_FIELD_CHECK(_mask, _reg, 0U, "FIELD_GET: ");       \
-         |                 ^~~~~~~~~~~~~~~~
-   drivers/net/ethernet/intel/ice/ice_ptp_hw.c:908:16: note: in expansion of macro 'FIELD_GET'
-     908 |         high = FIELD_GET(P_REG_40B_HIGH_M, val);
-         |                ^~~~~~~~~
-   include/linux/bits.h:35:38: note: in expansion of macro '__GENMASK'
-      35 |         (GENMASK_INPUT_CHECK(h, l) + __GENMASK(h, l))
-         |                                      ^~~~~~~~~
-   drivers/net/ethernet/intel/ice/ice_ptp_hw.h:381:41: note: in expansion of macro 'GENMASK'
-     381 | #define P_REG_40B_HIGH_M                GENMASK(39, 8)
-         |                                         ^~~~~~~
-   drivers/net/ethernet/intel/ice/ice_ptp_hw.c:908:26: note: in expansion of macro 'P_REG_40B_HIGH_M'
-     908 |         high = FIELD_GET(P_REG_40B_HIGH_M, val);
-         |                          ^~~~~~~~~~~~~~~~
-   include/uapi/linux/bits.h:9:19: warning: right shift count is negative [-Wshift-count-negative]
-       9 |          (~_UL(0) >> (__BITS_PER_LONG - 1 - (h))))
-         |                   ^~
-   include/linux/compiler_types.h:440:23: note: in definition of macro '__compiletime_assert'
-     440 |                 if (!(condition))                                       \
-         |                       ^~~~~~~~~
-   include/linux/compiler_types.h:460:9: note: in expansion of macro '_compiletime_assert'
-     460 |         _compiletime_assert(condition, msg, __compiletime_assert_, __COUNTER__)
-         |         ^~~~~~~~~~~~~~~~~~~
-   include/linux/build_bug.h:39:37: note: in expansion of macro 'compiletime_assert'
-      39 | #define BUILD_BUG_ON_MSG(cond, msg) compiletime_assert(!(cond), msg)
-         |                                     ^~~~~~~~~~~~~~~~~~
-   include/linux/bitfield.h:68:17: note: in expansion of macro 'BUILD_BUG_ON_MSG'
-      68 |                 BUILD_BUG_ON_MSG(__builtin_constant_p(_val) ?           \
-         |                 ^~~~~~~~~~~~~~~~
-   include/linux/bitfield.h:155:17: note: in expansion of macro '__BF_FIELD_CHECK'
-     155 |                 __BF_FIELD_CHECK(_mask, _reg, 0U, "FIELD_GET: ");       \
-         |                 ^~~~~~~~~~~~~~~~
-   drivers/net/ethernet/intel/ice/ice_ptp_hw.c:908:16: note: in expansion of macro 'FIELD_GET'
-     908 |         high = FIELD_GET(P_REG_40B_HIGH_M, val);
-         |                ^~~~~~~~~
-   include/linux/bits.h:35:38: note: in expansion of macro '__GENMASK'
-      35 |         (GENMASK_INPUT_CHECK(h, l) + __GENMASK(h, l))
-         |                                      ^~~~~~~~~
-   drivers/net/ethernet/intel/ice/ice_ptp_hw.h:381:41: note: in expansion of macro 'GENMASK'
-     381 | #define P_REG_40B_HIGH_M                GENMASK(39, 8)
-         |                                         ^~~~~~~
-   drivers/net/ethernet/intel/ice/ice_ptp_hw.c:908:26: note: in expansion of macro 'P_REG_40B_HIGH_M'
-     908 |         high = FIELD_GET(P_REG_40B_HIGH_M, val);
-         |                          ^~~~~~~~~~~~~~~~
-   include/uapi/linux/bits.h:9:19: warning: right shift count is negative [-Wshift-count-negative]
-       9 |          (~_UL(0) >> (__BITS_PER_LONG - 1 - (h))))
-         |                   ^~
-   include/linux/compiler_types.h:440:23: note: in definition of macro '__compiletime_assert'
-     440 |                 if (!(condition))                                       \
-
-
-vim +244 drivers/net/ethernet/intel/ice/ice_ptp_hw.c
-
-   228	
-   229	/**
-   230	 * ice_read_cgu_reg_e82x - Read a CGU register
-   231	 * @hw: pointer to the HW struct
-   232	 * @addr: Register address to read
-   233	 * @val: storage for register value read
-   234	 *
-   235	 * Read the contents of a register of the Clock Generation Unit. Only
-   236	 * applicable to E822 devices.
-   237	 */
-   238	static int ice_read_cgu_reg_e82x(struct ice_hw *hw, u32 addr, u32 *val)
-   239	{
-   240		struct ice_sbq_msg_input cgu_msg = {
-   241			.opcode = ice_sbq_msg_rd,
-   242			.dest_dev = cgu,
-   243			.msg_addr_low = addr,
- > 244			.data = val
-   245		};
-   246		int err;
-   247	
-   248		cgu_msg.opcode = ice_sbq_msg_rd;
-   249		cgu_msg.dest_dev = cgu;
-   250		cgu_msg.msg_addr_low = addr;
-   251		cgu_msg.msg_addr_high = 0x0;
-   252	
-   253		err = ice_sbq_rw_reg(hw, &cgu_msg);
-   254		if (err) {
-   255			ice_debug(hw, ICE_DBG_PTP, "Failed to read CGU register 0x%04x, err %d\n",
-   256				  addr, err);
-   257			return err;
-   258		}
-   259	
-   260		*val = cgu_msg.data;
-   261	
-   262		return 0;
-   263	}
-   264	
+tested configs:
+alpha                             allnoconfig   gcc  
+alpha                            allyesconfig   gcc  
+alpha                               defconfig   gcc  
+arc                              allmodconfig   gcc  
+arc                               allnoconfig   gcc  
+arc                              allyesconfig   gcc  
+arc                                 defconfig   gcc  
+arc                         haps_hs_defconfig   gcc  
+arc                     haps_hs_smp_defconfig   gcc  
+arc                        nsim_700_defconfig   gcc  
+arc                   randconfig-001-20240405   gcc  
+arc                   randconfig-002-20240405   gcc  
+arm                              allmodconfig   gcc  
+arm                               allnoconfig   clang
+arm                              allyesconfig   gcc  
+arm                                 defconfig   clang
+arm                            hisi_defconfig   gcc  
+arm                   randconfig-001-20240405   gcc  
+arm                   randconfig-003-20240405   gcc  
+arm                           tegra_defconfig   gcc  
+arm                           u8500_defconfig   gcc  
+arm                        vexpress_defconfig   gcc  
+arm                         vf610m4_defconfig   gcc  
+arm64                            allmodconfig   clang
+arm64                             allnoconfig   gcc  
+arm64                            allyesconfig   clang
+arm64                               defconfig   gcc  
+arm64                 randconfig-001-20240405   gcc  
+arm64                 randconfig-002-20240405   gcc  
+arm64                 randconfig-003-20240405   gcc  
+arm64                 randconfig-004-20240405   gcc  
+csky                             allmodconfig   gcc  
+csky                              allnoconfig   gcc  
+csky                             allyesconfig   gcc  
+csky                                defconfig   gcc  
+csky                  randconfig-001-20240405   gcc  
+csky                  randconfig-002-20240405   gcc  
+hexagon                          allmodconfig   clang
+hexagon                           allnoconfig   clang
+hexagon                          allyesconfig   clang
+hexagon                             defconfig   clang
+i386                             allmodconfig   gcc  
+i386                              allnoconfig   gcc  
+i386                             allyesconfig   gcc  
+i386         buildonly-randconfig-001-20240405   gcc  
+i386         buildonly-randconfig-002-20240405   gcc  
+i386         buildonly-randconfig-003-20240405   clang
+i386         buildonly-randconfig-004-20240405   gcc  
+i386         buildonly-randconfig-005-20240405   clang
+i386         buildonly-randconfig-006-20240405   clang
+i386                                defconfig   clang
+i386                  randconfig-001-20240405   clang
+i386                  randconfig-002-20240405   gcc  
+i386                  randconfig-003-20240405   clang
+i386                  randconfig-004-20240405   clang
+i386                  randconfig-005-20240405   clang
+i386                  randconfig-006-20240405   gcc  
+i386                  randconfig-011-20240405   clang
+i386                  randconfig-012-20240405   gcc  
+i386                  randconfig-013-20240405   gcc  
+i386                  randconfig-014-20240405   gcc  
+i386                  randconfig-015-20240405   gcc  
+i386                  randconfig-016-20240405   clang
+loongarch                        allmodconfig   gcc  
+loongarch                         allnoconfig   gcc  
+loongarch                           defconfig   gcc  
+loongarch             randconfig-001-20240405   gcc  
+loongarch             randconfig-002-20240405   gcc  
+m68k                             allmodconfig   gcc  
+m68k                              allnoconfig   gcc  
+m68k                             allyesconfig   gcc  
+m68k                                defconfig   gcc  
+microblaze                       allmodconfig   gcc  
+microblaze                        allnoconfig   gcc  
+microblaze                       allyesconfig   gcc  
+microblaze                          defconfig   gcc  
+mips                              allnoconfig   gcc  
+mips                             allyesconfig   gcc  
+mips                malta_qemu_32r6_defconfig   gcc  
+nios2                            allmodconfig   gcc  
+nios2                             allnoconfig   gcc  
+nios2                            allyesconfig   gcc  
+nios2                               defconfig   gcc  
+nios2                 randconfig-001-20240405   gcc  
+nios2                 randconfig-002-20240405   gcc  
+openrisc                          allnoconfig   gcc  
+openrisc                         allyesconfig   gcc  
+openrisc                            defconfig   gcc  
+parisc                           allmodconfig   gcc  
+parisc                            allnoconfig   gcc  
+parisc                           allyesconfig   gcc  
+parisc                              defconfig   gcc  
+parisc                generic-32bit_defconfig   gcc  
+parisc                randconfig-001-20240405   gcc  
+parisc                randconfig-002-20240405   gcc  
+parisc64                            defconfig   gcc  
+powerpc                          allmodconfig   gcc  
+powerpc                           allnoconfig   gcc  
+powerpc                          allyesconfig   clang
+powerpc                    ge_imp3a_defconfig   gcc  
+powerpc                     powernv_defconfig   gcc  
+powerpc                         wii_defconfig   gcc  
+powerpc64             randconfig-001-20240405   gcc  
+powerpc64             randconfig-002-20240405   gcc  
+riscv                            allmodconfig   clang
+riscv                             allnoconfig   gcc  
+riscv                            allyesconfig   clang
+riscv                               defconfig   clang
+riscv                 randconfig-002-20240405   gcc  
+s390                             allmodconfig   clang
+s390                              allnoconfig   clang
+s390                             allyesconfig   gcc  
+s390                          debug_defconfig   gcc  
+s390                                defconfig   clang
+s390                  randconfig-002-20240405   gcc  
+sh                               allmodconfig   gcc  
+sh                                allnoconfig   gcc  
+sh                               allyesconfig   gcc  
+sh                                  defconfig   gcc  
+sh                             espt_defconfig   gcc  
+sh                            hp6xx_defconfig   gcc  
+sh                    randconfig-001-20240405   gcc  
+sh                    randconfig-002-20240405   gcc  
+sh                          sdk7786_defconfig   gcc  
+sh                        sh7757lcr_defconfig   gcc  
+sparc                            allmodconfig   gcc  
+sparc                             allnoconfig   gcc  
+sparc                               defconfig   gcc  
+sparc64                          allmodconfig   gcc  
+sparc64                          allyesconfig   gcc  
+sparc64                             defconfig   gcc  
+sparc64               randconfig-001-20240405   gcc  
+sparc64               randconfig-002-20240405   gcc  
+um                               allmodconfig   clang
+um                                allnoconfig   clang
+um                               allyesconfig   gcc  
+um                                  defconfig   clang
+um                             i386_defconfig   gcc  
+um                    randconfig-001-20240405   gcc  
+um                           x86_64_defconfig   clang
+x86_64                            allnoconfig   clang
+x86_64                           allyesconfig   clang
+x86_64       buildonly-randconfig-003-20240405   gcc  
+x86_64       buildonly-randconfig-004-20240405   gcc  
+x86_64                              defconfig   gcc  
+x86_64                randconfig-004-20240405   gcc  
+x86_64                randconfig-006-20240405   gcc  
+x86_64                randconfig-012-20240405   gcc  
+x86_64                randconfig-013-20240405   gcc  
+x86_64                randconfig-015-20240405   gcc  
+x86_64                randconfig-016-20240405   gcc  
+x86_64                randconfig-071-20240405   gcc  
+x86_64                randconfig-072-20240405   gcc  
+x86_64                randconfig-073-20240405   gcc  
+x86_64                randconfig-074-20240405   gcc  
+x86_64                randconfig-075-20240405   gcc  
+x86_64                randconfig-076-20240405   gcc  
+x86_64                          rhel-8.3-rust   clang
+x86_64                               rhel-8.3   gcc  
+xtensa                            allnoconfig   gcc  
+xtensa                  audio_kc705_defconfig   gcc  
+xtensa                  nommu_kc705_defconfig   gcc  
+xtensa                randconfig-001-20240405   gcc  
+xtensa                randconfig-002-20240405   gcc  
 
 -- 
 0-DAY CI Kernel Test Service
