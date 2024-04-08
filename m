@@ -2,90 +2,95 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id C814989BCB2
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  8 Apr 2024 12:10:38 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0A8AF89BD04
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  8 Apr 2024 12:26:28 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 14EDE81EDD;
-	Mon,  8 Apr 2024 10:10:37 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 9A308818CA;
+	Mon,  8 Apr 2024 10:26:26 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id znoSTIzIVNAO; Mon,  8 Apr 2024 10:10:36 +0000 (UTC)
+ id Ctp-gEaqI-jg; Mon,  8 Apr 2024 10:26:25 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 215AC81EDE
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6639C818CD
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1712571036;
-	bh=/huYobYq5KCE4csYMJA/WWSJl9IQXHyYAxE17DSw7c8=;
-	h=From:Date:References:In-Reply-To:To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=EXDl3sKaxo+OKzzxoy/spFCtgTwiD2vFLoAfGjyy0Tqq+JTl7R22K6/AlMZQTiuLf
-	 Unk+LW9bTtui8nCakEfg7E5RXCNoJB8j0YfQTgwSfx60eTVmUfTsA5DEdPnXZW19Uh
-	 3TpcclBk5z//CP0eVQJp1WAkHeTJlMDLEfjIPNnvBBuu4vRkvGOPsYqkYQ0kvH5J97
-	 DKf+nZaFh2HWzAoRd5V+7lyOixgota157HSzYULCObYXYZsSvE96lZm54QoUaT1oo6
-	 q3o9rBue7cwrddJIgBDjYzodc48K8L91IxKCx++sX7EXKCPW+VGYJcGi6xQaKIR2k7
-	 uCzBhZrpeIqcA==
+	s=default; t=1712571985;
+	bh=MQ80NtVHkl5lDvmAueFg3PPCR4qNIr69Cy9WTtDDY0A=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=iOsSkfaXuoROKHjCoL6hwI7k+ZwSf/NlWqsMSAYppWjWhc60AutMuus2Fx3b5Gwiz
+	 uof0UKPXx0Su1wrLyCkEOrRS7Yp3M0QFJOrgpbO474Dly1pAECn8iNhD1Q1Bp7m60n
+	 NStxfxhp+jdS5ewF7mfcJCDLqhAzrLnG9g2rawENjI7lX7BTRjjx9vVzUyQJ5o0gpt
+	 CEBGC9bhHaxGgeFRVzHzo2ZLrOnqY5ogABCob8sMXzXht1ESsGeHeKKX04pnqIHN3v
+	 9VAK6P9cPZqFRc2c9EzNpNKBi5NfDBunJEfblq1IOijPW78mUMtV8h5mcuD2lRMyXC
+	 BQbAat5EdTYYg==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 215AC81EDE;
-	Mon,  8 Apr 2024 10:10:36 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 6639C818CD;
+	Mon,  8 Apr 2024 10:26:25 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id DC7911BF3CD
- for <intel-wired-lan@lists.osuosl.org>; Mon,  8 Apr 2024 10:10:33 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 7FFCA1BF3CD
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  8 Apr 2024 10:26:23 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id C734E40732
- for <intel-wired-lan@lists.osuosl.org>; Mon,  8 Apr 2024 10:10:33 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 6A5184072E
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  8 Apr 2024 10:26:23 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id oUVPOt5kuPsu for <intel-wired-lan@lists.osuosl.org>;
- Mon,  8 Apr 2024 10:10:32 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=145.40.73.55;
- helo=sin.source.kernel.org; envelope-from=patchwork-bot+netdevbpf@kernel.org;
+ id sw1m13JHR1q2 for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  8 Apr 2024 10:26:22 +0000 (UTC)
+Received-SPF: None (mailfrom) identity=mailfrom; client-ip=198.175.65.17;
+ helo=mgamail.intel.com; envelope-from=michal.swiatkowski@linux.intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 7CDE840721
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7CDE840721
-Received: from sin.source.kernel.org (sin.source.kernel.org [145.40.73.55])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 7CDE840721
- for <intel-wired-lan@lists.osuosl.org>; Mon,  8 Apr 2024 10:10:32 +0000 (UTC)
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by sin.source.kernel.org (Postfix) with ESMTP id 08099CE0F8F;
- Mon,  8 Apr 2024 10:10:28 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 2BE3AC43394;
- Mon,  8 Apr 2024 10:10:27 +0000 (UTC)
-Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org
- (localhost.localdomain [127.0.0.1])
- by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id
- 212C4C54BD9; Mon,  8 Apr 2024 10:10:27 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org E34544068A
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E34544068A
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.17])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id E34544068A
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  8 Apr 2024 10:26:21 +0000 (UTC)
+X-CSE-ConnectionGUID: LMIHb51BRWSdxOAW6Y6bVw==
+X-CSE-MsgGUID: /PFdQAIQTFKD9DnUPqWVzw==
+X-IronPort-AV: E=McAfee;i="6600,9927,11037"; a="7944134"
+X-IronPort-AV: E=Sophos;i="6.07,186,1708416000"; 
+   d="scan'208";a="7944134"
+Received: from orviesa009.jf.intel.com ([10.64.159.149])
+ by orvoesa109.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 08 Apr 2024 03:26:21 -0700
+X-CSE-ConnectionGUID: UYOmBX1HQaSKSN9pvjyg4Q==
+X-CSE-MsgGUID: 3NycGAJPQXWdiGWAsUiRiw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.07,186,1708416000"; d="scan'208";a="19758513"
+Received: from wasp.igk.intel.com (HELO GK3153-DR2-R750-36946.localdomain.com)
+ ([10.102.20.192])
+ by orviesa009.jf.intel.com with ESMTP; 08 Apr 2024 03:26:19 -0700
+From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Mon,  8 Apr 2024 12:30:42 +0200
+Message-ID: <20240408103049.19445-1-michal.swiatkowski@linux.intel.com>
+X-Mailer: git-send-email 2.42.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <171257102713.30740.3149927029161291551.git-patchwork-notify@kernel.org>
-Date: Mon, 08 Apr 2024 10:10:27 +0000
-References: <20240404160302.3585661-1-aleksander.lobakin@intel.com>
-In-Reply-To: <20240404160302.3585661-1-aleksander.lobakin@intel.com>
-To: Alexander Lobakin <aleksander.lobakin@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1712571027;
- bh=x+XrOol6yWyCizxrCWOJ4+a0py0a9Q0xvIdnby2O6R0=;
- h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
- b=qlp4k2VDn9EuhCEJk7K3FBy3HYyssjwc6Q8Z6TIDwXjvRWs8iEtjO8rtbGlclPSSW
- lyiHMiLP6hYzFvOL0oJ5QKSTNTWmnfH5dKpu+A9oAJcLIxzvVp/KZvMkLT9UvjnK6A
- ymVtTiu81lybfdx0DhYxq3h9orjun1qP1LgpD9VXlXo8whpqXOrI+54W/CDI0Zdu6y
- CClsuWCjtzn+dWR+HgM76Kvu1nplipakS2h8Y8Ypj2OUQaQj3lPWvpv1HCi8l/6jhI
- TG75Zya/QxSLXpW22pdQpxI0f7QVDu4lhouQz4GIL5Pl9q//g/u7plnfHKRaUztIJL
- 1ebsv50Ml6aBA==
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1712571982; x=1744107982;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=Kf2hqyDHZa7/128+yQOXUSjbEUjfnRokeYntKuyjo7E=;
+ b=GjgxOtlinhVKyj8604gRg8QxapChtMJDs+DCqlyV88Y5feBJ0e8n7+OW
+ FTL+bCFmBuWVtRIPV/lArDWTgyWrfe+Sz/rGqVx9I5Jd2/Romyry00Ayz
+ d4yh78+bjGPN3IpwnbOVmERwpsVnz6oWxJxAmeO5AqjnkiayTpfIHSwPn
+ E2CnWeoClT0ViqxIyt7rSsutjEDMdW8AeARsYjx9TJKdP4izB7FhOsFlM
+ ET4jS+MW5iiILtKCA9TR+RZIe5vMn52nCUKs8cSndq5/zWZS8XFehLOwM
+ OpGvuYsjjzDcxsmjg9iRm6rmOp9E9hKtW2Fkn2W/00DOltpgYNF/iWb/b
+ A==;
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=kernel.org
+ dmarc=none (p=none dis=none)
+ header.from=linux.intel.com
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20201202 header.b=qlp4k2VD
-Subject: Re: [Intel-wired-lan] [PATCH net-next] ip_tunnel: harden copying IP
- tunnel params to userspace
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=GjgxOtli
+Subject: [Intel-wired-lan] [iwl-next v1 0/7] ice: support devlink subfunction
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,39 +103,76 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, dsahern@kernel.org, linux-kernel@vger.kernel.org,
- edumazet@google.com, intel-wired-lan@lists.osuosl.org, horms@kernel.org,
- nex.sw.ncis.osdt.itp.upstreaming@intel.com, kuba@kernel.org, pabeni@redhat.com,
- davem@davemloft.net, dan.carpenter@linaro.org
+Cc: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>,
+ maciej.fijalkowski@intel.com, sridhar.samudrala@intel.com,
+ nex.sw.ncis.osdt.itp.upstreaming@intel.com, netdev@vger.kernel.org,
+ jiri@nvidia.com, michal.kubiak@intel.com, pio.raczynski@gmail.com,
+ przemyslaw.kitszel@intel.com, jacob.e.keller@intel.com,
+ wojciech.drewek@intel.com
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hello:
+Hi,
 
-This patch was applied to netdev/net-next.git (main)
-by David S. Miller <davem@davemloft.net>:
+This is second patchset split from subfunction patchset [1].
+Important changes from previous version:
+ * remove unnecessary checks for devlink port type
+ * link correct devlink port to subfunction netdev
 
-On Thu,  4 Apr 2024 18:03:02 +0200 you wrote:
-> Structures which are about to be copied to userspace shouldn't have
-> uninitialized fields or paddings.
-> memset() the whole &ip_tunnel_parm in ip_tunnel_parm_to_user() before
-> filling it with the kernel data. The compilers will hopefully combine
-> writes to it.
-> 
-> Fixes: 117aef12a7b1 ("ip_tunnel: use a separate struct to store tunnel params in the kernel")
-> Reported-by: Dan Carpenter <dan.carpenter@linaro.org>
-> Closes: https://lore.kernel.org/netdev/5f63dd25-de94-4ca3-84e6-14095953db13@moroto.mountain
-> Signed-off-by: Alexander Lobakin <aleksander.lobakin@intel.com>
-> 
-> [...]
+Follow up patchset with subfunction port representor will be the last
+patchset for subfunction implementation in ice. It is a little
+unpleasant to split it like that, because devlink port should be linked
+with port representor netdev. In this patchset use devlink port without
+linking it. It will be done correctly in the follow up when subfunction
+port representor is available.
 
-Here is the summary with links:
-  - [net-next] ip_tunnel: harden copying IP tunnel params to userspace
-    https://git.kernel.org/netdev/net-next/c/5a66cda52d7d
+Currently ice driver does not allow creating more than one networking
+device per physical function. The only way to have more hardware backed
+netdev is to use SR-IOV.
 
-You are awesome, thank you!
+Following patchset adds support for devlink port API. For each new
+pcisf type port, driver allocates new VSI, configures all resources
+needed, including dynamically MSIX vectors, program rules and registers
+new netdev.
+
+This series supports only one Tx/Rx queue pair per subfunction.
+
+Example commands:
+devlink port add pci/0000:31:00.1 flavour pcisf pfnum 1 sfnum 1000
+devlink port function set pci/0000:31:00.1/1 hw_addr 00:00:00:00:03:14
+devlink port function set pci/0000:31:00.1/1 state active
+devlink port function del pci/0000:31:00.1/1
+
+[1] https://lore.kernel.org/netdev/20240301115414.502097-1-michal.swiatkowski@linux.intel.com/
+
+Piotr Raczynski (7):
+  ice: add new VSI type for subfunctions
+  ice: export ice ndo_ops functions
+  ice: add basic devlink subfunctions support
+  ice: allocate devlink for subfunction
+  ice: base subfunction aux driver
+  ice: implement netdev for subfunction
+  ice: allow to activate and deactivate subfunction
+
+ drivers/net/ethernet/intel/ice/Makefile       |   1 +
+ .../net/ethernet/intel/ice/devlink/devlink.c  |  42 +-
+ .../net/ethernet/intel/ice/devlink/devlink.h  |   1 +
+ .../ethernet/intel/ice/devlink/devlink_port.c | 512 ++++++++++++++++++
+ .../ethernet/intel/ice/devlink/devlink_port.h |  37 ++
+ drivers/net/ethernet/intel/ice/ice.h          |  12 +
+ drivers/net/ethernet/intel/ice/ice_base.c     |   5 +-
+ drivers/net/ethernet/intel/ice/ice_dcb_lib.c  |   1 +
+ drivers/net/ethernet/intel/ice/ice_lib.c      |  52 +-
+ drivers/net/ethernet/intel/ice/ice_lib.h      |   3 +
+ drivers/net/ethernet/intel/ice/ice_main.c     |  66 ++-
+ drivers/net/ethernet/intel/ice/ice_sf_eth.c   | 317 +++++++++++
+ drivers/net/ethernet/intel/ice/ice_sf_eth.h   |  33 ++
+ drivers/net/ethernet/intel/ice/ice_type.h     |   1 +
+ drivers/net/ethernet/intel/ice/ice_xsk.c      |   2 +-
+ 15 files changed, 1039 insertions(+), 46 deletions(-)
+ create mode 100644 drivers/net/ethernet/intel/ice/ice_sf_eth.c
+ create mode 100644 drivers/net/ethernet/intel/ice/ice_sf_eth.h
+
 -- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
+2.42.0
 
