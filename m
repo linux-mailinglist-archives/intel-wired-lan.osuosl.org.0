@@ -2,96 +2,116 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5EC0D89BDF6
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  8 Apr 2024 13:18:55 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5DC7689BE26
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  8 Apr 2024 13:31:57 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id C8FF7407DB;
-	Mon,  8 Apr 2024 11:18:51 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 0447C40539;
+	Mon,  8 Apr 2024 11:31:56 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id UlGxr8HLNGvh; Mon,  8 Apr 2024 11:18:51 +0000 (UTC)
+ id OKjBWNmzy1gc; Mon,  8 Apr 2024 11:31:54 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0D2B240174
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1FB5D40696
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1712575131;
-	bh=bwKJUcErJS9cq2OxEassb3NhjmpM86WuzMExqwj2GWM=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1712575914;
+	bh=RHQoved3Ib0bbpwwG5PSbAdOu4VZwZ++KFamXa97I+Q=;
+	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=411P9vW56qXUnb842fspC8FdAa/dtXvJCk0LYsMnyB0xvrY+CNpsFB5M/hHKa8j06
-	 RYaRHyYHxo3Bftxi/Tp1/Psv1ZefuwdpoAwmX6LwtHdqyLWWTEv/eT1PGxia0swQpC
-	 SgAXXmTP6vtU3IBG6dSZ+KEhSYzq3uI62a6KLTWuN0h9YmGogNy9MUEPgogqfeAAS6
-	 eYZ+5qtqnUeKoktmRTP0l8Fk9vFSUt+7tNR2GcQKXDi2WtoC2AJn8YUdu8qvdiMele
-	 LR/T/BUJindp3x4FWwCYdiG2Fo1K5uah0vMDIuSwzNN/29rR2nD26j0q/PRZaVNTNd
-	 l0ZVTtp9oACvw==
+	b=vyzwhHiOSPqTTn+yjDCXgn3CU20N3TLzB8EWwbWyW8z9Pq1KfzP2HWO9J7CrGEbrf
+	 Kv3IDey02RxKFsyY5f8lKdR892CgMboBW9TbN5jYd1dt2ignPLONWXUwB8mh3DbyoP
+	 SnGwrjxbEFkScJAEctfNAdoPyGKhU21+oWn5GvhzRPyvvCiu/xdRI6/wElGxqvkSIn
+	 m+wO1ZIQKaJvFWsSa92Rfk98p6iBkK3F9H0loFlsONrINiV3YisCQBhpvsK9r9p+c9
+	 jZhk0ZjjhDV72Zd+9+BKDMzmLk62FyNpZ7sV5tbbvIzjjaU3wk4AneUAO+0X81Htte
+	 H+rwOdL/brJcg==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 0D2B240174;
-	Mon,  8 Apr 2024 11:18:51 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 1FB5D40696;
+	Mon,  8 Apr 2024 11:31:54 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id A547D1BF340
- for <intel-wired-lan@lists.osuosl.org>; Mon,  8 Apr 2024 11:18:47 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id B04E11BF340
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  8 Apr 2024 11:31:51 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 90513811E7
- for <intel-wired-lan@lists.osuosl.org>; Mon,  8 Apr 2024 11:18:47 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id A6ACF60AE6
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  8 Apr 2024 11:31:50 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id pMtoigMKbDNG for <intel-wired-lan@lists.osuosl.org>;
- Mon,  8 Apr 2024 11:18:46 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.13;
- helo=mgamail.intel.com; envelope-from=karol.kolacinski@intel.com;
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id JaAwkfeV6wFH for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  8 Apr 2024 11:31:49 +0000 (UTC)
+Received-SPF: None (mailfrom) identity=mailfrom; client-ip=198.175.65.20;
+ helo=mgamail.intel.com; envelope-from=naamax.meir@linux.intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 9A91580FFE
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9A91580FFE
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.13])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 9A91580FFE
- for <intel-wired-lan@lists.osuosl.org>; Mon,  8 Apr 2024 11:18:46 +0000 (UTC)
-X-CSE-ConnectionGUID: sWnO83qJSYaIFKV0O2rGSg==
-X-CSE-MsgGUID: QbPlcfcURhu0dlvu2fNRsQ==
-X-IronPort-AV: E=McAfee;i="6600,9927,11037"; a="18988627"
-X-IronPort-AV: E=Sophos;i="6.07,186,1708416000"; d="scan'208";a="18988627"
-Received: from fmviesa009.fm.intel.com ([10.60.135.149])
- by orvoesa105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 Apr 2024 04:18:46 -0700
-X-CSE-ConnectionGUID: 5a4yEXWnRIuFOyAFSi5INw==
-X-CSE-MsgGUID: nIEj/x6BTbms1YPMZ4MyDQ==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 1ED0E60ADE
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1ED0E60ADE
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.20])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 1ED0E60ADE
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  8 Apr 2024 11:31:48 +0000 (UTC)
+X-CSE-ConnectionGUID: 4+1R/EyDSniNMiB4xslWuw==
+X-CSE-MsgGUID: 1RfumElTQ6u4ajviwgmzvA==
+X-IronPort-AV: E=McAfee;i="6600,9927,11037"; a="7719681"
+X-IronPort-AV: E=Sophos;i="6.07,186,1708416000"; 
+   d="scan'208";a="7719681"
+Received: from orviesa006.jf.intel.com ([10.64.159.146])
+ by orvoesa112.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 08 Apr 2024 04:31:34 -0700
+X-CSE-ConnectionGUID: iGy4cJ9WQnmXBWQchwnkWA==
+X-CSE-MsgGUID: FcWLRQYLRUyMX0HX9CcM7w==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.07,186,1708416000"; d="scan'208";a="19904958"
-Received: from kkolacin-desk1.igk.intel.com ([10.102.102.152])
- by fmviesa009.fm.intel.com with ESMTP; 08 Apr 2024 04:18:44 -0700
-From: Karol Kolacinski <karol.kolacinski@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Mon,  8 Apr 2024 13:07:33 +0200
-Message-ID: <20240408111814.404583-26-karol.kolacinski@intel.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20240408111814.404583-14-karol.kolacinski@intel.com>
-References: <20240408111814.404583-14-karol.kolacinski@intel.com>
+X-IronPort-AV: E=Sophos;i="6.07,186,1708416000"; d="scan'208";a="20294008"
+Received: from naamamex-mobl.ger.corp.intel.com (HELO [10.12.48.215])
+ ([10.12.48.215])
+ by orviesa006-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 08 Apr 2024 04:31:30 -0700
+Message-ID: <a27c0807-cd53-41e1-b54b-dc4dde623467@linux.intel.com>
+Date: Mon, 8 Apr 2024 14:31:26 +0300
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla Thunderbird
+To: Song Yoong Siang <yoong.siang.song@intel.com>,
+ Jesse Brandeburg <jesse.brandeburg@intel.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>,
+ "David S . Miller" <davem@davemloft.net>, Eric Dumazet
+ <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, Richard Cochran <richardcochran@gmail.com>,
+ Alexei Starovoitov <ast@kernel.org>, Daniel Borkmann <daniel@iogearbox.net>,
+ Jesper Dangaard Brouer <hawk@kernel.org>,
+ John Fastabend <john.fastabend@gmail.com>,
+ Stanislav Fomichev <sdf@google.com>,
+ Vinicius Costa Gomes <vinicius.gomes@intel.com>,
+ Florian Bezdeka <florian.bezdeka@siemens.com>,
+ Kurt Kanzenbach <kurt@linutronix.de>,
+ Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+References: <20240325020928.1987947-1-yoong.siang.song@intel.com>
+Content-Language: en-US
+From: "naamax.meir" <naamax.meir@linux.intel.com>
+In-Reply-To: <20240325020928.1987947-1-yoong.siang.song@intel.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1712575127; x=1744111127;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=tD7rAzaUCs6+G8XM/vaND6K1eBFXUIxKHfOl04kvuJ0=;
- b=LLbEoYpNdyE7MQDUDMI3bwjvEzNCitEjtHKsVEvhgawb2v6y/XNinIDO
- 2SPgrnbA0J4G1v0Ji34BcmK53nouHekssy1wxQ5mzwcfB3CFQ5rxCZlK2
- x0eLiS+p6/xOV4mnf5/NgTs/W2EHBi6mRNzdejaDD34xcgjJk8EcZJB8y
- YrGUrKu4qflZVkKZSl6yHZ8hvL3phEQTcM546+USuGDnXUEgqU04V+44j
- DZnVu5U/0qi0K9rcTTW1dl7E02Nl+vhqUevvFuKTgJ4m9p+m9B50tiZDQ
- 2QQ3lURde1NTg4OKJ6qxyS5xygZL172vrvPsr8JhXAI68bOWHj2zNvyxd
+ t=1712575909; x=1744111909;
+ h=message-id:date:mime-version:subject:to:cc:references:
+ from:in-reply-to:content-transfer-encoding;
+ bh=D71Valr4oVt/G2WrBytJ8ydGge5jOgkT2K54j+Q+l8c=;
+ b=P1GRzSKA1V+A7FmY2WHTO30clCnwh9MxJ4bmBqV5/AmHxs714uhHddvd
+ cdGDpidFjYAO+WNHU392HVVZYfBs3l5G576fXc3beQVfCmOEdq3y5yqJt
+ JN851/O9mS7nhVGvJ/ETtc/zm4UGSQr1EzQetsmk7fGC5kikrxlj/Y+UJ
+ vnyAFCtbDMi2iAW1sSoDq5Kw4YaXDW/HegV5SfdHDCGQJ7Fdt2VjPkOej
+ pusP40729gwt2o2YdJG7eqhkjv8NeMUfh4IImtRnPk4ZWTd+jrzMKsprw
+ rcJFT2K6eLpfxT0mJxrN+eQ6ftlUqk4DVqSbmFi/+T2FPQmsfwtanoB5q
  Q==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=LLbEoYpN
-Subject: [Intel-wired-lan] [PATCH v7 iwl-next 12/12] ice: Adjust PTP init
- for 2x50G E825C devices
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dmarc=none (p=none dis=none)
+ header.from=linux.intel.com
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=P1GRzSKA
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next,
+ v4 1/1] igc: Add Tx hardware timestamp request for AF_XDP zero-copy
+ packet
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -104,151 +124,113 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org,
- Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>,
- Karol Kolacinski <karol.kolacinski@intel.com>, anthony.l.nguyen@intel.com
+Cc: netdev@vger.kernel.org, bpf@vger.kernel.org, xdp-hints@xdp-project.net,
+ intel-wired-lan@lists.osuosl.org, linux-kernel@vger.kernel.org
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Grzegorz Nitka <grzegorz.nitka@intel.com>
+On 3/25/2024 04:09, Song Yoong Siang wrote:
+> This patch adds support to per-packet Tx hardware timestamp request to
+> AF_XDP zero-copy packet via XDP Tx metadata framework. Please note that
+> user needs to enable Tx HW timestamp capability via igc_ioctl() with
+> SIOCSHWTSTAMP cmd before sending xsk Tx hardware timestamp request.
+> 
+> Same as implementation in RX timestamp XDP hints kfunc metadata, Timer 0
+> (adjustable clock) is used in xsk Tx hardware timestamp. i225/i226 have
+> four sets of timestamping registers. *skb and *xsk_tx_buffer pointers
+> are used to indicate whether the timestamping register is already occupied.
+> 
+> Furthermore, a boolean variable named xsk_pending_ts is used to hold the
+> transmit completion until the tx hardware timestamp is ready. This is
+> because, for i225/i226, the timestamp notification event comes some time
+> after the transmit completion event. The driver will retrigger hardware irq
+> to clean the packet after retrieve the tx hardware timestamp.
+> 
+> Besides, xsk_meta is added into struct igc_tx_timestamp_request as a hook
+> to the metadata location of the transmit packet. When the Tx timestamp
+> interrupt is fired, the interrupt handler will copy the value of Tx hwts
+> into metadata location via xsk_tx_metadata_complete().
+> 
+> This patch is tested with tools/testing/selftests/bpf/xdp_hw_metadata
+> on Intel ADL-S platform. Below are the test steps and results.
+> 
+> Test Step 1: Run xdp_hw_metadata app
+>   ./xdp_hw_metadata <iface> > /dev/shm/result.log
+> 
+> Test Step 2: Enable Tx hardware timestamp
+>   hwstamp_ctl -i <iface> -t 1 -r 1
+> 
+> Test Step 3: Run ptp4l and phc2sys for time synchronization
+> 
+> Test Step 4: Generate UDP packets with 1ms interval for 10s
+>   trafgen --dev <iface> '{eth(da=<addr>), udp(dp=9091)}' -t 1ms -n 10000
+> 
+> Test Step 5: Rerun Step 1-3 with 10s iperf3 as background traffic
+> 
+> Test Step 6: Rerun Step 1-4 with 10s iperf3 as background traffic
+> 
+> Based on iperf3 results below, the impact of holding tx completion to
+> throughput is not observable.
+> 
+> Result of last UDP packet (no. 10000) in Step 4:
+> poll: 1 (0) skip=99 fail=0 redir=10000
+> xsk_ring_cons__peek: 1
+> 0x5640a37972d0: rx_desc[9999]->addr=f2110 addr=f2110 comp_addr=f2110 EoP
+> rx_hash: 0x2049BE1D with RSS type:0x1
+> HW RX-time:   1679819246792971268 (sec:1679819246.7930) delta to User RX-time sec:0.0000 (14.990 usec)
+> XDP RX-time:   1679819246792981987 (sec:1679819246.7930) delta to User RX-time sec:0.0000 (4.271 usec)
+> No rx_vlan_tci or rx_vlan_proto, err=-95
+> 0x5640a37972d0: ping-pong with csum=ab19 (want 315b) csum_start=34 csum_offset=6
+> 0x5640a37972d0: complete tx idx=9999 addr=f010
+> HW TX-complete-time:   1679819246793036971 (sec:1679819246.7930) delta to User TX-complete-time sec:0.0001 (77.656 usec)
+> XDP RX-time:   1679819246792981987 (sec:1679819246.7930) delta to User TX-complete-time sec:0.0001 (132.640 usec)
+> HW RX-time:   1679819246792971268 (sec:1679819246.7930) delta to HW TX-complete-time sec:0.0001 (65.703 usec)
+> 0x5640a37972d0: complete rx idx=10127 addr=f2110
+> 
+> Result of iperf3 without tx hwts request in step 5:
+> [ ID] Interval           Transfer     Bitrate         Retr
+> [  5]   0.00-10.00  sec  2.74 GBytes  2.36 Gbits/sec    0             sender
+> [  5]   0.00-10.05  sec  2.74 GBytes  2.34 Gbits/sec                  receiver
+> 
+> Result of iperf3 running parallel with trafgen command in step 6:
+> [ ID] Interval           Transfer     Bitrate         Retr
+> [  5]   0.00-10.00  sec  2.74 GBytes  2.36 Gbits/sec    0             sender
+> [  5]   0.00-10.04  sec  2.74 GBytes  2.34 Gbits/sec                  receiver
+> 
+> Co-developed-by: Lai Peter Jun Ann <jun.ann.lai@intel.com>
+> Signed-off-by: Lai Peter Jun Ann <jun.ann.lai@intel.com>
+> Signed-off-by: Song Yoong Siang <yoong.siang.song@intel.com>
+> Acked-by: John Fastabend <john.fastabend@gmail.com>
+> ---
+> V1: https://patchwork.kernel.org/project/netdevbpf/patch/20231215162158.951925-1-yoong.siang.song@intel.com/
+> V2: https://patchwork.kernel.org/project/netdevbpf/cover/20240301162348.898619-1-yoong.siang.song@intel.com/
+> V3: https://patchwork.kernel.org/project/netdevbpf/cover/20240303083225.1184165-1-yoong.siang.song@intel.com/
+> 
+> changelog:
+> V1 -> V2
+> - In struct igc_tx_timestamp_request, keep a pointer to igc_tx_buffer,
+>    instead of pointing xsk_pending_ts (Vinicius).
+> - In struct igc_tx_timestamp_request, introduce buffer_type to indicate
+>    whether skb or igc_tx_buffer pointer should be use (Vinicius).
+> - In struct igc_metadata_request, remove igc_adapter pointer (Vinicius).
+> - When request tx hwts, copy the value of cmd_type, instead of using
+>    pointer (Vinicius).
+> - For boolean variable, use true and false, instead of 1 and 0 (Vinicius).
+> - In igc_xsk_request_timestamp(), make an early return if none of the 4 ts
+>    registers is available (Vinicius).
+> - Create helper functions to clear tx buffer and skb for tstamp (John).
+> - Perform throughput test with mix traffic (Vinicius & John).
+> V2 -> V3
+> - Improve tstamp reg searching loop for better readability (John).
+> - In igc_ptp_free_tx_buffer(), add comment to inform user that
+>    tstamp->xsk_tx_buffer and tstamp->skb are in union (John).
+> V3 -> V4
+> - Add protection with xp_tx_metadata_enabled (Kurt & Maciej).
+> ---
+> ---
+>   drivers/net/ethernet/intel/igc/igc.h      |  71 ++++++++------
+>   drivers/net/ethernet/intel/igc/igc_main.c | 113 ++++++++++++++++++++--
+>   drivers/net/ethernet/intel/igc/igc_ptp.c  |  51 ++++++++--
+>   3 files changed, 195 insertions(+), 40 deletions(-)
 
-From FW/HW perspective, 2 port topology in E825C devices requires
-merging of 2 port mapping internally and breakout mapping externally.
-As a consequence, it requires different port numbering from PTP code
-perspective.
-For that topology, pf_id can not be used to index PTP ports. Even if
-the 2nd port is identified as port with pf_id = 1, all PHY operations
-need to be performed as it was port 2. Thus, special mapping is needed
-for the 2nd port.
-This change adds detection of 2x50G topology and applies 'custom'
-mapping on the 2nd port.
-
-Signed-off-by: Grzegorz Nitka <grzegorz.nitka@intel.com>
-Reviewed-by: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
-Signed-off-by: Karol Kolacinski <karol.kolacinski@intel.com>
----
-V4 -> V5: - reworded commit mesage
-          - renamed GLGEN_SWITCH_MODE_CONFIG_SELECT_25X4_ON_SINGLE_QUAD_M to
-            GLGEN_SWITCH_MODE_CONFIG_25X4_QUAD_M
-
- .../net/ethernet/intel/ice/ice_hw_autogen.h   |  4 ++++
- drivers/net/ethernet/intel/ice/ice_ptp.c      |  5 +++++
- drivers/net/ethernet/intel/ice/ice_ptp_hw.c   | 22 +++++++++++++++++++
- drivers/net/ethernet/intel/ice/ice_type.h     |  9 ++++++++
- 4 files changed, 40 insertions(+)
-
-diff --git a/drivers/net/ethernet/intel/ice/ice_hw_autogen.h b/drivers/net/ethernet/intel/ice/ice_hw_autogen.h
-index cfac1d432c15..91cbae1eec89 100644
---- a/drivers/net/ethernet/intel/ice/ice_hw_autogen.h
-+++ b/drivers/net/ethernet/intel/ice/ice_hw_autogen.h
-@@ -157,6 +157,8 @@
- #define GLGEN_RTRIG_CORER_M			BIT(0)
- #define GLGEN_RTRIG_GLOBR_M			BIT(1)
- #define GLGEN_STAT				0x000B612C
-+#define GLGEN_SWITCH_MODE_CONFIG		0x000B81E0
-+#define GLGEN_SWITCH_MODE_CONFIG_25X4_QUAD_M	BIT(2)
- #define GLGEN_VFLRSTAT(_i)			(0x00093A04 + ((_i) * 4))
- #define PFGEN_CTRL				0x00091000
- #define PFGEN_CTRL_PFSWR_M			BIT(0)
-@@ -177,6 +179,8 @@
- #define GLINT_CTL_ITR_GRAN_50_M			ICE_M(0xF, 24)
- #define GLINT_CTL_ITR_GRAN_25_S			28
- #define GLINT_CTL_ITR_GRAN_25_M			ICE_M(0xF, 28)
-+#define GLGEN_MAC_LINK_TOPO			0x000B81DC
-+#define GLGEN_MAC_LINK_TOPO_LINK_TOPO_M		GENMASK(1, 0)
- #define GLINT_DYN_CTL(_INT)			(0x00160000 + ((_INT) * 4))
- #define GLINT_DYN_CTL_INTENA_M			BIT(0)
- #define GLINT_DYN_CTL_CLEARPBA_M		BIT(1)
-diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.c b/drivers/net/ethernet/intel/ice/ice_ptp.c
-index 29a86fcfd312..71b19fcb7d14 100644
---- a/drivers/net/ethernet/intel/ice/ice_ptp.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ptp.c
-@@ -1470,6 +1470,8 @@ void ice_ptp_link_change(struct ice_pf *pf, u8 port, bool linkup)
- 		return;
- 
- 	ptp_port = &pf->ptp.port;
-+	if (ice_is_e825c(hw) && hw->ptp.is_2x50g_muxed_topo)
-+		port *= 2;
- 	if (WARN_ON_ONCE(ptp_port->port_num != port))
- 		return;
- 
-@@ -3327,6 +3329,9 @@ void ice_ptp_init(struct ice_pf *pf)
- 	}
- 
- 	ptp->port.port_num = hw->pf_id;
-+	if (ice_is_e825c(hw) && hw->ptp.is_2x50g_muxed_topo)
-+		ptp->port.port_num = hw->pf_id * 2;
-+
- 	err = ice_ptp_init_port(pf, &ptp->port);
- 	if (err)
- 		goto err;
-diff --git a/drivers/net/ethernet/intel/ice/ice_ptp_hw.c b/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
-index 5d42ca771117..bfdb640fde57 100644
---- a/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
-@@ -2456,6 +2456,26 @@ static int ice_get_phy_tx_tstamp_ready_eth56g(struct ice_hw *hw, u8 port,
- 	return 0;
- }
- 
-+/**
-+ * ice_is_muxed_topo - detect breakout 2x50G topology for E825C
-+ * @hw: pointer to the HW struct
-+ *
-+ * Returns: true if it's 2x50 breakout topology, false otherwise
-+ */
-+static bool ice_is_muxed_topo(struct ice_hw *hw)
-+{
-+	u8 link_topo;
-+	bool mux;
-+	u32 val;
-+
-+	val = rd32(hw, GLGEN_SWITCH_MODE_CONFIG);
-+	mux = FIELD_GET(GLGEN_SWITCH_MODE_CONFIG_25X4_QUAD_M, val);
-+	val = rd32(hw, GLGEN_MAC_LINK_TOPO);
-+	link_topo = FIELD_GET(GLGEN_MAC_LINK_TOPO_LINK_TOPO_M, val);
-+
-+	return (mux && link_topo == ICE_LINK_TOPO_UP_TO_2_LINKS);
-+}
-+
- /**
-  * ice_ptp_init_phy_e825c - initialize PHY parameters
-  * @hw: pointer to the HW struct
-@@ -2488,6 +2508,8 @@ static void ice_ptp_init_phy_e825c(struct ice_hw *hw)
- 			return;
- 		}
- 	}
-+
-+	ptp->is_2x50g_muxed_topo = ice_is_muxed_topo(hw);
- }
- 
- /* E822 family functions
-diff --git a/drivers/net/ethernet/intel/ice/ice_type.h b/drivers/net/ethernet/intel/ice/ice_type.h
-index abce7a8786f3..9228ff31dbae 100644
---- a/drivers/net/ethernet/intel/ice/ice_type.h
-+++ b/drivers/net/ethernet/intel/ice/ice_type.h
-@@ -853,6 +853,14 @@ enum ice_phy_model {
- 	ICE_PHY_ETH56G,
- };
- 
-+/* Global Link Topology */
-+enum ice_global_link_topo {
-+	ICE_LINK_TOPO_UP_TO_2_LINKS,
-+	ICE_LINK_TOPO_UP_TO_4_LINKS,
-+	ICE_LINK_TOPO_UP_TO_8_LINKS,
-+	ICE_LINK_TOPO_RESERVED,
-+};
-+
- struct ice_ptp_hw {
- 	enum ice_phy_model phy_model;
- 	union ice_phy_params phy;
-@@ -860,6 +868,7 @@ struct ice_ptp_hw {
- 	u8 ports_per_phy;
- 	bool primary_nac;
- 	struct ice_hw *primary_hw;
-+	bool is_2x50g_muxed_topo;
- };
- 
- /* Port hardware description */
--- 
-2.43.0
-
+Tested-by: Naama Meir <naamax.meir@linux.intel.com>
