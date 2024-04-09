@@ -2,92 +2,100 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6B73589DAC8
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  9 Apr 2024 15:43:20 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 29A8389DADA
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  9 Apr 2024 15:44:56 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id A10C74156D;
-	Tue,  9 Apr 2024 13:43:18 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id D40B44155C;
+	Tue,  9 Apr 2024 13:44:54 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 9MDpB8wVnzwZ; Tue,  9 Apr 2024 13:43:17 +0000 (UTC)
+ id 5E-HBBxiTiW6; Tue,  9 Apr 2024 13:44:53 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 2DA1E41566
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org ACFE141550
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1712670197;
-	bh=k6Q4hDGMZcDZgGI0bUBpkO8d3c+w3QE021uZClpFOaU=;
-	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=YP53xLC1bS+g6KrQptxeSHixr1gX36lkUnGaszQOned5RlCKiVx11sPjrjCLfXAeA
-	 VXmGsUTk7B4IK9hxHvuvXTuf8VBTGtoAVmCudugGH4MzsPiJUP/3s0bHNpLGyXbcwM
-	 HFPtI/erq+awuUKycgO65WIrzChH120vlKV0r8YgiK1RrO1zQ/aEWqDC5uJGJW5V2+
-	 AjljuQezpXzj8od7A9SumMP08MM7WwSz903UKE6eU8Pfp9H9e1WOtg8FX1nuZfYtWi
-	 0lAKuV/RlM85K/BG3vpxxWIbeWgBjWdOEWD9yL/N3cMWQodXT9AAZqrDcXcAvNyQKR
-	 JdDMiZYKAKbxQ==
+	s=default; t=1712670293;
+	bh=fyQfAgNBMLWSedacyXt4Fru47wHP6YPgNO6XFwgSNtw=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=6CrhphrausDAIxSWvQduJ/J3wExFUWCo5r29pQn+7hR5uJH9jhQQIHJUyZM9NIRKs
+	 cOyQ/L2E9aaAUSUTfpfIyk2vnwqY5uJvoVWU/Z7LuG7JGr0xLFsyeMtCPXkL87go0W
+	 tGjL9FZfGRfIv8+B0SOTJ4jlsZK3mfHQkKV1p3QeYa/yiSFiXZfiglCr4z1J2KJsMh
+	 TnqeSdVdF8TQd+8QMSQjlyZBQrYQDDg2gWn0PgAIM3U+ueWY10rt4txoOZ8kj5eNYr
+	 ZlaPbnT7kAicUxz9wqSYgEt4yei1u98Pvjd/axHkub1WMgHxfnjJ6mRDIhznX/E4+m
+	 WsUXqgSXy+Lbw==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 2DA1E41566;
-	Tue,  9 Apr 2024 13:43:17 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id ACFE141550;
+	Tue,  9 Apr 2024 13:44:53 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 3B6DF1BF2A3
- for <intel-wired-lan@lists.osuosl.org>; Tue,  9 Apr 2024 13:43:15 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id F12D01BF2A3
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  9 Apr 2024 13:44:51 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 3245081FEC
- for <intel-wired-lan@lists.osuosl.org>; Tue,  9 Apr 2024 13:43:15 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id E995C81BCB
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  9 Apr 2024 13:44:51 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 6VxwJCD4FICf for <intel-wired-lan@lists.osuosl.org>;
- Tue,  9 Apr 2024 13:43:14 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.13;
- helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 26DBD81FFB
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 26DBD81FFB
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.13])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 26DBD81FFB
- for <intel-wired-lan@lists.osuosl.org>; Tue,  9 Apr 2024 13:43:13 +0000 (UTC)
-X-CSE-ConnectionGUID: SzdOK+9JTPyMJfVJjOhnpg==
-X-CSE-MsgGUID: nBa1Yn10ShW2t7sD/UlrsA==
-X-IronPort-AV: E=McAfee;i="6600,9927,11039"; a="19132621"
-X-IronPort-AV: E=Sophos;i="6.07,189,1708416000"; d="scan'208";a="19132621"
-Received: from orviesa009.jf.intel.com ([10.64.159.149])
- by orvoesa105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 09 Apr 2024 06:43:14 -0700
-X-CSE-ConnectionGUID: 31wkxvGBTSGtJ+0X609qsg==
-X-CSE-MsgGUID: EMJd93NtSoWwU0+FP1i+wQ==
+ id d5P2ElqcjHXb for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  9 Apr 2024 13:44:51 +0000 (UTC)
+Received-SPF: None (mailfrom) identity=mailfrom; client-ip=198.175.65.10;
+ helo=mgamail.intel.com; envelope-from=michal.swiatkowski@linux.intel.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org E617181B8A
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E617181B8A
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.10])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id E617181B8A
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  9 Apr 2024 13:44:50 +0000 (UTC)
+X-CSE-ConnectionGUID: WUE6ZnsgSgeK8/hFkezp0A==
+X-CSE-MsgGUID: iJEqzPZtSPKqxZqEZbOF5g==
+X-IronPort-AV: E=McAfee;i="6600,9927,11039"; a="25425637"
+X-IronPort-AV: E=Sophos;i="6.07,189,1708416000"; d="scan'208";a="25425637"
+Received: from fmviesa002.fm.intel.com ([10.60.135.142])
+ by orvoesa102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 09 Apr 2024 06:44:49 -0700
+X-CSE-ConnectionGUID: 2yzFHN3RQFuRz+roTePX5g==
+X-CSE-MsgGUID: Vnvj+d8STcKSOoVGz5mGjw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.07,189,1708416000"; d="scan'208";a="20156213"
-Received: from lkp-server01.sh.intel.com (HELO e61807b1d151) ([10.239.97.150])
- by orviesa009.jf.intel.com with ESMTP; 09 Apr 2024 06:43:12 -0700
-Received: from kbuild by e61807b1d151 with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1ruBkk-00068q-05
- for intel-wired-lan@lists.osuosl.org; Tue, 09 Apr 2024 13:43:10 +0000
-Date: Tue, 09 Apr 2024 21:42:11 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <202404092110.skL7Ddte-lkp@intel.com>
-User-Agent: s-nail v14.9.24
+X-IronPort-AV: E=Sophos;i="6.07,189,1708416000"; d="scan'208";a="43433639"
+Received: from unknown (HELO mev-dev) ([10.237.112.144])
+ by fmviesa002-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 09 Apr 2024 06:44:47 -0700
+Date: Tue, 9 Apr 2024 15:44:28 +0200
+From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+To: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
+Message-ID: <ZhVGPAEmqYNHJywJ@mev-dev>
+References: <20240408103049.19445-1-michal.swiatkowski@linux.intel.com>
+ <20240408103049.19445-5-michal.swiatkowski@linux.intel.com>
+ <4c99838f-3ee3-46ea-80e2-5b94336d7661@intel.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <4c99838f-3ee3-46ea-80e2-5b94336d7661@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1712670195; x=1744206195;
- h=date:from:to:subject:message-id;
- bh=CqX/CBoiO/KqnC+21zr6DCIiXPsSlz/STsJjBRARrRk=;
- b=NoBxkZY3XzUzLVn1CkZpQh+We2wbYQuvtlhYEnnwtkgQhtkbGcvOF9nz
- L16WUYTghxYIS2V0put2mkO/QRJgfyOTu/IiaNkQAZ9/zln4FurKXxzOA
- wRE+YE14kSoAtCemjBcsQTFVf+s7YY1jCNYgRc2QMth+20tXowoC5FIx9
- U7MqWKOG6zA6x8ReJXvTgZUj+TgRIJzGkeLZ0B1OT/7vhlQnPacU6YGkC
- KQNIS6OUfsldFF04qnim0eCUhnT20KwHjzmGV4oWB9/xnVov0r6GxZU1h
- AazILTjIJniKL+V/AADxbgBvjaC6pYcqUExPqYk7cy8pgif5URShV9bMI
+ t=1712670291; x=1744206291;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:in-reply-to;
+ bh=I7A/k+EoTx5KaTh8f2Fg5IQqp7kQKQhArVWEv/AVccU=;
+ b=nh0L1G1PZphE5+8FMJU6iWBOu2VWUns+iZ+8Cqn9sCigoW9iXAe9QMYT
+ CukePUSWMqpT2xy+CEpvZMd6kPsHtNdV+x5UCS43tt5VIMwZgd/K0Z26a
+ K8G0qVVxBCRu42VRpT+Ahl4mx2ZsqotFx/hiDzeLi6X0MWmtlj46ixg9S
+ XmaDRY1IRqFyTkK1VZP2/ux4wVPB0DoFK5l1AtgwOuxif46xDhf04+NR8
+ Vs9p/WKIW75KzCSWxTpCpJhL20LdQkCkfFMMq858/zaWtoX5okaWkqKRF
+ 1EiF+f6eEQErYQEpqR3dhDqB6olrsbikzusZhipD5x0ReEEZ8zo7MIgTo
  A==;
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
+ dmarc=none (p=none dis=none)
+ header.from=linux.intel.com
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=NoBxkZY3
-Subject: [Intel-wired-lan] [tnguy-next-queue:dev-queue] BUILD SUCCESS
- c7218b2fabcf8a5182c21414ecae0f10e2075d65
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=nh0L1G1P
+Subject: Re: [Intel-wired-lan] [iwl-next v1 4/7] ice: allocate devlink for
+ subfunction
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,196 +108,204 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: maciej.fijalkowski@intel.com, nex.sw.ncis.osdt.itp.upstreaming@intel.com,
+ netdev@vger.kernel.org, jiri@nvidia.com, michal.kubiak@intel.com,
+ intel-wired-lan@lists.osuosl.org, pio.raczynski@gmail.com,
+ sridhar.samudrala@intel.com, jacob.e.keller@intel.com,
+ wojciech.drewek@intel.com, Piotr Raczynski <piotr.raczynski@intel.com>,
+ przemyslaw.kitszel@intel.com
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git dev-queue
-branch HEAD: c7218b2fabcf8a5182c21414ecae0f10e2075d65  ice: Add automatic VF reset on Tx MDD events
+On Tue, Apr 09, 2024 at 10:34:27AM +0200, Mateusz Polchlopek wrote:
+> 
+> 
+> On 4/8/2024 12:30 PM, Michal Swiatkowski wrote:
+> > From: Piotr Raczynski <piotr.raczynski@intel.com>
+> > 
+> > Make devlink allocation function generic to use it for PF and for SF.
+> > 
+> > Add function for SF devlink port creation. It will be used in next
+> > patch.
+> > 
+> > Signed-off-by: Piotr Raczynski <piotr.raczynski@intel.com>
+> > Signed-off-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+> > ---
+> >   .../net/ethernet/intel/ice/devlink/devlink.c  | 39 ++++++++++++--
+> >   .../net/ethernet/intel/ice/devlink/devlink.h  |  1 +
+> >   .../ethernet/intel/ice/devlink/devlink_port.c | 51 +++++++++++++++++++
+> >   .../ethernet/intel/ice/devlink/devlink_port.h |  3 ++
+> >   4 files changed, 89 insertions(+), 5 deletions(-)
+> > 
+> > diff --git a/drivers/net/ethernet/intel/ice/devlink/devlink.c b/drivers/net/ethernet/intel/ice/devlink/devlink.c
+> > index 661af04c8eef..05a752fec316 100644
+> > --- a/drivers/net/ethernet/intel/ice/devlink/devlink.c
+> > +++ b/drivers/net/ethernet/intel/ice/devlink/devlink.c
+> > @@ -10,6 +10,7 @@
+> >   #include "ice_eswitch.h"
+> >   #include "ice_fw_update.h"
+> >   #include "ice_dcb_lib.h"
+> > +#include "ice_sf_eth.h"
+> >   /* context for devlink info version reporting */
+> >   struct ice_info_ctx {
+> > @@ -1286,6 +1287,8 @@ static const struct devlink_ops ice_devlink_ops = {
+> >   	.port_new = ice_devlink_port_new,
+> >   };
+> > +static const struct devlink_ops ice_sf_devlink_ops;
+> > +
+> >   static int
+> >   ice_devlink_enable_roce_get(struct devlink *devlink, u32 id,
+> >   			    struct devlink_param_gset_ctx *ctx)
+> > @@ -1417,14 +1420,17 @@ static void ice_devlink_free(void *devlink_ptr)
+> >   }
+> >   /**
+> > - * ice_allocate_pf - Allocate devlink and return PF structure pointer
+> > + * ice_devlink_alloc - Allocate devlink and return devlink priv pointer
+> >    * @dev: the device to allocate for
+> > + * @priv_size: size of the priv memory
+> > + * @ops: pointer to devlink ops for this device
+> >    *
+> > - * Allocate a devlink instance for this device and return the private area as
+> > - * the PF structure. The devlink memory is kept track of through devres by
+> > - * adding an action to remove it when unwinding.
+> > + * Allocate a devlink instance for this device and return the private pointer
+> > + * The devlink memory is kept track of through devres by adding an action to
+> > + * remove it when unwinding.
+> >    */
+> > -struct ice_pf *ice_allocate_pf(struct device *dev)
+> > +static void *ice_devlink_alloc(struct device *dev, size_t priv_size,
+> > +			       const struct devlink_ops *ops)
+> 
+> Why do we need priv_size and ops if those are not used in the function?
+> Shouldn't it be line:
+> 
+> devlink = devlink_alloc(&ice_devlink_ops, sizeof(struct ice_pf), dev);
+> 
+> in ice_devlink_alloc changed to take the passed param?
+> 
+> 
 
-elapsed time: 1025m
+Right, it is an error. I will fix it in v2. Thanks for pointing it.
 
-configs tested: 174
-configs skipped: 3
+Michal
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
-
-tested configs:
-alpha                            alldefconfig   gcc  
-alpha                             allnoconfig   gcc  
-alpha                            allyesconfig   gcc  
-alpha                               defconfig   gcc  
-arc                              allmodconfig   gcc  
-arc                               allnoconfig   gcc  
-arc                              allyesconfig   gcc  
-arc                                 defconfig   gcc  
-arc                   randconfig-001-20240409   gcc  
-arc                   randconfig-002-20240409   gcc  
-arm                              allmodconfig   gcc  
-arm                               allnoconfig   clang
-arm                              allyesconfig   gcc  
-arm                        clps711x_defconfig   clang
-arm                          collie_defconfig   gcc  
-arm                                 defconfig   clang
-arm                      footbridge_defconfig   clang
-arm                          moxart_defconfig   gcc  
-arm                       multi_v4t_defconfig   clang
-arm                   randconfig-001-20240409   gcc  
-arm                   randconfig-002-20240409   clang
-arm                   randconfig-003-20240409   clang
-arm                   randconfig-004-20240409   gcc  
-arm                             rpc_defconfig   clang
-arm64                            allmodconfig   clang
-arm64                             allnoconfig   gcc  
-arm64                               defconfig   gcc  
-arm64                 randconfig-001-20240409   gcc  
-arm64                 randconfig-002-20240409   gcc  
-arm64                 randconfig-003-20240409   clang
-arm64                 randconfig-004-20240409   clang
-csky                             allmodconfig   gcc  
-csky                              allnoconfig   gcc  
-csky                             allyesconfig   gcc  
-csky                                defconfig   gcc  
-csky                  randconfig-001-20240409   gcc  
-csky                  randconfig-002-20240409   gcc  
-hexagon                          allmodconfig   clang
-hexagon                           allnoconfig   clang
-hexagon                          allyesconfig   clang
-hexagon                             defconfig   clang
-hexagon               randconfig-001-20240409   clang
-hexagon               randconfig-002-20240409   clang
-i386                             allmodconfig   gcc  
-i386                              allnoconfig   gcc  
-i386                             allyesconfig   gcc  
-i386         buildonly-randconfig-001-20240409   clang
-i386         buildonly-randconfig-002-20240409   clang
-i386         buildonly-randconfig-003-20240409   gcc  
-i386         buildonly-randconfig-004-20240409   clang
-i386         buildonly-randconfig-005-20240409   gcc  
-i386         buildonly-randconfig-006-20240409   gcc  
-i386                                defconfig   clang
-i386                  randconfig-001-20240409   clang
-i386                  randconfig-002-20240409   gcc  
-i386                  randconfig-003-20240409   clang
-i386                  randconfig-004-20240409   gcc  
-i386                  randconfig-005-20240409   gcc  
-i386                  randconfig-006-20240409   clang
-i386                  randconfig-011-20240409   gcc  
-i386                  randconfig-012-20240409   clang
-i386                  randconfig-013-20240409   clang
-i386                  randconfig-014-20240409   clang
-i386                  randconfig-015-20240409   gcc  
-i386                  randconfig-016-20240409   clang
-loongarch                        allmodconfig   gcc  
-loongarch                         allnoconfig   gcc  
-loongarch                           defconfig   gcc  
-loongarch             randconfig-001-20240409   gcc  
-loongarch             randconfig-002-20240409   gcc  
-m68k                             allmodconfig   gcc  
-m68k                              allnoconfig   gcc  
-m68k                             allyesconfig   gcc  
-m68k                                defconfig   gcc  
-m68k                       m5249evb_defconfig   gcc  
-microblaze                       allmodconfig   gcc  
-microblaze                        allnoconfig   gcc  
-microblaze                       allyesconfig   gcc  
-microblaze                          defconfig   gcc  
-mips                              allnoconfig   gcc  
-mips                             allyesconfig   gcc  
-mips                  cavium_octeon_defconfig   gcc  
-mips                           ip22_defconfig   gcc  
-mips                     loongson2k_defconfig   gcc  
-nios2                            allmodconfig   gcc  
-nios2                             allnoconfig   gcc  
-nios2                            allyesconfig   gcc  
-nios2                               defconfig   gcc  
-nios2                 randconfig-001-20240409   gcc  
-nios2                 randconfig-002-20240409   gcc  
-openrisc                          allnoconfig   gcc  
-openrisc                         allyesconfig   gcc  
-openrisc                            defconfig   gcc  
-openrisc                  or1klitex_defconfig   gcc  
-openrisc                 simple_smp_defconfig   gcc  
-parisc                           allmodconfig   gcc  
-parisc                            allnoconfig   gcc  
-parisc                           allyesconfig   gcc  
-parisc                              defconfig   gcc  
-parisc                randconfig-001-20240409   gcc  
-parisc                randconfig-002-20240409   gcc  
-parisc64                            defconfig   gcc  
-powerpc                          allmodconfig   gcc  
-powerpc                           allnoconfig   gcc  
-powerpc                          allyesconfig   clang
-powerpc                     asp8347_defconfig   clang
-powerpc                          g5_defconfig   gcc  
-powerpc                      pasemi_defconfig   clang
-powerpc               randconfig-001-20240409   clang
-powerpc               randconfig-002-20240409   gcc  
-powerpc               randconfig-003-20240409   clang
-powerpc64             randconfig-001-20240409   gcc  
-powerpc64             randconfig-002-20240409   clang
-powerpc64             randconfig-003-20240409   gcc  
-riscv                            allmodconfig   clang
-riscv                             allnoconfig   gcc  
-riscv                            allyesconfig   clang
-riscv                               defconfig   clang
-riscv                 randconfig-001-20240409   clang
-riscv                 randconfig-002-20240409   gcc  
-s390                             allmodconfig   clang
-s390                              allnoconfig   clang
-s390                             allyesconfig   gcc  
-s390                                defconfig   clang
-s390                  randconfig-001-20240409   gcc  
-s390                  randconfig-002-20240409   gcc  
-sh                               allmodconfig   gcc  
-sh                                allnoconfig   gcc  
-sh                               allyesconfig   gcc  
-sh                                  defconfig   gcc  
-sh                    randconfig-001-20240409   gcc  
-sh                    randconfig-002-20240409   gcc  
-sparc                            allmodconfig   gcc  
-sparc                             allnoconfig   gcc  
-sparc                               defconfig   gcc  
-sparc64                          allmodconfig   gcc  
-sparc64                          allyesconfig   gcc  
-sparc64                             defconfig   gcc  
-sparc64               randconfig-001-20240409   gcc  
-sparc64               randconfig-002-20240409   gcc  
-um                               allmodconfig   clang
-um                                allnoconfig   clang
-um                               allyesconfig   gcc  
-um                                  defconfig   clang
-um                             i386_defconfig   gcc  
-um                    randconfig-001-20240409   clang
-um                    randconfig-002-20240409   gcc  
-um                           x86_64_defconfig   clang
-x86_64                            allnoconfig   clang
-x86_64                           allyesconfig   clang
-x86_64       buildonly-randconfig-001-20240409   clang
-x86_64       buildonly-randconfig-002-20240409   clang
-x86_64       buildonly-randconfig-003-20240409   gcc  
-x86_64       buildonly-randconfig-004-20240409   gcc  
-x86_64       buildonly-randconfig-005-20240409   clang
-x86_64       buildonly-randconfig-006-20240409   clang
-x86_64                              defconfig   gcc  
-x86_64                randconfig-001-20240409   clang
-x86_64                randconfig-002-20240409   clang
-x86_64                randconfig-003-20240409   gcc  
-x86_64                randconfig-004-20240409   gcc  
-x86_64                randconfig-005-20240409   clang
-x86_64                randconfig-006-20240409   clang
-x86_64                randconfig-011-20240409   gcc  
-x86_64                randconfig-012-20240409   clang
-x86_64                randconfig-013-20240409   gcc  
-x86_64                randconfig-014-20240409   clang
-x86_64                randconfig-015-20240409   gcc  
-x86_64                randconfig-072-20240409   clang
-x86_64                          rhel-8.3-rust   clang
-xtensa                            allnoconfig   gcc  
-xtensa                randconfig-001-20240409   gcc  
-xtensa                randconfig-002-20240409   gcc  
-xtensa                    xip_kc705_defconfig   gcc  
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+> >   {
+> >   	struct devlink *devlink;
+> > @@ -1439,6 +1445,29 @@ struct ice_pf *ice_allocate_pf(struct device *dev)
+> >   	return devlink_priv(devlink);
+> >   }
+> > +/**
+> > + * ice_allocate_pf - Allocate devlink and return PF structure pointer
+> > + * @dev: the device to allocate for
+> > + *
+> > + * Allocate a devlink instance for PF.
+> > + */
+> > +struct ice_pf *ice_allocate_pf(struct device *dev)
+> > +{
+> > +	return ice_devlink_alloc(dev, sizeof(struct ice_pf), &ice_devlink_ops);
+> > +}
+> > +
+> > +/**
+> > + * ice_allocate_sf - Allocate devlink and return SF structure pointer
+> > + * @dev: the device to allocate for
+> > + *
+> > + * Allocate a devlink instance for SF.
+> > + */
+> > +struct ice_sf_priv *ice_allocate_sf(struct device *dev)
+> > +{
+> > +	return ice_devlink_alloc(dev, sizeof(struct ice_sf_priv),
+> > +				 &ice_sf_devlink_ops);
+> > +}
+> > +
+> >   /**
+> >    * ice_devlink_register - Register devlink interface for this PF
+> >    * @pf: the PF to register the devlink for.
+> > diff --git a/drivers/net/ethernet/intel/ice/devlink/devlink.h b/drivers/net/ethernet/intel/ice/devlink/devlink.h
+> > index d291c0e2e17b..1b2a5980d5e8 100644
+> > --- a/drivers/net/ethernet/intel/ice/devlink/devlink.h
+> > +++ b/drivers/net/ethernet/intel/ice/devlink/devlink.h
+> > @@ -5,6 +5,7 @@
+> >   #define _ICE_DEVLINK_H_
+> >   struct ice_pf *ice_allocate_pf(struct device *dev);
+> > +struct ice_sf_priv *ice_allocate_sf(struct device *dev);
+> >   void ice_devlink_register(struct ice_pf *pf);
+> >   void ice_devlink_unregister(struct ice_pf *pf);
+> > diff --git a/drivers/net/ethernet/intel/ice/devlink/devlink_port.c b/drivers/net/ethernet/intel/ice/devlink/devlink_port.c
+> > index f5e305a71bd0..1b933083f551 100644
+> > --- a/drivers/net/ethernet/intel/ice/devlink/devlink_port.c
+> > +++ b/drivers/net/ethernet/intel/ice/devlink/devlink_port.c
+> > @@ -432,6 +432,57 @@ void ice_devlink_destroy_vf_port(struct ice_vf *vf)
+> >   	devlink_port_unregister(&vf->devlink_port);
+> >   }
+> > +/**
+> > + * ice_devlink_create_sf_dev_port - Register virtual port for a subfunction
+> > + * @sf_dev: the subfunction device to create a devlink port for
+> > + *
+> > + * Register virtual flavour devlink port for the subfunction auxiliary device
+> > + * created after activating a dynamically added devlink port.
+> > + *
+> > + * Return: zero on success or an error code on failure.
+> > + */
+> > +int ice_devlink_create_sf_dev_port(struct ice_sf_dev *sf_dev)
+> > +{
+> > +	struct devlink_port_attrs attrs = {};
+> > +	struct devlink_port *devlink_port;
+> > +	struct ice_dynamic_port *dyn_port;
+> > +	struct devlink *devlink;
+> > +	struct ice_vsi *vsi;
+> > +	struct device *dev;
+> > +	struct ice_pf *pf;
+> > +	int err;
+> > +
+> > +	dyn_port = sf_dev->dyn_port;
+> > +	vsi = dyn_port->vsi;
+> > +	pf = dyn_port->pf;
+> > +	dev = ice_pf_to_dev(pf);
+> > +
+> > +	devlink_port = &sf_dev->priv->devlink_port;
+> > +
+> > +	attrs.flavour = DEVLINK_PORT_FLAVOUR_VIRTUAL;
+> > +
+> > +	devlink_port_attrs_set(devlink_port, &attrs);
+> > +	devlink = priv_to_devlink(sf_dev->priv);
+> > +
+> > +	err = devl_port_register(devlink, devlink_port, vsi->idx);
+> > +	if (err)
+> > +		dev_err(dev, "Failed to create virtual devlink port for auxiliary subfunction device %d",
+> > +			vsi->idx);
+> > +
+> > +	return err;
+> > +}
+> > +
+> > +/**
+> > + * ice_devlink_destroy_sf_dev_port - Destroy virtual port for a subfunction
+> > + * @sf_dev: the subfunction device to create a devlink port for
+> > + *
+> > + * Unregisters the virtual port associated with this subfunction.
+> > + */
+> > +void ice_devlink_destroy_sf_dev_port(struct ice_sf_dev *sf_dev)
+> > +{
+> > +	devl_port_unregister(&sf_dev->priv->devlink_port);
+> > +}
+> > +
+> >   /**
+> >    * ice_activate_dynamic_port - Activate a dynamic port
+> >    * @dyn_port: dynamic port instance to activate
+> > diff --git a/drivers/net/ethernet/intel/ice/devlink/devlink_port.h b/drivers/net/ethernet/intel/ice/devlink/devlink_port.h
+> > index 30146fef64b9..1f66705e0261 100644
+> > --- a/drivers/net/ethernet/intel/ice/devlink/devlink_port.h
+> > +++ b/drivers/net/ethernet/intel/ice/devlink/devlink_port.h
+> > @@ -5,6 +5,7 @@
+> >   #define _DEVLINK_PORT_H_
+> >   #include "../ice.h"
+> > +#include "ice_sf_eth.h"
+> >   /**
+> >    * struct ice_dynamic_port - Track dynamically added devlink port instance
+> > @@ -30,6 +31,8 @@ int ice_devlink_create_pf_port(struct ice_pf *pf);
+> >   void ice_devlink_destroy_pf_port(struct ice_pf *pf);
+> >   int ice_devlink_create_vf_port(struct ice_vf *vf);
+> >   void ice_devlink_destroy_vf_port(struct ice_vf *vf);
+> > +int ice_devlink_create_sf_dev_port(struct ice_sf_dev *sf_dev);
+> > +void ice_devlink_destroy_sf_dev_port(struct ice_sf_dev *sf_dev);
+> >   #define ice_devlink_port_to_dyn(p) \
+> >   	container_of(port, struct ice_dynamic_port, devlink_port)
