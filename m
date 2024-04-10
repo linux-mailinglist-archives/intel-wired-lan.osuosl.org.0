@@ -2,71 +2,71 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id C11C089F138
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 10 Apr 2024 13:49:21 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id F2B7C89F13B
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 10 Apr 2024 13:49:29 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 7551F60876;
-	Wed, 10 Apr 2024 11:49:20 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id A5C226088E;
+	Wed, 10 Apr 2024 11:49:28 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id tZ6tkGCxHihQ; Wed, 10 Apr 2024 11:49:20 +0000 (UTC)
+ id hBvXiP31p2LF; Wed, 10 Apr 2024 11:49:28 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C06F3607A4
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 01629607A4
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1712749759;
-	bh=XlQBFW1Jy4FEH+8IAy3+RnqD/Vl3NFXabLbEkvgc2Hc=;
+	s=default; t=1712749768;
+	bh=ZWKSxVp3g6FEjhFzqkaVaCjjN5LOOivC34XYpajGkYQ=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=LpVq5ElrbYDRLmYIaYggIi4co2Y6VQ20d77lsn1jNnNU7adtL8eMjr8SiprQaZFv1
-	 EiKp1zZLfQCPY2IKEw2Mj8RIndNAbjb5b+qvDUXdXcJtqRBEOiI6xM0b59W8W1uKOk
-	 B7ycvX87r0QD5hRus3Elf9A22V5jOpVBGEKTvh5Md7QbAoo9myyIK1cFjzAt3tqo4E
-	 kEaSHckss+NjmbxI3MzBHTE5s4Gh4a6qNUUDRYeh0z7tp45+gpUYtrM4CK0jhMvP6q
-	 SzzISQXe89EdU7PMpTaSjzr3gIVQuXLlbr7UxNee7bmP+pMF8mcIvVK4MFfgoL9sjJ
-	 33h9DBqOkdQjg==
+	b=6EiTmtqCp51gYQo88mfueASU3PdvgbVRMOZkal1RE6OQCar1gdSnyg22rH9HOws7h
+	 FYWr3xdgCqHmKZ48SIrsDXn1QibZuZTSPyQBI3FZWornuGMmgadyeuAoBN65YRqK/e
+	 5sPRkOYCPrBMbf2G+9q8qDNSTnO+T+mdipRvqja7oozfgVur0be5KfIcZwDIvLaoSH
+	 mRjnDrQ0B4g6Cz5ffMeohrCpQM0mbG2mvMr1HCvS5uebAG2GAbYYL2JV+35LAr2csv
+	 ywIiOAzA0wOMGZ7y2XCPqtZ+DD5xwikGSt5s1bRy6LlS8ZOu+KYXm37L6nkraAkfpb
+	 N4OP3vlSQaNyA==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id C06F3607A4;
-	Wed, 10 Apr 2024 11:49:19 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 01629607A4;
+	Wed, 10 Apr 2024 11:49:28 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id DEB5E1BF5AA
- for <intel-wired-lan@lists.osuosl.org>; Wed, 10 Apr 2024 11:49:17 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 353BA1BF5AA
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 10 Apr 2024 11:49:25 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id D77D74059A
- for <intel-wired-lan@lists.osuosl.org>; Wed, 10 Apr 2024 11:49:17 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 202F981365
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 10 Apr 2024 11:49:25 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id lgQCNcGBvqLh for <intel-wired-lan@lists.osuosl.org>;
- Wed, 10 Apr 2024 11:49:17 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id DMn7PoTZgFeS for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 10 Apr 2024 11:49:24 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.14;
  helo=mgamail.intel.com; envelope-from=lakshmi.sowjanya.d@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 004A74058C
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 004A74058C
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 608B181289
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 608B181289
 Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.14])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 004A74058C
- for <intel-wired-lan@lists.osuosl.org>; Wed, 10 Apr 2024 11:49:16 +0000 (UTC)
-X-CSE-ConnectionGUID: G1kkahDpSWWwgKr3pYXm9A==
-X-CSE-MsgGUID: QO/nH4voR1qF2JBuvUdEnQ==
-X-IronPort-AV: E=McAfee;i="6600,9927,11039"; a="11944151"
-X-IronPort-AV: E=Sophos;i="6.07,190,1708416000"; d="scan'208";a="11944151"
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 608B181289
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 10 Apr 2024 11:49:24 +0000 (UTC)
+X-CSE-ConnectionGUID: ZrhJgchXSOCM2ittQti3xQ==
+X-CSE-MsgGUID: Tu0TGjHLShibrBwMe4b+hg==
+X-IronPort-AV: E=McAfee;i="6600,9927,11039"; a="11944173"
+X-IronPort-AV: E=Sophos;i="6.07,190,1708416000"; d="scan'208";a="11944173"
 Received: from fmviesa002.fm.intel.com ([10.60.135.142])
  by orvoesa106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 10 Apr 2024 04:49:17 -0700
-X-CSE-ConnectionGUID: 5A3mY6mfRr2dgbpjguUwgw==
-X-CSE-MsgGUID: q9o9df5xRVG7+JFItyOufg==
+ 10 Apr 2024 04:49:23 -0700
+X-CSE-ConnectionGUID: ECWwyE1WS4ymir9lvVJPHA==
+X-CSE-MsgGUID: X/WnJFf1QXe0ShB8ecEl8w==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.07,190,1708416000"; d="scan'208";a="43769273"
+X-IronPort-AV: E=Sophos;i="6.07,190,1708416000"; d="scan'208";a="43769278"
 Received: from inlubt0316.iind.intel.com ([10.191.20.213])
- by fmviesa002.fm.intel.com with ESMTP; 10 Apr 2024 04:49:09 -0700
+ by fmviesa002.fm.intel.com with ESMTP; 10 Apr 2024 04:49:16 -0700
 From: lakshmi.sowjanya.d@intel.com
 To: tglx@linutronix.de, jstultz@google.com, giometti@enneenne.com,
  corbet@lwn.net, linux-kernel@vger.kernel.org
-Date: Wed, 10 Apr 2024 17:18:23 +0530
-Message-Id: <20240410114828.25581-7-lakshmi.sowjanya.d@intel.com>
+Date: Wed, 10 Apr 2024 17:18:24 +0530
+Message-Id: <20240410114828.25581-8-lakshmi.sowjanya.d@intel.com>
 X-Mailer: git-send-email 2.35.3
 In-Reply-To: <20240410114828.25581-1-lakshmi.sowjanya.d@intel.com>
 References: <20240410114828.25581-1-lakshmi.sowjanya.d@intel.com>
@@ -74,26 +74,25 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1712749757; x=1744285757;
+ t=1712749765; x=1744285765;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=rZDLfhfpSZ9NfdEthCrn4EePA9THWzFIkSeNAaXhRPI=;
- b=GU1QgR521/4pg3dnT3B2eR5tICQpC4lzxLy8IeUqX/W3B+t1AlxB2Yjs
- U93hgmf0N5iAmhPUw33U7n4iZUmvnqHkNK9UiUhtMf0jYEKHVlkC+fI4p
- DmfgapoITIOxH9kpqUtz1i/Ds8j9wlWJufpoRo+NbTBeKsEKHpU+2hcux
- FPCvno0E60fDP1AMUgU+Z1UcNc0iXMmM6jRNc3+fVXUZvS6FpYwh2QnUh
- 58kAXeAi2tANx76GCeilvrOfBv0E6Ng+tAzgxgW9V/W6px/UygxYwWFcc
- eHhw7MdvD8Uvp08qw8rR4RXqgnq40yGAult1Xq+ICYVh0W/agd2+acEXT
- A==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ bh=KlV5CDUrB1wYm3hhtjGk3UkaNzeKBnXpOQYydmU3iM4=;
+ b=e2TJaAVxAZ6UWCTE8sOkDIFQFuRz41xd58Q2LyW7h42rEnaF3MDlCOv5
+ VtHlJhc1CcrgztB7f0BWsTAe7PlZZp6KfQtxZrXSJHZBR16cfR5InTp2V
+ 6hwKHhEuotgBERgnDJ/WhyDumWvIplykZpv5+0ZC1HcuKa7CaYQXm3UfP
+ G+xc2MKTf11NpmPKgUhv25v8HKrDWS0aI0jp42X71c/LSnecXbKQB1Ix4
+ LJArnGa6dQfmaXYdAIrQiURg+yj3fDVAeCFeUqLv+y/I8d4+90dhy5znZ
+ ZpTwWpfs5flNdvizh6UZ7LuolquIGH/INtxuP0w8bCH+7wHOvz4+bJqFz
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=GU1QgR52
-Subject: [Intel-wired-lan] [PATCH v6 06/11] ice/ptp: remove
- convert_art_to_tsc()
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=e2TJaAVx
+Subject: [Intel-wired-lan] [PATCH v6 07/11] x86/tsc: Remove art to tsc
+ conversion functions which are obsolete
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -118,31 +117,103 @@ Cc: christopher.s.hall@intel.com, subramanian.mohan@intel.com,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Thomas Gleixner <tglx@linutronix.de>
+From: Lakshmi Sowjanya D <lakshmi.sowjanya.d@intel.com>
 
-Remove convert_art_to_tsc() function call, Pass system clock cycles and
-clocksource ID as input to get_device_system_crosststamp().
+The convert_art_to_tsc() and convert_art_ns_to_tsc() interfaces are no
+longer required. This conversion is internally done in
+get_device_system_crosststamp() using convert_base_to_cs().
 
-Signed-off-by: Thomas Gleixner <tglx@linutronix.de>
 Signed-off-by: Lakshmi Sowjanya D <lakshmi.sowjanya.d@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_ptp.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ arch/x86/include/asm/tsc.h |  3 --
+ arch/x86/kernel/tsc.c      | 60 --------------------------------------
+ 2 files changed, 63 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.c b/drivers/net/ethernet/intel/ice/ice_ptp.c
-index c11eba07283c..c416dd2e6622 100644
---- a/drivers/net/ethernet/intel/ice/ice_ptp.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ptp.c
-@@ -2116,7 +2116,8 @@ ice_ptp_get_syncdevicetime(ktime_t *device,
- 			hh_ts_lo = rd32(hw, GLHH_ART_TIME_L);
- 			hh_ts_hi = rd32(hw, GLHH_ART_TIME_H);
- 			hh_ts = ((u64)hh_ts_hi << 32) | hh_ts_lo;
--			*system = convert_art_ns_to_tsc(hh_ts);
-+			system->cycles = hh_ts;
-+			system->cs_id = CSID_X86_ART;
- 			/* Read Device source clock time */
- 			hh_ts_lo = rd32(hw, GLTSYN_HHTIME_L(tmr_idx));
- 			hh_ts_hi = rd32(hw, GLTSYN_HHTIME_H(tmr_idx));
+diff --git a/arch/x86/include/asm/tsc.h b/arch/x86/include/asm/tsc.h
+index 405efb3e4996..94408a784c8e 100644
+--- a/arch/x86/include/asm/tsc.h
++++ b/arch/x86/include/asm/tsc.h
+@@ -28,9 +28,6 @@ static inline cycles_t get_cycles(void)
+ }
+ #define get_cycles get_cycles
+ 
+-extern struct system_counterval_t convert_art_to_tsc(u64 art);
+-extern struct system_counterval_t convert_art_ns_to_tsc(u64 art_ns);
+-
+ extern void tsc_early_init(void);
+ extern void tsc_init(void);
+ extern void mark_tsc_unstable(char *reason);
+diff --git a/arch/x86/kernel/tsc.c b/arch/x86/kernel/tsc.c
+index 45bf2f6d0ffa..5f0bd441ed4d 100644
+--- a/arch/x86/kernel/tsc.c
++++ b/arch/x86/kernel/tsc.c
+@@ -1297,66 +1297,6 @@ int unsynchronized_tsc(void)
+ 	return 0;
+ }
+ 
+-/*
+- * Convert ART to TSC given numerator/denominator found in detect_art()
+- */
+-struct system_counterval_t convert_art_to_tsc(u64 art)
+-{
+-	u64 tmp, res, rem;
+-
+-	rem = do_div(art, art_base_clk.denominator);
+-
+-	res = art * art_base_clk.numerator;
+-	tmp = rem * art_base_clk.numerator;
+-
+-	do_div(tmp, art_base_clk.denominator);
+-	res += tmp + art_base_clk.offset;
+-
+-	return (struct system_counterval_t) {
+-		.cs_id	= have_art ? CSID_X86_TSC : CSID_GENERIC,
+-		.cycles	= res,
+-	};
+-}
+-EXPORT_SYMBOL(convert_art_to_tsc);
+-
+-/**
+- * convert_art_ns_to_tsc() - Convert ART in nanoseconds to TSC.
+- * @art_ns: ART (Always Running Timer) in unit of nanoseconds
+- *
+- * PTM requires all timestamps to be in units of nanoseconds. When user
+- * software requests a cross-timestamp, this function converts system timestamp
+- * to TSC.
+- *
+- * This is valid when CPU feature flag X86_FEATURE_TSC_KNOWN_FREQ is set
+- * indicating the tsc_khz is derived from CPUID[15H]. Drivers should check
+- * that this flag is set before conversion to TSC is attempted.
+- *
+- * Return:
+- * struct system_counterval_t - system counter value with the ID of the
+- *	corresponding clocksource:
+- *	cycles:		System counter value
+- *	cs_id:		The clocksource ID for validating comparability
+- */
+-
+-struct system_counterval_t convert_art_ns_to_tsc(u64 art_ns)
+-{
+-	u64 tmp, res, rem;
+-
+-	rem = do_div(art_ns, USEC_PER_SEC);
+-
+-	res = art_ns * tsc_khz;
+-	tmp = rem * tsc_khz;
+-
+-	do_div(tmp, USEC_PER_SEC);
+-	res += tmp;
+-
+-	return (struct system_counterval_t) {
+-		.cs_id	= have_art ? CSID_X86_TSC : CSID_GENERIC,
+-		.cycles	= res,
+-	};
+-}
+-EXPORT_SYMBOL(convert_art_ns_to_tsc);
+-
+ static void tsc_refine_calibration_work(struct work_struct *work);
+ static DECLARE_DELAYED_WORK(tsc_irqwork, tsc_refine_calibration_work);
+ /**
 -- 
 2.35.3
 
