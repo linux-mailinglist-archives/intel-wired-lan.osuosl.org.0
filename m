@@ -1,186 +1,200 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3E80E89ED6B
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 10 Apr 2024 10:18:49 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5B6D389EE37
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 10 Apr 2024 11:11:11 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 8E45560755;
-	Wed, 10 Apr 2024 08:18:47 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 5ECE881F11;
+	Wed, 10 Apr 2024 09:11:08 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id h_RaCYSSkS-6; Wed, 10 Apr 2024 08:18:46 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id DPUw9u38kOHg; Wed, 10 Apr 2024 09:11:07 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 4365660761
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org F216481F68
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1712737126;
-	bh=ANMm2wDb5xrhQm84BLcl+2VBJ6zjV5Ov3ZMDmme+m3k=;
-	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1712740267;
+	bh=BHnwee8odR6cnYaXhu3rmSeBZDNIPjElEti3yKpVyYA=;
+	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=vrQip6hXDaqxatxb151Hp+NiNnEH1wvsxVdTRfg3naBccbstR1/RlybvRnzMzjW/F
-	 8hq74R8rfGOOwF51thIhUKNmP7VUFj9obaWbG+PJ7KgfSzA0xE7d5OICDMDJVWZB/q
-	 nIgRUsvyQS7MZvHudtRlCiwnivtLFn3iUNkT6YDKJkHUHtur9K1NDY6ECTfHxOKaRq
-	 hTC7UdokR7mB+dpcYWxocgHIB0u/iwgw7N5fJMMZi6YhOH7AXXYc/QREDHQ07fwf4S
-	 A33fxPekvxX/jCBSYPbTEX+2clEJO4YDkzVCpWv5XzPa7/lX+wAFa17upuqy60Y6Ww
-	 +glKsPU/Gn1Wg==
+	b=5qBOR7CMj3GA3gDhaoPjGvcBOub35bhEDJGKXttTDVPhkJ/BXRe2msalC8GnDvNXU
+	 VnUiXUADuTBK5GfWUTogOWyHCxl3C8AIR59aq2uP7zAEFqooxn2Y85Hj1R89YFn/oN
+	 eRqRN4Td8tsd+zcuhzZLszvScKfqvF9fc+MNzw5Yxmb3cay3uGsNjHUG7/8q6yy/lH
+	 AvklMVKOhkLSoOBY5P5mY386dC5ahh+zbgyoSV+LN79ITTGtF92ocJwxeiLtoTUJa/
+	 53f/9BYoiQFrMJaNoWIDduXXbwVC1Uj04k4xlElPa5YF/29ZMDEaPSOitxIvE5CONw
+	 FoJaqL6vSpVww==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 4365660761;
-	Wed, 10 Apr 2024 08:18:46 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id F216481F68;
+	Wed, 10 Apr 2024 09:11:06 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 2B2801BF3AF
- for <intel-wired-lan@lists.osuosl.org>; Wed, 10 Apr 2024 08:18:44 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 584A91BF2F9
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 10 Apr 2024 09:11:05 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 240F26071A
- for <intel-wired-lan@lists.osuosl.org>; Wed, 10 Apr 2024 08:18:44 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 4220A409FB
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 10 Apr 2024 09:11:05 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Ii7Nu_fxWMqC for <intel-wired-lan@lists.osuosl.org>;
- Wed, 10 Apr 2024 08:18:43 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.13;
- helo=mgamail.intel.com; envelope-from=rafal.romanowski@intel.com;
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id vOXA3rEzSTGU for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 10 Apr 2024 09:11:03 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.20;
+ helo=mgamail.intel.com; envelope-from=amritha.nambiar@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 13EDD606EF
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 13EDD606EF
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.13])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 13EDD606EF
- for <intel-wired-lan@lists.osuosl.org>; Wed, 10 Apr 2024 08:18:42 +0000 (UTC)
-X-CSE-ConnectionGUID: yh3KVKC6QRa+RoZ1tPiM1g==
-X-CSE-MsgGUID: fMbv2iNvSLmeuPHTjra4sA==
-X-IronPort-AV: E=McAfee;i="6600,9927,11039"; a="11050515"
-X-IronPort-AV: E=Sophos;i="6.07,190,1708416000"; d="scan'208";a="11050515"
-Received: from fmviesa003.fm.intel.com ([10.60.135.143])
- by fmvoesa107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 10 Apr 2024 01:18:42 -0700
-X-CSE-ConnectionGUID: RUwo7YGcSCi8/mdyABCEpA==
-X-CSE-MsgGUID: PGWwzm0iSS2XN47dG1g61w==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 81781409FA
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 81781409FA
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.20])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 81781409FA
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 10 Apr 2024 09:11:03 +0000 (UTC)
+X-CSE-ConnectionGUID: ix8yk7mNSDCBzUNkUb8HhA==
+X-CSE-MsgGUID: kd6T25DAQlSpHegWpSktsA==
+X-IronPort-AV: E=McAfee;i="6600,9927,11039"; a="7948580"
+X-IronPort-AV: E=Sophos;i="6.07,190,1708416000"; 
+   d="scan'208";a="7948580"
+Received: from fmviesa002.fm.intel.com ([10.60.135.142])
+ by orvoesa112.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 10 Apr 2024 02:11:02 -0700
+X-CSE-ConnectionGUID: K0O9n/EZSpuy0/VER3ySBQ==
+X-CSE-MsgGUID: SgiZMsT3Tj+sFgcKDhyfnA==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.07,190,1708416000"; d="scan'208";a="24985401"
+X-IronPort-AV: E=Sophos;i="6.07,190,1708416000"; d="scan'208";a="43740616"
 Received: from orsmsx602.amr.corp.intel.com ([10.22.229.15])
- by fmviesa003.fm.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
- 10 Apr 2024 01:18:42 -0700
-Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
+ by fmviesa002.fm.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
+ 10 Apr 2024 02:11:01 -0700
+Received: from orsmsx612.amr.corp.intel.com (10.22.229.25) by
  ORSMSX602.amr.corp.intel.com (10.22.229.15) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.35; Wed, 10 Apr 2024 01:18:41 -0700
-Received: from ORSEDG601.ED.cps.intel.com (10.7.248.6) by
- orsmsx610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
+ 15.1.2507.35; Wed, 10 Apr 2024 02:11:00 -0700
+Received: from orsmsx603.amr.corp.intel.com (10.22.229.16) by
+ ORSMSX612.amr.corp.intel.com (10.22.229.25) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.35 via Frontend Transport; Wed, 10 Apr 2024 01:18:41 -0700
-Received: from NAM11-BN8-obe.outbound.protection.outlook.com (104.47.58.169)
+ 15.1.2507.35; Wed, 10 Apr 2024 02:11:00 -0700
+Received: from ORSEDG601.ED.cps.intel.com (10.7.248.6) by
+ orsmsx603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.35 via Frontend Transport; Wed, 10 Apr 2024 02:11:00 -0700
+Received: from NAM10-DM6-obe.outbound.protection.outlook.com (104.47.58.100)
  by edgegateway.intel.com (134.134.137.102) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.35; Wed, 10 Apr 2024 01:18:41 -0700
+ 15.1.2507.35; Wed, 10 Apr 2024 02:11:00 -0700
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=A+UmXXKJzmsqSm2MrlTLs651ptLLprEasWanG40lx0VsBtC+xNNgozF8yrSUphRMC9Zudkkhoh25HuUpL1Hg9hQo+G+LOssuN6vw31hgwER9R26wGXf1qClO+LEYnUxqmG6dZoAQzmex1Ett9rRFDjifgczZnq4uly6SYCf585xfaHR41hilnVqishw5BzNokdxmwJDrPETUQA685PjFzdAjFLmVKFGDEDLGxRbkyHg2szYUICq8P0t75/wMjWtOkBbbl7Y7i8TUvfZXoQlG/ezKT0ZglTN6y2mskpn9apGa/7yy+VcxkSD2zTjpuMz1+c5fLzCLDhxxntDSmxDGEg==
+ b=kBB6GPgkbnqy3SC3AWzX9cYOx3XgDdepFFAnbY7rQ2nWZ9jrfWxz7a5b4nsAQo+VQydpnAfBrVuvSQpYwovKg/czt7IzG61qOgdsgg8/XYQuelXJCXaqcP3V4It3/zYjAC3sdPTKk8O8Ti4L/0XTCovMxPbyJlqhgWDWuKXyuxAKTtTT0qbEujxl0t59wyrB7lq6JMR/fs1Q6AZgA17F4qoJaDN8mVfiMh1dU+K7IHSDAdhtePYPn8jdglxWaiBn4T3FN2F3LDFO/5zlIUdyQkEnvNmGrrReQhyqPQjOecpE5hiZlB8wrNVCGVHrPoF6vCtn7IWxSugBb/DANqN40w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=ANMm2wDb5xrhQm84BLcl+2VBJ6zjV5Ov3ZMDmme+m3k=;
- b=dVohkNB7tIO0zZifeQt5+AG8LgSZiH6ptkns1h0n2ryNHosbrkSDAq8wxxunllTtc7/fuihpcbI2UY9hEY/l4pYChxax8cNYthbb8Z7dORBcJWJpDnXIJ+bi+zzS3PkgrDEbtbOwg+Tjnegz8H7+UUomviokTVsFH2KKdk9YLsf0b3MQaPCgrxA4IL42DX4ItlYy3izEvwVVjYvDRWdAK1Fywwk7aka66ssLEH0z5z+6UEvgbgJWeMe4IXdbXqeh5Z9WOb4JIqdnsDf8a58QlVTdwXow4qBqxz6pSEStH1qNssGYs9tQJlsJ5S/gaARdJxJlLQQEpYifL1HEjiulxA==
+ bh=BHnwee8odR6cnYaXhu3rmSeBZDNIPjElEti3yKpVyYA=;
+ b=MCuTrJRfSJBsvaHqtZBYQ0JOKWZPUDydaxHXnc7t42C0oGMe+iyr4PDuO0BTJTFskpk9Eo0uemo9eUnTytnErqgjdLygEILtNBqOXBicjez4ccK1CmfwmXoB/2dUSvhBBWy5P+qlAl0Cy+ruuTODYGcHSHldPMenPX0uFAy/iLkZKqKXbdrwk57w87iN3fYOKTooR2mNa/EhRo67wy75sw0ZcRucP3nDkg/8H9ok18tshRmUvu0t3vVMKm52jIzFxRmdrSxuPtzVFAuHxeSOSjLaLtLurdAO/BsY8Ni2elQUkMKf7ooWqJDfKB7rt5NSgWyHPn03/kYyMptfxJK5HA==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
  dkim=pass header.d=intel.com; arc=none
-Received: from SJ0PR11MB5865.namprd11.prod.outlook.com (2603:10b6:a03:428::13)
- by MN2PR11MB4520.namprd11.prod.outlook.com (2603:10b6:208:265::17)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7452.26; Wed, 10 Apr
- 2024 08:18:36 +0000
-Received: from SJ0PR11MB5865.namprd11.prod.outlook.com
- ([fe80::27b8:e131:8ea6:a4b8]) by SJ0PR11MB5865.namprd11.prod.outlook.com
- ([fe80::27b8:e131:8ea6:a4b8%3]) with mapi id 15.20.7452.019; Wed, 10 Apr 2024
- 08:18:36 +0000
-From: "Romanowski, Rafal" <rafal.romanowski@intel.com>
-To: "Keller, Jacob E" <jacob.e.keller@intel.com>, Intel Wired LAN
- <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH iwl-next v2 2/2] ice: store VF relative
- MSI-X index in q_vector->vf_reg_idx
-Thread-Index: AQHafKI/mSMTjLkNWEmRd7FfdRLu3rFhRclw
-Date: Wed, 10 Apr 2024 08:18:35 +0000
-Message-ID: <SJ0PR11MB5865B740E1DEFFDE49AC35FB8F062@SJ0PR11MB5865.namprd11.prod.outlook.com>
-References: <20240322214445.1653263-1-jacob.e.keller@intel.com>
- <20240322214445.1653263-3-jacob.e.keller@intel.com>
-In-Reply-To: <20240322214445.1653263-3-jacob.e.keller@intel.com>
-Accept-Language: en-US
+Received: from IA1PR11MB7869.namprd11.prod.outlook.com (2603:10b6:208:3f6::7)
+ by DM4PR11MB5971.namprd11.prod.outlook.com (2603:10b6:8:5e::7) with
+ Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.7452.25; Wed, 10 Apr 2024 09:10:56 +0000
+Received: from IA1PR11MB7869.namprd11.prod.outlook.com
+ ([fe80::4c76:f31a:2174:d509]) by IA1PR11MB7869.namprd11.prod.outlook.com
+ ([fe80::4c76:f31a:2174:d509%6]) with mapi id 15.20.7452.019; Wed, 10 Apr 2024
+ 09:10:56 +0000
+Message-ID: <bb0fbd29-c098-4a62-9217-c9fd1a450250@intel.com>
+Date: Wed, 10 Apr 2024 02:10:52 -0700
+User-Agent: Mozilla Thunderbird
+To: Joe Damato <jdamato@fastly.com>, <linux-kernel@vger.kernel.org>,
+ <netdev@vger.kernel.org>, <intel-wired-lan@lists.osuosl.org>
+References: <20240410043936.206169-1-jdamato@fastly.com>
+ <20240410043936.206169-2-jdamato@fastly.com>
 Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: SJ0PR11MB5865:EE_|MN2PR11MB4520:EE_
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: L8tmc0VR++wYMsgyZynUYLN0cChA9b2NPRj4NmYvi6FiqI7PNj+MmTUxFmG+e/w6KTVminoiQFjTbpKkknb7441vZl+V6TrPwFoazOq+NHNF1YL0JwuN6m4hi1LnR+tobxAiIbtBb+8KNdDTvFqN0pZuyKD44EPETfMFkS9znVP+BS1Isy2YKtZwbUJG/NVtMxwlvQ0I2bVd4prXaUFgPDiDeEVnNPRZhn/VnzUfkw1iJRcwQ+PhYdo0tBe1KcTzsIWYieLr39Ner5ACORYyIpyitQ8TuJrhMXy61Mvzvr3bp1wCsucGe9RKPFqf/cqWZXo1p55E5xysTm2uHXhWGTKcsZ74Nm1NgtePgqLgaplUD14rbxlbLpHmcrHIo21oeCg63yhQ4bRrK6QL8e8x72YyEDg9txSbwlllvOQ4BKoHVdksLBuyn6gbGP639VwrNdB/roHb5g414/yhCbjctsa4sd0eoRFdGfhVbX7zh8vIazjnsEWWGm5PojNgTG6ZiIpbAI1LP2IaQmbQyNsXvJgCq28fkhLtT2Ki2Q7Kk/Ito3kKLNkYIPMbbFknonpL8EfJHr5MbPcplSNequ1icELt711V4ovHjamXYerTvbxyzMrDLrTl67V7e7voQlPG4qK2Uw6pzgZVMNDiIIZQOXL5pXhQTFRzUif1k88iM5Q=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:SJ0PR11MB5865.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230031)(366007)(1800799015)(376005); DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?6H9ZCFBKboSjyTUM3GKJwTa//PDqgUKRze+AkhqJqcvRjPuChzsJv0RO+BW3?=
- =?us-ascii?Q?IyQYDBQ16G5MlpDQ68DAuIHiSuzKE8OQVklRag3Jd/DsPKxKyyJ/JAR8Ez0K?=
- =?us-ascii?Q?QD+vcx91W4tSUy6uVrAzJMRtMq43vSfzRErBFsTgwwV/8A4VGuwShaOChMMb?=
- =?us-ascii?Q?QKCzfTR3bh8oJM7uwRrQCMyyZmvw97HLx7E/v9/TI24fjybl9pgRFDdube/n?=
- =?us-ascii?Q?kRKB8adZurjj4sjI796iCYD4nkt+kahUouKPi/ZcXlism53pqzUJQXMap01A?=
- =?us-ascii?Q?ZCYLks2+G9pxtszJOAqU0tki3hrZS4nZ7z/5vxnKdO/rJ5G0BbhPFFbnZAEA?=
- =?us-ascii?Q?6jdX7u1ZDe5vt9WcfOCnWAjKlwwNEz6YxPg/nVda8chq83sux4s/Xy+oJ/qO?=
- =?us-ascii?Q?FGUi5zt53+9puVVboGuKoaLBdkEHPOdyB/qYWx1Wc1jlgByjUlmtbGHjtAPT?=
- =?us-ascii?Q?SIXa/lcMn6hMd0zwkUbIPJ32yhE+n5zFeaxHr4Jy2aG9vhLWakNXXcZgBlD1?=
- =?us-ascii?Q?okB6MnztCfdu3u2zhd8RO6yKodZQ0wQq7CItp37JgvPsa53QtYqE8ZT995qe?=
- =?us-ascii?Q?bYA1swArdULJMjEBnJVBYC9zXvdntBIhQUS9uU96SOc7MyLrMyusGAc+fGRL?=
- =?us-ascii?Q?PWWzmRT1nAawR5I7tXxmL/nqXdODOo1bAsp3Ensvbqvvwm0C7IPJsOGzEDRr?=
- =?us-ascii?Q?RLH1k193peDQUqAeU19WlIp2/v6iV+EkETM6M77rnR+arfwKS5ky5YhYEV2g?=
- =?us-ascii?Q?8eErW7GKgHwWfz0snWJP5cnIi2adSz8arsBX7BeXVEPXeP4wgtRZUDnQ6QX7?=
- =?us-ascii?Q?/4KUsE20ajX05ksklo6rroHmySHfn24Fzd6xakZ72wmWgd9SxDHTo7LTIMU9?=
- =?us-ascii?Q?PVUFJRRW8u62uv65z3Ck0UFlWw1xrRz0SMf4X8QYYBcsCnMlKN1hi6frZnbI?=
- =?us-ascii?Q?dAqgW7T2TUZfHKpIJyZWFSXSIKulhSFS+FajvISoeIWNcr+VG8QMPcIrFLsV?=
- =?us-ascii?Q?oDcdvuncwKWOK4n6RIAytXA5ruDqMYKBSr3e2UxSu8yzyb0Z4c1/9/AC4CbE?=
- =?us-ascii?Q?fwo7fLmaxhsoA6QZgwZN5fG9uBFAXmUZJU8za9ytpeiVUcmGbmRLQccpYLzc?=
- =?us-ascii?Q?oxVdaXxf/Urrjyp05ilz/i8Lfxr9CpIdJ2QuU3Ebijl687B5lD8VkakKRGx3?=
- =?us-ascii?Q?O6Dc4DSUexVbOktvNtiDGc7ggd9l3nrgWuA8KE/woEfns5rXQqVI4RkPxeK7?=
- =?us-ascii?Q?MDe9ASUhNG90JMHHiH6nQgXkfpHu5jv/1Cogq6BaMK//PIC58LF9LLehmqzX?=
- =?us-ascii?Q?Y3aGwSdTtSn0uxbIqCELo/jovLT5omqpCEP03hWaNkKkBJF6z3+s9u0KWJAg?=
- =?us-ascii?Q?Lqd55mxupphLTS8r/um48/t4paDANA4+FJQsA88Vwmf5O4NzqgrdfqnZa7nc?=
- =?us-ascii?Q?10xeuj/KM2RMm/Q+2CnwSZm7emgeQcmP7lEED2Oj7cggsEjTMvDJjc0ff58u?=
- =?us-ascii?Q?PIFA0ucDux89Y3vRdXuGJP+O0gqpMOr2bCkCFOCTqGiRGjHo870CPmUoA9JY?=
- =?us-ascii?Q?Y7dnpprHMTNOWfpty0RHO4bDd2rMTAFiFTu4jwEL?=
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+From: "Nambiar, Amritha" <amritha.nambiar@intel.com>
+In-Reply-To: <20240410043936.206169-2-jdamato@fastly.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 7bit
+X-ClientProxiedBy: MW4PR04CA0235.namprd04.prod.outlook.com
+ (2603:10b6:303:87::30) To IA1PR11MB7869.namprd11.prod.outlook.com
+ (2603:10b6:208:3f6::7)
 MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: IA1PR11MB7869:EE_|DM4PR11MB5971:EE_
+X-LD-Processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 0pHA0KpAJfV0uVMoH+zej/MS3a+jr08Qmc21rthQT+X5F1xIiY4w6u8BuIbDpv7ST1LntZs++XAUkG4BweE9xsDFy5Z5kmGUho12tz3Zjz0Stz4N2/sKCFdWYRakbLzHsGmi12SAvshRUd0R5NqbnJauQA74Nu5v4p0PvQ56BF3cIYFuk3ZaXPTfcu3pVrKRhl3/fWRDezFmY0hWbwBSkyOEKB0MUXcLoOK/zR1/wASbJgakLcKTQ+zdHc8C94V+t3fnQm2VbzI1OcEOJsLAuuTYs2bENpZMyE0N8em6cCfsV1wZbU7bl2FJ0lbAxRMQWv3stkvN7WSCNHhgPf4KAXhxY9Vr8YjDGwDxoJhJCTIiJfHsT74DU2kXeU/IGZjFri0grxK/VMbQHbENAyrqn6sE6SZFJKOfEPg19nUGQHjASrYDqBlIX0NZiretcYf08T4k7H0axLjSOOanEluyeYFhz+YtZnLxnRnJ6g8r8rZP8VV+oHVwNMnaYgZNC7XvhrKbrNFurmq8rTGsjsME1wdigsgcK0pAEpxIxQcQIeH0GA8xYIQ8JXnlsnJJ0kcQiYP5m+gQVhsAU7iCUM1N9n2jr1qwM/aP6hqoRZJmQlYITAeLuL3swFvQ7rVn/sLASQ6VS2+VBF9C+IjkKRDSDDCrqPANKl9WsdEotRP4z8M=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:IA1PR11MB7869.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230031)(366007)(1800799015)(376005); DIR:OUT; SFP:1102; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?THkrWlRuTnNJRmxkYkttVjgrMUhhZXdwRVBXa21HTm5ZYzVnd2Q2RUduL3lU?=
+ =?utf-8?B?R3hmekk2RllOQmZtK25XWDdDL2tvS3BKOEZwNXpXQkk2NkhVaHhEQVd6T3Qv?=
+ =?utf-8?B?NFNZU1JtMytyWWI1STAxT2lkYzA5VEtxSTNNRGdsTDdUUUJoL1NQNUFpd0lj?=
+ =?utf-8?B?ZzVGNnNpWitxWEd0cmduRDJScXZQdENsMlBiL3Izd2FGRGhvcmFxc2NKL3Ro?=
+ =?utf-8?B?cjcyTFZMZkFiSy9KS1I3Tm8wTUJ0aytDclptTkZCVDYvQ3loaXZRNmdQVWZY?=
+ =?utf-8?B?cDdyUkx6eTBXWHlwdWs3aFhpdDN5cFlOaVpLcEtROVM1WjNFU3MwSk80V1Vw?=
+ =?utf-8?B?VWNsTFFZQkF3WGZOb0ZibmxFQlBMQnVKbS9ySUJ0QXpEaEhLZUFUNGRCVEU3?=
+ =?utf-8?B?QXYvYzBwckx4OGZRMXNZN1BSK3JjN0ZyNjJBbWw4L1h1WnZiR0pwN2wxVG94?=
+ =?utf-8?B?M2p4dUZ4bkJqa1FXZ1VReHBhd0FBSTNldDd6Sk8wb0dRZTBLNEVObURuWEdn?=
+ =?utf-8?B?WkdRcFpkdnlUY3paQWppOHF3M3lSaXlWQ3dVWjBUalJjMDdEdjFFMUhiZkpO?=
+ =?utf-8?B?NFI5UUNwbUY1ZFBDSXh1UEErZzZaRnVOM2x3T0NmK3hkdE5SbXJmOGZGQkxM?=
+ =?utf-8?B?SzYraUhQTjI2SFVzbmwwZldwVkVGV1Y0UEdCdXZBYnpDa0pFRWNuaHlwVnNs?=
+ =?utf-8?B?S3FnRStzVUFLQmNvTE43UXJvRFhhTTUwaS80c1dVd3RoOVpZamJkQXpqVGdM?=
+ =?utf-8?B?SWpsZGhPQUsybTJXV3l3TFkreFVQUG1naXl1V0VjQ3ZjSVF5V0VKVGR5Qkds?=
+ =?utf-8?B?ME9uL24rN2tGV3Q5SjRYdFQxSGtZYU9HMXJGVTlWeWpoMTcxdXRLaFMrSGdu?=
+ =?utf-8?B?Z2hMcFRTN2pDM1ZiZTQzRVg4VU9YOUI3RXlpemZWeGhvSTY1bDdha1dMeEwy?=
+ =?utf-8?B?S2FvcVRRYlAwRS90MzEvVUNuVGk4UVA3aUdPNWt5aG0rdWhobTBPQkljb3hD?=
+ =?utf-8?B?ZkkrRExNWlhwRkdSbEZrQnMzNzJFZ3lSR1NNb1d2Z2JZSVBCNmY0RVNJNTl2?=
+ =?utf-8?B?MlhyRXZiOG1jOXg2TXRBSG9qY2ZubVJ0VDgrYmVLNUozeUo2elZPNHR0bHZj?=
+ =?utf-8?B?SExxcDFocTdrQ1JRcktkSERlVzA1WTlWR3dTNVNRNWFxemVENENxaWJlbzgw?=
+ =?utf-8?B?VERhTW9PNUxja2ZidDJEWlVFczBSOXZDY3ZUZVhIRVg1WjFUOE1CNk9RUW42?=
+ =?utf-8?B?MmRZQ2NZNVB6QXFULzZacC8zVjFkODUyL1cxUnJmMjdCSzlpZHVsUEJIMmp2?=
+ =?utf-8?B?NjNyeDgyYmhMeXJtYTg3LytOY2liV0dhaVJyZlRHdktJKzBwSSs3QjR3eUww?=
+ =?utf-8?B?WU83eGFGN0JXQ3ZKZHFMaEdzOC9ySzI2ZWVtcFEydkNSQVE5eDFlekQzL0cy?=
+ =?utf-8?B?MmRNQkppWm43RjRWbDN0NnlvaWp1NVJ6WXl1ZUFLY3o2b05oUUh2S0FjUDJm?=
+ =?utf-8?B?QlBvNy9jRUl0WmdzUWc4M0IrVVNuM1J1RjZuYjJvRHRtQlhFNHgrUUJ4RG9n?=
+ =?utf-8?B?KzhDeHJIaXZWdGVJWnRub0ZhSGM2UmdTRDVBOUd2OXlubHhDMXJEQXdPbWdn?=
+ =?utf-8?B?YXcwcG1palQzZzcrN2J2T2NpWWJMTE9lMTJQVi93VG0wdlZBSk81UlpWTCtt?=
+ =?utf-8?B?SzI5UEREOFdlelY3bGQ0SERzZmdXYWdUajZxVWR0Sno4NDJZdUNmbG1ON1RD?=
+ =?utf-8?B?R1pjTkVCd1REZWxWUFJzYWVQMVlYUi90M3U5ZHE4VWJaSlphTS93eDB2UWY1?=
+ =?utf-8?B?U01uWVIrRWZnb2lEUGZPRWQvN0dYMUdQNWNFUGJZTWlTdlVXa0VsRlBhMHh5?=
+ =?utf-8?B?ekhHS1NhanJUS2gzSG5SMFoxOHJ0VHEyYVVOMzNQRVFWMVVTNTlCYlE4VHFw?=
+ =?utf-8?B?bHZibmt6S255N1p0WmZCVVJXSzF4b2QzeklKNHBJYWVKQkhZdXF4WnJWd0xT?=
+ =?utf-8?B?eVNXZTRoMm1mUHltVXFBdVllYUYrZ1hwdDcrVVV6ek1kY0VmTW1IbmdhTnMr?=
+ =?utf-8?B?MGFZUmFVMmhWUVVha21YVTdMTUErUFU1YkhmNlY0SjE3NTRZcG56M3lPZENR?=
+ =?utf-8?B?V3h6NEdnSFZwbHV1NXc0Z1lsV1RHVDl2Z0JYRkdwUXJZcUd4bDE4T2lrOHRH?=
+ =?utf-8?B?UEE9PQ==?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: d0b54bf2-5912-443e-782d-08dc593e2124
+X-MS-Exchange-CrossTenant-AuthSource: IA1PR11MB7869.namprd11.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: SJ0PR11MB5865.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 0fc95690-c063-4461-04cd-08dc5936d19b
-X-MS-Exchange-CrossTenant-originalarrivaltime: 10 Apr 2024 08:18:35.9302 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: mg4cMsyrmE4KCWW98PyXkAfDgZUqQ4pWJg4ETbEIlE5LNN7mYSKP2y7nUPmTTF3H8XGRgkAo7cDh5si7WsWKQylvc5jByzp1MqADp1V9g1g=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR11MB4520
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 10 Apr 2024 09:10:56.0889 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: sRgE1uuO1ArTl0tpfzEjHDI9G01Obj4Fsl9XSsFzx36X6m8sm0OBLxZCobC88cf4DXUzQDdJ6lFu1O9dqgvb1N7n7/UDnzNWLdAGtrP2WpM=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM4PR11MB5971
 X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1712737123; x=1744273123;
- h=from:to:cc:subject:date:message-id:references:
+ t=1712740264; x=1744276264;
+ h=message-id:date:subject:to:cc:references:from:
  in-reply-to:content-transfer-encoding:mime-version;
- bh=cgJEFKoqvlH7ROPHj/HWbpp8yFyaZrs68RvN+Yj+3SQ=;
- b=Du91LfdcaabD7fFhCezBkKD579946cunaeUIaFwAYqyMWxeTjbxxVrVb
- 8SehGnsXRj1PsPBP1ykHiGilAqe3LPOZWOA1Wvy2u1aYpnHoaiBE1AX2l
- jpWqBz3scEgznzYYXHEBCMTYG1sS/HSMWcR1oW2XIIIj2HUsO1qPLxehm
- AcWpYeTk3bY5iLqAmcAG73JbCXhcujVUY1YL4lf+SukflUV3JNVr92so3
- a7XnHQazrHnYC5jLRDlSM23h6qs+xQaTalDGkzBl5TQ9YNr4XyWFs2WxB
- zYMr2Z5bUB6YOge9JxBINZcs6Ihk5zYLST1K2/uMW3hODGq2cZ/9nXbgf
- w==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ bh=ji6RmE7VTuefPAwQtMuzrce8oxDcLujb5F9CHZmvHoc=;
+ b=RCvLGTtn5TEF8xyCyeun5tD6S0tIazADwetOBiPVFEx2WTaOPhVf7Izs
+ oDneH1kYAOU0SCKfLJWD3uoKkNxPbHInwBlb8vRWEJCeo6xjOAcyMimZ3
+ cx55kwfJul6USkt47A+DRWc2qEgl1Bk6Ph3JdhY9Ehdh+irj41V7YjeIc
+ K7HwIolM/wdafsL4raHiqbip/k+ueR8rjFb9vxXDF1y8a+MywLq35CgD7
+ Ggckz35fjgj7qr4SD5cM7DpSxASeblxhiLnCI7H7bFDCrugYcdByx/b0P
+ OXJQ1FhU8BcJqQ+axVgL5n/TsHJJdSyYIklT5DuVC7ZwS+eSNDvlKap/6
+ A==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=Du91Lfdc
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v2 2/2] ice: store VF
- relative MSI-X index in q_vector->vf_reg_idx
+ header.s=Intel header.b=RCvLGTtn
+Subject: Re: [Intel-wired-lan] [intel-next 1/2] net/i40e: link NAPI
+ instances to queues and IRQs
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -193,263 +207,182 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "Keller, Jacob E" <jacob.e.keller@intel.com>, "Nguyen,
- Anthony L" <anthony.l.nguyen@intel.com>
+Cc: sridhar.samudrala@intel.com, Eric Dumazet <edumazet@google.com>,
+ nalramli@fastly.com, Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ "David S. Miller" <davem@davemloft.net>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-> -----Original Message-----
-> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
-> Jacob Keller
-> Sent: Friday, March 22, 2024 10:45 PM
-> To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-> Cc: Keller, Jacob E <jacob.e.keller@intel.com>; Nguyen, Anthony L
-> <anthony.l.nguyen@intel.com>
-> Subject: [Intel-wired-lan] [PATCH iwl-next v2 2/2] ice: store VF relative=
- MSI-X
-> index in q_vector->vf_reg_idx
->=20
-> The ice physical function driver needs to configure the association of qu=
-eues
-> and interrupts on behalf of its virtual functions. This is done over virt=
-chnl by
-> the VF sending messages during its initialization phase. These messages
-> contain a vector_id which the VF wants to associate with a given queue. T=
-his
-> ID is relative to the VF space, where 0 indicates the control IRQ for non=
--queue
-> interrupts.
->=20
-> When programming the mapping, the PF driver currently passes this vector_=
-id
-> directly to the low level functions for programming. This works for SR-IO=
-V,
-> because the hardware uses the VF-based indexing for interrupts.
->=20
-> This won't work for Scalable IOV, which uses PF-based indexing for
-> programming its VSIs. To handle this, the driver needs to be able to look=
- up the
-> proper index to use for programming. For typical IRQs, this would be the
-> q_vector->reg_idx field.
->=20
-> The q_vector->reg_idx can't be set to a VF relative value, because it is =
-used
-> when the PF needs to control the interrupt, such as when triggering a sof=
-tware
-> interrupt on stopping the Tx queue. Thus, introduce a new q_vector-
-> >vf_reg_idx which can store the VF relative index for registers which exp=
-ect
-> this.
->=20
-> Use this in ice_cfg_interrupt to look up the VF index from the q_vector.
-> This allows removing the vector ID parameter of ice_cfg_interrupt. Also n=
-otice
-> that this function returns an int, but then is cast to the virtchnl error
-> enumeration, virtchnl_status_code. Update the return type to indicate it =
-does
-> not return an integer error code. We can't use normal error codes here
-> because the return values are passed across the virtchnl interface.
->=20
-> This will allow the future Scalable IOV VFs to correctly look up the inde=
-x
-> needed for programming the VF queues without breaking SR-IOV.
->=20
-> Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
+On 4/9/2024 9:39 PM, Joe Damato wrote:
+> Make i40e compatible with the newly added netlink queue GET APIs.
+> 
+> $ ./cli.py --spec ../../../Documentation/netlink/specs/netdev.yaml \
+>    --do queue-get --json '{"ifindex": 3, "id": 1, "type": "rx"}'
+> 
+> {'id': 1, 'ifindex': 3, 'napi-id': 162, 'type': 'rx'}
+> 
+> $ ./cli.py --spec ../../../Documentation/netlink/specs/netdev.yaml \
+>    --do napi-get --json '{"id": 162}'
+> 
+> {'id': 162, 'ifindex': 3, 'irq': 136}
+> 
+> The above output suggests that irq 136 was allocated for queue 1, which has
+> a NAPI ID of 162.
+> 
+> To double check this is correct, the IRQ to queue mapping can be verified
+> by checking /proc/interrupts:
+> 
+> $ cat /proc/interrupts  | grep 136\: | \
+>    awk '{print "irq: " $1 " name " $76}'
+> 
+> irq: 136: name i40e-vlan300-TxRx-1
+> 
+> Suggests that queue 1 has IRQ 136, as expected.
+> 
+> Signed-off-by: Joe Damato <jdamato@fastly.com>
 > ---
-> I found a bug during further testing in the v1 case because the irq.index=
- field is
-> used to determine if the IRQ vector was actually allocated. I then invest=
-igated
-> if q_vector->reg_idx was necessary or if it could be replaced.
-> It turns out that it is used during the shutdown path for the Tx queues a=
-s part
-> of the stop queue procedure. Thus, I opted to replace the functionality b=
-y
-> using a separate vf_reg_idx field that fits in a 2-byte gap in the curren=
-t
-> q_vector structure.
->=20
-> Changes since v2:
-> * introduce new vf_reg_idx instead of (ab)using msi_map index field
-> * Keep ice_calc_vf_reg_idx and use it to assign both the PF-relative
->   register index as well as the VF index needed for virtchnl
-> * Assign vf_reg_idx to the same as reg_idx for all non-ICE_VSI_VF VSIs.
->=20
->  drivers/net/ethernet/intel/ice/ice.h          |  3 ++-
->  drivers/net/ethernet/intel/ice/ice_base.c     |  3 ++-
->  drivers/net/ethernet/intel/ice/ice_sriov.c    |  7 ++++---
->  drivers/net/ethernet/intel/ice/ice_sriov.h    |  5 ++---
->  drivers/net/ethernet/intel/ice/ice_virtchnl.c | 14 +++++++-------
->  5 files changed, 17 insertions(+), 15 deletions(-)
->=20
-> diff --git a/drivers/net/ethernet/intel/ice/ice.h
-> b/drivers/net/ethernet/intel/ice/ice.h
-> index a7e88d797d4c..67a3236ab1fc 100644
-> --- a/drivers/net/ethernet/intel/ice/ice.h
-> +++ b/drivers/net/ethernet/intel/ice/ice.h
-> @@ -459,7 +459,7 @@ struct ice_q_vector {
->  	struct ice_vsi *vsi;
->=20
->  	u16 v_idx;			/* index in the vsi->q_vector array. */
-> -	u16 reg_idx;
-> +	u16 reg_idx;			/* PF relative register index */
->  	u8 num_ring_rx;			/* total number of Rx rings in
-> vector */
->  	u8 num_ring_tx;			/* total number of Tx rings in
-> vector */
->  	u8 wb_on_itr:1;			/* if true, WB on ITR is
-> enabled */
-> @@ -481,6 +481,7 @@ struct ice_q_vector {
->  	char name[ICE_INT_NAME_STR_LEN];
->=20
->  	u16 total_events;	/* net_dim(): number of interrupts processed
-> */
-> +	u16 vf_reg_idx;		/* VF relative register index */
->  	struct msi_map irq;
->  } ____cacheline_internodealigned_in_smp;
->=20
-> diff --git a/drivers/net/ethernet/intel/ice/ice_base.c
-> b/drivers/net/ethernet/intel/ice/ice_base.c
-> index 662fc395edcc..5e1d5a76ee00 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_base.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_base.c
-> @@ -121,7 +121,7 @@ static int ice_vsi_alloc_q_vector(struct ice_vsi *vsi=
-,
-> u16 v_idx)
->  	q_vector->irq.index =3D -ENOENT;
->=20
->  	if (vsi->type =3D=3D ICE_VSI_VF) {
-> -		q_vector->reg_idx =3D ice_calc_vf_reg_idx(vsi->vf, q_vector);
-> +		ice_calc_vf_reg_idx(vsi->vf, q_vector);
->  		goto out;
->  	} else if (vsi->type =3D=3D ICE_VSI_CTRL && vsi->vf) {
->  		struct ice_vsi *ctrl_vsi =3D ice_get_vf_ctrl_vsi(pf, vsi); @@ -145,6
-> +145,7 @@ static int ice_vsi_alloc_q_vector(struct ice_vsi *vsi, u16 v_id=
-x)
->=20
->  skip_alloc:
->  	q_vector->reg_idx =3D q_vector->irq.index;
-> +	q_vector->vf_reg_idx =3D q_vector->irq.index;
->=20
->  	/* only set affinity_mask if the CPU is online */
->  	if (cpu_online(v_idx))
-> diff --git a/drivers/net/ethernet/intel/ice/ice_sriov.c
-> b/drivers/net/ethernet/intel/ice/ice_sriov.c
-> index 5e9521876617..fb2e96db647e 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_sriov.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_sriov.c
-> @@ -360,13 +360,14 @@ static void ice_ena_vf_mappings(struct ice_vf *vf)
->   * @vf: VF to calculate the register index for
->   * @q_vector: a q_vector associated to the VF
->   */
-> -int ice_calc_vf_reg_idx(struct ice_vf *vf, struct ice_q_vector *q_vector=
-)
-> +void ice_calc_vf_reg_idx(struct ice_vf *vf, struct ice_q_vector
-> +*q_vector)
->  {
->  	if (!vf || !q_vector)
-> -		return -EINVAL;
+>   drivers/net/ethernet/intel/i40e/i40e.h      |  2 +
+>   drivers/net/ethernet/intel/i40e/i40e_main.c | 58 +++++++++++++++++++++
+>   drivers/net/ethernet/intel/i40e/i40e_txrx.c |  4 ++
+>   3 files changed, 64 insertions(+)
+> 
+> diff --git a/drivers/net/ethernet/intel/i40e/i40e.h b/drivers/net/ethernet/intel/i40e/i40e.h
+> index 2fbabcdb5bb5..5900ed5c7170 100644
+> --- a/drivers/net/ethernet/intel/i40e/i40e.h
+> +++ b/drivers/net/ethernet/intel/i40e/i40e.h
+> @@ -1267,6 +1267,8 @@ int i40e_ioctl(struct net_device *netdev, struct ifreq *ifr, int cmd);
+>   int i40e_open(struct net_device *netdev);
+>   int i40e_close(struct net_device *netdev);
+>   int i40e_vsi_open(struct i40e_vsi *vsi);
+> +void i40e_queue_set_napi(struct i40e_vsi *vsi, unsigned int queue_index,
+> +			 enum netdev_queue_type type, struct napi_struct *napi);
+>   void i40e_vlan_stripping_disable(struct i40e_vsi *vsi);
+>   int i40e_add_vlan_all_mac(struct i40e_vsi *vsi, s16 vid);
+>   int i40e_vsi_add_vlan(struct i40e_vsi *vsi, u16 vid);
+> diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
+> index 0bdcdea0be3e..6384a0c73a05 100644
+> --- a/drivers/net/ethernet/intel/i40e/i40e_main.c
+> +++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
+> @@ -3448,6 +3448,58 @@ static struct xsk_buff_pool *i40e_xsk_pool(struct i40e_ring *ring)
+>   	return xsk_get_pool_from_qid(ring->vsi->netdev, qid);
+>   }
+>   
+> +/**
+> + * __i40e_queue_set_napi - Set the napi instance for the queue
+> + * @dev: device to which NAPI and queue belong
+> + * @queue_index: Index of queue
+> + * @type: queue type as RX or TX
+> + * @napi: NAPI context
+> + * @locked: is the rtnl_lock already held
+> + *
+> + * Set the napi instance for the queue. Caller indicates the lock status.
+> + */
+> +static void
+> +__i40e_queue_set_napi(struct net_device *dev, unsigned int queue_index,
+> +		      enum netdev_queue_type type, struct napi_struct *napi,
+> +		      bool locked)
+> +{
+> +	if (!locked)
+> +		rtnl_lock();
+> +	netif_queue_set_napi(dev, queue_index, type, napi);
+> +	if (!locked)
+> +		rtnl_unlock();
+> +}
+> +
+> +/**
+> + * i40e_queue_set_napi - Set the napi instance for the queue
+> + * @vsi: VSI being configured
+> + * @queue_index: Index of queue
+> + * @type: queue type as RX or TX
+> + * @napi: NAPI context
+> + *
+> + * Set the napi instance for the queue. The rtnl lock state is derived from the
+> + * execution path.
+> + */
+> +void
+> +i40e_queue_set_napi(struct i40e_vsi *vsi, unsigned int queue_index,
+> +		    enum netdev_queue_type type, struct napi_struct *napi)
+> +{
+> +	struct i40e_pf *pf = vsi->back;
+> +
+> +	if (!vsi->netdev)
 > +		return;
->=20
->  	/* always add one to account for the OICR being the first MSIX */
-> -	return vf->first_vector_idx + q_vector->v_idx + 1;
-> +	q_vector->vf_reg_idx =3D q_vector->v_idx + ICE_NONQ_VECS_VF;
-> +	q_vector->reg_idx =3D vf->first_vector_idx + q_vector->vf_reg_idx;
->  }
->=20
->  /**
-> diff --git a/drivers/net/ethernet/intel/ice/ice_sriov.h
-> b/drivers/net/ethernet/intel/ice/ice_sriov.h
-> index 8488df38b586..4ba8fb53aea1 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_sriov.h
-> +++ b/drivers/net/ethernet/intel/ice/ice_sriov.h
-> @@ -49,7 +49,7 @@ int ice_set_vf_link_state(struct net_device *netdev, in=
-t
-> vf_id, int link_state);
->=20
->  int ice_set_vf_spoofchk(struct net_device *netdev, int vf_id, bool ena);
->=20
-> -int ice_calc_vf_reg_idx(struct ice_vf *vf, struct ice_q_vector *q_vector=
-);
-> +void ice_calc_vf_reg_idx(struct ice_vf *vf, struct ice_q_vector
-> +*q_vector);
->=20
->  int
->  ice_get_vf_stats(struct net_device *netdev, int vf_id, @@ -130,11 +130,1=
-0
-> @@ ice_set_vf_bw(struct net_device __always_unused *netdev,
->  	return -EOPNOTSUPP;
->  }
->=20
-> -static inline int
-> +static inline void
->  ice_calc_vf_reg_idx(struct ice_vf __always_unused *vf,
->  		    struct ice_q_vector __always_unused *q_vector)  {
-> -	return 0;
->  }
->=20
->  static inline int
-> diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl.c
-> b/drivers/net/ethernet/intel/ice/ice_virtchnl.c
-> index 1ff9818b4c84..1c6ce0c4ed4e 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_virtchnl.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_virtchnl.c
-> @@ -1505,13 +1505,12 @@ static int ice_vc_dis_qs_msg(struct ice_vf *vf, u=
-8
-> *msg)
->   * ice_cfg_interrupt
->   * @vf: pointer to the VF info
->   * @vsi: the VSI being configured
-> - * @vector_id: vector ID
->   * @map: vector map for mapping vectors to queues
->   * @q_vector: structure for interrupt vector
->   * configure the IRQ to queue map
->   */
-> -static int
-> -ice_cfg_interrupt(struct ice_vf *vf, struct ice_vsi *vsi, u16 vector_id,
-> +static enum virtchnl_status_code
-> +ice_cfg_interrupt(struct ice_vf *vf, struct ice_vsi *vsi,
->  		  struct virtchnl_vector_map *map,
->  		  struct ice_q_vector *q_vector)
->  {
-> @@ -1531,7 +1530,8 @@ ice_cfg_interrupt(struct ice_vf *vf, struct ice_vsi
-> *vsi, u16 vector_id,
->  		q_vector->num_ring_rx++;
->  		q_vector->rx.itr_idx =3D map->rxitr_idx;
->  		vsi->rx_rings[vsi_q_id]->q_vector =3D q_vector;
-> -		ice_cfg_rxq_interrupt(vsi, vsi_q_id, vector_id,
-> +		ice_cfg_rxq_interrupt(vsi, vsi_q_id,
-> +				      q_vector->vf_reg_idx,
->  				      q_vector->rx.itr_idx);
->  	}
->=20
-> @@ -1545,7 +1545,8 @@ ice_cfg_interrupt(struct ice_vf *vf, struct ice_vsi
-> *vsi, u16 vector_id,
->  		q_vector->num_ring_tx++;
->  		q_vector->tx.itr_idx =3D map->txitr_idx;
->  		vsi->tx_rings[vsi_q_id]->q_vector =3D q_vector;
-> -		ice_cfg_txq_interrupt(vsi, vsi_q_id, vector_id,
-> +		ice_cfg_txq_interrupt(vsi, vsi_q_id,
-> +				      q_vector->vf_reg_idx,
->  				      q_vector->tx.itr_idx);
->  	}
->=20
-> @@ -1619,8 +1620,7 @@ static int ice_vc_cfg_irq_map_msg(struct ice_vf *vf=
-,
-> u8 *msg)
->  		}
->=20
->  		/* lookout for the invalid queue index */
-> -		v_ret =3D (enum virtchnl_status_code)
-> -			ice_cfg_interrupt(vf, vsi, vector_id, map, q_vector);
-> +		v_ret =3D ice_cfg_interrupt(vf, vsi, map, q_vector);
->  		if (v_ret)
->  			goto error_param;
->  	}
-> --
-> 2.44.0.53.g0f9d4d28b7e6
+> +
+> +	if (current_work() == &pf->service_task ||
+> +	    test_bit(__I40E_PF_RESET_REQUESTED, pf->state) ||
 
+I think we might need something like ICE_PREPARED_FOR_RESET which 
+detects all kinds of resets(PFR/CORE/GLOBR). __I40E_PF_RESET_REQUESTED 
+handles PFR only. So, this might assert for RTNL lock on CORER/GLOBR.
 
-Tested-by: Rafal Romanowski <rafal.romanowski@intel.com>
+> +	    test_bit(__I40E_DOWN, pf->state) ||
+> +	    test_bit(__I40E_SUSPENDED, pf->state))
+> +		__i40e_queue_set_napi(vsi->netdev, queue_index, type, napi,
+> +				      false);
+> +	else
+> +		__i40e_queue_set_napi(vsi->netdev, queue_index, type, napi,
+> +				      true);
+> +}
+> +
+>   /**
+>    * i40e_configure_tx_ring - Configure a transmit ring context and rest
+>    * @ring: The Tx ring to configure
+> @@ -3558,6 +3610,8 @@ static int i40e_configure_tx_ring(struct i40e_ring *ring)
+>   	/* cache tail off for easier writes later */
+>   	ring->tail = hw->hw_addr + I40E_QTX_TAIL(pf_q);
+>   
+> +	i40e_queue_set_napi(vsi, ring->queue_index, NETDEV_QUEUE_TYPE_TX,
+> +			    &ring->q_vector->napi);
 
+I am not sure very sure of this, have you tested this for the 
+reset/rebuild path as well (example: ethtool -L and change queues). Just 
+wondering if this path is taken for first time VSI init or additionally 
+for any VSI rebuilds as well.
 
+>   	return 0;
+>   }
+>   
+> @@ -3716,6 +3770,8 @@ static int i40e_configure_rx_ring(struct i40e_ring *ring)
+>   			 ring->queue_index, pf_q);
+>   	}
+>   
+> +	i40e_queue_set_napi(vsi, ring->queue_index, NETDEV_QUEUE_TYPE_RX,
+> +			    &ring->q_vector->napi);
+>
+Same as above.
+
+   	return 0;
+>   }
+>   
+> @@ -4178,6 +4234,8 @@ static int i40e_vsi_request_irq_msix(struct i40e_vsi *vsi, char *basename)
+>   		q_vector->affinity_notify.notify = i40e_irq_affinity_notify;
+>   		q_vector->affinity_notify.release = i40e_irq_affinity_release;
+>   		irq_set_affinity_notifier(irq_num, &q_vector->affinity_notify);
+> +		netif_napi_set_irq(&q_vector->napi, q_vector->irq_num);
+> +
+>   		/* Spread affinity hints out across online CPUs.
+>   		 *
+>   		 * get_cpu_mask returns a static constant mask with
+> diff --git a/drivers/net/ethernet/intel/i40e/i40e_txrx.c b/drivers/net/ethernet/intel/i40e/i40e_txrx.c
+> index 64d198ed166b..d380885ff26d 100644
+> --- a/drivers/net/ethernet/intel/i40e/i40e_txrx.c
+> +++ b/drivers/net/ethernet/intel/i40e/i40e_txrx.c
+> @@ -821,6 +821,8 @@ void i40e_clean_tx_ring(struct i40e_ring *tx_ring)
+>   void i40e_free_tx_resources(struct i40e_ring *tx_ring)
+>   {
+>   	i40e_clean_tx_ring(tx_ring);
+> +	i40e_queue_set_napi(tx_ring->vsi, tx_ring->queue_index,
+> +			    NETDEV_QUEUE_TYPE_TX, NULL);
+>   	kfree(tx_ring->tx_bi);
+>   	tx_ring->tx_bi = NULL;
+>   
+> @@ -1526,6 +1528,8 @@ void i40e_clean_rx_ring(struct i40e_ring *rx_ring)
+>   void i40e_free_rx_resources(struct i40e_ring *rx_ring)
+>   {
+>   	i40e_clean_rx_ring(rx_ring);
+> +	i40e_queue_set_napi(rx_ring->vsi, rx_ring->queue_index,
+> +			    NETDEV_QUEUE_TYPE_RX, NULL);
+>   	if (rx_ring->vsi->type == I40E_VSI_MAIN)
+>   		xdp_rxq_info_unreg(&rx_ring->xdp_rxq);
+>   	rx_ring->xdp_prog = NULL;
