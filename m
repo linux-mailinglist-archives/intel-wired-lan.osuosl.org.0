@@ -2,102 +2,95 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id EDE9789EF54
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 10 Apr 2024 11:58:25 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 25AE689F12C
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 10 Apr 2024 13:48:45 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 847F96083A;
-	Wed, 10 Apr 2024 09:58:24 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id D9A8660853;
+	Wed, 10 Apr 2024 11:48:42 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id LuCA_xUfnZTN; Wed, 10 Apr 2024 09:58:23 +0000 (UTC)
+ id bARvQuO1OeUu; Wed, 10 Apr 2024 11:48:42 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5EC1160846
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B930060857
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1712743103;
-	bh=DGSz3y2VLz8gFlf5o29sSobWJkbWvTaRCKfvwBZdJIY=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=2VWkwQPvzpBJHG5cWftxH69nft7UWO2rwQ2a3WnQXHqoZlffUVNOSxnMNUmxoL6Po
-	 4WydDdIC9+EznHqyvSSLs7Z8Cwk5MrcYQdZ0fIPuus2Jt1nIkp0vY65RkvcxONPaKo
-	 lEOEdowQ+LnstEFeHylyLXi7R6z8WAb3yMV+7eEXrHvyIR+Bnsk0LnldOM2Smt88pm
-	 bOpRITClGPlWWFBWg/Y7YdCVIPRuBAFx2IdQVTCSfuZvEYwhS+sgphHSUp1kNCuM3N
-	 EIHWAcHOL0vuc7te34e1Q2xDrqRUkYI1NyHe+OXw26eyTeQwnoHVmytAExtQPocnKQ
-	 FcOJrXBKtaMSw==
+	s=default; t=1712749721;
+	bh=JE1W2OThhxrweP4GB3+Wjo8nXjcbJgO62AN7qtZSKOI=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=rx32HTlDqZgw5N0hSGnQN/NUivOyuW5LbE0t8U/KWNJAWmGDGjKKfvH4XhGYvBx7r
+	 hTHh71Mp5QOU3pemTKeDvbM3LUMIUth3mvsbIiKWttUosgeiDwMgpMIgzVEL1vvVIs
+	 uihskXLnvtAyGcqs1zclSPybkvfwIdr67RXug5/XsM5QS6wVjr5+XgByKBtuC0VvTP
+	 HG8csJf2XTSFwkRfGix6LlBveWZZ7nQ+DUP0Ohbc5pL6FubuIPXHWWmAujugIHjMzS
+	 QYNKS8x/UX5gCKNsOs01MkBkb9A+eKo5IUpQ9am7tmUjke2NpLOvC39YkDBVZT1GME
+	 b9LpTS/ibmK/A==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 5EC1160846;
-	Wed, 10 Apr 2024 09:58:23 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id B930060857;
+	Wed, 10 Apr 2024 11:48:41 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 3B7631BF275
- for <intel-wired-lan@lists.osuosl.org>; Wed, 10 Apr 2024 09:58:21 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 1C45C1BF5AA
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 10 Apr 2024 11:48:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 2728E607E0
- for <intel-wired-lan@lists.osuosl.org>; Wed, 10 Apr 2024 09:58:21 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 07CAF607A4
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 10 Apr 2024 11:48:40 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 6Uo4Vrt-pWrn for <intel-wired-lan@lists.osuosl.org>;
- Wed, 10 Apr 2024 09:58:18 +0000 (UTC)
-Received-SPF: None (mailfrom) identity=mailfrom; client-ip=192.198.163.8;
- helo=mgamail.intel.com; envelope-from=michal.swiatkowski@linux.intel.com;
+ id 0v3rBqZhPj8n for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 10 Apr 2024 11:48:38 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.14;
+ helo=mgamail.intel.com; envelope-from=lakshmi.sowjanya.d@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 109C960645
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 109C960645
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.8])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 109C960645
- for <intel-wired-lan@lists.osuosl.org>; Wed, 10 Apr 2024 09:58:17 +0000 (UTC)
-X-CSE-ConnectionGUID: Zqdw8k9BQAKlZfpoDIjeXg==
-X-CSE-MsgGUID: tYDStekJQP+r74vLgBDVEA==
-X-IronPort-AV: E=McAfee;i="6600,9927,11039"; a="25601426"
-X-IronPort-AV: E=Sophos;i="6.07,190,1708416000"; d="scan'208";a="25601426"
-Received: from fmviesa009.fm.intel.com ([10.60.135.149])
- by fmvoesa102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 10 Apr 2024 02:58:17 -0700
-X-CSE-ConnectionGUID: aYy+foZLSn2r2UUZc3n3tg==
-X-CSE-MsgGUID: iIgP4Th0SfSAleBxwmoMpg==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 78A4760845
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 78A4760845
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.14])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 78A4760845
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 10 Apr 2024 11:48:37 +0000 (UTC)
+X-CSE-ConnectionGUID: ldJAWgS4T8mHlqFY0+SOAA==
+X-CSE-MsgGUID: PKcru6/1Q0G4MHNuhDqNdA==
+X-IronPort-AV: E=McAfee;i="6600,9927,11039"; a="11944046"
+X-IronPort-AV: E=Sophos;i="6.07,190,1708416000"; d="scan'208";a="11944046"
+Received: from fmviesa002.fm.intel.com ([10.60.135.142])
+ by orvoesa106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 10 Apr 2024 04:48:37 -0700
+X-CSE-ConnectionGUID: cShSBgw5Tu+rDMKH3Ibh4A==
+X-CSE-MsgGUID: nHnq7B66TIepyBTD5O5gWw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.07,190,1708416000"; d="scan'208";a="20542691"
-Received: from unknown (HELO mev-dev) ([10.237.112.144])
- by fmviesa009-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 10 Apr 2024 02:58:15 -0700
-Date: Wed, 10 Apr 2024 11:57:55 +0200
-From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-To: "Buvaneswaran, Sujai" <sujai.buvaneswaran@intel.com>
-Message-ID: <ZhZio9Kc0FrgNwnN@mev-dev>
-References: <20240312105259.2450-1-michal.swiatkowski@linux.intel.com>
- <PH0PR11MB50130FD5A519919523197C7C96362@PH0PR11MB5013.namprd11.prod.outlook.com>
- <ZgZ6/6/R+5EfQvbb@mev-dev>
- <PH0PR11MB5013EC7967F8B7694B2F5C8C963F2@PH0PR11MB5013.namprd11.prod.outlook.com>
- <Zg+5mIUtMruFRck0@mev-dev>
+X-IronPort-AV: E=Sophos;i="6.07,190,1708416000"; d="scan'208";a="43769234"
+Received: from inlubt0316.iind.intel.com ([10.191.20.213])
+ by fmviesa002.fm.intel.com with ESMTP; 10 Apr 2024 04:48:30 -0700
+From: lakshmi.sowjanya.d@intel.com
+To: tglx@linutronix.de, jstultz@google.com, giometti@enneenne.com,
+ corbet@lwn.net, linux-kernel@vger.kernel.org
+Date: Wed, 10 Apr 2024 17:18:17 +0530
+Message-Id: <20240410114828.25581-1-lakshmi.sowjanya.d@intel.com>
+X-Mailer: git-send-email 2.35.3
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <Zg+5mIUtMruFRck0@mev-dev>
+Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1712743098; x=1744279098;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=8kljXWF9cM8kvyiMlAHuhlM0UfE1pXGPxynSESs+2dQ=;
- b=dF83plSuPiXQTi3r0FozgRuVDqvJj1xVNE+uczju8F+bSStlLCthNoUJ
- kPkrmMO42VLInL+PCBmk1BVTRhHuIuwtmGD0iUIRO4izjVUN+wczp6osn
- A6GUVEnfM/U0RG/jxN3jo9bqqkpXgNwlvdNMWEgZe7ixKxcKBibHbEEeW
- Ujd1uayMLRuJEYGZfZ44NTS3a8ZSeRW3RAyVYdQJhunjwBD59QMCqxsTK
- fWjQx3gkWqdNO0vq+yROXBlsJZhhqipZNbcHn1JQGqDRK+XSvuPvCBORb
- N7szOGWj+sdKRlLaGrRhkr8PVTIPxXhnwJXibX0xGs3Y7k0RBI6gknCdZ
- Q==;
+ t=1712749719; x=1744285719;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=souuJwWgY2tifwYTnw9HWDzS9btUpbdg1MYPZs6YGPU=;
+ b=BFNn2GKtXf8LdQM9b0P/PJ5MinIJFkYh/I561wnzFvLlfDAdBx/K4ZoF
+ XpNDKqoAfmovC94PbOQ8ptUIyDHb3+GaNj2/S6uZ3VK7i00dIbeLXkVyT
+ /4deT7HALqwiAtIqA7M8BIZtNoPdWby7Tn+zFMpw130lgvfoDDMkP3Ezj
+ Ae4Aat/BVATZf8fi982UzxnvzpXcPD9Cgj3XaN86vz3xp/UjYPUcwqg1D
+ LJc+5QxjmcYGRu/vNcgxcZg9szXc03unJtV0z5NjhvMVWdfeYOrNoqiox
+ 6+aMGZz3wVsdYZ9+VbuaLXlQKFQUZwi2R4qFX2vdWd+xc+nBpKfn9x3Ry
+ A==;
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=linux.intel.com
+ dmarc=pass (p=none dis=none)
+ header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=dF83plSu
-Subject: Re: [Intel-wired-lan] [iwl-net v1] ice: tc: do default match on all
- profiles
+ header.s=Intel header.b=BFNn2GKt
+Subject: [Intel-wired-lan] [PATCH v6 00/11] Add support for Intel PPS
+ Generator
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -110,127 +103,131 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- Marcin Szycik <marcin.szycik@linux.intel.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>, "Kubiak,
- Michal" <michal.kubiak@intel.com>
+Cc: christopher.s.hall@intel.com, subramanian.mohan@intel.com,
+ lakshmi.sowjanya.d@intel.com, linux-doc@vger.kernel.org,
+ netdev@vger.kernel.org, pandith.n@intel.com, x86@kernel.org,
+ eddie.dong@intel.com, linux-sound@vger.kernel.org,
+ alexandre.torgue@foss.st.com, peter.hilber@opensynergy.com,
+ joabreu@synopsys.com, intel-wired-lan@lists.osuosl.org,
+ mcoquelin.stm32@gmail.com, thejesh.reddy.t.r@intel.com, perex@perex.cz,
+ anthony.l.nguyen@intel.com, andriy.shevchenko@linux.intel.com,
+ davem@davemloft.net
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Fri, Apr 05, 2024 at 10:43:04AM +0200, Michal Swiatkowski wrote:
-> On Mon, Apr 01, 2024 at 09:28:30AM +0000, Buvaneswaran, Sujai wrote:
-> > > -----Original Message-----
-> > > From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-> > > Sent: Friday, March 29, 2024 1:56 PM
-> > > To: Buvaneswaran, Sujai <sujai.buvaneswaran@intel.com>
-> > > Cc: intel-wired-lan@lists.osuosl.org; netdev@vger.kernel.org; Marcin Szycik
-> > > <marcin.szycik@linux.intel.com>; Kubiak, Michal <michal.kubiak@intel.com>
-> > > Subject: Re: [Intel-wired-lan] [iwl-net v1] ice: tc: do default match on all
-> > > profiles
-> > > 
-> > > On Mon, Mar 25, 2024 at 06:36:56AM +0000, Buvaneswaran, Sujai wrote:
-> > > > > -----Original Message-----
-> > > > > From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf
-> > > > > Of Michal Swiatkowski
-> > > > > Sent: Tuesday, March 12, 2024 4:23 PM
-> > > > > To: intel-wired-lan@lists.osuosl.org
-> > > > > Cc: netdev@vger.kernel.org; Marcin Szycik
-> > > > > <marcin.szycik@linux.intel.com>; Kubiak, Michal
-> > > > > <michal.kubiak@intel.com>; Michal Swiatkowski
-> > > > > <michal.swiatkowski@linux.intel.com>
-> > > > > Subject: [Intel-wired-lan] [iwl-net v1] ice: tc: do default match on
-> > > > > all profiles
-> > > > >
-> > > > > A simple non-tunnel rule (e.g. matching only on destination MAC) in
-> > > > > hardware will be hit only if the packet isn't a tunnel. In software
-> > > > > execution of the same command, the rule will match both tunnel and
-> > > non-tunnel packets.
-> > > > >
-> > > > > Change the hardware behaviour to match tunnel and non-tunnel packets
-> > > > > in this case. Do this by considering all profiles when adding
-> > > > > non-tunnel rule (rule not added on tunnel, or not redirecting to tunnel).
-> > > > >
-> > > > > Example command:
-> > > > > tc filter add dev pf0 ingress protocol ip flower skip_sw action mirred \
-> > > > > 	egress redirect dev pr0
-> > > > >
-> > > > > It should match also tunneled packets, the same as command with
-> > > > > skip_hw will do in software.
-> > > > >
-> > > > > Fixes: 9e300987d4a8 ("ice: VXLAN and Geneve TC support")
-> > > > > Reviewed-by: Marcin Szycik <marcin.szycik@linux.intel.com>
-> > > > > Reviewed-by: Michal Kubiak <michal.kubiak@intel.com>
-> > > > > Signed-off-by: Michal Swiatkowski
-> > > > > <michal.swiatkowski@linux.intel.com>
-> > > > > ---
-> > > > > v1 --> v2:
-> > > > >  * fix commit message sugested by Marcin
-> > > > > ---
-> > > > >  drivers/net/ethernet/intel/ice/ice_tc_lib.c | 2 +-
-> > > > >  1 file changed, 1 insertion(+), 1 deletion(-)
-> > > > >
-> > > > Hi,
-> > > >
-> > > > We are seeing error while adding HW tc rules on PF with the latest net-
-> > > queue patches. This issue is blocking the validation of latest net-queue
-> > > Switchdev patches.
-> > > >
-> > > > + tc filter add dev ens5f0np0 ingress protocol ip prio 1 flower
-> > > > + src_mac b4:96:91:9f:65:58 dst_mac 52:54:00:00:16:01 skip_sw action
-> > > > + mirred egress redirect dev eth0
-> > > > Error: ice: Unable to add filter due to error.
-> > > > We have an error talking to the kernel
-> > > > + tc filter add dev ens5f0np0 ingress protocol ip prio 1 flower
-> > > > + src_mac b4:96:91:9f:65:58 dst_mac 52:54:00:00:16:02 skip_sw action
-> > > > + mirred egress redirect dev eth1
-> > > > Error: ice: Unable to add filter due to error.
-> > > > We have an error talking to the kernel
-> > > 
-> > > Hi,
-> > > 
-> > > The same command is working fine on my setup. I suspect that it isn't related
-> > > to this patch. The change is only in command validation, there is no
-> > > functional changes here that can cause error during adding filters which
-> > > previously was working fine.
-> > > 
-> > > Can you share more information about the setup? It was the first filter added
-> > > on the PF? Did you do sth else before checking tc?
-> > 
-> > Hi Michal,
-> > I have used the setup with latest upstream dev-queue kernel and this issue is observed while adding HW tc rules on PF using
-> > 'Script A' from below link.
-> > https://edc.intel.com/content/www/us/en/design/products/ethernet/appnote-e810-eswitch-switchdev-mode-config-guide/script-a-switchdev-mode-with-linux-bridge-configuration/
-> > 
-> > This issue is reproducible on two of our setups with latest upstream kernel - 6.9.0-rc1+. Please check and let me know if more information is needed.
-> > 
-> 
-> I tried script from the link and it is working. I am aware of the
-> problem when the same rule is being added with different destination.
-> Are you sure there are no more exsisting rule before calling the script?
-> In the script VFs are removed, but PF qdisc isn't removed. Old rule can
-> exsist there. I suggest to add sth like, before adding new qdiscs:
-> $tc qdisc del dev $PF1 ingress
-> 
-> I tested on 6.9.0-rc1+ kernel.
-> 
+From: Lakshmi Sowjanya D <lakshmi.sowjanya.d@intel.com>
 
-I have found the problem. I was using different DDP package.
+The goal of the PPS (Pulse Per Second) hardware/software is to generate a
+signal from the system on a wire so that some third-party hardware can
+observe that signal and judge how close the system's time is to another
+system or piece of hardware.
 
-The problem is with lack of free indexes in profiles when matching is
-done on both tunnel and not tunnel packet (so all profiles are
-considered). For now please Tony remove it from next-queue. I am trying
-to figure out how to implement matching on all profiles using less
-indexes. If I find the correct way I will submit new patch.
+Existing methods (like parallel ports) require software to flip a bit at
+just the right time to create a PPS signal. Many things can prevent
+software from doing this precisely. This (Timed I/O) method is better
+because software only "arms" the hardware in advance and then depends on
+the hardware to "fire" and flip the signal at just the right time.
 
-Thanks
+To generate a PPS signal with this new hardware, the kernel wakes up
+twice a second, once for 1->0 edge and other for the 0->1 edge. It does
+this shortly (~10ms) before the actual change in the signal needs to be
+made. It computes the TSC value at which edge will happen, convert to a
+value hardware understands and program this value to Timed I/O hardware.
+The actual edge transition happens without any further action from the
+kernel.
 
-> Thanks,
-> Michal
-> > Thanks,
-> > Sujai B
-> > > 
-> > > Thanks,
-> > > Michal
-> > > >
-> > > > Thanks,
-> > > > Sujai B
+The result here is a signal coming out of the system that is roughly
+1,000 times more accurate than the old methods. If the system is heavily
+loaded, the difference in accuracy is larger in old methods.
+
+Application Interface:
+The API to use Timed I/O is very simple. It is enabled and disabled by
+writing a '1' or '0' value to the sysfs enable attribute associated with
+the Timed I/O PPS device. Each Timed I/O pin is represented by a PPS
+device. When enabled, a pulse-per-second (PPS) synchronized with the
+system clock is continuously produced on the Timed I/O pin, otherwise it
+is pulled low. 
+
+The Timed I/O signal on the motherboard is enabled in the BIOS setup.
+Intel Advanced Menu -> PCH IO Configuration -> Timed I/O <Enable>
+
+References:
+https://en.wikipedia.org/wiki/Pulse-per-second_signal
+https://drive.google.com/file/d/1vkBRRDuELmY8I3FlfOZaEBp-DxLW6t_V/view
+https://youtu.be/JLUTT-lrDqw
+
+Patch 1 adds base clock properties in clocksource structure
+Patch 2 adds function to convert realtime to base clock
+Patch 3 - 7 removes reference to convert_art_to_tsc function across
+drivers
+Patch 8 removes the convert art to tsc functions which are no longer
+used
+Patch 9 adds the pps(pulse per second) generator tio driver to the pps
+subsystem.
+Patch 10 documentation and usage of the pps tio generator module.
+Patch 11 includes documentation for sysfs interface.
+
+Please help to review the changes.
+
+Thanks in advance,
+Sowjanya
+
+Changes from v2:
+ - Split patch 1 to remove the functions in later stages.
+ - Include required headers in pps_gen_tio.
+
+Changes from v3:
+ - Corrections in Documentation.
+ - Introducing non-RFC version of the patch series.
+
+Changes from v4:
+ - Setting id in ice_ptp
+ - Modified conversion logic in convert_base_to_cs.
+ - Included the usage of the APIs in the commit message of 2nd patch.
+
+Changes from v5:
+ - Change nsecs variable to use_nsecs.
+ - Change order of 1&2 patches and modify the commit message.
+ - Add sysfs abi file entry in MAINTAINERS file.
+ - Add check to find if any event is missed and diable hardware
+   accordingly.
+
+Lakshmi Sowjanya D (6):
+  x86/tsc: Add base clock properties in clocksource structure
+  x86/tsc: Remove art to tsc conversion functions which are obsolete
+  timekeeping: Add function to convert realtime to base clock
+  pps: generators: Add PPS Generator TIO Driver
+  Documentation: driver-api: pps: Add Intel Timed I/O PPS generator
+  ABI: pps: Add ABI documentation for Intel TIO
+
+Thomas Gleixner (5):
+  e1000e: remove convert_art_to_tsc()
+  igc: remove convert_art_to_tsc()
+  stmmac: intel: remove convert_art_to_tsc()
+  ALSA: hda: remove convert_art_to_tsc()
+  ice/ptp: remove convert_art_to_tsc()
+
+ .../ABI/testing/sysfs-platform-pps-tio        |   7 +
+ Documentation/driver-api/pps.rst              |  22 ++
+ MAINTAINERS                                   |   1 +
+ arch/x86/include/asm/tsc.h                    |   3 -
+ arch/x86/kernel/tsc.c                         |  92 ++-----
+ drivers/net/ethernet/intel/e1000e/ptp.c       |   3 +-
+ drivers/net/ethernet/intel/ice/ice_ptp.c      |   3 +-
+ drivers/net/ethernet/intel/igc/igc_ptp.c      |   6 +-
+ .../net/ethernet/stmicro/stmmac/dwmac-intel.c |   3 +-
+ drivers/pps/generators/Kconfig                |  16 ++
+ drivers/pps/generators/Makefile               |   1 +
+ drivers/pps/generators/pps_gen_tio.c          | 258 ++++++++++++++++++
+ include/linux/clocksource.h                   |  27 ++
+ include/linux/clocksource_ids.h               |   1 +
+ include/linux/timekeeping.h                   |   6 +
+ kernel/time/timekeeping.c                     | 107 +++++++-
+ sound/pci/hda/hda_controller.c                |   3 +-
+ 17 files changed, 476 insertions(+), 83 deletions(-)
+ create mode 100644 Documentation/ABI/testing/sysfs-platform-pps-tio
+ create mode 100644 drivers/pps/generators/pps_gen_tio.c
+
+-- 
+2.35.3
+
