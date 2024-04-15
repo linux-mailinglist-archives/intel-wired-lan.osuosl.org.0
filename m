@@ -2,77 +2,76 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0B7F98A523C
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 15 Apr 2024 15:51:46 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id A8D2D8A525E
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 15 Apr 2024 15:54:18 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id A0A3F40AA5;
-	Mon, 15 Apr 2024 13:51:42 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 2E715409B5;
+	Mon, 15 Apr 2024 13:54:17 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id aeFcvxUa14Z0; Mon, 15 Apr 2024 13:51:41 +0000 (UTC)
+ id A5058zaDK6Rh; Mon, 15 Apr 2024 13:54:16 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org CBFF340A6D
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 39D0240ADE
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1713189101;
-	bh=ymdSbtmN4ja8Uco9kz68ASVywr9aBZbH2f8vREr8AbU=;
+	s=default; t=1713189256;
+	bh=7/WZq/8bAV2ty7aVrpMWCn0oCl0hHcOFIFP+E3T3NoA=;
 	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=QcbGNdsvvRNh0gVeiX8VWD6mL6XGUS1lAyHz/lu7WuEZvTlL8PipnyQTfZu9K9uEF
-	 8Yh15quxVDl0V4HgNFRijGTlvVAcOJhgRKJmtvIYR6G0KGDmjC8JU65dbX1kxcWiXx
-	 vy1F9W8l437YS7BPplDfF8J+Mo7+FESSu7L2sU+ZWwSmsEB5chogkCKGVnjaV31zWr
-	 PkxQkiZE4iz926PAZvjU/CKWohJBxX/FBAWfT3PkjHt0nAHUfWBBh9i4z9CaqUb4UD
-	 35E9bEFaYP2nnxIVjQBnoIycqhXi7JIRSjZb0vgmhcWjsKWDMBxk0h/jzQn2NICmDq
-	 CCrlD6lflvs0A==
+	b=TVSgNT3IDYKVc+6aoOACLGvBFKY3dO4qpuoX+XlEeMWl1DMY27lL4VQHDfuOq+san
+	 5NS6Ef+Yop7Oibg2GG/XxRVj/EW0F0VullkJMUBVsSpEq5tmVKPxmOHt8HuF34fUE3
+	 TwEVX4+ymFOJo0eJE3cG5XsNmdqHU4471ky1f6y3t8ZyD+6OiPAmjTyOTdAW9hEOki
+	 0Oga2QA44Z1EGLTWTDT7LIeecMmeMpmBxiTqZaKD2ba9nD0xJ/MvGJ7TtMHn3KQcUs
+	 ya06v8vZ3rs6mx9zY5C2WCz+QpfWZoAEEsW9KUvbN+Tv6wHYJxvCKyu0xaeNEuWqaq
+	 0KEEnzTf7aU3w==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id CBFF340A6D;
-	Mon, 15 Apr 2024 13:51:41 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 39D0240ADE;
+	Mon, 15 Apr 2024 13:54:16 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 15A5A1BF285
- for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Apr 2024 13:51:40 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 461AC1BF285
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Apr 2024 13:54:14 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 0DF53401D5
- for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Apr 2024 13:51:40 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 2F95480ED9
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Apr 2024 13:54:14 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id SWSfDZIlZXZ4 for <intel-wired-lan@lists.osuosl.org>;
- Mon, 15 Apr 2024 13:51:38 +0000 (UTC)
-X-Greylist: delayed 103767 seconds by postgrey-1.37 at util1.osuosl.org;
- Mon, 15 Apr 2024 13:51:37 UTC
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 5C91B40119
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 5C91B40119
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id XRUhGRU595-x for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 15 Apr 2024 13:54:12 +0000 (UTC)
 Received-SPF: Pass (sender SPF authorized) identity=helo;
- client-ip=83.223.95.100; helo=bmailout1.hostsharing.net;
+ client-ip=2a01:37:1000::53df:5f64:0; helo=bmailout1.hostsharing.net;
  envelope-from=foo00@h08.hostsharing.net; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 6310980EAD
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6310980EAD
 Received: from bmailout1.hostsharing.net (bmailout1.hostsharing.net
- [83.223.95.100])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 5C91B40119
- for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Apr 2024 13:51:37 +0000 (UTC)
+ [IPv6:2a01:37:1000::53df:5f64:0])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 6310980EAD
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Apr 2024 13:54:12 +0000 (UTC)
 Received: from h08.hostsharing.net (h08.hostsharing.net
  [IPv6:2a01:37:1000::53df:5f1c:0])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256
  client-signature RSA-PSS (4096 bits) client-digest SHA256)
  (Client CN "*.hostsharing.net", Issuer "RapidSSL TLS RSA CA G1" (verified OK))
- by bmailout1.hostsharing.net (Postfix) with ESMTPS id BAC6A300037E5;
- Mon, 15 Apr 2024 15:51:33 +0200 (CEST)
+ by bmailout1.hostsharing.net (Postfix) with ESMTPS id 5801A300037E5;
+ Mon, 15 Apr 2024 15:54:10 +0200 (CEST)
 Received: by h08.hostsharing.net (Postfix, from userid 100393)
- id 84A1639E; Mon, 15 Apr 2024 15:51:33 +0200 (CEST)
-Date: Mon, 15 Apr 2024 15:51:33 +0200
+ id 32D6E1BD9B; Mon, 15 Apr 2024 15:54:10 +0200 (CEST)
+Date: Mon, 15 Apr 2024 15:54:10 +0200
 From: Lukas Wunner <lukas@wunner.de>
 To: Kurt Kanzenbach <kurt@linutronix.de>
-Message-ID: <Zh0w5by0atP6XuX5@wunner.de>
+Message-ID: <Zh0xguaCQB-V8ckO@wunner.de>
 References: <20240411-igc_led_deadlock-v1-1-0da98a3c68c5@linutronix.de>
  <Zhubjkscu9HPgUcA@wunner.de> <877ch0b901.fsf@kurt.kurt.home>
+ <87zftukhxl.fsf@kurt.kurt.home>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <877ch0b901.fsf@kurt.kurt.home>
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+In-Reply-To: <87zftukhxl.fsf@kurt.kurt.home>
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=none (p=none dis=none)
  header.from=wunner.de
 Subject: Re: [Intel-wired-lan] [PATCH iwl-net] igc: Fix deadlock on module
@@ -97,16 +96,25 @@ Cc: Andrew Lunn <andrew@lunn.ch>, Sasha Neftin <sasha.neftin@intel.com>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Sun, Apr 14, 2024 at 11:15:26AM +0200, Kurt Kanzenbach wrote:
-> Perfect. I was wondering why you are not submitting the patch
-> yourself. Then, please go ahead and submit the patch.
+On Mon, Apr 15, 2024 at 01:02:14PM +0200, Kurt Kanzenbach wrote:
+> > > I would have been happy to submit a patch myself, I was waiting
+> > > for a Tested-by from Roman or you.
+> >
+> > Perfect. I was wondering why you are not submitting the patch
+> > yourself. Then, please go ahead and submit the patch. Feel free to add
+> > my Tested-by.
+> 
+> Scratch that. I've sent v2 with your SoB. PTAL, because your original
+> code snippet didn't have a SoB.
+> 
+> https://lore.kernel.org/netdev/20240411-igc_led_deadlock-v2-1-b758c0c88b2b@linutronix.de/
 
-Here you go:
+I created a patch yesterday, as you've requested, then waited for 0-day
+to crunch through it and report success.  Which it just did, so here's
+my proposal and I guess maintainers now have more than enough options
+to choose from:
 
 https://lore.kernel.org/netdev/2f1be6b1cf2b3346929b0049f2ac7d7d79acb5c9.1713188539.git.lukas@wunner.de/
-
-You may want to double-check that it fixes the issue and doesn't
-cause any new ones.
 
 Thanks,
 
