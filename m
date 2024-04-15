@@ -1,95 +1,205 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B42358A5289
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 15 Apr 2024 16:01:09 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 684A240AE0;
-	Mon, 15 Apr 2024 14:01:08 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Cn-P3fzxD33I; Mon, 15 Apr 2024 14:01:04 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 7E5A240AC1
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1713189660;
-	bh=8CkXYS21B8SH8DBLj2VWRkV6viWLhTMjW+3OPz7/pzQ=;
-	h=From:To:In-Reply-To:References:Date:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=CKLvGzMsmhxVRbkAFiNmBLePwNcp9wdir7BxeQcYV7wSAHyRLSQIce9iGfj4XrjtG
-	 dcMa6/sZB7kgYzjholFjVt9P5pT6XK7YMwpuuC08CilVCBf4zTGGOakTbLoTRKZEgC
-	 06XU4eVhDBsPA3J4pLbUETVjYeDP2DuLXcqv2khuImCMDGsBu9uc8E+ootTCgXY2W0
-	 KdqkmXL3nzNba5SVLpSLZuYzIOX1A7z+ZmDpn/cZ55kfQDB8staI/iwsdHCu6ba8P4
-	 3w0rb556IS4T/Y8NqcWnQv729N+a8OOpzF4eKY9kTQo9EPgYf1BhJHNCd5daPHadFt
-	 oiYh42psyfU3Q==
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 7E5A240AC1;
-	Mon, 15 Apr 2024 14:01:00 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 85A121BF285
- for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Apr 2024 14:00:58 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4AEEB8A57E6
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 15 Apr 2024 18:37:30 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 71BF081257
- for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Apr 2024 14:00:58 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id E745081414;
+	Mon, 15 Apr 2024 16:37:28 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id YlYH0cDCKUcI for <intel-wired-lan@lists.osuosl.org>;
- Mon, 15 Apr 2024 14:00:54 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2a0a:51c0:0:12e:550::1; helo=galois.linutronix.de;
- envelope-from=kurt@linutronix.de; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org F419980FA6
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org F419980FA6
-Received: from galois.linutronix.de (Galois.linutronix.de
- [IPv6:2a0a:51c0:0:12e:550::1])
- by smtp1.osuosl.org (Postfix) with ESMTPS id F419980FA6
- for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Apr 2024 14:00:53 +0000 (UTC)
-From: Kurt Kanzenbach <kurt@linutronix.de>
-To: Lukas Wunner <lukas@wunner.de>
-In-Reply-To: <Zh0xguaCQB-V8ckO@wunner.de>
-References: <20240411-igc_led_deadlock-v1-1-0da98a3c68c5@linutronix.de>
- <Zhubjkscu9HPgUcA@wunner.de> <877ch0b901.fsf@kurt.kurt.home>
- <87zftukhxl.fsf@kurt.kurt.home> <Zh0xguaCQB-V8ckO@wunner.de>
-Date: Mon, 15 Apr 2024 16:00:50 +0200
-Message-ID: <87ttk2k9nx.fsf@kurt.kurt.home>
+ id lpCnS_XL8YtG; Mon, 15 Apr 2024 16:37:27 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4DAF98176F
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1713199046;
+	bh=fR7e7F/FjTN5OiMiPKOLRUKWm5CtRPVHzYbxvvQyMKc=;
+	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=bXjaoC58yvnEq59cIz69p+2OnwMWZkesZgsvXoCskYNjWhwakbJTXH9phTR9JWyyU
+	 KlzkM+cuR3StQLqAu339bEJ7i8QR/6vJf9x46N3pTQ2R2Ba00jZ/8JGziHgEBawUzB
+	 Ro8HqAJEvUqaH+fMeqncFwj2h+KHY3Chu2rPaipgGjGIKT4wUbVl+AnNlEsMagtfId
+	 WEI1Pfmb4rpkOznAl8MkHT7zognGj/K16AiQfuDpT3Ab+NVIxMlGOslYpPfjpb0jEN
+	 cIBvgxH57TS4ASgJUeG+qsB9MZUlfS7bns2JrPr2LKWRcovzuVxz6JqTaX9JH6klqv
+	 Ds/Xi4H3HBg8Q==
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp1.osuosl.org (Postfix) with ESMTP id 4DAF98176F;
+	Mon, 15 Apr 2024 16:37:26 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 2193E1BF5E0
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Apr 2024 16:37:24 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp3.osuosl.org (Postfix) with ESMTP id 16EAD605EF
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Apr 2024 16:37:24 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id eu6mUosg-3Ao for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 15 Apr 2024 16:37:22 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.19;
+ helo=mgamail.intel.com; envelope-from=anthony.l.nguyen@intel.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 7721D605D5
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7721D605D5
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.19])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 7721D605D5
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Apr 2024 16:37:22 +0000 (UTC)
+X-CSE-ConnectionGUID: 8t5hHxcOQCu+/KBSlxBV1g==
+X-CSE-MsgGUID: 9uZfz9x6SzSHghnmUoCh9g==
+X-IronPort-AV: E=McAfee;i="6600,9927,11045"; a="8471418"
+X-IronPort-AV: E=Sophos;i="6.07,203,1708416000"; 
+   d="scan'208";a="8471418"
+Received: from fmviesa006.fm.intel.com ([10.60.135.146])
+ by orvoesa111.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 15 Apr 2024 09:37:19 -0700
+X-CSE-ConnectionGUID: QVRMjjRrRheq0rg0847tXw==
+X-CSE-MsgGUID: nmZWEVSbRSOJoemt/mw+yA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.07,203,1708416000"; d="scan'208";a="22022656"
+Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
+ by fmviesa006.fm.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
+ 15 Apr 2024 09:37:18 -0700
+Received: from orsmsx602.amr.corp.intel.com (10.22.229.15) by
+ ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.35; Mon, 15 Apr 2024 09:37:16 -0700
+Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
+ orsmsx602.amr.corp.intel.com (10.22.229.15) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.35 via Frontend Transport; Mon, 15 Apr 2024 09:37:16 -0700
+Received: from NAM02-DM3-obe.outbound.protection.outlook.com (104.47.56.40) by
+ edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.35; Mon, 15 Apr 2024 09:37:16 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=EAnuZdEl/hLIu0RH+D1UFszW4XlWHO4EHMPmHXgDF9fgtVr/U2ukC+mggnPAP//vNBznG8HXbcMavvSjywkE7qrmdl4142XAaebYuLvd6o95s7NbAj7dkyfM8lcNRGB6jOV4AWOhftEm3J0Ja6nOwOZD7kwzB4Y4ZVculFG4K/3+53DTHMI9hpgM3F7TCZD0P7u9BU03FwS3xA2S8hnvlsJtNdRRg7G7bQkuglFvosFaO7BV0p/7UTwfGxVpetrowpzOOL0fapqXIXiiz8IZ+6gavsmUEstKOyakzGtZaEiWhvzi/nJQY138CTzkcYaEGDstqwo2aIIWlaZSv4ROGA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=fR7e7F/FjTN5OiMiPKOLRUKWm5CtRPVHzYbxvvQyMKc=;
+ b=U1M4ctq4LO+7zsgN8gZkftq+RIzS86uPr/mLz1TFhPrWNs/6EYtU3jEISKDqraTgsT/XkqU3qV1e/ftniRLzD6wefKg3RC2/STsTKuuq6n7xqTr1djrVyfNMHTjO5A7k16rOJaBqCdKuIu/jVjErL4Dia0Gjj0IPihqKO13AsIhu4vRZrtrFSMzJ5xcndCaD+R54LVAUUXpgbuWKswkn1fU5yrBImUlPxNtbKClXwMDCNFgWIL294QibHWRHNojqBlBWf3vqBY9QQ20UDi5ySB+7f8nJK2q2z+fSr8piC2Zk58ZurYKRaAFa3yPhBeFXExX8KG5uKEUUlDknKBbaag==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from BL3PR11MB6435.namprd11.prod.outlook.com (2603:10b6:208:3bb::9)
+ by MW3PR11MB4540.namprd11.prod.outlook.com (2603:10b6:303:56::18)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7472.27; Mon, 15 Apr
+ 2024 16:37:13 +0000
+Received: from BL3PR11MB6435.namprd11.prod.outlook.com
+ ([fe80::9c80:a200:48a2:b308]) by BL3PR11MB6435.namprd11.prod.outlook.com
+ ([fe80::9c80:a200:48a2:b308%4]) with mapi id 15.20.7472.025; Mon, 15 Apr 2024
+ 16:37:13 +0000
+Message-ID: <a630e762-a866-7ce0-84ec-22ed09a92f89@intel.com>
+Date: Mon, 15 Apr 2024 09:37:09 -0700
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
+ Thunderbird/102.6.1
+To: Joe Damato <jdamato@fastly.com>, "Nambiar, Amritha"
+ <amritha.nambiar@intel.com>, Aleksandr Loktionov
+ <aleksandr.loktionov@intel.com>
+References: <20240410043936.206169-1-jdamato@fastly.com>
+ <20240410043936.206169-2-jdamato@fastly.com>
+ <bb0fbd29-c098-4a62-9217-c9fd1a450250@intel.com>
+ <ZhckCOFplMR0GMjr@LQ3V64L9R2>
+ <f6a3f010-8fb5-4494-9ef0-23501ea01f64@intel.com>
+ <Zhrb6qJAoTYks2lK@LQ3V64L9R2>
+Content-Language: en-US
+From: Tony Nguyen <anthony.l.nguyen@intel.com>
+In-Reply-To: <Zhrb6qJAoTYks2lK@LQ3V64L9R2>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 7bit
+X-ClientProxiedBy: MW4PR04CA0213.namprd04.prod.outlook.com
+ (2603:10b6:303:87::8) To BL3PR11MB6435.namprd11.prod.outlook.com
+ (2603:10b6:208:3bb::9)
 MIME-Version: 1.0
-Content-Type: multipart/signed; boundary="=-=-=";
- micalg=pgp-sha512; protocol="application/pgp-signature"
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linutronix.de; s=2020; t=1713189651;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=8CkXYS21B8SH8DBLj2VWRkV6viWLhTMjW+3OPz7/pzQ=;
- b=JMXT1O6oZ6nTdi4AMFLgwnZgPGJ118+Fqm24qdKBp74cis8rybF0EST1nxdwNwMufuyRlH
- 4fBc+6apyqVN+f8yXOw2FcNaO8CKBtDTH9wD+JHl9mvwlQnrFjSANvkvwiQunM7yIVzETU
- 5XD5PFnryJIX13v/Ut1Cr3y80mVhx62YAaHkTzsGcJOfh2k9VB003waU45iJBGL0z33kHW
- ARsV72CZVGnSk0Yr7v/Ai7TFBcTO7fiCscxx/f39BLF4Wyo+EMW4H2SicO1y8qI0bt40Fj
- K51B5TeF2T3THDJezdNHF4dbijIDzJ14pwDjZFpuOsnbnTsy4/4rnyvFxFS+8w==
-X-Mailman-Original-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed;
- d=linutronix.de; s=2020e; t=1713189651;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=8CkXYS21B8SH8DBLj2VWRkV6viWLhTMjW+3OPz7/pzQ=;
- b=bG0RKwoMXR2QZzzmRtLvhLpK4rtObVSmR+dHWmkXp4lJFK5NEqoeGLa/MBTqb0HHWWWqAa
- KE+az3Qc5Se7wnDw==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: BL3PR11MB6435:EE_|MW3PR11MB4540:EE_
+X-MS-Office365-Filtering-Correlation-Id: d44d3139-3e46-47ef-0375-08dc5d6a4d75
+X-LD-Processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: lFTCucR9SB3vsIA4HJTm/1lUgt4ouYYrwnPf8FFlX0eJW8qvkPPwcrdbgIr3QSH1emJpudr18Te3NFg4wGsxhoXj73yVMSEHdNe6KwGmHP0QZ8UZ7er2e0nBMN69koVB3gUffmlziXx46Op2GWNlFokmSRuPqmLHuwlJRWB+b84eB5juHPTkXltJsw0fea765dIjXTfai0FgOFyJbRPDjv3S7KW0mAzVI7OcHd3VFyeqxI18woNv4dSKCurRnW/SnApkZziZ+gFa2z1o86wXaWEZqlF+7j3fDkzs/eogGWy6Gpib7fP6dzlmPY1uFzt4U02sD9LgjUZC+IARou49QIBHXz8gehGd3BWT3mqZDvKurgNsuEwe7gNTMfTH5rb4OcyQ6ChtbnYYf5h0GJoOld45LK1h7uGOaaSknS9ZOYeY931/FWFugDw9gJNqH9L1KUSVVAbeqifGMLgAO6sU4dqyC8U39NErafX92Pt/4FThOR+XhGDc9mkXirYY5DjWnbFl44ZksweNkGAgbEhNgfc4Iy/FPSkfpkKutzpMLZcWqGYzGgjo5pv3AbGbMDfA+xnv2Br7IuiO/st6i5XUn8b74ra7yrOqCMYJyZcqX7sbFaZ4cXUU/J7JlTRcQD+rYkPHRYqCU8LBhRBvI0Od/pDNVgbK+VHJFH3iwIxCZdU=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BL3PR11MB6435.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230031)(376005)(1800799015)(366007); DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?ZmgzNU1qZTlidUVZY0VOcEtrK1FDVSt2VVNrdXBRT1B1a25oMkd5M0JITUpt?=
+ =?utf-8?B?aDBLV0xvczZiNnU5RmpiVlpzTWR1WDhUVnBNbTR2QlQrbmZVckZUUmJnNEFw?=
+ =?utf-8?B?TnNYbzc3eGdwQkYrdHpyRVRvTE1SYWhoZkQwWDlwR1dpRTNVUk9sYjMvb09N?=
+ =?utf-8?B?RzIzQk1MaDFaSHZsTVdYcDVWb2Zjc3F5TTdLUm5PTGlOUkVXejY0Q0dxOG9q?=
+ =?utf-8?B?YW5vMUV2NXRwTjNCa24rS3FhRGpLdWhENXZsQ1dFR0Ira2VJRm1ZN25mYmtr?=
+ =?utf-8?B?WGxBZXRsMkF3Zlo2dWVxOGlCT1dqUXpWQnJuQ3VmYitiZCtSWHB2azBXS1BC?=
+ =?utf-8?B?OWx4RkpmM3R1VHJ3UjlYWXBvV0x4N3ViSnJnaXdLUXpEVmNsWDJCNU9US2JZ?=
+ =?utf-8?B?SVNieCsrcjdkbDBLR1I5TDUzTmZxdms0OXFGeU4rOHlUUkRUeDBJTmdDa1hT?=
+ =?utf-8?B?dXg4Q0JtQlgxQXhaTVBLVnRuUEU1ZytQc1FWM1ZTN3o1RE9LNVkyWWY1c0Vr?=
+ =?utf-8?B?RERROUN5aVozZitmQzlBdVZlWURjR3J1Tit2RGpoYjc4SjdRS2k3Ymw5NTQ5?=
+ =?utf-8?B?dk1YcnNrbFRTOElNYnJvUWtxQ2E1YmQ5alR0dnRMc2FRWXNCL21BYmkwUkkv?=
+ =?utf-8?B?TTRFRDRPT1JqQjBpd2Q2eW1DT0I3NEVuZDViWHk0RGJxWi9QamVKdHdmU3Ar?=
+ =?utf-8?B?enVmcTdLL2I2Undydk1rOG8zWSsxR0JXQ0dSbGc1Uno2MFN0WDloZituMnFv?=
+ =?utf-8?B?eisxNm5JSWRuRTM3cHAvbHpoaE1nTEJ3QkhOZnlNaGJSUUhUTlBTZHl3QnVM?=
+ =?utf-8?B?YXVZaDkrZzNmMzkwWXJYalA0Yzl5Vko0a3BNMFpCelJ4SUlKMEU4amlzdG4v?=
+ =?utf-8?B?QkRIdnd4eFoxQ3R2MEtwSCswWEZQZnZqZWNJMkw0UklGZ1hPWmZqOVFsZGsx?=
+ =?utf-8?B?ckhRbysxUnVIRHZ2ZHMvaHljSGpyWmJCYTBPU2piV2UvZDlCNmxycHd5blI4?=
+ =?utf-8?B?bFdVdnVvK0tCeGZPRWtMaithd0QvOUl0ZERCWkMxQWtXWXNOc1dvRkU4Z3dE?=
+ =?utf-8?B?VVl4S0RudEtvUXRhZTJ1NngzU3RBeGJYMDlTODVHRnM0Q090ckJJbFRkaXdo?=
+ =?utf-8?B?djlwTTNqT1BuR2RHN3BWMWpMNmdRY3lmVjY5c1VYS0IweklRNUxWbGk5NVIr?=
+ =?utf-8?B?VGxRc1J1bE50TVNUd2QvTE1ldW8zbTk0elptVWNicGNUTXlwSWdWL2RQbTVp?=
+ =?utf-8?B?SzBVWk44K1M4aU9hL1UxZnNBb0szZGx5L3FhSmRNeldxOU9JU2JHOXV0V0E0?=
+ =?utf-8?B?dkhOMHZIekVOak85TVd1QzdpNGZOVFEyUlZCOTdISU56SkpWME4zNVNQMEVZ?=
+ =?utf-8?B?Mk5RbU1CYnN5THprRzRQcG0zUkVYMzJBODhKclZmOW5JSUsySmo3dW9obXJn?=
+ =?utf-8?B?TUg4NEQ2bkl1Q3VZU1ZvYTdvYm5DSGc2N0Y5eTA3TC9qTGZmTTE4TFJ2MTU2?=
+ =?utf-8?B?MUtackJTdkNpZU9adVdqbm5kSHZGZytpT2NYeGRoOWhKdnpWeDdMbmQ1Y3Nv?=
+ =?utf-8?B?OHB6RlhtOHJYaHVLbzJMSzVqMVJBb2l5OWpOV3V5Y3MzcjZIb25IS0xsb1NH?=
+ =?utf-8?B?TUozNmtVTHg3TG43cElkemNmZGRpd1JNdnIvYnZBV2RsUCtUOVdBQWVEL24r?=
+ =?utf-8?B?eElINTZpN2Z5UWUvdnlWUnZtK2pzRG1UaDRSMVJGdjRDN1BROWlKaXRRbDFI?=
+ =?utf-8?B?Vk5teEczc2FSM3NDL3gyaGlXVUtJRU5IL0pXUVZ1VUxycC9XeE9BdnZ5VUFU?=
+ =?utf-8?B?cVg4ZWs3U0VMVzdtQXd2MnlxNXMrbzAvYlVWWm51MkJwS2lYbkh0NzFwaU5z?=
+ =?utf-8?B?cGZwYlRGM2ZNUTBZK1V2UmdpQzJMTmQwWU5HOHprZnZYK1JpbDkxcUlBMS9m?=
+ =?utf-8?B?ZGtwVFJvY3lNS2VLYW9kUDdGL3J1N2hZL3cvV3pnYng5U21mcUtKbU1heEhi?=
+ =?utf-8?B?VEZadng5WUM5VjBhMkhpZ0xXd3Bpb3dKS0JEcmFlRlJvZFRDSTdTU2tBOER0?=
+ =?utf-8?B?aUhzeERGMk9vc0IrVmZSd0pZVDYyZ0twMnNPS3ZzQ0luQW9wcHkyK0EzM2tT?=
+ =?utf-8?B?eCs5ZlVEdSt0WU1HWmJHeHlKYjRBYUtQQnZjSUdJMHBSL0liR2lSSUlyRnh2?=
+ =?utf-8?B?NFE9PQ==?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: d44d3139-3e46-47ef-0375-08dc5d6a4d75
+X-MS-Exchange-CrossTenant-AuthSource: BL3PR11MB6435.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 15 Apr 2024 16:37:12.9254 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: XelPRRhRBvpWOVOyBSlzdavRlSXzISe7sN+jJNPRlOHdkoJCeLkjlKl+mY0xaPJTiGBiBsFiC9wHfUaEocuCLzY1uLocZFFfh333ksiwIdY=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MW3PR11MB4540
+X-OriginatorOrg: intel.com
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1713199042; x=1744735042;
+ h=message-id:date:subject:to:cc:references:from:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=dUCTgmqjWnosLjClj+F48+ss8DujRuzSIa9skmK186c=;
+ b=SM87uiHuvX+ToDY9qoibJAKddAkTUcMOEIiejTQkRceJQNrGafKEFf+8
+ fh24g+QdlhOtoC4NmusHNDjv5Dk+EyWzApBk4lFc8pI60hNfMjj3FkKhY
+ XeY5Hp4jrXPeSOlc93yWatnIj+sAcTkhh6cvgR9/lmxq9JdLX3U2QXODv
+ zkphin2VKGFHkW0M8tUCxPeltQJBE+vr12U0QHuj7xP0xiBP0uDUX68iX
+ juxacPqbY/YTyL3x09UQZ7Ru1vhrpdyQkINgX5AVP8f5p3BOoVcTgEn9y
+ p2AqncUtT3X/22Xr9X+yO1rIJnV/O1rEf97+/txhRTRenYXTuYswsfpfb
+ w==;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=linutronix.de
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key, unprotected) header.d=linutronix.de
- header.i=@linutronix.de header.a=rsa-sha256 header.s=2020 header.b=JMXT1O6o; 
- dkim=pass header.d=linutronix.de header.i=@linutronix.de
- header.a=ed25519-sha256 header.s=2020e header.b=bG0RKwoM
-Subject: Re: [Intel-wired-lan] [PATCH iwl-net] igc: Fix deadlock on module
- removal
+ header.from=intel.com
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=SM87uiHu
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [intel-next 1/2] net/i40e: link NAPI
+ instances to queues and IRQs
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -102,71 +212,444 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Andrew Lunn <andrew@lunn.ch>, Sasha Neftin <sasha.neftin@intel.com>,
- Roman Lozko <lozko.roma@gmail.com>, Eric Dumazet <edumazet@google.com>,
- netdev@vger.kernel.org, Tony Nguyen <anthony.l.nguyen@intel.com>,
- intel-wired-lan@lists.osuosl.org, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>
+Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Eric Dumazet <edumazet@google.com>, nalramli@fastly.com,
+ intel-wired-lan@lists.osuosl.org, sridhar.samudrala@intel.com, Jakub
+ Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, "David
+ S. Miller" <davem@davemloft.net>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
---=-=-=
-Content-Type: text/plain
-Content-Transfer-Encoding: quoted-printable
 
-Hi Lukas,
 
-On Mon Apr 15 2024, Lukas Wunner wrote:
-> On Mon, Apr 15, 2024 at 01:02:14PM +0200, Kurt Kanzenbach wrote:
->> > > I would have been happy to submit a patch myself, I was waiting
->> > > for a Tested-by from Roman or you.
->> >
->> > Perfect. I was wondering why you are not submitting the patch
->> > yourself. Then, please go ahead and submit the patch. Feel free to add
->> > my Tested-by.
->>=20
->> Scratch that. I've sent v2 with your SoB. PTAL, because your original
->> code snippet didn't have a SoB.
->>=20
->> https://lore.kernel.org/netdev/20240411-igc_led_deadlock-v2-1-b758c0c88b=
-2b@linutronix.de/
->
-> I created a patch yesterday, as you've requested, then waited for 0-day
-> to crunch through it and report success.  Which it just did, so here's
-> my proposal and I guess maintainers now have more than enough options
-> to choose from:
->
-> https://lore.kernel.org/netdev/2f1be6b1cf2b3346929b0049f2ac7d7d79acb5c9.1=
-713188539.git.lukas@wunner.de/
+On 4/13/2024 12:24 PM, Joe Damato wrote:
+> On Thu, Apr 11, 2024 at 04:02:37PM -0700, Nambiar, Amritha wrote:
+>> On 4/10/2024 4:43 PM, Joe Damato wrote:
+>>> On Wed, Apr 10, 2024 at 02:10:52AM -0700, Nambiar, Amritha wrote:
+>>>> On 4/9/2024 9:39 PM, Joe Damato wrote:
+>>>>> Make i40e compatible with the newly added netlink queue GET APIs.
+>>>>>
+>>>>> $ ./cli.py --spec ../../../Documentation/netlink/specs/netdev.yaml \
+>>>>>      --do queue-get --json '{"ifindex": 3, "id": 1, "type": "rx"}'
+>>>>>
+>>>>> {'id': 1, 'ifindex': 3, 'napi-id': 162, 'type': 'rx'}
+>>>>>
+>>>>> $ ./cli.py --spec ../../../Documentation/netlink/specs/netdev.yaml \
+>>>>>      --do napi-get --json '{"id": 162}'
+>>>>>
+>>>>> {'id': 162, 'ifindex': 3, 'irq': 136}
+>>>>>
+>>>>> The above output suggests that irq 136 was allocated for queue 1, which has
+>>>>> a NAPI ID of 162.
+>>>>>
+>>>>> To double check this is correct, the IRQ to queue mapping can be verified
+>>>>> by checking /proc/interrupts:
+>>>>>
+>>>>> $ cat /proc/interrupts  | grep 136\: | \
+>>>>>      awk '{print "irq: " $1 " name " $76}'
+>>>>>
+>>>>> irq: 136: name i40e-vlan300-TxRx-1
+>>>>>
+>>>>> Suggests that queue 1 has IRQ 136, as expected.
+>>>>>
+>>>>> Signed-off-by: Joe Damato <jdamato@fastly.com>
+>>>>> ---
+>>>>>     drivers/net/ethernet/intel/i40e/i40e.h      |  2 +
+>>>>>     drivers/net/ethernet/intel/i40e/i40e_main.c | 58 +++++++++++++++++++++
+>>>>>     drivers/net/ethernet/intel/i40e/i40e_txrx.c |  4 ++
+>>>>>     3 files changed, 64 insertions(+)
+>>>>>
+>>>>> diff --git a/drivers/net/ethernet/intel/i40e/i40e.h b/drivers/net/ethernet/intel/i40e/i40e.h
+>>>>> index 2fbabcdb5bb5..5900ed5c7170 100644
+>>>>> --- a/drivers/net/ethernet/intel/i40e/i40e.h
+>>>>> +++ b/drivers/net/ethernet/intel/i40e/i40e.h
+>>>>> @@ -1267,6 +1267,8 @@ int i40e_ioctl(struct net_device *netdev, struct ifreq *ifr, int cmd);
+>>>>>     int i40e_open(struct net_device *netdev);
+>>>>>     int i40e_close(struct net_device *netdev);
+>>>>>     int i40e_vsi_open(struct i40e_vsi *vsi);
+>>>>> +void i40e_queue_set_napi(struct i40e_vsi *vsi, unsigned int queue_index,
+>>>>> +			 enum netdev_queue_type type, struct napi_struct *napi);
+>>>>>     void i40e_vlan_stripping_disable(struct i40e_vsi *vsi);
+>>>>>     int i40e_add_vlan_all_mac(struct i40e_vsi *vsi, s16 vid);
+>>>>>     int i40e_vsi_add_vlan(struct i40e_vsi *vsi, u16 vid);
+>>>>> diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
+>>>>> index 0bdcdea0be3e..6384a0c73a05 100644
+>>>>> --- a/drivers/net/ethernet/intel/i40e/i40e_main.c
+>>>>> +++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
+>>>>> @@ -3448,6 +3448,58 @@ static struct xsk_buff_pool *i40e_xsk_pool(struct i40e_ring *ring)
+>>>>>     	return xsk_get_pool_from_qid(ring->vsi->netdev, qid);
+>>>>>     }
+>>>>> +/**
+>>>>> + * __i40e_queue_set_napi - Set the napi instance for the queue
+>>>>> + * @dev: device to which NAPI and queue belong
+>>>>> + * @queue_index: Index of queue
+>>>>> + * @type: queue type as RX or TX
+>>>>> + * @napi: NAPI context
+>>>>> + * @locked: is the rtnl_lock already held
+>>>>> + *
+>>>>> + * Set the napi instance for the queue. Caller indicates the lock status.
+>>>>> + */
+>>>>> +static void
+>>>>> +__i40e_queue_set_napi(struct net_device *dev, unsigned int queue_index,
+>>>>> +		      enum netdev_queue_type type, struct napi_struct *napi,
+>>>>> +		      bool locked)
+>>>>> +{
+>>>>> +	if (!locked)
+>>>>> +		rtnl_lock();
+>>>>> +	netif_queue_set_napi(dev, queue_index, type, napi);
+>>>>> +	if (!locked)
+>>>>> +		rtnl_unlock();
+>>>>> +}
+>>>>> +
+>>>>> +/**
+>>>>> + * i40e_queue_set_napi - Set the napi instance for the queue
+>>>>> + * @vsi: VSI being configured
+>>>>> + * @queue_index: Index of queue
+>>>>> + * @type: queue type as RX or TX
+>>>>> + * @napi: NAPI context
+>>>>> + *
+>>>>> + * Set the napi instance for the queue. The rtnl lock state is derived from the
+>>>>> + * execution path.
+>>>>> + */
+>>>>> +void
+>>>>> +i40e_queue_set_napi(struct i40e_vsi *vsi, unsigned int queue_index,
+>>>>> +		    enum netdev_queue_type type, struct napi_struct *napi)
+>>>>> +{
+>>>>> +	struct i40e_pf *pf = vsi->back;
+>>>>> +
+>>>>> +	if (!vsi->netdev)
+>>>>> +		return;
+>>>>> +
+>>>>> +	if (current_work() == &pf->service_task ||
+>>>>> +	    test_bit(__I40E_PF_RESET_REQUESTED, pf->state) ||
+>>>>
+>>>> I think we might need something like ICE_PREPARED_FOR_RESET which detects
+>>>> all kinds of resets(PFR/CORE/GLOBR). __I40E_PF_RESET_REQUESTED handles PFR
+>>>> only. So, this might assert for RTNL lock on CORER/GLOBR.
+>>>
+>>> The i40e code is a bit tricky so I'm not sure about these cases. Here's
+>>> what it looks like to me, but hopefully Intel can weigh-in here as well.
+>>>
+>>> As some one who is not an expert in i40e, what follows is a guess that is
+>>> likely wrong ;)
+>>>
+>>> The __I40E_GLOBAL_RESET_REQUESTED case it looks to me (I could totally
+>>> be wrong here) that the i40e_reset_subtask calls i40e_rebuild with
+>>> lock_acquired = false. In this case, we want __i40e_queue_set_napi to
+>>> pass locked = true (because i40e_rebuild will acquire the lock for us).
+>>>
+>>> The __I40E_CORE_RESET_REQUESTED case appears to be the same as the
+>>> __I40E_GLOBAL_RESET_REQUESTED case in that i40e_rebuild is called with
+>>> lock_acquired = false meaning we also want __i40e_queue_set_napi to pass
+>>> locked = true (because i40e_rebuild will acquire the lock for us).
+>>>
+>>> __I40E_PF_RESET_REQUESTED is more complex.
+>>>
+>>> It seems:
+>>>             When the __I40E_PF_RESET_REQUESTED bit is set in:
+>>>               - i40e_handle_lldp_event
+>>>               - i40e_tx_timeout
+>>>               - i40e_intr
+>>>               - i40e_resume_port_tx
+>>>               - i40e_suspend_port_tx
+>>>               - i40e_hw_dcb_config
+>>>
+>>>             then: i40e_service_event_schedule is called which queues
+>>>             i40e_service_task, which calls i40e_reset_subtask, which
+>>>             clears the __I40E_PF_RESET_REQUESTED bit and calls
+>>>             i40e_do_reset passing lock_acquired = false. In the
+>>>             __I40E_PF_RESET_REQUESTED case, i40e_reset_and_rebuild
+>>> 	  called with lock_acquired = false again and passed through to
+>>> 	  i40e_rebuild which will take rtnl on its own. This means
+>>>             in these cases, __i40e_queue_set_napi can pass locked = true.
+>>>
+>>>             However...
+>>>
+>>>               - i40e_set_features
+>>>               - i40e_ndo_bridge_setlink
+>>>               - i40e_create_queue_channel
+>>>               - i40e_configure_queue_channels
+>>>               - Error case in i40e_vsi_open
+>>>
+>>>             call i40e_do_reset directly and pass lock_acquired = true so
+>>>             i40e_reset_and_rebuild will not take the RTNL.
+>>>
+>>> 	  Important assumption: I assume that passing lock_acquired = true
+>>> 	  means that the lock really was previously acquired (and not simply
+>>> 	  unnecessary and not taken ?).
+>>>
+>>> 	  If that is correct, then __i40e_queue_set_napi should also not take the rtnl (e.g.
+>>>             locked = true).
+>>>
+>>> Again, I could be totally off here, but it looks like when:
+>>>
+>>>     (current_work() == &pf->service_task) && test_bit(__I40E_PF_RESET_REQUESTED, pf->state)
+>>>
+>>> is true, we want to call __i40e_queue_set_napi with locked = true,
+>>>
+>>> and also all the other cases we want __i40e_queue_set_napi with locked = true
+>>>
+>>>>> +	    test_bit(__I40E_DOWN, pf->state) ||
+>>>>> +	    test_bit(__I40E_SUSPENDED, pf->state))
+>>>>> +		__i40e_queue_set_napi(vsi->netdev, queue_index, type, napi,
+>>>>> +				      false);
+>>>>> +	else
+>>>>> +		__i40e_queue_set_napi(vsi->netdev, queue_index, type, napi,
+>>>>> +				      true);
+>>>
+>>> I *think* (but honestly... I have no idea) the correct if statement *might* be
+>>> something like:
+>>>
+>>>     /* __I40E_PF_RESET_REQUESTED via the service_task will
+>>>      * call i40e_rebuild with lock_acquired = false, causing rtnl to be
+>>>      * taken, meaning __i40e_queue_set_napi should *NOT* take the lock.
+>>>      *
+>>>      * __I40E_PF_RESET_REQUESTED when set directly and not via the
+>>>      * service task, i40e_reset is called with lock_acquired = true,
+>>>      * implying that the rtnl was already taken (and, more
+>>>      * specifically, the lock was not simply unnecessary and skipped)
+>>>      * and so __i40e_queue_set_napi should *NOT* take the lock.
+>>>      *
+>>>      * __I40E_GLOBAL_RESET_REQUESTED and __I40E_CORE_RESET_REQUESTED
+>>>      * trigger the service_task (via i40e_intr) which will cause
+>>>      * i40e_rebuild to acquire rtnl and so __i40e_queue_set_napi should
+>>>      * not acquire it.
+>>>      */
+>>>     if (current_work() == &pf->service_task ||
+>>>         test_bit(__I40E_PF_RESET_REQUESTED, pf->state) ||
+>>>         test_bit(__I40E_GLOBAL_RESET_REQUESTED, pf->state) ||
+>>>         test_bit(__I40E_CORE_RESET_REQUESTED, pf->state))
+>>>             __i40e_queue_set_napi(vsi->netdev, queue_index, type, napi,
+>>>                                   true);
+>>>     else if (test_bit(__I40E_DOWN, pf->state) ||
+>>>              test_bit(__I40E_SUSPENDED, pf->state))
+>>>             __i40e_queue_set_napi(vsi->netdev, queue_index, type, napi,
+>>>                                   false);
+>>>     else
+>>>             __i40e_queue_set_napi(vsi->netdev, queue_index, type, napi,
+>>>                                   true);
+>>>
+>>> I suppose to figure this out, I'd need to investigate all cases where
+>>> i40e_rebuild is called with lock_acquired = true to ensure that the lock was
+>>> actually acquired (and not just unnecessary).
+>>>
+>>> Unless some one who knows about i40e can answer this question more
+>>> definitively.
+>>>
+>>
+>> I'll wait for the i40e maintainers to chime in here.
+> 
+> Based on the findings of I40E_SUSPENDED below, the above if statement is
+> still slightly incorrect, please see below.
+> 
+>>>>> +}
+>>>>> +
+>>>>>     /**
+>>>>>      * i40e_configure_tx_ring - Configure a transmit ring context and rest
+>>>>>      * @ring: The Tx ring to configure
+>>>>> @@ -3558,6 +3610,8 @@ static int i40e_configure_tx_ring(struct i40e_ring *ring)
+>>>>>     	/* cache tail off for easier writes later */
+>>>>>     	ring->tail = hw->hw_addr + I40E_QTX_TAIL(pf_q);
+>>>>> +	i40e_queue_set_napi(vsi, ring->queue_index, NETDEV_QUEUE_TYPE_TX,
+>>>>> +			    &ring->q_vector->napi);
+>>>>
+>>>> I am not sure very sure of this, have you tested this for the reset/rebuild
+>>>> path as well (example: ethtool -L and change queues). Just wondering if this
+>>>> path is taken for first time VSI init or additionally for any VSI rebuilds
+>>>> as well.
+>>>
+>>> Can you explain more about what your concern is? I'm not sure I follow.
+>>> Was the concern just that on rebuild this code path might not be
+>>> executed because the driver might take a different path?
+>>>
+>>> If so, I traced the code (and tested with ethtool):
+>>>
+>>> When the device is probed:
+>>>
+>>> i40e_probe
+>>>     i40e_vsi_open
+>>>       i40e_vsi_configure
+>>>         i40e_vsi_configure_rx
+>>>           i40e_configure_rx_ring
+>>>         i40e_vsi_configure_tx
+>>>           i40e_configure_tx_ring
+>>>
+>>> When you use ethtool to change the channel count:
+>>>
+>>> i40e_set_channels
+>>>     i40e_reconfig_rss_queues
+>>>       i40e_reset_and_rebuild
+>>>         i40e_rebuild
+>>>           i40e_pf_unquiesce_all_vsi
+>>>             i40e_unquiesce_vsi
+>>>               i40e_vsi_open
+>>>                 [.. the call stack above for i40e_vsi_open ..]
+>>>
+>>> Are those the two paths you had in mind or were there other ones? FWIW, using
+>>> ethtool to change the channel count followed by using the cli.py returns what
+>>> appears to be correct data, so I think the ethtool -L case is covered.
+>>>
+>>
+>> Yes, this is what I had mind. Good to know that it is covered.
+> 
+> Thanks for the thorough review; I appreciate your insight. The more I look
+> at the i40e code paths, the more I realize that it is much trickier than I
+> originally thought.
+> 
+>>> Let me know if I am missing any cases you had in mind or if this answers your
+>>> question.
+>>>
+>>
+>> One other case was the suspend/resume callback. This path involves remapping
+>> vectors and rings (just like rebuild after changing channels), If this takes
+>> the i40e_rebuild path like before, then we are covered, as your changes are
+>> in i40e_vsi_configure. If not, we'll have to add it after re-initializing
+>> interrupt scheme .
+> 
+> Here's what I see in this path, namely that i40e_suspend does not call
+> i40e_queue_set_napi but sets appropriate bits that can be checked.
+> 
+> i40e_suspend:
+>    __I40E_DOWN is set
+>    __I40E_SUSPENDED is set
+>    rtnl_lock
+>      i40e_clear_interrupt_scheme
+>        i40e_vsi_free_q_vectors
+>          i40e_free_q_vector
+>    rtnl_unlock
+> 
+> It seems in the suspend case the i40e_free_rx_resources and
+> i40e_free_tx_resources are not called. This means I probably missed a case
+> and need to call i40e_queue_set_napi to set the NAPI mapping to NULL
+> somewhere in here without calling it twice. See further below for my
+> thoughts on this.
+> 
+> Continuing with resume, though:
+> 
+> i40e_resume:
+>    rtnl_lock
+>      i40e_restore_interrupt_scheme
+>        i40e_vsi_alloc_q_vectors
+>          i40e_vsi_alloc_q_vector
+>      __I40E_DOWN is cleared
+>      i40e_reset_and_rebuild (passes lock_acquired = true)
+>        i40e_rebuild (passes locked_acquired = true)
+>     rtnl_unlock
+>     __I40E_SUSPENDED is cleared
+> 
+> So, in this case i40e_resume would want to to call __i40e_queue_set_napi
+> with locked = true, to avoid rtnl since it's already been taken. I think to
+> cover this case __I40E_SUSPENDED needs to be checked but true can be passed
+> to the helper to avoid taking rtnl in the helper.
+> 
+> This is an adjusted if statement, which is likely still incorrect in some
+> cases (especially when considering my comments below on the
+> i40e_free_[rt]x_resource paths), but maybe getting slightly closer:
+> 
+>    /* __I40E_PF_RESET_REQUESTED via the service_task will
+>     * call i40e_rebuild with lock_acquired = false, causing rtnl to be
+>     * taken, meaning __i40e_queue_set_napi should *NOT* take the lock.
+>     *
+>     * __I40E_PF_RESET_REQUESTED when set directly and not via the
+>     * service task, i40e_reset is called with lock_acquired = true,
+>     * implying that the rtnl was already taken (and, more
+>     * specifically, the lock was not simply unnecessary and skipped)
+>     * and so __i40e_queue_set_napi should *NOT* take the lock.
+>     *
+>     * __I40E_GLOBAL_RESET_REQUESTED and __I40E_CORE_RESET_REQUESTED
+>     * trigger the service_task (via i40e_intr) which will cause
+>     * i40e_rebuild to acquire rtnl and so __i40e_queue_set_napi should
+>     * not acquire it.
+>     *
+>     * __I40E_SUSPENDED is set in i40e_suspend and cleared in i40e_resume
+>     * after rtnl_lock + i40_rebuild (with lock_acquired = true). In
+>     * i40e_resume's call to i40e_rebuild, rtnl is held so
+>     * __i40e_queue_set_napi should not take the lock, either.
+>     *
+>     * __I40E_IN_REMOVE is set in i40e_remove, and freeing the tx/rx
+>     * resources will trigger this path. In this case, rtnl will not be held,
+>     * so locked=false must be passed to the helper.
+>     *
+>     * __I40E_DOWN is set in a few places: i40e_probe, i40e_remove,
+>     * i40e_shutdown, i40e_suspend. It is only cleared in i40e_probe after
+>     * the vsi_open path is taken (in this case rtnl is needed) and it is
+>     * cleared in i40e_resume, where RTNL is not needed, but the i40e_resume
+>     * case is handled by checking __I40E_SUSPENDED in the first if block.
+>     */
+>    if (current_work() == &pf->service_task ||
+>        test_bit(__I40E_PF_RESET_REQUESTED, pf->state) ||
+>        test_bit(__I40E_GLOBAL_RESET_REQUESTED, pf->state) ||
+>        test_bit(__I40E_CORE_RESET_REQUESTED, pf->state) |
+>        test_bit(__I40E_SUSPENDED, pf->state))
+>            __i40e_queue_set_napi(vsi->netdev, queue_index, type, napi,
+>                                  true);
+>    else if (test_bit(__I40E_IN_REMOVE, pf->state) ||
+>             test_bit(__I40E_DOWN, pf->state))
+>            __i40e_queue_set_napi(vsi->netdev, queue_index, type, napi,
+>                                  false);
+>    else
+>            __i40e_queue_set_napi(vsi->netdev, queue_index, type, napi,
+>                                  true);
+> 
+> 
+> But please see below about i40e_free_q_vector.
+> 
+>>>>>     	return 0;
+>>>>>     }
+>>>>> @@ -3716,6 +3770,8 @@ static int i40e_configure_rx_ring(struct i40e_ring *ring)
+>>>>>     			 ring->queue_index, pf_q);
+>>>>>     	}
+>>>>> +	i40e_queue_set_napi(vsi, ring->queue_index, NETDEV_QUEUE_TYPE_RX,
+>>>>> +			    &ring->q_vector->napi);
+>>>>>
+>>>> Same as above.
+>>>>
+>>>>     	return 0;
+>>>>>     }
+>>>>> @@ -4178,6 +4234,8 @@ static int i40e_vsi_request_irq_msix(struct i40e_vsi *vsi, char *basename)
+>>>>>     		q_vector->affinity_notify.notify = i40e_irq_affinity_notify;
+>>>>>     		q_vector->affinity_notify.release = i40e_irq_affinity_release;
+>>>>>     		irq_set_affinity_notifier(irq_num, &q_vector->affinity_notify);
+>>>>> +		netif_napi_set_irq(&q_vector->napi, q_vector->irq_num);
+>>>>> +
+>>>>>     		/* Spread affinity hints out across online CPUs.
+>>>>>     		 *
+>>>>>     		 * get_cpu_mask returns a static constant mask with
+>>>>> diff --git a/drivers/net/ethernet/intel/i40e/i40e_txrx.c b/drivers/net/ethernet/intel/i40e/i40e_txrx.c
+>>>>> index 64d198ed166b..d380885ff26d 100644
+>>>>> --- a/drivers/net/ethernet/intel/i40e/i40e_txrx.c
+>>>>> +++ b/drivers/net/ethernet/intel/i40e/i40e_txrx.c
+>>>>> @@ -821,6 +821,8 @@ void i40e_clean_tx_ring(struct i40e_ring *tx_ring)
+>>>>>     void i40e_free_tx_resources(struct i40e_ring *tx_ring)
+>>>>>     {
+>>>>>     	i40e_clean_tx_ring(tx_ring);
+>>>>> +	i40e_queue_set_napi(tx_ring->vsi, tx_ring->queue_index,
+>>>>> +			    NETDEV_QUEUE_TYPE_TX, NULL);
+>>>>>     	kfree(tx_ring->tx_bi);
+>>>>>     	tx_ring->tx_bi = NULL;
+>>>>> @@ -1526,6 +1528,8 @@ void i40e_clean_rx_ring(struct i40e_ring *rx_ring)
+>>>>>     void i40e_free_rx_resources(struct i40e_ring *rx_ring)
+>>>>>     {
+>>>>>     	i40e_clean_rx_ring(rx_ring);
+>>>>> +	i40e_queue_set_napi(rx_ring->vsi, rx_ring->queue_index,
+>>>>> +			    NETDEV_QUEUE_TYPE_RX, NULL);
+> 
+> It appears to me that some cases may not end up calling
+> i40e_free_tx_resources or i40e_free_rx_resources, but most (or all?) cases
+> do call i40e_free_q_vector which is where the NAPI is deleted.
+> 
+> It probably makes more sense to put the NULL setting where the NAPI delete
+> happens, and then check those paths to see where rtnl is taken and make
+> sure the bit checking in the if statement lines up properly.
+> 
+> Before I go any deeper down this rabbit hole, I'll wait to see what the
+> i40e maintainers say / think about this.
 
-Yes. And sorry for being a bit unresponsive, but i was out-of-office for
-the last couple of weeks. Anyway, thank you for your help in debugging
-this!
-
-Regarding testing, it worked on my test machines and the Intel
-maintainers will validate it as well.
++ Alex for input
 
 Thanks,
-Kurt
+Tony
 
---=-=-=
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQJHBAEBCgAxFiEEvLm/ssjDfdPf21mSwZPR8qpGc4IFAmYdMxITHGt1cnRAbGlu
-dXRyb25peC5kZQAKCRDBk9HyqkZzgm8dD/9wq0wT4s0WUmzJKekTZ5wLDvDGWoiM
-BvfXf2TuVuADSCwL7rOrPQjcenNkznF7lr834KXR5Emi1W6brNtb+5TbZUvXKb3e
-sfrYJL6BDrLCb9Ii3/Ib9V9gGPwXcxa2WLbn8bgRO02PYUH07SHiuauSsi2MqT+F
-zSZyIDugP1S7fpH11zb1IW4Cvd67iPr+ol+eUdYVx+ZKJDkBNkdm33vHXHMFq2ud
-s9oKZhTZshDXbgPR+5MnVdaCyJIw3HOdrFijHOcMIHUQOotaJhmOuk4IxQ6xWMRb
-BxrUypJcBY3aaej1byqu1zha6vhnKeVgxPk+E8VxFYhrHFvBkmaInTaxRrol6s1H
-aiDFcOAnWYt6uH/3N5QPRq3qqNIPoSfmvMpm3RfKhcTTGWgwVkOT4tx+iMLGA0Vq
-6dO/P2C/LgVAOAf58QnMrX6oWxTBNz4qRLx0F5B7N/npUNTr+wWlojXEzS4AAjaC
-7W29HEGX/qmVgJTAcK7X3ZoIU3ia/vhrdQashGytswJ53CuQeb0gkfY4Y9gTKLwx
-zSDqEChuw2vCYJK5mflWX4YXWD0Hwe8mFXSxPcM8b2/0G4teMCSv0ESNrlkN1baS
-QKZU3ev5BX5yHZHVs2HaxVwdLlSjm+F9KC6gV6wlm8POpfm2S4AKMl2Vjy5wKOe3
-Bm/7y5c0wlRtZw==
-=kppl
------END PGP SIGNATURE-----
---=-=-=--
+>>>>>     	if (rx_ring->vsi->type == I40E_VSI_MAIN)
+>>>>>     		xdp_rxq_info_unreg(&rx_ring->xdp_rxq);
+>>>>>     	rx_ring->xdp_prog = NULL;
