@@ -1,196 +1,196 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id BD2358A681D
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 16 Apr 2024 12:17:41 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id CD8E08A6829
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 16 Apr 2024 12:20:12 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id C99D060903;
-	Tue, 16 Apr 2024 10:17:39 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 6F825608B3;
+	Tue, 16 Apr 2024 10:20:11 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id WnEeJdQQNSLl; Tue, 16 Apr 2024 10:17:38 +0000 (UTC)
+ id LTA2tcQ8JJ8Z; Tue, 16 Apr 2024 10:20:10 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 8EB3A608D2
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 8B44F608D2
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1713262658;
-	bh=Bw02epAEgxMJgxdAX7kEtUUs86ue5FMZWntv/V9gkWY=;
+	s=default; t=1713262810;
+	bh=0fx0jEHQxvz9OxIotTBy9KW3UW2bzyJNhQ1VAc5D/7c=;
 	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=DnIsRcV0mR61e4LVFi0p62TjETsffLvThazSrCU1z6ZqVQjR8vK42LTddstI5l9cc
-	 Gax/HCO0lKNhALWA7yxu62BsoPP22M4bhb4JSe11WMXUrCV1qnawSkBmf2JIErnSV6
-	 J1ETp/fslIVA7j+9ZFfvBudqtZBZpfafiyoCpO6HnnYNSVVwrsFhIKUj7Nf0rsnwnP
-	 E/1/sGOKpwyd4MT0ZAh8meyQcWwZjP0OW6kQY0GUEZkf9cpID4eQe2+Q53BpSBgZhd
-	 55bCpQt3hjaDLmlNh9o+gMIwnb6cLqoO0Pvh4wJUKWxrBVOlDwY5sKOi8vbGQcw5mf
-	 ZQE8+S8Yd3n7A==
+	b=vPMal7NnmXyPM17iK0hiKCtny8Hl2lcWqoZ5YaMDtKIhGWQnrFXnzxCJF2wAWs32S
+	 qKOekps3HC2Thpx8tH+LooHHl7+Z57QIyLS2hi4fUh4erggiERwsL4FW0J+3DwSPWp
+	 YATmdWjjsBwJScvn7cFdo5cJkMtOH6pjDpf88/cIRdqeb8xfzVp8cUrdxdU8Iegd23
+	 ZQAYKHGluc18ahPO6DW41PQ1oAxKsgQIKc+NLZXvUJXSCoA+l8JZj5ej5GUXRMfk2e
+	 N9SL+DgOF4LGidxy/qi4CE9Vttp/sXvUcyyyTu6hMgF+pIKC9/y1B3+hd3+CphZzcY
+	 c43sZ8fjHOQeg==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 8EB3A608D2;
-	Tue, 16 Apr 2024 10:17:38 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 8B44F608D2;
+	Tue, 16 Apr 2024 10:20:10 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 68CF11BF279
- for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Apr 2024 10:17:36 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id C00B31BF279
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Apr 2024 10:20:08 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 50C8281584
- for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Apr 2024 10:17:36 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id ABBEF60896
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Apr 2024 10:20:08 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id JfR33v0GPe7w for <intel-wired-lan@lists.osuosl.org>;
- Tue, 16 Apr 2024 10:17:35 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.12;
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 0vo0K4IJT544 for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 16 Apr 2024 10:20:08 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.16;
  helo=mgamail.intel.com; envelope-from=lakshmi.sowjanya.d@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 31E5581551
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 31E5581551
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.12])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 31E5581551
- for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Apr 2024 10:17:35 +0000 (UTC)
-X-CSE-ConnectionGUID: ECubciopQJGxEwLBLpsDxQ==
-X-CSE-MsgGUID: 6p+KCAHeRKus7whEeqnaIA==
-X-IronPort-AV: E=McAfee;i="6600,9927,11045"; a="12468128"
-X-IronPort-AV: E=Sophos;i="6.07,205,1708416000"; d="scan'208";a="12468128"
-Received: from orviesa007.jf.intel.com ([10.64.159.147])
- by fmvoesa106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 16 Apr 2024 03:17:34 -0700
-X-CSE-ConnectionGUID: TSraOlvdQ6q8nXCuvxSZhA==
-X-CSE-MsgGUID: lBpu6hCxTgyjwiwrELtOtQ==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 9F08C60768
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9F08C60768
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.16])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 9F08C60768
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Apr 2024 10:20:07 +0000 (UTC)
+X-CSE-ConnectionGUID: qXO29JRFSyKlKRH/L/qlvQ==
+X-CSE-MsgGUID: AcnLowqyTOqI0GvSuqkY2g==
+X-IronPort-AV: E=McAfee;i="6600,9927,11045"; a="8817347"
+X-IronPort-AV: E=Sophos;i="6.07,205,1708416000"; 
+   d="scan'208";a="8817347"
+Received: from fmviesa009.fm.intel.com ([10.60.135.149])
+ by orvoesa108.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 16 Apr 2024 03:19:54 -0700
+X-CSE-ConnectionGUID: dPvGC5PiTHSOcM78l9SJlA==
+X-CSE-MsgGUID: jMnbD4wFT9K5Sax/QV9vuw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.07,205,1708416000"; d="scan'208";a="22695171"
-Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82])
- by orviesa007.jf.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
- 16 Apr 2024 03:17:34 -0700
-Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
- fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
+X-IronPort-AV: E=Sophos;i="6.07,205,1708416000"; d="scan'208";a="22284905"
+Received: from orsmsx601.amr.corp.intel.com ([10.22.229.14])
+ by fmviesa009.fm.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
+ 16 Apr 2024 03:19:53 -0700
+Received: from orsmsx611.amr.corp.intel.com (10.22.229.24) by
+ ORSMSX601.amr.corp.intel.com (10.22.229.14) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.35; Tue, 16 Apr 2024 03:17:33 -0700
-Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
- fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
+ 15.1.2507.35; Tue, 16 Apr 2024 03:19:52 -0700
+Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
+ ORSMSX611.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.35; Tue, 16 Apr 2024 03:17:33 -0700
-Received: from FMSEDG603.ED.cps.intel.com (10.1.192.133) by
- fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
+ 15.1.2507.35; Tue, 16 Apr 2024 03:19:52 -0700
+Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
+ orsmsx610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.35 via Frontend Transport; Tue, 16 Apr 2024 03:17:33 -0700
-Received: from NAM12-MW2-obe.outbound.protection.outlook.com (104.47.66.41) by
- edgegateway.intel.com (192.55.55.68) with Microsoft SMTP Server
+ 15.1.2507.35 via Frontend Transport; Tue, 16 Apr 2024 03:19:52 -0700
+Received: from NAM12-MW2-obe.outbound.protection.outlook.com (104.47.66.40) by
+ edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.35; Tue, 16 Apr 2024 03:17:33 -0700
+ 15.1.2507.35; Tue, 16 Apr 2024 03:19:51 -0700
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=RBtxRkJwIUgpQyBaoVdtHbRwk7P3seLiZEZ7dDHR5DegG95Lr9grznJIVxB43rhaw5QjqVCdZisB1Lx2WlQfediYmMg4J4wbWg2XWrOew5m/0hziEkjMD+aa43b5GVMwg4EXyi6+IwZ3653OOsPVmgn4rssT7anCVKtvk1s8UpJydI+MvXfKls9r0eo33kqm3BTog8Q4tFKrkpe4a5CY8uKWYS4Z1H+0WBbHkhIvNmtpW4sqXSJfqtrBvxdOnX6lwZ4JaqBtLbZ0fDNCGJKxQIZYbirlCKmM428nHqGgDHLx8iH4XlkWyXOJ64V6HTOp2tz/HNUPIVZPzvpaijneOw==
+ b=jYXl0kyW+i+KpIcEj3yzcAtvTvb0b6ES0MBv63cj1900mcn4wZ5wC0MbZteNNikEQ7us49voGlMuygyCofNZ2FpBYwk0lS3OORf4OZNRBzDj4P5N+xDlEt6/aNgL1Ow3akJQYUjjm0amc88H3ykgAAZxTe/VPB7tef1dKr6mvxsq5gzBMiuZXuY9n+qPzb8P/0ap7re+KEQ4XHFwpo98hPOR2MKEDPj5Szs1zR6sRRHRFKnpw1AKoJmu+ETgsniARVpLsNnOoYPd22BuqFfG3BwjDgjl17THZY4h2r3mjDZCmJAPqn3rKO+ru4R0d8QjaMdF0wJh3Bk4+eGxGg7RYA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=Bw02epAEgxMJgxdAX7kEtUUs86ue5FMZWntv/V9gkWY=;
- b=DStEJ7EpgxQO1rNd+1D6BM8EWvm2k8+RGw4O/0AwR06e9PC7PAZitekSBLJn/p0g4tknsH+jceJEbwiJLGuLTY/Og6/MqSYl9e5HTlT2DgO04huaYHXanHTgc936QRWkOD06VOIhBC2UokXrKE+s6HoDGezTOACB3nII0SegLIwgZf8OojLgjiTrrV7wp2UfAvg0fl7/rMPX2fb6LW7pKD7UOSnUPaifIUIHcUoJcYOpYIQXqNZm81oZhQ88UMhseKValS+bOxrY0pVZITXieQ1FI8u2+GXGJFfpW7QQuHk2lpGlMxS+14DOVgqlRcLO5aZhOp5LzIjCfkWXXN+lTg==
+ bh=0fx0jEHQxvz9OxIotTBy9KW3UW2bzyJNhQ1VAc5D/7c=;
+ b=ZA+1zLIm1Ta+uj92c+Pyn4OAaJrFFso+rnEJ49YyHFFrs390pqn9wHKsFYzOoDixtMPuYNUYBQoPYRHfXTakiTdXktBOOqpB3xG1W/R4+1+DEh580kw/oWLYMOsF6gPWopybuom1UX6BRuS3Lyb2hISBjIMlfT40iKCLd0WuxLEXNvo7RhTskSttYIPb828/1aLjMA0JvXUDnsSSFZmbN9OIR0602Fbc65nzmGHIR+jRXRMusHlQ14A4C67CNbUgPfpf8WCAoridGqtOsR/qNe3PAUO7hp6ZK+Bocpf3GEXVNme55ZyU+Gl65P7MnO9LzBeSHLSbz6ZyA8Ut02kYdg==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
  dkim=pass header.d=intel.com; arc=none
 Received: from CY8PR11MB7364.namprd11.prod.outlook.com (2603:10b6:930:87::14)
- by MW4PR11MB6617.namprd11.prod.outlook.com (2603:10b6:303:20d::9)
+ by CY8PR11MB7315.namprd11.prod.outlook.com (2603:10b6:930:9e::15)
  with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7472.25; Tue, 16 Apr
- 2024 10:17:31 +0000
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7409.54; Tue, 16 Apr
+ 2024 10:19:45 +0000
 Received: from CY8PR11MB7364.namprd11.prod.outlook.com
  ([fe80::6a93:4191:4aa3:6f7d]) by CY8PR11MB7364.namprd11.prod.outlook.com
  ([fe80::6a93:4191:4aa3:6f7d%4]) with mapi id 15.20.7452.049; Tue, 16 Apr 2024
- 10:17:31 +0000
+ 10:19:45 +0000
 From: "D, Lakshmi Sowjanya" <lakshmi.sowjanya.d@intel.com>
 To: Thomas Gleixner <tglx@linutronix.de>, "jstultz@google.com"
  <jstultz@google.com>, "giometti@enneenne.com" <giometti@enneenne.com>,
  "corbet@lwn.net" <corbet@lwn.net>, "linux-kernel@vger.kernel.org"
  <linux-kernel@vger.kernel.org>
-Thread-Topic: [PATCH v6 08/11] timekeeping: Add function to convert realtime
- to base clock
-Thread-Index: AQHaiz0o6CjMPgXR0k2hr8rZRMmrIbFiEriAgAikcQA=
-Date: Tue, 16 Apr 2024 10:17:31 +0000
-Message-ID: <CY8PR11MB73647AF3A8845F5C13D58331C4082@CY8PR11MB7364.namprd11.prod.outlook.com>
+Thread-Topic: [PATCH v6 09/11] pps: generators: Add PPS Generator TIO Driver
+Thread-Index: AQHaiz0vASRBRbSJ8kCIgRN774y8wLFiFmmAgAihucA=
+Date: Tue, 16 Apr 2024 10:19:44 +0000
+Message-ID: <CY8PR11MB7364070B11D5D9E4711613F0C4082@CY8PR11MB7364.namprd11.prod.outlook.com>
 References: <20240410114828.25581-1-lakshmi.sowjanya.d@intel.com>
- <20240410114828.25581-9-lakshmi.sowjanya.d@intel.com> <877ch43lvg.ffs@tglx>
-In-Reply-To: <877ch43lvg.ffs@tglx>
+ <20240410114828.25581-10-lakshmi.sowjanya.d@intel.com> <874jc83l9g.ffs@tglx>
+In-Reply-To: <874jc83l9g.ffs@tglx>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
 x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: CY8PR11MB7364:EE_|MW4PR11MB6617:EE_
-x-ms-office365-filtering-correlation-id: 07dd53ad-0628-4ca3-eb40-08dc5dfe6cf6
+x-ms-traffictypediagnostic: CY8PR11MB7364:EE_|CY8PR11MB7315:EE_
+x-ms-office365-filtering-correlation-id: c9efa102-a957-4c44-0214-08dc5dfebcc3
 x-ms-exchange-senderadcheck: 1
 x-ms-exchange-antispam-relay: 0
 x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: 9yJku76CFOkUDZ3VV+Rcjp70Yoob7if04cZWQIbIBcKB/LQpcGdLGRJ9+v4lf/kmRUvqbc9xDa+j81lK90J8Z2SiVLh3hLfcTbLGK6S/U8Efa/i+ekEVWt0g6PDCK6yYjWS7gZojANg2yzhxAghH+X5qc23gyQ3bx+J+IFWPGzu9LdJu8W6UIZq4i2PdAvfl3+zpcZVi58OYFevGWm9vk1xvik/TsB8hbMce6F3AFAJ/GC28pvfkhaKDsKdmOAj8cRkVPsgppd/YYp1jcXnv8QuqhjAyJ2YHw7FcL3lFUrg83HEONpHhJbpYNhD6cr66nh/PmqfCMgbNm8sCSnmFVxDVSAR50nNu5exiXnokJhU4dxkX8xd/pPUuGeq1UgBHJjGrEZZZ7oQ8WxDWESMwh4bKUbSHs+nu8RNiWDIO44VNrZxnCq3s/COrzVtas3n1rv9jP0d5JYOoFEbFCqXFuic0lXi/6YTacZqYg9QqOav0qz7Wvrw78B/bVJSVik+zJPY3Jfa2ucyoyCVLH7EKCp2kZ6PpfOMdnjgalmR+dX9DGjJvcoFOGBKGyKodRMfRMpsKprqJ2su9+vcx85nuu/rm7oGRqkroL2o7uAP/MNPHHl5J3Y3jXY4zlkW/obG5JWe+3JVUYXaFGQhEGyjHYXWBq7YvhINKowcJnDkTTFHFaGSXf6gfgT2BvmS+3xG8GNic+Xl6Tht8erqbdqlIJOOtv0uxr/LKRB48CmONXDM=
+x-microsoft-antispam-message-info: fLHT95oM8QHV5yV9wO42yDx+I58pvu5yNatoNf1iDkT5Nm9N1/lznrl4GYjq7LjLpYoWv60dIFf2g7R3gROWPnpHfOsnH73CVYGOOaqW5JBEtF7/9hkCSmh9OiUTGJSeg81cd/jAUDVuFWsUQ4Dl2YvjKt5X6hFaoF6pQqoUThQpO9HQswN5T3UXlR0MrAnXZ9XhCBG8QSGZkfgThqK1bW3MUcW4RXksSEYkMSF1/CKmm/0TL7z6AbjQGN23PsHmNlCT0ntSX4VMVb//2BIsAUALr/OAw9cFZ7ZqB3QDE8wjpzfsSZ00zwQtr+bD8a5yjM0Ud6dmOBx3L6wjISRtnZ6y1frq3dnDP5TFLjg1qVVcJi5uMgiMi7Ql4yK9duF6pGE9iAS+fzr71NQELHTfj9lFj8rcERYTrvtt3/zjguhgsMbaupVUwg/as6EUkEvZnjLBVnapusyciUSInmajVRgDxCOwcEsG55fNJB0ITzLKBQNfVOUL7T15HNi9oK06KA03N1QfJnWEjLT+KebyAlOk0rM8OTDbfCPOnuPKKUiVUULyKvdod1wyYF/66Y9D8qaLu7dr3TawQUI3He6RX2kA8gUqbUU1kupoYy0g66MaeI8md/t6QvsF880wU6jke9kf9AunNfTMm0A7XVexEVO1bsWQwlZiil342Pw0xKTWJzKECxgl2gram2gMD7d/LbFIIxhqoERp4UYBEqWrmfSHvCqePiZas1IlTBnnrxw=
 x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:CY8PR11MB7364.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230031)(376005)(7416005)(366007)(1800799015)(38070700009); DIR:OUT;
+ SFS:(13230031)(366007)(376005)(7416005)(1800799015)(38070700009); DIR:OUT;
  SFP:1101; 
 x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?oBqYfVYXMtIUd5/yrQ3X4h+KIKt9P4WmtohViV2STmpr9k+XOjYhCPE4B7YL?=
- =?us-ascii?Q?QSW50Ry8pNOr5uoZugmr0niowqB02/zbHYAM4Slebx1+Rtz5I7oNX7vE4781?=
- =?us-ascii?Q?aZdVxXC1TdvYrlhzV8WTGqzbn0U+FNKWiz/0ZiHfKwAv3wE3Xm2R7uNyLN71?=
- =?us-ascii?Q?Hc2c1eQxTIEDdAqs5VKGHYddfqLieqfuCBfOCarc51uwMhuO2waoAa5I59U8?=
- =?us-ascii?Q?ByiL8vghsDNlsqQUkWy3ORYNEzwFsGL8AlcN2jXYMJf+gyCfCNX/k0SmBMIQ?=
- =?us-ascii?Q?uAUxp4gdZy03+jbFbbFmyI96uuBVd4x9i1XJU+uMvcSBEEekkJ6mNoUXopz3?=
- =?us-ascii?Q?72yOat14LExWfUGDDEXW7RhdJIu9/QcPh/rNMGh6OHzsnW1uMW0OzMV3gojT?=
- =?us-ascii?Q?3R3Nr2GIIu0mSdJpTVZYUKzJFJFTnlA3bgBpSHQfc/YTqWS3vv0Kd2lr3hzH?=
- =?us-ascii?Q?2lj/F34qf5j6ePRN5dnqArR88cSi59pd6RCx+MAC7KE6LuAf7h3AsMqBl4IU?=
- =?us-ascii?Q?7BSFHkSt2ZlSgavHN54l4yFHQT5K2Ky0rHHCibZIddbb+iubPiSDbM36mv+B?=
- =?us-ascii?Q?3ocve4AuFbRoCc5u4OdzYXdnFIclP9dSAJlFfefXjjKTTgqoTEfI6+RPHSPv?=
- =?us-ascii?Q?e/C17ryhc53SWD2wOg/T8mlATqvOugUsr2R0iscajta99XxaLQjOJy93Hull?=
- =?us-ascii?Q?eIMYALEJNe3ChvvtOkjlGUZC/U6DAiM42D7jaBA+iKnpkpH7WWyPabH4dLOQ?=
- =?us-ascii?Q?47RRR7XCbSvefetz/PX2pOynHkmB1kxxWTHayrX1Uqe7v+S+xsDobwljH4nY?=
- =?us-ascii?Q?iORq7tAkNGr02W6wF1hRlPSKLEpRQifGK84zPdNLrswmx514MyA3aJJE9cAc?=
- =?us-ascii?Q?5iBjxr1qJsD18v+ROmJ9kUT5eKPQR4fP8VJmuPbD8I8mRiK45yJBEdsC3g68?=
- =?us-ascii?Q?U/S365S9hBfzZgc+fthTDA+U1Cqjg8xz/zU9DOHuiHQ0Ebzvc35bFQKRxBSO?=
- =?us-ascii?Q?TwwJBurWZ8OHnZBH9BaoGGcCIFACvXw2Iof7i7RwqC900PrBI0q8PM4YPkrZ?=
- =?us-ascii?Q?90Y+ew3ZA4End3lO1fPYfK6mjpab2o5g0dHeAq1O5ZQERWzS9ydM+DZS/46S?=
- =?us-ascii?Q?MFHJP9trIo0iAi26RNJOKJLU9euz7jer7jcJjffNn9B5bKnuHAW9yrv7FqEt?=
- =?us-ascii?Q?Bs7aFl4BryOHo5bt07N1wzfLxBtNQwp53rp1N4yyB6n3U0XPrCqVHBTQQsOB?=
- =?us-ascii?Q?HcHQkyjzX5HhCfl9FCioHl6MbRZfs7PUalMTZ3CUuP6A9ongboWTib86Vz+/?=
- =?us-ascii?Q?vAQQvRv6sNgev4+g5y3ZuZ3uAYkfBZTbeKM+QhOxfhb6nKJb8UtEEMkwCr/4?=
- =?us-ascii?Q?i4gu4JCRIJnLAqOyaqhLfLBi+2cs26f4grmy2y6kYwlULaUv1KVf3a3MjykF?=
- =?us-ascii?Q?cZtHMpx0cU49fuhhEZM+nkk3LlwUfGVNth2tBpbT4bubiYKAbB7rEExf61Bh?=
- =?us-ascii?Q?WBCf6SxTfRUlsVs0bBa7d2vcKtxWMLYHz0kgzvLG7tyrJ5Ix2tOM1y1GKrjP?=
- =?us-ascii?Q?dl3oDyix7Y1pXDW36bZQylaElNkYnqZ08OQLEhIdqkrYSHDrkIMC7WC4cEde?=
- =?us-ascii?Q?rA=3D=3D?=
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?qvrCfjbqUOpRQ+famMB8/lG+OgQf8Zk3q/Da7PxtnPSGUIeS+Uh3ag63NQqc?=
+ =?us-ascii?Q?Z990GHyRVhSNWRNxeIzGgbna8/1sPcv4IDkusvyvwA06ZJ0PrUnmTH00J59c?=
+ =?us-ascii?Q?oEZLZ8zDSo5CJUHSCtnnXrb2nE0mnjesGjkEQBfT3zbDygK1qhHEZQKElWZN?=
+ =?us-ascii?Q?JvwmfnOVbDrUe+MsQLkzcHJ8M5HweDNalNApy5jWJeZDBJgbJymXR68icuGZ?=
+ =?us-ascii?Q?NM3LkQFI+RZHnHtiBARo9CW791F31IdbTtqKXkg439PKatK9WIkR/hgJ9PUo?=
+ =?us-ascii?Q?NqW/jpoHRk57pSGe4mFUA4WVwiJa7l8AS+XbjAXUXpw/Buie2JG0v9DEi6kY?=
+ =?us-ascii?Q?udG+5urO0yHtbd3KCcl5nt1a9ZKG/MhCOzvDOzBVkELqQCltfHBvr01qFlSX?=
+ =?us-ascii?Q?9dIa5nIfpUVe2uJ9l7gsQvkFMR8pvjz/9j+SnU3NwZuFE0Z/9BbN7QhaHBAW?=
+ =?us-ascii?Q?8veZf9hLPCq1QMUOBIRxTNoerwGpDeCKAVXsp5+Nh7IwVLwXz3MwlZQyz+ZY?=
+ =?us-ascii?Q?8GoC6D8wTWrEp9peQQiGq44Mf1efwc+hf55N8dOkgBkVv7hxBBY892bBpsOD?=
+ =?us-ascii?Q?4n43PcycP9RIKV0d1RpoWyqUHfugb9ke7/ZxjnCg8blAOoRoQExguCt2/ui6?=
+ =?us-ascii?Q?mnBYVMUxNAKrSHxUSNQo2MFQJVD8zZjXZHWF6YgbI57kbZ1pPj9rsGGmrWQU?=
+ =?us-ascii?Q?1WXloD0sPYKHGumt/BzhrjPNOStY6ryyb9uC3Mdr0RHVCy4VswkH45dF4xQN?=
+ =?us-ascii?Q?iXr1G/Ai8VZdgfR3LBZJIMyTt9n0bMEJ0MRmvUBQstCMNFOiWLv52rR8NskL?=
+ =?us-ascii?Q?iafbrZoSZA8r7ShiD4FOdNhmsspquf3GUywX52X7+JjFz/SvB/NkNWKamlAJ?=
+ =?us-ascii?Q?GaENPRN6shKH7+mbhZ26EPS1nK2pMCht6FwWBJVDcxM7h0++dalEl4/tcM3m?=
+ =?us-ascii?Q?uyMWlzDjOlDLaLWVtC/TN5n0UN5jkkca0pWEmgFKk9CGbWaVk1NiKO/FoiwX?=
+ =?us-ascii?Q?zD9xGiSZiRZGfYvrM5kcPMVg4O1tmgAWf6LdpA8tvoDozh8Bd9ZEhilTJF0d?=
+ =?us-ascii?Q?PasisG5LrCQ+SnATr+D2Bqx7j3mhJgFkkT4ViUDsoFdiilvh9LMdjnRC1Vfh?=
+ =?us-ascii?Q?7JafI3W+HPsxg3diJdOx928CbV9j3CgDPFfjkSbGG8URvi1GaeNwFOp1/Mut?=
+ =?us-ascii?Q?68OGi1kJILFyUS5fMrR/MmxswZaBN57QMurgTiWqp9GX84c7h8LbAotkMJvv?=
+ =?us-ascii?Q?n4fowCXULO4VsPm2YjWm+7RQlhya7WhFbVizB94bZKowN5OK7l1Fi/66OzLH?=
+ =?us-ascii?Q?6blvDAIpDHlf98mfwMhjLEMCNCA4j3AWbE/Klveq7irM87VDVxIpLx9uXqVb?=
+ =?us-ascii?Q?tLFQDLHj8aAvGHw7eES+7YxcGKND3qU4Ttdjzx5DV9egAjBjz/y12bp17ZHv?=
+ =?us-ascii?Q?EF6PJE4UuVomlToeGx0fiXYX3hJXh42BSXEZKA8Tly8OPOyqdSOpdv/hSD+u?=
+ =?us-ascii?Q?u9F8trhwSWfsYkwLSAI6jx5SMQ1996Gawnzl65woxvtY+pJZpjfSzMFXdfdo?=
+ =?us-ascii?Q?I1rC4VsYQlVSeT5lBKm4fDc+azJwGOsalb7XTAVg+igWjjVDfm3+goLptjBg?=
+ =?us-ascii?Q?Qw=3D=3D?=
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
 X-MS-Exchange-CrossTenant-AuthAs: Internal
 X-MS-Exchange-CrossTenant-AuthSource: CY8PR11MB7364.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 07dd53ad-0628-4ca3-eb40-08dc5dfe6cf6
-X-MS-Exchange-CrossTenant-originalarrivaltime: 16 Apr 2024 10:17:31.0756 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: c9efa102-a957-4c44-0214-08dc5dfebcc3
+X-MS-Exchange-CrossTenant-originalarrivaltime: 16 Apr 2024 10:19:44.9280 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: jwdbKqGCQ5yddly6TcsZZfgPUpEdmixCxsunVkSWrIYjcLDRFGcG7m+6vL9yrgxC7wDaEyNyuT5KsfrcgEZFw8u4ulgirMiKw/G5V+4Vk1Y=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MW4PR11MB6617
+X-MS-Exchange-CrossTenant-userprincipalname: J5REHUYtmJMdoF0AcWK0gxgwYsQ4EXPHBjnm40YKiiFSUgJbggcUnB6hosUcVeDxlHrHAmsnAIipAwLsBTFnqKJv8pBTZ5e5iy7Twst0xXU=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY8PR11MB7315
 X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1713262655; x=1744798655;
+ t=1713262808; x=1744798808;
  h=from:to:cc:subject:date:message-id:references:
  in-reply-to:content-transfer-encoding:mime-version;
- bh=5hf4uNjO8GvvKrxLON3sh3w3kcH0TVrzkXzTvVMUeow=;
- b=lru7C2VS8OFcnBZhpBDhYvcY76e6Z3c5NEAWd6O+23HDsYLDaHVFY8bX
- USl1ehWY5YN204EQW0N58yJx5KSASQdJUeaTbKpR5LOSGY5sYdCl0Lx13
- Lhm/3wKhCbe85sApdV27eHXkwom9InBapn8VJs8SD4zhApZUKUOd469M2
- IAyScJEnuFJPSOtVBf2KTecIzZAk1Y/+eV8sthcTyAexoTVfZgvxfbBNd
- W1p7fAiSmuLEL1oqzguZCIEpLd3r8y7an/Hu51Tqvnp7y0I3B2iEsGQkY
- /SnuWXRhq9MeCbCQSlSXqJbih7ZYVyO5XH3OZqThgctf4ASKks+xU5L6p
- g==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ bh=s8i3oCYEsqT6fSIrQ3yYvCtFIbKR0BCnS6rU4+tBXGY=;
+ b=V5wn0p0DArkxdPJoxjcfUSH1G1gdJvzO2/s4XQrAMA3PDO8oTUxL9EFC
+ 7DbYFRlsLbsrMbnXIDjpV0+3xWd56dRK/3/KYfuvQoInztdQLWKZqkVG/
+ AJwxxUrp/lO67x6PpRmcui4j4Uc4F2Sl7E6B1E1qfaJIfCPyw/bihUOZt
+ sBarvmEYl2qqShSkEzZUbeeDmO7Kj9TVGdydbIhzMe+Q1sM6hCJ3JmYmy
+ +SX65pm6LzfTENpea0ayrcVnUf90a1UsDaeKcQ2mjexIfeottNMLnhByF
+ ytL1IV7nAPem0Li26Omaraq8CYR8fX3huQXOV1TbB8qzRjc8pHjZXqxrb
+ A==;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=lru7C2VS
+ header.a=rsa-sha256 header.s=Intel header.b=V5wn0p0D
 X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH v6 08/11] timekeeping: Add function to
- convert realtime to base clock
+Subject: Re: [Intel-wired-lan] [PATCH v6 09/11] pps: generators: Add PPS
+ Generator TIO Driver
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -227,7 +227,7 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 > -----Original Message-----
 > From: Thomas Gleixner <tglx@linutronix.de>
-> Sent: Thursday, April 11, 2024 3:46 AM
+> Sent: Thursday, April 11, 2024 3:59 AM
 > To: D, Lakshmi Sowjanya <lakshmi.sowjanya.d@intel.com>;
 > jstultz@google.com; giometti@enneenne.com; corbet@lwn.net; linux-
 > kernel@vger.kernel.org
@@ -245,172 +245,76 @@ e
 > Subramanian <subramanian.mohan@intel.com>; T R, Thejesh Reddy
 > <thejesh.reddy.t.r@intel.com>; D, Lakshmi Sowjanya
 > <lakshmi.sowjanya.d@intel.com>
-> Subject: Re: [PATCH v6 08/11] timekeeping: Add function to convert realti=
-me to
-> base clock
+> Subject: Re: [PATCH v6 09/11] pps: generators: Add PPS Generator TIO Driv=
+er
 >=20
 > On Wed, Apr 10 2024 at 17:18, lakshmi.sowjanya.d@intel.com wrote:
-> > From: Lakshmi Sowjanya D <lakshmi.sowjanya.d@intel.com>
-> >
-> > PPS(Pulse Per Second) generates signals in realtime, but Timed IO
->=20
-> ... generates signals based on CLOCK_REALTIME, but ...
->=20
-> > hardware understands time in base clock reference.
->=20
-> The hardware does not understand anything.
->=20
-> > Add an interface,
-> > ktime_real_to_base_clock() to convert realtime to base clock.
-> >
-> > Add the helper function timekeeping_clocksource_has_base(), to check
-> > whether the current clocksource has the same base clock. This will be
-> > used by Timed IO device to check if the base clock is X86_ART(Always
-> > Running Timer).
->=20
-> Again this fails to explain the rationale and as this is a core change wh=
-ich is
-> hardware agnostic the whole Timed IO and ART reference is not really help=
-ful.
-> Something like this:
->=20
->   "PPS (Pulse Per Second) generates a hardware pulse every second based
->    on CLOCK_REALTIME. This works fine when the pulse is generated in
->    software from a hrtimer callback function.
->=20
->    For hardware which generates the pulse by programming a timer it's
->    required to convert CLOCK_REALTIME to the underlying hardware clock.
->=20
->    The X86 Timed IO device is based on the Always Running Timer (ART),
->    which is the base clock of the TSC, which is usually the system
->    clocksource on X86.
->=20
->    The core code already has functionality to convert base clock
->    timestamps to system clocksource timestamps, but there is no support
->    for converting the other way around.
->=20
->    Provide the required functionality to support such devices in a
->    generic way to avoid code duplication in drivers:
->=20
->       1) ktime_real_to_base_clock() to convert a CLOCK_REALTIME
->          timestamp to a base clock timestamp
->=20
->       2) timekeeping_clocksource_has_base() to allow drivers to validate
->          that the system clocksource is based on a particular
->          clocksource ID.
-
-Thanks for the commit message.=20
-I will update as suggested.
-
->=20
-> > +static bool convert_cs_to_base(u64 *cycles, enum clocksource_ids
-> > +base_id) {
-> > +	struct clocksource *cs =3D tk_core.timekeeper.tkr_mono.clock;
-> > +	struct clocksource_base *base =3D cs->base;
+> > +static bool pps_generate_next_pulse(struct pps_tio *tio, ktime_t
+> > +expires) {
+> > +	u64 art;
 > > +
-> > +	/* Check whether base_id matches the base clock */
-> > +	if (!base || base->id !=3D base_id)
+> > +	if (!ktime_real_to_base_clock(expires, CSID_X86_ART, &art)) {
+> > +		pps_tio_disable(tio);
 > > +		return false;
+> > +	}
 > > +
-> > +	*cycles -=3D base->offset;
-> > +	if (!convert_clock(cycles, base->denominator, base->numerator))
-> > +		return false;
+> > +	pps_compv_write(tio, art - ART_HW_DELAY_CYCLES);
 > > +	return true;
 > > +}
 > > +
-> > +static u64 convert_ns_to_cs(u64 delta) {
-> > +	struct tk_read_base *tkr =3D &tk_core.timekeeper.tkr_mono;
+> > +static enum hrtimer_restart hrtimer_callback(struct hrtimer *timer) {
+> > +	struct pps_tio *tio =3D container_of(timer, struct pps_tio, timer);
+> > +	ktime_t expires, now;
+> > +	u32 event_count;
 > > +
-> > +	return div_u64((delta << tkr->shift) - tkr->xtime_nsec, tkr->mult);
+> > +	guard(spinlock)(&tio->lock);
+> > +
+> > +	/* Check if any event is missed. If an event is missed, TIO will be
+> disabled*/
+> > +	event_count =3D pps_tio_read(tio, TIOEC);
+> > +	if (!tio->prev_count && tio->prev_count =3D=3D event_count)
+> > +		goto err;
+> > +	tio->prev_count =3D event_count;
+> > +	expires =3D hrtimer_get_expires(timer);
+> > +	now =3D ktime_get_real();
+> > +
+> > +	if (now - expires < SAFE_TIME_NS) {
+> > +		if (!pps_generate_next_pulse(tio, expires + SAFE_TIME_NS))
+> > +			goto err;
+> > +	}
+>=20
+> If the hrtimer callback is invoked late so that now - expires is >=3D SAF=
+E_TIME_NS
+> then this just forwards the timer and tries again.
+
+Yes we will introduce a return HRTIMER_NORESTART if the time is expired.
+
+>=20
+> This lacks any form of explanation why this is correct as obviously there=
+ will be a
+> missing pulse, no?
+
+We had added an event count check to detect the missed pulse(i.e if we had =
+programmed an expired time).=20
+Timed I/O hardware has an event count register to log the number of pulses =
+generated.
+
+>=20
+> > +	hrtimer_forward(timer, now, NSEC_PER_SEC / 2);
+> > +	return HRTIMER_RESTART;
+> > +err:
+> > +	dev_err(tio->dev, "Event missed, Disabling Timed I/O");
+> > +	pps_tio_disable(tio);
+>=20
+> Why does this disable it again? The failure path in
+> pps_generate_next_pulse() does so already, no?
+
+will remove disabling twice in the next version of patchset.
+
+>=20
+> > +	return HRTIMER_NORESTART;
 > > +}
->=20
-> > +bool ktime_real_to_base_clock(ktime_t treal, enum clocksource_ids
-> > +base_id, u64 *cycles)
->=20
-> As this is a kernel API function it really wants kernel-doc comment to ex=
-plain the
-> functionality, the arguments and the return value.
-
-Will add the following documentation:
-
-" ktime_real_to_base_clock()- Convert CLOCK_REALTIME timestamp to a base cl=
-ock timestamp.
-@treal: 	CLOCK_REALTIME timestamp to convert.
-@base_id: 	base clocksource id.
-@*cycles: 	pointer to store the converted base clock timestamp.
-
-Converts a supplied, future realtime clock value to the corresponding base =
-clock value.
-
-Return:  true if the conversion is successful, false otherwise."
-
->=20
-> > +{
-> > +	struct timekeeper *tk =3D &tk_core.timekeeper;
-> > +	unsigned int seq;
-> > +	u64 delta;
 > > +
-> > +	do {
-> > +		seq =3D read_seqcount_begin(&tk_core.seq);
-> > +		if ((u64)treal < tk->tkr_mono.base_real)
-> > +			return false;
-> > +		delta =3D (u64)treal - tk->tkr_mono.base_real;
->=20
-> In the previous version you had a sanity check on delta:
->=20
-> >>> +		if (delta > tk->tkr_mono.clock->max_idle_ns)
-> >>> +			return false;
->=20
-> And I told you:
->=20
-> >> I don't think this cutoff is valid. There is no guarantee that this
-> >> is linear unless:
-> >>
-> >>       Treal[last timekeeper update] <=3D treal < Treal[next timekeeper
-> >> update]
-> >>
-> >> Look at the dance in get_device_system_crosststamp() and
-> >> adjust_historical_crosststamp() to see why.
->=20
-> So now there is not even a check anymore whether the delta conversion can
-> overflow.
->=20
-> There is zero explanation why this conversion is considered to be correct=
-.
-
-Adding the following check for delta overflow in convert_ns_to_cs function.
-
-	if (BITS_TO_BYTES(fls64(*delta) + tkr->shift) >=3D sizeof(*delta))
-			return false;
-				=09
->=20
-> > +		*cycles =3D tk->tkr_mono.cycle_last + convert_ns_to_cs(delta);
-> > +		if (!convert_cs_to_base(cycles, base_id))
-> > +			return false;
-> > +	} while (read_seqcount_retry(&tk_core.seq, seq));
-> > +
-> > +	return true;
-> > +}
->=20
-> > +/**
-> > + * timekeeping_clocksource_has_base - Check whether the current
-> clocksource
-> > + *     has a base clock
->=20
-> s/has a base clock/is based on a given base clock
->=20
-> > + * @id:		The clocksource ID to check for
->=20
-> base clocksource ID
->=20
-> > + *
-> > + * Note:	The return value is a snapshot which can become invalid right
-> > + *		after the function returns.
-> > + *
-> > + * Return:	true if the timekeeper clocksource has a base clock with @i=
-d,
-> > + *		false otherwise
-> > + */
 >=20
 > Thanks,
 >=20
