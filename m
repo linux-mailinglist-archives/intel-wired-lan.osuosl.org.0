@@ -1,88 +1,87 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8F5958A6CD0
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 16 Apr 2024 15:51:43 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 544EC8A6CD3
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 16 Apr 2024 15:51:52 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 7502B81E68;
-	Tue, 16 Apr 2024 13:51:41 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 618B281E59;
+	Tue, 16 Apr 2024 13:51:49 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id nK9t4olcySzV; Tue, 16 Apr 2024 13:51:40 +0000 (UTC)
+ id fUgBGgp9QjXC; Tue, 16 Apr 2024 13:51:48 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 5FC1381E6B
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 55C7881E75
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1713275500;
-	bh=La+ROYGCifhM3uHvdH9Bis6+6xM5L5k30IUJ2OhUHno=;
+	s=default; t=1713275508;
+	bh=rN6bZ8uAxzpnZ4WPddNCXKe3jyD5MtvynTLudhE3GO8=;
 	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=iXGFTBvHxuUAyqTdcIjMCS3wWdBkn7uHYbjbFQ7x3xyeVUV4UhhTBoTYZ2W81H5lb
-	 uYxEYfRO6gwy39c7hTKp4BJUxArY8RBepOschdHeb30sJMQGoVtnBOi1cK0gSXU+V7
-	 Hf9jmC5wE+Rt8IPh91X+2PlzpP1hLEBx7zZ1Awjwd29jaBWfXhyh0U4W4AhdKMaELg
-	 3iwQ2jF3aA6VcDbA6L/HpGItCo38caE/U0kHhT+1aMw3vgX0OvHkGiHh59qRAPkbeg
-	 QjwFEPmbAVlQyNUOQGUm2UMuRGxJW4yQeDupbO1eRgjBhKQABvUbt7sm/jtOQOdrmh
-	 IdANm46uU71Gw==
+	b=FPBLOX4oVfn5sHjISfL9DaVLhIO+5cRWGpnxn016HGtm/X5q7Ji2EV12/veay+1ak
+	 c9JjY+LAgdKUpHGp21C/uzRGHp0kKm/hO7mexMYQ8vtAcRf19kMN9c2PQHjVyohC6e
+	 /seenqnV2WUXdVCI/wu/D2xS4z9vz1Sa3inUob4TglDhMPlm3qWvMEDjAzy1h3jkSb
+	 49v/JL1xmcYhOBPRIR1fpBw7ilTZKAGoFO+2skorWVn+ml4vBQcHgUp9pCichAp0/5
+	 7ZSipo76wUuXC9U5O2otnKsXJi0Piw90ye7K+DM21aU4HDsNO/eEwbbJ8gu9dx1AGj
+	 Dk0BQ/Ui5PnWA==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 5FC1381E6B;
-	Tue, 16 Apr 2024 13:51:40 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 55C7881E75;
+	Tue, 16 Apr 2024 13:51:48 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 8B6431BF41B
- for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Apr 2024 13:51:37 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 817171BF41B
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Apr 2024 13:51:46 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 750C881E66
- for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Apr 2024 13:51:37 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 6E55981E6F
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Apr 2024 13:51:46 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id EgvoX6Q7w6td for <intel-wired-lan@lists.osuosl.org>;
- Tue, 16 Apr 2024 13:51:36 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=139.178.84.217;
- helo=dfw.source.kernel.org; envelope-from=horms@kernel.org;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 8C19581E54
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8C19581E54
-Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 8C19581E54
- for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Apr 2024 13:51:36 +0000 (UTC)
+ id qs5TXf_V2RrW for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 16 Apr 2024 13:51:45 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2604:1380:40e1:4800::1; helo=sin.source.kernel.org;
+ envelope-from=horms@kernel.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 2CF2C81E59
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 2CF2C81E59
+Received: from sin.source.kernel.org (sin.source.kernel.org
+ [IPv6:2604:1380:40e1:4800::1])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 2CF2C81E59
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Apr 2024 13:51:44 +0000 (UTC)
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by dfw.source.kernel.org (Postfix) with ESMTP id 4EF8D61230;
- Tue, 16 Apr 2024 13:51:35 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id ECBB7C2BD10;
+ by sin.source.kernel.org (Postfix) with ESMTP id 7ADF8CE105F;
+ Tue, 16 Apr 2024 13:51:38 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D9FD2C113CE;
  Tue, 16 Apr 2024 13:51:31 +0000 (UTC)
 Date: Tue, 16 Apr 2024 14:51:29 +0100
 From: Simon Horman <horms@kernel.org>
-To: Kurt Kanzenbach <kurt@linutronix.de>
-Message-ID: <20240416135129.GA3769813@kernel.org>
-References: <20240411-igc_led_deadlock-v2-1-b758c0c88b2b@linutronix.de>
+To: Lukas Wunner <lukas@wunner.de>
+Message-ID: <20240416135129.GM2320920@kernel.org>
+References: <2f1be6b1cf2b3346929b0049f2ac7d7d79acb5c9.1713188539.git.lukas@wunner.de>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20240411-igc_led_deadlock-v2-1-b758c0c88b2b@linutronix.de>
+In-Reply-To: <2f1be6b1cf2b3346929b0049f2ac7d7d79acb5c9.1713188539.git.lukas@wunner.de>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1713275495;
- bh=4otepq24ibU/BFgkCAGDDODzhJI1QplbGSgPPr0bnNA=;
+ d=kernel.org; s=k20201202; t=1713275494;
+ bh=yzjOk/XT1m/fqB5jnXhoNIDg6Ef7jDbuSx6EqGNgTWk=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=h5QRW70WEVB/gjlxQF34XfHI8FAXbbwHnSKkZJgaVQnUEtTNThMJb97o0PD9IaeNK
- efdNoubBn/DS6cPrFYrxB8DbMRoNtUPBy1SS2cduKNPdK11oUwRyjbcmrX6PmL0Mev
- KiJ36YAHFDoyUbYswGVn5Ykj5UuDf4IR3Rixacty6DfYfS+gVPVPRakyNlou3CJIFa
- Rcbbj4ZdOeN7aCuwC6qntXqUuPZTBQxT54F58YyPYrR3H3nnkyFC7CUd5WL3PctA/R
- D5zuGwWEucz1vQ059yTlnSlrfviH32XR0U869Gi8ZkvpZNC+ilcYzgA2bGnNUyfT+e
- 7kEDVHjToYhIA==
+ b=W0cqfBILIohuyYCKz1tkeVq/k4ktRDgW5CURsD1BRriJqR+l7N2ohQpxBU9O4Y6B7
+ 2iYEAeMYyv4RkEcbPCZLsMFy/ZY4r8N26rigKuaGkv3iaw520Df8hujfgYrIAn/GQL
+ /wJDwLxUsk2Yue7uP840qBTRg3axkji5mNfKj8CtHh3hsi5vs0Hwmn6+W+EBIBMQ5u
+ S/hOYqwfr6RccLtSsZKLP2B/lLHBVSp4SpcbrnDzXhiHrHm32N4mKz+y1kS4T6XX59
+ cLw2jcrVScJAAU+uiih5OCi97s5/2s4hWz6JH4f8LBkAMnCGxETtqgfNCEnnDjn9wV
+ wpy0vicjMPcPA==
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=kernel.org
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20201202 header.b=h5QRW70W
-Subject: Re: [Intel-wired-lan] [PATCH iwl-net v2] igc: Fix deadlock on
- module removal
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=W0cqfBIL
+Subject: Re: [Intel-wired-lan] [PATCH net] igc: Fix LED-related deadlock on
+ driver unbind
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,59 +95,70 @@ List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Cc: Andrew Lunn <andrew@lunn.ch>, Sasha Neftin <sasha.neftin@intel.com>,
- Roman Lozko <lozko.roma@gmail.com>,
- Marek =?utf-8?Q?Marczykowski-G=C3=B3recki?= <marmarek@invisiblethingslab.com>,
- Eric Dumazet <edumazet@google.com>, Lukas Wunner <lukas@wunner.de>,
- Tony Nguyen <anthony.l.nguyen@intel.com>, intel-wired-lan@lists.osuosl.org,
- Jakub Kicinski <kuba@kernel.org>, netdev@vger.kernel.org,
- Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>
+ Roman Lozko <lozko.roma@gmail.com>, intel-wired-lan@lists.osuosl.org,
+ Kurt Kanzenbach <kurt@linutronix.de>, Eric Dumazet <edumazet@google.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>, netdev@vger.kernel.org,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ "David S. Miller" <davem@davemloft.net>,
+ Heiner Kallweit <hkallweit1@gmail.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, Apr 15, 2024 at 12:59:37PM +0200, Kurt Kanzenbach wrote:
-> From: Lukas Wunner <lukas@wunner.de>
+On Mon, Apr 15, 2024 at 03:48:48PM +0200, Lukas Wunner wrote:
+> Roman reports a deadlock on unplug of a Thunderbolt docking station
+> containing an Intel I225 Ethernet adapter.
 > 
-> The removal of the igc module leads to a deadlock:
+> The root cause is that led_classdev's for LEDs on the adapter are
+> registered such that they're device-managed by the netdev.  That
+> results in recursive acquisition of the rtnl_lock() mutex on unplug:
 > 
-> |[Mon Apr  8 17:38:55 2024]  __mutex_lock.constprop.0+0x3e5/0x7a0
-> |[Mon Apr  8 17:38:55 2024]  ? preempt_count_add+0x85/0xd0
-> |[Mon Apr  8 17:38:55 2024]  __mutex_lock_slowpath+0x13/0x20
-> |[Mon Apr  8 17:38:55 2024]  mutex_lock+0x3b/0x50
-> |[Mon Apr  8 17:38:55 2024]  rtnl_lock+0x19/0x20
-> |[Mon Apr  8 17:38:55 2024]  unregister_netdevice_notifier+0x2a/0xc0
-> |[Mon Apr  8 17:38:55 2024]  netdev_trig_deactivate+0x25/0x70
-> |[Mon Apr  8 17:38:55 2024]  led_trigger_set+0xe2/0x2d0
-> |[Mon Apr  8 17:38:55 2024]  led_classdev_unregister+0x4f/0x100
-> |[Mon Apr  8 17:38:55 2024]  devm_led_classdev_release+0x15/0x20
-> |[Mon Apr  8 17:38:55 2024]  release_nodes+0x47/0xc0
-> |[Mon Apr  8 17:38:55 2024]  devres_release_all+0x9f/0xe0
-> |[Mon Apr  8 17:38:55 2024]  device_del+0x272/0x3c0
-> |[Mon Apr  8 17:38:55 2024]  netdev_unregister_kobject+0x8c/0xa0
-> |[Mon Apr  8 17:38:55 2024]  unregister_netdevice_many_notify+0x530/0x7c0
-> |[Mon Apr  8 17:38:55 2024]  unregister_netdevice_queue+0xad/0xf0
-> |[Mon Apr  8 17:38:55 2024]  unregister_netdev+0x21/0x30
-> |[Mon Apr  8 17:38:55 2024]  igc_remove+0xfb/0x1f0 [igc]
-> |[Mon Apr  8 17:38:55 2024]  pci_device_remove+0x42/0xb0
-> |[Mon Apr  8 17:38:55 2024]  device_remove+0x43/0x70
+> When the driver calls unregister_netdev(), it acquires rtnl_lock(),
+> then frees the device-managed resources.  Upon unregistering the LEDs,
+> netdev_trig_deactivate() invokes unregister_netdevice_notifier(),
+> which tries to acquire rtnl_lock() again.
 > 
-> unregister_netdev() acquires the RNTL lock and releases the LEDs bound
-> to that netdevice. However, netdev_trig_deactivate() and later
-> unregister_netdevice_notifier() try to acquire the RTNL lock again.
+> Avoid by using non-device-managed LED registration.
 > 
-> Avoid this situation by not using the device-managed LED class
-> functions.
+> Stack trace for posterity:
 > 
-> Link: https://lore.kernel.org/r/CAEhC_B=ksywxCG_+aQqXUrGEgKq+4mqnSV8EBHOKbC3-Obj9+Q@mail.gmail.com/
-> Link: https://lore.kernel.org/r/ZhRD3cOtz5i-61PB@mail-itl/
-> Reported-by: Roman Lozko <lozko.roma@gmail.com>
-> Reported-by: "Marek Marczykowski-Górecki" <marmarek@invisiblethingslab.com>
+>   schedule+0x6e/0xf0
+>   schedule_preempt_disabled+0x15/0x20
+>   __mutex_lock+0x2a0/0x750
+>   unregister_netdevice_notifier+0x40/0x150
+>   netdev_trig_deactivate+0x1f/0x60 [ledtrig_netdev]
+>   led_trigger_set+0x102/0x330
+>   led_classdev_unregister+0x4b/0x110
+>   release_nodes+0x3d/0xb0
+>   devres_release_all+0x8b/0xc0
+>   device_del+0x34f/0x3c0
+>   unregister_netdevice_many_notify+0x80b/0xaf0
+>   unregister_netdev+0x7c/0xd0
+>   igc_remove+0xd8/0x1e0 [igc]
+>   pci_device_remove+0x3f/0xb0
+> 
 > Fixes: ea578703b03d ("igc: Add support for LEDs on i225/i226")
-> Signed-off-by: Lukas Wunner <lukas@wunner.de>
-> [Kurt: Wrote commit message and tested on i225]
+> Reported-by: Roman Lozko <lozko.roma@gmail.com>
+> Closes: https://lore.kernel.org/r/CAEhC_B=ksywxCG_+aQqXUrGEgKq+4mqnSV8EBHOKbC3-Obj9+Q@mail.gmail.com/
 > Signed-off-by: Kurt Kanzenbach <kurt@linutronix.de>
+> Signed-off-by: Lukas Wunner <lukas@wunner.de>
+> Cc: Heiner Kallweit <hkallweit1@gmail.com>
 
-I am aware that this patch seems to have also been submitted by Lucas
-himself. I'd like to suggest that we focus on review of that submission.
+I am aware that Kurt has submitted what appears to be the same patch [1,2],
+which I'm inclined to put down to miscommunication (email based workflows
+are like that sometimes).
 
-https://lore.kernel.org/netdev/2f1be6b1cf2b3346929b0049f2ac7d7d79acb5c9.1713188539.git.lukas@wunner.de/
+FWIIW, it is my understanding is that the patch originated from
+Lukas[3], and thus it seems most appropriate to take his submission.
+
+As for the patch itself, I agree that it addresses the problem at hand.
+For the record, I have not tested it.
+
+Reviewed-by: Simon Horman <horms@kernel.org>
+
+[1] [PATCH iwl-net] igc: Fix deadlock on module removal
+    https://lore.kernel.org/netdev/20240411-igc_led_deadlock-v1-1-0da98a3c68c5@linutronix.de/
+[2] [PATCH iwl-net v2] igc: Fix deadlock on module removal
+    https://lore.kernel.org/netdev/20240411-igc_led_deadlock-v2-1-b758c0c88b2b@linutronix.de/
+[3] Re: Deadlock in pciehp on dock disconnect
+    https://lore.kernel.org/all/ZhBN9p1yOyciXkzw@wunner.de/
 
