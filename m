@@ -1,100 +1,88 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0C6178A6BC0
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 16 Apr 2024 15:05:15 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 8D9F960819;
-	Tue, 16 Apr 2024 13:05:13 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id FvCrVdYOCEK1; Tue, 16 Apr 2024 13:05:10 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org DCA106085B
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1713272708;
-	bh=vnCQbLIpTOLEYHqzI8xr5fU/2pXfqerUVIbsOB5PJDY=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=HhKg4HB9Be1WgpXuoRdVP1Rj8ZwOounQepAQvDgb15fQ0O4RmvCXhTrNyVMg0FBGz
-	 sLTVlXGWtmoElhYwSv7zLMQb0EhnmLlef2NWdqGd/xFkpCedBg74tY/A9aXyc5a+2n
-	 DwLZ2yy19RTCGr1pzzJPbliw6oQKk2+346BNqp7zKePkf2/GWhUshQo4Sfe9gbw8Sa
-	 BGkxQmM09AwFnns+jjj8+2td+QwD6owkMuVUNYUgF0PcI7CVYE9TIf/WFbG5cpMDOZ
-	 4cyC2m62ZJHsvhGVUAjrBzcjxbvyfXb6SMBnQGB3hyQBBK1lIPvp1l7NUI5JWoqJOS
-	 Qco55e6vGSVvg==
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id DCA106085B;
-	Tue, 16 Apr 2024 13:05:08 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id C3A4F1BF41B
- for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Apr 2024 13:05:06 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8F5958A6CD0
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 16 Apr 2024 15:51:43 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id AD9EE80DC7
- for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Apr 2024 13:05:06 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 7502B81E68;
+	Tue, 16 Apr 2024 13:51:41 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id ITUO_zZwsxTg for <intel-wired-lan@lists.osuosl.org>;
- Tue, 16 Apr 2024 13:05:02 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.19;
- helo=mgamail.intel.com; envelope-from=larysa.zaremba@intel.com;
+ id nK9t4olcySzV; Tue, 16 Apr 2024 13:51:40 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 5FC1381E6B
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1713275500;
+	bh=La+ROYGCifhM3uHvdH9Bis6+6xM5L5k30IUJ2OhUHno=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=iXGFTBvHxuUAyqTdcIjMCS3wWdBkn7uHYbjbFQ7x3xyeVUV4UhhTBoTYZ2W81H5lb
+	 uYxEYfRO6gwy39c7hTKp4BJUxArY8RBepOschdHeb30sJMQGoVtnBOi1cK0gSXU+V7
+	 Hf9jmC5wE+Rt8IPh91X+2PlzpP1hLEBx7zZ1Awjwd29jaBWfXhyh0U4W4AhdKMaELg
+	 3iwQ2jF3aA6VcDbA6L/HpGItCo38caE/U0kHhT+1aMw3vgX0OvHkGiHh59qRAPkbeg
+	 QjwFEPmbAVlQyNUOQGUm2UMuRGxJW4yQeDupbO1eRgjBhKQABvUbt7sm/jtOQOdrmh
+	 IdANm46uU71Gw==
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp1.osuosl.org (Postfix) with ESMTP id 5FC1381E6B;
+	Tue, 16 Apr 2024 13:51:40 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 8B6431BF41B
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Apr 2024 13:51:37 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp1.osuosl.org (Postfix) with ESMTP id 750C881E66
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Apr 2024 13:51:37 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id EgvoX6Q7w6td for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 16 Apr 2024 13:51:36 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=139.178.84.217;
+ helo=dfw.source.kernel.org; envelope-from=horms@kernel.org;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org ECB7B80DC6
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org ECB7B80DC6
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.19])
- by smtp1.osuosl.org (Postfix) with ESMTPS id ECB7B80DC6
- for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Apr 2024 13:05:00 +0000 (UTC)
-X-CSE-ConnectionGUID: JSAcIxpJT7y8ji4XAPpB6Q==
-X-CSE-MsgGUID: fDHI/sO1S/2TIzvxuYaoUA==
-X-IronPort-AV: E=McAfee;i="6600,9927,11046"; a="8569443"
-X-IronPort-AV: E=Sophos;i="6.07,206,1708416000"; 
-   d="scan'208";a="8569443"
-Received: from fmviesa009.fm.intel.com ([10.60.135.149])
- by fmvoesa113.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 16 Apr 2024 06:04:59 -0700
-X-CSE-ConnectionGUID: fDp3iuRyQJiH1ahnVv75ZQ==
-X-CSE-MsgGUID: KKXIiKUHRK6bNxue6PaYcQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.07,206,1708416000"; d="scan'208";a="22321830"
-Received: from irvmail002.ir.intel.com ([10.43.11.120])
- by fmviesa009.fm.intel.com with ESMTP; 16 Apr 2024 06:04:55 -0700
-Received: from lincoln.igk.intel.com (lincoln.igk.intel.com [10.102.21.235])
- by irvmail002.ir.intel.com (Postfix) with ESMTP id DDBE332EA4;
- Tue, 16 Apr 2024 14:04:50 +0100 (IST)
-From: Larysa Zaremba <larysa.zaremba@intel.com>
-To: Tony Nguyen <anthony.l.nguyen@intel.com>, intel-wired-lan@lists.osuosl.org,
- linux-kernel@vger.kernel.org
-Date: Tue, 16 Apr 2024 14:58:54 +0200
-Message-ID: <20240416125856.1263314-1-larysa.zaremba@intel.com>
-X-Mailer: git-send-email 2.43.0
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 8C19581E54
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8C19581E54
+Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 8C19581E54
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 16 Apr 2024 13:51:36 +0000 (UTC)
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by dfw.source.kernel.org (Postfix) with ESMTP id 4EF8D61230;
+ Tue, 16 Apr 2024 13:51:35 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id ECBB7C2BD10;
+ Tue, 16 Apr 2024 13:51:31 +0000 (UTC)
+Date: Tue, 16 Apr 2024 14:51:29 +0100
+From: Simon Horman <horms@kernel.org>
+To: Kurt Kanzenbach <kurt@linutronix.de>
+Message-ID: <20240416135129.GA3769813@kernel.org>
+References: <20240411-igc_led_deadlock-v2-1-b758c0c88b2b@linutronix.de>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
+In-Reply-To: <20240411-igc_led_deadlock-v2-1-b758c0c88b2b@linutronix.de>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1713272702; x=1744808702;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=UEzTGUe3r7acXf8Yb95hdOs5Y9KDHJwibjjQOPb+gas=;
- b=AFZYUIscffc86bT6MVhHvitXMFgB+UI+KfVDMDreVh3Otp66ElKfouLO
- eXpQ02ssqO30suGdfoPNH2X5SDM/wXTFfv7bS2dlO+zl7nvAgEpPvzDAs
- 7jDqE/HX+hNZo3QZBpltA1nNOFoINF3szyLIYynCPySHljpiTq7Qtnn2m
- R6GfcWN3uU51xeQiJPR1kQiHaSy3SbumnrUUAL6SQ94LuGU3nekTI/igB
- hgchFMxGMy4zE7p5cKNeGrKPXFFktY7P/QpQugWGOZCszllqkvJHJ34FU
- nvrwSx4J/4L+b1jKH3aIaKAHqiZRwUFexHM/ITNwMuIEo+EZls5p9SR4s
- g==;
+ d=kernel.org; s=k20201202; t=1713275495;
+ bh=4otepq24ibU/BFgkCAGDDODzhJI1QplbGSgPPr0bnNA=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=h5QRW70WEVB/gjlxQF34XfHI8FAXbbwHnSKkZJgaVQnUEtTNThMJb97o0PD9IaeNK
+ efdNoubBn/DS6cPrFYrxB8DbMRoNtUPBy1SS2cduKNPdK11oUwRyjbcmrX6PmL0Mev
+ KiJ36YAHFDoyUbYswGVn5Ykj5UuDf4IR3Rixacty6DfYfS+gVPVPRakyNlou3CJIFa
+ Rcbbj4ZdOeN7aCuwC6qntXqUuPZTBQxT54F58YyPYrR3H3nnkyFC7CUd5WL3PctA/R
+ D5zuGwWEucz1vQ059yTlnSlrfviH32XR0U869Gi8ZkvpZNC+ilcYzgA2bGnNUyfT+e
+ 7kEDVHjToYhIA==
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=intel.com
+ header.from=kernel.org
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=AFZYUIsc
-Subject: [Intel-wired-lan] [PATCH iwl-net] ice: Interpret .set_channels()
- input differently
+ unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
+ header.s=k20201202 header.b=h5QRW70W
+Subject: Re: [Intel-wired-lan] [PATCH iwl-net v2] igc: Fix deadlock on
+ module removal
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -107,91 +95,60 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: maciej.fijalkowski@intel.com, Emil Tantilov <emil.s.tantilov@intel.com>,
- Larysa Zaremba <larysa.zaremba@intel.com>,
- Lukasz Czapnik <lukasz.czapnik@intel.com>, Eric Dumazet <edumazet@google.com>,
- alan.brady@intel.com, Michal Swiatkowski <michal.swiatkowski@linux.intel.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- "David S. Miller" <davem@davemloft.net>
+Cc: Andrew Lunn <andrew@lunn.ch>, Sasha Neftin <sasha.neftin@intel.com>,
+ Roman Lozko <lozko.roma@gmail.com>,
+ Marek =?utf-8?Q?Marczykowski-G=C3=B3recki?= <marmarek@invisiblethingslab.com>,
+ Eric Dumazet <edumazet@google.com>, Lukas Wunner <lukas@wunner.de>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>, intel-wired-lan@lists.osuosl.org,
+ Jakub Kicinski <kuba@kernel.org>, netdev@vger.kernel.org,
+ Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-A bug occurs because a safety check guarding AF_XDP-related queues in
-ethnl_set_channels(), does not trigger. This happens, because kernel and
-ice driver interpret the ethtool command differently.
+On Mon, Apr 15, 2024 at 12:59:37PM +0200, Kurt Kanzenbach wrote:
+> From: Lukas Wunner <lukas@wunner.de>
+> 
+> The removal of the igc module leads to a deadlock:
+> 
+> |[Mon Apr  8 17:38:55 2024]  __mutex_lock.constprop.0+0x3e5/0x7a0
+> |[Mon Apr  8 17:38:55 2024]  ? preempt_count_add+0x85/0xd0
+> |[Mon Apr  8 17:38:55 2024]  __mutex_lock_slowpath+0x13/0x20
+> |[Mon Apr  8 17:38:55 2024]  mutex_lock+0x3b/0x50
+> |[Mon Apr  8 17:38:55 2024]  rtnl_lock+0x19/0x20
+> |[Mon Apr  8 17:38:55 2024]  unregister_netdevice_notifier+0x2a/0xc0
+> |[Mon Apr  8 17:38:55 2024]  netdev_trig_deactivate+0x25/0x70
+> |[Mon Apr  8 17:38:55 2024]  led_trigger_set+0xe2/0x2d0
+> |[Mon Apr  8 17:38:55 2024]  led_classdev_unregister+0x4f/0x100
+> |[Mon Apr  8 17:38:55 2024]  devm_led_classdev_release+0x15/0x20
+> |[Mon Apr  8 17:38:55 2024]  release_nodes+0x47/0xc0
+> |[Mon Apr  8 17:38:55 2024]  devres_release_all+0x9f/0xe0
+> |[Mon Apr  8 17:38:55 2024]  device_del+0x272/0x3c0
+> |[Mon Apr  8 17:38:55 2024]  netdev_unregister_kobject+0x8c/0xa0
+> |[Mon Apr  8 17:38:55 2024]  unregister_netdevice_many_notify+0x530/0x7c0
+> |[Mon Apr  8 17:38:55 2024]  unregister_netdevice_queue+0xad/0xf0
+> |[Mon Apr  8 17:38:55 2024]  unregister_netdev+0x21/0x30
+> |[Mon Apr  8 17:38:55 2024]  igc_remove+0xfb/0x1f0 [igc]
+> |[Mon Apr  8 17:38:55 2024]  pci_device_remove+0x42/0xb0
+> |[Mon Apr  8 17:38:55 2024]  device_remove+0x43/0x70
+> 
+> unregister_netdev() acquires the RNTL lock and releases the LEDs bound
+> to that netdevice. However, netdev_trig_deactivate() and later
+> unregister_netdevice_notifier() try to acquire the RTNL lock again.
+> 
+> Avoid this situation by not using the device-managed LED class
+> functions.
+> 
+> Link: https://lore.kernel.org/r/CAEhC_B=ksywxCG_+aQqXUrGEgKq+4mqnSV8EBHOKbC3-Obj9+Q@mail.gmail.com/
+> Link: https://lore.kernel.org/r/ZhRD3cOtz5i-61PB@mail-itl/
+> Reported-by: Roman Lozko <lozko.roma@gmail.com>
+> Reported-by: "Marek Marczykowski-Górecki" <marmarek@invisiblethingslab.com>
+> Fixes: ea578703b03d ("igc: Add support for LEDs on i225/i226")
+> Signed-off-by: Lukas Wunner <lukas@wunner.de>
+> [Kurt: Wrote commit message and tested on i225]
+> Signed-off-by: Kurt Kanzenbach <kurt@linutronix.de>
 
-How the bug occurs:
-1. ethtool -l <IFNAME> -> combined: 40
-2. Attach AF_XDP to queue 30
-3. ethtool -L <IFNAME> rx 15 tx 15
-   combined number is not specified, so command becomes {rx_count = 15,
-   tx_count = 15, combined_count = 40}.
-4. ethnl_set_channels checks, if there are any AF_XDP of queues from the
-   new (combined_count + rx_count) to the old one, so from 55 to 40, check
-   does not trigger.
-5. ice interprets `rx 15 tx 15` as 15 combined channels and deletes the
-   queue that AF_XDP is attached to.
+I am aware that this patch seems to have also been submitted by Lucas
+himself. I'd like to suggest that we focus on review of that submission.
 
-Interpret the command in a way that is more consistent with ethtool
-manual [0] (--show-channels and --set-channels).
-
-Considering that in the ice driver only the difference between RX and TX
-queues forms dedicated channels, change the correct way to set number of
-channels to:
-
-ethtool -L <IFNAME> combined 10 /* For symmetric queues */
-ethtool -L <IFNAME> combined 8 tx 2 rx 0 /* For asymmetric queues */
-
-[0] https://man7.org/linux/man-pages/man8/ethtool.8.html
-
-Fixes: 87324e747fde ("ice: Implement ethtool ops for channels")
-Reviewed-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-Signed-off-by: Larysa Zaremba <larysa.zaremba@intel.com>
----
- drivers/net/ethernet/intel/ice/ice_ethtool.c | 22 ++++++--------------
- 1 file changed, 6 insertions(+), 16 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool.c b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-index 78b833b3e1d7..d91f41f61bce 100644
---- a/drivers/net/ethernet/intel/ice/ice_ethtool.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-@@ -3593,7 +3593,6 @@ static int ice_set_channels(struct net_device *dev, struct ethtool_channels *ch)
- 	struct ice_pf *pf = vsi->back;
- 	int new_rx = 0, new_tx = 0;
- 	bool locked = false;
--	u32 curr_combined;
- 	int ret = 0;
- 
- 	/* do not support changing channels in Safe Mode */
-@@ -3615,22 +3614,13 @@ static int ice_set_channels(struct net_device *dev, struct ethtool_channels *ch)
- 		return -EOPNOTSUPP;
- 	}
- 
--	curr_combined = ice_get_combined_cnt(vsi);
-+	if (!ch->combined_count) {
-+		netdev_err(dev, "Please specify at least 1 combined channel\n");
-+		return -EINVAL;
-+	}
- 
--	/* these checks are for cases where user didn't specify a particular
--	 * value on cmd line but we get non-zero value anyway via
--	 * get_channels(); look at ethtool.c in ethtool repository (the user
--	 * space part), particularly, do_schannels() routine
--	 */
--	if (ch->rx_count == vsi->num_rxq - curr_combined)
--		ch->rx_count = 0;
--	if (ch->tx_count == vsi->num_txq - curr_combined)
--		ch->tx_count = 0;
--	if (ch->combined_count == curr_combined)
--		ch->combined_count = 0;
--
--	if (!(ch->combined_count || (ch->rx_count && ch->tx_count))) {
--		netdev_err(dev, "Please specify at least 1 Rx and 1 Tx channel\n");
-+	if (ch->rx_count && ch->tx_count) {
-+		netdev_err(dev, "Dedicated RX or TX channels cannot be used simultaneously\n");
- 		return -EINVAL;
- 	}
- 
--- 
-2.43.0
+https://lore.kernel.org/netdev/2f1be6b1cf2b3346929b0049f2ac7d7d79acb5c9.1713188539.git.lukas@wunner.de/
 
