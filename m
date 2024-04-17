@@ -2,95 +2,99 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 360438A85AD
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 17 Apr 2024 16:15:44 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 018E58A85B0
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 17 Apr 2024 16:15:53 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id C41E781258;
-	Wed, 17 Apr 2024 14:15:42 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 9165A812B2;
+	Wed, 17 Apr 2024 14:15:51 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 9--4PFeaPs-7; Wed, 17 Apr 2024 14:15:41 +0000 (UTC)
+ id JhZzyePY55EY; Wed, 17 Apr 2024 14:15:50 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org C6BE48127C
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 489A180E61
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1713363339;
-	bh=lbCQ26+aWoDdQxa4CzP7+0iHcDyVxuX3YwWibp6BKxY=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=JBFdAPmPdgJIcUC0e244izlyWZoQAN8DydgRU7fKQ3v2naTRXktEYuNH9QxDEMEv+
-	 Ktx+gQtC69iYXvSswQ3kv+rWI2BCfEkGE2mmYtWDXU5GMVYNKMxQQcBKX1S6BMWBxW
-	 7L8wAayjLw9KlhPRhhlNspyMP+A972AMKB/rVMm5vxtQ7zDutaIOsAbvdCn3SU3bNZ
-	 HKSN4LzHl88spXV9bUllscu96T7yluK2VxkSjTXPzSHgZWnTatLyxlPXY1Ncb0BuiJ
-	 0I39pJ6IGsyNSgRFNahgmM78AJX0lHZ24m4/siucPKj78bUaf3NURLzcrtYRoKgS4z
-	 MsASAhMsQEUVQ==
+	s=default; t=1713363350;
+	bh=asauvpDLqdNEvjppUQ/CaHs52Ava0KjjLsMEeLGPvwM=;
+	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=FOijnAqZSyrWYH+IsAEdQywhjixwSn+ZpEaCpXOo7fAK9Rd7p4DY3Uj7sTTzX6oxw
+	 ivsYY0+OlPKYAScf1qGGxkWufsrCAjKd3mPpPQJ3Zole/sdSxaDDMU1i+UEJIJ5Kh/
+	 jsugUaJYFOGaF9J4227fghlI+9drF9enLawgkfhYLZNHGhTeyvueOksO2XLPwK26BG
+	 NcCfVrQTSjjAxqES2bq6WU9qxI1rqs4cLmvZeoKNOEr2pBVrT/PDbi+KBa1cwfT73C
+	 +vm2cJdsjftpyROtFVIeEobsrjqI4ksa9UInffxA1qOHA7OUwUzRBmPs6w01n+4xSC
+	 TjfVOTxSU83dQ==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id C6BE48127C;
-	Wed, 17 Apr 2024 14:15:39 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 489A180E61;
+	Wed, 17 Apr 2024 14:15:50 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 7E7F51BF46D
- for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Apr 2024 14:15:38 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id C6FD21BF46D
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Apr 2024 14:15:47 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 6A1EE4053D
- for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Apr 2024 14:15:38 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id B3860608CB
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Apr 2024 14:15:47 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id krzuG7sUwm64 for <intel-wired-lan@lists.osuosl.org>;
- Wed, 17 Apr 2024 14:15:37 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id fzuau3Oak5ib for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 17 Apr 2024 14:15:46 +0000 (UTC)
 Received-SPF: None (mailfrom) identity=mailfrom; client-ip=198.175.65.19;
  helo=mgamail.intel.com; envelope-from=michal.swiatkowski@linux.intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org C5AE24029F
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C5AE24029F
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org A3FA260833
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A3FA260833
 Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.19])
- by smtp2.osuosl.org (Postfix) with ESMTPS id C5AE24029F
- for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Apr 2024 14:15:36 +0000 (UTC)
-X-CSE-ConnectionGUID: 82UwAU+JR6iX9r/Hp/Bqig==
-X-CSE-MsgGUID: 6oZ/t7CXTL2Kh2Bh8905zg==
-X-IronPort-AV: E=McAfee;i="6600,9927,11046"; a="8737119"
+ by smtp3.osuosl.org (Postfix) with ESMTPS id A3FA260833
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Apr 2024 14:15:46 +0000 (UTC)
+X-CSE-ConnectionGUID: xIezHPSRRpCApkuYANH4+Q==
+X-CSE-MsgGUID: tuV+BxixSd+/3x4F9WDgNA==
+X-IronPort-AV: E=McAfee;i="6600,9927,11046"; a="8737129"
 X-IronPort-AV: E=Sophos;i="6.07,209,1708416000"; 
-   d="scan'208";a="8737119"
+   d="scan'208";a="8737129"
 Received: from orviesa001.jf.intel.com ([10.64.159.141])
  by orvoesa111.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 17 Apr 2024 07:15:36 -0700
-X-CSE-ConnectionGUID: 5Zq7/RrJRbmKLLdSfckYMw==
-X-CSE-MsgGUID: TdjBa5heSNG8iU7qC1Grlw==
+ 17 Apr 2024 07:15:46 -0700
+X-CSE-ConnectionGUID: /Nyk7a9dSyWXVs5pNklC2Q==
+X-CSE-MsgGUID: i/x4GDpPS7OB7kUgEWz+Ng==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.07,209,1708416000"; d="scan'208";a="60050415"
+X-IronPort-AV: E=Sophos;i="6.07,209,1708416000"; d="scan'208";a="60050424"
 Received: from wasp.igk.intel.com (HELO GK3153-DR2-R750-36946.localdomain.com)
  ([10.102.20.192])
- by orviesa001.jf.intel.com with ESMTP; 17 Apr 2024 07:15:32 -0700
+ by orviesa001.jf.intel.com with ESMTP; 17 Apr 2024 07:15:35 -0700
 From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Wed, 17 Apr 2024 16:20:20 +0200
-Message-ID: <20240417142028.2171-1-michal.swiatkowski@linux.intel.com>
+Date: Wed, 17 Apr 2024 16:20:21 +0200
+Message-ID: <20240417142028.2171-2-michal.swiatkowski@linux.intel.com>
 X-Mailer: git-send-email 2.42.0
+In-Reply-To: <20240417142028.2171-1-michal.swiatkowski@linux.intel.com>
+References: <20240417142028.2171-1-michal.swiatkowski@linux.intel.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1713363337; x=1744899337;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=IwfWNPWVBZNxZI3Dk4aMQgJmBNpm4beFZBiuwuZ5v/k=;
- b=JXC2RTB/EEesFdZ5xUeA++rHMY0cIe4n2GaTRJ+6SMfylWvvT/8dWNQk
- NR+xMzqHoniFcwhohSEW2XO0dg+UpWk6BfJMkpZS9XXMigmmZw+WvU5es
- 7I0jqpE32vSSr28jwAGcGeG+JC6T54BOzXLmt5IpxI532srBiAMkcKnoP
- c70VsNHHeHKhCHY0pYWGzQBWuMG385QhwpqInu3GJo9Hl2Cye9piT6jMk
- CIGTcJQ91FJZLpM/YgN1Ro67QUmvVzT5fxAIrfsyDTq+JGs9is3K+Xjix
- ZQw7tf0IpAzqgC5HA8FNoc8fJqMt3LN8Kwg2rnE3VOhrxaatYjUfh7AK8
- Q==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ t=1713363347; x=1744899347;
+ h=from:to:cc:subject:date:message-id:in-reply-to:
+ references:mime-version:content-transfer-encoding;
+ bh=dvrwrf5NWb+t7xsukKkrqdRndZXps3O3vclOaiEKKjY=;
+ b=gi3VlYJC6PC5ORCK9PtJVDjQ8q4l7HgC02JwMjD/lFn0n55VX1kdwcLa
+ rMdSXbdbL6UPBKTvckMHK4k8jIAw0E9lWTpDzEBEMGYCebDDzU4wjTYKG
+ uk47IMAeGpx/c0LCGRm4VB59MUOcdG11KB1Ks0QlR5UhrkrXiJrsl9YPV
+ hEAOCSJlv6E5zdL4FQxMNxwmva6YDqeH9wboFXqJMu2nWcJPkkurItYMb
+ qupA6Zmoj+e+D4V0Ac422xndLHVxgq2J+vHEjMyfJrTE37bDcnKs0h/uZ
+ RkCGD1rBjzFFsXOM3cH2Doy705ZJ0t25zR+UuRwZ5e6bipoTXn1E7VvXr
+ A==;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=none (p=none dis=none)
  header.from=linux.intel.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=JXC2RTB/
-Subject: [Intel-wired-lan] [iwl-next v4 0/8] ice: support devlink subfunction
+ header.s=Intel header.b=gi3VlYJC
+Subject: [Intel-wired-lan] [iwl-next v4 1/8] ice: add new VSI type for
+ subfunctions
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -110,87 +114,219 @@ Cc: maciej.fijalkowski@intel.com, sridhar.samudrala@intel.com,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi,
+From: Piotr Raczynski <piotr.raczynski@intel.com>
 
-This is second patchset split from subfunction patchset [1].
-Important changes from previous version:
- * remove unnecessary checks for devlink port type
- * link correct devlink port to subfunction netdev
+Add required plumbing for new VSI type dedicated to devlink subfunctions.
+Make sure that the vsi is properly configured and destroyed. Also allow
+loading XDP and AF_XDP sockets.
 
-Follow up patchset with subfunction port representor will be the last
-patchset for subfunction implementation in ice. It is a little
-unpleasant to split it like that, because devlink port should be linked
-with port representor netdev. In this patchset use devlink port without
-linking it. It will be done correctly in the follow up when subfunction
-port representor is available.
+The first implementation of devlink subfunctions supports only one Tx/Rx
+queue pair per given subfunction.
 
-Currently ice driver does not allow creating more than one networking
-device per physical function. The only way to have more hardware backed
-netdev is to use SR-IOV.
+Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+Reviewed-by: Wojciech Drewek <wojciech.drewek@intel.com>
+Signed-off-by: Piotr Raczynski <piotr.raczynski@intel.com>
+Signed-off-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+---
+ drivers/net/ethernet/intel/ice/ice_base.c    |  5 +++-
+ drivers/net/ethernet/intel/ice/ice_dcb_lib.c |  1 +
+ drivers/net/ethernet/intel/ice/ice_lib.c     | 25 ++++++++++++++++++--
+ drivers/net/ethernet/intel/ice/ice_main.c    |  7 ++++--
+ drivers/net/ethernet/intel/ice/ice_type.h    |  1 +
+ drivers/net/ethernet/intel/ice/ice_xsk.c     |  2 +-
+ 6 files changed, 35 insertions(+), 6 deletions(-)
 
-Following patchset adds support for devlink port API. For each new
-pcisf type port, driver allocates new VSI, configures all resources
-needed, including dynamically MSIX vectors, program rules and registers
-new netdev.
-
-This series supports only one Tx/Rx queue pair per subfunction.
-
-Example commands:
-devlink port add pci/0000:31:00.1 flavour pcisf pfnum 1 sfnum 1000
-devlink port function set pci/0000:31:00.1/1 hw_addr 00:00:00:00:03:14
-devlink port function set pci/0000:31:00.1/1 state active
-devlink port function del pci/0000:31:00.1/1
-
-v3 --> v4: [4]
- * get rid of unnecessary checks
- * fix cosmetic issues (whitespaces, wording)
- * move unrelated chunks to separate patch
- * move implementing activation/deactivation to last patch
-
-v2 --> v3: [3]
- * fix building issue between the patches; allocating devlink for
- subfunction need to include base subfunction header
- * fix kdoc issues
-
-v1 --> v2: [2]
- * use correct parameters in ice_devlink_alloc() thanks to Mateusz
-
-[1] https://lore.kernel.org/netdev/20240301115414.502097-1-michal.swiatkowski@linux.intel.com/
-[2] https://lore.kernel.org/netdev/20240408103049.19445-1-michal.swiatkowski@linux.intel.com/
-[3] https://lore.kernel.org/netdev/20240410050809.125043-1-michal.swiatkowski@linux.intel.com/
-[4] https://lore.kernel.org/netdev/20240412063053.339795-1-michal.swiatkowski@linux.intel.com/
-
-Michal Swiatkowski (1):
-  ice: treat subfunction VSI the same as PF VSI
-
-Piotr Raczynski (7):
-  ice: add new VSI type for subfunctions
-  ice: export ice ndo_ops functions
-  ice: add basic devlink subfunctions support
-  ice: allocate devlink for subfunction
-  ice: base subfunction aux driver
-  ice: implement netdev for subfunction
-  ice: allow to activate and deactivate subfunction
-
- drivers/net/ethernet/intel/ice/Makefile       |   1 +
- .../net/ethernet/intel/ice/devlink/devlink.c  |  50 +-
- .../net/ethernet/intel/ice/devlink/devlink.h  |   1 +
- .../ethernet/intel/ice/devlink/devlink_port.c | 503 ++++++++++++++++++
- .../ethernet/intel/ice/devlink/devlink_port.h |  38 ++
- drivers/net/ethernet/intel/ice/ice.h          |  12 +
- drivers/net/ethernet/intel/ice/ice_base.c     |   5 +-
- drivers/net/ethernet/intel/ice/ice_dcb_lib.c  |   1 +
- drivers/net/ethernet/intel/ice/ice_lib.c      |  52 +-
- drivers/net/ethernet/intel/ice/ice_lib.h      |   3 +
- drivers/net/ethernet/intel/ice/ice_main.c     |  66 ++-
- drivers/net/ethernet/intel/ice/ice_sf_eth.c   | 327 ++++++++++++
- drivers/net/ethernet/intel/ice/ice_sf_eth.h   |  33 ++
- drivers/net/ethernet/intel/ice/ice_type.h     |   1 +
- drivers/net/ethernet/intel/ice/ice_xsk.c      |   2 +-
- 15 files changed, 1048 insertions(+), 47 deletions(-)
- create mode 100644 drivers/net/ethernet/intel/ice/ice_sf_eth.c
- create mode 100644 drivers/net/ethernet/intel/ice/ice_sf_eth.h
-
+diff --git a/drivers/net/ethernet/intel/ice/ice_base.c b/drivers/net/ethernet/intel/ice/ice_base.c
+index 687f6cb2b917..bf1a085c7087 100644
+--- a/drivers/net/ethernet/intel/ice/ice_base.c
++++ b/drivers/net/ethernet/intel/ice/ice_base.c
+@@ -330,6 +330,9 @@ ice_setup_tx_ctx(struct ice_tx_ring *ring, struct ice_tlan_ctx *tlan_ctx, u16 pf
+ 		tlan_ctx->vmvf_num = hw->func_caps.vf_base_id + vsi->vf->vf_id;
+ 		tlan_ctx->vmvf_type = ICE_TLAN_CTX_VMVF_TYPE_VF;
+ 		break;
++	case ICE_VSI_SF:
++		tlan_ctx->vmvf_type = ICE_TLAN_CTX_VMVF_TYPE_VMQ;
++		break;
+ 	default:
+ 		return;
+ 	}
+@@ -526,7 +529,7 @@ static int ice_vsi_cfg_rxq(struct ice_rx_ring *ring)
+ 
+ 	ring->rx_buf_len = ring->vsi->rx_buf_len;
+ 
+-	if (ring->vsi->type == ICE_VSI_PF) {
++	if (ring->vsi->type == ICE_VSI_PF || ring->vsi->type == ICE_VSI_SF) {
+ 		if (!xdp_rxq_info_is_reg(&ring->xdp_rxq)) {
+ 			err = __xdp_rxq_info_reg(&ring->xdp_rxq, ring->netdev,
+ 						 ring->q_index,
+diff --git a/drivers/net/ethernet/intel/ice/ice_dcb_lib.c b/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
+index a94e7072b570..a7c510832824 100644
+--- a/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
++++ b/drivers/net/ethernet/intel/ice/ice_dcb_lib.c
+@@ -187,6 +187,7 @@ void ice_vsi_set_dcb_tc_cfg(struct ice_vsi *vsi)
+ 		vsi->tc_cfg.numtc = ice_dcb_get_num_tc(cfg);
+ 		break;
+ 	case ICE_VSI_CHNL:
++	case ICE_VSI_SF:
+ 		vsi->tc_cfg.ena_tc = BIT(ice_get_first_droptc(vsi));
+ 		vsi->tc_cfg.numtc = 1;
+ 		break;
+diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
+index d06e7c82c433..06909bf3b517 100644
+--- a/drivers/net/ethernet/intel/ice/ice_lib.c
++++ b/drivers/net/ethernet/intel/ice/ice_lib.c
+@@ -20,6 +20,8 @@ const char *ice_vsi_type_str(enum ice_vsi_type vsi_type)
+ 		return "ICE_VSI_PF";
+ 	case ICE_VSI_VF:
+ 		return "ICE_VSI_VF";
++	case ICE_VSI_SF:
++		return "ICE_VSI_SF";
+ 	case ICE_VSI_CTRL:
+ 		return "ICE_VSI_CTRL";
+ 	case ICE_VSI_CHNL:
+@@ -141,6 +143,7 @@ static void ice_vsi_set_num_desc(struct ice_vsi *vsi)
+ {
+ 	switch (vsi->type) {
+ 	case ICE_VSI_PF:
++	case ICE_VSI_SF:
+ 	case ICE_VSI_CTRL:
+ 	case ICE_VSI_LB:
+ 		/* a user could change the values of num_[tr]x_desc using
+@@ -207,6 +210,12 @@ static void ice_vsi_set_num_qs(struct ice_vsi *vsi)
+ 					   max_t(int, vsi->alloc_rxq,
+ 						 vsi->alloc_txq));
+ 		break;
++	case ICE_VSI_SF:
++		vsi->alloc_txq = 1;
++		vsi->alloc_rxq = 1;
++		vsi->num_q_vectors = 1;
++		vsi->irq_dyn_alloc = true;
++		break;
+ 	case ICE_VSI_VF:
+ 		if (vf->num_req_qs)
+ 			vf->num_vf_qs = vf->num_req_qs;
+@@ -566,6 +575,7 @@ ice_vsi_alloc_def(struct ice_vsi *vsi, struct ice_channel *ch)
+ 
+ 	switch (vsi->type) {
+ 	case ICE_VSI_PF:
++	case ICE_VSI_SF:
+ 		/* Setup default MSIX irq handler for VSI */
+ 		vsi->irq_handler = ice_msix_clean_rings;
+ 		break;
+@@ -894,6 +904,11 @@ static void ice_vsi_set_rss_params(struct ice_vsi *vsi)
+ 					      max_rss_size);
+ 		vsi->rss_lut_type = ICE_LUT_PF;
+ 		break;
++	case ICE_VSI_SF:
++		vsi->rss_table_size = ICE_LUT_VSI_SIZE;
++		vsi->rss_size = min_t(u16, num_online_cpus(), max_rss_size);
++		vsi->rss_lut_type = ICE_LUT_VSI;
++		break;
+ 	case ICE_VSI_VF:
+ 		/* VF VSI will get a small RSS table.
+ 		 * For VSI_LUT, LUT size should be set to 64 bytes.
+@@ -1141,6 +1156,7 @@ static void ice_set_rss_vsi_ctx(struct ice_vsi_ctx *ctxt, struct ice_vsi *vsi)
+ 		lut_type = ICE_AQ_VSI_Q_OPT_RSS_LUT_PF;
+ 		break;
+ 	case ICE_VSI_VF:
++	case ICE_VSI_SF:
+ 		/* VF VSI will gets a small RSS table which is a VSI LUT type */
+ 		lut_type = ICE_AQ_VSI_Q_OPT_RSS_LUT_VSI;
+ 		break;
+@@ -1219,6 +1235,7 @@ static int ice_vsi_init(struct ice_vsi *vsi, u32 vsi_flags)
+ 	case ICE_VSI_PF:
+ 		ctxt->flags = ICE_AQ_VSI_TYPE_PF;
+ 		break;
++	case ICE_VSI_SF:
+ 	case ICE_VSI_CHNL:
+ 		ctxt->flags = ICE_AQ_VSI_TYPE_VMDQ2;
+ 		break;
+@@ -2100,6 +2117,7 @@ static void ice_set_agg_vsi(struct ice_vsi *vsi)
+ 	case ICE_VSI_CHNL:
+ 	case ICE_VSI_LB:
+ 	case ICE_VSI_PF:
++	case ICE_VSI_SF:
+ 		max_agg_nodes = ICE_MAX_PF_AGG_NODES;
+ 		agg_node_id_start = ICE_PF_AGG_NODE_ID_START;
+ 		agg_node_iter = &pf->pf_agg_node[0];
+@@ -2271,6 +2289,7 @@ ice_vsi_cfg_def(struct ice_vsi *vsi, struct ice_vsi_cfg_params *params)
+ 
+ 	switch (vsi->type) {
+ 	case ICE_VSI_CTRL:
++	case ICE_VSI_SF:
+ 	case ICE_VSI_PF:
+ 		ret = ice_vsi_alloc_q_vectors(vsi);
+ 		if (ret)
+@@ -2662,7 +2681,8 @@ int ice_ena_vsi(struct ice_vsi *vsi, bool locked)
+ 
+ 	clear_bit(ICE_VSI_NEEDS_RESTART, vsi->state);
+ 
+-	if (vsi->netdev && vsi->type == ICE_VSI_PF) {
++	if (vsi->netdev && (vsi->type == ICE_VSI_PF ||
++			    vsi->type == ICE_VSI_SF)) {
+ 		if (netif_running(vsi->netdev)) {
+ 			if (!locked)
+ 				rtnl_lock();
+@@ -2691,7 +2711,8 @@ void ice_dis_vsi(struct ice_vsi *vsi, bool locked)
+ 
+ 	set_bit(ICE_VSI_NEEDS_RESTART, vsi->state);
+ 
+-	if (vsi->type == ICE_VSI_PF && vsi->netdev) {
++	if (vsi->netdev && (vsi->type == ICE_VSI_PF ||
++			    vsi->type == ICE_VSI_SF)) {
+ 		if (netif_running(vsi->netdev)) {
+ 			if (!locked)
+ 				rtnl_lock();
+diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
+index 9d3f6683339e..8a4d9029434f 100644
+--- a/drivers/net/ethernet/intel/ice/ice_main.c
++++ b/drivers/net/ethernet/intel/ice/ice_main.c
+@@ -2946,6 +2946,9 @@ int ice_vsi_determine_xdp_res(struct ice_vsi *vsi)
+ 	if (avail < cpus / 2)
+ 		return -ENOMEM;
+ 
++	if (vsi->type == ICE_VSI_SF)
++		avail = vsi->alloc_txq;
++
+ 	vsi->num_xdp_txq = min_t(u16, avail, cpus);
+ 
+ 	if (vsi->num_xdp_txq < cpus)
+@@ -3061,8 +3064,8 @@ static int ice_xdp(struct net_device *dev, struct netdev_bpf *xdp)
+ 	struct ice_netdev_priv *np = netdev_priv(dev);
+ 	struct ice_vsi *vsi = np->vsi;
+ 
+-	if (vsi->type != ICE_VSI_PF) {
+-		NL_SET_ERR_MSG_MOD(xdp->extack, "XDP can be loaded only on PF VSI");
++	if (vsi->type != ICE_VSI_PF && vsi->type != ICE_VSI_SF) {
++		NL_SET_ERR_MSG_MOD(xdp->extack, "XDP can be loaded only on PF or SF VSI");
+ 		return -EINVAL;
+ 	}
+ 
+diff --git a/drivers/net/ethernet/intel/ice/ice_type.h b/drivers/net/ethernet/intel/ice/ice_type.h
+index f0796a93f428..cdb923c1664a 100644
+--- a/drivers/net/ethernet/intel/ice/ice_type.h
++++ b/drivers/net/ethernet/intel/ice/ice_type.h
+@@ -150,6 +150,7 @@ enum ice_vsi_type {
+ 	ICE_VSI_CTRL = 3,	/* equates to ICE_VSI_PF with 1 queue pair */
+ 	ICE_VSI_CHNL = 4,
+ 	ICE_VSI_LB = 6,
++	ICE_VSI_SF = 9,
+ };
+ 
+ struct ice_link_status {
+diff --git a/drivers/net/ethernet/intel/ice/ice_xsk.c b/drivers/net/ethernet/intel/ice/ice_xsk.c
+index aa81d1162b81..64f4927efa29 100644
+--- a/drivers/net/ethernet/intel/ice/ice_xsk.c
++++ b/drivers/net/ethernet/intel/ice/ice_xsk.c
+@@ -288,7 +288,7 @@ ice_xsk_pool_enable(struct ice_vsi *vsi, struct xsk_buff_pool *pool, u16 qid)
+ {
+ 	int err;
+ 
+-	if (vsi->type != ICE_VSI_PF)
++	if (vsi->type != ICE_VSI_PF && vsi->type != ICE_VSI_SF)
+ 		return -EINVAL;
+ 
+ 	if (qid >= vsi->netdev->real_num_rx_queues ||
 -- 
 2.42.0
 
