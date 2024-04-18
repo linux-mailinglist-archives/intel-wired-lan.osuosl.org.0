@@ -2,102 +2,95 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6A6028A9920
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 18 Apr 2024 13:55:33 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B17C68A98F9
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 18 Apr 2024 13:50:00 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 1CC41415FF;
-	Thu, 18 Apr 2024 11:55:32 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 505BE41681;
+	Thu, 18 Apr 2024 11:49:59 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id MbEUyoUB3EyW; Thu, 18 Apr 2024 11:55:31 +0000 (UTC)
+ id bCqvy5A2SnJs; Thu, 18 Apr 2024 11:49:58 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 60004415BD
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 857D7404C3
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1713441331;
-	bh=vnixqKiDXHI7L4w/q0hjM2HcmHja315QfS82FTsRAn8=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=mJd+JGZzTspCZ8m9JTTX/f9Wx5pILpACZMEaCn6SO1VcI2hF6/rPOJVDlHdReuP/N
-	 fRlkCC2it8+n3i5H110s5SOAxGvx9HPxJkvj6T+aCUMz5TU+b84B9388NPHv24SRYU
-	 a0MprWYaLI5a6fgoRTjrEhxZ9cOy3kdDRX7v6iuYrqB2xJPFfkVyh7qY0cInIXPDwI
-	 Ga4tI6CST+PN8DQxrcqbtwq1vhVlZUgSYvG9AuPxqDjIbBuI7pjl5xJ+F1UJ7SGpSx
-	 NxSz0cBefk7B9s8YdnzQ1kBpct/HIL+X0VMCel9ghgbneeqD8+oRGqEboSCePqwiXo
-	 XPyB0SMdVo5NA==
+	s=default; t=1713440998;
+	bh=iaPGHuqSieZNevwsMD6Zop6SMnf4TT1gDcHI+DXSZoQ=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=Co6Nj310dudAwMKpPSy3lW/UpI45umuJkNgnCiEtnfEli8bKkRlYHi3v1YQCb84Zl
+	 5z7Mw0l0ZtnsjakaS3qopjTnFhGWLQj7c3MtC+0bcrHNE6TS9qi5hi/N76nLJQPX7+
+	 0nhQjQ3fLyv7ZAtH4UINHbnMQs+Bijbf5GtsqiTKVFHIZQ1Uglzw3JFJVtRIP9W3G5
+	 t7scCmFI/Wj3/qT7KafDC/iyCigdWEPD7QMIPs1qpEs9eBUztWaZt9lf5LZRF5YlZF
+	 8syMGg/DAOMBnw2FkBI5ze67FA/HjyI4fVHTq48mQq0QCP6yUlGjCXcwfFPF7E6nVz
+	 n4sk5AJ2t7grQ==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 60004415BD;
-	Thu, 18 Apr 2024 11:55:31 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 857D7404C3;
+	Thu, 18 Apr 2024 11:49:58 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 504411BF3F2
- for <intel-wired-lan@lists.osuosl.org>; Thu, 18 Apr 2024 11:55:29 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 7FA8E1BF3F2
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 18 Apr 2024 11:49:56 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 3B74640511
- for <intel-wired-lan@lists.osuosl.org>; Thu, 18 Apr 2024 11:55:29 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 695A8404C3
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 18 Apr 2024 11:49:55 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 9IXjgsiyEOHQ for <intel-wired-lan@lists.osuosl.org>;
- Thu, 18 Apr 2024 11:55:28 +0000 (UTC)
-Received-SPF: None (mailfrom) identity=mailfrom; client-ip=192.198.163.14;
- helo=mgamail.intel.com; envelope-from=michal.swiatkowski@linux.intel.com;
+ id mSsX4M3rwZNV for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 18 Apr 2024 11:49:54 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.13;
+ helo=mgamail.intel.com; envelope-from=piotr.kwapulinski@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 699334012F
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 699334012F
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.14])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 699334012F
- for <intel-wired-lan@lists.osuosl.org>; Thu, 18 Apr 2024 11:55:28 +0000 (UTC)
-X-CSE-ConnectionGUID: V9mxq06uTeGJPhrQL5Fg7g==
-X-CSE-MsgGUID: 95dX9CcUQ92SIB9nE8Aqaw==
-X-IronPort-AV: E=McAfee;i="6600,9927,11047"; a="9204854"
-X-IronPort-AV: E=Sophos;i="6.07,212,1708416000"; 
-   d="scan'208";a="9204854"
-Received: from fmviesa009.fm.intel.com ([10.60.135.149])
- by fmvoesa108.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 18 Apr 2024 04:55:27 -0700
-X-CSE-ConnectionGUID: BRMNBJ1DTxOiScOWaf1H3A==
-X-CSE-MsgGUID: Y3uqJNdJToyBcARFJe13cQ==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 4A7BA408C3
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 4A7BA408C3
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.13])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 4A7BA408C3
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 18 Apr 2024 11:49:54 +0000 (UTC)
+X-CSE-ConnectionGUID: x9wWB4C9Tseqi+Mje8Q8MA==
+X-CSE-MsgGUID: vhyWNCKlSfeg9GviXM6Tvw==
+X-IronPort-AV: E=McAfee;i="6600,9927,11047"; a="20127426"
+X-IronPort-AV: E=Sophos;i="6.07,212,1708416000"; d="scan'208";a="20127426"
+Received: from orviesa005.jf.intel.com ([10.64.159.145])
+ by orvoesa105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 18 Apr 2024 04:49:54 -0700
+X-CSE-ConnectionGUID: QPyqIneJRUWjZoVQ+dgBig==
+X-CSE-MsgGUID: eS+FT5SeQFiBPkM7zdwnAw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.07,212,1708416000"; d="scan'208";a="23040305"
-Received: from unknown (HELO mev-dev) ([10.237.112.144])
- by fmviesa009-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 18 Apr 2024 04:55:25 -0700
-Date: Thu, 18 Apr 2024 13:55:03 +0200
-From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-To: Shay Drori <shayd@nvidia.com>
-Message-ID: <ZiEKF8Hm+ccuVedQ@mev-dev>
-References: <20240417142028.2171-1-michal.swiatkowski@linux.intel.com>
- <20240417142028.2171-9-michal.swiatkowski@linux.intel.com>
- <0045c1a5-1065-40b3-ae61-1f372d4a89e5@nvidia.com>
- <1b678660-7ee7-44d0-91a7-14985d2c469e@nvidia.com>
+X-IronPort-AV: E=Sophos;i="6.07,212,1708416000"; d="scan'208";a="27731033"
+Received: from amlin-018-251.igk.intel.com (HELO localhost.localdomain)
+ ([10.102.18.251])
+ by orviesa005.jf.intel.com with ESMTP; 18 Apr 2024 04:49:52 -0700
+From: Piotr Kwapulinski <piotr.kwapulinski@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Thu, 18 Apr 2024 14:06:22 +0200
+Message-Id: <20240418120627.287999-1-piotr.kwapulinski@intel.com>
+X-Mailer: git-send-email 2.31.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1b678660-7ee7-44d0-91a7-14985d2c469e@nvidia.com>
+Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1713441328; x=1744977328;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=BjG0eEXPzantOD1jcelhGWFZa+JGWFo4s5JCsisY2Nk=;
- b=CeDsHEoxdPpsTDwGfzde94iXFMN/oC367QV8WRjVV65fZBDuhX9AS3Dv
- wZArTCBm+BHq+dmFBLKHcbNwy+FbG8aKFeOGHc6kt2VDftA+YDT9ar5nM
- /HDLeGB5iuXOiH228JVENXutMeJJrjyJgw0ALRS7hNWPAlGU8SeA6558w
- OohuTBgsBZDNpTBzFWCo/A2BpYFSVfvH/byHrlhAUUVf74UULlMikYU25
- VhoGgl1HpFgDHP7Z6X+qIp6r/FCG2tjNdTrcMqDo2bRC9nu7g8mN/v+nw
- 6Ips42p8ADa7I4CVF1F3qk+vB1ZJRv499zaNHY8rA+3RnoV06LCSn3VjW
- w==;
+ t=1713440995; x=1744976995;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=AOyG9ACA8piLD8ZUFTDWXXz2PsX8UXZcwL0rG2yA1Jw=;
+ b=FpX5c3ngomQMeAaxiQ6AtBx/zsv5mm0+I6/h0+iB3GUhdmzIw/viQS8j
+ aKWc+oxwCAp5cEAwuKOqK6UFvGZ/uxHIsedshl4OLG8sj/36kNTtPaPsy
+ XHwgrayxq5GkIvKVe6XW94Ww1Ys8TLaOpfKPdsemCS9tVd5oPY873CRR7
+ VcuqATyexddZE+jB1nU8mFW8a/3dtQ3N3eJRhnMi0dF49o1FDPvULjWea
+ 0NpTQHfprca7PKxdgfpcQcFrnj9mM9m7MD3tn/dvdFuKOIdunPA+WLDDd
+ Ai9ScGrSe9+96TLLa3HtIhL5npe18lqJylnHqxGe3wGeFJBJJcgU7zBUh
+ A==;
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=linux.intel.com
+ dmarc=pass (p=none dis=none)
+ header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=CeDsHEox
-Subject: Re: [Intel-wired-lan] [iwl-next v4 8/8] ice: allow to activate and
- deactivate subfunction
+ header.s=Intel header.b=FpX5c3ng
+Subject: [Intel-wired-lan] [PATCH iwl-next v3 0/5] ixgbe: Add support for
+ Intel(R) E610 device
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -110,84 +103,62 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: maciej.fijalkowski@intel.com, mateusz.polchlopek@intel.com,
- netdev@vger.kernel.org, jiri@nvidia.com, michal.kubiak@intel.com,
- intel-wired-lan@lists.osuosl.org, pio.raczynski@gmail.com,
- sridhar.samudrala@intel.com, jacob.e.keller@intel.com,
- wojciech.drewek@intel.com, przemyslaw.kitszel@intel.com
+Cc: Piotr Kwapulinski <piotr.kwapulinski@intel.com>, netdev@vger.kernel.org,
+ anthony.l.nguyen@intel.com
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Thu, Apr 18, 2024 at 11:12:47AM +0300, Shay Drori wrote:
-> resend as plain test
-> 
-> On 18/04/2024 10:53, Shay Drori wrote:
-> > On 17/04/2024 17:20, Michal Swiatkowski wrote:
-> > > +/**
-> > > + * ice_devlink_port_fn_state_get - devlink handler for port state get
-> > > + * @port: pointer to devlink port
-> > > + * @state: admin configured state of the port
-> > > + * @opstate: current port operational state
-> > > + * @extack: extack for reporting error messages
-> > > + *
-> > > + * Gets port state.
-> > > + *
-> > > + * Return: zero on success or an error code on failure.
-> > > + */
-> > > +static int
-> > > +ice_devlink_port_fn_state_get(struct devlink_port *port,
-> > > +			      enum devlink_port_fn_state *state,
-> > > +			      enum devlink_port_fn_opstate *opstate,
-> > > +			      struct netlink_ext_ack *extack)
-> > > +{
-> > > +	struct ice_dynamic_port *dyn_port;
-> > > +
-> > > +	dyn_port = ice_devlink_port_to_dyn(port);
-> > > +
-> > > +	if (dyn_port->active) {
-> > > +		*state = DEVLINK_PORT_FN_STATE_ACTIVE;
-> > > +		*opstate = DEVLINK_PORT_FN_OPSTATE_ATTACHED;
-> > 
-> > 
-> > DEVLINK_PORT_FN_OPSTATE_ATTACHED means the SF is up/bind[1].
-> > ice is using auxiliary bus for SFs, which means user can unbind it
-> > via the auxiliary sysfs (/sys/bus/auxiliary/drivers/ice_sf/unbind).
-> > In this case[2], you need to return:
-> > *state = DEVLINK_PORT_FN_STATE_ACTIVE;
-> > *opstate = DEVLINK_PORT_FN_OPSTATE_DETACHED;
-> > 
+Add initial support for Intel(R) E610 Series of network devices. The E610
+is based on X550 but adds firmware managed link, enhanced security
+capabilities and support for updated server manageability.
 
-Thanks, I didn't think about unbinding/binding the aux driver via sysfs.
+This patch series adds low level support for the following features and
+enables link management.
 
-To be sure:
-- user create the subfunction:
-INACTIVE, DETACHED
-- user activate it:
-ACTIVE, ATTACHED
-- user unbind driver:
-ACTIVE, DETACHED
-- user can bind it again as long as subfunction port is ACTIVE
-is it right?
+Piotr Kwapulinski (5):
+  ixgbe: Add support for E610 FW Admin Command Interface
+  ixgbe: Add support for E610 device capabilities detection
+  ixgbe: Add link management support for E610 device
+  ixgbe: Add support for NVM handling in E610 device
+  ixgbe: Enable link management in E610 device
 
-I will fix the comment from previous patch and add state tracking for
-ATTACHED/DETACHED.
+ drivers/net/ethernet/intel/ixgbe/Makefile     |    4 +-
+ drivers/net/ethernet/intel/ixgbe/ixgbe.h      |   15 +-
+ .../net/ethernet/intel/ixgbe/ixgbe_82599.c    |    3 +-
+ .../net/ethernet/intel/ixgbe/ixgbe_common.c   |   19 +-
+ .../net/ethernet/intel/ixgbe/ixgbe_dcb_nl.c   |    3 +-
+ drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c | 2561 +++++++++++++++++
+ drivers/net/ethernet/intel/ixgbe/ixgbe_e610.h |   75 +
+ .../net/ethernet/intel/ixgbe/ixgbe_ethtool.c  |    7 +-
+ drivers/net/ethernet/intel/ixgbe/ixgbe_lib.c  |    3 +-
+ drivers/net/ethernet/intel/ixgbe/ixgbe_main.c |  435 ++-
+ drivers/net/ethernet/intel/ixgbe/ixgbe_mbx.c  |    4 +-
+ drivers/net/ethernet/intel/ixgbe/ixgbe_phy.c  |    5 +-
+ drivers/net/ethernet/intel/ixgbe/ixgbe_type.h |   71 +-
+ .../ethernet/intel/ixgbe/ixgbe_type_e610.h    | 1064 +++++++
+ drivers/net/ethernet/intel/ixgbe/ixgbe_x540.c |   42 +-
+ drivers/net/ethernet/intel/ixgbe/ixgbe_x540.h |    7 +-
+ drivers/net/ethernet/intel/ixgbe/ixgbe_x550.c |   29 +-
+ drivers/net/ethernet/intel/ixgbe/ixgbe_x550.h |   20 +
+ 18 files changed, 4302 insertions(+), 65 deletions(-)
+ create mode 100644 drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c
+ create mode 100644 drivers/net/ethernet/intel/ixgbe/ixgbe_e610.h
+ create mode 100644 drivers/net/ethernet/intel/ixgbe/ixgbe_type_e610.h
+ create mode 100644 drivers/net/ethernet/intel/ixgbe/ixgbe_x550.h
 
-Thanks,
-Michal
+-- 
+V1 -> V2:
+  - fix for no previous prototypes for ixgbe_set_fw_drv_ver_x550,
+    ixgbe_set_ethertype_anti_spoofing_x550 and
+    ixgbe_set_source_address_pruning_x550
+  - fix variable type mismatch: u16, u32, u64
+  - fix inaccurate doc for ixgbe_aci_desc
+  - remove extra buffer allocation in ixgbe_aci_send_cmd_execute
+  - replace custom loops with generic fls64 in ixgbe_get_media_type_e610
+  - add buffer caching and optimization in ixgbe_aci_send_cmd
+V2 -> V3:
+  - revert ixgbe_set_eee_capable inlining
+  - update copyright date
+  
+2.31.1
 
-> > 
-> > [1]
-> > Documentation from include/uapi/linux/devlink.h:
-> > 
-> > * @DEVLINK_PORT_FN_OPSTATE_ATTACHED: Driver is attached to the function.
-> > <...>
-> > * @DEVLINK_PORT_FN_OPSTATE_DETACHED: Driver is detached from the function.
-> > 
-> > > +	} else {
-> > > +		*state = DEVLINK_PORT_FN_STATE_INACTIVE;
-> > > +		*opstate = DEVLINK_PORT_FN_OPSTATE_DETACHED;
-> > > +	}
-> > > +
-> > > +	return 0;
-> > > +}
-> > > +
