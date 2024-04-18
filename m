@@ -1,153 +1,153 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 64C008AA3CF
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 18 Apr 2024 22:08:41 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0FE528AA3D0
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 18 Apr 2024 22:08:44 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 94BA541561;
-	Thu, 18 Apr 2024 20:08:30 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id CC13040883;
+	Thu, 18 Apr 2024 20:08:31 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 6kF60Py0tL8P; Thu, 18 Apr 2024 20:08:30 +0000 (UTC)
+ id ZxRIanhxKCLK; Thu, 18 Apr 2024 20:08:31 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org CF81140144
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org EFB3040144
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1713470909;
-	bh=NuM9KyT7EKwq08S57ccqrXCVBbGKjdyx+T53nDRJnt4=;
+	s=default; t=1713470911;
+	bh=kRahbD2TgACBOB307nZ9jUKPnfYOrxs6S1ag0hiGQj8=;
 	h=References:From:To:Date:In-reply-to:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=DOdizzJAMpvuHlKwa3NdsFb0H8b4Ai5TRwAe7L2YPH3wZ5CQ5c/p9uXeUtuqhWO7F
-	 mtBL7Au42Eo+TglMtJD1aelOMAJ8YbUjmtTEPg/1DYhniplunp5zAUUCt/O5segmSp
-	 L+xBTsvIRqPKlfOmcnWaPJtbwXQR2ZKwv7vie3gSnCpe/Qh6YiB/6fl7rfcUIDk+tb
-	 UfLahJHjQkF5HeWTyPoODdrwVw7LKo+lyM/blnqDym8euxbvwiZv87aq2+l77hXHkR
-	 OEP8WHUkf6H0MGEp51bBDwAN5rRDANhNc0e+JF/4B03kr1dA42bnENpUIEraoQo7F9
-	 EnVGG2XC8hS3g==
+	b=GdMfOq7J4HM2v6TpgoudEZoT1YZ5d1Cq+NOiOr5aHNzQEUiPLs7cg9XUrEAz7sXuR
+	 cg+nGys7ZAAIVa2tAIet05D/6bTGEP/jDsWOoq2pzNwXmdUuwzxyuiqi2h+kOoRUCG
+	 o9GxzcPKn7CcekGFpghSlXH9xtMw6Al5e7UyC6QpNqQbO+sHI9o2GNgXU0dDc8lxuq
+	 9G52aiQkZ+8jrtSoCw7cUOeKA5jKHF5+LzrfcT9VKNMx5RIHvCmmmLpsuPFxoAHGB2
+	 dQE/Yvl5o3QJS2j1W7W7nGLQiDrBi1T4pbIvl3ByrAQOQ22epTFCowztQoNSOHiBqv
+	 CCO8izKKMtJTw==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id CF81140144;
-	Thu, 18 Apr 2024 20:08:29 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id EFB3040144;
+	Thu, 18 Apr 2024 20:08:30 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 45F761BF33E
- for <intel-wired-lan@lists.osuosl.org>; Thu, 18 Apr 2024 19:55:18 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 377EA1BF276
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 18 Apr 2024 20:06:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 3CE9B60A67
- for <intel-wired-lan@lists.osuosl.org>; Thu, 18 Apr 2024 19:55:18 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 2FB9260A53
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 18 Apr 2024 20:06:38 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id aXJxnpVwMzVY for <intel-wired-lan@lists.osuosl.org>;
- Thu, 18 Apr 2024 19:55:17 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=40.107.244.48;
- helo=nam12-mw2-obe.outbound.protection.outlook.com;
+ id b0EHZRCr6akX for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 18 Apr 2024 20:06:37 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=40.107.220.70;
+ helo=nam11-co1-obe.outbound.protection.outlook.com;
  envelope-from=rrameshbabu@nvidia.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 6005D608F8
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6005D608F8
-Received: from NAM12-MW2-obe.outbound.protection.outlook.com
- (mail-mw2nam12on2048.outbound.protection.outlook.com [40.107.244.48])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 6005D608F8
- for <intel-wired-lan@lists.osuosl.org>; Thu, 18 Apr 2024 19:55:17 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 40952608F8
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 40952608F8
+Received: from NAM11-CO1-obe.outbound.protection.outlook.com
+ (mail-co1nam11on2070.outbound.protection.outlook.com [40.107.220.70])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 40952608F8
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 18 Apr 2024 20:06:37 +0000 (UTC)
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=a+sQx0Pfj2Fs8Bv+fpmMorbEvQ6buNtX1m4wOb+oVKU/fD4otnX/2wC1/gBUbwFS1SWvEEXsACo+vBTIfqcd/l5V2kEHO2QBWDAoGIDNwd6fpwYm5eTmDb5CNax07EHHRp4rSZ8OjpmP54iPLZBKjcwNDTpmLLZtCugE6srDdETdi19ZezoeHLgvBoo3T8iKNMBmUQeLiYBunT2XwZUNEByr+vFHmVs/V5Qx7JIP4cwnIU1+Y72ObMKN3Ljo26EQErI6wZfPRuW2U7o4cSnOaK7EIRrbavouTh03hjAZWRiwO9elqOem73gghkHcZU0kWACocsD1OzeqU4TnM+Pptg==
+ b=fgZuywfBTVIfrHfReietpZIAFXMpYYqX36IaNAJK9rdcn/ug/OaKywXaNhAUPdF/5bEzUviCskfTRerCgDK5mZBWcGfDGFPOBNNGJE10YZbHjW1mand7G1Gj7cY079162EhO4X0i220C4c9p5xinKtY+ON1moqt1sN8om4JDVXXv555Tk4c7WjpOzvPjr2YEXNF4GKHCVae2TWHjvO0xWu9xmiBk1q7C9SsjSduyRYt/aPaAB7YdwWKWkHF4Wve8U/3HEFO2LdDjaGTB/PpupVzWvgxRM6tIInwss5I2ijoA86qraXpoy+QeN9AkZDgH9b4UTNmZ1FnQdDK0dLtS1Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=NuM9KyT7EKwq08S57ccqrXCVBbGKjdyx+T53nDRJnt4=;
- b=BQTKwoOo7/0gBax/BSzAA+jXs7m0Wz798ct87O4gej/8/7THa0Rnz5fUKMxppi9JZEEMHuQwlKZGIdBpzQ5VBC3sHlfuIFlhqdZmiROBsWH/74GOqAoo5v24ciG3EBUwmZQpINnwV4Sidh8tuS2Y9dG3+afUQwd0Kn3/spnIaOXe2P9YdUPcysR3HODSTcyq9mOnymHPTjBkVvm8EHXCdOdzpvFLnh3Iet8qYLRh76tptNEHtLVBTjjmN2HTqL4KRrDnLXVy8OoFNrJYqpgoxe0TU0hhjQW7WWFMG/FCUzFkDKlyfTR3fXLpB0x+/AmXIvZq1sPandmT2e0KMhJfIQ==
+ bh=kRahbD2TgACBOB307nZ9jUKPnfYOrxs6S1ag0hiGQj8=;
+ b=gFbStmWvDyOUh2c07Xn0JKcN1ds3UTz/uQdRQBp0gSx69pZIavI1C+eC1G4/Pp7LsnMLfDY0DV86yN9+c1RGGVDIBY18jsmJzITZhSkbH5kWRqM7CbXsymYk+e6XcBhuKzIZIrvOvAgfglHfEImB9lQshU563DbQSwBZw3l5TjhswAZdE58nL95aNsD+pwJfyCWodO/0toDmr4wIy++mrtxYLD5vztEHUza9qBUiExdpVvNzdeDvrxlHJrbHBtw9MD/BgpoVPudextScIZNmxhlKx2uf4gpBB6iJjmqP5hEFFd1eOtRy6uEpwezOY1rPxs+quVScWhlgGLDkN/WJow==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
  dkim=pass header.d=nvidia.com; arc=none
 Received: from BYAPR12MB2743.namprd12.prod.outlook.com (2603:10b6:a03:61::28)
- by DS0PR12MB6559.namprd12.prod.outlook.com (2603:10b6:8:d1::6) with
- Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.7472.43; Thu, 18 Apr 2024 19:55:13 +0000
+ by CY8PR12MB8193.namprd12.prod.outlook.com (2603:10b6:930:71::22)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7472.42; Thu, 18 Apr
+ 2024 20:06:34 +0000
 Received: from BYAPR12MB2743.namprd12.prod.outlook.com
  ([fe80::3ec0:1215:f4ed:9535]) by BYAPR12MB2743.namprd12.prod.outlook.com
  ([fe80::3ec0:1215:f4ed:9535%4]) with mapi id 15.20.7452.049; Thu, 18 Apr 2024
- 19:55:13 +0000
+ 20:06:34 +0000
 References: <20240418052500.50678-1-mateusz.polchlopek@intel.com>
- <20240418052500.50678-9-mateusz.polchlopek@intel.com>
+ <20240418052500.50678-10-mateusz.polchlopek@intel.com>
 User-agent: mu4e 1.10.8; emacs 28.2
 From: Rahul Rameshbabu <rrameshbabu@nvidia.com>
 To: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
-Date: Thu, 18 Apr 2024 12:51:19 -0700
-In-reply-to: <20240418052500.50678-9-mateusz.polchlopek@intel.com>
-Message-ID: <87jzkue99b.fsf@nvidia.com>
+Date: Thu, 18 Apr 2024 13:00:40 -0700
+In-reply-to: <20240418052500.50678-10-mateusz.polchlopek@intel.com>
+Message-ID: <87frvie8qf.fsf@nvidia.com>
 Content-Type: text/plain
-X-ClientProxiedBy: BYAPR11CA0078.namprd11.prod.outlook.com
- (2603:10b6:a03:f4::19) To BYAPR12MB2743.namprd12.prod.outlook.com
+X-ClientProxiedBy: BYAPR03CA0010.namprd03.prod.outlook.com
+ (2603:10b6:a02:a8::23) To BYAPR12MB2743.namprd12.prod.outlook.com
  (2603:10b6:a03:61::28)
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: BYAPR12MB2743:EE_|DS0PR12MB6559:EE_
-X-MS-Office365-Filtering-Correlation-Id: 3756cde8-a933-4b09-4031-08dc5fe17629
+X-MS-TrafficTypeDiagnostic: BYAPR12MB2743:EE_|CY8PR12MB8193:EE_
+X-MS-Office365-Filtering-Correlation-Id: f186e878-51b4-426f-9de0-08dc5fe30bc1
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: QoU4FPZJbg7xW1LcA08ql0LIx79tWvPDGR+el48jlKXH5462unqAjBw1jg8wQcAGMKABWw5mp0z6RoebXuvk3YKf6ZoarwSRDeUjOvvWP75OhNg7EjFkKablh6+SQrCvsEtjZnAFrxM+a52c1JNNdzZsXzMUX+1gldJcidxcjAp1L3rAqOPIl9YhtFoz3XLm3tPgSjKLfkJoPfI1J2+88gqJiELX5ZVJUM/iMyyt+Rbf2nvzf+fTmsa4r6H4qxzod7tRF1CX/Aqa8Lrc+QkD4Z5m3UTABIoJJWobEjT/qLdS7ILcJgjqw6nlKIpa1zeZCJMXq8GOX2Vx3m1/G8iwUkFqrfB9G/Q0IUaOESWCYWO+rpxOMiHPoLHwXsSQ9DIZOJuSWM31M4hPZGO8i8YJ7d1RokFnGIQ2LiCMii1ZHyzM3QjQvYOnpcDB0Nt1vnqfsLn/8lW7bdAm3Qp7pBI+6zRCgAGV24HVR8VZYxZc9pkNUdD+CiNrtgRCI+nOl3vOdhOetP+efLIB+jm2h4ACdq/HfAhFsubVsoBBFH7CxxeEQ8K5yBMYjFVIoBppgc+i9+llV1FbKoK4wrC1NqaPC60IdRmU/yqzjZTZeYLjatRFU7rMyoxV7YYvzrsezpysauQ2oBAzdmhb7oZ9SBFZyfh/8mM+yYgyGh8tjqlvDFw=
+X-Microsoft-Antispam-Message-Info: HzkDNj8pssRhVYALPNjmW8Wv8tJlGYykVPU1dM/54gwGBlZbAGNRHx7PWk0lCcgKBvClbF0kEGPu4ausnu8oh2UCUNxBDNFV0Aqf1l832xiurLPoQfSgOb9VZ8XSsN+N4Oavbz6MtWhxYxJEqKIm8AIA3b6LNJYbmzgN7qAIqrLweX4yGz94ycoDRHnrP79hDrS1zAsMB6FZbfkBkNJHwT5rJdfLu4efI415Y0WtiRU0iCloryseIKkmda568G/GfBvjTqQ2qnb5TjegRDkk/xDLvnALDQ7sm/n+KUqBKqa0H5Gl9q/8QswgssesJGvwRamJLE99vPSNeknbOssvJoA1R+6ZyJL5XRT6+hKwEzYa2tHTbfc+ZEKAdwU1F4kv9F8e2tAtcfVfMsIa7oaggo5Z6j7ADm2qVyuIF2/2aYgEImNw+aGtPsO4DNW9CjfgtV3+s4wKwJfWHL46tqKHjdBYYyxDXEOoaxxSRDzaVZD6F0UuWRz66/SzWd5jfEd7GG/DwsxOPyWwOibEorGvXSLrAcYDe04VONmTsXByLRsZ21UDZ8yM1i5tAo6TTJ+l6N2xtrxbKwbDieC42W85UETq2fN9sQ1lHOyrven21UeV5kmYMR5y2ptuXQaAHOjP8Gl0SpoAAmhviTzf5xukWLVEHaHON17JsoJ16ARLDvQ=
 X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:BYAPR12MB2743.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230031)(376005)(1800799015)(366007); DIR:OUT; SFP:1101; 
+ SFS:(13230031)(366007)(376005)(1800799015); DIR:OUT; SFP:1101; 
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?qM0BfTU35v0NTpvtrPgKtuZbY3hcHJub8/WEYG01+R9QhydxCWui9dEc+Ced?=
- =?us-ascii?Q?DTHrmkudtKq99svSzoGqXrEydnazn13naq10ysP+Fl9goYYp2KdqWhoImUNR?=
- =?us-ascii?Q?nVQRrJ5POK6Rt9EqGVmSprjrTuzl0SlEWOQH6DcVaRuxMCxh7FPzYcQMSQTx?=
- =?us-ascii?Q?NPnHAJK66x44/pcDq2tB0uFaY+I/rLfVXASN6sK5qyoD17yJFkE1TdHVOL71?=
- =?us-ascii?Q?hxK3hInHqc4J+RruBJi9OrT0e/tzUQEGS45HniAPI7KXtmqXl6CfuXoW5r9J?=
- =?us-ascii?Q?I6iSuNF4eV3psP5WBv5rbuqiXaLhMrh9q5/f2UryKuO8DUg5TUUGSqS9avjQ?=
- =?us-ascii?Q?rD085oaEx8Vc+UimrflkYRc15nZ7AZykVgTO5YvdfZmUFt6mubJb7YIa4haH?=
- =?us-ascii?Q?Itmr4MVOGx1mcogCKJ6TieVh+bm0USt0HGTmPqBR36SFbq6SbRtL3RcQ6odj?=
- =?us-ascii?Q?OKh7p7qKGVZ4/hvQoUK3OlQbcpjDJoXgMD8QQ/+o+y4xJoTc55n5vv4rw88B?=
- =?us-ascii?Q?EuFk7s0XnadI4YR1OS5GAlpYFuXey43RMvrciDgq/CL1QsD5ZwzflgSGMymv?=
- =?us-ascii?Q?go2NeQHXGikZu4UCyuqOzefrErSntt36+KxjibASYRYgO2NL8e44AK13KVof?=
- =?us-ascii?Q?u7J8Y9eMXiLhlaszgeiM1zghwVziqeiEnTSp3DSO7RU9EvypupSltywGRnHA?=
- =?us-ascii?Q?gZYmV5yZns/EyMMgA/wLUL06gqCqplR9MFwdgP5zPUEA8ZcxsrHqjvmCHVpF?=
- =?us-ascii?Q?AG8hcurojB767pqohaZwZkxiZrmjlbQ8buCCRU0CGhGoH7k41XDQoCoYH2Tj?=
- =?us-ascii?Q?Y8m15raqWnYQDmyzgZnEtU9R7my3jp/eAzt7JQh4+dzbuP8ah0Cb+Pm52sGc?=
- =?us-ascii?Q?ZbNEv1Qu2WZXRECfTzLxGo8aVIKkjwcNfF+5y3DVDKCfW65ma461ynoA7EeW?=
- =?us-ascii?Q?qalUmPjzydbSlZ5bdM2qCJfqqbaLbnve0lOkE1PBDJocOLY51tqePSfkg99o?=
- =?us-ascii?Q?FqGxaK3yEnZNH/1ErUhxnXsHyn8LZKTHAszjFjSyJMc3BwkaWPv2cnfw/PM2?=
- =?us-ascii?Q?geI//+A4aUAYECZ0F4YYO5EirdkZg+WCAjNhO7wZv80svkbDu3L2obEJ0ONh?=
- =?us-ascii?Q?DOBD2rBRA3U4rcEKdgi4VaUEnDfUJaFV4uFA3rEQLS3tHmEMrxIZy5JfbNwY?=
- =?us-ascii?Q?1wQ9/aL/K50qw5dnrDpu2JLxlJyjfsL7Ymg0QpKMLN0Ceztk/ZlZJbwxfKbv?=
- =?us-ascii?Q?1qKAjhH6EH/aTqhewSB74lrJsjOOX4tsBl50Z1pVbfj/z01jmsP5/+ck2n3+?=
- =?us-ascii?Q?RmgCKMPPp8WPqyXdVC/cVkhJ2op+pbUkVDVw6W4DqECOhwU1n00a0c1nsbk1?=
- =?us-ascii?Q?UkCmbPXUTRos0Vq6EhdIxxn9cwB0kYAqkVr2EqFnmcsppYtHweLyUFdDOl0B?=
- =?us-ascii?Q?THeB0uTvBQj5PyA4xJhcA9anZt6/JRvvY/qrG5g7+E0hs8NSwuXvPxKlrupK?=
- =?us-ascii?Q?wsWWe2TTqSKL+MWtLn5fP1tANCyxmS1EaANGBeyktzLwhF24UNoEHR4PpVx9?=
- =?us-ascii?Q?sTKgzVPlsfZfq4EgFTSCZTHB19RJtkotMj+a+uqxAWA3e7ZC8+pcQNSpcDlT?=
- =?us-ascii?Q?Zw=3D=3D?=
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?RMUFY3lrykh7bh2aYUWsL+uNIk8gkK66qkTsG/4Mfaivx7Opt0qJb+xW87U/?=
+ =?us-ascii?Q?JFlQpX8SFWsuhmnb2+8ZMik2yOaIDhVbM5eM/zzNiLQNvIj+LnAcj5f9H7J6?=
+ =?us-ascii?Q?797koDcxtMSdQRBaD6jug/Vuzodb84I/0ePJYncrngrnSgGhf78cn5q2Rmz6?=
+ =?us-ascii?Q?u5WcbsRiFVaakjslFHwtsxM1bgLqUY+m/37sI3nfjfndWAqdqUVyO6GHYeIn?=
+ =?us-ascii?Q?ZkiyhB2lTXtxiMG9lxhXL5IY/0IrfUq4I+uLAqgvbIUsOpTSRirNKBRk2d63?=
+ =?us-ascii?Q?/MOWWtKNp+k7SBwvEwJv0QK3jpsIWjB3J13A7a+p7ct45zQOAXz8DlI+XKb8?=
+ =?us-ascii?Q?79MNhbSDw9jFh22rpjzVR27l4TUJDu9hoorAoMwPCgxcU6Q23DpA2lAvNAiK?=
+ =?us-ascii?Q?2Em0TD2yxz4uYGWjNyA3Bu91obNawIDgEZRzpZPoy9NwRP6C90pCgXwsX96m?=
+ =?us-ascii?Q?8k10NXx16ifr2FYVlHD4w0oRWdCpEWT8YIhtcBKQy6+NQZdJDn8gKhKzjWo0?=
+ =?us-ascii?Q?iMgkCCs8ngErpf67Hh8/ZVG2fYizU+P4z0RJthUx6qHQ+iuIwR4ubyXnAZ4T?=
+ =?us-ascii?Q?7MdwruZj+T7STw3241VrGlPA9uk5hcDucZRlXq41dg5rb9aaMbs7U5SMS1p8?=
+ =?us-ascii?Q?RbqJ5e2pbohnMz1KS1LpdS1x61o49gmp6QP504AFa9jq7frGQ06niAmBa5kj?=
+ =?us-ascii?Q?Gdr2C5q1j3D2dvX5nKbRCEUixDgKO4XnItvCeuJ5cOT93iprThfVFv9cGij3?=
+ =?us-ascii?Q?nSCU2GokRlPRrBz3vWoK0DOT+XptlLSPUF7qcX/YvTV+2SDZL2Vr3ib4zAIk?=
+ =?us-ascii?Q?RVHOsvffWFqg6yOf3dHLCLYsFZD4ZVI3MfYkhET/Awi1/SSs3S0jPqZ2bc6O?=
+ =?us-ascii?Q?4DhOOJjek2XLioCi+fsm3x1pjvGzTJwGG96ilVEyU3DF5+wdN5lZviMmhS2M?=
+ =?us-ascii?Q?1zqg2JMnX8iurWTpx7x49l4VQG1JPXruMCx+tp6wpi4LUGd6zgt1hcfQqvGO?=
+ =?us-ascii?Q?LREFQejD8kFcFZpJr0rEh4Qbn+MvBIFr1QHMnq5YUyC5TbQANiY+30q9ELLP?=
+ =?us-ascii?Q?RuGX8ibbLcHTkZlpAZ5EnuBq1drWTM0JzOeJODqtzNlPU6WD7WNTrv+pHTtN?=
+ =?us-ascii?Q?WFOrWH//YxbjmvZ3raQreI2WwIJqLA9ABYeBnz5OCpYexFuvcVyLkj/o3x3W?=
+ =?us-ascii?Q?6u70UHkIrjugmFJivP8/tjwJKsU+bBHknykXSdNClqFkMpcVB7G4LhHvbAUm?=
+ =?us-ascii?Q?aSTzl7MqqZr0NLCopi2/EHzi6+if/qq1vyIr+D3uOf5/LvfMO8/uQZeLYorr?=
+ =?us-ascii?Q?GbBCJQ8ZtYwZ7DlTfXzBIUitCZhEPPAMChH5HvbHS5i/znPt9Nb2VlmxC2vB?=
+ =?us-ascii?Q?3OPZCRPzNH5yZg/6SbS80FZ48YFHTjfDk2b8t7MMpzInWwLiVuRELBTQKH8C?=
+ =?us-ascii?Q?j3Rlr+8li0uxK4hDAoyNIETTEQkgJ4s2bMTU8Z3FIl2W2ZOaTuOctZMl03lv?=
+ =?us-ascii?Q?dQykNGiGEhLy7NHs1KU7+K/qJcQo+DxarZYTEZcGljLTxC3NnNI28tdF/Kgy?=
+ =?us-ascii?Q?KqoMDqVkoijED2KCLgPSheehsMroQqXEH9RS+IyNVeBE0BNjCcq7EgEjmhjF?=
+ =?us-ascii?Q?pA=3D=3D?=
 X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 3756cde8-a933-4b09-4031-08dc5fe17629
+X-MS-Exchange-CrossTenant-Network-Message-Id: f186e878-51b4-426f-9de0-08dc5fe30bc1
 X-MS-Exchange-CrossTenant-AuthSource: BYAPR12MB2743.namprd12.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 18 Apr 2024 19:55:13.5697 (UTC)
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 18 Apr 2024 20:06:34.0716 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: bux08PDQ3zM5NOB5EDIHK3E6yBfaccg6/2l6ih7Cw2Ix8XSSVxbzsnJ2leVOKuwrtowxyAiOjD5c0LQ60OxXnw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS0PR12MB6559
+X-MS-Exchange-CrossTenant-UserPrincipalName: GlBhsYLOSgxjym+w3KcsC3SBu86Vjz6pmzksuoXinVzawFPkuMIoLt5M/CNJrUvSCTGk+FgxxPk7taVM2vsPhw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY8PR12MB8193
 X-Mailman-Approved-At: Thu, 18 Apr 2024 20:08:19 +0000
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=Nvidia.com; s=selector2;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=NuM9KyT7EKwq08S57ccqrXCVBbGKjdyx+T53nDRJnt4=;
- b=uFrFoz9ize41+qGS5/YCsO9Jy3bbjEAJBWaAFAA1Cgin1Spd07x5mxLPYM3RfAtmVIbcBOAUOsaJLxt3WnI2n9ZFUeY+dXb/d68MxzMNrniWzw5QC1CFwR5DcRRWTV3ZdMLJEVoKLf2a3etuBRCJeLfRi72DonIPx5bSKCcHHxruhIRyyMqAXKgMpqnjZwzQyhzqXwQaUBeH4gbGYTKkNTXeNx+B1OF3M8hLmIRrjVscLuwYpJeCvonXQtmiG6wgcd88JFAklYKsMJOiy3Sq0atbUJh49k0xVNQHPm7hPYwGc3GtBIyDMOEIafY7T3r91wavWohkU70Jyj6kobFG/w==
+ bh=kRahbD2TgACBOB307nZ9jUKPnfYOrxs6S1ag0hiGQj8=;
+ b=M23THS5eDXZd5nIKq0+hVN0YqtPBAssKrqSeUOPeswGRTAFFbhO+w/BM3HQ0a85Ru4OdZvGh6u7sgvNWGznKxTP2eFfozX+PITV9kFu2AHDPl+Y3hlERZANOC5etu4iLr9l/r1WIGDn4wMvjTtB6D/VUSMlgx55zHxo6cAkbNifbXqNrx7udfdxSD5DZvbKl8BWYF+9iPrETdO6CnF4vcObRNGHzdYLYKAG2YhzyqAv9F2Qla9SDA/fUI9jKuY/W4ZqZIdnQFqZfSqzGh+BFSgkzq6VbuupvoAQYt/JkJYGU4QgMpzL0p9LBxYU5h9LCDl7GcSs44o8ye1IzfpZIUw==
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=reject dis=none)
  header.from=nvidia.com
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=Nvidia.com header.i=@Nvidia.com header.a=rsa-sha256
- header.s=selector2 header.b=uFrFoz9i
+ header.s=selector2 header.b=M23THS5e
 X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=nvidia.com;
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v5 08/12] iavf: periodically
- cache PHC time
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v5 09/12] iavf: refactor
+ iavf_clean_rx_irq to support legacy and flex descriptors
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -166,75 +166,148 @@ Cc: Wojciech Drewek <wojciech.drewek@intel.com>, netdev@vger.kernel.org,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Thu, 18 Apr, 2024 01:24:56 -0400 Mateusz Polchlopek <mateusz.polchlopek@intel.com> wrote:
+
+On Thu, 18 Apr, 2024 01:24:57 -0400 Mateusz Polchlopek <mateusz.polchlopek@intel.com> wrote:
 > From: Jacob Keller <jacob.e.keller@intel.com>
 >
-> The Rx timestamps reported by hardware may only have 32 bits of storage
-> for nanosecond time. These timestamps cannot be directly reported to the
-> Linux stack, as it expects 64bits of time.
+> Using VIRTCHNL_VF_OFFLOAD_FLEX_DESC, the iAVF driver is capable of
+> negotiating to enable the advanced flexible descriptor layout. Add the
+> flexible NIC layout (RXDID=2) as a member of the Rx descriptor union.
 >
-> To handle this, the timestamps must be extended using an algorithm that
-> calculates the corrected 64bit timestamp by comparison between the PHC
-> time and the timestamp. This algorithm requires the PHC time to be
-> captured within ~2 seconds of when the timestamp was captured.
+> Also add bit position definitions for the status and error indications
+> that are needed.
 >
-> Instead of trying to read the PHC time in the Rx hotpath, the algorithm
-> relies on a cached value that is periodically updated.
+> The iavf_clean_rx_irq function needs to extract a few fields from the Rx
+> descriptor, including the size, rx_ptype, and vlan_tag.
+> Move the extraction to a separate function that decodes the fields into
+> a structure. This will reduce the burden for handling multiple
+> descriptor types by keeping the relevant extraction logic in one place.
 >
-> Keep this cached time up to date by using the PTP .do_aux_work kthread
-> function.
-
-Seems reasonable.
-
+> To support handling an additional descriptor format with minimal code
+> duplication, refactor Rx checksum handling so that the general logic
+> is separated from the bit calculations. Introduce an iavf_rx_desc_decoded
+> structure which holds the relevant bits decoded from the Rx descriptor.
+> This will enable implementing flexible descriptor handling without
+> duplicating the general logic twice.
 >
-> The iavf_ptp_do_aux_work will reschedule itself about twice a second,
-> and will check whether or not the cached PTP time needs to be updated.
-> If so, it issues a VIRTCHNL_OP_1588_PTP_GET_TIME to request the time
-> from the PF. The jitter and latency involved with this command aren't
-> important, because the cached time just needs to be kept up to date
-> within about ~2 seconds.
+> Introduce an iavf_extract_flex_rx_fields, iavf_flex_rx_hash, and
+> iavf_flex_rx_csum functions which operate on the flexible NIC descriptor
+> format instead of the legacy 32 byte format. Based on the negotiated
+> RXDID, select the correct function for processing the Rx descriptors.
+>
+> With this change, the Rx hot path should be functional when using either
+> the default legacy 32byte format or when we switch to the flexible NIC
+> layout.
+>
+> Modify the Rx hot path to add support for the flexible descriptor
+> format and add request enabling Rx timestamps for all queues.
+>
+> As in ice, make sure we bump the checksum level if the hardware detected
+> a packet type which could have an outer checksum. This is important
+> because hardware only verifies the inner checksum.
 >
 > Reviewed-by: Wojciech Drewek <wojciech.drewek@intel.com>
 > Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
 > Co-developed-by: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
 > Signed-off-by: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
 > ---
->  drivers/net/ethernet/intel/iavf/iavf_ptp.c | 52 ++++++++++++++++++++++
->  drivers/net/ethernet/intel/iavf/iavf_ptp.h |  1 +
->  2 files changed, 53 insertions(+)
+>  drivers/net/ethernet/intel/iavf/iavf_txrx.c   | 354 +++++++++++++-----
+>  drivers/net/ethernet/intel/iavf/iavf_txrx.h   |   8 +
+>  drivers/net/ethernet/intel/iavf/iavf_type.h   | 149 ++++++--
+>  .../net/ethernet/intel/iavf/iavf_virtchnl.c   |   5 +
+>  4 files changed, 390 insertions(+), 126 deletions(-)
 >
-> diff --git a/drivers/net/ethernet/intel/iavf/iavf_ptp.c b/drivers/net/ethernet/intel/iavf/iavf_ptp.c
+> diff --git a/drivers/net/ethernet/intel/iavf/iavf_txrx.c b/drivers/net/ethernet/intel/iavf/iavf_txrx.c
 <snip>
 > +/**
-> + * iavf_ptp_do_aux_work - Perform periodic work required for PTP support
-> + * @ptp: PTP clock info structure
+> + * iavf_flex_rx_hash - set the hash value in the skb
+> + * @ring: descriptor ring
+> + * @rx_desc: specific descriptor
+> + * @skb: skb currently being received and modified
+> + * @rx_ptype: Rx packet type
 > + *
-> + * Handler to take care of periodic work required for PTP operation. This
-> + * includes the following tasks:
-> + *
-> + *   1) updating cached_phc_time
-> + *
-> + *      cached_phc_time is used by the Tx and Rx timestamp flows in order to
-> + *      perform timestamp extension, by carefully comparing the timestamp
-> + *      32bit nanosecond timestamps and determining the corrected 64bit
-> + *      timestamp value to report to userspace. This algorithm only works if
-> + *      the cached_phc_time is within ~1 second of the Tx or Rx timestamp
-> + *      event. This task periodically reads the PHC time and stores it, to
-> + *      ensure that timestamp extension operates correctly.
-> + *
-> + * Returns: time in jiffies until the periodic task should be re-scheduled.
-> + */
-> +long iavf_ptp_do_aux_work(struct ptp_clock_info *ptp)
+> + * This function only operates on the VIRTCHNL_RXDID_2_FLEX_SQ_NIC flexible
+> + * descriptor writeback format.
+> + **/
+> +static void iavf_flex_rx_hash(struct iavf_ring *ring,
+> +			      union iavf_rx_desc *rx_desc,
+> +			      struct sk_buff *skb, u16 rx_ptype)
 > +{
-> +	struct iavf_adapter *adapter = clock_to_adapter(ptp);
+> +	__le16 status0;
 > +
-> +	iavf_ptp_cache_phc_time(adapter);
+> +	if (!(ring->netdev->features & NETIF_F_RXHASH))
+> +		return;
 > +
-> +	/* Check work about twice a second */
-> +	return msecs_to_jiffies(500);
+> +	status0 = rx_desc->flex_wb.status_error0;
 
-HZ / 2 might be more intuitive?
+Any reason to not convert rx_desc->flex_wb.status_error0 to
+CPU-endianness for the bit check?
 
+> +	if (status0 & cpu_to_le16(IAVF_RX_FLEX_DESC_STATUS0_RSS_VALID_M)) {
+> +		u32 hash = le32_to_cpu(rx_desc->flex_wb.rss_hash);
+> +
+> +		skb_set_hash(skb, hash, iavf_ptype_to_htype(rx_ptype));
+> +	}
+> +}
+<snip>
+> +/**
+> + * iavf_extract_flex_rx_fields - Extract fields from the Rx descriptor
+> + * @rx_ring: rx descriptor ring
+> + * @rx_desc: the descriptor to process
+> + * @fields: storage for extracted values
+> + *
+> + * Decode the Rx descriptor and extract relevant information including the
+> + * size, VLAN tag, Rx packet type, end of packet field and RXE field value.
+> + *
+> + * This function only operates on the VIRTCHNL_RXDID_2_FLEX_SQ_NIC flexible
+> + * descriptor writeback format.
+> + */
+> +static void iavf_extract_flex_rx_fields(struct iavf_ring *rx_ring,
+> +					union iavf_rx_desc *rx_desc,
+> +					struct iavf_rx_extracted *fields)
+> +{
+> +	__le16 status0, status1, flexi_flags0;
+> +
+> +	fields->size = FIELD_GET(IAVF_RX_FLEX_DESC_PKT_LEN_M,
+> +				 le16_to_cpu(rx_desc->flex_wb.pkt_len));
+> +
+> +	flexi_flags0 = rx_desc->flex_wb.ptype_flexi_flags0;
+> +
+> +	fields->rx_ptype = FIELD_GET(IAVF_RX_FLEX_DESC_PTYPE_M,
+> +				     le16_to_cpu(flexi_flags0));
+> +
+> +	status0 = rx_desc->flex_wb.status_error0;
+> +	if (status0 & cpu_to_le16(IAVF_RX_FLEX_DESC_STATUS0_L2TAG1P_M) &&
+> +	    rx_ring->flags & IAVF_TXRX_FLAGS_VLAN_TAG_LOC_L2TAG1)
+> +		fields->vlan_tag = le16_to_cpu(rx_desc->flex_wb.l2tag1);
+> +
+> +	status1 = rx_desc->flex_wb.status_error1;
+
+Similar comment to previous in this function.
+
+> +	if (status1 & cpu_to_le16(IAVF_RX_FLEX_DESC_STATUS1_L2TAG2P_M) &&
+> +	    rx_ring->flags & IAVF_RXR_FLAGS_VLAN_TAG_LOC_L2TAG2_2)
+> +		fields->vlan_tag = le16_to_cpu(rx_desc->flex_wb.l2tag2_2nd);
+> +
+> +	fields->end_of_packet = FIELD_GET(IAVF_RX_FLEX_DESC_STATUS_ERR0_EOP_BIT,
+> +					  le16_to_cpu(status0));
+> +	fields->rxe = FIELD_GET(IAVF_RX_FLEX_DESC_STATUS_ERR0_RXE_BIT,
+> +				le16_to_cpu(status0));
+> +}
+> +
+> +static void iavf_extract_rx_fields(struct iavf_ring *rx_ring,
+> +				   union iavf_rx_desc *rx_desc,
+> +				   struct iavf_rx_extracted *fields)
+> +{
+> +	if (rx_ring->rxdid == VIRTCHNL_RXDID_1_32B_BASE)
+> +		iavf_extract_legacy_rx_fields(rx_ring, rx_desc, fields);
+> +	else
+> +		iavf_extract_flex_rx_fields(rx_ring, rx_desc, fields);
 > +}
 > +
 <snip>
+
+--
+Thanks,
+
+Rahul Rameshbabu
