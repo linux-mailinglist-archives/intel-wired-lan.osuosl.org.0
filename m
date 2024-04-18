@@ -2,61 +2,61 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 559A88AA3CE
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 18 Apr 2024 22:08:39 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 64C008AA3CF
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 18 Apr 2024 22:08:41 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 9B0904109D;
-	Thu, 18 Apr 2024 20:08:29 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 94BA541561;
+	Thu, 18 Apr 2024 20:08:30 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id U9EZUdqU1SG6; Thu, 18 Apr 2024 20:08:28 +0000 (UTC)
+ id 6kF60Py0tL8P; Thu, 18 Apr 2024 20:08:30 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 96EFB4097A
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org CF81140144
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1713470908;
-	bh=WCQXqLvkHa/83OLyPp6/15CHhUvd7AConybuY1RVJOI=;
+	s=default; t=1713470909;
+	bh=NuM9KyT7EKwq08S57ccqrXCVBbGKjdyx+T53nDRJnt4=;
 	h=References:From:To:Date:In-reply-to:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=2OERhNbEbwSQwShcohUga+fHgzbJPNaj2w9ncbahG7eOGHOCB7Sbe0weYykWLcLv3
-	 FtOUqILIYH0W1beu0pNE0yprK9HVqSlo8dvqWz9HCX2cTh4kWccEM/UupkE6kySfXq
-	 FZYY3p+sbTPicvJt5k4Cp0NGxfPzmEWgqlrLUeQ3y9URZyFgBiK84KVpzLka0tP4IY
-	 tWdx2Ac39Z++6bFgOACLLpJjNKpawBJRvPOnYmUQfOyrk6r0S02KuWu1sa3AG7vG3H
-	 NYwMEppphx/Xui2lpkuGjDcSdGmJBLqeKRsrc9fNus//Y4t89ObjywaWTZyecXc/b7
-	 UB3nT6NludnHA==
+	b=DOdizzJAMpvuHlKwa3NdsFb0H8b4Ai5TRwAe7L2YPH3wZ5CQ5c/p9uXeUtuqhWO7F
+	 mtBL7Au42Eo+TglMtJD1aelOMAJ8YbUjmtTEPg/1DYhniplunp5zAUUCt/O5segmSp
+	 L+xBTsvIRqPKlfOmcnWaPJtbwXQR2ZKwv7vie3gSnCpe/Qh6YiB/6fl7rfcUIDk+tb
+	 UfLahJHjQkF5HeWTyPoODdrwVw7LKo+lyM/blnqDym8euxbvwiZv87aq2+l77hXHkR
+	 OEP8WHUkf6H0MGEp51bBDwAN5rRDANhNc0e+JF/4B03kr1dA42bnENpUIEraoQo7F9
+	 EnVGG2XC8hS3g==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 96EFB4097A;
-	Thu, 18 Apr 2024 20:08:28 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id CF81140144;
+	Thu, 18 Apr 2024 20:08:29 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id D35831BF33E
- for <intel-wired-lan@lists.osuosl.org>; Thu, 18 Apr 2024 19:50:43 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 45F761BF33E
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 18 Apr 2024 19:55:18 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id CB8E4401B2
- for <intel-wired-lan@lists.osuosl.org>; Thu, 18 Apr 2024 19:50:43 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 3CE9B60A67
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 18 Apr 2024 19:55:18 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id BnRffiEdL6gT for <intel-wired-lan@lists.osuosl.org>;
- Thu, 18 Apr 2024 19:50:43 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=40.107.244.87;
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id aXJxnpVwMzVY for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 18 Apr 2024 19:55:17 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=40.107.244.48;
  helo=nam12-mw2-obe.outbound.protection.outlook.com;
  envelope-from=rrameshbabu@nvidia.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org CB0EF4015A
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org CB0EF4015A
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 6005D608F8
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6005D608F8
 Received: from NAM12-MW2-obe.outbound.protection.outlook.com
- (mail-mw2nam12on2087.outbound.protection.outlook.com [40.107.244.87])
- by smtp2.osuosl.org (Postfix) with ESMTPS id CB0EF4015A
- for <intel-wired-lan@lists.osuosl.org>; Thu, 18 Apr 2024 19:50:42 +0000 (UTC)
+ (mail-mw2nam12on2048.outbound.protection.outlook.com [40.107.244.48])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 6005D608F8
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 18 Apr 2024 19:55:17 +0000 (UTC)
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=jXZQY25yg14j86+Mo2IuMbCtsIT3ykbvBYCmV7nFe+5rlnlyzJ3y50DGD8hZGoDIm/pCfTtrHuw1pITLOGyYF5RzPkMHW5lQJpBOow84KBpjhbzea+5q1VmBAnxwHDusXCzn2JxONJ62rIijR2wa9Pe7loWszXnwseRuSm2/8lgSWb9IT3rufrZb+YPOXjwx7HBd421l9m+fX1QxkrZJZbABhitQb1cOOdgSack79TljacZ6cGVQmdNXzzlgziphfQU02SHEkQVWsofyNaPdIfqWWDU/94DUrMSzOJ2Rm692ToQscRokeRsX5CVXF0kZDZ0fbuWpBQS96xJbYwgBTQ==
+ b=a+sQx0Pfj2Fs8Bv+fpmMorbEvQ6buNtX1m4wOb+oVKU/fD4otnX/2wC1/gBUbwFS1SWvEEXsACo+vBTIfqcd/l5V2kEHO2QBWDAoGIDNwd6fpwYm5eTmDb5CNax07EHHRp4rSZ8OjpmP54iPLZBKjcwNDTpmLLZtCugE6srDdETdi19ZezoeHLgvBoo3T8iKNMBmUQeLiYBunT2XwZUNEByr+vFHmVs/V5Qx7JIP4cwnIU1+Y72ObMKN3Ljo26EQErI6wZfPRuW2U7o4cSnOaK7EIRrbavouTh03hjAZWRiwO9elqOem73gghkHcZU0kWACocsD1OzeqU4TnM+Pptg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=WCQXqLvkHa/83OLyPp6/15CHhUvd7AConybuY1RVJOI=;
- b=BEGNgaVmq0GRTuheXVavyNfMBMgZuF4NhJxM3LZiwe9zRKeQXVkdxpTlvm1wyZLyWUchTvp+AyEnWz6HMFeaCqw1F+EwfNtaA0MNNVLLBnTUbJL7QSblQWRKXlzT3BTSEy6Sq1CQjzAtHsxoMemqnOMQT0iWsW3bAx7S/H6XbLWgEslog4SMXjM0vP/jNG84214wvc6cJUzgI4v4/eP62/4w4GcPCrxy5pm8x81vmI1MdPl0BcVSV+/VjooeGloknfgLQCYX2Fz1AyVaJeya2cGGLbAGPJHrrU1xIhoXzWGTFzY1/+uPvY1Y+B3tNggzUfhHxfdywe190iD6KOeTQQ==
+ bh=NuM9KyT7EKwq08S57ccqrXCVBbGKjdyx+T53nDRJnt4=;
+ b=BQTKwoOo7/0gBax/BSzAA+jXs7m0Wz798ct87O4gej/8/7THa0Rnz5fUKMxppi9JZEEMHuQwlKZGIdBpzQ5VBC3sHlfuIFlhqdZmiROBsWH/74GOqAoo5v24ciG3EBUwmZQpINnwV4Sidh8tuS2Y9dG3+afUQwd0Kn3/spnIaOXe2P9YdUPcysR3HODSTcyq9mOnymHPTjBkVvm8EHXCdOdzpvFLnh3Iet8qYLRh76tptNEHtLVBTjjmN2HTqL4KRrDnLXVy8OoFNrJYqpgoxe0TU0hhjQW7WWFMG/FCUzFkDKlyfTR3fXLpB0x+/AmXIvZq1sPandmT2e0KMhJfIQ==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
  dkim=pass header.d=nvidia.com; arc=none
@@ -64,90 +64,90 @@ Received: from BYAPR12MB2743.namprd12.prod.outlook.com (2603:10b6:a03:61::28)
  by DS0PR12MB6559.namprd12.prod.outlook.com (2603:10b6:8:d1::6) with
  Microsoft
  SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.7472.43; Thu, 18 Apr 2024 19:50:39 +0000
+ 15.20.7472.43; Thu, 18 Apr 2024 19:55:13 +0000
 Received: from BYAPR12MB2743.namprd12.prod.outlook.com
  ([fe80::3ec0:1215:f4ed:9535]) by BYAPR12MB2743.namprd12.prod.outlook.com
  ([fe80::3ec0:1215:f4ed:9535%4]) with mapi id 15.20.7452.049; Thu, 18 Apr 2024
- 19:50:39 +0000
+ 19:55:13 +0000
 References: <20240418052500.50678-1-mateusz.polchlopek@intel.com>
- <20240418052500.50678-8-mateusz.polchlopek@intel.com>
+ <20240418052500.50678-9-mateusz.polchlopek@intel.com>
 User-agent: mu4e 1.10.8; emacs 28.2
 From: Rahul Rameshbabu <rrameshbabu@nvidia.com>
 To: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
-Date: Thu, 18 Apr 2024 12:43:00 -0700
-In-reply-to: <20240418052500.50678-8-mateusz.polchlopek@intel.com>
-Message-ID: <87o7a6e9gx.fsf@nvidia.com>
+Date: Thu, 18 Apr 2024 12:51:19 -0700
+In-reply-to: <20240418052500.50678-9-mateusz.polchlopek@intel.com>
+Message-ID: <87jzkue99b.fsf@nvidia.com>
 Content-Type: text/plain
-X-ClientProxiedBy: SJ0PR03CA0016.namprd03.prod.outlook.com
- (2603:10b6:a03:33a::21) To BYAPR12MB2743.namprd12.prod.outlook.com
+X-ClientProxiedBy: BYAPR11CA0078.namprd11.prod.outlook.com
+ (2603:10b6:a03:f4::19) To BYAPR12MB2743.namprd12.prod.outlook.com
  (2603:10b6:a03:61::28)
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
 X-MS-TrafficTypeDiagnostic: BYAPR12MB2743:EE_|DS0PR12MB6559:EE_
-X-MS-Office365-Filtering-Correlation-Id: 5d4dfc8b-0263-467e-91b4-08dc5fe0d268
+X-MS-Office365-Filtering-Correlation-Id: 3756cde8-a933-4b09-4031-08dc5fe17629
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 9+tQUluzyA3tpgFNYVQU6KRKyXeYQ7G3m0QK64x4TPI2kMo4nekWXVlfqGD/mOFdkFqR4YKM8bYwvddY4Bvhf1tXA7h3wMSBzF9OhnHy6ZkzsWAYKnpbdiXEPaZ3XljU0bNmqF0KmZbBA4v11LZJ11azndwuGh2Pfc+nZi0W6W6xblMiDW0MnoSOTUDWRFaWLWMChJnr49dk3pmUDj2aieulO5M5k7OMzfs0vFHCM6X0WdzLG3tT7atoNnlcI5EKxQsy0UaB50JB2G+UvUQ8T0f5ZnxgaEtADJby2IM74O+fFVQ/PfSl7nu1Kip8Xkixrt8V261eRMqq919IbiOiaXrv2cenf91pIPSI+S5fASuLLMVU4BVVpCWM8PhnYF27jDieUPP9a5fwGXIki+NVv+W2vFMwksdKzxdLKNDDk9/4FNYhcj7/kRT7KJCQ5kmLgGVHcucRsgMt6HtZkpM0IdW2lknlGb0YZce+gjb7nJ45ZNl6gd/FdoF6zYdChfMhIX95IkJu2dKF11xwLka23652FKhxwqcyTnwz8fxb3lsCT8PIWSO0tqHWyWlhAROzEqEC3SakSQleMwBVel0zhfimSEMrVuW9sM99zq0AVI+2QEQDCys+YsWCIaishtViciZVjXC/CW8U869ybZ7/YBke9yaiaaONWxmPvhFSzLo=
+X-Microsoft-Antispam-Message-Info: QoU4FPZJbg7xW1LcA08ql0LIx79tWvPDGR+el48jlKXH5462unqAjBw1jg8wQcAGMKABWw5mp0z6RoebXuvk3YKf6ZoarwSRDeUjOvvWP75OhNg7EjFkKablh6+SQrCvsEtjZnAFrxM+a52c1JNNdzZsXzMUX+1gldJcidxcjAp1L3rAqOPIl9YhtFoz3XLm3tPgSjKLfkJoPfI1J2+88gqJiELX5ZVJUM/iMyyt+Rbf2nvzf+fTmsa4r6H4qxzod7tRF1CX/Aqa8Lrc+QkD4Z5m3UTABIoJJWobEjT/qLdS7ILcJgjqw6nlKIpa1zeZCJMXq8GOX2Vx3m1/G8iwUkFqrfB9G/Q0IUaOESWCYWO+rpxOMiHPoLHwXsSQ9DIZOJuSWM31M4hPZGO8i8YJ7d1RokFnGIQ2LiCMii1ZHyzM3QjQvYOnpcDB0Nt1vnqfsLn/8lW7bdAm3Qp7pBI+6zRCgAGV24HVR8VZYxZc9pkNUdD+CiNrtgRCI+nOl3vOdhOetP+efLIB+jm2h4ACdq/HfAhFsubVsoBBFH7CxxeEQ8K5yBMYjFVIoBppgc+i9+llV1FbKoK4wrC1NqaPC60IdRmU/yqzjZTZeYLjatRFU7rMyoxV7YYvzrsezpysauQ2oBAzdmhb7oZ9SBFZyfh/8mM+yYgyGh8tjqlvDFw=
 X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:BYAPR12MB2743.namprd12.prod.outlook.com; PTR:; CAT:NONE;
  SFS:(13230031)(376005)(1800799015)(366007); DIR:OUT; SFP:1101; 
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?AYeinWIdXtJgXh9/z2qj4adH/n+HQUS7pAzVNOUQc3XB3+N0Od2RRY6nSlON?=
- =?us-ascii?Q?nalfXjb/t9Tl/b2yWBt+3XlIG+8Ad+m9eY3yyY24IPT29kRlAuIj3KZcbUIv?=
- =?us-ascii?Q?8Jtzz20gIhzNaZkePP2kOA+DIipYroOSOfPuERM3R2cOcWOSvorWExYVO11c?=
- =?us-ascii?Q?BUS0OX5O57PIkK+QeKbADLWwcVVkxgY0E4lGgVOyUlTnXNspjOMZ3eHV+2BL?=
- =?us-ascii?Q?cGj8amvtoclOtbHzfh44EOedpXy2pBMv7iIeXTVKk/G52D84KwdFJuPxv2el?=
- =?us-ascii?Q?gwe46OxeKg2K6cuAHOfBoT2VjpstHjUiRB3Yxm3ouSFHh+iZ/MOCiPBuy4k8?=
- =?us-ascii?Q?V3T+lu4sn2NjjqhvqI1yt7Q/7G6+uXi3XXZezNw8zSyNZKEhQ39CcPZw5L4u?=
- =?us-ascii?Q?kj21H3sWnQvlD3Sg0FPMNDU+A/ZDmhXyK72plEQwROzoTRS9uaZQaSGCtyXF?=
- =?us-ascii?Q?pgL7bc0eQ5BR8WtpljbitV6zEOhFzK6gQgZMUNdlKdrJSHjjeuin8ZAEFods?=
- =?us-ascii?Q?9WW2QBGwZQPKxePw2RhVu/KargsLn0bBK4bOzObfh6TfiQRmFYukMmUQpgDJ?=
- =?us-ascii?Q?5bTfZ6WNaTKmwL9wMQtczZyHGnQmi46+A73vcuBvDeRtZMyQ6YlyiHW5/NV2?=
- =?us-ascii?Q?2My/Zm9jE0ZrGXXt6px8F0ip4IUSbXoD4+U6ALRJwurkzQAVGAhbzXU1CxNV?=
- =?us-ascii?Q?/XTKcRDReXnUJRMWMAUWTXpPoVZePhUbCgdIfugbIrc7XeWlIciA0Cd3WKdX?=
- =?us-ascii?Q?EyiDiuMJYg1yqbwjllE2hYqjCiGKaNavt5gLGulu7mrA4Sf2J3jKj+0RJqXr?=
- =?us-ascii?Q?GfHa6UvR3HRw4yyGcV5HeT6kNGjXO+vc/M/fRCz95tPud16WnECmjErFOdeS?=
- =?us-ascii?Q?D0Bv05I9OzCZ7omVeLiSps7DLuHUgeZMWFmXFFMJ7e9ViIny+K5xYx2fmIvL?=
- =?us-ascii?Q?VuHmaBzpghcYQxVd35p//clOAPni3G6r5RG0LVOf/KZ7QXV3WDGO4kRiL+z5?=
- =?us-ascii?Q?gaw0bpeBprmlsy9UAWDS4LXvXiMGhPUYrvZfpD88pjRhn+hAnZE2f5gBtrJu?=
- =?us-ascii?Q?q/5ZO59GXvc9idnt0kYrx9SY4jW/zNliI5IbeY5D2DPotGtOPmNb8J0C5lSQ?=
- =?us-ascii?Q?iVGn9RwD7JlcXTkBk6R5XFkYbAj35sT/Th96NwzC7vDYcpLQkfp2AU7I2/xi?=
- =?us-ascii?Q?idJhGsB8gfyEySehPz+htkU6Wi4rIWn99OWdSUbbMfUzNahIGd7zyIC84KXL?=
- =?us-ascii?Q?IkGc8VzQJwM+J+Z5JR4Y/p9fRY4kjh7wiCnhQJOQwtLzw6HOdwnrhfkKqO+2?=
- =?us-ascii?Q?T90JCFGJLAa52FTjQeM73akxbvZ3LBfkci064vtvaeD6/0c0AW59iL/6D4ZX?=
- =?us-ascii?Q?S5PcDwtMiMzKxibCpmb3lwjNesIEYGybCZMG87LTxEcmIJPE8oKd2ROsOQNk?=
- =?us-ascii?Q?9n3M3eDiccTvg1gxZ8LGRa7u2bL87EcOZN8my1I4cEuXjn5ZjISTtd6SJc1i?=
- =?us-ascii?Q?5vJev8em/oVy1lLfufg9bNjWcXLBc7Yw+j2pt4afHqARpCk5TutgshPo0pOV?=
- =?us-ascii?Q?CthnevhJ9kjYGXTL2AMrCXWpNfHqgQpib797IKcmuZnot2fmRu5eMWL61/A2?=
- =?us-ascii?Q?4Q=3D=3D?=
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?qM0BfTU35v0NTpvtrPgKtuZbY3hcHJub8/WEYG01+R9QhydxCWui9dEc+Ced?=
+ =?us-ascii?Q?DTHrmkudtKq99svSzoGqXrEydnazn13naq10ysP+Fl9goYYp2KdqWhoImUNR?=
+ =?us-ascii?Q?nVQRrJ5POK6Rt9EqGVmSprjrTuzl0SlEWOQH6DcVaRuxMCxh7FPzYcQMSQTx?=
+ =?us-ascii?Q?NPnHAJK66x44/pcDq2tB0uFaY+I/rLfVXASN6sK5qyoD17yJFkE1TdHVOL71?=
+ =?us-ascii?Q?hxK3hInHqc4J+RruBJi9OrT0e/tzUQEGS45HniAPI7KXtmqXl6CfuXoW5r9J?=
+ =?us-ascii?Q?I6iSuNF4eV3psP5WBv5rbuqiXaLhMrh9q5/f2UryKuO8DUg5TUUGSqS9avjQ?=
+ =?us-ascii?Q?rD085oaEx8Vc+UimrflkYRc15nZ7AZykVgTO5YvdfZmUFt6mubJb7YIa4haH?=
+ =?us-ascii?Q?Itmr4MVOGx1mcogCKJ6TieVh+bm0USt0HGTmPqBR36SFbq6SbRtL3RcQ6odj?=
+ =?us-ascii?Q?OKh7p7qKGVZ4/hvQoUK3OlQbcpjDJoXgMD8QQ/+o+y4xJoTc55n5vv4rw88B?=
+ =?us-ascii?Q?EuFk7s0XnadI4YR1OS5GAlpYFuXey43RMvrciDgq/CL1QsD5ZwzflgSGMymv?=
+ =?us-ascii?Q?go2NeQHXGikZu4UCyuqOzefrErSntt36+KxjibASYRYgO2NL8e44AK13KVof?=
+ =?us-ascii?Q?u7J8Y9eMXiLhlaszgeiM1zghwVziqeiEnTSp3DSO7RU9EvypupSltywGRnHA?=
+ =?us-ascii?Q?gZYmV5yZns/EyMMgA/wLUL06gqCqplR9MFwdgP5zPUEA8ZcxsrHqjvmCHVpF?=
+ =?us-ascii?Q?AG8hcurojB767pqohaZwZkxiZrmjlbQ8buCCRU0CGhGoH7k41XDQoCoYH2Tj?=
+ =?us-ascii?Q?Y8m15raqWnYQDmyzgZnEtU9R7my3jp/eAzt7JQh4+dzbuP8ah0Cb+Pm52sGc?=
+ =?us-ascii?Q?ZbNEv1Qu2WZXRECfTzLxGo8aVIKkjwcNfF+5y3DVDKCfW65ma461ynoA7EeW?=
+ =?us-ascii?Q?qalUmPjzydbSlZ5bdM2qCJfqqbaLbnve0lOkE1PBDJocOLY51tqePSfkg99o?=
+ =?us-ascii?Q?FqGxaK3yEnZNH/1ErUhxnXsHyn8LZKTHAszjFjSyJMc3BwkaWPv2cnfw/PM2?=
+ =?us-ascii?Q?geI//+A4aUAYECZ0F4YYO5EirdkZg+WCAjNhO7wZv80svkbDu3L2obEJ0ONh?=
+ =?us-ascii?Q?DOBD2rBRA3U4rcEKdgi4VaUEnDfUJaFV4uFA3rEQLS3tHmEMrxIZy5JfbNwY?=
+ =?us-ascii?Q?1wQ9/aL/K50qw5dnrDpu2JLxlJyjfsL7Ymg0QpKMLN0Ceztk/ZlZJbwxfKbv?=
+ =?us-ascii?Q?1qKAjhH6EH/aTqhewSB74lrJsjOOX4tsBl50Z1pVbfj/z01jmsP5/+ck2n3+?=
+ =?us-ascii?Q?RmgCKMPPp8WPqyXdVC/cVkhJ2op+pbUkVDVw6W4DqECOhwU1n00a0c1nsbk1?=
+ =?us-ascii?Q?UkCmbPXUTRos0Vq6EhdIxxn9cwB0kYAqkVr2EqFnmcsppYtHweLyUFdDOl0B?=
+ =?us-ascii?Q?THeB0uTvBQj5PyA4xJhcA9anZt6/JRvvY/qrG5g7+E0hs8NSwuXvPxKlrupK?=
+ =?us-ascii?Q?wsWWe2TTqSKL+MWtLn5fP1tANCyxmS1EaANGBeyktzLwhF24UNoEHR4PpVx9?=
+ =?us-ascii?Q?sTKgzVPlsfZfq4EgFTSCZTHB19RJtkotMj+a+uqxAWA3e7ZC8+pcQNSpcDlT?=
+ =?us-ascii?Q?Zw=3D=3D?=
 X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 5d4dfc8b-0263-467e-91b4-08dc5fe0d268
+X-MS-Exchange-CrossTenant-Network-Message-Id: 3756cde8-a933-4b09-4031-08dc5fe17629
 X-MS-Exchange-CrossTenant-AuthSource: BYAPR12MB2743.namprd12.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 18 Apr 2024 19:50:38.8565 (UTC)
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 18 Apr 2024 19:55:13.5697 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: AevhZHx1n7XIxm9++70D+50VFPS9wfF3p6OQIjCaBUkHqTAx60wcuzDetfa4zE6lnCA9hnUzM3wynaw7GJNu4Q==
+X-MS-Exchange-CrossTenant-UserPrincipalName: bux08PDQ3zM5NOB5EDIHK3E6yBfaccg6/2l6ih7Cw2Ix8XSSVxbzsnJ2leVOKuwrtowxyAiOjD5c0LQ60OxXnw==
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS0PR12MB6559
 X-Mailman-Approved-At: Thu, 18 Apr 2024 20:08:19 +0000
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=Nvidia.com; s=selector2;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=WCQXqLvkHa/83OLyPp6/15CHhUvd7AConybuY1RVJOI=;
- b=Gi3Hb8z/k7XBQmIx6YqJfCqiq/rRUxl+4wieYPjYmMbZJ22lJuQ4ArALHC/aiDiUgB3ptIIO0EhRfU6pPcL4hR6Oq0iRQ8gX2eHKzCiNDGwVx5GWaIpbgmiFlTQdlhyavKIEn0nWuksC1k9rmuVQ2h7AVd25JpnhROskUb4xC5iX6gS6cphDqvBkZSfFV9qihUpBoVw3iwUrEDM6pSFMtc9dspJyhI5b0QINpmhUFkN8FgeaFM62CXFbSJDAdqq3tWwh9PoMNHTRmz96gJKWj4HqIuORt7nMcDs5CUAi3YI3zABV3Dyr7X5iNqLkXM+uvQjWMIQ0ZJdjpK0XCNNwKw==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ bh=NuM9KyT7EKwq08S57ccqrXCVBbGKjdyx+T53nDRJnt4=;
+ b=uFrFoz9ize41+qGS5/YCsO9Jy3bbjEAJBWaAFAA1Cgin1Spd07x5mxLPYM3RfAtmVIbcBOAUOsaJLxt3WnI2n9ZFUeY+dXb/d68MxzMNrniWzw5QC1CFwR5DcRRWTV3ZdMLJEVoKLf2a3etuBRCJeLfRi72DonIPx5bSKCcHHxruhIRyyMqAXKgMpqnjZwzQyhzqXwQaUBeH4gbGYTKkNTXeNx+B1OF3M8hLmIRrjVscLuwYpJeCvonXQtmiG6wgcd88JFAklYKsMJOiy3Sq0atbUJh49k0xVNQHPm7hPYwGc3GtBIyDMOEIafY7T3r91wavWohkU70Jyj6kobFG/w==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=reject dis=none)
  header.from=nvidia.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=Nvidia.com header.i=@Nvidia.com header.a=rsa-sha256
- header.s=selector2 header.b=Gi3Hb8z/
+ header.s=selector2 header.b=uFrFoz9i
 X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=nvidia.com;
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v5 07/12] iavf: add support
- for indirect access to PHC time
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v5 08/12] iavf: periodically
+ cache PHC time
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -166,42 +166,75 @@ Cc: Wojciech Drewek <wojciech.drewek@intel.com>, netdev@vger.kernel.org,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-
-On Thu, 18 Apr, 2024 01:24:55 -0400 Mateusz Polchlopek <mateusz.polchlopek@intel.com> wrote:
+On Thu, 18 Apr, 2024 01:24:56 -0400 Mateusz Polchlopek <mateusz.polchlopek@intel.com> wrote:
 > From: Jacob Keller <jacob.e.keller@intel.com>
 >
-> Implement support for reading the PHC time indirectly via the
-> VIRTCHNL_OP_1588_PTP_GET_TIME operation.
+> The Rx timestamps reported by hardware may only have 32 bits of storage
+> for nanosecond time. These timestamps cannot be directly reported to the
+> Linux stack, as it expects 64bits of time.
 >
-> Based on some simple tests with ftrace, the latency of the indirect
-> clock access appears to be about ~110 microseconds. This is due to the
-> cost of preparing a message to send over the virtchnl queue.
+> To handle this, the timestamps must be extended using an algorithm that
+> calculates the corrected 64bit timestamp by comparison between the PHC
+> time and the timestamp. This algorithm requires the PHC time to be
+> captured within ~2 seconds of when the timestamp was captured.
 >
-> This is expected, due to the increased jitter caused by sending messages
-> over virtchnl. It is not easy to control the precise time that the
-> message is sent by the VF, or the time that the message is responded to
-> by the PF, or the time that the message sent from the PF is received by
-> the VF.
+> Instead of trying to read the PHC time in the Rx hotpath, the algorithm
+> relies on a cached value that is periodically updated.
 >
-> For sending the request, note that many PTP related operations will
-> require sending of VIRTCHNL messages. Instead of adding a separate AQ
-> flag and storage for each operation, setup a simple queue mechanism for
-> queuing up virtchnl messages.
+> Keep this cached time up to date by using the PTP .do_aux_work kthread
+> function.
+
+Seems reasonable.
+
 >
-> Each message will be converted to a iavf_ptp_aq_cmd structure which ends
-> with a flexible array member. A single AQ flag is added for processing
-> messages from this queue. In principle this could be extended to handle
-> arbitrary virtchnl messages. For now it is kept to PTP-specific as the
-> need is primarily for handling PTP-related commands.
->
-> Use this to implement .gettimex64 using the indirect method via the
-> virtchnl command. The response from the PF is processed and stored into
-> the cached_phc_time. A wait queue is used to allow the PTP clock gettime
-> request to sleep until the message is sent from the PF.
+> The iavf_ptp_do_aux_work will reschedule itself about twice a second,
+> and will check whether or not the cached PTP time needs to be updated.
+> If so, it issues a VIRTCHNL_OP_1588_PTP_GET_TIME to request the time
+> from the PF. The jitter and latency involved with this command aren't
+> important, because the cached time just needs to be kept up to date
+> within about ~2 seconds.
 >
 > Reviewed-by: Wojciech Drewek <wojciech.drewek@intel.com>
 > Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
+> Co-developed-by: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
 > Signed-off-by: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
 > ---
+>  drivers/net/ethernet/intel/iavf/iavf_ptp.c | 52 ++++++++++++++++++++++
+>  drivers/net/ethernet/intel/iavf/iavf_ptp.h |  1 +
+>  2 files changed, 53 insertions(+)
+>
+> diff --git a/drivers/net/ethernet/intel/iavf/iavf_ptp.c b/drivers/net/ethernet/intel/iavf/iavf_ptp.c
+<snip>
+> +/**
+> + * iavf_ptp_do_aux_work - Perform periodic work required for PTP support
+> + * @ptp: PTP clock info structure
+> + *
+> + * Handler to take care of periodic work required for PTP operation. This
+> + * includes the following tasks:
+> + *
+> + *   1) updating cached_phc_time
+> + *
+> + *      cached_phc_time is used by the Tx and Rx timestamp flows in order to
+> + *      perform timestamp extension, by carefully comparing the timestamp
+> + *      32bit nanosecond timestamps and determining the corrected 64bit
+> + *      timestamp value to report to userspace. This algorithm only works if
+> + *      the cached_phc_time is within ~1 second of the Tx or Rx timestamp
+> + *      event. This task periodically reads the PHC time and stores it, to
+> + *      ensure that timestamp extension operates correctly.
+> + *
+> + * Returns: time in jiffies until the periodic task should be re-scheduled.
+> + */
+> +long iavf_ptp_do_aux_work(struct ptp_clock_info *ptp)
+> +{
+> +	struct iavf_adapter *adapter = clock_to_adapter(ptp);
+> +
+> +	iavf_ptp_cache_phc_time(adapter);
+> +
+> +	/* Check work about twice a second */
+> +	return msecs_to_jiffies(500);
 
-Reviewed-by: Rahul Rameshbabu <rrameshbabu@nvidia.com>
+HZ / 2 might be more intuitive?
+
+> +}
+> +
+<snip>
