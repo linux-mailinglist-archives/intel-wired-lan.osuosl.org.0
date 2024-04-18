@@ -1,100 +1,106 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id BA9348A93FD
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 18 Apr 2024 09:30:32 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 87D2C8A95C3
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 18 Apr 2024 11:13:52 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 3FB4381F45;
-	Thu, 18 Apr 2024 07:30:31 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id E8D084159A;
+	Thu, 18 Apr 2024 09:13:50 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id EZvwKw3057je; Thu, 18 Apr 2024 07:30:30 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id aIlqgevpL8Ip; Thu, 18 Apr 2024 09:13:50 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8A66581F0A
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org D7C6B4159C
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1713425430;
-	bh=LBchh3ctoKIyTg1KvRtEpcHY08UPnQa/BKEUg3A0GaA=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1713431629;
+	bh=K/KzzeU25/s0xz/auM3Oi5MCh7TSjDVlwvMCr/DgP48=;
+	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=M6tQjFRiwYy2MlYPHvjy2CeWr/X+9lc3fKKGmAHUx70Evujy7CVyVirZbCLd1YNDh
-	 nC0F4nrabzt9E+5V4cETbzFJg41GGgbh7YWpp/oEXo48bsUF+NeoeAqMDZKjXwrguy
-	 H10KYew3UYL8p4Ae820EuN8m9JAEDUfaLQ3c6us2JbxUGteUQkpPmgwBkFBJigVB80
-	 DySfjiXGX2are8NPJLphnoo17Z8LSwR383mcD4Ykl1ACras5MFv+zxg64r2paOJ1Aw
-	 /AFz3c3BeOoiHf7VuUnsMhfnbFfWCNXxF/MjSQQYee3fUCrC7vLRzyIDoOa97YDEwu
-	 /HohfZ68hvYCg==
+	b=k5/oDea1AYUnb/+ujc81im6heNsbeguXGD33n9m8yvfSAMX0xMxqSMmde5tP+4nIC
+	 KR9R86zzJEsr2qjbddeV3W7qjFeUDwLg+nx5eyw2pD/TzgFfEMmzHN56M0MdTOkq2O
+	 Q31PymazTvAtEmFbhJFgxAwTrIw1C+CCNHlJr/WtzH32q7JjShZ+HR5nRn1hyztgao
+	 IyTS8b0vNDBGEPvthohattSqgHwALaB8B4u9yUvKPe9gZDCyTpFw/LyPjxz9GhaIu7
+	 a4BAJGry9g0tmFK1R6MEmjumF7lnMbucrosX4w7+uKs7qA/GlN5Us3XquDQqq165Wd
+	 OXVgguot8jm1g==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 8A66581F0A;
-	Thu, 18 Apr 2024 07:30:30 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id D7C6B4159C;
+	Thu, 18 Apr 2024 09:13:49 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id A811A1BF31E
- for <intel-wired-lan@lists.osuosl.org>; Thu, 18 Apr 2024 07:30:28 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 8E0D01BF32E
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 18 Apr 2024 09:13:47 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 93D1281F0A
- for <intel-wired-lan@lists.osuosl.org>; Thu, 18 Apr 2024 07:30:28 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 7967040126
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 18 Apr 2024 09:13:47 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id mbpi3y2-1Nic for <intel-wired-lan@lists.osuosl.org>;
- Thu, 18 Apr 2024 07:30:27 +0000 (UTC)
-Received-SPF: None (mailfrom) identity=mailfrom; client-ip=192.198.163.16;
- helo=mgamail.intel.com; envelope-from=michal.swiatkowski@linux.intel.com;
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id t6kl7TzRSfV6 for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 18 Apr 2024 09:13:46 +0000 (UTC)
+Received-SPF: None (mailfrom) identity=mailfrom; client-ip=198.175.65.9;
+ helo=mgamail.intel.com; envelope-from=naamax.meir@linux.intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org CFB1281EF7
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org CFB1281EF7
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.16])
- by smtp1.osuosl.org (Postfix) with ESMTPS id CFB1281EF7
- for <intel-wired-lan@lists.osuosl.org>; Thu, 18 Apr 2024 07:30:26 +0000 (UTC)
-X-CSE-ConnectionGUID: msUcSI87R8ChFTBn02jyPA==
-X-CSE-MsgGUID: XN40gV0kQ5uqS3khzfhLtA==
-X-IronPort-AV: E=McAfee;i="6600,9927,11047"; a="9502747"
-X-IronPort-AV: E=Sophos;i="6.07,211,1708416000"; 
-   d="scan'208";a="9502747"
-Received: from orviesa006.jf.intel.com ([10.64.159.146])
- by fmvoesa110.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 18 Apr 2024 00:30:26 -0700
-X-CSE-ConnectionGUID: iks+W5Y9Q5K1RKF6sS7HkQ==
-X-CSE-MsgGUID: KqH5QFqvRm68XI9aFxiv3Q==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 18B874011E
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 18B874011E
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.9])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 18B874011E
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 18 Apr 2024 09:13:45 +0000 (UTC)
+X-CSE-ConnectionGUID: 8ii03wsDR++ZYauGyWAj0Q==
+X-CSE-MsgGUID: PMfrgsE6QZutwyx+VuPlCA==
+X-IronPort-AV: E=McAfee;i="6600,9927,11047"; a="31446461"
+X-IronPort-AV: E=Sophos;i="6.07,211,1708416000"; d="scan'208";a="31446461"
+Received: from orviesa002.jf.intel.com ([10.64.159.142])
+ by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 18 Apr 2024 02:13:41 -0700
+X-CSE-ConnectionGUID: Q80yaZIkSROABstXCsNY9g==
+X-CSE-MsgGUID: q9OQ6LECSp20L9+ZHhLUXA==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.07,211,1708416000"; d="scan'208";a="23316867"
-Received: from unknown (HELO mev-dev) ([10.237.112.144])
- by orviesa006-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 18 Apr 2024 00:30:24 -0700
-Date: Thu, 18 Apr 2024 09:30:01 +0200
-From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-To: =?iso-8859-1?Q?Asbj=F8rn_Sloth_T=F8nnesen?= <ast@fiberby.net>
-Message-ID: <ZiDL+TTeJWhYam6Q@mev-dev>
-References: <20240416144331.15336-1-ast@fiberby.net>
+X-IronPort-AV: E=Sophos;i="6.07,211,1708416000"; d="scan'208";a="53852345"
+Received: from naamamex-mobl.ger.corp.intel.com (HELO [10.245.136.172])
+ ([10.245.136.172])
+ by orviesa002-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 18 Apr 2024 02:13:37 -0700
+Message-ID: <ebb704a3-eb09-4433-8858-990e17a87721@linux.intel.com>
+Date: Thu, 18 Apr 2024 12:13:17 +0300
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20240416144331.15336-1-ast@fiberby.net>
+User-Agent: Mozilla Thunderbird
+To: Lukas Wunner <lukas@wunner.de>, "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>,
+ Jesse Brandeburg <jesse.brandeburg@intel.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>
+References: <2f1be6b1cf2b3346929b0049f2ac7d7d79acb5c9.1713188539.git.lukas@wunner.de>
+Content-Language: en-US
+From: "naamax.meir" <naamax.meir@linux.intel.com>
+In-Reply-To: <2f1be6b1cf2b3346929b0049f2ac7d7d79acb5c9.1713188539.git.lukas@wunner.de>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1713425427; x=1744961427;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:content-transfer-encoding:in-reply-to;
- bh=5g7iu/VVAy/L+SP4+CheknDrk8WwulKiELdeRGtgDF8=;
- b=QY/N9fundHkAsTf2cChu4e4/6lr9980bnzNQ21h/OQP7ztb0yckr1Da1
- i34raXWOw5n6RxnrdiN8af7KZs+2bkdOOdDWu+rktqUIdESRRczVvAfbb
- byMtCuht0zcmgaRUfSCcYNSZw0a0lQH41/mYZVroRvnok8HJ0D7gLl1RA
- kBJPpyyc28KBXpHU0lXAAgeKStSL4k8e2Q62SsYoDDSGiQXhjCtFL0cK7
- IEmlY6ktAiUY/udcclDF9l2QlEE7/Ok2sNkfLfCVCiHSll9FpA6lYUf5L
- KQ9bCwOxgkL4AyRlo5ClX4WXKd1f5tqkRGSFpopUBOQ6kA74s5ls7/kJk
- w==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ t=1713431626; x=1744967626;
+ h=message-id:date:mime-version:subject:to:cc:references:
+ from:in-reply-to:content-transfer-encoding;
+ bh=rQGVQURqecrBOAPb1l2hVI6jUgQPxnMOVRcXI3wTpIM=;
+ b=DnUXUTKQ/SJjWfRvGTyIzM0pnyG3pLYXncfLylWFSvRPdBj4SJRtuAK+
+ EKCeXAN/phe0SLzEh8tDagjV/h/K5NNfGDgq+2y58WUxUTJuk3DIBmBEf
+ eEzC/GLoEVOvCRcbhz6dpBBlHmJHJaSPtP+uT/7yUIipt85WurPN6Qa/P
+ eoZ/kIL8MgsFTQt0cpEd5H41uTnWTdWdtSVEzoEDASLqhJvJhsad8qteu
+ 8hrE8x+KOhTF5ZwZPaghpeQBvuV2TDdkU6TsJjMIBNnuKZUKYlfwiQNiI
+ xwfTj2VBM42H3HWnxIaHEpvxy7hamOhCUcEmXYhViS88ZnlT6Wo44xIAk
+ A==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=none (p=none dis=none)
  header.from=linux.intel.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=QY/N9fun
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next] ice: flower: validate
- control flags
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=DnUXUTKQ
+Subject: Re: [Intel-wired-lan] [PATCH net] igc: Fix LED-related deadlock on
+ driver unbind
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -107,48 +113,55 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- Eric Dumazet <edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
- Jakub Kicinski <kuba@kernel.org>, intel-wired-lan@lists.osuosl.org,
- Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>
+Cc: Andrew Lunn <andrew@lunn.ch>, Sasha Neftin <sasha.neftin@intel.com>,
+ Roman Lozko <lozko.roma@gmail.com>, Kurt Kanzenbach <kurt@linutronix.de>,
+ intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
+ Heiner Kallweit <hkallweit1@gmail.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, Apr 16, 2024 at 02:43:30PM +0000, Asbjørn Sloth Tønnesen wrote:
-> This driver currently doesn't support any control flags.
+On 4/15/2024 16:48, Lukas Wunner wrote:
+> Roman reports a deadlock on unplug of a Thunderbolt docking station
+> containing an Intel I225 Ethernet adapter.
 > 
-> Use flow_rule_has_control_flags() to check for control flags,
-> such as can be set through `tc flower ... ip_flags frag`.
+> The root cause is that led_classdev's for LEDs on the adapter are
+> registered such that they're device-managed by the netdev.  That
+> results in recursive acquisition of the rtnl_lock() mutex on unplug:
 > 
-> In case any control flags are masked, flow_rule_has_control_flags()
-> sets a NL extended error message, and we return -EOPNOTSUPP.
+> When the driver calls unregister_netdev(), it acquires rtnl_lock(),
+> then frees the device-managed resources.  Upon unregistering the LEDs,
+> netdev_trig_deactivate() invokes unregister_netdevice_notifier(),
+> which tries to acquire rtnl_lock() again.
 > 
-> Only compile-tested.
+> Avoid by using non-device-managed LED registration.
 > 
-> Signed-off-by: Asbjørn Sloth Tønnesen <ast@fiberby.net>
+> Stack trace for posterity:
+> 
+>    schedule+0x6e/0xf0
+>    schedule_preempt_disabled+0x15/0x20
+>    __mutex_lock+0x2a0/0x750
+>    unregister_netdevice_notifier+0x40/0x150
+>    netdev_trig_deactivate+0x1f/0x60 [ledtrig_netdev]
+>    led_trigger_set+0x102/0x330
+>    led_classdev_unregister+0x4b/0x110
+>    release_nodes+0x3d/0xb0
+>    devres_release_all+0x8b/0xc0
+>    device_del+0x34f/0x3c0
+>    unregister_netdevice_many_notify+0x80b/0xaf0
+>    unregister_netdev+0x7c/0xd0
+>    igc_remove+0xd8/0x1e0 [igc]
+>    pci_device_remove+0x3f/0xb0
+> 
+> Fixes: ea578703b03d ("igc: Add support for LEDs on i225/i226")
+> Reported-by: Roman Lozko <lozko.roma@gmail.com>
+> Closes: https://lore.kernel.org/r/CAEhC_B=ksywxCG_+aQqXUrGEgKq+4mqnSV8EBHOKbC3-Obj9+Q@mail.gmail.com/
+> Signed-off-by: Kurt Kanzenbach <kurt@linutronix.de>
+> Signed-off-by: Lukas Wunner <lukas@wunner.de>
+> Cc: Heiner Kallweit <hkallweit1@gmail.com>
 > ---
->  drivers/net/ethernet/intel/ice/ice_tc_lib.c | 4 ++++
->  1 file changed, 4 insertions(+)
-> 
-> diff --git a/drivers/net/ethernet/intel/ice/ice_tc_lib.c b/drivers/net/ethernet/intel/ice/ice_tc_lib.c
-> index 2f2fce285ecd..361abd7d7561 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_tc_lib.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_tc_lib.c
-> @@ -1673,6 +1673,10 @@ ice_parse_cls_flower(struct net_device *filter_dev, struct ice_vsi *vsi,
->  		flow_rule_match_control(rule, &match);
->  
->  		addr_type = match.key->addr_type;
-> +
-> +		if (flow_rule_has_control_flags(match.mask->flags,
-> +						fltr->extack))
-> +			return -EOPNOTSUPP;
->  	}
->  
+>   drivers/net/ethernet/intel/igc/igc.h      |  2 ++
+>   drivers/net/ethernet/intel/igc/igc_leds.c | 38 ++++++++++++++++++++++++-------
+>   drivers/net/ethernet/intel/igc/igc_main.c |  3 +++
+>   3 files changed, 35 insertions(+), 8 deletions(-)
 
-Thanks,
-Reviewed-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-
->  	if (addr_type == FLOW_DISSECTOR_KEY_IPV4_ADDRS) {
-> -- 
-> 2.43.0
-> 
+Tested-by: Naama Meir <naamax.meir@linux.intel.com>
