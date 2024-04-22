@@ -2,131 +2,90 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 28E168AD35C
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 22 Apr 2024 19:39:47 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9D01B8AD3FC
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 22 Apr 2024 20:32:19 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 9E26F60ACC;
-	Mon, 22 Apr 2024 17:39:39 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 495E160AAF;
+	Mon, 22 Apr 2024 18:32:17 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id ZGRjfTe9fTPR; Mon, 22 Apr 2024 17:39:39 +0000 (UTC)
+ id U3DyqNAoXwIF; Mon, 22 Apr 2024 18:32:16 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org F1AFF608AB
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 77B16608D8
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1713807579;
-	bh=VjDIyXeRN5F/Rz1j7hLtt0c+k3OrZr+6KVwQKgEg9NA=;
-	h=From:Date:References:In-Reply-To:To:Subject:List-Id:
+	s=default; t=1713810736;
+	bh=MrE/HwIhJZZFHOBIDTvwb6PfJPVpZg+ixZaEUwQxYbY=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=nvi/1vIsagBoZPc1smPARBuHauJMdrd0kRsKGVyF14wUZA4JpX+PiEtFE2laZKzOY
-	 1zLx5K1CPhPVFKSd8WW9zxsMzHhFSzNo3nffuHZuHJ76epp7EtPkcCmZ9Wd6rghtYp
-	 SZNHmZgQqyj3xBrCvorQzbw7QjVMLu9IxpYKPRabSZEW0sH2YmBrDDinymp1fJYEbu
-	 bydzG+PC67ax1x2lf6wmpUteOV1PAGB1niyBgHUZ1v9/dSorOqn5NSo8bMkdKaU1f4
-	 oCfJjzzdL0wAJDl2zhIKxxINrutPO6daB5omGePYLVwghiu5w0BTBRAqzQF/bA/9zF
-	 lJCllPHhL6Hpg==
+	b=KIKLGsUxC2a6/u2UrIs0+jjhgnBGpXUmA6ozUKJCskgEU75wJ5u6KKHyM0Q2Z4+hx
+	 Zjhn+kNiJIRMdAjXpKXT/SJAL9L2h2qB8ZOny2frIayYx852FTzOiJzVCGwY2BgaGj
+	 0FNExapCS7I52NTliPM08XLejm8qBJGzzyTXCQ5Gu2Z1xKLoTQY3JmdZKakmvx2GGG
+	 SFSDZljLCiz0bztrQ2IJfp9IFwDnhtx/WuXVmTLYsDX9qMVBlNUAHAM6U0xBIUdJnw
+	 i/tKMpyPCYWRrAK3zWfbO7AixQWfTv4HnToVaeDMOjSGarHvdMQ2LDHdQygb9/DvOq
+	 cLfuA2997LLAA==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id F1AFF608AB;
-	Mon, 22 Apr 2024 17:39:38 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 77B16608D8;
+	Mon, 22 Apr 2024 18:32:16 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 684241BF48B
- for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Apr 2024 16:42:56 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 21CA91BF5DC
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Apr 2024 18:32:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 5576060731
- for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Apr 2024 16:42:56 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 0C3CC4062B
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Apr 2024 18:32:15 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id ZLblDNlEzb9J for <intel-wired-lan@lists.osuosl.org>;
- Mon, 22 Apr 2024 16:42:55 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 9CKFPXRztWR1 for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 22 Apr 2024 18:32:13 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2607:f8b0:4864:20::62b; helo=mail-pl1-x62b.google.com;
- envelope-from=minhquangbui99@gmail.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 96D3E60708
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 96D3E60708
-Received: from mail-pl1-x62b.google.com (mail-pl1-x62b.google.com
- [IPv6:2607:f8b0:4864:20::62b])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 96D3E60708
- for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Apr 2024 16:42:55 +0000 (UTC)
-Received: by mail-pl1-x62b.google.com with SMTP id
- d9443c01a7336-1e86d56b3bcso27541695ad.1
- for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Apr 2024 09:42:55 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1713804175; x=1714408975;
- h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
- :mime-version:subject:date:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=VjDIyXeRN5F/Rz1j7hLtt0c+k3OrZr+6KVwQKgEg9NA=;
- b=Sm1ROCfRuT8lszqPNwY4xISHReF2SaZmEGb5R6D4nTnWLE2WF3A+nl/0QAQrHlJKan
- 2soFJpFP89DcS/qd0w7flUpIxRCQOA8sE5hu0pQdMHj6MzlwUEj447r1GDfrNUXeCADt
- uAAJ0xWZIRrA1CobkRbVoZ/dazo3/AJVF7jmbYByatL73QEIvaAqVwF0Mv+h9tFaR1HY
- Jl9xBbt7mwQrSZNzZ6jkPBgdCVhZOqxRClE5tp0R035IEl5fMhgBCp0Tih354hW1I0sh
- hxqnB4lIkMTRfQ6SNdOa5xdVpGgUSkhT2uNjHsEdB1yvAcfY+JlrZRPb4Aq3dBAaDMF8
- igxg==
-X-Gm-Message-State: AOJu0Yzuv8/e5LBTmzFtO6drmnerbrRo1cAN1Vb9sIWfakoXczbdoVOY
- wwPGrTPrRloXX+Rt0/ldFySC8Bu8G92OfNq+YUm1N+9S6aoJIThm
-X-Google-Smtp-Source: AGHT+IEBSDCtqMN9don4XWWjqMotOgj9q/MREDNxdL5MkB6wNycQQ0VxWmkAd//5A3lFd861WFvO0g==
-X-Received: by 2002:a17:903:120e:b0:1e3:dfdc:6972 with SMTP id
- l14-20020a170903120e00b001e3dfdc6972mr13052319plh.9.1713804174824; 
- Mon, 22 Apr 2024 09:42:54 -0700 (PDT)
-Received: from [127.0.1.1] ([2001:ee0:50f5:5d0:f32d:f608:a763:3732])
- by smtp.googlemail.com with ESMTPSA id
- p3-20020a170902780300b001e7b8c21ebesm8461702pll.225.2024.04.22.09.42.46
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 22 Apr 2024 09:42:54 -0700 (PDT)
-From: Bui Quang Minh <minhquangbui99@gmail.com>
-Date: Mon, 22 Apr 2024 23:41:40 +0700
+ client-ip=2604:1380:4641:c500::1; helo=dfw.source.kernel.org;
+ envelope-from=horms@kernel.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org A240340515
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A240340515
+Received: from dfw.source.kernel.org (dfw.source.kernel.org
+ [IPv6:2604:1380:4641:c500::1])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id A240340515
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 22 Apr 2024 18:32:12 +0000 (UTC)
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by dfw.source.kernel.org (Postfix) with ESMTP id 69DF760F18;
+ Mon, 22 Apr 2024 18:32:11 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 596FDC113CC;
+ Mon, 22 Apr 2024 18:32:09 +0000 (UTC)
+Date: Mon, 22 Apr 2024 19:32:06 +0100
+From: Simon Horman <horms@kernel.org>
+To: "Kwapulinski, Piotr" <piotr.kwapulinski@intel.com>
+Message-ID: <20240422183206.GE42092@kernel.org>
+References: <20240415103435.6674-1-piotr.kwapulinski@intel.com>
+ <20240415103435.6674-3-piotr.kwapulinski@intel.com>
+ <20240420181826.GA42092@kernel.org>
+ <DM6PR11MB461069F903C65507AB64228BF3122@DM6PR11MB4610.namprd11.prod.outlook.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20240422-fix-oob-read-v1-5-e02854c30174@gmail.com>
-References: <20240422-fix-oob-read-v1-0-e02854c30174@gmail.com>
-In-Reply-To: <20240422-fix-oob-read-v1-0-e02854c30174@gmail.com>
-To: Jesse Brandeburg <jesse.brandeburg@intel.com>, 
- Tony Nguyen <anthony.l.nguyen@intel.com>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Paul M Stillwell Jr <paul.m.stillwell.jr@intel.com>, 
- Rasesh Mody <rmody@marvell.com>, Sudarsana Kalluru <skalluru@marvell.com>, 
- GR-Linux-NIC-Dev@marvell.com, Krishna Gudipati <kgudipat@brocade.com>, 
- Anil Gurumurthy <anil.gurumurthy@qlogic.com>, 
- Sudarsana Kalluru <sudarsana.kalluru@qlogic.com>, 
- "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>, 
- "Martin K. Petersen" <martin.petersen@oracle.com>, 
- Fabian Frederick <fabf@skynet.be>, Saurav Kashyap <skashyap@marvell.com>, 
- Javed Hasan <jhasan@marvell.com>, GR-QLogic-Storage-Upstream@marvell.com, 
- Nilesh Javali <nilesh.javali@cavium.com>, Arun Easi <arun.easi@cavium.com>, 
- Manish Rangankar <manish.rangankar@cavium.com>, 
- Vineeth Vijayan <vneethv@linux.ibm.com>, 
- Peter Oberparleiter <oberpar@linux.ibm.com>, 
- Heiko Carstens <hca@linux.ibm.com>, Vasily Gorbik <gor@linux.ibm.com>, 
- Alexander Gordeev <agordeev@linux.ibm.com>, 
- Christian Borntraeger <borntraeger@linux.ibm.com>, 
- Sven Schnelle <svens@linux.ibm.com>
-X-Mailer: b4 0.13.0
-X-Mailman-Approved-At: Mon, 22 Apr 2024 17:39:32 +0000
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1713804175; x=1714408975; darn=lists.osuosl.org;
- h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
- :mime-version:subject:date:from:from:to:cc:subject:date:message-id
- :reply-to;
- bh=VjDIyXeRN5F/Rz1j7hLtt0c+k3OrZr+6KVwQKgEg9NA=;
- b=XX2dtsGNp9JAG8nTrtlh09Ifjl976HrgpIqH4fagm8eJwLHXFAuiq9jlolkC4Dw/1I
- Cb6/yAQvN1tR4xvOyx0jhmiw3EGRuzRtaPvESA7Nxti+NxZ6RdquV2CGxERwoExgGF4B
- +JRY4syjsp52cQq4Joky3RBZndbQEa/rP9VV2gkfZ1pzqLFc281I/bndpnavCXGdxwPo
- 8+f8p9RCDZakQVaZpJ+2l8gRQUbsyTq81VdOvgraysZdeWMuM3wXdHm7btfvkij+VQ43
- FN1q3US91c7XoPbeZ/2Xgv5q4geJpxi1bcmgTtIZm93BWYUeBQsbz3QlUXqdcqt87RAR
- V+8w==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <DM6PR11MB461069F903C65507AB64228BF3122@DM6PR11MB4610.namprd11.prod.outlook.com>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=kernel.org; s=k20201202; t=1713810731;
+ bh=kXqg48OQIw7Y2/Rm0Gf0L41p9Mxor/5YuKqrYipPbXQ=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=so5WSWIfseLg9jSBsYDq8G3T2sxBCeXkKqa3RwnUj8v67Wk4MzcIjJyHR1+heGvWm
+ GSOBe/ttAJqknImtTQ2rN7j7Q4TmkT2YrYSWlDZ+KdlAGLTD53Q6XhVDJ+HO0qgXgo
+ mGx3XcWTI4uRiiqpe0Vb/hljLcXo0cJht9bVOsiW2ZxLiCemiQzPzsluUp4YHQkkqD
+ tGRIh7Nho+pjvj45i7hmi3PzZQhSNrPY9sGCVAoygNN7wV/PACL4Ts3xWyFpwwDC/s
+ cKkPoiUEMGCh+5Yjc0BKhQIhZm/M4CHlJ9/lJ7Mv0qLEKb/oClzAgHa5LAgX0WbNEa
+ +euGn6Ld3w79g==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=gmail.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
- header.a=rsa-sha256 header.s=20230601 header.b=XX2dtsGN
-Subject: [Intel-wired-lan] [PATCH 5/5] drivers/s390/cio: ensure the copied
- buf is NULL terminated
+ header.from=kernel.org
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
+ header.s=k20201202 header.b=so5WSWIf
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v2 2/5] ixgbe: Add support
+ for E610 device capabilities detection
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -139,45 +98,120 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Jens Axboe <axboe@kernel.dk>, linux-s390@vger.kernel.org,
- linux-scsi@vger.kernel.org, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
- Saurav Kashyap <saurav.kashyap@cavium.com>,
- Bui Quang Minh <minhquangbui99@gmail.com>
+Cc: "Sokolowski, Jan" <jan.sokolowski@intel.com>, "Gomes,
+ Vinicius" <vinicius.gomes@intel.com>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>, "Jagielski,
+ Jedrzej" <jedrzej.jagielski@intel.com>, "Wegrzyn,
+ Stefan" <stefan.wegrzyn@intel.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Currently, we allocate a lbuf-sized kernel buffer and copy lbuf from
-userspace to that buffer. Later, we use scanf on this buffer but we don't
-ensure that the string is terminated inside the buffer, this can lead to
-OOB read when using scanf. Fix this issue by allocating 1 more byte to at
-the end of buffer and write NULL terminator to the end of buffer after
-userspace copying.
+On Mon, Apr 22, 2024 at 10:41:47AM +0000, Kwapulinski, Piotr wrote:
+> >-----Original Message-----
+> >From: Simon Horman <horms@kernel.org> 
+> >Sent: Saturday, April 20, 2024 8:18 PM
+> >To: Kwapulinski, Piotr <piotr.kwapulinski@intel.com>
+> >Cc: intel-wired-lan@lists.osuosl.org; netdev@vger.kernel.org; Gomes, Vinicius <vinicius.gomes@intel.com>; Wegrzyn, Stefan <stefan.wegrzyn@intel.com>; Jagielski, Jedrzej <jedrzej.jagielski@intel.com>; Sokolowski, Jan <jan.sokolowski@intel.com>
+> >Subject: Re: [PATCH iwl-next v2 2/5] ixgbe: Add support for E610 device capabilities detection
+> >
+> >On Mon, Apr 15, 2024 at 12:34:32PM +0200, Piotr Kwapulinski wrote:
+> >> Add low level support for E610 device capabilities detection. The 
+> >> capabilities are discovered via the Admin Command Interface. Discover 
+> >> the following capabilities:
+> >> - function caps: vmdq, dcb, rss, rx/tx qs, msix, nvm, orom, reset
+> >> - device caps: vsi, fdir, 1588
+> >> - phy caps
+> >> 
+> >> Co-developed-by: Stefan Wegrzyn <stefan.wegrzyn@intel.com>
+> >> Signed-off-by: Stefan Wegrzyn <stefan.wegrzyn@intel.com>
+> >> Co-developed-by: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
+> >> Signed-off-by: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
+> >> Reviewed-by: Jan Sokolowski <jan.sokolowski@intel.com>
+> >> Signed-off-by: Piotr Kwapulinski <piotr.kwapulinski@intel.com>
+> >
+> >Hi Pitor,
+> >
+> >A few minor nits from my side.
+> >No need to respin just because of these.
+> >
+> >> ---
+> >>  drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c | 517 
+> >> ++++++++++++++++++  drivers/net/ethernet/intel/ixgbe/ixgbe_e610.h |  
+> >> 11 +
+> >>  2 files changed, 528 insertions(+)
+> >> 
+> >> diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c 
+> >> b/drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c
+> >
+> >...
+> >
+> >> +/**
+> >> + * ixgbe_get_num_per_func - determine number of resources per PF
+> >> + * @hw: pointer to the HW structure
+> >> + * @max: value to be evenly split between each PF
+> >> + *
+> >> + * Determine the number of valid functions by going through the 
+> >> +bitmap returned
+> >> + * from parsing capabilities and use this to calculate the number of 
+> >> +resources
+> >> + * per PF based on the max value passed in.
+> >> + *
+> >> + * Return: the number of resources per PF or 0, if no PH are available.
+> >> + */
+> >> +static u32 ixgbe_get_num_per_func(struct ixgbe_hw *hw, u32 max) {
+> >> +	const u32 IXGBE_CAPS_VALID_FUNCS_M = 0xFF;
+> >
+> >nit: Maybe this could simply be a #define?
+> Hello,
+> will do
+> 
+> >
+> >> +	u8 funcs = hweight8(hw->dev_caps.common_cap.valid_functions &
+> >> +			    IXGBE_CAPS_VALID_FUNCS_M);
+> >
+> >nit: Please consider using reverse xmas tree order - longest line to shortest -
+> >     for local variables in new Networking code
+> Will do
+> 
+> >
+> >> +
+> >> +	return funcs ? (max / funcs) : 0;
+> >> +}
+> >
+> >...
+> >
+> >> +/**
+> >> + * ixgbe_aci_disable_rxen - disable RX
+> >> + * @hw: pointer to the HW struct
+> >> + *
+> >> + * Request a safe disable of Receive Enable using ACI command (0x000C).
+> >> + *
+> >> + * Return: the exit code of the operation.
+> >> + */
+> >> +int ixgbe_aci_disable_rxen(struct ixgbe_hw *hw) {
+> >> +	struct ixgbe_aci_cmd_disable_rxen *cmd;
+> >> +	struct ixgbe_aci_desc desc;
+> >> +
+> >> +	cmd = &desc.params.disable_rxen;
+> >> +
+> >> +	ixgbe_fill_dflt_direct_cmd_desc(&desc, ixgbe_aci_opc_disable_rxen);
+> >> +
+> >> +	cmd->lport_num = (u8)hw->bus.func;
+> >
+> >nit: This cast seems unnecessary.
+> >     AFAICT the type of hw->bus.func is u8.
+> Will do
 
-Fixes: a4f17cc72671 ("s390/cio: add CRW inject functionality")
-Signed-off-by: Bui Quang Minh <minhquangbui99@gmail.com>
----
- drivers/s390/cio/cio_inject.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+Thanks. FWIIW, I think I noticed a similar cast at least once more
+elsewhere in the patchset
 
-diff --git a/drivers/s390/cio/cio_inject.c b/drivers/s390/cio/cio_inject.c
-index 8613fa937237..9b69fbf49f60 100644
---- a/drivers/s390/cio/cio_inject.c
-+++ b/drivers/s390/cio/cio_inject.c
-@@ -95,10 +95,11 @@ static ssize_t crw_inject_write(struct file *file, const char __user *buf,
- 		return -EINVAL;
- 	}
- 
--	buffer = vmemdup_user(buf, lbuf);
-+	buffer = vmemdup_user(buf, lbuf + 1);
- 	if (IS_ERR(buffer))
- 		return -ENOMEM;
- 
-+	buffer[lbuf] = '\0';
- 	rc = sscanf(buffer, "%x %x %x %x %x %x %x", &slct, &oflw, &chn, &rsc, &anc,
- 		    &erc, &rsid);
- 
-
--- 
-2.34.1
-
+> 
+> >
+> >> +
+> >> +	return ixgbe_aci_send_cmd(hw, &desc, NULL, 0); }
+> >
+> >...
+> Thank you for review
+> Piotr
+> 
