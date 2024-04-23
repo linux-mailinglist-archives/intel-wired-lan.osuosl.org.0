@@ -1,172 +1,173 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6C1E98AEA9A
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 23 Apr 2024 17:17:21 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6FF5C8AEA9D
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 23 Apr 2024 17:17:23 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id A80A181FD1;
-	Tue, 23 Apr 2024 15:17:15 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id B94A981FD9;
+	Tue, 23 Apr 2024 15:17:16 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 2etxQ-3P6AYV; Tue, 23 Apr 2024 15:17:14 +0000 (UTC)
+ id QOqdZFOB05W3; Tue, 23 Apr 2024 15:17:16 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 2D62181FAC
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 15D5381F81
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1713885434;
-	bh=Wsq25i/vrS3QAOlenn0bjuhv2+9AYH1o3ItQF3kmS7g=;
+	s=default; t=1713885436;
+	bh=aqUJ+OLUrAwu16E0T/732QFnKrlGv/rigYirIxEoAGc=;
 	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=7o/qhJo46ZktuEeOUVNevUlFyJZEDpBvuMFiIpAlq77Xs0Ft/oqczRPaWIbmCZY1M
-	 Y6JEQ/poj4IPUs1U2oUUcuWy9yZy+21D1c7YUo86zaOEX8RrbLpEIKquuqWTF3Y+SY
-	 8i3SzUxfcEZjXVnln0PLakAgUPJAAr++CKnCDyrMuSSMaJcbpMgEHBQ/R7qWfHe7m5
-	 E89TD7cFoAxtwwXI2DqYm13+cbw6OmPMAb/p7d8N8yerDfeGZA4rd0Mb6jfDhRRJEp
-	 CJTCD44eiEqZsNj7j8NrUoHJ83FRWmz9i8axcCAS1fZs9azZZPtM0+A61zDXULK+Ph
-	 A9312Cc8Ot0Gw==
+	 From;
+	b=wAAzuVggLMdU0ILfXG6J4a4evjPpzJf7mJiJsuOPnOVkjP9VnY8UsoMwa4dj30Wb/
+	 142EfDvktJB+P+FwSmRxtrohE4aX1kRXOXJk9vy9NryMOOyxMvSwUx6p7JbQOkwkes
+	 fuWUSjjSsLFW4gq5GV9FcinKFWe2HNMTnRamlNo/HX708wjRCislo3I6NilI/9xylb
+	 HXToRHCCtLviALpygGIizrX8A8cAHZis/up8BTdtBV1NI6K09XD58ay29RgTXepGvK
+	 ksI70dvPVQKjTiIBHMRxR24f8vi6HUcaeR+kgFR+Pp1uneo07Fngyxb2tCnffUL/Cy
+	 +qc0bgS81+IDA==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 2D62181FAC;
-	Tue, 23 Apr 2024 15:17:14 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 15D5381F81;
+	Tue, 23 Apr 2024 15:17:16 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id A4A801BF2FC
- for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Apr 2024 10:56:00 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id B02831BF2FC
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Apr 2024 11:02:03 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 902004049D
- for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Apr 2024 10:56:00 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 9A3744031F
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Apr 2024 11:02:03 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id vw7RtrsaTmni for <intel-wired-lan@lists.osuosl.org>;
- Tue, 23 Apr 2024 10:55:59 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id Whe-MHjq0SvJ for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 23 Apr 2024 11:01:59 +0000 (UTC)
+X-Greylist: delayed 752 seconds by postgrey-1.37 at util1.osuosl.org;
+ Tue, 23 Apr 2024 11:01:59 UTC
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 6D827401DF
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6D827401DF
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=67.231.148.174;
- helo=mx0b-0016f401.pphosted.com; envelope-from=sgoutham@marvell.com;
+ helo=mx0b-0016f401.pphosted.com; envelope-from=hkelam@marvell.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 5690F40480
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 5690F40480
 Received: from mx0b-0016f401.pphosted.com (mx0a-0016f401.pphosted.com
  [67.231.148.174])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 5690F40480
- for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Apr 2024 10:55:59 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 6D827401DF
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Apr 2024 11:01:59 +0000 (UTC)
 Received: from pps.filterd (m0045849.ppops.net [127.0.0.1])
- by mx0a-0016f401.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 43N7PYLj011793;
- Tue, 23 Apr 2024 03:47:37 -0700
-Received: from nam12-mw2-obe.outbound.protection.outlook.com
- (mail-mw2nam12lp2041.outbound.protection.outlook.com [104.47.66.41])
- by mx0a-0016f401.pphosted.com (PPS) with ESMTPS id 3xnngcvqfx-1
+ by mx0a-0016f401.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 43N7PYLo011793;
+ Tue, 23 Apr 2024 03:49:26 -0700
+Received: from nam02-bn1-obe.outbound.protection.outlook.com
+ (mail-bn1nam02lp2041.outbound.protection.outlook.com [104.47.51.41])
+ by mx0a-0016f401.pphosted.com (PPS) with ESMTPS id 3xnngcvqmd-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 23 Apr 2024 03:47:36 -0700 (PDT)
+ Tue, 23 Apr 2024 03:49:26 -0700 (PDT)
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=VCBte3QPyavoB/LPqhyZTyLCziMbPlGcWveFvT4LA3W/tGJOfjvdvyz6SvpZ9A/f2LOEIIlVxtj3xY1iSa5ceBx3juho6EWcJRrE4vGZzW01o2NHB+OwPNcHBKeEeaW+0deIeMcM6Ukrr4NBOY1VRRIhNEw5vfUJoXvB2ZKFUH9T5KHD48qNkVYejIOZflyd4JGmE839bpIOyJZYG7PKqW4nGussbzUwMnaF3C/6Hw7zd6pd0SNP2hGH5MRbhgATNxpBmm+HsVLdF/W2JSpOxQIgaSWqqkE/s9LO6T29cJT/fv0+jmdPFcqMLnV3WZiZTUQwVa8X/7TPEsV94SRvyA==
+ b=eQv2CbLMO+Y6cme18mBRPf/lqV9C/0Aj9lrF98tlTMxYpsDDKK8dgOySB1T0zji8oQpCMcmVJ8U4jHK120YUhYUXUsaHEwaB7F7XOqP2ZvsvEyG6CKoQRBJvWEBLEGYj32KYAyXtnHaZpvGOy/kRGqHcxZSZzHXlhjFW7/w0wDrkwe3804SPuwdX8y2e58VFubajcjALl/4iMI0VyOL+zwyaHWpKThL8yDqHTTFOMLMPX/Tv8Kk2XhcLfSMHBNOvreLL4vTYRJfb1sr0c86Zt4h6aQao+undz3V8/rBeBcMRtsWd/nWiaLP7VD/MZmWd7GTfB1GYjq64Ig/KSK70Iw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=Wsq25i/vrS3QAOlenn0bjuhv2+9AYH1o3ItQF3kmS7g=;
- b=KCUIwPIIbG2beiER35Xg7yzsg4Nfm4VUF3XrH/OqyldcMuQ0Z5v0BIXNqLKwsHQ8VU8hqN31UecqmWrS+gH/VV7pATbdDUEalx+CklgIooalIjg36NEw4ge4WyjjRtGCOURtmAXpjdksFIVEI8YYeXJTjci/iSOWL/8C+D3QMzshGJq/CkmNvRqK7zefMLJ31OVWW8G6q1fBMO3K0WQmYvuqd/YOYEFg/BITCG25tfJfjRrEVrLP6GDoTtkryqV3oVX3QAfj0PNacNjJ0zYWHQfkUt6xpPWqHwLoBcmG4F2FyYADmjkDnH+4ea6OyoRuUA3dlMIhlYbZAsu0GCHzaw==
+ bh=aqUJ+OLUrAwu16E0T/732QFnKrlGv/rigYirIxEoAGc=;
+ b=JvfJftBAP8Ebeuc7OlK7aq0pKiP05/bif9k6caTW+h8y4jITmle/AQADSVyWrQ18tFKo29K3sae+d3TT33ZaytWLItdk7bFiCBGybqG+HJlubJi6qGEvZleC93o+72MAkqyCzXvaBfY/X/nwyTZZ25dgv5IUdjyVjpFi1t98HRA0xaZNsBP9qkQcTKkg5ZNFsk6nU4rMonz4BlXGKJ32WAwMcvakNLxkYdx1Ltp29QjngaTrfVyHcIimp4c1E1QIuaXLG5WLsJAS+ev3nA/YTF9KySkTDbPG7dg4YxaLdiCplcfwE14j2YSf+ygjQp2UXBP38x7tftgwaWLXexQOfw==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=marvell.com; dmarc=pass action=none header.from=marvell.com;
  dkim=pass header.d=marvell.com; arc=none
-Received: from BY3PR18MB4737.namprd18.prod.outlook.com (2603:10b6:a03:3c8::7)
- by PH7PR18MB5751.namprd18.prod.outlook.com (2603:10b6:510:301::7)
+Received: from PH0PR18MB4474.namprd18.prod.outlook.com (2603:10b6:510:ea::22)
+ by CO3PR18MB4927.namprd18.prod.outlook.com (2603:10b6:303:175::6)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7472.44; Tue, 23 Apr
- 2024 10:47:31 +0000
-Received: from BY3PR18MB4737.namprd18.prod.outlook.com
- ([fe80::4c91:458c:d14d:2fa6]) by BY3PR18MB4737.namprd18.prod.outlook.com
- ([fe80::4c91:458c:d14d:2fa6%6]) with mapi id 15.20.7472.044; Tue, 23 Apr 2024
- 10:47:31 +0000
-From: Sunil Kovvuri Goutham <sgoutham@marvell.com>
-To: Mateusz Polchlopek <mateusz.polchlopek@intel.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH iwl-next v5 12/12] iavf: add support
- for Rx timestamps to hotpath
-Thread-Index: AQHalWukkLVFxp/bGU+H6zpzj/CoZg==
-Date: Tue, 23 Apr 2024 10:47:30 +0000
-Message-ID: <BY3PR18MB4737B9820C94CEA04ACE2680C6112@BY3PR18MB4737.namprd18.prod.outlook.com>
-References: <20240418052500.50678-1-mateusz.polchlopek@intel.com>
- <20240418052500.50678-13-mateusz.polchlopek@intel.com>
-In-Reply-To: <20240418052500.50678-13-mateusz.polchlopek@intel.com>
+ 2024 10:49:23 +0000
+Received: from PH0PR18MB4474.namprd18.prod.outlook.com
+ ([fe80::eeed:4f:2561:f916]) by PH0PR18MB4474.namprd18.prod.outlook.com
+ ([fe80::eeed:4f:2561:f916%5]) with mapi id 15.20.7452.049; Tue, 23 Apr 2024
+ 10:49:23 +0000
+From: Hariprasad Kelam <hkelam@marvell.com>
+To: Corinna Vinschen <vinschen@redhat.com>, "netdev@vger.kernel.org"
+ <netdev@vger.kernel.org>, "intel-wired-lan@lists.osuosl.org"
+ <intel-wired-lan@lists.osuosl.org>
+Thread-Topic: [PATCH] igc: fix a log entry using uninitialized netdev
+Thread-Index: AQHalWvnYg/VMSvUH0KAzEPL27mRag==
+Date: Tue, 23 Apr 2024 10:49:23 +0000
+Message-ID: <PH0PR18MB447404CC2066483CC449BB89DE112@PH0PR18MB4474.namprd18.prod.outlook.com>
+References: <20240423102455.901469-1-vinschen@redhat.com>
+In-Reply-To: <20240423102455.901469-1-vinschen@redhat.com>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
 x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: BY3PR18MB4737:EE_|PH7PR18MB5751:EE_
-x-ms-office365-filtering-correlation-id: 60280577-08c6-46fe-bdd2-08dc6382c6a9
+x-ms-traffictypediagnostic: PH0PR18MB4474:EE_|CO3PR18MB4927:EE_
+x-ms-office365-filtering-correlation-id: 2a0e7c84-6b5f-4d4b-ad2c-08dc638309ac
 x-ms-exchange-senderadcheck: 1
 x-ms-exchange-antispam-relay: 0
 x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: =?us-ascii?Q?u33i9+MJHty1ej24xX8Dx2dIeF0K49o+ZHhHhAYv64750w1UCh7b5Mr6b+Ok?=
- =?us-ascii?Q?VjRjzLkz6kbCPfdE5Qi+r251Mg1RAgFns5UZBDLTrsTRJecOoYdtbo6xE7Ln?=
- =?us-ascii?Q?QDZe6AQjpjD/mSzLJM1i4fB3jLEOqv8mntzezSfLlrdlqjus6AzJMDsmXUES?=
- =?us-ascii?Q?3OtxlcsSnpT8m2g7ZBtU6Og/8AlYWtFPWVUe2GlCghHGy724JWNRdVSrT4gh?=
- =?us-ascii?Q?+YojwhiOzlehmZhAjcUJU2p2k22fhxK18iFeu7BEm1qUcmDM102kXMPnHTAi?=
- =?us-ascii?Q?B2owMXxfwm1vfB2vRNxrvsFenTv/6eOlyZXZ6N9lajg2yS8f7WBp5PeXX97W?=
- =?us-ascii?Q?E8nRnfGABzah0xxx1XzOYIt0scbirb1eWDCtnqB13Irf1sjIXXPAeXDcs74X?=
- =?us-ascii?Q?zwfXA1vU14lmygVFxt+BK5ljgMrhFiXeeJmaFHnD/+6kgu5bGbos/CEtozZU?=
- =?us-ascii?Q?Vh0Zrzxwb/pFqPe0kIMvrBvJPHztMEZrplEBaXMwunMh+pLfNyZSds0ykr5s?=
- =?us-ascii?Q?SIgCDWdq3wPnyYarklMGoqaJkWgSWf+KS6nbdZ7VG7XJSpkN995AuKdDUMXy?=
- =?us-ascii?Q?VmGEzA7ROfG0KAvQYvCK4jK97GS4EQwffeFcG92v7G0xChU2T8B9wBe+fcjy?=
- =?us-ascii?Q?n69pFRFKA2khvvT4+e6Z4g7gFInFQXnAq14gOBjetPjU2aURnvx6zgHSXNjP?=
- =?us-ascii?Q?4GozhcGyinddN/0UPTrqGnyfTC0BwRhGZzq2Q2XlA/M5gOk11FeHkbpkoaZ8?=
- =?us-ascii?Q?5zmN98keubRNeTKkKWc82s1vnirwSgqU9ziekD9xfFhZSEBnJOzZtA1CBj6X?=
- =?us-ascii?Q?cNtLGvwohvdZnVzHp3efLR4AVKVundvYuRcbeSgrKMkeQ4pvKZ4CAINwFn1N?=
- =?us-ascii?Q?IrAm5stHQk5hJ63dBstJdhfJlU40dDfYj3Wt6f6i6oYAetH3Y/w5glmmadgt?=
- =?us-ascii?Q?7vpUgtbuEHIpHLLjUS2q1STaYQRNgVeL6JQ5TVgX9KFsE1E+5/2CgXSLBgXN?=
- =?us-ascii?Q?xspd77Krh/lQxTDJE/xRMfxVKgYuVg8w3706SgJQ2YSWMh/SRV2NZgI5Imzq?=
- =?us-ascii?Q?7wCBQO4fer4XMNBuQxAvKkif5I4xSabi0wfPtm8glmmPLfIxfnzwyjR0v9/j?=
- =?us-ascii?Q?RdrFqBDIgt+sdZUfKu0K+IPibJIEkJUuD0AkzTO/cu1w8OMeeM3/8jSa1I6u?=
- =?us-ascii?Q?XSdjYFjphw3Qp/no4/cCf2sDOW9ccMVZlNwreUIcBHwVNFkGStpOPWU17oyY?=
- =?us-ascii?Q?hZpcDT+LsmIK1163Ac+PxSK5atciROQS864wL8Y80eySMch5gJ4IVk6OVj8G?=
- =?us-ascii?Q?zTUgS8I/ixWRifp09k6TLyZPJ7AWNeBZhYM/5leHPoTQzg=3D=3D?=
+x-microsoft-antispam-message-info: =?us-ascii?Q?bXIutjnVlE8BhMeqO0Sl3zcXf3U2QaRK8W3BxaWNAK3XyPhnOQ34CrkOvNkg?=
+ =?us-ascii?Q?fUIOZg5nqn9i8wgtKqnqSUYQKWI60QU27BhR4tukDAwMHr4/r0Sg/4fFI6fD?=
+ =?us-ascii?Q?IcLOFh652qOzUtttEpik11waoJfF84fm+0VnykfOt3fCsVfIQmBKumLFDUQJ?=
+ =?us-ascii?Q?+JnsFi0xcO4x2Zsom9evKEAsh2ivnLAfmaSwNzsdJfD0roZ8Nnt9+ANy2gQ/?=
+ =?us-ascii?Q?3pG0lw76s8Al1k9bweBRTgUcmo0ZGmK50RtljrrIns0CvnhSfOLZdupYIIHm?=
+ =?us-ascii?Q?aCAYzQcpfhz0XzJXCK4QHgP69WLh0ZSrVqCDS7Rt8gldBRArAFv5T3WQ32Iu?=
+ =?us-ascii?Q?7f6+FgutD0U+yYU9zy5LzwqxRSgHvzSbeu/6xyC6os4Yia7UJQxLgKVpRM4x?=
+ =?us-ascii?Q?+4cen8FHWbaMsSLb2SJxUvxW/dGB+I5khwzpfYz8LQdeT4cOb3I+AMjbgoDk?=
+ =?us-ascii?Q?tGr7MG2tXxdsiEGaJXgpnb5v76hy4DencgW4e7O1/1Et0pNObbVWBBjep2r8?=
+ =?us-ascii?Q?JxSX8dgN2kDGJHyjhy/j23wIwdGx0dtSERqJtaiZ4N6fKclUnJ6h33LyQ7HE?=
+ =?us-ascii?Q?xng/+vxGol58g1rqvOn2887w9e9cPmsKXqYpQ88Zd6RkT44rHKLd9vwNIll7?=
+ =?us-ascii?Q?demaq0jtRRcehWY7TCEIuw8D2ESB8p9gx6fl7zZ4cUzI1IR0ioE/FughJ1xs?=
+ =?us-ascii?Q?KEYxwq/s+9eC8sm1GRfCqOhk/MEodYq26ZpcAiqr4FWlQdMDEJ62bUW8cRUm?=
+ =?us-ascii?Q?UPMD0KnX17d8T0SGg2mbo2LGsXIAXLnCnr08LqGWhhszTPZNsJRIKL08F6lS?=
+ =?us-ascii?Q?enVlZm/SGgeUp6oyDHer1rLUS+m2mSV6TTliI6gObbrReYzla14eQrZ8JdtV?=
+ =?us-ascii?Q?WW1ijNwvNG7iya5mK/bqEow4k0fnUvwAJeNVieeNK6aWg5at8iPPZvs3cbHq?=
+ =?us-ascii?Q?869fXLpK9QYbL9xY87PAurrgNFxFfyylzjPXVt0MvOVfN/2nE9mqMk2sqNQz?=
+ =?us-ascii?Q?PnluX1hws/IKBZCq+3Tzsw5IcRj7g99DSVgN8SsTnxouC7NiBV5XAl2VOwHR?=
+ =?us-ascii?Q?tLfI5KlxwkNW+bL/o/LZ6pXZzmeTRBG7CtaNPFLf+IjmfTLUrPA2UmxFMAHb?=
+ =?us-ascii?Q?c5JT8nsf0l3UQK9t3P/AaGybqfZJWdI9Ki3KH3Uci9MlUs2nLV/PkMBiTVFU?=
+ =?us-ascii?Q?yy6NkdoFJNDf2qOoOIblkSLdkDRbOf2oh23n9yUr7Bv2sJR2dlhnJOAx1bXA?=
+ =?us-ascii?Q?C/+dvDc5yebqUC/OZUE13vGbAovgcETSXNJR+CWdIXlODcO01WLz6BLiGQlB?=
+ =?us-ascii?Q?FxFBh8NCHpd3ioSwF8vEPVUG6h8qH2ehOH8IWpQjFAnb1Q=3D=3D?=
 x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BY3PR18MB4737.namprd18.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230031)(1800799015)(376005)(366007)(38070700009); DIR:OUT; SFP:1102; 
+ IPV:NLI; SFV:NSPM; H:PH0PR18MB4474.namprd18.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230031)(376005)(366007)(1800799015)(38070700009); DIR:OUT; SFP:1102; 
 x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?KpwO3gecfbPgO1qQFSBkbiuTiUh/5jEov4DQFnOOTDtJUcwjsReipew4g4cr?=
- =?us-ascii?Q?MzIWrbaYvVT3YHXwICgRc/WH+JmhV2m2rBSrehCB8nP95iHfOUNIgNepTU9J?=
- =?us-ascii?Q?pk6wpsjUejd/wMg/OF6kdY1X5kOSPYL1IuHTHC7J26+78BSDmWcDLQKwPPab?=
- =?us-ascii?Q?Hln+339ohif1bRkRJLzX+/rnNdP+6G3cXzLIiHG+l8KMlcNoDvxHjRNnSsre?=
- =?us-ascii?Q?JQHqeAYy1aKr9qqy6VwTExmuz9hoGvLyApob99F6mpboG9yU96+uJzC2HJSD?=
- =?us-ascii?Q?je+jc40sir27P9XiIBxppJPQ6Zp2BFsxUwx5VFVwsPQBTCH6Q1Un8nV13Tpa?=
- =?us-ascii?Q?QFA/swy1KDgNGSNtFwDu/dVgxZQK9y+cMfLYZ6QEP/23Lp0Efn5ZJ77Jtjj4?=
- =?us-ascii?Q?doAR1kO4SjnDU2p0NLxGddmRsWr63NGDdpMAr2lvHs4c13lnkI55fNOrVH2h?=
- =?us-ascii?Q?AoTHnlAfLUnVy36zQFadUvqXP8xVa+q9BK++9VDVqsqwSdy/8yYSbU++5W8T?=
- =?us-ascii?Q?FO/3s99cx8L6tF2EcGVslPsVJ3kznLoBDoA6bdrN/WY/VLCO6IHcSGlIEKC2?=
- =?us-ascii?Q?JFmd5bDmxQWhx9T7+g6+tTS2jf83zqTju8at71SA3wp86uGxwTQsy0lRVPld?=
- =?us-ascii?Q?+oPhTCzO8vQ1C9ZUk74NimOy9dxAwGOfbTgsvsA53KU0KMJFFEm5r6iblNP9?=
- =?us-ascii?Q?vH+V6PB7rURaXk2ZzppE0P7jxvu/i7hpvtNpDLS3g82QC4+ezp/NA9NUucWy?=
- =?us-ascii?Q?8MRSgW84TNbcDoMzRLBsxsrjjYiV64cn/GOU8QxY2Mwt3nuX+6uVECuraSqJ?=
- =?us-ascii?Q?xa5oBnlwl/CQAgUxR+Vpn3p3GBr6X+/aihpCa0XqynSB0OpnUy275XmSifun?=
- =?us-ascii?Q?kRt6mseHjxU+eP/ddR5J1hBPeerQoDWRJg6kOnT2XrhBr7hm8zSNejDvemRj?=
- =?us-ascii?Q?USm7+12O7r/Jl/m1UhJT1uiug2vQdGUktXD8y4bkGC34rFfWApugPhNXbS+z?=
- =?us-ascii?Q?kNeysDztIxJnQ7n28sSw65hFl9I0qHE4gEWgRoywypo4BqcYn2YOiuBF/l6Z?=
- =?us-ascii?Q?rT2+6qDhWVc/L+yo9iQ5ba94YvkJ/JTOYx9uFAWGdXziVGks81EnlfgMJ1FZ?=
- =?us-ascii?Q?T/FC1UQ+jYY3PJeJJcDDBGrI28Nl8jML2reJJBhUb3mv9raSWNlsOwtkGuG8?=
- =?us-ascii?Q?7JEMehNjHPUPNO6JbjBK0/0Aj4E/H3lHa93IuJ+3uCZ8VfDXWCDVwsPo2wdg?=
- =?us-ascii?Q?sQMv5qbbbFlawz8PB4uPTqWhOJFgTqjd+SrYL5cKVJcbggqMvuuRK+OuBoBR?=
- =?us-ascii?Q?v6J6bOc8xg6h7/84jrGT5m0HvTzOp4PSbwPH+leU3ARm8RESiEWeMlIaf8cd?=
- =?us-ascii?Q?jfvw/ri2btOTUYlSQUASQzHHLPVUrb9kOhWWqhDvTib5SvTWz3L+0gym4b88?=
- =?us-ascii?Q?r4UXw26FG2URvUGq8p/WRhK9D/MtRfTNJSvpG+Xsk53n9Fp+CWGociOLPCTU?=
- =?us-ascii?Q?XvJoOsGVDOer60GHDM1BjEVuotSjcC+3cpGOyV6ZOfbuBJPk/SVlnvGXTENv?=
- =?us-ascii?Q?mtRdf66KXNZQ6r6p2rEQTigVcqj8yGr07SDH6VYE?=
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?0oubN0s1rcChRuW6657W9KevDaJVHFrqlMIoWDacGNHL1b37rwsKzprNbvth?=
+ =?us-ascii?Q?duf1b94oOd6BuA43j6Tu/ArYhwv+m++MHeASHUCrXLhRpliMGLeT8ib7+G4f?=
+ =?us-ascii?Q?CSQzFn22ooOKllykoSv7+ci8t6d74pclsgQ3fQXB6YB3fTetm4zYGTTmbLHX?=
+ =?us-ascii?Q?puYdolm9VJalBzpcdnbHOeG5EEvPIjsbRhInl1LReX8Z/QUD9NSfi65xWVM2?=
+ =?us-ascii?Q?oSxKHiVLjbGwo/P3PW32cTRJ5HeOTbCBrgvUMb2E29ViZiW7171BVDHXgBTM?=
+ =?us-ascii?Q?+hwVXCSZ3v3vRnV0ZcFzb4WZL/IoAgT3SDfpor0i9Hi9q9PjCC6v1zS5mi4S?=
+ =?us-ascii?Q?D+fGkczLGWg19NQwrQ4eTrDUmn6a53wVrTl5NvVWW52N9Eu2ad5c54lfCUgk?=
+ =?us-ascii?Q?u+aAqH+OEjPZIeDroUNcvNdoA8OeOxQDJGFLQ/52oYJjITpf/7mFH71SvmH/?=
+ =?us-ascii?Q?I4WPDhe0M+ZGYQEXSuAz7CWibjVtUk+4htK/wREEUeEqLpsgtF5qrMhRfB4H?=
+ =?us-ascii?Q?GJRSGve6IndugusDLA67tjaZLeafR0/YfxXR4OihwMxHkfFakVy3VAjpVuyx?=
+ =?us-ascii?Q?f5ERUM8R4J2OMu8O8KWPP/cuf2QkseyLLNyu+S879Z7j0DkYZhKZ4q8fqmkV?=
+ =?us-ascii?Q?xhqKN64FyLAADrh2JJllznZ4StEOrKoQE1si4fQoTudLzwk4AjDP/NUU0yPa?=
+ =?us-ascii?Q?xNRPtuVPYzS8M31FudVAIKABLOIg9fuffroqJ6qluRWayodgNBET1Fo64t/K?=
+ =?us-ascii?Q?PHOZFKgUnT5HPfSRvgxMhidcL6f83XMqJGcJloCvFGmjfmWdpIMJI/yUdfAK?=
+ =?us-ascii?Q?M3sb0w2LURgkIxZKmXdGm1rd6xkcQM7+BNoklGSkoaoBNU27YI1rnersSkd6?=
+ =?us-ascii?Q?Ut8X36fceS6Lgn10uXsF78b+lSlgh2D4hgVQYnJpmT1Sd6ZjjEnbevbkIMK2?=
+ =?us-ascii?Q?YJJMcfeFZjs/Mpr976U8ENCesGxw4cbUXCrsfM82yFWsYMuneVVM+cf5WHlM?=
+ =?us-ascii?Q?annv6nHdNw3OWbTSSS4h2/+QnQZbsOGoTfQ2HQ3n6s88ZQ5JQ+Q7r7YoM9rc?=
+ =?us-ascii?Q?FmaegUh22aDft5oNQrsIUdw8RoTRMKcMgYLVKX/8BK3+9WgkfayveKs548gD?=
+ =?us-ascii?Q?ay+DNpNP+cTksKXjnjbvb/suZZcsmGpUBFFhVDqnKEfhjhAJqLp8HNRF2AHT?=
+ =?us-ascii?Q?CBvJhRaykyWmJfGECuo9Od9FiIOD16xQjR6TOeu9eVvAS8/myo5rq/rKNwWW?=
+ =?us-ascii?Q?d66BL3vIiYzee+PhQ5XGhDGwaITas6PTGHGrLkmz9P91JKgOtO/BjA7RzEeL?=
+ =?us-ascii?Q?1bISYq+DMO51adTPfCJq5uLX1gTtgfhRHNUeuQJmLHmDgh4hUd5rO9eUgeyV?=
+ =?us-ascii?Q?Imqch3ienySUnnfNayRcFzkYctL7q/S/qjTPRc3dW1CveOvy01f4A7cGPREc?=
+ =?us-ascii?Q?da48TJ8A+bcfqzfZ4JN5xxq/X22C/7M/eGZqwrEggqERQ1LsTTv0SVCdb2tM?=
+ =?us-ascii?Q?mC2aeVgS+B4d+6U5uB+Z6hRS4O22wxcs4uuuucxZ8JtE7tGLv1pDZC8nFFwx?=
+ =?us-ascii?Q?/+pTWJe9QpWRUebTOVQ=3D?=
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
 X-OriginatorOrg: marvell.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: BY3PR18MB4737.namprd18.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 60280577-08c6-46fe-bdd2-08dc6382c6a9
-X-MS-Exchange-CrossTenant-originalarrivaltime: 23 Apr 2024 10:47:30.9174 (UTC)
+X-MS-Exchange-CrossTenant-AuthSource: PH0PR18MB4474.namprd18.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 2a0e7c84-6b5f-4d4b-ad2c-08dc638309ac
+X-MS-Exchange-CrossTenant-originalarrivaltime: 23 Apr 2024 10:49:23.3621 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: 70e1fb47-1155-421d-87fc-2e58f638b6e0
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: N1Vy0SKAw8vNQ9uXzxJj/1yU18DmBwutrNF9ntbG+8XCOmY82ppKbLJ6AT9IR6fcS6WVdZp/vIUZcHT6aUJ6VA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH7PR18MB5751
-X-Proofpoint-GUID: t8JvGR602QI_Fh9JwjHWYm55e6CNUyf5
-X-Proofpoint-ORIG-GUID: t8JvGR602QI_Fh9JwjHWYm55e6CNUyf5
+X-MS-Exchange-CrossTenant-userprincipalname: EsnGAsoHOItXe297Zg/jqbAi+7LKKYZvZ4SR2Qo9mcyOfBRx1ip9oti+DHShBSAzBF+8NmfSwngXOoBOWWzwxQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CO3PR18MB4927
+X-Proofpoint-GUID: UML8oaHDY6FHFWIXPUk0FuO0hqESfcsd
+X-Proofpoint-ORIG-GUID: UML8oaHDY6FHFWIXPUk0FuO0hqESfcsd
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1011,Hydra:6.0.619,FMLib:17.11.176.26
  definitions=2024-04-23_09,2024-04-22_01,2023-05-22_02
@@ -174,17 +175,17 @@ X-Mailman-Approved-At: Tue, 23 Apr 2024 15:17:07 +0000
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=marvell.com; s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=Wsq25i/vrS3QAOlenn0bjuhv2+9AYH1o3ItQF3kmS7g=;
- b=Jgp7FTpy1yPRPxb2ttsn4tGDeJg072aQm94JuYN59qleMXlPg7b/LGz8Yel2zRBezd6cW7DwAugzdR4TRRtEaS98LMgVkXiIkS423q4MGRZ0N/JZ3IJ+dFWiQ+99V0m0qvDb1Mfyiy3BTX6vSd/nL/MRrXbUK0CsEAB7o6F7mPM=
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ bh=aqUJ+OLUrAwu16E0T/732QFnKrlGv/rigYirIxEoAGc=;
+ b=RWr5vjDBu3GhOHtLaxSGLipmqTJz9zDvKE/KilihtUDrVD6sSumd+MrncDdIfoZYvJxv+vyUKy+yeRpekeFDgwBiq1uDk6h9u6DaKK7+1yKKMBZB+sGzpFe3UDGMzlCnCONKkt/b+2AP6mAxKC9JthY76aymaVKa+9xiGaqCXnE=
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=marvell.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (1024-bit key,
  unprotected) header.d=marvell.com header.i=@marvell.com header.a=rsa-sha256
- header.s=selector1 header.b=Jgp7FTpy
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v5 12/12] iavf: add support
- for Rx timestamps to hotpath
+ header.s=selector1 header.b=RWr5vjDB
+Subject: [Intel-wired-lan] [PATCH] igc: fix a log entry using uninitialized
+ netdev
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -197,277 +198,61 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Jacob Keller <jacob.e.keller@intel.com>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "anthony.l.nguyen@intel.com" <anthony.l.nguyen@intel.com>,
- Wojciech Drewek <wojciech.drewek@intel.com>,
- "horms@kernel.org" <horms@kernel.org>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 
 
-> -----Original Message-----
-> From: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
-> Sent: Thursday, April 18, 2024 10:55 AM
-> To: intel-wired-lan@lists.osuosl.org
-> Cc: netdev@vger.kernel.org; horms@kernel.org; anthony.l.nguyen@intel.com;
-> Jacob Keller <jacob.e.keller@intel.com>; Wojciech Drewek
-> <wojciech.drewek@intel.com>; Mateusz Polchlopek
-> <mateusz.polchlopek@intel.com>
-> Subject: [EXTERNAL] [Intel-wired-lan] [PATCH iwl-next v5 12/12] iavf: add
-> support for Rx timestamps to hotpath
+> During successful probe, igc logs this:
 >=20
-> From: Jacob Keller <jacob.e.keller@intel.com>
+> [    5.133667] igc 0000:01:00.0 (unnamed net_device) (uninitialized): PHC
+> added
+>                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> The reason is that igc_ptp_init() is called very early, even before
+> register_netdev() has been called. So the netdev_info() call works on a
+> partially uninitialized netdev.
 >=20
-> Add support for receive timestamps to the Rx hotpath. This support only
-> works when using the flexible descriptor format, so make sure that we req=
-uest
-> this format by default if we have receive timestamp support available in =
-the
-> PTP capabilities.
+> Fix this by calling igc_ptp_init() after register_netdev(), right after t=
+he media
+> autosense check, just as in igb.  Add a comment, just as in igb.
 >=20
-> In order to report the timestamps to userspace, we need to perform
-> timestamp extension. The Rx descriptor does actually contain the "40 bit"
-> timestamp. However, upper 32 bits which contain nanoseconds are
-> conveniently stored separately in the descriptor. We could extract the 32=
-bits
-> and lower 8 bits, then perform a bitwise OR to calculate the 40bit value.=
- This
-> makes no sense, because the timestamp extension algorithm would simply
-> discard the lower 8 bits anyways.
+> Now the log message is fine:
 >=20
-> Thus, implement timestamp extension as iavf_ptp_extend_32b_timestamp(),
-> and extract and forward only the 32bits of nominal nanoseconds.
+> [    5.200987] igc 0000:01:00.0 eth0: PHC added
 >=20
-> Reviewed-by: Wojciech Drewek <wojciech.drewek@intel.com>
-> Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
-> Signed-off-by: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
+Reviewed-by: Hariprasad Kelam <hkelam@marvell.com>
+
+> Signed-off-by: Corinna Vinschen <vinschen@redhat.com>
 > ---
->  drivers/net/ethernet/intel/iavf/iavf_main.c |  9 +++
-> drivers/net/ethernet/intel/iavf/iavf_ptp.c  | 69 +++++++++++++++++++++
-> drivers/net/ethernet/intel/iavf/iavf_ptp.h  |  4 ++
-> drivers/net/ethernet/intel/iavf/iavf_txrx.c | 44 +++++++++++++
->  4 files changed, 126 insertions(+)
+>  drivers/net/ethernet/intel/igc/igc_main.c | 5 +++--
+>  1 file changed, 3 insertions(+), 2 deletions(-)
 >=20
-> diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c
-> b/drivers/net/ethernet/intel/iavf/iavf_main.c
-> index a75c5fbad13c..b12cdef50deb 100644
-> --- a/drivers/net/ethernet/intel/iavf/iavf_main.c
-> +++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
-> @@ -726,6 +726,15 @@ static u8 iavf_select_rx_desc_format(struct
-> iavf_adapter *adapter)
->  	if (!RXDID_ALLOWED(adapter))
->  		return VIRTCHNL_RXDID_1_32B_BASE;
+> diff --git a/drivers/net/ethernet/intel/igc/igc_main.c
+> b/drivers/net/ethernet/intel/igc/igc_main.c
+> index d9bd001af7ba..e5900d004071 100644
+> --- a/drivers/net/ethernet/intel/igc/igc_main.c
+> +++ b/drivers/net/ethernet/intel/igc/igc_main.c
+> @@ -6927,8 +6927,6 @@ static int igc_probe(struct pci_dev *pdev,
+>  	device_set_wakeup_enable(&adapter->pdev->dev,
+>  				 adapter->flags &
+> IGC_FLAG_WOL_SUPPORTED);
 >=20
-> +	/* Rx timestamping requires the use of flexible NIC descriptors */
-> +	if (iavf_ptp_cap_supported(adapter,
-> VIRTCHNL_1588_PTP_CAP_RX_TSTAMP)) {
-> +		if (supported_rxdids &
-> BIT(VIRTCHNL_RXDID_2_FLEX_SQ_NIC))
-> +			return VIRTCHNL_RXDID_2_FLEX_SQ_NIC;
-> +
-> +		dev_dbg(&adapter->pdev->dev,
-> +			"Unable to negotiate flexible descriptor format.\n");
-> +	}
-> +
->  	/* Warn if the PF does not list support for the default legacy
->  	 * descriptor format. This shouldn't happen, as this is the format
->  	 * used if VIRTCHNL_VF_OFFLOAD_RX_FLEX_DESC is not supported. It
-> is diff --git a/drivers/net/ethernet/intel/iavf/iavf_ptp.c
-> b/drivers/net/ethernet/intel/iavf/iavf_ptp.c
-> index 4ae80eac8236..e99cf380011f 100644
-> --- a/drivers/net/ethernet/intel/iavf/iavf_ptp.c
-> +++ b/drivers/net/ethernet/intel/iavf/iavf_ptp.c
-> @@ -444,6 +444,9 @@ void iavf_ptp_release(struct iavf_adapter *adapter)
->  	adapter->aq_required &=3D ~IAVF_FLAG_AQ_SEND_PTP_CMD;
->  	spin_unlock(&adapter->ptp.aq_cmd_lock);
+> -	igc_ptp_init(adapter);
+> -
+>  	igc_tsn_clear_schedule(adapter);
 >=20
-> +	adapter->ptp.hwtstamp_config.rx_filter =3D HWTSTAMP_FILTER_NONE;
-> +	iavf_ptp_disable_rx_tstamp(adapter);
-> +
->  	adapter->ptp.initialized =3D false;
->  }
+>  	/* reset the hardware with the new settings */ @@ -6950,6 +6948,9
+> @@ static int igc_probe(struct pci_dev *pdev,
+>  	/* Check if Media Autosense is enabled */
+>  	adapter->ei =3D *ei;
 >=20
-> @@ -477,3 +480,69 @@ void iavf_ptp_process_caps(struct iavf_adapter
-> *adapter)
->  		iavf_ptp_disable_rx_tstamp(adapter);
->  	}
->  }
+> +	/* do hw tstamp init after resetting */
+> +	igc_ptp_init(adapter);
 > +
-> +/**
-> + * iavf_ptp_extend_32b_timestamp - Convert a 32b nanoseconds timestamp
-> +to 64b
-> + * nanoseconds
-> + * @cached_phc_time: recently cached copy of PHC time
-> + * @in_tstamp: Ingress/egress 32b nanoseconds timestamp value
-> + *
-> + * Hardware captures timestamps which contain only 32 bits of nominal
-> + * nanoseconds, as opposed to the 64bit timestamps that the stack expect=
-s.
-> + *
-> + * Extend the 32bit nanosecond timestamp using the following algorithm
-> +and
-> + * assumptions:
-> + *
-> + * 1) have a recently cached copy of the PHC time
-> + * 2) assume that the in_tstamp was captured 2^31 nanoseconds (~2.1
-> + *    seconds) before or after the PHC time was captured.
-> + * 3) calculate the delta between the cached time and the timestamp
-> + * 4) if the delta is smaller than 2^31 nanoseconds, then the timestamp =
-was
-> + *    captured after the PHC time. In this case, the full timestamp is j=
-ust
-> + *    the cached PHC time plus the delta.
-> + * 5) otherwise, if the delta is larger than 2^31 nanoseconds, then the
-> + *    timestamp was captured *before* the PHC time, i.e. because the PHC
-> + *    cache was updated after the timestamp was captured by hardware. In
-> this
-> + *    case, the full timestamp is the cached time minus the inverse delt=
-a.
-> + *
-> + * This algorithm works even if the PHC time was updated after a Tx
-> +timestamp
-> + * was requested, but before the Tx timestamp event was reported from
-> + * hardware.
-> + *
-> + * This calculation primarily relies on keeping the cached PHC time up
-> +to
-> + * date. If the timestamp was captured more than 2^31 nanoseconds after
-> +the
-> + * PHC time, it is possible that the lower 32bits of PHC time have
-> + * overflowed more than once, and we might generate an incorrect
-> timestamp.
-> + *
-> + * This is prevented by (a) periodically updating the cached PHC time
-> +once
-> + * a second, and (b) discarding any Tx timestamp packet if it has
-> +waited for
-> + * a timestamp for more than one second.
-> + *
-> + * Return: extended timestamp (to 64b)
-> + */
-> +u64 iavf_ptp_extend_32b_timestamp(u64 cached_phc_time, u32
-> in_tstamp) {
-> +	const u64 mask =3D GENMASK_ULL(31, 0);
-> +	u32 delta;
-> +	u64 ns;
-> +
-> +	/* Calculate the delta between the lower 32bits of the cached PHC
-> +	 * time and the in_tstamp value
-> +	 */
-> +	delta =3D (in_tstamp - (u32)(cached_phc_time & mask));
-> +
-> +	/* Do not assume that the in_tstamp is always more recent than the
-> +	 * cached PHC time. If the delta is large, it indicates that the
-> +	 * in_tstamp was taken in the past, and should be converted
-> +	 * forward.
-> +	 */
-> +	if (delta > (mask / 2)) {
-> +		/* reverse the delta calculation here */
-> +		delta =3D ((u32)(cached_phc_time & mask) - in_tstamp);
-> +		ns =3D cached_phc_time - delta;
-> +	} else {
-> +		ns =3D cached_phc_time + delta;
-> +	}
-> +
-> +	return ns;
-> +}
-> diff --git a/drivers/net/ethernet/intel/iavf/iavf_ptp.h
-> b/drivers/net/ethernet/intel/iavf/iavf_ptp.h
-> index 337bf184a7ea..66e113ae27f5 100644
-> --- a/drivers/net/ethernet/intel/iavf/iavf_ptp.h
-> +++ b/drivers/net/ethernet/intel/iavf/iavf_ptp.h
-> @@ -6,6 +6,9 @@
->=20
->  #include <linux/ptp_clock_kernel.h>
->=20
-> +/* bit indicating whether a 40bit timestamp is valid */
-> +#define IAVF_PTP_40B_TSTAMP_VALID	BIT(0)
-> +
->  /* structure used to queue PTP commands for processing */  struct
-> iavf_ptp_aq_cmd {
->  	struct list_head list;
-> @@ -38,5 +41,6 @@ void iavf_virtchnl_send_ptp_cmd(struct iavf_adapter
-> *adapter);  long iavf_ptp_do_aux_work(struct ptp_clock_info *ptp);  int
-> iavf_ptp_get_ts_config(struct iavf_adapter *adapter, struct ifreq *ifr); =
- int
-> iavf_ptp_set_ts_config(struct iavf_adapter *adapter, struct ifreq *ifr);
-> +u64 iavf_ptp_extend_32b_timestamp(u64 cached_phc_time, u32
-> in_tstamp);
->=20
->  #endif /* _IAVF_PTP_H_ */
-> diff --git a/drivers/net/ethernet/intel/iavf/iavf_txrx.c
-> b/drivers/net/ethernet/intel/iavf/iavf_txrx.c
-> index 8e90b0b2a292..9a2bd5176818 100644
-> --- a/drivers/net/ethernet/intel/iavf/iavf_txrx.c
-> +++ b/drivers/net/ethernet/intel/iavf/iavf_txrx.c
-> @@ -1239,6 +1239,48 @@ static void iavf_flex_rx_hash(struct iavf_ring
-> *ring,
->  	}
->  }
->=20
-> +/**
-> + * iavf_flex_rx_tstamp - Capture Rx timestamp from the descriptor
-> + * @rx_ring: descriptor ring
-> + * @rx_desc: specific descriptor
-> + * @skb: skb currently being received
-> + *
-> + * Read the Rx timestamp value from the descriptor and pass it to the st=
-ack.
-> + *
-> + * This function only operates on the VIRTCHNL_RXDID_2_FLEX_SQ_NIC
-> +flexible
-> + * descriptor writeback format.
-> + */
-> +static void iavf_flex_rx_tstamp(struct iavf_ring *rx_ring,
-> +				union iavf_rx_desc *rx_desc,
-> +				struct sk_buff *skb)
-> +{
-> +	struct skb_shared_hwtstamps *skb_tstamps;
-> +	struct iavf_adapter *adapter;
-> +	u32 tstamp;
-> +	u64 ns;
-> +
-> +	/* Skip processing if timestamps aren't enabled */
-> +	if (!(rx_ring->flags & IAVF_TXRX_FLAGS_HW_TSTAMP))
-> +		return;
-> +
-> +	/* Check if this Rx descriptor has a valid timestamp */
-> +	if (!(rx_desc->flex_wb.ts_low & IAVF_PTP_40B_TSTAMP_VALID))
-> +		return;
-> +
-> +	adapter =3D netdev_priv(rx_ring->netdev);
-> +
-> +	/* the ts_low field only contains the valid bit and sub-nanosecond
-> +	 * precision, so we don't need to extract it.
-> +	 */
-> +	tstamp =3D le32_to_cpu(rx_desc->flex_wb.flex_ts.ts_high);
-> +	ns =3D iavf_ptp_extend_32b_timestamp(adapter-
-> >ptp.cached_phc_time,
-> +					   tstamp);
-> +
-> +	skb_tstamps =3D skb_hwtstamps(skb);
-> +	memset(skb_tstamps, 0, sizeof(*skb_tstamps));
-> +	skb_tstamps->hwtstamp =3D ns_to_ktime(ns); }
-> +
->  /**
->   * iavf_process_skb_fields - Populate skb header fields from Rx descript=
-or
->   * @rx_ring: rx descriptor ring packet is being transacted on @@ -1262,6
-> +1304,8 @@ static void iavf_process_skb_fields(struct iavf_ring *rx_ring,
->  		iavf_flex_rx_hash(rx_ring, rx_desc, skb, rx_ptype);
->=20
->  		iavf_flex_rx_csum(rx_ring->vsi, skb, rx_desc);
-> +
-> +		iavf_flex_rx_tstamp(rx_ring, rx_desc, skb);
->  	}
->=20
->  	skb_record_rx_queue(skb, rx_ring->queue_index);
+>  	/* print pcie link status and MAC address */
+>  	pcie_print_link_status(pdev);
+>  	netdev_info(netdev, "MAC: %pM\n", netdev->dev_addr);
 > --
-> 2.38.1
+> 2.44.0
 >=20
 
-
-LGTM
-Reviewed-by: Sunil Goutham <sgoutham@marvell.com>
