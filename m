@@ -1,97 +1,123 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 647B28AE208
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 23 Apr 2024 12:25:06 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id B46B18AE37B
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 23 Apr 2024 13:10:49 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id E25EA81E15;
-	Tue, 23 Apr 2024 10:25:03 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 607EA81F28;
+	Tue, 23 Apr 2024 11:10:48 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Cs91KAPnLb5c; Tue, 23 Apr 2024 10:25:03 +0000 (UTC)
+ id fkWxZQjbX-PO; Tue, 23 Apr 2024 11:10:47 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 27BEE81E0B
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8AF8A81F2A
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1713867903;
-	bh=U2lce3/QNW+fiWXInJhryu4GzC+S2O+/i+htA/jwGrw=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=Ai/4C38sfknCEOi4UJQcE5T3DEj9GXTOQShgDrsIdShvK2J3+dA7h7pdHevw0zviw
-	 o78tvQuLglib68/UJytVWuhrzqVcWkLphOgzvoUY6J8PoBuAxCOKMgYVc+EHRz36xb
-	 BH9qPA2MEphJx2NqJ/IMr/5KPJlC7T22QOgq+R2YWu28uATjVQA9dkPbu25Sk3XsoH
-	 uutlARnenp0NDCYRz8PQExL14k8XiWfSdwV4d6J/gEQfG8465RFLEHGrfezL8amgsX
-	 jEySOi2GEBwSTQs1KntWVZ66fbu6N1v/okSbeU9iyGzqEqfWdipxc0x6DMkA3gbqvF
-	 QBwY0qqJd9+rA==
+	s=default; t=1713870647;
+	bh=WHTG+VdnfK0puMZFDtAOqaAimF4doqr8t5xusIlGuaY=;
+	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=2g4mEtDB06Z+Q6mjR8xbbdlXZvGFeUiXt9uDBIHB0JTkwY6cvxKIxkFjbXbmSeQbl
+	 sbOqbDYOiM4dn5WDRDbGTS34X1impNgGwSkKvG0cbdS5AYBbtT++yk0345tnphn4Bw
+	 Zp9fL9VCS6U8Eo6xVDL7vEAtoWWnblhhvcQLTtWT2F8jb433xbmGtI7XuZXPQBcTTP
+	 KYUHLoPVGCIUCr2GzRgGBYyL2Df3Z5LwazievH8tZ3o6Xy0Yt2quj2dBqNKZos2/Qc
+	 nOdwklqX3FToJzVUS1PKUhkfh2gC6ihSBUdAlkhtALjgYrZSylvp+5pmgI9rZZX0l9
+	 pvHRW/kDXrZ9g==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 27BEE81E0B;
-	Tue, 23 Apr 2024 10:25:03 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 8AF8A81F2A;
+	Tue, 23 Apr 2024 11:10:47 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id DF9FA1BF2FC
- for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Apr 2024 10:25:00 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 259291BF5B5
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Apr 2024 11:10:46 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id CC27181E0C
- for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Apr 2024 10:25:00 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 0FFB740A6C
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Apr 2024 11:10:46 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id wrwWtmAYs1E0 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 23 Apr 2024 10:25:00 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.129.124;
- helo=us-smtp-delivery-124.mimecast.com; envelope-from=vinschen@redhat.com;
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id I9U4S48fLFXd for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 23 Apr 2024 11:10:45 +0000 (UTC)
+Received-SPF: None (mailfrom) identity=mailfrom; client-ip=198.175.65.10;
+ helo=mgamail.intel.com; envelope-from=marcin.szycik@linux.intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 1B32481E0B
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1B32481E0B
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.129.124])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 1B32481E0B
- for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Apr 2024 10:24:59 +0000 (UTC)
-Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
- by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-361-GX6gB2GwN92ENdTWo_SQYg-1; Tue,
- 23 Apr 2024 06:24:56 -0400
-X-MC-Unique: GX6gB2GwN92ENdTWo_SQYg-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
- [10.11.54.5])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 2F76E3C02745;
- Tue, 23 Apr 2024 10:24:56 +0000 (UTC)
-Received: from calimero.vinschen.de (unknown [10.39.194.197])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 0BB653543A;
- Tue, 23 Apr 2024 10:24:56 +0000 (UTC)
-Received: by calimero.vinschen.de (Postfix, from userid 500)
- id 0D45DA80BA0; Tue, 23 Apr 2024 12:24:55 +0200 (CEST)
-From: Corinna Vinschen <vinschen@redhat.com>
-To: netdev@vger.kernel.org,
-	intel-wired-lan@lists.osuosl.org
-Date: Tue, 23 Apr 2024 12:24:54 +0200
-Message-ID: <20240423102455.901469-1-vinschen@redhat.com>
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 325A6401DF
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 325A6401DF
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.10])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 325A6401DF
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 23 Apr 2024 11:10:45 +0000 (UTC)
+X-CSE-ConnectionGUID: Uwx9D2XZSBeea+N0JO7h/w==
+X-CSE-MsgGUID: 0Aceq6qYRf66G2fFQUhc3w==
+X-IronPort-AV: E=McAfee;i="6600,9927,11052"; a="26905752"
+X-IronPort-AV: E=Sophos;i="6.07,222,1708416000"; d="scan'208";a="26905752"
+Received: from fmviesa009.fm.intel.com ([10.60.135.149])
+ by orvoesa102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 23 Apr 2024 04:10:45 -0700
+X-CSE-ConnectionGUID: GHANmPF1QaSu/tzRusNdUw==
+X-CSE-MsgGUID: zm+oKK03QECvY3VX9hfdGA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.07,222,1708416000"; d="scan'208";a="24342606"
+Received: from mszycik-mobl1.ger.corp.intel.com (HELO [10.246.35.198])
+ ([10.246.35.198])
+ by fmviesa009-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 23 Apr 2024 04:10:37 -0700
+Message-ID: <eb54c7bb-db63-4361-b42f-dc02e2c37fbf@linux.intel.com>
+Date: Tue, 23 Apr 2024 13:10:16 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.5
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=redhat.com; 
- s=mimecast20190719; t=1713867899;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=U2lce3/QNW+fiWXInJhryu4GzC+S2O+/i+htA/jwGrw=;
- b=OhanSya7W3FW81E9HojSuqacSWcMuAs2OqtUAaAOdqtMesNi6S7eXd/r8XctJjYgAWsiBA
- nWmNdcAhWksVf3nljPnQ+m+gULvCKZR658V/YL/RapIvxcu5UkIwaktp9SITHzzkoZogoR
- R+41AlRAnG6okV2EEx6cM6OaqGHWnZo=
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=redhat.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
- header.a=rsa-sha256 header.s=mimecast20190719 header.b=OhanSya7
-Subject: [Intel-wired-lan] [PATCH] igc: fix a log entry using uninitialized
- netdev
+User-Agent: Mozilla Thunderbird
+To: Bui Quang Minh <minhquangbui99@gmail.com>,
+ Jesse Brandeburg <jesse.brandeburg@intel.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>,
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Paul M Stillwell Jr <paul.m.stillwell.jr@intel.com>,
+ Rasesh Mody <rmody@marvell.com>, Sudarsana Kalluru <skalluru@marvell.com>,
+ GR-Linux-NIC-Dev@marvell.com, Krishna Gudipati <kgudipat@brocade.com>,
+ Anil Gurumurthy <anil.gurumurthy@qlogic.com>,
+ Sudarsana Kalluru <sudarsana.kalluru@qlogic.com>,
+ "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>,
+ "Martin K. Petersen" <martin.petersen@oracle.com>,
+ Fabian Frederick <fabf@skynet.be>, Saurav Kashyap <skashyap@marvell.com>,
+ Javed Hasan <jhasan@marvell.com>, GR-QLogic-Storage-Upstream@marvell.com,
+ Nilesh Javali <nilesh.javali@cavium.com>, Arun Easi <arun.easi@cavium.com>,
+ Manish Rangankar <manish.rangankar@cavium.com>,
+ Vineeth Vijayan <vneethv@linux.ibm.com>,
+ Peter Oberparleiter <oberpar@linux.ibm.com>,
+ Heiko Carstens <hca@linux.ibm.com>, Vasily Gorbik <gor@linux.ibm.com>,
+ Alexander Gordeev <agordeev@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>,
+ Sven Schnelle <svens@linux.ibm.com>
+References: <20240422-fix-oob-read-v1-0-e02854c30174@gmail.com>
+Content-Language: en-US
+From: Marcin Szycik <marcin.szycik@linux.intel.com>
+In-Reply-To: <20240422-fix-oob-read-v1-0-e02854c30174@gmail.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1713870645; x=1745406645;
+ h=message-id:date:mime-version:subject:to:cc:references:
+ from:in-reply-to:content-transfer-encoding;
+ bh=FhMYwpD0Jy+0t5UX4wrDuIaENfV+qwJP/+xWhZFZCdQ=;
+ b=ERnBvNbyFK6VwTLE/1IyNhrnjvj0TxFuN2XL4Gq4yAOJ7yN7lSkTHEOX
+ CDlc2aCKPJPboY8CRQ9p25ZrTi0xPKZuDho4/fJGNiDcoXAExx5WCcUT7
+ k1Ot3Y0us4F2uybfjrr42Qo85nTF/Jmcg9zLevTfktr3qGwmdSW6fDX4u
+ oTSHr0zY+q3Of+/1/hBTnL1uVqM88Npsrax+/yF5sxl/b18eE4LkXFwEC
+ 8rX2uGqbODoQIr+zy0zp+Xw2b4xHI78iHrjfyCgGijDyqdO1VYQBh/OOC
+ Igdk54FoXmzzQn2j3gpp4kz7UQAw2sFDxEGa/Tc3pVTe6HmSSwbPnLjKU
+ A==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dmarc=none (p=none dis=none)
+ header.from=linux.intel.com
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=ERnBvNby
+Subject: Re: [Intel-wired-lan] [PATCH 0/5] Ensure the copied buf is NULL
+ terminated
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -104,53 +130,61 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: Jens Axboe <axboe@kernel.dk>, linux-s390@vger.kernel.org,
+ linux-scsi@vger.kernel.org, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
+ Saurav Kashyap <saurav.kashyap@cavium.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-During successful probe, igc logs this:
 
-[    5.133667] igc 0000:01:00.0 (unnamed net_device) (uninitialized): PHC added
-                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-The reason is that igc_ptp_init() is called very early, even before
-register_netdev() has been called. So the netdev_info() call works
-on a partially uninitialized netdev.
 
-Fix this by calling igc_ptp_init() after register_netdev(), right
-after the media autosense check, just as in igb.  Add a comment,
-just as in igb.
+On 22.04.2024 18:41, Bui Quang Minh wrote:
+> Hi everyone,
+> 
+> I found that some drivers contains an out-of-bound read pattern like this
+> 
+> 	kern_buf = memdup_user(user_buf, count);
+> 	...
+> 	sscanf(kern_buf, ...);
+> 
+> The sscanf can be replaced by some other string-related functions. This
+> pattern can lead to out-of-bound read of kern_buf in string-related
+> functions.
+> 
+> This series fix the above issue by replacing memdup_user with
+> memdup_user_nul or allocating count + 1 buffer then writing the NULL
+> terminator to end of buffer after userspace copying.
+> 
+> Thanks,
+> Quang Minh.
+> 
+> Signed-off-by: Bui Quang Minh <minhquangbui99@gmail.com>
+> ---
+> Bui Quang Minh (5):
+>       drivers/net/ethernet/intel-ice: ensure the copied buf is NULL terminated
+>       drivers/net/brocade-bnad: ensure the copied buf is NULL terminated
+>       drivers/scsi/bfa/bfad: ensure the copied buf is NULL terminated
+>       drivers/scsi/qedf: ensure the copied buf is NULL terminated
+>       drivers/s390/cio: ensure the copied buf is NULL terminated
 
-Now the log message is fine:
+Typically you don't include path to module in title, instead:
+ice: ensure the copied buf is NULL terminated
+bna: ensure the copied buf is NULL terminated
+etc.
 
-[    5.200987] igc 0000:01:00.0 eth0: PHC added
+> 
+>  drivers/net/ethernet/brocade/bna/bnad_debugfs.c | 4 ++--
+>  drivers/net/ethernet/intel/ice/ice_debugfs.c    | 8 ++++----
+>  drivers/s390/cio/cio_inject.c                   | 3 ++-
+>  drivers/scsi/bfa/bfad_debugfs.c                 | 4 ++--
+>  drivers/scsi/qedf/qedf_debugfs.c                | 2 +-
+>  5 files changed, 11 insertions(+), 10 deletions(-)
+> ---
+> base-commit: ed30a4a51bb196781c8058073ea720133a65596f
+> change-id: 20240422-fix-oob-read-19ae7f8f3711
+> 
+> Best regards,
 
-Signed-off-by: Corinna Vinschen <vinschen@redhat.com>
----
- drivers/net/ethernet/intel/igc/igc_main.c | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
-index d9bd001af7ba..e5900d004071 100644
---- a/drivers/net/ethernet/intel/igc/igc_main.c
-+++ b/drivers/net/ethernet/intel/igc/igc_main.c
-@@ -6927,8 +6927,6 @@ static int igc_probe(struct pci_dev *pdev,
- 	device_set_wakeup_enable(&adapter->pdev->dev,
- 				 adapter->flags & IGC_FLAG_WOL_SUPPORTED);
- 
--	igc_ptp_init(adapter);
--
- 	igc_tsn_clear_schedule(adapter);
- 
- 	/* reset the hardware with the new settings */
-@@ -6950,6 +6948,9 @@ static int igc_probe(struct pci_dev *pdev,
- 	/* Check if Media Autosense is enabled */
- 	adapter->ei = *ei;
- 
-+	/* do hw tstamp init after resetting */
-+	igc_ptp_init(adapter);
-+
- 	/* print pcie link status and MAC address */
- 	pcie_print_link_status(pdev);
- 	netdev_info(netdev, "MAC: %pM\n", netdev->dev_addr);
--- 
-2.44.0
-
+Thanks,
+Marcin
