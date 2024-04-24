@@ -1,118 +1,133 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id E06798B0D99
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 24 Apr 2024 17:08:03 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 53A9F8B0DF5
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 24 Apr 2024 17:19:57 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 8B03781DE2;
-	Wed, 24 Apr 2024 15:08:02 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id C6607416DB;
+	Wed, 24 Apr 2024 15:19:52 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id fEVpnQB4JldZ; Wed, 24 Apr 2024 15:08:01 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id AAiU8L1CHFFi; Wed, 24 Apr 2024 15:19:52 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B92B682134
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 22054416A9
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1713971280;
-	bh=efy+in7jvEoxbRkKx9/WPyXgfp6UU46NpUHk3DHNugI=;
+	s=default; t=1713971992;
+	bh=LRXZigEswTP7y+kxZAU4wvy9qxPw5anZoKBCkQwQ0VQ=;
 	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=icc+GdHTwh7vkZ6WgjXSb/2ImOIFmhTkRQLAR2RMG+DG9UxDwgmgYj7TAgf5eBwnE
-	 TJlBQrn6oYz3bwWPKTOu5jxjFcrsqcCgGweCdQN0RJIjCRIzh1VtB8rbi4hAk9r10E
-	 gUUPn2LHZnP4WGgijqiNAusg0DM/mlgkJ3Zlo+ry4VVUm7/c0SmWaICNOvXDlyIs5F
-	 xJ/Y6MJWe5m0Ee1KDC7sUrjK0AanV2XXY2/rYxHUkRqvwJHXz3woXFxDXIaD0NHwwQ
-	 9K+UYUgC3TRaUj8KV5UjAbzmkLGqnBG+bkphmuHSlDEmiti0b03T9KiYPeMg/cZ2g/
-	 GgIkMHP3xm5ag==
+	b=oLLRMeW67QWPC3xfD5pYNgvC2YUEz6a/FGMHfB2PFK2JbLePrebYl8iDB7Ycf1Zgn
+	 NA2/As1++aBF/7DYwf+WmAowYohRcwDHkeWgtAFnOG3ct+IdmxDs0mC17wNPwpiNpQ
+	 1Nbrv9YGyLAtGj7ghbx2ISjtzjmM26bk8xi9AG4KwwWdM2pa4AcIGS87vH5shzp0Z+
+	 vx+MvRKsKVDF1n+jofOak/1V9HsD/syQ49F/YcfW3gpTFshdPqdgupOMDYHFZeFxYt
+	 uuDFjX5mcRaL8+KcNeXC4MlVyBA0mloqOI/AdWkrsWM7FzGxtJzmrZaDWkLwiqgPzR
+	 GxhlQy6on2veA==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id B92B682134;
-	Wed, 24 Apr 2024 15:08:00 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 22054416A9;
+	Wed, 24 Apr 2024 15:19:52 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id E1F791BF8B4
- for <intel-wired-lan@lists.osuosl.org>; Wed, 24 Apr 2024 15:07:58 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 122E61BF8B4
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 24 Apr 2024 15:17:12 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id CC23040795
- for <intel-wired-lan@lists.osuosl.org>; Wed, 24 Apr 2024 15:07:58 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id F180E60A3C
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 24 Apr 2024 15:17:11 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id i-HjOELNywVK for <intel-wired-lan@lists.osuosl.org>;
- Wed, 24 Apr 2024 15:07:56 +0000 (UTC)
-Received-SPF: None (mailfrom) identity=mailfrom;
- client-ip=2a00:1450:4864:20::32d; helo=mail-wm1-x32d.google.com;
- envelope-from=jiri@resnulli.us; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 3F0EF4089E
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3F0EF4089E
-Received: from mail-wm1-x32d.google.com (mail-wm1-x32d.google.com
- [IPv6:2a00:1450:4864:20::32d])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 3F0EF4089E
- for <intel-wired-lan@lists.osuosl.org>; Wed, 24 Apr 2024 15:07:55 +0000 (UTC)
-Received: by mail-wm1-x32d.google.com with SMTP id
- 5b1f17b1804b1-41aa15ae26dso20034585e9.3
- for <intel-wired-lan@lists.osuosl.org>; Wed, 24 Apr 2024 08:07:55 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1713971274; x=1714576074;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=efy+in7jvEoxbRkKx9/WPyXgfp6UU46NpUHk3DHNugI=;
- b=MY3rIOdP6N6SzDpdNrVH+ObQTbZLlQ22DY2mPNRqYEzxxV8BzWvvH9cpOXjYGYZrjW
- ZuVtz7ItoYN1HPKGgWA+61QunHnMYSp4uwPR/XTE/mWe8s1ZbIrOsuz7R/7wisDWbnDK
- U4jHWKLxUWso8klHtsiqu7AS6/HPNTisKysSrz9zBlmm13kwcXvA/S51QwbRdUp/vFrp
- dKsox1z5bD4LOksxn5tZWhZ2c+j7bdZ4uBKK9QZadklMOfBWgsnD7BXuJwKUWQPKvjT8
- n6doXqMtloydgfhNCdkQ95becxmh8nhQFqCBi68bOiVxOZgHN9LKH2QG5Tu34WTchyAm
- SNcQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWR5pyMiPGU/oRlhVNPTbGO/KlLsuCgqGpwD1KuxL0GaKdGtimOSPQ1K8MFmaMrEwqj7Q5+gwp0HnqjhEwEeqLmgd8j9Mt0zMbPqHIcWlVArA==
-X-Gm-Message-State: AOJu0YyM2DVeiuv1h4dabAn9defU4jqaRt1qF8PUkubAwJvVTIQnFkiV
- /mqwQ6Wpf1/95LrLzGLhjeLAB2lz1XIkeBKmC0tTIKiBFoGY35n5afjUcfSKqYD+/2L+uwlIQo2
- t
-X-Google-Smtp-Source: AGHT+IGqrklJ9g4Awu4ez1S1kGv2SH7T4yfuD4xGz0fef4uCFimKuic39gF7ENhZF2DUGUiC6ihEBA==
-X-Received: by 2002:a05:600c:3585:b0:418:dd73:b0a1 with SMTP id
- p5-20020a05600c358500b00418dd73b0a1mr2058891wmq.39.1713971273606; 
- Wed, 24 Apr 2024 08:07:53 -0700 (PDT)
-Received: from localhost ([193.47.165.251]) by smtp.gmail.com with ESMTPSA id
- o12-20020a5d684c000000b0034aa1e534c2sm11975739wrw.96.2024.04.24.08.07.50
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 24 Apr 2024 08:07:53 -0700 (PDT)
-Date: Wed, 24 Apr 2024 17:07:46 +0200
-From: Jiri Pirko <jiri@resnulli.us>
-To: Jacob Keller <jacob.e.keller@intel.com>
-Message-ID: <ZikgQhVpphnaAOpG@nanopsycho>
-References: <20240423091459.72216-1-sergey.temerkhanov@intel.com>
- <ZiedKc5wE2-3LlaM@nanopsycho>
- <MW3PR11MB468117FD76AC6D15970A6E1080112@MW3PR11MB4681.namprd11.prod.outlook.com>
- <Zie0NIztebf5Qq1J@nanopsycho>
- <3a634778-9b72-4663-b305-3be18bd8f618@intel.com>
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id kDv8Ef4CGXCt for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 24 Apr 2024 15:17:11 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=148.163.156.1;
+ helo=mx0a-001b2d01.pphosted.com; envelope-from=agordeev@linux.ibm.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 49A8B608D2
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 49A8B608D2
+Received: from mx0a-001b2d01.pphosted.com (mx0a-001b2d01.pphosted.com
+ [148.163.156.1])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 49A8B608D2
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 24 Apr 2024 15:17:11 +0000 (UTC)
+Received: from pps.filterd (m0353729.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 43OEvP0q032428; Wed, 24 Apr 2024 15:17:05 GMT
+Received: from pps.reinject (localhost [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3xq49x01h2-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Wed, 24 Apr 2024 15:17:04 +0000
+Received: from m0353729.ppops.net (m0353729.ppops.net [127.0.0.1])
+ by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 43OFH3Ut032269;
+ Wed, 24 Apr 2024 15:17:04 GMT
+Received: from ppma23.wdc07v.mail.ibm.com
+ (5d.69.3da9.ip4.static.sl-reverse.com [169.61.105.93])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3xq49x01gs-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Wed, 24 Apr 2024 15:17:03 +0000
+Received: from pps.filterd (ppma23.wdc07v.mail.ibm.com [127.0.0.1])
+ by ppma23.wdc07v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 43OCad22015430; Wed, 24 Apr 2024 15:17:02 GMT
+Received: from smtprelay05.fra02v.mail.ibm.com ([9.218.2.225])
+ by ppma23.wdc07v.mail.ibm.com (PPS) with ESMTPS id 3xmshmc5aa-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Wed, 24 Apr 2024 15:17:02 +0000
+Received: from smtpav04.fra02v.mail.ibm.com (smtpav04.fra02v.mail.ibm.com
+ [10.20.54.103])
+ by smtprelay05.fra02v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 43OFGuq732375212
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Wed, 24 Apr 2024 15:16:58 GMT
+Received: from smtpav04.fra02v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 4CEC520040;
+ Wed, 24 Apr 2024 15:16:56 +0000 (GMT)
+Received: from smtpav04.fra02v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 9F3D32004D;
+ Wed, 24 Apr 2024 15:16:55 +0000 (GMT)
+Received: from li-008a6a4c-3549-11b2-a85c-c5cc2836eea2.ibm.com (unknown
+ [9.155.204.135])
+ by smtpav04.fra02v.mail.ibm.com (Postfix) with ESMTPS;
+ Wed, 24 Apr 2024 15:16:55 +0000 (GMT)
+Date: Wed, 24 Apr 2024 17:16:54 +0200
+From: Alexander Gordeev <agordeev@linux.ibm.com>
+To: Bui Quang Minh <minhquangbui99@gmail.com>
+Message-ID: <ZikiZsSTGUUM69GE@li-008a6a4c-3549-11b2-a85c-c5cc2836eea2.ibm.com>
+References: <20240424-fix-oob-read-v2-0-f1f1b53a10f4@gmail.com>
+ <20240424-fix-oob-read-v2-5-f1f1b53a10f4@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <3a634778-9b72-4663-b305-3be18bd8f618@intel.com>
+In-Reply-To: <20240424-fix-oob-read-v2-5-f1f1b53a10f4@gmail.com>
+X-TM-AS-GCONF: 00
+X-Proofpoint-GUID: fZkGofveKPRbJZUl0Si2IEFY5soD-mFd
+X-Proofpoint-ORIG-GUID: JvjdeUHiZLMhgcceAmf2eHuewusCBopA
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1011,Hydra:6.0.650,FMLib:17.11.176.26
+ definitions=2024-04-24_12,2024-04-24_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ priorityscore=1501
+ adultscore=0 impostorscore=0 lowpriorityscore=0 malwarescore=0 bulkscore=0
+ mlxscore=0 spamscore=0 suspectscore=0 mlxlogscore=892 phishscore=0
+ clxscore=1011 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2404010000 definitions=main-2404240059
+X-Mailman-Approved-At: Wed, 24 Apr 2024 15:19:50 +0000
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=resnulli-us.20230601.gappssmtp.com; s=20230601; t=1713971274; x=1714576074;
- darn=lists.osuosl.org; 
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=efy+in7jvEoxbRkKx9/WPyXgfp6UU46NpUHk3DHNugI=;
- b=JTgh8u8ko5CRpsPPTnOEnsuSSj8QGJJ1bn6CucJJYt6VHJPVG6Q3v4ja+1P7e7zFUa
- M1ygU7vrK9naDBuECxGvaEWBB8HazYR+mPg5+aikwHJJE6wKvB1GAd1Vv2J+Ow1Mxg/5
- xNfRgr0h77v5x13l5rSSsegVfkWpwZUAXjtEjal//Vz/irZMwzNfIPdJsv7XuKuig7n/
- Eaqc6Md40YofEd3tB2Sivd7xclSDTJjH8yBqAZWPRCeP1jLWQtvp8TGD2YyBsz5s2QA7
- FcSSB1+6Fa8FQf+AMtnWXWhzYkdPXo/dulXOeovwZs70UX95USbc/3sx9oj+lg7WEQj1
- u6ow==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ d=ibm.com; h=date : from : to : cc :
+ subject : message-id : references : mime-version : content-type :
+ in-reply-to; s=pp1; bh=LRXZigEswTP7y+kxZAU4wvy9qxPw5anZoKBCkQwQ0VQ=;
+ b=jcO+Had0aSg52rZjlhEaia1uEq0IAOPidGvLK3ScMBO1iM2O9dpLxgdeiGZ1EU59bfil
+ y5ZiP3JKZbUHYXoV5/EbsA9QHzFiHOxznQEQa1+yRMo1JjdMmsnAu7UsIHRnBvU8Vj+Q
+ nzIaegcCM7US4b15+hGy2iFLTVx2jtQEJWW5HkPNLlGuU1K7q3qP8zkyrKIa1/bQxhGd
+ vNSLIpahPzDfeQZTiEO9sRzTxhrMd3i8X59qGNBc7Sfjvm+55EK69kqDKtSIz5oaIm8x
+ P03VgAi8NBw7tJ7TAyc3zNr9SQEXLYcFwyrpRS4cZtVir0/TVa1D0VE59tj1RjWXkGUU gg== 
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=none (p=none dis=none)
- header.from=resnulli.us
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=resnulli-us.20230601.gappssmtp.com
- header.i=@resnulli-us.20230601.gappssmtp.com header.a=rsa-sha256
- header.s=20230601 header.b=JTgh8u8k
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v2] ice: Extend auxbus device
- naming
+ header.from=linux.ibm.com
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key) header.d=ibm.com header.i=@ibm.com
+ header.a=rsa-sha256 header.s=pp1 header.b=jcO+Had0
+Subject: Re: [Intel-wired-lan] [PATCH v2 5/6] cio: ensure the copied buf is
+ NUL terminated
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -125,131 +140,44 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "Temerkhanov, Sergey" <sergey.temerkhanov@intel.com>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "Kitszel, Przemyslaw" <przemyslaw.kitszel@intel.com>
+Cc: Subbaraya Sundeep <sbhatta@marvell.com>, linux-kernel@vger.kernel.org,
+ "James E.J. Bottomley" <James.Bottomley@hansenpartnership.com>,
+ Eric Dumazet <edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Vineeth Vijayan <vneethv@linux.ibm.com>, linux-scsi@vger.kernel.org,
+ Saurav Kashyap <saurav.kashyap@cavium.com>,
+ Linu Cherian <lcherian@marvell.com>, linux-s390@vger.kernel.org,
+ Sudarsana Kalluru <sudarsana.kalluru@qlogic.com>,
+ intel-wired-lan@lists.osuosl.org,
+ Paul M Stillwell Jr <paul.m.stillwell.jr@intel.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Sunil Goutham <sgoutham@marvell.com>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>,
+ Vasily Gorbik <gor@linux.ibm.com>, Geetha sowjanya <gakula@marvell.com>,
+ Arun Easi <arun.easi@cavium.com>, Heiko Carstens <hca@linux.ibm.com>,
+ Fabian Frederick <fabf@skynet.be>,
+ Manish Rangankar <manish.rangankar@cavium.com>, Jens Axboe <axboe@kernel.dk>,
+ Nilesh Javali <nilesh.javali@cavium.com>, GR-Linux-NIC-Dev@marvell.com,
+ "Martin K. Petersen" <martin.petersen@oracle.com>,
+ Saurav Kashyap <skashyap@marvell.com>, Rasesh Mody <rmody@marvell.com>,
+ netdev@vger.kernel.org, Anil Gurumurthy <anil.gurumurthy@qlogic.com>,
+ Peter Oberparleiter <oberpar@linux.ibm.com>,
+ "David S. Miller" <davem@davemloft.net>,
+ GR-QLogic-Storage-Upstream@marvell.com, hariprasad <hkelam@marvell.com>,
+ Sven Schnelle <svens@linux.ibm.com>, Jerin Jacob <jerinj@marvell.com>,
+ Sudarsana Kalluru <skalluru@marvell.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Wed, Apr 24, 2024 at 12:03:25AM CEST, jacob.e.keller@intel.com wrote:
->
->
->On 4/23/2024 6:14 AM, Jiri Pirko wrote:
->> Tue, Apr 23, 2024 at 01:56:55PM CEST, sergey.temerkhanov@intel.com wrote:
->>>
->>>
->>>> -----Original Message-----
->>>> From: Jiri Pirko <jiri@resnulli.us>
->>>> Sent: Tuesday, April 23, 2024 1:36 PM
->>>> To: Temerkhanov, Sergey <sergey.temerkhanov@intel.com>
->>>> Cc: intel-wired-lan@lists.osuosl.org; netdev@vger.kernel.org; Kitszel,
->>>> Przemyslaw <przemyslaw.kitszel@intel.com>
->>>> Subject: Re: [PATCH iwl-next v2] ice: Extend auxbus device naming
->>>>
->>>> Tue, Apr 23, 2024 at 11:14:59AM CEST, sergey.temerkhanov@intel.com
->>>> wrote:
->>>>> Include segment/domain number in the device name to distinguish
->>>> between
->>>>> PCI devices located on different root complexes in multi-segment
->>>>> configurations. Naming is changed from ptp_<bus>_<slot>_clk<clock>  to
->>>>> ptp_<domain>_<bus>_<slot>_clk<clock>
->>>>
->>>> I don't understand why you need to encode pci properties of a parent device
->>>> into the auxiliary bus name. Could you please explain the motivation? Why
->>>> you need a bus instance per PF?
->>>>
->>>> The rest of the auxbus registrators don't do this. Could you please align? Just
->>>> have one bus for ice driver and that's it.
->>>
->>> This patch adds support for multi-segment PCIe configurations.
->>> An auxdev is created for each adapter, which has a clock, in the system. There can be
->> 
->> You are trying to change auxiliary bus name.
->> 
->> 
->>> more than one adapter present, so there exists a possibility of device naming conflict.
->>> To avoid it, auxdevs are named according to the PCI geographical addresses of the adapters.
->> 
->> Why? It's the auxdev, the name should not contain anything related to
->> PCI, no reason for it. I asked for motivation, you didn't provide any.
->> 
->
->We aren't creating one auxbus per PF. We're creating one auxbus per
->*clock*. The device has multiple clocks in some configurations.
+On Wed, Apr 24, 2024 at 09:44:22PM +0700, Bui Quang Minh wrote:
+> Currently, we allocate a lbuf-sized kernel buffer and copy lbuf from
+> userspace to that buffer. Later, we use scanf on this buffer but we don't
+> ensure that the string is terminated inside the buffer, this can lead to
+> OOB read when using scanf. Fix this issue by using memdup_user_nul instead.
+> 
+> Fixes: a4f17cc72671 ("s390/cio: add CRW inject functionality")
+> Signed-off-by: Bui Quang Minh <minhquangbui99@gmail.com>
+> ---
+>  drivers/s390/cio/cio_inject.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 
-Does not matter. Why you need separate bus for whatever-instance? Why
-can't you just have one ice-ptp bus and put devices on it?
-
-
->
->We need to connect each PF to the same clock controller, because there
->is only one clock owner for the device in a multi-port card.
-
-Connect how? But putting a PF-device on a per-clock bus? That sounds
-quite odd. How did you figure out this usage of auxiliary bus?
-
-
->
->> Again, could you please avoid creating auxiliary bus per-PF and just
->> have one auxiliary but per-ice-driver?
->> 
->
->We can't have one per-ice driver, because we don't want to connect ports
->from a different device to the same clock. If you have two ice devices
->plugged in, the ports on each device are separate from each other.
->
->The goal here is to connect the clock ports to the clock owner.
->
->Worse, as described here, we do have some devices which combine multiple
->adapters together and tie their clocks together via HW signaling. In
->those cases the clocks *do* need to communicate across the device, but
->only to other ports on the same physical device, not to ports on a
->different device.
->
->Perhaps auxbus is the wrong approach here? but how else can we connect
-
-Yeah, feels quite wrong.
-
-
->these ports without over-connecting to other ports? We could write
->bespoke code which finds these devices, but that felt like it was risky
->and convoluted.
-
-Sounds you need something you have for DPLL subsystem. Feels to me that
-your hw design is quite disconnected from the Linux device model :/
-
-
->
->Perhaps it would be ideal if something in the PCI layer could connect
->these together? I don't know how that would be implemented though..
->
->The fundamental problem is that we have a multi-function device with
->some shared functionality which we need to manage across function. In
->this case it is the clock should only have one entity, while the ports
->connected to it are controlled independently by PF. We tried a variety
->of ways to solve this in the past, mostly with hacky solutions.
->
->We need an entity which can find all the ports connected to a single
->clock, and the port needs to be able to get back to its clock. If we
->used a single auxdriver for this, that driver would have to maintain
->some hash tables or connections in order to locate which ports belonged
->to the clock. It would also need to figure out which port was the
->"owner" so that it could send owner-based requests through that port,
->since it would not inherently have access to the clock hardware since
->its a global entity and not tied to a port.
->
->In the current model, the driver can go back to the PF that spawned it
->to manage the clock, and uses the aux devices as a mechanism to connect
->to each port for purposes such as initializing the PHYs, and caching the
->PTP hardware time for timestamp extension.
->
->Maybe you disagree with this use of auxbus? Do you have any suggestions
->for a separate model?
->
->We could make use of ice_adapter, though we'd need some logic to manage
->devices which have multiple clocks, as well as devices like the one
->Sergey is working on which tie multiple adapters together.
-
-Perhaps that is an answer. Maybe we can make DPLL much more simple after
-that :)
+Applied, thanks!
