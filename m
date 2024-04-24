@@ -1,134 +1,98 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 602C98B0DF3
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 24 Apr 2024 17:19:53 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 84D248B0C1F
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 24 Apr 2024 16:13:18 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 7FB39416D9;
-	Wed, 24 Apr 2024 15:19:46 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id DB45E820DA;
+	Wed, 24 Apr 2024 14:13:16 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id cSEB3j0C8tpz; Wed, 24 Apr 2024 15:19:45 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id E-X5khKKOETj; Wed, 24 Apr 2024 14:13:16 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B8266416D2
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 14B1F820D8
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1713971985;
-	bh=XpH7mlduGY+teRfPIZDry1r3MxwXhD+lR2HCJ3M7h20=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=9sck3apo8ChdbCvuyeIUkjJr7aT8GNwII/mjVH4i8LHGHI3QEJ9bzG8Ni+9fTi7+H
-	 +IvtdAIA1gpb14+wQRmGakpSomB/iHXUfyoOgQFqGWdEcG6ZTb/ZhjoWbI1WrI0lVN
-	 Q/5Mm+b5lGpni2bvsLwIUrm5O4+aXm+EA21rgQNWuw2+mEkh/ZAP05NtzYkGYy/g6l
-	 9yaq4iC+EoLvrzRSf3CGgmwaVV4aKfdQxpcj7iuhfRlX+zPerYTcng9gtBb+FFxDMO
-	 ydZIwWVqrhr+bw+cXzk9MaTo2861zntEaMg+6WQzxtVYRudC8yJoja7zVuQROP70uO
-	 ktBcfjiO8L18g==
+	s=default; t=1713967996;
+	bh=IXI+y0fGE0AHTmXz7kHBr5EuawihrIAfm0VnIv0VyIo=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=GGatQSaPB3hbRidlJhsiZi2uxLC6W+h0cnLGZKZ+3Q5XPKoBcFZNThUKnSSIYoOmk
+	 nVq3kczxy+iGrkxEO3xAZTUI73GEkAThsMrrsxU0xG04MIoEGGtLQCvl6ryaJwXgYM
+	 nYBS9KSDd7HK0ZfBo5I1EvwbcijM4Ckb6aYqe4uuy5y/Pj/WEZ163fmgyPp4E4gcgi
+	 rGB90HxK3UgZWduvYqtIuFCDPfz8iEjD/1r2SFfBTW61qe2yu0eHdBEBt5gOLWdjdx
+	 4B+MP3/R4ZMjqOe7enr2lfR8I29RgBjtstadx/JObOTkOdxpLYge0plnj7AwM1Uh2p
+	 b5r3PBlGweJvQ==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id B8266416D2;
-	Wed, 24 Apr 2024 15:19:45 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 14B1F820D8;
+	Wed, 24 Apr 2024 14:13:16 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id AC6EB1BF38B
- for <intel-wired-lan@lists.osuosl.org>; Wed, 24 Apr 2024 11:56:23 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 3329D1BF980
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 24 Apr 2024 14:13:14 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id A443E406BF
- for <intel-wired-lan@lists.osuosl.org>; Wed, 24 Apr 2024 11:56:23 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 2B11F401C3
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 24 Apr 2024 14:13:14 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id ysF65KLMLjaD for <intel-wired-lan@lists.osuosl.org>;
- Wed, 24 Apr 2024 11:56:23 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=148.163.156.1;
- helo=mx0a-001b2d01.pphosted.com; envelope-from=hca@linux.ibm.com;
+ id WMcXlTqpg34n for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 24 Apr 2024 14:13:13 +0000 (UTC)
+X-Greylist: delayed 426 seconds by postgrey-1.37 at util1.osuosl.org;
+ Wed, 24 Apr 2024 14:13:12 UTC
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org EC3DC4018F
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org EC3DC4018F
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.16;
+ helo=mgamail.intel.com; envelope-from=piotr.kwapulinski@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org D547B406A2
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D547B406A2
-Received: from mx0a-001b2d01.pphosted.com (mx0a-001b2d01.pphosted.com
- [148.163.156.1])
- by smtp4.osuosl.org (Postfix) with ESMTPS id D547B406A2
- for <intel-wired-lan@lists.osuosl.org>; Wed, 24 Apr 2024 11:56:22 +0000 (UTC)
-Received: from pps.filterd (m0360083.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
- 43OBqf4c020542; Wed, 24 Apr 2024 11:56:08 GMT
-Received: from pps.reinject (localhost [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3xq0sag3k9-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Wed, 24 Apr 2024 11:56:08 +0000
-Received: from m0360083.ppops.net (m0360083.ppops.net [127.0.0.1])
- by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 43OBu7rI027504;
- Wed, 24 Apr 2024 11:56:07 GMT
-Received: from ppma13.dal12v.mail.ibm.com
- (dd.9e.1632.ip4.static.sl-reverse.com [50.22.158.221])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3xq0sag3k4-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Wed, 24 Apr 2024 11:56:07 +0000
-Received: from pps.filterd (ppma13.dal12v.mail.ibm.com [127.0.0.1])
- by ppma13.dal12v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id
- 43O9AlZS005355; Wed, 24 Apr 2024 11:56:06 GMT
-Received: from smtprelay01.fra02v.mail.ibm.com ([9.218.2.227])
- by ppma13.dal12v.mail.ibm.com (PPS) with ESMTPS id 3xmx3cj5ym-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Wed, 24 Apr 2024 11:56:06 +0000
-Received: from smtpav07.fra02v.mail.ibm.com (smtpav07.fra02v.mail.ibm.com
- [10.20.54.106])
- by smtprelay01.fra02v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 43OBu1o138732126
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 24 Apr 2024 11:56:03 GMT
-Received: from smtpav07.fra02v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 078132004F;
- Wed, 24 Apr 2024 11:56:01 +0000 (GMT)
-Received: from smtpav07.fra02v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 492CE2004D;
- Wed, 24 Apr 2024 11:55:59 +0000 (GMT)
-Received: from osiris (unknown [9.171.4.217])
- by smtpav07.fra02v.mail.ibm.com (Postfix) with ESMTPS;
- Wed, 24 Apr 2024 11:55:59 +0000 (GMT)
-Date: Wed, 24 Apr 2024 13:55:57 +0200
-From: Heiko Carstens <hca@linux.ibm.com>
-To: Bui Quang Minh <minhquangbui99@gmail.com>
-Message-ID: <20240424115557.26193-A-hca@linux.ibm.com>
-References: <20240422-fix-oob-read-v1-0-e02854c30174@gmail.com>
- <20240422-fix-oob-read-v1-5-e02854c30174@gmail.com>
- <20240423065052.10211-C-hca@linux.ibm.com>
- <e4f5cbd0-c803-4c3c-9703-f52e56864106@gmail.com>
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.16])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id EC3DC4018F
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 24 Apr 2024 14:13:12 +0000 (UTC)
+X-CSE-ConnectionGUID: 9Gc+6DWVRAO+GTDuN+/rag==
+X-CSE-MsgGUID: Ue5gJuMDR8yJGpc7cR3SQw==
+X-IronPort-AV: E=McAfee;i="6600,9927,11054"; a="10138135"
+X-IronPort-AV: E=Sophos;i="6.07,226,1708416000"; d="scan'208";a="10138135"
+Received: from fmviesa001.fm.intel.com ([10.60.135.141])
+ by fmvoesa110.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 24 Apr 2024 07:06:06 -0700
+X-CSE-ConnectionGUID: qQbGo4DeQ5SNM70bLLjrsw==
+X-CSE-MsgGUID: phZiunlZQxiag/JD9QppVA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.07,226,1708416000"; d="scan'208";a="55922827"
+Received: from amlin-018-251.igk.intel.com (HELO localhost.localdomain)
+ ([10.102.18.251])
+ by fmviesa001.fm.intel.com with ESMTP; 24 Apr 2024 07:06:04 -0700
+From: Piotr Kwapulinski <piotr.kwapulinski@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Wed, 24 Apr 2024 16:22:46 +0200
+Message-Id: <20240424142251.3887-1-piotr.kwapulinski@intel.com>
+X-Mailer: git-send-email 2.31.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <e4f5cbd0-c803-4c3c-9703-f52e56864106@gmail.com>
-X-TM-AS-GCONF: 00
-X-Proofpoint-GUID: uhfqRBb54eWKPef2hDdJnIwSrSgU2j72
-X-Proofpoint-ORIG-GUID: gLWakaQraUUUlMZLADf4xlA10NLu8ZwJ
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1011,Hydra:6.0.650,FMLib:17.11.176.26
- definitions=2024-04-24_08,2024-04-23_02,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- mlxlogscore=767
- lowpriorityscore=0 malwarescore=0 mlxscore=0 suspectscore=0 spamscore=0
- priorityscore=1501 bulkscore=0 impostorscore=0 phishscore=0 clxscore=1015
- adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2404010000 definitions=main-2404240046
-X-Mailman-Approved-At: Wed, 24 Apr 2024 15:19:44 +0000
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=ibm.com; h=date : from : to : cc :
- subject : message-id : references : mime-version : content-type :
- in-reply-to; s=pp1; bh=XpH7mlduGY+teRfPIZDry1r3MxwXhD+lR2HCJ3M7h20=;
- b=Id80e8du9KRHgkzMQaMuQ9JzazbKiuyAGb974iHcfri4PgE4w2/QmgBfdkh/FLLn4LEq
- slJgP6wLd6NmCKlAWqINqRJ7aCEz+kr/wb8DiAmKvSDbm8Si8MDPkmIIHIdN5FlUK5CA
- Kndcr3Xd9hVkD6HFYLYiZZYwRlwXgnIeFrSHXdtKTLyH0fGGU0JfHZlVZkdyh2qzw8Jh
- yPDnqJHqHMrpMwnbAORuuLmHCGDnYYMl8TFBda3wNUm7Xd8kCwrfL+u52ZI/lMHblLRX
- 7LVpJyYvnSrdqPhzC2gnGDG3oZ5gxAnGHcWrRhDGv1wU3TXdIbmQDbjusoaqGgNMTUHX 6A== 
+Content-Transfer-Encoding: 8bit
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1713967993; x=1745503993;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=Er1MsQgnGHHH4ZmIxCZWEFVY8Z60X76jmdptKTGKOzY=;
+ b=k1rhvF4S3JxHTGUjjJ3heQqcLhyrGvgIarsL7Cu5Ty9EI0o9P5KKwKqs
+ lYbZFSbCX5MG8YIvApzZ1YxkV5YihR5077ATkTyfghjnKn9cPDqbF7jQ4
+ HOZqCZ9DIGcGp1W0XtKOfKn1OwUQDhVl66w7ebGyfPj8gG2t3gvhjIS5+
+ YacRsyZ2QkgZk5k/5Jx3KWAO6T8GL4+XlxANkUUY090KPQ8BOVOtPYWwV
+ m00y3tulvWsuL5nbXGiqwZBp9V3lYtq1ErcJ7w87antlvpFhwI25UXLYI
+ VD+P/iWhmRLI8FnrWAjy3cWPoi36mXGm1JmxdkY29wkQZ9wcfQmbe5MQ5
+ w==;
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=linux.ibm.com
+ dmarc=pass (p=none dis=none)
+ header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=ibm.com header.i=@ibm.com
- header.a=rsa-sha256 header.s=pp1 header.b=Id80e8du
-Subject: Re: [Intel-wired-lan] [PATCH 5/5] drivers/s390/cio: ensure the
- copied buf is NULL terminated
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=k1rhvF4S
+Subject: [Intel-wired-lan] [PATCH iwl-next v5 0/5] ixgbe: Add support for
+ Intel(R) E610 device
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -141,51 +105,69 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Javed Hasan <jhasan@marvell.com>, linux-kernel@vger.kernel.org,
- "James E.J. Bottomley" <James.Bottomley@hansenpartnership.com>,
- Eric Dumazet <edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
- Vineeth Vijayan <vneethv@linux.ibm.com>, linux-scsi@vger.kernel.org,
- Saurav Kashyap <saurav.kashyap@cavium.com>,
- Alexander Gordeev <agordeev@linux.ibm.com>, linux-s390@vger.kernel.org,
- Sudarsana Kalluru <sudarsana.kalluru@qlogic.com>,
- intel-wired-lan@lists.osuosl.org,
- Paul M Stillwell Jr <paul.m.stillwell.jr@intel.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- Vasily Gorbik <gor@linux.ibm.com>, Arun Easi <arun.easi@cavium.com>,
- Fabian Frederick <fabf@skynet.be>, Krishna Gudipati <kgudipat@brocade.com>,
- Manish Rangankar <manish.rangankar@cavium.com>, Jens Axboe <axboe@kernel.dk>,
- Nilesh Javali <nilesh.javali@cavium.com>, GR-Linux-NIC-Dev@marvell.com,
- "Martin K. Petersen" <martin.petersen@oracle.com>,
- Saurav Kashyap <skashyap@marvell.com>, Rasesh Mody <rmody@marvell.com>,
- netdev@vger.kernel.org, Anil Gurumurthy <anil.gurumurthy@qlogic.com>,
- Peter Oberparleiter <oberpar@linux.ibm.com>,
- "David S. Miller" <davem@davemloft.net>,
- GR-QLogic-Storage-Upstream@marvell.com, Sven Schnelle <svens@linux.ibm.com>,
- Sudarsana Kalluru <skalluru@marvell.com>
+Cc: Piotr Kwapulinski <piotr.kwapulinski@intel.com>, netdev@vger.kernel.org,
+ jiri@resnulli.us, horms@kernel.org
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, Apr 23, 2024 at 09:46:35PM +0700, Bui Quang Minh wrote:
-> > > -	buffer = vmemdup_user(buf, lbuf);
-> > > +	buffer = vmemdup_user(buf, lbuf + 1);
-> > >   	if (IS_ERR(buffer))
-> > >   		return -ENOMEM;
-> > > +	buffer[lbuf] = '\0';
-> > 
-> > This would read one byte too much from user space, and could potentially
-> > fault.
-> > 
-> > Why isn't this simply memdup_user_nul() like all others, which would do the
-> > right thing?
-...
-> For this case, as the original code uses vmemdup_user, which internally uses
-> kvmalloc not kmalloc, so I try to keep the original behavior. And
-> vmemdup_user does not have the counterpart vmemdup_user_nul. I can
-> kvmalloc(lbuf + 1), then copy_to_user(lbuf) and set buffer[lbuf] = '\0' or
-> do you think I should create vmemdup_user_nul?
+Add initial support for Intel(R) E610 Series of network devices. The E610
+is based on X550 but adds firmware managed link, enhanced security
+capabilities and support for updated server manageability.
 
-There is no need for vmalloc() instead of kmalloc() for this particular
-case. The input string is supposed to be rather short (see the sscanf()
-call). So converting to memdup_user_nul() is sufficient and solves the
-potential problem.
+This patch series adds low level support for the following features and
+enables link management.
+
+Piotr Kwapulinski (5):
+  ixgbe: Add support for E610 FW Admin Command Interface
+  ixgbe: Add support for E610 device capabilities detection
+  ixgbe: Add link management support for E610 device
+  ixgbe: Add support for NVM handling in E610 device
+  ixgbe: Enable link management in E610 device
+
+ drivers/net/ethernet/intel/ixgbe/Makefile     |    4 +-
+ drivers/net/ethernet/intel/ixgbe/ixgbe.h      |   15 +-
+ .../net/ethernet/intel/ixgbe/ixgbe_82599.c    |    3 +-
+ .../net/ethernet/intel/ixgbe/ixgbe_common.c   |   19 +-
+ .../net/ethernet/intel/ixgbe/ixgbe_dcb_nl.c   |    3 +-
+ drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c | 2533 +++++++++++++++++
+ drivers/net/ethernet/intel/ixgbe/ixgbe_e610.h |   75 +
+ .../net/ethernet/intel/ixgbe/ixgbe_ethtool.c  |    7 +-
+ drivers/net/ethernet/intel/ixgbe/ixgbe_lib.c  |    3 +-
+ drivers/net/ethernet/intel/ixgbe/ixgbe_main.c |  435 ++-
+ drivers/net/ethernet/intel/ixgbe/ixgbe_mbx.c  |    4 +-
+ drivers/net/ethernet/intel/ixgbe/ixgbe_phy.c  |    5 +-
+ drivers/net/ethernet/intel/ixgbe/ixgbe_type.h |   71 +-
+ .../ethernet/intel/ixgbe/ixgbe_type_e610.h    | 1064 +++++++
+ drivers/net/ethernet/intel/ixgbe/ixgbe_x540.c |   42 +-
+ drivers/net/ethernet/intel/ixgbe/ixgbe_x540.h |    7 +-
+ drivers/net/ethernet/intel/ixgbe/ixgbe_x550.c |   29 +-
+ drivers/net/ethernet/intel/ixgbe/ixgbe_x550.h |   20 +
+ 18 files changed, 4274 insertions(+), 65 deletions(-)
+ create mode 100644 drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c
+ create mode 100644 drivers/net/ethernet/intel/ixgbe/ixgbe_e610.h
+ create mode 100644 drivers/net/ethernet/intel/ixgbe/ixgbe_type_e610.h
+ create mode 100644 drivers/net/ethernet/intel/ixgbe/ixgbe_x550.h
+
+-- 
+V1 -> V2:
+  - fix for no previous prototypes for ixgbe_set_fw_drv_ver_x550,
+    ixgbe_set_ethertype_anti_spoofing_x550 and
+    ixgbe_set_source_address_pruning_x550
+  - fix variable type mismatch: u16, u32, u64
+  - fix inaccurate doc for ixgbe_aci_desc
+  - remove extra buffer allocation in ixgbe_aci_send_cmd_execute
+  - replace custom loops with generic fls64 in ixgbe_get_media_type_e610
+  - add buffer caching and optimization in ixgbe_aci_send_cmd
+V2 -> V3:
+  - revert ixgbe_set_eee_capable inlining
+  - update copyright date
+V3 -> V4:
+  - cleanup local variables in ixgbe_get_num_per_func
+  - remove redundant casting in ixgbe_aci_disable_rxen
+V4 -> V5:
+  - remove unnecessary structure members initialization
+  - remove unnecessary casting
+  - fix comments
+
+2.31.1
+
