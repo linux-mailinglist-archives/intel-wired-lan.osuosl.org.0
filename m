@@ -1,113 +1,95 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8D97D8B3A11
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 26 Apr 2024 16:30:56 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id A64388B3A47
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 26 Apr 2024 16:44:44 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 388C841F35;
-	Fri, 26 Apr 2024 14:30:55 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 9101441F68;
+	Fri, 26 Apr 2024 14:44:41 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id ZysOwqq0H8sx; Fri, 26 Apr 2024 14:30:54 +0000 (UTC)
+ id Q5XzEeOffum5; Fri, 26 Apr 2024 14:44:40 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E1BBD41F3C
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B958A41EDA
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1714141854;
-	bh=/Po/iEila9vOgF/cEwaFixGoYPv3NXGuCxcYDjenzE0=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=w9mMr961QPqs3NQnFWZziwYC4p5TzxZXkttgHeRUvcMliduwj7WMcxHGfiEy7IfQJ
-	 gv0yC2mIABDrhFeImUivdsXhit+SbqiSsXGYQO0Kwz1OwbG7SgTwk2xVSYl2CsU+b4
-	 nuNO/i+ZvpyFCOFdjfvUa7S2lkR1IY/4f4/N+63IHQdI7DiAZw84EHwW2bvU30Fr4K
-	 5n/RaSk2Fvpi+Q7kuKVTGdYbMGqUqaXMttOkBz0IrEwoY2tqWEJeNijoqqX//GsP5l
-	 jUvuj5o49a5UlTulE69Rq9TA+gmWwfyOiM3l+kfQmTpkG073yDNvimsp7P+HuugUEc
-	 hNKiyYVCMY6Gw==
+	s=default; t=1714142680;
+	bh=xuq3eFnW4wuBkZ3mDODNgP4BiQjcXktdda7scHooKGY=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=JRKQL54uoFTZEnkmDAcQ2Amn/zPpqSd9/MLJXDGJjAuQVLlFhphSviIGVt3zOGPXo
+	 M5s6vVG0te+1a2XDW7QAeRCqVsiCuSlYIR7i0Q6uWN7ysvqGLQRLNzzkryVyE0dLIl
+	 keYuXwVVYpQNiYRaeaa9wCdlzePFXxj4m1rUR1rut/3HDyn1g1ZMT1wZxg3aoDg9CD
+	 xaLcyZvAS48Wx5pgetK91ND7Wr91+cHjTJBcDBi4IYY70Goezxt/DZpOom5/mTMuad
+	 fY+mXzfUIzzld9ZoiSYiivCGYAcp0BDKzv8l1cDUQ/j4XMI8cqlooSA/3+UB+i3DlT
+	 Q9MGFzRw8jiAA==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id E1BBD41F3C;
-	Fri, 26 Apr 2024 14:30:53 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id B958A41EDA;
+	Fri, 26 Apr 2024 14:44:40 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id F08E81BF2C0
- for <intel-wired-lan@lists.osuosl.org>; Fri, 26 Apr 2024 14:30:51 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 558F31BF2C0
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 26 Apr 2024 14:44:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id E9BAD60610
- for <intel-wired-lan@lists.osuosl.org>; Fri, 26 Apr 2024 14:30:51 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 41050613E2
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 26 Apr 2024 14:44:38 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id q2Dj4QU72qwu for <intel-wired-lan@lists.osuosl.org>;
- Fri, 26 Apr 2024 14:30:50 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.133.124;
- helo=us-smtp-delivery-124.mimecast.com; envelope-from=vinschen@redhat.com;
+ id G1H8HJXp6AMK for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 26 Apr 2024 14:44:37 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.13;
+ helo=mgamail.intel.com; envelope-from=aleksander.lobakin@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 777FB605F2
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 777FB605F2
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.133.124])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 777FB605F2
- for <intel-wired-lan@lists.osuosl.org>; Fri, 26 Apr 2024 14:30:50 +0000 (UTC)
-Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
- by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-518-Tp7iL8TsOVCes_nIrxZPwg-1; Fri,
- 26 Apr 2024 10:30:45 -0400
-X-MC-Unique: Tp7iL8TsOVCes_nIrxZPwg-1
-Received: from smtp.corp.redhat.com (int-mx09.intmail.prod.int.rdu2.redhat.com
- [10.11.54.9])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id D0A033819C61;
- Fri, 26 Apr 2024 14:30:44 +0000 (UTC)
-Received: from calimero.vinschen.de (unknown [10.39.194.197])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 952C140F566;
- Fri, 26 Apr 2024 14:30:44 +0000 (UTC)
-Received: by calimero.vinschen.de (Postfix, from userid 500)
- id 41EC3A80B9E; Fri, 26 Apr 2024 16:30:43 +0200 (CEST)
-Date: Fri, 26 Apr 2024 16:30:43 +0200
-From: Corinna Vinschen <vinschen@redhat.com>
-To: Eric Dumazet <edumazet@google.com>
-Message-ID: <Ziu6k5cjXsaUpAYH@calimero.vinschen.de>
-Mail-Followup-To: Eric Dumazet <edumazet@google.com>,
- netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org,
- Nikolay Aleksandrov <razor@blackwall.org>,
- Jason Xing <kerneljasonxing@gmail.com>,
- Paolo Abeni <pabeni@redhat.com>, Jakub Kicinski <kuba@kernel.org>,
- "David S . Miller" <davem@davemloft.net>,
- Tony Nguyen <anthony.l.nguyen@intel.com>,
- Jesse Brandeburg <jesse.brandeburg@intel.com>
-References: <20240423134731.918157-1-vinschen@redhat.com>
- <CANn89iKv1J3AS3rEmEhFq5McHmM+L=32pWg3Wj4_drsdKUx77A@mail.gmail.com>
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org DA55E613B8
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org DA55E613B8
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.13])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id DA55E613B8
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 26 Apr 2024 14:44:36 +0000 (UTC)
+X-CSE-ConnectionGUID: 2/FfEzGATsefRWNe4lkAAQ==
+X-CSE-MsgGUID: j2iET+ESRhSdMp359I1KgQ==
+X-IronPort-AV: E=McAfee;i="6600,9927,11056"; a="21027169"
+X-IronPort-AV: E=Sophos;i="6.07,232,1708416000"; d="scan'208";a="21027169"
+Received: from fmviesa007.fm.intel.com ([10.60.135.147])
+ by orvoesa105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 26 Apr 2024 07:44:36 -0700
+X-CSE-ConnectionGUID: TSpeNl3CRVa+TG14ajS9gA==
+X-CSE-MsgGUID: lRRvpSkZQn6dyH8QEoaxqg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.07,232,1708416000"; d="scan'208";a="25441219"
+Received: from newjersey.igk.intel.com ([10.102.20.203])
+ by fmviesa007.fm.intel.com with ESMTP; 26 Apr 2024 07:44:33 -0700
+From: Alexander Lobakin <aleksander.lobakin@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Fri, 26 Apr 2024 16:44:08 +0200
+Message-ID: <20240426144408.1353962-1-aleksander.lobakin@intel.com>
+X-Mailer: git-send-email 2.44.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <CANn89iKv1J3AS3rEmEhFq5McHmM+L=32pWg3Wj4_drsdKUx77A@mail.gmail.com>
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.9
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=redhat.com; 
- s=mimecast20190719; t=1714141849;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=/Po/iEila9vOgF/cEwaFixGoYPv3NXGuCxcYDjenzE0=;
- b=JnAPieR8UzOeQk5crIFGtl1VblGnI3np71U9/h2hcIcLYeUJlusG/2J6kitQU+Gen4RChS
- Fp4BWBoJ6A6hURAW3J7YrjFu0rI9P6VBkdp7k4pN6CAF2nhnqqG7Qc1Zul20gfUI6i1zUp
- PN64if2sNdFEk5miIJewLcarWCcIGPY=
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1714142677; x=1745678677;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=c0dO8Re1PPSOl6/PX/WShnH30RI1DTXQ2uGy1lx3ZGY=;
+ b=QxHf3TveYWXhXkZs6VpVLsMZ8hCHVNxNzGmRuJ5SDkv5NciWWk45Xut0
+ US/KD4LApuDQ8VbilrbLhbvyx90hJVP/3oOByjv7yEYMouKaBQPT5TBBa
+ vvOE4CS6cIrkxawuG02Lab7kQwHeNIsrXEcOgncH+sowT8eyQgIF0fEWG
+ rPP7XGDToKC0mBblX7WyAxnglr1ePH6KsQ6LPNr9OlapAUHwkPVWb4kgG
+ ZTzGcp40dhhaFENcFdFrO4r35g5vTDrWkxv4Cgue8YcEooaTSwsuo6OCT
+ NoRiNHUGvjm4MrRnNnjb4ktGAg2oh+5IetB1d8jMTdwEhxUiVYGCOkxaq
+ w==;
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=redhat.com
+ header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (1024-bit key,
- unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256
- header.s=mimecast20190719 header.b=JnAPieR8
-Subject: Re: [Intel-wired-lan] [PATCH net v2] igb: cope with large
- MAX_SKB_FRAGS
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=QxHf3Tve
+Subject: [Intel-wired-lan] [PATCH iwl] idpf: don't enable NAPI and
+ interrupts prior to allocating Rx buffers
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -120,75 +102,109 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Jason Xing <kerneljasonxing@gmail.com>, netdev@vger.kernel.org,
- Nikolay Aleksandrov <razor@blackwall.org>, linux-kernel@vger.kernel.org,
- Tony Nguyen <anthony.l.nguyen@intel.com>, intel-wired-lan@lists.osuosl.org,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- "David S . Miller" <davem@davemloft.net>
+Cc: Wojciech Drewek <wojciech.drewek@intel.com>, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Alexander Lobakin <aleksander.lobakin@intel.com>,
+ Eric Dumazet <edumazet@google.com>, Michal Kubiak <michal.kubiak@intel.com>,
+ nex.sw.ncis.osdt.itp.upstreaming@intel.com, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi Eric,
+Currently, idpf enables NAPI and interrupts prior to allocating Rx
+buffers.
+This may lead to frame loss (there are no buffers to place incoming
+frames) and even crashes on quick ifup-ifdown. Interrupts must be
+enabled only after all the resources are here and available.
+Split interrupt init into two phases: initialization and enabling,
+and perform the second only after the queues are fully initialized.
+Note that we can't just move interrupt initialization down the init
+process, as the queues must have correct a ::q_vector pointer set
+and NAPI already added in order to allocate buffers correctly.
+Also, during the deinit process, disable HW interrupts first and
+only then disable NAPI. Otherwise, there can be a HW event leading
+to napi_schedule(), but the NAPI will already be unavailable.
 
-On Apr 23 16:10, Eric Dumazet wrote:
-> On Tue, Apr 23, 2024 at 3:47 PM Corinna Vinschen <vinschen@redhat.com> wrote:
-> >
-> > From: Paolo Abeni <pabeni@redhat.com>
-> >
-> > Sabrina reports that the igb driver does not cope well with large
-> > MAX_SKB_FRAG values: setting MAX_SKB_FRAG to 45 causes payload
-> > corruption on TX.
-> >
-> > An easy reproducer is to run ssh to connect to the machine.  With
-> > MAX_SKB_FRAGS=17 it works, with MAX_SKB_FRAGS=45 it fails.
-> >
-> > The root cause of the issue is that the driver does not take into
-> > account properly the (possibly large) shared info size when selecting
-> > the ring layout, and will try to fit two packets inside the same 4K
-> > page even when the 1st fraglist will trump over the 2nd head.
-> >
-> > Address the issue forcing the driver to fit a single packet per page,
-> > leaving there enough room to store the (currently) largest possible
-> > skb_shared_info.
-> >
-> > Fixes: 3948b05950fd ("net: introduce a config option to tweak MAX_SKB_FRAG")
-> > Reported-by: Jan Tluka <jtluka@redhat.com>
-> > Reported-by: Jirka Hladky <jhladky@redhat.com>
-> > Reported-by: Sabrina Dubroca <sd@queasysnail.net>
-> > Tested-by: Sabrina Dubroca <sd@queasysnail.net>
-> > Tested-by: Corinna Vinschen <vinschen@redhat.com>
-> > Signed-off-by: Paolo Abeni <pabeni@redhat.com>
-> > ---
-> > v2: fix subject, add a simple reproducer
-> >
-> >  drivers/net/ethernet/intel/igb/igb_main.c | 1 +
-> >  1 file changed, 1 insertion(+)
-> >
-> > diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
-> > index a3f100769e39..22fb2c322bca 100644
-> > --- a/drivers/net/ethernet/intel/igb/igb_main.c
-> > +++ b/drivers/net/ethernet/intel/igb/igb_main.c
-> > @@ -4833,6 +4833,7 @@ static void igb_set_rx_buffer_len(struct igb_adapter *adapter,
-> >
-> >  #if (PAGE_SIZE < 8192)
-> >         if (adapter->max_frame_size > IGB_MAX_FRAME_BUILD_SKB ||
-> > +           SKB_HEAD_ALIGN(adapter->max_frame_size) > (PAGE_SIZE / 2) ||
-> 
-> I wonder if adding IGB_SKB_PAD would be needed ?
-> 
-> adapter->max_frame_size does not seem to include it.
-> 
-> I would try using all mtus between 1200 and 1280 to make sure this works.
+Fixes: d4d558718266 ("idpf: initialize interrupts and enable vport")
+Reported-by: Michal Kubiak <michal.kubiak@intel.com>
+Reviewed-by: Wojciech Drewek <wojciech.drewek@intel.com>
+Signed-off-by: Alexander Lobakin <aleksander.lobakin@intel.com>
+---
+ drivers/net/ethernet/intel/idpf/idpf_txrx.h |  1 +
+ drivers/net/ethernet/intel/idpf/idpf_lib.c  |  1 +
+ drivers/net/ethernet/intel/idpf/idpf_txrx.c | 12 +++++++-----
+ 3 files changed, 9 insertions(+), 5 deletions(-)
 
-Erm... did you mean between 1500 and 1580 by any chance?  1200 doesn't
-really seem to make sense...
-
-I tested this patch now with mtu 1500, 1540 and 1580 successfully.
-
-Either way, I'm just heading into vacation, so I guess I'll pick this up
-again when I'm back, unless Paolo takes another look during my absence.
-
-
-Thanks,
-Corinna
+diff --git a/drivers/net/ethernet/intel/idpf/idpf_txrx.h b/drivers/net/ethernet/intel/idpf/idpf_txrx.h
+index 3d046b81e507..551391e20464 100644
+--- a/drivers/net/ethernet/intel/idpf/idpf_txrx.h
++++ b/drivers/net/ethernet/intel/idpf/idpf_txrx.h
+@@ -990,6 +990,7 @@ int idpf_vport_intr_alloc(struct idpf_vport *vport);
+ void idpf_vport_intr_update_itr_ena_irq(struct idpf_q_vector *q_vector);
+ void idpf_vport_intr_deinit(struct idpf_vport *vport);
+ int idpf_vport_intr_init(struct idpf_vport *vport);
++void idpf_vport_intr_ena(struct idpf_vport *vport);
+ enum pkt_hash_types idpf_ptype_to_htype(const struct idpf_rx_ptype_decoded *decoded);
+ int idpf_config_rss(struct idpf_vport *vport);
+ int idpf_init_rss(struct idpf_vport *vport);
+diff --git a/drivers/net/ethernet/intel/idpf/idpf_lib.c b/drivers/net/ethernet/intel/idpf/idpf_lib.c
+index 5d3532c27d57..ae8a48c48070 100644
+--- a/drivers/net/ethernet/intel/idpf/idpf_lib.c
++++ b/drivers/net/ethernet/intel/idpf/idpf_lib.c
+@@ -1394,6 +1394,7 @@ static int idpf_vport_open(struct idpf_vport *vport, bool alloc_res)
+ 	}
+ 
+ 	idpf_rx_init_buf_tail(vport);
++	idpf_vport_intr_ena(vport);
+ 
+ 	err = idpf_send_config_queues_msg(vport);
+ 	if (err) {
+diff --git a/drivers/net/ethernet/intel/idpf/idpf_txrx.c b/drivers/net/ethernet/intel/idpf/idpf_txrx.c
+index 285da2177ee4..b023704bbbda 100644
+--- a/drivers/net/ethernet/intel/idpf/idpf_txrx.c
++++ b/drivers/net/ethernet/intel/idpf/idpf_txrx.c
+@@ -3746,9 +3746,9 @@ static void idpf_vport_intr_ena_irq_all(struct idpf_vport *vport)
+  */
+ void idpf_vport_intr_deinit(struct idpf_vport *vport)
+ {
++	idpf_vport_intr_dis_irq_all(vport);
+ 	idpf_vport_intr_napi_dis_all(vport);
+ 	idpf_vport_intr_napi_del_all(vport);
+-	idpf_vport_intr_dis_irq_all(vport);
+ 	idpf_vport_intr_rel_irq(vport);
+ }
+ 
+@@ -4179,7 +4179,6 @@ int idpf_vport_intr_init(struct idpf_vport *vport)
+ 
+ 	idpf_vport_intr_map_vector_to_qs(vport);
+ 	idpf_vport_intr_napi_add_all(vport);
+-	idpf_vport_intr_napi_ena_all(vport);
+ 
+ 	err = vport->adapter->dev_ops.reg_ops.intr_reg_init(vport);
+ 	if (err)
+@@ -4193,17 +4192,20 @@ int idpf_vport_intr_init(struct idpf_vport *vport)
+ 	if (err)
+ 		goto unroll_vectors_alloc;
+ 
+-	idpf_vport_intr_ena_irq_all(vport);
+-
+ 	return 0;
+ 
+ unroll_vectors_alloc:
+-	idpf_vport_intr_napi_dis_all(vport);
+ 	idpf_vport_intr_napi_del_all(vport);
+ 
+ 	return err;
+ }
+ 
++void idpf_vport_intr_ena(struct idpf_vport *vport)
++{
++	idpf_vport_intr_napi_ena_all(vport);
++	idpf_vport_intr_ena_irq_all(vport);
++}
++
+ /**
+  * idpf_config_rss - Send virtchnl messages to configure RSS
+  * @vport: virtual port
+-- 
+2.44.0
 
