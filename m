@@ -2,93 +2,98 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 93E348B44CC
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 27 Apr 2024 09:26:35 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4B36D8B44CD
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 27 Apr 2024 09:26:37 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id C1E0A607CD;
-	Sat, 27 Apr 2024 07:26:30 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id C60DE6083E;
+	Sat, 27 Apr 2024 07:26:33 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id WriUMbEMa6SL; Sat, 27 Apr 2024 07:26:30 +0000 (UTC)
+ id 0j2l-IM_itoY; Sat, 27 Apr 2024 07:26:33 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org F20EC60815
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org E311F6082E
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1714202790;
-	bh=oU0PI/3hFSKCw5O/amXoTchq7YWCXQ97GsK4JttEy+E=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=ltwMQHJgWz5U7RZSkHKVRJxrzCBtXU8LAPfWqwH3XbzVHupKTyDP0zWMIuRUbk95I
-	 wiIUvkEwCfoOL7zs1vH66fN022n3AaQk8EPX7B7zH6a5usiaJ7eD672nfH0AbyTOnz
-	 c0eUEOvKOmxPKvjNA3AfkdTMf3cungN0qud7lyWCj49/PHKm4G1P9b8iBZWFF88IY0
-	 cBLMG9oSqr3jk+wH/M4Gfym98ujR2FdNjOXwcFZ+vgZ1f4C88FA5D58kA+rfCCAus8
-	 jwklPqrTB1hLqC82FVoa/SVO3hbRq0g+681zn2GtvWQEem5ZrhzZ1iZkEFssKCQ8N4
-	 +cvB9mVXHhULg==
+	s=default; t=1714202793;
+	bh=LOHA/dhI682qxnt6YVYVrkfHm66+2a3hHeQGS6dadHI=;
+	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=bibXg0NC76TBQ1sEYIPfR3aWo2aFZjTvU5oqIShMbS9418qpjP3ldLfrTSaA3WiTw
+	 bNH0DY4E/SMJckM3L+vvdZXJPTth+EGzM2dACmKpot1QpTgsd58geCrtsPIiVAuRG/
+	 I/d/RmxBnA+f4XxbWiiNl/Y68fIXFIf3VlJakS3Y4W5n8AqCX913xeSm+qSXQuZeFn
+	 yDTB4xhNCvBZUER8m7Z3+LGtjLvaQNZyHnAtqQSuGP7Yyz2h7GaMmqzJUhx312pOla
+	 hs/LxDpqJJSY/dFuJvOuTzDXYrkJtfupius2HONA0SmdZdFunUNf9XDnP8vML/fVoy
+	 ou8UyyITbzWtA==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id F20EC60815;
-	Sat, 27 Apr 2024 07:26:29 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id E311F6082E;
+	Sat, 27 Apr 2024 07:26:32 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id DA58C1BF37E
- for <intel-wired-lan@lists.osuosl.org>; Sat, 27 Apr 2024 07:26:27 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id C7B391BF37E
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 27 Apr 2024 07:26:28 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id C473D83B23
- for <intel-wired-lan@lists.osuosl.org>; Sat, 27 Apr 2024 07:26:27 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id B460A60788
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 27 Apr 2024 07:26:28 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id KuCRf6TYZ09m for <intel-wired-lan@lists.osuosl.org>;
- Sat, 27 Apr 2024 07:26:27 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id EOUxLxaq4ey7 for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 27 Apr 2024 07:26:28 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.129.124;
  helo=us-smtp-delivery-124.mimecast.com; envelope-from=ivecera@redhat.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org EEE42831F8
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org EEE42831F8
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org BC6CD60781
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org BC6CD60781
 Received: from us-smtp-delivery-124.mimecast.com
  (us-smtp-delivery-124.mimecast.com [170.10.129.124])
- by smtp1.osuosl.org (Postfix) with ESMTPS id EEE42831F8
- for <intel-wired-lan@lists.osuosl.org>; Sat, 27 Apr 2024 07:26:26 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTPS id BC6CD60781
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 27 Apr 2024 07:26:27 +0000 (UTC)
 Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
  [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-595-TseoSWE1NmyCFPqcAuhqhw-1; Sat, 27 Apr 2024 03:26:19 -0400
-X-MC-Unique: TseoSWE1NmyCFPqcAuhqhw-1
+ us-mta-191-8YDEEIMBOv6DROVZNJIVvA-1; Sat, 27 Apr 2024 03:26:21 -0400
+X-MC-Unique: 8YDEEIMBOv6DROVZNJIVvA-1
 Received: from smtp.corp.redhat.com (int-mx10.intmail.prod.int.rdu2.redhat.com
  [10.11.54.10])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 8FD0218065AA;
- Sat, 27 Apr 2024 07:26:18 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 2DC0B8AAD41;
+ Sat, 27 Apr 2024 07:26:21 +0000 (UTC)
 Received: from p1.luc.cera.cz (unknown [10.45.225.10])
- by smtp.corp.redhat.com (Postfix) with ESMTP id B4CA240F17B;
- Sat, 27 Apr 2024 07:26:16 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 2A8AA492BC7;
+ Sat, 27 Apr 2024 07:26:19 +0000 (UTC)
 From: Ivan Vecera <ivecera@redhat.com>
 To: netdev@vger.kernel.org
-Date: Sat, 27 Apr 2024 09:26:01 +0200
-Message-ID: <20240427072615.226151-1-ivecera@redhat.com>
+Date: Sat, 27 Apr 2024 09:26:02 +0200
+Message-ID: <20240427072615.226151-2-ivecera@redhat.com>
+In-Reply-To: <20240427072615.226151-1-ivecera@redhat.com>
+References: <20240427072615.226151-1-ivecera@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.10
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=redhat.com; 
- s=mimecast20190719; t=1714202785;
+ s=mimecast20190719; t=1714202786;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=oU0PI/3hFSKCw5O/amXoTchq7YWCXQ97GsK4JttEy+E=;
- b=BD71cXWEdPaUH/4zBDC0/D6bL1jjIlhcLsQUTjZGV4LFJvgbdU0vsUN6S9NJap1Kg3TFZa
- ub7FyaPCGD4o+fu+6YJup4iWZ5OVd1l18BnTSRcvlwZtioB23EZ2gj19A/Eaq5OMMXBipN
- /KM/hl7q2g+iMOCbZ6p24zRPvMooKe4=
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=LOHA/dhI682qxnt6YVYVrkfHm66+2a3hHeQGS6dadHI=;
+ b=HhovfexuhKQDVYp1/FIdG+CuIImXiSHu39WZIC08KQC3f5QQ2jjqu+y9GHbI0T1JZpkp2S
+ hJpf7hLaSme+O8i+xDJJCWNPKv/GXACfLdkDpHgqyASd1FV59pzOOyafR0oJfCEhQFeXw9
+ KWbHgkxK5DMZViFues4UpHna9kHTPRs=
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=redhat.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (1024-bit key,
  unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256
- header.s=mimecast20190719 header.b=BD71cXWE
-Subject: [Intel-wired-lan] [PATCH net-next v4 0/7] i40e: cleanups & refactors
+ header.s=mimecast20190719 header.b=Hhovfexu
+Subject: [Intel-wired-lan] [PATCH net-next v4 1/7] i40e: Remove flags field
+ from i40e_veb
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -101,61 +106,120 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Tony Nguyen <anthony.l.nguyen@intel.com>,
- Richard Cochran <richardcochran@gmail.com>,
- open list <linux-kernel@vger.kernel.org>, Eric Dumazet <edumazet@google.com>,
+Cc: Pucha Himasekhar Reddy <himasekharx.reddy.pucha@intel.com>,
  "moderated list:INTEL ETHERNET DRIVERS" <intel-wired-lan@lists.osuosl.org>,
+ Kalesh AP <kalesh-anakkur.purayil@broadcom.com>,
+ Aleksandr Loktionov <aleksandr.loktionov@intel.com>,
+ Eric Dumazet <edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
  Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- "David S. Miller" <davem@davemloft.net>
+ "David S. Miller" <davem@davemloft.net>,
+ open list <linux-kernel@vger.kernel.org>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-This series do following:
-Patch 1 - Removes write-only flags field from i40e_veb structure and
-          from i40e_veb_setup() parameters
-Patch 2 - Refactors parameter of i40e_notify_client_of_l2_param_changes()
-          and i40e_notify_client_of_netdev_close()
-Patch 3 - Refactors parameter of i40e_detect_recover_hung()
-Patch 4 - Adds helper i40e_pf_get_main_vsi() to get main VSI and uses it
-          in existing code
-Patch 5 - Consolidates checks whether given VSI is the main one
-Patch 6 - Adds helper i40e_pf_get_main_veb() to get main VEB and uses it
-          in existing code
-Patch 7 - Adds helper i40e_vsi_reconfig_tc() to reconfigure TC for
-          particular and uses it to replace existing open-coded pieces
+The field is initialized always to zero and it is never read.
+Remove it.
 
-Note that this series should go directly to net-next as the IWL review
-and validation were already done.
+Reviewed-by: Michal Schmidt <mschmidt@redhat.com>
+Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+Reviewed-by: Kalesh AP <kalesh-anakkur.purayil@broadcom.com>
+Reviewed-by: Tony Nguyen <anthony.l.nguyen@intel.com>
+Tested-by: Pucha Himasekhar Reddy <himasekharx.reddy.pucha@intel.com>
+Signed-off-by: Ivan Vecera <ivecera@redhat.com>
+---
+ drivers/net/ethernet/intel/i40e/i40e.h         |  3 +--
+ drivers/net/ethernet/intel/i40e/i40e_debugfs.c |  2 +-
+ drivers/net/ethernet/intel/i40e/i40e_main.c    | 13 +++++--------
+ 3 files changed, 7 insertions(+), 11 deletions(-)
 
-Changes since v3:
-- fixed new kdoc warnings
-Changes since v2:
-- resubmitted per Tony's request (no new kdoc errors were found)
-- added existing reviewed-by and tested-by tags
-Changes since v1:
-- adjusted titles for patches 2 & 3
-
-Ivan Vecera (7):
-  i40e: Remove flags field from i40e_veb
-  i40e: Refactor argument of several client notification functions
-  i40e: Refactor argument of i40e_detect_recover_hung()
-  i40e: Add helper to access main VSI
-  i40e: Consolidate checks whether given VSI is main
-  i40e: Add helper to access main VEB
-  i40e: Add and use helper to reconfigure TC for given VSI
-
- drivers/net/ethernet/intel/i40e/i40e.h        |  29 ++-
- drivers/net/ethernet/intel/i40e/i40e_client.c |  28 +--
- drivers/net/ethernet/intel/i40e/i40e_ddp.c    |   3 +-
- .../net/ethernet/intel/i40e/i40e_debugfs.c    |  36 ++--
- .../net/ethernet/intel/i40e/i40e_ethtool.c    |  29 ++-
- drivers/net/ethernet/intel/i40e/i40e_main.c   | 200 ++++++++++--------
- drivers/net/ethernet/intel/i40e/i40e_ptp.c    |   6 +-
- drivers/net/ethernet/intel/i40e/i40e_txrx.c   |  16 +-
- drivers/net/ethernet/intel/i40e/i40e_txrx.h   |   2 +-
- .../ethernet/intel/i40e/i40e_virtchnl_pf.c    |  14 +-
- 10 files changed, 211 insertions(+), 152 deletions(-)
-
+diff --git a/drivers/net/ethernet/intel/i40e/i40e.h b/drivers/net/ethernet/intel/i40e/i40e.h
+index 2fbabcdb5bb5..5248e78f7849 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e.h
++++ b/drivers/net/ethernet/intel/i40e/i40e.h
+@@ -788,7 +788,6 @@ struct i40e_veb {
+ 	u16 stats_idx;		/* index of VEB parent */
+ 	u8  enabled_tc;
+ 	u16 bridge_mode;	/* Bridge Mode (VEB/VEPA) */
+-	u16 flags;
+ 	u16 bw_limit;
+ 	u8  bw_max_quanta;
+ 	bool is_abs_credits;
+@@ -1213,7 +1212,7 @@ void i40e_vsi_stop_rings(struct i40e_vsi *vsi);
+ void i40e_vsi_stop_rings_no_wait(struct  i40e_vsi *vsi);
+ int i40e_vsi_wait_queues_disabled(struct i40e_vsi *vsi);
+ int i40e_reconfig_rss_queues(struct i40e_pf *pf, int queue_count);
+-struct i40e_veb *i40e_veb_setup(struct i40e_pf *pf, u16 flags, u16 uplink_seid,
++struct i40e_veb *i40e_veb_setup(struct i40e_pf *pf, u16 uplink_seid,
+ 				u16 downlink_seid, u8 enabled_tc);
+ void i40e_veb_release(struct i40e_veb *veb);
+ 
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_debugfs.c b/drivers/net/ethernet/intel/i40e/i40e_debugfs.c
+index f9ba45f596c9..6147c5f128e8 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_debugfs.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_debugfs.c
+@@ -867,7 +867,7 @@ static ssize_t i40e_dbg_command_write(struct file *filp,
+ 			goto command_write_done;
+ 		}
+ 
+-		veb = i40e_veb_setup(pf, 0, uplink_seid, vsi_seid, enabled_tc);
++		veb = i40e_veb_setup(pf, uplink_seid, vsi_seid, enabled_tc);
+ 		if (veb)
+ 			dev_info(&pf->pdev->dev, "added relay %d\n", veb->seid);
+ 		else
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
+index bcc99a6676f9..e27b2aa544b6 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_main.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
+@@ -13127,7 +13127,7 @@ static int i40e_ndo_bridge_setlink(struct net_device *dev,
+ 
+ 		/* Insert a new HW bridge */
+ 		if (!veb) {
+-			veb = i40e_veb_setup(pf, 0, vsi->uplink_seid, vsi->seid,
++			veb = i40e_veb_setup(pf, vsi->uplink_seid, vsi->seid,
+ 					     vsi->tc_config.enabled_tc);
+ 			if (veb) {
+ 				veb->bridge_mode = mode;
+@@ -14383,10 +14383,10 @@ struct i40e_vsi *i40e_vsi_setup(struct i40e_pf *pf, u8 type,
+ 		}
+ 
+ 		if (vsi->uplink_seid == pf->mac_seid)
+-			veb = i40e_veb_setup(pf, 0, pf->mac_seid, vsi->seid,
++			veb = i40e_veb_setup(pf, pf->mac_seid, vsi->seid,
+ 					     vsi->tc_config.enabled_tc);
+ 		else if ((vsi->flags & I40E_VSI_FLAG_VEB_OWNER) == 0)
+-			veb = i40e_veb_setup(pf, 0, vsi->uplink_seid, vsi->seid,
++			veb = i40e_veb_setup(pf, vsi->uplink_seid, vsi->seid,
+ 					     vsi->tc_config.enabled_tc);
+ 		if (veb) {
+ 			if (vsi->seid != pf->vsi[pf->lan_vsi]->seid) {
+@@ -14780,7 +14780,6 @@ static int i40e_add_veb(struct i40e_veb *veb, struct i40e_vsi *vsi)
+ /**
+  * i40e_veb_setup - Set up a VEB
+  * @pf: board private structure
+- * @flags: VEB setup flags
+  * @uplink_seid: the switch element to link to
+  * @vsi_seid: the initial VSI seid
+  * @enabled_tc: Enabled TC bit-map
+@@ -14793,9 +14792,8 @@ static int i40e_add_veb(struct i40e_veb *veb, struct i40e_vsi *vsi)
+  * Returns pointer to the successfully allocated VEB sw struct on
+  * success, otherwise returns NULL on failure.
+  **/
+-struct i40e_veb *i40e_veb_setup(struct i40e_pf *pf, u16 flags,
+-				u16 uplink_seid, u16 vsi_seid,
+-				u8 enabled_tc)
++struct i40e_veb *i40e_veb_setup(struct i40e_pf *pf, u16 uplink_seid,
++				u16 vsi_seid, u8 enabled_tc)
+ {
+ 	struct i40e_vsi *vsi = NULL;
+ 	struct i40e_veb *veb;
+@@ -14826,7 +14824,6 @@ struct i40e_veb *i40e_veb_setup(struct i40e_pf *pf, u16 flags,
+ 	if (veb_idx < 0)
+ 		goto err_alloc;
+ 	veb = pf->veb[veb_idx];
+-	veb->flags = flags;
+ 	veb->uplink_seid = uplink_seid;
+ 	veb->enabled_tc = (enabled_tc ? enabled_tc : 0x1);
+ 
 -- 
 2.43.2
 
