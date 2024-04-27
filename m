@@ -1,76 +1,110 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0DCD78B594F
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 29 Apr 2024 15:05:38 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 283918B5C7B
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 29 Apr 2024 17:05:35 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id B84E780F24;
-	Mon, 29 Apr 2024 13:05:36 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id AA907404CA;
+	Mon, 29 Apr 2024 15:05:33 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id ewMCpq7icX54; Mon, 29 Apr 2024 13:05:31 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id Uf0WKqMqLbl0; Mon, 29 Apr 2024 15:05:32 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 89C3380FA1
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 54F3E404C8
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1714395928;
-	bh=jcGGYxR/wcR1/GKC59wZgbZHJHnON98qCG3tGOf36NM=;
+	s=default; t=1714403132;
+	bh=nIM0kF53eMsKebnB69nMRQDFX/NcTU//w1F0rF/SQRg=;
 	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=B3lm+fc6VeJBVRK5nHsDiemwOPvrMsJNhBqqOJtHn/tEzjadoQqS6/PtRRHBH2Tyn
-	 jpNkQ1enYFduOg/zFXbg2RbcqfcRnBNTjf+QfLHhVVelET53B8DypDJ9VX0EB4fsHK
-	 nWHGPBm1hmqUEZw/qUvOccT1PJz73JSVsQxMcbdaa07kgaXaRFwIkKj72fqFVfhJDg
-	 k7qUaiNZNOrYUDY197/MvZYc/KXmxrizVdGvBt57+ZhS1ODa5U7Eppbv2etMwx0mJW
-	 yt8Ly1AAB0eZKST69FrA3hzvmhZQz0Ia5QsUT9Tmm06j6iBYpg3rWobiR5E2G2MsAg
-	 gGDgzTdKL8kbA==
+	b=1wpJhL3DURlVyDZc9bP6+5NSGRyUpoQ3GAfun/UNHRL9nWK7ktxiuSIj6Lqcg9+Mo
+	 /dQq8XYGQg7wcwiTi4CkzZ6qn850DcSIY2kaS65xFhuA7C/YX6BXGFFirXgiNbKXed
+	 LocWSgYcd8DZARSGEty3Zd3owfugpN9RNOs3d/nLorHoEooBH9/rwrfDjXaGaot5cN
+	 1WPtxA5Uo8pZesvu8mUy1Y359/XcA25woG7ByQXqkgc15GeaW6RJ5yo7f4W/CVgly/
+	 +wVbDUzk55pfqBeYmmDEgBrrKuVxOuSOVR9wjDSf0dfIU/akxB0Glb4MojgO6u/Tm5
+	 xhkzCbtKsdLQA==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 89C3380FA1;
-	Mon, 29 Apr 2024 13:05:28 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 54F3E404C8;
+	Mon, 29 Apr 2024 15:05:32 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id D84091BF316
- for <intel-wired-lan@lists.osuosl.org>; Mon, 29 Apr 2024 13:05:26 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id F37B11BF20D
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 27 Apr 2024 10:59:46 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id C3E2480DC0
- for <intel-wired-lan@lists.osuosl.org>; Mon, 29 Apr 2024 13:05:26 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id DF149606E3
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 27 Apr 2024 10:59:46 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id VVTtZTDUVMCn for <intel-wired-lan@lists.osuosl.org>;
- Mon, 29 Apr 2024 13:05:25 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=141.14.17.11;
- helo=mx3.molgen.mpg.de; envelope-from=pmenzel@molgen.mpg.de;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 46DD480E87
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 46DD480E87
-Received: from mx3.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 46DD480E87
- for <intel-wired-lan@lists.osuosl.org>; Mon, 29 Apr 2024 13:05:23 +0000 (UTC)
-Received: from [192.168.0.224] (ip5f5aed0f.dynamic.kabel-deutschland.de
- [95.90.237.15])
- (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested) (Authenticated sender: pmenzel)
- by mx.molgen.mpg.de (Postfix) with ESMTPSA id E0E0861E5FE05;
- Mon, 29 Apr 2024 15:04:48 +0200 (CEST)
-Message-ID: <a0359435-7e0f-4a48-9cc6-3db679bde1ac@molgen.mpg.de>
-Date: Mon, 29 Apr 2024 15:04:47 +0200
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id KwlefUliaoKY for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 27 Apr 2024 10:59:46 +0000 (UTC)
+X-Greylist: delayed 310 seconds by postgrey-1.37 at util1.osuosl.org;
+ Sat, 27 Apr 2024 10:59:44 UTC
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 1446F606DC
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1446F606DC
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=212.227.17.21;
+ helo=mout.gmx.net; envelope-from=aros@gmx.com; receiver=<UNKNOWN> 
+Received: from mout.gmx.net (mout.gmx.net [212.227.17.21])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 1446F606DC
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 27 Apr 2024 10:59:44 +0000 (UTC)
+X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
+Received: from [10.25.110.37] ([98.159.234.26]) by mail.gmx.net (mrgmx104
+ [212.227.17.174]) with ESMTPSA (Nemesis) id 1Mq2jC-1sVtyd2ozq-00niar; Sat, 27
+ Apr 2024 12:54:25 +0200
+Message-ID: <2330c23c-e99b-454a-b195-32c5b4332071@gmx.com>
+Date: Sat, 27 Apr 2024 10:54:23 +0000
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-To: Ross Lagerwall <ross.lagerwall@citrix.com>
-References: <20240429124922.2872002-1-ross.lagerwall@citrix.com>
+To: gregkh@linuxfoundation.org
+References: <2024042328-footprint-enrage-2db3@gregkh>
 Content-Language: en-US
-From: Paul Menzel <pmenzel@molgen.mpg.de>
-In-Reply-To: <20240429124922.2872002-1-ross.lagerwall@citrix.com>
+From: "Artem S. Tashkinov" <aros@gmx.com>
+In-Reply-To: <2024042328-footprint-enrage-2db3@gregkh>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=molgen.mpg.de
-Subject: Re: [Intel-wired-lan] [PATCH v2] ice: Fix enabling SR-IOV with Xen
+Content-Transfer-Encoding: 7bit
+X-Provags-ID: V03:K1:rYE8ntWQoWfPXtJcQSmSMLornpL74RVw50TEcun9H6wYBruDar9
+ 20//qEowj3Bmqe1jd6rweWraI7/DlwppyjZc/uF9m/L2CpEYJFvLO47a3Rgl3skbVU+/C/X
+ BXzONwUACKQ9jb/q+A8T0Lo5UpqS6a9fszZaIHn19jZcubsuAAszrxTdHwwBg4hbOcZf0Xm
+ ig1x1KWwjX/vwc+24dWkQ==
+UI-OutboundReport: notjunk:1;M01:P0:cSQXve4jMYo=;pqMcneYEwCgmUZrk5Q5hL4Daa+0
+ nLd0OOMrTW9lO5lZpWLzOBGfU/8a0hOFhyRI5OtL22pJ75pKcjsOa3oKv2gddko12LSCnMATB
+ UAjs5BNpXNBWdqVPRkeHQFQ0I/+88xJtDwYIfF2J+kOKlZ9MuJy15W42PAl8puAXPZPsSSvSU
+ iCBCjXxF8cBOjyT5MJDz6h+k5Pp4rNfaowLhTFWxkydrfn+l3L27h3In5H++V3lxJ6XeCIySl
+ GLz6iybff+wCtjACsx1tnGsMrb0i2GWawYvrQxIk+ZLPe7aGtqQFkhrzfrNtNtqmEFW6Pkq35
+ 7PGplcn+otD/fH2WpXin3qNyFu4HUbgXyngKTio9Hx096iubsAW6tCV7oJYH4jPMO+c4CEnnE
+ 1L89gyaYZxOxfXmQLh6b+VXV6e2MwKpPDjdW5T4H3QILw/VOhyuSo34yJkDxT8CQXKfs1nsLz
+ 737BF7rF/jJfyMyRySPYffgoUNdA9bRwTZ+48y+f8u4OKriZAbyjMNbjyAaDFf0g6islKZ/O/
+ +Y90ERreM5hzYWHKymg03aGPYiyqDqG4hVCL5p2nl/5/XKObYI5zdNTiFyoyfqKqaI/l5dDpc
+ P9CDAGeyIgPt47XV0aIr2P0rU3l0fviIgxX59tn97S2/z7kwxOSZAm2afvB7eXf+ytHQiFqiG
+ kyv2nBtdWwmODIWv5eNX184u5clBfOlrgt50ns4pA79p6Qhw75TDcpmVMFRz+LOM1ehZ0Loho
+ cHXqWnRgzLZlTxEBaxtRO/cY4Cwqt9aLABvP70D+te1dnuGybECj3Lwt6TTzqVVT54Vybw8Do
+ gNlnyfGX/ulqZnQSqX+sC2ijKL8MbrwdakAFRwt5MNdj0=
+X-Mailman-Approved-At: Mon, 29 Apr 2024 15:05:30 +0000
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmx.com; 
+ s=s31663417; t=1714215580; x=1714820380; i=aros@gmx.com;
+ bh=nIM0kF53eMsKebnB69nMRQDFX/NcTU//w1F0rF/SQRg=;
+ h=X-UI-Sender-Class:Message-ID:Date:MIME-Version:To:Cc:References:
+ Subject:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:
+ cc:content-transfer-encoding:content-type:date:from:message-id:
+ mime-version:reply-to:subject:to;
+ b=rY7bk4Bcm06FHGhQmX7j8Seb9UylAqMyy9WhbxvlbNsFin0UxHRAddCDo8i8Sftl
+ INXTL43B4VJAvcQqeeGL7xaY0OF4K6pbSKJEqn+cqIEzHmWYaQqJU4AP/5BQ9u1yO
+ LnbOaNoJkXC+vJ5xvC6Cf1WAd8ZRDWWFtIchuuVvQzm/bvc72Kk2hCD3v3qlwXC/5
+ bgtxcRDlWw9t/grtnNbYp6jaAKfrKUz8mfv9Ck1OrC9e1duPWcEt3zCaqu9a1j9cH
+ Ja+g6RmMAowF2iOz7Pmf6455SUyZZXv1CHWXp9/z2t6srDfBxpDeRw5QScFNO8L0u
+ n3BO+KJoBjviM0+rng==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dmarc=pass (p=quarantine dis=none)
+ header.from=gmx.com
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=gmx.com header.i=aros@gmx.com header.a=rsa-sha256
+ header.s=s31663417 header.b=rY7bk4Bc
+Subject: Re: [Intel-wired-lan] [BUG] e1000e, scheduling while atomic (stable)
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,124 +117,18 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, Javi Merino <javi.merino@kernel.org>,
- Tony Nguyen <anthony.l.nguyen@intel.com>, intel-wired-lan@lists.osuosl.org
+Cc: intel-wired-lan@lists.osuosl.org, linux-kernel@vger.kernel.org,
+ stable@vger.kernel.org
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Dear Ross,
+Hello,
 
+This fix is still not queued in 6.8 stable:
 
-Thank you for your patch.
+https://git.kernel.org/pub/scm/linux/kernel/git/stable/stable-queue.git/tree/queue-6.8
 
-Am 29.04.24 um 14:49 schrieb Ross Lagerwall:
-> When the PCI functions are created, Xen is informed about them and
-> caches the number of MSI-X entries each function has.  However, the
-> number of MSI-X entries is not set until after the hardware has been
-> configured and the VFs have been started. This prevents
-> PCI-passthrough from working because Xen rejects mapping MSI-X
-> interrupts to domains because it thinks the MSI-X interrupts don't
-> exist.
+Why?
 
-Thank you for this great problem description. Is there any log message 
-shown, you could paste, so people can find this commit when searching 
-for the log message?
-
-Do you have a minimal test case, so the maintainers can reproduce this 
-to test the fix?
-
-> Fix this by moving the call to pci_enable_sriov() later so that the
-> number of MSI-X entries is set correctly in hardware by the time Xen
-> reads it.
-
-It’d be great if you could be more specific on “later”, and why this is 
-the correct place.
-
-> Signed-off-by: Ross Lagerwall <ross.lagerwall@citrix.com>
-> Signed-off-by: Javi Merino <javi.merino@kernel.org>
-> ---
-> 
-> In v2:
-> * Fix cleanup on if pci_enable_sriov() fails.
-> 
->   drivers/net/ethernet/intel/ice/ice_sriov.c | 23 +++++++++++++---------
->   1 file changed, 14 insertions(+), 9 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/intel/ice/ice_sriov.c b/drivers/net/ethernet/intel/ice/ice_sriov.c
-> index a958fcf3e6be..bc97493046a8 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_sriov.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_sriov.c
-> @@ -864,6 +864,8 @@ static int ice_ena_vfs(struct ice_pf *pf, u16 num_vfs)
->   	int total_vectors = pf->hw.func_caps.common_cap.num_msix_vectors;
->   	struct device *dev = ice_pf_to_dev(pf);
->   	struct ice_hw *hw = &pf->hw;
-> +	struct ice_vf *vf;
-> +	unsigned int bkt;
->   	int ret;
->   
->   	pf->sriov_irq_bm = bitmap_zalloc(total_vectors, GFP_KERNEL);
-> @@ -877,24 +879,20 @@ static int ice_ena_vfs(struct ice_pf *pf, u16 num_vfs)
->   	set_bit(ICE_OICR_INTR_DIS, pf->state);
->   	ice_flush(hw);
->   
-> -	ret = pci_enable_sriov(pf->pdev, num_vfs);
-> -	if (ret)
-> -		goto err_unroll_intr;
-> -
->   	mutex_lock(&pf->vfs.table_lock);
->   
->   	ret = ice_set_per_vf_res(pf, num_vfs);
->   	if (ret) {
->   		dev_err(dev, "Not enough resources for %d VFs, err %d. Try with fewer number of VFs\n",
->   			num_vfs, ret);
-> -		goto err_unroll_sriov;
-> +		goto err_unroll_intr;
->   	}
->   
->   	ret = ice_create_vf_entries(pf, num_vfs);
->   	if (ret) {
->   		dev_err(dev, "Failed to allocate VF entries for %d VFs\n",
->   			num_vfs);
-> -		goto err_unroll_sriov;
-> +		goto err_unroll_intr;
->   	}
->   
->   	ice_eswitch_reserve_cp_queues(pf, num_vfs);
-> @@ -905,6 +903,10 @@ static int ice_ena_vfs(struct ice_pf *pf, u16 num_vfs)
->   		goto err_unroll_vf_entries;
->   	}
->   
-> +	ret = pci_enable_sriov(pf->pdev, num_vfs);
-> +	if (ret)
-> +		goto err_unroll_start_vfs;
-> +
->   	clear_bit(ICE_VF_DIS, pf->state);
->   
->   	/* rearm global interrupts */
-> @@ -915,12 +917,15 @@ static int ice_ena_vfs(struct ice_pf *pf, u16 num_vfs)
->   
->   	return 0;
->   
-> +err_unroll_start_vfs:
-> +	ice_for_each_vf(pf, bkt, vf) {
-> +		ice_dis_vf_mappings(vf);
-> +		ice_vf_vsi_release(vf);
-> +	}
-
-Why wasn’t this needed with `pci_enable_sriov()` done earlier?
-
->   err_unroll_vf_entries:
->   	ice_free_vf_entries(pf);
-> -err_unroll_sriov:
-> -	mutex_unlock(&pf->vfs.table_lock);
-> -	pci_disable_sriov(pf->pdev);
->   err_unroll_intr:
-> +	mutex_unlock(&pf->vfs.table_lock);
->   	/* rearm interrupts here */
->   	ice_irq_dynamic_ena(hw, NULL, NULL);
->   	clear_bit(ICE_OICR_INTR_DIS, pf->state);
-
-
-Kind regards,
-
-Paul
+Regards,
+Artem
