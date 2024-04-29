@@ -1,212 +1,123 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 852128B5112
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 29 Apr 2024 08:14:29 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3AB5D8B5737
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 29 Apr 2024 13:55:58 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 0492E605E6;
-	Mon, 29 Apr 2024 06:14:28 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id A6C0460789;
+	Mon, 29 Apr 2024 11:55:56 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id NiL4zcylMXnq; Mon, 29 Apr 2024 06:14:27 +0000 (UTC)
+ id B901aCGT7T-Q; Mon, 29 Apr 2024 11:55:55 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 31D4D605E9
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 678656078B
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1714371267;
-	bh=UFuQ9Xg9aAyJ/vfUcty6HubVGMdgdtHpB/1R8kzCDpE=;
-	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1714391755;
+	bh=tTF8L7As+P2RTQMXeQ1vLyfoKhnmlLupR/xIodvbScg=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=rXKwHhaH1yJD+0LDxJaZYBwvEULqDDScud7cupLAagOUimzWcSlc3X9HzhsLa1A8o
-	 Hk9x0IleXoknPU4k45Y2eCOJEln8Kf4XBa9JPhsqqCUKQNlkMu5VcZGm/oeSdtXvc8
-	 HnbjiwQzYMrFfavZPY1cc6g5wFZle9bOPYPB+2PRnlB0VDqGP1WiMH7nAWYvL6gSkh
-	 AtNdB26ZM8Yn/v4xHZtBcjLvakpNBkdUN2bG4IPVD8SX9nylHWN2yNV8uf7V1Ry7J5
-	 fhmlGcXBeg2GPcoXxMsPMMspiliDvdkfSmRtutXgsqHev+Iiyy54tPLZYi7VkQMDxX
-	 MD41XPf7WSkqg==
+	b=mJ54Tq5334u21zxoNru1z5SL1LzQetczywlv4nujkHvuNEw6iVhwuCgLNb6vteBXL
+	 5ABk2UvGHXZ03FtLBvBjljEeuk04Zfymc2JUs5LCpZihKJ8KrXdo3PmXJmC6GDxBZk
+	 GprA/tw7PLdGs+n1FptHkENrPjA4G3skUxzuZZTo7j94VqXasS/VfKTcWWP4jXEPDT
+	 1Nvd+ts6RUZLy1vutMfzkegHaNIWDjm9VavsZhzwDJeto89zaLhP1l0OCBejtm0TrP
+	 vYlswsawmn0Q6MLDHt6RiNWAT+XU9SZt0BYFm6NxLw+cL+qucAGb/hWb3S7VAN7qnk
+	 k20VakNiOMtHA==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 31D4D605E9;
-	Mon, 29 Apr 2024 06:14:27 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 678656078B;
+	Mon, 29 Apr 2024 11:55:55 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 5C0661BF4DA
- for <intel-wired-lan@lists.osuosl.org>; Mon, 29 Apr 2024 06:14:24 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id C490D1BF8B4
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 29 Apr 2024 11:55:53 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 526844018B
- for <intel-wired-lan@lists.osuosl.org>; Mon, 29 Apr 2024 06:14:24 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id AF5C94060C
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 29 Apr 2024 11:55:53 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id nJfZl-EVcIt8 for <intel-wired-lan@lists.osuosl.org>;
- Mon, 29 Apr 2024 06:14:23 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.21;
- helo=mgamail.intel.com; envelope-from=himasekharx.reddy.pucha@intel.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 33E3440181
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 33E3440181
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.21])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 33E3440181
- for <intel-wired-lan@lists.osuosl.org>; Mon, 29 Apr 2024 06:14:23 +0000 (UTC)
-X-CSE-ConnectionGUID: Ak7PZ6HsSWqc+5qKKM8f+g==
-X-CSE-MsgGUID: NCwSpTbWTDC4JWtu5AQFmA==
-X-IronPort-AV: E=McAfee;i="6600,9927,11057"; a="9944375"
-X-IronPort-AV: E=Sophos;i="6.07,238,1708416000"; 
-   d="scan'208";a="9944375"
-Received: from fmviesa002.fm.intel.com ([10.60.135.142])
- by orvoesa113.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 28 Apr 2024 23:14:23 -0700
-X-CSE-ConnectionGUID: DUPa3/xnSlejXOzHFSKqig==
-X-CSE-MsgGUID: G1wQuF6OR9OfWmzKIF7TBw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.07,238,1708416000"; d="scan'208";a="49230964"
-Received: from fmsmsx601.amr.corp.intel.com ([10.18.126.81])
- by fmviesa002.fm.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
- 28 Apr 2024 23:14:22 -0700
-Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
- fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.35; Sun, 28 Apr 2024 23:14:22 -0700
-Received: from FMSEDG603.ED.cps.intel.com (10.1.192.133) by
- fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.35 via Frontend Transport; Sun, 28 Apr 2024 23:14:22 -0700
-Received: from NAM10-BN7-obe.outbound.protection.outlook.com (104.47.70.100)
- by edgegateway.intel.com (192.55.55.68) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.35; Sun, 28 Apr 2024 23:14:21 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=g/PbryZvSstrM2///2st8QyVV4Q/fX5AHV1j71ZvXVMz9LI64ZDTirrTz+NbPrtggibBIghoKuU1x4u5ncyYooRnoyziyxKCB3pLSVc84aMkGNAJH1fwunLJ9+Tjj37ImnoGF/HaKcvTuzBtWABBztB0/h72MJwv1EKUjWxYK51Ns3S4dX3bhvXvBcc2VnMolleEuxu3z28tGz5uuinpUbRJ/vo7uJ+P7baR4RDCwVs6CFOF+gB9ylqHBggEUDnCyBGh//0VTGUIMUN+TouJdpzEH3rLi+XwfJ5jcBRA81bg0PeaUuu2qlTkXHe4ygdASDqzwXXeGrN7RUHYvgrX2w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=UFuQ9Xg9aAyJ/vfUcty6HubVGMdgdtHpB/1R8kzCDpE=;
- b=HPMayIgckc/thFZ0oNYQGsz6Q5CY6Nrf1o3mDpbPCJfMI8kMX76MVGPN1vpLJjsXpjFX0FGrTHnRLn7hfwDL15oPXyn4GjIr6N9NxYo58VhgcJHLb7EnB6MntLRw1U07Mv4jxkHK7co4KznBoQ8y7EjzHipenf1VpagFQ+vOr+mlBBWj+PgJNtieqFHZ3DCBblJ21i3h1p7y2je9r36FDxJiGW7ARlUJSU4Ri3mNHwH/A2QNNOA5DMDhUXzFGkJv6SknhavVD/fHX7qNXbLggF+tvWBZJelnMnTIJY9gp706dlkTt6wCEcq/pqzbfR1W6ZJO4P+TsyEiwGOgWK9ykg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from CYYPR11MB8429.namprd11.prod.outlook.com (2603:10b6:930:c2::15)
- by LV3PR11MB8741.namprd11.prod.outlook.com (2603:10b6:408:21d::15)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7519.32; Mon, 29 Apr
- 2024 06:14:14 +0000
-Received: from CYYPR11MB8429.namprd11.prod.outlook.com
- ([fe80::4434:a739:7bae:39a9]) by CYYPR11MB8429.namprd11.prod.outlook.com
- ([fe80::4434:a739:7bae:39a9%2]) with mapi id 15.20.7519.020; Mon, 29 Apr 2024
- 06:14:14 +0000
-From: "Pucha, HimasekharX Reddy" <himasekharx.reddy.pucha@intel.com>
-To: "Greenwalt, Paul" <paul.greenwalt@intel.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
-Thread-Topic: [Intel-wired-lan] [PATCH iwl-next v3 1/2] ice: add additional
- E830 device ids
-Thread-Index: AQHagXa9NOWfZp/sCEWMAaTLQ1ocUbF+9bOg
-Date: Mon, 29 Apr 2024 06:14:14 +0000
-Message-ID: <CYYPR11MB8429728C87DA830A4EABA465BD1B2@CYYPR11MB8429.namprd11.prod.outlook.com>
-References: <20240329010708.2805384-1-paul.greenwalt@intel.com>
-In-Reply-To: <20240329010708.2805384-1-paul.greenwalt@intel.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: CYYPR11MB8429:EE_|LV3PR11MB8741:EE_
-x-ms-office365-filtering-correlation-id: e5f7c398-f21a-4305-4efd-08dc6813981c
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0; ARA:13230031|1800799015|376005|366007|38070700009;
-x-microsoft-antispam-message-info: =?us-ascii?Q?/uLp3pxMrnAzyugguvtvztmoMbEzw8dTRPLshSxHJ7UrOJuj38U3ZjebWHMY?=
- =?us-ascii?Q?YLCQ5lT70dUZzgEu9LqcvsiCX21TsvwEoqW2/HpRrLmOdvRd2F99bANzmz9p?=
- =?us-ascii?Q?KYxcBSXtKX1Jqksjmfhy/VTAvwXxphoQEIhk1TkSx8oXH9gk9wE7OxjbDIIm?=
- =?us-ascii?Q?EeC1aXa/ISYdbC30ZGkIp+JP/a+7cNYqbLq9qCRVJ+1FUN9CAFFEW3OspDok?=
- =?us-ascii?Q?l6gowbSvhky3XR2NminNJmUqBoTlLXm88QqJkqNv6iWtpLC8Za0qa/oz8G7O?=
- =?us-ascii?Q?eDFvy4bFO74Yad6J+YXd99eN7JooK3+2RUiYzlwWI/d9LlgzCB3U95E/8vXg?=
- =?us-ascii?Q?GiWq1MkZVhqOpB1bUU5MvItCZ0x1M/xxqsoJVV/i4s1VZahe+qbsvKtaPNPB?=
- =?us-ascii?Q?qICMANrOJFHVAj57egJdJk0Af6haKSRIIPw5xZCUf7mZ5/hQuLZJ5wBh1kM8?=
- =?us-ascii?Q?TTuOCCOI5a7acdnGdfB+p4dZqmi6Sue9Wydus2sW42Ec7gD39rCDVpD1EOON?=
- =?us-ascii?Q?It8GUCFv0gp/I0utIr38A4jVnJMooE+4YRMxOPuB/4f+gOY+T0xHsedcL5tf?=
- =?us-ascii?Q?LqMAcp3cN8Px9x8B8lwkTeDW2hUpCEBJfi1CrBRMCc2LMIeHHrDD4ujYER4c?=
- =?us-ascii?Q?K5UbcLAMXUjjaEDZIN7kQNt+UdJIC0J3sKWO9By3Wvugmwi6AgdpVQvJXkvy?=
- =?us-ascii?Q?ldt73nsK63pVpDTT/1JNj8hjpSUX+F8nIiq9EU+ZNPCWIXJTeK9xAen6+2av?=
- =?us-ascii?Q?Z1eCDebZzkNeNe5NgphTzfXBbCTBa/o5MTr8YUN3KAWAVoNJZY3GzmoTddnP?=
- =?us-ascii?Q?IGwF45d8h2MMmxwG54BTp0/9hSVYKfuBe1/lH1mIjTkomlpIBMHdikHYcMR0?=
- =?us-ascii?Q?/OkKdncjItit3omCv2EBFA6dLQ/K4JwzCAySerL4iPmsJgYhjiImhESw1dbE?=
- =?us-ascii?Q?Wigph4BN2C3E9QV7blsP3LlO+ZHNTLM1L2dptqcRecgIlZMERt5+SZ1kagk8?=
- =?us-ascii?Q?Czvr3k6Z3SixxBGfDwM6/vW+s4PYaDwsAMZkb5/vxUIiIfNiMx7cdA7fpiiO?=
- =?us-ascii?Q?xI0UANmGmOVdT48FGbInUDfyD9TJJ8d8u3yxu4TU6KymlKaXkd57HgvDCe7h?=
- =?us-ascii?Q?7auakIuXVCoQS08rnNTB3kA6V4Zdb26WM6Yn+y0BOYPClQaOaFqmw21npJPg?=
- =?us-ascii?Q?i0dScmeM2Aa/RRYpN4lyNluOL/2vJVwrkIqSriN1GGLnnWFEArVl2PMSuSCs?=
- =?us-ascii?Q?VbTbAqQY2uUa5CjQvvzGLOg9UDp6a+gA/qVmZS3/QizkA7axtOPeNTCQba2S?=
- =?us-ascii?Q?k1u28OjYdgpwa+kV+cwuf1Jq?=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:CYYPR11MB8429.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230031)(1800799015)(376005)(366007)(38070700009); DIR:OUT; SFP:1101; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?t5XrJMtIyqSd8gbyocE8XWbtUqeaa02btSk5nk3ZCsohPorqJAkaGfhSAGza?=
- =?us-ascii?Q?tJDDxbm/WD7u34OpZ2l5P82DPuJPf6PILz+x6DJldYssd2uv6wVPJls5MqPC?=
- =?us-ascii?Q?MKus6u094ER1DnTZtjnVbCfUa9MLYeN+ASJcck0UYjCt0GkMKI/wNySkfQ9p?=
- =?us-ascii?Q?X7s6bxMnWJ2D2plpRVdQt1wQFZn1SEmK4IeHVr8vqeXWetVLw+Or2+qQfJw6?=
- =?us-ascii?Q?ZcvJ0FFk9wym4ewhEdZMaVQ0E+TJQdiOJQutI5A8xqfF5t59jEz07t5Yl7k+?=
- =?us-ascii?Q?R7bap8N9uGrZksHVjnXsnNsNy0g9X5a1bmjhCSt72VotDRuAocOjn33psnzQ?=
- =?us-ascii?Q?XYL+upVQYlngO8e82TGEZBb6iDElBoq56Gv6BLAbi9BfM098Rtkz1uhxt5M7?=
- =?us-ascii?Q?TTawcfhUIhzCsOZ6lav63IBbtZCSBecX6bGcC2ppH2+dTfr6SGMJV4PQkpPR?=
- =?us-ascii?Q?NuxOAAJKRpCannlbX3BEYIX0siRcveHd6osuSvGATR5kQtbqAuxmpMPEPAx9?=
- =?us-ascii?Q?HtQ7eJxXobVUlqnDEglc0WrbohoXcV6j+8xYCXv7gS2UuMagDT495TPpaKt8?=
- =?us-ascii?Q?lGLNbTe+5noUuAddlvu6dSNJ/0EqRD3oM3EugNAdD/LR2S5HxbxTrsoepUSL?=
- =?us-ascii?Q?9x6cYUQAG4CcGVzr40CmxUhcVG/Qm5FK9RiFFZ9eb7Okl/fplKJprxDQvgvX?=
- =?us-ascii?Q?cvvrP83/5w8KOQJWBMdPVfp7jEoo9TaB5Xm+Qtu+c3rzuIySFbx/yuyRxm2A?=
- =?us-ascii?Q?vm1/OdwuJ9dWc8Nc9r3ytBBwWUUak24euarq/OGtaVKJsyrIAs8sNW0Jc+um?=
- =?us-ascii?Q?7c9FN6Zf8kEnjUPnqBsY7sq5WPkUfgWZgLPBsaqKIDGJ2/6yk7xiAL1CrmuO?=
- =?us-ascii?Q?DSfdCUKahRFOzvge+70wTwcOGKZUj0K6IskDA+LjH50QnAlNEgg0jxBSleU7?=
- =?us-ascii?Q?N8Bd0ccQ4TVCe4w/EoYeRJky31SmPKqAZ1NKJfGlx3bw+rM9r70Tknf58cNG?=
- =?us-ascii?Q?QT/M2geC7LNgR0EH3TTYkbN+K7owAJRvxBHUqWW+lNEfjuz9iWJ5ZsjjIyqZ?=
- =?us-ascii?Q?hzj1sgUyHLuMIhy88r+uwZuM6pEiH8Q5O+OVHWsUe2rv7kSOAvyl8wYoy00Q?=
- =?us-ascii?Q?PdSb6pWMQu6o1Hk3I605kIBIzkawRvq6OVjkl3kj4/aGNgsY1toLiyPT4841?=
- =?us-ascii?Q?YifnLR/OxSvMRKrHeGcxoRd8N+vgvzlYCKtLiwBzXoVgwq7i8LMPKsoO4hwP?=
- =?us-ascii?Q?m7/MWacEfNOQqCpDRL32TKpO6Npe5O0I96AumyeijSICDysGlgBVvb2dEJUU?=
- =?us-ascii?Q?/xYV3brr26fQpDeaJwwF7ILos+o1w38BsPz1/CyouNEpSAi3HIqRsiupdDI+?=
- =?us-ascii?Q?tn5mdipTlawzhbYs/Ljzo9LF5RFociBqV7miEkLjAv1OUZd/qwCBbRDYrjRo?=
- =?us-ascii?Q?4L1dJ2anf0wpOo4+y3Mnj7GINAyl2m/CsrWG3MCcTxFiiglnZigFY7KcpYFT?=
- =?us-ascii?Q?U37qbsSrhRiWqBNBdpVViAZ1uJORRIvA+TbsDyUtDu4lVCoWiv8yZAOk26Of?=
- =?us-ascii?Q?lLf6yNuX6kABpkEH576I8YmoAyKpbH6BEY2C187X62pc6UpOHG8KA6SyqtPH?=
- =?us-ascii?Q?CA=3D=3D?=
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+ id ipLYxl2w4Vbm for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 29 Apr 2024 11:55:51 +0000 (UTC)
+Received-SPF: None (mailfrom) identity=mailfrom;
+ client-ip=2a00:1450:4864:20::52c; helo=mail-ed1-x52c.google.com;
+ envelope-from=jiri@resnulli.us; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org D720740600
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D720740600
+Received: from mail-ed1-x52c.google.com (mail-ed1-x52c.google.com
+ [IPv6:2a00:1450:4864:20::52c])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id D720740600
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 29 Apr 2024 11:55:48 +0000 (UTC)
+Received: by mail-ed1-x52c.google.com with SMTP id
+ 4fb4d7f45d1cf-5726716a006so2799471a12.2
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 29 Apr 2024 04:55:48 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1714391747; x=1714996547;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=tTF8L7As+P2RTQMXeQ1vLyfoKhnmlLupR/xIodvbScg=;
+ b=EhhVJEn9FoBL0VfPLsrvm5CQ2PFdEpm+kIUfAsngKj1KJG6C9qquYMa2+VCMqjWzZa
+ Aa7wPtWGl+mn8bBYYngy9pXOXBDyg+NPjARZJEZnz5FZ8mno1ShJvADMP6Wqy1ZGK5Po
+ lJnmHJlvtKNxifhKp+tGvCzOWPbo8y2vECcCeOec2EjXQXc7w3A7mNtnXLgMskuU/5sQ
+ qXZVmPKyDnHb2VRZMVVOYcc4JjLUXk2CIuUxSdvCj9jawV/c7u4CREcrrBc0kCTXllCa
+ 5xb+f0JxcSH5kIGBWKXQ7m2ZvMWMGd/OLukApR7z1JEh0fux59oLKT6u21gRdDMZK883
+ dTLw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVeu/TiszzRm/snxd6IB3w/9ffH+iOYFBysFz0eFikGfNE2rid8WAItdsFZ/YMcD+cG5BjJ5e5CKUPzsD5FEMc1W7mYwkD3mUt3v4yS2ftWkA==
+X-Gm-Message-State: AOJu0YyvqFgk71+lSfJm67embFLm0NURxG1IZVb5lf3YVpVTLscxnGcY
+ /nAJKRUq3TKhi896Y41V6nzfc0G7sM96QMqIHduk6LBh51L5wfL9okHT+kPVeFA=
+X-Google-Smtp-Source: AGHT+IHhwi1H6up0yF9MTnOVyl3efgAzj76SyIMaLjZeX+Z5PwYQDs8O46dlMbYsRwDH+VrbWfGdYw==
+X-Received: by 2002:a17:906:ece4:b0:a58:ea99:6709 with SMTP id
+ qt4-20020a170906ece400b00a58ea996709mr3811297ejb.3.1714391746637; 
+ Mon, 29 Apr 2024 04:55:46 -0700 (PDT)
+Received: from localhost (89-24-35-126.nat.epc.tmcz.cz. [89.24.35.126])
+ by smtp.gmail.com with ESMTPSA id
+ bk5-20020a170907360500b00a58a67afd2fsm5439156ejc.53.2024.04.29.04.55.45
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 29 Apr 2024 04:55:45 -0700 (PDT)
+Date: Mon, 29 Apr 2024 13:55:44 +0200
+From: Jiri Pirko <jiri@resnulli.us>
+To: Jacob Keller <jacob.e.keller@intel.com>
+Message-ID: <Zi-KwL3WJrJd3zdR@nanopsycho>
+References: <ZiedKc5wE2-3LlaM@nanopsycho>
+ <MW3PR11MB468117FD76AC6D15970A6E1080112@MW3PR11MB4681.namprd11.prod.outlook.com>
+ <Zie0NIztebf5Qq1J@nanopsycho>
+ <3a634778-9b72-4663-b305-3be18bd8f618@intel.com>
+ <ZikgQhVpphnaAOpG@nanopsycho>
+ <3877b086-142d-4897-866e-e667ca7091d7@intel.com>
+ <ZiuNxivU-haEQ5fC@nanopsycho>
+ <39daba1e-5fbe-495e-8398-200434f89230@intel.com>
+ <Ziuvjj8h7GzsL9RF@nanopsycho>
+ <698dd861-951b-44d9-91b0-5a39a953857c@intel.com>
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: CYYPR11MB8429.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: e5f7c398-f21a-4305-4efd-08dc6813981c
-X-MS-Exchange-CrossTenant-originalarrivaltime: 29 Apr 2024 06:14:14.5157 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: rdWaQu351AoMi+nsdmfnmfC3l1NrqtTKtjb4pszPJsZxKiw5q6HUJAgRuTpbJmWa0dxzid0z+4A/b4IWmA0LUqDBAoeuH/D9HmofemYhtcXnmE2sknkk7QXWQKnSf5JD
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: LV3PR11MB8741
-X-OriginatorOrg: intel.com
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1714371264; x=1745907264;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=GJG+1ETKYkCUndZQkh0yTDM223jaAOKN4hKUndsHLMk=;
- b=XgVh8fs6vf9Znr4W+LVgoZspcpoe0m+7RyetI/78HVrKq6Ta6DA2DM4Q
- skK+TPVyEXb5kGqm+pRS0JBDD1RYsuur4ur1RaAYMWUN/IUDEWvsZ8q02
- W1u4J4kDNLMIL7ssUFQ36zbLh3WAhueRgqgA2uICm3nqZPeTC5VhEf+HY
- N1/rRLw1qw45dI0SH/jKMF9F+CXXgyMWbztqDUfmqu4mXcEIOZZsulrgG
- 8cscpRchxwI4zUWV3Zopud6ZezqAqH31iDgP4hEkVB4+6b6HcXvsXAOxf
- J6gjmhh8X1ewTYgVomjK0F1V4TRFBcwXtpqqwXTallELB+OI5hXCnlDtP
- A==;
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <698dd861-951b-44d9-91b0-5a39a953857c@intel.com>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=resnulli-us.20230601.gappssmtp.com; s=20230601; t=1714391747; x=1714996547;
+ darn=lists.osuosl.org; 
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+ bh=tTF8L7As+P2RTQMXeQ1vLyfoKhnmlLupR/xIodvbScg=;
+ b=iLNiT3kaiGaLnYjn4pJZny0/ugGF7fk6SjKdxpKHDdi/0K08K/1wsVmEc+PNakYv5b
+ zcF21gdn0DwUQ2Z7LXFWyZ4i9bdjb7DOnYz9yTnZWF46N/UVLQufx+BwzGwLq086znbg
+ Xe6Uj871HPbxArOhdVrl0OpOY8FSWMDOJChdBWavkWUWKnHwkEXEorC84veGvd/UXca2
+ YhEw/0SHvHQgSPgvujfLWGhMQ3S6Y3JBL7q7721f/m+GSQXxeFiycBrJmcGepG3Zn65u
+ GES9tSZM5JJ4DUSLCSbsklzPCCix1YHtrp7XKK8DLrV3vT6lgSycLKeHcuiGi8Pja/NI
+ pIJA==
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
+ dmarc=none (p=none dis=none)
+ header.from=resnulli.us
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=XgVh8fs6
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v3 1/2] ice: add additional
- E830 device ids
+ unprotected) header.d=resnulli-us.20230601.gappssmtp.com
+ header.i=@resnulli-us.20230601.gappssmtp.com header.a=rsa-sha256
+ header.s=20230601 header.b=iLNiT3ka
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v2] ice: Extend auxbus device
+ naming
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -219,42 +130,236 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "Greenwalt, Paul" <paul.greenwalt@intel.com>, "Drewek,
- Wojciech" <wojciech.drewek@intel.com>
+Cc: gregkh@linuxfoundation.org, "Temerkhanov,
+ Sergey" <sergey.temerkhanov@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>, "Knitter,
+ Konrad" <konrad.knitter@intel.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>, kuba@kernel.org
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-> -----Original Message-----
-> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of P=
-aul Greenwalt
-> Sent: Friday, March 29, 2024 6:37 AM
-> To: intel-wired-lan@lists.osuosl.org
-> Cc: Drewek, Wojciech <wojciech.drewek@intel.com>; Greenwalt, Paul <paul.g=
-reenwalt@intel.com>
-> Subject: [Intel-wired-lan] [PATCH iwl-next v3 1/2] ice: add additional E8=
-30 device ids
+Sat, Apr 27, 2024 at 12:25:44AM CEST, jacob.e.keller@intel.com wrote:
 >
-> Add support for additional E830 device ids which are supported by the
-> driver:
-> - 0x12D5: Intel(R) Ethernet Controller E830-C for backplane
-> - 0x12D8: Intel(R) Ethernet Controller E830-C for QSFP
-> - 0x12DA: Intel(R) Ethernet Controller E830-C for SFP
-> - 0x12DC: Intel(R) Ethernet Controller E830-XXV for backplane
-> - 0x12DD: Intel(R) Ethernet Controller E830-XXV for QSFP
-> - 0x12DE: Intel(R) Ethernet Controller E830-XXV for SFP
 >
-> Reviewed-by: Wojciech Drewek <wojciech.drewek@intel.com>
-> Signed-off-by: Paul Greenwalt <paul.greenwalt@intel.com>
-> ---
-> v1 -> v2: add device ids and strings to commit message. Rearrange device =
-ids in order.
-> ---
->  drivers/net/ethernet/intel/ice/ice_common.c |  6 ++++++  drivers/net/eth=
-ernet/intel/ice/ice_devids.h | 12 ++++++++++++
->  drivers/net/ethernet/intel/ice/ice_main.c   |  6 ++++++
->  3 files changed, 24 insertions(+)
+>On 4/26/2024 6:43 AM, Jiri Pirko wrote:
+>> Fri, Apr 26, 2024 at 02:49:40PM CEST, przemyslaw.kitszel@intel.com wrote:
+>>> On 4/26/24 13:19, Jiri Pirko wrote:
+>>>> Wed, Apr 24, 2024 at 06:56:37PM CEST, jacob.e.keller@intel.com wrote:
+>>>>>
+>>>>>
+>>>>> On 4/24/2024 8:07 AM, Jiri Pirko wrote:
+>>>>>> Wed, Apr 24, 2024 at 12:03:25AM CEST, jacob.e.keller@intel.com wrote:
+>>>>>>>
+>>>>>>>
+>>>>>>> On 4/23/2024 6:14 AM, Jiri Pirko wrote:
+>>>>>>>> Tue, Apr 23, 2024 at 01:56:55PM CEST, sergey.temerkhanov@intel.com wrote:
+>>>>>>>>>
+>>>>>>>>>
+>>>>>>>>>> -----Original Message-----
+>>>>>>>>>> From: Jiri Pirko <jiri@resnulli.us>
+>>>>>>>>>> Sent: Tuesday, April 23, 2024 1:36 PM
+>>>>>>>>>> To: Temerkhanov, Sergey <sergey.temerkhanov@intel.com>
+>>>>>>>>>> Cc: intel-wired-lan@lists.osuosl.org; netdev@vger.kernel.org; Kitszel,
+>>>>>>>>>> Przemyslaw <przemyslaw.kitszel@intel.com>
+>>>>>>>>>> Subject: Re: [PATCH iwl-next v2] ice: Extend auxbus device naming
+>>>>>>>>>>
+>>>>>>>>>> Tue, Apr 23, 2024 at 11:14:59AM CEST, sergey.temerkhanov@intel.com
+>>>>>>>>>> wrote:
+>>>>>>>>>>> Include segment/domain number in the device name to distinguish
+>>>>>>>>>> between
+>>>>>>>>>>> PCI devices located on different root complexes in multi-segment
+>>>>>>>>>>> configurations. Naming is changed from ptp_<bus>_<slot>_clk<clock>  to
+>>>>>>>>>>> ptp_<domain>_<bus>_<slot>_clk<clock>
+>>>>>>>>>>
+>>>>>>>>>> I don't understand why you need to encode pci properties of a parent device
+>>>>>>>>>> into the auxiliary bus name. Could you please explain the motivation? Why
+>>>>>>>>>> you need a bus instance per PF?
+>>>>>>>>>>
+>>>>>>>>>> The rest of the auxbus registrators don't do this. Could you please align? Just
+>>>>>>>>>> have one bus for ice driver and that's it.
+>>>>>>>>>
+>>>>>>>>> This patch adds support for multi-segment PCIe configurations.
+>>>>>>>>> An auxdev is created for each adapter, which has a clock, in the system. There can be
+>>>>>>>>
+>>>>>>>> You are trying to change auxiliary bus name.
+>>>>>>>>
+>>>>>>>>
+>>>>>>>>> more than one adapter present, so there exists a possibility of device naming conflict.
+>>>>>>>>> To avoid it, auxdevs are named according to the PCI geographical addresses of the adapters.
+>>>>>>>>
+>>>>>>>> Why? It's the auxdev, the name should not contain anything related to
+>>>>>>>> PCI, no reason for it. I asked for motivation, you didn't provide any.
+>>>>>>>>
+>>>>>>>
+>>>>>>> We aren't creating one auxbus per PF. We're creating one auxbus per
+>>>>>>> *clock*. The device has multiple clocks in some configurations.
+>>>>>>
+>>>>>> Does not matter. Why you need separate bus for whatever-instance? Why
+>>>>>> can't you just have one ice-ptp bus and put devices on it?
+>>>>>>
+>>>>>>
+>>>>>
+>>>>> Because we only want ports on card A to be connected to the card owner
+>>>>> on card A. We were using auxiliary bus to manage this. If we use a
+>>>>
+>>>> You do that by naming auxiliary bus according to the PCI device
+>>>> created it, which feels obviously wrong.
+>>>>
+>>>>
+>>>>> single bus for ice-ptp, then we still have to implement separation
+>>>>> between each set of devices on a single card, which doesn't solve the
+>>>>> problems we had, and at least with the current code using auxiliary bus
+>>>>> doesn't buy us much if it doesn't solve that problem.
+>>>>
+>>>> I don't think that auxiliary bus is the answer for your problem. Please
+>>>> don't abuse it.
+>>>>
+>>>>>
+>>>>>>>
+>>>>>>> We need to connect each PF to the same clock controller, because there
+>>>>>>> is only one clock owner for the device in a multi-port card.
+>>>>>>
+>>>>>> Connect how? But putting a PF-device on a per-clock bus? That sounds
+>>>>>> quite odd. How did you figure out this usage of auxiliary bus?
+>>>>>>
+>>>>>>
+>>>>>
+>>>>> Yea, its a multi-function board but the functions aren't fully
+>>>>> independent. Each port has its own PF, but multiple ports can be tied to
+>>>>> the same clock. We have similar problems with a variety of HW aspects.
+>>>>> I've been told that the design is simpler for other operating systems,
+>>>>> (something about the way the subsystems work so that they expect ports
+>>>>> to be tied to functions). But its definitely frustrating from Linux
+>>>>> perspective where a single driver instance for the device would be a lot
+>>>>> easier to manage.
+>>>>
+>>>> You can always do it by internal accounting in ice, merge multiple PF
+>>>> pci devices into one internal instance. Or checkout
+>>>> drivers/base/component.c, perhaps it could be extended for your usecase.
+>>>>
+>>>>
+>>>>>
+>>>>>>>
+>>>>>>>> Again, could you please avoid creating auxiliary bus per-PF and just
+>>>>>>>> have one auxiliary but per-ice-driver?
+>>>>>>>>
+>>>>>>>
+>>>>>>> We can't have one per-ice driver, because we don't want to connect ports
+>>>>>> >from a different device to the same clock. If you have two ice devices
+>>>>>>> plugged in, the ports on each device are separate from each other.
+>>>>>>>
+>>>>>>> The goal here is to connect the clock ports to the clock owner.
+>>>>>>>
+>>>>>>> Worse, as described here, we do have some devices which combine multiple
+>>>>>>> adapters together and tie their clocks together via HW signaling. In
+>>>>>>> those cases the clocks *do* need to communicate across the device, but
+>>>>>>> only to other ports on the same physical device, not to ports on a
+>>>>>>> different device.
+>>>>>>>
+>>>>>>> Perhaps auxbus is the wrong approach here? but how else can we connect
+>>>>>>
+>>>>>> Yeah, feels quite wrong.
+>>>>>>
+>>>>>>
+>>>>>>> these ports without over-connecting to other ports? We could write
+>>>>>>> bespoke code which finds these devices, but that felt like it was risky
+>>>>>>> and convoluted.
+>>>>>>
+>>>>>> Sounds you need something you have for DPLL subsystem. Feels to me that
+>>>>>> your hw design is quite disconnected from the Linux device model :/
+>>>>>>
+>>>>>
+>>>>> I'm not 100% sure how DPLL handles this. I'll have to investigate.
+>>>>
+>>>> DPLL leaves the merging on DPLL level. The ice driver just register
+>>>> entities multiple times. It is specifically designed to fit ice needs.
+>>>>
+>>>>
+>>>>>
+>>>>> One thing I've considered a lot in the past (such as back when I was
+>>>>> working on devlink flash update) was to somehow have a sort of extra
+>>>>> layer where we could register with PCI subsystem some sort of "whole
+>>>>> device" driver, that would get registered first and could connect to the
+>>>>> rest of the function driver instances as they load. But this seems like
+>>>>> it would need a lot of work in the PCI layer, and apparently hasn't been
+>>>>> an issue for other devices? though ice is far from unique at least for
+>>>>> Intel NICs. Its just that the devices got significantly more complex and
+>>>>> functions more interdependent with this generation, and the issues with
+>>>>> global bits were solved in other ways: often via hiding them with
+>>>>> firmware >:(
+>>>>
+>>>> I think that others could benefit from such "merged device" as well. I
+>>>> think it is about the time to introduce it.
+>>>
+>>> so far I see that we want to merge based on different bits, but let's
+>>> see what will come from exploratory work that Sergey is doing right now.
+>>>
+>>> and anything that is not a device/driver feels much more lightweight to
+>>> operate with (think &ice_adapter, but extended with more fields).
+>>> Could you elaborate more on what you have in mind? (Or what you could
+>>> imagine reusing).
+>> 
+>> Nothing concrete really. See below.
+>> 
+>>>
+>>> offtop:
+>>> It will be a good hook to put resources that are shared across ports
+>>> under it in devlink resources, so making this "merged device" an entity
+>>> would enable higher layer over what we have with devlink xxx $pf.
+>> 
+>> Yes. That would be great. I think we need a "device" in a sense of
+>> struct device instance. Then you can properly model the relationships in
+>> sysfs, you can have devlink for that, etc.
+>> 
+>> drivers/base/component.c does merging of multiple devices, but it does
+>> not create a "merged device", this is missing there. So we have 2
+>> options:
+>> 
+>> 1) extend drivers/base/component.c to allow to create a merged device
+>>    entity
+>> 2) implement merged device infrastructure separatelly.
+>> 
+>> IDK. I believe we need to rope more people in.
+>> 
+>> 
 >
+>drivers/base/component.c looks pretty close to what we want. Each PF
+>would register as a component, and then a driver would register as the
+>component master. It does lack a struct device, so might be challenging
+>to use with devlink unless we just opted to pick a device from the
+>components as the main device?
 
-Tested-by: Pucha Himasekhar Reddy <himasekharx.reddy.pucha@intel.com> (A Co=
-ntingent worker at Intel)
+If I read the code correctly, the master component has to be a device as
+well. This is the missing piece I believe.
+
+
+>
+>extending components to have a device could be interesting, though
+>perhaps its not exactly the best place. It seems like components are
+>about combining a lot of small devices that ultimately combine into one
+>functionality at a logical level.
+>
+>That is pretty close to what we want here: one entity to control global
+>portions of an otherwise multi-function card.
+>
+>Extending it to include a struct device could work but I'm not 100% sure
+>how that fits into the component system.
+
+Who knows? we need to rope them into this discussion...
+
+
+>
+>We could try extending PCI subsystem to do something similar to
+>components which is vaguely what I described a couple replies ago.
+
+Well, feels to me this is more generic problem than PCI. One level
+above.
+
+
+>
+>ice_adapter is basically doing this but more bespoke and custom, and
+>still lacks the extra struct device.
+
+Correct.
 
