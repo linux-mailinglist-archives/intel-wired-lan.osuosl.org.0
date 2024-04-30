@@ -2,105 +2,93 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id D7CD28B6DAF
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 30 Apr 2024 11:03:35 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 106768B6F94
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 30 Apr 2024 12:23:44 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 8E74C81F22;
-	Tue, 30 Apr 2024 09:03:34 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 74FA180ACF;
+	Tue, 30 Apr 2024 10:23:42 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id ViA1Qec8oW5p; Tue, 30 Apr 2024 09:03:30 +0000 (UTC)
+ id HxA06KZ8_Kuj; Tue, 30 Apr 2024 10:23:41 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B2AA181F25
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0F4B78002A
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1714467806;
-	bh=sjBo2QVMI1CyWQlsIFe9ysVmh7llCcHOfQxc+A80P+Q=;
-	h=References:In-Reply-To:From:Date:To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=XQywGiYeckj7nvrin1Idp1kKf84jg3CHxNNSDwIa2UsrUx+YlDK8HMK4BFvDpdDKw
-	 kVkqZDcApINgplU+m0V7ikXRAJ7jrIVjvRyhpJyxOatSRnT15HbuK7/DS7tK52UtDs
-	 c6Upgo6WFEwPFwKN/THPSaeDqErhmJUPK/zLDGyFZzLGcQflZMGNZfQvm/Xuj9m4Wz
-	 QlR5dyh7qtnKBWd+CGvSypTu8NflmsXoaZZAJP/TrVbC+qyl80RFaYRNV2VmGSy+sY
-	 vKqYjbtfkrE/d9+uIfGgmixTzA0T33MCVTlCjb0TEh7B9Ux7H35HacQpns0NGekhn9
-	 ZOAa0Zn6kC4hw==
+	s=default; t=1714472621;
+	bh=6GOopTUeOXrZnw5ZjGvv6sO5sHMgWp5plo/IEuxX0w8=;
+	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=EwA5p+sUVYZSm10jJDqXp9vL+/i2CSvvArscPQja+orfGy76jMNbll5rOp8ZqzO9X
+	 VwFvyIOta/s9DQpnt5WxgmNdXx3RMIEPtFdCYsiTBDD4H07+h2riLnWgIbsq/pmMzD
+	 pv0KbRtCdF9efAbgKAzoa/AF9POKvM5vj7InHcLfs7mhIv6jWr0Hd0M+DftZFDv9be
+	 X4PNc+DulE0tWbnPWWFOcIB+8wqHl1t76kVqLatRYXVD0Q92O9iuQbDT7/mn8fZ+Nm
+	 JEq6Y722HtMo2aw+vNPMszLvqnmXvyEaftMpaqet1ZKO/Y0Pfa8orvd1TzZi5v8YP4
+	 yDBUAfeP4ljBQ==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id B2AA181F25;
-	Tue, 30 Apr 2024 09:03:26 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 0F4B78002A;
+	Tue, 30 Apr 2024 10:23:41 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id A32351BF215
- for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Apr 2024 09:03:24 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 8124E1BF2B1
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Apr 2024 10:23:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 9934781F1E
- for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Apr 2024 09:03:24 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 6C75240492
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Apr 2024 10:23:38 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id W6nfaT-jTY7U for <intel-wired-lan@lists.osuosl.org>;
- Tue, 30 Apr 2024 09:03:20 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2607:f8b0:4864:20::530; helo=mail-pg1-x530.google.com;
- envelope-from=ross.lagerwall@cloud.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 8D97581F21
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8D97581F21
-Received: from mail-pg1-x530.google.com (mail-pg1-x530.google.com
- [IPv6:2607:f8b0:4864:20::530])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 8D97581F21
- for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Apr 2024 09:03:20 +0000 (UTC)
-Received: by mail-pg1-x530.google.com with SMTP id
- 41be03b00d2f7-53fbf2c42bfso3852703a12.3
- for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Apr 2024 02:03:20 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1714467800; x=1715072600;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=sjBo2QVMI1CyWQlsIFe9ysVmh7llCcHOfQxc+A80P+Q=;
- b=AYhJVwbN19HHuxPQTKFRCg+CMW5pAgp+E//U1Q9fXtVpg1zb3/KCb66RbOF4DSojyz
- 2ICTe7Mi++U/XVC5VGPtphUHIsE6BrgJplZyxN7S/pdPHOqR/SN8t/jt8wTwVPyaHyMx
- Qbi/ROiUueFU6uoTWUqu8feziHXyBP6hi/moYm6IMrsGrQs0J/nuBKsmN51hkDTDRd+D
- B8h4gh9nbbgiC2RlFw4bNA/C9SeWY4Qlq3g5SvruGsoIV4QtmrT4y4lAfL/biauYuYTd
- dQ5MCejDtLE2zXs2lEV6/cMNmChDboabkRNyOUhutfRuSk1469rF8L1/tXxtO3JTD2fC
- +Inw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVLMm0j2TTnaWPOnZJZWB/AkHvf+fwkh4H+B+N2GQPwkVBelz6M9+hpnciySG7s2j3D7rsKaeihUwGvBPy7Y2Q2DzEiCCEpgGjD28Tk4lHpyQ==
-X-Gm-Message-State: AOJu0YyFRm/KpFEqq2tn6cRvZpfAzUEKiEfl7dE3rIr3XTatnT5yrdZ2
- APOqoeNDNGsoqZuKdxcKawnntOHJfPGJBBg8R5y1fp1PeGQAH53uleD7XI4my3oTCKOSTZ20REQ
- GC0yr+mPrudI1KLWmUnHeuij1uBibU2w+yfK3
-X-Google-Smtp-Source: AGHT+IHFA3yXARPgRd7WfRg9inQlkDKb45T+L+W2rOOOIIWOKTAuDP2mXbHpPw5MN5nf9McFe4daxw7WvYNPhjm8Tkw=
-X-Received: by 2002:a05:6a21:3948:b0:1ae:3d01:d with SMTP id
- ac8-20020a056a21394800b001ae3d01000dmr2256870pzc.9.1714467799596; Tue, 30 Apr
- 2024 02:03:19 -0700 (PDT)
-MIME-Version: 1.0
-References: <20240429124922.2872002-1-ross.lagerwall@citrix.com>
- <a0359435-7e0f-4a48-9cc6-3db679bde1ac@molgen.mpg.de>
-In-Reply-To: <a0359435-7e0f-4a48-9cc6-3db679bde1ac@molgen.mpg.de>
-From: Ross Lagerwall <ross.lagerwall@citrix.com>
-Date: Tue, 30 Apr 2024 10:03:07 +0100
-Message-ID: <CAG7k0ErF+e2vMUYRuh2EBjWmE7iqdOMS1CQv-7r18T1mVbK1aA@mail.gmail.com>
-To: Paul Menzel <pmenzel@molgen.mpg.de>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=citrix.com; s=google; t=1714467800; x=1715072600; darn=lists.osuosl.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=sjBo2QVMI1CyWQlsIFe9ysVmh7llCcHOfQxc+A80P+Q=;
- b=TS2dLMyIKg3P0/NJcuxA8jE4rzlwdEwVbZotl9U1vKmUX1nO4BbuMnQeki/v/gjHJ6
- yYgMNSZUvkIPmkuvhrYZO742SVudAIOOGER91junouKXX5+dtjx9sxRBk8ONG7KPOa0q
- gukxywlQgPwVmOO4AZiF2Pm5kYiUgswh2E8QA=
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=reject dis=none)
- header.from=citrix.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (1024-bit key,
- unprotected) header.d=citrix.com header.i=@citrix.com header.a=rsa-sha256
- header.s=google header.b=TS2dLMyI
-Subject: Re: [Intel-wired-lan] [PATCH v2] ice: Fix enabling SR-IOV with Xen
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id ovsu15O0FMyD for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 30 Apr 2024 10:23:37 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.18;
+ helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 3FA0240395
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3FA0240395
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.18])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 3FA0240395
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Apr 2024 10:23:36 +0000 (UTC)
+X-CSE-ConnectionGUID: smN11XaTSf2lxAkJhN6vfw==
+X-CSE-MsgGUID: Sx/zxVJFQ3K3YDMBVZOULw==
+X-IronPort-AV: E=McAfee;i="6600,9927,11059"; a="10021274"
+X-IronPort-AV: E=Sophos;i="6.07,241,1708416000"; d="scan'208";a="10021274"
+Received: from orviesa010.jf.intel.com ([10.64.159.150])
+ by fmvoesa112.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 30 Apr 2024 03:23:34 -0700
+X-CSE-ConnectionGUID: 866XMtGOSAeeXNy71gyF5Q==
+X-CSE-MsgGUID: i/vsL57EQPiRjgpTUVFg3g==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.07,241,1708416000"; d="scan'208";a="26282911"
+Received: from lkp-server01.sh.intel.com (HELO e434dd42e5a1) ([10.239.97.150])
+ by orviesa010.jf.intel.com with ESMTP; 30 Apr 2024 03:23:34 -0700
+Received: from kbuild by e434dd42e5a1 with local (Exim 4.96)
+ (envelope-from <lkp@intel.com>) id 1s1ke3-00081h-1N
+ for intel-wired-lan@lists.osuosl.org; Tue, 30 Apr 2024 10:23:31 +0000
+Date: Tue, 30 Apr 2024 18:22:55 +0800
+From: kernel test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <202404301852.ybtT3FS6-lkp@intel.com>
+User-Agent: s-nail v14.9.24
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1714472616; x=1746008616;
+ h=date:from:to:subject:message-id;
+ bh=cBukTr4MXdxqdwNEQMSJ48P3NNvz7hGHx8WHWB9Yne0=;
+ b=VdoUP4bM0ebmCcPNq5qF4PwP8WXdbvBO7hZTVqo3s/8BQ0aLWdYZ8G2e
+ 1Gaz6K/HVCgQv0h9NnRtuQafwnS0SOLw8Jz6D5NSONZtxWwyFMgQsblSd
+ k6TD0p5Q/eYzWLtn3jeLMylDS3vttSH1Dta07lDom6gvqvWou4SJS/jhe
+ ZL6bEzQ0DkzRsa/M3CyJ+oZ8SFDLhct35yzYt/nueMYihxcmLgnsXeobC
+ 8srqDh0KNH/e/4q2D/Ng+EyEZ1FPEbNUdTWtVtItHV4cxgeNE8ENI12WC
+ ICRf6RsbYZz88G+/O1k6hQ2VeuVGjwUbjrkM/erL9oh7YfxOCWYIsfo6D
+ A==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=intel.com
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=VdoUP4bM
+Subject: [Intel-wired-lan] [tnguy-net-queue:dev-queue] BUILD SUCCESS
+ c05c1cca54e658ad50bc5eb68088d21fbbb51bc3
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -113,154 +101,183 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, Javi Merino <javi.merino@kernel.org>,
- Tony Nguyen <anthony.l.nguyen@intel.com>, intel-wired-lan@lists.osuosl.org
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, Apr 29, 2024 at 2:04=E2=80=AFPM Paul Menzel <pmenzel@molgen.mpg.de>=
- wrote:
->
-> Dear Ross,
->
->
-> Thank you for your patch.
->
-> Am 29.04.24 um 14:49 schrieb Ross Lagerwall:
-> > When the PCI functions are created, Xen is informed about them and
-> > caches the number of MSI-X entries each function has.  However, the
-> > number of MSI-X entries is not set until after the hardware has been
-> > configured and the VFs have been started. This prevents
-> > PCI-passthrough from working because Xen rejects mapping MSI-X
-> > interrupts to domains because it thinks the MSI-X interrupts don't
-> > exist.
->
-> Thank you for this great problem description. Is there any log message
-> shown, you could paste, so people can find this commit when searching
-> for the log message?
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git dev-queue
+branch HEAD: c05c1cca54e658ad50bc5eb68088d21fbbb51bc3  ice: Do not get coalesce settings while in reset
 
-When this issue occurs, QEMU repeatedly reports:
+elapsed time: 1078m
 
-msi_msix_setup: Error: Mapping of MSI-X (err: 22, vec: 0, entry 0x1)
+configs tested: 161
+configs skipped: 3
 
->
-> Do you have a minimal test case, so the maintainers can reproduce this
-> to test the fix?
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
-Testing this requires setting up Xen which I wouldn't expect anyone to
-do unless they already have an environment set up.
+tested configs:
+alpha                             allnoconfig   gcc  
+alpha                            allyesconfig   gcc  
+alpha                               defconfig   gcc  
+arc                              allmodconfig   gcc  
+arc                               allnoconfig   gcc  
+arc                              allyesconfig   gcc  
+arc                                 defconfig   gcc  
+arc                   randconfig-001-20240430   gcc  
+arc                   randconfig-002-20240430   gcc  
+arm                              allmodconfig   gcc  
+arm                               allnoconfig   clang
+arm                              allyesconfig   gcc  
+arm                                 defconfig   clang
+arm                   randconfig-001-20240430   clang
+arm                   randconfig-002-20240430   clang
+arm                   randconfig-003-20240430   clang
+arm                   randconfig-004-20240430   clang
+arm64                            allmodconfig   clang
+arm64                             allnoconfig   gcc  
+arm64                               defconfig   gcc  
+arm64                 randconfig-001-20240430   clang
+arm64                 randconfig-002-20240430   gcc  
+arm64                 randconfig-003-20240430   clang
+arm64                 randconfig-004-20240430   gcc  
+csky                             allmodconfig   gcc  
+csky                              allnoconfig   gcc  
+csky                             allyesconfig   gcc  
+csky                                defconfig   gcc  
+csky                  randconfig-001-20240430   gcc  
+csky                  randconfig-002-20240430   gcc  
+hexagon                          allmodconfig   clang
+hexagon                           allnoconfig   clang
+hexagon                          allyesconfig   clang
+hexagon                             defconfig   clang
+hexagon               randconfig-001-20240430   clang
+hexagon               randconfig-002-20240430   clang
+i386                             allmodconfig   gcc  
+i386                              allnoconfig   gcc  
+i386                             allyesconfig   gcc  
+i386         buildonly-randconfig-001-20240430   gcc  
+i386         buildonly-randconfig-002-20240430   clang
+i386         buildonly-randconfig-003-20240430   gcc  
+i386         buildonly-randconfig-004-20240430   clang
+i386         buildonly-randconfig-005-20240430   clang
+i386         buildonly-randconfig-006-20240430   gcc  
+i386                                defconfig   clang
+i386                  randconfig-001-20240430   clang
+i386                  randconfig-002-20240430   gcc  
+i386                  randconfig-003-20240430   gcc  
+i386                  randconfig-004-20240430   gcc  
+i386                  randconfig-005-20240430   gcc  
+i386                  randconfig-006-20240430   gcc  
+i386                  randconfig-011-20240430   gcc  
+i386                  randconfig-012-20240430   clang
+i386                  randconfig-013-20240430   clang
+i386                  randconfig-014-20240430   gcc  
+i386                  randconfig-015-20240430   gcc  
+i386                  randconfig-016-20240430   gcc  
+loongarch                        allmodconfig   gcc  
+loongarch                         allnoconfig   gcc  
+loongarch                           defconfig   gcc  
+loongarch             randconfig-001-20240430   gcc  
+loongarch             randconfig-002-20240430   gcc  
+m68k                             allmodconfig   gcc  
+m68k                              allnoconfig   gcc  
+m68k                             allyesconfig   gcc  
+m68k                                defconfig   gcc  
+microblaze                       allmodconfig   gcc  
+microblaze                        allnoconfig   gcc  
+microblaze                       allyesconfig   gcc  
+microblaze                          defconfig   gcc  
+mips                              allnoconfig   gcc  
+mips                             allyesconfig   gcc  
+nios2                            allmodconfig   gcc  
+nios2                             allnoconfig   gcc  
+nios2                            allyesconfig   gcc  
+nios2                               defconfig   gcc  
+nios2                 randconfig-001-20240430   gcc  
+nios2                 randconfig-002-20240430   gcc  
+openrisc                          allnoconfig   gcc  
+openrisc                         allyesconfig   gcc  
+openrisc                            defconfig   gcc  
+parisc                           allmodconfig   gcc  
+parisc                            allnoconfig   gcc  
+parisc                           allyesconfig   gcc  
+parisc                              defconfig   gcc  
+parisc                randconfig-001-20240430   gcc  
+parisc                randconfig-002-20240430   gcc  
+parisc64                            defconfig   gcc  
+powerpc                          allmodconfig   gcc  
+powerpc                           allnoconfig   gcc  
+powerpc                          allyesconfig   clang
+powerpc               randconfig-001-20240430   gcc  
+powerpc               randconfig-002-20240430   gcc  
+powerpc               randconfig-003-20240430   clang
+powerpc64             randconfig-001-20240430   clang
+powerpc64             randconfig-002-20240430   clang
+powerpc64             randconfig-003-20240430   clang
+riscv                            allmodconfig   clang
+riscv                             allnoconfig   gcc  
+riscv                            allyesconfig   clang
+riscv                               defconfig   clang
+riscv                 randconfig-001-20240430   gcc  
+riscv                 randconfig-002-20240430   clang
+s390                             allmodconfig   clang
+s390                              allnoconfig   clang
+s390                             allyesconfig   gcc  
+s390                                defconfig   clang
+s390                  randconfig-001-20240430   gcc  
+s390                  randconfig-002-20240430   gcc  
+sh                               allmodconfig   gcc  
+sh                                allnoconfig   gcc  
+sh                               allyesconfig   gcc  
+sh                                  defconfig   gcc  
+sh                    randconfig-001-20240430   gcc  
+sh                    randconfig-002-20240430   gcc  
+sparc                            allmodconfig   gcc  
+sparc                             allnoconfig   gcc  
+sparc                               defconfig   gcc  
+sparc64                          allmodconfig   gcc  
+sparc64                          allyesconfig   gcc  
+sparc64                             defconfig   gcc  
+sparc64               randconfig-001-20240430   gcc  
+sparc64               randconfig-002-20240430   gcc  
+um                               allmodconfig   clang
+um                                allnoconfig   clang
+um                               allyesconfig   gcc  
+um                                  defconfig   clang
+um                             i386_defconfig   gcc  
+um                    randconfig-001-20240430   clang
+um                    randconfig-002-20240430   clang
+um                           x86_64_defconfig   clang
+x86_64                            allnoconfig   clang
+x86_64                           allyesconfig   clang
+x86_64       buildonly-randconfig-001-20240430   gcc  
+x86_64       buildonly-randconfig-002-20240430   clang
+x86_64       buildonly-randconfig-003-20240430   clang
+x86_64       buildonly-randconfig-004-20240430   clang
+x86_64       buildonly-randconfig-005-20240430   clang
+x86_64       buildonly-randconfig-006-20240430   clang
+x86_64                              defconfig   gcc  
+x86_64                randconfig-001-20240430   clang
+x86_64                randconfig-002-20240430   clang
+x86_64                randconfig-003-20240430   gcc  
+x86_64                randconfig-004-20240430   gcc  
+x86_64                randconfig-005-20240430   gcc  
+x86_64                randconfig-006-20240430   clang
+x86_64                randconfig-011-20240430   clang
+x86_64                randconfig-012-20240430   clang
+x86_64                randconfig-013-20240430   gcc  
+x86_64                randconfig-014-20240430   clang
+x86_64                randconfig-015-20240430   clang
+x86_64                randconfig-016-20240430   clang
+x86_64                randconfig-071-20240430   clang
+x86_64                randconfig-072-20240430   clang
+x86_64                randconfig-073-20240430   clang
+x86_64                randconfig-075-20240430   gcc  
+x86_64                          rhel-8.3-rust   clang
+xtensa                            allnoconfig   gcc  
+xtensa                randconfig-001-20240430   gcc  
+xtensa                randconfig-002-20240430   gcc  
 
-In any case, a "minimal" test would be something like:
-
-1. Set up Xen with dom0 and another VM running Linux.
-2. Pass through a VF to the VM. See that QEMU reports the above message
-   and the VF is not usable within the VM.
-3. Rebuild the dom0 kernel with the attached patch.
-4. Pass through a VF to the VM. See that the VF is usable within the
-   VM.
-
->
-> > Fix this by moving the call to pci_enable_sriov() later so that the
-> > number of MSI-X entries is set correctly in hardware by the time Xen
-> > reads it.
->
-> It=E2=80=99d be great if you could be more specific on =E2=80=9Clater=E2=
-=80=9D, and why this is
-> the correct place.
-
-"later" in this case means after ice_start_vfs() since it is at that
-point that the hardware sets the number of MSI-X entries.
-I expect that a maintainer or someone with more knowledge of the
-hardware could explain why the hardware only sets the number of MSI-X
-entries at this point.
-
->
-> > Signed-off-by: Ross Lagerwall <ross.lagerwall@citrix.com>
-> > Signed-off-by: Javi Merino <javi.merino@kernel.org>
-> > ---
-> >
-> > In v2:
-> > * Fix cleanup on if pci_enable_sriov() fails.
-> >
-> >   drivers/net/ethernet/intel/ice/ice_sriov.c | 23 +++++++++++++--------=
--
-> >   1 file changed, 14 insertions(+), 9 deletions(-)
-> >
-> > diff --git a/drivers/net/ethernet/intel/ice/ice_sriov.c b/drivers/net/e=
-thernet/intel/ice/ice_sriov.c
-> > index a958fcf3e6be..bc97493046a8 100644
-> > --- a/drivers/net/ethernet/intel/ice/ice_sriov.c
-> > +++ b/drivers/net/ethernet/intel/ice/ice_sriov.c
-> > @@ -864,6 +864,8 @@ static int ice_ena_vfs(struct ice_pf *pf, u16 num_v=
-fs)
-> >       int total_vectors =3D pf->hw.func_caps.common_cap.num_msix_vector=
-s;
-> >       struct device *dev =3D ice_pf_to_dev(pf);
-> >       struct ice_hw *hw =3D &pf->hw;
-> > +     struct ice_vf *vf;
-> > +     unsigned int bkt;
-> >       int ret;
-> >
-> >       pf->sriov_irq_bm =3D bitmap_zalloc(total_vectors, GFP_KERNEL);
-> > @@ -877,24 +879,20 @@ static int ice_ena_vfs(struct ice_pf *pf, u16 num=
-_vfs)
-> >       set_bit(ICE_OICR_INTR_DIS, pf->state);
-> >       ice_flush(hw);
-> >
-> > -     ret =3D pci_enable_sriov(pf->pdev, num_vfs);
-> > -     if (ret)
-> > -             goto err_unroll_intr;
-> > -
-> >       mutex_lock(&pf->vfs.table_lock);
-> >
-> >       ret =3D ice_set_per_vf_res(pf, num_vfs);
-> >       if (ret) {
-> >               dev_err(dev, "Not enough resources for %d VFs, err %d. Tr=
-y with fewer number of VFs\n",
-> >                       num_vfs, ret);
-> > -             goto err_unroll_sriov;
-> > +             goto err_unroll_intr;
-> >       }
-> >
-> >       ret =3D ice_create_vf_entries(pf, num_vfs);
-> >       if (ret) {
-> >               dev_err(dev, "Failed to allocate VF entries for %d VFs\n"=
-,
-> >                       num_vfs);
-> > -             goto err_unroll_sriov;
-> > +             goto err_unroll_intr;
-> >       }
-> >
-> >       ice_eswitch_reserve_cp_queues(pf, num_vfs);
-> > @@ -905,6 +903,10 @@ static int ice_ena_vfs(struct ice_pf *pf, u16 num_=
-vfs)
-> >               goto err_unroll_vf_entries;
-> >       }
-> >
-> > +     ret =3D pci_enable_sriov(pf->pdev, num_vfs);
-> > +     if (ret)
-> > +             goto err_unroll_start_vfs;
-> > +
-> >       clear_bit(ICE_VF_DIS, pf->state);
-> >
-> >       /* rearm global interrupts */
-> > @@ -915,12 +917,15 @@ static int ice_ena_vfs(struct ice_pf *pf, u16 num=
-_vfs)
-> >
-> >       return 0;
-> >
-> > +err_unroll_start_vfs:
-> > +     ice_for_each_vf(pf, bkt, vf) {
-> > +             ice_dis_vf_mappings(vf);
-> > +             ice_vf_vsi_release(vf);
-> > +     }
->
-> Why wasn=E2=80=99t this needed with `pci_enable_sriov()` done earlier?
-
-Previously ice_start_vifs() was the last function call that may fail
-in this function. That is no longer the case so when
-pci_enable_sriov() fails, it needs to undo what was done in
-ice_start_vifs().
-
-Thanks,
-Ross
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
