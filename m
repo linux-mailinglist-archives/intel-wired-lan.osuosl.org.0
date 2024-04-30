@@ -2,97 +2,105 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id D374B8B6D70
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 30 Apr 2024 10:54:04 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id D7CD28B6DAF
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 30 Apr 2024 11:03:35 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 81E2D80EA1;
-	Tue, 30 Apr 2024 08:54:03 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 8E74C81F22;
+	Tue, 30 Apr 2024 09:03:34 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id oSPJfg7ZHTo2; Tue, 30 Apr 2024 08:54:01 +0000 (UTC)
+ id ViA1Qec8oW5p; Tue, 30 Apr 2024 09:03:30 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3FA7F80E74
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B2AA181F25
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1714467241;
-	bh=QRpyfYflYElCfqWOwYzF7gFEQXk7Bbh3DLdV1A4j/+I=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1714467806;
+	bh=sjBo2QVMI1CyWQlsIFe9ysVmh7llCcHOfQxc+A80P+Q=;
+	h=References:In-Reply-To:From:Date:To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=GkD4wdq0kRmAGeYQsNz/p5936kpxZUekaH/o+YLXuN0dm7TtCe8GBxcQXlY11mXT8
-	 GkjDxgFdC/kjbvrx7jx/Pc8Rg5tCgquZSnlRWUJI9h4EOLibZZBoz+DBXQFf21E057
-	 bxuAh8wzdPAtm9PlfNDjnQJXAOAgaTf1xg/KKGPvlpbLNKKzx/ixc6LtF7tuGJCHlc
-	 GWHegnkIR77cdzQZsIPOFvxUBZnp7L13yO9k4azouQF8FfaRiKtAPjxwutASNzZfPo
-	 5Fr8C0uIRflQs9bkjigg0qWImetBzeCiuKLQbL4wtDU0p/VAbMKZbVFkyK8xzaltLp
-	 7yINE9vAGi2eQ==
+	b=XQywGiYeckj7nvrin1Idp1kKf84jg3CHxNNSDwIa2UsrUx+YlDK8HMK4BFvDpdDKw
+	 kVkqZDcApINgplU+m0V7ikXRAJ7jrIVjvRyhpJyxOatSRnT15HbuK7/DS7tK52UtDs
+	 c6Upgo6WFEwPFwKN/THPSaeDqErhmJUPK/zLDGyFZzLGcQflZMGNZfQvm/Xuj9m4Wz
+	 QlR5dyh7qtnKBWd+CGvSypTu8NflmsXoaZZAJP/TrVbC+qyl80RFaYRNV2VmGSy+sY
+	 vKqYjbtfkrE/d9+uIfGgmixTzA0T33MCVTlCjb0TEh7B9Ux7H35HacQpns0NGekhn9
+	 ZOAa0Zn6kC4hw==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 3FA7F80E74;
-	Tue, 30 Apr 2024 08:54:01 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id B2AA181F25;
+	Tue, 30 Apr 2024 09:03:26 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id CED8B1BF215
- for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Apr 2024 08:53:58 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id A32351BF215
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Apr 2024 09:03:24 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id C8EA480E74
- for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Apr 2024 08:53:58 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 9934781F1E
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Apr 2024 09:03:24 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id vS-3ecKfYEeo for <intel-wired-lan@lists.osuosl.org>;
- Tue, 30 Apr 2024 08:53:57 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.13;
- helo=mgamail.intel.com; envelope-from=lakshmi.sowjanya.d@intel.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 4849980D96
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4849980D96
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.13])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 4849980D96
- for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Apr 2024 08:53:57 +0000 (UTC)
-X-CSE-ConnectionGUID: sRS/uoa5QWGtI1hJ8zJtNg==
-X-CSE-MsgGUID: hZoWwU0UQ9WvOmtfBJXROg==
-X-IronPort-AV: E=McAfee;i="6600,9927,11059"; a="21311557"
-X-IronPort-AV: E=Sophos;i="6.07,241,1708416000"; d="scan'208";a="21311557"
-Received: from orviesa007.jf.intel.com ([10.64.159.147])
- by orvoesa105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 30 Apr 2024 01:53:56 -0700
-X-CSE-ConnectionGUID: l241ZoNeQIeeof6w+W6Kmw==
-X-CSE-MsgGUID: PJqShxRRS+GYXQSyfxCF6A==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.07,241,1708416000"; d="scan'208";a="26891701"
-Received: from inlubt0316.iind.intel.com ([10.191.20.213])
- by orviesa007.jf.intel.com with ESMTP; 30 Apr 2024 01:53:49 -0700
-From: lakshmi.sowjanya.d@intel.com
-To: tglx@linutronix.de, jstultz@google.com, giometti@enneenne.com,
- corbet@lwn.net, linux-kernel@vger.kernel.org
-Date: Tue, 30 Apr 2024 14:22:25 +0530
-Message-Id: <20240430085225.18086-13-lakshmi.sowjanya.d@intel.com>
-X-Mailer: git-send-email 2.35.3
-In-Reply-To: <20240430085225.18086-1-lakshmi.sowjanya.d@intel.com>
-References: <20240430085225.18086-1-lakshmi.sowjanya.d@intel.com>
+ id W6nfaT-jTY7U for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 30 Apr 2024 09:03:20 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2607:f8b0:4864:20::530; helo=mail-pg1-x530.google.com;
+ envelope-from=ross.lagerwall@cloud.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 8D97581F21
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8D97581F21
+Received: from mail-pg1-x530.google.com (mail-pg1-x530.google.com
+ [IPv6:2607:f8b0:4864:20::530])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 8D97581F21
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Apr 2024 09:03:20 +0000 (UTC)
+Received: by mail-pg1-x530.google.com with SMTP id
+ 41be03b00d2f7-53fbf2c42bfso3852703a12.3
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Apr 2024 02:03:20 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1714467800; x=1715072600;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=sjBo2QVMI1CyWQlsIFe9ysVmh7llCcHOfQxc+A80P+Q=;
+ b=AYhJVwbN19HHuxPQTKFRCg+CMW5pAgp+E//U1Q9fXtVpg1zb3/KCb66RbOF4DSojyz
+ 2ICTe7Mi++U/XVC5VGPtphUHIsE6BrgJplZyxN7S/pdPHOqR/SN8t/jt8wTwVPyaHyMx
+ Qbi/ROiUueFU6uoTWUqu8feziHXyBP6hi/moYm6IMrsGrQs0J/nuBKsmN51hkDTDRd+D
+ B8h4gh9nbbgiC2RlFw4bNA/C9SeWY4Qlq3g5SvruGsoIV4QtmrT4y4lAfL/biauYuYTd
+ dQ5MCejDtLE2zXs2lEV6/cMNmChDboabkRNyOUhutfRuSk1469rF8L1/tXxtO3JTD2fC
+ +Inw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVLMm0j2TTnaWPOnZJZWB/AkHvf+fwkh4H+B+N2GQPwkVBelz6M9+hpnciySG7s2j3D7rsKaeihUwGvBPy7Y2Q2DzEiCCEpgGjD28Tk4lHpyQ==
+X-Gm-Message-State: AOJu0YyFRm/KpFEqq2tn6cRvZpfAzUEKiEfl7dE3rIr3XTatnT5yrdZ2
+ APOqoeNDNGsoqZuKdxcKawnntOHJfPGJBBg8R5y1fp1PeGQAH53uleD7XI4my3oTCKOSTZ20REQ
+ GC0yr+mPrudI1KLWmUnHeuij1uBibU2w+yfK3
+X-Google-Smtp-Source: AGHT+IHFA3yXARPgRd7WfRg9inQlkDKb45T+L+W2rOOOIIWOKTAuDP2mXbHpPw5MN5nf9McFe4daxw7WvYNPhjm8Tkw=
+X-Received: by 2002:a05:6a21:3948:b0:1ae:3d01:d with SMTP id
+ ac8-20020a056a21394800b001ae3d01000dmr2256870pzc.9.1714467799596; Tue, 30 Apr
+ 2024 02:03:19 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1714467238; x=1746003238;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=BGKIvW+QuSy639MKv7/DBEUGPRf9QzPFu13XKIQ74uc=;
- b=QSjuvo0SW/0cCzvQRwylu7x/124QYbcJm3qZFvcOuR21Hrr3L4MtbLFo
- GbM4QP1a6wb/9Xr4HgOgLqPvA7xxAXQw2iroVycWjETmiQc14+R/Pyh8l
- zb1VC6EwvfoB7aiGb4LqZ6xDmIPY1G8oKwYfM+CkiRrsAtgSg7D02+Axv
- kWYo3d0j2QzRwdx3zeMDPYt/J7sOnQjrByqhC6UUGCqxVbehHJn7c8mTl
- wJ7CAXjOQ+gXBgp9jcjYGz98u2PR8GU7OX34SitpKUY69tNGonw3Jk2mv
- m5zQoc7RSlHvEesILtoINaOivKLs0WZuhV2vcMNwHL8Uu3wHI6Hc1Xn6Z
- A==;
+References: <20240429124922.2872002-1-ross.lagerwall@citrix.com>
+ <a0359435-7e0f-4a48-9cc6-3db679bde1ac@molgen.mpg.de>
+In-Reply-To: <a0359435-7e0f-4a48-9cc6-3db679bde1ac@molgen.mpg.de>
+From: Ross Lagerwall <ross.lagerwall@citrix.com>
+Date: Tue, 30 Apr 2024 10:03:07 +0100
+Message-ID: <CAG7k0ErF+e2vMUYRuh2EBjWmE7iqdOMS1CQv-7r18T1mVbK1aA@mail.gmail.com>
+To: Paul Menzel <pmenzel@molgen.mpg.de>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=citrix.com; s=google; t=1714467800; x=1715072600; darn=lists.osuosl.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=sjBo2QVMI1CyWQlsIFe9ysVmh7llCcHOfQxc+A80P+Q=;
+ b=TS2dLMyIKg3P0/NJcuxA8jE4rzlwdEwVbZotl9U1vKmUX1nO4BbuMnQeki/v/gjHJ6
+ yYgMNSZUvkIPmkuvhrYZO742SVudAIOOGER91junouKXX5+dtjx9sxRBk8ONG7KPOa0q
+ gukxywlQgPwVmOO4AZiF2Pm5kYiUgswh2E8QA=
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
+ dmarc=pass (p=reject dis=none)
+ header.from=citrix.com
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=QSjuvo0S
-Subject: [Intel-wired-lan] [PATCH v7 12/12] ABI: pps: Add ABI documentation
- for Intel TIO
+ dkim=pass (1024-bit key,
+ unprotected) header.d=citrix.com header.i=@citrix.com header.a=rsa-sha256
+ header.s=google header.b=TS2dLMyI
+Subject: Re: [Intel-wired-lan] [PATCH v2] ice: Fix enabling SR-IOV with Xen
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -105,54 +113,154 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: christopher.s.hall@intel.com, subramanian.mohan@intel.com,
- lakshmi.sowjanya.d@intel.com, linux-doc@vger.kernel.org,
- netdev@vger.kernel.org, pandith.n@intel.com, x86@kernel.org,
- eddie.dong@intel.com, linux-sound@vger.kernel.org,
- alexandre.torgue@foss.st.com, peter.hilber@opensynergy.com,
- joabreu@synopsys.com, intel-wired-lan@lists.osuosl.org,
- mcoquelin.stm32@gmail.com, thejesh.reddy.t.r@intel.com, perex@perex.cz,
- anthony.l.nguyen@intel.com, andriy.shevchenko@linux.intel.com,
- davem@davemloft.net
+Cc: netdev@vger.kernel.org, Javi Merino <javi.merino@kernel.org>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>, intel-wired-lan@lists.osuosl.org
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Lakshmi Sowjanya D <lakshmi.sowjanya.d@intel.com>
+On Mon, Apr 29, 2024 at 2:04=E2=80=AFPM Paul Menzel <pmenzel@molgen.mpg.de>=
+ wrote:
+>
+> Dear Ross,
+>
+>
+> Thank you for your patch.
+>
+> Am 29.04.24 um 14:49 schrieb Ross Lagerwall:
+> > When the PCI functions are created, Xen is informed about them and
+> > caches the number of MSI-X entries each function has.  However, the
+> > number of MSI-X entries is not set until after the hardware has been
+> > configured and the VFs have been started. This prevents
+> > PCI-passthrough from working because Xen rejects mapping MSI-X
+> > interrupts to domains because it thinks the MSI-X interrupts don't
+> > exist.
+>
+> Thank you for this great problem description. Is there any log message
+> shown, you could paste, so people can find this commit when searching
+> for the log message?
 
-Document sysfs interface for Intel Timed I/O PPS driver.
+When this issue occurs, QEMU repeatedly reports:
 
-Signed-off-by: Lakshmi Sowjanya D <lakshmi.sowjanya.d@intel.com>
----
- Documentation/ABI/testing/sysfs-platform-pps-tio | 7 +++++++
- MAINTAINERS                                      | 1 +
- 2 files changed, 8 insertions(+)
- create mode 100644 Documentation/ABI/testing/sysfs-platform-pps-tio
+msi_msix_setup: Error: Mapping of MSI-X (err: 22, vec: 0, entry 0x1)
 
-diff --git a/Documentation/ABI/testing/sysfs-platform-pps-tio b/Documentation/ABI/testing/sysfs-platform-pps-tio
-new file mode 100644
-index 000000000000..2d9f7dd3813c
---- /dev/null
-+++ b/Documentation/ABI/testing/sysfs-platform-pps-tio
-@@ -0,0 +1,7 @@
-+What:		/sys/devices/platform/INTCxxxx/enable
-+Date:		May 2024
-+KernelVersion:	6.10
-+Contact:	Lakshmi Sowjanya D <lakshmi.sowjanya.d@intel.com>
-+Description:
-+		(RW) Enable or disable PPS TIO generator output, read to
-+		see the status of hardware (Enabled/Disabled).
-diff --git a/MAINTAINERS b/MAINTAINERS
-index f6dc90559341..381e31343db9 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -17669,6 +17669,7 @@ M:	Rodolfo Giometti <giometti@enneenne.com>
- L:	linuxpps@ml.enneenne.com (subscribers-only)
- S:	Maintained
- W:	http://wiki.enneenne.com/index.php/LinuxPPS_support
-+F:	Documentation/ABI/testing/sysfs-platform-pps-tio
- F:	Documentation/ABI/testing/sysfs-pps
- F:	Documentation/devicetree/bindings/pps/pps-gpio.yaml
- F:	Documentation/driver-api/pps.rst
--- 
-2.35.3
+>
+> Do you have a minimal test case, so the maintainers can reproduce this
+> to test the fix?
 
+Testing this requires setting up Xen which I wouldn't expect anyone to
+do unless they already have an environment set up.
+
+In any case, a "minimal" test would be something like:
+
+1. Set up Xen with dom0 and another VM running Linux.
+2. Pass through a VF to the VM. See that QEMU reports the above message
+   and the VF is not usable within the VM.
+3. Rebuild the dom0 kernel with the attached patch.
+4. Pass through a VF to the VM. See that the VF is usable within the
+   VM.
+
+>
+> > Fix this by moving the call to pci_enable_sriov() later so that the
+> > number of MSI-X entries is set correctly in hardware by the time Xen
+> > reads it.
+>
+> It=E2=80=99d be great if you could be more specific on =E2=80=9Clater=E2=
+=80=9D, and why this is
+> the correct place.
+
+"later" in this case means after ice_start_vfs() since it is at that
+point that the hardware sets the number of MSI-X entries.
+I expect that a maintainer or someone with more knowledge of the
+hardware could explain why the hardware only sets the number of MSI-X
+entries at this point.
+
+>
+> > Signed-off-by: Ross Lagerwall <ross.lagerwall@citrix.com>
+> > Signed-off-by: Javi Merino <javi.merino@kernel.org>
+> > ---
+> >
+> > In v2:
+> > * Fix cleanup on if pci_enable_sriov() fails.
+> >
+> >   drivers/net/ethernet/intel/ice/ice_sriov.c | 23 +++++++++++++--------=
+-
+> >   1 file changed, 14 insertions(+), 9 deletions(-)
+> >
+> > diff --git a/drivers/net/ethernet/intel/ice/ice_sriov.c b/drivers/net/e=
+thernet/intel/ice/ice_sriov.c
+> > index a958fcf3e6be..bc97493046a8 100644
+> > --- a/drivers/net/ethernet/intel/ice/ice_sriov.c
+> > +++ b/drivers/net/ethernet/intel/ice/ice_sriov.c
+> > @@ -864,6 +864,8 @@ static int ice_ena_vfs(struct ice_pf *pf, u16 num_v=
+fs)
+> >       int total_vectors =3D pf->hw.func_caps.common_cap.num_msix_vector=
+s;
+> >       struct device *dev =3D ice_pf_to_dev(pf);
+> >       struct ice_hw *hw =3D &pf->hw;
+> > +     struct ice_vf *vf;
+> > +     unsigned int bkt;
+> >       int ret;
+> >
+> >       pf->sriov_irq_bm =3D bitmap_zalloc(total_vectors, GFP_KERNEL);
+> > @@ -877,24 +879,20 @@ static int ice_ena_vfs(struct ice_pf *pf, u16 num=
+_vfs)
+> >       set_bit(ICE_OICR_INTR_DIS, pf->state);
+> >       ice_flush(hw);
+> >
+> > -     ret =3D pci_enable_sriov(pf->pdev, num_vfs);
+> > -     if (ret)
+> > -             goto err_unroll_intr;
+> > -
+> >       mutex_lock(&pf->vfs.table_lock);
+> >
+> >       ret =3D ice_set_per_vf_res(pf, num_vfs);
+> >       if (ret) {
+> >               dev_err(dev, "Not enough resources for %d VFs, err %d. Tr=
+y with fewer number of VFs\n",
+> >                       num_vfs, ret);
+> > -             goto err_unroll_sriov;
+> > +             goto err_unroll_intr;
+> >       }
+> >
+> >       ret =3D ice_create_vf_entries(pf, num_vfs);
+> >       if (ret) {
+> >               dev_err(dev, "Failed to allocate VF entries for %d VFs\n"=
+,
+> >                       num_vfs);
+> > -             goto err_unroll_sriov;
+> > +             goto err_unroll_intr;
+> >       }
+> >
+> >       ice_eswitch_reserve_cp_queues(pf, num_vfs);
+> > @@ -905,6 +903,10 @@ static int ice_ena_vfs(struct ice_pf *pf, u16 num_=
+vfs)
+> >               goto err_unroll_vf_entries;
+> >       }
+> >
+> > +     ret =3D pci_enable_sriov(pf->pdev, num_vfs);
+> > +     if (ret)
+> > +             goto err_unroll_start_vfs;
+> > +
+> >       clear_bit(ICE_VF_DIS, pf->state);
+> >
+> >       /* rearm global interrupts */
+> > @@ -915,12 +917,15 @@ static int ice_ena_vfs(struct ice_pf *pf, u16 num=
+_vfs)
+> >
+> >       return 0;
+> >
+> > +err_unroll_start_vfs:
+> > +     ice_for_each_vf(pf, bkt, vf) {
+> > +             ice_dis_vf_mappings(vf);
+> > +             ice_vf_vsi_release(vf);
+> > +     }
+>
+> Why wasn=E2=80=99t this needed with `pci_enable_sriov()` done earlier?
+
+Previously ice_start_vifs() was the last function call that may fail
+in this function. That is no longer the case so when
+pci_enable_sriov() fails, it needs to undo what was done in
+ice_start_vifs().
+
+Thanks,
+Ross
