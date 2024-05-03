@@ -1,128 +1,90 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id A852D8BAFB7
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  3 May 2024 17:25:53 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 23DD48BB229
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  3 May 2024 20:08:32 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id E34A641F00;
-	Fri,  3 May 2024 15:25:50 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 7D8F740443;
+	Fri,  3 May 2024 18:08:30 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id ufSlsKwo-wjd; Fri,  3 May 2024 15:25:50 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id e4SdysdvkYsH; Fri,  3 May 2024 18:08:29 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org DB50241E6C
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3711B41D0E
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1714749950;
-	bh=yl4g964HKYijZxc2oD7Ff8fnLIuQoEhMIWpaXs8VMMw=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=LnNS0GLVceo75/N5ugXwlO6IHJxjWVeZAhWrH969HM2oX+fIm8ov6/nJCiPrmKxiA
-	 7lYw5ji4NSoSglGX1suXk7OWnQsZv0Re+MMr2rarEC9ryIEwhn/QerY82x4agr7Uhy
-	 EXYNAolyckYs3pW8Mz2NrFVkx1hdbU3yBeDlhLkSkfSAsNd7Gl2puhyTdIaeiuuuEm
-	 Y81CXhH10BJHm9NXsCTWJarFePItMP9Dz8aPPulilrxbsmBcyq5upEtvJts8QaINY7
-	 Z6ovcy+3UKbuBQGteLfOzbvjhnxsY87Q4p55fafCmRXHw9BuyzMqwsJVrP5MMzW8uW
-	 1qIsMquKdgH0Q==
+	s=default; t=1714759709;
+	bh=7krJSqa8wuLXGsELKd69ZwXPLKfylvjCfsQDlS3hK/Y=;
+	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=rAp75h8qNF2Q/Lruq1VhZnQK4aE+szDXZg8jZhJy5cxUM99fORWwfAGlMtkHG4Ypv
+	 rgl1/yoLLLawR9a/9x3u5XmDbyZB7/hsUpSdGmCAj45NPAb36BgK7iyUHjE6O7faX6
+	 Dqp4/Wzr4l3d3i+fNK8xa+2o7q3Z5dz/1o5dmoixt+Yje5HXs1uAcYRToXtmVVquV6
+	 qy9qGLjpM31FDpsal2U3qL7Hny4CTktv+4MjnuTDJFNZAeEbopxvBs4XstK9/zEoF8
+	 82k7lfBD6xL3gsT3RNxzJ3LT+s2fKPIaguDd9M5h9JRGF0q6S9JGqhtnkT3gciIBj2
+	 rcWT83Qn57tEw==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id DB50241E6C;
-	Fri,  3 May 2024 15:25:49 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 3711B41D0E;
+	Fri,  3 May 2024 18:08:29 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 15A8F1BF30D
- for <intel-wired-lan@lists.osuosl.org>; Fri,  3 May 2024 15:25:47 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 232F71BF311
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  3 May 2024 18:08:27 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id F398541730
- for <intel-wired-lan@lists.osuosl.org>; Fri,  3 May 2024 15:25:46 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 0DF606080A
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  3 May 2024 18:08:27 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id H96WG-6QzDzY for <intel-wired-lan@lists.osuosl.org>;
- Fri,  3 May 2024 15:25:45 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=148.163.158.5;
- helo=mx0b-001b2d01.pphosted.com; envelope-from=thinhtr@linux.ibm.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 24D0B416CA
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 24D0B416CA
-Received: from mx0b-001b2d01.pphosted.com (mx0b-001b2d01.pphosted.com
- [148.163.158.5])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 24D0B416CA
- for <intel-wired-lan@lists.osuosl.org>; Fri,  3 May 2024 15:25:44 +0000 (UTC)
-Received: from pps.filterd (m0353725.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
- 443ES8pw003813; Fri, 3 May 2024 15:25:38 GMT
-Received: from pps.reinject (localhost [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3xw1qag4mu-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 03 May 2024 15:25:37 +0000
-Received: from m0353725.ppops.net (m0353725.ppops.net [127.0.0.1])
- by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 443FL0E2023323;
- Fri, 3 May 2024 15:25:37 GMT
-Received: from ppma13.dal12v.mail.ibm.com
- (dd.9e.1632.ip4.static.sl-reverse.com [50.22.158.221])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3xw1qag4mk-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 03 May 2024 15:25:37 +0000
-Received: from pps.filterd (ppma13.dal12v.mail.ibm.com [127.0.0.1])
- by ppma13.dal12v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id
- 443F004X011821; Fri, 3 May 2024 15:25:36 GMT
-Received: from smtprelay02.dal12v.mail.ibm.com ([172.16.1.4])
- by ppma13.dal12v.mail.ibm.com (PPS) with ESMTPS id 3xsdwmp1nt-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 03 May 2024 15:25:36 +0000
-Received: from smtpav05.wdc07v.mail.ibm.com (smtpav05.wdc07v.mail.ibm.com
- [10.39.53.232])
- by smtprelay02.dal12v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 443FPXic26804972
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 3 May 2024 15:25:35 GMT
-Received: from smtpav05.wdc07v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 5D2FD58059;
- Fri,  3 May 2024 15:25:33 +0000 (GMT)
-Received: from smtpav05.wdc07v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id BA8395805F;
- Fri,  3 May 2024 15:25:32 +0000 (GMT)
-Received: from linux.vnet.ibm.com (unknown [9.41.99.196])
- by smtpav05.wdc07v.mail.ibm.com (Postfix) with ESMTP;
- Fri,  3 May 2024 15:25:32 +0000 (GMT)
-From: Thinh Tran <thinhtr@linux.ibm.com>
-To: netdev@vger.kernel.org, kuba@kernel.org, anthony.l.nguyen@intel.com,
- aleksandr.loktionov@intel.com
-Date: Fri,  3 May 2024 10:25:09 -0500
-Message-Id: <20240503152509.372-1-thinhtr@linux.ibm.com>
-X-Mailer: git-send-email 2.25.1
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id Xde51so3v5W9 for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  3 May 2024 18:08:25 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=193.104.135.124;
+ helo=mail1.fiberby.net; envelope-from=ast@fiberby.net; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 74E006079F
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 74E006079F
+Received: from mail1.fiberby.net (mail1.fiberby.net [193.104.135.124])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 74E006079F
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  3 May 2024 18:08:24 +0000 (UTC)
+Received: from x201s (193-104-135-243.ip4.fiberby.net [193.104.135.243])
+ by mail1.fiberby.net (Postfix) with ESMTPSA id C234D600A2;
+ Fri,  3 May 2024 18:08:14 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1])
+ by x201s (Postfix) with ESMTP id 5823420146D;
+ Fri, 03 May 2024 18:08:04 +0000 (UTC)
+Message-ID: <80089193-33e8-4601-bdbc-71d10ff1ab58@fiberby.net>
+Date: Fri, 3 May 2024 18:08:04 +0000
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+To: "Buvaneswaran, Sujai" <sujai.buvaneswaran@intel.com>
+References: <20240416144331.15336-1-ast@fiberby.net>
+ <PH0PR11MB50139E3BE2709C5BE7F4AC78961F2@PH0PR11MB5013.namprd11.prod.outlook.com>
+Content-Language: en-US
+From: =?UTF-8?Q?Asbj=C3=B8rn_Sloth_T=C3=B8nnesen?= <ast@fiberby.net>
+In-Reply-To: <PH0PR11MB50139E3BE2709C5BE7F4AC78961F2@PH0PR11MB5013.namprd11.prod.outlook.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TM-AS-GCONF: 00
-X-Proofpoint-ORIG-GUID: yr9NMls3P6hh2CHhmbs7Q_fL4ImBgdHO
-X-Proofpoint-GUID: 0VkdAi_18R7i2zDHlLGoO09Czi_iINvd
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1011,Hydra:6.0.650,FMLib:17.11.176.26
- definitions=2024-05-03_09,2024-05-03_02,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- impostorscore=0 clxscore=1015
- malwarescore=0 adultscore=0 suspectscore=0 phishscore=0 priorityscore=1501
- spamscore=0 mlxlogscore=999 lowpriorityscore=0 bulkscore=0 mlxscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2404010000
- definitions=main-2405030108
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=ibm.com; h=from : to : cc : subject
- : date : message-id : mime-version : content-transfer-encoding; s=pp1;
- bh=yl4g964HKYijZxc2oD7Ff8fnLIuQoEhMIWpaXs8VMMw=;
- b=jpOZwAdFadSTkBh8F9+OOqur1WscHh6C1qCss4QIvqsyrIGVgkojTSDnXrbnv5ph29KO
- 1Bo9DVR6oNbX45KtrRONQNHAknpZJkxwmFis+0hBN5jD+1iqvkCbZWgNzlyXY245CrWr
- Cfynfs4FfToMiNhtN6haBbXOt1qpRH0dflN1IguvWSjN43OBR4YA66t9qOtdM91iAn0/
- nfeglUVluGFyCQEXVadJEmuTKEZ/KAycOyYm1SxKIffvdteMSaHV0eksYAaIpZRmp3vc
- lId2I6DEw2xJmC1aP6ACgqq4+yNfrc9gK0WsU3PoVdK9dH+MbBZhDjsDqkDgSe/8vcND KA== 
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=linux.ibm.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=ibm.com header.i=@ibm.com
- header.a=rsa-sha256 header.s=pp1 header.b=jpOZwAdF
-Subject: [Intel-wired-lan] [PATCH iwl-net] i40e: Fix repeated EEH reports in
- MSI domain
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=fiberby.net; s=202008; t=1714759701;
+ bh=lpjffUs0KsD4f1OIdu+oOs418PzFZ7RJRguA69+8Ufg=;
+ h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+ b=Nm2drleWzUli4rPVRzHIxWXPNsM1P7Lh/mZEVcqcpPgnUhoWJdBr/p0F7y3LbVz+a
+ 4T3o8u8ds+dMOu9SiMtVXNN6U1M/8dna+PH56Vj/GFcwvHK5HmU8BAxhDVnR0/pfg3
+ 77htbJMnUJyvVyvAKBaAgzTaohiq+SZDxHhec75OsZ2QVs+MOxOZTBCwCG/yknxwT6
+ xwemhYv+LxkMeCbLbtVa3UO/P+L0/M+1foLt37LqEcfu4p4YZG/99PZ+hHWt/1M+/2
+ sqVqoRuDnKJMkAkDzHfP3hf2Zj6pDZmpquWoDm3YwcjjXAP3UbzdzYu8qDDqhXssLG
+ 5uQpZiVHj2voQ==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dmarc=pass (p=reject dis=none)
+ header.from=fiberby.net
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=fiberby.net header.i=@fiberby.net header.a=rsa-sha256
+ header.s=202008 header.b=Nm2drleW
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next] ice: flower: validate
+ control flags
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -135,141 +97,79 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: edumazet@google.com, intel-wired-lan@lists.osuosl.org,
- Thinh Tran <thinhtr@linux.ibm.com>, Robert Thomas <rob.thomas@ibm.com>,
- pabeni@redhat.com, davem@davemloft.net
+Cc: "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ Eric Dumazet <edumazet@google.com>, "Nguyen,
+ Anthony L" <anthony.l.nguyen@intel.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ "David S. Miller" <davem@davemloft.net>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The patch fixes an issue when repeated EEH reports with a single error
-on the bus of Intel X710 4-port 10G Base-T adapter, in the MSI domain
-causing the devices to be permanently disabled.  It fully resets and
-restart the devices when handling the PCI EEH error.
+Hi Sujai,
 
-Two new functions, i40e_io_suspend() and i40e_io_resume(), have been
-introduced.  These functions were refactor from the existing
-i40e_suspend() and i40e_resume() respectively.  This refactoring was
-done due to concerns about the logic of the I40E_SUSPENSED state, which
-caused the device not able to recover.  The functios are now used in the
-EEH handling for device suspend/resume callbacks.
+On 5/3/24 5:57 AM, Buvaneswaran, Sujai wrote:
+>> -----Original Message-----
+>> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of
+>> Asbjørn Sloth Tønnesen
+>> Sent: Tuesday, April 16, 2024 8:14 PM
+>> To: intel-wired-lan@lists.osuosl.org
+>> Cc: netdev@vger.kernel.org; linux-kernel@vger.kernel.org; Eric Dumazet
+>> <edumazet@google.com>; Nguyen, Anthony L
+>> <anthony.l.nguyen@intel.com>; Asbjørn Sloth Tønnesen <ast@fiberby.net>;
+>> Jakub Kicinski <kuba@kernel.org>; Paolo Abeni <pabeni@redhat.com>;
+>> David S. Miller <davem@davemloft.net>
+>> Subject: [Intel-wired-lan] [PATCH iwl-next] ice: flower: validate control flags
+>>
+>> This driver currently doesn't support any control flags.
+>>
+>> Use flow_rule_has_control_flags() to check for control flags, such as can be
+>> set through `tc flower ... ip_flags frag`.
+>>
+>> In case any control flags are masked, flow_rule_has_control_flags() sets a NL
+>> extended error message, and we return -EOPNOTSUPP.
+>>
+>> Only compile-tested.
+>>
+>> Signed-off-by: Asbjørn Sloth Tønnesen <ast@fiberby.net>
+>> ---
+>>   drivers/net/ethernet/intel/ice/ice_tc_lib.c | 4 ++++
+>>   1 file changed, 4 insertions(+)
+>>
+> 
+> Hi,
+> 
+> I have tested this patch in upstream kernel - 6.9.0-rc5+ and observing no effect while adding tc flow rule with control flags.
+> 'Not supported' error is not shown while adding the below tc rule.
+> 
+> [root@cbl-mariner ~]# tc qdisc add dev ens5f0np0 ingress
+> [root@cbl-mariner ~]#
+> [root@cbl-mariner ~]# tc filter add dev ens5f0np0 ingress protocol ip flower ip_flags frag/firstfrag action drop
 
-- In the PCI error detected callback, replaced i40e_prep_for_reset()
-  with i40e_io_suspend(). The chance is to fully suspend all I/O
-  operations
-- In the PCI error slot reset callback, replaced pci_enable_device_mem()
-  with pci_enable_device(). This change enables both I/O and memory of 
-  the device.
+Thank you for testing!
 
-- In the PCI error resume callback, replace i40e_handle_reset_warning()
-  with i40e_io_resume(). This change allows the system to resume I/O 
-  operations
+I think the issue you are observing, is because you are missing "skip_sw":
+tc filter add dev ens5f0np0 ingress protocol ip flower skip_sw \
+	ip_flags frag/firstfrag action drop
 
-Fixes: a5f3d2c17b07 ("powerpc/pseries/pci: Add MSI domains")
+Without skip_sw, then the hardware offload is opportunistic,
+and therefore the error in hardware offloading doesn't bubble
+through to user space.
 
-Signed-off-by: Thinh Tran <thinhtr@linux.ibm.com>
-Tested-by: Robert Thomas <rob.thomas@ibm.com>
+Without skip_sw, you should still be able to observe a change in
+`tc filter show dev ens5f0np0 ingress`. Without the patch you
+should see "in_hw", and with it you should see "not_in_hw".
 
----
- drivers/net/ethernet/intel/i40e/i40e_main.c | 29 ++++++++++++++++-----
- 1 file changed, 22 insertions(+), 7 deletions(-)
+With skip_sw, then the error in hardware offloading causes
+the tc command to fail, with the -EOPNOTSUPP error and
+associated extended Netlink error message.
 
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
-index 48b9ddb2b1b3..58418aa9231e 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_main.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
-@@ -54,6 +54,9 @@ static int i40e_get_capabilities(struct i40e_pf *pf,
- 				 enum i40e_admin_queue_opc list_type);
- static bool i40e_is_total_port_shutdown_enabled(struct i40e_pf *pf);
- 
-+static int i40e_io_suspend(struct i40e_pf *pf);
-+static int i40e_io_resume(struct i40e_pf *pf);
-+
- /* i40e_pci_tbl - PCI Device ID Table
-  *
-  * Last entry must be all 0s
-@@ -11138,6 +11141,8 @@ static void i40e_reset_and_rebuild(struct i40e_pf *pf, bool reinit,
- 	ret = i40e_reset(pf);
- 	if (!ret)
- 		i40e_rebuild(pf, reinit, lock_acquired);
-+	else
-+		dev_err(&pf->pdev->dev, "%s: i40e_reset() FAILED", __func__);
- }
- 
- /**
-@@ -16327,7 +16332,7 @@ static pci_ers_result_t i40e_pci_error_detected(struct pci_dev *pdev,
- 
- 	/* shutdown all operations */
- 	if (!test_bit(__I40E_SUSPENDED, pf->state))
--		i40e_prep_for_reset(pf);
-+		i40e_io_suspend(pf);
- 
- 	/* Request a slot reset */
- 	return PCI_ERS_RESULT_NEED_RESET;
-@@ -16349,7 +16354,8 @@ static pci_ers_result_t i40e_pci_error_slot_reset(struct pci_dev *pdev)
- 	u32 reg;
- 
- 	dev_dbg(&pdev->dev, "%s\n", __func__);
--	if (pci_enable_device_mem(pdev)) {
-+	/* enable I/O and memory of the device  */
-+	if (pci_enable_device(pdev)) {
- 		dev_info(&pdev->dev,
- 			 "Cannot re-enable PCI device after reset.\n");
- 		result = PCI_ERS_RESULT_DISCONNECT;
-@@ -16411,8 +16417,7 @@ static void i40e_pci_error_resume(struct pci_dev *pdev)
- 	dev_dbg(&pdev->dev, "%s\n", __func__);
- 	if (test_bit(__I40E_SUSPENDED, pf->state))
- 		return;
--
--	i40e_handle_reset_warning(pf, false);
-+	i40e_io_resume(pf);
- }
- 
- /**
-@@ -16521,11 +16526,16 @@ static void i40e_shutdown(struct pci_dev *pdev)
- static int __maybe_unused i40e_suspend(struct device *dev)
- {
- 	struct i40e_pf *pf = dev_get_drvdata(dev);
--	struct i40e_hw *hw = &pf->hw;
- 
- 	/* If we're already suspended, then there is nothing to do */
- 	if (test_and_set_bit(__I40E_SUSPENDED, pf->state))
- 		return 0;
-+	return i40e_io_suspend(pf);
-+}
-+
-+static int i40e_io_suspend(struct i40e_pf *pf)
-+{
-+	struct i40e_hw *hw = &pf->hw;
- 
- 	set_bit(__I40E_DOWN, pf->state);
- 
-@@ -16572,11 +16582,16 @@ static int __maybe_unused i40e_suspend(struct device *dev)
- static int __maybe_unused i40e_resume(struct device *dev)
- {
- 	struct i40e_pf *pf = dev_get_drvdata(dev);
--	int err;
- 
- 	/* If we're not suspended, then there is nothing to do */
- 	if (!test_bit(__I40E_SUSPENDED, pf->state))
- 		return 0;
-+	return i40e_io_resume(pf);
-+}
-+
-+static int i40e_io_resume(struct i40e_pf *pf)
-+{
-+	int err;
- 
- 	/* We need to hold the RTNL lock prior to restoring interrupt schemes,
- 	 * since we're going to be restoring queues
-@@ -16588,7 +16603,7 @@ static int __maybe_unused i40e_resume(struct device *dev)
- 	 */
- 	err = i40e_restore_interrupt_scheme(pf);
- 	if (err) {
--		dev_err(dev, "Cannot restore interrupt scheme: %d\n",
-+		dev_err(&pf->pdev->dev, "Cannot restore interrupt scheme: %d\n",
- 			err);
- 	}
- 
+Also see Ido's testing for mlxsw in this other thread:
+https://lore.kernel.org/netdev/ZiABPNMbOOYGiHCq@shredder/#t
+
 -- 
-2.39.3
-
+Best regards
+Asbjørn Sloth Tønnesen
+Network Engineer
+Fiberby - AS42541
