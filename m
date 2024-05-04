@@ -1,226 +1,90 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 907338BD1D4
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  6 May 2024 17:53:32 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id C0A898BD39C
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  6 May 2024 19:07:54 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 1443A608C2;
-	Mon,  6 May 2024 15:53:31 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 6ECAE60764;
+	Mon,  6 May 2024 17:07:53 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id C-vDXVwhXd5R; Mon,  6 May 2024 15:53:30 +0000 (UTC)
+ id R9AKbCsLi4_S; Mon,  6 May 2024 17:07:52 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 391EB608C6
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C8E2D607E3
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1715010810;
-	bh=v1XF2rWyW6BcTWtzN/SodE+Vs8C/ul+evcjJwvjzVgI=;
+	s=default; t=1715015270;
+	bh=C8Kofj1ZyBHDmZYcmXojZWo3hu/d2i51pj5kFfkAZ8E=;
 	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=RwuiDpssIgN45xB//2EyguHJ4jQuhZwmdhlHIDCs6NPr5p0GdzEDrMrl7ZEw47gZk
-	 Qb9azFOtGkbWJ+WtpRQ3z3NvNOLd1UVYiC0x3rwW7ZcNnd8tLPVBSDjGq7TlGZ7DGc
-	 F/JRH0LHw+vkoMhF5GKyynAnWQ86AEvUM4U1BeW7ssuqSZCo/q8mLMJbq3gUDb/X8o
-	 0ILk/pxLgkeWiX1aiEWgn1SHcOkdd/YODh2fL1lyNchGn4ATMB/A9bj8X4DF3CrBAL
-	 HKEOfcDODjUeFosk0KC2jsS2Lf3axaRzh4X+2BW0jNNL3LHjfccI+HMOWlbptJ8urp
-	 zBrPqHQQTseJA==
+	b=CooVUSTkxZf8rOFmnxD+3UItsjNWTJqrjNG2iYhduYzuGE/tNrnnB06uOIOIiFLHp
+	 Pl60NrfWTuBmeUeTrl2jNbrRBctUl/EDTCAxiS9gD34CCBn08g7ka0xDi0zeiAVDIs
+	 83QzzBCYJgsCss2lGU6tyhg01bxfloFcw/m39xuHb4V5A8TA3f0FdEr/ppPs49Hz9X
+	 o9bz5l5HBFRXkXd3S9T9npZMdAowouZ6fmBtlqHxhi38EccCKN6xHZdzYl8Q0NAKC6
+	 cyncAVVTK/GVwus3u55fZT2DYfLcS6zVDT2CQeyBhEiCjMeox2/2S8aVh4cx2zJwmK
+	 ihoRFpBx36Vgg==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 391EB608C6;
-	Mon,  6 May 2024 15:53:30 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id C8E2D607E3;
+	Mon,  6 May 2024 17:07:50 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 001B81BF471
- for <intel-wired-lan@lists.osuosl.org>; Mon,  6 May 2024 15:53:27 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id B3BBA1BF41C
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  4 May 2024 13:29:14 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id EA17B81D02
- for <intel-wired-lan@lists.osuosl.org>; Mon,  6 May 2024 15:53:27 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 9D7A740669
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  4 May 2024 13:29:14 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id fNCyx0vSoG5x for <intel-wired-lan@lists.osuosl.org>;
- Mon,  6 May 2024 15:53:27 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.10;
- helo=mgamail.intel.com; envelope-from=sasha.neftin@intel.com;
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id DYnON8micusz for <intel-wired-lan@lists.osuosl.org>;
+ Sat,  4 May 2024 13:29:12 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=45.83.229.9;
+ helo=mail.ycharbi.fr; envelope-from=kernel.org-fo5k2w@ycharbi.fr;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 266FA81CD0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 266FA81CD0
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.10])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 266FA81CD0
- for <intel-wired-lan@lists.osuosl.org>; Mon,  6 May 2024 15:53:26 +0000 (UTC)
-X-CSE-ConnectionGUID: LuyTywenTsuzAmNcqedQnw==
-X-CSE-MsgGUID: BcsXcyvTQC+t45O8EnDfNw==
-X-IronPort-AV: E=McAfee;i="6600,9927,11065"; a="22166926"
-X-IronPort-AV: E=Sophos;i="6.07,258,1708416000"; d="scan'208";a="22166926"
-Received: from orviesa008.jf.intel.com ([10.64.159.148])
- by fmvoesa104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 06 May 2024 08:53:25 -0700
-X-CSE-ConnectionGUID: GOUXvTVPQI6AnjJwpHQrrA==
-X-CSE-MsgGUID: a94xEw8aRWK/xpqtlDfdDQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.07,258,1708416000"; d="scan'208";a="28790668"
-Received: from orsmsx602.amr.corp.intel.com ([10.22.229.15])
- by orviesa008.jf.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
- 06 May 2024 08:53:25 -0700
-Received: from orsmsx611.amr.corp.intel.com (10.22.229.24) by
- ORSMSX602.amr.corp.intel.com (10.22.229.15) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.35; Mon, 6 May 2024 08:53:24 -0700
-Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
- ORSMSX611.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.35; Mon, 6 May 2024 08:53:24 -0700
-Received: from ORSEDG601.ED.cps.intel.com (10.7.248.6) by
- orsmsx610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.35 via Frontend Transport; Mon, 6 May 2024 08:53:24 -0700
-Received: from NAM10-MW2-obe.outbound.protection.outlook.com (104.47.55.100)
- by edgegateway.intel.com (134.134.137.102) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.35; Mon, 6 May 2024 08:53:24 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Zj0XaMci5pto8I9IK2ZKZ5hdyxc2SBYvIQXEJH6YMprS7iB+LTqta19iSYN6uSz06bebW3/rf4OWCUErBYh8xfqqDtjapjKXHsVfnhmbj1GI/40Qn08t2nPKoPMoGKTKkQSjKlQlojeyFOyH5WnAsXPlagFgDjio42n/y72bs6QxoXmHjnRHesvbmVK3yMYfzbricSWRPekwLnFaHpmiheoGe3yrMAE0tyjV73eOh3St7QrjehHu4eRov4v7g/yELtLibEgV4Qi8mSfkJe1gGvsmJAbtEaTfNxtpb7LGLYRrpS/assUDM5TmPR1eM4HT8BCNT3gQoyICljk8oWWCcw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=v1XF2rWyW6BcTWtzN/SodE+Vs8C/ul+evcjJwvjzVgI=;
- b=Z7JAZ0TadMrPhLvB23jOn5ftCtclWs1SHJIN0LEP8xS/rkOESHyXNnBCdeuY21etsvU1Kd6CBHPAEEBvTT8F7quYoNdY4nYXRkQToQvUFAE7wmcsrmP/C4ioHr8WgOEuqbPbzXCI1I3wgFL+qs4VP0PqRj0+m3LCsMoaq2HDD0hILD9WNcLpVy3r1dOmJ0cd4FCIDLvCV1kI69TTpxlc/wuQ5XyV0kuSWX/rE7SfSZdIxsZai5CDZw6nDSVsTX3r/fIln9I5zI47kRp3fxeW267I0gjOknKBc9oWF2bBIdFXAP9k++CHi24CNbjHnWxA9TZoqxuL1xrRuzNaLt86Xg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from MW4PR11MB6738.namprd11.prod.outlook.com (2603:10b6:303:20c::13)
- by DS0PR11MB7443.namprd11.prod.outlook.com (2603:10b6:8:148::8) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7519.21; Mon, 6 May
- 2024 15:53:22 +0000
-Received: from MW4PR11MB6738.namprd11.prod.outlook.com
- ([fe80::f174:29be:e20c:113f]) by MW4PR11MB6738.namprd11.prod.outlook.com
- ([fe80::f174:29be:e20c:113f%4]) with mapi id 15.20.7544.041; Mon, 6 May 2024
- 15:53:22 +0000
-Message-ID: <7f533913-fba9-4a29-86a5-d3b32ac44632@intel.com>
-Date: Mon, 6 May 2024 18:53:14 +0300
-User-Agent: Mozilla Thunderbird
-To: Ricky Wu <en-wei.wu@canonical.com>
-References: <20240503101824.32717-1-en-wei.wu@canonical.com>
-Content-Language: en-US
-From: Sasha Neftin <sasha.neftin@intel.com>
-In-Reply-To: <20240503101824.32717-1-en-wei.wu@canonical.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 7bit
-X-ClientProxiedBy: TL2P290CA0027.ISRP290.PROD.OUTLOOK.COM
- (2603:1096:950:3::11) To MW4PR11MB6738.namprd11.prod.outlook.com
- (2603:10b6:303:20c::13)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org B783040663
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B783040663
+Received: from mail.ycharbi.fr (mail.ycharbi.fr [45.83.229.9])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id B783040663
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  4 May 2024 13:29:11 +0000 (UTC)
+Message-ID: <e16d08bf-49f6-4c51-85fa-7c368d1887b4@ycharbi.fr>
+Date: Sat, 4 May 2024 15:29:05 +0200
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: MW4PR11MB6738:EE_|DS0PR11MB7443:EE_
-X-MS-Office365-Filtering-Correlation-Id: 8015a659-ab48-4bbd-64f6-08dc6de4a7fb
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230031|376005|366007|1800799015;
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?elNqeW5ZOC94a3pEcmYrbnFTRE9JUFNhZFdHOExDcGhBSmlERGNkOXIrZTBT?=
- =?utf-8?B?ZC9pSkJGOWFQNzVvVnUybTFod295TkRrVVFRUUh3NExna21Bdm5HYlc4T2ts?=
- =?utf-8?B?azJjdnl6Y0hRblpCSHBRTGFwaGVyTHJyWDluQUZVVDhNRkZ0WGw4RzF2Q0Rm?=
- =?utf-8?B?K3F6QW02NmVTdWJweEZaTzJLcUNETUY2VVh3YU9YZ1g4Qzh5V1RKYURPamU0?=
- =?utf-8?B?UHh5dnVZeSszazhFWnZFVVBnUXcyT01aWmJ2cmJYdE04WCtiZ0hnMzBUeVVO?=
- =?utf-8?B?QTdHY1ZoSFZXYnhydmxRck1Lc2x0aysyZm05KzE4azdNV2djelFEMWVYSHdo?=
- =?utf-8?B?dm1PeFVKOVh4MU5QYU9seHl6V2ZidkFOcFNxUGZ0SGpSU3had0sxZzgvUUhH?=
- =?utf-8?B?ZXpOQWxWK2lNOVBoKzdUQkNTSmw5SUlJcmRoUnVpa1NmNWc2d25ObkUrSkpy?=
- =?utf-8?B?RHAwbU5Wa2s2RjlNa3REOUVjWnJ2MWFJaGlYT2VPc3NqYWFmUmkvRUNqVmdx?=
- =?utf-8?B?S2tINkFTOWl5Qk8yb3UyekoxMUNJYUQrRHZvaXNISlAyeEVkRkJaM1FmdkM0?=
- =?utf-8?B?SjFta2h5d3pTbDdlSDNZbldIbW1mNytFajZSM05QcSt1bUtHTXJ4ZUlSeHph?=
- =?utf-8?B?bzBqckhzbGs0T0JWREFrS2NDcnhVN1ZNMm1HNjJ6b3JDbnJ4ZERoWkROM3Va?=
- =?utf-8?B?UWpjdHd3clZFU0ZvaVI2MHRpQllidE01TlJoY0xnemhlWlpodjFENDlQWG5Y?=
- =?utf-8?B?eXkva1Y3NW92OTlIZGlDSitnV2VIZ3h4a3ZLUzlOTURIeFZKNllZNWt5dkdt?=
- =?utf-8?B?bXd0N3h6MmhQSFZYU0VnOXJBeGowd1dIUFBFdWNOSjFFckN5UFRhNUpYVG5R?=
- =?utf-8?B?MForaDJJTTJFK01ER0l2eXhsa2lXWjBKMDlsMnB2UzdSbGxLWUoxZkdsNitS?=
- =?utf-8?B?VXd1S2JDSjNyUnM4aWtNbDczdlU4VzZDSWVHRjhsciswWW01VythWGxpZXhm?=
- =?utf-8?B?NTVJb00zZUFueFhRWEg1L1IrT2lMSkFyVVpSbURKajc0aG9BSkc4UlM0WjdH?=
- =?utf-8?B?NzlkMEk0U2RtTXkvY3RNbmlST0tqbXA1OVhzQ1pOSzRCcmViaVBQR1R3M04y?=
- =?utf-8?B?VEE3WmlIc2x2RE1iL0xmWTBqdHBpRzdyZSt5VWl0ZVh5TWZuZXRrNFZtalBF?=
- =?utf-8?B?ZXh3REpXTHRFMHoxd3MvamoremM4UVNsVEs5TzNTeHlDVWVOSjVRTjA3dk5B?=
- =?utf-8?B?V21nbmJ5QW5NaWF4a3hqajFTWUpDKzl0RndNUjhEZVFsYWdVc2pGZ3QxY1dX?=
- =?utf-8?B?SW9RbVZMWWJMVE5tazVLMVY5S01aTG45blVMY1RXWnBZVlZPOG5RcTRQMEQr?=
- =?utf-8?B?QmNKVTk1VnpVem51RG9QTEx6UDNwU2xmbG42b0R4T0ZXTmFicU1yYTd4NElG?=
- =?utf-8?B?S2F2ZnhjODgrY1VUdm96N2wrdUNyN2hzQTBFaEtiU2RCSFA5OTQ5a2ZTL0k1?=
- =?utf-8?B?dmJkSk1LOVFaMnNiOXJldlZ0eG5pMXByanJlcVRvN1RJVEo0akZHWXdiZXoy?=
- =?utf-8?B?eWg4b29HVmJEV2d3eXFTMXBaemVMWnVoSE1IQmhmdmRmVWR0SkNMMjdsWFNp?=
- =?utf-8?B?clFOZlZkaHpUK1BzMkZPOTE0V3k4eDRNbisrNGxZaFdyaVhyeEo2M21MSURB?=
- =?utf-8?B?eWpSNUh5MjBYeUprYUNubituY3ZOQnVRUzlTcE9ScnpsR0tUN3hPT3p3PT0=?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:MW4PR11MB6738.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230031)(376005)(366007)(1800799015); DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?SHVINTdVWHVTNU9UZGNvS29UWlVFcklFT1RDaUVzbVBkcXVCOG5VS1hHaHRT?=
- =?utf-8?B?RVkzc1pVYVRhYTVEZFJsOUk0N3gzY211TDFYQmZHOWxjQUFWRVB6d3lVa2Z3?=
- =?utf-8?B?a2VQL1RkSDQvU2VXOEtWSzY5OGNFVnczdG1udXZUaERDaGJvaXZUZ0crdXhU?=
- =?utf-8?B?UDhicmZJaklaM2FWTzZ6SENPdzRVemw1eUY4bmdUMFhpN1RKeTRJYUpoQVRJ?=
- =?utf-8?B?MGsvTnhsMGZvTUNwenl0U1laWDdheGt3VVhsdXU4UHJlMkxJWExyVXNrenYr?=
- =?utf-8?B?RUFXdlZQaHA2TzBPUkNOVmhXZnk1UG5SQktGSTUyRGRpVjVpSHdpbkxtREcy?=
- =?utf-8?B?RW0rWlVMQlo0SFhzSWVncmtydUF4V0dOOE50bXFVYkNDL1BVV1BuVDdMQVFk?=
- =?utf-8?B?VXdicGt3MFRmMHhUdGVBYWU4Zmt0ZmlIRlRsTmZ6N3NBRU10NXpQZWJ2dUlU?=
- =?utf-8?B?K2h4R2E3OVY1KzNCN1dqNDJPR2lEQkwwekh4MGJpVVphNlYrYmU0TWZKajN3?=
- =?utf-8?B?dDBzcWppUys3aGNSYVVxT3B4bFhKemdjY2d6eDVSaURNSU1jSDV3bnFTT0NX?=
- =?utf-8?B?QjVkaC9CczNHN0MwQ3RNNzVnOFRXM01najFiVVVwemp5dHN0MzVoN0UxUHYz?=
- =?utf-8?B?bXptSHBLQmpEQXlIaWZrK2w3c0ZXT2xLL0h2T2NJZ0dJTy8reVNwQ050a0FF?=
- =?utf-8?B?cDJVaktMZEdIb2hDT3ZSb0lXRGd2Y2JrV1lTRTgrVTdMVldxTW0vaWpHNFpV?=
- =?utf-8?B?K2N4YVZIbFVrekkvYnozY216aXZDYkE1ZnJnSEJrMDFJRm40NDA3RUllalFv?=
- =?utf-8?B?YXJJdkp1YStBMXJnZkF6L3BtRGVFbXJYa284a0ErTkJXdDFFcTVWSFhaSkQ2?=
- =?utf-8?B?ejRjb29sWkpNWHFvajJ1Q3ZaV2plMCtsQXVxeVBUYk5BWnJEdWVwWHI0TU1l?=
- =?utf-8?B?S0ZDMGZJWmRmYm5Qc1U1RGoxRGIvcnJldThRT0NBRHBsY3hJbDZBNzlGQW5y?=
- =?utf-8?B?cGwwTGdvNVRiR1FZMGNjNFkvTmFrSmtwRmh6ZmFSRTBLVXMwMG0zMUpVTXBF?=
- =?utf-8?B?bG5wQVhBOUxpMkd4TnViYzRyNFUwYWk3S2lURHM3SlpaZWtnSGxIdkkwVWw1?=
- =?utf-8?B?U3dMcmdPWGRCSkVjbnlTRFo5OFNqZmhQeWVoN1Y3TEgxUE9TUmhNNTFmZm9a?=
- =?utf-8?B?Q3JLWUg0UHp0MW5kWm92MXNGeWhzRzdObEZ0S2hGOEZVL2hlVjY1UllvSURY?=
- =?utf-8?B?SUxLYVBYbVJhVFJ5Skk5bXBTTm9Oa3QvL2pteWNaR2hlemVvd1FDZEdVWUxk?=
- =?utf-8?B?ZmFYVm5IZFpieVA0QXRhdFYxbTZaL01ReHBPMHVTbEY1S2dVYXBvaEtmY3Nw?=
- =?utf-8?B?L1ZsRVF6ZEVEcVRiTE10ZG1EREVTcStTeWRST1o1YnZZL1M3TkxDUFJkTjhB?=
- =?utf-8?B?aDdSSDZ6MStsSFY5c0pXUmVSSklOdm1nS1RobEtxYmg1NVZqQThLdGJ2S1Iv?=
- =?utf-8?B?NGVpVzVQTEdCZXBMakhXUm9xS0Y3WTlLTnY3SEk1VWR2T0FSZGx5SzVrU0Qv?=
- =?utf-8?B?dmZDN0RFOUZKekVDeWgxRDA5Mi9ERlVaTEJpUzJxOUloQldrQStsVk9sVmNi?=
- =?utf-8?B?UkRPTDM3TEtVWTZ6NmxySTdtQUJCcmlwYlViVHlweWVuMkpscm5RSzZJVWJh?=
- =?utf-8?B?K292MEw5ZUlEak1hYUJIZVQycExwa2VJTHp3cXZ6NlBMUE1nbnNtd2FxaklD?=
- =?utf-8?B?RTVTQnB3RkdMdWdWelNEV3RRQTZDTWhnRlJDLy9iMlJsTEx5RnVveWQwS0Fr?=
- =?utf-8?B?bzVsUWI3bFZsbzVZSFNIV2kvOFV3MVVzZENrd3NhTnlIOUo2cGFqT2JGcDBv?=
- =?utf-8?B?aXh3WndnNnVJZ01zZUFIajJCZW9lTTNvNHNoNHJnMUNHdndmNFZpSlBTVjdL?=
- =?utf-8?B?Y0dHdnhaYy9pVnlIWUNyY2lTeWtYV2hXaUJhVlJXSmlCZ1laaUlDMlZzbEQ2?=
- =?utf-8?B?VjE5d1cvZ09VNEMwTStydy85WExoeW9YMHlzdm5DTlUwVVRiUEc5UmF0NGUw?=
- =?utf-8?B?U3VLb3lZTityaFF0bUo2ak43Q3BSVVVleXlUUWdPR1YvVnpjRjFYMUtDUVVN?=
- =?utf-8?Q?pqgMo1hrIUTIjmHzKT3PjhILi?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: 8015a659-ab48-4bbd-64f6-08dc6de4a7fb
-X-MS-Exchange-CrossTenant-AuthSource: MW4PR11MB6738.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 06 May 2024 15:53:22.0960 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: APSkA+GQTmaZ+R+KjT3OBXVWlTUSb+zGvMC0qBrHZgaBaqpL1m8DwJYH7XoxES4iXkTX+GtpV5XBv7Q+AUXy1g==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS0PR11MB7443
-X-OriginatorOrg: intel.com
+To: jacob.e.keller@intel.com
+References: <cbe874db-9ac9-42b8-afa0-88ea910e1e99@intel.com>
+Content-Language: fr
+From: kernel.org-fo5k2w@ycharbi.fr
+In-Reply-To: <cbe874db-9ac9-42b8-afa0-88ea910e1e99@intel.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Mailman-Approved-At: Mon, 06 May 2024 17:07:49 +0000
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1715010807; x=1746546807;
- h=message-id:date:subject:to:cc:references:from:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=MgP47ccRyiN2YQozNqKM60jOI6a1fHlhiwZooKu6XX4=;
- b=QMQumWUSxrkRZOrNq6eqM5p6a21kkAIyoCmntNDzOkqZirsP2sEf1aFq
- ouN34yAXpR3DHCYlgXPx35fXmVoCsIhqKtevMGaJPx3G/BXVo8FCIFs51
- AegQ8PkhDbKIFNrwjRSQfQFWd0sUL2CvrGmLPQcIududt1DeLZoXN++TQ
- 0gWfWJKLOWJvxumdmpoUDdzgrbBjOrTPmauVD4yCF/KL7Hno1CyN237sj
- xG9x4l7l3oPlG61nKmHDDQi1iBOIgTpW29wSp4V3mzTgPpU+JlxEA1kjW
- 8/ry2a6YgDKEUSyZmOii6zcPbThsY5zL5BX6fk8hZthyMIbN/6OCi09bV
- Q==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ d=ycharbi.fr; s=mail; 
+ t=1714829345; bh=ZyrqETqdF+poEC5f456ZnYg7ybkSEECrPRnpUBISzmM=;
+ h=Date:To:Cc:References:Subject:From:In-Reply-To:List-Unsubscribe:
+ From;
+ b=uWfK6I7h5pqVkYkBk7m2pV1B2MgG/toAqqVFKbdXjmRHEAkS8QHRXsvLarM3bqYre
+ 3Ci9QBKGTQczrKS+XtfCBFRG8bvcOD7L24vPDx13Q+fykJeLqzGBKzeVGUl7ZO3MgN
+ s7SIK9nx4keCZuOwmcFEhfBSeZw9BrDLRCfy/Wr4IN/BpQGc/kx1l2pbhQ+odIYiBU
+ Zn7uGsdsPp/EIdqLnoxMgMZxc+czVBMecFPWuDNG4m5nbX9o3PvZjf2ol6z5jgm975
+ Vka+Lckwvel4jI+XABC+abROlkY7alR3qrNPXYfuP5nWMFj7vSxjYO3Y5n84qasYwB
+ wHI2BIXBdeYZJBvayWhwVJbCgxKMb6eorDFsAPYZdQ0JUm4WOJT7qYbWVjA8VQ45Hf
+ mG/6rGm9RDCfTAdEUDmnoNzC2ByOnQ+Q4HxsDNHoSwIni2BvZ1O7RaaoqDYXDKBc+T
+ n18Jw8ojBd0y8XlC4mmXtP4RkaAsbMamUPraRxzHU4i/2KzMALodLaI7rgAWiatdsq
+ upK8uoGwOKghsDmA2lwgRxOwk7NTSSUNHO44yyyqNPSd3HLkr6EnG4cVaqZyvaHvPg
+ ph6sjRbdNWZZwpXuWSuQXZ3JSRUTKBeHfVhROuzi0+8JxCgfRBNSbN6qRmj11bL08E
+ b4U2UnXs8O0yFqNixTWLF7qA=
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=QMQumWUS
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH v2 1/2] e1000e: let the sleep codes
- run every time
+ header.from=ycharbi.fr
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (4096-bit key,
+ unprotected) header.d=ycharbi.fr header.i=@ycharbi.fr header.a=rsa-sha256
+ header.s=mail header.b=uWfK6I7h
+Subject: Re: [Intel-wired-lan] Non-functional ixgbe driver between Intel
+ X553 chipset and Cisco switch via kernel >=6.1 under Debian
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -233,60 +97,561 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "Ruinskiy, Dima" <dima.ruinskiy@intel.com>, anthony.l.nguyen@intel.com,
- netdev@vger.kernel.org, rickywu0421@gmail.com, linux-kernel@vger.kernel.org,
- edumazet@google.com, intel-wired-lan@lists.osuosl.org, "Lifshits,
- Vitaly" <vitaly.lifshits@intel.com>, kuba@kernel.org, pabeni@redhat.com,
- davem@davemloft.net
+Cc: intel-wired-lan@lists.osuosl.org, kernel.org-fo5k2w@ycharbi.fr,
+ anthony.l.nguyen@intel.com, netdev@vger.kernel.org
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 03/05/2024 13:18, Ricky Wu wrote:
-> Originally, the sleep codes being moved forward only
-> ran if we met some conditions (e.g. BMSR_LSTATUS bit
-> not set in phy_status). Moving these sleep codes forward
-> makes the usec_interval take effect every time.
-> 
-> Signed-off-by: Ricky Wu <en-wei.wu@canonical.com>
-> ---
-> 
-> In v2:
-> * Split the sleep codes into this patch
-> 
->   drivers/net/ethernet/intel/e1000e/phy.c | 9 +++++----
->   1 file changed, 5 insertions(+), 4 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/intel/e1000e/phy.c b/drivers/net/ethernet/intel/e1000e/phy.c
-> index 93544f1cc2a5..4a58d56679c9 100644
-> --- a/drivers/net/ethernet/intel/e1000e/phy.c
-> +++ b/drivers/net/ethernet/intel/e1000e/phy.c
-> @@ -1777,6 +1777,11 @@ s32 e1000e_phy_has_link_generic(struct e1000_hw *hw, u32 iterations,
->   
->   	*success = false;
->   	for (i = 0; i < iterations; i++) {
-> +		if (usec_interval >= 1000)
-> +			msleep(usec_interval / 1000);
-> +		else
-> +			udelay(usec_interval);
-> +
+Hi,
 
-I do not understand this approach. Why wait before first 
-reading/accessing the PHY IEEE register?
+ > I haven't touched the ixgbe driver and hardware in many years, but I'll
+try to see what I can do to help.
 
-For further discussion, I would like to introduce Dima Ruinskiy (architect)
+Thank you very much for your reply. I'll answer you point by point.
+I upgraded the Qoton to Debian 13 (testing) with kernel 6.6.15 (amd64) 
+to be even more up to date.
+A quick test with Fedora 40 shows the same problem.
 
->   		/* Some PHYs require the MII_BMSR register to be read
->   		 * twice due to the link bit being sticky.  No harm doing
->   		 * it across the board.
-> @@ -1799,10 +1804,6 @@ s32 e1000e_phy_has_link_generic(struct e1000_hw *hw, u32 iterations,
->   			*success = true;
->   			break;
->   		}
-> -		if (usec_interval >= 1000)
-> -			msleep(usec_interval / 1000);
-> -		else
-> -			udelay(usec_interval);
->   	}
->   
->   	return ret_val;
+
+ > So everything works when connected back to back with the Connectx-3. Ok.
+
+Yes, exactly. Everything works as expected with the Connectx-3.
+
+
+ > To confirm, you use the same cable in both cases?
+
+Yes, the same cable. I tested two different models:
+- 1 Cisco SFP-H10GB-CU1M (1 mètre)
+- 1 Cisco SFP-H10GB-CU3M (3 mètres)
+
+I'm only using the SFP-H10GB-CU3M for the rest for convenience.
+
+
+ > But on the switch, the link is reported up until we bring the interface
+ > up in ixgbe, and then link drops and stays down indefinitely?
+
+After initial start-up of the Qotom :
+# Port 10Gbe LEDs are green (please note that the MAC address OID - 
+20:7c:14 - is registered to Qotom, not Intel).
+ip link show dev eno1
+7: eno1: <BROADCAST,MULTICAST> mtu 1500 qdisc noop state DOWN mode 
+DEFAULT group default qlen 1000
+     link/ether 20:7c:14:xx:xx:xx brd ff:ff:ff:ff:ff:ff
+     altname enp11s0f0
+
+# Cisco (Green LEDs - port mounted)
+show running-config | section interface TenGigabitEthernet1/0/1
+interface TenGigabitEthernet1/0/1
+  no cdp enable
+
+show interface status | include Te1/0/1
+Te1/0/1   --- Vers Qotom --- connected    trunk        full    10G 
+SFP-10GBase-CX1
+
+show ip interface brief | include Te1/0/1 | Status
+Interface              IP-Address      OK? Method Status                
+Protocol
+Te1/0/1                unassigned      YES unset up                    up
+
+The Cisco and Qotom ports are lit and flashing as if they were 
+exchanging ARP or STP traffic. A mirror port on the Cisco's 10Gbe 
+interface, however, shows no frame exchange. I connected a PC to port 
+g1/0/13 with Wireshark for this test.
+
+monitor session 1 source interface t1/0/1 both
+monitor session 1 destination interface g1/0/13
+
+Port switch-on test :
+# Starting up the Qotom 10Gbe network interface
+ip link set eno1 up
+[ 1770.476075] pps pps5: new PPS source ptp5
+[ 1770.480784] ixgbe 0000:0b:00.0: registered PHC device on eno1
+[ 1770.575496] ixgbe 0000:0b:00.0 eno1: detected SFP+: 3
+
+# The ports on both devices switch off immediately.
+# There's no going back:
+ip link set eno1 down
+[ 1831.329797] ixgbe 0000:0b:00.0: removed PHC on eno1
+
+# The ports are always off on both sides even when unloading the ixgbe 
+core module and plugging/unplugging the Cisco SFP-H10GB-CU3M :
+rmmod ixgbe
+[ 1872.503663] ixgbe 0000:0d:00.1: complete
+[ 1872.547628] ixgbe 0000:0d:00.0: complete
+[ 1872.591645] ixgbe 0000:0b:00.1: complete
+[ 1872.631725] ixgbe 0000:0b:00.0: complete
+
+A reboot is the only way to restore this port switch-on state.
+On startup, the Cisco switch displays the following logs (the date is 
+not configured):
+Sep 30 14:33:00: %LINK-3-UPDOWN: Interface TenGigabitEthernet1/0/1, 
+changed state to up
+Sep 30 14:33:01: %LINEPROTO-5-UPDOWN: Line protocol on Interface 
+TenGigabitEthernet1/0/1, changed state to up
+
+
+ > But if you use the out-of-tree ixgbe driver everything works. Hmm.
+
+Yes, that's exactly it. The driver on the Intel site works perfectly.
+
+ > I tried checking the out-of-tree versions to see if there were any
+ > obvious fixes. I didn't find anything. The code between the in-kernel
+ > and out-of-tree is so different that it is hard to track down. At first
+ > I wondered if this might be a regression due to recent changes to
+ > support new hardware, but it appears that v6.1 is from before a lot of
+ > that work went in.
+
+If it helps, vesalius' post of December 3, 2023 on one of the links in 
+my original post 
+(https://forum.proxmox.com/threads/intel-x553-sfp-ixgbe-no-go-on-pve8.135129/post-612291) 
+reports that the following commit has been suspected as the culprit: 
+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/commit/?h=v6.1.63&id=565736048bd5f9888990569993c6b6bfdf6dcb6d
+
+I quote the end of his message:
+"An amazon employee states reverting this commit and recompiling the 
+kernel allows their similar network hardware to use the current in-tree 
+6.1 ixgbe driver. Otherwise as stated in the VyOS forum thread linked 
+above compiling the linux kernel with the out-of-tree intel ixgbe driver 
+5.19.6 works too."
+
+
+ > 1. The kernel message logs from when you bring up the interface. You can
+get this from dmesg or journalctl -k if you have systemd.
+
+The kernel returns only the following three lines after a "ip link set 
+eno1 up" :
+mai 04 12:01:21 servyo kernel: pps pps5: new PPS source ptp5
+mai 04 12:01:21 servyo kernel: ixgbe 0000:0b:00.0: registered PHC device 
+on eno1
+mai 04 12:01:21 servyo kernel: ixgbe 0000:0b:00.0 eno1: detected SFP+: 3
+
+ > 2. "ethtool eno1" after you bring the interface up to see what it
+reports about link
+
+ethtool eno1
+Settings for eno1:
+     Supported ports: [ FIBRE ]
+     Supported link modes:   10000baseT/Full
+     Supported pause frame use: Symmetric
+     Supports auto-negotiation: No
+     Supported FEC modes: Not reported
+     Advertised link modes:  10000baseT/Full
+     Advertised pause frame use: Symmetric
+     Advertised auto-negotiation: No
+     Advertised FEC modes: Not reported
+     Speed: Unknown!
+     Duplex: Unknown! (255)
+     Auto-negotiation: off
+     Port: Direct Attach Copper
+     PHYAD: 0
+     Transceiver: internal
+     Supports Wake-on: d
+     Wake-on: d
+         Current message level: 0x00000007 (7)
+                                drv probe link
+     Link detected: no
+
+
+ > 3. "ethtool -S eno1" to see if any other stats are reported that might
+help us isolate whats going on.
+
+ethtool -S eno1
+NIC statistics:
+      rx_packets: 0
+      tx_packets: 0
+      rx_bytes: 0
+      tx_bytes: 0
+      rx_pkts_nic: 0
+      tx_pkts_nic: 0
+      rx_bytes_nic: 0
+      tx_bytes_nic: 0
+      lsc_int: 1
+      tx_busy: 0
+      non_eop_descs: 0
+      rx_errors: 0
+      tx_errors: 0
+      rx_dropped: 0
+      tx_dropped: 0
+      multicast: 0
+      broadcast: 0
+      rx_no_buffer_count: 0
+      collisions: 0
+      rx_over_errors: 0
+      rx_crc_errors: 0
+      rx_frame_errors: 0
+      hw_rsc_aggregated: 0
+      hw_rsc_flushed: 0
+      fdir_match: 0
+      fdir_miss: 0
+      fdir_overflow: 0
+      rx_fifo_errors: 0
+      rx_missed_errors: 0
+      tx_aborted_errors: 0
+      tx_carrier_errors: 0
+      tx_fifo_errors: 0
+      tx_heartbeat_errors: 0
+      tx_timeout_count: 0
+      tx_restart_queue: 0
+      rx_length_errors: 0
+      rx_long_length_errors: 0
+      rx_short_length_errors: 0
+      tx_flow_control_xon: 0
+      rx_flow_control_xon: 0
+      tx_flow_control_xoff: 0
+      rx_flow_control_xoff: 0
+      rx_csum_offload_errors: 0
+      alloc_rx_page: 4088
+      alloc_rx_page_failed: 0
+      alloc_rx_buff_failed: 0
+      rx_no_dma_resources: 0
+      os2bmc_rx_by_bmc: 0
+      os2bmc_tx_by_bmc: 0
+      os2bmc_tx_by_host: 0
+      os2bmc_rx_by_host: 0
+      tx_hwtstamp_timeouts: 0
+      tx_hwtstamp_skipped: 0
+      rx_hwtstamp_cleared: 0
+      tx_ipsec: 0
+      rx_ipsec: 0
+      fcoe_bad_fccrc: 0
+      rx_fcoe_dropped: 0
+      rx_fcoe_packets: 0
+      rx_fcoe_dwords: 0
+      fcoe_noddp: 0
+      fcoe_noddp_ext_buff: 0
+      tx_fcoe_packets: 0
+      tx_fcoe_dwords: 0
+      tx_queue_0_packets: 0
+      tx_queue_0_bytes: 0
+      tx_queue_1_packets: 0
+      tx_queue_1_bytes: 0
+      tx_queue_2_packets: 0
+      tx_queue_2_bytes: 0
+      tx_queue_3_packets: 0
+      tx_queue_3_bytes: 0
+      tx_queue_4_packets: 0
+      tx_queue_4_bytes: 0
+      tx_queue_5_packets: 0
+      tx_queue_5_bytes: 0
+      tx_queue_6_packets: 0
+      tx_queue_6_bytes: 0
+      tx_queue_7_packets: 0
+      tx_queue_7_bytes: 0
+      tx_queue_8_packets: 0
+      tx_queue_8_bytes: 0
+      tx_queue_9_packets: 0
+      tx_queue_9_bytes: 0
+      tx_queue_10_packets: 0
+      tx_queue_10_bytes: 0
+      tx_queue_11_packets: 0
+      tx_queue_11_bytes: 0
+      tx_queue_12_packets: 0
+      tx_queue_12_bytes: 0
+      tx_queue_13_packets: 0
+      tx_queue_13_bytes: 0
+      tx_queue_14_packets: 0
+      tx_queue_14_bytes: 0
+      tx_queue_15_packets: 0
+      tx_queue_15_bytes: 0
+      tx_queue_16_packets: 0
+      tx_queue_16_bytes: 0
+      tx_queue_17_packets: 0
+      tx_queue_17_bytes: 0
+      tx_queue_18_packets: 0
+      tx_queue_18_bytes: 0
+      tx_queue_19_packets: 0
+      tx_queue_19_bytes: 0
+      tx_queue_20_packets: 0
+      tx_queue_20_bytes: 0
+      tx_queue_21_packets: 0
+      tx_queue_21_bytes: 0
+      tx_queue_22_packets: 0
+      tx_queue_22_bytes: 0
+      tx_queue_23_packets: 0
+      tx_queue_23_bytes: 0
+      tx_queue_24_packets: 0
+      tx_queue_24_bytes: 0
+      tx_queue_25_packets: 0
+      tx_queue_25_bytes: 0
+      tx_queue_26_packets: 0
+      tx_queue_26_bytes: 0
+      tx_queue_27_packets: 0
+      tx_queue_27_bytes: 0
+      tx_queue_28_packets: 0
+      tx_queue_28_bytes: 0
+      tx_queue_29_packets: 0
+      tx_queue_29_bytes: 0
+      tx_queue_30_packets: 0
+      tx_queue_30_bytes: 0
+      tx_queue_31_packets: 0
+      tx_queue_31_bytes: 0
+      tx_queue_32_packets: 0
+      tx_queue_32_bytes: 0
+      tx_queue_33_packets: 0
+      tx_queue_33_bytes: 0
+      tx_queue_34_packets: 0
+      tx_queue_34_bytes: 0
+      tx_queue_35_packets: 0
+      tx_queue_35_bytes: 0
+      tx_queue_36_packets: 0
+      tx_queue_36_bytes: 0
+      tx_queue_37_packets: 0
+      tx_queue_37_bytes: 0
+      tx_queue_38_packets: 0
+      tx_queue_38_bytes: 0
+      tx_queue_39_packets: 0
+      tx_queue_39_bytes: 0
+      tx_queue_40_packets: 0
+      tx_queue_40_bytes: 0
+      tx_queue_41_packets: 0
+      tx_queue_41_bytes: 0
+      tx_queue_42_packets: 0
+      tx_queue_42_bytes: 0
+      tx_queue_43_packets: 0
+      tx_queue_43_bytes: 0
+      tx_queue_44_packets: 0
+      tx_queue_44_bytes: 0
+      tx_queue_45_packets: 0
+      tx_queue_45_bytes: 0
+      tx_queue_46_packets: 0
+      tx_queue_46_bytes: 0
+      tx_queue_47_packets: 0
+      tx_queue_47_bytes: 0
+      tx_queue_48_packets: 0
+      tx_queue_48_bytes: 0
+      tx_queue_49_packets: 0
+      tx_queue_49_bytes: 0
+      tx_queue_50_packets: 0
+      tx_queue_50_bytes: 0
+      tx_queue_51_packets: 0
+      tx_queue_51_bytes: 0
+      tx_queue_52_packets: 0
+      tx_queue_52_bytes: 0
+      tx_queue_53_packets: 0
+      tx_queue_53_bytes: 0
+      tx_queue_54_packets: 0
+      tx_queue_54_bytes: 0
+      tx_queue_55_packets: 0
+      tx_queue_55_bytes: 0
+      tx_queue_56_packets: 0
+      tx_queue_56_bytes: 0
+      tx_queue_57_packets: 0
+      tx_queue_57_bytes: 0
+      tx_queue_58_packets: 0
+      tx_queue_58_bytes: 0
+      tx_queue_59_packets: 0
+      tx_queue_59_bytes: 0
+      tx_queue_60_packets: 0
+      tx_queue_60_bytes: 0
+      tx_queue_61_packets: 0
+      tx_queue_61_bytes: 0
+      tx_queue_62_packets: 0
+      tx_queue_62_bytes: 0
+      tx_queue_63_packets: 0
+      tx_queue_63_bytes: 0
+      rx_queue_0_packets: 0
+      rx_queue_0_bytes: 0
+      rx_queue_1_packets: 0
+      rx_queue_1_bytes: 0
+      rx_queue_2_packets: 0
+      rx_queue_2_bytes: 0
+      rx_queue_3_packets: 0
+      rx_queue_3_bytes: 0
+      rx_queue_4_packets: 0
+      rx_queue_4_bytes: 0
+      rx_queue_5_packets: 0
+      rx_queue_5_bytes: 0
+      rx_queue_6_packets: 0
+      rx_queue_6_bytes: 0
+      rx_queue_7_packets: 0
+      rx_queue_7_bytes: 0
+      rx_queue_8_packets: 0
+      rx_queue_8_bytes: 0
+      rx_queue_9_packets: 0
+      rx_queue_9_bytes: 0
+      rx_queue_10_packets: 0
+      rx_queue_10_bytes: 0
+      rx_queue_11_packets: 0
+      rx_queue_11_bytes: 0
+      rx_queue_12_packets: 0
+      rx_queue_12_bytes: 0
+      rx_queue_13_packets: 0
+      rx_queue_13_bytes: 0
+      rx_queue_14_packets: 0
+      rx_queue_14_bytes: 0
+      rx_queue_15_packets: 0
+      rx_queue_15_bytes: 0
+      rx_queue_16_packets: 0
+      rx_queue_16_bytes: 0
+      rx_queue_17_packets: 0
+      rx_queue_17_bytes: 0
+      rx_queue_18_packets: 0
+      rx_queue_18_bytes: 0
+      rx_queue_19_packets: 0
+      rx_queue_19_bytes: 0
+      rx_queue_20_packets: 0
+      rx_queue_20_bytes: 0
+      rx_queue_21_packets: 0
+      rx_queue_21_bytes: 0
+      rx_queue_22_packets: 0
+      rx_queue_22_bytes: 0
+      rx_queue_23_packets: 0
+      rx_queue_23_bytes: 0
+      rx_queue_24_packets: 0
+      rx_queue_24_bytes: 0
+      rx_queue_25_packets: 0
+      rx_queue_25_bytes: 0
+      rx_queue_26_packets: 0
+      rx_queue_26_bytes: 0
+      rx_queue_27_packets: 0
+      rx_queue_27_bytes: 0
+      rx_queue_28_packets: 0
+      rx_queue_28_bytes: 0
+      rx_queue_29_packets: 0
+      rx_queue_29_bytes: 0
+      rx_queue_30_packets: 0
+      rx_queue_30_bytes: 0
+      rx_queue_31_packets: 0
+      rx_queue_31_bytes: 0
+      rx_queue_32_packets: 0
+      rx_queue_32_bytes: 0
+      rx_queue_33_packets: 0
+      rx_queue_33_bytes: 0
+      rx_queue_34_packets: 0
+      rx_queue_34_bytes: 0
+      rx_queue_35_packets: 0
+      rx_queue_35_bytes: 0
+      rx_queue_36_packets: 0
+      rx_queue_36_bytes: 0
+      rx_queue_37_packets: 0
+      rx_queue_37_bytes: 0
+      rx_queue_38_packets: 0
+      rx_queue_38_bytes: 0
+      rx_queue_39_packets: 0
+      rx_queue_39_bytes: 0
+      rx_queue_40_packets: 0
+      rx_queue_40_bytes: 0
+      rx_queue_41_packets: 0
+      rx_queue_41_bytes: 0
+      rx_queue_42_packets: 0
+      rx_queue_42_bytes: 0
+      rx_queue_43_packets: 0
+      rx_queue_43_bytes: 0
+      rx_queue_44_packets: 0
+      rx_queue_44_bytes: 0
+      rx_queue_45_packets: 0
+      rx_queue_45_bytes: 0
+      rx_queue_46_packets: 0
+      rx_queue_46_bytes: 0
+      rx_queue_47_packets: 0
+      rx_queue_47_bytes: 0
+      rx_queue_48_packets: 0
+      rx_queue_48_bytes: 0
+      rx_queue_49_packets: 0
+      rx_queue_49_bytes: 0
+      rx_queue_50_packets: 0
+      rx_queue_50_bytes: 0
+      rx_queue_51_packets: 0
+      rx_queue_51_bytes: 0
+      rx_queue_52_packets: 0
+      rx_queue_52_bytes: 0
+      rx_queue_53_packets: 0
+      rx_queue_53_bytes: 0
+      rx_queue_54_packets: 0
+      rx_queue_54_bytes: 0
+      rx_queue_55_packets: 0
+      rx_queue_55_bytes: 0
+      rx_queue_56_packets: 0
+      rx_queue_56_bytes: 0
+      rx_queue_57_packets: 0
+      rx_queue_57_bytes: 0
+      rx_queue_58_packets: 0
+      rx_queue_58_bytes: 0
+      rx_queue_59_packets: 0
+      rx_queue_59_bytes: 0
+      rx_queue_60_packets: 0
+      rx_queue_60_bytes: 0
+      rx_queue_61_packets: 0
+      rx_queue_61_bytes: 0
+      rx_queue_62_packets: 0
+      rx_queue_62_bytes: 0
+      rx_queue_63_packets: 0
+      rx_queue_63_bytes: 0
+      tx_pb_0_pxon: 0
+      tx_pb_0_pxoff: 0
+      tx_pb_1_pxon: 0
+      tx_pb_1_pxoff: 0
+      tx_pb_2_pxon: 0
+      tx_pb_2_pxoff: 0
+      tx_pb_3_pxon: 0
+      tx_pb_3_pxoff: 0
+      tx_pb_4_pxon: 0
+      tx_pb_4_pxoff: 0
+      tx_pb_5_pxon: 0
+      tx_pb_5_pxoff: 0
+      tx_pb_6_pxon: 0
+      tx_pb_6_pxoff: 0
+      tx_pb_7_pxon: 0
+      tx_pb_7_pxoff: 0
+      rx_pb_0_pxon: 0
+      rx_pb_0_pxoff: 0
+      rx_pb_1_pxon: 0
+      rx_pb_1_pxoff: 0
+      rx_pb_2_pxon: 0
+      rx_pb_2_pxoff: 0
+      rx_pb_3_pxon: 0
+      rx_pb_3_pxoff: 0
+      rx_pb_4_pxon: 0
+      rx_pb_4_pxoff: 0
+      rx_pb_5_pxon: 0
+      rx_pb_5_pxoff: 0
+      rx_pb_6_pxon: 0
+      rx_pb_6_pxoff: 0
+      rx_pb_7_pxon: 0
+      rx_pb_7_pxoff: 0
+
+
+ > Do you happen to know if any particular in-kernel driver version worked?
+ > It would help limit the search for regressing commits.
+
+I can't retrieve the driver version itself via a “modinfo ixgbe” (no 
+field mentions it) but the driver built into Debian 11 kernel 
+5.10.0-10-amd64 works perfectly. Debian 12's 6.1.76-amd64 and Debian 
+13's 6.6.15-amd64 are problematic. If you have a method of retrieving 
+more precise information, I'd be delighted to provide it.
+The problem therefore “spread” between the release of Linux >5.10 and >=6.1.
+
+On Linux 5.10.0-10, an ethtool returns this (the port works):
+ethtool eno1
+Settings for eno1:
+     Supported ports: [ FIBRE ]
+     Supported link modes:   10000baseT/Full
+     Supported pause frame use: Symmetric
+     Supports auto-negotiation: No
+     Supported FEC modes: Not reported
+     Advertised link modes:  10000baseT/Full
+     Advertised pause frame use: Symmetric
+     Advertised auto-negotiation: No
+     Advertised FEC modes: Not reported
+     Speed: 10000Mb/s
+     Duplex: Full
+     Auto-negotiation: off
+     Port: Direct Attach Copper
+     PHYAD: 0
+     Transceiver: internal
+     Supports Wake-on: d
+     Wake-on: d
+         Current message level: 0x00000007 (7)
+                                drv probe link
+     Link detected: yes
+
+
+ > Ideally, if you could use git bisect on the setup that could
+ > efficiently locate what regressed the behavior.
+
+I really want to, but I have no idea how to go about it. Can you write 
+me the command lines to satisfy your request?
+
+
+Best regards.
 
