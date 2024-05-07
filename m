@@ -2,93 +2,95 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 054F58BE0B7
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  7 May 2024 13:10:41 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0DB7E8BE11D
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  7 May 2024 13:40:19 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 539FD40177;
-	Tue,  7 May 2024 11:10:39 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 94DE540675;
+	Tue,  7 May 2024 11:40:17 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id SuRNCuuKnNte; Tue,  7 May 2024 11:10:38 +0000 (UTC)
+ id tkqoBsgEyb2u; Tue,  7 May 2024 11:40:16 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org BD6ED4018F
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D457D40210
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1715080237;
-	bh=4tMce6S3cNJySDVsretEgSMfQ07Q5G2cKS017kqgSrQ=;
-	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=Z8ET3OJYI7WRLUxR0RwSrtGRtzcuXxABsRPR68X6cOLv7fPQZtCDfpy4Bv4fTSu5X
-	 qjsAxQDJES2zFZh9qoSZZfTGbwZEAn/AgYHyEAh8oHbeZq4cmM9TBeQ5v1ywEQsUgs
-	 nI1uDFGyux63N0uP1t436ghJHwjal4txfg+mnSXUcznuQ2Q1dOIhQU4F3hRNYEFJ0h
-	 E2qobNg+5MgmvkBS1vtjHqbx0vXNG4hsgx8qkomMuun28DCEnInLNstlV5J6INQ62P
-	 up8IKywGqCCO9AWpXKSxms0Aj8Gr9pNfMXlTJHrF7gw4lXzUK1xhfWTQ9dz04spL1T
-	 93yvAjb4YLvUQ==
+	s=default; t=1715082016;
+	bh=SMxC5Z2ccyZq0Q5DFC7PCZj2HxIuDtp8MboIf8aNtng=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=jGrjcfwMJStWcNn4dXlsm7V//WyUSOFJX7Mc514PJ04ecJdspWfdG7IyIVxVHEYDo
+	 WPaUs70dpeTBjbw0ySNJWPUU+jmnvgFZ7KxVtkloDqT1vFLY0NPYo8ySF8jT8U6FDL
+	 P8c2MLdkVThH3kwnSUH4Vj2VIxbwCnS4cpWxgPOTMAw3/Krl7X41qxrMfAoj2q5W8H
+	 stlfdIsv5b0crSC76dECnaDjq/IoRaKm3JrBcEyXjtBUYHZEuUy+DtpW+0qWnm5v2A
+	 7r9k3Tt53fJKBD3uLXJolMgxTSvfwfQE3feONUWyBc9hxIXXXAR8AQKAODRZ3/czgC
+	 llzohz6EnN53Q==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id BD6ED4018F;
-	Tue,  7 May 2024 11:10:37 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id D457D40210;
+	Tue,  7 May 2024 11:40:15 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 615121BF5A0
- for <intel-wired-lan@lists.osuosl.org>; Tue,  7 May 2024 11:10:35 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 0249C1BF5A0
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  7 May 2024 11:40:14 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 48BF640130
- for <intel-wired-lan@lists.osuosl.org>; Tue,  7 May 2024 11:10:35 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id EF70340223
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  7 May 2024 11:40:13 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 9Pf77uwvGt1T for <intel-wired-lan@lists.osuosl.org>;
- Tue,  7 May 2024 11:10:34 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.10;
- helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org C410B400E6
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C410B400E6
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.10])
- by smtp4.osuosl.org (Postfix) with ESMTPS id C410B400E6
- for <intel-wired-lan@lists.osuosl.org>; Tue,  7 May 2024 11:10:32 +0000 (UTC)
-X-CSE-ConnectionGUID: TLeNFKZ0R/eyQ4X/vgZJDw==
-X-CSE-MsgGUID: URta7WPpSk6riSE9YSFNUA==
-X-IronPort-AV: E=McAfee;i="6600,9927,11065"; a="28343921"
-X-IronPort-AV: E=Sophos;i="6.07,261,1708416000"; d="scan'208";a="28343921"
-Received: from orviesa008.jf.intel.com ([10.64.159.148])
- by orvoesa102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 07 May 2024 04:10:31 -0700
-X-CSE-ConnectionGUID: siIjnRZ5QgekHR5/jq10GA==
-X-CSE-MsgGUID: rdpSqC5XQdGpWyzvRzWSWg==
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 8jjprK9Auana for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  7 May 2024 11:40:13 +0000 (UTC)
+Received-SPF: None (mailfrom) identity=mailfrom; client-ip=198.175.65.13;
+ helo=mgamail.intel.com; envelope-from=michal.swiatkowski@linux.intel.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org B8F2740154
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B8F2740154
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.13])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id B8F2740154
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  7 May 2024 11:40:12 +0000 (UTC)
+X-CSE-ConnectionGUID: puDvH0r9S2Oov4gK95UosA==
+X-CSE-MsgGUID: Ool/R6YPTmOMIWpGn5aipQ==
+X-IronPort-AV: E=McAfee;i="6600,9927,11065"; a="22029086"
+X-IronPort-AV: E=Sophos;i="6.08,261,1712646000"; d="scan'208";a="22029086"
+Received: from orviesa009.jf.intel.com ([10.64.159.149])
+ by orvoesa105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 07 May 2024 04:40:12 -0700
+X-CSE-ConnectionGUID: cuGvTFjPS+mLeO8irPYZ4Q==
+X-CSE-MsgGUID: jKilp82mRuCkzcoNKI2IWQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.07,261,1708416000"; d="scan'208";a="29079920"
-Received: from lkp-server01.sh.intel.com (HELO f8b243fe6e68) ([10.239.97.150])
- by orviesa008.jf.intel.com with ESMTP; 07 May 2024 04:10:30 -0700
-Received: from kbuild by f8b243fe6e68 with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1s4IiI-0001qY-0Q
- for intel-wired-lan@lists.osuosl.org; Tue, 07 May 2024 11:10:26 +0000
-Date: Tue, 07 May 2024 19:09:56 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <202405071955.1LMCxJmj-lkp@intel.com>
-User-Agent: s-nail v14.9.24
+X-IronPort-AV: E=Sophos;i="6.08,261,1712646000"; d="scan'208";a="28576663"
+Received: from wasp.igk.intel.com (HELO GK3153-DR2-R750-36946.localdomain.com)
+ ([10.102.20.192])
+ by orviesa009.jf.intel.com with ESMTP; 07 May 2024 04:40:09 -0700
+From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Tue,  7 May 2024 13:45:01 +0200
+Message-ID: <20240507114516.9765-1-michal.swiatkowski@linux.intel.com>
+X-Mailer: git-send-email 2.42.0
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1715080234; x=1746616234;
- h=date:from:to:subject:message-id;
- bh=q1mO0QfU/XyPvLwgjnHZED3Z2009rhT2k8ZXUCMA5t4=;
- b=SxbN+/ktJ+ELcQxiM+ZtcU9oiEqghyBm8wgFmPIV/JnkUloDwGZGUq8G
- 9hm64JEddvg7URG3wU9/eN75bMLBBDXAko1jFflAwAcO4S1pm9KE3hUOx
- EsQnZuCR2ZfqPURnLL6M5bU7G3zUgufSgsEUu9lBFfyNgf+YUswMv5C4N
- A6y2sNzjB/ZOgAdGt4JuvNFcnWmk1GM+2R8PRhTIwED/UlTcRPr1fYZKX
- mBIfBo/5KB2t7Sr8ZLdZxFdZ3XcJU0PZKtGSoOf1Qn4naJS/7XbObDBku
- gzTHfOyl65BKXsSiDHrEHyyD0AOV8iSenH/Q2BcSVkRAV0+G4lm/1AOD4
+ t=1715082013; x=1746618013;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=dadqmm5nJ6qRblS2ceDFRB5Fc7tJ5Y397ZiFyduG+gI=;
+ b=oHs3+CaO3pCBttdurCMbkQbtaV5DQ1MIBdChGjWawDEn1Vrp3v2Dygjc
+ F+nYjqByHrgeHQEvOGkxGGoPjvFA5G6quwsrkosnB08UFrQM57cCqgaS9
+ G9t4WM4DwNMFQEBDx3SI12e650PdP3Bpwi1PtlFTryvipMv1M4yYQcagD
+ OgTYDJ+UCNyEq1n4o1ypUePQ3FmuBJsu9DxiYYZapuo4x6zTM9uJG/QUO
+ 1cmxit8n37xFINws6JxjFj5MzPqbxiUAuWzrOmhVFEVr2vepjPw5lI13n
+ 8NThBxl+sGsrYxzgfD2ixtigUaT2Fk8/rxpurcXRe6KgYHRHFFmFEXTiD
  g==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dmarc=none (p=none dis=none)
+ header.from=linux.intel.com
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=SxbN+/kt
-Subject: [Intel-wired-lan] [tnguy-next-queue:100GbE] BUILD SUCCESS
- deea427ffc0b3937c7d0bbca7f7c71711a5651d1
+ header.s=Intel header.b=oHs3+CaO
+Subject: [Intel-wired-lan] [iwl-next v1 00/14] ice: support devlink
+ subfunction
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -101,150 +103,93 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: shayd@nvidia.com, maciej.fijalkowski@intel.com, sridhar.samudrala@intel.com,
+ mateusz.polchlopek@intel.com, netdev@vger.kernel.org, jiri@nvidia.com,
+ michal.kubiak@intel.com, pio.raczynski@gmail.com, przemyslaw.kitszel@intel.com,
+ jacob.e.keller@intel.com, wojciech.drewek@intel.com
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git 100GbE
-branch HEAD: deea427ffc0b3937c7d0bbca7f7c71711a5651d1  ice: refactor struct ice_vsi_cfg_params to be inside of struct ice_vsi
+Hi,
 
-elapsed time: 1044m
+Currently ice driver does not allow creating more than one networking
+device per physical function. The only way to have more hardware backed
+netdev is to use SR-IOV.
 
-configs tested: 128
-configs skipped: 3
+Following patchset adds support for devlink port API. For each new
+pcisf type port, driver allocates new VSI, configures all resources
+needed, including dynamically MSIX vectors, program rules and registers
+new netdev.
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+This series supports only one Tx/Rx queue pair per subfunction.
 
-tested configs:
-alpha                             allnoconfig   gcc  
-alpha                            allyesconfig   gcc  
-alpha                               defconfig   gcc  
-arc                              allmodconfig   gcc  
-arc                               allnoconfig   gcc  
-arc                              allyesconfig   gcc  
-arc                                 defconfig   gcc  
-arc                        vdk_hs38_defconfig   gcc  
-arm                              allmodconfig   gcc  
-arm                               allnoconfig   clang
-arm                              allyesconfig   gcc  
-arm                                 defconfig   clang
-arm                          moxart_defconfig   gcc  
-arm                        neponset_defconfig   gcc  
-arm64                            allmodconfig   clang
-arm64                             allnoconfig   gcc  
-arm64                               defconfig   gcc  
-csky                             allmodconfig   gcc  
-csky                              allnoconfig   gcc  
-csky                             allyesconfig   gcc  
-csky                                defconfig   gcc  
-hexagon                          allmodconfig   clang
-hexagon                           allnoconfig   clang
-hexagon                          allyesconfig   clang
-hexagon                             defconfig   clang
-i386                             allmodconfig   gcc  
-i386                              allnoconfig   gcc  
-i386                             allyesconfig   gcc  
-i386         buildonly-randconfig-001-20240507   clang
-i386         buildonly-randconfig-002-20240507   clang
-i386         buildonly-randconfig-003-20240507   clang
-i386         buildonly-randconfig-006-20240507   clang
-i386                                defconfig   clang
-i386                  randconfig-001-20240507   clang
-i386                  randconfig-003-20240507   clang
-i386                  randconfig-004-20240507   clang
-i386                  randconfig-005-20240507   clang
-i386                  randconfig-006-20240507   clang
-i386                  randconfig-012-20240507   clang
-i386                  randconfig-013-20240507   clang
-i386                  randconfig-016-20240507   clang
-loongarch                        allmodconfig   gcc  
-loongarch                         allnoconfig   gcc  
-loongarch                        allyesconfig   gcc  
-loongarch                           defconfig   gcc  
-m68k                             allmodconfig   gcc  
-m68k                              allnoconfig   gcc  
-m68k                             allyesconfig   gcc  
-m68k                                defconfig   gcc  
-m68k                        mvme147_defconfig   gcc  
-m68k                           sun3_defconfig   gcc  
-microblaze                       allmodconfig   gcc  
-microblaze                        allnoconfig   gcc  
-microblaze                       allyesconfig   gcc  
-microblaze                          defconfig   gcc  
-mips                             allmodconfig   gcc  
-mips                              allnoconfig   gcc  
-mips                             allyesconfig   gcc  
-nios2                            alldefconfig   gcc  
-nios2                            allmodconfig   gcc  
-nios2                             allnoconfig   gcc  
-nios2                            allyesconfig   gcc  
-nios2                               defconfig   gcc  
-openrisc                         allmodconfig   gcc  
-openrisc                          allnoconfig   gcc  
-openrisc                         allyesconfig   gcc  
-openrisc                            defconfig   gcc  
-openrisc                 simple_smp_defconfig   gcc  
-parisc                           allmodconfig   gcc  
-parisc                            allnoconfig   gcc  
-parisc                           allyesconfig   gcc  
-parisc                              defconfig   gcc  
-parisc64                            defconfig   gcc  
-powerpc                          allmodconfig   gcc  
-powerpc                           allnoconfig   gcc  
-powerpc                          allyesconfig   clang
-riscv                            allmodconfig   clang
-riscv                             allnoconfig   gcc  
-riscv                            allyesconfig   clang
-riscv                               defconfig   clang
-s390                             allmodconfig   clang
-s390                              allnoconfig   clang
-s390                             allyesconfig   gcc  
-s390                                defconfig   clang
-sh                               allmodconfig   gcc  
-sh                                allnoconfig   gcc  
-sh                               allyesconfig   gcc  
-sh                                  defconfig   gcc  
-sh                        edosk7705_defconfig   gcc  
-sh                      rts7751r2d1_defconfig   gcc  
-sh                        sh7763rdp_defconfig   gcc  
-sh                   sh7770_generic_defconfig   gcc  
-sparc                            allmodconfig   gcc  
-sparc                             allnoconfig   gcc  
-sparc                            allyesconfig   gcc  
-sparc                               defconfig   gcc  
-sparc64                          allmodconfig   gcc  
-sparc64                          allyesconfig   gcc  
-sparc64                             defconfig   gcc  
-um                               allmodconfig   clang
-um                                allnoconfig   clang
-um                               allyesconfig   gcc  
-um                                  defconfig   clang
-um                             i386_defconfig   gcc  
-um                           x86_64_defconfig   clang
-x86_64                            allnoconfig   clang
-x86_64                           allyesconfig   clang
-x86_64       buildonly-randconfig-001-20240507   clang
-x86_64       buildonly-randconfig-002-20240507   clang
-x86_64       buildonly-randconfig-003-20240507   clang
-x86_64       buildonly-randconfig-004-20240507   clang
-x86_64       buildonly-randconfig-005-20240507   clang
-x86_64                              defconfig   gcc  
-x86_64                randconfig-002-20240507   clang
-x86_64                randconfig-003-20240507   clang
-x86_64                randconfig-012-20240507   clang
-x86_64                randconfig-013-20240507   clang
-x86_64                randconfig-014-20240507   clang
-x86_64                randconfig-015-20240507   clang
-x86_64                randconfig-016-20240507   clang
-x86_64                randconfig-073-20240507   clang
-x86_64                randconfig-074-20240507   clang
-x86_64                randconfig-075-20240507   clang
-x86_64                randconfig-076-20240507   clang
-x86_64                          rhel-8.3-rust   clang
-x86_64                               rhel-8.3   gcc  
-xtensa                            allnoconfig   gcc  
-xtensa                           allyesconfig   gcc  
+Example commands:
+devlink port add pci/0000:31:00.1 flavour pcisf pfnum 1 sfnum 1000
+devlink port function set pci/0000:31:00.1/1 hw_addr 00:00:00:00:03:14
+devlink port function set pci/0000:31:00.1/1 state active
+devlink port function del pci/0000:31:00.1/1
+
+Make the port representor and eswitch code generic to support
+subfunction representor type.
+
+VSI configuration is slightly different between VF and SF. It needs to
+be reflected in the code.
+
+Most recent previous patchset (not containing port representor for SF
+support). [1]
+
+[1] https://lore.kernel.org/netdev/20240417142028.2171-1-michal.swiatkowski@linux.intel.com/
+
+Michal Swiatkowski (7):
+  ice: treat subfunction VSI the same as PF VSI
+  ice: create port representor for SF
+  ice: don't set target VSI for subfunction
+  ice: check if SF is ready in ethtool ops
+  ice: netdevice ops for SF representor
+  ice: support subfunction devlink Tx topology
+  ice: basic support for VLAN in subfunctions
+
+Piotr Raczynski (7):
+  ice: add new VSI type for subfunctions
+  ice: export ice ndo_ops functions
+  ice: add basic devlink subfunctions support
+  ice: allocate devlink for subfunction
+  ice: base subfunction aux driver
+  ice: implement netdev for subfunction
+  ice: allow to activate and deactivate subfunction
+
+ drivers/net/ethernet/intel/ice/Makefile       |   2 +
+ .../net/ethernet/intel/ice/devlink/devlink.c  |  48 ++
+ .../net/ethernet/intel/ice/devlink/devlink.h  |   1 +
+ .../ethernet/intel/ice/devlink/devlink_port.c | 516 ++++++++++++++++++
+ .../ethernet/intel/ice/devlink/devlink_port.h |  43 ++
+ drivers/net/ethernet/intel/ice/ice.h          |  19 +-
+ drivers/net/ethernet/intel/ice/ice_base.c     |   5 +-
+ drivers/net/ethernet/intel/ice/ice_dcb_lib.c  |   1 +
+ drivers/net/ethernet/intel/ice/ice_eswitch.c  |  85 ++-
+ drivers/net/ethernet/intel/ice/ice_eswitch.h  |  22 +-
+ drivers/net/ethernet/intel/ice/ice_ethtool.c  |   7 +-
+ drivers/net/ethernet/intel/ice/ice_lib.c      |  52 +-
+ drivers/net/ethernet/intel/ice/ice_lib.h      |   3 +
+ drivers/net/ethernet/intel/ice/ice_main.c     |  66 ++-
+ drivers/net/ethernet/intel/ice/ice_repr.c     | 195 +++++--
+ drivers/net/ethernet/intel/ice/ice_repr.h     |  22 +-
+ drivers/net/ethernet/intel/ice/ice_sf_eth.c   | 329 +++++++++++
+ drivers/net/ethernet/intel/ice/ice_sf_eth.h   |  33 ++
+ .../ethernet/intel/ice/ice_sf_vsi_vlan_ops.c  |  21 +
+ .../ethernet/intel/ice/ice_sf_vsi_vlan_ops.h  |  13 +
+ drivers/net/ethernet/intel/ice/ice_sriov.c    |   4 +-
+ drivers/net/ethernet/intel/ice/ice_txrx.c     |   2 +-
+ drivers/net/ethernet/intel/ice/ice_type.h     |   1 +
+ drivers/net/ethernet/intel/ice/ice_vf_lib.c   |   4 +-
+ .../net/ethernet/intel/ice/ice_vsi_vlan_ops.c |   4 +
+ drivers/net/ethernet/intel/ice/ice_xsk.c      |   2 +-
+ 26 files changed, 1362 insertions(+), 138 deletions(-)
+ create mode 100644 drivers/net/ethernet/intel/ice/ice_sf_eth.c
+ create mode 100644 drivers/net/ethernet/intel/ice/ice_sf_eth.h
+ create mode 100644 drivers/net/ethernet/intel/ice/ice_sf_vsi_vlan_ops.c
+ create mode 100644 drivers/net/ethernet/intel/ice/ice_sf_vsi_vlan_ops.h
 
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+2.42.0
+
