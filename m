@@ -2,99 +2,90 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E361B8C00C8
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  8 May 2024 17:19:46 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5BBD98C00C9
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  8 May 2024 17:19:49 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 7050B41A9F;
-	Wed,  8 May 2024 15:19:45 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 10CB441AC9;
+	Wed,  8 May 2024 15:19:47 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 76Q-Kxqy5vYJ; Wed,  8 May 2024 15:19:45 +0000 (UTC)
+ id YlIFwckbwrFh; Wed,  8 May 2024 15:19:46 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org CF057400B8
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3B6B641AA8
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1715181584;
-	bh=yv3lJE2VQ0yuLGVVwgXC/vs5DLX/Pl8uMwFZpj3YohQ=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=VtbyrPNRCkApXOAAnGxkoJblT+IBE84XKDRSdXqLn0fvPZhbBZLVo5CEM1bFpq7ss
-	 1oWQq+Wd2+WUhmIDM4rXELaxX5rfnUqzvCDmlgXefLGStU+qbayL0AMMjxk0RG2Q8x
-	 0FDUnxA84lQSIEqL/sRQ9JOBpoCOFySsONDMHPrXNgtFOdKtHsHkcrJh3IfBvYyd6u
-	 orZeLTRNPqYa1lXJmD5CrNKTj24IygN/7Zv+eylX0ZcphCBAOmxusbSgVaCluO/Rul
-	 thVfcpTpACOniW2T/X0Fwxvyuzh1CK3X/+hLrc34TJCpw3dFLSOZBPCbXTwuvjs0+L
-	 x+7hsYbZY7vrQ==
+	s=default; t=1715181586;
+	bh=dK4QW0JXh/HALH9tt2xBOqDUcgd53vJGCuGFFNdKyHA=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=zTY5FuZ7jg4GciYPgbCdLHbJxfctK9z1UATzlYyKSHuAbWlHjfbz7Xm53gHjK7D1N
+	 kzYhyayYXfMcbjDNR4JS8ohFJ+TXcqWzaNi01klSP/C7UlRU8/lfZ0KJpRLLYsB+7q
+	 p7hisrRfccHc02WiFjJNndX9XQnATjlz6rtI3iKSCL29C3NWluck/a98Ly639o2cjm
+	 ySXx4xOMCShciBrIugnjlb4o+7ipUfKXUkPKa/QN+ZorNWvKUlaa0YYRPYKRgFYj9L
+	 z8G5O7AR6r0mYEQSul/fmzXTI6OEemlq2sW02EokF2W4z7b+DtE/QSXMdh4LDsP6+m
+	 vBtbeKXAmbTWw==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id CF057400B8;
-	Wed,  8 May 2024 15:19:44 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 3B6B641AA8;
+	Wed,  8 May 2024 15:19:46 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 16F331BF2C7
- for <intel-wired-lan@lists.osuosl.org>; Wed,  8 May 2024 09:23:54 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 526471BF3EE
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  8 May 2024 12:06:21 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id F32D2419B5
- for <intel-wired-lan@lists.osuosl.org>; Wed,  8 May 2024 09:23:53 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 3DB9840614
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  8 May 2024 12:06:21 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 24q2pn2jHcWY for <intel-wired-lan@lists.osuosl.org>;
- Wed,  8 May 2024 09:23:53 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.10;
- helo=mgamail.intel.com; envelope-from=sergey.temerkhanov@intel.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org ED3A741809
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org ED3A741809
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.10])
- by smtp2.osuosl.org (Postfix) with ESMTPS id ED3A741809
- for <intel-wired-lan@lists.osuosl.org>; Wed,  8 May 2024 09:23:52 +0000 (UTC)
-X-CSE-ConnectionGUID: WdeqHrH1SPGOYMJyuQhk0Q==
-X-CSE-MsgGUID: MeAvXR0CR4myDXnjun5Qcw==
-X-IronPort-AV: E=McAfee;i="6600,9927,11066"; a="22400625"
-X-IronPort-AV: E=Sophos;i="6.08,144,1712646000"; d="scan'208";a="22400625"
-Received: from fmviesa005.fm.intel.com ([10.60.135.145])
- by fmvoesa104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 May 2024 02:23:52 -0700
-X-CSE-ConnectionGUID: k2+5WQNTTqSDs1ygAUpEGg==
-X-CSE-MsgGUID: XY9dplqeSBiZDn6iO/3hwg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.08,144,1712646000"; d="scan'208";a="33305403"
-Received: from unknown (HELO localhost.igk.intel.com) ([10.211.13.141])
- by fmviesa005.fm.intel.com with ESMTP; 08 May 2024 02:23:51 -0700
-From: Sergey Temerkhanov <sergey.temerkhanov@intel.com>
-To: ross.lagerwall@citrix.com
-Date: Wed,  8 May 2024 11:23:21 +0200
-Message-Id: <20240508092321.83776-1-sergey.temerkhanov@intel.com>
-X-Mailer: git-send-email 2.35.3
-In-Reply-To: <CAG7k0ErF+e2vMUYRuh2EBjWmE7iqdOMS1CQv-7r18T1mVbK1aA@mail.gmail.com>
-References: <CAG7k0ErF+e2vMUYRuh2EBjWmE7iqdOMS1CQv-7r18T1mVbK1aA@mail.gmail.com>
+ id ga7G9kodFhOG for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  8 May 2024 12:06:20 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=185.125.188.121;
+ helo=smtp-relay-canonical-1.canonical.com;
+ envelope-from=hui.wang@canonical.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org AAAC940364
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org AAAC940364
+Received: from smtp-relay-canonical-1.canonical.com
+ (smtp-relay-canonical-1.canonical.com [185.125.188.121])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id AAAC940364
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  8 May 2024 12:06:19 +0000 (UTC)
+Received: from hwang4-ThinkPad-T14s-Gen-2a.conference (unknown
+ [114.249.184.67])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by smtp-relay-canonical-1.canonical.com (Postfix) with ESMTPSA id 788F93F6CC; 
+ Wed,  8 May 2024 12:06:10 +0000 (UTC)
+From: Hui Wang <hui.wang@canonical.com>
+To: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org, kuba@kernel.org,
+ anthony.l.nguyen@intel.com, vitaly.lifshits@intel.com,
+ dima.ruinskiy@intel.com, davem@davemloft.net, pabeni@redhat.com,
+ edumazet@google.com, sasha.neftin@intel.com, naamax.meir@linux.intel.com
+Date: Wed,  8 May 2024 20:06:04 +0800
+Message-Id: <20240508120604.233166-1-hui.wang@canonical.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Organization: Intel Technology Poland sp. z o.o. - ul. Slowackiego 173,
- 80-298 Gdansk - KRS 101882 - NIP 957-07-52-316
 Content-Transfer-Encoding: 8bit
 X-Mailman-Approved-At: Wed, 08 May 2024 15:19:42 +0000
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1715160233; x=1746696233;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=yv3lJE2VQ0yuLGVVwgXC/vs5DLX/Pl8uMwFZpj3YohQ=;
- b=JLoxZ8fhJgF/9283w/Is3x5TJWcG50ZSz4Ktx1z6omzFJFtlkr/Ft3hs
- 7t6vuWCJYg9cDrHN0v3U7+CzAGU2IffO9FObCV68Vm7vk2z9ryFikvHDB
- AFkO57qpl+WQCHhjCIAqhVYImbSEYAnPKMbj8pDTmhZWL/xsGh8yE4lHf
- jDAumOptYR2ZjTV9zKlyI9dwWg8zdXNfIyPabYi8zRAbtFpfmKgQ4U1Wo
- wdq1sbBg+gHCvJRHmwBXc4wC7Fd3BAk5I8N7VlFcS6tcm1D68dM6podzM
- nELF/IvZ/Hx+VJINmSfpL3OYREtztZBzafkWhnEi8y88/zfqnA/NUX2TO
- Q==;
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=canonical.com; s=20210705; t=1715169976;
+ bh=dK4QW0JXh/HALH9tt2xBOqDUcgd53vJGCuGFFNdKyHA=;
+ h=From:To:Cc:Subject:Date:Message-Id:MIME-Version;
+ b=U8pSDJv88W2aOh6d8eDNUVyv+fA3Ye70nfu/1RfewvGmlq6sJtvInmsVmhCuYh7Dg
+ O+0qokeJXHFqB7YDIfONIQZZg/rWM9deZpL1JNaAUaJMF8WxPLO6vLbRBV8FAi2srx
+ LO0wiOpCg9Q6aajAogpEKw5+xT5nhzYb/9rmOfL7wk4jKdqeSInEVwm5FMqIDj5L13
+ fmME4HGXE18REEBjg0VgvixlWskWhU1T/2nZPktIimHaWCAzbPPVo2d1yHnzqOPy5f
+ y8dIs9CssX503OoMlQ2vPNwoUmgzMjLf//l85TxOaEAXBtjuJHF7ucclpLWTvvheo5
+ OX8+/SASLG5uw==
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=intel.com
+ header.from=canonical.com
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=JLoxZ8fh
-Subject: Re: [Intel-wired-lan] [PATCH v2] ice: Fix enabling SR-IOV with Xen
+ unprotected) header.d=canonical.com header.i=@canonical.com
+ header.a=rsa-sha256 header.s=20210705 header.b=U8pSDJv8
+Subject: [Intel-wired-lan] [PATCH v2] e1000e: move force SMBUS near the end
+ of enable_ulp function
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -107,14 +98,111 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: intel-wired-lan@lists.osuosl.org, pmenzel@molgen.mpg.de,
- javi.merino@kernel.org, anthony.l.nguyen@intel.com, netdev@vger.kernel.org
+Cc: hui.wang@canonical.com
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-This patch makes sense since VFs need to be assigned resources (especially MSI-X interrupt count)
-before making these VFs visible, so that the kernel PCI enumeration code reads correct MSI-X
-interrupt count for the VFs.
+The commit 861e8086029e ("e1000e: move force SMBUS from enable ulp
+function to avoid PHY loss issue") introduces a regression on
+CH_MTP_I219_LM18 (PCIID: 0x8086550A). Without the referred commit, the
+ethernet works well after suspend and resume, but after applying the
+commit, the ethernet couldn't work anymore after the resume and the
+dmesg shows that the NIC Link changes to 10Mbps (1000Mbps originally):
+[   43.305084] e1000e 0000:00:1f.6 enp0s31f6: NIC Link is Up 10 Mbps Full Duplex, Flow Control: Rx/Tx
 
-Regards,
-Sergey
+Without the commit, the force SMBUS code will not be executed if
+"return 0" or "goto out" is executed in the enable_ulp(), and in my
+case, the "goto out" is executed since FWSM_FW_VALID is set. But after
+applying the commit, the force SMBUS code will be ran unconditionally.
+
+Here move the force SMBUS code back to enable_ulp() and put it
+immediate ahead of hw->phy.ops.release(hw), this could allow the
+longest settling time as possible for interface in this function and
+doesn't change the original code logic.
+
+Fixes: 861e8086029e ("e1000e: move force SMBUS from enable ulp function to avoid PHY loss issue")
+Signed-off-by: Hui Wang <hui.wang@canonical.com>
+Acked-by: Vitaly Lifshits <vitaly.lifshits@intel.com>
+Tested-by: Naama Meir <naamax.meir@linux.intel.com>
+Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
+---
+In the v2:
+ Change "this commit" to "the referred commit" in the commit header
+ Fix a potential infinite loop if ret_val is not zero
+ 
+ drivers/net/ethernet/intel/e1000e/ich8lan.c | 22 +++++++++++++++++++++
+ drivers/net/ethernet/intel/e1000e/netdev.c  | 18 -----------------
+ 2 files changed, 22 insertions(+), 18 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/e1000e/ich8lan.c b/drivers/net/ethernet/intel/e1000e/ich8lan.c
+index f9e94be36e97..2e98a2a0bead 100644
+--- a/drivers/net/ethernet/intel/e1000e/ich8lan.c
++++ b/drivers/net/ethernet/intel/e1000e/ich8lan.c
+@@ -1225,6 +1225,28 @@ s32 e1000_enable_ulp_lpt_lp(struct e1000_hw *hw, bool to_sx)
+ 	}
+ 
+ release:
++	/* Switching PHY interface always returns MDI error
++	 * so disable retry mechanism to avoid wasting time
++	 */
++	e1000e_disable_phy_retry(hw);
++
++	/* Force SMBus mode in PHY */
++	ret_val = e1000_read_phy_reg_hv_locked(hw, CV_SMB_CTRL, &phy_reg);
++	if (ret_val) {
++		e1000e_enable_phy_retry(hw);
++		hw->phy.ops.release(hw);
++		goto out;
++	}
++	phy_reg |= CV_SMB_CTRL_FORCE_SMBUS;
++	e1000_write_phy_reg_hv_locked(hw, CV_SMB_CTRL, phy_reg);
++
++	e1000e_enable_phy_retry(hw);
++
++	/* Force SMBus mode in MAC */
++	mac_reg = er32(CTRL_EXT);
++	mac_reg |= E1000_CTRL_EXT_FORCE_SMBUS;
++	ew32(CTRL_EXT, mac_reg);
++
+ 	hw->phy.ops.release(hw);
+ out:
+ 	if (ret_val)
+diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
+index 3692fce20195..cc8c531ec3df 100644
+--- a/drivers/net/ethernet/intel/e1000e/netdev.c
++++ b/drivers/net/ethernet/intel/e1000e/netdev.c
+@@ -6623,7 +6623,6 @@ static int __e1000_shutdown(struct pci_dev *pdev, bool runtime)
+ 	struct e1000_hw *hw = &adapter->hw;
+ 	u32 ctrl, ctrl_ext, rctl, status, wufc;
+ 	int retval = 0;
+-	u16 smb_ctrl;
+ 
+ 	/* Runtime suspend should only enable wakeup for link changes */
+ 	if (runtime)
+@@ -6697,23 +6696,6 @@ static int __e1000_shutdown(struct pci_dev *pdev, bool runtime)
+ 			if (retval)
+ 				return retval;
+ 		}
+-
+-		/* Force SMBUS to allow WOL */
+-		/* Switching PHY interface always returns MDI error
+-		 * so disable retry mechanism to avoid wasting time
+-		 */
+-		e1000e_disable_phy_retry(hw);
+-
+-		e1e_rphy(hw, CV_SMB_CTRL, &smb_ctrl);
+-		smb_ctrl |= CV_SMB_CTRL_FORCE_SMBUS;
+-		e1e_wphy(hw, CV_SMB_CTRL, smb_ctrl);
+-
+-		e1000e_enable_phy_retry(hw);
+-
+-		/* Force SMBus mode in MAC */
+-		ctrl_ext = er32(CTRL_EXT);
+-		ctrl_ext |= E1000_CTRL_EXT_FORCE_SMBUS;
+-		ew32(CTRL_EXT, ctrl_ext);
+ 	}
+ 
+ 	/* Ensure that the appropriate bits are set in LPI_CTRL
+-- 
+2.34.1
+
