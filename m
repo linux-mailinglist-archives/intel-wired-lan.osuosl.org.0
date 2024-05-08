@@ -1,82 +1,223 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9C3AE8BFED7
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  8 May 2024 15:37:10 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6D11F8BFECD
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  8 May 2024 15:36:03 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 45E1B407F9;
-	Wed,  8 May 2024 13:37:09 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 1CB4040288;
+	Wed,  8 May 2024 13:36:02 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 3_4V53HXsKvK; Wed,  8 May 2024 13:37:07 +0000 (UTC)
+ id YZMmLDk1TGhX; Wed,  8 May 2024 13:36:01 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org EF70B40288
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org BBEBE402A7
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1715175427;
-	bh=/TxnzJQKCh9q6U47JvkwZo10jI4vVyNfc4kYz3f+KDA=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1715175360;
+	bh=UqWsqt1FVKG9j02i+BMRoZYlwqQlTGZ1rKQqeWTBwo4=;
+	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=JGhW8EegeAphcr7h27R45G+yN7dwKBhxk13+yzlczN3z2PK8yDsd2fLTuXzc9nuru
-	 PA1XEqzzoDctbP/4Pj9cGds3z2S3v0hE25Vq8j5xHFqOL37jbxhKpWprbucPpRt3PP
-	 SPyXMkEplhcvjvny60H3RfkV+UQnXpHCoWACV0Ef/mbXYYEZHmrmMZaqJmscnYjHXN
-	 LoUn1MYdufSbs9AGqZYg4yXeT+vC7wdbFAsfsq2oL9+ZKPCSItBDxhBjEYoKNIwBDv
-	 Myouu690GhNdqyjOT7R6VWFrpUYY200STiOgp0knKISc+abzgSTNIx2vyMuYhymLXc
-	 UovFi1xlCegrA==
+	b=ZJ7kBrSFkWix3OOOCoSb59nAZhWqyHe5RrtFYio3WNnh8Fpfk35nAgsU4gyD0/oSk
+	 QAO6MW+GcWyaE1LNO/DZfH2nhr5P+ZIVxAPKm8/AntEj/o9wuD5ffFiOzQ2M23yyc0
+	 vAxS5Fxx6YJzJQTy4R+rgAzf0xHqFGQgfONxCXggpus7QyZZTVo7jHtNDdsvJWmCcX
+	 wai0x3Jf4p2gsg5PCDY/rPAEdvWDg7r5XaVvLGnDcn9UcNielACaXWhenBJ/kSsOUH
+	 wIDChtfWa5srBH+aeHFyLPmDfFatyVO/jam3rQvSsxQ7PBrE9BZSfwMZve5Kg5fvIa
+	 ct3d7Hy/Qcvzw==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id EF70B40288;
-	Wed,  8 May 2024 13:37:06 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id BBEBE402A7;
+	Wed,  8 May 2024 13:36:00 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id A3E1F1BF33A
- for <intel-wired-lan@lists.osuosl.org>; Wed,  8 May 2024 13:37:03 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 708291BF33A
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  8 May 2024 13:35:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 8F09A607D8
- for <intel-wired-lan@lists.osuosl.org>; Wed,  8 May 2024 13:37:03 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 5B7F7607D8
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  8 May 2024 13:35:57 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id CpceoDtlwqYp for <intel-wired-lan@lists.osuosl.org>;
- Wed,  8 May 2024 13:37:01 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=45.249.212.188;
- helo=szxga02-in.huawei.com; envelope-from=linyunsheng@huawei.com;
+ id CAYbdfx_49Dx for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  8 May 2024 13:35:56 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.11;
+ helo=mgamail.intel.com; envelope-from=aleksander.lobakin@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 8EBE060597
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 8EBE060597
-Received: from szxga02-in.huawei.com (szxga02-in.huawei.com [45.249.212.188])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 8EBE060597
- for <intel-wired-lan@lists.osuosl.org>; Wed,  8 May 2024 13:36:59 +0000 (UTC)
-Received: from mail.maildlp.com (unknown [172.19.163.174])
- by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4VZGP945DczcdyP;
- Wed,  8 May 2024 21:35:41 +0800 (CST)
-Received: from dggpemm500005.china.huawei.com (unknown [7.185.36.74])
- by mail.maildlp.com (Postfix) with ESMTPS id AE93814011A;
- Wed,  8 May 2024 21:36:52 +0800 (CST)
-Received: from localhost.localdomain (10.69.192.56) by
- dggpemm500005.china.huawei.com (7.185.36.74) with Microsoft SMTP Server
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 07B0860597
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 07B0860597
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.11])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 07B0860597
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  8 May 2024 13:35:55 +0000 (UTC)
+X-CSE-ConnectionGUID: MuaEkQ9GTfGX4ln15UW1yw==
+X-CSE-MsgGUID: 7NH8NiinQymPiemQQPSxMQ==
+X-IronPort-AV: E=McAfee;i="6600,9927,11066"; a="21635267"
+X-IronPort-AV: E=Sophos;i="6.08,145,1712646000"; d="scan'208";a="21635267"
+Received: from orviesa010.jf.intel.com ([10.64.159.150])
+ by fmvoesa105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 08 May 2024 06:35:55 -0700
+X-CSE-ConnectionGUID: yCXHWt6WRFCIqdgW2e9rhw==
+X-CSE-MsgGUID: lTQVzzqnRD+ffIJYZDkx+w==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.08,145,1712646000"; d="scan'208";a="28763414"
+Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
+ by orviesa010.jf.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
+ 08 May 2024 06:35:54 -0700
+Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
+ ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.35; Wed, 8 May 2024 06:35:54 -0700
+Received: from ORSEDG602.ED.cps.intel.com (10.7.248.7) by
+ orsmsx610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.35 via Frontend Transport; Wed, 8 May 2024 06:35:54 -0700
+Received: from NAM12-DM6-obe.outbound.protection.outlook.com (104.47.59.169)
+ by edgegateway.intel.com (134.134.137.103) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.35; Wed, 8 May 2024 21:36:52 +0800
-From: Yunsheng Lin <linyunsheng@huawei.com>
-To: <davem@davemloft.net>, <kuba@kernel.org>, <pabeni@redhat.com>
-Date: Wed, 8 May 2024 21:34:01 +0800
-Message-ID: <20240508133408.54708-7-linyunsheng@huawei.com>
-X-Mailer: git-send-email 2.33.0
-In-Reply-To: <20240508133408.54708-1-linyunsheng@huawei.com>
-References: <20240508133408.54708-1-linyunsheng@huawei.com>
+ 15.1.2507.35; Wed, 8 May 2024 06:35:53 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=XM9nqkc35CGVcR0aikji2+viBf/GareMGkcvHpf/9tXxj9Y/e86z6gb2yyXrSQgCXzBB5AYMZ3qBPO5OylegnLiDYWlZqvrExsRQIXr0nmo5UIp+5GlZuxCReORuJ44IGk00z9QMUxgABQI7UtW8oHFWCYYVXYV2rPGW2U6EsfUhBNVsXqWuvVN0hXK5/5yxTaJ1C108ZacafI3iRfw0sH5k/FNeKrqhCEm3QWBa0IvIo3IEt4fIiQmqN2hHvuuScr5Si0uJm0tfrtLVLsv8B4jx1RQnpyq8ITuycPYR6g4guIxBsyRkd7g82XhWQdkTEHtxtHSgozyVYz9CCLROrg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=UqWsqt1FVKG9j02i+BMRoZYlwqQlTGZ1rKQqeWTBwo4=;
+ b=CLa8dCSsYTo4YXPt79Ld/LGuTIa6SO8ZHJM7VA2OC1PlHkDTdiF4w54qH902XKaKVSaSXs41B1d6uA7yutc7wbV40vumx9YjPsnPlfRN69d6oSp0E217rLpXZtXA97rOj4OgIhcgfNYVYM+nRz3OuD+l2BQQbXVScLG7jBJqHyfXcb/1xZWkVc0p5Jtj/9YCH3tnzjWaXCMUEWSggvAJYlzjVy/7w+RlkB2QOdx7DG3ivhRtxzh8e0vaB6T7rJ9W4PvgkMDv8sgqJJM5chGLMvYQkWgfsUm7MK9Dp80k5kkjR4WowDTi1UTc5l0DcZd1yVV4nHP4Yav136J0g4/GQg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from DS0PR11MB8718.namprd11.prod.outlook.com (2603:10b6:8:1b9::20)
+ by SA2PR11MB4874.namprd11.prod.outlook.com (2603:10b6:806:f9::23) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7544.45; Wed, 8 May
+ 2024 13:35:52 +0000
+Received: from DS0PR11MB8718.namprd11.prod.outlook.com
+ ([fe80::4b3b:9dbe:f68c:d808]) by DS0PR11MB8718.namprd11.prod.outlook.com
+ ([fe80::4b3b:9dbe:f68c:d808%4]) with mapi id 15.20.7544.041; Wed, 8 May 2024
+ 13:35:52 +0000
+Message-ID: <6ac025de-9264-4510-ba7f-f9a56c564a80@intel.com>
+Date: Wed, 8 May 2024 15:35:26 +0200
+User-Agent: Mozilla Thunderbird
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+References: <20240508132315.1121086-1-andriy.shevchenko@linux.intel.com>
+From: Alexander Lobakin <aleksander.lobakin@intel.com>
+Content-Language: en-US
+In-Reply-To: <20240508132315.1121086-1-andriy.shevchenko@linux.intel.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+X-ClientProxiedBy: WA0P291CA0007.POLP291.PROD.OUTLOOK.COM
+ (2603:10a6:1d0:1::11) To DS0PR11MB8718.namprd11.prod.outlook.com
+ (2603:10b6:8:1b9::20)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.69.192.56]
-X-ClientProxiedBy: dggems702-chm.china.huawei.com (10.3.19.179) To
- dggpemm500005.china.huawei.com (7.185.36.74)
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DS0PR11MB8718:EE_|SA2PR11MB4874:EE_
+X-MS-Office365-Filtering-Correlation-Id: 9cb82ca4-316c-4f8d-5efd-08dc6f63c782
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230031|376005|366007|7416005|1800799015;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?UjA3em5tdDNHNWRyTlZ2ekNGK09PQkZybmFoeXU1N0lSWkhMekROQzVOcUpo?=
+ =?utf-8?B?ZXZkNmpsTDVIUFZML3kwS2o3ZERFRzNKdHFGdk9jaFhQbFgzaEtUNGorTGkv?=
+ =?utf-8?B?a0cxbFZPaU1zTVF5Qm5oWjdYMC84VXJxZHF0K2ZkVHhjTU5idk5kNWl6OWJC?=
+ =?utf-8?B?TGtGMmFrcmYzZEJ4dW9xZGpINWxReWJmaEVjTmM2cThvN01XNWFXNVR2d2JI?=
+ =?utf-8?B?MUNtWUUwSlo2VEV2RkhWMVBWUFZyaThFbFcwdCtDN1EyTllYd1VkREM3aHda?=
+ =?utf-8?B?QkxrNTRhWklna1RpY2p4SCtyaWgwQ3YwOVBZa1EyZUhkdUtGZDFwUkx2V203?=
+ =?utf-8?B?eXN1ckJhL1IvVU92b2I0UmRaVXZqTTNVQUVadWNBWDd3WEFMNkpNZnNGbUxz?=
+ =?utf-8?B?VS9hUkdpL1JXYnBXSE9kbjV1Lzl5OFZjYXUxYmFxLzRYdUNCazFYYk5QSWhF?=
+ =?utf-8?B?V25DalZ4cFdIbXFQRURLTFpoYnJPUVVSQjdGRVhsczZkSURxWnZYZGdZeHpk?=
+ =?utf-8?B?eFJaUVpYWXM4aFBhYkNYN3J6aFFZTjJldlBzT3FlajUxS0NIUkkxR3hRakY2?=
+ =?utf-8?B?VUE1YzZkQlVQZjJSYkJ2c2hZUlk5emV5K0FhUXozSXB2ZlJWSlhxVGJwWHYr?=
+ =?utf-8?B?c0hpcUJUYkhoWVNRcWJaWmZKUWpwYktjZlVKOEZMc3IvZThxQ0ZycWRVRWNO?=
+ =?utf-8?B?WU9yVmVCb1dlbDdRaGIrTEhsNko3c1NnQVgzeVJsR2s2NGJaWXUvNFlDaDBD?=
+ =?utf-8?B?NTYycWJGeEV4Wkx6WENGdFFybkw1bjNaT2lMcUJheVhVUGNyVi9PQ3BMYmQy?=
+ =?utf-8?B?RlJQbm9Yd2p1REx6WmxPNnFzckhzRGsxZ004bmY3OFRmNStPcGxrZFZ2bjFn?=
+ =?utf-8?B?S0xTSC9BY00vblZjd1BYcjNkQThQSWFCZ2ZEL0Q3Ryswc1NXVWxsc3NJRlJ1?=
+ =?utf-8?B?Z0dKV2ViY0VFVUNwYlVLVzBtdkx5bk9jRms1bXFUaVFNRDMyVkE4bnVQZFM4?=
+ =?utf-8?B?QW8xTUJETlJhTllNeExEYTBTV2tZWmFOT3RLTGVJVHgwcnMrb0E3TVdyckU4?=
+ =?utf-8?B?WjFGd05HcVVWMEQrTDlKSHdmL2JCMlBmZU5CdUlRZTIzVWVEOVRrOTVIUElp?=
+ =?utf-8?B?TVl0eE1zOHcrSjdtS0pOeGMrRlhQOFFYNWNOeWxFelI0WVB1SWNRekFzOEhk?=
+ =?utf-8?B?eUpNMXZVaHFIY3p3ZWM1Y2VhbUJtUUg1Wi9wL2MxS3Z6dCs3Q3I1b1l3SnBZ?=
+ =?utf-8?B?ZXhoMnk3WVI4cm5STzZIQ0twT3MzR1ZieG9JdG41SlBFQktpTTRsanA3aStq?=
+ =?utf-8?B?MCtKNExzbXZaU0J4ajFTVmlVcTJReVNsUFlqNGgzZ20yRnVHMGhaSGhBRCtI?=
+ =?utf-8?B?M29TU0I2Y2NndGtHWVhvc0tUKzcxRWNXaHpUL3hKMERWR0phK2MyOFVuMCtD?=
+ =?utf-8?B?aU1aZGIraTcvUE16V2xiM01pVDF1UnVzeHNXci9NcW4vMm8zYnhXWUxReExX?=
+ =?utf-8?B?VTBFUzg5eGw1MzhBOVVNajBaSTJMV09IdFRZcHZhSERJWUk5OCtPM3h0aXk0?=
+ =?utf-8?B?TmRhNlZJYWpZd2ZFVkhTSDhQWjlxUTlIcUdPVnBPZkVXWnR2SWJTZnN0Mlpy?=
+ =?utf-8?B?VDA3SXdWV1AxZGFuaDZyelNoSys1UE90Y1l3cUpJYmJDMVp1aEYzbVlPK1pa?=
+ =?utf-8?B?WkJROTJFRnJCSlRucGRFMkhqVmdzTFVZS3EwNEw2WU9XRHB6eTdmT1pBPT0=?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:DS0PR11MB8718.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230031)(376005)(366007)(7416005)(1800799015); DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?V2pvcnNqRDBUZUMzNjhvTU13OVRKQngzd1hiYW5iWjZpeGhVNnFUUGtHc1N2?=
+ =?utf-8?B?YU1XMk1wZThPVmorS1BpYWlJM1ZUbUxVdGlYMUQzdWJxcG0rTHIrRWdnU2E5?=
+ =?utf-8?B?T21SdW5PRGYxQkhQNFJ0aUZORW13b0U3N0dkSDhVdEJNTmh6RGpISm1US3NU?=
+ =?utf-8?B?T2xDWHg5Q0d3T0tlRlFZVUZheXY1MzNSMVp4VHhBUWxzb08rZDlUdXlJR3g2?=
+ =?utf-8?B?SHNhQ0N2RUJsZDUxV3prRWhSZEsyUWdJaTJ6OUkxdVBKcjFHMk02TFN1L1gx?=
+ =?utf-8?B?Ty83RXFoTTdwcTgya0lUNHhJT29vMVBaOG82TFlQVEdrd0Y3UDRPWTZueEgr?=
+ =?utf-8?B?UEJVcSt1akVxQVc3TmkxcDZOUXEyWGtkcWN4QTI0ZWhHSXpTYWc3YnQwQm1J?=
+ =?utf-8?B?R01Od25jajYreHhsYzczSk9WR2E5QlZuci8zWHgyVUkrNW5PMmU4bzdzczBK?=
+ =?utf-8?B?WjM4S2ptT0NqWU80eXg2ZmkzVENNZEVUOVR2YWhaSGtqOWVXS0p0TTFrRDA1?=
+ =?utf-8?B?M3JJcXZPUHA0NHF5UGs1WmpRNk1pN0R3T3lVajRhbTFpODQ3KysrVU85eHpR?=
+ =?utf-8?B?MWQ5UVJFMkhkbVAyMXllVzl3di80aDg0bUtGeFRMU0VyeWpLNlRqS05rOHJo?=
+ =?utf-8?B?cnBJTlNMeHl0MHNYNmJleXlLajhxb3dESzUzcnl2c3I3RThoektrRUVQcGxm?=
+ =?utf-8?B?eS9uZmpiS0tSZGdvanpKa0NuT3hNWUdHb0dDekxMdkNSakRlemMvdGUvZUxB?=
+ =?utf-8?B?dTlTVm05M3FnYkdORGttbDUxdDdjTjFPR2NaYTVScHhoS3F3M2REeFRJaTFi?=
+ =?utf-8?B?a0NJMlZuOHZ5NDZhMHNWcElKdnh6SFhEN0FQc3B3VzNZcFpFVVVscDRFWG5h?=
+ =?utf-8?B?TjBvbFJOejFzWmNBRkVkMS8rU0Y4REpwUUZtSDJHYkx5bzZGc2RtSWlVeDA1?=
+ =?utf-8?B?MWdFTVlJUHZydy9qSE1McklTTGltdVdQZDk3SW5pSlVJakp3L0FIc1o5OGZS?=
+ =?utf-8?B?Tmp1RDRrcWtKdDFDaUJLcFd2Qkd6SEVKbnEvb1R5K3crU2dCaitmSHhXOWVS?=
+ =?utf-8?B?N3kxNnlGSkRtbndrd3VTcHFlaVB2U3BKbHNzcGxORk5yenR1YlpqTlBnMENt?=
+ =?utf-8?B?TXZOSzlQcmR4anRCdlBKSWc5UVNVRUxTeXBPeWowRDBUZ3lCc2JpZHRCbHpt?=
+ =?utf-8?B?Z2cvYXNZeEoyTDQ1N2dJY0NHaVQ1WFZzV0FzOHVUeUFJWk4yNzIwTFhHSDFk?=
+ =?utf-8?B?TENZMHI1VEp2T3ZsWmxMWHljdzFYQ0l3ajlRYWV1Zy9xNUdyS1lub0FnVnRE?=
+ =?utf-8?B?UVZjMU40eEZ2Rjg5WldReG5aNk9sR1hPam5NTW5LOUxjZStRYUo1cXNxT3Br?=
+ =?utf-8?B?TStraGF6RWw4aXZ0dUtPVEdJbXI0QnhKQ0pzNG9OWmVzd0p3am4zZXRxejVX?=
+ =?utf-8?B?SlRabmp6bzNkSU5McTNReVFQZ0tPYzJRVXliaHAvM1NJR0VJNUhaYUJZTjNs?=
+ =?utf-8?B?bTBxNVJZUmdQT1A2K0tFOXdpWHd5TmczeFNKSm9qaXg3dnE4TmdnblFPbzlm?=
+ =?utf-8?B?cG5HbXdCSkkwV25NMmlMa2sraWFReHFHS0xsMWRPMzB6ZWdxeUQ2M0NKSW9l?=
+ =?utf-8?B?ZG1ic25BZDk5Z0VzNzIxeGRsWDhQREtUdzhTNmlxZG00YWVrMHJOdkRpQzRk?=
+ =?utf-8?B?QzJ5dnp5dUZyZVJERlY5NDFkaGtlS3VCMmR2cXp3Rm9Mb0hEZktPMXZnMjVp?=
+ =?utf-8?B?VlZGS0ZBd29RQjVLWDJka1ZrdXRVeFlYYkducGFnWmJqR04weWlveXg0Rm5E?=
+ =?utf-8?B?c3diMnpIOVFmS0F3dDREcHVESEJZc2FVeUN4bkFhZ3Z6NVpqSldMNXpWMEhv?=
+ =?utf-8?B?am5ERndCTmdXWmwvR0FaVUtOZ3phWFlGMXkwQmNaU0cyMkNudzRxemZiV095?=
+ =?utf-8?B?WCs2c2hMMkxMUzJsQUJrSktyN1Q5Y2RMRTRxZXk3VmJ3ZkhKMHNOZ1U3U3VX?=
+ =?utf-8?B?WThxWnQ1Y3J2ZzRPemFZcDMrVlI0TjFoNEFaT2lKcnFXTjBkUFMyNmZpbEkx?=
+ =?utf-8?B?Q1JUNlE2S2lOZHZ5RlZyYWRFRzlWeVhHMUFCZ1ZYVFdnQTR0YStadGxWT21q?=
+ =?utf-8?B?YUhteS9ZUlZ3N1ZDWDZrMUF1S3ZrYTF5WkNrMVF3UEJ3UGRwaUtlbEJBOWtW?=
+ =?utf-8?B?OGc9PQ==?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: 9cb82ca4-316c-4f8d-5efd-08dc6f63c782
+X-MS-Exchange-CrossTenant-AuthSource: DS0PR11MB8718.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 08 May 2024 13:35:52.1930 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: 7l6ps/GV4pDCDm9SbPVee6gQJiPrF8ogL3h0UH03TQwws5vcwiIc6y53XSCMt38oERgZfK0gCzHPe8rNfKoIH+T9GzjIBiwzNe7wzC6nn80=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA2PR11MB4874
+X-OriginatorOrg: intel.com
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1715175356; x=1746711356;
+ h=message-id:date:subject:to:cc:references:from:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=dX4SHF94og3hMTQPoVfq6ZrMltz+ahXi8x4H7yJ9XxU=;
+ b=NmK+XTqBu6aHJJ15EiUCCC2YuhVSPum7Mo4qL6WDwNho9bhyMeW26dOe
+ HbrQo66MHCd4S9HJbLBg6y5DVZzZwH6w49Jcp7DhI0QgiSC6t0RbGEKbC
+ N8DSBDoDCpay1S5GRKA/fn2UVfvGAN3egm+8osiUl+pzYYj6EHN5I5vee
+ t36xHsSGAcRdrN33HvvoN7PP2HI830VALoaiK1yEBczp9csrdvYv0ZZBi
+ VeGTReDETRXq4cuFOY69+BtXCUUivzLXlK0dPExwzVlg7tQXdhQByovOT
+ BL2AE9V+glERp8Pg4Die5KkDoZq4vZxVdnt/gJYXWZfeNcMOj4SDJQMKq
+ A==;
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=huawei.com
-Subject: [Intel-wired-lan] [PATCH net-next v3 06/13] mm: page_frag: add
- '_va' suffix to page_frag API
+ dmarc=pass (p=none dis=none)
+ header.from=intel.com
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=NmK+XTqB
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH net-next v1 1/1] net: intel: Use *-y
+ instead of *-objs in Makefile
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,597 +230,32 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: linux-nvme@lists.infradead.org, Yonghong Song <yonghong.song@linux.dev>,
- kvm@vger.kernel.org, "Michael S. Tsirkin" <mst@redhat.com>,
- Neil Brown <neilb@suse.de>, Jason Wang <jasowang@redhat.com>,
- Alexei Starovoitov <ast@kernel.org>,
- Alexander Duyck <alexander.duyck@gmail.com>,
- Andrii Nakryiko <andrii@kernel.org>, David Howells <dhowells@redhat.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Eric Dumazet <edumazet@google.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>, Stanislav Fomichev <sdf@google.com>,
- Subbaraya Sundeep <sbhatta@marvell.com>,
- Marc Dionne <marc.dionne@auristor.com>, Christoph Hellwig <hch@lst.de>,
- Anna Schumaker <anna@kernel.org>, Jeroen de Borst <jeroendb@google.com>,
- Sagi Grimberg <sagi@grimberg.me>, Daniel Borkmann <daniel@iogearbox.net>,
- John Fastabend <john.fastabend@gmail.com>, linux-afs@lists.infradead.org,
- linux-mm@kvack.org, intel-wired-lan@lists.osuosl.org,
- Olga Kornievskaia <kolga@netapp.com>, Lorenzo Bianconi <lorenzo@kernel.org>,
- Mark Lee <Mark-MC.Lee@mediatek.com>, Sunil Goutham <sgoutham@marvell.com>,
- Chaitanya Kulkarni <kch@nvidia.com>, Jesper Dangaard Brouer <hawk@kernel.org>,
- Dai Ngo <Dai.Ngo@oracle.com>, Sean Wang <sean.wang@mediatek.com>,
- virtualization@lists.linux.dev, KP Singh <kpsingh@kernel.org>,
- Tom Talpey <tom@talpey.com>, Shailend Chand <shailend@google.com>,
- linux-mediatek@lists.infradead.org, Yunsheng Lin <linyunsheng@huawei.com>,
- Keith Busch <kbusch@kernel.org>,
- Trond Myklebust <trond.myklebust@hammerspace.com>,
- linux-arm-kernel@lists.infradead.org,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Jens Axboe <axboe@kernel.dk>, Hao Luo <haoluo@google.com>,
- linux-nfs@vger.kernel.org, Song Liu <song@kernel.org>, netdev@vger.kernel.org,
- bpf@vger.kernel.org, Jeff Layton <jlayton@kernel.org>,
- linux-kernel@vger.kernel.org, Eduard Zingerman <eddyz87@gmail.com>,
- hariprasad <hkelam@marvell.com>, Chuck Lever <chuck.lever@oracle.com>,
- Jiri Olsa <jolsa@kernel.org>, Praveen Kaligineedi <pkaligineedi@google.com>,
- Andrew Morton <akpm@linux-foundation.org>,
- Martin KaFai Lau <martin.lau@linux.dev>, Geetha sowjanya <gakula@marvell.com>,
- Felix Fietkau <nbd@nbd.name>
+Cc: Alexei Starovoitov <ast@kernel.org>,
+ Jesper Dangaard Brouer <hawk@kernel.org>,
+ Daniel Borkmann <daniel@iogearbox.net>, netdev@vger.kernel.org, Richard
+ Cochran <richardcochran@gmail.com>, John Fastabend <john.fastabend@gmail.com>,
+ linux-kernel@vger.kernel.org, Eric Dumazet <edumazet@google.com>,
+ intel-wired-lan@lists.osuosl.org, Jakub Kicinski <kuba@kernel.org>,
+ Jacob Keller <jacob.e.keller@intel.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>, bpf@vger.kernel.org,
+ Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Currently the page_frag API is returning 'virtual address'
-or 'va' when allocing and expecting 'virtual address' or
-'va' as input when freeing.
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Date: Wed, 8 May 2024 16:23:15 +0300
 
-As we are about to support new use cases that the caller
-need to deal with 'struct page' or need to deal with both
-'va' and 'struct page'. In order to differentiate the API
-handling between 'va' and 'struct page', add '_va' suffix
-to the corresponding API mirroring the page_pool_alloc_va()
-API of the page_pool. So that callers expecting to deal with
-va, page or both va and page may call page_frag_alloc_va*,
-page_frag_alloc_pg*, or page_frag_alloc* API accordingly.
+> *-objs suffix is reserved rather for (user-space) host programs while
+> usually *-y suffix is used for kernel drivers (although *-objs works
+> for that purpose for now).
+> 
+> Let's correct the old usages of *-objs in Makefiles.
 
-CC: Alexander Duyck <alexander.duyck@gmail.com>
-Signed-off-by: Yunsheng Lin <linyunsheng@huawei.com>
----
- drivers/net/ethernet/google/gve/gve_rx.c      |  4 ++--
- drivers/net/ethernet/intel/ice/ice_txrx.c     |  2 +-
- drivers/net/ethernet/intel/ice/ice_txrx.h     |  2 +-
- drivers/net/ethernet/intel/ice/ice_txrx_lib.c |  2 +-
- .../net/ethernet/intel/ixgbevf/ixgbevf_main.c |  4 ++--
- .../marvell/octeontx2/nic/otx2_common.c       |  2 +-
- drivers/net/ethernet/mediatek/mtk_wed_wo.c    |  4 ++--
- drivers/nvme/host/tcp.c                       |  8 +++----
- drivers/nvme/target/tcp.c                     | 22 +++++++++----------
- drivers/vhost/net.c                           |  6 ++---
- include/linux/page_frag_cache.h               | 21 +++++++++---------
- include/linux/skbuff.h                        |  2 +-
- kernel/bpf/cpumap.c                           |  2 +-
- mm/page_frag_cache.c                          | 12 +++++-----
- mm/page_frag_test.c                           | 11 +++++-----
- net/core/skbuff.c                             | 18 +++++++--------
- net/core/xdp.c                                |  2 +-
- net/rxrpc/txbuf.c                             | 15 +++++++------
- net/sunrpc/svcsock.c                          |  6 ++---
- 19 files changed, 74 insertions(+), 71 deletions(-)
+Wait, I was sure I've seen somewhere that -objs is more new and
+preferred over -y. See recent dimlib comment where Florian changed -y to
+-objs for example.
+Any documentation reference that -objs is for userspace and we should
+clearly use -y?
 
-diff --git a/drivers/net/ethernet/google/gve/gve_rx.c b/drivers/net/ethernet/google/gve/gve_rx.c
-index acb73d4d0de6..b6c10100e462 100644
---- a/drivers/net/ethernet/google/gve/gve_rx.c
-+++ b/drivers/net/ethernet/google/gve/gve_rx.c
-@@ -729,7 +729,7 @@ static int gve_xdp_redirect(struct net_device *dev, struct gve_rx_ring *rx,
- 
- 	total_len = headroom + SKB_DATA_ALIGN(len) +
- 		SKB_DATA_ALIGN(sizeof(struct skb_shared_info));
--	frame = page_frag_alloc(&rx->page_cache, total_len, GFP_ATOMIC);
-+	frame = page_frag_alloc_va(&rx->page_cache, total_len, GFP_ATOMIC);
- 	if (!frame) {
- 		u64_stats_update_begin(&rx->statss);
- 		rx->xdp_alloc_fails++;
-@@ -742,7 +742,7 @@ static int gve_xdp_redirect(struct net_device *dev, struct gve_rx_ring *rx,
- 
- 	err = xdp_do_redirect(dev, &new, xdp_prog);
- 	if (err)
--		page_frag_free(frame);
-+		page_frag_free_va(frame);
- 
- 	return err;
- }
-diff --git a/drivers/net/ethernet/intel/ice/ice_txrx.c b/drivers/net/ethernet/intel/ice/ice_txrx.c
-index 8bb743f78fcb..399b317c509d 100644
---- a/drivers/net/ethernet/intel/ice/ice_txrx.c
-+++ b/drivers/net/ethernet/intel/ice/ice_txrx.c
-@@ -126,7 +126,7 @@ ice_unmap_and_free_tx_buf(struct ice_tx_ring *ring, struct ice_tx_buf *tx_buf)
- 		dev_kfree_skb_any(tx_buf->skb);
- 		break;
- 	case ICE_TX_BUF_XDP_TX:
--		page_frag_free(tx_buf->raw_buf);
-+		page_frag_free_va(tx_buf->raw_buf);
- 		break;
- 	case ICE_TX_BUF_XDP_XMIT:
- 		xdp_return_frame(tx_buf->xdpf);
-diff --git a/drivers/net/ethernet/intel/ice/ice_txrx.h b/drivers/net/ethernet/intel/ice/ice_txrx.h
-index feba314a3fe4..6379f57d8228 100644
---- a/drivers/net/ethernet/intel/ice/ice_txrx.h
-+++ b/drivers/net/ethernet/intel/ice/ice_txrx.h
-@@ -148,7 +148,7 @@ static inline int ice_skb_pad(void)
-  * @ICE_TX_BUF_DUMMY: dummy Flow Director packet, unmap and kfree()
-  * @ICE_TX_BUF_FRAG: mapped skb OR &xdp_buff frag, only unmap DMA
-  * @ICE_TX_BUF_SKB: &sk_buff, unmap and consume_skb(), update stats
-- * @ICE_TX_BUF_XDP_TX: &xdp_buff, unmap and page_frag_free(), stats
-+ * @ICE_TX_BUF_XDP_TX: &xdp_buff, unmap and page_frag_free_va(), stats
-  * @ICE_TX_BUF_XDP_XMIT: &xdp_frame, unmap and xdp_return_frame(), stats
-  * @ICE_TX_BUF_XSK_TX: &xdp_buff on XSk queue, xsk_buff_free(), stats
-  */
-diff --git a/drivers/net/ethernet/intel/ice/ice_txrx_lib.c b/drivers/net/ethernet/intel/ice/ice_txrx_lib.c
-index 2719f0e20933..a1a41a14df0d 100644
---- a/drivers/net/ethernet/intel/ice/ice_txrx_lib.c
-+++ b/drivers/net/ethernet/intel/ice/ice_txrx_lib.c
-@@ -250,7 +250,7 @@ ice_clean_xdp_tx_buf(struct device *dev, struct ice_tx_buf *tx_buf,
- 
- 	switch (tx_buf->type) {
- 	case ICE_TX_BUF_XDP_TX:
--		page_frag_free(tx_buf->raw_buf);
-+		page_frag_free_va(tx_buf->raw_buf);
- 		break;
- 	case ICE_TX_BUF_XDP_XMIT:
- 		xdp_return_frame_bulk(tx_buf->xdpf, bq);
-diff --git a/drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c b/drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c
-index b938dc06045d..fcd1b149a45d 100644
---- a/drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c
-+++ b/drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c
-@@ -303,7 +303,7 @@ static bool ixgbevf_clean_tx_irq(struct ixgbevf_q_vector *q_vector,
- 
- 		/* free the skb */
- 		if (ring_is_xdp(tx_ring))
--			page_frag_free(tx_buffer->data);
-+			page_frag_free_va(tx_buffer->data);
- 		else
- 			napi_consume_skb(tx_buffer->skb, napi_budget);
- 
-@@ -2413,7 +2413,7 @@ static void ixgbevf_clean_tx_ring(struct ixgbevf_ring *tx_ring)
- 
- 		/* Free all the Tx ring sk_buffs */
- 		if (ring_is_xdp(tx_ring))
--			page_frag_free(tx_buffer->data);
-+			page_frag_free_va(tx_buffer->data);
- 		else
- 			dev_kfree_skb_any(tx_buffer->skb);
- 
-diff --git a/drivers/net/ethernet/marvell/octeontx2/nic/otx2_common.c b/drivers/net/ethernet/marvell/octeontx2/nic/otx2_common.c
-index a85ac039d779..8eb5820b8a70 100644
---- a/drivers/net/ethernet/marvell/octeontx2/nic/otx2_common.c
-+++ b/drivers/net/ethernet/marvell/octeontx2/nic/otx2_common.c
-@@ -553,7 +553,7 @@ static int __otx2_alloc_rbuf(struct otx2_nic *pfvf, struct otx2_pool *pool,
- 	*dma = dma_map_single_attrs(pfvf->dev, buf, pool->rbsize,
- 				    DMA_FROM_DEVICE, DMA_ATTR_SKIP_CPU_SYNC);
- 	if (unlikely(dma_mapping_error(pfvf->dev, *dma))) {
--		page_frag_free(buf);
-+		page_frag_free_va(buf);
- 		return -ENOMEM;
- 	}
- 
-diff --git a/drivers/net/ethernet/mediatek/mtk_wed_wo.c b/drivers/net/ethernet/mediatek/mtk_wed_wo.c
-index 7063c78bd35f..c4228719f8a4 100644
---- a/drivers/net/ethernet/mediatek/mtk_wed_wo.c
-+++ b/drivers/net/ethernet/mediatek/mtk_wed_wo.c
-@@ -142,8 +142,8 @@ mtk_wed_wo_queue_refill(struct mtk_wed_wo *wo, struct mtk_wed_wo_queue *q,
- 		dma_addr_t addr;
- 		void *buf;
- 
--		buf = page_frag_alloc(&q->cache, q->buf_size,
--				      GFP_ATOMIC | GFP_DMA32);
-+		buf = page_frag_alloc_va(&q->cache, q->buf_size,
-+					 GFP_ATOMIC | GFP_DMA32);
- 		if (!buf)
- 			break;
- 
-diff --git a/drivers/nvme/host/tcp.c b/drivers/nvme/host/tcp.c
-index fdbcdcedcee9..79eddd74bfbb 100644
---- a/drivers/nvme/host/tcp.c
-+++ b/drivers/nvme/host/tcp.c
-@@ -500,7 +500,7 @@ static void nvme_tcp_exit_request(struct blk_mq_tag_set *set,
- {
- 	struct nvme_tcp_request *req = blk_mq_rq_to_pdu(rq);
- 
--	page_frag_free(req->pdu);
-+	page_frag_free_va(req->pdu);
- }
- 
- static int nvme_tcp_init_request(struct blk_mq_tag_set *set,
-@@ -514,7 +514,7 @@ static int nvme_tcp_init_request(struct blk_mq_tag_set *set,
- 	struct nvme_tcp_queue *queue = &ctrl->queues[queue_idx];
- 	u8 hdgst = nvme_tcp_hdgst_len(queue);
- 
--	req->pdu = page_frag_alloc(&queue->pf_cache,
-+	req->pdu = page_frag_alloc_va(&queue->pf_cache,
- 		sizeof(struct nvme_tcp_cmd_pdu) + hdgst,
- 		GFP_KERNEL | __GFP_ZERO);
- 	if (!req->pdu)
-@@ -1331,7 +1331,7 @@ static void nvme_tcp_free_async_req(struct nvme_tcp_ctrl *ctrl)
- {
- 	struct nvme_tcp_request *async = &ctrl->async_req;
- 
--	page_frag_free(async->pdu);
-+	page_frag_free_va(async->pdu);
- }
- 
- static int nvme_tcp_alloc_async_req(struct nvme_tcp_ctrl *ctrl)
-@@ -1340,7 +1340,7 @@ static int nvme_tcp_alloc_async_req(struct nvme_tcp_ctrl *ctrl)
- 	struct nvme_tcp_request *async = &ctrl->async_req;
- 	u8 hdgst = nvme_tcp_hdgst_len(queue);
- 
--	async->pdu = page_frag_alloc(&queue->pf_cache,
-+	async->pdu = page_frag_alloc_va(&queue->pf_cache,
- 		sizeof(struct nvme_tcp_cmd_pdu) + hdgst,
- 		GFP_KERNEL | __GFP_ZERO);
- 	if (!async->pdu)
-diff --git a/drivers/nvme/target/tcp.c b/drivers/nvme/target/tcp.c
-index a5422e2c979a..ea356ce22672 100644
---- a/drivers/nvme/target/tcp.c
-+++ b/drivers/nvme/target/tcp.c
-@@ -1462,24 +1462,24 @@ static int nvmet_tcp_alloc_cmd(struct nvmet_tcp_queue *queue,
- 	c->queue = queue;
- 	c->req.port = queue->port->nport;
- 
--	c->cmd_pdu = page_frag_alloc(&queue->pf_cache,
-+	c->cmd_pdu = page_frag_alloc_va(&queue->pf_cache,
- 			sizeof(*c->cmd_pdu) + hdgst, GFP_KERNEL | __GFP_ZERO);
- 	if (!c->cmd_pdu)
- 		return -ENOMEM;
- 	c->req.cmd = &c->cmd_pdu->cmd;
- 
--	c->rsp_pdu = page_frag_alloc(&queue->pf_cache,
-+	c->rsp_pdu = page_frag_alloc_va(&queue->pf_cache,
- 			sizeof(*c->rsp_pdu) + hdgst, GFP_KERNEL | __GFP_ZERO);
- 	if (!c->rsp_pdu)
- 		goto out_free_cmd;
- 	c->req.cqe = &c->rsp_pdu->cqe;
- 
--	c->data_pdu = page_frag_alloc(&queue->pf_cache,
-+	c->data_pdu = page_frag_alloc_va(&queue->pf_cache,
- 			sizeof(*c->data_pdu) + hdgst, GFP_KERNEL | __GFP_ZERO);
- 	if (!c->data_pdu)
- 		goto out_free_rsp;
- 
--	c->r2t_pdu = page_frag_alloc(&queue->pf_cache,
-+	c->r2t_pdu = page_frag_alloc_va(&queue->pf_cache,
- 			sizeof(*c->r2t_pdu) + hdgst, GFP_KERNEL | __GFP_ZERO);
- 	if (!c->r2t_pdu)
- 		goto out_free_data;
-@@ -1494,20 +1494,20 @@ static int nvmet_tcp_alloc_cmd(struct nvmet_tcp_queue *queue,
- 
- 	return 0;
- out_free_data:
--	page_frag_free(c->data_pdu);
-+	page_frag_free_va(c->data_pdu);
- out_free_rsp:
--	page_frag_free(c->rsp_pdu);
-+	page_frag_free_va(c->rsp_pdu);
- out_free_cmd:
--	page_frag_free(c->cmd_pdu);
-+	page_frag_free_va(c->cmd_pdu);
- 	return -ENOMEM;
- }
- 
- static void nvmet_tcp_free_cmd(struct nvmet_tcp_cmd *c)
- {
--	page_frag_free(c->r2t_pdu);
--	page_frag_free(c->data_pdu);
--	page_frag_free(c->rsp_pdu);
--	page_frag_free(c->cmd_pdu);
-+	page_frag_free_va(c->r2t_pdu);
-+	page_frag_free_va(c->data_pdu);
-+	page_frag_free_va(c->rsp_pdu);
-+	page_frag_free_va(c->cmd_pdu);
- }
- 
- static int nvmet_tcp_alloc_cmds(struct nvmet_tcp_queue *queue)
-diff --git a/drivers/vhost/net.c b/drivers/vhost/net.c
-index f16279351db5..6691fac01e0d 100644
---- a/drivers/vhost/net.c
-+++ b/drivers/vhost/net.c
-@@ -686,8 +686,8 @@ static int vhost_net_build_xdp(struct vhost_net_virtqueue *nvq,
- 		return -ENOSPC;
- 
- 	buflen += SKB_DATA_ALIGN(len + pad);
--	buf = page_frag_alloc_align(&net->pf_cache, buflen, GFP_KERNEL,
--				    SMP_CACHE_BYTES);
-+	buf = page_frag_alloc_va_align(&net->pf_cache, buflen, GFP_KERNEL,
-+				       SMP_CACHE_BYTES);
- 	if (unlikely(!buf))
- 		return -ENOMEM;
- 
-@@ -734,7 +734,7 @@ static int vhost_net_build_xdp(struct vhost_net_virtqueue *nvq,
- 	return 0;
- 
- err:
--	page_frag_free(buf);
-+	page_frag_free_va(buf);
- 	return ret;
- }
- 
-diff --git a/include/linux/page_frag_cache.h b/include/linux/page_frag_cache.h
-index 9da7cbd0ee47..a5747cf7a3a1 100644
---- a/include/linux/page_frag_cache.h
-+++ b/include/linux/page_frag_cache.h
-@@ -25,23 +25,24 @@ struct page_frag_cache {
- 
- void page_frag_cache_drain(struct page_frag_cache *nc);
- void __page_frag_cache_drain(struct page *page, unsigned int count);
--void *__page_frag_alloc_align(struct page_frag_cache *nc, unsigned int fragsz,
--			      gfp_t gfp_mask, unsigned int align_mask);
-+void *__page_frag_alloc_va_align(struct page_frag_cache *nc,
-+				 unsigned int fragsz, gfp_t gfp_mask,
-+				 unsigned int align_mask);
- 
--static inline void *page_frag_alloc_align(struct page_frag_cache *nc,
--					  unsigned int fragsz, gfp_t gfp_mask,
--					  unsigned int align)
-+static inline void *page_frag_alloc_va_align(struct page_frag_cache *nc,
-+					     unsigned int fragsz,
-+					     gfp_t gfp_mask, unsigned int align)
- {
- 	WARN_ON_ONCE(!is_power_of_2(align) || align > PAGE_SIZE);
--	return __page_frag_alloc_align(nc, fragsz, gfp_mask, -align);
-+	return __page_frag_alloc_va_align(nc, fragsz, gfp_mask, -align);
- }
- 
--static inline void *page_frag_alloc(struct page_frag_cache *nc,
--				    unsigned int fragsz, gfp_t gfp_mask)
-+static inline void *page_frag_alloc_va(struct page_frag_cache *nc,
-+				       unsigned int fragsz, gfp_t gfp_mask)
- {
--	return __page_frag_alloc_align(nc, fragsz, gfp_mask, ~0u);
-+	return __page_frag_alloc_va_align(nc, fragsz, gfp_mask, ~0u);
- }
- 
--void page_frag_free(void *addr);
-+void page_frag_free_va(void *addr);
- 
- #endif
-diff --git a/include/linux/skbuff.h b/include/linux/skbuff.h
-index ce077d14eab6..adaaa478fdce 100644
---- a/include/linux/skbuff.h
-+++ b/include/linux/skbuff.h
-@@ -3337,7 +3337,7 @@ static inline struct sk_buff *netdev_alloc_skb_ip_align(struct net_device *dev,
- 
- static inline void skb_free_frag(void *addr)
- {
--	page_frag_free(addr);
-+	page_frag_free_va(addr);
- }
- 
- void *__napi_alloc_frag_align(unsigned int fragsz, unsigned int align_mask);
-diff --git a/kernel/bpf/cpumap.c b/kernel/bpf/cpumap.c
-index a8e34416e960..3a6a237e7dd3 100644
---- a/kernel/bpf/cpumap.c
-+++ b/kernel/bpf/cpumap.c
-@@ -322,7 +322,7 @@ static int cpu_map_kthread_run(void *data)
- 
- 			/* Bring struct page memory area to curr CPU. Read by
- 			 * build_skb_around via page_is_pfmemalloc(), and when
--			 * freed written by page_frag_free call.
-+			 * freed written by page_frag_free_va call.
- 			 */
- 			prefetchw(page);
- 		}
-diff --git a/mm/page_frag_cache.c b/mm/page_frag_cache.c
-index 152ae5dec58a..c0ecfa733727 100644
---- a/mm/page_frag_cache.c
-+++ b/mm/page_frag_cache.c
-@@ -61,9 +61,9 @@ void __page_frag_cache_drain(struct page *page, unsigned int count)
- }
- EXPORT_SYMBOL(__page_frag_cache_drain);
- 
--void *__page_frag_alloc_align(struct page_frag_cache *nc,
--			      unsigned int fragsz, gfp_t gfp_mask,
--			      unsigned int align_mask)
-+void *__page_frag_alloc_va_align(struct page_frag_cache *nc,
-+				 unsigned int fragsz, gfp_t gfp_mask,
-+				 unsigned int align_mask)
- {
- 	unsigned int size, offset;
- 	struct page *page;
-@@ -124,16 +124,16 @@ void *__page_frag_alloc_align(struct page_frag_cache *nc,
- 
- 	return nc->va + offset;
- }
--EXPORT_SYMBOL(__page_frag_alloc_align);
-+EXPORT_SYMBOL(__page_frag_alloc_va_align);
- 
- /*
-  * Frees a page fragment allocated out of either a compound or order 0 page.
-  */
--void page_frag_free(void *addr)
-+void page_frag_free_va(void *addr)
- {
- 	struct page *page = virt_to_head_page(addr);
- 
- 	if (unlikely(put_page_testzero(page)))
- 		free_unref_page(page, compound_order(page));
- }
--EXPORT_SYMBOL(page_frag_free);
-+EXPORT_SYMBOL(page_frag_free_va);
-diff --git a/mm/page_frag_test.c b/mm/page_frag_test.c
-index f1c861709551..92eb288aab75 100644
---- a/mm/page_frag_test.c
-+++ b/mm/page_frag_test.c
-@@ -265,7 +265,7 @@ static int page_frag_pop_thread(void *arg)
- 
- 		if (obj) {
- 			nr--;
--			page_frag_free(obj);
-+			page_frag_free_va(obj);
- 		} else {
- 			cond_resched();
- 		}
-@@ -295,17 +295,18 @@ static int page_frag_push_thread(void *arg)
- 
- 		size = clamp(size, 1U, PAGE_SIZE);
- 		if (test_align)
--			va = page_frag_alloc_align(&test_frag, size, GFP_KERNEL,
--						   SMP_CACHE_BYTES);
-+			va = page_frag_alloc_va_align(&test_frag, size,
-+						      GFP_KERNEL,
-+						      SMP_CACHE_BYTES);
- 		else
--			va = page_frag_alloc(&test_frag, size, GFP_KERNEL);
-+			va = page_frag_alloc_va(&test_frag, size, GFP_KERNEL);
- 
- 		if (!va)
- 			continue;
- 
- 		ret = objpool_push(va, pool);
- 		if (ret) {
--			page_frag_free(va);
-+			page_frag_free_va(va);
- 			cond_resched();
- 		} else {
- 			nr--;
-diff --git a/net/core/skbuff.c b/net/core/skbuff.c
-index 466999a7515e..dca4e7445348 100644
---- a/net/core/skbuff.c
-+++ b/net/core/skbuff.c
-@@ -309,8 +309,8 @@ void *__napi_alloc_frag_align(unsigned int fragsz, unsigned int align_mask)
- 
- 	fragsz = SKB_DATA_ALIGN(fragsz);
- 
--	return __page_frag_alloc_align(&nc->page, fragsz, GFP_ATOMIC,
--				       align_mask);
-+	return __page_frag_alloc_va_align(&nc->page, fragsz, GFP_ATOMIC,
-+					  align_mask);
- }
- EXPORT_SYMBOL(__napi_alloc_frag_align);
- 
-@@ -322,15 +322,15 @@ void *__netdev_alloc_frag_align(unsigned int fragsz, unsigned int align_mask)
- 	if (in_hardirq() || irqs_disabled()) {
- 		struct page_frag_cache *nc = this_cpu_ptr(&netdev_alloc_cache);
- 
--		data = __page_frag_alloc_align(nc, fragsz, GFP_ATOMIC,
--					       align_mask);
-+		data = __page_frag_alloc_va_align(nc, fragsz, GFP_ATOMIC,
-+						  align_mask);
- 	} else {
- 		struct napi_alloc_cache *nc;
- 
- 		local_bh_disable();
- 		nc = this_cpu_ptr(&napi_alloc_cache);
--		data = __page_frag_alloc_align(&nc->page, fragsz, GFP_ATOMIC,
--					       align_mask);
-+		data = __page_frag_alloc_va_align(&nc->page, fragsz, GFP_ATOMIC,
-+						  align_mask);
- 		local_bh_enable();
- 	}
- 	return data;
-@@ -740,12 +740,12 @@ struct sk_buff *__netdev_alloc_skb(struct net_device *dev, unsigned int len,
- 
- 	if (in_hardirq() || irqs_disabled()) {
- 		nc = this_cpu_ptr(&netdev_alloc_cache);
--		data = page_frag_alloc(nc, len, gfp_mask);
-+		data = page_frag_alloc_va(nc, len, gfp_mask);
- 		pfmemalloc = nc->pfmemalloc;
- 	} else {
- 		local_bh_disable();
- 		nc = this_cpu_ptr(&napi_alloc_cache.page);
--		data = page_frag_alloc(nc, len, gfp_mask);
-+		data = page_frag_alloc_va(nc, len, gfp_mask);
- 		pfmemalloc = nc->pfmemalloc;
- 		local_bh_enable();
- 	}
-@@ -833,7 +833,7 @@ struct sk_buff *napi_alloc_skb(struct napi_struct *napi, unsigned int len)
- 	} else {
- 		len = SKB_HEAD_ALIGN(len);
- 
--		data = page_frag_alloc(&nc->page, len, gfp_mask);
-+		data = page_frag_alloc_va(&nc->page, len, gfp_mask);
- 		pfmemalloc = nc->page.pfmemalloc;
- 	}
- 
-diff --git a/net/core/xdp.c b/net/core/xdp.c
-index 41693154e426..245a2d011aeb 100644
---- a/net/core/xdp.c
-+++ b/net/core/xdp.c
-@@ -391,7 +391,7 @@ void __xdp_return(void *data, struct xdp_mem_info *mem, bool napi_direct,
- 		page_pool_put_full_page(page->pp, page, napi_direct);
- 		break;
- 	case MEM_TYPE_PAGE_SHARED:
--		page_frag_free(data);
-+		page_frag_free_va(data);
- 		break;
- 	case MEM_TYPE_PAGE_ORDER0:
- 		page = virt_to_page(data); /* Assumes order0 page*/
-diff --git a/net/rxrpc/txbuf.c b/net/rxrpc/txbuf.c
-index c3913d8a50d3..dccb0353ee84 100644
---- a/net/rxrpc/txbuf.c
-+++ b/net/rxrpc/txbuf.c
-@@ -33,8 +33,8 @@ struct rxrpc_txbuf *rxrpc_alloc_data_txbuf(struct rxrpc_call *call, size_t data_
- 
- 	data_align = umax(data_align, L1_CACHE_BYTES);
- 	mutex_lock(&call->conn->tx_data_alloc_lock);
--	buf = page_frag_alloc_align(&call->conn->tx_data_alloc, total, gfp,
--				    data_align);
-+	buf = page_frag_alloc_va_align(&call->conn->tx_data_alloc, total, gfp,
-+				       data_align);
- 	mutex_unlock(&call->conn->tx_data_alloc_lock);
- 	if (!buf) {
- 		kfree(txb);
-@@ -96,17 +96,18 @@ struct rxrpc_txbuf *rxrpc_alloc_ack_txbuf(struct rxrpc_call *call, size_t sack_s
- 	if (!txb)
- 		return NULL;
- 
--	buf = page_frag_alloc(&call->local->tx_alloc,
--			      sizeof(*whdr) + sizeof(*ack) + 1 + 3 + sizeof(*trailer), gfp);
-+	buf = page_frag_alloc_va(&call->local->tx_alloc,
-+				 sizeof(*whdr) + sizeof(*ack) + 1 + 3 + sizeof(*trailer), gfp);
- 	if (!buf) {
- 		kfree(txb);
- 		return NULL;
- 	}
- 
- 	if (sack_size) {
--		buf2 = page_frag_alloc(&call->local->tx_alloc, sack_size, gfp);
-+		buf2 = page_frag_alloc_va(&call->local->tx_alloc, sack_size,
-+					  gfp);
- 		if (!buf2) {
--			page_frag_free(buf);
-+			page_frag_free_va(buf);
- 			kfree(txb);
- 			return NULL;
- 		}
-@@ -180,7 +181,7 @@ static void rxrpc_free_txbuf(struct rxrpc_txbuf *txb)
- 			  rxrpc_txbuf_free);
- 	for (i = 0; i < txb->nr_kvec; i++)
- 		if (txb->kvec[i].iov_base)
--			page_frag_free(txb->kvec[i].iov_base);
-+			page_frag_free_va(txb->kvec[i].iov_base);
- 	kfree(txb);
- 	atomic_dec(&rxrpc_nr_txbuf);
- }
-diff --git a/net/sunrpc/svcsock.c b/net/sunrpc/svcsock.c
-index 6b3f01beb294..42d20412c1c3 100644
---- a/net/sunrpc/svcsock.c
-+++ b/net/sunrpc/svcsock.c
-@@ -1222,8 +1222,8 @@ static int svc_tcp_sendmsg(struct svc_sock *svsk, struct svc_rqst *rqstp,
- 	/* The stream record marker is copied into a temporary page
- 	 * fragment buffer so that it can be included in rq_bvec.
- 	 */
--	buf = page_frag_alloc(&svsk->sk_frag_cache, sizeof(marker),
--			      GFP_KERNEL);
-+	buf = page_frag_alloc_va(&svsk->sk_frag_cache, sizeof(marker),
-+				 GFP_KERNEL);
- 	if (!buf)
- 		return -ENOMEM;
- 	memcpy(buf, &marker, sizeof(marker));
-@@ -1235,7 +1235,7 @@ static int svc_tcp_sendmsg(struct svc_sock *svsk, struct svc_rqst *rqstp,
- 	iov_iter_bvec(&msg.msg_iter, ITER_SOURCE, rqstp->rq_bvec,
- 		      1 + count, sizeof(marker) + rqstp->rq_res.len);
- 	ret = sock_sendmsg(svsk->sk_sock, &msg);
--	page_frag_free(buf);
-+	page_frag_free_va(buf);
- 	if (ret < 0)
- 		return ret;
- 	*sentp += ret;
--- 
-2.33.0
-
+Thanks,
+Olek
