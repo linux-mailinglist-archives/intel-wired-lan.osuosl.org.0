@@ -2,111 +2,91 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 834258C0EE8
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  9 May 2024 13:36:27 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9773D8C105A
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  9 May 2024 15:26:47 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 1706860AC6;
-	Thu,  9 May 2024 11:36:26 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 4272A60EC6;
+	Thu,  9 May 2024 13:26:46 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id FhqEnZic_igk; Thu,  9 May 2024 11:36:25 +0000 (UTC)
+ id qRsqnx4zPddq; Thu,  9 May 2024 13:26:45 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 98DC160E13
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 45E7660EF9
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1715254584;
-	bh=76BsGxeVLBzyxJ8K4TKonOzVCpXKkP+/i5JWDQpwIJo=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1715261205;
+	bh=yKm+1qIDX+Jn4SDr5mTjng/KexbshdU2tPnf6Y05hNs=;
+	h=Date:From:To:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=4M+1IbP0Lis0m7JkrIHwgafJED+yMeyNyxZl3I3DyaYUqsJriPwpHEU+cmIB31x0D
-	 R85S6bHqfUf7ydSJHa9ECa0B15uc4Fw7Z53rrl3NDBuWbu5GrDzxEqyDjsD1Ydx1KW
-	 uuHrsyfY42j459sZuIf/HjEP6wtgN8F7p5Na7heHNGbUxftpVH4Ji5CT4T7Ik50GGo
-	 O9K5RuzeAs4BagIjS4y3ll40392B9G0LwUBO0fnM5l0Q/dZ1aN+c9tCDxW4FL0Q9CT
-	 ccCCxFa59c32kFw/t1fM1eFE6c7Vr7y10bAN9FX4nkCDB4D2n4H9PGsSKOBbfPPd7i
-	 3u8Fpp4V6Ajsw==
+	b=aRVIyCTB69J1p2NO1bXNJf7elLaX57vsdTeg6zqpQ5tzzRRYNr1G4rnm4i2hDDfz+
+	 yNajnRpSn5UfkbW/oFzdZuE/GmSKVpFeKhMkL+PMOClJURpoMHeYQW3LQGW2EfLdza
+	 RUbThdmvvNfwJHikKUTEuW+Nisc576EthTgEzEv3fnLRPWRXTBHHvLBFdEbXSN9V3n
+	 1H9p5+BYPpEt5yVM+NUZCQq1zm98Dq+YzAFbhEx+noKP20NBWtBAln1KUBWM2yvNoO
+	 oWnI2mzlPwdBV6pdshW+f+PmhljI8zNjuWMTpVggUnJpE0L9m/QXoxVELWajecfeXO
+	 58Nu0qyCKvdEQ==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 98DC160E13;
-	Thu,  9 May 2024 11:36:24 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 45E7660EF9;
+	Thu,  9 May 2024 13:26:45 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 2B31A1BF361
- for <intel-wired-lan@lists.osuosl.org>; Thu,  9 May 2024 11:36:22 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 115F61BF3EE
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  9 May 2024 13:26:43 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 16AD2401AF
- for <intel-wired-lan@lists.osuosl.org>; Thu,  9 May 2024 11:36:22 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 0A5914043A
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  9 May 2024 13:26:43 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Wewa0BT3jyLe for <intel-wired-lan@lists.osuosl.org>;
- Thu,  9 May 2024 11:36:20 +0000 (UTC)
-Received-SPF: None (mailfrom) identity=mailfrom;
- client-ip=2a00:1450:4864:20::32d; helo=mail-wm1-x32d.google.com;
- envelope-from=jiri@resnulli.us; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 37D184013C
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 37D184013C
-Received: from mail-wm1-x32d.google.com (mail-wm1-x32d.google.com
- [IPv6:2a00:1450:4864:20::32d])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 37D184013C
- for <intel-wired-lan@lists.osuosl.org>; Thu,  9 May 2024 11:36:19 +0000 (UTC)
-Received: by mail-wm1-x32d.google.com with SMTP id
- 5b1f17b1804b1-41b21ed19f5so5976895e9.2
- for <intel-wired-lan@lists.osuosl.org>; Thu, 09 May 2024 04:36:19 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1715254578; x=1715859378;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=76BsGxeVLBzyxJ8K4TKonOzVCpXKkP+/i5JWDQpwIJo=;
- b=tGKS60QFVMaQ8fbdKzy3n13COVnq1TVFkmFgTFN8wLHS5cnBDTBaEut4YrDV/9mQ85
- pYbQB6jKKFchjbIaeTYEwm851lhxN6aTv7kLUE7NAeVcNSm2YEZlAEPH9kWHCpskfL3m
- j+0wn+2+j/TxzlwSdS3du91Kh/437413La0R0n3x3nUQl3XY6fiaSnWlMR/RzIjLucKq
- WWK763SYHfiYkQmb9/tZ18cpMM3cQK3LKrQXmpN97RosCtx11IcUouajM6UkyfA5diW0
- 0OfcCQ/GruKlX9Q/KuZaDH+JMFUWPbrbahXcKcJ/eWEXQXHl/geWiArZsfJKeak1f+Dp
- Ke2w==
-X-Gm-Message-State: AOJu0YwHbFCQ8xlqKhVE8TruU8jrKFPrKcAYL8e6jVfl8Vzb8QFKqntU
- aR06yH41vywgCVlTeMWb+6lmLnNRhDrfdotJzO5a7BOU8iIN47tcw56nOtPKbJtqHZugtSr60u0
- k
-X-Google-Smtp-Source: AGHT+IGIaiDUENiA8xynqK6AWFY27jLTjY0IGpqLreCy/rmk21+mM/44oKTeXd0g3N/SGUc+MEhuJQ==
-X-Received: by 2002:a05:600c:4f82:b0:418:2ccf:cbc7 with SMTP id
- 5b1f17b1804b1-41f71302acemr41602985e9.2.1715254577604; 
- Thu, 09 May 2024 04:36:17 -0700 (PDT)
-Received: from localhost ([193.47.165.251]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-41fccbe8fb5sm22749625e9.9.2024.05.09.04.36.16
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 09 May 2024 04:36:17 -0700 (PDT)
-Date: Thu, 9 May 2024 13:36:13 +0200
-From: Jiri Pirko <jiri@resnulli.us>
-To: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-Message-ID: <Zjy1LXn4Vj0PX_xs@nanopsycho.orion>
-References: <20240507114516.9765-1-michal.swiatkowski@linux.intel.com>
- <20240507114516.9765-15-michal.swiatkowski@linux.intel.com>
+ id BiplDK6HMGyK for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  9 May 2024 13:26:42 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=45.83.229.9;
+ helo=mail.ycharbi.fr; envelope-from=kernel.org-fo5k2w@ycharbi.fr;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org CD58340531
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org CD58340531
+Received: from mail.ycharbi.fr (mail.ycharbi.fr [45.83.229.9])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id CD58340531
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  9 May 2024 13:26:41 +0000 (UTC)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20240507114516.9765-15-michal.swiatkowski@linux.intel.com>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=resnulli-us.20230601.gappssmtp.com; s=20230601; t=1715254578; x=1715859378;
- darn=lists.osuosl.org; 
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=76BsGxeVLBzyxJ8K4TKonOzVCpXKkP+/i5JWDQpwIJo=;
- b=LA+uaQ5zL6JuIkBzwx31XkFYvKzRw6BzaUtpXCL/NXusV+WzQo5pzP92L5N4FzCRu7
- xYDw1O84YEXqA7z0fVFUQP1cAJJKLlNtToCdCefxJaHMtPA4bLoCb5QTUqJwrlvEzGd7
- 8dgiL6mLR245i42ap9D2LYF1AwKA0HPcxtDGDj1xA48loHurkWMwKtOFR70iYtt3MFXZ
- jxcLgZrH5PJp+StRVfz2rIZ/LdC38Y8DYyqgrceBHvgg1r+fyFwTgFmQnJPnGFMSUzFA
- oBiENOydeeuazwqVzqzMs6pn8mXT4hnXVfoq7bSDIY4Y7tcf8pIugZa0iehEdkfp5QfA
- it2w==
+Date: Thu, 09 May 2024 13:26:37 +0000
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+From: kernel.org-fo5k2w@ycharbi.fr
+Message-ID: <9eaa16ac88aafb6dee36c5781ae4de7881bb03a2@ycharbi.fr>
+TLS-Required: No
+To: "Jacob Keller" <jacob.e.keller@intel.com>, kernel.org-fo5k2w@ycharbi.fr,
+ "Jeff Daly" <jeffd@silicom-usa.com>
+In-Reply-To: <4a0bf7cf-d108-49ac-ac7c-6136a070c44b@intel.com>
+References: <4a0bf7cf-d108-49ac-ac7c-6136a070c44b@intel.com>
+ <cbe874db-9ac9-42b8-afa0-88ea910e1e99@intel.com>
+ <e16d08bf-49f6-4c51-85fa-7c368d1887b4@ycharbi.fr>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=ycharbi.fr; s=mail; 
+ t=1715261197; bh=n9S+TnoW45iW3c1qRGiUsfLF0iQ/FkVIWKtB8OwckPI=;
+ h=Date:List-Unsubscribe:From:Subject:To:Cc:In-Reply-To:References:
+ From;
+ b=EGyQrvesRWfmZbrsYLVsDRcI8H5bWqrWNoo1/l/atEyr3xPbRD/D8EY058C0NOsgX
+ FbX4Ohi0byqt4tjrPOr6MOaIP0udb7Iu57eelerCiStE8KZTI9e9gBkJQ7Zs7T61w1
+ ab397V1+3H4bUS9M0I4TZRSmrDCwYPOod1bdDR1gboTIHcMZEvw5YdZA3mghVy2ouF
+ iZOfXciPo0i7EZuLVvvs6FUH7E3/6qczKF6GCHbzpMCKr2NEcxX7pXA/UR1GjvMipH
+ F/fx62YXxTuf7j+NixZT0xw0QksUsObQrYEo18g9yDPypOOIag8G4A91+7Q7tUB/As
+ nVbx8//8V3QSbOFCmsc7gvNcYCuNxLxRSGEekEbIPft/QaJyYUNmTUiBLqmrDZrySe
+ UUqZjQBzfhQFk3gVIfquzGjPuIgbgF2eBf4yN8GAs3Aux0MD6/kHTozCfOg31l/yN8
+ ERP0vANGy4wnpRquv9jjbmlJ86VCkKrwOCY+tc76mk1N+qWFfovvhiI7btAqjU4qsG
+ 9zkqCFwzZdzy8SRELJfP74BNxsfTgZ41fjXmtiVKuLhMlxntTXOen+AxOlduFziQYE
+ 7hGGtkO5iUzHN5+vRy25AmpR2NunrCCM7Ub2xEMPp5OMVZIi4Yb0KzN2z697gMMRq3
+ bsuqYxnJI8LWj4Hn4kN20OPs=
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=resnulli.us
+ dmarc=pass (p=none dis=none)
+ header.from=ycharbi.fr
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=resnulli-us.20230601.gappssmtp.com
- header.i=@resnulli-us.20230601.gappssmtp.com header.a=rsa-sha256
- header.s=20230601 header.b=LA+uaQ5z
-Subject: Re: [Intel-wired-lan] [iwl-next v1 14/14] ice: allow to activate
- and deactivate subfunction
+ dkim=pass (4096-bit key,
+ unprotected) header.d=ycharbi.fr header.i=@ycharbi.fr header.a=rsa-sha256
+ header.s=mail header.b=EGyQrves
+Subject: Re: [Intel-wired-lan] Non-functional ixgbe driver between Intel
+ X553 chipset and Cisco switch via kernel >=6.1 under Debian
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -119,351 +99,163 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: shayd@nvidia.com, maciej.fijalkowski@intel.com,
- mateusz.polchlopek@intel.com, netdev@vger.kernel.org, jiri@nvidia.com,
- michal.kubiak@intel.com, intel-wired-lan@lists.osuosl.org,
- pio.raczynski@gmail.com, sridhar.samudrala@intel.com, jacob.e.keller@intel.com,
- wojciech.drewek@intel.com, przemyslaw.kitszel@intel.com
+Cc: intel-wired-lan@lists.osuosl.org, regressions@leemhuis.info,
+ anthony.l.nguyen@intel.com, netdev@vger.kernel.org
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Tue, May 07, 2024 at 01:45:15PM CEST, michal.swiatkowski@linux.intel.com wrote:
->From: Piotr Raczynski <piotr.raczynski@intel.com>
->
->Use previously implemented SF aux driver. It is probe during SF
->activation and remove after deactivation.
->
->Signed-off-by: Piotr Raczynski <piotr.raczynski@intel.com>
->Signed-off-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
->---
-> .../ethernet/intel/ice/devlink/devlink_port.c | 108 ++++++++++++++++++
-> .../ethernet/intel/ice/devlink/devlink_port.h |   6 +
-> drivers/net/ethernet/intel/ice/ice_sf_eth.c   | 107 +++++++++++++++++
-> drivers/net/ethernet/intel/ice/ice_sf_eth.h   |   3 +
-> 4 files changed, 224 insertions(+)
->
->diff --git a/drivers/net/ethernet/intel/ice/devlink/devlink_port.c b/drivers/net/ethernet/intel/ice/devlink/devlink_port.c
->index e8929e91aff2..43ed05e5c883 100644
->--- a/drivers/net/ethernet/intel/ice/devlink/devlink_port.c
->+++ b/drivers/net/ethernet/intel/ice/devlink/devlink_port.c
->@@ -482,6 +482,42 @@ void ice_devlink_destroy_sf_dev_port(struct ice_sf_dev *sf_dev)
-> 	devl_port_unregister(&sf_dev->priv->devlink_port);
-> }
-> 
->+/**
->+ * ice_activate_dynamic_port - Activate a dynamic port
->+ * @dyn_port: dynamic port instance to activate
->+ * @extack: extack for reporting error messages
->+ *
->+ * Activate the dynamic port based on its flavour.
->+ *
->+ * Return: zero on success or an error code on failure.
->+ */
->+static int
->+ice_activate_dynamic_port(struct ice_dynamic_port *dyn_port,
->+			  struct netlink_ext_ack *extack)
->+{
->+	int err;
->+
->+	err = ice_sf_eth_activate(dyn_port, extack);
->+	if (err)
->+		return err;
->+
->+	dyn_port->active = true;
->+
->+	return 0;
->+}
->+
->+/**
->+ * ice_deactivate_dynamic_port - Deactivate a dynamic port
->+ * @dyn_port: dynamic port instance to deactivate
->+ *
->+ * Undo activation of a dynamic port.
->+ */
->+static void ice_deactivate_dynamic_port(struct ice_dynamic_port *dyn_port)
->+{
->+	ice_sf_eth_deactivate(dyn_port);
->+	dyn_port->active = false;
->+}
->+
-> /**
->  * ice_dealloc_dynamic_port - Deallocate and remove a dynamic port
->  * @dyn_port: dynamic port instance to deallocate
->@@ -494,6 +530,9 @@ static void ice_dealloc_dynamic_port(struct ice_dynamic_port *dyn_port)
-> 	struct devlink_port *devlink_port = &dyn_port->devlink_port;
-> 	struct ice_pf *pf = dyn_port->pf;
-> 
->+	if (dyn_port->active)
->+		ice_deactivate_dynamic_port(dyn_port);
->+
-> 	xa_erase(&pf->sf_nums, devlink_port->attrs.pci_sf.sf);
-> 	ice_eswitch_detach_sf(pf, dyn_port);
-> 	ice_vsi_free(dyn_port->vsi);
->@@ -638,10 +677,79 @@ ice_devlink_port_fn_hw_addr_get(struct devlink_port *port, u8 *hw_addr,
-> 	return 0;
-> }
-> 
->+/**
->+ * ice_devlink_port_fn_state_set - devlink handler for port state set
->+ * @port: pointer to devlink port
->+ * @state: state to set
->+ * @extack: extack for reporting error messages
->+ *
->+ * Activates or deactivates the port.
->+ *
->+ * Return: zero on success or an error code on failure.
->+ */
->+static int
->+ice_devlink_port_fn_state_set(struct devlink_port *port,
->+			      enum devlink_port_fn_state state,
->+			      struct netlink_ext_ack *extack)
->+{
->+	struct ice_dynamic_port *dyn_port;
->+
->+	dyn_port = ice_devlink_port_to_dyn(port);
->+
->+	switch (state) {
->+	case DEVLINK_PORT_FN_STATE_ACTIVE:
->+		if (!dyn_port->active)
->+			return ice_activate_dynamic_port(dyn_port, extack);
->+		break;
->+	case DEVLINK_PORT_FN_STATE_INACTIVE:
->+		if (dyn_port->active)
->+			ice_deactivate_dynamic_port(dyn_port);
->+		break;
->+	}
->+
->+	return 0;
->+}
->+
->+/**
->+ * ice_devlink_port_fn_state_get - devlink handler for port state get
->+ * @port: pointer to devlink port
->+ * @state: admin configured state of the port
->+ * @opstate: current port operational state
->+ * @extack: extack for reporting error messages
->+ *
->+ * Gets port state.
->+ *
->+ * Return: zero on success or an error code on failure.
->+ */
->+static int
->+ice_devlink_port_fn_state_get(struct devlink_port *port,
->+			      enum devlink_port_fn_state *state,
->+			      enum devlink_port_fn_opstate *opstate,
->+			      struct netlink_ext_ack *extack)
->+{
->+	struct ice_dynamic_port *dyn_port;
->+
->+	dyn_port = ice_devlink_port_to_dyn(port);
->+
->+	if (dyn_port->active)
->+		*state = DEVLINK_PORT_FN_STATE_ACTIVE;
->+	else
->+		*state = DEVLINK_PORT_FN_STATE_INACTIVE;
->+
->+	if (dyn_port->attached)
->+		*opstate = DEVLINK_PORT_FN_OPSTATE_ATTACHED;
->+	else
->+		*opstate = DEVLINK_PORT_FN_OPSTATE_DETACHED;
->+
->+	return 0;
->+}
->+
-> static const struct devlink_port_ops ice_devlink_port_sf_ops = {
-> 	.port_del = ice_devlink_port_del,
-> 	.port_fn_hw_addr_get = ice_devlink_port_fn_hw_addr_get,
-> 	.port_fn_hw_addr_set = ice_devlink_port_fn_hw_addr_set,
->+	.port_fn_state_get = ice_devlink_port_fn_state_get,
->+	.port_fn_state_set = ice_devlink_port_fn_state_set,
-> };
-> 
-> /**
->diff --git a/drivers/net/ethernet/intel/ice/devlink/devlink_port.h b/drivers/net/ethernet/intel/ice/devlink/devlink_port.h
->index 6e14b9e4d621..28574e585341 100644
->--- a/drivers/net/ethernet/intel/ice/devlink/devlink_port.h
->+++ b/drivers/net/ethernet/intel/ice/devlink/devlink_port.h
->@@ -14,17 +14,23 @@
->  * @devlink_port: the associated devlink port structure
->  * @pf: pointer to the PF private structure
->  * @vsi: the VSI associated with this port
->+ * @sf_dev: pointer to the subfunction device
->  *
->  * An instance of a dynamically added devlink port. Each port flavour
->  */
-> struct ice_dynamic_port {
-> 	u8 hw_addr[ETH_ALEN];
-> 	u8 active: 1;
->+	u8 attached: 1;
-> 	struct devlink_port devlink_port;
-> 	struct ice_pf *pf;
-> 	struct ice_vsi *vsi;
-> 	unsigned long repr_id;
-> 	u32 sfnum;
->+	/* Flavour-specific implementation data */
->+	union {
->+		struct ice_sf_dev *sf_dev;
->+	};
-> };
-> 
-> void ice_dealloc_all_dynamic_ports(struct ice_pf *pf);
->diff --git a/drivers/net/ethernet/intel/ice/ice_sf_eth.c b/drivers/net/ethernet/intel/ice/ice_sf_eth.c
->index 3a540a2638d1..c01190c9403f 100644
->--- a/drivers/net/ethernet/intel/ice/ice_sf_eth.c
->+++ b/drivers/net/ethernet/intel/ice/ice_sf_eth.c
->@@ -147,6 +147,7 @@ static int ice_sf_dev_probe(struct auxiliary_device *adev,
-> 	devl_unlock(devlink);
-> 
-> 	devlink_register(devlink);
->+	dyn_port->attached = true;
-> 
-> 	return 0;
-> 
->@@ -186,6 +187,8 @@ static void ice_sf_dev_remove(struct auxiliary_device *adev)
-> 	devl_unlock(devlink);
-> 	devlink_free(devlink);
-> 	ice_vsi_decfg(vsi);
->+
->+	dyn_port->attached = false;
-> }
-> 
-> static const struct auxiliary_device_id ice_sf_dev_id_table[] = {
->@@ -202,6 +205,8 @@ static struct auxiliary_driver ice_sf_driver = {
-> 	.id_table = ice_sf_dev_id_table
-> };
-> 
->+static DEFINE_XARRAY_ALLOC1(ice_sf_aux_id);
->+
-> /**
->  * ice_sf_driver_register - Register new auxiliary subfunction driver
->  *
->@@ -220,3 +225,105 @@ void ice_sf_driver_unregister(void)
-> {
-> 	auxiliary_driver_unregister(&ice_sf_driver);
-> }
->+
->+/**
->+ * ice_sf_dev_release - Release device associated with auxiliary device
->+ * @device: pointer to the device
->+ *
->+ * Since most of the code for subfunction deactivation is handled in
->+ * the remove handler, here just free tracking resources.
->+ */
->+static void ice_sf_dev_release(struct device *device)
->+{
->+	struct auxiliary_device *adev = to_auxiliary_dev(device);
->+	struct ice_sf_dev *sf_dev = ice_adev_to_sf_dev(adev);
->+
->+	xa_erase(&ice_sf_aux_id, adev->id);
->+	kfree(sf_dev);
->+}
->+
->+/**
->+ * ice_sf_eth_activate - Activate Ethernet subfunction port
->+ * @dyn_port: the dynamic port instance for this subfunction
->+ * @extack: extack for reporting error messages
->+ *
->+ * Activate the dynamic port as an Ethernet subfunction. Setup the netdev
->+ * resources associated and initialize the auxiliary device.
->+ *
->+ * Return: zero on success or an error code on failure.
->+ */
->+int
->+ice_sf_eth_activate(struct ice_dynamic_port *dyn_port,
->+		    struct netlink_ext_ack *extack)
->+{
->+	struct ice_pf *pf = dyn_port->pf;
->+	struct ice_sf_dev *sf_dev;
->+	struct pci_dev *pdev;
->+	int err;
->+	u32 id;
->+
->+	err  = xa_alloc(&ice_sf_aux_id, &id, NULL, xa_limit_32b,
+Hi,
 
-Double space.
+> No link detected, but it does detect this is a 10GBaseT cable.
+> Interesting it doesn't report FEC or autonegotiation. Hmm.
+
+In fact, I personally find it strange that the "Supported link modes" is =
+"10000baseT/Full". A DAC is not a SFP+ 8P8C (RJ45) module. Wouldn't it be=
+ more logical if the modes reported were the same as those obtained by an=
+ "ethtool eth2" on the Connectx-3 side? :
+
+Settings for eth2:
+	Supported ports: [ FIBRE ]
+	Supported link modes:   10000baseKX4/Full
+	                        1000baseX/Full
+	                        10000baseCR/Full
+	                        10000baseSR/Full
+	Supported pause frame use: Symmetric Receive-only
+	Supports auto-negotiation: No
+	Supported FEC modes: Not reported
+	Advertised link modes:  10000baseKX4/Full
+	                        1000baseX/Full
+	                        10000baseCR/Full
+	                        10000baseSR/Full
+	Advertised pause frame use: Symmetric
+	Advertised auto-negotiation: No
+	Advertised FEC modes: Not reported
+	Speed: 10000Mb/s
+	Duplex: Full
+	Auto-negotiation: off
+	Port: Direct Attach Copper
+	PHYAD: 0
+	Transceiver: internal
+	Supports Wake-on: d
+	Wake-on: d
+        Current message level: 0x00000014 (20)
+                               link ifdown
+	Link detected: yes
 
 
->+			GFP_KERNEL);
->+	if (err) {
->+		NL_SET_ERR_MSG_MOD(extack, "Could not allocate subfunction ID");
->+		return err;
->+	}
->+
->+	sf_dev = kzalloc(sizeof(*sf_dev), GFP_KERNEL);
->+	if (!sf_dev) {
->+		err = -ENOMEM;
->+		NL_SET_ERR_MSG_MOD(extack, "Could not allocate sf_dev memory");
->+		goto xa_erase;
->+	}
->+	pdev = pf->pdev;
->+
->+	sf_dev->dyn_port = dyn_port;
->+	sf_dev->adev.id = id;
->+	sf_dev->adev.name = "sf";
->+	sf_dev->adev.dev.release = ice_sf_dev_release;
->+	sf_dev->adev.dev.parent = &pdev->dev;
->+
->+	err = auxiliary_device_init(&sf_dev->adev);
->+	if (err) {
->+		NL_SET_ERR_MSG_MOD(extack, "Failed to initialize auxiliary device");
->+		goto sf_dev_free;
->+	}
->+
->+	err = auxiliary_device_add(&sf_dev->adev);
->+	if (err) {
->+		NL_SET_ERR_MSG_MOD(extack, "Auxiliary device failed to probe");
+In other words, isn't the fact that the reported mode is "10000baseT/Full=
+" a bug in itself?
+=20
+>=20Knowing the kernel is the important part, we don't have specific
+> versioning of drivers in the kernel anymore.
 
-How do you know? Probe may happen async.
+Ok. I take note of this information.
+
+> The steps would require that you build the kernel manually. I can
+> outline the steps i would take here
+>=20
+>=201. get the kernel source from git.kernel.org. I place it in $HOME/git=
+/linux
+> 2. switch to v5.10 with 'git switch --detach v5.10'
+> 2. copy the debian 5.10 config file to $HOME/git/linux/.config
+> 3. build kernel with 'make -j24' (adjust -j depending on how much CPU
+> you want to spend building the kernel)
+> 4. install with 'sudo make -j24 modules_install && sudo make install'
+> 5. reboot and select the v5.10 kernel, double check it works.
+> 6. in $HOME/git/linux run 'git bisect start' to initiate the bisect ses=
+sion.
+> 7. First, label the current v5.10 commit as good with 'git bisect good'
+> 8. Second, label the v6.1 commit as bad with 'git bisect bad v6.1'
+>=20
+>=20This will initiate a bisect session and will checkout the kernel
+> approximately halfway between v5.10 and v6.1. For each bisection point
+> it checks, run the following steps:
+>=20
+>=201. 'make olddefconfig' to update the configuration for this version
+> 2. 'make -j24' to rebuild with the current version
+> 3. 'sudo make -j24 modules_install && sudo make install' to install thi=
+s
+> version.
+> 4. reboot into that version and check its behavior.
+> 5. If it works properly then run 'git bisect good'
+> 6. If it works incorrectly, then run 'git bisect bad'
+>=20
+>=20A new commit will be selected. It will pick one between the latest go=
+od
+> point and the closest bad point, essentially honing in towards the
+> incorrect behavior.
+>=20
+>=20If for any reason a commit can't be built or tested, you can use "git
+> bisect skip" and it will skip around a bit to find another point that
+> can be tried.
+
+Thank you for your and Thorsten Leemhuis's advice. I don't know whether t=
+he following Bisect log will be of any help to you. However, I have deter=
+mined precisely that the problem was introduced with version 6.1. If I bo=
+ot into 6.0, it works perfectly. So there are fewer differences to search=
+ for the problem. Here's the feedback from Bisect, but I'm still dubious =
+about the relevance of this log because the =E2=80=9Cgit bisect bad v6.1=
+=E2=80=9D command returned "7614896350aa20764c5eca527262d9eb0a57da63 =C3=
+=A9tait =C3=A0 la fois good et bad"... I didn't really understand how it =
+all worked... :
+
+git bisect start
+# good: [4fe89d07dcc2804c8b562f6c7896a45643d34b2f] Linux 6.0
+git bisect good 45eb8ae5370d5df1ee8236f45df3f29103ba6e12
+# bad: [830b3c68c1fb1e9176028d02ef86f3cf76aa2476] Linux 6.1
+git bisect bad 7614896350aa20764c5eca527262d9eb0a57da63
+
+I should point out that I had to switch back to Debian 11 because 12 and =
+13 refuse to compile these old kernels... Anyway, I compiled the versions=
+ successively and came across the difference in operation between 6.0 and=
+ 6.1.
+
+> I suspect those changes must have broken the Cisco switch link behavior=
+.
+> I unfortunately do not know enough about this hardware or the SFI
+> configuration to understand why this causes it.
+>=20
+>=20If you don't want to try bisect, I would suggest trying to revert tha=
+t
+> commit or simply replace the ixgbe_setup_sfi_x550a function with the on=
+e
+> from out-of-tree here. If you do that, you can rebuild just ixgbe with
+> "make M=3Ddrivers/net/ethernet/intel/ixgbe" and then insert the module
+> with "insmod drivers/net/ethernet/intel/ixgbe/ixgbe.ko".
+>=20
+>=20It seems likely that this change had unintended side effect which bro=
+ke
+> the Cisco switch linking.
 
 
->+		goto aux_dev_uninit;
->+	}
->+
->+	dyn_port->sf_dev = sf_dev;
->+
->+	return 0;
->+
->+aux_dev_uninit:
->+	auxiliary_device_uninit(&sf_dev->adev);
->+sf_dev_free:
->+	kfree(sf_dev);
->+xa_erase:
->+	xa_erase(&ice_sf_aux_id, id);
->+
->+	return err;
->+}
->+
->+/**
->+ * ice_sf_eth_deactivate - Deactivate Ethernet subfunction port
->+ * @dyn_port: the dynamic port instance for this subfunction
->+ *
->+ * Deactivate the Ethernet subfunction, removing its auxiliary device and the
->+ * associated resources.
->+ */
->+void ice_sf_eth_deactivate(struct ice_dynamic_port *dyn_port)
->+{
->+	struct ice_sf_dev *sf_dev = dyn_port->sf_dev;
->+
->+	if (sf_dev) {
->+		auxiliary_device_delete(&sf_dev->adev);
->+		auxiliary_device_uninit(&sf_dev->adev);
->+	}
->+
->+	dyn_port->sf_dev = NULL;
->+}
->diff --git a/drivers/net/ethernet/intel/ice/ice_sf_eth.h b/drivers/net/ethernet/intel/ice/ice_sf_eth.h
->index e972c50f96c9..c558cad0a183 100644
->--- a/drivers/net/ethernet/intel/ice/ice_sf_eth.h
->+++ b/drivers/net/ethernet/intel/ice/ice_sf_eth.h
->@@ -27,4 +27,7 @@ ice_sf_dev *ice_adev_to_sf_dev(struct auxiliary_device *adev)
-> int ice_sf_driver_register(void);
-> void ice_sf_driver_unregister(void);
-> 
->+int ice_sf_eth_activate(struct ice_dynamic_port *dyn_port,
->+			struct netlink_ext_ack *extack);
->+void ice_sf_eth_deactivate(struct ice_dynamic_port *dyn_port);
-> #endif /* _ICE_SF_ETH_H_ */
->-- 
->2.42.0
->
->
+If I do a "git revert 565736048bd5f9888990569993c6b6bfdf6dcb6d" to go bac=
+k before the state of the suspected problem commit, compile kernel 6.1 an=
+d boot on it, it works perfectly.
+So it turns out that this is the source of the malfunction and was introd=
+uced with Linux 6.1.
+
+=20
+>=20I've added Jeff Daly, in the hopes that he could provide more details=
+ on
+> the change.
+>=20
+>=20@Jeff, it seems likely that the change you made at 565736048bd5 ("ixg=
+be:
+> Manual AN-37 for troublesome link partners for X550 SFI") is breaking
+> some other switches. It would help if you could shed some light on this
+> change as otherwise we might need to revert it and once again break the
+> setup you fixed.
+>=20
+>=20Thanks,
+> Jake
+
+Let me know if you need more information. I'll be happy to help!
+
+Best regards.
+
+=E2=A2=80=E2=A3=B4=E2=A0=BE=E2=A0=BB=E2=A2=B6=E2=A3=A6=E2=A0=80
+=E2=A3=BE=E2=A0=81=E2=A2=A0=E2=A0=92=E2=A0=80=E2=A3=BF=E2=A1=81 Yohan Cha=
+rbi
+=E2=A2=BF=E2=A1=84=E2=A0=98=E2=A0=B7=E2=A0=9A=E2=A0=8B=E2=A0=80 Cordialem=
+ent
+=E2=A0=88=E2=A0=B3=E2=A3=84=E2=A0=80
