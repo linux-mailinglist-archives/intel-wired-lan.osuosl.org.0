@@ -2,111 +2,110 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id B88228C0EC3
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  9 May 2024 13:16:18 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9EC8A8C0EC6
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  9 May 2024 13:17:38 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 0097F60748;
-	Thu,  9 May 2024 11:16:17 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 55F8260709;
+	Thu,  9 May 2024 11:17:37 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id pb6NWBPD2iNC; Thu,  9 May 2024 11:16:15 +0000 (UTC)
+ id Wg3RUXDh9m4i; Thu,  9 May 2024 11:17:36 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7BBD060699
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 602C46077D
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1715253375;
-	bh=AFuUqAbs5MXoJpctNR4nsrfOq1ZqzqbPUpmX6ZjWvEY=;
+	s=default; t=1715253456;
+	bh=Z5u0jmRkHtJKOfSsyfOd5kVWwhDEg3RbxxuIltOo+KA=;
 	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=QMmFNOCuhKdwkRb+77TFJKlSUdw5D4MjI6wqdDRxK9KB6gWYcbDtJBfv/Sthv4/W/
-	 7vgk72EvYh+J9udBjQzZnasWNalDwjdnLtuqhNuOqFmWT62A+ONdocJ/ADo9LWZqJL
-	 93cdzZ5HJt5jtJLQpQauHVRT05IMeyGVz1qlV5nyw24fszGdtD1HCUOXkPnGFU42jc
-	 Gh+t7nYuuFl3RsN3Cw9T6Zm0M3iLUKkBiKFhcddseNMGakh1R0/yzAC0/vIAZY1/Ah
-	 IbKiLkbPrzwNO+eZwvlDPlKxjDuVDN7yhA95ig92NcvNDVMqnoOLdNdvkaO4Rr4Nu/
-	 rMRFNrjG45nkA==
+	b=AiwQgSPqTwZHG12TE+6DtLt2+VH1PMuej57IDJlbfs0lH8dyP0HQt/eNzg2xh/ToX
+	 3c8AzcJzNS5wirclW2s2fVqBfKNo2S/Dz+YB6WvbYHilC3UOBldIw7E/Tf13FZsvmv
+	 A5Wl2du4Jm+ZNeiUz0zO8+trjMSj3znzmHi/MBajPcmjlloklMjMFTsovFc5NJJfTY
+	 1OU2qObLJ8wpkYYbUolMl5ysJZpD90EkQE61qaTshJusOsPcjtgPWuFj3M8GbEphQ2
+	 uI5X40iY1efJyRYfKTzYeyj3YC4SlucS/Svjr6hS2DAUzXw9dJUDSa4+u3K2UrjuZw
+	 h6YIP3QY66Hmw==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 7BBD060699;
-	Thu,  9 May 2024 11:16:15 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 602C46077D;
+	Thu,  9 May 2024 11:17:36 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id A9D341BF361
- for <intel-wired-lan@lists.osuosl.org>; Thu,  9 May 2024 11:16:13 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 0BBA81BF361
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  9 May 2024 11:17:35 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id A236960709
- for <intel-wired-lan@lists.osuosl.org>; Thu,  9 May 2024 11:16:13 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id EAEBF8148F
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  9 May 2024 11:17:34 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id r9l19xJnKBM0 for <intel-wired-lan@lists.osuosl.org>;
- Thu,  9 May 2024 11:16:13 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id vrYxqjI1dXsx for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  9 May 2024 11:17:33 +0000 (UTC)
 Received-SPF: None (mailfrom) identity=mailfrom;
- client-ip=2a00:1450:4864:20::22b; helo=mail-lj1-x22b.google.com;
+ client-ip=2a00:1450:4864:20::42e; helo=mail-wr1-x42e.google.com;
  envelope-from=jiri@resnulli.us; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 25C4560699
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 25C4560699
-Received: from mail-lj1-x22b.google.com (mail-lj1-x22b.google.com
- [IPv6:2a00:1450:4864:20::22b])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 25C4560699
- for <intel-wired-lan@lists.osuosl.org>; Thu,  9 May 2024 11:16:11 +0000 (UTC)
-Received: by mail-lj1-x22b.google.com with SMTP id
- 38308e7fff4ca-2df83058d48so9089681fa.1
- for <intel-wired-lan@lists.osuosl.org>; Thu, 09 May 2024 04:16:11 -0700 (PDT)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 63D9681463
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 63D9681463
+Received: from mail-wr1-x42e.google.com (mail-wr1-x42e.google.com
+ [IPv6:2a00:1450:4864:20::42e])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 63D9681463
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  9 May 2024 11:17:32 +0000 (UTC)
+Received: by mail-wr1-x42e.google.com with SMTP id
+ ffacd0b85a97d-349545c3eb8so407072f8f.2
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 09 May 2024 04:17:31 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1715253370; x=1715858170;
+ d=1e100.net; s=20230601; t=1715253450; x=1715858250;
  h=in-reply-to:content-disposition:mime-version:references:message-id
  :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=AFuUqAbs5MXoJpctNR4nsrfOq1ZqzqbPUpmX6ZjWvEY=;
- b=ONMVt6SkqQrYJYNOGo5XkOP+f1K56BV59KaEdYaqcgZS6VGFaz1ef/SjwIfcFapLqM
- 8tm+pf8s2gynTIoa3jC5vAGbTyzX+17Udhb8OFnSkuMk4GdAsoujmh5JXT+O9OMqwKvw
- 0Qp/tRKlaAV5HpgTeZpxVfaMinaK/0WQGH7afuTrMIoBLhEy2W9Pdq11NLecbbo9+wf2
- 5xF8OzVtax7a03R7OajICOkcKElSC8UI3CzORgDGGNovThgoSGJDENoL6WMrziHa3Con
- X2THmIHnvYll1IsnN/1bNA0voJOgjl4bb/zmDL+vN3twatjM1bUCex09H4lnFfbLbOzX
- /QKg==
-X-Gm-Message-State: AOJu0Yw8NG8gvhMTsUD0xMo1ogSaC9N7THMYzn4ZCFCLGV/cNuQhsWzm
- UtqpQeNzQcSAZULob6lg7fzaO51GAvL2iwMehKWGwFCVflLKwZB0nTSUbrN5Ghs=
-X-Google-Smtp-Source: AGHT+IGm6muKgNQz+Sq946eF9NxhstzvJKt8rFmW5lH/znHG9AqgwH6mHrZMxiX36JRtGjK5Ttz65A==
-X-Received: by 2002:a2e:a54c:0:b0:2e2:a0f0:4e74 with SMTP id
- 38308e7fff4ca-2e4477b4e16mr41683101fa.52.1715253369473; 
- Thu, 09 May 2024 04:16:09 -0700 (PDT)
+ bh=Z5u0jmRkHtJKOfSsyfOd5kVWwhDEg3RbxxuIltOo+KA=;
+ b=GZVM+Z3cP3PYVL1vUC/8XL9+k/ei/Xh9rPTMm5N9muRgG6UqnPHgH/2hzveUiqVuWt
+ H9Vxqo6zty0pnmjQ2j9CFdnw7Xn4q4ynRUARDo5Roa0a2cb+w25manQ8IXPQimactGqr
+ 1BHa0i3erelmUOBZoAaZY2+ha2/PJ04UTq8xaskRkElPfD4JeRwFIgEZ+VnOyc5K8dTg
+ w420JUimN6cU9xe6LKTIBbbgskI9Y1sAcV/m//n5ZJ+HwnpZV5cB6Jjb8fEzJ+AwMZbT
+ 1TsoTuNsXJeZmaU+dC3MX57ZLIltatJnEs30TURZwt+9waTwvMQD7rDnhd9lEWjkQEyn
+ MVIA==
+X-Gm-Message-State: AOJu0YwwO3p8Ns6ihMg+5wfglYX+0bEOVCrlg8KcSMVE0smyya/tq9JZ
+ Ak3TaRlSq37FJeTCujRzbDx+0Peynp7ZMh0faEF5wkTx0bLyZ2G/Z/ajgNmAR50=
+X-Google-Smtp-Source: AGHT+IGmsEGlB3X8thgNVWFJ2mUfyHKsMyTwnCHsQzYVffQlEgLnVo/Htki3hMP0gVA3hcR+U/Rk9Q==
+X-Received: by 2002:a5d:6342:0:b0:349:cd18:abbd with SMTP id
+ ffacd0b85a97d-34fcb3a9699mr3788018f8f.46.1715253450024; 
+ Thu, 09 May 2024 04:17:30 -0700 (PDT)
 Received: from localhost ([193.47.165.251]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3502b8a7826sm1425094f8f.52.2024.05.09.04.16.08
+ ffacd0b85a97d-3502baad058sm1427055f8f.66.2024.05.09.04.17.28
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 09 May 2024 04:16:08 -0700 (PDT)
-Date: Thu, 9 May 2024 13:16:05 +0200
+ Thu, 09 May 2024 04:17:29 -0700 (PDT)
+Date: Thu, 9 May 2024 13:17:26 +0200
 From: Jiri Pirko <jiri@resnulli.us>
 To: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-Message-ID: <ZjywddcaIae0W_w3@nanopsycho.orion>
+Message-ID: <ZjywxuhjwvIlWXt2@nanopsycho.orion>
 References: <20240507114516.9765-1-michal.swiatkowski@linux.intel.com>
- <20240507114516.9765-9-michal.swiatkowski@linux.intel.com>
+ <20240507114516.9765-12-michal.swiatkowski@linux.intel.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20240507114516.9765-9-michal.swiatkowski@linux.intel.com>
+In-Reply-To: <20240507114516.9765-12-michal.swiatkowski@linux.intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=resnulli-us.20230601.gappssmtp.com; s=20230601; t=1715253370; x=1715858170;
+ d=resnulli-us.20230601.gappssmtp.com; s=20230601; t=1715253450; x=1715858250;
  darn=lists.osuosl.org; 
  h=in-reply-to:content-disposition:mime-version:references:message-id
  :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=AFuUqAbs5MXoJpctNR4nsrfOq1ZqzqbPUpmX6ZjWvEY=;
- b=q8ikanSRPvwL+PKt9yLshQLbbfXT3KA7EjiVZ+9cSGa1UHZt3pWDw+6hofGkEoH6Q3
- QOcAEIfk8AK43jycC9WGoSrhWwZuZlp+nhlUVJqT+6jVgrsgS4Bb1xVBM1BHpnv7gps0
- u8hP//HXr1KZycdsuW6kOQfGzkPYz0NRvjPHlSy7fA0YVeliFam1fe8L//cjcRlZRVks
- X5JS8XnKw8nxzvpb1PBwSdw4XccUm56CJCybRc0AeY/ld9c+sRKLuZra0VAoF7PQZxuv
- de1nAQpyUL0oXER65obhhIiKExRnQK1V6PSpBDSoJcbdUSVVrkxgveB1c0TVx7cKgRQl
- bBJw==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ bh=Z5u0jmRkHtJKOfSsyfOd5kVWwhDEg3RbxxuIltOo+KA=;
+ b=WWmNMFzHUHh5+eT8+tG6cosDpGfjA3YRL+8DLyIKvzyVQYgDhiANMjDwcTDoWhn6PP
+ BuKYxOYOJmiHTEE+pkl5XFDwjbTxBqwwpUnzP59MIOHF0Ri+9w0QnA/CJUybqp4YcvsV
+ sM50QVSa5JpuvfBtUXlS7ulhJInLOpDR0uKudv5wfkLqGb7jTCwRqTyjHLKyddkX3yoQ
+ E91ob65IjhyzvzQLayJYtaSwzzZ3GOzzZMGq0/yvsqt6/jdkVIQR1fKL0DRuevnpKm0j
+ x2CFVLSQ+noo8qWV06H2iBTqcwwbkMm9UhGdVoEYup2rncTOjoDFXxlDeWO8EAmVJq5K
+ O1cg==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=none (p=none dis=none)
  header.from=resnulli.us
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=resnulli-us.20230601.gappssmtp.com
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key) header.d=resnulli-us.20230601.gappssmtp.com
  header.i=@resnulli-us.20230601.gappssmtp.com header.a=rsa-sha256
- header.s=20230601 header.b=q8ikanSR
-Subject: Re: [Intel-wired-lan] [iwl-next v1 08/14] ice: create port
- representor for SF
+ header.s=20230601 header.b=WWmNMFzH
+Subject: Re: [Intel-wired-lan] [iwl-next v1 11/14] ice: netdevice ops for SF
+ representor
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -127,35 +126,171 @@ Cc: shayd@nvidia.com, maciej.fijalkowski@intel.com,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Tue, May 07, 2024 at 01:45:09PM CEST, michal.swiatkowski@linux.intel.com wrote:
->Store subfunction and VF pointer in port representor structure as an
->union. Add port representor type to distinguish between each of them.
->
->Keep the same flow of port representor creation, but instead of general
->attach function create helpers for VF and subfunction attach function.
->
->Type of port representor can be also known based on VSI type, but it
->is more clean to have it directly saved in port representor structure.
->
->Create port representor when subfunction port is created.
->
->Add devlink lock for whole VF port representor creation and destruction.
->It is done to be symmetric with what happens in case of SF port
->representor. SF port representor is always added or removed with devlink
->lock taken. Doing the same with VF port representor simplify logic.
+Subject does not have verb. Please add it.
+
+Otherwise, the patch looks ok.
+
+Reviewed-by: Jiri Pirko <jiri@nvidia.com>
+
+
+
+Tue, May 07, 2024 at 01:45:12PM CEST, michal.swiatkowski@linux.intel.com wrote:
+>Subfunction port representor needs the basic netdevice ops to work
+>correctly. Create them.
 >
 >Reviewed-by: Wojciech Drewek <wojciech.drewek@intel.com>
 >Signed-off-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
 >---
-> .../ethernet/intel/ice/devlink/devlink_port.c |   6 +-
-> .../ethernet/intel/ice/devlink/devlink_port.h |   1 +
-> drivers/net/ethernet/intel/ice/ice_eswitch.c  |  85 +++++++++---
-> drivers/net/ethernet/intel/ice/ice_eswitch.h  |  22 +++-
-> drivers/net/ethernet/intel/ice/ice_repr.c     | 124 +++++++++++-------
-> drivers/net/ethernet/intel/ice/ice_repr.h     |  21 ++-
-> drivers/net/ethernet/intel/ice/ice_sriov.c    |   4 +-
-> drivers/net/ethernet/intel/ice/ice_vf_lib.c   |   4 +-
-> 8 files changed, 187 insertions(+), 80 deletions(-)
-
-This calls for a split to at least 2 patches. One patch to prepare and
-one to add the SF support?
+> drivers/net/ethernet/intel/ice/ice_repr.c | 57 +++++++++++++++++------
+> 1 file changed, 43 insertions(+), 14 deletions(-)
+>
+>diff --git a/drivers/net/ethernet/intel/ice/ice_repr.c b/drivers/net/ethernet/intel/ice/ice_repr.c
+>index 3cb3fc5f52ea..ec4f5b8b46e6 100644
+>--- a/drivers/net/ethernet/intel/ice/ice_repr.c
+>+++ b/drivers/net/ethernet/intel/ice/ice_repr.c
+>@@ -59,12 +59,13 @@ static void
+> ice_repr_get_stats64(struct net_device *netdev, struct rtnl_link_stats64 *stats)
+> {
+> 	struct ice_netdev_priv *np = netdev_priv(netdev);
+>+	struct ice_repr *repr = np->repr;
+> 	struct ice_eth_stats *eth_stats;
+> 	struct ice_vsi *vsi;
+> 
+>-	if (ice_is_vf_disabled(np->repr->vf))
+>+	if (repr->ops.ready(repr))
+> 		return;
+>-	vsi = np->repr->src_vsi;
+>+	vsi = repr->src_vsi;
+> 
+> 	ice_update_vsi_stats(vsi);
+> 	eth_stats = &vsi->eth_stats;
+>@@ -93,7 +94,7 @@ struct ice_repr *ice_netdev_to_repr(const struct net_device *netdev)
+> }
+> 
+> /**
+>- * ice_repr_open - Enable port representor's network interface
+>+ * ice_repr_vf_open - Enable port representor's network interface
+>  * @netdev: network interface device structure
+>  *
+>  * The open entry point is called when a port representor's network
+>@@ -102,7 +103,7 @@ struct ice_repr *ice_netdev_to_repr(const struct net_device *netdev)
+>  *
+>  * Returns 0 on success
+>  */
+>-static int ice_repr_open(struct net_device *netdev)
+>+static int ice_repr_vf_open(struct net_device *netdev)
+> {
+> 	struct ice_repr *repr = ice_netdev_to_repr(netdev);
+> 	struct ice_vf *vf;
+>@@ -118,8 +119,16 @@ static int ice_repr_open(struct net_device *netdev)
+> 	return 0;
+> }
+> 
+>+static int ice_repr_sf_open(struct net_device *netdev)
+>+{
+>+	netif_carrier_on(netdev);
+>+	netif_tx_start_all_queues(netdev);
+>+
+>+	return 0;
+>+}
+>+
+> /**
+>- * ice_repr_stop - Disable port representor's network interface
+>+ * ice_repr_vf_stop - Disable port representor's network interface
+>  * @netdev: network interface device structure
+>  *
+>  * The stop entry point is called when a port representor's network
+>@@ -128,7 +137,7 @@ static int ice_repr_open(struct net_device *netdev)
+>  *
+>  * Returns 0 on success
+>  */
+>-static int ice_repr_stop(struct net_device *netdev)
+>+static int ice_repr_vf_stop(struct net_device *netdev)
+> {
+> 	struct ice_repr *repr = ice_netdev_to_repr(netdev);
+> 	struct ice_vf *vf;
+>@@ -144,6 +153,14 @@ static int ice_repr_stop(struct net_device *netdev)
+> 	return 0;
+> }
+> 
+>+static int ice_repr_sf_stop(struct net_device *netdev)
+>+{
+>+	netif_carrier_off(netdev);
+>+	netif_tx_stop_all_queues(netdev);
+>+
+>+	return 0;
+>+}
+>+
+> /**
+>  * ice_repr_sp_stats64 - get slow path stats for port representor
+>  * @dev: network interface device structure
+>@@ -245,10 +262,20 @@ ice_repr_setup_tc(struct net_device *netdev, enum tc_setup_type type,
+> 	}
+> }
+> 
+>-static const struct net_device_ops ice_repr_netdev_ops = {
+>+static const struct net_device_ops ice_repr_vf_netdev_ops = {
+>+	.ndo_get_stats64 = ice_repr_get_stats64,
+>+	.ndo_open = ice_repr_vf_open,
+>+	.ndo_stop = ice_repr_vf_stop,
+>+	.ndo_start_xmit = ice_eswitch_port_start_xmit,
+>+	.ndo_setup_tc = ice_repr_setup_tc,
+>+	.ndo_has_offload_stats = ice_repr_ndo_has_offload_stats,
+>+	.ndo_get_offload_stats = ice_repr_ndo_get_offload_stats,
+>+};
+>+
+>+static const struct net_device_ops ice_repr_sf_netdev_ops = {
+> 	.ndo_get_stats64 = ice_repr_get_stats64,
+>-	.ndo_open = ice_repr_open,
+>-	.ndo_stop = ice_repr_stop,
+>+	.ndo_open = ice_repr_sf_open,
+>+	.ndo_stop = ice_repr_sf_stop,
+> 	.ndo_start_xmit = ice_eswitch_port_start_xmit,
+> 	.ndo_setup_tc = ice_repr_setup_tc,
+> 	.ndo_has_offload_stats = ice_repr_ndo_has_offload_stats,
+>@@ -261,18 +288,20 @@ static const struct net_device_ops ice_repr_netdev_ops = {
+>  */
+> bool ice_is_port_repr_netdev(const struct net_device *netdev)
+> {
+>-	return netdev && (netdev->netdev_ops == &ice_repr_netdev_ops);
+>+	return netdev && (netdev->netdev_ops == &ice_repr_vf_netdev_ops ||
+>+			  netdev->netdev_ops == &ice_repr_sf_netdev_ops);
+> }
+> 
+> /**
+>  * ice_repr_reg_netdev - register port representor netdev
+>  * @netdev: pointer to port representor netdev
+>+ * @ops: new ops for netdev
+>  */
+> static int
+>-ice_repr_reg_netdev(struct net_device *netdev)
+>+ice_repr_reg_netdev(struct net_device *netdev, const struct net_device_ops *ops)
+> {
+> 	eth_hw_addr_random(netdev);
+>-	netdev->netdev_ops = &ice_repr_netdev_ops;
+>+	netdev->netdev_ops = ops;
+> 	ice_set_ethtool_repr_ops(netdev);
+> 
+> 	netdev->hw_features |= NETIF_F_HW_TC;
+>@@ -386,7 +415,7 @@ static int ice_repr_add_vf(struct ice_repr *repr)
+> 		return err;
+> 
+> 	SET_NETDEV_DEVLINK_PORT(repr->netdev, &vf->devlink_port);
+>-	err = ice_repr_reg_netdev(repr->netdev);
+>+	err = ice_repr_reg_netdev(repr->netdev, &ice_repr_vf_netdev_ops);
+> 	if (err)
+> 		goto err_netdev;
+> 
+>@@ -439,7 +468,7 @@ static int ice_repr_add_sf(struct ice_repr *repr)
+> 		return err;
+> 
+> 	SET_NETDEV_DEVLINK_PORT(repr->netdev, &sf->devlink_port);
+>-	err = ice_repr_reg_netdev(repr->netdev);
+>+	err = ice_repr_reg_netdev(repr->netdev, &ice_repr_sf_netdev_ops);
+> 	if (err)
+> 		goto err_netdev;
+> 
+>-- 
+>2.42.0
+>
+>
