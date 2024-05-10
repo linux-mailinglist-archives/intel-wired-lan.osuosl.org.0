@@ -2,99 +2,86 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id DFA598C24CE
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 10 May 2024 14:27:25 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0F7D18C24ED
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 10 May 2024 14:32:42 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 8710D42033;
-	Fri, 10 May 2024 12:27:24 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 890E0423F4;
+	Fri, 10 May 2024 12:32:40 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id B2uS2d26h37u; Fri, 10 May 2024 12:27:23 +0000 (UTC)
+ id rOEfr7-JhzE2; Fri, 10 May 2024 12:32:39 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4370D41FE5
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8B959423EB
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1715344043;
-	bh=6nROrCakES0EVE3OjVvdADCeVqQVMEdwPHdph7gFnDo=;
+	s=default; t=1715344359;
+	bh=kYvLhiz8ZLdgpAJEUaG2GVgbiir4S057iWOlDZef/0A=;
 	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=bZX1fSG5mPl+jGyhvLheGz1Y6dk1aQ0pxsm3OiQalIaxzZSKMivz7ZXhdHN0CVqCx
-	 Ek35AYcrLp10liGJhpxkqeHkjlD/yLWQZ3d2nlAV6ch/m1Yj5AOYQ51IO0/0AA615b
-	 YigwJzwmaFZ7eJUgwq0Odo5kwomwYW5YyzhRLtxi/I1LkqwgQpPOicVpONFnbR6w0Q
-	 rFf+UP5K3weDaI/H4O2DsqIfRtJP/ba0Z82iuEsuZ/FhYYbkBhboH8UQImaRB/vhno
-	 iRBwpzVrR4ghznl7AyoxwOQYe4Q4sECcFyQJNwNXCWmCiv0sSmnf8D24zwp+1grKLy
-	 FiTJ82/JrhBUg==
+	b=H2AvPZ8SVL2XVSv62HH7w9rcEPIzU3L5DNko2C+qCzaXz0v7avR6tvEFFdCoZmGbu
+	 XZeFuaSwJifCWGLC4gnbUQO5/pwEyT69kkDO0bp4NsVGdCx/m7as8e8T8GpJtwoBux
+	 j0r3CN/idyyCGCWMYuPUzIIplvJ51N4M4BG0vwWfsLfdUQnrz5pyYB+2+TX7lJxtZE
+	 wMQhMufnBdm9CFAt+mp/cicI9nHxd2MkZCnqIHAXmdSi6q6xW7wYqBlgmtFbHefFBk
+	 CxI1OsIZV53t8LBBKLDgnFSLG/PAjXbIulS7EJW4fa7omhb1KhxIXzoHtwSqUNgNh4
+	 2a3lbIh7LqDjQ==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 4370D41FE5;
-	Fri, 10 May 2024 12:27:23 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 8B959423EB;
+	Fri, 10 May 2024 12:32:39 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id CB73D1BF3DC
- for <intel-wired-lan@lists.osuosl.org>; Fri, 10 May 2024 12:27:20 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 3C2411BF3DC
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 10 May 2024 12:32:37 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id B6FD78449D
- for <intel-wired-lan@lists.osuosl.org>; Fri, 10 May 2024 12:27:20 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 351B9615A0
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 10 May 2024 12:32:37 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id INJmrUkZBcOv for <intel-wired-lan@lists.osuosl.org>;
- Fri, 10 May 2024 12:27:19 +0000 (UTC)
-Received-SPF: None (mailfrom) identity=mailfrom; client-ip=198.175.65.16;
- helo=mgamail.intel.com; envelope-from=michal.swiatkowski@linux.intel.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org AF4968449A
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org AF4968449A
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.16])
- by smtp1.osuosl.org (Postfix) with ESMTPS id AF4968449A
- for <intel-wired-lan@lists.osuosl.org>; Fri, 10 May 2024 12:27:19 +0000 (UTC)
-X-CSE-ConnectionGUID: n32zjSIvRMus1hbROdZFng==
-X-CSE-MsgGUID: 2TjiicUXREqnySzRDbZsqA==
-X-IronPort-AV: E=McAfee;i="6600,9927,11068"; a="11448559"
-X-IronPort-AV: E=Sophos;i="6.08,151,1712646000"; d="scan'208";a="11448559"
-Received: from fmviesa006.fm.intel.com ([10.60.135.146])
- by orvoesa108.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 10 May 2024 05:27:19 -0700
-X-CSE-ConnectionGUID: j3N3MwOeReK7huCho3WGBg==
-X-CSE-MsgGUID: pOF2BCpvRButj3Hp/or91g==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.08,151,1712646000"; d="scan'208";a="29618221"
-Received: from unknown (HELO mev-dev) ([10.237.112.144])
- by fmviesa006-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 10 May 2024 05:27:16 -0700
-Date: Fri, 10 May 2024 14:26:44 +0200
-From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-To: Jiri Pirko <jiri@resnulli.us>
-Message-ID: <Zj4ShOiyrGQK8J6p@mev-dev>
-References: <20240507114516.9765-1-michal.swiatkowski@linux.intel.com>
- <ZjyxBcVZNbWioRP0@nanopsycho.orion> <Zj3LwDMbktRXk0QX@mev-dev>
- <Zj4AYN4uDtL51G1P@nanopsycho.orion>
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id F9nvECSRKB-m for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 10 May 2024 12:32:35 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=156.67.10.101;
+ helo=vps0.lunn.ch; envelope-from=andrew@lunn.ch; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 396396159E
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 396396159E
+Received: from vps0.lunn.ch (vps0.lunn.ch [156.67.10.101])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 396396159E
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 10 May 2024 12:32:34 +0000 (UTC)
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+ (envelope-from <andrew@lunn.ch>)
+ id 1s5PQE-00F8RW-PQ; Fri, 10 May 2024 14:32:22 +0200
+Date: Fri, 10 May 2024 14:32:22 +0200
+From: Andrew Lunn <andrew@lunn.ch>
+To: Sasha Neftin <sasha.neftin@intel.com>
+Message-ID: <5669c185-db96-4ac2-81d5-2198060ae77d@lunn.ch>
+References: <20240503101836.32755-1-en-wei.wu@canonical.com>
+ <83a2c15e-12ef-4a33-a1f1-8801acb78724@lunn.ch>
+ <514e990b-50c6-419b-96f2-09c3d04a2fda@intel.com>
+ <334396b5-0acc-43f7-b046-30bcdab1b6fb@intel.com>
+ <cc58ecfc-53f1-4154-bc38-e73964a59e16@lunn.ch>
+ <b288926e-f9d6-48d5-9851-078a6c9912bf@intel.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <Zj4AYN4uDtL51G1P@nanopsycho.orion>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1715344040; x=1746880040;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=3QOPJukGU6uFHgR5tNYJ36zcuIs6vwSXJ/cY9HhVQL4=;
- b=RlLCLxC7+VhlCcpitcuUpXWqEpS/3QXw1ffir7kpW7aOyRLl7OWGueyq
- ZhOLZDFv5CPA8h8ZKi5AZIjDfvuJ2XDoU8kfBUmWUiLSlEqunV3rDtvZY
- 43Xlp+ZQMon4lIRTga21+ksup63i0eTTkHpZ6ddbCdJwpqAEL5gpwm3bB
- 03mpzJOFBbIr1NAwUoUI10HJc1bYd8R9Xg+Sb+M27D5MUJhtY/7+XOCTW
- d0sbaI8S4sV8jy0pIYaMazBHLBdRrRT/EnjMkcLDdzH2KWGb4H+yj+KFe
- 11cZqJrjPAMKCk9177dTYQEKXZUAioI0ITtFpHeiZd/RfcmjEYS7qUSy0
- A==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=linux.intel.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=RlLCLxC7
-Subject: Re: [Intel-wired-lan] [iwl-next v1 00/14] ice: support devlink
- subfunction
+In-Reply-To: <b288926e-f9d6-48d5-9851-078a6c9912bf@intel.com>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt;
+ c=relaxed/relaxed; d=lunn.ch; 
+ s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+ References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+ Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+ Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+ bh=kYvLhiz8ZLdgpAJEUaG2GVgbiir4S057iWOlDZef/0A=; b=l8giWwHL5386gqDRGg9X+/i37t
+ y1gLXjhj29wp1iMLa1uTcOfyWlUaZmX1DYOACtP7FTH8v0FJHWOadnRlrEnJIk28bhkz39vC3DjXC
+ QVmx0mej7C9WEUlEiGWuptRsVAaB0CHhLA0CNl4un2IEJI54qYFriO0XRqQZQu0ObbM4=;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=lunn.ch
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (1024-bit key) header.d=lunn.ch header.i=@lunn.ch
+ header.a=rsa-sha256 header.s=20171124 header.b=l8giWwHL
+Subject: Re: [Intel-wired-lan] [PATCH v2 2/2] e1000e: fix link fluctuations
+ problem
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -107,121 +94,26 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: maciej.fijalkowski@intel.com, sridhar.samudrala@intel.com,
- netdev@vger.kernel.org, mateusz.polchlopek@intel.com,
- przemyslaw.kitszel@intel.com, shayd@nvidia.com,
- intel-wired-lan@lists.osuosl.org, pio.raczynski@gmail.com, jiri@nvidia.com,
- jacob.e.keller@intel.com, wojciech.drewek@intel.com, michal.kubiak@intel.com
+Cc: pabeni@redhat.com, "naamax.meir" <naamax.meir@linux.intel.com>,
+ anthony.l.nguyen@intel.com, netdev@vger.kernel.org, rickywu0421@gmail.com,
+ linux-kernel@vger.kernel.org, Ricky Wu <en-wei.wu@canonical.com>,
+ edumazet@google.com, intel-wired-lan@lists.osuosl.org, "Lifshits,
+ Vitaly" <vitaly.lifshits@intel.com>, "Keller,
+ Jacob E" <jacob.e.keller@intel.com>, kuba@kernel.org, "Ruinskiy,
+ Dima" <dima.ruinskiy@intel.com>, "Avivi, Amir" <amir.avivi@intel.com>,
+ davem@davemloft.net
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Fri, May 10, 2024 at 01:09:20PM +0200, Jiri Pirko wrote:
-> Fri, May 10, 2024 at 09:24:48AM CEST, michal.swiatkowski@linux.intel.com wrote:
-> >On Thu, May 09, 2024 at 01:18:29PM +0200, Jiri Pirko wrote:
-> >> Tue, May 07, 2024 at 01:45:01PM CEST, michal.swiatkowski@linux.intel.com wrote:
-> >> >Hi,
-> >> >
-> >> >Currently ice driver does not allow creating more than one networking
-> >> >device per physical function. The only way to have more hardware backed
-> >> >netdev is to use SR-IOV.
-> >> >
-> >> >Following patchset adds support for devlink port API. For each new
-> >> >pcisf type port, driver allocates new VSI, configures all resources
-> >> >needed, including dynamically MSIX vectors, program rules and registers
-> >> >new netdev.
-> >> >
-> >> >This series supports only one Tx/Rx queue pair per subfunction.
-> >> >
-> >> >Example commands:
-> >> >devlink port add pci/0000:31:00.1 flavour pcisf pfnum 1 sfnum 1000
-> >> >devlink port function set pci/0000:31:00.1/1 hw_addr 00:00:00:00:03:14
-> >> >devlink port function set pci/0000:31:00.1/1 state active
-> >> >devlink port function del pci/0000:31:00.1/1
-> >> >
-> >> >Make the port representor and eswitch code generic to support
-> >> >subfunction representor type.
-> >> >
-> >> >VSI configuration is slightly different between VF and SF. It needs to
-> >> >be reflected in the code.
-> >> >
-> >> >Most recent previous patchset (not containing port representor for SF
-> >> >support). [1]
-> >> >
-> >> >[1] https://lore.kernel.org/netdev/20240417142028.2171-1-michal.swiatkowski@linux.intel.com/
-> >> >
-> >> 
-> >> 
-> >> I don't understand howcome the patchset is v1, yet there are patches
-> >> that came through multiple iterations alread. Changelog is missing
-> >> completely :/
-> >> 
-> >
-> >What is wrong here? There is a link to previous patchset with whole
-> >changlog and links to previous ones. I didn't add changlog here as it is
-> >new patchset (partialy the same as from [1], because of that I added a
-> >link). I can add the changlog from [1] if you want, but for me it can be
-> >missleading.
+> > It would be interesting to see what the link partner sees. What does
+> > it think the I219-LM is advertising? Is it advertising 1000BaseT_Half?
 > 
-> It's always good to see what you changed if you send modified patches.
-> That's all.
-> 
+> i219 parts come with LSI PHY. 1000BASE-T half-duplex is not supported.
+> 1000BASET half-duplex not advertised in IEEE 1000BASE-T Control Register 9.
 
-I will paste previous changelog in next version so.
+That is the theory. But in practice? What does the link partner really
+see? I've come across systems which get advertisement wrong. However,
+in that case, i suspect it is the software above the PHY, not the PHY
+itself which was wrong.
 
-> 
-> >
-> >> 
-> >> >Michal Swiatkowski (7):
-> >> >  ice: treat subfunction VSI the same as PF VSI
-> >> >  ice: create port representor for SF
-> >> >  ice: don't set target VSI for subfunction
-> >> >  ice: check if SF is ready in ethtool ops
-> >> >  ice: netdevice ops for SF representor
-> >> >  ice: support subfunction devlink Tx topology
-> >> >  ice: basic support for VLAN in subfunctions
-> >> >
-> >> >Piotr Raczynski (7):
-> >> >  ice: add new VSI type for subfunctions
-> >> >  ice: export ice ndo_ops functions
-> >> >  ice: add basic devlink subfunctions support
-> >> >  ice: allocate devlink for subfunction
-> >> >  ice: base subfunction aux driver
-> >> >  ice: implement netdev for subfunction
-> >> >  ice: allow to activate and deactivate subfunction
-> >> >
-> >> > drivers/net/ethernet/intel/ice/Makefile       |   2 +
-> >> > .../net/ethernet/intel/ice/devlink/devlink.c  |  48 ++
-> >> > .../net/ethernet/intel/ice/devlink/devlink.h  |   1 +
-> >> > .../ethernet/intel/ice/devlink/devlink_port.c | 516 ++++++++++++++++++
-> >> > .../ethernet/intel/ice/devlink/devlink_port.h |  43 ++
-> >> > drivers/net/ethernet/intel/ice/ice.h          |  19 +-
-> >> > drivers/net/ethernet/intel/ice/ice_base.c     |   5 +-
-> >> > drivers/net/ethernet/intel/ice/ice_dcb_lib.c  |   1 +
-> >> > drivers/net/ethernet/intel/ice/ice_eswitch.c  |  85 ++-
-> >> > drivers/net/ethernet/intel/ice/ice_eswitch.h  |  22 +-
-> >> > drivers/net/ethernet/intel/ice/ice_ethtool.c  |   7 +-
-> >> > drivers/net/ethernet/intel/ice/ice_lib.c      |  52 +-
-> >> > drivers/net/ethernet/intel/ice/ice_lib.h      |   3 +
-> >> > drivers/net/ethernet/intel/ice/ice_main.c     |  66 ++-
-> >> > drivers/net/ethernet/intel/ice/ice_repr.c     | 195 +++++--
-> >> > drivers/net/ethernet/intel/ice/ice_repr.h     |  22 +-
-> >> > drivers/net/ethernet/intel/ice/ice_sf_eth.c   | 329 +++++++++++
-> >> > drivers/net/ethernet/intel/ice/ice_sf_eth.h   |  33 ++
-> >> > .../ethernet/intel/ice/ice_sf_vsi_vlan_ops.c  |  21 +
-> >> > .../ethernet/intel/ice/ice_sf_vsi_vlan_ops.h  |  13 +
-> >> > drivers/net/ethernet/intel/ice/ice_sriov.c    |   4 +-
-> >> > drivers/net/ethernet/intel/ice/ice_txrx.c     |   2 +-
-> >> > drivers/net/ethernet/intel/ice/ice_type.h     |   1 +
-> >> > drivers/net/ethernet/intel/ice/ice_vf_lib.c   |   4 +-
-> >> > .../net/ethernet/intel/ice/ice_vsi_vlan_ops.c |   4 +
-> >> > drivers/net/ethernet/intel/ice/ice_xsk.c      |   2 +-
-> >> > 26 files changed, 1362 insertions(+), 138 deletions(-)
-> >> > create mode 100644 drivers/net/ethernet/intel/ice/ice_sf_eth.c
-> >> > create mode 100644 drivers/net/ethernet/intel/ice/ice_sf_eth.h
-> >> > create mode 100644 drivers/net/ethernet/intel/ice/ice_sf_vsi_vlan_ops.c
-> >> > create mode 100644 drivers/net/ethernet/intel/ice/ice_sf_vsi_vlan_ops.h
-> >> >
-> >> >-- 
-> >> >2.42.0
-> >> >
-> >> >
+	Andrew
