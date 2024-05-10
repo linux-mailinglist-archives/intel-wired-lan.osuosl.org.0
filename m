@@ -2,70 +2,70 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 55B258C27B0
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 10 May 2024 17:27:46 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5B7A28C27B2
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 10 May 2024 17:27:48 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 01AB0845F1;
-	Fri, 10 May 2024 15:27:45 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 4D3308456E;
+	Fri, 10 May 2024 15:27:46 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id i-JXTj9iGpY2; Fri, 10 May 2024 15:27:43 +0000 (UTC)
+ id K8tyPVu6ez_S; Fri, 10 May 2024 15:27:45 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 946DB845F6
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4E75A845FA
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1715354863;
-	bh=ihBCWMTgOJbRFD5GiPN1ct3ZSLCmQ6e7PDFDc8/DzMk=;
+	s=default; t=1715354865;
+	bh=LwBc+xh9KDOX3ou7jm4G91kkCP1H+TV9KsQ/gW2Ocvw=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=Z15r2w6AaEgwpg9T08Fb7uj3T5Sd3XCuve55r7RP9sRw+Go+oe1Kt6/+9mrQrFdht
-	 Yd2lSsUc6HvhCBMjgxLluHQEWf0nQRouygRdWK+OeUp2ccfLz0SE+VqIn8oLZdQoNH
-	 p24rUBsQVxP9SjSTPCcxLYXaU6LejcE9I9AKxxIzntgZZ7fW7W8Oksh9X7jbaT1udY
-	 dbDWFkkTQ+03ZUEXwntK0ReXb25pb8YPeH81QGBWYoe++l+kNE/jDQ4UaCFpnu7sR+
-	 MabVbYqvkwlkor7oTHJB0vkavLfCuHg8oP70AFLMn+m7r2aWyT3dFrl0+gHcVvDczH
-	 0pvCd6Jv73x3w==
+	b=hKdGA7o5Px86u5/QcMw+rwuDfVQvRCLbqJEsiIaicZg+u/INuXyypuB/eavfS5oRG
+	 KdJLOwAfH2zrI/krbh+l4mOGD9VWNXIcPb7Wf1ei7k6JDRn1P2FLovJFXvvuJmkgWj
+	 GCS4J6tSDZ0VF9+INi3dmumGXoKk5l6eUGlWOKfVhi91ZQRinBg9mILoav3QiB1fBZ
+	 XH1kzBpEMiJyxu7Tm3SLhwaxbm6TDZxgx4hAwlfzi/ix9hz3ZwgCoJUQePydjX7/Ab
+	 4e4oz2C6aRUiqyEr3i8J98WgYbXHAAdfn85XA92ICep6v4FTC3eS3y1SWsiOcvzzgw
+	 wFhbI0EGzasPQ==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 946DB845F6;
-	Fri, 10 May 2024 15:27:43 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 4E75A845FA;
+	Fri, 10 May 2024 15:27:45 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 4222F1BF304
- for <intel-wired-lan@lists.osuosl.org>; Fri, 10 May 2024 15:27:39 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 52A481BF304
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 10 May 2024 15:27:42 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 2DF374244A
- for <intel-wired-lan@lists.osuosl.org>; Fri, 10 May 2024 15:27:39 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 3EFA242048
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 10 May 2024 15:27:42 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id V2O1GfphE4bT for <intel-wired-lan@lists.osuosl.org>;
- Fri, 10 May 2024 15:27:38 +0000 (UTC)
+ id 9DI8vOnJjjWK for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 10 May 2024 15:27:41 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.12;
  helo=mgamail.intel.com; envelope-from=aleksander.lobakin@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org D8E0A42048
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D8E0A42048
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 00D2042243
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 00D2042243
 Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.12])
- by smtp4.osuosl.org (Postfix) with ESMTPS id D8E0A42048
- for <intel-wired-lan@lists.osuosl.org>; Fri, 10 May 2024 15:27:37 +0000 (UTC)
-X-CSE-ConnectionGUID: rmumGCk3RYOhZLVH3d2CrQ==
-X-CSE-MsgGUID: /dM4XSsUTlKMgJmva8Ztvg==
-X-IronPort-AV: E=McAfee;i="6600,9927,11068"; a="15152616"
-X-IronPort-AV: E=Sophos;i="6.08,151,1712646000"; d="scan'208";a="15152616"
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 00D2042243
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 10 May 2024 15:27:40 +0000 (UTC)
+X-CSE-ConnectionGUID: 1ElkMyHXRiytG1UTj1XWLg==
+X-CSE-MsgGUID: iqAkd1cDSDOaOrOiLu63Qg==
+X-IronPort-AV: E=McAfee;i="6600,9927,11068"; a="15152628"
+X-IronPort-AV: E=Sophos;i="6.08,151,1712646000"; d="scan'208";a="15152628"
 Received: from orviesa008.jf.intel.com ([10.64.159.148])
  by fmvoesa106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 10 May 2024 08:27:38 -0700
-X-CSE-ConnectionGUID: ZUMWnBRuQjmXIhXkicuANA==
-X-CSE-MsgGUID: 0FdBlTKTSASh8tjNm6WxSw==
+ 10 May 2024 08:27:41 -0700
+X-CSE-ConnectionGUID: qYimk+drTNisAs3/kNNFPg==
+X-CSE-MsgGUID: nHt+izmCS16DdI97daUsKw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.08,151,1712646000"; d="scan'208";a="30208273"
+X-IronPort-AV: E=Sophos;i="6.08,151,1712646000"; d="scan'208";a="30208277"
 Received: from newjersey.igk.intel.com ([10.102.20.203])
- by orviesa008.jf.intel.com with ESMTP; 10 May 2024 08:27:35 -0700
+ by orviesa008.jf.intel.com with ESMTP; 10 May 2024 08:27:38 -0700
 From: Alexander Lobakin <aleksander.lobakin@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Fri, 10 May 2024 17:26:14 +0200
-Message-ID: <20240510152620.2227312-7-aleksander.lobakin@intel.com>
+Date: Fri, 10 May 2024 17:26:15 +0200
+Message-ID: <20240510152620.2227312-8-aleksander.lobakin@intel.com>
 X-Mailer: git-send-email 2.45.0
 In-Reply-To: <20240510152620.2227312-1-aleksander.lobakin@intel.com>
 References: <20240510152620.2227312-1-aleksander.lobakin@intel.com>
@@ -73,25 +73,25 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1715354858; x=1746890858;
+ t=1715354861; x=1746890861;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=4E8x16GtYqW9ZgGDgsswEilQ5kdpYMVqNd0tVHyXroI=;
- b=jOPs+OKIiWWXi436BR/Zx9WOGOUC9owStbRDLnn6G7K0tTr6XMHLjeJ8
- V7ehFNWg+HYDk4oljYXqns9k4mwnPFlbF67DdcwLebYoGXwHGdrsO8MlM
- EEVzSfEip4Eu1iDs4NcyluWD5pC+v1QEp/ChtuqcJ1v6wj6iyYa/gifjW
- DsC5TEIxDnuWybe66aWhMc49pf41GBIk2kiYk8VpllVUp5SNPdfjZXZ/7
- w8AN6vT93zArps94RwyYmJvFMS14t1Gk/XikXF6AtfmoC+DqsDZgfaXSD
- YM6jqhmyQoPzLCY0z4+2k17PX+nyM5KnMEqhULN7zT5GI1zAhDh891cWH
+ bh=Yn7lGldHXX5OMvMMtk0QpXcGdcB3Y+0iq/q74WMS+28=;
+ b=WzpumAlHzQRSyYW6GsYVI1ZTB5HInKeWFBVlFplyHj3NGOZyPUcZirOb
+ +lx8soXdoYcYS2JsyEi80jdyq2TwPzYIU43YKoAoF/FJN/OTQpR4nglP7
+ fucdKBlKge5DdhW6PKROCmjXzSeUaNcdjOrqNU9JGzoHlzHus+RUB9Zzj
+ JxWOgGBr5mbB+GloWF9/lXMm8exCZyP5hAYCW8WDkLSXwhn9ti36tn4rw
+ Xh1MkSu3OBcVxNGBeVvWI5Y7Z6J57Nxd6X0WSMy19wIvP78gjlZ8FC1Oj
+ mdun/gJnytbPS5vMM1yLJDleEXCISLXZDo09q0sNbtpOKSkkT9tXls+ME
  g==;
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=jOPs+OKI
-Subject: [Intel-wired-lan] [PATCH RFC iwl-next 06/12] idpf: merge singleq
- and splitq &net_device_ops
+ header.a=rsa-sha256 header.s=Intel header.b=WzpumAlH
+Subject: [Intel-wired-lan] [PATCH RFC iwl-next 07/12] idpf: compile singleq
+ code only under default-n CONFIG_IDPF_SINGLEQ
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -112,175 +112,169 @@ Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-It makes no sense to have a second &net_device_ops struct (800 bytes of
-rodata) with only one difference in .ndo_start_xmit, which can easily
-be just one `if`. This `if` is a drop in the ocean and you won't see
-any difference.
-Define unified idpf_xmit_start(). The preparation for sending is the
-same, just call either idpf_tx_splitq_frame() or idpf_tx_singleq_frame()
-depending on the active model to actually map and send the skb.
+Currently, there's no HW supporting idpf in the singleq model. Still,
+this dead code is supported by the driver and often times add hotpath
+branches and redundant cacheline accesses.
+While it can't currently be removed, add CONFIG_IDPF_SINGLEQ and build
+the singleq code only when it's enabled manually. This corresponds to
+-10 Kb of object code size and a good bunch of hotpath checks.
+idpf_is_queue_model_split() works as a gate and compiles out to `true`
+when the config option is disabled.
 
 Signed-off-by: Alexander Lobakin <aleksander.lobakin@intel.com>
 ---
- drivers/net/ethernet/intel/idpf/idpf_txrx.h   |  7 ++---
- drivers/net/ethernet/intel/idpf/idpf_lib.c    | 26 +++-------------
- .../ethernet/intel/idpf/idpf_singleq_txrx.c   | 31 ++-----------------
- drivers/net/ethernet/intel/idpf/idpf_txrx.c   | 10 +++---
- 4 files changed, 15 insertions(+), 59 deletions(-)
+ drivers/net/ethernet/intel/Kconfig            | 13 +---------
+ drivers/net/ethernet/intel/idpf/Kconfig       | 26 +++++++++++++++++++
+ drivers/net/ethernet/intel/idpf/Makefile      |  3 ++-
+ drivers/net/ethernet/intel/idpf/idpf.h        |  3 ++-
+ drivers/net/ethernet/intel/idpf/idpf_txrx.c   |  2 +-
+ .../net/ethernet/intel/idpf/idpf_virtchnl.c   | 15 ++++++++---
+ 6 files changed, 43 insertions(+), 19 deletions(-)
+ create mode 100644 drivers/net/ethernet/intel/idpf/Kconfig
 
-diff --git a/drivers/net/ethernet/intel/idpf/idpf_txrx.h b/drivers/net/ethernet/intel/idpf/idpf_txrx.h
-index 0192d33744ff..015aba5abb3c 100644
---- a/drivers/net/ethernet/intel/idpf/idpf_txrx.h
-+++ b/drivers/net/ethernet/intel/idpf/idpf_txrx.h
-@@ -1190,10 +1190,9 @@ bool idpf_chk_linearize(struct sk_buff *skb, unsigned int max_bufs,
- 			unsigned int count);
- int idpf_tx_maybe_stop_common(struct idpf_tx_queue *tx_q, unsigned int size);
- void idpf_tx_timeout(struct net_device *netdev, unsigned int txqueue);
--netdev_tx_t idpf_tx_splitq_start(struct sk_buff *skb,
--				 struct net_device *netdev);
--netdev_tx_t idpf_tx_singleq_start(struct sk_buff *skb,
--				  struct net_device *netdev);
-+netdev_tx_t idpf_tx_singleq_frame(struct sk_buff *skb,
-+				  struct idpf_tx_queue *tx_q);
-+netdev_tx_t idpf_tx_start(struct sk_buff *skb, struct net_device *netdev);
- bool idpf_rx_singleq_buf_hw_alloc_all(struct idpf_rx_queue *rxq,
- 				      u16 cleaned_count);
- int idpf_tso(struct sk_buff *skb, struct idpf_tx_offload_params *off);
-diff --git a/drivers/net/ethernet/intel/idpf/idpf_lib.c b/drivers/net/ethernet/intel/idpf/idpf_lib.c
-index a8be09a89943..fe91475c7b4c 100644
---- a/drivers/net/ethernet/intel/idpf/idpf_lib.c
-+++ b/drivers/net/ethernet/intel/idpf/idpf_lib.c
-@@ -4,8 +4,7 @@
- #include "idpf.h"
- #include "idpf_virtchnl.h"
+diff --git a/drivers/net/ethernet/intel/Kconfig b/drivers/net/ethernet/intel/Kconfig
+index e0287fbd501d..0375c7448a57 100644
+--- a/drivers/net/ethernet/intel/Kconfig
++++ b/drivers/net/ethernet/intel/Kconfig
+@@ -384,17 +384,6 @@ config IGC_LEDS
+ 	  Optional support for controlling the NIC LED's with the netdev
+ 	  LED trigger.
  
--static const struct net_device_ops idpf_netdev_ops_splitq;
--static const struct net_device_ops idpf_netdev_ops_singleq;
-+static const struct net_device_ops idpf_netdev_ops;
- 
- /**
-  * idpf_init_vector_stack - Fill the MSIX vector stack with vector index
-@@ -764,10 +763,7 @@ static int idpf_cfg_netdev(struct idpf_vport *vport)
- 	}
- 
- 	/* assign netdev_ops */
--	if (idpf_is_queue_model_split(vport->txq_model))
--		netdev->netdev_ops = &idpf_netdev_ops_splitq;
--	else
--		netdev->netdev_ops = &idpf_netdev_ops_singleq;
-+	netdev->netdev_ops = &idpf_netdev_ops;
- 
- 	/* setup watchdog timeout value to be 5 second */
- 	netdev->watchdog_timeo = 5 * HZ;
-@@ -2353,24 +2349,10 @@ void idpf_free_dma_mem(struct idpf_hw *hw, struct idpf_dma_mem *mem)
- 	mem->pa = 0;
- }
- 
--static const struct net_device_ops idpf_netdev_ops_splitq = {
--	.ndo_open = idpf_open,
--	.ndo_stop = idpf_stop,
--	.ndo_start_xmit = idpf_tx_splitq_start,
--	.ndo_features_check = idpf_features_check,
--	.ndo_set_rx_mode = idpf_set_rx_mode,
--	.ndo_validate_addr = eth_validate_addr,
--	.ndo_set_mac_address = idpf_set_mac,
--	.ndo_change_mtu = idpf_change_mtu,
--	.ndo_get_stats64 = idpf_get_stats64,
--	.ndo_set_features = idpf_set_features,
--	.ndo_tx_timeout = idpf_tx_timeout,
--};
+-config IDPF
+-	tristate "Intel(R) Infrastructure Data Path Function Support"
+-	depends on PCI_MSI
+-	select DIMLIB
+-	select PAGE_POOL
+-	select PAGE_POOL_STATS
+-	help
+-	  This driver supports Intel(R) Infrastructure Data Path Function
+-	  devices.
 -
--static const struct net_device_ops idpf_netdev_ops_singleq = {
-+static const struct net_device_ops idpf_netdev_ops = {
- 	.ndo_open = idpf_open,
- 	.ndo_stop = idpf_stop,
--	.ndo_start_xmit = idpf_tx_singleq_start,
-+	.ndo_start_xmit = idpf_tx_start,
- 	.ndo_features_check = idpf_features_check,
- 	.ndo_set_rx_mode = idpf_set_rx_mode,
- 	.ndo_validate_addr = eth_validate_addr,
-diff --git a/drivers/net/ethernet/intel/idpf/idpf_singleq_txrx.c b/drivers/net/ethernet/intel/idpf/idpf_singleq_txrx.c
-index b51f7cd6db01..a3b60a2dfcaa 100644
---- a/drivers/net/ethernet/intel/idpf/idpf_singleq_txrx.c
-+++ b/drivers/net/ethernet/intel/idpf/idpf_singleq_txrx.c
-@@ -351,8 +351,8 @@ static void idpf_tx_singleq_build_ctx_desc(struct idpf_tx_queue *txq,
-  *
-  * Returns NETDEV_TX_OK if sent, else an error code
+-	  To compile this driver as a module, choose M here. The module
+-	  will be called idpf.
++source "drivers/net/ethernet/intel/idpf/Kconfig"
+ 
+ endif # NET_VENDOR_INTEL
+diff --git a/drivers/net/ethernet/intel/idpf/Kconfig b/drivers/net/ethernet/intel/idpf/Kconfig
+new file mode 100644
+index 000000000000..bee83a40f218
+--- /dev/null
++++ b/drivers/net/ethernet/intel/idpf/Kconfig
+@@ -0,0 +1,26 @@
++# SPDX-License-Identifier: GPL-2.0-only
++# Copyright (C) 2024 Intel Corporation
++
++config IDPF
++	tristate "Intel(R) Infrastructure Data Path Function Support"
++	depends on PCI_MSI
++	select DIMLIB
++	select PAGE_POOL
++	select PAGE_POOL_STATS
++	help
++	  This driver supports Intel(R) Infrastructure Data Path Function
++	  devices.
++
++	  To compile this driver as a module, choose M here. The module
++	  will be called idpf.
++
++if IDPF
++
++config IDPF_SINGLEQ
++	bool "idpf singleq support"
++	help
++	  This option enables support for legacy single Rx/Tx queues w/no
++	  completion and fill queues. Only enable if you have such hardware
++	  as it increases the driver size and adds runtme checks on hotpath.
++
++endif # IDPF
+diff --git a/drivers/net/ethernet/intel/idpf/Makefile b/drivers/net/ethernet/intel/idpf/Makefile
+index 6844ead2f3ac..2ce01a0b5898 100644
+--- a/drivers/net/ethernet/intel/idpf/Makefile
++++ b/drivers/net/ethernet/intel/idpf/Makefile
+@@ -12,7 +12,8 @@ idpf-y := \
+ 	idpf_ethtool.o		\
+ 	idpf_lib.o		\
+ 	idpf_main.o		\
+-	idpf_singleq_txrx.o	\
+ 	idpf_txrx.o		\
+ 	idpf_virtchnl.o 	\
+ 	idpf_vf_dev.o
++
++idpf-$(CONFIG_IDPF_SINGLEQ)	+= idpf_singleq_txrx.o
+diff --git a/drivers/net/ethernet/intel/idpf/idpf.h b/drivers/net/ethernet/intel/idpf/idpf.h
+index f9e43d171f17..5d9529f5b41b 100644
+--- a/drivers/net/ethernet/intel/idpf/idpf.h
++++ b/drivers/net/ethernet/intel/idpf/idpf.h
+@@ -599,7 +599,8 @@ struct idpf_adapter {
   */
--static netdev_tx_t idpf_tx_singleq_frame(struct sk_buff *skb,
--					 struct idpf_tx_queue *tx_q)
-+netdev_tx_t idpf_tx_singleq_frame(struct sk_buff *skb,
-+				  struct idpf_tx_queue *tx_q)
+ static inline int idpf_is_queue_model_split(u16 q_model)
  {
- 	struct idpf_tx_offload_params offload = { };
- 	struct idpf_tx_buf *first;
-@@ -408,33 +408,6 @@ static netdev_tx_t idpf_tx_singleq_frame(struct sk_buff *skb,
- 	return idpf_tx_drop_skb(tx_q, skb);
+-	return q_model == VIRTCHNL2_QUEUE_MODEL_SPLIT;
++	return !IS_ENABLED(CONFIG_IDPF_SINGLEQ) ||
++	       q_model == VIRTCHNL2_QUEUE_MODEL_SPLIT;
  }
  
--/**
-- * idpf_tx_singleq_start - Selects the right Tx queue to send buffer
-- * @skb: send buffer
-- * @netdev: network interface device structure
-- *
-- * Returns NETDEV_TX_OK if sent, else an error code
-- */
--netdev_tx_t idpf_tx_singleq_start(struct sk_buff *skb,
--				  struct net_device *netdev)
--{
--	struct idpf_vport *vport = idpf_netdev_to_vport(netdev);
--	struct idpf_tx_queue *tx_q;
--
--	tx_q = vport->txqs[skb_get_queue_mapping(skb)];
--
--	/* hardware can't handle really short frames, hardware padding works
--	 * beyond this point
--	 */
--	if (skb_put_padto(skb, IDPF_TX_MIN_PKT_LEN)) {
--		idpf_tx_buf_hw_update(tx_q, tx_q->next_to_use, false);
--
--		return NETDEV_TX_OK;
--	}
--
--	return idpf_tx_singleq_frame(skb, tx_q);
--}
--
- /**
-  * idpf_tx_singleq_clean - Reclaim resources from queue
-  * @tx_q: Tx queue to clean
+ #define idpf_is_cap_ena(adapter, field, flag) \
 diff --git a/drivers/net/ethernet/intel/idpf/idpf_txrx.c b/drivers/net/ethernet/intel/idpf/idpf_txrx.c
-index 500754795cc8..4aa5ee781bd7 100644
+index 4aa5ee781bd7..2bc1a5a0b50f 100644
 --- a/drivers/net/ethernet/intel/idpf/idpf_txrx.c
 +++ b/drivers/net/ethernet/intel/idpf/idpf_txrx.c
-@@ -2849,14 +2849,13 @@ static netdev_tx_t idpf_tx_splitq_frame(struct sk_buff *skb,
- }
- 
- /**
-- * idpf_tx_splitq_start - Selects the right Tx queue to send buffer
-+ * idpf_tx_start - Selects the right Tx queue to send buffer
-  * @skb: send buffer
-  * @netdev: network interface device structure
-  *
-  * Returns NETDEV_TX_OK if sent, else an error code
-  */
--netdev_tx_t idpf_tx_splitq_start(struct sk_buff *skb,
--				 struct net_device *netdev)
-+netdev_tx_t idpf_tx_start(struct sk_buff *skb, struct net_device *netdev)
+@@ -1306,7 +1306,7 @@ static void idpf_vport_calc_numq_per_grp(struct idpf_vport *vport,
+ static void idpf_rxq_set_descids(const struct idpf_vport *vport,
+ 				 struct idpf_rx_queue *q)
  {
- 	struct idpf_vport *vport = idpf_netdev_to_vport(netdev);
- 	struct idpf_tx_queue *tx_q;
-@@ -2878,7 +2877,10 @@ netdev_tx_t idpf_tx_splitq_start(struct sk_buff *skb,
- 		return NETDEV_TX_OK;
+-	if (vport->rxq_model == VIRTCHNL2_QUEUE_MODEL_SPLIT) {
++	if (idpf_is_queue_model_split(vport->rxq_model)) {
+ 		q->rxdids = VIRTCHNL2_RXDID_2_FLEX_SPLITQ_M;
+ 	} else {
+ 		if (vport->base_rxd)
+diff --git a/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c b/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c
+index 44602b87cd41..d1705fcb701a 100644
+--- a/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c
++++ b/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c
+@@ -1256,12 +1256,12 @@ int idpf_send_create_vport_msg(struct idpf_adapter *adapter,
+ 	vport_msg->vport_type = cpu_to_le16(VIRTCHNL2_VPORT_TYPE_DEFAULT);
+ 	vport_msg->vport_index = cpu_to_le16(idx);
+ 
+-	if (adapter->req_tx_splitq)
++	if (adapter->req_tx_splitq || !IS_ENABLED(CONFIG_IDPF_SINGLEQ))
+ 		vport_msg->txq_model = cpu_to_le16(VIRTCHNL2_QUEUE_MODEL_SPLIT);
+ 	else
+ 		vport_msg->txq_model = cpu_to_le16(VIRTCHNL2_QUEUE_MODEL_SINGLE);
+ 
+-	if (adapter->req_rx_splitq)
++	if (adapter->req_rx_splitq || !IS_ENABLED(CONFIG_IDPF_SINGLEQ))
+ 		vport_msg->rxq_model = cpu_to_le16(VIRTCHNL2_QUEUE_MODEL_SPLIT);
+ 	else
+ 		vport_msg->rxq_model = cpu_to_le16(VIRTCHNL2_QUEUE_MODEL_SINGLE);
+@@ -1323,10 +1323,17 @@ int idpf_check_supported_desc_ids(struct idpf_vport *vport)
+ 
+ 	vport_msg = adapter->vport_params_recvd[vport->idx];
+ 
++	if (!IS_ENABLED(CONFIG_IDPF_SINGLEQ) &&
++	    (vport_msg->rxq_model == VIRTCHNL2_QUEUE_MODEL_SINGLE ||
++	     vport_msg->txq_model == VIRTCHNL2_QUEUE_MODEL_SINGLE)) {
++		dev_err(&adapter->pdev->dev, "singleq mode requested, but not compiled-in\n");
++		return -EOPNOTSUPP;
++	}
++
+ 	rx_desc_ids = le64_to_cpu(vport_msg->rx_desc_ids);
+ 	tx_desc_ids = le64_to_cpu(vport_msg->tx_desc_ids);
+ 
+-	if (vport->rxq_model == VIRTCHNL2_QUEUE_MODEL_SPLIT) {
++	if (idpf_is_queue_model_split(vport->rxq_model)) {
+ 		if (!(rx_desc_ids & VIRTCHNL2_RXDID_2_FLEX_SPLITQ_M)) {
+ 			dev_info(&adapter->pdev->dev, "Minimum RX descriptor support not provided, using the default\n");
+ 			vport_msg->rx_desc_ids = cpu_to_le64(VIRTCHNL2_RXDID_2_FLEX_SPLITQ_M);
+@@ -1336,7 +1343,7 @@ int idpf_check_supported_desc_ids(struct idpf_vport *vport)
+ 			vport->base_rxd = true;
  	}
  
--	return idpf_tx_splitq_frame(skb, tx_q);
-+	if (idpf_is_queue_model_split(vport->txq_model))
-+		return idpf_tx_splitq_frame(skb, tx_q);
-+	else
-+		return idpf_tx_singleq_frame(skb, tx_q);
- }
+-	if (vport->txq_model != VIRTCHNL2_QUEUE_MODEL_SPLIT)
++	if (!idpf_is_queue_model_split(vport->txq_model))
+ 		return 0;
  
- /**
+ 	if ((tx_desc_ids & MIN_SUPPORT_TXDID) != MIN_SUPPORT_TXDID) {
 -- 
 2.45.0
 
