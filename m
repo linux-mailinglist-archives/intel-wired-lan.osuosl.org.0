@@ -1,112 +1,113 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 750BC8C22C3
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 10 May 2024 13:06:40 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 363998C22CB
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 10 May 2024 13:08:01 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 1F372423FE;
-	Fri, 10 May 2024 11:06:39 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 5430A42393;
+	Fri, 10 May 2024 11:07:58 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id uYAIOY4wIg1o; Fri, 10 May 2024 11:06:38 +0000 (UTC)
+ id EX-3dlhsbZRP; Fri, 10 May 2024 11:07:57 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0E77B42396
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6679942396
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1715339198;
-	bh=cNv3h2hPAcC4VeJUM9WPf+YFoITQA3YIHDEMNhnkbuU=;
+	s=default; t=1715339277;
+	bh=lOzOAqmI9nIWypFH/CIb7APO0wwyBNqPyzkSkyjLNdQ=;
 	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=ldn3bdG9FEuxbfm1hSQ3HeQJJK6WNYW6MowOTqpAoiQjzGi5DxWwyQVxFWSL+SE+G
-	 KMOj06Q7+xhoD4MMAQWq1vSaIwkaU9nirPemBfSjkX50TR7lFYteysAPx/vU33gwdX
-	 O8w5cFQPm/kM8Hqg6P8QOlBS2DIjvZhUI3D1byqO+zFjQTBfOgrKbkvlQCwN/3EH1j
-	 97eks8kontO40BpxXuMr28OycSVZMDsIowimUAVhcwMWIkD92nKfzM/e7RFOM6YUNd
-	 6KOGBE3ShUrUUjbZY3LznrR9wXaLcoAnWOMFnQXhJteQUBoeVJUADuxa4WwrFKqb1j
-	 Q6MlYn083kXdg==
+	b=TG8VZ9MdUPhpMMbe4DXz3dl0ZZjlqHTkZPHttiAbARNoSKhM9EF2irF/AXq1tm0dd
+	 p0jGTGXGd+BuRetnoh/93rZSaqxNdz7mfJ/Ovhg4woYd8DQAUxgEXeifp8GIr2ztuy
+	 qLxt4e0AR32bvP8HUNpTP4FuD6Qxd6iCAAApALl0g3zKOXvld11xjG3kNt44ZB/8o6
+	 JBRMtGT3yueg4oVgHd2ksszGNhO+84eU3M/YS1NVt0HHIPLyvo0Q/c4z59EobzIZHA
+	 7r+FUzYpe1wMAoXodtQEcN53I1iAG67L6dio4sk6RyMHyM8iUPpBCb6tEYI4XnL8EY
+	 qxFHm98xyQMCg==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 0E77B42396;
-	Fri, 10 May 2024 11:06:38 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 6679942396;
+	Fri, 10 May 2024 11:07:57 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 920781BF2A1
- for <intel-wired-lan@lists.osuosl.org>; Fri, 10 May 2024 11:06:35 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id DA2581BF2A1
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 10 May 2024 11:07:54 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 7C73A42392
- for <intel-wired-lan@lists.osuosl.org>; Fri, 10 May 2024 11:06:35 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id D361940B78
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 10 May 2024 11:07:54 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 1Z0xItHruaG2 for <intel-wired-lan@lists.osuosl.org>;
- Fri, 10 May 2024 11:06:34 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 8pZXcxTfNGjX for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 10 May 2024 11:07:53 +0000 (UTC)
 Received-SPF: None (mailfrom) identity=mailfrom;
- client-ip=2a00:1450:4864:20::436; helo=mail-wr1-x436.google.com;
+ client-ip=2a00:1450:4864:20::22c; helo=mail-lj1-x22c.google.com;
  envelope-from=jiri@resnulli.us; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 9940E42390
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9940E42390
-Received: from mail-wr1-x436.google.com (mail-wr1-x436.google.com
- [IPv6:2a00:1450:4864:20::436])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 9940E42390
- for <intel-wired-lan@lists.osuosl.org>; Fri, 10 May 2024 11:06:33 +0000 (UTC)
-Received: by mail-wr1-x436.google.com with SMTP id
- ffacd0b85a97d-34db6a29998so1298068f8f.0
- for <intel-wired-lan@lists.osuosl.org>; Fri, 10 May 2024 04:06:33 -0700 (PDT)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org CFE3540B67
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org CFE3540B67
+Received: from mail-lj1-x22c.google.com (mail-lj1-x22c.google.com
+ [IPv6:2a00:1450:4864:20::22c])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id CFE3540B67
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 10 May 2024 11:07:52 +0000 (UTC)
+Received: by mail-lj1-x22c.google.com with SMTP id
+ 38308e7fff4ca-2e45c0a8360so19013041fa.3
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 10 May 2024 04:07:52 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1715339191; x=1715943991;
+ d=1e100.net; s=20230601; t=1715339270; x=1715944070;
  h=in-reply-to:content-disposition:mime-version:references:message-id
  :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=cNv3h2hPAcC4VeJUM9WPf+YFoITQA3YIHDEMNhnkbuU=;
- b=JHDFgTXeVawWQ2cUCM5qKF/MpluN+1iS6PbrriCDfO67/NyizEJJkQFwYe35wHsnyt
- jMrLAZZwxjWe3cMbqOQ8/bLW+sIdjaHUtk08rQL9HqAx7B0tdxER6YlmVb9MvV2IwpIW
- Y0G+Q4Qfw6jakmbXfom3au0r9t+aX9DX1rh0Uz6HnlMbOD2IqGu3M2FPh2i83VQBQ9KJ
- l4LC4nkX+UHJ8JDQzYXhFHd3flQyq/6z32MJkIgFOLL3RxoKLnzzIjQp2l6VZj8OsFw0
- oPLotSjq3uwpdUcesy6bhKPmZ1WHR/JFbOodmfIlJYCd4+2TL4XNA+D47TNOsmssdMIi
- pWkQ==
-X-Gm-Message-State: AOJu0YwjY1UtvbYcH5+cIQT0Kk80i7zRzRVWygVuo/lpCUk39BGfkbq2
- kYjgHQZ9dCI5JOqNb1+9Uo29nBQIHDyEkMZAVkYTAq7P611ceLiKLDI68Hy0bgs=
-X-Google-Smtp-Source: AGHT+IErsx9K72qykBumWEujWyAufY8IZ1byl3WQ4ZzxercswAzMR2gbGDdw18CLAFN+3oRp5/TKqw==
-X-Received: by 2002:a5d:5cc5:0:b0:34d:96ca:8c24 with SMTP id
- ffacd0b85a97d-3504a73c028mr1372977f8f.37.1715339191092; 
- Fri, 10 May 2024 04:06:31 -0700 (PDT)
+ bh=lOzOAqmI9nIWypFH/CIb7APO0wwyBNqPyzkSkyjLNdQ=;
+ b=MOj/UZC02S3MXw+J08xG6rzeUNhIbo0LXO7u7ZUsa6pL87AxnNt/D0E6KosSosVg+2
+ FuI79EEqpLEjGLPdlpqsXWQ/XjvPTZGDGZdyjlIalWh36Yc5gosTC7G4IWqrth7srWSf
+ GkcOt1e/QUEZ/8DdfY05OxBs/Q88FBrUCaWuEwVLzJfnLzzD34ZSpGCiKhwa1ppTVodA
+ U9SI9+49dKzfdGezVV7xGmVpI316TakDzKVrLeWzn7uRvXHuVjLl+bCQ+psefVEr4tEW
+ OwGwVT0OPHQHYBbvHQZ4PPaZ752YSSTofjet0uHUyZ5SeVOYjrGzrIDeBSYubRY/uDah
+ Bo8w==
+X-Gm-Message-State: AOJu0YzQnh6uHJKn4DVCBveD4KgJgBl/d8lJhFN9lM7kBKlZwmpybnh9
+ BparKBaXaUhXi8Q6AkhqJJCLA/IGR09xd/RU9n4uTx+OFGM1+14zTKTVJwZwdew=
+X-Google-Smtp-Source: AGHT+IGW5QBg7jd7ZGdFB8kWjrOudgTh1Lj0FwS1SZreq7UTrqwgF47iDm7dS4XOHKLf8AuxaLt5AA==
+X-Received: by 2002:a2e:9045:0:b0:2e3:38e0:54c7 with SMTP id
+ 38308e7fff4ca-2e5204b2f26mr13611271fa.38.1715339269900; 
+ Fri, 10 May 2024 04:07:49 -0700 (PDT)
 Received: from localhost ([193.47.165.251]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3502b79bd4fsm4331410f8f.7.2024.05.10.04.06.29
+ 5b1f17b1804b1-41fa90e93absm80088015e9.9.2024.05.10.04.07.46
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 10 May 2024 04:06:30 -0700 (PDT)
-Date: Fri, 10 May 2024 13:06:27 +0200
+ Fri, 10 May 2024 04:07:47 -0700 (PDT)
+Date: Fri, 10 May 2024 13:07:44 +0200
 From: Jiri Pirko <jiri@resnulli.us>
 To: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-Message-ID: <Zj3_sxDq5R0ZsYBa@nanopsycho.orion>
+Message-ID: <Zj4AAFwZudmyOWTm@nanopsycho.orion>
 References: <20240507114516.9765-1-michal.swiatkowski@linux.intel.com>
- <20240507114516.9765-7-michal.swiatkowski@linux.intel.com>
- <Zjyv8xAEDhtzXAIx@nanopsycho.orion> <Zj3K0+JB55UFZYXF@mev-dev>
+ <20240507114516.9765-9-michal.swiatkowski@linux.intel.com>
+ <ZjywddcaIae0W_w3@nanopsycho.orion> <Zj3NQw1BxqtOS9VG@mev-dev>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <Zj3K0+JB55UFZYXF@mev-dev>
+In-Reply-To: <Zj3NQw1BxqtOS9VG@mev-dev>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=resnulli-us.20230601.gappssmtp.com; s=20230601; t=1715339191; x=1715943991;
+ d=resnulli-us.20230601.gappssmtp.com; s=20230601; t=1715339270; x=1715944070;
  darn=lists.osuosl.org; 
  h=in-reply-to:content-disposition:mime-version:references:message-id
  :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=cNv3h2hPAcC4VeJUM9WPf+YFoITQA3YIHDEMNhnkbuU=;
- b=kMHtT5AbA5Unjpbl6XWw3XifAOoTswNwp3VraCjn3cxQLau8gJGtT1lSqtFuFprNHv
- wpcaiYPj2fHPff8jgPVFrVzhEPzW/PR7MOozHCIyVA9gKWbMltao6SycdOV3lz0jYWPB
- ntgPBBknsh62vd98uwUCWKn40PEVeeOy1+oyMHATIeOd3uefrJEpvQTBXrjpkZZDvbyu
- qbypT3X434PjNW5Ehp5TZAjgJfbN/ep7xRo+1CY3lZioSStUDn1olvJQxqx2gVK0gnVB
- k377fYoWPBgp5eEPHgIoXs/JDO+O4GPRZP0Nub3z1AeiydA3VgnzAYC25/bc4mEpzvBD
- U5Hw==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ bh=lOzOAqmI9nIWypFH/CIb7APO0wwyBNqPyzkSkyjLNdQ=;
+ b=DKJiQlW2OAj7fNr+S6BslcxAIjLgkusoQCPqhKr50YHW9tXlXO8aNtwgN49KeVjw03
+ iJRn5+drneVMaVaCrVdKzB/Iso2KFwNaerrz98ewaOdtwAqJtvd0UsSS7mqzrY2FOmVP
+ qqh3CXmXy8auvpC9fELlyKMCmi1Txb8dPNT8AGWY736VRUpLFMPe2LXnDii1BjiC2hPT
+ ibdCeds98eVEUk56Iz9sutwjeDOehhsBxlvoMmXXr2s/fjhd8Poowjt1aYkNlwti8tfq
+ RviUE9L9uGalf/mZgfLpYryX42CH/jpevpmN4CEaq4+LKd2+ixr7FB8nMkYvR/7r0qhX
+ Y3mg==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=none (p=none dis=none)
  header.from=resnulli.us
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=resnulli-us.20230601.gappssmtp.com
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=resnulli-us.20230601.gappssmtp.com
  header.i=@resnulli-us.20230601.gappssmtp.com header.a=rsa-sha256
- header.s=20230601 header.b=kMHtT5Ab
-Subject: Re: [Intel-wired-lan] [iwl-next v1 06/14] ice: base subfunction aux
- driver
+ header.s=20230601 header.b=DKJiQlW2
+Subject: Re: [Intel-wired-lan] [iwl-next v1 08/14] ice: create port
+ representor for SF
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -127,34 +128,52 @@ Cc: shayd@nvidia.com, maciej.fijalkowski@intel.com,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Fri, May 10, 2024 at 09:20:51AM CEST, michal.swiatkowski@linux.intel.com wrote:
->On Thu, May 09, 2024 at 01:13:55PM +0200, Jiri Pirko wrote:
->> Tue, May 07, 2024 at 01:45:07PM CEST, michal.swiatkowski@linux.intel.com wrote:
->> >From: Piotr Raczynski <piotr.raczynski@intel.com>
+Fri, May 10, 2024 at 09:31:15AM CEST, michal.swiatkowski@linux.intel.com wrote:
+>On Thu, May 09, 2024 at 01:16:05PM +0200, Jiri Pirko wrote:
+>> Tue, May 07, 2024 at 01:45:09PM CEST, michal.swiatkowski@linux.intel.com wrote:
+>> >Store subfunction and VF pointer in port representor structure as an
+>> >union. Add port representor type to distinguish between each of them.
 >> >
->> >Implement subfunction driver. It is probe when subfunction port is
->> >activated.
+>> >Keep the same flow of port representor creation, but instead of general
+>> >attach function create helpers for VF and subfunction attach function.
 >> >
->> >VSI is already created. During the probe VSI is being configured.
->> >MAC unicast and broadcast filter is added to allow traffic to pass.
+>> >Type of port representor can be also known based on VSI type, but it
+>> >is more clean to have it directly saved in port representor structure.
 >> >
->> >Store subfunction pointer in VSI struct. The same is done for VF
->> >pointer. Make union of subfunction and VF pointer as only one of them
->> >can be set with one VSI.
+>> >Create port representor when subfunction port is created.
 >> >
->> >Reviewed-by: Jiri Pirko <jiri@nvidia.com>
->> >Signed-off-by: Piotr Raczynski <piotr.raczynski@intel.com>
+>> >Add devlink lock for whole VF port representor creation and destruction.
+>> >It is done to be symmetric with what happens in case of SF port
+>> >representor. SF port representor is always added or removed with devlink
+>> >lock taken. Doing the same with VF port representor simplify logic.
+>> >
+>> >Reviewed-by: Wojciech Drewek <wojciech.drewek@intel.com>
 >> >Signed-off-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+>> >---
+>> > .../ethernet/intel/ice/devlink/devlink_port.c |   6 +-
+>> > .../ethernet/intel/ice/devlink/devlink_port.h |   1 +
+>> > drivers/net/ethernet/intel/ice/ice_eswitch.c  |  85 +++++++++---
+>> > drivers/net/ethernet/intel/ice/ice_eswitch.h  |  22 +++-
+>> > drivers/net/ethernet/intel/ice/ice_repr.c     | 124 +++++++++++-------
+>> > drivers/net/ethernet/intel/ice/ice_repr.h     |  21 ++-
+>> > drivers/net/ethernet/intel/ice/ice_sriov.c    |   4 +-
+>> > drivers/net/ethernet/intel/ice/ice_vf_lib.c   |   4 +-
+>> > 8 files changed, 187 insertions(+), 80 deletions(-)
 >> 
->> Perhaps it would make things clearer for reviewer to have all patches
->> related to sf auxdev/devlink/netdev at the end of the patchset, after
->> activation patch. Not sure why you want to mix it here.
+>> This calls for a split to at least 2 patches. One patch to prepare and
+>> one to add the SF support?
 >
->I need this code to use it in port representor implementation. You
->suggested in previous review to move activation at the end [1].
+>Is 187 insertions and 80 deletions too many for one patch? Or the
+>problem is with number of files changed?
 
-Yeah, I just thought that sfdev patches could be separate. Nevermind
-then.
+The patch is hard to follow, that's the problem.
+
 
 >
->[1] https://lore.kernel.org/netdev/Zhje0mQgQTMXwICb@nanopsycho/
+>I don't see what here can be moved to preparation part as most changes
+>depends on each other. Do you want me to have one patch with unused
+>functions that are adding/removing SF repr and another with calling
+>them?
+>
+>Thanks,
+>Michal
