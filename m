@@ -2,86 +2,86 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id C77478C328D
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 11 May 2024 18:38:27 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0ED658C329B
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 11 May 2024 18:56:33 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id D92A840085;
-	Sat, 11 May 2024 16:38:25 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 7AF8142486;
+	Sat, 11 May 2024 16:56:31 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id pC6qMWDeQ0mM; Sat, 11 May 2024 16:38:24 +0000 (UTC)
+ id i0Z5Xsh3ZMaO; Sat, 11 May 2024 16:56:30 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org CFC71423FE
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3A0234246D
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1715445504;
-	bh=7J1xmzGKPUM55K5Sly7CDs9dMAn1ZAdmK+bW5GRdQX0=;
+	s=default; t=1715446590;
+	bh=c8JAEkFmDuX+LpzrW3IWol5zU3ANwkuCDlj7BaPojHU=;
 	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=ySPcnNy3EBE+EXE6DBWIJ4IZXKdzwIjkakO63OC4KS4GEz6SV+lgTit8nblGdi35w
-	 Tar8XFAwoS64tq4/72dxbct2yxmR7v5eNnkDWTpMTDEKSZGsp6NDsaLwn2f43/uYtw
-	 VFCKsiKUgbeJfA23hOYl6BlDbUOIDE6Njm/Mf1YhcXCBA3jaL5wuVH8QUKXAGerxY2
-	 3wZYlaWvSj63E/cW22xjkIgod5xSTc6CcUupzVa2roq/ie8l51hZ2kPYsIMTS1R/X5
-	 lilZJ4hvsDrKMqft6Hwa4r4xfWAQUB9t0DeqxHTHSMgPjGxjv5DAUP0Mvq1hmVzht9
-	 3aT8xg98k2v2w==
+	b=JFmNbvSmYAJfBjxrt+WXPRy/Z2P86fVyn2S/iL3+KBNHWiaGE+loVlJnMq80Vc9e+
+	 Q0OKTyABBTieetILLvnemVVBHzbfu2OnryGZMZR84ySBX98HpccUE0YFUhlL0xhXQk
+	 jEqSq1kWk21zB3ftg66JJIi9j0uSlM8IyytrH4q1lUGs+GAYTAG5mw8giFRA08Chbq
+	 44mZYKG7XE3Z2ExewVlF28yBdqUtaE9KxPNut/JBqkWQga+wpVofI0sQP8sowPKynx
+	 nJ5/+G7C/6vhzcHGt5oFPdJ9W6suWG49mDMfEZ6lu96v0+EMxbXKjNgBFzlozd8plz
+	 3TOOnsfvtLDeA==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id CFC71423FE;
-	Sat, 11 May 2024 16:38:23 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 3A0234246D;
+	Sat, 11 May 2024 16:56:30 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 44DD21BF4D7
- for <intel-wired-lan@lists.osuosl.org>; Sat, 11 May 2024 16:38:22 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id E45EE1BF4D7
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 11 May 2024 16:56:27 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 30E706083D
- for <intel-wired-lan@lists.osuosl.org>; Sat, 11 May 2024 16:38:22 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id CF51B40189
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 11 May 2024 16:56:27 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Tw0F5OzjhImA for <intel-wired-lan@lists.osuosl.org>;
- Sat, 11 May 2024 16:38:21 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id wgNzdK5yuhVI for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 11 May 2024 16:56:27 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=145.40.73.55;
  helo=sin.source.kernel.org; envelope-from=horms@kernel.org;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 2579D60839
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2579D60839
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org C842940168
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C842940168
 Received: from sin.source.kernel.org (sin.source.kernel.org [145.40.73.55])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 2579D60839
- for <intel-wired-lan@lists.osuosl.org>; Sat, 11 May 2024 16:38:20 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTPS id C842940168
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 11 May 2024 16:56:26 +0000 (UTC)
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by sin.source.kernel.org (Postfix) with ESMTP id E78C4CE09FA;
- Sat, 11 May 2024 16:38:17 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 22C5AC2BBFC;
- Sat, 11 May 2024 16:38:12 +0000 (UTC)
-Date: Sat, 11 May 2024 17:38:10 +0100
+ by sin.source.kernel.org (Postfix) with ESMTP id 86F75CE04AE;
+ Sat, 11 May 2024 16:56:23 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 49E59C2BBFC;
+ Sat, 11 May 2024 16:56:19 +0000 (UTC)
+Date: Sat, 11 May 2024 17:56:16 +0100
 From: Simon Horman <horms@kernel.org>
-To: Larysa Zaremba <larysa.zaremba@intel.com>
-Message-ID: <20240511163810.GN2347895@kernel.org>
-References: <20240426154125.235977-1-larysa.zaremba@intel.com>
+To: Anil Samal <anil.samal@intel.com>
+Message-ID: <20240511165616.GO2347895@kernel.org>
+References: <20240510065243.906877-1-anil.samal@intel.com>
+ <20240510065243.906877-4-anil.samal@intel.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20240426154125.235977-1-larysa.zaremba@intel.com>
+In-Reply-To: <20240510065243.906877-4-anil.samal@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1715445496;
- bh=e94BgLcLEdR+T6CinJz6xb5bntXFyDdNlBr4TIoWFHQ=;
+ d=kernel.org; s=k20201202; t=1715446581;
+ bh=yehxKsTcJixa47K5qCB6QJ5OG1nz+0o9cOwyFMRSRiM=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=BKfptXyBYmoClepdP/CjknBDwgtvv7FtGgfdpmQKpJSA8mp1gTDxw7zJEq1CPE+lP
- EQ+LzPPY6INJ6SyEqNngj5VixGphDfyn6Wlg3Wn+Dk22GlOggjq/oTiYnEg5lCU/fP
- Am7B+lRaSGxZC+8NU0FE3ia80oI/tgR9/mcJ+nznzHpnD8AyRMolsQg5fxz1UFC0Gg
- sWEUC0BgONbmRKBdifda+X66NiBZJw8u5JRvdqw8ggSrfmE0wv8Id/f1KwQw7HhVtm
- S+lkesdmCXnOMZEtGQOKotoXYZ6lM1zY5Qqi46qx01VZS0UmNV1AUIKHqmKLpT+tlf
- AhnTPdext5dGA==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ b=Dij6wF4+C7Tt7VycjvdgcMOGqii8D+8fC6sHcpU4FWAvD47lxMYwvBEHZCoCmvXQU
+ KzDcgdFPUtPjl/aiYxA1Zy/tKEZ7anjmn/2wbIrN9nXY+feXm9pJBT+hvmUWl9YY7a
+ aodsqRgmS9OH6goPG6oGRQaKbYGTe570uV2S3KbMi+K3gQD/vjTzZ/fyKpw0qvdsNN
+ tjW0X2JuDbaO6bkZa2XC4GbhkC1AC7Dho5YXjRu0nlat4b7x4vYTZt8oGq8rdtRliS
+ VaeBPX+SdIELf8ApxLGwLnTjrR0nw+6dfeEwiO5zsGB8ivrLhF/+GB977NRpA3Bhil
+ oo/ZzZOdY1QoQ==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20201202 header.b=BKfptXyB
-Subject: Re: [Intel-wired-lan] [PATCH iwl-net] idpf: Interpret
- .set_channels() input differently
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=Dij6wF4+
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v2 3/3] ice: Implement driver
+ functionality to dump serdes equalizer values
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,56 +94,69 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: maciej.fijalkowski@intel.com, Emil Tantilov <emil.s.tantilov@intel.com>,
- netdev@vger.kernel.org, joshua.a.hay@intel.com, linux-kernel@vger.kernel.org,
- Pavan Kumar Linga <pavan.kumar.linga@intel.com>,
- intel-wired-lan@lists.osuosl.org, alan.brady@intel.com,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>,
- Igor Bagnucki <igor.bagnucki@intel.com>
+Cc: netdev@vger.kernel.org, lukasz.czapnik@intel.com, leszek.pepiak@intel.com,
+ Anthony L Nguyen <anthony.l.nguyen@intel.com>, przemyslaw.kitszel@intel.com,
+ intel-wired-lan@lists.osuosl.org
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Fri, Apr 26, 2024 at 05:41:22PM +0200, Larysa Zaremba wrote:
-> Unlike ice, idpf does not check, if user has requested at least 1 combined
-> channel. Instead, it relies on a check in the core code. Unfortunately, the
-> check does not trigger for us because of the hacky .set_channels()
-> interpretation logic that is not consistent with the core code.
+[ Fixed CC list by dropping '--cc=' from start of addresses. ]
+
+On Thu, May 09, 2024 at 11:50:42PM -0700, Anil Samal wrote:
+> To debug link issues in the field, serdes Tx/Rx equalizer values
+> help to determine the health of serdes lane.
 > 
-> This naturally leads to user being able to trigger a crash with an invalid
-> input. This is how:
+> Extend 'ethtool -d' option to dump serdes Tx/Rx equalizer.
+> The following list of equalizer param is supported
+>     a. rx_equalization_pre2
+>     b. rx_equalization_pre1
+>     c. rx_equalization_post1
+>     d. rx_equalization_bflf
+>     e. rx_equalization_bfhf
+>     f. rx_equalization_drate
+>     g. tx_equalization_pre1
+>     h. tx_equalization_pre3
+>     i. tx_equalization_atten
+>     j. tx_equalization_post1
+>     k. tx_equalization_pre2
 > 
-> 1. ethtool -l <IFNAME> -> combined: 40
-> 2. ethtool -L <IFNAME> rx 0 tx 0
->    combined number is not specified, so command becomes {rx_count = 0,
->    tx_count = 0, combined_count = 40}.
-> 3. ethnl_set_channels checks, if there is at least 1 RX and 1 TX channel,
->    comparing (combined_count + rx_count) and (combined_count + tx_count)
->    to zero. Obviously, (40 + 0) is greater than zero, so the core code
->    deems the input OK.
-> 4. idpf interprets `rx 0 tx 0` as 0 channels and tries to proceed with such
->    configuration.
-> 
-> The issue has to be solved fundamentally, as current logic is also known to
-> cause AF_XDP problems in ice [0].
-> 
-> Interpret the command in a way that is more consistent with ethtool
-> manual [1] (--show-channels and --set-channels) and new ice logic.
-> 
-> Considering that in the idpf driver only the difference between RX and TX
-> queues forms dedicated channels, change the correct way to set number of
-> channels to:
-> 
-> ethtool -L <IFNAME> combined 10 /* For symmetric queues */
-> ethtool -L <IFNAME> combined 8 tx 2 rx 0 /* For asymmetric queues */
-> 
-> [0] https://lore.kernel.org/netdev/20240418095857.2827-1-larysa.zaremba@intel.com/
-> [1] https://man7.org/linux/man-pages/man8/ethtool.8.html
-> 
-> Fixes: 02cbfba1add5 ("idpf: add ethtool callbacks")
-> Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-> Reviewed-by: Igor Bagnucki <igor.bagnucki@intel.com>
-> Signed-off-by: Larysa Zaremba <larysa.zaremba@intel.com>
+> Reviewed-by: Anthony L Nguyen <anthony.l.nguyen@intel.com>
+> Reviewed-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
+> Signed-off-by: Anil Samal <anil.samal@intel.com>
+
+The nit below notwithstanding, this looks good to me.
 
 Reviewed-by: Simon Horman <horms@kernel.org>
 
+> diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool.c b/drivers/net/ethernet/intel/ice/ice_ethtool.c
+
+...
+
+> +/**
+> + * ice_get_extended_regs - returns FEC correctable, uncorrectable stats per
+> + *                         pcsquad, pcsport
+> + * @netdev: pointer to net device structure
+> + * @p: output buffer to fill requested register dump
+> + *
+> + * Return: 0 on success, negative on failure.
+> + */
+> +static int ice_get_extended_regs(struct net_device *netdev, void *p)
+> +{
+> +	struct ice_regdump_to_ethtool *ice_prv_regs_buf;
+> +	struct ice_netdev_priv *np = netdev_priv(netdev);
+
+nit: Please arrange local variables in reverse xmas tree order -
+     longest line to shortest.
+
+     It's probably not necessary to repost just because of this.
+
+     This tool can be of use here: https://github.com/ecree-solarflare/xmastree
+
+> +	struct ice_port_topology port_topology = {};
+> +	struct ice_port_info *pi;
+> +	struct ice_pf *pf;
+> +	struct ice_hw *hw;
+> +	unsigned int i;
+> +	int err;
+
+...
