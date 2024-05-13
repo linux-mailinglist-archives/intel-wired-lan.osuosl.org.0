@@ -2,71 +2,71 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 66E588C3D42
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 13 May 2024 10:33:11 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 6E7448C3D43
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 13 May 2024 10:33:13 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 5D2D68378A;
-	Mon, 13 May 2024 08:33:08 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 46C2B837BC;
+	Mon, 13 May 2024 08:33:10 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id AEr0ULD6YZe7; Mon, 13 May 2024 08:33:07 +0000 (UTC)
+ id akIpoVFH3x7g; Mon, 13 May 2024 08:33:09 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 803F383658
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org CAC5683658
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1715589187;
-	bh=q/34pFmgUrGVRB5gFysO5jlu2DLko03PZ36/MB8HqXs=;
+	s=default; t=1715589188;
+	bh=RqVnagPMlJuhm6bDCuvOPLpYSqw08sLqO0ReJkpQYwA=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=vcfbay/pxN9PkxP7mELjmL0ktTEP9yfxNatBYOcT9eGJxRa0hu4f98TxlcyX45h+l
-	 YmDW6aYlCp01WaQB/D9Ea3zh2D+6gWcmA34zbDP7U7B5Clo/2eAclNIEyJIhotZ9cy
-	 S2jUV9xnkXPSo8r/kQLzPdiHEEUSygP3vSpvKiNldaXI8PTOA3z1ae3h0rRwNYIseT
-	 dyfUBTtsgFMLR+LNL6aqSByDSysLGiI+5uFzBTb7sgl0SUzLU8mhhUCNeJCjluJSvb
-	 c6FJBldarjKKKkqQ4b8N7VRfXF3bGKS5Ma0napCclBmifmk4qFFPaRSSZRYLtSves+
-	 KTAOoABZOMbtQ==
+	b=M7fpQ/k3iHV7zHRlBk9+GOmCMLLVDGdlS6HoLyNcJUmeft2CJDqPPR0W8mczeINaF
+	 I/qwLVo/1EqVYICRKV1Z0i9qp4JKyVkUwElu3wmIZpruQyV/AedBh1eWxaokZPoj0k
+	 yQeNzLep6+00jDmSVod/HUQQ2c4W7QWLp08/RAy2QiSRxHt4y0NS/QX+Q1eZAOxYQJ
+	 v/yMBGZw1D8iBAYFpHxM45eX4fi/+73mfbOm0+BF76JFel24KfppJbKJADIezJu8dX
+	 r38uADsZ7uJs8oPSGRs7l4P0Iu5ztdm/Quj2y02VGEar1VgdLTJ+hrA9D3HeE9uuJ1
+	 aWBWsHUPqH7aw==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 803F383658;
-	Mon, 13 May 2024 08:33:07 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id CAC5683658;
+	Mon, 13 May 2024 08:33:08 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 93D591BF86C
- for <intel-wired-lan@lists.osuosl.org>; Mon, 13 May 2024 08:33:01 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id CCD771BF86C
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 13 May 2024 08:33:02 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 8A992410BB
- for <intel-wired-lan@lists.osuosl.org>; Mon, 13 May 2024 08:33:01 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id C56804109D
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 13 May 2024 08:33:02 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id vDTjQaeRGOAy for <intel-wired-lan@lists.osuosl.org>;
- Mon, 13 May 2024 08:32:57 +0000 (UTC)
+ id EEgFzFDQuDoy for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 13 May 2024 08:33:00 +0000 (UTC)
 Received-SPF: None (mailfrom) identity=mailfrom; client-ip=198.175.65.12;
  helo=mgamail.intel.com; envelope-from=michal.swiatkowski@linux.intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 443094109D
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 443094109D
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 2CC2E410B9
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2CC2E410B9
 Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.12])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 443094109D
- for <intel-wired-lan@lists.osuosl.org>; Mon, 13 May 2024 08:32:57 +0000 (UTC)
-X-CSE-ConnectionGUID: T5vgI8WeSoGPJYHwW3yIrw==
-X-CSE-MsgGUID: EY25pVGPRZ+DmpV6UD7m1Q==
-X-IronPort-AV: E=McAfee;i="6600,9927,11071"; a="22914838"
-X-IronPort-AV: E=Sophos;i="6.08,157,1712646000"; d="scan'208";a="22914838"
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 2CC2E410B9
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 13 May 2024 08:33:00 +0000 (UTC)
+X-CSE-ConnectionGUID: q6WyEoddQGmiocZkk+aLWw==
+X-CSE-MsgGUID: f9XREtPYRoirg/W6SacKYg==
+X-IronPort-AV: E=McAfee;i="6600,9927,11071"; a="22914843"
+X-IronPort-AV: E=Sophos;i="6.08,157,1712646000"; d="scan'208";a="22914843"
 Received: from fmviesa006.fm.intel.com ([10.60.135.146])
  by orvoesa104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 May 2024 01:32:57 -0700
-X-CSE-ConnectionGUID: BWGSdhr7SpGZsr3aoy8Esg==
-X-CSE-MsgGUID: lq85aeRZRLeT9iCua5cjQw==
+ 13 May 2024 01:33:00 -0700
+X-CSE-ConnectionGUID: +vRQn832SGiPAcI+6TJRsg==
+X-CSE-MsgGUID: /6/Z14NhS3+rTvZZOGvgcg==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.08,157,1712646000"; d="scan'208";a="30303490"
+X-IronPort-AV: E=Sophos;i="6.08,157,1712646000"; d="scan'208";a="30303521"
 Received: from wasp.igk.intel.com (HELO GK3153-DR2-R750-36946.localdomain.com)
  ([10.102.20.192])
- by fmviesa006.fm.intel.com with ESMTP; 13 May 2024 01:32:54 -0700
+ by fmviesa006.fm.intel.com with ESMTP; 13 May 2024 01:32:57 -0700
 From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Mon, 13 May 2024 10:37:27 +0200
-Message-ID: <20240513083735.54791-8-michal.swiatkowski@linux.intel.com>
+Date: Mon, 13 May 2024 10:37:28 +0200
+Message-ID: <20240513083735.54791-9-michal.swiatkowski@linux.intel.com>
 X-Mailer: git-send-email 2.42.0
 In-Reply-To: <20240513083735.54791-1-michal.swiatkowski@linux.intel.com>
 References: <20240513083735.54791-1-michal.swiatkowski@linux.intel.com>
@@ -74,25 +74,25 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1715589178; x=1747125178;
+ t=1715589181; x=1747125181;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=wTiie1WC0v0OwejiEl33D0ZP6bZoFdlvg+u6AavqK7A=;
- b=JhcA1kQcOmgACD577/pVoPPa19kVi93rsCiF+Aji4nSqxllUXs7/n5A2
- DFpexq4aMoB0dkUDC9CHx0MUDy2sBlwBNgDwz5smRTjCv11RzksK1tuea
- vQaNwXiLI72BItA3WEUJoNIZKwzoJhY+HGtHoG+yzaLF2GKmQ2HX93Nkl
- hikou2povP3uu9vAMuP5bo/P9mQ2HjX6uDg7Lf54uzRjphhFCv5FVOK79
- k2Vwcysi+sM/hmkBPAbCNuuwcgF0S8Uek94Xxswhc2Cy7SUfl6QilJ3Ve
- +nwJuU16opU5ykpKQ+OO5jxR+a4GcPAi01y61RNLXebQ9VoMbcGnM27qQ
+ bh=HVCjGPb4i+ajo+yadn6z1UNwFYkMmmB3ulLolX7AIOY=;
+ b=f+A6XcDDzYN11eb9RFk0dkGsbgkho8sGkAT7U0ig1gTGuUju04xGQmAT
+ 18+aY7m3yOzXItoQ9kqUpVmxD7EVeKL994uIVI3bJWKv7DtsoMmakgfaR
+ 2kQJNUIrrVWnoXiefRdVeTr8+YS0Cexn8ANy7XeZoLUul1xT5gZL+0ito
+ s1tZT11FerPz7E5J3W5JTfAk2AQ45PZNbE1IxLVZePju05Ihj6Ob1EBIv
+ B+vMDQ4jy2DM3sIN7vHeEnSdn1o3q5C3B6Wwyi+jAEXNu7RzcagR6tvSG
+ 2yTqEr3+0aPwsLkBoWwBrhKO0mCH+PArXssgC1vvPYnXZrbRfNAZ96WJe
  Q==;
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=none (p=none dis=none)
  header.from=linux.intel.com
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=JhcA1kQc
-Subject: [Intel-wired-lan] [iwl-next v2 07/15] ice: implement netdev for
- subfunction
+ header.a=rsa-sha256 header.s=Intel header.b=f+A6XcDD
+Subject: [Intel-wired-lan] [iwl-next v2 08/15] ice: make reprresentor code
+ generic
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -112,145 +112,450 @@ Cc: shayd@nvidia.com, maciej.fijalkowski@intel.com, sridhar.samudrala@intel.com,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Piotr Raczynski <piotr.raczynski@intel.com>
+Keep the same flow of port representor creation, but instead of general
+attach function create helpers for specific representor type.
 
-Configure netdevice for subfunction usecase. Mostly it is reusing ops
-from the PF netdevice.
+Store function pointer for add and remove representor.
 
-SF netdev is linked to devlink port registered after SF activation.
+Type of port representor can be also known based on VSI type, but it
+is more clean to have it directly saved in port representor structure.
 
-Reviewed-by: Jiri Pirko <jiri@nvidia.com>
-Signed-off-by: Piotr Raczynski <piotr.raczynski@intel.com>
+Add devlink lock for whole port representor creation and destruction.
+
+Reviewed-by: Wojciech Drewek <wojciech.drewek@intel.com>
 Signed-off-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_sf_eth.c | 85 ++++++++++++++++++++-
- 1 file changed, 84 insertions(+), 1 deletion(-)
+ .../ethernet/intel/ice/devlink/devlink_port.h |  1 +
+ drivers/net/ethernet/intel/ice/ice_eswitch.c  | 74 +++++++++++-----
+ drivers/net/ethernet/intel/ice/ice_eswitch.h  | 11 +--
+ drivers/net/ethernet/intel/ice/ice_repr.c     | 88 +++++++++----------
+ drivers/net/ethernet/intel/ice/ice_repr.h     | 16 +++-
+ drivers/net/ethernet/intel/ice/ice_sriov.c    |  4 +-
+ drivers/net/ethernet/intel/ice/ice_vf_lib.c   |  4 +-
+ 7 files changed, 121 insertions(+), 77 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_sf_eth.c b/drivers/net/ethernet/intel/ice/ice_sf_eth.c
-index abe495c2d033..3a540a2638d1 100644
---- a/drivers/net/ethernet/intel/ice/ice_sf_eth.c
-+++ b/drivers/net/ethernet/intel/ice/ice_sf_eth.c
-@@ -2,11 +2,85 @@
- /* Copyright (c) 2024, Intel Corporation. */
- #include "ice.h"
- #include "ice_lib.h"
-+#include "ice_txrx.h"
- #include "ice_fltr.h"
- #include "ice_sf_eth.h"
- #include "devlink/devlink_port.h"
- #include "devlink/devlink.h"
+diff --git a/drivers/net/ethernet/intel/ice/devlink/devlink_port.h b/drivers/net/ethernet/intel/ice/devlink/devlink_port.h
+index e4acd855d9f9..6e14b9e4d621 100644
+--- a/drivers/net/ethernet/intel/ice/devlink/devlink_port.h
++++ b/drivers/net/ethernet/intel/ice/devlink/devlink_port.h
+@@ -23,6 +23,7 @@ struct ice_dynamic_port {
+ 	struct devlink_port devlink_port;
+ 	struct ice_pf *pf;
+ 	struct ice_vsi *vsi;
++	unsigned long repr_id;
+ 	u32 sfnum;
+ };
  
-+static const struct net_device_ops ice_sf_netdev_ops = {
-+	.ndo_open = ice_open,
-+	.ndo_stop = ice_stop,
-+	.ndo_start_xmit = ice_start_xmit,
-+	.ndo_vlan_rx_add_vid = ice_vlan_rx_add_vid,
-+	.ndo_vlan_rx_kill_vid = ice_vlan_rx_kill_vid,
-+	.ndo_change_mtu = ice_change_mtu,
-+	.ndo_get_stats64 = ice_get_stats64,
-+	.ndo_tx_timeout = ice_tx_timeout,
-+	.ndo_bpf = ice_xdp,
-+	.ndo_xdp_xmit = ice_xdp_xmit,
-+	.ndo_xsk_wakeup = ice_xsk_wakeup,
-+};
+diff --git a/drivers/net/ethernet/intel/ice/ice_eswitch.c b/drivers/net/ethernet/intel/ice/ice_eswitch.c
+index 4f539b1c7781..a4e7ed9fbaf5 100644
+--- a/drivers/net/ethernet/intel/ice/ice_eswitch.c
++++ b/drivers/net/ethernet/intel/ice/ice_eswitch.c
+@@ -452,11 +452,9 @@ static void ice_eswitch_start_reprs(struct ice_pf *pf)
+ 	ice_eswitch_start_all_tx_queues(pf);
+ }
+ 
+-int
+-ice_eswitch_attach(struct ice_pf *pf, struct ice_vf *vf)
++static int
++ice_eswitch_attach(struct ice_pf *pf, struct ice_repr *repr, unsigned long *id)
+ {
+-	struct devlink *devlink = priv_to_devlink(pf);
+-	struct ice_repr *repr;
+ 	int err;
+ 
+ 	if (pf->eswitch_mode == DEVLINK_ESWITCH_MODE_LEGACY)
+@@ -470,13 +468,9 @@ ice_eswitch_attach(struct ice_pf *pf, struct ice_vf *vf)
+ 
+ 	ice_eswitch_stop_reprs(pf);
+ 
+-	devl_lock(devlink);
+-	repr = ice_repr_add_vf(vf);
+-	devl_unlock(devlink);
+-	if (IS_ERR(repr)) {
+-		err = PTR_ERR(repr);
++	err = repr->ops.add(repr);
++	if (err)
+ 		goto err_create_repr;
+-	}
+ 
+ 	err = ice_eswitch_setup_repr(pf, repr);
+ 	if (err)
+@@ -486,7 +480,7 @@ ice_eswitch_attach(struct ice_pf *pf, struct ice_vf *vf)
+ 	if (err)
+ 		goto err_xa_alloc;
+ 
+-	vf->repr_id = repr->id;
++	*id = repr->id;
+ 
+ 	ice_eswitch_start_reprs(pf);
+ 
+@@ -495,9 +489,7 @@ ice_eswitch_attach(struct ice_pf *pf, struct ice_vf *vf)
+ err_xa_alloc:
+ 	ice_eswitch_release_repr(pf, repr);
+ err_setup_repr:
+-	devl_lock(devlink);
+-	ice_repr_rem_vf(repr);
+-	devl_unlock(devlink);
++	repr->ops.rem(repr);
+ err_create_repr:
+ 	if (xa_empty(&pf->eswitch.reprs))
+ 		ice_eswitch_disable_switchdev(pf);
+@@ -506,14 +498,35 @@ ice_eswitch_attach(struct ice_pf *pf, struct ice_vf *vf)
+ 	return err;
+ }
+ 
+-void ice_eswitch_detach(struct ice_pf *pf, struct ice_vf *vf)
++/**
++ * ice_eswitch_attach_vf - attach VF to a eswitch
++ * @pf: pointer to PF structure
++ * @vf: pointer to VF structure to be attached
++ *
++ * During attaching port representor for VF is created.
++ *
++ * Return: zero on success or an error code on failure.
++ */
++int ice_eswitch_attach_vf(struct ice_pf *pf, struct ice_vf *vf)
+ {
+-	struct ice_repr *repr = xa_load(&pf->eswitch.reprs, vf->repr_id);
++	struct ice_repr *repr = ice_repr_create_vf(vf);
+ 	struct devlink *devlink = priv_to_devlink(pf);
++	int err;
+ 
+-	if (!repr)
+-		return;
++	if (IS_ERR(repr))
++		return PTR_ERR(repr);
+ 
++	devl_lock(devlink);
++	err = ice_eswitch_attach(pf, repr, &vf->repr_id);
++	if (err)
++		ice_repr_destroy(repr);
++	devl_unlock(devlink);
++
++	return err;
++}
++
++static void ice_eswitch_detach(struct ice_pf *pf, struct ice_repr *repr)
++{
+ 	ice_eswitch_stop_reprs(pf);
+ 	xa_erase(&pf->eswitch.reprs, repr->id);
+ 
+@@ -521,10 +534,12 @@ void ice_eswitch_detach(struct ice_pf *pf, struct ice_vf *vf)
+ 		ice_eswitch_disable_switchdev(pf);
+ 
+ 	ice_eswitch_release_repr(pf, repr);
+-	devl_lock(devlink);
+-	ice_repr_rem_vf(repr);
++	repr->ops.rem(repr);
++	ice_repr_destroy(repr);
+ 
+ 	if (xa_empty(&pf->eswitch.reprs)) {
++		struct devlink *devlink = priv_to_devlink(pf);
++
+ 		/* since all port representors are destroyed, there is
+ 		 * no point in keeping the nodes
+ 		 */
+@@ -533,6 +548,23 @@ void ice_eswitch_detach(struct ice_pf *pf, struct ice_vf *vf)
+ 	} else {
+ 		ice_eswitch_start_reprs(pf);
+ 	}
++}
 +
 +/**
-+ * ice_sf_cfg_netdev - Allocate, configure and register a netdev
-+ * @dyn_port: subfunction associated with configured netdev
-+ * @devlink_port: subfunction devlink port to be linked with netdev
-+ *
-+ * Return: 0 on success, negative value on failure
++ * ice_eswitch_detach_vf - detach VF from a eswitch
++ * @pf: pointer to PF structure
++ * @vf: pointer to VF structure to be detached
 + */
-+static int ice_sf_cfg_netdev(struct ice_dynamic_port *dyn_port,
-+			     struct devlink_port *devlink_port)
++void ice_eswitch_detach_vf(struct ice_pf *pf, struct ice_vf *vf)
 +{
-+	struct ice_vsi *vsi = dyn_port->vsi;
-+	struct ice_netdev_priv *np;
-+	struct net_device *netdev;
-+	int err;
++	struct ice_repr *repr = xa_load(&pf->eswitch.reprs, vf->repr_id);
++	struct devlink *devlink = priv_to_devlink(pf);
 +
-+	netdev = alloc_etherdev_mqs(sizeof(*np), vsi->alloc_txq,
-+				    vsi->alloc_rxq);
-+	if (!netdev)
-+		return -ENOMEM;
++	if (!repr)
++		return;
 +
-+	SET_NETDEV_DEV(netdev, &vsi->back->pdev->dev);
-+	set_bit(ICE_VSI_NETDEV_ALLOCD, vsi->state);
-+	vsi->netdev = netdev;
-+	np = netdev_priv(netdev);
-+	np->vsi = vsi;
-+
-+	ice_set_netdev_features(netdev);
-+
-+	netdev->xdp_features = NETDEV_XDP_ACT_BASIC | NETDEV_XDP_ACT_REDIRECT |
-+			       NETDEV_XDP_ACT_XSK_ZEROCOPY |
-+			       NETDEV_XDP_ACT_RX_SG;
-+
-+	eth_hw_addr_set(netdev, dyn_port->hw_addr);
-+	ether_addr_copy(netdev->perm_addr, dyn_port->hw_addr);
-+	netdev->netdev_ops = &ice_sf_netdev_ops;
-+	SET_NETDEV_DEVLINK_PORT(netdev, devlink_port);
-+
-+	err = register_netdev(netdev);
-+	if (err) {
-+		free_netdev(netdev);
-+		vsi->netdev = NULL;
-+		return -ENOMEM;
-+	}
-+	set_bit(ICE_VSI_NETDEV_REGISTERED, vsi->state);
-+	netif_carrier_off(netdev);
-+	netif_tx_stop_all_queues(netdev);
-+
-+	return 0;
-+}
-+
-+static void ice_sf_decfg_netdev(struct ice_vsi *vsi)
-+{
-+	unregister_netdev(vsi->netdev);
-+	clear_bit(ICE_VSI_NETDEV_REGISTERED, vsi->state);
-+	free_netdev(vsi->netdev);
-+	vsi->netdev = NULL;
-+	clear_bit(ICE_VSI_NETDEV_ALLOCD, vsi->state);
-+}
-+
- /**
-  * ice_sf_dev_probe - subfunction driver probe function
-  * @adev: pointer to the auxiliary device
-@@ -57,10 +131,16 @@ static int ice_sf_dev_probe(struct auxiliary_device *adev,
- 		goto err_vsi_decfg;
- 	}
- 
-+	err = ice_sf_cfg_netdev(dyn_port, &sf_dev->priv->devlink_port);
-+	if (err) {
-+		dev_err(dev, "Subfunction netdev config failed");
-+		goto err_devlink_destroy;
-+	}
-+
- 	err = devl_port_fn_devlink_set(&dyn_port->devlink_port, devlink);
- 	if (err) {
- 		dev_err(dev, "Can't link devlink instance to SF devlink port");
--		goto err_devlink_destroy;
-+		goto err_netdev_decfg;
- 	}
- 
- 	ice_napi_add(vsi);
-@@ -70,6 +150,8 @@ static int ice_sf_dev_probe(struct auxiliary_device *adev,
- 
- 	return 0;
- 
-+err_netdev_decfg:
-+	ice_sf_decfg_netdev(vsi);
- err_devlink_destroy:
- 	ice_devlink_destroy_sf_dev_port(sf_dev);
- err_vsi_decfg:
-@@ -98,6 +180,7 @@ static void ice_sf_dev_remove(struct auxiliary_device *adev)
- 
- 	ice_vsi_close(vsi);
- 
-+	ice_sf_decfg_netdev(vsi);
- 	ice_devlink_destroy_sf_dev_port(sf_dev);
- 	devl_unregister(devlink);
++	devl_lock(devlink);
++	ice_eswitch_detach(pf, repr);
  	devl_unlock(devlink);
+ }
+ 
+@@ -549,7 +581,7 @@ void ice_eswitch_rebuild(struct ice_pf *pf)
+ 		return;
+ 
+ 	xa_for_each(&pf->eswitch.reprs, id, repr)
+-		ice_eswitch_detach(pf, repr->vf);
++		ice_eswitch_detach(pf, repr);
+ }
+ 
+ /**
+diff --git a/drivers/net/ethernet/intel/ice/ice_eswitch.h b/drivers/net/ethernet/intel/ice/ice_eswitch.h
+index 09194d514f9b..265b2af055b0 100644
+--- a/drivers/net/ethernet/intel/ice/ice_eswitch.h
++++ b/drivers/net/ethernet/intel/ice/ice_eswitch.h
+@@ -5,11 +5,11 @@
+ #define _ICE_ESWITCH_H_
+ 
+ #include <net/devlink.h>
++#include "devlink/devlink_port.h"
+ 
+ #ifdef CONFIG_ICE_SWITCHDEV
+-void ice_eswitch_detach(struct ice_pf *pf, struct ice_vf *vf);
+-int
+-ice_eswitch_attach(struct ice_pf *pf, struct ice_vf *vf);
++void ice_eswitch_detach_vf(struct ice_pf *pf, struct ice_vf *vf);
++int ice_eswitch_attach_vf(struct ice_pf *pf, struct ice_vf *vf);
+ void ice_eswitch_rebuild(struct ice_pf *pf);
+ 
+ int ice_eswitch_mode_get(struct devlink *devlink, u16 *mode);
+@@ -32,10 +32,11 @@ struct net_device *ice_eswitch_get_target(struct ice_rx_ring *rx_ring,
+ int ice_eswitch_cfg_vsi(struct ice_vsi *vsi, const u8 *mac);
+ void ice_eswitch_decfg_vsi(struct ice_vsi *vsi, const u8 *mac);
+ #else /* CONFIG_ICE_SWITCHDEV */
+-static inline void ice_eswitch_detach(struct ice_pf *pf, struct ice_vf *vf) { }
++static inline void
++ice_eswitch_detach_vf(struct ice_pf *pf, struct ice_vf *vf) { }
+ 
+ static inline int
+-ice_eswitch_attach(struct ice_pf *pf, struct ice_vf *vf)
++ice_eswitch_attach_vf(struct ice_pf *pf, struct ice_vf *vf)
+ {
+ 	return -EOPNOTSUPP;
+ }
+diff --git a/drivers/net/ethernet/intel/ice/ice_repr.c b/drivers/net/ethernet/intel/ice/ice_repr.c
+index bdda3401e343..5d71f623b1e0 100644
+--- a/drivers/net/ethernet/intel/ice/ice_repr.c
++++ b/drivers/net/ethernet/intel/ice/ice_repr.c
+@@ -283,34 +283,23 @@ ice_repr_reg_netdev(struct net_device *netdev)
+ 	return register_netdev(netdev);
+ }
+ 
+-static void ice_repr_remove_node(struct devlink_port *devlink_port)
+-{
+-	devl_rate_leaf_destroy(devlink_port);
+-}
+-
+ /**
+- * ice_repr_rem - remove representor from VF
++ * ice_repr_destroy - remove representor from VF
+  * @repr: pointer to representor structure
+  */
+-static void ice_repr_rem(struct ice_repr *repr)
++void ice_repr_destroy(struct ice_repr *repr)
+ {
+ 	free_percpu(repr->stats);
+ 	free_netdev(repr->netdev);
+ 	kfree(repr);
+ }
+ 
+-/**
+- * ice_repr_rem_vf - remove representor from VF
+- * @repr: pointer to representor structure
+- */
+-void ice_repr_rem_vf(struct ice_repr *repr)
++static void ice_repr_rem_vf(struct ice_repr *repr)
+ {
+-	ice_repr_remove_node(&repr->vf->devlink_port);
+ 	ice_eswitch_decfg_vsi(repr->src_vsi, repr->parent_mac);
+ 	unregister_netdev(repr->netdev);
+ 	ice_devlink_destroy_vf_port(repr->vf);
+ 	ice_virtchnl_set_dflt_ops(repr->vf);
+-	ice_repr_rem(repr);
+ }
+ 
+ static void ice_repr_set_tx_topology(struct ice_pf *pf)
+@@ -327,13 +316,10 @@ static void ice_repr_set_tx_topology(struct ice_pf *pf)
+ }
+ 
+ /**
+- * ice_repr_add - add representor for generic VSI
+- * @pf: pointer to PF structure
++ * ice_repr_create - add representor for generic VSI
+  * @src_vsi: pointer to VSI structure of device to represent
+- * @parent_mac: device MAC address
+  */
+-static struct ice_repr *
+-ice_repr_add(struct ice_pf *pf, struct ice_vsi *src_vsi, const u8 *parent_mac)
++static struct ice_repr *ice_repr_create(struct ice_vsi *src_vsi)
+ {
+ 	struct ice_netdev_priv *np;
+ 	struct ice_repr *repr;
+@@ -360,7 +346,10 @@ ice_repr_add(struct ice_pf *pf, struct ice_vsi *src_vsi, const u8 *parent_mac)
+ 	np = netdev_priv(repr->netdev);
+ 	np->repr = repr;
+ 
+-	ether_addr_copy(repr->parent_mac, parent_mac);
++	repr->netdev->min_mtu = ETH_MIN_MTU;
++	repr->netdev->max_mtu = ICE_MAX_MTU;
++
++	SET_NETDEV_DEV(repr->netdev, ice_pf_to_dev(src_vsi->back));
+ 
+ 	return repr;
+ 
+@@ -371,32 +360,15 @@ ice_repr_add(struct ice_pf *pf, struct ice_vsi *src_vsi, const u8 *parent_mac)
+ 	return ERR_PTR(err);
+ }
+ 
+-struct ice_repr *ice_repr_add_vf(struct ice_vf *vf)
++static int ice_repr_add_vf(struct ice_repr *repr)
+ {
+-	struct ice_repr *repr;
+-	struct ice_vsi *vsi;
++	struct ice_vf *vf = repr->vf;
+ 	int err;
+ 
+-	vsi = ice_get_vf_vsi(vf);
+-	if (!vsi)
+-		return ERR_PTR(-ENOENT);
+-
+ 	err = ice_devlink_create_vf_port(vf);
+ 	if (err)
+-		return ERR_PTR(err);
+-
+-	repr = ice_repr_add(vf->pf, vsi, vf->hw_lan_addr);
+-	if (IS_ERR(repr)) {
+-		err = PTR_ERR(repr);
+-		goto err_repr_add;
+-	}
+-
+-	repr->vf = vf;
++		return err;
+ 
+-	repr->netdev->min_mtu = ETH_MIN_MTU;
+-	repr->netdev->max_mtu = ICE_MAX_MTU;
+-
+-	SET_NETDEV_DEV(repr->netdev, ice_pf_to_dev(vf->pf));
+ 	SET_NETDEV_DEVLINK_PORT(repr->netdev, &vf->devlink_port);
+ 	err = ice_repr_reg_netdev(repr->netdev);
+ 	if (err)
+@@ -409,15 +381,43 @@ struct ice_repr *ice_repr_add_vf(struct ice_vf *vf)
+ 	ice_virtchnl_set_repr_ops(vf);
+ 	ice_repr_set_tx_topology(vf->pf);
+ 
+-	return repr;
++	return 0;
+ 
+ err_cfg_vsi:
+ 	unregister_netdev(repr->netdev);
+ err_netdev:
+-	ice_repr_rem(repr);
+-err_repr_add:
+ 	ice_devlink_destroy_vf_port(vf);
+-	return ERR_PTR(err);
++	return err;
++}
++
++/**
++ * ice_repr_create_vf - add representor for VF VSI
++ * @vf: VF to create port representor on
++ *
++ * Set correct representor type for VF and functions pointer.
++ *
++ * Return: created port representor on success, error otherwise
++ */
++struct ice_repr *ice_repr_create_vf(struct ice_vf *vf)
++{
++	struct ice_vsi *vsi = ice_get_vf_vsi(vf);
++	struct ice_repr *repr;
++
++	if (!vsi)
++		return ERR_PTR(-EINVAL);
++
++	repr = ice_repr_create(vsi);
++	if (!repr)
++		return ERR_PTR(-ENOMEM);
++
++	repr->type = ICE_REPR_TYPE_VF;
++	repr->vf = vf;
++	repr->ops.add = ice_repr_add_vf;
++	repr->ops.rem = ice_repr_rem_vf;
++
++	ether_addr_copy(repr->parent_mac, vf->hw_lan_addr);
++
++	return repr;
+ }
+ 
+ struct ice_repr *ice_repr_get(struct ice_pf *pf, u32 id)
+diff --git a/drivers/net/ethernet/intel/ice/ice_repr.h b/drivers/net/ethernet/intel/ice/ice_repr.h
+index 07842620d7a2..d3454b6f5d41 100644
+--- a/drivers/net/ethernet/intel/ice/ice_repr.h
++++ b/drivers/net/ethernet/intel/ice/ice_repr.h
+@@ -15,19 +15,29 @@ struct ice_repr_pcpu_stats {
+ 	u64 tx_drops;
+ };
+ 
++enum ice_repr_type {
++	ICE_REPR_TYPE_VF,
++};
++
+ struct ice_repr {
+ 	struct ice_vsi *src_vsi;
+-	struct ice_vf *vf;
+ 	struct net_device *netdev;
+ 	struct metadata_dst *dst;
+ 	struct ice_esw_br_port *br_port;
+ 	struct ice_repr_pcpu_stats __percpu *stats;
+ 	u32 id;
+ 	u8 parent_mac[ETH_ALEN];
++	enum ice_repr_type type;
++	struct ice_vf *vf;
++	struct {
++		int (*add)(struct ice_repr *repr);
++		void (*rem)(struct ice_repr *repr);
++	} ops;
+ };
+ 
+-struct ice_repr *ice_repr_add_vf(struct ice_vf *vf);
+-void ice_repr_rem_vf(struct ice_repr *repr);
++struct ice_repr *ice_repr_create_vf(struct ice_vf *vf);
++
++void ice_repr_destroy(struct ice_repr *repr);
+ 
+ void ice_repr_start_tx_queues(struct ice_repr *repr);
+ void ice_repr_stop_tx_queues(struct ice_repr *repr);
+diff --git a/drivers/net/ethernet/intel/ice/ice_sriov.c b/drivers/net/ethernet/intel/ice/ice_sriov.c
+index 067712f4923f..f0e4c955be34 100644
+--- a/drivers/net/ethernet/intel/ice/ice_sriov.c
++++ b/drivers/net/ethernet/intel/ice/ice_sriov.c
+@@ -175,7 +175,7 @@ void ice_free_vfs(struct ice_pf *pf)
+ 	ice_for_each_vf(pf, bkt, vf) {
+ 		mutex_lock(&vf->cfg_lock);
+ 
+-		ice_eswitch_detach(pf, vf);
++		ice_eswitch_detach_vf(pf, vf);
+ 		ice_dis_vf_qs(vf);
+ 
+ 		if (test_bit(ICE_VF_STATE_INIT, vf->vf_states)) {
+@@ -598,7 +598,7 @@ static int ice_start_vfs(struct ice_pf *pf)
+ 			goto teardown;
+ 		}
+ 
+-		retval = ice_eswitch_attach(pf, vf);
++		retval = ice_eswitch_attach_vf(pf, vf);
+ 		if (retval) {
+ 			dev_err(ice_pf_to_dev(pf), "Failed to attach VF %d to eswitch, error %d",
+ 				vf->vf_id, retval);
+diff --git a/drivers/net/ethernet/intel/ice/ice_vf_lib.c b/drivers/net/ethernet/intel/ice/ice_vf_lib.c
+index 5635e9da2212..a69e91f88d81 100644
+--- a/drivers/net/ethernet/intel/ice/ice_vf_lib.c
++++ b/drivers/net/ethernet/intel/ice/ice_vf_lib.c
+@@ -766,7 +766,7 @@ void ice_reset_all_vfs(struct ice_pf *pf)
+ 	ice_for_each_vf(pf, bkt, vf) {
+ 		mutex_lock(&vf->cfg_lock);
+ 
+-		ice_eswitch_detach(pf, vf);
++		ice_eswitch_detach_vf(pf, vf);
+ 		vf->driver_caps = 0;
+ 		ice_vc_set_default_allowlist(vf);
+ 
+@@ -782,7 +782,7 @@ void ice_reset_all_vfs(struct ice_pf *pf)
+ 		ice_vf_rebuild_vsi(vf);
+ 		ice_vf_post_vsi_rebuild(vf);
+ 
+-		ice_eswitch_attach(pf, vf);
++		ice_eswitch_attach_vf(pf, vf);
+ 
+ 		mutex_unlock(&vf->cfg_lock);
+ 	}
 -- 
 2.42.0
 
