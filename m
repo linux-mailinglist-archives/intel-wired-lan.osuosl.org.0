@@ -1,76 +1,140 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id A0B2F8C7E07
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 16 May 2024 23:30:23 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 136A08C7E12
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 16 May 2024 23:35:14 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 4ABD541DB8;
-	Thu, 16 May 2024 21:30:22 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id B187541CFD;
+	Thu, 16 May 2024 21:35:12 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Y5ZGRZ9CUHTl; Thu, 16 May 2024 21:30:19 +0000 (UTC)
+ id xGnUB9o_3sB5; Thu, 16 May 2024 21:35:11 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 455CC41DAB
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 881F640B3A
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1715895019;
-	bh=sxi3XWTLvLmvb2AupimYUfa94OxnvVk1ZbglFWWrWIg=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1715895311;
+	bh=fcqtIyEB3BiIJMAUYMBt7K5rV7edCiEALXc4C2a9GQQ=;
+	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=V1UtzEOdhRSGNaoCugNQbl4Ow6SARiF04oaoR7wL1ZioB5xKDEWPaD1NZbeBRbspY
-	 vjgdIXCb+1MCOSMFs8fIwuVTIS2GSilo5qElF/Ng5Ak6ZSeTLcsndDok3PrAbO88MS
-	 HoAZpfR0xMsvTYAo0tAZ/CZabOkKiCj5Z+RMqiogdu7V96K89UL+igvsoBEx96a6Cw
-	 66VVm2UNVa235xoOWg7Wecttf+5jDTsg/EHrLMG0SKNA0ffO4mcpfgYS7fKPXgr8oH
-	 4XM4OR3QSFp7xfYyFbi6qJrd07B4n+osmtraHSohTSefHNN7PadU2gqTs3yw1MEf5b
-	 mDQ6vph6COE8w==
+	b=ie0BbR9cNbuBQgzQ28dKKfjVCOZ8bCL02RmkGwed3HUEU/uZLZAYOyD8mfL/qUIzG
+	 y28NegwCt9iba5DNEiXhu0+MAdHG/TSROCNZoMSm270lCu/y/G8RPfgBMG1NV1qgFX
+	 uzxaRO3zVw23i1+OaqjAz+Kc9w5wBggY+p/tIzShZRdBJP3db8gwZxGbSFhQ0mp8y1
+	 1MeL1upPb8FprVDegEt+0HMF1twVOmqPa9TVuX1vd0U+X1gDbJ4IiIOE5N/GwMTnYK
+	 BeBZlgu8bxRRh+cxRwOPHXq7tEH9QK6sh5sKe5zF8xUq4K4Ca3EJrLQ2sqziEshISW
+	 3ozdNeluljadw==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 455CC41DAB;
-	Thu, 16 May 2024 21:30:19 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 881F640B3A;
+	Thu, 16 May 2024 21:35:11 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id DBF9C1BF4D8
- for <intel-wired-lan@lists.osuosl.org>; Thu, 16 May 2024 21:30:16 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id AF7E31BF4D8
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 16 May 2024 21:35:09 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id C2FD3404D5
- for <intel-wired-lan@lists.osuosl.org>; Thu, 16 May 2024 21:30:16 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 945FA82264
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 16 May 2024 21:35:09 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id kiQobwNKv_sa for <intel-wired-lan@lists.osuosl.org>;
- Thu, 16 May 2024 21:30:14 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2001:780:45:1d:225:90ff:fe52:c662; helo=ganesha.gnumonks.org;
- envelope-from=laforge@gnumonks.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org E9925400C4
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org E9925400C4
-Received: from ganesha.gnumonks.org (ganesha.gnumonks.org
- [IPv6:2001:780:45:1d:225:90ff:fe52:c662])
- by smtp2.osuosl.org (Postfix) with ESMTPS id E9925400C4
- for <intel-wired-lan@lists.osuosl.org>; Thu, 16 May 2024 21:30:12 +0000 (UTC)
-Received: from uucp by ganesha.gnumonks.org with local-bsmtp (Exim 4.94.2)
- (envelope-from <laforge@gnumonks.org>)
- id 1s7ifs-00FLNt-Ly; Thu, 16 May 2024 23:30:04 +0200
-Received: from laforge by localhost.localdomain with local (Exim 4.97)
- (envelope-from <laforge@gnumonks.org>) id 1s7ifo-00000004ZaZ-1Qrr;
- Thu, 16 May 2024 23:30:00 +0200
-Date: Thu, 16 May 2024 23:30:00 +0200
-From: Harald Welte <laforge@gnumonks.org>
-To: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-Message-ID: <ZkZ62F_iCCOf4nmM@nataraja>
-References: <20240327152358.2368467-1-aleksander.lobakin@intel.com>
- <ZkSivjg7uZsA20ft@nataraja> <ZkXjfeLhB9T5MLfX@mev-dev>
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id gvv-Evak0Cw5 for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 16 May 2024 21:35:08 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=148.163.158.5;
+ helo=mx0b-001b2d01.pphosted.com; envelope-from=thinhtr@linux.ibm.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 6D5218225A
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6D5218225A
+Received: from mx0b-001b2d01.pphosted.com (mx0b-001b2d01.pphosted.com
+ [148.163.158.5])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 6D5218225A
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 16 May 2024 21:35:08 +0000 (UTC)
+Received: from pps.filterd (m0360072.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 44GKa9BC000318; Thu, 16 May 2024 21:34:55 GMT
+Received: from pps.reinject (localhost [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3y5qc9rcuj-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Thu, 16 May 2024 21:34:54 +0000
+Received: from m0360072.ppops.net (m0360072.ppops.net [127.0.0.1])
+ by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 44GLYr3e021918;
+ Thu, 16 May 2024 21:34:54 GMT
+Received: from ppma21.wdc07v.mail.ibm.com
+ (5b.69.3da9.ip4.static.sl-reverse.com [169.61.105.91])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3y5qc9rcuf-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Thu, 16 May 2024 21:34:53 +0000
+Received: from pps.filterd (ppma21.wdc07v.mail.ibm.com [127.0.0.1])
+ by ppma21.wdc07v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 44GKshlc002291; Thu, 16 May 2024 21:34:53 GMT
+Received: from smtprelay02.dal12v.mail.ibm.com ([172.16.1.4])
+ by ppma21.wdc07v.mail.ibm.com (PPS) with ESMTPS id 3y2m0pmcmp-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Thu, 16 May 2024 21:34:53 +0000
+Received: from smtpav01.dal12v.mail.ibm.com (smtpav01.dal12v.mail.ibm.com
+ [10.241.53.100])
+ by smtprelay02.dal12v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 44GLYo7l46531268
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Thu, 16 May 2024 21:34:52 GMT
+Received: from smtpav01.dal12v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 7B6BC58058;
+ Thu, 16 May 2024 21:34:50 +0000 (GMT)
+Received: from smtpav01.dal12v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 3339B58057;
+ Thu, 16 May 2024 21:34:50 +0000 (GMT)
+Received: from [9.41.99.196] (unknown [9.41.99.196])
+ by smtpav01.dal12v.mail.ibm.com (Postfix) with ESMTP;
+ Thu, 16 May 2024 21:34:50 +0000 (GMT)
+Message-ID: <344f9687-118c-4423-aae1-929f75fead8e@linux.ibm.com>
+Date: Thu, 16 May 2024 16:34:49 -0500
+User-Agent: Mozilla Thunderbird
+To: Jacob Keller <jacob.e.keller@intel.com>, netdev@vger.kernel.org,
+ kuba@kernel.org, anthony.l.nguyen@intel.com,
+ aleksandr.loktionov@intel.com, przemyslaw.kitszel@intel.com,
+ pmenzel@molgen.mpg.de
+References: <20240515210705.620-1-thinhtr@linux.ibm.com>
+ <20240515210705.620-2-thinhtr@linux.ibm.com>
+ <9fcff111-bec5-4623-bc22-cb4792aba55e@intel.com>
+From: Thinh Tran <thinhtr@linux.ibm.com>
+Content-Language: en-US
+In-Reply-To: <9fcff111-bec5-4623-bc22-cb4792aba55e@intel.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+X-TM-AS-GCONF: 00
+X-Proofpoint-GUID: SzgRhx6NkjJIZ8sGRdoUiYacDyUGASxD
+X-Proofpoint-ORIG-GUID: WAcBvhVmQUBjpZfPcwjXnhU7RvI1dBqZ
+Content-Transfer-Encoding: 8bit
+X-Proofpoint-UnRewURL: 0 URL was un-rewritten
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <ZkXjfeLhB9T5MLfX@mev-dev>
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1039,Hydra:6.0.650,FMLib:17.11.176.26
+ definitions=2024-05-16_07,2024-05-15_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ mlxscore=0 suspectscore=0
+ adultscore=0 clxscore=1015 lowpriorityscore=0 mlxlogscore=999
+ impostorscore=0 malwarescore=0 phishscore=0 bulkscore=0 spamscore=0
+ priorityscore=1501 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2405010000 definitions=main-2405160158
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=ibm.com; h=message-id : date :
+ subject : to : cc : references : from : in-reply-to : content-type :
+ content-transfer-encoding : mime-version; s=pp1;
+ bh=fcqtIyEB3BiIJMAUYMBt7K5rV7edCiEALXc4C2a9GQQ=;
+ b=hSy7K40uVvfaaXskNwN0oeK3CF31rIZam6cJEd7eCeosY0Fo+c9Iq69beYbQXvGZoUmv
+ LihREvVPZKX7oZymIqWNt9632sj4aXFfbmpLTobMIbVk9QXF465kImm8AmLcBDfqoi/r
+ u94ZWLYySiqiOgM/PmIJUcchAZ2f3RGM5DfLqyQHGdfl9IXSiT1/mZJaC0UkDlXzG/vp
+ dbVGMGAGF5GJ5ivutx7jL35mAdkx+r+3WiTtBSJuQIM9hp6vQFJDmT/p4mUTtX+tvTK6
+ UITZyExGYqXVoK+ohfg/DOOa31rP+jZTw5ERGuaiVgbnqmA7YE0eFvI3QnIrGoB1qawT iA== 
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=none (p=none dis=none)
- header.from=gnumonks.org
-Subject: Re: [Intel-wired-lan] [PATCH net-next v6 00/21] ice: add PFCP
- filter support
+ header.from=linux.ibm.com
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=ibm.com header.i=@ibm.com header.a=rsa-sha256
+ header.s=pp1 header.b=hSy7K40u
+Subject: Re: [Intel-wired-lan] [PATCH iwl-net V4,
+ 1/2] i40e: factoring out i40e_suspend/i40e_resume
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,190 +147,30 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Wojciech Drewek <wojciech.drewek@intel.com>, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, Alexander Lobakin <aleksander.lobakin@intel.com>,
- intel-wired-lan@lists.osuosl.org, David Miller <davem@davemloft.net>
+Cc: intel-wired-lan@lists.osuosl.org, edumazet@google.com, pabeni@redhat.com,
+ rob.thomas@ibm.com, davem@davemloft.net
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi Michal,
 
-thanks for your response.
 
-On Thu, May 16, 2024 at 12:44:13PM +0200, Michal Swiatkowski wrote:
-
-> > I'm curious to understand why are *pfcp* packets hardware offloaded?
-> > PFCP is just the control plane, similar to you can consider netlink the
-> > control plane by which userspace programs control the data plane.
-> > 
-> > I can fully understand that GTP-U packets are offloaded to kernel space or
-> > hardware, and that then some control plane mechanism like PFCP is needed
-> > to control that data plane.  But offloading packets of that control
-> > protocol?
+On 5/16/2024 2:11 PM, Jacob Keller wrote:
 > 
-> It is hard for me to answer your concerns, because oposite to you, I
-> don't have any experience with telco implementations. We had client that
-> want to add offload rule for PFCP in the same way as for GTP. 
-
-I've meanwhile done some reading and it seems there are indeed some
-papers suggesting that in specific implementations of control/data plane
-splits, the transaction rate between control and data plane (to set up /
-tear down / modify tunnels) is to low.  As a work-around, the entire
-PFCP parsing is then off-loaded into (e.g. P4 capable) hardware.
-
-So it seems at least there appears to be equipment where PFCP offloading
-is useful to significantly incresae performance.
-
-For those curious, https://faculty.iiitd.ac.in/~rinku/resources/slides/2022-sosr-accelupf-slides.pdf
-seems to cover one such configuration where offloading processing the
-control-plane protocol into the P4 hardware switch has massively
-improved the previously poor PFCP processing rate.
-
-> Intel
-> hardware support matching on specific PFCP packet parts. We spent some
-> time looking at possible implementations. As you said, it is a little
-> odd to follow the same scheme for GTP and PFCP, but it look for me like
-> reasonable solution.
-
-Based on what I understand, I am not sure I would agree with the
-"reasonable solution" part.  But then of course, it is a subjective
-point of view.
-
-I understand and appreciate the high-level goal of giving the user some
-way to configure a specific feature of an intel NIC.
-
-However, I really don't think that this should come at the expense of
-introducing tunnel devices (or other net-devs) for things that are not
-tunnels, and by calling things PFCP whcih are not an implementation of
-PFCP.
-
-Tou are introducing something called "pfcp" into the kernel,
-whcih is not pfcp.  What if somebody else at some point wanted to
-introduce some actual PFCP support in some form?  How should they call
-their sub-systems / Kconfigs / etc?  They could no longer call it simply
-"pfcp" as you already used this very generic term for (from the
-perspective of PFCP) a specific niche use case of configuring a NIC to
-handle all of PFCP.
-
-> Do you have better idea for that?
-
-I am not familiar with the use cases and the intel NICs and what kind of
-tooling or third party software might be out there wanting to configure
-it.  It's really not my domain of expertise and as such I have no
-specific proposal, sorry.
-
-It just seems mind-boggling to me that we would introduce
-* a net-device for sometthing that's not a net-device
-* a tunnel for something that does no tunneling whatsoeer
-* code mentioning "PFCP encapsulated traffic" when in fact it is
-  impossible to encapsulate any traffic in PFCP, and the code does
-  not - to the best of my understanding - do any such encapsulation
-  or even configure hardware to perform any such non-existant PFCP
-  encapsulation
-
-[and possibly more] *just* so that a user can use 'tc' to configure a
-hardware offloading feature in their NIC.
-
-IMHO, there must be a better way.
-
-> > I also see the following in the patch:
-> > 
-> > > +MODULE_DESCRIPTION("Interface driver for PFCP encapsulated traffic");
-> > 
-> > PFCP is not an encapsulation protocol for user plane traffic.  It is not
-> > a tunneling protocol.  GTP-U is the tunneling protocol, whose
-> > implementations (typically UPFs) are remote-controlled by PFCP.
-> > 
+> I applied this to IWL net dev-queue, but I had some conflicts when
+> applying which I resolved manually. I would appreciate review of the
+> contents as committed:
 > 
-> Agree, it is done like that to simplify implementation and reuse kernel
-> software stack.
+> https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git/commit/?h=dev-queue&id=b0bdaaffc27a79460a8053c2808fc54e4cbdd576
+> 
+> Thanks,
+> Jake
+Hi Jake,
+Your updated commit looks good.
+Thank you for applying the patch to the IWL net dev-queue. I apologize 
+for any conflicts that arose during the process. I appreciate your 
+effort in manually resolving them. I noticed that my local repository, 
+which was last pulled from the upstream kernel last week, did not 
+include the commit ‘i40e: Add helper to access main VSI’.
 
-My comment was about the module description.  It claims something that
-makes no sense and that it does not actually implement.  Unless I'm not
-understanding what the code does, it is outright wrong and misleading.
-
-Likewise is the comment on top of the drivers/net/pfcp.c file says:
-
-> * PFCP according to 3GPP TS 29.244
-
-While the code is in fact *not* implementing any part of TS 29.244.  The
-code is using the udp_tunnel infrastructure for something that's not a
-tunnel.  From what i can tell it is creating an in-kernel UDP socket
-(whcih can be done without any relation to udp_tunnel) and it is
-configuring hardware offload features in a NIC.  The fact that the
-payload of those UDP packets may be PFCP is circumstancial - nothing in
-the code actually implements even the tiniest bit of PFCP protocol
-parsing.
-
-> This is the way to allow user to steer PFCP packet based on specific
-> opts (type and seid) using tc flower. If you have better solution for
-> that I will probably agree with you and will be willing to help you
-> with better implementation.
-
-sadly, neither tc nor intel NIC hardware offload capabilities are my
-domain of expertise, so I am unable to propose detials of a better
-solution.
-
-> I assume the biggest problem here is with treating PFCP as a tunnel
-> (done for simplification and reuse) and lack of any functionality of
-> PFCP device
-
-I don't think the kernel should introduce a net-device (here
-specifically a tunnel device) for something that is not a tunnel.  This
-device [nor the hardware accelerator it controls] will never encapsulate
-or decapsulate any PFCP packet, as PFCP is not a tunnel / encapsulation
-protocol.
-
-> (moving the PFCP specification implementation into kernel
-> probably isn't good idea and may never be accepted).
-
-I would agree, but that is a completely separate discussion.  Even if
-one ignores this, the hypothetical kernel PFCP implementation would not
-be a tunnel, and not be a net-device at all.  It would simply be some
-kind of in-kernel UDP socket parsing and responding to packets, similar
-to the in-kernel nfs daemon or whatever other in-kernel UDP users exist.
-
-Also: The fact that you or we think an actual PFCP implementation would
-not be accepted in the kernel should *not* be an argument in favor of
-accepting something else into the kernel, call it PFCP and create tunnel
-devices for things that are not tunnels :)
-
-> Offloading doesn't sound like problematic. If there is a user that want
-> to use that (to offload for better performance, or even to steer between
-> VFs based on PFCP specific parts) why not allow to do that?
-
-The papers I read convinced me that there is a use case.  I very much
-believe the use case is a work-around for a different problem (the
-inefficiency of the control->data plance protocol in this case), but
-my opinion on that doesn't matter here.  I do agree with you that there
-are apparently people who would want to make use of such a feature, and
-that there is nothing wrong with provoding them means to do this.
-
-However, the *how* is what I strongly object to.  Once again, I may miss
-some part of your architecture, and I am happy to be proven otherwise.
-
-But if all of this is *just* to configure hardware offloading in a nic,
-I don't think there should be net-devices or tunnels that never
-encap/decap a single packet or for protocols / use cases that clearly do
-not encap or decap packets.
-
-I also think this sets very bad precedent.  What about other prootocols
-in the future?  Will we see new tunnels in the kernel for things that
-are not tunnels at all, every time there is some new protocol that gains
-hardware offloading capability in some NIC? Surely this kind of
-proliferation is not the kind of software architecture we want to have?
-
-Once again, I do apologize for raising my concerns at such a late stage.
-I am not a kernel developer anymore these days, and I do not follow any
-of the related mailing lists.  It was pure coincidence that the net-next
-merge of some GTP improvements I was involved in specifying also
-contained the PFCP code and I started digging what this was all about.
-
-Regards,
-	Harald
-
--- 
-- Harald Welte <laforge@gnumonks.org>          https://laforge.gnumonks.org/
-============================================================================
-"Privacy in residential applications is a desirable marketing option."
-                                                  (ETSI EN 300 175-7 Ch. A6)
+Thank You,
+Thinh Tran
