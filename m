@@ -1,100 +1,211 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2536D8C74CD
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 16 May 2024 12:44:57 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id EF4A38C7567
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 16 May 2024 13:43:43 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id BCAAE41C9D;
-	Thu, 16 May 2024 10:44:55 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id E4B3460BBC;
+	Thu, 16 May 2024 11:43:41 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id V-S7Aj8SH9uV; Thu, 16 May 2024 10:44:54 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id ycZW4hAJJkhW; Thu, 16 May 2024 11:43:41 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 571AB41CB3
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0F2946058D
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1715856294;
-	bh=AL7s2inOepTg+/a+2RTky/+fXO/Vp/y9m8QnnDWibcs=;
+	s=default; t=1715859821;
+	bh=/eLsakhp78TSTDBdyBflgWaKIOtfPHtGxfy0j7ktp50=;
 	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=Rck9OOChHlZL9IIyGkHei4ea5E5ibC+MqEU0vgQXScsOaOo9h6tjyVhs4jaC7Etat
-	 IZWuHRjByiJJxLthp+yiBtc3isv2ZnZdnTpOGNrTcb/KOfODonfokDvlDyqsN+zLg7
-	 q+zaWdzcROPgmIU2EkadwsPisdDKGTAp/DqRx9aLOyxpC7b9RQi3/g4BeB5CVo/GG1
-	 Iaj4HQOZ5xSSrjxveK6JP61eE0JP4Xd1YnId108Utguv50VsBpB69FpJb6zs2mbiyW
-	 hhORmtSifUsTTLLfFGcgEmR2/IhZYswk6u9zfFSwleUrFb5L5cv3GWvPJFa6n3S0HT
-	 fZOUQJfsaKw/g==
+	b=xqmwAKZLMjn+4SGm5/+dMJsr0zqW6jV5SXM3rBIx9aqdbzYkaIpoVBe6Xqq57q0eR
+	 DR0uy/gABjQ9KO9gpFl7YdxOgzwQrtdtItlQUJobIA3V6Lz916uSlfAW1bT0ikE38r
+	 XMJ0k4S5k3ICyND5/rchV8LScZs/0waLfIgBFoU2FhCN1UEQdu95GzTE6VwPRHEfx+
+	 l+yFYrkZOI2WNfcwoy/DhOWRLWIK6xpekp2exLIEttnAN7wJpGJRXiEk04foIVdp01
+	 VghVPRXy7TrkP/P9VO7T0nrhisZ9HqiIhXjkhwzmJtxVP12Ljb+ZfPYiue373+qdip
+	 iKEbhofBJDPjw==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 571AB41CB3;
-	Thu, 16 May 2024 10:44:54 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 0F2946058D;
+	Thu, 16 May 2024 11:43:41 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 6C39F1BF292
- for <intel-wired-lan@lists.osuosl.org>; Thu, 16 May 2024 10:44:52 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 415971BF3A4
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 16 May 2024 11:43:38 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 62F4E40585
- for <intel-wired-lan@lists.osuosl.org>; Thu, 16 May 2024 10:44:52 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id BB977600C4
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 16 May 2024 11:43:37 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id voJ8sshc7Chi for <intel-wired-lan@lists.osuosl.org>;
- Thu, 16 May 2024 10:44:50 +0000 (UTC)
-Received-SPF: None (mailfrom) identity=mailfrom; client-ip=198.175.65.12;
- helo=mgamail.intel.com; envelope-from=michal.swiatkowski@linux.intel.com;
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id dI596uUhRe9M for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 16 May 2024 11:43:35 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.12;
+ helo=mgamail.intel.com; envelope-from=larysa.zaremba@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 9076E4056C
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9076E4056C
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 770E86080C
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 770E86080C
 Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.12])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 9076E4056C
- for <intel-wired-lan@lists.osuosl.org>; Thu, 16 May 2024 10:44:50 +0000 (UTC)
-X-CSE-ConnectionGUID: jlOzl4tZQ8eeno2N3C9x5A==
-X-CSE-MsgGUID: rSGoFbJ0T3+0N/ehlpspIA==
-X-IronPort-AV: E=McAfee;i="6600,9927,11074"; a="23359554"
-X-IronPort-AV: E=Sophos;i="6.08,164,1712646000"; d="scan'208";a="23359554"
-Received: from fmviesa005.fm.intel.com ([10.60.135.145])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 770E86080C
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 16 May 2024 11:43:35 +0000 (UTC)
+X-CSE-ConnectionGUID: wMPYIABZRmSwtjhVRqdgWg==
+X-CSE-MsgGUID: +atpGxgRRJqvatB8Z1svmg==
+X-IronPort-AV: E=McAfee;i="6600,9927,11074"; a="23365504"
+X-IronPort-AV: E=Sophos;i="6.08,164,1712646000"; d="scan'208";a="23365504"
+Received: from fmviesa001.fm.intel.com ([10.60.135.141])
  by orvoesa104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 16 May 2024 03:44:50 -0700
-X-CSE-ConnectionGUID: wjKu3xKkQ3yH316fiCEIWA==
-X-CSE-MsgGUID: cNzrnd0JQN2kqljDpR/TxQ==
+ 16 May 2024 04:43:33 -0700
+X-CSE-ConnectionGUID: VMaGvw9OQQWhiqczKpEP1Q==
+X-CSE-MsgGUID: VJ7R9CbYR0evdXqZy4hGYg==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.08,164,1712646000"; d="scan'208";a="35822114"
-Received: from unknown (HELO mev-dev) ([10.237.112.144])
- by fmviesa005-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 16 May 2024 03:44:48 -0700
-Date: Thu, 16 May 2024 12:44:13 +0200
-From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-To: Harald Welte <laforge@gnumonks.org>
-Message-ID: <ZkXjfeLhB9T5MLfX@mev-dev>
-References: <20240327152358.2368467-1-aleksander.lobakin@intel.com>
- <ZkSivjg7uZsA20ft@nataraja>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+X-IronPort-AV: E=Sophos;i="6.08,164,1712646000"; d="scan'208";a="62612169"
+Received: from orsmsx601.amr.corp.intel.com ([10.22.229.14])
+ by fmviesa001.fm.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
+ 16 May 2024 04:43:33 -0700
+Received: from orsmsx611.amr.corp.intel.com (10.22.229.24) by
+ ORSMSX601.amr.corp.intel.com (10.22.229.14) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.35; Thu, 16 May 2024 04:43:32 -0700
+Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
+ ORSMSX611.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.35; Thu, 16 May 2024 04:43:32 -0700
+Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
+ orsmsx610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.39 via Frontend Transport; Thu, 16 May 2024 04:43:32 -0700
+Received: from NAM10-DM6-obe.outbound.protection.outlook.com (104.47.58.101)
+ by edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.35; Thu, 16 May 2024 04:43:32 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=kcsj08NKAvFkTAmFn+lGvvGNMPy1BRSgs8ZewxUKYjEtQ3aXCzjxsi56PxQe3jhmPlNIAsXpYEuDz1aQQgcuyfk8Qrelust4ytklODcaNb7aNm16yPClpi2u+VcgZ+wouKiE1b813REcFEF8X5mCDc0/MaHmiLgUWoe0GPUBrGAhFIuKliFEUh5QNG1qLI1hBqchyXJgupeZi+Ts20ZVaplSr5iu7CLBg7EFjumfWGH9RUpUzROTEkDVPTZSxRDDCiLG/FIIjGcHngI/l3qkKmqY3airejsvExZA9GLENBlsqEKPwQ4a7Be6C0HfO47/9KIA4dT8F1FAvMsjierlkQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=/eLsakhp78TSTDBdyBflgWaKIOtfPHtGxfy0j7ktp50=;
+ b=JTmAKjlChpVdb1lrMautOa3BidoF7/23z8qkDyEyxa/nIXIFkDJ3kLfbAni1hMXK12CUe+1JPdXmKduR+s/ZTZN5ABWxe8gDYOy9vSIMfZrOdWlAVpVVDAa21JEe181D+mQi0cdrB3hVrFtgZHtYYn4WaQeqyi8rs9XVycVhg/b7aiRnZ6B4TXYoaZ5mTP9KqHnJAumHKpjBfR81q2ckdt+WqgP99yRmSbfX8pYbDwyy/GcTAV3fETgW//eO6/4RRAqy225y2Tb05Qb+3+pJwonUijMyvWLDdz7J2Oa30ueLJ/WVVBPEWFkGEZ8A45lesREZnGCEPkMXET0i5cRvYQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from SN7PR11MB7540.namprd11.prod.outlook.com (2603:10b6:806:340::7)
+ by MW6PR11MB8412.namprd11.prod.outlook.com (2603:10b6:303:23a::20)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7587.30; Thu, 16 May
+ 2024 11:43:28 +0000
+Received: from SN7PR11MB7540.namprd11.prod.outlook.com
+ ([fe80::399f:ff7c:adb2:8d29]) by SN7PR11MB7540.namprd11.prod.outlook.com
+ ([fe80::399f:ff7c:adb2:8d29%3]) with mapi id 15.20.7587.028; Thu, 16 May 2024
+ 11:43:28 +0000
+Date: Thu, 16 May 2024 13:43:18 +0200
+From: Larysa Zaremba <larysa.zaremba@intel.com>
+To: Simon Horman <horms@kernel.org>
+Message-ID: <ZkXxVp3hFvczWr8r@lzaremba-mobl.ger.corp.intel.com>
+References: <20240515160246.5181-1-larysa.zaremba@intel.com>
+ <20240515160246.5181-4-larysa.zaremba@intel.com>
+ <20240516082713.GC179178@kernel.org>
+Content-Type: text/plain; charset="us-ascii"
 Content-Disposition: inline
-In-Reply-To: <ZkSivjg7uZsA20ft@nataraja>
+In-Reply-To: <20240516082713.GC179178@kernel.org>
+X-ClientProxiedBy: VI1PR08CA0251.eurprd08.prod.outlook.com
+ (2603:10a6:803:dc::24) To SN7PR11MB7540.namprd11.prod.outlook.com
+ (2603:10b6:806:340::7)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: SN7PR11MB7540:EE_|MW6PR11MB8412:EE_
+X-MS-Office365-Filtering-Correlation-Id: 10349e5d-13b8-4778-0b28-08dc759d677e
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230031|366007|376005|7416005|1800799015;
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?JR9r8lDnnoA6S4/7Kz/bFFtEmfnxwKX221quEf75wj6cO4x/ntKovCzzt7GB?=
+ =?us-ascii?Q?ugs+o+K8VcKYQtOmu/RK1/RpLB3Zv+wEMKD49ndE5j71CBMR4keGquPz39qi?=
+ =?us-ascii?Q?S/uPQBuKUEnkoKSd1cDKM42PKR2QuLsKNQWmpYuUl6qlC125NG9Zq/Sz/pDr?=
+ =?us-ascii?Q?KawXxCMIkVnxmKyxdGBoN0IkeFISbFPgWXv2tFm7zT2D2sEbb24XS9hhosy/?=
+ =?us-ascii?Q?wbbbftCXfJBMA83KdNhvorrcwifB4aVpiRlvZjJHy1r0+/pPQRKgFQ+8QRpz?=
+ =?us-ascii?Q?8+nWVckJ8hl5oW/vJiDAGRSVOXHPbGYeNgZPBr3xWVFGj3s52Iwz/QwqNDDQ?=
+ =?us-ascii?Q?k3LUIs5GVYI4aWWh9fTp0nzSXa2G3siOWlbOCcWLcYPNiu4zu8K+I98gE234?=
+ =?us-ascii?Q?lkfgzNUXS0SoCH4rbts2RDaOyDhIpR5yh6n07sF7i05giNG8mSVYYCR9E1oO?=
+ =?us-ascii?Q?o0cEj+bNvP6DHyjfKDcmu35BgguYCmVo0+nJNVE5ovDXdaObsfyE1dg38fET?=
+ =?us-ascii?Q?xGw91+No584fNscMTVzZvBUmksPwK8fJhll/nPnqf2/NlzjIRdiX7kghjefz?=
+ =?us-ascii?Q?3u8sJ6aDZ09LcHldU/nZzyWCEIJX7oY1UyjVZ0DPh5+AQGL2v/NSoSvViLDC?=
+ =?us-ascii?Q?EFiYwMYHIcXuk7F7lELT9VOAYbv8zX9mq2Ly0jz64ZHI8k+6SEOHCTkK/g4o?=
+ =?us-ascii?Q?fvbgeY/PiucOnAw2uf27P3a161OBn9b7nwsvEhnYNA5pPERnLF42eYR2stZ5?=
+ =?us-ascii?Q?m/pxhmm89babF36s7X/UgF8bK1ABKvYK7ucMX+IqL2mqp3s3pKZ53G44+m8N?=
+ =?us-ascii?Q?kUY8FBfUbf4cbPosAAAnB9HEX9fDzgjywdIAxdtXQAifarcw+BsMz8fyGq/Q?=
+ =?us-ascii?Q?pp8BpN23xi0aEeuhLHf/6iSLNb8tSpk+cSORhMKZThqV/v7d+lz1ZqGd4SM9?=
+ =?us-ascii?Q?MFjIqlZwjwQ9q/6/wmQEunQVkKytCYeZKck0C8hWEtQND/2wnHSvI1FivFx1?=
+ =?us-ascii?Q?7K4hfoVyuiPyJf9hHOvd5JfPpzjG+9BLadyqWYGbVTapS4LqykC/kX7nM/8s?=
+ =?us-ascii?Q?PJ7iX0tUXm1yfHAFMtYFWsHNXDibmmQf+bdeoFLtX2ZfcFEFYPNkYhHE6Yxq?=
+ =?us-ascii?Q?NqoP8y16bNgpGQdqwq9LGqAMhEwfoprPm+usXStz4LBU12ggWLmcp5uh/sAd?=
+ =?us-ascii?Q?+IjDAOnT7uBJPj+9qWGVXbXaQnrXXENrD6mgWC9MsqEGfHe7Rv+Bxnt9Iy6H?=
+ =?us-ascii?Q?UA/DNr3MklCdCe7GeR3BhQ7I5twLQvOFHi3BVSejow=3D=3D?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SN7PR11MB7540.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230031)(366007)(376005)(7416005)(1800799015); DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?HLJErOfeYxo7BGc6fvvh1R1EGo4m/Om97RVHuxrPL6O3ECffo8Tv2kW2QBZf?=
+ =?us-ascii?Q?pWrTStizbsPODPCy0PgoSdDI7aaxSJQszYionTO0lsC/d1zQprvzBosCSNQx?=
+ =?us-ascii?Q?MS8iqkHPdKv7yW/LzDWOrOcEpLZcp7MOcWKbfYKx+06/Az/2bl5PqWvTkjIo?=
+ =?us-ascii?Q?G/aYBqjFDZZSkhWH5rxijuBLn8tZl7bA4KGr3f5HWD/kGtxgyV1YtvYCnQvK?=
+ =?us-ascii?Q?QYfAn1wGaqFfO77Cx8j/4F+7iDfoHeN6Fhq+kRjLb5m3CarEaq1IKi18VN8W?=
+ =?us-ascii?Q?XbG6V0F0PH7xSRWD687t+twp5b9mVd/mr38WGboVSXyabo7475JGgaFALl5Q?=
+ =?us-ascii?Q?g8q+0tsvMWnV3jVFY+hQFsY0Z9TN8oVRgwEobHCUUJqA45fsfMsOnJSfF6y1?=
+ =?us-ascii?Q?hEZK8XrZvsZnv7w+ab1wnMhpIom2dr4ILVGa0r71tGI2sKUZ1gVnOhIKtgkN?=
+ =?us-ascii?Q?9S2kNdbWoODD0yL36pVWfYrjSywOmCI7t/0aAZTn10WxKeBVwHMYiwi/Aadd?=
+ =?us-ascii?Q?onp3z29MOZSqbYl+Yky0cgjUT1jBHKqTo8N7POLNWLMNtmZ0XpVUS98b2rlc?=
+ =?us-ascii?Q?pgRPC5qYg7XT0jjjvIYjxPEAcbMALTBd8kNGUpKzdHrqTOkMkUbsKUb6mxCF?=
+ =?us-ascii?Q?voW9mPpVVgk1Dd6/7eK8aAOIcVagm1qHfBQMRmNi+9Cd2zBbeM2mQ66RQ4WZ?=
+ =?us-ascii?Q?2PloVpgqaJ4unWuvR4lsC6n3zGIH0iPc8zGksaP3imb8y8ghx0HbLYF986/y?=
+ =?us-ascii?Q?7oBd4nA3+Edsu0vNHJ6PN7tmql7/OnymcH8VsgQDzah+yemLuNN/XUbIvm92?=
+ =?us-ascii?Q?OMeoELW6ZYGF3q5cS1uymSi7YYohPsg15ZGbakshY+kU1/Bot3cniYhxcYfz?=
+ =?us-ascii?Q?hM1TxOid/mvOAly+6arHJSBdgVwCuqDSO2iVcgApdo6Qe5AmOfkCjzryRVyL?=
+ =?us-ascii?Q?0cB6iCU/6sRJk7kCuLhbIIV9UuYOSWg1/gh5MBP6zNL9hEBbwA3s6tjIK/kM?=
+ =?us-ascii?Q?bRGLerbCiCg3hHjR8Uaw5ocLoTsz+VrdCNcKzSP4KaWQ6KmlEZS2En74kPwy?=
+ =?us-ascii?Q?J+VFL76a3ng+ZAWs1ruVSANAUrVbG+Lc8VSB3DtQwPA7nsQAyn3C7T3bnViS?=
+ =?us-ascii?Q?8KBf2gSyGulKt3By91tWi2yO118lkaC99nyAGYUnNsswE/SoMzz84jnTxHr9?=
+ =?us-ascii?Q?pz5qhDKkTGdyQcHL/FuDRiAZtlED6iwUFhayxuzSZvLDfjXKQz63xjpulHIX?=
+ =?us-ascii?Q?0fQXIosHZBVdjcGYUCZCfhm9WWs/7pY8P4d3Kgk+R3OuWJR0iOwWv0WsLH8Q?=
+ =?us-ascii?Q?zPkMmJ5QfmAGTwifgVS6XpZ3RZH7BCzTCke6mLmEQ1iLnqG2gsUkwgqNgEmi?=
+ =?us-ascii?Q?mY1dpTWrFuZv2OFC7JORJgpL7tkyXoQ0+1KIKkTPKv+lIbyENBDNuqmGeW8u?=
+ =?us-ascii?Q?YKrKd8bTzmCpMpTTiP74zYSO7i6UoTQi5cN7YuZKxFwLxTySmX0VYxsGNYFr?=
+ =?us-ascii?Q?ncnt9v0XpfMmc6FyZ4iwCXu1Sg6WggpPlx29AEwiDaHVRoLHkxVoNxOP54wM?=
+ =?us-ascii?Q?hKOaH6Lo2seh1xRxfuIBnXqqTh8fFayHloZta9E2sqd8Fn2Tqdstwmym9Aor?=
+ =?us-ascii?Q?tw=3D=3D?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: 10349e5d-13b8-4778-0b28-08dc759d677e
+X-MS-Exchange-CrossTenant-AuthSource: SN7PR11MB7540.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 16 May 2024 11:43:28.7699 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: sjipUoARqmSWT7a1p0X2oQDWF7i8nRM2tjxzNbHjW2lkPqVfsMUoZsjJtGQYERYu0KwrqLQoorVY+5ns2ISjFXSKK6VxrLAPXEJSk5K611Q=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MW6PR11MB8412
+X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1715856290; x=1747392290;
+ t=1715859815; x=1747395815;
  h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=qS3BQVM65ikytVxg+vUaAJl6zot53RNMbcABisDLmAo=;
- b=MWCFE3h/HDtechq24Sd3F51aeTUVLTAScDhey8TcWbuu4a/7UxiISxml
- /VBSpCaJY00wOEyKMmB8dCRnicEZN8c/YTPNmPtP7gkjdeU4OcDmn1Nhr
- y7blHJrm++KhAFN34nvnD+L5N9WhCeFw3bsIQLegu8QSV59/vfZ+tZqbC
- 0XGd36gRHBdsK/07Q/wpqxDs/M5VKj3xRvwuE4TKqUR+Vh09/zfACuhBH
- B1nmaiX+Uv61IbayaIw8IkTmRFDvG2ePK8iJYQz+MndjOsx/UZLYnIsvv
- HHlh1mfEd5qPL/6A5ima1Tp6DFIRooFjvhskXfz1KUVMBqGZX+vUc1g32
+ in-reply-to:mime-version;
+ bh=w1SSU2Vax9hXSiU4TcgdjNOK/76tcqEvQCyfy5o6Jl8=;
+ b=Olq8Y6//HMTKHAp2IRkRlGWQqz7lG8DKgmNm+0kzhcFC0A3fr+XmBs3z
+ YAzZHWg/GIyNVcmjrtBzLD41LU9eh8nrl15RCKvUNCu6LyvFW3llxZUf6
+ ppWb3tXgI1H1cKtjIEI+ygCHVM5I7JkqhyruBk2libfqGhmpums0OMFOI
+ OD1Pu9w9GJcpAbrXFoklNak86entHog8x7hFDJa4CdC2XovaItCIoYtOF
+ nzD9clIiI5pHVmqMB869SqCzA6bgGs12dLsYs6CjB7/pUuceravaBpBDZ
+ /Q6sTS4teWe/oIwNhx3q7te2vGgyNzI+cSVUDYvYHLi4VJ4d/6wvg18ej
  w==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=linux.intel.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=intel.com
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=MWCFE3h/
-Subject: Re: [Intel-wired-lan] [PATCH net-next v6 00/21] ice: add PFCP
- filter support
+ header.s=Intel header.b=Olq8Y6//
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH iwl-net 3/3] ice: map XDP queues to
+ vectors in ice_vsi_map_rings_to_vectors()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -107,125 +218,62 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Alexander Lobakin <aleksander.lobakin@intel.com>,
- intel-wired-lan@lists.osuosl.org, Wojciech Drewek <wojciech.drewek@intel.com>,
- linux-kernel@vger.kernel.org, netdev@vger.kernel.org
+Cc: maciej.fijalkowski@intel.com, Jesper Dangaard Brouer <hawk@kernel.org>,
+ Daniel Borkmann <daniel@iogearbox.net>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>, John
+ Fastabend <john.fastabend@gmail.com>, Alexei Starovoitov <ast@kernel.org>,
+ "David S. Miller" <davem@davemloft.net>, Eric
+ Dumazet <edumazet@google.com>, intel-wired-lan@lists.osuosl.org,
+ netdev@vger.kernel.org, Jacob Keller <jacob.e.keller@intel.com>,
+ Jakub Kicinski <kuba@kernel.org>, bpf@vger.kernel.org,
+ Paolo Abeni <pabeni@redhat.com>, Magnus Karlsson <magnus.karlsson@gmail.com>,
+ igor.bagnucki@intel.com, linux-kernel@vger.kernel.org
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed, May 15, 2024 at 01:55:42PM +0200, Harald Welte wrote:
-> Daer Alexander, Wojciech,
+On Thu, May 16, 2024 at 09:27:13AM +0100, Simon Horman wrote:
+> On Wed, May 15, 2024 at 06:02:16PM +0200, Larysa Zaremba wrote:
+> > ice_pf_dcb_recfg() re-maps queues to vectors with
+> > ice_vsi_map_rings_to_vectors(), which does not restore the previous
+> > state for XDP queues. This leads to no AF_XDP traffic after rebuild.
+> > 
+> > Map XDP queues to vectors in ice_vsi_map_rings_to_vectors().
+> > Also, move the code around, so XDP queues are mapped independently only
+> > through .ndo_bpf().
+> 
+> Hi Larysa,
+> 
+> I take it the last sentence refers to the placement of ice_map_xdp_rings()
+> in ice_prepare_xdp_rings() after rather than before the
+> (cfg_type == ICE_XDP_CFG_PART) condition.
+> 
+> If so, I see that it is a small change. But I do wonder if it is separate
+> from fixing the issue described in the first paragraph. And thus would
+> be better as a separate patch.
 
-Hi Harald,
-
-> 
-> forgive me for being late to the party, but I just saw the PFCP support
-> hitting Linus'' git repo in 1b294a1f35616977caddaddf3e9d28e576a1adbc
-> and was trying to figure out what it is all about.  Is there some kind
-> of article, kernel documentation or other explanation about it?
-> 
-> I have a prehistoric background in Linux kernel networking, and have
-> been spending much of the last two decades in creating open source
-> implemenmtations of 3GPP specifications.
-> 
-> So I'm very familiar with what PFCP is, and what it does, and how it is
-> used as a protocol by the 3GPP control plane to control the user/data
-> plane.
-> 
-> Conceptually it seems very odd to me to have something like *pfcp
-> net-devices*.  PFCP is just a control plane protocol, not a tunnel
-> mechanism.
-> 
-> From the Kconfig:
-> 
-> > +config PFCP
-> > +	tristate "Packet Forwarding Control Protocol (PFCP)"
-> > +	depends on INET
-> > +	select NET_UDP_TUNNEL
-> > +	help
-> > +	  This allows one to create PFCP virtual interfaces that allows to
-> > +	  set up software and hardware offload of PFCP packets.
-> 
-> I'm curious to understand why are *pfcp* packets hardware offloaded?
-> PFCP is just the control plane, similar to you can consider netlink the
-> control plane by which userspace programs control the data plane.
-> 
-> I can fully understand that GTP-U packets are offloaded to kernel space or
-> hardware, and that then some control plane mechanism like PFCP is needed
-> to control that data plane.  But offloading packets of that control
-> protocol?
-
-It is hard for me to answer your concerns, because oposite to you, I
-don't have any experience with telco implementations. We had client that
-want to add offload rule for PFCP in the same way as for GTP. Intel
-hardware support matching on specific PFCP packet parts. We spent some
-time looking at possible implementations. As you said, it is a little
-odd to follow the same scheme for GTP and PFCP, but it look for me like
-reasonable solution.
-
-The main idea is to allow user to match in tc flower on PFCP specific
-parts. To do that we need PFCP device (which is like dummy device for
-now, it isn't doing anything related to PFCP specification, only parsing).
-
-Do you have better idea for that?
+This is not neccessary for the fix to work, but I think this is intergral to
+making the change properly. I mean, before the change in the rebuild path we map
+XDP rings to vectors only once and after the change we do this only once, just
+previously it was in ice_prepare_xdp_rings() and now it is in
+ice_vsi_map_rings_to_vectors().
 
 > 
-> I also see the following in the patch:
-> 
-> > +MODULE_DESCRIPTION("Interface driver for PFCP encapsulated traffic");
-> 
-> PFCP is not an encapsulation protocol for user plane traffic.  It is not
-> a tunneling protocol.  GTP-U is the tunneling protocol, whose
-> implementations (typically UPFs) are remote-controlled by PFCP.
-> 
-
-Agree, it is done like that to simplify implementation and reuse kernel
-software stack.
-
-> > +	  Note that this module does not support PFCP protocol in the kernel space.
-> > +	  There is no support for parsing any PFCP messages.
-> 
-> If I may be frank, why do we introduce something called "pfcp" to the
-> kernel, if it doesn't actually implement any of the PFCP specification
-> 3GPP TS 29.244 (which is specifying a very concrete protocol)?
-> 
-> Once again, I just try to understand what you're trying to do here. It's
-> very much within my professional field, but I somehow cannot align what
-> I see within this patch set with my existing world view of what PFCP is
-> and how it works.
-> 
-> If anyone else has a better grasp of the architecture of this kernel
-> PFCP support, or has any pointers, I'd be very happy to follow up
-> on that.
-
-This is the way to allow user to steer PFCP packet based on specific
-opts (type and seid) using tc flower. If you have better solution for
-that I will probably agree with you and will be willing to help you
-with better implementation.
-
-I assume the biggest problem here is with treating PFCP as a tunnel
-(done for simplification and reuse) and lack of any functionality of
-PFCP device (moving the PFCP specification implementation into kernel
-probably isn't good idea and may never be accepted).
-
-Offloading doesn't sound like problematic. If there is a user that want
-to use that (to offload for better performance, or even to steer between
-VFs based on PFCP specific parts) why not allow to do that?
-
-In your opinion there should not be the pfcp device in kernel, or the
-device should have more functionality (or any functionality, because now
-it is only parsing)?
-
-> 
-> Thanks for your time,
-> 	Harald
+> Also, (I'm raising a separate issue :) breaking out logic into
+> ice_xdp_ring_from_qid() seems very nice.  But I wonder if this ought to be
+> part of a cleanup-patch for 'iwl' rather than a fixes patch for 'iwl-next'.
 >
 
-Thanks,
-Michal
+I have separated this into a separate function, because 2 lines exceeded 80 
+characters, which is not in line with our current style for drivers.
+And I do not think that this small function creates any more additional 
+potentian applying problems for this patch. And the change is small enough to 
+see that the logic stays the same.
 
-> -- 
-> - Harald Welte <laforge@gnumonks.org>          https://laforge.gnumonks.org/
-> ============================================================================
-> "Privacy in residential applications is a desirable marketing option."
->                                                   (ETSI EN 300 175-7 Ch. A6)
+> OTOH, I do see that breaking out ice_map_xdp_rings() makes sense in the
+> context of this fix as the same logic is to be called in two places.
+> 
+> Splitting patches aside, the resulting code looks good to me.
+> 
+> ...
+> 
+
