@@ -2,139 +2,90 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 136A08C7E12
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 16 May 2024 23:35:14 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 14C778C7FFD
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 17 May 2024 04:40:40 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id B187541CFD;
-	Thu, 16 May 2024 21:35:12 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id A788D40BD4;
+	Fri, 17 May 2024 02:40:38 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id xGnUB9o_3sB5; Thu, 16 May 2024 21:35:11 +0000 (UTC)
+ id TSvOY5zZtNoO; Fri, 17 May 2024 02:40:38 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 881F640B3A
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org BC39040BD5
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1715895311;
-	bh=fcqtIyEB3BiIJMAUYMBt7K5rV7edCiEALXc4C2a9GQQ=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
+	s=default; t=1715913637;
+	bh=nmdfa2+WZks9XMckAdK+yY74zBK0gKNiZe7vlneXnwM=;
+	h=From:Date:References:In-Reply-To:To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=ie0BbR9cNbuBQgzQ28dKKfjVCOZ8bCL02RmkGwed3HUEU/uZLZAYOyD8mfL/qUIzG
-	 y28NegwCt9iba5DNEiXhu0+MAdHG/TSROCNZoMSm270lCu/y/G8RPfgBMG1NV1qgFX
-	 uzxaRO3zVw23i1+OaqjAz+Kc9w5wBggY+p/tIzShZRdBJP3db8gwZxGbSFhQ0mp8y1
-	 1MeL1upPb8FprVDegEt+0HMF1twVOmqPa9TVuX1vd0U+X1gDbJ4IiIOE5N/GwMTnYK
-	 BeBZlgu8bxRRh+cxRwOPHXq7tEH9QK6sh5sKe5zF8xUq4K4Ca3EJrLQ2sqziEshISW
-	 3ozdNeluljadw==
+	b=N8KjZliFeJlR9uPUo7zRLoSg6bytGL45ALIG6w4ryQIQrYukSOr9nfQKySjXD7pzE
+	 NpTQ4gLMj57DYMh/hsFgmZDsbJt4FDzO4Z/RwD59zWxow9kIqmDrUFFqBH0qWWDCan
+	 7BsGSnAYUCGIfQlsHsAhgJcn90csuXDVB3Mw5NWdpIcJy/e9COVll9Z88xBL94yLCT
+	 sKJqh1tI+eXlgmR0vpVFf/7ltqExHHXup5Hdizd79LM+Dfy+ZehltlPrvKOTYCYB8i
+	 YqAWU310OQgbMj4vvdAjIKw7Z3WBbW+XpdEaLvo5oi6c7FHXXu8Vv3VSlaaoneMOjk
+	 yqbZm7hU5jQqg==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 881F640B3A;
-	Thu, 16 May 2024 21:35:11 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id BC39040BD5;
+	Fri, 17 May 2024 02:40:37 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id AF7E31BF4D8
- for <intel-wired-lan@lists.osuosl.org>; Thu, 16 May 2024 21:35:09 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 236E01BF23C
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 17 May 2024 02:40:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 945FA82264
- for <intel-wired-lan@lists.osuosl.org>; Thu, 16 May 2024 21:35:09 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 0CD1A83A89
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 17 May 2024 02:40:36 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id gvv-Evak0Cw5 for <intel-wired-lan@lists.osuosl.org>;
- Thu, 16 May 2024 21:35:08 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=148.163.158.5;
- helo=mx0b-001b2d01.pphosted.com; envelope-from=thinhtr@linux.ibm.com;
+ id ls3T2hhkqmGp for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 17 May 2024 02:40:35 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=145.40.73.55;
+ helo=sin.source.kernel.org; envelope-from=patchwork-bot+netdevbpf@kernel.org;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 6D5218225A
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6D5218225A
-Received: from mx0b-001b2d01.pphosted.com (mx0b-001b2d01.pphosted.com
- [148.163.158.5])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 6D5218225A
- for <intel-wired-lan@lists.osuosl.org>; Thu, 16 May 2024 21:35:08 +0000 (UTC)
-Received: from pps.filterd (m0360072.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
- 44GKa9BC000318; Thu, 16 May 2024 21:34:55 GMT
-Received: from pps.reinject (localhost [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3y5qc9rcuj-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Thu, 16 May 2024 21:34:54 +0000
-Received: from m0360072.ppops.net (m0360072.ppops.net [127.0.0.1])
- by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 44GLYr3e021918;
- Thu, 16 May 2024 21:34:54 GMT
-Received: from ppma21.wdc07v.mail.ibm.com
- (5b.69.3da9.ip4.static.sl-reverse.com [169.61.105.91])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3y5qc9rcuf-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Thu, 16 May 2024 21:34:53 +0000
-Received: from pps.filterd (ppma21.wdc07v.mail.ibm.com [127.0.0.1])
- by ppma21.wdc07v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id
- 44GKshlc002291; Thu, 16 May 2024 21:34:53 GMT
-Received: from smtprelay02.dal12v.mail.ibm.com ([172.16.1.4])
- by ppma21.wdc07v.mail.ibm.com (PPS) with ESMTPS id 3y2m0pmcmp-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Thu, 16 May 2024 21:34:53 +0000
-Received: from smtpav01.dal12v.mail.ibm.com (smtpav01.dal12v.mail.ibm.com
- [10.241.53.100])
- by smtprelay02.dal12v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 44GLYo7l46531268
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 16 May 2024 21:34:52 GMT
-Received: from smtpav01.dal12v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 7B6BC58058;
- Thu, 16 May 2024 21:34:50 +0000 (GMT)
-Received: from smtpav01.dal12v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 3339B58057;
- Thu, 16 May 2024 21:34:50 +0000 (GMT)
-Received: from [9.41.99.196] (unknown [9.41.99.196])
- by smtpav01.dal12v.mail.ibm.com (Postfix) with ESMTP;
- Thu, 16 May 2024 21:34:50 +0000 (GMT)
-Message-ID: <344f9687-118c-4423-aae1-929f75fead8e@linux.ibm.com>
-Date: Thu, 16 May 2024 16:34:49 -0500
-User-Agent: Mozilla Thunderbird
-To: Jacob Keller <jacob.e.keller@intel.com>, netdev@vger.kernel.org,
- kuba@kernel.org, anthony.l.nguyen@intel.com,
- aleksandr.loktionov@intel.com, przemyslaw.kitszel@intel.com,
- pmenzel@molgen.mpg.de
-References: <20240515210705.620-1-thinhtr@linux.ibm.com>
- <20240515210705.620-2-thinhtr@linux.ibm.com>
- <9fcff111-bec5-4623-bc22-cb4792aba55e@intel.com>
-From: Thinh Tran <thinhtr@linux.ibm.com>
-Content-Language: en-US
-In-Reply-To: <9fcff111-bec5-4623-bc22-cb4792aba55e@intel.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-X-TM-AS-GCONF: 00
-X-Proofpoint-GUID: SzgRhx6NkjJIZ8sGRdoUiYacDyUGASxD
-X-Proofpoint-ORIG-GUID: WAcBvhVmQUBjpZfPcwjXnhU7RvI1dBqZ
-Content-Transfer-Encoding: 8bit
-X-Proofpoint-UnRewURL: 0 URL was un-rewritten
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 02177817A7
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 02177817A7
+Received: from sin.source.kernel.org (sin.source.kernel.org [145.40.73.55])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 02177817A7
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 17 May 2024 02:40:34 +0000 (UTC)
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by sin.source.kernel.org (Postfix) with ESMTP id 78822CE19DC;
+ Fri, 17 May 2024 02:40:31 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id AE3ADC2BD11;
+ Fri, 17 May 2024 02:40:30 +0000 (UTC)
+Received: from aws-us-west-2-korg-oddjob-1.ci.codeaurora.org
+ (localhost.localdomain [127.0.0.1])
+ by aws-us-west-2-korg-oddjob-1.ci.codeaurora.org (Postfix) with ESMTP id
+ A18D7C54BDA; Fri, 17 May 2024 02:40:30 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1039,Hydra:6.0.650,FMLib:17.11.176.26
- definitions=2024-05-16_07,2024-05-15_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- mlxscore=0 suspectscore=0
- adultscore=0 clxscore=1015 lowpriorityscore=0 mlxlogscore=999
- impostorscore=0 malwarescore=0 phishscore=0 bulkscore=0 spamscore=0
- priorityscore=1501 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2405010000 definitions=main-2405160158
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=ibm.com; h=message-id : date :
- subject : to : cc : references : from : in-reply-to : content-type :
- content-transfer-encoding : mime-version; s=pp1;
- bh=fcqtIyEB3BiIJMAUYMBt7K5rV7edCiEALXc4C2a9GQQ=;
- b=hSy7K40uVvfaaXskNwN0oeK3CF31rIZam6cJEd7eCeosY0Fo+c9Iq69beYbQXvGZoUmv
- LihREvVPZKX7oZymIqWNt9632sj4aXFfbmpLTobMIbVk9QXF465kImm8AmLcBDfqoi/r
- u94ZWLYySiqiOgM/PmIJUcchAZ2f3RGM5DfLqyQHGdfl9IXSiT1/mZJaC0UkDlXzG/vp
- dbVGMGAGF5GJ5ivutx7jL35mAdkx+r+3WiTtBSJuQIM9hp6vQFJDmT/p4mUTtX+tvTK6
- UITZyExGYqXVoK+ohfg/DOOa31rP+jZTw5ERGuaiVgbnqmA7YE0eFvI3QnIrGoB1qawT iA== 
+Content-Transfer-Encoding: 8bit
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <171591363065.2697.11756234770145638064.git-patchwork-notify@kernel.org>
+Date: Fri, 17 May 2024 02:40:30 +0000
+References: <20240515092414.158079-1-mschmidt@redhat.com>
+In-Reply-To: <20240515092414.158079-1-mschmidt@redhat.com>
+To: Michal Schmidt <mschmidt@redhat.com>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=kernel.org; s=k20201202; t=1715913630;
+ bh=VCrb7UnnkO5S0CtIrGnADeHi98LkHpUqkncSHeHWXI4=;
+ h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+ b=lbCl65c8KF+k0SbNnpm9D9nhd+IUxfzDEBknfJhvFIYBxUPyxLLVXXNy0Pg1B53o6
+ IzwydIAjR+XGs0/3jQ62sVcyu6qHkK4k1SGWUNRa4U5V8zHo6i7l04xqjEDiNXglBq
+ 4i0q15zEmdxxVHUaGCaNaXF0YMEgkk906VUz2Moyj5c7KNtlUH+sLaa7DN3xBu2MTh
+ EpQJbyloBD0gqF9Fxe9LFT+ZcADd6j6PodoLr1Z6IdQbVljHbAOILQXA+Lo9ziMUhv
+ gJ/3u0lYCpVhqYjYaUQ2L89Bq/IVKhUXeky42Dv+se+TCaDfJnWmFYCcrsIPhpu/+r
+ NafwWAmQUdhEQ==
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=linux.ibm.com
+ dmarc=pass (p=none dis=none)
+ header.from=kernel.org
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=ibm.com header.i=@ibm.com header.a=rsa-sha256
- header.s=pp1 header.b=hSy7K40u
-Subject: Re: [Intel-wired-lan] [PATCH iwl-net V4,
- 1/2] i40e: factoring out i40e_suspend/i40e_resume
+ unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
+ header.s=k20201202 header.b=lbCl65c8
+Subject: Re: [Intel-wired-lan] [PATCH net] idpf: don't skip over ethtool
+ tcp-data-split setting
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -147,30 +98,38 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: intel-wired-lan@lists.osuosl.org, edumazet@google.com, pabeni@redhat.com,
- rob.thomas@ibm.com, davem@davemloft.net
+Cc: przemyslaw.kitszel@intel.com, xudu@redhat.com, linux-kernel@vger.kernel.org,
+ aleksander.lobakin@intel.com, edumazet@google.com, michal.kubiak@intel.com,
+ anthony.l.nguyen@intel.com, intel-wired-lan@lists.osuosl.org, kuba@kernel.org,
+ netdev@vger.kernel.org, pabeni@redhat.com, davem@davemloft.net
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+Hello:
+
+This patch was applied to netdev/net.git (main)
+by Jakub Kicinski <kuba@kernel.org>:
+
+On Wed, 15 May 2024 11:24:14 +0200 you wrote:
+> Disabling tcp-data-split on idpf silently fails:
+>   # ethtool -G $NETDEV tcp-data-split off
+>   # ethtool -g $NETDEV | grep 'TCP data split'
+>   TCP data split:        on
+> 
+> But it works if you also change 'tx' or 'rx':
+>   # ethtool -G $NETDEV tcp-data-split off tx 256
+>   # ethtool -g $NETDEV | grep 'TCP data split'
+>   TCP data split:        off
+> 
+> [...]
+
+Here is the summary with links:
+  - [net] idpf: don't skip over ethtool tcp-data-split setting
+    https://git.kernel.org/netdev/net/c/67708158e732
+
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
 
 
-On 5/16/2024 2:11 PM, Jacob Keller wrote:
-> 
-> I applied this to IWL net dev-queue, but I had some conflicts when
-> applying which I resolved manually. I would appreciate review of the
-> contents as committed:
-> 
-> https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git/commit/?h=dev-queue&id=b0bdaaffc27a79460a8053c2808fc54e4cbdd576
-> 
-> Thanks,
-> Jake
-Hi Jake,
-Your updated commit looks good.
-Thank you for applying the patch to the IWL net dev-queue. I apologize 
-for any conflicts that arose during the process. I appreciate your 
-effort in manually resolving them. I noticed that my local repository, 
-which was last pulled from the upstream kernel last week, did not 
-include the commit ‘i40e: Add helper to access main VSI’.
-
-Thank You,
-Thinh Tran
