@@ -1,189 +1,101 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3FBC38CA070
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 20 May 2024 18:05:04 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5721E8CA3DA
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 20 May 2024 23:40:04 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 77759402C8;
-	Mon, 20 May 2024 16:05:02 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id ADCF641476;
+	Mon, 20 May 2024 21:40:02 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id m_p8waP3q22d; Mon, 20 May 2024 16:05:01 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id tr8Zz0zo4A3p; Mon, 20 May 2024 21:40:01 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4BB2F4034C
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A669D4144E
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1716221101;
-	bh=528lw7Mtj87DFDWnK+nHI/KiSJx11q2CrzfFRBeFGh4=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=Li/bbA0Cqi34TzI7Soiw7mB5rsmkqta3Nwi8xf9yMnGylAsq304z36U5V7H44AqeS
-	 pmXMZmHgQ4YDuIRE5yeo9D2jcnVus5rU7VnapdJd742StzuWyctUVgZK6Ijv5y6Mp6
-	 kXIms6dnaI1M3aPItyEgMcRrbQAelFia39XC2Pto0Y9exMSastYEVmSNwcJtNgzt9j
-	 IJZFTfbONDlAOIpqro6Zhpbat/f8H5+ONFd5HDUM5Lh/c9Xce8298ZlwJSLufxrP/8
-	 LRReCXHMgZT27qAntr8BDRZWWmB7jh7Td8wGNpyAY15ts3bBSfk4u+2FRUk7huMb9f
-	 3eFCOGlQSYjyg==
+	s=default; t=1716241201;
+	bh=64B5KCz/t11kJgxGDfFpX2EcTg+h19UPJpQehZBD/HY=;
+	h=From:Date:To:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=Vy4eCmQF5LIM6HnJQAWtL80EkMV8l67lmvc8r0EcJa/SFMfnv1WUPi/z5DDs78nPV
+	 GCVbGRQ6wxr1CEA03oY/DhApubm40NSXqJTEtR9t360uqwxUG4dg/hdYsn+u7xxEBv
+	 xazR6X3uzVNNI2wDng4h25XKaPzunGzYN8af3a4Mb1JBALD1C1mDgPrFH4RRRE7TUA
+	 nbkUFDXYN0Y32D7TTM8pjhun+N5eCY7VmLOx9drKxucV+DVmHC9LfTXsBQMGdEGyK/
+	 Muko/K7wW9EgsHms8cPs/zhqjdBeBTKf6DRLwyAxT3XWAJe5+2uTsNMuec3tT+VEpH
+	 E3hsRWNjU05XA==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 4BB2F4034C;
-	Mon, 20 May 2024 16:05:01 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id A669D4144E;
+	Mon, 20 May 2024 21:40:01 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id DE7431BF296
- for <intel-wired-lan@lists.osuosl.org>; Mon, 20 May 2024 16:04:58 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id C18121C4D79
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 20 May 2024 21:39:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id C8A16402A3
- for <intel-wired-lan@lists.osuosl.org>; Mon, 20 May 2024 16:04:58 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id ACFDE4042B
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 20 May 2024 21:39:58 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id LFW_ztP4fhs1 for <intel-wired-lan@lists.osuosl.org>;
- Mon, 20 May 2024 16:04:57 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=40.107.243.43;
- helo=nam12-dm6-obe.outbound.protection.outlook.com;
- envelope-from=brett.creeley@amd.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 7E77240284
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7E77240284
-Received: from NAM12-DM6-obe.outbound.protection.outlook.com
- (mail-dm6nam12on2043.outbound.protection.outlook.com [40.107.243.43])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 7E77240284
- for <intel-wired-lan@lists.osuosl.org>; Mon, 20 May 2024 16:04:57 +0000 (UTC)
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=oI3QN4BL93YYVGPRcKCHe/H1pm4Y5Pzzrw+cm7TysZmbPdovkTVYVeIQFXEm5mgEHsIfCsJoi3/iYY92wSFcqHOHk4EuLpoh+hfktdx0A/U8Ed8v0+GtC5AK3Pqk52Zv23Y+6zTKZWG24ZUnLMd1caYYQVKp6ep/HNOTTrr3UIg0TdlTl6divUlGWmCJpFsqYG0s2bokjLqKxhLl+ZuXbJXIf6nXFYhIaWCXu9xhs/BilcD5Sw/U6jhqv+fTIejqoXY1rHiPGTMthV+pKVLMAt2DwHzweYjtkcXPIV+4BdwP/64m97/H87MD2DEHjGyWXy1Bm42Ef3wbD5GcY+IMfw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=528lw7Mtj87DFDWnK+nHI/KiSJx11q2CrzfFRBeFGh4=;
- b=S2k3IHYmHMsb4L/kGPvCpZ37u1Sv4IRLs2UCkgbLMtReW9lkYauMtgeQnA3EPL/GbbjhXjulheVyFk1ZBe9kNmA1ljsVP3rzwlTSUcikaL8r5ygxjb/jbBk0NDMAODV8IRr4h6bktYzIAoITjxH881Tox1AN2LYqSiVo9dO0KOH+hD9OtlCPmZ/08aYuJ1UFsCJBRgHhpHo2xR8ytjAZ3wkmmw8/McR/9HyVyqvqENIBI6xj+UrUmQe6H2j53qReLstRq9TSWYZtTepeRKfOmOgmfn+d/JkBofU/ftQenZp+oOVtpjwdWUDmFZ2BLTaaVI1Buql8tT0CioywA7ytyg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=amd.com; dmarc=pass action=none header.from=amd.com; dkim=pass
- header.d=amd.com; arc=none
-Received: from PH0PR12MB7982.namprd12.prod.outlook.com (2603:10b6:510:28d::5)
- by SN7PR12MB7811.namprd12.prod.outlook.com (2603:10b6:806:34f::18)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7587.36; Mon, 20 May
- 2024 16:04:53 +0000
-Received: from PH0PR12MB7982.namprd12.prod.outlook.com
- ([fe80::bfd5:ffcf:f153:636a]) by PH0PR12MB7982.namprd12.prod.outlook.com
- ([fe80::bfd5:ffcf:f153:636a%5]) with mapi id 15.20.7587.030; Mon, 20 May 2024
- 16:04:53 +0000
-Message-ID: <5f7caa24-5bec-4989-8870-052caba4f0bb@amd.com>
-Date: Mon, 20 May 2024 09:04:51 -0700
-User-Agent: Mozilla Thunderbird
-To: Wojciech Drewek <wojciech.drewek@intel.com>, netdev@vger.kernel.org
-References: <20240520103700.81122-1-wojciech.drewek@intel.com>
-Content-Language: en-US
-From: Brett Creeley <bcreeley@amd.com>
-In-Reply-To: <20240520103700.81122-1-wojciech.drewek@intel.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-ClientProxiedBy: BYAPR05CA0066.namprd05.prod.outlook.com
- (2603:10b6:a03:74::43) To PH0PR12MB7982.namprd12.prod.outlook.com
- (2603:10b6:510:28d::5)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id OH6sclyyUmDh for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 20 May 2024 21:39:57 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.15;
+ helo=mgamail.intel.com; envelope-from=jacob.e.keller@intel.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 637C641192
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 637C641192
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.15])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 637C641192
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 20 May 2024 21:39:57 +0000 (UTC)
+X-CSE-ConnectionGUID: KN/FVcdUQ2+LtITNyQI0gA==
+X-CSE-MsgGUID: 0VKXzTCjRpm1U6F/D1mb0Q==
+X-IronPort-AV: E=McAfee;i="6600,9927,11078"; a="12585288"
+X-IronPort-AV: E=Sophos;i="6.08,176,1712646000"; d="scan'208";a="12585288"
+Received: from orviesa001.jf.intel.com ([10.64.159.141])
+ by fmvoesa109.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 20 May 2024 14:39:57 -0700
+X-CSE-ConnectionGUID: gyxxgohYRnOkdrW22o4R+g==
+X-CSE-MsgGUID: RHu08USMRNy31PGG7SAEmw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.08,176,1712646000"; d="scan'208";a="70084631"
+Received: from jekeller-desk.amr.corp.intel.com ([10.166.241.1])
+ by smtpauth.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 20 May 2024 14:39:56 -0700
+From: Jacob Keller <jacob.e.keller@intel.com>
+Date: Mon, 20 May 2024 14:39:53 -0700
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: PH0PR12MB7982:EE_|SN7PR12MB7811:EE_
-X-MS-Office365-Filtering-Correlation-Id: 706cd2b3-16f2-4a0d-9776-08dc78e695dd
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230031|366007|376005|1800799015;
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?VjlYc3c3NGNyT1FOQ1dXQW4rVXR3SUVPNlhNeTBCbkltRFlYOE14MVMrMW8x?=
- =?utf-8?B?SUxNWlBRMWpNUWlxNHZYc3VKWmdKKzZnRnZWVU9teFR4N1ZSR21sNmVlTmln?=
- =?utf-8?B?bFhxWFdkcW44dlJWajFwQjk3d2phWFA3QXEvNjFZTk05YzlocnpzWXBqbDdx?=
- =?utf-8?B?TlhMV3l5S3ROOVJmeGNUeTFyMmJvN1U0bUJwQmZYdjNtMFJvYVhNem1EN0Fv?=
- =?utf-8?B?M3p0V1FqL1l2TjhQcHpYY3Ayd2puRlF6cmFNRVJzTUFScXBHRngwTDAzR1Ra?=
- =?utf-8?B?dmxEN092bUxuWXBycUx1T2JlZmdaWWhzdkRlTnVlcmYrSmg0YnpWSHNJaTA0?=
- =?utf-8?B?MW9aRGpZSngwMVFPMUxVMk1vOXVDT1RIbkNzVnF3LzV6dUlrdXh6d0xnTVg3?=
- =?utf-8?B?a0M2REtuVWR3aG9Ca2ZRWFR0clAzc1ByNUV4L28zLzRRL1M1WURWT2lKaC91?=
- =?utf-8?B?K0JzTUplemZoaEplSFRlemtKQy84UHR1Z08yM09MK09sQUV5OXdFb3Bub05S?=
- =?utf-8?B?Y2Evb0w3QUpUUmhMTFdPdmo0Rk1KM3VuMERncDBGQ3UzWWloMDMzdGl3OXFG?=
- =?utf-8?B?cXhwVElVSk43RzFrZEVZSU0wdUhSWGljNWhTVnhhbzhLb0FLMDMza3haQWQ4?=
- =?utf-8?B?L09PaE5qWGVjbkJVKzhTa1lKaW1Eb2tDVFFWMlZDdzYxandnZUNwV3dBK1I4?=
- =?utf-8?B?YTRwSzJZNllMUWhuWE5JaTBwZS82dkd5VUJtY3VpTFFrSFhQMm9nKzM4ckRs?=
- =?utf-8?B?N2ozeTRvUFBkSElHekVnY0UzemtWc3lvT3JtMllialhDQzdUM2M0ck94VkRi?=
- =?utf-8?B?Z0l2eTZySUNLRExEZTdGT0djN2h5bjlqelc2Wkx5RXBrN01CdVB4dHR2UzV1?=
- =?utf-8?B?MkFuRFRqTGFCQkZZNVRDQ09QeFc2TkthNlR4R3E0ckV4ZEdiMS9iQjZMd3lQ?=
- =?utf-8?B?c202eUpSdlBrQ0J6RzJjRWNZbE52dXJzV1ZCaHJGcnZjMS9OTVp0MFpwNjdk?=
- =?utf-8?B?aVRKM3p1RUJKdmd5bEJ3Zk9kaDN3UVZ0MDFibUUyNG4zTFM3SDFQOEtGak5X?=
- =?utf-8?B?ZUt1aDI3OTNrSXhENklCVVdTSUtmdHZKOXNHcnprUFVibmx5MUlJRkRzRDV3?=
- =?utf-8?B?TFFSRVNyUUltRkdxby9oTkdKZCtwZkNxNXdBeTcwWmEvY2RBdVRhcWJlS29N?=
- =?utf-8?B?NXhqQ3lZSkhlSnBPYzZiRW1zL090VEpqTGdEamdrQ1NqQnRpamFuUkxsbTVw?=
- =?utf-8?B?dTVnZmJVb3lDeWE0K0lTQmliVjYvbDdKSEkxZXcyV1ZRQTdoejUyVUh0R25U?=
- =?utf-8?B?elg5L0FCa2xRWVFFMGJLMm5FVFhMUlRBbEVmSHUwZ3QxaTl0QnUwRUwrMzdI?=
- =?utf-8?B?WUhRMUIzblJFdmx6RTNqTFNsTXkxeTB1R3RjY1hhbFVBTjhYaDF2bFJvTWI0?=
- =?utf-8?B?Z0t6V05nUi8xVUIwZlVocll2NC9xaFZCSDFwNFdVN2wwNUFraHBmM2x5dFp6?=
- =?utf-8?B?SC9YRzAxelF1TVJpNlh6V0lEZDR6OHl2VWZqR0VIQWNlaVgrdnNac2dPY0hr?=
- =?utf-8?B?TWtzOEZiZ2ZxK2p3U0RWZ2VpOFk0Ny9oS3I2Ry9jVUh0V1VDa0Q2aFk4cjdF?=
- =?utf-8?B?TE5PYlhzQkswWjdqeFRmMGRWWC90ZlBBdEU5TzdyR0l1aVlBUm5sd2xtYzZJ?=
- =?utf-8?B?Y2MzWUxFeDJOQVVQVERPa0NyOWRHVFRaTytyUXROaUJBUTdhYXg4cDN3PT0=?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:PH0PR12MB7982.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230031)(366007)(376005)(1800799015); DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?TFVkMHM1Qi9HY2phbmgzLzlsTzM0WWhKR09LalNWUHJtUGhwTjFQV25qQVpm?=
- =?utf-8?B?bTNTOXhoN0ZZQ0E3MCt6dVZOSWtqSUJuWFpkK3NVWmluaUozT2VqU0JlZjJr?=
- =?utf-8?B?QWdCbDRBT1EwbXFIcXZ1Z09SKzZTOXNwc2FyR2lOWVFwbzNFY2RXeDZKbjZv?=
- =?utf-8?B?R0twTW1jYzc1T2YzNkprekZuZVFIa3FwSmYzNjhYSXNsZkFxNk8xRnluU09j?=
- =?utf-8?B?OGNLWjhLK1Z5QUNhbVRoSFp1cWdDM1psYVdJdUtha2pQZll4eHU0SjFaTlJW?=
- =?utf-8?B?QXlCT1JHTldNcFNwME51K1ZwWHdIemJQc1VXVWxOUE5sU3Joa0Nza25BZk9Y?=
- =?utf-8?B?dmFtb3lCeDZIMENzaEZsM3RUUm5KTWQzUXFuUFNURkcwYnE4aStLN25laWRt?=
- =?utf-8?B?T2RIR0t4SFVrNHZiTXJzb0VBR2V0N0ZEeHRVbDVCSzcrblVSWnI1RmVBYTgv?=
- =?utf-8?B?ZFluOGdyb2dWZjBPTWNHaVFIUU5SM0VENGFyVGx2bVpZd09Objg1azNHbFlE?=
- =?utf-8?B?VDNTL0ErOWpVZEZVdU1XeTlWTXdhRkFBSVlqNXlMaTQvTVNUckMyMmZoaXdP?=
- =?utf-8?B?Wkc5TXk4a1ovSHFkU0FwMk11YTY4T0E4dC9BN1YxU3pBdFQrYS9LcUZ6WUp4?=
- =?utf-8?B?VnZwa0p0dmhZUkIrYTR2MzkxZ3EraHBseGFqcmkvZEZZRlJodUFPWTIrbTBH?=
- =?utf-8?B?b3kwU0NHQmp0YklUM1RFS0ZLL2ordkMzUXRIelh2dW5XMmFBTjhManhSeGNi?=
- =?utf-8?B?SnRCV1JwMFNHODNwSzNWZllFaElZZnJQTmhIWXBWL0FMSHRIcUc1QmhLY1la?=
- =?utf-8?B?eHhQWVZoMERPalcwSUp2NmlwRDA1c3ZXRDVMZmhvRDNjRHQzSXZEbEEyWkZW?=
- =?utf-8?B?cStXZWFzcnk4elc5NUZWb0psVjZ0b1JOZ2xnS2VUQVhvMVRNdGhzUzVrZnZz?=
- =?utf-8?B?ZlRYNDIwZkExdGNKTVZ3bG91dUo5TTZzdlVBQkNRQU1vMUFLS2J6ZS8rUFRW?=
- =?utf-8?B?TXpoQnFWdG9KaTJaZlZoMEYrMEt6RWNSMXcwdG50SVd6aE9ma0UwMU8wS3VM?=
- =?utf-8?B?VTVtclpDZnFUaEI1UW5oeWFZS2hFZ2RoQjc3c2dSTXczYkRWWENCQnI2OWpy?=
- =?utf-8?B?dFR1QncvVC9YS2U0SzFGa2Y3SFFqMXUySmp2Y3hTSDVWN2RIakUyVnZwd2ZB?=
- =?utf-8?B?b2ZKSnRMS2JJSjk1WFp1aWF6d3ZpUWdESm1ONFcxdWtrbi9nbnRiZVJhMDJr?=
- =?utf-8?B?bnFYckxuTERYaTdSSnRvK1VBeG9WU1ZWc2MvN0o4Vlh4M0Q1R1ZTZlhYYkpJ?=
- =?utf-8?B?TVd0dzNnandDMEdQaXhsSi9DUlFyTWJnYllJZzdPelkvYTBBT2VtQUdVWnZ5?=
- =?utf-8?B?QW5hMXd1YnI2WFRXUkZ2eEsvcXVCazduNE5KQk5FeGkyYXUrOUwxaE0yUGIz?=
- =?utf-8?B?dHJXejBsNERxaThuU2FWZGUrVXA3dEIvZGZVMVk1eWY5Vy9aVVN3T1ptdnJh?=
- =?utf-8?B?WjlRSkd0c0lIam0reXBiMHJMWk0wbEg0WEtZNWE4RjlMOGVxUjFER2pkdHI3?=
- =?utf-8?B?cFlqQ1RmVHBZWVJFZkJtc0tuYTM0ZTRjMnl4R2lRSWlzRHVMR0VqZVFpdWh6?=
- =?utf-8?B?UDdRcWtNNUdJc2lNV051bUV1SFlYVkVFTEdZRVVqTWUxSlE5UVIrYlliMEF1?=
- =?utf-8?B?Nkdva1N6YVJBc05SeWlzOG42Wmp0eEpUbUFkb0tndzVWTU10b3RqbExVcjhk?=
- =?utf-8?B?aXVLanMwREc5NVJXWmNPcjB3dGtQQm16WjhWeDliUlF5OGpyWkFkVy8zaHA0?=
- =?utf-8?B?cWdiL20xend4MENhQ2JGU3AwTUZlWHNtbThDRlozTWVrU0VxTDZ3MjJPMmtC?=
- =?utf-8?B?ck1jMXZCYnZYeTZoZFkzcUFMMzlrWTFXTTBQQzFKcDlPUVlaUnl4QXJLYnMz?=
- =?utf-8?B?R3R3WlBTUjlxS0RZcUJBMkhNV0NGWjNxYXIwRGxROWZ6RHpRaWJ6eVFWSi8y?=
- =?utf-8?B?cThxWTRBS1AyUitLQTFaM1VFa203WjBQNEZtelhVQm82dDg4YTI5KzhyODRN?=
- =?utf-8?B?N0FwR1FOMWRuOXVBb2Q4VCtqSWRMUG51Vm03eUs1QTRjbEdEZjYwZGx5RUl5?=
- =?utf-8?Q?4zrWtvAMCFoEmeOcs9Yx2G5Qv?=
-X-OriginatorOrg: amd.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 706cd2b3-16f2-4a0d-9776-08dc78e695dd
-X-MS-Exchange-CrossTenant-AuthSource: PH0PR12MB7982.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 20 May 2024 16:04:53.3234 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: sw57Cb6ZGUDwswYt4yyoboA/5DYOQkGgVicimfwsfbqrAvChaC1NF8m/aptqkEGY8xuzFrSWgvKZzAEIxMRTYw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN7PR12MB7811
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=amd.com; s=selector1; 
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=528lw7Mtj87DFDWnK+nHI/KiSJx11q2CrzfFRBeFGh4=;
- b=EHRaYRO9dee/p2Dm86kgtjzgvOPWWH7GXDkNQDrQEFiNLS0FKtbAEaB4z1e0LnmU3jpR3qCn0lyyfnPf8jPCfRB5musLilMFAxBBT3hRe35Q7VOE58onLw09RSQ1hOVVS2tliuxINWMCmSZuOqiWqMAAC4xohS7jHQ3M3ut2ajk=
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=amd.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (1024-bit key,
- unprotected) header.d=amd.com header.i=@amd.com header.a=rsa-sha256
- header.s=selector1 header.b=EHRaYRO9
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=amd.com;
-Subject: Re: [Intel-wired-lan] [PATCH iwl-net v2] ice: implement AQ download
- pkg retry
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20240520-iwl-net-2024-05-16-fix-css-hdr-len-v1-1-7607a0752b07@intel.com>
+X-B4-Tracking: v=1; b=H4sIACjDS2YC/5WNQQ6CMBBFr0Jm7RhaWhBX3sO4gHYqTbCYllQN4
+ e7WxgVLXf7/Z95bIJC3FOBYLOAp2mAnlwLbFaCGzl0JrU4ZeMlFKVmN9jGioxk/BZYSU2XsE1U
+ IOGiPIzlsNa9Y2wnTkIYEuntKJ1lyhu8/XNIw2DBP/pXlkeX5H09kyLBTptetYFQfzMm6mca9m
+ m4ZH/kW2fyE5AkpWd9I2XBhZLVFruv6Bo1zvxkwAQAA
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+X-Mailer: b4 0.13.0
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1716241197; x=1747777197;
+ h=from:date:subject:mime-version:content-transfer-encoding:
+ message-id:to:cc;
+ bh=kn/6iehD5lv7+7tJ28S1DXmCj0qj5uiV6BLdDATMB1c=;
+ b=nXUyLWPa8sXPZmK0WE3yTw9d7rsjS9p7MI9c7P94hTg1nWLIOJqdQG0G
+ RNIzKnHwp0olm6YoY+bIy6OKWUMmGtkRng5At8wVPMdmvMcvZE4ZelKdb
+ rnd2oADQWRx+Xw/F7XL0Xjlb82m7yoGDenBktZVj2oFfrNrG61ogadQxx
+ wq/4hHd1QimelMB0RvEeQlAmuLhYq0n5CjvQzCeF/0WmbwdYSmrG0d8W1
+ bC9LSC+Fx88qi4SM/MW7VeePqubrjMMU0BWcqRJ1hTxOKlZBGyZ9vjG1F
+ NE6V3rG1oqKjlXbWGlRQ4rhRb59EjZlPw6vaV7NYYaC/YxC4djUAcVap6
+ w==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=intel.com
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=nXUyLWPa
+Subject: [Intel-wired-lan] [PATCH iwl-net] ice: fix reads from NVM Shadow
+ RAM on E830 and E825-C devices
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -196,72 +108,213 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: przemyslaw.kitszel@intel.com, naveenm@marvell.com,
- intel-wired-lan@lists.osuosl.org
+Cc: Jacob Keller <jacob.e.keller@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Paul Greenwalt <paul.greenwalt@intel.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+The ice driver reads data from the Shadow RAM portion of the NVM during
+initialization, including data used to identify the NVM image and device,
+such as the ETRACK ID used to populate devlink dev info fw.bundle.
 
+Currently it is using a fixed offset defined by ICE_CSS_HEADER_LENGTH to
+compute the appropriate offset. This worked fine for E810 and E822 devices
+which both have CSS header length of 330 words.
 
-On 5/20/2024 3:37 AM, Wojciech Drewek wrote:
-> Caution: This message originated from an External Source. Use proper caution when opening attachments, clicking links, or responding.
-> 
-> 
-> ice_aqc_opc_download_pkg (0x0C40) AQ sporadically returns error due
-> to FW issue. Fix this by retrying five times before moving to
-> Safe Mode.
-> 
-> Fixes: c76488109616 ("ice: Implement Dynamic Device Personalization (DDP) download")
-> Reviewed-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-> Signed-off-by: Wojciech Drewek <wojciech.drewek@intel.com>
-> ---
-> v2: remove "failure" from log message
-> ---
->   drivers/net/ethernet/intel/ice/ice_ddp.c | 19 +++++++++++++++++--
->   1 file changed, 17 insertions(+), 2 deletions(-)
+Other devices, including both E825-C and E830 devices have different sizes
+for their CSS header. The use of a hard coded value results in the driver
+reading from the wrong block in the NVM when attempting to access the
+Shadow RAM copy. This results in the driver reporting the fw.bundle as 0x0
+in both the devlink dev info and ethtool -i output.
 
-LGTM.
+The first E830 support was introduced by commit ba20ecb1d1bb ("ice: Hook up
+4 E830 devices by adding their IDs") and the first E825-C support was
+introducted by commit f64e18944233 ("ice: introduce new E825C devices
+family")
 
-Reviewed-by: Brett Creeley <brett.creeley@amd.com>
+The NVM actually contains the CSS header length embedded in it. Remove the
+hard coded value and replace it with logic to read the length from the NVM
+directly. This is more resilient against all existing and future hardware,
+vs looking up the expected values from a table. It ensures the driver will
+read from the appropriate place when determining the ETRACK ID value used
+for populating the fw.bundle_id and for reporting in ethtool -i.
 
-> 
-> diff --git a/drivers/net/ethernet/intel/ice/ice_ddp.c b/drivers/net/ethernet/intel/ice/ice_ddp.c
-> index ce5034ed2b24..77b81e5a5a44 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_ddp.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_ddp.c
-> @@ -1339,6 +1339,7 @@ ice_dwnld_cfg_bufs_no_lock(struct ice_hw *hw, struct ice_buf *bufs, u32 start,
-> 
->          for (i = 0; i < count; i++) {
->                  bool last = false;
-> +               int try_cnt = 0;
->                  int status;
-> 
->                  bh = (struct ice_buf_hdr *)(bufs + start + i);
-> @@ -1346,8 +1347,22 @@ ice_dwnld_cfg_bufs_no_lock(struct ice_hw *hw, struct ice_buf *bufs, u32 start,
->                  if (indicate_last)
->                          last = ice_is_last_download_buffer(bh, i, count);
-> 
-> -               status = ice_aq_download_pkg(hw, bh, ICE_PKG_BUF_SIZE, last,
-> -                                            &offset, &info, NULL);
-> +               while (try_cnt < 5) {
-> +                       status = ice_aq_download_pkg(hw, bh, ICE_PKG_BUF_SIZE,
-> +                                                    last, &offset, &info,
-> +                                                    NULL);
-> +                       if (hw->adminq.sq_last_status != ICE_AQ_RC_ENOSEC &&
-> +                           hw->adminq.sq_last_status != ICE_AQ_RC_EBADSIG)
-> +                               break;
-> +
-> +                       try_cnt++;
-> +                       msleep(20);
-> +               }
-> +
-> +               if (try_cnt)
-> +                       dev_dbg(ice_hw_to_dev(hw),
-> +                               "ice_aq_download_pkg number of retries: %d\n",
-> +                               try_cnt);
-> 
->                  /* Save AQ status from download package */
->                  if (status) {
-> --
-> 2.40.1
-> 
+The CSS header length for both the active and inactive flash bank is stored
+in the ice_bank_info structure to avoid unnecessary duplicate work when
+accessing multiple words of the Shadow RAM. Both banks are read in the
+unlikely event that the header length is different for the NVM in the
+inactive bank, rather than being different only by the overall device
+family.
+
+Fixes: ba20ecb1d1bb ("ice: Hook up 4 E830 devices by adding their IDs")
+Co-developed-by: Paul Greenwalt <paul.greenwalt@intel.com>
+Signed-off-by: Paul Greenwalt <paul.greenwalt@intel.com>
+Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
+Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+---
+ drivers/net/ethernet/intel/ice/ice_nvm.c  | 88 ++++++++++++++++++++++++++++++-
+ drivers/net/ethernet/intel/ice/ice_type.h | 14 +++--
+ 2 files changed, 93 insertions(+), 9 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/ice/ice_nvm.c b/drivers/net/ethernet/intel/ice/ice_nvm.c
+index 84eab92dc03c..5968011e8c7e 100644
+--- a/drivers/net/ethernet/intel/ice/ice_nvm.c
++++ b/drivers/net/ethernet/intel/ice/ice_nvm.c
+@@ -374,11 +374,25 @@ ice_read_nvm_module(struct ice_hw *hw, enum ice_bank_select bank, u32 offset, u1
+  *
+  * Read the specified word from the copy of the Shadow RAM found in the
+  * specified NVM module.
++ *
++ * Note that the Shadow RAM copy is always located after the CSS header, and
++ * is aligned to 64-byte (32-word) offsets.
+  */
+ static int
+ ice_read_nvm_sr_copy(struct ice_hw *hw, enum ice_bank_select bank, u32 offset, u16 *data)
+ {
+-	return ice_read_nvm_module(hw, bank, ICE_NVM_SR_COPY_WORD_OFFSET + offset, data);
++	u32 sr_copy;
++
++	switch (bank) {
++	case ICE_ACTIVE_FLASH_BANK:
++		sr_copy = roundup(hw->flash.banks.active_css_hdr_len, 32);
++		break;
++	case ICE_INACTIVE_FLASH_BANK:
++		sr_copy = roundup(hw->flash.banks.inactive_css_hdr_len, 32);
++		break;
++	}
++
++	return ice_read_nvm_module(hw, bank, sr_copy + offset, data);
+ }
+ 
+ /**
+@@ -1009,6 +1023,72 @@ static int ice_determine_active_flash_banks(struct ice_hw *hw)
+ 	return 0;
+ }
+ 
++/**
++ * ice_get_nvm_css_hdr_len - Read the CSS header length from the NVM CSS header
++ * @hw: pointer to the HW struct
++ * @bank: whether to read from the active or inactive flash bank
++ * @hdr_len: storage for header length in words
++ *
++ * Read the CSS header length from the NVM CSS header and add the Authentication
++ * header size, and then convert to words.
++ *
++ * Return: zero on success, or a negative error code on failure.
++ */
++static int
++ice_get_nvm_css_hdr_len(struct ice_hw *hw, enum ice_bank_select bank,
++			u32 *hdr_len)
++{
++	u16 hdr_len_l, hdr_len_h;
++	u32 hdr_len_dword;
++	int status;
++
++	status = ice_read_nvm_module(hw, bank, ICE_NVM_CSS_HDR_LEN_L,
++				     &hdr_len_l);
++	if (status)
++		return status;
++
++	status = ice_read_nvm_module(hw, bank, ICE_NVM_CSS_HDR_LEN_H,
++				     &hdr_len_h);
++	if (status)
++		return status;
++
++	/* CSS header length is in DWORD, so convert to words and add
++	 * authentication header size
++	 */
++	hdr_len_dword = hdr_len_h << 16 | hdr_len_l;
++	*hdr_len = (hdr_len_dword * 2) + ICE_NVM_AUTH_HEADER_LEN;
++
++	return 0;
++}
++
++/**
++ * ice_determine_css_hdr_len - Discover CSS header length for the device
++ * @hw: pointer to the HW struct
++ *
++ * Determine the size of the CSS header at the start of the NVM module. This
++ * is useful for locating the Shadow RAM copy in the NVM, as the Shadow RAM is
++ * always located just after the CSS header.
++ *
++ * Return: zero on success, or a negative error code on failure.
++ */
++static int ice_determine_css_hdr_len(struct ice_hw *hw)
++{
++	struct ice_bank_info *banks = &hw->flash.banks;
++	int status;
++
++	status = ice_get_nvm_css_hdr_len(hw, ICE_ACTIVE_FLASH_BANK,
++					 &banks->active_css_hdr_len);
++	if (status)
++		return status;
++
++	status = ice_get_nvm_css_hdr_len(hw, ICE_INACTIVE_FLASH_BANK,
++					 &banks->inactive_css_hdr_len);
++	if (status)
++		return status;
++
++	return 0;
++}
++
+ /**
+  * ice_init_nvm - initializes NVM setting
+  * @hw: pointer to the HW struct
+@@ -1055,6 +1135,12 @@ int ice_init_nvm(struct ice_hw *hw)
+ 		return status;
+ 	}
+ 
++	status = ice_determine_css_hdr_len(hw);
++	if (status) {
++		ice_debug(hw, ICE_DBG_NVM, "Failed to determine Shadow RAM copy offsets.\n");
++		return status;
++	}
++
+ 	status = ice_get_nvm_ver_info(hw, ICE_ACTIVE_FLASH_BANK, &flash->nvm);
+ 	if (status) {
+ 		ice_debug(hw, ICE_DBG_INIT, "Failed to read NVM info.\n");
+diff --git a/drivers/net/ethernet/intel/ice/ice_type.h b/drivers/net/ethernet/intel/ice/ice_type.h
+index f0796a93f428..eef397e5baa0 100644
+--- a/drivers/net/ethernet/intel/ice/ice_type.h
++++ b/drivers/net/ethernet/intel/ice/ice_type.h
+@@ -482,6 +482,8 @@ struct ice_bank_info {
+ 	u32 orom_size;				/* Size of OROM bank */
+ 	u32 netlist_ptr;			/* Pointer to 1st Netlist bank */
+ 	u32 netlist_size;			/* Size of Netlist bank */
++	u32 active_css_hdr_len;			/* Active CSS header length */
++	u32 inactive_css_hdr_len;		/* Inactive CSS header length */
+ 	enum ice_flash_bank nvm_bank;		/* Active NVM bank */
+ 	enum ice_flash_bank orom_bank;		/* Active OROM bank */
+ 	enum ice_flash_bank netlist_bank;	/* Active Netlist bank */
+@@ -1087,17 +1089,13 @@ struct ice_aq_get_set_rss_lut_params {
+ #define ICE_SR_SECTOR_SIZE_IN_WORDS	0x800
+ 
+ /* CSS Header words */
++#define ICE_NVM_CSS_HDR_LEN_L			0x02
++#define ICE_NVM_CSS_HDR_LEN_H			0x03
+ #define ICE_NVM_CSS_SREV_L			0x14
+ #define ICE_NVM_CSS_SREV_H			0x15
+ 
+-/* Length of CSS header section in words */
+-#define ICE_CSS_HEADER_LENGTH			330
+-
+-/* Offset of Shadow RAM copy in the NVM bank area. */
+-#define ICE_NVM_SR_COPY_WORD_OFFSET		roundup(ICE_CSS_HEADER_LENGTH, 32)
+-
+-/* Size in bytes of Option ROM trailer */
+-#define ICE_NVM_OROM_TRAILER_LENGTH		(2 * ICE_CSS_HEADER_LENGTH)
++/* Length of Authentication header section in words */
++#define ICE_NVM_AUTH_HEADER_LEN			0x08
+ 
+ /* The Link Topology Netlist section is stored as a series of words. It is
+  * stored in the NVM as a TLV, with the first two words containing the type
+
+---
+base-commit: e4a87abf588536d1cdfb128595e6e680af5cf3ed
+change-id: 20240516-iwl-net-2024-05-16-fix-css-hdr-len-9d2319a4f7ed
+
+Best regards,
+-- 
+Jacob Keller <jacob.e.keller@intel.com>
+
