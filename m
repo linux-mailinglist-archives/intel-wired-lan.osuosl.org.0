@@ -1,99 +1,230 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5E2E48CC75D
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 22 May 2024 21:37:09 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1FA098CC7AA
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 22 May 2024 22:24:35 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 231698216F;
-	Wed, 22 May 2024 19:37:06 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 7BBC440AF7;
+	Wed, 22 May 2024 20:24:33 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id K4jAhQ_g90ei; Wed, 22 May 2024 20:24:32 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 8C1A9405E8
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1716409472;
+	bh=AR3jX4GI1MDpBHPMK5LV7FPXM1H15rlv6UenshKZTWs=;
+	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=VylSRyT1kqpzsxsYtLNuCcRXmLPtHR1ngN/T8lcRSBwhNjBEyp68IN3WX0ffMCA6D
+	 xnci4aR9LUtRUJzPf5bHoz1NoET+oVrcPZP9fWev1pyBaGodstuF67YvHBjjagkLbw
+	 QcQ7DsH+AaHeGYzESxg8D1H2qTd1m8gMjM0ieWObjmdQaHKDUCCrpbHHWZ6nh/HDcO
+	 +tu+Xr1CD9Q8SkludgD4fXjSgDqOSuSQk07Alf3KLuh/KisRMeSlJuxrN6GYNlgpnl
+	 7HbzvfJXzqqah37BkgliKju+ba42OMxWc5N4dJ/V+CT089IkVSHo13ygNOMa9GLRSW
+	 8R8hlK/Kc0zbQ==
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp2.osuosl.org (Postfix) with ESMTP id 8C1A9405E8;
+	Wed, 22 May 2024 20:24:32 +0000 (UTC)
+X-Original-To: intel-wired-lan@osuosl.org
+Delivered-To: intel-wired-lan@osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id AFFF81C53CC
+ for <intel-wired-lan@osuosl.org>; Wed, 22 May 2024 20:24:30 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp1.osuosl.org (Postfix) with ESMTP id 988DC80EE3
+ for <intel-wired-lan@osuosl.org>; Wed, 22 May 2024 20:24:30 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 80_0KfB7FJHR; Wed, 22 May 2024 19:37:04 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8F4FC821E8
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1716406624;
-	bh=tbUv2IUjZgeOVRrGQ8iQAzxuaopj4jg0s5RLug+BErk=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=PVYNmTOkYCLOuyuhW9PR/keEyUvFDkOiLcuZeHcWewV0cyHu1garruz/m6iloBXIM
-	 7Lod0A5dlbl3Np1Mb6Rx8ZU+53TmZObz5NmvCObg1VU1o4LlxMwhGWVTUKfFOlaOOp
-	 iVYqVHiuefQuhzIXpQnhGQZkE+4CYD4Z9RVs8By7UKyeQghMwBiPctnF3K+gjbo4H3
-	 9OuAw8ZamY21TNgCpk4607INpFjSzoSC+WW9CmfferWIUr1qpXeKISJ4nJ+/FRxxSF
-	 Eu859TXz+IKr2Z76sN3uBWv1XmAn7nVPuxxYloZki1DS7dsvyWL17yZ9/ITw2FkvsN
-	 +85vWGpWy2VqA==
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 8F4FC821E8;
-	Wed, 22 May 2024 19:37:04 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 4056F1C5EF3
- for <intel-wired-lan@lists.osuosl.org>; Wed, 22 May 2024 19:36:57 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 37D68406C5
- for <intel-wired-lan@lists.osuosl.org>; Wed, 22 May 2024 19:36:57 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 8myjjY9zL-t0 for <intel-wired-lan@lists.osuosl.org>;
- Wed, 22 May 2024 19:36:55 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.11;
- helo=mgamail.intel.com; envelope-from=ahmed.zaki@intel.com;
+ id jwODzPE-9G2O for <intel-wired-lan@osuosl.org>;
+ Wed, 22 May 2024 20:24:29 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.19;
+ helo=mgamail.intel.com; envelope-from=jacob.e.keller@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 419FE406C4
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 419FE406C4
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.11])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 419FE406C4
- for <intel-wired-lan@lists.osuosl.org>; Wed, 22 May 2024 19:36:55 +0000 (UTC)
-X-CSE-ConnectionGUID: weZHjN0pQvau6iHQY+6f7w==
-X-CSE-MsgGUID: fsGw3H60Tzybq3dDrjRnmQ==
-X-IronPort-AV: E=McAfee;i="6600,9927,11080"; a="23256385"
-X-IronPort-AV: E=Sophos;i="6.08,181,1712646000"; d="scan'208";a="23256385"
-Received: from orviesa010.jf.intel.com ([10.64.159.150])
- by orvoesa103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 22 May 2024 12:36:54 -0700
-X-CSE-ConnectionGUID: a+kroaW7RASAy/nD11cHLA==
-X-CSE-MsgGUID: w65871mRTLyUoA/te3kYeQ==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 64CA480ED6
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 64CA480ED6
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.19])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 64CA480ED6
+ for <intel-wired-lan@osuosl.org>; Wed, 22 May 2024 20:24:29 +0000 (UTC)
+X-CSE-ConnectionGUID: wY8ndJfBSvCPedwHfPfZNQ==
+X-CSE-MsgGUID: wdYvIo3ZSyuV7WVgQErhSQ==
+X-IronPort-AV: E=McAfee;i="6600,9927,11080"; a="12541375"
+X-IronPort-AV: E=Sophos;i="6.08,181,1712646000"; d="scan'208";a="12541375"
+Received: from orviesa008.jf.intel.com ([10.64.159.148])
+ by orvoesa111.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 22 May 2024 13:24:28 -0700
+X-CSE-ConnectionGUID: eqkbMeAKRYGnooBzwQUVbA==
+X-CSE-MsgGUID: /O/eyIWRQTeUyFWaZZ1M7A==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.08,181,1712646000"; d="scan'208";a="33254293"
-Received: from spandruv-desk1.amr.corp.intel.com (HELO azaki-desk1.intel.com)
- ([10.125.109.214])
- by orviesa010-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 22 May 2024 12:36:52 -0700
-From: Ahmed Zaki <ahmed.zaki@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Wed, 22 May 2024 13:36:02 -0600
-Message-ID: <20240522193602.164331-14-ahmed.zaki@intel.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20240522193602.164331-1-ahmed.zaki@intel.com>
-References: <20240522193602.164331-1-ahmed.zaki@intel.com>
+X-IronPort-AV: E=Sophos;i="6.08,181,1712646000"; d="scan'208";a="33952532"
+Received: from orsmsx602.amr.corp.intel.com ([10.22.229.15])
+ by orviesa008.jf.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
+ 22 May 2024 13:24:28 -0700
+Received: from orsmsx612.amr.corp.intel.com (10.22.229.25) by
+ ORSMSX602.amr.corp.intel.com (10.22.229.15) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.39; Wed, 22 May 2024 13:24:28 -0700
+Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
+ ORSMSX612.amr.corp.intel.com (10.22.229.25) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.39; Wed, 22 May 2024 13:24:27 -0700
+Received: from ORSEDG602.ED.cps.intel.com (10.7.248.7) by
+ orsmsx610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.39 via Frontend Transport; Wed, 22 May 2024 13:24:27 -0700
+Received: from NAM12-BN8-obe.outbound.protection.outlook.com (104.47.55.168)
+ by edgegateway.intel.com (134.134.137.103) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.39; Wed, 22 May 2024 13:24:27 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=Je+IJBN3SNERXM0pL90m1001O+pOiuTGeuQvank40A0NnVPQY9Aua+hJdXDS5w0CYcTD/LGYtmhAUKMQ2cTklDlXExTEphaHFUt/36SVC0FtZ0VDxe6uE05k/uzTSNlHGiZZDiyG+PM22giD7cQ/9WPE/LyPXcb23QS1PxsbT95EK9UUWBNU/k7VIuTRT4sqsd5DlrfNIIbYQAO6GWXGcdf/Tu61hn7ukBHaezDET5CKdME+K0ojkqxTrbtc6alE7nILipVOTCLI0BqsBh3zosC8aDfE9gLNcc5YmfBfRq95I8hXiAc+VGE9Xl63oXBODAuDu3FSnSOhJVrG9s7i5A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=AR3jX4GI1MDpBHPMK5LV7FPXM1H15rlv6UenshKZTWs=;
+ b=UjDv60O+QfPWWxT4IQHB1Yir7iKO26BL7PppTaEOMERIN/FowfC8+gdb3U0EvKUOzS+htEPmTQSergz0xChhsju837HrDDKuzkhYc2iW4QXjKWlDy1ojaTT+s4jTLHglje2ZM/eUJAG/6nIL4LLeY06EjZUE8en0YO/218NLi7STGxojbxj6yYClyXf8PEVSLJawqlJuDWlSszEaSxAKZ8ovxMYGOimGDhoKGhd9p3b30tSEyclcpbtaLvtiB2mKArXIRYccqQJHjDlIgWrU+cVo35NB12NV8FsxmThrj3hUMKIQVAwAHbKvE9rEBZ8oEwYLHG3bnLmLkaYkPyhLsA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from CO1PR11MB5089.namprd11.prod.outlook.com (2603:10b6:303:9b::16)
+ by DM4PR11MB6407.namprd11.prod.outlook.com (2603:10b6:8:b4::11) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7611.19; Wed, 22 May
+ 2024 20:24:25 +0000
+Received: from CO1PR11MB5089.namprd11.prod.outlook.com
+ ([fe80::7de8:e1b1:a3b:b8a8]) by CO1PR11MB5089.namprd11.prod.outlook.com
+ ([fe80::7de8:e1b1:a3b:b8a8%5]) with mapi id 15.20.7587.035; Wed, 22 May 2024
+ 20:24:24 +0000
+Message-ID: <3a2ea6f8-e1e5-4caa-8860-e0a635508ddd@intel.com>
+Date: Wed, 22 May 2024 13:24:23 -0700
+User-Agent: Mozilla Thunderbird
+To: Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ <intel-wired-lan@osuosl.org>
+References: <20240520222011.2852799-1-david.m.ertman@intel.com>
+ <2fb592d2-2153-4d48-97e0-4b0515afc4c0@intel.com>
+ <96b62469-8fc7-43b2-b31e-75ca72591e14@intel.com>
+Content-Language: en-US
+From: Jacob Keller <jacob.e.keller@intel.com>
+In-Reply-To: <96b62469-8fc7-43b2-b31e-75ca72591e14@intel.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+X-ClientProxiedBy: MW4PR04CA0103.namprd04.prod.outlook.com
+ (2603:10b6:303:83::18) To CO1PR11MB5089.namprd11.prod.outlook.com
+ (2603:10b6:303:9b::16)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: CO1PR11MB5089:EE_|DM4PR11MB6407:EE_
+X-MS-Office365-Filtering-Correlation-Id: 53694706-f135-4fbe-b422-08dc7a9d2c15
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230031|366007|376005|1800799015;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?TjZ3UEVEM2l6bXN2aTRvT1M5TTBxMjg4ajEzL2FvY0UxYWovRjlURVJMVGdQ?=
+ =?utf-8?B?OWJsSUphdmN5b0hQRlN0YVlvdDJLU1V4blRZT3hYaGtnbFJXam5BMS9JV3FY?=
+ =?utf-8?B?cmJZbkZyQWdJb1Zod0NNVTgzWUJOMFllNWdZZWRqOHRPV0JpV3JOQWtzaGtq?=
+ =?utf-8?B?ZlYzbXJDMVpaSitXcExwNXVBZ3F5WEtJOTNVbHJpcDVnWXRGejhVUHNzQUNk?=
+ =?utf-8?B?NWZ6WlNSbDVRR1pBVFNMZlVwVGJkYUtBSG1VZk5RZlNoRGUrL2RiVnFBcXFy?=
+ =?utf-8?B?QlZiNndiaHAzTElpcUpzdmNxVFROY1crY1JaS0hPeWl3NGVCK3FMZVFvSU9C?=
+ =?utf-8?B?MW80bDhsaElQK0g3U3BEY1NURGt4T2lxc25oZGcrUTZaV2lMRXp1YUNsMFRH?=
+ =?utf-8?B?bFdaOS8rZzN3MW1aRWlaQUs2dkFlWWYzcUkrb1NGQWZwQytiYTRKbWRudnhV?=
+ =?utf-8?B?ZTJUYmRGT1Q1QklMMmhBeFRyNlFKSGd6UDUwWVY1dkFZWEMyYWt5cW5nQThC?=
+ =?utf-8?B?NVR3bkVPaUJBZlJzbjROdFpQUHQ4ZEpyNmYwSEJYMjJYQjY1RlJXNXRHNVIy?=
+ =?utf-8?B?Ymd3ZTl4emlYSjl6NmFXZXM3NWg5V1VpYmhYdHMxWThKTkVONmlQY1NWYzRB?=
+ =?utf-8?B?MEFMM2RDZlRiQzVKUW16MXhpdHNoZWtYUSsrVHVzOXZmMEdCTCtNOVVUV1Bk?=
+ =?utf-8?B?WG0vVTFDZnpLYkh0Y21hZHVRMTNDMm1ZSUJNMHFpUDlRV0oxMDVGU1JPRGVY?=
+ =?utf-8?B?UFI2VnA5RFVaMzB6MlJVclhGaEpkUkY3bFVabmRFc2RxMDNIbU5GSnZjay9B?=
+ =?utf-8?B?cUFVWmpBN2liVytYZUg5UFMvYXdkbEFWZ3ExVjhYMWpMeWcxa2VpMS9jY0h0?=
+ =?utf-8?B?QXArRjZoTUU5L0x6WFJ5MFhoWkU2SDBsQUo4Nk13emowdjF5emlCK0poZERk?=
+ =?utf-8?B?Q1grVkFOeDFMQzJKUGxNbGNTdDlHQm93QzlJUFkzSXlLSW5vNjBsWjNSY1BV?=
+ =?utf-8?B?L3BqeDBzeUlmWTRGdVExWlhrWVZqY3lVMEdUNk1LZm45cTF2ZzdoVUk1ci80?=
+ =?utf-8?B?aUd4dWNkNFhUVXNsbE5FWWxIRldwdmFoejlacm91OEZwZHVCTm9jSkZVRzk0?=
+ =?utf-8?B?ZmZybU4zTnJXMzBEQ1BDNEJlSjVBbitjb05BOVVidXpVQTMyWE51dFZodjlu?=
+ =?utf-8?B?VWVlMER2RGRKYlVQdCtUMTczRHJuVVZ2WTlGUTJuUE1CK0U2WFJqVEZMUlNt?=
+ =?utf-8?B?UUhBQndHV3F0S0hBS2Q5eTlRMFhtMkxEdVVvUXNGamxKZURFQU1pQjhndUlM?=
+ =?utf-8?B?V2UvWXhXSXFrRmR0cHpQa28yT2ovU0lYRlp1dGJZb3VFTWtMdGJFcC9ibSta?=
+ =?utf-8?B?VGNCbmJqMnZiaDVwZFlqSmxYQ09WM1dBazl6dVZRMzdFaXREbEh4dFVWeFVU?=
+ =?utf-8?B?SWtWTTFPRHJaV2JvOVhaQkV6T01SVStROWlJdmRXaUUwRDNkMWNhWHFFQThw?=
+ =?utf-8?B?RVhYTDM4SlJqRGhxdVRtaFlMcGwwTWY4eEdYVnprN3UyTFZYU0E3RVlUSExp?=
+ =?utf-8?B?UVFiZFgwb2JLQVovaXQwSXYvTzlpdS9FOGNrOFB3S1hkaVd1UG5hdzVWcnhY?=
+ =?utf-8?B?dFNWemlQUm1pdmx4T0pJQjVQeXBacG5tNXJPUjRlVWl0a2ExNkdJV1doOGJ2?=
+ =?utf-8?B?b2diekVMMmt2WFNTaHVEeTFPMkRCaUhGYUJKZjNwV2c2ZHlkdElTMVNRPT0=?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:CO1PR11MB5089.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230031)(366007)(376005)(1800799015); DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?WVkrNWo1Z0U5ODhLanFjanJpTDVoZW5hdkl1cEpUUlN0djRoWXA4Tm52YUtX?=
+ =?utf-8?B?aUNVUmJKWENQWUJuUkt6VDZKMmJ0YzhTV3BzNjByMGgxMVJUUjgrTHVYOW9q?=
+ =?utf-8?B?ZDcvc0hNNEIrdS9jcWZkZkh5QW5URUNpK1B3cElIdStGTy9NNGZQUm91c21w?=
+ =?utf-8?B?K2paRWRNZUdlSlU4dnVwR2Mwc2NlS3ZtQ3Q0ZlFJTlJwU1cwcEtad3p0NlhL?=
+ =?utf-8?B?T2F1QVZlOTBucWFUOTF4MEMrbXVKQTVpdzNOU3NLanI5ZFRKNlhHMUo0Y1A3?=
+ =?utf-8?B?eDhuMldTUk04blUxdnNNUzUxN011bkh5T2xZaEdmeWtFQkd0aWI0TWVWejRx?=
+ =?utf-8?B?VWQ3L0JETW5BT0UxbTdsVnRjSW96am1vTVhVdjJkTFRWdnFUN0cza2JkUWZZ?=
+ =?utf-8?B?a1IrTUdaUVIyMFRoTEF3dnFYNnFBSUpyMFJvblRhYXZjRDdSdkRCSWdKWUg4?=
+ =?utf-8?B?TmRod3ZPL0crT2FpdHI5OHUyYkxPd0tMOWJ4N1p0SURaYU5ld2REWENWcndm?=
+ =?utf-8?B?OStGQlpVREx2a2RadHY1MUNLRGtTdWIxckhYTjZ5L0lqT0k3UmdGVGp1dHFC?=
+ =?utf-8?B?cXJBR2ZCWm1PQURsb0hUYUh0V1Y5QWpkNGxpank5UUdPbjFpSzFsbkJ3NG1R?=
+ =?utf-8?B?SkNOUHhQaG81amZRb04rNCtOOGw5dWZxenQ3ZU5QKys2VGo3eHFVS3Q1ZjZ3?=
+ =?utf-8?B?ZXdRdEl5K0g3NEpxQTFOTUNpbUdoYkpmUk5PUy92dmJwMkUvR3NRS01QRW5J?=
+ =?utf-8?B?NUhSN3lQZkZvR3RWYW9tbDRua1VYa0t0bDhqT21URjFRcHoyelR1VngwZVZG?=
+ =?utf-8?B?dk1YWGZqTFRNVnhjdFJpSllyazdHY3JrWVFPcTIrODZ0RG5aTDdrR1lSeG9h?=
+ =?utf-8?B?U29MUWt1N0hKQlJRYjhGRldDbGpFTlRDUDJCNmV3RGJadllIcnJOaURQYnhz?=
+ =?utf-8?B?YTFGSW56MlNSN25xTjhHdUh2K0RmY2YrRy82T2pGelhHY1ZCZTZOb25tS3B3?=
+ =?utf-8?B?YkR6L1IySUZSaHZjazM1VVVvY01udVN1VmRsRFJWVVhzVHkrT1AyTVR5THN2?=
+ =?utf-8?B?cDh1WFNJTnBqSUtMa3c3NTd3OEFRVTVzcWZLbHVMRG93QTZPT2xWOVFNNzBq?=
+ =?utf-8?B?Qm0yQ3VyaDhuR3ZNODFpSkk3aEpuZ0NodnpTUC9KdzR6WnF5TUoyM01LbENn?=
+ =?utf-8?B?b3lSOW85UU81QWlaL1FHVW90L2NzNHYzdUdwRFg2OGZsNzg2OUZOUU1nTFBU?=
+ =?utf-8?B?TGRlcmlqaDJuMEdWNXJnWHg1MThzU0Nzc0JVb1haa2pVVERiVWZKUzVYQkVj?=
+ =?utf-8?B?eFRWNVFPay9ZeHdOZStJUHRRYzlyc0JLQWRiRXhWMUdBWldZdjEyS2hpaE5z?=
+ =?utf-8?B?T2piLzk0cXpNSG0zMGJ0OTh1aFp5bHY3KzJWUmhiL3NXTlFSQlJwL3JmcjQ2?=
+ =?utf-8?B?VXY2NU00anNFR1FEYnhwVDBiK212eUlUOTdYZ2RIRmZ5NkNYdUh4VE5Jb01G?=
+ =?utf-8?B?MU9IRVh3THhVaHEraWt4dG9ZcFZsMXNDYjRNQ3B2MUJ6dTlqVUw0clFHendr?=
+ =?utf-8?B?RUFLWXIyRnJYeFJhZVVJc0I2RzNyNTBGZXhCbGlpaHZFWWlVNlJHM0I3bXJU?=
+ =?utf-8?B?UktpWnZqcVp1OU1HVFdNd3RHTUFkdG1SaFRoRklxMnRaK2d5TURqVDBDTXBH?=
+ =?utf-8?B?T0ZUdmNRZUtFU0diMzl3TFBvZzN5aThtckZ1Ri9xSFMzNFFUNCs3S3dVcW1w?=
+ =?utf-8?B?ekhzR3BnRTdVbmxVTVllV0phZW51T3FXbXhOR3Njc1ZoTm9sZENhOVBCY085?=
+ =?utf-8?B?ZGlEMENPSHdlcXFHNFYzV2hNZ2NBdGpJdzh2UjN1WlRSMDdkUzBlT213bmhO?=
+ =?utf-8?B?WjR4TGdzWld1cjdVQkNjSVdwYkZBbldraTRiN25YSjNFUDh4eGNBNmcxZUQ1?=
+ =?utf-8?B?ckExQk1RQkJPRkd5cG5DbmhGR3poZ29NM2JNbzN2QW40KzV1SFlCOTgzNDNo?=
+ =?utf-8?B?Z0ZUL2ZsQk8xdk1VODZtbVAyRDU5NnVUbzdxMGdIam90Z3h3aGtKRGl2SEJI?=
+ =?utf-8?B?YndDcVQ2OVdRemZ3OVdybUEzeThlN0RGdkdFeWZOQ2hvNGpGQ3YvbkFCbHR6?=
+ =?utf-8?B?S242VTlnN2lHWmlXVzZyVksyZGF2WmlNUWZObENMdGQxOGRubHc4K015VnZE?=
+ =?utf-8?B?VEE9PQ==?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: 53694706-f135-4fbe-b422-08dc7a9d2c15
+X-MS-Exchange-CrossTenant-AuthSource: CO1PR11MB5089.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 22 May 2024 20:24:24.8991 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: lMXI9Ql0yG0VPdb9p62IKdzS1G4GVKHOcup62ze//HcSoB7dfEXwUM+PHPU86qe5UWcY4yRoEkrLoU8QFbOgDKPZfhK6KXIughwySxZIfAg=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM4PR11MB6407
+X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1716406615; x=1747942615;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=HPHKZLihqpB36NBeQ9GXktimsjnH3inZYNs+A1whn4c=;
- b=MIF3dv9cfpl1fMBBH3EJVYwdHvOa654OdezMc3zS0Bh1fJzy8HpX8YWe
- sK3r0YzFlN+xzTU46rUCH6NMluwkVRpBzR58S/u2phzOAoZ7gguxOyZiH
- j+I2X0xNgOJbfCZ4SJP0LMn8tAeAaaPBUsB39SiK4qjXcsNcyQ5rJLPSq
- qH71g9KjfGx2IdOK0svmGtFNwNuIyAoQ3mCoqo9jNRp/1Dh09s+7om+c2
- qYAp2JNRNFg1ijpYFcPoxfvkmWKKQZSgVQxWqFykeO24nuzDLFZOmfpUZ
- mNUHMLXaAiaTQ4pg2oysyOoWsGFkwuQjAEG47z9gfxDAUC6jFceNIqpHz
- g==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ t=1716409469; x=1747945469;
+ h=message-id:date:subject:to:cc:references:from:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=i5cy4BFezntumdFcyVLQ3souKsGT+dY7rYRbxX5xmqU=;
+ b=nxh9aL5OH3P1eyZBT56WhBcQD4KuAqEjaPnJz7EFlKaUXZNgeVnP0Rw6
+ TPOQ1MROZlGAGBAeZtkTZInyMlJqWr41eJ+1zhhli30uZDDzgn/PZcjdP
+ 7WsYzXkyZGDVGkyOKw6tqsgL35xe0zsABxlCFg4EooI9wRvNCshRP3+3r
+ cniY6ZM7pJTtfnZZxDRw4EXja4D4Rjw72V1SecE1E5u9xqdllXBE2GKdr
+ FqYc7HX4aPuL8yRbjd2qRVuYdQsf0TuqsmCxv1HRn9JH/UsQ9GAb6v5cY
+ Ks4dM/454yBh0IQ5Navb9PidlFPkd+G/8JMr4cDleMrJQM3bQG++A47o6
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=MIF3dv9c
-Subject: [Intel-wired-lan] [PATCH iwl-next 13/13] iavf: add support for
- offloading tc U32 cls filters
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=nxh9aL5O
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH iwl-net] ice: check for unregistering
+ correct number of devlink params
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -106,593 +237,83 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Sridhar Samudrala <sridhar.samudrala@intel.com>,
- Marcin Szycik <marcin.szycik@linux.intel.com>,
- Ahmed Zaki <ahmed.zaki@intel.com>
+Cc: Dave Ertman <david.m.ertman@intel.com>,
+ Mateusz Polchlopek <mateusz.polchlopek@intel.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Add support for offloading cls U32 filters. Only "skbedit queue_mapping"
-and "drop" actions are supported. Also, only "ip" and "802_3" tc
-protocols are allowed. The PF must advertise the VIRTCHNL_VF_OFFLOAD_TC_U32
-capability flag.
 
-Since the filters will be enabled via the FD stage at the PF, a new type
-of FDIR filters is added and the existing list and state machine are used.
 
-The new filters can be used to configure flow directors based on raw
-(binary) pattern in the rx packet.
+On 5/22/2024 3:38 AM, Przemek Kitszel wrote:
+> On 5/21/24 23:26, Jacob Keller wrote:
+>>
+>>
+>> On 5/20/2024 3:20 PM, Dave Ertman wrote:
+>>> On module load, the ice driver checks for the lack of a specific PF
+>>> capabilty to determine if it should reduce the number of devlink params
+>>> to register.  One situation when this test returns true is when the
+>>> driver loads in safe mode.  The same check is not present on the unload
+>>> path when devlink params are unregistered.  This results in the driver
+>>> triggering a WARN_ON in the kernel devlink code.
+>>>
+>>> Add a symmetrical check in the unload path so that the correct value is
+>>> sent to the devlink unregister params call.
+>>>
+>>> Fixes: 109eb2917284 ("ice: Add tx_scheduling_layers devlink param")
+>>> CC: Lukasz Czapnik <lukasz.czapnik@intel.com>
+>>> Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+>>> Signed-off-by: Dave Ertman <david.m.ertman@intel.com>
+>>> ---
+>>>   drivers/net/ethernet/intel/ice/devlink/devlink.c | 8 +++++++-
+>>>   1 file changed, 7 insertions(+), 1 deletion(-)
+>>>
+>>> diff --git a/drivers/net/ethernet/intel/ice/devlink/devlink.c b/drivers/net/ethernet/intel/ice/devlink/devlink.c
+>>> index c4b69655cdf5..94ad78d2d11e 100644
+>>> --- a/drivers/net/ethernet/intel/ice/devlink/devlink.c
+>>> +++ b/drivers/net/ethernet/intel/ice/devlink/devlink.c
+>>> @@ -1477,8 +1477,14 @@ int ice_devlink_register_params(struct ice_pf *pf)
+>>>   
+>>>   void ice_devlink_unregister_params(struct ice_pf *pf)
+>>>   {
+>>> +	size_t params_size = ARRAY_SIZE(ice_devlink_params);
+>>> +	struct ice_hw *hw = &pf->hw;
+>>> +
+>>> +	if (!hw->func_caps.common_cap.tx_sched_topo_comp_mode_en)
+>>> +		params_size--;
+>>> +
+>>>   	devl_params_unregister(priv_to_devlink(pf), ice_devlink_params,
+>>> -			       ARRAY_SIZE(ice_devlink_params));
+>>> +			       params_size);
+>>>   }
+>>>   
+>>>   #define ICE_DEVLINK_READ_BLK_SIZE (1024 * 1024)
+>>
+>> What? This makes no sense. Just separate the Tx sched parameter from the
+>> list and register it separately based on whether the flag is set. Then
+>> only unregister it when the flag is set.
+>>
+>> Messing with the parameter size list is brittle and requires us to be
+>> extra careful that the Tx sched parameter is last.
+>>
+> 
+> for current situation your proposed solution would be indeed more
+> elegant
+> 
+>> NACK. Please fix both the registration and unregistration to avoid this.
+>>
+>> Thanks,
+>> Jake
+> 
+> please note that for general case (multiple conditional params), with
+> possibility of the need of a rollback (when we fail in the middle of
+> params register) current API is not optimal
+> 
+> I have already suggested @Mateusz to extend struct devlink_param by an
+> additional field, so the skipping will be performed by devlink code,
+> with drivers only setting the field. It's still not that convenient as
+> we have typically a global array of params without easy index<->feature
+> mapping. But other drivers will benefit too
 
-Examples:
-
-0. # tc qdisc add dev enp175s0v0  ingress
-
-1. Redirect UDP from src IP 192.168.2.1 to queue 12:
-
-    # tc filter add dev <dev> protocol ip ingress u32 \
-	match u32 0x45000000 0xff000000 at 0  \
-	match u32 0x00110000 0x00ff0000 at 8  \
-	match u32 0xC0A80201 0xffffffff at 12 \
-	match u32 0x00000000 0x00000000 at 24 \
-	action skbedit queue_mapping 12 skip_sw
-
-2. Drop all ICMP:
-
-    # tc filter add dev <dev> protocol ip ingress u32 \
-	match u32 0x45000000 0xff000000 at 0  \
-	match u32 0x00010000 0x00ff0000 at 8  \
-	match u32 0x00000000 0x00000000 at 24 \
-	action drop skip_sw
-
-3. Redirect ICMP traffic from MAC 3c:fd:fe:a5:47:e0 to queue 7
-   (note proto: 802_3):
-
-   # tc filter add dev <dev> protocol 802_3 ingress u32 \
-	match u32 0x00003CFD 0x0000ffff at 4   \
-	match u32 0xFEA547E0 0xffffffff at 8   \
-	match u32 0x08004500 0xffffff00 at 12  \
-	match u32 0x00000001 0x000000ff at 20  \
-	match u32 0x0000 0x0000 at 40          \
-	action skbedit queue_mapping 7 skip_sw
-
-Notes on matches:
-1 - All intermediate fields that are needed to parse the correct PTYPE
-    must be provided (in e.g. 3: Ethernet Type 0x0800 in MAC, IP version
-    and IP length: 0x45 and protocol: 0x01 (ICMP)).
-2 - The last match must provide an offset that guarantees all required
-    headers are accounted for, even if the last header is not matched.
-    For example, in #2, the last match is 4 bytes at offset 24 starting
-    from IP header, so the total is 14 (MAC) + 24 + 4 = 42, which is the
-    sum of MAC+IP+ICMP headers.
-
-Reviewed-by: Sridhar Samudrala <sridhar.samudrala@intel.com>
-Reviewed-by: Marcin Szycik <marcin.szycik@linux.intel.com>
-Signed-off-by: Ahmed Zaki <ahmed.zaki@intel.com>
----
- drivers/net/ethernet/intel/iavf/iavf.h        |  27 +++-
- .../net/ethernet/intel/iavf/iavf_ethtool.c    |   9 +-
- drivers/net/ethernet/intel/iavf/iavf_fdir.c   |  29 ++--
- drivers/net/ethernet/intel/iavf/iavf_fdir.h   |  10 +-
- drivers/net/ethernet/intel/iavf/iavf_main.c   | 148 +++++++++++++++++-
- .../net/ethernet/intel/iavf/iavf_virtchnl.c   |  25 ++-
- drivers/net/ethernet/intel/ice/ice_virtchnl.c |   4 +
- include/linux/avf/virtchnl.h                  |   1 +
- 8 files changed, 226 insertions(+), 27 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/iavf/iavf.h b/drivers/net/ethernet/intel/iavf/iavf.h
-index 85bd6a85cf2d..fb6f1b644d3b 100644
---- a/drivers/net/ethernet/intel/iavf/iavf.h
-+++ b/drivers/net/ethernet/intel/iavf/iavf.h
-@@ -33,6 +33,7 @@
- #include <net/udp.h>
- #include <net/tc_act/tc_gact.h>
- #include <net/tc_act/tc_mirred.h>
-+#include <net/tc_act/tc_skbedit.h>
- 
- #include "iavf_type.h"
- #include <linux/avf/virtchnl.h>
-@@ -393,6 +394,8 @@ struct iavf_adapter {
- 			     VIRTCHNL_VF_OFFLOAD_VLAN_V2)
- #define CRC_OFFLOAD_ALLOWED(_a) ((_a)->vf_res->vf_cap_flags & \
- 				 VIRTCHNL_VF_OFFLOAD_CRC)
-+#define TC_U32_SUPPORT(_a) ((_a)->vf_res->vf_cap_flags & \
-+			    VIRTCHNL_VF_OFFLOAD_TC_U32)
- #define VLAN_V2_FILTERING_ALLOWED(_a) \
- 	(VLAN_V2_ALLOWED((_a)) && \
- 	 ((_a)->vlan_v2_caps.filtering.filtering_support.outer || \
-@@ -437,6 +440,7 @@ struct iavf_adapter {
- 
- #define IAVF_MAX_FDIR_FILTERS 128	/* max allowed Flow Director filters */
- 	u16 fdir_active_fltr;
-+	u16 raw_fdir_active_fltr;
- 	struct list_head fdir_list_head;
- 	spinlock_t fdir_fltr_lock;	/* protect the Flow Director filter list */
- 
-@@ -447,7 +451,28 @@ struct iavf_adapter {
- /* Must be called with fdir_fltr_lock lock held */
- static inline bool iavf_fdir_max_reached(struct iavf_adapter *adapter)
- {
--	return (adapter->fdir_active_fltr >= IAVF_MAX_FDIR_FILTERS);
-+	return (adapter->fdir_active_fltr + adapter->raw_fdir_active_fltr >=
-+			IAVF_MAX_FDIR_FILTERS);
-+}
-+
-+static inline void
-+iavf_inc_fdir_active_fltr(struct iavf_adapter *adapter,
-+			  struct iavf_fdir_fltr *fltr)
-+{
-+	if (iavf_is_raw_fdir(fltr))
-+		adapter->raw_fdir_active_fltr++;
-+	else
-+		adapter->fdir_active_fltr++;
-+}
-+
-+static inline void
-+iavf_dec_fdir_active_fltr(struct iavf_adapter *adapter,
-+			  struct iavf_fdir_fltr *fltr)
-+{
-+	if (iavf_is_raw_fdir(fltr))
-+		adapter->raw_fdir_active_fltr--;
-+	else
-+		adapter->fdir_active_fltr--;
- }
- 
- /* Ethtool Private Flags */
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_ethtool.c b/drivers/net/ethernet/intel/iavf/iavf_ethtool.c
-index 7ab445eeee18..74a1e9fe1821 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_ethtool.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_ethtool.c
-@@ -927,7 +927,7 @@ iavf_get_ethtool_fdir_entry(struct iavf_adapter *adapter,
- 
- 	spin_lock_bh(&adapter->fdir_fltr_lock);
- 
--	rule = iavf_find_fdir_fltr(adapter, fsp->location);
-+	rule = iavf_find_fdir_fltr(adapter, false, fsp->location);
- 	if (!rule) {
- 		ret = -EINVAL;
- 		goto release_lock;
-@@ -1072,6 +1072,9 @@ iavf_get_fdir_fltr_ids(struct iavf_adapter *adapter, struct ethtool_rxnfc *cmd,
- 	spin_lock_bh(&adapter->fdir_fltr_lock);
- 
- 	list_for_each_entry(fltr, &adapter->fdir_list_head, list) {
-+		if (iavf_is_raw_fdir(fltr))
-+			continue;
-+
- 		if (cnt == cmd->rule_cnt) {
- 			val = -EMSGSIZE;
- 			goto release_lock;
-@@ -1263,7 +1266,7 @@ static int iavf_add_fdir_ethtool(struct iavf_adapter *adapter, struct ethtool_rx
- 		return -EINVAL;
- 
- 	spin_lock_bh(&adapter->fdir_fltr_lock);
--	if (iavf_find_fdir_fltr(adapter, fsp->location)) {
-+	if (iavf_find_fdir_fltr(adapter, false, fsp->location)) {
- 		dev_err(&adapter->pdev->dev, "Failed to add Flow Director filter, it already exists\n");
- 		spin_unlock_bh(&adapter->fdir_fltr_lock);
- 		return -EEXIST;
-@@ -1307,7 +1310,7 @@ static int iavf_del_fdir_ethtool(struct iavf_adapter *adapter, struct ethtool_rx
- 	if (!(adapter->flags & IAVF_FLAG_FDIR_ENABLED))
- 		return -EOPNOTSUPP;
- 
--	return iavf_fdir_del_fltr(adapter, fsp->location);
-+	return iavf_fdir_del_fltr(adapter, false, fsp->location);
- }
- 
- /**
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_fdir.c b/drivers/net/ethernet/intel/iavf/iavf_fdir.c
-index cdea70471bde..7a126a07193c 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_fdir.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_fdir.c
-@@ -796,6 +796,9 @@ bool iavf_fdir_is_dup_fltr(struct iavf_adapter *adapter, struct iavf_fdir_fltr *
- 
- 	spin_lock_bh(&adapter->fdir_fltr_lock);
- 	list_for_each_entry(tmp, &adapter->fdir_list_head, list) {
-+		if (iavf_is_raw_fdir(fltr))
-+			continue;
-+
- 		if (tmp->flow_type != fltr->flow_type)
- 			continue;
- 
-@@ -817,18 +820,21 @@ bool iavf_fdir_is_dup_fltr(struct iavf_adapter *adapter, struct iavf_fdir_fltr *
- /**
-  * iavf_find_fdir_fltr - find FDIR filter
-  * @adapter: pointer to the VF adapter structure
-- * @loc: location to find.
-+ * @is_raw: filter type, is raw (tc u32) or not (ethtool)
-+ * @data: data to ID the filter, type dependent
-  *
-  * Returns pointer to Flow Director filter if found or null. Lock must be held.
-  */
- struct iavf_fdir_fltr *iavf_find_fdir_fltr(struct iavf_adapter *adapter,
--					   u32 loc)
-+					   bool is_raw, u32 data)
- {
- 	struct iavf_fdir_fltr *rule;
- 
--	list_for_each_entry(rule, &adapter->fdir_list_head, list)
--		if (rule->loc == loc)
-+	list_for_each_entry(rule, &adapter->fdir_list_head, list) {
-+		if ((is_raw && rule->cls_u32_handle == data) ||
-+		    (!is_raw && rule->loc == data))
- 			return rule;
-+	}
- 
- 	return NULL;
- }
-@@ -853,6 +859,9 @@ int iavf_fdir_add_fltr(struct iavf_adapter *adapter,
- 	}
- 
- 	list_for_each_entry(rule, &adapter->fdir_list_head, list) {
-+		if (iavf_is_raw_fdir(fltr))
-+			break;
-+
- 		if (rule->loc >= fltr->loc)
- 			break;
- 		parent = rule;
-@@ -862,7 +871,8 @@ int iavf_fdir_add_fltr(struct iavf_adapter *adapter,
- 		list_add(&fltr->list, &parent->list);
- 	else
- 		list_add(&fltr->list, &adapter->fdir_list_head);
--	adapter->fdir_active_fltr++;
-+
-+	iavf_inc_fdir_active_fltr(adapter, fltr);
- 
- 	if (adapter->link_up)
- 		fltr->state = IAVF_FDIR_FLTR_ADD_REQUEST;
-@@ -879,23 +889,24 @@ int iavf_fdir_add_fltr(struct iavf_adapter *adapter,
- /**
-  * iavf_fdir_del_fltr - delete a flow director filter from the list
-  * @adapter: pointer to the VF adapter structure
-- * @loc: location to delete.
-+ * @is_raw: filter type, is raw (tc u32) or not (ethtool)
-+ * @data: data to ID the filter, type dependent
-  */
--int iavf_fdir_del_fltr(struct iavf_adapter *adapter, u32 loc)
-+int iavf_fdir_del_fltr(struct iavf_adapter *adapter, bool is_raw, u32 data)
- {
- 	struct iavf_fdir_fltr *fltr = NULL;
- 	int err = 0;
- 
- 	spin_lock_bh(&adapter->fdir_fltr_lock);
--	fltr = iavf_find_fdir_fltr(adapter, loc);
-+	fltr = iavf_find_fdir_fltr(adapter, is_raw, data);
- 
- 	if (fltr) {
- 		if (fltr->state == IAVF_FDIR_FLTR_ACTIVE) {
- 			fltr->state = IAVF_FDIR_FLTR_DEL_REQUEST;
- 		} else if (fltr->state == IAVF_FDIR_FLTR_INACTIVE) {
- 			list_del(&fltr->list);
-+			iavf_dec_fdir_active_fltr(adapter, fltr);
- 			kfree(fltr);
--			adapter->fdir_active_fltr--;
- 			fltr = NULL;
- 		} else {
- 			err = -EBUSY;
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_fdir.h b/drivers/net/ethernet/intel/iavf/iavf_fdir.h
-index 5c85eb25fa2a..e84a5351162f 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_fdir.h
-+++ b/drivers/net/ethernet/intel/iavf/iavf_fdir.h
-@@ -117,12 +117,18 @@ struct iavf_fdir_fltr {
- 
- 	u32 flow_id;
- 
-+	u32 cls_u32_handle; /* for FDIR added via tc u32 */
- 	u32 loc;	/* Rule location inside the flow table */
- 	u32 q_index;
- 
- 	struct virtchnl_fdir_add vc_add_msg;
- };
- 
-+static inline bool iavf_is_raw_fdir(struct iavf_fdir_fltr *fltr)
-+{
-+	return !fltr->vc_add_msg.rule_cfg.proto_hdrs.count;
-+}
-+
- int iavf_validate_fdir_fltr_masks(struct iavf_adapter *adapter,
- 				  struct iavf_fdir_fltr *fltr);
- int iavf_fill_fdir_add_msg(struct iavf_adapter *adapter, struct iavf_fdir_fltr *fltr);
-@@ -130,7 +136,7 @@ void iavf_print_fdir_fltr(struct iavf_adapter *adapter, struct iavf_fdir_fltr *f
- bool iavf_fdir_is_dup_fltr(struct iavf_adapter *adapter, struct iavf_fdir_fltr *fltr);
- int iavf_fdir_add_fltr(struct iavf_adapter *adapter,
- 		       struct iavf_fdir_fltr *fltr);
--int iavf_fdir_del_fltr(struct iavf_adapter *adapter, u32 loc);
-+int iavf_fdir_del_fltr(struct iavf_adapter *adapter, bool is_raw, u32 data);
- struct iavf_fdir_fltr *iavf_find_fdir_fltr(struct iavf_adapter *adapter,
--					   u32 loc);
-+					   bool is_raw, u32 data);
- #endif /* _IAVF_FDIR_H_ */
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
-index c6dff0963053..f46865f2ab56 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_main.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
-@@ -4014,7 +4014,7 @@ static int iavf_delete_clsflower(struct iavf_adapter *adapter,
- 
- /**
-  * iavf_setup_tc_cls_flower - flower classifier offloads
-- * @adapter: board private structure
-+ * @adapter: pointer to iavf adapter structure
-  * @cls_flower: pointer to flow_cls_offload struct with flow info
-  */
- static int iavf_setup_tc_cls_flower(struct iavf_adapter *adapter,
-@@ -4032,6 +4032,142 @@ static int iavf_setup_tc_cls_flower(struct iavf_adapter *adapter,
- 	}
- }
- 
-+/**
-+ * iavf_add_cls_u32 - Add U32 classifier offloads
-+ * @adapter: pointer to iavf adapter structure
-+ * @cls_u32: pointer to tc_cls_u32_offload struct with flow info
-+ */
-+static int iavf_add_cls_u32(struct iavf_adapter *adapter,
-+			    struct tc_cls_u32_offload *cls_u32)
-+{
-+	struct netlink_ext_ack *extack = cls_u32->common.extack;
-+	struct virtchnl_fdir_rule *rule_cfg;
-+	struct virtchnl_filter_action *vact;
-+	struct virtchnl_proto_hdrs *hdrs;
-+	struct ethhdr *spec_h, *mask_h;
-+	const struct tc_action *act;
-+	struct iavf_fdir_fltr *fltr;
-+	struct tcf_exts *exts;
-+	int i, status = 0;
-+	int off_base = 0;
-+
-+	if (cls_u32->knode.link_handle) {
-+		NL_SET_ERR_MSG_MOD(extack, "Linking not supported");
-+		return -EOPNOTSUPP;
-+	}
-+
-+	fltr = kzalloc(sizeof(*fltr), GFP_KERNEL);
-+	if (!fltr)
-+		return -ENOMEM;
-+
-+	rule_cfg = &fltr->vc_add_msg.rule_cfg;
-+	hdrs = &rule_cfg->proto_hdrs;
-+	hdrs->count = 0;
-+
-+	/* The parser lib at the PF expects the packet starting with MAC hdr */
-+	switch (ntohs(cls_u32->common.protocol)) {
-+	case ETH_P_802_3:
-+		break;
-+	case ETH_P_IP:
-+		spec_h = (struct ethhdr *)hdrs->raw.spec;
-+		mask_h = (struct ethhdr *)hdrs->raw.mask;
-+		spec_h->h_proto = htons(ETH_P_IP);
-+		mask_h->h_proto = 0xFFFF;
-+		off_base += ETH_HLEN;
-+		break;
-+	default:
-+		NL_SET_ERR_MSG_MOD(extack, "Only 802_3 and ip filter protocols are supported");
-+		status = -EOPNOTSUPP;
-+		goto free_alloc;
-+	}
-+
-+	for (i = 0; i < cls_u32->knode.sel->nkeys; i++) {
-+		__be32 val, mask;
-+		int off;
-+
-+		off = off_base + cls_u32->knode.sel->keys[i].off;
-+		val = cls_u32->knode.sel->keys[i].val;
-+		mask = cls_u32->knode.sel->keys[i].mask;
-+
-+		if (off >= sizeof(hdrs->raw.spec)) {
-+			NL_SET_ERR_MSG_MOD(extack, "Input exceeds maximum allowed.");
-+			status = -EINVAL;
-+			goto free_alloc;
-+		}
-+
-+		memcpy(&hdrs->raw.spec[off], &val, sizeof(val));
-+		memcpy(&hdrs->raw.mask[off], &mask, sizeof(mask));
-+		hdrs->raw.pkt_len = off + sizeof(val);
-+	}
-+
-+	/* Only one action is allowed */
-+	rule_cfg->action_set.count = 1;
-+	vact = &rule_cfg->action_set.actions[0];
-+	exts = cls_u32->knode.exts;
-+
-+	tcf_exts_for_each_action(i, act, exts) {
-+		/* FDIR queue */
-+		if (is_tcf_skbedit_rx_queue_mapping(act)) {
-+			vact->type = VIRTCHNL_ACTION_QUEUE;
-+			vact->act_conf.queue.index =
-+				tcf_skbedit_rx_queue_mapping(act);
-+			break;
-+		}
-+
-+		/* Drop */
-+		if (is_tcf_gact_shot(act)) {
-+			vact->type = VIRTCHNL_ACTION_DROP;
-+			break;
-+		}
-+
-+		/* Unsupported action */
-+		NL_SET_ERR_MSG_MOD(extack, "Unsupported action.");
-+		status = -EOPNOTSUPP;
-+		goto free_alloc;
-+	}
-+
-+	fltr->vc_add_msg.vsi_id = adapter->vsi.id;
-+	fltr->cls_u32_handle = cls_u32->knode.handle;
-+	return iavf_fdir_add_fltr(adapter, fltr);
-+
-+free_alloc:
-+	kfree(fltr);
-+	return status;
-+}
-+
-+/**
-+ * iavf_del_cls_u32 - Delete U32 classifier offloads
-+ * @adapter: pointer to iavf adapter structure
-+ * @cls_u32: pointer to tc_cls_u32_offload struct with flow info
-+ */
-+static int iavf_del_cls_u32(struct iavf_adapter *adapter,
-+			    struct tc_cls_u32_offload *cls_u32)
-+{
-+	return iavf_fdir_del_fltr(adapter, true, cls_u32->knode.handle);
-+}
-+
-+/**
-+ * iavf_setup_tc_cls_u32 - U32 filter offloads
-+ * @adapter: pointer to iavf adapter structure
-+ * @cls_u32: pointer to tc_cls_u32_offload struct with flow info
-+ */
-+static int iavf_setup_tc_cls_u32(struct iavf_adapter *adapter,
-+				 struct tc_cls_u32_offload *cls_u32)
-+{
-+	if (!TC_U32_SUPPORT(adapter) || !FDIR_FLTR_SUPPORT(adapter))
-+		return -EOPNOTSUPP;
-+
-+	switch (cls_u32->command) {
-+	case TC_CLSU32_NEW_KNODE:
-+	case TC_CLSU32_REPLACE_KNODE:
-+		return iavf_add_cls_u32(adapter, cls_u32);
-+	case TC_CLSU32_DELETE_KNODE:
-+		return iavf_del_cls_u32(adapter, cls_u32);
-+	default:
-+		return -EOPNOTSUPP;
-+	}
-+}
-+
- /**
-  * iavf_setup_tc_block_cb - block callback for tc
-  * @type: type of offload
-@@ -4051,6 +4187,8 @@ static int iavf_setup_tc_block_cb(enum tc_setup_type type, void *type_data,
- 	switch (type) {
- 	case TC_SETUP_CLSFLOWER:
- 		return iavf_setup_tc_cls_flower(cb_priv, type_data);
-+	case TC_SETUP_CLSU32:
-+		return iavf_setup_tc_cls_u32(cb_priv, type_data);
- 	default:
- 		return -EOPNOTSUPP;
- 	}
-@@ -4333,8 +4471,8 @@ static void iavf_disable_fdir(struct iavf_adapter *adapter)
- 		    fdir->state == IAVF_FDIR_FLTR_INACTIVE) {
- 			/* Delete filters not registered in PF */
- 			list_del(&fdir->list);
-+			iavf_dec_fdir_active_fltr(adapter, fdir);
- 			kfree(fdir);
--			adapter->fdir_active_fltr--;
- 		} else if (fdir->state == IAVF_FDIR_FLTR_ADD_PENDING ||
- 			   fdir->state == IAVF_FDIR_FLTR_DIS_REQUEST ||
- 			   fdir->state == IAVF_FDIR_FLTR_ACTIVE) {
-@@ -4844,9 +4982,11 @@ int iavf_process_config(struct iavf_adapter *adapter)
- 	/* get HW VLAN features that can be toggled */
- 	hw_vlan_features = iavf_get_netdev_vlan_hw_features(adapter);
- 
--	/* Enable cloud filter if ADQ is supported */
--	if (vfres->vf_cap_flags & VIRTCHNL_VF_OFFLOAD_ADQ)
-+	/* Enable HW TC offload if ADQ or tc U32 is supported */
-+	if (vfres->vf_cap_flags & VIRTCHNL_VF_OFFLOAD_ADQ ||
-+	    TC_U32_SUPPORT(adapter))
- 		hw_features |= NETIF_F_HW_TC;
-+
- 	if (vfres->vf_cap_flags & VIRTCHNL_VF_OFFLOAD_USO)
- 		hw_features |= NETIF_F_GSO_UDP_L4;
- 
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
-index 1e543f6a7c30..7e810b65380c 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_virtchnl.c
-@@ -142,6 +142,7 @@ int iavf_send_vf_config_msg(struct iavf_adapter *adapter)
- 	       VIRTCHNL_VF_OFFLOAD_WB_ON_ITR |
- 	       VIRTCHNL_VF_OFFLOAD_RSS_PCTYPE_V2 |
- 	       VIRTCHNL_VF_OFFLOAD_ENCAP |
-+	       VIRTCHNL_VF_OFFLOAD_TC_U32 |
- 	       VIRTCHNL_VF_OFFLOAD_VLAN_V2 |
- 	       VIRTCHNL_VF_OFFLOAD_CRC |
- 	       VIRTCHNL_VF_OFFLOAD_ENCAP_CSUM |
-@@ -1961,8 +1962,8 @@ static void iavf_activate_fdir_filters(struct iavf_adapter *adapter)
- 			 * list on PF is already cleared after a reset
- 			 */
- 			list_del(&f->list);
-+			iavf_dec_fdir_active_fltr(adapter, f);
- 			kfree(f);
--			adapter->fdir_active_fltr--;
- 		}
- 	}
- 	spin_unlock_bh(&adapter->fdir_fltr_lock);
-@@ -2135,8 +2136,8 @@ void iavf_virtchnl_completion(struct iavf_adapter *adapter,
- 						dev_err(&adapter->pdev->dev,
- 							"%s\n", msg);
- 					list_del(&fdir->list);
-+					iavf_dec_fdir_active_fltr(adapter, fdir);
- 					kfree(fdir);
--					adapter->fdir_active_fltr--;
- 				}
- 			}
- 			spin_unlock_bh(&adapter->fdir_fltr_lock);
-@@ -2451,8 +2452,12 @@ void iavf_virtchnl_completion(struct iavf_adapter *adapter,
- 					 list) {
- 			if (fdir->state == IAVF_FDIR_FLTR_ADD_PENDING) {
- 				if (add_fltr->status == VIRTCHNL_FDIR_SUCCESS) {
--					dev_info(&adapter->pdev->dev, "Flow Director filter with location %u is added\n",
--						 fdir->loc);
-+					if (!iavf_is_raw_fdir(fdir))
-+						dev_info(&adapter->pdev->dev, "Flow Director filter with location %u is added\n",
-+							 fdir->loc);
-+					else
-+						dev_info(&adapter->pdev->dev, "Flow Director filter (raw) for TC handle %x is added\n",
-+							 TC_U32_USERHTID(fdir->cls_u32_handle));
- 					fdir->state = IAVF_FDIR_FLTR_ACTIVE;
- 					fdir->flow_id = add_fltr->flow_id;
- 				} else {
-@@ -2460,8 +2465,8 @@ void iavf_virtchnl_completion(struct iavf_adapter *adapter,
- 						 add_fltr->status);
- 					iavf_print_fdir_fltr(adapter, fdir);
- 					list_del(&fdir->list);
-+					iavf_dec_fdir_active_fltr(adapter, fdir);
- 					kfree(fdir);
--					adapter->fdir_active_fltr--;
- 				}
- 			}
- 		}
-@@ -2479,11 +2484,15 @@ void iavf_virtchnl_completion(struct iavf_adapter *adapter,
- 				if (del_fltr->status == VIRTCHNL_FDIR_SUCCESS ||
- 				    del_fltr->status ==
- 				    VIRTCHNL_FDIR_FAILURE_RULE_NONEXIST) {
--					dev_info(&adapter->pdev->dev, "Flow Director filter with location %u is deleted\n",
--						 fdir->loc);
-+					if (!iavf_is_raw_fdir(fdir))
-+						dev_info(&adapter->pdev->dev, "Flow Director filter with location %u is deleted\n",
-+							 fdir->loc);
-+					else
-+						dev_info(&adapter->pdev->dev, "Flow Director filter (raw) for TC handle %x is deleted\n",
-+							 TC_U32_USERHTID(fdir->cls_u32_handle));
- 					list_del(&fdir->list);
-+					iavf_dec_fdir_active_fltr(adapter, fdir);
- 					kfree(fdir);
--					adapter->fdir_active_fltr--;
- 				} else {
- 					fdir->state = IAVF_FDIR_FLTR_ACTIVE;
- 					dev_info(&adapter->pdev->dev, "Failed to delete Flow Director filter with status: %d\n",
-diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl.c b/drivers/net/ethernet/intel/ice/ice_virtchnl.c
-index 886869648c91..82ad4c6ff4d7 100644
---- a/drivers/net/ethernet/intel/ice/ice_virtchnl.c
-+++ b/drivers/net/ethernet/intel/ice/ice_virtchnl.c
-@@ -461,6 +461,10 @@ static int ice_vc_get_vf_res_msg(struct ice_vf *vf, u8 *msg)
- 	if (vf->driver_caps & VIRTCHNL_VF_OFFLOAD_FDIR_PF)
- 		vfres->vf_cap_flags |= VIRTCHNL_VF_OFFLOAD_FDIR_PF;
- 
-+	if (vf->driver_caps & VIRTCHNL_VF_OFFLOAD_TC_U32 &&
-+	    vfres->vf_cap_flags & VIRTCHNL_VF_OFFLOAD_FDIR_PF)
-+		vfres->vf_cap_flags |= VIRTCHNL_VF_OFFLOAD_TC_U32;
-+
- 	if (vf->driver_caps & VIRTCHNL_VF_OFFLOAD_RSS_PCTYPE_V2)
- 		vfres->vf_cap_flags |= VIRTCHNL_VF_OFFLOAD_RSS_PCTYPE_V2;
- 
-diff --git a/include/linux/avf/virtchnl.h b/include/linux/avf/virtchnl.h
-index 4f78a65e33dc..f41395264dca 100644
---- a/include/linux/avf/virtchnl.h
-+++ b/include/linux/avf/virtchnl.h
-@@ -247,6 +247,7 @@ VIRTCHNL_CHECK_STRUCT_LEN(16, virtchnl_vsi_resource);
- /* used to negotiate communicating link speeds in Mbps */
- #define VIRTCHNL_VF_CAP_ADV_LINK_SPEED		BIT(7)
- #define  VIRTCHNL_VF_OFFLOAD_CRC		BIT(10)
-+#define VIRTCHNL_VF_OFFLOAD_TC_U32		BIT(11)
- #define VIRTCHNL_VF_OFFLOAD_VLAN_V2		BIT(15)
- #define VIRTCHNL_VF_OFFLOAD_VLAN		BIT(16)
- #define VIRTCHNL_VF_OFFLOAD_RX_POLLING		BIT(17)
--- 
-2.43.0
-
+This would be more useful. Alternatively, we could just ignore or warn
+about errors on adding parameters and continue loading rather than
+trying to unroll.
