@@ -1,98 +1,99 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0CB9F8CEAC4
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 24 May 2024 22:22:30 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4BD408CEAC6
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 24 May 2024 22:22:36 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 0702681EBF;
-	Fri, 24 May 2024 20:22:28 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 10ADA81ED0;
+	Fri, 24 May 2024 20:22:33 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id bf5O5Yg0Knq1; Fri, 24 May 2024 20:22:27 +0000 (UTC)
+ id krPL3wFEBNY3; Fri, 24 May 2024 20:22:32 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3215D81E5A
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 2FC0981E5A
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1716582147;
-	bh=s+N3r/ZhjEHvUJmgklHa7QjJU3cLnUXthZ+QmSAkA+8=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=uP6eBrg6HW9gSfPjP0UIWw4g13IeU9XWpqvawggf3Iaas4+/2fxdYIxLSiO62+nXV
-	 AM4ZaWMnMMniCGzeR9KCsuFZJfCti3JolnKankNcXaCxUZ6OCOhe83zfqciPVe9IpT
-	 JvzVnshYPe1lbOOBCgLKtdiCGw7XHFc6npzJVntUPh9fr1+jCJkuzQrrQyOBd2+GI9
-	 ZaA2rtrATg76yxQZYv7WWIq5sJBzwL+XDk672wsrrsz0RVOsHQOx0jyuKcdRDUiax+
-	 CqUPiNpZt/GSpOwqVQcEGWSAOmJQloJtbOPIH9jZOOqziADS/t3t7g6ibdE2aK/nr1
-	 MJLPVu3V/jS7g==
+	s=default; t=1716582152;
+	bh=59MRN4zafQO0wc9xFx5isGTbFTlvYGkzSpPHtudY5I0=;
+	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=hTW1C3TnoAkuuOjT9f/o4TzZVLs5dHvW0OkRnOFf4IWZOoklANG7NXu4jO2WA9KYL
+	 LPccJ9yXoSztdKEktKaYnjEZ+9YMYpsIawe8nX5BAK3ud3hZ0a5fFTB+k+//Cf/5ow
+	 50tI8ZmXqIQh1fjOL+P8bPjdBzUtkE38FV1zmGLbzG/wMDxUalxaRQyh8179KOOoWn
+	 boRSY4wqFR7BJ4MJCKZEapumzSdognByCvIkUEOy/0fNF0O5lrn+bcAWeZuRI+8WxU
+	 TT/KN8jXXsaivA9EgO/aZowWcTRA/dYigySEiE8xljAci+LSbiopoT6ZzpJX6wYjT/
+	 e9Ld05kYb4jgw==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 3215D81E5A;
-	Fri, 24 May 2024 20:22:27 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 2FC0981E5A;
+	Fri, 24 May 2024 20:22:32 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id CB2DF1CFA05
- for <intel-wired-lan@lists.osuosl.org>; Fri, 24 May 2024 13:53:07 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id ABE321CFA25
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 24 May 2024 13:53:09 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id B513B60B5A
- for <intel-wired-lan@lists.osuosl.org>; Fri, 24 May 2024 13:53:07 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 8F8DB60B50
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 24 May 2024 13:53:08 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Ey1xefabQdQq for <intel-wired-lan@lists.osuosl.org>;
- Fri, 24 May 2024 13:53:06 +0000 (UTC)
+ id O7ITjUl0PtIl for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 24 May 2024 13:53:07 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.18;
  helo=mgamail.intel.com; envelope-from=anil.samal@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 4F9DD60624
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 4F9DD60624
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org B79A160B2E
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B79A160B2E
 Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.18])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 4F9DD60624
- for <intel-wired-lan@lists.osuosl.org>; Fri, 24 May 2024 13:53:05 +0000 (UTC)
-X-CSE-ConnectionGUID: X3y1fNrYR46Sa6XA/hUDJQ==
-X-CSE-MsgGUID: NZGWt5kjQWKZSm5uTbhpuA==
-X-IronPort-AV: E=McAfee;i="6600,9927,11082"; a="13111907"
-X-IronPort-AV: E=Sophos;i="6.08,185,1712646000"; d="scan'208";a="13111907"
+ by smtp3.osuosl.org (Postfix) with ESMTPS id B79A160B2E
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 24 May 2024 13:53:06 +0000 (UTC)
+X-CSE-ConnectionGUID: uiia8lElSZ+E+Lk38YnIxg==
+X-CSE-MsgGUID: MclE1FRYRrSuXv3YfFZE3Q==
+X-IronPort-AV: E=McAfee;i="6600,9927,11082"; a="13111909"
+X-IronPort-AV: E=Sophos;i="6.08,185,1712646000"; d="scan'208";a="13111909"
 Received: from orviesa002.jf.intel.com ([10.64.159.142])
  by orvoesa110.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  24 May 2024 06:53:04 -0700
-X-CSE-ConnectionGUID: KbJy5UDOSACNI2VG/kaYcg==
-X-CSE-MsgGUID: /VbFvpGzSraqOwReQ/fYmg==
+X-CSE-ConnectionGUID: E4zExrglQ4ayYslHUXIumw==
+X-CSE-MsgGUID: r8xxVV6HS/ukpxrtwfceHQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.08,185,1712646000"; d="scan'208";a="64837185"
+X-IronPort-AV: E=Sophos;i="6.08,185,1712646000"; d="scan'208";a="64837188"
 Received: from c3-1-server.sj.intel.com ([10.232.18.246])
  by orviesa002-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  24 May 2024 06:53:04 -0700
 From: Anil Samal <anil.samal@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Fri, 24 May 2024 06:51:04 -0700
-Message-ID: <20240524135255.3607422-1-anil.samal@intel.com>
+Date: Fri, 24 May 2024 06:51:05 -0700
+Message-ID: <20240524135255.3607422-2-anil.samal@intel.com>
 X-Mailer: git-send-email 2.44.0
+In-Reply-To: <20240524135255.3607422-1-anil.samal@intel.com>
+References: <20240524135255.3607422-1-anil.samal@intel.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 8bit
 X-Mailman-Approved-At: Fri, 24 May 2024 20:22:24 +0000
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1716558786; x=1748094786;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=vp8mVpHVZr18u4xtphEKzFCH3Q2PP6Da3DQzHv5eyB8=;
- b=T8AsLl3IVzMTh+7Exqe5jKmBgpZ49H3p4fsPwGqvuJGRw2vT4MWisfFc
- tn3+Tu9KeTRATe260ZSWAtmFrdaWNlSNhc6tt1SyVAf35fij7S7T8HQUl
- eiS1JbzMoM5w2AwswJX2h5F4KsnZ0sNn1+234BFldDl4Ug5GiECMZ/Hq6
- 3MGH3siWJWoeajqkz9odKhIuxYfg/JByfV/twxegnRJ/UCWQhmUeAQpFK
- RBHwrY0CcGQWqYFISx++JnQZD9sdKR0bjvGKCGV5bE7A7200MI/Ffl9zM
- 84WqQHyn0K2uWuSO5xeDPmbjLqVhpjo22S1raN1JV98cZ1W+NR3rnHdDR
- w==;
+ t=1716558787; x=1748094787;
+ h=from:to:cc:subject:date:message-id:in-reply-to:
+ references:mime-version:content-transfer-encoding;
+ bh=H3Kqpfb2ZNzGVpk0PO3nr1UHX7HY7GMU+pe9rDrsnU4=;
+ b=YbXwRVE7G0jAjBtelxAr7y2P2pNa1EMfYJa7rAmZ9+now8WqM8GeknnL
+ BeUaP1cZb4jgNLdhLJh1plzQ/zm5MQ4VCsPPWsOHB9FDHw2S5nk9hCkyh
+ 74F14TPh8BZWOvbj5sM/zu1c2yuM7KSFRz7j5rYzjTOxWvjTwHzQVK0bq
+ 2Sze5Q4/FPkmTSiBZ5J5tuxznM6JFGbaj5iMewxFqC8DPhj2QeRXSg+yh
+ fR0dlXg1YIr9htMNmd2inhQAfnG/rUQRHtCVwFcFG7tIhi2bITmiXaES4
+ r2yL2fZrig6awk+R5pZr6o8oo1pDdnj1sn9D4ZUA+b21MIbEAYCc5/jjH
+ g==;
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=T8AsLl3I
-Subject: [Intel-wired-lan] [PATCH iwl-next v3 0/3] ice:Support to dump PHY
- config, FEC
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=YbXwRVE7
+Subject: [Intel-wired-lan] [PATCH iwl-next v3 1/3] ice: Extend Sideband
+ Queue command to support flags
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -107,103 +108,140 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Cc: netdev@vger.kernel.org, lukasz.czapnik@intel.com,
  Anil Samal <anil.samal@intel.com>, leszek.pepiak@intel.com,
- anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com,
- jacob.e.keller@intel.com
+ anthony.l.nguyen@intel.com, Simon Horman <horms@kernel.org>,
+ przemyslaw.kitszel@intel.com, jacob.e.keller@intel.com
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Implementation to dump PHY configuration and FEC statistics to
-facilitate link level debugging of customer issues.  Implementation has
-two parts 
-  
-a.     Serdes equalization
-        # ethtool  -d eth0 
-        Output: 
-        Offset          Values
-        ------          ------
-        0x0000:         00 00 00 00 03 00 00 00 05 00 00 00 01 08 00 40
-        0x0010:         01 00 00 40 00 00 39 3c 01 00 00 00 00 00 00 00
-        0x0020:         00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-        ……
-        …..
-        0x01f0:         01 00 00 00 ef be ad de 8f 00 00 00 00 00 00 00
-        0x0200:         00 00 00 00 ef be ad de 00 00 00 00 00 00 00 00
-        0x0210:         00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-        0x0220:         00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-        0x0230:         00 00 00 00 00 00 00 00 00 00 00 00 fa ff 00 00
-        0x0240:         06 00 00 00 03 00 00 00 00 00 00 00 00 00 00 00
-        0x0250:         0f b0 0f b0 00 00 00 00 00 00 00 00 00 00 00 00
-        0x0260:         00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-        0x0270:         00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-        0x0280:         00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-        0x0290:         00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-        0x02a0:         00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-        0x02b0:         00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-        0x02c0:         00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-        0x02d0:         00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
-        0x02e0:         00 00 00 00 00 00 00 00 00 00 00 00
-Current implementation appends 176 bytes i.e. 44 bytes * 4 serdes lane.
-For port with 2 serdes lane, first 88 bytes are valid values and
-remaining 88 bytes are filled with zero. Similarly for port with 1
-serdes lane, first 44 bytes are valid and remaining 132 bytes are marked
-zero. 
+    Current driver implementation for Sideband Queue supports a
+    fixed flag (ICE_AQ_FLAG_RD). To retrieve FEC statistics from
+    firmware, Sideband Queue command is used with a different flag.
 
-Each set of serdes equalizer parameter (i.e. set of 44 bytes) follows
-below order 
-    a. rx_equalization_pre2
-    b. rx_equalization_pre1
-    c. rx_equalization_post1
-    d. rx_equalization_bflf
-    e. rx_equalization_bfhf
-    f. rx_equalization_drate
-    g. tx_equalization_pre1
-    h. tx_equalization_pre3
-    i. tx_equalization_atten
-    j. tx_equalization_post1
-    k. tx_equalization_pre2
-Where each individual equalizer parameter is of 4 bytes. As ethtool
-prints values as individual bytes, for little endian machine these
-values will be in reverse byte order. 
+    Extend API for Sideband Queue command to use 'flags' as input
+    argument.
 
-b.	FEC block counts
-        # ethtool  -I --show-fec eth0
-        Output:
-         FEC parameters for eth0:
-        Supported/Configured FEC encodings: Auto RS BaseR
-        Active FEC encoding: RS
-        Statistics:
-        corrected_blocks: 0
-         uncorrectable_blocks: 0
+Reviewed-by: Simon Horman <horms@kernel.org>
+Reviewed-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
+Signed-off-by: Anil Samal <anil.samal@intel.com>
+---
+ drivers/net/ethernet/intel/ice/ice_common.c |  5 +++--
+ drivers/net/ethernet/intel/ice/ice_common.h |  2 +-
+ drivers/net/ethernet/intel/ice/ice_ptp_hw.c | 16 ++++++++--------
+ 3 files changed, 12 insertions(+), 11 deletions(-)
 
-This series do following:
-Patch 1 – Implementation to support user provided flag for side band
-queue command. 
-Patch 2 – Currently driver does not have a way to derive serdes lane
-number, pcs quad , pcs port from port number.So we introduced a
-mechanism to derive above info. 
-          Ethtool interface extension to include FEC statistics counter.
-Patch 3 – Ethtool interface extension to include serdes equalizer
-output.
-
-v1 -> v2, 
-   Squashed 4 commit to 3 commit. 
-   Removed extra null check of arguments.
-   Removed initialization of local variable that are not required.
-
-v2 -> v3
-   updated the argument for sideband queue function from "flag" to
-"flags"
-
- .../net/ethernet/intel/ice/ice_adminq_cmd.h   |  51 ++
- drivers/net/ethernet/intel/ice/ice_common.c   |  99 +++-
- drivers/net/ethernet/intel/ice/ice_common.h   |  28 +-
- drivers/net/ethernet/intel/ice/ice_ethtool.c  | 449 +++++++++++++++++-
- drivers/net/ethernet/intel/ice/ice_ethtool.h  |  29 ++
- .../net/ethernet/intel/ice/ice_hw_autogen.h   |   2 +
- drivers/net/ethernet/intel/ice/ice_ptp_hw.c   |  16 +-
- drivers/net/ethernet/intel/ice/ice_type.h     |   8 +
- 8 files changed, 669 insertions(+), 13 deletions(-)
-
+diff --git a/drivers/net/ethernet/intel/ice/ice_common.c b/drivers/net/ethernet/intel/ice/ice_common.c
+index 5649b257e631..b607b67efa99 100644
+--- a/drivers/net/ethernet/intel/ice/ice_common.c
++++ b/drivers/net/ethernet/intel/ice/ice_common.c
+@@ -1473,8 +1473,9 @@ ice_sbq_send_cmd(struct ice_hw *hw, struct ice_sbq_cmd_desc *desc,
+  * ice_sbq_rw_reg - Fill Sideband Queue command
+  * @hw: pointer to the HW struct
+  * @in: message info to be filled in descriptor
++ * @flags: control queue descriptor flags
+  */
+-int ice_sbq_rw_reg(struct ice_hw *hw, struct ice_sbq_msg_input *in)
++int ice_sbq_rw_reg(struct ice_hw *hw, struct ice_sbq_msg_input *in, u16 flags)
+ {
+ 	struct ice_sbq_cmd_desc desc = {0};
+ 	struct ice_sbq_msg_req msg = {0};
+@@ -1498,7 +1499,7 @@ int ice_sbq_rw_reg(struct ice_hw *hw, struct ice_sbq_msg_input *in)
+ 		 */
+ 		msg_len -= sizeof(msg.data);
+ 
+-	desc.flags = cpu_to_le16(ICE_AQ_FLAG_RD);
++	desc.flags = cpu_to_le16(flags);
+ 	desc.opcode = cpu_to_le16(ice_sbq_opc_neigh_dev_req);
+ 	desc.param0.cmd_len = cpu_to_le16(msg_len);
+ 	status = ice_sbq_send_cmd(hw, &desc, &msg, msg_len, NULL);
+diff --git a/drivers/net/ethernet/intel/ice/ice_common.h b/drivers/net/ethernet/intel/ice/ice_common.h
+index ffb22c7ce28b..42cda1bbbaab 100644
+--- a/drivers/net/ethernet/intel/ice/ice_common.h
++++ b/drivers/net/ethernet/intel/ice/ice_common.h
+@@ -201,7 +201,7 @@ int ice_replay_vsi(struct ice_hw *hw, u16 vsi_handle);
+ void ice_replay_post(struct ice_hw *hw);
+ struct ice_q_ctx *
+ ice_get_lan_q_ctx(struct ice_hw *hw, u16 vsi_handle, u8 tc, u16 q_handle);
+-int ice_sbq_rw_reg(struct ice_hw *hw, struct ice_sbq_msg_input *in);
++int ice_sbq_rw_reg(struct ice_hw *hw, struct ice_sbq_msg_input *in, u16 flag);
+ int
+ ice_aq_get_cgu_abilities(struct ice_hw *hw,
+ 			 struct ice_aqc_get_cgu_abilities *abilities);
+diff --git a/drivers/net/ethernet/intel/ice/ice_ptp_hw.c b/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
+index 2b9423a173bb..e97b73d1b0f4 100644
+--- a/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
++++ b/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
+@@ -433,7 +433,7 @@ ice_read_phy_reg_e82x(struct ice_hw *hw, u8 port, u16 offset, u32 *val)
+ 	ice_fill_phy_msg_e82x(&msg, port, offset);
+ 	msg.opcode = ice_sbq_msg_rd;
+ 
+-	err = ice_sbq_rw_reg(hw, &msg);
++	err = ice_sbq_rw_reg(hw, &msg, ICE_AQ_FLAG_RD);
+ 	if (err) {
+ 		ice_debug(hw, ICE_DBG_PTP, "Failed to send message to PHY, err %d\n",
+ 			  err);
+@@ -511,7 +511,7 @@ ice_write_phy_reg_e82x(struct ice_hw *hw, u8 port, u16 offset, u32 val)
+ 	msg.opcode = ice_sbq_msg_wr;
+ 	msg.data = val;
+ 
+-	err = ice_sbq_rw_reg(hw, &msg);
++	err = ice_sbq_rw_reg(hw, &msg, ICE_AQ_FLAG_RD);
+ 	if (err) {
+ 		ice_debug(hw, ICE_DBG_PTP, "Failed to send message to PHY, err %d\n",
+ 			  err);
+@@ -667,7 +667,7 @@ ice_read_quad_reg_e82x(struct ice_hw *hw, u8 quad, u16 offset, u32 *val)
+ 
+ 	msg.opcode = ice_sbq_msg_rd;
+ 
+-	err = ice_sbq_rw_reg(hw, &msg);
++	err = ice_sbq_rw_reg(hw, &msg, ICE_AQ_FLAG_RD);
+ 	if (err) {
+ 		ice_debug(hw, ICE_DBG_PTP, "Failed to send message to PHY, err %d\n",
+ 			  err);
+@@ -702,7 +702,7 @@ ice_write_quad_reg_e82x(struct ice_hw *hw, u8 quad, u16 offset, u32 val)
+ 	msg.opcode = ice_sbq_msg_wr;
+ 	msg.data = val;
+ 
+-	err = ice_sbq_rw_reg(hw, &msg);
++	err = ice_sbq_rw_reg(hw, &msg, ICE_AQ_FLAG_RD);
+ 	if (err) {
+ 		ice_debug(hw, ICE_DBG_PTP, "Failed to send message to PHY, err %d\n",
+ 			  err);
+@@ -840,7 +840,7 @@ ice_read_cgu_reg_e82x(struct ice_hw *hw, u32 addr, u32 *val)
+ 	cgu_msg.msg_addr_low = addr;
+ 	cgu_msg.msg_addr_high = 0x0;
+ 
+-	err = ice_sbq_rw_reg(hw, &cgu_msg);
++	err = ice_sbq_rw_reg(hw, &cgu_msg, ICE_AQ_FLAG_RD);
+ 	if (err) {
+ 		ice_debug(hw, ICE_DBG_PTP, "Failed to read CGU register 0x%04x, err %d\n",
+ 			  addr, err);
+@@ -873,7 +873,7 @@ ice_write_cgu_reg_e82x(struct ice_hw *hw, u32 addr, u32 val)
+ 	cgu_msg.msg_addr_high = 0x0;
+ 	cgu_msg.data = val;
+ 
+-	err = ice_sbq_rw_reg(hw, &cgu_msg);
++	err = ice_sbq_rw_reg(hw, &cgu_msg, ICE_AQ_FLAG_RD);
+ 	if (err) {
+ 		ice_debug(hw, ICE_DBG_PTP, "Failed to write CGU register 0x%04x, err %d\n",
+ 			  addr, err);
+@@ -2660,7 +2660,7 @@ static int ice_read_phy_reg_e810(struct ice_hw *hw, u32 addr, u32 *val)
+ 	msg.opcode = ice_sbq_msg_rd;
+ 	msg.dest_dev = rmn_0;
+ 
+-	err = ice_sbq_rw_reg(hw, &msg);
++	err = ice_sbq_rw_reg(hw, &msg, ICE_AQ_FLAG_RD);
+ 	if (err) {
+ 		ice_debug(hw, ICE_DBG_PTP, "Failed to send message to PHY, err %d\n",
+ 			  err);
+@@ -2691,7 +2691,7 @@ static int ice_write_phy_reg_e810(struct ice_hw *hw, u32 addr, u32 val)
+ 	msg.dest_dev = rmn_0;
+ 	msg.data = val;
+ 
+-	err = ice_sbq_rw_reg(hw, &msg);
++	err = ice_sbq_rw_reg(hw, &msg, ICE_AQ_FLAG_RD);
+ 	if (err) {
+ 		ice_debug(hw, ICE_DBG_PTP, "Failed to send message to PHY, err %d\n",
+ 			  err);
 -- 
 2.44.0
 
