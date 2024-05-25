@@ -1,102 +1,94 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 843D68CEC98
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 25 May 2024 01:07:15 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 86F418CF109
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 25 May 2024 20:43:59 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 1CA2D834F1;
-	Fri, 24 May 2024 23:07:14 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 26B4180F6C;
+	Sat, 25 May 2024 18:43:58 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id V5tiJvgEP2MU; Fri, 24 May 2024 23:07:13 +0000 (UTC)
+ id RMUMAfBlqeQb; Sat, 25 May 2024 18:43:57 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org BF3C0831E7
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org CA66A80F76
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1716592032;
-	bh=OC7S5cJJtfjQw09tTy21WyAcRD3ID8o8GNNrIaTnpsY=;
-	h=From:Date:To:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=YJDaSZb15+cvNstPflC1UqGnDTV50rG3xJ9+3FIq8zSEGzOE7nuIuvqI8ruUNbPA3
-	 qdOz/K81f52LI+Qeptd1ttgzVAEId3Gmm/wlvkBz1fcdiKaD8C92gWINI4wJ9dhOCA
-	 jPQpXeMnR4Gc+VqpXNJ1Q2Axzls5YnjtYgCaZ9FdE7snUqjvJAaWZgO+fMECdmo45H
-	 cz4hDrirKu3LPJua4mXilZ0AmESv0p4QVvVny91xGnCxe+bgaCjh1Q08CZHE7Wx5q7
-	 gTU0HWLJIpnUB0zfQmPj7Pj+aJgrdr0Mnhboiwb51g4hbRIYg96jgwlBwaqRAU6I8A
-	 HIGg9w6JCqlhg==
+	s=default; t=1716662636;
+	bh=pTFxlIpN/Pcby3XdDEZCc2Ze2Ii5acE2FJ+6spxnt1U=;
+	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=Wiabt8oG0zUFccuEnAZgzYYsT8NtzIEM+DlgH53J8y4TCe5++lMT0Jt1jD/wnQ9qW
+	 O5jyUHqQn/ZAYtlGfVGTyHguL7AaNaq2Z6+DByFy/34BvNljUQylE7pQjHtNavDLt9
+	 cYOwFOVmCyQV6Ng9dtxGti+vqAyG9e098jaMyCLR4Wq+7x7T2Apo35m5QpR7c95R/L
+	 vvXldAbIlD5aGjMFNQJTAu8DT/Hbj46MJFEBrFdAw/BmmxP65z+A/VQIu6hOgBlZeA
+	 pMDs2s+ubTmJYNCq2sRl101OsOLJ0Q4SgeUabBo9fBOJgLWCyODtiUNhTWR6HAa6La
+	 CYLI7GboxYa6w==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id BF3C0831E7;
-	Fri, 24 May 2024 23:07:12 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id CA66A80F76;
+	Sat, 25 May 2024 18:43:56 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 855231BF389
- for <intel-wired-lan@lists.osuosl.org>; Fri, 24 May 2024 23:07:10 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 44A431D080E
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 25 May 2024 18:43:54 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 704ED82BC4
- for <intel-wired-lan@lists.osuosl.org>; Fri, 24 May 2024 23:07:10 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 2DC934035C
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 25 May 2024 18:43:54 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id wpTiEw1B5-EU for <intel-wired-lan@lists.osuosl.org>;
- Fri, 24 May 2024 23:07:09 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.7;
- helo=mgamail.intel.com; envelope-from=jacob.e.keller@intel.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 4FC0582BC3
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4FC0582BC3
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.7])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 4FC0582BC3
- for <intel-wired-lan@lists.osuosl.org>; Fri, 24 May 2024 23:07:09 +0000 (UTC)
-X-CSE-ConnectionGUID: jhdxrEFeRUeLEIPHR4Z1nw==
-X-CSE-MsgGUID: 2/pTTJjTQcmf+hvp1wxwSA==
-X-IronPort-AV: E=McAfee;i="6600,9927,11082"; a="38370128"
-X-IronPort-AV: E=Sophos;i="6.08,186,1712646000"; d="scan'208";a="38370128"
-Received: from fmviesa010.fm.intel.com ([10.60.135.150])
- by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 24 May 2024 16:07:08 -0700
-X-CSE-ConnectionGUID: h6dLzzYeQRm34RqBXMTS3A==
-X-CSE-MsgGUID: t62DUQPuTtqZRr7xl80NEA==
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id T2czpDD3owQI for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 25 May 2024 18:43:52 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.12;
+ helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 9E4B540319
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9E4B540319
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.12])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 9E4B540319
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 25 May 2024 18:43:51 +0000 (UTC)
+X-CSE-ConnectionGUID: O7eqW8kMTT6x5SMjwdypng==
+X-CSE-MsgGUID: 9igtyBOQTkSmh2qen6hfZQ==
+X-IronPort-AV: E=McAfee;i="6600,9927,11083"; a="16853820"
+X-IronPort-AV: E=Sophos;i="6.08,188,1712646000"; d="scan'208";a="16853820"
+Received: from fmviesa008.fm.intel.com ([10.60.135.148])
+ by fmvoesa106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 25 May 2024 11:43:51 -0700
+X-CSE-ConnectionGUID: +9AxN+bbSGCaT99VSOD/OQ==
+X-CSE-MsgGUID: 56l5NleKTLeOARPyjCyLog==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.08,186,1712646000"; d="scan'208";a="34264748"
-Received: from jekeller-desk.amr.corp.intel.com ([10.166.241.1])
- by fmviesa010-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 24 May 2024 16:07:08 -0700
-From: Jacob Keller <jacob.e.keller@intel.com>
-Date: Fri, 24 May 2024 16:06:59 -0700
-MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20240524-iwl-net-2024-05-16-fix-nvm-tlv-issue-v4-1-4fc1da2a450d@intel.com>
-X-B4-Tracking: v=1; b=H4sIAJIdUWYC/53NQQ6CMBAF0KuQrh1DCy3gynsYF7QMMgkUQ7FqC
- He3EBfElbr8fybvT8zhQOjYIZrYgJ4c9TaEdBcx05T2gkBVyEzEIo0lV0D3FiyOsBQQSwhVTQ+
- wvoOx9UDO3RCKArUWRkojBQvUdcDwtM6c2Ftg53BoyI398FznPV/Pvy15DhzQaK3KTBaK45Hsi
- O3e9N064MUWzb5ERUDrCpHnKRrM1Sea/IMmC5oqIxNTa5XVW3Se5xczwSRmiwEAAA==
-To: Przemek Kitszel <przemyslaw.kitszel@intel.com>, 
- Intel Wired LAN <intel-wired-lan@lists.osuosl.org>, 
- Paul Menzel <pmenzel@molgen.mpg.de>
-X-Mailer: b4 0.13.0
+X-IronPort-AV: E=Sophos;i="6.08,188,1712646000"; d="scan'208";a="34322458"
+Received: from unknown (HELO 0610945e7d16) ([10.239.97.151])
+ by fmviesa008.fm.intel.com with ESMTP; 25 May 2024 11:43:50 -0700
+Received: from kbuild by 0610945e7d16 with local (Exim 4.96)
+ (envelope-from <lkp@intel.com>) id 1sAwMu-0007K8-17
+ for intel-wired-lan@lists.osuosl.org; Sat, 25 May 2024 18:43:48 +0000
+Date: Sun, 26 May 2024 02:43:22 +0800
+From: kernel test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <202405260220.wzLzCRoF-lkp@intel.com>
+User-Agent: s-nail v14.9.24
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1716592029; x=1748128029;
- h=from:date:subject:mime-version:content-transfer-encoding:
- message-id:to:cc;
- bh=MLtSGj3owon8tINdRzA68aCM1I/UlDY6G+8adeorNoc=;
- b=HZ9IUvPwxviUkvVLB6A0MMCoxe4J2dSpdUHSYn5AdJUAbEB3rXCwu86+
- RHd7WIyF1eIHrPf4A6dzxwQPgwgbubxd6SZaZ2N/lnywl0XoSwbq28vyj
- yE3SJnQih8WXPQwtlLP29/jryI/chMByv6bcBPxXhV4BZahF4K3ZIbTYe
- nxIpQyO/xcEdLcseR5c/i+fNAfm0C7CtAAVkStLOCQq1C8/Q2aJTBt6cf
- MVuVEPKgCOre19YcOlezPrPKe/bvSDbSYMKZdNJ0I4RhkcH2MrpDEZUAT
- 0ufT9Q0ZmzqjO7nl0b2tHef/d6f++NGaBojxSwCc5BTJHyllP22x/Q6eL
- Q==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ t=1716662633; x=1748198633;
+ h=date:from:to:subject:message-id;
+ bh=pMJx/QeCpbocqUgJvmRHJ73Kc3KI0kVPFsO6jZSULgk=;
+ b=XoWkctOGwHb68ChG0Tzsg0j+xbVJBVnfcTgFjRsT+L40ZKCpkkQPs++2
+ 29gFFTY3K7LgOJ9jXh5BjPBuxU+ije9NcnrqYYtGc4ktOXSyElblf4ARF
+ k/uUPSEVsdRlG/TGFpsbkuyZ4rrsQ1uG4iKxEOFeIku1syRZmd8wWKs7K
+ mSZiqqRYEsSqhApabFdDrODJHbcm4WxbnEWVSEo7R+WnMKP5qaWYsofOQ
+ ErJ/AWf3IU2t3i7kqEFeGUV5AHvvC8lMtaY9wHUFfOKN1s9c5d9OE+bIo
+ qbUJ486H2XCNF0+NLFcVtec+V9sNm5vy4sYen2wF8HoeU6bi/5mMHhbtO
+ w==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=HZ9IUvPw
-Subject: [Intel-wired-lan] [PATCH iwl-net v4] ice: fix iteration of TLVs in
- Preserved Fields Area
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=XoWkctOG
+Subject: [Intel-wired-lan] [tnguy-next-queue:dev-queue] BUILD SUCCESS
+ 2e688fe158b329c7d15f425f9f33972fc19a31db
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -109,140 +101,176 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Jacob Keller <jacob.e.keller@intel.com>,
- Paul Greenwalt <paul.greenwalt@intel.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The ice_get_pfa_module_tlv() function iterates over the Type-Length-Value
-structures in the Preserved Fields Area (PFA) of the NVM. This is used by
-the driver to access data such as the Part Board Assembly identifier.
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git dev-queue
+branch HEAD: 2e688fe158b329c7d15f425f9f33972fc19a31db  ice: check for unregistering correct number of devlink params
 
-The function uses simple logic to iterate over the PFA. First, the pointer
-to the PFA in the NVM is read. Then the total length of the PFA is read
-from the first word.
+elapsed time: 1228m
 
-A pointer to the first TLV is initialized, and a simple loop iterates over
-each TLV. The pointer is moved forward through the NVM until it exceeds the
-PFA area.
+configs tested: 154
+configs skipped: 3
 
-The logic seems sound, but it is missing a key detail. The Preserved
-Fields Area length includes one additional final word. This is documented
-in the device data sheet as a dummy word which contains 0xFFFF. All NVMs
-have this extra word.
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
-If the driver tries to scan for a TLV that is not in the PFA, it will read
-past the size of the PFA. It reads and interprets the last dummy word of
-the PFA as a TLV with type 0xFFFF. It then reads the word following the PFA
-as a length.
+tested configs:
+alpha                             allnoconfig   gcc  
+alpha                            allyesconfig   gcc  
+alpha                               defconfig   gcc  
+arc                              allmodconfig   gcc  
+arc                               allnoconfig   gcc  
+arc                              allyesconfig   gcc  
+arc                                 defconfig   gcc  
+arc                   randconfig-001-20240525   gcc  
+arc                   randconfig-002-20240525   gcc  
+arm                              allmodconfig   gcc  
+arm                               allnoconfig   clang
+arm                              allyesconfig   gcc  
+arm                                 defconfig   clang
+arm                   randconfig-001-20240525   gcc  
+arm                   randconfig-002-20240525   gcc  
+arm                   randconfig-003-20240525   clang
+arm                   randconfig-004-20240525   clang
+arm64                            allmodconfig   clang
+arm64                             allnoconfig   gcc  
+arm64                               defconfig   gcc  
+arm64                 randconfig-001-20240525   gcc  
+arm64                 randconfig-002-20240525   clang
+arm64                 randconfig-003-20240525   gcc  
+arm64                 randconfig-004-20240525   gcc  
+csky                             allmodconfig   gcc  
+csky                              allnoconfig   gcc  
+csky                             allyesconfig   gcc  
+csky                                defconfig   gcc  
+csky                  randconfig-001-20240525   gcc  
+csky                  randconfig-002-20240525   gcc  
+hexagon                          allmodconfig   clang
+hexagon                           allnoconfig   clang
+hexagon                          allyesconfig   clang
+hexagon                             defconfig   clang
+hexagon               randconfig-001-20240525   clang
+hexagon               randconfig-002-20240525   clang
+i386                             allmodconfig   gcc  
+i386                              allnoconfig   gcc  
+i386                             allyesconfig   gcc  
+i386         buildonly-randconfig-001-20240525   gcc  
+i386         buildonly-randconfig-001-20240526   clang
+i386         buildonly-randconfig-002-20240525   gcc  
+i386         buildonly-randconfig-002-20240526   gcc  
+i386         buildonly-randconfig-003-20240525   gcc  
+i386         buildonly-randconfig-003-20240526   gcc  
+i386         buildonly-randconfig-004-20240525   clang
+i386         buildonly-randconfig-004-20240526   clang
+i386         buildonly-randconfig-005-20240525   gcc  
+i386         buildonly-randconfig-005-20240526   clang
+i386         buildonly-randconfig-006-20240525   gcc  
+i386                                defconfig   clang
+i386                  randconfig-001-20240525   clang
+i386                  randconfig-002-20240525   gcc  
+i386                  randconfig-003-20240525   clang
+i386                  randconfig-004-20240525   clang
+i386                  randconfig-005-20240525   gcc  
+i386                  randconfig-006-20240525   gcc  
+i386                  randconfig-011-20240525   clang
+i386                  randconfig-012-20240525   clang
+i386                  randconfig-013-20240525   clang
+i386                  randconfig-014-20240525   gcc  
+i386                  randconfig-015-20240525   clang
+i386                  randconfig-016-20240525   gcc  
+loongarch                        allmodconfig   gcc  
+loongarch                         allnoconfig   gcc  
+loongarch                           defconfig   gcc  
+loongarch             randconfig-001-20240525   gcc  
+loongarch             randconfig-002-20240525   gcc  
+m68k                             allmodconfig   gcc  
+m68k                              allnoconfig   gcc  
+m68k                             allyesconfig   gcc  
+m68k                                defconfig   gcc  
+microblaze                       allmodconfig   gcc  
+microblaze                        allnoconfig   gcc  
+microblaze                       allyesconfig   gcc  
+microblaze                          defconfig   gcc  
+mips                              allnoconfig   gcc  
+mips                             allyesconfig   gcc  
+nios2                            allmodconfig   gcc  
+nios2                             allnoconfig   gcc  
+nios2                            allyesconfig   gcc  
+nios2                               defconfig   gcc  
+nios2                 randconfig-001-20240525   gcc  
+nios2                 randconfig-002-20240525   gcc  
+openrisc                          allnoconfig   gcc  
+openrisc                         allyesconfig   gcc  
+openrisc                            defconfig   gcc  
+parisc                           allmodconfig   gcc  
+parisc                            allnoconfig   gcc  
+parisc                           allyesconfig   gcc  
+parisc                              defconfig   gcc  
+parisc                randconfig-001-20240525   gcc  
+parisc                randconfig-002-20240525   gcc  
+parisc64                            defconfig   gcc  
+powerpc                          allmodconfig   gcc  
+powerpc                           allnoconfig   gcc  
+powerpc                          allyesconfig   clang
+powerpc               randconfig-001-20240525   gcc  
+powerpc               randconfig-002-20240525   gcc  
+powerpc               randconfig-003-20240525   gcc  
+powerpc64             randconfig-002-20240525   gcc  
+powerpc64             randconfig-003-20240525   gcc  
+riscv                            allmodconfig   clang
+riscv                             allnoconfig   gcc  
+riscv                            allyesconfig   clang
+riscv                               defconfig   clang
+riscv                 randconfig-001-20240525   gcc  
+s390                             allmodconfig   clang
+s390                              allnoconfig   clang
+s390                             allyesconfig   gcc  
+s390                                defconfig   clang
+sh                               allmodconfig   gcc  
+sh                                allnoconfig   gcc  
+sh                               allyesconfig   gcc  
+sh                                  defconfig   gcc  
+sh                    randconfig-001-20240525   gcc  
+sh                    randconfig-002-20240525   gcc  
+sparc                            allmodconfig   gcc  
+sparc                             allnoconfig   gcc  
+sparc                               defconfig   gcc  
+sparc64                          allmodconfig   gcc  
+sparc64                          allyesconfig   gcc  
+sparc64                             defconfig   gcc  
+sparc64               randconfig-001-20240525   gcc  
+sparc64               randconfig-002-20240525   gcc  
+um                               allmodconfig   clang
+um                                allnoconfig   clang
+um                               allyesconfig   gcc  
+um                                  defconfig   clang
+um                             i386_defconfig   gcc  
+um                    randconfig-001-20240525   gcc  
+um                    randconfig-002-20240525   gcc  
+um                           x86_64_defconfig   clang
+x86_64                            allnoconfig   clang
+x86_64                           allyesconfig   clang
+x86_64       buildonly-randconfig-001-20240525   clang
+x86_64                              defconfig   gcc  
+x86_64                randconfig-001-20240525   clang
+x86_64                randconfig-002-20240525   clang
+x86_64                randconfig-003-20240525   clang
+x86_64                randconfig-004-20240525   clang
+x86_64                randconfig-005-20240525   clang
+x86_64                randconfig-006-20240525   clang
+x86_64                randconfig-011-20240525   clang
+x86_64                randconfig-012-20240525   clang
+x86_64                randconfig-014-20240525   clang
+x86_64                randconfig-016-20240525   clang
+x86_64                randconfig-072-20240525   clang
+x86_64                randconfig-073-20240525   clang
+x86_64                randconfig-076-20240525   clang
+x86_64                          rhel-8.3-rust   clang
+xtensa                            allnoconfig   gcc  
+xtensa                randconfig-001-20240525   gcc  
+xtensa                randconfig-002-20240525   gcc  
 
-The PFA resides within the Shadow RAM portion of the NVM, which is
-relatively small. All of its offsets are within a 16-bit size. The PFA
-pointer and TLV pointer are stored by the driver as 16-bit values.
-
-In almost all cases, the word following the PFA will be such that
-interpreting it as a length will result in 16-bit arithmetic overflow. Once
-overflowed, the new next_tlv value is now below the maximum offset of the
-PFA. Thus, the driver will continue to iterate the data as TLVs. In the
-worst case, the driver hits on a sequence of reads which loop back to
-reading the same offsets in an endless loop.
-
-To fix this, we need to correct the loop iteration check to account for
-this extra word at the end of the PFA. This alone is sufficient to resolve
-the known cases of this issue in the field. However, it is plausible that
-an NVM could be misconfigured or have corrupt data which results in the
-same kind of overflow. Protect against this by using check_add_overflow
-when calculating both the maximum offset of the TLVs, and when calculating
-the next_tlv offset at the end of each loop iteration. This ensures that
-the driver will not get stuck in an infinite loop when scanning the PFA.
-
-Fixes: e961b679fb0b ("ice: add board identifier info to devlink .info_get")
-Co-developed-by: Paul Greenwalt <paul.greenwalt@intel.com>
-Signed-off-by: Paul Greenwalt <paul.greenwalt@intel.com>
-Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
----
-Changes in v4:
-- Update title and description for true root cause
-- Correct driver logic to account for PFA length being 1 larger than TLVs
-- Link to v3: https://lore.kernel.org/r/20240517-iwl-net-2024-05-16-fix-nvm-tlv-issue-v3-1-f46c53cfb67f@intel.com
-
-Changes in v3:
-- Fix missing {
-- Fix missing pfa_ptr variable to dev_warn()
-- Add Fixes tag
-- Link to v2: https://lore.kernel.org/r/20240517-iwl-net-2024-05-16-fix-nvm-tlv-issue-v2-1-fdee184ece86@intel.com
-
-Changes in v2:
-- Use check_add_overflow instead of increasing the variables to u32
-- Upgrade log messages to dev_warn()
-- Link to v1: https://lore.kernel.org/r/20240516-iwl-net-2024-05-16-fix-nvm-tlv-issue-v1-1-ecbb6a75961e@intel.com
----
- drivers/net/ethernet/intel/ice/ice_nvm.c | 28 +++++++++++++++++++++-------
- 1 file changed, 21 insertions(+), 7 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/ice/ice_nvm.c b/drivers/net/ethernet/intel/ice/ice_nvm.c
-index 84eab92dc03c..ea7cbdf8492d 100644
---- a/drivers/net/ethernet/intel/ice/ice_nvm.c
-+++ b/drivers/net/ethernet/intel/ice/ice_nvm.c
-@@ -440,8 +440,7 @@ int
- ice_get_pfa_module_tlv(struct ice_hw *hw, u16 *module_tlv, u16 *module_tlv_len,
- 		       u16 module_type)
- {
--	u16 pfa_len, pfa_ptr;
--	u16 next_tlv;
-+	u16 pfa_len, pfa_ptr, next_tlv, max_tlv;
- 	int status;
- 
- 	status = ice_read_sr_word(hw, ICE_SR_PFA_PTR, &pfa_ptr);
-@@ -454,11 +453,23 @@ ice_get_pfa_module_tlv(struct ice_hw *hw, u16 *module_tlv, u16 *module_tlv_len,
- 		ice_debug(hw, ICE_DBG_INIT, "Failed to read PFA length.\n");
- 		return status;
- 	}
-+
-+	/* The Preserved Fields Area contains a sequence of Type-Length-Value
-+	 * structures which define its contents. The PFA length includes all
-+	 * of the TLVs, plus the initial length word itself, *and* one final
-+	 * word at the end after all of the TLVs.
-+	 */
-+	if (check_add_overflow(pfa_ptr, pfa_len - 1, &max_tlv)) {
-+		dev_warn(ice_hw_to_dev(hw), "PFA starts at offset %u. PFA length of %u caused 16-bit arithmetic overflow.\n",
-+			 pfa_ptr, pfa_len);
-+		return -EINVAL;
-+	}
-+
- 	/* Starting with first TLV after PFA length, iterate through the list
- 	 * of TLVs to find the requested one.
- 	 */
- 	next_tlv = pfa_ptr + 1;
--	while (next_tlv < pfa_ptr + pfa_len) {
-+	while (next_tlv < max_tlv) {
- 		u16 tlv_sub_module_type;
- 		u16 tlv_len;
- 
-@@ -482,10 +493,13 @@ ice_get_pfa_module_tlv(struct ice_hw *hw, u16 *module_tlv, u16 *module_tlv_len,
- 			}
- 			return -EINVAL;
- 		}
--		/* Check next TLV, i.e. current TLV pointer + length + 2 words
--		 * (for current TLV's type and length)
--		 */
--		next_tlv = next_tlv + tlv_len + 2;
-+
-+		if (check_add_overflow(next_tlv, 2, &next_tlv) ||
-+		    check_add_overflow(next_tlv, tlv_len, &next_tlv)) {
-+			dev_warn(ice_hw_to_dev(hw), "TLV of type %u and length 0x%04x caused 16-bit arithmetic overflow. The PFA starts at 0x%04x and has length of 0x%04x\n",
-+				 tlv_sub_module_type, tlv_len, pfa_ptr, pfa_len);
-+			return -EINVAL;
-+		}
- 	}
- 	/* Module does not exist */
- 	return -ENOENT;
-
----
-base-commit: 83e93942796db58652288f0391ac00072401816f
-change-id: 20240516-iwl-net-2024-05-16-fix-nvm-tlv-issue-99ebb2c55c52
-
-Best regards,
 -- 
-Jacob Keller <jacob.e.keller@intel.com>
-
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
