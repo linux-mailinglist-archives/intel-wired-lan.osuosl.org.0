@@ -2,75 +2,95 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 998C28D04C4
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 27 May 2024 16:53:46 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 749288D04B2
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 27 May 2024 16:53:11 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 50CF8608BF;
-	Mon, 27 May 2024 14:53:45 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id C254B608BF;
+	Mon, 27 May 2024 14:53:09 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id wTwvOYmTlKut; Mon, 27 May 2024 14:53:44 +0000 (UTC)
+ id q5L89IzpqEQd; Mon, 27 May 2024 14:53:09 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 8A0C6608C2
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 025BC60890
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1716821624;
-	bh=aRBXGHVxa5RsJqJQrWtgH28ywjA+m+p779kK2/pSvFk=;
-	h=From:Date:To:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=1HhH6+nGuf3OU00EFOTgpG7AOJB6sxOvT9xFqN8K3Q7B+tzMlF12rDX6za1XiP3sB
-	 5191+zVc45ZhthsJZSeNwmRL63RSnubEZNdrBIWEGum8lPAkx1c0L+9fEjv59xW803
-	 tH5r3ka9j5yQKlxOn/I8xST11+GWUXvJtppG75CTdj8eCM64khDBI2FrBdDYs2mFEa
-	 3B11AUZJsEIgWzKMJ1Z8DwkAlLYfbG+6bKI9P4TUIIOEFtPe4aU2z2maQKQiGKT5IW
-	 tvnq6cDAZ1WH+tg/V47Kp4QERjL7cbOfzySsfnYlv6PX6ZUbY4c1Cswe4m0GwbHiqV
-	 0D0VzPKKoOTVw==
+	s=default; t=1716821589;
+	bh=FBxXRJ/p3i5fGd1UYCfxq+fqyf2caVA5BXDeDuKQ81A=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=ZonZqebnBVa+qEHyW+Ak8ot9RV8d/hQ3QM1WqQoDOxLP3E2AVzmOMZ47lrlY/tboV
+	 YyTgiHhAQ7pGHwomJz5XepEltaPHRmhWD0sBoqxVQbhaGHhZlbTTMW85SymyXgw3PN
+	 FUeUiZgH2ZVykr4nWyYCSNMNdbB4pA/lCj6Shzsn1+1ErCEZauo6QyHOiyxTWA5qrj
+	 6GV44KJxN/ZZQ4xg7M0JMXNn08p1DCzw1msIjUamyumtarDjuF/NtT+rk/nFhA0Ss4
+	 CXcRVjP1tAPd5htkv2VOq5YjExpD5oXpH2nYsd4cpLmk2ZmGqSoVoKwENOjNl0FVQa
+	 bLfPat7KLqtSg==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 8A0C6608C2;
-	Mon, 27 May 2024 14:53:44 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 025BC60890;
+	Mon, 27 May 2024 14:53:09 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 950301D1E16
- for <intel-wired-lan@lists.osuosl.org>; Mon, 27 May 2024 14:53:42 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id E847D1D1DE8
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 27 May 2024 14:53:06 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id A29BE40253
- for <intel-wired-lan@lists.osuosl.org>; Mon, 27 May 2024 14:53:41 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id D2A4E40253
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 27 May 2024 14:53:06 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 2_GUUugA1cxb for <intel-wired-lan@lists.osuosl.org>;
- Mon, 27 May 2024 14:53:41 +0000 (UTC)
-Received-SPF: Softfail (mailfrom) identity=mailfrom; client-ip=62.142.5.81;
- helo=fgw20-7.mail.saunalahti.fi; envelope-from=andy.shevchenko@gmail.com;
+ id hLZKEUeQPD0M for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 27 May 2024 14:53:06 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.16;
+ helo=mgamail.intel.com; envelope-from=piotr.kwapulinski@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org C63754016B
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C63754016B
-Received: from fgw20-7.mail.saunalahti.fi (fgw20-7.mail.saunalahti.fi
- [62.142.5.81])
- by smtp2.osuosl.org (Postfix) with ESMTPS id C63754016B
- for <intel-wired-lan@lists.osuosl.org>; Mon, 27 May 2024 14:53:40 +0000 (UTC)
-Received: from localhost (88-113-26-230.elisa-laajakaista.fi [88.113.26.230])
- by fgw23.mail.saunalahti.fi (Halon) with ESMTP
- id a799409f-1c36-11ef-80bb-005056bdfda7;
- Mon, 27 May 2024 17:37:33 +0300 (EEST)
-From: Andy Shevchenko <andy.shevchenko@gmail.com>
-Date: Mon, 27 May 2024 17:37:33 +0300
-To: "D, Lakshmi Sowjanya" <lakshmi.sowjanya.d@intel.com>
-Message-ID: <ZlSarRwF1vEbfzlP@surfacebook.localdomain>
-References: <20240513103813.5666-1-lakshmi.sowjanya.d@intel.com>
- <20240513103813.5666-13-lakshmi.sowjanya.d@intel.com>
- <ZkH37Sc9LU4zmcGB@smile.fi.intel.com>
- <CY8PR11MB7364A367739AA57107DBBE6AC4F02@CY8PR11MB7364.namprd11.prod.outlook.com>
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org DA6074016B
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org DA6074016B
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.16])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id DA6074016B
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 27 May 2024 14:53:05 +0000 (UTC)
+X-CSE-ConnectionGUID: wOE4PO+TQ5+pIdGc9wGzYQ==
+X-CSE-MsgGUID: esUGZ/O+RuGSvBOwsaZTjg==
+X-IronPort-AV: E=McAfee;i="6600,9927,11085"; a="11715232"
+X-IronPort-AV: E=Sophos;i="6.08,192,1712646000"; d="scan'208";a="11715232"
+Received: from fmviesa005.fm.intel.com ([10.60.135.145])
+ by fmvoesa110.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 27 May 2024 07:53:05 -0700
+X-CSE-ConnectionGUID: iC+5xNFOSSGtNsou6gjCZg==
+X-CSE-MsgGUID: WLCE/uvSQC6GywQIY0nnag==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.08,192,1712646000"; d="scan'208";a="39191929"
+Received: from amlin-018-251.igk.intel.com (HELO localhost.localdomain)
+ ([10.102.18.251])
+ by fmviesa005.fm.intel.com with ESMTP; 27 May 2024 07:53:03 -0700
+From: Piotr Kwapulinski <piotr.kwapulinski@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Mon, 27 May 2024 17:10:16 +0200
+Message-Id: <20240527151023.3634-1-piotr.kwapulinski@intel.com>
+X-Mailer: git-send-email 2.31.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CY8PR11MB7364A367739AA57107DBBE6AC4F02@CY8PR11MB7364.namprd11.prod.outlook.com>
+Content-Transfer-Encoding: 8bit
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1716821586; x=1748357586;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=itFvPj4YbblaBIt+EU+FXMiwTMvaGWZMYtqVhyY36pE=;
+ b=dEPrpvxt7Cw29PMcVhhZ3BqiCR34lnTW6lpErAtxioVhJuRhLUVRNBR0
+ 46e9KYMRV2aXJWMXJr2sx4CbnSGuTgeZkX2/suPnQE6lv4wOrJiZa41Fb
+ dN0OrNI6xsJ9LgP0/NLcL5jHaFk3gJQNv5Hs1iNV5QW0vRUFwvfDY9zn3
+ rqn2zSd3O/dMXauH8pQhI3sfk8cTjbK32IUO9nk4ylmrpnPdt5KqRtZa0
+ pz2xS1eC97Ht/f1BgwApsvlFf1zC85Aqqw4cAVTQ06LEbYt4kG/0jio0l
+ y6PuDIP8jX12gYChdR5eaCrZGP47K7EHDHQVVAvR0Zk5x2MgxQODO99vQ
+ g==;
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=fail (p=none dis=none)
- header.from=gmail.com
-Subject: Re: [Intel-wired-lan] [PATCH v8 12/12] ABI: pps: Add ABI
- documentation for Intel TIO
+ dmarc=pass (p=none dis=none)
+ header.from=intel.com
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=dEPrpvxt
+Subject: [Intel-wired-lan] [PATCH iwl-next v7 0/7] ixgbe: Add support for
+ Intel(R) E610 device
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,64 +103,81 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "linux-doc@vger.kernel.org" <linux-doc@vger.kernel.org>,
- "alexandre.torgue@foss.st.com" <alexandre.torgue@foss.st.com>,
- "perex@perex.cz" <perex@perex.cz>, "Nguyen,
- Anthony L" <anthony.l.nguyen@intel.com>, "T R,
- Thejesh Reddy" <thejesh.reddy.t.r@intel.com>, "Hall,
- Christopher S" <christopher.s.hall@intel.com>,
- "corbet@lwn.net" <corbet@lwn.net>, "x86@kernel.org" <x86@kernel.org>,
- "joabreu@synopsys.com" <joabreu@synopsys.com>,
- "peter.hilber@opensynergy.com" <peter.hilber@opensynergy.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>, "Mohan,
- Subramanian" <subramanian.mohan@intel.com>,
- "linux-sound@vger.kernel.org" <linux-sound@vger.kernel.org>,
- "tglx@linutronix.de" <tglx@linutronix.de>,
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- "giometti@enneenne.com" <giometti@enneenne.com>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>, "N,
- Pandith" <pandith.n@intel.com>, "Dong, Eddie" <eddie.dong@intel.com>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "mcoquelin.stm32@gmail.com" <mcoquelin.stm32@gmail.com>,
- "jstultz@google.com" <jstultz@google.com>,
- "davem@davemloft.net" <davem@davemloft.net>
+Cc: jacob.e.keller@intel.com, netdev@vger.kernel.org,
+ Piotr Kwapulinski <piotr.kwapulinski@intel.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Mon, May 27, 2024 at 11:53:07AM +0000, D, Lakshmi Sowjanya kirjoitti:
-> > -----Original Message-----
-> > From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-> > Sent: Monday, May 13, 2024 4:52 PM
-> > On Mon, May 13, 2024 at 04:08:13PM +0530, lakshmi.sowjanya.d@intel.com
-> > wrote:
+Add initial support for Intel(R) E610 Series of network devices. The E610
+is based on X550 but adds firmware managed link, enhanced security
+capabilities and support for updated server manageability.
 
-...
+This patch series adds low level support for the following features and
+enables link management.
 
-> > > +Date:		June 2024
-> > 
-> > Is this checked by phb?
-> > 
-> > "the v6.11 kernel predictions: merge window closes on Sunday, 2024-08-04
-> > and  release on Sunday, 2024-09-29"
-> 
-> I have taken from phb but my understanding is that any probable month before
-> merge window should be added.
+Piotr Kwapulinski (7):
+  ixgbe: Add support for E610 FW Admin Command Interface
+  ixgbe: Add support for E610 device capabilities detection
+  ixgbe: Add link management support for E610 device
+  ixgbe: Add support for NVM handling in E610 device
+  ixgbe: Add ixgbe_x540 multiple header inclusion protection
+  ixgbe: Clean up the E610 link management related code
+  ixgbe: Enable link management in E610 device
 
-I didn't get this. You meant the merge window for the next cycle after your
-changes are expected to land?
-
-> I want to know if it should be the month when the merge window closes? (i.e
-> in this case August)?
-
-My common sense tells me that there will be no real users (except developers)
-for any kernel that's marked as vX.Y-rcZ. Assuming that we announce the ABI in
-the release, we should use date of the estimated relase. In this case I would
-use September 2024.
-
-> > > +KernelVersion:	6.11
+ drivers/net/ethernet/intel/ixgbe/Makefile     |    4 +-
+ drivers/net/ethernet/intel/ixgbe/ixgbe.h      |   14 +-
+ .../net/ethernet/intel/ixgbe/ixgbe_82599.c    |    3 +-
+ .../net/ethernet/intel/ixgbe/ixgbe_common.c   |   19 +-
+ .../net/ethernet/intel/ixgbe/ixgbe_dcb_nl.c   |    3 +-
+ drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c | 2545 +++++++++++++++++
+ drivers/net/ethernet/intel/ixgbe/ixgbe_e610.h |   75 +
+ .../net/ethernet/intel/ixgbe/ixgbe_ethtool.c  |    6 +-
+ drivers/net/ethernet/intel/ixgbe/ixgbe_lib.c  |    3 +-
+ drivers/net/ethernet/intel/ixgbe/ixgbe_main.c |  430 ++-
+ drivers/net/ethernet/intel/ixgbe/ixgbe_mbx.c  |    4 +-
+ drivers/net/ethernet/intel/ixgbe/ixgbe_phy.c  |    5 +-
+ drivers/net/ethernet/intel/ixgbe/ixgbe_type.h |   71 +-
+ .../ethernet/intel/ixgbe/ixgbe_type_e610.h    | 1062 +++++++
+ drivers/net/ethernet/intel/ixgbe/ixgbe_x540.c |   12 +-
+ drivers/net/ethernet/intel/ixgbe/ixgbe_x540.h |    7 +-
+ drivers/net/ethernet/intel/ixgbe/ixgbe_x550.c |   29 +-
+ drivers/net/ethernet/intel/ixgbe/ixgbe_x550.h |   20 +
+ 18 files changed, 4265 insertions(+), 47 deletions(-)
+ create mode 100644 drivers/net/ethernet/intel/ixgbe/ixgbe_e610.c
+ create mode 100644 drivers/net/ethernet/intel/ixgbe/ixgbe_e610.h
+ create mode 100644 drivers/net/ethernet/intel/ixgbe/ixgbe_type_e610.h
+ create mode 100644 drivers/net/ethernet/intel/ixgbe/ixgbe_x550.h
 
 -- 
-With Best Regards,
-Andy Shevchenko
+V1 -> V2:
+  - fix for no previous prototypes for ixgbe_set_fw_drv_ver_x550,
+    ixgbe_set_ethertype_anti_spoofing_x550 and
+    ixgbe_set_source_address_pruning_x550
+  - fix variable type mismatch: u16, u32, u64
+  - fix inaccurate doc for ixgbe_aci_desc
+  - remove extra buffer allocation in ixgbe_aci_send_cmd_execute
+  - replace custom loops with generic fls64 in ixgbe_get_media_type_e610
+  - add buffer caching and optimization in ixgbe_aci_send_cmd
+V2 -> V3:
+  - revert ixgbe_set_eee_capable inlining
+  - update copyright date
+V3 -> V4:
+  - cleanup local variables in ixgbe_get_num_per_func
+  - remove redundant casting in ixgbe_aci_disable_rxen
+V4 -> V5:
+  - remove unnecessary structure members initialization
+  - remove unnecessary casting
+  - fix comments
+V5 -> V6:
+  - create dedicated patch for ixgbe_x540 multiple header inclusion protection
+  - extend debug messages
+  - add descriptive constant for Receive Address Registers
+  - remove unrelated changes
+  - create dedicated patch for code cleanup
+  - remove and cleanup of some conditions
+  - spelling fixes
+V6 -> V7:
+  - rebase to adopt recent Makefile "ixgbe-y" changes
 
+2.31.1
 
