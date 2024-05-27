@@ -1,78 +1,76 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id A72078D049B
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 27 May 2024 16:50:35 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 998C28D04C4
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 27 May 2024 16:53:46 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 1DA0F60758;
-	Mon, 27 May 2024 14:50:34 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 50CF8608BF;
+	Mon, 27 May 2024 14:53:45 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id GrpnSPb7gN55; Mon, 27 May 2024 14:50:33 +0000 (UTC)
+ id wTwvOYmTlKut; Mon, 27 May 2024 14:53:44 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2487C608C8
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 8A0C6608C2
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1716821433;
-	bh=o9llCE6bf/u5u06Di98FE4WzENMsez3qov17GhDcfaI=;
+	s=default; t=1716821624;
+	bh=aRBXGHVxa5RsJqJQrWtgH28ywjA+m+p779kK2/pSvFk=;
 	h=From:Date:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=Or6kFP1dXsue/JfQ8xk6/L7lR2Y+zOHE3n8sHROV76su/OLZreZcUO47/zGiImBPP
-	 rh85Ny2IqKjVmJM70ApFrYXussn3M8FSUhnj1JfA0IqONpQp5+TQnmN153pE4fIDD6
-	 C5TNjhguAB4OdV9FsM6WhMJla+9dZRrmgRnegNmy8EOj21NSd/xMTztL69fjsrfZRK
-	 GbRvC7P+qKRLZNC1xC8PTclipPk9lC9pEG+UXPJCOXM5pE2wMu00bwO4ecNFzwjRiH
-	 s8j/0zOD59qpjFcuj6CoAmwsI+mDLNXVcROmF0INzHp6i/rIYDEI+hvlv29F1/G8bW
-	 Yz8XEs1KzYwlw==
+	b=1HhH6+nGuf3OU00EFOTgpG7AOJB6sxOvT9xFqN8K3Q7B+tzMlF12rDX6za1XiP3sB
+	 5191+zVc45ZhthsJZSeNwmRL63RSnubEZNdrBIWEGum8lPAkx1c0L+9fEjv59xW803
+	 tH5r3ka9j5yQKlxOn/I8xST11+GWUXvJtppG75CTdj8eCM64khDBI2FrBdDYs2mFEa
+	 3B11AUZJsEIgWzKMJ1Z8DwkAlLYfbG+6bKI9P4TUIIOEFtPe4aU2z2maQKQiGKT5IW
+	 tvnq6cDAZ1WH+tg/V47Kp4QERjL7cbOfzySsfnYlv6PX6ZUbY4c1Cswe4m0GwbHiqV
+	 0D0VzPKKoOTVw==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 2487C608C8;
-	Mon, 27 May 2024 14:50:33 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 8A0C6608C2;
+	Mon, 27 May 2024 14:53:44 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 34DCA1D1DE8
- for <intel-wired-lan@lists.osuosl.org>; Mon, 27 May 2024 14:50:31 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 950301D1E16
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 27 May 2024 14:53:42 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 2035760890
- for <intel-wired-lan@lists.osuosl.org>; Mon, 27 May 2024 14:50:31 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id A29BE40253
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 27 May 2024 14:53:41 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id v58X2HuUXRgU for <intel-wired-lan@lists.osuosl.org>;
- Mon, 27 May 2024 14:50:30 +0000 (UTC)
-X-Greylist: delayed 965 seconds by postgrey-1.37 at util1.osuosl.org;
- Mon, 27 May 2024 14:50:30 UTC
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 4B6F260726
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 4B6F260726
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 2_GUUugA1cxb for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 27 May 2024 14:53:41 +0000 (UTC)
 Received-SPF: Softfail (mailfrom) identity=mailfrom; client-ip=62.142.5.81;
  helo=fgw20-7.mail.saunalahti.fi; envelope-from=andy.shevchenko@gmail.com;
  receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org C63754016B
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C63754016B
 Received: from fgw20-7.mail.saunalahti.fi (fgw20-7.mail.saunalahti.fi
  [62.142.5.81])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 4B6F260726
- for <intel-wired-lan@lists.osuosl.org>; Mon, 27 May 2024 14:50:30 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTPS id C63754016B
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 27 May 2024 14:53:40 +0000 (UTC)
 Received: from localhost (88-113-26-230.elisa-laajakaista.fi [88.113.26.230])
  by fgw23.mail.saunalahti.fi (Halon) with ESMTP
- id 33d59d03-1c36-11ef-80bb-005056bdfda7;
- Mon, 27 May 2024 17:34:20 +0300 (EEST)
+ id a799409f-1c36-11ef-80bb-005056bdfda7;
+ Mon, 27 May 2024 17:37:33 +0300 (EEST)
 From: Andy Shevchenko <andy.shevchenko@gmail.com>
-Date: Mon, 27 May 2024 17:34:19 +0300
+Date: Mon, 27 May 2024 17:37:33 +0300
 To: "D, Lakshmi Sowjanya" <lakshmi.sowjanya.d@intel.com>
-Message-ID: <ZlSZ63ST-Pj9CwCh@surfacebook.localdomain>
+Message-ID: <ZlSarRwF1vEbfzlP@surfacebook.localdomain>
 References: <20240513103813.5666-1-lakshmi.sowjanya.d@intel.com>
- <20240513103813.5666-11-lakshmi.sowjanya.d@intel.com>
- <ZkH3GP2b9WTz9W3W@smile.fi.intel.com>
- <CY8PR11MB7364D1C85099E4337408EBAFC4F02@CY8PR11MB7364.namprd11.prod.outlook.com>
+ <20240513103813.5666-13-lakshmi.sowjanya.d@intel.com>
+ <ZkH37Sc9LU4zmcGB@smile.fi.intel.com>
+ <CY8PR11MB7364A367739AA57107DBBE6AC4F02@CY8PR11MB7364.namprd11.prod.outlook.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <CY8PR11MB7364D1C85099E4337408EBAFC4F02@CY8PR11MB7364.namprd11.prod.outlook.com>
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+In-Reply-To: <CY8PR11MB7364A367739AA57107DBBE6AC4F02@CY8PR11MB7364.namprd11.prod.outlook.com>
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=fail (p=none dis=none)
  header.from=gmail.com
-Subject: Re: [Intel-wired-lan] [PATCH v8 10/12] pps: generators: Add PPS
- Generator TIO Driver
+Subject: Re: [Intel-wired-lan] [PATCH v8 12/12] ABI: pps: Add ABI
+ documentation for Intel TIO
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -109,76 +107,37 @@ Cc: "linux-doc@vger.kernel.org" <linux-doc@vger.kernel.org>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Mon, May 27, 2024 at 11:48:54AM +0000, D, Lakshmi Sowjanya kirjoitti:
+Mon, May 27, 2024 at 11:53:07AM +0000, D, Lakshmi Sowjanya kirjoitti:
 > > -----Original Message-----
 > > From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-> > Sent: Monday, May 13, 2024 4:49 PM
-> > On Mon, May 13, 2024 at 04:08:11PM +0530, lakshmi.sowjanya.d@intel.com
+> > Sent: Monday, May 13, 2024 4:52 PM
+> > On Mon, May 13, 2024 at 04:08:13PM +0530, lakshmi.sowjanya.d@intel.com
 > > wrote:
 
 ...
 
-> > > +static ssize_t enable_store(struct device *dev, struct device_attribute
-> > *attr, const char *buf,
-> > > +			    size_t count)
-> > > +{
-> > > +	struct pps_tio *tio = dev_get_drvdata(dev);
-> > > +	bool enable;
-> > > +	int err;
+> > > +Date:		June 2024
 > > 
-> > (1)
+> > Is this checked by phb?
 > > 
-> > > +	err = kstrtobool(buf, &enable);
-> > > +	if (err)
-> > > +		return err;
-> > > +
-> > > +	guard(spinlock_irqsave)(&tio->lock);
-> > > +	if (enable && !tio->enabled) {
-> > 
-> > > +		if (!timekeeping_clocksource_has_base(CSID_X86_ART)) {
-> > > +			dev_err(tio->dev, "PPS cannot be started as clock is
-> > not related
-> > > +to ART");
-> > 
-> > Why not simply dev_err(dev, ...)?
-> > 
-> > > +			return -EPERM;
-> > > +		}
-> > 
-> > I'm wondering if we can move this check to (1) above.
-> > Because currently it's a good question if we are able to stop PPS which was
-> > run by somebody else without this check done.
+> > "the v6.11 kernel predictions: merge window closes on Sunday, 2024-08-04
+> > and  release on Sunday, 2024-09-29"
 > 
-> Do you mean can someone stop the signal without this check? 
-> Yes, this check is not required to stop.  So, I feel it need not be moved to (1).
-> 
-> Please, correct me if my understanding is wrong.
+> I have taken from phb but my understanding is that any probable month before
+> merge window should be added.
 
-So, there is a possibility to have a PPS being run (by somebody else) even if
-there is no ART provided?
+I didn't get this. You meant the merge window for the next cycle after your
+changes are expected to land?
 
-If "yes", your check is wrong to begin with. If "no", my suggestion is correct,
-i.e. there is no need to stop something that can't be started at all.
+> I want to know if it should be the month when the merge window closes? (i.e
+> in this case August)?
 
-> > I.o.w. this sounds too weird to me and reading the code doesn't give any hint
-> > if it's even possible. And if it is, are we supposed to touch that since it was
-> > definitely *not* us who ran it.
-> 
-> Yes, we are not restricting on who can stop/start the signal. 
+My common sense tells me that there will be no real users (except developers)
+for any kernel that's marked as vX.Y-rcZ. Assuming that we announce the ABI in
+the release, we should use date of the estimated relase. In this case I would
+use September 2024.
 
-See above. It's not about this kind of restriction.
-
-> > > +		pps_tio_direction_output(tio);
-> > > +		hrtimer_start(&tio->timer, first_event(tio),
-> > HRTIMER_MODE_ABS);
-> > > +		tio->enabled = true;
-> > > +	} else if (!enable && tio->enabled) {
-> > > +		hrtimer_cancel(&tio->timer);
-> > > +		pps_tio_disable(tio);
-> > > +		tio->enabled = false;
-> > > +	}
-> > > +	return count;
-> > > +}
+> > > +KernelVersion:	6.11
 
 -- 
 With Best Regards,
