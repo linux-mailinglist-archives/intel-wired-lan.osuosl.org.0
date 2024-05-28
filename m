@@ -2,76 +2,97 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id E51048D192D
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 28 May 2024 13:12:55 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 91DC58D198E
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 28 May 2024 13:33:45 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 893B940545;
-	Tue, 28 May 2024 11:12:54 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 23F2340268;
+	Tue, 28 May 2024 11:33:44 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id XrNYe3CC-msa; Tue, 28 May 2024 11:12:53 +0000 (UTC)
+ id BF-Pfwp1e0HL; Tue, 28 May 2024 11:33:43 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2E5F740544
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 906EF4026C
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1716894773;
-	bh=cLDLsxRWP15HQAKAMDFuS47eTToNKB06uYJPdjRM8Zc=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=bT2vv/OHgBs1Y8a+GIyDdX/Ln+jJs8PXhI0Je2Y6udAAmfDCDX0FcnmMamOBkNc+8
-	 Zm5YH8Vur2P2j3D5pnAL2yHkECcrOYFCnF6EvtGFmKvJhaU1F/m+kn6Hpv5DyLvMiG
-	 W+GnSS47objxF6PMn2t/BgVftzIEQ1GXb7c02GH/yYbMmaG8mKhbmwUVtpRanjz8Sb
-	 Xyyblx8z05yRsI50rY+2wRS5I/rAHBnLx7lFdaX5m43i3LRO10U0r71fCxc/Grpq+d
-	 ewbQfPJmBHTV+LjknzjHR5Qgp+8rG79ZwgvnfT7YLcTbf5SaTHkOxTprbFhK5Rxlht
-	 EzFVOu3sazmOw==
+	s=default; t=1716896022;
+	bh=AtjhN7aVtmwVFL06hgi1KyDhYXoybaf5PY0whMvDWZg=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=UElW2Ho8acvpTrhvIJe/6aQDmP7o9PubRyQNXBierJSPRMRfHNuFfXwbSwa9XXRl/
+	 xwUIwCO/7QLNXmd1zNwETfoZQwatd1ZTfFBG+0GV1tTfQcTAP4YlelFdGWzjqdrIuL
+	 4N+44/dide8pb+4LpKQYiW8fu6uG51IQB8FfYeyTCotC5pdVrZTLnmwCual8Ke6urK
+	 DkFJPi+cSGsWL9MD9olCWRrlii4DNg55f42g1hbymGpAL/cWjogjGeX1WdjOgAJS7n
+	 gyhIX8DEJ6sn7Nx7BiK0IfGcQI77HLVcEHRqHr4ay1lMmUIYKkJ0+3aJWJsKnk4ipj
+	 INaaCyfWHAE4g==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 2E5F740544;
-	Tue, 28 May 2024 11:12:53 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 906EF4026C;
+	Tue, 28 May 2024 11:33:42 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 94D191D26CF
- for <intel-wired-lan@lists.osuosl.org>; Tue, 28 May 2024 11:12:50 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 816D01D2727
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 28 May 2024 11:33:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 8E173405D4
- for <intel-wired-lan@lists.osuosl.org>; Tue, 28 May 2024 11:12:50 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 7AE2940430
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 28 May 2024 11:33:40 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Ph2WOgmE2PG2 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 28 May 2024 11:12:49 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=141.14.17.11;
- helo=mx3.molgen.mpg.de; envelope-from=pmenzel@molgen.mpg.de;
+ id lKasnN7msrKD for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 28 May 2024 11:33:39 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.8;
+ helo=mgamail.intel.com; envelope-from=mateusz.polchlopek@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 10075401D2
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 10075401D2
-Received: from mx3.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 10075401D2
- for <intel-wired-lan@lists.osuosl.org>; Tue, 28 May 2024 11:12:47 +0000 (UTC)
-Received: from [141.14.13.3] (g258.RadioFreeInternet.molgen.mpg.de
- [141.14.13.3])
- (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested) (Authenticated sender: pmenzel)
- by mx.molgen.mpg.de (Postfix) with ESMTPSA id 9412061E5FE01;
- Tue, 28 May 2024 13:12:05 +0200 (CEST)
-Message-ID: <88c6a5ee-1872-4c15-bef2-dcf3bc0b39fb@molgen.mpg.de>
-Date: Tue, 28 May 2024 13:12:04 +0200
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 3A358400B9
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3A358400B9
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.8])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 3A358400B9
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 28 May 2024 11:33:39 +0000 (UTC)
+X-CSE-ConnectionGUID: Ehb++/iYQpSZ6zAjUhVzaA==
+X-CSE-MsgGUID: jzVmY5PERvO0SgvUz7zVQA==
+X-IronPort-AV: E=McAfee;i="6600,9927,11085"; a="30757227"
+X-IronPort-AV: E=Sophos;i="6.08,195,1712646000"; d="scan'208";a="30757227"
+Received: from orviesa009.jf.intel.com ([10.64.159.149])
+ by fmvoesa102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 28 May 2024 04:33:38 -0700
+X-CSE-ConnectionGUID: A9TDnCHjTNeoma7w79t1ag==
+X-CSE-MsgGUID: lACdl+K6QxCC8lpW5qW3jw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.08,195,1712646000"; d="scan'208";a="35126577"
+Received: from irvmail002.ir.intel.com ([10.43.11.120])
+ by orviesa009.jf.intel.com with ESMTP; 28 May 2024 04:33:36 -0700
+Received: from fedora.igk.intel.com (Metan_eth.igk.intel.com [10.123.220.124])
+ by irvmail002.ir.intel.com (Postfix) with ESMTP id 10B761241A;
+ Tue, 28 May 2024 12:33:35 +0100 (IST)
+From: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Tue, 28 May 2024 07:22:49 -0400
+Message-Id: <20240528112301.5374-1-mateusz.polchlopek@intel.com>
+X-Mailer: git-send-email 2.38.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: Ricky Wu <en-wei.wu@canonical.com>
-References: <20240528100315.24290-1-en-wei.wu@canonical.com>
-Content-Language: en-US
-From: Paul Menzel <pmenzel@molgen.mpg.de>
-In-Reply-To: <20240528100315.24290-1-en-wei.wu@canonical.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1716896019; x=1748432019;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=a5ZJ1SDsKcwp9J3O62TL8m1PLvWtbiqE23bpFQKE9gA=;
+ b=GrCD78aQvl7FeOdctXPWIj1ShXskEqpKkXaKXS8sfhpakE41ukmCWXYB
+ YhM4o6+YRNKAMXgNqz+5JLWMekQudgv25BQR2sKj9vLcGGLmAXGTHa0LC
+ jOV85p5YXGRA6s68V5q7gGlrUtB4TRKZpVNTTJi0wyaUrb79A0/cUjlEK
+ 33lWGVkhkJu9m4UNZcHbayVluwj8P+y+0N/TdCXtAtHArPCtZup25j3MX
+ 9KbtG0X7Al+HruOhs1PCTjHAeU6GKQF7l9n0w81GyXdCsM8rfJsKJF1uT
+ v/FyK1X7BUvczQd+jlULHTrKBLAE3fkp3ui0GCnPi8nhFcufNnFkW2Y5K
+ w==;
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=molgen.mpg.de
-Subject: Re: [Intel-wired-lan] [PATCH] ice: irdma hardware init failed after
- suspend/resume
+ dmarc=pass (p=none dis=none)
+ header.from=intel.com
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=GrCD78aQ
+Subject: [Intel-wired-lan] [PATCH iwl-next v6 00/12] Add support for Rx
+ timestamping for both ice and iavf drivers.
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,83 +105,104 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, rickywu0421@gmail.com, linux-kernel@vger.kernel.org,
- edumazet@google.com, anthony.l.nguyen@intel.com, kuba@kernel.org,
- intel-wired-lan@lists.osuosl.org, pabeni@redhat.com, davem@davemloft.net
+Cc: netdev@vger.kernel.org, Mateusz Polchlopek <mateusz.polchlopek@intel.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Dear Ricky,
+Initially, during VF creation it registers the PTP clock in
+the system and negotiates with PF it's capabilities. In the
+meantime the PF enables the Flexible Descriptor for VF.
+Only this type of descriptor allows to receive Rx timestamps.
 
+Enabling virtual clock would be possible, though it would probably
+perform poorly due to the lack of direct time access.
 
-Thank you for your patch. Some minor nits. It’d be great if you made the 
-summary about the action and not an issue description. Maybe:
+Enable timestamping should be done using SIOCSHWTSTAMP ioctl,
+e.g.
+hwstamp_ctl -i $VF -r 14
 
-Avoid IRQ collision to fix init failure on ACPI S3 resume
+In order to report the timestamps to userspace, the VF extends
+timestamp to 40b.
 
-Am 28.05.24 um 12:03 schrieb Ricky Wu:
-> A bug in https://bugzilla.kernel.org/show_bug.cgi?id=218906 describes
-> that irdma would break and report hardware initialization failed after
-> suspend/resume with Intel E810 NIC (tested on 6.9.0-rc5).
-> 
-> The problem is caused due to the collision between the irq numbers
-> requested in irdma and the irq numbers requested in other drivers
-> after suspend/resume.
-> 
-> The irq numbers used by irdma are derived from ice's ice_pf->msix_entries
-> which stores mappings between MSI-X index and Linux interrupt number.
-> It's supposed to be cleaned up when suspend and rebuilt in resume but
-> it's not, causing irdma using the old irq numbers stored in the old
-> ice_pf->msix_entries to request_irq() when resume. And eventually
-> collide with other drivers.
-> 
-> This patch fixes this problem. On suspend, we call ice_deinit_rdma() to
-> clean up the ice_pf->msix_entries (and free the MSI-X vectors used by
-> irdma if we've dynamically allocated them). On Resume, we call
+To support this feature the flexible descriptors and PTP part
+in iavf driver have been introduced.
 
-resume
+---
+v6:
+- reordered tags
+- added RB tags where applicable
+- removed redundant instructions in ifs - patch 4 and patch 5
+- changed teardown to LIFO, adapter->ptp.initialized = false
+  moved to the top of function - patch 6
+- changed cpu-endianess for testing - patch 9
+- aligned to libeth changes - patch 9
 
-> ice_init_rdma() to rebuild the ice_pf->msix_entries (and allocate the
-> MSI-X vectors if we would like to dynamically allocate them).
-> 
-> Signed-off-by: Ricky Wu <en-wei.wu@canonical.com>
+v5:
+- fixed all new issues generated by this series in kernel-doc
+https://lore.kernel.org/netdev/20240418052500.50678-1-mateusz.polchlopek@intel.com/
 
-Please add a Link: tag.
+v4:
+- fixed duplicated argument in iavf_virtchnl.c reported by coccicheck
+https://lore.kernel.org/netdev/20240410121706.6223-1-mateusz.polchlopek@intel.com/
 
-If this was tested by somebody else, please also add a Tested-by: line.
+v3:
+- added RB in commit 6
+- removed inline keyword in commit 9
+- fixed sparse issues in commit 9 and commit 10
+- used GENMASK_ULL when possible in commit 9
+https://lore.kernel.org/netdev/20240403131927.87021-1-mateusz.polchlopek@intel.com/
 
-> ---
->   drivers/net/ethernet/intel/ice/ice_main.c | 6 +++++-
->   1 file changed, 5 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-> index f60c022f7960..ec3cbadaa162 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_main.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_main.c
-> @@ -5544,7 +5544,7 @@ static int ice_suspend(struct device *dev)
->   	 */
->   	disabled = ice_service_task_stop(pf);
->   
-> -	ice_unplug_aux_dev(pf);
-> +	ice_deinit_rdma(pf);
->   
->   	/* Already suspended?, then there is nothing to do */
->   	if (test_and_set_bit(ICE_SUSPENDED, pf->state)) {
-> @@ -5624,6 +5624,10 @@ static int ice_resume(struct device *dev)
->   	if (ret)
->   		dev_err(dev, "Cannot restore interrupt scheme: %d\n", ret);
->   
-> +	ret = ice_init_rdma(pf);
-> +	if (ret)
-> +		dev_err(dev, "Reinitialize RDMA during resume failed: %d\n", ret);
-> +
->   	clear_bit(ICE_DOWN, pf->state);
->   	/* Now perform PF reset and rebuild */
->   	reset_type = ICE_RESET_PFR;
+v2:
+- fixed warning related to wrong specifier to dev_err_once in
+  commit 7
+- fixed warnings related to unused variables in commit 9
+https://lore.kernel.org/netdev/20240327132543.15923-1-mateusz.polchlopek@intel.com/
 
-What effect does this have on resume time?
+v1:
+- initial series
+https://lore.kernel.org/netdev/20240326115116.10040-1-mateusz.polchlopek@intel.com/
+---
 
+Jacob Keller (10):
+  virtchnl: add support for enabling PTP on iAVF
+  virtchnl: add enumeration for the rxdid format
+  iavf: add support for negotiating flexible RXDID format
+  iavf: negotiate PTP capabilities
+  iavf: add initial framework for registering PTP clock
+  iavf: add support for indirect access to PHC time
+  iavf: periodically cache PHC time
+  iavf: refactor iavf_clean_rx_irq to support legacy and flex
+    descriptors
+  iavf: handle SIOCSHWTSTAMP and SIOCGHWTSTAMP
+  iavf: add support for Rx timestamps to hotpath
 
-Kind regards,
+Mateusz Polchlopek (1):
+  iavf: Implement checking DD desc field
 
-Paul
+Simei Su (1):
+  ice: support Rx timestamp on flex descriptor
+
+ drivers/net/ethernet/intel/iavf/Makefile      |   3 +-
+ drivers/net/ethernet/intel/iavf/iavf.h        |  33 +-
+ drivers/net/ethernet/intel/iavf/iavf_main.c   | 247 +++++++-
+ drivers/net/ethernet/intel/iavf/iavf_ptp.c    | 548 ++++++++++++++++++
+ drivers/net/ethernet/intel/iavf/iavf_ptp.h    |  46 ++
+ drivers/net/ethernet/intel/iavf/iavf_txrx.c   | 425 +++++++++++---
+ drivers/net/ethernet/intel/iavf/iavf_txrx.h   |  26 +-
+ drivers/net/ethernet/intel/iavf/iavf_type.h   | 148 +++--
+ .../net/ethernet/intel/iavf/iavf_virtchnl.c   | 238 ++++++++
+ drivers/net/ethernet/intel/ice/ice_base.c     |   3 -
+ drivers/net/ethernet/intel/ice/ice_ptp.c      |   4 +-
+ drivers/net/ethernet/intel/ice/ice_ptp.h      |   2 +
+ drivers/net/ethernet/intel/ice/ice_vf_lib.h   |   2 +
+ drivers/net/ethernet/intel/ice/ice_virtchnl.c |  86 ++-
+ drivers/net/ethernet/intel/ice/ice_virtchnl.h |   2 +
+ .../intel/ice/ice_virtchnl_allowlist.c        |   6 +
+ include/linux/avf/virtchnl.h                  | 127 +++-
+ 17 files changed, 1787 insertions(+), 159 deletions(-)
+ create mode 100644 drivers/net/ethernet/intel/iavf/iavf_ptp.c
+ create mode 100644 drivers/net/ethernet/intel/iavf/iavf_ptp.h
+
+-- 
+2.38.1
+
