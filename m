@@ -1,71 +1,71 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4C20B8D1C59
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 28 May 2024 15:15:52 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 590E28D1C5A
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 28 May 2024 15:15:54 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 51570820C7;
-	Tue, 28 May 2024 13:15:49 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 6E880820C3;
+	Tue, 28 May 2024 13:15:51 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 507ZFaSDZrdj; Tue, 28 May 2024 13:15:48 +0000 (UTC)
+ id 3hNwEhDDb3D9; Tue, 28 May 2024 13:15:50 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 92E7982013
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9F2F680EC6
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1716902148;
-	bh=YBMR1bdTgc/Woue9nGu9pSrwAn4aDhDNWYZyw2sDXv4=;
+	s=default; t=1716902150;
+	bh=qWhuAN/U+I3nStqlP9Lh0gzH64ZyAgBaSVVblpKiJEw=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=s1ac1OC/08iWxuEsy2qCQZXH2peypm/EKm7FSelapVmGFYgY603khnWXBrPaUmd99
-	 dxIdAjmLBce3ahG0kgFfNKg91Oay1i2v+md7Z2qJShVsxN40mLiCu0XlV1HUTQphT1
-	 5q0Xbd08cQ64iqRlFvXDwa49KBR81H6vKqTiAhIfz3tuhJENYyLg1kt/qLeE5tTUy2
-	 T9+RK1eFzUcvVq9tUq/JLvi1i3LfE/FG3BmGoZfqeNrdi52xL6wPrlh0t4GMmDrSl2
-	 3vGDEDEx28FOp9B+UXZvtLQUBdiHrzBYc6QJGhHHx8caKXztJ2iX2A72J1OF+qcq+F
-	 yyBqmVohlyI4Q==
+	b=JMem1XIVjQHnd7OeI5oDJrg3B+TTL91wTuBJvPjuhJNKnyrTf8hP6aIZXkUOCLx+R
+	 4Fv9SMHqVczyHnGR1PWJVd+O7GKiohQzdq7/fD9SEHyV5PDKVjt3bzCRGr4ee5Pxgj
+	 WF/TunLhU9rcXD+9st/qA0D11X/ncb2LcYXqNhOeKqpda2O0VNMWDtAx8Yjjtko5me
+	 2J37ZHk6Qh6pEMRXQP3GpEXcSgek3tYaQmh6bL02/i76s+cucq/oqb81Q6Uj/6VB0T
+	 xNFRIEBBzljx/Gv8VztB6brJFk5GBw/8RFUbHBni6Mw24DlhMc8LaCC26B4npnf5KX
+	 KS75sfRpV9GtA==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 92E7982013;
-	Tue, 28 May 2024 13:15:48 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 9F2F680EC6;
+	Tue, 28 May 2024 13:15:50 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 759A11D281C
- for <intel-wired-lan@lists.osuosl.org>; Tue, 28 May 2024 13:15:44 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 8583F1D2818
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 28 May 2024 13:15:46 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 6CEBE82012
- for <intel-wired-lan@lists.osuosl.org>; Tue, 28 May 2024 13:15:44 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 70BBF82013
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 28 May 2024 13:15:46 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id e8nMLUNnhrJH for <intel-wired-lan@lists.osuosl.org>;
- Tue, 28 May 2024 13:15:44 +0000 (UTC)
+ id ssf0hWQT-B6t for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 28 May 2024 13:15:46 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.21;
  helo=mgamail.intel.com; envelope-from=maciej.fijalkowski@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org BF71581FDE
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org BF71581FDE
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org CD50882012
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org CD50882012
 Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.21])
- by smtp1.osuosl.org (Postfix) with ESMTPS id BF71581FDE
- for <intel-wired-lan@lists.osuosl.org>; Tue, 28 May 2024 13:15:43 +0000 (UTC)
-X-CSE-ConnectionGUID: ITQXvkhORdKTq1Q55eH2fA==
-X-CSE-MsgGUID: gE0yA9IjS7KN/mhBAcwGRQ==
-X-IronPort-AV: E=McAfee;i="6600,9927,11085"; a="13193553"
-X-IronPort-AV: E=Sophos;i="6.08,195,1712646000"; d="scan'208";a="13193553"
+ by smtp1.osuosl.org (Postfix) with ESMTPS id CD50882012
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 28 May 2024 13:15:45 +0000 (UTC)
+X-CSE-ConnectionGUID: oChtFW0rQ3uLOLzqNA9how==
+X-CSE-MsgGUID: m5p6iOp0ThCnbYI2w8S9cA==
+X-IronPort-AV: E=McAfee;i="6600,9927,11085"; a="13193560"
+X-IronPort-AV: E=Sophos;i="6.08,195,1712646000"; d="scan'208";a="13193560"
 Received: from orviesa003.jf.intel.com ([10.64.159.143])
  by orvoesa113.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 28 May 2024 06:15:44 -0700
-X-CSE-ConnectionGUID: J6Ag7psJQYS+bugeluUNug==
-X-CSE-MsgGUID: yR1PiVKwQki+JoWWuV67yA==
+ 28 May 2024 06:15:46 -0700
+X-CSE-ConnectionGUID: wOCgip5WQdO3GzRgR4NGQg==
+X-CSE-MsgGUID: ZPK+e8ahQneQurjOC5v3Mg==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.08,195,1712646000"; d="scan'208";a="39891155"
+X-IronPort-AV: E=Sophos;i="6.08,195,1712646000"; d="scan'208";a="39891167"
 Received: from boxer.igk.intel.com ([10.102.20.173])
- by orviesa003.jf.intel.com with ESMTP; 28 May 2024 06:15:42 -0700
+ by orviesa003.jf.intel.com with ESMTP; 28 May 2024 06:15:44 -0700
 From: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Tue, 28 May 2024 15:14:25 +0200
-Message-Id: <20240528131429.3012910-8-maciej.fijalkowski@intel.com>
+Date: Tue, 28 May 2024 15:14:26 +0200
+Message-Id: <20240528131429.3012910-9-maciej.fijalkowski@intel.com>
 X-Mailer: git-send-email 2.35.3
 In-Reply-To: <20240528131429.3012910-1-maciej.fijalkowski@intel.com>
 References: <20240528131429.3012910-1-maciej.fijalkowski@intel.com>
@@ -73,25 +73,25 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1716902144; x=1748438144;
+ t=1716902146; x=1748438146;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=4Tu1vWmHZq1dZhCwiajusm9P0b3jYlUYGR9h4gmDQJg=;
- b=Vl74P8oPbZqAF3WbuWQ3a3dk/N+iA0xPV2iPF1mci7BoHvutHPDfhCR4
- 9KoCMqjdVQWoxO9Vj1NNc89rQIwNrnSrnV05jgcLkdxGPgOWw1Ps6QTg8
- WT4HjVh+EOaTfNzpSJvAaIbobaqTioLJsYlCT6RR5RnsusS0vpKsnnPQS
- BZBOLQdoGErgtP4jlutgXo9WXlg+qtWpHcf1IqRqi7l8otdrb4djOrJbr
- T5ehzgCwh51yStE5vrzfd5ifNZGO7y3X5TvIORSTGHaO595topUmKrMv6
- b6UKj+bT/cAHUilYYNzyypBHA4nmQAiKC7Ds06YqY+5yAOyx1DzVut5C4
- A==;
+ bh=v0cZw/C8zWmdW/96UfED93gGMqtozyU5z56YS5yvp8E=;
+ b=PcAGr1tHWzI+dDpAeTRLejGjLNKvS0pgLvKpIB8Q/ZTeL6iYIw4mzk8S
+ G2dUEYuAnK2A1wrIQfp1ghj045vCwnGA9kjYbVOkb7vn5/uc8vOAfrx5j
+ 0rpRSWsvwsnJCWLlFcfneYu4ezokCF6JNY69C3TPFPNvAy/3NXUEMZFrM
+ KCxUyQordjT9eWlHfp2KfUYvRnpKfwIsQXZqIbwRSLaqHFFCLk9oRJwJC
+ Nl8HaP14gfD0ATgw69egJhRwFMSHlzvaGY/v+uuV3Xj9fMQBV+EdMrJt9
+ 4SMVhJlLrmdwskbjrsdRHblS6GnH4kIU4PpitHzALllEaHMDOUuURy/Qf
+ w==;
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=Vl74P8oP
-Subject: [Intel-wired-lan] [PATCH iwl-net 07/11] ice: add missing WRITE_ONCE
- when clearing ice_rx_ring::xdp_prog
+ header.a=rsa-sha256 header.s=Intel header.b=PcAGr1tH
+Subject: [Intel-wired-lan] [PATCH iwl-net 08/11] ice: xsk: fix txq interrupt
+ mapping
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -110,28 +110,66 @@ Cc: Maciej Fijalkowski <maciej.fijalkowski@intel.com>, larysa.zaremba@intel.com,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-It is read by data path and modified from process context on remote cpu
-so it is needed to use WRITE_ONCE to clear the pointer.
+ice_cfg_txq_interrupt() internally handles XDP Tx ring. Do not use
+ice_for_each_tx_ring() in ice_qvec_cfg_msix() as this causing us to
+treat XDP ring that belongs to queue vector as Tx ring and therefore
+misconfiguring the interrupts.
 
-Fixes: efc2214b6047 ("ice: Add support for XDP")
+Fixes: 2d4238f55697 ("ice: Add support for AF_XDP")
 Signed-off-by: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_txrx.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/net/ethernet/intel/ice/ice_xsk.c | 23 +++++++++++++----------
+ 1 file changed, 13 insertions(+), 10 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_txrx.c b/drivers/net/ethernet/intel/ice/ice_txrx.c
-index f4b2b1bca234..4c115531beba 100644
---- a/drivers/net/ethernet/intel/ice/ice_txrx.c
-+++ b/drivers/net/ethernet/intel/ice/ice_txrx.c
-@@ -456,7 +456,7 @@ void ice_free_rx_ring(struct ice_rx_ring *rx_ring)
- 	if (rx_ring->vsi->type == ICE_VSI_PF)
- 		if (xdp_rxq_info_is_reg(&rx_ring->xdp_rxq))
- 			xdp_rxq_info_unreg(&rx_ring->xdp_rxq);
--	rx_ring->xdp_prog = NULL;
-+	WRITE_ONCE(rx_ring->xdp_prog, NULL);
- 	if (rx_ring->xsk_pool) {
- 		kfree(rx_ring->xdp_buf);
- 		rx_ring->xdp_buf = NULL;
+diff --git a/drivers/net/ethernet/intel/ice/ice_xsk.c b/drivers/net/ethernet/intel/ice/ice_xsk.c
+index e554cf424fb3..3135fc0aaf73 100644
+--- a/drivers/net/ethernet/intel/ice/ice_xsk.c
++++ b/drivers/net/ethernet/intel/ice/ice_xsk.c
+@@ -113,23 +113,26 @@ ice_qvec_dis_irq(struct ice_vsi *vsi, struct ice_rx_ring *rx_ring,
+  * @q_vector: queue vector
+  */
+ static void
+-ice_qvec_cfg_msix(struct ice_vsi *vsi, struct ice_q_vector *q_vector)
++ice_qvec_cfg_msix(struct ice_vsi *vsi, struct ice_q_vector *q_vector, u16 qid)
+ {
+ 	u16 reg_idx = q_vector->reg_idx;
+ 	struct ice_pf *pf = vsi->back;
+ 	struct ice_hw *hw = &pf->hw;
+-	struct ice_tx_ring *tx_ring;
+-	struct ice_rx_ring *rx_ring;
++	int q, _qid = qid;
+ 
+ 	ice_cfg_itr(hw, q_vector);
+ 
+-	ice_for_each_tx_ring(tx_ring, q_vector->tx)
+-		ice_cfg_txq_interrupt(vsi, tx_ring->reg_idx, reg_idx,
+-				      q_vector->tx.itr_idx);
++	for (q = 0; q < q_vector->num_ring_tx; q++) {
++		ice_cfg_txq_interrupt(vsi, _qid, reg_idx, q_vector->tx.itr_idx);
++		_qid++;
++	}
+ 
+-	ice_for_each_rx_ring(rx_ring, q_vector->rx)
+-		ice_cfg_rxq_interrupt(vsi, rx_ring->reg_idx, reg_idx,
+-				      q_vector->rx.itr_idx);
++	_qid = qid;
++
++	for (q = 0; q < q_vector->num_ring_rx; q++) {
++		ice_cfg_rxq_interrupt(vsi, _qid, reg_idx, q_vector->rx.itr_idx);
++		_qid++;
++	}
+ 
+ 	ice_flush(hw);
+ }
+@@ -241,7 +244,7 @@ static int ice_qp_ena(struct ice_vsi *vsi, u16 q_idx)
+ 		fail = err;
+ 
+ 	q_vector = vsi->rx_rings[q_idx]->q_vector;
+-	ice_qvec_cfg_msix(vsi, q_vector);
++	ice_qvec_cfg_msix(vsi, q_vector, q_idx);
+ 
+ 	err = ice_vsi_ctrl_one_rx_ring(vsi, true, q_idx, true);
+ 	if (!fail)
 -- 
 2.34.1
 
