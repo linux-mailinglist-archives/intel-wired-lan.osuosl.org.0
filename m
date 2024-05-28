@@ -2,101 +2,97 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E73008D18C7
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 28 May 2024 12:41:11 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 347D38D18D1
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 28 May 2024 12:44:00 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 7B96C405D4;
-	Tue, 28 May 2024 10:41:10 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id D431140BB4;
+	Tue, 28 May 2024 10:43:58 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id MaDzQQnFSLGG; Tue, 28 May 2024 10:41:09 +0000 (UTC)
+ id GlkVJ4rRAGJd; Tue, 28 May 2024 10:43:58 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 7A89C40BC7
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org AC42940BC7
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1716892869;
-	bh=FNzfbHJyTuepZ/o9239+U0K3yxYKcqfjvWrahGilyfo=;
+	s=default; t=1716893037;
+	bh=HeoGSwILJ04pCnIDKh8I4so7PifrbTtVtURUYl1zDmo=;
 	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=vy1H7nVT/veKet2C2oiCdKuOFoN7+gCC6y7X3eG0rremDKd2Ku/rsozvCVyJISLJ+
-	 AHiTzpOLzTgtXktfrQKcp64cL6PYb8UdL88HgTASngW0oG0JD9prVNQcmaSWR7lah+
-	 swroF3wsKrm0RY87PAR2EetPQdl37CfQ8ZYCwTO8JEBBcEnc4yqVLhXcdeJorMYkI+
-	 18M10MdgwKHWvTmDEoVkFSUpKOTHijcbPq63vZHLK3dRBSK5sJwZU8H9mmqWd1gf9r
-	 sqjEyxHmgc9f/tqY3G2sEqrX6lq9cXFySuxV1tMJ1tK34VKXpD4ao5NcHdPMpcD53D
-	 jrW9OPda8qIuQ==
+	b=3jkwn7+olVwc9mQzZ5Gf+evzWSVlffbC60dCp/l/qTzNXsy603Ue6Pm5rgPSAf3Ib
+	 bjWeUPP0dcvyUfGIyJ5vo+dgGB3lvj2yoj0adawq4gXhujdnWqdVZ0sIVpgWAcgIXj
+	 QGPy3zSfLZysjM5uamEoEX2MRzZlT51gHAWjsfhPAasiSr7UyY3HP1I+SkyHgPqqtG
+	 IJZY37hPEPh/O8+etuZaL1BAhpSAruqnb826lvQeZZH2V0D8b2rLaTJ4c0RQ+CMAPn
+	 pfVq20nD1BtN+OFwxZXf2sSiaQDpYq8vtJkNS92VxOc8j2dscXmlE6FpyHIFbryFee
+	 fG2NRa8awDFLw==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 7A89C40BC7;
-	Tue, 28 May 2024 10:41:09 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id AC42940BC7;
+	Tue, 28 May 2024 10:43:57 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 2DE9B1D26AA
- for <intel-wired-lan@lists.osuosl.org>; Tue, 28 May 2024 10:41:07 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id DB7921D26AA
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 28 May 2024 10:43:54 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 27D7B60681
- for <intel-wired-lan@lists.osuosl.org>; Tue, 28 May 2024 10:41:07 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id C718980C32
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 28 May 2024 10:43:54 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id xVh0jz3oSdB2 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 28 May 2024 10:41:06 +0000 (UTC)
-Received-SPF: None (mailfrom) identity=mailfrom; client-ip=192.198.163.17;
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id h_aH-lKszzXy for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 28 May 2024 10:43:54 +0000 (UTC)
+Received-SPF: None (mailfrom) identity=mailfrom; client-ip=192.198.163.18;
  helo=mgamail.intel.com; envelope-from=michal.swiatkowski@linux.intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org C718D6067E
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C718D6067E
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.17])
- by smtp3.osuosl.org (Postfix) with ESMTPS id C718D6067E
- for <intel-wired-lan@lists.osuosl.org>; Tue, 28 May 2024 10:41:05 +0000 (UTC)
-X-CSE-ConnectionGUID: CzzgXMCVSw+YLaVSyZpOrA==
-X-CSE-MsgGUID: tq0GJsFpRoKB4Qrki1wdUA==
-X-IronPort-AV: E=McAfee;i="6600,9927,11085"; a="13102216"
-X-IronPort-AV: E=Sophos;i="6.08,195,1712646000"; d="scan'208";a="13102216"
-Received: from fmviesa007.fm.intel.com ([10.60.135.147])
- by fmvoesa111.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 28 May 2024 03:41:04 -0700
-X-CSE-ConnectionGUID: mAEjigb4THeBy6MqwAD+sg==
-X-CSE-MsgGUID: dIrYKWfERP2/s4X2Ty4/xA==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org C3FD380C28
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org C3FD380C28
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.18])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id C3FD380C28
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 28 May 2024 10:43:53 +0000 (UTC)
+X-CSE-ConnectionGUID: GlsBPB14SeiYVQuJ+cWLJA==
+X-CSE-MsgGUID: lgZTMC6ITHuflisgNaGHig==
+X-IronPort-AV: E=McAfee;i="6600,9927,11085"; a="13001693"
+X-IronPort-AV: E=Sophos;i="6.08,195,1712646000"; d="scan'208";a="13001693"
+Received: from fmviesa003.fm.intel.com ([10.60.135.143])
+ by fmvoesa112.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 28 May 2024 03:43:53 -0700
+X-CSE-ConnectionGUID: jj070PvSQhKUAU35PmDPIA==
+X-CSE-MsgGUID: X5hnXjsSSeulPrJQrCdEKw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.08,195,1712646000"; d="scan'208";a="34967932"
+X-IronPort-AV: E=Sophos;i="6.08,195,1712646000"; d="scan'208";a="39470586"
 Received: from unknown (HELO mev-dev) ([10.237.112.144])
- by fmviesa007-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 28 May 2024 03:41:01 -0700
-Date: Tue, 28 May 2024 12:40:13 +0200
+ by fmviesa003-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 28 May 2024 03:43:50 -0700
+Date: Tue, 28 May 2024 12:43:02 +0200
 From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-To: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-Message-ID: <ZlW0jYW/yY/qe+jN@mev-dev>
-References: <20240528043813.1342483-1-michal.swiatkowski@linux.intel.com>
- <20240528043813.1342483-6-michal.swiatkowski@linux.intel.com>
- <b938506f-953f-477b-9496-8ff948824a56@intel.com>
+To: Ricky Wu <en-wei.wu@canonical.com>
+Message-ID: <ZlW1NiQOpf6497Tg@mev-dev>
+References: <20240528100315.24290-1-en-wei.wu@canonical.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <b938506f-953f-477b-9496-8ff948824a56@intel.com>
+In-Reply-To: <20240528100315.24290-1-en-wei.wu@canonical.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1716892866; x=1748428866;
+ t=1716893033; x=1748429033;
  h=date:from:to:cc:subject:message-id:references:
- mime-version:content-transfer-encoding:in-reply-to;
- bh=nxdU+VENU/erFXbdsBxA1qWDuwfs5LOt+I/fApCoaek=;
- b=mmxG5Xla1E3cDdPK2/coQzjewqT0IwnugdQEAknNL1ZSdbET9IE9ukQ1
- YKV+7/cu05zanHDFBnFe0CGSZVOIXMhnBqbpW4hYrLJGkjeefnTCP40Qn
- rISiW6Ik95sTGdd7uOwFE/KpFlwhVzDKiLfwN4gacSKyqil6qLpLnM4Ll
- cHuxm1/tJsb4mC3qyVhPqOEHrMLFLLF0fAGlS4pucvgfbonkZitiu9FY/
- mGBteO7E2Mvq2ydg58hGBCmdEn2Pay8vy6p7yGdRJsi5eMDu79avtUH2w
- X/GLtE1nfus/V62snyip46/F6TH1oW0gKtIM4UTCPCh7bDv4QpSqY8PPU
- w==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ mime-version:in-reply-to;
+ bh=faO5qzmy4SrjD0t39u78b/WW8X2p7Mw4t5HKMKNoD2A=;
+ b=G03z/wMtixNL9LJeB5ZPuhQjhP65RM0H3eEzMIDi51ZCxwaplB0GOeZL
+ dWFulM/GzuD77LamLekxkvd/62v7mpFC8hLmui7XHH5ceZul0JNYjKbgM
+ ZevHl8TnvwBFELSASLuog8LTkKWkp809pYtj6L6xeJ6Ynk4ZMw2y3vMKn
+ egzSjdqEJtgav/mkOxpgnyYgFt94p4Xf7fhLkNU6pxq0csTuU3mW1IF9C
+ pehsWOHrvBxBLPvdU+FDzJqiTNhzUxgEfvOpv00nXhJj0a6rYhPzNNMlL
+ h98dFh30FtdcnP4dz8esOQBLmKlBemN1kY5J7m43zZXhKwxwk301SM7tl
+ A==;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=none (p=none dis=none)
  header.from=linux.intel.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=mmxG5Xla
-Subject: Re: [Intel-wired-lan] [iwl-next v3 05/15] ice: allocate devlink for
- subfunction
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=G03z/wMt
+Subject: Re: [Intel-wired-lan] [PATCH] ice: irdma hardware init failed after
+ suspend/resume
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -109,191 +105,69 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: shayd@nvidia.com, maciej.fijalkowski@intel.com,
- mateusz.polchlopek@intel.com, netdev@vger.kernel.org, jiri@nvidia.com,
- kalesh-anakkur.purayil@broadcom.com, michal.kubiak@intel.com,
- intel-wired-lan@lists.osuosl.org, pio.raczynski@gmail.com,
- sridhar.samudrala@intel.com, jacob.e.keller@intel.com,
- wojciech.drewek@intel.com
+Cc: netdev@vger.kernel.org, rickywu0421@gmail.com, linux-kernel@vger.kernel.org,
+ edumazet@google.com, anthony.l.nguyen@intel.com, kuba@kernel.org,
+ intel-wired-lan@lists.osuosl.org, pabeni@redhat.com, davem@davemloft.net
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, May 28, 2024 at 09:11:09AM +0200, Przemek Kitszel wrote:
-> On 5/28/24 06:38, Michal Swiatkowski wrote:
-> > From: Piotr Raczynski <piotr.raczynski@intel.com>
-> > 
-> > Make devlink allocation function generic to use it for PF and for SF.
-> > 
-> > Add function for SF devlink port creation. It will be used in next
-> > patch.
-> > 
-> > Create header file for subfunction device. Define subfunction device
-> > structure there as it is needed for devlink allocation and port
-> > creation.
-> > 
-> > Signed-off-by: Piotr Raczynski <piotr.raczynski@intel.com>
-> > Signed-off-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-> > ---
-> >   .../net/ethernet/intel/ice/devlink/devlink.c  | 33 +++++++++++++++
-> >   .../net/ethernet/intel/ice/devlink/devlink.h  |  1 +
-> >   .../ethernet/intel/ice/devlink/devlink_port.c | 41 +++++++++++++++++++
-> >   .../ethernet/intel/ice/devlink/devlink_port.h |  3 ++
-> >   drivers/net/ethernet/intel/ice/ice_sf_eth.h   | 21 ++++++++++
-> >   5 files changed, 99 insertions(+)
-> >   create mode 100644 drivers/net/ethernet/intel/ice/ice_sf_eth.h
+On Tue, May 28, 2024 at 06:03:15PM +0800, Ricky Wu wrote:
+> A bug in https://bugzilla.kernel.org/show_bug.cgi?id=218906 describes
+> that irdma would break and report hardware initialization failed after
+> suspend/resume with Intel E810 NIC (tested on 6.9.0-rc5).
 > 
-> just two minor nitpicks, so:
-> Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+> The problem is caused due to the collision between the irq numbers
+> requested in irdma and the irq numbers requested in other drivers
+> after suspend/resume.
 > 
-> > 
-> > diff --git a/drivers/net/ethernet/intel/ice/devlink/devlink.c b/drivers/net/ethernet/intel/ice/devlink/devlink.c
-> > index bfb3d5b59a62..58196c170b1b 100644
-> > --- a/drivers/net/ethernet/intel/ice/devlink/devlink.c
-> > +++ b/drivers/net/ethernet/intel/ice/devlink/devlink.c
-> > @@ -10,6 +10,7 @@
-> >   #include "ice_eswitch.h"
-> >   #include "ice_fw_update.h"
-> >   #include "ice_dcb_lib.h"
-> > +#include "ice_sf_eth.h"
-> >   /* context for devlink info version reporting */
-> >   struct ice_info_ctx {
-> > @@ -1282,6 +1283,8 @@ static const struct devlink_ops ice_devlink_ops = {
-> >   	.port_new = ice_devlink_port_new,
-> >   };
-> > +static const struct devlink_ops ice_sf_devlink_ops;
-> > +
-> >   static int
-> >   ice_devlink_enable_roce_get(struct devlink *devlink, u32 id,
-> >   			    struct devlink_param_gset_ctx *ctx)
-> > @@ -1422,6 +1425,7 @@ static void ice_devlink_free(void *devlink_ptr)
-> >    * Allocate a devlink instance for this device and return the private area as
-> >    * the PF structure. The devlink memory is kept track of through devres by
-> >    * adding an action to remove it when unwinding.
-> > + *
-> >    */
-> >   struct ice_pf *ice_allocate_pf(struct device *dev)
-> >   {
-> > @@ -1438,6 +1442,35 @@ struct ice_pf *ice_allocate_pf(struct device *dev)
-> >   	return devlink_priv(devlink);
-> >   }
-> > +/**
-> > + * ice_allocate_sf - Allocate devlink and return SF structure pointer
-> > + * @dev: the device to allocate for
-> > + * @pf: pointer to the PF structure
-> > + *
-> > + * Allocate a devlink instance for SF.
-> > + *
-> > + * Return: void pointer to allocated memory
+> The irq numbers used by irdma are derived from ice's ice_pf->msix_entries
+> which stores mappings between MSI-X index and Linux interrupt number.
+> It's supposed to be cleaned up when suspend and rebuilt in resume but
+> it's not, causing irdma using the old irq numbers stored in the old
+> ice_pf->msix_entries to request_irq() when resume. And eventually
+> collide with other drivers.
 > 
-> nit: it's not void; you could add "or ERR_PTR in case of error"
+> This patch fixes this problem. On suspend, we call ice_deinit_rdma() to
+> clean up the ice_pf->msix_entries (and free the MSI-X vectors used by
+> irdma if we've dynamically allocated them). On Resume, we call
+> ice_init_rdma() to rebuild the ice_pf->msix_entries (and allocate the
+> MSI-X vectors if we would like to dynamically allocate them).
 > 
-
-Right, will fix
-
-> > + */
-> > +struct ice_sf_priv *ice_allocate_sf(struct device *dev, struct ice_pf *pf)
-> > +{
-> > +	struct devlink *devlink;
-> > +	int err;
-> > +
-> > +	devlink = devlink_alloc_ns(&ice_sf_devlink_ops,
-> > +				   sizeof(struct ice_sf_priv),
-> > +				   devlink_net(priv_to_devlink(pf)), dev);
-> > +	if (!devlink)
-> > +		return NULL;
+> Signed-off-by: Ricky Wu <en-wei.wu@canonical.com>
+> ---
+>  drivers/net/ethernet/intel/ice/ice_main.c | 6 +++++-
+>  1 file changed, 5 insertions(+), 1 deletion(-)
 > 
-> ERR_PTR(-ENOMEM) would be more consistent with the other error exit path
->
+> diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
+> index f60c022f7960..ec3cbadaa162 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_main.c
+> +++ b/drivers/net/ethernet/intel/ice/ice_main.c
+> @@ -5544,7 +5544,7 @@ static int ice_suspend(struct device *dev)
+>  	 */
+>  	disabled = ice_service_task_stop(pf);
+>  
+> -	ice_unplug_aux_dev(pf);
+> +	ice_deinit_rdma(pf);
+>  
+>  	/* Already suspended?, then there is nothing to do */
+>  	if (test_and_set_bit(ICE_SUSPENDED, pf->state)) {
+> @@ -5624,6 +5624,10 @@ static int ice_resume(struct device *dev)
+>  	if (ret)
+>  		dev_err(dev, "Cannot restore interrupt scheme: %d\n", ret);
+>  
+> +	ret = ice_init_rdma(pf);
+> +	if (ret)
+> +		dev_err(dev, "Reinitialize RDMA during resume failed: %d\n", ret);
+> +
+>  	clear_bit(ICE_DOWN, pf->state);
+>  	/* Now perform PF reset and rebuild */
+>  	reset_type = ICE_RESET_PFR;
 
-Ok
+Looks fine, thanks for the fix. You can add fixes tag and target it to a
+net tree.
 
-> > +
-> > +	err = devl_nested_devlink_set(priv_to_devlink(pf), devlink);
-> > +	if (err) {
-> > +		devlink_free(devlink);
-> > +		return ERR_PTR(err);
-> > +	}
-> > +
-> > +	return devlink_priv(devlink);
-> > +}
-> > +
-> >   /**
-> >    * ice_devlink_register - Register devlink interface for this PF
-> >    * @pf: the PF to register the devlink for.
-> > diff --git a/drivers/net/ethernet/intel/ice/devlink/devlink.h b/drivers/net/ethernet/intel/ice/devlink/devlink.h
-> > index d291c0e2e17b..1af3b0763fbb 100644
-> > --- a/drivers/net/ethernet/intel/ice/devlink/devlink.h
-> > +++ b/drivers/net/ethernet/intel/ice/devlink/devlink.h
-> > @@ -5,6 +5,7 @@
-> >   #define _ICE_DEVLINK_H_
-> >   struct ice_pf *ice_allocate_pf(struct device *dev);
-> > +struct ice_sf_priv *ice_allocate_sf(struct device *dev, struct ice_pf *pf);
-> >   void ice_devlink_register(struct ice_pf *pf);
-> >   void ice_devlink_unregister(struct ice_pf *pf);
-> > diff --git a/drivers/net/ethernet/intel/ice/devlink/devlink_port.c b/drivers/net/ethernet/intel/ice/devlink/devlink_port.c
-> > index 5d1fe08e4bab..f06baabd0112 100644
-> > --- a/drivers/net/ethernet/intel/ice/devlink/devlink_port.c
-> > +++ b/drivers/net/ethernet/intel/ice/devlink/devlink_port.c
-> > @@ -489,6 +489,47 @@ void ice_devlink_destroy_vf_port(struct ice_vf *vf)
-> >   	devl_port_unregister(&vf->devlink_port);
-> >   }
-> > +/**
-> > + * ice_devlink_create_sf_dev_port - Register virtual port for a subfunction
-> > + * @sf_dev: the subfunction device to create a devlink port for
-> > + *
-> > + * Register virtual flavour devlink port for the subfunction auxiliary device
-> > + * created after activating a dynamically added devlink port.
-> > + *
-> > + * Return: zero on success or an error code on failure.
-> > + */
-> > +int ice_devlink_create_sf_dev_port(struct ice_sf_dev *sf_dev)
-> > +{
-> > +	struct devlink_port_attrs attrs = {};
-> > +	struct ice_dynamic_port *dyn_port;
-> > +	struct devlink_port *devlink_port;
-> > +	struct devlink *devlink;
-> > +	struct ice_vsi *vsi;
-> > +
-> > +	dyn_port = sf_dev->dyn_port;
-> > +	vsi = dyn_port->vsi;
-> > +
-> > +	devlink_port = &sf_dev->priv->devlink_port;
-> > +
-> > +	attrs.flavour = DEVLINK_PORT_FLAVOUR_VIRTUAL;
+Reviewed-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+
+> -- 
+> 2.43.0
 > 
-> (just comment, not an issue)
-> we have (among others):
-> 198│ enum devlink_port_flavour {
-> 199│         DEVLINK_PORT_FLAVOUR_PHYSICAL, /* Any kind of a port physically
-> 200│                                         * facing the user.
-> 201│                                         */
-> 210│         DEVLINK_PORT_FLAVOUR_PCI_VF, /* Represents eswitch port
-> 211│                                       * for the PCI VF. It is an
-> internal
-> 212│                                       * port that faces the PCI VF.
-> 213│                                       */
-> 214│         DEVLINK_PORT_FLAVOUR_VIRTUAL, /* Any virtual port facing the
-> user. */
-> 216│                                       * is not used in any way.
-> 217│                                       */
-> 218│         DEVLINK_PORT_FLAVOUR_PCI_SF, /* Represents eswitch port
-> 219│                                       * for the PCI SF. It is an
-> internal
-> 220│                                       * port that faces the PCI SF.
-> 221│                                       */
-> 
-> from that I conclude that _PCI_ ones are internal, and you are adding
-> user-facing port, so your choice is good, even if there is one with SF
-> in the name. Perhaps the enum should have this piece of documentation ;)
->
-
-DEVLINK_PORT_FLAVOUR_PCI_SF is created during port representor creation
-and linked with his netdev.
-
-According to the documentation:
-Documentation/networking/devlink/devlink-port.rst
-
-Thanks,
-Michal
-
-[...]
