@@ -1,99 +1,102 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 380C78D46DC
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 30 May 2024 10:17:34 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 809CF8D46F2
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 30 May 2024 10:23:04 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id C60B561049;
-	Thu, 30 May 2024 08:17:32 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 0799F61045;
+	Thu, 30 May 2024 08:23:03 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id szYtqr18fIb0; Thu, 30 May 2024 08:17:32 +0000 (UTC)
+ id 6iZekS6HgJa4; Thu, 30 May 2024 08:23:02 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C6F816104A
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 42EBD61029
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1717057051;
-	bh=2qSmcKQLSP52mEVww3DCCIcBrf2lLBSwwql8yWCKhrw=;
+	s=default; t=1717057382;
+	bh=kR/8T6Jh7P2v4KkC5S0vyMqreQKUSFogmoFviIvlD1E=;
 	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=vqqkfffmQUf1ZZ/4EfxKZ8ptaiOLbTqV2s951gwj9TjAgzzZ2MiF9YdTNSpShmg5G
-	 AP35y3a7YvaAJPEjW+32EHKzfVHMGK7oyznlAWrUQHFo6Rrx5ZDsVBPC/h2Sa4KGdV
-	 pNG3EKtyMoVXvUVyoVBEe7TE0bIjO1ayI+EAplAHPGN/D7M1mnLZfhiSU1MSwdZEbX
-	 ND+ORhM5apZRyPOBuYtP2HjgDuHqSMRVsbFi1UJLebQ3tr42Y2m3FconwI4XISsp34
-	 8ZUR/65CFR98moKMyQd08Ztzir0vxWrRd3ETOnH++S2Z7c+8EBqqvOc5BCGNzEiV3E
-	 +qvMxlGnPqroQ==
+	 From;
+	b=jMBmEi5w/w6nekTleqRQke45/Bl0roVWKrMncSNbDvXRMU9D0Uf+FqdqErjRYAQ7Z
+	 NqgZCT+bi8Qz8xXm7HhTogTdmdBqjz4Hb5vSS1TcKULeoUFUAYSWrvnqptCp+zM0Z7
+	 nukmZibGeR6tellAKrfLNu44SseNEZhAhf3DgpgyLdaVdETFAyrkxOrtBmOMjx1fki
+	 34O/8rIDPpI/atT2UwNvIpllTIOn1EL121fJwQq/XxK4ca9M2441QBfNAx7n4CVaQK
+	 YdV3Wz4yadXkDSWHHpJqaa2JV93LFUxXJO6P53Cc8XTcFYRA9kAcmVpZfg+X6Wj07u
+	 hRlOtydu0a3UQ==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id C6F816104A;
-	Thu, 30 May 2024 08:17:31 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 42EBD61029;
+	Thu, 30 May 2024 08:23:02 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 809A31D4409
- for <intel-wired-lan@lists.osuosl.org>; Thu, 30 May 2024 08:17:30 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 0ABC51D4455
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 30 May 2024 08:23:01 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 6A3B540517
- for <intel-wired-lan@lists.osuosl.org>; Thu, 30 May 2024 08:17:30 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id E93FB40929
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 30 May 2024 08:23:00 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Bh0j0JtvwsgN for <intel-wired-lan@lists.osuosl.org>;
- Thu, 30 May 2024 08:17:29 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=80.237.130.52;
- helo=wp530.webpack.hosteurope.de; envelope-from=regressions@leemhuis.info;
+ id cLdrX8wbwf9k for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 30 May 2024 08:23:00 +0000 (UTC)
+Received-SPF: None (mailfrom) identity=mailfrom; client-ip=192.198.163.7;
+ helo=mgamail.intel.com; envelope-from=naamax.meir@linux.intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 1BCA040348
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1BCA040348
-Received: from wp530.webpack.hosteurope.de (wp530.webpack.hosteurope.de
- [80.237.130.52])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 1BCA040348
- for <intel-wired-lan@lists.osuosl.org>; Thu, 30 May 2024 08:17:28 +0000 (UTC)
-Received: from [2a02:8108:8980:2478:8cde:aa2c:f324:937e]; authenticated
- by wp530.webpack.hosteurope.de running ExIM with esmtpsa
- (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
- id 1sCayR-0008RD-QD; Thu, 30 May 2024 10:17:23 +0200
-Message-ID: <6f9bcb19-b6ff-4a62-8cbc-8aa40d00ff07@leemhuis.info>
-Date: Thu, 30 May 2024 10:17:23 +0200
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org CE974408E7
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org CE974408E7
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.7])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id CE974408E7
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 30 May 2024 08:22:59 +0000 (UTC)
+X-CSE-ConnectionGUID: xVoyBDXkTPuwpGj0fD9nsA==
+X-CSE-MsgGUID: 0GNSqnC7TCaA3CXMDFxf5A==
+X-IronPort-AV: E=McAfee;i="6600,9927,11087"; a="38908188"
+X-IronPort-AV: E=Sophos;i="6.08,199,1712646000"; d="scan'208";a="38908188"
+Received: from fmviesa006.fm.intel.com ([10.60.135.146])
+ by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 30 May 2024 01:22:59 -0700
+X-CSE-ConnectionGUID: O/PqrUPrSlqf5YyUUVnrOQ==
+X-CSE-MsgGUID: vkrYUsweQqOUdBZqcjt5Yw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.08,199,1712646000"; d="scan'208";a="35785690"
+Received: from naamamex-mobl.ger.corp.intel.com (HELO [10.245.197.220])
+ ([10.245.197.220])
+ by fmviesa006-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 30 May 2024 01:22:58 -0700
+Message-ID: <5b7ade7f-7948-4cb7-94f1-3fe5ce044fd1@linux.intel.com>
+Date: Thu, 30 May 2024 11:22:55 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-To: Jani Nikula <jani.nikula@intel.com>,
- Jesse Brandeburg <jesse.brandeburg@intel.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>, intel-wired-lan@lists.osuosl.org,
- Corinna Vinschen <vinschen@redhat.com>, Hariprasad Kelam
- <hkelam@marvell.com>, Vinicius Costa Gomes <vinicius.gomes@intel.com>,
- Naama Meir <naamax.meir@linux.intel.com>
-References: <87o78rmkhu.fsf@intel.com>
-From: Thorsten Leemhuis <regressions@leemhuis.info>
-Content-Language: en-US, de-DE
-In-Reply-To: <87o78rmkhu.fsf@intel.com>
-Content-Type: text/plain; charset=UTF-8
+To: Sasha Neftin <sasha.neftin@intel.com>, intel-wired-lan@lists.osuosl.org
+References: <20240522072352.2618613-1-sasha.neftin@intel.com>
+Content-Language: en-US
+From: "naamax.meir" <naamax.meir@linux.intel.com>
+In-Reply-To: <20240522072352.2618613-1-sasha.neftin@intel.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-bounce-key: webpack.hosteurope.de; regressions@leemhuis.info; 1717057049;
- 1d555aaa; 
-X-HE-SMSGID: 1sCayR-0008RD-QD
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt;
- c=relaxed/relaxed; 
- d=leemhuis.info; s=he214686; h=Content-Transfer-Encoding:Content-Type:
- In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:From:
- Sender:Reply-To:Subject:Date:Message-ID:To:Cc:MIME-Version:Content-Type:
- Content-Transfer-Encoding:Content-ID:Content-Description:In-Reply-To:
- References; bh=2qSmcKQLSP52mEVww3DCCIcBrf2lLBSwwql8yWCKhrw=; t=1717057049;
- x=1717489049; b=0vWy8hdFXMRGHGdIAftLuz84Aj2gwo9DocbNNQVELfh119dhKZEWId0Uyig3a
- hvd4McIGJlmgYD935tWp9YNaoF2NzMjwKXjYtTVtbeyEUW/uBEVurS+3MGJ35r1bgthEK7R+bjH6k
- tBAQiFmW7T3TBAboLKG/5YjRvKZaUDvcK6RriR6RSacXx3cksM5aY+VN7k1s3sJbLpKoKHP3JHf7v
- 67uGM+ivYdDuR+kkP9sTuaU/DJr9j80aN60DMaqamGMmpS/wizIt1U3DsUBvvhgNtifgazdwpnKYL
- n/cr4XmeKQVIAJKRjHNjLSj3fYV/OY5bF61h/SWAEHy1kgj5xA==;
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1717057380; x=1748593380;
+ h=message-id:date:mime-version:subject:to:references:from:
+ in-reply-to:content-transfer-encoding;
+ bh=zN40VgAwmaM6R0P/tActNi/lsUyY3JHXz7GKr8vAIv4=;
+ b=Wi+Hk+XlaXB1i9ETVSPOQ/BmMUAvC/V/lbHmQmvZOEK4QxRV/yPCUuw+
+ p1SmnWMVixwNhipD3YPYOm23iVzSDwyo1MOjOpJUfxBFn+Rs1DMNTV5gr
+ f1uDj0w/NiRTGH7y+8o1VSKi/8thZs05Q2pKPVGPQL3HU4RkH78TZ8DkG
+ qyjdQS/CJT+COZRhpQO2+3U3guvGEIMWtyZ9Yb222Ap+FpKN8qYNiVw+C
+ hDf+wH1xDePOHEYzZdoLwYRGrOYaWBhlFKOjtq8iG2oSXRHi6PsPRaYz5
+ AQsi9yDvLRKlWptdn6RLIpqXYH5teV54w/gw3Mt8e9bR8cE/OqnG1Z5dT
+ Q==;
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=none (p=none dis=none)
- header.from=leemhuis.info
+ header.from=linux.intel.com
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=leemhuis.info header.i=@leemhuis.info
- header.a=rsa-sha256 header.s=he214686 header.b=0vWy8hdF
-Subject: Re: [Intel-wired-lan] REGRESSION: 86167183a17e ("igc: fix a log
- entry using uninitialized netdev")
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=Wi+Hk+Xl
+Subject: Re: [Intel-wired-lan] [iwl-net v1 1/1] igc: Fix Energy Efficient
+ Ethernet support declaration
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -106,24 +109,37 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: intel-gfx@lists.freedesktop.org
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 27.05.24 15:50, Jani Nikula wrote:
+On 5/22/2024 10:23, Sasha Neftin wrote:
+> The commit 01cf893bf0f4 ("net: intel: i40e/igc: Remove setting Autoneg in
+> EEE capabilities") removed SUPPORTED_Autoneg field but left inappropriate
+> ethtool_keee structure initialization. When "ethtool --show <device>"
+> (get_eee) invoke, the 'ethtool_keee' structure was accidentally overridden.
+> Remove the 'ethtool_keee' overriding and add EEE declaration as per IEEE
+> specification that allows reporting Energy Efficient Ethernet capabilities.
 > 
-> Hi all, the Intel graphics CI hits a lockdep issue with commit
-> 86167183a17e ("igc: fix a log entry using uninitialized netdev") in
-> v6.10-rc1.
+> Examples:
+> Before fix:
+> ethtool --show-eee enp174s0
+> EEE settings for enp174s0:
+> 	EEE status: not supported
+> 
+> After fix:
+> EEE settings for enp174s0:
+> 	EEE status: disabled
+> 	Tx LPI: disabled
+> 	Supported EEE link modes:  100baseT/Full
+> 	                           1000baseT/Full
+> 	                           2500baseT/Full
+> 
+> Fixes: 01cf893bf0f4 ("net: intel: i40e/igc: Remove setting Autoneg in EEE capabilities")
+> Suggested-by: Dima Ruinskiy <dima.ruinskiy@intel.com>
+> Signed-off-by: Sasha Neftin <sasha.neftin@intel.com>
+> ---
+>   drivers/net/ethernet/intel/igc/igc_ethtool.c | 9 +++++++--
+>   drivers/net/ethernet/intel/igc/igc_main.c    | 4 ++++
+>   2 files changed, 11 insertions(+), 2 deletions(-)
 
-FWIW, there is a earlier regression report bisected to that commit id:
-https://lore.kernel.org/lkml/CABXGCsOkiGxAfA9tPKjYX7wqjBZQxqK2PzTcW-RgLfgo8G74EQ@mail.gmail.com/
-
-And a revert is up for review:
-https://lore.kernel.org/all/20240529051307.3094901-1-sasha.neftin@intel.com/
-
-Ciao, Thorsten (wearing his 'the Linux kernel's regression tracker' hat)
---
-Everything you wanna know about Linux kernel regression tracking:
-https://linux-regtracking.leemhuis.info/about/#tldr
-If I did something stupid, please tell me, as explained on that page.
+Tested-by: Naama Meir <naamax.meir@linux.intel.com>
