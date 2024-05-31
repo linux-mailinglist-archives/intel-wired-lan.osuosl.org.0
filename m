@@ -1,77 +1,88 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 656F38D5FC9
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 31 May 2024 12:37:30 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4CFF28D627E
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 31 May 2024 15:11:50 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 7883941648;
-	Fri, 31 May 2024 10:37:28 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id EE76961134;
+	Fri, 31 May 2024 13:11:48 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id DKBRVLgGLr7j; Fri, 31 May 2024 10:37:27 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id MqHBKOH-Y47K; Fri, 31 May 2024 13:11:48 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org BAE3241639
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 4EEC26075D
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1717151847;
-	bh=ibqcZ+UlNl9X0ghqpH9GsdCO7uy3HNrrB/Im+tJQjDQ=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
+	s=default; t=1717161108;
+	bh=w0k6iv5heIvIEvsl1IPV4tbwTiNf/oihC32EQLReS1Q=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=gr10FNENy6pvGeW0VYi0l7NfLbxwvYFdUdnh4UwPhKERFQmj+kY4xPZuV+m21URjq
-	 Rt8gIoXPgRjwXRVGg8S/4/lZ/VKXXyGZsh22q9DiWXcKOenVYrUdrFrjjde/KRE/2U
-	 gXz75/v+84luFLWtuQg4CcC2sak8AU+FY8ROHoFhH0cPu8pzuVLOen8fdWtNzgw43Z
-	 vCv5P3xubHPRaLul0KVpg+2soFiiBJC1ukbOT9ktqWy6dJWDdeBTfOiMhKhtJECL5p
-	 M49LlzetiNCel9bwO9xJrLyxRJE0ghl/WA4ciS/3yQ+oN9SvX8qm4weYXEkYb+g6WQ
-	 B6II+wqM8hgSA==
+	b=lg1/T8R/NTwMfxcr546cS5ehZbEdt9RPkxrQBtC3jaqcxgmCqmRjVg+r9rWsi/1XM
+	 8pjPfxI5nRc2yaT37W8GO8aDHTxlL+Q16PmbK3RiVJQwpsNl6ZKB8pkbe+4UfuDT3f
+	 +/phzqi3hV5BA3V7saO4bKNYJAPEaoJB3OW0AjUMfPfc8I5AREX/p++JjETKSfePgJ
+	 AYiTmU5ErMms3YFjh4NmoizZWYgTHoUNGztVJ5emLF8RMeDcgh43/dbLWHOfBZOcrT
+	 EGoQ60KfPFRBCVIAO4jAT2QFl452UNJNzMlNIAwAgL0fsoXq8N4pJw0xCWXGj8HoKq
+	 2Jc9NzLLUZ37w==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id BAE3241639;
-	Fri, 31 May 2024 10:37:27 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 4EEC26075D;
+	Fri, 31 May 2024 13:11:48 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id A4DEC1D50C6
- for <intel-wired-lan@lists.osuosl.org>; Fri, 31 May 2024 10:37:25 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id DBFE91D528A
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 31 May 2024 13:11:46 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 8F9CA4162B
- for <intel-wired-lan@lists.osuosl.org>; Fri, 31 May 2024 10:37:25 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id C41E140547
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 31 May 2024 13:11:45 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Dj_4ZtynDoOt for <intel-wired-lan@lists.osuosl.org>;
- Fri, 31 May 2024 10:37:24 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=141.14.17.11;
- helo=mx3.molgen.mpg.de; envelope-from=pmenzel@molgen.mpg.de;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 1747A40B25
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1747A40B25
-Received: from mx3.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 1747A40B25
- for <intel-wired-lan@lists.osuosl.org>; Fri, 31 May 2024 10:37:22 +0000 (UTC)
-Received: from [141.14.13.3] (g258.RadioFreeInternet.molgen.mpg.de
- [141.14.13.3])
- (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested) (Authenticated sender: pmenzel)
- by mx.molgen.mpg.de (Postfix) with ESMTPSA id 4FD7461E5FE01;
- Fri, 31 May 2024 12:36:56 +0200 (CEST)
-Message-ID: <40438f4d-d790-4921-ad6d-d69977747a57@molgen.mpg.de>
-Date: Fri, 31 May 2024 12:36:55 +0200
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id tXu1yhoXlt-a for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 31 May 2024 13:11:45 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2604:1380:4641:c500::1; helo=dfw.source.kernel.org;
+ envelope-from=horms@kernel.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org C573340564
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C573340564
+Received: from dfw.source.kernel.org (dfw.source.kernel.org
+ [IPv6:2604:1380:4641:c500::1])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id C573340564
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 31 May 2024 13:11:44 +0000 (UTC)
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by dfw.source.kernel.org (Postfix) with ESMTP id 9BA4962415;
+ Fri, 31 May 2024 13:11:43 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9A2E3C116B1;
+ Fri, 31 May 2024 13:11:41 +0000 (UTC)
+Date: Fri, 31 May 2024 14:11:39 +0100
+From: Simon Horman <horms@kernel.org>
+To: Ahmed Zaki <ahmed.zaki@intel.com>
+Message-ID: <20240531131139.GD123401@kernel.org>
+References: <20240527185810.3077299-1-ahmed.zaki@intel.com>
+ <20240527185810.3077299-2-ahmed.zaki@intel.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: Wojciech Drewek <wojciech.drewek@intel.com>
-References: <20240531093206.714632-1-wojciech.drewek@intel.com>
-Content-Language: en-US
-From: Paul Menzel <pmenzel@molgen.mpg.de>
-In-Reply-To: <20240531093206.714632-1-wojciech.drewek@intel.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=molgen.mpg.de
-Subject: Re: [Intel-wired-lan] [PATCH iwl-net v3] ice: implement AQ download
- pkg retry
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240527185810.3077299-2-ahmed.zaki@intel.com>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=kernel.org; s=k20201202; t=1717161103;
+ bh=+RxMHhYO/X4eUxC++M6brEN8NylFcxLydIy0tUrLLHo=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=QWktP+cA9ArMwKmdhpAPp+xzW+J6qnw7HK6IaT5DPMGQKTdhtQ9svUid06xCLX49R
+ UPHcQa2PCDTeoaf9c1E1OmOwlxroOQfkMZPqQ1ezCoCO9wXax8Z3LYaX4roHdGJdF0
+ RdWeCfuHNZNAJBKwQDa1ictEr6nGRmQltAf/zJAS5m0/6ZOaiLlnaSNMZJvT8BliEY
+ hjG69xo3g+g6NRcxv/NIxSPyfaGVnpW7wD4JqJQ7E5drnBcv2fa/jiZa1NK3N0cqXL
+ 74eVIE/5G11pM2lfsZkHq3MOdbTaHEjd38KTjMCgppa0RFAbO8hYBs+KH9+zyFeIxf
+ Z1x4VfKPG1N4w==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=kernel.org
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=QWktP+cA
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v2 01/13] ice: add parser
+ create and destroy skeleton
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,84 +95,75 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: jacob.e.keller@intel.com, netdev@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org, kuba@kernel.org
+Cc: Wojciech Drewek <wojciech.drewek@intel.com>,
+ Junfeng Guo <junfeng.guo@intel.com>, netdev@vger.kernel.org,
+ Marcin Szycik <marcin.szycik@linux.intel.com>, anthony.l.nguyen@intel.com,
+ jacob.e.keller@intel.com, intel-wired-lan@lists.osuosl.org
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Dear Wojciech,
-
-
-Thank you for your patch.
-
-Am 31.05.24 um 11:32 schrieb Wojciech Drewek:
-> ice_aqc_opc_download_pkg (0x0C40) AQ sporadically returns error due
-> to FW issue. Fix this by retrying five times before moving to
-> Safe Mode.
-
-Also mention the delay of 20 ms?
-
-Please elaborate, what firmware version you tested with, and if there 
-are plans to fix this in the firmware.
-
-> Fixes: c76488109616 ("ice: Implement Dynamic Device Personalization (DDP) download")
-> Reviewed-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-> Signed-off-by: Wojciech Drewek <wojciech.drewek@intel.com>
-> Reviewed-by: Brett Creeley <brett.creeley@amd.com>
-> ---
-> v2: remove "failure" from log message
-> v3: don't sleep in the last iteration of the wait loop
-> ---
->   drivers/net/ethernet/intel/ice/ice_ddp.c | 23 +++++++++++++++++++++--
->   1 file changed, 21 insertions(+), 2 deletions(-)
+On Mon, May 27, 2024 at 12:57:58PM -0600, Ahmed Zaki wrote:
+> From: Junfeng Guo <junfeng.guo@intel.com>
 > 
-> diff --git a/drivers/net/ethernet/intel/ice/ice_ddp.c b/drivers/net/ethernet/intel/ice/ice_ddp.c
-> index ce5034ed2b24..f182179529b7 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_ddp.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_ddp.c
-> @@ -1339,6 +1339,7 @@ ice_dwnld_cfg_bufs_no_lock(struct ice_hw *hw, struct ice_buf *bufs, u32 start,
->   
->   	for (i = 0; i < count; i++) {
->   		bool last = false;
-> +		int try_cnt = 0;
->   		int status;
->   
->   		bh = (struct ice_buf_hdr *)(bufs + start + i);
-> @@ -1346,8 +1347,26 @@ ice_dwnld_cfg_bufs_no_lock(struct ice_hw *hw, struct ice_buf *bufs, u32 start,
->   		if (indicate_last)
->   			last = ice_is_last_download_buffer(bh, i, count);
->   
-> -		status = ice_aq_download_pkg(hw, bh, ICE_PKG_BUF_SIZE, last,
-> -					     &offset, &info, NULL);
-> +		while (1) {
-> +			status = ice_aq_download_pkg(hw, bh, ICE_PKG_BUF_SIZE,
-> +						     last, &offset, &info,
-> +						     NULL);
-> +			if (hw->adminq.sq_last_status != ICE_AQ_RC_ENOSEC &&
-> +			    hw->adminq.sq_last_status != ICE_AQ_RC_EBADSIG)
-> +				break;
+> Add new parser module which can parse a packet in binary and generate
+> information like ptype, protocol/offset pairs and flags which can be later
+> used to feed the FXP profile creation directly.
+> 
+> Add skeleton of the create and destroy APIs:
+> ice_parser_create()
+> ice_parser_destroy()
+> 
+> Reviewed-by: Marcin Szycik <marcin.szycik@linux.intel.com>
+> Reviewed-by: Wojciech Drewek <wojciech.drewek@intel.com>
+> Signed-off-by: Qi Zhang <qi.z.zhang@intel.com>
+> Signed-off-by: Junfeng Guo <junfeng.guo@intel.com>
+> Co-developed-by: Ahmed Zaki <ahmed.zaki@intel.com>
+> Signed-off-by: Ahmed Zaki <ahmed.zaki@intel.com>
+
+...
+
+> diff --git a/drivers/net/ethernet/intel/ice/ice_parser.c b/drivers/net/ethernet/intel/ice/ice_parser.c
+> new file mode 100644
+> index 000000000000..b7865b6a0a9b
+> --- /dev/null
+> +++ b/drivers/net/ethernet/intel/ice/ice_parser.c
+> @@ -0,0 +1,31 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +/* Copyright (C) 2024 Intel Corporation */
 > +
-> +			try_cnt++;
+> +#include "ice_common.h"
 > +
-> +			if (try_cnt == 5)
-> +				break;
+> +/**
+> + * ice_parser_create - create a parser instance
+> + * @hw: pointer to the hardware structure
+> + *
+> + * Return a pointer to the allocated parser instance
+
+Hi Ahmed,
+
+A minor nit from my side.
+
+I think that in order to keep ./scripts/kernel-doc -none -Wall happy
+this should be:
+
+ * Return: pointer to the allocated parser instance
+
+And perhaps it would be best to mention the error case too
+
+ * Return: pointer to the allocated parser instance, or an error pointer
+
+
+> + */
+> +struct ice_parser *ice_parser_create(struct ice_hw *hw)
+> +{
+> +	struct ice_parser *p;
 > +
-> +			msleep(20);
-> +		}
+> +	p = kzalloc(sizeof(*p), GFP_KERNEL);
+> +	if (!p)
+> +		return ERR_PTR(-ENOMEM);
 > +
-> +		if (try_cnt)
-> +			dev_dbg(ice_hw_to_dev(hw),
-> +				"ice_aq_download_pkg number of retries: %d\n",
-> +				try_cnt);
+> +	p->hw = hw;
+> +	return p;
+> +}
 
-Should the firmware be fixed, a warning could be shown asking to update 
-the firmware.
-
->   
->   		/* Save AQ status from download package */
->   		if (status) {
-
-
-Kind regards,
-
-Paul
+...
