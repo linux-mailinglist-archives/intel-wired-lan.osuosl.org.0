@@ -2,87 +2,85 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9DACC8D68E6
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 31 May 2024 20:18:54 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 54E3D8D68F5
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 31 May 2024 20:26:00 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 444DC416D6;
-	Fri, 31 May 2024 18:18:53 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 73BB242440;
+	Fri, 31 May 2024 18:25:58 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Gwj9gfg8ZTTE; Fri, 31 May 2024 18:18:52 +0000 (UTC)
+ id Elpzw3SVQCW3; Fri, 31 May 2024 18:25:57 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6CE5F40382
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8A9DC42431
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1717179532;
-	bh=BU6nFDTsc8iAK/liBlb+POIJTadTdp/jmnMA5OvEeW8=;
+	s=default; t=1717179957;
+	bh=mxoHhKc5yVqF5aLf2lCxuRlfSLgcWWZ4iiTVCViy8gc=;
 	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=vVDg+9BheWmJPSCMkeLuGhIjZTNFiZmycoN0kd/WScTFWO7aVdKEpwCC8JuZjIR4H
-	 L6/bMKZbh++gXr/lf9cXfB9N0o34VWsqOgA6gi1lWOxtES5CpcRyy+Xyv8cNMYLyNY
-	 /CyHRaqOFKLogGaeaXW1tILAK/qD4oM9LkvODMi6sKGz6JSX9eqWBx3afHevrpoC2P
-	 NACMtcYUMmGtZUeu7ZvOLvfD5f3HfYwD8U98hpCKvbtuPBq1Zv4h0Twb88vrutnYoa
-	 +iydAUsPkUUMzziuo9zeE/eVx2PVK738zEpst+CsSELs6ZfoO46OukFqHP9XXQ4tzq
-	 /yzWKTxT4Ec4Q==
+	b=o9SGYojAyWXPJxGlJIj8d1S97cQyUr9bFFoWdSI7Rx+IDV9zA1EyvtQDo9EcJrwJY
+	 Om1O2y8lQ9Xl4sGBEhYH8z5bO7nx8EZPTa+RbVFzKZYTwspMTUNVtdxN+J75r5HsNk
+	 m+muaiQkOTjTjOky2MVXtT1nA3q12ClLX/VOdZApZ+ZHf6pxN7BfOwmr+awpjjgqyt
+	 wjSDL/BBRAWC2OjHlbIoCj3+ghJfzRZJyemsHd/IE3oOyah1BbLQTUK5WCorWV5KsF
+	 eKEI4XRnuSWSW7rqO62RRQxyA6KbU4wCklvDJkQ7JR7juPrDOf/a4qlDD9NdXWdIlw
+	 MUXGm2aMfiDog==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 6CE5F40382;
-	Fri, 31 May 2024 18:18:52 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 8A9DC42431;
+	Fri, 31 May 2024 18:25:57 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 85EFB1BF36D
- for <intel-wired-lan@lists.osuosl.org>; Fri, 31 May 2024 18:18:50 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 1D0BD1D560A
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 31 May 2024 18:25:55 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 718F740336
- for <intel-wired-lan@lists.osuosl.org>; Fri, 31 May 2024 18:18:50 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 087158468E
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 31 May 2024 18:25:55 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 0i7cQCRzKNGZ for <intel-wired-lan@lists.osuosl.org>;
- Fri, 31 May 2024 18:18:49 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2604:1380:4641:c500::1; helo=dfw.source.kernel.org;
- envelope-from=horms@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 9AE42402D8
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9AE42402D8
-Received: from dfw.source.kernel.org (dfw.source.kernel.org
- [IPv6:2604:1380:4641:c500::1])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 9AE42402D8
- for <intel-wired-lan@lists.osuosl.org>; Fri, 31 May 2024 18:18:49 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id mfbayjvN4c6A for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 31 May 2024 18:25:54 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=139.178.84.217;
+ helo=dfw.source.kernel.org; envelope-from=horms@kernel.org;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org EAA358468C
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org EAA358468C
+Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id EAA358468C
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 31 May 2024 18:25:53 +0000 (UTC)
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by dfw.source.kernel.org (Postfix) with ESMTP id D52F462DC3;
- Fri, 31 May 2024 18:18:48 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id AA081C116B1;
- Fri, 31 May 2024 18:18:45 +0000 (UTC)
-Date: Fri, 31 May 2024 19:18:43 +0100
+ by dfw.source.kernel.org (Postfix) with ESMTP id 3362462A12;
+ Fri, 31 May 2024 18:25:53 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 93422C116B1;
+ Fri, 31 May 2024 18:25:51 +0000 (UTC)
+Date: Fri, 31 May 2024 19:25:49 +0100
 From: Simon Horman <horms@kernel.org>
-To: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-Message-ID: <20240531181843.GQ491852@kernel.org>
-References: <20240528043813.1342483-1-michal.swiatkowski@linux.intel.com>
- <20240528043813.1342483-16-michal.swiatkowski@linux.intel.com>
+To: Michal Kubiak <michal.kubiak@intel.com>
+Message-ID: <20240531182549.GR491852@kernel.org>
+References: <20240516164108.1482192-1-michal.kubiak@intel.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20240528043813.1342483-16-michal.swiatkowski@linux.intel.com>
+In-Reply-To: <20240516164108.1482192-1-michal.kubiak@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1717179528;
- bh=yTCk9ONn+AOISS6mJp230I9j1L/ri//w8UIENOBzFPQ=;
+ d=kernel.org; s=k20201202; t=1717179952;
+ bh=gw2JcXterCcKSVJS6tZdEZSTY3FbDxSWvpTUL/n5XmM=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=QfidlvOlpLSKaHgutW+r451uKcLN6lLcvKxKUgLDI+e6GzUMd/qAyhAMhYR1WH+Ui
- Y1JbX/Wo6EurlcaVbQsR/0xzjQYc7RKuhsvtAU8IMvjlFxsfSXa541VsLuL6bRsKun
- n1tOeaAhYLMWtxt0iR2rDmLxI4YHsmgPJcK7skkk0obt25PfIdWcuh1Sjb7J+mx1H9
- QuSW08O/aPeQOdFq6FH3sM7HPkzg3KyI/JBVz0dLNUaIFESAd5jdGQLNnAWf+LAnlD
- l9EgT08L/ct085jsdG2OElixxFQV7LRl4RjMWc4IgPHRycfMIH+KsUdoy+FPni9TgY
- PqaOdGM9+40ug==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ b=Kh3Ckn1aB1aX9w7X2x4+IFjKMsWvVkJIjAOPwPvQLsrAINfNJ2RDiiZOQa2GVPBa+
+ atwIJlJKziUalAvb9X/q6yjwxcbqr1pPuhczZzo2SeFpuNoxgIjxIMQqxssTX7ssce
+ 3kp+c3OsM7EybjQ1dJb4W7N3h5IexVxJnKkxeuvPGIli82XZaEEsx5Na74KSHc/Jcc
+ kRxvn5UUFYnr1egRwaPMdQ7I8+SuinQcPJtEKGYGfwmVnC5WNRVsrL4i1XS1fhS8TJ
+ qivt5hlQj+n66U/OSS5vGgxp8BKQndbB127ngchWi55UMywBWvKHstEddx7HPOIaoM
+ 9eLVUUSyuyA2w==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=QfidlvOl
-Subject: Re: [Intel-wired-lan] [iwl-next v3 15/15] ice: allow to activate
- and deactivate subfunction
+ header.a=rsa-sha256 header.s=k20201202 header.b=Kh3Ckn1a
+Subject: Re: [Intel-wired-lan] [PATCH iwl-net] i40e: Fix XDP program
+ unloading while removing the driver
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,23 +93,35 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: shayd@nvidia.com, maciej.fijalkowski@intel.com,
- mateusz.polchlopek@intel.com, netdev@vger.kernel.org, jiri@nvidia.com,
- kalesh-anakkur.purayil@broadcom.com, michal.kubiak@intel.com,
- intel-wired-lan@lists.osuosl.org, pio.raczynski@gmail.com,
- sridhar.samudrala@intel.com, jacob.e.keller@intel.com,
- wojciech.drewek@intel.com, przemyslaw.kitszel@intel.com
+Cc: Wojciech Drewek <wojciech.drewek@intel.com>, maciej.fijalkowski@intel.com,
+ intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, May 28, 2024 at 06:38:13AM +0200, Michal Swiatkowski wrote:
-> From: Piotr Raczynski <piotr.raczynski@intel.com>
+On Thu, May 16, 2024 at 06:41:08PM +0200, Michal Kubiak wrote:
+> The commit 6533e558c650 ("i40e: Fix reset path while removing
+> the driver") introduced a new PF state "__I40E_IN_REMOVE" to block
+> modifying the XDP program while the driver is being removed.
+> Unfortunately, such a change is useful only if the ".ndo_bpf()"
+> callback was called out of the rmmod context because unloading the
+> existing XDP program is also a part of driver removing procedure.
+> In other words, from the rmmod context the driver is expected to
+> unload the XDP program without reporting any errors. Otherwise,
+> the kernel warning with callstack is printed out to dmesg.
 > 
-> Use previously implemented SF aux driver. It is probe during SF
-> activation and remove after deactivation.
+> Example failing scenario:
+>  1. Load the i40e driver.
+>  2. Load the XDP program.
+>  3. Unload the i40e driver (using "rmmod" command).
 > 
-> Signed-off-by: Piotr Raczynski <piotr.raczynski@intel.com>
-> Signed-off-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+> Fix this by improving checks in ".ndo_bpf()" to determine if that
+> callback was called from the removing context and if the kernel
+> wants to unload the XDP program. Allow for unloading the XDP program
+> in such a case.
+> 
+> Fixes: 6533e558c650 ("i40e: Fix reset path while removing the driver")
+> Reviewed-by: Wojciech Drewek <wojciech.drewek@intel.com>
+> Signed-off-by: Michal Kubiak <michal.kubiak@intel.com>
 
 Reviewed-by: Simon Horman <horms@kernel.org>
 
