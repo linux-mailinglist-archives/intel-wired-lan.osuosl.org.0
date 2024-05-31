@@ -1,88 +1,87 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id E6A218D68D2
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 31 May 2024 20:17:07 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id E545B8D68D4
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 31 May 2024 20:17:22 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 8B8E442418;
-	Fri, 31 May 2024 18:17:06 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 965AD4242A;
+	Fri, 31 May 2024 18:17:21 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id mN2KiICvvShy; Fri, 31 May 2024 18:17:05 +0000 (UTC)
+ id RYq3AteDaZJR; Fri, 31 May 2024 18:17:21 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9325942426
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org CEAB9423B2
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1717179425;
-	bh=qhL7AQfW8/R6Pjo+zvn2WvMC6Yv6WlBT2kNknKQtq8I=;
+	s=default; t=1717179440;
+	bh=+5P6leHL4hzVleAQr3z0NnUilCoR5BeoyyQSC5SY8KM=;
 	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=dps3/YDTKDh+U9Mv8MQDrxuui6R5PGp7DR1E8+YANrQKjsFHdi+0vM7IuP9TH9ij7
-	 cAXkhXseJLWwRbhTDvKohKDsMRz55E2bieGt776Fimx/GShtswJXhYECpbACVpibbN
-	 c+a4ulXJsDhvnWMa2qmwkS8hnb4bHZCAj/VepjN9QA1dfVcoBrKNJG8xGx2qH1ubAJ
-	 9UZsRHmTImw9PeS0i2Khj4QqGTJY7D4FKNceHDhQBC81q9ulIpo++IU0ljNoYtodE/
-	 kPn2CjZuhcNfAv3KNUHdYTzXkbaGBmN3QQ+romCpT8oW5x6R5spMaAhX/eBgSBm0FY
-	 7+YyY03Q2Wu6Q==
+	b=3LxtxBoq79ZPXrSZsMHkcvb3Ya53gfUm8ovp1HFgNVR9Fhw1TMClCxnAMDBMX4Wwp
+	 Rroll5ZR2mODyglOLR+HJLNI6OUSkQLvZ77ORwrAg1JKL+MXe31XcTuzbmJUUdrOQO
+	 V38Fjp/1gUrfkMFFkqA1tyE3vdTxDVHAz5fnlnEBoZAJiDISsHz3HD3DkLTohV80Fv
+	 MkeqYdX2YdrS//VvSOS8OM9OPdwl2px80MfRQpGKrYDwsNZCAHlxqcVEKr/ARakfe1
+	 5ILnPx8AYBEXfbBff54soiRxVxGwR9FFKISLO7UD6yPQ1mTCOWueReN9dVwcJ/thCN
+	 G1AkSg6fMK/fQ==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 9325942426;
-	Fri, 31 May 2024 18:17:05 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id CEAB9423B2;
+	Fri, 31 May 2024 18:17:20 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 4C4271BF36D
- for <intel-wired-lan@lists.osuosl.org>; Fri, 31 May 2024 18:17:03 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 0F3221BF36D
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 31 May 2024 18:17:19 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 385A4606CB
- for <intel-wired-lan@lists.osuosl.org>; Fri, 31 May 2024 18:17:03 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 065CA84632
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 31 May 2024 18:17:19 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id eE5Yq7MRzN3j for <intel-wired-lan@lists.osuosl.org>;
- Fri, 31 May 2024 18:17:02 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2604:1380:40e1:4800::1; helo=sin.source.kernel.org;
- envelope-from=horms@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 7DC26606AA
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7DC26606AA
-Received: from sin.source.kernel.org (sin.source.kernel.org
- [IPv6:2604:1380:40e1:4800::1])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 7DC26606AA
- for <intel-wired-lan@lists.osuosl.org>; Fri, 31 May 2024 18:17:02 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id ZzaLEnfg1ONL for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 31 May 2024 18:17:18 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=145.40.73.55;
+ helo=sin.source.kernel.org; envelope-from=horms@kernel.org;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 40C2C84631
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 40C2C84631
+Received: from sin.source.kernel.org (sin.source.kernel.org [145.40.73.55])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 40C2C84631
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 31 May 2024 18:17:18 +0000 (UTC)
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by sin.source.kernel.org (Postfix) with ESMTP id 2CE1DCE1C4A;
- Fri, 31 May 2024 18:17:00 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7A62EC116B1;
- Fri, 31 May 2024 18:16:56 +0000 (UTC)
-Date: Fri, 31 May 2024 19:16:54 +0100
+ by sin.source.kernel.org (Postfix) with ESMTP id C4EEDCE1C4A;
+ Fri, 31 May 2024 18:17:15 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id EA948C116B1;
+ Fri, 31 May 2024 18:17:11 +0000 (UTC)
+Date: Fri, 31 May 2024 19:17:09 +0100
 From: Simon Horman <horms@kernel.org>
 To: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-Message-ID: <20240531181654.GK491852@kernel.org>
+Message-ID: <20240531181709.GL491852@kernel.org>
 References: <20240528043813.1342483-1-michal.swiatkowski@linux.intel.com>
- <20240528043813.1342483-9-michal.swiatkowski@linux.intel.com>
+ <20240528043813.1342483-10-michal.swiatkowski@linux.intel.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20240528043813.1342483-9-michal.swiatkowski@linux.intel.com>
+In-Reply-To: <20240528043813.1342483-10-michal.swiatkowski@linux.intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1717179419;
- bh=KOgNjrMn9knsj/gt9uAmGZH0ZGkZNuqnBZRpvXpDHS8=;
+ d=kernel.org; s=k20201202; t=1717179435;
+ bh=zPBrhbLB0Q56LyxnRq5onVyfj0pzfuh5LNc4BRXZmWQ=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=HY9z2YiiZb7/DB5vqPY/rjeGaqIEGJhqtwVHlg7JASckBeFdSd+KupN2geekBaTQ7
- lothdNh/KVGLX7/xoBWaK4aQ8xisKSGdjuHUi+kHQZWziDCC3T7AdhAYQniAJMncas
- cZN1KaMCiWMVXnY+RqUpUQfj0UCNYmMvAy9wgeY6Z9jWwL1GfHovInqarWhw4BTeK6
- 38VMlFVQTxetRUYXlHoDH3ybmhjFgO/hQAE2YVtb2DpRd8wxvKZ1Szow5SYNbWzdsH
- LuydcFkcnAX+rq7ReiVkM/CaOXhq3qCZeYqSX0jBrgwHR61mzz9FWhq5FdaGXN01GH
- BCQL97uvR5fhg==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ b=ivmJASeYYm1gNnFdhHxkL9bJ540N5+chCYHV0RWtkcSXRVYT6KCUGqHPTO4+6HSCG
+ wzErI4nUH2feDqBu/wYBAdQM8bFHyhe26CzVlKkwogXnsEA/LK9D0R2rlUTT7WxWIV
+ bzz6tS44pQwgJR+MzBPJeamCIMFzuGWG1+CLdW3gsEKsbXEPF0jj/27ElpTU5eS4pl
+ I5n9GSHpF/pP1ELnJNPDdKnz7oSlsT9ZMFexqcLhbm/RX04zjciL6h3eMV+hsns12y
+ ndrTDO3QbFfhsQRqFjbeL4ThItefj35Spv2nfot5w/nOWJyWMivpYvG3u/r9jX0j08
+ Ipr2zFHjQxfOg==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=HY9z2Yii
-Subject: Re: [Intel-wired-lan] [iwl-next v3 08/15] ice: make representor
- code generic
+ header.a=rsa-sha256 header.s=k20201202 header.b=ivmJASeY
+Subject: Re: [Intel-wired-lan] [iwl-next v3 09/15] ice: create port
+ representor for SF
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -104,18 +103,13 @@ Cc: shayd@nvidia.com, maciej.fijalkowski@intel.com,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, May 28, 2024 at 06:38:06AM +0200, Michal Swiatkowski wrote:
-> Keep the same flow of port representor creation, but instead of general
-> attach function create helpers for specific representor type.
+On Tue, May 28, 2024 at 06:38:07AM +0200, Michal Swiatkowski wrote:
+> Implement attaching and detaching SF port representor. It is done in the
+> same way as the VF port representor.
 > 
-> Store function pointer for add and remove representor.
+> SF port representor is always added or removed with devlink
+> lock taken.
 > 
-> Type of port representor can be also known based on VSI type, but it
-> is more clean to have it directly saved in port representor structure.
-> 
-> Add devlink lock for whole port representor creation and destruction.
-> 
-> Reviewed-by: Wojciech Drewek <wojciech.drewek@intel.com>
 > Signed-off-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
 
 Reviewed-by: Simon Horman <horms@kernel.org>
