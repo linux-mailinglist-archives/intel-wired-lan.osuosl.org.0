@@ -1,191 +1,190 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5B4598D6D01
-	for <lists+intel-wired-lan@lfdr.de>; Sat,  1 Jun 2024 01:49:22 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 31C448D6D08
+	for <lists+intel-wired-lan@lfdr.de>; Sat,  1 Jun 2024 01:52:35 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id CAC5F81315;
-	Fri, 31 May 2024 23:49:20 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id DC539610F8;
+	Fri, 31 May 2024 23:52:31 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id eFl17ucqmbYP; Fri, 31 May 2024 23:49:19 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id RRi0CpyF510J; Fri, 31 May 2024 23:52:31 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E238C8124B
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1CA8A610F5
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1717199359;
-	bh=5tojrs3r1a+fyRUKwgH3SVqrY0OKX3PIPc7hgkP4evs=;
+	s=default; t=1717199551;
+	bh=H8hrMB1/+iMIf4/aal01SSgjrPaDwZa3K14TCHlKsBI=;
 	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=5OWsybxNGnwetoLxopFBl7KK7kfcoHHKbDASLngHT+sBoZ3Cplwr9CHr6ICEnvLkF
-	 gttrc9mMwOj+Wq5+KnA2aSRzJOunFN/11OkTXtBPmqF6V6103A+ETjg9g4VPeW6YWy
-	 VHoa9QVAbnBl068jXT+H9CxrAP0HXm1k7QmmqIye42C9xWBnHnd3xCcCsy/ezkke8J
-	 9AST5+4dMi4jnkeCE1jo2A6elfqn89UporTM3iJDW/qTPFSp3x5sYTLO41Qik21MeJ
-	 IRuxRb8NvudlfxV9LCOYHmUmQhP5G5Rk8w53vQedJ1EbJaKJ26eygI+8/Ww9c3Lh39
-	 KOewecNAmaz9A==
+	b=tyEtfkqyf8DAebO91/Hea1Bgi9ybDIDT9SqMnPFbua5U+EnK4g7BCQ6/lZFAWzp26
+	 0Hth/cu6/4+jQiC69zHJlzMCEKcPiWQ1q9QIj4tg49bfjT+ypZz6qgahqBBPey/c2Q
+	 qkkfd8a9U6DsrTd/geNpqR1ccEIi54GqodN5DaM8CfIbCQCPJOxXWUrNNW93kXVYJ3
+	 OhuyiTHTWzrBUcBYpljZ1zutuza40wWsF1bWFZcd63tB6tdODSkghnc/W/dH+K5Br0
+	 25NXJNEpFERjaJNi4PQZ2LNCVOW1VwVr9DA+ITdtI9+e1Vd9ttsBCGH7lbHz/dk7GL
+	 5NcdyYKp7ytqw==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id E238C8124B;
-	Fri, 31 May 2024 23:49:18 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 1CA8A610F5;
+	Fri, 31 May 2024 23:52:31 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 6EDD71D5919
- for <intel-wired-lan@lists.osuosl.org>; Fri, 31 May 2024 23:49:14 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 2250E1D4984
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 31 May 2024 23:52:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 58DC781190
- for <intel-wired-lan@lists.osuosl.org>; Fri, 31 May 2024 23:49:14 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 0D4A84187A
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 31 May 2024 23:52:29 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id j3UG2demmugM for <intel-wired-lan@lists.osuosl.org>;
- Fri, 31 May 2024 23:49:11 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=40.107.95.70;
- helo=nam02-dm3-obe.outbound.protection.outlook.com;
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id pzDpRRA--yO4 for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 31 May 2024 23:52:27 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=40.107.243.76;
+ helo=nam12-dm6-obe.outbound.protection.outlook.com;
  envelope-from=shannon.nelson@amd.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 81F4381178
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 81F4381178
-Received: from NAM02-DM3-obe.outbound.protection.outlook.com
- (mail-dm3nam02on2070.outbound.protection.outlook.com [40.107.95.70])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 81F4381178
- for <intel-wired-lan@lists.osuosl.org>; Fri, 31 May 2024 23:49:11 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 9EB8D400F9
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 9EB8D400F9
+Received: from NAM12-DM6-obe.outbound.protection.outlook.com
+ (mail-dm6nam12on2076.outbound.protection.outlook.com [40.107.243.76])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 9EB8D400F9
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 31 May 2024 23:52:27 +0000 (UTC)
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=LAJps9v1mEUcPUuMVWEoyaAeZR/EXGbIxDUxyLwdWKGHMcWS7ESULMkoJnPpe8KPkLOuT8dcBHmNK2dY0nPsY8E6ICvcGYy5TFOXo9Uu2M8I1U1NAGpWWtPr11Ol7v1OuT49aDHa2pMU96NJENM+eJ/n6JTlxto08AiK9kbZmr8TXDXoTDMQiAse7CT1IBc6FRz9xO479gLAbuEZ/RapUVba42L5RoFHmg6GNbiOXAOvClTPalFQ8hkHmKzyQYkwsbxp6Mi6BagjHQwYdjc6Z0mvna1SZEZGPR4u1GFcD+TAwJmd5/T8vlaI5nI1smahPP/KvNuINTT7hCCmrfl6zw==
+ b=L3QY2HwIkgfpEFVqeSG8vuwRc/vhofUDw0e5XkqZzIc9DLobmDjLFiMdjtXSEaSjwYJNDv5UOlyeYwHOhCyhd1WLSp62ByLb4W37RAISVnZpVHeZs6u3NIFCafuO9EPcDCInyUvvy7AzJDBbua9CP2RR5/956xtXsuYF9c4OXb7TgqkFKe1swXMSF5Rj9fsqRlvsIfZC5ZJj8H7/iXzf6YZ/27JjRrp9aUUuSFHLZElseYsefiMJIcjk5X3x1FJhglEdxvoTAs/ZZgedu8nJ0C6jrjJxA6HKTQmUhwC93e89w3VOTbX8RpomXwoYzCV0ntqsfT0U+Dh0E3ZZKDnCxw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=5tojrs3r1a+fyRUKwgH3SVqrY0OKX3PIPc7hgkP4evs=;
- b=krKZd3FoARBvOHtdjXKHWTTw/EEpBBTCRKRHkikVvAGQCeto2DF2Cp+0guaIVtt/Iv95rOKP/MFFBLdwaZcKMDOJiC8PAj2mHrgsnqrFKu3qcBpjOpPesmv6hpK7kBKDRMSpqRul66XpglTNtp4V4jYO1LtIwUYW2rcGOc2K8l2SwNcRchD5PXnyOAB+sKPDn3wgjVLd/oCnbrNYVgIgtgQw9KqmNDcnc64dxBh5/Vo7mHMbkxTDWwZmHyAJ6WwyXRYxbLt5F+FZUegt5FESV+DjUDrkRlKBfmpDV/yz08cUM4trLZiCkjGxHKSjzXZeZ9b8AFZTXuKIxUeYYYHkzA==
+ bh=H8hrMB1/+iMIf4/aal01SSgjrPaDwZa3K14TCHlKsBI=;
+ b=jHqmvp6UvrSeW4JjnY2hru67KqFIz/x2QCrzlWFyOxjeY/Mge4/xpMFpmyepuLtRE7ijqB8IYw5/LivCccwRXuv/0MvsyAw88d0riLleJOuIcXCYN5GeXoIvu8xpyje15vPP3GHaOIw9GAcwLptQCO4OqUMKdH2Kzw5DwUKj1kjOCjLBXmzcXJHZaLi3T07FSDe4xH5o8CNTDuU0bJovZjT4YfV7SHpEevincEokQYQ1x9JYteu6gHNeqnpZSR9hHPQLVdAdULned4zo+I+WKJRkk4gYJljrJ3CgAc648ifxb4CPrgIWB0xHvfToaY/j5thelrm1iU5Z28ofVVQQZw==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=amd.com; dmarc=pass action=none header.from=amd.com; dkim=pass
  header.d=amd.com; arc=none
 Received: from DS0PR12MB6583.namprd12.prod.outlook.com (2603:10b6:8:d1::12) by
- CH3PR12MB9396.namprd12.prod.outlook.com (2603:10b6:610:1d0::8) with
- Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.7633.21; Fri, 31 May 2024 23:49:05 +0000
+ CH3PR12MB8880.namprd12.prod.outlook.com (2603:10b6:610:17b::18) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7633.22; Fri, 31 May
+ 2024 23:52:24 +0000
 Received: from DS0PR12MB6583.namprd12.prod.outlook.com
  ([fe80::c8a9:4b0d:e1c7:aecb]) by DS0PR12MB6583.namprd12.prod.outlook.com
  ([fe80::c8a9:4b0d:e1c7:aecb%4]) with mapi id 15.20.7633.018; Fri, 31 May 2024
- 23:49:05 +0000
-Message-ID: <3f1a5f28-4e5c-463e-9049-ffc23efc4f93@amd.com>
-Date: Fri, 31 May 2024 16:49:05 -0700
+ 23:52:24 +0000
+Message-ID: <331ee4dc-41eb-4290-b263-3fab1ca50654@amd.com>
+Date: Fri, 31 May 2024 16:52:22 -0700
 User-Agent: Mozilla Thunderbird
 Content-Language: en-US
 To: Maciej Fijalkowski <maciej.fijalkowski@intel.com>,
  intel-wired-lan@lists.osuosl.org
 References: <20240529112337.3639084-1-maciej.fijalkowski@intel.com>
- <20240529112337.3639084-7-maciej.fijalkowski@intel.com>
 From: "Nelson, Shannon" <shannon.nelson@amd.com>
-In-Reply-To: <20240529112337.3639084-7-maciej.fijalkowski@intel.com>
+In-Reply-To: <20240529112337.3639084-1-maciej.fijalkowski@intel.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-ClientProxiedBy: BY3PR10CA0015.namprd10.prod.outlook.com
- (2603:10b6:a03:255::20) To DS0PR12MB6583.namprd12.prod.outlook.com
+X-ClientProxiedBy: BY3PR05CA0037.namprd05.prod.outlook.com
+ (2603:10b6:a03:39b::12) To DS0PR12MB6583.namprd12.prod.outlook.com
  (2603:10b6:8:d1::12)
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DS0PR12MB6583:EE_|CH3PR12MB9396:EE_
-X-MS-Office365-Filtering-Correlation-Id: 634c4bcd-212c-4c02-b4ba-08dc81cc4194
+X-MS-TrafficTypeDiagnostic: DS0PR12MB6583:EE_|CH3PR12MB8880:EE_
+X-MS-Office365-Filtering-Correlation-Id: e462d7de-dc3b-4898-1c1b-08dc81ccb841
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230031|1800799015|376005|366007;
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?QVdDN0VwaTJYclpMZzhEaHpMK2lndjhoNHF2a003YlM4OVozbmJjdE1YWUxt?=
- =?utf-8?B?dEwwNUVBZTRUNHdzZGVTanJ3RWczZWtINmd2ZWhkWEYxdDU2WkRBVTRSekM3?=
- =?utf-8?B?YWliUjE4czdicS9qNVJxcWlRblJQejJ4Vlpyb0RYVG1zcFRUaTZvUDBsUzBI?=
- =?utf-8?B?aE4xSlR4RFBMalJQS0d6YkVzQ0hsY0s4azNrWmZLczhBTnZRSVVtSFdyRzNn?=
- =?utf-8?B?eXdWcFRubndhZVdBOXc5enZCS3hyL3dOYXFtcmYzdzdqWi9pWWdXKzFNT0hP?=
- =?utf-8?B?MmhNSkZ4MHQyZDFweW10b3FUVnFIMzg2UFdCWEN1TVM0NExaWGp0a25DcWRW?=
- =?utf-8?B?OUh6d1pkaTNmdDJRK3pxKzVBdWxndXJuc1BkSUxRQzFXN1V1aUVDb0k2SXhk?=
- =?utf-8?B?RzBDSzczSDY1K2FqeVg3eHVUbS9ZQmVHN2MrZk9DZUh6TmFmVEtoUWwwVkJS?=
- =?utf-8?B?NmpyK1cyaVV5bDBacENSaC9WUnI5RWUvVndmMkgvVjBpU0Z0NDBkSkRuM1la?=
- =?utf-8?B?UDlwdXRYOW9PaDFTS1JqOXVrcUlab1Z5VEVDaXRUN1o1QW9qYnFBZ1U0d3h4?=
- =?utf-8?B?eDZFd2hLZG1Tc0gwNHdFZzV3MnBtSU0zUDJnZ1BveHhXMk9wS3pXSlh0Mm5z?=
- =?utf-8?B?SDMrUHl4UEwzRzFaYS9MblJyWkJNYVIyaERQWE5aMFNlWVBvcHk2QXlheFNL?=
- =?utf-8?B?MjgvclIwK0RLWHg3YWQ3RjdqenBmY0p2eGg3QW5VMEVpQnNQWnlCRXA5QVhH?=
- =?utf-8?B?WitVazZ1RDZIVHF6MEdDdStMZEVZKzR3eXgxTW1TTUhtZFp5MWpSMXNRQnFY?=
- =?utf-8?B?S1dzWlFYSW95YWhUMUl1U3BralVrOVArUVlCd3d6YnQ4UEN6eWFIS1J3TFFV?=
- =?utf-8?B?UmRIRVZWOWk1RUZSS2dZUElhNEsxNG5ER1JlbU5aMHVuMmg4UDVOVUM1VWpQ?=
- =?utf-8?B?UzR5cUMzWVlwVGczQmw3dmhocWRmalhDV1M3VzNqK2plZDQxalJvekY3S1RS?=
- =?utf-8?B?dWFLZTYxaFE4T3VkNzM4Ni9CMmpUcmFOUUloWSsyajBxcUNTbFFId3M0cGRO?=
- =?utf-8?B?azBSSmR6SDhBQU1hV0VadStsblh2UUZmZVZUVWpOT0hDajkrOVQvd29sUnVP?=
- =?utf-8?B?VjBDU1hkb3M0SS90L25EVitTK1E2bUhZWDJ1NEx1TVVLNEpUL3FEQnBPZmNs?=
- =?utf-8?B?SVZVWHFLU1ErUGVsSThGUlhBU2RNZFl2dFNMZ01nSVU2YjBGdExDZVRWMW8w?=
- =?utf-8?B?MWREODZsU1o3aFppMGpIUWpYaWEwRUlHdTVWNkl2bG51S3UzOVRYR1lhTlBs?=
- =?utf-8?B?dGtDbHljSmhzS2lscmFFRElpOXNJRUdyazliZWhBb3BKdjR3Z0pheDdLWCtv?=
- =?utf-8?B?SXJmWHE5VlFOOGJYbG9ETFRaTUFhUEt0dVREYndLdDdJMUFZUG1tVXh1bXBX?=
- =?utf-8?B?Y0RCeEM3ZWkrN2xYOUdCUEQvY2RYaW8xb3pQY2JuUlhtL0gxNldmRkp1Rk5P?=
- =?utf-8?B?dGcxbzhaMjdldGpBSitIWW4xOHllelV2MTI1VXh5OHRsc21zYUhSVHhUVENG?=
- =?utf-8?B?ekg5b1E1aGQxTmMzZ2QyNWNHK1FROE5lNTJJUVd5MGRtd2ZYbFpzZks5WEhI?=
- =?utf-8?B?ODdrOFQ5eW1VUEFQSUo0TjlkWFNudjVqRExYMlF1VVRrSVVFb1VISGNNVjJ4?=
- =?utf-8?B?TkJrNXpoMFVLSGVZK09pZzBqU2N5WWpTQmJEZU9PUStDaG5TcjIvSTBRPT0=?=
+X-Microsoft-Antispam: BCL:0;ARA:13230031|366007|376005|1800799015;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?YXpMVDBXclBTck50OVcrbDVCaWhOYzY0d0t5dWJ2Q0RTeDh3cElsamlzTnJp?=
+ =?utf-8?B?MTRjVXRYdDB4eThTL2xreUFtaDFZMEJHelM0Zk1IWUEyOHB6VFMreGRRT0Nx?=
+ =?utf-8?B?WVFRWlh6WlAyZU0wM1FNV1lqeHhoTVBCcUJhODdRZFViaFBFTmJKT08zSnla?=
+ =?utf-8?B?MCszYmIzZjZUa0xWdDFXVFY2ZzhISjdMUEE4R2RQZmpVTUtXaS9DRHpDamRI?=
+ =?utf-8?B?YVZJWk9XbzZCWE9TMzNSbE9BWXBDd2hKSTYzVmx6MVpOcXFkbFE3R3FlRWVW?=
+ =?utf-8?B?Tk9QaGpTM0psK1FpbFRjMUlMZmdpNUEwZzlmbHJOTUxjNS9laDBCQnFKZTF3?=
+ =?utf-8?B?ZzlIcDZ4ZDZuRG9XaXBNSTNRYWJVRVdnTnNJaXFDQlNhV01uVlEvR3pCaHhr?=
+ =?utf-8?B?ZnRtT2ticzV3WW14Q3g2Rmh2VGtvN2prejFVYlRCTkFuWXF1bVQ0RmgycHl4?=
+ =?utf-8?B?VDhBUVRJRFpBdFRWS0J0bkRmeEd5R2xkWWtsUHpLZEhlME1ZZUsrWXhlSlV3?=
+ =?utf-8?B?dEpTVm5Ra0xXKzJmLyt2RDRRZHloWlFpbDZkcWJqWHZGWkxHVTRwa3Y0SXlu?=
+ =?utf-8?B?TWh6RW53RjdPelJpVlNrYXc5cjhFZWx5T0hIR2tMblNmcWVzMllBV041OVd4?=
+ =?utf-8?B?bzNHOWp0RWVtVENudm9uNURGMmRlNUN1czhRMXkyMG9SdW15aTNDaUtCTDl3?=
+ =?utf-8?B?UVRmQWplSGtEV2JQMHVFNWlOYlhta3R3c0JGZkdKbzNialJzM2Nud2dOTmRt?=
+ =?utf-8?B?T1QyRlVXcFAvb01KTDhkYm1kbUpycWJXdXU0VGRqYktXeG1laklocGlqelNM?=
+ =?utf-8?B?Q3lsUG83czZqdjRoMkt0Z2wzb0lvcXRlbDlVRnAxWHlXcGNEb2pNeU5EQlJD?=
+ =?utf-8?B?U25ISlQxWFd3V1ZVMTdvQ0I4Y3pxSktCRnRKd2QrMk9uR2lXQUJPWnBwa1M5?=
+ =?utf-8?B?TndWdFJyVnJzUDEwNXVxeDk3a1VVRkU3elZZQnVyV1A4dFNvNmxPa09veFY5?=
+ =?utf-8?B?MHFrTlNMdVBObG9lTHJmcG1uYkhON1phRWpYWXVlK0hWeUkzeUMrOXdEQXlv?=
+ =?utf-8?B?OXNocVY2ODI4dXNobHRUNUxXc1RZc3R2ejhSVGh6c2srNUNWcFdWVE5xeEJ4?=
+ =?utf-8?B?d1RQN3NaK3hPeHhBTEtlYThkbHIvVDNpaFNTcjVuN1hGV2pnNFFWRkJsTklL?=
+ =?utf-8?B?V29VSW40VGpSdGRNckhhcGIvQTV5OXRxcGtTVlQ4WncxcFpWNmNOYlUrZnFy?=
+ =?utf-8?B?ZkJLWkNOY0NYRWRxV1BIUFJROFJ5aHpXV01CYWlpM1JyTXNQWXhucVd0TVVy?=
+ =?utf-8?B?Sm9oRDBEeG01Z3VrSWdKN0t5UjBldU1EVlg1QVp5M0NOV3U3WWdBWGg3YWpP?=
+ =?utf-8?B?bjJoYTdQbmVYSEowY1ZrNlJVL00zSHBubXhzQk1id1p5RVFDVWJXN05QRkxT?=
+ =?utf-8?B?VEZJQ1VLYkpzNVM5aGs3ZFhxandMcXVaZ3hxekdLYVdJYW5Ed01OUVcrb3hP?=
+ =?utf-8?B?ODliclpMbGl6TVhvY0hXb0QzL1RUcFp6aXczTmpTUU4xMnlPWERqT01jaVlv?=
+ =?utf-8?B?eTFXL1prNmRIK0x3cGJtcTVPbW9tUStuZEw4Q3pTWDgvNVJlcDVNeVBLTkNy?=
+ =?utf-8?B?UjNJNzRXRVpEOTdiSHNaMC9iWnV3djlVcDhjKzJBMFdEdmJiQVI1eGVBQWpj?=
+ =?utf-8?B?d2tDK1dBblhCNHRZZngxNzN5MWxLcmg2L0ZDLzgxREtENVEzRUc4czFnPT0=?=
 X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:DS0PR12MB6583.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230031)(1800799015)(376005)(366007); DIR:OUT; SFP:1101; 
+ SFS:(13230031)(366007)(376005)(1800799015); DIR:OUT; SFP:1101; 
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?Y2JRKzF3S2RCc1JudzNBNncyNXY3emZYRU90WGtIdkY0WTZaZ2xlYUp6eDVu?=
- =?utf-8?B?Z0VKQzZ5bHYxb01vYlpxVnJia2ovV3NSUUJNbjFmbHk0NzRLRWhKbThabkgx?=
- =?utf-8?B?TlE0a1dNT0Q2a2JOajVKdXZwcFRFcU5xUXhnMVBWcDVTNUNxdng4QmZSQnBq?=
- =?utf-8?B?VjRIVEZIandMSlpOOUdxK3dWNDFrdG15YmF5TUVkT2Z1VENTdi8zaHV5YzE4?=
- =?utf-8?B?QWQxSy8wMGhMTklYSXQwQTFiTHRaMmk2VmFBd20vRGJNdnAxUnBjWlFZTXJh?=
- =?utf-8?B?a0sra2RpU1lMcnRFdzNtUDFzQWdNMzVHTXBvSVFuOFlLT1VpeEhDWUJOdGR2?=
- =?utf-8?B?alpIVU9Rb3AzZkZWL01HK3VoL0F1cUxBZXpmUDhjSkZyVXRNL0hBQnRRaTFh?=
- =?utf-8?B?dVdZcmZTelJBTmo2OVh0YVRVT0V6Z2p5blgwSVBRLzFCMGVncFpQUkk1M2Rq?=
- =?utf-8?B?NTI4SVdEcjlQdkNjUkRDVW5BMmJQdm16L3Z2Q0hvTDJhaGRxQTdZS2FQVTNn?=
- =?utf-8?B?dXBjOW9wTkJhdCt6aHNUb0V0SkJSY2pMK2p4MjVyOTF2MHZMSVdWL29wbnNz?=
- =?utf-8?B?UXdDdDdXVFdwL0Z1Y2xwbW9ORXlWd3Z2a251cjdvNGJDMEpmSWlseVhrc1Fx?=
- =?utf-8?B?QkdKYlV5Z3BEWnpYNEdzUCtjdm9IVWg0d0FuQkU2SE1kYUZibzI3ZDlQbXRT?=
- =?utf-8?B?NS9PK1hLcU1YK1NGS0UrY1d6TTdzZDFGTkp2dnJLNnZHMjlJTHMyV3FmNm9m?=
- =?utf-8?B?TVNScW1DWUNBR2Y2OUN6R0ZkVnN5ZmQrSy9zZkUrdXV4U2VCYmMrazgvQnlY?=
- =?utf-8?B?VnZ2L1g0czE1OGJ5RXkzNGJTK2U2YnlaczFjQm9scnlKMGdIOUI4NS8yOWQv?=
- =?utf-8?B?bDJVMjlubEYyNHNSdDFZM3REcjJXUFNBeDdUeitqSVFLVktjQ3VsWUhxbUtn?=
- =?utf-8?B?VVpnOXQvWHhNOHM3cHVOVncvZjRhS3NrMkFoNDJvTVVyb3VUb2xFZmxHQW0z?=
- =?utf-8?B?c1loNytKQzFrUjhaUEdLZ3R6WU9FR0o3WDNTWHF4MG0yT2FSRzBUcUtPZFB4?=
- =?utf-8?B?MW8yalljQWdoMnRIdkh1ZkQ4SHJCclZvSEJHcVFsd3gxREUrYjQ3bGtvY3NG?=
- =?utf-8?B?VURWRVlSUHE0Y3IrS2JoeXh5OXNoamNTaGVSMEZPN3ZCYldmci93UGVvdWZG?=
- =?utf-8?B?TlNKWDhOV2J3cSs2S2ZwNkFXRmo5dlFxcm9PQVVSR21uZVVJS2ZlekhkeEY3?=
- =?utf-8?B?SWVHbm5EL2wxa2NZemJhKzN1dnU4U3VJMGlwVlNaMkRXdUxQR2VGWjdBWHVw?=
- =?utf-8?B?VmRNODBPNndiRnFLd05JbERvTDVBOC9JNitxR1V1d3BQeWVIajcrOVAzS3hU?=
- =?utf-8?B?VkMrTkhEUzJ5VWZXbUM1dy9VNmllNU5Hb3VwMExEWFc3WlBhRlZ1M2ZmR1B0?=
- =?utf-8?B?ZWZsUTlLK2FHMWw5OW93SVJTREd5R0UvU2F5SkthbVRLVTh2dmFTQXltY1ZI?=
- =?utf-8?B?NEJjRUNMekU3LzAyTS93TFhjNXd2L0diTXJBZGZYRDBpQkFORmtlcFRJZWho?=
- =?utf-8?B?K1pqMloxVkpyUDB2RFNkWUFMdWlLQ1I3QnVuSUQ2QThrdmFvUjJKTGpsQkxs?=
- =?utf-8?B?L0pFY0tYOE1pQmk5L3cvZHFVUnBlKzhCS1VBcjlsdjNRVVU0d1B6MHUzR2ZC?=
- =?utf-8?B?NmFzMVphMGhKaFlkekc4TG90d21aTnJ2Vk1zWkZvcTdzZXRuVzJQS0ZqT0lY?=
- =?utf-8?B?c2xuQ2lvUit2YXBFb1QzV1UzL3ZMZEt6elZZYk9iQ3UvWjRxQmtScGVRLzgz?=
- =?utf-8?B?eWRJQnpaZHZwVlFFbXh2WFJjREs3ODh0a1FTaWh3TVg2WEsxUDZhWUUxNTNG?=
- =?utf-8?B?S294SDd0TnNTandPYkNaQ0lEM2R6VmJQQWx3QytTVWVoNVlyS1ZUd2tGNGZU?=
- =?utf-8?B?Tkx4VDkvZEhPWUlVelh4K252b1d2djBxay9vUDRjSFlZMkhvTjloNm96NTZj?=
- =?utf-8?B?NDNiME5BYXNKaHNEcUxsMWF6ZkpRUW01UTZqcFhabnVvRlZNbDQyelpNQ2gr?=
- =?utf-8?B?Z2RRSXkvV2t6d1hRWGlBcGwzQkFBUm1DU2J1TzRQZU5zS3FlUGNadm9IZlVt?=
- =?utf-8?Q?ciD3elye3wvQKSXZb0ldMMnv7?=
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?VkkwYWs1STgxc2Y4N0RId0pHbDNFSVR6ejJwMVV0aUpKcjJFUnM3cFRSallQ?=
+ =?utf-8?B?bXZaYXoyMXoyZmt2cWtncTVKVHRUL0tRb0tYMEZuc3VVTHZadWNiNTExdFpn?=
+ =?utf-8?B?VEg5ZVNia0pNRmFVcnJxQjhDVm5yaXFETk9vUmhQTHJqcVZ0UnFoTGZ0anlV?=
+ =?utf-8?B?WDJ0SFF3dk5FWWpWM1N6WFZiTVNzKzg3ZmJrMGtWdGNTNGF0aHpvOElIMDJt?=
+ =?utf-8?B?aFllMzVJcUpPWGNoU2pZb2tHSmhSTGRPemZmcCtyY0QvYmZHclp3VVhSdmVo?=
+ =?utf-8?B?MGVmNENlR0tQTjBtRmgzK2ZIYmRmVzVvRDZYaUR3YkxvK1pFUjVidVdFdUZ6?=
+ =?utf-8?B?VS84ZGZGZ3M4Y2wyUEhyN1B1VTlDb2hOUHZnNk5INGJsZzNEWFowNUtKV1Bn?=
+ =?utf-8?B?NS8zbEFPMk91SDBSblFXSUhnblpab3lST2FDcVEweTZETkcweFdKS0thQW9C?=
+ =?utf-8?B?MWdxZkt4RTVWbGllWENxTUxScWd3b1I3TGFmV3F4WXVQazJuaWpucXpUbmdy?=
+ =?utf-8?B?ZTFCeVZ4OWx5eFozTG8wSC9FSlBGT2FEZ2lxNzZZM3VoeGlLb1hFMTIvTmY2?=
+ =?utf-8?B?NkhDOTBIUE1ZMGdscjlsaFVnMmovT2R3M3NNRmo1N2RpY3NMUHQzZ1c2VXpj?=
+ =?utf-8?B?dUFLMlF6K1R2aE1ycERrQnliUTlGd0xnUHI0ZHJZaDdRZldJa0toc0NValFL?=
+ =?utf-8?B?TFB2VUxIbjNPMGRPc0l2U0pLSlVFMHZtUHJXK281b1hPZUVzaEdjUDRVOG03?=
+ =?utf-8?B?M2dyWmFac2xUMGlKRnRDdk43eHNIeXRPY3FnNnBvdjVXdy9CdXZFUG4yZWJT?=
+ =?utf-8?B?azdHN1FnbWF4YS9zN3ZGTDJvczZJVmZsK2FqQldUbFVJR2VLRGJFQ29RUWh4?=
+ =?utf-8?B?Qm11Zkx6Q2duUDdkRnY0RDRUaDlnQ0lhd0lndVhvTzIxbmZjRnVrbjc3VFlQ?=
+ =?utf-8?B?Ti82Mko3VlZ6M3BGNmkwa24rZTlpdHE5U2dLREo0VlNXSlJ2OGtaWUloMUxS?=
+ =?utf-8?B?S2wva0NNTEgyakRuVjBTM0VoQjczNEVWdzJCOUhYaUlIWnNBaGlPSnNlM0Rh?=
+ =?utf-8?B?c3BLYUMrTHg3Y21XanYyZ0VFOENIUTd2bWl5aUFsYlYyL3RndDJTOWt2dm52?=
+ =?utf-8?B?Ti9rRzhZM3hVcjBkOU1zdG0xcFRrZ0ZHWmluMjYrK1Btb0R5N1BacW9pcjhq?=
+ =?utf-8?B?bi9HdCtORWRqSHQzOU0xanlFVkRsMHMyQWYvT2JKaVhMekMyZ2JpcUk1OWN3?=
+ =?utf-8?B?L3djTUdNMzBFMnIxTmRoR3BDUWJFVzYzdTFtSks5dFZxK0cveWxNQXZXdFFq?=
+ =?utf-8?B?aE1BNjhQMW45ZDNSbXpYRWszUnhtRWMwdHhlUkhNWTZjWVM1Y0ttcUdGZlVF?=
+ =?utf-8?B?Vy9lL0t1V2poeGZtNFZ1clpVY25VT2ozTjFydFExVDR5WDdGWURUZDdnSFhy?=
+ =?utf-8?B?WlNONTk1eEs1YnZmN0FnN2Y0SUZwcjFDaE5tdW5sYTc0aE5vbCttK3RqVVBx?=
+ =?utf-8?B?dlVBVHRiZjJtS1hOWFEwd1Z2aisvU1BPVk50RVRicXgrVi9KS1JJKy9XVmlX?=
+ =?utf-8?B?aXRxRlhFOHVwUHpIUEo1UWNicjFOYVRZWlFCUFIrU283ZVR5bGV3SGtOd3p1?=
+ =?utf-8?B?WDlaSkU2RzYrVE5PL3NpbmtpSnM3K3hIdzNoT3dXWWp2bitaZ2h0cngwbDFn?=
+ =?utf-8?B?dWR1b0VIbTRIWTNFUzNTV1JDa0NkVlQyWllmUk91eTNmaDdsUE8zWDZubFBD?=
+ =?utf-8?B?L2ZUOXlJdlpsRlZrVVU1dDlMRWVoc0F1K1dBaUhJeE5RcDlQVFJPVFkwcS82?=
+ =?utf-8?B?WWFaWmN3YkFPRUFkVEQ4OENNZHhQTG14VEV2Q0Yyam95bG9EME0xait0SFI1?=
+ =?utf-8?B?bWoyaER1SVVYVHNhZDZzRkpZUVRmaFA0REI2VldrR0JmMEhHdlVpTC9WRnI1?=
+ =?utf-8?B?elJSM2pXWnkwREh0M0pKWW84a3dLbjhrQXNxeGpNRnFsZlV6N2haTmkrK3FO?=
+ =?utf-8?B?Yk9hKzJBWTdMOW0xS0NuUGlDQ2VuZXhnck1teG1tWTJWRVdUM1didTNGTUJR?=
+ =?utf-8?B?RW1pRTUzejVKMXJpendjWjh1aE83bDc1cUhENjdicFRxcTBQRlpObmRpR1N3?=
+ =?utf-8?Q?Jy91eoK7OlWs5zz8+nJASWhzJ?=
 X-OriginatorOrg: amd.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 634c4bcd-212c-4c02-b4ba-08dc81cc4194
+X-MS-Exchange-CrossTenant-Network-Message-Id: e462d7de-dc3b-4898-1c1b-08dc81ccb841
 X-MS-Exchange-CrossTenant-AuthSource: DS0PR12MB6583.namprd12.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 31 May 2024 23:49:05.4313 (UTC)
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 31 May 2024 23:52:24.5632 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: Ou4b1g6NWGrsc+XVAsz29AXofuNQghhRc6XvJ3UHUrBPFsMQPF7JZNQnHPOzmoLB5l1F/nv6fJU1H6NB976FGw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH3PR12MB9396
+X-MS-Exchange-CrossTenant-UserPrincipalName: 8MmltAAdZ4b3PcrOIBd5VVjHguUo6sorSoqYQlbBiZBCHg8FpnHk0N+ituCGLRWilIYbxrYYZ+ie69JLxAZDDw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH3PR12MB8880
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=amd.com; s=selector1; 
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=5tojrs3r1a+fyRUKwgH3SVqrY0OKX3PIPc7hgkP4evs=;
- b=d5lbAVjwsxVq00lyETWcI6P7DgbgpkEB3AmZVI+PVz1jSVPDasHh5mikkDIxFz4fvgEVrSFeLaMRTb+tPd6i4MqO6QxLyfAWWEvytlcrIpM7WZu4pyUGM5QlNUrM8m2qTIKzG9WwWWXJioyXZu+FpoIVEHaAzQDQEdte5tJwyDQ=
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ bh=H8hrMB1/+iMIf4/aal01SSgjrPaDwZa3K14TCHlKsBI=;
+ b=wiqiYS/YgYPsf15FCubkUU/woB6yjHr3UhRDsQD0ErhGnyT2lSVSF4LcUr6Mmb6/XoTaeG+n8gZ1P0wsaRK+5hnszuHvcZv2UyTQFfieWfhhAUGmHMF58jVJpcLVBH+t/VSb2hGpWNq1PwqwzdNTrRCMHUCM67Lw1z4+hmuDcqc=
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=amd.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (1024-bit key,
  unprotected) header.d=amd.com header.i=@amd.com header.a=rsa-sha256
- header.s=selector1 header.b=d5lbAVjw
+ header.s=selector1 header.b=wiqiYS/Y
 X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=amd.com;
-Subject: Re: [Intel-wired-lan] [PATCH v2 iwl-net 6/8] ice: improve updating
- ice_{t, r}x_ring::xsk_pool
+Subject: Re: [Intel-wired-lan] [PATCH v2 iwl-net 0/8] ice: fix AF_XDP ZC
+ timeout and concurrency issues
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -205,397 +204,60 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 On 5/29/2024 4:23 AM, Maciej Fijalkowski wrote:
 > 
-> xsk_buff_pool pointers that ice ring structs hold are updated via
-> ndo_bpf that is executed in process context while it can be read by
-> remote CPU at the same time within NAPI poll. Use synchronize_net()
-> after pointer update and {READ,WRITE}_ONCE() when working with mentioned
-> pointer.
+> Hi,
 > 
-> Fixes: 2d4238f55697 ("ice: Add support for AF_XDP")
-> Signed-off-by: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
-> ---
->   drivers/net/ethernet/intel/ice/ice.h      |  6 +-
->   drivers/net/ethernet/intel/ice/ice_base.c |  4 +-
->   drivers/net/ethernet/intel/ice/ice_main.c |  2 +-
->   drivers/net/ethernet/intel/ice/ice_txrx.c |  4 +-
->   drivers/net/ethernet/intel/ice/ice_xsk.c  | 78 ++++++++++++++---------
->   drivers/net/ethernet/intel/ice/ice_xsk.h  |  4 +-
->   6 files changed, 59 insertions(+), 39 deletions(-)
+> changes included in this patchset address an issue that customer has
+> been facing when AF_XDP ZC Tx sockets were used in combination with flow
+> control and regular Tx traffic.
 > 
-> diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
-> index da8c8afebc93..701a61d791dd 100644
-> --- a/drivers/net/ethernet/intel/ice/ice.h
-> +++ b/drivers/net/ethernet/intel/ice/ice.h
-> @@ -771,12 +771,12 @@ static inline struct xsk_buff_pool *ice_get_xp_from_qid(struct ice_vsi *vsi,
->    * Returns a pointer to xsk_buff_pool structure if there is a buffer pool
->    * present, NULL otherwise.
->    */
-> -static inline struct xsk_buff_pool *ice_xsk_pool(struct ice_rx_ring *ring)
-> +static inline void ice_xsk_pool(struct ice_rx_ring *ring)
+> After executing:
+> ethtool --set-priv-flags $dev link-down-on-close on
+> ethtool -A $dev rx on tx on
+> 
+> launching multiple ZC Tx sockets on $dev + pinging remote interface (so
+> that regular Tx traffic is present) and then going through down/up of
+> $dev, Tx timeout occured and then most of the time ice driver was unable
+> to recover from that state.
+> 
+> These patches combined together solve the described above issue on
+> customer side. Main focus here is to forbid producing Tx descriptors
+> when either carrier is not yet initialized or process of bringing
+> interface down has already started.
+> 
+> Thanks,
+> Maciej
+> 
+> v1->v2:
+> - fix kdoc issues in patch 6 and 8
+> - drop Larysa's patches for now
+> 
+> 
+> Maciej Fijalkowski (7):
+>    ice: don't busy wait for Rx queue disable in ice_qp_dis()
+>    ice: replace synchronize_rcu with synchronize_net
+>    ice: modify error handling when setting XSK pool in ndo_bpf
+>    ice: toggle netif_carrier when setting up XSK pool
+>    ice: improve updating ice_{t,r}x_ring::xsk_pool
+>    ice: add missing WRITE_ONCE when clearing ice_rx_ring::xdp_prog
+>    ice: xsk: fix txq interrupt mapping
+> 
+> Michal Kubiak (1):
+>    ice: respect netif readiness in AF_XDP ZC related ndo's
 
-Since this patch is changing the logic here you mighht want to change 
-the name of the function.  Instead of getting a pointer with no side 
-effects it is now doing something, so a better name might be 
-ice_set_xsk_pool() to reflect the resulting side effect.
+Aside from a couple minor notes, these seem reasonable.
 
-sln
+For the set:
+Reviewed-by: Shannon Nelson <shannon.nelson@amd.com>
 
->   {
->          struct ice_vsi *vsi = ring->vsi;
->          u16 qid = ring->q_index;
 > 
-> -       return ice_get_xp_from_qid(vsi, qid);
-> +       WRITE_ONCE(ring->xsk_pool, ice_get_xp_from_qid(vsi, qid));
->   }
+>   drivers/net/ethernet/intel/ice/ice.h      |   6 +-
+>   drivers/net/ethernet/intel/ice/ice_base.c |   4 +-
+>   drivers/net/ethernet/intel/ice/ice_main.c |   2 +-
+>   drivers/net/ethernet/intel/ice/ice_txrx.c |   6 +-
+>   drivers/net/ethernet/intel/ice/ice_xsk.c  | 150 +++++++++++++---------
+>   drivers/net/ethernet/intel/ice/ice_xsk.h  |   4 +-
+>   6 files changed, 101 insertions(+), 71 deletions(-)
 > 
->   /**
-> @@ -801,7 +801,7 @@ static inline void ice_tx_xsk_pool(struct ice_vsi *vsi, u16 qid)
->          if (!ring)
->                  return;
-> 
-> -       ring->xsk_pool = ice_get_xp_from_qid(vsi, qid);
-> +       WRITE_ONCE(ring->xsk_pool, ice_get_xp_from_qid(vsi, qid));
->   }
-> 
->   /**
-> diff --git a/drivers/net/ethernet/intel/ice/ice_base.c b/drivers/net/ethernet/intel/ice/ice_base.c
-> index 5d396c1a7731..f3dfce136106 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_base.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_base.c
-> @@ -536,7 +536,7 @@ static int ice_vsi_cfg_rxq(struct ice_rx_ring *ring)
->                                  return err;
->                  }
-> 
-> -               ring->xsk_pool = ice_xsk_pool(ring);
-> +               ice_xsk_pool(ring);
->                  if (ring->xsk_pool) {
->                          xdp_rxq_info_unreg(&ring->xdp_rxq);
-> 
-> @@ -597,7 +597,7 @@ static int ice_vsi_cfg_rxq(struct ice_rx_ring *ring)
->                          return 0;
->                  }
-> 
-> -               ok = ice_alloc_rx_bufs_zc(ring, num_bufs);
-> +               ok = ice_alloc_rx_bufs_zc(ring, ring->xsk_pool, num_bufs);
->                  if (!ok) {
->                          u16 pf_q = ring->vsi->rxq_map[ring->q_index];
-> 
-> diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-> index 1b61ca3a6eb6..15a6805ac2a1 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_main.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_main.c
-> @@ -2946,7 +2946,7 @@ static void ice_vsi_rx_napi_schedule(struct ice_vsi *vsi)
->          ice_for_each_rxq(vsi, i) {
->                  struct ice_rx_ring *rx_ring = vsi->rx_rings[i];
-> 
-> -               if (rx_ring->xsk_pool)
-> +               if (READ_ONCE(rx_ring->xsk_pool))
->                          napi_schedule(&rx_ring->q_vector->napi);
->          }
->   }
-> diff --git a/drivers/net/ethernet/intel/ice/ice_txrx.c b/drivers/net/ethernet/intel/ice/ice_txrx.c
-> index 8bb743f78fcb..f4b2b1bca234 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_txrx.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_txrx.c
-> @@ -1523,7 +1523,7 @@ int ice_napi_poll(struct napi_struct *napi, int budget)
->          ice_for_each_tx_ring(tx_ring, q_vector->tx) {
->                  bool wd;
-> 
-> -               if (tx_ring->xsk_pool)
-> +               if (READ_ONCE(tx_ring->xsk_pool))
->                          wd = ice_xmit_zc(tx_ring);
->                  else if (ice_ring_is_xdp(tx_ring))
->                          wd = true;
-> @@ -1556,7 +1556,7 @@ int ice_napi_poll(struct napi_struct *napi, int budget)
->                   * comparison in the irq context instead of many inside the
->                   * ice_clean_rx_irq function and makes the codebase cleaner.
->                   */
-> -               cleaned = rx_ring->xsk_pool ?
-> +               cleaned = READ_ONCE(rx_ring->xsk_pool) ?
->                            ice_clean_rx_irq_zc(rx_ring, budget_per_ring) :
->                            ice_clean_rx_irq(rx_ring, budget_per_ring);
->                  work_done += cleaned;
-> diff --git a/drivers/net/ethernet/intel/ice/ice_xsk.c b/drivers/net/ethernet/intel/ice/ice_xsk.c
-> index 8c5006f37310..693f0e3a37ce 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_xsk.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_xsk.c
-> @@ -250,6 +250,8 @@ static int ice_qp_ena(struct ice_vsi *vsi, u16 q_idx)
->          ice_qvec_toggle_napi(vsi, q_vector, true);
->          ice_qvec_ena_irq(vsi, q_vector);
-> 
-> +       /* make sure NAPI sees updated ice_{t,x}_ring::xsk_pool */
-> +       synchronize_net();
->          netif_tx_start_queue(netdev_get_tx_queue(vsi->netdev, q_idx));
->          netif_carrier_on(vsi->netdev);
->          clear_bit(ICE_CFG_BUSY, vsi->state);
-> @@ -461,6 +463,7 @@ static u16 ice_fill_rx_descs(struct xsk_buff_pool *pool, struct xdp_buff **xdp,
->   /**
->    * __ice_alloc_rx_bufs_zc - allocate a number of Rx buffers
->    * @rx_ring: Rx ring
-> + * @xsk_pool: XSK buffer pool to pick buffers to be filled by HW
->    * @count: The number of buffers to allocate
->    *
->    * Place the @count of descriptors onto Rx ring. Handle the ring wrap
-> @@ -469,7 +472,8 @@ static u16 ice_fill_rx_descs(struct xsk_buff_pool *pool, struct xdp_buff **xdp,
->    *
->    * Returns true if all allocations were successful, false if any fail.
->    */
-> -static bool __ice_alloc_rx_bufs_zc(struct ice_rx_ring *rx_ring, u16 count)
-> +static bool __ice_alloc_rx_bufs_zc(struct ice_rx_ring *rx_ring,
-> +                                  struct xsk_buff_pool *xsk_pool, u16 count)
->   {
->          u32 nb_buffs_extra = 0, nb_buffs = 0;
->          union ice_32b_rx_flex_desc *rx_desc;
-> @@ -481,8 +485,7 @@ static bool __ice_alloc_rx_bufs_zc(struct ice_rx_ring *rx_ring, u16 count)
->          xdp = ice_xdp_buf(rx_ring, ntu);
-> 
->          if (ntu + count >= rx_ring->count) {
-> -               nb_buffs_extra = ice_fill_rx_descs(rx_ring->xsk_pool, xdp,
-> -                                                  rx_desc,
-> +               nb_buffs_extra = ice_fill_rx_descs(xsk_pool, xdp, rx_desc,
->                                                     rx_ring->count - ntu);
->                  if (nb_buffs_extra != rx_ring->count - ntu) {
->                          ntu += nb_buffs_extra;
-> @@ -495,7 +498,7 @@ static bool __ice_alloc_rx_bufs_zc(struct ice_rx_ring *rx_ring, u16 count)
->                  ice_release_rx_desc(rx_ring, 0);
->          }
-> 
-> -       nb_buffs = ice_fill_rx_descs(rx_ring->xsk_pool, xdp, rx_desc, count);
-> +       nb_buffs = ice_fill_rx_descs(xsk_pool, xdp, rx_desc, count);
-> 
->          ntu += nb_buffs;
->          if (ntu == rx_ring->count)
-> @@ -511,6 +514,7 @@ static bool __ice_alloc_rx_bufs_zc(struct ice_rx_ring *rx_ring, u16 count)
->   /**
->    * ice_alloc_rx_bufs_zc - allocate a number of Rx buffers
->    * @rx_ring: Rx ring
-> + * @xsk_pool: XSK buffer pool to pick buffers to be filled by HW
->    * @count: The number of buffers to allocate
->    *
->    * Wrapper for internal allocation routine; figure out how many tail
-> @@ -518,7 +522,8 @@ static bool __ice_alloc_rx_bufs_zc(struct ice_rx_ring *rx_ring, u16 count)
->    *
->    * Returns true if all calls to internal alloc routine succeeded
->    */
-> -bool ice_alloc_rx_bufs_zc(struct ice_rx_ring *rx_ring, u16 count)
-> +bool ice_alloc_rx_bufs_zc(struct ice_rx_ring *rx_ring,
-> +                         struct xsk_buff_pool *xsk_pool, u16 count)
->   {
->          u16 rx_thresh = ICE_RING_QUARTER(rx_ring);
->          u16 leftover, i, tail_bumps;
-> @@ -527,9 +532,9 @@ bool ice_alloc_rx_bufs_zc(struct ice_rx_ring *rx_ring, u16 count)
->          leftover = count - (tail_bumps * rx_thresh);
-> 
->          for (i = 0; i < tail_bumps; i++)
-> -               if (!__ice_alloc_rx_bufs_zc(rx_ring, rx_thresh))
-> +               if (!__ice_alloc_rx_bufs_zc(rx_ring, xsk_pool, rx_thresh))
->                          return false;
-> -       return __ice_alloc_rx_bufs_zc(rx_ring, leftover);
-> +       return __ice_alloc_rx_bufs_zc(rx_ring, xsk_pool, leftover);
->   }
-> 
->   /**
-> @@ -650,7 +655,7 @@ static u32 ice_clean_xdp_irq_zc(struct ice_tx_ring *xdp_ring)
->          if (xdp_ring->next_to_clean >= cnt)
->                  xdp_ring->next_to_clean -= cnt;
->          if (xsk_frames)
-> -               xsk_tx_completed(xdp_ring->xsk_pool, xsk_frames);
-> +               xsk_tx_completed(READ_ONCE(xdp_ring->xsk_pool), xsk_frames);
-> 
->          return completed_frames;
->   }
-> @@ -702,7 +707,8 @@ static int ice_xmit_xdp_tx_zc(struct xdp_buff *xdp,
->                  dma_addr_t dma;
-> 
->                  dma = xsk_buff_xdp_get_dma(xdp);
-> -               xsk_buff_raw_dma_sync_for_device(xdp_ring->xsk_pool, dma, size);
-> +               xsk_buff_raw_dma_sync_for_device(READ_ONCE(xdp_ring->xsk_pool),
-> +                                                dma, size);
-> 
->                  tx_buf->xdp = xdp;
->                  tx_buf->type = ICE_TX_BUF_XSK_TX;
-> @@ -760,7 +766,8 @@ ice_run_xdp_zc(struct ice_rx_ring *rx_ring, struct xdp_buff *xdp,
->                  err = xdp_do_redirect(rx_ring->netdev, xdp, xdp_prog);
->                  if (!err)
->                          return ICE_XDP_REDIR;
-> -               if (xsk_uses_need_wakeup(rx_ring->xsk_pool) && err == -ENOBUFS)
-> +               if (xsk_uses_need_wakeup(READ_ONCE(rx_ring->xsk_pool)) &&
-> +                   err == -ENOBUFS)
->                          result = ICE_XDP_EXIT;
->                  else
->                          result = ICE_XDP_CONSUMED;
-> @@ -829,8 +836,8 @@ ice_add_xsk_frag(struct ice_rx_ring *rx_ring, struct xdp_buff *first,
->    */
->   int ice_clean_rx_irq_zc(struct ice_rx_ring *rx_ring, int budget)
->   {
-> +       struct xsk_buff_pool *xsk_pool = READ_ONCE(rx_ring->xsk_pool);
->          unsigned int total_rx_bytes = 0, total_rx_packets = 0;
-> -       struct xsk_buff_pool *xsk_pool = rx_ring->xsk_pool;
->          u32 ntc = rx_ring->next_to_clean;
->          u32 ntu = rx_ring->next_to_use;
->          struct xdp_buff *first = NULL;
-> @@ -942,7 +949,8 @@ int ice_clean_rx_irq_zc(struct ice_rx_ring *rx_ring, int budget)
->          rx_ring->next_to_clean = ntc;
->          entries_to_alloc = ICE_RX_DESC_UNUSED(rx_ring);
->          if (entries_to_alloc > ICE_RING_QUARTER(rx_ring))
-> -               failure |= !ice_alloc_rx_bufs_zc(rx_ring, entries_to_alloc);
-> +               failure |= !ice_alloc_rx_bufs_zc(rx_ring, xsk_pool,
-> +                                                entries_to_alloc);
-> 
->          ice_finalize_xdp_rx(xdp_ring, xdp_xmit, 0);
->          ice_update_rx_ring_stats(rx_ring, total_rx_packets, total_rx_bytes);
-> @@ -965,17 +973,19 @@ int ice_clean_rx_irq_zc(struct ice_rx_ring *rx_ring, int budget)
->   /**
->    * ice_xmit_pkt - produce a single HW Tx descriptor out of AF_XDP descriptor
->    * @xdp_ring: XDP ring to produce the HW Tx descriptor on
-> + * @xsk_pool: XSK buffer pool to pick buffers to be consumed by HW
->    * @desc: AF_XDP descriptor to pull the DMA address and length from
->    * @total_bytes: bytes accumulator that will be used for stats update
->    */
-> -static void ice_xmit_pkt(struct ice_tx_ring *xdp_ring, struct xdp_desc *desc,
-> +static void ice_xmit_pkt(struct ice_tx_ring *xdp_ring,
-> +                        struct xsk_buff_pool *xsk_pool, struct xdp_desc *desc,
->                           unsigned int *total_bytes)
->   {
->          struct ice_tx_desc *tx_desc;
->          dma_addr_t dma;
-> 
-> -       dma = xsk_buff_raw_get_dma(xdp_ring->xsk_pool, desc->addr);
-> -       xsk_buff_raw_dma_sync_for_device(xdp_ring->xsk_pool, dma, desc->len);
-> +       dma = xsk_buff_raw_get_dma(xsk_pool, desc->addr);
-> +       xsk_buff_raw_dma_sync_for_device(xsk_pool, dma, desc->len);
-> 
->          tx_desc = ICE_TX_DESC(xdp_ring, xdp_ring->next_to_use++);
->          tx_desc->buf_addr = cpu_to_le64(dma);
-> @@ -988,10 +998,13 @@ static void ice_xmit_pkt(struct ice_tx_ring *xdp_ring, struct xdp_desc *desc,
->   /**
->    * ice_xmit_pkt_batch - produce a batch of HW Tx descriptors out of AF_XDP descriptors
->    * @xdp_ring: XDP ring to produce the HW Tx descriptors on
-> + * @xsk_pool: XSK buffer pool to pick buffers to be consumed by HW
->    * @descs: AF_XDP descriptors to pull the DMA addresses and lengths from
->    * @total_bytes: bytes accumulator that will be used for stats update
->    */
-> -static void ice_xmit_pkt_batch(struct ice_tx_ring *xdp_ring, struct xdp_desc *descs,
-> +static void ice_xmit_pkt_batch(struct ice_tx_ring *xdp_ring,
-> +                              struct xsk_buff_pool *xsk_pool,
-> +                              struct xdp_desc *descs,
->                                 unsigned int *total_bytes)
->   {
->          u16 ntu = xdp_ring->next_to_use;
-> @@ -1001,8 +1014,8 @@ static void ice_xmit_pkt_batch(struct ice_tx_ring *xdp_ring, struct xdp_desc *de
->          loop_unrolled_for(i = 0; i < PKTS_PER_BATCH; i++) {
->                  dma_addr_t dma;
-> 
-> -               dma = xsk_buff_raw_get_dma(xdp_ring->xsk_pool, descs[i].addr);
-> -               xsk_buff_raw_dma_sync_for_device(xdp_ring->xsk_pool, dma, descs[i].len);
-> +               dma = xsk_buff_raw_get_dma(xsk_pool, descs[i].addr);
-> +               xsk_buff_raw_dma_sync_for_device(xsk_pool, dma, descs[i].len);
-> 
->                  tx_desc = ICE_TX_DESC(xdp_ring, ntu++);
->                  tx_desc->buf_addr = cpu_to_le64(dma);
-> @@ -1018,21 +1031,24 @@ static void ice_xmit_pkt_batch(struct ice_tx_ring *xdp_ring, struct xdp_desc *de
->   /**
->    * ice_fill_tx_hw_ring - produce the number of Tx descriptors onto ring
->    * @xdp_ring: XDP ring to produce the HW Tx descriptors on
-> + * @xsk_pool: XSK buffer pool to pick buffers to be consumed by HW
->    * @descs: AF_XDP descriptors to pull the DMA addresses and lengths from
->    * @nb_pkts: count of packets to be send
->    * @total_bytes: bytes accumulator that will be used for stats update
->    */
-> -static void ice_fill_tx_hw_ring(struct ice_tx_ring *xdp_ring, struct xdp_desc *descs,
-> -                               u32 nb_pkts, unsigned int *total_bytes)
-> +static void ice_fill_tx_hw_ring(struct ice_tx_ring *xdp_ring,
-> +                               struct xsk_buff_pool *xsk_pool,
-> +                               struct xdp_desc *descs, u32 nb_pkts,
-> +                               unsigned int *total_bytes)
->   {
->          u32 batched, leftover, i;
-> 
->          batched = ALIGN_DOWN(nb_pkts, PKTS_PER_BATCH);
->          leftover = nb_pkts & (PKTS_PER_BATCH - 1);
->          for (i = 0; i < batched; i += PKTS_PER_BATCH)
-> -               ice_xmit_pkt_batch(xdp_ring, &descs[i], total_bytes);
-> +               ice_xmit_pkt_batch(xdp_ring, xsk_pool, &descs[i], total_bytes);
->          for (; i < batched + leftover; i++)
-> -               ice_xmit_pkt(xdp_ring, &descs[i], total_bytes);
-> +               ice_xmit_pkt(xdp_ring, xsk_pool, &descs[i], total_bytes);
->   }
-> 
->   /**
-> @@ -1043,7 +1059,8 @@ static void ice_fill_tx_hw_ring(struct ice_tx_ring *xdp_ring, struct xdp_desc *d
->    */
->   bool ice_xmit_zc(struct ice_tx_ring *xdp_ring)
->   {
-> -       struct xdp_desc *descs = xdp_ring->xsk_pool->tx_descs;
-> +       struct xsk_buff_pool *xsk_pool = READ_ONCE(xdp_ring->xsk_pool);
-> +       struct xdp_desc *descs = xsk_pool->tx_descs;
->          u32 nb_pkts, nb_processed = 0;
->          unsigned int total_bytes = 0;
->          int budget;
-> @@ -1057,25 +1074,26 @@ bool ice_xmit_zc(struct ice_tx_ring *xdp_ring)
->          budget = ICE_DESC_UNUSED(xdp_ring);
->          budget = min_t(u16, budget, ICE_RING_QUARTER(xdp_ring));
-> 
-> -       nb_pkts = xsk_tx_peek_release_desc_batch(xdp_ring->xsk_pool, budget);
-> +       nb_pkts = xsk_tx_peek_release_desc_batch(xsk_pool, budget);
->          if (!nb_pkts)
->                  return true;
-> 
->          if (xdp_ring->next_to_use + nb_pkts >= xdp_ring->count) {
->                  nb_processed = xdp_ring->count - xdp_ring->next_to_use;
-> -               ice_fill_tx_hw_ring(xdp_ring, descs, nb_processed, &total_bytes);
-> +               ice_fill_tx_hw_ring(xdp_ring, xsk_pool, descs, nb_processed,
-> +                                   &total_bytes);
->                  xdp_ring->next_to_use = 0;
->          }
-> 
-> -       ice_fill_tx_hw_ring(xdp_ring, &descs[nb_processed], nb_pkts - nb_processed,
-> -                           &total_bytes);
-> +       ice_fill_tx_hw_ring(xdp_ring, xsk_pool, &descs[nb_processed],
-> +                           nb_pkts - nb_processed, &total_bytes);
-> 
->          ice_set_rs_bit(xdp_ring);
->          ice_xdp_ring_update_tail(xdp_ring);
->          ice_update_tx_ring_stats(xdp_ring, nb_pkts, total_bytes);
-> 
-> -       if (xsk_uses_need_wakeup(xdp_ring->xsk_pool))
-> -               xsk_set_tx_need_wakeup(xdp_ring->xsk_pool);
-> +       if (xsk_uses_need_wakeup(xsk_pool))
-> +               xsk_set_tx_need_wakeup(xsk_pool);
-> 
->          return nb_pkts < budget;
->   }
-> @@ -1108,7 +1126,7 @@ ice_xsk_wakeup(struct net_device *netdev, u32 queue_id,
-> 
->          ring = vsi->rx_rings[queue_id]->xdp_ring;
-> 
-> -       if (!ring->xsk_pool)
-> +       if (!READ_ONCE(ring->xsk_pool))
->                  return -EINVAL;
-> 
->          /* The idea here is that if NAPI is running, mark a miss, so
-> diff --git a/drivers/net/ethernet/intel/ice/ice_xsk.h b/drivers/net/ethernet/intel/ice/ice_xsk.h
-> index 6fa181f080ef..4cd2d62a0836 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_xsk.h
-> +++ b/drivers/net/ethernet/intel/ice/ice_xsk.h
-> @@ -22,7 +22,8 @@ int ice_xsk_pool_setup(struct ice_vsi *vsi, struct xsk_buff_pool *pool,
->                         u16 qid);
->   int ice_clean_rx_irq_zc(struct ice_rx_ring *rx_ring, int budget);
->   int ice_xsk_wakeup(struct net_device *netdev, u32 queue_id, u32 flags);
-> -bool ice_alloc_rx_bufs_zc(struct ice_rx_ring *rx_ring, u16 count);
-> +bool ice_alloc_rx_bufs_zc(struct ice_rx_ring *rx_ring,
-> +                         struct xsk_buff_pool *xsk_pool, u16 count);
->   bool ice_xsk_any_rx_ring_ena(struct ice_vsi *vsi);
->   void ice_xsk_clean_rx_ring(struct ice_rx_ring *rx_ring);
->   void ice_xsk_clean_xdp_ring(struct ice_tx_ring *xdp_ring);
-> @@ -51,6 +52,7 @@ ice_clean_rx_irq_zc(struct ice_rx_ring __always_unused *rx_ring,
-> 
->   static inline bool
->   ice_alloc_rx_bufs_zc(struct ice_rx_ring __always_unused *rx_ring,
-> +                    struct xsk_buff_pool __always_unused *xsk_pool,
->                       u16 __always_unused count)
->   {
->          return false;
 > --
 > 2.34.1
 > 
