@@ -2,92 +2,86 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7045B8D6FA9
-	for <lists+intel-wired-lan@lfdr.de>; Sat,  1 Jun 2024 14:06:55 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id A62908D7020
+	for <lists+intel-wired-lan@lfdr.de>; Sat,  1 Jun 2024 15:16:34 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 9BC5260824;
-	Sat,  1 Jun 2024 12:06:53 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 482276087B;
+	Sat,  1 Jun 2024 13:16:33 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id J-GHhbZfmwtd; Sat,  1 Jun 2024 12:06:53 +0000 (UTC)
+ id iPy18MsZ9y21; Sat,  1 Jun 2024 13:16:32 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org EF761606EB
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 219D160887
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1717243613;
-	bh=sDBdQ3N3Cu0FEIs5zYbsvCkBxZeRfNvSatcfI8fql7A=;
+	s=default; t=1717247792;
+	bh=Ni+WDrPX8K31HoTIcpajwNK6IBp7J+7N5AzTTgo6UiY=;
 	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=K2VmeQKF7zlkqPvMkZSqcBuvVS77X1MBnsq7+AFV1sdO7uDJtxLG+9tk6IChfiSbI
-	 dyfKL2hDYrEoGyhc8BkYxY2vIbTZfPleJxDFjGPnDGWF4xPxHaU9jG9sw+SDD9cUS4
-	 7Zaqp7hujB18cZhiMlH9MyYQLwslXjZVa+OK+yw9gd1qw54pYfcbDGYQU01Mqygpy+
-	 sJxuPtJUuq94u8lIMe+beYlC1ib0jRMm/HSrMyS27oTCUAl1oBWxFTZiLcef8ZNR3P
-	 MQkY6/VnUbeWp5LTro1MHshv4khvAeeMIgOTDyZNf/sITwqLgJwW77S9KGgVOBqUKx
-	 OD+AgFy8JnXuQ==
+	b=xLuLRo1pQm1kChT0xYggxun7NpeWDm5HjVNFw8oMjFyadzsUt5/puud4mqUc+auMO
+	 3EfqEfkjp+yCN36QktZppQio/GjfnZBWiCcfj4l1/jjS2/pw7LGqCGm2TqMB2ISQKk
+	 C6eW0om/L5fjMZMQtSNJ4bnbXymoZ3uybz4LuaSXOZGodG8hEVmkSQkcHzBgnEvmBm
+	 FWPEAmYcEcfMLgMbMSZr8ZjcD4Bo+nSw2hQA1zRtl3ZAAsRzyUvWOy+Z7Sv6404cL4
+	 kdKCcEYh0X0Ya8Yh6NbK9w01bfEnSn1+jo42mqEqVY9HUFPMvquPYXssl2ePQBWJ2c
+	 m+APllGlW7RFw==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id EF761606EB;
-	Sat,  1 Jun 2024 12:06:52 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 219D160887;
+	Sat,  1 Jun 2024 13:16:32 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 7DBD61BF2CD
- for <intel-wired-lan@lists.osuosl.org>; Sat,  1 Jun 2024 12:06:51 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 45A841BF2F5
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  1 Jun 2024 13:16:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 69CCA60720
- for <intel-wired-lan@lists.osuosl.org>; Sat,  1 Jun 2024 12:06:51 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 30AD340120
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  1 Jun 2024 13:16:29 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id cO4CQkENtX8S for <intel-wired-lan@lists.osuosl.org>;
- Sat,  1 Jun 2024 12:06:50 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2604:1380:40e1:4800::1; helo=sin.source.kernel.org;
- envelope-from=horms@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org A1710606EB
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A1710606EB
-Received: from sin.source.kernel.org (sin.source.kernel.org
- [IPv6:2604:1380:40e1:4800::1])
- by smtp3.osuosl.org (Postfix) with ESMTPS id A1710606EB
- for <intel-wired-lan@lists.osuosl.org>; Sat,  1 Jun 2024 12:06:50 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 4_APrObEfjzY for <intel-wired-lan@lists.osuosl.org>;
+ Sat,  1 Jun 2024 13:16:28 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=139.178.84.217;
+ helo=dfw.source.kernel.org; envelope-from=horms@kernel.org;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 0B9C440114
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 0B9C440114
+Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 0B9C440114
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  1 Jun 2024 13:16:27 +0000 (UTC)
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by sin.source.kernel.org (Postfix) with ESMTP id 6C9C1CE0977;
- Sat,  1 Jun 2024 12:06:46 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E4ED9C116B1;
- Sat,  1 Jun 2024 12:06:43 +0000 (UTC)
-Date: Sat, 1 Jun 2024 13:06:41 +0100
+ by dfw.source.kernel.org (Postfix) with ESMTP id DC8C160A69;
+ Sat,  1 Jun 2024 13:16:26 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 58868C116B1;
+ Sat,  1 Jun 2024 13:16:23 +0000 (UTC)
+Date: Sat, 1 Jun 2024 14:16:20 +0100
 From: Simon Horman <horms@kernel.org>
-To: "Keller, Jacob E" <jacob.e.keller@intel.com>
-Message-ID: <20240601120641.GH491852@kernel.org>
-References: <20240527185810.3077299-1-ahmed.zaki@intel.com>
- <20240527185810.3077299-12-ahmed.zaki@intel.com>
- <20240531131802.GG123401@kernel.org>
- <f2cf6650-a164-4d3c-a3d9-cc57c66069a5@intel.com>
- <CO1PR11MB50893931EC0BE4F79FA46761D6FD2@CO1PR11MB5089.namprd11.prod.outlook.com>
+To: Ricky Wu <en-wei.wu@canonical.com>
+Message-ID: <20240601131620.GM491852@kernel.org>
+References: <20240530142131.26741-1-en-wei.wu@canonical.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <CO1PR11MB50893931EC0BE4F79FA46761D6FD2@CO1PR11MB5089.namprd11.prod.outlook.com>
+In-Reply-To: <20240530142131.26741-1-en-wei.wu@canonical.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1717243605;
- bh=p5Sw3GRe1Lge4SnF2pmAC4IQ0ato2xmCd88hFsuZff8=;
+ d=kernel.org; s=k20201202; t=1717247786;
+ bh=BDYiHLgOxFM07kj3mFIpBgiAJCFSiSzDEkmgs0Bz6e4=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=ILjt9RouX1ucqRipERDIi+L/u5HdPvHVds7Ws10gho3vykMKgAg3HbaYTVcKm/PaW
- 7c3PQePyZi24BoY0mqWrphT1ZP7wBlS24+9NU9kXI0+13wrKKOPo/rZnhWifG9Cu6I
- SMomQxlUTdXhDkrEl0SnCXiiOVyfW69RQCf03Ne8hSMvuk2BmAAKTICn2t77a4IjSz
- UTaYleqf0RwHNvZViknzYuUejkBw0jbYpcs8Nwcow8xzHRfsbmi5mVrMbnwFu8tM7N
- z4TzPON4rzXbgA8NUE7TvUiVDrl5gD5LG7jp5PqKrLXBJxciJeTn+FeRe+IfQJXCU/
- tXKxznl4dh8AQ==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ b=qzwFtJx9UWUqPoJ4Ua9VVxFOHJjLpCQMH/v4XL3bqjyjBWK9AbgkffroAK4MHg/sx
+ abTdKTKrMUgOkMcoVS0wgfQC8oCEzH6KzezX+liK4gT/0bwpdaYPx+ATXXbWjjU71D
+ 1wuknLzCU5a2G2kMcveLvPflbEj8xnWzryHQuVuFc9VQ27kqCjY79w+0yZU+dXkjx/
+ 3HsEfhq++XE0B7g3u1xbqIVdmctaLQhGTIg1vhvqS8wvc0ARn2jVAcxSHGlo1pW2K+
+ Q9hsaLEH6XxBxKk03E19t217FEU7vFYefoZGTVefHpVrXdsnbVw81wiYEPD8FJHvcK
+ w6ZjxKOc0ejJg==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20201202 header.b=ILjt9Rou
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v2 11/13] ice: enable FDIR
- filters from raw binary patterns for VFs
+ header.s=k20201202 header.b=qzwFtJx9
+Subject: Re: [Intel-wired-lan] [PATCH net,
+ v2] ice: avoid IRQ collision to fix init failure on ACPI S3 resume
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,42 +94,80 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "netdev@vger.kernel.org" <netdev@vger.kernel.org>, "Zaki,
- Ahmed" <ahmed.zaki@intel.com>, Marcin Szycik <marcin.szycik@linux.intel.com>,
- "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>, "Guo,
- Junfeng" <junfeng.guo@intel.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Cc: pmenzel@molgen.mpg.de, michal.swiatkowski@linux.intel.com,
+ wojciech.drewek@intel.com, intel-wired-lan@lists.osuosl.org,
+ rickywu0421@gmail.com, linux-kernel@vger.kernel.org, edumazet@google.com,
+ Cyrus Lien <cyrus.lien@canonical.com>, anthony.l.nguyen@intel.com,
+ netdev@vger.kernel.org, kuba@kernel.org, pabeni@redhat.com,
+ davem@davemloft.net
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Sat, Jun 01, 2024 at 12:24:14AM +0000, Keller, Jacob E wrote:
+On Thu, May 30, 2024 at 10:21:31PM +0800, Ricky Wu wrote:
+> A bug in https://bugzilla.kernel.org/show_bug.cgi?id=218906 describes
+> that irdma would break and report hardware initialization failed after
+> suspend/resume with Intel E810 NIC (tested on 6.9.0-rc5).
 > 
+> The problem is caused due to the collision between the irq numbers
+> requested in irdma and the irq numbers requested in other drivers
+> after suspend/resume.
 > 
-> > -----Original Message-----
-> > From: Zaki, Ahmed <ahmed.zaki@intel.com>
-> > Sent: Friday, May 31, 2024 8:48 AM
-> > To: Simon Horman <horms@kernel.org>
-> > Cc: intel-wired-lan@lists.osuosl.org; netdev@vger.kernel.org; Keller, Jacob E
-> > <jacob.e.keller@intel.com>; Nguyen, Anthony L <anthony.l.nguyen@intel.com>;
-> > Guo, Junfeng <junfeng.guo@intel.com>; Marcin Szycik
-> > <marcin.szycik@linux.intel.com>
-> > Subject: Re: [PATCH iwl-next v2 11/13] ice: enable FDIR filters from raw binary
-> > patterns for VFs
-> > 
-> > 
-> > 
-> > On 2024-05-31 7:18 a.m., Simon Horman wrote:
-> > > On Mon, May 27, 2024 at 12:58:08PM -0600, Ahmed Zaki wrote:
-> > >> From: Junfeng Guo <junfeng.guo@intel.com>
-> > >
-> > > To me tweaking the order of includes seems to indicate
-> > > that something isn't quite right. Is there some sort of
-> > > dependency loop being juggled here?
-> > 
-> > This was needed because of the changes in ice_flow.h, struct ice_vsi is
-> > now used. I will check if there is a better fix.
-> > 
+> The irq numbers used by irdma are derived from ice's ice_pf->msix_entries
+> which stores mappings between MSI-X index and Linux interrupt number.
+> It's supposed to be cleaned up when suspend and rebuilt in resume but
+> it's not, causing irdma using the old irq numbers stored in the old
+> ice_pf->msix_entries to request_irq() when resume. And eventually
+> collide with other drivers.
 > 
-> I think there is probably a dependency loop. Ice has had a lot of issues w.r.t. header includes ☹
+> This patch fixes this problem. On suspend, we call ice_deinit_rdma() to
+> clean up the ice_pf->msix_entries (and free the MSI-X vectors used by
+> irdma if we've dynamically allocated them). On resume, we call
+> ice_init_rdma() to rebuild the ice_pf->msix_entries (and allocate the
+> MSI-X vectors if we would like to dynamically allocate them).
+> 
+> Fixes: f9f5301e7e2d ("ice: Register auxiliary device to provide RDMA")
+> Tested-by: Cyrus Lien <cyrus.lien@canonical.com>
+> Signed-off-by: Ricky Wu <en-wei.wu@canonical.com>
+> ---
+> Changes in v2:
+> - Change title
+> - Add Fixes and Tested-by tags
+> - Fix typo
+> ---
+>  drivers/net/ethernet/intel/ice/ice_main.c | 6 +++++-
+>  1 file changed, 5 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
+> index f60c022f7960..ec3cbadaa162 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_main.c
+> +++ b/drivers/net/ethernet/intel/ice/ice_main.c
+> @@ -5544,7 +5544,7 @@ static int ice_suspend(struct device *dev)
+>  	 */
+>  	disabled = ice_service_task_stop(pf);
+>  
+> -	ice_unplug_aux_dev(pf);
+> +	ice_deinit_rdma(pf);
+>  
+>  	/* Already suspended?, then there is nothing to do */
+>  	if (test_and_set_bit(ICE_SUSPENDED, pf->state)) {
+> @@ -5624,6 +5624,10 @@ static int ice_resume(struct device *dev)
+>  	if (ret)
+>  		dev_err(dev, "Cannot restore interrupt scheme: %d\n", ret);
+>  
+> +	ret = ice_init_rdma(pf);
+> +	if (ret)
+> +		dev_err(dev, "Reinitialize RDMA during resume failed: %d\n", ret);
+> +
 
-Understood, let's leave that for another day :)
+nit: The line above could trivially be wrapped to fit within 80 columns,
+     as is preferred for Networking code.
+
+     Flagged by checkpatch.pl --max-line-length=80
+
+>  	clear_bit(ICE_DOWN, pf->state);
+>  	/* Now perform PF reset and rebuild */
+>  	reset_type = ICE_RESET_PFR;
+> -- 
+> 2.43.0
+> 
+> 
