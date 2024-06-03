@@ -1,101 +1,94 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 77A368D8480
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  3 Jun 2024 15:58:05 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 115C98D88D1
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  3 Jun 2024 20:45:22 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id EE3A040A99;
-	Mon,  3 Jun 2024 13:58:03 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id A476040C19;
+	Mon,  3 Jun 2024 18:45:19 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 0kQolWicbgA8; Mon,  3 Jun 2024 13:58:03 +0000 (UTC)
+ id llOpOcdWM6-n; Mon,  3 Jun 2024 18:45:19 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org EB82340A8A
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org DFF0540BFD
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1717423083;
-	bh=iDs3c3sj7/aaXfdfVJWfmj5Iy4trqImka70tLisFABQ=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=hY+ndkS5B5V+BWpLFMRWycjymG1Xs06+rMcLOHyXjIC+JvQlLoXLEpOabXYVuI4Yh
-	 tajKsCDaN1PZuJbvpvbXdfPem18xd48QzIoagWq3ecsFBPshUrV9SoQEKLucIAZamg
-	 WD11EuZ93JdFAXBRaDuAFu+IW7cTuC84CJ1gue2kvnUaSmUOm0dYpf3xkXF27uQHcl
-	 LmX7EtOXtaSlaEe9ImrjQtl0jD8nHYf8sasFLh4FuTD6fcBz+lprxhZRBgvZ6xQPs0
-	 ZorTyyLlkEDJFRJQR8+QaK/73Wxc5n2boOwc8DuWcaXk53RP5TiKeeLqGD4sQZ36Lp
-	 Re1dFD386lVqA==
+	s=default; t=1717440318;
+	bh=omk5AoxJXW8zVU/44HyqPEU+ysbs3Nde4p1m5Z4Hxbg=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=OdpxbQGmFNARZ4U9Oj26a2ClaIHtFCtCRWZmmwsAFYH2YTrv8BEnOIkH5n5JMB/18
+	 BfLMZiINPNaNewql+m94de2rE1zgwLjn0c3+PIPd41A/WHdOTkGTaTE4zHd5ypYWYQ
+	 A00EJLbGcyiNMfv6WhV14D5o97ND7seD7dKWWwin0XZIz3EheW3FQZX4fhwc7D3Bul
+	 ReGyLGQ5IfJhRQN3i7LVq5zpwXbYJMHOHyE6ajLb4EiwYP7SaF9gXSdcVoR6P4WzMT
+	 X3qt6CS8kl4Qc8h9vHa7XB3CBMDEc7uVS/j5/NBBQzZxcX+SFRzJ8C2oPUYkZMytUY
+	 anWEQegGuhyAw==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id EB82340A8A;
-	Mon,  3 Jun 2024 13:58:02 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id DFF0540BFD;
+	Mon,  3 Jun 2024 18:45:18 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 7036D1BF3DE
- for <intel-wired-lan@lists.osuosl.org>; Mon,  3 Jun 2024 13:58:00 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id E00201BF35F
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  3 Jun 2024 18:45:16 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 6933840A18
- for <intel-wired-lan@lists.osuosl.org>; Mon,  3 Jun 2024 13:58:00 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id CB1A240911
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  3 Jun 2024 18:45:16 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id PsTrh1t6mZcx for <intel-wired-lan@lists.osuosl.org>;
- Mon,  3 Jun 2024 13:57:59 +0000 (UTC)
-Received-SPF: None (mailfrom) identity=mailfrom; client-ip=192.198.163.7;
- helo=mgamail.intel.com; envelope-from=michal.swiatkowski@linux.intel.com;
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id uujqm-iZ_gMm for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  3 Jun 2024 18:45:15 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.10;
+ helo=mgamail.intel.com; envelope-from=joshua.a.hay@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 03FF040A60
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 03FF040A60
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.7])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 03FF040A60
- for <intel-wired-lan@lists.osuosl.org>; Mon,  3 Jun 2024 13:57:58 +0000 (UTC)
-X-CSE-ConnectionGUID: cakgcfUsTWW31NMdAcd4EA==
-X-CSE-MsgGUID: scPSJJTmTHa5piQ1yYJYMg==
-X-IronPort-AV: E=McAfee;i="6600,9927,11092"; a="39318034"
-X-IronPort-AV: E=Sophos;i="6.08,211,1712646000"; d="scan'208";a="39318034"
-Received: from fmviesa001.fm.intel.com ([10.60.135.141])
- by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 03 Jun 2024 06:57:58 -0700
-X-CSE-ConnectionGUID: w7KGDaM1Qua7oiZsx7yHGg==
-X-CSE-MsgGUID: ilSZv5AXQE+el6BnDZDrbg==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 884D54090E
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 884D54090E
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.10])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 884D54090E
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  3 Jun 2024 18:45:14 +0000 (UTC)
+X-CSE-ConnectionGUID: k81cOgESQ2W/LlRjklcDHQ==
+X-CSE-MsgGUID: 10zCUn/OSLmwDgVxouL35Q==
+X-IronPort-AV: E=McAfee;i="6600,9927,11092"; a="31451335"
+X-IronPort-AV: E=Sophos;i="6.08,212,1712646000"; d="scan'208";a="31451335"
+Received: from orviesa006.jf.intel.com ([10.64.159.146])
+ by orvoesa102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 03 Jun 2024 11:45:14 -0700
+X-CSE-ConnectionGUID: e6DF74BqQ+qPxMT5vYT39w==
+X-CSE-MsgGUID: 6hRgwVB4QLCx+NfqGa/6TA==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.08,211,1712646000"; d="scan'208";a="68046983"
-Received: from unknown (HELO mev-dev) ([10.237.112.144])
- by smtpauth.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 03 Jun 2024 06:57:54 -0700
-Date: Mon, 3 Jun 2024 15:57:04 +0200
-From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-To: Jiri Pirko <jiri@resnulli.us>
-Message-ID: <Zl3LsLK6LZGUZkkA@mev-dev>
-References: <20240603095025.1395347-1-michal.swiatkowski@linux.intel.com>
- <20240603095025.1395347-6-michal.swiatkowski@linux.intel.com>
- <Zl25Rioa4K2BmYe6@nanopsycho.orion>
+X-IronPort-AV: E=Sophos;i="6.08,212,1712646000"; d="scan'208";a="37423379"
+Received: from unknown (HELO dcskidmo-M40.jf.intel.com) ([10.166.241.13])
+ by orviesa006.jf.intel.com with ESMTP; 03 Jun 2024 11:45:15 -0700
+From: Joshua Hay <joshua.a.hay@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Mon,  3 Jun 2024 11:47:14 -0700
+Message-Id: <20240603184714.3697911-1-joshua.a.hay@intel.com>
+X-Mailer: git-send-email 2.39.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <Zl25Rioa4K2BmYe6@nanopsycho.orion>
+Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1717423079; x=1748959079;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=CawHBvqKyTFOvcMEG4pFUuZsEECSzKzJ+3g5yzoRS+U=;
- b=NH0cyZMVpsv/JEulxvCXjxId90QN3ZHNW2hmxxzW7/CkPUmhhHU8dwcj
- 7l6QxZGy8Pnah8Ns4Rn6NqwucF4l9iZpbAmOTFYSx7eTsWMNfnBnr2beq
- DvxTuOCzc0qrzfiWFaSRLin6agnLhFDIDdNmvRVFC499vuCBavci5SJMg
- a4yqHn2BbTlUl6DzEZH7ZnHlrlDRFy9I440Qjo7GJmEc087+8xOtfG5uK
- SbqYP9hQXz26YrybjGjyMBpnDv8TI8gdZi3FHJJ9bpWntTUAd27eDuWyC
- +3WmWYbMLWVgVF4SFdyd7mVN9rmnco+DbcwdhtVpMU296T5QLLPYlcTJg
- w==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=linux.intel.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ t=1717440315; x=1748976315;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=3a4r7SyStC0TtS2GfY1JvWtSVnVpbpfOLb1Hk0c9r9E=;
+ b=P08AQlezDs+2UZECj2VhOGzvwiHsxGdidS1DOcHoREaP2tjAiWg7Jc0r
+ P9Bcu9Q4ZFts2pHnQIAiCGQtLEmdv32qHiMTAvw1l0UcDsjObJjQd6yi+
+ S3pmEsKVVTteVEwaGPVkwSZXAbjSZ2nF8wjzLX8jhy+I7qR5Px1KwG3lq
+ zzVyy30pt0g2dqNj9HwyrGcENBqmr3zrFFTZ1jRZmEfEI3NSE4MnYLGcw
+ At7KHH8eISwTS3V4rHBquJsc+HYYx2zCIoQWC+tHgewAJ3Fj919Vc0y72
+ 5MpEYzBVH1ZUjdjYmQp+RdnHsPXnhuOhlaTEsplCZcLAR5vj6h6gLEgTB
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=intel.com
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=NH0cyZMV
-Subject: Re: [Intel-wired-lan] [iwl-next v4 05/15] ice: allocate devlink for
- subfunction
+ header.s=Intel header.b=P08AQlez
+Subject: [Intel-wired-lan] [PATCH iwl-net] idpf: extend tx watchdog timeout
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -108,230 +101,52 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: shayd@nvidia.com, maciej.fijalkowski@intel.com, horms@kernel.org,
- mateusz.polchlopek@intel.com, netdev@vger.kernel.org, jiri@nvidia.com,
- kalesh-anakkur.purayil@broadcom.com, michal.kubiak@intel.com,
- intel-wired-lan@lists.osuosl.org, pio.raczynski@gmail.com,
- sridhar.samudrala@intel.com, jacob.e.keller@intel.com,
- wojciech.drewek@intel.com, przemyslaw.kitszel@intel.com
+Cc: netdev@vger.kernel.org, Joshua Hay <joshua.a.hay@intel.com>,
+ Sridhar Samudrala <sridhar.samudrala@intel.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, Jun 03, 2024 at 02:38:30PM +0200, Jiri Pirko wrote:
-> Mon, Jun 03, 2024 at 11:50:15AM CEST, michal.swiatkowski@linux.intel.com wrote:
-> >From: Piotr Raczynski <piotr.raczynski@intel.com>
-> >
-> >Make devlink allocation function generic to use it for PF and for SF.
-> >
-> >Add function for SF devlink port creation. It will be used in next
-> >patch.
-> >
-> >Create header file for subfunction device. Define subfunction device
-> >structure there as it is needed for devlink allocation and port
-> >creation.
-> >
-> >Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-> >Signed-off-by: Piotr Raczynski <piotr.raczynski@intel.com>
-> >Signed-off-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-> >---
-> > .../net/ethernet/intel/ice/devlink/devlink.c  | 33 +++++++++++++++
-> > .../net/ethernet/intel/ice/devlink/devlink.h  |  1 +
-> > .../ethernet/intel/ice/devlink/devlink_port.c | 41 +++++++++++++++++++
-> > .../ethernet/intel/ice/devlink/devlink_port.h |  3 ++
-> > drivers/net/ethernet/intel/ice/ice_sf_eth.h   | 21 ++++++++++
-> > 5 files changed, 99 insertions(+)
-> > create mode 100644 drivers/net/ethernet/intel/ice/ice_sf_eth.h
-> >
-> >diff --git a/drivers/net/ethernet/intel/ice/devlink/devlink.c b/drivers/net/ethernet/intel/ice/devlink/devlink.c
-> >index bfb3d5b59a62..00f549daca57 100644
-> >--- a/drivers/net/ethernet/intel/ice/devlink/devlink.c
-> >+++ b/drivers/net/ethernet/intel/ice/devlink/devlink.c
-> >@@ -10,6 +10,7 @@
-> > #include "ice_eswitch.h"
-> > #include "ice_fw_update.h"
-> > #include "ice_dcb_lib.h"
-> >+#include "ice_sf_eth.h"
-> > 
-> > /* context for devlink info version reporting */
-> > struct ice_info_ctx {
-> >@@ -1282,6 +1283,8 @@ static const struct devlink_ops ice_devlink_ops = {
-> > 	.port_new = ice_devlink_port_new,
-> > };
-> > 
-> >+static const struct devlink_ops ice_sf_devlink_ops;
-> >+
-> > static int
-> > ice_devlink_enable_roce_get(struct devlink *devlink, u32 id,
-> > 			    struct devlink_param_gset_ctx *ctx)
-> >@@ -1422,6 +1425,7 @@ static void ice_devlink_free(void *devlink_ptr)
-> >  * Allocate a devlink instance for this device and return the private area as
-> >  * the PF structure. The devlink memory is kept track of through devres by
-> >  * adding an action to remove it when unwinding.
-> >+ *
-> >  */
-> > struct ice_pf *ice_allocate_pf(struct device *dev)
-> > {
-> >@@ -1438,6 +1442,35 @@ struct ice_pf *ice_allocate_pf(struct device *dev)
-> > 	return devlink_priv(devlink);
-> > }
-> > 
-> >+/**
-> >+ * ice_allocate_sf - Allocate devlink and return SF structure pointer
-> >+ * @dev: the device to allocate for
-> >+ * @pf: pointer to the PF structure
-> >+ *
-> >+ * Allocate a devlink instance for SF.
-> >+ *
-> >+ * Return: ice_sf_priv pointer to allocated memory or ERR_PTR in case of error
-> >+ */
-> >+struct ice_sf_priv *ice_allocate_sf(struct device *dev, struct ice_pf *pf)
-> >+{
-> >+	struct devlink *devlink;
-> >+	int err;
-> >+
-> >+	devlink = devlink_alloc_ns(&ice_sf_devlink_ops,
-> >+				   sizeof(struct ice_sf_priv),
-> >+				   devlink_net(priv_to_devlink(pf)), dev);
-> 
-> I don't think this is correct. This is devlink instance for the actual
-> SF. It is probed on auxiliary bus. I don't see any reason why the
-> devlink instance netns should be determined by the PF devlink netns.
-> For VFs, you also don't do it. In mlx5, the only SF implementation, SF
-> devlink instances are created in initial netns. Please follow that.
-> 
+There are several reasons for a TX completion to take longer than usual
+to be written back by HW. For example, the completion for a packet that
+misses a rule will have increased latency. The side effect of these
+variable latencies for any given packet is out of order completions. The
+stack sends packet X and Y. If packet X takes longer because of the rule
+miss in the example above, but packet Y hits, it can go on the wire
+immediately. Which also means it can be completed first.  The driver
+will then receive a completion for packet Y before packet X.  The driver
+will stash the buffers for packet X in a hash table to allow the tx send
+queue descriptors for both packet X and Y to be reused. The driver will
+receive the completion for packet X sometime later and have to search
+the hash table for the associated packet.
 
-Ok, I will change it, thanks.
+The driver cleans packets directly on the ring first, i.e. not out of
+order completions since they are to some extent considered "slow(er)
+path". However, certain workloads can increase the frequency of out of
+order completions thus introducing even more latency into the cleaning
+path. Bump up the timeout value to account for these workloads.
 
-> 
-> 
-> >+	if (!devlink)
-> >+		return ERR_PTR(-ENOMEM);
-> >+
-> >+	err = devl_nested_devlink_set(priv_to_devlink(pf), devlink);
-> >+	if (err) {
-> >+		devlink_free(devlink);
-> >+		return ERR_PTR(err);
-> >+	}
-> >+
-> >+	return devlink_priv(devlink);
-> >+}
-> >+
-> > /**
-> >  * ice_devlink_register - Register devlink interface for this PF
-> >  * @pf: the PF to register the devlink for.
-> >diff --git a/drivers/net/ethernet/intel/ice/devlink/devlink.h b/drivers/net/ethernet/intel/ice/devlink/devlink.h
-> >index d291c0e2e17b..1af3b0763fbb 100644
-> >--- a/drivers/net/ethernet/intel/ice/devlink/devlink.h
-> >+++ b/drivers/net/ethernet/intel/ice/devlink/devlink.h
-> >@@ -5,6 +5,7 @@
-> > #define _ICE_DEVLINK_H_
-> > 
-> > struct ice_pf *ice_allocate_pf(struct device *dev);
-> >+struct ice_sf_priv *ice_allocate_sf(struct device *dev, struct ice_pf *pf);
-> > 
-> > void ice_devlink_register(struct ice_pf *pf);
-> > void ice_devlink_unregister(struct ice_pf *pf);
-> >diff --git a/drivers/net/ethernet/intel/ice/devlink/devlink_port.c b/drivers/net/ethernet/intel/ice/devlink/devlink_port.c
-> >index 5d1fe08e4bab..f06baabd0112 100644
-> >--- a/drivers/net/ethernet/intel/ice/devlink/devlink_port.c
-> >+++ b/drivers/net/ethernet/intel/ice/devlink/devlink_port.c
-> >@@ -489,6 +489,47 @@ void ice_devlink_destroy_vf_port(struct ice_vf *vf)
-> > 	devl_port_unregister(&vf->devlink_port);
-> > }
-> > 
-> >+/**
-> >+ * ice_devlink_create_sf_dev_port - Register virtual port for a subfunction
-> >+ * @sf_dev: the subfunction device to create a devlink port for
-> >+ *
-> >+ * Register virtual flavour devlink port for the subfunction auxiliary device
-> >+ * created after activating a dynamically added devlink port.
-> >+ *
-> >+ * Return: zero on success or an error code on failure.
-> >+ */
-> >+int ice_devlink_create_sf_dev_port(struct ice_sf_dev *sf_dev)
-> >+{
-> >+	struct devlink_port_attrs attrs = {};
-> >+	struct ice_dynamic_port *dyn_port;
-> >+	struct devlink_port *devlink_port;
-> >+	struct devlink *devlink;
-> >+	struct ice_vsi *vsi;
-> >+
-> >+	dyn_port = sf_dev->dyn_port;
-> >+	vsi = dyn_port->vsi;
-> >+
-> >+	devlink_port = &sf_dev->priv->devlink_port;
-> >+
-> >+	attrs.flavour = DEVLINK_PORT_FLAVOUR_VIRTUAL;
-> >+
-> >+	devlink_port_attrs_set(devlink_port, &attrs);
-> >+	devlink = priv_to_devlink(sf_dev->priv);
-> >+
-> >+	return devl_port_register(devlink, devlink_port, vsi->idx);
-> >+}
-> >+
-> >+/**
-> >+ * ice_devlink_destroy_sf_dev_port - Destroy virtual port for a subfunction
-> >+ * @sf_dev: the subfunction device to create a devlink port for
-> >+ *
-> >+ * Unregisters the virtual port associated with this subfunction.
-> >+ */
-> >+void ice_devlink_destroy_sf_dev_port(struct ice_sf_dev *sf_dev)
-> >+{
-> >+	devl_port_unregister(&sf_dev->priv->devlink_port);
-> >+}
-> >+
-> > /**
-> >  * ice_dealloc_dynamic_port - Deallocate and remove a dynamic port
-> >  * @dyn_port: dynamic port instance to deallocate
-> >diff --git a/drivers/net/ethernet/intel/ice/devlink/devlink_port.h b/drivers/net/ethernet/intel/ice/devlink/devlink_port.h
-> >index 08ebf56664a5..97b21b58c300 100644
-> >--- a/drivers/net/ethernet/intel/ice/devlink/devlink_port.h
-> >+++ b/drivers/net/ethernet/intel/ice/devlink/devlink_port.h
-> >@@ -5,6 +5,7 @@
-> > #define _DEVLINK_PORT_H_
-> > 
-> > #include "../ice.h"
-> >+#include "../ice_sf_eth.h"
-> > 
-> > /**
-> >  * struct ice_dynamic_port - Track dynamically added devlink port instance
-> >@@ -34,6 +35,8 @@ int ice_devlink_create_vf_port(struct ice_vf *vf);
-> > void ice_devlink_destroy_vf_port(struct ice_vf *vf);
-> > int ice_devlink_create_sf_port(struct ice_dynamic_port *dyn_port);
-> > void ice_devlink_destroy_sf_port(struct ice_dynamic_port *dyn_port);
-> >+int ice_devlink_create_sf_dev_port(struct ice_sf_dev *sf_dev);
-> >+void ice_devlink_destroy_sf_dev_port(struct ice_sf_dev *sf_dev);
-> > 
-> > #define ice_devlink_port_to_dyn(port) \
-> > 	container_of(port, struct ice_dynamic_port, devlink_port)
-> >diff --git a/drivers/net/ethernet/intel/ice/ice_sf_eth.h b/drivers/net/ethernet/intel/ice/ice_sf_eth.h
-> >new file mode 100644
-> >index 000000000000..a08f8b2bceef
-> >--- /dev/null
-> >+++ b/drivers/net/ethernet/intel/ice/ice_sf_eth.h
-> >@@ -0,0 +1,21 @@
-> >+/* SPDX-License-Identifier: GPL-2.0 */
-> >+/* Copyright (c) 2024, Intel Corporation. */
-> >+
-> >+#ifndef _ICE_SF_ETH_H_
-> >+#define _ICE_SF_ETH_H_
-> >+
-> >+#include <linux/auxiliary_bus.h>
-> >+#include "ice.h"
-> >+
-> >+struct ice_sf_dev {
-> >+	struct auxiliary_device adev;
-> >+	struct ice_dynamic_port *dyn_port;
-> >+	struct ice_sf_priv *priv;
-> >+};
-> >+
-> >+struct ice_sf_priv {
-> >+	struct ice_sf_dev *dev;
-> >+	struct devlink_port devlink_port;
-> >+};
-> >+
-> >+#endif /* _ICE_SF_ETH_H_ */
-> >-- 
-> >2.42.0
-> >
-> >
+Fixes: 0fe45467a104 ("idpf: add create vport and netdev configuration")
+Reviewed-by: Sridhar Samudrala <sridhar.samudrala@intel.com>
+Signed-off-by: Joshua Hay <joshua.a.hay@intel.com>
+---
+ drivers/net/ethernet/intel/idpf/idpf_lib.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/idpf/idpf_lib.c b/drivers/net/ethernet/intel/idpf/idpf_lib.c
+index f1ee5584e8fa..3d4ae2ed9b96 100644
+--- a/drivers/net/ethernet/intel/idpf/idpf_lib.c
++++ b/drivers/net/ethernet/intel/idpf/idpf_lib.c
+@@ -770,8 +770,8 @@ static int idpf_cfg_netdev(struct idpf_vport *vport)
+ 	else
+ 		netdev->netdev_ops = &idpf_netdev_ops_singleq;
+ 
+-	/* setup watchdog timeout value to be 5 second */
+-	netdev->watchdog_timeo = 5 * HZ;
++	/* setup watchdog timeout value to be 30 seconds */
++	netdev->watchdog_timeo = 30 * HZ;
+ 
+ 	netdev->dev_port = idx;
+ 
+-- 
+2.39.2
+
