@@ -1,97 +1,80 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id C3D2E8FB38A
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  4 Jun 2024 15:22:35 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id DAE528FB5A8
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  4 Jun 2024 16:39:29 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 7790C613BE;
-	Tue,  4 Jun 2024 13:22:34 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 8860081CBA;
+	Tue,  4 Jun 2024 14:39:28 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id mpzqp3nTmugM; Tue,  4 Jun 2024 13:22:33 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id mlkDe4vR84x3; Tue,  4 Jun 2024 14:39:26 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org CF883613AE
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6F77081C67
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1717507353;
-	bh=4dupxONMLQa5AzToivG1CwxyMGozwnSLpHPdDIV+Xos=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1717511966;
+	bh=o3E+JH1+TzJUdG5VaQW8vr5zl+ge8C0byq5CrZ0XFCc=;
+	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=Ai36tkcS0f05g943W294W0+hcDHqJooZze8xFVWhtbaM/XQN1lkUUzkJN/AfP5I6Y
-	 tKw2Cw/+CLi7sGcDExjGazDyI8Jd67zqWkPrr4JcUXw2WTZPs0JakhWDlUxd3sV9ge
-	 zHDiDrCHjtGMRAvWLLF6XtChy+PY88WnFx2cgDSbGyAc9spY12Xvgw/Ng6pC3+pqox
-	 6bwW2JSPeHp3rtO8uiWjJejV95Vw8FyRSWii3DJL/ozxZhA3M1zH8JXAcSnnduT+gw
-	 DUTYqiLbvEzRHTSacliHHprlwk4MO1uRbPdEuQKn1wtxP9uw2Lsfug8qpPCEm7Yw79
-	 BxPY2Vmszc0Tw==
+	b=GzhqwzPVLTI8ZbNigizoXhN5GrNqSODPnrMgrTxQN4Lcfl7rkmHxShEQNq5wVTC6r
+	 Z3SWf512VUEmDVm4VQW6DjqB8ouA81/IKeKOPNvFd2ET+K8eQhUdEoasC2rY6UWAN8
+	 Pj0a2ERJS5E6fFWTN0+qelScwTpkyN0mrvsn03Xm6dsmN7MdDJ2aOgAtzM+zfrCThJ
+	 wDa/qSRmBbMx21UtSEw2+Lx7yyUaZT4Wd7KrOO8hgEWdOrtF1dVRPYgbUegKwKGcjz
+	 E9sFlYSRn/YdWa5KZL5HhvK/uzFdd+tzsPPkJ9hpiTD/gXOrWXZNKRe4+zqJqH/SvA
+	 iL2GZdTgzoYsw==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id CF883613AE;
-	Tue,  4 Jun 2024 13:22:33 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id B4D6C1BF2A2
- for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Jun 2024 13:22:29 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 6F77081C67;
+	Tue,  4 Jun 2024 14:39:26 +0000 (UTC)
+X-Original-To: intel-wired-lan@osuosl.org
+Delivered-To: intel-wired-lan@osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id D83361BF869
+ for <intel-wired-lan@osuosl.org>; Tue,  4 Jun 2024 14:39:23 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id AEA74404DF
- for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Jun 2024 13:22:29 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id C14E181C11
+ for <intel-wired-lan@osuosl.org>; Tue,  4 Jun 2024 14:39:23 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 1l9f0iDA_4Cz for <intel-wired-lan@lists.osuosl.org>;
- Tue,  4 Jun 2024 13:22:29 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.10;
- helo=mgamail.intel.com; envelope-from=maciej.fijalkowski@intel.com;
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id iX_l7V4IZYbS for <intel-wired-lan@osuosl.org>;
+ Tue,  4 Jun 2024 14:39:22 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=141.14.17.11;
+ helo=mx3.molgen.mpg.de; envelope-from=pmenzel@molgen.mpg.de;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org F28EF404B4
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org F28EF404B4
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.10])
- by smtp2.osuosl.org (Postfix) with ESMTPS id F28EF404B4
- for <intel-wired-lan@lists.osuosl.org>; Tue,  4 Jun 2024 13:22:28 +0000 (UTC)
-X-CSE-ConnectionGUID: kbbKVpTFRaOJyvFQj3G8tA==
-X-CSE-MsgGUID: Z4Nx1KJJSs+2dDhhuyJhKg==
-X-IronPort-AV: E=McAfee;i="6600,9927,11093"; a="31552926"
-X-IronPort-AV: E=Sophos;i="6.08,213,1712646000"; d="scan'208";a="31552926"
-Received: from fmviesa009.fm.intel.com ([10.60.135.149])
- by orvoesa102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 04 Jun 2024 06:22:28 -0700
-X-CSE-ConnectionGUID: gnGctB7PQHe2Su/ZnRfGNA==
-X-CSE-MsgGUID: q8FKOsWKRU6dI2WSB3DGlw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.08,213,1712646000"; d="scan'208";a="37350259"
-Received: from boxer.igk.intel.com ([10.102.20.173])
- by fmviesa009.fm.intel.com with ESMTP; 04 Jun 2024 06:22:26 -0700
-From: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Tue,  4 Jun 2024 15:21:55 +0200
-Message-Id: <20240604132155.3573752-9-maciej.fijalkowski@intel.com>
-X-Mailer: git-send-email 2.35.3
-In-Reply-To: <20240604132155.3573752-1-maciej.fijalkowski@intel.com>
-References: <20240604132155.3573752-1-maciej.fijalkowski@intel.com>
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 4164681BF4
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4164681BF4
+Received: from mx3.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 4164681BF4
+ for <intel-wired-lan@osuosl.org>; Tue,  4 Jun 2024 14:39:20 +0000 (UTC)
+Received: from [141.14.220.45] (g45.guest.molgen.mpg.de [141.14.220.45])
+ (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested) (Authenticated sender: pmenzel)
+ by mx.molgen.mpg.de (Postfix) with ESMTPSA id EF6F361E5FE06;
+ Tue,  4 Jun 2024 16:38:59 +0200 (CEST)
+Message-ID: <7a58c20d-36f4-41ff-bd35-f64e7e1f6dfb@molgen.mpg.de>
+Date: Tue, 4 Jun 2024 16:38:59 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+To: Mark Pearson <mpearson@squebb.ca>
+References: <20240528103329.784584-1-vitaly.lifshits@intel.com>
+ <9ca46bff-e118-436f-81c7-4d2c53556a42@molgen.mpg.de>
+ <303a35e6-263e-42e4-9e1a-5e71f2eaabc8@intel.com>
+ <65f2fdb3-a326-4ea4-8cca-9e2b07ae63a0@molgen.mpg.de>
+ <90a0ab74-013d-468c-be92-b76113610a85@app.fastmail.com>
+Content-Language: en-US
+From: Paul Menzel <pmenzel@molgen.mpg.de>
+In-Reply-To: <90a0ab74-013d-468c-be92-b76113610a85@app.fastmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1717507349; x=1749043349;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=QLZomVILEix7eGz96mFc0JI+SIUZ0tCt6kRPAstm8ZY=;
- b=fZgr/yFfyuMKjgcv4uapVMauvJX8fULIkxVpNZNj0EftkuvAcBsIBS+S
- G7BBGIU7JY0b8gM2fyMmK30Ab5ObPnz6shQ6pRYLFeOGXSrUzwx23RzB0
- AngtTKmX95ukGoqJPZORPc+++A3fxPmN5cx9mniJfNneTe+Rd0EHm4g0n
- I4NXnUQyOFtP/QQNfh5yQF5HwzunybCwwWroKZt8tvvmqRzK/nxxQ6t4D
- yeRCmdxdcLMzAqTO7jQVB0YjgTRsiTJJe00vp32QHmmnJ97fESYbeWhmX
- EgyL4o6Q2dbJsAxYeWc6YcuKvBW8aBmUl6lDqlZhVVaoWqZ09XO4pil95
- g==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=fZgr/yFf
-Subject: [Intel-wired-lan] [PATCH v3 iwl-net 8/8] ice: xsk: fix txq
- interrupt mapping
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dmarc=none (p=none dis=none)
+ header.from=molgen.mpg.de
+Subject: Re: [Intel-wired-lan] [PATCH iwl-net v1 1/1] e1000e: Fix S0ix
+ residency on Meteor Lake corporate systems
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -104,78 +87,98 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Maciej Fijalkowski <maciej.fijalkowski@intel.com>, larysa.zaremba@intel.com,
- netdev@vger.kernel.org, michal.kubiak@intel.com, anthony.l.nguyen@intel.com,
- jacob.e.keller@intel.com, Chandan Kumar Rout <chandanx.rout@intel.com>,
- magnus.karlsson@intel.com, Shannon Nelson <shannon.nelson@amd.com>
+Cc: Vitaly Lifshits <vitaly.lifshits@intel.com>,
+ Dima Ruinskiy <dima.ruinskiy@intel.com>, intel-wired-lan@osuosl.org
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-ice_cfg_txq_interrupt() internally handles XDP Tx ring. Do not use
-ice_for_each_tx_ring() in ice_qvec_cfg_msix() as this causing us to
-treat XDP ring that belongs to queue vector as Tx ring and therefore
-misconfiguring the interrupts.
 
-Fixes: 2d4238f55697 ("ice: Add support for AF_XDP")
-Reviewed-by: Shannon Nelson <shannon.nelson@amd.com>
-Tested-by: Chandan Kumar Rout <chandanx.rout@intel.com> (A Contingent Worker at Intel)
-Signed-off-by: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
----
- drivers/net/ethernet/intel/ice/ice_xsk.c | 24 ++++++++++++++----------
- 1 file changed, 14 insertions(+), 10 deletions(-)
+Dear Mark,
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_xsk.c b/drivers/net/ethernet/intel/ice/ice_xsk.c
-index b7c291fce53c..c064634b932f 100644
---- a/drivers/net/ethernet/intel/ice/ice_xsk.c
-+++ b/drivers/net/ethernet/intel/ice/ice_xsk.c
-@@ -110,25 +110,29 @@ ice_qvec_dis_irq(struct ice_vsi *vsi, struct ice_rx_ring *rx_ring,
-  * ice_qvec_cfg_msix - Enable IRQ for given queue vector
-  * @vsi: the VSI that contains queue vector
-  * @q_vector: queue vector
-+ * @qid: queue index
-  */
- static void
--ice_qvec_cfg_msix(struct ice_vsi *vsi, struct ice_q_vector *q_vector)
-+ice_qvec_cfg_msix(struct ice_vsi *vsi, struct ice_q_vector *q_vector, u16 qid)
- {
- 	u16 reg_idx = q_vector->reg_idx;
- 	struct ice_pf *pf = vsi->back;
- 	struct ice_hw *hw = &pf->hw;
--	struct ice_tx_ring *tx_ring;
--	struct ice_rx_ring *rx_ring;
-+	int q, _qid = qid;
- 
- 	ice_cfg_itr(hw, q_vector);
- 
--	ice_for_each_tx_ring(tx_ring, q_vector->tx)
--		ice_cfg_txq_interrupt(vsi, tx_ring->reg_idx, reg_idx,
--				      q_vector->tx.itr_idx);
-+	for (q = 0; q < q_vector->num_ring_tx; q++) {
-+		ice_cfg_txq_interrupt(vsi, _qid, reg_idx, q_vector->tx.itr_idx);
-+		_qid++;
-+	}
- 
--	ice_for_each_rx_ring(rx_ring, q_vector->rx)
--		ice_cfg_rxq_interrupt(vsi, rx_ring->reg_idx, reg_idx,
--				      q_vector->rx.itr_idx);
-+	_qid = qid;
-+
-+	for (q = 0; q < q_vector->num_ring_rx; q++) {
-+		ice_cfg_rxq_interrupt(vsi, _qid, reg_idx, q_vector->rx.itr_idx);
-+		_qid++;
-+	}
- 
- 	ice_flush(hw);
- }
-@@ -240,7 +244,7 @@ static int ice_qp_ena(struct ice_vsi *vsi, u16 q_idx)
- 		fail = err;
- 
- 	q_vector = vsi->rx_rings[q_idx]->q_vector;
--	ice_qvec_cfg_msix(vsi, q_vector);
-+	ice_qvec_cfg_msix(vsi, q_vector, q_idx);
- 
- 	err = ice_vsi_ctrl_one_rx_ring(vsi, true, q_idx, true);
- 	if (!fail)
--- 
-2.34.1
 
+Am 04.06.24 um 16:33 schrieb Mark Pearson:
+
+> On Wed, May 29, 2024, at 7:23 AM, Paul Menzel wrote:
+
+>> Am 29.05.24 um 13:13 schrieb Lifshits, Vitaly:
+>>
+>>> On 5/28/2024 1:43 PM, Paul Menzel wrote:
+>>
+>>>> Am 28.05.24 um 12:33 schrieb Vitaly Lifshits:
+>>>>> From: Dima Ruinskiy <dima.ruinskiy@intel.com>
+>>>>>
+>>>>> On vPro systems,the  configuration of the I219-LM to achieve power
+>>>>
+>>>> s/,the  /, the /
+>>> Thank you for noticing it.
+>>> I will fix it in a v2.
+>>>
+>>>>> gating and S0ix residency is split between the driver and the CSME FW.
+>>>>> It was discovered that in some scenarios, where the network cable is
+>>>>> connected and then disconnected, S0ix residency is not always reached.
+>>>>
+>>>> Disconnected at any point, or just during suspend?
+>>> Yes, at any point.
+>>>
+>>>> Any URL to the reports?
+>>> Yes, https://bugs.launchpad.net/sutton/+bug/2054657
+>>
+>> This page does not exist.
+>>
+>>       $ curl -I https://bugs.launchpad.net/sutton/+bug/2054657
+>>       HTTP/1.1 404 Not Found
+>>       Date: Wed, 29 May 2024 11:20:52 GMT
+>>       Server: gunicorn
+>>       […]
+>>
+>> Please reference the (working) URL in a Link: tag in the footer.
+> 
+> Unfortunately the URL is a private bug between Lenovo and Canonical -
+> we hit the issue as we've been working on the Linux enablement for
+> our 2024 platforms.
+
+Thank you for the clarification.
+
+> I can't make the bug publicly visible I'm afraid - too much internal
+> code name/process in there. I don't think there will be a public
+> report of the issue yet - because the platforms have only just been
+> released. If it's useful I guess I can create a kernel.org bug to
+> track against?
+If all relevant information is in the commit message, then that’s not 
+necessary. The private bug URL could still be mentioned, as it might be 
+useful for those with access. It should only be clearly stated, that 
+it’s not public. (Others have different opinion.)
+
+>>>>> This was root-caused to a subset of I219-LM register writes that are not
+>>>>> performed by the CSME FW. Therefore, the driver should perform these
+>>>>> register writes on corporate setups, regardless of the CSME FW state.
+>>>>
+>>>> Is that documented somewhere?
+>>> Only in an internal documentation.
+>>
+>> If you can, it’d be great if you summarized why this is triggered by
+>> unplugging the network cable.
+>>
+>>>> Please add more information about the affected systems, and the test
+>>>> environment (firmware versions, …).
+>>> It is mentioned at the beginning of the commit, Meteorlake vPro systems.
+>>
+>> Please be more specific. If there is a Meteor Lake vPro system, where
+>> this can *not* be reproduced, it’d be great to know the exact system you
+>> tested this with. Meteor Lake has been released a long time ago, and not
+>> remembering a lot of bug reports, I assume, it’s not always reproducible.
+>>
+>> (You missed to comment on my previous comments at the end.)
+> 
+> I can't comment on the technical details, but I can note that it's
+> reproduced on multiple Lenovo Thinkpad Meteorlake platforms that have
+> ethernet
+> E14 G6, E16 G2, L14 G5, L16 G1, P14s G5, P16s G3 & P16v G2
+> I think it's common to any Meteorlake platform - but I defer to the
+> Intel folk on the specifics.
+Adding these model names to the commit message would work for me.
+
+
+Kind regards,
+
+Paul
