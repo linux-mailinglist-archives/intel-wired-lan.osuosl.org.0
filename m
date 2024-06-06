@@ -1,102 +1,95 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 437F58FE688
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  6 Jun 2024 14:33:34 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id E48358FE841
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  6 Jun 2024 15:58:38 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id B5B9184581;
-	Thu,  6 Jun 2024 12:33:32 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id C0C7B60608;
+	Thu,  6 Jun 2024 13:58:36 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 7FjA39V9ZaXq; Thu,  6 Jun 2024 12:33:32 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 4auXx7hA9lDZ; Thu,  6 Jun 2024 13:58:36 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1607481F98
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org DD6A76086E
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1717677212;
-	bh=ppcBgRJQrnm+5ryYYxZiG6LhrxmbC8yd/WbWELisQFw=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=6qnuc4m1lp5/2kBP4EGTcTVCCe88UbWTT4NZb078Xu4a6F5kwrsgyKbuO8Tdjs/+E
-	 vtxlVwOg8Efxc32UCqnoJzB6wPgUlsDoOCpn49gg5nb1zjiC1ZCM57obahB2WlxJ4Q
-	 OCY1ZkkPmGIgYSkbTQPp1heesaXWWLfyWJTE8djXfCsTZM0zAEs1pqZcEioKlXtS33
-	 6wxZ2l7tVxs8VlG6+3K1aQ27c0EDZp9jQL6OtRJ+sZhdzzZ9YKQMfRxYYwRnUh61JB
-	 Qq5XJ0DJ73UQ29iLfRVXylXxecNdzzZ8qUBsd65Xh+DRE/Qsoa2gNOEsLNxCKx3jeP
-	 VJePj9ilyfLWw==
+	s=default; t=1717682315;
+	bh=yJ193Kzsmca+BCscDc4MtwkrFPupmtBzuIKzMuvwhOU=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=Fg88fxmZD4DI7ta2Gcoqwkth6+4E5KCXHtBhi0pa4cYNfwhYLdctgg8W1gtVm6d9b
+	 oR0TbpAhj9kZWsLlUFrCYnCV9Q/fvA6dUI0z9wdeQCsSP6Iq9Dlv41HHpE3x6xJeGi
+	 +kVesT8+6k1YL3Hntd/CQXe4bTU8UoAvJ1ABnMbFPOVsMBU1Rh45bYFwBwoE0DXOQP
+	 S6F1TByerfQDipumByyWQ2aDxqPJh5GcEEx+jfZ1W1LfVSPZmb6y6V062Lvm3qOT3i
+	 qwRkxBhguOrhSJbiIH68uyqSJPnSbJwR1p05zTLh9SvBLbTRVkeUvTfSAaO0nubRwC
+	 m4W5UbFAbggEw==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 1607481F98;
-	Thu,  6 Jun 2024 12:33:32 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id DD6A76086E;
+	Thu,  6 Jun 2024 13:58:35 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 681851BF593
- for <intel-wired-lan@lists.osuosl.org>; Thu,  6 Jun 2024 12:33:30 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id A77D41BF32B
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  6 Jun 2024 13:58:33 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 5E517841E3
- for <intel-wired-lan@lists.osuosl.org>; Thu,  6 Jun 2024 12:33:30 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 9108C4012F
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  6 Jun 2024 13:58:33 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id P-Z0q--p8Dcq for <intel-wired-lan@lists.osuosl.org>;
- Thu,  6 Jun 2024 12:33:29 +0000 (UTC)
-Received-SPF: None (mailfrom) identity=mailfrom; client-ip=198.175.65.17;
- helo=mgamail.intel.com; envelope-from=dawid.osuchowski@linux.intel.com;
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 8vR8OEBvrK7f for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  6 Jun 2024 13:58:32 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.13;
+ helo=mgamail.intel.com; envelope-from=paul.greenwalt@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org ACBC081F98
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org ACBC081F98
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.17])
- by smtp1.osuosl.org (Postfix) with ESMTPS id ACBC081F98
- for <intel-wired-lan@lists.osuosl.org>; Thu,  6 Jun 2024 12:33:29 +0000 (UTC)
-X-CSE-ConnectionGUID: JZVWDOtBRUKROJm4frHiDg==
-X-CSE-MsgGUID: sN8tE0igTfq7SfOLaTiQqQ==
-X-IronPort-AV: E=McAfee;i="6600,9927,11095"; a="14460316"
-X-IronPort-AV: E=Sophos;i="6.08,219,1712646000"; d="scan'208";a="14460316"
-Received: from fmviesa003.fm.intel.com ([10.60.135.143])
- by orvoesa109.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 06 Jun 2024 05:33:29 -0700
-X-CSE-ConnectionGUID: /YOP+PncSPa1D9kFStS9TA==
-X-CSE-MsgGUID: 8jaB9foOTwOqCMQQGPa2Yw==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 569FD4011F
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 569FD4011F
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.13])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 569FD4011F
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  6 Jun 2024 13:58:32 +0000 (UTC)
+X-CSE-ConnectionGUID: r4P8wM19Sny7hXpG+gpYhg==
+X-CSE-MsgGUID: Xb3RVz2ZQBqRHr9twlkn+w==
+X-IronPort-AV: E=McAfee;i="6600,9927,11095"; a="25458054"
+X-IronPort-AV: E=Sophos;i="6.08,219,1712646000"; d="scan'208";a="25458054"
+Received: from fmviesa007.fm.intel.com ([10.60.135.147])
+ by orvoesa105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 06 Jun 2024 06:58:31 -0700
+X-CSE-ConnectionGUID: 4aqE7+uYSiGxTyCFYEIBSw==
+X-CSE-MsgGUID: 0d2AQDtNT1+jikfZU54Oow==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.08,219,1712646000"; d="scan'208";a="42417032"
-Received: from dosuchow-mobl2.ger.corp.intel.com (HELO [10.246.6.23])
- ([10.246.6.23])
- by fmviesa003-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 06 Jun 2024 05:33:26 -0700
-Message-ID: <fbec0c39-8749-4c47-b005-b045253eebd7@linux.intel.com>
-Date: Thu, 6 Jun 2024 14:33:23 +0200
+X-IronPort-AV: E=Sophos;i="6.08,219,1712646000"; d="scan'208";a="37835322"
+Received: from unknown (HELO fedora.jf.intel.com) ([10.166.244.154])
+ by fmviesa007.fm.intel.com with ESMTP; 06 Jun 2024 06:58:31 -0700
+From: Paul Greenwalt <paul.greenwalt@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Thu,  6 Jun 2024 09:48:46 -0400
+Message-ID: <20240606134846.3898837-1-paul.greenwalt@intel.com>
+X-Mailer: git-send-email 2.41.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: Tony Nguyen <anthony.l.nguyen@intel.com>, intel-wired-lan@lists.osuosl.org
-References: <20240506153307.114104-1-dawid.osuchowski@linux.intel.com>
- <0257b1fb-3e0a-d5d2-4e2c-eedc12e7dcd6@intel.com>
-Content-Language: pl
-From: Dawid Osuchowski <dawid.osuchowski@linux.intel.com>
-In-Reply-To: <0257b1fb-3e0a-d5d2-4e2c-eedc12e7dcd6@intel.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1717677210; x=1749213210;
- h=message-id:date:mime-version:subject:to:cc:references:
- from:in-reply-to:content-transfer-encoding;
- bh=v6zwqbT3eNtldS0DZCFshKxvXCvz8cwJ1YakBqbHgLE=;
- b=dbxTikZSr6WwzOb6F05uFGfBmkyz5Oo8RgKUD2y3mWUVH6U91Lvi8jUp
- QFNKNarzpITITrPdbQa6wcLdiARaX4OVPbGFQslEg+221OJwLxfhxLplz
- KLZRxYpq4sKOBagDE8BbhHVJDYu5qoOjRdLAIpEc7XKTYTox4D3Qfniq6
- eYO4rGn5HyIfpk5t2nbuSV9rMx76QA6LJxEUArzm0F7LhifwQWMEXmOrC
- EyoqwBK0+hBPcXD+31cwYqvddv03TPC8OzLnHy/6d/nt3f6LMIIXzHEfD
- Ia0fBeqVytDiHzQ0FSeuEifQDG9x3v0MT3esO1KI+7nnKNT1yMJgRFIm1
- A==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=linux.intel.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=dbxTikZS
-Subject: Re: [Intel-wired-lan] [PATCH iwl-net v4] ice: Do not get coalesce
- settings while in reset
+ t=1717682312; x=1749218312;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=B8O08b4JUvXavQ8UEZtZo+wI7lm1WLpU+H0yTtBSkYI=;
+ b=he6Jy9ZLBhYmEV5LnEb4FFRhzUAjzB1LOLdiUFazkAs6lA6p4ZlorDMb
+ DUMMmiyBwzlg1YQFWTHjRC1+oU2G2mxRr25BFmpNveN/bfiy/JlJHQf8O
+ 1e+j1B1P7j8BgXBSp/pH2PZ1oBVmUSg+EDyGJhz6NCwGYUFwzgEGPhW7X
+ Cdw6NoCn6DuZralytRSPZavugZynPIaryPXccKo4h0mhGUiJ7y70uHdgM
+ OiDudbwJ3+XgzD1BJ4nfczUzRfAto3tLu1M9JUHKb6ssAsHVpEqWuhaw2
+ 5HLdKXvDxjW3ul4fJm5LT1d9qWvSVp1vOfNe5YZBYoYUM6wNzfirMc3M+
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=intel.com
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=he6Jy9ZL
+Subject: [Intel-wired-lan] [PATCH iwl-next v1] ice: Allow different FW API
+ versions based on MAC type
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -109,19 +102,81 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Ngai-Mint Kwan <ngai-mint.kwan@intel.com>, netdev@vger.kernel.org,
- Pawel Chmielewski <pawel.chmielewski@intel.com>,
- Simon Horman <horms@kernel.org>,
- Mateusz Polchlopek <mateusz.polchlopek@intel.com>
+Cc: Paul Greenwalt <paul.greenwalt@intel.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 09.05.2024 18:11, Tony Nguyen wrote:
-> Seems like commit message, and probably title, need to get updated for 
-> this change?
+Allow the driver to be compatible with different FW API versions based
+on the device's MAC type. Currently, E810 is only compatible with one
+FW API version. Now the driver can be compatible with different FW API
+versions for both E810 and E830. For example, E810 FW API version is
+1.5.0 and E830 is 1.7.0.
 
-During testing of the change, it turns out at the current state our 
-driver is in we have to use the approach with returning -EBUSY. Will 
-update the description in v5 to account for this.
+Signed-off-by: Paul Greenwalt <paul.greenwalt@intel.com>
+---
+ drivers/net/ethernet/intel/ice/ice_controlq.c | 11 ++++++----
+ drivers/net/ethernet/intel/ice/ice_controlq.h | 20 ++++++++++++++++---
+ 2 files changed, 24 insertions(+), 7 deletions(-)
 
---Dawid
+diff --git a/drivers/net/ethernet/intel/ice/ice_controlq.c b/drivers/net/ethernet/intel/ice/ice_controlq.c
+index ffe660f34992..ca80b34f2f8a 100644
+--- a/drivers/net/ethernet/intel/ice/ice_controlq.c
++++ b/drivers/net/ethernet/intel/ice/ice_controlq.c
+@@ -510,16 +510,19 @@ static int ice_shutdown_sq(struct ice_hw *hw, struct ice_ctl_q_info *cq)
+  */
+ static bool ice_aq_ver_check(struct ice_hw *hw)
+ {
+-	if (hw->api_maj_ver > EXP_FW_API_VER_MAJOR) {
++	u8 exp_fw_api_ver_major = EXP_FW_API_VER_MAJOR_BY_MAC(hw);
++	u8 exp_fw_api_ver_minor = EXP_FW_API_VER_MINOR_BY_MAC(hw);
++
++	if (hw->api_maj_ver > exp_fw_api_ver_major) {
+ 		/* Major API version is newer than expected, don't load */
+ 		dev_warn(ice_hw_to_dev(hw),
+ 			 "The driver for the device stopped because the NVM image is newer than expected. You must install the most recent version of the network driver.\n");
+ 		return false;
+-	} else if (hw->api_maj_ver == EXP_FW_API_VER_MAJOR) {
+-		if (hw->api_min_ver > (EXP_FW_API_VER_MINOR + 2))
++	} else if (hw->api_maj_ver == exp_fw_api_ver_major) {
++		if (hw->api_min_ver > (exp_fw_api_ver_minor + 2))
+ 			dev_info(ice_hw_to_dev(hw),
+ 				 "The driver for the device detected a newer version of the NVM image than expected. Please install the most recent version of the network driver.\n");
+-		else if ((hw->api_min_ver + 2) < EXP_FW_API_VER_MINOR)
++		else if ((hw->api_min_ver + 2) < exp_fw_api_ver_minor)
+ 			dev_info(ice_hw_to_dev(hw),
+ 				 "The driver for the device detected an older version of the NVM image than expected. Please update the NVM image.\n");
+ 	} else {
+diff --git a/drivers/net/ethernet/intel/ice/ice_controlq.h b/drivers/net/ethernet/intel/ice/ice_controlq.h
+index 8f2fd1613a95..653d3de8c4a5 100644
+--- a/drivers/net/ethernet/intel/ice/ice_controlq.h
++++ b/drivers/net/ethernet/intel/ice/ice_controlq.h
+@@ -21,9 +21,23 @@
+ /* Defines that help manage the driver vs FW API checks.
+  * Take a look at ice_aq_ver_check in ice_controlq.c for actual usage.
+  */
+-#define EXP_FW_API_VER_BRANCH		0x00
+-#define EXP_FW_API_VER_MAJOR		0x01
+-#define EXP_FW_API_VER_MINOR		0x05
++#define EXP_FW_API_VER_BRANCH_E810	0x00
++#define EXP_FW_API_VER_MAJOR_E810	0x01
++#define EXP_FW_API_VER_MINOR_E810	0x05
++
++#define EXP_FW_API_VER_BRANCH_E830	0x00
++#define EXP_FW_API_VER_MAJOR_E830	0x01
++#define EXP_FW_API_VER_MINOR_E830	0x07
++
++#define EXP_FW_API_VER_BRANCH_BY_MAC(hw) ((hw)->mac_type == ICE_MAC_E830 ? \
++					  EXP_FW_API_VER_BRANCH_E830 : \
++					  EXP_FW_API_VER_BRANCH_E810)
++#define EXP_FW_API_VER_MAJOR_BY_MAC(hw) ((hw)->mac_type == ICE_MAC_E830 ? \
++					 EXP_FW_API_VER_MAJOR_E830 : \
++					 EXP_FW_API_VER_MAJOR_E810)
++#define EXP_FW_API_VER_MINOR_BY_MAC(hw) ((hw)->mac_type == ICE_MAC_E830 ? \
++					 EXP_FW_API_VER_MINOR_E830 : \
++					 EXP_FW_API_VER_MINOR_E810)
+ 
+ /* Different control queue types: These are mainly for SW consumption. */
+ enum ice_ctl_q {
+-- 
+2.41.0
+
