@@ -1,111 +1,84 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 706018FF474
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  6 Jun 2024 20:14:34 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id AED498FF4B3
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  6 Jun 2024 20:32:02 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 90EE241917;
-	Thu,  6 Jun 2024 18:14:26 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 14FF641686;
+	Thu,  6 Jun 2024 18:32:01 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 6M_Sd7i1oDhA; Thu,  6 Jun 2024 18:14:26 +0000 (UTC)
+ id LHuVn-QqNG5z; Thu,  6 Jun 2024 18:32:00 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org EF84840567
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 24CBF4164D
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1717697666;
-	bh=QcDw2jc2BfZ+k/TbM/vd1C8TAW70hXP/jfMovjQ+yG0=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
+	s=default; t=1717698720;
+	bh=KS2oYQ6kEvwe+tStHjauZWJyl0wKHtSJW2cYetOHMQY=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=ZXdvtEYr+O/j5WEnhETFOW2oa+tq4BSHK1JMyOj9vy+E0tnshn3VeVF7YUFzfSg4h
-	 /IYT/G6ojnZSCWarsLjDWccq8aGoFPMLQoLSJLnyAH5kzkqe/t/54dD/3dqstTez2m
-	 SS6Emzc+jMNCXdelUbrHX5Hd9LWooGZciWEGDwm/bOa9c0zqsee0u3+2SLIuL+iLdI
-	 ddoJyDWcRqQE1LOU7V16eqOcClyLS5BmwvJVBcJi/Sid7BEsRzE2B+aHS3QNNJ0JjN
-	 LCHBzc2pSUYRIW2A/x1LRNwco2J1DBxCUIVX9ozQMtJgXF8W8TFUj9Wyq4QG6rpsww
-	 RlYGuS/IEKt9A==
+	b=TLwyU/XeftgL3Q20lL21QWEk1TD2UY+6XiyUdSL6IyfcS1PtjD+8Kfpp+9Taqt2mB
+	 jSQA1jWDbPTEagl+0+EECUYDoO/tq8xSj/z4PnGEZfuTgTfE1FlB2lcP7s4C8CojXo
+	 fgQ4kq/qTF4EVkPzDYHBQjieq9DAYgtuPc0eu1NQc1w5QeLZOqk8aUvVIAApsKvtzy
+	 LXibK6KmygK7f3T0TBiWS9f3vdqwde5NShmacRGjwzNDzXqhYtdvXQUor/T1g015Xb
+	 0H6+udA4Mmpr2MT72Fm5qAEMwbL2kOU5xOiO4bOygihUKE9G/JfeHmMKGO6ki1Ogk1
+	 rMvFnBD5haQHw==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id EF84840567;
-	Thu,  6 Jun 2024 18:14:25 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 24CBF4164D;
+	Thu,  6 Jun 2024 18:32:00 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 2A6CE1BF584
- for <intel-wired-lan@lists.osuosl.org>; Thu,  6 Jun 2024 15:52:48 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 522361BF592
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  6 Jun 2024 18:31:57 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 14FA883503
- for <intel-wired-lan@lists.osuosl.org>; Thu,  6 Jun 2024 15:52:48 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 497954249B
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  6 Jun 2024 18:31:57 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 4MZ0PEgOUeIZ for <intel-wired-lan@lists.osuosl.org>;
- Thu,  6 Jun 2024 15:52:47 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=212.227.17.20;
- helo=mout.gmx.net; envelope-from=schaecsn@gmx.net; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org A4D33834F4
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org A4D33834F4
-Received: from mout.gmx.net (mout.gmx.net [212.227.17.20])
- by smtp1.osuosl.org (Postfix) with ESMTPS id A4D33834F4
- for <intel-wired-lan@lists.osuosl.org>; Thu,  6 Jun 2024 15:52:46 +0000 (UTC)
-X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
-Received: from [192.168.1.209] ([173.228.106.93]) by mail.gmx.net (mrgmx105
- [212.227.17.168]) with ESMTPSA (Nemesis) id 1M5wLT-1sM60x1tYB-00AKLE; Thu, 06
- Jun 2024 17:47:04 +0200
-Message-ID: <70d92f17-d9aa-48c0-a132-506faf6f94dd@gmx.net>
-Date: Thu, 6 Jun 2024 08:46:58 -0700
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id aM8pSmC6fG-v for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  6 Jun 2024 18:31:56 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=156.67.10.101;
+ helo=vps0.lunn.ch; envelope-from=andrew@lunn.ch; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 355C24248F
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 355C24248F
+Received: from vps0.lunn.ch (vps0.lunn.ch [156.67.10.101])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 355C24248F
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  6 Jun 2024 18:31:56 +0000 (UTC)
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+ (envelope-from <andrew@lunn.ch>)
+ id 1sFHtn-00H2hc-F7; Thu, 06 Jun 2024 20:31:43 +0200
+Date: Thu, 6 Jun 2024 20:31:43 +0200
+From: Andrew Lunn <andrew@lunn.ch>
+To: Jacob Keller <jacob.e.keller@intel.com>
+Message-ID: <12b1febd-a634-43bb-8edf-79ccb4f9e3aa@lunn.ch>
+References: <20240604031020.2313175-1-jackie.jone@alliedtelesis.co.nz>
+ <ad56235d-d267-4477-9c35-210309286ff4@intel.com>
+ <1dbb8291-9004-4ec2-a01b-9dd5b2a8be39@lunn.ch>
+ <c12ffb8e-0606-442b-810a-69bf65624bf9@intel.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: Ying Hsu <yinghsu@chromium.org>
-References: <20230518072657.1.If9539da710217ed92e764cc0ba0f3d2d246a1aee@changeid>
- <5184214b-22ed-41cf-a1b0-6db2d4ff324c@gmx.net>
- <CAAa9mD1HGJDKzoLoqZzyrR5wsk_6voWs+VmoZoo9ZontyvjUww@mail.gmail.com>
-Content-Language: en-US
-From: Stefan Schaeckeler <schaecsn@gmx.net>
-In-Reply-To: <CAAa9mD1HGJDKzoLoqZzyrR5wsk_6voWs+VmoZoo9ZontyvjUww@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:RmkEobG8qViO5ZiTlBvaeaBpYAXSsAocvTIYWQATG91O5FsnEPF
- naNXMtLGd0+K0AIT0P4dEDFW1lysZS7X3IZ/cSfR24LbftzMuQlFsNIgy1Hety/+P2WyutL
- o5o98aBKQ3lwBnyrFnDVDxVoLlT0QMr1qq7+wbY/C5ffqYlxOwQiBa+ptFFFDFG0vPPrqPW
- XdgK+alTkrPl3ZKcwo3Mg==
-UI-OutboundReport: notjunk:1;M01:P0:GLCrRHIgbg0=;hZP2oD6FT8KMFOcpICXRxm7wCGT
- fSZGD3MKY9IxhQimLzdAvN9XRi84rVjKt74gRGI1c5kiJCWdGi/PETu71KmMEawuu3mVe3s8w
- sA6S62lH7ed29HakFYwxgIAJlnrr5yc75pxojPhL5UI5w/fnfI8vnWcPJ740uAa3VDZ8Ws9nc
- Vc9aA4Cp72XdJg0CQrkgs1SMd8/6wU2H9/x791Vjqkog1p6SuXnjyaMet46GeiZePJyaZO9Y7
- 31o5abbCpEeb8VsLo8aU9LYpfut9jVAH5SzcNio+W/+X7zgB11BCOOojBP5/S54j8LcZnLrec
- 8XoJ+29vQ9q0Wk60747GO3caESD0A6NoQRVgtX1Nw7uUqs6E5OKFK6L4P3tAtqavCs325ivGx
- P8Ahy8YYDP7tE7b7576xqcxEXkwSAtaduwWbR/eNDzE0tZoZ6TluX6D9LzGT/+t8MYx2TCe6+
- BUrrrJddBT41HBzzpVTS+ISmKuDHiW+p6eTqMnPvwCYeCBI2JCHutRldtB6I461ztG+xBs5ED
- CLkd1mrimAa76iXMBToH0VCtOZk1jrlqCOBSd+cspmPPfOFLbOek0kaSLHrI+lZe2KvRZGRXI
- 1C7aoC+KCbUrCQfHbonn3lP2g/3oEZp5GaOAznMh48C5B2vxVTkL7xwN2wCaGFSDkqmIX2ZCq
- 2tbHeYtfGwc+6YDUiyGKquHBrSo2vlv/RPCzoaQc+zeDjAmsU+zo5LA50uEeA1BHMXAn/iS1H
- hPPJr/fo/z83snGsIgdC2IsWpmZ0kPzDW/zLesH0E3Ent61speNUpjwY+dL+GAn2yKwNOWFR7
- fUogITdR9KX+n9CTb2LRQOJzbBApzhsMDweQA34oGrfGQ=
-X-Mailman-Approved-At: Thu, 06 Jun 2024 18:14:16 +0000
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmx.net; 
- s=s31663417; t=1717689162; x=1718293962; i=schaecsn@gmx.net;
- bh=QcDw2jc2BfZ+k/TbM/vd1C8TAW70hXP/jfMovjQ+yG0=;
- h=X-UI-Sender-Class:Message-ID:Date:MIME-Version:Subject:To:Cc:
- References:From:In-Reply-To:Content-Type:
- Content-Transfer-Encoding:cc:content-transfer-encoding:
- content-type:date:from:message-id:mime-version:reply-to:subject:
- to;
- b=kdBactfmSKOGXXibegQ3YsjIJ1b5Nr7BjDuRcrfhsIvsNX7qmD40pgVx7dFlvAXZ
- 9S/cEyXeKflGYnev9Qld++VvjbwJCIokKof3vVP24cd0LnWpJgRVpojyd7lIVWuDd
- +FSXN729n9PJhqL421Aw1/VI1p+6++ZPKoP3oqHLaXH6uVak4YA+4ivTXkxZXRb+g
- QHakGEAHvgshhbpncH5/+D0smNpzl+yg0L7h5R1rkwPwUlXjF8NqXccSzo2YygAOF
- PHl1rcFXcWRgw0d84cmH/e9b8JTOOxO1Wbco4aTSbA9YU8cqGkIowZWKLDddRD0KI
- 5kF+x90KB7WWp3aOmg==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=gmx.net
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=gmx.net header.i=schaecsn@gmx.net
- header.a=rsa-sha256 header.s=s31663417 header.b=kdBactfm
-Subject: Re: [Intel-wired-lan] [PATCH] igb: Fix igb_down hung on surprise
- removal
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <c12ffb8e-0606-442b-810a-69bf65624bf9@intel.com>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt;
+ c=relaxed/relaxed; d=lunn.ch; 
+ s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+ References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+ Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+ Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+ bh=KS2oYQ6kEvwe+tStHjauZWJyl0wKHtSJW2cYetOHMQY=; b=GluwDzP0zbxIddz8/0rWtWfUnP
+ Ln4KiPloTvSPVnN8yiLLtHlYqh8rz0Jk8wsMbDT/9VSmeb4d3lPfYsukLdRZPYCkvXRKB0jEnwcKV
+ FwKqjeHY+qO2mKiCRJ9IGOvDwycriNLjaoJdyeIFPSxXEUPBmHctT/baE7rsilrMSIK4=;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=lunn.ch
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (1024-bit key) header.d=lunn.ch header.i=@lunn.ch
+ header.a=rsa-sha256 header.s=20171124 header.b=GluwDzP0
+Subject: Re: [Intel-wired-lan] [PATCH] igb: Add MII write support
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -118,49 +91,26 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: grundler@chromium.org, netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- Eric Dumazet <edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
- intel-wired-lan@lists.osuosl.org, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>
+Cc: jackie.jone@alliedtelesis.co.nz, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, chris.packham@alliedtelesis.co.nz,
+ anthony.l.nguyen@intel.com, kuba@kernel.org, intel-wired-lan@lists.osuosl.org,
+ davem@davemloft.net
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hello Ying,
+> Yea, its extremely easy to break things if you don't know what you're
+> doing here. So its more a question of "are we ok exposing yet another
+> way root can brick things?"
 
-On 6/6/24 01:03, Ying Hsu wrote:
-> On the CalDigit Thunderbolt Station 3 Plus, we've encountered an issue
-> when the USB downstream display connection state changes. The
-> problematic sequence observed is:
-> ```
-> igb_io_error_detected
-> igb_down
-> igb_io_error_detected
-> igb_down
-> ```
->
-> The second igb_down call blocks at napi_synchronize.
+Many MAC drivers allow it, and we have not had complaints. It is not
+really something i'm a fan of, it in theory allows user space drivers
+for PHYs, but it is full of race conditions so in practice unlikely to
+work reliably.
 
-=46rom the backtrace in your commit message, I gain the impression you get=
- a hotplug event for removing the ethernet device. From your commit messag=
-e I gain the impression you get an AER as well which is handled in igb_io_=
-error_detected()/igb_io_resume(). The problem lies IMHO in the interaction=
- of both.
+If you are worried about it causing additional support issues because
+it gets abused, you could make it taint the kernel. That makes it
+clear all bets are off if used. For the use case presented here, a
+tainted kernel does not matter, it for lab testing, not production.
 
+      Andrew
 
-> Simply avoiding redundant igb_down calls makes the Ethernet of the thund=
-erbolt dock unusable.
-
-I'm not too sure if the current code is even perfect in your use-case. Wha=
-t happens when you get an AER on the ethernet device (without plugging it =
-out at the same time)?
-
-Can you try to AER inject a completion timeout into your ethernet device, =
-similar how I showed it in my previous message? Just replace the bdf 09:00=
-.0 with the bdf of your ethernet device. I expect a kernel crash like we s=
-ee that on our embedded system.
-
-
-> If Intel can identify when an Ethernet device is within a Thunderbolt
-> tunnel, the patch can be more specific.
-
- Stefan
