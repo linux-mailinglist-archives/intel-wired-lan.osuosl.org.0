@@ -2,226 +2,192 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id D32C48FE0D1
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  6 Jun 2024 10:22:06 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1B8FF8FE402
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  6 Jun 2024 12:15:49 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 72E8D6144B;
-	Thu,  6 Jun 2024 08:22:05 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 981AC607FD;
+	Thu,  6 Jun 2024 10:15:47 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id ywoHHffLH1ed; Thu,  6 Jun 2024 08:22:04 +0000 (UTC)
+ id 1t_0KioKUfcY; Thu,  6 Jun 2024 10:15:47 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 737746144C
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B628C6081E
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1717662123;
-	bh=RpgxHMtGPCFMhBF0EbuTuJezKWah1z5rHwMl7p9GCOw=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1717668946;
+	bh=pjmbp/jX6uWbW71rNhLZ9BL8u37nTlDgfhKTcueVjiw=;
+	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=1tgyeIbQgZsej1K0n8ec9Rlz09BihvSNNhoZc7L0OQmQhqmaswMelRsquDl2RkUVE
-	 KvdB0cdSU65kCtlPtH3QsjNQS1CAiglRS72dtE2Q3eqTHvF/PCWTuAw/qkAfOviDKl
-	 LF3vEuSUhjjod7VwvMTGnvb0yIikx58e5PdygC3JJ1dQMERVA/ezru4EPyfpD1vs7D
-	 v7DPKDuQUh3FRKV5jtxay0Rx8FMW+VrzWjm1cfQo3459CtRzCk4EKQ4Nt5XB3I6KRz
-	 1QG0dh6UQt5ShL/1gK116r6T6lNUA1t/oV6ZaFnB6KHsDjOHlFs2oKRgsP8aLhwirF
-	 AT0Ay+vn5lD5w==
+	b=9l2KSPzMQ+b1dIPDdC2JOxVZZpfdb8ho+QZ7UaZQSgGS8IWnh05YK780GmRzrFV7Y
+	 f1uL8v9/l7wCS0aUVh4xqZ36zc7UPxEx3gTU21nO6f/DfYRYepY7a79C+W9FvEJES8
+	 1nqLXYEcBPVx06z6O/hqHmr0iTQe7uaxa9l4kK8h1tHlSo/xU08AehJNMYuZPS0SL1
+	 6GnFLWMMxWN0RBULD6cC0oKbqq9ga/UvrOk3/dhYoPeFUVya5LhkRySIRHJ9neI4mM
+	 2qNaUscAXbW9wptxZ0qdC6phDhTW5absTxuj0CviyPpNZkFWHj1rbKOvt2c5a8tW4c
+	 dgIXQeSoyRljw==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 737746144C;
-	Thu,  6 Jun 2024 08:22:03 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id B628C6081E;
+	Thu,  6 Jun 2024 10:15:46 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id A73C71BF599
- for <intel-wired-lan@lists.osuosl.org>; Thu,  6 Jun 2024 08:22:01 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id C2EE91BF865
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  6 Jun 2024 10:15:44 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 93189611E8
- for <intel-wired-lan@lists.osuosl.org>; Thu,  6 Jun 2024 08:22:01 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id B970640773
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  6 Jun 2024 10:15:44 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 4dYjfQeFF0Hj for <intel-wired-lan@lists.osuosl.org>;
- Thu,  6 Jun 2024 08:22:00 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.9;
- helo=mgamail.intel.com; envelope-from=wojciech.drewek@intel.com;
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id wFhfLtRU5bw5 for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  6 Jun 2024 10:15:43 +0000 (UTC)
+X-Greylist: delayed 2011 seconds by postgrey-1.37 at util1.osuosl.org;
+ Thu, 06 Jun 2024 10:15:42 UTC
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 1EE6840649
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1EE6840649
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=67.231.156.173;
+ helo=mx0b-0016f401.pphosted.com; envelope-from=hkelam@marvell.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 264D661449
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 264D661449
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.9])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 264D661449
- for <intel-wired-lan@lists.osuosl.org>; Thu,  6 Jun 2024 08:21:59 +0000 (UTC)
-X-CSE-ConnectionGUID: qOKqkJcqQ9ipbW7dxMTUHw==
-X-CSE-MsgGUID: jmP2a5csSdGwnTbKGFS3Ig==
-X-IronPort-AV: E=McAfee;i="6600,9927,11094"; a="24970037"
-X-IronPort-AV: E=Sophos;i="6.08,218,1712646000"; d="scan'208";a="24970037"
-Received: from orviesa007.jf.intel.com ([10.64.159.147])
- by fmvoesa103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 06 Jun 2024 01:21:59 -0700
-X-CSE-ConnectionGUID: OEnCNVQPQ9up/nc9gKy8hw==
-X-CSE-MsgGUID: gx8J2KAjTTmslSv38UA9oQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.08,218,1712646000"; d="scan'208";a="38556148"
-Received: from fmsmsx601.amr.corp.intel.com ([10.18.126.81])
- by orviesa007.jf.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
- 06 Jun 2024 01:21:58 -0700
-Received: from fmsmsx611.amr.corp.intel.com (10.18.126.91) by
- fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.39; Thu, 6 Jun 2024 01:21:58 -0700
-Received: from FMSEDG603.ED.cps.intel.com (10.1.192.133) by
- fmsmsx611.amr.corp.intel.com (10.18.126.91) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.39 via Frontend Transport; Thu, 6 Jun 2024 01:21:58 -0700
-Received: from NAM02-DM3-obe.outbound.protection.outlook.com (104.47.56.40) by
- edgegateway.intel.com (192.55.55.68) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Thu, 6 Jun 2024 01:21:57 -0700
+Received: from mx0b-0016f401.pphosted.com (mx0b-0016f401.pphosted.com
+ [67.231.156.173])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 1EE6840649
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  6 Jun 2024 10:15:42 +0000 (UTC)
+Received: from pps.filterd (m0045851.ppops.net [127.0.0.1])
+ by mx0b-0016f401.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 4560WOps028619;
+ Thu, 6 Jun 2024 02:42:08 -0700
+Received: from nam12-mw2-obe.outbound.protection.outlook.com
+ (mail-mw2nam12lp2044.outbound.protection.outlook.com [104.47.66.44])
+ by mx0b-0016f401.pphosted.com (PPS) with ESMTPS id 3yjshcc6gh-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Thu, 06 Jun 2024 02:42:08 -0700 (PDT)
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=mSG6R8M5fG0wWfjAj+KewWW/+vg/w0GjQr+AWzUm0tCp2U+rBUcFmFf4Fe0moZw/yqkTs7yIYGuFSKp//4pDsBSGXFnQpiVq18/+nuG56GA08P9XInOvSOR2TOpqvuz4RpIwPprbTNHWZuyxDguISKszu6IxbIhbGx5/c7Ub6jSF9czLpdZ0XJ/MygeUPag3XYbNMK9qCLemtFpnRgwXOThq5N7d+Y5fj4HV7n1lgezHWlGm7epdk9wCgT2LeQ79fvl3Go28nKfbaW7UgJ2QTT6flpWM2kcFUU59FOgGBnf/C5S7GYqou5ZvrJXt7KP2nPaUAWz3N98vC7tBYWyAkQ==
+ b=X4vR3LKFCYIzhJ428I/aGdj3wFq7culqhvjrSBIGQoJ/2nJrVHiYVGQ80e96/lJAmkpnFGdNzfAxIFfGn9CxfYbkQz0upaH8gtPHoT5fRqtSamQbsx7hR2eBqbeveNs0ha6fmqAreKMoUT+QxOpY1UCzQvsXOy/vT9l0C4ZVSjzY2rt9wY6aD+tPjAltgBgkJ+2AX/PS4R+mOMoQKkD+JJ0dU7+F3iEM1+StfDucP6LFDKHTH7uq2ETt9TIm15nJgUohQY5B2EsPz6VwuTR6fzjJxYJwdLxV2nQzJ4GhaHL3J/jX9DO1McbfBgx9juw52b6HZCVfytQWhQS5EXvzjg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=RpgxHMtGPCFMhBF0EbuTuJezKWah1z5rHwMl7p9GCOw=;
- b=Vi6izgbsq3ugmKi14kj9Rq571SXAOOBKElsabXtTlN3eR+r+3O8fRajvqwhyCQdkcoMrX6qiZ+DRVF/Lo1MnoMVQ/UbmXHSx3GsOIF5Rhyrhzvhs3hm5XfDbiOnfz/4AgT1v2jnViuQAB/DA7+ecS4GUf+WPG1fJGlu867KyPYDU4tCD7eu2uP+21aUhlRL7KZFY7NhP3IeYSB3/ILCbO2IJ9xOithH4XIYv2pnfMGDSK7FHzKNKoytoAET2ktm44XxiMwQXOwjvRzQ9WkZJsN40RIk1yZLMTapcju12ndq+w3Wz0JbPvJu+uV7nIxdQS7lbs+H4mXA3m7m8avItqQ==
+ bh=pjmbp/jX6uWbW71rNhLZ9BL8u37nTlDgfhKTcueVjiw=;
+ b=emltc0w+kIKeGzHA9tH6bfK2Tr4T2oXwhGouaWyRTunBVuxJlRLiK1irEbpE2vtyBlb2zj5Rw1SAuHGtytes3ZxTZp/5q0MhP49JvLN2j0KutGEdz0nu6TlFNneF+RVR6GU45Y2gs7+gKmMu0JAW11RVTE0AyeGQHz4AFd+Ols9/WkUoTUSfrrWeX3EwQx+L4Qlp9bI0Hp3dyr69HH6ZJZgMtK0aswSoFakznhK65MHQ7sxg158XSumqmYmDxmdWwyvZovhKaZWtzYH/s6EJ1k3vp+ZOtk2A1ezprvjoudnfo4dooh57a1nvvFyrdM+ssngMwyadgBpYLKvpTqhRfQ==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from MW4PR11MB5776.namprd11.prod.outlook.com (2603:10b6:303:183::9)
- by CH0PR11MB5298.namprd11.prod.outlook.com (2603:10b6:610:bd::19)
+ smtp.mailfrom=marvell.com; dmarc=pass action=none header.from=marvell.com;
+ dkim=pass header.d=marvell.com; arc=none
+Received: from PH0PR18MB4474.namprd18.prod.outlook.com (2603:10b6:510:ea::22)
+ by BY3PR18MB4691.namprd18.prod.outlook.com (2603:10b6:a03:3c6::23)
  with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7633.34; Thu, 6 Jun
- 2024 08:21:55 +0000
-Received: from MW4PR11MB5776.namprd11.prod.outlook.com
- ([fe80::4bea:b8f6:b86f:6942]) by MW4PR11MB5776.namprd11.prod.outlook.com
- ([fe80::4bea:b8f6:b86f:6942%5]) with mapi id 15.20.7633.021; Thu, 6 Jun 2024
- 08:21:55 +0000
-Message-ID: <0418a7cf-03d3-4c14-afc4-27ed8714fa13@intel.com>
-Date: Thu, 6 Jun 2024 10:21:50 +0200
-User-Agent: Mozilla Thunderbird
-From: Wojciech Drewek <wojciech.drewek@intel.com>
-To: Hariprasad Kelam <hkelam@marvell.com>, "netdev@vger.kernel.org"
- <netdev@vger.kernel.org>
-References: <20240603123146.735804-1-wojciech.drewek@intel.com>
- <PH0PR18MB447415E48D0E77D24BE9A9FCDEF82@PH0PR18MB4474.namprd18.prod.outlook.com>
- <1ee2b836-ffec-4581-b68c-60ca63d50b29@intel.com>
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7633.19; Thu, 6 Jun
+ 2024 09:42:05 +0000
+Received: from PH0PR18MB4474.namprd18.prod.outlook.com
+ ([fe80::ba6a:d051:575b:324e]) by PH0PR18MB4474.namprd18.prod.outlook.com
+ ([fe80::ba6a:d051:575b:324e%4]) with mapi id 15.20.7633.021; Thu, 6 Jun 2024
+ 09:42:05 +0000
+From: Hariprasad Kelam <hkelam@marvell.com>
+To: Jesse Brandeburg <jesse.brandeburg@intel.com>, "netdev@vger.kernel.org"
+ <netdev@vger.kernel.org>, "intel-wired-lan@lists.osuosl.org"
+ <intel-wired-lan@lists.osuosl.org>
+Thread-Topic: [PATCH iwl-next v1 4/5] ice: implement transmit hardware
+ timestamp statistics
+Thread-Index: AQHat/XKbSnryGuzBEOhscpgf8ZQFQ==
+Date: Thu, 6 Jun 2024 09:42:05 +0000
+Message-ID: <PH0PR18MB4474A300F2393A7B22BB7B30DEFA2@PH0PR18MB4474.namprd18.prod.outlook.com>
+References: <20240604221327.299184-1-jesse.brandeburg@intel.com>
+ <20240604221327.299184-5-jesse.brandeburg@intel.com>
+In-Reply-To: <20240604221327.299184-5-jesse.brandeburg@intel.com>
+Accept-Language: en-US
 Content-Language: en-US
-In-Reply-To: <1ee2b836-ffec-4581-b68c-60ca63d50b29@intel.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-X-ClientProxiedBy: MI2P293CA0010.ITAP293.PROD.OUTLOOK.COM
- (2603:10a6:290:45::20) To MW4PR11MB5776.namprd11.prod.outlook.com
- (2603:10b6:303:183::9)
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: PH0PR18MB4474:EE_|BY3PR18MB4691:EE_
+x-ms-office365-filtering-correlation-id: 5aad20b7-358b-426f-1d88-08dc860ced27
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0; ARA:13230031|1800799015|366007|376005|38070700009;
+x-microsoft-antispam-message-info: =?us-ascii?Q?sJiWCLEsi/9V91ZAlIp7KuLBz5tQByuAmohbfbIDY0k1k0aPfBeFL2b0nAqy?=
+ =?us-ascii?Q?96fRSMBioPixG6H/zXl7/pgIaFViLBsL4u4mA3uRGhuJsfAzhxY00BMHlX6K?=
+ =?us-ascii?Q?cWSQtJzwssQ4DZQjgp1jhDKDxOZWcJI3CN8JK9Gm40NTiRBz3lFSYkEoCvUI?=
+ =?us-ascii?Q?WVjWttQW/uPMijN34jeoGhx8Zx3kvsQgKPj8M6QNSeKp1qPDvgBWTLlbd8S3?=
+ =?us-ascii?Q?oPIopPOptB7GQVslX1KnJEnfFI7vcTgTh9pCAuMlBBpF8F/8vfmesncVOQPm?=
+ =?us-ascii?Q?ygcCaaQ3CqRQ10dne3kKJcx0XH7lO/0mnMm/t5de+VqEnmTCwvj9h41SOACs?=
+ =?us-ascii?Q?x8DqclbAkIn5GC2j2EkmxRGjyonrayGPc6IwckLG9sgcFYVojuuHHnW879oc?=
+ =?us-ascii?Q?o1nInKJcHMys0YV7gwQgNGTfZlIYH5DjBaNvgoR6F0GqOd3wNJ1mQkgTj7bj?=
+ =?us-ascii?Q?FwardNRnnb2IDsKkUbsjYl5Xi7tpEHf5AGkGKJCDcVTkz5H54QpR6STTaHE5?=
+ =?us-ascii?Q?sVhfT3q8kwqin1Cl9FhdWJ++GXVyKSKzK7yCrn0ZIUNX+W7MBesIDi919g1b?=
+ =?us-ascii?Q?j60avM+E2ZIetNhJ7UxueZy9ChtIoHeScHYBw+dmMMsSboSu0lJDFvQRkqGD?=
+ =?us-ascii?Q?s3zPie5rh3iD+PkuTzfpNDzSck7tkm9Tr3WLH7gUbm4dDuo8nYrz06wdZZA0?=
+ =?us-ascii?Q?JOnTqtDp1JHZfwSto72nPKnM9OzLTIoYyHsfoj8qC0b/Gf2L254tyfcMmwy2?=
+ =?us-ascii?Q?hEYfAWtjstxj7NDE3ZLk1E3R0HtVcLWRNAouQKEfTHw1gf8G4mA1x99kmo3G?=
+ =?us-ascii?Q?M3n/CBGSK9vAcIuubaodpDCU3HccH8nI4H3RJ7x16vQiBW9tfF+PLxtAMUu/?=
+ =?us-ascii?Q?9Rk45J9zc0eKEnu3YTUDEa9yqKwn9IKjmBu6utyux/UYKUFgGzI5G4+G/FMk?=
+ =?us-ascii?Q?P0fydH2xkvp1NJU8nNHtWScCuKpuwD2yb/werpvLss+YIHOZnsTU/RtCVLvz?=
+ =?us-ascii?Q?YqCDKuTEGfz40zQwc8qOHfAv9e3RPd1j5ciVvZSHqN0y3d1WYt0TjsybiX9u?=
+ =?us-ascii?Q?96mBd6RiXFB0zX3NtPyC8N4H17TWGds2Jo5hUxSK+n/aHKTyH9msLEzpQAq7?=
+ =?us-ascii?Q?e4l5YlEphbkvO+vPYr9BiEyJgh4zYQ1xNDsqk+WtK7apkqjCSh0VfwAX27FG?=
+ =?us-ascii?Q?16yVcGKu6NAaSkV/sEB0mBk6AochCk9LKORc+E8Kv1qVbZFwgDxUifEMlrWo?=
+ =?us-ascii?Q?coSOnp3zGrHdh7BJ8FcicLA18TR/me7JVl7FpED/B4OD70jq+PwlfG3fb20g?=
+ =?us-ascii?Q?eB1F3xpbIC5HBOKhmw4fF7pBdkpn+N1lPRat8MnRZwiYB7J4XFWX6u8WJVYM?=
+ =?us-ascii?Q?CDAp/cY=3D?=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:PH0PR18MB4474.namprd18.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230031)(1800799015)(366007)(376005)(38070700009); DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?Fv4YuEn0Gyxr27p99Qx2CYfnFLBZTdJClHwot1OVETcsKiPMe2zP4wQfFZse?=
+ =?us-ascii?Q?fXTbgAA+8dgz/FWlH5WTJhJ/47v6w2fJaylWHwS536ZNqabUl7t60hEeG514?=
+ =?us-ascii?Q?ZIU93G5sKiVWMhuPQQP50lYS7pZ52bALjzCCIjf8AAJOpAUIQ/jKsDIOHkD5?=
+ =?us-ascii?Q?3PFJOyKZHirkzAriNjxk4Ydisgqob55lXZyHfHojZFgO3XPeVbo/kopH4812?=
+ =?us-ascii?Q?rhKrZHFcKtaPZ6B+XY+B3IHqGq4IKe/1ocj/ET6jkCk5Iamk0C2ve9uLb3Fe?=
+ =?us-ascii?Q?pHg6H8fSaYX7S9+JDjLw1gR7BVUDhHLPG5m2Xgkkr8V/T2ZXK2yQNNuKjJ/x?=
+ =?us-ascii?Q?lrzXifvufrSMBE3g3weHKBxPkRsksE4XFhZGR7at2jhPp2GZkv8XLl6PmZ5F?=
+ =?us-ascii?Q?+81G05HcLc26T61FZtG9tn2uyz3ghuhvB7r+hq0Di8u/C6KLgpxMjkUUvz+i?=
+ =?us-ascii?Q?BmzEQdhdcvh8FzH07u3XUn4WNL65ZDDVoBa+SD98J/OK5WxvVfPPdArjEgbu?=
+ =?us-ascii?Q?FNcqlw5rJx2mA6ppOf+3NHZSIk8ll8Htn3vSDP0OPohwUXLAUWhcO9SwxV4c?=
+ =?us-ascii?Q?azYuPR219oGRM5wnXfF7sKDOjZxwmukosQpgffwKjty4KYTK3Y5tKF+XY2Fw?=
+ =?us-ascii?Q?R5RMTYyyun6Dzanvdvn4HlEkjhWz3IXW3RTCumNPhRhJlUJlMsjmDRB75StF?=
+ =?us-ascii?Q?9rVBfzSMWb1rdT32HO/BrK9Mfy6az2K3zjQ34b7GhR2LA5NWLcu7I/4mo7Pu?=
+ =?us-ascii?Q?JUJPgik4vdFKcTyqQrCZGZtkASxRGjlYoaPQ2DpUbjyL50BJBlRQHKBl7FRS?=
+ =?us-ascii?Q?MnBaOVbLDpEuxpojfLcw2yoTq1d2hi2cg5peA//Tp+pyKZkQ4cmvMuVDeF68?=
+ =?us-ascii?Q?lid18efSEcSgsJrrOkhs4zlM+JEq6Q92ilSWSCbkX6kmD7DLARQbZsbWlpAN?=
+ =?us-ascii?Q?uaTf664AAy8/6KLqf9bNkAxRGzH/0yjsobK7mby92nNVCUEastTLEwvjdjHJ?=
+ =?us-ascii?Q?nGJqH86hXNRnET2Ya3mVS42K/5/1TiDCLFGra2rKSKV34bNCvf18m9WCRXJJ?=
+ =?us-ascii?Q?6ETsoC1TIbkjnXFLsdNo0Dyg1o7LGSl5BpeBXUmKs1Ka/tinIClUj+l1RMk5?=
+ =?us-ascii?Q?M/8sbL/DJPMX7dYMZjwsmKul/ZPUo3+kQrz9CUu6a2X8NL6MGxpFUXbXno3/?=
+ =?us-ascii?Q?TwKHyKTaW8QEnKHGaOBNhrWjecv+94UOI14RZhc17yo01YMJwnTguQzHr1Wz?=
+ =?us-ascii?Q?GNhSAAI8Eo69Glwm3CdpskwID3jZju7b+cUuXxlRNibD3nRcG7tDg1lWV4+S?=
+ =?us-ascii?Q?Zz9XPXSdj3wnDcTUMhhvp+gy8rSyQB0hB9ElkFm3WtoCzfwnoRMajnnFe/8A?=
+ =?us-ascii?Q?JSUXkrKK5ks9ovzhdm1YJ6EF03LRJx1+c1hFK/0aCgbTEc+IoyTWDAKTdeJb?=
+ =?us-ascii?Q?M3PiddKI34fPB2qQf+X0mQgAM2766x0S+0kvStpSJCoHTbbkX5QMiJzEvFd/?=
+ =?us-ascii?Q?8iXNA58jX2+3M7YZf51ohqhGav9PcVMzHSykKCA+kFixO2KEAQ2FXgX9RFB7?=
+ =?us-ascii?Q?0Muketao5jrnHwH8IEs=3D?=
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: MW4PR11MB5776:EE_|CH0PR11MB5298:EE_
-X-MS-Office365-Filtering-Correlation-Id: e9cab639-49fd-4942-2fad-08dc8601b9a7
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230031|376005|366007|1800799015;
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?d01tMjFjcFZQZFJTZ1ZqWEFLdUxWSkRkN2VWbDk5bDE4NkQzNStxVDY1VjBa?=
- =?utf-8?B?ZDN2TzhsL1lJSmNDcHF2MXo0a3hRQkZMS0FzVklZUWI5U0FMblRFaEJZNkV0?=
- =?utf-8?B?c3dHOVJrUXJ0aE9LNVF3eVlnNHZwMUZLMXpVMnVsS3JnQXB3YU5oVWJmbEpl?=
- =?utf-8?B?M054YUhUVmd1U290MjU3ZjdnUVI3djdBTXdBN0RrRFpPQzVIOUltSUxPK2RJ?=
- =?utf-8?B?T1hEV2E0YjNLU3h1OERZZnZ4eVljMndsMis0RjB0S0l1aitQY0dSY0NHQWJx?=
- =?utf-8?B?aDRYWGNVWFdOU01FYzJKejlFY1k4TjFmb0p4dTRxcnRwVjFzcDd6SmY5clpy?=
- =?utf-8?B?akRsMnlsT3RlYzlTamVaMkJmWWRzaVBhU24wMnJxejdlaWVXRnpwR3ZIekpu?=
- =?utf-8?B?STdMVjBQbkhEaEI1U1lrQzJTbWRaR1dnN2ZzeEhvQ0NibWgvM3pKOFhmYTB6?=
- =?utf-8?B?Tjg3eEY1azJoNjZvdnBGNzlESUhCS0ZtRmdUVUdnM0laS0h4NHIzdDVBdmpS?=
- =?utf-8?B?Tk9IOGxSd2JFQ3NkM2RaQ1ZwYTNkWXpITlBoZFRvWWRaNWFNRGNzdFFUVUdk?=
- =?utf-8?B?S2dWaFhlZEIwRUVoL2JhdEQxVkw1OS92WldSTGt5N05sTFg3NEQwd2R4OUk4?=
- =?utf-8?B?cHAxcDBNM1RlNkFyRFhHc016YlhLbUo2SE1mSWNpb0N0ZkZDdFNWSzlDcTU0?=
- =?utf-8?B?c3RIM0l3TS9jMkdaV2xZV2FSUXl5ZjhuakIvM1I1WEVHTnd6aUVOR2xvSFhw?=
- =?utf-8?B?T2lLUzY4dWd3ZERVQVFzYlpKQzBvK2RyeXZySFZQSmkxdzlOaTVVS0JpZWZG?=
- =?utf-8?B?Wm5EbjdMcmpNaE5CblRLdmpKTnVsTUs3Tno1UmV2MWd1UjNRL1NVeUEwZWRC?=
- =?utf-8?B?ajRzdjh2MjR3Vnc1SlRsTkJ4ZXRuTmtUM3hmWUVpM2lIR0NmSzlhbS9uOHZo?=
- =?utf-8?B?aVhSSWhrcGlxRktDaDdyYzNyRnJyRHEwL05ENXhHckZRV0owMitpUVp6RGps?=
- =?utf-8?B?R3Riblk0L0MvYTFIQ1d6azJzZnJUOHBrcmM0TkdHdkwzd2hyQU4yeHZyOW5k?=
- =?utf-8?B?MHVpUmtJUzNQYzg3YjBNZzlBMmM0cjV0Nk05YnUvN1poOGthY3M4M0lWd1lk?=
- =?utf-8?B?SS9YMlF0RHl0eU13YUZ6cHRuK2dUbUUzMDFCVVY2UER6c1NkTkFNWmxLRjRa?=
- =?utf-8?B?UEIxU1Rpa3ZZRFREdGdOZGJQTmZUcmNndkpqbmQ0a2FJTnE4TktNNmlXSWor?=
- =?utf-8?B?R3ZOL3REZXB0cENOY3BjSTQ0SVJsZzg0Tno5TGdNNkhtM1lxS3JmTE5XTksv?=
- =?utf-8?B?THFsMksvZzdJa0EyWnAyWXhFSzFqU29EckpDZlovYkZsekI5QlNFWW9uZ243?=
- =?utf-8?B?WWtXc0IyTGZIYTAzUmNQZmpZNURkNE1hNHhvM3ZFb1JwTS9hMVNGNHNkQjFT?=
- =?utf-8?B?YSs2Ri8xMEdGSjVBV2QxMEdQWW54R0x2TzRDTHdVbFZYUGxpZzBBZm1zMFF0?=
- =?utf-8?B?d21mYW9pUlRUTmFoQXoxT2xLT2xEcG9PWkF4RFltSDhMSUVwOWxwTnZPU0Qx?=
- =?utf-8?B?SnZ0U1paL2xubFU2bFUzN1F5OUhmNENGVXc2RDM4Y2kzQTk2b2RseGRDelE5?=
- =?utf-8?B?ZUZpbU54ZFo3N2NLSGpkajNGNmxNVkQ5SjArc3NCOWFxK2RWaXA2UXE0Y2ll?=
- =?utf-8?B?bmgyVmNMVkVEaVVSYjNST2lTUDhnWDRKL1l3eWpoT283L3pPNUVPdlFqTGNa?=
- =?utf-8?Q?PYgIlaEQ3o/euMT7tXoW/kkyjN1vXTgBEwS5ugW?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:MW4PR11MB5776.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230031)(376005)(366007)(1800799015); DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?dXFKWFp4VTYzK21NeUVaa1podytQNlZ4Yk44V3FneDFROSsvMWJ0NktoZ2U0?=
- =?utf-8?B?NjJuNllHOEYrd283WTNROEdtNWNnRUloWjhlS1Fncmd0SlFPcVpmWnlDRkcw?=
- =?utf-8?B?Sjc4OGxyLzV1Y2syQXBxaGhRamxBWVVpV1dxNnl5RDFtdTNjRGJCNzU1U2dl?=
- =?utf-8?B?WDFlR3dsalR1dkxINjZiMWd0SnZ4cDFJTlBPV1dUWTNoS0lpQ0V5cStSem5L?=
- =?utf-8?B?YjJMSElLU3NkYW1GMWRtREM5NUNOTnB6dWJWS1krellrZzVBRG56SU00MHQr?=
- =?utf-8?B?Qkl0UGJWNFVUdmhJM1NoOHRKdkJLem0zRThENE0yNjZuaGZGRUpPeWQzaEVV?=
- =?utf-8?B?MnM0ZVBmZHZhMDdKU3E5LzdRNElkaUpVaVNsUFVVL1pOMldmMjZ1NG5QNGtU?=
- =?utf-8?B?aVFZM3NMWUlIZ1VuOTljTFhSOEZsekJiZmptbmNiVXF6TERRMUFqUGVFSmpy?=
- =?utf-8?B?QVIzeDFDLzRhbVlpbC9VTTU3MEpaY0R1a3pyd3hvQXg3UjVlSDdFNGY3cEEy?=
- =?utf-8?B?WWxPam5kcmwzWGFUMXM0M3g0MjNPTDVmWXBXSGVvMDAzSGpaT01Lem4rb05O?=
- =?utf-8?B?ejlJQSswRlh0VllvMHJRbXhqK1ptZFpUYjJFeGlEaXk2T3Q0K3B2RzlUeHAr?=
- =?utf-8?B?MjZpSmRSd1hIMzgwMzhtWUZDMDRTZTdYUk9VTjF3RExMT3hkVXRZNzk3YnBm?=
- =?utf-8?B?MHczL2FsVFFHR2phbGgzWUptN1pVc2FqWm96VHJDeHF4dEpSRXpwNUx3UWta?=
- =?utf-8?B?akNnY01IYTB6ZkhSSFoxUzU0WTZCMEh4TFhLdkpsOFFoMEpURzl1ZHZDNGti?=
- =?utf-8?B?Z245bGkvRWRzSlNNeDEzVHQ0RzZObjNwbUphY2xJK3NYamI4cm0xVFloV1hT?=
- =?utf-8?B?K1M4VGZldk5LdXhBVVRXNGRZSlliRkhNc21MQjVQb1F1eGN5dmlwYWphSnZR?=
- =?utf-8?B?V2Rua3p1Z05BQXZOTGJvNXNJR3k0b3pHVTZYcFg1cmc2SmRrRDhUTmRBeUtV?=
- =?utf-8?B?azJKTjdnZk5haU05cTloTnpLVTNLWkZZZ1N2WnRwL0p4OGZRVzdYYXNTMUVS?=
- =?utf-8?B?RXlqMTk1REZpc3B4NDlzTlNHakVXTFdsUWNJanZLNHZ4UVZiQ0l5SHd5SWtM?=
- =?utf-8?B?ckNBWndIbVp0bExCK1ZRZVdtOFF3U2l6a0dXcUVZVUYzSExOdEU1RldoUmhD?=
- =?utf-8?B?TXg2bkl3OVRKL0xaQi9SQlZnS0xXckpoa3Rhc1YwS0RucStNL1o5dWp1OEtU?=
- =?utf-8?B?ZUJILzV3ZVM3UDZjd0ZSd3F6TmdTNVV4U29VZnZsamg1K0VSdFl6cm82YzEv?=
- =?utf-8?B?Vkx3OHd0QzJxdDJWWFRaZmdIZmtCQmJoa0dyb2NGc2phWUNOQzhoOUgzdS80?=
- =?utf-8?B?RVNVc1dMZEtCVFJNV0pwY0FsT3o3NG52eHpaNC8xVkljOWpZVVE1UG9rK1dR?=
- =?utf-8?B?TzJnK3FCczhjb1pVZms4YlBKNlYwS2EwQk4zeGlMNUNMakw5RUZjTW51VEUz?=
- =?utf-8?B?ZS9Pdys0cGlFcmNZYkFCdUI5bCtHSzAzd1VxNmFFTjFkVkM1OWFaWmFCUWt1?=
- =?utf-8?B?THB2QUJkQk1SWHJlZHZZNHJmay9MYXduMlNRbzdaaEpUWXExUndUOTJNOGto?=
- =?utf-8?B?Ri9nWkR0bnhYeldPa1c5dzdYRXExOEhMS2x1RHFoWExXV05xczFoeGV2TTQ4?=
- =?utf-8?B?WWFsMnY2djlmQTg0OGI4QkdiUy83NWk1ZnBqWVdZRnRoOGg0aEVTNEZFYVR0?=
- =?utf-8?B?M3ZrT2hzbkM0MDUwdjQrbmxJWVJTTnpjTEUzK09ld1hzQzQ0RGRqSFBaV3ZN?=
- =?utf-8?B?SWVJV21ENE5DdHIyZU9vZVkxVnFkcUNiYU5HVzBYOW5kWTF4TmhBcFdGVGtB?=
- =?utf-8?B?a3lObzlLbDdCa1lSMFBQcUNseGNCclhIZmtZcndOSENPcUFOaGVQbUJ1TzV6?=
- =?utf-8?B?Tml3R3NMU3BpYXFzUFhDcnl5NUNNSFhBZnMrQkNMdTg4K0ZCR3RRZi9nL0U5?=
- =?utf-8?B?cU9VcW9KM2RWR1lPbThvSWdES0NVL0IrVXJ6OFpoZ0E2RzVuMFN4SDY4S0Zy?=
- =?utf-8?B?Ly94U0RRNlRPNE1LRlNTREpSRlBxaG5kWDdFT3BoSjcxdHZDTitNQTBGa1p5?=
- =?utf-8?B?ZEtNUzJwSHphd0lzNkdwcGVFVEhWNm1scVpCbTc3ejdtTlN4RXZBZVNpS2FL?=
- =?utf-8?B?QkE9PQ==?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: e9cab639-49fd-4942-2fad-08dc8601b9a7
-X-MS-Exchange-CrossTenant-AuthSource: MW4PR11MB5776.namprd11.prod.outlook.com
+X-OriginatorOrg: marvell.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 06 Jun 2024 08:21:54.9991 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: GGmhLi3LFWQ0RN3IqK9CwCgrStIkoC3Bt7erZCe/Z00JEHdlCAKJk/GFkfygZzT1m7petZII0l5kw4TSAvjxSzFRJoWvbA8JiGgr2gvh/q8=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH0PR11MB5298
-X-OriginatorOrg: intel.com
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1717662120; x=1749198120;
- h=message-id:date:subject:from:to:cc:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=4WjMmNFIgUUO2KaD2zKlgQNI4Kov9eQUCDU9PERHYQ8=;
- b=W4IFWz59O1ivx7isNDA5jCny1236kAfMcaIfNnhtpEk6RggmV8s2G14x
- LuIqqWEpqKTtq41XbbNmm5rk5Yehd3umgghFjLL4ffEZzFNLrdCtFHof6
- eBuhI0zlDk64aNSQquLe1/y8zbMxFKqqlG3ctmX3kVrCpflBXOhiaJvBC
- Fedu7wuU/sTiWtJxzM08sDejf1JQxs4Jmf/QTEQ3TTu+rt6f9GmJhCbRZ
- Qg+GZVbsyYHRWmC0c+ISMqwrMZhWxnxaXQRffHHrhHpvBo1BQtBT16hiu
- 5nbezw1bQeWohDX5jDJtZq7uAJPNURewlcjeQRoa5npriR3PzfxBSPpLH
- g==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+X-MS-Exchange-CrossTenant-AuthSource: PH0PR18MB4474.namprd18.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 5aad20b7-358b-426f-1d88-08dc860ced27
+X-MS-Exchange-CrossTenant-originalarrivaltime: 06 Jun 2024 09:42:05.5732 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 70e1fb47-1155-421d-87fc-2e58f638b6e0
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: TW/yeUYwO6DqNXc38w3gGOucA6zEcLkI6iBmNQpfQsQXC7V659zAssZIiayE9DWw/pSxSd2k7VewITdFOuCl0Q==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BY3PR18MB4691
+X-Proofpoint-ORIG-GUID: Joodqwt4h3UnU8TGuDCZLDqAgQT28sIA
+X-Proofpoint-GUID: Joodqwt4h3UnU8TGuDCZLDqAgQT28sIA
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1039,Hydra:6.0.680,FMLib:17.12.28.16
+ definitions=2024-06-06_01,2024-06-06_02,2024-05-17_01
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=marvell.com; s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=pjmbp/jX6uWbW71rNhLZ9BL8u37nTlDgfhKTcueVjiw=;
+ b=uftOaDOPvkoZMlU/Vve/NCkNEPHLwCjqlmsxHTN+CRw3DK6ndxVMyIv1KFGihcW0GNWq3MJWGvkr0VgGzdwLtwFBslNDEtRiqdY3rLIJDZxFaKlP3pir7HpoKeRiLx810GxfAXwhf1iAoZzUhdwtc5hvTGX/Y9nsROynDzawxsU=
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=W4IFWz59
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v3] ice: Add support for
- devlink local_forwarding param.
+ header.from=marvell.com
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (1024-bit key,
+ unprotected) header.d=marvell.com header.i=@marvell.com header.a=rsa-sha256
+ header.s=selector1 header.b=uftOaDOP
+Subject: [Intel-wired-lan] [PATCH iwl-next v1 4/5] ice: implement transmit
+ hardware timestamp statistics
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -234,340 +200,84 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "jacob.e.keller@intel.com" <jacob.e.keller@intel.com>,
- "kuba@kernel.org" <kuba@kernel.org>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Cc: Jacob Keller <jacob.e.keller@intel.com>,
+ "linux-doc@vger.kernel.org" <linux-doc@vger.kernel.org>,
+ "corbet@lwn.net" <corbet@lwn.net>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 
-
-On 04.06.2024 11:09, Wojciech Drewek wrote:
-> 
-> 
-> On 04.06.2024 07:56, Hariprasad Kelam wrote:
->>
->>
->>> From: Pawel Kaminski <pawel.kaminski@intel.com>
->>>
->>> Add support for driver-specific devlink local_forwarding param.
->>> Supported values are "enabled", "disabled" and "prioritized".
->>> Default configuration is set to "enabled".
->>>
->>> Add documentation in networking/devlink/ice.rst.
->>>
->>> In previous generations of Intel NICs the transmit scheduler was only limited
->>> by PCIe bandwidth when scheduling/assigning hairpin-badwidth between
->>> VFs. Changes to E810 HW design introduced scheduler limitation, so that
->>> available hairpin-bandwidth is bound to external port speed.
->>> In order to address this limitation and enable NFV services such as "service
->>> chaining" a knob to adjust the scheduler config was created.
->>> Driver can send a configuration message to the FW over admin queue and
->>> internal FW logic will reconfigure HW to prioritize and add more BW to VF to
->>> VF traffic. As end result for example 10G port will no longer limit hairpin-
->>> badwith to 10G and much higher speeds can be achieved.
->>>
->>> Devlink local_forwarding param set to "prioritized" enables higher hairpin-
->>> badwitdh on related PFs. Configuration is applicable only to 8x10G and 4x25G
->>> cards.
->>>
->>> Changing local_forwarding configuration will trigger CORER reset in order to
->>> take effect.
->>>
->>> Example command to change current value:
->>> devlink dev param set pci/0000:b2:00.3 name local_forwarding \
->>>         value prioritized \
->>>         cmode runtime
->>>
->>> Co-developed-by: Michal Wilczynski <michal.wilczynski@intel.com>
->>> Signed-off-by: Michal Wilczynski <michal.wilczynski@intel.com>
->>> Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
->>> Signed-off-by: Pawel Kaminski <pawel.kaminski@intel.com>
->>> Signed-off-by: Wojciech Drewek <wojciech.drewek@intel.com>
->>> ---
->>> v2: Extend documentation
->>> v3: rename loopback to local_forwarding
->>> ---
->>>  Documentation/networking/devlink/ice.rst      |  23 ++++
->>>  .../net/ethernet/intel/ice/devlink/devlink.c  | 126 ++++++++++++++++++
->>>  .../net/ethernet/intel/ice/ice_adminq_cmd.h   |  11 +-
->>>  drivers/net/ethernet/intel/ice/ice_common.c   |   4 +
->>>  drivers/net/ethernet/intel/ice/ice_type.h     |   1 +
->>>  5 files changed, 164 insertions(+), 1 deletion(-)
->>>
->>> diff --git a/Documentation/networking/devlink/ice.rst
->>> b/Documentation/networking/devlink/ice.rst
->>> index 830c04354222..0eb64bd4710f 100644
->>> --- a/Documentation/networking/devlink/ice.rst
->>> +++ b/Documentation/networking/devlink/ice.rst
->>> @@ -11,6 +11,7 @@ Parameters
->>>  ==========
->>>
->>>  .. list-table:: Generic parameters implemented
->>> +   :widths: 5 5 90
->>>
->>>     * - Name
->>>       - Mode
->>> @@ -68,6 +69,28 @@ Parameters
->>>
->>>         To verify that value has been set:
->>>         $ devlink dev param show pci/0000:16:00.0 name tx_scheduling_layers
->>> +.. list-table:: Driver specific parameters implemented
->>> +    :widths: 5 5 90
->>> +
->>> +    * - Name
->>> +      - Mode
->>> +      - Description
->>> +    * - ``local_forwarding``
->>> +      - runtime
->>> +      - Controls loopback behavior by tuning scheduler bandwidth.
->>> +        Supported values are:
->>> +
->>> +        ``enabled`` - VF to VF traffic is allowed on port
->>> +
->>> +        ``disabled`` - VF to VF traffic is not allowed on this port
->>> +
->>> +        ``prioritized`` - VF to VF traffic is prioritized on this port
->>> +
->>> +        Default value of ``local_forwarding`` parameter is ``enabled``.
->>> +        ``prioritized`` provides ability to adjust VF to VF traffic rate to increase
->>> +        one port capacity at cost of the another. User needs to disable
->>> +        local forwarding on one of the ports in order have increased capacity
->>> +        on the ``prioritized`` port.
->>>
->>>  Info versions
->>>  =============
->>> diff --git a/drivers/net/ethernet/intel/ice/devlink/devlink.c
->>> b/drivers/net/ethernet/intel/ice/devlink/devlink.c
->>> index f774781ab514..810a901d7afd 100644
->>> --- a/drivers/net/ethernet/intel/ice/devlink/devlink.c
->>> +++ b/drivers/net/ethernet/intel/ice/devlink/devlink.c
->>> @@ -1381,9 +1381,129 @@ ice_devlink_enable_iw_validate(struct devlink
->>> *devlink, u32 id,
->>>  	return 0;
->>>  }
->>>
->>> +#define DEVLINK_LOCAL_FWD_DISABLED_STR "disabled"
->>> +#define DEVLINK_LOCAL_FWD_ENABLED_STR "enabled"
->>> +#define DEVLINK_LOCAL_FWD_PRIORITIZED_STR "prioritized"
->>> +
->>> +/**
->>> + * ice_devlink_local_fwd_mode_to_str - Get string for local_fwd mode.
->>> + * @mode: local forwarding for mode used in port_info struct.
->>> + *
->>> + * Return: Mode respective string or "Invalid".
->>> + */
->>> +static const char *
->>> +ice_devlink_local_fwd_mode_to_str(enum ice_local_fwd_mode mode) {
->>> +	switch (mode) {
->>> +	case ICE_LOCAL_FWD_MODE_ENABLED:
->>> +		return DEVLINK_LOCAL_FWD_ENABLED_STR;
->>> +	case ICE_LOCAL_FWD_MODE_PRIORITIZED:
->>> +		return DEVLINK_LOCAL_FWD_PRIORITIZED_STR;
->>> +	case ICE_LOCAL_FWD_MODE_DISABLED:
->>> +		return DEVLINK_LOCAL_FWD_DISABLED_STR;
->>> +	}
->>> +
->>> +	return "Invalid";
->>> +}
->>> +
->>> +/**
->>> + * ice_devlink_local_fwd_str_to_mode - Get local_fwd mode from string
->>> name.
->>> + * @mode_str: local forwarding mode string.
->>> + *
->>> + * Return: Mode value or negative number if invalid.
->>> + */
->>> +static int ice_devlink_local_fwd_str_to_mode(const char *mode_str) {
->>> +	if (!strcmp(mode_str, DEVLINK_LOCAL_FWD_ENABLED_STR))
->>> +		return ICE_LOCAL_FWD_MODE_ENABLED;
->>> +	else if (!strcmp(mode_str, DEVLINK_LOCAL_FWD_PRIORITIZED_STR))
->>> +		return ICE_LOCAL_FWD_MODE_PRIORITIZED;
->>> +	else if (!strcmp(mode_str, DEVLINK_LOCAL_FWD_DISABLED_STR))
->>> +		return ICE_LOCAL_FWD_MODE_DISABLED;
->>> +
->>> +	return -EINVAL;
->>> +}
->>> +
->>> +/**
->>> + * ice_devlink_local_fwd_get - Get local_fwd parameter.
->>> + * @devlink: Pointer to the devlink instance.
->>> + * @id: The parameter ID to set.
->>> + * @ctx: Context to store the parameter value.
->>> + *
->>> + * Return: Zero.
->>> + */
->>> +static int ice_devlink_local_fwd_get(struct devlink *devlink, u32 id,
->>> +				     struct devlink_param_gset_ctx *ctx) {
->>> +	struct ice_pf *pf = devlink_priv(devlink);
->>> +	struct ice_port_info *pi;
->>> +	const char *mode_str;
->>> +
->>> +	pi = pf->hw.port_info;
->>> +	mode_str = ice_devlink_local_fwd_mode_to_str(pi-
->>>> local_fwd_mode);
->>> +	snprintf(ctx->val.vstr, sizeof(ctx->val.vstr), "%s", mode_str);
->>> +
->>> +	return 0;
->>> +}
->>> +
->>> +/**
->>> + * ice_devlink_local_fwd_set - Set local_fwd parameter.
->>> + * @devlink: Pointer to the devlink instance.
->>> + * @id: The parameter ID to set.
->>> + * @ctx: Context to get the parameter value.
->>> + * @extack: Netlink extended ACK structure.
->>> + *
->>> + * Return: Zero.
->>> + */
->>> +static int ice_devlink_local_fwd_set(struct devlink *devlink, u32 id,
->>> +				     struct devlink_param_gset_ctx *ctx,
->>> +				     struct netlink_ext_ack *extack) {
->>> +	int new_local_fwd_mode = ice_devlink_local_fwd_str_to_mode(ctx-
->>>> val.vstr);
->>> +	struct ice_pf *pf = devlink_priv(devlink);
->>> +	struct device *dev = ice_pf_to_dev(pf);
->>> +	struct ice_port_info *pi;
->>> +
->>> +	pi = pf->hw.port_info;
->>> +	if (pi->local_fwd_mode != new_local_fwd_mode) {
->>           This check seems redundant, as devlink calls set API only if there is change in value.
->>
->> Thanks,
->> Hariprasad k
-> 
-> Sure, I'll fix that.
-
-I tried to look for this check in devlink API and I can't find it.
-Could you show me the exact place where this check is done?
-
-> 
->>> +		pi->local_fwd_mode = new_local_fwd_mode;
->>> +		dev_info(dev, "Setting local_fwd to %s\n", ctx->val.vstr);
->>> +		ice_schedule_reset(pf, ICE_RESET_CORER);
->>> +	}
->>> +
->>> +	return 0;
->>> +}
->>> +
->>> +/**
->>> + * ice_devlink_local_fwd_validate - Validate passed local_fwd parameter
->>> value.
->>> + * @devlink: Unused pointer to devlink instance.
->>> + * @id: The parameter ID to validate.
->>> + * @val: Value to validate.
->>> + * @extack: Netlink extended ACK structure.
->>> + *
->>> + * Supported values are:
->>> + * "enabled" - local_fwd is enabled, "disabled" - local_fwd is disabled
->>> + * "prioritized" - local_fwd traffic is prioritized in scheduling.
->>> + *
->>> + * Return: Zero when passed parameter value is supported. Negative
->>> +value on
->>> + * error.
->>> + */
->>> +static int ice_devlink_local_fwd_validate(struct devlink *devlink, u32 id,
->>> +					  union devlink_param_value val,
->>> +					  struct netlink_ext_ack *extack)
->>> +{
->>> +	if (ice_devlink_local_fwd_str_to_mode(val.vstr) < 0) {
->>> +		NL_SET_ERR_MSG_MOD(extack, "Error: Requested value is
->>> not supported.");
->>> +		return -EINVAL;
->>> +	}
->>> +
->>> +	return 0;
->>> +}
->>> +
->>>  enum ice_param_id {
->>>  	ICE_DEVLINK_PARAM_ID_BASE =
->>> DEVLINK_PARAM_GENERIC_ID_MAX,
->>>  	ICE_DEVLINK_PARAM_ID_TX_SCHED_LAYERS,
->>> +	ICE_DEVLINK_PARAM_ID_LOCAL_FWD,
->>>  };
->>>
->>>  static const struct devlink_param ice_dvl_rdma_params[] = { @@ -1405,6
->>> +1525,12 @@ static const struct devlink_param ice_dvl_sched_params[] = {
->>>  			     ice_devlink_tx_sched_layers_get,
->>>  			     ice_devlink_tx_sched_layers_set,
->>>  			     ice_devlink_tx_sched_layers_validate),
->>> +	DEVLINK_PARAM_DRIVER(ICE_DEVLINK_PARAM_ID_LOCAL_FWD,
->>> +			     "local_forwarding",
->>> DEVLINK_PARAM_TYPE_STRING,
->>> +			     BIT(DEVLINK_PARAM_CMODE_RUNTIME),
->>> +			     ice_devlink_local_fwd_get,
->>> +			     ice_devlink_local_fwd_set,
->>> +			     ice_devlink_local_fwd_validate),
->>>  };
->>>
->>>  static void ice_devlink_free(void *devlink_ptr) diff --git
->>> a/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
->>> b/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
->>> index 621a2ca7093e..9683842f8880 100644
->>> --- a/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
->>> +++ b/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
->>> @@ -232,6 +232,13 @@ struct ice_aqc_get_sw_cfg_resp_elem {
->>>  #define ICE_AQC_GET_SW_CONF_RESP_IS_VF		BIT(15)
->>>  };
->>>
->>> +/* Loopback port parameter mode values. */ enum ice_local_fwd_mode {
->>> +	ICE_LOCAL_FWD_MODE_ENABLED = 0,
->>> +	ICE_LOCAL_FWD_MODE_DISABLED = 1,
->>> +	ICE_LOCAL_FWD_MODE_PRIORITIZED = 2,
->>> +};
->>> +
->>>  /* Set Port parameters, (direct, 0x0203) */  struct ice_aqc_set_port_params {
->>>  	__le16 cmd_flags;
->>> @@ -240,7 +247,9 @@ struct ice_aqc_set_port_params {
->>>  	__le16 swid;
->>>  #define ICE_AQC_PORT_SWID_VALID			BIT(15)
->>>  #define ICE_AQC_PORT_SWID_M			0xFF
->>> -	u8 reserved[10];
->>> +	u8 local_fwd_mode;
->>> +#define ICE_AQC_SET_P_PARAMS_LOCAL_FWD_MODE_VALID BIT(2)
->>> +	u8 reserved[9];
->>>  };
->>>
->>>  /* These resource type defines are used for all switch resource diff --git
->>> a/drivers/net/ethernet/intel/ice/ice_common.c
->>> b/drivers/net/ethernet/intel/ice/ice_common.c
->>> index 9ae61cd8923e..60ad7774812c 100644
->>> --- a/drivers/net/ethernet/intel/ice/ice_common.c
->>> +++ b/drivers/net/ethernet/intel/ice/ice_common.c
->>> @@ -1086,6 +1086,7 @@ int ice_init_hw(struct ice_hw *hw)
->>>  		goto err_unroll_cqinit;
->>>  	}
->>>
->>> +	hw->port_info->local_fwd_mode =
->>> ICE_LOCAL_FWD_MODE_ENABLED;
->>>  	/* set the back pointer to HW */
->>>  	hw->port_info->hw = hw;
->>>
->>> @@ -3070,6 +3071,9 @@ ice_aq_set_port_params(struct ice_port_info *pi,
->>> bool double_vlan,
->>>  		cmd_flags |= ICE_AQC_SET_P_PARAMS_DOUBLE_VLAN_ENA;
->>>  	cmd->cmd_flags = cpu_to_le16(cmd_flags);
->>>
->>> +	cmd->local_fwd_mode = pi->local_fwd_mode |
->>> +
->>> 	ICE_AQC_SET_P_PARAMS_LOCAL_FWD_MODE_VALID;
->>> +
->>>  	return ice_aq_send_cmd(hw, &desc, NULL, 0, cd);  }
->>>
->>> diff --git a/drivers/net/ethernet/intel/ice/ice_type.h
->>> b/drivers/net/ethernet/intel/ice/ice_type.h
->>> index aac59c85a911..f3e4d8030f43 100644
->>> --- a/drivers/net/ethernet/intel/ice/ice_type.h
->>> +++ b/drivers/net/ethernet/intel/ice/ice_type.h
->>> @@ -730,6 +730,7 @@ struct ice_port_info {
->>>  	u16 sw_id;			/* Initial switch ID belongs to port */
->>>  	u16 pf_vf_num;
->>>  	u8 port_state;
->>> +	u8 local_fwd_mode;
->>>  #define ICE_SCHED_PORT_STATE_INIT	0x0
->>>  #define ICE_SCHED_PORT_STATE_READY	0x1
->>>  	u8 lport;
->>> --
->>> 2.40.1
->>>
->>
+> The kernel now has common statistics for transmit timestamps, so implemen=
+t
+> them in the ice driver.
+>=20
+> use via
+> ethtool -I -T eth0
+>=20
+> Reviewed-by: Jacob Keller <jacob.e.keller@intel.com>
+> Signed-off-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
+> ---
+>=20
+> $ sudo ethtool -I -T eth0
+> Time stamping parameters for eth0:
+> Capabilities:
+>         hardware-transmit
+>         software-transmit
+>         hardware-receive
+>         software-receive
+>         software-system-clock
+>         hardware-raw-clock
+> PTP Hardware Clock: 0
+> Hardware Transmit Timestamp Modes:
+>         off
+>         on
+> Hardware Receive Filter Modes:
+>         none
+>         all
+> Statistics:
+>   tx_pkts: 17
+>   tx_lost: 0
+>   tx_err: 0
+> ---
+>  drivers/net/ethernet/intel/ice/ice_ethtool.c | 18 ++++++++++++++++++
+>  1 file changed, 18 insertions(+)
+>=20
+> diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool.c
+> b/drivers/net/ethernet/intel/ice/ice_ethtool.c
+> index 6f0a857f55c9..97a7a0632a1d 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_ethtool.c
+> +++ b/drivers/net/ethernet/intel/ice/ice_ethtool.c
+> @@ -4357,6 +4357,23 @@ static void ice_get_rmon_stats(struct net_device
+> *netdev,
+>  	*ranges =3D ice_rmon_ranges;
+>  }
+>=20
+> +/* ice_get_ts_stats - provide timestamping stats
+> + * @netdev: the netdevice pointer from ethtool
+> + * @ts_stats: the ethtool data structure to fill in  */ static void
+> +ice_get_ts_stats(struct net_device *netdev,
+> +			     struct ethtool_ts_stats *ts_stats) {
+> +	struct ice_pf *pf =3D ice_netdev_to_pf(netdev);
+> +	struct ice_ptp *ptp =3D &pf->ptp;
+> +
+> +	ts_stats->pkts =3D ptp->tx_hwtstamp_good;
+> +	ts_stats->err =3D ptp->tx_hwtstamp_skipped +
+> +			ptp->tx_hwtstamp_flushed +
+> +			ptp->tx_hwtstamp_discarded;
+> +	ts_stats->lost =3D ptp->tx_hwtstamp_timeouts; }
+> +
+>  static const struct ethtool_ops ice_ethtool_ops =3D {
+>  	.cap_rss_ctx_supported  =3D true,
+>  	.supported_coalesce_params =3D ETHTOOL_COALESCE_USECS | @@ -
+> 4407,6 +4424,7 @@ static const struct ethtool_ops ice_ethtool_ops =3D {
+>  	.get_eth_mac_stats	=3D ice_get_eth_mac_stats,
+>  	.get_pause_stats	=3D ice_get_pause_stats,
+>  	.get_rmon_stats		=3D ice_get_rmon_stats,
+> +	.get_ts_stats		=3D ice_get_ts_stats,
+>  };
+>=20
+>  static const struct ethtool_ops ice_ethtool_safe_mode_ops =3D {
+> --
+> 2.43.0
+>=20
+Reviewed-by: Hariprasad Kelam <hkelam@marvell.com>
