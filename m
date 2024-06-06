@@ -1,98 +1,102 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 80E9A8FE539
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  6 Jun 2024 13:21:10 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 437F58FE688
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  6 Jun 2024 14:33:34 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 378B6614A4;
-	Thu,  6 Jun 2024 11:21:09 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id B5B9184581;
+	Thu,  6 Jun 2024 12:33:32 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Z-Jzl-i0fTBa; Thu,  6 Jun 2024 11:21:07 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 7FjA39V9ZaXq; Thu,  6 Jun 2024 12:33:32 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 766F661492
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1607481F98
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1717672867;
-	bh=fDtLErO11EdQSJDDE0vVFKfIn+ruKE69yOTdM6APqfU=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1717677212;
+	bh=ppcBgRJQrnm+5ryYYxZiG6LhrxmbC8yd/WbWELisQFw=;
+	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=PObdRQkzNdaUSCTJyjwDDTYav4OwuHiXG5UKZEev8FNVNH8Ux7sYEcHbH5ySYrQbL
-	 jWXfiWUMPpNvdS44vl3rQPh0QVPZXBMaKEXjkAsHoR4dPpunLTlOqJxEwPQ1k3tUjw
-	 lzOfjGLQPXQSh3Xjs0MCnpclD/eQZ336gftzjL/8iqTgK7nH2ol+4A9y4egnbGtsNv
-	 NxZhiTuFXa4BfFtH9t4um5dGEPQxp2nB82CEdL6x4ncOOH+A7FJbqXCHCcF0XTQ5BJ
-	 b3XEiwMMm+9Kapi2b94uEaAXBb3JpnlZj/W/s9Os2L24wnXR/eGzSVkU22HUAqRrGv
-	 6+/agFZLDinPw==
+	b=6qnuc4m1lp5/2kBP4EGTcTVCCe88UbWTT4NZb078Xu4a6F5kwrsgyKbuO8Tdjs/+E
+	 vtxlVwOg8Efxc32UCqnoJzB6wPgUlsDoOCpn49gg5nb1zjiC1ZCM57obahB2WlxJ4Q
+	 OCY1ZkkPmGIgYSkbTQPp1heesaXWWLfyWJTE8djXfCsTZM0zAEs1pqZcEioKlXtS33
+	 6wxZ2l7tVxs8VlG6+3K1aQ27c0EDZp9jQL6OtRJ+sZhdzzZ9YKQMfRxYYwRnUh61JB
+	 Qq5XJ0DJ73UQ29iLfRVXylXxecNdzzZ8qUBsd65Xh+DRE/Qsoa2gNOEsLNxCKx3jeP
+	 VJePj9ilyfLWw==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 766F661492;
-	Thu,  6 Jun 2024 11:21:07 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 1607481F98;
+	Thu,  6 Jun 2024 12:33:32 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 8C3E51BF591
- for <intel-wired-lan@lists.osuosl.org>; Thu,  6 Jun 2024 11:21:05 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 681851BF593
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  6 Jun 2024 12:33:30 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 7518F400AF
- for <intel-wired-lan@lists.osuosl.org>; Thu,  6 Jun 2024 11:21:04 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 5E517841E3
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  6 Jun 2024 12:33:30 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 2Rt2OXAYpena for <intel-wired-lan@lists.osuosl.org>;
- Thu,  6 Jun 2024 11:21:02 +0000 (UTC)
-Received-SPF: None (mailfrom) identity=mailfrom; client-ip=198.175.65.15;
- helo=mgamail.intel.com; envelope-from=michal.swiatkowski@linux.intel.com;
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id P-Z0q--p8Dcq for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  6 Jun 2024 12:33:29 +0000 (UTC)
+Received-SPF: None (mailfrom) identity=mailfrom; client-ip=198.175.65.17;
+ helo=mgamail.intel.com; envelope-from=dawid.osuchowski@linux.intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org BCB1E400E5
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org BCB1E400E5
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.15])
- by smtp2.osuosl.org (Postfix) with ESMTPS id BCB1E400E5
- for <intel-wired-lan@lists.osuosl.org>; Thu,  6 Jun 2024 11:21:02 +0000 (UTC)
-X-CSE-ConnectionGUID: OH2abYAjRCmjqTRUObxLsQ==
-X-CSE-MsgGUID: Z66vMA45TlWsVKLdxk5SJA==
-X-IronPort-AV: E=McAfee;i="6600,9927,11094"; a="18123837"
-X-IronPort-AV: E=Sophos;i="6.08,219,1712646000"; d="scan'208";a="18123837"
-Received: from orviesa003.jf.intel.com ([10.64.159.143])
- by orvoesa107.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 06 Jun 2024 04:21:02 -0700
-X-CSE-ConnectionGUID: atcmb404R5eGdc2CjPcZEg==
-X-CSE-MsgGUID: 0hEWv5bNTpyymbQtt6zSGg==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org ACBC081F98
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org ACBC081F98
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.17])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id ACBC081F98
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  6 Jun 2024 12:33:29 +0000 (UTC)
+X-CSE-ConnectionGUID: JZVWDOtBRUKROJm4frHiDg==
+X-CSE-MsgGUID: sN8tE0igTfq7SfOLaTiQqQ==
+X-IronPort-AV: E=McAfee;i="6600,9927,11095"; a="14460316"
+X-IronPort-AV: E=Sophos;i="6.08,219,1712646000"; d="scan'208";a="14460316"
+Received: from fmviesa003.fm.intel.com ([10.60.135.143])
+ by orvoesa109.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 06 Jun 2024 05:33:29 -0700
+X-CSE-ConnectionGUID: /YOP+PncSPa1D9kFStS9TA==
+X-CSE-MsgGUID: 8jaB9foOTwOqCMQQGPa2Yw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.08,219,1712646000"; d="scan'208";a="42864823"
-Received: from wasp.igk.intel.com (HELO GK3153-DR2-R750-36946.localdomain.com)
- ([10.102.20.192])
- by orviesa003.jf.intel.com with ESMTP; 06 Jun 2024 04:20:59 -0700
-From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Thu,  6 Jun 2024 13:25:03 +0200
-Message-ID: <20240606112503.1939759-16-michal.swiatkowski@linux.intel.com>
-X-Mailer: git-send-email 2.42.0
-In-Reply-To: <20240606112503.1939759-1-michal.swiatkowski@linux.intel.com>
-References: <20240606112503.1939759-1-michal.swiatkowski@linux.intel.com>
+X-IronPort-AV: E=Sophos;i="6.08,219,1712646000"; d="scan'208";a="42417032"
+Received: from dosuchow-mobl2.ger.corp.intel.com (HELO [10.246.6.23])
+ ([10.246.6.23])
+ by fmviesa003-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 06 Jun 2024 05:33:26 -0700
+Message-ID: <fbec0c39-8749-4c47-b005-b045253eebd7@linux.intel.com>
+Date: Thu, 6 Jun 2024 14:33:23 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla Thunderbird
+To: Tony Nguyen <anthony.l.nguyen@intel.com>, intel-wired-lan@lists.osuosl.org
+References: <20240506153307.114104-1-dawid.osuchowski@linux.intel.com>
+ <0257b1fb-3e0a-d5d2-4e2c-eedc12e7dcd6@intel.com>
+Content-Language: pl
+From: Dawid Osuchowski <dawid.osuchowski@linux.intel.com>
+In-Reply-To: <0257b1fb-3e0a-d5d2-4e2c-eedc12e7dcd6@intel.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1717672863; x=1749208863;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=FkLjJd0fn+AnOo6nbkFZRki3fh9spobQfmWQrWV070w=;
- b=gH5E6qpvBKMbWJO2tHEfy+u4Mrdu81cB3V9vYs6hm7NmRhsgD9uBvHCu
- XPk50mUBy/q4ievJ77fYRNM0ow75QuzAeGW0GKEcrNu1DLMf0XI7KU8NO
- KXsAfVx5r41C1AePN+TBkTXIF9xUwB94lh6cA07d1Q+tTJdjJNv/P/oGp
- aT/E8zFcIvNpAAnkEAUA2HV+uQKnyuUQwC/mK3EEIn5xGtLu+Q7Ut6p2a
- s7PxJxzLPwekY/77h0Cz5InKpKSZRGYmqtWUgLA0MTphcDFypRYmCoh3S
- 4tszV4CGzGOusw1rf1ao0wyWQbB6pRCOe/WS34OQP9jxeVKcj5ZxM54gU
- Q==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ t=1717677210; x=1749213210;
+ h=message-id:date:mime-version:subject:to:cc:references:
+ from:in-reply-to:content-transfer-encoding;
+ bh=v6zwqbT3eNtldS0DZCFshKxvXCvz8cwJ1YakBqbHgLE=;
+ b=dbxTikZSr6WwzOb6F05uFGfBmkyz5Oo8RgKUD2y3mWUVH6U91Lvi8jUp
+ QFNKNarzpITITrPdbQa6wcLdiARaX4OVPbGFQslEg+221OJwLxfhxLplz
+ KLZRxYpq4sKOBagDE8BbhHVJDYu5qoOjRdLAIpEc7XKTYTox4D3Qfniq6
+ eYO4rGn5HyIfpk5t2nbuSV9rMx76QA6LJxEUArzm0F7LhifwQWMEXmOrC
+ EyoqwBK0+hBPcXD+31cwYqvddv03TPC8OzLnHy/6d/nt3f6LMIIXzHEfD
+ Ia0fBeqVytDiHzQ0FSeuEifQDG9x3v0MT3esO1KI+7nnKNT1yMJgRFIm1
+ A==;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=none (p=none dis=none)
  header.from=linux.intel.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=gH5E6qpv
-Subject: [Intel-wired-lan] [iwl-next v5 15/15] ice: allow to activate and
- deactivate subfunction
+ header.a=rsa-sha256 header.s=Intel header.b=dbxTikZS
+Subject: Re: [Intel-wired-lan] [PATCH iwl-net v4] ice: Do not get coalesce
+ settings while in reset
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -105,411 +109,19 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: shayd@nvidia.com, maciej.fijalkowski@intel.com, horms@kernel.org,
- sridhar.samudrala@intel.com, mateusz.polchlopek@intel.com,
- netdev@vger.kernel.org, jiri@nvidia.com, kalesh-anakkur.purayil@broadcom.com,
- michal.kubiak@intel.com, pio.raczynski@gmail.com, przemyslaw.kitszel@intel.com,
- jacob.e.keller@intel.com, wojciech.drewek@intel.com
+Cc: Ngai-Mint Kwan <ngai-mint.kwan@intel.com>, netdev@vger.kernel.org,
+ Pawel Chmielewski <pawel.chmielewski@intel.com>,
+ Simon Horman <horms@kernel.org>,
+ Mateusz Polchlopek <mateusz.polchlopek@intel.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Piotr Raczynski <piotr.raczynski@intel.com>
+On 09.05.2024 18:11, Tony Nguyen wrote:
+> Seems like commit message, and probably title, need to get updated for 
+> this change?
 
-Use previously implemented SF aux driver. It is probe during SF
-activation and remove after deactivation.
+During testing of the change, it turns out at the current state our 
+driver is in we have to use the approach with returning -EBUSY. Will 
+update the description in v5 to account for this.
 
-Reviewed-by: Simon Horman <horms@kernel.org>
-Signed-off-by: Piotr Raczynski <piotr.raczynski@intel.com>
-Signed-off-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
----
- .../ethernet/intel/ice/devlink/devlink_port.c | 173 ++++++++++++++++++
- .../ethernet/intel/ice/devlink/devlink_port.h |   7 +
- drivers/net/ethernet/intel/ice/ice_sf_eth.c   | 107 +++++++++++
- drivers/net/ethernet/intel/ice/ice_sf_eth.h   |   3 +
- 4 files changed, 290 insertions(+)
-
-diff --git a/drivers/net/ethernet/intel/ice/devlink/devlink_port.c b/drivers/net/ethernet/intel/ice/devlink/devlink_port.c
-index 4cfd90581d92..4abdc40d345e 100644
---- a/drivers/net/ethernet/intel/ice/devlink/devlink_port.c
-+++ b/drivers/net/ethernet/intel/ice/devlink/devlink_port.c
-@@ -530,6 +530,42 @@ void ice_devlink_destroy_sf_dev_port(struct ice_sf_dev *sf_dev)
- 	devl_port_unregister(&sf_dev->priv->devlink_port);
- }
- 
-+/**
-+ * ice_activate_dynamic_port - Activate a dynamic port
-+ * @dyn_port: dynamic port instance to activate
-+ * @extack: extack for reporting error messages
-+ *
-+ * Activate the dynamic port based on its flavour.
-+ *
-+ * Return: zero on success or an error code on failure.
-+ */
-+static int
-+ice_activate_dynamic_port(struct ice_dynamic_port *dyn_port,
-+			  struct netlink_ext_ack *extack)
-+{
-+	int err;
-+
-+	err = ice_sf_eth_activate(dyn_port, extack);
-+	if (err)
-+		return err;
-+
-+	dyn_port->active = true;
-+
-+	return 0;
-+}
-+
-+/**
-+ * ice_deactivate_dynamic_port - Deactivate a dynamic port
-+ * @dyn_port: dynamic port instance to deactivate
-+ *
-+ * Undo activation of a dynamic port.
-+ */
-+static void ice_deactivate_dynamic_port(struct ice_dynamic_port *dyn_port)
-+{
-+	ice_sf_eth_deactivate(dyn_port);
-+	dyn_port->active = false;
-+}
-+
- /**
-  * ice_dealloc_dynamic_port - Deallocate and remove a dynamic port
-  * @dyn_port: dynamic port instance to deallocate
-@@ -542,6 +578,9 @@ static void ice_dealloc_dynamic_port(struct ice_dynamic_port *dyn_port)
- 	struct devlink_port *devlink_port = &dyn_port->devlink_port;
- 	struct ice_pf *pf = dyn_port->pf;
- 
-+	if (dyn_port->active)
-+		ice_deactivate_dynamic_port(dyn_port);
-+
- 	xa_erase(&pf->sf_nums, devlink_port->attrs.pci_sf.sf);
- 	ice_eswitch_detach_sf(pf, dyn_port);
- 	ice_vsi_free(dyn_port->vsi);
-@@ -629,8 +668,142 @@ ice_devlink_port_del(struct devlink *devlink, struct devlink_port *port,
- 	return 0;
- }
- 
-+/**
-+ * ice_devlink_port_fn_hw_addr_set - devlink handler for mac address set
-+ * @port: pointer to devlink port
-+ * @hw_addr: hw address to set
-+ * @hw_addr_len: hw address length
-+ * @extack: extack for reporting error messages
-+ *
-+ * Sets mac address for the port, verifies arguments and copies address
-+ * to the subfunction structure.
-+ *
-+ * Return: zero on success or an error code on failure.
-+ */
-+static int
-+ice_devlink_port_fn_hw_addr_set(struct devlink_port *port, const u8 *hw_addr,
-+				int hw_addr_len,
-+				struct netlink_ext_ack *extack)
-+{
-+	struct ice_dynamic_port *dyn_port;
-+
-+	dyn_port = ice_devlink_port_to_dyn(port);
-+
-+	if (dyn_port->attached) {
-+		NL_SET_ERR_MSG_MOD(extack,
-+				   "Ethernet address can be change only in detached state");
-+		return -EBUSY;
-+	}
-+
-+	if (hw_addr_len != ETH_ALEN || !is_valid_ether_addr(hw_addr)) {
-+		NL_SET_ERR_MSG_MOD(extack, "Invalid ethernet address");
-+		return -EADDRNOTAVAIL;
-+	}
-+
-+	ether_addr_copy(dyn_port->hw_addr, hw_addr);
-+
-+	return 0;
-+}
-+
-+/**
-+ * ice_devlink_port_fn_hw_addr_get - devlink handler for mac address get
-+ * @port: pointer to devlink port
-+ * @hw_addr: hw address to set
-+ * @hw_addr_len: hw address length
-+ * @extack: extack for reporting error messages
-+ *
-+ * Returns mac address for the port.
-+ *
-+ * Return: zero on success or an error code on failure.
-+ */
-+static int
-+ice_devlink_port_fn_hw_addr_get(struct devlink_port *port, u8 *hw_addr,
-+				int *hw_addr_len,
-+				struct netlink_ext_ack *extack)
-+{
-+	struct ice_dynamic_port *dyn_port;
-+
-+	dyn_port = ice_devlink_port_to_dyn(port);
-+
-+	ether_addr_copy(hw_addr, dyn_port->hw_addr);
-+	*hw_addr_len = ETH_ALEN;
-+
-+	return 0;
-+}
-+
-+/**
-+ * ice_devlink_port_fn_state_set - devlink handler for port state set
-+ * @port: pointer to devlink port
-+ * @state: state to set
-+ * @extack: extack for reporting error messages
-+ *
-+ * Activates or deactivates the port.
-+ *
-+ * Return: zero on success or an error code on failure.
-+ */
-+static int
-+ice_devlink_port_fn_state_set(struct devlink_port *port,
-+			      enum devlink_port_fn_state state,
-+			      struct netlink_ext_ack *extack)
-+{
-+	struct ice_dynamic_port *dyn_port;
-+
-+	dyn_port = ice_devlink_port_to_dyn(port);
-+
-+	switch (state) {
-+	case DEVLINK_PORT_FN_STATE_ACTIVE:
-+		if (!dyn_port->active)
-+			return ice_activate_dynamic_port(dyn_port, extack);
-+		break;
-+	case DEVLINK_PORT_FN_STATE_INACTIVE:
-+		if (dyn_port->active)
-+			ice_deactivate_dynamic_port(dyn_port);
-+		break;
-+	}
-+
-+	return 0;
-+}
-+
-+/**
-+ * ice_devlink_port_fn_state_get - devlink handler for port state get
-+ * @port: pointer to devlink port
-+ * @state: admin configured state of the port
-+ * @opstate: current port operational state
-+ * @extack: extack for reporting error messages
-+ *
-+ * Gets port state.
-+ *
-+ * Return: zero on success or an error code on failure.
-+ */
-+static int
-+ice_devlink_port_fn_state_get(struct devlink_port *port,
-+			      enum devlink_port_fn_state *state,
-+			      enum devlink_port_fn_opstate *opstate,
-+			      struct netlink_ext_ack *extack)
-+{
-+	struct ice_dynamic_port *dyn_port;
-+
-+	dyn_port = ice_devlink_port_to_dyn(port);
-+
-+	if (dyn_port->active)
-+		*state = DEVLINK_PORT_FN_STATE_ACTIVE;
-+	else
-+		*state = DEVLINK_PORT_FN_STATE_INACTIVE;
-+
-+	if (dyn_port->attached)
-+		*opstate = DEVLINK_PORT_FN_OPSTATE_ATTACHED;
-+	else
-+		*opstate = DEVLINK_PORT_FN_OPSTATE_DETACHED;
-+
-+	return 0;
-+}
-+
- static const struct devlink_port_ops ice_devlink_port_sf_ops = {
- 	.port_del = ice_devlink_port_del,
-+	.port_fn_hw_addr_get = ice_devlink_port_fn_hw_addr_get,
-+	.port_fn_hw_addr_set = ice_devlink_port_fn_hw_addr_set,
-+	.port_fn_state_get = ice_devlink_port_fn_state_get,
-+	.port_fn_state_set = ice_devlink_port_fn_state_set,
- };
- 
- /**
-diff --git a/drivers/net/ethernet/intel/ice/devlink/devlink_port.h b/drivers/net/ethernet/intel/ice/devlink/devlink_port.h
-index 479d2b976745..d60efc340945 100644
---- a/drivers/net/ethernet/intel/ice/devlink/devlink_port.h
-+++ b/drivers/net/ethernet/intel/ice/devlink/devlink_port.h
-@@ -11,22 +11,29 @@
-  * struct ice_dynamic_port - Track dynamically added devlink port instance
-  * @hw_addr: the HW address for this port
-  * @active: true if the port has been activated
-+ * @attached: true it the prot is attached
-  * @devlink_port: the associated devlink port structure
-  * @pf: pointer to the PF private structure
-  * @vsi: the VSI associated with this port
-  * @repr_id: the representor ID
-  * @sfnum: the subfunction ID
-+ * @sf_dev: pointer to the subfunction device
-  *
-  * An instance of a dynamically added devlink port. Each port flavour
-  */
- struct ice_dynamic_port {
- 	u8 hw_addr[ETH_ALEN];
- 	u8 active: 1;
-+	u8 attached: 1;
- 	struct devlink_port devlink_port;
- 	struct ice_pf *pf;
- 	struct ice_vsi *vsi;
- 	unsigned long repr_id;
- 	u32 sfnum;
-+	/* Flavour-specific implementation data */
-+	union {
-+		struct ice_sf_dev *sf_dev;
-+	};
- };
- 
- void ice_dealloc_all_dynamic_ports(struct ice_pf *pf);
-diff --git a/drivers/net/ethernet/intel/ice/ice_sf_eth.c b/drivers/net/ethernet/intel/ice/ice_sf_eth.c
-index 3a540a2638d1..73bb9c5d273d 100644
---- a/drivers/net/ethernet/intel/ice/ice_sf_eth.c
-+++ b/drivers/net/ethernet/intel/ice/ice_sf_eth.c
-@@ -147,6 +147,7 @@ static int ice_sf_dev_probe(struct auxiliary_device *adev,
- 	devl_unlock(devlink);
- 
- 	devlink_register(devlink);
-+	dyn_port->attached = true;
- 
- 	return 0;
- 
-@@ -186,6 +187,8 @@ static void ice_sf_dev_remove(struct auxiliary_device *adev)
- 	devl_unlock(devlink);
- 	devlink_free(devlink);
- 	ice_vsi_decfg(vsi);
-+
-+	dyn_port->attached = false;
- }
- 
- static const struct auxiliary_device_id ice_sf_dev_id_table[] = {
-@@ -202,6 +205,8 @@ static struct auxiliary_driver ice_sf_driver = {
- 	.id_table = ice_sf_dev_id_table
- };
- 
-+static DEFINE_XARRAY_ALLOC1(ice_sf_aux_id);
-+
- /**
-  * ice_sf_driver_register - Register new auxiliary subfunction driver
-  *
-@@ -220,3 +225,105 @@ void ice_sf_driver_unregister(void)
- {
- 	auxiliary_driver_unregister(&ice_sf_driver);
- }
-+
-+/**
-+ * ice_sf_dev_release - Release device associated with auxiliary device
-+ * @device: pointer to the device
-+ *
-+ * Since most of the code for subfunction deactivation is handled in
-+ * the remove handler, here just free tracking resources.
-+ */
-+static void ice_sf_dev_release(struct device *device)
-+{
-+	struct auxiliary_device *adev = to_auxiliary_dev(device);
-+	struct ice_sf_dev *sf_dev = ice_adev_to_sf_dev(adev);
-+
-+	xa_erase(&ice_sf_aux_id, adev->id);
-+	kfree(sf_dev);
-+}
-+
-+/**
-+ * ice_sf_eth_activate - Activate Ethernet subfunction port
-+ * @dyn_port: the dynamic port instance for this subfunction
-+ * @extack: extack for reporting error messages
-+ *
-+ * Activate the dynamic port as an Ethernet subfunction. Setup the netdev
-+ * resources associated and initialize the auxiliary device.
-+ *
-+ * Return: zero on success or an error code on failure.
-+ */
-+int
-+ice_sf_eth_activate(struct ice_dynamic_port *dyn_port,
-+		    struct netlink_ext_ack *extack)
-+{
-+	struct ice_pf *pf = dyn_port->pf;
-+	struct ice_sf_dev *sf_dev;
-+	struct pci_dev *pdev;
-+	int err;
-+	u32 id;
-+
-+	err = xa_alloc(&ice_sf_aux_id, &id, NULL, xa_limit_32b,
-+		       GFP_KERNEL);
-+	if (err) {
-+		NL_SET_ERR_MSG_MOD(extack, "Could not allocate subfunction ID");
-+		return err;
-+	}
-+
-+	sf_dev = kzalloc(sizeof(*sf_dev), GFP_KERNEL);
-+	if (!sf_dev) {
-+		err = -ENOMEM;
-+		NL_SET_ERR_MSG_MOD(extack, "Could not allocate sf_dev memory");
-+		goto xa_erase;
-+	}
-+	pdev = pf->pdev;
-+
-+	sf_dev->dyn_port = dyn_port;
-+	sf_dev->adev.id = id;
-+	sf_dev->adev.name = "sf";
-+	sf_dev->adev.dev.release = ice_sf_dev_release;
-+	sf_dev->adev.dev.parent = &pdev->dev;
-+
-+	err = auxiliary_device_init(&sf_dev->adev);
-+	if (err) {
-+		NL_SET_ERR_MSG_MOD(extack, "Failed to initialize auxiliary device");
-+		goto sf_dev_free;
-+	}
-+
-+	err = auxiliary_device_add(&sf_dev->adev);
-+	if (err) {
-+		NL_SET_ERR_MSG_MOD(extack, "Failed to add SF aux device");
-+		goto aux_dev_uninit;
-+	}
-+
-+	dyn_port->sf_dev = sf_dev;
-+
-+	return 0;
-+
-+aux_dev_uninit:
-+	auxiliary_device_uninit(&sf_dev->adev);
-+sf_dev_free:
-+	kfree(sf_dev);
-+xa_erase:
-+	xa_erase(&ice_sf_aux_id, id);
-+
-+	return err;
-+}
-+
-+/**
-+ * ice_sf_eth_deactivate - Deactivate Ethernet subfunction port
-+ * @dyn_port: the dynamic port instance for this subfunction
-+ *
-+ * Deactivate the Ethernet subfunction, removing its auxiliary device and the
-+ * associated resources.
-+ */
-+void ice_sf_eth_deactivate(struct ice_dynamic_port *dyn_port)
-+{
-+	struct ice_sf_dev *sf_dev = dyn_port->sf_dev;
-+
-+	if (sf_dev) {
-+		auxiliary_device_delete(&sf_dev->adev);
-+		auxiliary_device_uninit(&sf_dev->adev);
-+	}
-+
-+	dyn_port->sf_dev = NULL;
-+}
-diff --git a/drivers/net/ethernet/intel/ice/ice_sf_eth.h b/drivers/net/ethernet/intel/ice/ice_sf_eth.h
-index e972c50f96c9..c558cad0a183 100644
---- a/drivers/net/ethernet/intel/ice/ice_sf_eth.h
-+++ b/drivers/net/ethernet/intel/ice/ice_sf_eth.h
-@@ -27,4 +27,7 @@ ice_sf_dev *ice_adev_to_sf_dev(struct auxiliary_device *adev)
- int ice_sf_driver_register(void);
- void ice_sf_driver_unregister(void);
- 
-+int ice_sf_eth_activate(struct ice_dynamic_port *dyn_port,
-+			struct netlink_ext_ack *extack);
-+void ice_sf_eth_deactivate(struct ice_dynamic_port *dyn_port);
- #endif /* _ICE_SF_ETH_H_ */
--- 
-2.42.0
-
+--Dawid
