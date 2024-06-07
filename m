@@ -1,97 +1,98 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id C59898FF861
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  7 Jun 2024 02:04:32 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 56CBE900120
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  7 Jun 2024 12:46:05 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id EF9E6614CC;
-	Fri,  7 Jun 2024 00:04:30 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 0D035405D6;
+	Fri,  7 Jun 2024 10:46:04 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id e9DQmUmU0ouF; Fri,  7 Jun 2024 00:04:30 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 2MPew4ph1Vxi; Fri,  7 Jun 2024 10:46:03 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A2CBA614C9
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 6D17040465
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1717718669;
-	bh=ZtdlObNiSO6b5hNIdw21IgML5HjWO5yu9123+aqWMYY=;
-	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
+	s=default; t=1717757162;
+	bh=fd9NhUBUQNlk5hcmzreot2qjum5AWwcL3hRiY+AQHO4=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
 	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=AWIvcMsQFbQOZyO5fRMNb0fCobyO07g2j2urhFLtRzafz5RLwBEioPMMbp+4hl1TI
-	 Ungjs8qKcGOSH/YVgoK8uKgnJa1zjgXYb37Oqh9HD/MjD3Bv/pGpxUzGE86Jujudrr
-	 xe0iIYc5gMx5GVdNnrmmw9+wwv8yGPGggA+wL3kzCaQM4iqbISRyvHjGqgofd2TNoQ
-	 JZFoFTX5R5eYuLTgjTQ1W8GyyXspuVbzTpBU44ITADlY0xcU5jGyhEPf0hWRr5WhMX
-	 AU4gVAbnDI0+etPKiBm8xrUG4N9FoH7NhGDkYDidi5QgReMoi6Q4MUnJqq2icasWEy
-	 S8/jRVZbBBocQ==
+	b=IpGZTWcV7bfsoXn7IuIsCOyeqi6ZBCw1/LELVInZQ+aa3DgsqWqsBbgKdMRQ0Fwk2
+	 AYHTWDgLTXOaIx/rXwyc8HAyfXGSh0e2NbJY9x93FJNyHbC+wcmWEXFrvfkQeF8Vdh
+	 uup8pQCW4ksP4FhAGBnqnvfgytSYdSPjMP9b3KRpcvOkbHfivrJPA8l2ZjVKIz6PvS
+	 kfEgDlyTuSqHL574xxaFQmEvU0BCl/laxwJqZqcjFTrHy4LK3YwpiR8Dnehim1p3z1
+	 glHOY/y20Qq25FnaCnVZd6cJnC+0ff9f/DKaRiUPOH0kGDVkzjcbPBo0sCW88NdT0q
+	 BQVm304sm2bdA==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id A2CBA614C9;
-	Fri,  7 Jun 2024 00:04:29 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 6D17040465;
+	Fri,  7 Jun 2024 10:46:02 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 970B11BF4E7
- for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Jun 2024 00:04:27 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 68FBB1BF4E4
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Jun 2024 10:46:00 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 82C40419B5
- for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Jun 2024 00:04:27 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 54DCC81B48
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Jun 2024 10:46:00 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id m0GedD3z8BNy for <intel-wired-lan@lists.osuosl.org>;
- Fri,  7 Jun 2024 00:04:26 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.12;
- helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 15E6C40934
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 15E6C40934
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.12])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 15E6C40934
- for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Jun 2024 00:04:25 +0000 (UTC)
-X-CSE-ConnectionGUID: LJWxwtpQTLKVfO8nNqdubw==
-X-CSE-MsgGUID: kRm5WhGBR7Sd1nepJRxofw==
-X-IronPort-AV: E=McAfee;i="6600,9927,11095"; a="25828483"
-X-IronPort-AV: E=Sophos;i="6.08,219,1712646000"; d="scan'208";a="25828483"
-Received: from orviesa007.jf.intel.com ([10.64.159.147])
- by orvoesa104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 06 Jun 2024 17:04:25 -0700
-X-CSE-ConnectionGUID: j/61vJFITi+J+eTNTGiY8g==
-X-CSE-MsgGUID: xOXix06WTxWIbb3ToCLnyA==
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 46pjDKWER0UG for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  7 Jun 2024 10:45:59 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.16;
+ helo=mgamail.intel.com; envelope-from=wojciech.drewek@intel.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 0CC3281B3E
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0CC3281B3E
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.16])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 0CC3281B3E
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  7 Jun 2024 10:45:58 +0000 (UTC)
+X-CSE-ConnectionGUID: mHXQxSqeTE+SxxznUqgDyQ==
+X-CSE-MsgGUID: lTOMpxrbTj2zXearOHxMQg==
+X-IronPort-AV: E=McAfee;i="6600,9927,11095"; a="11962340"
+X-IronPort-AV: E=Sophos;i="6.08,220,1712646000"; d="scan'208";a="11962340"
+Received: from orviesa001.jf.intel.com ([10.64.159.141])
+ by fmvoesa110.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 07 Jun 2024 03:45:58 -0700
+X-CSE-ConnectionGUID: SJCL072sQtiarq1ois4ggQ==
+X-CSE-MsgGUID: bO6tg7efQa6Yekar8pOthA==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.08,219,1712646000"; d="scan'208";a="38816263"
-Received: from unknown (HELO 0610945e7d16) ([10.239.97.151])
- by orviesa007.jf.intel.com with ESMTP; 06 Jun 2024 17:04:24 -0700
-Received: from kbuild by 0610945e7d16 with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1sFN5h-0003tS-1F;
- Fri, 07 Jun 2024 00:04:21 +0000
-Date: Fri, 7 Jun 2024 08:03:52 +0800
-From: kernel test robot <lkp@intel.com>
-To: Simei Su <simei.su@intel.com>
-Message-ID: <202406070705.6IjwhIMk-lkp@intel.com>
+X-IronPort-AV: E=Sophos;i="6.08,220,1712646000"; d="scan'208";a="75768340"
+Received: from irvmail002.ir.intel.com ([10.43.11.120])
+ by orviesa001.jf.intel.com with ESMTP; 07 Jun 2024 03:45:52 -0700
+Received: from rozewie.igk.intel.com (unknown [10.211.8.69])
+ by irvmail002.ir.intel.com (Postfix) with ESMTP id AA3D412406;
+ Fri,  7 Jun 2024 11:45:48 +0100 (IST)
+From: Wojciech Drewek <wojciech.drewek@intel.com>
+To: netdev@vger.kernel.org
+Date: Fri,  7 Jun 2024 12:43:49 +0200
+Message-Id: <20240607104349.823255-1-wojciech.drewek@intel.com>
+X-Mailer: git-send-email 2.40.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1717718666; x=1749254666;
- h=date:from:to:cc:subject:message-id:mime-version;
- bh=NdYW5RDPM74NpAZ3xcP774UxCnJinmAzZgFImgqRDds=;
- b=FzQhfjQzn44ZFwqmNgyoJLbGtE45T6FMCWmLbB3AF7vybJTXswEdbpW1
- 29fXGOC8zNDk4BLcpIUE27E1l83u8iCdxspyvEzrLdwUTJ+adtuBX67LI
- gpiosm+K3BIfWoP009MH0uktTPhZP6x/ZELg9yE96mr5I9Iszu3URn3h5
- FPVyog6eGXitqM8mS9mUUwWqsbuvEhQen5dXnsPAU2akp2O4ejrSQhRPO
- sb+ZVw57hEF6J53rhBg56A/2uWR4piUO6bDxOsed8uFGcyH4g1cI5o294
- Hemc692YgXEvvDS3Llc2AWw6o8/c4/Rxj7M3CtPuHZDKygKaGBz3r9XjM
- Q==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ t=1717757159; x=1749293159;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=R+4LRs25tYmnNXdfcqR+SAshLXXAzIhOTEUVKL71VWA=;
+ b=DYpV2JWiCsWKFdiYul3acFf7GtmZ9G3tNOUQ9tPuWbOOxPEbs4Qq7tFs
+ i0+NWN4H6xqg4098f1NWNnBNsnztTy1W1TSdrn0OOH/L3JlG6u0UXmR8R
+ UgbgTj9QP8wURgpfyhsEmFHzljJGZCATlNQFU8zo59616d34LUhXBbAgQ
+ Ki2xSPG8HZWA7R869GdfU0oMB7DvuAqBFirTlPpdND+t5WKeuogaZN0MH
+ n269/Lzq4j0sU57S71b5zpVlb4g59/ni4r3u71aXlsUplUODC9dZMJvN3
+ QsCZrMlGMl+duKpRiPU2SXzIc5KdzdYDWrGyQQlskg3fIfQ/MQjgCQb2m
+ A==;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=FzQhfjQz
-Subject: [Intel-wired-lan] [tnguy-next-queue:dev-queue 70/81]
- drivers/net/ethernet/intel/ice/ice_virtchnl.c:3851:26: error: implicit
- declaration of function 'ice_ptp_read_src_clk_reg'
+ header.s=Intel header.b=DYpV2JWi
+Subject: [Intel-wired-lan] [PATCH iwl-next v4] ice: Add support for devlink
+ local_forwarding param.
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -104,70 +105,313 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Wojciech Drewek <wojciech.drewek@intel.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>,
- Mateusz Polchlopek <mateusz.polchlopek@intel.com>,
- Intel Wired LAN <intel-wired-lan@lists.osuosl.org>,
- oe-kbuild-all@lists.linux.dev
+Cc: jacob.e.keller@intel.com, kuba@kernel.org, intel-wired-lan@lists.osuosl.org,
+ jiri@resnulli.us
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree:   https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git dev-queue
-head:   ace679d6a9e3623d89804105baaca54d4e5e9c49
-commit: c3bafac0365a81a223dff3ca0a68665926ef077d [70/81] ice: support Rx timestamp on flex descriptor
-config: arm-randconfig-004-20240607 (https://download.01.org/0day-ci/archive/20240607/202406070705.6IjwhIMk-lkp@intel.com/config)
-compiler: arm-linux-gnueabi-gcc (GCC) 13.2.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20240607/202406070705.6IjwhIMk-lkp@intel.com/reproduce)
+From: Pawel Kaminski <pawel.kaminski@intel.com>
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202406070705.6IjwhIMk-lkp@intel.com/
+Add support for driver-specific devlink local_forwarding param.
+Supported values are "enabled", "disabled" and "prioritized".
+Default configuration is set to "enabled".
 
-All errors (new ones prefixed by >>):
+Add documentation in networking/devlink/ice.rst.
 
-   drivers/net/ethernet/intel/ice/ice_virtchnl.c: In function 'ice_vc_get_phc_time':
->> drivers/net/ethernet/intel/ice/ice_virtchnl.c:3851:26: error: implicit declaration of function 'ice_ptp_read_src_clk_reg' [-Werror=implicit-function-declaration]
-    3851 |         phc_time->time = ice_ptp_read_src_clk_reg(pf, NULL);
-         |                          ^~~~~~~~~~~~~~~~~~~~~~~~
-   cc1: some warnings being treated as errors
+In previous generations of Intel NICs the transmit scheduler was only
+limited by PCIe bandwidth when scheduling/assigning hairpin-badwidth
+between VFs. Changes to E810 HW design introduced scheduler limitation,
+so that available hairpin-bandwidth is bound to external port speed.
+In order to address this limitation and enable NFV services such as
+"service chaining" a knob to adjust the scheduler config was created.
+Driver can send a configuration message to the FW over admin queue and
+internal FW logic will reconfigure HW to prioritize and add more BW to
+VF to VF traffic. As end result for example 10G port will no longer limit
+hairpin-badwith to 10G and much higher speeds can be achieved.
 
+Devlink local_forwarding param set to "prioritized" enables higher
+hairpin-badwitdh on related PFs. Configuration is applicable only to
+8x10G and 4x25G cards.
 
-vim +/ice_ptp_read_src_clk_reg +3851 drivers/net/ethernet/intel/ice/ice_virtchnl.c
+Changing local_forwarding configuration will trigger CORER reset in
+order to take effect.
 
-  3829	
-  3830	static int ice_vc_get_phc_time(struct ice_vf *vf)
-  3831	{
-  3832		enum virtchnl_status_code v_ret = VIRTCHNL_STATUS_SUCCESS;
-  3833		struct virtchnl_phc_time *phc_time = NULL;
-  3834		struct ice_pf *pf = vf->pf;
-  3835		int len = 0;
-  3836		int ret;
-  3837	
-  3838		if (!test_bit(ICE_VF_STATE_ACTIVE, vf->vf_states)) {
-  3839			v_ret = VIRTCHNL_STATUS_ERR_PARAM;
-  3840			goto err;
-  3841		}
-  3842	
-  3843		len = sizeof(struct virtchnl_phc_time);
-  3844		phc_time = kzalloc(len, GFP_KERNEL);
-  3845		if (!phc_time) {
-  3846			v_ret = VIRTCHNL_STATUS_ERR_NO_MEMORY;
-  3847			len = 0;
-  3848			goto err;
-  3849		}
-  3850	
-> 3851		phc_time->time = ice_ptp_read_src_clk_reg(pf, NULL);
-  3852	
-  3853	err:
-  3854		/* send the response back to the VF */
-  3855		ret = ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_1588_PTP_GET_TIME,
-  3856					    v_ret, (u8 *)phc_time, len);
-  3857		kfree(phc_time);
-  3858		return ret;
-  3859	}
-  3860	
+Example command to change current value:
+devlink dev param set pci/0000:b2:00.3 name local_forwarding \
+        value prioritized \
+        cmode runtime
 
+Co-developed-by: Michal Wilczynski <michal.wilczynski@intel.com>
+Signed-off-by: Michal Wilczynski <michal.wilczynski@intel.com>
+Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+Signed-off-by: Pawel Kaminski <pawel.kaminski@intel.com>
+Signed-off-by: Wojciech Drewek <wojciech.drewek@intel.com>
+---
+v2: Extend documentation
+v3: rename loopback to local_forwarding
+v4: change in documentation about what types of functions
+    are affected
+---
+ Documentation/networking/devlink/ice.rst      |  25 ++++
+ .../net/ethernet/intel/ice/devlink/devlink.c  | 126 ++++++++++++++++++
+ .../net/ethernet/intel/ice/ice_adminq_cmd.h   |  11 +-
+ drivers/net/ethernet/intel/ice/ice_common.c   |   4 +
+ drivers/net/ethernet/intel/ice/ice_type.h     |   1 +
+ 5 files changed, 166 insertions(+), 1 deletion(-)
+
+diff --git a/Documentation/networking/devlink/ice.rst b/Documentation/networking/devlink/ice.rst
+index 830c04354222..e3972d03cea0 100644
+--- a/Documentation/networking/devlink/ice.rst
++++ b/Documentation/networking/devlink/ice.rst
+@@ -11,6 +11,7 @@ Parameters
+ ==========
+ 
+ .. list-table:: Generic parameters implemented
++   :widths: 5 5 90
+ 
+    * - Name
+      - Mode
+@@ -68,6 +69,30 @@ Parameters
+ 
+        To verify that value has been set:
+        $ devlink dev param show pci/0000:16:00.0 name tx_scheduling_layers
++.. list-table:: Driver specific parameters implemented
++    :widths: 5 5 90
++
++    * - Name
++      - Mode
++      - Description
++    * - ``local_forwarding``
++      - runtime
++      - Controls loopback behavior by tuning scheduler bandwidth.
++        It impacts all kinds of functions: physical, virtual and
++        subfunctions.
++        Supported values are:
++
++        ``enabled`` - loopback traffic is allowed on port
++
++        ``disabled`` - loopback traffic is not allowed on this port
++
++        ``prioritized`` - loopback traffic is prioritized on this port
++
++        Default value of ``local_forwarding`` parameter is ``enabled``.
++        ``prioritized`` provides ability to adjust loopback traffic rate to increase
++        one port capacity at cost of the another. User needs to disable
++        local forwarding on one of the ports in order have increased capacity
++        on the ``prioritized`` port.
+ 
+ Info versions
+ =============
+diff --git a/drivers/net/ethernet/intel/ice/devlink/devlink.c b/drivers/net/ethernet/intel/ice/devlink/devlink.c
+index f774781ab514..810a901d7afd 100644
+--- a/drivers/net/ethernet/intel/ice/devlink/devlink.c
++++ b/drivers/net/ethernet/intel/ice/devlink/devlink.c
+@@ -1381,9 +1381,129 @@ ice_devlink_enable_iw_validate(struct devlink *devlink, u32 id,
+ 	return 0;
+ }
+ 
++#define DEVLINK_LOCAL_FWD_DISABLED_STR "disabled"
++#define DEVLINK_LOCAL_FWD_ENABLED_STR "enabled"
++#define DEVLINK_LOCAL_FWD_PRIORITIZED_STR "prioritized"
++
++/**
++ * ice_devlink_local_fwd_mode_to_str - Get string for local_fwd mode.
++ * @mode: local forwarding for mode used in port_info struct.
++ *
++ * Return: Mode respective string or "Invalid".
++ */
++static const char *
++ice_devlink_local_fwd_mode_to_str(enum ice_local_fwd_mode mode)
++{
++	switch (mode) {
++	case ICE_LOCAL_FWD_MODE_ENABLED:
++		return DEVLINK_LOCAL_FWD_ENABLED_STR;
++	case ICE_LOCAL_FWD_MODE_PRIORITIZED:
++		return DEVLINK_LOCAL_FWD_PRIORITIZED_STR;
++	case ICE_LOCAL_FWD_MODE_DISABLED:
++		return DEVLINK_LOCAL_FWD_DISABLED_STR;
++	}
++
++	return "Invalid";
++}
++
++/**
++ * ice_devlink_local_fwd_str_to_mode - Get local_fwd mode from string name.
++ * @mode_str: local forwarding mode string.
++ *
++ * Return: Mode value or negative number if invalid.
++ */
++static int ice_devlink_local_fwd_str_to_mode(const char *mode_str)
++{
++	if (!strcmp(mode_str, DEVLINK_LOCAL_FWD_ENABLED_STR))
++		return ICE_LOCAL_FWD_MODE_ENABLED;
++	else if (!strcmp(mode_str, DEVLINK_LOCAL_FWD_PRIORITIZED_STR))
++		return ICE_LOCAL_FWD_MODE_PRIORITIZED;
++	else if (!strcmp(mode_str, DEVLINK_LOCAL_FWD_DISABLED_STR))
++		return ICE_LOCAL_FWD_MODE_DISABLED;
++
++	return -EINVAL;
++}
++
++/**
++ * ice_devlink_local_fwd_get - Get local_fwd parameter.
++ * @devlink: Pointer to the devlink instance.
++ * @id: The parameter ID to set.
++ * @ctx: Context to store the parameter value.
++ *
++ * Return: Zero.
++ */
++static int ice_devlink_local_fwd_get(struct devlink *devlink, u32 id,
++				     struct devlink_param_gset_ctx *ctx)
++{
++	struct ice_pf *pf = devlink_priv(devlink);
++	struct ice_port_info *pi;
++	const char *mode_str;
++
++	pi = pf->hw.port_info;
++	mode_str = ice_devlink_local_fwd_mode_to_str(pi->local_fwd_mode);
++	snprintf(ctx->val.vstr, sizeof(ctx->val.vstr), "%s", mode_str);
++
++	return 0;
++}
++
++/**
++ * ice_devlink_local_fwd_set - Set local_fwd parameter.
++ * @devlink: Pointer to the devlink instance.
++ * @id: The parameter ID to set.
++ * @ctx: Context to get the parameter value.
++ * @extack: Netlink extended ACK structure.
++ *
++ * Return: Zero.
++ */
++static int ice_devlink_local_fwd_set(struct devlink *devlink, u32 id,
++				     struct devlink_param_gset_ctx *ctx,
++				     struct netlink_ext_ack *extack)
++{
++	int new_local_fwd_mode = ice_devlink_local_fwd_str_to_mode(ctx->val.vstr);
++	struct ice_pf *pf = devlink_priv(devlink);
++	struct device *dev = ice_pf_to_dev(pf);
++	struct ice_port_info *pi;
++
++	pi = pf->hw.port_info;
++	if (pi->local_fwd_mode != new_local_fwd_mode) {
++		pi->local_fwd_mode = new_local_fwd_mode;
++		dev_info(dev, "Setting local_fwd to %s\n", ctx->val.vstr);
++		ice_schedule_reset(pf, ICE_RESET_CORER);
++	}
++
++	return 0;
++}
++
++/**
++ * ice_devlink_local_fwd_validate - Validate passed local_fwd parameter value.
++ * @devlink: Unused pointer to devlink instance.
++ * @id: The parameter ID to validate.
++ * @val: Value to validate.
++ * @extack: Netlink extended ACK structure.
++ *
++ * Supported values are:
++ * "enabled" - local_fwd is enabled, "disabled" - local_fwd is disabled
++ * "prioritized" - local_fwd traffic is prioritized in scheduling.
++ *
++ * Return: Zero when passed parameter value is supported. Negative value on
++ * error.
++ */
++static int ice_devlink_local_fwd_validate(struct devlink *devlink, u32 id,
++					  union devlink_param_value val,
++					  struct netlink_ext_ack *extack)
++{
++	if (ice_devlink_local_fwd_str_to_mode(val.vstr) < 0) {
++		NL_SET_ERR_MSG_MOD(extack, "Error: Requested value is not supported.");
++		return -EINVAL;
++	}
++
++	return 0;
++}
++
+ enum ice_param_id {
+ 	ICE_DEVLINK_PARAM_ID_BASE = DEVLINK_PARAM_GENERIC_ID_MAX,
+ 	ICE_DEVLINK_PARAM_ID_TX_SCHED_LAYERS,
++	ICE_DEVLINK_PARAM_ID_LOCAL_FWD,
+ };
+ 
+ static const struct devlink_param ice_dvl_rdma_params[] = {
+@@ -1405,6 +1525,12 @@ static const struct devlink_param ice_dvl_sched_params[] = {
+ 			     ice_devlink_tx_sched_layers_get,
+ 			     ice_devlink_tx_sched_layers_set,
+ 			     ice_devlink_tx_sched_layers_validate),
++	DEVLINK_PARAM_DRIVER(ICE_DEVLINK_PARAM_ID_LOCAL_FWD,
++			     "local_forwarding", DEVLINK_PARAM_TYPE_STRING,
++			     BIT(DEVLINK_PARAM_CMODE_RUNTIME),
++			     ice_devlink_local_fwd_get,
++			     ice_devlink_local_fwd_set,
++			     ice_devlink_local_fwd_validate),
+ };
+ 
+ static void ice_devlink_free(void *devlink_ptr)
+diff --git a/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h b/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
+index 621a2ca7093e..9683842f8880 100644
+--- a/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
++++ b/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
+@@ -232,6 +232,13 @@ struct ice_aqc_get_sw_cfg_resp_elem {
+ #define ICE_AQC_GET_SW_CONF_RESP_IS_VF		BIT(15)
+ };
+ 
++/* Loopback port parameter mode values. */
++enum ice_local_fwd_mode {
++	ICE_LOCAL_FWD_MODE_ENABLED = 0,
++	ICE_LOCAL_FWD_MODE_DISABLED = 1,
++	ICE_LOCAL_FWD_MODE_PRIORITIZED = 2,
++};
++
+ /* Set Port parameters, (direct, 0x0203) */
+ struct ice_aqc_set_port_params {
+ 	__le16 cmd_flags;
+@@ -240,7 +247,9 @@ struct ice_aqc_set_port_params {
+ 	__le16 swid;
+ #define ICE_AQC_PORT_SWID_VALID			BIT(15)
+ #define ICE_AQC_PORT_SWID_M			0xFF
+-	u8 reserved[10];
++	u8 local_fwd_mode;
++#define ICE_AQC_SET_P_PARAMS_LOCAL_FWD_MODE_VALID BIT(2)
++	u8 reserved[9];
+ };
+ 
+ /* These resource type defines are used for all switch resource
+diff --git a/drivers/net/ethernet/intel/ice/ice_common.c b/drivers/net/ethernet/intel/ice/ice_common.c
+index 9ae61cd8923e..60ad7774812c 100644
+--- a/drivers/net/ethernet/intel/ice/ice_common.c
++++ b/drivers/net/ethernet/intel/ice/ice_common.c
+@@ -1086,6 +1086,7 @@ int ice_init_hw(struct ice_hw *hw)
+ 		goto err_unroll_cqinit;
+ 	}
+ 
++	hw->port_info->local_fwd_mode = ICE_LOCAL_FWD_MODE_ENABLED;
+ 	/* set the back pointer to HW */
+ 	hw->port_info->hw = hw;
+ 
+@@ -3070,6 +3071,9 @@ ice_aq_set_port_params(struct ice_port_info *pi, bool double_vlan,
+ 		cmd_flags |= ICE_AQC_SET_P_PARAMS_DOUBLE_VLAN_ENA;
+ 	cmd->cmd_flags = cpu_to_le16(cmd_flags);
+ 
++	cmd->local_fwd_mode = pi->local_fwd_mode |
++				ICE_AQC_SET_P_PARAMS_LOCAL_FWD_MODE_VALID;
++
+ 	return ice_aq_send_cmd(hw, &desc, NULL, 0, cd);
+ }
+ 
+diff --git a/drivers/net/ethernet/intel/ice/ice_type.h b/drivers/net/ethernet/intel/ice/ice_type.h
+index 868d7d26a422..db4f93fd076e 100644
+--- a/drivers/net/ethernet/intel/ice/ice_type.h
++++ b/drivers/net/ethernet/intel/ice/ice_type.h
+@@ -731,6 +731,7 @@ struct ice_port_info {
+ 	u16 sw_id;			/* Initial switch ID belongs to port */
+ 	u16 pf_vf_num;
+ 	u8 port_state;
++	u8 local_fwd_mode;
+ #define ICE_SCHED_PORT_STATE_INIT	0x0
+ #define ICE_SCHED_PORT_STATE_READY	0x1
+ 	u8 lport;
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+2.40.1
+
