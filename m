@@ -1,88 +1,88 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 606A1901184
-	for <lists+intel-wired-lan@lfdr.de>; Sat,  8 Jun 2024 14:55:41 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0F5B0901186
+	for <lists+intel-wired-lan@lfdr.de>; Sat,  8 Jun 2024 14:56:41 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 3DB1981A3E;
-	Sat,  8 Jun 2024 12:55:39 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id B1D3C81EB1;
+	Sat,  8 Jun 2024 12:56:39 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id v5uoNIWMHai5; Sat,  8 Jun 2024 12:55:38 +0000 (UTC)
+ id YPLnZBv7cjvR; Sat,  8 Jun 2024 12:56:39 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 704F581A6A
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org EBF2881E88
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1717851338;
-	bh=StifVupC0SVtBndAFPEUgv7vCScbxdCq+k1GQQlTERE=;
+	s=default; t=1717851399;
+	bh=K/7JTVAnlUvLvzDCVtCaO8sIwzsBQ/zjvsk4Hmznxlw=;
 	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=Lni4QLqgs2kOMOO3r9HhDnYK0aRgLakKhnbRhkLHy8/HwkzbfMs2B03yfP2l2MnsI
-	 jlbcHoO+RwZKcLqNgx4UzuM9d7X0pHUZuE/3rsTcCmrS2ygitCbK/HOhpcGgJ8E2lp
-	 oD5LsCUwvCu/SzRKwvRLrOm+shHZsgUtX9cya6Nz1g9hIHxGiuIAQTY8N7tFKK7DOr
-	 7GnyVTnuryoBAm7mydjGq95+7E4QLhVZIpvVauTTVW21TjbXS3Lrc7/6R+lNCzd19L
-	 pY5Z5E+4E0ozckYH6DqLtqno+aitfbafTHT1QGkSpb2UwqeQxehIfx2OvvaEDDTp8h
-	 i07U7NY9MxkFg==
+	b=8EpipvYkFLLHwa7KKJ81WHidt2AEWS8cUAcuF/ROt9ylW26DH3NKAEaE4yEpBqzJx
+	 kH3tNcDPPEw/DfD3Q99LFBW/5/R6J6eOtzC/4WHpRkVb78nHSm0gQlXmsP4tmdRlJu
+	 1q1/tsvd+M78O7xZbQMr8aUH0WDWmDvUZL0kSjl9J6EpmM3TjcA05qsvzXzw+gg11O
+	 Ppi28yjKWQrhZPZYKnsNiNE9gRsq0JqH3aHD/7hehIILpofCDKFgcyyrPq4KW4qI6E
+	 pc5U8/7yJsCZOM3Xu/2nitHH4XdqH+Aenn3B4n/LTWOiiThDZcezqajw3zebxOXjgQ
+	 O64FV9G4jEjGQ==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 704F581A6A;
-	Sat,  8 Jun 2024 12:55:38 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id EBF2881E88;
+	Sat,  8 Jun 2024 12:56:38 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id C735E1BF47E
- for <intel-wired-lan@lists.osuosl.org>; Sat,  8 Jun 2024 12:55:36 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id D52CE1BF47E
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  8 Jun 2024 12:56:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id B19E6426DC
- for <intel-wired-lan@lists.osuosl.org>; Sat,  8 Jun 2024 12:55:36 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id CE076426DC
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  8 Jun 2024 12:56:36 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 9q6eUtXr8N1w for <intel-wired-lan@lists.osuosl.org>;
- Sat,  8 Jun 2024 12:55:36 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=139.178.84.217;
- helo=dfw.source.kernel.org; envelope-from=horms@kernel.org;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org CF6CF426DB
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org CF6CF426DB
-Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
- by smtp4.osuosl.org (Postfix) with ESMTPS id CF6CF426DB
- for <intel-wired-lan@lists.osuosl.org>; Sat,  8 Jun 2024 12:55:35 +0000 (UTC)
+ id O7YWIBgCQgdU for <intel-wired-lan@lists.osuosl.org>;
+ Sat,  8 Jun 2024 12:56:35 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2604:1380:4641:c500::1; helo=dfw.source.kernel.org;
+ envelope-from=horms@kernel.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 966B5426DB
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 966B5426DB
+Received: from dfw.source.kernel.org (dfw.source.kernel.org
+ [IPv6:2604:1380:4641:c500::1])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 966B5426DB
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  8 Jun 2024 12:56:35 +0000 (UTC)
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by dfw.source.kernel.org (Postfix) with ESMTP id 28142614C9;
- Sat,  8 Jun 2024 12:55:34 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7C59FC2BD11;
- Sat,  8 Jun 2024 12:55:32 +0000 (UTC)
-Date: Sat, 8 Jun 2024 13:55:30 +0100
+ by dfw.source.kernel.org (Postfix) with ESMTP id 8932260BB5;
+ Sat,  8 Jun 2024 12:56:34 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0F367C2BD11;
+ Sat,  8 Jun 2024 12:56:32 +0000 (UTC)
+Date: Sat, 8 Jun 2024 13:56:30 +0100
 From: Simon Horman <horms@kernel.org>
 To: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
-Message-ID: <20240608125530.GS27689@kernel.org>
+Message-ID: <20240608125630.GT27689@kernel.org>
 References: <20240604131400.13655-1-mateusz.polchlopek@intel.com>
- <20240604131400.13655-2-mateusz.polchlopek@intel.com>
+ <20240604131400.13655-5-mateusz.polchlopek@intel.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20240604131400.13655-2-mateusz.polchlopek@intel.com>
+In-Reply-To: <20240604131400.13655-5-mateusz.polchlopek@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1717851333;
- bh=9KLc5ZWRKVzzD/hO+CFXAsPG5/vZtKSbef/xgGiW+6M=;
+ d=kernel.org; s=k20201202; t=1717851394;
+ bh=/RlJo9WnsSn1XLBS9ggjnNyuELQapyKJA1TQXRzbb/8=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=B/nimq3PGfrD4oEsSVvQ6yJVKPXKAcKFnJ3JEJ47B4AJJ3JjXsXWM+lmOB9w/dYSa
- 6aj9TT3i+i+yfC1Ztk1DP/ntzmiem5sXpbsmGkzDDhC2EZIJLH4CsGHTEy4o5zqxv4
- W0aGY9ykTNXjExOeNtD7QA0vja3E/YWNlYDw958JIUnZBp9v9s/H0C/ooIOqOxg6z5
- HX6x75I8cFq9MhXeiy599noN8XUy7z3nUS7UNiq+Z/0Pih4GJvxW+zM/RN2mW92Dd5
- bEEjvsxb5Q7FKVoGQWR0VDvMJj4ICmJek1iIfj8nPX5MvS0E4473jIUyX9suEFRJtm
- 9K/cALe3cko3g==
+ b=CBH9ukbS+pWltnD58a99574ux2Cqp7Oj2cdcLWswGA2JX7apSIvtPjkWOdWPaG1E+
+ oDiVmlmInCaW2MyLR60rOxKAk1RT+WHCNgFLoVU58N7sfcZKuwSkM+T7kKBzTjvhiJ
+ mlL/F8+D9em/5xi22XWCluelGmndMDzaapIxrAtKkJ2jeujVkc5X7e5fDSOJEjpdm5
+ O5GObw10hWQgcYFqOZxbvlpdnicVv2O7Og3DRSXv2/9Yi2oQ2CewXCC3UcGq6mNWLJ
+ RL+WTz0lRQlfYxCqVwlcgmrmUjA24fN6YY7dqohz7CYvksAJ4ObMcpcziFF1ux5Eaw
+ +e7kLoD6PrHPw==
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=kernel.org
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20201202 header.b=B/nimq3P
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v7 01/12] virtchnl: add
- support for enabling PTP on iAVF
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=CBH9ukbS
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v7 04/12] iavf: add support
+ for negotiating flexible RXDID format
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,57 +96,100 @@ List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Cc: Jacob Keller <jacob.e.keller@intel.com>, netdev@vger.kernel.org,
- Rahul Rameshbabu <rrameshbabu@nvidia.com>, intel-wired-lan@lists.osuosl.org,
- Wojciech Drewek <wojciech.drewek@intel.com>
+ intel-wired-lan@lists.osuosl.org, Wojciech Drewek <wojciech.drewek@intel.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, Jun 04, 2024 at 09:13:49AM -0400, Mateusz Polchlopek wrote:
+On Tue, Jun 04, 2024 at 09:13:52AM -0400, Mateusz Polchlopek wrote:
 > From: Jacob Keller <jacob.e.keller@intel.com>
 > 
-> Add support for allowing a VF to enable PTP feature - Rx timestamps
+> Enable support for VIRTCHNL_VF_OFFLOAD_RX_FLEX_DESC, to enable the VF
+> driver the ability to determine what Rx descriptor formats are
+> available. This requires sending an additional message during
+> initialization and reset, the VIRTCHNL_OP_GET_SUPPORTED_RXDIDS. This
+> operation requests the supported Rx descriptor IDs available from the
+> PF.
 > 
-> The new capability is gated by VIRTCHNL_VF_CAP_PTP, which must be
-> set by the VF to request access to the new operations. In addition, the
-> VIRTCHNL_OP_1588_PTP_CAPS command is used to determine the specific
-> capabilities available to the VF.
+> This is treated the same way that VLAN V2 capabilities are handled. Add
+> a new set of extended capability flags, used to process send and receipt
+> of the VIRTCHNL_OP_GET_SUPPORTED_RXDIDS message.
 > 
-> This support includes the following additional capabilities:
+> This ensures we finish negotiating for the supported descriptor formats
+> prior to beginning configuration of receive queues.
 > 
-> * Rx timestamps enabled in the Rx queues (when using flexible advanced
->   descriptors)
-> * Read access to PHC time over virtchnl using
->   VIRTCHNL_OP_1588_PTP_GET_TIME
-> 
-> Extra space is reserved in most structures to allow for future
-> extension (like set clock, Tx timestamps).  Additional opcode numbers
-> are reserved and space in the virtchnl_ptp_caps structure is
-> specifically set aside for this.
-> Additionally, each structure has some space reserved for future
-> extensions to allow some flexibility.
+> This change stores the supported format bitmap into the iavf_adapter
+> structure. Additionally, if VIRTCHNL_VF_OFFLOAD_RX_FLEX_DESC is enabled
+> by the PF, we need to make sure that the Rx queue configuration
+> specifies the format.
 > 
 > Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
 > Reviewed-by: Wojciech Drewek <wojciech.drewek@intel.com>
-> Reviewed-by: Rahul Rameshbabu <rrameshbabu@nvidia.com>
+> Co-developed-by: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
 > Signed-off-by: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
 
 Hi Mateusz, Jacob, all,
 
-If you need to respin this for some reason, please consider updating
-the Kernel doc for the following to include a short description.
-Else, please consider doing so as a follow-up
-
-* struct virtchnl_ptp_caps
-* struct virtchnl_phc_time
-
-Likewise as a follow-up, as it was not introduced by this patch, for:
-
-* virtchnl_vc_validate_vf_msg
-
-Flagged by kernel-doc -none -Wall
-
-The above not withstanding, this looks good to me.
+The nit below notwithstanding, this looks good to me.
 
 Reviewed-by: Simon Horman <horms@kernel.org>
+
+...
+
+> @@ -262,6 +276,45 @@ int iavf_get_vf_vlan_v2_caps(struct iavf_adapter *adapter)
+>  	return err;
+>  }
+>  
+> +int iavf_get_vf_supported_rxdids(struct iavf_adapter *adapter)
+> +{
+> +	struct iavf_hw *hw = &adapter->hw;
+> +	struct iavf_arq_event_info event;
+> +	enum virtchnl_ops op;
+> +	enum iavf_status err;
+> +	u16 len;
+> +
+> +	len =  sizeof(struct virtchnl_supported_rxdids);
+> +	event.buf_len = len;
+> +	event.msg_buf = kzalloc(event.buf_len, GFP_KERNEL);
+> +	if (!event.msg_buf) {
+> +		err = -ENOMEM;
+> +		goto out;
+> +	}
+> +
+> +	while (1) {
+> +		/* When the AQ is empty, iavf_clean_arq_element will return
+> +		 * nonzero and this loop will terminate.
+> +		 */
+> +		err = iavf_clean_arq_element(hw, &event, NULL);
+> +		if (err != IAVF_SUCCESS)
+> +			goto out_alloc;
+> +		op = (enum virtchnl_ops)le32_to_cpu(event.desc.cookie_high);
+> +		if (op == VIRTCHNL_OP_GET_SUPPORTED_RXDIDS)
+> +			break;
+> +	}
+> +
+> +	err = (enum iavf_status)le32_to_cpu(event.desc.cookie_low);
+> +	if (err)
+> +		goto out_alloc;
+> +
+> +	memcpy(&adapter->supported_rxdids, event.msg_buf, min(event.msg_len, len));
+
+If you need to respin for some other reason,
+please consider wrapping the above to <= 80 columns wide.
+
+Likewise for the 2nd call to iavf_ptp_cap_supported() in
+iavf_ptp_process_caps() in
+[PATCH v7 06/12] iavf: add initial framework for registering PTP clock
+
+Flagged by: checkpatch.pl --max-line-length=80
+
+> +out_alloc:
+> +	kfree(event.msg_buf);
+> +out:
+> +	return err;
+> +}
+> +
+>  /**
+>   * iavf_configure_queues
+>   * @adapter: adapter structure
 
 ...
