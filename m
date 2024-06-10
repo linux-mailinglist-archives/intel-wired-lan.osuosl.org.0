@@ -2,99 +2,95 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id E689E901B79
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 10 Jun 2024 08:56:15 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 9ECAB901C00
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 10 Jun 2024 09:39:42 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 6EFB560752;
-	Mon, 10 Jun 2024 06:56:14 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 4F481607C9;
+	Mon, 10 Jun 2024 07:39:41 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id kqUXD2_qoIDe; Mon, 10 Jun 2024 06:56:13 +0000 (UTC)
+ id QDeZhqFiujgf; Mon, 10 Jun 2024 07:39:40 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1E5FD606F0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5AC8260752
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1718002573;
-	bh=f+DEeNwYvarlGL+2VQETOiIDJjXFMqxVeGOpebNPaYY=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=NydUFZX8Y3CRhn9ehIpR0GIyAtuIS0Wnp8e/ZFTcXs9mF6cOKLUWi7axsbsR5lkFa
-	 vh1E0bNriEDdzdyQfLa7Bfs0NZsrW6b6wjt7nXq87M83eO9XIhA8OgpD4uCElzklP6
-	 nPFFNoKzbVP6+ZoqpUPZKwZe4fdZprqB0FNkLfnq1G6/L/9UBi2V5uN7CtU+4Qe7x5
-	 7gXfJd9wmFL1OAWkEqZeS8VKxneExYTmYtfvfAdLt7SxXggz9BBlWYPNLZTC3b+GGI
-	 xSHqUS+YZEhJXKDfjq37HYXySiOtwE/MbcsjL7RdBFLu3ZA7bZQwkFO/TINB9BgYLm
-	 2qQN9Tpxk9mYg==
+	s=default; t=1718005180;
+	bh=8VzeL3nKE6zU2UltqCXro0xSR3LpJX5M2yp+N6Qwc9A=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=YZE5ihXxL+LWdqzt7tcVN6O0PbyylvxS9lLiMLheYbTcjrV9hx6ELCpBpYmTx20aN
+	 72uAPLhOPYzNYszFFoQhRmuImH/SwtOovVOagz388Taov5Pg7mBrLZh5bpYE+qfWHx
+	 GexJPdcreF6Qc3YjFq5bdnyrfMAcuiNJ7g1RK/1VmsUHGP+mTkT4/sMhIqTHLqj5tY
+	 9O/98hceZurrGgOS1p2L5m0wmvs6KS0dBl3Z1YUBu1fGE+gqmJyXIMivFpF2Nb8VEA
+	 VTwu7e1MZIEsT7+feKqgCphKIKpWv7o6JAWIWxppn/GZ8xWpRJokLouL9rl6ZB+Dqx
+	 fgpRUKHe3Z3OA==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 1E5FD606F0;
-	Mon, 10 Jun 2024 06:56:13 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 5AC8260752;
+	Mon, 10 Jun 2024 07:39:40 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 157061BF3D0
- for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Jun 2024 06:56:11 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 40A851BF2B9
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Jun 2024 07:39:39 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 016C5834F2
- for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Jun 2024 06:56:11 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 2C83B405BD
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Jun 2024 07:39:39 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id qtT3dBcLFLL4 for <intel-wired-lan@lists.osuosl.org>;
- Mon, 10 Jun 2024 06:56:08 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.9;
- helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org CE7948347D
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org CE7948347D
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.9])
- by smtp1.osuosl.org (Postfix) with ESMTPS id CE7948347D
- for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Jun 2024 06:56:06 +0000 (UTC)
-X-CSE-ConnectionGUID: ac6AFKnXQSK4beBQCvGTuQ==
-X-CSE-MsgGUID: zLq3xV0jTheYCtl3VbPAGA==
-X-IronPort-AV: E=McAfee;i="6600,9927,11098"; a="37173141"
-X-IronPort-AV: E=Sophos;i="6.08,227,1712646000"; d="scan'208";a="37173141"
-Received: from orviesa001.jf.intel.com ([10.64.159.141])
- by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 09 Jun 2024 23:56:05 -0700
-X-CSE-ConnectionGUID: e8ykSEwdS3G3DA5FIAt9wA==
-X-CSE-MsgGUID: /5hJAPHkQaCvwzCCQyfC/w==
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id xNI3bxTqsBME for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 10 Jun 2024 07:39:38 +0000 (UTC)
+Received-SPF: None (mailfrom) identity=mailfrom; client-ip=192.198.163.19;
+ helo=mgamail.intel.com; envelope-from=michal.swiatkowski@linux.intel.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org D70CF4057E
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D70CF4057E
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.19])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id D70CF4057E
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Jun 2024 07:39:37 +0000 (UTC)
+X-CSE-ConnectionGUID: q2lP6NAZSvSsi1PQRaR8yg==
+X-CSE-MsgGUID: EMXSWC0HTCShVi2dxOU7sA==
+X-IronPort-AV: E=McAfee;i="6600,9927,11098"; a="14448559"
+X-IronPort-AV: E=Sophos;i="6.08,227,1712646000"; d="scan'208";a="14448559"
+Received: from fmviesa001.fm.intel.com ([10.60.135.141])
+ by fmvoesa113.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 10 Jun 2024 00:39:37 -0700
+X-CSE-ConnectionGUID: TDKla3zfQPubMd8LHryheA==
+X-CSE-MsgGUID: XYNGAgmCTI2Zf6kixd1vLg==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.08,227,1712646000"; d="scan'208";a="76428104"
-Received: from lkp-server01.sh.intel.com (HELO 8967fbab76b3) ([10.239.97.150])
- by orviesa001.jf.intel.com with ESMTP; 09 Jun 2024 23:56:02 -0700
-Received: from kbuild by 8967fbab76b3 with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1sGYwh-0001vE-2E;
- Mon, 10 Jun 2024 06:55:59 +0000
-Date: Mon, 10 Jun 2024 14:55:15 +0800
-From: kernel test robot <lkp@intel.com>
-To: Richard chien <m8809301@gmail.com>, davem@davemloft.net,
- edumazet@google.com, kuba@kernel.org, pabeni@redhat.com
-Message-ID: <202406101404.oWWqbJmG-lkp@intel.com>
-References: <20240609081526.5621-1-richard.chien@hpe.com>
+X-IronPort-AV: E=Sophos;i="6.08,227,1712646000"; d="scan'208";a="70151231"
+Received: from wasp.igk.intel.com (HELO GK3153-DR2-R750-36946.localdomain.com)
+ ([10.102.20.192])
+ by fmviesa001.fm.intel.com with ESMTP; 10 Jun 2024 00:39:34 -0700
+From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Mon, 10 Jun 2024 09:44:30 +0200
+Message-ID: <20240610074434.1962735-1-michal.swiatkowski@linux.intel.com>
+X-Mailer: git-send-email 2.42.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20240609081526.5621-1-richard.chien@hpe.com>
+Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1718002568; x=1749538568;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=9x5lfg5IbS2UuO0/g8a59A4OC0SvPJLLx6ic7z+Xr14=;
- b=GzR8ETL7Q8NLmEZkRF+ohuL9jqHN4irD2p5g8fvPnpV5Xvy3y2MbFhaa
- BeJwLrwTM+cLOA5uu0NE/KxZ521GM+ALtCoogaQx9nA59ntaChbt0/P2o
- idwGX08hh1J0j973oNGnt6lOg6ZXFLXFrGhDxC93Con+HxkFjdATFPiNN
- Ha/LEVYeyQg+J7KbjudwJ3iMNmtlWPxuZzeu5oKnbWv/2pkP3dbGB9Tnx
- lWqCAFQwX32aNyxP+zVN0HScTZa+xCcnzCqJybSMkjQMTIf2axWn0B5L6
- ygWzPwvkIV4NxP6twmnWWZiKekFb5Kwjmdkqm9ZDlNzQjzVLicYu/kHGB
- g==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ t=1718005178; x=1749541178;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=OI2TMttIgG2il+LvyCg8MUCiIgvkycMDzNq/Drm0yhE=;
+ b=TPWbME3b6qNt19U6fFj6Om3dPBjjr2DYB+wVBJSwrXl4iJw3zBRVoxB8
+ NjYGsjqfftWckkS4bIDUZ2QdEDC8KO5zAmou6lgY38yRpoKa0UpZFrY/9
+ iSAGH5o9XLXobVl9PcWp9h908FrWYXU24PvTOSKY8C2OtGaDK535RYkAf
+ JDHoqWIMOyN7o9sBptmYPEbuZcVjJCNfJMPWnwhauwaVXiVhO/KopjQtE
+ 1hQICOPkcrFVi7n7Udz0pYNyxnoRDKU5QzBVgahEH3V+N4pKCbzswEc5X
+ zxvs/ad14/LZnzcCwE3m1bx0eT5oywBwjQgJE+53fEyCihj36gNQ9Xdwd
+ A==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dmarc=none (p=none dis=none)
+ header.from=linux.intel.com
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=GzR8ETL7
-Subject: Re: [Intel-wired-lan] [PATCH] igb: Add support for firmware update
+ header.s=Intel header.b=TPWbME3b
+Subject: [Intel-wired-lan] [iwl-next v3 0/4] ice: prepare representor for SF
+ support
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -107,102 +103,58 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org, oe-kbuild-all@lists.linux.dev,
- anthony.l.nguyen@intel.com, Richard chien <richard.chien@hpe.com>
+Cc: shayd@nvidia.com, maciej.fijalkowski@intel.com, sridhar.samudrala@intel.com,
+ mateusz.polchlopek@intel.com, netdev@vger.kernel.org, jiri@nvidia.com,
+ kuba@kernel.org, michal.kubiak@intel.com, pio.raczynski@gmail.com,
+ przemyslaw.kitszel@intel.com, jacob.e.keller@intel.com,
+ wojciech.drewek@intel.com
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi Richard,
+Hi,
 
-kernel test robot noticed the following build warnings:
+This is a series to prepare port representor for supporting also
+subfunctions. We need correct devlink locking and the possibility to
+update parent VSI after port representor is created.
 
-[auto build test WARNING on tnguy-next-queue/dev-queue]
-[also build test WARNING on tnguy-net-queue/dev-queue linus/master v6.10-rc3 next-20240607]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+Refactor how devlink lock is taken to suite the subfunction use case.
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Richard-chien/igb-Add-support-for-firmware-update/20240609-162047
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git dev-queue
-patch link:    https://lore.kernel.org/r/20240609081526.5621-1-richard.chien%40hpe.com
-patch subject: [PATCH] igb: Add support for firmware update
-config: alpha-randconfig-r112-20240610 (https://download.01.org/0day-ci/archive/20240610/202406101404.oWWqbJmG-lkp@intel.com/config)
-compiler: alpha-linux-gcc (GCC) 13.2.0
-reproduce: (https://download.01.org/0day-ci/archive/20240610/202406101404.oWWqbJmG-lkp@intel.com/reproduce)
+VSI configuration needs to be done after port representor is created.
+Port representor needs only allocated VSI. It doesn't need to be
+configured before.
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202406101404.oWWqbJmG-lkp@intel.com/
+VSI needs to be reconfigured when update function is called.
 
-sparse warnings: (new ones prefixed by >>)
->> drivers/net/ethernet/intel/igb/igb_ethtool.c:923:34: sparse: sparse: cast to restricted __le16
-   drivers/net/ethernet/intel/igb/igb_ethtool.c: note: in included file (through include/linux/mmzone.h, include/linux/gfp.h, include/linux/stackdepot.h, ...):
-   include/linux/page-flags.h:240:46: sparse: sparse: self-comparison always evaluates to false
-   include/linux/page-flags.h:240:46: sparse: sparse: self-comparison always evaluates to false
+The code for this patchset was split from (too big) patchset [1].
 
-vim +923 drivers/net/ethernet/intel/igb/igb_ethtool.c
+v2 --> v3 [3]:
+ * delete ice_repr_get_by_vsi() from header
+ * rephrase commit message in moving devlink locking
 
-   874	
-   875	static int igb_get_eeprom(struct net_device *netdev,
-   876	                          struct ethtool_eeprom *eeprom, u8 *bytes)
-   877	{
-   878	        struct igb_adapter *adapter = netdev_priv(netdev);
-   879	        struct e1000_hw *hw = &adapter->hw;
-   880	        u16 *eeprom_buff;
-   881	        int first_word, last_word;
-   882	        int ret_val = 0;
-   883	        struct e1000_nvm_access *nvm;
-   884	        u32 magic;
-   885	        u16 i;
-   886	
-   887	        if (eeprom->len == 0)
-   888	                return -EINVAL;
-   889	
-   890	        magic = hw->vendor_id | (hw->device_id << 16);
-   891	        if (eeprom->magic && eeprom->magic != magic) {
-   892	                nvm = (struct e1000_nvm_access *)eeprom;
-   893	                ret_val = igb_nvmupd_command(hw, nvm, bytes);
-   894	                return ret_val;
-   895	        }
-   896	          
-   897	        /* normal ethtool get_eeprom support */
-   898	        eeprom->magic = hw->vendor_id | (hw->device_id << 16);
-   899	
-   900	        first_word = eeprom->offset >> 1;
-   901	        last_word = (eeprom->offset + eeprom->len - 1) >> 1;
-   902	
-   903	        eeprom_buff = kmalloc(sizeof(u16) *
-   904	                        (last_word - first_word + 1), GFP_KERNEL);
-   905	        if (!eeprom_buff)
-   906	                return -ENOMEM;
-   907	
-   908	        if (hw->nvm.type == e1000_nvm_eeprom_spi)
-   909	                ret_val = e1000_read_nvm(hw, first_word,
-   910	                                         last_word - first_word + 1,
-   911	                                         eeprom_buff);
-   912	        else {
-   913	                for (i = 0; i < last_word - first_word + 1; i++) {
-   914	                        ret_val = e1000_read_nvm(hw, first_word + i, 1,
-   915	                                                 &eeprom_buff[i]);
-   916	                        if (ret_val)
-   917	                                break;
-   918	                }
-   919	        }
-   920	
-   921	        /* Device's eeprom is always little-endian, word addressable */
-   922	        for (i = 0; i < last_word - first_word + 1; i++)
- > 923	                eeprom_buff[i] = le16_to_cpu(eeprom_buff[i]);
-   924	
-   925	        memcpy(bytes, (u8 *)eeprom_buff + (eeprom->offset & 1),
-   926	                        eeprom->len);
-   927	        kfree(eeprom_buff);
-   928	
-   929	        return ret_val;
-   930	}
-   931	
+v1 --> v2 [2]:
+ * add returns for kdoc in ice_eswitch_cfg_vsi
+
+[1] https://lore.kernel.org/netdev/20240213072724.77275-1-michal.swiatkowski@linux.intel.com/
+[2] https://lore.kernel.org/netdev/20240419171336.11617-1-michal.swiatkowski@linux.intel.com/
+[3] https://lore.kernel.org/netdev/20240506084653.532111-1-michal.swiatkowski@linux.intel.com/
+
+Michal Swiatkowski (4):
+  ice: store representor ID in bridge port
+  ice: move devlink locking outside the port creation
+  ice: move VSI configuration outside repr setup
+  ice: update representor when VSI is ready
+
+ .../net/ethernet/intel/ice/devlink/devlink.c  |  2 -
+ .../ethernet/intel/ice/devlink/devlink_port.c |  4 +-
+ drivers/net/ethernet/intel/ice/ice_eswitch.c  | 85 +++++++++++++------
+ drivers/net/ethernet/intel/ice/ice_eswitch.h  | 14 ++-
+ .../net/ethernet/intel/ice/ice_eswitch_br.c   |  4 +-
+ .../net/ethernet/intel/ice/ice_eswitch_br.h   |  1 +
+ drivers/net/ethernet/intel/ice/ice_repr.c     | 16 ++--
+ drivers/net/ethernet/intel/ice/ice_repr.h     |  1 +
+ drivers/net/ethernet/intel/ice/ice_vf_lib.c   |  2 +-
+ 9 files changed, 90 insertions(+), 39 deletions(-)
 
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+2.42.0
+
