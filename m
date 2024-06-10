@@ -1,111 +1,242 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4FD76902606
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 10 Jun 2024 17:51:51 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1792E9023C8
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 10 Jun 2024 16:14:45 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 6442760648;
-	Mon, 10 Jun 2024 15:51:48 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id AAF1881433;
+	Mon, 10 Jun 2024 14:14:41 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 6ETkQBPHSiMl; Mon, 10 Jun 2024 14:14:40 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0DED98176B
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1718028880;
+	bh=t96dBbqaDfcVxh4BL//z+QqmEOZ8sGhrj8L339UxiX4=;
+	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=vNVhuFMkWvVFs9qAEpjlype7gwOiFlne3CsRVU4A7xYHFVYU/nugutSZrLEHU1Ati
+	 aKfWwNOiRFi46aEOc+l983prOfJdV9NpxrlSs8EuakIuJSll8WebquEIal7/i93UDL
+	 Tk/b0Yuk/fx399m6vr0MJQWaEyQbYQDzRAwYgwp7ViNVwyypgLQRGl07qUondvLBeI
+	 mhzAbPS6xQPYEZQ+EgquWKZZT4dUJ2MqnIiMqoFTqPRd9mT1LTVh+6YBmtNbddgGPc
+	 MFa2a78XCxsn9aInedQ4NNV9R3yqFcro1D8T1rW/Ga7y0+0mnzDpioYVy+WZGQVeFe
+	 HS0XH873TTkkg==
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp1.osuosl.org (Postfix) with ESMTP id 0DED98176B;
+	Mon, 10 Jun 2024 14:14:40 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 1CEB11BF3C0
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Jun 2024 14:14:38 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp3.osuosl.org (Postfix) with ESMTP id 09CCA60838
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Jun 2024 14:14:38 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id WXerFS0IcDbo; Mon, 10 Jun 2024 15:51:47 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D7D2E607A8
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1718034706;
-	bh=W/pWqNS/u9ahkqK+oeNI1+gm1pKxYW6kk8vHELluENw=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=zxENHyFFmbOizQKotFrWMFV/WkSSta2tN1jDUEkmLlpocepjq4iEnXA93Sqg3gTW4
-	 onaAIDiDrqPagtZceu2bG33zaDUaBUP9LoKr6n5hYwx14B2chKyZ3RFTSowky0LnE5
-	 BSGDQUxqfpCNkix5Ub5SQi32Puc56Ab3QpXaBV8xfd8zkpn37bcs1Zfm2zPOTy6tQw
-	 3NmOSMQaIKxJBFGDSNZSmSSqnIGdgh3KpDD5WILonEP8iCBXBMA6h9IWljY2Pl4OQ/
-	 lLVUKS7g/H49bFTlbQ9n9yojUFa2SXrTTq/uwHBxNTm5j0V8BGh61EAVFSDzKJ5HeV
-	 05QgJHLs6t7WA==
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id D7D2E607A8;
-	Mon, 10 Jun 2024 15:51:46 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 346D81BF20D
- for <intel-wired-lan@lists.osuosl.org>; Sun,  9 Jun 2024 08:59:58 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 20DA240429
- for <intel-wired-lan@lists.osuosl.org>; Sun,  9 Jun 2024 08:59:58 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id EnpTaeN5b6XQ for <intel-wired-lan@lists.osuosl.org>;
- Sun,  9 Jun 2024 08:59:56 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2607:f8b0:4864:20::52a; helo=mail-pg1-x52a.google.com;
- envelope-from=m8809301@gmail.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 4B9BA40106
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 4B9BA40106
-Received: from mail-pg1-x52a.google.com (mail-pg1-x52a.google.com
- [IPv6:2607:f8b0:4864:20::52a])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 4B9BA40106
- for <intel-wired-lan@lists.osuosl.org>; Sun,  9 Jun 2024 08:59:56 +0000 (UTC)
-Received: by mail-pg1-x52a.google.com with SMTP id
- 41be03b00d2f7-6e57506bb2dso1116888a12.0
- for <intel-wired-lan@lists.osuosl.org>; Sun, 09 Jun 2024 01:59:56 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1717923595; x=1718528395;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=W/pWqNS/u9ahkqK+oeNI1+gm1pKxYW6kk8vHELluENw=;
- b=I7peIJJrsKT0aa6Y4WUGCuW2l+LeIfYUvK1ccLXQJE9fGTxN/EQp3G8yspDBll/sXx
- TwmbMysWWFaKtfJ2aJbJxJ3X86zFAVoIbhs6QIk+/d7i5cV1UzmPUOAMDbWjUKLSfcAk
- trAvaru5oBJJt7AeO1NovhzOdhUN9pFLWCTKnvGouSxlbLiqe+V21YMQM0HPtvaVIrW7
- QotZQODrS5pU1lvjy8lW9Ub1REENLRTvzaF0IgsLRhV2xzNP1uJVdT+FdZC5UueuWjjU
- fjT//GkTQbvjlg1LKtWfRPOGec6hZP0Oxsk9OiHFaRdepyY6bwlv3Ulq1f2hCNa4CjYM
- Kcqg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCV7U5ooCz0DatKHe5NAeq7RcoVHUO8ekQb8bgXhbxYAO6zKbg8JE5Tq7cbie5g2+wwsrHZLQF9ArMbmUKJZ9nUWBpasjApmzOzTv6N69MH2hg==
-X-Gm-Message-State: AOJu0YxN6+KFt0noI9EPhxPGcC3olqAzwWCZ2pE3yuT4U7hLtorquWUd
- uJgfbyVLu3M9bqY/H1BtiO9fEHZSu804OESQJ7TgqtqrNlo5MJ0F
-X-Google-Smtp-Source: AGHT+IEI9kRXr1suV4pE3NprZ4CoN8wyS6LC7SJ3RhSIDWAssP5sDEavsZHw0UiQmhhha2LSfypdZg==
-X-Received: by 2002:a05:6300:8088:b0:1b0:812:ab3e with SMTP id
- adf61e73a8af0-1b2f9c64118mr6698217637.38.1717923595328; 
- Sun, 09 Jun 2024 01:59:55 -0700 (PDT)
-Received: from richard-1-2.. (223-137-2-26.emome-ip.hinet.net. [223.137.2.26])
- by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-2c304fe9622sm251515a91.18.2024.06.09.01.59.51
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 09 Jun 2024 01:59:54 -0700 (PDT)
-From: Richard chien <m8809301@gmail.com>
-X-Google-Original-From: Richard chien <richard.chien@hpe.com>
-To: davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
- pabeni@redhat.com
-Date: Sun,  9 Jun 2024 16:57:35 +0800
-Message-Id: <20240609085735.6253-1-richard.chien@hpe.com>
-X-Mailer: git-send-email 2.40.1
+ id 8OnRkHjzR4BQ for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 10 Jun 2024 14:14:37 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.9;
+ helo=mgamail.intel.com; envelope-from=rui.zhang@intel.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org B63AF6082F
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B63AF6082F
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.9])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id B63AF6082F
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 10 Jun 2024 14:14:36 +0000 (UTC)
+X-CSE-ConnectionGUID: 8v74gHBMQRuiuMIaNWvhPw==
+X-CSE-MsgGUID: NLplGKnvQq2GuhtP7T9FUg==
+X-IronPort-AV: E=McAfee;i="6600,9927,11099"; a="37215175"
+X-IronPort-AV: E=Sophos;i="6.08,227,1712646000"; d="scan'208";a="37215175"
+Received: from orviesa001.jf.intel.com ([10.64.159.141])
+ by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 10 Jun 2024 07:14:36 -0700
+X-CSE-ConnectionGUID: UusKkIY1RTC7V3iML4oMng==
+X-CSE-MsgGUID: sqSPEwvwQeO98X86dTMUyQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.08,227,1712646000"; d="scan'208";a="76532885"
+Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
+ by orviesa001.jf.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
+ 10 Jun 2024 07:14:35 -0700
+Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
+ ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.39; Mon, 10 Jun 2024 07:14:34 -0700
+Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
+ orsmsx610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.39 via Frontend Transport; Mon, 10 Jun 2024 07:14:34 -0700
+Received: from NAM11-DM6-obe.outbound.protection.outlook.com (104.47.57.169)
+ by edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.39; Mon, 10 Jun 2024 07:14:34 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=ZrRsh4rk5wijEUNqFkOi22kRtzJWDOEGv2MOf09934Nn0x71f1Oz7DwiEU5ELyBln4Uqm5mQ0OcRPRC3ZsKaToy0j/3OM2PEk9BDWkZwKIImrz/VcuBfPY7tjt1SwTUMMeeI8qwoZ7Coud9blkyqHN/Mqu9T//xy0gMgUqXMp0oA3EOKZoqYUwla5AueR10NuESARzNS+7o2L76kVSVP6CvNEkf8wOozvKUMulPzqQ0W6YcsAnmKZsKd3PTE2OhXTGHq5qGM7Kab5gzIPZOkChEYqHDRe3dy3uDytnh1T2kosdF4HGWpx5OeY1MhLJCj9i8xjpeYYJtl7FrNgjDmLg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=t96dBbqaDfcVxh4BL//z+QqmEOZ8sGhrj8L339UxiX4=;
+ b=GZf5cCPUF9SnEYxhZQK3TpzxmUHNd/6t5AKRsRLslXy5clxJ8TP/neJ+E10QTB/VO9hmVI4VVk2SMZ+tLhWiscvZcRvSuLRE65jPMtXJV5vpwetFnXgNo7vTP03DJ+cjquo4U4y/aPkmwg/+o1RSI2j7oH/1XF/PAOYg3+oLSVEi8utsi9PiHLx3lEvf+wM+PFTjXEzVWkM/zbRJWwNb5QUUugYntugyTFweEiPI8oA4qvkBbhSp3gW4cMEtahCabSPxP9aoAbnUqiN8xRZT5OqHw2ogNFtQ5JidgIRcZ9KGCudhQf3EzVtgtDC98w649+dbYbzYvd5AH1qMvmZR6g==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from SJ0PR11MB6622.namprd11.prod.outlook.com (2603:10b6:a03:478::6)
+ by SA3PR11MB7555.namprd11.prod.outlook.com (2603:10b6:806:311::16)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7633.36; Mon, 10 Jun
+ 2024 14:14:26 +0000
+Received: from SJ0PR11MB6622.namprd11.prod.outlook.com
+ ([fe80::727d:4413:2b65:8b3d]) by SJ0PR11MB6622.namprd11.prod.outlook.com
+ ([fe80::727d:4413:2b65:8b3d%6]) with mapi id 15.20.7633.036; Mon, 10 Jun 2024
+ 14:14:26 +0000
+From: "Zhang, Rui" <rui.zhang@intel.com>
+To: "pmenzel@molgen.mpg.de" <pmenzel@molgen.mpg.de>, "hui.wang@canonical.com"
+ <hui.wang@canonical.com>, "davem@davemloft.net" <davem@davemloft.net>,
+ "naamax.meir@linux.intel.com" <naamax.meir@linux.intel.com>, "Ruinskiy, Dima"
+ <dima.ruinskiy@intel.com>, "Lifshits, Vitaly" <vitaly.lifshits@intel.com>,
+ "kuba@kernel.org" <kuba@kernel.org>, "netdev@vger.kernel.org"
+ <netdev@vger.kernel.org>, "intel-wired-lan@lists.osuosl.org"
+ <intel-wired-lan@lists.osuosl.org>, "Nguyen, Anthony L"
+ <anthony.l.nguyen@intel.com>, "Neftin, Sasha" <sasha.neftin@intel.com>,
+ "edumazet@google.com" <edumazet@google.com>, "pabeni@redhat.com"
+ <pabeni@redhat.com>
+Thread-Topic: [iwl-net][PATCH] Revert "e1000e: move force SMBUS near the end
+ of enable_ulp function"
+Thread-Index: AQHautYmCoiZKGhEaEG13HC2srDSyrHAiz0AgACAFAA=
+Date: Mon, 10 Jun 2024 14:14:26 +0000
+Message-ID: <98ccb75d7ef48c182425f130e0b2ececeec630ec.camel@intel.com>
+References: <20240610013222.12082-1-hui.wang@canonical.com>
+ <6ec4337f-7bf4-442d-8eca-128e528fde2a@molgen.mpg.de>
+In-Reply-To: <6ec4337f-7bf4-442d-8eca-128e528fde2a@molgen.mpg.de>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+user-agent: Evolution 3.44.4-0ubuntu2 
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: SJ0PR11MB6622:EE_|SA3PR11MB7555:EE_
+x-ms-office365-filtering-correlation-id: b775b295-ec34-45e4-5c57-08dc8957a2dc
+x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+ ARA:13230031|376005|7416005|1800799015|366007|38070700009|921011; 
+x-microsoft-antispam-message-info: =?utf-8?B?RFNGcGl1YnYyYjFCZ2ZONC9mVDNWMkU4QXNGOG9HV0dMbzRLUlRHUmQ2cXdU?=
+ =?utf-8?B?ak9neWloZW50SGU3NCswY3pCNjhwWDR0L0hDZkxET2V1ZksvR09QNktBWmJZ?=
+ =?utf-8?B?d2ttbkxwOU5jb05Oei9mbHByWU1QOE4wSGI2UGZGeVdCaFQ1cThySUk1WWly?=
+ =?utf-8?B?YnlCQVBZL1pkZER2Wlp5TVE1R25rSTdMTUxMaTVOR0RiNkRkaG9XcE5xOEdW?=
+ =?utf-8?B?YWw0UHkrRGRsQmpaZ3krcXZUK0VOV1VpclhGc1JUNko5cjZXY1cyQ21ZelJs?=
+ =?utf-8?B?cGIvL2J2ZEpMc3N2MnNXL3orcDVmM2hadVErdktsZW5GQWxSbFZlTE5vMW9q?=
+ =?utf-8?B?YnNYWTRPSlV1WWR3VndacC9XYWgyOGZZemJ3bEdnSWp0UXIzK2xSeGdHaEdT?=
+ =?utf-8?B?NEJOWEo1Z1ZKOUZKblZXUFlqOHZDWmhQdTBObmQ0cFhnWjhjbVFQeHVBUWRy?=
+ =?utf-8?B?Ri9ZTGVUbGQyR1c3eklEb2xOcEpvUWdrOFF0WEJzZm9uTk1RQnhodGh6b2Nu?=
+ =?utf-8?B?b1NDVTgxdzYyUitKMjlkUkRDRElEQW5lQmpUbmp5L2dSbUZha2FadVdhbkt0?=
+ =?utf-8?B?Yk9Iazg3VWl4c3ZJR0M3TksveUt4bml6SzBKWVQzd3hWalJ2Sjd5R0M2a2RH?=
+ =?utf-8?B?cEhCSUtrdGRBVGF2QXQvTTZpY0FCNnhsRE9QMVhxY21jZWE2MGlDQnBaV1lW?=
+ =?utf-8?B?SXJWUFUyaFBmdGJkWG41UkdpNDZ2R3MxbjZaQWZzYkFVbldTeEdyZEduSlgw?=
+ =?utf-8?B?YmtXQkZXUkxlSGQ2YzY1ZTlSVTlqNjVUeEdLY0hWQmNVY1ZnVnk3M2s0WXBn?=
+ =?utf-8?B?YS9DbDYyd0dwSlpzajU2enpGNm9SdmJNVENHRFdxUGVaSkdaRU1aRmZRSmR4?=
+ =?utf-8?B?Zk4vakJNd3EyWHVJVWdaZDgwT3JGWFdsSXJtVEpTQU05OWFBM3RUTmhOL2Yx?=
+ =?utf-8?B?ZSs1OXAyWlhoODJON3ZFc0k2VCtBRm1aTHRWOWpGY0VSN3hrQUZXT0tNTkxB?=
+ =?utf-8?B?cTQ1L2dJblRtTkUyRy9RUnlmeFQxZjN3Yjh1RjVUbUFhQXNyelVkdlJQM3RY?=
+ =?utf-8?B?dzh3V1F1RGEraUVBb1V1VTNRdVplR08vMXBxNDlSZ0FrNnRSbDV2dlY1Z2tP?=
+ =?utf-8?B?azNjakdETmM4QVNHaU1nTUZ4Z0I4WmpKNkRvbklvUzYyMXB0YXVqUGZiTVlt?=
+ =?utf-8?B?ZitZaWlleGxWV3hrR0pmM1JSeEpJd01UemZUbnhrd0xoaTk1ZTc5SS9iRzMz?=
+ =?utf-8?B?RE90OTNqSFpPKy9oNHprc0hOc0lMSHBNSjFPeVkyaWFBaHZEZG8zbFRMczU4?=
+ =?utf-8?B?ODdFQnY2bGZMZTh3M1RxOWpmcnpER3Q4TE43NXVGaXVETkdMMGpWb2YzNW5S?=
+ =?utf-8?B?RlFxQjFScFJCSDNKZm5yVHJzVzNrd2F3YzI1S1NSSTJUNlpaU3QvYllwRUVR?=
+ =?utf-8?B?K2d5ZkJXYWFtZE45anFKTXBTd01yVmZUK25FempJeHNFdUgzQW1nUmZiU08w?=
+ =?utf-8?B?b21SbVhLNFFnUS9zSVFoVXdnTVNObFZHZUt3MDFUa0t6WGF2cy92TEhpbGlx?=
+ =?utf-8?B?U2lic0hWRWJSdjNqWUsyM2gwa1NRQng1K0NYR21RbVJXMzNEdVRaellETHUy?=
+ =?utf-8?B?MlVLVjV3NWUvUUp2QXZQSUVKQncyL05CS0tOMVMreEdLZ3B1bVdESXEvWUQ0?=
+ =?utf-8?B?bS91STRHcHZ1cXNFRk9IbUUveThVZENsWFREYm12TUx2bHB1TjJTZ3RyYUYw?=
+ =?utf-8?B?eWtJNkRvcjVZU3dNOFNnVXRzb0xuZmdHRFhjWC9yKzhXM25VbzhmYXN5MXZr?=
+ =?utf-8?B?b3hoZjFsMVkxUEM4Si8xUT09?=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SJ0PR11MB6622.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230031)(376005)(7416005)(1800799015)(366007)(38070700009)(921011);
+ DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?WFp3NnFyYUlTcGIzTnhrVVFVY05iSmtyMlFydTJlZ1Frc2xiY01sR3V3SGN3?=
+ =?utf-8?B?cVB3V0gxMXdqNyt5MkxiejR5aEl4bkNNV1EvWUlTNVhYanA3R1Nuc1NXQ01w?=
+ =?utf-8?B?YkdHM1dpRVczdnRYaGF1WmtFem9PSkxLd1ZpVVBYZEZVZjlGYXR3UDZsMGxB?=
+ =?utf-8?B?UXBxMXlzMmJsTS9TRTR6UDVqTFRLb1dYK1U3aldFcDNVTVQ1cFd1enVYSUFR?=
+ =?utf-8?B?OS9wSkUzQTI1T1l0NHJwMVd6Uy94czlUWm1SZlZ6QktVbXpHaUVTb0xvenJS?=
+ =?utf-8?B?VnpkUERNcUt4WEx2UGJPQ0wvVmhsWERhNGNnSGVjK0ZtdlM1R3dnTkVtbk8v?=
+ =?utf-8?B?c2JySy9BWS9UakdFNUJWSklYMUZ0VmVzZHNtUk82SnlaOTdmc0xZMGtYOER6?=
+ =?utf-8?B?OVp1TXpWbm15T29SSmdMUW8wd1gxMXdMZXN2UURqNGRKRDgyK0V0WWpWZ090?=
+ =?utf-8?B?TlM0RG5SZkZNRTg1b05SZ0JOdGVnQllpUWlMZitTYytuNlhLdHFjMnJWNDdG?=
+ =?utf-8?B?ZGRBeU9oeTByUEJEcGQweXhxSzZUQlc0Qkd1bTVoRkhnZ2YrWHdjOTdxK1Br?=
+ =?utf-8?B?SnBwd1NUYW9wMjRwRWR2OG5EaXJ3NGEzRjZSYlRhcFM1WkZDMXNsMnM5cjRl?=
+ =?utf-8?B?cm1HYXNWalZzTWw3eDZYa0hPR0NqV1RtYUZsMERmbjdyQitFUlRhQ2pXSERp?=
+ =?utf-8?B?N1lwZlUxYjBkUEZOQXUvYnF5Zzl2S3ZQcm1uaGtpZHViZksrcGxENWtXc1lT?=
+ =?utf-8?B?YklTOXhKSy9sTzY0NnZ2aDVRQzVyMDBFMENxbVQ4K2NjQlZiZklYeEYwQ1Nh?=
+ =?utf-8?B?elozQVQ0aHpWWG1UcHZZSzlJVUt1UlZJYVljTjkwbWl0RW1welBmcVBudmNH?=
+ =?utf-8?B?ZWRNWkhFRXZQYXM1aEV0ZGZUUUxNUGNFNGVwM0ZJRUdzdnVtYitWZjVBcHZ3?=
+ =?utf-8?B?ellpZ0tmb2tuQU83QkxFeG9nN1N2RUlpY29WTDQ4ejh6V1JETFkyV2J1NW11?=
+ =?utf-8?B?M0RPNFZkQlNDVEhGbGpBcW1SeHZxZGZxaE1CNmRzQ1NjOXpWRFdTcC9uSTdH?=
+ =?utf-8?B?QVFoek81Y29EanFRZGNMand4dlgxcTQwNTgzTWNqb01ES0NyaFZaMDdGVHV4?=
+ =?utf-8?B?NEhzT1h5RklIeXFSWEM1Tm1RYTBYNXBwUVBxQmJQcTEweDVqM3FXTFFITVhh?=
+ =?utf-8?B?Z05LSHZGOEJTcWNJOHBZMEhaVW04eHYzcjdvYy82cGZzRTVVZUxPUXE3bkcy?=
+ =?utf-8?B?LzB1NFhXUGczR241SXY2SFRPaXJxT3JUQVNXSFQ1dW9TZjQwMjNFUmVMdENv?=
+ =?utf-8?B?WFp0ektISzJ5c1hVQldhOXJGaXRtdFNLa0pyeUs0SjNHTUJaNmtIQkhCTHhu?=
+ =?utf-8?B?WTJOa211cWVyNjFQeld1Z2RPMGhMRSswL1JtcmVQWGxXK1V2dWdVeWc5cEJZ?=
+ =?utf-8?B?S01kODRBY1hwTnZMK3RCMGRFL3FYQ1NVU3VJUUI5NVlqY1lTUGN6QkgzNVov?=
+ =?utf-8?B?a3FXZDl3R3FNbzZON004Z1lTMGh2aGN2SWwwa1RGaFZFWEczNUhIUDJoNGV5?=
+ =?utf-8?B?VEMvcUdsTG0rekJ6Sitidy9paVltcW4xREhUZWJ1NFNzdjVYbkRFUGNwVFBn?=
+ =?utf-8?B?VGxDeTVlTkN2UkNqVVZYUFNpamt4NWFBbVo5SFlTWElSRFRBZG9mZXRua3E1?=
+ =?utf-8?B?eHhxb2sySWhuU3pKU1VaQ2hZb2h4UnpzK2ZxRFhkUnVGRU9mNmFNTm5jeEF6?=
+ =?utf-8?B?WEpyQnA2YlRhSkVMdnR5TDFXWnlUaWEwU2ZYdWErbm81M0JYYlNMTU5JVHds?=
+ =?utf-8?B?OWg5WVZzUk9aRW03azJEekw0YS9ONUkzU05XT3pJNjBnTTY0V20wa2Q0cXFH?=
+ =?utf-8?B?STBSbFpmTUloMDBpWjVjeTNFODQxTlFJZ2hwdWZ4UU5UelMwY1hUQjhSZjhM?=
+ =?utf-8?B?Ui90RXlLcU91eGFHNkh2d0Z5aTgzTUhaalNjbGthRGg0RHYybGh5MWhTZkZ5?=
+ =?utf-8?B?aXBpSWI4UEg4OS9pYW1LOHMrYjZSQzVidUNUR0F1MlpSSTUxdkQ1dUNJVUI1?=
+ =?utf-8?B?U1hONlFRYktMYmw3RzM3U3UzbkpxK1lGVFlsK2dBdjVVSk9YNmhtQWhpM1B2?=
+ =?utf-8?B?bUo3WkNsVTdKNXIvMXlOSm8wTkRDNW5jTTBEWGJ0ZC93VUdQR0RqeGd6VUJl?=
+ =?utf-8?B?SFE9PQ==?=
+Content-Type: text/plain; charset="utf-8"
+Content-ID: <C72FFB22EE94D0428FCA81E573728AB7@namprd11.prod.outlook.com>
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Mailman-Approved-At: Mon, 10 Jun 2024 15:51:42 +0000
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1717923595; x=1718528395; darn=lists.osuosl.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=W/pWqNS/u9ahkqK+oeNI1+gm1pKxYW6kk8vHELluENw=;
- b=XSAOLqhFZ94hBXB9BBJNa/YHCmBu01vlsdUiZ8mqVAmJXcSBvA/j/WiuiudM8n+fQV
- rANXB8UjSXYzydXCoy9I5VTe5OHuQ4qICPTZ+ihvLvvRxp7kZTGl0hAfTV2C4oBKctS+
- U1VDIJLfeF4TvsA9OB8Vl9SXb1+ysncK2UqTe9lQBfWc0vNzbVLz1XXndgFN3u7hNSxo
- w4z9IiU2hxIP7VJ4CI2nbPJ+Fh7jCBQJzGsP4tlYBoOFDS1W19YXOSpqOKrvs0KPPsJY
- 7XlsrexX2BhUDo01vscvyBvRaTRX8PkE1tKKlotds+gWOSBO2DULO7x3KK8LLTwR5Sdf
- UV5g==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SJ0PR11MB6622.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: b775b295-ec34-45e4-5c57-08dc8957a2dc
+X-MS-Exchange-CrossTenant-originalarrivaltime: 10 Jun 2024 14:14:26.6705 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: Iyc+LciPOcNcvn3h5NZlIaZ+YbRJxcutZbWJRZnbr3FYvcr4OrxV0+InlKLxWAJTsLx+HVrCi8gB3yGAbJmwZA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA3PR11MB7555
+X-OriginatorOrg: intel.com
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1718028877; x=1749564877;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-id:content-transfer-encoding:
+ mime-version;
+ bh=t96dBbqaDfcVxh4BL//z+QqmEOZ8sGhrj8L339UxiX4=;
+ b=Rk86cYy0AxQiOJf/bKvEaWXa2D58fvOT7Ny6beDgtgFxqdgjxIG9VSLU
+ G17uXe8BDiAT6boJrVhyULNYXQUdIhCUkbOns/c/kGcoL7iMJ60Dl4ms1
+ SxG33nn52hPPkCTS1gk0ViISMj8/f5y1jK4WW1E8Qs1XC5UKDBWVMUSN3
+ k8zEhBTtGWxtjfh+zUJdzjuY7m+kAG1wyuLsEG9QkPPIET1m3J7hUTc6g
+ 0UKc526vP7wR+nmtDlG9A3CebvLoWx9S5QqgXODQFr9kHmJ0SVynoAQiU
+ 8ZrczLKDTD+8LY4iYDTlmjB/2qYItV0ch9Ou7RnUeIDsy8pPLI+vQSqMW
+ A==;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=gmail.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ header.from=intel.com
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256
- header.s=20230601 header.b=XSAOLqhF
-Subject: [Intel-wired-lan] [PATCH] ixgbe: Add support for firmware update
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=Rk86cYy0
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [iwl-net][PATCH] Revert "e1000e: move force
+ SMBUS near the end of enable_ulp function"
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -118,507 +249,111 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: linux-kernel@vger.kernel.org, Richard chien <richard.chien@hpe.com>,
- intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
- anthony.l.nguyen@intel.com
+Cc: "Keller, Jacob E" <jacob.e.keller@intel.com>, "Brandt,
+ Todd E" <todd.e.brandt@intel.com>,
+ "regressions@lists.linux.dev" <regressions@lists.linux.dev>,
+ "horms@kernel.org" <horms@kernel.org>,
+ "dmummenschanz@web.de" <dmummenschanz@web.de>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-This patch adds support for firmware update to the in-tree ixgbe driver and it is actually a port
-from the out-of-tree ixgbe driver. In-band firmware update is one of the essential system maintenance
-tasks. To simplify this task, the Intel online firmware update utility provides a common interface
-that works across different Intel NICs running the igb/ixgbe/i40e drivers. Unfortunately, the in-tree
-igb and ixgbe drivers are unable to support this firmware update utility, causing problems for
-enterprise users who do not or cannot use out-of-distro drivers due to security and various other
-reasons (e.g. commercial Linux distros do not provide technical support for out-of-distro drivers).
-As a result, getting this feature into the in-tree ixgbe driver is highly desirable.
-
-Signed-off-by: Richard chien <richard.chien@hpe.com>
----
- .../net/ethernet/intel/ixgbe/ixgbe_ethtool.c  | 360 +++++++++++++-----
- drivers/net/ethernet/intel/ixgbe/ixgbe_main.c |  11 +
- drivers/net/ethernet/intel/ixgbe/ixgbe_type.h |  37 ++
- 3 files changed, 317 insertions(+), 91 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c
-index 6e6e6f184..3ce5c662a 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_ethtool.c
-@@ -993,114 +993,292 @@ static void ixgbe_get_regs(struct net_device *netdev,
- 
- static int ixgbe_get_eeprom_len(struct net_device *netdev)
- {
--	struct ixgbe_adapter *adapter = netdev_priv(netdev);
--	return adapter->hw.eeprom.word_size * 2;
-+        struct ixgbe_adapter *adapter = netdev_priv(netdev);
-+
-+        return pci_resource_len(adapter->pdev, 0);
-+}
-+
-+static u8 ixgbe_nvmupd_get_module(u32 val)
-+{
-+        return (u8)(val & IXGBE_NVMUPD_MOD_PNT_MASK);
-+}
-+
-+static int ixgbe_nvmupd_validate_offset(struct ixgbe_adapter *adapter,
-+                                        u32 offset)
-+{
-+        struct net_device *netdev = adapter->netdev;
-+
-+        switch (offset) {
-+        case IXGBE_STATUS:
-+        case IXGBE_ESDP:
-+        case IXGBE_MSCA:
-+        case IXGBE_MSRWD:
-+        case IXGBE_EEC_8259X:
-+        case IXGBE_FLA_8259X:
-+        case IXGBE_FLOP:
-+        case IXGBE_SWSM_8259X:
-+        case IXGBE_FWSM_8259X:
-+        case IXGBE_FACTPS_8259X:
-+        case IXGBE_GSSR:
-+        case IXGBE_HICR:
-+        case IXGBE_FWSTS:
-+                return 0;
-+        default:
-+                if ((offset >= IXGBE_MAVTV(0) && offset <= IXGBE_MAVTV(7)) ||
-+                    (offset >= IXGBE_RAL(0) && offset <= IXGBE_RAH(15)))
-+                        return 0;
-+        }
-+
-+        switch (adapter->hw.mac.type) {
-+        case ixgbe_mac_82599EB:
-+                switch (offset) {
-+                case IXGBE_AUTOC:
-+                case IXGBE_EERD:
-+                case IXGBE_BARCTRL:
-+                        return 0;
-+                default:
-+                        if (offset >= 0x00020000 &&
-+                            offset <= ixgbe_get_eeprom_len(netdev))
-+                                return 0;
-+                }
-+                break;
-+        case ixgbe_mac_X540:
-+                switch (offset) {
-+                case IXGBE_EERD:
-+                case IXGBE_EEWR:
-+                case IXGBE_SRAMREL:
-+                case IXGBE_BARCTRL:
-+                        return 0;
-+                default:
-+                        if ((offset >= 0x00020000 &&
-+                             offset <= ixgbe_get_eeprom_len(netdev)))
-+                                return 0;
-+                }
-+                break;
-+        case ixgbe_mac_X550:
-+                switch (offset) {
-+                case IXGBE_EEWR:
-+                case IXGBE_SRAMREL:
-+                case IXGBE_PHYCTL_82599:
-+                case IXGBE_FWRESETCNT:
-+                        return 0;
-+                default:
-+                        if (offset >= IXGBE_FLEX_MNG_PTR(0) &&
-+                            offset <= IXGBE_FLEX_MNG_PTR(447))
-+                                return 0;
-+                }
-+                break;
-+        case ixgbe_mac_X550EM_x:
-+                switch (offset) {
-+                case IXGBE_PHYCTL_82599:
-+                case IXGBE_NW_MNG_IF_SEL:
-+                case IXGBE_FWRESETCNT:
-+                case IXGBE_I2CCTL_X550:
-+                        return 0;
-+                default:
-+                        if ((offset >= IXGBE_FLEX_MNG_PTR(0) &&
-+                             offset <= IXGBE_FLEX_MNG_PTR(447)) ||
-+                            (offset >= IXGBE_FUSES0_GROUP(0) &&
-+                             offset <= IXGBE_FUSES0_GROUP(7)))
-+                                return 0;
-+                }
-+                break;
-+        case ixgbe_mac_x550em_a:
-+                switch (offset) {
-+                case IXGBE_PHYCTL_82599:
-+                case IXGBE_NW_MNG_IF_SEL:
-+                case IXGBE_FWRESETCNT:
-+                case IXGBE_I2CCTL_X550:
-+                case IXGBE_FLA_X550EM_a:
-+                case IXGBE_SWSM_X550EM_a:
-+                case IXGBE_FWSM_X550EM_a:
-+                case IXGBE_SWFW_SYNC_X550EM_a:
-+                case IXGBE_FACTPS_X550EM_a:
-+                case IXGBE_EEC_X550EM_a:
-+                        return 0;
-+                default:
-+                        if (offset >= IXGBE_FLEX_MNG_PTR(0) &&
-+                            offset <= IXGBE_FLEX_MNG_PTR(447))
-+                                return 0;
-+                }
-+        default:
-+                break;
-+        }
-+
-+        return -ENOTTY;
-+}
-+
-+static int ixgbe_nvmupd_command(struct ixgbe_hw *hw,
-+                                struct ixgbe_nvm_access *nvm,
-+                                u8 *bytes)
-+{
-+        u32 command;
-+        int ret_val = 0;
-+        u8 module;
-+
-+        command = nvm->command;
-+        module = ixgbe_nvmupd_get_module(nvm->config);
-+
-+        switch (command) {
-+        case IXGBE_NVMUPD_CMD_REG_READ:
-+                switch (module) {
-+                case IXGBE_NVMUPD_EXEC_FEATURES:
-+                        if (nvm->data_size == hw->nvmupd_features.size)
-+                                memcpy(bytes, &hw->nvmupd_features,
-+                                       hw->nvmupd_features.size);
-+                        else
-+                                ret_val = -ENOMEM;
-+                break;
-+                default:
-+                        if (ixgbe_nvmupd_validate_offset(hw->back, nvm->offset))
-+                                return -ENOTTY;
-+
-+                        if (nvm->data_size == 1)
-+                                *((u8 *)bytes) = IXGBE_R8_Q(hw, nvm->offset);
-+                        else
-+                                *((u32 *)bytes) = IXGBE_R32_Q(hw, nvm->offset);
-+                break;
-+                }
-+        break;
-+        case IXGBE_NVMUPD_CMD_REG_WRITE:
-+                if (ixgbe_nvmupd_validate_offset(hw->back, nvm->offset))
-+                        return -ENOTTY;
-+
-+                IXGBE_WRITE_REG(hw, nvm->offset, *((u32 *)bytes));
-+        break;
-+        }
-+
-+        return ret_val;
- }
- 
- static int ixgbe_get_eeprom(struct net_device *netdev,
--			    struct ethtool_eeprom *eeprom, u8 *bytes)
-+                            struct ethtool_eeprom *eeprom, u8 *bytes)
- {
--	struct ixgbe_adapter *adapter = netdev_priv(netdev);
--	struct ixgbe_hw *hw = &adapter->hw;
--	u16 *eeprom_buff;
--	int first_word, last_word, eeprom_len;
--	int ret_val = 0;
--	u16 i;
-+        struct ixgbe_adapter *adapter = netdev_priv(netdev);
-+        struct ixgbe_hw *hw = &adapter->hw;
-+        u16 *eeprom_buff;
-+        int first_word, last_word, eeprom_len;
-+        struct ixgbe_nvm_access *nvm;
-+        u32 magic;
-+        int ret_val = 0;
-+        u16 i;
- 
--	if (eeprom->len == 0)
--		return -EINVAL;
--
--	eeprom->magic = hw->vendor_id | (hw->device_id << 16);
--
--	first_word = eeprom->offset >> 1;
--	last_word = (eeprom->offset + eeprom->len - 1) >> 1;
--	eeprom_len = last_word - first_word + 1;
--
--	eeprom_buff = kmalloc_array(eeprom_len, sizeof(u16), GFP_KERNEL);
--	if (!eeprom_buff)
--		return -ENOMEM;
-+        //WARN("ixgbe_get_eeprom() invoked, bytes=%u\n", bytes);
- 
--	ret_val = hw->eeprom.ops.read_buffer(hw, first_word, eeprom_len,
--					     eeprom_buff);
-+        if (eeprom->len == 0)
-+                return -EINVAL;
- 
--	/* Device's eeprom is always little-endian, word addressable */
--	for (i = 0; i < eeprom_len; i++)
--		le16_to_cpus(&eeprom_buff[i]);
-+        magic = hw->vendor_id | (hw->device_id << 16);
-+        if (eeprom->magic && eeprom->magic != magic) {
-+                nvm = (struct ixgbe_nvm_access *)eeprom;
-+                ret_val = ixgbe_nvmupd_command(hw, nvm, bytes);
-+                return ret_val;
-+        }
- 
--	memcpy(bytes, (u8 *)eeprom_buff + (eeprom->offset & 1), eeprom->len);
--	kfree(eeprom_buff);
-+        /* normal ethtool get_eeprom support */
-+        eeprom->magic = hw->vendor_id | (hw->device_id << 16);
- 
--	return ret_val;
--}
-+        first_word = eeprom->offset >> 1;
-+        last_word = (eeprom->offset + eeprom->len - 1) >> 1;
-+        eeprom_len = last_word - first_word + 1;
- 
--static int ixgbe_set_eeprom(struct net_device *netdev,
--			    struct ethtool_eeprom *eeprom, u8 *bytes)
--{
--	struct ixgbe_adapter *adapter = netdev_priv(netdev);
--	struct ixgbe_hw *hw = &adapter->hw;
--	u16 *eeprom_buff;
--	void *ptr;
--	int max_len, first_word, last_word, ret_val = 0;
--	u16 i;
-+        eeprom_buff = kmalloc(sizeof(u16) * eeprom_len, GFP_KERNEL);
-+        if (!eeprom_buff)
-+                return -ENOMEM;
- 
--	if (eeprom->len == 0)
--		return -EINVAL;
-+        ret_val = hw->eeprom.ops.read_buffer(hw, first_word, eeprom_len,
-+                                           eeprom_buff);
- 
--	if (eeprom->magic != (hw->vendor_id | (hw->device_id << 16)))
--		return -EINVAL;
-+        /* Device's eeprom is always little-endian, word addressable */
-+        for (i = 0; i < eeprom_len; i++)
-+                le16_to_cpus(&eeprom_buff[i]);
- 
--	max_len = hw->eeprom.word_size * 2;
-+        memcpy(bytes, (u8 *)eeprom_buff + (eeprom->offset & 1), eeprom->len);
-+        kfree(eeprom_buff);
- 
--	first_word = eeprom->offset >> 1;
--	last_word = (eeprom->offset + eeprom->len - 1) >> 1;
--	eeprom_buff = kmalloc(max_len, GFP_KERNEL);
--	if (!eeprom_buff)
--		return -ENOMEM;
--
--	ptr = eeprom_buff;
--
--	if (eeprom->offset & 1) {
--		/*
--		 * need read/modify/write of first changed EEPROM word
--		 * only the second byte of the word is being modified
--		 */
--		ret_val = hw->eeprom.ops.read(hw, first_word, &eeprom_buff[0]);
--		if (ret_val)
--			goto err;
--
--		ptr++;
--	}
--	if ((eeprom->offset + eeprom->len) & 1) {
--		/*
--		 * need read/modify/write of last changed EEPROM word
--		 * only the first byte of the word is being modified
--		 */
--		ret_val = hw->eeprom.ops.read(hw, last_word,
--					  &eeprom_buff[last_word - first_word]);
--		if (ret_val)
--			goto err;
--	}
--
--	/* Device's eeprom is always little-endian, word addressable */
--	for (i = 0; i < last_word - first_word + 1; i++)
--		le16_to_cpus(&eeprom_buff[i]);
--
--	memcpy(ptr, bytes, eeprom->len);
--
--	for (i = 0; i < last_word - first_word + 1; i++)
--		cpu_to_le16s(&eeprom_buff[i]);
--
--	ret_val = hw->eeprom.ops.write_buffer(hw, first_word,
--					      last_word - first_word + 1,
--					      eeprom_buff);
-+        return ret_val;
-+}
- 
--	/* Update the checksum */
--	if (ret_val == 0)
--		hw->eeprom.ops.update_checksum(hw);
-+static int ixgbe_set_eeprom(struct net_device *netdev,
-+                            struct ethtool_eeprom *eeprom, u8 *bytes)
-+{
-+        struct ixgbe_adapter *adapter = netdev_priv(netdev);
-+        struct ixgbe_hw *hw = &adapter->hw;
-+        int max_len, first_word, last_word, ret_val = 0;
-+        struct ixgbe_nvm_access *nvm;
-+        u32 magic;
-+        u16 *eeprom_buff, i;
-+        void *ptr;
-+
-+        //WARN("ixgbe_set_eeprom() invoked, bytes=%u\n", bytes);
-+
-+        if (eeprom->len == 0) 
-+                return -EINVAL;
-+
-+        magic = hw->vendor_id | (hw->device_id << 16);
-+        if (eeprom->magic && eeprom->magic != magic) {
-+                nvm = (struct ixgbe_nvm_access *)eeprom;
-+                ret_val = ixgbe_nvmupd_command(hw, nvm, bytes);
-+                return ret_val;
-+        }
-+
-+        /* normal ethtool set_eeprom support */
-+
-+        if (eeprom->magic != (hw->vendor_id | (hw->device_id << 16)))
-+                return -EINVAL;
-+
-+        max_len = hw->eeprom.word_size * 2;
-+
-+        first_word = eeprom->offset >> 1;
-+        last_word = (eeprom->offset + eeprom->len - 1) >> 1;
-+        eeprom_buff = kmalloc(max_len, GFP_KERNEL);
-+        if (!eeprom_buff)
-+                return -ENOMEM;
-+
-+        ptr = eeprom_buff;
-+
-+        if (eeprom->offset & 1) {
-+                /*
-+                 * need read/modify/write of first changed EEPROM word
-+                 * only the second byte of the word is being modified
-+                 */
-+                ret_val = hw->eeprom.ops.read(hw, first_word, &eeprom_buff[0]);
-+                if (ret_val)
-+                        goto err;
-+
-+                ptr++;
-+        }
-+        if (((eeprom->offset + eeprom->len) & 1) && (ret_val == 0)) {
-+                /*
-+                 * need read/modify/write of last changed EEPROM word
-+                 * only the first byte of the word is being modified
-+                 */
-+                ret_val = hw->eeprom.ops.read(hw, last_word,
-+                                          &eeprom_buff[last_word - first_word]);
-+                if (ret_val)
-+                        goto err;
-+        }
-+
-+        /* Device's eeprom is always little-endian, word addressable */
-+        for (i = 0; i < last_word - first_word + 1; i++)
-+                le16_to_cpus(&eeprom_buff[i]);
-+
-+        memcpy(ptr, bytes, eeprom->len);
-+
-+        for (i = 0; i < last_word - first_word + 1; i++)
-+                cpu_to_le16s(&eeprom_buff[i]);
-+
-+        ret_val = hw->eeprom.ops.write_buffer(hw, first_word,
-+                                            last_word - first_word + 1,
-+                                            eeprom_buff);
-+
-+        /* Update the checksum */
-+        if (ret_val == 0)
-+                hw->eeprom.ops.update_checksum(hw);
- 
- err:
--	kfree(eeprom_buff);
--	return ret_val;
-+        kfree(eeprom_buff);
-+        return ret_val;
- }
- 
- static void ixgbe_get_drvinfo(struct net_device *netdev,
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-index 094653e81..ac2405105 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-@@ -6519,6 +6519,17 @@ static int ixgbe_sw_init(struct ixgbe_adapter *adapter,
- 	if (nr_cpu_ids > IXGBE_MAX_XDP_QS)
- 		static_branch_enable(&ixgbe_xdp_locking_key);
- 
-+        /* NVM Update features structure initialization */
-+        hw->nvmupd_features.major = IXGBE_NVMUPD_FEATURES_API_VER_MAJOR;
-+        hw->nvmupd_features.minor = IXGBE_NVMUPD_FEATURES_API_VER_MINOR;
-+        hw->nvmupd_features.size = sizeof(hw->nvmupd_features);
-+        memset(hw->nvmupd_features.features, 0x0,
-+               IXGBE_NVMUPD_FEATURES_API_FEATURES_ARRAY_LEN *
-+               sizeof(*hw->nvmupd_features.features));
-+
-+        hw->nvmupd_features.features[0] =
-+                IXGBE_NVMUPD_FEATURE_REGISTER_ACCESS_SUPPORT;
-+
- 	return 0;
- }
- 
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h b/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h
-index 346e3d911..5c71e67d2 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h
-@@ -129,6 +129,8 @@
- #define IXGBE_GRC_X550EM_x	IXGBE_GRC_8259X
- #define IXGBE_GRC_X550EM_a	0x15F64
- #define IXGBE_GRC(_hw)		IXGBE_BY_MAC((_hw), GRC)
-+#define IXGBE_SRAMREL           0x10210
-+#define IXGBE_FWRESETCNT        0x15F40
- 
- /* General Receive Control */
- #define IXGBE_GRC_MNG  0x00000001 /* Manageability Enable */
-@@ -936,6 +938,7 @@ struct ixgbe_nvm_version {
- #define IXGBE_SWSR      0x15F10
- #define IXGBE_HFDR      0x15FE8
- #define IXGBE_FLEX_MNG  0x15800 /* 0x15800 - 0x15EFC */
-+#define IXGBE_FLEX_MNG_PTR(_i)  (IXGBE_FLEX_MNG + ((_i) * 4))
- 
- #define IXGBE_HICR_EN              0x01  /* Enable bit - RO */
- /* Driver sets this bit when done to put command in RAM */
-@@ -3390,6 +3393,38 @@ struct ixgbe_hw_stats {
- 	u64 o2bspc;
- };
- 
-+/* NVM Update commands */
-+#define IXGBE_NVMUPD_CMD_REG_READ	0x0000000B
-+#define IXGBE_NVMUPD_CMD_REG_WRITE	0x0000000C 
-+
-+#define IXGBE_R32_Q(h, r) ixgbe_read_reg(h, r)
-+#define IXGBE_R8_Q(h, r) readb(READ_ONCE(h->hw_addr) + r)
-+
-+/* NVM Update features API */
-+#define IXGBE_NVMUPD_FEATURES_API_VER_MAJOR             0
-+#define IXGBE_NVMUPD_FEATURES_API_VER_MINOR             0
-+#define IXGBE_NVMUPD_FEATURES_API_FEATURES_ARRAY_LEN    12
-+#define IXGBE_NVMUPD_EXEC_FEATURES                      0xe
-+#define IXGBE_NVMUPD_FEATURE_FLAT_NVM_SUPPORT           BIT(0)
-+#define IXGBE_NVMUPD_FEATURE_REGISTER_ACCESS_SUPPORT    BIT(1)
-+
-+#define IXGBE_NVMUPD_MOD_PNT_MASK                       0xFF
-+
-+struct ixgbe_nvm_access {
-+        u32 command;
-+        u32 config; 
-+        u32 offset;     /* in bytes */
-+        u32 data_size;  /* in bytes */
-+        u8 data[1];
-+};
-+
-+struct ixgbe_nvm_features {
-+        u8 major;
-+        u8 minor;
-+        u16 size;
-+        u8 features[IXGBE_NVMUPD_FEATURES_API_FEATURES_ARRAY_LEN];
-+}; 
-+
- /* forward declaration */
- struct ixgbe_hw;
- 
-@@ -3654,6 +3689,8 @@ struct ixgbe_hw {
- 	bool				allow_unsupported_sfp;
- 	bool				wol_enabled;
- 	bool				need_crosstalk_fix;
-+       /* NVM Update features */
-+        struct ixgbe_nvm_features nvmupd_features;
- };
- 
- struct ixgbe_info {
--- 
-2.40.1
-
+T24gTW9uLCAyMDI0LTA2LTEwIGF0IDA4OjM2ICswMjAwLCBQYXVsIE1lbnplbCB3cm90ZToKPiBE
+ZWFyIEh1aSwKPiAKPiAKPiBUaGFuayB5b3UgZm9yIHlvdXIgcGF0Y2guCj4gCj4gCj4gQW0gMTAu
+MDYuMjQgdW0gMDM6MzIgc2NocmllYiBIdWkgV2FuZzoKPiA+IFRoaXMgcmV2ZXJ0cyBjb21taXQg
+YmZkNTQ2YTU1MmUxNDBiMGE0YzhhMjE1MjdjMzlkNmQyMWFkZGIyOAo+ID4gCj4gPiBDb21taXQg
+YmZkNTQ2YTU1MmUxICgiZTEwMDBlOiBtb3ZlIGZvcmNlIFNNQlVTIG5lYXIgdGhlIGVuZCBvZgo+
+ID4gZW5hYmxlX3VscCBmdW5jdGlvbiIpIGludHJvZHVjZXMgc3lzdGVtIHN1c3BlbmQgZmFpbHVy
+ZSBvbiBzb21lCj4gPiBldGhlcm5ldCBjYXJkcywgYXQgdGhlIG1vbWVudCwgdGhlIHBjaWlkIG9m
+IHRoZSBhZmZlY3RlZCBldGhlcm5ldAo+ID4gY2FyZHMgaW5jbHVkZSBbODA4NjoxNWI4XSBhbmQg
+WzgwODY6MTViY10uCj4gPiAKPiA+IEFib3V0IHRoZSByZWdyZXNzaW9uIHRoZSBjb21taXQgYmZk
+NTQ2YTU1MmUxICgiZTEwMDBlOiBtb3ZlIGZvcmNlCj4gCj4g4oCmIHJlZ3Jlc3Npb24gaW50cm9k
+dWNlZCBieSBjb21taXQg4oCmCj4gCj4gPiBTTUJVUyBuZWFyIHRoZSBlbmQgb2YgZW5hYmxlX3Vs
+cCBmdW5jdGlvbiIpIHRyaWVkIHRvIGZpeCwgbG9va3MKPiA+IGxpa2UKPiA+IGl0IGlzIG5vdCB0
+cml2aWFsIHRvIGZpeCwgd2UgbmVlZCB0byBmaW5kIGEgYmV0dGVyIHdheSB0byByZXNvbHZlCj4g
+PiBpdC4KPiAKPiBQbGVhc2Ugc2VuZCBhIHJldmVydCBmb3IgY29tbWl0IDg2MWU4MDg2MDI5ZSAo
+ZTEwMDBlOiBtb3ZlIGZvcmNlCj4gU01CVVMgCj4gZnJvbSBlbmFibGUgdWxwIGZ1bmN0aW9uIHRv
+IGF2b2lkIFBIWSBsb3NzIGlzc3VlKSwgcHJlc2VudCBzaW5jZQo+IExpbnV4IAo+IHY2LjktcmMz
+IGFuZCBub3QgY29udGFpbmluZyBlbm91Z2ggaW5mb3JtYXRpb24gaW4gdGhlIGNvbW1pdAo+IG1l
+c3NzYWdlLCAKPiBzbyB3ZSBoYXZlIGEgcHJvcGVyIGJhc2VsaW5lLiAoVGhhdOKAmXMgYWxzbyB3
+aHkgSSBvcmlnaW5hbGx5IHN1Z2dlc3RlZAo+IHRvIAo+IHNwbGl0IGl0IGludG8gdHdvIGNvbW1p
+dHMgKHJldmVydCArIHlvdXIgY2hhbmdlKS4pCj4gCj4gPiBSZXBvcnRlZC1ieTogVG9kZCBCcmFu
+ZHQgPHRvZGQuZS5icmFuZHRAaW50ZWwuY29tPgo+ID4gQ2xvc2VzOiBodHRwczovL2J1Z3ppbGxh
+Lmtlcm5lbC5vcmcvc2hvd19idWcuY2dpP2lkPTIxODk0MAo+ID4gUmVwb3J0ZWQtYnk6IERpZXRl
+ciBNdW1tZW5zY2hhbnogPGRtdW1tZW5zY2hhbnpAd2ViLmRlPgo+ID4gQ2xvc2VzOiBodHRwczov
+L2J1Z3ppbGxhLmtlcm5lbC5vcmcvc2hvd19idWcuY2dpP2lkPTIxODkzNgo+ID4gU2lnbmVkLW9m
+Zi1ieTogSHVpIFdhbmcgPGh1aS53YW5nQGNhbm9uaWNhbC5jb20+Cj4gPiAtLS0KPiA+IMKgIGRy
+aXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2UxMDAwZS9pY2g4bGFuLmMgfCAyMiAtLS0tLS0tLS0t
+LS0tLS0tCj4gPiAtLS0tLQo+ID4gwqAgZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvZTEwMDBl
+L25ldGRldi5jwqAgfCAxOAo+ID4gKysrKysrKysrKysrKysrKysKPiA+IMKgIDIgZmlsZXMgY2hh
+bmdlZCwgMTggaW5zZXJ0aW9ucygrKSwgMjIgZGVsZXRpb25zKC0pCj4gPiAKPiA+IGRpZmYgLS1n
+aXQgYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9lMTAwMGUvaWNoOGxhbi5jCj4gPiBiL2Ry
+aXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2UxMDAwZS9pY2g4bGFuLmMKPiA+IGluZGV4IDJlOThh
+MmEwYmVhZC4uZjllOTRiZTM2ZTk3IDEwMDY0NAo+ID4gLS0tIGEvZHJpdmVycy9uZXQvZXRoZXJu
+ZXQvaW50ZWwvZTEwMDBlL2ljaDhsYW4uYwo+ID4gKysrIGIvZHJpdmVycy9uZXQvZXRoZXJuZXQv
+aW50ZWwvZTEwMDBlL2ljaDhsYW4uYwo+ID4gQEAgLTEyMjUsMjggKzEyMjUsNiBAQCBzMzIgZTEw
+MDBfZW5hYmxlX3VscF9scHRfbHAoc3RydWN0IGUxMDAwX2h3Cj4gPiAqaHcsIGJvb2wgdG9fc3gp
+Cj4gPiDCoMKgwqDCoMKgwqDCoMKgfQo+ID4gwqAgCj4gPiDCoCByZWxlYXNlOgo+ID4gLcKgwqDC
+oMKgwqDCoMKgLyogU3dpdGNoaW5nIFBIWSBpbnRlcmZhY2UgYWx3YXlzIHJldHVybnMgTURJIGVy
+cm9yCj4gPiAtwqDCoMKgwqDCoMKgwqAgKiBzbyBkaXNhYmxlIHJldHJ5IG1lY2hhbmlzbSB0byBh
+dm9pZCB3YXN0aW5nIHRpbWUKPiA+IC3CoMKgwqDCoMKgwqDCoCAqLwo+ID4gLcKgwqDCoMKgwqDC
+oMKgZTEwMDBlX2Rpc2FibGVfcGh5X3JldHJ5KGh3KTsKPiA+IC0KPiA+IC3CoMKgwqDCoMKgwqDC
+oC8qIEZvcmNlIFNNQnVzIG1vZGUgaW4gUEhZICovCj4gPiAtwqDCoMKgwqDCoMKgwqByZXRfdmFs
+ID0gZTEwMDBfcmVhZF9waHlfcmVnX2h2X2xvY2tlZChodywgQ1ZfU01CX0NUUkwsCj4gPiAmcGh5
+X3JlZyk7Cj4gPiAtwqDCoMKgwqDCoMKgwqBpZiAocmV0X3ZhbCkgewo+ID4gLcKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoGUxMDAwZV9lbmFibGVfcGh5X3JldHJ5KGh3KTsKPiA+IC3CoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqBody0+cGh5Lm9wcy5yZWxlYXNlKGh3KTsKPiA+IC3C
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqBnb3RvIG91dDsKPiA+IC3CoMKgwqDCoMKgwqDC
+oH0KPiA+IC3CoMKgwqDCoMKgwqDCoHBoeV9yZWcgfD0gQ1ZfU01CX0NUUkxfRk9SQ0VfU01CVVM7
+Cj4gPiAtwqDCoMKgwqDCoMKgwqBlMTAwMF93cml0ZV9waHlfcmVnX2h2X2xvY2tlZChodywgQ1Zf
+U01CX0NUUkwsIHBoeV9yZWcpOwo+ID4gLQo+ID4gLcKgwqDCoMKgwqDCoMKgZTEwMDBlX2VuYWJs
+ZV9waHlfcmV0cnkoaHcpOwo+ID4gLQo+ID4gLcKgwqDCoMKgwqDCoMKgLyogRm9yY2UgU01CdXMg
+bW9kZSBpbiBNQUMgKi8KPiA+IC3CoMKgwqDCoMKgwqDCoG1hY19yZWcgPSBlcjMyKENUUkxfRVhU
+KTsKPiA+IC3CoMKgwqDCoMKgwqDCoG1hY19yZWcgfD0gRTEwMDBfQ1RSTF9FWFRfRk9SQ0VfU01C
+VVM7Cj4gPiAtwqDCoMKgwqDCoMKgwqBldzMyKENUUkxfRVhULCBtYWNfcmVnKTsKPiA+IC0KPiA+
+IMKgwqDCoMKgwqDCoMKgwqBody0+cGh5Lm9wcy5yZWxlYXNlKGh3KTsKPiA+IMKgIG91dDoKPiA+
+IMKgwqDCoMKgwqDCoMKgwqBpZiAocmV0X3ZhbCkKPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL25l
+dC9ldGhlcm5ldC9pbnRlbC9lMTAwMGUvbmV0ZGV2LmMKPiA+IGIvZHJpdmVycy9uZXQvZXRoZXJu
+ZXQvaW50ZWwvZTEwMDBlL25ldGRldi5jCj4gPiBpbmRleCBkYTVjNTlkYWY4YmEuLjIyMGQ2MmZj
+YTU1ZCAxMDA2NDQKPiA+IC0tLSBhL2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2UxMDAwZS9u
+ZXRkZXYuYwo+ID4gKysrIGIvZHJpdmVycy9uZXQvZXRoZXJuZXQvaW50ZWwvZTEwMDBlL25ldGRl
+di5jCj4gPiBAQCAtNjYyMyw2ICs2NjIzLDcgQEAgc3RhdGljIGludCBfX2UxMDAwX3NodXRkb3du
+KHN0cnVjdCBwY2lfZGV2Cj4gPiAqcGRldiwgYm9vbCBydW50aW1lKQo+ID4gwqDCoMKgwqDCoMKg
+wqDCoHN0cnVjdCBlMTAwMF9odyAqaHcgPSAmYWRhcHRlci0+aHc7Cj4gPiDCoMKgwqDCoMKgwqDC
+oMKgdTMyIGN0cmwsIGN0cmxfZXh0LCByY3RsLCBzdGF0dXMsIHd1ZmM7Cj4gPiDCoMKgwqDCoMKg
+wqDCoMKgaW50IHJldHZhbCA9IDA7Cj4gPiArwqDCoMKgwqDCoMKgwqB1MTYgc21iX2N0cmw7Cj4g
+PiDCoCAKPiA+IMKgwqDCoMKgwqDCoMKgwqAvKiBSdW50aW1lIHN1c3BlbmQgc2hvdWxkIG9ubHkg
+ZW5hYmxlIHdha2V1cCBmb3IgbGluawo+ID4gY2hhbmdlcyAqLwo+ID4gwqDCoMKgwqDCoMKgwqDC
+oGlmIChydW50aW1lKQo+ID4gQEAgLTY2OTYsNiArNjY5NywyMyBAQCBzdGF0aWMgaW50IF9fZTEw
+MDBfc2h1dGRvd24oc3RydWN0IHBjaV9kZXYKPiA+ICpwZGV2LCBib29sIHJ1bnRpbWUpCj4gPiDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqBpZiAocmV0dmFs
+KQo+ID4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoHJldHVybiByZXR2YWw7Cj4gPiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoH0KPiA+ICsKPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAvKiBGb3Jj
+ZSBTTUJVUyB0byBhbGxvdyBXT0wgKi8KPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqAvKiBTd2l0Y2hpbmcgUEhZIGludGVyZmFjZSBhbHdheXMgcmV0dXJucyBNREkgZXJyb3IKPiA+
+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgKiBzbyBkaXNhYmxlIHJldHJ5IG1lY2hh
+bmlzbSB0byBhdm9pZCB3YXN0aW5nIHRpbWUKPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqAgKi8KPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqBlMTAwMGVfZGlzYWJs
+ZV9waHlfcmV0cnkoaHcpOwo+ID4gKwo+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oGUxZV9ycGh5KGh3LCBDVl9TTUJfQ1RSTCwgJnNtYl9jdHJsKTsKPiA+ICvCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqBzbWJfY3RybCB8PSBDVl9TTUJfQ1RSTF9GT1JDRV9TTUJVUzsKPiA+
+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqBlMWVfd3BoeShodywgQ1ZfU01CX0NUUkws
+IHNtYl9jdHJsKTsKPiA+ICsKPiA+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqBlMTAw
+MGVfZW5hYmxlX3BoeV9yZXRyeShodyk7Cj4gPiArCj4gPiArwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgLyogRm9yY2UgU01CdXMgbW9kZSBpbiBNQUMgKi8KPiA+ICvCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqBjdHJsX2V4dCA9IGVyMzIoQ1RSTF9FWFQpOwo+ID4gK8KgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoGN0cmxfZXh0IHw9IEUxMDAwX0NUUkxfRVhUX0ZPUkNFX1NN
+QlVTOwo+ID4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoGV3MzIoQ1RSTF9FWFQsIGN0
+cmxfZXh0KTsKPiA+IMKgwqDCoMKgwqDCoMKgwqB9Cj4gPiDCoCAKPiA+IMKgwqDCoMKgwqDCoMKg
+wqAvKiBFbnN1cmUgdGhhdCB0aGUgYXBwcm9wcmlhdGUgYml0cyBhcmUgc2V0IGluIExQSV9DVFJM
+Cj4gCj4gTmFhbWEgYWxzbyBhZGRlZCBUZXN0ZWQtYnkgbGluZXMgdHdvIGJvdGggY29tbWl0cyBp
+biBxdWVzdGlvbi4gQ291bGQgCj4gSW50ZWzigJlzIHRlc3QgY292ZXJhZ2UgcGxlYXNlIGV4dGVu
+ZGVkIHRvIHRoZSBwcm9ibGVtIGF0IGhhbmQ/Cj4gCj4gQWNrZWQtYnk6IFBhdWwgTWVuemVsIDxw
+bWVuemVsQG1vbGdlbi5tcGcuZGU+CgpQbHVzIHRoYXQsIAoxLiBUb2RkIGFuZCBJIGNhbiB0ZXN0
+IHdpdGggdXBzdHJlYW0gKyB0aGlzIHBhdGNoIHRvIGNvbmZpcm0gdGhhdAogICBhLiB0aGUgcmVn
+cmVzc2lvbiBmb3IgVG9kZCBpcyBnb25lLgogICBiLiB0aGUgczJpZGxlIGZhaWx1cmUgZm9yIG1l
+IGlzIGJhY2sKMi4gSSBjYW4gdGVzdCB3aXRoIHVwc3RyZWFtICsgdGhpcyBwYXRjaCArIHJldmVy
+dCBvZiBjb21taXQKODYxZTgwODYwMjllIChlMTAwMGU6IG1vdmUgZm9yY2UgU01CVVMgZnJvbSBl
+bmFibGUgdWxwIGZ1bmN0aW9uIHRvCmF2b2lkIFBIWSBsb3NzIGlzc3VlKSB0byBjb25maXJtIHMy
+aWRsZSBpcyB3b3JraW5nIGFnYWluLgoKdGhhbmtzLApydWkKCj4gCj4gCj4gS2luZCByZWdhcmRz
+LAo+IAo+IFBhdWwKCg==
