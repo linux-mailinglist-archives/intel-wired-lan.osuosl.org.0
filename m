@@ -2,123 +2,90 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7BCFF903F6E
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 11 Jun 2024 17:01:19 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 765C1903F70
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 11 Jun 2024 17:01:23 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 227066082C;
-	Tue, 11 Jun 2024 15:01:11 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 3900560A98;
+	Tue, 11 Jun 2024 15:01:12 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id mbY9g0uBxoBO; Tue, 11 Jun 2024 15:01:10 +0000 (UTC)
+ id R_T28xEIizt5; Tue, 11 Jun 2024 15:01:11 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B615B60A68
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 043E7608CA
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1718118068;
-	bh=wJ6NmEpm203v83OTy1RMNtAkzbu+fQMhPGN0G4SJVPY=;
+	s=default; t=1718118070;
+	bh=jA9dvE7L9ZJmw9za/ZknPNMPAQ+nyOtSi6kn/GimkXY=;
 	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=mIBChebae79+mm1gRr6rslRrUYL1N3Pd/J5eDY3j0raszshRoEAkLFFXAXEz98Aps
-	 8Eu0E4ot9ICTQA4bo0QQgqgzq1PUFMfVyJu9/XxaEeSvgaiyAC6G3lrPFvoXCnPeYP
-	 naTTlgF1tCdDdesHDT3ChHa2SJ8p79qCReYgZmHIODirmDwluVvSkzCsos856yrLmQ
-	 zLb3tSFUNubDoQbfRTDDFBwTZ+krAm4MNalHxjznvlvWjq164yD9wPTCID/GcfBkvK
-	 ULSkHikN3zLDj3Sl/xFOpfF+UDyJ6ARquEt2I/b/KN2yjD0h8K3EqKcED3IXho2ubK
-	 P6t3U4OtUNPVQ==
+	b=lPDtmdod5pe+wMSjQURJUSf2NdssvQfRTXOjbtSqFj+rBDo1VDUi7AhDll7s2X4a1
+	 9j5jl4ugaU0lZ25bSjiWNMicRhfJV2WWFPUTZrz0JY/a9ID0gyDtp6MTxxI2NlvvdZ
+	 UJG84d5eXspS4WQMH/T35gzTJZ0cbj+JnxqE6BnrYr7ZsL+mVnEM47DmB4L3Cm+xJV
+	 fXteSX59+Si7Q/Iik+l/ghp5cGAn2tcZTnuLmeuni7MeatFFaaiKwUHR2BpW3SAvNj
+	 ui+1vi/Wa7N0bux7VzhoYCcxPtuGVFsuw3rjcCZ1jMCKdy3siPRvZ/c0liWj6cg8Xi
+	 PesxStOqZW+mw==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id B615B60A68;
-	Tue, 11 Jun 2024 15:01:08 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 043E7608CA;
+	Tue, 11 Jun 2024 15:01:10 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 5F7EA1BF398
- for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Jun 2024 09:09:42 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 397301BF390
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Jun 2024 13:22:43 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 4936381491
- for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Jun 2024 09:09:42 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 3189B404B9
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Jun 2024 13:22:43 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id dNzpdZm1Pt5c for <intel-wired-lan@lists.osuosl.org>;
- Tue, 11 Jun 2024 09:09:40 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.129.124;
- helo=us-smtp-delivery-124.mimecast.com; envelope-from=dcaratti@redhat.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 2CA0981464
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 2CA0981464
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.129.124])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 2CA0981464
- for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Jun 2024 09:09:39 +0000 (UTC)
-Received: from mail-lj1-f199.google.com (mail-lj1-f199.google.com
- [209.85.208.199]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-389-IOePVzltN322jJSVaUxcdw-1; Tue, 11 Jun 2024 05:09:37 -0400
-X-MC-Unique: IOePVzltN322jJSVaUxcdw-1
-Received: by mail-lj1-f199.google.com with SMTP id
- 38308e7fff4ca-2ebd7556679so24551221fa.1
- for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Jun 2024 02:09:36 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1718096975; x=1718701775;
- h=in-reply-to:content-transfer-encoding:content-disposition
- :mime-version:references:message-id:subject:cc:to:from:date
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=wJ6NmEpm203v83OTy1RMNtAkzbu+fQMhPGN0G4SJVPY=;
- b=vz5r0jg+XEuM/ITMkOLsBMSlcvgQF4CVTsN0Nqi3UpJiP4kOACY4ifGM3L/kj+QrcI
- g/gTgQl+bXC29YtoHCa09N/0G24LKEwgdXRGWGdn+eo+bjyEyw0xBLVuBCbi4LHayWN4
- R8xSbk5Q4dQ8OjxRlzN+owRWyKNEjF35z4cNx4dpDpymACy0FJlKJ9aGaH7AS8D5Z1lD
- BNK52/7E5r470LHF0bZX6nGGpNRCdNrAPle4GCOqWwvpQ2QTe4Z0aEJOyfvUazZQaozg
- pdauE4/72YJORbCEVCGpL87wzG9XsYDncmLZEG1no/LCCBGQpPe7b8VtA+Ej1reqWpOe
- ThTw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXsJIl8xgzUJ+xIzXU4QWFOzMSBBCY6qPKZadJviQ5hpyPTA2iKKjyICE+usdttp/S7BFnin4YdTPCLtJVTXA7dZL9O8QRE5OLJOhKVVcBgDQ==
-X-Gm-Message-State: AOJu0Yz4N01ET/F7CtPWBrkQSAVH63+Cb/+sV+zukY6PeHkC8gOMcTBN
- w8ZI9URm70QL3SthoSAfHzEHUm/BrZJe12ct0ED5CatbeiAfVWnCKI/3Iy4IsGnfC7Tfv2ePzDR
- qMIB1Mg0eOUl3fUoOkPPTUjH5TjegMuWxbikQCNuHGo6Hc1TA3YBeByAgba9zdk2eG7I=
-X-Received: by 2002:a2e:8004:0:b0:2eb:f5ec:5ad6 with SMTP id
- 38308e7fff4ca-2ebf5ec6fb4mr4791251fa.0.1718096975462; 
- Tue, 11 Jun 2024 02:09:35 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IH7wwWojKAzRVTdY5Y8CDndML4n5EP/ZdMfOeDFja/TJ2/4XahWfKaFctCxnoWRR7nsots0ag==
-X-Received: by 2002:a2e:8004:0:b0:2eb:f5ec:5ad6 with SMTP id
- 38308e7fff4ca-2ebf5ec6fb4mr4791061fa.0.1718096974914; 
- Tue, 11 Jun 2024 02:09:34 -0700 (PDT)
-Received: from localhost (nat-pool-brq-u.redhat.com. [213.175.37.12])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4218193b0c0sm84032445e9.31.2024.06.11.02.09.33
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 11 Jun 2024 02:09:34 -0700 (PDT)
-Date: Tue, 11 Jun 2024 11:09:33 +0200
-From: Davide Caratti <dcaratti@redhat.com>
-To: =?iso-8859-1?Q?Asbj=F8rn_Sloth_T=F8nnesen?= <ast@fiberby.net>
-Message-ID: <ZmgUTZPFKk1pNxqR@dcaratti.users.ipa.redhat.com>
-References: <20240609173358.193178-1-ast@fiberby.net>
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 2M8gbthRvDfB for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 11 Jun 2024 13:22:42 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2604:1380:4641:c500::1; helo=dfw.source.kernel.org;
+ envelope-from=broonie@kernel.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 4486640474
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4486640474
+Received: from dfw.source.kernel.org (dfw.source.kernel.org
+ [IPv6:2604:1380:4641:c500::1])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 4486640474
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Jun 2024 13:22:41 +0000 (UTC)
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by dfw.source.kernel.org (Postfix) with ESMTP id 3E75860DF5;
+ Tue, 11 Jun 2024 13:22:41 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 46807C2BD10;
+ Tue, 11 Jun 2024 13:22:40 +0000 (UTC)
+Date: Tue, 11 Jun 2024 14:22:37 +0100
+From: Mark Brown <broonie@kernel.org>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Message-ID: <ZmhPnQqYFXWP4heL@finisterre.sirena.org.uk>
+References: <20240611130103.3262749-7-gregkh@linuxfoundation.org>
 MIME-Version: 1.0
-In-Reply-To: <20240609173358.193178-1-ast@fiberby.net>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=iso-8859-1
+Content-Type: multipart/signed; micalg=pgp-sha512;
+ protocol="application/pgp-signature"; boundary="Xh2Kj1DQz4GcFSrR"
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
+In-Reply-To: <20240611130103.3262749-7-gregkh@linuxfoundation.org>
+X-Cookie: Your love life will be... interesting.
 X-Mailman-Approved-At: Tue, 11 Jun 2024 15:01:04 +0000
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=redhat.com; 
- s=mimecast20190719; t=1718096978;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=wJ6NmEpm203v83OTy1RMNtAkzbu+fQMhPGN0G4SJVPY=;
- b=Mjaxns2ZIaRszze7VkyY1v67WCzdRvvbCn9vXexzoUw3TTyb13LI6UMj2jTz4PLlauWHDk
- G1hJmQbha0TUHlPwfOVf3fWXldibxVgX31VtePXwvWD2xpR2JPRWmcN5NMqAQbVz/NL+sM
- BeWJ3lo1LfuuK7tMHVuweAUbP3ycrA0=
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=kernel.org; s=k20201202; t=1718112160;
+ bh=jA9dvE7L9ZJmw9za/ZknPNMPAQ+nyOtSi6kn/GimkXY=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=OJvxpd51vL1fgaAMZi+67oKms4QBWh1elR9Hk7cG6nG9e9gXGeFrMfWIIAEael+i3
+ lAkE99VPxEfh5CyATJUju6DP+t3VIiBAQTucjgQ0ijMajJBcxew3jixbWnwkA4lB3w
+ ugE0bmKSv4ByzTWhXiqCIEtwrFfOxt+cNpxRnb5kV3Pnz4F4fIUqKNgxjQoYWWx4Qh
+ 8zpY0odtnULrAV/ck1rMQnSKWXf63qG4qt6DqqFfTrBr+8cSR+V1A2y62QjUtMw5og
+ nm+chU1m0V08cd11shPoWB/8gBRuAnigd/2INuHL6WAuyjUDRqmNsS6XCFFfwI6dMG
+ 6+fylC4MotZmw==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=redhat.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
- header.a=rsa-sha256 header.s=mimecast20190719 header.b=Mjaxns2Z
-Subject: Re: [Intel-wired-lan] [PATCH net-next 0/5] net: flower: validate
- encapsulation control flags
+ header.from=kernel.org
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
+ header.s=k20201202 header.b=OJvxpd51
+Subject: Re: [Intel-wired-lan] [PATCH 1/6] auxbus: make to_auxiliary_drv
+ accept and return a constant pointer
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -131,33 +98,56 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Louis Peens <louis.peens@corigine.com>, intel-wired-lan@lists.osuosl.org,
- Leon Romanovsky <leon@kernel.org>, linux-net-drivers@amd.com,
- netdev@vger.kernel.org, oss-drivers@corigine.com,
- Tariq Toukan <tariqt@nvidia.com>, linux-kernel@vger.kernel.org,
- Edward Cree <ecree.xilinx@gmail.com>, Eric Dumazet <edumazet@google.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>, i.maximets@ovn.org,
- Martin Habets <habetsm.xilinx@gmail.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Saeed Mahameed <saeedm@nvidia.com>,
- "David S. Miller" <davem@davemloft.net>, linux-rdma@vger.kernel.org
+Cc: Daniel Baluta <daniel.baluta@nxp.com>,
+ Dave Ertman <david.m.ertman@intel.com>,
+ "Rafael J. Wysocki" <rafael@kernel.org>, linux-kernel@vger.kernel.org,
+ Eric Dumazet <edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Bard Liao <yung-chuan.liao@linux.intel.com>,
+ sound-open-firmware@alsa-project.org, Leon Romanovsky <leon@kernel.org>,
+ linux-rdma@vger.kernel.org, Ira Weiny <ira.weiny@intel.com>,
+ Takashi Iwai <tiwai@suse.com>,
+ Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com>,
+ intel-wired-lan@lists.osuosl.org,
+ Ranjani Sridharan <ranjani.sridharan@linux.intel.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Tianshu Qiu <tian.shu.qiu@intel.com>, linux-media@vger.kernel.org,
+ Richard Cochran <richardcochran@gmail.com>, linux-sound@vger.kernel.org,
+ Bingbu Cao <bingbu.cao@intel.com>, Jaroslav Kysela <perex@perex.cz>,
+ Michael Chan <michael.chan@broadcom.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Peter Ujfalusi <peter.ujfalusi@linux.intel.com>,
+ Kai Vehmanen <kai.vehmanen@linux.intel.com>, netdev@vger.kernel.org,
+ Liam Girdwood <lgirdwood@gmail.com>, Tariq Toukan <tariqt@nvidia.com>,
+ Sakari Ailus <sakari.ailus@linux.intel.com>,
+ Saeed Mahameed <saeedm@nvidia.com>, "David S. Miller" <davem@davemloft.net>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Sun, Jun 09, 2024 at 05:33:50PM +0000, Asbjørn Sloth Tønnesen wrote:
-> Now that all drivers properly rejects unsupported flower control flags
-> used with FLOW_DISSECTOR_KEY_CONTROL, then time has come to add similar
-> checks to the drivers supporting FLOW_DISSECTOR_KEY_ENC_CONTROL.
-> 
-> There are currently just 4 drivers supporting this key, and
-> 3 of those currently doesn't validate encapsulated control flags.
-> 
-> Encapsulation control flags may currently be unused, but they should
-> still be validated by the drivers, so that drivers will properly
-> reject any new flags when they are introduced.
-> 
-> This series adds some helper functions, and implements them in all
-> 4 drivers.
->
 
-Reviewed-by: Davide Caratti <dcaratti@redhat.com>
+--Xh2Kj1DQz4GcFSrR
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
+On Tue, Jun 11, 2024 at 03:01:04PM +0200, Greg Kroah-Hartman wrote:
+> In the quest to make struct device constant, start by making
+> to_auziliary_drv() return a constant pointer so that drivers that call
+> this can be fixed up before the driver core changes.
+
+Acked-by: Mark Brown <broonie@kernel.org>
+
+--Xh2Kj1DQz4GcFSrR
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmZoT5wACgkQJNaLcl1U
+h9BOJwf/aeKGbgsNQMBhINPc1+PAR8b5cph+EiF+ikcvcatJwJlRp44vA9jbRubp
+RmTlt5cENNxdSPxZ4L1agVt+lbemBcTfLZFQLj+KvZjLhC2oeXhkcbjY3eLmIsVw
+yQjm6MBnwdVo/8KD/jHCX4VMeCIcqtyTSjXqy3Q7kWlquqICAer7jB2riTxPOsUA
+AZ8DvqF1TQees1OHELAdmRRkcSOufQXeZRHCfeiDTpAFFnOazvtPmeAPcQpA5c8v
+JITj6HWMZxHRs9efcbyOOTVYnUcE3cZY3lUuqKJqzEfI08F75CJiZvb1hS/fRrPU
+6Nig9Tiir3XUu0ajZMrfXBdbm+3HOg==
+=XJxc
+-----END PGP SIGNATURE-----
+
+--Xh2Kj1DQz4GcFSrR--
