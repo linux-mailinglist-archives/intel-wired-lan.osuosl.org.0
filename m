@@ -2,94 +2,103 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id AA225903175
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 11 Jun 2024 07:44:11 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id BF5D090317B
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 11 Jun 2024 07:45:51 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 1E23E810E4;
-	Tue, 11 Jun 2024 05:44:10 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 70DA582033;
+	Tue, 11 Jun 2024 05:45:50 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Nh-lBWaA8NXI; Tue, 11 Jun 2024 05:44:09 +0000 (UTC)
+ id LIoXS1JbbKhl; Tue, 11 Jun 2024 05:45:49 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 42A5181016
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9945C8202D
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1718084649;
-	bh=Ni5EiqfE19GgJAagzEeA/URDCb51teDUC50fLcGZEHg=;
+	s=default; t=1718084749;
+	bh=1uQHXhtS+FSETeH2hqizhIc/c/smCB4G/AydYNkP0wA=;
 	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=Gi21h5G01RnsnNcf4tm15q1i4Qcv8gx9nGDlaq4KdDnwhgLBHDm3CvlW0y7oYSQvq
-	 2hZSdEjzc1+j5xF13Y+VDdKzvuWuV9nGGb9grZRUWNPhblv9jj81Z2QPdw3GQzGOMH
-	 KE7Dj23guwT2wdCyT+jgauJFen9F8A/4u227lt5RiPeRdXy4RDs1BZN/JNcbo4zD2m
-	 99JxnFJANz8+DhkQjAh3NM7o2OMgK8axTI1G31b36wyTwD1EWvPS9OtoF9jHidIT23
-	 4Uv0ing6pb/S+7I/cSUtiCniNZDkhlzUf5+iuTpkL21ov03eA7CRhrT6kya93pAQkd
-	 uLM423xqKeuLA==
+	b=UQOxOUqpJA0OFj7TM73NwyBmFx7KJ9EB6JwCEUINmvZX2AkGA0yhn1dIAf0K4pVtz
+	 vhA0u64eTb0fxM2WgBF5BDhlvTLu4vOq3/fuMJQcuap+BHunfk3PUuWiHa0EM7l1lQ
+	 WV9lnXcu/FNySIGM6SQdGti9323Iuxq69RrXdL1FUGUgJfNuQHM9mDLGBLT7a2g/U9
+	 0awnoh5l2VZTqq9kCC5EPAcWbFNw8DRe/C4ffhmERUac1DyBjQ92a81pLpSjY5mpXw
+	 K4cdmUgJ1R1JRnEe1YQ0WoadO15q9lRW/iwgofxKsoe1w0/vtFbTrkmL/NenvFqLdf
+	 ay3J65qcn0aJw==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 42A5181016;
-	Tue, 11 Jun 2024 05:44:09 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 9945C8202D;
+	Tue, 11 Jun 2024 05:45:49 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 2E03C1BF39F
- for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Jun 2024 05:44:07 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 377601BF39F
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Jun 2024 05:45:47 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 13D8140B7E
- for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Jun 2024 05:44:07 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 2269E82012
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Jun 2024 05:45:47 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 2H_asBIls6bs for <intel-wired-lan@lists.osuosl.org>;
- Tue, 11 Jun 2024 05:44:06 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 74r0-27rwWaQ for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 11 Jun 2024 05:45:46 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=185.125.188.121;
  helo=smtp-relay-canonical-1.canonical.com;
  envelope-from=hui.wang@canonical.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org B4A274016B
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B4A274016B
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 50F5C82011
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 50F5C82011
 Received: from smtp-relay-canonical-1.canonical.com
  (smtp-relay-canonical-1.canonical.com [185.125.188.121])
- by smtp2.osuosl.org (Postfix) with ESMTPS id B4A274016B
- for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Jun 2024 05:44:04 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 50F5C82011
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 11 Jun 2024 05:45:46 +0000 (UTC)
 Received: from [10.1.1.110] (unknown [103.229.218.199])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by smtp-relay-canonical-1.canonical.com (Postfix) with ESMTPSA id 17DCA3F1C6; 
- Tue, 11 Jun 2024 05:43:52 +0000 (UTC)
-Message-ID: <3359c6cb-cd2a-4738-8907-5018fa3e9606@canonical.com>
-Date: Tue, 11 Jun 2024 13:43:49 +0800
+ by smtp-relay-canonical-1.canonical.com (Postfix) with ESMTPSA id 5352A3F1C6; 
+ Tue, 11 Jun 2024 05:45:33 +0000 (UTC)
+Message-ID: <ccca7897-ac53-4056-8617-a3ace57bf7b6@canonical.com>
+Date: Tue, 11 Jun 2024 13:45:28 +0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-To: Paul Menzel <pmenzel@molgen.mpg.de>, intel-wired-lan@lists.osuosl.org,
- netdev@vger.kernel.org, kuba@kernel.org, anthony.l.nguyen@intel.com,
- vitaly.lifshits@intel.com, dima.ruinskiy@intel.com, davem@davemloft.net,
- pabeni@redhat.com, edumazet@google.com, sasha.neftin@intel.com,
- naamax.meir@linux.intel.com
+To: "Zhang, Rui" <rui.zhang@intel.com>,
+ "pmenzel@molgen.mpg.de" <pmenzel@molgen.mpg.de>,
+ "davem@davemloft.net" <davem@davemloft.net>,
+ "naamax.meir@linux.intel.com" <naamax.meir@linux.intel.com>,
+ "Ruinskiy, Dima" <dima.ruinskiy@intel.com>,
+ "Lifshits, Vitaly" <vitaly.lifshits@intel.com>,
+ "kuba@kernel.org" <kuba@kernel.org>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>,
+ "Neftin, Sasha" <sasha.neftin@intel.com>,
+ "edumazet@google.com" <edumazet@google.com>,
+ "pabeni@redhat.com" <pabeni@redhat.com>
 References: <20240610013222.12082-1-hui.wang@canonical.com>
  <6ec4337f-7bf4-442d-8eca-128e528fde2a@molgen.mpg.de>
+ <98ccb75d7ef48c182425f130e0b2ececeec630ec.camel@intel.com>
 Content-Language: en-US
 From: Hui Wang <hui.wang@canonical.com>
-In-Reply-To: <6ec4337f-7bf4-442d-8eca-128e528fde2a@molgen.mpg.de>
+In-Reply-To: <98ccb75d7ef48c182425f130e0b2ececeec630ec.camel@intel.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=canonical.com; s=20210705; t=1718084640;
- bh=Ni5EiqfE19GgJAagzEeA/URDCb51teDUC50fLcGZEHg=;
+ d=canonical.com; s=20210705; t=1718084741;
+ bh=1uQHXhtS+FSETeH2hqizhIc/c/smCB4G/AydYNkP0wA=;
  h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:
  In-Reply-To:Content-Type;
- b=eCnFnn+qcyykwuC15o5VHAyS1VoCHpwuBJJEcxxGFxiyeqmKaijkTszUIbfG5Lt5+
- 3owboPlzBnRiVDSYGQ4hazu2gMvtO19zDYcd0ckXIfRu9/UTnmf3BYH+y1V+J8j+Lc
- FXw3A2n/LjUbRG0UZULbnPaNB15TrNDo5L3Zf7NlBtaaRiNTMbzqb4bmEQv8/NcYYP
- RT5b6Vwnfmg8YX8oWtWydG85m2OYQAmbjxuhZzsnOt5zd+BMyOLORz8Ncmq8cOKl99
- pMOag0iyeVbeIXS2jTt1zqiMDXHsIZWhcWAeJiqaHmBbtdqX8GOq4mZTep0qOEwxaZ
- wPyWlV1vMXWlw==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ b=iULaIfvRVc3jFrI3242MAXXKclEeiHSfcQruSnS5M0Izuor8FRo/kkS6N0HrTVDj2
+ LPjqfE0cuNz1ZpBa8alBxIEUIMT249UC+YNmyW5rBzz2DPNaGbTfUns/1i9VHFvVV6
+ x1gof4Y0XOw6aXQbY0lP2VfFx+C15jP/9qKtaO5Y5czJS9q6B6oKi7SNGR8914m5vH
+ 2p91G6RknJz8PkAh/eM30E4WxOYv5svrLJpZtVbbi2LPkTag6HMtmUGZtPB6InHZ6D
+ E8G0hMuOBViC5fSCFVATHHQHG+KVVyDr7wQCb5kg3IU8NZECb5gmbvCf9CHx3KrRDq
+ 95L8n3MziKSPA==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=canonical.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=canonical.com header.i=@canonical.com
- header.a=rsa-sha256 header.s=20210705 header.b=eCnFnn+q
+ header.a=rsa-sha256 header.s=20210705 header.b=iULaIfvR
 Subject: Re: [Intel-wired-lan] [iwl-net][PATCH] Revert "e1000e: move force
  SMBUS near the end of enable_ulp function"
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -104,45 +113,38 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: regressions@lists.linux.dev, horms@kernel.org, jacob.e.keller@intel.com,
- todd.e.brandt@intel.com, rui.zhang@intel.com, dmummenschanz@web.de
+Cc: "Keller, Jacob E" <jacob.e.keller@intel.com>, "Brandt,
+ Todd E" <todd.e.brandt@intel.com>,
+ "regressions@lists.linux.dev" <regressions@lists.linux.dev>,
+ "horms@kernel.org" <horms@kernel.org>,
+ "dmummenschanz@web.de" <dmummenschanz@web.de>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 
-On 6/10/24 14:36, Paul Menzel wrote:
-> Dear Hui,
->
->
-> Thank you for your patch.
->
->
-> Am 10.06.24 um 03:32 schrieb Hui Wang:
->> This reverts commit bfd546a552e140b0a4c8a21527c39d6d21addb28
+On 6/10/24 22:14, Zhang, Rui wrote:
+> On Mon, 2024-06-10 at 08:36 +0200, Paul Menzel wrote:
+>> Dear Hui,
 >>
->> Commit bfd546a552e1 ("e1000e: move force SMBUS near the end of
->> enable_ulp function") introduces system suspend failure on some
->> ethernet cards, at the moment, the pciid of the affected ethernet
->> cards include [8086:15b8] and [8086:15bc].
 >>
->> About the regression the commit bfd546a552e1 ("e1000e: move force
+>>
+>> Naama also added Tested-by lines two both commits in question. Could
+>> Intel’s test coverage please extended to the problem at hand?
+>>
+>> Acked-by: Paul Menzel <pmenzel@molgen.mpg.de>
+> Plus that,
+> 1. Todd and I can test with upstream + this patch to confirm that
+>     a. the regression for Todd is gone.
+>     b. the s2idle failure for me is back
+> 2. I can test with upstream + this patch + revert of commit
+> 861e8086029e (e1000e: move force SMBUS from enable ulp function to
+> avoid PHY loss issue) to confirm s2idle is working again.
 >
-> … regression introduced by commit …
-Got it.
->
->> SMBUS near the end of enable_ulp function") tried to fix, looks like
->> it is not trivial to fix, we need to find a better way to resolve it.
->
-> Please send a revert for commit 861e8086029e (e1000e: move force SMBUS 
-> from enable ulp function to avoid PHY loss issue), present since Linux 
-> v6.9-rc3 and not containing enough information in the commit messsage, 
-> so we have a proper baseline. (That’s also why I originally suggested 
-> to split it into two commits (revert + your change).)
-
-In regards to reverting the commit 861e8086029e (e1000e: move force 
-SMBUS from enable ulp function to avoid PHY loss issue), the author is 
-Vitaly, let him evaluate how to act.
-
+> thanks,
+> rui
 Thanks.
-
 >
+>>
+>> Kind regards,
+>>
+>> Paul
