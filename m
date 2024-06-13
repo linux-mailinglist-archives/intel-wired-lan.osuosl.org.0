@@ -1,229 +1,232 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 368139069CD
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 13 Jun 2024 12:17:30 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id B630D906A47
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 13 Jun 2024 12:44:58 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id D47B660EC4;
-	Thu, 13 Jun 2024 10:17:28 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id F30FD401E2;
+	Thu, 13 Jun 2024 10:44:56 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id m0p7Om_AfGfw; Thu, 13 Jun 2024 10:17:28 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id B1Xh_AWcoVMd; Thu, 13 Jun 2024 10:44:56 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 63AE260ED3
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 75F02401E3
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1718273847;
-	bh=eLk0hW1gVDWSVnLRviLqDj57gkWQsc3lmMFvOjtk6sM=;
+	s=default; t=1718275495;
+	bh=UGnG9fs+5Dj1nXPYEsxiVrKhz2rGf7255yeRYNhWH4k=;
 	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=A/oM4UIHhSsV31BDvxeHCzTsICNvX9wN41zlZ0p1auXr58BcSnmFcA5YwWzzsTE5K
-	 rfgjuYoFHPSgxI5y3m3aYRXHyUhTJugyy+cvpJyhF1mEoxPujSHc3xYET6TdVThRh2
-	 aoCtPr+4XSCi2794uzMVm5bzRgk4ij01GGNvjW2nATrtKgovcQwr8NvxJhSZxcUO+d
-	 I1YydeeVFj3ce6YCmMg7QQdlbFZYBzrkRUMt25Omdx7lSGC6Q8tTEVEzvjDiWt8CUy
-	 MFaHJxEZ1Hs2xMllRfhT69ZLOkrs/QfpKHiExWL9W8HGx3Xq3EmjaroMZVX/mQ5weD
-	 msTT9rp9pO2oA==
+	b=CtcKsuDafFxj+2hi0gihyf0B08gWYRKTwAAk6514Vy7DlIOZrrLcD5LHrmfyn1j0Z
+	 Ic9UvmOiV79GD31lx9crB8pytDjFa46hv5s7jVwJltQj3dQV2t/xvgNe1+S8rWLyX8
+	 IaAV4CtsEJKfd7Pfd/R8lr6d993uNd5/2VmV0N+lOpxgOjomO4Yv0fziWu02mRq53R
+	 ibtHd8ivzPZrsSYp5lVW43wPqvTQ74/DCXro3JkcKiaiixn+ZH7f0prKfKWjonfkuw
+	 YSpHVDNGAYOqAh19rRyPVqk1ShBM41eZxVrJtx4uFR9bkLweoFEPToIOoZbs4YtnFE
+	 Zz5CmBX63Sj8w==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 63AE260ED3;
-	Thu, 13 Jun 2024 10:17:27 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 75F02401E3;
+	Thu, 13 Jun 2024 10:44:55 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 6361C1BF354
- for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Jun 2024 10:17:25 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 118F91BF354
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Jun 2024 10:44:53 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 4DD9240154
- for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Jun 2024 10:17:25 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id F2B0760B18
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Jun 2024 10:44:52 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id xXsGT5ikpCwE for <intel-wired-lan@lists.osuosl.org>;
- Thu, 13 Jun 2024 10:17:23 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.12;
- helo=mgamail.intel.com; envelope-from=aleksander.lobakin@intel.com;
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 0Is-p6zgo2Od for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 13 Jun 2024 10:44:52 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.15;
+ helo=mgamail.intel.com; envelope-from=przemyslaw.kitszel@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 9D772413CC
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 9D772413CC
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.12])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 9D772413CC
- for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Jun 2024 10:17:23 +0000 (UTC)
-X-CSE-ConnectionGUID: 4WfD8fYwQBW4x+/fX+APSA==
-X-CSE-MsgGUID: jsvVNtDxT96Ktp9WW0nuvA==
-X-IronPort-AV: E=McAfee;i="6700,10204,11101"; a="18939853"
-X-IronPort-AV: E=Sophos;i="6.08,234,1712646000"; d="scan'208";a="18939853"
-Received: from fmviesa009.fm.intel.com ([10.60.135.149])
- by fmvoesa106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 Jun 2024 03:17:11 -0700
-X-CSE-ConnectionGUID: oH/tCNEQRtqkD6gYOHTRNA==
-X-CSE-MsgGUID: yHgSqWiyRbym3q4KHD8IRw==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org DF55A606B9
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org DF55A606B9
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.15])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id DF55A606B9
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Jun 2024 10:44:51 +0000 (UTC)
+X-CSE-ConnectionGUID: I8w5r9xdTBm6yAl16yW1bA==
+X-CSE-MsgGUID: COfIxd3VTIepZ6Lb4fXHPg==
+X-IronPort-AV: E=McAfee;i="6700,10204,11101"; a="15253612"
+X-IronPort-AV: E=Sophos;i="6.08,234,1712646000"; d="scan'208";a="15253612"
+Received: from orviesa010.jf.intel.com ([10.64.159.150])
+ by fmvoesa109.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 13 Jun 2024 03:44:39 -0700
+X-CSE-ConnectionGUID: 3AIb/08wQGuRINu2Tx0Bsg==
+X-CSE-MsgGUID: NQSyQSXvRP6wVH2j3hS64g==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.08,234,1712646000"; d="scan'208";a="40200416"
-Received: from orsmsx601.amr.corp.intel.com ([10.22.229.14])
- by fmviesa009.fm.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
- 13 Jun 2024 03:17:10 -0700
-Received: from orsmsx603.amr.corp.intel.com (10.22.229.16) by
- ORSMSX601.amr.corp.intel.com (10.22.229.14) with Microsoft SMTP Server
+X-IronPort-AV: E=Sophos;i="6.08,234,1712646000"; d="scan'208";a="40033467"
+Received: from orsmsx602.amr.corp.intel.com ([10.22.229.15])
+ by orviesa010.jf.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
+ 13 Jun 2024 03:44:38 -0700
+Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
+ ORSMSX602.amr.corp.intel.com (10.22.229.15) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.39; Thu, 13 Jun 2024 03:17:10 -0700
-Received: from ORSEDG601.ED.cps.intel.com (10.7.248.6) by
- orsmsx603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
+ 15.1.2507.39; Thu, 13 Jun 2024 03:44:38 -0700
+Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
+ ORSMSX610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.39 via Frontend Transport; Thu, 13 Jun 2024 03:17:10 -0700
-Received: from NAM10-MW2-obe.outbound.protection.outlook.com (104.47.55.41) by
- edgegateway.intel.com (134.134.137.102) with Microsoft SMTP Server
+ 15.1.2507.39; Thu, 13 Jun 2024 03:44:37 -0700
+Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
+ orsmsx610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.39 via Frontend Transport; Thu, 13 Jun 2024 03:44:37 -0700
+Received: from NAM12-MW2-obe.outbound.protection.outlook.com (104.47.66.41) by
+ edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Thu, 13 Jun 2024 03:17:09 -0700
+ 15.1.2507.39; Thu, 13 Jun 2024 03:44:37 -0700
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Q/cw7lJTpnKAPbX3IxR0SHY48UNYtXx8pVIBLM4udVQ/e4x7KDeRktaX8d/S8C7JZMF25m4S8dzIYVKIdTwClYHEOYFkrGH2y1ljIJN0RnA4iyZzWOA+pDkNAWNBZtuARFFmtNic/CCGqfvgRdhkBBETT6T4k1CNVPIEFNnscsPSjdyMbB5E6yim9fVjyO8vq+rrr4689dm/ZtqZAKF9wT8enaUl7F149zLc+ho7/jEn8fbCSVKbAa8LgAsed4AFOgGkZeesAF6XY0vH/uxgt8UXtQZpGvlraT5iHbFCIMPUehYkfV339Fgw1hO6p6K0c0vUA/sRZBDLyPJl+3Lqrg==
+ b=DyKlibhudbOVG6VVF3cjOSOq6QYRJsu1k17zUSwrIpeyIxfObrPcHLp5sKY3qq9OojKhIoZee5krYADcl+9rP8RH0yTbbXj5sXMJrbnSTuruHrCVOSQAqylWQpq84w4ejjUecrkLeQbcc2IYcQbB19mE0Qxpw1SRep/ngzOeo6Kf+juUjzBuW0jW1ry4C8IhIEpc4PxB42aoophz619vcIWTkE4dHa2fqLsUJi7rGTRpapREHRYxG/P0RAG6Sb8+Q6ZndQSbKO4nywjA1U4Ip6CtqJXxxfJI82WXvvlFdMrgWL/rorI8u+TQd5gFzxcl9/o3X0YGDRaUGmrZ75g0RA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=eLk0hW1gVDWSVnLRviLqDj57gkWQsc3lmMFvOjtk6sM=;
- b=STiZoveEC3N6rMQDzXRuoqzD/VJnrZAYaKl0PXGFw5rdLn+d7sjQdYHOsdMEnewktFeC4HznhUCNDzxwbtk2pJTKCMF6f0MH8W73zCiFwFPw9aaa6KwhkxOMd/gajZ58WD3+Mny5PSDI45glAIFmd42tcGeQLu79kzkSivMFA1dnqQj+wnITqOnOOJ+uytNhYBbleRyBHaZF4U4UAWB+PS4Vvj7VwjLWEod3yWOV6yRJTOLeE489vSrJFjIDXycTrX+utT7nMpcNrBgOkNgIhJ4tM30ZoBIC439IzAl5jSBPylBqKVvi78GUszP+K3pvxjmhAve0gyUfyP9H9i93ag==
+ bh=UGnG9fs+5Dj1nXPYEsxiVrKhz2rGf7255yeRYNhWH4k=;
+ b=lpRw0wROAEsSNlA0sNHyfCt1OptmHU8e24OM3v2cNEmvlQ2d/Nn3Gx+M36L8psJYxYv2LJRRPj35dnyddWzDuzs7r6ctOi0T7kYhb0xixP/TrNgR/N9bYzH1LOxJkz1pO2RnxU/D78fd64Zto6tsar9ptRVwMctyaBTizmYSilCj9+ErwAX91UY/T/k4OslryBPQmYBHPpL0r8h43E4GFFCULDZDk8lNYxFjGWkuS192tJqurtxSrp0WZBhGOT372Vrrl5FvIJHv1Yq5JVvSGLul49Gf4kgZ1/ifh8+ZUnN2NfoT5x8j1be9sAqUrFi7ZgAmwiVPGk3efCQ2+RGzbg==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
  dkim=pass header.d=intel.com; arc=none
-Received: from DS0PR11MB8718.namprd11.prod.outlook.com (2603:10b6:8:1b9::20)
- by SA2PR11MB4844.namprd11.prod.outlook.com (2603:10b6:806:f9::6) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7677.20; Thu, 13 Jun
- 2024 10:17:08 +0000
-Received: from DS0PR11MB8718.namprd11.prod.outlook.com
- ([fe80::4b3b:9dbe:f68c:d808]) by DS0PR11MB8718.namprd11.prod.outlook.com
- ([fe80::4b3b:9dbe:f68c:d808%4]) with mapi id 15.20.7633.037; Thu, 13 Jun 2024
- 10:17:08 +0000
-Message-ID: <b6ed60cb-03a8-48fd-bffa-5a8efb0cd143@intel.com>
-Date: Thu, 13 Jun 2024 12:16:40 +0200
+Received: from MN6PR11MB8102.namprd11.prod.outlook.com (2603:10b6:208:46d::9)
+ by CH0PR11MB5282.namprd11.prod.outlook.com (2603:10b6:610:bd::11)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7677.21; Thu, 13 Jun
+ 2024 10:44:35 +0000
+Received: from MN6PR11MB8102.namprd11.prod.outlook.com
+ ([fe80::15b2:ee05:2ae7:cfd6]) by MN6PR11MB8102.namprd11.prod.outlook.com
+ ([fe80::15b2:ee05:2ae7:cfd6%6]) with mapi id 15.20.7677.019; Thu, 13 Jun 2024
+ 10:44:35 +0000
+Message-ID: <514caa65-5794-4f1f-9f8f-d11029460c5f@intel.com>
+Date: Thu, 13 Jun 2024 12:44:28 +0200
 User-Agent: Mozilla Thunderbird
-To: Josh Hay <joshua.a.hay@intel.com>
-References: <20240603184714.3697911-1-joshua.a.hay@intel.com>
- <b30f34a1-48d6-4ff4-b375-d0eef5308261@gmail.com>
- <cc76768c-d8d4-4c07-93c1-807f3159b573@intel.com>
- <641b439b-2bc0-4f2b-9871-b522e1141cd1@intel.com>
- <ef8057dc-28f9-483a-9885-35879ad84b56@intel.com>
- <a63aff29-c392-4efe-b8c0-9f2305f956fe@intel.com>
-From: Alexander Lobakin <aleksander.lobakin@intel.com>
+To: Larysa Zaremba <larysa.zaremba@intel.com>, Jakub Kicinski <kuba@kernel.org>
+References: <20240610153716.31493-1-larysa.zaremba@intel.com>
+ <20240611193837.4ffb2401@kernel.org>
+ <ZmlGppe04yuGHvPx@lzaremba-mobl.ger.corp.intel.com>
+ <20240612140935.54981c49@kernel.org>
+ <ZmqztPo6UDIC6gKx@lzaremba-mobl.ger.corp.intel.com>
 Content-Language: en-US
-In-Reply-To: <a63aff29-c392-4efe-b8c0-9f2305f956fe@intel.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
-X-ClientProxiedBy: DB8PR09CA0005.eurprd09.prod.outlook.com
- (2603:10a6:10:a0::18) To DS0PR11MB8718.namprd11.prod.outlook.com
- (2603:10b6:8:1b9::20)
+From: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+In-Reply-To: <ZmqztPo6UDIC6gKx@lzaremba-mobl.ger.corp.intel.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 7bit
+X-ClientProxiedBy: VI1PR07CA0253.eurprd07.prod.outlook.com
+ (2603:10a6:803:b4::20) To MN6PR11MB8102.namprd11.prod.outlook.com
+ (2603:10b6:208:46d::9)
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DS0PR11MB8718:EE_|SA2PR11MB4844:EE_
-X-MS-Office365-Filtering-Correlation-Id: 8eb138e8-5a1c-4fa4-5cf2-08dc8b91fb29
+X-MS-TrafficTypeDiagnostic: MN6PR11MB8102:EE_|CH0PR11MB5282:EE_
+X-MS-Office365-Filtering-Correlation-Id: 97ad158f-0ba5-4970-a297-08dc8b95d125
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230034|376008|1800799018|366010;
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?SXdiK2QzSW11WFEzR1dSREEyRE96VnVVL0dlNWJqK0lYSWNoYnJ4aWp3a1ZQ?=
- =?utf-8?B?RFV0MTdlMldLbnJSZStGQWtCekhVcTR4Z2g2K29QUWc0SUJjTnZ5YldDdmJO?=
- =?utf-8?B?eEVHOTh5VkVTdGlwbmt4T3ZacVdwY2xQeFhrU2ZvWTRiV2lzTU1ON2RjNjZF?=
- =?utf-8?B?aFJCbTdiV3BOcy8wRjVhbWhrTWxQZVd5cnVsbFBRVTdGOGgyMFcrRm54eG9G?=
- =?utf-8?B?aUQ2Mzk4TXcxdGRvL3hzYkxXOEV6bEFNMHNuc3ZiUlJIbG1QUXdZc2M5ZGFY?=
- =?utf-8?B?NTBaTUZwb1pobHJIVVBKUlIvaVNMQkM5clNFQVVEZ1UvUFJ1OVNCWWdPVXdH?=
- =?utf-8?B?cm1mSy9yT1d3N0JNSjdQbVZubkVuNWFLd3VreDBudThrVTBkbS9jOFRCZzVU?=
- =?utf-8?B?K3VZcUw1VkdaNGU4ZnlwanZMV0JTOEFSRUloY3V5MDZJRmxiVHBiU0psSWI0?=
- =?utf-8?B?UWZhTGRxZUlTc2JHc3hCbkZITGRVNzZvckhwVGNrcFpUYVl0NUVwQW1MVUhU?=
- =?utf-8?B?d2pKOHZaWW53UG9TL1laem0wb3hCSGdaelYwKzl2OHUyTTlMUS84bXZxRlZX?=
- =?utf-8?B?M0Nyd2xZdDhDREorTmJYck9qd0JKMUppTWRaVHdMWG9zTWR3STN5dzdkbTM2?=
- =?utf-8?B?MisxdVR1TzVDV3ZvWFFhK2prN3gwUThiM0ZJZE9IN2RmR0ZNZE4yT2EvaHg3?=
- =?utf-8?B?Uzk2cHFYSy9oT1pQbFJ5clZWb0g2dWNCeGhudEVXcmwvbnA5djMvaEl1dGE3?=
- =?utf-8?B?YWZZR2dSdjR6YmNaL3BSbmRCUGNsMDFmVDcrYlFOeEdIQldJanpPc3RaRkFq?=
- =?utf-8?B?TDJraE05a294YWVSYzlkVklCSHNHY2xtZzZ4WHZDbDdLUUxURWZ0SkFHamZJ?=
- =?utf-8?B?blQxem84b0JhVDBZQ3lVc1BlbHJDNDQyNk9qSktiK3pTTU5SbDFnYmZ6SFFm?=
- =?utf-8?B?cWF2MTgycHcwMjMvKzhJd1prZGd3aEppbDJLMk4rOUhoVnFWUjlUeGpXdnFx?=
- =?utf-8?B?L3NoNldZUk1SUFI2bHovcHhxZ0U3OGJQL1FxN1hjMXBGalBwRXczbTIvSWJi?=
- =?utf-8?B?RU5LMmZMaFFJRFNHd1owWDVrSHE3emNsN1B1V2pRbDNqbmV4K1dRcnhSRUhE?=
- =?utf-8?B?eDBNMXZ3Q21nUnJpU2thUkx0R0xZSGp0K2plWTVHTTR5VVVXdTZob1AxRG05?=
- =?utf-8?B?djNJQmNiVmV2QlVzMitCeDZ2TlZDV2lNSEkvZDlIbzVJdEYvUllhd1NXM0FM?=
- =?utf-8?B?UzJJK2ZJTzAxejQzRjZuSS9yS05zRWtWSTBYZ3ZiRVpuRElub0VuU21RNWRR?=
- =?utf-8?B?NzZUME1mZmE1UnlTcFl6V3pxUlpWVlVwcGxjMk9DZS9lM0puWHhMNTE1eU9m?=
- =?utf-8?B?aXhYancxSTRzSTdncXk5Snk5NkczWWF2QzZBdkE5ejhldmRvbkcvUHJTV1Jj?=
- =?utf-8?B?UWhaWUFzSkZzN0xEQnpWTU13QVhsS2dHQ2JxMVA5Nm03dytndERsREZWZWZn?=
- =?utf-8?B?NUswMmpmYUo5WjhxK2xlaUZyL2ltNzJPU3duRUFWa1RVQ3FtZktxY3ZHVDJK?=
- =?utf-8?B?dzI0T0lsaHRJbkU1UWpJOWo2a0RIaWdUS1hJNnZEcWVsNTAvTnpQWDNxcHZv?=
- =?utf-8?B?UnRaRGJWSHhVQ2psLzdkQjhUN1c2bWJjL1RaZjF3ZC94NG1lM3BkckNNQUsx?=
- =?utf-8?B?cmhlZEVPZWRrb3YrekJQUjNvdHNhZGFST0ljTVE4b2srVjRCU1FtSnVmZ21s?=
- =?utf-8?Q?rluLV5nZNsbgbW9R7uofaGLSKTu6brEjEAR1YfZ?=
+X-Microsoft-Antispam: BCL:0;ARA:13230034|376008|1800799018|366010|7416008;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?Wm9Ma1JrdjRmeGJ1YXRLZnhETWQxRDV5QzdRUlFVZzlKNk5FbUZtYk4zQm9a?=
+ =?utf-8?B?eEJHbVl3c250U0tTMXhwV0dOWllNendwdlhIdkxjOWxoTXRjWkhSa0d3S0dS?=
+ =?utf-8?B?UGtPb0RLZU5sRVRuYmYwa1llZWU3MHV6UUNPaHIyTXNKTklHMFJaOWFvRFUr?=
+ =?utf-8?B?Njc5RXAyV2lzUkllZms0UURsOXZGMEdUVFlSU1dUd1VxOXlqN1ZjazFPU0Vt?=
+ =?utf-8?B?ZmRyS0lwdnpRREN2MnhWY1dUR0pvK1dRWm9YbmtrVXZiK0Nja25aa2ltMXht?=
+ =?utf-8?B?Y3lOZk1PUklxNytBNTZBRkFaYmc3WHBTUElVbXR2QTExVlByUFVVUnB4ZjYy?=
+ =?utf-8?B?NXdzVDF6dk1NVFBCUlc5MCt0b3hKTk4xQzRuUUFScjA4Q0IwY3R2Mmt2c3M5?=
+ =?utf-8?B?c1d4Vzk5dkl5SWg3T1Z6Ri9FQ09FZGtQWUFodlo0a2VqZWttbnFEQmRWVCsr?=
+ =?utf-8?B?YUh3Z3RZM1M4VXk0K1ozN3dXSndFZlZLc1hMTDBQQUxTaXg5MGR2ZVFzS1I0?=
+ =?utf-8?B?TTUxR2JhbUczMU16ZXBsck9RUGRpMDAzZGFrOElNcUxrNm8xNW9paVZJWTht?=
+ =?utf-8?B?cWlxd1ljOERnd3RSOWViUXpvK0liZ1Qza2tjT0hwNEJldkJYZGcyeHhHVUNi?=
+ =?utf-8?B?NEl6azByd0tDUTkrR25aYkg4U3lzSXcvTUV3MSt3NmU1ZlE0bkluWE5lRHg4?=
+ =?utf-8?B?djRteWVDUDg4UkZlQ2FYaGl4QytXeWVIbU44U1VTSHl1ZjVZWllqdFVhU2NF?=
+ =?utf-8?B?SUhVTTRmSXRDck85WjVFWml5bzVBTnlESXhKTXRtam0yQzJ4MDU5UWU4SVBu?=
+ =?utf-8?B?MFlpYWpuYk9TdmNZM2lZTlBvOHUwNXdnSWEyTHhxTnVFdnpDRXdBL3hIY2Rz?=
+ =?utf-8?B?dWgrMGorM09LTG1mTmxGby9EekFjcE92ais3RzlZU1NLQldGUkRkMGxWajVX?=
+ =?utf-8?B?VXBLMkhHaTdKaEZqSlVGM0JBbkNCUWxCaG5iOGxGN0ZmUVJDN2dmS2ZYdS9h?=
+ =?utf-8?B?T2NmK1F0L0U4cHRDVTNUaXQraDdIckViZVVUREVuMGc2V1ZUUU5EMGViRy9P?=
+ =?utf-8?B?aVVhNXI0UmppcTNMcnkvcnA5OVNXK1cvbkJBbUNZOUxZNU5xWDQzU3B5MWx1?=
+ =?utf-8?B?S0x1elhSa2Y3YVRzdk8zVDJPVFNnTlh6Ukh6bTNtR2puYVE4MVNjZXFrcHk2?=
+ =?utf-8?B?ZVozWE9IY2dlazRXWE4zd2VKemRxOEozcXNpbGJhNEdOVDJBMTBpeVJrYlhw?=
+ =?utf-8?B?WHZZMzJmWTZHY2VoZklHRmR2amNmRE41NjRiWkNRMjlqbk01MGRWdFpNMlRY?=
+ =?utf-8?B?N1g0ZXJBRVhLUDMxNVphSWl3U2s0bU5SdkNPc0g2SU1wbTRuUytEY2M4V2t2?=
+ =?utf-8?B?Y2ZPV29yNjFTYTRDS09PV1NPeDhRemorVzRSTlB6WnI3K2o2TWFVdjlIVXM1?=
+ =?utf-8?B?d2hGSVZtaWZPNytmcVZGRWh2aGdQa2Rnam9HTlJqelNFdGg1c0JpUW9YK3Rs?=
+ =?utf-8?B?S0Q2SThCV053Q3VQMUcwNFQ4QkpzU3J2V1pJTFIzWlFDUzFjZnEvMXZ2MFE2?=
+ =?utf-8?B?amc3dnJyZ3VUZE9Mbm1Gc0dja0ZaUmc0K0k3NnpkbnQ3L3RLY1p6QTBuSFRW?=
+ =?utf-8?B?eWJLUGRZVGRPdUVkWWNFc1JqeCszK2pSREI3VzJpb0NHa0xRSFhQK0NxcVRI?=
+ =?utf-8?B?VU93U2g2bC9Db01CYTdheTg4cHpKbVZVR0VFUU9SeE0xWGxuZzJHSVNUMFAz?=
+ =?utf-8?Q?gVclvPvvCB+JsfOChcgAAAlrfdS3FHYNU9nY4cB?=
 X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:DS0PR11MB8718.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230034)(376008)(1800799018)(366010); DIR:OUT; SFP:1101; 
+ IPV:NLI; SFV:NSPM; H:MN6PR11MB8102.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230034)(376008)(1800799018)(366010)(7416008); DIR:OUT; SFP:1101; 
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?VmtvbjNMRmpFVUhSajB4YWhJRnUwRG43cXdneDJoRlBFcmpQQ0VQaDIvZjlH?=
- =?utf-8?B?aHdhMC9pSkl4SEVIZTY4bVpva1JLM0NXeFNxUnlMVnlFa0c2Ullzb3VaaTQ2?=
- =?utf-8?B?a3ZpcmpvcTlMOUI0aVp1WVBtamZvcTV2NndwcFM0MFFQalVYSjF0dE1UQzFv?=
- =?utf-8?B?bzlrL0NUVHpaUmd4V05MTE5SbzVFMGhOMXl4SytxcmtuaTlSWFkvcjM1QjNH?=
- =?utf-8?B?bE1UVEJHcjZLOEJ1a1dxZFNvOXRhSWdlU1Y0ZkFmV1VNbEhiL0lqUlhTRFJK?=
- =?utf-8?B?MmNPb3FBUlRsU0tubndUUnJpbDJ2NXN2NmxOa2lCSGFpamg3aWNCVmJ3SkIx?=
- =?utf-8?B?bVp3Q0xJQUVUSi9sTHlEaElyYU1mOUwzZGZ4M1BhNC9aaEhLQVA0anB6Q25r?=
- =?utf-8?B?dDROZUtMWGNjZEwyUGcvdzVjTDIxeFByZUlCSmF2VTBHamFzZzcxL0FOUUJ5?=
- =?utf-8?B?NFFoSSt4TzJ5Y01RRWJHc1lNcjh3QzNkZjI3WmUxR0FIWTIrcDFlUmVjZk1h?=
- =?utf-8?B?QWc1TmNoRWZFUjEwK1J0bDExTUJlMFZaNGpidHBUQTZZNlpNaXgxMy9ka0xv?=
- =?utf-8?B?WDNXU29iOEdIaStyZE0rRlhTTlNLVUhhcEVmL1VvVnpJL2NUem1XOWthcTBs?=
- =?utf-8?B?bGVTV3pva0J1RituOStVOWRnb3ZBWENBTU5hMXQ2eEd0L3JTYXVmTVpySGhY?=
- =?utf-8?B?WkZuWDcrZXN2WGo4ODVUSTBZU1Uvbit6clk0Qy81Q2NFU2RrZ3UxVTJXQlNa?=
- =?utf-8?B?QXM0ZFdnL3ZkeWtzdk9PWVFGOVZ1U2U5UXlTOXBSR0JLRXVuQU9lMWl0eXhT?=
- =?utf-8?B?ODc5bFZoMUtQMUwvdjRHc09WcE1obU96TExBciszRTRCREF1TjhmU3FFL2t4?=
- =?utf-8?B?L0poS3pDNjJuQWZmdklnSVNsZDRXNFhXTzhhUVFDY2lnQUtPeUVONVZPWEFV?=
- =?utf-8?B?RW85elVYTTQrOC9Gb0tJOHhVeTZ1T1htQlBldCtOYVZsWFJmUXU2ZVBUWTZZ?=
- =?utf-8?B?aHJKMHRBbzJCOHRHM1Y2d1dCUG8yVnhmSVBmSXhzWjUzNStnNzdpdzlxcmR5?=
- =?utf-8?B?b2xPNE9xRmFXYzRFdE1LVlYyR0ppV1pZYmFRNEhFRXUvcXMwalIrckdBTENY?=
- =?utf-8?B?dlk5NFpQcmM0M0ovVmwxanc3VHBGbWNWU3p5bGJuTGFQb2Rla3k1MXhMRW8y?=
- =?utf-8?B?Q000MzFyRXQzNDdpc0VjazBXcytqYU95UUtlTXkyMXloeGtsSHBXYkRlSldr?=
- =?utf-8?B?T2dWRVVMTXRRS3Z1VTBFSDl6blJZWEFmR2c3U2I5K0UwcWdvblVZbW1KckV2?=
- =?utf-8?B?bGpTaWxNdnZnUDNXRklqbVhPeUI3U3dHKzhhS01IZ3REZUduUW9VVWdjZWNz?=
- =?utf-8?B?djkyanBIZ1d2M2V0c0w2Q1VISDJpcFc3N3NqQTVkT2NramdJQWZNQ1RKdEQ0?=
- =?utf-8?B?WldIdno1cHJ0aEh2S3ltNlJEZVNPUUJpTmt6SzlqZ0c3ZFY0ekNGNFg4bGYr?=
- =?utf-8?B?L0RQRG1pSVdReXZSQmh0RHdXK2kzVGd6dzRhK20vU3YyWWNDREZNdCtkUDNR?=
- =?utf-8?B?K09JVGRYSjgrbElTWUcrM1FqQU1ZWHNUeXZnTmwrNURObHRCVE1sRE9RR29t?=
- =?utf-8?B?c2Q0Rlh4VnZSQ29vNkV5MnlWckZVZEptL3g1RmV2SVByV3psRU9aQTNscmxh?=
- =?utf-8?B?blF4bTEwa08rYUxRNnZtSVF0SVBpc0hIR05ubm5pc1lDZU1tdlk1bUVWNWJY?=
- =?utf-8?B?MkpxKzIyRDJVbnIwZEw4aG9DaC9rR1EwVGgyTE1JYTVXd0duUm9UVTFrVzRO?=
- =?utf-8?B?U1VBdC9xZ3cxeGsrWVFqS0h6ZTJhcHAzeHdXcU1PdmxyMUJ0SU9JWFJFVEJt?=
- =?utf-8?B?ZVpPbWxtS0hXanpHT1dFd3JWd2ZqWU9sQXlPQmpYaGxyTHlpTk1rUCtBTHVz?=
- =?utf-8?B?aVRrYVpYRHdPY1hKcStxTjY5Y3NGb2R0cXQrS2hlenFUSFQzbmY5VlducGlJ?=
- =?utf-8?B?WVVrYnY5U0VBU2tCczdYTmFkK2VDb3JBZm1wMGhoa0toLzdHQ1RGeHJnZld6?=
- =?utf-8?B?SElvZ1hic2RLSGRQRjg2Z0pHdEFiY28wOE1ySXFTVy9mc051R1Y1Q2M4V3Bx?=
- =?utf-8?B?bXF6RktPbkovR2VWM0s3dEVxMHBiV2ZyQ09QYmpSd3ZrWWRJZk9Ub3h0Tnlh?=
- =?utf-8?B?d2c9PQ==?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: 8eb138e8-5a1c-4fa4-5cf2-08dc8b91fb29
-X-MS-Exchange-CrossTenant-AuthSource: DS0PR11MB8718.namprd11.prod.outlook.com
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?UXpoWXg3Rkt4R3RaSmhlRXRqb2hXRlNyM3hnSHVneEF0WXNjWmJGZnRUSjM3?=
+ =?utf-8?B?V1cxTS9jdGwzY0N4aDMwNHRaY3V5UHA0QXE1Nk05R0dEOER0M3BXR2g3bjYr?=
+ =?utf-8?B?b1FndS9aMEdmTUE1QUZndVBNL2w4bFhOSXFBL3M2SThoYVVzZHk0NEEwbmRW?=
+ =?utf-8?B?WDhveVI5dURiUTJnTDdlMUZCLzFVMm5TVWxpWkJxRTRoYTdBTWUwT1ZaMUh6?=
+ =?utf-8?B?WHJ0Q1VoNFJoWE5KVzIzYjFJU3ZjVzM5dkdvemx6MGtmMnZOQUkxWlFmQzlS?=
+ =?utf-8?B?djh0K3djOTJaVDFnR0ZYSVVUWVh2UjJKelhkZWFNMEV3WDk2VGYvZG5YdlBL?=
+ =?utf-8?B?dHVVTFBLNmJyVkN6NkVmYnpyaXpJZlZrZFJjRUdYVTJHU0YvZUdWRzc2Yk9T?=
+ =?utf-8?B?MThvK2hydzRmYXRxYWF0OEJxRVpYeTVHUXJWYXp2cjRXQnlGYWdqUWRVOFVi?=
+ =?utf-8?B?NFZOQWMrN0dVM1JSTS9VR1FrL0tZUjUxV1JRRkpIbjlDdWF0UnUzNTl1bjBY?=
+ =?utf-8?B?RzRLN1d3bnlCQnBVVmVyMkE4S3J1OHV3WmxUdFNDM2M0V0tvYUlDL2pTcHRH?=
+ =?utf-8?B?QWZRSWVOZHkyT3FaRE1RNWpxNzlLVCt5V0FLYjczVTV4WWRQcy9PZVU1SjFH?=
+ =?utf-8?B?NHVpZXhGZjR3cDhmVmNrVHVqS0QvSklFdEVRNDJ3d1A1K2tRQWl3TmdBTExD?=
+ =?utf-8?B?TEVrM09qSVRWZi9KbVV3TGFpTG05UjZITGgzZTJMaVJyVjB4cW5rRzgzK2o2?=
+ =?utf-8?B?WkMvcUMrZSsyUGVxcXpLMEFhL1Ntemp2emxRTjJQSUlrV2ZBZXEyQmR2YTNQ?=
+ =?utf-8?B?Y2thNlBPWXlQOUNlOXVoZ0h0MldPdkVZOWpVRWFtcXJUblg3aEkzUi84VUdC?=
+ =?utf-8?B?Q0RIdHVGdDcvWlg1ZUg5aDRET0Z6WG5iZ1R4L1FZdXo5elUrNkpWeXZZZFRU?=
+ =?utf-8?B?K0tVQnpNaFZjODlWcWVMSkZsRlJIclBFQVhweTJhS0FKVThrK0VhTXNYWWZN?=
+ =?utf-8?B?WEkrRDNwYWJQdXoxcGwwejl5YWtmWW5XV1Axam14QnpNN056OGN3OVozUFpq?=
+ =?utf-8?B?U3BjR1hlK0F3eGJja1M4OGNsT2x1WlhSem5RMjdPSmtsSlBpbUdZcHZpekU2?=
+ =?utf-8?B?QjdtSGJmWkkzZTZ5RnhIOTVLSE9kMGh1NXJoaWRCRW9udXJlNkZtZ1JzQkM5?=
+ =?utf-8?B?MFVWOTdlbjhOeHVxdHc3MGV0NzFIcmJabjVXZWg2TUpIc29icWJkTnEyTndn?=
+ =?utf-8?B?UGJuNkU0UWdtZEMzblQ5S3FvTXpOUy9ZQ1RoSWFMTFZPUmlsZFIrVW1kQVVZ?=
+ =?utf-8?B?bmtqOFFWNjExOVU4cW9FdmI4QUp5VVJRTWltUWRYQkppaVpzUGd6STdmeFFI?=
+ =?utf-8?B?ZUJrV2lUVUR6N1lRcCtaOXZJZXZtS2hnaUlzQWpyT1FUY2dhbzZQaSs3TTBw?=
+ =?utf-8?B?QXBhK2NyelJtR1EyS3Vubm8rU0o4Tk5TdHR3aTR2ZkhXaFMrSGhma0JVdWZN?=
+ =?utf-8?B?SHZTYWs4VjVqUVJhMjYrZVpEWXJ4YkpOdTYvVW9QUGpNdE9KbU5wbmQ5ejBp?=
+ =?utf-8?B?U3NjV0Y1bWtzcUpUY2JRNEFQb1BWcUErcldyakVPOWJjczY3MlZTOHZBT3JZ?=
+ =?utf-8?B?anNIazNkSTRQaWdnUTNQcTk5N0VhYjJ3cTk0NkR6bFQ2cU1GNWJhcXd6ZTUx?=
+ =?utf-8?B?SVNzMnc1RExSSktENXJSRjRZYkg5ZFNmSEJ1b0tWL0VNR20ybmROa3ZHYm1w?=
+ =?utf-8?B?OUEzSmVVMUFJK08zM1lYdDBmU3dhZHJuODZNN1VyRHJEV3F4UkNVdWFkUVN1?=
+ =?utf-8?B?TmtTZHNTei9iZDBGRklGMURrUVRrNTVFRDhFMnQ1R2JKK0ErSzY4dHBhNm5r?=
+ =?utf-8?B?MDBVNzV6L2lwdFVmUDcvdS9Wd29teVJWdnk1QkJHQkVPNVUzaVZ5NktNaHA5?=
+ =?utf-8?B?d0cyZVZTTjI2TDZLY1FVV25OYU45eFE3U00wQUtYR00xTy9JSE9yaG5wRUts?=
+ =?utf-8?B?NHI5a1BZUFM1QUsxMnk5OExJU0JYYUZPTjR5QnBJTG82OU1MaWhCUGlTMlBy?=
+ =?utf-8?B?bmJOcnZyZnZOUWVVSytBYXl5TkxucW5qR3JZOElKQ1I4VWg2ZDNqN1VmbFlN?=
+ =?utf-8?B?UEFRTEdmZi9MRmVhS3p6SHJGVlB0UXZ3MURMM09na0E2ODRIVzFYV1hFZldi?=
+ =?utf-8?Q?z4htdZPeXrykSZf06g0j40g=3D?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: 97ad158f-0ba5-4970-a297-08dc8b95d125
+X-MS-Exchange-CrossTenant-AuthSource: MN6PR11MB8102.namprd11.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Jun 2024 10:17:08.1176 (UTC)
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Jun 2024 10:44:35.5887 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: QOwSUR2oiThW1gKplDWqi+O1RL8VPe8zrOlH2May31Vr1prEtlcKpiXoIGz7RYy9Gsnym9YZbmj7eUP31BNRCX0jP3XyLUuHPrE5dJRPWNg=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA2PR11MB4844
+X-MS-Exchange-CrossTenant-UserPrincipalName: FguWNVrvTBSivj34+R/jusV8Cw0w6Kp4gvoPQmQ5UIyGev0eAqWFlAazrqu4NoHAxU4cpuKSpvhipY2C1WNCvShsbHime7m2OXbTsFWCrC0=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH0PR11MB5282
 X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1718273843; x=1749809843;
+ t=1718275492; x=1749811492;
  h=message-id:date:subject:to:cc:references:from:
  in-reply-to:content-transfer-encoding:mime-version;
- bh=iBJamngYZKXLn6rvVBeZ2s8skX45ymLRpcunNqtX4tg=;
- b=k+pP5tTIq02KeG+qeUTcAPvVzTZeosUWEAY0AFM6qWGv2uwyL3Z3zXSy
- P7pTj88fSppMPA/9cQiLoq9HpE9GWPW32vth5WNuCV0LCoVWTGADVGCI/
- lpXnyR5yR8okUWe1UTRWatmD9T8KpK8Lk9l2pT3auqrPeBbzdhOJkdMa+
- iObyfyoNzJ9MI9KsoY8Y0Nu1VgzBQX6ZwEtWl2HKjcVrLCSrrLeCtFuKy
- uMpAamh4pZuECTBAyJvFLd7LcaMmVXfjWkEp9xnbpYf98lnsyw4zzeldn
- BQqTgmNR5/6G9a59fBrIP22f+FnWKP8n3kqMveiVv8WXotyjxpGp+CqTL
- g==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ bh=Es0WubLex21Ry0RDpfG9frwKNak64iSuSr72vabtOCI=;
+ b=HlQpx9M7XeZfYBUB8N7PGCVQ2qp/UURh4frSXOtkZp7ikcYJl+OrBFIi
+ cuRASVZ1JpE0iGAabyEguxO3wHHJ9QDoyrwKrtFIlQoM2n7HCBP/k9g92
+ 4kf8oduCAh0/SXHgYn9FvKNJyl5rwizoM5l2NUxZcd7ROST7CR1LKK7Jy
+ 2IS3pqd82LybuBFyxu2v+1EGDuNeWK1nuOqD9BxEQ3b/4xYDOzJzATiog
+ vjxv5fTHCS2NUKhoEbTRSZDanFbBP+YsvbilS2ENY48nnBWA1V1V50SDB
+ i+J+UL8Wqlg1ML+SIQLR2KeUo4CPsF9I+G2srrHgV1G/xa8Rki2Zdi2bH
+ w==;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=k+pP5tTI
+ header.s=Intel header.b=HlQpx9M7
 X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH iwl-net] idpf: extend tx watchdog
- timeout
+Subject: Re: [Intel-wired-lan] [PATCH iwl-net 0/3] ice: fix synchronization
+ between .ndo_bpf() and reset
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -236,190 +239,61 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: intel-wired-lan@lists.osuosl.org,
- Sridhar Samudrala <sridhar.samudrala@intel.com>,
- David Decotigny <ddecotig@gmail.com>, netdev@vger.kernel.org
+Cc: Maciej Fijalkowski <maciej.fijalkowski@intel.com>,
+ Jesper Dangaard Brouer <hawk@kernel.org>,
+ Daniel Borkmann <daniel@iogearbox.net>, netdev@vger.kernel.org,
+ John Fastabend <john.fastabend@gmail.com>, Alexei
+ Starovoitov <ast@kernel.org>, linux-kernel@vger.kernel.org,
+ Eric Dumazet <edumazet@google.com>, Michal
+ Kubiak <michal.kubiak@intel.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
+ intel-wired-lan@lists.osuosl.org, bpf@vger.kernel.org,
+ Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>,
+ magnus.karlsson@intel.com
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Josh Hay <joshua.a.hay@intel.com>
-Date: Wed, 12 Jun 2024 23:36:29 -0700
-
-> 
-> 
-> On 6/12/2024 2:34 AM, Alexander Lobakin wrote:
->> From: Josh Hay <joshua.a.hay@intel.com>
->> Date: Tue, 11 Jun 2024 11:13:53 -0700
->>
->>>
->>>
->>> On 6/11/2024 3:44 AM, Alexander Lobakin wrote:
->>>> From: David Decotigny <ddecotig@gmail.com>
->>>> Date: Tue, 4 Jun 2024 16:34:48 -0700
->>
->> [...]
->>
->>>> Note that there are several patches fixing Tx (incl. timeouts) in my
->>>> tree, including yours (Joshua's) which you somehow didn't send yet ._.
->>>> Maybe start from them first?
->>>
->>> I believe it was you who specifically asked our team to defer pushing
->>> any upstream patches while you were working on the XDP series "to avoid
->>> having to rebase", which was a reasonable request at the time. We also
->>
->> It was only related to the virtchnl refactoring and later I cancelled
->> that when I realized it will go earlier than our series.
->>
->>> had no reason to believe the existing upstream idpf implementation was
->>> experiencing timeouts (it is being tested by numerous validation teams).
->>> So there was no urgency to get those patches upstream. Which patches in
->>> your tree do you believe fix specific timeout situations? It appears you
->>
->> [0][1][2]
->>
->>> pulled in some of the changes from the out-of-tree driver, but those
->>> were all enhancements. It wasn't until the workload that David mentioned
->>
->> No, there are all fixes.
->>
->> [0] is your from the OOT, extended. > [1] is mine and never was in the
->> OOT.
->> [2] is your from the OOT, extended by Michał.
-> 
-> My main point was since no other tx timeouts have been reported on the
-> upstream driver, none of these seem like critical fixes. This particular
-
-Lots of bugs have never been reported, this doesn't mean they don't exist.
-
-> timeout signature did not seem to match any of these in general. E.g. it
-> would have been obvious if the timeout was because of what [0] fixes.
-> It's also possible these timeouts did not manifest on the upstream
-> driver because it is missing other OOT changes.
-
-What I'm saying is that why not try to reproduce the issues that this
-patch tries to hide on my tree with [0][1][2] first and see whether
-they're still here? If they fix the issue, then why extend the timeout?
-
-> 
->>
->> They really do help.
-> 
-> No disagreement there. I would've loved to push these changes sooner,
-> but we already covered why that didn't happen.
-
-Because "they're not critical"? Intel's been having Tx timeouts on idpf
-for years. I'd say that at least [1] is critical since this is obvious
-bug. Without [2], XDP just doesn't work on idpf.
-Why isn't [0] critical since without this patch, you stash partial
-packets? And in some cases, ntc/ntu can go beyond the ring size? Is it okay?
-
-> 
->>
->> Note that there's one more Tx timeout patch from you in the OOT, but it
->> actually broke Tx xD
-> 
-> If you are implying that our team would commit code that is knowingly
-> broken, that is absolutely not true. I believe what you're referring to
-
-I didn't say that. I just said that I tried to pull your latest yet
-another Tx timeout fix and with it, I have more timeouts than without.
-
-> is a change that introduced a tx timeout that also took a very specific
-> workload to trigger it. That issue was fixed and not applicable to the
-> current upstream implementation, so I do not see how that is relevant to
-> this conversation.
-
-It was just a side note, don't focus too much on such instead of really
-important stuff.
-
-> 
->>
->>> was run on the current driver that we had any indication there were
->>> timeout issues.
->>>
+On 6/13/24 10:54, Larysa Zaremba wrote:
+> On Wed, Jun 12, 2024 at 02:09:35PM -0700, Jakub Kicinski wrote:
+>> On Wed, 12 Jun 2024 08:56:38 +0200 Larysa Zaremba wrote:
+>>> On Tue, Jun 11, 2024 at 07:38:37PM -0700, Jakub Kicinski wrote:
+>>>> On Mon, 10 Jun 2024 17:37:12 +0200 Larysa Zaremba wrote:
+>>>>> Fix the problems that are triggered by tx_timeout and ice_xdp() calls,
+>>>>> including both pool and program operations.
 >>>>
->>>> I don't buy 30 seconds, at least for now. Maybe I'm missing something.
->>>>
->>>> Nacked-by: Alexander Lobakin <aleksander.lobakin@intel.com>
+>>>> Is there really no way for ice to fix the locking? :(
+>>>> The busy loops and trylocks() are not great, and seem like duct tape.
 >>>
+>>> The locking mechanisms I use here do not look pretty, but if I am not missing
+>>> anything, the synchronization they provide must be robust.
+>>
+>> Robust as in they may be correct here, but you lose lockdep and all
+>> other infra normal mutex would give you.
+>>
+> 
+> I know, but __netif_queue_set_napi() requires rtnl_lock() inside the potential
+> critical section and creates a deadlock this way. However, after reading
+> patches that introduce this function, I think it is called too early in the
+> configuration. Seems like it should be called somewhere right after
+> netif_set_real_num_rx/_tx_queues(), much later in the configuration where we
+> already hold the rtnl_lock(). In such way, ice_vsi_rebuild() could be protected
+> with an internal mutex. WDYT?
+> 
+>>> A prettier way of protecting the same critical sections would be replacing
+>>> ICE_CFG_BUSY around ice_vsi_rebuild() with rtnl_lock(), this would eliminate
+>>> locking code from .ndo_bpf() altogether, ice_rebuild_pending() logic will have
+>>> to stay.
 >>>
->>> In the process of debugging the newly discovered timeout, our
->>> architecture team made it clear that 5 seconds is too low for this type
->>> of device, with a non deterministic pipeline where packets can take a
->>> number of exception/slow paths. Admittedly, we don't know the exact
+>>> At some point I have decided to avoid using rtnl_lock(), if I do not have to. I
+>>> think this is a goal worth pursuing?
 >>
->> Slowpath which takes 30 seconds to complete, seriously?
-> 
-> The architecture team said 5s is too low. 30s was chosen to give ample
-> cushion to avoid changing the timeout should this situation come up again.
+>> Is the reset for failure recovery, rather than reconfiguration?
+>> If so netif_device_detach() is generally the best way of avoiding
+>> getting called (I think I mentioned it to someone @intal recently).
 
-Just "said", without any details why? Now I can say that 5 is too much
-and we need to have 1 second there. Why believe them, not me, w/o any
-arguments/explanation?
-
-(I at least have an argument that usually packets get sent in a couple
- us or faster and even 1 second between triggering the sending and
- receiving a completion is too much and if that happens, there were
- some HW issues)
+for the reference, it was to Dawid here:
+https://lore.kernel.org/netdev/20240610194756.5be5be90@kernel.org/
 
 > 
->>
->>> number, so the solution for the time being was to bump it up with a
->>> comfortable buffer. As we tune things and debug with various workloads,
->>> we can bring it back down. As David mentioned, there is precedent for an
->>> extended timeout for smartnics. Why is it suddenly unacceptable for
->>> Intel's device?
->>
->> I don't know where this "suddenly" comes from.
->> Because even 5 seconds is too much.
->> HW usually send packets in microseconds if not faster. Extending the
->> timeout will hide real issues and make debugging more difficult.
-> 
-> Can you please elaborate on exactly why it would be more difficult? If
-> something is actually wrong in HW, it seems unlikely extra time would
-> correct it. If something is functionally wrong in the driver, why does
-> it matter if it's 5s, 15s, or 30s? It will timeout just the same.
+> AFAIK, netif_device_detach() does not affect .ndo_bpf() calls. We were trying
+> such approach with idpf and it does work for ethtool, but not for XDP.
 
-HW can hang and perform a reset and if you have 30 seconds for Tx
-timeout, you can even not notice it. Having 5 seconds or lower for the
-timeout will most likely spot it.
-
-> 
->>
->> I suspect this all is for OOO packets with an explicit sending timestamp
->> passed from the userspace, but as I said, you need to teach the kernel
->> watchdog to account them.
-> 
-> Out of order completions can happen for numerous reasons, some of which
-> the driver will know nothing about, i.e. the userspace timestamps are
-> not the only things that trigger OOO completions. We can detect that
-> we're processing completion B before A, but it's only at that time that
-> we can tell the stack to _maybe_ expect a delayed completion. I'm open
-> to discussing this further, but it does not seem like a simple solution
-> that can be implemented in the immediate future.
-
-I still didn't get an explanation why a packet can receive an OOO
-completion in whole 30 seconds instead of a couple microseconds.
-I also don't understand why we can receive an OOO completion for packets
-that were send without an explicit timestamp from the userspace. Without
-the timestamp (or some sort of priority etc.), they should be sent in
-the same order as they were passed to the driver, right? If so, why a
-packet can get an OOO completion, which means it was sent not in the
-same order as the driver got them?
-Does HW do some prioritizing even if the kernel didn't ask for it? But
-even if so, HW shouldn't in general delay sending for 30 seconds?
-
-> 
->> Otherwise, I can ask the driver to send a packet in 31 seconds, what
->> then, there will be a timeout and you will send a patch to extend it to
->> 60 seconds?
-> 
-> I hope there are checks in the stack itself that would not allow the
-> packet to be scheduled beyond the timeout window :)
-
-I don't think so, but since I haven't read the actual code, I won't say
-anything particular. Anyway, it was just a side note, my main concerns
-are above.
-
-Thanks,
-Olek
