@@ -1,96 +1,94 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 113ED906D89
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 13 Jun 2024 14:01:47 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id BE599413F1;
-	Thu, 13 Jun 2024 12:01:45 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 080aLZLUnGej; Thu, 13 Jun 2024 12:01:44 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 6A8A4413F5
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1718280104;
-	bh=A8kuU8K2mVJKSATb/bPZXO506eHwWgzYgC0axO5cK2w=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=LDX3b5AkhVadC86mqXeKcJ3/TojwhPuuqeGWByHHbdzvKy8zASfBQJ2ZdqXBmz27J
-	 Bo9i9K7yDYb5jtNFiTyagey7mZlCsj9LRrQMTIV++aTuWWu3nfDKadWzlEAOLt9Nih
-	 igYPXeqNS6aqSTysfpbA5Y1BEGD+GtTMiwgduuswH5weFLw2TM5tvgzkuEaU2jOIdk
-	 5NSPlkbvq1tz+ij/vmJeVP/mCzgQRf0m9dodegsVyonl9VUulnQVBE1w2iPzd0Asdr
-	 Rr+BrpETZCAHhvgboupuF5zv5z9MmvgVqvCJ+/cSNFbf10nV0UkUrQB3YGj38xz7f6
-	 eNdNy3wfTbpoQ==
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 6A8A4413F5;
-	Thu, 13 Jun 2024 12:01:44 +0000 (UTC)
-X-Original-To: intel-wired-lan@osuosl.org
-Delivered-To: intel-wired-lan@osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 1226C1BF359
- for <intel-wired-lan@osuosl.org>; Thu, 13 Jun 2024 12:01:42 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1800A90713A
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 13 Jun 2024 14:35:13 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id F356D60B60
- for <intel-wired-lan@osuosl.org>; Thu, 13 Jun 2024 12:01:41 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id B6CA06100F;
+	Thu, 13 Jun 2024 12:35:11 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id vzuyYvaaoWXc for <intel-wired-lan@osuosl.org>;
- Thu, 13 Jun 2024 12:01:41 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.16;
- helo=mgamail.intel.com; envelope-from=vitaly.lifshits@intel.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org D2E6A6071E
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D2E6A6071E
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.16])
- by smtp3.osuosl.org (Postfix) with ESMTPS id D2E6A6071E
- for <intel-wired-lan@osuosl.org>; Thu, 13 Jun 2024 12:01:40 +0000 (UTC)
-X-CSE-ConnectionGUID: 9c4IhYrKSAmJIRkJC/TdDg==
-X-CSE-MsgGUID: uRlgVghKRJy6LQXQWOtTUg==
-X-IronPort-AV: E=McAfee;i="6700,10204,11101"; a="15221364"
-X-IronPort-AV: E=Sophos;i="6.08,235,1712646000"; d="scan'208";a="15221364"
-Received: from orviesa006.jf.intel.com ([10.64.159.146])
- by orvoesa108.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 Jun 2024 05:01:40 -0700
-X-CSE-ConnectionGUID: 7BkJ3rFLQdGdBRAgd9snIg==
-X-CSE-MsgGUID: YWSIRo5EQ5m/qs3sk7czHA==
+ id HqlybR92pmQe; Thu, 13 Jun 2024 12:35:10 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1FE8860EFC
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1718282109;
+	bh=vcD40R4Y/wHmwLE7Co3Sb6PhH3R94fF5nK4daixChxI=;
+	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=j7fvT/WnUEa8/yCTm9SWO9bICfCoXUP2t/xSZLRsnkdGn7mxY3J1EKyNMRojR2Cc0
+	 AwS0ijWYA6oftJF8+6RSdYJIvlkSYkroQ0C9+d+l5R42wFnlK1ZjJKCm+laT0clvoL
+	 xib0VvGg1FekGMgrZN71KyCYxRKRueBjFYWYP3s3pNcW7Uk2/XhDB9j+JQzlwNXJ2f
+	 GOEQ0hdasKCl9QPns+0n+ckC0fzEI1LUTB9eYRg8JR+2dw21wMZJk4RmX6SIRsNp+p
+	 mY1TC5R7GftjIiPuxND+wzuMSN2EdYRg3XcHAFfQyMbxcEFwU13wqlxMi9k6wSPqL7
+	 hLJMf8H5lCruA==
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp3.osuosl.org (Postfix) with ESMTP id 1FE8860EFC;
+	Thu, 13 Jun 2024 12:35:09 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 6403C1BF34E
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Jun 2024 12:35:07 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp2.osuosl.org (Postfix) with ESMTP id 4E984413F5
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Jun 2024 12:35:07 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 8Y8sMBMzNJ_t for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 13 Jun 2024 12:35:06 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.21;
+ helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 972DF401D5
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 972DF401D5
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.21])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 972DF401D5
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 13 Jun 2024 12:35:05 +0000 (UTC)
+X-CSE-ConnectionGUID: xsczAsqwSbOJsW6FdI1G2Q==
+X-CSE-MsgGUID: +ZoVb5EfT6+MTD2KHidlcw==
+X-IronPort-AV: E=McAfee;i="6700,10204,11101"; a="15062899"
+X-IronPort-AV: E=Sophos;i="6.08,235,1712646000"; d="scan'208";a="15062899"
+Received: from orviesa008.jf.intel.com ([10.64.159.148])
+ by orvoesa113.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 13 Jun 2024 05:35:04 -0700
+X-CSE-ConnectionGUID: 55MTXgK7QeG1AH0bFUmL4w==
+X-CSE-MsgGUID: Z3VdyJZVT42bhyXWwbaAOw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.08,235,1712646000"; d="scan'208";a="40598400"
-Received: from unknown (HELO ccdlinuxdev11.iil.intel.com) ([143.185.162.51])
- by orviesa006.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 Jun 2024 05:01:38 -0700
-From: Vitaly Lifshits <vitaly.lifshits@intel.com>
-To: intel-wired-lan@osuosl.org
-Date: Thu, 13 Jun 2024 15:01:34 +0300
-Message-Id: <20240613120134.224585-1-vitaly.lifshits@intel.com>
-X-Mailer: git-send-email 2.34.1
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+X-IronPort-AV: E=Sophos;i="6.08,235,1712646000"; d="scan'208";a="40772608"
+Received: from lkp-server01.sh.intel.com (HELO 0b1fe898bbad) ([10.239.97.150])
+ by orviesa008.jf.intel.com with ESMTP; 13 Jun 2024 05:35:03 -0700
+Received: from kbuild by 0b1fe898bbad with local (Exim 4.96)
+ (envelope-from <lkp@intel.com>) id 1sHjfR-00004V-12
+ for intel-wired-lan@lists.osuosl.org; Thu, 13 Jun 2024 12:35:01 +0000
+Date: Thu, 13 Jun 2024 20:34:48 +0800
+From: kernel test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <202406132046.226FSLVO-lkp@intel.com>
+User-Agent: s-nail v14.9.24
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1718280101; x=1749816101;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=jzxt91ify5C39YkL6PBCoVITNVYS8NT+18ohcOj360w=;
- b=jThDJfJp6R+kvDlhU0X1cvgnTRDoNyBd0frMl2Mhvd+bEWl6OJj7Y+sN
- nnLlNK2eyS7QNgTBLvIq6lM0tnNDXeEOKrzsW9zI5p2AojaMMBihI/PU5
- EGpzzbrP+tgqhF6oI2o6wNOncPnu5ahqfvszHZmeeaVcEK3MvjeA9yI59
- I7QgOQJJE2YXKsoAYd40i2EKjtbJmRbT8zm6BAW5vApEBoKv9gXeudg2g
- AYIfR4cLOcRPRBu7PBnKR2E+sVKOzWVcu9gQx+auW1ZD9Cxf+XjAUZqWC
- 4vQl0/QxhC4rlPshEvJvTIYyfBVJoJuPRNanCOqH33SFyIzH4G6dLoNCt
+ t=1718282105; x=1749818105;
+ h=date:from:to:subject:message-id;
+ bh=7QqKCuRHyn7t06Otj4cAFF1p81AOnftwhT6G9YudaWs=;
+ b=YiImc/mPWCzgZktMmgIOUIRb2NouOEDnkfeB9ZnEepXCK/DbheMiGC2L
+ /OXzDdlfD8CBTn4R9/yADtiXWuxhvQk2R5/A5aRO3/2YyALA2WwFundXy
+ ME3/dAHZ/cmoWl2zzUL2USjg/HKYPzb5Ek/0HXiBiUo7zHni7it+OG6Zw
+ Ov/3gYKObmRxTW/xFb+SVWfpRl0y9H5iogr6cS+UcgEvyfpffmjXdPfV8
+ 6DtbT4PdyeAM+3w1nrACmOsYPmmPSbuFbNN/p0UWiP9SVeRO2mXeInSgD
+ pxIbygVi0Ce59R/m3l5GKtNBijKmfuPqxUe9UE3uzFObxUKBF1tG6QooA
  A==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=jThDJfJp
-Subject: [Intel-wired-lan] [PATCH iwl-net v1 1/1] e1000e: fix force smbus
- during suspend flow
+ header.s=Intel header.b=YiImc/mP
+Subject: [Intel-wired-lan] [tnguy-net-queue:1GbE] BUILD SUCCESS
+ c96737dd95ba96be2398e4a785177d30f1c9d7b8
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -103,126 +101,98 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: hui.wang@canonical.com, Vitaly Lifshits <vitaly.lifshits@intel.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Commit bfd546a552e1 ("e1000e: move force SMBUS near the end of
-enable_ulp function") fixed an issue with loss of PHY access during
-suspend on Meteor Lake systems. However, it introduced a regression
-on older devices, such as [8086:15B8], [8086:15F9], [8086:15BE].
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git 1GbE
+branch HEAD: c96737dd95ba96be2398e4a785177d30f1c9d7b8  Revert "igc: fix a log entry using uninitialized netdev"
 
-This patch aims to fix the secondary regression, by limiting the scope
-of the changes in that commit to Meteor Lake platforms only.
+elapsed time: 2609m
 
-Fixes: bfd546a552e1 ("e1000e: move force SMBUS near the end of enable_ulp function")
-Signed-off-by: Vitaly Lifshits <vitaly.lifshits@intel.com>
-Link: https://bugzilla.kernel.org/show_bug.cgi?id=218940
----
- drivers/net/ethernet/intel/e1000e/ich8lan.c | 68 +++++++++++++++------
- 1 file changed, 48 insertions(+), 20 deletions(-)
+configs tested: 76
+configs skipped: 3
 
-diff --git a/drivers/net/ethernet/intel/e1000e/ich8lan.c b/drivers/net/ethernet/intel/e1000e/ich8lan.c
-index 2e98a2a0bead..7b1da97e82bf 100644
---- a/drivers/net/ethernet/intel/e1000e/ich8lan.c
-+++ b/drivers/net/ethernet/intel/e1000e/ich8lan.c
-@@ -137,6 +137,7 @@ static void e1000_gate_hw_phy_config_ich8lan(struct e1000_hw *hw, bool gate);
- static s32 e1000_disable_ulp_lpt_lp(struct e1000_hw *hw, bool force);
- static s32 e1000_setup_copper_link_pch_lpt(struct e1000_hw *hw);
- static s32 e1000_oem_bits_config_ich8lan(struct e1000_hw *hw, bool d0_state);
-+static s32 e1000e_force_smbus(struct e1000_hw *hw);
- 
- static inline u16 __er16flash(struct e1000_hw *hw, unsigned long reg)
- {
-@@ -1108,6 +1109,41 @@ static s32 e1000_platform_pm_pch_lpt(struct e1000_hw *hw, bool link)
- 	return 0;
- }
- 
-+/**
-+ *  e1000e_force_smbus
-+ *  @hw: pointer to the HW structure
-+ *
-+ *  Force the MAC and the PHY to SMBUS mode.
-+ **/
-+static s32 e1000e_force_smbus(struct e1000_hw *hw)
-+{
-+	u16 smb_ctrl = 0;
-+	u32 ctrl_ext = 0;
-+	s32 ret_val = 0;
-+
-+	/* Switching PHY interface always returns MDI error
-+	 * so disable retry mechanism to avoid wasting time
-+	 */
-+	e1000e_disable_phy_retry(hw);
-+
-+	/* Force SMBus mode in the PHY */
-+	ret_val = e1000_read_phy_reg_hv_locked(hw, CV_SMB_CTRL, &smb_ctrl);
-+	if (ret_val)
-+		return ret_val;
-+
-+	smb_ctrl |= CV_SMB_CTRL_FORCE_SMBUS;
-+	e1000_write_phy_reg_hv_locked(hw, CV_SMB_CTRL, smb_ctrl);
-+
-+	e1000e_enable_phy_retry(hw);
-+
-+	/* Force SMBus mode in the MAC */
-+	ctrl_ext = er32(CTRL_EXT);
-+	ctrl_ext |= E1000_CTRL_EXT_FORCE_SMBUS;
-+	ew32(CTRL_EXT, ctrl_ext);
-+
-+	return 0;
-+}
-+
- /**
-  *  e1000_enable_ulp_lpt_lp - configure Ultra Low Power mode for LynxPoint-LP
-  *  @hw: pointer to the HW structure
-@@ -1165,6 +1201,14 @@ s32 e1000_enable_ulp_lpt_lp(struct e1000_hw *hw, bool to_sx)
- 	if (ret_val)
- 		goto out;
- 
-+	if (hw->mac.type != e1000_pch_mtp) {
-+		ret_val = e1000e_force_smbus(hw);
-+		if (ret_val) {
-+			e_dbg("Failed to force SMBUS: %d\n", ret_val);
-+			goto out;
-+		}
-+	}
-+
- 	/* Si workaround for ULP entry flow on i127/rev6 h/w.  Enable
- 	 * LPLU and disable Gig speed when entering ULP
- 	 */
-@@ -1225,27 +1269,11 @@ s32 e1000_enable_ulp_lpt_lp(struct e1000_hw *hw, bool to_sx)
- 	}
- 
- release:
--	/* Switching PHY interface always returns MDI error
--	 * so disable retry mechanism to avoid wasting time
--	 */
--	e1000e_disable_phy_retry(hw);
--
--	/* Force SMBus mode in PHY */
--	ret_val = e1000_read_phy_reg_hv_locked(hw, CV_SMB_CTRL, &phy_reg);
--	if (ret_val) {
--		e1000e_enable_phy_retry(hw);
--		hw->phy.ops.release(hw);
--		goto out;
-+	if (hw->mac.type == e1000_pch_mtp) {
-+		ret_val = e1000e_force_smbus(hw);
-+		if (ret_val)
-+			e_dbg("Failed to force SMBUS: %d\n", ret_val);
- 	}
--	phy_reg |= CV_SMB_CTRL_FORCE_SMBUS;
--	e1000_write_phy_reg_hv_locked(hw, CV_SMB_CTRL, phy_reg);
--
--	e1000e_enable_phy_retry(hw);
--
--	/* Force SMBus mode in MAC */
--	mac_reg = er32(CTRL_EXT);
--	mac_reg |= E1000_CTRL_EXT_FORCE_SMBUS;
--	ew32(CTRL_EXT, mac_reg);
- 
- 	hw->phy.ops.release(hw);
- out:
+The following configs have been built successfully.
+More configs may be tested in the coming days.
+
+tested configs:
+alpha                             allnoconfig   gcc-13.2.0
+alpha                            allyesconfig   gcc-13.2.0
+alpha                               defconfig   gcc-13.2.0
+arc                               allnoconfig   gcc-13.2.0
+arc                                 defconfig   gcc-13.2.0
+arm                               allnoconfig   clang-19
+arm                                 defconfig   clang-14
+arm64                             allnoconfig   gcc-13.2.0
+arm64                               defconfig   gcc-13.2.0
+csky                              allnoconfig   gcc-13.2.0
+csky                                defconfig   gcc-13.2.0
+hexagon                          allmodconfig   clang-19
+hexagon                           allnoconfig   clang-19
+hexagon                          allyesconfig   clang-19
+hexagon                             defconfig   clang-19
+i386                             allmodconfig   gcc-13
+i386                              allnoconfig   gcc-13
+i386                             allyesconfig   gcc-13
+i386                                defconfig   clang-18
+loongarch                        allmodconfig   gcc-13.2.0
+loongarch                         allnoconfig   gcc-13.2.0
+loongarch                           defconfig   gcc-13.2.0
+m68k                             allmodconfig   gcc-13.2.0
+m68k                              allnoconfig   gcc-13.2.0
+m68k                             allyesconfig   gcc-13.2.0
+m68k                                defconfig   gcc-13.2.0
+microblaze                       allmodconfig   gcc-13.2.0
+microblaze                        allnoconfig   gcc-13.2.0
+microblaze                       allyesconfig   gcc-13.2.0
+microblaze                          defconfig   gcc-13.2.0
+mips                              allnoconfig   gcc-13.2.0
+mips                             allyesconfig   gcc-13.2.0
+nios2                            allmodconfig   gcc-13.2.0
+nios2                             allnoconfig   gcc-13.2.0
+nios2                            allyesconfig   gcc-13.2.0
+nios2                               defconfig   gcc-13.2.0
+openrisc                          allnoconfig   gcc-13.2.0
+openrisc                         allyesconfig   gcc-13.2.0
+openrisc                            defconfig   gcc-13.2.0
+parisc                           allmodconfig   gcc-13.2.0
+parisc                            allnoconfig   gcc-13.2.0
+parisc                           allyesconfig   gcc-13.2.0
+parisc                              defconfig   gcc-13.2.0
+parisc64                            defconfig   gcc-13.2.0
+powerpc                          allmodconfig   gcc-13.2.0
+powerpc                           allnoconfig   gcc-13.2.0
+powerpc                          allyesconfig   clang-19
+riscv                            allmodconfig   clang-19
+riscv                             allnoconfig   gcc-13.2.0
+riscv                            allyesconfig   clang-19
+riscv                               defconfig   clang-19
+s390                             allmodconfig   clang-19
+s390                              allnoconfig   clang-19
+s390                             allyesconfig   gcc-13.2.0
+s390                                defconfig   clang-19
+sh                               allmodconfig   gcc-13.2.0
+sh                                allnoconfig   gcc-13.2.0
+sh                               allyesconfig   gcc-13.2.0
+sh                                  defconfig   gcc-13.2.0
+sparc                            allmodconfig   gcc-13.2.0
+sparc                             allnoconfig   gcc-13.2.0
+sparc                               defconfig   gcc-13.2.0
+sparc64                          allmodconfig   gcc-13.2.0
+sparc64                          allyesconfig   gcc-13.2.0
+sparc64                             defconfig   gcc-13.2.0
+um                               allmodconfig   clang-19
+um                                allnoconfig   clang-17
+um                               allyesconfig   gcc-13
+um                                  defconfig   clang-19
+um                             i386_defconfig   gcc-13
+um                           x86_64_defconfig   clang-15
+x86_64                            allnoconfig   clang-18
+x86_64                           allyesconfig   clang-18
+x86_64                              defconfig   gcc-13
+x86_64                          rhel-8.3-rust   clang-18
+xtensa                            allnoconfig   gcc-13.2.0
+
 -- 
-2.34.1
-
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
