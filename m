@@ -1,98 +1,96 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 50898908C28
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 14 Jun 2024 14:59:55 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 95537908C58
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 14 Jun 2024 15:17:09 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id EB3FD41580;
-	Fri, 14 Jun 2024 12:59:53 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 2372281AEA;
+	Fri, 14 Jun 2024 13:17:08 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id ILfT9HduAlxh; Fri, 14 Jun 2024 12:59:51 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id JwvC2YqFBZjP; Fri, 14 Jun 2024 13:17:07 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org AC87D41461
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1B76381A39
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1718369990;
-	bh=KVR4lA0xTQx/YKfRAeXtGleUvGGpLw/b9ZxcGKHa4nA=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=fC+NFwoYFkWnvPkknoRVIlxhxs7dxKhOly6W9/DKrfAdXUludJPFMFbIDffuO8GYT
-	 MzjOFR7UK0D4YuwOpR9Jwc/AlNart+VKNarYXgBPCp+7d7oVVjfYxRohPh8G7NKMAy
-	 9r7Qmi8tiAaR9TP/Laahv8HZDQi3e5mvYTt3TOB+vD7jYS+phSEDCYuYVmc7J3tt9z
-	 F9Uw/fV4+H/VmWs3ygb3qmC7Eus00gNJgvagvG64rdmZ9DG4oRc3L5ovB+Xo4YCd2r
-	 r6ahZ2SH+dH7ZnSuFg/ZPLqT/Q3xopguULxJT8+fKgZY4rjx6J7Tf6Ijzptz5Ifdju
-	 ZAMGlTvRUNDlg==
+	s=default; t=1718371027;
+	bh=xINZR6+1wd4hl5509vBJtmOYRUw0xWdVs1qJ/ZRKrZk=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=iyqxmBcVeGULEF1bHAkwv70lBSPfYJ8GqUAR6fNfmqNWpFADFw/vtyjURnK+ocAgh
+	 4cH5uf10bTZaxqDKSOSiaKLCAV6UdQwdMS2UHFyAMMS9ICWJ9QzxP8yfJFsEty5AIq
+	 G5T377GonOQ6WO1I0rXxh15k6uCWjXNxV/vU2nMr2E8IXhoQxFALX6DrBnWc65rD4F
+	 3mzv6kVAMgbSU3Mg8CBMMtlspytMBQ6V81t3CYttXj8ww3J3RAQjNl7QQt/ASzD5HZ
+	 m/OH+CjOHBZRxawQoUnrvDQQeUuhHZWG5jbCK3AETO8Jlg63vsAPTbatLuxdyifstG
+	 G4W9Z6MKR9Z0Q==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id AC87D41461;
-	Fri, 14 Jun 2024 12:59:50 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 1B76381A39;
+	Fri, 14 Jun 2024 13:17:07 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 64A241BF331
- for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Jun 2024 12:59:47 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 4CFE81BF976
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Jun 2024 13:17:05 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id E57AB610D3
- for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Jun 2024 12:59:46 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 386F8610D6
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Jun 2024 13:17:05 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id aGxV6LXnKRjQ for <intel-wired-lan@lists.osuosl.org>;
- Fri, 14 Jun 2024 12:59:45 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.7;
- helo=mgamail.intel.com; envelope-from=anil.samal@intel.com;
+ id rECwW-q8qhlS for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 14 Jun 2024 13:17:04 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.12;
+ helo=mgamail.intel.com; envelope-from=ahmed.zaki@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org B87F6610D5
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B87F6610D5
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.7])
- by smtp3.osuosl.org (Postfix) with ESMTPS id B87F6610D5
- for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Jun 2024 12:59:45 +0000 (UTC)
-X-CSE-ConnectionGUID: 9UVTzj4HTzuudftM/8HRlA==
-X-CSE-MsgGUID: dP3iVHCeSdyKNyBK1wsOSg==
-X-IronPort-AV: E=McAfee;i="6700,10204,11103"; a="40669480"
-X-IronPort-AV: E=Sophos;i="6.08,237,1712646000"; d="scan'208";a="40669480"
-Received: from fmviesa009.fm.intel.com ([10.60.135.149])
- by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 14 Jun 2024 05:59:43 -0700
-X-CSE-ConnectionGUID: W20u6cjbRJGh0jyNbs69Yw==
-X-CSE-MsgGUID: GexFWiY/TR2j0vOzg76dRg==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org DF1FE610CF
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org DF1FE610CF
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.12])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id DF1FE610CF
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 14 Jun 2024 13:17:03 +0000 (UTC)
+X-CSE-ConnectionGUID: P6GPQRSIRF6NkV3ukwJirw==
+X-CSE-MsgGUID: o2lUi94PSHakgFzROg8jOg==
+X-IronPort-AV: E=McAfee;i="6700,10204,11103"; a="26673918"
+X-IronPort-AV: E=Sophos;i="6.08,237,1712646000"; d="scan'208";a="26673918"
+Received: from fmviesa001.fm.intel.com ([10.60.135.141])
+ by orvoesa104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 14 Jun 2024 06:16:58 -0700
+X-CSE-ConnectionGUID: 8VFvpNsgRAyvPxtFDU8XQg==
+X-CSE-MsgGUID: Ho35azoVTqicKZkZ8CW17A==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.08,237,1712646000"; d="scan'208";a="40593819"
-Received: from c3-1-server.sj.intel.com ([10.232.18.246])
- by fmviesa009-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 14 Jun 2024 05:59:43 -0700
-From: Anil Samal <anil.samal@intel.com>
+X-IronPort-AV: E=Sophos;i="6.08,237,1712646000"; d="scan'208";a="71687052"
+Received: from unknown (HELO azaki-desk1.intel.com) ([10.245.244.160])
+ by smtpauth.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 14 Jun 2024 06:16:53 -0700
+From: Ahmed Zaki <ahmed.zaki@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Fri, 14 Jun 2024 05:58:17 -0700
-Message-ID: <20240614125935.900102-4-anil.samal@intel.com>
-X-Mailer: git-send-email 2.44.0
-In-Reply-To: <20240614125935.900102-1-anil.samal@intel.com>
-References: <20240614125935.900102-1-anil.samal@intel.com>
+Date: Fri, 14 Jun 2024 07:18:42 -0600
+Message-ID: <20240614131842.277398-1-ahmed.zaki@intel.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1718369985; x=1749905985;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=butJjsOenTRqp5wUeSWwgRsawXI79TJFRc1m/nk9FO4=;
- b=PbW/uYUtdyNQ8RZCVcllqrrYockiqqE7KKAlo/+yJIuRbhbJHPL3VbQG
- QrwSi2q7RrFVHy8pDkGB6VQhgp649zScokCJ5KJHM1HgBLBgVfDCydByM
- M1V3j4JOz6u2C858EMw06bO0C7TPRNdsREkbx7iVZUZ7ML0x7t/6FVt/r
- vQVZs1/JJsu1yhUP4X+6ieqAApHmqGUZqgoyuN/+kPzH9RJUnmtd4DdAQ
- fWCOWy70SpVuNCzUPfkZzaReOm4oV+Kzc7Aht7d8NVA0DaIHufHNzxvch
- iCJMai3ZT7g41ytdr2eKBVcrguLbUx+PxSJPTFFmf6seTBfxoj7lgELxF
- w==;
+ t=1718371024; x=1749907024;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=vvhK7IRFIVJXTyKRo/6mCkuFIH1/XQhjzV6+mSnl6Zs=;
+ b=H7YxiyDjU0hqUp9P8rOPiKLItNNgOpslpYWNqwbZwgD1kEy/R+Ud/IMW
+ ipJ4PC01ILf1XBxlQNo09fvVHVbZmr1tQKfG3SB0L0+jBt4WmtnQ43rGh
+ LA3nn3iTPYtAuon14a0/oqzUmUKGhRRkY1CacY8NuvJQ02vOh5nibgWeo
+ bgrT7t3uHN0V0RoUwbvw7Q99UVXmU4HAXp744vftWkfnfegKCbIZYQkSR
+ jXDSVmZByOQdFPd6tgTjTAjX8ko6iT30UCqkMOjHCGipLuDpgIYYA45kY
+ pj+4lnpNDrB/zzqy9nNLYj4G+VvkidYJRet3WxZzHvoGkP6eOQMoatp4l
+ Q==;
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=PbW/uYUt
-Subject: [Intel-wired-lan] [PATCH iwl-next v3 3/3] ice: Implement driver
- functionality to dump serdes equalizer values
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=H7YxiyDj
+Subject: [Intel-wired-lan] [PATCH iwl-next] ice: Add a per-VF limit on
+ number of FDIR filters
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -105,377 +103,130 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, lukasz.czapnik@intel.com,
- Anil Samal <anil.samal@intel.com>, leszek.pepiak@intel.com,
- anthony.l.nguyen@intel.com, Simon Horman <horms@kernel.org>,
- przemyslaw.kitszel@intel.com
+Cc: Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Ahmed Zaki <ahmed.zaki@intel.com>, stable@vger.kernel.org,
+ Sridhar Samudrala <sridhar.samudrala@intel.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-To debug link issues in the field, serdes Tx/Rx equalizer values
-help to determine the health of serdes lane.
+While the iavf driver adds a s/w limit (128) on the number of FDIR
+filters that the VF can request, a malicious VF driver can request more
+than that and exhaust the resources for other VFs.
 
-Extend 'ethtool -d' option to dump serdes Tx/Rx equalizer.
-The following list of equalizer param is supported
-    a. rx_equalization_pre2
-    b. rx_equalization_pre1
-    c. rx_equalization_post1
-    d. rx_equalization_bflf
-    e. rx_equalization_bfhf
-    f. rx_equalization_drate
-    g. tx_equalization_pre1
-    h. tx_equalization_pre3
-    i. tx_equalization_atten
-    j. tx_equalization_post1
-    k. tx_equalization_pre2
+Add a similar limit in ice.
 
-Reviewed-by: Simon Horman <horms@kernel.org>
-Reviewed-by: Jesse Brandeburg <jesse.brandeburg@intel.com>
-Signed-off-by: Anil Samal <anil.samal@intel.com>
+CC: stable@vger.kernel.org
+Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+Suggested-by: Sridhar Samudrala <sridhar.samudrala@intel.com>
+Signed-off-by: Ahmed Zaki <ahmed.zaki@intel.com>
 ---
- .../net/ethernet/intel/ice/ice_adminq_cmd.h   |  51 +++++++
- drivers/net/ethernet/intel/ice/ice_common.c   |  37 +++++
- drivers/net/ethernet/intel/ice/ice_common.h   |   2 +
- drivers/net/ethernet/intel/ice/ice_ethtool.c  | 141 +++++++++++++++++-
- drivers/net/ethernet/intel/ice/ice_ethtool.h  |  19 +++
- 5 files changed, 248 insertions(+), 2 deletions(-)
+ .../net/ethernet/intel/ice/ice_ethtool_fdir.c    |  2 +-
+ drivers/net/ethernet/intel/ice/ice_fdir.h        |  3 +++
+ .../net/ethernet/intel/ice/ice_virtchnl_fdir.c   | 16 ++++++++++++++++
+ .../net/ethernet/intel/ice/ice_virtchnl_fdir.h   |  1 +
+ 4 files changed, 21 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h b/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
-index 9683842f8880..66f02988d549 100644
---- a/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
-+++ b/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
-@@ -1470,6 +1470,55 @@ struct ice_aqc_get_sensor_reading_resp {
- 	} data;
+diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool_fdir.c b/drivers/net/ethernet/intel/ice/ice_ethtool_fdir.c
+index e3cab8e98f52..5412eff8ef23 100644
+--- a/drivers/net/ethernet/intel/ice/ice_ethtool_fdir.c
++++ b/drivers/net/ethernet/intel/ice/ice_ethtool_fdir.c
+@@ -534,7 +534,7 @@ ice_parse_rx_flow_user_data(struct ethtool_rx_flow_spec *fsp,
+  *
+  * Returns the number of available flow director filters to this VSI
+  */
+-static int ice_fdir_num_avail_fltr(struct ice_hw *hw, struct ice_vsi *vsi)
++int ice_fdir_num_avail_fltr(struct ice_hw *hw, struct ice_vsi *vsi)
+ {
+ 	u16 vsi_num = ice_get_hw_vsi_num(hw, vsi->idx);
+ 	u16 num_guar;
+diff --git a/drivers/net/ethernet/intel/ice/ice_fdir.h b/drivers/net/ethernet/intel/ice/ice_fdir.h
+index 021ecbac7848..ab5b118daa2d 100644
+--- a/drivers/net/ethernet/intel/ice/ice_fdir.h
++++ b/drivers/net/ethernet/intel/ice/ice_fdir.h
+@@ -207,6 +207,8 @@ struct ice_fdir_base_pkt {
+ 	const u8 *tun_pkt;
  };
  
-+/* DNL call command (indirect 0x0682)
-+ * Struct is used for both command and response
-+ */
-+struct ice_aqc_dnl_call_command {
-+	u8 ctx; /* Used in command, reserved in response */
-+	u8 reserved;
-+	__le16 activity_id;
-+#define ICE_AQC_ACT_ID_DNL 0x1129
-+	__le32 reserved1;
-+	__le32 addr_high;
-+	__le32 addr_low;
-+};
++struct ice_vsi;
 +
-+struct ice_aqc_dnl_equa_param {
-+	__le16 data_in;
-+#define ICE_AQC_RX_EQU_SHIFT 8
-+#define ICE_AQC_RX_EQU_PRE2 (0x10 << ICE_AQC_RX_EQU_SHIFT)
-+#define ICE_AQC_RX_EQU_PRE1 (0x11 << ICE_AQC_RX_EQU_SHIFT)
-+#define ICE_AQC_RX_EQU_POST1 (0x12 << ICE_AQC_RX_EQU_SHIFT)
-+#define ICE_AQC_RX_EQU_BFLF (0x13 << ICE_AQC_RX_EQU_SHIFT)
-+#define ICE_AQC_RX_EQU_BFHF (0x14 << ICE_AQC_RX_EQU_SHIFT)
-+#define ICE_AQC_RX_EQU_DRATE (0x15 << ICE_AQC_RX_EQU_SHIFT)
-+#define ICE_AQC_TX_EQU_PRE1 0x0
-+#define ICE_AQC_TX_EQU_PRE3 0x3
-+#define ICE_AQC_TX_EQU_ATTEN 0x4
-+#define ICE_AQC_TX_EQU_POST1 0x8
-+#define ICE_AQC_TX_EQU_PRE2 0xC
-+	__le16 op_code_serdes_sel;
-+#define ICE_AQC_OP_CODE_SHIFT 4
-+#define ICE_AQC_OP_CODE_RX_EQU (0x9 << ICE_AQC_OP_CODE_SHIFT)
-+#define ICE_AQC_OP_CODE_TX_EQU (0x10 << ICE_AQC_OP_CODE_SHIFT)
-+	__le32 reserved[3];
-+};
+ int ice_alloc_fd_res_cntr(struct ice_hw *hw, u16 *cntr_id);
+ int ice_free_fd_res_cntr(struct ice_hw *hw, u16 cntr_id);
+ int ice_alloc_fd_guar_item(struct ice_hw *hw, u16 *cntr_id, u16 num_fltr);
+@@ -218,6 +220,7 @@ int
+ ice_fdir_get_gen_prgm_pkt(struct ice_hw *hw, struct ice_fdir_fltr *input,
+ 			  u8 *pkt, bool frag, bool tun);
+ int ice_get_fdir_cnt_all(struct ice_hw *hw);
++int ice_fdir_num_avail_fltr(struct ice_hw *hw, struct ice_vsi *vsi);
+ bool ice_fdir_is_dup_fltr(struct ice_hw *hw, struct ice_fdir_fltr *input);
+ bool ice_fdir_has_frag(enum ice_fltr_ptype flow);
+ struct ice_fdir_fltr *
+diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.c b/drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.c
+index b8df8d0b2d85..60bf71da53bd 100644
+--- a/drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.c
++++ b/drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.c
+@@ -550,6 +550,8 @@ static void ice_vc_fdir_reset_cnt_all(struct ice_vf_fdir *fdir)
+ 		fdir->fdir_fltr_cnt[flow][0] = 0;
+ 		fdir->fdir_fltr_cnt[flow][1] = 0;
+ 	}
 +
-+struct ice_aqc_dnl_equa_respon {
-+	/* Equalization value can be negative */
-+	int val;
-+	__le32 reserved[3];
-+};
-+
-+/* DNL call command/response buffer (indirect 0x0682) */
-+struct ice_aqc_dnl_call {
-+	union {
-+		struct ice_aqc_dnl_equa_param txrx_equa_reqs;
-+		__le32 stores[4];
-+		struct ice_aqc_dnl_equa_respon txrx_equa_resp;
-+	} sto;
-+};
-+
- struct ice_aqc_link_topo_params {
- 	u8 lport_num;
- 	u8 lport_num_valid;
-@@ -2573,6 +2622,7 @@ struct ice_aq_desc {
- 		struct ice_aqc_get_link_status get_link_status;
- 		struct ice_aqc_event_lan_overflow lan_overflow;
- 		struct ice_aqc_get_link_topo get_link_topo;
-+		struct ice_aqc_dnl_call_command dnl_call;
- 		struct ice_aqc_i2c read_write_i2c;
- 		struct ice_aqc_read_i2c_resp read_i2c_resp;
- 		struct ice_aqc_get_set_tx_topo get_set_tx_topo;
-@@ -2697,6 +2747,7 @@ enum ice_adminq_opc {
- 	ice_aqc_opc_set_phy_rec_clk_out			= 0x0630,
- 	ice_aqc_opc_get_phy_rec_clk_out			= 0x0631,
- 	ice_aqc_opc_get_sensor_reading			= 0x0632,
-+	ice_aqc_opc_dnl_call                            = 0x0682,
- 	ice_aqc_opc_get_link_topo			= 0x06E0,
- 	ice_aqc_opc_read_i2c				= 0x06E2,
- 	ice_aqc_opc_write_i2c				= 0x06E3,
-diff --git a/drivers/net/ethernet/intel/ice/ice_common.c b/drivers/net/ethernet/intel/ice/ice_common.c
-index 891fabfa4bb3..9cd649053ef8 100644
---- a/drivers/net/ethernet/intel/ice/ice_common.c
-+++ b/drivers/net/ethernet/intel/ice/ice_common.c
-@@ -3375,6 +3375,43 @@ int ice_update_link_info(struct ice_port_info *pi)
- 	return status;
- }
- 
-+/**
-+ * ice_aq_get_phy_equalization - function to read serdes equaliser
-+ * value from firmware using admin queue command.
-+ * @hw: pointer to the HW struct
-+ * @data_in: represents the serdes equalization parameter requested
-+ * @op_code: represents the serdes number and flag to represent tx or rx
-+ * @serdes_num: represents the serdes number
-+ * @output: pointer to the caller-supplied buffer to return serdes equaliser
-+ *
-+ * Return: non-zero status on error and 0 on success.
-+ */
-+int ice_aq_get_phy_equalization(struct ice_hw *hw, u16 data_in, u16 op_code,
-+				u8 serdes_num, int *output)
-+{
-+	struct ice_aqc_dnl_call_command *cmd;
-+	struct ice_aqc_dnl_call buf = {};
-+	struct ice_aq_desc desc;
-+	int err;
-+
-+	buf.sto.txrx_equa_reqs.data_in = cpu_to_le16(data_in);
-+	buf.sto.txrx_equa_reqs.op_code_serdes_sel =
-+		cpu_to_le16(op_code | (serdes_num & 0xF));
-+	cmd = &desc.params.dnl_call;
-+	ice_fill_dflt_direct_cmd_desc(&desc, ice_aqc_opc_dnl_call);
-+	desc.flags |= cpu_to_le16(ICE_AQ_FLAG_BUF |
-+				  ICE_AQ_FLAG_RD |
-+				  ICE_AQ_FLAG_SI);
-+	desc.datalen = cpu_to_le16(sizeof(struct ice_aqc_dnl_call));
-+	cmd->activity_id = cpu_to_le16(ICE_AQC_ACT_ID_DNL);
-+
-+	err = ice_aq_send_cmd(hw, &desc, &buf, sizeof(struct ice_aqc_dnl_call),
-+			      NULL);
-+	*output = err ? 0 : buf.sto.txrx_equa_resp.val;
-+
-+	return err;
-+}
-+
- #define FEC_REG_PORT(port) {	\
- 	FEC_CORR_LOW_REG_PORT##port,		\
- 	FEC_CORR_HIGH_REG_PORT##port,	\
-diff --git a/drivers/net/ethernet/intel/ice/ice_common.h b/drivers/net/ethernet/intel/ice/ice_common.h
-index 6227ec924bd2..9a9ff5924070 100644
---- a/drivers/net/ethernet/intel/ice/ice_common.h
-+++ b/drivers/net/ethernet/intel/ice/ice_common.h
-@@ -143,6 +143,8 @@ int
- ice_get_link_default_override(struct ice_link_default_override_tlv *ldo,
- 			      struct ice_port_info *pi);
- bool ice_is_phy_caps_an_enabled(struct ice_aqc_get_phy_caps_data *caps);
-+int ice_aq_get_phy_equalization(struct ice_hw *hw, u16 data_in, u16 op_code,
-+				u8 serdes_num, int *output);
- int
- ice_aq_get_fec_stats(struct ice_hw *hw, u16 pcs_quad, u16 pcs_port,
- 		     enum ice_fec_stats_types fec_type, u32 *output);
-diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool.c b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-index d9c73ff550ba..0d1d2b4ccee1 100644
---- a/drivers/net/ethernet/intel/ice/ice_ethtool.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ethtool.c
-@@ -463,7 +463,8 @@ ice_get_drvinfo(struct net_device *netdev, struct ethtool_drvinfo *drvinfo)
- 
- static int ice_get_regs_len(struct net_device __always_unused *netdev)
- {
--	return sizeof(ice_regs_dump_list);
-+	return (sizeof(ice_regs_dump_list) +
-+		sizeof(struct ice_regdump_to_ethtool));
++	fdir->fdir_fltr_cnt_total = 0;
  }
  
  /**
-@@ -681,6 +682,140 @@ static int ice_get_port_topology(struct ice_hw *hw, u8 lport,
- 	return 0;
- }
+@@ -1694,6 +1696,7 @@ ice_vc_add_fdir_fltr_post(struct ice_vf *vf, struct ice_vf_fdir_ctx *ctx,
+ 	resp->status = status;
+ 	resp->flow_id = conf->flow_id;
+ 	vf->fdir.fdir_fltr_cnt[conf->input.flow_type][is_tun]++;
++	vf->fdir.fdir_fltr_cnt_total++;
  
-+/**
-+ * ice_get_tx_rx_equa - read serdes tx rx equaliser param
-+ * @hw: pointer to the HW struct
-+ * @serdes_num: represents the serdes number
-+ * @ptr: structure to read all serdes parameter for given serdes
-+ *
-+ * Return: all serdes equalization parameter supported per serdes number
-+ */
-+static int ice_get_tx_rx_equa(struct ice_hw *hw, u8 serdes_num,
-+			      struct ice_serdes_equalization_to_ethtool *ptr)
-+{
-+	int err;
+ 	ret = ice_vc_send_msg_to_vf(vf, ctx->v_opcode, v_ret,
+ 				    (u8 *)resp, len);
+@@ -1758,6 +1761,7 @@ ice_vc_del_fdir_fltr_post(struct ice_vf *vf, struct ice_vf_fdir_ctx *ctx,
+ 	resp->status = status;
+ 	ice_vc_fdir_remove_entry(vf, conf, conf->flow_id);
+ 	vf->fdir.fdir_fltr_cnt[conf->input.flow_type][is_tun]--;
++	vf->fdir.fdir_fltr_cnt_total--;
+ 
+ 	ret = ice_vc_send_msg_to_vf(vf, ctx->v_opcode, v_ret,
+ 				    (u8 *)resp, len);
+@@ -2074,6 +2078,7 @@ int ice_vc_add_fdir_fltr(struct ice_vf *vf, u8 *msg)
+ 	struct virtchnl_fdir_add *stat = NULL;
+ 	struct virtchnl_fdir_fltr_conf *conf;
+ 	enum virtchnl_status_code v_ret;
++	struct ice_vsi *vf_vsi;
+ 	struct device *dev;
+ 	struct ice_pf *pf;
+ 	int is_tun = 0;
+@@ -2082,6 +2087,17 @@ int ice_vc_add_fdir_fltr(struct ice_vf *vf, u8 *msg)
+ 
+ 	pf = vf->pf;
+ 	dev = ice_pf_to_dev(pf);
++	vf_vsi = ice_get_vf_vsi(vf);
 +
-+	err = ice_aq_get_phy_equalization(hw, ICE_AQC_TX_EQU_PRE1,
-+					  ICE_AQC_OP_CODE_TX_EQU, serdes_num,
-+					  &ptr->tx_equalization_pre1);
-+	if (err)
-+		return err;
-+
-+	err = ice_aq_get_phy_equalization(hw, ICE_AQC_TX_EQU_PRE3,
-+					  ICE_AQC_OP_CODE_TX_EQU, serdes_num,
-+					  &ptr->tx_equalization_pre3);
-+	if (err)
-+		return err;
-+
-+	err = ice_aq_get_phy_equalization(hw, ICE_AQC_TX_EQU_ATTEN,
-+					  ICE_AQC_OP_CODE_TX_EQU, serdes_num,
-+					  &ptr->tx_equalization_atten);
-+	if (err)
-+		return err;
-+
-+	err = ice_aq_get_phy_equalization(hw, ICE_AQC_TX_EQU_POST1,
-+					  ICE_AQC_OP_CODE_TX_EQU, serdes_num,
-+					  &ptr->tx_equalization_post1);
-+	if (err)
-+		return err;
-+
-+	err = ice_aq_get_phy_equalization(hw, ICE_AQC_TX_EQU_PRE2,
-+					  ICE_AQC_OP_CODE_TX_EQU, serdes_num,
-+					  &ptr->tx_equalization_pre2);
-+	if (err)
-+		return err;
-+
-+	err = ice_aq_get_phy_equalization(hw, ICE_AQC_RX_EQU_PRE2,
-+					  ICE_AQC_OP_CODE_RX_EQU, serdes_num,
-+					  &ptr->rx_equalization_pre2);
-+	if (err)
-+		return err;
-+
-+	err = ice_aq_get_phy_equalization(hw, ICE_AQC_RX_EQU_PRE1,
-+					  ICE_AQC_OP_CODE_RX_EQU, serdes_num,
-+					  &ptr->rx_equalization_pre1);
-+	if (err)
-+		return err;
-+
-+	err = ice_aq_get_phy_equalization(hw, ICE_AQC_RX_EQU_POST1,
-+					  ICE_AQC_OP_CODE_RX_EQU, serdes_num,
-+					  &ptr->rx_equalization_post1);
-+	if (err)
-+		return err;
-+
-+	err = ice_aq_get_phy_equalization(hw, ICE_AQC_RX_EQU_BFLF,
-+					  ICE_AQC_OP_CODE_RX_EQU, serdes_num,
-+					  &ptr->rx_equalization_bflf);
-+	if (err)
-+		return err;
-+
-+	err = ice_aq_get_phy_equalization(hw, ICE_AQC_RX_EQU_BFHF,
-+					  ICE_AQC_OP_CODE_RX_EQU, serdes_num,
-+					  &ptr->rx_equalization_bfhf);
-+	if (err)
-+		return err;
-+
-+	err = ice_aq_get_phy_equalization(hw, ICE_AQC_RX_EQU_DRATE,
-+					  ICE_AQC_OP_CODE_RX_EQU, serdes_num,
-+					  &ptr->rx_equalization_drate);
-+	if (err)
-+		return err;
-+
-+	return 0;
-+}
-+
-+/**
-+ * ice_get_extended_regs - returns FEC correctable, uncorrectable stats per
-+ *                         pcsquad, pcsport
-+ * @netdev: pointer to net device structure
-+ * @p: output buffer to fill requested register dump
-+ *
-+ * Return: 0 on success, negative on failure.
-+ */
-+static int ice_get_extended_regs(struct net_device *netdev, void *p)
-+{
-+	struct ice_netdev_priv *np = netdev_priv(netdev);
-+	struct ice_regdump_to_ethtool *ice_prv_regs_buf;
-+	struct ice_port_topology port_topology = {};
-+	struct ice_port_info *pi;
-+	struct ice_pf *pf;
-+	struct ice_hw *hw;
-+	unsigned int i;
-+	int err;
-+
-+	pf = np->vsi->back;
-+	hw = &pf->hw;
-+	pi = np->vsi->port_info;
-+
-+	if (!hw || !pi)
-+		return -EINVAL;
-+
-+	/* Serdes parameters are not supported if not the PF VSI */
-+	if (np->vsi->type != ICE_VSI_PF)
-+		return -EINVAL;
-+
-+	err = ice_get_port_topology(hw, pi->lport, &port_topology);
-+	if (err)
-+		return -EINVAL;
-+	if (port_topology.serdes_lane_count > 4)
-+		return -EINVAL;
-+
-+	ice_prv_regs_buf = p;
-+
-+	/* Get serdes equalization parameter for available serdes */
-+	for (i = 0; i < port_topology.serdes_lane_count; i++) {
-+		u8 serdes_num = 0;
-+
-+		serdes_num = port_topology.primary_serdes_lane + i;
-+		err = ice_get_tx_rx_equa(hw, serdes_num,
-+					 &ice_prv_regs_buf->equalization[i]);
-+		if (err)
-+			return -EINVAL;
++#define ICE_VF_MAX_FDIR_FILTERS	128
++	if (!ice_fdir_num_avail_fltr(&pf->hw, vf_vsi) ||
++	    vf->fdir.fdir_fltr_cnt_total >= ICE_VF_MAX_FDIR_FILTERS) {
++		v_ret = VIRTCHNL_STATUS_ERR_PARAM;
++		dev_err(dev, "Max number of FDIR filters for VF %d is reached\n",
++			vf->vf_id);
++		goto err_exit;
 +	}
 +
-+	return 0;
-+}
-+
- static void
- ice_get_regs(struct net_device *netdev, struct ethtool_regs *regs, void *p)
- {
-@@ -689,10 +824,12 @@ ice_get_regs(struct net_device *netdev, struct ethtool_regs *regs, void *p)
- 	u32 *regs_buf = (u32 *)p;
- 	unsigned int i;
+ 	ret = ice_vc_fdir_param_check(vf, fltr->vsi_id);
+ 	if (ret) {
+ 		v_ret = VIRTCHNL_STATUS_ERR_PARAM;
+diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.h b/drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.h
+index c5bcc8d7481c..ac6dcab454b4 100644
+--- a/drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.h
++++ b/drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.h
+@@ -29,6 +29,7 @@ struct ice_vf_fdir_ctx {
+ struct ice_vf_fdir {
+ 	u16 fdir_fltr_cnt[ICE_FLTR_PTYPE_MAX][ICE_FD_HW_SEG_MAX];
+ 	int prof_entry_cnt[ICE_FLTR_PTYPE_MAX][ICE_FD_HW_SEG_MAX];
++	u16 fdir_fltr_cnt_total;
+ 	struct ice_fd_hw_prof **fdir_prof;
  
--	regs->version = 1;
-+	regs->version = 2;
- 
- 	for (i = 0; i < ARRAY_SIZE(ice_regs_dump_list); ++i)
- 		regs_buf[i] = rd32(hw, ice_regs_dump_list[i]);
-+
-+	ice_get_extended_regs(netdev, (void *)&regs_buf[i]);
- }
- 
- static u32 ice_get_msglevel(struct net_device *netdev)
-diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool.h b/drivers/net/ethernet/intel/ice/ice_ethtool.h
-index ffc8ad180e61..9acccae38625 100644
---- a/drivers/net/ethernet/intel/ice/ice_ethtool.h
-+++ b/drivers/net/ethernet/intel/ice/ice_ethtool.h
-@@ -9,6 +9,25 @@ struct ice_phy_type_to_ethtool {
- 	u8 link_mode;
- };
- 
-+struct ice_serdes_equalization_to_ethtool {
-+	int rx_equalization_pre2;
-+	int rx_equalization_pre1;
-+	int rx_equalization_post1;
-+	int rx_equalization_bflf;
-+	int rx_equalization_bfhf;
-+	int rx_equalization_drate;
-+	int tx_equalization_pre1;
-+	int tx_equalization_pre3;
-+	int tx_equalization_atten;
-+	int tx_equalization_post1;
-+	int tx_equalization_pre2;
-+};
-+
-+struct ice_regdump_to_ethtool {
-+	/* A multilane port can have max 4 serdes */
-+	struct ice_serdes_equalization_to_ethtool equalization[4];
-+};
-+
- /* Port topology from lport i.e.
-  * serdes mapping, pcsquad, macport, cage etc...
-  */
+ 	struct idr fdir_rule_idr;
 -- 
-2.44.0
+2.43.0
 
