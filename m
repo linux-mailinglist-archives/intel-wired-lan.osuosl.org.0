@@ -2,90 +2,89 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9FC60909689
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 15 Jun 2024 09:33:09 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4BA36909691
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 15 Jun 2024 09:35:21 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id BA79340528;
-	Sat, 15 Jun 2024 07:33:07 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 7DCCA40520;
+	Sat, 15 Jun 2024 07:35:19 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id vedJzmaiDOdt; Sat, 15 Jun 2024 07:33:07 +0000 (UTC)
+ id WlS1JUNNqnbW; Sat, 15 Jun 2024 07:35:18 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 9D843404B3
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 24D03404B3
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1718436786;
-	bh=tBEghfvq+5z54ZV4jIHPr7X9Oi4D60ClW3wodM8SoZ0=;
+	s=default; t=1718436918;
+	bh=YSGrvwhV9EykiHptoImmLVet3+K9lnCCUivP7LC9nCQ=;
 	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=j8aDMFNFL++oKNEe43np2610/cfMPZ5nu9tVcjikyW7Dy1GMFpHxirhg1Lyql5uQd
-	 8hleN0a7wsHmRIlkzsZKzaEotekrgPvfBNyH6YEdoqgpHtBYRq6Qzl42kUs7KNvQZg
-	 sE8XhdUV6RCqYkNCtO9Y5Rqtq/ctjJYWVSxu9kFePuRjlIlc5gzgYUIqaq2TyjMglX
-	 HP6tjTRKANhj0Tix9a2dz7cvylWDHDgJUrckTAlTzkhz6MFIUAFRgCHSVzjHrhzlU+
-	 qHA7BF4wUY803SMBdwi9Johtf0LraDq2ixDB27pa1hLM136itaO+5UidFObx18BD9S
-	 aDSBwQ+PNg3dg==
+	b=7HW0yn/wLgjqXbvWhhoCEK+IHjpG+Tk6mD0Ht0T6Wuiu4+fPYDtxOYVCfPTQ8ncu2
+	 fvUauYXsxyGo/QIztk9PhVtXxQE5uIx6dKsVE6KHb820SZts65pm1lun1xgB26ZPDo
+	 Nkn0W7fab1670b5QNQp7aJYuU8bhqOt4wIsIGweq6YvjWG1WJTNpRr6zJNtAjeK04Y
+	 HoJiQ3XbK7UQo5CnnX4WRyr6UsF1xJVHGIxlZ5vKAZXCnjTMMGJXbba7CtDZCAMIqE
+	 f5lyO45Yd+tDxe+IVPdK5QTeptZyAr0Qzf6ggrHyjr7I/Ep/fSYtiRwql+V/queh7o
+	 sFpr1rGljnh8Q==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 9D843404B3;
-	Sat, 15 Jun 2024 07:33:06 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 24D03404B3;
+	Sat, 15 Jun 2024 07:35:18 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 589331BF30C
- for <intel-wired-lan@lists.osuosl.org>; Sat, 15 Jun 2024 07:33:04 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id A142C1BF30C
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 15 Jun 2024 07:35:16 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 42B928424E
- for <intel-wired-lan@lists.osuosl.org>; Sat, 15 Jun 2024 07:33:04 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 8CEEE81678
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 15 Jun 2024 07:35:16 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id ZiQUAW9_d16v for <intel-wired-lan@lists.osuosl.org>;
- Sat, 15 Jun 2024 07:33:03 +0000 (UTC)
+ id sAzJZDflXOr2 for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 15 Jun 2024 07:35:15 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
  client-ip=2604:1380:4641:c500::1; helo=dfw.source.kernel.org;
  envelope-from=horms@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 4F93A8424B
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4F93A8424B
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 839FD80C08
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 839FD80C08
 Received: from dfw.source.kernel.org (dfw.source.kernel.org
  [IPv6:2604:1380:4641:c500::1])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 4F93A8424B
- for <intel-wired-lan@lists.osuosl.org>; Sat, 15 Jun 2024 07:33:02 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 839FD80C08
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 15 Jun 2024 07:35:15 +0000 (UTC)
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by dfw.source.kernel.org (Postfix) with ESMTP id DA21B60688;
- Sat, 15 Jun 2024 07:33:01 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 268FDC116B1;
- Sat, 15 Jun 2024 07:32:58 +0000 (UTC)
-Date: Sat, 15 Jun 2024 08:32:56 +0100
+ by dfw.source.kernel.org (Postfix) with ESMTP id B355860B50;
+ Sat, 15 Jun 2024 07:35:14 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0EDAEC116B1;
+ Sat, 15 Jun 2024 07:35:11 +0000 (UTC)
+Date: Sat, 15 Jun 2024 08:35:09 +0100
 From: Simon Horman <horms@kernel.org>
 To: Alexander Lobakin <aleksander.lobakin@intel.com>
-Message-ID: <20240615073256.GZ8447@kernel.org>
+Message-ID: <20240615073509.GA8447@kernel.org>
 References: <20240528134846.148890-1-aleksander.lobakin@intel.com>
- <20240528134846.148890-4-aleksander.lobakin@intel.com>
- <20240601085308.GY491852@kernel.org>
- <b110726e-d496-4975-8089-57a4931da47d@intel.com>
+ <20240528134846.148890-13-aleksander.lobakin@intel.com>
+ <20240601090842.GZ491852@kernel.org>
+ <2c22ba85-2338-4f16-b3c2-70c4270cd96b@intel.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <b110726e-d496-4975-8089-57a4931da47d@intel.com>
+In-Reply-To: <2c22ba85-2338-4f16-b3c2-70c4270cd96b@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1718436781;
- bh=wgIviLql9xjHQhQaoRPN2xsCGK+9G4KbVXYZmBVurK0=;
+ d=kernel.org; s=k20201202; t=1718436914;
+ bh=WN8+1EL5UU20JLPnEmj/YfX8PA8TXVtuZSlPbt7LRgU=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=S1ReQlZUGPjAAQriVbxXOTkLhtymELA+gVt31Q7ViXw4uqbhYT7LF+xjWLw8Sm17j
- 6p/Q7kijNVAdhdikXbvQtHZMSgemf8BIQJcjLvaqup19NUJvL8PaekpFiRcAF817F6
- Cycg6cJnxY2fyhUYINrh8dGoKTzJ62jbn3C511CG6ENMahJF5ppBFTYygkfqPLwDBn
- ZaxcJ1SzaW5TrjWnV1M9Tkl8BYlMYlTr39AGcI3/qhQlbyfcqh6zfvBI0jWmX9Zj+y
- bBWRyqAk9RZbXCkfhFrtKL6Gmapm7JAkSziXZgtMsxQTvUF3cvD15UMT1Uih+j3BLl
- IY81STomopRzw==
+ b=PdlVeB4ShSbOhokm7RlReaIj/d08///o7evtBquGRbIY93rvTR3IUon38wSe2V/pa
+ dBeBksMfLaotA+C/FuEzEvOzTQyk9vqfVVjRRtE0SNl02ehowuEtXKsrPEYAUutOZD
+ Xc7tCTL1gVVg/NpEqTVScaYozOEb9mEZu9ruis3CG10FkjJFLW0C0BwONaLHTPszuF
+ VwK7tvR68yWoL6bMZf8ekl2EEgUTaLSj2qnJMbeye/WCk3JLeS5CJV5zAs5E9HQRaf
+ /soQUXs7CN5kOPxHJ1hCFIIf+VdnNKMC3ymnkYlioY1S/HO7ABxLB1DlNvb7o3OxS1
+ kUS+qGBkKYFTQ==
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=kernel.org
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20201202 header.b=S1ReQlZU
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next 03/12] idpf: split
- &idpf_queue into 4 strictly-typed queue structures
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=PdlVeB4S
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next 12/12] idpf: use libeth Rx
+ buffer management for payload buffer
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -103,32 +102,27 @@ Cc: Mina Almasry <almasrymina@google.com>,
  linux-kernel@vger.kernel.org, Eric Dumazet <edumazet@google.com>,
  Tony Nguyen <anthony.l.nguyen@intel.com>, Jakub Kicinski <kuba@kernel.org>,
  intel-wired-lan@lists.osuosl.org, Paolo Abeni <pabeni@redhat.com>,
- "David S. Miller" <davem@davemloft.net>
+ "David S. Miller" <davem@davemloft.net>,
+ Dan Carpenter <dan.carpenter@linaro.org>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Thu, Jun 13, 2024 at 01:03:00PM +0200, Alexander Lobakin wrote:
+On Thu, Jun 13, 2024 at 01:05:58PM +0200, Alexander Lobakin wrote:
 > From: Simon Horman <horms@kernel.org>
-> Date: Sat, 1 Jun 2024 09:53:08 +0100
+> Date: Sat, 1 Jun 2024 10:08:42 +0100
 > 
-> > On Tue, May 28, 2024 at 03:48:37PM +0200, Alexander Lobakin wrote:
-> >> Currently, sizeof(struct idpf_queue) is 32 Kb.
-> >> This is due to the 12-bit hashtable declaration at the end of the queue.
-> >> This HT is needed only for Tx queues when the flow scheduling mode is
-> >> enabled. But &idpf_queue is unified for all of the queue types,
-> >> provoking excessive memory usage.
-> >> The unified structure in general makes the code less effective via
-> >> suboptimal fields placement. You can't avoid that unless you make unions
-> >> each 2 fields. Even then, different field alignment etc., doesn't allow
-> >> you to optimize things to the limit.
-> >> Split &idpf_queue into 4 structures corresponding to the queue types:
-> >> RQ (Rx queue), SQ (Tx queue), FQ (buffer queue), and CQ (completion
-> >> queue). Place only needed fields there and shortcuts handy for hotpath.
-> >> Allocate the abovementioned hashtable dynamically and only when needed,
-> >> keeping &idpf_tx_queue relatively short (192 bytes, same as Rx). This HT
-> >> is used only for OOO completions, which aren't really hotpath anyway.
-> >> Note that this change must be done atomically, otherwise it's really
-> >> easy to get lost and miss something.
+> > + Dan Carpenter
+> > 
+> > On Tue, May 28, 2024 at 03:48:46PM +0200, Alexander Lobakin wrote:
+> >> idpf uses Page Pool for data buffers with hardcoded buffer lengths of
+> >> 4k for "classic" buffers and 2k for "short" ones. This is not flexible
+> >> and does not ensure optimal memory usage. Why would you need 4k buffers
+> >> when the MTU is 1500?
+> >> Use libeth for the data buffers and don't hardcode any buffer sizes. Let
+> >> them be calculated from the MTU for "classics" and then divide the
+> >> truesize by 2 for "short" ones. The memory usage is now greatly reduced
+> >> and 2 buffer queues starts make sense: on frames <= 1024, you'll recycle
+> >> (and resync) a page only after 4 HW writes rather than two.
 > >>
 > >> Signed-off-by: Alexander Lobakin <aleksander.lobakin@intel.com>
 > > 
@@ -138,111 +132,91 @@ On Thu, Jun 13, 2024 at 01:03:00PM +0200, Alexander Lobakin wrote:
 > > 
 > > ...
 > > 
-> >> @@ -1158,20 +1325,22 @@ static void idpf_rxq_set_descids(struct idpf_vport *vport, struct idpf_queue *q)
-> >>   */
-> >>  static int idpf_txq_group_alloc(struct idpf_vport *vport, u16 num_txq)
-> >>  {
-> >> -	bool flow_sch_en;
-> >> -	int err, i;
-> >> +	bool split, flow_sch_en;
-> >> +	int i;
-> >>  
-> >>  	vport->txq_grps = kcalloc(vport->num_txq_grp,
-> >>  				  sizeof(*vport->txq_grps), GFP_KERNEL);
-> >>  	if (!vport->txq_grps)
-> >>  		return -ENOMEM;
-> >>  
-> >> +	split = idpf_is_queue_model_split(vport->txq_model);
-> >>  	flow_sch_en = !idpf_is_cap_ena(vport->adapter, IDPF_OTHER_CAPS,
-> >>  				       VIRTCHNL2_CAP_SPLITQ_QSCHED);
-> >>  
-> >>  	for (i = 0; i < vport->num_txq_grp; i++) {
-> >>  		struct idpf_txq_group *tx_qgrp = &vport->txq_grps[i];
-> >>  		struct idpf_adapter *adapter = vport->adapter;
-> >> +		struct idpf_txq_stash *stashes;
-> >>  		int j;
-> >>  
-> >>  		tx_qgrp->vport = vport;
-> >> @@ -1180,45 +1349,62 @@ static int idpf_txq_group_alloc(struct idpf_vport *vport, u16 num_txq)
-> >>  		for (j = 0; j < tx_qgrp->num_txq; j++) {
-> >>  			tx_qgrp->txqs[j] = kzalloc(sizeof(*tx_qgrp->txqs[j]),
-> >>  						   GFP_KERNEL);
-> >> -			if (!tx_qgrp->txqs[j]) {
-> >> -				err = -ENOMEM;
-> >> +			if (!tx_qgrp->txqs[j])
-> >>  				goto err_alloc;
-> >> -			}
-> >> +		}
-> >> +
-> >> +		if (split && flow_sch_en) {
-> >> +			stashes = kcalloc(num_txq, sizeof(*stashes),
-> >> +					  GFP_KERNEL);
-> > 
 > > Hi Alexander,
 > > 
-> > Here stashes is assigned a memory allocation and
-> > then then assigned to tx_qgrp->stashes a few lines below...
+> > The code above the hunk below, starting at line 3321, is:
 > > 
-> >> +			if (!stashes)
-> >> +				goto err_alloc;
-> >> +
-> >> +			tx_qgrp->stashes = stashes;
-> >>  		}
-> >>  
-> >>  		for (j = 0; j < tx_qgrp->num_txq; j++) {
-> >> -			struct idpf_queue *q = tx_qgrp->txqs[j];
-> >> +			struct idpf_tx_queue *q = tx_qgrp->txqs[j];
-> >>  
-> >>  			q->dev = &adapter->pdev->dev;
-> >>  			q->desc_count = vport->txq_desc_count;
-> >>  			q->tx_max_bufs = idpf_get_max_tx_bufs(adapter);
-> >>  			q->tx_min_pkt_len = idpf_get_min_tx_pkt_len(adapter);
-> >> -			q->vport = vport;
-> >> +			q->netdev = vport->netdev;
-> >>  			q->txq_grp = tx_qgrp;
-> >> -			hash_init(q->sched_buf_hash);
-> >>  
-> >> -			if (flow_sch_en)
-> >> -				set_bit(__IDPF_Q_FLOW_SCH_EN, q->flags);
-> >> +			if (!split) {
-> >> +				q->clean_budget = vport->compln_clean_budget;
-> >> +				idpf_queue_assign(CRC_EN, q,
-> >> +						  vport->crc_enable);
-> >> +			}
-> >> +
-> >> +			if (!flow_sch_en)
-> >> +				continue;
-> >> +
-> >> +			if (split) {
+> > 		if (unlikely(!hdr_len && !skb)) {
+> > 			hdr_len = idpf_rx_hsplit_wa(hdr, rx_buf, pkt_len);
+> > 			pkt_len -= hdr_len;
+> > 			u64_stats_update_begin(&rxq->stats_sync);
+> > 			u64_stats_inc(&rxq->q_stats.hsplit_buf_ovf);
+> > 			u64_stats_update_end(&rxq->stats_sync);
+> > 		}
+> > 		if (libeth_rx_sync_for_cpu(hdr, hdr_len)) {
+> > 			skb = idpf_rx_build_skb(hdr, hdr_len);
+> > 			if (!skb)
+> > 				break;
+> > 			u64_stats_update_begin(&rxq->stats_sync);
+> > 			u64_stats_inc(&rxq->q_stats.hsplit_pkts);
+> > 			u64_stats_update_end(&rxq->stats_sync);
+> > 		}
 > > 
-> > ... but here elements of stashes seem to be assigned to q->stash
-> > without stashes having being initialised.
+> >> @@ -3413,24 +3340,24 @@ static int idpf_rx_splitq_clean(struct idpf_rx_queue *rxq, int budget)
+> >>  		hdr->page = NULL;
+> >>  
+> >>  payload:
+> >> -		if (pkt_len) {
+> >> -			idpf_rx_sync_for_cpu(rx_buf, pkt_len);
+> >> -			if (skb)
+> >> -				idpf_rx_add_frag(rx_buf, skb, pkt_len);
+> >> -			else
+> >> -				skb = idpf_rx_construct_skb(rxq, rx_buf,
+> >> -							    pkt_len);
+> >> -		} else {
+> >> -			idpf_rx_put_page(rx_buf);
+> >> -		}
+> >> +		if (!libeth_rx_sync_for_cpu(rx_buf, pkt_len))
+> >> +			goto skip_data;
+> >> +
+> >> +		if (skb)
+> >> +			idpf_rx_add_frag(rx_buf, skb, pkt_len);
+> >> +		else
+> >> +			skb = idpf_rx_build_skb(rx_buf, pkt_len);
+> >>  
+> >>  		/* exit if we failed to retrieve a buffer */
+> >>  		if (!skb)
+> >>  			break;
+> >>  
+> >> -		idpf_rx_post_buf_refill(refillq, buf_id);
+> >> +skip_data:
+> >> +		rx_buf->page = NULL;
+> >>  
+> >> +		idpf_rx_post_buf_refill(refillq, buf_id);
+> >>  		IDPF_RX_BUMP_NTC(rxq, ntc);
+> >> +
+> >>  		/* skip if it is non EOP desc */
+> >>  		if (!idpf_rx_splitq_is_eop(rx_desc))
+> >>  			continue;
 > > 
-> > Flagged by Smatch
+> > The code following this hunk, ending at line 3372, looks like this:
+> > 
+> > 		/* pad skb if needed (to make valid ethernet frame) */
+> > 		if (eth_skb_pad(skb)) {
+> > 			skb = NULL;
+> > 			continue;
+> > 		}
+> > 		/* probably a little skewed due to removing CRC */
+> > 		total_rx_bytes += skb->len;
+> > 
+> > Smatch warns that:
+> > .../idpf_txrx.c:3372 idpf_rx_splitq_clean() error: we previously assumed 'skb' could be null (see line 3321)
+> > 
+> > I think, but am not sure, this is because it thinks skb might
+> > be NULL at the point where "goto skip_data;" is now called above.
+> > 
+> > Could you look into this?
 > 
-> Hi! Yes, I saw the report, but isn't it a false positive?
+> This is actually a good catch. skb indeed could be NULL and we needed to
+> check that in the same condition where !eop is checked.
+> Fixed already in my tree, so it will be fixed in v2. Thanks for catching!
 > 
-> Allocation happens when `split && flow_sch_en`, and here we have
-> 
-> 			if (!flow_sch_en)
-> 				continue;
-> 
-> 			if (split)
-> 				// assign
-> 
-> IOW the assignment can't happen without the allocation?
+> (BTW I fixed that in iavf when submitting the libeth series, but forgot
+>  to fix that here lol >_<)
+> (Also, it was implicitly fixed in the later commits where I convert skb
+>  to xdp_buff here, so I didn't catch this one)
 
-Thanks, and sorry for missing the points you highlight above.
-I agree that this is a false positive.
+Thanks, much appreciated.
+As I mentioned above, I wasn't sure about this one.
 
-> 
-> > 
-> >> +				q->stash = &stashes[j];
-> >> +				hash_init(q->stash->sched_buf_hash);
-> >> +			}
-> >> +
-> >> +			idpf_queue_set(FLOW_SCH_EN, q);
-> 
-> Thanks,
-> Olek
-> 
+
