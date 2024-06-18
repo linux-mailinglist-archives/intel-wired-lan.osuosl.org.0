@@ -1,96 +1,87 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 806AD90CED6
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 18 Jun 2024 15:21:29 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id EF63090D064
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 18 Jun 2024 15:33:32 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 2F70C60EE9;
-	Tue, 18 Jun 2024 13:21:28 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 1D03561222;
+	Tue, 18 Jun 2024 13:33:31 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id HYeO5JpN1kKg; Tue, 18 Jun 2024 13:21:27 +0000 (UTC)
+ id LYezE1fZ3E7U; Tue, 18 Jun 2024 13:33:30 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5D869613A9
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6CA7661079
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1718716887;
-	bh=cOGJa5EtlCqowDeagSvHsl1M/AXLjwGSMWkb7A/TPHw=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=bT80dGHgneNFcLoXgUkAINi8OnBTzGI+irmKQr9bp1j3S1WF7da7l/qk3a0NWglEn
-	 Ow1hFjV5r3AHPQSQFyMCJqsJLruwKeTQy+DlKejsU5EOpwlQzf78mcWWUIkxQFDWfG
-	 XwXf7rPGc3q7//mVwna49NU8YFXqU0MQsAEXttP/iWOynqui8z9zgnQJRsJJimhJUR
-	 7vmCUrm6B3AYMCzrDWz7WH+dHRW25uWKLo2ZzZ3t5VTlmosQw6BvPj//VxZv6EnKFi
-	 HBsGL6vRr0rlsnvAcuaDVZoIJ49wKHhWQT+honrkamFq9t2eUhtC9ArGUX4VBwbJgj
-	 8f7sWlETy7Y9g==
+	s=default; t=1718717610;
+	bh=iJ6Ykm/kYhyCZT21ejKzNBRvOF1gIP1y0gYvOZ308+g=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=aQf4yIgMkF7ZVmM1paG3GE3TNPUL3raCYRGPsLwneN3Ia7WX0YwWnGqKFSeYUO4tX
+	 BVWq3VGwpIeLMKga5p0SA3BmCm//WkD47aY7GNSffhQWf3xgFesOWoQyldQVpnw9Ah
+	 5MGkiw9RqaDxQquefyesGGcmdm39DeYOyzoWB0OAqKggsbzc409aQ72I4GTdX1n+Ss
+	 vHdcSXc5aqj+uk73nnxdkmWDZlRgZd0U5ynGY6Bav40dYYfnXv11c9N3hRv8P2LXLp
+	 DQhwxa5kJcZ8giPZP1LCHuLJUjuc9UwGH4diHH8zgcKHDcALrLri9C1FtRX1GbvOiu
+	 EC7KiP0JjoyEg==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 5D869613A9;
-	Tue, 18 Jun 2024 13:21:27 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 6CA7661079;
+	Tue, 18 Jun 2024 13:33:30 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 4D9CB1BF3BB
- for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Jun 2024 13:21:25 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id B5BAF1BF3BB
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Jun 2024 13:33:28 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 45D4E401AE
- for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Jun 2024 13:21:25 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id A0DD140148
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Jun 2024 13:33:28 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id R4rmXgnVRvq2 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 18 Jun 2024 13:21:24 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.7;
- helo=mgamail.intel.com; envelope-from=aleksandr.loktionov@intel.com;
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 86cTIlUUu9YJ for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 18 Jun 2024 13:33:28 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=139.178.84.217;
+ helo=dfw.source.kernel.org; envelope-from=horms@kernel.org;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 473344012E
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 473344012E
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.7])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 473344012E
- for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Jun 2024 13:21:24 +0000 (UTC)
-X-CSE-ConnectionGUID: c2ME6HnIT0atwUyiXO37CA==
-X-CSE-MsgGUID: ZzWTJZ7KQAq8q968Y5CqmA==
-X-IronPort-AV: E=McAfee;i="6700,10204,11107"; a="41002050"
-X-IronPort-AV: E=Sophos;i="6.08,247,1712646000"; d="scan'208";a="41002050"
-Received: from fmviesa008.fm.intel.com ([10.60.135.148])
- by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 18 Jun 2024 06:21:14 -0700
-X-CSE-ConnectionGUID: A2te/nlgSiWgiljpCu8qjw==
-X-CSE-MsgGUID: 9ZfXCtzbRT+gsPyXEmTY3g==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.08,247,1712646000"; d="scan'208";a="41500950"
-Received: from unknown (HELO amlin-019-225.igk.intel.com) ([10.102.19.225])
- by fmviesa008.fm.intel.com with ESMTP; 18 Jun 2024 06:21:12 -0700
-From: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
-To: intel-wired-lan@lists.osuosl.org, anthony.l.nguyen@intel.com,
- aleksandr.loktionov@intel.com
-Date: Tue, 18 Jun 2024 15:21:11 +0200
-Message-Id: <20240618132111.3193963-1-aleksandr.loktionov@intel.com>
-X-Mailer: git-send-email 2.25.1
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org BD07E42A9C
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org BD07E42A9C
+Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id BD07E42A9C
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Jun 2024 13:33:27 +0000 (UTC)
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by dfw.source.kernel.org (Postfix) with ESMTP id 90379618E1;
+ Tue, 18 Jun 2024 13:33:26 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1F25CC3277B;
+ Tue, 18 Jun 2024 13:33:23 +0000 (UTC)
+Date: Tue, 18 Jun 2024 14:33:22 +0100
+From: Simon Horman <horms@kernel.org>
+To: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+Message-ID: <20240618133322.GO8447@kernel.org>
+References: <20240617132407.107292-1-przemyslaw.kitszel@intel.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240617132407.107292-1-przemyslaw.kitszel@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1718716884; x=1750252884;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=wy7j2R85Pbh6Ocvt3qLCd/PJ4DM68J2wxPkzjTBaZ3E=;
- b=luCTMmq3zggm8DBfqgvd49iJgKpsaocKos+eL0SC2QsEATfU/pCwJAyz
- fAWPbyjVP6ZhenKfm0pV6GzbAjEdqXKMmbwXZsnqYIeBspTNEvvBcWeBF
- 0msAkV7a8EZGSBYvZkGq/VWAusrodP1mzoG0cdVMc9JbFKg2yJSe9AsYb
- gZpMu7nOmkgDjGYFgebjya2Zjggk8OKQmczlpQBXCOeDbJirWmKY2+cXu
- wH5fjuL6DABHpS3OaYGwsu6gQXMfxwB7CNJNjiHemUWsS15yCDDnxPwye
- NiJ5aatYlFxOKF5cSkGR9WwfmqnBbv4o3ulsuubgTvXM5NgsdNA7NOjek
- g==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ d=kernel.org; s=k20201202; t=1718717606;
+ bh=JZuxPolsAuRkq/uBpCeDrZdRmxqz2tm0CZN2xEu8kkY=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=iMOK6oywWe2jFel/MCtr2voYqPZp1PbAfEkZPwnNz8U82L97ffeEgbK/X/3V5Nt7v
+ NIOza4F1iQtjYocHeJOFJg6RFO0on6A4rAdVIJ54IbZc0/SsNlPZclVnA+CLtOk7tg
+ HjNj03vEWDJtb/ElnbD5jQc+6ww3HU6DVjdhVcc83ciok2+6wNywjli8F0WT8cmI1j
+ Q8dOMuxxX6FOiuDQlP2Ut+KNZEGjtCeCrU6heg528OYIn4yuwvw8ZXSQOaitoomW8h
+ Ofvi+w9LWQWwLqTb8li2mUEXhBXPLSl9wiXfi1OVFl/mimghgqXq5DRKV0A7YDjYIV
+ 4zY0MYgl2Op9A==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ header.from=kernel.org
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=luCTMmq3
-Subject: [Intel-wired-lan] [PATCH iwl-net v4] i40e: fix hot issue NVM
- content is corrupted after nvmupdate
+ unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
+ header.s=k20201202 header.b=iMOK6oyw
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v1] ice: do not init struct
+ ice_adapter more times than needed
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -103,63 +94,33 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, Kelvin Kang <kelvin.kang@intel.com>,
- Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
+Cc: Jiri Pirko <jiri@resnulli.us>,
+ Sergey Temerkhanov <sergey.temerkhanov@intel.com>, netdev@vger.kernel.org,
+ Lukasz Czapnik <lukasz.czapnik@intel.com>,
+ Wojciech Drewek <wojciech.drewek@intel.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>, Jakub Kicinski <kuba@kernel.org>,
+ Jacob Keller <jacob.e.keller@intel.com>, intel-wired-lan@lists.osuosl.org
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The bug affects users only at the time when they try to update NVM, and
-only F/W versions that generate errors while nvmupdate. For example, X710DA2
-with 0x8000ECB7 F/W is affected, but there are probably more...
+On Mon, Jun 17, 2024 at 03:24:07PM +0200, Przemek Kitszel wrote:
+> Allocate and initialize struct ice_adapter object only once per physical
+> card instead of once per port. This is not a big deal by now, but we want
+> to extend this struct more and more in the near future. Our plans include
+> PTP stuff and a devlink instance representing whole-device/physical card.
+> 
+> Transactions requiring to be sleep-able (like those doing user (here ice)
+> memory allocation) must be performed with an additional (on top of xarray)
+> mutex. Adding it here removes need to xa_lock() manually.
+> 
+> Since this commit is a reimplementation of ice_adapter_get(), a rather new
+> scoped_guard() wrapper for locking is used to simplify the logic.
+> 
+> It's worth to mention that xa_insert() use gives us both slot reservation
+> and checks if it is already filled, what simplifies code a tiny	bit.
+> 
+> Reviewed-by: Wojciech Drewek <wojciech.drewek@intel.com>
+> Signed-off-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
 
-Command for reproduction is just NVM update:
- ./nvmupdate64
-
-In the log instead of:
- i40e_nvmupd_exec_aq err I40E_ERR_ADMIN_QUEUE_ERROR aq_err I40E_AQ_RC_ENOMEM)
-appears:
- i40e_nvmupd_exec_aq err -EIO aq_err I40E_AQ_RC_ENOMEM
-
-But the problematic code did silently convert EIO into EAGAIN which forced
-nvmupdate to ignore EAGAIN error and retry the same operation until timeout.
-That's why NVM update takes 20+ minutes to finish with the fail in the end.
-
-After commit 230f3d53a547 ("i40e: remove i40e_status"), which should only
-replace F/W specific error codes with Linux kernel generic, all EIO errors
-suddenly started to be converted into EAGAIN which leads nvmupdate to retry
-until it timeouts and sometimes fails after more than 20 minutes in the
-middle of NVM update, so NVM becomes corrupted.
-
-Remove wrong EIO to EGAIN conversion and pass all errors as is.
-
-Fixes: 230f3d53a547 ("i40e: remove i40e_status")
-Co-developed-by: Kelvin Kang <kelvin.kang@intel.com>
-Signed-off-by: Kelvin Kang <kelvin.kang@intel.com>
-Reviewed-by: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
-Signed-off-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
----
-v3->v4 commit message update
-v2->v3 commit messege typos
-v1->v2 commit message update
----
- drivers/net/ethernet/intel/i40e/i40e_adminq.h | 4 ----
- 1 file changed, 4 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_adminq.h b/drivers/net/ethernet/intel/i40e/i40e_adminq.h
-index ee86d2c..55b5bb8 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_adminq.h
-+++ b/drivers/net/ethernet/intel/i40e/i40e_adminq.h
-@@ -109,10 +109,6 @@ static inline int i40e_aq_rc_to_posix(int aq_ret, int aq_rc)
- 		-EFBIG,      /* I40E_AQ_RC_EFBIG */
- 	};
- 
--	/* aq_rc is invalid if AQ timed out */
--	if (aq_ret == -EIO)
--		return -EAGAIN;
--
- 	if (!((u32)aq_rc < (sizeof(aq_to_posix) / sizeof((aq_to_posix)[0]))))
- 		return -ERANGE;
- 
--- 
-2.25.1
+Reviewed-by: Simon Horman <horms@kernel.org>
 
