@@ -1,97 +1,96 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5299790C76A
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 18 Jun 2024 12:43:40 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2C9E090C8A2
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 18 Jun 2024 13:12:02 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 20E3140907;
-	Tue, 18 Jun 2024 10:43:35 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id CCBB782078;
+	Tue, 18 Jun 2024 11:11:58 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id OdKyWwwmzSj3; Tue, 18 Jun 2024 10:43:34 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id c00mjmRQvD7O; Tue, 18 Jun 2024 11:11:58 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 308B740592
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 20BE482064
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1718707414;
-	bh=tNOReOB5PwFCWPs8TD2DHsi11Z0nDSj3KT3qGC+TRMQ=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=ovNvoEB/UByRPhHdwdlYEPeCZEjDo0QxeOH1d6AmtQFPko+THrt6ymTjrqsRyIy2Q
-	 7wYmZY9IsjcwA6WdHAyDMME0joNp708X0I8CILTLiv2OwGCFOnZ7NgMC3ubNmqmsm7
-	 0nAz8R3mUDCxJSY/ojj80+e7gOaRyVCaIdja8EPjhyrFpQvZ6MiJNQ8WmH2TLyB+/L
-	 mv2OpP73GLp/D+2hnbOjZtht86Lk1aJ10MoXtY/zc+h/oJGtaEJENRMCwuT8uJMwFc
-	 OWFMUGBvrmKlImzU0LCA68cLan6I7vxrKGMgux9r3SxG5RKBXPAxI7XiUB0IJo++6W
-	 fgCvGaTnMiRxw==
+	s=default; t=1718709118;
+	bh=6G2IpcL5Lv+pMV37OGTdCWlYqMHUwgyGxJOKzgKAFVA=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=VOC+NIUO4sHz2YyMnEqlxd+m2fGroCPRWOEUC2F9WvMpIEUFBScKYbOrqbPkT3/4J
+	 9Z/iB0cDYlIoQdUFXuY29F0+SWatjspFQjd0zjV212ZSrUCcwYBtUea3x055nBs0Fn
+	 AxqVzb7MddyF05yiMVgTXS2itjlZ5Fhv8O0VDTDqHvUWm7Az5HHoExNqGuv+T4opl0
+	 3Hk9jxjzENYd/VMvOeapQiny4We/D0IsK6fKm4q+SFpnZsq49LhBq91RiTpBKAkJN5
+	 /aRNRhMKGpPkswZQEinrvaK3A/PruuibVxJ9pXf8+YuieZvX5Exy+OuNK6sz7MjBDu
+	 OyHfdl8T86Ltg==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 308B740592;
-	Tue, 18 Jun 2024 10:43:34 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 20BE482064;
+	Tue, 18 Jun 2024 11:11:58 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 308161BF280
- for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Jun 2024 10:43:31 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 8A1D91BF20B
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Jun 2024 11:11:56 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 2AA5A60B6A
- for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Jun 2024 10:43:31 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 7648E8206A
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Jun 2024 11:11:56 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id otq4H0evC1vT for <intel-wired-lan@lists.osuosl.org>;
- Tue, 18 Jun 2024 10:43:30 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.15;
- helo=mgamail.intel.com; envelope-from=karol.kolacinski@intel.com;
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id SMj9_xf0vdsV for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 18 Jun 2024 11:11:55 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.133.124;
+ helo=us-smtp-delivery-124.mimecast.com; envelope-from=poros@redhat.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 5046360730
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5046360730
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.15])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 5046360730
- for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Jun 2024 10:43:30 +0000 (UTC)
-X-CSE-ConnectionGUID: 8yT4ZXWHT2uRxlRGiZrJyw==
-X-CSE-MsgGUID: xaXw2mfOS+aZn+IDxm1KSA==
-X-IronPort-AV: E=McAfee;i="6700,10204,11106"; a="15719458"
-X-IronPort-AV: E=Sophos;i="6.08,247,1712646000"; d="scan'208";a="15719458"
-Received: from orviesa007.jf.intel.com ([10.64.159.147])
- by fmvoesa109.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 18 Jun 2024 03:43:30 -0700
-X-CSE-ConnectionGUID: MlY/9n05QkqcGcAxogdLyA==
-X-CSE-MsgGUID: w0beraEARDCNvec3xuUJOw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.08,247,1712646000"; d="scan'208";a="42227777"
-Received: from kkolacin-desk1.igk.intel.com ([10.102.102.152])
- by orviesa007.jf.intel.com with ESMTP; 18 Jun 2024 03:43:28 -0700
-From: Karol Kolacinski <karol.kolacinski@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Tue, 18 Jun 2024 12:41:38 +0200
-Message-ID: <20240618104310.1429515-4-karol.kolacinski@intel.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20240618104310.1429515-1-karol.kolacinski@intel.com>
-References: <20240618104310.1429515-1-karol.kolacinski@intel.com>
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 39AF882064
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 39AF882064
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 39AF882064
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 18 Jun 2024 11:11:54 +0000 (UTC)
+Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-606-CkCihvA6PTqmXOh9I8Qdmg-1; Tue,
+ 18 Jun 2024 07:11:49 -0400
+X-MC-Unique: CkCihvA6PTqmXOh9I8Qdmg-1
+Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id B9DE219560BE; Tue, 18 Jun 2024 11:11:46 +0000 (UTC)
+Received: from swamp.redhat.com (unknown [10.45.224.22])
+ by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id D80711955E74; Tue, 18 Jun 2024 11:11:41 +0000 (UTC)
+From: Petr Oros <poros@redhat.com>
+To: netdev@vger.kernel.org
+Date: Tue, 18 Jun 2024 13:11:19 +0200
+Message-ID: <20240618111119.721648-1-poros@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1718707410; x=1750243410;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=V5N+k9e+K8IChb6ZHPElGgsyagVkTjyu4SF1Lng2fl0=;
- b=SOzDOVF/t0OvLNhcIQc4wU9rNxaEQpASisRkjDEuUb2oc614iyAdTUcW
- JnfvmPaFlxrtz+Gzp4pzovx19p6GXI638UGta7YC/n92oIDHYnf1Kh2LH
- jo9wh+UM0ml7ZiJ4su021xfANQ1Ht+afhcgZ1vKYn543tFovp95NAEg+K
- bkQq3lD06dN/REE5pJd5uhcdzEFvx87rfnpJGasdjdtKLZxxB0koVTXnH
- dUUqeP2extwD1Y7/mcBf9Ny5stw0LUfufClzBBinHbVzKJXwKkxs6Dswc
- hwdrGkVFSJZMhRABDRLiMgMPMuWstHhoJya4apTUSQ3fAjPczrZdkmeZx
- A==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=redhat.com; 
+ s=mimecast20190719; t=1718709114;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=6G2IpcL5Lv+pMV37OGTdCWlYqMHUwgyGxJOKzgKAFVA=;
+ b=M4fggTTUZUjWSPWnWMkuGHV9/aMcg1jLCAXRfmVaJMcTku6rK9cO9tueSIcXXDgmtm38go
+ OD1HrBt6Qyf9j/TOSlPwBZAhTW096hHCahUi1ECkZ+D/oIUU13AcUWXmHzZypQMKamQlib
+ j/1YdBFRno0M5KolPMxyOHaMz56RnVY=
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=SOzDOVF/
-Subject: [Intel-wired-lan] [PATCH iwl-net 3/3] ice: Reject pin requests with
- unsupported flags
+ header.from=redhat.com
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (1024-bit key,
+ unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256
+ header.s=mimecast20190719 header.b=M4fggTTU
+Subject: [Intel-wired-lan] [PATCH net v3] ice: use proper macro for testing
+ bit
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -104,179 +103,59 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Jacob Keller <jacob.e.keller@intel.com>, netdev@vger.kernel.org,
- Karol Kolacinski <karol.kolacinski@intel.com>, anthony.l.nguyen@intel.com,
- przemyslaw.kitszel@intel.com
+Cc: ivecera@redhat.com, Eric Dumazet <edumazet@google.com>,
+ przemyslaw.kitszel@intel.com, open list <linux-kernel@vger.kernel.org>,
+ Eric Joyner <eric.joyner@intel.com>,
+ Alexander Lobakin <aleksander.lobakin@intel.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>, horms@kernel.org,
+ Marcin Domagala <marcinx.domagala@intel.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>,
+ "moderated list:INTEL ETHERNET DRIVERS" <intel-wired-lan@lists.osuosl.org>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Jacob Keller <jacob.e.keller@intel.com>
+Do not use _test_bit() macro for testing bit. The proper macro for this
+is one without underline.
 
-The driver receives requests for configuring pins via the .enable
-callback of the PTP clock object. These requests come into the driver
-with flags which modify the requested behavior from userspace. Current
-implementation in ice does not reject flags that it doesn't support.
-This causes the driver to incorrectly apply requests with such flags as
-PTP_PEROUT_DUTY_CYCLE, or any future flags added by the kernel which it
-is not yet aware of.
+_test_bit() is what test_bit() was prior to const-optimization. It
+directly calls arch_test_bit(), i.e. the arch-specific implementation
+(or the generic one). It's strictly _internal_ and shouldn't be used
+anywhere outside the actual test_bit() macro.
 
-Fix this by properly validating flags in both ice_ptp_cfg_perout and
-ice_ptp_cfg_extts. Ensure that we check by bit-wise negating supported
-flags rather than just checking and rejecting known un-supported flags.
-This is preferable, as it ensures better compatibility with future
-kernels.
+test_bit() is a wrapper which checks whether the bitmap and the bit
+number are compile-time constants and if so, it calls the optimized
+function which evaluates this call to a compile-time constant as well.
+If either of them is not a compile-time constant, it just calls _test_bit().
+test_bit() is the actual function to use anywhere in the kernel.
 
-Fixes: 172db5f91d5f ("ice: add support for auxiliary input/output pins")
-Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
-Signed-off-by: Karol Kolacinski <karol.kolacinski@intel.com>
+IOW, calling _test_bit() avoids potential compile-time optimizations.
+
+The sensors is not a compile-time constant, thus most probably there
+are no object code changes before and after the patch.
+But anyway, we shouldn't call internal wrappers instead of
+the actual API.
+
+Fixes: 4da71a77fc3b ("ice: read internal temperature sensor")
+Acked-by: Ivan Vecera <ivecera@redhat.com>
+Reviewed-by: Alexander Lobakin <aleksander.lobakin@intel.com>
+Signed-off-by: Petr Oros <poros@redhat.com>
 ---
- drivers/net/ethernet/intel/ice/ice_ptp.c | 41 ++++++++++++++----------
- drivers/net/ethernet/intel/ice/ice_ptp.h |  1 +
- 2 files changed, 25 insertions(+), 17 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_hwmon.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.c b/drivers/net/ethernet/intel/ice/ice_ptp.c
-index b952cad42f92..5fa377786f4c 100644
---- a/drivers/net/ethernet/intel/ice/ice_ptp.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ptp.c
-@@ -1591,14 +1591,23 @@ void ice_ptp_extts_event(struct ice_pf *pf)
-  * @store: If set to true, the values will be stored
-  *
-  * Configure an external timestamp event on the requested channel.
--  */
--static void ice_ptp_cfg_extts(struct ice_pf *pf, unsigned int chan,
--			      struct ice_extts_channel *config, bool store)
-+ *
-+ * Return: 0 on sucess, -EOPNOTUSPP on unsupported flags
-+ */
-+static int ice_ptp_cfg_extts(struct ice_pf *pf, unsigned int chan,
-+			     struct ice_extts_channel *config, bool store)
- {
- 	u32 func, aux_reg, gpio_reg, irq_reg;
- 	struct ice_hw *hw = &pf->hw;
- 	u8 tmr_idx;
+diff --git a/drivers/net/ethernet/intel/ice/ice_hwmon.c b/drivers/net/ethernet/intel/ice/ice_hwmon.c
+index e4c2c1bff6c086..b7aa6812510a4f 100644
+--- a/drivers/net/ethernet/intel/ice/ice_hwmon.c
++++ b/drivers/net/ethernet/intel/ice/ice_hwmon.c
+@@ -96,7 +96,7 @@ static bool ice_is_internal_reading_supported(struct ice_pf *pf)
  
-+	/* Reject requests with unsupported flags */
-+	if (config->flags & ~(PTP_ENABLE_FEATURE |
-+			      PTP_RISING_EDGE |
-+			      PTP_FALLING_EDGE |
-+			      PTP_STRICT_FLAGS))
-+	return -EOPNOTSUPP;
-+
- 	tmr_idx = hw->func_caps.ts_func_info.tmr_index_owned;
+ 	unsigned long sensors = pf->hw.dev_caps.supported_sensors;
  
- 	irq_reg = rd32(hw, PFINT_OICR_ENA);
-@@ -1639,6 +1648,8 @@ static void ice_ptp_cfg_extts(struct ice_pf *pf, unsigned int chan,
- 
- 	if (store)
- 		memcpy(&pf->ptp.extts_channels[chan], config, sizeof(*config));
-+
-+	return 0;
- }
- 
- /**
-@@ -1697,6 +1708,9 @@ static int ice_ptp_cfg_clkout(struct ice_pf *pf, unsigned int chan,
- 	u32 func, val, gpio_pin;
- 	u8 tmr_idx;
- 
-+	if (config->flags & ~PTP_PEROUT_PHASE)
-+		return -EOPNOTSUPP;
-+
- 	tmr_idx = hw->func_caps.ts_func_info.tmr_index_owned;
- 
- 	/* 0. Reset mode & out_en in AUX_OUT */
-@@ -1836,7 +1850,6 @@ ice_ptp_gpio_enable_e810(struct ptp_clock_info *info,
- 	bool sma_pres = false;
- 	unsigned int chan;
- 	u32 gpio_pin;
--	int err;
- 
- 	if (ice_is_feature_supported(pf, ICE_F_SMA_CTRL))
- 		sma_pres = true;
-@@ -1865,14 +1878,14 @@ ice_ptp_gpio_enable_e810(struct ptp_clock_info *info,
- 			clk_cfg.gpio_pin = chan;
- 		}
- 
-+		clk_cfg.flags = rq->perout.flags;
- 		clk_cfg.period = ((rq->perout.period.sec * NSEC_PER_SEC) +
- 				   rq->perout.period.nsec);
- 		clk_cfg.start_time = ((rq->perout.start.sec * NSEC_PER_SEC) +
- 				       rq->perout.start.nsec);
- 		clk_cfg.ena = !!on;
- 
--		err = ice_ptp_cfg_clkout(pf, chan, &clk_cfg, true);
--		break;
-+		return ice_ptp_cfg_clkout(pf, chan, &clk_cfg, true);
- 	}
- 	case PTP_CLK_REQ_EXTTS:
- 	{
-@@ -1897,14 +1910,12 @@ ice_ptp_gpio_enable_e810(struct ptp_clock_info *info,
- 		extts_cfg.gpio_pin = gpio_pin;
- 		extts_cfg.ena = !!on;
- 
--		ice_ptp_cfg_extts(pf, chan, &extts_cfg, true);
--		return 0;
-+
-+		return ice_ptp_cfg_extts(pf, chan, &extts_cfg, true);
- 	}
- 	default:
- 		return -EOPNOTSUPP;
- 	}
--
--	return err;
- }
- 
- /**
-@@ -1917,19 +1928,18 @@ static int ice_ptp_gpio_enable_e823(struct ptp_clock_info *info,
- 				    struct ptp_clock_request *rq, int on)
- {
- 	struct ice_pf *pf = ptp_info_to_pf(info);
--	int err;
- 
- 	switch (rq->type) {
- 	case PTP_CLK_REQ_PPS:
- 	{
- 		struct ice_perout_channel clk_cfg = {};
- 
-+		clk_cfg.flags = rq->perout.flags;
- 		clk_cfg.gpio_pin = PPS_PIN_INDEX;
- 		clk_cfg.period = NSEC_PER_SEC;
- 		clk_cfg.ena = !!on;
- 
--		err = ice_ptp_cfg_clkout(pf, PPS_CLK_GEN_CHAN, &clk_cfg, true);
--		break;
-+		return ice_ptp_cfg_clkout(pf, PPS_CLK_GEN_CHAN, &clk_cfg, true);
- 	}
- 	case PTP_CLK_REQ_EXTTS:
- 	{
-@@ -1939,14 +1949,11 @@ static int ice_ptp_gpio_enable_e823(struct ptp_clock_info *info,
- 		extts_cfg.gpio_pin = TIME_SYNC_PIN_INDEX;
- 		extts_cfg.ena = !!on;
- 
--		ice_ptp_cfg_extts(pf, rq->extts.index, &extts_cfg, true);
--		break;
-+		return ice_ptp_cfg_extts(pf, rq->extts.index, &extts_cfg, true);
- 	}
- 	default:
- 		return -EOPNOTSUPP;
- 	}
--
--	return err;
- }
- 
- /**
-diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.h b/drivers/net/ethernet/intel/ice/ice_ptp.h
-index f1171cdd93c8..e2af9749061c 100644
---- a/drivers/net/ethernet/intel/ice/ice_ptp.h
-+++ b/drivers/net/ethernet/intel/ice/ice_ptp.h
-@@ -29,6 +29,7 @@ enum ice_ptp_pin_e810t {
- struct ice_perout_channel {
- 	bool ena;
- 	u32 gpio_pin;
-+	u32 flags;
- 	u64 period;
- 	u64 start_time;
+-	return _test_bit(ICE_SENSOR_SUPPORT_E810_INT_TEMP_BIT, &sensors);
++	return test_bit(ICE_SENSOR_SUPPORT_E810_INT_TEMP_BIT, &sensors);
  };
+ 
+ void ice_hwmon_init(struct ice_pf *pf)
 -- 
-2.43.0
+2.44.2
 
