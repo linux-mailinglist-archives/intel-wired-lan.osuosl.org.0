@@ -2,70 +2,70 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1E5A79106ED
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 20 Jun 2024 15:56:54 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5C0DB9106EF
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 20 Jun 2024 15:56:57 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id B5650846FC;
-	Thu, 20 Jun 2024 13:56:52 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id EE69984768;
+	Thu, 20 Jun 2024 13:56:55 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id w0SvcJ_75Ggd; Thu, 20 Jun 2024 13:56:51 +0000 (UTC)
+ id D58i6dkReh3F; Thu, 20 Jun 2024 13:56:54 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8439D84773
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org AFED784789
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1718891810;
-	bh=fvR6ocqXMDQ+jyZLxHe02HWFpeKhz0bYj517o1+KKnQ=;
+	s=default; t=1718891814;
+	bh=Pc9UJhFyERZW/6nMnlLrK3Ais6ZSKSMQ2YdL7Z+4o5k=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=BaXY6EWKfAhEqPBRvv1DZWhwpU+11C2KgJUxJS1aNCEqR113RUvPp2oc7MQnayYZH
-	 ZY0c5poiithhXfGChtRaOW48eQEN+V854QNJugR8ZmG4NlZx+HRK9tKpVzTHT812bY
-	 1DPHHjv+lteYHtG/xKPgDy1SQ6Xvz0gy1c35hBDh/z18MnfGEFvRNSTqm8R3Lua+dF
-	 edYY3ZD9zwotB78Y96AoVu/bjp45mi8Uaq/mdwSnGw77w5dBaXCm0fCCYwmgKrEDMD
-	 RotkZCr9qvcZXgyJ7zEASyyZyiSDfHOTaK7h9Ih8KLdSexZsS2kxX06DXKR5SxNjKu
-	 atXSq5To6hlwQ==
+	b=e8UfONx0ZtKbH9ktr8nV6GltMTsowSBYdMbTwXKnhXykbBIdDeIrZV06ObMdSjbdT
+	 EMgGlV5e2eKsh0katRvsrc2pUz+dCI0ZPS445AeONvZbNmYDzEiUwBmV+HF6eEmOUD
+	 tIGyujPC/h8ca+cqDIVmBzDZ8k4mcyD1y/u7wtT3eQQBfPO6oj8C5RkrQyWIDc4ISA
+	 L4kNtdtlFGPzTKAGzlSXxGE1dZeJ+d47xbPD7zgCaL1tizlM3V8LJiUzpEaOMSsfxL
+	 Q23ZkblYlxo9GHs3oApAFSNN+HK2nxGP819p9cNp7k/8AzGea9mE/s8CVUyeAlSSLf
+	 ubqO0fo/Iisug==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 8439D84773;
-	Thu, 20 Jun 2024 13:56:50 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id AFED784789;
+	Thu, 20 Jun 2024 13:56:54 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 1E4EC1BF315
- for <intel-wired-lan@lists.osuosl.org>; Thu, 20 Jun 2024 13:56:47 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 311DF1BF315
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 20 Jun 2024 13:56:50 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 0A2C242EE5
- for <intel-wired-lan@lists.osuosl.org>; Thu, 20 Jun 2024 13:56:47 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 1DA1E42EE7
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 20 Jun 2024 13:56:50 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id i33AgXilz6hb for <intel-wired-lan@lists.osuosl.org>;
- Thu, 20 Jun 2024 13:56:45 +0000 (UTC)
+ id H_B_M44V2Jm2 for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 20 Jun 2024 13:56:48 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.17;
  helo=mgamail.intel.com; envelope-from=aleksander.lobakin@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 6E4A942E6A
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6E4A942E6A
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 94BE442E6A
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 94BE442E6A
 Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.17])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 6E4A942E6A
- for <intel-wired-lan@lists.osuosl.org>; Thu, 20 Jun 2024 13:56:45 +0000 (UTC)
-X-CSE-ConnectionGUID: DyFHWk+iQfCiYFJX7jAQKQ==
-X-CSE-MsgGUID: UijVgBvMSbyspsWXF4Ag2w==
-X-IronPort-AV: E=McAfee;i="6700,10204,11108"; a="15987867"
-X-IronPort-AV: E=Sophos;i="6.08,252,1712646000"; d="scan'208";a="15987867"
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 94BE442E6A
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 20 Jun 2024 13:56:48 +0000 (UTC)
+X-CSE-ConnectionGUID: sgDR9muVSw6/zZkoaRhWxQ==
+X-CSE-MsgGUID: OiapPhQ+RneUZMu8fPCxLw==
+X-IronPort-AV: E=McAfee;i="6700,10204,11108"; a="15987878"
+X-IronPort-AV: E=Sophos;i="6.08,252,1712646000"; d="scan'208";a="15987878"
 Received: from fmviesa004.fm.intel.com ([10.60.135.144])
  by orvoesa109.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 20 Jun 2024 06:56:45 -0700
-X-CSE-ConnectionGUID: b8TvPYlgRIGKugUn0hk9VQ==
-X-CSE-MsgGUID: W9LUrtVmSSK6hXopah2QQQ==
+ 20 Jun 2024 06:56:49 -0700
+X-CSE-ConnectionGUID: TgGTbBbvTrikfBQCPTbuOw==
+X-CSE-MsgGUID: ALIEwi1/RTCOJrxy665z4A==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.08,252,1712646000"; d="scan'208";a="46772113"
+X-IronPort-AV: E=Sophos;i="6.08,252,1712646000"; d="scan'208";a="46772123"
 Received: from newjersey.igk.intel.com ([10.102.20.203])
- by fmviesa004.fm.intel.com with ESMTP; 20 Jun 2024 06:56:42 -0700
+ by fmviesa004.fm.intel.com with ESMTP; 20 Jun 2024 06:56:45 -0700
 From: Alexander Lobakin <aleksander.lobakin@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Thu, 20 Jun 2024 15:53:40 +0200
-Message-ID: <20240620135347.3006818-8-aleksander.lobakin@intel.com>
+Date: Thu, 20 Jun 2024 15:53:41 +0200
+Message-ID: <20240620135347.3006818-9-aleksander.lobakin@intel.com>
 X-Mailer: git-send-email 2.45.2
 In-Reply-To: <20240620135347.3006818-1-aleksander.lobakin@intel.com>
 References: <20240620135347.3006818-1-aleksander.lobakin@intel.com>
@@ -73,25 +73,25 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1718891806; x=1750427806;
+ t=1718891809; x=1750427809;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=LvT0PREP8vzHzaD58YLaKHIEEGKN0DOAhk38ixhPE/Q=;
- b=RAy0Q91PVY+QeQNvpfbSxe+IfAv3aGtwqDBetCw/cUaJ9BvUVNZFU/+b
- QejVatHI+rCYI/lk9P4QwQ8PaxpzKh2T4tX8dXooNiBKrQtI0vxtxq34v
- cOeDaQV1BEmOesW8md5GF3xccenJG0568knYwWdHoJ0aPLZgnO8fkezuN
- jpkfuYwtyqmN+yra6/Lynuy5c/26XAduAK4DJkrq7igD6pFCdTc5aByvd
- F52+IM9b/EzY/CUuJhYXcnzSF1yTXPYWIMgwmsVaqFTkp3U65rNrjSM4z
- tHBRZAdW8l/tiTuLGgXmRPzYEjkabjiNaqCSASF4h6rsxppWJHIwp7HJt
- w==;
+ bh=PNhOQ3Dm10EhljKSqQeipd9yXidrwrLGBzzOeP37lgE=;
+ b=U2Buz/81y2ZiFZUAIVfPyG4mRZaLOaFoFIVKaRVV8jzxa92/a2rzRIWn
+ lBeeiqoQ5n60XKmt+Q+HR1fT3tSc3wkCdUE7P8EasqYSMd7Z+g549GWA4
+ n4mRuASBdUJy7dsRNuNZUYiWd9TnzpDqTp4ge4Ns46o8i+rmnTJMOuR8C
+ 0EpV39cIALShUd921M0NqSzGXVlBl6G2/Ji0wGXyfKoEJqO/yUmn1uNoP
+ B/B0AoiAuBPHJq6mvztDJG+O0WrlkNi7SFH032HItTuFucOI4xfF6ltB2
+ 0Rgolft4ZB/SKKUZlx3fV7oznFXu3KDxGKYTYJ/bKC3XYZu0TwihJJNt7
+ Q==;
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=RAy0Q91P
-Subject: [Intel-wired-lan] [PATCH iwl-next v2 07/14] idpf: strictly assert
- cachelines of queue and queue vector structures
+ header.a=rsa-sha256 header.s=Intel header.b=U2Buz/81
+Subject: [Intel-wired-lan] [PATCH iwl-next v2 08/14] idpf: merge singleq and
+ splitq &net_device_ops
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -115,412 +115,202 @@ Cc: Mina Almasry <almasrymina@google.com>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Now that the queue and queue vector structures are separated and laid
-out optimally, group the fields as read-mostly, read-write, and cold
-cachelines and add size assertions to make sure new features won't push
-something out of its place and provoke perf regression.
-Despite looking innocent, this gives up to 2% of perf bump on Rx.
+It makes no sense to have a second &net_device_ops struct (800 bytes of
+rodata) with only one difference in .ndo_start_xmit, which can easily
+be just one `if`. This `if` is a drop in the ocean and you won't see
+any difference.
+Define unified idpf_xmit_start(). The preparation for sending is the
+same, just call either idpf_tx_splitq_frame() or idpf_tx_singleq_frame()
+depending on the active model to actually map and send the skb.
 
 Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
 Reviewed-by: Jacob Keller <jacob.e.keller@intel.com>
 Signed-off-by: Alexander Lobakin <aleksander.lobakin@intel.com>
 ---
- drivers/net/ethernet/intel/idpf/idpf_txrx.h | 185 +++++++++++++-------
- 1 file changed, 118 insertions(+), 67 deletions(-)
+ drivers/net/ethernet/intel/idpf/idpf_txrx.h   |  9 ++----
+ drivers/net/ethernet/intel/idpf/idpf_lib.c    | 26 +++-------------
+ .../ethernet/intel/idpf/idpf_singleq_txrx.c   | 31 ++-----------------
+ drivers/net/ethernet/intel/idpf/idpf_txrx.c   | 17 ++++++----
+ 4 files changed, 20 insertions(+), 63 deletions(-)
 
 diff --git a/drivers/net/ethernet/intel/idpf/idpf_txrx.h b/drivers/net/ethernet/intel/idpf/idpf_txrx.h
-index 5daa8f905f86..c7ae20ab567b 100644
+index c7ae20ab567b..b2bf58146484 100644
 --- a/drivers/net/ethernet/intel/idpf/idpf_txrx.h
 +++ b/drivers/net/ethernet/intel/idpf/idpf_txrx.h
-@@ -6,6 +6,7 @@
+@@ -1198,14 +1198,11 @@ void idpf_tx_dma_map_error(struct idpf_tx_queue *txq, struct sk_buff *skb,
+ 			   struct idpf_tx_buf *first, u16 ring_idx);
+ unsigned int idpf_tx_desc_count_required(struct idpf_tx_queue *txq,
+ 					 struct sk_buff *skb);
+-bool idpf_chk_linearize(struct sk_buff *skb, unsigned int max_bufs,
+-			unsigned int count);
+ int idpf_tx_maybe_stop_common(struct idpf_tx_queue *tx_q, unsigned int size);
+ void idpf_tx_timeout(struct net_device *netdev, unsigned int txqueue);
+-netdev_tx_t idpf_tx_splitq_start(struct sk_buff *skb,
+-				 struct net_device *netdev);
+-netdev_tx_t idpf_tx_singleq_start(struct sk_buff *skb,
+-				  struct net_device *netdev);
++netdev_tx_t idpf_tx_singleq_frame(struct sk_buff *skb,
++				  struct idpf_tx_queue *tx_q);
++netdev_tx_t idpf_tx_start(struct sk_buff *skb, struct net_device *netdev);
+ bool idpf_rx_singleq_buf_hw_alloc_all(struct idpf_rx_queue *rxq,
+ 				      u16 cleaned_count);
+ int idpf_tso(struct sk_buff *skb, struct idpf_tx_offload_params *off);
+diff --git a/drivers/net/ethernet/intel/idpf/idpf_lib.c b/drivers/net/ethernet/intel/idpf/idpf_lib.c
+index a8be09a89943..fe91475c7b4c 100644
+--- a/drivers/net/ethernet/intel/idpf/idpf_lib.c
++++ b/drivers/net/ethernet/intel/idpf/idpf_lib.c
+@@ -4,8 +4,7 @@
+ #include "idpf.h"
+ #include "idpf_virtchnl.h"
  
- #include <linux/dim.h>
- 
-+#include <net/libeth/cache.h>
- #include <net/page_pool/helpers.h>
- #include <net/tcp.h>
- #include <net/netdev_queues.h>
-@@ -505,58 +506,68 @@ struct idpf_intr_reg {
- /**
-  * struct idpf_q_vector
-  * @vport: Vport back pointer
-- * @napi: napi handler
-- * @v_idx: Vector index
-- * @intr_reg: See struct idpf_intr_reg
-+ * @num_rxq: Number of RX queues
-  * @num_txq: Number of TX queues
-+ * @num_bufq: Number of buffer queues
-  * @num_complq: number of completion queues
-+ * @rx: Array of RX queues to service
-  * @tx: Array of TX queues to service
-+ * @bufq: Array of buffer queues to service
-  * @complq: array of completion queues
-+ * @intr_reg: See struct idpf_intr_reg
-+ * @napi: napi handler
-+ * @total_events: Number of interrupts processed
-  * @tx_dim: Data for TX net_dim algorithm
-  * @tx_itr_value: TX interrupt throttling rate
-  * @tx_intr_mode: Dynamic ITR or not
-  * @tx_itr_idx: TX ITR index
-- * @num_rxq: Number of RX queues
-- * @rx: Array of RX queues to service
-  * @rx_dim: Data for RX net_dim algorithm
-  * @rx_itr_value: RX interrupt throttling rate
-  * @rx_intr_mode: Dynamic ITR or not
-  * @rx_itr_idx: RX ITR index
-- * @num_bufq: Number of buffer queues
-- * @bufq: Array of buffer queues to service
-- * @total_events: Number of interrupts processed
-+ * @v_idx: Vector index
-  * @affinity_mask: CPU affinity mask
-  */
- struct idpf_q_vector {
-+	__cacheline_group_begin_aligned(read_mostly);
- 	struct idpf_vport *vport;
--	struct napi_struct napi;
--	u16 v_idx;
--	struct idpf_intr_reg intr_reg;
- 
-+	u16 num_rxq;
- 	u16 num_txq;
-+	u16 num_bufq;
- 	u16 num_complq;
-+	struct idpf_rx_queue **rx;
- 	struct idpf_tx_queue **tx;
-+	struct idpf_buf_queue **bufq;
- 	struct idpf_compl_queue **complq;
- 
-+	struct idpf_intr_reg intr_reg;
-+	__cacheline_group_end_aligned(read_mostly);
-+
-+	__cacheline_group_begin_aligned(read_write);
-+	struct napi_struct napi;
-+	u16 total_events;
-+
- 	struct dim tx_dim;
- 	u16 tx_itr_value;
- 	bool tx_intr_mode;
- 	u32 tx_itr_idx;
- 
--	u16 num_rxq;
--	struct idpf_rx_queue **rx;
- 	struct dim rx_dim;
- 	u16 rx_itr_value;
- 	bool rx_intr_mode;
- 	u32 rx_itr_idx;
-+	__cacheline_group_end_aligned(read_write);
- 
--	u16 num_bufq;
--	struct idpf_buf_queue **bufq;
--
--	u16 total_events;
-+	__cacheline_group_begin_aligned(cold);
-+	u16 v_idx;
- 
- 	cpumask_var_t affinity_mask;
-+	__cacheline_group_end_aligned(cold);
- };
-+libeth_cacheline_set_assert(struct idpf_q_vector, 104,
-+			    424 + 2 * sizeof(struct dim),
-+			    8 + sizeof(cpumask_var_t));
- 
- struct idpf_rx_queue_stats {
- 	u64_stats_t packets;
-@@ -623,11 +634,11 @@ struct idpf_txq_stash {
-  * @idx: For RX queue, it is used to index to total RX queue across groups and
-  *	 used for skb reporting.
-  * @desc_count: Number of descriptors
-+ * @rxdids: Supported RX descriptor ids
-+ * @rx_ptype_lkup: LUT of Rx ptypes
-  * @next_to_use: Next descriptor to use
-  * @next_to_clean: Next descriptor to clean
-  * @next_to_alloc: RX buffer to allocate at
-- * @rxdids: Supported RX descriptor ids
-- * @rx_ptype_lkup: LUT of Rx ptypes
-  * @skb: Pointer to the skb
-  * @stats_sync: See struct u64_stats_sync
-  * @q_stats: See union idpf_rx_queue_stats
-@@ -641,6 +652,7 @@ struct idpf_txq_stash {
-  * @rx_max_pkt_size: RX max packet size
-  */
- struct idpf_rx_queue {
-+	__cacheline_group_begin_aligned(read_mostly);
- 	union {
- 		union virtchnl2_rx_desc *rx;
- 		struct virtchnl2_singleq_rx_buf_desc *single_buf;
-@@ -663,19 +675,23 @@ struct idpf_rx_queue {
- 	DECLARE_BITMAP(flags, __IDPF_Q_FLAGS_NBITS);
- 	u16 idx;
- 	u16 desc_count;
-+
-+	u32 rxdids;
-+	const struct idpf_rx_ptype_decoded *rx_ptype_lkup;
-+	__cacheline_group_end_aligned(read_mostly);
-+
-+	__cacheline_group_begin_aligned(read_write);
- 	u16 next_to_use;
- 	u16 next_to_clean;
- 	u16 next_to_alloc;
- 
--	u32 rxdids;
--
--	const struct idpf_rx_ptype_decoded *rx_ptype_lkup;
- 	struct sk_buff *skb;
- 
- 	struct u64_stats_sync stats_sync;
- 	struct idpf_rx_queue_stats q_stats;
-+	__cacheline_group_end_aligned(read_write);
- 
--	/* Slowpath */
-+	__cacheline_group_begin_aligned(cold);
- 	u32 q_id;
- 	u32 size;
- 	dma_addr_t dma;
-@@ -686,7 +702,11 @@ struct idpf_rx_queue {
- 	u16 rx_hbuf_size;
- 	u16 rx_buf_size;
- 	u16 rx_max_pkt_size;
--} ____cacheline_aligned;
-+	__cacheline_group_end_aligned(cold);
-+};
-+libeth_cacheline_set_assert(struct idpf_rx_queue, 64,
-+			    72 + sizeof(struct u64_stats_sync),
-+			    32);
+-static const struct net_device_ops idpf_netdev_ops_splitq;
+-static const struct net_device_ops idpf_netdev_ops_singleq;
++static const struct net_device_ops idpf_netdev_ops;
  
  /**
-  * struct idpf_tx_queue - software structure representing a transmit queue
-@@ -703,22 +723,7 @@ struct idpf_rx_queue {
-  * @idx: For TX queue, it is used as index to map between TX queue group and
-  *	 hot path TX pointers stored in vport. Used in both singleq/splitq.
-  * @desc_count: Number of descriptors
-- * @next_to_use: Next descriptor to use
-- * @next_to_clean: Next descriptor to clean
-- * @netdev: &net_device corresponding to this queue
-- * @cleaned_bytes: Splitq only, TXQ only: When a TX completion is received on
-- *		   the TX completion queue, it can be for any TXQ associated
-- *		   with that completion queue. This means we can clean up to
-- *		   N TXQs during a single call to clean the completion queue.
-- *		   cleaned_bytes|pkts tracks the clean stats per TXQ during
-- *		   that single call to clean the completion queue. By doing so,
-- *		   we can update BQL with aggregate cleaned stats for each TXQ
-- *		   only once at the end of the cleaning routine.
-- * @clean_budget: singleq only, queue cleaning budget
-- * @cleaned_pkts: Number of packets cleaned for the above said case
-- * @tx_max_bufs: Max buffers that can be transmitted with scatter-gather
-  * @tx_min_pkt_len: Min supported packet length
-- * @compl_tag_bufid_m: Completion tag buffer id mask
-  * @compl_tag_gen_s: Completion tag generation bit
-  *	The format of the completion tag will change based on the TXQ
-  *	descriptor ring size so that we can maintain roughly the same level
-@@ -739,9 +744,24 @@ struct idpf_rx_queue {
-  *	--------------------------------
+  * idpf_init_vector_stack - Fill the MSIX vector stack with vector index
+@@ -764,10 +763,7 @@ static int idpf_cfg_netdev(struct idpf_vport *vport)
+ 	}
+ 
+ 	/* assign netdev_ops */
+-	if (idpf_is_queue_model_split(vport->txq_model))
+-		netdev->netdev_ops = &idpf_netdev_ops_splitq;
+-	else
+-		netdev->netdev_ops = &idpf_netdev_ops_singleq;
++	netdev->netdev_ops = &idpf_netdev_ops;
+ 
+ 	/* setup watchdog timeout value to be 5 second */
+ 	netdev->watchdog_timeo = 5 * HZ;
+@@ -2353,24 +2349,10 @@ void idpf_free_dma_mem(struct idpf_hw *hw, struct idpf_dma_mem *mem)
+ 	mem->pa = 0;
+ }
+ 
+-static const struct net_device_ops idpf_netdev_ops_splitq = {
+-	.ndo_open = idpf_open,
+-	.ndo_stop = idpf_stop,
+-	.ndo_start_xmit = idpf_tx_splitq_start,
+-	.ndo_features_check = idpf_features_check,
+-	.ndo_set_rx_mode = idpf_set_rx_mode,
+-	.ndo_validate_addr = eth_validate_addr,
+-	.ndo_set_mac_address = idpf_set_mac,
+-	.ndo_change_mtu = idpf_change_mtu,
+-	.ndo_get_stats64 = idpf_get_stats64,
+-	.ndo_set_features = idpf_set_features,
+-	.ndo_tx_timeout = idpf_tx_timeout,
+-};
+-
+-static const struct net_device_ops idpf_netdev_ops_singleq = {
++static const struct net_device_ops idpf_netdev_ops = {
+ 	.ndo_open = idpf_open,
+ 	.ndo_stop = idpf_stop,
+-	.ndo_start_xmit = idpf_tx_singleq_start,
++	.ndo_start_xmit = idpf_tx_start,
+ 	.ndo_features_check = idpf_features_check,
+ 	.ndo_set_rx_mode = idpf_set_rx_mode,
+ 	.ndo_validate_addr = eth_validate_addr,
+diff --git a/drivers/net/ethernet/intel/idpf/idpf_singleq_txrx.c b/drivers/net/ethernet/intel/idpf/idpf_singleq_txrx.c
+index 9864a3992f0c..8630db24f63a 100644
+--- a/drivers/net/ethernet/intel/idpf/idpf_singleq_txrx.c
++++ b/drivers/net/ethernet/intel/idpf/idpf_singleq_txrx.c
+@@ -351,8 +351,8 @@ static void idpf_tx_singleq_build_ctx_desc(struct idpf_tx_queue *txq,
   *
-  *	This gives us 8*8160 = 65280 possible unique values.
-+ * @netdev: &net_device corresponding to this queue
-+ * @next_to_use: Next descriptor to use
-+ * @next_to_clean: Next descriptor to clean
-+ * @cleaned_bytes: Splitq only, TXQ only: When a TX completion is received on
-+ *		   the TX completion queue, it can be for any TXQ associated
-+ *		   with that completion queue. This means we can clean up to
-+ *		   N TXQs during a single call to clean the completion queue.
-+ *		   cleaned_bytes|pkts tracks the clean stats per TXQ during
-+ *		   that single call to clean the completion queue. By doing so,
-+ *		   we can update BQL with aggregate cleaned stats for each TXQ
-+ *		   only once at the end of the cleaning routine.
-+ * @clean_budget: singleq only, queue cleaning budget
-+ * @cleaned_pkts: Number of packets cleaned for the above said case
-+ * @tx_max_bufs: Max buffers that can be transmitted with scatter-gather
-+ * @stash: Tx buffer stash for Flow-based scheduling mode
-+ * @compl_tag_bufid_m: Completion tag buffer id mask
-  * @compl_tag_cur_gen: Used to keep track of current completion tag generation
-  * @compl_tag_gen_max: To determine when compl_tag_cur_gen should be reset
-- * @stash: Tx buffer stash for Flow-based scheduling mode
-  * @stats_sync: See struct u64_stats_sync
-  * @q_stats: See union idpf_tx_queue_stats
-  * @q_id: Queue id
-@@ -750,6 +770,7 @@ struct idpf_rx_queue {
-  * @q_vector: Backreference to associated vector
+  * Returns NETDEV_TX_OK if sent, else an error code
   */
- struct idpf_tx_queue {
-+	__cacheline_group_begin_aligned(read_mostly);
- 	union {
- 		struct idpf_base_tx_desc *base_tx;
- 		struct idpf_base_tx_ctx_desc *base_ctx;
-@@ -766,10 +787,16 @@ struct idpf_tx_queue {
- 	DECLARE_BITMAP(flags, __IDPF_Q_FLAGS_NBITS);
- 	u16 idx;
- 	u16 desc_count;
--	u16 next_to_use;
--	u16 next_to_clean;
-+
-+	u16 tx_min_pkt_len;
-+	u16 compl_tag_gen_s;
+-static netdev_tx_t idpf_tx_singleq_frame(struct sk_buff *skb,
+-					 struct idpf_tx_queue *tx_q)
++netdev_tx_t idpf_tx_singleq_frame(struct sk_buff *skb,
++				  struct idpf_tx_queue *tx_q)
+ {
+ 	struct idpf_tx_offload_params offload = { };
+ 	struct idpf_tx_buf *first;
+@@ -408,33 +408,6 @@ static netdev_tx_t idpf_tx_singleq_frame(struct sk_buff *skb,
+ 	return idpf_tx_drop_skb(tx_q, skb);
+ }
  
- 	struct net_device *netdev;
-+	__cacheline_group_end_aligned(read_mostly);
-+
-+	__cacheline_group_begin_aligned(read_write);
-+	u16 next_to_use;
-+	u16 next_to_clean;
- 
- 	union {
- 		u32 cleaned_bytes;
-@@ -778,26 +805,27 @@ struct idpf_tx_queue {
- 	u16 cleaned_pkts;
- 
- 	u16 tx_max_bufs;
--	u16 tx_min_pkt_len;
-+	struct idpf_txq_stash *stash;
- 
- 	u16 compl_tag_bufid_m;
--	u16 compl_tag_gen_s;
+-/**
+- * idpf_tx_singleq_start - Selects the right Tx queue to send buffer
+- * @skb: send buffer
+- * @netdev: network interface device structure
+- *
+- * Returns NETDEV_TX_OK if sent, else an error code
+- */
+-netdev_tx_t idpf_tx_singleq_start(struct sk_buff *skb,
+-				  struct net_device *netdev)
+-{
+-	struct idpf_vport *vport = idpf_netdev_to_vport(netdev);
+-	struct idpf_tx_queue *tx_q;
 -
- 	u16 compl_tag_cur_gen;
- 	u16 compl_tag_gen_max;
- 
--	struct idpf_txq_stash *stash;
+-	tx_q = vport->txqs[skb_get_queue_mapping(skb)];
 -
- 	struct u64_stats_sync stats_sync;
- 	struct idpf_tx_queue_stats q_stats;
-+	__cacheline_group_end_aligned(read_write);
- 
--	/* Slowpath */
-+	__cacheline_group_begin_aligned(cold);
- 	u32 q_id;
- 	u32 size;
- 	dma_addr_t dma;
- 
- 	struct idpf_q_vector *q_vector;
--} ____cacheline_aligned;
-+	__cacheline_group_end_aligned(cold);
-+};
-+libeth_cacheline_set_assert(struct idpf_tx_queue, 64,
-+			    88 + sizeof(struct u64_stats_sync),
-+			    24);
- 
+-	/* hardware can't handle really short frames, hardware padding works
+-	 * beyond this point
+-	 */
+-	if (skb_put_padto(skb, IDPF_TX_MIN_PKT_LEN)) {
+-		idpf_tx_buf_hw_update(tx_q, tx_q->next_to_use, false);
+-
+-		return NETDEV_TX_OK;
+-	}
+-
+-	return idpf_tx_singleq_frame(skb, tx_q);
+-}
+-
  /**
-  * struct idpf_buf_queue - software structure representing a buffer queue
-@@ -822,6 +850,7 @@ struct idpf_tx_queue {
-  * @rx_buf_size: Buffer size
+  * idpf_tx_singleq_clean - Reclaim resources from queue
+  * @tx_q: Tx queue to clean
+diff --git a/drivers/net/ethernet/intel/idpf/idpf_txrx.c b/drivers/net/ethernet/intel/idpf/idpf_txrx.c
+index f569ea389b04..5dd1b1a9e624 100644
+--- a/drivers/net/ethernet/intel/idpf/idpf_txrx.c
++++ b/drivers/net/ethernet/intel/idpf/idpf_txrx.c
+@@ -4,6 +4,9 @@
+ #include "idpf.h"
+ #include "idpf_virtchnl.h"
+ 
++static bool idpf_chk_linearize(struct sk_buff *skb, unsigned int max_bufs,
++			       unsigned int count);
++
+ /**
+  * idpf_buf_lifo_push - push a buffer pointer onto stack
+  * @stack: pointer to stack struct
+@@ -2702,8 +2705,8 @@ static bool __idpf_chk_linearize(struct sk_buff *skb, unsigned int max_bufs)
+  * E.g.: a packet with 7 fragments can require 9 DMA transactions; 1 for TSO
+  * header, 1 for segment payload, and then 7 for the fragments.
   */
- struct idpf_buf_queue {
-+	__cacheline_group_begin_aligned(read_mostly);
- 	struct virtchnl2_splitq_rx_buf_desc *split_buf;
- 	struct {
- 		struct idpf_rx_buf *buf;
-@@ -832,12 +861,16 @@ struct idpf_buf_queue {
- 	void __iomem *tail;
- 
- 	DECLARE_BITMAP(flags, __IDPF_Q_FLAGS_NBITS);
--	u16 desc_count;
--	u16 next_to_use;
--	u16 next_to_clean;
--	u16 next_to_alloc;
-+	u32 desc_count;
-+	__cacheline_group_end_aligned(read_mostly);
- 
--	/* Slowpath */
-+	__cacheline_group_begin_aligned(read_write);
-+	u32 next_to_use;
-+	u32 next_to_clean;
-+	u32 next_to_alloc;
-+	__cacheline_group_end_aligned(read_write);
-+
-+	__cacheline_group_begin_aligned(cold);
- 	u32 q_id;
- 	u32 size;
- 	dma_addr_t dma;
-@@ -847,7 +880,9 @@ struct idpf_buf_queue {
- 	u16 rx_buffer_low_watermark;
- 	u16 rx_hbuf_size;
- 	u16 rx_buf_size;
--} ____cacheline_aligned;
-+	__cacheline_group_end_aligned(cold);
-+};
-+libeth_cacheline_set_assert(struct idpf_buf_queue, 64, 16, 32);
+-bool idpf_chk_linearize(struct sk_buff *skb, unsigned int max_bufs,
+-			unsigned int count)
++static bool idpf_chk_linearize(struct sk_buff *skb, unsigned int max_bufs,
++			       unsigned int count)
+ {
+ 	if (likely(count < max_bufs))
+ 		return false;
+@@ -2849,14 +2852,13 @@ static netdev_tx_t idpf_tx_splitq_frame(struct sk_buff *skb,
+ }
  
  /**
-  * struct idpf_compl_queue - software structure representing a completion queue
-@@ -855,11 +890,11 @@ struct idpf_buf_queue {
-  * @txq_grp: See struct idpf_txq_group
-  * @flags: See enum idpf_queue_flags_t
-  * @desc_count: Number of descriptors
-+ * @clean_budget: queue cleaning budget
-+ * @netdev: &net_device corresponding to this queue
-  * @next_to_use: Next descriptor to use. Relevant in both split & single txq
-  *		 and bufq.
-  * @next_to_clean: Next descriptor to clean
-- * @netdev: &net_device corresponding to this queue
-- * @clean_budget: queue cleaning budget
-  * @num_completions: Only relevant for TX completion queue. It tracks the
-  *		     number of completions received to compare against the
-  *		     number of completions pending, as accumulated by the
-@@ -870,25 +905,33 @@ struct idpf_buf_queue {
-  * @q_vector: Backreference to associated vector
+- * idpf_tx_splitq_start - Selects the right Tx queue to send buffer
++ * idpf_tx_start - Selects the right Tx queue to send buffer
+  * @skb: send buffer
+  * @netdev: network interface device structure
+  *
+  * Returns NETDEV_TX_OK if sent, else an error code
   */
- struct idpf_compl_queue {
-+	__cacheline_group_begin_aligned(read_mostly);
- 	struct idpf_splitq_tx_compl_desc *comp;
- 	struct idpf_txq_group *txq_grp;
+-netdev_tx_t idpf_tx_splitq_start(struct sk_buff *skb,
+-				 struct net_device *netdev)
++netdev_tx_t idpf_tx_start(struct sk_buff *skb, struct net_device *netdev)
+ {
+ 	struct idpf_vport *vport = idpf_netdev_to_vport(netdev);
+ 	struct idpf_tx_queue *tx_q;
+@@ -2878,7 +2880,10 @@ netdev_tx_t idpf_tx_splitq_start(struct sk_buff *skb,
+ 		return NETDEV_TX_OK;
+ 	}
  
- 	DECLARE_BITMAP(flags, __IDPF_Q_FLAGS_NBITS);
--	u16 desc_count;
--	u16 next_to_use;
--	u16 next_to_clean;
-+	u32 desc_count;
- 
--	struct net_device *netdev;
- 	u32 clean_budget;
-+	struct net_device *netdev;
-+	__cacheline_group_end_aligned(read_mostly);
-+
-+	__cacheline_group_begin_aligned(read_write);
-+	u32 next_to_use;
-+	u32 next_to_clean;
-+
- 	u32 num_completions;
-+	__cacheline_group_end_aligned(read_write);
- 
--	/* Slowpath */
-+	__cacheline_group_begin_aligned(cold);
- 	u32 q_id;
- 	u32 size;
- 	dma_addr_t dma;
- 
- 	struct idpf_q_vector *q_vector;
--} ____cacheline_aligned;
-+	__cacheline_group_end_aligned(cold);
-+};
-+libeth_cacheline_set_assert(struct idpf_compl_queue, 40, 16, 24);
+-	return idpf_tx_splitq_frame(skb, tx_q);
++	if (idpf_is_queue_model_split(vport->txq_model))
++		return idpf_tx_splitq_frame(skb, tx_q);
++	else
++		return idpf_tx_singleq_frame(skb, tx_q);
+ }
  
  /**
-  * struct idpf_sw_queue
-@@ -903,13 +946,21 @@ struct idpf_compl_queue {
-  * lockless buffer management system and are strictly software only constructs.
-  */
- struct idpf_sw_queue {
-+	__cacheline_group_begin_aligned(read_mostly);
- 	u32 *ring;
- 
- 	DECLARE_BITMAP(flags, __IDPF_Q_FLAGS_NBITS);
--	u16 desc_count;
--	u16 next_to_use;
--	u16 next_to_clean;
--} ____cacheline_aligned;
-+	u32 desc_count;
-+	__cacheline_group_end_aligned(read_mostly);
-+
-+	__cacheline_group_begin_aligned(read_write);
-+	u32 next_to_use;
-+	u32 next_to_clean;
-+	__cacheline_group_end_aligned(read_write);
-+};
-+libeth_cacheline_group_assert(struct idpf_sw_queue, read_mostly, 24);
-+libeth_cacheline_group_assert(struct idpf_sw_queue, read_write, 8);
-+libeth_cacheline_struct_assert(struct idpf_sw_queue, 24, 8);
- 
- /**
-  * struct idpf_rxq_set
 -- 
 2.45.2
 
