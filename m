@@ -2,228 +2,113 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9766C91102D
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 20 Jun 2024 20:08:48 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id BE11B9115CC
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 21 Jun 2024 00:44:01 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id B44A743572;
-	Thu, 20 Jun 2024 18:08:46 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id EA27440960;
+	Thu, 20 Jun 2024 22:43:59 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 9JIHoNb3aF8Z; Thu, 20 Jun 2024 18:08:45 +0000 (UTC)
+ id GY_lRdjNCHSr; Thu, 20 Jun 2024 22:43:59 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 7DD23405B3
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org BF8B843551
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1718906925;
-	bh=VNFSTtyw2CrwE4QlpnE3gAtpr1nzoeMxEO4YHARrck8=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
+	s=default; t=1718923438;
+	bh=uOnJGiRbyO/FJXIIwBJKoyy1x0jsuLmmE0P/5OKn6WU=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=Sx2qNt+8BJD+xjCNFj+C2Zxyx3BQ96cyOSmFaQDZmCeg6Dz9kObiWCXsLMZoR5qeQ
-	 xumLUz7ZrJZEMu4jQ7u4D2yEao3xAhxaxDidsKFo0eXHXyhUNGqNXJoSITNLZmTwo3
-	 xPYM9hJTjjm9dk88ah8EeN8HHPyWjMo8V5lELMOwaHrZqDj6gI1N83iHRgPJBac1r0
-	 d3RImwOZb9N05zvtBj9oCj81BBsILxnXcN6ybG3QHYTEIb3mem4emOg2HmXpqoDhMM
-	 4Zygj9eDoCkeXCAWG7dXf148r6EXlfBacRV7FGyyHfATS9tJyUMjWOBs/qJb19u6mO
-	 olzF8Xgt5pEfQ==
+	b=QKtrXldAosVHdxuPi3b/mqXvKuAw3vwGCAh6C1s2ETFMH5MpknRa6YYDvrqCTdb+1
+	 tYbNRB4sYhwUfV9gLKQf0VoSCpGHRnuKRPn9YKeyrQBwYwUB6q3/yHPHTTZXZvbO0O
+	 PX9aFTrI1Tnyt9Zpj3IuhCABgVQZ7Pgz92Lw6ECFlW9+XV4FXNDqeuL8fcce2puJRI
+	 srzwfXJ8rzFf1x2hA5Xg42ZXdErRfiA2V1LP/quj6hDvp8mwKBLUtlomEn+uca+12k
+	 i8HhXuUke9HC4bXbQmtOncWtT8Io8m/6R9Yywiz0mEQYC2Z0pmiDF2Q5sc80qMxqZ2
+	 aJK6zX2SJs+jg==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 7DD23405B3;
-	Thu, 20 Jun 2024 18:08:45 +0000 (UTC)
-X-Original-To: intel-wired-lan@osuosl.org
-Delivered-To: intel-wired-lan@osuosl.org
+	by smtp2.osuosl.org (Postfix) with ESMTP id BF8B843551;
+	Thu, 20 Jun 2024 22:43:58 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id B36C31BF3DD
- for <intel-wired-lan@osuosl.org>; Thu, 20 Jun 2024 18:08:43 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 241331BF397
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 20 Jun 2024 22:19:28 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id AA30540103
- for <intel-wired-lan@osuosl.org>; Thu, 20 Jun 2024 18:08:43 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 102A540575
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 20 Jun 2024 22:19:28 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Ym8VHSBrBrzS for <intel-wired-lan@osuosl.org>;
- Thu, 20 Jun 2024 18:08:42 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.9;
- helo=mgamail.intel.com; envelope-from=vitaly.lifshits@intel.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 03113405B3
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 03113405B3
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.9])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 03113405B3
- for <intel-wired-lan@osuosl.org>; Thu, 20 Jun 2024 18:08:41 +0000 (UTC)
-X-CSE-ConnectionGUID: WyXhAGV4STWhZKgqHs/+0Q==
-X-CSE-MsgGUID: w1v4FzD5RZmCl+IHObZeLg==
-X-IronPort-AV: E=McAfee;i="6700,10204,11109"; a="26599050"
-X-IronPort-AV: E=Sophos;i="6.08,252,1712646000"; d="scan'208";a="26599050"
-Received: from orviesa007.jf.intel.com ([10.64.159.147])
- by fmvoesa103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 20 Jun 2024 11:08:40 -0700
-X-CSE-ConnectionGUID: E9x3I8LCQgqUjPKAkOL/Bw==
-X-CSE-MsgGUID: igLTxFK3Q8+Wgcvjanqz6g==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.08,252,1712646000"; d="scan'208";a="43017442"
-Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
- by orviesa007.jf.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
- 20 Jun 2024 11:08:41 -0700
-Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
- ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.39; Thu, 20 Jun 2024 11:08:40 -0700
-Received: from orsmsx612.amr.corp.intel.com (10.22.229.25) by
- ORSMSX610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.39; Thu, 20 Jun 2024 11:08:39 -0700
-Received: from ORSEDG601.ED.cps.intel.com (10.7.248.6) by
- orsmsx612.amr.corp.intel.com (10.22.229.25) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.39 via Frontend Transport; Thu, 20 Jun 2024 11:08:39 -0700
-Received: from NAM11-CO1-obe.outbound.protection.outlook.com (104.47.56.169)
- by edgegateway.intel.com (134.134.137.102) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Thu, 20 Jun 2024 11:08:39 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=OwBSfxXqd9fvLsymBvgPzuHjUjPUTulymWdrtOhLlm6mXDRriZA+5crCKpGn3Z0JieQTxZlFSwJ4t72djUQdPn9Vcb6bUXlP2/m/24FzlCPTizT392+zslShO58arL8j6TgE69umjmNjEJ1BGI8LwDodZs18ZXkFqeTTi+TAxKpzzOBPq1lOQEyiHn086In+JuFIKuGr5HwzLMC9lvVGtNacuxMeZD8mHX1SiZpkaedZBAyZhNBTFtzZ6O/axlQ4qTxWUnY6imZBoJV0mNXAx9dV+raHbcp0MHf9SJRhoSYY6QvWK1uba5xg/XWgppiJqO8BNydZ0U8GnQaiuG0NuA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=VNFSTtyw2CrwE4QlpnE3gAtpr1nzoeMxEO4YHARrck8=;
- b=LXDnZ4xP9U/UmChm4IHID79QZuMYvgBQQRjOw6wqIErTEQSsJr+OyohPF+NW0n0X4SaGmiMCt1IX1kIGsVsG5LCSopnFayzna+HM8g55Dmo3s+6YG95XeK+Xsiipdy6X6vd1S2mOmfGZUZVtllDmFx0q8B2dl/vCJUKnXYVxbHRGdBnTgaNflcqDdiGNHSAyM6SpSHIcUg+2v7mTeW1y7DYKxPdqaoqFL+RsTNl92SUnLWTjQqijolm6l72iqjdDabQ9WH/dr5W4b6ifDYeo66jeVLc2qU6NEMlqGvCv9VmJD6bbFQX0zHDJrVVdQciy6Mrxmn2l4JGe9BM06qA+yA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from PH0PR11MB5949.namprd11.prod.outlook.com (2603:10b6:510:144::6)
- by MN2PR11MB4581.namprd11.prod.outlook.com (2603:10b6:208:26c::22)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7698.21; Thu, 20 Jun
- 2024 18:08:37 +0000
-Received: from PH0PR11MB5949.namprd11.prod.outlook.com
- ([fe80::1c5d:e556:f779:e861]) by PH0PR11MB5949.namprd11.prod.outlook.com
- ([fe80::1c5d:e556:f779:e861%7]) with mapi id 15.20.7677.030; Thu, 20 Jun 2024
- 18:08:37 +0000
-Message-ID: <dddbeb19-5bac-4da2-b233-652502737193@intel.com>
-Date: Thu, 20 Jun 2024 21:08:29 +0300
-User-Agent: Mozilla Thunderbird
-To: Paul Menzel <pmenzel@molgen.mpg.de>
-References: <20240620063645.4151337-1-vitaly.lifshits@intel.com>
- <a964273e-8919-4586-825b-63cb3255be67@molgen.mpg.de>
-Content-Language: en-US
-From: "Lifshits, Vitaly" <vitaly.lifshits@intel.com>
-In-Reply-To: <a964273e-8919-4586-825b-63cb3255be67@molgen.mpg.de>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 8bit
-X-ClientProxiedBy: TLZP290CA0004.ISRP290.PROD.OUTLOOK.COM
- (2603:1096:950:9::15) To PH0PR11MB5949.namprd11.prod.outlook.com
- (2603:10b6:510:144::6)
+ id d-LzlFIH_b1I for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 20 Jun 2024 22:19:27 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2607:f8b0:4864:20::72f; helo=mail-qk1-x72f.google.com;
+ envelope-from=yan@cloudflare.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org E698240191
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org E698240191
+Received: from mail-qk1-x72f.google.com (mail-qk1-x72f.google.com
+ [IPv6:2607:f8b0:4864:20::72f])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id E698240191
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 20 Jun 2024 22:19:26 +0000 (UTC)
+Received: by mail-qk1-x72f.google.com with SMTP id
+ af79cd13be357-7955ddc6516so93977785a.1
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 20 Jun 2024 15:19:26 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1718921965; x=1719526765;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=uOnJGiRbyO/FJXIIwBJKoyy1x0jsuLmmE0P/5OKn6WU=;
+ b=QctZX+WuAidKtj7snIORxssm4GPze1CZ1oNt+gFeOGKvCpCdTJigaU6Qr7AAajc12R
+ GMJBzCQOJZHT4jyy2bmvFAslMdrMyKMPN5lXmKWSGeowL8PqPks5Up/kHFi26u6/eMg/
+ oGkHc4WXEmy5PWczuEsPaDMT0tnONAlkNg1Xo4RdYbU27GDyc4fmn/7whXpPNzlDWtxK
+ A2mSxRHPtZSCP3oZcagr978n0ehssyhWE9QdHVMgkF99kAVVxJSsPoN1PR6UKknnUNis
+ bO2lPj+4QiV7KXDL2kkZxu5XZJZ395AoBKDkDoVQ7Lp40WNyL4gHRSnJhF+A4jYo6dpr
+ GpQA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUaN7FCHegM93jLdeJvs1BqOvwsUvwlm1iBK8fUw52kbBfEYWxMhKy/QBP+PNkWJr/RYVtQSVKiE5kI+Us2VYPCKlJPVu8bCd0TgeInrmkOHg==
+X-Gm-Message-State: AOJu0YwGTjprvjF7B60B/p3AfeB/tWf2dLLpblBykbelvbBVplrzqQDR
+ gB5CP6e8ammOqAvOAxWviO4NzdgHojDdOy8Qose5O/b8ZI6yQCgFRMNEHgkLv70=
+X-Google-Smtp-Source: AGHT+IF9DmzujCRKuDPqvcTpHJ5tK40LwVxagHzuDnQcW/zjLbmWI370fRf/NDqGQdzoIWlhSdGjVw==
+X-Received: by 2002:a0c:db83:0:b0:6b0:4542:e42e with SMTP id
+ 6a1803df08f44-6b501e3f5a3mr78560556d6.28.1718921965457; 
+ Thu, 20 Jun 2024 15:19:25 -0700 (PDT)
+Received: from debian.debian ([2a09:bac5:7a49:19cd::292:40])
+ by smtp.gmail.com with ESMTPSA id
+ 6a1803df08f44-6b51ed7ed94sm813456d6.73.2024.06.20.15.19.23
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 20 Jun 2024 15:19:24 -0700 (PDT)
+Date: Thu, 20 Jun 2024 15:19:22 -0700
+From: Yan Zhai <yan@cloudflare.com>
+To: netdev@vger.kernel.org
+Message-ID: <a9eba425bfd3bfac7e7be38fe86ad5dbff3ae01f.1718919473.git.yan@cloudflare.com>
+References: <cover.1718919473.git.yan@cloudflare.com>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: PH0PR11MB5949:EE_|MN2PR11MB4581:EE_
-X-MS-Office365-Filtering-Correlation-Id: 394f0407-5330-4b5d-4ea6-08dc915401ad
-X-LD-Processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230037|376011|366013|1800799021;
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?eDM1NlZQaHIrZWovbWY4MXZOMG5USmtMdVlXb1lIQlV6Y0NRRTBzaEg4UEV3?=
- =?utf-8?B?clpmMnlkT2NGTmI0Q3U0UDc1bmtwZG1leDh4bWRwd3BTbFZPd2grZDZBazM5?=
- =?utf-8?B?aXUzcWdNcm9CK3FBRVhpNHFoTUtFSjZUMVlJOXoxbDRvVjBaemdmK291UW5P?=
- =?utf-8?B?RGgzRlNLTlZTR1Z4VDFiMDZzU3R2cGM2RGJtKzJvckZldWZhWk1udEM2c2pP?=
- =?utf-8?B?Zm1kZXYvRHlFS3BwMC9NQ2l2NGsvRmFBaGozR2FWTUF4bThKZDU5TW0rVExs?=
- =?utf-8?B?ek9FbTdyQnpDQmVRMnBZT2JpN2U0MVY0SVlQdnFoVzRxcE55NnoxVHhEb0U2?=
- =?utf-8?B?MkN5RjRmYnNBYUhXNldCSVlONFFwTkdNb1hLTmxxc1ZGWlpROWlXaEVZS05o?=
- =?utf-8?B?bzQ4R1ZNRitaZm9VV0VIMHlhbzVFZmdvSk5wbWFTelRMTjFOMzhPdSsvbWpH?=
- =?utf-8?B?QVlmYSszei84NUdiSHg1MTlFNDJDdmwzV1E1VzFRamRJSStndVZUNmhBOWRJ?=
- =?utf-8?B?N2o2RWVsNy95dFBaZ0RLWTBsdkd0WC9SUDZlZnhBZW1ndjkwN1VmdElxemlJ?=
- =?utf-8?B?bFhIdGZSQUJiOEc5aSttbUcyOC9ET2tOMUV4dGV5TVVqWWxmZGdiOU5oWEZO?=
- =?utf-8?B?VnBqQzI0MnFNekNqb01Fb0NDMXhRLzVqamp5bHg5eXJkaGJXMFJRSmhVcnhU?=
- =?utf-8?B?SWppZjJXcmJXZm1sSFV5blZHaDNRQnJMNXE5OGIwN3pjR0FCMlhzdkFHbCsr?=
- =?utf-8?B?S2FiZGEyTHhYM1o3SDlCbHdFWHJpMU9kSHRpTW9Jd1FOSjg2WTg4SWhnZldK?=
- =?utf-8?B?c2xBRkZJSkFGKy8rTzVZaEZvUW5rSmFPdk9ieEd0VUtnZjJJZkFHeDhrdE1R?=
- =?utf-8?B?SVFDVGl4QWgyY0JuWE1UNnhKMFhQSjRtMHBNSWpOWnlvbURYcmoxcXBUQTBq?=
- =?utf-8?B?QUdUNStiaVdUaldDMzJvZWMyNEk4cHR1ajVRUWZ1Y3BJUWhyRTlJQ3dHNGJN?=
- =?utf-8?B?VVdGdnhwb0pWci9hVTVZdGt6d3Q4MDZmWWZ0ZEhtOVhTK0VxeW1jbUJ3NzdC?=
- =?utf-8?B?T2NsaEg5TzlvWVBHTC9OUzZsZHlKSmhucWR0K2g2OG8wT1FHYTJNakpBSnYv?=
- =?utf-8?B?M2NCKzZsSndMby9MYTlyQ2p0OGJzR29rRENDZ2swejlGUThaWStUL3VramJP?=
- =?utf-8?B?VEs3QUdHWi9mU2IyMjNGdDBXcXVWU1JEVDNueFlseklIY3lGK21kZG92RmRX?=
- =?utf-8?B?enFOaDhWbWxCVUlWN2VQY044dkp3OUFPd0V6NFRucGhVUTRiU2thLzU0TkxC?=
- =?utf-8?B?QUNLK2U1NGVjd3dYdzlzcHpyTi94dWVPVHUyVXZTTnFpejVIRzBERFR1ZjlE?=
- =?utf-8?B?MW1HcDkwVzlwWjNaSk12MEQwNDJuK1ZLd0ltcFo0SG52TStEa2g4VVdzWXcv?=
- =?utf-8?B?MEZnV05NdXFiZFMyNG5BQWpRNXdVR0xocUZGZnFBTWxqaU1qdFdHTUZRWEND?=
- =?utf-8?B?SENaditQeUpzazAydXo2ZjExSGRPQXdqeW9wMW1DT0lIc2kvYXByZVV1bE9y?=
- =?utf-8?B?Snl1QjhGOFRFQ3ZaZXdubHY1UUsyT21sMUtKNlZvMnhLNnJkMCsvazcvY25B?=
- =?utf-8?B?MlJkRFJGeDVBQ2VJRjR6eG9JeXlHN2hNVWl2RmtTbGRqV3VlZkYzOXhSMmx4?=
- =?utf-8?B?UzJ3enhtc1VJcjBHa1V4bFBoUEdCR0ZPdFhOVDBkZFdlMWVyOUJPV1RBPT0=?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:PH0PR11MB5949.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230037)(376011)(366013)(1800799021); DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?NTM2Wi9MQ2ZMbXh3ak1USzBDb2hhSEJQVWVPVUhNQ2VtR1VXM0FQc3BJNHIy?=
- =?utf-8?B?VkNtNXNqRVkwTE5PdjNYTVdKVzdGK05xZS9Od3lRbUQzU2hKTzYyY2xVWmlm?=
- =?utf-8?B?RnJIQmlaOUVUK2VwM3F2eEhSdHg4WXJodGRmYlNDMEhvWDFneStrUW1TN1RC?=
- =?utf-8?B?RGFBOXhOckJvc0VpUjRLWTJDYmNpYWhnZ3NEak1zd3VxYVNXMUNBT01VUmtp?=
- =?utf-8?B?YnpLN0VTOHZvMkNmajJyenVudkFsQ3hEa2VETnFQVXFxcFdGSFU0YUs1WmFK?=
- =?utf-8?B?dGM0RE5DalFJWUlmK1RidVkxK1AyZWJUV0xZQUpNcmR5ckNnUC93ak40RzRU?=
- =?utf-8?B?MU9FNmkvQlpWLzBIRTczT0RHdGZkTDgzTnM2bzFUT2dZZlZMT2NIamN1eTVR?=
- =?utf-8?B?a1JmRVRZT2RoK29OMktUa090c3ZoK2VVRHZhWnNkbDZaQmE5R084Q1pGNXc1?=
- =?utf-8?B?S25BZ2Q4Y1hOR0xacStURTRaWFo5UnVkcFNXcTZpMUppUnpoZVBpNWdMaTU0?=
- =?utf-8?B?WWJjS0RJcE1CblZRZldiclJISmhzajh3bW8zZWFUSDQ2NEVlWXExSExaOWx4?=
- =?utf-8?B?VUg1TkxwQjl6Q1U4SC81aDVYWmREeHRNUHlLMGpIVWM4b21COTlXaDJLdFNl?=
- =?utf-8?B?dm1VY2N0TkpXUGh6K0Zzc1RCUHdvdEhXNWw3RVBodEdhVHlSR3hJN3NDL0po?=
- =?utf-8?B?VitZc2NpMmFjUUVNSXJyeFlCTUVpS1ljN0ZwLzZjTlUzMG9rZU1Wei9qSStn?=
- =?utf-8?B?dWpxbTNNOWIvWlRMbWdrWkhRSFlyUWcwazczb1BET1BpRTQ5MGgyK2hIWTlO?=
- =?utf-8?B?V3lVS3k5Zzk5UFZpNTlxY1FoN1c0d3RiSEpNL2tWclJZcWVVTFFKOXJYSVpC?=
- =?utf-8?B?cERCVjZPNDloenErWFZUU2lwbWR0amt6M1hUTmZzUkFGU3Zuakt1TnQ4QzlD?=
- =?utf-8?B?VGRnbFppN2pHZjdTL09tRzR1L0ttSUhWcUo1Y3ptNW1vWkNkd21ISEY3Y2Vs?=
- =?utf-8?B?K1g4WGg5UG9mME4yVktIb2hoYnR5em5ORmYrSjRmbnVvRTZ5ekhUZWsvdFhk?=
- =?utf-8?B?R2txYmxydUNocUVYcXNIRS9uVnEwcDhyQ05hTVRhWTA0OXUxSldybnVjU2ht?=
- =?utf-8?B?MXRnM1UyWTFzbUdDYVl1eFNlN216TTMxZWx6YmtEUHMxbGx4b3IyVE1xM1Jy?=
- =?utf-8?B?ZmI0dnlydk5pUEc1Qm5SZ1NNNmt3Ym5PRGNjSzZQM3dOcXlTRnVvdnpZTTl5?=
- =?utf-8?B?TG1IeW5ZTENPbzBXSFVSZU5UR2dhNUZaT2FlM1hSSzBCelMyQVNOQ2JiSzZx?=
- =?utf-8?B?VzlqK2psdTVhOUhTeGh0VW5iY0puUFNwYkN5TEw0ZXQ3cHF0c0FJTVNXamFo?=
- =?utf-8?B?UVFQVnlzdUxncWpNVko5alQ5WTR2a1JlNHhGTjRsSFhBcTd3NzZFUVhUL01a?=
- =?utf-8?B?ekIzMFZ2TGpoSWhPUWFXelhaUTlkNzRQZTV2NUREM2xISHhTZnhZdGNyZjlx?=
- =?utf-8?B?VDFZbFpnZytjNzh1UEYxVmZPUnd5ZUNHQjJKL2Nwd0tYTk9NMU95NTNQVk5K?=
- =?utf-8?B?b1JkeXlVTXZydWJPN09YWktuWTV2dEk2MlgvSWRraHhKbDdtUzBOOFZkWXJD?=
- =?utf-8?B?Nys0R1lXZElYcDk3aUZXdXRvWnNFd0VlWkRyeWNYQlRXRS9IUGRIY1kvMWNZ?=
- =?utf-8?B?K1J4Wk9oS3lkckJRQjJ6NitvbVhGQXVzNGJwY3Z4UGFOS3liTVVOVWhpOC9I?=
- =?utf-8?B?YjhGaXpuSUFzcG1Yd1hrdEVnRTU4elVPTVBYbFZFUFIyMkQwTys5M0prczhi?=
- =?utf-8?B?SGtTbmlKODB6cHlJeWJqeERHU3ZkazF4dGlFck94MzVhcW42R2xCa3J6UWJU?=
- =?utf-8?B?MTRyQllZZHlEbmcwbElRd2VBNlUwTEluN0hqRGRrQzlZbUVyZ2kyTng2MDVx?=
- =?utf-8?B?WDFNaSt5ZmVsdzhjS3VWZDFFVTJISGZhTUNEMEZpL3RJWlp0cHFQUVUvWGo5?=
- =?utf-8?B?ZFFtMGh1YUtrUmZKaS91ZGFoL2VxaG1pRVM3RnVjblNmTVhMWGR4QS90bEN1?=
- =?utf-8?B?UEtlQVV6N3VEN1RWZjIrTUlMeTlYQ21jY0tqODFyV0FRQ3BXL0h6aldQWWpE?=
- =?utf-8?B?L2U0NnRMKzZNSkhrZTNiU2xWdHZobTZ4c2ZDQk8zdDdybVMyS1BnVWpDRHZt?=
- =?utf-8?B?MWc9PQ==?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: 394f0407-5330-4b5d-4ea6-08dc915401ad
-X-MS-Exchange-CrossTenant-AuthSource: PH0PR11MB5949.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 20 Jun 2024 18:08:37.3861 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: q1HJzEOyspDg3j8QGmsSWfw/7eihgZjzx232nTIb/El+AW8xX4eM1LwmVHea3i4EBrEObpRh6GdcPKMWfPT9NaSpW2YW6vipU6bOelbhuHA=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR11MB4581
-X-OriginatorOrg: intel.com
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1718906922; x=1750442922;
- h=message-id:date:subject:to:cc:references:from:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=4FGO9ttH6r7LTYo7oUrZQzv5bEL5biXblQ/jgvFoqFM=;
- b=DhAlEOH0J18/23maqtqo2yBxijhefwO8V59DrKMt+ormtz2AwFXGVSjo
- GuRFjF7L6gURgAI90uLP7dHP9hvtJICHpaT5FFK4FA0MXiBmNrj9F2D6e
- F9zVwPahzT36ZkO4We/qmmLky1Luo4yMfAAXBox4PFTFLIKqWHS8N9U0T
- bRYOYoExeKDbpHuE6xDo9652hPQ2lWBOn9RkhRQi0P1wdrZf9bTvw4zVB
- MUP1FMLtJ6XqPqX3H6IxTU0h02pcmaucwbbSVVUPukIa9+gsZf7jU3oGx
- YAQnFm9KOxRIHK/mbtPkNgTIgLBqLhDUc08OTVjjTbJhWonmLm1M5IsxS
- g==;
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <cover.1718919473.git.yan@cloudflare.com>
+X-Mailman-Approved-At: Thu, 20 Jun 2024 22:43:57 +0000
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=cloudflare.com; s=google09082023; t=1718921965; x=1719526765;
+ darn=lists.osuosl.org; 
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+ bh=uOnJGiRbyO/FJXIIwBJKoyy1x0jsuLmmE0P/5OKn6WU=;
+ b=Iwt/u8da4EqW8AWGny8FMjA1m9MP3NUKYAyR76BUS5tyAFh/97zdW0zA/OfoNHfUiS
+ aOQTiQwbpXAHa/AjZm7PzdxxHHDTaj63rpG8Bvui7BnA3tbHySDCxIhYxMOLWTRYMZa8
+ genubXWCwB/Vn1E4FocQQn824tPZ9u/wOtM7R8AX7WFaIvsco0uQ3Bl0/4/J2C/rOIs0
+ vVl96e/2vhWZ0dpmyiv0KPD95dCSHwydJEQnW0KbLsJ30ep091ADJ9WUonstSR8wpEIH
+ iCeivWaonD43Zku9CoLXvUOqa8Lm79qSe1FIsO1pLwoPiWAp3iu2UQU2v8yHq9qLU/qN
+ MiBQ==
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
+ dmarc=pass (p=reject dis=none)
+ header.from=cloudflare.com
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=DhAlEOH0
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH iwl-net v2 1/1] e1000e: fix force
- smbus during suspend flow
+ unprotected) header.d=cloudflare.com header.i=@cloudflare.com
+ header.a=rsa-sha256 header.s=google09082023 header.b=Iwt/u8da
+Subject: [Intel-wired-lan] [RFC net-next 5/9] ice: apply XDP offloading
+ fixup when building skb
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -236,194 +121,97 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Hui Wang <hui.wang@canonical.com>, Todd Brandt <todd.e.brandt@intel.com>,
- intel-wired-lan@osuosl.org, Dieter Mummenschanz <dmummenschanz@web.de>
+Cc: Maciej Fijalkowski <maciej.fijalkowski@intel.com>,
+ Jesper Dangaard Brouer <hawk@kernel.org>,
+ Daniel Borkmann <daniel@iogearbox.net>, intel-wired-lan@lists.osuosl.org,
+ bpf@vger.kernel.org, John Fastabend <john.fastabend@gmail.com>,
+ Alexei Starovoitov <ast@kernel.org>,
+ =?utf-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn@kernel.org>,
+ Eric Dumazet <edumazet@google.com>, netdev@vger.kernel.org,
+ Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Jonathan Lemon <jonathan.lemon@gmail.com>, Jakub Kicinski <kuba@kernel.org>,
+ linux-kernel@vger.kernel.org, Paolo Abeni <pabeni@redhat.com>,
+ "David S. Miller" <davem@davemloft.net>,
+ Magnus Karlsson <magnus.karlsson@intel.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+Add a common point to transfer offloading info from XDP context to skb.
+
+Signed-off-by: Yan Zhai <yan@cloudflare.com>
+Signed-off-by: Jesper Dangaard Brouer <hawk@kernel.org>
+---
+ drivers/net/ethernet/intel/ice/ice_txrx.c | 2 ++
+ drivers/net/ethernet/intel/ice/ice_xsk.c  | 6 +++++-
+ include/net/xdp_sock_drv.h                | 2 +-
+ 3 files changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/ice/ice_txrx.c b/drivers/net/ethernet/intel/ice/ice_txrx.c
+index 8bb743f78fcb..a247306837ed 100644
+--- a/drivers/net/ethernet/intel/ice/ice_txrx.c
++++ b/drivers/net/ethernet/intel/ice/ice_txrx.c
+@@ -1222,6 +1222,7 @@ int ice_clean_rx_irq(struct ice_rx_ring *rx_ring, int budget)
+ 
+ 			hard_start = page_address(rx_buf->page) + rx_buf->page_offset -
+ 				     offset;
++			xdp_init_buff_minimal(xdp);
+ 			xdp_prepare_buff(xdp, hard_start, offset, size, !!offset);
+ #if (PAGE_SIZE > 4096)
+ 			/* At larger PAGE_SIZE, frame_sz depend on len size */
+@@ -1287,6 +1288,7 @@ int ice_clean_rx_irq(struct ice_rx_ring *rx_ring, int budget)
+ 
+ 		/* populate checksum, VLAN, and protocol */
+ 		ice_process_skb_fields(rx_ring, rx_desc, skb);
++		xdp_buff_fixup_skb_offloading(xdp, skb);
+ 
+ 		ice_trace(clean_rx_irq_indicate, rx_ring, rx_desc, skb);
+ 		/* send completed skb up the stack */
+diff --git a/drivers/net/ethernet/intel/ice/ice_xsk.c b/drivers/net/ethernet/intel/ice/ice_xsk.c
+index a65955eb23c0..367658acaab8 100644
+--- a/drivers/net/ethernet/intel/ice/ice_xsk.c
++++ b/drivers/net/ethernet/intel/ice/ice_xsk.c
+@@ -845,8 +845,10 @@ int ice_clean_rx_irq_zc(struct ice_rx_ring *rx_ring, int budget)
+ 	xdp_prog = READ_ONCE(rx_ring->xdp_prog);
+ 	xdp_ring = rx_ring->xdp_ring;
+ 
+-	if (ntc != rx_ring->first_desc)
++	if (ntc != rx_ring->first_desc) {
+ 		first = *ice_xdp_buf(rx_ring, rx_ring->first_desc);
++		xdp_init_buff_minimal(first);
++	}
+ 
+ 	while (likely(total_rx_packets < (unsigned int)budget)) {
+ 		union ice_32b_rx_flex_desc *rx_desc;
+@@ -920,6 +922,7 @@ int ice_clean_rx_irq_zc(struct ice_rx_ring *rx_ring, int budget)
+ 			break;
+ 		}
+ 
++		xdp = first;
+ 		first = NULL;
+ 		rx_ring->first_desc = ntc;
+ 
+@@ -934,6 +937,7 @@ int ice_clean_rx_irq_zc(struct ice_rx_ring *rx_ring, int budget)
+ 		vlan_tci = ice_get_vlan_tci(rx_desc);
+ 
+ 		ice_process_skb_fields(rx_ring, rx_desc, skb);
++		xdp_buff_fixup_skb_offloading(xdp, skb);
+ 		ice_receive_skb(rx_ring, skb, vlan_tci);
+ 	}
+ 
+diff --git a/include/net/xdp_sock_drv.h b/include/net/xdp_sock_drv.h
+index 0a5dca2b2b3f..02243dc064c2 100644
+--- a/include/net/xdp_sock_drv.h
++++ b/include/net/xdp_sock_drv.h
+@@ -181,7 +181,7 @@ static inline void xsk_buff_set_size(struct xdp_buff *xdp, u32 size)
+ 	xdp->data = xdp->data_hard_start + XDP_PACKET_HEADROOM;
+ 	xdp->data_meta = xdp->data;
+ 	xdp->data_end = xdp->data + size;
+-	xdp->flags = 0;
++	xdp_init_buff_minimal(xdp);
+ }
+ 
+ static inline dma_addr_t xsk_buff_raw_get_dma(struct xsk_buff_pool *pool,
+-- 
+2.30.2
 
 
-On 6/20/2024 9:47 AM, Paul Menzel wrote:
-> Dear Vitaly,
-> 
-> 
-> Thank you for your patch. For the summary, it’d be great if you could be 
-> more specific by saying it’s about limiting the scope.
-> 
-> Am 20.06.24 um 08:36 schrieb Vitaly Lifshits:
->> Commit 861e8086029e ("e1000e: move force SMBUS from enable ulp function
->> to avoid PHY loss issue") resolved a PHY access loss during suspend on
->> Meteor Lake consumer platforms, but it affected corporate systems
->> incorrectly.
->>
->> A better fix, working for both consumer and corporate systems, was
->> proposed in commit bfd546a552e1 ("e1000e: move force SMBUS near the end
-> 
-> SMBus
-
-I copied the title of that commit, I don't agree that we need to change it.
-
-> 
->> of enable_ulp function"). However, it introduced a regression on older
->> devices, such as [8086:15B8], [8086:15F9], [8086:15BE].
-> 
-> Sort the ids? Also, I do not have the ids memorized. Maybe also describe 
-> them.
-
-I took the device IDs from the Bugzilla report, why do they need to be 
-sorted to projects? This is a bug fix for a reported bug.
-
-> 
-> Please summarize the regression, and maybe make it clear, that’s is the 
-> Bugzilla reports in the tags.
-
-Why does it matter that it is a Bugzilla report? it is clear that it was 
-reported in Bugzilla the Link tag.
-
-> 
->> This patch aims to fix the secondary regression, by limiting the scope of
->> the changes to Meteor Lake platforms only.
-> 
-> So what makes Meteor Lake special? Why is it not needed for predecessors 
-> and successors?
-
-It is still under debug.
-
-> 
-> As now three commits are involved, it’d be really nice to have an 
-> elaborate summary and also test matrix in the commit message.
-
-I mentioned the devices that were hit by the regression as well as the 
-devices that had the initial issue (Meteor lake systems). The commit 
-message summarizes all the history for this commit.
-
-> 
-> 
-> Kind regards,
-> 
-> Paul
-> 
-> 
->> Fixes: bfd546a552e1 ("e1000e: move force SMBUS near the end of 
->> enable_ulp function")
->> Reported-by: Todd Brandt <todd.e.brandt@intel.com>
->> Closes: https://bugzilla.kernel.org/show_bug.cgi?id=218940
->> Reported-by: Dieter Mummenschanz <dmummenschanz@web.de>
->> Closes: https://bugzilla.kernel.org/show_bug.cgi?id=218936
->> Signed-off-by: Vitaly Lifshits <vitaly.lifshits@intel.com>
->> -- 
->> v2: enhance the function description and address community comments
->> v1: initial version
->> ---
->>   drivers/net/ethernet/intel/e1000e/ich8lan.c | 73 +++++++++++++++------
->>   1 file changed, 53 insertions(+), 20 deletions(-)
->>
->> diff --git a/drivers/net/ethernet/intel/e1000e/ich8lan.c 
->> b/drivers/net/ethernet/intel/e1000e/ich8lan.c
->> index 2e98a2a0bead..86d4ae95b45a 100644
->> --- a/drivers/net/ethernet/intel/e1000e/ich8lan.c
->> +++ b/drivers/net/ethernet/intel/e1000e/ich8lan.c
->> @@ -137,6 +137,7 @@ static void 
->> e1000_gate_hw_phy_config_ich8lan(struct e1000_hw *hw, bool gate);
->>   static s32 e1000_disable_ulp_lpt_lp(struct e1000_hw *hw, bool force);
->>   static s32 e1000_setup_copper_link_pch_lpt(struct e1000_hw *hw);
->>   static s32 e1000_oem_bits_config_ich8lan(struct e1000_hw *hw, bool 
->> d0_state);
->> +static s32 e1000e_force_smbus(struct e1000_hw *hw);
->>   static inline u16 __er16flash(struct e1000_hw *hw, unsigned long reg)
->>   {
->> @@ -1108,6 +1109,46 @@ static s32 e1000_platform_pm_pch_lpt(struct 
->> e1000_hw *hw, bool link)
->>       return 0;
->>   }
->> +/**
->> + *  e1000e_force_smbus - Force interfaces to transition to SMBUS mode.
->> + *  @hw: pointer to the HW structure
->> + *
->> + *  Force the MAC and the PHY to SMBUS mode. Assumes semaphore already
->> + *  acquired.
->> + *
->> + * Return: 0 on success, negative errno on failure.
->> + **/
->> +static s32 e1000e_force_smbus(struct e1000_hw *hw)
->> +{
->> +    u16 smb_ctrl = 0;
->> +    u32 ctrl_ext;
->> +    s32 ret_val;
->> +
->> +    /* Switching PHY interface always returns MDI error
->> +     * so disable retry mechanism to avoid wasting time
->> +     */
->> +    e1000e_disable_phy_retry(hw);
->> +
->> +    /* Force SMBus mode in the PHY */
->> +    ret_val = e1000_read_phy_reg_hv_locked(hw, CV_SMB_CTRL, &smb_ctrl);
->> +    if (ret_val) {
->> +        e1000e_enable_phy_retry(hw);
->> +        return ret_val;
->> +    }
->> +
->> +    smb_ctrl |= CV_SMB_CTRL_FORCE_SMBUS;
->> +    e1000_write_phy_reg_hv_locked(hw, CV_SMB_CTRL, smb_ctrl);
->> +
->> +    e1000e_enable_phy_retry(hw);
->> +
->> +    /* Force SMBus mode in the MAC */
->> +    ctrl_ext = er32(CTRL_EXT);
->> +    ctrl_ext |= E1000_CTRL_EXT_FORCE_SMBUS;
->> +    ew32(CTRL_EXT, ctrl_ext);
->> +
->> +    return 0;
->> +}
->> +
->>   /**
->>    *  e1000_enable_ulp_lpt_lp - configure Ultra Low Power mode for 
->> LynxPoint-LP
->>    *  @hw: pointer to the HW structure
->> @@ -1165,6 +1206,14 @@ s32 e1000_enable_ulp_lpt_lp(struct e1000_hw 
->> *hw, bool to_sx)
->>       if (ret_val)
->>           goto out;
->> +    if (hw->mac.type != e1000_pch_mtp) {
->> +        ret_val = e1000e_force_smbus(hw);
->> +        if (ret_val) {
->> +            e_dbg("Failed to force SMBUS: %d\n", ret_val);
->> +            goto release;
->> +        }
->> +    }
->> +
->>       /* Si workaround for ULP entry flow on i127/rev6 h/w.  Enable
->>        * LPLU and disable Gig speed when entering ULP
->>        */
->> @@ -1225,27 +1274,11 @@ s32 e1000_enable_ulp_lpt_lp(struct e1000_hw 
->> *hw, bool to_sx)
->>       }
->>   release:
->> -    /* Switching PHY interface always returns MDI error
->> -     * so disable retry mechanism to avoid wasting time
->> -     */
->> -    e1000e_disable_phy_retry(hw);
->> -
->> -    /* Force SMBus mode in PHY */
->> -    ret_val = e1000_read_phy_reg_hv_locked(hw, CV_SMB_CTRL, &phy_reg);
->> -    if (ret_val) {
->> -        e1000e_enable_phy_retry(hw);
->> -        hw->phy.ops.release(hw);
->> -        goto out;
->> +    if (hw->mac.type == e1000_pch_mtp) {
->> +        ret_val = e1000e_force_smbus(hw);
->> +        if (ret_val)
->> +            e_dbg("Failed to force SMBUS over MTL system: %d\n", 
->> ret_val);
->>       }
->> -    phy_reg |= CV_SMB_CTRL_FORCE_SMBUS;
->> -    e1000_write_phy_reg_hv_locked(hw, CV_SMB_CTRL, phy_reg);
->> -
->> -    e1000e_enable_phy_retry(hw);
->> -
->> -    /* Force SMBus mode in MAC */
->> -    mac_reg = er32(CTRL_EXT);
->> -    mac_reg |= E1000_CTRL_EXT_FORCE_SMBUS;
->> -    ew32(CTRL_EXT, mac_reg);
->>       hw->phy.ops.release(hw);
->>   out:
