@@ -1,89 +1,94 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0041890F45E
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 19 Jun 2024 18:44:40 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id B167290FAC4
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 20 Jun 2024 03:06:10 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 5945B413CD;
-	Wed, 19 Jun 2024 16:44:39 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Ssol2yXrpoJ9; Wed, 19 Jun 2024 16:44:38 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org F23ED41463
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1718815478;
-	bh=tdCQohO2zcPSbK1AZE5FYdJakGTLi47vnmd94/CcKxg=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=wVHr3IV3znio7IPJqDg+9Sa/sLjEvjFMoc4Uvkkt91DtqCYttg+BC0V5DwkOflpIK
-	 XAbG34vn5fDzDOPpnHqwUN2ng03xnl+L1tCfaZBbxXMHBHUsnZjuPe1KggBlHQDdHu
-	 uTojY92P9+TWjCX/l20z3OPrbOYNqPJKpQrkDYCXH0XJZSQJk486kkd+FEdbh3j84c
-	 cIJtR/MVCvca4e60rzvpaaogv2aBsXZPyHojPbcWhFxAtb8L8Th7uAa+gamUj8TvS6
-	 735MOP4mgpAKcidCHCYwrT72Ukdk83Gvri/Z4IJDdXbJ8hsn9RTqCFrtpKYsUStZn0
-	 s5VGI4LR9bD2A==
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id F23ED41463;
-	Wed, 19 Jun 2024 16:44:37 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 2CDA31BF370
- for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Jun 2024 16:44:35 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 257AD404BC
- for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Jun 2024 16:44:35 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id E66D24160F;
+	Thu, 20 Jun 2024 01:06:08 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id hiqReCj6l5QV for <intel-wired-lan@lists.osuosl.org>;
- Wed, 19 Jun 2024 16:44:34 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2604:1380:4641:c500::1; helo=dfw.source.kernel.org;
- envelope-from=horms@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 27700404A8
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 27700404A8
-Received: from dfw.source.kernel.org (dfw.source.kernel.org
- [IPv6:2604:1380:4641:c500::1])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 27700404A8
- for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Jun 2024 16:44:34 +0000 (UTC)
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by dfw.source.kernel.org (Postfix) with ESMTP id 53317619A2;
- Wed, 19 Jun 2024 16:44:33 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B996AC4AF08;
- Wed, 19 Jun 2024 16:44:31 +0000 (UTC)
-Date: Wed, 19 Jun 2024 17:44:29 +0100
-From: Simon Horman <horms@kernel.org>
-To: Karol Kolacinski <karol.kolacinski@intel.com>
-Message-ID: <20240619164429.GL690967@kernel.org>
-References: <20240618104310.1429515-1-karol.kolacinski@intel.com>
- <20240618104310.1429515-4-karol.kolacinski@intel.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20240618104310.1429515-4-karol.kolacinski@intel.com>
+ id thKzaNjoAdfX; Thu, 20 Jun 2024 01:06:08 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 70A1443356
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1718845567;
+	bh=xgAfbE8LwdSd7jwi+4x+QZ/Anv0ZVaXH/HCcJ9pzKIs=;
+	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=8QfoyA+bW/s+t76/u0VRbNFQpXMvZ9mC0qMQVqFOe3I0NPgffUIgrA4TxlUT/dfCd
+	 5as4LkauZ2W5bDF+J7warpoQbgVcfZNQHqpJfl5M+svn/6VcU97eRZVJSUSkne6p3o
+	 ce7FArchVEstOX2uQv68hiOlGN1H/Znj4L++EEnR7AXCj3u2pY6sAsOvdMwQiruklM
+	 s10/GXs7cjhkU0VcK5pd8IrhYNm+G4lNiqsgVCfS58TBuh5lGC/Y801BMqcqasUzgN
+	 mRwhyEPWBrLnw1A2Eamrv84p2GImnI0HTT5A4lzgF/43tKBQ53Ov3s4uYiKGO0oaV4
+	 aB62nUlItFBzg==
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp2.osuosl.org (Postfix) with ESMTP id 70A1443356;
+	Thu, 20 Jun 2024 01:06:07 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 1F7C51BF3E3
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 20 Jun 2024 01:06:06 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp4.osuosl.org (Postfix) with ESMTP id 156FB42C19
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 20 Jun 2024 01:06:06 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id SwrO385jjPfS for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 20 Jun 2024 01:06:04 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.19;
+ helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 78D7D42C16
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 78D7D42C16
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.19])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 78D7D42C16
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 20 Jun 2024 01:06:03 +0000 (UTC)
+X-CSE-ConnectionGUID: bvtIdmE/QTSa1qUkCaBcAA==
+X-CSE-MsgGUID: gSbyrC41TGqR0Cjcb8mHGQ==
+X-IronPort-AV: E=McAfee;i="6700,10204,11108"; a="15566214"
+X-IronPort-AV: E=Sophos;i="6.08,251,1712646000"; d="scan'208";a="15566214"
+Received: from fmviesa005.fm.intel.com ([10.60.135.145])
+ by fmvoesa113.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 19 Jun 2024 18:06:03 -0700
+X-CSE-ConnectionGUID: nLVVwIpfQpSiGBZBnFRjUw==
+X-CSE-MsgGUID: X3TWZ/cQT9i9JyWwTxPjpQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.08,251,1712646000"; d="scan'208";a="46528506"
+Received: from lkp-server01.sh.intel.com (HELO 68891e0c336b) ([10.239.97.150])
+ by fmviesa005.fm.intel.com with ESMTP; 19 Jun 2024 18:06:02 -0700
+Received: from kbuild by 68891e0c336b with local (Exim 4.96)
+ (envelope-from <lkp@intel.com>) id 1sK6FT-0007AE-3A
+ for intel-wired-lan@lists.osuosl.org; Thu, 20 Jun 2024 01:05:59 +0000
+Date: Thu, 20 Jun 2024 09:05:35 +0800
+From: kernel test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <202406200933.UTo6qmrW-lkp@intel.com>
+User-Agent: s-nail v14.9.24
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1718815473;
- bh=Ucq3CIEnp7nuN4eV6bKSXDv5ypODlJoh5abKEQDh/xs=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=B6Xs746qhlaz72V9RWMlblcaW77ENAnN6ZVcdMhqSnmCykMYC3SWyVbwD3jztddLT
- UosnEpjZE56TD4XBakGNJODtE/emkHqYBIi3mymiWFPGb349R7ObEu8eRKelcXXGfC
- kDw9M1ik8EwMxaeFpuq9Dj93W2sVFG2C1T7LJCJ98h/zwdwbvTia7sykA+aLebVxej
- +afO5mH8iITJkZwyzw1Z8Po1vo1IwYoPjOsD903jB2j5UCkvdXgRrl+RFYxkMfqDua
- 178nJoLwzQkn9j71Dk6g5FEdkDkc9s9eTa92J7X4nNWKkARPhSdParEi4IEAb2Gpln
- f0b/8zLSF8JAQ==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1718845565; x=1750381565;
+ h=date:from:to:subject:message-id;
+ bh=FAoJjFZnuogYghJIPZaSLQapzuTc8s0u9Vv5af7dDh0=;
+ b=gGZ8eJQcCvTvPm1G51rFT02IfMCpSU6taZbaSkludnqQQnZkQ6VMXwRb
+ NhyNRC7wY9k9P4KhMqvswwKLL/uHCKXz/m46oL9hH7Uaso/rZAvQL0lWu
+ IkFQ/LkktfLxkJTG9OwA505TVE2rfdNPmIAK5Dc7SW5/Eb6A4QRsz3xM4
+ MoyYS3IgQCKaSPlqH54Yat3WV656b8Ag40oEIr2mw+HM0tYF8/ezEQWQM
+ s8J/J9+RZFaa/L9meRYdkURQ39TUE4lM/kxgIy5zi/cNbheE+SL5Adrun
+ lIXFKKi4IOBEo59uBX6zcJ0/q5lhFMyaBj+DmjqWL3eTweUra+uPn3EM9
+ A==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ header.from=intel.com
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20201202 header.b=B6Xs746q
-Subject: Re: [Intel-wired-lan] [PATCH iwl-net 3/3] ice: Reject pin requests
- with unsupported flags
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=gGZ8eJQc
+Subject: [Intel-wired-lan] [tnguy-next-queue:dev-queue] BUILD REGRESSION
+ 0edf6b789635c79b4c2db5d6bab907d4cb26823e
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,90 +101,64 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Jacob Keller <jacob.e.keller@intel.com>, netdev@vger.kernel.org,
- anthony.l.nguyen@intel.com, intel-wired-lan@lists.osuosl.org,
- przemyslaw.kitszel@intel.com
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, Jun 18, 2024 at 12:41:38PM +0200, Karol Kolacinski wrote:
-> From: Jacob Keller <jacob.e.keller@intel.com>
-> 
-> The driver receives requests for configuring pins via the .enable
-> callback of the PTP clock object. These requests come into the driver
-> with flags which modify the requested behavior from userspace. Current
-> implementation in ice does not reject flags that it doesn't support.
-> This causes the driver to incorrectly apply requests with such flags as
-> PTP_PEROUT_DUTY_CYCLE, or any future flags added by the kernel which it
-> is not yet aware of.
-> 
-> Fix this by properly validating flags in both ice_ptp_cfg_perout and
-> ice_ptp_cfg_extts. Ensure that we check by bit-wise negating supported
-> flags rather than just checking and rejecting known un-supported flags.
-> This is preferable, as it ensures better compatibility with future
-> kernels.
-> 
-> Fixes: 172db5f91d5f ("ice: add support for auxiliary input/output pins")
-> Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-> Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
-> Signed-off-by: Karol Kolacinski <karol.kolacinski@intel.com>
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git dev-queue
+branch HEAD: 0edf6b789635c79b4c2db5d6bab907d4cb26823e  ice: Distinguish driver reset and removal for AQ shutdown
 
-Hi Jacob and Karol,
+Error/Warning ids grouped by kconfigs:
 
-Some minor feedback from my side.
+clang_recent_errors
+`-- x86_64-buildonly-randconfig-001-20240620
+    `-- drivers-net-ethernet-intel-ice-ice_virtchnl.c:error:call-to-undeclared-function-ice_ptp_read_src_clk_reg-ISO-C99-and-later-do-not-support-implicit-function-declarations
 
-...
+elapsed time: 1659m
 
-> diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.c b/drivers/net/ethernet/intel/ice/ice_ptp.c
-> index b952cad42f92..5fa377786f4c 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_ptp.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_ptp.c
-> @@ -1591,14 +1591,23 @@ void ice_ptp_extts_event(struct ice_pf *pf)
->   * @store: If set to true, the values will be stored
->   *
->   * Configure an external timestamp event on the requested channel.
-> -  */
-> -static void ice_ptp_cfg_extts(struct ice_pf *pf, unsigned int chan,
-> -			      struct ice_extts_channel *config, bool store)
-> + *
-> + * Return: 0 on sucess, -EOPNOTUSPP on unsupported flags
+configs tested: 39
+configs skipped: 0
 
-nit: success
+tested configs:
+i386         buildonly-randconfig-001-20240620   gcc-13
+i386         buildonly-randconfig-002-20240620   clang-18
+i386         buildonly-randconfig-003-20240620   gcc-13
+i386         buildonly-randconfig-004-20240620   gcc-10
+i386         buildonly-randconfig-005-20240620   gcc-13
+i386         buildonly-randconfig-006-20240620   clang-18
+i386                  randconfig-001-20240620   clang-18
+i386                  randconfig-002-20240620   clang-18
+i386                  randconfig-003-20240620   gcc-13
+i386                  randconfig-004-20240620   gcc-10
+i386                  randconfig-005-20240620   clang-18
+i386                  randconfig-006-20240620   gcc-10
+i386                  randconfig-011-20240620   gcc-7
+i386                  randconfig-012-20240620   clang-18
+i386                  randconfig-013-20240620   clang-18
+i386                  randconfig-014-20240620   gcc-7
+i386                  randconfig-015-20240620   clang-18
+i386                  randconfig-016-20240620   clang-18
+x86_64       buildonly-randconfig-001-20240620   clang-18
+x86_64       buildonly-randconfig-002-20240620   gcc-10
+x86_64       buildonly-randconfig-003-20240620   clang-18
+x86_64       buildonly-randconfig-004-20240620   gcc-13
+x86_64       buildonly-randconfig-005-20240620   clang-18
+x86_64       buildonly-randconfig-006-20240620   gcc-13
+x86_64                randconfig-001-20240620   clang-18
+x86_64                randconfig-002-20240620   gcc-13
+x86_64                randconfig-003-20240620   clang-18
+x86_64                randconfig-004-20240620   clang-18
+x86_64                randconfig-005-20240620   gcc-11
+x86_64                randconfig-006-20240620   clang-18
+x86_64                randconfig-011-20240620   gcc-13
+x86_64                randconfig-012-20240620   gcc-13
+x86_64                randconfig-013-20240620   gcc-13
+x86_64                randconfig-014-20240620   gcc-13
+x86_64                randconfig-015-20240620   clang-18
+x86_64                randconfig-016-20240620   clang-18
+x86_64                randconfig-071-20240620   gcc-13
+x86_64                randconfig-072-20240620   gcc-13
+x86_64                randconfig-073-20240620   gcc-13
 
-     Flagged by checkpatch.pl --codespell
-
-> + */
-> +static int ice_ptp_cfg_extts(struct ice_pf *pf, unsigned int chan,
-> +			     struct ice_extts_channel *config, bool store)
->  {
->  	u32 func, aux_reg, gpio_reg, irq_reg;
->  	struct ice_hw *hw = &pf->hw;
->  	u8 tmr_idx;
->  
-> +	/* Reject requests with unsupported flags */
-> +	if (config->flags & ~(PTP_ENABLE_FEATURE |
-> +			      PTP_RISING_EDGE |
-> +			      PTP_FALLING_EDGE |
-> +			      PTP_STRICT_FLAGS))
-> +	return -EOPNOTSUPP;
-
-The line above should to be indented one more tab.
-Clearly this makes no difference at run-time,
-but it takes a while (for me) to parse things as-is.
-
-...
-
-> @@ -1697,6 +1708,9 @@ static int ice_ptp_cfg_clkout(struct ice_pf *pf, unsigned int chan,
->  	u32 func, val, gpio_pin;
->  	u8 tmr_idx;
->  
-> +	if (config->flags & ~PTP_PEROUT_PHASE)
-> +		return -EOPNOTSUPP;
-
-A little further down in this function it is assumed that config may
-be NULL. So I think the code above needs to be updated to take that
-into account too.
-
-Flagged by Smatch.
-
-...
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
