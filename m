@@ -1,94 +1,118 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B167290FAC4
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 20 Jun 2024 03:06:10 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id BD6AC90FC7F
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 20 Jun 2024 08:06:40 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id E66D24160F;
-	Thu, 20 Jun 2024 01:06:08 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 4AB556157B;
+	Thu, 20 Jun 2024 06:06:39 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id VoraoLVZ2YNN; Thu, 20 Jun 2024 06:06:38 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 79F296157C
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1718863598;
+	bh=AyJTcoVu8te5SIWVCTtlh1pU+t8EWBPrH2LdNuhvIMg=;
+	h=References:In-Reply-To:From:Date:To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=jKlf3tv5aG0PDRFjmr3bdC/B4lv8G7iapbeTrP/9Gg0ZhUSMkA6GxL9W8CVtW8OCF
+	 MmoTNSeto9eVtRAGVa3lD8Bd5FwyExJAkhjd6xLPMsUwC1qw4tDwstskQNv1RWmxp2
+	 5z78HGS0ZMzokx0QXQmEkv3zmGzQM4YcSBu/3tzEJtZSf+rbQUSvCKs5I6DurqFQso
+	 p6kxFKTKi+EOFcXLf/q1siroRo24YzR2erNsfT5Dte9Kc6qmfp56Be9IyVHDvh4rnu
+	 fWFq4zi8c3qZl0xhwTmp8BPaBgRNtOGg0bcN0E/KIzAB9ySZeImANyjz9P6uJEGWWr
+	 xXPbGwIFHWHhA==
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp3.osuosl.org (Postfix) with ESMTP id 79F296157C;
+	Thu, 20 Jun 2024 06:06:38 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id D504A1BF29C
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 20 Jun 2024 06:06:36 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp2.osuosl.org (Postfix) with ESMTP id C0ADE41625
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 20 Jun 2024 06:06:36 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id thKzaNjoAdfX; Thu, 20 Jun 2024 01:06:08 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 70A1443356
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1718845567;
-	bh=xgAfbE8LwdSd7jwi+4x+QZ/Anv0ZVaXH/HCcJ9pzKIs=;
-	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=8QfoyA+bW/s+t76/u0VRbNFQpXMvZ9mC0qMQVqFOe3I0NPgffUIgrA4TxlUT/dfCd
-	 5as4LkauZ2W5bDF+J7warpoQbgVcfZNQHqpJfl5M+svn/6VcU97eRZVJSUSkne6p3o
-	 ce7FArchVEstOX2uQv68hiOlGN1H/Znj4L++EEnR7AXCj3u2pY6sAsOvdMwQiruklM
-	 s10/GXs7cjhkU0VcK5pd8IrhYNm+G4lNiqsgVCfS58TBuh5lGC/Y801BMqcqasUzgN
-	 mRwhyEPWBrLnw1A2Eamrv84p2GImnI0HTT5A4lzgF/43tKBQ53Ov3s4uYiKGO0oaV4
-	 aB62nUlItFBzg==
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 70A1443356;
-	Thu, 20 Jun 2024 01:06:07 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 1F7C51BF3E3
- for <intel-wired-lan@lists.osuosl.org>; Thu, 20 Jun 2024 01:06:06 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 156FB42C19
- for <intel-wired-lan@lists.osuosl.org>; Thu, 20 Jun 2024 01:06:06 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id SwrO385jjPfS for <intel-wired-lan@lists.osuosl.org>;
- Thu, 20 Jun 2024 01:06:04 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.19;
- helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 78D7D42C16
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 78D7D42C16
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.19])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 78D7D42C16
- for <intel-wired-lan@lists.osuosl.org>; Thu, 20 Jun 2024 01:06:03 +0000 (UTC)
-X-CSE-ConnectionGUID: bvtIdmE/QTSa1qUkCaBcAA==
-X-CSE-MsgGUID: gSbyrC41TGqR0Cjcb8mHGQ==
-X-IronPort-AV: E=McAfee;i="6700,10204,11108"; a="15566214"
-X-IronPort-AV: E=Sophos;i="6.08,251,1712646000"; d="scan'208";a="15566214"
-Received: from fmviesa005.fm.intel.com ([10.60.135.145])
- by fmvoesa113.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 19 Jun 2024 18:06:03 -0700
-X-CSE-ConnectionGUID: nLVVwIpfQpSiGBZBnFRjUw==
-X-CSE-MsgGUID: X3TWZ/cQT9i9JyWwTxPjpQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.08,251,1712646000"; d="scan'208";a="46528506"
-Received: from lkp-server01.sh.intel.com (HELO 68891e0c336b) ([10.239.97.150])
- by fmviesa005.fm.intel.com with ESMTP; 19 Jun 2024 18:06:02 -0700
-Received: from kbuild by 68891e0c336b with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1sK6FT-0007AE-3A
- for intel-wired-lan@lists.osuosl.org; Thu, 20 Jun 2024 01:05:59 +0000
-Date: Thu, 20 Jun 2024 09:05:35 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <202406200933.UTo6qmrW-lkp@intel.com>
-User-Agent: s-nail v14.9.24
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1718845565; x=1750381565;
- h=date:from:to:subject:message-id;
- bh=FAoJjFZnuogYghJIPZaSLQapzuTc8s0u9Vv5af7dDh0=;
- b=gGZ8eJQcCvTvPm1G51rFT02IfMCpSU6taZbaSkludnqQQnZkQ6VMXwRb
- NhyNRC7wY9k9P4KhMqvswwKLL/uHCKXz/m46oL9hH7Uaso/rZAvQL0lWu
- IkFQ/LkktfLxkJTG9OwA505TVE2rfdNPmIAK5Dc7SW5/Eb6A4QRsz3xM4
- MoyYS3IgQCKaSPlqH54Yat3WV656b8Ag40oEIr2mw+HM0tYF8/ezEQWQM
- s8J/J9+RZFaa/L9meRYdkURQ39TUE4lM/kxgIy5zi/cNbheE+SL5Adrun
- lIXFKKi4IOBEo59uBX6zcJ0/q5lhFMyaBj+DmjqWL3eTweUra+uPn3EM9
- A==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ id nkdUcWsVBXSJ for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 20 Jun 2024 06:06:36 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.133.124;
+ helo=us-smtp-delivery-124.mimecast.com; envelope-from=mschmidt@redhat.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org A7EBE40327
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A7EBE40327
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id A7EBE40327
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 20 Jun 2024 06:06:35 +0000 (UTC)
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-606-CODHUHTFPhiBcjZDTfhSOQ-1; Thu, 20 Jun 2024 02:06:33 -0400
+X-MC-Unique: CODHUHTFPhiBcjZDTfhSOQ-1
+Received: by mail-wr1-f70.google.com with SMTP id
+ ffacd0b85a97d-3621a2b758dso232180f8f.2
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 19 Jun 2024 23:06:32 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1718863592; x=1719468392;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=AyJTcoVu8te5SIWVCTtlh1pU+t8EWBPrH2LdNuhvIMg=;
+ b=qL3q4eRQANI+pZAahiImXHTbAROIa2rpGTAeEjk7vXLeGe8sTVg/+BBd20EE5TEED4
+ xeGvgYSOFxt6wYDu5/c2EoIjz2aBIOreXLdpN/w5IfldJKNdPZJPEGxItgfSkiqtOWpR
+ NI3ikuft0/8swZGQ+Z+VdZJaYvJyGGUWeK1E3en0uFObw8Z8twzuasQbd/WyvzjvNPYC
+ o/p/cLWiMrOy3fjwes7vRHOKJ9ycOz5Z26cfRxLhXkRPpJdj9DT/pDu3yXxnDbMcHWL5
+ /qKQzYHFXfI5+tIxGA4cxfW0bMk8MQqegqZWFiDK2S9rK8/zGbYPpMJqMKDzMTRYGuxx
+ xhPA==
+X-Gm-Message-State: AOJu0YzKldnQBi5cnnm8eYdCsMsFe53Yr73ZIWb3b1TkmkCMPpzkyVFb
+ 2hzrnzr+bFn5kFhRFk0fIamichJ0AsqVS/m9UqwrmIiMTHQQgfaTz7v4c1BtTQMLdJDRMsDhcva
+ 8VX9jUfmz0U77o+1qhsEO6OFPEOVghVUALGcqCX0P6pSpydCUZAIEEcKyU5W4TCKvZgei+QpueP
+ sz0zbu1TzbudsOk6fQceQB6lS6g2HgaSH1XUz9S5ndFQ==
+X-Received: by 2002:a5d:6783:0:b0:35f:22ac:410d with SMTP id
+ ffacd0b85a97d-3631989a785mr3258589f8f.56.1718863592104; 
+ Wed, 19 Jun 2024 23:06:32 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHBSuyyU0gop5af6II7AJZ1c2QamkTjCmZ45NFJ7QUFudPWSk2DnTDh+GxsDDHmpvDhS+DLPqZ/NNS2hXZbXy4=
+X-Received: by 2002:a5d:6783:0:b0:35f:22ac:410d with SMTP id
+ ffacd0b85a97d-3631989a785mr3258577f8f.56.1718863591763; Wed, 19 Jun 2024
+ 23:06:31 -0700 (PDT)
+MIME-Version: 1.0
+References: <20240618131208.6971-1-sergey.temerkhanov@intel.com>
+ <20240618131208.6971-3-sergey.temerkhanov@intel.com>
+In-Reply-To: <20240618131208.6971-3-sergey.temerkhanov@intel.com>
+From: Michal Schmidt <mschmidt@redhat.com>
+Date: Thu, 20 Jun 2024 08:06:20 +0200
+Message-ID: <CADEbmW0jfmgYH-jXRDRj3_AUs17+q3eJ5Ea_U9xidjuvjQDQkA@mail.gmail.com>
+To: Sergey Temerkhanov <sergey.temerkhanov@intel.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=redhat.com; 
+ s=mimecast20190719; t=1718863594;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=AyJTcoVu8te5SIWVCTtlh1pU+t8EWBPrH2LdNuhvIMg=;
+ b=Em/1+HUKK/Eqa8vE03Fthuxe1Wk9Oko5JpNak8h8P9x73hPkdzYYWfjYCsTH5P8BiOMeVo
+ z/j6tvKBil+H7U7u/M1Tp3BLS8GvDYLjn2SAVHYwQ+cPDdlGdq6MBg1nmoDodgRb9qDzPK
+ SaKvWdVAT1PdlKeaD9/fRMnEkWBupls=
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=gGZ8eJQc
-Subject: [Intel-wired-lan] [tnguy-next-queue:dev-queue] BUILD REGRESSION
- 0edf6b789635c79b4c2db5d6bab907d4cb26823e
+ header.from=redhat.com
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (1024-bit key,
+ unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256
+ header.s=mimecast20190719 header.b=Em/1+HUK
+Subject: Re: [Intel-wired-lan] [RFC PATCH iwl-next v1 2/4] ice: Add
+ ice_get_ctrl_ptp() wrapper to simplify the code
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -101,64 +125,57 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git dev-queue
-branch HEAD: 0edf6b789635c79b4c2db5d6bab907d4cb26823e  ice: Distinguish driver reset and removal for AQ shutdown
+On Tue, Jun 18, 2024 at 3:53=E2=80=AFPM Sergey Temerkhanov
+<sergey.temerkhanov@intel.com> wrote:
+> Add ice_get_ctrl_ptp() wrapper to simplify the PTP support code
+> in the functions that do not use ctrl_pf directly
+>
+> Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+> Signed-off-by: Sergey Temerkhanov <sergey.temerkhanov@intel.com>
+> ---
+>  drivers/net/ethernet/intel/ice/ice_ptp.c | 12 ++++++++++++
+>  1 file changed, 12 insertions(+)
+>
+> diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.c b/drivers/net/ether=
+net/intel/ice/ice_ptp.c
+> index 57e1e5a5da4a..a2578bc2af54 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_ptp.c
+> +++ b/drivers/net/ethernet/intel/ice/ice_ptp.c
+> @@ -16,6 +16,18 @@ static const struct ptp_pin_desc ice_pin_desc_e810t[] =
+=3D {
+>         { "U.FL2", UFL2, PTP_PF_NONE, 2, { 0, } },
+>  };
+>
+> +static struct ice_pf *ice_get_ctrl_pf(struct ice_pf *pf)
+> +{
+> +       return !pf->adapter ? NULL : pf->adapter->ctrl_pf;
+> +}
+> +
+> +static struct ice_ptp *ice_get_ctrl_ptp(struct ice_pf *pf)
+> +{
+> +       struct ice_pf *ctrl_pf =3D ice_get_ctrl_pf(pf);
+> +
+> +       return !ctrl_pf ? NULL : &ctrl_pf->ptp;
+> +}
+> +
+>  /**
+>   * ice_get_sma_config_e810t
+>   * @hw: pointer to the hw struct
+> --
+> 2.43.0
 
-Error/Warning ids grouped by kconfigs:
+The patch order is incorrect. Here you access the ctrl_pf member,
+which is added later in the subsequent patch.
 
-clang_recent_errors
-`-- x86_64-buildonly-randconfig-001-20240620
-    `-- drivers-net-ethernet-intel-ice-ice_virtchnl.c:error:call-to-undeclared-function-ice_ptp_read_src_clk_reg-ISO-C99-and-later-do-not-support-implicit-function-declarations
+But more importantly, it looks unsafe to access another ice_pf this
+way. The administrator may unbind a PF from the driver in any order.
+Can the shared objects be moved into struct ice_adapter itself so that
+cross-ice_pf access becomes unnecessary?
 
-elapsed time: 1659m
+Michal
 
-configs tested: 39
-configs skipped: 0
-
-tested configs:
-i386         buildonly-randconfig-001-20240620   gcc-13
-i386         buildonly-randconfig-002-20240620   clang-18
-i386         buildonly-randconfig-003-20240620   gcc-13
-i386         buildonly-randconfig-004-20240620   gcc-10
-i386         buildonly-randconfig-005-20240620   gcc-13
-i386         buildonly-randconfig-006-20240620   clang-18
-i386                  randconfig-001-20240620   clang-18
-i386                  randconfig-002-20240620   clang-18
-i386                  randconfig-003-20240620   gcc-13
-i386                  randconfig-004-20240620   gcc-10
-i386                  randconfig-005-20240620   clang-18
-i386                  randconfig-006-20240620   gcc-10
-i386                  randconfig-011-20240620   gcc-7
-i386                  randconfig-012-20240620   clang-18
-i386                  randconfig-013-20240620   clang-18
-i386                  randconfig-014-20240620   gcc-7
-i386                  randconfig-015-20240620   clang-18
-i386                  randconfig-016-20240620   clang-18
-x86_64       buildonly-randconfig-001-20240620   clang-18
-x86_64       buildonly-randconfig-002-20240620   gcc-10
-x86_64       buildonly-randconfig-003-20240620   clang-18
-x86_64       buildonly-randconfig-004-20240620   gcc-13
-x86_64       buildonly-randconfig-005-20240620   clang-18
-x86_64       buildonly-randconfig-006-20240620   gcc-13
-x86_64                randconfig-001-20240620   clang-18
-x86_64                randconfig-002-20240620   gcc-13
-x86_64                randconfig-003-20240620   clang-18
-x86_64                randconfig-004-20240620   clang-18
-x86_64                randconfig-005-20240620   gcc-11
-x86_64                randconfig-006-20240620   clang-18
-x86_64                randconfig-011-20240620   gcc-13
-x86_64                randconfig-012-20240620   gcc-13
-x86_64                randconfig-013-20240620   gcc-13
-x86_64                randconfig-014-20240620   gcc-13
-x86_64                randconfig-015-20240620   clang-18
-x86_64                randconfig-016-20240620   clang-18
-x86_64                randconfig-071-20240620   gcc-13
-x86_64                randconfig-072-20240620   gcc-13
-x86_64                randconfig-073-20240620   gcc-13
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
