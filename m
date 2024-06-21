@@ -1,95 +1,99 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 02EF2911F0E
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 21 Jun 2024 10:44:06 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id A8319911F0D
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 21 Jun 2024 10:44:02 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id D3A5B42EE7;
-	Fri, 21 Jun 2024 08:44:03 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 79B7842BD9;
+	Fri, 21 Jun 2024 08:43:59 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Q70-gMfLann4; Fri, 21 Jun 2024 08:44:03 +0000 (UTC)
+ id xnwwvSnslfnK; Fri, 21 Jun 2024 08:43:58 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1C21B414EE
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 408984149F
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1718959443;
-	bh=8QqVE+Gv5FhBvkU/fXcWacCn2rAAwntVLyLJyKvj0HU=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=xgy9i0iMnrNUawyDV8eBujsuXY8rUHOyke5b3cd0/s+JO2PDgv8pAM1Re36eFjRQd
-	 dv1Nxs+VZXcbdSrGCf6GGXUrdI21i1mZTuzUcoXllPVTR2KhUU0gvFlyehuYk0Y2hF
-	 bTof7c/tNDv/VnnW8/jwNj/LP7FkorGLWAxCFdzxU4qMIXqQZhXhJqSGq0SbW2U8MB
-	 FZ62gBNSFUeDi6mNnGJe/Nibun3FfTJ8POp/jLwzLdeHxcA/m3wk46syWXuFQLl/k2
-	 C+l3Jqb22e0TE3dwSBmx6cFV+29wkf7ceHgCxf71AR6qdMmdU86vRfW+2w7R9wEsz2
-	 OVXifTW+bDa4g==
+	s=default; t=1718959438;
+	bh=Ax26lOvy7a5viQLKtghjCc07wwuFAOoXTYvHaE6gCjM=;
+	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=7sP00C6kbkQOPEwtbSABcl3h95+meTfCKeZlCu5Cs/PVHr/C+EXWq2B3HIvbQsNRs
+	 7OQTPoHxAEzxwpRVUKYZNFzB6oYiEUZuWDhuEqRzSJWvnaLQLMEbJpxMvkTtVLd3hz
+	 PpLbzzGYU9CY/9zZ9WKkX1JXWnq/UDDh0rQkZz0CitKlCzs2Wd5VCurXc2/nyFuGh+
+	 ZorF5fqcD01NMy9KTOp5vo4DVYFcykyevx2pmr9+E6z4UVJtsKlPdUtiB2qvlNoDgs
+	 njBy+pRqJ6GCWHkYz6I45S0wL6p960Qh01oSiTLAMGc+5z3Vcw0n485yoUOsY3pJVD
+	 IWf0QBfiCh9kQ==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 1C21B414EE;
-	Fri, 21 Jun 2024 08:44:03 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 408984149F;
+	Fri, 21 Jun 2024 08:43:58 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id CE78D1BF841
- for <intel-wired-lan@lists.osuosl.org>; Fri, 21 Jun 2024 08:43:57 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 426971BF841
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 21 Jun 2024 08:43:56 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id C376440257
+ by smtp2.osuosl.org (Postfix) with ESMTP id 3A1BA435ED
  for <intel-wired-lan@lists.osuosl.org>; Fri, 21 Jun 2024 08:43:56 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Fkj839q1LciX for <intel-wired-lan@lists.osuosl.org>;
- Fri, 21 Jun 2024 08:43:54 +0000 (UTC)
+ id 4Xbz4YBLViry for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 21 Jun 2024 08:43:55 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.18;
  helo=mgamail.intel.com; envelope-from=sergey.temerkhanov@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 5A17B400FB
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 5A17B400FB
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org C76BB435EF
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C76BB435EF
 Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.18])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 5A17B400FB
- for <intel-wired-lan@lists.osuosl.org>; Fri, 21 Jun 2024 08:43:53 +0000 (UTC)
-X-CSE-ConnectionGUID: fPOCFe+GQa27gd0soKgqvA==
-X-CSE-MsgGUID: IK1wcBhKSPa6DvOZCcZZgg==
-X-IronPort-AV: E=McAfee;i="6700,10204,11109"; a="16129474"
-X-IronPort-AV: E=Sophos;i="6.08,254,1712646000"; d="scan'208";a="16129474"
+ by smtp2.osuosl.org (Postfix) with ESMTPS id C76BB435EF
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 21 Jun 2024 08:43:54 +0000 (UTC)
+X-CSE-ConnectionGUID: jnro7LucQZimFDV4OJftww==
+X-CSE-MsgGUID: GMtyb4fhTVejyxPsyqxPGw==
+X-IronPort-AV: E=McAfee;i="6700,10204,11109"; a="16129475"
+X-IronPort-AV: E=Sophos;i="6.08,254,1712646000"; d="scan'208";a="16129475"
 Received: from fmviesa002.fm.intel.com ([10.60.135.142])
  by orvoesa110.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 21 Jun 2024 01:43:52 -0700
-X-CSE-ConnectionGUID: o6sCZOlqTEWzdr3c4mep/Q==
-X-CSE-MsgGUID: Phe9FEdWSfSyFodYDlXmoQ==
+ 21 Jun 2024 01:43:54 -0700
+X-CSE-ConnectionGUID: qeDPT/91RkSCd1ZNCGvC9w==
+X-CSE-MsgGUID: 9AG+IPPlSK6RhrjiNRlEpQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.08,254,1712646000"; d="scan'208";a="65765165"
+X-IronPort-AV: E=Sophos;i="6.08,254,1712646000"; d="scan'208";a="65765168"
 Received: from unknown (HELO localhost.igk.intel.com) ([10.211.13.141])
- by fmviesa002.fm.intel.com with ESMTP; 21 Jun 2024 01:43:51 -0700
+ by fmviesa002.fm.intel.com with ESMTP; 21 Jun 2024 01:43:53 -0700
 From: Sergey Temerkhanov <sergey.temerkhanov@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Fri, 21 Jun 2024 10:42:40 +0200
-Message-ID: <20240621084244.26525-1-sergey.temerkhanov@intel.com>
+Date: Fri, 21 Jun 2024 10:42:41 +0200
+Message-ID: <20240621084244.26525-2-sergey.temerkhanov@intel.com>
 X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20240621084244.26525-1-sergey.temerkhanov@intel.com>
+References: <20240621084244.26525-1-sergey.temerkhanov@intel.com>
 MIME-Version: 1.0
+Organization: Intel Technology Poland sp. z o.o. - ul. Slowackiego 173,
+ 80-298 Gdansk - KRS 101882 - NIP 957-07-52-316
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1718959434; x=1750495434;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=3HBoWOKl6SbY13vd0tm05QnlOYhyCgkxJmDDKHhVy5E=;
- b=kx8W724Oz/EUFz5qJ8SP6lWsC/YI+TPuPd6MXCLfomKPqds3jcyiGNoq
- OffZB4IG5sSFwUX0aa0r60b9PF9EkCT+gqJ5Syd6F5C88vGgMIA5aSNxT
- mjEgrsiMf/QAaTz5JnNc28w+gIG6DNcl31zphQXZZQN+rmn9bglP0MtZ6
- nR5cF+Erl8EFjou/oQsFOQsWUcHxol5voENki4KQIqV7sKMWnFC8BiLPs
- 7WS2hdO1Zq1VgGj0zE7r/CI2d6jSUJ2TuYSheFvBue42d1OiPJqBNDovv
- DqcaVaF1iDHblJ0jVhMmlQxGBVvIhZvRdXM8FOGOVUEy6Cv1i5JyuX2Yu
- g==;
+ t=1718959435; x=1750495435;
+ h=from:to:cc:subject:date:message-id:in-reply-to:
+ references:mime-version:content-transfer-encoding;
+ bh=6ZDtIBvJiTIKL9FlBPDlqcVGN7zkjCzrD/5Ozp44z1g=;
+ b=iBTlxvKRzNSZB2wzUhKJyoJlDnpTQOLR8Eew+ANkwGYq9B8jwh35kTHG
+ WywPuB6lizIKbjgcS8tF4rfbh882utybp7fPdkaMyRLD8XYOwSDE/Fi4R
+ Q7zLhrRPnayaKM+xG4DQTWcZlVX+/aqjZE0vhKWHDQRsWvjRG4AHGvOoc
+ cI6d7de3t+/jMGMc8MX3CoUqQzYaxkHTHfatzcYlHi5OnE1AQxK4jUbJR
+ ZRxszOM86perYQKxvdjPluG1dKNTH/ucOlYL/YmV5B/3o4xTOwoFf0amJ
+ 2oj1qfW2lgYJk++HMuY3QNz3f+9r2FJZDGA+udZNoo5BxhpShW73Fbque
+ w==;
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=kx8W724O
-Subject: [Intel-wired-lan] [RFC PATCH iwl-next v1 0/4] Replace auxbus with
- ice_adapter in the PTP support code
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=iBTlxvKR
+Subject: [Intel-wired-lan] [RFC PATCH iwl-next v1 1/4] ice: Introduce
+ ice_get_phy_model() wrapper
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -102,33 +106,224 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Sergey Temerkhanov <sergey.temerkhanov@intel.com>
+Cc: Sergey Temerkhanov <sergey.temerkhanov@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-This series replaces multiple aux buses and devices used in
-the PTP support code with struct ice_adapter holding the necessary
-shared data
+Introduce ice_get_phy_model() to improve code readability
 
-Patches 1,2 add convenience wrappers
-Patch 3 does the main refactoring
-Patch 4 finalizes the refactoring
+Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+Signed-off-by: Sergey Temerkhanov <sergey.temerkhanov@intel.com>
+---
+ drivers/net/ethernet/intel/ice/ice.h        |  5 +++++
+ drivers/net/ethernet/intel/ice/ice_ptp.c    | 18 ++++++++---------
+ drivers/net/ethernet/intel/ice/ice_ptp_hw.c | 22 ++++++++++-----------
+ 3 files changed, 25 insertions(+), 20 deletions(-)
 
-Sergey Temerkhanov (4):
-  ice: Introduce ice_get_phy_model() wrapper
-  ice: Add ice_get_ctrl_ptp() wrapper to simplify the code
-  ice: Use ice_adapter for PTP shared data instead of auxdev
-  ice: Drop auxbus use for PTP to finalize ice_adapter move
-
- drivers/net/ethernet/intel/ice/ice.h         |   5 +
- drivers/net/ethernet/intel/ice/ice_adapter.c |   6 +
- drivers/net/ethernet/intel/ice/ice_adapter.h |  21 +-
- drivers/net/ethernet/intel/ice/ice_ptp.c     | 338 ++++---------------
- drivers/net/ethernet/intel/ice/ice_ptp.h     |  24 +-
- drivers/net/ethernet/intel/ice/ice_ptp_hw.c  |  22 +-
- drivers/net/ethernet/intel/ice/ice_ptp_hw.h  |   5 +
- 7 files changed, 111 insertions(+), 310 deletions(-)
-
+diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
+index 4c563b0d57ac..b43719ee8324 100644
+--- a/drivers/net/ethernet/intel/ice/ice.h
++++ b/drivers/net/ethernet/intel/ice/ice.h
+@@ -1046,5 +1046,10 @@ static inline void ice_clear_rdma_cap(struct ice_pf *pf)
+ 	clear_bit(ICE_FLAG_RDMA_ENA, pf->flags);
+ }
+ 
++static inline enum ice_phy_model ice_get_phy_model(const struct ice_hw *hw)
++{
++	return hw->ptp.phy_model;
++}
++
+ extern const struct xdp_metadata_ops ice_xdp_md_ops;
+ #endif /* _ICE_H_ */
+diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.c b/drivers/net/ethernet/intel/ice/ice_ptp.c
+index 0fb5f78ce3db..57e1e5a5da4a 100644
+--- a/drivers/net/ethernet/intel/ice/ice_ptp.c
++++ b/drivers/net/ethernet/intel/ice/ice_ptp.c
+@@ -1372,7 +1372,7 @@ ice_ptp_port_phy_stop(struct ice_ptp_port *ptp_port)
+ 
+ 	mutex_lock(&ptp_port->ps_lock);
+ 
+-	switch (hw->ptp.phy_model) {
++	switch (ice_get_phy_model(hw)) {
+ 	case ICE_PHY_ETH56G:
+ 		err = ice_stop_phy_timer_eth56g(hw, port, true);
+ 		break;
+@@ -1418,7 +1418,7 @@ ice_ptp_port_phy_restart(struct ice_ptp_port *ptp_port)
+ 
+ 	mutex_lock(&ptp_port->ps_lock);
+ 
+-	switch (hw->ptp.phy_model) {
++	switch (ice_get_phy_model(hw)) {
+ 	case ICE_PHY_ETH56G:
+ 		err = ice_start_phy_timer_eth56g(hw, port);
+ 		break;
+@@ -1486,7 +1486,7 @@ void ice_ptp_link_change(struct ice_pf *pf, u8 port, bool linkup)
+ 	/* Update cached link status for this port immediately */
+ 	ptp_port->link_up = linkup;
+ 
+-	switch (hw->ptp.phy_model) {
++	switch (ice_get_phy_model(hw)) {
+ 	case ICE_PHY_E810:
+ 		/* Do not reconfigure E810 PHY */
+ 		return;
+@@ -1519,7 +1519,7 @@ static int ice_ptp_cfg_phy_interrupt(struct ice_pf *pf, bool ena, u32 threshold)
+ 
+ 	ice_ptp_reset_ts_memory(hw);
+ 
+-	switch (hw->ptp.phy_model) {
++	switch (ice_get_phy_model(hw)) {
+ 	case ICE_PHY_ETH56G: {
+ 		int port;
+ 
+@@ -1558,7 +1558,7 @@ static int ice_ptp_cfg_phy_interrupt(struct ice_pf *pf, bool ena, u32 threshold)
+ 	case ICE_PHY_UNSUP:
+ 	default:
+ 		dev_warn(dev, "%s: Unexpected PHY model %d\n", __func__,
+-			 hw->ptp.phy_model);
++			 ice_get_phy_model(hw));
+ 		return -EOPNOTSUPP;
+ 	}
+ }
+@@ -1999,7 +1999,7 @@ ice_ptp_settime64(struct ptp_clock_info *info, const struct timespec64 *ts)
+ 	/* For Vernier mode on E82X, we need to recalibrate after new settime.
+ 	 * Start with marking timestamps as invalid.
+ 	 */
+-	if (hw->ptp.phy_model == ICE_PHY_E82X) {
++	if (ice_get_phy_model(hw) == ICE_PHY_E82X) {
+ 		err = ice_ptp_clear_phy_offset_ready_e82x(hw);
+ 		if (err)
+ 			dev_warn(ice_pf_to_dev(pf), "Failed to mark timestamps as invalid before settime\n");
+@@ -2023,7 +2023,7 @@ ice_ptp_settime64(struct ptp_clock_info *info, const struct timespec64 *ts)
+ 	ice_ptp_enable_all_clkout(pf);
+ 
+ 	/* Recalibrate and re-enable timestamp blocks for E822/E823 */
+-	if (hw->ptp.phy_model == ICE_PHY_E82X)
++	if (ice_get_phy_model(hw) == ICE_PHY_E82X)
+ 		ice_ptp_restart_all_phy(pf);
+ exit:
+ 	if (err) {
+@@ -3144,7 +3144,7 @@ static int ice_ptp_init_port(struct ice_pf *pf, struct ice_ptp_port *ptp_port)
+ 
+ 	mutex_init(&ptp_port->ps_lock);
+ 
+-	switch (hw->ptp.phy_model) {
++	switch (ice_get_phy_model(hw)) {
+ 	case ICE_PHY_ETH56G:
+ 		return ice_ptp_init_tx_eth56g(pf, &ptp_port->tx,
+ 					      ptp_port->port_num);
+@@ -3242,7 +3242,7 @@ static void ice_ptp_remove_auxbus_device(struct ice_pf *pf)
+  */
+ static void ice_ptp_init_tx_interrupt_mode(struct ice_pf *pf)
+ {
+-	switch (pf->hw.ptp.phy_model) {
++	switch (ice_get_phy_model(&pf->hw)) {
+ 	case ICE_PHY_E82X:
+ 		/* E822 based PHY has the clock owner process the interrupt
+ 		 * for all ports.
+diff --git a/drivers/net/ethernet/intel/ice/ice_ptp_hw.c b/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
+index 1e9a4ccd0ea2..73a6788f9990 100644
+--- a/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
++++ b/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
+@@ -806,7 +806,7 @@ static u32 ice_ptp_tmr_cmd_to_port_reg(struct ice_hw *hw,
+ 	/* Certain hardware families share the same register values for the
+ 	 * port register and source timer register.
+ 	 */
+-	switch (hw->ptp.phy_model) {
++	switch (ice_get_phy_model(hw)) {
+ 	case ICE_PHY_E810:
+ 		return ice_ptp_tmr_cmd_to_src_reg(hw, cmd) & TS_CMD_MASK_E810;
+ 	default:
+@@ -5419,7 +5419,7 @@ void ice_ptp_init_hw(struct ice_hw *hw)
+ static int ice_ptp_write_port_cmd(struct ice_hw *hw, u8 port,
+ 				  enum ice_ptp_tmr_cmd cmd)
+ {
+-	switch (hw->ptp.phy_model) {
++	switch (ice_get_phy_model(hw)) {
+ 	case ICE_PHY_ETH56G:
+ 		return ice_ptp_write_port_cmd_eth56g(hw, port, cmd);
+ 	case ICE_PHY_E82X:
+@@ -5484,7 +5484,7 @@ static int ice_ptp_port_cmd(struct ice_hw *hw, enum ice_ptp_tmr_cmd cmd)
+ 	u32 port;
+ 
+ 	/* PHY models which can program all ports simultaneously */
+-	switch (hw->ptp.phy_model) {
++	switch (ice_get_phy_model(hw)) {
+ 	case ICE_PHY_E810:
+ 		return ice_ptp_port_cmd_e810(hw, cmd);
+ 	default:
+@@ -5563,7 +5563,7 @@ int ice_ptp_init_time(struct ice_hw *hw, u64 time)
+ 
+ 	/* PHY timers */
+ 	/* Fill Rx and Tx ports and send msg to PHY */
+-	switch (hw->ptp.phy_model) {
++	switch (ice_get_phy_model(hw)) {
+ 	case ICE_PHY_ETH56G:
+ 		err = ice_ptp_prep_phy_time_eth56g(hw,
+ 						   (u32)(time & 0xFFFFFFFF));
+@@ -5609,7 +5609,7 @@ int ice_ptp_write_incval(struct ice_hw *hw, u64 incval)
+ 	wr32(hw, GLTSYN_SHADJ_L(tmr_idx), lower_32_bits(incval));
+ 	wr32(hw, GLTSYN_SHADJ_H(tmr_idx), upper_32_bits(incval));
+ 
+-	switch (hw->ptp.phy_model) {
++	switch (ice_get_phy_model(hw)) {
+ 	case ICE_PHY_ETH56G:
+ 		err = ice_ptp_prep_phy_incval_eth56g(hw, incval);
+ 		break;
+@@ -5678,7 +5678,7 @@ int ice_ptp_adj_clock(struct ice_hw *hw, s32 adj)
+ 	wr32(hw, GLTSYN_SHADJ_L(tmr_idx), 0);
+ 	wr32(hw, GLTSYN_SHADJ_H(tmr_idx), adj);
+ 
+-	switch (hw->ptp.phy_model) {
++	switch (ice_get_phy_model(hw)) {
+ 	case ICE_PHY_ETH56G:
+ 		err = ice_ptp_prep_phy_adj_eth56g(hw, adj);
+ 		break;
+@@ -5711,7 +5711,7 @@ int ice_ptp_adj_clock(struct ice_hw *hw, s32 adj)
+  */
+ int ice_read_phy_tstamp(struct ice_hw *hw, u8 block, u8 idx, u64 *tstamp)
+ {
+-	switch (hw->ptp.phy_model) {
++	switch (ice_get_phy_model(hw)) {
+ 	case ICE_PHY_ETH56G:
+ 		return ice_read_ptp_tstamp_eth56g(hw, block, idx, tstamp);
+ 	case ICE_PHY_E810:
+@@ -5741,7 +5741,7 @@ int ice_read_phy_tstamp(struct ice_hw *hw, u8 block, u8 idx, u64 *tstamp)
+  */
+ int ice_clear_phy_tstamp(struct ice_hw *hw, u8 block, u8 idx)
+ {
+-	switch (hw->ptp.phy_model) {
++	switch (ice_get_phy_model(hw)) {
+ 	case ICE_PHY_ETH56G:
+ 		return ice_clear_ptp_tstamp_eth56g(hw, block, idx);
+ 	case ICE_PHY_E810:
+@@ -5804,7 +5804,7 @@ static int ice_get_pf_c827_idx(struct ice_hw *hw, u8 *idx)
+  */
+ void ice_ptp_reset_ts_memory(struct ice_hw *hw)
+ {
+-	switch (hw->ptp.phy_model) {
++	switch (ice_get_phy_model(hw)) {
+ 	case ICE_PHY_ETH56G:
+ 		ice_ptp_reset_ts_memory_eth56g(hw);
+ 		break;
+@@ -5833,7 +5833,7 @@ int ice_ptp_init_phc(struct ice_hw *hw)
+ 	/* Clear event err indications for auxiliary pins */
+ 	(void)rd32(hw, GLTSYN_STAT(src_idx));
+ 
+-	switch (hw->ptp.phy_model) {
++	switch (ice_get_phy_model(hw)) {
+ 	case ICE_PHY_ETH56G:
+ 		return ice_ptp_init_phc_eth56g(hw);
+ 	case ICE_PHY_E810:
+@@ -5858,7 +5858,7 @@ int ice_ptp_init_phc(struct ice_hw *hw)
+  */
+ int ice_get_phy_tx_tstamp_ready(struct ice_hw *hw, u8 block, u64 *tstamp_ready)
+ {
+-	switch (hw->ptp.phy_model) {
++	switch (ice_get_phy_model(hw)) {
+ 	case ICE_PHY_ETH56G:
+ 		return ice_get_phy_tx_tstamp_ready_eth56g(hw, block,
+ 							  tstamp_ready);
 -- 
 2.43.0
 
