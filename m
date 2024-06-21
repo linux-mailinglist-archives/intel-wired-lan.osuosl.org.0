@@ -2,98 +2,225 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 502E4911F13
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 21 Jun 2024 10:44:12 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3BF75912061
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 21 Jun 2024 11:22:29 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 343A842FC9;
-	Fri, 21 Jun 2024 08:44:08 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id E1C5442EAE;
+	Fri, 21 Jun 2024 09:22:27 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id SVGAEuCGzg4g; Fri, 21 Jun 2024 08:44:06 +0000 (UTC)
+ id aqXkfcw8UD8x; Fri, 21 Jun 2024 09:22:27 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5A79E42F84
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org AECC042ED4
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1718959446;
-	bh=KSYLiyHisbvWp0Q4R8Wm7SUzVp7puCJu6cJiYKPwUIM=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1718961746;
+	bh=HuLuTmK2IsimZuludwNnk9y/pUNQBCOs/EUhP+WuQwk=;
+	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=31RSC7pVqWIDE9hOnY42Ks4+0pVngUgUZVxpissETvPL6QahYiYyKIJBR1ai0/tkG
-	 3J0YfYto8uuuq4tahbLfxIeIueARfF3ZP17pZ7HZINv9WedjkO+0hToDTSpgTCurjL
-	 AyQm08J+8ofvcxcGJ7MrI3D7MnGfYPC9V6w1c8d5pR3bT/NvBzGEsW467Eaq8x3v3K
-	 1SYCxz9K4jnDdQdloISBj2rCvny78YJAi4BgbKqL4M3kWmHcZ9J0WF3KUhdxB6GnZE
-	 2uYYAj0OjtKL+iBIllWZuywEkOMriQwMWcL209xJC1zqmlYUNgsXpBAdcnna2O3bi2
-	 2UPw8tjxirsrQ==
+	b=EszY9LYUq/IGz+5aKiVt5JkqqM80rjAawBfEC6CacV3sMpYPzHDFd+iRP8zklt+iv
+	 e0/bwWqhKes1DDMIsRVn2BCIKXQArIBZ2m4beeZFYhlt3fvXOerdH8sd+W22qbY8yf
+	 KmlGW96nF03fJMvioniTTEIMdzYaCStn3D9E83RH2/FMAJuND5xtUydhb3P3OXrDpX
+	 M2adwWRtWhP7ypv6083+gtca+CBPbG+iozNToYN8vT93RvyJ+AesT9Pb/BRuV8J7Rh
+	 R21fO3FnclBZm27u9pU7lpjgOeybGRNQWYZglAhuTxk+nZdvAI5sS+Af4Ex3cBEq3p
+	 I2CvJ93+A5drg==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 5A79E42F84;
-	Fri, 21 Jun 2024 08:44:06 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id AECC042ED4;
+	Fri, 21 Jun 2024 09:22:26 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id EEDAC1BF841
- for <intel-wired-lan@lists.osuosl.org>; Fri, 21 Jun 2024 08:44:02 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id D098C1BF330
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 21 Jun 2024 09:22:24 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id DB2BE42EEA
- for <intel-wired-lan@lists.osuosl.org>; Fri, 21 Jun 2024 08:44:02 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id BBCBA435F7
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 21 Jun 2024 09:22:24 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 34l0u6U31zck for <intel-wired-lan@lists.osuosl.org>;
- Fri, 21 Jun 2024 08:44:01 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.18;
- helo=mgamail.intel.com; envelope-from=sergey.temerkhanov@intel.com;
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id IuIUimjLtPd7 for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 21 Jun 2024 09:22:23 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.9;
+ helo=mgamail.intel.com; envelope-from=aleksander.lobakin@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 891A241676
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 891A241676
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.18])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 891A241676
- for <intel-wired-lan@lists.osuosl.org>; Fri, 21 Jun 2024 08:44:01 +0000 (UTC)
-X-CSE-ConnectionGUID: qHeAAHUITKmqlOo1k4N/Qg==
-X-CSE-MsgGUID: uE5Htv/IQkmpP88iDR7LaA==
-X-IronPort-AV: E=McAfee;i="6700,10204,11109"; a="16129483"
-X-IronPort-AV: E=Sophos;i="6.08,254,1712646000"; d="scan'208";a="16129483"
-Received: from fmviesa002.fm.intel.com ([10.60.135.142])
- by orvoesa110.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 21 Jun 2024 01:44:01 -0700
-X-CSE-ConnectionGUID: 2P5nJIuDSz+a0rVOetm0fw==
-X-CSE-MsgGUID: 79JEBCdmRZOGdxR4/ZLq5A==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 790DA403B4
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 790DA403B4
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.9])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 790DA403B4
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 21 Jun 2024 09:22:23 +0000 (UTC)
+X-CSE-ConnectionGUID: HYaCYnwaRMS+e1qEO1E7Cw==
+X-CSE-MsgGUID: O2k+cT6XRD+4xTtcGOlLHg==
+X-IronPort-AV: E=McAfee;i="6700,10204,11109"; a="26672774"
+X-IronPort-AV: E=Sophos;i="6.08,254,1712646000"; d="scan'208";a="26672774"
+Received: from fmviesa005.fm.intel.com ([10.60.135.145])
+ by fmvoesa103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 21 Jun 2024 02:22:23 -0700
+X-CSE-ConnectionGUID: CR3Eq0DMTISYXcC9plZHLg==
+X-CSE-MsgGUID: D+BG3bktTPKJ08v9G+gC5w==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.08,254,1712646000"; d="scan'208";a="65765179"
-Received: from unknown (HELO localhost.igk.intel.com) ([10.211.13.141])
- by fmviesa002.fm.intel.com with ESMTP; 21 Jun 2024 01:44:00 -0700
-From: Sergey Temerkhanov <sergey.temerkhanov@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Fri, 21 Jun 2024 10:42:44 +0200
-Message-ID: <20240621084244.26525-5-sergey.temerkhanov@intel.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20240621084244.26525-1-sergey.temerkhanov@intel.com>
-References: <20240621084244.26525-1-sergey.temerkhanov@intel.com>
+X-IronPort-AV: E=Sophos;i="6.08,254,1712646000"; d="scan'208";a="46984791"
+Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82])
+ by fmviesa005.fm.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
+ 21 Jun 2024 02:22:22 -0700
+Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
+ fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.39; Fri, 21 Jun 2024 02:22:22 -0700
+Received: from fmsedg601.ED.cps.intel.com (10.1.192.135) by
+ fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.39 via Frontend Transport; Fri, 21 Jun 2024 02:22:22 -0700
+Received: from NAM12-DM6-obe.outbound.protection.outlook.com (104.47.59.168)
+ by edgegateway.intel.com (192.55.55.70) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.39; Fri, 21 Jun 2024 02:22:22 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=j1+6D25hG5dHwr/QflBhcRsi5X39n+BBSmEX2dgtsXnftMnzRU0NnY6N1KdqYTD96f5QdbbSRD+RLPeUrB5l1E128f8nNqT4UaE5qXySd+Zp/Pfwf46EwuiKafsdWLSKif7ZOvXN5hVVaoQuwCGK5ZyvoQ8nMHOwZf5UpUAx6mnEUjnTyFHtg5SK+M7h+4UhhQnXNA068doVHSNyrY2Swth03vBqgaAuZDEEQZv4zici4xxv0Yb7UQEImVbhRsd6XSKpCa/uerzklmR0/vBLXHs8QUtu8Vil41ghfBTJu7Pcfs4rIEcavIsJeojUTkembrvLGw1N0y0Ql5lwKIBKzA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=HuLuTmK2IsimZuludwNnk9y/pUNQBCOs/EUhP+WuQwk=;
+ b=d76q4wIdmEqFfT2QPa3amIO6RVECnp1hWU7UBpJbmevKMa/TwGK5R4D68Y8IA/uwvnRpwvqJE90+hPhWr6icjyOiBc90+WWrBuzNJmfsPHrxAdfdwkq9cbUqBBOdSuX2i4v06z3S1r7usto5xme11GtMbm4/tMbS6WONMLg06Ou3QoO0P5qS7rtxD/bbDcHj3beMVgIfPzzoegT1Nh1AQdcTuVeAmYLxik1Anyw8PjaXfXT9YOWhAbTuDL5zJyFM9Bq5oPcEpHlaOjkl19vbeyTGrO8C7xBeEEjLpWHXOvEPQCiS59AvaiOvV7Ecr+LUEI8vEbLKibt9IOwgWWFDhA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from DS0PR11MB8718.namprd11.prod.outlook.com (2603:10b6:8:1b9::20)
+ by DS0PR11MB7832.namprd11.prod.outlook.com (2603:10b6:8:f5::15) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7677.31; Fri, 21 Jun
+ 2024 09:22:19 +0000
+Received: from DS0PR11MB8718.namprd11.prod.outlook.com
+ ([fe80::4b3b:9dbe:f68c:d808]) by DS0PR11MB8718.namprd11.prod.outlook.com
+ ([fe80::4b3b:9dbe:f68c:d808%4]) with mapi id 15.20.7698.020; Fri, 21 Jun 2024
+ 09:22:19 +0000
+Message-ID: <6414deb0-165c-4a98-8467-ba6949166f96@intel.com>
+Date: Fri, 21 Jun 2024 11:20:46 +0200
+User-Agent: Mozilla Thunderbird
+To: Yan Zhai <yan@cloudflare.com>
+References: <cover.1718919473.git.yan@cloudflare.com>
+ <a9eba425bfd3bfac7e7be38fe86ad5dbff3ae01f.1718919473.git.yan@cloudflare.com>
+From: Alexander Lobakin <aleksander.lobakin@intel.com>
+Content-Language: en-US
+In-Reply-To: <a9eba425bfd3bfac7e7be38fe86ad5dbff3ae01f.1718919473.git.yan@cloudflare.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+X-ClientProxiedBy: VI1PR04CA0112.eurprd04.prod.outlook.com
+ (2603:10a6:803:64::47) To DS0PR11MB8718.namprd11.prod.outlook.com
+ (2603:10b6:8:1b9::20)
 MIME-Version: 1.0
-Organization: Intel Technology Poland sp. z o.o. - ul. Slowackiego 173,
- 80-298 Gdansk - KRS 101882 - NIP 957-07-52-316
-Content-Transfer-Encoding: 8bit
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DS0PR11MB8718:EE_|DS0PR11MB7832:EE_
+X-MS-Office365-Filtering-Correlation-Id: 98f87010-bed9-42ce-b83a-08dc91d3a65e
+X-LD-Processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230037|376011|7416011|1800799021|366013;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?T0w1M1pZSGVGVE8vSjgxalQ0M2Y0OFh2aEd4NEFkaWtVQTFWQWhBVGQxM3Ev?=
+ =?utf-8?B?OTQ2VmUzTHJXdlNzdkgvVFNPME1vUGpJWGVWQUNzMGw2UXI4YXc2MGtPeGxR?=
+ =?utf-8?B?Z3FXTEpLRS9vWGMweUhMWGFJL0RxZU9obFNmbnIxaVpVc2hGdlBseFBFNHZw?=
+ =?utf-8?B?bW4yMWJTWVpuSnNLM1FYOGIwaUtJeW9KUEZteGpidnNmd2REUDRCek1zMTZ6?=
+ =?utf-8?B?cG1ycHdmMkZEdUdFa0Q0NTVIR1pBNVhLOVhGQmdFenBKT2NQTzcvWnhzTHI2?=
+ =?utf-8?B?eFFSNFRIQ3YzSWNhMURKMndRQ1pyRFlWdVMwL05sNXRnTFc0dUZVVWZUZW54?=
+ =?utf-8?B?R1Y5SUpsTmxSUDNacWY5cENTc2hoczVaRnlWRmg2b25MTW55OW05dzdBUUJ3?=
+ =?utf-8?B?cGxRL1FBSDZFNTRUSnp5SjFNZTgrb05XbU5QR0pZR1QyMzFwS05GN1JYekkz?=
+ =?utf-8?B?eVhQazlPQWJtc2g1ZWdkNjlpTXcxUnRWa0tuczQ1WWVZNGEyVzhQbmpMVzdE?=
+ =?utf-8?B?KzhoYys3RVk5K292cU1aTWtVNXVaL3ROY1BzejhQd1VXYUYrRmp6RFpkdGs1?=
+ =?utf-8?B?RmhwNkxKQnYrbTBqWjg3aUd4WVJBTjU3emxJYzlnYlJrSjdNTHFKVmFqRWk3?=
+ =?utf-8?B?Z1NESTNPR2taMjJoK3dRTW9mcHI4NVN2VjhXYWt4OU1Ja2taMmhzRFB5L2cx?=
+ =?utf-8?B?R3VhcFZYbVh0NjZwTXB2eGVaNTVNZmFibFdzMGkxdFJsR0U4OWo2emFNUDNh?=
+ =?utf-8?B?VGV5Z1EzWk4zbjQ4VldJTGR1cWFnWkh1aHA3TzZSdVFHVjZMR2N2VlN0K0xO?=
+ =?utf-8?B?RGpmcUNEdGxNb2JGazkrYnNmdFh0SGVCU1RQbHpMOFQ1bjNYMDZGU0lYYmtp?=
+ =?utf-8?B?T3lUUW5kdGE1RXRmNjZsc3FtSDV2OGF1d0YrV0ZvaTBGT0Y1YXRBUTBUQTNR?=
+ =?utf-8?B?Q01LWFAvN1JvdkhVNEt5RXY4UzVnUW9DN2F5WDFFK1g3US9aeklIU1IrbjJw?=
+ =?utf-8?B?STBBcnlLQlFIZXlxN2d3LzllaEpZQ2lPOE45am1RMXl6YXo3VzE1RWVXdjlC?=
+ =?utf-8?B?SjBMU2FUSGQ0a1JkdzVWdjhRLzNIVFdPdmMwS2RpaXkwSzF2c1BVNWRLa0lB?=
+ =?utf-8?B?ZEIzZFNRUzBpVkpENnM0OFU1NURTTkQ5eWl5QXJXcmNsd0VGM1hCT25aZ0RK?=
+ =?utf-8?B?RWJzK0VuVm4ybmw2WUVBT1pjV1p1cDhOZTZtTjlTYjRuS2dlSHl2ZHhhUkNG?=
+ =?utf-8?B?Q0dlMG9mRDRXNjk0UFlra01FYzF1UksyOTRDVDBaSVhUWkViank1T3VJSmRG?=
+ =?utf-8?B?WDBzZUpydFVFSE5HZFZNZUlkZWN6Q1RNOTRNV1JheUptQS9YWE1mQWM5cG10?=
+ =?utf-8?B?WnRhWW0wZDlreWU0TWp3R1ZRTUt2SE9ySmRQMkhwVDM4WnJEVnFVdnJtMUNU?=
+ =?utf-8?B?VXFCeW5RbGwxMGNGZFlib2dqd2tvS2JCL2d1L0dQTkVscUtETTVJdDVEYTNu?=
+ =?utf-8?B?TTE5OHF2YXVuZWNtU09wcktKeHhaWnZBZ3R3eDFuYWFYT09uZmk4THk3V1gw?=
+ =?utf-8?B?OHlXeDVpUGdCakFEWUoxczFSOUU2ajJTek1OaGlUditqR1ExTXpqYnYvNm1T?=
+ =?utf-8?B?VWV3SXljazVmamhqV1B5MEZwY250SDJEMFVQUW9PVVFyZk9CUjZWaGxFcU5M?=
+ =?utf-8?B?Q2VYVWoySXNnTHkvZWRISVJwTVVuMDJDejZrTHhWT3J4ZHFndlZnZnIwWHZz?=
+ =?utf-8?Q?ISr1JcwvrLD5vgQIec=3D?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:DS0PR11MB8718.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230037)(376011)(7416011)(1800799021)(366013); DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?REVLeXpRV2FwRHhBMkZxSWU2eG9NM3VkSXdaZDZIUHdodHVsL1ZvdSttOEFY?=
+ =?utf-8?B?VDZaWTdCVVh1Q0NwWXo5ZVczTjdDemJEOGswODBiNHEyRTkvbjB1V2VJTGhh?=
+ =?utf-8?B?NW1lMFZVMnlLL1pZU1dRdXh5SlRMc3pTb1FnV2Qwb0loekhjMFN2SEdYdkI2?=
+ =?utf-8?B?bytHcW44cVY4S243OVZoSjBvc0NRYnIzeDFMaWpmdTEwbzJ2QWxuWU9XNzd3?=
+ =?utf-8?B?bVp5M3dTNE4zQnlTSkpaRk1CQkFlSVBJVjJGWDF3bjAvL1VIRGtQRGxZcE85?=
+ =?utf-8?B?c1kvRXo1dDVOQVhUWmNVOTJaUjNPWU94aHN3TUNLWU45MDNrS3l2SUxTTWRL?=
+ =?utf-8?B?QUV4UWNNakMzUUxNY053ZHFCQ0c4UExya1hhaXFMRmduRVYxOWlRNUxPYUJp?=
+ =?utf-8?B?UEs5bHd3cU1vWEFudU1yUUFKSHRyL1BDQ2F1eFAvdlh1VU44ai9YRzV4blZ2?=
+ =?utf-8?B?UU1CeGE3Y3JPYWRtUExvQ29QdHdSaWZ2eitlQVkzY29OQ0ppNkROd1pkcE4w?=
+ =?utf-8?B?QS92dVBLdkJDVFVUV3JXcG1LdnFYQ1lWTm5kWHRjYTU1WGlCdS9aazNFV2lr?=
+ =?utf-8?B?c0VVelNaek92Y1AwQmxRS25rVU5qQmZRTC84Z2ZQVGw1aGE1N1VDdjZhOW95?=
+ =?utf-8?B?Uk9QTnNZeUlDS0ZTeWZUemZnSE9YbkRvc01zZXUzMXpyNWJlblRVc2lBTXl1?=
+ =?utf-8?B?Q1dJSVNXeTNOeHJPMmdZY3dsUjltQTVNQkRhVnJram9ZVlZEQXErUEtEQjVk?=
+ =?utf-8?B?dFY3UFE3M3RjSFplejJ5Z2t5TXR6S0JnMG9jRlRtbXRCNFEzS0pMbThyL1Rv?=
+ =?utf-8?B?OTh6WklkTXdYUHBEeE1yS2h1Uzd6cUdpNmpvZ1F6eHdQVzVkcEtUZVFtdVg5?=
+ =?utf-8?B?c0U2a1BNQXZEUnJOT3BYMjI5Qyt6TUFkdGN2Si9SUFFkWFp5Y2VrcGcvbFRR?=
+ =?utf-8?B?NnJyNlVFQ0VoeFJabTNhSzM5MEhPTDZnUGp6bkZqWHY1ZENWYzhoQTQvbWo2?=
+ =?utf-8?B?YUhxYVIvWjhXNnNzMXhPbml1TnVXMUFDQnNpZW0yaElHQlIrQVM3QXhDMTJw?=
+ =?utf-8?B?OUZ4R1BuTDI2Sk54TS96UnNLNUkwd3E5MDEvUXZINUlVNmE4Nit6R1RaNThQ?=
+ =?utf-8?B?SlpJZ2Y1WEpmWHRtdWp3NWwzNStOQ1RCSmhYMm5MR1hhcStDWmpBN2o1djU0?=
+ =?utf-8?B?QXZGM0RWY1d6US9GM3BKeWRUemZPUWpDRGVjY3l4YUFRUDZvYVNxelBtb3dl?=
+ =?utf-8?B?UHdUUi81QWVZQTdEMUh1OVVZVkVqQnZnTklQMGcyejFlMHl3VHlkcmdObG1y?=
+ =?utf-8?B?U2djWVlwbnVjUVl0eDBhK0k2UE15YlR1alhQN2hVUFFlaWFIc2NOTm5UeTJs?=
+ =?utf-8?B?UHRLY2JNRWcrNUVUeiswQmhGVWZZWXZab0loZGhELzZGdHdUNS92L01LcHBC?=
+ =?utf-8?B?UXhRTjlDSWtYSXBVZEJ5d1FBNHhFYUFXRzRhamtMY1ArUS9vY3ZITEVkU0gx?=
+ =?utf-8?B?RXlVUnVnR3M3VlBja0VIODhsVDhxVFBhWjJ2L2p4cTM5ZHBmN1BJRDlQMkdx?=
+ =?utf-8?B?dHg0b1dmTm55ZUkrR0N1QW1ZQ3p2U29RQXVxU3lGZGJvRDJjVWZObW9QMnE5?=
+ =?utf-8?B?ME83Z3U0MVJLWTVDWVJZdFZTS3hYSmJTLzl2TnQ3NzNUa2VtQi9JRnlxQTVr?=
+ =?utf-8?B?Z1d6MEgwQjBTeTJZYS8vN3pPUWFHUGVUbmJwZGwzYkRHeEFLdllROXAyTlRp?=
+ =?utf-8?B?ZjNURUtyR0tNWE9pVE0wL1FOODNhaElrRUZLOVlRM1N3amxhZ2RIZGdWenl0?=
+ =?utf-8?B?UkU2NkxEME41Y0JpeVQrSUJHR2I3SHRkdnRsYWswbk1vMW4xYWJKOGhRZUY1?=
+ =?utf-8?B?VXBwZFlBdVNzNnNXSldhK3BUU1JoSHM4NnhtaE9zOWVXM0gwMStydzFKY2VP?=
+ =?utf-8?B?ZVVTVWYwNVJPSDJpcURjSlp4akxsSGxLT3JPSDcxMGNHdXJYTmlFL3ZFYWI2?=
+ =?utf-8?B?anVpMEdHajNiS0hmelAyQTZRejFtUENoVCtLYUhhamZ4WS9PMFEwQi9CdDdV?=
+ =?utf-8?B?Qk1ad2h4a0JNdGZYWWZhZ3RPbHg5M1V2Rk8wTkhrdnhZRmZuT0VpeGZSdlV5?=
+ =?utf-8?B?aEh5UmtxRHJKVEg3ZkMrK2d4Y0xlNFdzSTkwbmxaZU5tSUpzL3B3SEJpRVY0?=
+ =?utf-8?B?UWc9PQ==?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: 98f87010-bed9-42ce-b83a-08dc91d3a65e
+X-MS-Exchange-CrossTenant-AuthSource: DS0PR11MB8718.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 21 Jun 2024 09:22:19.7573 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: 7NlUjNqHaPdDtUqXbhqbZHKI7auqhEPW4sMRBbgrXv7Rpw5bgSxyCWV9QHLngbgWHcwJeK743AXFyT/pUestT9h0wm/rq/rkOXe4WeOCb7k=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS0PR11MB7832
+X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1718959442; x=1750495442;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=mO2QGWWZEQkeF17glX5EMNafQm8uj79+05PgpCNDOL4=;
- b=ALtWFi9uVLNDvTRZtmIU9tIBrkaq4zMPyuI590US1uuEhMFsiBzgYmuv
- nWlBkcUypaBBAfSErfMSLLZXovB0B5/qXZerz/Ww4DixDaNd3JpMuZhW4
- N8RX3wtVrIuhRx5WwIrVY1LV/yqC0rUlIIfNluTyjRVbzfNq1KSkOaPQ3
- jMtrOVGCv4JJUWaA5zCGl/N6uAyWegU79HJE1VJtDBLdjQctRfg/sEJLf
- IsZTy5e4lB5P6qlOkxO4232MYKVzbNZm8aHpNkTYGIToChTtx3MJZBghs
- JLbIzgMdx6eYAu35JBw4WhwIIOHa+0ePZTDPHH+UvFw1Bs19DYgxVRzrB
- g==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ t=1718961744; x=1750497744;
+ h=message-id:date:subject:to:cc:references:from:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=c3dyFcrF0B1CSapuwUwnLFE29sOutGNIfT3Z9Oe59CU=;
+ b=Alu2l2BHklTRWyzLXRkTOEn59TCU12Rd7J74ypHOrHU4qivzs3mfUmEw
+ 0E+Grt9ft9+5DT/anzxFaNi1iIAltqs9ebThWWTEpP/nu/FD0CuZk42/w
+ ZhZi/9THVq6m9mbmjQa+YaqP1DV7qnOfP7mYjC5OsFih4ISIkuhynanbl
+ IV1u62K+tblIUQHd/7xLk1J0Ixxdy8p24LgAAURGT6XBNgq8G8Ej2DSo3
+ vnFdXkWBTeYOE0gIcao3dBbbBCTWQkHNMCEE/2X9Qff6gtdlONPJS1jhL
+ iEaHWAgcCV35Krefp+x/35K7TwDVOmzebZdlcf5mKszCHKqwtrE2/vooN
+ w==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=ALtWFi9u
-Subject: [Intel-wired-lan] [RFC PATCH iwl-next v1 4/4] ice: Drop auxbus use
- for PTP to finalize ice_adapter move
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=Alu2l2BH
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [RFC net-next 5/9] ice: apply XDP offloading
+ fixup when building skb
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -106,318 +233,114 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Sergey Temerkhanov <sergey.temerkhanov@intel.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>
+Cc: Maciej Fijalkowski <maciej.fijalkowski@intel.com>,
+ Jesper Dangaard Brouer <hawk@kernel.org>,
+ Daniel Borkmann <daniel@iogearbox.net>, netdev@vger.kernel.org,
+ bpf@vger.kernel.org, John Fastabend <john.fastabend@gmail.com>,
+ Alexei Starovoitov <ast@kernel.org>,
+ =?UTF-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn@kernel.org>,
+ Eric Dumazet <edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Jonathan Lemon <jonathan.lemon@gmail.com>, Jakub Kicinski <kuba@kernel.org>,
+ linux-kernel@vger.kernel.org, Paolo Abeni <pabeni@redhat.com>,
+ "David S. Miller" <davem@davemloft.net>,
+ Magnus Karlsson <magnus.karlsson@intel.com>, intel-wired-lan@lists.osuosl.org
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Drop unused auxbus/auxdev support from the PTP code due to
-move to the ice_adapter.
+From: Yan Zhai <yan@cloudflare.com>
+Date: Thu, 20 Jun 2024 15:19:22 -0700
 
-Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-Signed-off-by: Sergey Temerkhanov <sergey.temerkhanov@intel.com>
----
- drivers/net/ethernet/intel/ice/ice_ptp.c | 265 -----------------------
- 1 file changed, 265 deletions(-)
+> Add a common point to transfer offloading info from XDP context to skb.
+> 
+> Signed-off-by: Yan Zhai <yan@cloudflare.com>
+> Signed-off-by: Jesper Dangaard Brouer <hawk@kernel.org>
+> ---
+>  drivers/net/ethernet/intel/ice/ice_txrx.c | 2 ++
+>  drivers/net/ethernet/intel/ice/ice_xsk.c  | 6 +++++-
+>  include/net/xdp_sock_drv.h                | 2 +-
+>  3 files changed, 8 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/net/ethernet/intel/ice/ice_txrx.c b/drivers/net/ethernet/intel/ice/ice_txrx.c
+> index 8bb743f78fcb..a247306837ed 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_txrx.c
+> +++ b/drivers/net/ethernet/intel/ice/ice_txrx.c
+> @@ -1222,6 +1222,7 @@ int ice_clean_rx_irq(struct ice_rx_ring *rx_ring, int budget)
+>  
+>  			hard_start = page_address(rx_buf->page) + rx_buf->page_offset -
+>  				     offset;
+> +			xdp_init_buff_minimal(xdp);
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.c b/drivers/net/ethernet/intel/ice/ice_ptp.c
-index acabd84d6d52..6f1fd11f9249 100644
---- a/drivers/net/ethernet/intel/ice/ice_ptp.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ptp.c
-@@ -2880,189 +2880,6 @@ static void ice_ptp_cleanup_pf(struct ice_pf *pf)
- 		mutex_unlock(&pf->adapter->ports.lock);
- 	}
- }
--/**
-- * ice_ptp_aux_dev_to_aux_pf - Get auxiliary PF handle for the auxiliary device
-- * @aux_dev: auxiliary device to get the auxiliary PF for
-- */
--static struct ice_pf *
--ice_ptp_aux_dev_to_aux_pf(struct auxiliary_device *aux_dev)
--{
--	struct ice_ptp_port *aux_port;
--	struct ice_ptp *aux_ptp;
--
--	aux_port = container_of(aux_dev, struct ice_ptp_port, aux_dev);
--	aux_ptp = container_of(aux_port, struct ice_ptp, port);
--
--	return container_of(aux_ptp, struct ice_pf, ptp);
--}
--
--/**
-- * ice_ptp_aux_dev_to_owner_pf - Get PF handle for the auxiliary device
-- * @aux_dev: auxiliary device to get the PF for
-- */
--static struct ice_pf *
--ice_ptp_aux_dev_to_owner_pf(struct auxiliary_device *aux_dev)
--{
--	struct ice_ptp_port_owner *ports_owner;
--	struct auxiliary_driver *aux_drv;
--	struct ice_ptp *owner_ptp;
--
--	if (!aux_dev->dev.driver)
--		return NULL;
--
--	aux_drv = to_auxiliary_drv(aux_dev->dev.driver);
--	ports_owner = container_of(aux_drv, struct ice_ptp_port_owner,
--				   aux_driver);
--	owner_ptp = container_of(ports_owner, struct ice_ptp, ports_owner);
--	return container_of(owner_ptp, struct ice_pf, ptp);
--}
--
--/**
-- * ice_ptp_auxbus_probe - Probe auxiliary devices
-- * @aux_dev: PF's auxiliary device
-- * @id: Auxiliary device ID
-- */
--static int ice_ptp_auxbus_probe(struct auxiliary_device *aux_dev,
--				const struct auxiliary_device_id *id)
--{
--	struct ice_pf *owner_pf = ice_ptp_aux_dev_to_owner_pf(aux_dev);
--	struct ice_pf *aux_pf = ice_ptp_aux_dev_to_aux_pf(aux_dev);
--
--	if (WARN_ON(!owner_pf))
--		return -ENODEV;
--
--	INIT_LIST_HEAD(&aux_pf->ptp.port.list_member);
--	mutex_lock(&owner_pf->ptp.ports_owner.lock);
--	list_add(&aux_pf->ptp.port.list_member,
--		 &owner_pf->ptp.ports_owner.ports);
--	mutex_unlock(&owner_pf->ptp.ports_owner.lock);
--
--	return 0;
--}
--
--/**
-- * ice_ptp_auxbus_remove - Remove auxiliary devices from the bus
-- * @aux_dev: PF's auxiliary device
-- */
--static void ice_ptp_auxbus_remove(struct auxiliary_device *aux_dev)
--{
--	struct ice_pf *owner_pf = ice_ptp_aux_dev_to_owner_pf(aux_dev);
--	struct ice_pf *aux_pf = ice_ptp_aux_dev_to_aux_pf(aux_dev);
--
--	mutex_lock(&owner_pf->ptp.ports_owner.lock);
--	list_del(&aux_pf->ptp.port.list_member);
--	mutex_unlock(&owner_pf->ptp.ports_owner.lock);
--}
--
--/**
-- * ice_ptp_auxbus_shutdown
-- * @aux_dev: PF's auxiliary device
-- */
--static void ice_ptp_auxbus_shutdown(struct auxiliary_device *aux_dev)
--{
--	/* Doing nothing here, but handle to auxbus driver must be satisfied */
--}
--
--/**
-- * ice_ptp_auxbus_suspend
-- * @aux_dev: PF's auxiliary device
-- * @state: power management state indicator
-- */
--static int
--ice_ptp_auxbus_suspend(struct auxiliary_device *aux_dev, pm_message_t state)
--{
--	/* Doing nothing here, but handle to auxbus driver must be satisfied */
--	return 0;
--}
--
--/**
-- * ice_ptp_auxbus_resume
-- * @aux_dev: PF's auxiliary device
-- */
--static int ice_ptp_auxbus_resume(struct auxiliary_device *aux_dev)
--{
--	/* Doing nothing here, but handle to auxbus driver must be satisfied */
--	return 0;
--}
--
--/**
-- * ice_ptp_auxbus_create_id_table - Create auxiliary device ID table
-- * @pf: Board private structure
-- * @name: auxiliary bus driver name
-- */
--static struct auxiliary_device_id *
--ice_ptp_auxbus_create_id_table(struct ice_pf *pf, const char *name)
--{
--	struct auxiliary_device_id *ids;
--
--	/* Second id left empty to terminate the array */
--	ids = devm_kcalloc(ice_pf_to_dev(pf), 2,
--			   sizeof(struct auxiliary_device_id), GFP_KERNEL);
--	if (!ids)
--		return NULL;
--
--	snprintf(ids[0].name, sizeof(ids[0].name), "ice.%s", name);
--
--	return ids;
--}
--
--/**
-- * ice_ptp_register_auxbus_driver - Register PTP auxiliary bus driver
-- * @pf: Board private structure
-- */
--static int ice_ptp_register_auxbus_driver(struct ice_pf *pf)
--{
--	struct auxiliary_driver *aux_driver;
--	struct ice_ptp *ptp;
--	struct device *dev;
--	char *name;
--	int err;
--
--	ptp = &pf->ptp;
--	dev = ice_pf_to_dev(pf);
--	aux_driver = &ptp->ports_owner.aux_driver;
--	INIT_LIST_HEAD(&ptp->ports_owner.ports);
--	mutex_init(&ptp->ports_owner.lock);
--	name = devm_kasprintf(dev, GFP_KERNEL, "ptp_aux_dev_%u_%u_clk%u",
--			      pf->pdev->bus->number, PCI_SLOT(pf->pdev->devfn),
--			      ice_get_ptp_src_clock_index(&pf->hw));
--	if (!name)
--		return -ENOMEM;
--
--	aux_driver->name = name;
--	aux_driver->shutdown = ice_ptp_auxbus_shutdown;
--	aux_driver->suspend = ice_ptp_auxbus_suspend;
--	aux_driver->remove = ice_ptp_auxbus_remove;
--	aux_driver->resume = ice_ptp_auxbus_resume;
--	aux_driver->probe = ice_ptp_auxbus_probe;
--	aux_driver->id_table = ice_ptp_auxbus_create_id_table(pf, name);
--	if (!aux_driver->id_table)
--		return -ENOMEM;
--
--	err = auxiliary_driver_register(aux_driver);
--	if (err) {
--		devm_kfree(dev, aux_driver->id_table);
--		dev_err(dev, "Failed registering aux_driver, name <%s>\n",
--			name);
--	}
--
--	return err;
--}
--
--/**
-- * ice_ptp_unregister_auxbus_driver - Unregister PTP auxiliary bus driver
-- * @pf: Board private structure
-- */
--static void ice_ptp_unregister_auxbus_driver(struct ice_pf *pf)
--{
--	struct auxiliary_driver *aux_driver = &pf->ptp.ports_owner.aux_driver;
--
--	auxiliary_driver_unregister(aux_driver);
--	devm_kfree(ice_pf_to_dev(pf), aux_driver->id_table);
--
--	mutex_destroy(&pf->ptp.ports_owner.lock);
--}
--
- /**
-  * ice_ptp_clock_index - Get the PTP clock index for this device
-  * @pf: Board private structure
-@@ -3137,15 +2954,7 @@ static int ice_ptp_init_owner(struct ice_pf *pf)
- 	if (err)
- 		goto err_clk;
- 
--	err = ice_ptp_register_auxbus_driver(pf);
--	if (err) {
--		dev_err(ice_pf_to_dev(pf), "Failed to register PTP auxbus driver");
--		goto err_aux;
--	}
--
- 	return 0;
--err_aux:
--	ptp_clock_unregister(pf->ptp.clock);
- err_clk:
- 	pf->ptp.clock = NULL;
- err_exit:
-@@ -3208,76 +3017,6 @@ static int ice_ptp_init_port(struct ice_pf *pf, struct ice_ptp_port *ptp_port)
- 	}
- }
- 
--/**
-- * ice_ptp_release_auxbus_device
-- * @dev: device that utilizes the auxbus
-- */
--static void ice_ptp_release_auxbus_device(struct device *dev)
--{
--	/* Doing nothing here, but handle to auxbux device must be satisfied */
--}
--
--/**
-- * ice_ptp_create_auxbus_device - Create PTP auxiliary bus device
-- * @pf: Board private structure
-- */
--static int ice_ptp_create_auxbus_device(struct ice_pf *pf)
--{
--	struct auxiliary_device *aux_dev;
--	struct ice_ptp *ptp;
--	struct device *dev;
--	char *name;
--	int err;
--	u32 id;
--
--	ptp = &pf->ptp;
--	id = ptp->port.port_num;
--	dev = ice_pf_to_dev(pf);
--
--	aux_dev = &ptp->port.aux_dev;
--
--	name = devm_kasprintf(dev, GFP_KERNEL, "ptp_aux_dev_%u_%u_clk%u",
--			      pf->pdev->bus->number, PCI_SLOT(pf->pdev->devfn),
--			      ice_get_ptp_src_clock_index(&pf->hw));
--	if (!name)
--		return -ENOMEM;
--
--	aux_dev->name = name;
--	aux_dev->id = id;
--	aux_dev->dev.release = ice_ptp_release_auxbus_device;
--	aux_dev->dev.parent = dev;
--
--	err = auxiliary_device_init(aux_dev);
--	if (err)
--		goto aux_err;
--
--	err = auxiliary_device_add(aux_dev);
--	if (err) {
--		auxiliary_device_uninit(aux_dev);
--		goto aux_err;
--	}
--
--	return 0;
--aux_err:
--	dev_err(dev, "Failed to create PTP auxiliary bus device <%s>\n", name);
--	devm_kfree(dev, name);
--	return err;
--}
--
--/**
-- * ice_ptp_remove_auxbus_device - Remove PTP auxiliary bus device
-- * @pf: Board private structure
-- */
--static void ice_ptp_remove_auxbus_device(struct ice_pf *pf)
--{
--	struct auxiliary_device *aux_dev = &pf->ptp.port.aux_dev;
--
--	auxiliary_device_delete(aux_dev);
--	auxiliary_device_uninit(aux_dev);
--
--	memset(aux_dev, 0, sizeof(*aux_dev));
--}
--
- /**
-  * ice_ptp_init_tx_interrupt_mode - Initialize device Tx interrupt mode
-  * @pf: Board private structure
-@@ -3359,10 +3098,6 @@ void ice_ptp_init(struct ice_pf *pf)
- 	/* Configure initial Tx interrupt settings */
- 	ice_ptp_cfg_tx_interrupt(pf);
- 
--	err = ice_ptp_create_auxbus_device(pf);
--	if (err)
--		goto err;
--
- 	ptp->state = ICE_PTP_READY;
- 
- 	err = ice_ptp_init_work(pf, ptp);
--- 
-2.43.0
+Two lines below, you have this:
 
+	xdp_buff_clear_frags_flag(xdp);
+
+Which clears frags bit in xdp->flags. I.e. since you always clear flags
+here, this call becomes redundant.
+But I'd say that `xdp->flags = 0` really wants to be moved from
+xdp_init_buff() to xdp_prepare_buff().
+
+>  			xdp_prepare_buff(xdp, hard_start, offset, size, !!offset);
+>  #if (PAGE_SIZE > 4096)
+>  			/* At larger PAGE_SIZE, frame_sz depend on len size */
+> @@ -1287,6 +1288,7 @@ int ice_clean_rx_irq(struct ice_rx_ring *rx_ring, int budget)
+>  
+>  		/* populate checksum, VLAN, and protocol */
+>  		ice_process_skb_fields(rx_ring, rx_desc, skb);
+> +		xdp_buff_fixup_skb_offloading(xdp, skb);
+>  
+>  		ice_trace(clean_rx_irq_indicate, rx_ring, rx_desc, skb);
+>  		/* send completed skb up the stack */
+> diff --git a/drivers/net/ethernet/intel/ice/ice_xsk.c b/drivers/net/ethernet/intel/ice/ice_xsk.c
+> index a65955eb23c0..367658acaab8 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_xsk.c
+> +++ b/drivers/net/ethernet/intel/ice/ice_xsk.c
+> @@ -845,8 +845,10 @@ int ice_clean_rx_irq_zc(struct ice_rx_ring *rx_ring, int budget)
+>  	xdp_prog = READ_ONCE(rx_ring->xdp_prog);
+>  	xdp_ring = rx_ring->xdp_ring;
+>  
+> -	if (ntc != rx_ring->first_desc)
+> +	if (ntc != rx_ring->first_desc) {
+>  		first = *ice_xdp_buf(rx_ring, rx_ring->first_desc);
+> +		xdp_init_buff_minimal(first);
+
+xdp_buff_set_size() always clears flags, this is redundant.
+
+> +	}
+>  
+>  	while (likely(total_rx_packets < (unsigned int)budget)) {
+>  		union ice_32b_rx_flex_desc *rx_desc;
+> @@ -920,6 +922,7 @@ int ice_clean_rx_irq_zc(struct ice_rx_ring *rx_ring, int budget)
+>  			break;
+>  		}
+>  
+> +		xdp = first;
+>  		first = NULL;
+>  		rx_ring->first_desc = ntc;
+>  
+> @@ -934,6 +937,7 @@ int ice_clean_rx_irq_zc(struct ice_rx_ring *rx_ring, int budget)
+>  		vlan_tci = ice_get_vlan_tci(rx_desc);
+>  
+>  		ice_process_skb_fields(rx_ring, rx_desc, skb);
+> +		xdp_buff_fixup_skb_offloading(xdp, skb);
+>  		ice_receive_skb(rx_ring, skb, vlan_tci);
+>  	}
+>  
+> diff --git a/include/net/xdp_sock_drv.h b/include/net/xdp_sock_drv.h
+> index 0a5dca2b2b3f..02243dc064c2 100644
+> --- a/include/net/xdp_sock_drv.h
+> +++ b/include/net/xdp_sock_drv.h
+> @@ -181,7 +181,7 @@ static inline void xsk_buff_set_size(struct xdp_buff *xdp, u32 size)
+>  	xdp->data = xdp->data_hard_start + XDP_PACKET_HEADROOM;
+>  	xdp->data_meta = xdp->data;
+>  	xdp->data_end = xdp->data + size;
+> -	xdp->flags = 0;
+> +	xdp_init_buff_minimal(xdp);
+
+Why is this done in the patch prefixed with "ice:"?
+
+>  }
+>  
+>  static inline dma_addr_t xsk_buff_raw_get_dma(struct xsk_buff_pool *pool,
+
+Thanks,
+Olek
