@@ -1,78 +1,87 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2B32591AB90
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 27 Jun 2024 17:38:15 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5DEF691AD4F
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 27 Jun 2024 18:58:09 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 5B80B41695;
-	Thu, 27 Jun 2024 15:38:13 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id DA4326075A;
+	Thu, 27 Jun 2024 16:58:07 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id gtz1en1QPzsW; Thu, 27 Jun 2024 15:38:12 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 0BKDKMvgRdUt; Thu, 27 Jun 2024 16:58:07 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8FC29416B4
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 22C6F60770
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1719502692;
-	bh=oT2fBuGl+npeGzbI5dbDU09LfGHK+3jR87XAzOnLop4=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
+	s=default; t=1719507487;
+	bh=PenMp7vS8XlisAM41TFuzVihkYFaLUEzYIJvh+AQm4M=;
+	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=SNaosgDTwyRVE4m/9YnzyEg7Q2VjY775VVa5PegSowfk2VV2IDXHlBqHE1eEd56OR
-	 5mgMHJK7N4pO68QPE5F3lV6xBQNfycYbW4NXjwxDs3a4U7Mn6rrfkqKEeipn5oazf/
-	 IBEiTOhGo6w9zxNwdf5uvLZN0oDGaAgKOH/fi46x7PoONn/twmNWe2cjD0Wc4gNwZY
-	 StlOQnbz3vGiaJ89FnxVeuKi8dt7kyE3Aq24h8D2uaLYxKM+hT7M0+P4i5KzGIq3Xq
-	 CohQGdjQlGn+TKRkEM+XM6R9a3Zi+KfOkn0Tau+WENivlvIvbZNwqko9yNOVXUTbyA
-	 vNJ1yM79Qkt0w==
+	b=WRr0OqsogZp+PFPry/x2LggM/flGwCDzE2GaJhR4+wQdZZc1hTECxVcfh9ge4dKMG
+	 wqRe/NPxbIbY1hr2ukQZRmXXGCTu3Oo03YwTvnHtZ5LlhEVYjRnqc+scRP8R5HDkN+
+	 IUFOtlcN5DQMprBKc+xctWdNlzAQsHDLqvpwMNKWE+B/981XnKQ269y2b073538a5l
+	 gIbWKkSSHXEZSdJb3w8tV5h6z1btst96RFgdrFW5VCB1SSXulhSHaR8xeJncfWqtR8
+	 5mPdcDjJCQHdnN4ChsKK9ClSi6o5AJ2yBoZfXT4zbrOJCgePGlYanQMNQymbTBf/Kw
+	 nciXBsZRp9eAA==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 8FC29416B4;
-	Thu, 27 Jun 2024 15:38:12 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
+	by smtp3.osuosl.org (Postfix) with ESMTP id 22C6F60770;
+	Thu, 27 Jun 2024 16:58:07 +0000 (UTC)
+X-Original-To: intel-wired-lan@osuosl.org
+Delivered-To: intel-wired-lan@osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id DD7DB1BF3CE
- for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Jun 2024 15:38:10 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 2F29F1BF3E8
+ for <intel-wired-lan@osuosl.org>; Thu, 27 Jun 2024 16:58:05 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id D477182C4D
- for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Jun 2024 15:38:10 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 1918A840BB
+ for <intel-wired-lan@osuosl.org>; Thu, 27 Jun 2024 16:58:05 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id ZBnSHKtTARez for <intel-wired-lan@lists.osuosl.org>;
- Thu, 27 Jun 2024 15:38:09 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=141.14.17.11;
- helo=mx3.molgen.mpg.de; envelope-from=pmenzel@molgen.mpg.de;
+ id rTvTroEKgyp4 for <intel-wired-lan@osuosl.org>;
+ Thu, 27 Jun 2024 16:58:04 +0000 (UTC)
+X-Greylist: delayed 522 seconds by postgrey-1.37 at util1.osuosl.org;
+ Thu, 27 Jun 2024 16:58:03 UTC
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 095CD83F25
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 095CD83F25
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=88.99.2.238;
+ helo=mx0.woks-audio.com; envelope-from=benjamin.steinke@woks-audio.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 7147C84150
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 7147C84150
-Received: from mx3.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 7147C84150
- for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Jun 2024 15:38:07 +0000 (UTC)
-Received: from [141.14.220.45] (g45.guest.molgen.mpg.de [141.14.220.45])
- (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested) (Authenticated sender: pmenzel)
- by mx.molgen.mpg.de (Postfix) with ESMTPSA id 5BBFE61E5FE01;
- Thu, 27 Jun 2024 17:37:51 +0200 (CEST)
-Message-ID: <1039bcb9-c390-495c-b5c5-aca03a5a6ba4@molgen.mpg.de>
-Date: Thu, 27 Jun 2024 17:37:51 +0200
+Received: from mx0.woks-audio.com (mx0.woks-audio.com [88.99.2.238])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 095CD83F25
+ for <intel-wired-lan@osuosl.org>; Thu, 27 Jun 2024 16:58:03 +0000 (UTC)
+From: Benjamin Steinke <benjamin.steinke@woks-audio.com>
+To: Sriram Yagnaraman <sriram.yagnaraman@est.tech>
+Date: Thu, 27 Jun 2024 18:49:16 +0200
+Message-ID: <3253130.2gtjKKCVsX@desktop>
+In-Reply-To: <878qyq9838.fsf@kurt.kurt.home>
+References: <20230804084051.14194-1-sriram.yagnaraman@est.tech>
+ <878qyq9838.fsf@kurt.kurt.home>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: Karol Kolacinski <karol.kolacinski@intel.com>,
- Sergey Temerkhanov <sergey.temerkhanov@intel.com>
-References: <20240627151127.284884-9-karol.kolacinski@intel.com>
- <20240627151127.284884-16-karol.kolacinski@intel.com>
-Content-Language: en-US
-From: Paul Menzel <pmenzel@molgen.mpg.de>
-In-Reply-To: <20240627151127.284884-16-karol.kolacinski@intel.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7Bit
+Content-Type: text/plain; charset="us-ascii"
+X-ClientProxiedBy: EX1.jas.loc (10.100.2.20) To EX1.jas.loc (10.100.2.20)
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=woks-audio.com; 
+ h=cc:cc:content-transfer-encoding:content-type:content-type
+ :date:from:from:in-reply-to:message-id:mime-version:references
+ :reply-to:subject:subject:to:to; s=woks; bh=PenMp7vS8XlisAM41TFu
+ zVihkYFaLUEzYIJvh+AQm4M=; b=lt3HoQarHo9VA33X7Km44EYZTJn6MR3RS5ju
+ rGkivuCCAtTecsXv27sxu/+Ly0vBKd54+wsKHEPeoo/fdlVvYH/+9ZX/69bFcP8+
+ ID4IeSVKR04lRSgCMQMUrJ8gOMNpwEbnpJdy/PB1oG0vsbfs9b1XuDAEhsSQnvom
+ xIX1IbeUQbvJ0HgJaFImNkt4VQQYKfdyWzhaKGgyyfWOn0IjjmDGW/BulTFAEQA3
+ U+TjFRObSC55+3aiU3XOgEwHNeB6F3QuVXMpvQzstyUAqhQEc0YNwWuBMV2PUqnj
+ aiTMcl00EPJzsBoIeA0Ak1obnUSYo70cSa5myqjl6t+sWU1bUw==
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=molgen.mpg.de
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next 7/7] ice: Enable 1PPS out
- from CGU for E825C products
+ dmarc=pass (p=none dis=none)
+ header.from=woks-audio.com
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=woks-audio.com header.i=@woks-audio.com
+ header.a=rsa-sha256 header.s=woks header.b=lt3HoQar
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v4 0/4] igb: Add support for
+ AF_XDP zero-copy
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,123 +94,54 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, anthony.l.nguyen@intel.com,
- intel-wired-lan@lists.osuosl.org, przemyslaw.kitszel@intel.com,
- Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
+Cc: Maciej Fijalkowski <maciej.fijalkowski@intel.com>,
+ Jesper Dangaard Brouer <hawk@kernel.org>,
+ Daniel Borkmann <daniel@iogearbox.net>, intel-wired-lan@osuosl.org,
+ Kurt Kanzenbach <kurt@linutronix.de>,
+ John Fastabend <john.fastabend@gmail.com>, Alexei Starovoitov <ast@kernel.org>,
+ Sriram Yagnaraman <sriram.yagnaraman@est.tech>,
+ =?ISO-8859-1?Q?Bj=F6rn_T=F6pel?= <bjorn@kernel.org>, netdev@vger.kernel.org,
+ Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Magnus Karlsson <magnus.karlsson@intel.com>,
+ Jonathan Lemon <jonathan.lemon@gmail.com>, Jakub Kicinski <kuba@kernel.org>,
+ bpf@vger.kernel.org, Paolo Abeni <pabeni@redhat.com>,
+ "David S . Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Dear Karol, dear Sergey,
-
-
-Thank you for the patch.
-
-
-Am 27.06.24 um 17:09 schrieb Karol Kolacinski:
-> From: Sergey Temerkhanov <sergey.temerkhanov@intel.com>
+On Thursday, 27 June 2024, 09:07:55 CEST, Kurt Kanzenbach wrote:
+> Hi Sriram,
 > 
-> Implement 1PPS signal enabling/disabling in CGU. The amplitude is
-> always the maximum in this implementation
-
-(Please add a dot/period at the end of sentences.)
-
-Could you please elaborate why using the maximum is alright, that means 
-what are the downsides, and what is the alternative approahc.
-
-> Reviewed-by: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
-> Signed-off-by: Sergey Temerkhanov <sergey.temerkhanov@intel.com>
-> Co-developed-by: Karol Kolacinski <karol.kolacinski@intel.com>
-> Signed-off-by: Karol Kolacinski <karol.kolacinski@intel.com>
-> ---
->   drivers/net/ethernet/intel/ice/ice_ptp.c    | 10 ++++++++++
->   drivers/net/ethernet/intel/ice/ice_ptp_hw.c | 21 +++++++++++++++++++++
->   drivers/net/ethernet/intel/ice/ice_ptp_hw.h |  1 +
->   3 files changed, 32 insertions(+)
+> On Fri Aug 04 2023, Sriram Yagnaraman wrote:
+> > The first couple of patches adds helper funcctions to prepare for AF_XDP
+> > zero-copy support which comes in the last couple of patches, one each
+> > for Rx and TX paths.
+> > 
+> > As mentioned in v1 patchset [0], I don't have access to an actual IGB
+> > device to provide correct performance numbers. I have used Intel 82576EB
+> > emulator in QEMU [1] to test the changes to IGB driver.
 > 
-> diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.c b/drivers/net/ethernet/intel/ice/ice_ptp.c
-> index d9ff94a4b293..b97ea2b61e5c 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_ptp.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_ptp.c
-> @@ -4,6 +4,7 @@
->   #include "ice.h"
->   #include "ice_lib.h"
->   #include "ice_trace.h"
-> +#include "ice_cgu_regs.h"
->   
->   static const char ice_pin_names[][64] = {
->   	"SDP0",
-> @@ -1708,6 +1709,15 @@ static int ice_ptp_write_perout(struct ice_hw *hw, unsigned int chan,
->   	/* 0. Reset mode & out_en in AUX_OUT */
->   	wr32(hw, GLTSYN_AUX_OUT(chan, tmr_idx), 0);
->   
-> +	if (ice_is_e825c(hw)) {
-> +		int err;
-> +
-> +		/* Enable/disable CGU 1PPS output for E825C */
-> +		err = ice_cgu_ena_pps_out(hw, !!period);
-> +		if (err)
-> +			return err;
-> +	}
+> I gave this patch series a try on a recent kernel and silicon
+> (i210). There was one issue in igb_xmit_zc(). But other than that it
+> worked very nicely.
 
-Does only E825C products support this feature?
+Hi Kurt and Sriram,
 
-> +
->   	/* 1. Write perout with half of required period value.
->   	 * HW toggles output when source clock hits the TGT and then adds
->   	 * GLTSYN_CLKO value to the target, so it ends up with 50% duty cycle.
-> diff --git a/drivers/net/ethernet/intel/ice/ice_ptp_hw.c b/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
-> index 07ecf2a86742..fa7cf8453b88 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
-> @@ -661,6 +661,27 @@ static int ice_cfg_cgu_pll_e825c(struct ice_hw *hw,
->   	return 0;
->   }
->   
-> +#define ICE_ONE_PPS_OUT_AMP_MAX 3
-> +
-> +/**
-> + * ice_cgu_ena_pps_out - Enable/disable 1PPS output
-> + * @hw: pointer to the HW struct
-> + * @ena: Enable/disable 1PPS output
-> + */
-> +int ice_cgu_ena_pps_out(struct ice_hw *hw, bool ena)
+I recently tried the patches on a 6.1 kernel. On two different devices i210 & 
+i211 I couldn't see any packets being transmitted on the wire. Perhaps caused 
+by the issue in igb_xmit_zc() you mentioned, Kurt? Can you share your findings, 
+please?
 
-Is `ena` short for enable?
+RX seemed to work on first sight.
 
-> +{
-> +	union nac_cgu_dword9 dw9;
-> +	int err;
-> +
-> +	err = ice_read_cgu_reg_e82x(hw, NAC_CGU_DWORD9, &dw9.val);
-> +	if (err)
-> +		return err;
-> +
-> +	dw9.one_pps_out_en = ena;
-> +	dw9.one_pps_out_amp = ena * ICE_ONE_PPS_OUT_AMP_MAX;
-> +	return ice_write_cgu_reg_e82x(hw, NAC_CGU_DWORD9, dw9.val);
-> +}
-> +
->   /**
->    * ice_cfg_cgu_pll_dis_sticky_bits_e82x - disable TS PLL sticky bits
->    * @hw: pointer to the HW struct
-> diff --git a/drivers/net/ethernet/intel/ice/ice_ptp_hw.h b/drivers/net/ethernet/intel/ice/ice_ptp_hw.h
-> index ff98f76969e3..382e84568256 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_ptp_hw.h
-> +++ b/drivers/net/ethernet/intel/ice/ice_ptp_hw.h
-> @@ -331,6 +331,7 @@ extern const struct ice_vernier_info_e82x e822_vernier[NUM_ICE_PTP_LNK_SPD];
->   
->   /* Device agnostic functions */
->   u8 ice_get_ptp_src_clock_index(struct ice_hw *hw);
-> +int ice_cgu_ena_pps_out(struct ice_hw *hw, bool ena);
+> It seems like it hasn't been merged yet. Do you have any plans for
+> continuing to work on this?
 
-If *ena* means “enable”, I do not like this pattern very much, and I’d 
-prefer an enable and a disable function.
+I can offer to do testing and debugging on real hardware if this helps.
 
->   bool ice_ptp_lock(struct ice_hw *hw);
->   void ice_ptp_unlock(struct ice_hw *hw);
->   void ice_ptp_src_cmd(struct ice_hw *hw, enum ice_ptp_tmr_cmd cmd);
+Thanks,
+Benjamin
 
 
-Kind regards,
 
-Paul
+
