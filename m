@@ -1,92 +1,95 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8CA8591A004
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 27 Jun 2024 09:08:08 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4CDA191A125
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 27 Jun 2024 10:10:53 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 135DC419F6;
-	Thu, 27 Jun 2024 07:08:05 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 4A642404D1;
+	Thu, 27 Jun 2024 08:10:52 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id ajyOYcg11tql; Thu, 27 Jun 2024 07:08:04 +0000 (UTC)
+ id n0Xix49aPzBw; Thu, 27 Jun 2024 08:10:51 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1140340918
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 5572E404E0
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1719472084;
-	bh=oH++3i2lIsk8bBpYY8twz2VB+Fk8vfbgsXIXDBlKzfg=;
-	h=From:To:In-Reply-To:References:Date:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=baNyJfo+3NAKAvmjwixeEU+mI/YTgpmZd1sPovwTuUBdGxX7QIsRpxK0gDDjSmnA0
-	 OtCq8bRJRR5UNzYF40maZZnn5yVHX/Td1RYLYULrK1ZlBaTjn5xW1rzjrt1Ajc/wKR
-	 a5pMTbyIANm5ma+drqIX0gaUwJSSjNgd5+M1cXwTcKQz4r9EzX5t37kT8uKnkYVM2C
-	 H0+1vvfk+oBOwSZaRw+1cgR4wSMCK9Zgwx7ultd3h1LNmZiEaQnWOkGCi97I/W9PUx
-	 LhO9SAFbXxL5qy7NAEAlqQ3YPtxuolGpAbFHR+ZQ+2vbPZLtaQeVDQDtVd8x7/RFKv
-	 +8Jdp/OKv39yw==
+	s=default; t=1719475851;
+	bh=3rjHvN75SU41xo72HtyttqbgOwKamJ18ERgXafuwxDU=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=UcJG2iJruWAKNbpec+YTUj+U49mZwA7IxpEldRpGzRcgn0DxcNSxPvvIKGvnytAJt
+	 s+Gij8r77RgWfTMj2BgRoRBcw9mYtUoIfpjtdkWiV/TC+5UN/SBKoBZjUqou41BQim
+	 7MqgmvJsBDkT8eMxxw1SDZAbrwRM5ptRIy4KqQ51hAQjlqx/vDRx1GosuL9yPPpQ69
+	 HFjGgSa+1RDMrmQxrN0WYeWda/mNjHM0mK49PC1vq4+h2evyS8KH3AHbqkQvrQvyj4
+	 cRzl3YawcjPmxVvhuCBGn5WUkHXROP0u56IyS+rROSgxxYyNc1C6cUIQCM0sSWK6rU
+	 KyqjA5UQlxd0A==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 1140340918;
-	Thu, 27 Jun 2024 07:08:04 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 5572E404E0;
+	Thu, 27 Jun 2024 08:10:51 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 03A2A1BF3D8
- for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Jun 2024 07:08:02 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 7690D1BF3D5
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Jun 2024 08:10:48 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id E296E60B24
- for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Jun 2024 07:08:01 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 6E28D83FFB
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Jun 2024 08:10:48 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id WrlpXl-tdMKU for <intel-wired-lan@lists.osuosl.org>;
- Thu, 27 Jun 2024 07:08:01 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=193.142.43.55;
- helo=galois.linutronix.de; envelope-from=kurt@linutronix.de;
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id wVdjde45cuGS for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 27 Jun 2024 08:10:47 +0000 (UTC)
+Received-SPF: None (mailfrom) identity=mailfrom; client-ip=192.198.163.16;
+ helo=mgamail.intel.com; envelope-from=michal.swiatkowski@linux.intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org D178A60B2B
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D178A60B2B
-Received: from galois.linutronix.de (Galois.linutronix.de [193.142.43.55])
- by smtp3.osuosl.org (Postfix) with ESMTPS id D178A60B2B
- for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Jun 2024 07:08:00 +0000 (UTC)
-From: Kurt Kanzenbach <kurt@linutronix.de>
-To: Sriram Yagnaraman <sriram.yagnaraman@est.tech>
-In-Reply-To: <20230804084051.14194-1-sriram.yagnaraman@est.tech>
-References: <20230804084051.14194-1-sriram.yagnaraman@est.tech>
-Date: Thu, 27 Jun 2024 09:07:55 +0200
-Message-ID: <878qyq9838.fsf@kurt.kurt.home>
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 986AC83FFA
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 986AC83FFA
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.16])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 986AC83FFA
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 27 Jun 2024 08:10:47 +0000 (UTC)
+X-CSE-ConnectionGUID: NUnYsuHWQsGLsPHhKwD8HQ==
+X-CSE-MsgGUID: vcYNENGTS7OL9NUNuPoE+g==
+X-IronPort-AV: E=McAfee;i="6700,10204,11115"; a="12275393"
+X-IronPort-AV: E=Sophos;i="6.08,269,1712646000"; d="scan'208";a="12275393"
+Received: from orviesa010.jf.intel.com ([10.64.159.150])
+ by fmvoesa110.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 27 Jun 2024 01:10:46 -0700
+X-CSE-ConnectionGUID: lizahZMRRPquri1pruom5w==
+X-CSE-MsgGUID: JHND//+cSqOpvHuJJ+EZEw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.08,269,1712646000"; d="scan'208";a="44205524"
+Received: from gk3153-dr2-r750-36946.igk.intel.com ([10.102.20.192])
+ by orviesa010.jf.intel.com with ESMTP; 27 Jun 2024 01:10:46 -0700
+From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Thu, 27 Jun 2024 10:10:43 +0200
+Message-ID: <20240627081043.46211-1-michal.swiatkowski@linux.intel.com>
+X-Mailer: git-send-email 2.42.0
 MIME-Version: 1.0
-Content-Type: multipart/signed; boundary="=-=-=";
- micalg=pgp-sha512; protocol="application/pgp-signature"
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linutronix.de; s=2020; t=1719472077;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=oH++3i2lIsk8bBpYY8twz2VB+Fk8vfbgsXIXDBlKzfg=;
- b=uq+sF3pBgaoRM1KAEuhWD4ANZOE5EmtumvJPqINFf8wRkCRiAaZWP0lEDg2oOn2KmIuUyt
- hCC8Q0sa9j1u3d28mLw9FJ29xy8B/HNVqIQH1gbTHcK+pX607EYkSEJrXwIQqjwSPhXg9G
- 9rEyZIC2RxRNLVjKO7DSjkp7Os2osAN5bVIAnvR8fZkSvexNRW4kOLUvS4CwqTSmLcl91X
- LVKVSs982M/ruJShoNIr5lrg0DKW7kHGytfJ7CtZwlKMD4aNQKkHG/UirSupe2I7AX+2YW
- Cue3AsPNQO4MQP1PQK+xa73ex3hHOOVwJg+bCWPjZ6LOnPJERTdnKgXs/d5aiA==
-X-Mailman-Original-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed;
- d=linutronix.de; s=2020e; t=1719472077;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=oH++3i2lIsk8bBpYY8twz2VB+Fk8vfbgsXIXDBlKzfg=;
- b=t7D9ry0IQqOqjO2huAHD3lXcIjS9/CtH0DdLPUsPGLNJ5NzxezMm+qe/VHQPcCWJvezEzp
- 6r2BVtcamQrwuOBQ==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=linutronix.de
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key, unprotected) header.d=linutronix.de
- header.i=@linutronix.de header.a=rsa-sha256 header.s=2020 header.b=uq+sF3pB; 
- dkim=pass header.d=linutronix.de header.i=@linutronix.de
- header.a=ed25519-sha256 header.s=2020e header.b=t7D9ry0I
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v4 0/4] igb: Add support for
- AF_XDP zero-copy
+Content-Transfer-Encoding: 8bit
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1719475847; x=1751011847;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=zhGHhB7Hpqx6jgn4cBj1RmJNXvPv59skzHuArxqvFdE=;
+ b=cCLOJm/WUGoq+yR+NR2jo6+9l22OPiPy586AbxS/CUjlXjnVfgb8dlqB
+ Tnko37srDvG/B3/wPE0JVKmsnIynu0qWgdAikqWkX/wvI+IaQy2yNg0de
+ wOdVp5szONHIzG9yjuuwCTtGnv035MZN5GJoGmp3/wl2glnTAIeczgrZp
+ pSkPOxLeGaXI3O3bOYMyXcamwQvC0USn/VROCA/HRG/xF6NuIGmCBhi+f
+ JfnP9OLVlpvLXx5z4/zh3bDbkG3WjXwcqPu+xqxgu6oY+uzYFrWmOogN9
+ aDSjyvSvoMc62/oYeuoO4q+vd06Ogs4jc65hu13FEX4SlJ8kN5Ls1AR15
+ w==;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dmarc=none (p=none dis=none)
+ header.from=linux.intel.com
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=cCLOJm/W
+Subject: [Intel-wired-lan] [iwl-next v1] ice: update representor after SF
+ VSI config
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,63 +102,35 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Maciej Fijalkowski <maciej.fijalkowski@intel.com>,
- Jesper Dangaard Brouer <hawk@kernel.org>,
- Daniel Borkmann <daniel@iogearbox.net>, netdev@vger.kernel.org,
- Jonathan Lemon <jonathan.lemon@gmail.com>,
- John Fastabend <john.fastabend@gmail.com>, Alexei Starovoitov <ast@kernel.org>,
- =?utf-8?B?QmrDtnJuIFTDtnBlbA==?= <bjorn@kernel.org>,
- Eric Dumazet <edumazet@google.com>,
- Sriram Yagnaraman <sriram.yagnaraman@est.tech>,
- Tony Nguyen <anthony.l.nguyen@intel.com>, Jakub Kicinski <kuba@kernel.org>,
- intel-wired-lan@lists.osuosl.org, bpf@vger.kernel.org,
- Paolo Abeni <pabeni@redhat.com>, "David S . Miller" <davem@davemloft.net>,
- Magnus Karlsson <magnus.karlsson@intel.com>
+Cc: anthony.l.nguyen@intel.com
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
---=-=-=
-Content-Type: text/plain
+VSI for subfunction is only allocated when port representor is created.
+The VSI id isn't correct at this state. Update the representor with
+correct VSI id after the VSI is configured.
 
-Hi Sriram,
+Signed-off-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+---
+It should be squashed with:
+8a469e1a1cf9 ("ice: create port representor for SF")
+---
+ drivers/net/ethernet/intel/ice/ice_sf_eth.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-On Fri Aug 04 2023, Sriram Yagnaraman wrote:
-> The first couple of patches adds helper funcctions to prepare for AF_XDP
-> zero-copy support which comes in the last couple of patches, one each
-> for Rx and TX paths.
->
-> As mentioned in v1 patchset [0], I don't have access to an actual IGB
-> device to provide correct performance numbers. I have used Intel 82576EB
-> emulator in QEMU [1] to test the changes to IGB driver.
+diff --git a/drivers/net/ethernet/intel/ice/ice_sf_eth.c b/drivers/net/ethernet/intel/ice/ice_sf_eth.c
+index 73bb9c5d273d..abd74f30dabc 100644
+--- a/drivers/net/ethernet/intel/ice/ice_sf_eth.c
++++ b/drivers/net/ethernet/intel/ice/ice_sf_eth.c
+@@ -125,6 +125,8 @@ static int ice_sf_dev_probe(struct auxiliary_device *adev,
+ 	}
+ 	vsi->sf = dyn_port;
+ 
++	ice_eswitch_update_repr(&dyn_port->repr_id, vsi);
++
+ 	err = ice_devlink_create_sf_dev_port(sf_dev);
+ 	if (err) {
+ 		dev_err(dev, "Cannot add ice virtual devlink port for subfunction");
+-- 
+2.42.0
 
-I gave this patch series a try on a recent kernel and silicon
-(i210). There was one issue in igb_xmit_zc(). But other than that it
-worked very nicely.
-
-It seems like it hasn't been merged yet. Do you have any plans for
-continuing to work on this?
-
-Thanks,
-Kurt
-
---=-=-=
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQJHBAEBCgAxFiEEvLm/ssjDfdPf21mSwZPR8qpGc4IFAmZ9D8sTHGt1cnRAbGlu
-dXRyb25peC5kZQAKCRDBk9HyqkZzgtk1D/9OqvWbBa+S5bnIkUNbd++vKMPUyIcG
-AQW5y4scHbgaLQN9WkM4iokP7wNf1ckH5AO9pzCNPOZqrEqxLtALuxoMT2wcRM1K
-UL0cOlqRrUaVXAN9gge2bbZuMxJqOt2T+Q8iI1TF/iquhGtFmJU/rrQeLbryIPsS
-ZfGn0pAtXwnnLmWXmdLXqieKpoGkXB1T/A6ccOYl3uZ2SatMMsfUMl0AHLH22Bau
-DR/EoL8ddUgq/vMTNMIBdtk/4ZbWEueB0gL6lbgFt427nnHf/ZgDPM5VJgDDBECY
-iVztnt7WOAUs2NTpFr383aWqBt8JWyRSXi9WN2Rqw7IdU3Y6MoK/3UZDyXMCh41R
-uwzC1+UcVWclwjPgcH2hsKF+KZuXVvLHX6GtQQ4ePikoVyRGVB31+JmHaaYOv6Ap
-gi/F4aikSQ4PD4QYo+JSzBWJajLUK1dwCIQTCq2n6PqA+qTJmmElPNVom/lJV97v
-nqL0sEoenzKtO3urA5IbMYFOUHpxBOnbQ7OTIlo0apEj0aaTMNMFYF1vvvWVYK9S
-gdP5u76lIVsQe6ahPLQ5fzh0+ie0vMFejPsRaY9L+yzzzSgxhHsDxsDc5t/QquI+
-iVGxH+YL1+9IFNFue3GdxEwPmF6965F/bts+uQiyA+8nw4WU0fghk2clByfh9+Wm
-V7t9jdQRHFiZ+w==
-=8GNQ
------END PGP SIGNATURE-----
---=-=-=--
