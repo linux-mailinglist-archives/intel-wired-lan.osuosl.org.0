@@ -1,88 +1,88 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id C3F7E91BEC0
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 28 Jun 2024 14:40:37 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id F069291BEC6
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 28 Jun 2024 14:41:28 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 82C1741A45;
-	Fri, 28 Jun 2024 12:40:35 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 25F6C41C5E;
+	Fri, 28 Jun 2024 12:41:27 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 9boktA5e3rDK; Fri, 28 Jun 2024 12:40:34 +0000 (UTC)
+ id uvKw_B4CYSaP; Fri, 28 Jun 2024 12:41:26 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C263F419BE
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 56B1E41B8B
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1719578434;
-	bh=hAdN4fal5/ROnysKdbyjRoVMwjY4rWM/n7R4cTHS3VQ=;
+	s=default; t=1719578486;
+	bh=bGI5kI1dZO+9WD+QKVBmyREjDp/LmO9uo4EDXSRNNuI=;
 	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=yRJBKjulWJvIKWTwectSMdyRr35nMc2PkRDdau9KqtYy06I4rsUyTwuWmHIeU2KBV
-	 qOFOBztVoLAGOKCTfCTCa6cOEIH/lbsrGnFbpf8kp/VacdS9bvj87d0LDeI9XJAr/1
-	 jw1SWDB9F4iBWVF7sqvyOJ9ZnDMRKcJaIRK2TRFGkx0bWxVrMwXDGY5v8ItKjibIoG
-	 3vGgmWCGYE9RsQWNlW5g6h3T/7G/au00O4/hWyL+muQKVrJAChJTu2sEL0Q6C3trq7
-	 vYj20BTjLLjYRE+sv6oEpPqxhgvFJq4owmHmcT0d8+iIESmGzRnTUlpnB6d5l6NoNo
-	 22PzTfil8MdeA==
+	b=cC+MTGLATszFgZ7wMJNsd8cPDDiqdtWk968YBHEpJDjB3W7eFUOBgRhAOp31RvOiB
+	 rZ6qa4pf3ZQsLJXXmeJBS+dZ/T/xGpsJna0YKNVMDXBDvdNyG5a9RqvYEFwZ8G6aMq
+	 gkPKAs2mLV6LN0RSeBAPnQxA+xbACUyb1yWCWo99PtpdexcSvKFokiADAuIkgmhbeR
+	 6ZlSYaaJE2hB16kXoDt/EAllQZnf4a0ctUfX0ZbN9dzCAUmt/kzHKNrIiQbsnIIBI1
+	 mcIE9pLRChayIdM1nqJrqZr/UeLSfkhXkHD3xRD2HrxK6uLFfxKrQV5jMpBOzaWs6d
+	 CkYH87DddWYQg==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id C263F419BE;
-	Fri, 28 Jun 2024 12:40:34 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 56B1E41B8B;
+	Fri, 28 Jun 2024 12:41:26 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 2711B1BF41C
- for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Jun 2024 12:40:32 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 6F2EA1BF41C
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Jun 2024 12:41:24 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 0E87240319
- for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Jun 2024 12:40:32 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 5949F84537
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Jun 2024 12:41:24 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id t_maMb6eUMPj for <intel-wired-lan@lists.osuosl.org>;
- Fri, 28 Jun 2024 12:40:31 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=139.178.84.217;
- helo=dfw.source.kernel.org; envelope-from=horms@kernel.org;
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 5H-H3Q5uu6p9 for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 28 Jun 2024 12:41:23 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=145.40.73.55;
+ helo=sin.source.kernel.org; envelope-from=horms@kernel.org;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 506E4401D2
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 506E4401D2
-Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 506E4401D2
- for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Jun 2024 12:40:31 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 80BAD83F1B
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 80BAD83F1B
+Received: from sin.source.kernel.org (sin.source.kernel.org [145.40.73.55])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 80BAD83F1B
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Jun 2024 12:41:23 +0000 (UTC)
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by dfw.source.kernel.org (Postfix) with ESMTP id 192016206E;
- Fri, 28 Jun 2024 12:40:30 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9934CC116B1;
- Fri, 28 Jun 2024 12:40:28 +0000 (UTC)
-Date: Fri, 28 Jun 2024 13:40:26 +0100
+ by sin.source.kernel.org (Postfix) with ESMTP id 13811CE3C40;
+ Fri, 28 Jun 2024 12:41:18 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2AB53C32781;
+ Fri, 28 Jun 2024 12:41:16 +0000 (UTC)
+Date: Fri, 28 Jun 2024 13:41:14 +0100
 From: Simon Horman <horms@kernel.org>
 To: Marcin Szycik <marcin.szycik@linux.intel.com>
-Message-ID: <20240628124026.GA783093@kernel.org>
+Message-ID: <20240628124114.GB783093@kernel.org>
 References: <20240618141157.1881093-1-marcin.szycik@linux.intel.com>
- <20240618141157.1881093-2-marcin.szycik@linux.intel.com>
+ <20240618141157.1881093-3-marcin.szycik@linux.intel.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20240618141157.1881093-2-marcin.szycik@linux.intel.com>
+In-Reply-To: <20240618141157.1881093-3-marcin.szycik@linux.intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1719578429;
- bh=tUiYCUBWNA88EcOXBErIcA7jZ2sP1XfpQ1tQHvHycmY=;
+ d=kernel.org; s=k20201202; t=1719578477;
+ bh=a6Qym+vvVigvz9wSCKdjQVjJh+CINPYOgGV9UfvA0zE=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=MwNoLlz4J1a6l3MJerg/3PZN9r+9D1QSHJSGli/Dr60oKuT7DO6pXThvnmoFCwv7Y
- Czp+YYunoBmYoWmx8O6QFAzd/xuAFtccU4OKkWGUsO10Kxvqf86uhziBopvqfHbXJ9
- sxch8kySmMMiomE7GzWasOl8+o9Ap57YrMLlByNwGguLdhYBPzjI9AKFaZO8OErRR6
- 2KnuXFPKYP1FAH6arzNS5DH6+LZ4tN4/aAe895TEFS2/WOHmgVJeAigkWtMjSoPzMa
- usxBW2TePiXVnoRuI19+9Jd7XuV7EWGQF3n4yY2fGPgKYK4OpnKoISDOglYQfYhkhW
- 65m9+RBc4EcdQ==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ b=Uh10G45hZiThZvzPGOU88G5I/B5W8k633WgvCJVczL9PP/6JcPzGbjhNSXxAihSdr
+ lWeiFIkd6Zk8/3IGCI++D864Rv+/EUptutOKoBEjrnf19EA4FxTo5rmG5t+R3N3rR6
+ 6AfhW3xh4PPZi065JQ2tjZbjV76dbkUIJhiczK9OHofuoZ51ZDPd7/aY2IkFHty/ok
+ GjohtU8+yShZ6cAj/rINxeEU7lA80b+H+65m7GsWFHd3bflB9cAbip4mqZsiNNaK3u
+ zcPZ8d0GIbEbmR29cfw6KZhwltc9bAqiaWHjvm2zPnqKeTA/7aQyqXCsTYok3INF+t
+ qlLEQzjc5fbCQ==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20201202 header.b=MwNoLlz4
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next 1/6] ice: Remove unused
- struct ice_prot_lkup_ext members
+ header.s=k20201202 header.b=Uh10G45h
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next 2/6] ice: Remove reading all
+ recipes before adding a new one
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,13 +100,15 @@ Cc: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, Jun 18, 2024 at 04:11:52PM +0200, Marcin Szycik wrote:
-> Remove field_off as it's never used.
+On Tue, Jun 18, 2024 at 04:11:53PM +0200, Marcin Szycik wrote:
+> From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
 > 
-> Remove done bitmap, as its value is only checked and never assigned.
-> Reusing sub-recipes while creating new root recipes is currently not
-> supported in the driver.
+> The content of the first read recipe is used as a template when adding a
+> recipe. It isn't needed - only prune index is directly set from there. Set
+> it in the code instead. Also, now there's no need to set rid and lookup
+> indexes to 0, as the whole recipe buffer is initialized to 0.
 > 
+> Signed-off-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
 > Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
 > Signed-off-by: Marcin Szycik <marcin.szycik@linux.intel.com>
 
