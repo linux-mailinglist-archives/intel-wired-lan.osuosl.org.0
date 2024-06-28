@@ -1,88 +1,87 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id E58DD91BED9
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 28 Jun 2024 14:44:38 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2C38F91BF1B
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 28 Jun 2024 14:59:23 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 0638840277;
-	Fri, 28 Jun 2024 12:44:37 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id C93BD407AD;
+	Fri, 28 Jun 2024 12:59:21 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id mhYEvyiHuOGo; Fri, 28 Jun 2024 12:44:36 +0000 (UTC)
+ id 7D3Kd6tftmWr; Fri, 28 Jun 2024 12:59:20 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2E6394028B
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A23C041965
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1719578676;
-	bh=mUUrKdcXbjA9jCFyOMjqlTLvJDSohWihFgYpynFUZNw=;
+	s=default; t=1719579560;
+	bh=J338mc73VC21+fTeIB6tZ9k5ubEFoMg1X3Fw3Fo5poI=;
 	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=A9JAe4W8HW+flOUe/RzEW6tw+eZ7/DPwGvyOMVxFCd7HCFkk0YHrCL+mRhMwK+hI9
-	 +7lb1dS9mJoay84V0ik4Z3o3UqBpoLNRJBR6slceMNZkeKrOBby1ihtdOEi89qv94X
-	 g1xl6weFIkZMcLFO7uLko0edcVaLS99EVSVIzOCUXPl/4LFbZTjGf05bMMhdRuQxvI
-	 H01Z3FRvBhPWvjotbEek5SjQ059tMPPAWDAdluO0wET2TKQPowv7SsheSMj5QwtMcZ
-	 Je5ul3qZhyN/ts4zbWa7CgeHtXJnIJvuN4Uyh2fhNW2EQLOjNEfPOTfQhwOvF5ZvNP
-	 ixSXhVyG7PWkA==
+	b=AD92nMWp3fde6+ToF029iZ11oTNA0Y0etts3jxnEo8TZuCx7L++yOuNX1O7swvCLu
+	 wuAxnetpF9P48BZHwHXdlYLwYCRaSqfDeeqZFvwlh2oepTEVwmGFqfcLaQBPgwmWqM
+	 wfcjVIVryJ7ZLUwu/KW9x2QdmCmf6qPVtBquy7JakkDxHhpi3EJ9h/b8+y41UHFG1/
+	 8sPdWmja+8MK/2IsdMCRUPoEKWoJ9P3vC9uIWGNzcOgiP/IXE57TGUZru8UAB97HyO
+	 IGB/kj9EJIfj9f4jhcH9alp01y7HqUWpdhpEjz7w6rCdXsr6ItUk3UAkGgiheq0NUo
+	 9/Mii1ip4M2jA==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 2E6394028B;
-	Fri, 28 Jun 2024 12:44:36 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id A23C041965;
+	Fri, 28 Jun 2024 12:59:20 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 4FCF11BF41C
- for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Jun 2024 12:44:34 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 32D771BF20D
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Jun 2024 12:59:19 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 3CB9640374
- for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Jun 2024 12:44:34 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 1BE1D80B35
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Jun 2024 12:59:19 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id XKtUW-qKBXXe for <intel-wired-lan@lists.osuosl.org>;
- Fri, 28 Jun 2024 12:44:33 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id uxbCI7lU2Eay for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 28 Jun 2024 12:59:18 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2604:1380:40e1:4800::1; helo=sin.source.kernel.org;
+ client-ip=2604:1380:4641:c500::1; helo=dfw.source.kernel.org;
  envelope-from=horms@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org EA8F7401D2
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org EA8F7401D2
-Received: from sin.source.kernel.org (sin.source.kernel.org
- [IPv6:2604:1380:40e1:4800::1])
- by smtp2.osuosl.org (Postfix) with ESMTPS id EA8F7401D2
- for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Jun 2024 12:44:32 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 3165580B2A
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3165580B2A
+Received: from dfw.source.kernel.org (dfw.source.kernel.org
+ [IPv6:2604:1380:4641:c500::1])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 3165580B2A
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 28 Jun 2024 12:59:18 +0000 (UTC)
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by sin.source.kernel.org (Postfix) with ESMTP id DF204CE3BDC;
- Fri, 28 Jun 2024 12:44:29 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 05520C116B1;
- Fri, 28 Jun 2024 12:44:27 +0000 (UTC)
-Date: Fri, 28 Jun 2024 13:44:25 +0100
+ by dfw.source.kernel.org (Postfix) with ESMTP id 5B12F62162;
+ Fri, 28 Jun 2024 12:59:17 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A098EC116B1;
+ Fri, 28 Jun 2024 12:59:14 +0000 (UTC)
+Date: Fri, 28 Jun 2024 13:59:12 +0100
 From: Simon Horman <horms@kernel.org>
-To: Marcin Szycik <marcin.szycik@linux.intel.com>
-Message-ID: <20240628124425.GE783093@kernel.org>
-References: <20240618141157.1881093-1-marcin.szycik@linux.intel.com>
- <20240618141157.1881093-7-marcin.szycik@linux.intel.com>
+To: Kurt Kanzenbach <kurt@linutronix.de>
+Message-ID: <20240628125912.GF783093@kernel.org>
+References: <20240611-igc_irq-v2-1-c63e413c45c4@linutronix.de>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20240618141157.1881093-7-marcin.szycik@linux.intel.com>
+In-Reply-To: <20240611-igc_irq-v2-1-c63e413c45c4@linutronix.de>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1719578669;
- bh=VpWvE7L2aKZqcvK+G9gnA0RyvcenJo16xdZeTu4gR8w=;
+ d=kernel.org; s=k20201202; t=1719579557;
+ bh=AALzB7Je+dbwh9aqhaMZgSkeBrDEJ4ks1mzPpaq1yQU=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=JdFz05vro1Q9b8sLcUoMuIllh0LQS76ALOWG62Pl03/CUMlvohDDg4ib0iqN3dlqK
- q3hCMsyE9jcOtY6pz6BGiYx5rxBO2qO/AHrBW76nbBmZGrsPzi4m9DiLfUE0lNoyod
- 8B4U2cNud7pkBkh91rVds4cZ7ovMqe5IMcwa+pY1J2ykxUG/bOHpNq4GVGj9cvp+i0
- 3Q+QXvGhPDetH3efR+bkQsM2qIssUNCgsveK6m6xBRXyFlajudLk3k0f5s7u4R2moE
- uPGtvbtfYtPE/msAJaswYH5l56vc6tn2ix888hXxtV9O6qnLGoD4xJWD/qtyK32wPs
- BRyuI0PWaZTBg==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ b=DDwFXP0Jezjh6HwRwWyN4HiJxGhb1hSRwHt/ZYzmyzmOCyrPwU/rNrckD4px3ywZd
+ E8odmGUnqgblI3gL/sdST1uqbx785TAEVx98PMpcJIwajUWnwnNy5io8K4FjqaZzh3
+ q7N3prYya54Qn95j3rXkErV9SKsVK1a23VS1VV9JXms5ID3YTy5TvnsEBu+bdVWdGY
+ xhQCOLU+Cd1I2HZ1HUlg7ZE/g/4OVyLO7tuNZogKO7k4wF3fEDY/wALEmkRoctDL9H
+ SidVEi+c01SgPB7yBsR0uqmON+sGOUc6WFtEY0lXT2QeKRNh6ewq+bznFm8KTCk2Pb
+ uI5N+xPfkNc5w==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=JdFz05vr
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next 6/6] ice: Remove unused
- members from switch API
+ header.a=rsa-sha256 header.s=k20201202 header.b=DDwFXP0J
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v2] igc: Get rid of spurious
+ interrupts
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,21 +94,40 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
- przemyslaw.kitszel@intel.com, michal.swiatkowski@linux.intel.com
+Cc: Maciej Fijalkowski <maciej.fijalkowski@intel.com>,
+ Vinicius Costa Gomes <vinicius.gomes@intel.com>,
+ intel-wired-lan@lists.osuosl.org,
+ Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
+ Eric Dumazet <edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
+ netdev@vger.kernel.org, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, Jun 18, 2024 at 04:11:57PM +0200, Marcin Szycik wrote:
-> Remove several members of struct ice_sw_recipe and struct
-> ice_prot_lkup_ext. Remove struct ice_recp_grp_entry and struct
-> ice_pref_recipe_group, since they are now unused as well.
+On Fri, Jun 21, 2024 at 08:56:30AM +0200, Kurt Kanzenbach wrote:
+> When running the igc with XDP/ZC in busy polling mode with deferral of hard
+> interrupts, interrupts still happen from time to time. That is caused by
+> the igc task watchdog which triggers Rx interrupts periodically.
 > 
-> All of the deleted members were only written to and never read, so it's
-> pointless to keep them.
+> That mechanism has been introduced to overcome skb/memory allocation
+> failures [1]. So the Rx clean functions stop processing the Rx ring in case
+> of such failure. The task watchdog triggers Rx interrupts periodically in
+> the hope that memory became available in the mean time.
 > 
-> Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-> Signed-off-by: Marcin Szycik <marcin.szycik@linux.intel.com>
+> The current behavior is undesirable for real time applications, because the
+> driver induced Rx interrupts trigger also the softirq processing. However,
+> all real time packets should be processed by the application which uses the
+> busy polling method.
+> 
+> Therefore, only trigger the Rx interrupts in case of real allocation
+> failures. Introduce a new flag for signaling that condition.
+> 
+> [1] - https://git.kernel.org/pub/scm/linux/kernel/git/tglx/history.git/commit/?id=3be507547e6177e5c808544bd6a2efa2c7f1d436
+> 
+> Reviewed-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
+> Acked-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
+> Acked-by: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+> Signed-off-by: Kurt Kanzenbach <kurt@linutronix.de>
 
 Reviewed-by: Simon Horman <horms@kernel.org>
 
