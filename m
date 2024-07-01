@@ -1,84 +1,88 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1847B91DA16
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  1 Jul 2024 10:37:14 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id B385391DB13
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  1 Jul 2024 11:08:29 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id BC78381CC3;
-	Mon,  1 Jul 2024 08:37:12 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id CFAB180C9D;
+	Mon,  1 Jul 2024 09:08:26 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 8vKo7EMOjhmq; Mon,  1 Jul 2024 08:37:12 +0000 (UTC)
+ id Duj_yXT2NyIg; Mon,  1 Jul 2024 09:08:26 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9364081CDB
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 286CE80C91
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1719823031;
-	bh=Gt7qJuS9uwl/rMafs3pYI+eKeN9okFIyFoV1L1Q3JMM=;
-	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=YrZEnDYrJ4f3TQ6WYGQvISj9GOLFhhQQA1KY46EVn9Jfpsdj6gQJm+EZYIDBH7egu
-	 62gzjXtC3jscPiE9I+CoeGRX0gyDWyg48Y7Bw5MeYL2QSAYLUQrPt98OblIUYvW8cj
-	 VSonYL2oZRzUDIcIE2NhIx8UkXR+muevezkKSA2VjdMpY75KASqXJdCsAm8Chq4ckO
-	 dsc7TCFzWgfC6QiCjE0QugYTWrwHJm5FxpDWXWyXXIPYa5KDAqHp8YOE9Od0h7giB4
-	 hXoOBKkvF5sldLxh25siEazLff4CSocRQpaMbDnVmiX3bY473tai0Ub+11v8CKP195
-	 G3Io3r1oqxnBg==
+	s=default; t=1719824906;
+	bh=dwokcwK71RRmLgOgIN0UqhDmh4xnBwx2r0rsxxx2TgE=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=5QV5pHdrcpuH3rcMFwsoSJ9PBGFMY3MpdNvdnQqxNKoHdSvKQJYRW6/A05vpD5ALD
+	 8GCm74fAb2vzXLOwv2rLOYOMufBnRNB8WiyYAjP1AO+lH1qb9dL2PCPNAChwuxFXkP
+	 E50gP7s7w9Z3QOze2beux96Ib0qNU/hHYbp6vwT1pkpgooVBtmCmFksiStUOa3p25u
+	 m5vyvsU2PorJMwEuxjhU3Q8pB9Jeue5FD1YVue7bk91IgWf62jm1yfoe6hdtldtVc0
+	 eiPa5OtmFzI0ADM9gCCQ/LUkMrnjXEA9haQu46mi9AfOPV3UdE+wmIvlfTITbt+iZv
+	 iFb0QzeOIRvNA==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 9364081CDB;
-	Mon,  1 Jul 2024 08:37:11 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 286CE80C91;
+	Mon,  1 Jul 2024 09:08:26 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id D317F1BF2F9
- for <intel-wired-lan@lists.osuosl.org>; Mon,  1 Jul 2024 08:37:09 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 2D25F1BF35C
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  1 Jul 2024 09:08:24 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id CAF0E409EE
- for <intel-wired-lan@lists.osuosl.org>; Mon,  1 Jul 2024 08:37:09 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 1895B409F2
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  1 Jul 2024 09:08:24 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 1dBgogJ4YUUL for <intel-wired-lan@lists.osuosl.org>;
- Mon,  1 Jul 2024 08:37:08 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.12;
- helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 44097409E4
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 44097409E4
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.12])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 44097409E4
- for <intel-wired-lan@lists.osuosl.org>; Mon,  1 Jul 2024 08:37:06 +0000 (UTC)
-X-CSE-ConnectionGUID: j7Hu33qXQOmzwSVaLRUV9w==
-X-CSE-MsgGUID: un8ANIY4QnqDvXx+UsQJXA==
-X-IronPort-AV: E=McAfee;i="6700,10204,11119"; a="28327467"
-X-IronPort-AV: E=Sophos;i="6.09,175,1716274800"; d="scan'208";a="28327467"
-Received: from orviesa001.jf.intel.com ([10.64.159.141])
- by orvoesa104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 01 Jul 2024 01:37:07 -0700
-X-CSE-ConnectionGUID: Ivfgr3nxTE2Xq+F3RNVpKw==
-X-CSE-MsgGUID: ZTCVD7rTRnenZoF3YjNzPQ==
+ id uW3oR364-05y for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  1 Jul 2024 09:08:23 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.9;
+ helo=mgamail.intel.com; envelope-from=wojciech.drewek@intel.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 1C5F3409F0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1C5F3409F0
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.9])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 1C5F3409F0
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  1 Jul 2024 09:08:22 +0000 (UTC)
+X-CSE-ConnectionGUID: RRjvlx5oR1eCIUPmdi5PSA==
+X-CSE-MsgGUID: 2SIQhDIhQRmAnpMTDxTLrg==
+X-IronPort-AV: E=McAfee;i="6700,10204,11119"; a="27619852"
+X-IronPort-AV: E=Sophos;i="6.09,175,1716274800"; d="scan'208";a="27619852"
+Received: from fmviesa006.fm.intel.com ([10.60.135.146])
+ by fmvoesa103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 01 Jul 2024 02:08:13 -0700
+X-CSE-ConnectionGUID: a+j0va57ThSCMnb84GNGxg==
+X-CSE-MsgGUID: JgXYfGS6SCuOGaCyI9jnTg==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.09,175,1716274800"; d="scan'208";a="82977525"
-Received: from lkp-server01.sh.intel.com (HELO 68891e0c336b) ([10.239.97.150])
- by orviesa001.jf.intel.com with ESMTP; 01 Jul 2024 01:37:05 -0700
-Received: from kbuild by 68891e0c336b with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1sOCX0-000Mbs-2U
- for intel-wired-lan@lists.osuosl.org; Mon, 01 Jul 2024 08:37:02 +0000
-Date: Mon, 01 Jul 2024 16:36:22 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <202407011621.LMarQFQP-lkp@intel.com>
-User-Agent: s-nail v14.9.24
+X-IronPort-AV: E=Sophos;i="6.09,175,1716274800"; d="scan'208";a="45281920"
+Received: from irvmail002.ir.intel.com ([10.43.11.120])
+ by fmviesa006.fm.intel.com with ESMTP; 01 Jul 2024 02:08:11 -0700
+Received: from rozewie.igk.intel.com (rozewie.igk.intel.com [10.211.8.69])
+ by irvmail002.ir.intel.com (Postfix) with ESMTP id 512E4125BB;
+ Mon,  1 Jul 2024 10:08:10 +0100 (IST)
+From: Wojciech Drewek <wojciech.drewek@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Mon,  1 Jul 2024 11:05:46 +0200
+Message-Id: <20240701090546.31243-1-wojciech.drewek@intel.com>
+X-Mailer: git-send-email 2.40.1
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1719823029; x=1751359029;
- h=date:from:to:subject:message-id;
- bh=akY4hTsS8rPog5AgDH2LOg7MR0UKwKa0ZLmkFBVFGeM=;
- b=LeLh9GDijWWwoUpK4BFA2mvw8oQEYdP7Sl6MKBRwSa87PcfGyL9w4V3H
- F69WFJYkI5cML1NJT4MELBJvpQqs6zaz/c7weZ7L61Om4NoN6UmnkZJWq
- /0n5SyWm2SOySOSIGyUlgysQsPtrS9W/yt7QudpJFfm0CC7rr6SegkV+K
- h/wcDYnamEjLaPlQdNNdZyd+bRK3ROUZi46zO/ZlmhEKElRlefyqVonQm
- RG+6N9SYdhz2V6EzLwUZBfFY6uAeF9qkOa7VRmpdxX3UMwAk/b5mtrTeR
- fkclKFBfdqX7SCDvvB6ML/q5VsCnOA2ZHo0G0nBW77cFoP6VliTvpgqun
+ t=1719824903; x=1751360903;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=YzoctkienM/RHSl/MxnQWSeBZnA19kNmBR99veARymE=;
+ b=CFPTWS0IlB++TgNzxvQQFo330LIewhOXx6K5JwS1FpZiagPO+oDVOFpJ
+ WO168w4TRcDt2+l1FYPdIo89F+sOOB5cN4wdp03A9MPzTgNg0ift8zBMW
+ K3i7SLPFHt2fjfeCCdClxDA35+IX7KIcFN9DhoIYo/hdOZlQE57k+v8q1
+ TeSFIK0W6ZFI/Ijg3wsBcjRC28M3PygQNIjtqUs6hJTIR6NjhVmz1gkpj
+ 2wvPRpaNVBm5hTYEqC8TWPziVsQ9dGkhnIQebltUgRf0Ys0rsSwT69qJA
+ LHl4cULaLd6sZbujmTCJA2SPSfBh4grOPZCCSPNlclXW7ERFn6qPXNB97
  g==;
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
@@ -86,9 +90,8 @@ X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=LeLh9GDi
-Subject: [Intel-wired-lan] [tnguy-net-queue:1GbE] BUILD SUCCESS
- 750da165df3e2b3d2c0d07ef7a3ca64246e5c817
+ header.s=Intel header.b=CFPTWS0I
+Subject: [Intel-wired-lan] [PATCH iwl-net] ice: Fix recipe read procedure
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -101,93 +104,45 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: przemyslaw.kitszel@intel.com, marcin.szycik@linux.intel.com,
+ netdev@vger.kernel.org
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git 1GbE
-branch HEAD: 750da165df3e2b3d2c0d07ef7a3ca64246e5c817  e1000e: Fix S0ix residency on corporate systems
+When ice driver reads recipes from firmware information about
+need_pass_l2 and allow_pass_l2 flags is not stored correctly.
+Those flags are stored as one bit each in ice_sw_recipe structure.
+Because of that, the result of checking a flag has to be casted to bool.
+Note that the need_pass_l2 flag currently works correctly, because
+it's stored in the first bit.
 
-elapsed time: 3552m
+Fixes: bccd9bce29e0 ("ice: Add guard rule when creating FDB in switchdev")
+Reviewed-by: Marcin Szycik <marcin.szycik@linux.intel.com>
+Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+Signed-off-by: Wojciech Drewek <wojciech.drewek@intel.com>
+---
+ drivers/net/ethernet/intel/ice/ice_switch.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-configs tested: 71
-configs skipped: 0
-
-The following configs have been built successfully.
-More configs may be tested in the coming days.
-
-tested configs:
-alpha                             allnoconfig   gcc-13.2.0
-arc                               allnoconfig   gcc-13.2.0
-arc                   randconfig-001-20240701   gcc-13.2.0
-arc                   randconfig-002-20240701   gcc-13.2.0
-arm                               allnoconfig   clang-19
-arm                   randconfig-001-20240701   gcc-13.2.0
-arm                   randconfig-002-20240701   gcc-13.2.0
-arm                   randconfig-004-20240701   clang-15
-arm64                             allnoconfig   gcc-13.2.0
-arm64                 randconfig-001-20240701   gcc-13.2.0
-csky                              allnoconfig   gcc-13.2.0
-hexagon                           allnoconfig   clang-19
-i386         buildonly-randconfig-001-20240629   gcc-7
-i386         buildonly-randconfig-001-20240630   clang-18
-i386         buildonly-randconfig-002-20240629   gcc-7
-i386         buildonly-randconfig-002-20240630   clang-18
-i386         buildonly-randconfig-003-20240629   gcc-7
-i386         buildonly-randconfig-003-20240630   clang-18
-i386         buildonly-randconfig-004-20240629   gcc-7
-i386         buildonly-randconfig-004-20240630   clang-18
-i386         buildonly-randconfig-005-20240629   gcc-7
-i386         buildonly-randconfig-005-20240630   clang-18
-i386         buildonly-randconfig-006-20240629   gcc-7
-i386         buildonly-randconfig-006-20240630   clang-18
-i386                  randconfig-001-20240629   gcc-7
-i386                  randconfig-001-20240630   clang-18
-i386                  randconfig-002-20240629   gcc-7
-i386                  randconfig-002-20240630   clang-18
-i386                  randconfig-003-20240629   gcc-7
-i386                  randconfig-003-20240630   clang-18
-i386                  randconfig-004-20240629   gcc-7
-i386                  randconfig-004-20240630   clang-18
-i386                  randconfig-005-20240629   gcc-7
-i386                  randconfig-005-20240630   clang-18
-i386                  randconfig-006-20240629   gcc-7
-i386                  randconfig-006-20240630   clang-18
-i386                  randconfig-011-20240629   gcc-7
-i386                  randconfig-011-20240630   clang-18
-i386                  randconfig-012-20240629   gcc-7
-i386                  randconfig-012-20240630   clang-18
-i386                  randconfig-013-20240629   gcc-7
-i386                  randconfig-013-20240630   clang-18
-i386                  randconfig-014-20240629   gcc-7
-i386                  randconfig-014-20240630   clang-18
-i386                  randconfig-015-20240629   gcc-7
-i386                  randconfig-015-20240630   clang-18
-i386                  randconfig-016-20240629   gcc-7
-i386                  randconfig-016-20240630   clang-18
-loongarch                         allnoconfig   gcc-13.2.0
-m68k                              allnoconfig   gcc-13.2.0
-microblaze                        allnoconfig   gcc-13.2.0
-mips                              allnoconfig   gcc-13.2.0
-nios2                             allnoconfig   gcc-13.2.0
-openrisc                          allnoconfig   gcc-13.2.0
-parisc                            allnoconfig   gcc-13.2.0
-powerpc                           allnoconfig   gcc-13.2.0
-riscv                             allnoconfig   gcc-13.2.0
-s390                              allnoconfig   clang-19
-s390                              allnoconfig   gcc-13.2.0
-sh                                allnoconfig   gcc-13.2.0
-um                                allnoconfig   clang-17
-um                                allnoconfig   gcc-13.2.0
-x86_64       buildonly-randconfig-001-20240701   gcc-11
-x86_64       buildonly-randconfig-002-20240701   gcc-13
-x86_64       buildonly-randconfig-003-20240701   clang-18
-x86_64       buildonly-randconfig-004-20240701   clang-18
-x86_64       buildonly-randconfig-005-20240701   gcc-13
-x86_64       buildonly-randconfig-006-20240701   gcc-11
-x86_64                randconfig-001-20240701   gcc-10
-x86_64                randconfig-002-20240701   gcc-13
-xtensa                            allnoconfig   gcc-13.2.0
-
+diff --git a/drivers/net/ethernet/intel/ice/ice_switch.c b/drivers/net/ethernet/intel/ice/ice_switch.c
+index 1191031b2a43..ffd6c42bda1e 100644
+--- a/drivers/net/ethernet/intel/ice/ice_switch.c
++++ b/drivers/net/ethernet/intel/ice/ice_switch.c
+@@ -2413,10 +2413,10 @@ ice_get_recp_frm_fw(struct ice_hw *hw, struct ice_sw_recipe *recps, u8 rid,
+ 		/* Propagate some data to the recipe database */
+ 		recps[idx].is_root = !!is_root;
+ 		recps[idx].priority = root_bufs.content.act_ctrl_fwd_priority;
+-		recps[idx].need_pass_l2 = root_bufs.content.act_ctrl &
+-					  ICE_AQ_RECIPE_ACT_NEED_PASS_L2;
+-		recps[idx].allow_pass_l2 = root_bufs.content.act_ctrl &
+-					   ICE_AQ_RECIPE_ACT_ALLOW_PASS_L2;
++		recps[idx].need_pass_l2 = !!(root_bufs.content.act_ctrl &
++					     ICE_AQ_RECIPE_ACT_NEED_PASS_L2);
++		recps[idx].allow_pass_l2 = !!(root_bufs.content.act_ctrl &
++					      ICE_AQ_RECIPE_ACT_ALLOW_PASS_L2);
+ 		bitmap_zero(recps[idx].res_idxs, ICE_MAX_FV_WORDS);
+ 		if (root_bufs.content.result_indx & ICE_AQ_RECIPE_RESULT_EN) {
+ 			recps[idx].chain_idx = root_bufs.content.result_indx &
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+2.40.1
+
