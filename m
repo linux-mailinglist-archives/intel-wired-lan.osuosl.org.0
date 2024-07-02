@@ -1,107 +1,90 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id A020791EDA8
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  2 Jul 2024 06:12:04 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 571EB923BE6
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  2 Jul 2024 12:56:27 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 58C5F60AF4;
-	Tue,  2 Jul 2024 04:12:03 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 294664164C;
+	Tue,  2 Jul 2024 10:56:24 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 69ZTFScGqviv; Tue,  2 Jul 2024 04:12:02 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id O_-gr0RtsJuF; Tue,  2 Jul 2024 10:56:23 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A5671607AB
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 4023741651
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1719893522;
-	bh=j9KpTb3Lb8CNCpQnD2X9IjOSp8M8+8VBgByk+17X140=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1719917783;
+	bh=qHUSuRw6fNn9vB/jKudvwhtqnVxCikbuQxyYcmGdnvE=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=y+KDdNREjo4iIbl9D+BgSryeP4g5xqsoI66SsiQsDwtvViwPx/x5yNap2NybBfzRv
-	 fF4ADHfHTmwRLY6u87zA+twB0jCfWEXb4TU8rCSwK50EYqpniVpmUC/bCPGNusOLSF
-	 uFZ7ntLN5tWrV6PpeLZ65Z8izJsNsnkN9N3m5092J52US1WbbGE3x2/V+sRNxFZZSP
-	 sfsHgLhNmMTiZ3chEfu5ToLd3TNpYAbZfYI/FLpaNXt6jm41Hvcz9hF7JXpeUXgfV1
-	 +IALuGhaxIJIwHKfcH6S6/RWQK8nEkQnJIERniDU1nZsE1JH+6izvAQ2At0Pxe+Q2X
-	 5wQ+K0y3BPt9A==
+	b=EnpmRBtZBQ8lZHDgbuTYHot9c6dwNNANP1lOy9Qc7F7TDjHnTHQd8jRnvzA/Y96N/
+	 gYzxcTmLaNbz58Fi8/tV1/2dkBZRMdQAxM8DwtMGchfzy1QDszfONlK5hehosXThLo
+	 Dd6Y2+TD/PBzEZ1YPI6g+Xd0eJ9Mqdh5BgoWHyBnxqlu8CbsmNCXFzvmvFDr8DbtNx
+	 0ENpGNih7+zZFSuwIblQx5SfAqGI7pYu78SoN7oqws75qQhCQQxZeVOHG1tVppDpwf
+	 /ko1qE3FQC/OqnvgIqURrzH9c6dAXIp/sHOl5ptoVjmlYoF9Xz86krsJf7dLaaFIue
+	 CtDvm+aX1SHAg==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id A5671607AB;
-	Tue,  2 Jul 2024 04:12:02 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 4023741651;
+	Tue,  2 Jul 2024 10:56:23 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 85D4A1BF32E
- for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Jul 2024 04:12:00 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 190BA1BF3A9
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Jul 2024 10:56:21 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 806FF60A48
- for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Jul 2024 04:12:00 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 04EEB81453
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Jul 2024 10:56:21 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id UIC6JiVHLw3Y for <intel-wired-lan@lists.osuosl.org>;
- Tue,  2 Jul 2024 04:11:59 +0000 (UTC)
-Received-SPF: None (mailfrom) identity=mailfrom; client-ip=192.198.163.12;
- helo=mgamail.intel.com; envelope-from=faizal.abdul.rahim@linux.intel.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 9C11760AE8
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9C11760AE8
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.12])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 9C11760AE8
- for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Jul 2024 04:11:59 +0000 (UTC)
-X-CSE-ConnectionGUID: An5dKmctQfCOV8Lr2qz6QQ==
-X-CSE-MsgGUID: k5qFTA5wQs+5MYvYstuHgg==
-X-IronPort-AV: E=McAfee;i="6700,10204,11120"; a="20916521"
-X-IronPort-AV: E=Sophos;i="6.09,178,1716274800"; d="scan'208";a="20916521"
-Received: from orviesa004.jf.intel.com ([10.64.159.144])
- by fmvoesa106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 01 Jul 2024 21:11:59 -0700
-X-CSE-ConnectionGUID: 013kFb9YRG6E1dNdSTzwNw==
-X-CSE-MsgGUID: EMJIRaMTTNijTvRFkaUmcg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.09,178,1716274800"; d="scan'208";a="50959324"
-Received: from linux.intel.com ([10.54.29.200])
- by orviesa004.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 01 Jul 2024 21:11:59 -0700
-Received: from mohdfai2-iLBPG12-1.png.intel.com
- (mohdfai2-iLBPG12-1.png.intel.com [10.88.227.73])
- by linux.intel.com (Postfix) with ESMTP id 7B6C1201A797;
- Mon,  1 Jul 2024 21:11:56 -0700 (PDT)
-From: Faizal Rahim <faizal.abdul.rahim@linux.intel.com>
-To: "David S . Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>,
- Jesse Brandeburg <jesse.brandeburg@intel.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>,
- Vinicius Costa Gomes <vinicius.gomes@intel.com>
-Date: Tue,  2 Jul 2024 00:09:26 -0400
-Message-Id: <20240702040926.3327530-5-faizal.abdul.rahim@linux.intel.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20240702040926.3327530-1-faizal.abdul.rahim@linux.intel.com>
-References: <20240702040926.3327530-1-faizal.abdul.rahim@linux.intel.com>
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id inwJR0c-qSQN for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  2 Jul 2024 10:56:20 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2604:1380:4641:c500::1; helo=dfw.source.kernel.org;
+ envelope-from=horms@kernel.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 2860581433
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 2860581433
+Received: from dfw.source.kernel.org (dfw.source.kernel.org
+ [IPv6:2604:1380:4641:c500::1])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 2860581433
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Jul 2024 10:56:19 +0000 (UTC)
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by dfw.source.kernel.org (Postfix) with ESMTP id 0A2D861C06;
+ Tue,  2 Jul 2024 10:56:19 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 55D97C4AF0D;
+ Tue,  2 Jul 2024 10:56:17 +0000 (UTC)
+Date: Tue, 2 Jul 2024 11:56:15 +0100
+From: Simon Horman <horms@kernel.org>
+To: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+Message-ID: <20240702105615.GG598357@kernel.org>
+References: <20240627151127.284884-9-karol.kolacinski@intel.com>
+ <20240627151127.284884-16-karol.kolacinski@intel.com>
+ <20240701132744.GD17134@kernel.org>
+ <815f7f5c-6d98-4be2-8fc7-09851fe281d0@intel.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <815f7f5c-6d98-4be2-8fc7-09851fe281d0@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1719893519; x=1751429519;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=6DF+Tg08u2ZMCkSK6BU/n5CzYxotLfqWDSV6lDu1oZo=;
- b=YkuWZ/S5mGDmunJNAvcSzwr/H/n7/WkF1sLagFukJIjAfIz6IWhl3Y4T
- EWxKXVsLIQGDxqToqdEhz5k1QO6ebgYZe4+aSYSXhYe2458/kwqGHBDHd
- R+CHI4aqoEF9AJA7+gwc2XHF1sFppyRLtE1c+lwxdlPp3jN2wYdpWJ/t2
- qOxUr+hebeObfBU352b2GNzbcCijoOwjQKRpm8OYOQZmFZuGcJuDSgIVO
- W4Hde8wUuyeH/cpZfPnU2ozSCYhlJYKJaiWief01WRZM4b/g/Um7HA5sj
- jzIevg1PIS6w9r4UmClnJM1uDLvGYcJP4U3mF3v8XWIa6xZZoL+XBgc45
- Q==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=linux.intel.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=YkuWZ/S5
-Subject: [Intel-wired-lan] [PATCH iwl-net v1 4/4] igc: Fix qbv tx latency by
- setting gtxoffset
+ d=kernel.org; s=k20201202; t=1719917778;
+ bh=3HWPW4vPXtwFBCCKdoVdqDwSDXV+HUOoD02Bw61tsic=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=spfFKAtCzZyVpghMCJY9Cl0L9En1tN9pGF8EjJ174fGu+no1d4gZazdxc7MqSvSNT
+ srghKK5oELxV+wF2u5xluplckmrzYTp9Cu+UsIcVlYdkv7rZCZdVRKyapkXGQV7fB8
+ HK9ZrD7nzLOgLqbinf90PJJkSD50D+1cEr5ixvSNpVaNxyJ6Uf6KCAurNSpAUZhAzW
+ oEYQTbJ2YUv2QU4ou8RKa2ibMFlf1MzPkyH13LxxWWpJ++8Y89XvUyT94/pw655OzM
+ vwjpsU9ulBVJWTRymW6zwFcMN8c6faHiNWkzv/Zh0RhFNS0UfQLxNKIrXeHx9NBdAy
+ /aXvk8YuTULaQ==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=kernel.org
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=spfFKAtC
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next 7/7] ice: Enable 1PPS out
+ from CGU for E825C products
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -114,90 +97,77 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
- linux-kernel@vger.kernel.org, stable@vger.kernel.org,
- Faizal Rahim <faizal.abdul.rahim@linux.intel.com>
+Cc: Sergey Temerkhanov <sergey.temerkhanov@intel.com>, netdev@vger.kernel.org,
+ Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>,
+ Karol Kolacinski <karol.kolacinski@intel.com>, anthony.l.nguyen@intel.com,
+ intel-wired-lan@lists.osuosl.org
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-A large tx latency issue was discovered during testing when only QBV was
-enabled. The issue occurs because gtxoffset was not set when QBV is
-active, it was only set when launch time is active.
+On Mon, Jul 01, 2024 at 05:08:09PM +0200, Przemek Kitszel wrote:
+> On 7/1/24 15:27, Simon Horman wrote:
+> > On Thu, Jun 27, 2024 at 05:09:31PM +0200, Karol Kolacinski wrote:
+> > > From: Sergey Temerkhanov <sergey.temerkhanov@intel.com>
+> > > 
+> > > Implement 1PPS signal enabling/disabling in CGU. The amplitude is
+> > > always the maximum in this implementation
+> > > 
+> > > Reviewed-by: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
+> > > Signed-off-by: Sergey Temerkhanov <sergey.temerkhanov@intel.com>
+> > > Co-developed-by: Karol Kolacinski <karol.kolacinski@intel.com>
+> > > Signed-off-by: Karol Kolacinski <karol.kolacinski@intel.com>
+> > 
+> > ...
+> > 
+> > > diff --git a/drivers/net/ethernet/intel/ice/ice_ptp_hw.c b/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
+> > > index 07ecf2a86742..fa7cf8453b88 100644
+> > > --- a/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
+> > > +++ b/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
+> > > @@ -661,6 +661,27 @@ static int ice_cfg_cgu_pll_e825c(struct ice_hw *hw,
+> > >   	return 0;
+> > >   }
+> > > +#define ICE_ONE_PPS_OUT_AMP_MAX 3
+> > > +
+> > > +/**
+> > > + * ice_cgu_ena_pps_out - Enable/disable 1PPS output
+> > > + * @hw: pointer to the HW struct
+> > > + * @ena: Enable/disable 1PPS output
+> > 
+> > Please include a "Returns: " or "Return: " section in the kernel doc
+> > for functions that have a return value.
+> 
+> last time I have checked only the singular "Return:" was supported (aka
+> non-complained) by kdoc checker on W=2 builds
 
-The patch "igc: Correct the launchtime offset" only sets gtxoffset when
-the launchtime_enable field is set by the user. Enabling launchtime_enable
-ultimately sets the register IGC_TXQCTL_QUEUE_MODE_LAUNCHT (referred to as
-LaunchT in the SW user manual).
+Yes, agreed.
 
-Section 7.5.2.6 of the IGC i225/6 SW User Manual Rev 1.2.4 states:
-"The latency between transmission scheduling (launch time) and the
-time the packet is transmitted to the network is listed in Table 7-61."
+My point was that the kernel document should have a (correct :)
+section to document the return value.
 
-However, the patch misinterprets the phrase "launch time" in that section
-by assuming it specifically refers to the LaunchT register, whereas it
-actually denotes the generic term for when a packet is released from the
-internal buffer to the MAC transmit logic.
-
-This launch time, as per that section, also implicitly refers to the QBV
-gate open time, where a packet waits in the buffer for the QBV gate to
-open. Therefore, latency applies whenever QBV is in use. TSN features such
-as QBU and QAV reuse QBV, making the latency universal to TSN features.
-
-Discussed with i226 HW owner (Shalev, Avi) and we were in agreement that
-the term "launch time" used in Section 7.5.2.6 is not clear and can be
-easily misinterpreted. Avi will update this section to:
-"When TQAVCTRL.TRANSMIT_MODE = TSN, the latency between transmission
-scheduling and the time the packet is transmitted to the network is listed
-in Table 7-61."
-
-Fix this issue by using igc_tsn_is_tx_mode_in_tsn() as a condition to
-write to gtxoffset, aligning with the newly updated SW User Manual.
-
-Tested:
-1. Enrol taprio on talker board
-   base-time 0
-   cycle-time 1000000
-   flags 0x2
-   index 0 cmd S gatemask 0x1 interval1
-   index 0 cmd S gatemask 0x1 interval2
-
-   Note:
-   interval1 = interval for a 64 bytes packet to go through
-   interval2 = cycle-time - interval1
-
-2. Take tcpdump on listener board
-
-3. Use udp tai app on talker to send packets to listener
-
-4. Check the timestamp on listener via wireshark
-
-Test Result:
-100 Mbps: 113 ~193 ns
-1000 Mbps: 52 ~ 84 ns
-2500 Mbps: 95 ~ 223 ns
-
-Note that the test result is similar to the patch "igc: Correct the
-launchtime offset".
-
-Fixes: 790835fcc0cb ("igc: Correct the launchtime offset")
-Signed-off-by: Faizal Rahim <faizal.abdul.rahim@linux.intel.com>
----
- drivers/net/ethernet/intel/igc/igc_tsn.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/net/ethernet/intel/igc/igc_tsn.c b/drivers/net/ethernet/intel/igc/igc_tsn.c
-index 26dbe3442ad1..e95502fc844b 100644
---- a/drivers/net/ethernet/intel/igc/igc_tsn.c
-+++ b/drivers/net/ethernet/intel/igc/igc_tsn.c
-@@ -61,7 +61,7 @@ void igc_tsn_adjust_txtime_offset(struct igc_adapter *adapter)
- 	struct igc_hw *hw = &adapter->hw;
- 	u16 txoffset;
- 
--	if (!is_any_launchtime(adapter))
-+	if (!igc_tsn_is_tx_mode_in_tsn(adapter))
- 		return;
- 
- 	switch (adapter->link_speed) {
--- 
-2.25.1
-
+> 
+> > 
+> > NIPA has recently got more picky about this.
+> > Flagged by kernel-doc -none --Warn
+> > 
+> > > + */
+> > > +int ice_cgu_ena_pps_out(struct ice_hw *hw, bool ena)
+> > > +{
+> > > +	union nac_cgu_dword9 dw9;
+> > > +	int err;
+> > > +
+> > > +	err = ice_read_cgu_reg_e82x(hw, NAC_CGU_DWORD9, &dw9.val);
+> > > +	if (err)
+> > > +		return err;
+> > > +
+> > > +	dw9.one_pps_out_en = ena;
+> > > +	dw9.one_pps_out_amp = ena * ICE_ONE_PPS_OUT_AMP_MAX;
+> > > +	return ice_write_cgu_reg_e82x(hw, NAC_CGU_DWORD9, dw9.val);
+> > > +}
+> > > +
+> > >   /**
+> > >    * ice_cfg_cgu_pll_dis_sticky_bits_e82x - disable TS PLL sticky bits
+> > >    * @hw: pointer to the HW struct
+> > 
+> > ...
+> > 
+> 
