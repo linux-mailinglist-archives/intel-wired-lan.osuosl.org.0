@@ -2,96 +2,93 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8D9DB923C45
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  2 Jul 2024 13:18:40 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 968F9923C31
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  2 Jul 2024 13:16:55 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 45A4F4168E;
-	Tue,  2 Jul 2024 11:18:39 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 0104C41666;
+	Tue,  2 Jul 2024 11:16:54 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id JfkiKU0Sp6qi; Tue,  2 Jul 2024 11:18:37 +0000 (UTC)
+ id xQySKfipR2Kf; Tue,  2 Jul 2024 11:16:53 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B8F1C41670
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org AEAAF41669
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1719919116;
-	bh=eXRMFmi3/MN3F/sNAeLiG3G5sRVEVdL0UlYmQ6JQFJ8=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=HSt3FffeZBLMTjfhzxfaO6HV0aTAIn8PFyWA1o8th+uLp9fOsPwuqg0qo8HYV31tz
-	 aBIoF8U1yis46hkRXpCiXFKFJC9GGPPr5Ak5IHjGk2Zv/nwhl7tx4JvHjf2Uy8mRlz
-	 +GFpu/HpNpCKo29TjZ/moE586YmTWH/8lm0PGb3+uD3WGu46q2FlfNb1F1khCKTy3n
-	 ExWwWTm3bhfE7+61d39YNUat+S2dyWlLI6stEHXu+PouNTw77K6OWSipOAZWvqCqbZ
-	 AuBdV/9ndjM8iwsaEZZxGZLuuxMsrPwDc9nuRQcPIASF9MRNQFp6xdiINPCetmnXIt
-	 1eiFqaQz/0zyg==
+	s=default; t=1719919012;
+	bh=CIylphKu2PaZcEUnNajN39fHXCO3vpj3I7iKrVoE7UA=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=OL1ApVhKA+XTIcWEcIVPlc2QaJWxml+S4bDlCRUA+JWQjHJl4wa8Qv+eP8objLea9
+	 TpvwgWqG/T7qlomWWaHNodFQC1hcP1qWhphZWFOuqCEaewtIIfMPnUOzxOrByjNrUN
+	 T0ulIl51wfu9VerIHo9snp8aE7lhVENur8qfYJqfzmUSjCrrKkA3j9XlrTMrUGaW0L
+	 dENlCbye+Jd7iRNv/h4OC7bhtQQK1/wVCJlqtUuFlCVJeXVd/c/HBmllhGlj4jB+ku
+	 hu269M1UTpqAB09JxBLV/8OInoFTwP7bLUuSXAxd2gWpHB1i+/QAljpO0BFHf8Jp/z
+	 GAUUnTBpCZgAg==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id B8F1C41670;
-	Tue,  2 Jul 2024 11:18:36 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id AEAAF41669;
+	Tue,  2 Jul 2024 11:16:52 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id A52D71BF310
- for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Jul 2024 11:18:32 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 2010A1BF310
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Jul 2024 11:16:51 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id A045060B70
- for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Jul 2024 11:18:32 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 196A560B46
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Jul 2024 11:16:51 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id TQ95-lx0VETT for <intel-wired-lan@lists.osuosl.org>;
- Tue,  2 Jul 2024 11:18:31 +0000 (UTC)
+ id cKflWOWSeZsl for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  2 Jul 2024 11:16:50 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.12;
- helo=mgamail.intel.com; envelope-from=karol.kolacinski@intel.com;
+ helo=mgamail.intel.com; envelope-from=sergey.temerkhanov@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org B3F3060B63
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B3F3060B63
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 28EE660AFA
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 28EE660AFA
 Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.12])
- by smtp3.osuosl.org (Postfix) with ESMTPS id B3F3060B63
- for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Jul 2024 11:18:31 +0000 (UTC)
-X-CSE-ConnectionGUID: XY6LSagcTfaZcY4I7EmV9A==
-X-CSE-MsgGUID: QVofrhcOSJuuzT9KN4J3xQ==
-X-IronPort-AV: E=McAfee;i="6700,10204,11120"; a="28482094"
-X-IronPort-AV: E=Sophos;i="6.09,178,1716274800"; d="scan'208";a="28482094"
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 28EE660AFA
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Jul 2024 11:16:50 +0000 (UTC)
+X-CSE-ConnectionGUID: 6+XwWIFQRbSjaYlzBpc0hA==
+X-CSE-MsgGUID: wHKPzKcMRUydjZ/y7y7dHQ==
+X-IronPort-AV: E=McAfee;i="6700,10204,11120"; a="28481834"
+X-IronPort-AV: E=Sophos;i="6.09,178,1716274800"; d="scan'208";a="28481834"
 Received: from orviesa009.jf.intel.com ([10.64.159.149])
  by orvoesa104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 02 Jul 2024 04:18:32 -0700
-X-CSE-ConnectionGUID: cA7N3EYnRPiq17JjfAQcvw==
-X-CSE-MsgGUID: EccGeEsDTNWP4GuvY2t+vg==
+ 02 Jul 2024 04:16:50 -0700
+X-CSE-ConnectionGUID: O/Yiek0pS5+bBgEGALDFIw==
+X-CSE-MsgGUID: G5Vyqi26Qz2BeVeuE1TcHw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.09,178,1716274800"; d="scan'208";a="46006210"
-Received: from kkolacin-desk1.igk.intel.com ([10.102.102.132])
- by orviesa009.jf.intel.com with ESMTP; 02 Jul 2024 04:18:29 -0700
-From: Karol Kolacinski <karol.kolacinski@intel.com>
+X-IronPort-AV: E=Sophos;i="6.09,178,1716274800"; d="scan'208";a="46005711"
+Received: from unknown (HELO localhost.igk.intel.com) ([10.211.13.141])
+ by orviesa009.jf.intel.com with ESMTP; 02 Jul 2024 04:16:48 -0700
+From: Sergey Temerkhanov <sergey.temerkhanov@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Tue,  2 Jul 2024 13:13:21 +0200
-Message-ID: <20240702111807.87802-4-karol.kolacinski@intel.com>
-X-Mailer: git-send-email 2.45.2
-In-Reply-To: <20240702111807.87802-1-karol.kolacinski@intel.com>
-References: <20240702111807.87802-1-karol.kolacinski@intel.com>
+Date: Tue,  2 Jul 2024 13:15:29 +0200
+Message-ID: <20240702111533.83485-1-sergey.temerkhanov@intel.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1719919112; x=1751455112;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=jGmBjH+9hZzEF6wAY5SppYA9RdBmssNck+IAbhtcLiU=;
- b=XutpbqtkdbtB0zNVdIWQR+fk9Z0Gm0ugZDIxoX5+EgGEBK5kJ4vIsB52
- f6LJ8Lt9CwjXqBqGgMP3/EzoSIXELItQjSTs1cBuhVG10OdzKVjGMOgHm
- pmEDXUySfkQTyqx+RBgbnckV9n4j9nvpPUPM+mrr650E8nuCjif1DUVkF
- GV6hMBUWxMRWvKxPMcEn0QKJPh07e8QWAk9H9ZWvXzXVH7o+Uk07AwlrM
- d5qagT6i8bP8NrmMYhI7Mj+zKzHNEAFckMa1jb39dujK6qYXJWrrOeBqu
- GcBd/PCn/TYPlrBWq+24oyWVeufjf1qAB7p6bmMTAlpf5UnDuDN3a5roy
- Q==;
+ t=1719919010; x=1751455010;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=TmwvCbXGUOyqh2fsdiY4RTdtMgEQTuFLI6cCmk0YpNY=;
+ b=aX/lkvc++CeWhlj3E3saJQ4YroR9jDObice7I/ovXnLFq/sqNxSjMeQ5
+ u/KxTFKguUc9X496BXa0WS64pjcNS2ozCSigtEtgB+BEyAp3+vqSME/TK
+ c4vAOWqkb3vVWZv02UGbDSDHXpMdxnkuN2dXwJ77IKIIctoZiFqc1zfZA
+ 8Ew3C3DGAZ1K6QAwY0NiK27orLkyRHmoiMNBooIBiZG7M23Xb9r9IU6Cr
+ DbHtt3Z/vRd7XYNwSPIKIBEFCN2ltCp11o0KhxKa6C1YK4FMmLXoCX0Fp
+ 2M2kHq7XbXKDg/RqfFmdfiu7TPqbqV+tAOO4Cg5h+rHofhm3YTdfN/Lbl
+ w==;
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=Xutpbqtk
-Subject: [Intel-wired-lan] [PATCH v3 iwl-net 3/3] ice: Reject pin requests
- with unsupported flags
+ header.a=rsa-sha256 header.s=Intel header.b=aX/lkvc+
+Subject: [Intel-wired-lan] [PATCH iwl-next v3 0/4] Replace auxbus with
+ ice_adapter in the PTP support code
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -104,179 +101,37 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Jacob Keller <jacob.e.keller@intel.com>, netdev@vger.kernel.org,
- Karol Kolacinski <karol.kolacinski@intel.com>, anthony.l.nguyen@intel.com,
- przemyslaw.kitszel@intel.com
+Cc: Sergey Temerkhanov <sergey.temerkhanov@intel.com>, netdev@vger.kernel.org
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Jacob Keller <jacob.e.keller@intel.com>
+This series replaces multiple aux buses and devices used in the PTP support
+code with struct ice_adapter holding the necessary shared data
 
-The driver receives requests for configuring pins via the .enable
-callback of the PTP clock object. These requests come into the driver
-with flags which modify the requested behavior from userspace. Current
-implementation in ice does not reject flags that it doesn't support.
-This causes the driver to incorrectly apply requests with such flags as
-PTP_PEROUT_DUTY_CYCLE, or any future flags added by the kernel which it
-is not yet aware of.
+Patches 1,2 add convenience wrappers
+Patch 3 does the main refactoring
+Patch 4 finalizes the refactoring
 
-Fix this by properly validating flags in both ice_ptp_cfg_perout and
-ice_ptp_cfg_extts. Ensure that we check by bit-wise negating supported
-flags rather than just checking and rejecting known un-supported flags.
-This is preferable, as it ensures better compatibility with future
-kernels.
+Previous discussion: https://lists.osuosl.org/pipermail/intel-wired-lan/Week-of-Mon-20240624/042439.html
 
-Fixes: 172db5f91d5f ("ice: add support for auxiliary input/output pins")
-Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
-Signed-off-by: Karol Kolacinski <karol.kolacinski@intel.com>
----
-V1 -> V2: adjusted indentation and added NULL config pointer check
+v1->v2: Code rearrangement between patches
+v2->v3: Patch cleanup
 
- drivers/net/ethernet/intel/ice/ice_ptp.c | 38 ++++++++++++++----------
- drivers/net/ethernet/intel/ice/ice_ptp.h |  1 +
- 2 files changed, 23 insertions(+), 16 deletions(-)
+Sergey Temerkhanov (4):
+  ice: Introduce ice_get_phy_model() wrapper
+  ice: Add ice_get_ctrl_ptp() wrapper to simplify the code
+  ice: Use ice_adapter for PTP shared data instead of auxdev
+  ice: Drop auxbus use for PTP to finalize ice_adapter move
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.c b/drivers/net/ethernet/intel/ice/ice_ptp.c
-index 9fef240bf68d..fefaf52fd677 100644
---- a/drivers/net/ethernet/intel/ice/ice_ptp.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ptp.c
-@@ -1593,14 +1593,23 @@ void ice_ptp_extts_event(struct ice_pf *pf)
-  * @store: If set to true, the values will be stored
-  *
-  * Configure an external timestamp event on the requested channel.
-+ *
-+ * Return: 0 on success, -EOPNOTUSPP on unsupported flags
-  */
--static void ice_ptp_cfg_extts(struct ice_pf *pf, unsigned int chan,
--			      struct ice_extts_channel *config, bool store)
-+static int ice_ptp_cfg_extts(struct ice_pf *pf, unsigned int chan,
-+			     struct ice_extts_channel *config, bool store)
- {
- 	u32 func, aux_reg, gpio_reg, irq_reg;
- 	struct ice_hw *hw = &pf->hw;
- 	u8 tmr_idx;
- 
-+	/* Reject requests with unsupported flags */
-+	if (config->flags & ~(PTP_ENABLE_FEATURE |
-+			      PTP_RISING_EDGE |
-+			      PTP_FALLING_EDGE |
-+			      PTP_STRICT_FLAGS))
-+		return -EOPNOTSUPP;
-+
- 	tmr_idx = hw->func_caps.ts_func_info.tmr_index_owned;
- 
- 	irq_reg = rd32(hw, PFINT_OICR_ENA);
-@@ -1641,6 +1650,8 @@ static void ice_ptp_cfg_extts(struct ice_pf *pf, unsigned int chan,
- 
- 	if (store)
- 		memcpy(&pf->ptp.extts_channels[chan], config, sizeof(*config));
-+
-+	return 0;
- }
- 
- /**
-@@ -1698,6 +1709,9 @@ static int ice_ptp_cfg_clkout(struct ice_pf *pf, unsigned int chan,
- 	u32 func, val, gpio_pin;
- 	u8 tmr_idx;
- 
-+	if (config && config->flags & ~PTP_PEROUT_PHASE)
-+		return -EOPNOTSUPP;
-+
- 	tmr_idx = hw->func_caps.ts_func_info.tmr_index_owned;
- 
- 	/* 0. Reset mode & out_en in AUX_OUT */
-@@ -1837,7 +1851,6 @@ ice_ptp_gpio_enable_e810(struct ptp_clock_info *info,
- 	bool sma_pres = false;
- 	unsigned int chan;
- 	u32 gpio_pin;
--	int err;
- 
- 	if (ice_is_feature_supported(pf, ICE_F_SMA_CTRL))
- 		sma_pres = true;
-@@ -1866,14 +1879,14 @@ ice_ptp_gpio_enable_e810(struct ptp_clock_info *info,
- 			clk_cfg.gpio_pin = chan;
- 		}
- 
-+		clk_cfg.flags = rq->perout.flags;
- 		clk_cfg.period = ((rq->perout.period.sec * NSEC_PER_SEC) +
- 				   rq->perout.period.nsec);
- 		clk_cfg.start_time = ((rq->perout.start.sec * NSEC_PER_SEC) +
- 				       rq->perout.start.nsec);
- 		clk_cfg.ena = !!on;
- 
--		err = ice_ptp_cfg_clkout(pf, chan, &clk_cfg, true);
--		break;
-+		return ice_ptp_cfg_clkout(pf, chan, &clk_cfg, true);
- 	}
- 	case PTP_CLK_REQ_EXTTS:
- 	{
-@@ -1898,14 +1911,11 @@ ice_ptp_gpio_enable_e810(struct ptp_clock_info *info,
- 		extts_cfg.gpio_pin = gpio_pin;
- 		extts_cfg.ena = !!on;
- 
--		ice_ptp_cfg_extts(pf, chan, &extts_cfg, true);
--		return 0;
-+		return ice_ptp_cfg_extts(pf, chan, &extts_cfg, true);
- 	}
- 	default:
- 		return -EOPNOTSUPP;
- 	}
--
--	return err;
- }
- 
- /**
-@@ -1918,19 +1928,18 @@ static int ice_ptp_gpio_enable_e823(struct ptp_clock_info *info,
- 				    struct ptp_clock_request *rq, int on)
- {
- 	struct ice_pf *pf = ptp_info_to_pf(info);
--	int err;
- 
- 	switch (rq->type) {
- 	case PTP_CLK_REQ_PPS:
- 	{
- 		struct ice_perout_channel clk_cfg = {};
- 
-+		clk_cfg.flags = rq->perout.flags;
- 		clk_cfg.gpio_pin = PPS_PIN_INDEX;
- 		clk_cfg.period = NSEC_PER_SEC;
- 		clk_cfg.ena = !!on;
- 
--		err = ice_ptp_cfg_clkout(pf, PPS_CLK_GEN_CHAN, &clk_cfg, true);
--		break;
-+		return ice_ptp_cfg_clkout(pf, PPS_CLK_GEN_CHAN, &clk_cfg, true);
- 	}
- 	case PTP_CLK_REQ_EXTTS:
- 	{
-@@ -1940,14 +1949,11 @@ static int ice_ptp_gpio_enable_e823(struct ptp_clock_info *info,
- 		extts_cfg.gpio_pin = TIME_SYNC_PIN_INDEX;
- 		extts_cfg.ena = !!on;
- 
--		ice_ptp_cfg_extts(pf, rq->extts.index, &extts_cfg, true);
--		return 0;
-+		return ice_ptp_cfg_extts(pf, rq->extts.index, &extts_cfg, true);
- 	}
- 	default:
- 		return -EOPNOTSUPP;
- 	}
--
--	return err;
- }
- 
- /**
-diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.h b/drivers/net/ethernet/intel/ice/ice_ptp.h
-index f1171cdd93c8..e2af9749061c 100644
---- a/drivers/net/ethernet/intel/ice/ice_ptp.h
-+++ b/drivers/net/ethernet/intel/ice/ice_ptp.h
-@@ -29,6 +29,7 @@ enum ice_ptp_pin_e810t {
- struct ice_perout_channel {
- 	bool ena;
- 	u32 gpio_pin;
-+	u32 flags;
- 	u64 period;
- 	u64 start_time;
- };
+ drivers/net/ethernet/intel/ice/ice.h         |   5 +
+ drivers/net/ethernet/intel/ice/ice_adapter.c |   6 +
+ drivers/net/ethernet/intel/ice/ice_adapter.h |  22 +-
+ drivers/net/ethernet/intel/ice/ice_ptp.c     | 337 ++++---------------
+ drivers/net/ethernet/intel/ice/ice_ptp.h     |  24 +-
+ drivers/net/ethernet/intel/ice/ice_ptp_hw.c  |  22 +-
+ drivers/net/ethernet/intel/ice/ice_ptp_hw.h  |   5 +
+ 7 files changed, 112 insertions(+), 309 deletions(-)
+
 -- 
-2.45.2
+2.43.0
 
