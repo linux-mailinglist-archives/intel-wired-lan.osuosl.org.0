@@ -2,70 +2,70 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id DAD51923F4E
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  2 Jul 2024 15:45:14 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5550E923F50
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  2 Jul 2024 15:45:17 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 845FE81E58;
-	Tue,  2 Jul 2024 13:45:13 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id A295C81E85;
+	Tue,  2 Jul 2024 13:45:14 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id sxs_Ohh2SFgf; Tue,  2 Jul 2024 13:45:10 +0000 (UTC)
+ id sjI-kISxIyfZ; Tue,  2 Jul 2024 13:45:12 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 92FB681BC0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9B6E981E7F
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1719927910;
-	bh=0dr390ub/fRRMP/a0pPjfSptBR1PXsqWBDNrfiU6ZNM=;
+	s=default; t=1719927912;
+	bh=bznFigf9boE74xb+Ryiu/Sou2i5Lbo5van/j5vR3L5s=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=oSMYI7TMM1CpEJohLp8uHp/md2+K26PfsJwC8rS3fQUetc3Qv/1jZCJ9v1EPdKWZU
-	 d3DDZdKjx6NO9NiPkkg3Csda+UbUUmbYIC7cyD9cCGIrm/t9PWN7QJcgS+EPk1x+O0
-	 bybiNHB3yqweKy2MHGagkDUilnT2NHTclHnjLy4mr3laPdgVx/ytfZeLF68yYZ3Dh5
-	 K1Kf19KET3uEJ3tPliN1oFVwqKCn1Vy0b3IhH21rElU6RVLCV/Fp0gMLlY6LJgXFxx
-	 WKeZYn2P2+vRB9H91zBSw+HZqsOUmh0+qycWe9rthahAYF8zaefeWY2sTEMyTN0ido
-	 CMm3xIs1pZhiw==
+	b=Uw6ldMmruUt/CRgsY5vXkSgCYfqWPDmVOUOP0QqLYkiUu6+t9t2wulctu1UnlJ5D1
+	 yo9Vs80YdkJMP7j3H7JO7s7nH5oZ2K17Ac4Wmis/Y2ae/1eCeIG7ptgenRU1TMYLEO
+	 6/RTZEuubvvi0rm/rTyFXwFTiOcnLg3hRcJYRittzpNLgWocym2wsaqxd8V1AI/9jW
+	 HmFkhiOf522H9rkHqgQkAfq9ddPVtZPka4UwH3YOvhZBp1NdLAQ6aNcEQKTfRbMPiw
+	 phT+8K45YSHvqs1Qjn2swSIIgZIx9IjvBz5fY4YMBgfUxfCWipVZrX9nZ0YLusmMEh
+	 5pYFnF8exfO2Q==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 92FB681BC0;
-	Tue,  2 Jul 2024 13:45:09 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 9B6E981E7F;
+	Tue,  2 Jul 2024 13:45:11 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id DF4831BF313
- for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Jul 2024 13:45:05 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id D97FD1BF313
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Jul 2024 13:45:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id CB615410E5
- for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Jul 2024 13:45:05 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id C63A5410E9
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Jul 2024 13:45:07 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id vJBmh-zFv62I for <intel-wired-lan@lists.osuosl.org>;
- Tue,  2 Jul 2024 13:45:03 +0000 (UTC)
+ id A9e5DBPPbV-3 for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  2 Jul 2024 13:45:06 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.19;
  helo=mgamail.intel.com; envelope-from=karol.kolacinski@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 7C87F410E4
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7C87F410E4
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org D2142410E4
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D2142410E4
 Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.19])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 7C87F410E4
- for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Jul 2024 13:45:03 +0000 (UTC)
-X-CSE-ConnectionGUID: /mUujY1oSN6EM+ltGcy5/g==
-X-CSE-MsgGUID: bnOudaURTD+PymKW7g8uNg==
-X-IronPort-AV: E=McAfee;i="6700,10204,11121"; a="16826413"
-X-IronPort-AV: E=Sophos;i="6.09,178,1716274800"; d="scan'208";a="16826413"
+ by smtp4.osuosl.org (Postfix) with ESMTPS id D2142410E4
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Jul 2024 13:45:05 +0000 (UTC)
+X-CSE-ConnectionGUID: JmvpUXfKS6aptCivocNI6A==
+X-CSE-MsgGUID: HXHu7aJeRrO2yYY3K499ow==
+X-IronPort-AV: E=McAfee;i="6700,10204,11121"; a="16826425"
+X-IronPort-AV: E=Sophos;i="6.09,178,1716274800"; d="scan'208";a="16826425"
 Received: from orviesa001.jf.intel.com ([10.64.159.141])
  by fmvoesa113.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 02 Jul 2024 06:45:03 -0700
-X-CSE-ConnectionGUID: jrhg7T+OQBuZzVYolNPf4Q==
-X-CSE-MsgGUID: Flsl7d/aRQWDjgmPRHePTA==
+ 02 Jul 2024 06:45:06 -0700
+X-CSE-ConnectionGUID: NYtEfDtfQlW1kr/zXgMcyA==
+X-CSE-MsgGUID: zwt74bHgRya6eQyVhUz41Q==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.09,178,1716274800"; d="scan'208";a="83460537"
+X-IronPort-AV: E=Sophos;i="6.09,178,1716274800"; d="scan'208";a="83460552"
 Received: from kkolacin-desk1.igk.intel.com ([10.102.102.132])
- by orviesa001.jf.intel.com with ESMTP; 02 Jul 2024 06:45:01 -0700
+ by orviesa001.jf.intel.com with ESMTP; 02 Jul 2024 06:45:04 -0700
 From: Karol Kolacinski <karol.kolacinski@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Tue,  2 Jul 2024 15:41:32 +0200
-Message-ID: <20240702134448.132374-12-karol.kolacinski@intel.com>
+Date: Tue,  2 Jul 2024 15:41:33 +0200
+Message-ID: <20240702134448.132374-13-karol.kolacinski@intel.com>
 X-Mailer: git-send-email 2.45.2
 In-Reply-To: <20240702134448.132374-9-karol.kolacinski@intel.com>
 References: <20240702134448.132374-9-karol.kolacinski@intel.com>
@@ -73,25 +73,25 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1719927903; x=1751463903;
+ t=1719927906; x=1751463906;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=YA0oPsE119IIkMJUVxvXaGmH7u+9CAMmLUnnzRjy9So=;
- b=G8sOvsbVVx10cKUiwHa0V9X3lQrF9OJ+2sCF6u9ZDnnvMxT7V+S5/Noi
- eunLbeVZSiwjcV51QDid+fqZN2WFUmTr5Zy3SkYJ/PcEkzdDLPC4Y5Oxq
- CuOk59lasXS2jYo79hFTpAamLaaeLB3Pf5CybgAUQun7iAvvz8drH4t4L
- HCc5bLvGy8AOGn8mP0dWmb/7MzXoRNtNBbhslVlX5P4stU5O2/HM7Glbc
- auJvwuTll2QrHvqybb7icsLTMXZ2NMac1mqILUw5fLWxr2Z9xo/m4Frd5
- FFN/prrP9O0uFnSaYnewk4g74TJ/oKaXdR4H9Nx2y3koBMmAF4ObTTrzu
- Q==;
+ bh=mWoOMf8Agvy0MJPoTp95C8rESRwDiZEFe5dlmutIl6s=;
+ b=J3yRydKgp+CzTl81kAjmw5DMDz6RYoSpj2rZfZg9ZR30pVVOajgB3kcW
+ ySNc6mnYgrmpNvUrzuM6hErtLuif/lGBlpkdCoCwiPRxpBjDiuq/xrIvE
+ 3zh9Enb8qXapdcFPvjTyHc8zl6rwBdNS/XmI9pm9PwMHRryI4M6Qo5nPQ
+ 7vA1Ojyy3n25NHRl265irAyqzBlP9zRi9Xtr3RYQDDBzQ7I/uSDmq7iz7
+ RAzOcFLZ5gjmSi9cxzAKkXc1u6WlJHKRSMRpb5yTxzydc+6OwbbrM07VN
+ Wn7ZVjHUHO5Tuz17ogaVMRsJ3kV5rR8SZM9R4Ozw19FcSwqGnUNYgnUbt
+ w==;
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=G8sOvsbV
-Subject: [Intel-wired-lan] [PATCH v2 iwl-next 3/7] ice: Align E810T GPIO to
- other products
+ header.a=rsa-sha256 header.s=Intel header.b=J3yRydKg
+Subject: [Intel-wired-lan] [PATCH v2 iwl-next 4/7] ice: Cache perout/extts
+ requests and check flags
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -110,812 +110,706 @@ Cc: netdev@vger.kernel.org, Karol Kolacinski <karol.kolacinski@intel.com>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Instead of having separate PTP GPIO implementation for E810T, use
-existing one from all other products.
+Cache original PTP GPIO requests instead of saving each parameter in
+internal structures for periodic output or external timestamp request.
+
+Factor out all periodic output register writes from ice_ptp_cfg_clkout
+to a separate function to improve readability.
 
 Reviewed-by: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
 Signed-off-by: Karol Kolacinski <karol.kolacinski@intel.com>
 ---
-V1 -> V2: restored blank line and moved enable and verify assignment
+V1 -> V2: Fixed unresolved merge conflict
 
- drivers/net/ethernet/intel/ice/ice_gnss.c   |   4 +-
- drivers/net/ethernet/intel/ice/ice_ptp.c    | 464 +++++---------------
- drivers/net/ethernet/intel/ice/ice_ptp.h    |  29 +-
- drivers/net/ethernet/intel/ice/ice_ptp_hw.c |  20 +-
- drivers/net/ethernet/intel/ice/ice_ptp_hw.h |  43 +-
- 5 files changed, 155 insertions(+), 405 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_ptp.c      | 354 +++++++++---------
+ drivers/net/ethernet/intel/ice/ice_ptp.h      |  27 +-
+ .../net/ethernet/intel/ice/ice_ptp_consts.h   |   2 +-
+ drivers/net/ethernet/intel/ice/ice_ptp_hw.h   |  27 +-
+ 4 files changed, 213 insertions(+), 197 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_gnss.c b/drivers/net/ethernet/intel/ice/ice_gnss.c
-index c8ea1af51ad3..f02e8ca55375 100644
---- a/drivers/net/ethernet/intel/ice/ice_gnss.c
-+++ b/drivers/net/ethernet/intel/ice/ice_gnss.c
-@@ -397,8 +397,8 @@ bool ice_gnss_is_gps_present(struct ice_hw *hw)
- 		int err;
- 		u8 data;
- 
--		err = ice_read_pca9575_reg_e810t(hw, ICE_PCA9575_P0_IN, &data);
--		if (err || !!(data & ICE_E810T_P0_GNSS_PRSNT_N))
-+		err = ice_read_pca9575_reg(hw, ICE_PCA9575_P0_IN, &data);
-+		if (err || !!(data & ICE_P0_GNSS_PRSNT_N))
- 			return false;
- 	} else {
- 		return false;
 diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.c b/drivers/net/ethernet/intel/ice/ice_ptp.c
-index 392b0d2fa61f..df0ae9faf948 100644
+index df0ae9faf948..82a198f28d3c 100644
 --- a/drivers/net/ethernet/intel/ice/ice_ptp.c
 +++ b/drivers/net/ethernet/intel/ice/ice_ptp.c
-@@ -39,15 +39,21 @@ static const struct ice_ptp_pin_desc ice_pin_desc_e810[] = {
- 	{  ONE_PPS,   { 5, -1 }},
- };
- 
--#define E810_OUT_PROP_DELAY_NS 1
--
--static const struct ptp_pin_desc ice_pin_desc_e810t[] = {
--	/* name    idx   func         chan */
--	{ "GNSS",  GNSS, PTP_PF_EXTTS, 0, { 0, } },
--	{ "SMA1",  SMA1, PTP_PF_NONE, 1, { 0, } },
--	{ "U.FL1", UFL1, PTP_PF_NONE, 1, { 0, } },
--	{ "SMA2",  SMA2, PTP_PF_NONE, 2, { 0, } },
--	{ "U.FL2", UFL2, PTP_PF_NONE, 2, { 0, } },
-+static const char ice_pin_names_e810t[][64] = {
-+	"GNSS",
-+	"SMA1",
-+	"U.FL1",
-+	"SMA2",
-+	"U.FL2",
-+};
-+
-+static const struct ice_ptp_pin_desc ice_pin_desc_e810t[] = {
-+	/* name, gpio */
-+	{  GNSS, { -1,  1 }},
-+	{  SMA1, {  0,  1 }},
-+	{  UFL1, {  0, -1 }},
-+	{  SMA2, {  2,  3 }},
-+	{  UFL2, { -1,  3 }},
- };
- 
+@@ -1577,33 +1577,41 @@ void ice_ptp_extts_event(struct ice_pf *pf)
  /**
-@@ -74,240 +80,98 @@ static int ice_ptp_find_pin_idx(struct ice_pf *pf, enum ptp_pin_function func,
+  * ice_ptp_cfg_extts - Configure EXTTS pin and channel
+  * @pf: Board private structure
+- * @chan: GPIO channel (0-3)
+- * @config: desired EXTTS configuration.
+- * @store: If set to true, the values will be stored
++ * @rq: External timestamp request
++ * @on: Enable/disable flag
+  *
+  * Configure an external timestamp event on the requested channel.
+  *
+- * Return: 0 on success, -EOPNOTUSPP on unsupported flags
++ * Return: 0 on success, negative error code otherwise
+  */
+-static int ice_ptp_cfg_extts(struct ice_pf *pf, unsigned int chan,
+-			     struct ice_extts_channel *config, bool store)
++static int ice_ptp_cfg_extts(struct ice_pf *pf, struct ptp_extts_request *rq,
++			     int on)
+ {
+-	u32 func, aux_reg, gpio_reg, irq_reg;
++	u32 aux_reg, gpio_reg, irq_reg;
+ 	struct ice_hw *hw = &pf->hw;
++	uint chan, gpio_pin;
++	int pin_desc_idx;
+ 	u8 tmr_idx;
+ 
+ 	/* Reject requests with unsupported flags */
+-	if (config->flags & ~(PTP_ENABLE_FEATURE |
+-			      PTP_RISING_EDGE |
+-			      PTP_FALLING_EDGE |
+-			      PTP_STRICT_FLAGS))
++
++	if (rq->flags & ~(PTP_ENABLE_FEATURE |
++			  PTP_RISING_EDGE |
++			  PTP_FALLING_EDGE |
++			  PTP_STRICT_FLAGS))
+ 		return -EOPNOTSUPP;
+ 
+ 	tmr_idx = hw->func_caps.ts_func_info.tmr_index_owned;
++	chan = rq->index;
+ 
++	pin_desc_idx = ice_ptp_find_pin_idx(pf, PTP_PF_EXTTS, chan);
++	if (pin_desc_idx < 0)
++		return -EIO;
++
++	gpio_pin = pf->ptp.ice_pin_desc[pin_desc_idx].gpio[0];
+ 	irq_reg = rd32(hw, PFINT_OICR_ENA);
+ 
+-	if (config->ena) {
++	if (on) {
+ 		/* Enable the interrupt */
+ 		irq_reg |= PFINT_OICR_TSYN_EVNT_M;
+ 		aux_reg = GLTSYN_AUX_IN_0_INT_ENA_M;
+@@ -1612,33 +1620,39 @@ static int ice_ptp_cfg_extts(struct ice_pf *pf, unsigned int chan,
+ #define GLTSYN_AUX_IN_0_EVNTLVL_FALLING_EDGE	BIT(1)
+ 
+ 		/* set event level to requested edge */
+-		if (config->flags  & PTP_FALLING_EDGE)
++		if (rq->flags & PTP_FALLING_EDGE)
+ 			aux_reg |= GLTSYN_AUX_IN_0_EVNTLVL_FALLING_EDGE;
+-		if (config->flags  & PTP_RISING_EDGE)
++		if (rq->flags & PTP_RISING_EDGE)
+ 			aux_reg |= GLTSYN_AUX_IN_0_EVNTLVL_RISING_EDGE;
+ 
+ 		/* Write GPIO CTL reg.
+ 		 * 0x1 is input sampled by EVENT register(channel)
+ 		 * + num_in_channels * tmr_idx
+ 		 */
+-		func = 1 + chan + (tmr_idx * 3);
+-		gpio_reg = FIELD_PREP(GLGEN_GPIO_CTL_PIN_FUNC_M, func);
+-		pf->ptp.ext_ts_chan |= (1 << chan);
++		gpio_reg = FIELD_PREP(GLGEN_GPIO_CTL_PIN_FUNC_M,
++				      1 + chan + (tmr_idx * 3));
+ 	} else {
++		bool last_enabled = true;
++		uint i;
++
+ 		/* clear the values we set to reset defaults */
+ 		aux_reg = 0;
+ 		gpio_reg = 0;
+-		pf->ptp.ext_ts_chan &= ~(1 << chan);
+-		if (!pf->ptp.ext_ts_chan)
++
++		for (i = 0; i < pf->ptp.info.n_ext_ts; i++)
++			if ((pf->ptp.extts_rqs[i].flags &
++			     PTP_ENABLE_FEATURE) &&
++			    i != chan) {
++				last_enabled = false;
++			}
++
++		if (last_enabled)
+ 			irq_reg &= ~PFINT_OICR_TSYN_EVNT_M;
+ 	}
+ 
+ 	wr32(hw, PFINT_OICR_ENA, irq_reg);
+ 	wr32(hw, GLTSYN_AUX_IN(chan, tmr_idx), aux_reg);
+-	wr32(hw, GLGEN_GPIO_CTL(config->gpio_pin), gpio_reg);
+-
+-	if (store)
+-		memcpy(&pf->ptp.extts_channels[chan], config, sizeof(*config));
++	wr32(hw, GLGEN_GPIO_CTL(gpio_pin), gpio_reg);
+ 
+ 	return 0;
+ }
+@@ -1649,16 +1663,12 @@ static int ice_ptp_cfg_extts(struct ice_pf *pf, unsigned int chan,
+  */
+ static void ice_ptp_disable_all_extts(struct ice_pf *pf)
+ {
+-	struct ice_extts_channel extts_cfg = {};
+-	int i;
++	uint i;
+ 
+-	for (i = 0; i < pf->ptp.info.n_ext_ts; i++) {
+-		if (pf->ptp.extts_channels[i].ena) {
+-			extts_cfg.gpio_pin = pf->ptp.extts_channels[i].gpio_pin;
+-			extts_cfg.ena = false;
+-			ice_ptp_cfg_extts(pf, i, &extts_cfg, false);
+-		}
+-	}
++	for (i = 0; i < pf->ptp.info.n_ext_ts ; i++)
++		if (pf->ptp.extts_rqs[i].flags & PTP_ENABLE_FEATURE)
++			ice_ptp_cfg_extts(pf, &pf->ptp.extts_rqs[i],
++					  false);
+ 
+ 	synchronize_irq(pf->oicr_irq.virq);
+ }
+@@ -1671,159 +1681,175 @@ static void ice_ptp_disable_all_extts(struct ice_pf *pf)
+  */
+ static void ice_ptp_enable_all_extts(struct ice_pf *pf)
+ {
+-	int i;
++	uint i;
+ 
+-	for (i = 0; i < pf->ptp.info.n_ext_ts; i++) {
+-		if (pf->ptp.extts_channels[i].ena) {
+-			ice_ptp_cfg_extts(pf, i, &pf->ptp.extts_channels[i],
+-					  false);
+-		}
+-	}
++	for (i = 0; i < pf->ptp.info.n_ext_ts ; i++)
++		if (pf->ptp.extts_rqs[i].flags & PTP_ENABLE_FEATURE)
++			ice_ptp_cfg_extts(pf, &pf->ptp.extts_rqs[i],
++					  true);
  }
  
  /**
-- * ice_get_sma_config_e810t
-- * @hw: pointer to the hw struct
-- * @ptp_pins: pointer to the ptp_pin_desc struture
-- *
-- * Read the configuration of the SMA control logic and put it into the
-- * ptp_pin_desc structure
-+ * ice_ptp_update_sma_data - update SMA pins data according to pins setup
-+ * @pf: Board private structure
-+ * @sma_pins: parsed SMA pins status
-+ * @data: SMA data to update
+- * ice_ptp_cfg_clkout - Configure clock to generate periodic wave
+- * @pf: Board private structure
+- * @chan: GPIO channel (0-3)
+- * @config: desired periodic clk configuration. NULL will disable channel
+- * @store: If set to true the values will be stored
++ * ice_ptp_write_perout - Write periodic wave parameters to HW
++ * @hw: pointer to the HW struct
++ * @chan: target channel
++ * @gpio_pin: target GPIO pin
++ * @start: target time to start periodic output
++ * @period: target period
+  *
+- * Configure the internal clock generator modules to generate the clock wave of
+- * specified period.
++ * Return: 0 on success, negative error code otherwise
   */
--static int
--ice_get_sma_config_e810t(struct ice_hw *hw, struct ptp_pin_desc *ptp_pins)
-+static void ice_ptp_update_sma_data(struct ice_pf *pf, uint sma_pins[],
-+				    u8 *data)
+-static int ice_ptp_cfg_clkout(struct ice_pf *pf, unsigned int chan,
+-			      struct ice_perout_channel *config, bool store)
++static int ice_ptp_write_perout(struct ice_hw *hw, unsigned int chan,
++				unsigned int gpio_pin, u64 start, u64 period)
  {
--	u8 data, i;
--	int status;
-+	const char *state1, *state2;
+-	u64 current_time, period, start_time, phase;
+-	struct ice_hw *hw = &pf->hw;
+-	u32 func, val, gpio_pin;
+-	u8 tmr_idx;
  
--	/* Read initial pin state */
--	status = ice_read_sma_ctrl_e810t(hw, &data);
--	if (status)
--		return status;
+-	if (config && config->flags & ~PTP_PEROUT_PHASE)
+-		return -EOPNOTSUPP;
 -
--	/* initialize with defaults */
--	for (i = 0; i < NUM_PTP_PINS_E810T; i++) {
--		strscpy(ptp_pins[i].name, ice_pin_desc_e810t[i].name,
--			sizeof(ptp_pins[i].name));
--		ptp_pins[i].index = ice_pin_desc_e810t[i].index;
--		ptp_pins[i].func = ice_pin_desc_e810t[i].func;
--		ptp_pins[i].chan = ice_pin_desc_e810t[i].chan;
+-	tmr_idx = hw->func_caps.ts_func_info.tmr_index_owned;
++	u8 tmr_idx = hw->func_caps.ts_func_info.tmr_index_owned;
++	u32 val = 0;
+ 
+ 	/* 0. Reset mode & out_en in AUX_OUT */
+ 	wr32(hw, GLTSYN_AUX_OUT(chan, tmr_idx), 0);
+ 
+-	/* If we're disabling the output, clear out CLKO and TGT and keep
+-	 * output level low
++	/* 1. Write perout with half of required period value.
++	 * HW toggles output when source clock hits the TGT and then adds
++	 * GLTSYN_CLKO value to the target, so it ends up with 50% duty cycle.
+ 	 */
+-	if (!config || !config->ena) {
+-		wr32(hw, GLTSYN_CLKO(chan, tmr_idx), 0);
+-		wr32(hw, GLTSYN_TGT_L(chan, tmr_idx), 0);
+-		wr32(hw, GLTSYN_TGT_H(chan, tmr_idx), 0);
+-
+-		val = GLGEN_GPIO_CTL_PIN_DIR_M;
+-		gpio_pin = pf->ptp.perout_channels[chan].gpio_pin;
+-		wr32(hw, GLGEN_GPIO_CTL(gpio_pin), val);
+-
+-		/* Store the value if requested */
+-		if (store)
+-			memset(&pf->ptp.perout_channels[chan], 0,
+-			       sizeof(struct ice_perout_channel));
+-
+-		return 0;
+-	}
+-	period = config->period;
+-	start_time = config->start_time;
+-	div64_u64_rem(start_time, period, &phase);
+-	gpio_pin = config->gpio_pin;
+-
+-	/* 1. Write clkout with half of required period value */
+-	if (period & 0x1) {
+-		dev_err(ice_pf_to_dev(pf), "CLK Period must be an even value\n");
+-		goto err;
 -	}
 -
--	/* Parse SMA1/UFL1 */
--	switch (data & ICE_SMA1_MASK_E810T) {
--	case ICE_SMA1_MASK_E810T:
--	default:
--		ptp_pins[SMA1].func = PTP_PF_NONE;
--		ptp_pins[UFL1].func = PTP_PF_NONE;
--		break;
--	case ICE_SMA1_DIR_EN_E810T:
--		ptp_pins[SMA1].func = PTP_PF_PEROUT;
--		ptp_pins[UFL1].func = PTP_PF_NONE;
--		break;
--	case ICE_SMA1_TX_EN_E810T:
--		ptp_pins[SMA1].func = PTP_PF_EXTTS;
--		ptp_pins[UFL1].func = PTP_PF_NONE;
--		break;
--	case 0:
--		ptp_pins[SMA1].func = PTP_PF_EXTTS;
--		ptp_pins[UFL1].func = PTP_PF_PEROUT;
--		break;
-+	/* Set the right state based on the desired configuration.
-+	 * When bit is set, functionality is disabled.
-+	 */
-+	*data &= ~ICE_ALL_SMA_MASK;
-+	if (!sma_pins[UFL1 - 1]) {
-+		if (sma_pins[SMA1 - 1] == PTP_PF_EXTTS) {
-+			state1 = "SMA1 Rx, U.FL1 disabled";
-+			*data |= ICE_SMA1_TX_EN;
-+		} else if (sma_pins[SMA1 - 1] == PTP_PF_PEROUT) {
-+			state1 = "SMA1 Tx U.FL1 disabled";
-+			*data |= ICE_SMA1_DIR_EN;
-+		} else {
-+			state1 = "SMA1 disabled, U.FL1 disabled";
-+			*data |= ICE_SMA1_MASK;
-+		}
-+	} else {
-+		/* U.FL1 Tx will always enable SMA1 Rx */
-+		state1 = "SMA1 Rx, U.FL1 Tx";
+ 	period >>= 1;
+ 
+-	/* For proper operation, the GLTSYN_CLKO must be larger than clock tick
++	/* For proper operation, GLTSYN_CLKO must be larger than clock tick and
++	 * period has to fit in 32 bit register.
+ 	 */
+ #define MIN_PULSE 3
+-	if (period <= MIN_PULSE || period > U32_MAX) {
+-		dev_err(ice_pf_to_dev(pf), "CLK Period must be > %d && < 2^33",
+-			MIN_PULSE * 2);
+-		goto err;
++	if (!!period && (period <= MIN_PULSE || period > U32_MAX)) {
++		dev_err(ice_hw_to_dev(hw), "CLK period ticks must be >= %d && <= 2^32",
++			MIN_PULSE);
++		return -EIO;
  	}
  
--	/* Parse SMA2/UFL2 */
--	switch (data & ICE_SMA2_MASK_E810T) {
--	case ICE_SMA2_MASK_E810T:
--	default:
--		ptp_pins[SMA2].func = PTP_PF_NONE;
--		ptp_pins[UFL2].func = PTP_PF_NONE;
--		break;
--	case (ICE_SMA2_TX_EN_E810T | ICE_SMA2_UFL2_RX_DIS_E810T):
--		ptp_pins[SMA2].func = PTP_PF_EXTTS;
--		ptp_pins[UFL2].func = PTP_PF_NONE;
--		break;
--	case (ICE_SMA2_DIR_EN_E810T | ICE_SMA2_UFL2_RX_DIS_E810T):
--		ptp_pins[SMA2].func = PTP_PF_PEROUT;
--		ptp_pins[UFL2].func = PTP_PF_NONE;
--		break;
--	case (ICE_SMA2_DIR_EN_E810T | ICE_SMA2_TX_EN_E810T):
--		ptp_pins[SMA2].func = PTP_PF_NONE;
--		ptp_pins[UFL2].func = PTP_PF_EXTTS;
--		break;
--	case ICE_SMA2_DIR_EN_E810T:
--		ptp_pins[SMA2].func = PTP_PF_PEROUT;
--		ptp_pins[UFL2].func = PTP_PF_EXTTS;
--		break;
-+	if (!sma_pins[UFL2 - 1]) {
-+		if (sma_pins[SMA2 - 1] == PTP_PF_EXTTS) {
-+			state2 = "SMA2 Rx, U.FL2 disabled";
-+			*data |= ICE_SMA2_TX_EN | ICE_SMA2_UFL2_RX_DIS;
-+		} else if (sma_pins[SMA2 - 1] == PTP_PF_PEROUT) {
-+			state2 = "SMA2 Tx, U.FL2 disabled";
-+			*data |= ICE_SMA2_DIR_EN | ICE_SMA2_UFL2_RX_DIS;
-+		} else {
-+			state2 = "SMA2 disabled, U.FL2 disabled";
-+			*data |= ICE_SMA2_MASK;
-+		}
-+	} else {
-+		if (!sma_pins[SMA2 - 1]) {
-+			state2 = "SMA2 disabled, U.FL2 Rx";
-+			*data |= ICE_SMA2_DIR_EN | ICE_SMA2_TX_EN;
-+		} else {
-+			state2 = "SMA2 Tx, U.FL2 Rx";
-+			*data |= ICE_SMA2_DIR_EN;
-+		}
+ 	wr32(hw, GLTSYN_CLKO(chan, tmr_idx), lower_32_bits(period));
+ 
+-	/* Allow time for programming before start_time is hit */
+-	current_time = ice_ptp_read_src_clk_reg(pf, NULL);
+-
+-	/* if start time is in the past start the timer at the nearest second
+-	 * maintaining phase
+-	 */
+-	if (start_time < current_time)
+-		start_time = roundup_u64(current_time, NSEC_PER_SEC) + phase;
+-
+-	if (ice_is_e810(hw))
+-		start_time -= E810_OUT_PROP_DELAY_NS;
+-	else
+-		start_time -= ice_e82x_pps_delay(ice_e82x_time_ref(hw));
+-
+ 	/* 2. Write TARGET time */
+-	wr32(hw, GLTSYN_TGT_L(chan, tmr_idx), lower_32_bits(start_time));
+-	wr32(hw, GLTSYN_TGT_H(chan, tmr_idx), upper_32_bits(start_time));
++	wr32(hw, GLTSYN_TGT_L(chan, tmr_idx), lower_32_bits(start));
++	wr32(hw, GLTSYN_TGT_H(chan, tmr_idx), upper_32_bits(start));
+ 
+ 	/* 3. Write AUX_OUT register */
+-	val = GLTSYN_AUX_OUT_0_OUT_ENA_M | GLTSYN_AUX_OUT_0_OUTMOD_M;
++	if (!!period)
++		val = GLTSYN_AUX_OUT_0_OUT_ENA_M | GLTSYN_AUX_OUT_0_OUTMOD_M;
+ 	wr32(hw, GLTSYN_AUX_OUT(chan, tmr_idx), val);
+ 
+ 	/* 4. write GPIO CTL reg */
+-	func = 8 + chan + (tmr_idx * 4);
+-	val = GLGEN_GPIO_CTL_PIN_DIR_M |
+-	      FIELD_PREP(GLGEN_GPIO_CTL_PIN_FUNC_M, func);
++	val = GLGEN_GPIO_CTL_PIN_DIR_M;
++	if (!!period)
++		val |= FIELD_PREP(GLGEN_GPIO_CTL_PIN_FUNC_M,
++				  8 + chan + (tmr_idx * 4));
++
+ 	wr32(hw, GLGEN_GPIO_CTL(gpio_pin), val);
+ 
+-	/* Store the value if requested */
+-	if (store) {
+-		memcpy(&pf->ptp.perout_channels[chan], config,
+-		       sizeof(struct ice_perout_channel));
+-		pf->ptp.perout_channels[chan].start_time = phase;
++	return 0;
++}
++
++/**
++ * ice_ptp_cfg_perout - Configure clock to generate periodic wave
++ * @pf: Board private structure
++ * @rq: Periodic output request
++ * @on: Enable/disable flag
++ *
++ * Configure the internal clock generator modules to generate the clock wave of
++ * specified period.
++ *
++ * Return: 0 on success, negative error code otherwise
++ */
++static int ice_ptp_cfg_perout(struct ice_pf *pf, struct ptp_perout_request *rq,
++			      int on)
++{
++	u64 clk, period, start, phase;
++	struct ice_hw *hw = &pf->hw;
++	int pin_desc_idx;
++	uint gpio_pin;
++
++	if (rq->flags & ~PTP_PEROUT_PHASE)
++		return -EOPNOTSUPP;
++
++	pin_desc_idx = ice_ptp_find_pin_idx(pf, PTP_PF_PEROUT, rq->index);
++	if (pin_desc_idx < 0)
++		return -EIO;
++
++	gpio_pin = pf->ptp.ice_pin_desc[pin_desc_idx].gpio[1];
++	period = rq->period.sec * NSEC_PER_SEC + rq->period.nsec;
++
++	/* If we're disabling the output or period is 0, clear out CLKO and TGT
++	 * and keep output level low.
++	 */
++	if (!on || !period)
++		return ice_ptp_write_perout(hw, rq->index, gpio_pin, 0, 0);
++
++	if (strncmp(pf->ptp.pin_desc[pin_desc_idx].name, "1PPS", 64) == 0 &&
++	    period != NSEC_PER_SEC && hw->ptp.phy_model == ICE_PHY_E82X) {
++		dev_err(ice_pf_to_dev(pf), "1PPS pin supports only 1 s period\n");
++		return -EOPNOTSUPP;
  	}
  
 -	return 0;
-+	dev_dbg(ice_pf_to_dev(pf), "%s, %s\n", state1, state2);
+-err:
+-	dev_err(ice_pf_to_dev(pf), "PTP failed to cfg per_clk\n");
+-	return -EFAULT;
++	if (period & 0x1) {
++		dev_err(ice_pf_to_dev(pf), "CLK Period must be an even value\n");
++		return -EIO;
++	}
++
++	start = rq->start.sec * NSEC_PER_SEC + rq->start.nsec;
++
++	/* If PTP_PEROUT_PHASE is set, rq has phase instead of start time */
++	if (rq->flags & PTP_PEROUT_PHASE)
++		phase = start;
++	else
++		div64_u64_rem(start, period, &phase);
++
++	/* If we have only phase or start time is in the past, start the timer
++	 * at the next multiple of period, maintaining phase.
++	 */
++	clk = ice_ptp_read_src_clk_reg(pf, NULL);
++	if (rq->flags & PTP_PEROUT_PHASE || start <= clk - ice_prop_delay(hw))
++		start = div64_u64(clk + period - 1, period) * period + phase;
++
++	/* Compensate for propagation delay from the generator to the pin. */
++	start -= ice_prop_delay(hw);
++
++	return ice_ptp_write_perout(hw, rq->index, gpio_pin, start, period);
  }
  
  /**
-- * ice_ptp_set_sma_config_e810t
-- * @hw: pointer to the hw struct
-- * @ptp_pins: pointer to the ptp_pin_desc struture
-+ * ice_ptp_set_sma_cfg - set the configuration of the SMA control logic
+- * ice_ptp_disable_all_clkout - Disable all currently configured outputs
+- * @pf: pointer to the PF structure
++ * ice_ptp_disable_all_perout - Disable all currently configured outputs
 + * @pf: Board private structure
   *
-- * Set the configuration of the SMA control logic based on the configuration in
-- * num_pins parameter
-+ * Return: 0 on success, negative error code otherwise
+  * Disable all currently configured clock outputs. This is necessary before
+- * certain changes to the PTP hardware clock. Use ice_ptp_enable_all_clkout to
++ * certain changes to the PTP hardware clock. Use ice_ptp_enable_all_perout to
+  * re-enable the clocks again.
   */
--static int
--ice_ptp_set_sma_config_e810t(struct ice_hw *hw,
--			     const struct ptp_pin_desc *ptp_pins)
-+static int ice_ptp_set_sma_cfg(struct ice_pf *pf)
+-static void ice_ptp_disable_all_clkout(struct ice_pf *pf)
++static void ice_ptp_disable_all_perout(struct ice_pf *pf)
  {
--	int status;
-+	const struct ice_ptp_pin_desc *ice_pins = pf->ptp.ice_pin_desc;
-+	struct ptp_pin_desc *pins = pf->ptp.pin_desc;
-+	uint sma_pins[ICE_SMA_PINS_NUM] = {};
-+	int err;
- 	u8 data;
+ 	uint i;
  
--	/* SMA1 and UFL1 cannot be set to TX at the same time */
--	if (ptp_pins[SMA1].func == PTP_PF_PEROUT &&
--	    ptp_pins[UFL1].func == PTP_PF_PEROUT)
--		return -EINVAL;
--
--	/* SMA2 and UFL2 cannot be set to RX at the same time */
--	if (ptp_pins[SMA2].func == PTP_PF_EXTTS &&
--	    ptp_pins[UFL2].func == PTP_PF_EXTTS)
--		return -EINVAL;
--
- 	/* Read initial pin state value */
--	status = ice_read_sma_ctrl_e810t(hw, &data);
--	if (status)
--		return status;
--
--	/* Set the right sate based on the desired configuration */
--	data &= ~ICE_SMA1_MASK_E810T;
--	if (ptp_pins[SMA1].func == PTP_PF_NONE &&
--	    ptp_pins[UFL1].func == PTP_PF_NONE) {
--		dev_info(ice_hw_to_dev(hw), "SMA1 + U.FL1 disabled");
--		data |= ICE_SMA1_MASK_E810T;
--	} else if (ptp_pins[SMA1].func == PTP_PF_EXTTS &&
--		   ptp_pins[UFL1].func == PTP_PF_NONE) {
--		dev_info(ice_hw_to_dev(hw), "SMA1 RX");
--		data |= ICE_SMA1_TX_EN_E810T;
--	} else if (ptp_pins[SMA1].func == PTP_PF_NONE &&
--		   ptp_pins[UFL1].func == PTP_PF_PEROUT) {
--		/* U.FL 1 TX will always enable SMA 1 RX */
--		dev_info(ice_hw_to_dev(hw), "SMA1 RX + U.FL1 TX");
--	} else if (ptp_pins[SMA1].func == PTP_PF_EXTTS &&
--		   ptp_pins[UFL1].func == PTP_PF_PEROUT) {
--		dev_info(ice_hw_to_dev(hw), "SMA1 RX + U.FL1 TX");
--	} else if (ptp_pins[SMA1].func == PTP_PF_PEROUT &&
--		   ptp_pins[UFL1].func == PTP_PF_NONE) {
--		dev_info(ice_hw_to_dev(hw), "SMA1 TX");
--		data |= ICE_SMA1_DIR_EN_E810T;
--	}
--
--	data &= ~ICE_SMA2_MASK_E810T;
--	if (ptp_pins[SMA2].func == PTP_PF_NONE &&
--	    ptp_pins[UFL2].func == PTP_PF_NONE) {
--		dev_info(ice_hw_to_dev(hw), "SMA2 + U.FL2 disabled");
--		data |= ICE_SMA2_MASK_E810T;
--	} else if (ptp_pins[SMA2].func == PTP_PF_EXTTS &&
--			ptp_pins[UFL2].func == PTP_PF_NONE) {
--		dev_info(ice_hw_to_dev(hw), "SMA2 RX");
--		data |= (ICE_SMA2_TX_EN_E810T |
--			 ICE_SMA2_UFL2_RX_DIS_E810T);
--	} else if (ptp_pins[SMA2].func == PTP_PF_NONE &&
--		   ptp_pins[UFL2].func == PTP_PF_EXTTS) {
--		dev_info(ice_hw_to_dev(hw), "UFL2 RX");
--		data |= (ICE_SMA2_DIR_EN_E810T | ICE_SMA2_TX_EN_E810T);
--	} else if (ptp_pins[SMA2].func == PTP_PF_PEROUT &&
--		   ptp_pins[UFL2].func == PTP_PF_NONE) {
--		dev_info(ice_hw_to_dev(hw), "SMA2 TX");
--		data |= (ICE_SMA2_DIR_EN_E810T |
--			 ICE_SMA2_UFL2_RX_DIS_E810T);
--	} else if (ptp_pins[SMA2].func == PTP_PF_PEROUT &&
--		   ptp_pins[UFL2].func == PTP_PF_EXTTS) {
--		dev_info(ice_hw_to_dev(hw), "SMA2 TX + U.FL2 RX");
--		data |= ICE_SMA2_DIR_EN_E810T;
--	}
--
--	return ice_write_sma_ctrl_e810t(hw, data);
--}
--
--/**
-- * ice_ptp_set_sma_e810t
-- * @info: the driver's PTP info structure
-- * @pin: pin index in kernel structure
-- * @func: Pin function to be set (PTP_PF_NONE, PTP_PF_EXTTS or PTP_PF_PEROUT)
-- *
-- * Set the configuration of a single SMA pin
-- */
--static int
--ice_ptp_set_sma_e810t(struct ptp_clock_info *info, unsigned int pin,
--		      enum ptp_pin_function func)
--{
--	struct ptp_pin_desc ptp_pins[NUM_PTP_PINS_E810T];
--	struct ice_pf *pf = ptp_info_to_pf(info);
--	struct ice_hw *hw = &pf->hw;
--	int err;
--
--	if (pin < SMA1 || func > PTP_PF_PEROUT)
--		return -EOPNOTSUPP;
--
--	err = ice_get_sma_config_e810t(hw, ptp_pins);
-+	err = ice_read_sma_ctrl(&pf->hw, &data);
- 	if (err)
- 		return err;
- 
--	/* Disable the same function on the other pin sharing the channel */
--	if (pin == SMA1 && ptp_pins[UFL1].func == func)
--		ptp_pins[UFL1].func = PTP_PF_NONE;
--	if (pin == UFL1 && ptp_pins[SMA1].func == func)
--		ptp_pins[SMA1].func = PTP_PF_NONE;
--
--	if (pin == SMA2 && ptp_pins[UFL2].func == func)
--		ptp_pins[UFL2].func = PTP_PF_NONE;
--	if (pin == UFL2 && ptp_pins[SMA2].func == func)
--		ptp_pins[SMA2].func = PTP_PF_NONE;
--
--	/* Set up new pin function in the temp table */
--	ptp_pins[pin].func = func;
--
--	return ice_ptp_set_sma_config_e810t(hw, ptp_pins);
--}
--
--/**
-- * ice_verify_pin_e810t
-- * @info: the driver's PTP info structure
-- * @pin: Pin index
-- * @func: Assigned function
-- * @chan: Assigned channel
-- *
-- * Verify if pin supports requested pin function. If the Check pins consistency.
-- * Reconfigure the SMA logic attached to the given pin to enable its
-- * desired functionality
-- */
--static int
--ice_verify_pin_e810t(struct ptp_clock_info *info, unsigned int pin,
--		     enum ptp_pin_function func, unsigned int chan)
--{
--	/* Don't allow channel reassignment */
--	if (chan != ice_pin_desc_e810t[pin].chan)
--		return -EOPNOTSUPP;
--
--	/* Check if functions are properly assigned */
--	switch (func) {
--	case PTP_PF_NONE:
--		break;
--	case PTP_PF_EXTTS:
--		if (pin == UFL1)
--			return -EOPNOTSUPP;
--		break;
--	case PTP_PF_PEROUT:
--		if (pin == UFL2 || pin == GNSS)
--			return -EOPNOTSUPP;
--		break;
--	case PTP_PF_PHYSYNC:
--		return -EOPNOTSUPP;
--	}
-+	/* Get SMA/U.FL pins states */
-+	for (int i = 0; i < pf->ptp.info.n_pins; i++)
-+		if (pins[i].func) {
-+			int name_idx = ice_pins[i].name_idx;
-+
-+			switch (name_idx) {
-+			case SMA1:
-+			case UFL1:
-+			case SMA2:
-+			case UFL2:
-+				sma_pins[name_idx - 1] = pins[i].func;
-+				break;
-+			default:
-+				continue;
-+			}
-+		}
- 
--	return ice_ptp_set_sma_e810t(info, pin, func);
-+	ice_ptp_update_sma_data(pf, sma_pins, &data);
-+	return ice_write_sma_ctrl(&pf->hw, data);
+ 	for (i = 0; i < pf->ptp.info.n_per_out; i++)
+-		if (pf->ptp.perout_channels[i].ena)
+-			ice_ptp_cfg_clkout(pf, i, NULL, false);
++		if (pf->ptp.perout_rqs[i].period.sec ||
++		    pf->ptp.perout_rqs[i].period.nsec)
++			ice_ptp_cfg_perout(pf, &pf->ptp.perout_rqs[i],
++					   false);
  }
  
  /**
-@@ -1962,81 +1826,6 @@ static void ice_ptp_enable_all_clkout(struct ice_pf *pf)
- 					   false);
+- * ice_ptp_enable_all_clkout - Enable all configured periodic clock outputs
+- * @pf: pointer to the PF structure
++ * ice_ptp_enable_all_perout - Enable all configured periodic clock outputs
++ * @pf: Board private structure
+  *
+  * Enable all currently configured clock outputs. Use this after
+- * ice_ptp_disable_all_clkout to reconfigure the output signals according to
++ * ice_ptp_disable_all_perout to reconfigure the output signals according to
+  * their configuration.
+  */
+-static void ice_ptp_enable_all_clkout(struct ice_pf *pf)
++static void ice_ptp_enable_all_perout(struct ice_pf *pf)
+ {
+ 	uint i;
+ 
+ 	for (i = 0; i < pf->ptp.info.n_per_out; i++)
+-		if (pf->ptp.perout_channels[i].ena)
+-			ice_ptp_cfg_clkout(pf, i, &pf->ptp.perout_channels[i],
+-					   false);
++		if (pf->ptp.perout_rqs[i].period.sec ||
++		    pf->ptp.perout_rqs[i].period.nsec)
++			ice_ptp_cfg_perout(pf, &pf->ptp.perout_rqs[i],
++					   true);
  }
  
--/**
-- * ice_ptp_gpio_enable_e810t - Enable/disable ancillary features of PHC
-- * @info: the driver's PTP info structure
-- * @rq: The requested feature to change
-- * @on: Enable/disable flag
-- */
--static int
--ice_ptp_gpio_enable_e810t(struct ptp_clock_info *info,
--			  struct ptp_clock_request *rq, int on)
--{
--	struct ice_pf *pf = ptp_info_to_pf(info);
--	bool sma_pres = false;
--	unsigned int chan;
--	u32 gpio_pin;
+ /**
+@@ -1869,50 +1895,40 @@ static int ice_verify_pin(struct ptp_clock_info *info, unsigned int pin,
+  * @rq: The requested feature to change
+  * @on: Enable/disable flag
+  *
+- * Return: 0 on success, -EOPNOTSUPP when request type is not supported
++ * Return: 0 on success, negative error code otherwise
+  */
+ static int ice_ptp_gpio_enable(struct ptp_clock_info *info,
+ 			       struct ptp_clock_request *rq, int on)
+ {
+ 	struct ice_pf *pf = ptp_info_to_pf(info);
++	int err;
+ 
+ 	switch (rq->type) {
+ 	case PTP_CLK_REQ_PEROUT:
+ 	{
+-		struct ice_perout_channel clk_cfg;
+-		int pin_desc_idx;
 -
--	if (ice_is_feature_supported(pf, ICE_F_SMA_CTRL))
--		sma_pres = true;
--
--	switch (rq->type) {
--	case PTP_CLK_REQ_PEROUT:
--	{
--		struct ice_perout_channel clk_cfg = {};
--
--		chan = rq->perout.index;
--		if (sma_pres) {
--			if (chan == ice_pin_desc_e810t[SMA1].chan)
--				clk_cfg.gpio_pin = GPIO_20;
--			else if (chan == ice_pin_desc_e810t[SMA2].chan)
--				clk_cfg.gpio_pin = GPIO_22;
--			else
--				return -1;
--		} else {
--			if (chan == 0)
--				clk_cfg.gpio_pin = GPIO_20;
--			else
--				clk_cfg.gpio_pin = GPIO_22;
--		}
+-		pin_desc_idx = ice_ptp_find_pin_idx(pf, PTP_PF_PEROUT,
+-						    rq->perout.index);
+-		if (pin_desc_idx < 0)
+-			return -EIO;
++		struct ptp_perout_request *cached =
++			&pf->ptp.perout_rqs[rq->perout.index];
+ 
 -
 -		clk_cfg.flags = rq->perout.flags;
+-		clk_cfg.gpio_pin = pf->ptp.ice_pin_desc[pin_desc_idx].gpio[1];
 -		clk_cfg.period = rq->perout.period.sec * NSEC_PER_SEC +
 -				 rq->perout.period.nsec;
 -		clk_cfg.start_time = rq->perout.start.sec * NSEC_PER_SEC +
 -				     rq->perout.start.nsec;
 -		clk_cfg.ena = !!on;
 -
--		return ice_ptp_cfg_clkout(pf, chan, &clk_cfg, true);
--	}
--	case PTP_CLK_REQ_EXTTS:
--	{
+-		return ice_ptp_cfg_clkout(pf, rq->perout.index, &clk_cfg, true);
++		err = ice_ptp_cfg_perout(pf, &rq->perout, on);
++		if (!err) {
++			*cached = rq->perout;
++		} else {
++			cached->period.sec = 0;
++			cached->period.nsec = 0;
++		}
++		return err;
+ 	}
+ 	case PTP_CLK_REQ_EXTTS:
+ 	{
 -		struct ice_extts_channel extts_cfg = {};
+-		int pin_desc_idx;
 -
--		chan = rq->extts.index;
--		if (sma_pres) {
--			if (chan < ice_pin_desc_e810t[SMA2].chan)
--				gpio_pin = GPIO_21;
--			else
--				gpio_pin = GPIO_23;
--		} else {
--			if (chan == 0)
--				gpio_pin = GPIO_21;
--			else
--				gpio_pin = GPIO_23;
--		}
--
+-		pin_desc_idx = ice_ptp_find_pin_idx(pf, PTP_PF_EXTTS,
+-						    rq->extts.index);
+-		if (pin_desc_idx < 0)
+-			return -EIO;
++		struct ptp_extts_request *cached =
++			&pf->ptp.extts_rqs[rq->extts.index];
+ 
 -		extts_cfg.flags = rq->extts.flags;
--		extts_cfg.gpio_pin = gpio_pin;
+-		extts_cfg.gpio_pin = pf->ptp.ice_pin_desc[pin_desc_idx].gpio[0];
 -		extts_cfg.ena = !!on;
 -
--		return ice_ptp_cfg_extts(pf, chan, &extts_cfg, true);
--	}
--	default:
--		return -EOPNOTSUPP;
--	}
--}
--
- /**
-  * ice_verify_pin - verify if pin supports requested pin function
-  * @info: the driver's PTP info structure
-@@ -2530,8 +2319,12 @@ static void ice_ptp_setup_pin_cfg(struct ice_pf *pf)
- 		struct ptp_pin_desc *pin = &pf->ptp.pin_desc[i];
- 		const char *name = NULL;
- 
--		name = ice_pin_names[desc->name_idx];
--		strscpy(pin->name, name, sizeof(pin->name));
-+		if (!ice_is_feature_supported(pf, ICE_F_SMA_CTRL))
-+			name = ice_pin_names[desc->name_idx];
+-		return ice_ptp_cfg_extts(pf, rq->extts.index, &extts_cfg, true);
++		err = ice_ptp_cfg_extts(pf, &rq->extts, on);
++		if (!err)
++			*cached = rq->extts;
 +		else
-+			name = ice_pin_names_e810t[desc->name_idx];
-+		if (name)
-+			strscpy(pin->name, name, sizeof(pin->name));
++			cached->flags &= ~PTP_ENABLE_FEATURE;
++		return err;
+ 	}
+ 	default:
+ 		return -EOPNOTSUPP;
+@@ -1972,7 +1988,7 @@ ice_ptp_settime64(struct ptp_clock_info *info, const struct timespec64 *ts)
+ 	}
  
- 		pin->index = i;
- 		if (desc->gpio[0] >= 0 && desc->gpio[1] < 0) {
-@@ -2550,20 +2343,17 @@ static void ice_ptp_setup_pin_cfg(struct ice_pf *pf)
- }
+ 	/* Disable periodic outputs */
+-	ice_ptp_disable_all_clkout(pf);
++	ice_ptp_disable_all_perout(pf);
  
- /**
-- * ice_ptp_disable_sma_pins_e810t - Disable E810-T SMA pins
-+ * ice_ptp_disable_sma_pins - Disable SMA pins
-  * @pf: pointer to the PF structure
-- * @info: PTP clock info structure
-  *
-  * Disable the OS access to the SMA pins. Called to clear out the OS
-- * indications of pin support when we fail to setup the E810-T SMA control
-- * register.
-+ * indications of pin support when we fail to setup the SMA control register.
-  */
--static void
--ice_ptp_disable_sma_pins_e810t(struct ice_pf *pf, struct ptp_clock_info *info)
-+static void ice_ptp_disable_sma_pins(struct ice_pf *pf)
- {
--	struct device *dev = ice_pf_to_dev(pf);
-+	struct ptp_clock_info *info = &pf->ptp.info;
+ 	err = ice_ptp_write_init(pf, &ts64);
+ 	ice_ptp_unlock(hw);
+@@ -1981,7 +1997,7 @@ ice_ptp_settime64(struct ptp_clock_info *info, const struct timespec64 *ts)
+ 		ice_ptp_reset_cached_phctime(pf);
  
--	dev_warn(dev, "Failed to configure E810-T SMA pin control\n");
-+	dev_warn(ice_pf_to_dev(pf), "Failed to configure  SMA pin control\n");
+ 	/* Reenable periodic outputs */
+-	ice_ptp_enable_all_clkout(pf);
++	ice_ptp_enable_all_perout(pf);
  
- 	info->enable = NULL;
- 	info->verify = NULL;
-@@ -2572,47 +2362,24 @@ ice_ptp_disable_sma_pins_e810t(struct ice_pf *pf, struct ptp_clock_info *info)
- 	info->n_per_out = 0;
- }
+ 	/* Recalibrate and re-enable timestamp blocks for E822/E823 */
+ 	if (hw->ptp.phy_model == ICE_PHY_E82X)
+@@ -2043,12 +2059,12 @@ static int ice_ptp_adjtime(struct ptp_clock_info *info, s64 delta)
+ 	}
  
--/**
-- * ice_ptp_setup_sma_pins_e810t - Setup the SMA pins
-- * @pf: pointer to the PF structure
-- * @info: PTP clock info structure
-- *
-- * Finish setting up the SMA pins by allocating pin_config, and setting it up
-- * according to the current status of the SMA. On failure, disable all of the
-- * extended SMA pin support.
-- */
--static void
--ice_ptp_setup_sma_pins_e810t(struct ice_pf *pf, struct ptp_clock_info *info)
--{
--	struct device *dev = ice_pf_to_dev(pf);
--	int err;
--
--	/* Allocate memory for kernel pins interface */
--	info->pin_config = devm_kcalloc(dev, info->n_pins,
--					sizeof(*info->pin_config), GFP_KERNEL);
--	if (!info->pin_config) {
--		ice_ptp_disable_sma_pins_e810t(pf, info);
--		return;
--	}
--
--	/* Read current SMA status */
--	err = ice_get_sma_config_e810t(&pf->hw, info->pin_config);
--	if (err)
--		ice_ptp_disable_sma_pins_e810t(pf, info);
--}
--
- /**
-  * ice_ptp_setup_pins_e810t - Setup PTP pins in sysfs
-  * @pf: pointer to the PF instance
-  */
- static void ice_ptp_setup_pins_e810t(struct ice_pf *pf)
- {
--	pf->ptp.info.enable = ice_ptp_gpio_enable_e810t;
--	pf->ptp.info.n_pins = NUM_PTP_PINS_E810T;
--	pf->ptp.info.verify = ice_verify_pin_e810t;
-+	struct ice_ptp *ptp = &pf->ptp;
-+	int err;
-+
-+	ptp->ice_pin_desc = ice_pin_desc_e810t;
-+	ptp->info.n_pins = ICE_PIN_DESC_ARR_LEN(ice_pin_desc_e810t);
-+	ptp->info.pin_config = ptp->pin_desc;
-+	ice_ptp_setup_pin_cfg(pf);
+ 	/* Disable periodic outputs */
+-	ice_ptp_disable_all_clkout(pf);
++	ice_ptp_disable_all_perout(pf);
  
--	/* Complete setup of the SMA pins */
--	ice_ptp_setup_sma_pins_e810t(pf, &pf->ptp.info);
-+	/* Clear SMA status */
-+	err = ice_ptp_set_sma_cfg(pf);
-+	if (err)
-+		ice_ptp_disable_sma_pins(pf);
- }
+ 	err = ice_ptp_write_adj(pf, delta);
  
- /**
-@@ -2632,9 +2399,6 @@ static void ice_ptp_set_funcs_e82x(struct ice_pf *pf)
- 		pf->ptp.info.getcrosststamp = ice_ptp_getcrosststamp_e82x;
+ 	/* Reenable periodic outputs */
+-	ice_ptp_enable_all_clkout(pf);
++	ice_ptp_enable_all_perout(pf);
  
- #endif /* CONFIG_ICE_HWTS */
--	pf->ptp.info.enable = ice_ptp_gpio_enable;
--	pf->ptp.info.verify = ice_verify_pin;
--
- 	if (ice_is_e825c(&pf->hw)) {
- 		pf->ptp.ice_pin_desc = ice_pin_desc_e825c;
- 		pf->ptp.info.n_pins = ICE_PIN_DESC_ARR_LEN(ice_pin_desc_e825c);
-@@ -2648,15 +2412,13 @@ static void ice_ptp_set_funcs_e82x(struct ice_pf *pf)
- /**
-  * ice_ptp_set_funcs_e810 - Set specialized functions for E810 support
-  * @pf: Board private structure
-- * @info: PTP info to fill
-  *
-  * Assign functions to the PTP capabiltiies structure for E810 devices.
-  * Functions which operate across all device families should be set directly
-- * in ice_ptp_set_caps. Only add functions here which are distinct for e810
-+ * in ice_ptp_set_caps. Only add functions here which are distinct for E810
-  * devices.
-  */
--static void
--ice_ptp_set_funcs_e810(struct ice_pf *pf, struct ptp_clock_info *info)
-+static void ice_ptp_set_funcs_e810(struct ice_pf *pf)
- {
- 	if (ice_is_e810t(&pf->hw) &&
- 	    ice_is_feature_supported(pf, ICE_F_SMA_CTRL)) {
-@@ -2688,9 +2450,11 @@ static void ice_ptp_set_caps(struct ice_pf *pf)
- 	info->settime64 = ice_ptp_settime64;
- 	info->n_per_out = GLTSYN_TGT_H_IDX_MAX;
- 	info->n_ext_ts = GLTSYN_EVNT_H_IDX_MAX;
-+	info->enable = ice_ptp_gpio_enable;
-+	info->verify = ice_verify_pin;
+ 	ice_ptp_unlock(hw);
  
- 	if (ice_is_e810(&pf->hw))
--		ice_ptp_set_funcs_e810(pf, info);
-+		ice_ptp_set_funcs_e810(pf);
- 	else
- 		ice_ptp_set_funcs_e82x(pf);
- }
+@@ -2658,7 +2674,7 @@ void ice_ptp_prepare_for_reset(struct ice_pf *pf, enum ice_reset_req reset_type)
+ 	ice_ptp_release_tx_tracker(pf, &pf->ptp.port.tx);
+ 
+ 	/* Disable periodic outputs */
+-	ice_ptp_disable_all_clkout(pf);
++	ice_ptp_disable_all_perout(pf);
+ 
+ 	src_tmr = ice_get_ptp_src_clock_index(&pf->hw);
+ 
+@@ -2735,7 +2751,7 @@ static int ice_ptp_rebuild_owner(struct ice_pf *pf)
+ 	}
+ 
+ 	/* Re-enable all periodic outputs and external timestamp events */
+-	ice_ptp_enable_all_clkout(pf);
++	ice_ptp_enable_all_perout(pf);
+ 	ice_ptp_enable_all_extts(pf);
+ 
+ 	return 0;
+@@ -3315,7 +3331,7 @@ void ice_ptp_release(struct ice_pf *pf)
+ 		return;
+ 
+ 	/* Disable periodic outputs */
+-	ice_ptp_disable_all_clkout(pf);
++	ice_ptp_disable_all_perout(pf);
+ 
+ 	ptp_clock_unregister(pf->ptp.clock);
+ 	pf->ptp.clock = NULL;
 diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.h b/drivers/net/ethernet/intel/ice/ice_ptp.h
-index 982769dba832..449a0eaf904f 100644
+index 449a0eaf904f..27b32da999df 100644
 --- a/drivers/net/ethernet/intel/ice/ice_ptp.h
 +++ b/drivers/net/ethernet/intel/ice/ice_ptp.h
-@@ -8,24 +8,6 @@
+@@ -8,19 +8,6 @@
  #include <linux/kthread.h>
  
  #include "ice_ptp_hw.h"
--
--enum ice_ptp_pin_e810 {
--	GPIO_20 = 0,
--	GPIO_21,
--	GPIO_22,
--	GPIO_23,
--	NUM_PTP_PIN_E810
+-struct ice_perout_channel {
+-	bool ena;
+-	u32 gpio_pin;
+-	u32 flags;
+-	u64 period;
+-	u64 start_time;
 -};
 -
--enum ice_ptp_pin_e810t {
--	GNSS = 0,
--	SMA1,
--	UFL1,
--	SMA2,
--	UFL2,
--	NUM_PTP_PINS_E810T
+-struct ice_extts_channel {
+-	bool ena;
+-	u32 gpio_pin;
+-	u32 flags;
 -};
--
- struct ice_perout_channel {
- 	bool ena;
- 	u32 gpio_pin;
-@@ -230,6 +212,14 @@ enum ice_ptp_pin {
- 	ONE_PPS
- };
  
-+enum ice_ptp_pin_e810t {
-+	GNSS = 0,
-+	SMA1,
-+	UFL1,
-+	SMA2,
-+	UFL2
-+};
-+
- /* Per-channel register definitions */
- #define GLTSYN_AUX_OUT(_chan, _idx)	(GLTSYN_AUX_OUT_0(_idx) + ((_chan) * 8))
- #define GLTSYN_AUX_IN(_chan, _idx)	(GLTSYN_AUX_IN_0(_idx) + ((_chan) * 8))
-@@ -241,9 +231,8 @@ enum ice_ptp_pin {
- #define GLTSYN_EVNT_H_IDX_MAX		3
- 
- /* Pin definitions for PTP */
--#define PPS_CLK_GEN_CHAN		3
--#define PPS_PIN_INDEX			5
- #define ICE_N_PINS_MAX			6
-+#define ICE_SMA_PINS_NUM		4
- #define ICE_PIN_DESC_ARR_LEN(_arr)	(sizeof(_arr) / \
- 					 sizeof(struct ice_ptp_pin_desc))
- 
-diff --git a/drivers/net/ethernet/intel/ice/ice_ptp_hw.c b/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
-index 3a33e6b9b313..3c314f3d8107 100644
---- a/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
-@@ -5150,9 +5150,9 @@ ice_get_phy_tx_tstamp_ready_e810(struct ice_hw *hw, u8 port, u64 *tstamp_ready)
- 	return 0;
- }
- 
--/* E810T SMA functions
-+/* E810 SMA functions
-  *
-- * The following functions operate specifically on E810T hardware and are used
-+ * The following functions operate specifically on E810 hardware and are used
-  * to access the extended GPIOs available.
+ /* The ice hardware captures Tx hardware timestamps in the PHY. The timestamp
+  * is stored in a buffer of registers. Depending on the specific hardware,
+@@ -259,13 +246,12 @@ struct ice_ptp_pin_desc {
+  * @work: delayed work function for periodic tasks
+  * @cached_phc_time: a cached copy of the PHC time for timestamp extension
+  * @cached_phc_jiffies: jiffies when cached_phc_time was last updated
+- * @ext_ts_chan: the external timestamp channel in use
++ * @kworker: kwork thread for handling periodic work
+  * @ext_ts_irq: the external timestamp IRQ in use
+  * @pin_desc: structure defining pins
+  * @ice_pin_desc: internal structure describing pin relations
+- * @kworker: kwork thread for handling periodic work
+- * @perout_channels: periodic output data
+- * @extts_channels: channels for external timestamps
++ * @perout_rqs: cached periodic output requests
++ * @extts_rqs: cached external timestamp requests
+  * @info: structure defining PTP hardware capabilities
+  * @clock: pointer to registered PTP clock device
+  * @tstamp_config: hardware timestamping configuration
+@@ -285,13 +271,12 @@ struct ice_ptp {
+ 	struct kthread_delayed_work work;
+ 	u64 cached_phc_time;
+ 	unsigned long cached_phc_jiffies;
+-	u8 ext_ts_chan;
+-	u8 ext_ts_irq;
+ 	struct kthread_worker *kworker;
++	u8 ext_ts_irq;
+ 	struct ptp_pin_desc pin_desc[ICE_N_PINS_MAX];
+ 	const struct ice_ptp_pin_desc *ice_pin_desc;
+-	struct ice_perout_channel perout_channels[GLTSYN_TGT_H_IDX_MAX];
+-	struct ice_extts_channel extts_channels[GLTSYN_TGT_H_IDX_MAX];
++	struct ptp_perout_request perout_rqs[GLTSYN_TGT_H_IDX_MAX];
++	struct ptp_extts_request extts_rqs[GLTSYN_EVNT_H_IDX_MAX];
+ 	struct ptp_clock_info info;
+ 	struct ptp_clock *clock;
+ 	struct hwtstamp_config tstamp_config;
+diff --git a/drivers/net/ethernet/intel/ice/ice_ptp_consts.h b/drivers/net/ethernet/intel/ice/ice_ptp_consts.h
+index e6980b94a6c1..585ce200c60f 100644
+--- a/drivers/net/ethernet/intel/ice/ice_ptp_consts.h
++++ b/drivers/net/ethernet/intel/ice/ice_ptp_consts.h
+@@ -334,7 +334,7 @@ struct ice_eth56g_mac_reg_cfg eth56g_mac_cfg[NUM_ICE_ETH56G_LNK_SPD] = {
+  * reference. See the struct ice_time_ref_info_e82x for information about the
+  * meaning of each constant.
   */
- 
-@@ -5219,14 +5219,14 @@ ice_get_pca9575_handle(struct ice_hw *hw, u16 *pca9575_handle)
- }
- 
- /**
-- * ice_read_sma_ctrl_e810t
-+ * ice_read_sma_ctrl
-  * @hw: pointer to the hw struct
-  * @data: pointer to data to be read from the GPIO controller
-  *
-  * Read the SMA controller state. It is connected to pins 3-7 of Port 1 of the
-  * PCA9575 expander, so only bits 3-7 in data are valid.
-  */
--int ice_read_sma_ctrl_e810t(struct ice_hw *hw, u8 *data)
-+int ice_read_sma_ctrl(struct ice_hw *hw, u8 *data)
- {
- 	int status;
- 	u16 handle;
-@@ -5238,7 +5238,7 @@ int ice_read_sma_ctrl_e810t(struct ice_hw *hw, u8 *data)
- 
- 	*data = 0;
- 
--	for (i = ICE_SMA_MIN_BIT_E810T; i <= ICE_SMA_MAX_BIT_E810T; i++) {
-+	for (i = ICE_SMA_MIN_BIT; i <= ICE_SMA_MAX_BIT; i++) {
- 		bool pin;
- 
- 		status = ice_aq_get_gpio(hw, handle, i + ICE_PCA9575_P1_OFFSET,
-@@ -5252,14 +5252,14 @@ int ice_read_sma_ctrl_e810t(struct ice_hw *hw, u8 *data)
- }
- 
- /**
-- * ice_write_sma_ctrl_e810t
-+ * ice_write_sma_ctrl
-  * @hw: pointer to the hw struct
-  * @data: data to be written to the GPIO controller
-  *
-  * Write the data to the SMA controller. It is connected to pins 3-7 of Port 1
-  * of the PCA9575 expander, so only bits 3-7 in data are valid.
-  */
--int ice_write_sma_ctrl_e810t(struct ice_hw *hw, u8 data)
-+int ice_write_sma_ctrl(struct ice_hw *hw, u8 data)
- {
- 	int status;
- 	u16 handle;
-@@ -5269,7 +5269,7 @@ int ice_write_sma_ctrl_e810t(struct ice_hw *hw, u8 data)
- 	if (status)
- 		return status;
- 
--	for (i = ICE_SMA_MIN_BIT_E810T; i <= ICE_SMA_MAX_BIT_E810T; i++) {
-+	for (i = ICE_SMA_MIN_BIT; i <= ICE_SMA_MAX_BIT; i++) {
- 		bool pin;
- 
- 		pin = !(data & (1 << i));
-@@ -5283,14 +5283,14 @@ int ice_write_sma_ctrl_e810t(struct ice_hw *hw, u8 data)
- }
- 
- /**
-- * ice_read_pca9575_reg_e810t
-+ * ice_read_pca9575_reg
-  * @hw: pointer to the hw struct
-  * @offset: GPIO controller register offset
-  * @data: pointer to data to be read from the GPIO controller
-  *
-  * Read the register from the GPIO controller
-  */
--int ice_read_pca9575_reg_e810t(struct ice_hw *hw, u8 offset, u8 *data)
-+int ice_read_pca9575_reg(struct ice_hw *hw, u8 offset, u8 *data)
- {
- 	struct ice_aqc_link_topo_addr link_topo;
- 	__le16 addr;
+-const struct ice_time_ref_info_e82x e822_time_ref[NUM_ICE_TIME_REF_FREQ] = {
++const struct ice_time_ref_info_e82x e82x_time_ref[NUM_ICE_TIME_REF_FREQ] = {
+ 	/* ICE_TIME_REF_FREQ_25_000 -> 25 MHz */
+ 	{
+ 		/* pll_freq */
 diff --git a/drivers/net/ethernet/intel/ice/ice_ptp_hw.h b/drivers/net/ethernet/intel/ice/ice_ptp_hw.h
-index 0852a34ade91..264b290392d7 100644
+index 264b290392d7..c42831449787 100644
 --- a/drivers/net/ethernet/intel/ice/ice_ptp_hw.h
 +++ b/drivers/net/ethernet/intel/ice/ice_ptp_hw.h
-@@ -400,9 +400,9 @@ int ice_phy_cfg_rx_offset_e82x(struct ice_hw *hw, u8 port);
- int ice_phy_cfg_intr_e82x(struct ice_hw *hw, u8 quad, bool ena, u8 threshold);
+@@ -316,7 +316,7 @@ ice_cgu_pll_params_e825c e825c_cgu_params[NUM_ICE_TIME_REF_FREQ];
+ extern const struct ice_phy_reg_info_eth56g eth56g_phy_res[NUM_ETH56G_PHY_RES];
  
- /* E810 family functions */
--int ice_read_sma_ctrl_e810t(struct ice_hw *hw, u8 *data);
--int ice_write_sma_ctrl_e810t(struct ice_hw *hw, u8 data);
--int ice_read_pca9575_reg_e810t(struct ice_hw *hw, u8 offset, u8 *data);
-+int ice_read_sma_ctrl(struct ice_hw *hw, u8 *data);
-+int ice_write_sma_ctrl(struct ice_hw *hw, u8 data);
-+int ice_read_pca9575_reg(struct ice_hw *hw, u8 offset, u8 *data);
- bool ice_is_pca9575_present(struct ice_hw *hw);
- enum dpll_pin_type ice_cgu_get_pin_type(struct ice_hw *hw, u8 pin, bool input);
- struct dpll_pin_frequency *
-@@ -688,30 +688,27 @@ static inline u64 ice_get_base_incval(struct ice_hw *hw)
- #define LOW_TX_MEMORY_BANK_START	0x03090000
- #define HIGH_TX_MEMORY_BANK_START	0x03090004
+ /* Table of constants related to possible TIME_REF sources */
+-extern const struct ice_time_ref_info_e82x e822_time_ref[NUM_ICE_TIME_REF_FREQ];
++extern const struct ice_time_ref_info_e82x e82x_time_ref[NUM_ICE_TIME_REF_FREQ];
  
--/* E810T SMA controller pin control */
--#define ICE_SMA1_DIR_EN_E810T		BIT(4)
--#define ICE_SMA1_TX_EN_E810T		BIT(5)
--#define ICE_SMA2_UFL2_RX_DIS_E810T	BIT(3)
--#define ICE_SMA2_DIR_EN_E810T		BIT(6)
--#define ICE_SMA2_TX_EN_E810T		BIT(7)
--
--#define ICE_SMA1_MASK_E810T	(ICE_SMA1_DIR_EN_E810T | \
--				 ICE_SMA1_TX_EN_E810T)
--#define ICE_SMA2_MASK_E810T	(ICE_SMA2_UFL2_RX_DIS_E810T | \
--				 ICE_SMA2_DIR_EN_E810T | \
--				 ICE_SMA2_TX_EN_E810T)
--#define ICE_ALL_SMA_MASK_E810T	(ICE_SMA1_MASK_E810T | \
--				 ICE_SMA2_MASK_E810T)
--
--#define ICE_SMA_MIN_BIT_E810T	3
--#define ICE_SMA_MAX_BIT_E810T	7
-+/* SMA controller pin control */
-+#define ICE_SMA1_DIR_EN		BIT(4)
-+#define ICE_SMA1_TX_EN		BIT(5)
-+#define ICE_SMA2_UFL2_RX_DIS	BIT(3)
-+#define ICE_SMA2_DIR_EN		BIT(6)
-+#define ICE_SMA2_TX_EN		BIT(7)
+ /* Table of constants for Vernier calibration on E822 */
+ extern const struct ice_vernier_info_e82x e822_vernier[NUM_ICE_PTP_LNK_SPD];
+@@ -326,7 +326,8 @@ extern const struct ice_vernier_info_e82x e822_vernier[NUM_ICE_PTP_LNK_SPD];
+  */
+ #define ICE_E810_PLL_FREQ		812500000
+ #define ICE_PTP_NOMINAL_INCVAL_E810	0x13b13b13bULL
+-#define E810_OUT_PROP_DELAY_NS 1
++#define ICE_E810_OUT_PROP_DELAY_NS	1
++#define ICE_E825C_OUT_PROP_DELAY_NS	11
+ 
+ /* Device agnostic functions */
+ u8 ice_get_ptp_src_clock_index(struct ice_hw *hw);
+@@ -358,7 +359,7 @@ void ice_ptp_reset_ts_memory_quad_e82x(struct ice_hw *hw, u8 quad);
+  *
+  * Returns the current TIME_REF from the capabilities structure.
+  */
+-static inline enum ice_time_ref_freq ice_e82x_time_ref(struct ice_hw *hw)
++static inline enum ice_time_ref_freq ice_e82x_time_ref(const struct ice_hw *hw)
+ {
+ 	return hw->func_caps.ts_func_info.time_ref;
+ }
+@@ -379,17 +380,17 @@ ice_set_e82x_time_ref(struct ice_hw *hw, enum ice_time_ref_freq time_ref)
+ 
+ static inline u64 ice_e82x_pll_freq(enum ice_time_ref_freq time_ref)
+ {
+-	return e822_time_ref[time_ref].pll_freq;
++	return e82x_time_ref[time_ref].pll_freq;
+ }
+ 
+ static inline u64 ice_e82x_nominal_incval(enum ice_time_ref_freq time_ref)
+ {
+-	return e822_time_ref[time_ref].nominal_incval;
++	return e82x_time_ref[time_ref].nominal_incval;
+ }
+ 
+ static inline u64 ice_e82x_pps_delay(enum ice_time_ref_freq time_ref)
+ {
+-	return e822_time_ref[time_ref].pps_delay;
++	return e82x_time_ref[time_ref].pps_delay;
+ }
+ 
+ /* E822 Vernier calibration functions */
+@@ -431,6 +432,20 @@ int ice_phy_cfg_ptp_1step_eth56g(struct ice_hw *hw, u8 port);
+ #define ICE_ETH56G_NOMINAL_THRESH4	0x7777
+ #define ICE_ETH56G_NOMINAL_TX_THRESH	0x6
+ 
++static inline u64 ice_prop_delay(const struct ice_hw *hw)
++{
++	switch (hw->ptp.phy_model) {
++	case ICE_PHY_ETH56G:
++		return ICE_E825C_OUT_PROP_DELAY_NS;
++	case ICE_PHY_E810:
++		return ICE_E810_OUT_PROP_DELAY_NS;
++	case ICE_PHY_E82X:
++		return ice_e82x_pps_delay(ice_e82x_time_ref(hw));
++	default:
++		return 0;
++	}
++}
 +
-+#define ICE_SMA1_MASK		(ICE_SMA1_DIR_EN | ICE_SMA1_TX_EN)
-+#define ICE_SMA2_MASK		(ICE_SMA2_UFL2_RX_DIS | ICE_SMA2_DIR_EN | \
-+				 ICE_SMA2_TX_EN)
-+#define ICE_ALL_SMA_MASK	(ICE_SMA1_MASK | ICE_SMA2_MASK)
-+
-+#define ICE_SMA_MIN_BIT		3
-+#define ICE_SMA_MAX_BIT		7
- #define ICE_PCA9575_P1_OFFSET	8
- 
--/* E810T PCA9575 IO controller registers */
-+/* PCA9575 IO controller registers */
- #define ICE_PCA9575_P0_IN	0x0
- 
--/* E810T PCA9575 IO controller pin control */
--#define ICE_E810T_P0_GNSS_PRSNT_N	BIT(4)
-+/*  PCA9575 IO controller pin control */
-+#define ICE_P0_GNSS_PRSNT_N	BIT(4)
- 
- /* ETH56G PHY register addresses */
- /* Timestamp PHY incval registers */
+ /**
+  * ice_get_base_incval - Get base clock increment value
+  * @hw: pointer to the HW struct
 -- 
 2.45.2
 
