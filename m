@@ -2,70 +2,70 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5550E923F50
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  2 Jul 2024 15:45:17 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 57933923F51
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  2 Jul 2024 15:45:19 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id A295C81E85;
-	Tue,  2 Jul 2024 13:45:14 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 356D881E9F;
+	Tue,  2 Jul 2024 13:45:16 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id sjI-kISxIyfZ; Tue,  2 Jul 2024 13:45:12 +0000 (UTC)
+ id 8qCgjUqSXj2p; Tue,  2 Jul 2024 13:45:15 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9B6E981E7F
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3A0C2817D3
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1719927912;
-	bh=bznFigf9boE74xb+Ryiu/Sou2i5Lbo5van/j5vR3L5s=;
+	s=default; t=1719927915;
+	bh=f6y0QJgiPP2IttcE4V5KU2MQpGVYY7jqPWSe0p/g1E8=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=Uw6ldMmruUt/CRgsY5vXkSgCYfqWPDmVOUOP0QqLYkiUu6+t9t2wulctu1UnlJ5D1
-	 yo9Vs80YdkJMP7j3H7JO7s7nH5oZ2K17Ac4Wmis/Y2ae/1eCeIG7ptgenRU1TMYLEO
-	 6/RTZEuubvvi0rm/rTyFXwFTiOcnLg3hRcJYRittzpNLgWocym2wsaqxd8V1AI/9jW
-	 HmFkhiOf522H9rkHqgQkAfq9ddPVtZPka4UwH3YOvhZBp1NdLAQ6aNcEQKTfRbMPiw
-	 phT+8K45YSHvqs1Qjn2swSIIgZIx9IjvBz5fY4YMBgfUxfCWipVZrX9nZ0YLusmMEh
-	 5pYFnF8exfO2Q==
+	b=YBW51vjBEfhmUrwg/N0aXfYENdmHu8upjoxtKlNJJgG+cP3VGhy6geOE0LNE2EAtB
+	 nyRzfBmEO2q4mprrKmmmgRdSKQJYcCQJY4qA6D12wDP3syY0FeJeTCqyFltkExNNMm
+	 3VPXf+nta6dQec0Qur74unMFP5NUI+leKT7b0W3jpBjRSAsh2+ScTH7Nl9VnSVcgxB
+	 ORq/ESfQMxKfS1sgVJTcxmBxCbwLquqjzYvqUjQP/21pQRzZNbYbueTktmzARFnP0V
+	 vhammob9Mm86nW2odlsVNp3CZJx3jDY2u3osAlOpFvASneh7Ew26zdLfNf/Ka682JO
+	 28KX3bpCk9SQQ==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 9B6E981E7F;
-	Tue,  2 Jul 2024 13:45:11 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 3A0C2817D3;
+	Tue,  2 Jul 2024 13:45:15 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id D97FD1BF313
- for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Jul 2024 13:45:07 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id C57621BF313
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Jul 2024 13:45:08 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id C63A5410E9
- for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Jul 2024 13:45:07 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id B225B410E4
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Jul 2024 13:45:08 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id A9e5DBPPbV-3 for <intel-wired-lan@lists.osuosl.org>;
- Tue,  2 Jul 2024 13:45:06 +0000 (UTC)
+ id XDkBHXfDVGcW for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  2 Jul 2024 13:45:08 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.19;
  helo=mgamail.intel.com; envelope-from=karol.kolacinski@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org D2142410E4
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D2142410E4
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org C3112410E5
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C3112410E5
 Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.19])
- by smtp4.osuosl.org (Postfix) with ESMTPS id D2142410E4
- for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Jul 2024 13:45:05 +0000 (UTC)
-X-CSE-ConnectionGUID: JmvpUXfKS6aptCivocNI6A==
-X-CSE-MsgGUID: HXHu7aJeRrO2yYY3K499ow==
-X-IronPort-AV: E=McAfee;i="6700,10204,11121"; a="16826425"
-X-IronPort-AV: E=Sophos;i="6.09,178,1716274800"; d="scan'208";a="16826425"
+ by smtp4.osuosl.org (Postfix) with ESMTPS id C3112410E5
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  2 Jul 2024 13:45:07 +0000 (UTC)
+X-CSE-ConnectionGUID: 6YWgPHS/QhmhGrkI1EPpdw==
+X-CSE-MsgGUID: /+TFVQimSnaPjeiBLLO8GQ==
+X-IronPort-AV: E=McAfee;i="6700,10204,11121"; a="16826438"
+X-IronPort-AV: E=Sophos;i="6.09,178,1716274800"; d="scan'208";a="16826438"
 Received: from orviesa001.jf.intel.com ([10.64.159.141])
  by fmvoesa113.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 02 Jul 2024 06:45:06 -0700
-X-CSE-ConnectionGUID: NYtEfDtfQlW1kr/zXgMcyA==
-X-CSE-MsgGUID: zwt74bHgRya6eQyVhUz41Q==
+ 02 Jul 2024 06:45:07 -0700
+X-CSE-ConnectionGUID: sHmNrADzS769r/JDMtujsQ==
+X-CSE-MsgGUID: M4uU9VOaQDatgexeqBJt1g==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.09,178,1716274800"; d="scan'208";a="83460552"
+X-IronPort-AV: E=Sophos;i="6.09,178,1716274800"; d="scan'208";a="83460560"
 Received: from kkolacin-desk1.igk.intel.com ([10.102.102.132])
- by orviesa001.jf.intel.com with ESMTP; 02 Jul 2024 06:45:04 -0700
+ by orviesa001.jf.intel.com with ESMTP; 02 Jul 2024 06:45:06 -0700
 From: Karol Kolacinski <karol.kolacinski@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Tue,  2 Jul 2024 15:41:33 +0200
-Message-ID: <20240702134448.132374-13-karol.kolacinski@intel.com>
+Date: Tue,  2 Jul 2024 15:41:34 +0200
+Message-ID: <20240702134448.132374-14-karol.kolacinski@intel.com>
 X-Mailer: git-send-email 2.45.2
 In-Reply-To: <20240702134448.132374-9-karol.kolacinski@intel.com>
 References: <20240702134448.132374-9-karol.kolacinski@intel.com>
@@ -73,25 +73,25 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1719927906; x=1751463906;
+ t=1719927908; x=1751463908;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=mWoOMf8Agvy0MJPoTp95C8rESRwDiZEFe5dlmutIl6s=;
- b=J3yRydKgp+CzTl81kAjmw5DMDz6RYoSpj2rZfZg9ZR30pVVOajgB3kcW
- ySNc6mnYgrmpNvUrzuM6hErtLuif/lGBlpkdCoCwiPRxpBjDiuq/xrIvE
- 3zh9Enb8qXapdcFPvjTyHc8zl6rwBdNS/XmI9pm9PwMHRryI4M6Qo5nPQ
- 7vA1Ojyy3n25NHRl265irAyqzBlP9zRi9Xtr3RYQDDBzQ7I/uSDmq7iz7
- RAzOcFLZ5gjmSi9cxzAKkXc1u6WlJHKRSMRpb5yTxzydc+6OwbbrM07VN
- Wn7ZVjHUHO5Tuz17ogaVMRsJ3kV5rR8SZM9R4Ozw19FcSwqGnUNYgnUbt
- w==;
+ bh=CpqYtCIpwSmhP7EXWw0mfhxzEtWgoFkbm2G25RlGZJc=;
+ b=D2lNQNMgEvPjH6Gc37gWiILyD13MpyCq7R9tP5MHYmwnGs2rqfYjUbAG
+ kxwv/zO/wp1WLQYDSTkHU+km8l7F5hzAwylLZ5aNYcvbIoYXUpsqyBehP
+ 1Lh0bCJUTp+bMTqBupS+/igA1OQChjHBAs+nPSP8TYGGwBL16gb6ET8D2
+ UfE+6Gzy3fnpbY1f6d7kmzgEyXxl3qeZus2CzPmDV6wgi9/B/ZhMRvnYi
+ OP3yQNvwT6S2zh06L6BFAFBDAqqzXi5bvcPoJFXfjA+wuxeFgbOYjQYrW
+ gJ6KkzLScVyAH0iusMbxGYRX23C09oqpnLbhQEbibm5POHy7MzVbQwtrF
+ A==;
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=J3yRydKg
-Subject: [Intel-wired-lan] [PATCH v2 iwl-next 4/7] ice: Cache perout/extts
- requests and check flags
+ header.a=rsa-sha256 header.s=Intel header.b=D2lNQNMg
+Subject: [Intel-wired-lan] [PATCH v2 iwl-next 5/7] ice: Disable shared pin
+ on E810 on setfunc
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -110,706 +110,100 @@ Cc: netdev@vger.kernel.org, Karol Kolacinski <karol.kolacinski@intel.com>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Cache original PTP GPIO requests instead of saving each parameter in
-internal structures for periodic output or external timestamp request.
-
-Factor out all periodic output register writes from ice_ptp_cfg_clkout
-to a separate function to improve readability.
+When setting a new supported function for a pin on E810, disable other
+enabled pin that shares the same GPIO.
 
 Reviewed-by: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
 Signed-off-by: Karol Kolacinski <karol.kolacinski@intel.com>
 ---
-V1 -> V2: Fixed unresolved merge conflict
+V1 -> V2: Fixed incorrect call to ice_ptp_set_sma_cfg_e810t()
 
- drivers/net/ethernet/intel/ice/ice_ptp.c      | 354 +++++++++---------
- drivers/net/ethernet/intel/ice/ice_ptp.h      |  27 +-
- .../net/ethernet/intel/ice/ice_ptp_consts.h   |   2 +-
- drivers/net/ethernet/intel/ice/ice_ptp_hw.h   |  27 +-
- 4 files changed, 213 insertions(+), 197 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_ptp.c | 65 ++++++++++++++++++++++++
+ 1 file changed, 65 insertions(+)
 
 diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.c b/drivers/net/ethernet/intel/ice/ice_ptp.c
-index df0ae9faf948..82a198f28d3c 100644
+index 82a198f28d3c..1594d10a0858 100644
 --- a/drivers/net/ethernet/intel/ice/ice_ptp.c
 +++ b/drivers/net/ethernet/intel/ice/ice_ptp.c
-@@ -1577,33 +1577,41 @@ void ice_ptp_extts_event(struct ice_pf *pf)
- /**
-  * ice_ptp_cfg_extts - Configure EXTTS pin and channel
-  * @pf: Board private structure
-- * @chan: GPIO channel (0-3)
-- * @config: desired EXTTS configuration.
-- * @store: If set to true, the values will be stored
-+ * @rq: External timestamp request
-+ * @on: Enable/disable flag
-  *
-  * Configure an external timestamp event on the requested channel.
-  *
-- * Return: 0 on success, -EOPNOTUSPP on unsupported flags
-+ * Return: 0 on success, negative error code otherwise
-  */
--static int ice_ptp_cfg_extts(struct ice_pf *pf, unsigned int chan,
--			     struct ice_extts_channel *config, bool store)
-+static int ice_ptp_cfg_extts(struct ice_pf *pf, struct ptp_extts_request *rq,
-+			     int on)
- {
--	u32 func, aux_reg, gpio_reg, irq_reg;
-+	u32 aux_reg, gpio_reg, irq_reg;
- 	struct ice_hw *hw = &pf->hw;
-+	uint chan, gpio_pin;
-+	int pin_desc_idx;
- 	u8 tmr_idx;
- 
- 	/* Reject requests with unsupported flags */
--	if (config->flags & ~(PTP_ENABLE_FEATURE |
--			      PTP_RISING_EDGE |
--			      PTP_FALLING_EDGE |
--			      PTP_STRICT_FLAGS))
-+
-+	if (rq->flags & ~(PTP_ENABLE_FEATURE |
-+			  PTP_RISING_EDGE |
-+			  PTP_FALLING_EDGE |
-+			  PTP_STRICT_FLAGS))
- 		return -EOPNOTSUPP;
- 
- 	tmr_idx = hw->func_caps.ts_func_info.tmr_index_owned;
-+	chan = rq->index;
- 
-+	pin_desc_idx = ice_ptp_find_pin_idx(pf, PTP_PF_EXTTS, chan);
-+	if (pin_desc_idx < 0)
-+		return -EIO;
-+
-+	gpio_pin = pf->ptp.ice_pin_desc[pin_desc_idx].gpio[0];
- 	irq_reg = rd32(hw, PFINT_OICR_ENA);
- 
--	if (config->ena) {
-+	if (on) {
- 		/* Enable the interrupt */
- 		irq_reg |= PFINT_OICR_TSYN_EVNT_M;
- 		aux_reg = GLTSYN_AUX_IN_0_INT_ENA_M;
-@@ -1612,33 +1620,39 @@ static int ice_ptp_cfg_extts(struct ice_pf *pf, unsigned int chan,
- #define GLTSYN_AUX_IN_0_EVNTLVL_FALLING_EDGE	BIT(1)
- 
- 		/* set event level to requested edge */
--		if (config->flags  & PTP_FALLING_EDGE)
-+		if (rq->flags & PTP_FALLING_EDGE)
- 			aux_reg |= GLTSYN_AUX_IN_0_EVNTLVL_FALLING_EDGE;
--		if (config->flags  & PTP_RISING_EDGE)
-+		if (rq->flags & PTP_RISING_EDGE)
- 			aux_reg |= GLTSYN_AUX_IN_0_EVNTLVL_RISING_EDGE;
- 
- 		/* Write GPIO CTL reg.
- 		 * 0x1 is input sampled by EVENT register(channel)
- 		 * + num_in_channels * tmr_idx
- 		 */
--		func = 1 + chan + (tmr_idx * 3);
--		gpio_reg = FIELD_PREP(GLGEN_GPIO_CTL_PIN_FUNC_M, func);
--		pf->ptp.ext_ts_chan |= (1 << chan);
-+		gpio_reg = FIELD_PREP(GLGEN_GPIO_CTL_PIN_FUNC_M,
-+				      1 + chan + (tmr_idx * 3));
- 	} else {
-+		bool last_enabled = true;
-+		uint i;
-+
- 		/* clear the values we set to reset defaults */
- 		aux_reg = 0;
- 		gpio_reg = 0;
--		pf->ptp.ext_ts_chan &= ~(1 << chan);
--		if (!pf->ptp.ext_ts_chan)
-+
-+		for (i = 0; i < pf->ptp.info.n_ext_ts; i++)
-+			if ((pf->ptp.extts_rqs[i].flags &
-+			     PTP_ENABLE_FEATURE) &&
-+			    i != chan) {
-+				last_enabled = false;
-+			}
-+
-+		if (last_enabled)
- 			irq_reg &= ~PFINT_OICR_TSYN_EVNT_M;
- 	}
- 
- 	wr32(hw, PFINT_OICR_ENA, irq_reg);
- 	wr32(hw, GLTSYN_AUX_IN(chan, tmr_idx), aux_reg);
--	wr32(hw, GLGEN_GPIO_CTL(config->gpio_pin), gpio_reg);
--
--	if (store)
--		memcpy(&pf->ptp.extts_channels[chan], config, sizeof(*config));
-+	wr32(hw, GLGEN_GPIO_CTL(gpio_pin), gpio_reg);
- 
- 	return 0;
- }
-@@ -1649,16 +1663,12 @@ static int ice_ptp_cfg_extts(struct ice_pf *pf, unsigned int chan,
-  */
- static void ice_ptp_disable_all_extts(struct ice_pf *pf)
- {
--	struct ice_extts_channel extts_cfg = {};
--	int i;
-+	uint i;
- 
--	for (i = 0; i < pf->ptp.info.n_ext_ts; i++) {
--		if (pf->ptp.extts_channels[i].ena) {
--			extts_cfg.gpio_pin = pf->ptp.extts_channels[i].gpio_pin;
--			extts_cfg.ena = false;
--			ice_ptp_cfg_extts(pf, i, &extts_cfg, false);
--		}
--	}
-+	for (i = 0; i < pf->ptp.info.n_ext_ts ; i++)
-+		if (pf->ptp.extts_rqs[i].flags & PTP_ENABLE_FEATURE)
-+			ice_ptp_cfg_extts(pf, &pf->ptp.extts_rqs[i],
-+					  false);
- 
- 	synchronize_irq(pf->oicr_irq.virq);
- }
-@@ -1671,159 +1681,175 @@ static void ice_ptp_disable_all_extts(struct ice_pf *pf)
-  */
- static void ice_ptp_enable_all_extts(struct ice_pf *pf)
- {
--	int i;
-+	uint i;
- 
--	for (i = 0; i < pf->ptp.info.n_ext_ts; i++) {
--		if (pf->ptp.extts_channels[i].ena) {
--			ice_ptp_cfg_extts(pf, i, &pf->ptp.extts_channels[i],
--					  false);
--		}
--	}
-+	for (i = 0; i < pf->ptp.info.n_ext_ts ; i++)
-+		if (pf->ptp.extts_rqs[i].flags & PTP_ENABLE_FEATURE)
-+			ice_ptp_cfg_extts(pf, &pf->ptp.extts_rqs[i],
-+					  true);
+@@ -1852,6 +1852,63 @@ static void ice_ptp_enable_all_perout(struct ice_pf *pf)
+ 					   true);
  }
  
- /**
-- * ice_ptp_cfg_clkout - Configure clock to generate periodic wave
-- * @pf: Board private structure
-- * @chan: GPIO channel (0-3)
-- * @config: desired periodic clk configuration. NULL will disable channel
-- * @store: If set to true the values will be stored
-+ * ice_ptp_write_perout - Write periodic wave parameters to HW
-+ * @hw: pointer to the HW struct
-+ * @chan: target channel
-+ * @gpio_pin: target GPIO pin
-+ * @start: target time to start periodic output
-+ * @period: target period
-  *
-- * Configure the internal clock generator modules to generate the clock wave of
-- * specified period.
-+ * Return: 0 on success, negative error code otherwise
-  */
--static int ice_ptp_cfg_clkout(struct ice_pf *pf, unsigned int chan,
--			      struct ice_perout_channel *config, bool store)
-+static int ice_ptp_write_perout(struct ice_hw *hw, unsigned int chan,
-+				unsigned int gpio_pin, u64 start, u64 period)
- {
--	u64 current_time, period, start_time, phase;
--	struct ice_hw *hw = &pf->hw;
--	u32 func, val, gpio_pin;
--	u8 tmr_idx;
- 
--	if (config && config->flags & ~PTP_PEROUT_PHASE)
--		return -EOPNOTSUPP;
--
--	tmr_idx = hw->func_caps.ts_func_info.tmr_index_owned;
-+	u8 tmr_idx = hw->func_caps.ts_func_info.tmr_index_owned;
-+	u32 val = 0;
- 
- 	/* 0. Reset mode & out_en in AUX_OUT */
- 	wr32(hw, GLTSYN_AUX_OUT(chan, tmr_idx), 0);
- 
--	/* If we're disabling the output, clear out CLKO and TGT and keep
--	 * output level low
-+	/* 1. Write perout with half of required period value.
-+	 * HW toggles output when source clock hits the TGT and then adds
-+	 * GLTSYN_CLKO value to the target, so it ends up with 50% duty cycle.
- 	 */
--	if (!config || !config->ena) {
--		wr32(hw, GLTSYN_CLKO(chan, tmr_idx), 0);
--		wr32(hw, GLTSYN_TGT_L(chan, tmr_idx), 0);
--		wr32(hw, GLTSYN_TGT_H(chan, tmr_idx), 0);
--
--		val = GLGEN_GPIO_CTL_PIN_DIR_M;
--		gpio_pin = pf->ptp.perout_channels[chan].gpio_pin;
--		wr32(hw, GLGEN_GPIO_CTL(gpio_pin), val);
--
--		/* Store the value if requested */
--		if (store)
--			memset(&pf->ptp.perout_channels[chan], 0,
--			       sizeof(struct ice_perout_channel));
--
--		return 0;
--	}
--	period = config->period;
--	start_time = config->start_time;
--	div64_u64_rem(start_time, period, &phase);
--	gpio_pin = config->gpio_pin;
--
--	/* 1. Write clkout with half of required period value */
--	if (period & 0x1) {
--		dev_err(ice_pf_to_dev(pf), "CLK Period must be an even value\n");
--		goto err;
--	}
--
- 	period >>= 1;
- 
--	/* For proper operation, the GLTSYN_CLKO must be larger than clock tick
-+	/* For proper operation, GLTSYN_CLKO must be larger than clock tick and
-+	 * period has to fit in 32 bit register.
- 	 */
- #define MIN_PULSE 3
--	if (period <= MIN_PULSE || period > U32_MAX) {
--		dev_err(ice_pf_to_dev(pf), "CLK Period must be > %d && < 2^33",
--			MIN_PULSE * 2);
--		goto err;
-+	if (!!period && (period <= MIN_PULSE || period > U32_MAX)) {
-+		dev_err(ice_hw_to_dev(hw), "CLK period ticks must be >= %d && <= 2^32",
-+			MIN_PULSE);
-+		return -EIO;
- 	}
- 
- 	wr32(hw, GLTSYN_CLKO(chan, tmr_idx), lower_32_bits(period));
- 
--	/* Allow time for programming before start_time is hit */
--	current_time = ice_ptp_read_src_clk_reg(pf, NULL);
--
--	/* if start time is in the past start the timer at the nearest second
--	 * maintaining phase
--	 */
--	if (start_time < current_time)
--		start_time = roundup_u64(current_time, NSEC_PER_SEC) + phase;
--
--	if (ice_is_e810(hw))
--		start_time -= E810_OUT_PROP_DELAY_NS;
--	else
--		start_time -= ice_e82x_pps_delay(ice_e82x_time_ref(hw));
--
- 	/* 2. Write TARGET time */
--	wr32(hw, GLTSYN_TGT_L(chan, tmr_idx), lower_32_bits(start_time));
--	wr32(hw, GLTSYN_TGT_H(chan, tmr_idx), upper_32_bits(start_time));
-+	wr32(hw, GLTSYN_TGT_L(chan, tmr_idx), lower_32_bits(start));
-+	wr32(hw, GLTSYN_TGT_H(chan, tmr_idx), upper_32_bits(start));
- 
- 	/* 3. Write AUX_OUT register */
--	val = GLTSYN_AUX_OUT_0_OUT_ENA_M | GLTSYN_AUX_OUT_0_OUTMOD_M;
-+	if (!!period)
-+		val = GLTSYN_AUX_OUT_0_OUT_ENA_M | GLTSYN_AUX_OUT_0_OUTMOD_M;
- 	wr32(hw, GLTSYN_AUX_OUT(chan, tmr_idx), val);
- 
- 	/* 4. write GPIO CTL reg */
--	func = 8 + chan + (tmr_idx * 4);
--	val = GLGEN_GPIO_CTL_PIN_DIR_M |
--	      FIELD_PREP(GLGEN_GPIO_CTL_PIN_FUNC_M, func);
-+	val = GLGEN_GPIO_CTL_PIN_DIR_M;
-+	if (!!period)
-+		val |= FIELD_PREP(GLGEN_GPIO_CTL_PIN_FUNC_M,
-+				  8 + chan + (tmr_idx * 4));
-+
- 	wr32(hw, GLGEN_GPIO_CTL(gpio_pin), val);
- 
--	/* Store the value if requested */
--	if (store) {
--		memcpy(&pf->ptp.perout_channels[chan], config,
--		       sizeof(struct ice_perout_channel));
--		pf->ptp.perout_channels[chan].start_time = phase;
-+	return 0;
-+}
-+
 +/**
-+ * ice_ptp_cfg_perout - Configure clock to generate periodic wave
++ * ice_ptp_disable_shared_pin - Disable enabled pin that shares GPIO
 + * @pf: Board private structure
-+ * @rq: Periodic output request
-+ * @on: Enable/disable flag
-+ *
-+ * Configure the internal clock generator modules to generate the clock wave of
-+ * specified period.
++ * @pin: Pin index
++ * @func: Assigned function
 + *
 + * Return: 0 on success, negative error code otherwise
 + */
-+static int ice_ptp_cfg_perout(struct ice_pf *pf, struct ptp_perout_request *rq,
-+			      int on)
++static int ice_ptp_disable_shared_pin(struct ice_pf *pf, unsigned int pin,
++				      enum ptp_pin_function func)
 +{
-+	u64 clk, period, start, phase;
-+	struct ice_hw *hw = &pf->hw;
-+	int pin_desc_idx;
-+	uint gpio_pin;
++	uint gpio_pin, i;
 +
-+	if (rq->flags & ~PTP_PEROUT_PHASE)
-+		return -EOPNOTSUPP;
-+
-+	pin_desc_idx = ice_ptp_find_pin_idx(pf, PTP_PF_PEROUT, rq->index);
-+	if (pin_desc_idx < 0)
-+		return -EIO;
-+
-+	gpio_pin = pf->ptp.ice_pin_desc[pin_desc_idx].gpio[1];
-+	period = rq->period.sec * NSEC_PER_SEC + rq->period.nsec;
-+
-+	/* If we're disabling the output or period is 0, clear out CLKO and TGT
-+	 * and keep output level low.
-+	 */
-+	if (!on || !period)
-+		return ice_ptp_write_perout(hw, rq->index, gpio_pin, 0, 0);
-+
-+	if (strncmp(pf->ptp.pin_desc[pin_desc_idx].name, "1PPS", 64) == 0 &&
-+	    period != NSEC_PER_SEC && hw->ptp.phy_model == ICE_PHY_E82X) {
-+		dev_err(ice_pf_to_dev(pf), "1PPS pin supports only 1 s period\n");
-+		return -EOPNOTSUPP;
- 	}
- 
--	return 0;
--err:
--	dev_err(ice_pf_to_dev(pf), "PTP failed to cfg per_clk\n");
--	return -EFAULT;
-+	if (period & 0x1) {
-+		dev_err(ice_pf_to_dev(pf), "CLK Period must be an even value\n");
-+		return -EIO;
-+	}
-+
-+	start = rq->start.sec * NSEC_PER_SEC + rq->start.nsec;
-+
-+	/* If PTP_PEROUT_PHASE is set, rq has phase instead of start time */
-+	if (rq->flags & PTP_PEROUT_PHASE)
-+		phase = start;
-+	else
-+		div64_u64_rem(start, period, &phase);
-+
-+	/* If we have only phase or start time is in the past, start the timer
-+	 * at the next multiple of period, maintaining phase.
-+	 */
-+	clk = ice_ptp_read_src_clk_reg(pf, NULL);
-+	if (rq->flags & PTP_PEROUT_PHASE || start <= clk - ice_prop_delay(hw))
-+		start = div64_u64(clk + period - 1, period) * period + phase;
-+
-+	/* Compensate for propagation delay from the generator to the pin. */
-+	start -= ice_prop_delay(hw);
-+
-+	return ice_ptp_write_perout(hw, rq->index, gpio_pin, start, period);
- }
- 
- /**
-- * ice_ptp_disable_all_clkout - Disable all currently configured outputs
-- * @pf: pointer to the PF structure
-+ * ice_ptp_disable_all_perout - Disable all currently configured outputs
-+ * @pf: Board private structure
-  *
-  * Disable all currently configured clock outputs. This is necessary before
-- * certain changes to the PTP hardware clock. Use ice_ptp_enable_all_clkout to
-+ * certain changes to the PTP hardware clock. Use ice_ptp_enable_all_perout to
-  * re-enable the clocks again.
-  */
--static void ice_ptp_disable_all_clkout(struct ice_pf *pf)
-+static void ice_ptp_disable_all_perout(struct ice_pf *pf)
- {
- 	uint i;
- 
- 	for (i = 0; i < pf->ptp.info.n_per_out; i++)
--		if (pf->ptp.perout_channels[i].ena)
--			ice_ptp_cfg_clkout(pf, i, NULL, false);
-+		if (pf->ptp.perout_rqs[i].period.sec ||
-+		    pf->ptp.perout_rqs[i].period.nsec)
-+			ice_ptp_cfg_perout(pf, &pf->ptp.perout_rqs[i],
-+					   false);
- }
- 
- /**
-- * ice_ptp_enable_all_clkout - Enable all configured periodic clock outputs
-- * @pf: pointer to the PF structure
-+ * ice_ptp_enable_all_perout - Enable all configured periodic clock outputs
-+ * @pf: Board private structure
-  *
-  * Enable all currently configured clock outputs. Use this after
-- * ice_ptp_disable_all_clkout to reconfigure the output signals according to
-+ * ice_ptp_disable_all_perout to reconfigure the output signals according to
-  * their configuration.
-  */
--static void ice_ptp_enable_all_clkout(struct ice_pf *pf)
-+static void ice_ptp_enable_all_perout(struct ice_pf *pf)
- {
- 	uint i;
- 
- 	for (i = 0; i < pf->ptp.info.n_per_out; i++)
--		if (pf->ptp.perout_channels[i].ena)
--			ice_ptp_cfg_clkout(pf, i, &pf->ptp.perout_channels[i],
--					   false);
-+		if (pf->ptp.perout_rqs[i].period.sec ||
-+		    pf->ptp.perout_rqs[i].period.nsec)
-+			ice_ptp_cfg_perout(pf, &pf->ptp.perout_rqs[i],
-+					   true);
- }
- 
- /**
-@@ -1869,50 +1895,40 @@ static int ice_verify_pin(struct ptp_clock_info *info, unsigned int pin,
-  * @rq: The requested feature to change
-  * @on: Enable/disable flag
-  *
-- * Return: 0 on success, -EOPNOTSUPP when request type is not supported
-+ * Return: 0 on success, negative error code otherwise
-  */
- static int ice_ptp_gpio_enable(struct ptp_clock_info *info,
- 			       struct ptp_clock_request *rq, int on)
- {
- 	struct ice_pf *pf = ptp_info_to_pf(info);
-+	int err;
- 
- 	switch (rq->type) {
- 	case PTP_CLK_REQ_PEROUT:
- 	{
--		struct ice_perout_channel clk_cfg;
--		int pin_desc_idx;
--
--		pin_desc_idx = ice_ptp_find_pin_idx(pf, PTP_PF_PEROUT,
--						    rq->perout.index);
--		if (pin_desc_idx < 0)
--			return -EIO;
-+		struct ptp_perout_request *cached =
-+			&pf->ptp.perout_rqs[rq->perout.index];
- 
--
--		clk_cfg.flags = rq->perout.flags;
--		clk_cfg.gpio_pin = pf->ptp.ice_pin_desc[pin_desc_idx].gpio[1];
--		clk_cfg.period = rq->perout.period.sec * NSEC_PER_SEC +
--				 rq->perout.period.nsec;
--		clk_cfg.start_time = rq->perout.start.sec * NSEC_PER_SEC +
--				     rq->perout.start.nsec;
--		clk_cfg.ena = !!on;
--
--		return ice_ptp_cfg_clkout(pf, rq->perout.index, &clk_cfg, true);
-+		err = ice_ptp_cfg_perout(pf, &rq->perout, on);
-+		if (!err) {
-+			*cached = rq->perout;
-+		} else {
-+			cached->period.sec = 0;
-+			cached->period.nsec = 0;
-+		}
-+		return err;
- 	}
- 	case PTP_CLK_REQ_EXTTS:
- 	{
--		struct ice_extts_channel extts_cfg = {};
--		int pin_desc_idx;
--
--		pin_desc_idx = ice_ptp_find_pin_idx(pf, PTP_PF_EXTTS,
--						    rq->extts.index);
--		if (pin_desc_idx < 0)
--			return -EIO;
-+		struct ptp_extts_request *cached =
-+			&pf->ptp.extts_rqs[rq->extts.index];
- 
--		extts_cfg.flags = rq->extts.flags;
--		extts_cfg.gpio_pin = pf->ptp.ice_pin_desc[pin_desc_idx].gpio[0];
--		extts_cfg.ena = !!on;
--
--		return ice_ptp_cfg_extts(pf, rq->extts.index, &extts_cfg, true);
-+		err = ice_ptp_cfg_extts(pf, &rq->extts, on);
-+		if (!err)
-+			*cached = rq->extts;
-+		else
-+			cached->flags &= ~PTP_ENABLE_FEATURE;
-+		return err;
- 	}
- 	default:
- 		return -EOPNOTSUPP;
-@@ -1972,7 +1988,7 @@ ice_ptp_settime64(struct ptp_clock_info *info, const struct timespec64 *ts)
- 	}
- 
- 	/* Disable periodic outputs */
--	ice_ptp_disable_all_clkout(pf);
-+	ice_ptp_disable_all_perout(pf);
- 
- 	err = ice_ptp_write_init(pf, &ts64);
- 	ice_ptp_unlock(hw);
-@@ -1981,7 +1997,7 @@ ice_ptp_settime64(struct ptp_clock_info *info, const struct timespec64 *ts)
- 		ice_ptp_reset_cached_phctime(pf);
- 
- 	/* Reenable periodic outputs */
--	ice_ptp_enable_all_clkout(pf);
-+	ice_ptp_enable_all_perout(pf);
- 
- 	/* Recalibrate and re-enable timestamp blocks for E822/E823 */
- 	if (hw->ptp.phy_model == ICE_PHY_E82X)
-@@ -2043,12 +2059,12 @@ static int ice_ptp_adjtime(struct ptp_clock_info *info, s64 delta)
- 	}
- 
- 	/* Disable periodic outputs */
--	ice_ptp_disable_all_clkout(pf);
-+	ice_ptp_disable_all_perout(pf);
- 
- 	err = ice_ptp_write_adj(pf, delta);
- 
- 	/* Reenable periodic outputs */
--	ice_ptp_enable_all_clkout(pf);
-+	ice_ptp_enable_all_perout(pf);
- 
- 	ice_ptp_unlock(hw);
- 
-@@ -2658,7 +2674,7 @@ void ice_ptp_prepare_for_reset(struct ice_pf *pf, enum ice_reset_req reset_type)
- 	ice_ptp_release_tx_tracker(pf, &pf->ptp.port.tx);
- 
- 	/* Disable periodic outputs */
--	ice_ptp_disable_all_clkout(pf);
-+	ice_ptp_disable_all_perout(pf);
- 
- 	src_tmr = ice_get_ptp_src_clock_index(&pf->hw);
- 
-@@ -2735,7 +2751,7 @@ static int ice_ptp_rebuild_owner(struct ice_pf *pf)
- 	}
- 
- 	/* Re-enable all periodic outputs and external timestamp events */
--	ice_ptp_enable_all_clkout(pf);
-+	ice_ptp_enable_all_perout(pf);
- 	ice_ptp_enable_all_extts(pf);
- 
- 	return 0;
-@@ -3315,7 +3331,7 @@ void ice_ptp_release(struct ice_pf *pf)
- 		return;
- 
- 	/* Disable periodic outputs */
--	ice_ptp_disable_all_clkout(pf);
-+	ice_ptp_disable_all_perout(pf);
- 
- 	ptp_clock_unregister(pf->ptp.clock);
- 	pf->ptp.clock = NULL;
-diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.h b/drivers/net/ethernet/intel/ice/ice_ptp.h
-index 449a0eaf904f..27b32da999df 100644
---- a/drivers/net/ethernet/intel/ice/ice_ptp.h
-+++ b/drivers/net/ethernet/intel/ice/ice_ptp.h
-@@ -8,19 +8,6 @@
- #include <linux/kthread.h>
- 
- #include "ice_ptp_hw.h"
--struct ice_perout_channel {
--	bool ena;
--	u32 gpio_pin;
--	u32 flags;
--	u64 period;
--	u64 start_time;
--};
--
--struct ice_extts_channel {
--	bool ena;
--	u32 gpio_pin;
--	u32 flags;
--};
- 
- /* The ice hardware captures Tx hardware timestamps in the PHY. The timestamp
-  * is stored in a buffer of registers. Depending on the specific hardware,
-@@ -259,13 +246,12 @@ struct ice_ptp_pin_desc {
-  * @work: delayed work function for periodic tasks
-  * @cached_phc_time: a cached copy of the PHC time for timestamp extension
-  * @cached_phc_jiffies: jiffies when cached_phc_time was last updated
-- * @ext_ts_chan: the external timestamp channel in use
-+ * @kworker: kwork thread for handling periodic work
-  * @ext_ts_irq: the external timestamp IRQ in use
-  * @pin_desc: structure defining pins
-  * @ice_pin_desc: internal structure describing pin relations
-- * @kworker: kwork thread for handling periodic work
-- * @perout_channels: periodic output data
-- * @extts_channels: channels for external timestamps
-+ * @perout_rqs: cached periodic output requests
-+ * @extts_rqs: cached external timestamp requests
-  * @info: structure defining PTP hardware capabilities
-  * @clock: pointer to registered PTP clock device
-  * @tstamp_config: hardware timestamping configuration
-@@ -285,13 +271,12 @@ struct ice_ptp {
- 	struct kthread_delayed_work work;
- 	u64 cached_phc_time;
- 	unsigned long cached_phc_jiffies;
--	u8 ext_ts_chan;
--	u8 ext_ts_irq;
- 	struct kthread_worker *kworker;
-+	u8 ext_ts_irq;
- 	struct ptp_pin_desc pin_desc[ICE_N_PINS_MAX];
- 	const struct ice_ptp_pin_desc *ice_pin_desc;
--	struct ice_perout_channel perout_channels[GLTSYN_TGT_H_IDX_MAX];
--	struct ice_extts_channel extts_channels[GLTSYN_TGT_H_IDX_MAX];
-+	struct ptp_perout_request perout_rqs[GLTSYN_TGT_H_IDX_MAX];
-+	struct ptp_extts_request extts_rqs[GLTSYN_EVNT_H_IDX_MAX];
- 	struct ptp_clock_info info;
- 	struct ptp_clock *clock;
- 	struct hwtstamp_config tstamp_config;
-diff --git a/drivers/net/ethernet/intel/ice/ice_ptp_consts.h b/drivers/net/ethernet/intel/ice/ice_ptp_consts.h
-index e6980b94a6c1..585ce200c60f 100644
---- a/drivers/net/ethernet/intel/ice/ice_ptp_consts.h
-+++ b/drivers/net/ethernet/intel/ice/ice_ptp_consts.h
-@@ -334,7 +334,7 @@ struct ice_eth56g_mac_reg_cfg eth56g_mac_cfg[NUM_ICE_ETH56G_LNK_SPD] = {
-  * reference. See the struct ice_time_ref_info_e82x for information about the
-  * meaning of each constant.
-  */
--const struct ice_time_ref_info_e82x e822_time_ref[NUM_ICE_TIME_REF_FREQ] = {
-+const struct ice_time_ref_info_e82x e82x_time_ref[NUM_ICE_TIME_REF_FREQ] = {
- 	/* ICE_TIME_REF_FREQ_25_000 -> 25 MHz */
- 	{
- 		/* pll_freq */
-diff --git a/drivers/net/ethernet/intel/ice/ice_ptp_hw.h b/drivers/net/ethernet/intel/ice/ice_ptp_hw.h
-index 264b290392d7..c42831449787 100644
---- a/drivers/net/ethernet/intel/ice/ice_ptp_hw.h
-+++ b/drivers/net/ethernet/intel/ice/ice_ptp_hw.h
-@@ -316,7 +316,7 @@ ice_cgu_pll_params_e825c e825c_cgu_params[NUM_ICE_TIME_REF_FREQ];
- extern const struct ice_phy_reg_info_eth56g eth56g_phy_res[NUM_ETH56G_PHY_RES];
- 
- /* Table of constants related to possible TIME_REF sources */
--extern const struct ice_time_ref_info_e82x e822_time_ref[NUM_ICE_TIME_REF_FREQ];
-+extern const struct ice_time_ref_info_e82x e82x_time_ref[NUM_ICE_TIME_REF_FREQ];
- 
- /* Table of constants for Vernier calibration on E822 */
- extern const struct ice_vernier_info_e82x e822_vernier[NUM_ICE_PTP_LNK_SPD];
-@@ -326,7 +326,8 @@ extern const struct ice_vernier_info_e82x e822_vernier[NUM_ICE_PTP_LNK_SPD];
-  */
- #define ICE_E810_PLL_FREQ		812500000
- #define ICE_PTP_NOMINAL_INCVAL_E810	0x13b13b13bULL
--#define E810_OUT_PROP_DELAY_NS 1
-+#define ICE_E810_OUT_PROP_DELAY_NS	1
-+#define ICE_E825C_OUT_PROP_DELAY_NS	11
- 
- /* Device agnostic functions */
- u8 ice_get_ptp_src_clock_index(struct ice_hw *hw);
-@@ -358,7 +359,7 @@ void ice_ptp_reset_ts_memory_quad_e82x(struct ice_hw *hw, u8 quad);
-  *
-  * Returns the current TIME_REF from the capabilities structure.
-  */
--static inline enum ice_time_ref_freq ice_e82x_time_ref(struct ice_hw *hw)
-+static inline enum ice_time_ref_freq ice_e82x_time_ref(const struct ice_hw *hw)
- {
- 	return hw->func_caps.ts_func_info.time_ref;
- }
-@@ -379,17 +380,17 @@ ice_set_e82x_time_ref(struct ice_hw *hw, enum ice_time_ref_freq time_ref)
- 
- static inline u64 ice_e82x_pll_freq(enum ice_time_ref_freq time_ref)
- {
--	return e822_time_ref[time_ref].pll_freq;
-+	return e82x_time_ref[time_ref].pll_freq;
- }
- 
- static inline u64 ice_e82x_nominal_incval(enum ice_time_ref_freq time_ref)
- {
--	return e822_time_ref[time_ref].nominal_incval;
-+	return e82x_time_ref[time_ref].nominal_incval;
- }
- 
- static inline u64 ice_e82x_pps_delay(enum ice_time_ref_freq time_ref)
- {
--	return e822_time_ref[time_ref].pps_delay;
-+	return e82x_time_ref[time_ref].pps_delay;
- }
- 
- /* E822 Vernier calibration functions */
-@@ -431,6 +432,20 @@ int ice_phy_cfg_ptp_1step_eth56g(struct ice_hw *hw, u8 port);
- #define ICE_ETH56G_NOMINAL_THRESH4	0x7777
- #define ICE_ETH56G_NOMINAL_TX_THRESH	0x6
- 
-+static inline u64 ice_prop_delay(const struct ice_hw *hw)
-+{
-+	switch (hw->ptp.phy_model) {
-+	case ICE_PHY_ETH56G:
-+		return ICE_E825C_OUT_PROP_DELAY_NS;
-+	case ICE_PHY_E810:
-+		return ICE_E810_OUT_PROP_DELAY_NS;
-+	case ICE_PHY_E82X:
-+		return ice_e82x_pps_delay(ice_e82x_time_ref(hw));
++	switch (func) {
++	case PTP_PF_PEROUT:
++		gpio_pin = pf->ptp.ice_pin_desc[pin].gpio[1];
++		break;
++	case PTP_PF_EXTTS:
++		gpio_pin = pf->ptp.ice_pin_desc[pin].gpio[0];
++		break;
 +	default:
-+		return 0;
++		return -EOPNOTSUPP;
 +	}
++
++	for (i = 0; i < pf->ptp.info.n_pins; i++) {
++		struct ptp_pin_desc *pin_desc = &pf->ptp.pin_desc[i];
++		uint chan = pin_desc->chan;
++
++		/* Skip pin idx from the request */
++		if (i == pin)
++			continue;
++
++		if (pin_desc->func == PTP_PF_PEROUT &&
++		    pf->ptp.ice_pin_desc[i].gpio[1] == gpio_pin) {
++			pf->ptp.perout_rqs[chan].period.sec = 0;
++			pf->ptp.perout_rqs[chan].period.nsec = 0;
++			pin_desc->func = PTP_PF_NONE;
++			pin_desc->chan = 0;
++			dev_dbg(ice_pf_to_dev(pf), "Disabling pin %u with shared output GPIO pin %u\n",
++				i, gpio_pin);
++			return ice_ptp_cfg_perout(pf, &pf->ptp.perout_rqs[chan],
++						  false);
++		} else if (pf->ptp.pin_desc->func == PTP_PF_EXTTS &&
++			   pf->ptp.ice_pin_desc[i].gpio[0] == gpio_pin) {
++			pf->ptp.extts_rqs[chan].flags &= ~PTP_ENABLE_FEATURE;
++			pin_desc->func = PTP_PF_NONE;
++			pin_desc->chan = 0;
++			dev_dbg(ice_pf_to_dev(pf), "Disabling pin %u with shared input GPIO pin %u\n",
++				i, gpio_pin);
++			return ice_ptp_cfg_extts(pf, &pf->ptp.extts_rqs[chan],
++						 false);
++		}
++	}
++
++	return 0;
 +}
 +
  /**
-  * ice_get_base_incval - Get base clock increment value
-  * @hw: pointer to the HW struct
+  * ice_verify_pin - verify if pin supports requested pin function
+  * @info: the driver's PTP info structure
+@@ -1886,6 +1943,14 @@ static int ice_verify_pin(struct ptp_clock_info *info, unsigned int pin,
+ 		return -EOPNOTSUPP;
+ 	}
+ 
++	/* On adapters with SMA_CTRL disable other pins that share same GPIO */
++	if (ice_is_feature_supported(pf, ICE_F_SMA_CTRL)) {
++		ice_ptp_disable_shared_pin(pf, pin, func);
++		pf->ptp.pin_desc[pin].func = func;
++		pf->ptp.pin_desc[pin].chan = chan;
++		return ice_ptp_set_sma_cfg(pf);
++	}
++
+ 	return 0;
+ }
+ 
 -- 
 2.45.2
 
