@@ -2,87 +2,87 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0406A9267FE
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  3 Jul 2024 20:20:58 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 57FA9926800
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  3 Jul 2024 20:21:11 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id A984941B3D;
-	Wed,  3 Jul 2024 18:20:56 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 08ED741B59;
+	Wed,  3 Jul 2024 18:21:10 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 3LelWJ7ifqhX; Wed,  3 Jul 2024 18:20:55 +0000 (UTC)
+ id uQCncrAYO1H8; Wed,  3 Jul 2024 18:21:09 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A4BB141B4A
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 39CE341B4D
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1720030855;
-	bh=ddTrotik5js4rogRAmQAP1WqotlURtvNZidF3O4ZmyU=;
+	s=default; t=1720030869;
+	bh=V/fgZI+YYsndhXcpAFrmuXuOnjQpcZFjrCLRE4jQ+Bk=;
 	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=zEt7I8OjpJ2uIbS8mQhG+tXDdMUezCMxGOSmbDbRuZUDi/TJip7pH+5jGYmsDMhTx
-	 fGlKTboklYeCDIwZ/zJ+/y2WzDbxR76ZQpj4sKN4gHnUIxN2wPKmoUR1UI918UxHNY
-	 1skouE9xm9C0TG+256gaxQmyYfnrb1qhrXwnLFGJUZNN/PtWR5jLpG22OZnMMY6RIW
-	 N8b1Rgdj0OQ0W08Vt+jiHrhDa5ylubedCutudw8dBB1H/JkGUTsFXpCDsE35C2JKVY
-	 p6IwdZtD6npjVSSF8WeDJHdaHD99SJvoPnj1W1rEOZ/bBxnltd6X1Iv29lM3/vrUc1
-	 f7rXG7qT2Dg+g==
+	b=IoOD1BqgciqgPgIJp60EcYgzF1aK47xZbXbLEbT6mJmMiBF+K057tt3zA0vu5e4Da
+	 2IsH1xjGqjvRiUE9skdoIk8PodRTkTGuVv5IXiI5NWOe3U7PaMOgA0ErE+sniV7PtN
+	 mEJ7/LlRG9LOYAK9Oqr6GqbwTx177AWxh8eaCpVs9ZXi5BRKEvnYGpnVA+Oli8vDFg
+	 +oREAdaqumTBnHhon9Gui1+HuYA6QWHivRejg5RquIZy3Lw2GXbokS+wHoZ2yWncDJ
+	 U+FXdSmJtmERIeA17b6O4XaWjEpuYvK+TCMXWfi/pdk8+kuUqKxD2BKpw4j+Kjbr8o
+	 +x2xC5jZ7WJpg==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id A4BB141B4A;
-	Wed,  3 Jul 2024 18:20:55 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 39CE341B4D;
+	Wed,  3 Jul 2024 18:21:09 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 086361BF2C7
- for <intel-wired-lan@lists.osuosl.org>; Wed,  3 Jul 2024 18:20:53 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 116B81BF2C7
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  3 Jul 2024 18:21:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 00CCF4052F
- for <intel-wired-lan@lists.osuosl.org>; Wed,  3 Jul 2024 18:20:53 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id F3F3460FA9
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  3 Jul 2024 18:21:06 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id IX-4l1YID8yz for <intel-wired-lan@lists.osuosl.org>;
- Wed,  3 Jul 2024 18:20:52 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2604:1380:4641:c500::1; helo=dfw.source.kernel.org;
- envelope-from=horms@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 4AF81401ED
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 4AF81401ED
-Received: from dfw.source.kernel.org (dfw.source.kernel.org
- [IPv6:2604:1380:4641:c500::1])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 4AF81401ED
- for <intel-wired-lan@lists.osuosl.org>; Wed,  3 Jul 2024 18:20:52 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 5RXCnlMjvpC4 for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  3 Jul 2024 18:21:06 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=139.178.84.217;
+ helo=dfw.source.kernel.org; envelope-from=horms@kernel.org;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 46E4160F12
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 46E4160F12
+Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 46E4160F12
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  3 Jul 2024 18:21:06 +0000 (UTC)
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by dfw.source.kernel.org (Postfix) with ESMTP id 87B1E60C25;
- Wed,  3 Jul 2024 18:20:51 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DF3CFC2BD10;
- Wed,  3 Jul 2024 18:20:49 +0000 (UTC)
-Date: Wed, 3 Jul 2024 19:20:47 +0100
+ by dfw.source.kernel.org (Postfix) with ESMTP id 78D6460C25;
+ Wed,  3 Jul 2024 18:21:05 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A5D89C2BD10;
+ Wed,  3 Jul 2024 18:21:03 +0000 (UTC)
+Date: Wed, 3 Jul 2024 19:21:01 +0100
 From: Simon Horman <horms@kernel.org>
 To: Karol Kolacinski <karol.kolacinski@intel.com>
-Message-ID: <20240703182047.GN598357@kernel.org>
+Message-ID: <20240703182101.GO598357@kernel.org>
 References: <20240702134448.132374-9-karol.kolacinski@intel.com>
- <20240702134448.132374-14-karol.kolacinski@intel.com>
+ <20240702134448.132374-15-karol.kolacinski@intel.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20240702134448.132374-14-karol.kolacinski@intel.com>
+In-Reply-To: <20240702134448.132374-15-karol.kolacinski@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1720030851;
- bh=T5vz8e4Q6ADnU0SXFbQTuUb29Cjb5UvBS+IcJ8J/jc4=;
+ d=kernel.org; s=k20201202; t=1720030865;
+ bh=3GiRg29ujFKE1CNfe0zyxkAbK+5xSflcOI0SqIJVCjw=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=k7apOXDzV7yGQoCe/D1Bzq2WORBnRidbM+VwZk82E20msNUk+5h6knOrXunNz4nT0
- qUlGFSXfQZPFKtiDsUqVU+B+cGBoCChK2Jz46/PpWu9+rmVd+eGDEDg0dFMAiqUbLG
- z7c3On2wOrw/6SFnbgUA4Gk+MsL1xhgMVzcqY+gr0ZvDSPsswnEJdlKhLJDgCDOwc4
- KO3eqKwR+TKUb4GCDyFpWrDPBNMT8jFMIfKAYUtyPl12MN/mBfIW2cU30ZD8Df3PKa
- 7o0OqCcw5hrw1SkWExohJ5+cXdqLZKGjxHT4XsDhElXfXj8suKvnWtLInVkkhhqeG9
- w4v4VI2qLAeoA==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ b=fof1Voigq/oBCaxud6rX+sCivRgt0gkoKbE306aJJNGNnbzdZap1HMLLAnCX8Qe2s
+ 9eqSb6nIBHYiHSGJAcVYzA7L8Fk+//GPtRvkHL4XFK9Ze1iqf/cjditL4ARjx3JgSa
+ lUQu5FKhDc3VSJx2usfZ0sbCxJdVLJiPZKaPZ/yFC6FlW7MGrKw1Y5yT+c7xD2hLCa
+ koS7npGgMSclgGA7sdjjPf6y7rOhohEWjf56SPfxDowZB7KVImpHLoQWHFhBnti+wM
+ TN1brjMW7OJu1Wmu7KdsMpyho0xpNw3BLEADBADxpo3rpCw9eT/82Eku1Gnjy8lDvd
+ lIX112NI0CThQ==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=k7apOXDz
-Subject: Re: [Intel-wired-lan] [PATCH v2 iwl-next 5/7] ice: Disable shared
- pin on E810 on setfunc
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
+ header.s=k20201202 header.b=fof1Voig
+Subject: Re: [Intel-wired-lan] [PATCH v2 iwl-next 6/7] ice: Read SDP section
+ from NVM for pin definitions
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,20 +95,27 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, anthony.l.nguyen@intel.com,
+Cc: netdev@vger.kernel.org,
  Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>,
- intel-wired-lan@lists.osuosl.org, przemyslaw.kitszel@intel.com
+ anthony.l.nguyen@intel.com, Yochai Hagvi <yochai.hagvi@intel.com>,
+ przemyslaw.kitszel@intel.com, intel-wired-lan@lists.osuosl.org
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, Jul 02, 2024 at 03:41:34PM +0200, Karol Kolacinski wrote:
-> When setting a new supported function for a pin on E810, disable other
-> enabled pin that shares the same GPIO.
+On Tue, Jul 02, 2024 at 03:41:35PM +0200, Karol Kolacinski wrote:
+> From: Yochai Hagvi <yochai.hagvi@intel.com>
+> 
+> PTP pins assignment and their related SDPs (Software Definable Pins) are
+> currently hardcoded.
+> Fix that by reading NVM section instead on products supporting this,
+> which are E810 products.
+> If SDP section is not defined in NVM, the driver continues to use the
+> hardcoded table.
 > 
 > Reviewed-by: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
+> Signed-off-by: Yochai Hagvi <yochai.hagvi@intel.com>
+> Co-developed-by: Karol Kolacinski <karol.kolacinski@intel.com>
 > Signed-off-by: Karol Kolacinski <karol.kolacinski@intel.com>
-> ---
-> V1 -> V2: Fixed incorrect call to ice_ptp_set_sma_cfg_e810t()
 
 Reviewed-by: Simon Horman <horms@kernel.org>
 
