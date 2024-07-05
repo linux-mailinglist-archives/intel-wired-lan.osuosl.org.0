@@ -1,101 +1,215 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 32210927F56
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  5 Jul 2024 02:24:48 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2CBEC92895C
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  5 Jul 2024 15:12:40 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 5DCCE4094C;
-	Fri,  5 Jul 2024 00:24:46 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 15EAC40197;
+	Fri,  5 Jul 2024 13:12:37 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id i4Ih7TXjVT39; Fri,  5 Jul 2024 00:24:45 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 7fA9Y5UApqEF; Fri,  5 Jul 2024 13:12:36 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org DF1DE4095A
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 6A23E40A38
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1720139085;
-	bh=tGvHGf2Z8imagDJuNZWaXDrTl/rMftD/XiGUJZmDUCQ=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1720185155;
+	bh=ZRwOPCylK7NdN22Cg6JhaZTUhhrv7CNoZXmqayON+LI=;
+	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=CCxBQJb+ylybxGydcB0nA8b0k0fMP+JRnlSMiX0Mz1FAoSlSY623Xc9VptZdiNJNk
-	 tiG9zU2LBOyyfyryit+EKos7F7BxhqEoEb8EfqC9Wkl/dMeatwDS3Tk68Yw3ahnCTp
-	 twHmCkMBmfP2pu8VHtjUKln8D3LAAZ10+xGSaSyKG9l7WvALHDtua6OjmHA/eMrfuK
-	 R3SRwh1cMo/VezTPQaafm6YgoQceOY9xJvWzk2v88SZNCKRYlLejaw4zAU8JGb1uf+
-	 RKfnnCoz1txM/qode4O6QfFi8cl0tiZE0iIC4ySgdWvDUDMn7tb4zoiA6sLEiFSDgu
-	 484DDEw58Jrcw==
+	b=xGycs65HJLSNznJUnhpDol3aX571SzkSinPDVZwG5C5kpn4WRUY1jgaX1OfjcS7Cd
+	 Nf73i/FD/yvn0mPMxsJXwTVWOfDh7tbGyQ24LZgYb8qZFwS1Z30EKkm9G5GoYhhpLM
+	 meRfhG6kdrJMNz4f2BouWFJXbth5wLRqaHKanlfAr7diD2oY+8clZ3NT4MiCmtJ8p1
+	 /TM3lqk9x/Vjv9gtXgqtpCwObgOOeo8qHqJMav2hWzoWyy5kXV93BL3f0nKskFvedy
+	 7++IQoqxvuQ+v/EPdPdWHgMwropAzU+0GeBquAvF9+MjAKoDO+i2EzzQCaA+Fttavj
+	 z0XoGqw+txohw==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id DF1DE4095A;
-	Fri,  5 Jul 2024 00:24:44 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 6A23E40A38;
+	Fri,  5 Jul 2024 13:12:35 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 0E74F1BF2BD
- for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Jul 2024 00:24:43 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 110251BF284
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Jul 2024 13:12:33 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id ED63C4094B
- for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Jul 2024 00:24:42 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id F1EF2606F3
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Jul 2024 13:12:32 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id bdBO2FvGnQ_L for <intel-wired-lan@lists.osuosl.org>;
- Fri,  5 Jul 2024 00:24:41 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.8;
- helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 916C340949
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 916C340949
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.8])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 916C340949
- for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Jul 2024 00:24:41 +0000 (UTC)
-X-CSE-ConnectionGUID: 9cs4+uC1R/CJrHtBoy6yqg==
-X-CSE-MsgGUID: AwaAh/y+Q7abX6/jVEHLxw==
-X-IronPort-AV: E=McAfee;i="6700,10204,11123"; a="34966791"
-X-IronPort-AV: E=Sophos;i="6.09,183,1716274800"; d="scan'208";a="34966791"
-Received: from orviesa006.jf.intel.com ([10.64.159.146])
- by fmvoesa102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 04 Jul 2024 17:24:41 -0700
-X-CSE-ConnectionGUID: tUE5TypWSZehOIoWstmt6Q==
-X-CSE-MsgGUID: UtUTH6htRceS04V0IsWpYg==
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 6b6RCoONiNKT for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  5 Jul 2024 13:12:32 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.17;
+ helo=mgamail.intel.com; envelope-from=chandanx.rout@intel.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org C4C47606A0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C4C47606A0
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.17])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id C4C47606A0
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Jul 2024 13:12:31 +0000 (UTC)
+X-CSE-ConnectionGUID: kyLYBN4FS+SaSmaKMXrDhw==
+X-CSE-MsgGUID: G+Udgm9sQ1SZrrqN+UZhaw==
+X-IronPort-AV: E=McAfee;i="6700,10204,11123"; a="17347677"
+X-IronPort-AV: E=Sophos;i="6.09,184,1716274800"; d="scan'208";a="17347677"
+Received: from orviesa009.jf.intel.com ([10.64.159.149])
+ by fmvoesa111.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 05 Jul 2024 06:12:30 -0700
+X-CSE-ConnectionGUID: DHv1BCYeTbyc6MBtiNwE4Q==
+X-CSE-MsgGUID: 3zhhWyeWReu2nmlv1ThiNQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.09,183,1716274800"; d="scan'208";a="47158352"
-Received: from lkp-server01.sh.intel.com (HELO 68891e0c336b) ([10.239.97.150])
- by orviesa006.jf.intel.com with ESMTP; 04 Jul 2024 17:24:37 -0700
-Received: from kbuild by 68891e0c336b with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1sPWkc-000Rgq-1f;
- Fri, 05 Jul 2024 00:24:34 +0000
-Date: Fri, 5 Jul 2024 08:23:53 +0800
-From: kernel test robot <lkp@intel.com>
-To: Mateusz Polchlopek <mateusz.polchlopek@intel.com>,
- intel-wired-lan@lists.osuosl.org
-Message-ID: <202407050857.OSYEyokn-lkp@intel.com>
-References: <20240703125922.5625-4-mateusz.polchlopek@intel.com>
+X-IronPort-AV: E=Sophos;i="6.09,184,1716274800"; d="scan'208";a="46987667"
+Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
+ by orviesa009.jf.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
+ 05 Jul 2024 06:12:30 -0700
+Received: from orsmsx611.amr.corp.intel.com (10.22.229.24) by
+ ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.39; Fri, 5 Jul 2024 06:12:29 -0700
+Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
+ ORSMSX611.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.39; Fri, 5 Jul 2024 06:12:29 -0700
+Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
+ orsmsx610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.39 via Frontend Transport; Fri, 5 Jul 2024 06:12:29 -0700
+Received: from NAM12-DM6-obe.outbound.protection.outlook.com (104.47.59.169)
+ by edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.39; Fri, 5 Jul 2024 06:12:28 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=RX9/1XwmC6rc4yUB+aTGbJ7saGKgJoV3SpLfHFl8pCFfS4kPR3AmISbBWIuuVMblwttQ/mhmtiFg4MYkCFLryQ3GwQCAAHrwX9lzXYAXTg4rtCOICTVZrt7AhLgdEdBSil7sRjb+iz61CBmqjMIW3l2owYTfYkUw6qxx08t5iNTGhRpAVNNG+LcHw6S8jDKw5bm+iFCrov3fGlnRjDoe4T1DHJvigrPmTMn1xPq/WbJ0yNulAd1cbuckF3Wt2uucZZINkufffWnvOw4vHniLffGSBGY/91RvytOpI7Ou3TzYEvfrp0HuvRlSsYAkBQHkqQla4Y5AGP0zVJUKadhS/w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=ZRwOPCylK7NdN22Cg6JhaZTUhhrv7CNoZXmqayON+LI=;
+ b=oURrtgvJD36ON6sR5j98PuHf00GNHujgEspG48kNVOimoJNJy7XugY5XYAeGKis+9aEfnzPSS03Xsy9fh4+PaPnqJ+pQmefYiOFp6Wez2buzvJfmTou2NRmSpcyOypp8LVmc9TZur8og4eh5iPOJvnx7qH+68cy6Fcu42/fguajZEOQ8p1SR0SHRp9CO53QWWzkN78fzxN6mJ4CjseGXx7HLcVziNxoTM0Sdusn2HhGYECOIHAUuzk02IbSxOqHafYG+SYZFV+xqUREGn+pRo4wT+8V9Pd3guZcIpadPTkh0+m1B3wjTRtQmPTqHE2LzRC0B39GYFhLmOd5G8tRcOQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from CH3PR11MB8313.namprd11.prod.outlook.com (2603:10b6:610:17c::15)
+ by MW4PR11MB7005.namprd11.prod.outlook.com (2603:10b6:303:22e::19)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7741.23; Fri, 5 Jul
+ 2024 13:12:26 +0000
+Received: from CH3PR11MB8313.namprd11.prod.outlook.com
+ ([fe80::3251:fc84:d223:79a3]) by CH3PR11MB8313.namprd11.prod.outlook.com
+ ([fe80::3251:fc84:d223:79a3%5]) with mapi id 15.20.7719.029; Fri, 5 Jul 2024
+ 13:12:26 +0000
+From: "Rout, ChandanX" <chandanx.rout@intel.com>
+To: "Kubiak, Michal" <michal.kubiak@intel.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Thread-Topic: [PATCH iwl-net v2] i40e: Fix XDP program unloading while
+ removing the driver
+Thread-Index: AQHaxkj76cEu3EZSe0KYzo1eoWx/drHoLIUQ
+Date: Fri, 5 Jul 2024 13:12:26 +0000
+Message-ID: <CH3PR11MB83135C86680DFCF93D31597DEADF2@CH3PR11MB8313.namprd11.prod.outlook.com>
+References: <20240624151213.1755714-1-michal.kubiak@intel.com>
+In-Reply-To: <20240624151213.1755714-1-michal.kubiak@intel.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: CH3PR11MB8313:EE_|MW4PR11MB7005:EE_
+x-ms-office365-filtering-correlation-id: 8b1efcaf-2ee7-4f80-93e5-08dc9cf41dc6
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0; ARA:13230040|376014|366016|1800799024|38070700018;
+x-microsoft-antispam-message-info: =?us-ascii?Q?KpByj34gQRADGHLdFSmTQgFmyHlR+kTR+X/YllMmW5rYi5CM+A7OUOp0KFGt?=
+ =?us-ascii?Q?XAA+QIm3UJ9Wf+arhTVRBrfUou18hyo5CF/ATOtAgXvaDOUyS+p9X5Xtme9v?=
+ =?us-ascii?Q?G0EEHJDw94HzlYa3p11m9ghE8MMaM5yz74/sM9KAehMUHlBfQ4+9QoYV6265?=
+ =?us-ascii?Q?6KvZ2RcyL5lyPEV8vfTwdgSuv5Y3sFhln3Zewdazb0qwtFd4AsSELHB4F4Yh?=
+ =?us-ascii?Q?i9Br3lADVu3++wB35yu7yTWGITKfUZoY+0KhDIOuyzKryv/JfLTqskjJ6OMQ?=
+ =?us-ascii?Q?ZB6YhmvdTxVOPvx7/1crntoIwnz4+DdxBSnCcTJ1fS4CcE45DZ7DCCinxDiD?=
+ =?us-ascii?Q?e319gcxMH/Qs/cnjd+qndxQlQSfQvux8O+VAxUVwT2UfclZgYrcGZ3UDtHg9?=
+ =?us-ascii?Q?h+z1v3X9yP7Gr5FZe2qjUSEGTSES9oe+930XkDB2kQuY9AsJWALxxSsByQpH?=
+ =?us-ascii?Q?MU4qMFWbyD5F75vNDa218GL7WA0qQkkMSb8CS+MoLPxilQd8Ozz9QVcBoRln?=
+ =?us-ascii?Q?RPoFLZdNWriaKRuczdQf5Rn4O+2aBr45KFXMJ1AAmOxvrqAgvIbLJL0woZbq?=
+ =?us-ascii?Q?nkGUoRTNBcikegvUKQ+fdbeNNFx/MnnZ9lNmx3u3/K0ShGIK9er5wsQPhtFE?=
+ =?us-ascii?Q?7+V/b+yAkEag+/gBAou8ZQUN04TLncNaUbFv8z1WyQoDB6AlX+GPtUhWjmfl?=
+ =?us-ascii?Q?v/GteqNgLPrJa4lRGYu6JiaDS4vjIOTF8rth/nq5UfFbHFwL+Dlgxl8PSmmj?=
+ =?us-ascii?Q?UCsN8NIpPBLPczjWSem2H3wclaQ4q+5fAV3wSMDjShtOXbgi9iMweM4l4/MC?=
+ =?us-ascii?Q?95sLWRE5klj2t1DrMifFiZusOH4EmgmeGfF4xqEJgNEqM102XMF+RLLy9BKS?=
+ =?us-ascii?Q?oSuL4CC+bZ4bRS/Ymv2zu54NWQOHcecGe6XWA1NwFzqgfDWO0xTCLaYE03as?=
+ =?us-ascii?Q?TZzzu+VobgDi04/tQ+4Lo9mQB5yGt7Jo6Fl9hCWhb1222zNXsXCZZ/OioB6E?=
+ =?us-ascii?Q?H5u5ZM+D13FcRlhzZGXj5zqzSuQAxCjOBWh47SV/2fFpgEx3XMX5Q/VAcpjG?=
+ =?us-ascii?Q?Gg9SzadlFYG7z+gVhoWfWwr3BH5KaKxrt+6zDKTBwWbtTP9hEwExWo51vIHh?=
+ =?us-ascii?Q?dczym6NGMwjc0bsVFQtRQatwcNUNxko9tAN84aCEwylITi1KsB42TfPiEe8h?=
+ =?us-ascii?Q?kS73aSIXhbop6ZYzqx+QM+fgnVYf3AuEWddXWuBNLwdmSMD3jNq+y2WufKfc?=
+ =?us-ascii?Q?u0sRJ0iaABem2S7Xr4UVnkHaE/A175n/tJ4TRCqJ0hMwUTzyLFK0ey4ZGY5A?=
+ =?us-ascii?Q?FiT9M8KQG8zvzVyzDLAGkk+LJgcptHc+Z0xQ+Ov6cmuJ8ZvhtL9/DhM7Wh52?=
+ =?us-ascii?Q?rl0W3fw=3D?=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:CH3PR11MB8313.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(376014)(366016)(1800799024)(38070700018); DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?IuX2LZ8X6JDmUXeLOSyKIzZpqEvOiugs/Sbl0LifLWtga3g1zzKFdTfoVEI7?=
+ =?us-ascii?Q?eRVqjPCFcq6EfoiR/cKyb8KBN05kKZ98aH88ZMecp/LRsPRkNeS2rgfwa67H?=
+ =?us-ascii?Q?thS8sikU8O5vP11O0hJCTDS0Mi7gtDJeczzVNs5bF/rcSajjPsqXK9fg54N7?=
+ =?us-ascii?Q?JgXEHQA9114RRUolYrh2+KtJkCU9QjFMk4KXIU6MDCcSFlP3Mv2ef7VpknXa?=
+ =?us-ascii?Q?025EmRvoCCYVC+mU4HBN6vYNkKpFDIKqHb7RXl3VyVz3P7pkYI4FYd7XfuSk?=
+ =?us-ascii?Q?Kx7CmuvFif55kQmW6KLUvKtIQ4LPhZLOwWbGVZX7eF/AZrfUveYfj5POAz51?=
+ =?us-ascii?Q?2fW7XXYKXMu9CK75nnNE2BRhBvqMsxKAR0MKjj4vm4+T5vBjEGK+0bDGY6Rf?=
+ =?us-ascii?Q?OKF/LzEnqj7jw0j5aHmptx5JOeCF5YPGLyA1dGRDD//5d5v0XPgkWv9i9r4F?=
+ =?us-ascii?Q?UV8sK+ehh0Mi7Bqv5FTLaiW6lrZP8U/7PZybDEYi1LtScDcO6lwA23uJCUBt?=
+ =?us-ascii?Q?Dtti08HVqC7ebm65YQ9ZqadxJJDoHSyXyv47U3LkVkC3eqU3Xloml33QfIFv?=
+ =?us-ascii?Q?a1VdkEW5FmKeeQ2h+f3HJAhpnewTiL7ell2d9CBOsNAKPBJe/GFkMhkDtgAx?=
+ =?us-ascii?Q?OzELi0bIQooNsl9/4UIHS9v/nFN6QexNxUwO4Pd1a3KhhkNHcwihyuTvSMUY?=
+ =?us-ascii?Q?Jj7Ep7SF+LUXjEJpXC80CLgxQutA3sMqEb4GQ4zgxBNjZXb1gtvEH+A3C+C7?=
+ =?us-ascii?Q?OWjdeyAlSo4sHcfcIOgryxk5vYLZDrLQeM19hZupFTxSGfn5s2eYYPro8jLN?=
+ =?us-ascii?Q?zLSknz0p/KG+G/CWaH3Gv5YNGPQZPo/fGn/XOLS+GVtFrqGrPuHxcdLLmxQP?=
+ =?us-ascii?Q?SF0ZgxN7VT9pNcLc2uBV0f6LfFadLw49QphgJ/lSmPD0ePJrKPIyai88eeoe?=
+ =?us-ascii?Q?IoRFHi7F3yu5s8aWCpLWOcOhDA1sfLXf8yYc+Ty95EDl7Jtu6YxkjwvwCzW7?=
+ =?us-ascii?Q?/KIjpJnTOTHnn2keyxRFX9Me9Yf1K3kt4YHJ7EBie/eICXo4C3Qp8KDZzsuM?=
+ =?us-ascii?Q?ehm1VkhmN5Pf2LS64JsTJOwM4e3wFz6M6+B2sctv0a3NJDVsGOZ5t0GyC5n7?=
+ =?us-ascii?Q?LMhtiza/mTX35KPnK0V53ZXeseJs2wz6odY0u+K2E6rX1cVU70sMT8rqIFRc?=
+ =?us-ascii?Q?+/f+wklywKczJyKKsZ0NKPn07eBW4wToIasUt3HbqC0PIQhooc1ijFtFrOTf?=
+ =?us-ascii?Q?UnKK7H2tM4cyMYcSNqsLa0u+EfUVgzq+SPCFxrUgPdNZhgcw0kLykG3slLqY?=
+ =?us-ascii?Q?CzdXjNxd26PP+lVeKmHvG59G5TMvRnFT0GwebPW2jXyYHXDukSSXUgrOej9z?=
+ =?us-ascii?Q?LXk2RUHtnFyBbJEgdBrtL6T511Hv8rb+SGK2G/pXakioO6YUbqTimRGtU2EI?=
+ =?us-ascii?Q?gO/4qMoX0l7HRX2iMpmcQNFhSm5kjhopxXo1lewR1nq0zhb0t5kjZYjeBB0V?=
+ =?us-ascii?Q?JxjqDwaGuRoS0DSWvS+wL8HJpAv4UCt8wi00j9InpWcGky33Q5T0yk0rITAF?=
+ =?us-ascii?Q?oc5hkmOr6n/vlD75aQr8gPAQAeaskN85FarJVa9S?=
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20240703125922.5625-4-mateusz.polchlopek@intel.com>
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: CH3PR11MB8313.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 8b1efcaf-2ee7-4f80-93e5-08dc9cf41dc6
+X-MS-Exchange-CrossTenant-originalarrivaltime: 05 Jul 2024 13:12:26.5233 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: wNo5afO8F61+wMRxQTfpVju/iIOXcDOI/1QvG5bQMYQZiZSrzvRxYwzeH+Z+vqr8phw9/zX4EvuEBhf8pi/xlA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MW4PR11MB7005
+X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1720139082; x=1751675082;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=jMgU/ldtR+ELFwjG824hgDWZhrXbeGkg9FUM7GIABp0=;
- b=bJqFuOe/y7i0KIl9m9Nd9VpHkr/E1ABalWF5V6QLD5NIHFkil9SxF4YU
- tqmtxJ8Oc9sf+KZ9Gp2ZqlfoeEb/CO2xxuMnLN1/iE/kUXu1JDdGMSXbj
- WmnN05u+fiFusQTvVoZAEHy0KN2xuVHq3ds3Ljr4UyhqlB34BUYrg0WH1
- 4GHgQBuYWqjUGPNJs4wmTfkUqvW3Ez+y1DJla/45xTBCz3J8HrNXlMUwA
- g9UD0JEtdAqea8ZNi4isaYjGfeZUthgk06qPVQlNQ7f4zqd6X58H9tE+f
- VqSfqhsEnZveC7jdA6biu8MReb31GAQhHvNUIHzaHokTFIEOjEwxkZsHH
- w==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ t=1720185151; x=1751721151;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=b1in/aodMeUKDFPzuzZAiWRB8oXqHrVQnktwLPh5K9k=;
+ b=IP/A3HhatMAnIxlQmdxC8mDi/QLznv2ISNX7ODJuPX72NYhreIuasWK5
+ A6W7NRZOV1V+462/WYKtZ4tvxTkGC/3jkwz0zTgu/Gl1wPD53Ns6C7Kjt
+ 8Vwzks4Ltf/hZIaT8b3/M/LvV7/3MMfvbKeSI1CjZm1bPtjdlxjRiqcxf
+ 0qvBeMENA8BLcbn2aK9364A5onLrYJgr4ywOKl43a1/sGcISIACnW/Xvn
+ vXi33bS/j4qdU8W1ytFo6JIY83B8QAbT2Mb2OBgD+v9nKYgbTS3GUX6PP
+ Fy8xMlOAlyq/w03qnQossCgbyXy8n/jm4StztksNNZaix7mFGSIrKY3dl
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=bJqFuOe/
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v1 3/6] ice: add Tx hang
- devlink health reporter
+ header.s=Intel header.b=IP/A3Hha
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH iwl-net v2] i40e: Fix XDP program
+ unloading while removing the driver
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -108,71 +222,118 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Przemek Kitszel <przemyslaw.kitszel@intel.com>, willemb@google.com,
- Wojciech Drewek <wojciech.drewek@intel.com>, dwaipayanray1@gmail.com,
- oe-kbuild-all@lists.linux.dev, linux-kernel@vger.kernel.org, apw@canonical.com,
- edumazet@google.com, netdev@vger.kernel.org,
- Mateusz Polchlopek <mateusz.polchlopek@intel.com>, joe@perches.com,
- lukas.bulwahn@gmail.com, akpm@linux-foundation.org,
- Igor Bagnucki <igor.bagnucki@intel.com>
+Cc: "Drewek, Wojciech" <wojciech.drewek@intel.com>, "Nagraj,
+ Shravan" <shravan.nagraj@intel.com>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>, "Pandey,
+ Atul" <atul.pandey@intel.com>, "kuba@kernel.org" <kuba@kernel.org>, "Keller,
+ Jacob E" <jacob.e.keller@intel.com>, "Fijalkowski,
+ Maciej" <maciej.fijalkowski@intel.com>, "Kuruvinakunnel,
+ George" <george.kuruvinakunnel@intel.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi Mateusz,
-
-kernel test robot noticed the following build warnings:
-
-[auto build test WARNING on tnguy-next-queue/dev-queue]
-
-url:    https://github.com/intel-lab-lkp/linux/commits/Mateusz-Polchlopek/checkpatch-don-t-complain-on-_Generic-use/20240704-184910
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git dev-queue
-patch link:    https://lore.kernel.org/r/20240703125922.5625-4-mateusz.polchlopek%40intel.com
-patch subject: [Intel-wired-lan] [PATCH iwl-next v1 3/6] ice: add Tx hang devlink health reporter
-config: i386-allmodconfig (https://download.01.org/0day-ci/archive/20240705/202407050857.OSYEyokn-lkp@intel.com/config)
-compiler: gcc-13 (Ubuntu 13.2.0-4ubuntu3) 13.2.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20240705/202407050857.OSYEyokn-lkp@intel.com/reproduce)
-
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202407050857.OSYEyokn-lkp@intel.com/
-
-All warnings (new ones prefixed by >>):
-
-   drivers/net/ethernet/intel/ice/devlink/devlink_health.c: In function 'ice_tx_hang_reporter_dump':
->> drivers/net/ethernet/intel/ice/devlink/devlink_health.c:76:43: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
-      76 |         ice_fmsg_put_ptr(fmsg, "dma-ptr", (void *)event->tx_ring->dma);
-         |                                           ^
 
 
-vim +76 drivers/net/ethernet/intel/ice/devlink/devlink_health.c
+>-----Original Message-----
+>From: Kubiak, Michal <michal.kubiak@intel.com>
+>Sent: Monday, June 24, 2024 8:42 PM
+>To: intel-wired-lan@lists.osuosl.org
+>Cc: Fijalkowski, Maciej <maciej.fijalkowski@intel.com>;
+>netdev@vger.kernel.org; Drewek, Wojciech <wojciech.drewek@intel.com>;
+>Kuruvinakunnel, George <george.kuruvinakunnel@intel.com>; Keller, Jacob E
+><jacob.e.keller@intel.com>; kuba@kernel.org; Kubiak, Michal
+><michal.kubiak@intel.com>
+>Subject: [PATCH iwl-net v2] i40e: Fix XDP program unloading while removing
+>the driver
+>
+>The commit 6533e558c650 ("i40e: Fix reset path while removing the driver")
+>introduced a new PF state "__I40E_IN_REMOVE" to block modifying the XDP
+>program while the driver is being removed.
+>Unfortunately, such a change is useful only if the ".ndo_bpf()"
+>callback was called out of the rmmod context because unloading the existin=
+g
+>XDP program is also a part of driver removing procedure.
+>In other words, from the rmmod context the driver is expected to unload th=
+e
+>XDP program without reporting any errors. Otherwise, the kernel warning wi=
+th
+>callstack is printed out to dmesg.
+>
+>Example failing scenario:
+> 1. Load the i40e driver.
+> 2. Load the XDP program.
+> 3. Unload the i40e driver (using "rmmod" command).
+>
+>The example kernel warning log:
+>
+>[  +0.004646] WARNING: CPU: 94 PID: 10395 at net/core/dev.c:9290
+>unregister_netdevice_many_notify+0x7a9/0x870
+>[...]
+>[  +0.010959] RIP: 0010:unregister_netdevice_many_notify+0x7a9/0x870
+>[...]
+>[  +0.002726] Call Trace:
+>[  +0.002457]  <TASK>
+>[  +0.002119]  ? __warn+0x80/0x120
+>[  +0.003245]  ? unregister_netdevice_many_notify+0x7a9/0x870
+>[  +0.005586]  ? report_bug+0x164/0x190
+>[  +0.003678]  ? handle_bug+0x3c/0x80
+>[  +0.003503]  ? exc_invalid_op+0x17/0x70 [  +0.003846]  ?
+>asm_exc_invalid_op+0x1a/0x20 [  +0.004200]  ?
+>unregister_netdevice_many_notify+0x7a9/0x870
+>[  +0.005579]  ? unregister_netdevice_many_notify+0x3cc/0x870
+>[  +0.005586]  unregister_netdevice_queue+0xf7/0x140
+>[  +0.004806]  unregister_netdev+0x1c/0x30 [  +0.003933]
+>i40e_vsi_release+0x87/0x2f0 [i40e] [  +0.004604]  i40e_remove+0x1a1/0x420
+>[i40e] [  +0.004220]  pci_device_remove+0x3f/0xb0 [  +0.003943]
+>device_release_driver_internal+0x19f/0x200
+>[  +0.005243]  driver_detach+0x48/0x90
+>[  +0.003586]  bus_remove_driver+0x6d/0xf0 [  +0.003939]
+>pci_unregister_driver+0x2e/0xb0 [  +0.004278]  i40e_exit_module+0x10/0x5f0
+>[i40e] [  +0.004570]  __do_sys_delete_module.isra.0+0x197/0x310
+>[  +0.005153]  do_syscall_64+0x85/0x170
+>[  +0.003684]  ? syscall_exit_to_user_mode+0x69/0x220
+>[  +0.004886]  ? do_syscall_64+0x95/0x170 [  +0.003851]  ?
+>exc_page_fault+0x7e/0x180 [  +0.003932]
+>entry_SYSCALL_64_after_hwframe+0x71/0x79
+>[  +0.005064] RIP: 0033:0x7f59dc9347cb
+>[  +0.003648] Code: 73 01 c3 48 8b 0d 65 16 0c 00 f7 d8 64 89 01 48 83
+>c8 ff c3 66 2e 0f 1f 84 00 00 00 00 00 90 f3 0f 1e fa b8 b0 00 00 00 0f
+>05 <48> 3d 01 f0 ff ff 73 01 c3 48 8b 0d 35 16 0c 00 f7 d8 64 89 01 48 [
+>+0.018753] RSP: 002b:00007ffffac99048 EFLAGS: 00000206 ORIG_RAX:
+>00000000000000b0 [  +0.007577] RAX: ffffffffffffffda RBX:
+>0000559b9bb2f6e0 RCX: 00007f59dc9347cb [  +0.007140] RDX:
+>0000000000000000 RSI: 0000000000000800 RDI: 0000559b9bb2f748 [
+>+0.007146] RBP: 00007ffffac99070 R08: 1999999999999999 R09:
+>0000000000000000 [  +0.007133] R10: 00007f59dc9a5ac0 R11:
+>0000000000000206 R12: 0000000000000000 [  +0.007141] R13:
+>00007ffffac992d8 R14: 0000559b9bb2f6e0 R15: 0000000000000000 [
+>+0.007151]  </TASK> [  +0.002204] ---[ end trace 0000000000000000 ]---
+>
+>Fix this by checking if the XDP program is being loaded or unloaded.
+>Then, block only loading a new program while "__I40E_IN_REMOVE" is set.
+>Also, move testing "__I40E_IN_REMOVE" flag to the beginning of XDP_SETUP
+>callback to avoid unnecessary operations and checks.
+>
+>Fixes: 6533e558c650 ("i40e: Fix reset path while removing the driver")
+>Signed-off-by: Michal Kubiak <michal.kubiak@intel.com>
+>
+>---
+>
+>v1 -> v2 changes:
+> - simplify the fix according to Kuba's suggestions, i.e. remove
+>   checking 'NETREG_UNREGISTERING' flag directly from ndo_bpf
+>   and remove a separate handling for 'unregister' context.
+> - update the commit message accordingly
+> - add an example of the kernel warning for the issue being fixed.
+>
+>See:
+>v1: <https://lore.kernel.org/netdev/20240528-net-2024-05-28-intel-net-
+>fixes-v1-4-dc8593d2bbc6@intel.com/>
+>---
+> drivers/net/ethernet/intel/i40e/i40e_main.c | 9 ++++-----
+> 1 file changed, 4 insertions(+), 5 deletions(-)
+>
 
-    60	
-    61	static int ice_tx_hang_reporter_dump(struct devlink_health_reporter *reporter,
-    62					     struct devlink_fmsg *fmsg, void *priv_ctx,
-    63					     struct netlink_ext_ack *extack)
-    64	{
-    65		struct ice_tx_hang_event *event = priv_ctx;
-    66	
-    67		devlink_fmsg_obj_nest_start(fmsg);
-    68		ICE_DEVLINK_FMSG_PUT_FIELD(fmsg, event, head);
-    69		ICE_DEVLINK_FMSG_PUT_FIELD(fmsg, event, intr);
-    70		ICE_DEVLINK_FMSG_PUT_FIELD(fmsg, event, vsi_num);
-    71		ICE_DEVLINK_FMSG_PUT_FIELD(fmsg, event, queue);
-    72		ICE_DEVLINK_FMSG_PUT_FIELD(fmsg, event, next_to_clean);
-    73		ICE_DEVLINK_FMSG_PUT_FIELD(fmsg, event, next_to_use);
-    74		devlink_fmsg_put(fmsg, "irq-mapping", event->tx_ring->q_vector->name);
-    75		ice_fmsg_put_ptr(fmsg, "desc-ptr", event->tx_ring->desc);
-  > 76		ice_fmsg_put_ptr(fmsg, "dma-ptr", (void *)event->tx_ring->dma);
-    77		devlink_fmsg_binary_pair_put(fmsg, "desc", event->tx_ring->desc,
-    78					     size_mul(event->tx_ring->count,
-    79						      sizeof(struct ice_tx_desc)));
-    80		devlink_fmsg_obj_nest_end(fmsg);
-    81	
-    82		return 0;
-    83	}
-    84	
+Tested-by: Chandan Kumar Rout <chandanx.rout@intel.com> (A Contingent Worke=
+r at Intel)
 
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
