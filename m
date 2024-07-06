@@ -1,104 +1,87 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 989B2928C8B
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  5 Jul 2024 18:58:52 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 72B69929250
+	for <lists+intel-wired-lan@lfdr.de>; Sat,  6 Jul 2024 11:53:13 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 3323840245;
-	Fri,  5 Jul 2024 16:58:51 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 3FE3581ADE;
+	Sat,  6 Jul 2024 09:53:11 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id cflhgyIokg_q; Sat,  6 Jul 2024 09:53:10 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9DC4F8198A
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1720259589;
+	bh=bhjdK/SLRM3PjWp2iETGKtVoXUHQ22IPHFy9ZXDRWM0=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=0ddakwEWd4/bFEfVQXAKRVS0Zye8y0BMBwSNXMToIavQ3+HQZoJOojH7JGNmF/MCA
+	 vKsToAJzFdOxyyRIHbg8+JvqSdedA9VO1VuEUXGOpH8FIGo9DT4g7/mbODKQg1UHlE
+	 X9B+RCWpvkmi40vMZNyCKGa1+m+tsIs+L+jzf1pL+czqPPk8K+GjGEEq+LhXBcBUvJ
+	 DwDvrDZXip63WhR077eLIxMWteRKSjzTiu/86e4W5uiZnqlItwLzOlTV0CpxCnXxMv
+	 +XH8V70EzbfylKjJ5vmckWuJwfKHznkC28P3rsQO/vOuQyBCY6X5Hw/5pMUUfP8y7f
+	 8NsANXD2LrIbA==
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp1.osuosl.org (Postfix) with ESMTP id 9DC4F8198A;
+	Sat,  6 Jul 2024 09:53:09 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 565C31BF83C
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  6 Jul 2024 09:53:06 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp4.osuosl.org (Postfix) with ESMTP id 3E1E8407AF
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  6 Jul 2024 09:53:06 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 1eHpWJuYXqkB; Fri,  5 Jul 2024 16:58:50 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 14D0640265
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1720198730;
-	bh=53IWNUqv/dAAWYlqkFKigcK2SNfNDfaWpHcnGTZ50h4=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=KN9HKAnPbS9WNiSUcs7x+mcF+2eDQYxUEL1bguEemsEpkMiX9nCVorBol5AH+8ciu
-	 yz8ij+kn2ANHBytO5n6HC5MtYfu8ZkMS8/3lLElSOhinaE4g82sAdqb9xAsfpa6+Io
-	 Z/lnGf8tT1gTvugeRXJqcJG/d8FJ4kar007c7enTu/bHHr9zW0UFl0zwwtEQcoFLnm
-	 rLi9R1aUp6RAVo03Gu+OPZzMjJPAD7+LJCePuGJWCo0HHjULxWg7saYJVfSMgbaco2
-	 3oC6a9/RaZDjA+59caIyhNdV7DyLgfipdqnUGJFU3yi0SI+08RUpjN4TsR3dcJZm/8
-	 utwOPReV75O2Q==
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 14D0640265;
-	Fri,  5 Jul 2024 16:58:50 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 702C01BF281
- for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Jul 2024 16:58:48 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 699236062D
- for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Jul 2024 16:58:48 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id WfYvvIunHfij for <intel-wired-lan@lists.osuosl.org>;
- Fri,  5 Jul 2024 16:58:47 +0000 (UTC)
-Received-SPF: None (mailfrom) identity=mailfrom; client-ip=198.175.65.13;
- helo=mgamail.intel.com; envelope-from=faizal.abdul.rahim@linux.intel.com;
+ id x39m9DQnERFp for <intel-wired-lan@lists.osuosl.org>;
+ Sat,  6 Jul 2024 09:53:05 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=139.178.84.217;
+ helo=dfw.source.kernel.org; envelope-from=horms@kernel.org;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 929F460612
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 929F460612
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.13])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 929F460612
- for <intel-wired-lan@lists.osuosl.org>; Fri,  5 Jul 2024 16:58:47 +0000 (UTC)
-X-CSE-ConnectionGUID: mI0qtLjIQ1+M9qo4NtIm+Q==
-X-CSE-MsgGUID: tpkln+ZKT2ye/VNiHCMnZA==
-X-IronPort-AV: E=McAfee;i="6700,10204,11123"; a="28649325"
-X-IronPort-AV: E=Sophos;i="6.09,185,1716274800"; d="scan'208";a="28649325"
-Received: from fmviesa004.fm.intel.com ([10.60.135.144])
- by orvoesa105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 05 Jul 2024 09:58:46 -0700
-X-CSE-ConnectionGUID: TFZusHLnTp+7M7CpwAdY1w==
-X-CSE-MsgGUID: XPBUW+DgTyi4UrXnOfwS9Q==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.09,185,1716274800"; d="scan'208";a="51518219"
-Received: from mohdfai2-mobl.gar.corp.intel.com (HELO [10.247.38.162])
- ([10.247.38.162])
- by fmviesa004-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 05 Jul 2024 09:58:43 -0700
-Message-ID: <5dbb95b5-96c1-4bbc-a4e0-c0616efa7ac2@linux.intel.com>
-Date: Sat, 6 Jul 2024 00:58:40 +0800
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 12251406E3
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 12251406E3
+Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 12251406E3
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  6 Jul 2024 09:53:04 +0000 (UTC)
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by dfw.source.kernel.org (Postfix) with ESMTP id A18E661C0A;
+ Sat,  6 Jul 2024 09:53:03 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E28E8C2BD10;
+ Sat,  6 Jul 2024 09:53:00 +0000 (UTC)
+Date: Sat, 6 Jul 2024 10:52:58 +0100
+From: Simon Horman <horms@kernel.org>
+To: Aleksandr Mishin <amishin@t-argos.ru>
+Message-ID: <20240706095258.GB1481495@kernel.org>
+References: <20240705163620.12429-1-amishin@t-argos.ru>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: Simon Horman <horms@kernel.org>
-References: <20240702040926.3327530-1-faizal.abdul.rahim@linux.intel.com>
- <20240702040926.3327530-2-faizal.abdul.rahim@linux.intel.com>
- <20240703150830.GO598357@kernel.org>
-Content-Language: en-US
-From: "Abdul Rahim, Faizal" <faizal.abdul.rahim@linux.intel.com>
-In-Reply-To: <20240703150830.GO598357@kernel.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240705163620.12429-1-amishin@t-argos.ru>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1720198727; x=1751734727;
- h=message-id:date:mime-version:subject:to:cc:references:
- from:in-reply-to:content-transfer-encoding;
- bh=oOHv5vKH1IZynVlCLLK+KNAq96qbLhSgisVIUWyYrEw=;
- b=LglkokbFeKZDd1CrkI9XuvBc079rCovaDgiABCmfugHQQR4qOv4KczjX
- kvTFsz6eA7oKgrEcfuJrhv2M2MEPTnIZLm1C1mql+mkDQo4R+FSkDOSe+
- q3KilVjPlK9JIneSpdxlYq5a2y1GHvw45AwcM9Bsn1MBSNzbBWOUJZmpz
- 99pj4l7g/lNcCwirWpaEGXajTVOI25TdTlICYCGUy/SGZXZbgRxnmQEhF
- R+pF5/dcqJ6k2ktxHDx8VDB9wbx/muNAk9w2x8VcPDmil9RyHpdHVl2Wt
- KFqlvLFbs48tgjuG4nTUTRcAnf8cr5OTBOB9UmyTtwTye3wyUiYWttlMw
- g==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=linux.intel.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ d=kernel.org; s=k20201202; t=1720259583;
+ bh=EoJn9pc2K+C/K7BLu1o4zFCKx6+NE9Wo+WHt6QnrWSM=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=oF3hrZ8HY+7i9IMoKfw0AtfX5ocmKNXTt9vQ41mFKyuTSb1Mzp9OYb+rg2lKQdX5v
+ Gkha4nLpVioUDVOrnvBybTy1NEUc6pJVk2OlY8fmhUgRjaDESph8fY61qACYvJ8vRX
+ FsI5/5g6PWk8ZZIocJOUxC6+I6SDnOvn5P4lTb6Ubx8n8fz9ybDZvcAKKF07dy1cVl
+ 08d7OLyM5/bySva0iotFvQhNRK8VpQSfhXfh/e4xOClw9xJateezPtgPyf8ZqI/SHb
+ 5c3uU9a/V2dDtLv6kayhdVB9/B+2vgU26ZJFj6Ui0IYr1fT/B8n+Ue9iK75xiK4sho
+ HXWXsYewNPg8g==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=kernel.org
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=LglkokbF
-Subject: Re: [Intel-wired-lan] [PATCH iwl-net v1 1/4] igc: Fix
- qbv_config_change_errors logics
+ unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
+ header.s=k20201202 header.b=oF3hrZ8H
+Subject: Re: [Intel-wired-lan] [PATCH net] ice: Adjust memory overrun in
+ ice_sched_add_root_node() and ice_sched_add_node()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -111,43 +94,56 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Vinicius Costa Gomes <vinicius.gomes@intel.com>,
- intel-wired-lan@lists.osuosl.org, richardcochran@gmail.com,
- stable@vger.kernel.org, linux-kernel@vger.kernel.org,
- Eric Dumazet <edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
- netdev@vger.kernel.org, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>
+Cc: lvc-project@linuxtesting.org, Eric Dumazet <edumazet@google.com>,
+ intel-wired-lan@lists.osuosl.org, linux-kernel@vger.kernel.org,
+ Anirudh Venkataramanan <anirudh.venkataramanan@intel.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>, netdev@vger.kernel.org,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ "David S. Miller" <davem@davemloft.net>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+On Fri, Jul 05, 2024 at 07:36:20PM +0300, Aleksandr Mishin wrote:
+> In ice_sched_add_root_node() and ice_sched_add_node() there are calls to
+> devm_kcalloc() in order to allocate memory for array of pointers to
+> 'ice_sched_node' structure. But in this calls there are 'sizeof(*root)'
+> instead of 'sizeof(root)' and 'sizeof(*node)' instead of 'sizeof(node)'.
+> So memory is allocated for structures instead pointers. This lead to
+> significant memory overrun.
+> Looks like it was done for "coverity[suspicious_sizeof] workaround".
 
->> diff --git a/drivers/net/ethernet/intel/igc/igc_tsn.c b/drivers/net/ethernet/intel/igc/igc_tsn.c
->> index 22cefb1eeedf..02dd41aff634 100644
->> --- a/drivers/net/ethernet/intel/igc/igc_tsn.c
->> +++ b/drivers/net/ethernet/intel/igc/igc_tsn.c
->> @@ -78,6 +78,17 @@ void igc_tsn_adjust_txtime_offset(struct igc_adapter *adapter)
->>   	wr32(IGC_GTXOFFSET, txoffset);
->>   }
->>   
->> +bool igc_tsn_is_taprio_activated_by_user(struct igc_adapter *adapter)
->> +{
->> +	struct igc_hw *hw = &adapter->hw;
->> +
->> +	if ((rd32(IGC_BASET_H) || rd32(IGC_BASET_L)) &&
->> +	    adapter->taprio_offload_enable)
->> +		return true;
->> +	else
->> +		return false;
-> 
-> As per my response to patch 2/4, I think something like this is a bit
-> nicer:
-> 
-> (Completely untested!)
-> 
-> 	return (rd32(IGC_BASET_H) || rd32(IGC_BASET_L)) &&
-> 		adapter->taprio_offload_enable;
-> 
-> 
+Hi Aleksandr,
 
-Will update, thanks.
+While I agree that your patch is correct, I doesn't look to me like it was
+done for "coverity[suspicious_sizeof] workaround", as that annotation was
+added after the cited patch where the problem appears to have been
+introduced.
 
+> 
+> Adjust memory overrun by correcting devm_kcalloc() parameters.
+
+I also think it is misleading to describe this as an overrun.  In my
+opinion, an overrun refers to writing over the end of a buffer, or similar
+conditions where values are written to memory or read from that is not
+intended for that purpose.
+
+But that is not the case here.  Instead it is an over allocation of memory.
+Which is, in a sense, the opposite of an overrun. I suggest updating the
+description of the problem.
+
+> 
+> Found by Linux Verification Center (linuxtesting.org) with SVACE.
+> 
+> Fixes: dc49c7723676 ("ice: Get MAC/PHY/link info and scheduler topology")
+
+I do agree there is a problem. But I'm not convinced this is fixing a bug -
+is the overallocation of memory manifesting, in a real problem, other than
+perhaps contributing to memory pressure (I assume in not a very significant
+way).
+
+My feeling is that it would be better to target this change to net-next and
+drop the Fixes tag.
+
+> Signed-off-by: Aleksandr Mishin <amishin@t-argos.ru>
+
+...
