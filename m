@@ -1,87 +1,110 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 72B69929250
-	for <lists+intel-wired-lan@lfdr.de>; Sat,  6 Jul 2024 11:53:13 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1E79692943D
+	for <lists+intel-wired-lan@lfdr.de>; Sat,  6 Jul 2024 16:55:37 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 3FE3581ADE;
-	Sat,  6 Jul 2024 09:53:11 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 91CE2403EA;
+	Sat,  6 Jul 2024 14:55:34 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id cflhgyIokg_q; Sat,  6 Jul 2024 09:53:10 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id iqftTCT_8TGe; Sat,  6 Jul 2024 14:55:33 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9DC4F8198A
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 82416404ED
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1720259589;
-	bh=bhjdK/SLRM3PjWp2iETGKtVoXUHQ22IPHFy9ZXDRWM0=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1720277733;
+	bh=Z75ZznpIbvuXtNcDLfumWj2gSi9XkiI5AnYv1mRIAA4=;
+	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=0ddakwEWd4/bFEfVQXAKRVS0Zye8y0BMBwSNXMToIavQ3+HQZoJOojH7JGNmF/MCA
-	 vKsToAJzFdOxyyRIHbg8+JvqSdedA9VO1VuEUXGOpH8FIGo9DT4g7/mbODKQg1UHlE
-	 X9B+RCWpvkmi40vMZNyCKGa1+m+tsIs+L+jzf1pL+czqPPk8K+GjGEEq+LhXBcBUvJ
-	 DwDvrDZXip63WhR077eLIxMWteRKSjzTiu/86e4W5uiZnqlItwLzOlTV0CpxCnXxMv
-	 +XH8V70EzbfylKjJ5vmckWuJwfKHznkC28P3rsQO/vOuQyBCY6X5Hw/5pMUUfP8y7f
-	 8NsANXD2LrIbA==
+	b=tO6RluEd/v190w+6vjqIlVwEuKXYjToASPBrLvt9hToKpJHZOtG2DS1mfTjICZBtU
+	 Dh9qEx64zAvlLtX9qy+YT8DzsEKPZBHmNjDDVYXP1yAA6P7pHaJwSFgWUXHGOkZewl
+	 ssJBvE86fUVcUWNLLZ6WHX0VqpBAlOLHXbKVsK9RuIbck13jAK2G0D+4IG0N4MYEH2
+	 KO8UuxaWk3/aXMD63hlZg+6VYxYsp6xQ39qxewdTBSjeVrVV5MgolCrZSsxKfI/SEg
+	 a/fOAtA4VaoypGSvkY7ZVglSXsM6IcHddyzgHTjMuJquoRnVfmetnnERtIlqzaaitK
+	 lLttfu5BqADmw==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 9DC4F8198A;
-	Sat,  6 Jul 2024 09:53:09 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 82416404ED;
+	Sat,  6 Jul 2024 14:55:33 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 565C31BF83C
- for <intel-wired-lan@lists.osuosl.org>; Sat,  6 Jul 2024 09:53:06 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id AA7131BF83E
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  6 Jul 2024 14:55:30 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 3E1E8407AF
- for <intel-wired-lan@lists.osuosl.org>; Sat,  6 Jul 2024 09:53:06 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 944184022F
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  6 Jul 2024 14:55:30 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id x39m9DQnERFp for <intel-wired-lan@lists.osuosl.org>;
- Sat,  6 Jul 2024 09:53:05 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=139.178.84.217;
- helo=dfw.source.kernel.org; envelope-from=horms@kernel.org;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 12251406E3
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 12251406E3
-Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 12251406E3
- for <intel-wired-lan@lists.osuosl.org>; Sat,  6 Jul 2024 09:53:04 +0000 (UTC)
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by dfw.source.kernel.org (Postfix) with ESMTP id A18E661C0A;
- Sat,  6 Jul 2024 09:53:03 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E28E8C2BD10;
- Sat,  6 Jul 2024 09:53:00 +0000 (UTC)
-Date: Sat, 6 Jul 2024 10:52:58 +0100
-From: Simon Horman <horms@kernel.org>
-To: Aleksandr Mishin <amishin@t-argos.ru>
-Message-ID: <20240706095258.GB1481495@kernel.org>
-References: <20240705163620.12429-1-amishin@t-argos.ru>
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id XegmeMk3H02o for <intel-wired-lan@lists.osuosl.org>;
+ Sat,  6 Jul 2024 14:55:30 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=212.227.17.12;
+ helo=mout.web.de; envelope-from=markus.elfring@web.de; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 3E03E4016B
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3E03E4016B
+Received: from mout.web.de (mout.web.de [212.227.17.12])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 3E03E4016B
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  6 Jul 2024 14:55:28 +0000 (UTC)
+X-UI-Sender-Class: 814a7b36-bfc1-4dae-8640-3722d8ec6cd6
+Received: from [192.168.178.21] ([94.31.91.95]) by smtp.web.de (mrweb105
+ [213.165.67.124]) with ESMTPSA (Nemesis) id 1MmQcl-1rzbbT1Tc1-00g8Oh; Sat, 06
+ Jul 2024 16:48:46 +0200
+Message-ID: <63e3f609-69fe-4cfd-8418-eec00705cf32@web.de>
+Date: Sat, 6 Jul 2024 16:48:41 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20240705163620.12429-1-amishin@t-argos.ru>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1720259583;
- bh=EoJn9pc2K+C/K7BLu1o4zFCKx6+NE9Wo+WHt6QnrWSM=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=oF3hrZ8HY+7i9IMoKfw0AtfX5ocmKNXTt9vQ41mFKyuTSb1Mzp9OYb+rg2lKQdX5v
- Gkha4nLpVioUDVOrnvBybTy1NEUc6pJVk2OlY8fmhUgRjaDESph8fY61qACYvJ8vRX
- FsI5/5g6PWk8ZZIocJOUxC6+I6SDnOvn5P4lTb6Ubx8n8fz9ybDZvcAKKF07dy1cVl
- 08d7OLyM5/bySva0iotFvQhNRK8VpQSfhXfh/e4xOClw9xJateezPtgPyf8ZqI/SHb
- 5c3uU9a/V2dDtLv6kayhdVB9/B+2vgU26ZJFj6Ui0IYr1fT/B8n+Ue9iK75xiK4sho
- HXWXsYewNPg8g==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+User-Agent: Mozilla Thunderbird
+To: Aleksandr Mishin <amishin@t-argos.ru>, netdev@vger.kernel.org,
+ lvc-project@linuxtesting.org, intel-wired-lan@lists.osuosl.org,
+ Anirudh Venkataramanan <anirudh.venkataramanan@intel.com>
+References: <20240706140518.9214-1-amishin@t-argos.ru>
+Content-Language: en-GB
+From: Markus Elfring <Markus.Elfring@web.de>
+In-Reply-To: <20240706140518.9214-1-amishin@t-argos.ru>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-Provags-ID: V03:K1:sf3LwDMEQp+t08dgcYNRjXtXbVPpC4vwx8LVmzPbHJrnE+iFDn1
+ 4zBskLf0c2bv3hSGuVVp/cwnjPm1gZ4EDBLQNnEOOauQpbklTf9Fm+i8fYEC05xgIJJRBjM
+ weu/5k4C2Y35ffpivJcka07YRt81ilXzy6RDQbBlep5YT/pqduVOGPBkiVniEQrenTRzxoF
+ 0OA7Egdtz+o1Mf6jAlaDQ==
+UI-OutboundReport: notjunk:1;M01:P0:sUi+n2Zgm+s=;SF1Q7F4xAk93SDGLSZ7urYHPpI1
+ jHrz6enhT2Vopzya6bJhFZsh4fW9DmZeq2JPYXNaQsTygGijiWmMGfIB1zYwWMV5Isqds+C4e
+ m+CRUgpUewWEBl2wYvHkpOcuOspPff8/vUvqB8Zq/d7UxQ1Kg4kCbCi3UUY+sHSzxTzIT457+
+ OnF+4bpWW9+21cBYir0cM8VUp5X7MvN52DqKfIjb2epNeWeQx03bjHysnH4pMGKnHmYK9jSV2
+ 6SirL//mXhkBhb9PWvkHz2i+B4bFKiDfcYe3M0/Ziz23TuhqaVU8odffKyaI7kuK1a29o3RpS
+ JYmjACgpWmo5TXaKpcsIDEg3z7JBvZI4LO2ezcCtcpJBJSG1SqF7GF9DuGZLgGr/t2jope1xG
+ ILExi20jHMb6DkE7k35vJSlSWr2jLSXtEnimvlSXkRtXuOGOMyLGFUutAV8iWvrBHa1aa7aWj
+ cllaRCsi74UDItHjzU+uIFAZiEG/kKFMwfR5ODCr3YrWTXwDfcHPnQ5SY/d+tWVuBSdT540kD
+ Fs/kJrwCWNTiuK26XHxswsIA8RwoP6uhqtyZW8W8oJgOEBTROnogcvmkwN6I1TOxu0r+qUAZT
+ resS7wtpb++In+UaJsEq9qicZJ4GgBnwn5NElgmmNTQ0iDoCA/a3E+SBjztm5el9sSfsjjwhT
+ ISck38XLgccA3VPXTF3rkD2NWlzG7+4l9B3eZwLg4XeejPPblBi6Xat9NgAHbdYqqDwOhQNy+
+ v8+Wc+DAHto9OOmyu+VW/7o8ojnqSgNOdT3YejFk73udhFo1ET436qhRIJXBkEksT9Cg754hb
+ WBi6cwoIpXphAGdOdDZLldaZ3kRhkO7G1EihauvIB0dcc=
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=web.de; 
+ s=s29768273; t=1720277727; x=1720882527; i=markus.elfring@web.de;
+ bh=Z75ZznpIbvuXtNcDLfumWj2gSi9XkiI5AnYv1mRIAA4=;
+ h=X-UI-Sender-Class:Message-ID:Date:MIME-Version:To:Cc:References:
+ Subject:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:
+ cc:content-transfer-encoding:content-type:date:from:message-id:
+ mime-version:reply-to:subject:to;
+ b=JVE/2lHTwmEKmy/+l1gi2Fcu3BBGGVt3ZBOOVVHlFw7js4t5vAcU2U+w1qanaL1v
+ 6th59RJtpMqiT1VIUvIfhmSbYVBKl3IDv1MRVcceEeNUVX7fVz1dFmTpdmK9enDuj
+ Km9TModgvXDiEolWhPdQ7kl3pbqP9jWHX8EGLMIt4kXVFug4QWOAXomC6qJYBFctv
+ 6wuqa5Y+R0R/VoFUfjV9O2EKVL7TiF4zbIv1/P4lPyZYRMGJuULcVaDrO8EFXeow+
+ vcrIRF4uDggD5M9MehNcG4ILwAYQa+msw46zl90n31oRVl27f6CV9s5/JHTlSn9hC
+ iFc9nlDcDte4O4rZeQ==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dmarc=pass (p=quarantine dis=none)
+ header.from=web.de
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20201202 header.b=oF3hrZ8H
-Subject: Re: [Intel-wired-lan] [PATCH net] ice: Adjust memory overrun in
- ice_sched_add_root_node() and ice_sched_add_node()
+ unprotected) header.d=web.de header.i=markus.elfring@web.de
+ header.a=rsa-sha256 header.s=s29768273 header.b=JVE/2lHT
+Subject: Re: [Intel-wired-lan] [PATCH net-next v2] ice: Adjust over
+ allocation of memory in ice_sched_add_root_node() and ice_sched_add_node()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,56 +117,23 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: lvc-project@linuxtesting.org, Eric Dumazet <edumazet@google.com>,
- intel-wired-lan@lists.osuosl.org, linux-kernel@vger.kernel.org,
- Anirudh Venkataramanan <anirudh.venkataramanan@intel.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>, netdev@vger.kernel.org,
+Cc: LKML <linux-kernel@vger.kernel.org>, Eric Dumazet <edumazet@google.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>, Simon Horman <horms@kernel.org>,
  Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
  "David S. Miller" <davem@davemloft.net>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Fri, Jul 05, 2024 at 07:36:20PM +0300, Aleksandr Mishin wrote:
-> In ice_sched_add_root_node() and ice_sched_add_node() there are calls to
-> devm_kcalloc() in order to allocate memory for array of pointers to
+=E2=80=A6
 > 'ice_sched_node' structure. But in this calls there are 'sizeof(*root)'
-> instead of 'sizeof(root)' and 'sizeof(*node)' instead of 'sizeof(node)'.
+
+                              But there are calls for?
+
+
 > So memory is allocated for structures instead pointers. This lead to
-> significant memory overrun.
-> Looks like it was done for "coverity[suspicious_sizeof] workaround".
+=E2=80=A6
 
-Hi Aleksandr,
+                                                of?            leads?
 
-While I agree that your patch is correct, I doesn't look to me like it was
-done for "coverity[suspicious_sizeof] workaround", as that annotation was
-added after the cited patch where the problem appears to have been
-introduced.
-
-> 
-> Adjust memory overrun by correcting devm_kcalloc() parameters.
-
-I also think it is misleading to describe this as an overrun.  In my
-opinion, an overrun refers to writing over the end of a buffer, or similar
-conditions where values are written to memory or read from that is not
-intended for that purpose.
-
-But that is not the case here.  Instead it is an over allocation of memory.
-Which is, in a sense, the opposite of an overrun. I suggest updating the
-description of the problem.
-
-> 
-> Found by Linux Verification Center (linuxtesting.org) with SVACE.
-> 
-> Fixes: dc49c7723676 ("ice: Get MAC/PHY/link info and scheduler topology")
-
-I do agree there is a problem. But I'm not convinced this is fixing a bug -
-is the overallocation of memory manifesting, in a real problem, other than
-perhaps contributing to memory pressure (I assume in not a very significant
-way).
-
-My feeling is that it would be better to target this change to net-next and
-drop the Fixes tag.
-
-> Signed-off-by: Aleksandr Mishin <amishin@t-argos.ru>
-
-...
+Regards,
+Markus
