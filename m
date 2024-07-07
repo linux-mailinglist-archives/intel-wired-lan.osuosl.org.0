@@ -1,72 +1,72 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id B28F29297E8
-	for <lists+intel-wired-lan@lfdr.de>; Sun,  7 Jul 2024 14:55:53 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6F9AD9297EA
+	for <lists+intel-wired-lan@lfdr.de>; Sun,  7 Jul 2024 14:55:57 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 6286A813F6;
-	Sun,  7 Jul 2024 12:55:52 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 2A837810C4;
+	Sun,  7 Jul 2024 12:55:56 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id UVr7mNnqeTQn; Sun,  7 Jul 2024 12:55:51 +0000 (UTC)
+ id s6WXK3eroUlT; Sun,  7 Jul 2024 12:55:55 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 444288112D
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1C69381443
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1720356951;
-	bh=Zrc75Lk5J0D/5RNj0hmDH7si4hg/2uxeMa9Bwc/oDk0=;
+	s=default; t=1720356955;
+	bh=Idk4q+B43U2tgLOBysGyhgNYip38/o2OWJ/oFz6+Aeo=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=tCLkunqKcS0CgKHmOflBBBcqPsas8Atd7dKaKpStRg9xqiYssHPD2ItyYXeBzbVfa
-	 Jbk3F6rcNCiepF0OOmfyuXjSzA5P8xF1Xk2V6sqSvPdggFNl2fjsFfIQmB8UYcaQV5
-	 5o2xnQOQfsSB/DUrgAMVxOS1fc6LkNowCsgcaq9RIlv78rtYB5a89xfFBxNzG7+mMe
-	 zgCcYz3NxOGnzQEICAbc8FoayvSaYJIsIBNbtU483kxhgm5NkB3ZIepC8zawM9h7Ns
-	 ilEL+VmxeThQmhnPPf8R987CRYuut1Gy+LWEq+cZG7xjbrahYIpakiJnfdPLLziYCZ
-	 PSq8VZ6hGwutQ==
+	b=iMOnNZShIcNOeVQsKByVDbxqGls+AGxY6EXmNrtoyIBW5B4CsmOGgHW2l/J4IfpA7
+	 EzdsKzOHcr1Xs0szrRNai5OtVFpvojVa3O+WX0RXzz0jSjU0pyUAvIuo5holsRqFKx
+	 D3QhHBr5oDdA0h1Tn6/BzFtNtct3SixORwjX8poLv3B3FCPbMY7MaIvpcSE7HqSc+3
+	 bkPmeHVURrmWeU+M5ngKyXDDOnELM3aFe9ydu7RjCpkA6HJ28p6a/O21xZSFWFZfZn
+	 9mOmZfquMPd7enaJ7Pky+Z5n6oUlYY2nNeoNBUFcm1ZtXaL3bQS7B1EKI8mRVGqiqL
+	 SVU8Z2Y1n+XDA==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 444288112D;
-	Sun,  7 Jul 2024 12:55:51 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 1C69381443;
+	Sun,  7 Jul 2024 12:55:55 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 1844B1BF2C4
- for <intel-wired-lan@lists.osuosl.org>; Sun,  7 Jul 2024 12:55:49 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id DE8351BF2C4
+ for <intel-wired-lan@lists.osuosl.org>; Sun,  7 Jul 2024 12:55:53 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 1289A6077C
- for <intel-wired-lan@lists.osuosl.org>; Sun,  7 Jul 2024 12:55:49 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id CAD904064A
+ for <intel-wired-lan@lists.osuosl.org>; Sun,  7 Jul 2024 12:55:53 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id EifLmtuSqOT2 for <intel-wired-lan@lists.osuosl.org>;
- Sun,  7 Jul 2024 12:55:48 +0000 (UTC)
-Received-SPF: None (mailfrom) identity=mailfrom; client-ip=198.175.65.17;
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id rfD7pkv3YlJW for <intel-wired-lan@lists.osuosl.org>;
+ Sun,  7 Jul 2024 12:55:52 +0000 (UTC)
+Received-SPF: None (mailfrom) identity=mailfrom; client-ip=198.175.65.15;
  helo=mgamail.intel.com; envelope-from=faizal.abdul.rahim@linux.intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 09A94605D7
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 09A94605D7
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.17])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 09A94605D7
- for <intel-wired-lan@lists.osuosl.org>; Sun,  7 Jul 2024 12:55:47 +0000 (UTC)
-X-CSE-ConnectionGUID: pGT7Co/4Qri/kN9/ErP3FQ==
-X-CSE-MsgGUID: rTyWS3g+RjudK6rmM/4MEQ==
-X-IronPort-AV: E=McAfee;i="6700,10204,11125"; a="17673457"
-X-IronPort-AV: E=Sophos;i="6.09,190,1716274800"; d="scan'208";a="17673457"
-Received: from fmviesa006.fm.intel.com ([10.60.135.146])
- by orvoesa109.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 07 Jul 2024 05:55:47 -0700
-X-CSE-ConnectionGUID: 2S7CYKyxT3+zy3DqW2yehA==
-X-CSE-MsgGUID: 4SKpKOtqTeiGdJIs2bchdw==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 917FB40649
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 917FB40649
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.15])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 917FB40649
+ for <intel-wired-lan@lists.osuosl.org>; Sun,  7 Jul 2024 12:55:51 +0000 (UTC)
+X-CSE-ConnectionGUID: 4odhhjZfQhSzMuKOLYGJBw==
+X-CSE-MsgGUID: NB1kfZi4TCOD/GYkMaPCcw==
+X-IronPort-AV: E=McAfee;i="6700,10204,11125"; a="21337369"
+X-IronPort-AV: E=Sophos;i="6.09,190,1716274800"; d="scan'208";a="21337369"
+Received: from orviesa009.jf.intel.com ([10.64.159.149])
+ by orvoesa107.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 07 Jul 2024 05:55:52 -0700
+X-CSE-ConnectionGUID: qPlxzrs1R821m7XL6DuSKQ==
+X-CSE-MsgGUID: gVXbjNsnQqCjscY3lb0/SQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.09,190,1716274800"; d="scan'208";a="47029662"
+X-IronPort-AV: E=Sophos;i="6.09,190,1716274800"; d="scan'208";a="47359038"
 Received: from linux.intel.com ([10.54.29.200])
- by fmviesa006.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 07 Jul 2024 05:55:46 -0700
+ by orviesa009.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 07 Jul 2024 05:55:51 -0700
 Received: from mohdfai2-iLBPG12-1.png.intel.com
  (mohdfai2-iLBPG12-1.png.intel.com [10.88.227.73])
- by linux.intel.com (Postfix) with ESMTP id 06BA920738C7;
- Sun,  7 Jul 2024 05:55:42 -0700 (PDT)
+ by linux.intel.com (Postfix) with ESMTP id 1517E20738CF;
+ Sun,  7 Jul 2024 05:55:46 -0700 (PDT)
 From: Faizal Rahim <faizal.abdul.rahim@linux.intel.com>
 To: "David S . Miller" <davem@davemloft.net>,
  Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
@@ -77,8 +77,8 @@ To: "David S . Miller" <davem@davemloft.net>,
  Simon Horman <horms@kernel.org>,
  Richard Cochran <richardcochran@gmail.com>,
  Paul Menzel <pmenzel@molgen.mpg.de>, Sasha Neftin <sasha.neftin@intel.com>
-Date: Sun,  7 Jul 2024 08:53:16 -0400
-Message-Id: <20240707125318.3425097-2-faizal.abdul.rahim@linux.intel.com>
+Date: Sun,  7 Jul 2024 08:53:17 -0400
+Message-Id: <20240707125318.3425097-3-faizal.abdul.rahim@linux.intel.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20240707125318.3425097-1-faizal.abdul.rahim@linux.intel.com>
 References: <20240707125318.3425097-1-faizal.abdul.rahim@linux.intel.com>
@@ -86,26 +86,26 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1720356948; x=1751892948;
+ t=1720356953; x=1751892953;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=tQF6ozfBKP+jPtiv0rM/lmlMPzLKQsttHfHaT183vZk=;
- b=IvFo8gErSZinG26LX/+IsmUVEsB6JMHHkQRck/C1+9ZZlNYvvVjbbySk
- q9avS5PY/ZYEJiM1WnRnV9hf8ywUzX8eMqXP7upcqt3OxjQfyMzt0BYjO
- GEftjAOMotzSduPMqvpIwZl0T66kutPN8P6r+auu147cgqQ5s82jCKd6r
- HmYDxJD1yXlzRyV4kEZ3lQnjlNcUySciehVupVrhNnxcjM4n8Qm5sjyap
- urUfz61DCMbB2i5NBnkG+Hbh3A1rt9ideg1wYPD4R8KNjDsrSFdizs6Vo
- 7QQa+DwFr6Ufa/Y7Y3kg7lzcaWeZ4fuBSWh2VaLpxT4C1TsaX6CNH4J47
- g==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ bh=MgKuto311+rIu1tuYrrUMI7N/Fp1C7l34NSqYicsNWs=;
+ b=K56SE9y3CQ3nWbrXkjldJh14yPKcIadXg96MkKpvD8mPa+9TH7uPPCcG
+ Og/0MuE6bqlimbpxkzT8T+xlF1mSIqMAajppAam/g/PQvcxeTxpO+fR8n
+ b+MWu6wLIOzFZtaIgGivAPtFVb0e6pFozsxo4Sm5DOP7Jyy1g2IoaD12M
+ 9L3aE2whtT2GWebLu0UjirkOd7yF08jNQTHbaozbEJXHjZNn9zbQUUp4j
+ fnQ0P8YTFtd6ZaP+myHqoWW8O7rSEr9ndNHt8TQ0zTllu/9prZvjWP1iB
+ phcjgtbl648iLQOtqqnVcm86hZclrCl1o6DAaEs1zdAbS+tHCDhKqj3wH
+ w==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=none (p=none dis=none)
  header.from=linux.intel.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=IvFo8gEr
-Subject: [Intel-wired-lan] [PATCH iwl-net v2 1/3] igc: Fix
- qbv_config_change_errors logics
+ header.s=Intel header.b=K56SE9y3
+Subject: [Intel-wired-lan] [PATCH iwl-net v2 2/3] igc: Fix reset adapter
+ logics when tx mode change
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -124,121 +124,96 @@ Cc: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-When user issues these cmds:
-1. Either a) or b)
-   a) mqprio with hardware offload disabled
-   b) taprio with txtime-assist feature enabled
-2. etf
-3. tc qdisc delete
-4. taprio with base time in the past
+Following the "igc: Fix TX Hang issue when QBV Gate is close" changes,
+remaining issues with the reset adapter logic in igc_tsn_offload_apply()
+have been observed:
 
-At step 4, qbv_config_change_errors wrongly increased by 1.
+1. The reset adapter logics for i225 and i226 differ, although they should
+   be the same according to the guidelines in I225/6 HW Design Section
+   7.5.2.1 on software initialization during tx mode changes.
+2. The i225 resets adapter every time, even though tx mode doesn't change.
+   This occurs solely based on the condition  igc_is_device_id_i225() when
+   calling schedule_work().
+3. i226 doesn't reset adapter for tsn->legacy tx mode changes. It only
+   resets adapter for legacy->tsn tx mode transitions.
+4. qbv_count introduced in the patch is actually not needed; in this
+   context, a non-zero value of qbv_count is used to indicate if tx mode
+   was unconditionally set to tsn in igc_tsn_enable_offload(). This could
+   be replaced by checking the existing register
+   IGC_TQAVCTRL_TRANSMIT_MODE_TSN bit.
 
-Excerpt from IEEE 802.1Q-2018 8.6.9.3.1:
-"If AdminBaseTime specifies a time in the past, and the current schedule
-is running, then: Increment ConfigChangeError counter"
+This patch resolves all issues and enters schedule_work() to reset the
+adapter only when changing tx mode. It also removes reliance on qbv_count.
 
-qbv_config_change_errors should only increase if base time is in the past
-and no taprio is active. In user perspective, taprio was not active when
-first triggered at step 4. However, i225/6 reuses qbv for etf, so qbv is
-enabled with a dummy schedule at step 2 where it enters
-igc_tsn_enable_offload() and qbv_count got incremented to 1. At step 4, it
-enters igc_tsn_enable_offload() again, qbv_count is incremented to 2.
-Because taprio is running, tc_setup_type is TC_SETUP_QDISC_ETF and
-qbv_count > 1, qbv_config_change_errors value got incremented.
+qbv_count field will be removed in a future patch.
 
-This issue happens due to reliance on qbv_count field where a non-zero
-value indicates that taprio is running. But qbv_count increases
-regardless if taprio is triggered by user or by other tsn feature. It does
-not align with qbv_config_change_errors expectation where it is only
-concerned with taprio triggered by user.
+Test ran:
 
-Fixing this by relocating the qbv_config_change_errors logic to
-igc_save_qbv_schedule(), eliminating reliance on qbv_count and its
-inaccuracies from i225/6's multiple uses of qbv feature for other TSN
-features.
+1. Verify reset adapter behaviour in i225/6:
+   a) Enrol a new GCL
+      Reset adapter observed (tx mode change legacy->tsn)
+   b) Enrol a new GCL without deleting qdisc
+      No reset adapter observed (tx mode remain tsn->tsn)
+   c) Delete qdisc
+      Reset adapter observed (tx mode change tsn->legacy)
 
-The new function created: igc_tsn_is_taprio_activated_by_user() uses
-taprio_offload_enable field to indicate that the current running taprio
-was triggered by user, instead of triggered by non-qbv feature like etf.
+2. Tested scenario from "igc: Fix TX Hang issue when QBV Gate is closed"
+   to confirm it remains resolved.
 
-Fixes: ae4fe4698300 ("igc: Add qbv_config_change_errors counter")
+Fixes: 175c241288c0 ("igc: Fix TX Hang issue when QBV Gate is closed")
 Signed-off-by: Faizal Rahim <faizal.abdul.rahim@linux.intel.com>
 Reviewed-by: Simon Horman <horms@kernel.org>
 ---
- drivers/net/ethernet/intel/igc/igc_main.c |  8 ++++++--
- drivers/net/ethernet/intel/igc/igc_tsn.c  | 16 ++++++++--------
- drivers/net/ethernet/intel/igc/igc_tsn.h  |  1 +
- 3 files changed, 15 insertions(+), 10 deletions(-)
+ drivers/net/ethernet/intel/igc/igc_tsn.c | 23 ++++++++++++++++++++---
+ 1 file changed, 20 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
-index 305e05294a26..0f8a5ad940ec 100644
---- a/drivers/net/ethernet/intel/igc/igc_main.c
-+++ b/drivers/net/ethernet/intel/igc/igc_main.c
-@@ -6334,12 +6334,16 @@ static int igc_save_qbv_schedule(struct igc_adapter *adapter,
- 	if (!validate_schedule(adapter, qopt))
- 		return -EINVAL;
- 
-+	igc_ptp_read(adapter, &now);
-+
-+	if (igc_tsn_is_taprio_activated_by_user(adapter) &&
-+	    is_base_time_past(qopt->base_time, &now))
-+		adapter->qbv_config_change_errors++;
-+
- 	adapter->cycle_time = qopt->cycle_time;
- 	adapter->base_time = qopt->base_time;
- 	adapter->taprio_offload_enable = true;
- 
--	igc_ptp_read(adapter, &now);
--
- 	for (n = 0; n < qopt->num_entries; n++) {
- 		struct tc_taprio_sched_entry *e = &qopt->entries[n];
- 
 diff --git a/drivers/net/ethernet/intel/igc/igc_tsn.c b/drivers/net/ethernet/intel/igc/igc_tsn.c
-index 22cefb1eeedf..f6eaa288926e 100644
+index f6eaa288926e..9fafe275f30f 100644
 --- a/drivers/net/ethernet/intel/igc/igc_tsn.c
 +++ b/drivers/net/ethernet/intel/igc/igc_tsn.c
-@@ -78,6 +78,14 @@ void igc_tsn_adjust_txtime_offset(struct igc_adapter *adapter)
- 	wr32(IGC_GTXOFFSET, txoffset);
+@@ -49,6 +49,13 @@ static unsigned int igc_tsn_new_flags(struct igc_adapter *adapter)
+ 	return new_flags;
  }
  
-+bool igc_tsn_is_taprio_activated_by_user(struct igc_adapter *adapter)
++static bool igc_tsn_is_tx_mode_in_tsn(struct igc_adapter *adapter)
 +{
 +	struct igc_hw *hw = &adapter->hw;
 +
-+	return (rd32(IGC_BASET_H) || rd32(IGC_BASET_L)) &&
-+		adapter->taprio_offload_enable;
++	return !!(rd32(IGC_TQAVCTRL) & IGC_TQAVCTRL_TRANSMIT_MODE_TSN);
 +}
 +
- /* Returns the TSN specific registers to their default values after
-  * the adapter is reset.
-  */
-@@ -262,14 +270,6 @@ static int igc_tsn_enable_offload(struct igc_adapter *adapter)
- 		s64 n = div64_s64(ktime_sub_ns(systim, base_time), cycle);
+ void igc_tsn_adjust_txtime_offset(struct igc_adapter *adapter)
+ {
+ 	struct igc_hw *hw = &adapter->hw;
+@@ -331,15 +338,25 @@ int igc_tsn_reset(struct igc_adapter *adapter)
+ 	return err;
+ }
  
- 		base_time = ktime_add_ns(base_time, (n + 1) * cycle);
--
--		/* Increase the counter if scheduling into the past while
--		 * Gate Control List (GCL) is running.
--		 */
--		if ((rd32(IGC_BASET_H) || rd32(IGC_BASET_L)) &&
--		    (adapter->tc_setup_type == TC_SETUP_QDISC_TAPRIO) &&
--		    (adapter->qbv_count > 1))
--			adapter->qbv_config_change_errors++;
- 	} else {
- 		if (igc_is_device_id_i226(hw)) {
- 			ktime_t adjust_time, expires_time;
-diff --git a/drivers/net/ethernet/intel/igc/igc_tsn.h b/drivers/net/ethernet/intel/igc/igc_tsn.h
-index b53e6af560b7..98ec845a86bf 100644
---- a/drivers/net/ethernet/intel/igc/igc_tsn.h
-+++ b/drivers/net/ethernet/intel/igc/igc_tsn.h
-@@ -7,5 +7,6 @@
- int igc_tsn_offload_apply(struct igc_adapter *adapter);
- int igc_tsn_reset(struct igc_adapter *adapter);
- void igc_tsn_adjust_txtime_offset(struct igc_adapter *adapter);
-+bool igc_tsn_is_taprio_activated_by_user(struct igc_adapter *adapter);
++static bool igc_tsn_will_tx_mode_change(struct igc_adapter *adapter)
++{
++	bool any_tsn_enabled = (bool)(igc_tsn_new_flags(adapter) &
++			       IGC_FLAG_TSN_ANY_ENABLED);
++
++	return (any_tsn_enabled && !igc_tsn_is_tx_mode_in_tsn(adapter)) ||
++	       (!any_tsn_enabled && igc_tsn_is_tx_mode_in_tsn(adapter));
++}
++
+ int igc_tsn_offload_apply(struct igc_adapter *adapter)
+ {
+ 	struct igc_hw *hw = &adapter->hw;
  
- #endif /* _IGC_BASE_H */
+-	/* Per I225/6 HW Design Section 7.5.2.1, transmit mode
+-	 * cannot be changed dynamically. Require reset the adapter.
++	/* Per I225/6 HW Design Section 7.5.2.1 guideline, if tx mode change
++	 * from legacy->tsn or tsn->legacy, then reset adapter is needed.
+ 	 */
+ 	if (netif_running(adapter->netdev) &&
+-	    (igc_is_device_id_i225(hw) || !adapter->qbv_count)) {
++	    (igc_is_device_id_i225(hw) || igc_is_device_id_i226(hw)) &&
++	     igc_tsn_will_tx_mode_change(adapter)) {
+ 		schedule_work(&adapter->reset_task);
+ 		return 0;
+ 	}
 -- 
 2.25.1
 
