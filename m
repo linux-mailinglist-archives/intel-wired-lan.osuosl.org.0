@@ -2,112 +2,113 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 550AE92A56B
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  8 Jul 2024 17:12:51 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 456BC92A56C
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  8 Jul 2024 17:12:53 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id CC8EA40B05;
-	Mon,  8 Jul 2024 15:12:47 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id E2B7340AFD;
+	Mon,  8 Jul 2024 15:12:48 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id YjQY1Z_RaccK; Mon,  8 Jul 2024 15:12:47 +0000 (UTC)
+ id vRmCUXTgGBg6; Mon,  8 Jul 2024 15:12:48 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org D600840A9E
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org D009E40B08
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1720451566;
-	bh=9OVsh85Dfs0XARwMw+sWdfga+OlFbW2bccJIHpyv98E=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=gwZLfsiV+Jz63S2XLJS2l/P0DP1dmifB9VFp/PQU9PbDtAcEte2pvqPCLT/2/dk76
-	 MPhT4YILdfLRSngGYmhDjrOZmE6Ua8MXDOkQhKVBUfi+dNrZyu/tvbGbXIeZmvhmUg
-	 XKsxMO5G3fXL1imYjffAhqfjKqlnAv0dtJp/cLjqcIKXgnHCSntORhZ7U4nq+b3bgn
-	 470jIxuIOcPtGcE0Q3AlPj9NoQoRt//xbfEsnLsoMiIZ/jeh5rCbPAUDQPUx8TiDwE
-	 29uJTukKKiOgwbfg91lwqvCl9SxQEbBFaGk+fHd11/eFGvS1ZON0set0PO6r0Il7VF
-	 T8SwSKveszLfw==
+	s=default; t=1720451567;
+	bh=SpZDXkmcSn4EIzA1VQS79soqTfzKGd09fJ6TArrGyqg=;
+	h=From:Date:To:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Reply-To:Cc:From;
+	b=VVkAStq7VnMDDEzsXBIF32k72DiEBF+60Pr0BxecRPqMLKqULaHYhIAp4zszG13Vc
+	 DZO0X6zNa3wWlIIzJKR4DkB9cg8JZltWUVWCgTGh5mV5uPCTx1jkutV6ckv8x/tg9t
+	 mjjSb6UDxnmrusVsIxGkELQ4neCbvMUe87OC2viCqeAxJn8qGbUmGmbTCCk/MF63kh
+	 fMWmSlbF7HFFa956IE2SWLNxO523VLZ9RQsO8LqlO2htIpsFA7kkCJuyxhq4BKOGWt
+	 /O6p5eUy+K0EyfG29DlRUccYcgBtGags2RiOA8ZY/uB9Kx6qb7xgQGQpguyxfBZ96L
+	 YRahOAWdEJaLg==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id D600840A9E;
-	Mon,  8 Jul 2024 15:12:46 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id D009E40B08;
+	Mon,  8 Jul 2024 15:12:47 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id C700B1BF3B0
- for <intel-wired-lan@lists.osuosl.org>; Sat,  6 Jul 2024 14:08:03 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 5E1A81BF239
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  8 Jul 2024 09:32:08 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id AC62981213
- for <intel-wired-lan@lists.osuosl.org>; Sat,  6 Jul 2024 14:08:03 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 47888404F9
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  8 Jul 2024 09:32:08 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id AQOA6IOFCrkL for <intel-wired-lan@lists.osuosl.org>;
- Sat,  6 Jul 2024 14:08:02 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=109.73.34.58;
- helo=mx1.t-argos.ru; envelope-from=amishin@t-argos.ru; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 0967B811FF
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0967B811FF
-Received: from mx1.t-argos.ru (mx1.t-argos.ru [109.73.34.58])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 0967B811FF
- for <intel-wired-lan@lists.osuosl.org>; Sat,  6 Jul 2024 14:08:00 +0000 (UTC)
-Received: from mx1.t-argos.ru (localhost [127.0.0.1])
- by mx1.t-argos.ru (Postfix) with ESMTP id 66274100003;
- Sat,  6 Jul 2024 17:07:12 +0300 (MSK)
-Received: from mx1.t-argos.ru.ru (ta-mail-02.ta.t-argos.ru [172.17.13.212])
- by mx1.t-argos.ru (Postfix) with ESMTP;
- Sat,  6 Jul 2024 17:05:58 +0300 (MSK)
-Received: from localhost.localdomain (172.17.215.5) by ta-mail-02
- (172.17.13.212) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.9; Sat, 6 Jul 2024
- 17:05:37 +0300
-From: Aleksandr Mishin <amishin@t-argos.ru>
-To: Anirudh Venkataramanan <anirudh.venkataramanan@intel.com>
-Date: Sat, 6 Jul 2024 17:05:18 +0300
-Message-ID: <20240706140518.9214-1-amishin@t-argos.ru>
-X-Mailer: git-send-email 2.30.2
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id cxARIbFNKgTm for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  8 Jul 2024 09:32:06 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=139.178.84.217;
+ helo=dfw.source.kernel.org;
+ envelope-from=devnull+rodrigo.cadore.l-acoustics.com@kernel.org;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 7EFE940540
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 7EFE940540
+Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 7EFE940540
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  8 Jul 2024 09:32:06 +0000 (UTC)
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by dfw.source.kernel.org (Postfix) with ESMTP id 35C6560B21;
+ Mon,  8 Jul 2024 09:32:05 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id D8C8DC116B1;
+ Mon,  8 Jul 2024 09:32:04 +0000 (UTC)
+Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org
+ (localhost.localdomain [127.0.0.1])
+ by smtp.lore.kernel.org (Postfix) with ESMTP id C094AC3271E;
+ Mon,  8 Jul 2024 09:32:04 +0000 (UTC)
+From: Rodrigo Cataldo via B4 Relay
+ <devnull+rodrigo.cadore.l-acoustics.com@kernel.org>
+Date: Mon, 08 Jul 2024 11:31:57 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [172.17.215.5]
-X-ClientProxiedBy: ta-mail-02.ta.t-argos.ru (172.17.13.212) To ta-mail-02
- (172.17.13.212)
-X-KSMG-Rule-ID: 1
-X-KSMG-Message-Action: clean
-X-KSMG-AntiSpam-Lua-Profiles: 186347 [Jul 06 2024]
-X-KSMG-AntiSpam-Version: 6.1.0.4
-X-KSMG-AntiSpam-Envelope-From: amishin@t-argos.ru
-X-KSMG-AntiSpam-Rate: 0
-X-KSMG-AntiSpam-Status: not_detected
-X-KSMG-AntiSpam-Method: none
-X-KSMG-AntiSpam-Auth: dkim=none
-X-KSMG-AntiSpam-Info: LuaCore: 21 0.3.21
- ebee5449fc125b2da45f1a6a6bc2c5c0c3ad0e05, {Tracking_uf_ne_domains},
- {Tracking_from_domain_doesnt_match_to}, mx1.t-argos.ru.ru:7.1.1;
- d41d8cd98f00b204e9800998ecf8427e.com:7.1.1; 127.0.0.199:7.1.2;
- t-argos.ru:7.1.1; lore.kernel.org:7.1.1, FromAlignment: s
-X-MS-Exchange-Organization-SCL: -1
-X-KSMG-AntiSpam-Interceptor-Info: scan successful
-X-KSMG-AntiPhishing: Clean, bases: 2024/07/06 13:56:00
-X-KSMG-AntiVirus: Kaspersky Secure Mail Gateway, version 1.1.2.30,
- bases: 2024/07/06 10:24:00 #25877639
-X-KSMG-AntiVirus-Status: Clean, skipped
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20240708-igc-flush-ptm-request-before-timeout-6-10-v1-1-70e5ebec9efe@l-acoustics.com>
+X-B4-Tracking: v=1; b=H4sIAAyyi2YC/x3NSwqDMBRG4a3IHfdCDDal3UrpwMY/ekETm0cVx
+ L03dPhNzjkoIQoSPZqDIr6SJPiK9tKQnXo/gmWoJq10p27qyjJadnNJE6954YhPQcr8hgsRnGV
+ BKJkNt4qdgdL2bpwZOqq9NcLJ/n89SbaZPTK9zvMHM7PALoQAAAA=
+To: Jesse Brandeburg <jesse.brandeburg@intel.com>, 
+ Tony Nguyen <anthony.l.nguyen@intel.com>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Richard Cochran <richardcochran@gmail.com>, 
+ Vinicius Costa Gomes <vinicius.gomes@intel.com>, 
+ Kurt Kanzenbach <kurt.kanzenbach@linutronix.de>, 
+ "Christopher S. Hall" <christopher.s.hall@intel.com>
+X-Mailer: b4 0.12.3
+X-Developer-Signature: v=1; a=openpgp-sha256; l=11903;
+ i=rodrigo.cadore@l-acoustics.com; h=from:subject:message-id;
+ bh=Wfg75g71XmXkv4d1mekMWpTpqpPeT5sIegVpLSTXqac=;
+ b=owGbwMvMwCGWd67IourLsUDG02pJDGndm4SDe2rWaU5LS9nG91Q5ameo1u2GTUn/a/imP74VF
+ 7DqSvuljlIWBjEOBlkxRRb933xOq8uUjDgSJ6+EmcPKBDKEgYtTACZSE8bwP1HI4VDd85nKhh//
+ LTjbek16i3PDpzXdZ1ds8LjxaeNxkzKGf3Y7eF7fZmVQcktRZ51/WK306uHtpwpNlbwXhigFsT1
+ cyAcA
+X-Developer-Key: i=rodrigo.cadore@l-acoustics.com; a=openpgp;
+ fpr=E0F4E67DE69A235AC356157D2DDD1455748BC38F
+X-Endpoint-Received: by B4 Relay for rodrigo.cadore@l-acoustics.com/default
+ with auth_id=109
+X-Original-From: Rodrigo Cataldo <rodrigo.cadore@l-acoustics.com>
 X-Mailman-Approved-At: Mon, 08 Jul 2024 15:12:42 +0000
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=t-argos.ru; s=mail; 
- t=1720274832; bh=9OVsh85Dfs0XARwMw+sWdfga+OlFbW2bccJIHpyv98E=;
- h=From:To:Subject:Date:Message-ID:MIME-Version:Content-Type;
- b=P1QjhmEFyxTltzs+6NgTumtEWj/CYrYpIm4MiwIBU0KFreARwmCfwdXKMUwC626tB
- KLvQiOupHZ6bkGro/LvBD1xo6EfMjkvuUJyF64BksrlnTRblRLmckCpe4IjtMKOkhB
- fDl11hjti+Z2i9LJZeG+ieAvIpt5Mg+E8dqb9PMP6nAvtKY4EEbVxOAVsjOk3h9qow
- MEdl5EusmbVbOQDr10+/bAwAorq5tMXV5qovEhkT2PTxWe4I8iwsVJsFXPYmokf6WJ
- x1BqhMooHVFABEyNBmcRHkGoD+p7GRqOH201HhEj/IXJcT+ujc2VWKi61FoBRL+S5r
- LzwXtHEg6UuTQ==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=reject dis=none)
- header.from=t-argos.ru
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=kernel.org; s=k20201202; t=1720431124;
+ bh=PSxQJUpdzgyKLJoY9ztDBUzNUgu33n/mFOB+EZ35Res=;
+ h=From:Date:Subject:To:Cc:Reply-To:From;
+ b=bxeDCgNEcAlRzBsyoNuXrC7t/SmAs9R3ksxeZnuu8YhJJLTUj2Bj887a1F1cNV359
+ P/xZBsGCnGCLtTqROVcHH6A/5NjGp3L/cuPEj3zCIM8nf2ncp4bukEnLYSYxg8I6zB
+ WB+++IFF6u9avgtM2FPv+VEPhTs7yMsZbpEY1kKRB6yjALSJTMochxEmZQji+ON4/5
+ wDhhrbILuHjIrK0sgYIIOeEEHpaolBtYzZIGcKSnZBZFTDDudQHRkzRzmPaOzPoBIm
+ sydRx6cwDKv+g/mAoFkE2kXCbpnOy1JH0/nrQ+mW/sPjZwnziwNwSNyXwxfMUYlR6R
+ Vz7DeS3BLF6ig==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=kernel.org
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=t-argos.ru header.i=@t-argos.ru header.a=rsa-sha256
- header.s=mail header.b=P1QjhmEF
-Subject: [Intel-wired-lan] [PATCH net-next v2] ice: Adjust over allocation
- of memory in ice_sched_add_root_node() and ice_sched_add_node()
+ unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
+ header.s=k20201202 header.b=bxeDCgNE
+Subject: [Intel-wired-lan] [PATCH iwl-net] igc: Ensure PTM request is
+ completed before timeout has started
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -120,65 +121,242 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: lvc-project@linuxtesting.org, intel-wired-lan@lists.osuosl.org,
- linux-kernel@vger.kernel.org, Eric Dumazet <edumazet@google.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>,
- Aleksandr Mishin <amishin@t-argos.ru>, Simon Horman <horms@kernel.org>,
- netdev@vger.kernel.org, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>
+Reply-To: rodrigo.cadore@l-acoustics.com
+Cc: netdev@vger.kernel.org, Rodrigo Cataldo <rodrigo.cadore@l-acoustics.com>,
+ intel-wired-lan@lists.osuosl.org, linux-kernel@vger.kernel.org
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-In ice_sched_add_root_node() and ice_sched_add_node() there are calls to
-devm_kcalloc() in order to allocate memory for array of pointers to
-'ice_sched_node' structure. But in this calls there are 'sizeof(*root)'
-instead of 'sizeof(root)' and 'sizeof(*node)' instead of 'sizeof(node)'.
-So memory is allocated for structures instead pointers. This lead to
-significant over allocation of memory.
+From: Rodrigo Cataldo <rodrigo.cadore@l-acoustics.com>
 
-Adjust over allocation of memory by correcting devm_kcalloc() parameters.
+When a PTM is requested via wr32(IGC_PTM_STAT), the operation may only
+be completed by the next read operation (flush). Unfortunately, the next
+read operation in the PTM request loop happens after we have already
+started evaluating the response timeout.
 
-Found by Linux Verification Center (linuxtesting.org) with SVACE.
+Thus, the following behavior has been observed::
 
-Suggested-by: Simon Horman <horms@kernel.org>
-Signed-off-by: Aleksandr Mishin <amishin@t-argos.ru>
+  phc2sys-1655  [010]   103.233752: funcgraph_entry:                    |  igc_ptp_getcrosststamp() {
+  phc2sys-1655  [010]   103.233754: funcgraph_entry:                    |    igc_phc_get_syncdevice_time() {
+  phc2sys-1655  [010]   103.233755: funcgraph_entry:                    |      igc_rd32() {
+  phc2sys-1655  [010]   103.233931: preempt_disable: caller=irq_enter_rcu+0x14 parent=irq_enter_rcu+0x14
+  phc2sys-1655  [010]   103.233932: local_timer_entry: vector=236
+  phc2sys-1655  [010]   103.233932: hrtimer_cancel: hrtimer=0xffff8edeef526118
+  phc2sys-1655  [010]   103.233933: hrtimer_expire_entry: hrtimer=0xffff8edeef526118 now=103200127876 function=tick_nohz_handler/0x0
+
+  ... tick handler ...
+
+  phc2sys-1655  [010]   103.233971: funcgraph_exit:       !  215.559 us |      }
+  phc2sys-1655  [010]   103.233972: funcgraph_entry:                    |      igc_rd32() {
+  phc2sys-1655  [010]   103.234135: funcgraph_exit:       !  164.370 us |      }
+  phc2sys-1655  [010]   103.234136: funcgraph_entry:         1.942 us   |      igc_rd32();
+  phc2sys-1655  [010]   103.234147: console:              igc 0000:03:00.0 enp3s0: Timeout reading IGC_PTM_STAT register
+
+Based on the (simplified) code::
+
+	ctrl = rd32(IGC_PTM_CTRL);
+        /* simplified: multiple writes here */
+	wr32(IGC_PTM_STAT, IGC_PTM_STAT_VALID);
+
+	err = readx_poll_timeout(rd32, IGC_PTM_STAT, stat,
+				 stat, IGC_PTM_STAT_SLEEP,
+				 IGC_PTM_STAT_TIMEOUT);
+	if (err < 0) {
+		netdev_err(adapter->netdev, "Timeout reading IGC_PTM_STAT register\n");
+		return err;
+	}
+
+Where readx_poll_timeout() starts the timeout evaluation before calling
+the rd32() parameter (rd32() is a macro for igc_rd32()).
+
+In the trace shown, the read operation of readx_poll_timeout() (second
+igc_rd32()) took so long that the timeout (IGC_PTM_STAT_VALID) has expired
+and no sleep has been performed.
+
+With this patch, a write flush is added (which is an additional
+igc_rd32() in practice) that can wait for the write before the timeout
+is evaluated::
+
+  phc2sys-1615  [010]    74.517954: funcgraph_entry:                    |  igc_ptp_getcrosststamp() {
+  phc2sys-1615  [010]    74.517956: funcgraph_entry:                    |    igc_phc_get_syncdevicetime() {
+  phc2sys-1615  [010]    74.517957: funcgraph_entry:                    |      igc_rd32() {
+  phc2sys-1615  [010]    74.518127: preempt_disable: caller=irq_enter_rcu+0x14 parent=irq_enter_rcu+0x14
+  phc2sys-1615  [010]    74.518128: local_timer_entry: vector=236
+  phc2sys-1615  [010]    74.518128: hrtimer_cancel: hrtimer=0xffff96466f526118
+  phc2sys-1615  [010]    74.518128: hrtimer_expire_entry: hrtimer=0xffff96466f526118 now=74484007229 function=tick_nohz_handler/0x0
+
+  ... tick handler ...
+
+  phc2sys-1615  [010]    74.518180: funcgraph_exit:       !  222.282 us |      }
+  phc2sys-1615  [010]    74.518181: funcgraph_entry:                    |      igc_rd32() {
+  phc2sys-1615  [010]    74.518349: funcgraph_exit:       !  168.160 us |      }
+  phc2sys-1615  [010]    74.518349: funcgraph_entry:         1.970 us   |      igc_rd32();
+  phc2sys-1615  [010]    74.518352: hrtimer_init: hrtimer=0xffffa6f9413a3940 clockid=CLOCK_MONOTONIC mode=0x0
+  phc2sys-1615  [010]    74.518352: preempt_disable: caller=_raw_spin_lock_irqsave+0x28 parent=hrtimer_start_range_ns+0x56
+  phc2sys-1615  [010]    74.518353: hrtimer_start: hrtimer=0xffffa6f9413a3940 function=hrtimer_wakeup/0x0 expires=74484232878 softexpires=74484231878
+
+  .. hrtimer setup and return ...
+
+  kworker/10:1-242   [010]    74.518382: sched_switch: kworker/10:1:242 [120] W ==> phc2sys:1615 [120]
+  phc2sys-1615  [010]    74.518383: preempt_enable: caller=schedule+0x36 parent=schedule+0x36
+  phc2sys-1615  [010]    74.518384: funcgraph_entry:      !  100.088 us |      igc_rd32();
+  phc2sys-1615  [010]    74.518484: funcgraph_entry:         1.958 us   |      igc_rd32();
+  phc2sys-1615  [010]    74.518488: funcgraph_entry:         2.019 us   |      igc_rd32();
+  phc2sys-1615  [010]    74.518490: funcgraph_entry:         1.956 us   |      igc_rd32();
+  phc2sys-1615  [010]    74.518492: funcgraph_entry:         1.980 us   |      igc_rd32();
+  phc2sys-1615  [010]    74.518494: funcgraph_exit:       !  539.386 us |    }
+
+Now the sleep is called as expected, and the operation succeeds.
+Therefore, regardless of how long it will take for the write to be
+completed, we will poll+sleep at least for the time specified in
+IGC_PTM_STAT_TIMEOUT.
+
+Fixes: a90ec8483732 ("igc: Add support for PTP getcrosststamp()")
+Signed-off-by: Rodrigo Cataldo <rodrigo.cadore@l-acoustics.com>
 ---
-v2:
-  - Update comment, remove 'Fixes' tag and change the tree from 'net' to
-    'net-next' as suggested by Simon
-	(https://lore.kernel.org/all/20240706095258.GB1481495@kernel.org/)
-v1: https://lore.kernel.org/all/20240705163620.12429-1-amishin@t-argos.ru/
+I have been searching for the proper solution for this PTM issue for a long
+time. The issue was observed on a 13700 (Raptor Lake). We also use a 8500
+(Coffee Lake) that is much less susceptible for this issue, but still
+happens. Both are using I225-LM cards.
 
- drivers/net/ethernet/intel/ice/ice_sched.c | 6 ++----
- 1 file changed, 2 insertions(+), 4 deletions(-)
+For a 24 hours test, idle system, I have observed with 13700::
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_sched.c b/drivers/net/ethernet/intel/ice/ice_sched.c
-index ecf8f5d60292..d8b6054f3436 100644
---- a/drivers/net/ethernet/intel/ice/ice_sched.c
-+++ b/drivers/net/ethernet/intel/ice/ice_sched.c
-@@ -28,9 +28,8 @@ ice_sched_add_root_node(struct ice_port_info *pi,
- 	if (!root)
- 		return -ENOMEM;
+	number of timeouts in 86400 seconds: 2509
+
+The same test on a 8500::
+
+        number of timeouts in 86400 seconds: 9
+
+Where one PTM request is sent per second. Test was done this script::
+
+  record_multiple_timeout_param()
+  {
+  	local taskset_cpu=$1
+  	local cur_limit=$((SECONDS + LIMIT_SECONDS ))
+  	local timeouts=0
+  
+  	while [ $SECONDS -lt $cur_limit ]
+  	do
+  		REL_TO=$((cur_limit - SECONDS))
+  
+  		timeout $REL_TO taskset $taskset_cpu \
+  			phc2sys -c $ITF_NAME -s CLOCK_REALTIME -O 37 -m 1>/dev/null
+  		if [ $? -eq 255 ]; then
+  			timeouts=$((timeouts + 1))
+  		fi
+  	done
+  	printf "\tnumber of timeouts in %s seconds: %d\n" $LIMIT_SECONDS $timeouts
+  }
+
+  record_multiple_timeout_param $NON_ISOLCPU_MASK
+
+Firmware version for the cards::
+
+  # lshw -class network -json | jq '.[0].product,.[0].configuration.firmware'
+  "Ethernet Controller I225-LM"
+  "1057:8754"
+
+  # lshw -class network -json | jq '.[2].product,.[2].configuration.firmware'
+  "Ethernet Controller I225-LM"
+  "1057:8754
+
+A couple of attempts were made that did not lead to solving the
+issue (disabling ASPM in kernel and boot, using periodic tick), and a couple
+of solutions that worked but that were subpar:
+
+1. The issue was not observed for a phc2sys(8) running on a fully
+   isolated nohz_full core. We do not have the luxury of dedicating a a
+   core for it.
+2. Bumping the IGC_PTM_STAT_TIMEOUT value. Other machines may need
+   another value though.
+3. Retry (multiple times) readx_poll_timeout() in case of failure. This may
+   significantly increase the function latency, because each
+   readx_poll_timeout() can take more than 100 us.
+4. Disabling preemption during the PTM request. Horrible.
+
+For the Coffee Lake machine, the issue tends to be avoided because the
+read does not take so long. Here is basically the same trace using the
+Cofee Lake machine::
+
+  phc2sys-1204  [002]  1778.220288: funcgraph_entry:                    |  igc_ptp_getcrosststamp() {
+  phc2sys-1204  [002]  1778.220290: funcgraph_entry:                    |    igc_phc_get_syncdevicetime() {
+  phc2sys-1204  [002]  1778.220291: funcgraph_entry:                    |      igc_rd32() {
+  phc2sys-1204  [002]  1778.220373: preempt_disable: caller=irq_enter_rcu+0x14 parent=irq_enter_rcu+0x14
+  phc2sys-1204  [002]  1778.220374: local_timer_entry: vector=236
+  phc2sys-1204  [002]  1778.220375: hrtimer_cancel: hrtimer=0xffff894027326118
+  phc2sys-1204  [002]  1778.220376: hrtimer_expire_entry: hrtimer=0xffff894027326118 now=1778228034802 function=tick_nohz_handler/0x0
+
+  ... tick handler ...
+
+  phc2sys-1204  [002]  1778.220411: funcgraph_exit:       !  119.843 us |      }
+  phc2sys-1204  [002]  1778.220412: funcgraph_entry:                    |      igc_rd32() {
+  phc2sys-1204  [002]  1778.220492: funcgraph_exit:       + 80.094 us   |      }
+  phc2sys-1204  [002]  1778.220493: funcgraph_entry:        2.951 us    |      igc_rd32();
+  phc2sys-1204  [002]  1778.220497: hrtimer_init: hrtimer=0xffffa504c0d83aa0 clockid=CLOCK_MONOTONIC mode=0x0
+  phc2sys-1204  [002]  1778.220498: preempt_disable: caller=_raw_spin_lock_irqsave+0x28 parent=hrtimer_start_range_ns+0x56
+  phc2sys-1204  [002]  1778.220499: hrtimer_start: hrtimer=0xffffa504c0d83aa0 function=hrtimer_wakeup/0x0 expires=1778228158866 softexpires=1778228157866
+
+  ... timer setup ....
+
+  phc2sys-1204  [002]  1778.220509: preempt_enable: caller=_raw_spin_unlock_irqrestore+0x2b parent=hrtimer_start_range_ns+0x12d
+  phc2sys-1204  [002]  1778.220511: funcgraph_entry:        7.338 us   |      igc_rd32();
+  phc2sys-1204  [002]  1778.220519: funcgraph_entry:        2.769 us   |      igc_rd32();
+  phc2sys-1204  [002]  1778.220522: funcgraph_entry:        2.798 us   |      igc_rd32();
+  phc2sys-1204  [002]  1778.220525: funcgraph_entry:        2.736 us   |      igc_rd32();
+  phc2sys-1204  [002]  1778.220529: funcgraph_entry:        2.750 us   |      igc_rd32();
+  phc2sys-1204  [002]  1778.220532: funcgraph_exit:       !  242.656 us |    }
+
+For both machines, I observed that the first igc_rd32() after an idle
+period (more than 10us) tends to take significantly more time. I assume
+this is a hardware power-saving technique, but I could not find any
+mention in the manuals. This is very easily observable with an idle
+system running phc2sys, since it will request only once every second.
+
+This is the typical trace of the operation::
+
+  phc2sys-1204  [002]  1749.209397: funcgraph_entry:                   |  igc_ptp_getcrosststamp() {
+  phc2sys-1204  [002]  1749.209398: funcgraph_entry:                   |    igc_phc_get_syncdevicetime() {
+  phc2sys-1204  [002]  1749.209400: funcgraph_entry:      + 81.491 us  |      igc_rd32();
+  phc2sys-1204  [002]  1749.209482: funcgraph_entry:        3.691 us   |      igc_rd32();
+  phc2sys-1204  [002]  1749.209487: funcgraph_entry:        2.942 us   |      igc_rd32();
+  phc2sys-1204  [002]  1749.209490: hrtimer_init: hrtimer=0xffffa504c0d83a00 clockid=CLOCK_MONOTONIC mode=0x0
+  phc2sys-1204  [002]  1749.209491: preempt_disable: caller=_raw_spin_lock_irqsave+0x28 parent=hrtimer_start_range_ns+0x56
+  ... timer setup and it goes on like before ...
+
+The preemption needs to happen for this issue, so that this power-saving
+mode is triggered, making the igc_rd32 'slow enough' so that all of the
+timeout is consumed before the card has time to answer.
+
+I believe flushing the write solves the issue definitely, since the
+write should be completed before the timeout has started. So that, even
+if the timeout is consumed by a slow read operation, the write has been
+received before and the card had time to process the request.
+---
+ drivers/net/ethernet/intel/igc/igc_ptp.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/drivers/net/ethernet/intel/igc/igc_ptp.c b/drivers/net/ethernet/intel/igc/igc_ptp.c
+index 1bb026232efc..d7269e4f1a21 100644
+--- a/drivers/net/ethernet/intel/igc/igc_ptp.c
++++ b/drivers/net/ethernet/intel/igc/igc_ptp.c
+@@ -1005,6 +1005,10 @@ static int igc_phc_get_syncdevicetime(ktime_t *device,
+ 		 * VALID bit.
+ 		 */
+ 		wr32(IGC_PTM_STAT, IGC_PTM_STAT_VALID);
++		/* Ensure the hardware receives the ptm request before the
++		 * response timeout starts.
++		 */
++		wrfl();
  
--	/* coverity[suspicious_sizeof] */
- 	root->children = devm_kcalloc(ice_hw_to_dev(hw), hw->max_children[0],
--				      sizeof(*root), GFP_KERNEL);
-+				      sizeof(root), GFP_KERNEL);
- 	if (!root->children) {
- 		devm_kfree(ice_hw_to_dev(hw), root);
- 		return -ENOMEM;
-@@ -186,10 +185,9 @@ ice_sched_add_node(struct ice_port_info *pi, u8 layer,
- 	if (!node)
- 		return -ENOMEM;
- 	if (hw->max_children[layer]) {
--		/* coverity[suspicious_sizeof] */
- 		node->children = devm_kcalloc(ice_hw_to_dev(hw),
- 					      hw->max_children[layer],
--					      sizeof(*node), GFP_KERNEL);
-+					      sizeof(node), GFP_KERNEL);
- 		if (!node->children) {
- 			devm_kfree(ice_hw_to_dev(hw), node);
- 			return -ENOMEM;
+ 		err = readx_poll_timeout(rd32, IGC_PTM_STAT, stat,
+ 					 stat, IGC_PTM_STAT_SLEEP,
+
+---
+base-commit: 0005b2dc43f96b93fc5b0850d7ca3f7aeac9129c
+change-id: 20240705-igc-flush-ptm-request-before-timeout-6-10-f6e02c96f6d4
+
+Best regards,
 -- 
-2.30.2
+Rodrigo Cataldo <rodrigo.cadore@l-acoustics.com>
+
 
