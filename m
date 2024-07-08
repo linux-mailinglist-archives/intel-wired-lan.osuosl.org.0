@@ -1,88 +1,89 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 18F4B92A30B
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  8 Jul 2024 14:42:04 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4905C92A30F
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  8 Jul 2024 14:42:21 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id C0EAC80E65;
-	Mon,  8 Jul 2024 12:42:02 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id DF8E880E92;
+	Mon,  8 Jul 2024 12:42:19 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id UUj6rsR8lAgf; Mon,  8 Jul 2024 12:42:02 +0000 (UTC)
+ id WI7G4bN0Y2kW; Mon,  8 Jul 2024 12:42:19 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E905E80E66
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 449DF80D75
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1720442522;
-	bh=iiEQqxBnuL1nnqUpnLZk6XSz3/t8Aebtkk4MLLxwQIc=;
+	s=default; t=1720442539;
+	bh=3sOf1UsJJ2Kmk1Jaejg58MQKHh1GKWSKRvEPgD6iJpk=;
 	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=y86ajByFoArhWLTglm/edTb6UAQe4jtUAl1d6XZZ8ExgRKMeK6nSsj2jWzmkTMkc3
-	 6bvf49yvDrKz47TeitHhdQQvEnledaI+RHDYOQWN+WBN9Zyp3nbR7cBs+kiez50XBp
-	 +//J0ErWWvPYKo9/GvEabjJ3Q+j7Tjx0MIEekb5RBgMXs/1sXcY/N4xtT3iRhDwQoW
-	 4lEzri/9NfISO5QyEe1Hcsj8m0PK1ejLuxMz2PM5hHS4XLcZDIQekf1d1h6wh7sYs/
-	 +0Yv5f/cS/YHvqO02UQIYrF9WN4pw3rFfAXSC5EUWenWJlTDCb7B0QBqTK2FavLkc7
-	 peElyVkO1XU3A==
+	b=PkdMB2holubZjl5aIqTUTaWnZiQxrUbibNq7FpBXeS4c/yaLhefP+YtmWBoMLxqVg
+	 NzxCm7eluIfi+rNfMgsqymnCPxAvEOXAup7eCoC0tTznkn4s7nWmNWXz521ozDWoyR
+	 RF95dPqOPC8Gn3Ew2nDZWpp2iR9d+5a7IatnLPMyrR4/FpTD6auD2OZHoi2oOlrNJf
+	 nIxOfiNuZyv2DzNcFfINEB8x0dvT4xDEa7K1M0iypY5bQJegZY43cq1hVI1wI1qFfY
+	 chLkw2CE2F475JXCRYHdhSTGQKSqslpiCigTahkBaVS1MvnUoVslEuHnkn/TxHkAml
+	 4grKvybNchVLA==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id E905E80E66;
-	Mon,  8 Jul 2024 12:42:01 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 449DF80D75;
+	Mon,  8 Jul 2024 12:42:19 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 217361BF390
- for <intel-wired-lan@lists.osuosl.org>; Mon,  8 Jul 2024 12:42:01 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id A69681BF97C
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  8 Jul 2024 12:42:17 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 1B18160627
- for <intel-wired-lan@lists.osuosl.org>; Mon,  8 Jul 2024 12:42:01 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 9E52E403C5
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  8 Jul 2024 12:42:17 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id MnWnjnLRbCuJ for <intel-wired-lan@lists.osuosl.org>;
- Mon,  8 Jul 2024 12:42:00 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=139.178.84.217;
- helo=dfw.source.kernel.org; envelope-from=horms@kernel.org;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 1C437605C6
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1C437605C6
-Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 1C437605C6
- for <intel-wired-lan@lists.osuosl.org>; Mon,  8 Jul 2024 12:41:58 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id brrogMwCXb9v for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  8 Jul 2024 12:42:17 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2604:1380:40e1:4800::1; helo=sin.source.kernel.org;
+ envelope-from=horms@kernel.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 9C11B403C0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9C11B403C0
+Received: from sin.source.kernel.org (sin.source.kernel.org
+ [IPv6:2604:1380:40e1:4800::1])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 9C11B403C0
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  8 Jul 2024 12:42:16 +0000 (UTC)
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by dfw.source.kernel.org (Postfix) with ESMTP id 4F01460BB7;
- Mon,  8 Jul 2024 12:41:58 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 65C5BC116B1;
- Mon,  8 Jul 2024 12:41:55 +0000 (UTC)
-Date: Mon, 8 Jul 2024 13:41:53 +0100
+ by sin.source.kernel.org (Postfix) with ESMTP id 25728CE0A13;
+ Mon,  8 Jul 2024 12:42:14 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 95773C116B1;
+ Mon,  8 Jul 2024 12:42:10 +0000 (UTC)
+Date: Mon, 8 Jul 2024 13:42:08 +0100
 From: Simon Horman <horms@kernel.org>
 To: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
-Message-ID: <20240708124153.GQ1481495@kernel.org>
+Message-ID: <20240708124208.GR1481495@kernel.org>
 References: <20240703125922.5625-1-mateusz.polchlopek@intel.com>
- <20240703125922.5625-5-mateusz.polchlopek@intel.com>
+ <20240703125922.5625-6-mateusz.polchlopek@intel.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20240703125922.5625-5-mateusz.polchlopek@intel.com>
+In-Reply-To: <20240703125922.5625-6-mateusz.polchlopek@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1720442518;
- bh=5nQj+rts9YS9Ia5kQOE7Jvlvi0YFlA7izBiZdjKmwlM=;
+ d=kernel.org; s=k20201202; t=1720442533;
+ bh=Wgz2uiozIHIDH/yHMDfCgHBZnNB235P31/pFr0zACA0=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=KKEz5M3X7+Cx6EplGd79DL1xlzDx5b8XkquKiT9sTPAmH8w2ngNC3PkWfz7HinF5i
- 4UPP7gj7omvpNraMTa1HVhDQJjfYLDnVx0bhRHYC58vKl3QwsJoB8eoZw+ULSpusgB
- 3CRDnqJ8E74R+nSUXO1dy46GD0LJ+qupfI/k1ZizZ3oGCWNYmh0wLG9RKSmiMbWBf/
- VycI3bHcM76tXOMfvW6leVaZFRax4BqAyaGRB9EgsDe/dHDyOrHC0G2hAOQE2CAPyk
- wpGlBkC8/F/wmDaCKXDBxLPYazc0nuWKrVWCLhnjmCrdAY57gB/J2/kbWt7LNsmVD0
- f22qY8l9Rhu8A==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ b=cZTC58eJTG5w0XOOVhkJy7mBcuMU6EYZG9YhXGUNQBXqx97UC3+yjtIjpXw+ZuQTv
+ OP2I3gNG/Vwg/jzSYbSwypAi/FjJ+smFk9TFXH53wWGFzPrK8KdfqK1et8meDspoKy
+ ByMvAYTlt3GHHH1JBM4m5AG8zfC8ppv7BAjL7CtagOvdVnh3aGQoRiaW9O8YTowxpR
+ js/WG0mINjjVPiTWKanJ1FmQmoo6L+dKQMJFQ7ofQki7DKm4/vqxV1oFG8nS1cKpO4
+ uO3RxvNZUew/uzxecZhG/OAV+uckl8Nc+KQW6aAFP+cXH4s0J4yrnMkVXwtNZZHo/K
+ QBrUiKaOjSiJw==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20201202 header.b=KKEz5M3X
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v1 4/6] ice: print ethtool
- stats as part of Tx hang devlink health reporter
+ header.s=k20201202 header.b=cZTC58eJ
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v1 5/6] ice: Add MDD logging
+ via devlink health
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,25 +97,23 @@ List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Cc: willemb@google.com, Wojciech Drewek <wojciech.drewek@intel.com>,
- dwaipayanray1@gmail.com, linux-kernel@vger.kernel.org,
- Igor Bagnucki <igor.bagnucki@intel.com>, joe@perches.com, edumazet@google.com,
- intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org, apw@canonical.com,
- lukas.bulwahn@gmail.com, akpm@linux-foundation.org,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>
+ Ben Shelton <benjamin.h.shelton@intel.com>, dwaipayanray1@gmail.com,
+ linux-kernel@vger.kernel.org, Igor Bagnucki <igor.bagnucki@intel.com>,
+ joe@perches.com, edumazet@google.com, intel-wired-lan@lists.osuosl.org,
+ netdev@vger.kernel.org, apw@canonical.com, lukas.bulwahn@gmail.com,
+ akpm@linux-foundation.org, Przemek Kitszel <przemyslaw.kitszel@intel.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed, Jul 03, 2024 at 08:59:20AM -0400, Mateusz Polchlopek wrote:
-> From: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+On Wed, Jul 03, 2024 at 08:59:21AM -0400, Mateusz Polchlopek wrote:
+> From: Ben Shelton <benjamin.h.shelton@intel.com>
 > 
-> Print the ethtool stats as part of Tx hang devlink health dump.
+> Add a devlink health reporter for MDD events. The 'dump' handler will
+> return the information captured in each call to ice_handle_mdd_event().
+> A device reset (CORER/PFR) will put the reporter back in healthy state.
 > 
-> Move the declarations of ethtool functions that devlink health uses out
-> to a new file: ice_ethtool_common.h
-> 
-> To utilize our existing ethtool code in this context, convert it to
-> non-static.
-> 
+> Signed-off-by: Ben Shelton <benjamin.h.shelton@intel.com>
+> Co-developed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
 > Signed-off-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
 > Reviewed-by: Igor Bagnucki <igor.bagnucki@intel.com>
 > Reviewed-by: Wojciech Drewek <wojciech.drewek@intel.com>
