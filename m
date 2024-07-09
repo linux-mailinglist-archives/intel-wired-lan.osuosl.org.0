@@ -1,98 +1,82 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 510D592B9A3
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  9 Jul 2024 14:36:58 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id A5F2A92BB3F
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  9 Jul 2024 15:31:21 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 0657341187;
-	Tue,  9 Jul 2024 12:36:57 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 4954040723;
+	Tue,  9 Jul 2024 13:31:20 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 7cSOWZ--0a9G; Tue,  9 Jul 2024 12:36:55 +0000 (UTC)
+ id TArQOu912Yxa; Tue,  9 Jul 2024 13:31:18 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4D54E410CB
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org DC8F7409C6
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1720528615;
-	bh=BWO0Y+4hI3Dgt2DLC4XWpzWVCl2axfftPgtVBlr4ki0=;
+	s=default; t=1720531877;
+	bh=Hj6GZYwIowZcQuY1B/2Ja2Ei6DevAxq/hHnIuhK4zD0=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=YArDLgPQw55WN5WhjMTVh/Fz/u89NRv/P78GJI2dcA77hJ1Fhkxw63PvvY0C63hbY
-	 CssZA7/i9xT/zKYxgN1FIW8jv7Nrpkwf34DLw0X92gazU2WC90V4X2+eXYUkE2bjSu
-	 wyIKh2rjuV/rV+iObqKWfbfEMaSuVbbtJAbfEzp4VXpMyz5RVf/lAy4n39PWwzejex
-	 L+xSrfAwYkj+snT0oeZXOl1LDHv7AZy7HV7Ph8XmTEJzXuWKdWCvqE7K+QA20DiKrh
-	 MCSILEHn+dck1ECFiRuis3DADEIwc+Iu4THEyJQQ3xUGSFfduniDe+gEnLehD0RZy9
-	 VOElM3kHasCWA==
+	b=AwNhsBQSjKisP4voOewrYY76TSeCfQjx91Zqp9QdXvRHJcMhQBes9plhsON7v5XjM
+	 bRYF/2hobX8KDSjGM9AalmWI5H0wsISzPfAhAg40DuQRJ9zrP8mcT6f3OFlVxsg1T6
+	 ryEC5/2xm2NdCarpb0VJnSSxEoam7x6YYKOfNAtUlZbCdOOAajzxShqx3qjQIqg8cV
+	 hKlPAa8BaBbFS0xDM72TLa+Exa/hCqYzg66EzrTiT+Gr+XX2aMdk24DZgWoB6I7ZfS
+	 A3J6XHABS1JaGfi9vCDJIOGpB+60z1sLl1cIimZGYLZQN+OvA4CRY1bfGsw/hl2lGA
+	 M44fHslBR3mnw==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 4D54E410CB;
-	Tue,  9 Jul 2024 12:36:55 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id DC8F7409C6;
+	Tue,  9 Jul 2024 13:31:17 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 93B4E1BF275
- for <intel-wired-lan@lists.osuosl.org>; Tue,  9 Jul 2024 12:36:52 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id BC9551BF228
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  9 Jul 2024 13:31:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 8D2194012A
- for <intel-wired-lan@lists.osuosl.org>; Tue,  9 Jul 2024 12:36:52 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id A76DA4095C
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  9 Jul 2024 13:31:15 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id ECV2W3QEm84r for <intel-wired-lan@lists.osuosl.org>;
- Tue,  9 Jul 2024 12:36:51 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.20;
- helo=mgamail.intel.com; envelope-from=karol.kolacinski@intel.com;
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id gyr8Cip1ONWk for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  9 Jul 2024 13:31:13 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=45.249.212.188;
+ helo=szxga02-in.huawei.com; envelope-from=linyunsheng@huawei.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 7D25540242
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 7D25540242
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.20])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 7D25540242
- for <intel-wired-lan@lists.osuosl.org>; Tue,  9 Jul 2024 12:36:50 +0000 (UTC)
-X-CSE-ConnectionGUID: hVCyPyFATMO8wQrWF9caQw==
-X-CSE-MsgGUID: 5au0ZS2+RgKItjkW8XP0Lw==
-X-IronPort-AV: E=McAfee;i="6700,10204,11127"; a="17598172"
-X-IronPort-AV: E=Sophos;i="6.09,195,1716274800"; d="scan'208";a="17598172"
-Received: from orviesa010.jf.intel.com ([10.64.159.150])
- by orvoesa112.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 09 Jul 2024 05:36:50 -0700
-X-CSE-ConnectionGUID: 2ykrYFKPQ/yJTYy7MfmrDA==
-X-CSE-MsgGUID: aac3Ig16RJip4aSWFqvYmA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.09,195,1716274800"; d="scan'208";a="47776124"
-Received: from kkolacin-desk1.igk.intel.com ([10.102.102.132])
- by orviesa010.jf.intel.com with ESMTP; 09 Jul 2024 05:36:48 -0700
-From: Karol Kolacinski <karol.kolacinski@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Tue,  9 Jul 2024 14:34:58 +0200
-Message-ID: <20240709123629.666151-10-karol.kolacinski@intel.com>
-X-Mailer: git-send-email 2.45.2
-In-Reply-To: <20240709123629.666151-6-karol.kolacinski@intel.com>
-References: <20240709123629.666151-6-karol.kolacinski@intel.com>
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 30EF740728
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 30EF740728
+Received: from szxga02-in.huawei.com (szxga02-in.huawei.com [45.249.212.188])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 30EF740728
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  9 Jul 2024 13:31:11 +0000 (UTC)
+Received: from mail.maildlp.com (unknown [172.19.88.105])
+ by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4WJMLm2QSMzcpJ1;
+ Tue,  9 Jul 2024 21:30:40 +0800 (CST)
+Received: from dggpemf200006.china.huawei.com (unknown [7.185.36.61])
+ by mail.maildlp.com (Postfix) with ESMTPS id 7747D140485;
+ Tue,  9 Jul 2024 21:31:06 +0800 (CST)
+Received: from localhost.localdomain (10.69.192.56) by
+ dggpemf200006.china.huawei.com (7.185.36.61) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1544.11; Tue, 9 Jul 2024 21:31:05 +0800
+From: Yunsheng Lin <linyunsheng@huawei.com>
+To: <davem@davemloft.net>, <kuba@kernel.org>, <pabeni@redhat.com>
+Date: Tue, 9 Jul 2024 21:27:29 +0800
+Message-ID: <20240709132741.47751-5-linyunsheng@huawei.com>
+X-Mailer: git-send-email 2.33.0
+In-Reply-To: <20240709132741.47751-1-linyunsheng@huawei.com>
+References: <20240709132741.47751-1-linyunsheng@huawei.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1720528610; x=1752064610;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=sDYejdXJECes6sr+UQ9wfXHCofbcpvwo6V2AKBzIDgU=;
- b=mUn6CGU3k6pz5VbCJsY9z2v18gOTkYaPuZ9pf+8o0LxASS/Lnv7b+4Yf
- y+TJ33oFume+K/0e7lw+doXLPv6myB6us3f8Tg51//suMyf6Nwibuj5c5
- ZmVSB1FVFvSTsGzM4+ZtZhBj8V1I2ONyqeBo2QeDCc/xwlLkMWGxPzqdv
- 7JuV4S8uCjPtn0r6bPcoeQKNIbJP4Fir1LwKC5GZOYdCALiPgOsVIRz2X
- VwNOt/scic1hccxtAyKtwbukOADqtjKPMKU8XwdA4M5yImuTzgzYgX4xq
- hCi6LaR5rv54kbY3kih+vXIJPTC0d3uCEbko4Pv7KG6l821lci5VAZjLt
- w==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=mUn6CGU3
-Subject: [Intel-wired-lan] [PATCH iwl-next 4/4] ice: combine cross timestamp
- functions for E82x and E830
+Content-Type: text/plain
+X-Originating-IP: [10.69.192.56]
+X-ClientProxiedBy: dggems704-chm.china.huawei.com (10.3.19.181) To
+ dggpemf200006.china.huawei.com (7.185.36.61)
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dmarc=pass (p=quarantine dis=none)
+ header.from=huawei.com
+Subject: [Intel-wired-lan] [PATCH net-next v10 04/15] mm: page_frag: add
+ '_va' suffix to page_frag API
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -105,465 +89,593 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Jacob Keller <jacob.e.keller@intel.com>, netdev@vger.kernel.org,
- Karol Kolacinski <karol.kolacinski@intel.com>, anthony.l.nguyen@intel.com,
- przemyslaw.kitszel@intel.com
+Cc: Yonghong Song <yonghong.song@linux.dev>, kvm@vger.kernel.org,
+ "Michael S. Tsirkin" <mst@redhat.com>, Neil Brown <neilb@suse.de>,
+ Jason Wang <jasowang@redhat.com>, Alexei Starovoitov <ast@kernel.org>,
+ Alexander Duyck <alexander.duyck@gmail.com>,
+ Andrii Nakryiko <andrii@kernel.org>, David Howells <dhowells@redhat.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Eric Dumazet <edumazet@google.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Subbaraya Sundeep <sbhatta@marvell.com>,
+ Marc Dionne <marc.dionne@auristor.com>, Christoph Hellwig <hch@lst.de>,
+ Anna Schumaker <anna@kernel.org>, Jeroen de Borst <jeroendb@google.com>,
+ Sagi Grimberg <sagi@grimberg.me>, Daniel Borkmann <daniel@iogearbox.net>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ John Fastabend <john.fastabend@gmail.com>,
+ Yunsheng Lin <linyunsheng@huawei.com>, linux-afs@lists.infradead.org,
+ =?UTF-8?q?Eugenio=20P=C3=A9rez?= <eperezma@redhat.com>,
+ Stanislav Fomichev <sdf@fomichev.me>, intel-wired-lan@lists.osuosl.org,
+ Olga Kornievskaia <kolga@netapp.com>, Lorenzo Bianconi <lorenzo@kernel.org>,
+ Mark Lee <Mark-MC.Lee@mediatek.com>, Sunil Goutham <sgoutham@marvell.com>,
+ linux-mm@kvack.org, Chaitanya Kulkarni <kch@nvidia.com>,
+ Jesper Dangaard Brouer <hawk@kernel.org>, Dai Ngo <Dai.Ngo@oracle.com>,
+ Sean Wang <sean.wang@mediatek.com>, virtualization@lists.linux.dev,
+ KP Singh <kpsingh@kernel.org>, Tom Talpey <tom@talpey.com>,
+ Shailend Chand <shailend@google.com>, linux-mediatek@lists.infradead.org,
+ linux-nvme@lists.infradead.org, Keith Busch <kbusch@kernel.org>,
+ bpf@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Jens Axboe <axboe@kernel.dk>, Hao Luo <haoluo@google.com>,
+ linux-nfs@vger.kernel.org, Song Liu <song@kernel.org>, netdev@vger.kernel.org,
+ Jeff Layton <jlayton@kernel.org>, linux-kernel@vger.kernel.org,
+ Eduard Zingerman <eddyz87@gmail.com>, hariprasad <hkelam@marvell.com>,
+ Chuck Lever <chuck.lever@oracle.com>, Jiri Olsa <jolsa@kernel.org>,
+ Praveen Kaligineedi <pkaligineedi@google.com>,
+ Andrew Morton <akpm@linux-foundation.org>,
+ Martin KaFai Lau <martin.lau@linux.dev>, Geetha sowjanya <gakula@marvell.com>,
+ Trond Myklebust <trondmy@kernel.org>, Felix Fietkau <nbd@nbd.name>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Jacob Keller <jacob.e.keller@intel.com>
+Currently the page_frag API is returning 'virtual address'
+or 'va' when allocing and expecting 'virtual address' or
+'va' as input when freeing.
 
-The E830 and E82x devices use essentially the same logic for performing
-a crosstimestamp. The only difference is that E830 hardware has
-different offsets. Instead of having two implementations, combine them
-into a single ice_capture_crosststamp() function.
+As we are about to support new use cases that the caller
+need to deal with 'struct page' or need to deal with both
+'va' and 'struct page'. In order to differentiate the API
+handling between 'va' and 'struct page', add '_va' suffix
+to the corresponding API mirroring the page_pool_alloc_va()
+API of the page_pool. So that callers expecting to deal with
+va, page or both va and page may call page_frag_alloc_va*,
+page_frag_alloc_pg*, or page_frag_alloc* API accordingly.
 
-Also combine the wrapper functions which call
-get_device_system_crosststamp() into a single ice_ptp_getcrosststamp()
-function.
-
-To support both hardware types, the ice_capture_crosststamp function
-must be able to determine the appropriate registers to access. To handle
-this, pass a custom context structure instead of the PF pointer. This
-structure, ice_crosststamp_ctx, contains a pointer to the PF, and
-a pointer to the device configuration structure. This new structure also
-will make it easier to implement historic snapshot support in a future
-commit.
-
-The device configuration structure is a static const data which defines
-the offsets and flags for the various registers. This includes the lock
-register, the cross timestamp control register, the upper and lower ART
-system time capture registers, and the upper and lower device time
-capture registers for each timer index.
-
-This does add extra data to the .text of the module (and thus kernel),
-but it also removes 2 near duplicate functions for enabling E830
-support.
-
-Use the configuration structure to access all of the registers in
-ice_capture_crosststamp(). Ensure that we don't over-run the device time
-array by checking that the timer index is 0 or 1. Previously this was
-simply assumed, and it would cause the device to read an incorrect and
-likely garbage register.
-
-It does feel like there should be a kernel interface for managing
-register offsets like this, but the closest thing I saw was
-<linux/regmap.h> which is interesting but not quite what we're looking
-for...
-
-Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
-Signed-off-by: Karol Kolacinski <karol.kolacinski@intel.com>
+CC: Alexander Duyck <alexander.duyck@gmail.com>
+Signed-off-by: Yunsheng Lin <linyunsheng@huawei.com>
 ---
- drivers/net/ethernet/intel/Kconfig            |  10 +-
- .../net/ethernet/intel/ice/ice_hw_autogen.h   |   8 +
- drivers/net/ethernet/intel/ice/ice_main.c     |   7 +
- drivers/net/ethernet/intel/ice/ice_osdep.h    |   3 +
- drivers/net/ethernet/intel/ice/ice_ptp.c      | 240 +++++++++++++-----
- 5 files changed, 193 insertions(+), 75 deletions(-)
+ drivers/net/ethernet/google/gve/gve_rx.c      |  4 ++--
+ drivers/net/ethernet/intel/ice/ice_txrx.c     |  2 +-
+ drivers/net/ethernet/intel/ice/ice_txrx.h     |  2 +-
+ drivers/net/ethernet/intel/ice/ice_txrx_lib.c |  2 +-
+ .../net/ethernet/intel/ixgbevf/ixgbevf_main.c |  4 ++--
+ .../marvell/octeontx2/nic/otx2_common.c       |  2 +-
+ drivers/net/ethernet/mediatek/mtk_wed_wo.c    |  4 ++--
+ drivers/nvme/host/tcp.c                       |  8 +++----
+ drivers/nvme/target/tcp.c                     | 22 +++++++++----------
+ drivers/vhost/net.c                           |  6 ++---
+ include/linux/page_frag_cache.h               | 21 +++++++++---------
+ include/linux/skbuff.h                        |  2 +-
+ kernel/bpf/cpumap.c                           |  2 +-
+ mm/page_frag_cache.c                          | 12 +++++-----
+ mm/page_frag_test.c                           | 13 ++++++-----
+ net/core/skbuff.c                             | 14 ++++++------
+ net/core/xdp.c                                |  2 +-
+ net/rxrpc/txbuf.c                             | 15 +++++++------
+ net/sunrpc/svcsock.c                          |  6 ++---
+ 19 files changed, 74 insertions(+), 69 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/Kconfig b/drivers/net/ethernet/intel/Kconfig
-index 0375c7448a57..7c4f3948385c 100644
---- a/drivers/net/ethernet/intel/Kconfig
-+++ b/drivers/net/ethernet/intel/Kconfig
-@@ -332,14 +332,14 @@ config ICE_SWITCHDEV
- 	  If unsure, say N.
+diff --git a/drivers/net/ethernet/google/gve/gve_rx.c b/drivers/net/ethernet/google/gve/gve_rx.c
+index acb73d4d0de6..b6c10100e462 100644
+--- a/drivers/net/ethernet/google/gve/gve_rx.c
++++ b/drivers/net/ethernet/google/gve/gve_rx.c
+@@ -729,7 +729,7 @@ static int gve_xdp_redirect(struct net_device *dev, struct gve_rx_ring *rx,
  
- config ICE_HWTS
--	bool "Support HW cross-timestamp on platforms with PTM support"
-+	bool "Support HW cross-timestamp on supported platforms"
- 	default y
--	depends on ICE && X86
-+	depends on ICE && X86 && PCIE_PTM
- 	help
- 	  Say Y to enable hardware supported cross-timestamping on platforms
--	  with PCIe PTM support. The cross-timestamp is available through
--	  the PTP clock driver precise cross-timestamp ioctl
--	  (PTP_SYS_OFFSET_PRECISE).
-+	  with PCIe PTM support for E830 devices and all E82X platforms. The
-+	  cross-timestamp is available through the PTP clock driver precise
-+	  cross-timestamp ioctl (PTP_SYS_OFFSET_PRECISE).
+ 	total_len = headroom + SKB_DATA_ALIGN(len) +
+ 		SKB_DATA_ALIGN(sizeof(struct skb_shared_info));
+-	frame = page_frag_alloc(&rx->page_cache, total_len, GFP_ATOMIC);
++	frame = page_frag_alloc_va(&rx->page_cache, total_len, GFP_ATOMIC);
+ 	if (!frame) {
+ 		u64_stats_update_begin(&rx->statss);
+ 		rx->xdp_alloc_fails++;
+@@ -742,7 +742,7 @@ static int gve_xdp_redirect(struct net_device *dev, struct gve_rx_ring *rx,
  
- config FM10K
- 	tristate "Intel(R) FM10000 Ethernet Switch Host Interface Support"
-diff --git a/drivers/net/ethernet/intel/ice/ice_hw_autogen.h b/drivers/net/ethernet/intel/ice/ice_hw_autogen.h
-index 646089f3e26c..495b182ea13b 100644
---- a/drivers/net/ethernet/intel/ice/ice_hw_autogen.h
-+++ b/drivers/net/ethernet/intel/ice/ice_hw_autogen.h
-@@ -541,6 +541,14 @@
- #define E830_PRTMAC_CL01_QNT_THR_CL0_M		GENMASK(15, 0)
- #define E830_PRTTSYN_TXTIME_H(_i)		(0x001E5800 + ((_i) * 32))
- #define E830_PRTTSYN_TXTIME_L(_i)		(0x001E5000 + ((_i) * 32))
-+#define E830_GLPTM_ART_CTL			0x00088B50
-+#define E830_GLPTM_ART_CTL_ACTIVE_M		BIT(0)
-+#define E830_GLPTM_ART_TIME_H			0x00088B54
-+#define E830_GLPTM_ART_TIME_L			0x00088B58
-+#define E830_GLTSYN_PTMTIME_H(_i)		(0x00088B48 + ((_i) * 4))
-+#define E830_GLTSYN_PTMTIME_L(_i)		(0x00088B40 + ((_i) * 4))
-+#define E830_PFPTM_SEM				0x00088B00
-+#define E830_PFPTM_SEM_BUSY_M			BIT(0)
- #define VFINT_DYN_CTLN(_i)			(0x00003800 + ((_i) * 4))
- #define VFINT_DYN_CTLN_CLEARPBA_M		BIT(1)
- 
-diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index 7866e8dc4a21..b9814ed6fb46 100644
---- a/drivers/net/ethernet/intel/ice/ice_main.c
-+++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -5059,6 +5059,12 @@ static int ice_init(struct ice_pf *pf)
+ 	err = xdp_do_redirect(dev, &new, xdp_prog);
  	if (err)
- 		return err;
+-		page_frag_free(frame);
++		page_frag_free_va(frame);
  
-+	if (ice_is_e830(&pf->hw)) {
-+		err = pci_enable_ptm(pf->pdev, NULL);
-+		if (err)
-+			dev_dbg(ice_pf_to_dev(pf), "PCIe PTM not supported by PCIe bus/controller\n");
-+	}
-+
- 	err = ice_alloc_vsis(pf);
- 	if (err)
- 		goto err_alloc_vsis;
-@@ -5289,6 +5295,7 @@ ice_probe(struct pci_dev *pdev, const struct pci_device_id __always_unused *ent)
- 	hw->subsystem_device_id = pdev->subsystem_device;
- 	hw->bus.device = PCI_SLOT(pdev->devfn);
- 	hw->bus.func = PCI_FUNC(pdev->devfn);
-+
- 	ice_set_ctrlq_len(hw);
- 
- 	pf->msg_enable = netif_msg_init(debug, ICE_DFLT_NETIF_M);
-diff --git a/drivers/net/ethernet/intel/ice/ice_osdep.h b/drivers/net/ethernet/intel/ice/ice_osdep.h
-index a2562f04267f..c03ab0207e0a 100644
---- a/drivers/net/ethernet/intel/ice/ice_osdep.h
-+++ b/drivers/net/ethernet/intel/ice/ice_osdep.h
-@@ -23,6 +23,9 @@
- #define wr64(a, reg, value)	writeq((value), ((a)->hw_addr + (reg)))
- #define rd64(a, reg)		readq((a)->hw_addr + (reg))
- 
-+#define rd32_poll_timeout(a, addr, val, cond, delay_us, timeout_us) \
-+	read_poll_timeout(rd32, val, cond, delay_us, timeout_us, false, a, addr)
-+
- #define ice_flush(a)		rd32((a), GLGEN_STAT)
- #define ICE_M(m, s)		((m ## U) << (s))
- 
-diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.c b/drivers/net/ethernet/intel/ice/ice_ptp.c
-index 924e4160a414..91d5ebfe7c85 100644
---- a/drivers/net/ethernet/intel/ice/ice_ptp.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ptp.c
-@@ -1,6 +1,7 @@
- // SPDX-License-Identifier: GPL-2.0
- /* Copyright (C) 2021, Intel Corporation. */
- 
-+#include <linux/iopoll.h>
- #include "ice.h"
- #include "ice_lib.h"
- #include "ice_trace.h"
-@@ -2080,90 +2081,153 @@ static int ice_ptp_adjtime(struct ptp_clock_info *info, s64 delta)
- 
- #ifdef CONFIG_ICE_HWTS
- /**
-- * ice_ptp_get_syncdevicetime - Get the cross time stamp info
-+ * struct ice_crosststamp_cfg - Device cross timestamp configuration
-+ * @lock_reg: The hardware semaphore lock to use
-+ * @lock_busy: Bit in the semaphore lock indicating the lock is busy
-+ * @ctl_reg: The hardware register to request cross timestamp
-+ * @ctl_active: Bit in the control register to request cross timestamp
-+ * @art_time_l: Lower 32-bits of ART system time
-+ * @art_time_h: Upper 32-bits of ART system time
-+ * @dev_time_l: Lower 32-bits of device time (per timer index)
-+ * @dev_time_h: Upper 32-bits of device time (per timer index)
-+ */
-+struct ice_crosststamp_cfg {
-+	/* HW semaphore lock register */
-+	u32 lock_reg;
-+	u32 lock_busy;
-+
-+	/* Capture control register */
-+	u32 ctl_reg;
-+	u32 ctl_active;
-+
-+	/* Time storage */
-+	u32 art_time_l;
-+	u32 art_time_h;
-+	u32 dev_time_l[2];
-+	u32 dev_time_h[2];
-+};
-+
-+static const struct ice_crosststamp_cfg ice_crosststamp_cfg_e82x = {
-+	.lock_reg = PFHH_SEM,
-+	.lock_busy = PFHH_SEM_BUSY_M,
-+	.ctl_reg = GLHH_ART_CTL,
-+	.ctl_active = GLHH_ART_CTL_ACTIVE_M,
-+	.art_time_l = GLHH_ART_TIME_L,
-+	.art_time_h = GLHH_ART_TIME_H,
-+	.dev_time_l[0] = GLTSYN_HHTIME_L(0),
-+	.dev_time_h[0] = GLTSYN_HHTIME_H(0),
-+	.dev_time_l[1] = GLTSYN_HHTIME_L(1),
-+	.dev_time_h[1] = GLTSYN_HHTIME_H(1),
-+};
-+
-+static const struct ice_crosststamp_cfg ice_crosststamp_cfg_e830 = {
-+	.lock_reg = E830_PFPTM_SEM,
-+	.lock_busy = E830_PFPTM_SEM_BUSY_M,
-+	.ctl_reg = E830_GLPTM_ART_CTL,
-+	.ctl_active = E830_GLPTM_ART_CTL_ACTIVE_M,
-+	.art_time_l = E830_GLPTM_ART_TIME_L,
-+	.art_time_h = E830_GLPTM_ART_TIME_H,
-+	.dev_time_l[0] = E830_GLTSYN_PTMTIME_L(0),
-+	.dev_time_h[0] = E830_GLTSYN_PTMTIME_H(0),
-+	.dev_time_l[1] = E830_GLTSYN_PTMTIME_L(1),
-+	.dev_time_h[1] = E830_GLTSYN_PTMTIME_H(1),
-+};
-+
-+/**
-+ * struct ice_crosststamp_ctx - Device cross timestamp context
-+ * @snapshot: snapshot of system clocks for historic interpolation
-+ * @pf: pointer to the PF private structure
-+ * @cfg: pointer to hardware configuration for cross timestamp
-+ */
-+struct ice_crosststamp_ctx {
-+	struct system_time_snapshot snapshot;
-+	struct ice_pf *pf;
-+	const struct ice_crosststamp_cfg *cfg;
-+};
-+
-+/**
-+ * ice_capture_crosststamp - Capture a device/system cross timestamp
-  * @device: Current device time
-  * @system: System counter value read synchronously with device time
-- * @ctx: Context provided by timekeeping code
-+ * @__ctx: Context passed from ice_ptp_getcrosststamp
-  *
-  * Read device and system (ART) clock simultaneously and return the corrected
-  * clock values in ns.
-+ *
-+ * Return: zero on success, or a negative error code on failure.
+ 	return err;
+ }
+diff --git a/drivers/net/ethernet/intel/ice/ice_txrx.c b/drivers/net/ethernet/intel/ice/ice_txrx.c
+index 8bb743f78fcb..399b317c509d 100644
+--- a/drivers/net/ethernet/intel/ice/ice_txrx.c
++++ b/drivers/net/ethernet/intel/ice/ice_txrx.c
+@@ -126,7 +126,7 @@ ice_unmap_and_free_tx_buf(struct ice_tx_ring *ring, struct ice_tx_buf *tx_buf)
+ 		dev_kfree_skb_any(tx_buf->skb);
+ 		break;
+ 	case ICE_TX_BUF_XDP_TX:
+-		page_frag_free(tx_buf->raw_buf);
++		page_frag_free_va(tx_buf->raw_buf);
+ 		break;
+ 	case ICE_TX_BUF_XDP_XMIT:
+ 		xdp_return_frame(tx_buf->xdpf);
+diff --git a/drivers/net/ethernet/intel/ice/ice_txrx.h b/drivers/net/ethernet/intel/ice/ice_txrx.h
+index feba314a3fe4..6379f57d8228 100644
+--- a/drivers/net/ethernet/intel/ice/ice_txrx.h
++++ b/drivers/net/ethernet/intel/ice/ice_txrx.h
+@@ -148,7 +148,7 @@ static inline int ice_skb_pad(void)
+  * @ICE_TX_BUF_DUMMY: dummy Flow Director packet, unmap and kfree()
+  * @ICE_TX_BUF_FRAG: mapped skb OR &xdp_buff frag, only unmap DMA
+  * @ICE_TX_BUF_SKB: &sk_buff, unmap and consume_skb(), update stats
+- * @ICE_TX_BUF_XDP_TX: &xdp_buff, unmap and page_frag_free(), stats
++ * @ICE_TX_BUF_XDP_TX: &xdp_buff, unmap and page_frag_free_va(), stats
+  * @ICE_TX_BUF_XDP_XMIT: &xdp_frame, unmap and xdp_return_frame(), stats
+  * @ICE_TX_BUF_XSK_TX: &xdp_buff on XSk queue, xsk_buff_free(), stats
   */
--static int
--ice_ptp_get_syncdevicetime(ktime_t *device,
--			   struct system_counterval_t *system,
--			   void *ctx)
-+static int ice_capture_crosststamp(ktime_t *device,
-+				   struct system_counterval_t *system,
-+				   void *__ctx)
- {
--	struct ice_pf *pf = (struct ice_pf *)ctx;
--	struct ice_hw *hw = &pf->hw;
--	u32 hh_lock, hh_art_ctl;
--	int i;
-+	struct ice_crosststamp_ctx *ctx = __ctx;
-+	const struct ice_crosststamp_cfg *cfg;
-+	u32 lock, ctl, ts_lo, ts_hi, tmr_idx;
-+	struct ice_pf *pf;
-+	struct ice_hw *hw;
-+	int err;
-+	u64 ts;
+diff --git a/drivers/net/ethernet/intel/ice/ice_txrx_lib.c b/drivers/net/ethernet/intel/ice/ice_txrx_lib.c
+index 2719f0e20933..a1a41a14df0d 100644
+--- a/drivers/net/ethernet/intel/ice/ice_txrx_lib.c
++++ b/drivers/net/ethernet/intel/ice/ice_txrx_lib.c
+@@ -250,7 +250,7 @@ ice_clean_xdp_tx_buf(struct device *dev, struct ice_tx_buf *tx_buf,
  
--#define MAX_HH_HW_LOCK_TRIES	5
--#define MAX_HH_CTL_LOCK_TRIES	100
-+	cfg = ctx->cfg;
-+	pf = ctx->pf;
-+	hw = &pf->hw;
+ 	switch (tx_buf->type) {
+ 	case ICE_TX_BUF_XDP_TX:
+-		page_frag_free(tx_buf->raw_buf);
++		page_frag_free_va(tx_buf->raw_buf);
+ 		break;
+ 	case ICE_TX_BUF_XDP_XMIT:
+ 		xdp_return_frame_bulk(tx_buf->xdpf, bq);
+diff --git a/drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c b/drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c
+index b938dc06045d..fcd1b149a45d 100644
+--- a/drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c
++++ b/drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c
+@@ -303,7 +303,7 @@ static bool ixgbevf_clean_tx_irq(struct ixgbevf_q_vector *q_vector,
  
--	for (i = 0; i < MAX_HH_HW_LOCK_TRIES; i++) {
--		/* Get the HW lock */
--		hh_lock = rd32(hw, PFHH_SEM + (PFTSYN_SEM_BYTES * hw->pf_id));
--		if (hh_lock & PFHH_SEM_BUSY_M) {
--			usleep_range(10000, 15000);
--			continue;
--		}
--		break;
--	}
--	if (hh_lock & PFHH_SEM_BUSY_M) {
--		dev_err(ice_pf_to_dev(pf), "PTP failed to get hh lock\n");
-+	tmr_idx = hw->func_caps.ts_func_info.tmr_index_assoc;
-+	if (tmr_idx > 1)
-+		return -EINVAL;
-+
-+	/* Poll until we obtain the cross-timestamp hardware semaphore */
-+	err = rd32_poll_timeout(hw, cfg->lock_reg, lock,
-+				!(lock & cfg->lock_busy),
-+				10 * USEC_PER_MSEC, 50 * USEC_PER_MSEC);
-+	if (err) {
-+		dev_err(ice_pf_to_dev(pf), "PTP failed to get cross timestamp lock\n");
- 		return -EBUSY;
+ 		/* free the skb */
+ 		if (ring_is_xdp(tx_ring))
+-			page_frag_free(tx_buffer->data);
++			page_frag_free_va(tx_buffer->data);
+ 		else
+ 			napi_consume_skb(tx_buffer->skb, napi_budget);
+ 
+@@ -2413,7 +2413,7 @@ static void ixgbevf_clean_tx_ring(struct ixgbevf_ring *tx_ring)
+ 
+ 		/* Free all the Tx ring sk_buffs */
+ 		if (ring_is_xdp(tx_ring))
+-			page_frag_free(tx_buffer->data);
++			page_frag_free_va(tx_buffer->data);
+ 		else
+ 			dev_kfree_skb_any(tx_buffer->skb);
+ 
+diff --git a/drivers/net/ethernet/marvell/octeontx2/nic/otx2_common.c b/drivers/net/ethernet/marvell/octeontx2/nic/otx2_common.c
+index 87d5776e3b88..a485e988fa1d 100644
+--- a/drivers/net/ethernet/marvell/octeontx2/nic/otx2_common.c
++++ b/drivers/net/ethernet/marvell/octeontx2/nic/otx2_common.c
+@@ -553,7 +553,7 @@ static int __otx2_alloc_rbuf(struct otx2_nic *pfvf, struct otx2_pool *pool,
+ 	*dma = dma_map_single_attrs(pfvf->dev, buf, pool->rbsize,
+ 				    DMA_FROM_DEVICE, DMA_ATTR_SKIP_CPU_SYNC);
+ 	if (unlikely(dma_mapping_error(pfvf->dev, *dma))) {
+-		page_frag_free(buf);
++		page_frag_free_va(buf);
+ 		return -ENOMEM;
  	}
  
-+	/* Snapshot system time for historic interpolation */
-+	ktime_get_snapshot(&ctx->snapshot);
-+
- 	/* Program cmd to master timer */
- 	ice_ptp_src_cmd(hw, ICE_PTP_READ_TIME);
+diff --git a/drivers/net/ethernet/mediatek/mtk_wed_wo.c b/drivers/net/ethernet/mediatek/mtk_wed_wo.c
+index 7063c78bd35f..c4228719f8a4 100644
+--- a/drivers/net/ethernet/mediatek/mtk_wed_wo.c
++++ b/drivers/net/ethernet/mediatek/mtk_wed_wo.c
+@@ -142,8 +142,8 @@ mtk_wed_wo_queue_refill(struct mtk_wed_wo *wo, struct mtk_wed_wo_queue *q,
+ 		dma_addr_t addr;
+ 		void *buf;
  
- 	/* Start the ART and device clock sync sequence */
--	hh_art_ctl = rd32(hw, GLHH_ART_CTL);
--	hh_art_ctl = hh_art_ctl | GLHH_ART_CTL_ACTIVE_M;
--	wr32(hw, GLHH_ART_CTL, hh_art_ctl);
--
--	for (i = 0; i < MAX_HH_CTL_LOCK_TRIES; i++) {
--		/* Wait for sync to complete */
--		hh_art_ctl = rd32(hw, GLHH_ART_CTL);
--		if (hh_art_ctl & GLHH_ART_CTL_ACTIVE_M) {
--			udelay(1);
--			continue;
--		} else {
--			u32 hh_ts_lo, hh_ts_hi, tmr_idx;
--			u64 hh_ts;
--
--			tmr_idx = hw->func_caps.ts_func_info.tmr_index_assoc;
--			/* Read ART time */
--			hh_ts_lo = rd32(hw, GLHH_ART_TIME_L);
--			hh_ts_hi = rd32(hw, GLHH_ART_TIME_H);
--			hh_ts = ((u64)hh_ts_hi << 32) | hh_ts_lo;
--			*system = convert_art_ns_to_tsc(hh_ts);
--			/* Read Device source clock time */
--			hh_ts_lo = rd32(hw, GLTSYN_HHTIME_L(tmr_idx));
--			hh_ts_hi = rd32(hw, GLTSYN_HHTIME_H(tmr_idx));
--			hh_ts = ((u64)hh_ts_hi << 32) | hh_ts_lo;
--			*device = ns_to_ktime(hh_ts);
--			break;
--		}
--	}
-+	ctl = rd32(hw, cfg->ctl_reg);
-+	ctl |= cfg->ctl_active;
-+	wr32(hw, cfg->ctl_reg, ctl);
-+
-+	/* Poll until hardware completes the capture */
-+	err = rd32_poll_timeout(hw, cfg->ctl_reg, ctl, !(ctl & cfg->ctl_active),
-+				5, 20 * USEC_PER_MSEC);
-+	if (err)
-+		goto err_timeout;
-+
-+	/* Read ART system time */
-+	ts_lo = rd32(hw, cfg->art_time_l);
-+	ts_hi = rd32(hw, cfg->art_time_h);
-+	ts = ((u64)ts_hi << 32) | ts_lo;
-+	*system = convert_art_ns_to_tsc(ts);
-+
-+	/* Read Device source clock time */
-+	ts_lo = rd32(hw, cfg->dev_time_l[tmr_idx]);
-+	ts_hi = rd32(hw, cfg->dev_time_h[tmr_idx]);
-+	ts = ((u64)ts_hi << 32) | ts_lo;
-+	*device = ns_to_ktime(ts);
+-		buf = page_frag_alloc(&q->cache, q->buf_size,
+-				      GFP_ATOMIC | GFP_DMA32);
++		buf = page_frag_alloc_va(&q->cache, q->buf_size,
++					 GFP_ATOMIC | GFP_DMA32);
+ 		if (!buf)
+ 			break;
  
-+err_timeout:
- 	/* Clear the master timer */
- 	ice_ptp_src_cmd(hw, ICE_PTP_NOP);
- 
- 	/* Release HW lock */
--	hh_lock = rd32(hw, PFHH_SEM + (PFTSYN_SEM_BYTES * hw->pf_id));
--	hh_lock = hh_lock & ~PFHH_SEM_BUSY_M;
--	wr32(hw, PFHH_SEM + (PFTSYN_SEM_BYTES * hw->pf_id), hh_lock);
-+	lock = rd32(hw, cfg->lock_reg);
-+	lock &= ~cfg->lock_busy;
-+	wr32(hw, cfg->lock_reg, lock);
- 
--	if (i == MAX_HH_CTL_LOCK_TRIES)
--		return -ETIMEDOUT;
--
--	return 0;
-+	return err;
- }
- 
- /**
-- * ice_ptp_getcrosststamp_e82x - Capture a device cross timestamp
-+ * ice_ptp_getcrosststamp - Capture a device cross timestamp
-  * @info: the driver's PTP info structure
-  * @cts: The memory to fill the cross timestamp info
-  *
-@@ -2171,23 +2235,35 @@ ice_ptp_get_syncdevicetime(ktime_t *device,
-  * clock. Fill the cross timestamp information and report it back to the
-  * caller.
-  *
-- * This is only valid for E822 and E823 devices which have support for
-- * generating the cross timestamp via PCIe PTM.
-- *
-  * In order to correctly correlate the ART timestamp back to the TSC time, the
-  * CPU must have X86_FEATURE_TSC_KNOWN_FREQ.
-+ *
-+ * Return: zero on success, or a negative error code on failure.
-  */
--static int
--ice_ptp_getcrosststamp_e82x(struct ptp_clock_info *info,
--			    struct system_device_crosststamp *cts)
-+static int ice_ptp_getcrosststamp(struct ptp_clock_info *info,
-+				  struct system_device_crosststamp *cts)
+diff --git a/drivers/nvme/host/tcp.c b/drivers/nvme/host/tcp.c
+index 8b5e4327fe83..4b7a897897fc 100644
+--- a/drivers/nvme/host/tcp.c
++++ b/drivers/nvme/host/tcp.c
+@@ -506,7 +506,7 @@ static void nvme_tcp_exit_request(struct blk_mq_tag_set *set,
  {
- 	struct ice_pf *pf = ptp_info_to_pf(info);
-+	struct ice_crosststamp_ctx ctx = {};
+ 	struct nvme_tcp_request *req = blk_mq_rq_to_pdu(rq);
  
--	return get_device_system_crosststamp(ice_ptp_get_syncdevicetime,
--					     pf, NULL, cts);
-+	ctx.pf = pf;
-+
-+	switch (pf->hw.ptp.phy_model) {
-+	case ICE_PHY_E82X:
-+		ctx.cfg = &ice_crosststamp_cfg_e82x;
-+		break;
-+	case ICE_PHY_E830:
-+		ctx.cfg = &ice_crosststamp_cfg_e830;
-+		break;
-+	default:
-+		return -EOPNOTSUPP;
-+	}
-+
-+	return get_device_system_crosststamp(ice_capture_crosststamp, &ctx,
-+					     &ctx.snapshot, cts);
- }
--#endif /* CONFIG_ICE_HWTS */
- 
-+#endif /* CONFIG_ICE_HWTS */
- /**
-  * ice_ptp_get_ts_config - ioctl interface to read the timestamping config
-  * @pf: Board private structure
-@@ -2412,7 +2488,7 @@ static void ice_ptp_set_funcs_e82x(struct ice_pf *pf)
- #ifdef CONFIG_ICE_HWTS
- 	if (boot_cpu_has(X86_FEATURE_ART) &&
- 	    boot_cpu_has(X86_FEATURE_TSC_KNOWN_FREQ))
--		pf->ptp.info.getcrosststamp = ice_ptp_getcrosststamp_e82x;
-+		pf->ptp.info.getcrosststamp = ice_ptp_getcrosststamp;
- 
- #endif /* CONFIG_ICE_HWTS */
- 	if (ice_is_e825c(&pf->hw)) {
-@@ -2447,6 +2523,28 @@ static void ice_ptp_set_funcs_e810(struct ice_pf *pf)
- 	ice_ptp_setup_pin_cfg(pf);
+-	page_frag_free(req->pdu);
++	page_frag_free_va(req->pdu);
  }
  
-+/**
-+ * ice_ptp_set_funcs_e830 - Set specialized functions for E830 support
-+ * @pf: Board private structure
-+ *
-+ * Assign functions to the PTP capabiltiies structure for E830 devices.
-+ * Functions which operate across all device families should be set directly
-+ * in ice_ptp_set_caps. Only add functions here which are distinct for E830
-+ * devices.
-+ */
-+static void ice_ptp_set_funcs_e830(struct ice_pf *pf)
-+{
-+#ifdef CONFIG_ICE_HWTS
-+	if (pcie_ptm_enabled(pf->pdev) &&
-+	    boot_cpu_has(X86_FEATURE_ART) &&
-+	    boot_cpu_has(X86_FEATURE_TSC_KNOWN_FREQ))
-+		pf->ptp.info.getcrosststamp = ice_ptp_getcrosststamp;
-+#endif /* CONFIG_ICE_HWTS */
-+
-+	/* Rest of the config is the same as base E810 */
-+	ice_ptp_set_funcs_e810(pf);
-+}
-+
- /**
-  * ice_ptp_set_caps - Set PTP capabilities
-  * @pf: Board private structure
-@@ -2469,8 +2567,10 @@ static void ice_ptp_set_caps(struct ice_pf *pf)
- 	info->enable = ice_ptp_gpio_enable;
- 	info->verify = ice_verify_pin;
+ static int nvme_tcp_init_request(struct blk_mq_tag_set *set,
+@@ -520,7 +520,7 @@ static int nvme_tcp_init_request(struct blk_mq_tag_set *set,
+ 	struct nvme_tcp_queue *queue = &ctrl->queues[queue_idx];
+ 	u8 hdgst = nvme_tcp_hdgst_len(queue);
  
--	if (ice_is_e810(&pf->hw) || ice_is_e830(&pf->hw))
-+	if (ice_is_e810(&pf->hw))
- 		ice_ptp_set_funcs_e810(pf);
-+	if (ice_is_e830(&pf->hw))
-+		ice_ptp_set_funcs_e830(pf);
- 	else
- 		ice_ptp_set_funcs_e82x(pf);
+-	req->pdu = page_frag_alloc(&queue->pf_cache,
++	req->pdu = page_frag_alloc_va(&queue->pf_cache,
+ 		sizeof(struct nvme_tcp_cmd_pdu) + hdgst,
+ 		GFP_KERNEL | __GFP_ZERO);
+ 	if (!req->pdu)
+@@ -1337,7 +1337,7 @@ static void nvme_tcp_free_async_req(struct nvme_tcp_ctrl *ctrl)
+ {
+ 	struct nvme_tcp_request *async = &ctrl->async_req;
+ 
+-	page_frag_free(async->pdu);
++	page_frag_free_va(async->pdu);
  }
+ 
+ static int nvme_tcp_alloc_async_req(struct nvme_tcp_ctrl *ctrl)
+@@ -1346,7 +1346,7 @@ static int nvme_tcp_alloc_async_req(struct nvme_tcp_ctrl *ctrl)
+ 	struct nvme_tcp_request *async = &ctrl->async_req;
+ 	u8 hdgst = nvme_tcp_hdgst_len(queue);
+ 
+-	async->pdu = page_frag_alloc(&queue->pf_cache,
++	async->pdu = page_frag_alloc_va(&queue->pf_cache,
+ 		sizeof(struct nvme_tcp_cmd_pdu) + hdgst,
+ 		GFP_KERNEL | __GFP_ZERO);
+ 	if (!async->pdu)
+diff --git a/drivers/nvme/target/tcp.c b/drivers/nvme/target/tcp.c
+index 380f22ee3ebb..bea3aa79ef43 100644
+--- a/drivers/nvme/target/tcp.c
++++ b/drivers/nvme/target/tcp.c
+@@ -1463,24 +1463,24 @@ static int nvmet_tcp_alloc_cmd(struct nvmet_tcp_queue *queue,
+ 	c->queue = queue;
+ 	c->req.port = queue->port->nport;
+ 
+-	c->cmd_pdu = page_frag_alloc(&queue->pf_cache,
++	c->cmd_pdu = page_frag_alloc_va(&queue->pf_cache,
+ 			sizeof(*c->cmd_pdu) + hdgst, GFP_KERNEL | __GFP_ZERO);
+ 	if (!c->cmd_pdu)
+ 		return -ENOMEM;
+ 	c->req.cmd = &c->cmd_pdu->cmd;
+ 
+-	c->rsp_pdu = page_frag_alloc(&queue->pf_cache,
++	c->rsp_pdu = page_frag_alloc_va(&queue->pf_cache,
+ 			sizeof(*c->rsp_pdu) + hdgst, GFP_KERNEL | __GFP_ZERO);
+ 	if (!c->rsp_pdu)
+ 		goto out_free_cmd;
+ 	c->req.cqe = &c->rsp_pdu->cqe;
+ 
+-	c->data_pdu = page_frag_alloc(&queue->pf_cache,
++	c->data_pdu = page_frag_alloc_va(&queue->pf_cache,
+ 			sizeof(*c->data_pdu) + hdgst, GFP_KERNEL | __GFP_ZERO);
+ 	if (!c->data_pdu)
+ 		goto out_free_rsp;
+ 
+-	c->r2t_pdu = page_frag_alloc(&queue->pf_cache,
++	c->r2t_pdu = page_frag_alloc_va(&queue->pf_cache,
+ 			sizeof(*c->r2t_pdu) + hdgst, GFP_KERNEL | __GFP_ZERO);
+ 	if (!c->r2t_pdu)
+ 		goto out_free_data;
+@@ -1495,20 +1495,20 @@ static int nvmet_tcp_alloc_cmd(struct nvmet_tcp_queue *queue,
+ 
+ 	return 0;
+ out_free_data:
+-	page_frag_free(c->data_pdu);
++	page_frag_free_va(c->data_pdu);
+ out_free_rsp:
+-	page_frag_free(c->rsp_pdu);
++	page_frag_free_va(c->rsp_pdu);
+ out_free_cmd:
+-	page_frag_free(c->cmd_pdu);
++	page_frag_free_va(c->cmd_pdu);
+ 	return -ENOMEM;
+ }
+ 
+ static void nvmet_tcp_free_cmd(struct nvmet_tcp_cmd *c)
+ {
+-	page_frag_free(c->r2t_pdu);
+-	page_frag_free(c->data_pdu);
+-	page_frag_free(c->rsp_pdu);
+-	page_frag_free(c->cmd_pdu);
++	page_frag_free_va(c->r2t_pdu);
++	page_frag_free_va(c->data_pdu);
++	page_frag_free_va(c->rsp_pdu);
++	page_frag_free_va(c->cmd_pdu);
+ }
+ 
+ static int nvmet_tcp_alloc_cmds(struct nvmet_tcp_queue *queue)
+diff --git a/drivers/vhost/net.c b/drivers/vhost/net.c
+index f16279351db5..6691fac01e0d 100644
+--- a/drivers/vhost/net.c
++++ b/drivers/vhost/net.c
+@@ -686,8 +686,8 @@ static int vhost_net_build_xdp(struct vhost_net_virtqueue *nvq,
+ 		return -ENOSPC;
+ 
+ 	buflen += SKB_DATA_ALIGN(len + pad);
+-	buf = page_frag_alloc_align(&net->pf_cache, buflen, GFP_KERNEL,
+-				    SMP_CACHE_BYTES);
++	buf = page_frag_alloc_va_align(&net->pf_cache, buflen, GFP_KERNEL,
++				       SMP_CACHE_BYTES);
+ 	if (unlikely(!buf))
+ 		return -ENOMEM;
+ 
+@@ -734,7 +734,7 @@ static int vhost_net_build_xdp(struct vhost_net_virtqueue *nvq,
+ 	return 0;
+ 
+ err:
+-	page_frag_free(buf);
++	page_frag_free_va(buf);
+ 	return ret;
+ }
+ 
+diff --git a/include/linux/page_frag_cache.h b/include/linux/page_frag_cache.h
+index ed8bacbb877b..185d875e3e6b 100644
+--- a/include/linux/page_frag_cache.h
++++ b/include/linux/page_frag_cache.h
+@@ -28,23 +28,24 @@ struct page_frag_cache {
+ 
+ void page_frag_cache_drain(struct page_frag_cache *nc);
+ void __page_frag_cache_drain(struct page *page, unsigned int count);
+-void *__page_frag_alloc_align(struct page_frag_cache *nc, unsigned int fragsz,
+-			      gfp_t gfp_mask, unsigned int align_mask);
++void *__page_frag_alloc_va_align(struct page_frag_cache *nc,
++				 unsigned int fragsz, gfp_t gfp_mask,
++				 unsigned int align_mask);
+ 
+-static inline void *page_frag_alloc_align(struct page_frag_cache *nc,
+-					  unsigned int fragsz, gfp_t gfp_mask,
+-					  unsigned int align)
++static inline void *page_frag_alloc_va_align(struct page_frag_cache *nc,
++					     unsigned int fragsz,
++					     gfp_t gfp_mask, unsigned int align)
+ {
+ 	WARN_ON_ONCE(!is_power_of_2(align));
+-	return __page_frag_alloc_align(nc, fragsz, gfp_mask, -align);
++	return __page_frag_alloc_va_align(nc, fragsz, gfp_mask, -align);
+ }
+ 
+-static inline void *page_frag_alloc(struct page_frag_cache *nc,
+-				    unsigned int fragsz, gfp_t gfp_mask)
++static inline void *page_frag_alloc_va(struct page_frag_cache *nc,
++				       unsigned int fragsz, gfp_t gfp_mask)
+ {
+-	return __page_frag_alloc_align(nc, fragsz, gfp_mask, ~0u);
++	return __page_frag_alloc_va_align(nc, fragsz, gfp_mask, ~0u);
+ }
+ 
+-void page_frag_free(void *addr);
++void page_frag_free_va(void *addr);
+ 
+ #endif
+diff --git a/include/linux/skbuff.h b/include/linux/skbuff.h
+index e0e2be5194fb..fb74725d1af8 100644
+--- a/include/linux/skbuff.h
++++ b/include/linux/skbuff.h
+@@ -3381,7 +3381,7 @@ static inline struct sk_buff *netdev_alloc_skb_ip_align(struct net_device *dev,
+ 
+ static inline void skb_free_frag(void *addr)
+ {
+-	page_frag_free(addr);
++	page_frag_free_va(addr);
+ }
+ 
+ void *__napi_alloc_frag_align(unsigned int fragsz, unsigned int align_mask);
+diff --git a/kernel/bpf/cpumap.c b/kernel/bpf/cpumap.c
+index fbdf5a1aabfe..3b70b6b071b9 100644
+--- a/kernel/bpf/cpumap.c
++++ b/kernel/bpf/cpumap.c
+@@ -323,7 +323,7 @@ static int cpu_map_kthread_run(void *data)
+ 
+ 			/* Bring struct page memory area to curr CPU. Read by
+ 			 * build_skb_around via page_is_pfmemalloc(), and when
+-			 * freed written by page_frag_free call.
++			 * freed written by page_frag_free_va call.
+ 			 */
+ 			prefetchw(page);
+ 		}
+diff --git a/mm/page_frag_cache.c b/mm/page_frag_cache.c
+index ef0a02f12acc..373f3bc29fcb 100644
+--- a/mm/page_frag_cache.c
++++ b/mm/page_frag_cache.c
+@@ -69,9 +69,9 @@ void __page_frag_cache_drain(struct page *page, unsigned int count)
+ }
+ EXPORT_SYMBOL(__page_frag_cache_drain);
+ 
+-void *__page_frag_alloc_align(struct page_frag_cache *nc,
+-			      unsigned int fragsz, gfp_t gfp_mask,
+-			      unsigned int align_mask)
++void *__page_frag_alloc_va_align(struct page_frag_cache *nc,
++				 unsigned int fragsz, gfp_t gfp_mask,
++				 unsigned int align_mask)
+ {
+ 	int aligned_remaining, remaining;
+ 	unsigned int size = PAGE_SIZE;
+@@ -144,16 +144,16 @@ void *__page_frag_alloc_align(struct page_frag_cache *nc,
+ 
+ 	return nc->va + (size - aligned_remaining);
+ }
+-EXPORT_SYMBOL(__page_frag_alloc_align);
++EXPORT_SYMBOL(__page_frag_alloc_va_align);
+ 
+ /*
+  * Frees a page fragment allocated out of either a compound or order 0 page.
+  */
+-void page_frag_free(void *addr)
++void page_frag_free_va(void *addr)
+ {
+ 	struct page *page = virt_to_head_page(addr);
+ 
+ 	if (unlikely(put_page_testzero(page)))
+ 		free_unref_page(page, compound_order(page));
+ }
+-EXPORT_SYMBOL(page_frag_free);
++EXPORT_SYMBOL(page_frag_free_va);
+diff --git a/mm/page_frag_test.c b/mm/page_frag_test.c
+index 755d66af9fd4..50166a059c7d 100644
+--- a/mm/page_frag_test.c
++++ b/mm/page_frag_test.c
+@@ -276,7 +276,7 @@ static int page_frag_pop_thread(void *arg)
+ 
+ 		if (obj) {
+ 			nr--;
+-			page_frag_free(obj);
++			page_frag_free_va(obj);
+ 		} else {
+ 			cond_resched();
+ 		}
+@@ -304,17 +304,20 @@ static int page_frag_push_thread(void *arg)
+ 		int ret;
+ 
+ 		if (test_align)
+-			va = page_frag_alloc_align(&test_frag, test_alloc_len,
+-						   GFP_KERNEL, SMP_CACHE_BYTES);
++			va = page_frag_alloc_va_align(&test_frag,
++						      test_alloc_len,
++						      GFP_KERNEL,
++						      SMP_CACHE_BYTES);
+ 		else
+-			va = page_frag_alloc(&test_frag, test_alloc_len, GFP_KERNEL);
++			va = page_frag_alloc_va(&test_frag, test_alloc_len,
++						GFP_KERNEL);
+ 
+ 		if (!va)
+ 			continue;
+ 
+ 		ret = objpool_push(va, pool);
+ 		if (ret) {
+-			page_frag_free(va);
++			page_frag_free_va(va);
+ 			cond_resched();
+ 		} else {
+ 			nr--;
+diff --git a/net/core/skbuff.c b/net/core/skbuff.c
+index 83f8cd8aa2d1..4b8acd967793 100644
+--- a/net/core/skbuff.c
++++ b/net/core/skbuff.c
+@@ -314,8 +314,8 @@ void *__napi_alloc_frag_align(unsigned int fragsz, unsigned int align_mask)
+ 	fragsz = SKB_DATA_ALIGN(fragsz);
+ 
+ 	local_lock_nested_bh(&napi_alloc_cache.bh_lock);
+-	data = __page_frag_alloc_align(&nc->page, fragsz, GFP_ATOMIC,
+-				       align_mask);
++	data = __page_frag_alloc_va_align(&nc->page, fragsz, GFP_ATOMIC,
++					  align_mask);
+ 	local_unlock_nested_bh(&napi_alloc_cache.bh_lock);
+ 	return data;
+ 
+@@ -330,8 +330,8 @@ void *__netdev_alloc_frag_align(unsigned int fragsz, unsigned int align_mask)
+ 		struct page_frag_cache *nc = this_cpu_ptr(&netdev_alloc_cache);
+ 
+ 		fragsz = SKB_DATA_ALIGN(fragsz);
+-		data = __page_frag_alloc_align(nc, fragsz, GFP_ATOMIC,
+-					       align_mask);
++		data = __page_frag_alloc_va_align(nc, fragsz, GFP_ATOMIC,
++						  align_mask);
+ 	} else {
+ 		local_bh_disable();
+ 		data = __napi_alloc_frag_align(fragsz, align_mask);
+@@ -748,14 +748,14 @@ struct sk_buff *__netdev_alloc_skb(struct net_device *dev, unsigned int len,
+ 
+ 	if (in_hardirq() || irqs_disabled()) {
+ 		nc = this_cpu_ptr(&netdev_alloc_cache);
+-		data = page_frag_alloc(nc, len, gfp_mask);
++		data = page_frag_alloc_va(nc, len, gfp_mask);
+ 		pfmemalloc = nc->pfmemalloc;
+ 	} else {
+ 		local_bh_disable();
+ 		local_lock_nested_bh(&napi_alloc_cache.bh_lock);
+ 
+ 		nc = this_cpu_ptr(&napi_alloc_cache.page);
+-		data = page_frag_alloc(nc, len, gfp_mask);
++		data = page_frag_alloc_va(nc, len, gfp_mask);
+ 		pfmemalloc = nc->pfmemalloc;
+ 
+ 		local_unlock_nested_bh(&napi_alloc_cache.bh_lock);
+@@ -845,7 +845,7 @@ struct sk_buff *napi_alloc_skb(struct napi_struct *napi, unsigned int len)
+ 	} else {
+ 		len = SKB_HEAD_ALIGN(len);
+ 
+-		data = page_frag_alloc(&nc->page, len, gfp_mask);
++		data = page_frag_alloc_va(&nc->page, len, gfp_mask);
+ 		pfmemalloc = nc->page.pfmemalloc;
+ 	}
+ 	local_unlock_nested_bh(&napi_alloc_cache.bh_lock);
+diff --git a/net/core/xdp.c b/net/core/xdp.c
+index 022c12059cf2..23b318459a01 100644
+--- a/net/core/xdp.c
++++ b/net/core/xdp.c
+@@ -389,7 +389,7 @@ void __xdp_return(void *data, struct xdp_mem_info *mem, bool napi_direct,
+ 		page_pool_put_full_page(page->pp, page, napi_direct);
+ 		break;
+ 	case MEM_TYPE_PAGE_SHARED:
+-		page_frag_free(data);
++		page_frag_free_va(data);
+ 		break;
+ 	case MEM_TYPE_PAGE_ORDER0:
+ 		page = virt_to_page(data); /* Assumes order0 page*/
+diff --git a/net/rxrpc/txbuf.c b/net/rxrpc/txbuf.c
+index c3913d8a50d3..dccb0353ee84 100644
+--- a/net/rxrpc/txbuf.c
++++ b/net/rxrpc/txbuf.c
+@@ -33,8 +33,8 @@ struct rxrpc_txbuf *rxrpc_alloc_data_txbuf(struct rxrpc_call *call, size_t data_
+ 
+ 	data_align = umax(data_align, L1_CACHE_BYTES);
+ 	mutex_lock(&call->conn->tx_data_alloc_lock);
+-	buf = page_frag_alloc_align(&call->conn->tx_data_alloc, total, gfp,
+-				    data_align);
++	buf = page_frag_alloc_va_align(&call->conn->tx_data_alloc, total, gfp,
++				       data_align);
+ 	mutex_unlock(&call->conn->tx_data_alloc_lock);
+ 	if (!buf) {
+ 		kfree(txb);
+@@ -96,17 +96,18 @@ struct rxrpc_txbuf *rxrpc_alloc_ack_txbuf(struct rxrpc_call *call, size_t sack_s
+ 	if (!txb)
+ 		return NULL;
+ 
+-	buf = page_frag_alloc(&call->local->tx_alloc,
+-			      sizeof(*whdr) + sizeof(*ack) + 1 + 3 + sizeof(*trailer), gfp);
++	buf = page_frag_alloc_va(&call->local->tx_alloc,
++				 sizeof(*whdr) + sizeof(*ack) + 1 + 3 + sizeof(*trailer), gfp);
+ 	if (!buf) {
+ 		kfree(txb);
+ 		return NULL;
+ 	}
+ 
+ 	if (sack_size) {
+-		buf2 = page_frag_alloc(&call->local->tx_alloc, sack_size, gfp);
++		buf2 = page_frag_alloc_va(&call->local->tx_alloc, sack_size,
++					  gfp);
+ 		if (!buf2) {
+-			page_frag_free(buf);
++			page_frag_free_va(buf);
+ 			kfree(txb);
+ 			return NULL;
+ 		}
+@@ -180,7 +181,7 @@ static void rxrpc_free_txbuf(struct rxrpc_txbuf *txb)
+ 			  rxrpc_txbuf_free);
+ 	for (i = 0; i < txb->nr_kvec; i++)
+ 		if (txb->kvec[i].iov_base)
+-			page_frag_free(txb->kvec[i].iov_base);
++			page_frag_free_va(txb->kvec[i].iov_base);
+ 	kfree(txb);
+ 	atomic_dec(&rxrpc_nr_txbuf);
+ }
+diff --git a/net/sunrpc/svcsock.c b/net/sunrpc/svcsock.c
+index 6b3f01beb294..42d20412c1c3 100644
+--- a/net/sunrpc/svcsock.c
++++ b/net/sunrpc/svcsock.c
+@@ -1222,8 +1222,8 @@ static int svc_tcp_sendmsg(struct svc_sock *svsk, struct svc_rqst *rqstp,
+ 	/* The stream record marker is copied into a temporary page
+ 	 * fragment buffer so that it can be included in rq_bvec.
+ 	 */
+-	buf = page_frag_alloc(&svsk->sk_frag_cache, sizeof(marker),
+-			      GFP_KERNEL);
++	buf = page_frag_alloc_va(&svsk->sk_frag_cache, sizeof(marker),
++				 GFP_KERNEL);
+ 	if (!buf)
+ 		return -ENOMEM;
+ 	memcpy(buf, &marker, sizeof(marker));
+@@ -1235,7 +1235,7 @@ static int svc_tcp_sendmsg(struct svc_sock *svsk, struct svc_rqst *rqstp,
+ 	iov_iter_bvec(&msg.msg_iter, ITER_SOURCE, rqstp->rq_bvec,
+ 		      1 + count, sizeof(marker) + rqstp->rq_res.len);
+ 	ret = sock_sendmsg(svsk->sk_sock, &msg);
+-	page_frag_free(buf);
++	page_frag_free_va(buf);
+ 	if (ret < 0)
+ 		return ret;
+ 	*sentp += ret;
 -- 
-2.45.2
+2.33.0
 
