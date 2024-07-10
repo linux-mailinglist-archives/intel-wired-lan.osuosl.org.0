@@ -2,68 +2,68 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 74C4E92DD05
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 11 Jul 2024 01:47:04 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5D7BC92DD17
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 11 Jul 2024 01:48:49 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id F1390415BB;
-	Wed, 10 Jul 2024 23:47:02 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 07458408BD;
+	Wed, 10 Jul 2024 23:48:48 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id gDF4stxLCRvj; Wed, 10 Jul 2024 23:47:02 +0000 (UTC)
+ id TB-0i9yiQDpQ; Wed, 10 Jul 2024 23:48:47 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D6DFB415CD
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B747640785
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1720655221;
-	bh=wDK3WhMNlc2eWEPe615uKV2rKSM/5UZvqVxLFNJVzU0=;
+	s=default; t=1720655326;
+	bh=Now8IkmOTvTA7httiKZUAsK4raFt7RPfH61hzrUFdzs=;
 	h=From:To:In-Reply-To:References:Date:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=QqYvMVggRUKpHHKk9lIFOHa9gkrLxAPxTt9GmAO9NnYpXtGI0wOPTvjcjHh3NI7OQ
-	 lQuVEZ8PlsnTb4Z7jYaDqK/PGmoDUWV57osXRupxxXt421rq6II7ZGoGIzsppLYSN+
-	 1OWQtiPYzxG17X+498sYza37e2e5nA+S+8rymCNoyTQ8wsNjyLjS6GP9ybRqmBE/0J
-	 Ls6OHASqESQ/CJvSzl+XcEMcjdgk7/7fnjWvTPJBUI1xPBhpD2I8PECR1G/dGiZJhU
-	 dTD1bQtrBA0+E7r6fTuTPJgJccaceyiSTU+7IOjHADVKN4tMtDuWnbV1xzjFSLUtbg
-	 7o2SWjfJ/uYKw==
+	b=6IrN+J3EKwgTfl9pM4CArhtTUWFjn6tDcrIICerz5bWNIiUteIpBa6tBL4L1+7AV5
+	 ljmE70PJn/CoaP3S1FxMZ2an0TXjsQPiDCbYk9xNV8Zxw4hovXJivYIDX9U61z0VXy
+	 aoSVmC2glQ/SNyoE5FM5nPEdGztS0ZyhNSSTLYDbmdq4WMBe8vVpOQk1HB2nJ209oN
+	 lElrqDH29RqAqoNxU/KizQddiN7OHqafBrGj244Rk4otPVi9gZmVfiHoc0cCiUCAib
+	 AcoAIu+T5yV/9H2qw0D/gwyRQ7ThOXJ8pCy0XPO5uF4MVWKwrEKckMQxBsssKb/eNF
+	 ZKKRAdxiN3mKQ==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id D6DFB415CD;
-	Wed, 10 Jul 2024 23:47:01 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id B747640785;
+	Wed, 10 Jul 2024 23:48:46 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 3F65A1BF588
- for <intel-wired-lan@lists.osuosl.org>; Wed, 10 Jul 2024 23:47:00 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 488511BF588
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 10 Jul 2024 23:48:44 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 2ACAE405F8
- for <intel-wired-lan@lists.osuosl.org>; Wed, 10 Jul 2024 23:47:00 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 4036B83EC3
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 10 Jul 2024 23:48:44 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id BlcVcddkEZXa for <intel-wired-lan@lists.osuosl.org>;
- Wed, 10 Jul 2024 23:46:59 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.15;
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id KcTeLhUs1N65 for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 10 Jul 2024 23:48:43 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.9;
  helo=mgamail.intel.com; envelope-from=vinicius.gomes@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 033A440154
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 033A440154
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.15])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 033A440154
- for <intel-wired-lan@lists.osuosl.org>; Wed, 10 Jul 2024 23:46:58 +0000 (UTC)
-X-CSE-ConnectionGUID: AKSfdjmbQNGDEdjR8yEy9g==
-X-CSE-MsgGUID: tgwjUDpOSbO9BntPYE5Rdg==
-X-IronPort-AV: E=McAfee;i="6700,10204,11129"; a="18152047"
-X-IronPort-AV: E=Sophos;i="6.09,198,1716274800"; d="scan'208";a="18152047"
-Received: from fmviesa008.fm.intel.com ([10.60.135.148])
- by fmvoesa109.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 10 Jul 2024 16:46:59 -0700
-X-CSE-ConnectionGUID: UTZflU3SSXC3Cwd1Y5qXtQ==
-X-CSE-MsgGUID: FyQKValqTn6wDncF77Auzw==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 65BA480D77
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 65BA480D77
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.9])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 65BA480D77
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 10 Jul 2024 23:48:42 +0000 (UTC)
+X-CSE-ConnectionGUID: FzTN2tg6SgScgJya2z1blw==
+X-CSE-MsgGUID: zGpBfGkJT0K7mbGdeNKs8w==
+X-IronPort-AV: E=McAfee;i="6700,10204,11129"; a="40527433"
+X-IronPort-AV: E=Sophos;i="6.09,198,1716274800"; d="scan'208";a="40527433"
+Received: from fmviesa002.fm.intel.com ([10.60.135.142])
+ by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 10 Jul 2024 16:48:42 -0700
+X-CSE-ConnectionGUID: pqwBzH28Rmumt/CFRUy/rg==
+X-CSE-MsgGUID: BURFX1PjQOGgOobF6ZA7XA==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.09,198,1716274800"; d="scan'208";a="48345030"
+X-IronPort-AV: E=Sophos;i="6.09,198,1716274800"; d="scan'208";a="71596699"
 Received: from bmurrell-mobl.amr.corp.intel.com (HELO vcostago-mobl3)
  ([10.124.221.70])
- by fmviesa008-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 10 Jul 2024 16:46:58 -0700
+ by fmviesa002-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 10 Jul 2024 16:48:41 -0700
 From: Vinicius Costa Gomes <vinicius.gomes@intel.com>
 To: Faizal Rahim <faizal.abdul.rahim@linux.intel.com>, "David S . Miller"
  <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Jakub Kicinski
@@ -72,35 +72,35 @@ To: Faizal Rahim <faizal.abdul.rahim@linux.intel.com>, "David S . Miller"
  Nguyen <anthony.l.nguyen@intel.com>, Simon Horman <horms@kernel.org>,
  Richard Cochran <richardcochran@gmail.com>, Paul Menzel
  <pmenzel@molgen.mpg.de>, Sasha Neftin <sasha.neftin@intel.com>
-In-Reply-To: <20240707125318.3425097-2-faizal.abdul.rahim@linux.intel.com>
+In-Reply-To: <20240707125318.3425097-4-faizal.abdul.rahim@linux.intel.com>
 References: <20240707125318.3425097-1-faizal.abdul.rahim@linux.intel.com>
- <20240707125318.3425097-2-faizal.abdul.rahim@linux.intel.com>
-Date: Wed, 10 Jul 2024 16:46:57 -0700
-Message-ID: <87ikxcu7wu.fsf@intel.com>
+ <20240707125318.3425097-4-faizal.abdul.rahim@linux.intel.com>
+Date: Wed, 10 Jul 2024 16:48:41 -0700
+Message-ID: <87a5iou7ty.fsf@intel.com>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1720655219; x=1752191219;
+ t=1720655323; x=1752191323;
  h=from:to:cc:subject:in-reply-to:references:date:
  message-id:mime-version;
- bh=QB8/3eOL68A8pTiMnSt7yeyEfnMWPcIv2g/lKtnx46A=;
- b=e+/jpVTFG4zBNQsP3kPeDG+aPwDxEMGafoBiW21qCDNFd0zLilUwqbmW
- Gv7w9Dc95mS6vMq2HF0wVZ4DN88GaEJxDRclSH7PKZvdXAO1q2PCmmRrL
- jNopCR2j8d9nCJKL93h9CJNasytxAHSlWBfih43lZjsnZQ5TRvd828bn4
- 8rWy/+gmov8zpbjaBGhp6w9mcdBXqbgW3oCEB0uKq9U3/tdmduCjPrD2h
- S2g7OmuETnXUcBn91WJr80Z78EfXny0/wn5qyY4iS70yT4gfOUkyXwJ2Y
- 6TCSDt0Djuj3eeIL6ZH6vtx5+36SQRQRRresfA8aCrffFPTfsccml6FG2
- g==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ bh=yWzx2TsHnZ+PLHk0dmdvk2Z399kXYrvS0ZYOZ6bSS2A=;
+ b=DWS4TtL2eO4USGau5bNJW+lcHTj3CTB+bIsakOIANYWf+Q/5SFl35ScS
+ b4/2ppxj22+MFmaHOxvI43kaWEPmzj0NgY/2pViYa2y8kk1icG4VUeeO6
+ u4/QKX8kTqbbEBG/RGn8L9dAVlS1iYs40gbswFhmN9EOn2qtrPpdJW5Ka
+ Msk6eo1yFXJTnUiHfPey+x6nqCq3UT4j/v4ewg9Nrzw15lzzJie0AAUoo
+ 7l759uo5NCZCtQvo9vgDpO2dqHeWZs4fOqih3MNI22U4ZXlYsyNJ4+qjp
+ OnliRgIHt1vQEcH1F1DHuEUUSfcCE5aOANnRmbf2xtY3LIunBxg/Jfm97
+ A==;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=e+/jpVTF
-Subject: Re: [Intel-wired-lan] [PATCH iwl-net v2 1/3] igc: Fix
- qbv_config_change_errors logics
+ header.s=Intel header.b=DWS4TtL2
+Subject: Re: [Intel-wired-lan] [PATCH iwl-net v2 3/3] igc: Fix qbv tx
+ latency by setting gtxoffset
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -121,52 +121,93 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 Faizal Rahim <faizal.abdul.rahim@linux.intel.com> writes:
 
-> When user issues these cmds:
-> 1. Either a) or b)
->    a) mqprio with hardware offload disabled
->    b) taprio with txtime-assist feature enabled
-> 2. etf
-> 3. tc qdisc delete
-> 4. taprio with base time in the past
+> A large tx latency issue was discovered during testing when only QBV was
+> enabled. The issue occurs because gtxoffset was not set when QBV is
+> active, it was only set when launch time is active.
 >
-> At step 4, qbv_config_change_errors wrongly increased by 1.
+> The patch "igc: Correct the launchtime offset" only sets gtxoffset when
+> the launchtime_enable field is set by the user. Enabling launchtime_enable
+> ultimately sets the register IGC_TXQCTL_QUEUE_MODE_LAUNCHT (referred to as
+> LaunchT in the SW user manual).
 >
-> Excerpt from IEEE 802.1Q-2018 8.6.9.3.1:
-> "If AdminBaseTime specifies a time in the past, and the current schedule
-> is running, then: Increment ConfigChangeError counter"
+> Section 7.5.2.6 of the IGC i225/6 SW User Manual Rev 1.2.4 states:
+> "The latency between transmission scheduling (launch time) and the
+> time the packet is transmitted to the network is listed in Table 7-61."
 >
-> qbv_config_change_errors should only increase if base time is in the past
-> and no taprio is active. In user perspective, taprio was not active when
-> first triggered at step 4. However, i225/6 reuses qbv for etf, so qbv is
-> enabled with a dummy schedule at step 2 where it enters
-> igc_tsn_enable_offload() and qbv_count got incremented to 1. At step 4, it
-> enters igc_tsn_enable_offload() again, qbv_count is incremented to 2.
-> Because taprio is running, tc_setup_type is TC_SETUP_QDISC_ETF and
-> qbv_count > 1, qbv_config_change_errors value got incremented.
+> However, the patch misinterprets the phrase "launch time" in that section
+> by assuming it specifically refers to the LaunchT register, whereas it
+> actually denotes the generic term for when a packet is released from the
+> internal buffer to the MAC transmit logic.
 >
-> This issue happens due to reliance on qbv_count field where a non-zero
-> value indicates that taprio is running. But qbv_count increases
-> regardless if taprio is triggered by user or by other tsn feature. It does
-> not align with qbv_config_change_errors expectation where it is only
-> concerned with taprio triggered by user.
+> This launch time, as per that section, also implicitly refers to the QBV
+> gate open time, where a packet waits in the buffer for the QBV gate to
+> open. Therefore, latency applies whenever QBV is in use. TSN features such
+> as QBU and QAV reuse QBV, making the latency universal to TSN features.
 >
-> Fixing this by relocating the qbv_config_change_errors logic to
-> igc_save_qbv_schedule(), eliminating reliance on qbv_count and its
-> inaccuracies from i225/6's multiple uses of qbv feature for other TSN
-> features.
+> Discussed with i226 HW owner (Shalev, Avi) and we were in agreement that
+> the term "launch time" used in Section 7.5.2.6 is not clear and can be
+> easily misinterpreted. Avi will update this section to:
+> "When TQAVCTRL.TRANSMIT_MODE = TSN, the latency between transmission
+> scheduling and the time the packet is transmitted to the network is listed
+> in Table 7-61."
 >
-> The new function created: igc_tsn_is_taprio_activated_by_user() uses
-> taprio_offload_enable field to indicate that the current running taprio
-> was triggered by user, instead of triggered by non-qbv feature like etf.
+> Fix this issue by using igc_tsn_is_tx_mode_in_tsn() as a condition to
+> write to gtxoffset, aligning with the newly updated SW User Manual.
 >
-> Fixes: ae4fe4698300 ("igc: Add qbv_config_change_errors counter")
+> Tested:
+> 1. Enrol taprio on talker board
+>    base-time 0
+>    cycle-time 1000000
+>    flags 0x2
+>    index 0 cmd S gatemask 0x1 interval1
+>    index 0 cmd S gatemask 0x1 interval2
+>
+>    Note:
+>    interval1 = interval for a 64 bytes packet to go through
+>    interval2 = cycle-time - interval1
+>
+> 2. Take tcpdump on listener board
+>
+> 3. Use udp tai app on talker to send packets to listener
+>
+> 4. Check the timestamp on listener via wireshark
+>
+> Test Result:
+> 100 Mbps: 113 ~193 ns
+> 1000 Mbps: 52 ~ 84 ns
+> 2500 Mbps: 95 ~ 223 ns
+>
+> Note that the test result is similar to the patch "igc: Correct the
+> launchtime offset".
+>
+> Fixes: 790835fcc0cb ("igc: Correct the launchtime offset")
 > Signed-off-by: Faizal Rahim <faizal.abdul.rahim@linux.intel.com>
 > Reviewed-by: Simon Horman <horms@kernel.org>
 > ---
 
-Looks good:
+Good catch.
 
 Acked-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
+
+>  drivers/net/ethernet/intel/igc/igc_tsn.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/drivers/net/ethernet/intel/igc/igc_tsn.c b/drivers/net/ethernet/intel/igc/igc_tsn.c
+> index 9fafe275f30f..efe13a9350ca 100644
+> --- a/drivers/net/ethernet/intel/igc/igc_tsn.c
+> +++ b/drivers/net/ethernet/intel/igc/igc_tsn.c
+> @@ -61,7 +61,7 @@ void igc_tsn_adjust_txtime_offset(struct igc_adapter *adapter)
+>  	struct igc_hw *hw = &adapter->hw;
+>  	u16 txoffset;
+>  
+> -	if (!is_any_launchtime(adapter))
+> +	if (!igc_tsn_is_tx_mode_in_tsn(adapter))
+>  		return;
+>  
+>  	switch (adapter->link_speed) {
+> -- 
+> 2.25.1
+>
 
 
 Cheers,
