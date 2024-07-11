@@ -1,78 +1,78 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id A707692DF7E
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 11 Jul 2024 07:28:56 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8BF1992DFB9
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 11 Jul 2024 07:43:34 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 4EAC4607D9;
-	Thu, 11 Jul 2024 05:28:55 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id E23B8610F2;
+	Thu, 11 Jul 2024 05:43:32 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id U0QTkxdV3qvV; Thu, 11 Jul 2024 05:28:54 +0000 (UTC)
+ id LxKJEqkFgJfm; Thu, 11 Jul 2024 05:43:31 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5AB11610D2
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 28631610F6
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1720675733;
-	bh=8CSc4MgAruKmzry7cUG0bmFN0aA+X72zjfPWPPj3oZI=;
+	s=default; t=1720676610;
+	bh=GF+hN5pFZhpMi39Mdu78EomaIFNIw4xUVxn7A0YNPyM=;
 	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=GGQmVgjz12uaOXc8uQZYE3MmPaanpLVKVklPIRayo7Qg2pGJd4htHNGfYpUxK6aJC
-	 VsXEVqKSTdECbl8VlfOla5hcGQqD6QPo1MXPFhPSHhFicv7VJ7Dd0tjyHyn/BUri60
-	 J26ytASKpBpD26rtAVH9f6KCf8EHDngciIw8gBzCquL8OqZG4pdDEuDjb1GZuVwEFh
-	 tfQ0xzP9smMwtoW1JXCHdio4a+qaCTBhRmzRdLy5BU6Az3Uv5GwNNMZcRGjEE0EjRR
-	 FBc9aoz+GTwRgT+QlesvETkvwzmvzGwp/tfMfnjUWqiKq7tfqR/eYUHdBXiPSROEjD
-	 wRe8NHkjy+KDA==
+	b=Fqcd1FKPF5mReUczg4lCkWa+A+/2k0YfGWrUcpHvqnMZZIknTYgoVgCTD/RH27QNa
+	 +hLlO1Wot40l2v2BquvTCdfG3lP9ktSNry7D326afKXQgEpYrwIB0NgeMuMVrQK2S2
+	 z7xqN92yPnHc+FNlVDZ2Nb84dSI29K7xLmWXPWfI3jJef5qp1R1ojiXpyDc2vL0Yio
+	 QN2gGK+i5KsGqXF6Y4xmfqRiZbRIeL+7OLwUJbrjarf/SD7Yt8c3WkJExzPM0kwpql
+	 aWZk/ZeWhy2oJEBNSr226vTB4v2qWb0i7ZKeSlREuXZTNAUU3uD76q71p3JSTbp/mv
+	 FkzY7ild52CCw==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 5AB11610D2;
-	Thu, 11 Jul 2024 05:28:53 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 28631610F6;
+	Thu, 11 Jul 2024 05:43:30 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id A4B381BF863
- for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Jul 2024 05:28:51 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 9938C1BF863
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Jul 2024 05:43:28 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 918EC607D3
- for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Jul 2024 05:28:51 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 849A1405A5
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Jul 2024 05:43:28 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 5qGCFZ79huuj for <intel-wired-lan@lists.osuosl.org>;
- Thu, 11 Jul 2024 05:28:49 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id G-TlrVxdpLVW for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 11 Jul 2024 05:43:25 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=141.14.17.11;
  helo=mx3.molgen.mpg.de; envelope-from=pmenzel@molgen.mpg.de;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 7E3BA6066E
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7E3BA6066E
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 75B844004A
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 75B844004A
 Received: from mx3.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 7E3BA6066E
- for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Jul 2024 05:28:47 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 75B844004A
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 11 Jul 2024 05:43:23 +0000 (UTC)
 Received: from [192.168.0.2] (ip5f5af435.dynamic.kabel-deutschland.de
  [95.90.244.53])
  (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested) (Authenticated sender: pmenzel)
- by mx.molgen.mpg.de (Postfix) with ESMTPSA id D134061E4050B;
- Thu, 11 Jul 2024 07:28:26 +0200 (CEST)
-Message-ID: <ff7bb882-5285-49c7-bba7-0630be1abf22@molgen.mpg.de>
-Date: Thu, 11 Jul 2024 07:28:26 +0200
+ by mx.molgen.mpg.de (Postfix) with ESMTPSA id B2D4161E4050B;
+ Thu, 11 Jul 2024 07:42:52 +0200 (CEST)
+Message-ID: <565ea3da-06a9-481d-b32f-32c8c7240dad@molgen.mpg.de>
+Date: Thu, 11 Jul 2024 07:42:52 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 To: Ahmed Zaki <ahmed.zaki@intel.com>, Junfeng Guo <junfeng.guo@intel.com>
 References: <20240710204015.124233-1-ahmed.zaki@intel.com>
- <20240710204015.124233-3-ahmed.zaki@intel.com>
+ <20240710204015.124233-12-ahmed.zaki@intel.com>
 Content-Language: en-US
 From: Paul Menzel <pmenzel@molgen.mpg.de>
-In-Reply-To: <20240710204015.124233-3-ahmed.zaki@intel.com>
+In-Reply-To: <20240710204015.124233-12-ahmed.zaki@intel.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=none (p=none dis=none)
  header.from=molgen.mpg.de
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v3 02/13] ice: parse and init
- various DDP parser sections
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v3 11/13] ice: enable FDIR
+ filters from raw binary patterns for VFs
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,484 +94,820 @@ Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 Dear Ahmed, dear Junfeng,
 
 
-Thank you for this patch.
-
+Thank you for the patch.
 
 Am 10.07.24 um 22:40 schrieb Ahmed Zaki:
 > From: Junfeng Guo <junfeng.guo@intel.com>
 > 
-> Parse the following DDP sections:
->   - ICE_SID_RXPARSER_IMEM into an array of struct ice_imem_item
->   - ICE_SID_RXPARSER_METADATA_INIT into an array of struct ice_metainit_item
->   - ICE_SID_RXPARSER_CAM or ICE_SID_RXPARSER_PG_SPILL into an array of
->     struct ice_pg_cam_item
->   - ICE_SID_RXPARSER_NOMATCH_CAM or ICE_SID_RXPARSER_NOMATCH_SPILL into an
->     array of struct ice_pg_nm_cam_item
->   - ICE_SID_RXPARSER_CAM into an array of ice_bst_tcam_item
->   - ICE_SID_LBL_RXPARSER_TMEM into an array of ice_lbl_item
->   - ICE_SID_RXPARSER_MARKER_PTYPE into an array of ice_ptype_mk_tcam_item
->   - ICE_SID_RXPARSER_MARKER_GRP into an array of ice_mk_grp_item
->   - ICE_SID_RXPARSER_PROTO_GRP into an array of ice_proto_grp_item
->   - ICE_SID_RXPARSER_FLAG_REDIR into an array of ice_flg_rd_item
->   - ICE_SID_XLT_KEY_BUILDER_SW, ICE_SID_XLT_KEY_BUILDER_ACL,
->     ICE_SID_XLT_KEY_BUILDER_FD and ICE_SID_XLT_KEY_BUILDER_RSS into
->     struct ice_xlt_kb
-
-Did you write this from hand, or do you have some scripts to convert it 
-from some datasheet into code?
-
-As the parser is new infrastructure, are you planing on adding some 
-tests for the parser?
-
-Could you also go into more detail on how to debug possible problems, 
-that means, how to make sure, that the parser works correctly and how to 
-debug it in case one suspects the parser has a problem.
-
+> Enable VFs to create FDIR filters from raw binary patterns.
+> The corresponding processes for raw flow are added in the
+> Parse / Create / Destroy stages.
+> 
 > Reviewed-by: Marcin Szycik <marcin.szycik@linux.intel.com>
-> Signed-off-by: Qi Zhang <qi.z.zhang@intel.com>
 > Signed-off-by: Junfeng Guo <junfeng.guo@intel.com>
 > Co-developed-by: Ahmed Zaki <ahmed.zaki@intel.com>
 > Signed-off-by: Ahmed Zaki <ahmed.zaki@intel.com>
 > ---
->   drivers/net/ethernet/intel/ice/ice_ddp.c    |   10 +-
->   drivers/net/ethernet/intel/ice/ice_ddp.h    |   13 +
->   drivers/net/ethernet/intel/ice/ice_parser.c | 1396 +++++++++++++++++++
->   drivers/net/ethernet/intel/ice/ice_parser.h |  357 +++++
->   drivers/net/ethernet/intel/ice/ice_type.h   |    1 +
->   5 files changed, 1772 insertions(+), 5 deletions(-)
+>   .../net/ethernet/intel/ice/ice_flex_pipe.c    |  48 +++
+>   .../net/ethernet/intel/ice/ice_flex_pipe.h    |   3 +
+>   drivers/net/ethernet/intel/ice/ice_flow.c     | 106 +++++
+>   drivers/net/ethernet/intel/ice/ice_flow.h     |   5 +
+>   drivers/net/ethernet/intel/ice/ice_vf_lib.h   |   8 +
+>   .../ethernet/intel/ice/ice_virtchnl_fdir.c    | 404 +++++++++++++++++-
+>   6 files changed, 566 insertions(+), 8 deletions(-)
 > 
-> diff --git a/drivers/net/ethernet/intel/ice/ice_ddp.c b/drivers/net/ethernet/intel/ice/ice_ddp.c
-> index f182179529b7..953262b88a58 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_ddp.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_ddp.c
-> @@ -289,11 +289,11 @@ void *ice_pkg_enum_section(struct ice_seg *ice_seg, struct ice_pkg_enum *state,
->    * indicates a base offset of 10, and the index for the entry is 2, then
->    * section handler function should set the offset to 10 + 2 = 12.
->    */
-> -static void *ice_pkg_enum_entry(struct ice_seg *ice_seg,
-> -				struct ice_pkg_enum *state, u32 sect_type,
-> -				u32 *offset,
-> -				void *(*handler)(u32 sect_type, void *section,
-> -						 u32 index, u32 *offset))
-> +void *ice_pkg_enum_entry(struct ice_seg *ice_seg,
-> +			 struct ice_pkg_enum *state, u32 sect_type,
-> +			 u32 *offset,
-> +			 void *(*handler)(u32 sect_type, void *section,
-> +					  u32 index, u32 *offset))
->   {
->   	void *entry;
+> diff --git a/drivers/net/ethernet/intel/ice/ice_flex_pipe.c b/drivers/net/ethernet/intel/ice/ice_flex_pipe.c
+> index a750d7e1edd8..51aa6525565c 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_flex_pipe.c
+> +++ b/drivers/net/ethernet/intel/ice/ice_flex_pipe.c
+> @@ -4146,6 +4146,54 @@ ice_add_prof_id_flow(struct ice_hw *hw, enum ice_block blk, u16 vsi, u64 hdl)
+>   	return status;
+>   }
 >   
-> diff --git a/drivers/net/ethernet/intel/ice/ice_ddp.h b/drivers/net/ethernet/intel/ice/ice_ddp.h
-> index 622543f08b43..97f272317475 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_ddp.h
-> +++ b/drivers/net/ethernet/intel/ice/ice_ddp.h
-> @@ -261,10 +261,17 @@ struct ice_meta_sect {
->   #define ICE_SID_CDID_KEY_BUILDER_RSS 47
->   #define ICE_SID_CDID_REDIR_RSS 48
->   
-> +#define ICE_SID_RXPARSER_CAM           50
-> +#define ICE_SID_RXPARSER_NOMATCH_CAM   51
-> +#define ICE_SID_RXPARSER_IMEM          52
->   #define ICE_SID_RXPARSER_MARKER_PTYPE 55
->   #define ICE_SID_RXPARSER_BOOST_TCAM 56
-> +#define ICE_SID_RXPARSER_PROTO_GRP     57
->   #define ICE_SID_RXPARSER_METADATA_INIT 58
->   #define ICE_SID_TXPARSER_BOOST_TCAM 66
-> +#define ICE_SID_RXPARSER_MARKER_GRP    72
-> +#define ICE_SID_RXPARSER_PG_SPILL      76
-> +#define ICE_SID_RXPARSER_NOMATCH_SPILL 78
->   
->   #define ICE_SID_XLT0_PE 80
->   #define ICE_SID_XLT_KEY_BUILDER_PE 81
-> @@ -276,6 +283,7 @@ struct ice_meta_sect {
->   #define ICE_SID_CDID_KEY_BUILDER_PE 87
->   #define ICE_SID_CDID_REDIR_PE 88
->   
-> +#define ICE_SID_RXPARSER_FLAG_REDIR	97
->   /* Label Metadata section IDs */
->   #define ICE_SID_LBL_FIRST 0x80000010
->   #define ICE_SID_LBL_RXPARSER_TMEM 0x80000018
-> @@ -451,6 +459,11 @@ int ice_update_pkg(struct ice_hw *hw, struct ice_buf *bufs, u32 count);
->   
->   int ice_pkg_buf_reserve_section(struct ice_buf_build *bld, u16 count);
->   u16 ice_pkg_buf_get_active_sections(struct ice_buf_build *bld);
-> +void *
-> +ice_pkg_enum_entry(struct ice_seg *ice_seg, struct ice_pkg_enum *state,
-> +		   u32 sect_type, u32 *offset,
-> +		   void *(*handler)(u32 sect_type, void *section,
-> +				    u32 index, u32 *offset));
->   void *ice_pkg_enum_section(struct ice_seg *ice_seg, struct ice_pkg_enum *state,
->   			   u32 sect_type);
->   
-> diff --git a/drivers/net/ethernet/intel/ice/ice_parser.c b/drivers/net/ethernet/intel/ice/ice_parser.c
-> index 6c50164efae0..1f1a5a87f089 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_parser.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_parser.c
-> @@ -3,6 +3,1284 @@
->   
->   #include "ice_common.h"
->   
-> +struct ice_pkg_sect_hdr {
-> +	__le16 count;
-> +	__le16 offset;
-> +};
-> +
 > +/**
-> + * ice_parser_sect_item_get - parse a item from a section
+> + * ice_flow_assoc_fdir_prof - add a FDIR profile for main/ctrl VSI
 
-a*n* item
+a*n* FDIR?
 
-> + * @sect_type: section type
-> + * @section: section object
-> + * @index: index of the item to get
-> + * @offset: dummy as prototype of ice_pkg_enum_entry's last parameter
+> + * @hw: pointer to the HW struct
+> + * @blk: HW block
+> + * @dest_vsi: dest VSI
+> + * @fdir_vsi: fdir programming VSI
+> + * @hdl: profile handle
 > + *
-> + * Return: a pointer to the item or NULL.
+> + * Update the hardware tables to enable the FDIR profile indicated by @hdl for
+> + * the VSI specified by @dest_vsi. On success, the flow will be enabled.
+> + *
+> + * Return: 0 on success or negative errno on failure.
 > + */
-> +static void *ice_parser_sect_item_get(u32 sect_type, void *section,
-> +				      u32 index, u32 __maybe_unused *offset)
+> +int
+> +ice_flow_assoc_fdir_prof(struct ice_hw *hw, enum ice_block blk,
+> +			 u16 dest_vsi, u16 fdir_vsi, u64 hdl)
 > +{
-> +	size_t data_off = ICE_SEC_DATA_OFFSET;
-> +	struct ice_pkg_sect_hdr *hdr;
-> +	size_t size;
+> +	int status = 0;
+> +	u16 vsi_num;
 > +
-> +	if (!section)
-> +		return NULL;
+> +	if (blk != ICE_BLK_FD)
+> +		return -EINVAL;
 > +
-> +	switch (sect_type) {
-> +	case ICE_SID_RXPARSER_IMEM:
-> +		size = ICE_SID_RXPARSER_IMEM_ENTRY_SIZE;
-> +		break;
-> +	case ICE_SID_RXPARSER_METADATA_INIT:
-> +		size = ICE_SID_RXPARSER_METADATA_INIT_ENTRY_SIZE;
-> +		break;
-> +	case ICE_SID_RXPARSER_CAM:
-> +		size = ICE_SID_RXPARSER_CAM_ENTRY_SIZE;
-> +		break;
-> +	case ICE_SID_RXPARSER_PG_SPILL:
-> +		size = ICE_SID_RXPARSER_PG_SPILL_ENTRY_SIZE;
-> +		break;
-> +	case ICE_SID_RXPARSER_NOMATCH_CAM:
-> +		size = ICE_SID_RXPARSER_NOMATCH_CAM_ENTRY_SIZE;
-> +		break;
-> +	case ICE_SID_RXPARSER_NOMATCH_SPILL:
-> +		size = ICE_SID_RXPARSER_NOMATCH_SPILL_ENTRY_SIZE;
-> +		break;
-> +	case ICE_SID_RXPARSER_BOOST_TCAM:
-> +		size = ICE_SID_RXPARSER_BOOST_TCAM_ENTRY_SIZE;
-> +		break;
-> +	case ICE_SID_LBL_RXPARSER_TMEM:
-> +		data_off = ICE_SEC_LBL_DATA_OFFSET;
-> +		size = ICE_SID_LBL_ENTRY_SIZE;
-> +		break;
-> +	case ICE_SID_RXPARSER_MARKER_PTYPE:
-> +		size = ICE_SID_RXPARSER_MARKER_TYPE_ENTRY_SIZE;
-> +		break;
-> +	case ICE_SID_RXPARSER_MARKER_GRP:
-> +		size = ICE_SID_RXPARSER_MARKER_GRP_ENTRY_SIZE;
-> +		break;
-> +	case ICE_SID_RXPARSER_PROTO_GRP:
-> +		size = ICE_SID_RXPARSER_PROTO_GRP_ENTRY_SIZE;
-> +		break;
-> +	case ICE_SID_RXPARSER_FLAG_REDIR:
-> +		size = ICE_SID_RXPARSER_FLAG_REDIR_ENTRY_SIZE;
-> +		break;
-> +	default:
-> +		return NULL;
+> +	vsi_num = ice_get_hw_vsi_num(hw, dest_vsi);
+> +	status = ice_add_prof_id_flow(hw, blk, vsi_num, hdl);
+> +	if (status) {
+> +		ice_debug(hw, ICE_DBG_FLOW, "HW profile add failed for main VSI flow entry: %d\n",
+
+Maybe: Adding HW profile failed …? (Also below.)
+
+> +			  status);
+> +		return status;
 > +	}
 > +
-> +	hdr = section;
-> +	if (index >= le16_to_cpu(hdr->count))
-> +		return NULL;
+> +	vsi_num = ice_get_hw_vsi_num(hw, fdir_vsi);
+> +	status = ice_add_prof_id_flow(hw, blk, vsi_num, hdl);
+> +	if (status) {
+> +		ice_debug(hw, ICE_DBG_FLOW, "HW profile add failed for ctrl VSI flow entry: %d\n",
+> +			  status);
+> +		goto err;
+> +	}
 > +
-> +	return section + data_off + index * size;
+> +	return 0;
+> +
+> +err:
+> +	vsi_num = ice_get_hw_vsi_num(hw, dest_vsi);
+> +	ice_rem_prof_id_flow(hw, blk, vsi_num, hdl);
+> +
+> +	return status;
 > +}
 > +
-> +/**
-> + * ice_parser_create_table - create an item table from a section
-> + * @hw: pointer to the hardware structure
-> + * @sect_type: section type
-> + * @item_size: item size in byte
-
-in byte*s*
-
-> + * @length: number of items in the table to create
-> + * @parse_item: the function to parse the item
-> + * @no_offset: ignore header offset, calculate index from 0
-> + *
-> + * Return: a pointer to the allocated table or ERR_PTR.
-> + */
-> +static
-> +void *ice_parser_create_table(struct ice_hw *hw, u32 sect_type,
-> +			      u32 item_size, u32 length,
-> +			      void (*parse_item)(struct ice_hw *hw, u16 idx,
-> +						 void *item, void *data,
-> +						 int size),
-> +			      bool no_offset)
-> +{
-> +	struct ice_pkg_enum state = {};
-> +	struct ice_seg *seg = hw->seg;
-> +	void *table, *data, *item;
-> +	u16 idx = U16_MAX;
-> +
-> +	if (!seg)
-> +		return ERR_PTR(-EINVAL);
-> +
-> +	table = kzalloc(item_size * length, GFP_KERNEL);
-> +	if (!table)
-> +		return ERR_PTR(-ENOMEM);
-> +
-> +	do {
-> +		data = ice_pkg_enum_entry(seg, &state, sect_type, NULL,
-> +					  ice_parser_sect_item_get);
-> +		seg = NULL;
-> +		if (data) {
-> +			struct ice_pkg_sect_hdr *hdr =
-> +				(struct ice_pkg_sect_hdr *)state.sect;
-> +
-> +			if (no_offset)
-> +				idx++;
-
-Can’t `idx` initialized with `U16_MAX` now overflow?
-
-> +			else
-> +				idx = le16_to_cpu(hdr->offset) +
-> +					state.entry_idx;
-> +
-> +			item = (void *)((uintptr_t)table + idx * item_size);
-> +			parse_item(hw, idx, item, data, item_size);
-> +		}
-> +	} while (data);
-> +
-> +	return table;
-> +}
-> +
-> +/*** ICE_SID_RXPARSER_IMEM section ***/
-> +#define ICE_IM_BM_ALU0		BIT(0)
-> +#define ICE_IM_BM_ALU1		BIT(1)
-> +#define ICE_IM_BM_ALU2		BIT(2)
-> +#define ICE_IM_BM_PG		BIT(3)
-> +
-> +/**
-> + * ice_imem_bm_init - parse 4 bits of Boost Main
-> + * @bm: pointer to the Boost Main structure
-> + * @data: Boost Main data to be parsed
-
-Excuse my ignorance, as you use `data` in `FIELD_GET()` is `data` the 
-right name? The `FIELD_GET()` example in `include/linux/bitfield.h` uses 
-`reg`. How do I know the valid values of `data`?
-
-> + */
-> +static void ice_imem_bm_init(struct ice_bst_main *bm, u8 data)
-> +{
-> +	bm->alu0	= FIELD_GET(ICE_IM_BM_ALU0, data);
-> +	bm->alu1	= FIELD_GET(ICE_IM_BM_ALU1, data);
-> +	bm->alu2	= FIELD_GET(ICE_IM_BM_ALU2, data);
-> +	bm->pg		= FIELD_GET(ICE_IM_BM_PG, data);
-> +}
-> +
-> +#define ICE_IM_BKB_PRIO		GENMASK(7, 0)
-> +#define ICE_IM_BKB_TSR_CTRL	BIT(8)
-
-[…]
-
-> +
-> +/**
-> + * ice_imem_bkb_init - parse 10 bits of Boost Main Build
-> + * @bkb: pointer to the Boost Main Build structure
-> + * @data: Boost Main Build data to be parsed
-> + */
-> +static void ice_imem_bkb_init(struct ice_bst_keybuilder *bkb, u16 data)
-> +{
-> +	bkb->prio	= FIELD_GET(ICE_IM_BKB_PRIO, data);
-> +	bkb->tsr_ctrl	= FIELD_GET(ICE_IM_BKB_TSR_CTRL, data);
-> +}
-> +
-> +#define ICE_IM_NPKB_OPC		GENMASK(1, 0)
-> +#define ICE_IM_NPKB_S_R0	GENMASK(9, 2)
-> +#define ICE_IM_NPKB_L_R1	GENMASK(17, 10)
-> +
-> +/**
-> + * ice_imem_npkb_init - parse 18 bits of Next Protocol Key Build
-> + * @kb: pointer to the Next Protocol Key Build structure
-> + * @data: Next Protocol Key Build data to be parsed
-> + */
-> +static void ice_imem_npkb_init(struct ice_np_keybuilder *kb, u32 data)
-> +{
-> +	kb->opc		= FIELD_GET(ICE_IM_NPKB_OPC, data);
-> +	kb->start_reg0	= FIELD_GET(ICE_IM_NPKB_S_R0, data);
-> +	kb->len_reg1	= FIELD_GET(ICE_IM_NPKB_L_R1, data);
-> +}
-> +
-> +#define ICE_IM_PGKB_F0_ENA	BIT_ULL(0)
-> +#define ICE_IM_PGKB_F0_IDX	GENMASK_ULL(6, 1)
-> +#define ICE_IM_PGKB_F1_ENA	BIT_ULL(7)
-> +#define ICE_IM_PGKB_F1_IDX	GENMASK_ULL(13, 8)
-> +#define ICE_IM_PGKB_F2_ENA	BIT_ULL(14)
-> +#define ICE_IM_PGKB_F2_IDX	GENMASK_ULL(20, 15)
-> +#define ICE_IM_PGKB_F3_ENA	BIT_ULL(21)
-> +#define ICE_IM_PGKB_F3_IDX	GENMASK_ULL(27, 22)
-> +#define ICE_IM_PGKB_AR_IDX	GENMASK_ULL(34, 28)
-> +
-> +/**
-> + * ice_imem_pgkb_init - parse 35 bits of Parse Graph Key Build
-> + * @kb: pointer to the Parse Graph Key Build structure
-> + * @data: Parse Graph Key Build data to be parsed
-> + */
-> +static void ice_imem_pgkb_init(struct ice_pg_keybuilder *kb, u64 data)
-> +{
-> +	kb->flag0_ena	= FIELD_GET(ICE_IM_PGKB_F0_ENA, data);
-> +	kb->flag0_idx	= FIELD_GET(ICE_IM_PGKB_F0_IDX, data);
-> +	kb->flag1_ena	= FIELD_GET(ICE_IM_PGKB_F1_ENA, data);
-> +	kb->flag1_idx	= FIELD_GET(ICE_IM_PGKB_F1_IDX, data);
-> +	kb->flag2_ena	= FIELD_GET(ICE_IM_PGKB_F2_ENA, data);
-> +	kb->flag2_idx	= FIELD_GET(ICE_IM_PGKB_F2_IDX, data);
-> +	kb->flag3_ena	= FIELD_GET(ICE_IM_PGKB_F3_ENA, data);
-> +	kb->flag3_idx	= FIELD_GET(ICE_IM_PGKB_F3_IDX, data);
-> +	kb->alu_reg_idx	= FIELD_GET(ICE_IM_PGKB_AR_IDX, data);
-> +}
-> +
-> +#define ICE_IM_ALU_OPC		GENMASK_ULL(5, 0)
-> +#define ICE_IM_ALU_SS		GENMASK_ULL(13, 6)
-> +#define ICE_IM_ALU_SL		GENMASK_ULL(18, 14)
-> +#define ICE_IM_ALU_SXS		BIT_ULL(19)
-> +#define ICE_IM_ALU_SXK		GENMASK_ULL(23, 20)
-> +#define ICE_IM_ALU_SRID		GENMASK_ULL(30, 24)
-> +#define ICE_IM_ALU_DRID		GENMASK_ULL(37, 31)
-> +#define ICE_IM_ALU_INC0		BIT_ULL(38)
-> +#define ICE_IM_ALU_INC1		BIT_ULL(39)
-> +#define ICE_IM_ALU_POO		GENMASK_ULL(41, 40)
-> +#define ICE_IM_ALU_PO		GENMASK_ULL(49, 42)
-> +#define ICE_IM_ALU_BA_S		50	/* offset for the 2nd 64-bits field */
-> +#define ICE_IM_ALU_BA		GENMASK_ULL(57 - ICE_IM_ALU_BA_S, \
-> +					    50 - ICE_IM_ALU_BA_S)
-> +#define ICE_IM_ALU_IMM		GENMASK_ULL(73 - ICE_IM_ALU_BA_S, \
-> +					    58 - ICE_IM_ALU_BA_S)
-> +#define ICE_IM_ALU_DFE		BIT_ULL(74 - ICE_IM_ALU_BA_S)
-> +#define ICE_IM_ALU_DS		GENMASK_ULL(80 - ICE_IM_ALU_BA_S, \
-> +					    75 - ICE_IM_ALU_BA_S)
-> +#define ICE_IM_ALU_DL		GENMASK_ULL(86 - ICE_IM_ALU_BA_S, \
-> +					    81 - ICE_IM_ALU_BA_S)
-> +#define ICE_IM_ALU_FEI		BIT_ULL(87 - ICE_IM_ALU_BA_S)
-> +#define ICE_IM_ALU_FSI		GENMASK_ULL(95 - ICE_IM_ALU_BA_S, \
-> +					    88 - ICE_IM_ALU_BA_S)
-> +
-> +/**
-> + * ice_imem_alu_init - parse 96 bits of ALU entry
-> + * @alu: pointer to the ALU entry structure
-> + * @data: ALU entry data to be parsed
-> + * @off: offset of the ALU entry data
-> + */
-> +static void ice_imem_alu_init(struct ice_alu *alu, u8 *data, u8 off)
-> +{
-> +	u64 d64;
-> +	u8 idd;
-> +
-> +	d64 = *((u64 *)data) >> off;
-> +
-> +	alu->opc		= FIELD_GET(ICE_IM_ALU_OPC, d64);
-> +	alu->src_start		= FIELD_GET(ICE_IM_ALU_SS, d64);
-> +	alu->src_len		= FIELD_GET(ICE_IM_ALU_SL, d64);
-> +	alu->shift_xlate_sel	= FIELD_GET(ICE_IM_ALU_SXS, d64);
-> +	alu->shift_xlate_key	= FIELD_GET(ICE_IM_ALU_SXK, d64);
-> +	alu->src_reg_id		= FIELD_GET(ICE_IM_ALU_SRID, d64);
-> +	alu->dst_reg_id		= FIELD_GET(ICE_IM_ALU_DRID, d64);
-> +	alu->inc0		= FIELD_GET(ICE_IM_ALU_INC0, d64);
-> +	alu->inc1		= FIELD_GET(ICE_IM_ALU_INC1, d64);
-> +	alu->proto_offset_opc	= FIELD_GET(ICE_IM_ALU_POO, d64);
-> +	alu->proto_offset	= FIELD_GET(ICE_IM_ALU_PO, d64);
-> +
-> +	idd = (ICE_IM_ALU_BA_S + off) / BITS_PER_BYTE;
-> +	off = (ICE_IM_ALU_BA_S + off) % BITS_PER_BYTE;
-> +	d64 = *((u64 *)(&data[idd])) >> off;
-> +
-> +	alu->branch_addr	= FIELD_GET(ICE_IM_ALU_BA, d64);
-> +	alu->imm		= FIELD_GET(ICE_IM_ALU_IMM, d64);
-> +	alu->dedicate_flags_ena	= FIELD_GET(ICE_IM_ALU_DFE, d64);
-> +	alu->dst_start		= FIELD_GET(ICE_IM_ALU_DS, d64);
-> +	alu->dst_len		= FIELD_GET(ICE_IM_ALU_DL, d64);
-> +	alu->flags_extr_imm	= FIELD_GET(ICE_IM_ALU_FEI, d64);
-> +	alu->flags_start_imm	= FIELD_GET(ICE_IM_ALU_FSI, d64);
-> +}
-> +
-> +#define ICE_IMEM_BM_S		0
-> +#define ICE_IMEM_BKB_S		4
-> +#define ICE_IMEM_BKB_IDD	(ICE_IMEM_BKB_S / BITS_PER_BYTE)
-> +#define ICE_IMEM_BKB_OFF	(ICE_IMEM_BKB_S % BITS_PER_BYTE)
-> +#define ICE_IMEM_PGP		GENMASK(15, 14)
-> +#define ICE_IMEM_NPKB_S		16
-> +#define ICE_IMEM_NPKB_IDD	(ICE_IMEM_NPKB_S / BITS_PER_BYTE)
-> +#define ICE_IMEM_NPKB_OFF	(ICE_IMEM_NPKB_S % BITS_PER_BYTE)
-> +#define ICE_IMEM_PGKB_S		34
-> +#define ICE_IMEM_PGKB_IDD	(ICE_IMEM_PGKB_S / BITS_PER_BYTE)
-> +#define ICE_IMEM_PGKB_OFF	(ICE_IMEM_PGKB_S % BITS_PER_BYTE)
-> +#define ICE_IMEM_ALU0_S		69
-> +#define ICE_IMEM_ALU0_IDD	(ICE_IMEM_ALU0_S / BITS_PER_BYTE)
-> +#define ICE_IMEM_ALU0_OFF	(ICE_IMEM_ALU0_S % BITS_PER_BYTE)
-> +#define ICE_IMEM_ALU1_S		165
-> +#define ICE_IMEM_ALU1_IDD	(ICE_IMEM_ALU1_S / BITS_PER_BYTE)
-> +#define ICE_IMEM_ALU1_OFF	(ICE_IMEM_ALU1_S % BITS_PER_BYTE)
-> +#define ICE_IMEM_ALU2_S		357
-> +#define ICE_IMEM_ALU2_IDD	(ICE_IMEM_ALU2_S / BITS_PER_BYTE)
-> +#define ICE_IMEM_ALU2_OFF	(ICE_IMEM_ALU2_S % BITS_PER_BYTE)
-> +
-> +/**
-> + * ice_imem_parse_item - parse 384 bits of IMEM entry
-> + * @hw: pointer to the hardware structure
-> + * @idx: index of IMEM entry
-> + * @item: item of IMEM entry
-> + * @data: IMEM entry data to be parsed
-
-[…]
-
-> diff --git a/drivers/net/ethernet/intel/ice/ice_parser.h b/drivers/net/ethernet/intel/ice/ice_parser.h
-> index 09ed380eee32..26468b16202c 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_parser.h
-> +++ b/drivers/net/ethernet/intel/ice/ice_parser.h
-> @@ -4,8 +4,365 @@
->   #ifndef _ICE_PARSER_H_
->   #define _ICE_PARSER_H_
+>   /**
+>    * ice_rem_prof_from_list - remove a profile from list
+>    * @hw: pointer to the HW struct
+> diff --git a/drivers/net/ethernet/intel/ice/ice_flex_pipe.h b/drivers/net/ethernet/intel/ice/ice_flex_pipe.h
+> index 7c66652dadd6..90b9b0993122 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_flex_pipe.h
+> +++ b/drivers/net/ethernet/intel/ice/ice_flex_pipe.h
+> @@ -51,6 +51,9 @@ int
+>   ice_add_prof_id_flow(struct ice_hw *hw, enum ice_block blk, u16 vsi, u64 hdl);
+>   int
+>   ice_rem_prof_id_flow(struct ice_hw *hw, enum ice_block blk, u16 vsi, u64 hdl);
+> +int
+> +ice_flow_assoc_fdir_prof(struct ice_hw *hw, enum ice_block blk,
+> +			 u16 dest_vsi, u16 fdir_vsi, u64 hdl);
+>   enum ice_ddp_state ice_init_pkg(struct ice_hw *hw, u8 *buff, u32 len);
+>   enum ice_ddp_state
+>   ice_copy_and_init_pkg(struct ice_hw *hw, const u8 *buf, u32 len);
+> diff --git a/drivers/net/ethernet/intel/ice/ice_flow.c b/drivers/net/ethernet/intel/ice/ice_flow.c
+> index 79106503194b..99d584f46c23 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_flow.c
+> +++ b/drivers/net/ethernet/intel/ice/ice_flow.c
+> @@ -409,6 +409,29 @@ static const u32 ice_ptypes_gtpc_tid[] = {
+>   };
 >   
-> +#define ICE_SEC_DATA_OFFSET				4
-> +#define ICE_SID_RXPARSER_IMEM_ENTRY_SIZE		48
-> +#define ICE_SID_RXPARSER_METADATA_INIT_ENTRY_SIZE	24
-> +#define ICE_SID_RXPARSER_CAM_ENTRY_SIZE			16
-> +#define ICE_SID_RXPARSER_PG_SPILL_ENTRY_SIZE		17
-> +#define ICE_SID_RXPARSER_NOMATCH_CAM_ENTRY_SIZE		12
-> +#define ICE_SID_RXPARSER_NOMATCH_SPILL_ENTRY_SIZE	13
-> +#define ICE_SID_RXPARSER_BOOST_TCAM_ENTRY_SIZE		88
-> +#define ICE_SID_RXPARSER_MARKER_TYPE_ENTRY_SIZE		24
-> +#define ICE_SID_RXPARSER_MARKER_GRP_ENTRY_SIZE		8
-> +#define ICE_SID_RXPARSER_PROTO_GRP_ENTRY_SIZE		24
-> +#define ICE_SID_RXPARSER_FLAG_REDIR_ENTRY_SIZE		1
+>   /* Packet types for GTPU */
+> +static const struct ice_ptype_attributes ice_attr_gtpu_session[] = {
+> +	{ ICE_MAC_IPV4_GTPU_IPV4_FRAG,	  ICE_PTYPE_ATTR_GTP_SESSION },
+> +	{ ICE_MAC_IPV4_GTPU_IPV4_PAY,	  ICE_PTYPE_ATTR_GTP_SESSION },
+> +	{ ICE_MAC_IPV4_GTPU_IPV4_UDP_PAY, ICE_PTYPE_ATTR_GTP_SESSION },
+> +	{ ICE_MAC_IPV4_GTPU_IPV4_TCP,	  ICE_PTYPE_ATTR_GTP_SESSION },
+> +	{ ICE_MAC_IPV4_GTPU_IPV4_ICMP,	  ICE_PTYPE_ATTR_GTP_SESSION },
+> +	{ ICE_MAC_IPV6_GTPU_IPV4_FRAG,	  ICE_PTYPE_ATTR_GTP_SESSION },
+> +	{ ICE_MAC_IPV6_GTPU_IPV4_PAY,	  ICE_PTYPE_ATTR_GTP_SESSION },
+> +	{ ICE_MAC_IPV6_GTPU_IPV4_UDP_PAY, ICE_PTYPE_ATTR_GTP_SESSION },
+> +	{ ICE_MAC_IPV6_GTPU_IPV4_TCP,	  ICE_PTYPE_ATTR_GTP_SESSION },
+> +	{ ICE_MAC_IPV6_GTPU_IPV4_ICMP,	  ICE_PTYPE_ATTR_GTP_SESSION },
+> +	{ ICE_MAC_IPV4_GTPU_IPV6_FRAG,	  ICE_PTYPE_ATTR_GTP_SESSION },
+> +	{ ICE_MAC_IPV4_GTPU_IPV6_PAY,	  ICE_PTYPE_ATTR_GTP_SESSION },
+> +	{ ICE_MAC_IPV4_GTPU_IPV6_UDP_PAY, ICE_PTYPE_ATTR_GTP_SESSION },
+> +	{ ICE_MAC_IPV4_GTPU_IPV6_TCP,	  ICE_PTYPE_ATTR_GTP_SESSION },
+> +	{ ICE_MAC_IPV4_GTPU_IPV6_ICMPV6,  ICE_PTYPE_ATTR_GTP_SESSION },
+> +	{ ICE_MAC_IPV6_GTPU_IPV6_FRAG,	  ICE_PTYPE_ATTR_GTP_SESSION },
+> +	{ ICE_MAC_IPV6_GTPU_IPV6_PAY,	  ICE_PTYPE_ATTR_GTP_SESSION },
+> +	{ ICE_MAC_IPV6_GTPU_IPV6_UDP_PAY, ICE_PTYPE_ATTR_GTP_SESSION },
+> +	{ ICE_MAC_IPV6_GTPU_IPV6_TCP,	  ICE_PTYPE_ATTR_GTP_SESSION },
+> +	{ ICE_MAC_IPV6_GTPU_IPV6_ICMPV6,  ICE_PTYPE_ATTR_GTP_SESSION },
+> +};
 > +
-> +#define ICE_SEC_LBL_DATA_OFFSET				2
-> +#define ICE_SID_LBL_ENTRY_SIZE				66
+>   static const struct ice_ptype_attributes ice_attr_gtpu_eh[] = {
+>   	{ ICE_MAC_IPV4_GTPU_IPV4_FRAG,	  ICE_PTYPE_ATTR_GTP_PDU_EH },
+>   	{ ICE_MAC_IPV4_GTPU_IPV4_PAY,	  ICE_PTYPE_ATTR_GTP_PDU_EH },
+> @@ -1523,6 +1546,89 @@ ice_flow_disassoc_prof(struct ice_hw *hw, enum ice_block blk,
+>   	return status;
+>   }
+>   
+> +#define FLAG_GTP_EH_PDU_LINK	BIT_ULL(13)
+> +#define FLAG_GTP_EH_PDU		BIT_ULL(14)
 > +
-> +/*** ICE_SID_RXPARSER_IMEM section ***/
-> +#define ICE_IMEM_TABLE_SIZE		192
+> +#define HI_BYTE_IN_WORD		GENMASK(15, 8)
+> +#define LO_BYTE_IN_WORD		GENMASK(7, 0)
 > +
-> +/* TCAM boost Master; if bit is set, and TCAM hit, TCAM output overrides iMEM
-> + * output.
+> +#define FLAG_GTPU_MSK	\
+> +	(FLAG_GTP_EH_PDU | FLAG_GTP_EH_PDU_LINK)
+> +#define FLAG_GTPU_UP	\
+> +	(FLAG_GTP_EH_PDU | FLAG_GTP_EH_PDU_LINK)
+> +#define FLAG_GTPU_DW	FLAG_GTP_EH_PDU
+> +/**
+> + * ice_flow_set_parser_prof - Set flow profile based on the parsed profile info
+> + * @hw: pointer to the HW struct
+> + * @dest_vsi: dest VSI
+> + * @fdir_vsi: fdir programming VSI
+> + * @prof: stores parsed profile info from raw flow
+> + * @blk: classification blk
+> + *
+> + * Return: 0 on success or negative errno on failure.
 > + */
-> +struct ice_bst_main {
-> +	bool alu0;
-> +	bool alu1;
-> +	bool alu2;
-> +	bool pg;
+> +int
+> +ice_flow_set_parser_prof(struct ice_hw *hw, u16 dest_vsi, u16 fdir_vsi,
+> +			 struct ice_parser_profile *prof, enum ice_block blk)
+> +{
+> +	u64 id = find_first_bit(prof->ptypes, ICE_FLOW_PTYPE_MAX);
+> +	struct ice_flow_prof_params *params __free(kfree);
+> +	u8 fv_words = hw->blk[blk].es.fvw;
+> +	int status;
+> +	int i, idx;
+
+Use size_t as it’s used in arrays?
+
+> +
+> +	params = kzalloc(sizeof(*params), GFP_KERNEL);
+> +	if (!params)
+> +		return -ENOMEM;
+> +
+> +	for (i = 0; i < ICE_MAX_FV_WORDS; i++) {
+> +		params->es[i].prot_id = ICE_PROT_INVALID;
+> +		params->es[i].off = ICE_FV_OFFSET_INVAL;
+> +	}
+> +
+> +	for (i = 0; i < prof->fv_num; i++) {
+> +		if (hw->blk[blk].es.reverse)
+> +			idx = fv_words - i - 1;
+> +		else
+> +			idx = i;
+
+Use ternery operator?
+
+> +		params->es[idx].prot_id = prof->fv[i].proto_id;
+> +		params->es[idx].off = prof->fv[i].offset;
+> +		params->mask[idx] = (((prof->fv[i].msk) << BITS_PER_BYTE) &
+> +				      HI_BYTE_IN_WORD) |
+> +				    (((prof->fv[i].msk) >> BITS_PER_BYTE) &
+> +				      LO_BYTE_IN_WORD);
+> +	}
+> +
+> +	switch (prof->flags) {
+> +	case FLAG_GTPU_DW:
+> +		params->attr = ice_attr_gtpu_down;
+> +		params->attr_cnt = ARRAY_SIZE(ice_attr_gtpu_down);
+> +		break;
+> +	case FLAG_GTPU_UP:
+> +		params->attr = ice_attr_gtpu_up;
+> +		params->attr_cnt = ARRAY_SIZE(ice_attr_gtpu_up);
+> +		break;
+> +	default:
+> +		if (prof->flags_msk & FLAG_GTPU_MSK) {
+> +			params->attr = ice_attr_gtpu_session;
+> +			params->attr_cnt = ARRAY_SIZE(ice_attr_gtpu_session);
+> +		}
+> +		break;
+> +	}
+> +
+> +	status = ice_add_prof(hw, blk, id, (u8 *)prof->ptypes,
+> +			      params->attr, params->attr_cnt,
+> +			      params->es, params->mask, false, false);
+> +	if (status)
+> +		return status;
+> +
+> +	status = ice_flow_assoc_fdir_prof(hw, blk, dest_vsi, fdir_vsi, id);
+> +	if (status)
+> +		ice_rem_prof(hw, blk, id);
+> +
+> +	return status;
+> +}
+> +
+>   /**
+>    * ice_flow_add_prof - Add a flow profile for packet segments and matched fields
+>    * @hw: pointer to the HW struct
+> diff --git a/drivers/net/ethernet/intel/ice/ice_flow.h b/drivers/net/ethernet/intel/ice/ice_flow.h
+> index 2fd2e0cb483d..6cb7bb879c98 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_flow.h
+> +++ b/drivers/net/ethernet/intel/ice/ice_flow.h
+> @@ -5,6 +5,7 @@
+>   #define _ICE_FLOW_H_
+>   
+>   #include "ice_flex_type.h"
+> +#include "ice_parser.h"
+>   
+>   #define ICE_FLOW_ENTRY_HANDLE_INVAL	0
+>   #define ICE_FLOW_FLD_OFF_INVAL		0xffff
+> @@ -326,6 +327,7 @@ enum ice_rss_cfg_hdr_type {
+>   	ICE_RSS_ANY_HEADERS
+>   };
+>   
+> +struct ice_vsi;
+>   struct ice_rss_hash_cfg {
+>   	u32 addl_hdrs; /* protocol header fields */
+>   	u64 hash_flds; /* hash bit field (ICE_FLOW_HASH_*) to configure */
+> @@ -445,6 +447,9 @@ ice_flow_add_prof(struct ice_hw *hw, enum ice_block blk, enum ice_flow_dir dir,
+>   		  bool symm, struct ice_flow_prof **prof);
+>   int ice_flow_rem_prof(struct ice_hw *hw, enum ice_block blk, u64 prof_id);
+>   int
+> +ice_flow_set_parser_prof(struct ice_hw *hw, u16 dest_vsi, u16 fdir_vsi,
+> +			 struct ice_parser_profile *prof, enum ice_block blk);
+> +int
+>   ice_flow_add_entry(struct ice_hw *hw, enum ice_block blk, u64 prof_id,
+>   		   u64 entry_id, u16 vsi, enum ice_flow_priority prio,
+>   		   void *data, u64 *entry_h);
+> diff --git a/drivers/net/ethernet/intel/ice/ice_vf_lib.h b/drivers/net/ethernet/intel/ice/ice_vf_lib.h
+> index fec16919ec19..be4266899690 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_vf_lib.h
+> +++ b/drivers/net/ethernet/intel/ice/ice_vf_lib.h
+> @@ -12,6 +12,7 @@
+>   #include <net/devlink.h>
+>   #include <linux/avf/virtchnl.h>
+>   #include "ice_type.h"
+> +#include "ice_flow.h"
+>   #include "ice_virtchnl_fdir.h"
+>   #include "ice_vsi_vlan_ops.h"
+>   
+> @@ -52,6 +53,12 @@ struct ice_mdd_vf_events {
+>   	u16 last_printed;
+>   };
+>   
+> +/* Structure to store fdir fv entry */
+> +struct ice_fdir_prof_info {
+> +	struct ice_parser_profile prof;
+> +	u64 fdir_active_cnt;
 > +};
 > +
-> +struct ice_bst_keybuilder {
-> +	u8 prio;
+>   /* VF operations */
+>   struct ice_vf_ops {
+>   	enum ice_disq_rst_src reset_type;
+> @@ -91,6 +98,7 @@ struct ice_vf {
+>   	u16 lan_vsi_idx;		/* index into PF struct */
+>   	u16 ctrl_vsi_idx;
+>   	struct ice_vf_fdir fdir;
+> +	struct ice_fdir_prof_info fdir_prof_info[ICE_MAX_PTGS];
+>   	/* first vector index of this VF in the PF space */
+>   	int first_vector_idx;
+>   	struct ice_sw *vf_sw_id;	/* switch ID the VF VSIs connect to */
+> diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.c b/drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.c
+> index b4feb0927687..b9294105b077 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.c
+> +++ b/drivers/net/ethernet/intel/ice/ice_virtchnl_fdir.c
+> @@ -26,6 +26,15 @@ enum ice_fdir_tunnel_type {
+>   	ICE_FDIR_TUNNEL_TYPE_NONE = 0,
+>   	ICE_FDIR_TUNNEL_TYPE_GTPU,
+>   	ICE_FDIR_TUNNEL_TYPE_GTPU_EH,
+> +	ICE_FDIR_TUNNEL_TYPE_ECPRI,
+> +	ICE_FDIR_TUNNEL_TYPE_GTPU_INNER,
+> +	ICE_FDIR_TUNNEL_TYPE_GTPU_EH_INNER,
+> +	ICE_FDIR_TUNNEL_TYPE_GRE,
+> +	ICE_FDIR_TUNNEL_TYPE_GTPOGRE,
+> +	ICE_FDIR_TUNNEL_TYPE_GTPOGRE_INNER,
+> +	ICE_FDIR_TUNNEL_TYPE_GRE_INNER,
+> +	ICE_FDIR_TUNNEL_TYPE_L2TPV2,
+> +	ICE_FDIR_TUNNEL_TYPE_L2TPV2_INNER,
+>   };
+>   
+>   struct virtchnl_fdir_fltr_conf {
+> @@ -33,6 +42,11 @@ struct virtchnl_fdir_fltr_conf {
+>   	enum ice_fdir_tunnel_type ttype;
+>   	u64 inset_flag;
+>   	u32 flow_id;
+> +
+> +	struct ice_parser_profile *prof;
+> +	bool parser_ena;
+> +	u8 *pkt_buf;
+> +	u8 pkt_len;
+>   };
+>   
+>   struct virtchnl_fdir_inset_map {
+> @@ -786,6 +800,108 @@ ice_vc_fdir_config_input_set(struct ice_vf *vf, struct virtchnl_fdir_add *fltr,
+>   	return ret;
+>   }
+>   
+> +/**
+> + * ice_vc_fdir_is_raw_flow
+> + * @proto: virtchnl protocol headers
+> + *
+> + * Check if the FDIR rule is raw flow (protocol agnostic flow) or not.
+> + * Note that common FDIR rule must have non-zero proto->count.
+> + * Thus, we choose the tunnel_level and count of proto as the indicators.
 
-Add a comment, what `prio` is and what values are allowed?
+I wouldn’t break the line after the end of the previous sentence.
 
-> +	bool tsr_ctrl;	/* TCAM Search Register control */
-> +};
+> + * If both tunnel_level and count of proto are zeros, this FDIR rule will
 
-[…]
+are zero
+
+> + * be regarded as raw flow.
+> + *
+> + * Returns: true if headers describe raw flow, false otherwise.
+> + */
+> +static bool
+> +ice_vc_fdir_is_raw_flow(struct virtchnl_proto_hdrs *proto)
+> +{
+> +	return (proto->tunnel_level == 0 && proto->count == 0);
+> +}
+> +
+> +/**
+> + * ice_vc_fdir_parse_raw
+> + * @vf: pointer to the VF info
+> + * @proto: virtchnl protocol headers
+> + * @conf: FDIR configuration for each filter
+> + *
+> + * Parse the virtual channel filter's raw flow and store it in @conf
+> + *
+> + * Return: 0 on success or negative errno on failure.
+> + */
+> +static int
+> +ice_vc_fdir_parse_raw(struct ice_vf *vf,
+> +		      struct virtchnl_proto_hdrs *proto,
+> +		      struct virtchnl_fdir_fltr_conf *conf)
+> +{
+> +	u8 *pkt_buf, *msk_buf __free(kfree);
+> +	struct ice_parser_result rslt;
+> +	struct ice_pf *pf = vf->pf;
+> +	struct ice_parser *psr;
+> +	int status = -ENOMEM;
+> +	struct ice_hw *hw;
+> +	u16 udp_port = 0;
+> +
+> +	pkt_buf = kzalloc(proto->raw.pkt_len, GFP_KERNEL);
+> +	msk_buf = kzalloc(proto->raw.pkt_len, GFP_KERNEL);
+> +	if (!pkt_buf || !msk_buf)
+> +		goto err_mem_alloc;
+> +
+> +	memcpy(pkt_buf, proto->raw.spec, proto->raw.pkt_len);
+> +	memcpy(msk_buf, proto->raw.mask, proto->raw.pkt_len);
+> +
+> +	hw = &pf->hw;
+> +
+> +	/* Get raw profile info via Parser Lib */
+> +	psr = ice_parser_create(hw);
+> +	if (IS_ERR(psr)) {
+> +		status = PTR_ERR(psr);
+> +		goto err_mem_alloc;
+> +	}
+> +
+> +	ice_parser_dvm_set(psr, ice_is_dvm_ena(hw));
+> +
+> +	if (ice_get_open_tunnel_port(hw, &udp_port, TNL_VXLAN))
+> +		ice_parser_vxlan_tunnel_set(psr, udp_port, true);
+> +
+> +	status = ice_parser_run(psr, pkt_buf, proto->raw.pkt_len, &rslt);
+> +	if (status)
+> +		goto err_parser_destroy;
+> +
+> +	if (hw->debug_mask & ICE_DBG_PARSER)
+> +		ice_parser_result_dump(hw, &rslt);
+> +
+> +	conf->prof = kzalloc(sizeof(*conf->prof), GFP_KERNEL);
+> +	if (!conf->prof) {
+> +		status = -ENOMEM;
+> +		goto err_parser_destroy;
+> +	}
+> +
+> +	status = ice_parser_profile_init(&rslt, pkt_buf, msk_buf,
+> +					 proto->raw.pkt_len, ICE_BLK_FD,
+> +					 conf->prof);
+> +	if (status)
+> +		goto err_parser_profile_init;
+> +
+> +	if (hw->debug_mask & ICE_DBG_PARSER)
+> +		ice_parser_profile_dump(hw, conf->prof);
+> +
+> +	/* Store raw flow info into @conf */
+> +	conf->pkt_len = proto->raw.pkt_len;
+> +	conf->pkt_buf = pkt_buf;
+> +	conf->parser_ena = true;
+> +
+> +	ice_parser_destroy(psr);
+> +	return 0;
+> +
+> +err_parser_profile_init:
+> +	kfree(conf->prof);
+> +err_parser_destroy:
+> +	ice_parser_destroy(psr);
+> +err_mem_alloc:
+> +	kfree(pkt_buf);
+> +	return status;
+> +}
+> +
+>   /**
+>    * ice_vc_fdir_parse_pattern
+>    * @vf: pointer to the VF info
+> @@ -813,6 +929,10 @@ ice_vc_fdir_parse_pattern(struct ice_vf *vf, struct virtchnl_fdir_add *fltr,
+>   		return -EINVAL;
+>   	}
+>   
+> +	/* For raw FDIR filters created by the parser */
+> +	if (ice_vc_fdir_is_raw_flow(proto))
+> +		return ice_vc_fdir_parse_raw(vf, proto, conf);
+> +
+>   	for (i = 0; i < proto->count; i++) {
+>   		struct virtchnl_proto_hdr *hdr = &proto->proto_hdr[i];
+>   		struct ip_esp_hdr *esph;
+> @@ -1101,8 +1221,10 @@ ice_vc_validate_fdir_fltr(struct ice_vf *vf, struct virtchnl_fdir_add *fltr,
+>   	struct virtchnl_proto_hdrs *proto = &fltr->rule_cfg.proto_hdrs;
+>   	int ret;
+>   
+> -	if (!ice_vc_validate_pattern(vf, proto))
+> -		return -EINVAL;
+> +	/* For raw FDIR filters created by the parser */
+> +	if (!ice_vc_fdir_is_raw_flow(proto))
+> +		if (!ice_vc_validate_pattern(vf, proto))
+> +			return -EINVAL;
+>   
+>   	ret = ice_vc_fdir_parse_pattern(vf, fltr, conf);
+>   	if (ret)
+> @@ -1295,11 +1417,15 @@ static int ice_vc_fdir_write_fltr(struct ice_vf *vf,
+>   		return -ENOMEM;
+>   
+>   	ice_fdir_get_prgm_desc(hw, input, &desc, add);
+> -	ret = ice_fdir_get_gen_prgm_pkt(hw, input, pkt, false, is_tun);
+> -	if (ret) {
+> -		dev_dbg(dev, "Gen training pkt for VF %d ptype %d failed\n",
+> -			vf->vf_id, input->flow_type);
+> -		goto err_free_pkt;
+> +	if (conf->parser_ena) {
+> +		memcpy(pkt, conf->pkt_buf, conf->pkt_len);
+> +	} else {
+> +		ret = ice_fdir_get_gen_prgm_pkt(hw, input, pkt, false, is_tun);
+> +		if (ret) {
+> +			dev_dbg(dev, "Gen training pkt for VF %d ptype %d failed\n",
+> +				vf->vf_id, input->flow_type);
+> +			goto err_free_pkt;
+> +		}
+>   	}
+>   
+>   	ret = ice_prgm_fdir_fltr(ctrl_vsi, &desc, pkt);
+> @@ -1521,6 +1647,16 @@ ice_vf_verify_rx_desc(struct ice_vf *vf, struct ice_vf_fdir_ctx *ctx,
+>   	return ret;
+>   }
+>   
+> +static int ice_fdir_is_tunnel(enum ice_fdir_tunnel_type ttype)
+> +{
+> +	return (ttype == ICE_FDIR_TUNNEL_TYPE_GRE_INNER ||
+> +		ttype == ICE_FDIR_TUNNEL_TYPE_GTPU_INNER ||
+> +		ttype == ICE_FDIR_TUNNEL_TYPE_GTPU_EH_INNER ||
+> +		ttype == ICE_FDIR_TUNNEL_TYPE_GTPOGRE_INNER ||
+> +		ttype == ICE_FDIR_TUNNEL_TYPE_ECPRI ||
+> +		ttype == ICE_FDIR_TUNNEL_TYPE_L2TPV2_INNER);
+> +}
+> +
+>   /**
+>    * ice_vc_add_fdir_fltr_post
+>    * @vf: pointer to the VF structure
+> @@ -1781,6 +1917,158 @@ static void ice_vc_fdir_clear_irq_ctx(struct ice_vf *vf)
+>   	spin_unlock_irqrestore(&vf->fdir.ctx_lock, flags);
+>   }
+>   
+> +/**
+> + * ice_vc_parser_fv_check_diff - check two parsed FDIR profile fv context
+> + * @fv_a: struct of parsed FDIR profile field vector
+> + * @fv_b: struct of parsed FDIR profile field vector
+> + *
+> + * Check if the two parsed FDIR profile field vector context are different,
+> + * including proto_id, offset and mask.
+> + *
+> + * Return: true on different, false on otherwise.
+> + */
+> +static bool ice_vc_parser_fv_check_diff(struct ice_parser_fv *fv_a,
+> +					struct ice_parser_fv *fv_b)
+> +{
+> +	return (fv_a->proto_id	!= fv_b->proto_id ||
+> +		fv_a->offset	!= fv_b->offset ||
+> +		fv_a->msk	!= fv_b->msk);
+> +}
+> +
+> +/**
+> + * ice_vc_parser_fv_save - save parsed FDIR profile fv context
+> + * @fv: struct of parsed FDIR profile field vector
+> + * @fv_src: parsed FDIR profile field vector context to save
+> + *
+> + * Save the parsed FDIR profile field vector context, including proto_id,
+> + * offset and mask.
+> + *
+> + * Return: Void.
+> + */
+> +static void ice_vc_parser_fv_save(struct ice_parser_fv *fv,
+> +				  struct ice_parser_fv *fv_src)
+> +{
+> +	fv->proto_id	= fv_src->proto_id;
+> +	fv->offset	= fv_src->offset;
+> +	fv->msk		= fv_src->msk;
+> +	fv->spec	= 0;
+> +}
+> +
+> +/**
+> + * ice_vc_add_fdir_raw - add a raw FDIR filter for VF
+> + * @vf: pointer to the VF info
+> + * @conf: FDIR configuration for each filter
+> + * @v_ret: the final VIRTCHNL code
+> + * @stat: pointer to the VIRTCHNL_OP_ADD_FDIR_FILTER
+> + * @len: length of the stat
+> + *
+> + * Return: 0 on success or negative errno on failure.
+> + */
+> +static int
+> +ice_vc_add_fdir_raw(struct ice_vf *vf,
+> +		    struct virtchnl_fdir_fltr_conf *conf,
+> +		    enum virtchnl_status_code *v_ret,
+> +		    struct virtchnl_fdir_add *stat, int len)
+> +{
+> +	struct ice_vsi *vf_vsi, *ctrl_vsi;
+> +	struct ice_fdir_prof_info *pi;
+> +	struct ice_pf *pf = vf->pf;
+> +	int ret, ptg, id, i;
+> +	struct device *dev;
+> +	struct ice_hw *hw;
+> +	bool fv_found;
+> +
+> +	dev = ice_pf_to_dev(pf);
+> +	hw = &pf->hw;
+> +	*v_ret = VIRTCHNL_STATUS_ERR_PARAM;
+> +	stat->status = VIRTCHNL_FDIR_FAILURE_RULE_NORESOURCE;
+> +
+> +	id = find_first_bit(conf->prof->ptypes, ICE_FLOW_PTYPE_MAX);
+> +	ptg = hw->blk[ICE_BLK_FD].xlt1.t[id];
+> +
+> +	vf_vsi = ice_get_vf_vsi(vf);
+> +	if (!vf_vsi) {
+> +		dev_err(dev, "Can not get FDIR vf_vsi for VF %d\n", vf->vf_id);
+> +		return -ENODEV;
+> +	}
+> +
+> +	ctrl_vsi = pf->vsi[vf->ctrl_vsi_idx];
+> +	if (!ctrl_vsi) {
+> +		dev_err(dev, "Can not get FDIR ctrl_vsi for VF %d\n",
+> +			vf->vf_id);
+> +		return -ENODEV;
+> +	}
+> +
+> +	fv_found = false;
+> +
+> +	/* Check if profile info already exists, then update the counter */
+> +	pi = &vf->fdir_prof_info[ptg];
+> +	if (pi->fdir_active_cnt != 0) {
+> +		for (i = 0; i < ICE_MAX_FV_WORDS; i++)
+> +			if (ice_vc_parser_fv_check_diff(&pi->prof.fv[i],
+> +							&conf->prof->fv[i]))
+> +				break;
+> +		if (i == ICE_MAX_FV_WORDS) {
+> +			fv_found = true;
+> +			pi->fdir_active_cnt++;
+> +		}
+> +	}
+> +
+> +	/* HW profile setting is only required for the first time */
+> +	if (!fv_found) {
+> +		ret = ice_flow_set_parser_prof(hw, vf_vsi->idx,
+> +					       ctrl_vsi->idx, conf->prof,
+> +					       ICE_BLK_FD);
+> +
+> +		if (ret) {
+> +			*v_ret = VIRTCHNL_STATUS_ERR_NO_MEMORY;
+> +			dev_dbg(dev, "VF %d: insert hw prof failed\n",
+> +				vf->vf_id);
+> +			return ret;
+> +		}
+> +	}
+> +
+> +	ret = ice_vc_fdir_insert_entry(vf, conf, &conf->flow_id);
+> +	if (ret) {
+> +		*v_ret = VIRTCHNL_STATUS_ERR_NO_MEMORY;
+> +		dev_dbg(dev, "VF %d: insert FDIR list failed\n",
+> +			vf->vf_id);
+> +		return ret;
+> +	}
+> +
+> +	ret = ice_vc_fdir_set_irq_ctx(vf, conf,
+> +				      VIRTCHNL_OP_ADD_FDIR_FILTER);
+> +	if (ret) {
+> +		dev_dbg(dev, "VF %d: set FDIR context failed\n",
+> +			vf->vf_id);
+> +		goto err_rem_entry;
+> +	}
+> +
+> +	ret = ice_vc_fdir_write_fltr(vf, conf, true, false);
+> +	if (ret) {
+> +		dev_err(dev, "VF %d: adding FDIR raw flow rule failed, ret:%d\n",
+> +			vf->vf_id, ret);
+> +		goto err_clr_irq;
+> +	}
+> +
+> +	/* Save parsed profile fv info of the FDIR rule for the first time */
+> +	if (!fv_found) {
+> +		for (i = 0; i < conf->prof->fv_num; i++)
+> +			ice_vc_parser_fv_save(&pi->prof.fv[i],
+> +					      &conf->prof->fv[i]);
+> +		pi->prof.fv_num = conf->prof->fv_num;
+> +		pi->fdir_active_cnt = 1;
+> +	}
+> +
+> +	return 0;
+> +
+> +err_clr_irq:
+> +	ice_vc_fdir_clear_irq_ctx(vf);
+> +err_rem_entry:
+> +	ice_vc_fdir_remove_entry(vf, conf, conf->flow_id);
+> +	return ret;
+> +}
+> +
+>   /**
+>    * ice_vc_add_fdir_fltr - add a FDIR filter for VF by the msg buffer
+>    * @vf: pointer to the VF info
+> @@ -1846,7 +2134,7 @@ int ice_vc_add_fdir_fltr(struct ice_vf *vf, u8 *msg)
+>   	len = sizeof(*stat);
+>   	ret = ice_vc_validate_fdir_fltr(vf, fltr, conf);
+>   	if (ret) {
+> -		v_ret = VIRTCHNL_STATUS_SUCCESS;
+> +		v_ret = VIRTCHNL_STATUS_ERR_PARAM;
+>   		stat->status = VIRTCHNL_FDIR_FAILURE_RULE_INVALID;
+>   		dev_dbg(dev, "Invalid FDIR filter from VF %d\n", vf->vf_id);
+>   		goto err_free_conf;
+> @@ -1861,6 +2149,15 @@ int ice_vc_add_fdir_fltr(struct ice_vf *vf, u8 *msg)
+>   		goto exit;
+>   	}
+>   
+> +	/* For raw FDIR filters created by the parser */
+> +	if (conf->parser_ena) {
+> +		ret = ice_vc_add_fdir_raw(vf, conf, &v_ret, stat, len);
+> +		if (ret)
+> +			goto err_free_conf;
+> +		goto exit;
+> +	}
+> +
+> +	is_tun = ice_fdir_is_tunnel(conf->ttype);
+>   	ret = ice_vc_fdir_config_input_set(vf, fltr, conf, is_tun);
+>   	if (ret) {
+>   		v_ret = VIRTCHNL_STATUS_SUCCESS;
+> @@ -1921,6 +2218,78 @@ int ice_vc_add_fdir_fltr(struct ice_vf *vf, u8 *msg)
+>   	return ret;
+>   }
+>   
+> +/**
+> + * ice_vc_del_fdir_raw - delete a raw FDIR filter for VF
+> + * @vf: pointer to the VF info
+> + * @conf: FDIR configuration for each filter
+> + * @v_ret: the final VIRTCHNL code
+> + * @stat: pointer to the VIRTCHNL_OP_DEL_FDIR_FILTER
+> + * @len: length of the stat
+> + *
+> + * Return: 0 on success or negative errno on failure.
+> + */
+> +static int
+> +ice_vc_del_fdir_raw(struct ice_vf *vf,
+> +		    struct virtchnl_fdir_fltr_conf *conf,
+> +		    enum virtchnl_status_code *v_ret,
+> +		    struct virtchnl_fdir_del *stat, int len)
+> +{
+> +	struct ice_vsi *vf_vsi, *ctrl_vsi;
+> +	enum ice_block blk = ICE_BLK_FD;
+> +	struct ice_fdir_prof_info *pi;
+> +	struct ice_pf *pf = vf->pf;
+> +	struct device *dev;
+> +	struct ice_hw *hw;
+> +	u16 vsi_num;
+> +	int ptg;
+> +	int ret;
+> +	int id;
+
+`first_bit` returns `unsigned long`.
+
+> +
+> +	dev = ice_pf_to_dev(pf);
+> +	hw = &pf->hw;
+> +	*v_ret = VIRTCHNL_STATUS_ERR_PARAM;
+> +	stat->status = VIRTCHNL_FDIR_FAILURE_RULE_NORESOURCE;
+> +
+> +	id = find_first_bit(conf->prof->ptypes, ICE_FLOW_PTYPE_MAX);
+> +	ptg = hw->blk[ICE_BLK_FD].xlt1.t[id];
+> +
+> +	ret = ice_vc_fdir_write_fltr(vf, conf, false, false);
+> +	if (ret) {
+> +		dev_err(dev, "VF %u: deleting FDIR raw flow rule failed: %d\n",
+> +			vf->vf_id, ret);
+> +		return ret;
+> +	}
+> +
+> +	vf_vsi = ice_get_vf_vsi(vf);
+> +	if (!vf_vsi) {
+> +		dev_err(dev, "Can not get FDIR vf_vsi for VF %u\n", vf->vf_id);
+> +		return -ENODEV;
+> +	}
+> +
+> +	ctrl_vsi = pf->vsi[vf->ctrl_vsi_idx];
+> +	if (!ctrl_vsi) {
+> +		dev_err(dev, "Can not get FDIR ctrl_vsi for VF %u\n",
+> +			vf->vf_id);
+> +		return -ENODEV;
+> +	}
+> +
+> +	pi = &vf->fdir_prof_info[ptg];
+> +	if (pi->fdir_active_cnt != 0) {
+> +		pi->fdir_active_cnt--;
+> +		/* Remove the profile id flow if no active FDIR rule left */
+> +		if (!pi->fdir_active_cnt) {
+> +			vsi_num = ice_get_hw_vsi_num(hw, ctrl_vsi->idx);
+> +			ice_rem_prof_id_flow(hw, blk, vsi_num, id);
+> +
+> +			vsi_num = ice_get_hw_vsi_num(hw, vf_vsi->idx);
+> +			ice_rem_prof_id_flow(hw, blk, vsi_num, id);
+> +		}
+> +	}
+> +
+> +	conf->parser_ena = false;
+> +	return 0;
+> +}
 
 
 Kind regards,
 
 Paul
+
+
+> +
+>   /**
+>    * ice_vc_del_fdir_fltr - delete a FDIR filter for VF by the msg buffer
+>    * @vf: pointer to the VF info
+> @@ -1933,7 +2302,10 @@ int ice_vc_del_fdir_fltr(struct ice_vf *vf, u8 *msg)
+>   	struct virtchnl_fdir_del *fltr = (struct virtchnl_fdir_del *)msg;
+>   	struct virtchnl_fdir_del *stat = NULL;
+>   	struct virtchnl_fdir_fltr_conf *conf;
+> +	struct ice_vf_fdir *fdir = &vf->fdir;
+>   	enum virtchnl_status_code v_ret;
+> +	struct ice_fdir_fltr *input;
+> +	enum ice_fltr_ptype flow;
+>   	struct device *dev;
+>   	struct ice_pf *pf;
+>   	int is_tun = 0;
+> @@ -1983,6 +2355,15 @@ int ice_vc_del_fdir_fltr(struct ice_vf *vf, u8 *msg)
+>   		goto err_exit;
+>   	}
+>   
+> +	/* For raw FDIR filters created by the parser */
+> +	if (conf->parser_ena) {
+> +		ret = ice_vc_del_fdir_raw(vf, conf, &v_ret, stat, len);
+> +		if (ret)
+> +			goto err_del_tmr;
+> +		goto exit;
+> +	}
+> +
+> +	is_tun = ice_fdir_is_tunnel(conf->ttype);
+>   	ret = ice_vc_fdir_write_fltr(vf, conf, false, is_tun);
+>   	if (ret) {
+>   		v_ret = VIRTCHNL_STATUS_SUCCESS;
+> @@ -1992,6 +2373,13 @@ int ice_vc_del_fdir_fltr(struct ice_vf *vf, u8 *msg)
+>   		goto err_del_tmr;
+>   	}
+>   
+> +	/* Remove unused profiles to avoid unexpected behaviors */
+> +	input = &conf->input;
+> +	flow = input->flow_type;
+> +	if (fdir->fdir_fltr_cnt[flow][is_tun] == 1)
+> +		ice_vc_fdir_rem_prof(vf, flow, is_tun);
+> +
+> +exit:
+>   	kfree(stat);
+>   
+>   	return ret;
