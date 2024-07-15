@@ -2,93 +2,98 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id CCE60931298
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 15 Jul 2024 12:50:21 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1143A93129A
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 15 Jul 2024 12:50:29 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 7F37340538;
-	Mon, 15 Jul 2024 10:50:20 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id B2887404D5;
+	Mon, 15 Jul 2024 10:50:27 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id nTg-94HUkoja; Mon, 15 Jul 2024 10:50:19 +0000 (UTC)
+ id qrFhWVb6lBQb; Mon, 15 Jul 2024 10:50:26 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org AF2E9403C8
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org AD3CD40536
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1721040619;
-	bh=5n3KPPXi8tklR8kk+dyC6gRrEr2rhdUPWyPC5f2w+P8=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=RjPVsTuHc5AclZNYPPQI4Wu8EXDIgZhECQd7RWEV2CsphdJ5Q+xauzPuSB+L7Pho9
-	 /byE78dA9FQDCnXH79rc6mR8JG/4sZN54g3wuyRYpoHgHivcK9l13dVGC3Estw8r4W
-	 vPcBfMY/AVqNWLJyYehRBjTkoU8hL5nmPZcPP4ZBy4kK7ZXfGyDS692SVPW8ruIPTz
-	 ZbqE779UtRvFJAPEULhhPZkq+GTW9LDsc16E3Hmdr12OAlbAa3lFmbobxvRvatDiyi
-	 cbNOtDqzraw0SBYOX1YEKJqn/H+uxTxQ9uDV3r2Oc7kFY5WS2NhWWz9I3Tr+FgnRAs
-	 e9QdBGT6ODApw==
+	s=default; t=1721040626;
+	bh=oiBjniRJ1/LtKPOsn5s9dNfPXYzaF67nNwmCG70/qGg=;
+	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=Xkugd255d60anYEbw9uhhAD+YYcq7tyz0aG7Xldx2zol3XmIExhZ24ss0chUG666I
+	 LPbrxaaLPwHSDkYY2k+4BH5nXm9YImyS1A5e8QcLu0mPSjEm0AuZR7UxtJ85qm5aN3
+	 z3oM5m/me5iAkY/HwgdgKc0SSnwo2/nzK1T/k7n4LmeBLltUlk8Ns/Mfr6+7cJpyAV
+	 sNbYytfZUmw/DT0PnREvz93Mb9epzNijAmfipWR5LKqixvGy39oBsjT4RjTo9HoRmu
+	 5Og4OgHx41wnuZnnKwMooctnolJctzRZA/DB6+LcodtgLxoqy9wiy3kTNzziia37yC
+	 R572AhMXhMiVg==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id AF2E9403C8;
-	Mon, 15 Jul 2024 10:50:19 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id AD3CD40536;
+	Mon, 15 Jul 2024 10:50:26 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 8485D1BF3FF
- for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Jul 2024 10:50:17 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 037A71BF3FF
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Jul 2024 10:50:24 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 7B82B607DF
- for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Jul 2024 10:50:17 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id E0308404D5
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Jul 2024 10:50:23 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id f4w3BYCrrQsc for <intel-wired-lan@lists.osuosl.org>;
- Mon, 15 Jul 2024 10:50:17 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id f4m9uu4ynt24 for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 15 Jul 2024 10:50:23 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.14;
  helo=mgamail.intel.com; envelope-from=sergey.temerkhanov@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org D4CC2607EB
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D4CC2607EB
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 0ABDA40442
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0ABDA40442
 Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.14])
- by smtp3.osuosl.org (Postfix) with ESMTPS id D4CC2607EB
- for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Jul 2024 10:50:16 +0000 (UTC)
-X-CSE-ConnectionGUID: vQQgPc6ZShugHGwNn5/xhg==
-X-CSE-MsgGUID: xkmwfdiYQDiUFDKVG/COeg==
-X-IronPort-AV: E=McAfee;i="6700,10204,11133"; a="18608974"
-X-IronPort-AV: E=Sophos;i="6.09,210,1716274800"; d="scan'208";a="18608974"
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 0ABDA40442
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Jul 2024 10:50:22 +0000 (UTC)
+X-CSE-ConnectionGUID: JXGqvJFgQlucox/i9NDK9Q==
+X-CSE-MsgGUID: RyM6JwDZSDipLFvFQUnkNg==
+X-IronPort-AV: E=McAfee;i="6700,10204,11133"; a="18609011"
+X-IronPort-AV: E=Sophos;i="6.09,210,1716274800"; d="scan'208";a="18609011"
 Received: from fmviesa009.fm.intel.com ([10.60.135.149])
  by fmvoesa108.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 15 Jul 2024 03:50:16 -0700
-X-CSE-ConnectionGUID: 2ISnqq1US+yIqeEcq0LNlA==
-X-CSE-MsgGUID: XiOKpQE1S5Gr6gfGlQQkyg==
+ 15 Jul 2024 03:50:20 -0700
+X-CSE-ConnectionGUID: 2t9QlrDnQDquXCaCLEbrVg==
+X-CSE-MsgGUID: r6XHH3dJT/m22GOXVyrZ5w==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.09,210,1716274800"; d="scan'208";a="49545131"
+X-IronPort-AV: E=Sophos;i="6.09,210,1716274800"; d="scan'208";a="49545153"
 Received: from unknown (HELO localhost.igk.intel.com) ([10.211.13.141])
- by fmviesa009.fm.intel.com with ESMTP; 15 Jul 2024 03:50:15 -0700
+ by fmviesa009.fm.intel.com with ESMTP; 15 Jul 2024 03:50:19 -0700
 From: Sergey Temerkhanov <sergey.temerkhanov@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Mon, 15 Jul 2024 12:48:43 +0200
-Message-ID: <20240715104845.51419-1-sergey.temerkhanov@intel.com>
+Date: Mon, 15 Jul 2024 12:48:44 +0200
+Message-ID: <20240715104845.51419-2-sergey.temerkhanov@intel.com>
 X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20240715104845.51419-1-sergey.temerkhanov@intel.com>
+References: <20240715104845.51419-1-sergey.temerkhanov@intel.com>
 MIME-Version: 1.0
+Organization: Intel Technology Poland sp. z o.o. - ul. Slowackiego 173,
+ 80-298 Gdansk - KRS 101882 - NIP 957-07-52-316
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1721040617; x=1752576617;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=xEuylVJbMZlQtdVSzPl1C/uAWlhBXQX9XqnLI+Z9gZc=;
- b=SQGPryqCyyjfzOrdCkpwJEqRDQWatPcdPMV2sQMaOXBEE+Wx2jlaPPyW
- Lvsl6rIg4GfJ1uAjzcUZC1Q4QwQKuKCTVvCaWB9MdmLTQyp68/oaUz4AM
- p9zf92palfcXW62mqDZGiPmU4LrSW+6E0miHTIGFPNXX4Nz0rbgEKY4IC
- 4EZZH2ngSsWVa+zVE5xJMAqyPhRVtYqiOtG7lXl/ppwhBoqeU7e1uKBda
- 91pI9/uq+Feo7aAe6wnhyTWcnnjgTlGhaiDaI0G8eSHPn6iZorPaTAudj
- a2cuwFp308klBYsX/BKxqUZwOwHyfFgjCXJVswR+hzEnhYglc5hq0WKfX
- A==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ t=1721040623; x=1752576623;
+ h=from:to:cc:subject:date:message-id:in-reply-to:
+ references:mime-version:content-transfer-encoding;
+ bh=Xcby91CvHtdQucL3Gqpiq/obaC+y2zTJJ2JE4tqdZ6o=;
+ b=KwcEswmdsBx+3ILdVax1IUFd6Tnt3HZXzGHk1iMnlJUvoCZXa5fSdHJW
+ KgaGw2YAQHXglY7rBP2xCZsG/0QZxBwulb/Gnyos8mrV4GL7Rk8lSmvxd
+ QMrtO8Rc+8vJWCnT8EgGhjKTA5esSlTa5/RIdQlOL3vSwhvf6OHFH4Bg5
+ Ro3ct0Yayl7IL4r/tFB+WLoBw+JgxYTR4Lk/G6q6I8K00GMKc/2WhakcC
+ LI5zqIkGvV1a2BcThTzSJdaaPAnex99NbHj48Ssxx9/eJpPlPhmOTTy9H
+ qJWFL2uHNYW1DXg3Tsj90+OJpAgc4thN2J9PTiGelLZyOfrHg2bqHDAWd
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=SQGPryqC
-Subject: [Intel-wired-lan] [PATCH iwl-net v1 0/2] ice: Reset procedure fixes
+ header.s=Intel header.b=KwcEswmd
+Subject: [Intel-wired-lan] [PATCH iwl-net v1 1/2] ice: Fix reset handler
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -101,22 +106,37 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Sergey Temerkhanov <sergey.temerkhanov@intel.com>, netdev@vger.kernel.org
+Cc: Sergey Temerkhanov <sergey.temerkhanov@intel.com>, netdev@vger.kernel.org,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Fixes preventing possible races between resets (CORER etc)
-and OICR ISR invocation / PTP hardware access
+From: Grzegorz Nitka <grzegorz.nitka@intel.com>
 
+Synchronize OICR IRQ when preparing for reset to avoid potential
+race conditions between the reset procedure and OICR
 
-Grzegorz Nitka (2):
-  ice: Fix reset handler
-  ice: Skip PTP HW writes during PTP reset procedure
-
+Signed-off-by: Grzegorz Nitka <grzegorz.nitka@intel.com>
+Signed-off-by: Sergey Temerkhanov <sergey.temerkhanov@intel.com>
+Fixes: 4aad5335969f ("ice: add individual interrupt allocation")
+Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+---
  drivers/net/ethernet/intel/ice/ice_main.c | 2 ++
- drivers/net/ethernet/intel/ice/ice_ptp.c  | 4 ++++
- 2 files changed, 6 insertions(+)
+ 1 file changed, 2 insertions(+)
 
+diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
+index e2990993b16f..3405fe749b25 100644
+--- a/drivers/net/ethernet/intel/ice/ice_main.c
++++ b/drivers/net/ethernet/intel/ice/ice_main.c
+@@ -560,6 +560,8 @@ ice_prepare_for_reset(struct ice_pf *pf, enum ice_reset_req reset_type)
+ 	if (test_bit(ICE_PREPARED_FOR_RESET, pf->state))
+ 		return;
+ 
++	synchronize_irq(pf->oicr_irq.virq);
++
+ 	ice_unplug_aux_dev(pf);
+ 
+ 	/* Notify VFs of impending reset */
 -- 
 2.43.0
 
