@@ -1,96 +1,94 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 70691932EA9
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 16 Jul 2024 18:51:50 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1DB579335AC
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 17 Jul 2024 05:38:47 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 36B7C81164;
-	Tue, 16 Jul 2024 16:51:47 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 1F2EA60899;
+	Wed, 17 Jul 2024 03:38:44 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 7-Y6itIIxWFX; Wed, 17 Jul 2024 03:38:43 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org AFFEE608A1
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1721187522;
+	bh=ltl2CVHZ+aRYdjD6mKF50jAtovFx6CYhgt2p7QTqO6c=;
+	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=ST9N4EKuSybm78yPfVh8PZwIk1LSaym0QrMmWlGdLXcPSKofCStEjx3oFpSYNHrcj
+	 +OPOlkBrCjJHCPwj4yemuj81QDiyELy53KpwfheCqKp12fKdr0OksmxbO/HAPtBNMt
+	 tvPyvFLTwpj9rdMFJ1giDjgTw8uhS3CytiW2c1Vz1C2POsM6Z0zROufxr8mK+IyfBw
+	 Q0+OZ+do6vs2Bx1fyFw/yPbO7KpbiSxDc+T0qZt5ssWLfX98nF0S4ug0uBSlyB0esE
+	 dB++3gGNf3KCqy9z7tCX/JZhZg0z/MqqttIUxgaZT9ede3EpMG8EDR7WjeoJnEFabf
+	 hV6UT74mg3k9Q==
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp3.osuosl.org (Postfix) with ESMTP id AFFEE608A1;
+	Wed, 17 Jul 2024 03:38:42 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 95BC31BF3DA
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Jul 2024 03:38:40 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp1.osuosl.org (Postfix) with ESMTP id 80FC48112C
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Jul 2024 03:38:40 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id MGYe6KRbCIpD; Tue, 16 Jul 2024 16:51:46 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 28F2481176
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1721148706;
-	bh=9FyOTMQEyctKcX6PD7xEEfPVD/zlnl5HQmXYTfM+6jY=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=QSjroBRv/erIWilqyMW1QPcgRfibD+c6WYBPM93qQMeAHlVIdoZL1p7Mdp+a1nqY/
-	 tYGqLoPMJFLyKJBoEmNgbqWqpBzTooY9bjAuKXaphlL51cSf6HOeZFtU0BhOON+7Jg
-	 obhtetH3kq+czKqxcJSeanA5Dz36b+OxXox5cW4RO+LOQ7KpZxhvaNtr8Btz1Tgvqy
-	 cExGZwBgEfYI5zQgO8Tg3hOv78wqmGplhuVDowL1zcWRcrafeEJ1M3yQHbBJ/And9u
-	 zCFOdU/3Kj3qfmIyUq3akQ1HNbXmMUOHZjb0P+C+lJS1QPoGSK+u8qJJs2i3qed5b9
-	 NufOOLX0DSAxA==
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 28F2481176;
-	Tue, 16 Jul 2024 16:51:46 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id CC81B1BF3D4
- for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Jul 2024 19:12:17 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id B8247403B9
- for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Jul 2024 19:12:17 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 7wdFpdogTGMu for <intel-wired-lan@lists.osuosl.org>;
- Mon, 15 Jul 2024 19:12:16 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.129.124;
- helo=us-smtp-delivery-124.mimecast.com; envelope-from=kheib@redhat.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 9148640373
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 9148640373
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.129.124])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 9148640373
- for <intel-wired-lan@lists.osuosl.org>; Mon, 15 Jul 2024 19:12:15 +0000 (UTC)
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-195-On_l9IgAOuGIKzO9doLriA-1; Mon,
- 15 Jul 2024 15:12:11 -0400
-X-MC-Unique: On_l9IgAOuGIKzO9doLriA-1
-Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 10DDE1955D53; Mon, 15 Jul 2024 19:12:10 +0000 (UTC)
-Received: from fedora-x1.redhat.com (unknown [10.22.16.23])
- by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 9479D19560AE; Mon, 15 Jul 2024 19:12:07 +0000 (UTC)
-From: Kamal Heib <kheib@redhat.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Mon, 15 Jul 2024 15:11:48 -0400
-Message-ID: <20240715191148.746362-1-kheib@redhat.com>
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-X-Mailman-Approved-At: Tue, 16 Jul 2024 16:51:42 +0000
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=redhat.com; 
- s=mimecast20190719; t=1721070734;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=9FyOTMQEyctKcX6PD7xEEfPVD/zlnl5HQmXYTfM+6jY=;
- b=AczNkbiyD8gWMQENP8Nvq1oiM8jASTwKBlu5yEYiQhJ+rt2VWzHPv9gLCP8nvq59Zo5lKO
- FQLj2TFOWSfPGis91C2VVoXGzY7xjKoyRk5kknDDQJDINkFtLgOEODgqTNUYGy6zLkDSJo
- MkVej4RUMnZGhF+P2coBm/HTMxLikJs=
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ id 5tYY3udg6Ohv for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 17 Jul 2024 03:38:39 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.21;
+ helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 548C8810EB
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 548C8810EB
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.21])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 548C8810EB
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Jul 2024 03:38:38 +0000 (UTC)
+X-CSE-ConnectionGUID: F8XFgsoaRUOv7PN4L9qm6w==
+X-CSE-MsgGUID: 5lG3EA35TfOTttDAYKRv9w==
+X-IronPort-AV: E=McAfee;i="6700,10204,11135"; a="18621585"
+X-IronPort-AV: E=Sophos;i="6.09,213,1716274800"; d="scan'208";a="18621585"
+Received: from orviesa007.jf.intel.com ([10.64.159.147])
+ by orvoesa113.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 16 Jul 2024 20:38:38 -0700
+X-CSE-ConnectionGUID: JIVGys0GQNSvXpHuuTlhew==
+X-CSE-MsgGUID: Kgi7G8qYQRuIRlEM1NVSQQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.09,213,1716274800"; d="scan'208";a="50836322"
+Received: from lkp-server01.sh.intel.com (HELO 68891e0c336b) ([10.239.97.150])
+ by orviesa007.jf.intel.com with ESMTP; 16 Jul 2024 20:38:37 -0700
+Received: from kbuild by 68891e0c336b with local (Exim 4.96)
+ (envelope-from <lkp@intel.com>) id 1sTvUx-000fw6-0q
+ for intel-wired-lan@lists.osuosl.org; Wed, 17 Jul 2024 03:38:35 +0000
+Date: Wed, 17 Jul 2024 11:38:27 +0800
+From: kernel test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <202407171125.grZPhYsm-lkp@intel.com>
+User-Agent: s-nail v14.9.24
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1721187519; x=1752723519;
+ h=date:from:to:subject:message-id;
+ bh=LbOs4ENCzC5/tyZ0M8vI+TdklD1QdY64YyK+V0NYkn8=;
+ b=bHthVzF4hd7XBnh+U6GKDe5of1zxPXoH9AbHwk589P2isaCG7FZReDqe
+ dXEa1empLbxLBBpHSHrlOAWYjbEEVxR9XPMRWj/So3vACOuSD9Q7Smal1
+ M1fepaxjaMi1HzmnmxGOBaDUMWYmBf7V4LvsoAX2l2XFh7+TysFNf6sua
+ VeWGDl1jKexYJmMhP6H8ZMELFxk+SgZ+rR51NNq0GtnoKa0inj9MEQdox
+ T2S7c2G3fDikUEtx7vD0cYbKVo4SxK76GlyHB5NJLutTUDQcyHxXHcqV6
+ dPcs7/3a7XMhSAhJJgMvTAKdQSF59/tn5xBp5rEUPVcG3N1nRKZt3FHiC
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=redhat.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
- header.a=rsa-sha256 header.s=mimecast20190719 header.b=AczNkbiy
-Subject: [Intel-wired-lan] [PATCH iwl-next] i40e: Add support for fw health
- report
+ header.from=intel.com
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=bHthVzF4
+Subject: [Intel-wired-lan] [tnguy-next-queue:main] BUILD SUCCESS
+ 77ae5e5b00720372af2860efdc4bc652ac682696
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -103,175 +101,142 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Ivan Vecera <ivecera@redhat.com>, netdev@vger.kernel.org,
- Kamal Heib <kheib@redhat.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- "David S . Miller" <davem@davemloft.net>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Add support for reporting fw status via the devlink health report.
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/netdev/net-next.git main
+branch HEAD: 77ae5e5b00720372af2860efdc4bc652ac682696  eth: fbnic: Fix spelling mistake "tiggerring" -> "triggering"
 
-Example:
- # devlink health show pci/0000:02:00.0 reporter fw
- pci/0000:02:00.0:
-   reporter fw
-     state healthy error 0 recover 0
- # devlink health diagnose pci/0000:02:00.0 reporter fw
- Status: normal
+elapsed time: 728m
 
-Signed-off-by: Kamal Heib <kheib@redhat.com>
----
- drivers/net/ethernet/intel/i40e/i40e.h        |  1 +
- .../net/ethernet/intel/i40e/i40e_devlink.c    | 57 +++++++++++++++++++
- .../net/ethernet/intel/i40e/i40e_devlink.h    |  2 +
- drivers/net/ethernet/intel/i40e/i40e_main.c   | 15 +++++
- 4 files changed, 75 insertions(+)
+configs tested: 120
+configs skipped: 3
 
-diff --git a/drivers/net/ethernet/intel/i40e/i40e.h b/drivers/net/ethernet/intel/i40e/i40e.h
-index d546567e0286..f94671b6e7c6 100644
---- a/drivers/net/ethernet/intel/i40e/i40e.h
-+++ b/drivers/net/ethernet/intel/i40e/i40e.h
-@@ -465,6 +465,7 @@ static inline const u8 *i40e_channel_mac(struct i40e_channel *ch)
- struct i40e_pf {
- 	struct pci_dev *pdev;
- 	struct devlink_port devlink_port;
-+	struct devlink_health_reporter *fw_health_report;
- 	struct i40e_hw hw;
- 	DECLARE_BITMAP(state, __I40E_STATE_SIZE__);
- 	struct msix_entry *msix_entries;
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_devlink.c b/drivers/net/ethernet/intel/i40e/i40e_devlink.c
-index cc4e9e2addb7..ad91c150cdba 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_devlink.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_devlink.c
-@@ -122,6 +122,25 @@ static int i40e_devlink_info_get(struct devlink *dl,
- 	return err;
- }
- 
-+static int i40e_fw_reporter_diagnose(struct devlink_health_reporter *reporter,
-+				     struct devlink_fmsg *fmsg,
-+				     struct netlink_ext_ack *extack)
-+{
-+	struct i40e_pf *pf = devlink_health_reporter_priv(reporter);
-+
-+	if (test_bit(__I40E_RECOVERY_MODE, pf->state))
-+		devlink_fmsg_string_pair_put(fmsg, "Status", "recovery");
-+	else
-+		devlink_fmsg_string_pair_put(fmsg, "Status", "normal");
-+
-+	return 0;
-+}
-+
-+static const struct devlink_health_reporter_ops i40e_fw_reporter_ops = {
-+	.name = "fw",
-+	.diagnose = i40e_fw_reporter_diagnose,
-+};
-+
- static const struct devlink_ops i40e_devlink_ops = {
- 	.info_get = i40e_devlink_info_get,
- };
-@@ -233,3 +252,41 @@ void i40e_devlink_destroy_port(struct i40e_pf *pf)
- {
- 	devlink_port_unregister(&pf->devlink_port);
- }
-+
-+/**
-+ * i40e_devlink_create_health_reporter - Create the health reporter for this PF
-+ * @pf: the PF to create reporter for
-+ *
-+ * Create health reporter for this PF.
-+ *
-+ * Return: zero on success or an error code on failure.
-+ **/
-+int i40e_devlink_create_health_reporter(struct i40e_pf *pf)
-+{
-+	struct devlink *devlink = priv_to_devlink(pf);
-+	struct device *dev = &pf->pdev->dev;
-+	int rc = 0;
-+
-+	devl_lock(devlink);
-+	pf->fw_health_report =
-+		devl_health_reporter_create(devlink, &i40e_fw_reporter_ops, 0, pf);
-+	if (IS_ERR(pf->fw_health_report)) {
-+		rc = PTR_ERR(pf->fw_health_report);
-+		dev_err(dev, "Failed to create fw reporter, err = %d\n", rc);
-+	}
-+	devl_unlock(devlink);
-+
-+	return rc;
-+}
-+
-+/**
-+ * i40e_devlink_destroy_health_reporter - Destroy the health reporter
-+ * @pf: the PF to cleanup
-+ *
-+ * Destroy the health reporter
-+ **/
-+void i40e_devlink_destroy_health_reporter(struct i40e_pf *pf)
-+{
-+	if (!IS_ERR_OR_NULL(pf->fw_health_report))
-+		devlink_health_reporter_destroy(pf->fw_health_report);
-+}
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_devlink.h b/drivers/net/ethernet/intel/i40e/i40e_devlink.h
-index 469fb3d2ee25..018679094bb5 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_devlink.h
-+++ b/drivers/net/ethernet/intel/i40e/i40e_devlink.h
-@@ -14,5 +14,7 @@ void i40e_devlink_register(struct i40e_pf *pf);
- void i40e_devlink_unregister(struct i40e_pf *pf);
- int i40e_devlink_create_port(struct i40e_pf *pf);
- void i40e_devlink_destroy_port(struct i40e_pf *pf);
-+int i40e_devlink_create_health_reporter(struct i40e_pf *pf);
-+void i40e_devlink_destroy_health_reporter(struct i40e_pf *pf);
- 
- #endif /* _I40E_DEVLINK_H_ */
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
-index cbcfada7b357..13cad5f58029 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_main.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
-@@ -15370,6 +15370,9 @@ static bool i40e_check_recovery_mode(struct i40e_pf *pf)
- 		dev_crit(&pf->pdev->dev, "Firmware recovery mode detected. Limiting functionality.\n");
- 		dev_crit(&pf->pdev->dev, "Refer to the Intel(R) Ethernet Adapters and Devices User Guide for details on firmware recovery mode.\n");
- 		set_bit(__I40E_RECOVERY_MODE, pf->state);
-+		if (pf->fw_health_report)
-+			devlink_health_report(pf->fw_health_report,
-+					      "FW recovery mode detected", pf);
- 
- 		return true;
- 	}
-@@ -15636,6 +15639,14 @@ static int i40e_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
- 		err = -ENOMEM;
- 		goto err_pf_alloc;
- 	}
-+
-+	err = i40e_devlink_create_health_reporter(pf);
-+	if (err) {
-+		dev_err(&pdev->dev,
-+			"Failed to create health reporter %d\n", err);
-+		goto err_health_reporter;
-+	}
-+
- 	pf->next_vsi = 0;
- 	pf->pdev = pdev;
- 	set_bit(__I40E_DOWN, pf->state);
-@@ -16180,6 +16191,8 @@ static int i40e_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
- err_pf_reset:
- 	iounmap(hw->hw_addr);
- err_ioremap:
-+	i40e_devlink_destroy_health_reporter(pf);
-+err_health_reporter:
- 	i40e_free_pf(pf);
- err_pf_alloc:
- 	pci_release_mem_regions(pdev);
-@@ -16209,6 +16222,8 @@ static void i40e_remove(struct pci_dev *pdev)
- 
- 	i40e_devlink_unregister(pf);
- 
-+	i40e_devlink_destroy_health_reporter(pf);
-+
- 	i40e_dbg_pf_exit(pf);
- 
- 	i40e_ptp_stop(pf);
+The following configs have been built successfully.
+More configs may be tested in the coming days.
+
+tested configs:
+alpha                             allnoconfig   gcc-13.2.0
+alpha                             allnoconfig   gcc-13.3.0
+alpha                            allyesconfig   gcc-13.3.0
+alpha                               defconfig   gcc-13.2.0
+arc                              allmodconfig   gcc-13.2.0
+arc                               allnoconfig   gcc-13.2.0
+arc                              allyesconfig   gcc-13.2.0
+arc                      axs103_smp_defconfig   gcc-13.2.0
+arc                                 defconfig   gcc-13.2.0
+arc                     haps_hs_smp_defconfig   gcc-13.2.0
+arc                            hsdk_defconfig   gcc-13.2.0
+arc                    vdk_hs38_smp_defconfig   gcc-13.2.0
+arm                              allmodconfig   gcc-14.1.0
+arm                               allnoconfig   clang-19
+arm                               allnoconfig   gcc-13.2.0
+arm                              allyesconfig   gcc-14.1.0
+arm                                 defconfig   gcc-13.2.0
+arm                        mvebu_v7_defconfig   gcc-13.2.0
+arm                        neponset_defconfig   gcc-13.2.0
+arm                           omap1_defconfig   gcc-13.2.0
+arm                           sama7_defconfig   gcc-13.2.0
+arm64                            allmodconfig   clang-19
+arm64                             allnoconfig   gcc-13.2.0
+arm64                             allnoconfig   gcc-14.1.0
+arm64                               defconfig   gcc-13.2.0
+csky                             alldefconfig   gcc-13.2.0
+csky                              allnoconfig   gcc-13.2.0
+csky                              allnoconfig   gcc-14.1.0
+csky                                defconfig   gcc-13.2.0
+hexagon                          allmodconfig   clang-19
+hexagon                           allnoconfig   clang-19
+hexagon                          allyesconfig   clang-19
+i386                             allmodconfig   gcc-13
+i386                              allnoconfig   gcc-13
+i386                             allyesconfig   gcc-13
+i386         buildonly-randconfig-001-20240717   clang-18
+i386         buildonly-randconfig-002-20240717   gcc-13
+i386         buildonly-randconfig-003-20240717   gcc-13
+i386         buildonly-randconfig-004-20240717   gcc-13
+i386         buildonly-randconfig-005-20240717   gcc-10
+i386         buildonly-randconfig-006-20240717   clang-18
+i386                                defconfig   clang-18
+i386                  randconfig-001-20240717   gcc-8
+i386                  randconfig-002-20240717   clang-18
+i386                  randconfig-003-20240717   clang-18
+i386                  randconfig-004-20240717   gcc-8
+i386                  randconfig-005-20240717   gcc-10
+i386                  randconfig-006-20240717   gcc-13
+i386                  randconfig-011-20240717   gcc-9
+i386                  randconfig-012-20240717   gcc-13
+i386                  randconfig-013-20240717   clang-18
+i386                  randconfig-014-20240717   clang-18
+i386                  randconfig-015-20240717   clang-18
+i386                  randconfig-016-20240717   clang-18
+loongarch                        allmodconfig   gcc-14.1.0
+loongarch                         allnoconfig   gcc-13.2.0
+loongarch                         allnoconfig   gcc-14.1.0
+loongarch                           defconfig   gcc-13.2.0
+m68k                             allmodconfig   gcc-14.1.0
+m68k                              allnoconfig   gcc-13.2.0
+m68k                              allnoconfig   gcc-14.1.0
+m68k                             allyesconfig   gcc-14.1.0
+m68k                                defconfig   gcc-13.2.0
+microblaze                       allmodconfig   gcc-14.1.0
+microblaze                        allnoconfig   gcc-13.2.0
+microblaze                        allnoconfig   gcc-14.1.0
+microblaze                       allyesconfig   gcc-14.1.0
+microblaze                          defconfig   gcc-13.2.0
+mips                              allnoconfig   gcc-13.2.0
+mips                              allnoconfig   gcc-14.1.0
+nios2                         10m50_defconfig   gcc-13.2.0
+nios2                             allnoconfig   gcc-13.2.0
+nios2                             allnoconfig   gcc-14.1.0
+nios2                               defconfig   gcc-13.2.0
+openrisc                          allnoconfig   gcc-14.1.0
+openrisc                         allyesconfig   gcc-14.1.0
+openrisc                            defconfig   gcc-14.1.0
+parisc                           allmodconfig   gcc-14.1.0
+parisc                            allnoconfig   gcc-14.1.0
+parisc                           allyesconfig   gcc-14.1.0
+parisc                              defconfig   gcc-14.1.0
+parisc64                            defconfig   gcc-13.2.0
+powerpc                          allmodconfig   gcc-14.1.0
+powerpc                           allnoconfig   gcc-14.1.0
+powerpc                          allyesconfig   clang-19
+powerpc                   currituck_defconfig   gcc-13.2.0
+powerpc                    ge_imp3a_defconfig   gcc-13.2.0
+powerpc                   lite5200b_defconfig   gcc-13.2.0
+powerpc                     mpc512x_defconfig   gcc-13.2.0
+powerpc                 mpc834x_itx_defconfig   gcc-13.2.0
+powerpc               mpc834x_itxgp_defconfig   gcc-13.2.0
+riscv                            allmodconfig   clang-19
+riscv                             allnoconfig   gcc-14.1.0
+riscv                            allyesconfig   clang-19
+riscv                               defconfig   gcc-14.1.0
+s390                             allmodconfig   clang-19
+s390                              allnoconfig   clang-19
+s390                             allyesconfig   gcc-14.1.0
+s390                                defconfig   gcc-14.1.0
+sh                               allmodconfig   gcc-14.1.0
+sh                                allnoconfig   gcc-13.2.0
+sh                                allnoconfig   gcc-14.1.0
+sh                               allyesconfig   gcc-14.1.0
+sh                                  defconfig   gcc-14.1.0
+sparc                            allmodconfig   gcc-14.1.0
+sparc                             allnoconfig   gcc-14.1.0
+sparc64                             defconfig   gcc-14.1.0
+um                               allmodconfig   clang-19
+um                                allnoconfig   clang-17
+um                               allyesconfig   gcc-13
+um                                  defconfig   gcc-14.1.0
+um                             i386_defconfig   gcc-14.1.0
+um                           x86_64_defconfig   gcc-14.1.0
+x86_64                            allnoconfig   clang-18
+x86_64                           allyesconfig   clang-18
+x86_64                              defconfig   gcc-13
+x86_64                          rhel-8.3-rust   clang-18
+xtensa                            allnoconfig   gcc-13.2.0
+xtensa                            allnoconfig   gcc-14.1.0
+xtensa                       common_defconfig   gcc-13.2.0
+
 -- 
-2.45.2
-
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
