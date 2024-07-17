@@ -1,93 +1,119 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 71EFE933E21
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 17 Jul 2024 16:02:23 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id B83F6934175
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 17 Jul 2024 19:26:00 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 5E34140E56;
-	Wed, 17 Jul 2024 14:02:21 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 18A9460652;
+	Wed, 17 Jul 2024 17:25:59 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id NIpgMCDEEwnp; Wed, 17 Jul 2024 17:25:58 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1311C6070C
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1721237158;
+	bh=lu1GyI9JAIOiUE0J5ISEn7mevghFQULbc7dQVhpdMfg=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=fPBpZHqkzVrzzhd9wHwOobHn0ySXo/0iSupKqhy4ne2C8gTkpeiLx3neAyFqzvXbc
+	 lDAaKJbethQTC+0QbipyR6B+MzCb8b8MUUXZV3U2yS8DN0ygmuYpoYUD4N6JCdkVqi
+	 UhR3prD8W6hu0xY6IJDdp/G91bWdqu0U9hvHgy1TdcDBlgAH6bEm2M2tKHrH/9I8f5
+	 3y8q/ryDLz0uDRjZbIFVOEBjEPrC3EheQPaeTU/ONLQA6uGq4g0YY8GQpwo+ktp6Dh
+	 qzAcDG1BXB0pl0eRWRSNOTmIy1Ld76gdoZJ9Hd9VmqdCOAud0IfxRuAp6xWVSOOQAW
+	 y8HiA2SePWrGA==
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp3.osuosl.org (Postfix) with ESMTP id 1311C6070C;
+	Wed, 17 Jul 2024 17:25:58 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 9C68B1BF368
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Jul 2024 17:25:55 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp2.osuosl.org (Postfix) with ESMTP id 88AF5409D9
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Jul 2024 17:25:55 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id CBRvZLar0Pv8; Wed, 17 Jul 2024 14:02:20 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1720340E74
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1721224939;
-	bh=YeGhDw1xM68hrWstaYl/SLEsAPXylNPWQrlInSvcFN4=;
-	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=YyIpGP/DJr1O0Sq/gp+BpSxRCvjQCTvFpefEsxP+0dBkoR544jFq2v8Q2GlOn900N
-	 lqkLAE4yAnnkGBcUL9PydmmG6qd0CHk8gFt/C5IFuXcI3U8BYf6bShgxG48pCXcri5
-	 tBtqEhXqRifWqPI7DUAIBQFpppkJjtbksniEhi1as1taNzYjGrU3jlfSGPTtNYRjnn
-	 z9zhTMcWnjXWniB/NEnl5Vwc1Sc3Ojbf/7tNtvf6wn8y5IeP+ecjq3yC3hO/J0rW2q
-	 IxPg/7GoDPp/s11W6SMHWySojmYL3ec0CTMCXmFNsI/SL0MjJzLURnVY4Ay0Dzc10D
-	 TbvUcDofWSGjg==
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 1720340E74;
-	Wed, 17 Jul 2024 14:02:19 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id AC3421BF3CB
- for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Jul 2024 14:02:16 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id A0BC040997
- for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Jul 2024 14:02:16 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id enkyc65nUZFt for <intel-wired-lan@lists.osuosl.org>;
- Wed, 17 Jul 2024 14:02:15 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.14;
- helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 11DDA40990
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 11DDA40990
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.14])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 11DDA40990
- for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Jul 2024 14:02:14 +0000 (UTC)
-X-CSE-ConnectionGUID: zbTWOQJQTVCpYfUMOZbJ9A==
-X-CSE-MsgGUID: v3HjbbLnQ3K3swEj1h7hgg==
-X-IronPort-AV: E=McAfee;i="6700,10204,11136"; a="18918029"
-X-IronPort-AV: E=Sophos;i="6.09,214,1716274800"; d="scan'208";a="18918029"
-Received: from fmviesa004.fm.intel.com ([10.60.135.144])
- by fmvoesa108.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 17 Jul 2024 07:02:14 -0700
-X-CSE-ConnectionGUID: 1XZvJKT9SJyyDc2sqxkz3A==
-X-CSE-MsgGUID: WCdAo3gMTJqjdEPbQfPhIA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.09,214,1716274800"; d="scan'208";a="54921063"
-Received: from lkp-server01.sh.intel.com (HELO 68891e0c336b) ([10.239.97.150])
- by fmviesa004.fm.intel.com with ESMTP; 17 Jul 2024 07:02:13 -0700
-Received: from kbuild by 68891e0c336b with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1sU5ER-000gMx-1g
- for intel-wired-lan@lists.osuosl.org; Wed, 17 Jul 2024 14:02:11 +0000
-Date: Wed, 17 Jul 2024 22:01:37 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <202407172235.PEb4yXwS-lkp@intel.com>
-User-Agent: s-nail v14.9.24
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1721224935; x=1752760935;
- h=date:from:to:subject:message-id;
- bh=u1zRs7yoAIVNWIX1VT92zKNGdkznFmDOYsaCmwHeNXc=;
- b=G/wE+W9BUC0D1WVqEAD/vwdnRRZl5kz3Mc0L/y7qa0UX3WEGN6VNklqb
- OQpEaVRc0b0U7qJ7bB20oiEwnqU9Xz3MbGZwUAEBm6Tue59N+Oy7JR+3N
- QehiGkMWvfCkofnTxZ0/mHlTxi820M0ZIf2/uu8hTX7fLmRmgj09y1Yo2
- ZGXK3XhDbfX/4Rha3GBSWt0esJd0dOWOYfDirutvUIMaJzrRujstNCp3N
- Fso4ePREijxOxmaclbbdFDtpJ8zz68pSJjjQNnvVulQ+zmtwDvb7Yfnoa
- x6ilMcd9HsLXUQS6TM1y01VFMjhxaka9h+3FCU8RJ0TVa6UJjK/pvxIP6
- Q==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ id OGyyViUvQRGZ for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 17 Jul 2024 17:25:54 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.133.124;
+ helo=us-smtp-delivery-124.mimecast.com; envelope-from=kheib@redhat.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 3044640472
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3044640472
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 3044640472
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Jul 2024 17:25:53 +0000 (UTC)
+Received: from mail-qv1-f70.google.com (mail-qv1-f70.google.com
+ [209.85.219.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-516-UiobYivTPSmFUPfxqhC4VQ-1; Wed, 17 Jul 2024 13:25:50 -0400
+X-MC-Unique: UiobYivTPSmFUPfxqhC4VQ-1
+Received: by mail-qv1-f70.google.com with SMTP id
+ 6a1803df08f44-6b5ed8fb791so101826d6.3
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Jul 2024 10:25:50 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1721237150; x=1721841950;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=lu1GyI9JAIOiUE0J5ISEn7mevghFQULbc7dQVhpdMfg=;
+ b=v9nYEx2RjLAvk8IJcyp9fzPAlMJqpI7HS1z0iQvONyPw+bVapkoLgD+ZbUOEj8tYmL
+ gccP4u+9ocLK03KBEUD1XduV9N1qSUw7PeYvC3PCGsirmFT0fj7I+LyXquKjmKNS9nNz
+ tJJ7I1UQIAmYalJSV3Ky0RL2FfGz4GCTCeWPG1sjfrAtJEC9MbDchH1HcXRzJ0rKybHS
+ V/ttcP9HU13tb0lLRuhvR652Xah+i1LpPKNXwBjrNVSw+hh62SboYLl7epb7DTi/26vV
+ 8LDuwxzw61t4+/LUSEBe6loMhNYLs/lICdl87FPiw8nVQp4V1+GtAAVZI72tgtlN889r
+ CAgA==
+X-Gm-Message-State: AOJu0YyiCBklrXSTtaiTatMDMVLUK38RKYLM9zcbWqq0gPtuP9RmulFy
+ gYVEQyFOdRktVa/T5AQIZximFi8qqPuHywqpmcWByMtyMcwUrUK0xd72cPFLxzxByUhNuMK4E/P
+ bI++OBIieW67kiRuCRNgLLzsyiIRh+LkVeoeLg2WncpAK6LHu2Yu9s3meU1Ce++GQ0sU=
+X-Received: by 2002:a05:6214:20a7:b0:6b5:2b33:5445 with SMTP id
+ 6a1803df08f44-6b79c5c9a1cmr1077706d6.25.1721237150297; 
+ Wed, 17 Jul 2024 10:25:50 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFhXarTu58sXJCSQkMUfsI0kMSFzUiUh2z8hFp1TcU+T3Xeke850y5NpiqMVazkQooE2oLEQw==
+X-Received: by 2002:a05:6214:20a7:b0:6b5:2b33:5445 with SMTP id
+ 6a1803df08f44-6b79c5c9a1cmr1077466d6.25.1721237149892; 
+ Wed, 17 Jul 2024 10:25:49 -0700 (PDT)
+Received: from fedora-x1 ([142.126.87.70]) by smtp.gmail.com with ESMTPSA id
+ 6a1803df08f44-6b79c64fe30sm287576d6.110.2024.07.17.10.25.48
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 17 Jul 2024 10:25:49 -0700 (PDT)
+Date: Wed, 17 Jul 2024 13:25:38 -0400
+From: Kamal Heib <kheib@redhat.com>
+To: Jiri Pirko <jiri@resnulli.us>
+Message-ID: <Zpf-kvdAh1HRIchW@fedora-x1>
+References: <20240715191148.746362-1-kheib@redhat.com>
+ <ZpZ3JrM9Gu3R358u@nanopsycho.orion>
+MIME-Version: 1.0
+In-Reply-To: <ZpZ3JrM9Gu3R358u@nanopsycho.orion>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=redhat.com; 
+ s=mimecast20190719; t=1721237152;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=lu1GyI9JAIOiUE0J5ISEn7mevghFQULbc7dQVhpdMfg=;
+ b=Qnzpf/cOcDqDpxHc7hsuy+ICBpVXnFVGMDQDmHhZR1dbL7NRs7tDIZ4kHxk0MKF2Z5qD5B
+ S/lOVqITLz7WweafAv9AvG1bFGdlEqqhuRafvyngZMfsOGcS1LoZY8lKyc2TBvtZwcv1HV
+ JTV6p5H2zDXBHMlNNAvnZZJJwDUp4Bk=
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=G/wE+W9B
-Subject: [Intel-wired-lan] [tnguy-net-queue:dev-queue] BUILD SUCCESS
- 9feb64e6916eaccce5a694850262baea9f948572
+ header.from=redhat.com
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
+ header.a=rsa-sha256 header.s=mimecast20190719 header.b=Qnzpf/cO
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next] i40e: Add support for fw
+ health report
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,229 +126,195 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: Ivan Vecera <ivecera@redhat.com>, netdev@vger.kernel.org,
+ "David S . Miller" <davem@davemloft.net>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>, Jakub Kicinski <kuba@kernel.org>,
+ intel-wired-lan@lists.osuosl.org, Paolo Abeni <pabeni@redhat.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git dev-queue
-branch HEAD: 9feb64e6916eaccce5a694850262baea9f948572  ice: Fix recipe read procedure
+On Tue, Jul 16, 2024 at 03:35:34PM +0200, Jiri Pirko wrote:
+> Mon, Jul 15, 2024 at 09:11:48PM CEST, kheib@redhat.com wrote:
+> >Add support for reporting fw status via the devlink health report.
+> >
+> >Example:
+> > # devlink health show pci/0000:02:00.0 reporter fw
+> > pci/0000:02:00.0:
+> >   reporter fw
+> >     state healthy error 0 recover 0
+> > # devlink health diagnose pci/0000:02:00.0 reporter fw
+> > Status: normal
+> >
+> >Signed-off-by: Kamal Heib <kheib@redhat.com>
+> >---
+> > drivers/net/ethernet/intel/i40e/i40e.h        |  1 +
+> > .../net/ethernet/intel/i40e/i40e_devlink.c    | 57 +++++++++++++++++++
+> > .../net/ethernet/intel/i40e/i40e_devlink.h    |  2 +
+> > drivers/net/ethernet/intel/i40e/i40e_main.c   | 15 +++++
+> > 4 files changed, 75 insertions(+)
+> >
+> >diff --git a/drivers/net/ethernet/intel/i40e/i40e.h b/drivers/net/ethernet/intel/i40e/i40e.h
+> >index d546567e0286..f94671b6e7c6 100644
+> >--- a/drivers/net/ethernet/intel/i40e/i40e.h
+> >+++ b/drivers/net/ethernet/intel/i40e/i40e.h
+> >@@ -465,6 +465,7 @@ static inline const u8 *i40e_channel_mac(struct i40e_channel *ch)
+> > struct i40e_pf {
+> > 	struct pci_dev *pdev;
+> > 	struct devlink_port devlink_port;
+> >+	struct devlink_health_reporter *fw_health_report;
+> > 	struct i40e_hw hw;
+> > 	DECLARE_BITMAP(state, __I40E_STATE_SIZE__);
+> > 	struct msix_entry *msix_entries;
+> >diff --git a/drivers/net/ethernet/intel/i40e/i40e_devlink.c b/drivers/net/ethernet/intel/i40e/i40e_devlink.c
+> >index cc4e9e2addb7..ad91c150cdba 100644
+> >--- a/drivers/net/ethernet/intel/i40e/i40e_devlink.c
+> >+++ b/drivers/net/ethernet/intel/i40e/i40e_devlink.c
+> >@@ -122,6 +122,25 @@ static int i40e_devlink_info_get(struct devlink *dl,
+> > 	return err;
+> > }
+> > 
+> >+static int i40e_fw_reporter_diagnose(struct devlink_health_reporter *reporter,
+> >+				     struct devlink_fmsg *fmsg,
+> >+				     struct netlink_ext_ack *extack)
+> >+{
+> >+	struct i40e_pf *pf = devlink_health_reporter_priv(reporter);
+> >+
+> >+	if (test_bit(__I40E_RECOVERY_MODE, pf->state))
+> >+		devlink_fmsg_string_pair_put(fmsg, "Status", "recovery");
+> 
+> Is it "Status" or "Mode" ?
+>
 
-elapsed time: 1205m
+Thank you for your review.
 
-configs tested: 207
-configs skipped: 6
+It is "Mode", I'll fix it in v2.
+> 
+> >+	else
+> >+		devlink_fmsg_string_pair_put(fmsg, "Status", "normal");
+> >+
+> >+	return 0;
+> >+}
+> >+
+> >+static const struct devlink_health_reporter_ops i40e_fw_reporter_ops = {
+> >+	.name = "fw",
+> >+	.diagnose = i40e_fw_reporter_diagnose,
+> >+};
+> >+
+> > static const struct devlink_ops i40e_devlink_ops = {
+> > 	.info_get = i40e_devlink_info_get,
+> > };
+> >@@ -233,3 +252,41 @@ void i40e_devlink_destroy_port(struct i40e_pf *pf)
+> > {
+> > 	devlink_port_unregister(&pf->devlink_port);
+> > }
+> >+
+> >+/**
+> >+ * i40e_devlink_create_health_reporter - Create the health reporter for this PF
+> >+ * @pf: the PF to create reporter for
+> >+ *
+> >+ * Create health reporter for this PF.
+> >+ *
+> >+ * Return: zero on success or an error code on failure.
+> >+ **/
+> >+int i40e_devlink_create_health_reporter(struct i40e_pf *pf)
+> >+{
+> >+	struct devlink *devlink = priv_to_devlink(pf);
+> >+	struct device *dev = &pf->pdev->dev;
+> >+	int rc = 0;
+> >+
+> >+	devl_lock(devlink);
+> >+	pf->fw_health_report =
+> >+		devl_health_reporter_create(devlink, &i40e_fw_reporter_ops, 0, pf);
+> >+	if (IS_ERR(pf->fw_health_report)) {
+> >+		rc = PTR_ERR(pf->fw_health_report);
+> >+		dev_err(dev, "Failed to create fw reporter, err = %d\n", rc);
+> >+	}
+> >+	devl_unlock(devlink);
+> >+
+> >+	return rc;
+> >+}
+> >+
+> >+/**
+> >+ * i40e_devlink_destroy_health_reporter - Destroy the health reporter
+> >+ * @pf: the PF to cleanup
+> >+ *
+> >+ * Destroy the health reporter
+> >+ **/
+> >+void i40e_devlink_destroy_health_reporter(struct i40e_pf *pf)
+> >+{
+> >+	if (!IS_ERR_OR_NULL(pf->fw_health_report))
+> >+		devlink_health_reporter_destroy(pf->fw_health_report);
+> >+}
+> >diff --git a/drivers/net/ethernet/intel/i40e/i40e_devlink.h b/drivers/net/ethernet/intel/i40e/i40e_devlink.h
+> >index 469fb3d2ee25..018679094bb5 100644
+> >--- a/drivers/net/ethernet/intel/i40e/i40e_devlink.h
+> >+++ b/drivers/net/ethernet/intel/i40e/i40e_devlink.h
+> >@@ -14,5 +14,7 @@ void i40e_devlink_register(struct i40e_pf *pf);
+> > void i40e_devlink_unregister(struct i40e_pf *pf);
+> > int i40e_devlink_create_port(struct i40e_pf *pf);
+> > void i40e_devlink_destroy_port(struct i40e_pf *pf);
+> >+int i40e_devlink_create_health_reporter(struct i40e_pf *pf);
+> >+void i40e_devlink_destroy_health_reporter(struct i40e_pf *pf);
+> > 
+> > #endif /* _I40E_DEVLINK_H_ */
+> >diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
+> >index cbcfada7b357..13cad5f58029 100644
+> >--- a/drivers/net/ethernet/intel/i40e/i40e_main.c
+> >+++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
+> >@@ -15370,6 +15370,9 @@ static bool i40e_check_recovery_mode(struct i40e_pf *pf)
+> > 		dev_crit(&pf->pdev->dev, "Firmware recovery mode detected. Limiting functionality.\n");
+> > 		dev_crit(&pf->pdev->dev, "Refer to the Intel(R) Ethernet Adapters and Devices User Guide for details on firmware recovery mode.\n");
+> > 		set_bit(__I40E_RECOVERY_MODE, pf->state);
+> >+		if (pf->fw_health_report)
+> >+			devlink_health_report(pf->fw_health_report,
+> >+					      "FW recovery mode detected", pf);
+> 
+> You report it on "FW" reporter. Why "FW" is needed in the message?
+>
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+You are right, I will remove it in v2.
+ 
+> 
+> > 
+> > 		return true;
+> > 	}
+> >@@ -15636,6 +15639,14 @@ static int i40e_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
+> > 		err = -ENOMEM;
+> > 		goto err_pf_alloc;
+> > 	}
+> >+
+> >+	err = i40e_devlink_create_health_reporter(pf);
+> >+	if (err) {
+> >+		dev_err(&pdev->dev,
+> >+			"Failed to create health reporter %d\n", err);
+> >+		goto err_health_reporter;
+> >+	}
+> >+
+> > 	pf->next_vsi = 0;
+> > 	pf->pdev = pdev;
+> > 	set_bit(__I40E_DOWN, pf->state);
+> >@@ -16180,6 +16191,8 @@ static int i40e_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
+> > err_pf_reset:
+> > 	iounmap(hw->hw_addr);
+> > err_ioremap:
+> >+	i40e_devlink_destroy_health_reporter(pf);
+> >+err_health_reporter:
+> > 	i40e_free_pf(pf);
+> > err_pf_alloc:
+> > 	pci_release_mem_regions(pdev);
+> >@@ -16209,6 +16222,8 @@ static void i40e_remove(struct pci_dev *pdev)
+> > 
+> > 	i40e_devlink_unregister(pf);
+> > 
+> >+	i40e_devlink_destroy_health_reporter(pf);
+> >+
+> > 	i40e_dbg_pf_exit(pf);
+> > 
+> > 	i40e_ptp_stop(pf);
+> >-- 
+> >2.45.2
+> >
+> >
+> 
 
-tested configs:
-alpha                             allnoconfig   gcc-13.2.0
-alpha                             allnoconfig   gcc-13.3.0
-alpha                            allyesconfig   gcc-13.3.0
-alpha                               defconfig   gcc-13.2.0
-arc                              alldefconfig   gcc-13.2.0
-arc                              allmodconfig   gcc-13.2.0
-arc                               allnoconfig   gcc-13.2.0
-arc                              allyesconfig   gcc-13.2.0
-arc                          axs101_defconfig   gcc-13.2.0
-arc                      axs103_smp_defconfig   gcc-13.2.0
-arc                                 defconfig   gcc-13.2.0
-arc                     haps_hs_smp_defconfig   gcc-13.2.0
-arc                            hsdk_defconfig   gcc-13.2.0
-arc                        nsim_700_defconfig   gcc-13.2.0
-arc                    vdk_hs38_smp_defconfig   gcc-13.2.0
-arm                              allmodconfig   gcc-13.2.0
-arm                              allmodconfig   gcc-14.1.0
-arm                               allnoconfig   clang-19
-arm                               allnoconfig   gcc-13.2.0
-arm                              allyesconfig   gcc-13.2.0
-arm                              allyesconfig   gcc-14.1.0
-arm                       aspeed_g5_defconfig   gcc-13.2.0
-arm                                 defconfig   gcc-13.2.0
-arm                        keystone_defconfig   gcc-14.1.0
-arm                            mmp2_defconfig   gcc-14.1.0
-arm                        mvebu_v7_defconfig   gcc-13.2.0
-arm                        neponset_defconfig   gcc-13.2.0
-arm                           omap1_defconfig   gcc-13.2.0
-arm                       omap2plus_defconfig   gcc-13.2.0
-arm                             pxa_defconfig   gcc-13.2.0
-arm                           sama7_defconfig   gcc-13.2.0
-arm                         vf610m4_defconfig   gcc-13.2.0
-arm64                            allmodconfig   clang-19
-arm64                            allmodconfig   gcc-13.2.0
-arm64                             allnoconfig   gcc-13.2.0
-arm64                             allnoconfig   gcc-14.1.0
-arm64                               defconfig   gcc-13.2.0
-csky                             alldefconfig   gcc-13.2.0
-csky                              allnoconfig   gcc-13.2.0
-csky                              allnoconfig   gcc-14.1.0
-csky                                defconfig   gcc-13.2.0
-hexagon                          allmodconfig   clang-19
-hexagon                           allnoconfig   clang-19
-hexagon                          allyesconfig   clang-19
-i386                             allmodconfig   clang-18
-i386                             allmodconfig   gcc-13
-i386                              allnoconfig   clang-18
-i386                              allnoconfig   gcc-13
-i386                             allyesconfig   clang-18
-i386                             allyesconfig   gcc-13
-i386         buildonly-randconfig-001-20240717   clang-18
-i386         buildonly-randconfig-002-20240717   clang-18
-i386         buildonly-randconfig-002-20240717   gcc-13
-i386         buildonly-randconfig-003-20240717   clang-18
-i386         buildonly-randconfig-003-20240717   gcc-13
-i386         buildonly-randconfig-004-20240717   clang-18
-i386         buildonly-randconfig-004-20240717   gcc-13
-i386         buildonly-randconfig-005-20240717   clang-18
-i386         buildonly-randconfig-005-20240717   gcc-10
-i386         buildonly-randconfig-006-20240717   clang-18
-i386                                defconfig   clang-18
-i386                  randconfig-001-20240717   clang-18
-i386                  randconfig-001-20240717   gcc-8
-i386                  randconfig-002-20240717   clang-18
-i386                  randconfig-003-20240717   clang-18
-i386                  randconfig-004-20240717   clang-18
-i386                  randconfig-004-20240717   gcc-8
-i386                  randconfig-005-20240717   clang-18
-i386                  randconfig-005-20240717   gcc-10
-i386                  randconfig-006-20240717   clang-18
-i386                  randconfig-006-20240717   gcc-13
-i386                  randconfig-011-20240717   clang-18
-i386                  randconfig-011-20240717   gcc-9
-i386                  randconfig-012-20240717   clang-18
-i386                  randconfig-012-20240717   gcc-13
-i386                  randconfig-013-20240717   clang-18
-i386                  randconfig-014-20240717   clang-18
-i386                  randconfig-015-20240717   clang-18
-i386                  randconfig-016-20240717   clang-18
-loongarch                        allmodconfig   gcc-14.1.0
-loongarch                         allnoconfig   gcc-13.2.0
-loongarch                         allnoconfig   gcc-14.1.0
-loongarch                           defconfig   gcc-13.2.0
-m68k                             allmodconfig   gcc-14.1.0
-m68k                              allnoconfig   gcc-13.2.0
-m68k                              allnoconfig   gcc-14.1.0
-m68k                             allyesconfig   gcc-14.1.0
-m68k                                defconfig   gcc-13.2.0
-m68k                       m5208evb_defconfig   gcc-14.1.0
-microblaze                       allmodconfig   gcc-14.1.0
-microblaze                        allnoconfig   gcc-13.2.0
-microblaze                        allnoconfig   gcc-14.1.0
-microblaze                       allyesconfig   gcc-14.1.0
-microblaze                          defconfig   gcc-13.2.0
-mips                              allnoconfig   gcc-13.2.0
-mips                              allnoconfig   gcc-14.1.0
-mips                        bcm47xx_defconfig   gcc-13.2.0
-mips                      bmips_stb_defconfig   gcc-13.2.0
-mips                     decstation_defconfig   gcc-14.1.0
-mips                       lemote2f_defconfig   gcc-14.1.0
-mips                           mtx1_defconfig   gcc-14.1.0
-nios2                         10m50_defconfig   gcc-13.2.0
-nios2                            allmodconfig   gcc-14.1.0
-nios2                             allnoconfig   gcc-13.2.0
-nios2                             allnoconfig   gcc-14.1.0
-nios2                            allyesconfig   gcc-14.1.0
-nios2                               defconfig   gcc-13.2.0
-openrisc                         allmodconfig   gcc-14.1.0
-openrisc                          allnoconfig   gcc-14.1.0
-openrisc                         allyesconfig   gcc-14.1.0
-openrisc                            defconfig   gcc-14.1.0
-parisc                           allmodconfig   gcc-14.1.0
-parisc                            allnoconfig   gcc-14.1.0
-parisc                           allyesconfig   gcc-14.1.0
-parisc                              defconfig   gcc-14.1.0
-parisc64                            defconfig   gcc-13.2.0
-powerpc                          allmodconfig   gcc-14.1.0
-powerpc                           allnoconfig   gcc-14.1.0
-powerpc                          allyesconfig   clang-19
-powerpc                          allyesconfig   gcc-14.1.0
-powerpc                      bamboo_defconfig   gcc-13.2.0
-powerpc                        cell_defconfig   gcc-14.1.0
-powerpc                   currituck_defconfig   gcc-13.2.0
-powerpc                       ebony_defconfig   gcc-13.2.0
-powerpc                    ge_imp3a_defconfig   gcc-13.2.0
-powerpc                    ge_imp3a_defconfig   gcc-14.1.0
-powerpc                     ksi8560_defconfig   gcc-13.2.0
-powerpc                   lite5200b_defconfig   gcc-13.2.0
-powerpc                     mpc512x_defconfig   gcc-13.2.0
-powerpc                 mpc834x_itx_defconfig   gcc-13.2.0
-powerpc               mpc834x_itxgp_defconfig   gcc-13.2.0
-powerpc                      pmac32_defconfig   gcc-14.1.0
-powerpc                     skiroot_defconfig   gcc-14.1.0
-powerpc                     stx_gp3_defconfig   gcc-14.1.0
-powerpc                 xes_mpc85xx_defconfig   gcc-14.1.0
-riscv                            allmodconfig   clang-19
-riscv                            allmodconfig   gcc-14.1.0
-riscv                             allnoconfig   gcc-14.1.0
-riscv                            allyesconfig   clang-19
-riscv                            allyesconfig   gcc-14.1.0
-riscv                               defconfig   gcc-14.1.0
-riscv                    nommu_k210_defconfig   gcc-14.1.0
-riscv             nommu_k210_sdcard_defconfig   gcc-13.2.0
-riscv             nommu_k210_sdcard_defconfig   gcc-14.1.0
-s390                             allmodconfig   clang-19
-s390                              allnoconfig   clang-19
-s390                             allyesconfig   clang-19
-s390                             allyesconfig   gcc-14.1.0
-s390                                defconfig   gcc-14.1.0
-sh                               allmodconfig   gcc-14.1.0
-sh                                allnoconfig   gcc-13.2.0
-sh                                allnoconfig   gcc-14.1.0
-sh                               allyesconfig   gcc-14.1.0
-sh                                  defconfig   gcc-14.1.0
-sh                 kfr2r09-romimage_defconfig   gcc-13.2.0
-sh                          polaris_defconfig   gcc-13.2.0
-sh                      rts7751r2d1_defconfig   gcc-13.2.0
-sh                        sh7763rdp_defconfig   gcc-13.2.0
-sparc                            allmodconfig   gcc-14.1.0
-sparc                            allyesconfig   gcc-14.1.0
-sparc64                          allmodconfig   gcc-14.1.0
-sparc64                          allyesconfig   gcc-14.1.0
-sparc64                             defconfig   gcc-14.1.0
-um                               allmodconfig   gcc-13.3.0
-um                                allnoconfig   clang-17
-um                               allyesconfig   gcc-13
-um                               allyesconfig   gcc-13.3.0
-um                                  defconfig   gcc-14.1.0
-um                             i386_defconfig   gcc-14.1.0
-um                           x86_64_defconfig   gcc-14.1.0
-x86_64                            allnoconfig   clang-18
-x86_64                           allyesconfig   clang-18
-x86_64       buildonly-randconfig-001-20240717   gcc-13
-x86_64       buildonly-randconfig-002-20240717   gcc-13
-x86_64       buildonly-randconfig-003-20240717   gcc-13
-x86_64       buildonly-randconfig-004-20240717   gcc-13
-x86_64       buildonly-randconfig-005-20240717   gcc-13
-x86_64       buildonly-randconfig-006-20240717   gcc-13
-x86_64                              defconfig   clang-18
-x86_64                              defconfig   gcc-13
-x86_64                                  kexec   clang-18
-x86_64                randconfig-001-20240717   gcc-13
-x86_64                randconfig-002-20240717   gcc-13
-x86_64                randconfig-003-20240717   gcc-13
-x86_64                randconfig-004-20240717   gcc-13
-x86_64                randconfig-005-20240717   gcc-13
-x86_64                randconfig-006-20240717   gcc-13
-x86_64                randconfig-011-20240717   gcc-13
-x86_64                randconfig-012-20240717   gcc-13
-x86_64                randconfig-013-20240717   gcc-13
-x86_64                randconfig-014-20240717   gcc-13
-x86_64                randconfig-015-20240717   gcc-13
-x86_64                randconfig-016-20240717   gcc-13
-x86_64                randconfig-071-20240717   gcc-13
-x86_64                randconfig-072-20240717   gcc-13
-x86_64                randconfig-073-20240717   gcc-13
-x86_64                randconfig-074-20240717   gcc-13
-x86_64                randconfig-075-20240717   gcc-13
-x86_64                randconfig-076-20240717   gcc-13
-x86_64                          rhel-8.3-rust   clang-18
-x86_64                               rhel-8.3   clang-18
-xtensa                            allnoconfig   gcc-13.2.0
-xtensa                            allnoconfig   gcc-14.1.0
-xtensa                           allyesconfig   gcc-14.1.0
-xtensa                       common_defconfig   gcc-13.2.0
-xtensa                    smp_lx200_defconfig   gcc-14.1.0
-xtensa                    xip_kc705_defconfig   gcc-14.1.0
-
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
