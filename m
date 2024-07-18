@@ -1,98 +1,115 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id B170F934A8A
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 18 Jul 2024 10:56:51 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 72DC2934A9A
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 18 Jul 2024 10:59:54 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id BE11F403FB;
-	Thu, 18 Jul 2024 08:56:48 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 43E85405C2;
+	Thu, 18 Jul 2024 08:59:52 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id kWNvIr7TtFjl; Thu, 18 Jul 2024 08:56:48 +0000 (UTC)
+ id 3-fAw74OX5NK; Thu, 18 Jul 2024 08:59:51 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org F00B6403B3
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 6C4E9403B3
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1721293008;
-	bh=kY9XX4Ug6bOZxHPTPt1uJFHl+uMLZ8/gOTrfu25TnWo=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=RfJoxXNo4AKXLjyJN2UVw2kJ3PTNnhD5cmiM2f5wl9FXRR6kWTiRboOVAdJ7a7l3j
-	 NvkDNV4YYfuKRsXwsvAZnqjMMIKHGkX0H39s/HbPrRBP5HfePJ8zwBc7J8m2YmNXBT
-	 rix9r9hiXNhmqLam40Srnn4psegb3GRydcI6zc4hdLVKuefKojIJbpXeEFqEUOkGg9
-	 hsRBdXtXb9/BH10UETgxxK6/bIY5U9dDvPH2CKswqyVACL1Vd0TFVQuB04PBu49BNo
-	 owCtFLsh+HcmXJfAvwbFp1R6DeJtkYiScKTJRkvcn4bAi26UivnTkpeI/ZBsgQaxOH
-	 TFiXrk9Iueu4A==
+	s=default; t=1721293191;
+	bh=bgMVMQRohcF5WdcemhAgGK2mnTBxhy1oAaWpEwFYhYM=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=mzkGla0DwrKUr55Ub3av3TQiWjUv4xUjX8bnY/IcDv+Hd44tUrceY2AqUET4j6n1f
+	 F+pu2R3Kgy2wrJfoh0/8t8CvVFYLbMzx0UGX+4Z5vkFIl7ltYembdIUUGNcbDpVtYV
+	 iPts+CowlEdfOIYJ36vwDvUkuiLdraxsmVENaGb/s9+ZGPIr6nKJD0yDHf+c4r4ahI
+	 30Y+JhIeBf+Bvtgc+yS85EDGo1C87CpMZbbl+6Qg28z+BJBIeKZyuN5GRnuf4Qn3gZ
+	 GjCz3JC7KK2sZmbhFGI69maAjklZL+5cxialRZjrVk3so9yT5Gp3WxOt4liad2grmS
+	 1kbDegvU3NriQ==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id F00B6403B3;
-	Thu, 18 Jul 2024 08:56:47 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 6C4E9403B3;
+	Thu, 18 Jul 2024 08:59:51 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 3BC7F1BF3ED
- for <intel-wired-lan@lists.osuosl.org>; Thu, 18 Jul 2024 08:56:46 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id F1F1E1BF20D
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 18 Jul 2024 08:59:48 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 27FFD4027F
- for <intel-wired-lan@lists.osuosl.org>; Thu, 18 Jul 2024 08:56:46 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id DF6F960B6A
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 18 Jul 2024 08:59:48 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Pqr1Z23IZlrx for <intel-wired-lan@lists.osuosl.org>;
- Thu, 18 Jul 2024 08:56:45 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.133.124;
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id Kyjj6uhgiCWb for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 18 Jul 2024 08:59:48 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.129.124;
  helo=us-smtp-delivery-124.mimecast.com; envelope-from=vinschen@redhat.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 257B440125
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 257B440125
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 1B78D60B65
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1B78D60B65
 Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.133.124])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 257B440125
- for <intel-wired-lan@lists.osuosl.org>; Thu, 18 Jul 2024 08:56:44 +0000 (UTC)
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 1B78D60B65
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 18 Jul 2024 08:59:47 +0000 (UTC)
+Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-564-7Rf40grtP0CVRje7UxI4kw-1; Thu,
- 18 Jul 2024 04:56:39 -0400
-X-MC-Unique: 7Rf40grtP0CVRje7UxI4kw-1
-Received: from mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.40])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-487-nmO5mHNnNn-8SEr4v5pEOQ-1; Thu,
+ 18 Jul 2024 04:59:44 -0400
+X-MC-Unique: nmO5mHNnNn-8SEr4v5pEOQ-1
+Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 0F71A1955D4F; Thu, 18 Jul 2024 08:56:37 +0000 (UTC)
+ by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 897B21944B27; Thu, 18 Jul 2024 08:59:42 +0000 (UTC)
 Received: from calimero.vinschen.de (unknown [10.39.193.237])
- by mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 6969B195605A; Thu, 18 Jul 2024 08:56:36 +0000 (UTC)
+ by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id E00C81955F40; Thu, 18 Jul 2024 08:59:41 +0000 (UTC)
 Received: by calimero.vinschen.de (Postfix, from userid 500)
- id E7076A80D05; Thu, 18 Jul 2024 10:56:33 +0200 (CEST)
+ id A8DC5A80D05; Thu, 18 Jul 2024 10:59:39 +0200 (CEST)
+Date: Thu, 18 Jul 2024 10:59:39 +0200
 From: Corinna Vinschen <vinschen@redhat.com>
-To: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
- Eric Dumazet <edumazet@google.com>
-Date: Thu, 18 Jul 2024 10:56:33 +0200
-Message-ID: <20240718085633.1285322-1-vinschen@redhat.com>
+To: Eric Dumazet <edumazet@google.com>
+Message-ID: <ZpjZe1pgqbJ-Zp0S@calimero.vinschen.de>
+Mail-Followup-To: Eric Dumazet <edumazet@google.com>,
+ netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org,
+ Nikolay Aleksandrov <razor@blackwall.org>,
+ Jason Xing <kerneljasonxing@gmail.com>,
+ Paolo Abeni <pabeni@redhat.com>, Jakub Kicinski <kuba@kernel.org>,
+ "David S . Miller" <davem@davemloft.net>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Jesse Brandeburg <jesse.brandeburg@intel.com>
+References: <20240423134731.918157-1-vinschen@redhat.com>
+ <CANn89iKv1J3AS3rEmEhFq5McHmM+L=32pWg3Wj4_drsdKUx77A@mail.gmail.com>
+ <Ziu6k5cjXsaUpAYH@calimero.vinschen.de>
+ <CANn89iJ_eM2oK5ruGu1NMk0ZEivEQO=R64E9eb9ujYj+=qWiKA@mail.gmail.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.40
+In-Reply-To: <CANn89iJ_eM2oK5ruGu1NMk0ZEivEQO=R64E9eb9ujYj+=qWiKA@mail.gmail.com>
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=redhat.com; 
- s=mimecast20190719; t=1721293003;
+ s=mimecast20190719; t=1721293187;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=kY9XX4Ug6bOZxHPTPt1uJFHl+uMLZ8/gOTrfu25TnWo=;
- b=RnkSUQpBfKscf+Xz2BpXdxPmGEHQva2J4XEflg+ni0icegZn98QM90Kl5csVKTQXlanqp/
- W54ODIFM2SWi2CpaN9V15c/48Cva+DFf6kCF3J7tPGJBWZ2EWt41pVx1BqsmspgI5dn1kR
- UNffHRJ+shJN1vI/p9wfBJ+lCyNI5Rg=
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=bgMVMQRohcF5WdcemhAgGK2mnTBxhy1oAaWpEwFYhYM=;
+ b=eF5ONff3AM1wwgnXSrWz5u3kZ5UHK73glDb4jfU0bm3MIghXJXWivfHlaxmMxa6wYBcawa
+ 0FHAUI3N0jMuGOQ6HswYYY/40OfBlnF0ZQOI61hyTDrOtl5YWcLpI3sXcAXfXO92aaC/XA
+ 1sb9Zk7Rcto+qjnQxXUJ0qgMsnK9+mc=
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=redhat.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (1024-bit key,
- unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256
- header.s=mimecast20190719 header.b=RnkSUQpB
-Subject: [Intel-wired-lan] [PATCH net v3] igb: cope with large MAX_SKB_FRAGS.
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
+ header.a=rsa-sha256 header.s=mimecast20190719 header.b=eF5ONff3
+Subject: Re: [Intel-wired-lan] [PATCH net v2] igb: cope with large
+ MAX_SKB_FRAGS
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -105,57 +122,74 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Jason Xing <kerneljasonxing@gmail.com>,
+Cc: Jason Xing <kerneljasonxing@gmail.com>, netdev@vger.kernel.org,
  Nikolay Aleksandrov <razor@blackwall.org>, linux-kernel@vger.kernel.org,
- Tony Nguyen <anthony.l.nguyen@intel.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, "David S . Miller" <davem@davemloft.net>
+ Tony Nguyen <anthony.l.nguyen@intel.com>, intel-wired-lan@lists.osuosl.org,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ "David S . Miller" <davem@davemloft.net>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Paolo Abeni <pabeni@redhat.com>
+Hi Eric,
 
-Sabrina reports that the igb driver does not cope well with large
-MAX_SKB_FRAG values: setting MAX_SKB_FRAG to 45 causes payload
-corruption on TX.
+sorry for the very late reply, I was offline for quite some time
+and then other things took over.
 
-An easy reproducer is to run ssh to connect to the machine.  With
-MAX_SKB_FRAGS=17 it works, with MAX_SKB_FRAGS=45 it fails.
+On Apr 26 19:54, Eric Dumazet wrote:
+> On Fri, Apr 26, 2024 at 4:30 PM Corinna Vinschen <vinschen@redhat.com> wrote:
+> >
+> > Hi Eric,
+> >
+> > On Apr 23 16:10, Eric Dumazet wrote:
+> > > On Tue, Apr 23, 2024 at 3:47 PM Corinna Vinschen <vinschen@redhat.com> wrote:
+> > > >
+> > > > From: Paolo Abeni <pabeni@redhat.com>
+> > > >
+> > > > Sabrina reports that the igb driver does not cope well with large
+> > > > MAX_SKB_FRAG values: setting MAX_SKB_FRAG to 45 causes payload
+> > > > corruption on TX.
+> > > >
+> > > > An easy reproducer is to run ssh to connect to the machine.  With
+> > > > MAX_SKB_FRAGS=17 it works, with MAX_SKB_FRAGS=45 it fails.
+> > > > [...]
+> > > > @@ -4833,6 +4833,7 @@ static void igb_set_rx_buffer_len(struct igb_adapter *adapter,
+> > > >
+> > > >  #if (PAGE_SIZE < 8192)
+> > > >         if (adapter->max_frame_size > IGB_MAX_FRAME_BUILD_SKB ||
+> > > > +           SKB_HEAD_ALIGN(adapter->max_frame_size) > (PAGE_SIZE / 2) ||
+> > >
+> > > I wonder if adding IGB_SKB_PAD would be needed ?
+> > >
+> > > adapter->max_frame_size does not seem to include it.
+> > >
+> > > I would try using all mtus between 1200 and 1280 to make sure this works.
+> >
+> > Erm... did you mean between 1500 and 1580 by any chance?  1200 doesn't
+> > really seem to make sense...
+> 
+> No, I meant 1200 to 1280 .  IPv4 should accept these MTU .
+> 
+> 1200 + 768 = 1968
+> 1280 + 768 = 2048 (2 KB)
+> 
+> I am worried of some padding that would cross 2048 bytes boundary,
+> while SKB_HEAD_ALIGN(adapter->max_frame_size) could still be < 2048
+> 
+> 
+> >
+> > I tested this patch now with mtu 1500, 1540 and 1580 successfully.
+> >
+> > Either way, I'm just heading into vacation, so I guess I'll pick this up
+> > again when I'm back, unless Paolo takes another look during my absence.
+> >
+> 
+> I guess your patch is better than nothing, this can be refined if
+> necessary later.
 
-The root cause of the issue is that the driver does not take into
-account properly the (possibly large) shared info size when selecting
-the ring layout, and will try to fit two packets inside the same 4K
-page even when the 1st fraglist will trump over the 2nd head.
+I now tested the patch with all MTUs between 1200 and 1280 and it
+works as desired.  I just sent a v3.
 
-Address the issue forcing the driver to fit a single packet per page,
-leaving there enough room to store the (currently) largest possible
-skb_shared_info.
 
-Fixes: 3948b05950fd ("net: introduce a config option to tweak MAX_SKB_FRAGS")
-Reported-by: Jan Tluka <jtluka@redhat.com>
-Reported-by: Jirka Hladky <jhladky@redhat.com>
-Reported-by: Sabrina Dubroca <sd@queasysnail.net>
-Tested-by: Sabrina Dubroca <sd@queasysnail.net>
-Tested-by: Corinna Vinschen <vinschen@redhat.com>
-Signed-off-by: Paolo Abeni <pabeni@redhat.com>
----
-v2: fix subject, add a simple reproducer
-v3: fix Fixes, tested with all MTUs from 1200 to 1280 per Eric's suggestion
-
- drivers/net/ethernet/intel/igb/igb_main.c | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
-index 11be39f435f3..232d6cb836a9 100644
---- a/drivers/net/ethernet/intel/igb/igb_main.c
-+++ b/drivers/net/ethernet/intel/igb/igb_main.c
-@@ -4808,6 +4808,7 @@ static void igb_set_rx_buffer_len(struct igb_adapter *adapter,
- 
- #if (PAGE_SIZE < 8192)
- 	if (adapter->max_frame_size > IGB_MAX_FRAME_BUILD_SKB ||
-+	    SKB_HEAD_ALIGN(adapter->max_frame_size) > (PAGE_SIZE / 2) ||
- 	    rd32(E1000_RCTL) & E1000_RCTL_SBP)
- 		set_ring_uses_large_buffer(rx_ring);
- #endif
--- 
-2.45.2
+Thanks,
+Corinna
 
