@@ -1,110 +1,98 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6268593447B
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 18 Jul 2024 00:03:20 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id B170F934A8A
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 18 Jul 2024 10:56:51 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 5818740163;
-	Wed, 17 Jul 2024 22:03:17 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id BE11F403FB;
+	Thu, 18 Jul 2024 08:56:48 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id wECUy04z0uVU; Wed, 17 Jul 2024 22:03:16 +0000 (UTC)
+ id kWNvIr7TtFjl; Thu, 18 Jul 2024 08:56:48 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 9DEA1401A1
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org F00B6403B3
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1721253795;
-	bh=5I1bYoG3xOx8r4gIcnxAPVRrmbjDZ8yBtJ26QdGnahA=;
-	h=From:To:In-Reply-To:References:Date:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=cY+32py8nDv+NA68hl+my6vU5aCgcELn94hKrgU0LmSZlc7K6ZFyj6S5YArMdwFU4
-	 dKn2X50oEQeQuNGV1eNXsGO5fuZn8QDXm6zH5+LfsHwFHt8fTuQwn+zO5XKK1PffZO
-	 qFcfB4kw4SsPzTj16ku/9OZFWmAxE806FUAQe4sTY5JrypSyCtL8zWBhcnRCzoedaf
-	 9OoUQsFBPzvrJ5OSJhfRVsyI0zXYqzOEymX12DUtW2oBCylJtWJoacDI7mULcdPtFR
-	 RctMY64wG4eHYhr9Lr0qJUwn+bAQm7bNRCArP6UcvCQGSmpMJFC+q2SG6Y/2Kvxm+N
-	 mJQfL3PvcRicQ==
+	s=default; t=1721293008;
+	bh=kY9XX4Ug6bOZxHPTPt1uJFHl+uMLZ8/gOTrfu25TnWo=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=RfJoxXNo4AKXLjyJN2UVw2kJ3PTNnhD5cmiM2f5wl9FXRR6kWTiRboOVAdJ7a7l3j
+	 NvkDNV4YYfuKRsXwsvAZnqjMMIKHGkX0H39s/HbPrRBP5HfePJ8zwBc7J8m2YmNXBT
+	 rix9r9hiXNhmqLam40Srnn4psegb3GRydcI6zc4hdLVKuefKojIJbpXeEFqEUOkGg9
+	 hsRBdXtXb9/BH10UETgxxK6/bIY5U9dDvPH2CKswqyVACL1Vd0TFVQuB04PBu49BNo
+	 owCtFLsh+HcmXJfAvwbFp1R6DeJtkYiScKTJRkvcn4bAi26UivnTkpeI/ZBsgQaxOH
+	 TFiXrk9Iueu4A==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 9DEA1401A1;
-	Wed, 17 Jul 2024 22:03:15 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id F00B6403B3;
+	Thu, 18 Jul 2024 08:56:47 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 29E661BF385
- for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Jul 2024 22:03:14 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 3BC7F1BF3ED
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 18 Jul 2024 08:56:46 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 1694E6058C
- for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Jul 2024 22:03:14 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 27FFD4027F
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 18 Jul 2024 08:56:46 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 6OZ3c1QZGfQ7 for <intel-wired-lan@lists.osuosl.org>;
- Wed, 17 Jul 2024 22:03:13 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.14;
- helo=mgamail.intel.com; envelope-from=vinicius.gomes@intel.com;
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id Pqr1Z23IZlrx for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 18 Jul 2024 08:56:45 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.133.124;
+ helo=us-smtp-delivery-124.mimecast.com; envelope-from=vinschen@redhat.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org F2AD360093
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org F2AD360093
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.14])
- by smtp3.osuosl.org (Postfix) with ESMTPS id F2AD360093
- for <intel-wired-lan@lists.osuosl.org>; Wed, 17 Jul 2024 22:03:12 +0000 (UTC)
-X-CSE-ConnectionGUID: nZmRR5RTTDeZQ7OilPjd4g==
-X-CSE-MsgGUID: ClE/bCKPRqOYUzg7d9h9Gw==
-X-IronPort-AV: E=McAfee;i="6700,10204,11136"; a="22599214"
-X-IronPort-AV: E=Sophos;i="6.09,215,1716274800"; d="scan'208";a="22599214"
-Received: from orviesa001.jf.intel.com ([10.64.159.141])
- by orvoesa106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 17 Jul 2024 15:03:10 -0700
-X-CSE-ConnectionGUID: 8BjlIPCbTHaXuAZrNJ+4KQ==
-X-CSE-MsgGUID: fUCh/j56S5qsRaHwnHJXuA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.09,215,1716274800"; d="scan'208";a="88014343"
-Received: from vcostago-mobl3.jf.intel.com (HELO vcostago-mobl3)
- ([10.241.225.92])
- by smtpauth.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 17 Jul 2024 15:03:11 -0700
-From: Vinicius Costa Gomes <vinicius.gomes@intel.com>
-To: "Abdul Rahim, Faizal" <faizal.abdul.rahim@linux.intel.com>, "David S .
- Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Jakub
- Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Jesse
- Brandeburg <jesse.brandeburg@intel.com>, Tony Nguyen
- <anthony.l.nguyen@intel.com>, Simon Horman <horms@kernel.org>, Richard
- Cochran <richardcochran@gmail.com>, Paul Menzel <pmenzel@molgen.mpg.de>,
- Sasha Neftin <sasha.neftin@intel.com>
-In-Reply-To: <2c5a0dcf-f9b0-49da-9dea-0a276fa4a0d9@linux.intel.com>
-References: <20240707125318.3425097-1-faizal.abdul.rahim@linux.intel.com>
- <20240707125318.3425097-3-faizal.abdul.rahim@linux.intel.com>
- <87o774u807.fsf@intel.com>
- <6bb1ba4a-41ba-4bc1-9c4b-abfb27944891@linux.intel.com>
- <87le27ssu4.fsf@intel.com>
- <2c5a0dcf-f9b0-49da-9dea-0a276fa4a0d9@linux.intel.com>
-Date: Wed, 17 Jul 2024 15:03:10 -0700
-Message-ID: <87msmf3cdd.fsf@intel.com>
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 257B440125
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 257B440125
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 257B440125
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 18 Jul 2024 08:56:44 +0000 (UTC)
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-564-7Rf40grtP0CVRje7UxI4kw-1; Thu,
+ 18 Jul 2024 04:56:39 -0400
+X-MC-Unique: 7Rf40grtP0CVRje7UxI4kw-1
+Received: from mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.40])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 0F71A1955D4F; Thu, 18 Jul 2024 08:56:37 +0000 (UTC)
+Received: from calimero.vinschen.de (unknown [10.39.193.237])
+ by mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 6969B195605A; Thu, 18 Jul 2024 08:56:36 +0000 (UTC)
+Received: by calimero.vinschen.de (Postfix, from userid 500)
+ id E7076A80D05; Thu, 18 Jul 2024 10:56:33 +0200 (CEST)
+From: Corinna Vinschen <vinschen@redhat.com>
+To: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
+ Eric Dumazet <edumazet@google.com>
+Date: Thu, 18 Jul 2024 10:56:33 +0200
+Message-ID: <20240718085633.1285322-1-vinschen@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1721253793; x=1752789793;
- h=from:to:cc:subject:in-reply-to:references:date:
- message-id:mime-version;
- bh=xvMqdi9WDEg+JNQMrlEj2e0h/3nai7MYNzN4vR/RJH4=;
- b=EczEmwlyNSr3+hP9J+hDCFguEQszd9xOcwLPqzMtnTnuYgKtoAEBBTqi
- wV8KRLgQ8NZYUmWci1z1Tqi9ie0Dp/GylpsAUNMf1Hyr4VS/jn9EiODCq
- DTiKLdLFjFCtXR4pxjtdVswoD6pkNv1L4OAOkQpOOEjArG/OcbhcIX3CE
- VyvMnKnEz4J8leqLcPszsUDEyKqXHTbC2uTbMdkZOU7asNne6EVrl1Z7R
- xmMNOfpzpX9DBtmonLeqgk01QwUNlx6A4TDaxteceA2qHug/sVRouY3L9
- 5xwq2Rz9x+uipJ8G7IanwBalJkwsvZAmMQdUEWqwPA/Vrp3ji1YxmqJ50
- Q==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.40
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=redhat.com; 
+ s=mimecast20190719; t=1721293003;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=kY9XX4Ug6bOZxHPTPt1uJFHl+uMLZ8/gOTrfu25TnWo=;
+ b=RnkSUQpBfKscf+Xz2BpXdxPmGEHQva2J4XEflg+ni0icegZn98QM90Kl5csVKTQXlanqp/
+ W54ODIFM2SWi2CpaN9V15c/48Cva+DFf6kCF3J7tPGJBWZ2EWt41pVx1BqsmspgI5dn1kR
+ UNffHRJ+shJN1vI/p9wfBJ+lCyNI5Rg=
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=EczEmwly
-Subject: Re: [Intel-wired-lan] [PATCH iwl-net v2 2/3] igc: Fix reset adapter
- logics when tx mode change
+ header.from=redhat.com
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (1024-bit key,
+ unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256
+ header.s=mimecast20190719 header.b=RnkSUQpB
+Subject: [Intel-wired-lan] [PATCH net v3] igb: cope with large MAX_SKB_FRAGS.
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -117,119 +105,57 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
- linux-kernel@vger.kernel.org, stable@vger.kernel.org
+Cc: Jason Xing <kerneljasonxing@gmail.com>,
+ Nikolay Aleksandrov <razor@blackwall.org>, linux-kernel@vger.kernel.org,
+ Tony Nguyen <anthony.l.nguyen@intel.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, "David S . Miller" <davem@davemloft.net>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi,
+From: Paolo Abeni <pabeni@redhat.com>
 
-"Abdul Rahim, Faizal" <faizal.abdul.rahim@linux.intel.com> writes:
+Sabrina reports that the igb driver does not cope well with large
+MAX_SKB_FRAG values: setting MAX_SKB_FRAG to 45 causes payload
+corruption on TX.
 
-> On 12/7/2024 1:10 am, Vinicius Costa Gomes wrote:
->> "Abdul Rahim, Faizal" <faizal.abdul.rahim@linux.intel.com> writes:
->> 
->>> Hi Vinicius,
->>>
->>> On 11/7/2024 6:44 am, Vinicius Costa Gomes wrote:
->>>> Faizal Rahim <faizal.abdul.rahim@linux.intel.com> writes:
->>>>
->>>>> Following the "igc: Fix TX Hang issue when QBV Gate is close" changes,
->>>>> remaining issues with the reset adapter logic in igc_tsn_offload_apply()
->>>>> have been observed:
->>>>>
->>>>> 1. The reset adapter logics for i225 and i226 differ, although they should
->>>>>      be the same according to the guidelines in I225/6 HW Design Section
->>>>>      7.5.2.1 on software initialization during tx mode changes.
->>>>> 2. The i225 resets adapter every time, even though tx mode doesn't change.
->>>>>      This occurs solely based on the condition  igc_is_device_id_i225() when
->>>>>      calling schedule_work().
->>>>> 3. i226 doesn't reset adapter for tsn->legacy tx mode changes. It only
->>>>>      resets adapter for legacy->tsn tx mode transitions.
->>>>> 4. qbv_count introduced in the patch is actually not needed; in this
->>>>>      context, a non-zero value of qbv_count is used to indicate if tx mode
->>>>>      was unconditionally set to tsn in igc_tsn_enable_offload(). This could
->>>>>      be replaced by checking the existing register
->>>>>      IGC_TQAVCTRL_TRANSMIT_MODE_TSN bit.
->>>>>
->>>>> This patch resolves all issues and enters schedule_work() to reset the
->>>>> adapter only when changing tx mode. It also removes reliance on qbv_count.
->>>>>
->>>>> qbv_count field will be removed in a future patch.
->>>>>
->>>>> Test ran:
->>>>>
->>>>> 1. Verify reset adapter behaviour in i225/6:
->>>>>      a) Enrol a new GCL
->>>>>         Reset adapter observed (tx mode change legacy->tsn)
->>>>>      b) Enrol a new GCL without deleting qdisc
->>>>>         No reset adapter observed (tx mode remain tsn->tsn)
->>>>>      c) Delete qdisc
->>>>>         Reset adapter observed (tx mode change tsn->legacy)
->>>>>
->>>>> 2. Tested scenario from "igc: Fix TX Hang issue when QBV Gate is closed"
->>>>>      to confirm it remains resolved.
->>>>>
->>>>> Fixes: 175c241288c0 ("igc: Fix TX Hang issue when QBV Gate is closed")
->>>>> Signed-off-by: Faizal Rahim <faizal.abdul.rahim@linux.intel.com>
->>>>> Reviewed-by: Simon Horman <horms@kernel.org>
->>>>> ---
->>>>
->>>> There were a quite a few bugs, some of them my fault, on this part of
->>>> the code, changing between the modes in the hardware.
->>>>
->>>> So I would like some confirmation that ETF offloading/LaunchTime was
->>>> also tested with this change. Just to be sure.
->>>>
->>>> But code-wise, looks good:
->>>>
->>>> Acked-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
->>>>
->>>>
->>>> Cheers,
->>>
->>>
->>> Tested etf with offload, looks like working correctly.
->>>
->>> 1. mqprio
->>> tc qdisc add dev enp1s0 handle 100: parent root mqprio num_tc 3 \
->>> map 2 2 1 0 2 2 2 2 2 2 2 2 2 2 2 2 \
->>> queues 1@0 1@1 2@2 \
->>> hw 0
->>>
->>> No reset adapter observed.
->>>
->>> 2. etf with offload
->>> tc qdisc replace dev enp1s0 parent 100:1 etf \
->>> clockid CLOCK_TAI delta 300000 offload
->>>
->>> Reset adapter observed (tx mode legacy -> tsn).
->>>
->>> 3. delete qdisc
->>> tc qdisc delete dev enp1s0 parent root handle 100
->>>
->>> Reset adapter observed (tx mode tsn -> legacy).
->>>
->> 
->> That no unexpected resets are happening, is good.
->> 
->> But what I had in mind was some functional tests that ETF is working. I
->> guess that's the only way of knowing that it's still working. Sorry that
->> I wasn't clear about that.
->> 
->> 
->> Cheers,
->
-> My bad.
->
-> Just tested ETF functionality and it is working.
->
+An easy reproducer is to run ssh to connect to the machine.  With
+MAX_SKB_FRAGS=17 it works, with MAX_SKB_FRAGS=45 it fails.
 
-Awesome. Thanks for the confirmation:
+The root cause of the issue is that the driver does not take into
+account properly the (possibly large) shared info size when selecting
+the ring layout, and will try to fit two packets inside the same 4K
+page even when the 1st fraglist will trump over the 2nd head.
 
-Acked-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
+Address the issue forcing the driver to fit a single packet per page,
+leaving there enough room to store the (currently) largest possible
+skb_shared_info.
 
+Fixes: 3948b05950fd ("net: introduce a config option to tweak MAX_SKB_FRAGS")
+Reported-by: Jan Tluka <jtluka@redhat.com>
+Reported-by: Jirka Hladky <jhladky@redhat.com>
+Reported-by: Sabrina Dubroca <sd@queasysnail.net>
+Tested-by: Sabrina Dubroca <sd@queasysnail.net>
+Tested-by: Corinna Vinschen <vinschen@redhat.com>
+Signed-off-by: Paolo Abeni <pabeni@redhat.com>
+---
+v2: fix subject, add a simple reproducer
+v3: fix Fixes, tested with all MTUs from 1200 to 1280 per Eric's suggestion
 
-Cheers,
+ drivers/net/ethernet/intel/igb/igb_main.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
+index 11be39f435f3..232d6cb836a9 100644
+--- a/drivers/net/ethernet/intel/igb/igb_main.c
++++ b/drivers/net/ethernet/intel/igb/igb_main.c
+@@ -4808,6 +4808,7 @@ static void igb_set_rx_buffer_len(struct igb_adapter *adapter,
+ 
+ #if (PAGE_SIZE < 8192)
+ 	if (adapter->max_frame_size > IGB_MAX_FRAME_BUILD_SKB ||
++	    SKB_HEAD_ALIGN(adapter->max_frame_size) > (PAGE_SIZE / 2) ||
+ 	    rd32(E1000_RCTL) & E1000_RCTL_SBP)
+ 		set_ring_uses_large_buffer(rx_ring);
+ #endif
 -- 
-Vinicius
+2.45.2
+
