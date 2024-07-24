@@ -1,94 +1,101 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 433E293AD27
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 24 Jul 2024 09:26:48 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2AAF993AE2F
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 24 Jul 2024 10:57:23 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 69A90813FD;
-	Wed, 24 Jul 2024 07:26:46 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 92C45608A7;
+	Wed, 24 Jul 2024 08:57:21 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id EPEfeL71zmhn; Wed, 24 Jul 2024 07:26:45 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 1BeXeU3OQJLI; Wed, 24 Jul 2024 08:57:20 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6322F813F2
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9E3A7608B1
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1721806005;
-	bh=WwPcpHBB8UQw4eHBQ9hxHNDfTRztoG00yWXTlWR3DtM=;
+	s=default; t=1721811440;
+	bh=a09RrNU1F+fVmwep1n2NrhCMuBabpF9UyYl4Vp6fByY=;
 	h=From:To:In-Reply-To:References:Date:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=Mfihr9hy17qNVWKYLNWzLfbhreWOFPuZF6y08+0LFJ9jajSpogdMU98xGmMIgFxq+
-	 sSdXzVQGn5xKVv6gwQLPHKBAaOPbcDp9d5CPgQLIwk4/pYLNi/wgYwVF47LaGygdvU
-	 05jZhnbvcuEO9J9g9LGtRGKmeak+yTq9GVgpIK+byo0ClldZgDOBVTVw/j/vOCy5ye
-	 UYywzNsjwaQ3p4u6CESDP+lP6KDMbv1maUn8VRznFN2gPx5Lm0M3a3DRQrcqUxEyYY
-	 uw6+RD35cJNhVaWemySiZUFQmizWR3NqNg+nK5K7C0HNjX1X9UgX/jj9lX38R3ChvA
-	 GB7qPHVVfurYA==
+	b=WS2jUqPYzMNBWqgd6gbxmUIjzA/9OFIMmX4vwdHjEu9vWM/4vDgrUNi0WKS4pDUyS
+	 P3XmKUWGAHBZzwPTDdsS8tm7aXdG+flEK+E72I2fdTrQDT5zI9kaQkrZ/p+lXzxVxY
+	 gsTFmyVG74xir+wcalDSwx63L5HPOYmX4x4ky2LU6S8eV3JNw5GNQ9CW0ucvtyLDM/
+	 OLzM7r/mJdBd3j3q6YasjMV5SruoSLvV/B6huh5N6V1FERvgbTNc0YnoUrUcDDwux+
+	 6wO0/ZPA5VYBOfMKLoHWqMjmPPZyvW3Beq42KpDjI/gUVZTfJYJUaBYgkFpm7SynD9
+	 6ASaGghtMSMVw==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 6322F813F2;
-	Wed, 24 Jul 2024 07:26:45 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 9E3A7608B1;
+	Wed, 24 Jul 2024 08:57:20 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 8FF0C1BF280
- for <intel-wired-lan@lists.osuosl.org>; Wed, 24 Jul 2024 07:26:43 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 806061BF853
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 24 Jul 2024 08:57:19 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id DF73A813AD
- for <intel-wired-lan@lists.osuosl.org>; Wed, 24 Jul 2024 07:26:41 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 79608402E1
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 24 Jul 2024 08:57:19 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id F6or_4gFS_qE for <intel-wired-lan@lists.osuosl.org>;
- Wed, 24 Jul 2024 07:26:41 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id pfiDjsYop6Vs for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 24 Jul 2024 08:57:18 +0000 (UTC)
+X-Greylist: delayed 540 seconds by postgrey-1.37 at util1.osuosl.org;
+ Wed, 24 Jul 2024 08:57:17 UTC
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 037E940246
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 037E940246
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=193.142.43.55;
- helo=galois.linutronix.de; envelope-from=kurt@linutronix.de;
+ helo=galois.linutronix.de; envelope-from=kurt.kanzenbach@linutronix.de;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org C472A813F1
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org C472A813F1
 Received: from galois.linutronix.de (Galois.linutronix.de [193.142.43.55])
- by smtp1.osuosl.org (Postfix) with ESMTPS id C472A813F1
- for <intel-wired-lan@lists.osuosl.org>; Wed, 24 Jul 2024 07:26:40 +0000 (UTC)
-From: Kurt Kanzenbach <kurt@linutronix.de>
-To: Brett Creeley <bcreeley@amd.com>, Jesse Brandeburg
- <jesse.brandeburg@intel.com>, Tony Nguyen <anthony.l.nguyen@intel.com>
-In-Reply-To: <3f8aef95-e7f8-4c47-9b19-a2ba90c4a532@amd.com>
-References: <20240611-igc_irq-v2-1-c63e413c45c4@linutronix.de>
- <3f8aef95-e7f8-4c47-9b19-a2ba90c4a532@amd.com>
-Date: Wed, 24 Jul 2024 09:26:35 +0200
-Message-ID: <87cyn3jln8.fsf@kurt.kurt.home>
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 037E940246
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 24 Jul 2024 08:57:17 +0000 (UTC)
+From: Kurt Kanzenbach <kurt.kanzenbach@linutronix.de>
+To: Rodrigo Cataldo via B4 Relay
+ <devnull+rodrigo.cadore.l-acoustics.com@kernel.org>, Jesse Brandeburg
+ <jesse.brandeburg@intel.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet
+ <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni
+ <pabeni@redhat.com>, Richard Cochran <richardcochran@gmail.com>, Vinicius
+ Costa Gomes <vinicius.gomes@intel.com>, "Christopher S. Hall"
+ <christopher.s.hall@intel.com>
+In-Reply-To: <20240708-igc-flush-ptm-request-before-timeout-6-10-v1-1-70e5ebec9efe@l-acoustics.com>
+References: <20240708-igc-flush-ptm-request-before-timeout-6-10-v1-1-70e5ebec9efe@l-acoustics.com>
+Date: Wed, 24 Jul 2024 10:48:12 +0200
+Message-ID: <874j8fjhv7.fsf@kurt.kurt.home>
 MIME-Version: 1.0
 Content-Type: multipart/signed; boundary="=-=-=";
  micalg=pgp-sha512; protocol="application/pgp-signature"
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linutronix.de; s=2020; t=1721805997;
+ d=linutronix.de; s=2020; t=1721810894;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=WwPcpHBB8UQw4eHBQ9hxHNDfTRztoG00yWXTlWR3DtM=;
- b=C0YSs3yTMp85z8smw547mEX4fJxzlvm9DVyXBatY5UpiYSNJz5E423bHxOQfCVPH/8AOsC
- lrXARGtga7iYG8qa+Jz9S+qwAN0VYlO0E972AlDhR4V3f/zBuCYdtG67/+tYJGIOmPUv2Y
- rzVkOoyRsPFVhxopOVxAjNk+CY7cqF9dU1dLVB1PWtBD30DXORMZJFFzDFSeHRHfQg1wNF
- jjK112gocu8Go+vpjkqMIQt8Uptmc1/SbJe83SLygRjsCM8aMcxzymTGHz5RfvnQClpA/Q
- MySsJPzYvq2mPOkkmMC8ukTt4QvyWS0ugTQyORNogAU7roFoboEo18aqiST3Eg==
+ bh=a09RrNU1F+fVmwep1n2NrhCMuBabpF9UyYl4Vp6fByY=;
+ b=v8Yhf6BbxoSh1ZjTczM5EGIflRsKSxgwWFHStE+z7YqtX5kq2kgYov8WU2Jrs4DPvIipOy
+ egYv88enTN3WG/dRtqG36EVyVf6AfhZOsTolAaRJYOvt9Y5ZNVE1Y+pcNh3GPOjTVw1Yrb
+ NDG70NVLkeBxLBYQeivmOyWwJPQOYgU09+flqV3/OLpvIVvhktEJDCy6RQYZiqQMO2qXMp
+ JDmDJbv3u/i+50vW5gPbw76c6rkFMgkhbyUxrOx8/nZUE24wXEXnhV6ZSMm7cK8JplJZCV
+ +bM2f/DaPrT41N8n890asf9DnmCqcwP2XnWqbi4/mateqAmZYZaln7ehnbyFVQ==
 X-Mailman-Original-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed;
- d=linutronix.de; s=2020e; t=1721805997;
+ d=linutronix.de; s=2020e; t=1721810894;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=WwPcpHBB8UQw4eHBQ9hxHNDfTRztoG00yWXTlWR3DtM=;
- b=hwUkgqQKeNZAhfOKnkPaWr8313ZfX6HRxpOCJrrOl2QlRJMxcip7+tnhwpuD0TBELzNXkF
- q4Gu+5C1tu53tBAg==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ bh=a09RrNU1F+fVmwep1n2NrhCMuBabpF9UyYl4Vp6fByY=;
+ b=MzMhGLiu5kHdsIDeziOtvYQmhMNhh4/bGzAClUoZM+gdm0W/e4K+OEoN/c0VBQhCuYVrkQ
+ 0irI2p8K7jaAH4Dg==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=linutronix.de
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key, unprotected) header.d=linutronix.de
- header.i=@linutronix.de header.a=rsa-sha256 header.s=2020 header.b=C0YSs3yT; 
+ header.i=@linutronix.de header.a=rsa-sha256 header.s=2020 header.b=v8Yhf6Bb; 
  dkim=pass header.d=linutronix.de header.i=@linutronix.de
- header.a=ed25519-sha256 header.s=2020e header.b=hwUkgqQK
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v2] igc: Get rid of spurious
- interrupts
+ header.a=ed25519-sha256 header.s=2020e header.b=MzMhGLiu
+Subject: Re: [Intel-wired-lan] [PATCH iwl-net] igc: Ensure PTM request is
+ completed before timeout has started
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -101,75 +108,124 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Maciej Fijalkowski <maciej.fijalkowski@intel.com>,
- Vinicius Costa Gomes <vinicius.gomes@intel.com>, netdev@vger.kernel.org,
- Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
- Eric Dumazet <edumazet@google.com>, intel-wired-lan@lists.osuosl.org,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- "David S. Miller" <davem@davemloft.net>
+Cc: netdev@vger.kernel.org, Rodrigo Cataldo <rodrigo.cadore@l-acoustics.com>,
+ intel-wired-lan@lists.osuosl.org, linux-kernel@vger.kernel.org
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 --=-=-=
 Content-Type: text/plain
-Content-Transfer-Encoding: quoted-printable
 
-On Tue Jul 23 2024, Brett Creeley wrote:
->> @@ -5811,11 +5815,29 @@ static void igc_watchdog_task(struct work_struct=
- *work)
->>          if (adapter->flags & IGC_FLAG_HAS_MSIX) {
->>                  u32 eics =3D 0;
->>=20
->> -               for (i =3D 0; i < adapter->num_q_vectors; i++)
->> -                       eics |=3D adapter->q_vector[i]->eims_value;
->> -               wr32(IGC_EICS, eics);
->> +               for (i =3D 0; i < adapter->num_q_vectors; i++) {
->> +                       struct igc_q_vector *q_vector =3D adapter->q_vec=
-tor[i];
->> +                       struct igc_ring *rx_ring;
->> +
->> +                       if (!q_vector->rx.ring)
->> +                               continue;
->> +
->> +                       rx_ring =3D adapter->rx_ring[q_vector->rx.ring->=
-queue_index];
->> +
->> +                       if (test_bit(IGC_RING_FLAG_RX_ALLOC_FAILED, &rx_=
-ring->flags)) {
->> +                               eics |=3D q_vector->eims_value;
->> +                               clear_bit(IGC_RING_FLAG_RX_ALLOC_FAILED,=
- &rx_ring->flags);
->> +                       }
+On Mon Jul 08 2024, Rodrigo Cataldo via B4 Relay wrote:
+> From: Rodrigo Cataldo <rodrigo.cadore@l-acoustics.com>
 >
-> Tiny nit, but is there a reason to not use test_and_clear_bit() here?
+> When a PTM is requested via wr32(IGC_PTM_STAT), the operation may only
+> be completed by the next read operation (flush). Unfortunately, the next
+> read operation in the PTM request loop happens after we have already
+> started evaluating the response timeout.
+>
+> Thus, the following behavior has been observed::
+>
+>   phc2sys-1655  [010]   103.233752: funcgraph_entry:                    |  igc_ptp_getcrosststamp() {
+>   phc2sys-1655  [010]   103.233754: funcgraph_entry:                    |    igc_phc_get_syncdevice_time() {
+>   phc2sys-1655  [010]   103.233755: funcgraph_entry:                    |      igc_rd32() {
+>   phc2sys-1655  [010]   103.233931: preempt_disable: caller=irq_enter_rcu+0x14 parent=irq_enter_rcu+0x14
+>   phc2sys-1655  [010]   103.233932: local_timer_entry: vector=236
+>   phc2sys-1655  [010]   103.233932: hrtimer_cancel: hrtimer=0xffff8edeef526118
+>   phc2sys-1655  [010]   103.233933: hrtimer_expire_entry: hrtimer=0xffff8edeef526118 now=103200127876 function=tick_nohz_handler/0x0
+>
+>   ... tick handler ...
+>
+>   phc2sys-1655  [010]   103.233971: funcgraph_exit:       !  215.559 us |      }
+>   phc2sys-1655  [010]   103.233972: funcgraph_entry:                    |      igc_rd32() {
+>   phc2sys-1655  [010]   103.234135: funcgraph_exit:       !  164.370 us |      }
+>   phc2sys-1655  [010]   103.234136: funcgraph_entry:         1.942 us   |      igc_rd32();
+>   phc2sys-1655  [010]   103.234147: console:              igc 0000:03:00.0 enp3s0: Timeout reading IGC_PTM_STAT register
+>
+> Based on the (simplified) code::
+>
+> 	ctrl = rd32(IGC_PTM_CTRL);
+>         /* simplified: multiple writes here */
+> 	wr32(IGC_PTM_STAT, IGC_PTM_STAT_VALID);
+>
+> 	err = readx_poll_timeout(rd32, IGC_PTM_STAT, stat,
+> 				 stat, IGC_PTM_STAT_SLEEP,
+> 				 IGC_PTM_STAT_TIMEOUT);
+> 	if (err < 0) {
+> 		netdev_err(adapter->netdev, "Timeout reading IGC_PTM_STAT register\n");
+> 		return err;
+> 	}
+>
+> Where readx_poll_timeout() starts the timeout evaluation before calling
+> the rd32() parameter (rd32() is a macro for igc_rd32()).
+>
+> In the trace shown, the read operation of readx_poll_timeout() (second
+> igc_rd32()) took so long that the timeout (IGC_PTM_STAT_VALID) has expired
+> and no sleep has been performed.
+>
+> With this patch, a write flush is added (which is an additional
+> igc_rd32() in practice) that can wait for the write before the timeout
+> is evaluated::
+>
+>   phc2sys-1615  [010]    74.517954: funcgraph_entry:                    |  igc_ptp_getcrosststamp() {
+>   phc2sys-1615  [010]    74.517956: funcgraph_entry:                    |    igc_phc_get_syncdevicetime() {
+>   phc2sys-1615  [010]    74.517957: funcgraph_entry:                    |      igc_rd32() {
+>   phc2sys-1615  [010]    74.518127: preempt_disable: caller=irq_enter_rcu+0x14 parent=irq_enter_rcu+0x14
+>   phc2sys-1615  [010]    74.518128: local_timer_entry: vector=236
+>   phc2sys-1615  [010]    74.518128: hrtimer_cancel: hrtimer=0xffff96466f526118
+>   phc2sys-1615  [010]    74.518128: hrtimer_expire_entry: hrtimer=0xffff96466f526118 now=74484007229 function=tick_nohz_handler/0x0
+>
+>   ... tick handler ...
+>
+>   phc2sys-1615  [010]    74.518180: funcgraph_exit:       !  222.282 us |      }
+>   phc2sys-1615  [010]    74.518181: funcgraph_entry:                    |      igc_rd32() {
+>   phc2sys-1615  [010]    74.518349: funcgraph_exit:       !  168.160 us |      }
+>   phc2sys-1615  [010]    74.518349: funcgraph_entry:         1.970 us   |      igc_rd32();
+>   phc2sys-1615  [010]    74.518352: hrtimer_init: hrtimer=0xffffa6f9413a3940 clockid=CLOCK_MONOTONIC mode=0x0
+>   phc2sys-1615  [010]    74.518352: preempt_disable: caller=_raw_spin_lock_irqsave+0x28 parent=hrtimer_start_range_ns+0x56
+>   phc2sys-1615  [010]    74.518353: hrtimer_start: hrtimer=0xffffa6f9413a3940 function=hrtimer_wakeup/0x0 expires=74484232878 softexpires=74484231878
+>
+>   .. hrtimer setup and return ...
+>
+>   kworker/10:1-242   [010]    74.518382: sched_switch: kworker/10:1:242 [120] W ==> phc2sys:1615 [120]
+>   phc2sys-1615  [010]    74.518383: preempt_enable: caller=schedule+0x36 parent=schedule+0x36
+>   phc2sys-1615  [010]    74.518384: funcgraph_entry:      !  100.088 us |      igc_rd32();
+>   phc2sys-1615  [010]    74.518484: funcgraph_entry:         1.958 us   |      igc_rd32();
+>   phc2sys-1615  [010]    74.518488: funcgraph_entry:         2.019 us   |      igc_rd32();
+>   phc2sys-1615  [010]    74.518490: funcgraph_entry:         1.956 us   |      igc_rd32();
+>   phc2sys-1615  [010]    74.518492: funcgraph_entry:         1.980 us   |      igc_rd32();
+>   phc2sys-1615  [010]    74.518494: funcgraph_exit:       !  539.386 us |    }
+>
+> Now the sleep is called as expected, and the operation succeeds.
+> Therefore, regardless of how long it will take for the write to be
+> completed, we will poll+sleep at least for the time specified in
+> IGC_PTM_STAT_TIMEOUT.
+>
+> Fixes: a90ec8483732 ("igc: Add support for PTP getcrosststamp()")
+> Signed-off-by: Rodrigo Cataldo <rodrigo.cadore@l-acoustics.com>
 
-I believe that question was answered by Sebastian on v1:
+Thanks for sending this upstream.
 
- https://lore.kernel.org/all/20240613062426.Om5bQpR3@linutronix.de/
-
-Other than that no particular reason.
-
-Thanks,
-Kurt
+Reviewed-by: Kurt Kanzenbach <kurt@linutronix.de>
 
 --=-=-=
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQJHBAEBCgAxFiEEvLm/ssjDfdPf21mSwZPR8qpGc4IFAmagrKsTHGt1cnRAbGlu
-dXRyb25peC5kZQAKCRDBk9HyqkZzgtqlD/9840bSvad5sfDPGwDqHEMRVD28DlrR
-riWOVpqpBnhm4bdneFbVaMHZCCAQuErE1e1SB0J3wowtSj7Du/+JjXgtvKeK/T1L
-Zp4+oNlaYk/JzujT+ldKGBoRMXkilWa+OoFZJl9T0YApVjvFllgtg3ow66YsSc7m
-PDznjOub+nRHyDipug12pnQehFCXsrqnB5fO6vl9B9FwokANM7Dz8jqsbELlX+Ds
-OHCL1qPapGS618sno+UbGCGr7XYHnGvPA4uf4EKVmM3bkKDPSS83vQKHXc9BwLUH
-P8OblHFlJfLrKwgztMYz43RpjReUELTWTbzNYb0gX6/zxdVNr/F6t61VvadOFcri
-kqwR3L4avowLrncGPIDyzOtSYhjgIaSXu0c5v6QURZ6tDQWJ4TUKj55wVGdRq/py
-fs+Wc0YGBUx1elcbRPLJxJ2NNshGmPd3ckne+oma5TEONuLSK/XpO5aZ2oxpD6X9
-fnK29RKxnbFI8ElLZvashq+C3/IerxcFW5zA0jz+Zpd8l7c/kMvnV/j2LrbnVK5a
-Yu79PSsRhSTCg3unge3aiXFK+ID1VZohLqYwwDdXXvJ9TyqYrdqOWJOCQKqgK1E2
-VVWe2aBmgZAu1CxtoxIOHs1oydtjt3k/kxJT7Wo3vZmCVjMIUyUS/hi2RlhEiImz
-dRQXFNXzhsqjpQ==
-=6Gdp
+iQJSBAEBCgA8FiEEvLm/ssjDfdPf21mSwZPR8qpGc4IFAmagv8weHGt1cnQua2Fu
+emVuYmFjaEBsaW51dHJvbml4LmRlAAoJEMGT0fKqRnOCuLUP/ib+0Vgkt4GIrTNy
+Gh9EkFw+VPjRPEnxPMIHRWl9XJnHJfVbOZp6u05cBpXE5M32SicSPEhO2ZZzBrUp
+NRlIlKhrlTLKa3m57duu2o0PY1572Ay0LyfiEF06joZUqX97kST26QlRYjdqVgzF
++PeQ9DTZ3wpltPMzmvXE6g8T02xumCbg6CgohmYjnVeCFG94ADr26+WPSoP0lX4o
+9bCJg7J/5nMfUmORzQ6dvLmlkURk4n18wguSab0hJnMAvbbCxZIlch5sGicUxbka
+AqcwWLz/CtpdoJ6VA5FR1aX0D2h597qDR6ULvsB8NjH942zRNr8akq00qS6tkGNp
+WFYlu58gQhDr6Zr7yWYWUXiI/4/1OTko/pesir7knzODd0bVCbf7PJIf1vkim84s
+00nfwkRBr/DBemxCbiOyV3F33sdntUe2Sx3iX8LqAwO8vcesltvED/xd18Ch6nj7
+ZucOsd/2bMqD1Key/8lzFdiMebLJV/ywoWg9dde7tsatdeDokzX3QhJZcWXktkah
+qcHremtXKQ7vzYn6yf3EV+oNBZlTULRoDar5MJWF6/EGnwl+2Y6xbfGEQh3t5uMB
+kPpXNE9VXOop4N5fLhtQ1HE1gq/doCo1rtp99Uo5iz3VppHNWHi1za8E4GFmXvb3
+kfWSE0TO7Z60rN2ANn9RS4QPj+hG
+=hICY
 -----END PGP SIGNATURE-----
 --=-=-=--
