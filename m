@@ -2,96 +2,229 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 56E7D93D268
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 26 Jul 2024 13:36:53 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 23F7F93D401
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 26 Jul 2024 15:17:37 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id B9FDD60B1E;
-	Fri, 26 Jul 2024 11:36:49 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id A7CAD60AD5;
+	Fri, 26 Jul 2024 13:17:35 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id y-MQlp8JGEhN; Fri, 26 Jul 2024 11:36:48 +0000 (UTC)
+ id penQ9gjoCit0; Fri, 26 Jul 2024 13:17:34 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2CF2A60B35
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6407060AD6
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1721993808;
-	bh=Kv9akrylSq67vHxuLsdzxfM7VUnwgKBcjT9BpRvFpFc=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1721999854;
+	bh=oU2KUcHLoe06aSXUMiF20f2MaXsU3l402Ezu/6krFSk=;
+	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=nvS0RRO5JIPTxbHarrdboD8XtssrJLsaguDmVaJDzohdM4+zbrMzpGhc146qhcQNe
-	 0tWbKF0T2s/jddV7ZXvCN5ydzKRTWyKoQYliqqDCtDPOEzOrMKOgQEcJrJQvQuAkfw
-	 6tT4NjzBkA0bu942+cu2Rxza2fkpDMdpZxx5PD1BJU/HBrcFLjQ6oZlN+y1MV9Q9Bd
-	 Ia11cUJM1EhTUiJV3hUfs7yRDk7+gk2fjCJXOp5j/icLO6vDslHFq9yCbAcI9PVpFO
-	 HIrQ7vDqaXWKcZHvCfszfTC3QRJob7NhydZ0NNlkNSKUaEf7U1OFbotlD+8/KcOjNS
-	 2S254OW6N3PZw==
+	b=dqlOHR7laWOwcIlc0dEHlFAc71/4A1/S4797Y7M+q1TZ+D5X9qzNC1yTk1BS/iDsP
+	 IbzzXPrTf3hkTfP6SZ+csHgTurPUIeoyhGgMIUVMJHXa4o0BrTtsr30tGYgCsKS6Gh
+	 4N04P5d0DNeVZy5ZC6WJew7Bu9aA4HpSHk+zTnZnTPbALLI9ue3tjq7iofJAV33DKJ
+	 xNJYWYCGAKQPjvT2uXXLbL999/v25Y1aaD0M+vVJtPmr9vbXOeKq/r6688RxlXaonA
+	 CaWix0YD48PP4D1+XsnISk5kOG+IDBlvWmpygpa1cmGvImsV5iMIdmPXVNp57GdVlX
+	 DbRfT5OjTnwMw==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 2CF2A60B35;
-	Fri, 26 Jul 2024 11:36:48 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 6407060AD6;
+	Fri, 26 Jul 2024 13:17:34 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 22BA11BF59C
- for <intel-wired-lan@lists.osuosl.org>; Fri, 26 Jul 2024 11:36:45 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 6C0C71BF344
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 26 Jul 2024 13:17:32 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 1017640BBB
- for <intel-wired-lan@lists.osuosl.org>; Fri, 26 Jul 2024 11:36:45 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 56CC881E50
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 26 Jul 2024 13:17:32 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id t4FXxzibBAo7 for <intel-wired-lan@lists.osuosl.org>;
- Fri, 26 Jul 2024 11:36:43 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.21;
- helo=mgamail.intel.com; envelope-from=karol.kolacinski@intel.com;
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id vuo6BWCG31SL for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 26 Jul 2024 13:17:31 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.14;
+ helo=mgamail.intel.com; envelope-from=aleksander.lobakin@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 5AC8F40BB7
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5AC8F40BB7
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.21])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 5AC8F40BB7
- for <intel-wired-lan@lists.osuosl.org>; Fri, 26 Jul 2024 11:36:43 +0000 (UTC)
-X-CSE-ConnectionGUID: dquUcA8rRuaZLaPduY1agA==
-X-CSE-MsgGUID: +NN07SaHT3WLZaozhOI0vQ==
-X-IronPort-AV: E=McAfee;i="6700,10204,11144"; a="19743246"
-X-IronPort-AV: E=Sophos;i="6.09,238,1716274800"; d="scan'208";a="19743246"
-Received: from fmviesa002.fm.intel.com ([10.60.135.142])
- by orvoesa113.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 26 Jul 2024 04:36:43 -0700
-X-CSE-ConnectionGUID: 5CK/P7LNQu2igWCJLNJCxA==
-X-CSE-MsgGUID: QnWv8fJLRXiitZhARg4Y/A==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 29FC681E3E
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 29FC681E3E
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.14])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 29FC681E3E
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 26 Jul 2024 13:17:30 +0000 (UTC)
+X-CSE-ConnectionGUID: MLels/8QRzWopGDo3N0dUQ==
+X-CSE-MsgGUID: iidFOPtrRU+MZ760wWnwnQ==
+X-IronPort-AV: E=McAfee;i="6700,10204,11144"; a="23590674"
+X-IronPort-AV: E=Sophos;i="6.09,238,1716274800"; d="scan'208";a="23590674"
+Received: from fmviesa010.fm.intel.com ([10.60.135.150])
+ by orvoesa106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 26 Jul 2024 06:17:29 -0700
+X-CSE-ConnectionGUID: 3yHFVNwpQcO7IcOm0W2VaA==
+X-CSE-MsgGUID: 3QHfUlQiR+yHwhCU88wipw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.09,238,1716274800"; d="scan'208";a="76466932"
-Received: from kkolacin-desk1.igk.intel.com ([10.102.102.132])
- by fmviesa002.fm.intel.com with ESMTP; 26 Jul 2024 04:36:41 -0700
-From: Karol Kolacinski <karol.kolacinski@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Fri, 26 Jul 2024 13:34:46 +0200
-Message-ID: <20240726113631.200083-10-karol.kolacinski@intel.com>
-X-Mailer: git-send-email 2.45.2
-In-Reply-To: <20240726113631.200083-6-karol.kolacinski@intel.com>
-References: <20240726113631.200083-6-karol.kolacinski@intel.com>
+X-IronPort-AV: E=Sophos;i="6.09,238,1716274800"; d="scan'208";a="53348088"
+Received: from fmsmsx601.amr.corp.intel.com ([10.18.126.81])
+ by fmviesa010.fm.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
+ 26 Jul 2024 06:17:29 -0700
+Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
+ fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.39; Fri, 26 Jul 2024 06:17:28 -0700
+Received: from fmsmsx603.amr.corp.intel.com (10.18.126.83) by
+ fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.39; Fri, 26 Jul 2024 06:17:28 -0700
+Received: from FMSEDG603.ED.cps.intel.com (10.1.192.133) by
+ fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.39 via Frontend Transport; Fri, 26 Jul 2024 06:17:28 -0700
+Received: from NAM04-DM6-obe.outbound.protection.outlook.com (104.47.73.40) by
+ edgegateway.intel.com (192.55.55.68) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.39; Fri, 26 Jul 2024 06:17:28 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=bsrgcGAANtYaQRRt8D/L3urZOFu0OgFy3rXyZzze4+/QSCLlK9d3nybvYjBCd85Y2ZzzfK88y+ECErN1ydjjfdpP34Qcdz7dqgD2OMVJUzL7eBNtdmRZNWYK/Z8WoIb1rLg9N8L1VGr4CoB79X1Gb98VWd2uet8c438XIu+g9m1k1JDHG/H7FuY8wefjluZYg6BPhT3d/wAd/PYrWh6lo+TlggZqPRewl+GrRq5SGLt0GrYk6rQFZCQH1Li3NYtFa5kLglAaL5Ls932YqMxEy/TG2Gma9i8Vtmbrng0oAcp93n/jK66Bqc81X87FRh7NUu5doWBGXBAcr9KKIXSHvw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=oU2KUcHLoe06aSXUMiF20f2MaXsU3l402Ezu/6krFSk=;
+ b=yomEVPG4h6Xt9JWr2UI/AWAX5p09s43jTO/JniaQgc7hrKo0hxa7MQ/DJOcmSTj63hI7R+50a4ibMdpi9718xU/WQ1puFc6FYjYyEGv4JcfyRzYCkNTqegr02JQvlYzjoA5Tt9ToyJjNUy+TAdahGQ6OWWrXWWuYmjW8lfeX95Jv8SFIZaAFr62f66romzw6jTa66Hgi4YWrNCC4KY9RWRMT40CBgjU3FW1T6fTv/cCd0hN2V6z+qWGZyjG1AAf6xrBnWDSOuSGbuZ2uYSgbep6f9Sx1qEmUJ0KctGJ+Fz+cBbtDo+JDCt06Kgs9yO/aMe8AFPHH3oaAX2/EGZhSaQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from DS0PR11MB8718.namprd11.prod.outlook.com (2603:10b6:8:1b9::20)
+ by LV8PR11MB8487.namprd11.prod.outlook.com (2603:10b6:408:1ed::17) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7784.19; Fri, 26 Jul
+ 2024 13:17:26 +0000
+Received: from DS0PR11MB8718.namprd11.prod.outlook.com
+ ([fe80::4b3b:9dbe:f68c:d808]) by DS0PR11MB8718.namprd11.prod.outlook.com
+ ([fe80::4b3b:9dbe:f68c:d808%5]) with mapi id 15.20.7784.020; Fri, 26 Jul 2024
+ 13:17:26 +0000
+Message-ID: <5fb6f2ad-6db1-4dd6-b985-19dd14035603@intel.com>
+Date: Fri, 26 Jul 2024 15:17:20 +0200
+User-Agent: Mozilla Thunderbird
+To: Karol Kolacinski <karol.kolacinski@intel.com>
+References: <20240725093932.54856-6-karol.kolacinski@intel.com>
+ <20240725093932.54856-7-karol.kolacinski@intel.com>
+From: Alexander Lobakin <aleksander.lobakin@intel.com>
+Content-Language: en-US
+In-Reply-To: <20240725093932.54856-7-karol.kolacinski@intel.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+X-ClientProxiedBy: DB9PR06CA0030.eurprd06.prod.outlook.com
+ (2603:10a6:10:1db::35) To DS0PR11MB8718.namprd11.prod.outlook.com
+ (2603:10b6:8:1b9::20)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DS0PR11MB8718:EE_|LV8PR11MB8487:EE_
+X-MS-Office365-Filtering-Correlation-Id: adad04f0-8255-4e20-90eb-08dcad754aca
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|366016|376014;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?NWhsQ1pEZVgwNG5TSWZzQjUxdmU5VTBlR044eWNBajJhbFlHVDdaMEdPWHdB?=
+ =?utf-8?B?TTZneVhOTEJ2U1B5blBickZyWHVJUkQ0emhpMUlOL1JRMnp3Ukx5Q3Y5dUZG?=
+ =?utf-8?B?ajNPSHhoRW8zd2FtS3hva0ZEVDBzVjBSUzdiWHhVejVYT1VzdUxYU0MxQjZy?=
+ =?utf-8?B?ZUxmNzFrektKblMxczFCOXBscy9qNHhrcERRYzUzTGhHcDV4RmFKNklFVExW?=
+ =?utf-8?B?cTFCZGFuMmdLK0pVWEQ4emtJdVhuOTVEVHlhR3pHTndyZm8rZHpQY1VpMnNN?=
+ =?utf-8?B?QzgrZHorRUliSmcxUi9vZ1VQWXNWRFpXMGJNU082S3Q5WmZ2TEwwUkg1L2c5?=
+ =?utf-8?B?anNWL0RMYmp5dGRkSS9JeFQyU2p6RTlOT2I4am1kSzlWc1JXTUtMbm1zbitv?=
+ =?utf-8?B?Z1BLTUI2c29QY2crdytRVDd3ckl1RlEzb09vR3Z2eHZ3eE1iMlhDYjMwUUwz?=
+ =?utf-8?B?WCtlV3M3QzVudmpsQW9BSm9ldG1sVTJhUGZsdEtlUWpHYVBlVDVDS3ovS2dy?=
+ =?utf-8?B?dlA5VkVLYUVSNHRRdjY4cTlVa1F3WmtSbEIrY1RWTkoxOHBCQkZpOGVMcU1z?=
+ =?utf-8?B?Y3RYZ05BOWgydTlzdHVsdzdpSXpqTmZlQmtsR2RwT1hwd3RBMjRIYWZCKzIy?=
+ =?utf-8?B?LzhTUUFNbmxlUzFXR2l6dmpCNlFZTmVIdEZNTjRHd2VmV3ZFME96T3QrQ2Z0?=
+ =?utf-8?B?ak5wWU9QdGovQVA5YTNWVTdITDc2M2xOSDl3REVBRDlYbFB1WFRBM3hCRHMx?=
+ =?utf-8?B?U0N6bmpGVDNqYS9LU2dxblJpRENnVVlDUGNia3QzczQ0T2srendFZVJYSzNW?=
+ =?utf-8?B?bGZWWFd3K1VDM2ZwMGFMM01jN3JnU2JVa1NRQklKYjE5ejJnZXhMUHRBb3Fv?=
+ =?utf-8?B?QW9MbWZIWkZIWDE3bWF5SWdpbVlrUlh6S09qbkUvaHJkMHI3Z2grSDNqaGJS?=
+ =?utf-8?B?UjExU3gwZkNCRzV5Z1hpNUZjSVdQVjY4Q2RZZWQrNjZGYUJTZUFNVkRDalg1?=
+ =?utf-8?B?Y2dabldlMjJXazZtUGJLeXMvL00vS2lKVDBUSzJoR250bUR4NkEwMUhLdHNS?=
+ =?utf-8?B?VkVMMFQwMzQzdVNHOUV0elVtdUJKbHdQbFFQVEw4WlVUcmp5VHFsNW52MUl1?=
+ =?utf-8?B?L2UyNDB2SVRDcUtWWk1kaWJBalJoOUVOQWF5SjJBRUgrZi84UkJ5YkFuN0hp?=
+ =?utf-8?B?YWRvU2dVWEs3NUhOS0hZc2ZrNk9lUHIrcFdJRVY5bXVFVzI1Zk9LSENycWpi?=
+ =?utf-8?B?UDlaUW00Q0hsN1UzVVBxUW9QK1R5eDZNT3FCZllhb2NNQ3l5UlI5M0IySzAx?=
+ =?utf-8?B?OW9XQ2JVQXFqSGtZaThnQnJ6bFJSK3ZTWVBnS3VjTTFrOXhBMGZaWmo4WG9R?=
+ =?utf-8?B?NDdnWHNYTGJOTVQrS01LbXJaRTFGMUh2MHdBakh6aTFCMURrTW9EMnp6UVhD?=
+ =?utf-8?B?ZVJGOVZ2elJNdVc5eWpMQTYzYXNMYUNOdVFKdmwzeS9YcjZ5Y05UMlUxSmds?=
+ =?utf-8?B?Mk5wY3h3OXdaeXcva2xxcnIvaEowRjRKTVAyQ1d5SWlCamh2VHN6N2xwRCtr?=
+ =?utf-8?B?SHg4eXZxeUpqSEhkeFpjUGZzeWtPSGVlWWQyK0I5WnYwRHdKdVBKY1FKUnlB?=
+ =?utf-8?B?VWlPM0RmVTN2K2FzL1AyVDJXWTh0b2xweG4ydEFla3ViK2trTHl2ZHRzSVFj?=
+ =?utf-8?B?UktmVW5NR1A1cnZLa1hscUcrbllxRWZJTW94eXkzakU0OWdlZFVoS25xMWZD?=
+ =?utf-8?B?SzlKRm4ramc5NEdaRmQzbktmdlp0Rmk1akYzUDd5T3FLMUN6dGRHT3d4UWVG?=
+ =?utf-8?B?bjQrZG93UzdwQVdTZjNuQT09?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:DS0PR11MB8718.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(1800799024)(366016)(376014); DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?emF2Q1l2UWVwZzRjOGtJZ2Iyc0Nwb1ZHdXdyZ1pGRm1oS01qVTV1Yno4VlRT?=
+ =?utf-8?B?VTh4SWJmbzFycFZETUFjQk1YKzk2L0dQc1FXMDk3QUZJNnJpRmFUUFBiSWJB?=
+ =?utf-8?B?TW1NMmI1V0liV0loTWZLbXhYTmNwbldhOU9nTXRxb3U1N2dYbUd1Q25oRWZo?=
+ =?utf-8?B?QS90Q1JXNU1vd3IxU1dYMGphNGd3cDdCTG04UktGZm13UDRCbEVqOWRiNEcx?=
+ =?utf-8?B?RjdIYzd1WVphZkZVVk1MSm9VeHJOeFM5NFVFRFdJVXBRQ2NTb3JIaTM0dWh5?=
+ =?utf-8?B?MVhmamFiUTFsSFhJUkU1OExrSmZEU1ZqWFVrR2JpS2d0SFZUdU9sNFNrMXFB?=
+ =?utf-8?B?cCtmb1M3WGF3Yi8xR3RyWDh1aEs3V2l3WHhNdURtMTZPNjFzdjJYdDBFV0cx?=
+ =?utf-8?B?dm1YYXJoQXljVElGZnZKSXF1UEZIMHFocHZxWUlXUHQrSkN6T1NhUWhUQW42?=
+ =?utf-8?B?dlBPVlFEUWlMdFdxOGlaOGVkQlh3ZVZQeWJ6TVI4cEo5SG5VN1NQU01oYW9Y?=
+ =?utf-8?B?bU9hOGlzbE43Z3p4Mk16aVFQa1dqZStZOFNSUDA1UGljN09wTzBXeWY2dkNo?=
+ =?utf-8?B?cVZrY1dibTI3czJQWUliSGVOWWZxbU5mOVZLeEJVcXh1cXRZNlkwaXZvTHZ1?=
+ =?utf-8?B?SHhBZGZoM2JVa0lyRGd6MjdxUDNTUGVMbzFqdHErTTV2ZFFMNXRGcWFYK3lz?=
+ =?utf-8?B?RDZISzZQNDVOVlYyaUpwZEt0SHpITHVrNkw3R1Fia2dYRGRWNHlRUFZwWE4r?=
+ =?utf-8?B?N01Sd2VISzlWaGlmeDVheEhxbGdGbFRrWVhrVzNvRVpQTW1JcUlaN2RONk5F?=
+ =?utf-8?B?Z0VrYkt1Ym9UWG5NY2ZMZTNVcEhjWjJGemYwYnFLYkpuQ3RDbHNlNmVKVTJ4?=
+ =?utf-8?B?Nlg4aWdWQ0J4TUtRb21iNWZsZHV4aWtQSzZnQk1WSG1sL0s0Y3NYc3B0UHhy?=
+ =?utf-8?B?UW1TUnBFQ2M3cVdLVTh1UlZzRHk1ZU51dVZPZFNmdFhLaHh1eVp3UnRWZkdw?=
+ =?utf-8?B?RXZhQVZkUk53aFd3M1c5YWpDSHE5a1FhOWpRVDhEcFR5OVpURjRxeHRzTDZE?=
+ =?utf-8?B?eVBHa2dZY2I2MXo2ckw0ckdSWWRhUHNvRGpEM3ZhaHhpUzc0QTU5MGFJNi9S?=
+ =?utf-8?B?OW50TVUvTGRpb1AyNUdDcXhWeVVzOGdoNWRGblptOFRrdG51N2FxVmI3V1Vu?=
+ =?utf-8?B?SWJUVzNzQzMzT1crd1d5MVlaY0FZcStmZXI0emNGZ3RTMjFrRUtCa3UrOHlX?=
+ =?utf-8?B?dSszNUhCK1lML1FRcTFHMFJzMStwTkFTakVSaGE5djlVeDQ1Q1A5MUlOVDlw?=
+ =?utf-8?B?RnlZL1MwLy90aE0xWldrSWpZRExIWnlmd1ZzMk90YVRDLzRYWkVibk5mRGVs?=
+ =?utf-8?B?TzZucXpxMzZiNlVaeHQxRmlWTy9ISmdJeEZ2dXU5VUozRjZ1K0VHVjRYeUFh?=
+ =?utf-8?B?RjlIVUNKQ1AzU1lVVmhRcmJuR3IzL0ozcE0xb09PK0V5TXFhSkFDbkZhQUFL?=
+ =?utf-8?B?TjYxUTN3dmZNREtpMnlRL3RPNUJ6WHBkUFNKRzd2by9kUUcyYzU3NmR6azk4?=
+ =?utf-8?B?YnBPRmhPOCtLVWYwMFdxRVI1ZHVqUG0zdlJLd0dVQVJ1Mnc5L1dxZVlNQjlu?=
+ =?utf-8?B?RlNxYlloRFpzWm5FblFZRy9DUGJTbmtNU3ZKU3lMcFRxM1BjOGVsMXMvZk1S?=
+ =?utf-8?B?eGhqOEVDS3NOV283WEd6Qk42R0FJY0RLSytza1dpbWVraWNQWWcrdWYwd1dj?=
+ =?utf-8?B?R0xabGd3VGdUdXd4MUp3R01ZUzNTcU81SUdqSnBORCtQOTM0bDJOMWx5aW83?=
+ =?utf-8?B?L2l1aElQY0psemRxOWZCSXd3anlHbmZKdjZKOHBZa0lDMkJ4WllOcmlvYmZ6?=
+ =?utf-8?B?Q3lvamVlekRhbXpHdk9hNU04RmZiMGltQll2SVRNaHF1MHlpdHkvZ284Mkcv?=
+ =?utf-8?B?Q09vazB2bkovc3k2Y0JERmhuUGhqY1RiUHhkNGF5c0NOV0JRVXdNT0F5MzIr?=
+ =?utf-8?B?WEd6WHorL0Fpc1A1dW9iZFRFTUZFUUF1VG93b2tEQ05YZk1Gc3FBYnBSb2N1?=
+ =?utf-8?B?cHZJbVRQMkdTcVFVSDBaRjNQeFpTQmgzbXRUai9pSG9WQ2JkNTZXMGIzQWVt?=
+ =?utf-8?B?T1ZFak1oS1ZIY1c0ckU4U3RGVW5WQnBuRjh2L2piVThGeGU1anFnZmszNlQ3?=
+ =?utf-8?B?OWc9PQ==?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: adad04f0-8255-4e20-90eb-08dcad754aca
+X-MS-Exchange-CrossTenant-AuthSource: DS0PR11MB8718.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 26 Jul 2024 13:17:25.9624 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: 2hN46v5IKWq1akpm0PHdi+rEmH3Cx/F9C8g9S3DRKcYI+3U3GZ2EYzFe43fA0sSDRpPlD/aoJo51sv6VdKcecYn/+h4FN3i2apmeGf3BhBc=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: LV8PR11MB8487
+X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1721993803; x=1753529803;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=AMyZjo5K59cgFxPDkM0jd6dOUHY7F8nBo+/T+CPDjH0=;
- b=i8WpztdmmTKwYVkOag09tUI3G4iA7lChAPcH+5kVcsqWDKEHUMTRsEgN
- I5ZxyVH8Y3LAJgBRp5E9dUoh90gtu2we5aDUo+V2iXZ0jdNYWuSh9yjY3
- D3NBHjMjYfPWd+umA4VDreXGWOFFSwcv0H811zGif3a94mQbqiU+EyDKy
- PmX200MfDB0RZVIc2XOc1F9dZNJx7iQxfxXA7/8ghZeIzA8MsbRIV2aUK
- kfzNRu4qU3TsBf1SuTdn48/ndPdGg/EFeBiF9G8V1dz8keLmec4+i5gjD
- RMyWppe86iKffMsNre0Wc1ki2nMWGMsDB/D3M8kD+SNgsbT2f54mPUWPT
- w==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ t=1721999851; x=1753535851;
+ h=message-id:date:subject:to:cc:references:from:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=2+9Nz/AdGFENezCzr+E/Z1NcX/j+xtOBntDxqRi9ZUk=;
+ b=GcW26Blgp3ZavXoDHhcWaEGR/m7oygnbXYOShdhPLTPtot8KBH8hVoRM
+ Mh8tGp+KxI1PSM9bMz7pDwUausBa+epN+NBqCsuk1Zva9KnigXxiowXSM
+ 3cPJZhXYlmCbZ+DJvSqtuCqObI73PZ0jL/TSdCihTilGAhlKu3BLV+00f
+ mjd2E8kOana8W+PMkPEMEOWhUFJdbvNRqBvgRGUOp3J0y7/XvwNTZIp9L
+ GcoxyElht4Vhf3oBK4p7V8TjbO7s1ezprJualKi73OO95fhf7AybUWEnU
+ OKNqiypxONPsrH0ew8XNcSpJw+alBAfOqRaZnR1BlzkNZOiN0gfS9KzXU
+ A==;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=i8Wpztdm
-Subject: [Intel-wired-lan] [PATCH v4 iwl-next 4/4] ice: combine cross
- timestamp functions for E82x and E830
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=GcW26Blg
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH v3 iwl-next 1/4] ice: Implement PTP
+ support for E830 devices
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -104,467 +237,155 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Jacob Keller <jacob.e.keller@intel.com>, netdev@vger.kernel.org,
- Karol Kolacinski <karol.kolacinski@intel.com>, anthony.l.nguyen@intel.com,
- przemyslaw.kitszel@intel.com
+Cc: Paul Greenwalt <paul.greenwalt@intel.com>,
+ Michal Michalik <michal.michalik@intel.com>, przemyslaw.kitszel@intel.com,
+ anthony.l.nguyen@intel.com, netdev@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org, Milena Olech <milena.olech@intel.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Jacob Keller <jacob.e.keller@intel.com>
+From: Karol Kolacinski <karol.kolacinski@intel.com>
+Date: Thu, 25 Jul 2024 11:34:48 +0200
 
-The E830 and E82x devices use essentially the same logic for performing
-a crosstimestamp. The only difference is that E830 hardware has
-different offsets. Instead of having two implementations, combine them
-into a single ice_capture_crosststamp() function.
+> From: Michal Michalik <michal.michalik@intel.com>
+> 
+> Add specific functions and definitions for E830 devices to enable
+> PTP support.
+> Introduce new PHY model ICE_PHY_E830.
+> E830 devices support direct write to GLTSYN_ registers without shadow
+> registers and 64 bit read of PHC time.
+> 
+> Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+> Co-developed-by: Milena Olech <milena.olech@intel.com>
+> Signed-off-by: Milena Olech <milena.olech@intel.com>
+> Co-developed-by: Paul Greenwalt <paul.greenwalt@intel.com>
+> Signed-off-by: Paul Greenwalt <paul.greenwalt@intel.com>
+> Signed-off-by: Michal Michalik <michal.michalik@intel.com>
+> Co-developed-by: Karol Kolacinski <karol.kolacinski@intel.com>
+> Signed-off-by: Karol Kolacinski <karol.kolacinski@intel.com>
+> ---
+> V2 -> V3: Fixed kdoc for ice_is_e***() and ice_ptp_init_phy_e830()
+> V1 -> V2: Fixed compilation issue with GENMASK bits higher than 32
+> 
+>  drivers/net/ethernet/intel/ice/ice_common.c   |  13 +-
+>  drivers/net/ethernet/intel/ice/ice_common.h   |   1 +
+>  .../net/ethernet/intel/ice/ice_hw_autogen.h   |   4 +
+>  drivers/net/ethernet/intel/ice/ice_ptp.c      |  11 +-
+>  drivers/net/ethernet/intel/ice/ice_ptp_hw.c   | 199 ++++++++++++++++--
+>  drivers/net/ethernet/intel/ice/ice_ptp_hw.h   |  25 ++-
+>  drivers/net/ethernet/intel/ice/ice_type.h     |   1 +
+>  7 files changed, 226 insertions(+), 28 deletions(-)
+> 
+> diff --git a/drivers/net/ethernet/intel/ice/ice_common.c b/drivers/net/ethernet/intel/ice/ice_common.c
+> index 009716a12a26..8bff63d3d664 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_common.c
+> +++ b/drivers/net/ethernet/intel/ice/ice_common.c
+> @@ -267,7 +267,7 @@ bool ice_is_e822(struct ice_hw *hw)
+>   * ice_is_e823
+>   * @hw: pointer to the hardware structure
+>   *
+> - * returns true if the device is E823-L or E823-C based, false if not.
+> + * Return: true if the device is E823-L or E823-C based, false if not.
 
-Also combine the wrapper functions which call
-get_device_system_crosststamp() into a single ice_ptp_getcrosststamp()
-function.
+I'd move this, together with FIELD_{GET,PREP}() conversion, to a
+separate commit maybe (one is enough).
 
-To support both hardware types, the ice_capture_crosststamp function
-must be able to determine the appropriate registers to access. To handle
-this, pass a custom context structure instead of the PF pointer. This
-structure, ice_crosststamp_ctx, contains a pointer to the PF, and
-a pointer to the device configuration structure. This new structure also
-will make it easier to implement historic snapshot support in a future
-commit.
+>   */
+>  bool ice_is_e823(struct ice_hw *hw)
+>  {
+> @@ -307,6 +307,17 @@ bool ice_is_e825c(struct ice_hw *hw)
+>  	}
+>  }
+>  
+> +/**
+> + * ice_is_e830
+> + * @hw: pointer to the hardware structure
+> + *
+> + * Return: true if the device is E830 based, false if not.
+> + */
+> +bool ice_is_e830(const struct ice_hw *hw)
+> +{
+> +	return hw->mac_type == ICE_MAC_E830;
+> +}
 
-The device configuration structure is a static const data which defines
-the offsets and flags for the various registers. This includes the lock
-register, the cross timestamp control register, the upper and lower ART
-system time capture registers, and the upper and lower device time
-capture registers for each timer index.
+I think making this one check external instead of a static inline only
+increases object code size. Can't they reside in the header?
 
-This does add extra data to the .text of the module (and thus kernel),
-but it also removes 2 near duplicate functions for enabling E830
-support.
+[...]
 
-Use the configuration structure to access all of the registers in
-ice_capture_crosststamp(). Ensure that we don't over-run the device time
-array by checking that the timer index is 0 or 1. Previously this was
-simply assumed, and it would cause the device to read an incorrect and
-likely garbage register.
+> +/**
+> + * ice_ptp_init_phc_e830 - Perform E830 specific PHC initialization
+> + * @hw: pointer to HW struct
+> + *
+> + * Perform E830-specific PTP hardware clock initialization steps.
+> + *
+> + * Return: 0 on success
+> + */
+> +static int ice_ptp_init_phc_e830(struct ice_hw *hw)
+> +{
+> +	ice_ptp_cfg_sync_delay(hw, ICE_E810_E830_SYNC_DELAY);
+> +	return 0;
 
-It does feel like there should be a kernel interface for managing
-register offsets like this, but the closest thing I saw was
-<linux/regmap.h> which is interesting but not quite what we're looking
-for...
+Can't this and the below functions be void since they always return zero?
 
-Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
-Signed-off-by: Karol Kolacinski <karol.kolacinski@intel.com>
----
- drivers/net/ethernet/intel/Kconfig            |  10 +-
- .../net/ethernet/intel/ice/ice_hw_autogen.h   |   8 +
- drivers/net/ethernet/intel/ice/ice_main.c     |   7 +
- drivers/net/ethernet/intel/ice/ice_osdep.h    |   3 +
- drivers/net/ethernet/intel/ice/ice_ptp.c      | 242 +++++++++++++-----
- 5 files changed, 194 insertions(+), 76 deletions(-)
+> +}
+> +
+> +/**
+> + * ice_ptp_write_direct_incval_e830 - Prep PHY port increment value change
+> + * @hw: pointer to HW struct
+> + * @incval: The new 40bit increment value to prepare
+> + *
+> + * Prepare the PHY port for a new increment value by programming the PHC
+> + * GLTSYN_INCVAL_L and GLTSYN_INCVAL_H registers. The actual change is
+> + * completed by FW automatically.
+> + */
+> +static int ice_ptp_write_direct_incval_e830(struct ice_hw *hw, u64 incval)
 
-diff --git a/drivers/net/ethernet/intel/Kconfig b/drivers/net/ethernet/intel/Kconfig
-index 0375c7448a57..7c4f3948385c 100644
---- a/drivers/net/ethernet/intel/Kconfig
-+++ b/drivers/net/ethernet/intel/Kconfig
-@@ -332,14 +332,14 @@ config ICE_SWITCHDEV
- 	  If unsure, say N.
- 
- config ICE_HWTS
--	bool "Support HW cross-timestamp on platforms with PTM support"
-+	bool "Support HW cross-timestamp on supported platforms"
- 	default y
--	depends on ICE && X86
-+	depends on ICE && X86 && PCIE_PTM
- 	help
- 	  Say Y to enable hardware supported cross-timestamping on platforms
--	  with PCIe PTM support. The cross-timestamp is available through
--	  the PTP clock driver precise cross-timestamp ioctl
--	  (PTP_SYS_OFFSET_PRECISE).
-+	  with PCIe PTM support for E830 devices and all E82X platforms. The
-+	  cross-timestamp is available through the PTP clock driver precise
-+	  cross-timestamp ioctl (PTP_SYS_OFFSET_PRECISE).
- 
- config FM10K
- 	tristate "Intel(R) FM10000 Ethernet Switch Host Interface Support"
-diff --git a/drivers/net/ethernet/intel/ice/ice_hw_autogen.h b/drivers/net/ethernet/intel/ice/ice_hw_autogen.h
-index 646089f3e26c..495b182ea13b 100644
---- a/drivers/net/ethernet/intel/ice/ice_hw_autogen.h
-+++ b/drivers/net/ethernet/intel/ice/ice_hw_autogen.h
-@@ -541,6 +541,14 @@
- #define E830_PRTMAC_CL01_QNT_THR_CL0_M		GENMASK(15, 0)
- #define E830_PRTTSYN_TXTIME_H(_i)		(0x001E5800 + ((_i) * 32))
- #define E830_PRTTSYN_TXTIME_L(_i)		(0x001E5000 + ((_i) * 32))
-+#define E830_GLPTM_ART_CTL			0x00088B50
-+#define E830_GLPTM_ART_CTL_ACTIVE_M		BIT(0)
-+#define E830_GLPTM_ART_TIME_H			0x00088B54
-+#define E830_GLPTM_ART_TIME_L			0x00088B58
-+#define E830_GLTSYN_PTMTIME_H(_i)		(0x00088B48 + ((_i) * 4))
-+#define E830_GLTSYN_PTMTIME_L(_i)		(0x00088B40 + ((_i) * 4))
-+#define E830_PFPTM_SEM				0x00088B00
-+#define E830_PFPTM_SEM_BUSY_M			BIT(0)
- #define VFINT_DYN_CTLN(_i)			(0x00003800 + ((_i) * 4))
- #define VFINT_DYN_CTLN_CLEARPBA_M		BIT(1)
- 
-diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index 068b813c8586..b2ac375c278f 100644
---- a/drivers/net/ethernet/intel/ice/ice_main.c
-+++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -5060,6 +5060,12 @@ static int ice_init(struct ice_pf *pf)
- 	if (err)
- 		return err;
- 
-+	if (ice_is_e830(&pf->hw)) {
-+		err = pci_enable_ptm(pf->pdev, NULL);
-+		if (err)
-+			dev_dbg(ice_pf_to_dev(pf), "PCIe PTM not supported by PCIe bus/controller\n");
-+	}
-+
- 	err = ice_alloc_vsis(pf);
- 	if (err)
- 		goto err_alloc_vsis;
-@@ -5290,6 +5296,7 @@ ice_probe(struct pci_dev *pdev, const struct pci_device_id __always_unused *ent)
- 	hw->subsystem_device_id = pdev->subsystem_device;
- 	hw->bus.device = PCI_SLOT(pdev->devfn);
- 	hw->bus.func = PCI_FUNC(pdev->devfn);
-+
- 	ice_set_ctrlq_len(hw);
- 
- 	pf->msg_enable = netif_msg_init(debug, ICE_DFLT_NETIF_M);
-diff --git a/drivers/net/ethernet/intel/ice/ice_osdep.h b/drivers/net/ethernet/intel/ice/ice_osdep.h
-index a2562f04267f..c03ab0207e0a 100644
---- a/drivers/net/ethernet/intel/ice/ice_osdep.h
-+++ b/drivers/net/ethernet/intel/ice/ice_osdep.h
-@@ -23,6 +23,9 @@
- #define wr64(a, reg, value)	writeq((value), ((a)->hw_addr + (reg)))
- #define rd64(a, reg)		readq((a)->hw_addr + (reg))
- 
-+#define rd32_poll_timeout(a, addr, val, cond, delay_us, timeout_us) \
-+	read_poll_timeout(rd32, val, cond, delay_us, timeout_us, false, a, addr)
-+
- #define ice_flush(a)		rd32((a), GLGEN_STAT)
- #define ICE_M(m, s)		((m ## U) << (s))
- 
-diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.c b/drivers/net/ethernet/intel/ice/ice_ptp.c
-index 9f0eff040a95..ac3944fec2d3 100644
---- a/drivers/net/ethernet/intel/ice/ice_ptp.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ptp.c
-@@ -1,6 +1,7 @@
- // SPDX-License-Identifier: GPL-2.0
- /* Copyright (C) 2021, Intel Corporation. */
- 
-+#include <linux/iopoll.h>
- #include "ice.h"
- #include "ice_lib.h"
- #include "ice_trace.h"
-@@ -2138,91 +2139,154 @@ static int ice_ptp_adjtime(struct ptp_clock_info *info, s64 delta)
- 
- #ifdef CONFIG_ICE_HWTS
- /**
-- * ice_ptp_get_syncdevicetime - Get the cross time stamp info
-+ * struct ice_crosststamp_cfg - Device cross timestamp configuration
-+ * @lock_reg: The hardware semaphore lock to use
-+ * @lock_busy: Bit in the semaphore lock indicating the lock is busy
-+ * @ctl_reg: The hardware register to request cross timestamp
-+ * @ctl_active: Bit in the control register to request cross timestamp
-+ * @art_time_l: Lower 32-bits of ART system time
-+ * @art_time_h: Upper 32-bits of ART system time
-+ * @dev_time_l: Lower 32-bits of device time (per timer index)
-+ * @dev_time_h: Upper 32-bits of device time (per timer index)
-+ */
-+struct ice_crosststamp_cfg {
-+	/* HW semaphore lock register */
-+	u32 lock_reg;
-+	u32 lock_busy;
-+
-+	/* Capture control register */
-+	u32 ctl_reg;
-+	u32 ctl_active;
-+
-+	/* Time storage */
-+	u32 art_time_l;
-+	u32 art_time_h;
-+	u32 dev_time_l[2];
-+	u32 dev_time_h[2];
-+};
-+
-+static const struct ice_crosststamp_cfg ice_crosststamp_cfg_e82x = {
-+	.lock_reg = PFHH_SEM,
-+	.lock_busy = PFHH_SEM_BUSY_M,
-+	.ctl_reg = GLHH_ART_CTL,
-+	.ctl_active = GLHH_ART_CTL_ACTIVE_M,
-+	.art_time_l = GLHH_ART_TIME_L,
-+	.art_time_h = GLHH_ART_TIME_H,
-+	.dev_time_l[0] = GLTSYN_HHTIME_L(0),
-+	.dev_time_h[0] = GLTSYN_HHTIME_H(0),
-+	.dev_time_l[1] = GLTSYN_HHTIME_L(1),
-+	.dev_time_h[1] = GLTSYN_HHTIME_H(1),
-+};
-+
-+static const struct ice_crosststamp_cfg ice_crosststamp_cfg_e830 = {
-+	.lock_reg = E830_PFPTM_SEM,
-+	.lock_busy = E830_PFPTM_SEM_BUSY_M,
-+	.ctl_reg = E830_GLPTM_ART_CTL,
-+	.ctl_active = E830_GLPTM_ART_CTL_ACTIVE_M,
-+	.art_time_l = E830_GLPTM_ART_TIME_L,
-+	.art_time_h = E830_GLPTM_ART_TIME_H,
-+	.dev_time_l[0] = E830_GLTSYN_PTMTIME_L(0),
-+	.dev_time_h[0] = E830_GLTSYN_PTMTIME_H(0),
-+	.dev_time_l[1] = E830_GLTSYN_PTMTIME_L(1),
-+	.dev_time_h[1] = E830_GLTSYN_PTMTIME_H(1),
-+};
-+
-+/**
-+ * struct ice_crosststamp_ctx - Device cross timestamp context
-+ * @snapshot: snapshot of system clocks for historic interpolation
-+ * @pf: pointer to the PF private structure
-+ * @cfg: pointer to hardware configuration for cross timestamp
-+ */
-+struct ice_crosststamp_ctx {
-+	struct system_time_snapshot snapshot;
-+	struct ice_pf *pf;
-+	const struct ice_crosststamp_cfg *cfg;
-+};
-+
-+/**
-+ * ice_capture_crosststamp - Capture a device/system cross timestamp
-  * @device: Current device time
-  * @system: System counter value read synchronously with device time
-- * @ctx: Context provided by timekeeping code
-+ * @__ctx: Context passed from ice_ptp_getcrosststamp
-  *
-  * Read device and system (ART) clock simultaneously and return the corrected
-  * clock values in ns.
-+ *
-+ * Return: zero on success, or a negative error code on failure.
-  */
--static int
--ice_ptp_get_syncdevicetime(ktime_t *device,
--			   struct system_counterval_t *system,
--			   void *ctx)
-+static int ice_capture_crosststamp(ktime_t *device,
-+				   struct system_counterval_t *system,
-+				   void *__ctx)
- {
--	struct ice_pf *pf = (struct ice_pf *)ctx;
--	struct ice_hw *hw = &pf->hw;
--	u32 hh_lock, hh_art_ctl;
--	int i;
-+	struct ice_crosststamp_ctx *ctx = __ctx;
-+	const struct ice_crosststamp_cfg *cfg;
-+	u32 lock, ctl, ts_lo, ts_hi, tmr_idx;
-+	struct ice_pf *pf;
-+	struct ice_hw *hw;
-+	int err;
-+	u64 ts;
- 
--#define MAX_HH_HW_LOCK_TRIES	5
--#define MAX_HH_CTL_LOCK_TRIES	100
-+	cfg = ctx->cfg;
-+	pf = ctx->pf;
-+	hw = &pf->hw;
- 
--	for (i = 0; i < MAX_HH_HW_LOCK_TRIES; i++) {
--		/* Get the HW lock */
--		hh_lock = rd32(hw, PFHH_SEM + (PFTSYN_SEM_BYTES * hw->pf_id));
--		if (hh_lock & PFHH_SEM_BUSY_M) {
--			usleep_range(10000, 15000);
--			continue;
--		}
--		break;
--	}
--	if (hh_lock & PFHH_SEM_BUSY_M) {
--		dev_err(ice_pf_to_dev(pf), "PTP failed to get hh lock\n");
-+	tmr_idx = hw->func_caps.ts_func_info.tmr_index_assoc;
-+	if (tmr_idx > 1)
-+		return -EINVAL;
-+
-+	/* Poll until we obtain the cross-timestamp hardware semaphore */
-+	err = rd32_poll_timeout(hw, cfg->lock_reg, lock,
-+				!(lock & cfg->lock_busy),
-+				10 * USEC_PER_MSEC, 50 * USEC_PER_MSEC);
-+	if (err) {
-+		dev_err(ice_pf_to_dev(pf), "PTP failed to get cross timestamp lock\n");
- 		return -EBUSY;
- 	}
- 
-+	/* Snapshot system time for historic interpolation */
-+	ktime_get_snapshot(&ctx->snapshot);
-+
- 	/* Program cmd to master timer */
- 	ice_ptp_src_cmd(hw, ICE_PTP_READ_TIME);
- 
- 	/* Start the ART and device clock sync sequence */
--	hh_art_ctl = rd32(hw, GLHH_ART_CTL);
--	hh_art_ctl = hh_art_ctl | GLHH_ART_CTL_ACTIVE_M;
--	wr32(hw, GLHH_ART_CTL, hh_art_ctl);
--
--	for (i = 0; i < MAX_HH_CTL_LOCK_TRIES; i++) {
--		/* Wait for sync to complete */
--		hh_art_ctl = rd32(hw, GLHH_ART_CTL);
--		if (hh_art_ctl & GLHH_ART_CTL_ACTIVE_M) {
--			udelay(1);
--			continue;
--		} else {
--			u32 hh_ts_lo, hh_ts_hi, tmr_idx;
--			u64 hh_ts;
--
--			tmr_idx = hw->func_caps.ts_func_info.tmr_index_assoc;
--			/* Read ART time */
--			hh_ts_lo = rd32(hw, GLHH_ART_TIME_L);
--			hh_ts_hi = rd32(hw, GLHH_ART_TIME_H);
--			hh_ts = ((u64)hh_ts_hi << 32) | hh_ts_lo;
--			system->cycles = hh_ts;
--			system->cs_id = CSID_X86_ART;
--			/* Read Device source clock time */
--			hh_ts_lo = rd32(hw, GLTSYN_HHTIME_L(tmr_idx));
--			hh_ts_hi = rd32(hw, GLTSYN_HHTIME_H(tmr_idx));
--			hh_ts = ((u64)hh_ts_hi << 32) | hh_ts_lo;
--			*device = ns_to_ktime(hh_ts);
--			break;
--		}
--	}
-+	ctl = rd32(hw, cfg->ctl_reg);
-+	ctl |= cfg->ctl_active;
-+	wr32(hw, cfg->ctl_reg, ctl);
- 
-+	/* Poll until hardware completes the capture */
-+	err = rd32_poll_timeout(hw, cfg->ctl_reg, ctl, !(ctl & cfg->ctl_active),
-+				5, 20 * USEC_PER_MSEC);
-+	if (err)
-+		goto err_timeout;
-+
-+	/* Read ART system time */
-+	ts_lo = rd32(hw, cfg->art_time_l);
-+	ts_hi = rd32(hw, cfg->art_time_h);
-+	ts = ((u64)ts_hi << 32) | ts_lo;
-+	system->cycles = ts;
-+	system->cs_id = CSID_X86_ART;
-+
-+	/* Read Device source clock time */
-+	ts_lo = rd32(hw, cfg->dev_time_l[tmr_idx]);
-+	ts_hi = rd32(hw, cfg->dev_time_h[tmr_idx]);
-+	ts = ((u64)ts_hi << 32) | ts_lo;
-+	*device = ns_to_ktime(ts);
-+
-+err_timeout:
- 	/* Clear the master timer */
- 	ice_ptp_src_cmd(hw, ICE_PTP_NOP);
- 
- 	/* Release HW lock */
--	hh_lock = rd32(hw, PFHH_SEM + (PFTSYN_SEM_BYTES * hw->pf_id));
--	hh_lock = hh_lock & ~PFHH_SEM_BUSY_M;
--	wr32(hw, PFHH_SEM + (PFTSYN_SEM_BYTES * hw->pf_id), hh_lock);
--
--	if (i == MAX_HH_CTL_LOCK_TRIES)
--		return -ETIMEDOUT;
-+	lock = rd32(hw, cfg->lock_reg);
-+	lock &= ~cfg->lock_busy;
-+	wr32(hw, cfg->lock_reg, lock);
- 
--	return 0;
-+	return err;
- }
- 
- /**
-- * ice_ptp_getcrosststamp_e82x - Capture a device cross timestamp
-+ * ice_ptp_getcrosststamp - Capture a device cross timestamp
-  * @info: the driver's PTP info structure
-  * @cts: The memory to fill the cross timestamp info
-  *
-@@ -2230,23 +2294,35 @@ ice_ptp_get_syncdevicetime(ktime_t *device,
-  * clock. Fill the cross timestamp information and report it back to the
-  * caller.
-  *
-- * This is only valid for E822 and E823 devices which have support for
-- * generating the cross timestamp via PCIe PTM.
-- *
-  * In order to correctly correlate the ART timestamp back to the TSC time, the
-  * CPU must have X86_FEATURE_TSC_KNOWN_FREQ.
-+ *
-+ * Return: zero on success, or a negative error code on failure.
-  */
--static int
--ice_ptp_getcrosststamp_e82x(struct ptp_clock_info *info,
--			    struct system_device_crosststamp *cts)
-+static int ice_ptp_getcrosststamp(struct ptp_clock_info *info,
-+				  struct system_device_crosststamp *cts)
- {
- 	struct ice_pf *pf = ptp_info_to_pf(info);
-+	struct ice_crosststamp_ctx ctx = {};
-+
-+	ctx.pf = pf;
-+
-+	switch (pf->hw.ptp.phy_model) {
-+	case ICE_PHY_E82X:
-+		ctx.cfg = &ice_crosststamp_cfg_e82x;
-+		break;
-+	case ICE_PHY_E830:
-+		ctx.cfg = &ice_crosststamp_cfg_e830;
-+		break;
-+	default:
-+		return -EOPNOTSUPP;
-+	}
- 
--	return get_device_system_crosststamp(ice_ptp_get_syncdevicetime,
--					     pf, NULL, cts);
-+	return get_device_system_crosststamp(ice_capture_crosststamp, &ctx,
-+					     &ctx.snapshot, cts);
- }
--#endif /* CONFIG_ICE_HWTS */
- 
-+#endif /* CONFIG_ICE_HWTS */
- /**
-  * ice_ptp_get_ts_config - ioctl interface to read the timestamping config
-  * @pf: Board private structure
-@@ -2523,7 +2599,7 @@ static void ice_ptp_set_funcs_e82x(struct ice_pf *pf)
- #ifdef CONFIG_ICE_HWTS
- 	if (boot_cpu_has(X86_FEATURE_ART) &&
- 	    boot_cpu_has(X86_FEATURE_TSC_KNOWN_FREQ))
--		pf->ptp.info.getcrosststamp = ice_ptp_getcrosststamp_e82x;
-+		pf->ptp.info.getcrosststamp = ice_ptp_getcrosststamp;
- 
- #endif /* CONFIG_ICE_HWTS */
- 	if (ice_is_e825c(&pf->hw)) {
-@@ -2592,6 +2668,28 @@ static void ice_ptp_set_funcs_e810(struct ice_pf *pf)
- 	}
- }
- 
-+/**
-+ * ice_ptp_set_funcs_e830 - Set specialized functions for E830 support
-+ * @pf: Board private structure
-+ *
-+ * Assign functions to the PTP capabiltiies structure for E830 devices.
-+ * Functions which operate across all device families should be set directly
-+ * in ice_ptp_set_caps. Only add functions here which are distinct for E830
-+ * devices.
-+ */
-+static void ice_ptp_set_funcs_e830(struct ice_pf *pf)
-+{
-+#ifdef CONFIG_ICE_HWTS
-+	if (pcie_ptm_enabled(pf->pdev) &&
-+	    boot_cpu_has(X86_FEATURE_ART) &&
-+	    boot_cpu_has(X86_FEATURE_TSC_KNOWN_FREQ))
-+		pf->ptp.info.getcrosststamp = ice_ptp_getcrosststamp;
-+#endif /* CONFIG_ICE_HWTS */
-+
-+	/* Rest of the config is the same as base E810 */
-+	ice_ptp_set_funcs_e810(pf);
-+}
-+
- /**
-  * ice_ptp_set_caps - Set PTP capabilities
-  * @pf: Board private structure
-@@ -2614,8 +2712,10 @@ static void ice_ptp_set_caps(struct ice_pf *pf)
- 	info->enable = ice_ptp_gpio_enable;
- 	info->verify = ice_verify_pin;
- 
--	if (ice_is_e810(&pf->hw) || ice_is_e830(&pf->hw))
-+	if (ice_is_e810(&pf->hw))
- 		ice_ptp_set_funcs_e810(pf);
-+	if (ice_is_e830(&pf->hw))
-+		ice_ptp_set_funcs_e830(pf);
- 	else
- 		ice_ptp_set_funcs_e82x(pf);
- }
--- 
-2.45.2
+const @hw (below as well)?
 
+[...]
+
+> @@ -5474,12 +5618,14 @@ void ice_ptp_init_hw(struct ice_hw *hw)
+>  {
+>  	struct ice_ptp_hw *ptp = &hw->ptp;
+>  
+> -	if (ice_is_e822(hw) || ice_is_e823(hw))
+> -		ice_ptp_init_phy_e82x(ptp);
+> -	else if (ice_is_e810(hw))
+> +	if (ice_is_e810(hw))
+>  		ice_ptp_init_phy_e810(ptp);
+> +	else if (ice_is_e822(hw) || ice_is_e823(hw))
+> +		ice_ptp_init_phy_e82x(ptp);
+>  	else if (ice_is_e825c(hw))
+>  		ice_ptp_init_phy_e825c(hw);
+> +	else if (ice_is_e830(hw))
+> +		ice_ptp_init_phy_e830(ptp);
+>  	else
+>  		ptp->phy_model = ICE_PHY_UNSUP;
+
+Since at least most of these functions just check for one field, can't
+this be one switch-case on that fields (if you open-code that check)?
+
+>  }
+> @@ -5570,6 +5716,8 @@ static int ice_ptp_port_cmd(struct ice_hw *hw, enum ice_ptp_tmr_cmd cmd)
+>  	switch (hw->ptp.phy_model) {
+>  	case ICE_PHY_E810:
+>  		return ice_ptp_port_cmd_e810(hw, cmd);
+> +	case ICE_PHY_E830:
+> +		return ice_ptp_port_cmd_e830(hw, cmd);
+>  	default:
+>  		break;
+>  	}
+> @@ -5640,6 +5788,10 @@ int ice_ptp_init_time(struct ice_hw *hw, u64 time)
+>  	tmr_idx = hw->func_caps.ts_func_info.tmr_index_owned;
+>  
+>  	/* Source timers */
+> +	/* For E830 we don't need to use shadow registers, its automatic */
+
+							   ^^^
+							   it's
+
+[...]
+
+Thanks,
+Olek
