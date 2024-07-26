@@ -1,88 +1,98 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9B32093CADA
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 26 Jul 2024 00:26:27 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id B804293D137
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 26 Jul 2024 12:31:56 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id ECBCB60AD3;
-	Thu, 25 Jul 2024 22:26:25 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 7B76E409EA;
+	Fri, 26 Jul 2024 10:31:54 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id rKZ4QGYQKQCm; Fri, 26 Jul 2024 10:31:52 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3F3A340B5F
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1721989912;
+	bh=g4jgB0IfdfL/LNuES3KCV3jZP1hfJJgDkrtadHecov0=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=oJKNHV45vJS9PMxAUSBYMgvuERVM/zMv3M1Jv2uw+dpr2r/iYzYuQlvLxeibAMzqK
+	 kBS5vHsWUrXzz0YOkFhkNMRj+h0FmjSfrNfv1vhZ2nej/FFqYu7Kn1mfNZIiEGONYh
+	 wO8bVMCNrA4fdh454Mzdn4ynoSZvAKMK43+Stx7ZBx7fsyQqHB6BTgrxJvlVBhJwSG
+	 bO65HdD15A+PNwHeVj9lNtnpVwnIpPcEbDL9wu0+5UuEE6/mnOQGke7T9GlJ0zY+rr
+	 3aFqlrjmWfACh+QyqIKeHmoiQDgxTV47GbJiO6wyOYaoXpoQcek0J16b6t0hikLj+i
+	 jfQWCRi5P2RpQ==
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp4.osuosl.org (Postfix) with ESMTP id 3F3A340B5F;
+	Fri, 26 Jul 2024 10:31:52 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 4772E1BF3DE
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 26 Jul 2024 10:31:50 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp3.osuosl.org (Postfix) with ESMTP id 34022607F7
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 26 Jul 2024 10:31:50 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 57lLX4ujZl9L; Thu, 25 Jul 2024 22:26:25 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5D0D460807
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1721946385;
-	bh=jDxVSJhiMlsrkovokL+3p48zJoCus0/yKse10umzxrg=;
-	h=Date:From:To:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=FX5wNYznUfhavQ4/5Wwc0/IUnZEdX2+LnD13quJcLEZQYZWW0ZeFysBUAUJGJHvxL
-	 X2EjFXTnIafqbNsoKVRCBEx9KBq4Zb2bE9h5RXWbKSnvZxVnKEmkt7yyzZGOPXZvqk
-	 nVa47LW3k0DvFYAjF9cuupawK1gMXnObjbkYSOABzNeaVFU+cm9UYyX+QqLeSTalG5
-	 nVjx1cg/Imc8MeQPx1V8hRD0kovi6oveJpVaQqBrwKov/picmjtxiCc4O+cBwn1q32
-	 Wykx1mhjfAnG0WrPPb5N2CUG31qPWydu5pUiDJoHrR9Y4X1yk1IDr+jbhfVnmOE+TR
-	 3DNt9m/n8d+PA==
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 5D0D460807;
-	Thu, 25 Jul 2024 22:26:25 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 830381BF3C3
- for <intel-wired-lan@lists.osuosl.org>; Thu, 25 Jul 2024 22:26:23 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 6BC2840217
- for <intel-wired-lan@lists.osuosl.org>; Thu, 25 Jul 2024 22:26:23 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id a0UAhfyDgQ4G for <intel-wired-lan@lists.osuosl.org>;
- Thu, 25 Jul 2024 22:26:22 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2604:1380:4641:c500::1; helo=dfw.source.kernel.org;
- envelope-from=kuba@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 94DEC40188
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 94DEC40188
-Received: from dfw.source.kernel.org (dfw.source.kernel.org
- [IPv6:2604:1380:4641:c500::1])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 94DEC40188
- for <intel-wired-lan@lists.osuosl.org>; Thu, 25 Jul 2024 22:26:22 +0000 (UTC)
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by dfw.source.kernel.org (Postfix) with ESMTP id 559B461237;
- Thu, 25 Jul 2024 22:26:21 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8CA0DC116B1;
- Thu, 25 Jul 2024 22:26:20 +0000 (UTC)
-Date: Thu, 25 Jul 2024 15:26:19 -0700
-From: Jakub Kicinski <kuba@kernel.org>
-To: Ahmed Zaki <ahmed.zaki@intel.com>
-Message-ID: <20240725152619.75787373@kernel.org>
-In-Reply-To: <20240725220810.12748-1-ahmed.zaki@intel.com>
-References: <20240725220810.12748-1-ahmed.zaki@intel.com>
+ id BE3vRzR0YkcD for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 26 Jul 2024 10:31:49 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.14;
+ helo=mgamail.intel.com; envelope-from=mateusz.polchlopek@intel.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 65B9B60747
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 65B9B60747
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.14])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 65B9B60747
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 26 Jul 2024 10:31:49 +0000 (UTC)
+X-CSE-ConnectionGUID: AlQfdrbzRvOSgSa3XqqHpw==
+X-CSE-MsgGUID: oEnUwtg7SAun1SexeqiHvQ==
+X-IronPort-AV: E=McAfee;i="6700,10204,11144"; a="19961710"
+X-IronPort-AV: E=Sophos;i="6.09,238,1716274800"; d="scan'208";a="19961710"
+Received: from fmviesa002.fm.intel.com ([10.60.135.142])
+ by fmvoesa108.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 26 Jul 2024 03:31:49 -0700
+X-CSE-ConnectionGUID: ad5voPjCSv2v8BPcJSddsA==
+X-CSE-MsgGUID: CG58LzpERTaCFURT9ehRJQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.09,238,1716274800"; d="scan'208";a="76448474"
+Received: from irvmail002.ir.intel.com ([10.43.11.120])
+ by fmviesa002.fm.intel.com with ESMTP; 26 Jul 2024 03:31:48 -0700
+Received: from fedora.igk.intel.com (Metan_eth.igk.intel.com [10.123.220.124])
+ by irvmail002.ir.intel.com (Postfix) with ESMTP id D035D28198;
+ Fri, 26 Jul 2024 11:31:46 +0100 (IST)
+From: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Fri, 26 Jul 2024 06:19:28 -0400
+Message-Id: <20240726101928.21674-1-mateusz.polchlopek@intel.com>
+X-Mailer: git-send-email 2.38.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1721946380;
- bh=fJHHbC3sfxfjAFbMnFHrHavQdpnYTeHQ371xF7CckrU=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=Ist/rV0d6lnFSQ6ObRpMW6CEYTKsb1J+HS4PkYksNpsC1u3rqnuYJlnsgVXZhh3IJ
- Wo4ti1mX2/OP5UO/ugBaIn+AlqFkpQ9uPHjXfup/HRSmBgXHz4IBK6XpciaEeMV55L
- CVy/HA0dhtKPJ+kJmIWr5ZHiHjt3U9AQgbEQkx83lxU/xAl/eFNMAG1hjXuPIsSpro
- qu2hFs5jvkt7n/9f67i63JM59nguiEDHkjvA3BciI0JZu7TodL9BCBc7tPm0sdUfxx
- pkGAfJcO2y1UQIWlSIkqliAvWIJo/nmmlpJOBXSjA9PSbIgn3vGLjb4okmrag3Pb5X
- uAhjRHzXWFHIg==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1721989909; x=1753525909;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=+O4pbmRzYkPAuPXMxDQIsMy+G9AHX62ZmuJIP+QIIEA=;
+ b=JFyCWRQZhG5wWJbaKrYEy4kkk9CMAq9oJnuK5i+yDJwfN0omGVzBQstF
+ a3wffeFAvJXzY5reqzLDuhC32Kyk3cuSPjIWHViokmeyqgg80qlEyD3QC
+ +jzi8PybVzI3XXF+0oJHMmSJyMJITAAh3xtL9BgY/kp0BjxT+8O7uKZUM
+ jrRQW+Pl8B5ECbgS37tcTQc3F/tpvXN82xzJx8id+sUvvFpn5EBnUUr/I
+ 2nGh2cJtMzlZ1WGSWJ5hUyMbwdkocrlDnnuQGpKcHHEJF0bDH+T8bH0Qx
+ mbeBJBcwYJKacDKF5Je2aCQALWd7cW2AMNpCb20+lgSM5cxr++MThOqit
+ g==;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ header.from=intel.com
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20201202 header.b=Ist/rV0d
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v5 00/13] ice: iavf: add
- support for TC U32 filters on VFs
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=JFyCWRQZ
+Subject: [Intel-wired-lan] [PATCH iwl-net v1] ice: Fix incorrect assigns of
+ FEC counts
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,15 +105,43 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, hkelam@marvell.com, anthony.l.nguyen@intel.com,
- horms@kernel.org, przemyslaw.kitszel@intel.com,
- intel-wired-lan@lists.osuosl.org
+Cc: netdev@vger.kernel.org, Wojciech Drewek <wojciech.drewek@intel.com>,
+ Mateusz Polchlopek <mateusz.polchlopek@intel.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Thu, 25 Jul 2024 16:07:56 -0600 Ahmed Zaki wrote:
-> v5:
->   - Add queue ID validation to iavf_add_cls_u32() (patch 13)
+The commit
+ac21add2540e ("ice: Implement driver functionality to dump fec statistics")
+introduces obtaining FEC correctable and uncorrectable stats per netdev
+in ICE driver. Unfortunately the assignment of values to fec_stats
+structure has been done incorrectly. This commit fixes the assignments.
 
-Is it really worth reposting after 24h without getting any feedback?
-I'd say it's not..
+Fixes: ac21add2540e ("ice: Implement driver functionality to dump fec statistics")
+Reviewed-by: Wojciech Drewek <wojciech.drewek@intel.com>
+Signed-off-by: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
+---
+ drivers/net/ethernet/intel/ice/ice_ethtool.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/ice/ice_ethtool.c b/drivers/net/ethernet/intel/ice/ice_ethtool.c
+index 8c990c976132..bc79ba974e49 100644
+--- a/drivers/net/ethernet/intel/ice/ice_ethtool.c
++++ b/drivers/net/ethernet/intel/ice/ice_ethtool.c
+@@ -4673,10 +4673,10 @@ static int ice_get_port_fec_stats(struct ice_hw *hw, u16 pcs_quad, u16 pcs_port,
+ 	if (err)
+ 		return err;
+ 
+-	fec_stats->uncorrectable_blocks.total = (fec_corr_high_val << 16) +
+-						 fec_corr_low_val;
+-	fec_stats->corrected_blocks.total = (fec_uncorr_high_val << 16) +
+-					     fec_uncorr_low_val;
++	fec_stats->corrected_blocks.total = (fec_corr_high_val << 16) +
++					     fec_corr_low_val;
++	fec_stats->uncorrectable_blocks.total = (fec_uncorr_high_val << 16) +
++						 fec_uncorr_low_val;
+ 	return 0;
+ }
+ 
+-- 
+2.38.1
+
