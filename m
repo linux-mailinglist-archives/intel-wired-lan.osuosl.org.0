@@ -1,230 +1,226 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 251E2941531
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 30 Jul 2024 17:12:42 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 13472941576
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 30 Jul 2024 17:30:01 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id A352E60A3A;
-	Tue, 30 Jul 2024 15:12:40 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 8384E4058F;
+	Tue, 30 Jul 2024 15:29:59 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id XGvWQ-2kEKNo; Tue, 30 Jul 2024 15:12:39 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id kjlF9NLy_7MW; Tue, 30 Jul 2024 15:29:58 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 80D9D60A3F
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E125D405A2
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1722352359;
-	bh=4enf7vhs6l2AngE5PDXNS9Vwfkklep7twLL53IIwKGg=;
+	s=default; t=1722353398;
+	bh=kMKFWQSzFSicLuP3hXyOobXVe9DNSloBEYE4nJb/Et0=;
 	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=aMZ1+7FUiVQUm9s6fPYP9eyciUlBX1I3D8vXttLlRzmY+46Kk0sBIOEVMDzaK8U4G
-	 Ri+F4yt394duu6pAblnpOlLrbAJayAAAcOm82lQAjmZlEBV5jBh7mMG/n+wvhcCpWe
-	 tjBulJN36hkDflNrdrV/8OLuXy/qqteQhAzX0X6Y642LscU17eWonYq2xzhuuwOjMr
-	 SxAPr3kO7aqhd4YgKq/HMduIgYWNk+XJ4QBJ1RWpIilQY/jSZdh0xctHzc1RvzdON3
-	 znSvsHms84q/r3aBG8qJfvPIu7uWoZg5ykrN5fQAZe5WznHUqpMQ/m5UfH0GeqFRbQ
-	 +squstIZe/+UA==
+	b=MMuy92WEUd/V9PTRy2+cMtzEDzUB8FzJ3+e5CvW6S15QnmG0Ozbm7SLRzBe7wq4GJ
+	 zOymvm9jXGAvcxJXk2Q3QBjArITuCg+0/UsjF3LzUKaovfevS1sGYOmFdVAu9+NCCY
+	 JLs3Pn83yT+C2XsZsefwUEvIdgHhuyqwDAF8Hc10AJ30woXHPtQ8V+G1N2aDYIiqqL
+	 /EtusnPzPdyGISiY9Pj/t3jth6aQHFUZGYMBBoUy238+skCRijWQ5NlPnNMJrvoRhm
+	 cLYncN8GZ+9Tl2+7E30yaBy/mfIViJlsR4CfCI06lMnYhsdzjuvdP/JuQ345YutoE4
+	 fdOG2SYJw6n6A==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 80D9D60A3F;
-	Tue, 30 Jul 2024 15:12:39 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id E125D405A2;
+	Tue, 30 Jul 2024 15:29:57 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 955981BF5AE
- for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Jul 2024 15:12:37 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id BA4F11BF5AE
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Jul 2024 15:29:55 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 8F5B2608C2
- for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Jul 2024 15:12:37 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id AFE5B404EE
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Jul 2024 15:29:55 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id J3S0d5RFx8Jm for <intel-wired-lan@lists.osuosl.org>;
- Tue, 30 Jul 2024 15:12:36 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.19;
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id TYdDP2A8u-tJ for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 30 Jul 2024 15:29:54 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.11;
  helo=mgamail.intel.com; envelope-from=aleksander.lobakin@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 512D660633
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 512D660633
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.19])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 512D660633
- for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Jul 2024 15:12:34 +0000 (UTC)
-X-CSE-ConnectionGUID: bBxFULZFQx2UoQpivNuYcw==
-X-CSE-MsgGUID: +9ScLbh6RtqTck7r0VEOfA==
-X-IronPort-AV: E=McAfee;i="6700,10204,11149"; a="19875220"
-X-IronPort-AV: E=Sophos;i="6.09,248,1716274800"; d="scan'208";a="19875220"
-Received: from orviesa002.jf.intel.com ([10.64.159.142])
- by fmvoesa113.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 30 Jul 2024 08:12:13 -0700
-X-CSE-ConnectionGUID: jO/D++mgRi6H7e+CZ6PaWA==
-X-CSE-MsgGUID: Hz3mCT8ZQ4idBEsjyAfEYw==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org DC780404C0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org DC780404C0
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.11])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id DC780404C0
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 30 Jul 2024 15:29:53 +0000 (UTC)
+X-CSE-ConnectionGUID: LPQMuAEdScytKIFX7LZ28g==
+X-CSE-MsgGUID: JpHMt20ySvOOk7NK88uhFA==
+X-IronPort-AV: E=McAfee;i="6700,10204,11149"; a="30765718"
+X-IronPort-AV: E=Sophos;i="6.09,248,1716274800"; d="scan'208";a="30765718"
+Received: from fmviesa001.fm.intel.com ([10.60.135.141])
+ by orvoesa103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 30 Jul 2024 08:29:52 -0700
+X-CSE-ConnectionGUID: Jqdm/soTThmegpTntEJtIA==
+X-CSE-MsgGUID: BmJogqzZQxGGItGfwP38MA==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.09,248,1716274800"; d="scan'208";a="85007825"
-Received: from orsmsx601.amr.corp.intel.com ([10.22.229.14])
- by orviesa002.jf.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
- 30 Jul 2024 08:12:14 -0700
+X-IronPort-AV: E=Sophos;i="6.09,248,1716274800"; d="scan'208";a="85300321"
+Received: from orsmsx602.amr.corp.intel.com ([10.22.229.15])
+ by fmviesa001.fm.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
+ 30 Jul 2024 08:29:51 -0700
 Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
- ORSMSX601.amr.corp.intel.com (10.22.229.14) with Microsoft SMTP Server
+ ORSMSX602.amr.corp.intel.com (10.22.229.15) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.39; Tue, 30 Jul 2024 08:12:12 -0700
-Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
- ORSMSX610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.39; Tue, 30 Jul 2024 08:12:11 -0700
-Received: from ORSEDG601.ED.cps.intel.com (10.7.248.6) by
+ 15.1.2507.39; Tue, 30 Jul 2024 08:29:51 -0700
+Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
  orsmsx610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.39 via Frontend Transport; Tue, 30 Jul 2024 08:12:11 -0700
-Received: from NAM04-MW2-obe.outbound.protection.outlook.com (104.47.73.175)
- by edgegateway.intel.com (134.134.137.102) with Microsoft SMTP Server
+ 15.1.2507.39 via Frontend Transport; Tue, 30 Jul 2024 08:29:51 -0700
+Received: from NAM11-BN8-obe.outbound.protection.outlook.com (104.47.58.169)
+ by edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Tue, 30 Jul 2024 08:12:10 -0700
+ 15.1.2507.39; Tue, 30 Jul 2024 08:29:50 -0700
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=bQp/FyoEud5B1sfafBBRW0xVfuc4nl+CeoKv1b1/ktjKIi2INPQ8lPYvqHjoQs/7sw6jKMpCyq9jBG/GRqq6p7YNKUwZ/BJrg3gHYJnhHeSUkA4j3gEjWK1QnnVKWSuI9FSGSa0NPz+x8bnJgXzT9EPY/Ylof6F1mbpK+03vjWXtxA3XhvdqbZDwETLXPgyezCT1sylHZAvt/lpkzoBv++q+CVUGWb9ovPTx2JLM+11+Z4SFpBft+3Y0fDx5kabanoZt5U8VgvqaWIJe5ZrWFCdc+Y6m+5Rvnbvod3Z9YxXSQ5P/fxIKbsdqbHIdvVKTvJzea4JO7U9YlyPNuh2dJg==
+ b=bBKA3ya52ICGNJPYhrKpfNr9NEqsfiePN+WWtFE4a8dnejwh3QGxxBTnKzko1dBkCQFc2Ua1s+xQccPsEF6QLrGniOGiJMu/FaYDL0dnBvEsxWhbysW6BvPbFj9lUEHQ/WAS0vdGRktEMpHjYGphkIqnXjkFjwzEIDFgWEn/84hPNJFsMQJnSM2wLk6EwcfW2VfadmHybLvYYf+6psya5+HrJkiXGylrZxTLGWtAr2pxxJfYDmenL7vTMqDx6TE2YSoC11KhmuFzAwfEyN05DEAs56hDYt8lPl5Dlbfnhck+PxnuDaDB/EwRt6Fst3uyLEBu7n062IJdrtayJ+FnTw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=4enf7vhs6l2AngE5PDXNS9Vwfkklep7twLL53IIwKGg=;
- b=Kl21cvK9C2j7iis2v3nmuPRzx3rtDdHSvIse594R0uWlm1QBXWHIbV1o2kE6RNci/vCO/s1lvpaY6jLfCWlyIBvZhYM0ve7MhcjBhgG1v6HRKemJnRZw0DzZn/f52Eu8HYOlja0TA2QyMeGDHcQRLgCziEchqCQDuMbL4HgHGVYOcztrwqDGHit02oxPAKifyCSXML1AQetI+w5d4WkD40vpxAASIzTDgRYl0RCXRoTcI72ufzzw+OHAyScHjvJUCnKpCUbjUui1gRZtyQ5GrxMmzAB8TrivLWkmLbbkrZ5OkZOVSXJfk+RM084s2tixnE8viUVwtjUWbiuKn1aSvQ==
+ bh=kMKFWQSzFSicLuP3hXyOobXVe9DNSloBEYE4nJb/Et0=;
+ b=EQIBProxnoq699i+AN2iE+8V3VShKDJVxDuSOrxHYpwl9i/0g4Jk4LWF/rc/zvWlfkcNj+Bx/VmmexszTQDLt87T1l1poxlWPUwkzHKODuY+l5kAcgK48xMAPNPQfBeV6IKITPe/hKG7WQ61XrqDDQvTJpTWfKHlI9pHuZEUyZChgZ3+0MefnH4CVxAvEJO+5+NIoEKoWN9VMeTMOYsr5v5990McXLTPp1XUcmoMBdnZvwbvRgKpjO0xScD+pmuy8WMhamBy2nUJiSaNUgr4wjlGapbykZy3lYXvKIyAr8fq9u4ODUTuYvOdUag1sqbb06iEwlPgu2jNyylcMNLukA==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
  dkim=pass header.d=intel.com; arc=none
 Received: from DS0PR11MB8718.namprd11.prod.outlook.com (2603:10b6:8:1b9::20)
- by CY5PR11MB6284.namprd11.prod.outlook.com (2603:10b6:930:20::13) with
+ by LV8PR11MB8511.namprd11.prod.outlook.com (2603:10b6:408:1ed::11) with
  Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7807.27; Tue, 30 Jul
- 2024 15:12:08 +0000
+ 2024 15:29:48 +0000
 Received: from DS0PR11MB8718.namprd11.prod.outlook.com
  ([fe80::4b3b:9dbe:f68c:d808]) by DS0PR11MB8718.namprd11.prod.outlook.com
  ([fe80::4b3b:9dbe:f68c:d808%5]) with mapi id 15.20.7807.026; Tue, 30 Jul 2024
- 15:12:08 +0000
-Message-ID: <2ab61b07-a3b1-4a33-a3fb-e9c711b0587c@intel.com>
-Date: Tue, 30 Jul 2024 17:12:03 +0200
+ 15:29:48 +0000
+Message-ID: <6d7dd029-5e6e-4718-9d95-7008ab8f0131@intel.com>
+Date: Tue, 30 Jul 2024 17:29:42 +0200
 User-Agent: Mozilla Thunderbird
 To: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
 References: <20240730091509.18846-1-mateusz.polchlopek@intel.com>
- <20240730091509.18846-14-mateusz.polchlopek@intel.com>
+ <20240730091509.18846-15-mateusz.polchlopek@intel.com>
 From: Alexander Lobakin <aleksander.lobakin@intel.com>
 Content-Language: en-US
-In-Reply-To: <20240730091509.18846-14-mateusz.polchlopek@intel.com>
+In-Reply-To: <20240730091509.18846-15-mateusz.polchlopek@intel.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 7bit
-X-ClientProxiedBy: MI0P293CA0009.ITAP293.PROD.OUTLOOK.COM
- (2603:10a6:290:44::6) To DS0PR11MB8718.namprd11.prod.outlook.com
+X-ClientProxiedBy: ZR0P278CA0208.CHEP278.PROD.OUTLOOK.COM
+ (2603:10a6:910:6a::20) To DS0PR11MB8718.namprd11.prod.outlook.com
  (2603:10b6:8:1b9::20)
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DS0PR11MB8718:EE_|CY5PR11MB6284:EE_
-X-MS-Office365-Filtering-Correlation-Id: e52e4574-b870-4001-d693-08dcb0a9faac
+X-MS-TrafficTypeDiagnostic: DS0PR11MB8718:EE_|LV8PR11MB8511:EE_
+X-MS-Office365-Filtering-Correlation-Id: e57e2091-15b5-4f30-7b43-08dcb0ac7271
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|376014|366016;
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?aStZejA2dmU1aDVTUU1vUWtOdFpXeEtuZFk3dUV5MkhsdWxneVRhSi91VUR0?=
- =?utf-8?B?RjV1bDY2SkQrN2lrOVErcXc1emxUeURDdk0vT0s2K3VYUkkwMXBURlo3YmJN?=
- =?utf-8?B?RGF0Z2NPblBjL09YS0F4YUZmbFYxMENjU2NWa3VvU1laZWRwMUMrTi9YSjM1?=
- =?utf-8?B?RXg3bjhORjNJSkw0ZEFUUXFZWDFHY3lKRGdTMSs4Y1dISUc3VkNzeVVVeDc5?=
- =?utf-8?B?NGlkc3hxT2xnZndlZ0tDQWRpTkFOSlBhS0s2dFBNd05qcEthSHltNC9NdlEv?=
- =?utf-8?B?QWlGdWJuOGRJaW54K2V1QUNwdHUzQWNZZTkvR0V5WTdscWdQdWZDNkttZ0hh?=
- =?utf-8?B?bDZ0dGoyZ3hVZXhxWExnaXd4TlBIcjNucmc1cHVISWxoU0FPYWxjdXFLME5H?=
- =?utf-8?B?MDAwK3NZMU1kVW13MGc2V0V5bi9NVFIrMklSUVk4YWtSOGhZMmxLQXJ3R0tq?=
- =?utf-8?B?aWdDRkJMdEQ3TWlvZ3lRWldsTWl4VW5MVC9DZ1pkWEQzRE03NmdnZEZCNHNE?=
- =?utf-8?B?a2ZJNEN0cWw5cStZcUdEZEpJLzBBOW15TGJNbzhqRTU2eHRobVN4YW41MFZa?=
- =?utf-8?B?UThYRnZwTEI5ZDR0RERVMFZDS2FvMkovWVRNTTAweTVZcmUrM1R2bXZOQ1ZD?=
- =?utf-8?B?Y0JWckVua1VyL0RVbDdFWFExSmc3dGdnY0gyZFNpRUxLYmhZcDJobnZvRlIx?=
- =?utf-8?B?dTMvdHJwOVQ0K1JPbll0ZkNKV3RZRU1DS05lYmQxVXQxbm9mU1phTUJ2Qjk0?=
- =?utf-8?B?ekZxZnlzcHpsNDljVVBQaGRPb2UyWFppSVE0ZWt5Skx5ZnhLWWdKT0ZWWXY3?=
- =?utf-8?B?Q0pMNXJJSmV6THhhNUJ2TDVFdW90ZlQ5NksvNjArbmpaclZjRElEcUh3YzJx?=
- =?utf-8?B?alVjVC9HbXlhQkUwc1drb01IbzRRTVllT2R3Z25VaUVuaW9uS2FkK09IVjVa?=
- =?utf-8?B?VU1xSk1BVVM5M3hyTGxKeG5CSDEyMXcwVjZYSXFBMDFSWmVCYWd5YUFOTG5T?=
- =?utf-8?B?b3FMV0UvcXZHYyt1WjVwSHZpZEk0THh0TGszV2NuN3FXdk5RazJYR28vMHpG?=
- =?utf-8?B?eFpjQkxzQVkxLy9jaEZnUlZjTGx1N0wrVVJEWkw3c21KN2V1Ui9GbnJVUFNE?=
- =?utf-8?B?RzdMNGVGcXdaTGJPTmxXNW1VcVo3ZmlMTy9qMGlvV3E1KzJaWmdVMTZOd1Mx?=
- =?utf-8?B?NFdpL2xhdGVXbGRsS3RJYXFSc25sNFNCc3ZlZXZ6dGlWMUg4bStQRGRZMWls?=
- =?utf-8?B?NWdvcGtFOEtpMTRDZUtoeWRLWGxDSDFMUEJJOSsveWx4REMwUjNIWWdKRURT?=
- =?utf-8?B?a0V4UWdIWDJ0dXhKUFV1cEtkcDI4WTdGeFdnU1VBSjMxNkVlQXFNdkFmdW9x?=
- =?utf-8?B?NDZ2RDVORnNObXN0amZWM3REVjkySy8ybWErQzRNeDV1Wmh5TVNNRnBwc3Av?=
- =?utf-8?B?NzE4cFlqNjd3TjdtTEtieHMvSXk0OUVTUVgvcnp4T1VWNk9MMlduRnBpVTM2?=
- =?utf-8?B?eXVUdVdlVFdBZGdkdE1kZit3WG9VSHEwTzAvMHpKOWpjY2RyVm1BNEdKaG5L?=
- =?utf-8?B?RDNpOXlYR0R6Lzdpa3Q3K0hYUVU2KzVFa2k0akMvNlFidEc3SGFQQWxKU0t0?=
- =?utf-8?B?dk0wL3BYaVV2ZmN6ZFlrRXkrZ1dkTDhYdGpvbWZzUy9BdUVVeGhZK2EvVzl4?=
- =?utf-8?B?c3FrV0o2ZGU4VWlWbzhTUkZ6NTNMT3RycHlhbUpqcjRSZVNEZlNZOWtmbEov?=
- =?utf-8?B?SmYweVJwUHZvQzZqVjhnWUdmbk13T0Zlekg2ditTTFNvVjdHWTA0ekZ2Yzl3?=
- =?utf-8?B?ZVAyT2FETHREME1QZys1UT09?=
+X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|366016|1800799024;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?aGwyaGV4b3BvWlFpZEh5M0thbUtJRVcrVzNnYlhna0M2Tnk2ME1HTm1tdFBI?=
+ =?utf-8?B?MWJ4bWhUVWhzcWthMDBBeWxDOTZNOUpNcFJnOCtEd1A1Z0xuNXROaWpyellM?=
+ =?utf-8?B?ME1pODkvaUNVdk0vZmtZK3ZpdWJNRERNV1MxbXE5WDdUWlM0Um5pS2JseWJ4?=
+ =?utf-8?B?UmdGQ204dDVFcmJwT0dnWnZjTGxlN0w1NlB4OEZNeWpoeFFMTWNhNkMwZHJF?=
+ =?utf-8?B?ckVYMkl6cG0zVUpVbUt4YmVXNHJ1RVQvVWhWekpxbU4rMXdlaFAyVjF2WFNk?=
+ =?utf-8?B?YUZEOFJYTUE5Ri9QM2w1eWZPN01adUNYbEV2a0I1Y0FsLzFCWk9wOGNTWldD?=
+ =?utf-8?B?d0RpYkpTRWdLY3V3Vzd4ZFZUNG8vT3RIMzB5VjVTLzZ5RldVYVV3RXZWenQ0?=
+ =?utf-8?B?RU9MSmJMb1Jha0xUM3JpSlVHdEhuR00vUVRPVnBsa1o2UHI0YUlDYWdLZmNw?=
+ =?utf-8?B?dmUxNVUvaXVSRkFLT293SnRZQ0xEWnJTY0hxMUIzTFpzRzZ2NkFFK3I0QkV5?=
+ =?utf-8?B?VmpPL1poS21CT3dYSk9jclpjRFFxN21FTGNIbEh1Z3hlZFg3OERYbTZTdUhF?=
+ =?utf-8?B?VEZMS2RkeXR4UVZEeTczb0FIYUgzZm9sUFdDSlVNUC91T1M3K0kydFFjc2JQ?=
+ =?utf-8?B?ckY2VVE4U2hzVmxLUUZhdDEyemJkVmtWRzNvdWVXY0dQdG1lVEtkYlhFL0Ro?=
+ =?utf-8?B?NzhrRVduZTZRb3VDaE13ZXFxREZYblhQYWxDd3RZdVExbGtZWFNtSFRKRXFa?=
+ =?utf-8?B?T2pYc0E5c1JkaUozejhuZElyRkVLWGRxTU9kSGVZWUdUSmVCYm1DdktaYWVa?=
+ =?utf-8?B?bG55OFBPV1Z6c3lvcFU4S3NiWSszRzBmK3pkaU1JdlJ2NjdEZVBBencxNTN0?=
+ =?utf-8?B?MmlqRWpzYWpGRlpmdmxILzNYdGQrQXdUU0phZ2Y4RmhYZHRROWVmRDB3T3hG?=
+ =?utf-8?B?K3BKUEw2dWlhelpka2ErMENIUW1Demo1T3VjVUxTQm1wSkJodWR3cFpnNUVC?=
+ =?utf-8?B?TklOR3RnL3EwSlM1dXY4ajB1RFVvWXMzS2ZvQ3BBcXNnNlVvTVJmVnVuVzNk?=
+ =?utf-8?B?UEZ2N0hyd1JlVlNQa2JMeXVFSi9FNk1oNFY4T2xabzI5M3lwM1R3ZGQwOVBU?=
+ =?utf-8?B?NzFuMnFjTDBrMXdiQzZTZkIzL1NUVUVFSFVUWFd2VzYxTHdLMjR3RXZRcDB5?=
+ =?utf-8?B?R2ZlZWJhRVN1MkhUeDhKU2Mza2JLR0pxRWVUVEt2SGVKREhuV2VXQUtZMFBp?=
+ =?utf-8?B?UXU1ZFVoR3prWjllOVhIQTVnbGNsS3R6eVdKWHhlYTU4TDZzY2cvOUdEeDBa?=
+ =?utf-8?B?Tm43dzliT25PZWF2STJ1TzlxRWVobjZHb0tvUFVQSmtxeXIrUlpIaXhmTXBo?=
+ =?utf-8?B?dCtHY1RDeVVheGtTQStMQ1lDNWJ4S2tubG5zNFA1K3BuTmQvWDl1VDYwVDFX?=
+ =?utf-8?B?ZHRlT3kyV0RhTXgwbzAzZ0JTSEY5cjB6SFh5akh0NG9mZzA3TE9GRjlqTTlP?=
+ =?utf-8?B?LzhEMERCUWNoS2x5TXBJVHVsRGFxZGNJay8yc3VobEhRT0xCNklUdk5wV2Rm?=
+ =?utf-8?B?TXVRVzdhN1Q4RXQ4dkcrM0crakQwbTEyVUFBRngzYkhldmRUVlNGUmdMQmV1?=
+ =?utf-8?B?Ymhxa216dnE1SEhyeWthQ2RjTTZVaUFEaDB5REVJdDBXMVRUa2svejZqVjVF?=
+ =?utf-8?B?RExmM25qdEF5d2NzL1g5OHpwNUpVVFRpaUtzL2ttUDBIUTh5dUFqK0h3a0J0?=
+ =?utf-8?B?VC9Qb0JUSzdjODllU2tXRlkzbFVnSmIzbm9DNFFDTDJMV2VjWFI5SHVpVkY2?=
+ =?utf-8?B?UVNCWE1pMHJYZlFObFpqQT09?=
 X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:DS0PR11MB8718.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(1800799024)(376014)(366016); DIR:OUT; SFP:1101; 
+ SFS:(13230040)(376014)(366016)(1800799024); DIR:OUT; SFP:1101; 
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?dDZ0aHVJU09ZVUZoOG85YWRYbzFZOHBuc2poRkE0R0ZicE4yYTA5K0ZZYWZt?=
- =?utf-8?B?NXhCQTUwL0hUc052cS95aWR2Z2xYSEpTVUtmd055OURCUUcvR0lmQUtDNGph?=
- =?utf-8?B?SEpmSHNhRW8xb2hZRGtMUWQzRnRkOXNqWXhnSnJ3a2NZcEdRaStHeFRRa0xI?=
- =?utf-8?B?WERNQnRZNXY0bkp6eUNFUitjd0JIWVJvOUxJQks1a3V6S3AxVVY4UVZuelhE?=
- =?utf-8?B?Zi8xOXVLMS9pTlUwdG11VXNkQkZ1MWtQNlUzZkx5R1FvajAxVndNTlhiMEFq?=
- =?utf-8?B?bFBhWU1BUTVmWnhOOGRvcWMyK3hxWVVtcGE2aUZGenhSK0s3WDA2V2tBR2tF?=
- =?utf-8?B?dmE3K3FNQnYvL3plL3grck9UYm9oakFKem5NQ2dwRUtqcTlpT0dTaU43YzZ1?=
- =?utf-8?B?eWpXZ3lwWlJUaGlqWC9lUUkrbkl3TCs3K2dQUW9WOXVLWmU2bTRMOEJnU1cr?=
- =?utf-8?B?eE1IVXE2dHNhdC9JYWxzeTI5ck5iTm9jSC9wNkMxUFk4SDJhTFJPMEMrNXFl?=
- =?utf-8?B?TjQrTHcyeFF3UGUzSStVQVIzMG9xeWdjL1NQblVwWThxR2V2dnI0ZkhHSHlN?=
- =?utf-8?B?bEs1eTlWZWNKdk1xSzd5dy9pczY5NDhvdFNhMittMlc2QS9UWTgxZHY3aUR5?=
- =?utf-8?B?Q0ZYOTlLcUhiK3MwSFpTOGc0QStKOUhVMzVNZFJpdHIyZjh3SHhOSXNHNk02?=
- =?utf-8?B?QmdPMC8zajIrbGZhQ29ZZy95OXRZWDRIdHBaTjFZSkVKMzFIcHRxYVBSMUNo?=
- =?utf-8?B?YVJYOU0vZm1rU0NkazBINFZlMDB5a0cxakhnbnRDM2VGSmdpYjlsVVYxcFJp?=
- =?utf-8?B?c0FYS3U2VmtIZHVTcDBQUm14NUJ3bmNOZlFZTWZVNGpQUmkzNTdvZThnV2VG?=
- =?utf-8?B?OXp0eWhmTmhOUmZCb281YWJUaUxBcGN2bnMrUisvYlhyRStpVzg0VXB6bHFk?=
- =?utf-8?B?akFQM1JLK2lzSm8xcE1XcEpGYWVWeUZYMnQ3emExS2Nyd2ZsZThUQzU3VlIy?=
- =?utf-8?B?Z3h2bVMzd2l2M3laUmkyMFB0OXhYdXRrVEFTUUQ0L0hrVDBjd1drVjMyQ1Uz?=
- =?utf-8?B?VE5EaFFabVJQbDNhTHkrVU1vSG9qVmxkS0FwNmJhVnJnYXQ3b09jUCt0Y0F3?=
- =?utf-8?B?TDB0V0FqZ0hvOE1ZdnNVcmdRUkMvMlJ3Z2cvOFJFdHlxbkU4TGNlOEk4TDNB?=
- =?utf-8?B?RzhpTDJUVDd1emdob051S0d6clRBUG9LYVpYNGRxWUZWQmFIblc1UWFxeFND?=
- =?utf-8?B?dGJoQ052ckFWbitENXZIVjU4dTNVYy9nNm9zb2k1U2pMWlFmQWZsQmNoRTls?=
- =?utf-8?B?MVJHV2I1WlgxUDVSLzY3cUdDdHEwODYzM3huOWJIeVdzUmYrckZKbUhMd0x5?=
- =?utf-8?B?emNUZ3BQME9JTmErSk5rcklNMSs3c3pHUy91VmswS3BmLy85YzR4QVpyMC9y?=
- =?utf-8?B?bHA4QXRmNXpJQjB2SVN1S2tyRUZuSlhyRk5JblVaYW8zYURlOFZFc05BRC9L?=
- =?utf-8?B?b1BFTkx0NW16Y3FaekZKeWhTRGdVaGNERkRyN1FMbXhjODJ2Q1JlUWFWYmRw?=
- =?utf-8?B?RUI5OUNpc3BVK2dHeWxxbGNYQlRQcEs5elFwVkN6UjRNWDZiNnF5QVBLQXc1?=
- =?utf-8?B?enMxTGtBUXFCaUtuL2svQm5MSDdLWkhxUExPbHJCTVpCZTlCczNJVWMyZStZ?=
- =?utf-8?B?NTRsUEkrcmtsOUoybmZYbVZmeXNxeENXZ0pZVjZadlZVY0p1OSs1SXVrNXd2?=
- =?utf-8?B?UTd4QWE3cW51S2NlRGp1N1hjRGZobXZNZk02R1pQQUN5WXBiRHJsRzR5VHEv?=
- =?utf-8?B?NGIvaExDaTNiOFJDTlQwcUxTeCtka3Q3TmdmNjhDSHE5Q082YW1OK1lyemEw?=
- =?utf-8?B?SkNQMTJVcFF4K2EzRjBUb2JQMVJiOExJMlRaQ3hxQmp0V29EQ1RQZUd1bzd2?=
- =?utf-8?B?UWlhV1ZsNVRlTituOHgvZzVkTnRpY0lIM1JGcHhmd2hOWklhL2l4SUxldHBN?=
- =?utf-8?B?TWVGRjVDbGFOVmZ2SXRvcC9oNEowcmV1RytDbnZldWtKZnZpL0ZBQ0ExU211?=
- =?utf-8?B?VkcrVzJMUWFtd0RteVhEaUI1T1A2VXlXcFBoM0Y4RWVVQUZEcVR0c0JBWXVj?=
- =?utf-8?B?WWllcm5pNVlaRmxIaVR6cnZLLzJPaEc1NnV4WmpxenlsWk5uNk1hdFNMUnVG?=
- =?utf-8?Q?7ftZgS8sJ9ImS735242ccHE=3D?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: e52e4574-b870-4001-d693-08dcb0a9faac
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?YXNTa0FSL1NpNUV2MkQvVEpYamlLYWpJdm5oZEoxUGpDSVFLdU90YTEySlZ6?=
+ =?utf-8?B?WXZ6VllhbHZQRWEzU1FoQ3dGeVNnVXdET09PMGZ5SzkzWGF5dUUvYk5sYUhH?=
+ =?utf-8?B?V1Z0cG8xTGNUdWdCWThzOXFyV0NqOUFoaUg5NlQvaXVFVVVjb0w3aXB5TExx?=
+ =?utf-8?B?MzJoR0dKNFhoK0tEK3lHdGNsYnIrMWVjZXcxWEZ0OWtUVmNUTmEyc3hNdTkr?=
+ =?utf-8?B?L2hEVk9mdk1TWWpTOStvWW1XbU1BaERNK3BFb1E3b29tbVIwWjNGL0Q2czZq?=
+ =?utf-8?B?VThXWC9VaTJEQU5GVktjaFZqS091K0NqUGpKZTZsZU81c09wV3Q1NnJja1Yy?=
+ =?utf-8?B?N25MRHdmWDZHQnpYL2xiNTRxV3FQbGhXVS9GbCs2anFhMzhNOXgwSjhYNWRJ?=
+ =?utf-8?B?UjZmYk1RdGdZRlg3a0VtY2JBU0laTmRvTUFVVllXODRJQU9PNG15M3MydG1r?=
+ =?utf-8?B?S3hHZmQzMEV6SVJzci9ZRFFYdVllSzZMbHpEM2RVajJiakNDanRUbCtpa2Fq?=
+ =?utf-8?B?MXh4WE1DV1d1K1RiZDNrQms1NGk2VEpPcDVtNXFjT1NKeUVSZEJxbkI2d0Zw?=
+ =?utf-8?B?b0xueXVka1l2Z1NCZElYNXZmTnhieFVoQ0tXMzNZL0FGeC9FNXFtaDJJZmI1?=
+ =?utf-8?B?OGd3WVA4bmJFN1lKWE15aDhvK1pYdEpieEZ0QVo1VHJmdGpiYVNlU1RGU0lB?=
+ =?utf-8?B?dzU2TUpKN0xwdmJOM0MrVkRoMjFmQmx2cXYyOFNDdVhCdjl6SXM4ZW5tS1h1?=
+ =?utf-8?B?MXNRYXppNHpoYWllRUFMNlFMaFJNYzU2cW1mVitReHpBTm9YeEg2NFlNZ2xN?=
+ =?utf-8?B?bVRnK0V5T3hzMlF0bm51Zm5LK2lUTEN6NjU4ckVvVGl5Q3NocTJVOFpqbXhm?=
+ =?utf-8?B?Z3ZDMDF2OCtWbDNPajh0MDdKbTRtOFVjWmV0QnVvN2pRb2daNkZnVGV0Z0Fh?=
+ =?utf-8?B?SUVYbDcxdUtaWlJ4amNxbkJDckVBMEsrbSsvSWhaT1dwbGxySjBtTE1kUFZv?=
+ =?utf-8?B?Uk9Zc045clQ2cjNLRDZXRlBpdjVTMzlzTGRJaHM5V2hMWVBBMlEyZE9BVWpW?=
+ =?utf-8?B?TGYwNWVBK3RmZEgzZVA0SFVXWXJQZThhSktpN0ZZVWhId2JhTFAreTJHK1JC?=
+ =?utf-8?B?angyL1Bzb2JmanBLVldLaVo1eW5OdnE2Sk1pbzRGMUVYMTlmYktrazROMEZk?=
+ =?utf-8?B?T1pOTXNwa05Lb1pBRFNEZzA0UW9Jd2VjaXlzN1RmcEthMkxKN0RMUDlzTzRq?=
+ =?utf-8?B?NnpQUGlHL2dqaU1jaVVLQUFnNUpkdlFWdTU3T2lQZDQyYWRmbEJrbjkrYm1j?=
+ =?utf-8?B?dVE0RldKVGd5OGJmeERYTnIzN1FqYmdNSjloY1I0UkpxcmFzSUo4ZXJ1MHRT?=
+ =?utf-8?B?OS9sN2UyZ0JyL0pEc2FnZUhLTjIvamQ2YWlhaFpsYkl6QzhoUG5mN0FUNUdG?=
+ =?utf-8?B?M00vd3ZxVE4zNVVBWk5pUlB5ekc0eHQzS1pvWG1rMGtJSnplaXpKa01pNm0r?=
+ =?utf-8?B?MnVRVjRsQUhPMGRlOVNmNTIyVDdTa1FRV1VxVG8zbnkrVFRPdytXS3g3bzd4?=
+ =?utf-8?B?bm1LVFlyelIzTVY3R1BpYVEwWFJHQkFUczhFSHlBNmJ1T21yajhGeGNtNVpk?=
+ =?utf-8?B?SDJvWlhjVUlmVHpiMlV4NzNYcUtKYnBpNnk5UVJHeEpNV1BqZXNReEh6Z1Rh?=
+ =?utf-8?B?eUNxaUFpbEkrakZWYnJ5WDBCbG9DYUVXY3ZIa2p6SkFKajF5Z2RPN3ZIUkJ2?=
+ =?utf-8?B?eXhIeDUwZ3RIcXF3eXltMmV0bkc3UGJSWjZBUUFZdFJxcVdRcUUvRS9RVXRi?=
+ =?utf-8?B?UUhlSXQrdlhPMWpqQmN1bTdoeFJYT1pHZkJaY2FJUnVmOGdCeHBxRUJBNnBO?=
+ =?utf-8?B?SHNqUjNIbnZPV2tobVVQWldtSTNraHp1RTFNeWpjRFlUbkdic2ZhcmFaQkFK?=
+ =?utf-8?B?R0xnM2toYWNIOHFLWDU0QUF6ZzhoSXZ6d0trN0FuemFZUEgwZFpPbW1oaHMr?=
+ =?utf-8?B?UGFnUysrY3lVNjZVcmUrRUw1Qk9lMXdBTmtmdExodGF2bnhiYXFHcGNKb2V2?=
+ =?utf-8?B?OUJtSU1vY2RFY2lwaVRwWGlEVDVKOE9vek9VUGFDWG1tM1N1ZWYyQ1BKQjQr?=
+ =?utf-8?B?SUpmOXRhN2Z5elNHbVpBWXhWODNFdERjT1pYdXYyOThUS010TVdhcEtxU1FE?=
+ =?utf-8?Q?PuEDJF1f2MDu92xkqqWejBk=3D?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: e57e2091-15b5-4f30-7b43-08dcb0ac7271
 X-MS-Exchange-CrossTenant-AuthSource: DS0PR11MB8718.namprd11.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 30 Jul 2024 15:12:08.3695 (UTC)
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 30 Jul 2024 15:29:48.1601 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: YYfUW9Ojkh9tt1JXHk0+G/CA+/oFU67ORFyPOVWDjYbrXxKtECmRC53W9FqRSzVBFJtMVPoMxvyw4W91ZgQFWJzVrcZ9ydpMmjQoA9BNXBE=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY5PR11MB6284
+X-MS-Exchange-CrossTenant-UserPrincipalName: LhqKsrw7WfVtwqbn2NbNY9XTcAzXrMctGuw86dFEMKiQE5RO05y8HbFMYZU6QUu0+sJwqGOyqMBuiIxwZ0R3lIVywa8OFSB4MsGNdVDFjIc=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: LV8PR11MB8511
 X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1722352356; x=1753888356;
+ t=1722353394; x=1753889394;
  h=message-id:date:subject:to:cc:references:from:
  in-reply-to:content-transfer-encoding:mime-version;
- bh=6AfnUR47kwAOO6LRmoBcxYPu7Ozv5HyiRKKIr7E9dTQ=;
- b=Z0phsm1p9pLUvrK5AcUALucdQYkNMZlj/nsDRKINj/YrQu1+n8L/7MWy
- tXse/gWHWv5Pw04yMz+EA2lIwvGa5jvvk+YwWaaWlFGGEAG6TJpj3uqtp
- uyA1oxmGCHRaqv/TCHDmr0C3phStEAkSsyqZgufNGeY5F+DlVOQw8x1Mf
- mm5xMniyPcJNI7cbKz9C12bFn6i/KJkyph6OBETb7vgWreZaKH+OtNmeN
- 4wu4zpwF2Ypgm5dKMvzk8PaLy2h8lthggJ6Mxbr3VJ/VuoMNnPQAoPeWz
- MbIMV4ZXKS/vXCnzThsLCEY8jkNHh1/DchgJ26k9uVKMxJdL89q5lMEY6
- w==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ bh=mOOxueeHGMbFoqpBcfiaKpMCF9SLXQVf7U722CvZD+k=;
+ b=GvrcEV5QTVQaPgDrUGYOoXhitOzGTKLYCzBZrxFPOhEr+MtX5AwK0pAp
+ jqYA1wQ85TtYttsW0AScdt8FsU9Z2xowRtAKAD+BC4NFiQrXsy8Z7JOuQ
+ OvCQ7UPHMJNQGv57ndhMUMy5ZO0NvXXSk8UPXRg+TlfYn72KRTbu/cfsd
+ jLmAPrjTsgqgAuvq6zNl6zv94I/DC1/IZFs3eKsBllVO7E8OW2y8wzATq
+ 8PN+/pzrcfbrYW2fiyrNURfAPfEfwfk0lfw6Jxwmc86/iCEzSN8/4ag4X
+ hipn1RhVvrPD6sRKGAU33/nO4pUVMimB6gZf4+reUkhrLRM0a54NBof80
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=Z0phsm1p
+ header.s=Intel header.b=GvrcEV5Q
 X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v8 13/14] iavf: handle set
- and get timestamps ops
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v8 14/14] iavf: add support
+ for Rx timestamps to hotpath
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -240,194 +236,258 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Cc: Wojciech Drewek <wojciech.drewek@intel.com>, netdev@vger.kernel.org,
  intel-wired-lan@lists.osuosl.org, Simon Horman <horms@kernel.org>,
  Jacob Keller <jacob.e.keller@intel.com>,
- Rahul Rameshbabu <rrameshbabu@nvidia.com>
+ Rahul Rameshbabu <rrameshbabu@nvidia.com>,
+ Sunil Goutham <sgoutham@marvell.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
 From: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
-Date: Tue, 30 Jul 2024 05:15:08 -0400
+Date: Tue, 30 Jul 2024 05:15:09 -0400
 
 > From: Jacob Keller <jacob.e.keller@intel.com>
 > 
-> Add handlers for the .ndo_hwtstamp_get and .ndo_hwtstamp_set ops which allow
-> userspace to request timestamp enablement for the device. This support allows
-> standard Linux applications to request the timestamping desired.
+> Add support for receive timestamps to the Rx hotpath. This support only
+> works when using the flexible descriptor format, so make sure that we
+> request this format by default if we have receive timestamp support
+> available in the PTP capabilities.
+> 
+> In order to report the timestamps to userspace, we need to perform
+> timestamp extension. The Rx descriptor does actually contain the "40
+> bit" timestamp. However, upper 32 bits which contain nanoseconds are
+> conveniently stored separately in the descriptor. We could extract the
+> 32bits and lower 8 bits, then perform a bitwise OR to calculate the
+> 40bit value. This makes no sense, because the timestamp extension
+> algorithm would simply discard the lower 8 bits anyways.
+> 
+> Thus, implement timestamp extension as iavf_ptp_extend_32b_timestamp(),
+> and extract and forward only the 32bits of nominal nanoseconds.
+> 
+> Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
+> Reviewed-by: Wojciech Drewek <wojciech.drewek@intel.com>
+> Reviewed-by: Rahul Rameshbabu <rrameshbabu@nvidia.com>
+> Reviewed-by: Sunil Goutham <sgoutham@marvell.com>
+> Reviewed-by: Simon Horman <horms@kernel.org>
+> Signed-off-by: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
+> ---
+>  drivers/net/ethernet/intel/iavf/iavf_main.c |  9 +++
+>  drivers/net/ethernet/intel/iavf/iavf_ptp.c  | 69 +++++++++++++++++++++
+>  drivers/net/ethernet/intel/iavf/iavf_ptp.h  |  4 ++
+>  drivers/net/ethernet/intel/iavf/iavf_txrx.c | 47 ++++++++++++++
+>  drivers/net/ethernet/intel/iavf/iavf_type.h |  3 +
+>  5 files changed, 132 insertions(+)
+> 
+> diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
+> index 61720b27c8f1..03deb3e02279 100644
+> --- a/drivers/net/ethernet/intel/iavf/iavf_main.c
+> +++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
+> @@ -729,6 +729,15 @@ static u8 iavf_select_rx_desc_format(struct iavf_adapter *adapter)
+>  	if (!RXDID_ALLOWED(adapter))
+>  		return VIRTCHNL_RXDID_1_32B_BASE;
+>  
+> +	/* Rx timestamping requires the use of flexible NIC descriptors */
+> +	if (iavf_ptp_cap_supported(adapter, VIRTCHNL_1588_PTP_CAP_RX_TSTAMP)) {
+> +		if (supported_rxdids & BIT(VIRTCHNL_RXDID_2_FLEX_SQ_NIC))
+> +			return VIRTCHNL_RXDID_2_FLEX_SQ_NIC;
+> +
+> +		dev_dbg(&adapter->pdev->dev,
+> +			"Unable to negotiate flexible descriptor format.\n");
 
-[...]
+1. Remember about pci_*().
+2. We usually don't put '.' to the end of kernel messages.
 
+> +	}
+> +
+>  	/* Warn if the PF does not list support for the default legacy
+>  	 * descriptor format. This shouldn't happen, as this is the format
+>  	 * used if VIRTCHNL_VF_OFFLOAD_RX_FLEX_DESC is not supported. It is
 > diff --git a/drivers/net/ethernet/intel/iavf/iavf_ptp.c b/drivers/net/ethernet/intel/iavf/iavf_ptp.c
-> index 9eb3161575d5..7754f4f24052 100644
+> index 7754f4f24052..5fd17f8d1f36 100644
 > --- a/drivers/net/ethernet/intel/iavf/iavf_ptp.c
 > +++ b/drivers/net/ethernet/intel/iavf/iavf_ptp.c
-> @@ -3,6 +3,136 @@
+> @@ -440,6 +440,9 @@ void iavf_ptp_release(struct iavf_adapter *adapter)
+>  	}
+>  	adapter->aq_required &= ~IAVF_FLAG_AQ_SEND_PTP_CMD;
+>  	mutex_unlock(&adapter->ptp.aq_cmd_lock);
+> +
+> +	adapter->ptp.hwtstamp_config.rx_filter = HWTSTAMP_FILTER_NONE;
+> +	iavf_ptp_disable_rx_tstamp(adapter);
+>  }
 >  
->  #include "iavf.h"
->  
-> +/**
-> + * iavf_ptp_disable_rx_tstamp - Disable timestamping in Rx rings
-> + * @adapter: private adapter structure
-> + *
-> + * Disable timestamp reporting for all Rx rings.
-> + */
-> +static void iavf_ptp_disable_rx_tstamp(struct iavf_adapter *adapter)
-> +{
-> +	unsigned int i;
-> +
-> +	for (i = 0; i < adapter->num_active_queues; i++)
-
-	for (u32 i = 0; ...)
-
-> +		adapter->rx_rings[i].flags &= ~IAVF_TXRX_FLAGS_HW_TSTAMP;
-> +}
+>  /**
+> @@ -473,3 +476,69 @@ void iavf_ptp_process_caps(struct iavf_adapter *adapter)
+>  		iavf_ptp_disable_rx_tstamp(adapter);
+>  	}
+>  }
 > +
 > +/**
-> + * iavf_ptp_enable_rx_tstamp - Enable timestamping in Rx rings
-> + * @adapter: private adapter structure
+> + * iavf_ptp_extend_32b_timestamp - Convert a 32b nanoseconds timestamp to 64b
+> + * nanoseconds
+> + * @cached_phc_time: recently cached copy of PHC time
+> + * @in_tstamp: Ingress/egress 32b nanoseconds timestamp value
 > + *
-> + * Enable timestamp reporting for all Rx rings.
+> + * Hardware captures timestamps which contain only 32 bits of nominal
+> + * nanoseconds, as opposed to the 64bit timestamps that the stack expects.
+> + *
+> + * Extend the 32bit nanosecond timestamp using the following algorithm and
+> + * assumptions:
+> + *
+> + * 1) have a recently cached copy of the PHC time
+> + * 2) assume that the in_tstamp was captured 2^31 nanoseconds (~2.1
+> + *    seconds) before or after the PHC time was captured.
+> + * 3) calculate the delta between the cached time and the timestamp
+> + * 4) if the delta is smaller than 2^31 nanoseconds, then the timestamp was
+> + *    captured after the PHC time. In this case, the full timestamp is just
+> + *    the cached PHC time plus the delta.
+> + * 5) otherwise, if the delta is larger than 2^31 nanoseconds, then the
+> + *    timestamp was captured *before* the PHC time, i.e. because the PHC
+> + *    cache was updated after the timestamp was captured by hardware. In this
+> + *    case, the full timestamp is the cached time minus the inverse delta.
+> + *
+> + * This algorithm works even if the PHC time was updated after a Tx timestamp
+> + * was requested, but before the Tx timestamp event was reported from
+> + * hardware.
+> + *
+> + * This calculation primarily relies on keeping the cached PHC time up to
+> + * date. If the timestamp was captured more than 2^31 nanoseconds after the
+> + * PHC time, it is possible that the lower 32bits of PHC time have
+> + * overflowed more than once, and we might generate an incorrect timestamp.
+> + *
+> + * This is prevented by (a) periodically updating the cached PHC time once
+> + * a second, and (b) discarding any Tx timestamp packet if it has waited for
+> + * a timestamp for more than one second.
+> + *
+> + * Return: extended timestamp (to 64b)
+
+...but here you actually need a period :D
+
 > + */
-> +static void iavf_ptp_enable_rx_tstamp(struct iavf_adapter *adapter)
+> +u64 iavf_ptp_extend_32b_timestamp(u64 cached_phc_time, u32 in_tstamp)
 > +{
-> +	unsigned int i;
+> +	const u64 mask = GENMASK_ULL(31, 0);
+> +	u32 delta;
+> +	u64 ns;
 > +
-> +	for (i = 0; i < adapter->num_active_queues; i++)
+> +	/* Calculate the delta between the lower 32bits of the cached PHC
+> +	 * time and the in_tstamp value
+> +	 */
+> +	delta = (in_tstamp - (u32)(cached_phc_time & mask));
 
-(same)
+`cached_phc_time & GENMASK_ULL(31, 0)` == lower_32_bits(cached_phc_time)
 
-> +		adapter->rx_rings[i].flags |= IAVF_TXRX_FLAGS_HW_TSTAMP;
-> +}
 > +
-> +/**
-> + * iavf_ptp_set_timestamp_mode - Set device timestamping mode
-> + * @adapter: private adapter structure
-> + * @config: pointer to kernel_hwtstamp_config
-> + *
-> + * Set the timestamping mode requested from the userspace.
-> + *
-> + * Note: this function always translates Rx timestamp requests for any packet
-> + * category into HWTSTAMP_FILTER_ALL.
-> + *
-> + * Return: zero.
-> + */
-> +static int iavf_ptp_set_timestamp_mode(struct iavf_adapter *adapter,
-> +				       struct kernel_hwtstamp_config *config)
-> +{
-> +	/* Reserved for future extensions. */
-> +	if (config->flags)
-> +		return -EINVAL;
-> +
-> +	switch (config->tx_type) {
-> +	case HWTSTAMP_TX_OFF:
-> +		break;
-> +	case HWTSTAMP_TX_ON:
-> +		return -EOPNOTSUPP;
-> +	default:
-> +		return -ERANGE;
-> +	}
-> +
-> +	switch (config->rx_filter) {
-> +	case HWTSTAMP_FILTER_NONE:
-> +		iavf_ptp_disable_rx_tstamp(adapter);
-> +		break;
-> +	case HWTSTAMP_FILTER_PTP_V1_L4_EVENT:
-> +	case HWTSTAMP_FILTER_PTP_V1_L4_SYNC:
-> +	case HWTSTAMP_FILTER_PTP_V1_L4_DELAY_REQ:
-> +	case HWTSTAMP_FILTER_PTP_V2_EVENT:
-> +	case HWTSTAMP_FILTER_PTP_V2_L2_EVENT:
-> +	case HWTSTAMP_FILTER_PTP_V2_L4_EVENT:
-> +	case HWTSTAMP_FILTER_PTP_V2_SYNC:
-> +	case HWTSTAMP_FILTER_PTP_V2_L2_SYNC:
-> +	case HWTSTAMP_FILTER_PTP_V2_L4_SYNC:
-> +	case HWTSTAMP_FILTER_PTP_V2_DELAY_REQ:
-> +	case HWTSTAMP_FILTER_PTP_V2_L2_DELAY_REQ:
-> +	case HWTSTAMP_FILTER_PTP_V2_L4_DELAY_REQ:
-> +	case HWTSTAMP_FILTER_NTP_ALL:
-> +	case HWTSTAMP_FILTER_ALL:
+> +	/* Do not assume that the in_tstamp is always more recent than the
+> +	 * cached PHC time. If the delta is large, it indicates that the
+> +	 * in_tstamp was taken in the past, and should be converted
+> +	 * forward.
+> +	 */
+> +	if (delta > (mask / 2)) {
 
-Since these definitions are uAPI, their values can't change, only new
-ones can be added.
-So, you can use case range:
+1. `mask / 2` == S32_MAX.
+2. Parenthesis are redundant here.
 
-	case FILTER_ALL:
-	case V1_L4_EVENT ... NTP_ALL:
-		
+> +		/* reverse the delta calculation here */
+> +		delta = ((u32)(cached_phc_time & mask) - in_tstamp);
 
-> +		if (!(iavf_ptp_cap_supported(adapter,
-> +					     VIRTCHNL_1588_PTP_CAP_RX_TSTAMP)))
-> +			return -EOPNOTSUPP;
-> +		config->rx_filter = HWTSTAMP_FILTER_ALL;
-> +		iavf_ptp_enable_rx_tstamp(adapter);
-> +		break;
-> +	default:
-> +		return -ERANGE;
+Here as well.
+
+> +		ns = cached_phc_time - delta;
+> +	} else {
+> +		ns = cached_phc_time + delta;
 > +	}
 
-or even simpler:
+1. (u32) casts are not needed since your mask ends with bit 31.
+2. (cached_phc_time & mask) is used two times. Perhaps you needed
 
-	if (rx_filter == NONE)
-		// disable
-		return;
+	u32 low = lower_32_bits(cached_phc_time);
 
-	if (rx_filter == FILTER_SOME || rx_filter > NTP_ALL)
-		return -ERANGE;
+	delta = in_tstamp - low;
+	if (delta > S32_MAX)
+		ns = cached_phc_time - (low - in_tstamp);
+	else
+		ns = cached_phc_time + delta;
 
-	// here you will have your 14 supported cases from above,
-	// proceed with configuration
 
 > +
-> +	return 0;
-> +}
-> +
-> +/**
-> + * iavf_ptp_get_ts_config - Get timestamping configuration
-> + * @adapter: private adapter structure
-> + * @config: pointer to kernel_hwtstamp_config
-> + *
-> + * Return the current hardware timestamping configuration back to userspace.
-> + *
-> + * Return: zero.
-> + */
-> +int iavf_ptp_get_ts_config(struct iavf_adapter *adapter,
-> +			   struct kernel_hwtstamp_config *config)
-> +{
-> +	*config = adapter->ptp.hwtstamp_config;
-> +
-> +	return 0;
-
-If it always returns 0, void then?
-
-> +}
-> +
-> +/**
-> + * iavf_ptp_set_ts_config - Set timestamping configuration
-> + * @adapter: private adapter structure
-> + * @config: pointer to kernel_hwtstamp_config structure
-> + * @extack: pointer to netlink_ext_ack structure
-> + *
-> + * Program the requested timestamping configuration to the device.
-> + *
-> + * Return: zero.
-
-But it can also return @err...
-
-> + */
-> +int iavf_ptp_set_ts_config(struct iavf_adapter *adapter,
-> +			   struct kernel_hwtstamp_config *config,
-> +			   struct netlink_ext_ack *extack)
-> +{
-> +	int err;
-> +
-> +	err = iavf_ptp_set_timestamp_mode(adapter, config);
-> +	if (err)
-> +		return err;
-> +
-> +	/* Save successful settings for future reference */
-> +	adapter->ptp.hwtstamp_config = *config;
-> +
-> +	return 0;
+> +	return ns;
 > +}
 
 [...]
+
+> diff --git a/drivers/net/ethernet/intel/iavf/iavf_txrx.c b/drivers/net/ethernet/intel/iavf/iavf_txrx.c
+> index 997fd0d520a9..8d74549c3535 100644
+> --- a/drivers/net/ethernet/intel/iavf/iavf_txrx.c
+> +++ b/drivers/net/ethernet/intel/iavf/iavf_txrx.c
+> @@ -1085,6 +1085,52 @@ static void iavf_flex_rx_hash(const struct iavf_ring *ring,
+>  	}
+>  }
+>  
+> +/**
+> + * iavf_flex_rx_tstamp - Capture Rx timestamp from the descriptor
+> + * @rx_ring: descriptor ring
+> + * @rx_desc: specific descriptor
+> + * @skb: skb currently being received
+> + *
+> + * Read the Rx timestamp value from the descriptor and pass it to the stack.
+> + *
+> + * This function only operates on the VIRTCHNL_RXDID_2_FLEX_SQ_NIC flexible
+> + * descriptor writeback format.
+> + */
+> +static void iavf_flex_rx_tstamp(const struct iavf_ring *rx_ring,
+> +				const struct iavf_rx_desc *rx_desc,
+> +				struct sk_buff *skb)
+> +{
+> +	struct skb_shared_hwtstamps *skb_tstamps;
+> +	struct iavf_adapter *adapter;
+> +	__le64 qw2 = rx_desc->qw2;
+> +	__le64 qw3 = rx_desc->qw3;
+> +	bool tstamp_valid;
+> +	u32 tstamp;
+> +	u64 ns;
+> +
+> +	/* Skip processing if timestamps aren't enabled */
+> +	if (!(rx_ring->flags & IAVF_TXRX_FLAGS_HW_TSTAMP))
+> +		return;
+> +
+> +	/* Check if this Rx descriptor has a valid timestamp */
+> +	tstamp_valid = le64_get_bits(qw2, IAVF_PTP_40B_TSTAMP_VALID);
+> +	if (!tstamp_valid)
+> +		return;
+
+Read/convert descriptor qwords when you actually need them.
+
+	if (!(rx_ring->flags & HW_TSTAMP))
+		return;
+
+	if (!le64_get_bits(rx_desc->qw2, TSTAMP_VALID))
+		return;
+
+	tstamp = le64_get_bits(rx_desc->qw3, ...
+
+> +
+> +	adapter = netdev_priv(rx_ring->netdev);
+> +
+> +	/* the ts_low field only contains the valid bit and sub-nanosecond
+> +	 * precision, so we don't need to extract it.
+> +	 */
+> +	tstamp = le64_get_bits(qw3, IAVF_RXD_FLEX_QW3_TSTAMP_HIGH_M);
+> +	ns = iavf_ptp_extend_32b_timestamp(adapter->ptp.cached_phc_time,
+> +					   tstamp);
+> +
+> +	skb_tstamps = skb_hwtstamps(skb);
+> +	memset(skb_tstamps, 0, sizeof(*skb_tstamps));
+> +	skb_tstamps->hwtstamp = ns_to_ktime(ns);
+
+Ah, so many times I've seen this pattern :D
+
+&skb_shared_hwtstamps is 2 fields. One field you always initialize
+above, the other one needs to be cleared. IOW, just do
+
+	*skb_hwtstamps(skb) = (struct skb_shared_hwtstamps){
+		.hwtstamp	= ns_to_ktime(ns),
+	};
+
+That's it!
 
 Thanks,
 Olek
+
