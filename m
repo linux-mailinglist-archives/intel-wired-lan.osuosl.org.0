@@ -1,103 +1,110 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id DD11E943484
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 31 Jul 2024 18:56:09 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id AB90494357A
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 31 Jul 2024 20:14:39 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 8E37781BA9;
-	Wed, 31 Jul 2024 16:56:08 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 5C40A409F7;
+	Wed, 31 Jul 2024 18:14:38 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id oYtekXzZqIwQ; Wed, 31 Jul 2024 16:56:07 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id Vy_n_B76bFNX; Wed, 31 Jul 2024 18:14:37 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 91C1181DF8
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 65DCD40B3E
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1722444967;
-	bh=8IjK1PqbhEaV2z9XN46HBALxWh8f4QsHA4oSPtIHrhk=;
-	h=From:Date:To:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=eCFjV/BoBqLcetkkO+WbtNgdzJe8g9yYqGN9v3rL0+zpW/niKi7IhO3TArlh5e2zR
-	 OZg+f4iGxaTBCFKMMqqriQdBNvHqVNSKlYU/ZHmf7jPZ7aSJiz+80/zOXUZDaLPeuT
-	 GxLQpo/PQS2LqV9RzpSrZaCKk3+a4KR+mUS42HXV/Q6aV4q9sJUOs2+N99yZhIc1oG
-	 8nJnDkDoahYzGjq24OOOU+c2gVxjueZqtarPJKs4KgY1KC2Yahnlxj+mQpATaiMzfz
-	 b0JEA2ujdpdqxxcW6V5GcpVRrI0kK1nIpkoBJjcFiAqhyuY4jCwewNXROh0lXwduN9
-	 iN0PBgdsJftDA==
+	s=default; t=1722449677;
+	bh=Pp0vWyL7VeDKadleGOEHNTdhDMPNVXeakIX5tgvvsCU=;
+	h=References:In-Reply-To:From:Date:To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=4bx7uue8lbvb0kNC5pHXsGVQTHobeeg9360yrorMl2JsehUCijcID7HeQNl8NydEv
+	 FlF3p1bnsoQDShX8DfvbsPS49AHMJ5MSU6EFq4l7tXJs7Tk3heDBNyflCAPXnfrEWn
+	 Bq4zKl5jbdDZyfxmbuAyAliHUIMGf0TyU7DgYn7lo53nM0joVAlpWCl40LqSxFe9o9
+	 ReeTIt1bjsDcUQEtxvh17xBFHJaEwH/HQlesSkbLzwyomhho5q4wD2wyHZW10Vmzy3
+	 CBQjmU6nA0cKhuwisfCT08JYa3PxI1EKeEB3xx9qVaPiv/azoYIxmw2rlZH5ocSE/F
+	 BByqUzX4ae7lA==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 91C1181DF8;
-	Wed, 31 Jul 2024 16:56:07 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 65DCD40B3E;
+	Wed, 31 Jul 2024 18:14:37 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 141EF1BF3D8
- for <intel-wired-lan@lists.osuosl.org>; Wed, 31 Jul 2024 16:56:02 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id C86831BF44A
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 31 Jul 2024 18:14:34 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id E180081A8E
- for <intel-wired-lan@lists.osuosl.org>; Wed, 31 Jul 2024 16:56:01 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id B142740DE2
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 31 Jul 2024 18:14:34 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 3ISrAx2DGYZm for <intel-wired-lan@lists.osuosl.org>;
- Wed, 31 Jul 2024 16:56:00 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.16;
- helo=mgamail.intel.com; envelope-from=jacob.e.keller@intel.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 3588C81BA9
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3588C81BA9
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.16])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 3588C81BA9
- for <intel-wired-lan@lists.osuosl.org>; Wed, 31 Jul 2024 16:56:00 +0000 (UTC)
-X-CSE-ConnectionGUID: WwM63YynRLq8h6w4DjldYg==
-X-CSE-MsgGUID: 4GHwmc8+SO6LaAZRjO0WgA==
-X-IronPort-AV: E=McAfee;i="6700,10204,11150"; a="12810049"
-X-IronPort-AV: E=Sophos;i="6.09,251,1716274800"; d="scan'208";a="12810049"
-Received: from orviesa003.jf.intel.com ([10.64.159.143])
- by fmvoesa110.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 31 Jul 2024 09:56:00 -0700
-X-CSE-ConnectionGUID: fQRNLbrUR8uiyNLfsDHX7Q==
-X-CSE-MsgGUID: VslmQq4eTGSggGJtsEv41A==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.09,251,1716274800"; d="scan'208";a="59587077"
-Received: from jekeller-desk.amr.corp.intel.com (HELO localhost.localdomain)
- ([10.166.241.1])
- by ORVIESA003-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 31 Jul 2024 09:55:59 -0700
-From: Jacob Keller <jacob.e.keller@intel.com>
-Date: Wed, 31 Jul 2024 09:55:55 -0700
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id vt6ceeIxOeUK for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 31 Jul 2024 18:14:33 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2a00:1450:4864:20::432; helo=mail-wr1-x432.google.com;
+ envelope-from=alexander.duyck@gmail.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 6025640188
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 6025640188
+Received: from mail-wr1-x432.google.com (mail-wr1-x432.google.com
+ [IPv6:2a00:1450:4864:20::432])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 6025640188
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 31 Jul 2024 18:14:33 +0000 (UTC)
+Received: by mail-wr1-x432.google.com with SMTP id
+ ffacd0b85a97d-368440b073bso861452f8f.0
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 31 Jul 2024 11:14:33 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1722449671; x=1723054471;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=Pp0vWyL7VeDKadleGOEHNTdhDMPNVXeakIX5tgvvsCU=;
+ b=kZdvKgCeR4oDQoNAntpqlVMdEABwMIy+WiKszkODq3uvMDsUUMzBB0KhX50uF81A8S
+ 71pSAJ8eQyxirAVnXRQ6T7W8Tvjl9nY2cLYLKzEyCkB9P0feNy02HHZ8TSKJ7WaN4PLU
+ oPFLzLPHsCIuIiVo2XGtOl1dKMdR3/hEk0TzKkAjki6geMBNzOC4DtzMg96SgZhdszZA
+ 1UO/FzPqVHFM/g0SSmLSbbDfpL1rL2IPP1vQEa0KUV7X9Mknx9izYgJfbNY7LDsMPjeh
+ dK7oLQlzk7BBWJgAl41EnPSkLmrcMGBr30uwKw4EZFNM++otLhBn/mqN1m5Stp0kvebF
+ 3VjA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWFNzgUop1mb+xhcHZAKn1gF7JKONMFQzeWmyeWocRaFyDYbhh7BYWCmYecAhgR+PbGQiS0rW7wDQbnYDDN60TXgpF4evrOwIc1qCa0Wjc2pg==
+X-Gm-Message-State: AOJu0YyKCYrbSmn+SRSSO54fFOkzvCQ5iGJiBpPUqCIpJMqsfR9J/jpR
+ m/onw6is1z6+OT4Um6i8cxNz8Y4IN8ucmJFhi/nt42xYF+TBWMPvDUCzahUTLbEdF0VPkEqsvcF
+ luXwnZCUk37T09Ad2XkXYHvyiFuY=
+X-Google-Smtp-Source: AGHT+IGv2ta3BQ/aeYaFuo6uJnDIs2Oh1PDBCcZrH55JaT3W4vssxSHelAFkF3XSYf9nggWCe12LvyT/WHK2KvkPs3c=
+X-Received: by 2002:a05:6000:4582:b0:365:aec0:e191 with SMTP id
+ ffacd0b85a97d-36b8c8fdbdbmr4052808f8f.21.1722449671103; Wed, 31 Jul 2024
+ 11:14:31 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20240731-filter-return-eexist-v1-1-5b03d444a423@intel.com>
-X-B4-Tracking: v=1; b=H4sIAJpsqmYC/32NSw7CMAxEr1J5jVES+mXFPVAXpTjUUkmRE0pRl
- bsT5QAsR2/mzQ6ehMnDudhBaGXPi0tBHwoYp8E9CPmeMhhlStWYEi3PgQSFwlscEm3sAw6GSmt
- UZVV1gzR9CVnesvYK/JnRUYA+gSm1F/nmu1Vn/N+8atR4auradl1Hbasu7ALNx3F5Qh9j/AGN+
- K+MwQAAAA==
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>, 
- Anthony Nguyen <anthony.l.nguyen@intel.com>
-X-Mailer: b4 0.13.0
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1722444960; x=1753980960;
- h=from:date:subject:mime-version:content-transfer-encoding:
- message-id:to:cc;
- bh=XwmR1J+2MQNJUZ71BMtzx8r8Dz/0Dan2jkdxEZd8uSM=;
- b=Mpi0KMZncPWKFqj8qHK4JIv9Zl1/kjOPFE2A9onvGNp8es4LRA89fsW1
- CxSxIqUuj9Wk1SpDgw+zlKXP9TyfrYqH/HgBoIkZ67tRKwk53EvXIbtR5
- Zg+NtFHP8OYd05euONuAspsHXuwPVgumOZLky9qrxNeRIoHbF3LwY7HPY
- 3VMXVaQOIa3aJKf8S7vGc/QrklV9eJHlhEsLLv26GdSYdBlg6XC0xXQSm
- tu4W0t2Nii3rwNMeF+q2M8bjiDNMvU5SROOhgFflX6ivulfTIhOw9yOTv
- /vVKWJSEZLrWr3rcW1bYumXcC7gz7KLrkKlfdww2HWTnET0Kx5flu3WSx
- Q==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+References: <20240731124505.2903877-1-linyunsheng@huawei.com>
+ <20240731124505.2903877-5-linyunsheng@huawei.com>
+In-Reply-To: <20240731124505.2903877-5-linyunsheng@huawei.com>
+From: Alexander Duyck <alexander.duyck@gmail.com>
+Date: Wed, 31 Jul 2024 11:13:54 -0700
+Message-ID: <CAKgT0UcqdeSJdjZ_FfwyCnT927TwOkE4zchHLOkrBEmhGzex9g@mail.gmail.com>
+To: Yunsheng Lin <linyunsheng@huawei.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1722449671; x=1723054471; darn=lists.osuosl.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=Pp0vWyL7VeDKadleGOEHNTdhDMPNVXeakIX5tgvvsCU=;
+ b=Xzfy6erz3MttcYbrjp7Qp4LltPJCdyqydPu/rJ8wH9mcxGxQmi0osvlnC4h5H8GvwH
+ FxjePhCyHhuauLI2a6bdZdepv61CWYpCsWbmExQLGHXZbzxxSbMqMKgUp8drcQMYGPGi
+ AXQcHmIzYCmU/VVwvbxOG71XRSuVf/AvLj/3uUsPi4OyrB7tptWktf84o4W7rzp4GH7Y
+ sVgVuvJhjT0QUXhNTVnknETnrhGdahPdkIiZfutMGF0d1HQ1moX7mZov4zBPt30VFmhX
+ OdiwdmaMuaioJnYUxGC7A1AA0QUTdg1SUoP6zkgRd3RvAnZJqbfVAssSjvF2MdGalKGZ
+ ToWw==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ header.from=gmail.com
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=Mpi0KMZn
-Subject: [Intel-wired-lan] [PATCH iwl-net] ice: fix accounting for filters
- shared by multiple VSIs
+ unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256
+ header.s=20230601 header.b=Xzfy6erz
+Subject: Re: [Intel-wired-lan] [PATCH net-next v12 04/14] mm: page_frag: add
+ '_va' suffix to page_frag API
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -110,71 +117,68 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Jacob Keller <jacob.e.keller@intel.com>
+Cc: Yonghong Song <yonghong.song@linux.dev>, kvm@vger.kernel.org,
+ "Michael S. Tsirkin" <mst@redhat.com>, Neil Brown <neilb@suse.de>,
+ Jason Wang <jasowang@redhat.com>, Alexei Starovoitov <ast@kernel.org>,
+ linux-nvme@lists.infradead.org, Dai Ngo <Dai.Ngo@oracle.com>,
+ David Howells <dhowells@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Eric Dumazet <edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Subbaraya Sundeep <sbhatta@marvell.com>,
+ Marc Dionne <marc.dionne@auristor.com>, Christoph Hellwig <hch@lst.de>,
+ Anna Schumaker <anna@kernel.org>, Jeroen de Borst <jeroendb@google.com>,
+ Sagi Grimberg <sagi@grimberg.me>, Daniel Borkmann <daniel@iogearbox.net>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ John Fastabend <john.fastabend@gmail.com>, Andrii Nakryiko <andrii@kernel.org>,
+ linux-afs@lists.infradead.org,
+ =?UTF-8?Q?Eugenio_P=C3=A9rez?= <eperezma@redhat.com>,
+ Stanislav Fomichev <sdf@fomichev.me>, intel-wired-lan@lists.osuosl.org,
+ Olga Kornievskaia <kolga@netapp.com>, kuba@kernel.org, pabeni@redhat.com,
+ Lorenzo Bianconi <lorenzo@kernel.org>, Mark Lee <Mark-MC.Lee@mediatek.com>,
+ Sunil Goutham <sgoutham@marvell.com>, Chaitanya Kulkarni <kch@nvidia.com>,
+ Jesper Dangaard Brouer <hawk@kernel.org>, Sean Wang <sean.wang@mediatek.com>,
+ virtualization@lists.linux.dev, KP Singh <kpsingh@kernel.org>,
+ Tom Talpey <tom@talpey.com>, Shailend Chand <shailend@google.com>,
+ linux-mediatek@lists.infradead.org, linux-mm@kvack.org,
+ Keith Busch <kbusch@kernel.org>, bpf@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Jens Axboe <axboe@kernel.dk>, Hao Luo <haoluo@google.com>,
+ linux-nfs@vger.kernel.org, Song Liu <song@kernel.org>, netdev@vger.kernel.org,
+ Jeff Layton <jlayton@kernel.org>, linux-kernel@vger.kernel.org,
+ davem@davemloft.net, Eduard Zingerman <eddyz87@gmail.com>,
+ hariprasad <hkelam@marvell.com>, Chuck Lever <chuck.lever@oracle.com>,
+ Jiri Olsa <jolsa@kernel.org>, Praveen Kaligineedi <pkaligineedi@google.com>,
+ Andrew Morton <akpm@linux-foundation.org>,
+ Martin KaFai Lau <martin.lau@linux.dev>, Geetha sowjanya <gakula@marvell.com>,
+ Trond Myklebust <trondmy@kernel.org>, Felix Fietkau <nbd@nbd.name>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-When adding a switch filter (such as a MAC or VLAN filter), it is expected
-that the driver will detect the case where the filter already exists, and
-return -EEXIST. This is used by calling code such as ice_vc_add_mac_addr,
-and ice_vsi_add_vlan to avoid incrementing the accounting fields such as
-vsi->num_vlan or vf->num_mac.
+On Wed, Jul 31, 2024 at 5:50=E2=80=AFAM Yunsheng Lin <linyunsheng@huawei.co=
+m> wrote:
+>
+> Currently the page_frag API is returning 'virtual address'
+> or 'va' when allocing and expecting 'virtual address' or
+> 'va' as input when freeing.
+>
+> As we are about to support new use cases that the caller
+> need to deal with 'struct page' or need to deal with both
+> 'va' and 'struct page'. In order to differentiate the API
+> handling between 'va' and 'struct page', add '_va' suffix
+> to the corresponding API mirroring the page_pool_alloc_va()
+> API of the page_pool. So that callers expecting to deal with
+> va, page or both va and page may call page_frag_alloc_va*,
+> page_frag_alloc_pg*, or page_frag_alloc* API accordingly.
+>
+> CC: Alexander Duyck <alexander.duyck@gmail.com>
+> Signed-off-by: Yunsheng Lin <linyunsheng@huawei.com>
+> Reviewed-by: Subbaraya Sundeep <sbhatta@marvell.com>
 
-This logic works correctly for the case where only a single VSI has added a
-given switch filter.
+I am naking this patch. It is a pointless rename that is just going to
+obfuscate the git history for these callers.
 
-When a second VSI adds the same switch filter, the driver converts the
-existing filter from an ICE_FWD_TO_VSI filter into an ICE_FWD_TO_VSI_LIST
-filter. This saves switch resources, by ensuring that multiple VSIs can
-re-use the same filter.
-
-The ice_add_update_vsi_list() function is responsible for doing this
-conversion. When first converting a filter from the FWD_TO_VSI into
-FWD_TO_VSI_LIST, it checks if the VSI being added is the same as the
-existing rule's VSI. In such a case it returns -EEXIST.
-
-However, when the switch rule has already been converted to a
-FWD_TO_VSI_LIST, the logic is different. Adding a new VSI in this case just
-requires extending the VSI list entry. The logic for checking if the rule
-already exists in this case returns 0 instead of -EEXIST.
-
-This breaks the accounting logic mentioned above, so the counters for how
-many MAC and VLAN filters exist for a given VF or VSI no longer accurately
-reflect the actual count. This breaks other code which relies on these
-counts.
-
-In typical usage this primarily affects such filters generally shared by
-multiple VSIs such as VLAN 0, or broadcast and multicast MAC addresses.
-
-Fix this by correctly reporting -EEXIST in the case of adding the same VSI
-to a switch rule already converted to ICE_FWD_TO_VSI_LIST.
-
-Fixes: 9daf8208dd4d ("ice: Add support for switch filter programming")
-Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
----
----
- drivers/net/ethernet/intel/ice/ice_switch.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/net/ethernet/intel/ice/ice_switch.c b/drivers/net/ethernet/intel/ice/ice_switch.c
-index fe8847184cb1..0160f0bae8d6 100644
---- a/drivers/net/ethernet/intel/ice/ice_switch.c
-+++ b/drivers/net/ethernet/intel/ice/ice_switch.c
-@@ -3194,7 +3194,7 @@ ice_add_update_vsi_list(struct ice_hw *hw,
- 
- 		/* A rule already exists with the new VSI being added */
- 		if (test_bit(vsi_handle, m_entry->vsi_list_info->vsi_map))
--			return 0;
-+			return -EEXIST;
- 
- 		/* Update the previously created VSI list set with
- 		 * the new VSI ID passed in
-
----
-base-commit: 0bf50cead4c4710d9f704778c32ab8af47ddf070
-change-id: 20240724-filter-return-eexist-a2e4f205f05b
-
-Best regards,
--- 
-Jacob Keller <jacob.e.keller@intel.com>
-
+As I believe I said before I would prefer to see this work more like
+the handling of __get_free_pages and __free_pages in terms of the use
+of pages versus pointers and/or longs. Pushing this API aside because
+you want to reuse the name for something different isn't a valid
+reason to rename an existing API and will just lead to confusion.
