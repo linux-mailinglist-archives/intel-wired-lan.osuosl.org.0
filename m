@@ -2,94 +2,218 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5C95A944092
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  1 Aug 2024 04:08:59 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id AB9AD94452B
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  1 Aug 2024 09:09:29 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id E9A8E40947;
-	Thu,  1 Aug 2024 02:08:55 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 50B0A40C1B;
+	Thu,  1 Aug 2024 07:09:26 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id VzB1cwEo8JAs; Thu,  1 Aug 2024 02:08:54 +0000 (UTC)
+ id 26IhbCM66ohS; Thu,  1 Aug 2024 07:09:25 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 799774094A
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1B6D840C1F
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1722478133;
-	bh=pS3TuZn2kX5/NSbOaOWqoVicK0qutSzzcHy+GTF2iSU=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=tj58FDZluyz60rJcWpvwO8d8zLbDlDXfxktHLOJXCwLVcRzKw+e9kjOsiKf2uR6/s
-	 zfvY4SrnSmE6CqBHMe2BHMYYRitcDFohXR/MVIlhSuLLBclk0mmnkHWPj+9zFavcEn
-	 xcPxwmH+3cqtQhihNcHTwM7cwZpauZdT+YxYCRbYacwCmxm7iblRL1IpnBIInYf1Ax
-	 jKMwAXoUvXk3R0wAXfBB0f28Fcki/U/I83CUUbSyrjjkcNFS8NfWAWJF7BCbmBK32j
-	 A/3BfymiXfvbHPOwlD1ztyqTzb9o9EoW7aEpLYygwxricthHcIAswCE+wS6m8hdUHM
-	 yS3sAYp1trk6g==
+	s=default; t=1722496165;
+	bh=R4MbIWjZWxjIg/kMO4uZaZtIOfvHhKDY1BW72L0e6Ig=;
+	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=vp9+z2oAAYNM5ahtJHBh44vAw9rX1P4iDXFt35qzzQNhN4NVV5d2k//Ck1fnIOiYl
+	 //BtWALUsMuGQHIDuoBNd20QIXOg2cbdvLxyohoZRP1b4MlhTjKCq16/BNMVr+jFrM
+	 vDmo3hvCDObIELiQntrY9BT2ZiOEw9jrFDOc0bROdLOEWLwwZTehXRZ1WysFapJ+/p
+	 ttJuH9HVt6pohiEG0JMGaut2/5LMwnNrBhcfRGcPfxeIlflcim0abWQn8DXnMUtiIN
+	 KLjxaH5Vcer7cGT7zfSLYI35g+C9Kb3QoDSzDQHL3VNduRqZxV2/zOsP1doePeVS4D
+	 u3i/g4+A/GPCw==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 799774094A;
-	Thu,  1 Aug 2024 02:08:53 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 1B6D840C1F;
+	Thu,  1 Aug 2024 07:09:25 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 3B3C21BF297
- for <intel-wired-lan@lists.osuosl.org>; Thu,  1 Aug 2024 02:08:52 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 1297C1BF403
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  1 Aug 2024 07:09:23 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 3496360673
- for <intel-wired-lan@lists.osuosl.org>; Thu,  1 Aug 2024 02:08:52 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 095C060673
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  1 Aug 2024 07:09:23 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 9omP-Qd9Flvx for <intel-wired-lan@lists.osuosl.org>;
- Thu,  1 Aug 2024 02:08:51 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.20;
- helo=mgamail.intel.com; envelope-from=paul.greenwalt@intel.com;
+ id xj02UpXkf0gr for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  1 Aug 2024 07:09:22 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.13;
+ helo=mgamail.intel.com; envelope-from=yoong.siang.song@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org ECBEE6064F
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org ECBEE6064F
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.20])
- by smtp3.osuosl.org (Postfix) with ESMTPS id ECBEE6064F
- for <intel-wired-lan@lists.osuosl.org>; Thu,  1 Aug 2024 02:08:50 +0000 (UTC)
-X-CSE-ConnectionGUID: rRW68MuBQ+WuiTzujh8fSA==
-X-CSE-MsgGUID: UVrAEXpRShOgoDUgcHLaMA==
-X-IronPort-AV: E=McAfee;i="6700,10204,11150"; a="20216831"
-X-IronPort-AV: E=Sophos;i="6.09,253,1716274800"; d="scan'208";a="20216831"
-Received: from orviesa004.jf.intel.com ([10.64.159.144])
- by orvoesa112.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 31 Jul 2024 19:08:41 -0700
-X-CSE-ConnectionGUID: 3tYfNfBiQaO+pZYW1QmDFA==
-X-CSE-MsgGUID: BUXQ8bl/RJSQOF3xE6+iuQ==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 0F24B6061E
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0F24B6061E
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.13])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 0F24B6061E
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  1 Aug 2024 07:09:21 +0000 (UTC)
+X-CSE-ConnectionGUID: ACs42Q5MQmuomhNTUAwgdw==
+X-CSE-MsgGUID: lAST5YHmQZuctwd7MyG9yg==
+X-IronPort-AV: E=McAfee;i="6700,10204,11150"; a="31581318"
+X-IronPort-AV: E=Sophos;i="6.09,253,1716274800"; d="scan'208";a="31581318"
+Received: from orviesa010.jf.intel.com ([10.64.159.150])
+ by orvoesa105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 01 Aug 2024 00:09:08 -0700
+X-CSE-ConnectionGUID: tCR4lBZrQTi81s6l0ekTnQ==
+X-CSE-MsgGUID: 5gRVW/lURjirXsZhON61vQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.09,253,1716274800"; d="scan'208";a="59920400"
-Received: from unknown (HELO fedora.jf.intel.com) ([10.166.244.154])
- by orviesa004.jf.intel.com with ESMTP; 31 Jul 2024 19:08:41 -0700
-From: Paul Greenwalt <paul.greenwalt@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Wed, 31 Jul 2024 21:58:29 -0400
-Message-ID: <20240801015829.4011051-1-paul.greenwalt@intel.com>
-X-Mailer: git-send-email 2.41.0
+X-IronPort-AV: E=Sophos;i="6.09,253,1716274800"; d="scan'208";a="54848049"
+Received: from fmsmsx601.amr.corp.intel.com ([10.18.126.81])
+ by orviesa010.jf.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
+ 01 Aug 2024 00:09:08 -0700
+Received: from fmsmsx602.amr.corp.intel.com (10.18.126.82) by
+ fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.39; Thu, 1 Aug 2024 00:09:07 -0700
+Received: from FMSEDG603.ED.cps.intel.com (10.1.192.133) by
+ fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.39 via Frontend Transport; Thu, 1 Aug 2024 00:09:07 -0700
+Received: from NAM02-SN1-obe.outbound.protection.outlook.com (104.47.57.40) by
+ edgegateway.intel.com (192.55.55.68) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.39; Thu, 1 Aug 2024 00:09:07 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=GslUZUyR7aLOhPrXnS49x+vtQOigF0O6qc+H+7bJO/6VTM6DNTPkgZOseiDT3tAKMFns4N7M/UTq0dTVKDoGstHS6jnxArxOdkGMMxd9f5lHRuwhozf1+yRqmgAfjDV76mD6k2i8ouilKQ0cgvIN8x4JqMzFLtsyrtnlMZ/67ugGUAwUmm5bFoUFEP2fBi/A6+gaPWqaNl9CQ0cabUQSCmyzrfnybLBFcl6CA3MpjxiyHv+FjmaBxhXiH3oZxNCF00eslw0scKXKZznMdKm0JepCHxT1CUhc2SAMvMFsLqe4QwBXKkpMiWmclPTERs9BQwibwG31rCGfVcm9B9oNlQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=R4MbIWjZWxjIg/kMO4uZaZtIOfvHhKDY1BW72L0e6Ig=;
+ b=aQm1/ya+2mATaRoH23mMI53nG9FvP1dzvBFvVLNyaWrY3wx22HJa58hkYiolLwBu8ea5bCaNNd3pSmO2xAOQNA2iPkbKSDMl5OAmUq4B/vBfgiJGVRo88CFuPIqFEo2atSS+alj2swogopzveX/LBtHHykkjdbTvazOCCBWK3kkiBr3Z5TwBFlJtulqNJyQwGDl+HpkwrrWuRD0Evi9rJ9K/46oVswzl7FkyazXxTwqPtI9l+EapCuTPHdDltoMIUbkzM+InfTHJKYI7n9uge4Z1nfPogGvXJm3ExACTqksG8afC1zQ714s6x8CQyPJrsr9DM74LmGzJCOlS1pTK1A==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from PH0PR11MB5830.namprd11.prod.outlook.com (2603:10b6:510:129::20)
+ by SN7PR11MB8065.namprd11.prod.outlook.com (2603:10b6:806:2de::21)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7807.28; Thu, 1 Aug
+ 2024 07:09:05 +0000
+Received: from PH0PR11MB5830.namprd11.prod.outlook.com
+ ([fe80::c80d:3b17:3f40:10d6]) by PH0PR11MB5830.namprd11.prod.outlook.com
+ ([fe80::c80d:3b17:3f40:10d6%3]) with mapi id 15.20.7828.016; Thu, 1 Aug 2024
+ 07:09:05 +0000
+From: "Song, Yoong Siang" <yoong.siang.song@intel.com>
+To: Jakub Kicinski <kuba@kernel.org>, "Keller, Jacob E"
+ <jacob.e.keller@intel.com>
+Thread-Topic: [Intel-wired-lan] [PATCH iwl-next, v1 0/3] Add Default Rx Queue
+ Setting for igc driver
+Thread-Index: AQHa42h5Fat/ksCit026eH0/dvPCNLIRgrOAgAB2s6A=
+Date: Thu, 1 Aug 2024 07:09:05 +0000
+Message-ID: <PH0PR11MB5830C9CAFB74EE045B8FC1A7D8B22@PH0PR11MB5830.namprd11.prod.outlook.com>
+References: <20240730012212.775814-1-yoong.siang.song@intel.com>
+ <20240730075507.7cf8741f@kernel.org>
+ <PH0PR11MB5830E21A96A862B194D4A4A5D8B12@PH0PR11MB5830.namprd11.prod.outlook.com>
+ <20240731074351.13676228@kernel.org>
+ <d805bea3-cb2f-4e2c-a07a-27b8b4c5f294@intel.com>
+ <20240731165253.2571b254@kernel.org>
+In-Reply-To: <20240731165253.2571b254@kernel.org>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: PH0PR11MB5830:EE_|SN7PR11MB8065:EE_
+x-ms-office365-filtering-correlation-id: b8b55089-60cd-475e-25fe-08dcb1f8d459
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+ ARA:13230040|1800799024|366016|376014|7416014|38070700018; 
+x-microsoft-antispam-message-info: =?us-ascii?Q?elTHaqj0WdSB6mkqnLcN888l95yfvTPHskSF8lvZyt9+b62kFhgcaQTwe9RS?=
+ =?us-ascii?Q?RnejPVf7DDNgW2lxRkfJMw2JZGRTPhNGnvA4HEuGX1exYYuJoXqK03h5nWYU?=
+ =?us-ascii?Q?9xF3I/R9QhI/lYpihwQ5ZxxIm9CvUejAChcug21yqazRZG3qhEsSVaG+ueDI?=
+ =?us-ascii?Q?i7PX/FySSVpJAaA2ONzLSg5dWXO5T3X0cpUDd5YRGXcN3in+mSjpjCKIDuYT?=
+ =?us-ascii?Q?+fh1niicJT2GNP9phk8zRg4vdUN+e6ZwID5lSai/GOZ6RVSH30qgt0bad1T1?=
+ =?us-ascii?Q?nP4bxnYw/s4/omjRHPbeLAThulc8O64sHJm6bKZgFSNcuNSasMK2BHneBrBC?=
+ =?us-ascii?Q?sqf8xi+g2W/vzrwBCcl+1omQvnD3RDXAFr5miUlSXAtWQEvwusljYrzRttEi?=
+ =?us-ascii?Q?1Fo0mhAbX++l/o2aFyx1ilJLExZXq9+14BfRRJJ/0EfJoOEYV/U1zCHEZz2t?=
+ =?us-ascii?Q?ZgmeRBwBYe7dXlsomja0KkIJPBd2WEQhK4exUSrmyJ185HygTBFX5s3+beU2?=
+ =?us-ascii?Q?gkIG4vgckUJ57fqgqogWzegiFvjneg1tAp9AwYqQXYjoqqwMzYV29rfaC7ZH?=
+ =?us-ascii?Q?t01+Up7CbWJVARhxayEIctiK2xERVgdE5oH2z2telwb4H7rYIdAuN1sagtad?=
+ =?us-ascii?Q?e37tiLDuCk2C5kK9rcevp7jOnzD3kGZANRZAqaEqEQrzWgS9DnoOxDN2rsU0?=
+ =?us-ascii?Q?mIiQRV+TgCsqtluH8cc4xHqq67rHnSfo9yv8tQRnZsxx8gR2nd8oxDPOTde+?=
+ =?us-ascii?Q?7myIsJIy/imT9J5A6X7vSmJOHc0eNfhNAFqbEgCauI716QFEQuXkckmFcQjF?=
+ =?us-ascii?Q?4cUdNIMIjyySme2DhI6LWhQcuyYAT5Kfzdrcq+k69KLftsoKoCFFVyqEk+Q7?=
+ =?us-ascii?Q?IoKH2IlUbX1ZlTZPdr+OeudG+awhWOFblMvwqt1g6dLpcg2eippN54CL1JBH?=
+ =?us-ascii?Q?ZmKnLKViXVkUOCiOhKttAEGh7irDC17PGD4TVStdN8d4tfTsdpeNQQr45CgH?=
+ =?us-ascii?Q?ZARpf0qp3ag5YrYTRFyj8MN0N79L5cLNkaz4Zz+r517DNzBb3000886WDJd1?=
+ =?us-ascii?Q?c8QgVInHYMWfLmteqMSQ2Z3+Fxmq6+FXFKWyLULUbzcNKefDt29VcsYsDCJA?=
+ =?us-ascii?Q?9/ew68mvpz3hlhx6VR/LtEAy3GYa0LpwRURczm4xYH9GWhi/1+rjV6e+fWxI?=
+ =?us-ascii?Q?lfk5MHzexzPKyGDN8Es2rI5q9QJeugOk84hqFYJHWKT4OE9/sK8V8ctmWN9e?=
+ =?us-ascii?Q?zWyJPKmEDyncY6LzdeuTHBMtzb4h6lHZnEGDf6H1WO+A+5oiguYHtgtT7Ty0?=
+ =?us-ascii?Q?oXEZ3BmK2nbuAUnmFywXI1bKvQXvTEvkco/7cTaMth1Kls46KprX7cTVJLVX?=
+ =?us-ascii?Q?RTmnXzZ2pp4MtyfMVDMA/X2vsHIDC21m6GgItJcIqrAJ8cRDbg=3D=3D?=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:PH0PR11MB5830.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(1800799024)(366016)(376014)(7416014)(38070700018); DIR:OUT;
+ SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?jMmm9FboVCwd5c/GMFsR96fSYjufOHLh8GkZkMoke492qZns3nKzat8iRNyZ?=
+ =?us-ascii?Q?SbrQeuonMmalKEiqGl4+8t0rvGZRtBXQ5Vq3HHwezfylyig1KfRFmPvahHKJ?=
+ =?us-ascii?Q?dvsmjsHUjvbHVr4Poghy9TpWR/kG7if0ATBmKXdziBXwmGvXNIDfH2JMQDYL?=
+ =?us-ascii?Q?P+ME5Uo8OulFYYDLEW+TYUPmzHYp4mQZStT8ExoduxcYXYk7yXyhgs5vBekd?=
+ =?us-ascii?Q?q7ygFbmp21MHsvp2M8wUCvkVlaVXbyOpl8vPCJaxAEbB/rK0uGSJO8/7vfFh?=
+ =?us-ascii?Q?S6aTVZNxDNOCiSlLMP8FNxNwtNyxDAozrcrlGaB7FTReesNtpjXoWY8Y/xVx?=
+ =?us-ascii?Q?3DVRzeokly9tQMQyQkg/FblJgZU4463e9b70jLvDbjujWgQBgmwIQUVBgklX?=
+ =?us-ascii?Q?vah2tgHO56SulXhrQ4g3pGVSp3UHIThWJjQLSsbEeGg8vmyUXK5QZvPrH/sZ?=
+ =?us-ascii?Q?K34lgUHH4Vl5OIV/3VeiPy7eG5ISGctWXKXiEBsvLTiXqZRCxjleSQghR/MD?=
+ =?us-ascii?Q?5Mf42iiGDn94rT6wJcSWqZPvcC0oY340JkfPuiuO1NfsghHqS+QVJCWO+Edi?=
+ =?us-ascii?Q?2nmxbUoDr94e9p/nGEGHxNwtPhjV0oIO9kpbY2W+Bkw+SPLBgckczyR5eX86?=
+ =?us-ascii?Q?DdTumc81b2xSrCD4nBMC+XooaNOc35qb3VflVzwfT6B9D/c9est40n5gno3r?=
+ =?us-ascii?Q?wJH6opX4ejvgf8MHLJ8ncXREvafsITVIHL9tnvhGDSOCjv9iPw5YMFsAMTNr?=
+ =?us-ascii?Q?qIt3+shICwMIrH5H0AgTPm/6uL6mEN/yCPyP8RJdANKHKoqG7dyhfRRg8x9u?=
+ =?us-ascii?Q?tkbssKWb0gJrQ1BawksFPeBQYhPRkWNr8AJ8gRetYCB4AcOsJxvt94fyXR9L?=
+ =?us-ascii?Q?t/bIALq0XaZqau4LDNZKUT4yuV9ztDqS0a9TIZVTSE3ILBKbOmkb77qTxc2/?=
+ =?us-ascii?Q?7buTt5TMx7fWDtYitcNL7UYEvMhiSnFQ3qy/nZfSmYSeQcF8UqPlhF7+U1Fs?=
+ =?us-ascii?Q?aX5x126nvFGshkEXLKmMM28buqqL1XgvJBA411L9wOAiuDO4nDK6oqfgcb9G?=
+ =?us-ascii?Q?G8hs8tJVnYBZWaNGw56ZUjVL25R/bo8iFGPN9iYpZj4g3xNgG6w0rbBoo8GZ?=
+ =?us-ascii?Q?oqam6+i8DUKgpqdywdNvQl4P6QIep3p87/0beo5a8C6R6zjAEGfB8LB2sUNV?=
+ =?us-ascii?Q?thfBK2SopQDqhHKp5cdq1U1qrgn1Dnywws3MoKJCucH0sRdD90Wt7JDEjpeK?=
+ =?us-ascii?Q?3V5HZ7n0nI23WJjpQH4K3ZmFv3J86opHrnss4xVxZfscO9ARRPskRDwajld3?=
+ =?us-ascii?Q?+/wE7l5gBGdpCZSJTc2njQbXIZeJMiiO4cMbAabFmfXsGkGrPb+y4n/ENQkD?=
+ =?us-ascii?Q?IHoVG/Hf07hVjcY0TVNf41XzKrKXJ3Jj2lVvVkLrfwQBhyi5dq7v8xrifXZB?=
+ =?us-ascii?Q?iK1sQM/UqvHRkmo/j6ElrZPkJNu1nCifU6AtdnOTNy1ry9bETfmOKEbIzfMF?=
+ =?us-ascii?Q?KJk88JwvTZN3KuUbZKQ3LdtWzS4am27tGc+QdcYCl2CAHobCaSxubRUROzEF?=
+ =?us-ascii?Q?EtBgoPbtxY+QNxKGJR0Y9zho8o1Qu/On468ZOH05GUv6qBRkzMUCGs0OD2CU?=
+ =?us-ascii?Q?PQ=3D=3D?=
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: PH0PR11MB5830.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: b8b55089-60cd-475e-25fe-08dcb1f8d459
+X-MS-Exchange-CrossTenant-originalarrivaltime: 01 Aug 2024 07:09:05.1838 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: mzctpUv5VQsVKFSbmfA1sLOuy+m1mVOZ0sB0jkdZUtqIGfysoD3gVQbgIKQyb2moDgSunACcUWsNXFFZEeX5kVE8c1fuqAwFfEHK+JcImAk=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN7PR11MB8065
+X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1722478131; x=1754014131;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=1d78AnrvDUR8Le77tOgZwxgC2TaclKrteOv7ymM8WMs=;
- b=g0gWMgHaZNKIq2KX2nlH7MTx8Sw+OVxEe7RNAn78eUrqm6dffzK1XCIl
- i6Aw4nDHsdX122Xtx4ly7H8PfZZ9IRTao+l8x+CSy2kZ/wMBpXUSdYWWu
- nJfVyudRn+fFCpa2k6sLgzn6lB099bbgds+qAm4lnsuUfvBE2WDk4DDsc
- RwfNL8F8TqZhvG600uhtnmNN7c5PTcSKifizqLEfUcdNG6C4VWi6hXOkn
- N85Hl8/fQRxVHizpov6xn/xO9DS3aZo71+Os6thbyVuPeHsj3FB1lLrHh
- 5dzeVE2CGXGXabZr1iEe9hI3JOotGM56eJcuUmvVKbOoDX6cUXyk4JoSR
- g==;
+ t=1722496162; x=1754032162;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=R4MbIWjZWxjIg/kMO4uZaZtIOfvHhKDY1BW72L0e6Ig=;
+ b=EJKWzx8pjE1XgaVcNCZGpCLJ/EV4+FWj92vI/jOy4B2i2PBcLo3c7uS5
+ nWfAKqvVvYNJBNEoJDmGph7X9aoQeI3upUuhhdQ9n1I1VAmsGMbATriim
+ HavS3WmJLp7ne2KsHZrSXW/9HCRwh9MtVtp2IPN/Wj8iEyhW7Bx4mTusa
+ 5psXqBaqN3sabOCernQL4tmaOjQQhiCLNQ4dOc0iUy7iiZIgg5kOEgXKI
+ MXe5L9RvpK2Q0Z29IreQ+rnpbrEvlW7PioYymGM4JounBb5FyER56it9W
+ oscIJIA7bGcB3/mb0Wu8T1JruZc6sQWgixiag/0+e4FbHugjA51soYpwZ
+ Q==;
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=g0gWMgHa
-Subject: [Intel-wired-lan] [PATCH iwl-next v2] ice: add E830 HW VF mailbox
- message limit support
+ header.s=Intel header.b=EJKWzx8p
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next,
+ v1 0/3] Add Default Rx Queue Setting for igc driver
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -102,283 +226,44 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Paul Greenwalt <paul.greenwalt@intel.com>
+Cc: "Neftin, Sasha" <sasha.neftin@intel.com>,
+ Brett Creeley <brett.creeley@amd.com>,
+ "linux-doc@vger.kernel.org" <linux-doc@vger.kernel.org>,
+ Alexei Starovoitov <ast@kernel.org>, Eric
+ Dumazet <edumazet@google.com>, "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>,
+ "Blanco Alcaine, Hector" <hector.blanco.alcaine@intel.com>,
+ Daniel Borkmann <daniel@iogearbox.net>, Jonathan Corbet <corbet@lwn.net>,
+ "Gomes, Vinicius" <vinicius.gomes@intel.com>, "Kitszel,
+ Przemyslaw" <przemyslaw.kitszel@intel.com>,
+ John Fastabend <john.fastabend@gmail.com>,
+ Shinas Rasheed <srasheed@marvell.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ Paolo Abeni <pabeni@redhat.com>, "Tian, 
+ Kevin" <kevin.tian@intel.com>, Jesper Dangaard Brouer <hawk@kernel.org>,
+ Richard Cochran <richardcochran@gmail.com>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>, "Hay,
+ Joshua A" <joshua.a.hay@intel.com>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "bpf@vger.kernel.org" <bpf@vger.kernel.org>,
+ "David S . Miller" <davem@davemloft.net>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-E830 adds hardware support to prevent the VF from overflowing the PF
-mailbox with VIRTCHNL messages. E830 will use the hardware feature
-(ICE_F_MBX_LIMIT) instead of the software solution ice_is_malicious_vf().
+On Thursday, August 1, 2024 7:53 AM, Jakub Kicinski <kuba@kernel.org> wrote=
+:
+>On Wed, 31 Jul 2024 09:41:16 -0700 Jacob Keller wrote:
+>> In this case, (I haven't dug into the actual patches or code), I suspect
+>> the driver will need to validate the location values when adding rules
+>> to ensure that all rules which don't use the default queue have higher
+>> priority than the wild card rule. The request to add a filter should
+>> reject the rule in the case where a default queue rule was added with a
+>> higher priority location.
+>
+>Maybe I shouldn't say it aloud but picking a "known" location for such
+>a wildcard rule wouldn't be the worst thing. Obviously better if the
+>driver just understand ordering!
 
-To prevent a VF from overflowing the PF, the PF sets the number of
-messages per VF that can be in the PF's mailbox queue
-(ICE_MBX_OVERFLOW_WATERMARK). When the PF process a message from a VF,
-the PF decrements the per VF message count using the E830_MBX_VF_DEC_TRIG
-register.
-
-Signed-off-by: Paul Greenwalt <paul.greenwalt@intel.com>
----
-v1 -> v2:
-- Update ice_mbx_vf_dec_trig_e830 and ice_mbx_vf_clear_cnt_e830 onstack
-  variables to const
----
- drivers/net/ethernet/intel/ice/ice.h          |  1 +
- .../net/ethernet/intel/ice/ice_hw_autogen.h   |  3 ++
- drivers/net/ethernet/intel/ice/ice_lib.c      | 12 +++++++
- drivers/net/ethernet/intel/ice/ice_main.c     | 24 ++++++++++----
- drivers/net/ethernet/intel/ice/ice_sriov.c    |  3 +-
- drivers/net/ethernet/intel/ice/ice_vf_lib.c   | 26 +++++++++++++--
- drivers/net/ethernet/intel/ice/ice_vf_mbx.c   | 32 +++++++++++++++++++
- drivers/net/ethernet/intel/ice/ice_vf_mbx.h   |  3 ++
- drivers/net/ethernet/intel/ice/ice_virtchnl.c |  8 +++--
- 9 files changed, 99 insertions(+), 13 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
-index 4c563b0d57ac..53c8edbfaede 100644
---- a/drivers/net/ethernet/intel/ice/ice.h
-+++ b/drivers/net/ethernet/intel/ice/ice.h
-@@ -207,6 +207,7 @@ enum ice_feature {
- 	ICE_F_GNSS,
- 	ICE_F_ROCE_LAG,
- 	ICE_F_SRIOV_LAG,
-+	ICE_F_MBX_LIMIT,
- 	ICE_F_MAX
- };
- 
-diff --git a/drivers/net/ethernet/intel/ice/ice_hw_autogen.h b/drivers/net/ethernet/intel/ice/ice_hw_autogen.h
-index 91cbae1eec89..a306ea9b207c 100644
---- a/drivers/net/ethernet/intel/ice/ice_hw_autogen.h
-+++ b/drivers/net/ethernet/intel/ice/ice_hw_autogen.h
-@@ -539,5 +539,8 @@
- #define E830_PRTMAC_CL01_QNT_THR_CL0_M		GENMASK(15, 0)
- #define VFINT_DYN_CTLN(_i)			(0x00003800 + ((_i) * 4))
- #define VFINT_DYN_CTLN_CLEARPBA_M		BIT(1)
-+#define E830_MBX_PF_IN_FLIGHT_VF_MSGS_THRESH    0x00234000
-+#define E830_MBX_VF_DEC_TRIG(_VF)               (0x00233800 + ((_VF) * 4))
-+#define E830_MBX_VF_IN_FLIGHT_MSGS_AT_PF_CNT(_VF) (0x00233000 + ((_VF) * 4))
- 
- #endif /* _ICE_HW_AUTOGEN_H_ */
-diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
-index fc5b87f51702..a6fa2ed6c4ab 100644
---- a/drivers/net/ethernet/intel/ice/ice_lib.c
-+++ b/drivers/net/ethernet/intel/ice/ice_lib.c
-@@ -3938,6 +3938,18 @@ void ice_init_feature_support(struct ice_pf *pf)
- 		if (ice_gnss_is_gps_present(&pf->hw))
- 			ice_set_feature_support(pf, ICE_F_GNSS);
- 		break;
-+	case ICE_DEV_ID_E830CC_BACKPLANE:
-+	case ICE_DEV_ID_E830CC_QSFP56:
-+	case ICE_DEV_ID_E830CC_SFP:
-+	case ICE_DEV_ID_E830CC_SFP_DD:
-+	case ICE_DEV_ID_E830C_BACKPLANE:
-+	case ICE_DEV_ID_E830C_QSFP:
-+	case ICE_DEV_ID_E830C_SFP:
-+	case ICE_DEV_ID_E830_XXV_BACKPLANE:
-+	case ICE_DEV_ID_E830_XXV_QSFP:
-+	case ICE_DEV_ID_E830_XXV_SFP:
-+		ice_set_feature_support(pf, ICE_F_MBX_LIMIT);
-+		break;
- 	default:
- 		break;
- 	}
-diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index 8ea52c4ff2b3..dcfc4d957b99 100644
---- a/drivers/net/ethernet/intel/ice/ice_main.c
-+++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -1559,12 +1559,20 @@ static int __ice_clean_ctrlq(struct ice_pf *pf, enum ice_ctl_q q_type)
- 			ice_vf_lan_overflow_event(pf, &event);
- 			break;
- 		case ice_mbx_opc_send_msg_to_pf:
--			data.num_msg_proc = i;
--			data.num_pending_arq = pending;
--			data.max_num_msgs_mbx = hw->mailboxq.num_rq_entries;
--			data.async_watermark_val = ICE_MBX_OVERFLOW_WATERMARK;
-+			if (ice_is_feature_supported(pf, ICE_F_MBX_LIMIT)) {
-+				ice_vc_process_vf_msg(pf, &event, NULL);
-+				ice_mbx_vf_dec_trig_e830(hw, &event);
-+			} else {
-+				u16 val = hw->mailboxq.num_rq_entries;
-+
-+				data.max_num_msgs_mbx = val;
-+				val = ICE_MBX_OVERFLOW_WATERMARK;
-+				data.async_watermark_val = val;
-+				data.num_msg_proc = i;
-+				data.num_pending_arq = pending;
- 
--			ice_vc_process_vf_msg(pf, &event, &data);
-+				ice_vc_process_vf_msg(pf, &event, &data);
-+			}
- 			break;
- 		case ice_aqc_opc_fw_logs_event:
- 			ice_get_fwlog_data(pf, &event);
-@@ -4084,7 +4092,11 @@ static int ice_init_pf(struct ice_pf *pf)
- 
- 	mutex_init(&pf->vfs.table_lock);
- 	hash_init(pf->vfs.table);
--	ice_mbx_init_snapshot(&pf->hw);
-+	if (ice_is_feature_supported(pf, ICE_F_MBX_LIMIT))
-+		wr32(&pf->hw, E830_MBX_PF_IN_FLIGHT_VF_MSGS_THRESH,
-+		     ICE_MBX_OVERFLOW_WATERMARK);
-+	else
-+		ice_mbx_init_snapshot(&pf->hw);
- 
- 	xa_init(&pf->dyn_ports);
- 	xa_init(&pf->sf_nums);
-diff --git a/drivers/net/ethernet/intel/ice/ice_sriov.c b/drivers/net/ethernet/intel/ice/ice_sriov.c
-index e34fe2516ccc..e7b5fe553d1f 100644
---- a/drivers/net/ethernet/intel/ice/ice_sriov.c
-+++ b/drivers/net/ethernet/intel/ice/ice_sriov.c
-@@ -194,7 +194,8 @@ void ice_free_vfs(struct ice_pf *pf)
- 		}
- 
- 		/* clear malicious info since the VF is getting released */
--		list_del(&vf->mbx_info.list_entry);
-+		if (!ice_is_feature_supported(pf, ICE_F_MBX_LIMIT))
-+			list_del(&vf->mbx_info.list_entry);
- 
- 		mutex_unlock(&vf->cfg_lock);
- 	}
-diff --git a/drivers/net/ethernet/intel/ice/ice_vf_lib.c b/drivers/net/ethernet/intel/ice/ice_vf_lib.c
-index a69e91f88d81..d618292dfe27 100644
---- a/drivers/net/ethernet/intel/ice/ice_vf_lib.c
-+++ b/drivers/net/ethernet/intel/ice/ice_vf_lib.c
-@@ -709,6 +709,23 @@ ice_vf_clear_vsi_promisc(struct ice_vf *vf, struct ice_vsi *vsi, u8 promisc_m)
- 	return 0;
- }
- 
-+/**
-+ * ice_reset_vf_mbx_cnt - reset VF mailbox message count
-+ * @vf: pointer to the VF structure
-+ *
-+ * This function clears the VF mailbox message count, and should be called on
-+ * VF reset.
-+ */
-+static void ice_reset_vf_mbx_cnt(struct ice_vf *vf)
-+{
-+	struct ice_pf *pf = vf->pf;
-+
-+	if (ice_is_feature_supported(pf, ICE_F_MBX_LIMIT))
-+		ice_mbx_vf_clear_cnt_e830(&pf->hw, vf->vf_id);
-+	else
-+		ice_mbx_clear_malvf(&vf->mbx_info);
-+}
-+
- /**
-  * ice_reset_all_vfs - reset all allocated VFs in one go
-  * @pf: pointer to the PF structure
-@@ -735,7 +752,7 @@ void ice_reset_all_vfs(struct ice_pf *pf)
- 
- 	/* clear all malicious info if the VFs are getting reset */
- 	ice_for_each_vf(pf, bkt, vf)
--		ice_mbx_clear_malvf(&vf->mbx_info);
-+		ice_reset_vf_mbx_cnt(vf);
- 
- 	/* If VFs have been disabled, there is no need to reset */
- 	if (test_and_set_bit(ICE_VF_DIS, pf->state)) {
-@@ -951,7 +968,7 @@ int ice_reset_vf(struct ice_vf *vf, u32 flags)
- 	ice_eswitch_update_repr(&vf->repr_id, vsi);
- 
- 	/* if the VF has been reset allow it to come up again */
--	ice_mbx_clear_malvf(&vf->mbx_info);
-+	ice_reset_vf_mbx_cnt(vf);
- 
- out_unlock:
- 	if (lag && lag->bonded && lag->primary &&
-@@ -1004,7 +1021,10 @@ void ice_initialize_vf_entry(struct ice_vf *vf)
- 	ice_vf_fdir_init(vf);
- 
- 	/* Initialize mailbox info for this VF */
--	ice_mbx_init_vf_info(&pf->hw, &vf->mbx_info);
-+	if (ice_is_feature_supported(pf, ICE_F_MBX_LIMIT))
-+		ice_mbx_vf_clear_cnt_e830(&pf->hw, vf->vf_id);
-+	else
-+		ice_mbx_init_vf_info(&pf->hw, &vf->mbx_info);
- 
- 	mutex_init(&vf->cfg_lock);
- }
-diff --git a/drivers/net/ethernet/intel/ice/ice_vf_mbx.c b/drivers/net/ethernet/intel/ice/ice_vf_mbx.c
-index 40cb4ba0789c..65d9c41bed21 100644
---- a/drivers/net/ethernet/intel/ice/ice_vf_mbx.c
-+++ b/drivers/net/ethernet/intel/ice/ice_vf_mbx.c
-@@ -210,6 +210,38 @@ ice_mbx_detect_malvf(struct ice_hw *hw, struct ice_mbx_vf_info *vf_info,
- 	return 0;
- }
- 
-+/**
-+ * ice_mbx_vf_dec_trig_e830 - Decrements the VF mailbox queue counter
-+ * @hw: pointer to the HW struct
-+ * @event: pointer to the control queue receive event
-+ *
-+ * This function triggers to decrement the counter
-+ * MBX_VF_IN_FLIGHT_MSGS_AT_PF_CNT when the driver replenishes
-+ * the buffers at the PF mailbox queue.
-+ */
-+void ice_mbx_vf_dec_trig_e830(const struct ice_hw *hw,
-+			      const struct ice_rq_event_info *event)
-+{
-+	const u16 vfid = le16_to_cpu(event->desc.retval);
-+
-+	wr32(hw, E830_MBX_VF_DEC_TRIG(vfid), 1);
-+}
-+
-+/**
-+ * ice_mbx_vf_clear_cnt_e830 - Clear the VF mailbox queue count
-+ * @hw: pointer to the HW struct
-+ * @vf_id: VF ID in the PF space
-+ *
-+ * This function clears the counter MBX_VF_IN_FLIGHT_MSGS_AT_PF_CNT, and should
-+ * be called when a VF is created and on VF reset.
-+ */
-+void ice_mbx_vf_clear_cnt_e830(const struct ice_hw *hw, const u16 vf_id)
-+{
-+	const u32 reg = rd32(hw, E830_MBX_VF_IN_FLIGHT_MSGS_AT_PF_CNT(vf_id));
-+
-+	wr32(hw, E830_MBX_VF_DEC_TRIG(vf_id), reg);
-+}
-+
- /**
-  * ice_mbx_vf_state_handler - Handle states of the overflow algorithm
-  * @hw: pointer to the HW struct
-diff --git a/drivers/net/ethernet/intel/ice/ice_vf_mbx.h b/drivers/net/ethernet/intel/ice/ice_vf_mbx.h
-index 44bc030d17e0..409931623222 100644
---- a/drivers/net/ethernet/intel/ice/ice_vf_mbx.h
-+++ b/drivers/net/ethernet/intel/ice/ice_vf_mbx.h
-@@ -19,6 +19,9 @@ ice_aq_send_msg_to_vf(struct ice_hw *hw, u16 vfid, u32 v_opcode, u32 v_retval,
- 		      u8 *msg, u16 msglen, struct ice_sq_cd *cd);
- 
- u32 ice_conv_link_speed_to_virtchnl(bool adv_link_support, u16 link_speed);
-+void ice_mbx_vf_dec_trig_e830(const struct ice_hw *hw,
-+			      const struct ice_rq_event_info *event);
-+void ice_mbx_vf_clear_cnt_e830(const struct ice_hw *hw, const u16 vf_id);
- int
- ice_mbx_vf_state_handler(struct ice_hw *hw, struct ice_mbx_data *mbx_data,
- 			 struct ice_mbx_vf_info *vf_info, bool *report_malvf);
-diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl.c b/drivers/net/ethernet/intel/ice/ice_virtchnl.c
-index 59f62306b9cb..3c86d0c2fe1f 100644
---- a/drivers/net/ethernet/intel/ice/ice_virtchnl.c
-+++ b/drivers/net/ethernet/intel/ice/ice_virtchnl.c
-@@ -4009,8 +4009,10 @@ ice_is_malicious_vf(struct ice_vf *vf, struct ice_mbx_data *mbxdata)
-  * @event: pointer to the AQ event
-  * @mbxdata: information used to detect VF attempting mailbox overflow
-  *
-- * called from the common asq/arq handler to
-- * process request from VF
-+ * Called from the common asq/arq handler to process request from VF. When this
-+ * flow is used for devices with hardware VF to PF message queue overflow
-+ * support (ICE_F_MBX_LIMIT) mbxdata is set to NULL and ice_is_malicious_vf
-+ * check is skipped.
-  */
- void ice_vc_process_vf_msg(struct ice_pf *pf, struct ice_rq_event_info *event,
- 			   struct ice_mbx_data *mbxdata)
-@@ -4036,7 +4038,7 @@ void ice_vc_process_vf_msg(struct ice_pf *pf, struct ice_rq_event_info *event,
- 	mutex_lock(&vf->cfg_lock);
- 
- 	/* Check if the VF is trying to overflow the mailbox */
--	if (ice_is_malicious_vf(vf, mbxdata))
-+	if (mbxdata && ice_is_malicious_vf(vf, mbxdata))
- 		goto finish;
- 
- 	/* Check if VF is disabled. */
--- 
-2.41.0
-
+Thanks Jakub Kicinski and Jacob Keller for the suggestions.
+I believe that it is a good idea to validate and ensure that the
+default queue rule is located at the lowest priority location (loc 63).
+I will go for this direction on my v2 submission.=20
