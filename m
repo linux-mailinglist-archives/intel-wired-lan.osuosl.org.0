@@ -1,96 +1,229 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7A642944869
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  1 Aug 2024 11:32:00 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 27BDB9449F7
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  1 Aug 2024 13:02:11 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 2D11240287;
-	Thu,  1 Aug 2024 09:31:59 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id A957560F41;
+	Thu,  1 Aug 2024 11:02:09 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id FGVPt6GBWoXL; Thu,  1 Aug 2024 09:31:58 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id YBj441Tx-SI8; Thu,  1 Aug 2024 11:02:08 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 0AE704051E
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B7DF860B59
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1722504717;
-	bh=ZjGXhbhjYXVOsN92nEN+LuE8al9RgeuaSTbkX9HEKvk=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1722510128;
+	bh=A8saUt7PB/Y0ToVZZk2+yvGgE5CgydNDuKqRF8pWB8A=;
+	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=6tvHqJrhRcEmnnZSYkMF4ZIaFShmd19N54oyhGEWYhk2jvU2GFFXiGirNXfPsTXS9
-	 fBOHsjPu7fitpUBsIEB3kSrPKjuY4tIlyssX42ve7yzKExPfIjkAXHK5yaP/vOethg
-	 O+29UBihIgXHatW1UlTfUHkXAFC9ICPDdFugdBl38I/MWaMoO4D9unUB1WA0mbZzYG
-	 EtZBIQwPl8sivYeGDK0iGraukANpAYfvMuhPWqpuNRTh/UUX9IUzY6ZwjvBLcUxHbC
-	 8UdOWxFLYcZ2ktkTqqMhZ3SOjQY0ITYGOp5BkqMYF8+HdGY8Tjg2cDgGNmVT/lySQc
-	 Pbt928e6LpvpQ==
+	b=tDHbvT4Yl/GEkjXpf/M0zr5mSM2Zhpyt3SU9isR4exTKw4MbZ/EXobF4gE9/7OnZN
+	 MUyEI7FL3LzXuGqcVNQdeJP5RHb58qYet4OmdDI3HLkBcN9iX0eFayKbR7YZ+U6Rvc
+	 rZAh9uRfc2tIjnp2CgrRAgveukj/XRit+ZXDoQbVIT0WWmy75PnaaQgIREoEBKdPPT
+	 kjiBIwGDvq4eoYwrBv+ZrvBjvVKEqbhGQEIl4/origDyS+0fHf0fAJEg1J2VKZ9YM+
+	 IM71/4OEtl8JmeVKd2noQ/5RwWwOcIKrAEolfYK6t32UTkcZzIf2f0ynPwnvyX1GMK
+	 uGsEtXj/xSqPA==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 0AE704051E;
-	Thu,  1 Aug 2024 09:31:57 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id B7DF860B59;
+	Thu,  1 Aug 2024 11:02:08 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 4C2821BF41F
- for <intel-wired-lan@lists.osuosl.org>; Thu,  1 Aug 2024 09:31:53 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 1B1431BF403
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  1 Aug 2024 11:02:06 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 3892F4025E
- for <intel-wired-lan@lists.osuosl.org>; Thu,  1 Aug 2024 09:31:53 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 14ADE606CA
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  1 Aug 2024 11:02:06 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id TD1yDau1zHaT for <intel-wired-lan@lists.osuosl.org>;
- Thu,  1 Aug 2024 09:31:51 +0000 (UTC)
-Received-SPF: None (mailfrom) identity=mailfrom; client-ip=192.198.163.13;
- helo=mgamail.intel.com; envelope-from=michal.swiatkowski@linux.intel.com;
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id AbpUtYhJpSbf for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  1 Aug 2024 11:02:05 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.17;
+ helo=mgamail.intel.com; envelope-from=wojciech.drewek@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 22CBE40287
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 22CBE40287
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.13])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 22CBE40287
- for <intel-wired-lan@lists.osuosl.org>; Thu,  1 Aug 2024 09:31:51 +0000 (UTC)
-X-CSE-ConnectionGUID: Bxu8Moz/Qcijh1bUWcixVg==
-X-CSE-MsgGUID: WTDf2yKtT3GfA9uPUTFPGQ==
-X-IronPort-AV: E=McAfee;i="6700,10204,11150"; a="23363472"
-X-IronPort-AV: E=Sophos;i="6.09,254,1716274800"; d="scan'208";a="23363472"
-Received: from fmviesa004.fm.intel.com ([10.60.135.144])
- by fmvoesa107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 01 Aug 2024 02:31:40 -0700
-X-CSE-ConnectionGUID: mtyFmgJQQ8iNVmUK9B9laQ==
-X-CSE-MsgGUID: GCXziZTNQmKqSAYth9zX0g==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 2872F60608
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2872F60608
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.17])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 2872F60608
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  1 Aug 2024 11:02:04 +0000 (UTC)
+X-CSE-ConnectionGUID: 0PYUv2tlS9uoTC1usmTKAg==
+X-CSE-MsgGUID: b8nzwonoSAGyQ3hdiaOcUw==
+X-IronPort-AV: E=McAfee;i="6700,10204,11150"; a="20342853"
+X-IronPort-AV: E=Sophos;i="6.09,254,1716274800"; d="scan'208";a="20342853"
+Received: from orviesa005.jf.intel.com ([10.64.159.145])
+ by fmvoesa111.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 01 Aug 2024 04:02:04 -0700
+X-CSE-ConnectionGUID: sPuEXqImScytkAS7j6TRcA==
+X-CSE-MsgGUID: fOWYrYbGToKO2MN/6pjCKQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.09,254,1716274800"; d="scan'208";a="59628261"
-Received: from gk3153-dr2-r750-36946.igk.intel.com ([10.102.20.192])
- by fmviesa004.fm.intel.com with ESMTP; 01 Aug 2024 02:31:36 -0700
-From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Thu,  1 Aug 2024 11:31:15 +0200
-Message-ID: <20240801093115.8553-8-michal.swiatkowski@linux.intel.com>
-X-Mailer: git-send-email 2.42.0
-In-Reply-To: <20240801093115.8553-1-michal.swiatkowski@linux.intel.com>
-References: <20240801093115.8553-1-michal.swiatkowski@linux.intel.com>
+X-IronPort-AV: E=Sophos;i="6.09,254,1716274800"; d="scan'208";a="59813272"
+Received: from fmsmsx603.amr.corp.intel.com ([10.18.126.83])
+ by orviesa005.jf.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
+ 01 Aug 2024 04:02:03 -0700
+Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
+ fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.39; Thu, 1 Aug 2024 04:02:02 -0700
+Received: from FMSEDG603.ED.cps.intel.com (10.1.192.133) by
+ fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.39 via Frontend Transport; Thu, 1 Aug 2024 04:02:02 -0700
+Received: from NAM02-BN1-obe.outbound.protection.outlook.com (104.47.51.43) by
+ edgegateway.intel.com (192.55.55.68) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.39; Thu, 1 Aug 2024 04:02:02 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=IJrV8qxgl6gpJVNuF+AjXX/egpY+VqWVt/XOYTIVxMMqHGeOJeJD7mM0JnAar09cHR57hWSOa2LLNhwhcWmGZsRnhmKGJwVKXXqzU8iwj+Gn/7Hv+4Mui2TktkTG9NAYMvPDiGVCWVPawV8B7BBAUMXFlQO+7szSf0iXg/rK94+eyHXO3yzP3aGsBe6dxOeRgXlLaegkZq7651Uq9L37uUE2YaYCejlVvJv0FGJNAaX7WVpFk1Hasf6fyEnfyA+XkdYih9WMoEybL+F3VtuvtKsePfoQHzqvzx9z6Gn23GWDIb0R6bE5ROZJvDGjldPEB5q1DAQURNnflPw2/qzq4g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=A8saUt7PB/Y0ToVZZk2+yvGgE5CgydNDuKqRF8pWB8A=;
+ b=aRgYyl8Z3l2lS4pg75HMCjHotvDYpAdBGSb9SDda5v3D9hATESJFHvUbVi9ankxzbgG4ZUWenl5Yb8h+a7PY6hw0H4RkcYRPVHIoCWM7G7BOuIKnF48gN229xhXX0pw0jmzGv4kAJMrt5L53Jqw8hT79y8ZHmsMaRlKSOGxZ12DrdxQ2cekmcbUn2VrCBGSdWSk4quStNmhPvbMFTOzLw0ZRWxfeYCK+xEjoNsbepqI5YFWnYfOC3r+1eK8F0jPRlQ9hXj+JGvf/HNhnpCwjnXMZOfEHSNmAzQL/45cN2u3InjMwAykeXtUlqytNPgM515D802LRY+hshIUcqkaUGg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from MW4PR11MB5776.namprd11.prod.outlook.com (2603:10b6:303:183::9)
+ by SA2PR11MB4859.namprd11.prod.outlook.com (2603:10b6:806:f8::7) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7828.21; Thu, 1 Aug
+ 2024 11:02:00 +0000
+Received: from MW4PR11MB5776.namprd11.prod.outlook.com
+ ([fe80::4bea:b8f6:b86f:6942]) by MW4PR11MB5776.namprd11.prod.outlook.com
+ ([fe80::4bea:b8f6:b86f:6942%6]) with mapi id 15.20.7807.026; Thu, 1 Aug 2024
+ 11:02:00 +0000
+Message-ID: <616bd069-51a0-4b05-96af-2d419961e0e5@intel.com>
+Date: Thu, 1 Aug 2024 13:01:52 +0200
+User-Agent: Mozilla Thunderbird
+To: Jakub Kicinski <kuba@kernel.org>, "Keller, Jacob E"
+ <jacob.e.keller@intel.com>
+References: <20240730105121.78985-1-wojciech.drewek@intel.com>
+ <20240730065835.191bd1de@kernel.org>
+ <c0213cae-5e63-4fd7-81e7-37803806bde4@intel.com>
+ <20240731164716.63f3b5b7@kernel.org>
+Content-Language: en-US
+From: Wojciech Drewek <wojciech.drewek@intel.com>
+In-Reply-To: <20240731164716.63f3b5b7@kernel.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+X-ClientProxiedBy: ZRAP278CA0010.CHEP278.PROD.OUTLOOK.COM
+ (2603:10a6:910:10::20) To MW4PR11MB5776.namprd11.prod.outlook.com
+ (2603:10b6:303:183::9)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: MW4PR11MB5776:EE_|SA2PR11MB4859:EE_
+X-MS-Office365-Filtering-Correlation-Id: 23dd7765-7720-49b6-ac8e-08dcb2195dca
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|376014|366016;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?NU5md2ZGeEl6S01WU2hiU09UN0xYeTNvQ2ZGL0VCczFtVFlnRk9RbUlTTXFv?=
+ =?utf-8?B?bUpIcFQrekxnMEtBdHVUdmVnNTE4bE14Zmx3VVVaMHN5YlRLNFBkQVU2cG5P?=
+ =?utf-8?B?RE5UUjNOcW1VUU9aR3d6SWVNN25rS3BsMzdhMnFmZ29ONTRVM1Nkai8za01u?=
+ =?utf-8?B?YkpLVmVkOXo2TmpBaE9xSndVZ1lhZ3plTmc3QUw2UzFqWUV1cTRKM24zb05S?=
+ =?utf-8?B?ZUsvMWtJTERDNEdQdkFpVHBXVVNsc0tHQUx0bUhJdi9MU1F1VVN1ejBiTmNZ?=
+ =?utf-8?B?QzJRVXd4cm83VjZEcmQzMXNXbVdmNEZtUi81NE5jQVU5aTdaT09UM3ExbktS?=
+ =?utf-8?B?cnZDWXQ1SkFBbEFWVUQ1VmlkMzJFUzFOVnZtTkRVcjIwVm1sWVlEakdjQ25I?=
+ =?utf-8?B?OGxMVmpmZUI5M2FyUnJXZmtUY2F3Tmx5alRVRGkvTTZXVFQ4OXkvckVSYWg1?=
+ =?utf-8?B?VFpqMEs0ci9rVjFxY3UzTm9OUW9ZU2lDNzVVektoSGx1K0t0OHp4T2xLMmZs?=
+ =?utf-8?B?QVp5SHJFSHduU2dEUGFXRFoyNVF2c3djR2UvMWhzalc1eEdFQVBJTWlhRkdp?=
+ =?utf-8?B?YlVGSTdpTU5adUZ3cHlnMiszMHBuUzlaV2loVGNCNGxwcStPVFpTNnl6YkM3?=
+ =?utf-8?B?dm1WRng4WHZ3VXFJamhtRU5FbXNnOXcwWTN4TDVoR0htdEhGTXdNMWtqVVhO?=
+ =?utf-8?B?MUxIREs2cExDYlpucVM5OU5obE5jVFdVV1BWbHVKbll4VytHUWllZUtIbjNa?=
+ =?utf-8?B?Y29aRTdwRVZtUnNTWHEwcFFrSTdaZy9pWGx6bW1leTR2akxCa3pmUGdXN0FY?=
+ =?utf-8?B?OGdZUHVlR0lMTVRBek5rUElUc0tIeG52c20vUU5zSkIxcHplWUh1WnltTHUr?=
+ =?utf-8?B?SlRBSk9rNWRXbmxEMmkzTWl5UFo0Z1JYZEphZTVaaEdEUkZ6L0ZUcE93Wmlk?=
+ =?utf-8?B?NFArMmxFSXJlSGxMKzJzZjlTZzUzSkQ5RFB6dittTFhZc01lM0ZiM29SY0RJ?=
+ =?utf-8?B?VU5OdDlmbzkxb0o5eWl0NG9PQXVyRmxyUlZYS0k5NHlSWEN5dmtpYWI0MFhM?=
+ =?utf-8?B?NXBLaWNYcTJ1M0lKZmpGUTRRalcveThwNzIzdWFRNFA5bzV6WHpQMGZpNnR3?=
+ =?utf-8?B?Tm0wRituQzZjd0xHSG1uLys5SWlxL3RyRVJGdWdSQ1psa2ZlakpkcURGbnow?=
+ =?utf-8?B?c0pRdmNpR1h0dVZuMkNnbEVNTE5jaEZuSTcwQWZsd3dJSzNDaDFjeGdTQjZN?=
+ =?utf-8?B?VG9vdm5JUmwvOFl5RWxOeU5rYTMxOWxQMVJOWE1SNGdRZlhNTnhJZXhZajFh?=
+ =?utf-8?B?L3ZCMU5oa0wzR1ZKNVRyY2lJVXJJTE1aclkrWm02WXBLL0VYeGhPc0ZaMmRi?=
+ =?utf-8?B?MWV4bXBjNS9YU0NLNERiL0FhUGdXN1dOck85VC9sT045RjZmK0RjTEUwUkRz?=
+ =?utf-8?B?dmZsNVBVbkxSN1BCUlBjYUtrZGNadmppVUkvMGZRRFBHS1hWNmpKakJ1V2JX?=
+ =?utf-8?B?NFhpWnlJZHdWallMY3IzTFlsaVVJU2hXaTM0L2FnUnNOaU5BVUpwOUg1d3Bm?=
+ =?utf-8?B?QXo1WjFGcTloY2NtNDJqMDF4SldPcE52b1dVOC9XZGMrOUYwUkdOUDdmcTh2?=
+ =?utf-8?B?OG5GcW02cGVmWFlOV1pWYkptcnZ3ZUwrbjB6Wk9PZWdWeVUybTR1UndwNzdV?=
+ =?utf-8?B?Rm9yWVUycUR5UEh3UC9lWDExTDJMcW05Y1h3TkZZbVpNTERYMERuT2RtRTMw?=
+ =?utf-8?B?WXU0eTR2OWIycE9Ick1QY0dieVpTVHMvNm1YZ0FlWENjdENOdSszUHNnUndi?=
+ =?utf-8?B?cTJDRGVvdUprdnQrZEdKdz09?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:MW4PR11MB5776.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(1800799024)(376014)(366016); DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?QXBkSUNwWEVqTjN3dmx0RjZuc1p5NlBKMFJ6UW8zS0s0bEpob1hGUzF6MWhv?=
+ =?utf-8?B?czRPR25qTEU1eVA5SjNnZnA1Y0hiZWFZTUh6UUh5M1lBdExSMXpDRnlzeDYr?=
+ =?utf-8?B?Z056VngxOS8xN3l6dk0xMFgvSUdmbGp6azcreVAzL3lIUlhzVGhzUmhPVmdw?=
+ =?utf-8?B?eUFWVHBveDk0c284VG5DMHZzMGtFVXFxNjFUQXJPbG15WkcyMU1qU2c5QStt?=
+ =?utf-8?B?bThvN1lJWjlIZWxRNVViQ1hzU1BzYStZTnhvdW9jRVgvTzhseEtra1c5MG1L?=
+ =?utf-8?B?ZW9DUS9VanpXWmIzanMrRTI2YjFpRXdMNm8reHdCRXh3OTBzRVFuMzZKdWt2?=
+ =?utf-8?B?VFdKMlFCMUUxUEd0QVZKK2ZLMnQyc2FwM2pLNEtoS3lhbjFhaDZycUxtSjhF?=
+ =?utf-8?B?ZUM2M2pzV2J6U01FRWdpay9aSFVTdk00Tzlpek4yNitObkF4bmR2UVJ0cHd0?=
+ =?utf-8?B?Q0VjeThBaEYxYjQ2L3dhdTg1YUg1VU40ZmVaQnlydDB2a1RPUnlPTTlEeHJG?=
+ =?utf-8?B?bWE0UE1tOFB1eUdxVS9FcTJFbFpDUWFxZXZPODVITDE4M0Y4VXdGSGVWdUho?=
+ =?utf-8?B?Qm1qU1NtalFucFNQWmcxOXhxZ0MvSWFjL3NjRkJMd2xKM1M3YndHMFpJSEpt?=
+ =?utf-8?B?VUszek8xNHpuYkpJQXZiUkdFc0lFM2dsaDVFYlJ6aVRUL01pVFN0a0wzdlZB?=
+ =?utf-8?B?Q0V2WDNSNjVzV1NnMGd0RjBBaklRV0haQlBIazdDd2JVVE9CdGlRSHpkdXVo?=
+ =?utf-8?B?ZmxWcnVPR0pMN3hrc1o0MytQNFJNZmZNcU9EbC82WHczS3gremdnUUkxMjZR?=
+ =?utf-8?B?aDhjVUtsSnVWN1EzYUIwUXgyYzFrRVlhWkhCa1hzY0c5Rkgwc2ZlQ2IwaW4r?=
+ =?utf-8?B?ZE5mVDFtcHErWGp6NERCWGs5LzNsMlgxc0pMUHJJZVRkcXpMT081NHg3REJx?=
+ =?utf-8?B?djVPc3Y4UCszN0pJcnhFZzFBZmRzeFpaYjNXUUtxeVpTTGVXQVk5MUFScHF5?=
+ =?utf-8?B?eVVFem4yNE10WkJaak52Rmh2YnFqV0ZMN2RnOXBXSDJKNnZ4RWRQUXNxaWEy?=
+ =?utf-8?B?OFVSTHQ3djVhR21YODZvSWJmSkxWSzE4L2x6WURDWXpmNE9MOWt6am1rZzR6?=
+ =?utf-8?B?dFB1YWhGNDVpaS9ENnF0WXk2T0JudVhYdDVjNmsrMEJFNVltS0lFV256NHQy?=
+ =?utf-8?B?S3VWMk9MMGJya3FKZkY3Vi90M05ndHpldlJCQ3l6anp3Y2R0dnI2MysxMExG?=
+ =?utf-8?B?VFZhZkEwbmZSbEREL3d4djl6UVdiUmhtajVWK3R3M28zelJhYUQ2MXNTU1Bz?=
+ =?utf-8?B?bTN5K3F2dVNNUlZyeEdxNndCR3pTbG9sNjBFOWs5SkR6TjM2T2Mwamw5TEo5?=
+ =?utf-8?B?Z3BURWdYeXgvZ3F6Y3M2UFJvSEk2NHFRMGd0R0sxVExhTlFXbXkzbXZhSDVX?=
+ =?utf-8?B?RndUWEdKQ0w2MGtXM3l3UEtzNDdwS1o5NDdoaFNrTGFjdE5RRE5nYUlzUXd3?=
+ =?utf-8?B?VnluR1BmYmJjUDVsNTZyUXN4MVY2WGE1VzVodkZCMkV4M3VTZVNlOUx5KzZ2?=
+ =?utf-8?B?U2tDTmI4bzQzd21aSlduK080a09LbzNWcTdGUFlhY3NIZlh6Nk43TGRzMXFl?=
+ =?utf-8?B?Z3gvS0ZhQmhpVCtjemliWnFOZ0VZTVNkQko5NTJKWVlnYjdOaXUxaFBwZkgx?=
+ =?utf-8?B?Z0VFaHhweENIZ0FBblllZzVocEV4Q1QwWG5SeGVCaWpzSmFHdEYxQXBmR2J2?=
+ =?utf-8?B?QURrZVUrbFczWWJZdXR0U0xVRzBuSVgvY2M4NzRMNzdEK0s2YTBIbjEwcjRt?=
+ =?utf-8?B?S3FxRXh3a3RkN1NqZmRHazIxM3hQOEg2YVVrSlh5OTY5RnRnSlJKWW9DRFpV?=
+ =?utf-8?B?RkEzQ3B4TW5OblZQc2QxY3hibkZwR1RVbVJPWmFxUU9UT0NTTnpVcTZ2bjVR?=
+ =?utf-8?B?aVZPK0Q3VXBvTG16WjhQeEtuTEtIK053dkNOeXZBSUtQdW1KYW1lQkU5ZWRN?=
+ =?utf-8?B?M2oyajA1eTBTTGR6TkxrdXJ2NUM5WXlrcCtNS0RpanZ2MjBWUVBrWnVGaWNo?=
+ =?utf-8?B?ZmVNSHBhR2lkTFhDOURFTXV6WklFcjZnNWNRZTEyVnVnOE1DekRuRkdWeDds?=
+ =?utf-8?B?L2pqMkZEeGJEUTN0TlFCODZERGtMcmhTajBZMk92aWgxZk04Y3h0UlRVZ0s0?=
+ =?utf-8?B?Y3c9PQ==?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: 23dd7765-7720-49b6-ac8e-08dcb2195dca
+X-MS-Exchange-CrossTenant-AuthSource: MW4PR11MB5776.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 01 Aug 2024 11:01:59.9733 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: LN+u90Jbh1lLBy+kw2BnKBYzvaSU+V43mMXW8wYPjUnTQWJz5RL/kwUTLGtbJRrU/xqLZpuFVS9CEpu2jKp5Gp79JvDHu8WdEjRJtaQKhOQ=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA2PR11MB4859
+X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1722504711; x=1754040711;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=xdtIkCNRNUKerBqxCsYNfZV8VvyQ4Q4RpS7dY9jS2z4=;
- b=mRokxfhuH0BKXvWOwJI74MUOi1qC8UhXvwuAWza8U4A7HXwYsBIBTJ95
- 8VXGmDdNCGgofeF3ldTTpyE551iiXoiaIfRHkRakI/WT5dGbGYMUQh8D1
- FNpFubCkSbPf4O6pc18b7R69H4L8+uUPiRe/1tADmaTtq1x7ppsYM6K1f
- dN/V2KPNzKoOsAtgTgUSVBckdzsjf7kvarfbRKx8uCibE8PB3wwQf8i7j
- H6v+cAgrjTOKc58wf98uMUSBeBSIdSqZZoyXN49RsN3WjBtkGXIFrMl8g
- vhG67hOdYhrw7u12EL6AEP7FTg7RdvsxGOigjZbW4gxjKPY+BKWEQsOtV
- g==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=linux.intel.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=mRokxfhu
-Subject: [Intel-wired-lan] [iwl-next v2 7/7] ice: simplify VF MSI-X managing
+ t=1722510125; x=1754046125;
+ h=message-id:date:subject:to:cc:references:from:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=8BWo9gl45AaCHhueR+udn9TwUrdILgCVEGLfw8tm77c=;
+ b=oIm4LbWp11pUSKvG02Qg+qcQOQkmW1C+BL+kq4Y/q9PR1MvYcAHuUDS4
+ iXaIH2DeH4YpRk/0JrUOM1XzfkjuuFQxGaU1V2qMrCJMyygwipfTo2su6
+ TDbGBgO44cIdI0lRHtHTVPtV8FqwkOchw9sJUtFQHOPd29GfjjAW396Jl
+ mLMicQbHP1tlpK62k0kXeDAwP7A5nWlzH0h+IJOqEEt1hFtpvW+vm9sTL
+ kOaMEgvKMg6craPVZuGRByfck3J4lB+cDTBr2isFthDPjpsZLhWIV4XAy
+ fm5yUjRZFJfPQ3qajM9lzi8Mi6w90j/Tl77kB8HpfFfP1A+8M97xk2wQU
+ A==;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=intel.com
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=oIm4LbWp
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next] ice: Implement ethtool reset
+ support
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -103,511 +236,88 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: wojciech.drewek@intel.com, marcin.szycik@intel.com, netdev@vger.kernel.org,
- konrad.knitter@intel.com, pawel.chmielewski@intel.com,
- nex.sw.ncis.nat.hpm.dev@intel.com, pio.raczynski@gmail.com,
- sridhar.samudrala@intel.com, jacob.e.keller@intel.com, jiri@resnulli.us,
- przemyslaw.kitszel@intel.com
+Cc: "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ "edumazet@google.com" <edumazet@google.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "simon.horman@corigine.com" <simon.horman@corigine.com>, "Nguyen,
+ Anthony L" <anthony.l.nguyen@intel.com>,
+ "pabeni@redhat.com" <pabeni@redhat.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-After implementing pf->msix.max field, base vector for other use cases
-(like VFs) can be fixed. This simplify code when changing MSI-X amount
-on particular VF, because there is no need to move a base vector.
 
-A fixed base vector allows to reserve vectors from the beginning
-instead of from the end, which is also simpler in code.
 
-Store total and rest value in the same struct as max and min for PF.
-Move tracking vectors from ice_sriov.c to ice_irq.c as it can be also
-use for other none PF use cases (SIOV).
+On 01.08.2024 01:47, Jakub Kicinski wrote:
+> On Wed, 31 Jul 2024 14:08:20 +0200 Wojciech Drewek wrote:
+>> Quick summary our reset types:
+>> PF reset reinitialize the resources/data path for PF and its VFs.
+>> It has no impact on other PF/VFs.
+>> Core Reset reinitialize all functions and shared parts of the
+>> device except PHY/MAC units, EMP and PCI Interface.
+>> Global Reset is Core Reset + PHY/MAC units reset (including External PHY)
+>> Because Global Reset is a extended Core it makes sense to map it to all.
+>> PF reset mapping makes sense to me since it is dedicated to a single physical function.
+> 
+> On Wed, 31 Jul 2024 09:48:07 -0700 Jacob Keller wrote:
+>> PF reset only affects the single PCI function, and does not affect the
+>> whole adapter. I don't know how it relates to PCIe resets precisely.
+>>
+>> CORE reset affects the whole adapter, and the other functions are
+>> notified of the impending reset via their miscellaneous interrupt vector
+>> in combination with some hardware registers.
+>>
+>> GLOBAL reset is similar to the CORE reset, (in that it affects the
+>> entire device), but it is more invasive in the hardware. I cannot
+>> remember offhand the differences between CORE and GLOBAL.
+>>
+>> There is also an EMP reset, which is the only reset that completely
+>> reloads the EMP firmware. It is currently used by the device flash
+>> update logic, via devlink reload and is only available if the new
+>> firmware image can be reloaded without issue. (Reloading when the new
+>> firmware could impact PCIe config space is likely to produce undesirable
+>> behavior because the PCIe config space is not reloaded except by power
+>> cycling, so you end up with some weird mismatches.)
+> 
+> Note that the reset is controlled using individual bits which can be
+> combined:
+> 
+> 	ETH_RESET_MGMT		= 1 << 0,	/* Management processor */
+> 	ETH_RESET_IRQ		= 1 << 1,	/* Interrupt requester */
+> 	ETH_RESET_DMA		= 1 << 2,	/* DMA engine */
+> 	ETH_RESET_FILTER	= 1 << 3,	/* Filtering/flow direction */
+> 	ETH_RESET_OFFLOAD	= 1 << 4,	/* Protocol offload */
+> 	ETH_RESET_MAC		= 1 << 5,	/* Media access controller */
+> 	ETH_RESET_PHY		= 1 << 6,	/* Transceiver/PHY */
+> 	ETH_RESET_RAM		= 1 << 7,	/* RAM shared between
+> 						 * multiple components */
+> 	ETH_RESET_AP		= 1 << 8,	/* Application processor */
+> 
+> 	ETH_RESET_DEDICATED	= 0x0000ffff,	/* All components dedicated to
+> 						 * this interface */
+> 	ETH_RESET_ALL		= 0xffffffff,	/* All components used by this
+> 						 * interface, even if shared */
+> 
+> Note that ethtool CLI defines "shared" version of all bits as bits
+> shifted up by 16. And it is forward compatible (accepts raw "flags")
+> if we need to define new bits.
+> 
+> I guess in your case EMP == MGMT? So if these resets don't reset EMP
+> I presume we shouldn't use any option that includes MGMT..
+> 
+> Could you express your resets in the correct combination of these bits
+> instead of picking a single one?
+> 
 
-Signed-off-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
----
- drivers/net/ethernet/intel/ice/ice.h       |  10 +-
- drivers/net/ethernet/intel/ice/ice_irq.c   |  75 +++++++---
- drivers/net/ethernet/intel/ice/ice_irq.h   |  13 +-
- drivers/net/ethernet/intel/ice/ice_sriov.c | 153 ++-------------------
- 4 files changed, 78 insertions(+), 173 deletions(-)
+We've came up with below mapping:
 
-diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
-index 1311be1d2c30..bdfee134c685 100644
---- a/drivers/net/ethernet/intel/ice/ice.h
-+++ b/drivers/net/ethernet/intel/ice/ice.h
-@@ -546,6 +546,8 @@ struct ice_pf_msix {
- 	u16 cur;
- 	u16 min;
- 	u16 max;
-+	u16 total;
-+	u16 rest;
- };
- 
- struct ice_pf {
-@@ -562,13 +564,7 @@ struct ice_pf {
- 	/* OS reserved IRQ details */
- 	struct msix_entry *msix_entries;
- 	struct ice_irq_tracker irq_tracker;
--	/* First MSIX vector used by SR-IOV VFs. Calculated by subtracting the
--	 * number of MSIX vectors needed for all SR-IOV VFs from the number of
--	 * MSIX vectors allowed on this PF.
--	 */
--	u16 sriov_base_vector;
--	unsigned long *sriov_irq_bm;	/* bitmap to track irq usage */
--	u16 sriov_irq_size;		/* size of the irq_bm bitmap */
-+	struct ice_virt_irq_tracker virt_irq_tracker;
- 
- 	u16 ctrl_vsi_idx;		/* control VSI index in pf->vsi array */
- 
-diff --git a/drivers/net/ethernet/intel/ice/ice_irq.c b/drivers/net/ethernet/intel/ice/ice_irq.c
-index 10caacaae804..61977876c943 100644
---- a/drivers/net/ethernet/intel/ice/ice_irq.c
-+++ b/drivers/net/ethernet/intel/ice/ice_irq.c
-@@ -20,6 +20,19 @@ ice_init_irq_tracker(struct ice_pf *pf, unsigned int max_vectors,
- 	xa_init_flags(&pf->irq_tracker.entries, XA_FLAGS_ALLOC);
- }
- 
-+static int
-+ice_init_virt_irq_tracker(struct ice_pf *pf, u16 base, u16 num_entries)
-+{
-+	pf->virt_irq_tracker.bm = bitmap_zalloc(num_entries, GFP_KERNEL);
-+	if (!pf->virt_irq_tracker.bm)
-+		return -ENOMEM;
-+
-+	pf->virt_irq_tracker.num_entries = num_entries;
-+	pf->virt_irq_tracker.base = base;
-+
-+	return 0;
-+}
-+
- /**
-  * ice_deinit_irq_tracker - free xarray tracker
-  * @pf: board private structure
-@@ -29,6 +42,11 @@ static void ice_deinit_irq_tracker(struct ice_pf *pf)
- 	xa_destroy(&pf->irq_tracker.entries);
- }
- 
-+static void ice_deinit_virt_irq_tracker(struct ice_pf *pf)
-+{
-+	bitmap_free(pf->virt_irq_tracker.bm);
-+}
-+
- /**
-  * ice_free_irq_res - free a block of resources
-  * @pf: board private structure
-@@ -93,6 +111,7 @@ void ice_clear_interrupt_scheme(struct ice_pf *pf)
- {
- 	pci_free_irq_vectors(pf->pdev);
- 	ice_deinit_irq_tracker(pf);
-+	ice_deinit_virt_irq_tracker(pf);
- }
- 
- /**
-@@ -116,6 +135,9 @@ int ice_init_interrupt_scheme(struct ice_pf *pf)
- 					      &value);
- 	pf->msix.max = err ? total_vectors / 2 : value.vu16;
- 
-+	pf->msix.total = total_vectors;
-+	pf->msix.rest = total_vectors - pf->msix.max;
-+
- 	if (pci_msix_can_alloc_dyn(pf->pdev))
- 		vectors = pf->msix.min;
- 	else
-@@ -128,7 +150,7 @@ int ice_init_interrupt_scheme(struct ice_pf *pf)
- 
- 	ice_init_irq_tracker(pf, pf->msix.max, vectors);
- 
--	return 0;
-+	return ice_init_virt_irq_tracker(pf, pf->msix.max, pf->msix.rest);
- }
- 
- /**
-@@ -155,7 +177,6 @@ int ice_init_interrupt_scheme(struct ice_pf *pf)
-  */
- struct msi_map ice_alloc_irq(struct ice_pf *pf, bool dyn_allowed)
- {
--	int sriov_base_vector = pf->sriov_base_vector;
- 	struct msi_map map = { .index = -ENOENT };
- 	struct device *dev = ice_pf_to_dev(pf);
- 	struct ice_irq_entry *entry;
-@@ -164,10 +185,6 @@ struct msi_map ice_alloc_irq(struct ice_pf *pf, bool dyn_allowed)
- 	if (!entry)
- 		return map;
- 
--	/* fail if we're about to violate SRIOV vectors space */
--	if (sriov_base_vector && entry->index >= sriov_base_vector)
--		goto exit_free_res;
--
- 	if (pci_msix_can_alloc_dyn(pf->pdev) && entry->dynamic) {
- 		map = pci_msix_alloc_irq_at(pf->pdev, entry->index, NULL);
- 		if (map.index < 0)
-@@ -215,26 +232,40 @@ void ice_free_irq(struct ice_pf *pf, struct msi_map map)
- }
- 
- /**
-- * ice_get_max_used_msix_vector - Get the max used interrupt vector
-- * @pf: board private structure
-+ * ice_virt_get_irqs - get irqs for SR-IOV usacase
-+ * @pf: pointer to PF structure
-+ * @needed: number of irqs to get
-  *
-- * Return index of maximum used interrupt vectors with respect to the
-- * beginning of the MSIX table. Take into account that some interrupts
-- * may have been dynamically allocated after MSIX was initially enabled.
-+ * This returns the first MSI-X vector index in PF space that is used by this
-+ * VF. This index is used when accessing PF relative registers such as
-+ * GLINT_VECT2FUNC and GLINT_DYN_CTL.
-+ * This will always be the OICR index in the AVF driver so any functionality
-+ * using vf->first_vector_idx for queue configuration_id: id of VF which will
-+ * use this irqs
-  */
--int ice_get_max_used_msix_vector(struct ice_pf *pf)
-+int ice_virt_get_irqs(struct ice_pf *pf, u16 needed)
- {
--	unsigned long start, index, max_idx;
--	void *entry;
-+	int res = bitmap_find_next_zero_area(pf->virt_irq_tracker.bm,
-+					     pf->virt_irq_tracker.num_entries,
-+					     0, needed, 0);
- 
--	/* Treat all preallocated interrupts as used */
--	start = pf->irq_tracker.num_static;
--	max_idx = start - 1;
-+	if (res >= pf->virt_irq_tracker.num_entries)
-+		return -ENOENT;
- 
--	xa_for_each_start(&pf->irq_tracker.entries, index, entry, start) {
--		if (index > max_idx)
--			max_idx = index;
--	}
-+	bitmap_set(pf->virt_irq_tracker.bm, res, needed);
- 
--	return max_idx;
-+	/* conversion from number in bitmap to global irq index */
-+	return res + pf->virt_irq_tracker.base;
-+}
-+
-+/**
-+ * ice_virt_free_irqs - free irqs used by the VF
-+ * @pf: pointer to PF structure
-+ * @index: first index to be free
-+ * @irqs: number of irqs to free
-+ */
-+void ice_virt_free_irqs(struct ice_pf *pf, u16 index, u16 irqs)
-+{
-+	bitmap_clear(pf->virt_irq_tracker.bm, index - pf->virt_irq_tracker.base,
-+		     irqs);
- }
-diff --git a/drivers/net/ethernet/intel/ice/ice_irq.h b/drivers/net/ethernet/intel/ice/ice_irq.h
-index f35efc08575e..d5e0fdd9b535 100644
---- a/drivers/net/ethernet/intel/ice/ice_irq.h
-+++ b/drivers/net/ethernet/intel/ice/ice_irq.h
-@@ -15,11 +15,22 @@ struct ice_irq_tracker {
- 	u16 num_static;	/* preallocated entries */
- };
- 
-+struct ice_virt_irq_tracker {
-+	unsigned long *bm;	/* bitmap to track irq usage */
-+	u16 num_entries;
-+	/* First MSIX vector used by SR-IOV VFs. Calculated by subtracting the
-+	 * number of MSIX vectors needed for all SR-IOV VFs from the number of
-+	 * MSIX vectors allowed on this PF.
-+	 */
-+	u16 base;
-+};
-+
- int ice_init_interrupt_scheme(struct ice_pf *pf);
- void ice_clear_interrupt_scheme(struct ice_pf *pf);
- 
- struct msi_map ice_alloc_irq(struct ice_pf *pf, bool dyn_only);
- void ice_free_irq(struct ice_pf *pf, struct msi_map map);
--int ice_get_max_used_msix_vector(struct ice_pf *pf);
- 
-+int ice_virt_get_irqs(struct ice_pf *pf, u16 needed);
-+void ice_virt_free_irqs(struct ice_pf *pf, u16 index, u16 irqs);
- #endif
-diff --git a/drivers/net/ethernet/intel/ice/ice_sriov.c b/drivers/net/ethernet/intel/ice/ice_sriov.c
-index e34fe2516ccc..865421b8ed83 100644
---- a/drivers/net/ethernet/intel/ice/ice_sriov.c
-+++ b/drivers/net/ethernet/intel/ice/ice_sriov.c
-@@ -122,27 +122,6 @@ static void ice_dis_vf_mappings(struct ice_vf *vf)
- 		dev_err(dev, "Scattered mode for VF Rx queues is not yet implemented\n");
- }
- 
--/**
-- * ice_sriov_free_msix_res - Reset/free any used MSIX resources
-- * @pf: pointer to the PF structure
-- *
-- * Since no MSIX entries are taken from the pf->irq_tracker then just clear
-- * the pf->sriov_base_vector.
-- *
-- * Returns 0 on success, and -EINVAL on error.
-- */
--static int ice_sriov_free_msix_res(struct ice_pf *pf)
--{
--	if (!pf)
--		return -EINVAL;
--
--	bitmap_free(pf->sriov_irq_bm);
--	pf->sriov_irq_size = 0;
--	pf->sriov_base_vector = 0;
--
--	return 0;
--}
--
- /**
-  * ice_free_vfs - Free all VFs
-  * @pf: pointer to the PF structure
-@@ -177,6 +156,7 @@ void ice_free_vfs(struct ice_pf *pf)
- 
- 		ice_eswitch_detach_vf(pf, vf);
- 		ice_dis_vf_qs(vf);
-+		ice_virt_free_irqs(pf, vf->first_vector_idx, vf->num_msix);
- 
- 		if (test_bit(ICE_VF_STATE_INIT, vf->vf_states)) {
- 			/* disable VF qp mappings and set VF disable state */
-@@ -199,9 +179,6 @@ void ice_free_vfs(struct ice_pf *pf)
- 		mutex_unlock(&vf->cfg_lock);
- 	}
- 
--	if (ice_sriov_free_msix_res(pf))
--		dev_err(dev, "Failed to free MSIX resources used by SR-IOV\n");
--
- 	vfs->num_qps_per = 0;
- 	ice_free_vf_entries(pf);
- 
-@@ -370,40 +347,6 @@ void ice_calc_vf_reg_idx(struct ice_vf *vf, struct ice_q_vector *q_vector)
- 	q_vector->reg_idx = vf->first_vector_idx + q_vector->vf_reg_idx;
- }
- 
--/**
-- * ice_sriov_set_msix_res - Set any used MSIX resources
-- * @pf: pointer to PF structure
-- * @num_msix_needed: number of MSIX vectors needed for all SR-IOV VFs
-- *
-- * This function allows SR-IOV resources to be taken from the end of the PF's
-- * allowed HW MSIX vectors so that the irq_tracker will not be affected. We
-- * just set the pf->sriov_base_vector and return success.
-- *
-- * If there are not enough resources available, return an error. This should
-- * always be caught by ice_set_per_vf_res().
-- *
-- * Return 0 on success, and -EINVAL when there are not enough MSIX vectors
-- * in the PF's space available for SR-IOV.
-- */
--static int ice_sriov_set_msix_res(struct ice_pf *pf, u16 num_msix_needed)
--{
--	u16 total_vectors = pf->hw.func_caps.common_cap.num_msix_vectors;
--	int vectors_used = ice_get_max_used_msix_vector(pf);
--	int sriov_base_vector;
--
--	sriov_base_vector = total_vectors - num_msix_needed;
--
--	/* make sure we only grab irq_tracker entries from the list end and
--	 * that we have enough available MSIX vectors
--	 */
--	if (sriov_base_vector < vectors_used)
--		return -EINVAL;
--
--	pf->sriov_base_vector = sriov_base_vector;
--
--	return 0;
--}
--
- /**
-  * ice_set_per_vf_res - check if vectors and queues are available
-  * @pf: pointer to the PF structure
-@@ -428,11 +371,9 @@ static int ice_sriov_set_msix_res(struct ice_pf *pf, u16 num_msix_needed)
-  */
- static int ice_set_per_vf_res(struct ice_pf *pf, u16 num_vfs)
- {
--	int vectors_used = ice_get_max_used_msix_vector(pf);
- 	u16 num_msix_per_vf, num_txq, num_rxq, avail_qs;
- 	int msix_avail_per_vf, msix_avail_for_sriov;
- 	struct device *dev = ice_pf_to_dev(pf);
--	int err;
- 
- 	lockdep_assert_held(&pf->vfs.table_lock);
- 
-@@ -440,8 +381,7 @@ static int ice_set_per_vf_res(struct ice_pf *pf, u16 num_vfs)
- 		return -EINVAL;
- 
- 	/* determine MSI-X resources per VF */
--	msix_avail_for_sriov = pf->hw.func_caps.common_cap.num_msix_vectors -
--		vectors_used;
-+	msix_avail_for_sriov = pf->virt_irq_tracker.num_entries;
- 	msix_avail_per_vf = msix_avail_for_sriov / num_vfs;
- 	if (msix_avail_per_vf >= ICE_NUM_VF_MSIX_MED) {
- 		num_msix_per_vf = ICE_NUM_VF_MSIX_MED;
-@@ -480,13 +420,6 @@ static int ice_set_per_vf_res(struct ice_pf *pf, u16 num_vfs)
- 		return -ENOSPC;
- 	}
- 
--	err = ice_sriov_set_msix_res(pf, num_msix_per_vf * num_vfs);
--	if (err) {
--		dev_err(dev, "Unable to set MSI-X resources for %d VFs, err %d\n",
--			num_vfs, err);
--		return err;
--	}
--
- 	/* only allow equal Tx/Rx queue count (i.e. queue pairs) */
- 	pf->vfs.num_qps_per = min_t(int, num_txq, num_rxq);
- 	pf->vfs.num_msix_per = num_msix_per_vf;
-@@ -496,52 +429,6 @@ static int ice_set_per_vf_res(struct ice_pf *pf, u16 num_vfs)
- 	return 0;
- }
- 
--/**
-- * ice_sriov_get_irqs - get irqs for SR-IOV usacase
-- * @pf: pointer to PF structure
-- * @needed: number of irqs to get
-- *
-- * This returns the first MSI-X vector index in PF space that is used by this
-- * VF. This index is used when accessing PF relative registers such as
-- * GLINT_VECT2FUNC and GLINT_DYN_CTL.
-- * This will always be the OICR index in the AVF driver so any functionality
-- * using vf->first_vector_idx for queue configuration_id: id of VF which will
-- * use this irqs
-- *
-- * Only SRIOV specific vectors are tracked in sriov_irq_bm. SRIOV vectors are
-- * allocated from the end of global irq index. First bit in sriov_irq_bm means
-- * last irq index etc. It simplifies extension of SRIOV vectors.
-- * They will be always located from sriov_base_vector to the last irq
-- * index. While increasing/decreasing sriov_base_vector can be moved.
-- */
--static int ice_sriov_get_irqs(struct ice_pf *pf, u16 needed)
--{
--	int res = bitmap_find_next_zero_area(pf->sriov_irq_bm,
--					     pf->sriov_irq_size, 0, needed, 0);
--	/* conversion from number in bitmap to global irq index */
--	int index = pf->sriov_irq_size - res - needed;
--
--	if (res >= pf->sriov_irq_size || index < pf->sriov_base_vector)
--		return -ENOENT;
--
--	bitmap_set(pf->sriov_irq_bm, res, needed);
--	return index;
--}
--
--/**
-- * ice_sriov_free_irqs - free irqs used by the VF
-- * @pf: pointer to PF structure
-- * @vf: pointer to VF structure
-- */
--static void ice_sriov_free_irqs(struct ice_pf *pf, struct ice_vf *vf)
--{
--	/* Move back from first vector index to first index in bitmap */
--	int bm_i = pf->sriov_irq_size - vf->first_vector_idx - vf->num_msix;
--
--	bitmap_clear(pf->sriov_irq_bm, bm_i, vf->num_msix);
--	vf->first_vector_idx = 0;
--}
--
- /**
-  * ice_init_vf_vsi_res - initialize/setup VF VSI resources
-  * @vf: VF to initialize/setup the VSI for
-@@ -555,7 +442,7 @@ static int ice_init_vf_vsi_res(struct ice_vf *vf)
- 	struct ice_vsi *vsi;
- 	int err;
- 
--	vf->first_vector_idx = ice_sriov_get_irqs(pf, vf->num_msix);
-+	vf->first_vector_idx = ice_virt_get_irqs(pf, vf->num_msix);
- 	if (vf->first_vector_idx < 0)
- 		return -ENOMEM;
- 
-@@ -855,16 +742,10 @@ static int ice_create_vf_entries(struct ice_pf *pf, u16 num_vfs)
-  */
- static int ice_ena_vfs(struct ice_pf *pf, u16 num_vfs)
- {
--	int total_vectors = pf->hw.func_caps.common_cap.num_msix_vectors;
- 	struct device *dev = ice_pf_to_dev(pf);
- 	struct ice_hw *hw = &pf->hw;
- 	int ret;
- 
--	pf->sriov_irq_bm = bitmap_zalloc(total_vectors, GFP_KERNEL);
--	if (!pf->sriov_irq_bm)
--		return -ENOMEM;
--	pf->sriov_irq_size = total_vectors;
--
- 	/* Disable global interrupt 0 so we don't try to handle the VFLR. */
- 	wr32(hw, GLINT_DYN_CTL(pf->oicr_irq.index),
- 	     ICE_ITR_NONE << GLINT_DYN_CTL_ITR_INDX_S);
-@@ -917,7 +798,6 @@ static int ice_ena_vfs(struct ice_pf *pf, u16 num_vfs)
- 	/* rearm interrupts here */
- 	ice_irq_dynamic_ena(hw, NULL, NULL);
- 	clear_bit(ICE_OICR_INTR_DIS, pf->state);
--	bitmap_free(pf->sriov_irq_bm);
- 	return ret;
- }
- 
-@@ -991,16 +871,7 @@ u32 ice_sriov_get_vf_total_msix(struct pci_dev *pdev)
- {
- 	struct ice_pf *pf = pci_get_drvdata(pdev);
- 
--	return pf->sriov_irq_size - ice_get_max_used_msix_vector(pf);
--}
--
--static int ice_sriov_move_base_vector(struct ice_pf *pf, int move)
--{
--	if (pf->sriov_base_vector - move < ice_get_max_used_msix_vector(pf))
--		return -ENOMEM;
--
--	pf->sriov_base_vector -= move;
--	return 0;
-+	return pf->virt_irq_tracker.num_entries;
- }
- 
- static void ice_sriov_remap_vectors(struct ice_pf *pf, u16 restricted_id)
-@@ -1019,7 +890,8 @@ static void ice_sriov_remap_vectors(struct ice_pf *pf, u16 restricted_id)
- 			continue;
- 
- 		ice_dis_vf_mappings(tmp_vf);
--		ice_sriov_free_irqs(pf, tmp_vf);
-+		ice_virt_free_irqs(pf, tmp_vf->first_vector_idx,
-+				   tmp_vf->num_msix);
- 
- 		vf_ids[to_remap] = tmp_vf->vf_id;
- 		to_remap += 1;
-@@ -1031,7 +903,7 @@ static void ice_sriov_remap_vectors(struct ice_pf *pf, u16 restricted_id)
- 			continue;
- 
- 		tmp_vf->first_vector_idx =
--			ice_sriov_get_irqs(pf, tmp_vf->num_msix);
-+			ice_virt_get_irqs(pf, tmp_vf->num_msix);
- 		/* there is no need to rebuild VSI as we are only changing the
- 		 * vector indexes not amount of MSI-X or queues
- 		 */
-@@ -1102,20 +974,15 @@ int ice_sriov_set_msix_vec_count(struct pci_dev *vf_dev, int msix_vec_count)
- 	prev_msix = vf->num_msix;
- 	prev_queues = vf->num_vf_qs;
- 
--	if (ice_sriov_move_base_vector(pf, msix_vec_count - prev_msix)) {
--		ice_put_vf(vf);
--		return -ENOSPC;
--	}
--
- 	ice_dis_vf_mappings(vf);
--	ice_sriov_free_irqs(pf, vf);
-+	ice_virt_free_irqs(pf, vf->first_vector_idx, vf->num_msix);
- 
- 	/* Remap all VFs beside the one is now configured */
- 	ice_sriov_remap_vectors(pf, vf->vf_id);
- 
- 	vf->num_msix = msix_vec_count;
- 	vf->num_vf_qs = queues;
--	vf->first_vector_idx = ice_sriov_get_irqs(pf, vf->num_msix);
-+	vf->first_vector_idx = ice_virt_get_irqs(pf, vf->num_msix);
- 	if (vf->first_vector_idx < 0)
- 		goto unroll;
- 
-@@ -1141,7 +1008,7 @@ int ice_sriov_set_msix_vec_count(struct pci_dev *vf_dev, int msix_vec_count)
- 
- 	vf->num_msix = prev_msix;
- 	vf->num_vf_qs = prev_queues;
--	vf->first_vector_idx = ice_sriov_get_irqs(pf, vf->num_msix);
-+	vf->first_vector_idx = ice_virt_get_irqs(pf, vf->num_msix);
- 	if (vf->first_vector_idx < 0)
- 		return -EINVAL;
- 
--- 
-2.42.0
+PF reset:
+ethtool --reset eth0 irq dma filter offload
+(we reset all those components but only for the given PF)
 
+CORE reset:
+ethtool --reset eth0 irq-shared dma-shared filter-shared offload-shared ram-shared
+(whole adapter is affected so we use shared versions + ram)
+
+GLOBAL reset:
+ethtool --reset eth0 irq-shared dma-shared filter-shared offload-shared mac-shared phy-shared ram-shared
+(GLOBALR is CORER plus mac and phy components are also reinitialized)
