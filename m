@@ -1,85 +1,111 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 32333944C1A
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  1 Aug 2024 15:01:35 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6036A944EB7
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  1 Aug 2024 17:04:15 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id C3BE960F1B;
-	Thu,  1 Aug 2024 13:01:33 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id E1F8640F07;
+	Thu,  1 Aug 2024 15:04:13 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id YGXoOw6c55JT; Thu,  1 Aug 2024 13:01:33 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id diEsMADi_9y7; Thu,  1 Aug 2024 15:04:13 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C124660F2C
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 2127240EF1
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1722517292;
-	bh=Fno7jynlRhR0MntB4PTcUruVkbDLRUwqhL/TfFy6/AQ=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=WY5I7GNOBKQuUwb1WT5VJs84SfLSjZyAGZaozhNbO0IMxTkRhMY4jJktUyGCn1V6O
-	 WbY7UeUUZCL0X0SdadtDPiEw2fAxAgf/qD0ZKW9IF0SnnMBHm5RkNpcq7Ppy5zUVbn
-	 4lLH9llFTOXZjxpbFmTYcmfU8fBkPay2ddGFeP2UhALw/wnEMUQLgKQijwhBQ+J0jG
-	 O9Gxuz9mYxbXrRaxS1nQVe3xXIbbOrIT1SzISegdOVLzWal9JbZeZspamuzxf/I8+Y
-	 +NLPCD/KmMgk/kt8PzmXIXnCEkH956sZlbya837EUszY10CrkTA2K/T9Z6qM5l55eJ
-	 Abl0Kn6t/470g==
+	s=default; t=1722524653;
+	bh=6oyUrXiQ5KRnBrLzW15m3SL4jVMTbgLQ6TAxlm3G9Hc=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=8FIBa9H89rmrENjW/yNFAUD0c0gmhY7bsj0LcLrLU4H4wvLKdrZSRXfy22+5yPpwN
+	 W8DdizIvYm/Ax1d39ymGwoP2pq7NUGy3QbHV8peoVJdW0iFMcNVIQRm07+djZ1zwDI
+	 mZhxiyFEAIN5kL+DsaKh/814JDy0YeyiORat871TZSJ8NeW3ISY5R08M3pZsbpumMH
+	 gu7ia1lEAxKgMg/TmkBWIBwojFQNGf0ZqVlWqToTPGPs0fSH2VHnzkR4TaMtOzzr1/
+	 ifdiABtPReTrJ9heIyffx9Z5ZfjIOZYejZWzXpSrP4WI2g4gQQI7d22k1G44fHShlv
+	 ot4OPwDz7XQdA==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id C124660F2C;
-	Thu,  1 Aug 2024 13:01:32 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 2127240EF1;
+	Thu,  1 Aug 2024 15:04:13 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 686101BF479
- for <intel-wired-lan@lists.osuosl.org>; Thu,  1 Aug 2024 13:01:30 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id B5E671BF3C9
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  1 Aug 2024 13:47:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 552AD60640
- for <intel-wired-lan@lists.osuosl.org>; Thu,  1 Aug 2024 13:01:30 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id AFA71606E7
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  1 Aug 2024 13:47:40 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 3JqjlXI9R_Rc for <intel-wired-lan@lists.osuosl.org>;
- Thu,  1 Aug 2024 13:01:29 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=45.249.212.187;
- helo=szxga01-in.huawei.com; envelope-from=linyunsheng@huawei.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 8EF2460618
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 8EF2460618
-Received: from szxga01-in.huawei.com (szxga01-in.huawei.com [45.249.212.187])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 8EF2460618
- for <intel-wired-lan@lists.osuosl.org>; Thu,  1 Aug 2024 13:01:27 +0000 (UTC)
-Received: from mail.maildlp.com (unknown [172.19.163.174])
- by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4WZTc54FXfzxW3F;
- Thu,  1 Aug 2024 21:01:09 +0800 (CST)
-Received: from dggpemf200006.china.huawei.com (unknown [7.185.36.61])
- by mail.maildlp.com (Postfix) with ESMTPS id 996A7140109;
- Thu,  1 Aug 2024 21:01:22 +0800 (CST)
-Received: from [10.67.120.129] (10.67.120.129) by
- dggpemf200006.china.huawei.com (7.185.36.61) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1544.11; Thu, 1 Aug 2024 21:01:22 +0800
-Message-ID: <22fda86c-d688-42e7-99e8-e2f8fcf1a5ba@huawei.com>
-Date: Thu, 1 Aug 2024 21:01:21 +0800
+ id LH_mbo5Rt7pk for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  1 Aug 2024 13:47:40 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2607:f8b0:4864:20::630; helo=mail-pl1-x630.google.com;
+ envelope-from=yyyynoom@gmail.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 1EE81606E5
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1EE81606E5
+Received: from mail-pl1-x630.google.com (mail-pl1-x630.google.com
+ [IPv6:2607:f8b0:4864:20::630])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 1EE81606E5
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  1 Aug 2024 13:47:39 +0000 (UTC)
+Received: by mail-pl1-x630.google.com with SMTP id
+ d9443c01a7336-1fc491f9b55so56293215ad.3
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 01 Aug 2024 06:47:39 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1722520059; x=1723124859;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=6oyUrXiQ5KRnBrLzW15m3SL4jVMTbgLQ6TAxlm3G9Hc=;
+ b=iP8hOi2vwBOeJbmuA9Zgr7KUAMRadsaL8OCrR3sC6Spn7kIPXwIBSXd0kpWo+rka1Y
+ fUfqbshdjzkn5rO8gkWZj0Jh3NPde2X61iZaYBoYXQW1rNelR/6xxrGA4UTbzyUVNfjd
+ CEgj+6bruLyQHBF2t12s16pUmlpKUSMHfEwH/DFB659xfHqXOwpy33MBzaI2O1XcWKJF
+ Ok4WmgbqXl7f83I4hj9VfluNZCjPunGi6FP4rQW0HNzM/w2RKdK+BRu/AiUW4oHvm8+9
+ BN8dkV/pehqHoklhhZrWmP5noIOnx/krqQIFCpxqrXQShcfVxlSJXux/aWsGVsgA1mUL
+ BLsQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCW3GRkIC5KqhjkI0cMKQNSItAb9+gWux2to9fYRbxcgNwR0yyCD2KvYhvB17q5L44IpUPHCg7TWy/Cvid6MgbNDX62wx9fSRqP0wmwKgwh5/A==
+X-Gm-Message-State: AOJu0Yyc/otcuCtjT1X09xImN7Nl1zt1n+nw9EABFyHBmkwdTs1Glymc
+ 4dItt0lNaPpdaQmJi55SJuJaNNiHF1evD5vnCranQ3zwI3LwERHy
+X-Google-Smtp-Source: AGHT+IFfeAhrEmDM6jOnfL5ofrZr5WaVDCLtKFEqLNQlj0uawfZtGGNywhT+ed6VYVqPvDXKX6TqSQ==
+X-Received: by 2002:a17:90a:8d18:b0:2c9:6278:27c9 with SMTP id
+ 98e67ed59e1d1-2cff95405a9mr245888a91.38.1722520059292; 
+ Thu, 01 Aug 2024 06:47:39 -0700 (PDT)
+Received: from mythos-cloud.. ([211.46.174.173])
+ by smtp.gmail.com with ESMTPSA id
+ 98e67ed59e1d1-2cfdc4aa0c2sm3302534a91.46.2024.08.01.06.47.37
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 01 Aug 2024 06:47:38 -0700 (PDT)
+From: Moon Yeounsu <yyyynoom@gmail.com>
+To: davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
+ pabeni@redhat.com
+Date: Thu,  1 Aug 2024 22:47:10 +0900
+Message-ID: <20240801134709.1737190-2-yyyynoom@gmail.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: Alexander Duyck <alexander.duyck@gmail.com>
-References: <20240731124505.2903877-1-linyunsheng@huawei.com>
- <20240731124505.2903877-5-linyunsheng@huawei.com>
- <CAKgT0UcqdeSJdjZ_FfwyCnT927TwOkE4zchHLOkrBEmhGzex9g@mail.gmail.com>
-Content-Language: en-US
-From: Yunsheng Lin <linyunsheng@huawei.com>
-In-Reply-To: <CAKgT0UcqdeSJdjZ_FfwyCnT927TwOkE4zchHLOkrBEmhGzex9g@mail.gmail.com>
-Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
-X-Originating-IP: [10.67.120.129]
-X-ClientProxiedBy: dggems703-chm.china.huawei.com (10.3.19.180) To
- dggpemf200006.china.huawei.com (7.185.36.61)
+X-Mailman-Approved-At: Thu, 01 Aug 2024 15:04:10 +0000
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1722520059; x=1723124859; darn=lists.osuosl.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=6oyUrXiQ5KRnBrLzW15m3SL4jVMTbgLQ6TAxlm3G9Hc=;
+ b=PHeNNgAIFVYIetecq6YCgU+l8HAxyxapsNn8xvm52F80Xix2J9Y3caqIhuc+aaBEdw
+ tgRV0on05tkG/zPQspVN5rI1wkcdpLpocYFUvBMxPWVfCB+oxCFC+Yjjj4hFFVqwQ7Kr
+ W12nqndZO27ekLt+5g0u21adnVFfEScC6Ad9xgfrZey8Kvs3fCJ3x2GZI5kHOidmQ7O8
+ 0AzBBIjR3Rwo1FlRUG+KndwYVrX0xS+z3QKJVhvS3FmNMzB8+QtFRsX2bllp8ATM20Au
+ 5Rq73fotJFjRpnHfUFHekHTiXi6VzqPQwawHY68CUC288JDsSNTuoyMznCo3VsL9n40X
+ uEkg==
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=huawei.com
-Subject: Re: [Intel-wired-lan] [PATCH net-next v12 04/14] mm: page_frag: add
- '_va' suffix to page_frag API
+ dmarc=pass (p=none dis=none)
+ header.from=gmail.com
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256
+ header.s=20230601 header.b=PHeNNgAI
+Subject: [Intel-wired-lan] [PATCH] e1000e: use ip_hdrlen() instead of bit
+ shift
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -92,117 +118,32 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Yonghong Song <yonghong.song@linux.dev>, kvm@vger.kernel.org,
- "Michael S. Tsirkin" <mst@redhat.com>, Neil Brown <neilb@suse.de>,
- Jason Wang <jasowang@redhat.com>, Alexei Starovoitov <ast@kernel.org>,
- linux-nvme@lists.infradead.org, Dai Ngo <Dai.Ngo@oracle.com>,
- David Howells <dhowells@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- Eric Dumazet <edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
- Subbaraya Sundeep <sbhatta@marvell.com>,
- Marc Dionne <marc.dionne@auristor.com>, Christoph Hellwig <hch@lst.de>,
- Anna Schumaker <anna@kernel.org>, Jeroen de Borst <jeroendb@google.com>,
- Sagi Grimberg <sagi@grimberg.me>, Daniel Borkmann <daniel@iogearbox.net>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- John Fastabend <john.fastabend@gmail.com>, Andrii Nakryiko <andrii@kernel.org>,
- linux-afs@lists.infradead.org,
- =?UTF-8?Q?Eugenio_P=C3=A9rez?= <eperezma@redhat.com>,
- Stanislav Fomichev <sdf@fomichev.me>, intel-wired-lan@lists.osuosl.org,
- Olga Kornievskaia <kolga@netapp.com>, kuba@kernel.org, pabeni@redhat.com,
- Lorenzo Bianconi <lorenzo@kernel.org>, Mark Lee <Mark-MC.Lee@mediatek.com>,
- Sunil Goutham <sgoutham@marvell.com>, Chaitanya Kulkarni <kch@nvidia.com>,
- Jesper Dangaard Brouer <hawk@kernel.org>, Sean Wang <sean.wang@mediatek.com>,
- virtualization@lists.linux.dev, KP Singh <kpsingh@kernel.org>,
- Tom Talpey <tom@talpey.com>, Shailend Chand <shailend@google.com>,
- linux-mediatek@lists.infradead.org, linux-mm@kvack.org,
- Keith Busch <kbusch@kernel.org>, bpf@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Jens Axboe <axboe@kernel.dk>, Hao Luo <haoluo@google.com>,
- linux-nfs@vger.kernel.org, Song Liu <song@kernel.org>, netdev@vger.kernel.org,
- Jeff Layton <jlayton@kernel.org>, linux-kernel@vger.kernel.org,
- davem@davemloft.net, Eduard Zingerman <eddyz87@gmail.com>,
- hariprasad <hkelam@marvell.com>, Chuck Lever <chuck.lever@oracle.com>,
- Jiri Olsa <jolsa@kernel.org>, Praveen Kaligineedi <pkaligineedi@google.com>,
- Andrew Morton <akpm@linux-foundation.org>,
- Martin KaFai Lau <martin.lau@linux.dev>, Geetha sowjanya <gakula@marvell.com>,
- Trond Myklebust <trondmy@kernel.org>, Felix Fietkau <nbd@nbd.name>
+Cc: Moon Yeounsu <yyyynoom@gmail.com>, netdev@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org, linux-kernel@vger.kernel.org
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 2024/8/1 2:13, Alexander Duyck wrote:
-> On Wed, Jul 31, 2024 at 5:50 AM Yunsheng Lin <linyunsheng@huawei.com> wrote:
->>
->> Currently the page_frag API is returning 'virtual address'
->> or 'va' when allocing and expecting 'virtual address' or
->> 'va' as input when freeing.
->>
->> As we are about to support new use cases that the caller
->> need to deal with 'struct page' or need to deal with both
->> 'va' and 'struct page'. In order to differentiate the API
->> handling between 'va' and 'struct page', add '_va' suffix
->> to the corresponding API mirroring the page_pool_alloc_va()
->> API of the page_pool. So that callers expecting to deal with
->> va, page or both va and page may call page_frag_alloc_va*,
->> page_frag_alloc_pg*, or page_frag_alloc* API accordingly.
->>
->> CC: Alexander Duyck <alexander.duyck@gmail.com>
->> Signed-off-by: Yunsheng Lin <linyunsheng@huawei.com>
->> Reviewed-by: Subbaraya Sundeep <sbhatta@marvell.com>
-> 
-> I am naking this patch. It is a pointless rename that is just going to
-> obfuscate the git history for these callers.
+There's no reason to use bit shift to find the UDP header.
+It's not intuitive and it reinvents well-defined functions.
 
-I responded to your above similar comment in v2, and then responded more
-detailedly in v11, both got not direct responding, it would be good to
-have more concrete feedback here instead of abstract argument.
+Signed-off-by: Moon Yeounsu <yyyynoom@gmail.com>
+---
+ drivers/net/ethernet/intel/e1000e/netdev.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-https://lore.kernel.org/all/74e7259a-c462-e3c1-73ac-8e3f49fb80b8@huawei.com/
-https://lore.kernel.org/all/11187fe4-9419-4341-97b5-6dad7583b5b6@huawei.com/
+diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
+index 360ee26557f7..07c4cf84bdf3 100644
+--- a/drivers/net/ethernet/intel/e1000e/netdev.c
++++ b/drivers/net/ethernet/intel/e1000e/netdev.c
+@@ -5731,7 +5731,7 @@ static int e1000_transfer_dhcp_info(struct e1000_adapter *adapter,
+ 		if (ip->protocol != IPPROTO_UDP)
+ 			return 0;
+ 
+-		udp = (struct udphdr *)((u8 *)ip + (ip->ihl << 2));
++		udp = (struct udphdr *)((u8 *)ip + ip_hdrlen(skb));
+ 		if (ntohs(udp->dest) != 67)
+ 			return 0;
+ 
+-- 
+2.45.2
 
-> 
-> As I believe I said before I would prefer to see this work more like
-> the handling of __get_free_pages and __free_pages in terms of the use
-
-I am not even sure why are you bringing up  __get_free_pages() and
-__free_pages() here, as the declaration of them is something like below:
-
-unsigned long __get_free_pages(gfp_t gfp_mask, unsigned int order);
-void __free_pages(struct page *page, unsigned int order);
-
-And I add another related one for completeness here:
-extern void free_pages(unsigned long addr, unsigned int order);
-
-I am failing to see there is any pattern or rule for the above API
-naming. If there is some pattern for the above existing APIs, please
-describe them in detail so that we have common understanding.
-
-After the renaming, the declaration for both new and old APIs is
-below, please be more specific about what exactly is the confusion
-about them, what is the better naming for the below APIs in your
-mind:
-struct page *page_frag_alloc_pg(struct page_frag_cache *nc,
-                               unsigned int *offset, unsigned int fragsz,
-                               gfp_t gfp);
-void *page_frag_alloc_va(struct page_frag_cache *nc,
-                         unsigned int fragsz, gfp_t gfp_mask);
-struct page *page_frag_alloc(struct page_frag_cache *nc,
-                             unsigned int *offset,
-                             unsigned int fragsz,
-                             void **va, gfp_t gfp);
-
-> of pages versus pointers and/or longs. Pushing this API aside because
-> you want to reuse the name for something different isn't a valid
-> reason to rename an existing API and will just lead to confusion.
-
-Before this patchset, all the page_frag API renamed with a '_va' suffix
-in this patch are dealing with virtual address, it would be better to be
-more specific about what exactly is the confusion here by adding a explicit
-'va' suffix for them in this patch?
-
-I would argue that the renaming may avoid some confusion about whether
-page_frag_alloc() returning a 'struct page' or returning a virtual address
-instead of leading to confusion.
-
-Anyway, naming is always hard, any better naming is welcome. But don't deny
-any existing API renaming when we have not really started doing detailed
-comparison between different API naming options yet.
