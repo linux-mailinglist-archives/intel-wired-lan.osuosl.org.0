@@ -1,217 +1,87 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6E0F6945556
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  2 Aug 2024 02:23:28 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 191FC945BCC
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  2 Aug 2024 12:06:25 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 23FA0820EE;
-	Fri,  2 Aug 2024 00:23:27 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 38C99411AF;
+	Fri,  2 Aug 2024 10:06:21 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id qfSIdaW_Dtjr; Fri,  2 Aug 2024 10:06:20 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A6705411B3
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1722593179;
+	bh=o1VuG22BS9DaP4wx49W1xoCTDYwmTxC1L8+ARqes2ck=;
+	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=GS6rsnh95fV5bFDKxqe9BMjssBEmXm6fCYAxTlFxAOSerRzp31D8+k1puMmiW+LEZ
+	 TnJUmziyoLju81RJHmyOyyfn89rxhil6DgYZB90dzoSfQ5mZUAqBcm/fthA5dCKgCF
+	 Z6X/5UEEBTf6HljcpeYQ6tE+EREMnNQGFXGpBMYsuqAA3wdFoYsd1Gn42l049Le3Xr
+	 N+G/8i0Zaa0t6U1VdWZPsCSzGJWTrA0jKaFptPUj1Rwg+MXvy+102uCN6Gny7JkddH
+	 NF0xeXyTxENjLpdS6P9WssSKah5yBHylOO1PQbPATBgmQV0Kk/FcOQYDsn8FrzY/uQ
+	 PHwyZkhFn2X/A==
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp4.osuosl.org (Postfix) with ESMTP id A6705411B3;
+	Fri,  2 Aug 2024 10:06:19 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 6E3D51BF3CD
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  2 Aug 2024 10:06:17 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp1.osuosl.org (Postfix) with ESMTP id 5B43A84596
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  2 Aug 2024 10:06:17 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 4X11zi475S8E; Fri,  2 Aug 2024 00:23:26 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 42D9C82109
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1722558206;
-	bh=mhR40IDg6avjj7C5mwtXtI+3yjinsOuAp3mr13bZv7E=;
-	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=cJaFVCIZc9xSrHKkuO+OhPNSYgv0x1kvRRGJdQNfAY8lteW9sVCCCWoOUh5VDPy2F
-	 p8+PnDgj3U4GgpNoN0MkRZQI7zOqUH4shKnUDI1yHdysn2dfEZ/HPBd+gXuJ7409kZ
-	 t8igqYc6VoGqhVlx4odhwEFP9+4dtnmYWCdJrs3UNKf6X5vkksfn7nAPfNUv/WA7rY
-	 mVRxQKEN2U2Jk5BHs900zgY4SdU0ieg/ECnTbfYkoNpwIgkRUHIXrxfYMfznxYTW11
-	 VB1CLlwhJRQqd3aQUQoN2xZlml6QKg4Oi0IcG5evK3KHb81a5N/X3u1zGR7faoCtxE
-	 m97PY2RKPr1+w==
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 42D9C82109;
-	Fri,  2 Aug 2024 00:23:26 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 7F3E61BF3D9
- for <intel-wired-lan@lists.osuosl.org>; Fri,  2 Aug 2024 00:23:24 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 6AEC740493
- for <intel-wired-lan@lists.osuosl.org>; Fri,  2 Aug 2024 00:23:24 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id riem_52LJviU for <intel-wired-lan@lists.osuosl.org>;
- Fri,  2 Aug 2024 00:23:23 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.13;
- helo=mgamail.intel.com; envelope-from=krishneil.k.singh@intel.com;
+ id h0b2IRzrxNkx for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  2 Aug 2024 10:06:16 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=45.249.212.189;
+ helo=szxga03-in.huawei.com; envelope-from=linyunsheng@huawei.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 2F4E5400A4
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 2F4E5400A4
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.13])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 2F4E5400A4
- for <intel-wired-lan@lists.osuosl.org>; Fri,  2 Aug 2024 00:23:23 +0000 (UTC)
-X-CSE-ConnectionGUID: M8/WIiIGT5GhppDxozDM8g==
-X-CSE-MsgGUID: WaXPknxMRseaLDobScZDyw==
-X-IronPort-AV: E=McAfee;i="6700,10204,11151"; a="31705669"
-X-IronPort-AV: E=Sophos;i="6.09,256,1716274800"; d="scan'208";a="31705669"
-Received: from orviesa010.jf.intel.com ([10.64.159.150])
- by orvoesa105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 01 Aug 2024 17:23:20 -0700
-X-CSE-ConnectionGUID: 3gmuojDMT3yuBPAm/HeH4Q==
-X-CSE-MsgGUID: fA3zZf1KSNyld6BYt+lPgw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.09,256,1716274800"; d="scan'208";a="55138254"
-Received: from fmsmsx601.amr.corp.intel.com ([10.18.126.81])
- by orviesa010.jf.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
- 01 Aug 2024 17:23:20 -0700
-Received: from fmsmsx612.amr.corp.intel.com (10.18.126.92) by
- fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.39; Thu, 1 Aug 2024 17:23:19 -0700
-Received: from fmsmsx601.amr.corp.intel.com (10.18.126.81) by
- fmsmsx612.amr.corp.intel.com (10.18.126.92) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.39; Thu, 1 Aug 2024 17:23:19 -0700
-Received: from FMSEDG603.ED.cps.intel.com (10.1.192.133) by
- fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.39 via Frontend Transport; Thu, 1 Aug 2024 17:23:19 -0700
-Received: from NAM12-BN8-obe.outbound.protection.outlook.com (104.47.55.168)
- by edgegateway.intel.com (192.55.55.68) with Microsoft SMTP Server
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org AF83881FB8
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org AF83881FB8
+Received: from szxga03-in.huawei.com (szxga03-in.huawei.com [45.249.212.189])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id AF83881FB8
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  2 Aug 2024 10:06:11 +0000 (UTC)
+Received: from mail.maildlp.com (unknown [172.19.163.48])
+ by szxga03-in.huawei.com (SkyGuard) with ESMTP id 4Wb1ZM6Y7HzQnl8;
+ Fri,  2 Aug 2024 18:01:31 +0800 (CST)
+Received: from dggpemf200006.china.huawei.com (unknown [7.185.36.61])
+ by mail.maildlp.com (Postfix) with ESMTPS id 0F1351800A1;
+ Fri,  2 Aug 2024 18:05:53 +0800 (CST)
+Received: from [10.67.120.129] (10.67.120.129) by
+ dggpemf200006.china.huawei.com (7.185.36.61) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Thu, 1 Aug 2024 17:23:19 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=wjzNuHUc8tshmhFpC2Lbo/WrbVUAuagA72vFePsDNaqsy5ICqjfGdcUKLJ5gyePwqlMAbrhVuxwfPkMvj+MSE4tXTDnrl2nrP7lFgE9rafWA6B6ea7cfG+kyX7mPA/xvioC+oI5P6Uq8hCoN4O0ReAZV8s9UpQW5zch5S2HiURXwBLqAtoZdN84eyu9GOHIS41ePND0Hb6FAOpcXC75QmNjVyaJtEWbeTYjCWWcWm8neY6EtmMVYZNZegcZV3zlH39GzvkY4QuGA7TxKm8clOBOIZXfjgITDmLbTuupgMMWaRlYLM/pv/KCqwU8bSt/6rUqEQLisK7OBZk1BgACkxw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=mhR40IDg6avjj7C5mwtXtI+3yjinsOuAp3mr13bZv7E=;
- b=ucjaLf9qosJybjKRnoBdEiVfXCQtOUEoev2ocw9eFQ+TBFs25itCMjbac2mZG/U5gBXPVp4f73cMSU0svXF8wDFA+w+paGoKhKszAQOlLHzGlEh1pP7EUr0T53bEmI0rIWG2NEbIizSXi3fpvGg0lOcKV6uvQRsKgl+AxxTgjund17wimIXFMFzxog9EGGHKIPfY7lEEF4VCx2FUdpMafIq0Q4GFvxZJjTL7eR3/SS3ojk/GniqV4s2JDuhQJlLGEivci7B2oko7rwpm8yTCxv80dcZOJsuetB0HfFTSDc43hsulURDz3veO/XGHb6vWHESUH/BBbxBVazjkT9XiNA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from MW4PR11MB5911.namprd11.prod.outlook.com (2603:10b6:303:16b::16)
- by DM6PR11MB4707.namprd11.prod.outlook.com (2603:10b6:5:2a6::16) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7828.23; Fri, 2 Aug
- 2024 00:23:16 +0000
-Received: from MW4PR11MB5911.namprd11.prod.outlook.com
- ([fe80::1d00:286c:1800:c2f2]) by MW4PR11MB5911.namprd11.prod.outlook.com
- ([fe80::1d00:286c:1800:c2f2%6]) with mapi id 15.20.7828.023; Fri, 2 Aug 2024
- 00:23:16 +0000
-From: "Singh, Krishneil K" <krishneil.k.singh@intel.com>
-To: Simon Horman <horms@kernel.org>, "Lobakin, Aleksander"
- <aleksander.lobakin@intel.com>
-Thread-Topic: [PATCH iwl-net 3/3] idpf: fix UAFs when destroying the queues
-Thread-Index: AQHa33gNrGcCod5NCUizKczc8duxibITJURw
-Date: Fri, 2 Aug 2024 00:23:16 +0000
-Message-ID: <MW4PR11MB591146D8D3AD442F7D60B3A6BAB32@MW4PR11MB5911.namprd11.prod.outlook.com>
-References: <20240724134024.2182959-1-aleksander.lobakin@intel.com>
- <20240724134024.2182959-4-aleksander.lobakin@intel.com>
- <20240726162214.GQ97837@kernel.org>
-In-Reply-To: <20240726162214.GQ97837@kernel.org>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: MW4PR11MB5911:EE_|DM6PR11MB4707:EE_
-x-ms-office365-filtering-correlation-id: 8a15dd02-9e68-4584-9a91-08dcb2894d92
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0; ARA:13230040|376014|1800799024|366016|38070700018;
-x-microsoft-antispam-message-info: =?us-ascii?Q?AF47eCKaVjZWL6fLhfV87XLlJHHoURnXUyurkaV1TQGIkZxqysb3HT7JCgC7?=
- =?us-ascii?Q?0/SWRZzv6m+ScHvTQgYgxUPE/+vQKDBESlwQp+Xd4n/KQtTyvTK0rKEeb10u?=
- =?us-ascii?Q?JhhFSqXqxJxxoAtj9eNURBz+dfeLp8LQ7c7/0emFGQCdoCn5+nw+YXajg/LB?=
- =?us-ascii?Q?jeX+U7RH9ehawQdyx+ZejcZDpiXrZzB74nj4xFfsfHT9Wlfg5dOTNIW4UF0f?=
- =?us-ascii?Q?KTR3LADgrD6yngZanN54+VKKUtN0OUCSeDO8JyY0C1We76nG1MSQcm1+Z9cb?=
- =?us-ascii?Q?B7JqnFEz9KIagfJgyX6HzaC1hgeXEIQujdOMW4tXuJGurDPkJN+P9ltV7Rq0?=
- =?us-ascii?Q?aDkxY42QVFMOWRP4fRH7IY6RBf3CGHgl7L1PwVvmJHAno9cmhgM7FnSP1M/E?=
- =?us-ascii?Q?9zzskNUwuzu9Ihhiz5arRK6y34jgYXXjGHUz8olrJsRpoS02nbkowBIEMJPl?=
- =?us-ascii?Q?lp+TCOw5kbHpgExiHZdZv+sVZqTBYGJSPDCXvBDdFTh8J1g9CJz7UcRx+1uC?=
- =?us-ascii?Q?2pHfZ+VOHbjlTOgWYyY9Dzb9NxKpCk5eCJjxtve4fkzzhAK55MeletuvnS+P?=
- =?us-ascii?Q?c5kf0qnYkz4iBsNnz4v2qvtB1K6m4TsxpZArRpzYRdvELBBpRtLV0DM2X10N?=
- =?us-ascii?Q?g5EoAcSSonj505tFluCvSHjlt84QKSxd74F3dqJYC/GLPG+fwC74TRavoLRg?=
- =?us-ascii?Q?/nOqDdYl6hqwSsDyuEAAu0t2jMhyPuceextnHWpOTo+QaMRqO2oDqsnsQIib?=
- =?us-ascii?Q?iNaWGZfrfFA4lSTKtR46ynULY3d+QYY5nSyAq+3tXysc3cEvHEdHSRvccI0Q?=
- =?us-ascii?Q?Ca9s//tDMc+fExseNVX/dimdd94oFUafchwjsuKlgqQnHM/0k9rX4TKAnR8S?=
- =?us-ascii?Q?Og2UsVvsQDnr23kGnFJbPPef/8+j0OWC/QjoujqUPd7AHNeBd7/HdYUMndYn?=
- =?us-ascii?Q?E2nBZDLbcR6OEjyti+vcwILwrWvgjnTLXvy32i9gmUl1Nmvp/2QZAkNBKkCN?=
- =?us-ascii?Q?PEDs6cA88HZ+IP7IEJxYrFrllgu9cpmAOKXw+R+fmm471u6DPW/cAIyCN+Bu?=
- =?us-ascii?Q?ajEELFMXH6UotRPxQTqWYsUmqjf/32IFaiZB6Z3A0ukJZtTTg11BqyZXl5n+?=
- =?us-ascii?Q?ChH5A3bFMx/9AcDjM/SJpwwEtoM6E7e332z9ta0DBK9CxtzdycbxPMP4q0jl?=
- =?us-ascii?Q?txZ4kNW3im0t51TuX1llBA8HEw2KnqtqHhBdu6XRg6gpX+wDFVypKLuLAUGr?=
- =?us-ascii?Q?IE9DmCVBnTP/t+47U4p2XxJPMS41rkfpYrF+/t695AP5m3lsITLIy3oMY1Q8?=
- =?us-ascii?Q?7/542rNvfvF83kKtdVKVOwbzY/GpimtszgL9Vv3q7XGUNeshCYJjET3lNtdT?=
- =?us-ascii?Q?WdBinBGfdwNueXEm/XyLb9cmFZxCIsVHYVaTun39wzCCTRepGw=3D=3D?=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:MW4PR11MB5911.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(376014)(1800799024)(366016)(38070700018); DIR:OUT; SFP:1101; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?RgGVnYDazW/K4yh8vs4V2QwvZ4ngJJrI7xO4bahva5wsXq2mgjxsk2ZsYW+g?=
- =?us-ascii?Q?ilt/1LItaOHsa2bZ47LaVLPvMNRsRcnk5p1d6zXhvzUGe+2ER5dN4tTdiV7r?=
- =?us-ascii?Q?no95e4T0Y+bszequ4OlFCIbdvP+Q8/Xbdbm622t/GXU3Kzr20t2xMF03anBO?=
- =?us-ascii?Q?Ta6s1thu0Sm6YmvZsdquw+9TBdFRrmhLfS6R8pzcTYqEmudLObNG5pNtTKHl?=
- =?us-ascii?Q?+v2ebV3VUKQnrwMOghNvyWPaWwF0BnRizMxEtRW0jPlXGRYz+dBLQAzH2WO9?=
- =?us-ascii?Q?4HjOCEKweZIsXetQF26YsPUW++68vmUETFMh1go1dlYStDZzcr/h0Si3WOO7?=
- =?us-ascii?Q?D5T6O5UmGOMuIDwYkXVXnL6KZR84g36m/BgvzimTFU0//j/2XwwiHbY2C/FS?=
- =?us-ascii?Q?BP534eU1RxnLPC7QNh7MK1JyTNKleaNjixn0Rq8Cj9iSA//yrDfylz6RM7ui?=
- =?us-ascii?Q?WFvQW+nK1UtPYPl23FL1N8fRCJ9R/zIHlfWtMou4hU0U7OpIIVlu4hqzUjAp?=
- =?us-ascii?Q?zgu0PquXYN4uTtzX0/o/tmQGRO2Ck11qrpG3eYMVdSs2Y0dkKo6HgstuNi6L?=
- =?us-ascii?Q?ZEyLmr7Ug+D32+rhibRgBCsNy5DfkGLIZhwzPePYR3eZsU3W2lECRXgQztwD?=
- =?us-ascii?Q?itZUj6NbKsbB+vl1gIJLf1N3cR6MbRJK3RTuzzlQaWI+VorFXRA0A4DhylFz?=
- =?us-ascii?Q?qz0D4nKJmkqH+fhmp7XkaAfuRDYpK5/trm8kNuXIjWoY4KYeJWtg+eYAtkDM?=
- =?us-ascii?Q?ETW9b2L7vlhU8ViYDVIAsHtMNXgQVe3jqC/YLhkFHS964i8kp7CMfkqpAMIe?=
- =?us-ascii?Q?gF1tKmNewI2WyrYbmxmG+XrWCdXaob3IdfYR6ZFFgmgHnigeGG2NTtpBe5EC?=
- =?us-ascii?Q?aWepu3BSNBD1JuEUjbdagTLAQhdeYqY6c5xH7Sx2dtIBjO7xOWSCZ6CjExYp?=
- =?us-ascii?Q?xg5kxRytQJv7zNaeTNdz39D9xD2EP/XsGOZxh2rwrT93RduPrA5A/ortaBGR?=
- =?us-ascii?Q?n1MT0W+brG6u6eFgJFjUqpIq8LZk4Bhub9dw70qWvHaemoMqODR7UBKRTzlX?=
- =?us-ascii?Q?qxm6MA7UA188j5RKp/qiQ17ETw7xebBe7gVY2PU/3gbvUA0IH+4yIv7op0XF?=
- =?us-ascii?Q?R018ajVI895F0k8uC7neY0Ky/BH7mL7eZaTJ5Fd7uct1Hb4VqkyMIZ5WDbwt?=
- =?us-ascii?Q?jWERJEbwbhgVkvhh1bd5e7bNDnSJw5BBG2lKmQapewJMWI7pVUALXwIb5OV5?=
- =?us-ascii?Q?pbUTYEzTkiNPdIdCZuCaMupnc5SmcqXug/ryzm1AjsOX+cSo49HlidOjfyBJ?=
- =?us-ascii?Q?0ZTwzMRZd9c2vOkS88AzJiB8/EdgG+S8ZeyWoJMFS/ZXPNjG8SHe6RtOhkav?=
- =?us-ascii?Q?d7mfuD1rOfH6t4kBY9QP5/zs022AOj0hPTweh+vQRIEYaIzPb3g0HHJCbFFh?=
- =?us-ascii?Q?b9YLk6/mVlP69OXFObmkqM4XEvWov56eAEFuvf3PMlQSgzylnjxSELJMI17m?=
- =?us-ascii?Q?iLWtCVd+LQXBohbwV1C/nD4one9PRQ/fa6lNQzPTNi2xl+TQLjwDDuoLt50d?=
- =?us-ascii?Q?mP3TVPEq41a7p/bOoI47k9QtNtD9jyDPeHN338na3GIPdWBLaecH60oBJIFL?=
- =?us-ascii?Q?yg=3D=3D?=
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+ 15.2.1544.11; Fri, 2 Aug 2024 18:05:52 +0800
+Message-ID: <877efebe-f316-4192-aada-dd2657b74125@huawei.com>
+Date: Fri, 2 Aug 2024 18:05:52 +0800
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: MW4PR11MB5911.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 8a15dd02-9e68-4584-9a91-08dcb2894d92
-X-MS-Exchange-CrossTenant-originalarrivaltime: 02 Aug 2024 00:23:16.1104 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 8s/nPIjMaHcdqyHwnoGD72etUgnt8hl+x9wz7r0iy+psZRuTfyoy18V+RIO3MoW6Jmfcz5jZ8/k218bKA51zn3JDGdP0LzaL4Q0PzwWDW1s=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR11MB4707
-X-OriginatorOrg: intel.com
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1722558203; x=1754094203;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=mhR40IDg6avjj7C5mwtXtI+3yjinsOuAp3mr13bZv7E=;
- b=CKNKml3V14H0MQjMJfawFP8LCp3jipFi8dvs1jGCV0BAfMwvI0/kvxj5
- IoE3ZVuTK6BYSTZR3QwMbNPfZEZ0RnI1zLixRbxp9F39LZbtUQl8++1id
- hQfD+FcfmDMZ9TXzMlhhQyxq2uBRBETaG7VMTxzNKaZjd31ZylKbMF+lK
- ZkJfWJ2/wcvItJZIkKYQC/VRHQoS7wOTVhl4GNO63jT87s6mUW9ilnfJf
- whitYI4/MiSy6YdlhibmgHYTRuSOVXem3voyw5VX337FENqqgZSiKDqU8
- KJK3FwhJgzYVRpC0DvjJGso9ZWJ7RgieO1Rg7VYBLvn2GVaC8FpYNmx5N
- g==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=CKNKml3V
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH iwl-net 3/3] idpf: fix UAFs when
- destroying the queues
+User-Agent: Mozilla Thunderbird
+To: Alexander Duyck <alexander.duyck@gmail.com>
+References: <20240731124505.2903877-1-linyunsheng@huawei.com>
+ <20240731124505.2903877-5-linyunsheng@huawei.com>
+ <CAKgT0UcqdeSJdjZ_FfwyCnT927TwOkE4zchHLOkrBEmhGzex9g@mail.gmail.com>
+ <22fda86c-d688-42e7-99e8-e2f8fcf1a5ba@huawei.com>
+ <CAKgT0UcuGj8wvC87=A+hkarRupfhjGM0BPzLUT2AJc8Ovg_TFg@mail.gmail.com>
+Content-Language: en-US
+From: Yunsheng Lin <linyunsheng@huawei.com>
+In-Reply-To: <CAKgT0UcuGj8wvC87=A+hkarRupfhjGM0BPzLUT2AJc8Ovg_TFg@mail.gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [10.67.120.129]
+X-ClientProxiedBy: dggems704-chm.china.huawei.com (10.3.19.181) To
+ dggpemf200006.china.huawei.com (7.185.36.61)
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dmarc=pass (p=quarantine dis=none)
+ header.from=huawei.com
+Subject: Re: [Intel-wired-lan] [PATCH net-next v12 04/14] mm: page_frag: add
+ '_va' suffix to page_frag API
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -224,58 +94,127 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: NEX SW NCIS OSDT ITP
- Upstreaming <nex.sw.ncis.osdt.itp.upstreaming@intel.com>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Eric Dumazet <edumazet@google.com>, "Kubiak, 
- Michal" <michal.kubiak@intel.com>, "Nguyen,
- Anthony L" <anthony.l.nguyen@intel.com>, Jakub Kicinski <kuba@kernel.org>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>
+Cc: Yonghong Song <yonghong.song@linux.dev>, kvm@vger.kernel.org,
+ "Michael S. Tsirkin" <mst@redhat.com>, Neil Brown <neilb@suse.de>,
+ Jason Wang <jasowang@redhat.com>, Alexei Starovoitov <ast@kernel.org>,
+ linux-nvme@lists.infradead.org, Dai Ngo <Dai.Ngo@oracle.com>,
+ David Howells <dhowells@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Eric Dumazet <edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Subbaraya Sundeep <sbhatta@marvell.com>,
+ Marc Dionne <marc.dionne@auristor.com>, Christoph Hellwig <hch@lst.de>,
+ Anna Schumaker <anna@kernel.org>, Jeroen de Borst <jeroendb@google.com>,
+ Sagi Grimberg <sagi@grimberg.me>, Daniel Borkmann <daniel@iogearbox.net>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ John Fastabend <john.fastabend@gmail.com>, Andrii Nakryiko <andrii@kernel.org>,
+ linux-afs@lists.infradead.org,
+ =?UTF-8?Q?Eugenio_P=C3=A9rez?= <eperezma@redhat.com>,
+ Stanislav Fomichev <sdf@fomichev.me>, intel-wired-lan@lists.osuosl.org,
+ Olga Kornievskaia <kolga@netapp.com>, kuba@kernel.org, pabeni@redhat.com,
+ Lorenzo Bianconi <lorenzo@kernel.org>, Mark Lee <Mark-MC.Lee@mediatek.com>,
+ Sunil Goutham <sgoutham@marvell.com>, Chaitanya Kulkarni <kch@nvidia.com>,
+ Jesper Dangaard Brouer <hawk@kernel.org>, Sean Wang <sean.wang@mediatek.com>,
+ virtualization@lists.linux.dev, KP Singh <kpsingh@kernel.org>,
+ Tom Talpey <tom@talpey.com>, Shailend Chand <shailend@google.com>,
+ linux-mediatek@lists.infradead.org, linux-mm@kvack.org,
+ Keith Busch <kbusch@kernel.org>, bpf@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Jens Axboe <axboe@kernel.dk>, Hao Luo <haoluo@google.com>,
+ linux-nfs@vger.kernel.org, Song Liu <song@kernel.org>, netdev@vger.kernel.org,
+ Jeff Layton <jlayton@kernel.org>, linux-kernel@vger.kernel.org,
+ davem@davemloft.net, Eduard Zingerman <eddyz87@gmail.com>,
+ hariprasad <hkelam@marvell.com>, Chuck Lever <chuck.lever@oracle.com>,
+ Jiri Olsa <jolsa@kernel.org>, Praveen Kaligineedi <pkaligineedi@google.com>,
+ Andrew Morton <akpm@linux-foundation.org>,
+ Martin KaFai Lau <martin.lau@linux.dev>, Geetha sowjanya <gakula@marvell.com>,
+ Trond Myklebust <trondmy@kernel.org>, Felix Fietkau <nbd@nbd.name>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-> -----Original Message-----
-> From: Simon Horman <horms@kernel.org>
-> Sent: Friday, July 26, 2024 9:22 AM
-> To: Lobakin, Aleksander <aleksander.lobakin@intel.com>
-> Cc: intel-wired-lan@lists.osuosl.org; Nguyen, Anthony L
-> <anthony.l.nguyen@intel.com>; David S. Miller <davem@davemloft.net>; Eric
-> Dumazet <edumazet@google.com>; Jakub Kicinski <kuba@kernel.org>; Paolo
-> Abeni <pabeni@redhat.com>; NEX SW NCIS OSDT ITP Upstreaming
-> <nex.sw.ncis.osdt.itp.upstreaming@intel.com>; netdev@vger.kernel.org; lin=
-ux-
-> kernel@vger.kernel.org; Kubiak, Michal <michal.kubiak@intel.com>
-> Subject: Re: [PATCH iwl-net 3/3] idpf: fix UAFs when destroying the queue=
-s
->=20
-> On Wed, Jul 24, 2024 at 03:40:24PM +0200, Alexander Lobakin wrote:
-> > The second tagged commit started sometimes (very rarely, but possible)
-> > throwing WARNs from
-> > net/core/page_pool.c:page_pool_disable_direct_recycling().
-> > Turned out idpf frees interrupt vectors with embedded NAPIs *before*
-> > freeing the queues making page_pools' NAPI pointers lead to freed
-> > memory before these pools are destroyed by libeth.
-> > It's not clear whether there are other accesses to the freed vectors
-> > when destroying the queues, but anyway, we usually free queue/interrupt
-> > vectors only when the queues are destroyed and the NAPIs are guaranteed
-> > to not be referenced anywhere.
-> >
-> > Invert the allocation and freeing logic making queue/interrupt vectors
-> > be allocated first and freed last. Vectors don't require queues to be
-> > present, so this is safe. Additionally, this change allows to remove
-> > that useless queue->q_vector pointer cleanup, as vectors are still
-> > valid when freeing the queues (+ both are freed within one function,
-> > so it's not clear why nullify the pointers at all).
-> >
-> > Fixes: 1c325aac10a8 ("idpf: configure resources for TX queues")
-> > Fixes: 90912f9f4f2d ("idpf: convert header split mode to libeth +
-> napi_build_skb()")
-> > Reported-by: Michal Kubiak <michal.kubiak@intel.com>
-> > Signed-off-by: Alexander Lobakin <aleksander.lobakin@intel.com>
->=20
-> Reviewed-by: Simon Horman <horms@kernel.org>
->=20
+On 2024/8/1 23:21, Alexander Duyck wrote:
+> On Thu, Aug 1, 2024 at 6:01 AM Yunsheng Lin <linyunsheng@huawei.com> wrote:
+>>
+>> On 2024/8/1 2:13, Alexander Duyck wrote:
+>>> On Wed, Jul 31, 2024 at 5:50 AM Yunsheng Lin <linyunsheng@huawei.com> wrote:
+>>>>
+>>>> Currently the page_frag API is returning 'virtual address'
+>>>> or 'va' when allocing and expecting 'virtual address' or
+>>>> 'va' as input when freeing.
+>>>>
+>>>> As we are about to support new use cases that the caller
+>>>> need to deal with 'struct page' or need to deal with both
+>>>> 'va' and 'struct page'. In order to differentiate the API
+>>>> handling between 'va' and 'struct page', add '_va' suffix
+>>>> to the corresponding API mirroring the page_pool_alloc_va()
+>>>> API of the page_pool. So that callers expecting to deal with
+>>>> va, page or both va and page may call page_frag_alloc_va*,
+>>>> page_frag_alloc_pg*, or page_frag_alloc* API accordingly.
+>>>>
+>>>> CC: Alexander Duyck <alexander.duyck@gmail.com>
+>>>> Signed-off-by: Yunsheng Lin <linyunsheng@huawei.com>
+>>>> Reviewed-by: Subbaraya Sundeep <sbhatta@marvell.com>
+>>>
+>>> I am naking this patch. It is a pointless rename that is just going to
+>>> obfuscate the git history for these callers.
+>>
+>> I responded to your above similar comment in v2, and then responded more
+>> detailedly in v11, both got not direct responding, it would be good to
+>> have more concrete feedback here instead of abstract argument.
+>>
+>> https://lore.kernel.org/all/74e7259a-c462-e3c1-73ac-8e3f49fb80b8@huawei.com/
+>> https://lore.kernel.org/all/11187fe4-9419-4341-97b5-6dad7583b5b6@huawei.com/
+> 
+> I will make this much more understandable. This patch is one of the
+> ones that will permanently block this set in my opinion. As such I
+> will never ack this patch as I see no benefit to it. Arguing with me
+> on this is moot as you aren't going to change my mind, and I don't
+> have all day to argue back and forth with you on every single patch.
 
-Tested-by: Krishneil Singh <krishneil.k.singh@intel.com>
+Let's move on to more specific technical discussion then.
+
+> 
+> As far as your API extension and naming maybe you should look like
+> something like bio_vec and borrow the naming from that since that is
+> essentially what you are passing back and forth is essentially that
+> instead of a page frag which is normally a virtual address.
+
+I thought about adding something like bio_vec before, but I am not sure
+what you have in mind is somthing like I considered before?
+Let's say that we reuse bio_vec like something below for the new APIs:
+
+struct bio_vec {
+	struct page	*bv_page;
+	void		*va;
+	unsigned int	bv_len;
+	unsigned int	bv_offset;
+};
+
+It seems we have the below options for the new API:
+
+option 1, it seems like a better option from API naming point of view, but
+it needs to return a bio_vec pointer to the caller, it seems we need to have
+extra space for the pointer, I am not sure how we can avoid the memory waste
+for sk_page_frag() case in patch 12:
+struct bio_vec *page_frag_alloc_bio(struct page_frag_cache *nc,
+				    unsigned int fragsz, gfp_t gfp_mask);
+
+option 2, it need both the caller and callee to have a its own local space
+for 'struct bio_vec ', I am not sure if passing the content instead of
+the pointer of a struct through the function returning is the common pattern
+and if it has any performance impact yet:
+struct bio_vec page_frag_alloc_bio(struct page_frag_cache *nc,
+				   unsigned int fragsz, gfp_t gfp_mask);
+
+option 3, the caller passes the pointer of 'struct bio_vec ' to the callee,
+and page_frag_alloc_bio() fills in the data, I am not sure what is the point
+of indirect using 'struct bio_vec ' instead of passing 'va' & 'fragsz' &
+'offset' through pointers directly:
+bool page_frag_alloc_bio(struct page_frag_cache *nc,
+			 unsigned int fragsz, gfp_t gfp_mask, struct bio_vec *bio);
+
+If one of the above option is something in your mind? Yes, please be more specific
+about which one is the prefer option, and why it is the prefer option than the one
+introduced in this patchset?
+
+If no, please be more specific what that is in your mind?
+
