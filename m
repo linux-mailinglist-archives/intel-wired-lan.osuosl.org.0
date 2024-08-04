@@ -2,110 +2,123 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 16820947DA3
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  5 Aug 2024 17:06:13 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4F37B947DA4
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  5 Aug 2024 17:06:15 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 579DD810BB;
-	Mon,  5 Aug 2024 15:06:11 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id F05B5810CC;
+	Mon,  5 Aug 2024 15:06:12 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id tmhZRP5AOBEc; Mon,  5 Aug 2024 15:06:10 +0000 (UTC)
+ id CHHo8Kz2K9GJ; Mon,  5 Aug 2024 15:06:11 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9A7A38109E
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 9A3C08109E
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1722870370;
-	bh=BH7TThbnnegkjaOojrrx2d8L5L525Fkrr+r8KP5JObU=;
-	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=CwZbczFYfzwkDX2xveTUlRX+vewP3gSYJBJlXcfLKndwZ9jPcWYY9q0VrC+gt7bmA
-	 /Zqg67GhM3LwJn9k9ObGHHSFT8tNBPoGF2MsViEg5M+RScSXTGNKirdLIuwSPqi1F4
-	 j8dFYo2gc/CHiNfz2kSH1Z7T8q0GyqCqYDlNqX3sYK0lTa35FBAhKzo8O6qnTpttB8
-	 yqfJFst7jPfFvBVuP4B72OkynS+Pw5cfqzp0LtHleMcEhWpNLTYCINe4+4ii1FR7m1
-	 Z6zttb4SMRCcFEfl0n75SEqalodT9DM7Rf76uHIeSB34J458uiDMK5nRnMhw4wwtI3
-	 jX7ozdq25xJxQ==
+	s=default; t=1722870371;
+	bh=xlk57dWXqV77ALqJZrDySJJvovhv9kbwJVS4WA6M5w0=;
+	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=zebjz0o4oqqeBTqMIRzlbRCGrmwEgIm5qwQv9+w6HQz7aNuH1HNRFequFDDOUwdHW
+	 NtU7QZMl7hWKMFXtz9+na5vDPZbjTNyicoLyaS1l0lVwDnQQjBz825GX9Ej82FXfoc
+	 tRqyeObCyRpMEmittUYpjZCJIAHLPPw9bGBJS91Gh7CQMySPsPFnkHnWLHDZglC/RW
+	 w8UzkQ4D3+rLZWQ+af+c1trJo46YrBF7VZnOz32Uu1IHmgMHxFiPxSUg1ex+ozf7UH
+	 WVVinfFPEVwdnjpFXn3h3cbVywwQavXETvTlIMZxbLRIjMgiUZA7EWUADSc+9ZP7y9
+	 LZjBQWrwnxsmw==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 9A7A38109E;
-	Mon,  5 Aug 2024 15:06:10 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 9A3C08109E;
+	Mon,  5 Aug 2024 15:06:11 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 4A35A1BF364
- for <intel-wired-lan@lists.osuosl.org>; Sat,  3 Aug 2024 18:25:54 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id C07A81BF354
+ for <intel-wired-lan@lists.osuosl.org>; Sun,  4 Aug 2024 04:30:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 41FF98113F
- for <intel-wired-lan@lists.osuosl.org>; Sat,  3 Aug 2024 18:25:54 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id A8F7D811DA
+ for <intel-wired-lan@lists.osuosl.org>; Sun,  4 Aug 2024 04:30:41 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id mVqwPPGDHV3U for <intel-wired-lan@lists.osuosl.org>;
- Sat,  3 Aug 2024 18:25:53 +0000 (UTC)
+ id wQrAxTRit1CL for <intel-wired-lan@lists.osuosl.org>;
+ Sun,  4 Aug 2024 04:30:38 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2607:f8b0:4864:20::549; helo=mail-pg1-x549.google.com;
- envelope-from=3mhauzgokdxm5t672e1b0hz77z4x.v7516cx4-f1axw-4t641bcb.7bd7b4.7az@flex--manojvishy.bounces.google.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 7A5058113A
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 7A5058113A
-Received: from mail-pg1-x549.google.com (mail-pg1-x549.google.com
- [IPv6:2607:f8b0:4864:20::549])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 7A5058113A
- for <intel-wired-lan@lists.osuosl.org>; Sat,  3 Aug 2024 18:25:53 +0000 (UTC)
-Received: by mail-pg1-x549.google.com with SMTP id
- 41be03b00d2f7-5e4df21f22dso4183086a12.0
- for <intel-wired-lan@lists.osuosl.org>; Sat, 03 Aug 2024 11:25:53 -0700 (PDT)
+ client-ip=2607:f8b0:4864:20::443; helo=mail-pf1-x443.google.com;
+ envelope-from=yunshenglin0825@gmail.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 8D7FD811D7
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8D7FD811D7
+Received: from mail-pf1-x443.google.com (mail-pf1-x443.google.com
+ [IPv6:2607:f8b0:4864:20::443])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 8D7FD811D7
+ for <intel-wired-lan@lists.osuosl.org>; Sun,  4 Aug 2024 04:30:38 +0000 (UTC)
+Received: by mail-pf1-x443.google.com with SMTP id
+ d2e1a72fcca58-70d1d6369acso3208382b3a.0
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 03 Aug 2024 21:30:38 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1722709553; x=1723314353;
- h=cc:to:from:subject:message-id:mime-version:date:x-gm-message-state
- :from:to:cc:subject:date:message-id:reply-to;
- bh=BH7TThbnnegkjaOojrrx2d8L5L525Fkrr+r8KP5JObU=;
- b=op9cJg84Nl9+4pu4y3QgDNbPQ5MOMqnePc/Ak7mEj8+TPnrNuf4x+9BOCErloiiqpX
- 69yC6lwOM/6nSAlsGjA8VqY7GFauK3NJMi0RtV1+ziPTqeUuxpU14v0MIJEiqQeDOuis
- OJej+DMxXNAu4Pnu/wUTNVrhB9ApELIa0JM/8yusNkpN+BkpJ5bOjGgVFEngNgahuWK5
- hu88jrai+fqLs+DWtKXvph0SZNmjVI6cwM2lDJJX+LExJiJ/j+yJr1JXmWGOSZReta3v
- sUH0taq9F5B/FNTYFXReqdNJHAYRIUFX+aAmLXq+nWtqEU1hEe8C5UJ8PFdyJ4THuGKm
- hirw==
+ d=1e100.net; s=20230601; t=1722745838; x=1723350638;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=xlk57dWXqV77ALqJZrDySJJvovhv9kbwJVS4WA6M5w0=;
+ b=LO1O4XTEf329OruA9hhwVImDQiDLFTuLkrQtgTYpNPPY3gtZ+xhvGY15xL9sveFHUO
+ zyJy/hUYZ7U/9dIg/lUpORA3m5xiOSDIRhYlSLCre8cIyzUMUvdaJe64etFq+zI+iUNr
+ ZU4uaGI3IZnE38Wi9piCUjilQjzb8P0X2Eu6TfBM5hOS9Gd4zTM2Z5ioQSNF6piYtgjq
+ 6DvDGGO3Lo3UDqArdXyRjjCNsaaapvpZZFdNbiHw/uTWo8yaHSZLcXhU69UqK6Gxb/eS
+ YupXZpVxQQKmOrZZng4ifxiW80kobMIyuL+9vPtKtqc0fa0WOI8aVMMEo+CSusFryMhT
+ 6kMA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVa4qIzNVi2X5Hjn4uPZUOVXaVz7bueSUo1W57qnqFE5MA1Olrf4iEdX+6w/PyM1vZx0Txn2iVXrypCdfES+XgV9NaCpJj9+JKyXFCZ7iAX5A==
-X-Gm-Message-State: AOJu0YwcyW072TuorA/2P9ofWWGPUvm/A/6oBbJi761jMatlrvionnAo
- dyULuW2Cwb1PoP9GY6D/h5Irvut2O4gWMUZYLcC5u1IqrcfwFjaOy3ExbxusOu0Dxe3CEWGS1CD
- Al0Vm1qFbrk42QUVCdw==
-X-Google-Smtp-Source: AGHT+IHSIDEbxPmrzSc/pjlYK4UMHUzINsnlYy7PNW5MWeJ9ziiR25nb3zUlEws/rVyc2hSZI00CJMWWoyO5wg4u
-X-Received: from manojvishy.c.googlers.com
- ([fda3:e722:ac3:cc00:20:ed76:c0a8:413f])
- (user=manojvishy job=sendgmr) by 2002:a63:25c7:0:b0:7a0:b292:47cb with SMTP
- id 41be03b00d2f7-7b6bb6842ffmr19853a12.0.1722709552310; Sat, 03 Aug 2024
- 11:25:52 -0700 (PDT)
-Date: Sat,  3 Aug 2024 18:25:48 +0000
-Mime-Version: 1.0
-X-Mailer: git-send-email 2.46.0.rc2.264.g509ed76dc8-goog
-Message-ID: <20240803182548.2932270-1-manojvishy@google.com>
-From: Manoj Vishwanathan <manojvishy@google.com>
-To: Tony Nguyen <anthony.l.nguyen@intel.com>, 
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- "David S. Miller" <davem@davemloft.net>, 
- Eric Dumazet <edumazet@google.com>, intel-wired-lan@lists.osuosl.org
-Content-Type: text/plain; charset="UTF-8"
+ AJvYcCU+O6hzVUCxD+u1qqkuiA1sXOPCbA9YJaQwfT6jdhp+RWz8uoDV9fpn9/Y9Cms66VlUvLc3Vzl60pXXEQUJ8veUJrQOGOZvPuXr0PmV8XN72w==
+X-Gm-Message-State: AOJu0YyMDNfASIOfTqPwgLBJNlrOqYHRgVIlLOFL2CEFwj2uYJ8236q+
+ Be4lPsbjscNDCdUW5dhpb8AySIp7KXlKRpyPL/scsIYGXJmNhU9+
+X-Google-Smtp-Source: AGHT+IGsvTDJ4EYqxMHnrnabL29RSd4zV3sYpylbcRFlgCkQFp8MTku4ddABSnqWe2wodzlqv0aHUA==
+X-Received: by 2002:a05:6a21:3d8b:b0:1c6:9968:f4f4 with SMTP id
+ adf61e73a8af0-1c699690eacmr14086917637.11.1722745837611; 
+ Sat, 03 Aug 2024 21:30:37 -0700 (PDT)
+Received: from ?IPV6:2409:8a55:301b:e120:f82c:57ba:8bf:3093?
+ ([2409:8a55:301b:e120:f82c:57ba:8bf:3093])
+ by smtp.gmail.com with ESMTPSA id
+ 41be03b00d2f7-7b764fb4994sm3417427a12.62.2024.08.03.21.30.26
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sat, 03 Aug 2024 21:30:37 -0700 (PDT)
+Message-ID: <2a29ce61-7136-4b9b-9940-504228b10cba@gmail.com>
+Date: Sun, 4 Aug 2024 12:30:22 +0800
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+To: Alexander Duyck <alexander.duyck@gmail.com>,
+ Yunsheng Lin <linyunsheng@huawei.com>
+References: <20240731124505.2903877-1-linyunsheng@huawei.com>
+ <20240731124505.2903877-5-linyunsheng@huawei.com>
+ <CAKgT0UcqdeSJdjZ_FfwyCnT927TwOkE4zchHLOkrBEmhGzex9g@mail.gmail.com>
+ <22fda86c-d688-42e7-99e8-e2f8fcf1a5ba@huawei.com>
+ <CAKgT0UcuGj8wvC87=A+hkarRupfhjGM0BPzLUT2AJc8Ovg_TFg@mail.gmail.com>
+ <877efebe-f316-4192-aada-dd2657b74125@huawei.com>
+ <CAKgT0UfUkqR2TJQt6cSEdANNxQEOkjGqpPXhaXmrrxB0KwXmEQ@mail.gmail.com>
+Content-Language: en-US
+From: Yunsheng Lin <yunshenglin0825@gmail.com>
+In-Reply-To: <CAKgT0UfUkqR2TJQt6cSEdANNxQEOkjGqpPXhaXmrrxB0KwXmEQ@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-Mailman-Approved-At: Mon, 05 Aug 2024 15:06:09 +0000
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1722709553; x=1723314353; darn=lists.osuosl.org;
- h=cc:to:from:subject:message-id:mime-version:date:from:to:cc:subject
- :date:message-id:reply-to;
- bh=BH7TThbnnegkjaOojrrx2d8L5L525Fkrr+r8KP5JObU=;
- b=lOvNQL2TTdQxLVGL09W4NFCp47yI9yheNXXsD57M1Ce8VFIORboSwfa2HWzAWRv30O
- fco7x1SS0J7aSRjwRLFsc6YtEBc6m4xZvzjjkY/2jfvP19yOichj22mbuIaMGpfi1HHg
- DNh8MBfaT0h+yffSwibffCNLH3whR+TDTQuQ9nB5sFOigk/GM3GratkuZQ/yu2O5bYrY
- b9MexyN3YrnQVHxYj9+PO12MCKWgi3ZTG8tPSby2Rd6A2bf+w+7djI2t/329ObTRJMqC
- Jbf6xLMjbAPMDLxrLJiL3y3mklXbMYqemlaqIBC9wB88qmzv7ZA/XUGDq7lWN6JtHFST
- fjBw==
+ d=gmail.com; s=20230601; t=1722745838; x=1723350638; darn=lists.osuosl.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=xlk57dWXqV77ALqJZrDySJJvovhv9kbwJVS4WA6M5w0=;
+ b=e/tTWtdq6BBlVbQm3R0CV592I1IaGfkDqMfqPv54DnvxL7LDIbGqgT+UQwoJmt2qk9
+ CSpadAoyDewYA/9MQZrNTFcvrnGBsqjw2siXDUKA115ZbxJa5uT3txocKmfWTGHhU0z7
+ UUygcYySo2ZNkQD33ovmGeb2LY2DdM/VF58kAAopHAw/Z/Iu+OFlf4/ZpYBElGjIYADw
+ NCodA9W3DvMK2lL2vz6UQe7JSfJVoE/2CMv2iTxAZUJmKpFuJ038dF9VeV4j4j/o8nY1
+ P73UcSUaE00AN1UtlArdsuXw2aLPoRnOMH5NzkS8SHz5wqIhlksvQSjNaYYvzsQslJzR
+ Iwew==
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=reject dis=none)
- header.from=google.com
+ dmarc=pass (p=none dis=none)
+ header.from=gmail.com
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=google.com header.i=@google.com header.a=rsa-sha256
- header.s=20230601 header.b=lOvNQL2T
-Subject: [Intel-wired-lan] [PATCH] idpf: Acquire the lock before accessing
- the xn->salt
+ unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256
+ header.s=20230601 header.b=e/tTWtdq
+Subject: Re: [Intel-wired-lan] [PATCH net-next v12 04/14] mm: page_frag: add
+ '_va' suffix to page_frag API
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -118,41 +131,146 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, David Decotigny <decot@google.com>,
- Manoj Vishwanathan <manojvishy@google.com>, linux-kernel@vger.kernel.org
+Cc: Yonghong Song <yonghong.song@linux.dev>, kvm@vger.kernel.org,
+ "Michael S. Tsirkin" <mst@redhat.com>, Neil Brown <neilb@suse.de>,
+ Jason Wang <jasowang@redhat.com>, Alexei Starovoitov <ast@kernel.org>,
+ linux-nvme@lists.infradead.org, Dai Ngo <Dai.Ngo@oracle.com>,
+ David Howells <dhowells@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Eric Dumazet <edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Subbaraya Sundeep <sbhatta@marvell.com>,
+ Marc Dionne <marc.dionne@auristor.com>, Christoph Hellwig <hch@lst.de>,
+ Anna Schumaker <anna@kernel.org>, Jeroen de Borst <jeroendb@google.com>,
+ Sagi Grimberg <sagi@grimberg.me>, Daniel Borkmann <daniel@iogearbox.net>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ John Fastabend <john.fastabend@gmail.com>, Andrii Nakryiko <andrii@kernel.org>,
+ linux-afs@lists.infradead.org,
+ =?UTF-8?Q?Eugenio_P=C3=A9rez?= <eperezma@redhat.com>,
+ Stanislav Fomichev <sdf@fomichev.me>, intel-wired-lan@lists.osuosl.org,
+ Olga Kornievskaia <kolga@netapp.com>, kuba@kernel.org, pabeni@redhat.com,
+ Lorenzo Bianconi <lorenzo@kernel.org>, Mark Lee <Mark-MC.Lee@mediatek.com>,
+ Sunil Goutham <sgoutham@marvell.com>, Chaitanya Kulkarni <kch@nvidia.com>,
+ Jesper Dangaard Brouer <hawk@kernel.org>, Sean Wang <sean.wang@mediatek.com>,
+ virtualization@lists.linux.dev, KP Singh <kpsingh@kernel.org>,
+ Tom Talpey <tom@talpey.com>, Shailend Chand <shailend@google.com>,
+ linux-mediatek@lists.infradead.org, linux-mm@kvack.org,
+ Keith Busch <kbusch@kernel.org>, bpf@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Jens Axboe <axboe@kernel.dk>, Hao Luo <haoluo@google.com>,
+ linux-nfs@vger.kernel.org, Song Liu <song@kernel.org>, netdev@vger.kernel.org,
+ Jeff Layton <jlayton@kernel.org>, linux-kernel@vger.kernel.org,
+ davem@davemloft.net, Eduard Zingerman <eddyz87@gmail.com>,
+ hariprasad <hkelam@marvell.com>, Chuck Lever <chuck.lever@oracle.com>,
+ Jiri Olsa <jolsa@kernel.org>, Praveen Kaligineedi <pkaligineedi@google.com>,
+ Andrew Morton <akpm@linux-foundation.org>,
+ Martin KaFai Lau <martin.lau@linux.dev>, Geetha sowjanya <gakula@marvell.com>,
+ Trond Myklebust <trondmy@kernel.org>, Felix Fietkau <nbd@nbd.name>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The transaction salt was being accessed
-before acquiring the idpf_vc_xn_lock when idpf has to forward the
-virtchnl reply
+On 8/3/2024 1:00 AM, Alexander Duyck wrote:
 
-Signed-off-by: Manoj Vishwanathan <manojvishy@google.com>
----
- drivers/net/ethernet/intel/idpf/idpf_virtchnl.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+>>
+>>>
+>>> As far as your API extension and naming maybe you should look like
+>>> something like bio_vec and borrow the naming from that since that is
+>>> essentially what you are passing back and forth is essentially that
+>>> instead of a page frag which is normally a virtual address.
+>>
+>> I thought about adding something like bio_vec before, but I am not sure
+>> what you have in mind is somthing like I considered before?
+>> Let's say that we reuse bio_vec like something below for the new APIs:
+>>
+>> struct bio_vec {
+>>          struct page     *bv_page;
+>>          void            *va;
+>>          unsigned int    bv_len;
+>>          unsigned int    bv_offset;
+>> };
+> 
+> I wasn't suggesting changing the bio_vec. I was suggesting that be
+> what you pass as a pointer reference instead of the offset. Basically
+> your use case is mostly just for populating bio_vec style structures
+> anyway.
 
-diff --git a/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c b/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c
-index 70986e12da28..30eec674d594 100644
---- a/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c
-+++ b/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c
-@@ -612,14 +612,15 @@ idpf_vc_xn_forward_reply(struct idpf_adapter *adapter,
- 		return -EINVAL;
- 	}
- 	xn = &adapter->vcxn_mngr->ring[xn_idx];
-+	idpf_vc_xn_lock(xn);
- 	salt = FIELD_GET(IDPF_VC_XN_SALT_M, msg_info);
- 	if (xn->salt != salt) {
- 		dev_err_ratelimited(&adapter->pdev->dev, "Transaction salt does not match (%02x != %02x)\n",
- 				    xn->salt, salt);
-+		idpf_vc_xn_unlock(xn);
- 		return -EINVAL;
- 	}
- 
--	idpf_vc_xn_lock(xn);
- 	switch (xn->state) {
- 	case IDPF_VC_XN_WAITING:
- 		/* success */
--- 
-2.46.0.rc2.264.g509ed76dc8-goog
+I wasn't trying/going to reuse/change bio_vec for page_frag, I was just
+having a hard time coming with a good new name for it.
+The best one I came up with is pfrag_vec, but I am not sure about the
+'vec' as the "vec" portion of the name would suggest, iovec structures 
+tend to come in arrays, mentioned in the below article:
+https://lwn.net/Articles/625077/
+
+Anther one is page_frag, which is currently in use.
+
+Or any better one in your mind?
+
+> 
+>> It seems we have the below options for the new API:
+>>
+>> option 1, it seems like a better option from API naming point of view, but
+>> it needs to return a bio_vec pointer to the caller, it seems we need to have
+>> extra space for the pointer, I am not sure how we can avoid the memory waste
+>> for sk_page_frag() case in patch 12:
+>> struct bio_vec *page_frag_alloc_bio(struct page_frag_cache *nc,
+>>                                      unsigned int fragsz, gfp_t gfp_mask);
+>>
+>> option 2, it need both the caller and callee to have a its own local space
+>> for 'struct bio_vec ', I am not sure if passing the content instead of
+>> the pointer of a struct through the function returning is the common pattern
+>> and if it has any performance impact yet:
+>> struct bio_vec page_frag_alloc_bio(struct page_frag_cache *nc,
+>>                                     unsigned int fragsz, gfp_t gfp_mask);
+>>
+>> option 3, the caller passes the pointer of 'struct bio_vec ' to the callee,
+>> and page_frag_alloc_bio() fills in the data, I am not sure what is the point
+>> of indirect using 'struct bio_vec ' instead of passing 'va' & 'fragsz' &
+>> 'offset' through pointers directly:
+>> bool page_frag_alloc_bio(struct page_frag_cache *nc,
+>>                           unsigned int fragsz, gfp_t gfp_mask, struct bio_vec *bio);
+>>
+>> If one of the above option is something in your mind? Yes, please be more specific
+>> about which one is the prefer option, and why it is the prefer option than the one
+>> introduced in this patchset?
+>>
+>> If no, please be more specific what that is in your mind?
+> 
+> Option 3 is more or less what I had in mind. Basically you would
+> return an int to indicate any errors and you would be populating a
+> bio_vec during your allocation. In addition you would use the bio_vec
+
+Actually using this new bio_vec style structures does not seem to solve
+the APIs naming issue this patch is trying to solve as my understanding,
+as the new struct is only about passing one pointer or multi-pointers
+from API naming perspective. It is part of the API naming, but not all
+of it.
+
+> as a tracker of the actual fragsz so when you commit you are
+> committing with the fragsz as it was determined at the time of putting
+> the bio_vec together so you can theoretically catch things like if the
+> underlying offset had somehow changed from the time you setup the
+
+I think we might need a stronger argument than the above to use the new
+*vec thing other than the above debugging feature.
+
+I looked throught the bio_vec related info, and come along somewhat not
+really related, but really helpful "What’s all this get us" section:
+https://docs.kernel.org/block/biovecs.html
+
+So the question seems to be: what is this new struct for page_frag get
+us?
+
+Generally, I am argeed with the new struct thing if it does bring us
+something other than the above debugging feature. Otherwise we should
+avoid introducing a new thing which is hard to argue about its existent.
+
+> allocation. It would fit well into your probe routines since they are
+> all essentially passing the page, offset, and fragsz throughout the
+> code.
+
+For the current probe routines, the 'va' need to be passed, do you
+expect the 'va' to be passed by function return, double pointer, or
+new the *_vec pointer?
+
+> 
+
 
