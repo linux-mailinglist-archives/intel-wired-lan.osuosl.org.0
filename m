@@ -1,116 +1,231 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4F3459486C1
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  6 Aug 2024 02:52:56 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id D132A948CBC
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  6 Aug 2024 12:23:24 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 2EEF5810A4;
-	Tue,  6 Aug 2024 00:52:54 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id D25C440341;
+	Tue,  6 Aug 2024 10:23:22 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 4DPyg06MxP2I; Tue,  6 Aug 2024 00:52:52 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id Ncuh_0877Lw4; Tue,  6 Aug 2024 10:23:22 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 25A8B81114
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C272140225
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1722905572;
-	bh=vbMs5Emme3Wh6YV9L5YnP1YT4GqHd5pCxV5C0hflVMM=;
-	h=References:In-Reply-To:From:Date:To:Subject:List-Id:
+	s=default; t=1722939801;
+	bh=KnjL47lvo/2pJlQTgvlbosANb+n3e42Glb/wMwna3uY=;
+	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=M/wCZNbhu+3I4g3npPLh62ncfu58sOVoJsGZJ5tI3JWfAH3imL7ccJYlEceojnoqD
-	 lZHDGrz1wV89+DqRgu+zCkmhG0AsHKKVb3x0VLvwyLqkS9xGZlLii/JPjQv8nNInYW
-	 6iEmxs6GuQDIUx480evYFynFOQQVCGeOPtdX7zTxvqOU2J7k1XlNWS1Ju4AsvX1KiV
-	 C2SgWGq9dcsr3FHnTYRTZEXOgmUTvbO7t7vJ3CIzfhzE2GxRhxHOKGmn1uEbi6jo6I
-	 DOYh9e8n59rsQLGl1nR0JLAl4Jh9dYbRgSD7S72NVOsVrIfUke/0+I7jetsE1txL4S
-	 YPYeUC55AYv/Q==
+	b=Le2E/80hUWpipaDe66IsqQfel6kO4kqiczCDaB00Y4OozXYeupaNokyBksJeEnBES
+	 NnFMXs4sTlv4TvAVxMfUOhK6VBv+UEPigRgzzj80bGJ1j5ml17319lf1NswVNlLUed
+	 MgYeyZdt//r2EriMejGGR6YxOySDQ49hq2hWZ+YrC6Pru0CF1fj3pJUy01Ur1MC0dB
+	 R/A8S0AojYdkT4r4h+u8oJxD9e4tDKYxWoSaF3QI7U6a/6fNpKM3jgUM21sG4uNcY/
+	 ntMnU1fhQeZCqB6ta9vhgjpRSg4Nexjj2cLg3wdHnkJRPv2mwKgzFr6POMEoiHWhEe
+	 1uC0hexq4n8rw==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 25A8B81114;
-	Tue,  6 Aug 2024 00:52:52 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id C272140225;
+	Tue,  6 Aug 2024 10:23:21 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 32A8D1BF969
- for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Aug 2024 00:52:50 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id DDDFB1BF408
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Aug 2024 10:23:19 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 1B93C607A8
- for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Aug 2024 00:52:50 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id D64EF4036E
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Aug 2024 10:23:19 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id La_3t25W7bRu for <intel-wired-lan@lists.osuosl.org>;
- Tue,  6 Aug 2024 00:52:47 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2a00:1450:4864:20::336; helo=mail-wm1-x336.google.com;
- envelope-from=alexander.duyck@gmail.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org BE6F9600D1
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org BE6F9600D1
-Received: from mail-wm1-x336.google.com (mail-wm1-x336.google.com
- [IPv6:2a00:1450:4864:20::336])
- by smtp3.osuosl.org (Postfix) with ESMTPS id BE6F9600D1
- for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Aug 2024 00:52:46 +0000 (UTC)
-Received: by mail-wm1-x336.google.com with SMTP id
- 5b1f17b1804b1-4281d812d3eso870405e9.3
- for <intel-wired-lan@lists.osuosl.org>; Mon, 05 Aug 2024 17:52:46 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1722905564; x=1723510364;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=vbMs5Emme3Wh6YV9L5YnP1YT4GqHd5pCxV5C0hflVMM=;
- b=HJ00sytzwCTo2bBcLhcCCPL8+sZHvq/3lad+nkMochj3WblscczVvBCnLV4JfiOX/W
- /sgQK/gI89ByRUGkmOXOZW0wgvpC/ybUQsISYw/AUEG3cPx2qQKjHyht2A8YSW4ix9OE
- tYa+kxA7MXNIQF49umDn/ixcItfwfql5yaC8u0tq1l8gFmbv8I2I1lxiXQZQFg8GGn9r
- v0VIl5V2aCQVoQfVscRAdZAVABEkm66ggNlebQyxLUcK6vVFOUbNQ7coQ+RQkK5oNQWO
- t+VrStLRNN4AMCsQLlryMr9AfYKaoWuyJAsW7YrzGtYnht973wGgVafhjbcvHOfOtoI6
- y2Zw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWFiSkj7aaNLZ9+AyqFNAYc83OupTqWT+YEVHPmEPyZUrzjCZa+vbU/1T6OaCipS6HdckxAhkKlWfS8Jta4/C82qp5I0C94XLSxH1O4dpBUBg==
-X-Gm-Message-State: AOJu0Yz1Hv847PXhzqfvIFtBclr6pQD8jXodjbWPxH68uk4MJd/Ki5Pe
- PHh5xMvx+nU/7p7Itj/q7ldnyaxKfemYqBl5f5dEhVEZYl0Fl/LbtYah14jG0lxT10rvUBG9EFu
- Q/qeXUe6WSdwMrRMrWMtF6TkcwTg=
-X-Google-Smtp-Source: AGHT+IGqdqorrE2wlr/gRUXIf6uZerGtzKcZj5VR2LPXl0lkIPBaNlvbUHmQ57kNpAjkgdSFWmDjnDGMqxYFtJZpI1s=
-X-Received: by 2002:a5d:6042:0:b0:368:7f8f:ca68 with SMTP id
- ffacd0b85a97d-36bbc117fd0mr8920631f8f.30.1722905564079; Mon, 05 Aug 2024
- 17:52:44 -0700 (PDT)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id iZ_JKQAPW05c for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  6 Aug 2024 10:23:18 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.7;
+ helo=mgamail.intel.com; envelope-from=przemyslaw.kitszel@intel.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org AA323401AD
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org AA323401AD
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.7])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id AA323401AD
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Aug 2024 10:23:18 +0000 (UTC)
+X-CSE-ConnectionGUID: ZBH0FMIaR8Ccz3R4WVT6TQ==
+X-CSE-MsgGUID: 16qvXF20SnSZKTHDxCY+EQ==
+X-IronPort-AV: E=McAfee;i="6700,10204,11155"; a="46350326"
+X-IronPort-AV: E=Sophos;i="6.09,267,1716274800"; d="scan'208";a="46350326"
+Received: from orviesa010.jf.intel.com ([10.64.159.150])
+ by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 06 Aug 2024 03:23:17 -0700
+X-CSE-ConnectionGUID: p4EM4P8tSxy412UfH+zN0g==
+X-CSE-MsgGUID: wvbVKFM/S76sWYQcGbAKwQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.09,267,1716274800"; d="scan'208";a="56352201"
+Received: from orsmsx601.amr.corp.intel.com ([10.22.229.14])
+ by orviesa010.jf.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
+ 06 Aug 2024 03:23:17 -0700
+Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
+ ORSMSX601.amr.corp.intel.com (10.22.229.14) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.39; Tue, 6 Aug 2024 03:23:16 -0700
+Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
+ ORSMSX610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.39; Tue, 6 Aug 2024 03:23:16 -0700
+Received: from ORSEDG601.ED.cps.intel.com (10.7.248.6) by
+ orsmsx610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.39 via Frontend Transport; Tue, 6 Aug 2024 03:23:16 -0700
+Received: from NAM02-DM3-obe.outbound.protection.outlook.com (104.47.56.40) by
+ edgegateway.intel.com (134.134.137.102) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.39; Tue, 6 Aug 2024 03:23:16 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=Gy4AbxRODQ1VM+8Q8M1qpdBYffMcuBhkYjQhuM2VtTUER/bGjedK1eoJqNAoPPhL9Bm8S0Yb1V/ksGYXXAP4ivogfRXgcU5Pl3BwVVcUpbfwyrqs5TGWOKymX6m9nGI2su0wyflluhIExO13nVteI6t5KeXYQ318C3FHjAd4j9ddGmThi/qr8Jyf9K4YueoypPK46GdD2gDwveTUFJDp+tXgcJH/zECsK6EBVpB6NQibFty87giJgiKpY870YoEiMKw5P63b2u5u4jHk22sNqTX9+C+zELGWfCkKRD+82SRg/0MyrM+57JRXWpDGEPo+gVhzQhjTKeaKA2vDNHigtg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=KnjL47lvo/2pJlQTgvlbosANb+n3e42Glb/wMwna3uY=;
+ b=mDgB6yTDdOlWiPKGXOs7fNTEQhikjqRqG0rxG2X2FKYTktF6jXPsmWe0NLFbK3BZ95UrA7d1Z81/ngU0MXP+NjZTlMXCNY4IGsk60EOZgFPg3viyxKk5rqtTU/Vg0P9O1nlbsr2QpWeOfnDelIEzNYss7xPEtL6bRgjne0HNl7gcN1RzabsTqYKzjPZ16hql0GsiHwADAY4qr+B/OULEFWrED2QUY29xXCihE9CYyAtfvNh1usPK7PqURYLZLzvLbL+uaSP+sifYo8UuSVRfHLDy7jCK/svbEZfjZ/N95B+j4n0usVrNk4ZjItD8MKWrX7750wvqBeYP1tjibi65DA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from MN6PR11MB8102.namprd11.prod.outlook.com (2603:10b6:208:46d::9)
+ by SA1PR11MB6664.namprd11.prod.outlook.com (2603:10b6:806:258::11)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7828.21; Tue, 6 Aug
+ 2024 10:23:12 +0000
+Received: from MN6PR11MB8102.namprd11.prod.outlook.com
+ ([fe80::15b2:ee05:2ae7:cfd6]) by MN6PR11MB8102.namprd11.prod.outlook.com
+ ([fe80::15b2:ee05:2ae7:cfd6%7]) with mapi id 15.20.7828.023; Tue, 6 Aug 2024
+ 10:23:12 +0000
+Message-ID: <bfc4a6b1-44c0-49c4-a930-e69825e0e446@intel.com>
+Date: Tue, 6 Aug 2024 12:23:07 +0200
+User-Agent: Mozilla Thunderbird
+To: Manoj Vishwanathan <manojvishy@google.com>, Tony Nguyen
+ <anthony.l.nguyen@intel.com>
+References: <20240803182548.2932270-1-manojvishy@google.com>
+ <20240805182159.3547482-1-manojvishy@google.com>
+Content-Language: en-US
+From: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+In-Reply-To: <20240805182159.3547482-1-manojvishy@google.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 8bit
+X-ClientProxiedBy: ZR0P278CA0137.CHEP278.PROD.OUTLOOK.COM
+ (2603:10a6:910:40::16) To MN6PR11MB8102.namprd11.prod.outlook.com
+ (2603:10b6:208:46d::9)
 MIME-Version: 1.0
-References: <20240731124505.2903877-1-linyunsheng@huawei.com>
- <20240731124505.2903877-5-linyunsheng@huawei.com>
- <CAKgT0UcqdeSJdjZ_FfwyCnT927TwOkE4zchHLOkrBEmhGzex9g@mail.gmail.com>
- <22fda86c-d688-42e7-99e8-e2f8fcf1a5ba@huawei.com>
- <CAKgT0UcuGj8wvC87=A+hkarRupfhjGM0BPzLUT2AJc8Ovg_TFg@mail.gmail.com>
- <877efebe-f316-4192-aada-dd2657b74125@huawei.com>
- <CAKgT0UfUkqR2TJQt6cSEdANNxQEOkjGqpPXhaXmrrxB0KwXmEQ@mail.gmail.com>
- <2a29ce61-7136-4b9b-9940-504228b10cba@gmail.com>
-In-Reply-To: <2a29ce61-7136-4b9b-9940-504228b10cba@gmail.com>
-From: Alexander Duyck <alexander.duyck@gmail.com>
-Date: Tue, 6 Aug 2024 06:22:08 +0530
-Message-ID: <CAKgT0Uc6yw4u5Tjw1i0cV=C_ph+A5w0b_mtQMXmnBfKN_vvaDA@mail.gmail.com>
-To: Yunsheng Lin <yunshenglin0825@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1722905564; x=1723510364; darn=lists.osuosl.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=vbMs5Emme3Wh6YV9L5YnP1YT4GqHd5pCxV5C0hflVMM=;
- b=SOR/S5Tfn+lU67IOnkEQMmsUKA6bBAgACmWtClC5Sy2IqI3Anymj4odPZj0oiTebKN
- CbMWKUcudEoUMtLwwMwlKQ/xC7oEu2fWeQSj+RhGSfv6kXSwDKvK6OMCLn3Pm7e+KDc0
- 9yAiy3PXQd2/vbMPgqhIEClSzRFiQMdXWmBuNuxFWwXFYuPly3/BPA+Ce3fO66nu6UXa
- iimymWJ5XAknALyE5npQ8H0WNdsTs+iOWopvwjaexM+9ScolOkqGBZv74PPnjwTsqCP3
- IUXBzvE1w0Sh5FQG/SnI7txv+HPzqBF3bH6ewoeCp9DPrEdD7gRDRipXwKPEHRjnfmqV
- VLFg==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: MN6PR11MB8102:EE_|SA1PR11MB6664:EE_
+X-MS-Office365-Filtering-Correlation-Id: 10c1f7ab-3a5f-48e7-1a4f-08dcb601c6ce
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|376014|366016;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?WjRUd2hjV1BhbmZLWWM1UURKcnQzVnZ4bFM0U3lzYVgzY003N1VRS1FtcjBG?=
+ =?utf-8?B?bFQ1LzBNR1pWWmpvdkU3azZpbUVqRE1mSTFpeDBmbmtCanpnbzZGVitUV3Qv?=
+ =?utf-8?B?Y3M1dndDUi9wOHRIYVNsc2trV2RYaGlKdEtUQ0RxRUVjNjlETUExVWZORVRx?=
+ =?utf-8?B?K1B2ejhVZGxFRkEzRlZ4NWhXQldqTWxaTVN2SVg0VitNTHU1Tmpub1hwVnJo?=
+ =?utf-8?B?NFF0U09Bd0FBQlhtZ3g0bUdEM1JjZ2gybnJBTUFVeUdNcVdJbnc0bm82Z1B2?=
+ =?utf-8?B?TS9jNVovOThoYmdzNzRkaTlEOXA0RU5XVXpzWmlyOEtLSVlIbUU4V1FvRW52?=
+ =?utf-8?B?WGI0ZHUwTlBvZmRJbXZFTEFUWmtRV2ZxYm9xNzYyS1E5VnZ5RUtLZUUzT0J4?=
+ =?utf-8?B?a3V3Mllsamo4ZitTZzdVK1hhcm1QOGVaamZYZHVkcjZweitMSHFNWTR6MExj?=
+ =?utf-8?B?MzZ4L3hMUlZ3ZWV6bTlUdG94WGcyNGx1THl6a0lzY1o3bEV5QmlyMXVONlNr?=
+ =?utf-8?B?KzNvMzZyeC9Sa1o4aE43eUczQmtPejJVQllTNVBVeTlyVk1DNU8yL2R4MlB5?=
+ =?utf-8?B?RUhLa3JYRmoxYlZ3OW01SCsxYlpNMlJlekxvTXg0UHdUOGFnbUpxd3ExZmRW?=
+ =?utf-8?B?MGt2QkViMFA0RzJPU0NyUnBIb3luQ2NobFJ5TGkrd2NGd3Nqa2VpR2QzKzc5?=
+ =?utf-8?B?YkcyTk5ZdWI1RytvRWVGTjVVSmtPNktTRGxKVG11WitlVHk1WG5xalhzV2tE?=
+ =?utf-8?B?NWsxRWhrWkZCM1pJVTJLS09FM3poc0dCaC85MDZVVkRwazRHNGR1Z0U1ZndB?=
+ =?utf-8?B?N2hDcG4vQksvL09VWXZ6NFR2T04xZnJIOWRoWm1BMGZGM3pQMzJnL1dFNnda?=
+ =?utf-8?B?RW1HNUtuYWJjM012VnpDMDlFRW9QTHd4amtreTVzajZGcGVGLzNOZkREN1Vn?=
+ =?utf-8?B?dG1BRFJsQjVhUmoyY2EvZFNZZHowS1c3eEkzeDlzejcxd2NSS1ZDS0tKempW?=
+ =?utf-8?B?SzdkdlppaDR5emcxZ3RZaWp0QVBuMDRoU1ZCY3RhMWVydjVLakhwQzF1UEx1?=
+ =?utf-8?B?aWZvN00zZkg5ZlNER2NpSU5oRGNWYzRabTJFL2FuY2F2M3NDNzdtREk0Ukk2?=
+ =?utf-8?B?MkpGRzJEYlRwK01SU2VhS0pXV1dvblU3YWRxaHZCWnNXUnZzWGlsckJDeGYx?=
+ =?utf-8?B?T244amJlS20yU3pJUERoWEJEZW1NRzlzWmFiZGJNV0xqanFKbkg3YnNSYmlL?=
+ =?utf-8?B?YURmNzlCS051alJkeW1sNHhKMGpLWFJ2VFVNMnYrajRkN1VTemNHYUNQVSsv?=
+ =?utf-8?B?bTQxMGptRHFQcnI3RExIQk5mZ0YwamtIVXY2czBtWmNZS3RmaXkyTEl1emhz?=
+ =?utf-8?B?aTRBSjZvOXpGK0tqdElnM3lvdkdQNlBzejFaRFgyZXNTc0VYQ0RuMW9wRDVl?=
+ =?utf-8?B?MlVFSWRSbzJjVUd5LzA2aytORXlNK3hXY2UvT1EwMjdCV2NsRmNHdjhBWWx4?=
+ =?utf-8?B?STRSb0hYTXAwaDNOaStPaTJOaFEzV2ZoSVlPTjJFWmJwWjV2dmYxanNCRTdY?=
+ =?utf-8?B?M1Z2NUhkL3J2Y0lhTGkxVFlpZ25tajh0MXBLUWlsK3RCRFN5OG5WZUZPeFpJ?=
+ =?utf-8?B?c0ZpTit6cmNib2E0dUUvN2tJZU9BbUN2MTI4VFZ6UGZNL2RkRFVwczdNREI1?=
+ =?utf-8?B?ZDhpUTlmNjZuY3RqU0FpbVdNN3piVXpCTDVFY3lkZGRjT1JqL3FBODZNRUM1?=
+ =?utf-8?B?MWhRN29yVis2R09pSHNiTk5CYXhDTE9Rb3FHQjB4Nkdjb3FJcU1MUjJBVWh6?=
+ =?utf-8?B?enBNKzNPMTcxdWovY1FYQT09?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:MN6PR11MB8102.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(1800799024)(376014)(366016); DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?aGJLLzhPRmRmb3BUaVBDV09Cd2xDNmdQNC9UV1MyWktjOFV4OE5nK3FjSFVi?=
+ =?utf-8?B?ZW5lK0o2Q0xmSnRmM1VLSklCdnE4MWNSSnh4Y1h6OUd4WmdCZDM3VGNjQzAv?=
+ =?utf-8?B?Sk1QeUtFR2syQTg3ak1PUStUd1FDSFNIbnhpaTBDalRYMzRUK0xZV1MyRGFQ?=
+ =?utf-8?B?dnI2YTZ1eUhtR29ZSVQ2U2VYN1NxMnkzbUtsWncxMnlvL3BPTVRRQi85WDdm?=
+ =?utf-8?B?NHNmZjgwbGFhdVZ3UHhQMmdhQXRDSHJyRmxHTCtwSk9YSlhFYU1aVEFsSU5w?=
+ =?utf-8?B?bVBvVlM1cThzRDVNV2ZmRWxwTWczdmRXa1R0UTJ2OFdyLzk5MnpObmc0VEdW?=
+ =?utf-8?B?ZzhRMDA1alR1VDB0TEE5V0FZeTFBNGMwZzRkdWYydFRqaG81YzZqK04zVWJU?=
+ =?utf-8?B?TUlEU2F4YnJkL3hLdklBTGR3VmU2dzI3dmlBdDh3blV0UnVCbmhQRGszR0dL?=
+ =?utf-8?B?V1hIa29vWHpwYlc4TzVNalV6WW54RDRzQ3h2OVY5TXN1cXlKT3hnZEsydFFt?=
+ =?utf-8?B?Z1BEV3A4THRVS0xYNEVURkQvb0JiK1BqWWw5QnVFWUVGSVE3TnBuT1lDSEtU?=
+ =?utf-8?B?WkdBT01yeHIwVlhJUXIyVzlHYnQxSk5TMlk0K3pVeVdyVlIxSEhwUXp3TExX?=
+ =?utf-8?B?bWl1emFua0ttV0htSnRxa0RxcHY3d1RWQWFHSHdTdVcwSkNLNUlRZ01EZEtF?=
+ =?utf-8?B?Sm9IZVpBZU8wRDRwZnF3Vm9xYTlxOG84Rmw1ZjVQSjIwYmdIU0NkRFFMMStw?=
+ =?utf-8?B?VzBINndHa0NvaUU1Q1MvU3NVQTMwR1NWby94OU5HREVxZWhvSkZoWkk5eCtr?=
+ =?utf-8?B?ZkRJL0MyNGNybHVuZEtrNVhVcmtPTER0TTFrM0QyUlkyanFxNGxvR2VNZUl4?=
+ =?utf-8?B?RzhFTFdnVHF5NHM3eHdNWTN0Tm9BemVjWkFkb2lSSzErODFhUGhXRWlabzBH?=
+ =?utf-8?B?NHFxV2FnRXI5OGdsSE1FMzZyUkhPUENaUWJEQmZwL2QzMW1FQ0w0aVF4ellF?=
+ =?utf-8?B?MktUNUZyVkk2NCt6U2lsbzNYOWNoSFoySDhRaEVHdWRjSTlHTGNKZDhxN3Bw?=
+ =?utf-8?B?NVJ1WWZuNjVITEJ4NHlWUVNvOUg2aHQ4ZUozYnJlRHUzSGE5OHMwcnhoOWZj?=
+ =?utf-8?B?UGhEMkNQaURhV3EySU9XczZYVEdRYVE3MHE5dERpVWVBYi9kd1dQRWxFR3Q5?=
+ =?utf-8?B?M3hyZGhUWkxZSklzLzR4S1R0NHZkS3V4SnFydWlmTXlTa0puLzdZTi9zaERO?=
+ =?utf-8?B?K3hNN2J3Nld0Z0tzRHF1Z0xsSW5IUTNUZXdHOGFXKzJPa3FicWxsN2R3MHJt?=
+ =?utf-8?B?bnJBWUk0MFhFMVhscEVTemtTN1ZpYkNqMk1tYlprcDhibGdXeTg3NkRiL09p?=
+ =?utf-8?B?bTJOVXhYeEFVSGNYdGdmV1pGS0pGMmhzT2M5bmVBR251M2ptWHJ1cXpzelk5?=
+ =?utf-8?B?TU1WamV0bTY0K1BjeXhESDVJMjBXZzQ3eFJYeFRSY1QvMEhDOE9TM2tHTTdB?=
+ =?utf-8?B?YzNMbXY1YmxyaHFncTJuVGVkWDBGc2NVNWo3UWJhRWdzempVVzBDODJjNHRi?=
+ =?utf-8?B?bUMyYmRUeTNVQytjV0grUTJsT0hmdk43eVl0OUhUa01qeXNMNU1zYUl6MGcv?=
+ =?utf-8?B?aERhQlNYUDBLSUR6RjBiYjhTSzQyaExMc0phQlpEQnBsVHlOK3ZCaXBLSE5R?=
+ =?utf-8?B?alVUWnZtK2V4Qy9BaVk2dmNYY2x3UTUveFNETndibndsUnN1RUhhT2RGRmdB?=
+ =?utf-8?B?UnBSRVZWZFVzcExERkVxQ3dkbEorcWlPZnF0ck1DbFFmN05UcFNrZWpmNzY3?=
+ =?utf-8?B?RFJFUjdHM1pkL2orUFFRTUhpdGVDZzlsUnRyOThEQXBENHhCbGNqajZiMGlu?=
+ =?utf-8?B?VmM5cnMvQTV4WTRqOTdJZktmaGxzU2ZzSTltWlpmQXZhQkh1YXF3QnplWm9C?=
+ =?utf-8?B?M0d4Z0IzYThHWEdMbTZuU3Nydk55Tm5sTEFWNlVFNWFKSUdLOGliUnRKL1dX?=
+ =?utf-8?B?ZzhyNW9POXVDVHM3MU9BZUx2SjRvaVYydzdYeHMzT3JVR2FSN1duT1k3NmxZ?=
+ =?utf-8?B?azI3UTUxYnNXZXFpWFpXVXdCeDRIcEVwWXV4QjRMNUlmYjV3Nkw5a09LSlJP?=
+ =?utf-8?B?QVBxQnl3c2hyNWhlMWhyK3JvT1A1enYrQXByRk1JeUpiL0FSa0gvQmxYWEVJ?=
+ =?utf-8?Q?rnsUym/SB1u5BeBixIrVbsc=3D?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: 10c1f7ab-3a5f-48e7-1a4f-08dcb601c6ce
+X-MS-Exchange-CrossTenant-AuthSource: MN6PR11MB8102.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 06 Aug 2024 10:23:12.7247 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: w3teqBtJitZCT535qrIWh6X1r9bM6rMqjc9Gx66e5+9+8sYOPlmT93cIC9Wk1adYPD6BAV9v9uUB8Ra7o2pc1drPbuusSIVjjCZBwl+tUFQ=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA1PR11MB6664
+X-OriginatorOrg: intel.com
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1722939799; x=1754475799;
+ h=message-id:date:subject:to:cc:references:from:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=n22PlU+0Wm+URzWczjXdPKLlVN7+R8rfSheuB07CsZM=;
+ b=NKWZDV69QX3vtAsW/CmQQVRKTR8ApBxmzWvNxmffMXcY6OFLzH07VyGt
+ bohl3T4jrFgRh2EaFPU70d0AIvkjoLhsp67QJRDySiOQYivdoEXCRVxim
+ 7Z3ffqzqxTEa7lgXbykLLkTG9JK/weBqqCd5mwY1GL6Iv/LMqdXpV2PDx
+ a5zKZiM09BYzJ4KXb95mhFOSc4OWNE4F5+MeXCKfn8sQDws7VuqizLvuW
+ +FnI5+hj5MmNaUVDxIlUEsQIzbnHsb/5dOuvQPSj3s36EpqCh5k1gXoJR
+ H4LUtawWFPvtn6oozLIsvjgEFoU7Yjthn+psyfdyJi2X1zf39j0MFyRgU
+ w==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=gmail.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ header.from=intel.com
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256
- header.s=20230601 header.b=SOR/S5Tf
-Subject: Re: [Intel-wired-lan] [PATCH net-next v12 04/14] mm: page_frag: add
- '_va' suffix to page_frag API
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=NKWZDV69
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH] [PATCH iwl-net] idpf: Acquire the
+ lock before accessing the xn->salt
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -123,185 +238,49 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Yonghong Song <yonghong.song@linux.dev>, kvm@vger.kernel.org,
- "Michael S. Tsirkin" <mst@redhat.com>, Neil Brown <neilb@suse.de>,
- Jason Wang <jasowang@redhat.com>, Alexei Starovoitov <ast@kernel.org>,
- linux-nvme@lists.infradead.org, Andrii Nakryiko <andrii@kernel.org>,
- David Howells <dhowells@redhat.com>, Keith Busch <kbusch@kernel.org>,
- Eric Dumazet <edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
- Subbaraya Sundeep <sbhatta@marvell.com>,
- Marc Dionne <marc.dionne@auristor.com>, Christoph Hellwig <hch@lst.de>,
- Anna Schumaker <anna@kernel.org>, Jeroen de Borst <jeroendb@google.com>,
- Sagi Grimberg <sagi@grimberg.me>, Daniel Borkmann <daniel@iogearbox.net>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- John Fastabend <john.fastabend@gmail.com>,
- Yunsheng Lin <linyunsheng@huawei.com>, linux-afs@lists.infradead.org,
- =?UTF-8?Q?Eugenio_P=C3=A9rez?= <eperezma@redhat.com>,
- Stanislav Fomichev <sdf@fomichev.me>, intel-wired-lan@lists.osuosl.org,
- Olga Kornievskaia <kolga@netapp.com>, kuba@kernel.org, pabeni@redhat.com,
- Lorenzo Bianconi <lorenzo@kernel.org>, Mark Lee <Mark-MC.Lee@mediatek.com>,
- Sunil Goutham <sgoutham@marvell.com>, Chaitanya Kulkarni <kch@nvidia.com>,
- Jesper Dangaard Brouer <hawk@kernel.org>, Dai Ngo <Dai.Ngo@oracle.com>,
- Sean Wang <sean.wang@mediatek.com>, virtualization@lists.linux.dev,
- KP Singh <kpsingh@kernel.org>, Tom Talpey <tom@talpey.com>,
- Shailend Chand <shailend@google.com>, linux-mediatek@lists.infradead.org,
- linux-mm@kvack.org, Matthias Brugger <matthias.bgg@gmail.com>,
- bpf@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Jens Axboe <axboe@kernel.dk>, Hao Luo <haoluo@google.com>,
- linux-nfs@vger.kernel.org, Song Liu <song@kernel.org>, netdev@vger.kernel.org,
- Jeff Layton <jlayton@kernel.org>, linux-kernel@vger.kernel.org,
- davem@davemloft.net, Eduard Zingerman <eddyz87@gmail.com>,
- hariprasad <hkelam@marvell.com>, Chuck Lever <chuck.lever@oracle.com>,
- Jiri Olsa <jolsa@kernel.org>, Praveen Kaligineedi <pkaligineedi@google.com>,
- Andrew Morton <akpm@linux-foundation.org>,
- Martin KaFai Lau <martin.lau@linux.dev>, Geetha sowjanya <gakula@marvell.com>,
- Trond Myklebust <trondmy@kernel.org>, Felix Fietkau <nbd@nbd.name>
+Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Eric Dumazet <edumazet@google.com>, intel-wired-lan@lists.osuosl.org,
+ David Decotigny <decot@google.com>, "David S. Miller" <davem@davemloft.net>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Sun, Aug 4, 2024 at 10:00=E2=80=AFAM Yunsheng Lin <yunshenglin0825@gmail=
-.com> wrote:
->
-> On 8/3/2024 1:00 AM, Alexander Duyck wrote:
->
-> >>
-> >>>
-> >>> As far as your API extension and naming maybe you should look like
-> >>> something like bio_vec and borrow the naming from that since that is
-> >>> essentially what you are passing back and forth is essentially that
-> >>> instead of a page frag which is normally a virtual address.
-> >>
-> >> I thought about adding something like bio_vec before, but I am not sur=
-e
-> >> what you have in mind is somthing like I considered before?
-> >> Let's say that we reuse bio_vec like something below for the new APIs:
-> >>
-> >> struct bio_vec {
-> >>          struct page     *bv_page;
-> >>          void            *va;
-> >>          unsigned int    bv_len;
-> >>          unsigned int    bv_offset;
-> >> };
-> >
-> > I wasn't suggesting changing the bio_vec. I was suggesting that be
-> > what you pass as a pointer reference instead of the offset. Basically
-> > your use case is mostly just for populating bio_vec style structures
-> > anyway.
->
-> I wasn't trying/going to reuse/change bio_vec for page_frag, I was just
-> having a hard time coming with a good new name for it.
-> The best one I came up with is pfrag_vec, but I am not sure about the
-> 'vec' as the "vec" portion of the name would suggest, iovec structures
-> tend to come in arrays, mentioned in the below article:
-> https://lwn.net/Articles/625077/
->
-> Anther one is page_frag, which is currently in use.
->
-> Or any better one in your mind?
+On 8/5/24 20:21, Manoj Vishwanathan wrote:
+> The transaction salt was being accessed before acquiring the
+> idpf_vc_xn_lock when idpf has to forward the virtchnl reply.
+> 
+> Fixes: 34c21fa894a1a (“idpf: implement virtchnl transaction manager”)
+> Signed-off-by: Manoj Vishwanathan <manojvishy@google.com>
 
-I was suggesting using bio_vec, not some new structure. The general
-idea is that almost all the values you are using are exposed by that
-structure already in the case of the page based calls you were adding,
-so it makes sense to use what is there rather than reinventing the
-wheel.
+Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
 
-> >
-> >> It seems we have the below options for the new API:
-> >>
-> >> option 1, it seems like a better option from API naming point of view,=
- but
-> >> it needs to return a bio_vec pointer to the caller, it seems we need t=
-o have
-> >> extra space for the pointer, I am not sure how we can avoid the memory=
- waste
-> >> for sk_page_frag() case in patch 12:
-> >> struct bio_vec *page_frag_alloc_bio(struct page_frag_cache *nc,
-> >>                                      unsigned int fragsz, gfp_t gfp_ma=
-sk);
-> >>
-> >> option 2, it need both the caller and callee to have a its own local s=
-pace
-> >> for 'struct bio_vec ', I am not sure if passing the content instead of
-> >> the pointer of a struct through the function returning is the common p=
-attern
-> >> and if it has any performance impact yet:
-> >> struct bio_vec page_frag_alloc_bio(struct page_frag_cache *nc,
-> >>                                     unsigned int fragsz, gfp_t gfp_mas=
-k);
-> >>
-> >> option 3, the caller passes the pointer of 'struct bio_vec ' to the ca=
-llee,
-> >> and page_frag_alloc_bio() fills in the data, I am not sure what is the=
- point
-> >> of indirect using 'struct bio_vec ' instead of passing 'va' & 'fragsz'=
- &
-> >> 'offset' through pointers directly:
-> >> bool page_frag_alloc_bio(struct page_frag_cache *nc,
-> >>                           unsigned int fragsz, gfp_t gfp_mask, struct =
-bio_vec *bio);
-> >>
-> >> If one of the above option is something in your mind? Yes, please be m=
-ore specific
-> >> about which one is the prefer option, and why it is the prefer option =
-than the one
-> >> introduced in this patchset?
-> >>
-> >> If no, please be more specific what that is in your mind?
-> >
-> > Option 3 is more or less what I had in mind. Basically you would
-> > return an int to indicate any errors and you would be populating a
-> > bio_vec during your allocation. In addition you would use the bio_vec
->
-> Actually using this new bio_vec style structures does not seem to solve
-> the APIs naming issue this patch is trying to solve as my understanding,
-> as the new struct is only about passing one pointer or multi-pointers
-> from API naming perspective. It is part of the API naming, but not all
-> of it.
+Thank you!
+(next time please add "v2" (and so on) to subsequent versions of the
+patch/series; please also send as a standalone thread, instead of
+in-reply-to v1; no need to repost this one for any of those though)
 
-I have no idea what you are talking about. The issue was you were
-splitting things page_frag_alloc_va and page_frag_alloc_pg. Now it
-would be page_frag_alloc and page_frag_alloc_bio or maybe
-page_frag_fill_bio which would better explain what you are doing with
-this function.
+> ---
+>   drivers/net/ethernet/intel/idpf/idpf_virtchnl.c | 3 ++-
+>   1 file changed, 2 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c b/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c
+> index 70986e12da28..30eec674d594 100644
+> --- a/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c
+> +++ b/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c
+> @@ -612,14 +612,15 @@ idpf_vc_xn_forward_reply(struct idpf_adapter *adapter,
+>   		return -EINVAL;
+>   	}
+>   	xn = &adapter->vcxn_mngr->ring[xn_idx];
+> +	idpf_vc_xn_lock(xn);
+>   	salt = FIELD_GET(IDPF_VC_XN_SALT_M, msg_info);
+>   	if (xn->salt != salt) {
+>   		dev_err_ratelimited(&adapter->pdev->dev, "Transaction salt does not match (%02x != %02x)\n",
+>   				    xn->salt, salt);
+> +		idpf_vc_xn_unlock(xn);
+>   		return -EINVAL;
+>   	}
+>   
+> -	idpf_vc_xn_lock(xn);
+>   	switch (xn->state) {
+>   	case IDPF_VC_XN_WAITING:
+>   		/* success */
 
-> > as a tracker of the actual fragsz so when you commit you are
-> > committing with the fragsz as it was determined at the time of putting
-> > the bio_vec together so you can theoretically catch things like if the
-> > underlying offset had somehow changed from the time you setup the
->
-> I think we might need a stronger argument than the above to use the new
-> *vec thing other than the above debugging feature.
->
-> I looked throught the bio_vec related info, and come along somewhat not
-> really related, but really helpful "What=E2=80=99s all this get us" secti=
-on:
-> https://docs.kernel.org/block/biovecs.html
->
-> So the question seems to be: what is this new struct for page_frag get
-> us?
->
-> Generally, I am argeed with the new struct thing if it does bring us
-> something other than the above debugging feature. Otherwise we should
-> avoid introducing a new thing which is hard to argue about its existent.
-
-I don't want a new structure. I just want you to use the bio_vec for
-spots where you are needing to use a page because you are populating a
-bio_vec.
-
-> > allocation. It would fit well into your probe routines since they are
-> > all essentially passing the page, offset, and fragsz throughout the
-> > code.
->
-> For the current probe routines, the 'va' need to be passed, do you
-> expect the 'va' to be passed by function return, double pointer, or
-> new the *_vec pointer?
-
-I would suggest doing so via the *_vec pointer. The problem as I see
-it is that the existing code is exposing too much of the internals and
-setting up the possibility for a system to get corrupted really
-easily. At least if you are doing this with a bio_vec you can verify
-that you have the correct page and offset before you move the offset
-up by the length which should have been provided by the API in the
-first place and not just guessed at based on what the fragsz was that
-you requested.
