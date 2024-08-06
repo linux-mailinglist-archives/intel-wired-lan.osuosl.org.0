@@ -2,74 +2,74 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4F447949970
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  6 Aug 2024 22:46:55 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4DEB6949975
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  6 Aug 2024 22:47:05 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 997114050B;
-	Tue,  6 Aug 2024 20:46:51 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 6ED874052B;
+	Tue,  6 Aug 2024 20:46:56 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id t7QeAZW4qjXZ; Tue,  6 Aug 2024 20:46:50 +0000 (UTC)
+ id lxkhJ-0pmAdg; Tue,  6 Aug 2024 20:46:54 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 34D80404E7
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 93DF8402EA
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1722977207;
-	bh=kGcWVD+XcyeKuh5jJ5NVQ3VQjF+WmlMLmfipm/vDM8Y=;
+	s=default; t=1722977214;
+	bh=kgN5Wt6jwvNvrVHIohtTJ+iRd5Es9eDfCciYffhfTkU=;
 	h=From:Date:References:In-Reply-To:To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=CjuCA5T2fhDdvZ4YryiAEEm0QYfzJCpzdF2vZgdlvj5Dvy3s8CEeT3jpTTLiWNNDa
-	 baDyIJ3qcRReV2Kycc7GN+u6t1k8zot/e4AfzXGBmCuvGS5v8jtM7eeMsOibPuCX+1
-	 gB2VHo30+Ll7rlFHM7ZGR+fMkgY3jV12XWoIgd7tOY9xF8uAMjaQ5o1/pB1L18ViSk
-	 h8lIPzljaGo0eHQi9KJNHzEvCNZPeQL1tLJg+pqtDb3Aeg8rp7pmt5JHTjG28JrrmD
-	 36ChSGUu1H1MRfMbE/X6vuiJ/WEuggqCTcUJ2Ql9pVBubfPEojqCQdUxdF8wDbEMra
-	 6JVubxFz2vznA==
+	b=Y6MEjLl7cyyUOtvJ6KloOhZVcpeZ3o0YB5wHGeNLfDY240hawSG68ev6On16TN1IT
+	 aIOQWbCMTkoSy6tIJnsDOzyur2SdPDVp8/Omm/Vz3uj3vU7SgjlqvKaOMHKvfg1F/s
+	 vYS/mdrrKnB+H/bdSYbwCyVKTmiQBHI6O+peDJgMEWo6UwBQIaXAn4zS6DKX/EEX81
+	 NXdSczt6830AhZWYoNLDAzrxDZk8ldAv400f0XFRqxS2jF+amzxG+GotkJVWJud+Pr
+	 +GRv53bCVziV32uMotHAhBzCX7s12XDrU8nhj/kc1CU06ZwlrTMMsUIMfbWjf2NFsU
+	 8LhxsU/PA15yw==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 34D80404E7;
-	Tue,  6 Aug 2024 20:46:47 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 93DF8402EA;
+	Tue,  6 Aug 2024 20:46:54 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id D4B781BF33D
- for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Aug 2024 20:46:41 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 737881BF33D
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Aug 2024 20:46:48 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 8638240283
- for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Aug 2024 20:46:40 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 5E31E404EF
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Aug 2024 20:46:48 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 9ViQshyggWMX for <intel-wired-lan@lists.osuosl.org>;
- Tue,  6 Aug 2024 20:46:39 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id bWiFbN-S1uVG for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  6 Aug 2024 20:46:40 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.20;
  helo=mgamail.intel.com; envelope-from=jacob.e.keller@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org A21DE4010F
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A21DE4010F
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org F0F6F40108
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org F0F6F40108
 Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.20])
- by smtp2.osuosl.org (Postfix) with ESMTPS id A21DE4010F
+ by smtp4.osuosl.org (Postfix) with ESMTPS id F0F6F40108
  for <intel-wired-lan@lists.osuosl.org>; Tue,  6 Aug 2024 20:46:39 +0000 (UTC)
-X-CSE-ConnectionGUID: LuC71kzuThuyzo2dngC6UA==
-X-CSE-MsgGUID: 0h8ClPLgRSqA2xT2tnEy3A==
-X-IronPort-AV: E=McAfee;i="6700,10204,11156"; a="20835915"
-X-IronPort-AV: E=Sophos;i="6.09,268,1716274800"; d="scan'208";a="20835915"
+X-CSE-ConnectionGUID: s3M4IcjbT56g90+1EZtN5Q==
+X-CSE-MsgGUID: jQwxc9CMSNOC/m9klFPrpQ==
+X-IronPort-AV: E=McAfee;i="6700,10204,11156"; a="20835919"
+X-IronPort-AV: E=Sophos;i="6.09,268,1716274800"; d="scan'208";a="20835919"
 Received: from fmviesa007.fm.intel.com ([10.60.135.147])
  by orvoesa112.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  06 Aug 2024 13:46:38 -0700
-X-CSE-ConnectionGUID: 5UhW0UXdTkK7zyBwxWTu7g==
-X-CSE-MsgGUID: XcWB6pt8QqKeU+hUUYR5qQ==
+X-CSE-ConnectionGUID: uVAQTbjsRqymNckoo6jG4w==
+X-CSE-MsgGUID: eTWshRfpRjOta+pMZLr7Jg==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.09,268,1716274800"; d="scan'208";a="56331580"
+X-IronPort-AV: E=Sophos;i="6.09,268,1716274800"; d="scan'208";a="56331583"
 Received: from jekeller-desk.amr.corp.intel.com (HELO localhost.localdomain)
  ([10.166.241.1])
  by fmviesa007-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  06 Aug 2024 13:46:37 -0700
 From: Jacob Keller <jacob.e.keller@intel.com>
-Date: Tue, 06 Aug 2024 13:46:22 -0700
+Date: Tue, 06 Aug 2024 13:46:23 -0700
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20240806-e810-live-migration-rd32-poll-timeout-v1-2-b5ada29ce703@intel.com>
+Message-Id: <20240806-e810-live-migration-rd32-poll-timeout-v1-3-b5ada29ce703@intel.com>
 References: <20240806-e810-live-migration-rd32-poll-timeout-v1-0-b5ada29ce703@intel.com>
 In-Reply-To: <20240806-e810-live-migration-rd32-poll-timeout-v1-0-b5ada29ce703@intel.com>
 To: Anthony Nguyen <anthony.l.nguyen@intel.com>, 
@@ -81,23 +81,23 @@ X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  t=1722977200; x=1754513200;
  h=from:date:subject:mime-version:content-transfer-encoding:
  message-id:references:in-reply-to:to:cc;
- bh=k+WnW7INsG/N4mb7hQgfh9zlGDwv/2w/E+9TyAzWBAk=;
- b=TlPYXBSavMYD7i+V1ws+/OQ/Vckhq58/bQt84/XYkDlaoanf0BVPxWPO
- x9T43QeRzyAwxVJHRs4MQ8y1qGx9azI2hFkTL+goxce0WBmPHn06Lr6aq
- 8DOZ8afMq2xeBPcXJ4ev0Im66WNu5n+MURQIPxISP911Wan+yZWiqBzFd
- xife5jwQOZ5+hnOU7wciF07Ois+vjvz9e5eKNv93IFo23mMGxEf0dTIb8
- F+fgDP0v2E59p8PuOKlf0ElglCMGx6qO0Fgix+hch/16FSSRZRG/N5RMk
- zwqaXrA9v2WxdWChbYfaF0Yc6Qn4A4h700D//yAfwc2InKkMecROfWXnx
- Q==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ bh=fbHXV6FXemOClCoqyN/+Q1Zf5FPT/kguvpXYC77BHKI=;
+ b=lmeiPm41VHHUDyoDmdBd+AR+ReHimEc7v8iHsS2U06LDw9+o4yMDQqYc
+ N5/TxzWyUg+OHecUa+EjMXc78Hvo6iByOfag2ALBGEiGPiQrB6soKpEh0
+ 6pZLH441iXa32M9rR1+ZNz3RXbCmuTSBUgL5/MT0PhI6Xf28dd+NGWT5Q
+ INS8SSkiFNkSAZGr2qBa4+nu+J163FqTv6YLZtXLDjqwu6sNA7XnFQ84H
+ 2Mn/c716R8eenNzWJnciPWG6R2/+G+3nXIWkaGul1Jaf2aLRCGQkzverE
+ Pfcm4cnMzDfAxyYAA3khvZSyUuF2SLyqATdq8YTKqHMmzTsTmSQNBXzVJ
+ A==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=TlPYXBSa
-Subject: [Intel-wired-lan] [PATCH iwl-next 2/7] ice: improve debug print for
- control queue messages
+ header.s=Intel header.b=lmeiPm41
+Subject: [Intel-wired-lan] [PATCH iwl-next 3/7] ice: do not clutter debug
+ logs with unused data
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -117,114 +117,99 @@ Cc: Sergey Temerkhanov <sergey.temerkhanov@intel.com>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The ice_debug_cq function is called to print debug data for a control queue
-descriptor in multiple places. This includes both before we send a message
-on a transmit queue, after the writeback completion of a message on the
-transmit queue, and when we receive a message on a receive queue.
+From: Bruce Allan <bruce.w.allan@intel.com>
 
-This function does not include data about *which* control queue the message
-is on, nor whether it was what we sent to the queue or what we received
-from the queue.
+Currently, debug logs are unnecessarily cluttered with the contents of
+command data buffers even if the receiver of that command (i.e. FW or MBX)
+are not told to read the buffer.  Change to only log command data buffers
+when the RD flag (indicates receiver needs to read the buffer) is set.
+Continue to log response data buffer when the returned datalen is non-zero.
 
-Modify ice_debug_cq to take two extra parameters, a pointer to the control
-queue and a boolean indicating if this was a response or a command. Improve
-the debug messages by replacing "CQ CMD" with a string indicating which
-specific control queue (based on cq->qtype) and whether this was a command
-sent by the PF or a response from the queue.
+Also, rename a local variable to reflect what is in the hardware
+specification and how it is used elsewhere in the code, use local variables
+instead of duplicating endian conversions unnecessarily and remove an
+unnecessary assignment.
 
-This helps make the log output easier to understand and consume when
-debugging.
-
+Signed-off-by: Bruce Allan <bruce.w.allan@intel.com>
 Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
 Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_controlq.c | 36 +++++++++++++++++++++++----
- 1 file changed, 31 insertions(+), 5 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_adminq_cmd.h |  4 ++++
+ drivers/net/ethernet/intel/ice/ice_controlq.c   | 21 ++++++++++++---------
+ 2 files changed, 16 insertions(+), 9 deletions(-)
 
+diff --git a/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h b/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
+index 66f02988d549..0be1a98d7cc1 100644
+--- a/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
++++ b/drivers/net/ethernet/intel/ice/ice_adminq_cmd.h
+@@ -2632,12 +2632,16 @@ struct ice_aq_desc {
+ /* FW defined boundary for a large buffer, 4k >= Large buffer > 512 bytes */
+ #define ICE_AQ_LG_BUF	512
+ 
++#define ICE_AQ_FLAG_DD_S	0
++#define ICE_AQ_FLAG_CMP_S	1
+ #define ICE_AQ_FLAG_ERR_S	2
+ #define ICE_AQ_FLAG_LB_S	9
+ #define ICE_AQ_FLAG_RD_S	10
+ #define ICE_AQ_FLAG_BUF_S	12
+ #define ICE_AQ_FLAG_SI_S	13
+ 
++#define ICE_AQ_FLAG_DD		BIT(ICE_AQ_FLAG_DD_S)  /* 0x1    */
++#define ICE_AQ_FLAG_CMP		BIT(ICE_AQ_FLAG_CMP_S) /* 0x2    */
+ #define ICE_AQ_FLAG_ERR		BIT(ICE_AQ_FLAG_ERR_S) /* 0x4    */
+ #define ICE_AQ_FLAG_LB		BIT(ICE_AQ_FLAG_LB_S)  /* 0x200  */
+ #define ICE_AQ_FLAG_RD		BIT(ICE_AQ_FLAG_RD_S)  /* 0x400  */
 diff --git a/drivers/net/ethernet/intel/ice/ice_controlq.c b/drivers/net/ethernet/intel/ice/ice_controlq.c
-index 1b1b68a99bb2..b0b38825e300 100644
+index b0b38825e300..ddf07b773313 100644
 --- a/drivers/net/ethernet/intel/ice/ice_controlq.c
 +++ b/drivers/net/ethernet/intel/ice/ice_controlq.c
-@@ -887,16 +887,41 @@ static u16 ice_clean_sq(struct ice_hw *hw, struct ice_ctl_q_info *cq)
- 	return ICE_CTL_Q_DESC_UNUSED(sq);
- }
- 
-+/**
-+ * ice_ctl_q_str - Convert control queue type to string
-+ * @qtype: the control queue type
-+ *
-+ * Return: A string name for the given control queue type.
-+ */
-+static const char *ice_ctl_q_str(enum ice_ctl_q qtype)
-+{
-+	switch (qtype) {
-+	case ICE_CTL_Q_UNKNOWN:
-+		return "Unknown CQ";
-+	case ICE_CTL_Q_ADMIN:
-+		return "AQ";
-+	case ICE_CTL_Q_MAILBOX:
-+		return "MBXQ";
-+	case ICE_CTL_Q_SB:
-+		return "SBQ";
-+	default:
-+		return "Unrecognized CQ";
-+	}
-+}
-+
- /**
-  * ice_debug_cq
-  * @hw: pointer to the hardware structure
-+ * @cq: pointer to the specific Control queue
-  * @desc: pointer to control queue descriptor
-  * @buf: pointer to command buffer
-  * @buf_len: max length of buf
-+ * @response: true if this is the writeback response
-  *
-  * Dumps debug log about control command with descriptor contents.
-  */
--static void ice_debug_cq(struct ice_hw *hw, void *desc, void *buf, u16 buf_len)
-+static void ice_debug_cq(struct ice_hw *hw, struct ice_ctl_q_info *cq,
-+			 void *desc, void *buf, u16 buf_len, bool response)
+@@ -924,7 +924,7 @@ static void ice_debug_cq(struct ice_hw *hw, struct ice_ctl_q_info *cq,
+ 			 void *desc, void *buf, u16 buf_len, bool response)
  {
  	struct ice_aq_desc *cq_desc = desc;
- 	u16 len;
-@@ -910,7 +935,8 @@ static void ice_debug_cq(struct ice_hw *hw, void *desc, void *buf, u16 buf_len)
+-	u16 len;
++	u16 datalen, flags;
  
- 	len = le16_to_cpu(cq_desc->datalen);
+ 	if (!IS_ENABLED(CONFIG_DYNAMIC_DEBUG) &&
+ 	    !((ICE_DBG_AQ_DESC | ICE_DBG_AQ_DESC_BUF) & hw->debug_mask))
+@@ -933,13 +933,13 @@ static void ice_debug_cq(struct ice_hw *hw, struct ice_ctl_q_info *cq,
+ 	if (!desc)
+ 		return;
  
--	ice_debug(hw, ICE_DBG_AQ_DESC, "CQ CMD: opcode 0x%04X, flags 0x%04X, datalen 0x%04X, retval 0x%04X\n",
-+	ice_debug(hw, ICE_DBG_AQ_DESC, "%s %s: opcode 0x%04X, flags 0x%04X, datalen 0x%04X, retval 0x%04X\n",
-+		  ice_ctl_q_str(cq->qtype), response ? "Response" : "Command",
- 		  le16_to_cpu(cq_desc->opcode),
- 		  le16_to_cpu(cq_desc->flags),
- 		  le16_to_cpu(cq_desc->datalen), le16_to_cpu(cq_desc->retval));
-@@ -1064,7 +1090,7 @@ ice_sq_send_cmd(struct ice_hw *hw, struct ice_ctl_q_info *cq,
- 	/* Debug desc and buffer */
- 	ice_debug(hw, ICE_DBG_AQ_DESC, "ATQ: Control Send queue desc and buffer:\n");
+-	len = le16_to_cpu(cq_desc->datalen);
++	datalen = le16_to_cpu(cq_desc->datalen);
++	flags = le16_to_cpu(cq_desc->flags);
  
--	ice_debug_cq(hw, (void *)desc_on_ring, buf, buf_size);
-+	ice_debug_cq(hw, cq, (void *)desc_on_ring, buf, buf_size, false);
+ 	ice_debug(hw, ICE_DBG_AQ_DESC, "%s %s: opcode 0x%04X, flags 0x%04X, datalen 0x%04X, retval 0x%04X\n",
+ 		  ice_ctl_q_str(cq->qtype), response ? "Response" : "Command",
+-		  le16_to_cpu(cq_desc->opcode),
+-		  le16_to_cpu(cq_desc->flags),
+-		  le16_to_cpu(cq_desc->datalen), le16_to_cpu(cq_desc->retval));
++		  le16_to_cpu(cq_desc->opcode), flags, datalen,
++		  le16_to_cpu(cq_desc->retval));
+ 	ice_debug(hw, ICE_DBG_AQ_DESC, "\tcookie (h,l) 0x%08X 0x%08X\n",
+ 		  le32_to_cpu(cq_desc->cookie_high),
+ 		  le32_to_cpu(cq_desc->cookie_low));
+@@ -949,12 +949,15 @@ static void ice_debug_cq(struct ice_hw *hw, struct ice_ctl_q_info *cq,
+ 	ice_debug(hw, ICE_DBG_AQ_DESC, "\taddr (h,l)   0x%08X 0x%08X\n",
+ 		  le32_to_cpu(cq_desc->params.generic.addr_high),
+ 		  le32_to_cpu(cq_desc->params.generic.addr_low));
+-	if (buf && cq_desc->datalen != 0) {
++	/* Dump buffer iff 1) one exists and 2) is either a response indicated
++	 * by the DD and/or CMP flag set or a command with the RD flag set.
++	 */
++	if (buf && cq_desc->datalen &&
++	    (flags & (ICE_AQ_FLAG_DD | ICE_AQ_FLAG_CMP | ICE_AQ_FLAG_RD))) {
+ 		ice_debug(hw, ICE_DBG_AQ_DESC_BUF, "Buffer:\n");
+-		if (buf_len < len)
+-			len = buf_len;
  
- 	(cq->sq.next_to_use)++;
- 	if (cq->sq.next_to_use == cq->sq.count)
-@@ -1106,7 +1132,7 @@ ice_sq_send_cmd(struct ice_hw *hw, struct ice_ctl_q_info *cq,
+-		ice_debug_array(hw, ICE_DBG_AQ_DESC_BUF, 16, 1, buf, len);
++		ice_debug_array(hw, ICE_DBG_AQ_DESC_BUF, 16, 1, buf,
++				min_t(u16, buf_len, datalen));
+ 	}
+ }
  
- 	ice_debug(hw, ICE_DBG_AQ_MSG, "ATQ: desc and buffer writeback:\n");
- 
--	ice_debug_cq(hw, (void *)desc, buf, buf_size);
-+	ice_debug_cq(hw, cq, (void *)desc, buf, buf_size, true);
- 
- 	/* save writeback AQ if requested */
- 	if (details->wb_desc)
-@@ -1210,7 +1236,7 @@ ice_clean_rq_elem(struct ice_hw *hw, struct ice_ctl_q_info *cq,
- 
- 	ice_debug(hw, ICE_DBG_AQ_DESC, "ARQ: desc and buffer:\n");
- 
--	ice_debug_cq(hw, (void *)desc, e->msg_buf, cq->rq_buf_size);
-+	ice_debug_cq(hw, cq, (void *)desc, e->msg_buf, cq->rq_buf_size, true);
- 
- 	/* Restore the original datalen and buffer address in the desc,
- 	 * FW updates datalen to indicate the event message size
 
 -- 
 2.46.0.124.g2dc1a81c8933
