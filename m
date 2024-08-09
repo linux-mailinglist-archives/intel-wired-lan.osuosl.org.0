@@ -1,105 +1,225 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id DB3C194CF74
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  9 Aug 2024 13:42:12 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 35EB094CFB3
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  9 Aug 2024 14:00:47 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 9874C40889;
-	Fri,  9 Aug 2024 11:42:11 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 699F040163;
+	Fri,  9 Aug 2024 12:00:45 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 6UwZ01cDAlJ6; Fri,  9 Aug 2024 11:42:10 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id jllUpdKnRPT0; Fri,  9 Aug 2024 12:00:41 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0CA7740935
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org BE4674105C
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1723203730;
-	bh=DJbgHhNDrTyNe4DqZtZSKl+53i/y/cR93zXPNvW2I98=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1723204841;
+	bh=nbE+8O9ja40OF+JT8rcUvebk8v8dgpGpLYzVfufhV80=;
+	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=NQ27m8Ae4xjiKLG3FEqLaXUkA5NvVA8/l8Af4btZofX5uCDZaorTOUf3d6AAFy32S
-	 n6/jmset7p1xEO3eol16Hr2z7GrHkjfM86H5aKx0hUNtrdX13PYt1Toic7zu0ChaTA
-	 JPLFxN+WgxMOA5/WsguxKxuqc+Xt5mXzmfLqKiE5QkYGZ9j1vkKNBFPtfKGPMzI+jT
-	 6J0WeW53byvV1co1MhxTyRHQ8rP15Bkapu6h7tZuz0Y5hEcFcrLB8P3nootklfeL9T
-	 WshJLy0Fmyi5wBZt1oCrBT/YR+HBeb1KMmvPzvv1Lm7AuXQWoEsr9YIiW+nifWhLko
-	 w3/etTrQEJ6+w==
+	b=zV3dFnVNt3kpZIcK1DBEbOeJjxjIicXdG/y0LlGc6pfs2PukFGE5lOCwTDPF6MjCs
+	 2xPz6bZXGfXcB/MLPFJ6YHDO2vz/8iMAgedn5pfAvtz4lPnVFfJmHHz7A/p0/GnRzG
+	 Amz9AXTB3f2XSIbrpQgQ9JKTmJKGZYHTzYr+7xaOwpYnZRBJL2qVd6f1XWpq5/Yq8v
+	 pWLp318NlDBQ7KLg96IfDFsrGG+KRH9BwKDbYMMY6QZj0lF3I5OgRVBqXIRISJ3O1a
+	 DujUCvUzpgjwOJhenfAgWBPgCbRAxLZDn1IhP6V+fFn9LkoS82EacM+UD4pORjDPo7
+	 axnWTb42OPLqQ==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 0CA7740935;
-	Fri,  9 Aug 2024 11:42:10 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id BE4674105C;
+	Fri,  9 Aug 2024 12:00:41 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 0BD151BF336
- for <intel-wired-lan@lists.osuosl.org>; Fri,  9 Aug 2024 11:42:08 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 12DA31BF336
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  9 Aug 2024 12:00:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 047FA40879
- for <intel-wired-lan@lists.osuosl.org>; Fri,  9 Aug 2024 11:42:08 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id F389641320
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  9 Aug 2024 12:00:39 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id nW8iUZmzy8lD for <intel-wired-lan@lists.osuosl.org>;
- Fri,  9 Aug 2024 11:42:06 +0000 (UTC)
-Received-SPF: None (mailfrom) identity=mailfrom; client-ip=192.198.163.14;
- helo=mgamail.intel.com; envelope-from=michal.swiatkowski@linux.intel.com;
+ id ws4CybDiHopq for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  9 Aug 2024 12:00:38 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.10;
+ helo=mgamail.intel.com; envelope-from=aleksander.lobakin@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 5D59E4076F
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5D59E4076F
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.14])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 5D59E4076F
- for <intel-wired-lan@lists.osuosl.org>; Fri,  9 Aug 2024 11:42:06 +0000 (UTC)
-X-CSE-ConnectionGUID: 7M0XyddnRjGD+Mxrowx+1A==
-X-CSE-MsgGUID: 8OjW7kBuTOuODvs6IB1DAQ==
-X-IronPort-AV: E=McAfee;i="6700,10204,11158"; a="21548289"
-X-IronPort-AV: E=Sophos;i="6.09,276,1716274800"; d="scan'208";a="21548289"
-Received: from orviesa004.jf.intel.com ([10.64.159.144])
- by fmvoesa108.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 09 Aug 2024 04:42:06 -0700
-X-CSE-ConnectionGUID: g2ZQ+RRGQViu/BuVcLexkg==
-X-CSE-MsgGUID: q4e2HUQKRdah2Y4FRnLdYg==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 6E79341307
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6E79341307
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.10])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 6E79341307
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  9 Aug 2024 12:00:38 +0000 (UTC)
+X-CSE-ConnectionGUID: JnywH0PDR82y4GHiczVuoQ==
+X-CSE-MsgGUID: H9SGi0sNQYuletCx7Kbdfg==
+X-IronPort-AV: E=McAfee;i="6700,10204,11158"; a="32784454"
+X-IronPort-AV: E=Sophos;i="6.09,276,1716274800"; d="scan'208";a="32784454"
+Received: from fmviesa010.fm.intel.com ([10.60.135.150])
+ by fmvoesa104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 09 Aug 2024 05:00:37 -0700
+X-CSE-ConnectionGUID: k8gzlYu/QISkOcfdOInckw==
+X-CSE-MsgGUID: I2QRIZOYQFOGzIyKv5r+OQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.09,276,1716274800"; d="scan'208";a="62499325"
-Received: from mev-dev.igk.intel.com ([10.237.112.144])
- by orviesa004-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 09 Aug 2024 04:42:02 -0700
-Date: Fri, 9 Aug 2024 13:39:42 +0200
-From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-To: Jiri Pirko <jiri@resnulli.us>
-Message-ID: <ZrX//oyvlRUITMnb@mev-dev.igk.intel.com>
-References: <20240808072016.10321-1-michal.swiatkowski@linux.intel.com>
- <20240808072016.10321-2-michal.swiatkowski@linux.intel.com>
- <ZrTli6UxMkzE31TH@nanopsycho.orion>
- <ZrWlfhs6x6hrVhH+@mev-dev.igk.intel.com>
- <ZrX0znOhHFzafIuB@nanopsycho.orion>
- <ZrX33DvUqXGB2ork@mev-dev.igk.intel.com>
- <ZrX9mbsJD8VLEOs6@nanopsycho.orion>
+X-IronPort-AV: E=Sophos;i="6.09,276,1716274800"; d="scan'208";a="57633933"
+Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82])
+ by fmviesa010.fm.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
+ 09 Aug 2024 05:00:38 -0700
+Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
+ fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.39; Fri, 9 Aug 2024 05:00:37 -0700
+Received: from fmsedg602.ED.cps.intel.com (10.1.192.136) by
+ fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.39 via Frontend Transport; Fri, 9 Aug 2024 05:00:37 -0700
+Received: from NAM04-BN8-obe.outbound.protection.outlook.com (104.47.74.47) by
+ edgegateway.intel.com (192.55.55.71) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.39; Fri, 9 Aug 2024 05:00:36 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=r7+FCziZEuoJ6a9A0DkQUaVGGM6xCmCAu/VtIqrO+VSilCTklxeUUlZqNlq5Lc4r9G2zbxEP3c81TigLgsrgPwOkqrDQ/D5S415BOZylgeoHCs5uxqfEMn+yE660LUEPVERsG8zwGwTiO4sZfHZxZsdx9D7onRQDR+fTOMsiXIOxjNudvQH6JDzBon3oC8GBv3izrF/z7ipWrvMJO1PxZ1yjma6zhLRtVK0zdXxqzzKYvWKqTSj9q72l89InSAc/4vhw2QRDsopJCxM2kO4FsJBULPq4l9n+4jAwIVabVwHnHl8KUEFTuzbU0n1gVcX6owsRnbAOp+Fy7sWQhV7nZQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=nbE+8O9ja40OF+JT8rcUvebk8v8dgpGpLYzVfufhV80=;
+ b=mEPxRVqej/4dW/Q2IzDHwJLY8TbJLjzx6tFiNxXizMkQ350bo+z150rwIbwY4IOnErJf1DG9YHhufTKxohBGlp9Es1/XNZdCDWBTRY0XleYyHu7lTh5B5JE5pFPvETIGM1Bp7p4heq1Tc1ZSf1QfL6+GP2UkIhKf/ha9NpC4J1h/AeWMmN4FiMR5NHqEq7iqiSVeG29z6kX3rH0+nIk0SSBnobRnl/2+vg133gQv1khtLJ29Lk3KaLm8WWaBe22NrUsmD62TEvbg+24Dedjk/OsF119RxhXFddlcDC7XFzFK4UdEceAzj+YhRq/7mb9RBj1SGk/GPajdbyPOI0GebQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from DS0PR11MB8718.namprd11.prod.outlook.com (2603:10b6:8:1b9::20)
+ by PH7PR11MB5765.namprd11.prod.outlook.com (2603:10b6:510:139::7) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7828.26; Fri, 9 Aug
+ 2024 12:00:33 +0000
+Received: from DS0PR11MB8718.namprd11.prod.outlook.com
+ ([fe80::4b3b:9dbe:f68c:d808]) by DS0PR11MB8718.namprd11.prod.outlook.com
+ ([fe80::4b3b:9dbe:f68c:d808%5]) with mapi id 15.20.7828.023; Fri, 9 Aug 2024
+ 12:00:32 +0000
+Message-ID: <741830c8-7d81-4bbf-9f75-272a8f3d765a@intel.com>
+Date: Fri, 9 Aug 2024 14:00:27 +0200
+User-Agent: Mozilla Thunderbird
+To: Paul Greenwalt <paul.greenwalt@intel.com>
+References: <20240801015829.4011051-1-paul.greenwalt@intel.com>
+From: Alexander Lobakin <aleksander.lobakin@intel.com>
+Content-Language: en-US
+In-Reply-To: <20240801015829.4011051-1-paul.greenwalt@intel.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+X-ClientProxiedBy: MW4PR04CA0099.namprd04.prod.outlook.com
+ (2603:10b6:303:83::14) To DS0PR11MB8718.namprd11.prod.outlook.com
+ (2603:10b6:8:1b9::20)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <ZrX9mbsJD8VLEOs6@nanopsycho.orion>
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DS0PR11MB8718:EE_|PH7PR11MB5765:EE_
+X-MS-Office365-Filtering-Correlation-Id: 27bc3b54-6a10-45a0-ddb5-08dcb86adef4
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|1800799024|376014;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?MEZnTkJSa3dZT2JZV2VGeGJjSnFndHBaTlRiM3VRVEtZL3pjZ3RLelQ1dS91?=
+ =?utf-8?B?QVBrKzlEcFZPMmZqWUxOYWNndS9vSzNtZW05RTZ4R29kWCtJTGZQbXpweW9K?=
+ =?utf-8?B?YUFnUUtjZjgvL1BMakdrdmx1SlJhV1Q2T25EaW5EbFJjZUxVTnlJaHcrUUhO?=
+ =?utf-8?B?dlF1SU9SRGRtNHZBT0FyWHlodFNHM0FWcXhiVVlidDViSlQ2ZGl4bjhHdmc5?=
+ =?utf-8?B?NndHS3pxaEVBSkcxaks0VU9paVJZc3RPcG1jaEtDVzRWNDREMm5sOXNGcmQv?=
+ =?utf-8?B?dGFGc2dBRmkva21COUlFVFE5eTg0Q0toNHcrVVRsbG9UeE1MN2lRclJSb3Zv?=
+ =?utf-8?B?S09TeThERjA4cGpmT2Rmd1dRc0llTDBUMjV0em5KM0VRcG44TUV1MFBxb0Fm?=
+ =?utf-8?B?RlNMcHM1blliWGZvdmVBSUVOZm1laTlZaVpXSlZBc2NEQnBub3VaNTVFM2Qy?=
+ =?utf-8?B?dTJtS2ZHZmhIVkZxOTNkcE9ieTZyNUd1NlNoTGxpSUpaTDVaMk1sakZiSmNu?=
+ =?utf-8?B?RnVVK1lsNCs3WVNKYys4bEtSNDlvNnl4ZTRraFR0SFZxUnlVVStYQ1VBZ3Nm?=
+ =?utf-8?B?V1BicUlSNG5ONnR4Njk3WG5FQXVsWSsvUU1kNGk4bEljeUYxRnJQdi92YTJD?=
+ =?utf-8?B?SnprUFA1QjdOcmpWQmVrL2p4b2dQeXliT1M2eUl2U0prTkJLRnpTQzJlUE9E?=
+ =?utf-8?B?aWtrQm5vQm9uRW1PSlVQN3JycGplaGwvdHZqdER6VlZsaFJDRlE5VEY1NzZC?=
+ =?utf-8?B?dE5kZ3hQTUo2MVJSNUp3WHR1VE9QMWN0dkFidVFBYXdNQ1hzRzU1NVVRREY3?=
+ =?utf-8?B?MTdKV2U1MHBQekhNVUpjN1YwNjJnM1R3Z091S29qNUpEZ1VHdkdSbVNZWEx4?=
+ =?utf-8?B?dGdmMUdTdjJHdmE1Um5qZkI5Y1BXdHhzcXMxWHlycVA4MkRHSWJDMkhOdm9M?=
+ =?utf-8?B?b0k4R0Q3WXI0dnJkY3VrZXcwU0pWTDMvUTdVQkhvRy85Z0dEcHhZL045VDl4?=
+ =?utf-8?B?dWI4TFh5UzM5eWFlUGMwN3RtZUhZMFlINkpJclc3b1hnRkhSTXBWV0lJWWds?=
+ =?utf-8?B?UktkWk9RRmlUU24rRFZwZ0owQWk4SDJZV3ZFazJGdlF6amRGc3d5RGw1d2ZV?=
+ =?utf-8?B?RVByeDJWNnArZUV4RHhSNXF2Y2ZMZm5LblFndUdkY2xYMnBqY3grbDFkeGRG?=
+ =?utf-8?B?TmV6MWpMeWZJUFgyS1hBcUhqT2Y3RkxuM1NZQ1c5SG4yeFFwaUJaY0hZS2RW?=
+ =?utf-8?B?N0dNNDc2SG8vbG1tY3p2S0piajhYSFcrblJpWVJ2YWQ5R2FrSVQ5dS9VZTNI?=
+ =?utf-8?B?eFB0cW5ucmM1SEY0eWVWRHhlNWxwN2M0UkU3MmFST013SVU3NTRIeHRBTzNs?=
+ =?utf-8?B?T0lGcmtpRjUrekRPWitiZkt1TUtnQkY5MjdoOXRkT1QxSVNIRC9qUW1xOTJO?=
+ =?utf-8?B?RTBCVHNaWnJvbHdJdHQyRTBGOGpyRnYxcmpSVnRraWdZOU0xWWhsdjdDUTF3?=
+ =?utf-8?B?MlpYSmc4QWo3bmc1REdVT2RaZDcvOGo4eTNHNExmbXhDR01CdDRhK0Qxb0k1?=
+ =?utf-8?B?R2k5S2R1N25FNWRaUWN6N2tSekI3ZEN5SFozZitPenQ5a3U5UTVHQWl6ZnVz?=
+ =?utf-8?B?TzBFZUN5ZS9CdlhUQm4zamVMU0NNYTZ2czVGQ0xnMTRiN3J6bFZaa1lRdTFt?=
+ =?utf-8?B?VVdSK2xkd082MXFDRHZpalIvSUhOeHQ2KzRmb0VVOStZTWlyM3FkclZTOHJB?=
+ =?utf-8?B?RVNOSFU0dmtTakZRUDhzRjdST2ptZ3paczRxQ01vQTJRRnFrdWRUd0JIUitR?=
+ =?utf-8?B?MHZ4T1BHL1lIVmkweU05QT09?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:DS0PR11MB8718.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(366016)(1800799024)(376014); DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?Y2o5ck1NNVZjTkdiRG5LTE8zSWV1d2hBR0QvNlUwM0kwQkhLbzZFcFNIOHRW?=
+ =?utf-8?B?cmFMb3hrdXVBME4rRUVxVVE3d3ZSbXFTZmtmb294L1FBS1BRaC9raGlSSUhi?=
+ =?utf-8?B?RmlBZi80UjU5cE1ub3hhYTlLcGw0S0R4a21ZL2dmemtMREphZ2FaUkRpbVhh?=
+ =?utf-8?B?R3o4UWpyRjFobVd0empmL0k3WDIzN2g5bmxuLzdtYWJDSU9IRFprMTdzQnBh?=
+ =?utf-8?B?US9MZ0xXK1dEQTlTOEtaSTBsUDJwR285TmZyR3RWL1MrcWtZUFRXWm9laVBP?=
+ =?utf-8?B?YkRCcjVIL0JnS0xoTWtRTGVqS0xSWVlpU3Z2cU1TQ2N1WFRFY21Yc3ZKbS9S?=
+ =?utf-8?B?MFFTT1o0cXVWZVYzM05Za2RMUUZSNE1oQ1lzdEV4TTBadU55MG5zUEVDdk9h?=
+ =?utf-8?B?N0VReWVYdFJwd1JuYmVTZkw3Tm9EY1duQjhVWnpyTHBxckhNc3U3d3pLbk9C?=
+ =?utf-8?B?bzBTS2hzYThwZ2VwT29XdUY1NVNqZUhpOW9wRy9rT2szNC9oYmNiQWNvUXJD?=
+ =?utf-8?B?V2JqQ2U1QWtXREp0bU9tOEVsR2owajlVUVZxT2h6Ukl5UHV3OEZvL001bnAw?=
+ =?utf-8?B?ek1kcUhzaXVwVWVVM2R0MlZVZ3czUXlaVEIwOHpKZmNRNWhoU3hURkRQcGpW?=
+ =?utf-8?B?N3NTVEh3dnllUjdKUlJsYk8ybE9Qa1l5elBXMi9ab2ZCKzFrbDVNdE9IV3pU?=
+ =?utf-8?B?cU0zdXM3bGpHL0lJTFI1RTJGUVJFR2FWTzVISmd2TkFnVkdCOVZFTHJiUHFL?=
+ =?utf-8?B?U1Z2M3Vlc3QrV1hwVFExeUJwMTFLQWRjNkx5cU5CSXZPRyt4R1R2MFdiQVFG?=
+ =?utf-8?B?UXBUL1RJK1dZak5ReEZURGMyN25ZdVA3Snphb2w3eFBhcDg2SDFhQXdadWZy?=
+ =?utf-8?B?ZXQrN25mcGlRV1JVMWtOL2ZhRy9HM3NncGc4elFhZmdDYk1aa0dXay9DWXZ1?=
+ =?utf-8?B?Vm9oN1Z3SUhiZm9pQlBZWVBBNUFabFhsMnZTcmd3WmswUkJUQnRiVXVRMFZI?=
+ =?utf-8?B?Q29ZNVdycmxUbXF2WTE1ZTJNLzI3L3lXT2wrYTB3c2JUZHMrTm55S1dTS1c0?=
+ =?utf-8?B?NSt4ek5FeG9TZmNscTFvWHUwWjBRMHR6aVJjQmg1cUNtMjd0YWYxelVhakZk?=
+ =?utf-8?B?OWNlc3dXQnJxYlBXRG9NT3QwTkMwR2Q4aWdFdDlTbmE0WlUwMzRCZ0ZQcUdQ?=
+ =?utf-8?B?ZS9oVHY4eEZFRENSckJmT2FtNHZxeGk2Y2FNTmhOblNVTXNpdi95NzZTYzZW?=
+ =?utf-8?B?VVNMd2QxSlJ2Y2lkQlhqWG5EemY1NUtscjR2RDdhdTB1WTRKR0JQRFNuMGwv?=
+ =?utf-8?B?eTJIUzllNmR1UG9IemVvOG5zbDlHVTV1c1kwV1UycGJ0cDFYSnRxa1JOeXZ4?=
+ =?utf-8?B?ZTlYM3JXeDRpaEdEeGdZVGMvVXV5ZnJ0dTkwZ3lhU0NkMmxwU2gvQVQ5REdU?=
+ =?utf-8?B?aXFQK1IrK0wxK3FUSDZEVU5TTEVCVFk1OXpyVmdlUUVobkU1OS9PcnEzNVRF?=
+ =?utf-8?B?K2UvWEJMQ25IbEsvUFM3YVZGSjgrUzdObXYrWWdLYnJjN0pCMGNvZVNHSGRR?=
+ =?utf-8?B?L0NkNGgwbGZuVDRGdFN3N2VlMzR5NklPcDNCUGFTazE2VWVzTnpZRlVIVHly?=
+ =?utf-8?B?c0RDdkpUWVAxU0xCRkE3NWJBWVdtY1dvK2svbTFNRlVPOEtwNkhveWE5dk41?=
+ =?utf-8?B?NmUwR0pta3ZEMWwvc0JzZ3h4YXI3dEdyeElvV0drUHhDUWh5UWtqdmdnK0lx?=
+ =?utf-8?B?Tm5VTzh5TzFhWHNRaXVnNTAwV0YxVC9pRVE1em9jNTYrNXRmNW9rZnVCUzVP?=
+ =?utf-8?B?QU01SDVIb0QwV3VmeXZDMUVsTUh5dUVDekZDaHhZbDlwcVZsWVUvcEZjaWVN?=
+ =?utf-8?B?ejhUMk1jRU5PanlPcVhvMnRGYVBQWlJBUmVXQXZWUDdSWTZvNkVoZ2ppWitJ?=
+ =?utf-8?B?emNYVisyUVFHZVdja1B1V2phL1dGNGpnZ2E1OUk0eFVxa0xpZmhxbVZrdmpz?=
+ =?utf-8?B?NGhNT1VybHRkSktXWmxKS0l3ZTNuVnk0SW5JV0VGM1hZaE9zOVVUekJybDhC?=
+ =?utf-8?B?ZE5zbWVIRXpyaDJ1OUJvWDV6L3dKK0duWUd2TE1nWWdZMmNycmpWWmsvUU1a?=
+ =?utf-8?B?anhieHpwZlRKTW9ZREs0UllqMVArN1NkWXdSQ3ZET0RVVVI5TlpMWERmVDEx?=
+ =?utf-8?B?c1E9PQ==?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: 27bc3b54-6a10-45a0-ddb5-08dcb86adef4
+X-MS-Exchange-CrossTenant-AuthSource: DS0PR11MB8718.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 09 Aug 2024 12:00:32.8684 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: zWMEluKyfPwpw7oaVLI9URcDe1m3GOMVUZsY6xgH+z8ckcezt9XEaDHa/KjGFe/g5x0n6Oo37bQCAQT2C1cMiwJ5+EQyJvVDXJCBeyuvrzw=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH7PR11MB5765
+X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1723203726; x=1754739726;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=ENCiLZw/mlwwf0W3NhYvki0vgpuH6IhKSjrj7ev108o=;
- b=Ffg/IA6+/CRFCKPziEbWbRSB/qOlSUuJnqxh+LC28VlKteJWqNPRvpOm
- wugp886YDy1zccmYcFEgDSRfzz7Cfhk0Vp1diVjHFLzKfGk5zot9mAI97
- +jtAfIpjKQ7pZPy6Kb92jfZyitKvrSQyh/7cdr0hxeCtXj2+al1nnNUNc
- IzzPaPQd8saHGDbW9/y+yBlJmEkWGDl7Qy9sQE0CyWNj6Vjc5ztR50rXQ
- PHcIRCki7/rFGFe1XwYm7PnV4D8m1ZZP+ASdJbIHA6a8fJEYvqBoRXonD
- ahF+Duja6TnvVG4XxcTROHLKwnavfHK5iuyJ8VVX5GNF7AWuk6XM3GqoX
- g==;
+ t=1723204838; x=1754740838;
+ h=message-id:date:subject:to:references:from:cc:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=4sU0yKuwxxiJ6xaJnfW4K4sTFG4EpWMbVhvkQ7x8wHM=;
+ b=YLwovGsuxq7i4RmWmrALVy3FmpC/lpQRg5d9mRvA/BzAx/KxlYugTJIk
+ AP9/v4c/qM6p/mXlpxip1v1n3I5JSELP1cpBrsIe27xaKC5OcG8xeIBX/
+ oMil9oIQtXLX4eYcoN0izwsGq4GVZUJwG09BNi5Z8NnRDOmnhskC9zofP
+ fb2YMsks28D2cQ8HWQGXdqSDoobkx5p6QWRRZ8yzHbp59e5py2/sWGdTp
+ LYEGJzHkiclUno6ONZ+ukkdUt50qNwOhOXAYERwVCHcCeP6twgf0UJSKX
+ +JJQuJbUox1+SuNzXV6tBK1RD3fqV0NxWGIFs2Ah1cREmb6af5Pp6rPt1
+ w==;
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=linux.intel.com
+ dmarc=pass (p=none dis=none)
+ header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=Ffg/IA6+
-Subject: Re: [Intel-wired-lan] [iwl-next v3 1/8] ice: devlink PF MSI-X max
- and min parameter
+ header.s=Intel header.b=YLwovGsu
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v2] ice: add E830 HW VF
+ mailbox message limit support
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -112,242 +232,148 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: wojciech.drewek@intel.com, marcin.szycik@intel.com, netdev@vger.kernel.org,
- konrad.knitter@intel.com, pawel.chmielewski@intel.com,
- intel-wired-lan@lists.osuosl.org, nex.sw.ncis.nat.hpm.dev@intel.com,
- pio.raczynski@gmail.com, sridhar.samudrala@intel.com, jacob.e.keller@intel.com,
- przemyslaw.kitszel@intel.com
+Cc: intel-wired-lan@lists.osuosl.org
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Fri, Aug 09, 2024 at 01:29:29PM +0200, Jiri Pirko wrote:
-> Fri, Aug 09, 2024 at 01:05:00PM CEST, michal.swiatkowski@linux.intel.com wrote:
-> >On Fri, Aug 09, 2024 at 12:51:58PM +0200, Jiri Pirko wrote:
-> >> Fri, Aug 09, 2024 at 07:13:34AM CEST, michal.swiatkowski@linux.intel.com wrote:
-> >> >On Thu, Aug 08, 2024 at 05:34:35PM +0200, Jiri Pirko wrote:
-> >> >> Thu, Aug 08, 2024 at 09:20:09AM CEST, michal.swiatkowski@linux.intel.com wrote:
-> >> >> >Use generic devlink PF MSI-X parameter to allow user to change MSI-X
-> >> >> >range.
-> >> >> >
-> >> >> >Reviewed-by: Wojciech Drewek <wojciech.drewek@intel.com>
-> >> >> >Signed-off-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-> >> >> >---
-> >> >> > .../net/ethernet/intel/ice/devlink/devlink.c  | 56 ++++++++++++++++++-
-> >> >> > drivers/net/ethernet/intel/ice/ice.h          |  8 +++
-> >> >> > drivers/net/ethernet/intel/ice/ice_irq.c      | 14 ++++-
-> >> >> > 3 files changed, 76 insertions(+), 2 deletions(-)
-> >> >> >
-> >> >> >diff --git a/drivers/net/ethernet/intel/ice/devlink/devlink.c b/drivers/net/ethernet/intel/ice/devlink/devlink.c
-> >> >> >index 29a5f822cb8b..bdc22ea13e0f 100644
-> >> >> >--- a/drivers/net/ethernet/intel/ice/devlink/devlink.c
-> >> >> >+++ b/drivers/net/ethernet/intel/ice/devlink/devlink.c
-> >> >> >@@ -1518,6 +1518,32 @@ static int ice_devlink_local_fwd_validate(struct devlink *devlink, u32 id,
-> >> >> > 	return 0;
-> >> >> > }
-> >> >> > 
-> >> >> >+static int
-> >> >> >+ice_devlink_msix_max_pf_validate(struct devlink *devlink, u32 id,
-> >> >> >+				 union devlink_param_value val,
-> >> >> >+				 struct netlink_ext_ack *extack)
-> >> >> >+{
-> >> >> >+	if (val.vu16 > ICE_MAX_MSIX) {
-> >> >> >+		NL_SET_ERR_MSG_MOD(extack, "PF max MSI-X is too high");
-> >> >> 
-> >> >> No reason to have "PF" in the text. Also, no reason to have "max MSI-X".
-> >> >> That is the name of the param.
-> >> >> 
-> >> >
-> >> >Ok, will change both, thanks.
-> >> >
-> >> >> 
-> >> >> 
-> >> >> >+		return -EINVAL;
-> >> >> >+	}
-> >> >> >+
-> >> >> >+	return 0;
-> >> >> >+}
-> >> >> >+
-> >> >> >+static int
-> >> >> >+ice_devlink_msix_min_pf_validate(struct devlink *devlink, u32 id,
-> >> >> >+				 union devlink_param_value val,
-> >> >> >+				 struct netlink_ext_ack *extack)
-> >> >> >+{
-> >> >> >+	if (val.vu16 <= ICE_MIN_MSIX) {
-> >> >> >+		NL_SET_ERR_MSG_MOD(extack, "PF min MSI-X is too low");
-> >> >> 
-> >> >> Same comment as for max goes here.
-> >> >> 
-> >> >> 
-> >> >> >+		return -EINVAL;
-> >> >> >+	}
-> >> >> >+
-> >> >> >+	return 0;
-> >> >> >+}
-> >> >> >+
-> >> >> > enum ice_param_id {
-> >> >> > 	ICE_DEVLINK_PARAM_ID_BASE = DEVLINK_PARAM_GENERIC_ID_MAX,
-> >> >> > 	ICE_DEVLINK_PARAM_ID_TX_SCHED_LAYERS,
-> >> >> >@@ -1535,6 +1561,15 @@ static const struct devlink_param ice_dvl_rdma_params[] = {
-> >> >> > 			      ice_devlink_enable_iw_validate),
-> >> >> > };
-> >> >> > 
-> >> >> >+static const struct devlink_param ice_dvl_msix_params[] = {
-> >> >> >+	DEVLINK_PARAM_GENERIC(MSIX_VEC_PER_PF_MAX,
-> >> >> >+			      BIT(DEVLINK_PARAM_CMODE_DRIVERINIT),
-> >> >> >+			      NULL, NULL, ice_devlink_msix_max_pf_validate),
-> >> >> >+	DEVLINK_PARAM_GENERIC(MSIX_VEC_PER_PF_MIN,
-> >> >> >+			      BIT(DEVLINK_PARAM_CMODE_DRIVERINIT),
-> >> >> >+			      NULL, NULL, ice_devlink_msix_min_pf_validate),
-> >> >> >+};
-> >> >> >+
-> >> >> > static const struct devlink_param ice_dvl_sched_params[] = {
-> >> >> > 	DEVLINK_PARAM_DRIVER(ICE_DEVLINK_PARAM_ID_TX_SCHED_LAYERS,
-> >> >> > 			     "tx_scheduling_layers",
-> >> >> >@@ -1637,6 +1672,7 @@ void ice_devlink_unregister(struct ice_pf *pf)
-> >> >> > int ice_devlink_register_params(struct ice_pf *pf)
-> >> >> > {
-> >> >> > 	struct devlink *devlink = priv_to_devlink(pf);
-> >> >> >+	union devlink_param_value value;
-> >> >> > 	struct ice_hw *hw = &pf->hw;
-> >> >> > 	int status;
-> >> >> > 
-> >> >> >@@ -1645,11 +1681,27 @@ int ice_devlink_register_params(struct ice_pf *pf)
-> >> >> > 	if (status)
-> >> >> > 		return status;
-> >> >> > 
-> >> >> >+	status = devl_params_register(devlink, ice_dvl_msix_params,
-> >> >> >+				      ARRAY_SIZE(ice_dvl_msix_params));
-> >> >> >+	if (status)
-> >> >> >+		return status;
-> >> >> >+
-> >> >> > 	if (hw->func_caps.common_cap.tx_sched_topo_comp_mode_en)
-> >> >> > 		status = devl_params_register(devlink, ice_dvl_sched_params,
-> >> >> > 					      ARRAY_SIZE(ice_dvl_sched_params));
-> >> >> >+	if (status)
-> >> >> >+		return status;
-> >> >> > 
-> >> >> >-	return status;
-> >> >> >+	value.vu16 = pf->msix.max;
-> >> >> >+	devl_param_driverinit_value_set(devlink,
-> >> >> >+					DEVLINK_PARAM_GENERIC_ID_MSIX_VEC_PER_PF_MAX,
-> >> >> >+					value);
-> >> >> >+	value.vu16 = pf->msix.min;
-> >> >> >+	devl_param_driverinit_value_set(devlink,
-> >> >> >+					DEVLINK_PARAM_GENERIC_ID_MSIX_VEC_PER_PF_MIN,
-> >> >> >+					value);
-> >> >> >+
-> >> >> >+	return 0;
-> >> >> > }
-> >> >> > 
-> >> >> > void ice_devlink_unregister_params(struct ice_pf *pf)
-> >> >> >@@ -1659,6 +1711,8 @@ void ice_devlink_unregister_params(struct ice_pf *pf)
-> >> >> > 
-> >> >> > 	devl_params_unregister(devlink, ice_dvl_rdma_params,
-> >> >> > 			       ARRAY_SIZE(ice_dvl_rdma_params));
-> >> >> >+	devl_params_unregister(devlink, ice_dvl_msix_params,
-> >> >> >+			       ARRAY_SIZE(ice_dvl_msix_params));
-> >> >> > 
-> >> >> > 	if (hw->func_caps.common_cap.tx_sched_topo_comp_mode_en)
-> >> >> > 		devl_params_unregister(devlink, ice_dvl_sched_params,
-> >> >> >diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
-> >> >> >index d6f80da30dec..a67456057c77 100644
-> >> >> >--- a/drivers/net/ethernet/intel/ice/ice.h
-> >> >> >+++ b/drivers/net/ethernet/intel/ice/ice.h
-> >> >> >@@ -95,6 +95,7 @@
-> >> >> > #define ICE_MIN_LAN_TXRX_MSIX	1
-> >> >> > #define ICE_MIN_LAN_OICR_MSIX	1
-> >> >> > #define ICE_MIN_MSIX		(ICE_MIN_LAN_TXRX_MSIX + ICE_MIN_LAN_OICR_MSIX)
-> >> >> >+#define ICE_MAX_MSIX		256
-> >> >> > #define ICE_FDIR_MSIX		2
-> >> >> > #define ICE_RDMA_NUM_AEQ_MSIX	4
-> >> >> > #define ICE_MIN_RDMA_MSIX	2
-> >> >> >@@ -545,6 +546,12 @@ struct ice_agg_node {
-> >> >> > 	u8 valid;
-> >> >> > };
-> >> >> > 
-> >> >> >+struct ice_pf_msix {
-> >> >> >+	u16 cur;
-> >> >> >+	u16 min;
-> >> >> >+	u16 max;
-> >> >> >+};
-> >> >> >+
-> >> >> > struct ice_pf {
-> >> >> > 	struct pci_dev *pdev;
-> >> >> > 	struct ice_adapter *adapter;
-> >> >> >@@ -615,6 +622,7 @@ struct ice_pf {
-> >> >> > 	struct msi_map ll_ts_irq;	/* LL_TS interrupt MSIX vector */
-> >> >> > 	u16 max_pf_txqs;	/* Total Tx queues PF wide */
-> >> >> > 	u16 max_pf_rxqs;	/* Total Rx queues PF wide */
-> >> >> >+	struct ice_pf_msix msix;
-> >> >> > 	u16 num_lan_msix;	/* Total MSIX vectors for base driver */
-> >> >> > 	u16 num_lan_tx;		/* num LAN Tx queues setup */
-> >> >> > 	u16 num_lan_rx;		/* num LAN Rx queues setup */
-> >> >> >diff --git a/drivers/net/ethernet/intel/ice/ice_irq.c b/drivers/net/ethernet/intel/ice/ice_irq.c
-> >> >> >index ad82ff7d1995..4e559fd6e49f 100644
-> >> >> >--- a/drivers/net/ethernet/intel/ice/ice_irq.c
-> >> >> >+++ b/drivers/net/ethernet/intel/ice/ice_irq.c
-> >> >> >@@ -252,7 +252,19 @@ void ice_clear_interrupt_scheme(struct ice_pf *pf)
-> >> >> > int ice_init_interrupt_scheme(struct ice_pf *pf)
-> >> >> > {
-> >> >> > 	int total_vectors = pf->hw.func_caps.common_cap.num_msix_vectors;
-> >> >> >-	int vectors, max_vectors;
-> >> >> >+	union devlink_param_value value;
-> >> >> >+	int vectors, max_vectors, err;
-> >> >> >+
-> >> >> >+	/* load default PF MSI-X range */
-> >> >> >+	err = devl_param_driverinit_value_get(priv_to_devlink(pf),
-> >> >> >+					      DEVLINK_PARAM_GENERIC_ID_MSIX_VEC_PER_PF_MIN,
-> >> >> >+					      &value);
-> >> >> 
-> >> >> If err is not 0, you have a bug in the driver. Perhaps it a about the
-> >> >> time to make this return void and add some WARN_ONs inside the function?
-> >> >> 
-> >> >
-> >> >err is not 0 when this param isn't found (not registered yet). It is a
-> >> >case when driver is probing, I want to have here default values and
-> >> >register it later. Instead of checking if it is probe context or reload
-> >> >context I am checking if param already exists. The param doesn't exist in
-> >> >probe, but exists in reload.
-> >> 
-> >> No, you have to make sure that you are using these values after they are
-> >> set. Please fix.
-> >> 
-> >
-> >I am not using value if this function returns error. If function returns
-> >error default values are set. The function
-> >devl_param_driverinit_value_get() is already checking if parameter
-> >exists. Why do you want me to check it before calling this function? Do
-> >you mean that calling it with not registered parameters is a problem? I
-> >don't see why it can be a problem.
-> 
-> If you call this for non-existing parameter, your driver flow is wrong.
-> That's my point.
-> 
-> 
+From: Paul Greenwalt <paul.greenwalt@intel.com>
+Date: Wed, 31 Jul 2024 21:58:29 -0400
 
-But this function is checking this scenerio (existing of parameter), why
-not to use it?
+> E830 adds hardware support to prevent the VF from overflowing the PF
+> mailbox with VIRTCHNL messages. E830 will use the hardware feature
+> (ICE_F_MBX_LIMIT) instead of the software solution ice_is_malicious_vf().
+> 
+> To prevent a VF from overflowing the PF, the PF sets the number of
+> messages per VF that can be in the PF's mailbox queue
+> (ICE_MBX_OVERFLOW_WATERMARK). When the PF process a message from a VF,
+> the PF decrements the per VF message count using the E830_MBX_VF_DEC_TRIG
+> register.
+> 
+> Signed-off-by: Paul Greenwalt <paul.greenwalt@intel.com>
+> ---
+> v1 -> v2:
+> - Update ice_mbx_vf_dec_trig_e830 and ice_mbx_vf_clear_cnt_e830 onstack
+>   variables to const
+> ---
+>  drivers/net/ethernet/intel/ice/ice.h          |  1 +
+>  .../net/ethernet/intel/ice/ice_hw_autogen.h   |  3 ++
+>  drivers/net/ethernet/intel/ice/ice_lib.c      | 12 +++++++
+>  drivers/net/ethernet/intel/ice/ice_main.c     | 24 ++++++++++----
+>  drivers/net/ethernet/intel/ice/ice_sriov.c    |  3 +-
+>  drivers/net/ethernet/intel/ice/ice_vf_lib.c   | 26 +++++++++++++--
+>  drivers/net/ethernet/intel/ice/ice_vf_mbx.c   | 32 +++++++++++++++++++
+>  drivers/net/ethernet/intel/ice/ice_vf_mbx.h   |  3 ++
+>  drivers/net/ethernet/intel/ice/ice_virtchnl.c |  8 +++--
+>  9 files changed, 99 insertions(+), 13 deletions(-)
+> 
+> diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
+> index 4c563b0d57ac..53c8edbfaede 100644
+> --- a/drivers/net/ethernet/intel/ice/ice.h
+> +++ b/drivers/net/ethernet/intel/ice/ice.h
+> @@ -207,6 +207,7 @@ enum ice_feature {
+>  	ICE_F_GNSS,
+>  	ICE_F_ROCE_LAG,
+>  	ICE_F_SRIOV_LAG,
+> +	ICE_F_MBX_LIMIT,
+>  	ICE_F_MAX
+>  };
+>  
+> diff --git a/drivers/net/ethernet/intel/ice/ice_hw_autogen.h b/drivers/net/ethernet/intel/ice/ice_hw_autogen.h
+> index 91cbae1eec89..a306ea9b207c 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_hw_autogen.h
+> +++ b/drivers/net/ethernet/intel/ice/ice_hw_autogen.h
+> @@ -539,5 +539,8 @@
+>  #define E830_PRTMAC_CL01_QNT_THR_CL0_M		GENMASK(15, 0)
+>  #define VFINT_DYN_CTLN(_i)			(0x00003800 + ((_i) * 4))
+>  #define VFINT_DYN_CTLN_CLEARPBA_M		BIT(1)
+> +#define E830_MBX_PF_IN_FLIGHT_VF_MSGS_THRESH    0x00234000
+> +#define E830_MBX_VF_DEC_TRIG(_VF)               (0x00233800 + ((_VF) * 4))
+> +#define E830_MBX_VF_IN_FLIGHT_MSGS_AT_PF_CNT(_VF) (0x00233000 + ((_VF) * 4))
 
-The ice_init_interrupt_scheme is reused in probe and in reload. I don't
-think it is reasonable to have one for probe and one for reload. Simpler
-is to check if the context is probe or reload. Instead of checking sth
-else (I don't know, flag from upper layer, or flag set only in
-probe/reload) I am checking if parameters exsists. I don't think the
-flow is wrong here.
+Still poor indentation, there must be tabs, no spaces.
+Also, parenthesis around `(_VF) * 4` are redundant.
 
-> >
-> >> 
-> >> >
-> >> >> 
-> >> >> >+	pf->msix.min = err ? ICE_MIN_MSIX : value.vu16;
-> >> >> >+
-> >> >> >+	err = devl_param_driverinit_value_get(priv_to_devlink(pf),
-> >> >> >+					      DEVLINK_PARAM_GENERIC_ID_MSIX_VEC_PER_PF_MAX,
-> >> >> >+					      &value);
-> >> >> >+	pf->msix.max = err ? total_vectors / 2 : value.vu16;
-> >> >> > 
-> >> >> > 	vectors = ice_ena_msix_range(pf);
-> >> >> > 
-> >> >> >-- 
-> >> >> >2.42.0
-> >> >> >
+>  
+>  #endif /* _ICE_HW_AUTOGEN_H_ */
+> diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
+> index fc5b87f51702..a6fa2ed6c4ab 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_lib.c
+> +++ b/drivers/net/ethernet/intel/ice/ice_lib.c
+> @@ -3938,6 +3938,18 @@ void ice_init_feature_support(struct ice_pf *pf)
+>  		if (ice_gnss_is_gps_present(&pf->hw))
+>  			ice_set_feature_support(pf, ICE_F_GNSS);
+>  		break;
+> +	case ICE_DEV_ID_E830CC_BACKPLANE:
+> +	case ICE_DEV_ID_E830CC_QSFP56:
+> +	case ICE_DEV_ID_E830CC_SFP:
+> +	case ICE_DEV_ID_E830CC_SFP_DD:
+> +	case ICE_DEV_ID_E830C_BACKPLANE:
+> +	case ICE_DEV_ID_E830C_QSFP:
+> +	case ICE_DEV_ID_E830C_SFP:
+> +	case ICE_DEV_ID_E830_XXV_BACKPLANE:
+> +	case ICE_DEV_ID_E830_XXV_QSFP:
+> +	case ICE_DEV_ID_E830_XXV_SFP:
+
+Can't this be somehow compressed via
+
+	case A .. B
+
+There are no holes between at least some of these.
+
+> +		ice_set_feature_support(pf, ICE_F_MBX_LIMIT);
+> +		break;
+>  	default:
+>  		break;
+>  	}
+
+[...]
+
+> diff --git a/drivers/net/ethernet/intel/ice/ice_vf_mbx.c b/drivers/net/ethernet/intel/ice/ice_vf_mbx.c
+> index 40cb4ba0789c..65d9c41bed21 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_vf_mbx.c
+> +++ b/drivers/net/ethernet/intel/ice/ice_vf_mbx.c
+> @@ -210,6 +210,38 @@ ice_mbx_detect_malvf(struct ice_hw *hw, struct ice_mbx_vf_info *vf_info,
+>  	return 0;
+>  }
+>  
+> +/**
+> + * ice_mbx_vf_dec_trig_e830 - Decrements the VF mailbox queue counter
+> + * @hw: pointer to the HW struct
+> + * @event: pointer to the control queue receive event
+> + *
+> + * This function triggers to decrement the counter
+> + * MBX_VF_IN_FLIGHT_MSGS_AT_PF_CNT when the driver replenishes
+> + * the buffers at the PF mailbox queue.
+> + */
+> +void ice_mbx_vf_dec_trig_e830(const struct ice_hw *hw,
+> +			      const struct ice_rq_event_info *event)
+> +{
+> +	const u16 vfid = le16_to_cpu(event->desc.retval);
+
+Oops, I may've confused you. You don't need to constify scalars. Mainly
+pointers and structures when possible.
+
+> +
+> +	wr32(hw, E830_MBX_VF_DEC_TRIG(vfid), 1);
+> +}
+> +
+> +/**
+> + * ice_mbx_vf_clear_cnt_e830 - Clear the VF mailbox queue count
+> + * @hw: pointer to the HW struct
+> + * @vf_id: VF ID in the PF space
+> + *
+> + * This function clears the counter MBX_VF_IN_FLIGHT_MSGS_AT_PF_CNT, and should
+> + * be called when a VF is created and on VF reset.
+> + */
+> +void ice_mbx_vf_clear_cnt_e830(const struct ice_hw *hw, const u16 vf_id)
+> +{
+> +	const u32 reg = rd32(hw, E830_MBX_VF_IN_FLIGHT_MSGS_AT_PF_CNT(vf_id));
+
+Same here for @vf_id and @reg.
+
+> +
+> +	wr32(hw, E830_MBX_VF_DEC_TRIG(vf_id), reg);
+> +}
+
+Thanks,
+Olek
