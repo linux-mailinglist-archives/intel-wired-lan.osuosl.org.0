@@ -1,111 +1,110 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id A906394F183
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 12 Aug 2024 17:20:01 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5616194F184
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 12 Aug 2024 17:20:03 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id CEB0040917;
-	Mon, 12 Aug 2024 15:19:59 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 9EB294091E;
+	Mon, 12 Aug 2024 15:20:00 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id z0Bt4GKbvpRl; Mon, 12 Aug 2024 15:19:59 +0000 (UTC)
+ id WNzENRK9vx7E; Mon, 12 Aug 2024 15:19:59 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 820D140361
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A999840273
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1723475998;
-	bh=95JjyygR4tO5JbgyGND0lwDKhwC9bfD2bHVCr7YXIq0=;
+	s=default; t=1723475999;
+	bh=NsrGSuD1JwGElXKXCp9CKeDOTjJCIjAdbtMoFt9rIDs=;
 	h=References:In-Reply-To:From:Date:To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=aCDtwCTbumPXU2zO5WHhhFq5Z6ICDiRokbHUUl1lEO5mpZdHA+zt2dUI/KQieQmnz
-	 AeN9edICDRZ/+WYexwDkdwLW/ckbqi2f6/gxHdTmwka6J3l8YEOtcpre8EWyjAlEgP
-	 augHSMu0SypzDaslJ3urHYEFZ/DlCydOkhKkVBzbWfzzlbqZ3okpiblaBO7lyaw2F2
-	 J2vPJiKYaFWP9hsFqY5Ewa60Rr3qzHAdJduHJHBcXddsWpmq+0vM1dFDUZOt8YwdKh
-	 3ucG0JPjA/rIxsXzS/ib7ZDxkZnrX3V8/WW+fK0+LsYQbBBv9sJO0CfyMLq+U4cUFc
-	 gNnSrb7ZJ3AqA==
+	b=KenEIs8i/6c8KPXzvCQEjLfk37PWhXt9au8oMKdd5wO4JJeLcgp7jJoUfN7Dmjl/4
+	 k4VN9XWDWdLPViBsTI8+Kyc2KBiGmtFvheTnYELVVaO5ESOgjEdB/H4GN5WnM/cCzT
+	 6dh5h0xBmAnQtOdFJkvCqXiRKbuexwOJ/PcwhSGYuBSoPqJLvc7aV+rK2GCmnt5ot2
+	 TMMuAOYAqN8H/in9LSgKokU6ExrTNRZqVrryVAmoxM+Nx7lGP9DsoLlcKFeHOgstad
+	 EsYjnvALqpvtl0dqNEkvEyjqXM6/awCdFuOeA06tFw9/wEp9A6HxJpa3Zhz0rvnKn7
+	 AvC1ZnXj5/Icw==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 820D140361;
-	Mon, 12 Aug 2024 15:19:58 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id A999840273;
+	Mon, 12 Aug 2024 15:19:59 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id F06A41BF286
- for <intel-wired-lan@lists.osuosl.org>; Fri,  9 Aug 2024 21:04:35 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 2600C1BF27E
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 10 Aug 2024 15:55:16 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id DC41961305
- for <intel-wired-lan@lists.osuosl.org>; Fri,  9 Aug 2024 21:04:35 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 2018C60709
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 10 Aug 2024 15:55:16 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id tX97JcDvEilK for <intel-wired-lan@lists.osuosl.org>;
- Fri,  9 Aug 2024 21:04:35 +0000 (UTC)
+ id p-oZloXlr0d2 for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 10 Aug 2024 15:55:15 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2607:f8b0:4864:20::529; helo=mail-pg1-x529.google.com;
+ client-ip=2607:f8b0:4864:20::535; helo=mail-pg1-x535.google.com;
  envelope-from=daiweili@gmail.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 66E7260650
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 66E7260650
-Received: from mail-pg1-x529.google.com (mail-pg1-x529.google.com
- [IPv6:2607:f8b0:4864:20::529])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 66E7260650
- for <intel-wired-lan@lists.osuosl.org>; Fri,  9 Aug 2024 21:04:34 +0000 (UTC)
-Received: by mail-pg1-x529.google.com with SMTP id
- 41be03b00d2f7-7a1c7857a49so1679739a12.1
- for <intel-wired-lan@lists.osuosl.org>; Fri, 09 Aug 2024 14:04:34 -0700 (PDT)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 327DA6069D
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 327DA6069D
+Received: from mail-pg1-x535.google.com (mail-pg1-x535.google.com
+ [IPv6:2607:f8b0:4864:20::535])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 327DA6069D
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 10 Aug 2024 15:55:15 +0000 (UTC)
+Received: by mail-pg1-x535.google.com with SMTP id
+ 41be03b00d2f7-7ae3d7222d4so2139912a12.3
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 10 Aug 2024 08:55:15 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1723237473; x=1723842273;
+ d=1e100.net; s=20230601; t=1723305314; x=1723910114;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=95JjyygR4tO5JbgyGND0lwDKhwC9bfD2bHVCr7YXIq0=;
- b=YK61PCaVLKYF0WiKd9LnSkVkrBoVPSwcpQMrldvRLGsGqHLr2rV/L/aRcsZO9L31On
- gr9Y8jAn9g3yo2gnXBjq8T1laCodHbuQupIdvkwKCOd8G2pfWOq6p4NtMZ3BzioAw5u+
- DHRWYsBv5JWprygoAHu+hVpaliMBjD2PouI1vUdKppmo2Y/O5fm6JHZTztQL9QwWaPYQ
- 5YwIgzcKerumMcwY1fDdrnFQ3+erJyngjKjV2P0CLXbvifxn4vM2hIH2Tu9lbQMcMQ7b
- e3KrLVTpazJ4Cea+1bHSZlHJYOV2oNvCifWpdBgtjfZd20RJkCDCFU9oB+hEY1FLZ2dN
- zTNQ==
+ bh=NsrGSuD1JwGElXKXCp9CKeDOTjJCIjAdbtMoFt9rIDs=;
+ b=Rf8k5pkKJcoihyEpifuMbw3uIT/1JUFdGe79apaaPTy7fWKqFtduM5MwhJjm6df5Z5
+ 1OZ4GdA9yaKrRc1WWsjBYIE78dn/kFOFAcfPXUXal3pdgdUc3Xhr3bFu5CCyOX89RbMc
+ uhkQhG6YXiGuFRZbCY1LgC/ahSA3VwaSepu7sXOlDtNgpdtKfBokGom8pKmhaPuYabgx
+ spf6trU3oQHvNZ4qgPQTKxpx8jDUrbuXV/nuhu//RR9kOKq3JdR1yLFYxLvNFTk9k+b+
+ TCyJ+0UctupG825KMYhORybJ8dn9UtciTpnlnmqUZDTuaGvsY+MMeoT60qE4Y5zp0xBb
+ bmBQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUiq7qSurBhGLDxwf8cXkFpF0dtIHi7ju1hq8M8qB2eIitBVLUcryyDbIf8vkZK3RX26rpn8VRT0cgDcWPj/kk=@lists.osuosl.org
-X-Gm-Message-State: AOJu0YwFfOk/kRJL5wYQocqzG83nifIyIagzJO4LY9qZhYvVN3BHEWec
- 7UFe7cIfNyErVVph7yMFswYDvziG3mHYJAL3Vl4mOzRUDPNepxi32j5Y7GQuBXu1UOfdNno9jts
- Rpyf15b6bdKhHVGikouQylQnJgHM=
-X-Google-Smtp-Source: AGHT+IGIyZ5U7cqcZ40VbqeooH4Qf0tVDrqs5+1gcMwzCTlfq4bBrKgLXVdcZ9ET35Mjo/OcP2P0B6t3yNG0rXVw8TE=
-X-Received: by 2002:a17:90a:c17:b0:2c9:7616:dec7 with SMTP id
- 98e67ed59e1d1-2d1e7fa9fd7mr2992901a91.6.1723237473184; Fri, 09 Aug 2024
- 14:04:33 -0700 (PDT)
+ AJvYcCUgUj5cd/os4L89ICd/j5hte6n4F9WTnRt9tknE2wxZm8TzWf7y9v9hbsgyKpLdx+yvnhypp6ddob7hq2SFtvfajNJRo+PKfaabH8MRenHU0A==
+X-Gm-Message-State: AOJu0YzGWJu0SDWPLdAdglrS4xEBi5YT6pmSO2uUvafyxXMioFrxfAoS
+ 0COudJxoYmic99+nqAZbFBy7mbDyj+2i+rawfCLBfmB/G2DePsAMdmoWMEZENKi9nPGJjknglV2
+ pYMSV0kyzU343HT3yxvAc+AnvU64=
+X-Google-Smtp-Source: AGHT+IECdVPHYVoLR83HwZIQDHuvtWvM0Nkn2UqCCLm17o/8mmDQdCg8ENQpzWlF1lQprIstUWaHnBoC4oMIU4XDvxw=
+X-Received: by 2002:a17:90b:3cc3:b0:2c9:8891:e128 with SMTP id
+ 98e67ed59e1d1-2d1e7f9594emr5591559a91.4.1723305314230; Sat, 10 Aug 2024
+ 08:55:14 -0700 (PDT)
 MIME-Version: 1.0
-References: <CAN0jFd1kO0MMtOh8N2Ztxn6f7vvDKp2h507sMryobkBKe=xk=w@mail.gmail.com>
- <87y155wt0d.fsf@intel.com>
-In-Reply-To: <87y155wt0d.fsf@intel.com>
+References: <20240810002302.2054816-1-vinicius.gomes@intel.com>
+ <Zrb0wdmIsksG38Uc@hoboy.vegasvil.org>
+In-Reply-To: <Zrb0wdmIsksG38Uc@hoboy.vegasvil.org>
 From: Daiwei Li <daiweili@gmail.com>
-Date: Fri, 9 Aug 2024 14:04:21 -0700
-Message-ID: <CAN0jFd2Sa0ba7vewLex6x3MAjsH3LtNrgMdL-xVLFjLcp8_XEA@mail.gmail.com>
-To: Vinicius Costa Gomes <vinicius.gomes@intel.com>
+Date: Sat, 10 Aug 2024 08:55:03 -0700
+Message-ID: <CAN0jFd1CpPtid7TGJcgzajRXQ5oxYN1LjLjLwK7HjQ1piuZ_XQ@mail.gmail.com>
+To: Richard Cochran <richardcochran@gmail.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-Mailman-Approved-At: Mon, 12 Aug 2024 15:19:56 +0000
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1723237473; x=1723842273; darn=lists.osuosl.org;
+ d=gmail.com; s=20230601; t=1723305314; x=1723910114; darn=lists.osuosl.org;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=95JjyygR4tO5JbgyGND0lwDKhwC9bfD2bHVCr7YXIq0=;
- b=UeQZUhLLAIHVyluFXrx1eFsqATrLi2PUYNknSyAIs/OFkVVSLhHOl0b7o3lfqkBOos
- /P9lbQ/ja2rGKcx2iienElcidkytbWC0l8sVrL4lmaJCI5KKnuxHnllGAEFptyuYV6cL
- Dqubs/mCVwvRzhehuV6of0WV1UBn1GOVWHf9Bo2UmhcAVxQlvtXnPcB4MsC9VYofebYf
- WzpZFKpCudaaq1W8uqQaDmAAwsYSkwWZlF8/BYBvQYBoYnRJVzwm9bSeU/iMDRvqarRe
- +6Fb1E+7h/dlMhnKho8Ab3VkA1eqtJmnZQQn8sOTyJLiEHl1cvlHTC46pjKdUOPVz2mm
- I8jw==
+ bh=NsrGSuD1JwGElXKXCp9CKeDOTjJCIjAdbtMoFt9rIDs=;
+ b=ZkeJSnHMDaCkFbym51gHcCxMhFi6e0S2sZtFZ7Ojrmj495FbKoKrch4K0QWsEpgMxY
+ O+P9WKLnWjgvTL0rV4r8C/ZxX31roiJZPESUKZnI9RPZqgBQciPxEJTLzKbJLPXIi7EJ
+ Ed3ba6tVUBun5ZM+B4vlZT5efyCfi9JNC+mCi4rG0GI7un2CYkHgAStn5T90qmZhP/H2
+ lVAy54c66xita9WHHxsavyu9s1pFcos/sDrFEDEM9agL9OItj+mT8wwiq65zlYcPUDAB
+ DPfPpOQPLq9/BxISYawFeq4Gil9iwaYSUCMWlu6sFuV6pyCTQc375dUnSgBa9rwy+HoA
+ /yBw==
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=gmail.com
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256
- header.s=20230601 header.b=UeQZUhLL
-Subject: Re: [Intel-wired-lan] [iwl-net v2 2/2] igb: Fix missing time sync
- events
+ dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
+ header.a=rsa-sha256 header.s=20230601 header.b=ZkeJSnHM
+Subject: Re: [Intel-wired-lan] [PATCH iwl-net v1] igb: Fix not clearing
+ TimeSync interrupts for 82580
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -118,49 +117,103 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: sasha.neftin@intel.com, netdev@vger.kernel.org, richardcochran@gmail.com,
- kurt@linutronix.de, jesse.brandeburg@intel.com, linux-kernel@vger.kernel.org,
- edumazet@google.com, intel-wired-lan@lists.osuosl.org,
- jeffrey.t.kirsher@intel.com, kuba@kernel.org, anthony.l.nguyen@intel.com,
- pabeni@redhat.com, davem@davemloft.net
+Cc: sasha.neftin@intel.com, Vinicius Costa Gomes <vinicius.gomes@intel.com>,
+ netdev@vger.kernel.org, kurt@linutronix.de, linux-kernel@vger.kernel.org,
+ Jakub Kicinski <kuba@kernel.org>, Eric Dumazet <edumazet@google.com>,
+ anthony.l.nguyen@intel.com, Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ intel-wired-lan@lists.osuosl.org, Paolo Abeni <pabeni@redhat.com>,
+ "David S. Miller" <davem@davemloft.net>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-> Of course, I'll prepare a patch for that.
+> @Daiwei Li, I don't have a 82580 handy, please confirm that the patch
+fixes the issue you are having.
 
-Excellent, thank you!
+Thank you for the patch! I can confirm it fixes my issue. Below I offer a
+patch that also works in response to Paul's feedback.
 
+> Please also add a description of the test case
 
-On Fri, Aug 9, 2024 at 9:39=E2=80=AFAM Vinicius Costa Gomes
-<vinicius.gomes@intel.com> wrote:
+I am running ptp4l to serve PTP to a client device attached to the NIC.
+To test, I am rebuilding igb.ko and reloading it.
+Without this patch, I see repeatedly in the output of ptp4l:
+
+> timed out while polling for tx timestamp increasing tx_timestamp_timeout =
+or
+> increasing kworker priority may correct this issue, but a driver bug like=
+ly
+> causes it
+
+as well as my client device failing to sync time.
+
+> and maybe the PCI vendor and device code of your network device.
+
+% lspci -nn | grep Network
+17:00.0 Ethernet controller [0200]: Intel Corporation 82580 Gigabit
+Network Connection [8086:150e] (rev 01)
+17:00.1 Ethernet controller [0200]: Intel Corporation 82580 Gigabit
+Network Connection [8086:150e] (rev 01)
+17:00.2 Ethernet controller [0200]: Intel Corporation 82580 Gigabit
+Network Connection [8086:150e] (rev 01)
+17:00.3 Ethernet controller [0200]: Intel Corporation 82580 Gigabit
+Network Connection [8086:150e] (rev 01)
+
+> Bug, or was it a feature?
+
+According to https://lore.kernel.org/all/CDCB8BE0.1EC2C%25matthew.vick@inte=
+l.com/
+it was a bug. It looks like the datasheet was not updated to
+acknowledge this bug:
+https://www.intel.com/content/www/us/en/content-details/333167/intel-82580-=
+eb-82580-db-gbe-controller-datasheet.html
+(section 8.17.28.1).
+
+> Is there a nicer way to write this, so `ack` is only assigned in case
+> for the 82580?
+
+diff --git a/drivers/net/ethernet/intel/igb/igb_main.c
+b/drivers/net/ethernet/intel/igb/igb_main.c
+index ada42ba63549..87ec1258e22a 100644
+--- a/drivers/net/ethernet/intel/igb/igb_main.c
++++ b/drivers/net/ethernet/intel/igb/igb_main.c
+@@ -6986,6 +6986,10 @@ static void igb_tsync_interrupt(struct
+igb_adapter *adapter)
+        struct e1000_hw *hw =3D &adapter->hw;
+        u32 tsicr =3D rd32(E1000_TSICR);
+        struct ptp_clock_event event;
++       const u32 mask =3D (TSINTR_SYS_WRAP | E1000_TSICR_TXTS |
++                          TSINTR_TT0 | TSINTR_TT1 |
++                          TSINTR_AUTT0 | TSINTR_AUTT1);
++
+
+        if (tsicr & TSINTR_SYS_WRAP) {
+                event.type =3D PTP_CLOCK_PPS;
+@@ -7009,6 +7013,13 @@ static void igb_tsync_interrupt(struct
+igb_adapter *adapter)
+
+        if (tsicr & TSINTR_AUTT1)
+                igb_extts(adapter, 1);
++
++       if (hw->mac.type =3D=3D e1000_82580) {
++               /* 82580 has a hardware bug that requires a explicit
++                * write to clear the TimeSync interrupt cause.
++                */
++               wr32(E1000_TSICR, tsicr & mask);
++       }
+ }
+On Fri, Aug 9, 2024 at 10:04=E2=80=AFPM Richard Cochran
+<richardcochran@gmail.com> wrote:
 >
-> Daiwei Li <daiweili@gmail.com> writes:
+> On Fri, Aug 09, 2024 at 05:23:02PM -0700, Vinicius Costa Gomes wrote:
+> > It was reported that 82580 NICs have a hardware bug that makes it
+> > necessary to write into the TSICR (TimeSync Interrupt Cause) register
+> > to clear it.
 >
-> > Hi,
-> >
-> > It appears this change breaks PTP on the 82580 controller, as ptp4l rep=
-orts:
-> >
-> >> timed out while polling for tx timestamp increasing tx_timestamp_timeo=
-ut or
-> >> increasing kworker priority may correct this issue, but a driver bug l=
-ikely
-> >> causes it
-> >
-> > The 82580 controller has a hardware bug in which reading TSICR doesn't =
-clear
-> > it. See this thread
-> > https://lore.kernel.org/all/CDCB8BE0.1EC2C%25matthew.vick@intel.com/ wh=
-ere the
-> > bug was confirmed by an Intel employee. Any chance we could add back th=
-e ack
-> > for 82580 specifically? Thanks!
+> Bug, or was it a feature?
 >
-> Of course, I'll prepare a patch for that.
+> Or IOW, maybe i210 changed the semantics of the TSICR?
 >
-> Thanks for digging that one up.
+> And what about the 82576?
 >
->
-> Cheers,
-> --
-> Vinicius
+> Thanks,
+> Richard
