@@ -1,97 +1,87 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5B6D794D961
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 10 Aug 2024 02:23:42 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id B1FD094DA9C
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 10 Aug 2024 06:15:58 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 15408844E6;
-	Sat, 10 Aug 2024 00:23:39 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id AAADF414CB;
+	Sat, 10 Aug 2024 04:15:55 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id UcCeV0GSAL6d; Sat, 10 Aug 2024 00:23:38 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 0IBHGIfNie8I; Sat, 10 Aug 2024 04:15:55 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org ADDB5844E7
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B129A414B4
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1723249416;
-	bh=X4qDUm6gctA4GeV+CLbS3ee9Fqia56hrry1mgRsqNUg=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=MrGdHraTRVEqFFcsdm0ZZWEwspoNYcnZOnFZ6eOC1D+pMS23LveYqHY4ShX6zqgrV
-	 Ir6abvyqP+/yDnqtCeqLnamRQlL3y+DAXfGLRyo5m4EAR95Vztcu+G3xN2ld73RXoe
-	 ZFzYzn5tyGcayXQzsZAsqdelcFZGkNngrHcVMcjPvHHapG8P3NnGD6WlkUML66M3OT
-	 92mMPkIdvFP7y115S7eGmlYVNzA4K9em8N/z20I10kDoKTan1wH+qNk+4cpaLrT2TY
-	 SUnHi2h/cJYBXiZ5MlzO2F8dWX62rIFKdSvoyd7EASBmVCsFKORiJWk3uq0pzrhxcV
-	 Kpdd88aqy4EBA==
+	s=default; t=1723263354;
+	bh=q3GerInaWEyH1A9O34QT6vz+N2U+qlxv6GKZ5/5cK7E=;
+	h=Date:From:To:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=OGMC6hKGG8RquD0H8jcVn8AMzeUD95JAU9b7iMxUbWjKkGQ7R2ks+Yexn+7IW7/Z3
+	 hSSESiT+AJlifY/Tcpd/vH83dgL/bAmXXuujAgHkMysnRhJBlBQP0E4hBounm5Khke
+	 9pGlWKvFgtiqxpT6npasuowpxGjjjp08FLPeauf+xpW9CaHUFxjEUgavlSRKyTuKDt
+	 9xyVKumFgNuuVUJud1fFtVc+q4a5YtWBYr8XV6b00ZKWwej00hZUgm8/4IAQVhdN2n
+	 sNioC0Qfa/CP0fdDR3AJZjkXAl2bKmAwxAm8nbCPMtiH7GIpwz7UxEL6W3CAP8Es0/
+	 yFZCBMs3iq9og==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id ADDB5844E7;
-	Sat, 10 Aug 2024 00:23:36 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id B129A414B4;
+	Sat, 10 Aug 2024 04:15:54 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 5F4CD1BF995
- for <intel-wired-lan@lists.osuosl.org>; Sat, 10 Aug 2024 00:23:34 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id DF4741BF83B
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 10 Aug 2024 04:15:52 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 4BAF860615
- for <intel-wired-lan@lists.osuosl.org>; Sat, 10 Aug 2024 00:23:34 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id D46754149E
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 10 Aug 2024 04:15:52 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id hpgP0JRHgnkU for <intel-wired-lan@lists.osuosl.org>;
- Sat, 10 Aug 2024 00:23:33 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.21;
- helo=mgamail.intel.com; envelope-from=vinicius.gomes@intel.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 9D6EE605A2
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9D6EE605A2
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.21])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 9D6EE605A2
- for <intel-wired-lan@lists.osuosl.org>; Sat, 10 Aug 2024 00:23:32 +0000 (UTC)
-X-CSE-ConnectionGUID: gzygpkMUR4uasMUfC/KwKw==
-X-CSE-MsgGUID: jn1b8PpySXWxDi3T5DlTPg==
-X-IronPort-AV: E=McAfee;i="6700,10204,11159"; a="21415453"
-X-IronPort-AV: E=Sophos;i="6.09,277,1716274800"; d="scan'208";a="21415453"
-Received: from fmviesa006.fm.intel.com ([10.60.135.146])
- by orvoesa113.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 09 Aug 2024 17:23:30 -0700
-X-CSE-ConnectionGUID: hALeNo2MS9y6BvYa6G1oUw==
-X-CSE-MsgGUID: QsjymVP3RR2lopvpXQjOwQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.09,277,1716274800"; d="scan'208";a="57383188"
-Received: from bjrankin-mobl3.amr.corp.intel.com (HELO vcostago-mobl3.lan)
- ([10.124.221.140])
- by fmviesa006-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 09 Aug 2024 17:23:30 -0700
-From: Vinicius Costa Gomes <vinicius.gomes@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Fri,  9 Aug 2024 17:23:02 -0700
-Message-ID: <20240810002302.2054816-1-vinicius.gomes@intel.com>
-X-Mailer: git-send-email 2.45.2
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id zM8lXGbefTg0 for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 10 Aug 2024 04:15:52 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=139.178.84.217;
+ helo=dfw.source.kernel.org; envelope-from=kuba@kernel.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org E35D141490
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E35D141490
+Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id E35D141490
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 10 Aug 2024 04:15:51 +0000 (UTC)
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by dfw.source.kernel.org (Postfix) with ESMTP id 1A45B60BC3;
+ Sat, 10 Aug 2024 04:15:51 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3E40EC32781;
+ Sat, 10 Aug 2024 04:15:50 +0000 (UTC)
+Date: Fri, 9 Aug 2024 21:15:49 -0700
+From: Jakub Kicinski <kuba@kernel.org>
+To: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
+Message-ID: <20240809211549.28d651d7@kernel.org>
+In-Reply-To: <20240808112013.166621-2-arkadiusz.kubalewski@intel.com>
+References: <20240808112013.166621-1-arkadiusz.kubalewski@intel.com>
+ <20240808112013.166621-2-arkadiusz.kubalewski@intel.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1723249412; x=1754785412;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=gg/rzxEcE/ehEA57zkHvot1+t3aUc/Rg58im3h2dnrw=;
- b=em7NVESYrsdkQ26h9EOMyU0DuWII1kQTPWjRpLzxeoJbH+BwJdXLnI0T
- Fa+zlWAjNy3DfQcsAQNpg4lUJETXEQaR+zSc3WHOBkRaQVE0ILOO/E1XH
- VX0qVl8RT+BuC+1lNKK3DX0dmg3EXq5+RaBym/wk5m8ZWo/c8JRywXScL
- 7bcmLhZjQ/fGpVyMPIlEc7lOC0/kG02yL8k5hLzqhW7HMQcfG8A5Q0r6q
- VR1MRMuMNKM093tXxOIPCdrDHMJTGhYIHS27ngtudK7jFcOtG5bPvnkax
- XBwvxrkW8hbvIOw39h0AY3aDQMm6nXqwJLfqF4vHQuHI+AzWtb2FHxRea
- Q==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ d=kernel.org; s=k20201202; t=1723263350;
+ bh=DsTex5w319t+W39m/nEPcF2eB9y2KGW7S5WuO7vGhIg=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=dKJlNMoXv7gx8cfES6UdDZhyuJJrX7BuuLni6LKNZvc38+xJVar7LA/Ss2qHJDtq+
+ jJvn3dVXn8ezVa1RaMskxVMC4nIGfzbCftRDEePOUKDPkC3CNa+mXsyiFFwhNmRFXM
+ 7+xGv66g6YeeS+wCf6no+ACovtjR1FOqEEBTKb5U9IaRBfS4wj3aCIRGeW/SYoMaIr
+ cPh60y47Q9B5xhdYY1FsI49xjwVs+uQpgQpsryVniDBPB8ta2/y64zMKHD41D+Tmuo
+ 5/wsJuD8DMh5Dw67WCDDu42URoZcyVy8iqr0jEzw1qN0503sOpkX8c09VkHrWGhhLs
+ FO0GtQFdo9Brg==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ header.from=kernel.org
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=em7NVESY
-Subject: [Intel-wired-lan] [PATCH iwl-net v1] igb: Fix not clearing TimeSync
- interrupts for 82580
+ unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
+ header.s=k20201202 header.b=dKJlNMoX
+Subject: Re: [Intel-wired-lan] [PATCH net-next v1 1/2] dpll: add Embedded
+ SYNC feature for a pin
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -104,95 +94,26 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: sasha.neftin@intel.com, Vinicius Costa Gomes <vinicius.gomes@intel.com>,
- netdev@vger.kernel.org, richardcochran@gmail.com, kurt@linutronix.de,
- linux-kernel@vger.kernel.org, Eric Dumazet <edumazet@google.com>,
- daiweili@gmail.com, anthony.l.nguyen@intel.com,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- "David S. Miller" <davem@davemloft.net>
+Cc: jiri@resnulli.us, corbet@lwn.net, netdev@vger.kernel.org,
+ donald.hunter@gmail.com, linux-doc@vger.kernel.org,
+ linux-kernel@vger.kernel.org,
+ Aleksandr Loktionov <aleksandr.loktionov@intel.com>, edumazet@google.com,
+ anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com,
+ vadim.fedorenko@linux.dev, pabeni@redhat.com, davem@davemloft.net,
+ intel-wired-lan@lists.osuosl.org
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-It was reported that 82580 NICs have a hardware bug that makes it
-necessary to write into the TSICR (TimeSync Interrupt Cause) register
-to clear it.
+On Thu,  8 Aug 2024 13:20:12 +0200 Arkadiusz Kubalewski wrote:
+> +Device may provide ability to use Embedded SYNC feature. It allows
+> +to embed additional SYNC signal into the base frequency of a pin - a one
+> +special pulse of base frequency signal every time SYNC signal pulse
+> +happens. The user can configure the frequency of Embedded SYNC.
+> +The Embedded SYNC capability is always related to a given base frequency
+> +and HW capabilities. The user is provided a range of embedded sync
+> +frequencies supported, depending on current base frequency configured for
+> +the pin.
 
-Add a conditional so only for 82580 we write into the TSICR register,
-so we don't risk losing events for other models.
-
-This (partially) reverts commit ee14cc9ea19b ("igb: Fix missing time sync events").
-
-Fixes: ee14cc9ea19b ("igb: Fix missing time sync events")
-Reported-by: Daiwei Li <daiweili@gmail.com>
-Closes: https://lore.kernel.org/intel-wired-lan/CAN0jFd1kO0MMtOh8N2Ztxn6f7vvDKp2h507sMryobkBKe=xk=w@mail.gmail.com/
-Signed-off-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
----
-
-@Daiwei Li, I don't have a 82580 handy, please confirm that the patch
-fixes the issue you are having.
-
- drivers/net/ethernet/intel/igb/igb_main.c | 27 ++++++++++++++++++-----
- 1 file changed, 22 insertions(+), 5 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
-index 11be39f435f3..edb34f67ae03 100644
---- a/drivers/net/ethernet/intel/igb/igb_main.c
-+++ b/drivers/net/ethernet/intel/igb/igb_main.c
-@@ -6960,31 +6960,48 @@ static void igb_extts(struct igb_adapter *adapter, int tsintr_tt)
- static void igb_tsync_interrupt(struct igb_adapter *adapter)
- {
- 	struct e1000_hw *hw = &adapter->hw;
--	u32 tsicr = rd32(E1000_TSICR);
-+	u32 ack = 0, tsicr = rd32(E1000_TSICR);
- 	struct ptp_clock_event event;
- 
- 	if (tsicr & TSINTR_SYS_WRAP) {
- 		event.type = PTP_CLOCK_PPS;
- 		if (adapter->ptp_caps.pps)
- 			ptp_clock_event(adapter->ptp_clock, &event);
-+		ack |= TSINTR_SYS_WRAP;
- 	}
- 
- 	if (tsicr & E1000_TSICR_TXTS) {
- 		/* retrieve hardware timestamp */
- 		schedule_work(&adapter->ptp_tx_work);
-+		ack |= E1000_TSICR_TXTS;
- 	}
- 
--	if (tsicr & TSINTR_TT0)
-+	if (tsicr & TSINTR_TT0) {
- 		igb_perout(adapter, 0);
-+		ack |= TSINTR_TT0;
-+	}
- 
--	if (tsicr & TSINTR_TT1)
-+	if (tsicr & TSINTR_TT1) {
- 		igb_perout(adapter, 1);
-+		ack |= TSINTR_TT1;
-+	}
- 
--	if (tsicr & TSINTR_AUTT0)
-+	if (tsicr & TSINTR_AUTT0) {
- 		igb_extts(adapter, 0);
-+		ack |= TSINTR_AUTT0;
-+	}
- 
--	if (tsicr & TSINTR_AUTT1)
-+	if (tsicr & TSINTR_AUTT1) {
- 		igb_extts(adapter, 1);
-+		ack |= TSINTR_AUTT1;
-+	}
-+
-+	if (hw->mac.type == e1000_82580) {
-+		/* 82580 has a hardware bug that requires a explicit
-+		 * write to clear the TimeSync interrupt cause.
-+		 */
-+		wr32(E1000_TSICR, ack);
-+	}
- }
- 
- static irqreturn_t igb_msix_other(int irq, void *data)
--- 
-2.45.2
-
+Interesting, noob question perhaps, is the signal somehow well
+known or the implementation is vendor specific so both ends have
+to be from the same vendor? May be worth calling that out, either way.
