@@ -1,106 +1,109 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1A55694F0E8
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 12 Aug 2024 16:57:09 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id EA07A94F0EA
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 12 Aug 2024 16:57:18 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 7BD9E401B0;
-	Mon, 12 Aug 2024 14:57:07 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 9E97C405B5;
+	Mon, 12 Aug 2024 14:57:17 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Hne2udI6SzMk; Mon, 12 Aug 2024 14:57:06 +0000 (UTC)
+ id LDS_2_V-ZqJ8; Mon, 12 Aug 2024 14:57:16 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 92BF4405B5
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org AA2C740602
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1723474626;
-	bh=1oQV2bJ7RyME6CPZaiU3hjsvPi2H4xpFqeFRdoKurPw=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=c4r1j6jQn4t+2w2M/EpRBUvMhiByjUQRIPw0XBVX4RCmyMnHJ5YmEXW1BFu67iMnL
-	 b6Gaxr2KmkNR+6JqTRFhmSQGyJGOk2H7o2OC5GLthfekIUYiE30K7kgLv5DEKyMIho
-	 5jzbXFfVRCy7AoAbbzLwk/cymQwyvmEa2AWI6SzO9comIvvByPJJ3vLZ7XiX5IFNsK
-	 NxdjRpfmV7nQwoZan6hyFcWEdxtzclNssovYyLRnDGz8d1xclmI4MIYMgUOdit5OZx
-	 FUQRI9w6gluIUmChM7wujL3Qedh1TbjHiiNQxVm3AWq3zhexpZ/GT8AM4yQ90uK6nd
-	 HCsHFstfW7FPA==
+	s=default; t=1723474636;
+	bh=Yv3Kiio+O9ZPFfr1NuylJH0Fc+893bNyrbJKgz9J96Y=;
+	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=Si17riGvUGoqA5HkkFtZ9Qdm6LelyaSPW6vA8mca+8jcLtDejJ6zjqXBJ2YNuqi/4
+	 AoziwXJrSgWGTRghtO1pnEDwsM8b7sMC50NMtGfdSq3ysP6ig0WJ4Wq9luC7yA+okD
+	 8i7mgvb6kpiqcF5tFtA8vvIgWsEfL+RdsYRAlq/zbx8PI980bqJJU5kRHltFUJLYRH
+	 89iOkrBSusLRxFdhAIBeb4pp+0xGhAH9J0l9qpwvStBRqKX/Ch60G1X9UcqSwHLpQm
+	 dv57RjTACKhbqNo45xNBnDB5/b5LivE2eEfHQX4Mn09zmpmCDFvN7TTuvt+OSXFBFq
+	 Bl3Vvkm24xEug==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 92BF4405B5;
-	Mon, 12 Aug 2024 14:57:06 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id AA2C740602;
+	Mon, 12 Aug 2024 14:57:16 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id D63A81BF20D
- for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Aug 2024 14:57:04 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 360FE1BF20D
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Aug 2024 14:57:15 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id CEBC7404BE
- for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Aug 2024 14:57:04 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 200CD404EF
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Aug 2024 14:57:15 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id RSRKOvcp-0Ln for <intel-wired-lan@lists.osuosl.org>;
- Mon, 12 Aug 2024 14:57:04 +0000 (UTC)
+ id wY2yX5DjpIGX for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 12 Aug 2024 14:57:14 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2607:f8b0:4864:20::62a; helo=mail-pl1-x62a.google.com;
+ client-ip=2607:f8b0:4864:20::62f; helo=mail-pl1-x62f.google.com;
  envelope-from=jdamato@fastly.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org CEF2D40510
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org CEF2D40510
-Received: from mail-pl1-x62a.google.com (mail-pl1-x62a.google.com
- [IPv6:2607:f8b0:4864:20::62a])
- by smtp4.osuosl.org (Postfix) with ESMTPS id CEF2D40510
- for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Aug 2024 14:57:03 +0000 (UTC)
-Received: by mail-pl1-x62a.google.com with SMTP id
- d9443c01a7336-1fd90c2fc68so29859985ad.1
- for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Aug 2024 07:57:03 -0700 (PDT)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 1B883404BE
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1B883404BE
+Received: from mail-pl1-x62f.google.com (mail-pl1-x62f.google.com
+ [IPv6:2607:f8b0:4864:20::62f])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 1B883404BE
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Aug 2024 14:57:13 +0000 (UTC)
+Received: by mail-pl1-x62f.google.com with SMTP id
+ d9443c01a7336-1fc5296e214so42161365ad.0
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Aug 2024 07:57:13 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1723474623; x=1724079423;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=1oQV2bJ7RyME6CPZaiU3hjsvPi2H4xpFqeFRdoKurPw=;
- b=lDnkgEp3wmq2W8mojcreD4al7xm8wH2nVl/G5I2plgI7SrgJ7qDsnFtDRhNzqtPGFX
- zB3w6xTyADz9rNYm22ts1/kZgnzw4yNGvUE+R1atHJYkKRPg84ydwmg4xWAjCetr0YvU
- rSMWHqy4aTrehnVmI8n5X6KGvQJ0BAdmM9GAyPOtsjEPxcEwGakQxL9ZKymrKPhhJnRh
- 3wzOHcksTxEGZYrqAHIkQ511h2ukI2i+pzQPb8ueonusnzNYtkAv81XD52S+kC6gb2gU
- RFQBad5h8ezV56BVBjBSd0jFY0sQnJRMMOmsP5x2F7/4Rj8dWKIA0hqfZT6zgqWscujk
- mJMw==
+ d=1e100.net; s=20230601; t=1723474633; x=1724079433;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=Yv3Kiio+O9ZPFfr1NuylJH0Fc+893bNyrbJKgz9J96Y=;
+ b=noq+uAqfnetAjSjpdjmHWxnyJFXNZdbZ+M45PcTj3T/vHLjXIVDwrALOyXZcratR7I
+ BWUTi5W+AQ+mxInuaeefxVm3lxDNwurFvZAwBDCdJhtqx9W8wT7FwstzXWnGCGo20WMM
+ uj82VNsmVr/G1Z+WhOuQGcB/h2oAQUuabFGvep7FDs1iFuwF5epG0qvs7V+uufpPqfJJ
+ 3szzg/C6glIeEAVI7qSXj7rHm+YOYFyiXBi3kHF7TAELmaJyG6lq6SxRzFr7Ejh5+fI4
+ IgHWV7yxVEE0BeiqSrWZz78QsLDMsXVIT/SX32tKLdoJZ8CScpx175UPB/iGNd2Mrfnz
+ y2YA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVjE6cyoBT2+A8Mx8rdl9muwu/xetLlqLFQz4ticcxM+WuQsFIpVSHMqv2Y5vETiH6hr5ehOVS8WpgzfP1VOdP8X+P8iw9EbSmqhtjGo2BREw==
-X-Gm-Message-State: AOJu0YzxFA1cAEQCcE6Pu8m3DELvRWSa7XASu/9zvy4tlrm1J5xOEheR
- 0rxs+JgXBfeJX3HJcx9oZKPb+9nR1zc5AqsbQqQnmnStU3J10ySfGdLK93xKqfc=
-X-Google-Smtp-Source: AGHT+IHVlPXrDe+TvrQA2bE5/cgeIJbEgDv2n8mDRrGm9y6zRLuQHx0uDj0ZT+JiDZ119RROBsPRCQ==
-X-Received: by 2002:a17:902:e5d0:b0:1fd:aac9:a712 with SMTP id
- d9443c01a7336-201ca153eecmr5873945ad.37.1723474622800; 
- Mon, 12 Aug 2024 07:57:02 -0700 (PDT)
+ AJvYcCUi2su/nU6dmgqfyptIyuHZGr+4fRdagsMxcUpF2hN2oPfesEgxX24UafvrCSAKUlZ1ddkKlYxEcqJQITUWFy6SUErFuV2ZjJUu7+BjH/t7cw==
+X-Gm-Message-State: AOJu0YyEHybHSMcJMv+Pe9pmaddPOZyUFlcVP8YuYt7SE+PizxHF7UC4
+ MIKC6IUiW4tPgrrt/tK/Bow6e+OIDh1BP3xTr2PcRLZe3EJRQHEnXJPaKEawguE=
+X-Google-Smtp-Source: AGHT+IFq7CVQngrprbj/jbujEv0pCxSX/9ljktjnxugPkA8tcIxxNL7KoLqZldHeiN0wb9s0yFwN0w==
+X-Received: by 2002:a17:902:ea12:b0:1fb:8a0e:7730 with SMTP id
+ d9443c01a7336-201ca1b12d6mr7854895ad.26.1723474633362; 
+ Mon, 12 Aug 2024 07:57:13 -0700 (PDT)
 Received: from localhost.localdomain ([2620:11a:c019:0:65e:3115:2f58:c5fd])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-200bb8fd835sm39006955ad.89.2024.08.12.07.57.01
+ d9443c01a7336-200bb8fd835sm39006955ad.89.2024.08.12.07.57.12
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 12 Aug 2024 07:57:02 -0700 (PDT)
+ Mon, 12 Aug 2024 07:57:13 -0700 (PDT)
 From: Joe Damato <jdamato@fastly.com>
 To: netdev@vger.kernel.org
-Date: Mon, 12 Aug 2024 14:56:21 +0000
-Message-Id: <20240812145633.52911-1-jdamato@fastly.com>
+Date: Mon, 12 Aug 2024 14:56:25 +0000
+Message-Id: <20240812145633.52911-5-jdamato@fastly.com>
 X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20240812145633.52911-1-jdamato@fastly.com>
+References: <20240812145633.52911-1-jdamato@fastly.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=fastly.com; s=google; t=1723474623; x=1724079423; darn=lists.osuosl.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=1oQV2bJ7RyME6CPZaiU3hjsvPi2H4xpFqeFRdoKurPw=;
- b=f+oH2gBElR9thl62Q+1eeO0zdQDrPm+v6OhuuBmMccEXkLPTXdTmMmmWKi3uEpAYO5
- 5qqEwBNwIpOPIl58s50Us/FQ8W3S5Rmu75pGVyt2g4XWCTz/00G2c6zEfEBo1KlPF/wt
- UIgptj7pEhDvNUxDAkBQGSIXE5Gcg6k4ULQjY=
+ d=fastly.com; s=google; t=1723474633; x=1724079433; darn=lists.osuosl.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=Yv3Kiio+O9ZPFfr1NuylJH0Fc+893bNyrbJKgz9J96Y=;
+ b=MU5jJtyNJ6ZkducI66MVKkos9GYWe04IlcyzczcIE67jk2n6ffMoh6gu2IPuSYEpAG
+ UpgMlMvCkErT5W6CrzFSYmQFiY/A8aQl+2Mdsa3TbVW8x5h+qEp8LBXrG+FsTksNPUbK
+ wdH+WOlNY8ejPFM/D2RPF3lHuTglUjsJ8iq4c=
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=reject dis=none)
  header.from=fastly.com
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (1024-bit key,
- unprotected) header.d=fastly.com header.i=@fastly.com header.a=rsa-sha256
- header.s=google header.b=f+oH2gBE
-Subject: [Intel-wired-lan] [RFC net-next 0/6] Cleanup IRQ affinity checks in
- several drivers
+ dkim=pass (1024-bit key) header.d=fastly.com header.i=@fastly.com
+ header.a=rsa-sha256 header.s=google header.b=MU5jJtyN
+Subject: [Intel-wired-lan] [RFC net-next 4/6] i40e: Use
+ napi_affinity_no_change
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -113,79 +116,77 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Joe Damato <jdamato@fastly.com>, Eric Dumazet <edumazet@google.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>, Ziwei Xiao <ziweixiao@google.com>,
- Jeroen de Borst <jeroendb@google.com>, Leon Romanovsky <leon@kernel.org>,
- "open list:MELLANOX MLX4 core VPI driver" <linux-rdma@vger.kernel.org>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+Cc: Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Joe Damato <jdamato@fastly.com>, open list <linux-kernel@vger.kernel.org>,
+ Eric Dumazet <edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
  "moderated list:INTEL ETHERNET DRIVERS" <intel-wired-lan@lists.osuosl.org>,
  Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Lorenzo Bianconi <lorenzo@kernel.org>,
- Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
- Jiri Pirko <jiri@resnulli.us>, Shailend Chand <shailend@google.com>,
- Harshitha Ramamurthy <hramamurthy@google.com>,
- Willem de Bruijn <willemb@google.com>, Yishai Hadas <yishaih@nvidia.com>,
- Daniel Borkmann <daniel@iogearbox.net>,
- open list <linux-kernel@vger.kernel.org>, Tariq Toukan <tariqt@nvidia.com>,
- Praveen Kaligineedi <pkaligineedi@google.com>,
- Saeed Mahameed <saeedm@nvidia.com>, "David S. Miller" <davem@davemloft.net>
+ "David S. Miller" <davem@davemloft.net>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Greetings:
+Use napi_affinity_no_change instead of i40e's internal implementation,
+simplifying and centralizing the logic. To facilitate this, fix the type
+of irq_num to be unsigned int.
 
-Several drivers make a check in their napi poll functions to determine
-if the CPU affinity of the IRQ has changed. If it has, the napi poll
-function returns a value less than the budget to force polling mode to
-be disabled, so that it can be rescheduled on the correct CPU next time
-the softirq is raised.
+Signed-off-by: Joe Damato <jdamato@fastly.com>
+---
+ drivers/net/ethernet/intel/i40e/i40e.h      | 2 +-
+ drivers/net/ethernet/intel/i40e/i40e_main.c | 2 +-
+ drivers/net/ethernet/intel/i40e/i40e_txrx.c | 4 +---
+ 3 files changed, 3 insertions(+), 5 deletions(-)
 
-This code is repeated in at least 5 drivers that I found, but there
-might be more I missed (please let me know and I'll fix them). IMHO,
-it'd be nice to fix this in existing drivers and avoid future drivers
-repeating the same pattern.
-
-FWIW, it's possible that patch 4, 5, and 6 could be separated into
-"fixes" for the type mismatches and then, separaately, new code, but
-that seemed like a lot of noise for the list and maybe unnecessary.
-
-If I should first send fixes for 4, 5, and 6 and then send this cleanup
-series after, let me know and I'll do that.
-
-Sending as an RFC because:
-  - I wanted to see if this cleanup was desirable overall, and
-  - If so, do I need to send fixes for 4-6 first?
-
-Thanks,
-Joe
-
-Joe Damato (6):
-  netdevice: Add napi_affinity_no_change
-  mlx5: Use napi_affinity_no_change
-  gve: Use napi_affinity_no_change
-  i40e: Use napi_affinity_no_change
-  iavf: Use napi_affinity_no_change
-  mlx4: Use napi_affinity_no_change
-
- drivers/net/ethernet/google/gve/gve_main.c        | 14 +-------------
- drivers/net/ethernet/intel/i40e/i40e.h            |  2 +-
- drivers/net/ethernet/intel/i40e/i40e_main.c       |  2 +-
- drivers/net/ethernet/intel/i40e/i40e_txrx.c       |  4 +---
- drivers/net/ethernet/intel/iavf/iavf.h            |  1 +
- drivers/net/ethernet/intel/iavf/iavf_main.c       |  4 +++-
- drivers/net/ethernet/intel/iavf/iavf_txrx.c       |  4 +---
- drivers/net/ethernet/mellanox/mlx4/en_cq.c        |  6 ++++--
- drivers/net/ethernet/mellanox/mlx4/en_rx.c        |  6 +-----
- drivers/net/ethernet/mellanox/mlx4/eq.c           |  2 +-
- drivers/net/ethernet/mellanox/mlx4/mlx4_en.h      |  1 +
- drivers/net/ethernet/mellanox/mlx5/core/en.h      |  2 +-
- drivers/net/ethernet/mellanox/mlx5/core/en_main.c |  2 +-
- drivers/net/ethernet/mellanox/mlx5/core/en_txrx.c |  9 +--------
- include/linux/mlx4/device.h                       |  2 +-
- include/linux/netdevice.h                         |  8 ++++++++
- net/core/dev.c                                    | 14 ++++++++++++++
- 17 files changed, 42 insertions(+), 41 deletions(-)
-
+diff --git a/drivers/net/ethernet/intel/i40e/i40e.h b/drivers/net/ethernet/intel/i40e/i40e.h
+index d546567e0286..326bb7ffab26 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e.h
++++ b/drivers/net/ethernet/intel/i40e/i40e.h
+@@ -955,7 +955,7 @@ struct i40e_q_vector {
+ 	char name[I40E_INT_NAME_STR_LEN];
+ 	bool arm_wb_state;
+ 	bool in_busy_poll;
+-	int irq_num;		/* IRQ assigned to this q_vector */
++	unsigned int irq_num;	/* IRQ assigned to this q_vector */
+ } ____cacheline_internodealigned_in_smp;
+ 
+ /* lan device */
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
+index cbcfada7b357..a120fdd87c3e 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_main.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
+@@ -4137,10 +4137,10 @@ static int i40e_vsi_request_irq_msix(struct i40e_vsi *vsi, char *basename)
+ 	int q_vectors = vsi->num_q_vectors;
+ 	struct i40e_pf *pf = vsi->back;
+ 	int base = vsi->base_vector;
++	unsigned int irq_num;
+ 	int rx_int_idx = 0;
+ 	int tx_int_idx = 0;
+ 	int vector, err;
+-	int irq_num;
+ 	int cpu;
+ 
+ 	for (vector = 0; vector < q_vectors; vector++) {
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_txrx.c b/drivers/net/ethernet/intel/i40e/i40e_txrx.c
+index c006f716a3bd..8fc39cf4c5d3 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_txrx.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_txrx.c
+@@ -2810,8 +2810,6 @@ int i40e_napi_poll(struct napi_struct *napi, int budget)
+ 
+ 	/* If work not completed, return budget and polling will return */
+ 	if (!clean_complete) {
+-		int cpu_id = smp_processor_id();
+-
+ 		/* It is possible that the interrupt affinity has changed but,
+ 		 * if the cpu is pegged at 100%, polling will never exit while
+ 		 * traffic continues and the interrupt will be stuck on this
+@@ -2819,7 +2817,7 @@ int i40e_napi_poll(struct napi_struct *napi, int budget)
+ 		 * continue to poll, otherwise we must stop polling so the
+ 		 * interrupt can move to the correct cpu.
+ 		 */
+-		if (!cpumask_test_cpu(cpu_id, &q_vector->affinity_mask)) {
++		if (!napi_affinity_no_change(q_vector->irq_num)) {
+ 			/* Tell napi that we are done polling */
+ 			napi_complete_done(napi, work_done);
+ 
 -- 
 2.25.1
 
