@@ -2,96 +2,210 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id B847894EAAF
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 12 Aug 2024 12:22:56 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id C917194EB16
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 12 Aug 2024 12:32:08 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 2678580D01;
-	Mon, 12 Aug 2024 10:22:55 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 5FD828117F;
+	Mon, 12 Aug 2024 10:32:07 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id g5pbVH1nhxFH; Mon, 12 Aug 2024 10:22:54 +0000 (UTC)
+ id sNLaM-39j6x2; Mon, 12 Aug 2024 10:32:06 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E8A258117C
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org AD08981180
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1723458174;
-	bh=3ttg4DFDve4yIDqcZ9WnOeznh6YcPJ/VDPc0qjo24IM=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=RfaYIulwFuvrD/Zz6YBI9un7BzLRkZhXXbKgShnpg0uOZkYf+xg1xGKvvhN4yLRGn
-	 ExkaY4i36P/MtvSurvt82QqZceEbOLGETFDLImXlfGmmKHCxP2B+UQRV+ITwkWGdwU
-	 B04eZNGEtbSXgsDUqImq15a19MFF1Ir4ckJx8s62/q0VJY7p3b8qkkhds4e2xlj76a
-	 +nO8xG+6+yD74Apo+t6yuz+L4WO9IuKUAxkpZLAnuiQzhaeUikOJaN6WQA6EFqg9Gf
-	 DZxFLdiCOQdCCNDuSVo/ov6mM2XUZaoiamOgCKqVuWc16scJXgPv90aDNxCa1pspJ6
-	 7J8QtgsfKeJhw==
+	s=default; t=1723458725;
+	bh=uxhnSZwyiAuPzxE7ZY6iSqh43o9tFtWyqPPWwS05qiA=;
+	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=HHims4mtJyRZOZTJChZq+ZG3+D+OZtLykBo/3Qb2Iive1WiXP1xwIBWNrBMGwY9mv
+	 X9DsKDfNEiJBSxiUei/yAw/8W5fUDUMlRAbf/ekj7xikNkiLf3bZrjlREg3Z+KL/s8
+	 7wXbxXSdYp4FnywFNbAna7RLPli8q00Q0PxVZbqfmxj+XltHtFLTzYZYZwW+vZJVWS
+	 YEpYfWn8oH6CdtTcoWuvxXfs9hB/cX2MQ8JgdVN+Mh6b9Tep/74Oyh9nAWICLrQMO5
+	 aeCpagr57zD9hNqK04bHCl9odx+Oq6Anuh5ovCXw2tPWKr2B2Cm9uMui4cNvvDfASs
+	 eo8r+lntk1zvQ==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id E8A258117C;
-	Mon, 12 Aug 2024 10:22:53 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id AD08981180;
+	Mon, 12 Aug 2024 10:32:05 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id CDC001BF3A8
- for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Aug 2024 10:22:51 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id EF5181BF3A8
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Aug 2024 10:32:03 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id BA3D560607
- for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Aug 2024 10:22:51 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id DCB7A60685
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Aug 2024 10:32:03 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id HBImV07U7PVV for <intel-wired-lan@lists.osuosl.org>;
- Mon, 12 Aug 2024 10:22:51 +0000 (UTC)
-Received-SPF: None (mailfrom) identity=mailfrom; client-ip=198.175.65.11;
- helo=mgamail.intel.com; envelope-from=dawid.osuchowski@linux.intel.com;
+ id ux2-accji9Bx for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 12 Aug 2024 10:32:03 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.11;
+ helo=mgamail.intel.com; envelope-from=aleksandr.loktionov@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org A9D8060685
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org A9D8060685
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.11])
- by smtp3.osuosl.org (Postfix) with ESMTPS id A9D8060685
- for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Aug 2024 10:22:50 +0000 (UTC)
-X-CSE-ConnectionGUID: c1VOuq/iR3+Qk2z6DLgWLw==
-X-CSE-MsgGUID: UBrnORi0SMuayc1EJa3Iaw==
-X-IronPort-AV: E=McAfee;i="6700,10204,11161"; a="32136005"
-X-IronPort-AV: E=Sophos;i="6.09,282,1716274800"; d="scan'208";a="32136005"
-Received: from fmviesa005.fm.intel.com ([10.60.135.145])
- by orvoesa103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 12 Aug 2024 03:22:46 -0700
-X-CSE-ConnectionGUID: AJAwE+A4SI6iu6TITU8eXw==
-X-CSE-MsgGUID: VElN2wIJQzuTEX2VSd5yuA==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org C784D60680
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C784D60680
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.11])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id C784D60680
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 12 Aug 2024 10:32:02 +0000 (UTC)
+X-CSE-ConnectionGUID: cNDvo43tQPelw/hkLKGqYg==
+X-CSE-MsgGUID: 3MECwbaeTS6pwB/U8NFbqw==
+X-IronPort-AV: E=McAfee;i="6700,10204,11161"; a="32183560"
+X-IronPort-AV: E=Sophos;i="6.09,282,1716274800"; d="scan'208";a="32183560"
+Received: from orviesa002.jf.intel.com ([10.64.159.142])
+ by fmvoesa105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 12 Aug 2024 03:32:02 -0700
+X-CSE-ConnectionGUID: 8dq73J9ATkKpze6hC+iSDw==
+X-CSE-MsgGUID: SMzvqtuOR7GFLhpWmrPSWA==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.09,282,1716274800"; d="scan'208";a="62613083"
-Received: from pae-dbg-x10sri-f_n1_f.igk.intel.com (HELO
- localhost.igk.intel.com) ([10.91.240.220])
- by fmviesa005-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 12 Aug 2024 03:22:45 -0700
-From: Dawid Osuchowski <dawid.osuchowski@linux.intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Mon, 12 Aug 2024 12:22:10 +0200
-Message-ID: <20240812102210.61548-1-dawid.osuchowski@linux.intel.com>
-X-Mailer: git-send-email 2.44.0
+X-IronPort-AV: E=Sophos;i="6.09,282,1716274800"; d="scan'208";a="88876706"
+Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82])
+ by orviesa002.jf.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
+ 12 Aug 2024 03:32:01 -0700
+Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
+ fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.39; Mon, 12 Aug 2024 03:32:00 -0700
+Received: from FMSEDG603.ED.cps.intel.com (10.1.192.133) by
+ fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.39 via Frontend Transport; Mon, 12 Aug 2024 03:32:00 -0700
+Received: from NAM10-DM6-obe.outbound.protection.outlook.com (104.47.58.100)
+ by edgegateway.intel.com (192.55.55.68) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.39; Mon, 12 Aug 2024 03:31:59 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=OXdCc62RgPWMZg6khL21bAEyU/4NbhUSiFOiScfZunK626kjxnSfbehoF+YJ745FeLJGYiSTWICXrNby8LuduAD9OnQhGk5SvPPVzvaNz5JWBFq8RptKmucrELjovjXh6i3bCpu++J1sQAfzuFlUcbvhELdtuKhBQZywtUUq8y5sXabqD2I7Lp7ksZK8cYXci2+9a02bqEx++WqX3J6pwW+FTX47gmuxRJR/rHC6RAN75fuTe380xxRXCWLY53wzZAC3QbJN7310VkDZ4tr+NAm6oT5k87FVDHv9lQWWs8Tbg/uc8zhYYrIgCYxKSB09p5VZ9sunpU3ZuDYOjWiIJg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=uxhnSZwyiAuPzxE7ZY6iSqh43o9tFtWyqPPWwS05qiA=;
+ b=O5eKbC83DclMXls2npgQmqZHqARU7BLQI1v9L7oHiq2oqIWiXb1L4cNyHgJJyCtTfoG5oYvVd3jDTHSzdEnATzVVvJeL9/q+XSKxgKm4+gAcXH4iXfAXnrW9H2AUwpejP6NeEQ6V48ITaEHdTlPKYMRTb6VC+CXVRbw+ZGl1EY1GfldjzdgZXBP4EBFgg2TeuxZX2dYl41UQlvJyHaQ8CBe7/AR76UQMeozzy+duPBFTs2IyjSKVsjCrKkQm2fpQiAhBuK1Q8E6XWrCOjKzwfEz/+L3aRev2y0MrtPbf/SFol25oKB2nSpOFmsgJruBtUKofAzNP8DQdUzjYtqdlDw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from SJ0PR11MB5866.namprd11.prod.outlook.com (2603:10b6:a03:429::10)
+ by IA0PR11MB7884.namprd11.prod.outlook.com (2603:10b6:208:3dc::5)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7828.27; Mon, 12 Aug
+ 2024 10:31:56 +0000
+Received: from SJ0PR11MB5866.namprd11.prod.outlook.com
+ ([fe80::265f:31c0:f775:c25b]) by SJ0PR11MB5866.namprd11.prod.outlook.com
+ ([fe80::265f:31c0:f775:c25b%6]) with mapi id 15.20.7828.024; Mon, 12 Aug 2024
+ 10:31:55 +0000
+From: "Loktionov, Aleksandr" <aleksandr.loktionov@intel.com>
+To: Simon Horman <horms@kernel.org>
+Thread-Topic: [PATCH iwl-next v1] i40e: Add Energy Efficient Ethernet ability
+ for X710 Base-T/KR/KX cards
+Thread-Index: AQHa6YVIZUt/7vFBuE6e73zQjm8O4LIfDciAgARh5zA=
+Date: Mon, 12 Aug 2024 10:31:55 +0000
+Message-ID: <SJ0PR11MB5866396B608ED5A9DA8EB5C5E5852@SJ0PR11MB5866.namprd11.prod.outlook.com>
+References: <20240808112217.3560733-1-aleksandr.loktionov@intel.com>
+ <20240809152549.GB1951@kernel.org>
+In-Reply-To: <20240809152549.GB1951@kernel.org>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: SJ0PR11MB5866:EE_|IA0PR11MB7884:EE_
+x-ms-office365-filtering-correlation-id: fbb4e11b-4557-414c-efb8-08dcbab9fce6
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0; ARA:13230040|1800799024|366016|376014|38070700018;
+x-microsoft-antispam-message-info: =?us-ascii?Q?XFfVlOWe7pXAl6Je1AjkvLLbmoGpYFNP0RZ9kvOU/vDLhPvHLVkQsKY4dgEo?=
+ =?us-ascii?Q?3iFc6/wwPXNaDqBl3ZvjYkucQFu7g9YdLxtV+kpXaF0diRzE7akQd9HrgXHO?=
+ =?us-ascii?Q?3VYJIAbLIWtFhpxevXbEOxwCYAXb/SUDrc9Kvdlm3Ma8UHDdLRMi/DXXU89C?=
+ =?us-ascii?Q?bBGRIPwVQr0vK1p37Lk+5DMo73jHaTVEGbeIIwtys9krvcIYuqDE5ePiL6JN?=
+ =?us-ascii?Q?jPS7rFkeadudFmLh42yIgnOyeSTQ6alOi+Cejyt3wbvlYV0qxglt65DYQw2t?=
+ =?us-ascii?Q?kQE1bst60CgmE0LkbYugr712RGf1wVvtxlgRtDiKsI8SbFCIDKEFmLKoF8Z0?=
+ =?us-ascii?Q?SzriNSg7EGD5+SBAImW81Stn6wOmzjyiapWsstAt/5JTDPiRdXYlVZZriv2+?=
+ =?us-ascii?Q?7LAebn5w1tHpLOw+eFeat1jkpjH2lKsRDsUoulofV8tWHhpE5lZN5IkfFzo5?=
+ =?us-ascii?Q?fFSmzJlktCdLAe4TEQEMnnb6fNyWVNodnPuZtWnDR9o7AHVoO8hdDV296PEE?=
+ =?us-ascii?Q?thiLRsKruISwg4IACvEH2Zo5f1G97bZrXDJgbb7PQm0OYAha6mA0vXxo28Zr?=
+ =?us-ascii?Q?czuyP760LF2hN8AD88OURNyLmmEoMNw1Da6OAvtryq2G7tDT3P7Rie20vU68?=
+ =?us-ascii?Q?mU9KzhdogS56CawJyjqfhIGjRGI2JAHQlKjNV8epyQ7LNyjztPQeFV9CXgUz?=
+ =?us-ascii?Q?qeBauKhhEezM2A7BrrB5Fhwg2wr5KC668iSXVhwgFr38yrVly3g9Tp3QZEqH?=
+ =?us-ascii?Q?at7Y+mKKkHznTbYNuzf6IgUEbssZA8ayCMXzZMkxWTvc4dBzPPaqBQyyZGBT?=
+ =?us-ascii?Q?mEKj8lDDEgGENjvjxEJE1dKE+uAdVOLQ+8QWsoM/jMQe+Is667h43D6n3qzf?=
+ =?us-ascii?Q?bqfAcbJCONDKT4FRwwCDf+dr5oy3qOUSc14edWI3dX0ncWSDZLjWBVzYmtxK?=
+ =?us-ascii?Q?RHeASmXN0nQmddR6nUnLOcIszSk941BqbLnwYzduyim3LudKiz2S8Qwd8gCH?=
+ =?us-ascii?Q?wXi0bV4BWtUMU9ZeJZLchPtaZ1dVr2jvioh+OlTkl26/tzEykY8JNBeTtUpn?=
+ =?us-ascii?Q?c3b4E7y3BwNGAObZpt2e22u17Sp9oqi9IgJhFi667T6B/nJhxxD6Jrik9Uje?=
+ =?us-ascii?Q?ffRAW7NtsV20Ah5WKVbYbrabDCZdC+LUH45cR7HCjytfW4OfRXRhiOiKsrNO?=
+ =?us-ascii?Q?qcToBb48vfKNskGocMluKAQOTOnXveWQmATOAUi2DE7Go3rYAUNAC+Pzc8qP?=
+ =?us-ascii?Q?0jNmA/QLtlQbWwfUSuf1dZFEGyHv7ZacU0QZfTMMiXJz/25SOZ5xR6Q4nPJZ?=
+ =?us-ascii?Q?JT9YTwrYs71ipT1m7OCempNeH3X/JU9+AV19w6EZbG2K7ix8RgGcMzq/dEuS?=
+ =?us-ascii?Q?8s/u2YxUQ4nbm+zO5mZh68inVy3WEj2KH00UbL42y/csjFq+cw=3D=3D?=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SJ0PR11MB5866.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(1800799024)(366016)(376014)(38070700018); DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?mfRPQtziehEA6gUCn1QKGPbDpR3aQ5/C7Blz23SsmqPIjxIzDZAf7kCaqIu0?=
+ =?us-ascii?Q?eOfoNXoXVQZml1rXBvMPRJRK+Z2YN4Wk5MTe2mG/vdHItBvzkvBMv3H5AsFq?=
+ =?us-ascii?Q?ETNDeAtzhIReRbQBUgaqw9O2vR5K+A9u8b/gfMl8BoO4ujooE8a+QVYHxpOq?=
+ =?us-ascii?Q?iiE2OuUduSS2L61Q9Oa7Z6CNaIbwbiQdTCPYVsHuu7y5RMn2AJD/IuSg6x5Y?=
+ =?us-ascii?Q?fFI+Tevoh72tCJrUy16nG+sIhMMibWjl9ndAvFdo+f0PFsFh49AkO8D+kOhF?=
+ =?us-ascii?Q?UbzGR5cu2YGOTdhXfvVmAAzLROJ/8ZeyeuFTwbYA62HzRnyiHj45zzaDbkgF?=
+ =?us-ascii?Q?XjJlSPGRK3YHOsk/nZQv+xfabuhjtSpRgAl89bLZqPm7pLgMsT+u7OpvsTNm?=
+ =?us-ascii?Q?YMFJ/59/xZ+naMnMC6Rnfh6qJFxKn14LcBwmcMFYlQtPtwtNL6G7u4++WxNZ?=
+ =?us-ascii?Q?ojt59HpML8kZ12WPPYM8BrBdHl2Pk09DUOJj8+/nsARny31Y1joj/9By1R2a?=
+ =?us-ascii?Q?fNFfpchBazOXap4WRhk+RhhXKdL8Ak/9L+wCR8y7BDJbdCoPnFY1U8dfTcmz?=
+ =?us-ascii?Q?vKgDMnEaHy7OLmtJre6CZOloh0xyks52NeVMxwDruraXgFhH+9W5G4XuvWim?=
+ =?us-ascii?Q?QT36HbPmuCVLHVAT+H/9Gms551pSz8RXZOmx7emkZLzxnk1XqTLlFxZhCBI8?=
+ =?us-ascii?Q?Mp+NnpswUz3MfGNmMK1THRJJG4/E4uivrKKSY7FQRx/vEsGuL5XTWe7YZwdW?=
+ =?us-ascii?Q?mjNXnTwjsv/AgTTZUHCpcrRLueCsE7ediKndj9Zmef6PssiFC8RY0LV9oqsa?=
+ =?us-ascii?Q?fsUmtM1YlBqdDksvRzDghG5BDx/0QQDXAhjIvSncoiZ9UhtefETnMhYuHC7Z?=
+ =?us-ascii?Q?UidlO1PRrmmuH9Q5JU0it/BuxX3Sxx4Gi5RFdxApofIEnXh43PpBjwhVuBHO?=
+ =?us-ascii?Q?uvVzDOfbNYmX1/nJ5qf1Gia0WTnhFAGaUsnI/1NjR5CRzGJTgu+o04poziw3?=
+ =?us-ascii?Q?d4JxAhlnT86Xk+rmKIWjiWMUx2/wQ46Vio2o+pzidX6LjKuTRgVK1SF8LWXp?=
+ =?us-ascii?Q?GOtkZqfrW70URZGWJ6Fq+aKX8ugOBURQxa1d2mJLfBauSYeCyUS+CvP5re9w?=
+ =?us-ascii?Q?u3LB2wWH6mrzwWFJXPIcHGDR8ANGSOnGeMeOH6bPjOxaYYBua83q0YFawlNd?=
+ =?us-ascii?Q?M3XEBsJbercNdbqSvFZKQ2dbd4uMNwyifUSGAzAPtINxYFsVkD2Aj/fFe3uV?=
+ =?us-ascii?Q?PNDg9rOXpXCPHN5C6ON/67Zfff7+rpXH3CqRa9YYnxKd8jSzsuF6IjPBATj8?=
+ =?us-ascii?Q?Ih5iylnTcTQV/nookPM/lRoj+d+zo2S/DV3crnei1xHCiVK9kWeX01QVHHzK?=
+ =?us-ascii?Q?eYxhbDvR2G4G92tms2k6FN3Pj+fwNT7wV1BRyQJoDkryFF9SxEpeXknkLcps?=
+ =?us-ascii?Q?n/hfiErsSYJzXVDcl7prnJ+7NMrGI+fHWdPwASUkytqKAovycQqltfYdbTxZ?=
+ =?us-ascii?Q?uxyfb+xY+FiEJ7MKWYhGlCEqfVBF663PcPhB9AdUFZ77meT5cHDmfhj2qwr7?=
+ =?us-ascii?Q?S8ugmU9yXmZCWW3BGPDbMXtpu+K1+uV+BMlvSB3kPPbLabWbn2FO+guAmSL/?=
+ =?us-ascii?Q?3w=3D=3D?=
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SJ0PR11MB5866.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: fbb4e11b-4557-414c-efb8-08dcbab9fce6
+X-MS-Exchange-CrossTenant-originalarrivaltime: 12 Aug 2024 10:31:55.4032 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: zekkSbqgYO3NLneJgMXSmFI8f9t6XqofWkGUL+tqeBTEvlAa2EdEdOosUtwwhgppm/RZL7MirxkVnGcrryqHtUW7PNDY0r2CXkhJDxE6Zqc=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA0PR11MB7884
+X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1723458171; x=1754994171;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=tYhLxclXaKVXswK+4W1XffGX3be84NWSNSrdlVKsJ1s=;
- b=hAy64I9tLOfS6taJBonv83yBX+PnmmYevM9AA6ZTRLNizk2tgsmIj6bf
- 6CKFhQI27ivq0Ra8azK1lWJHt+SRzl6HFUqXQwoZiwbX5bPqcyPLFJOSH
- mOoLtY+ztPTDU/Q7kGk/+bRE/mMMHANoEiw8pnrskJFzlGzEJlhIieRa8
- zCt+M7lBXOUd78tiQH/cq62TCswymLIWi7pbLGxToQS+4HdVTbpDJT/ZU
- YadIHqcvvgJWwIhpMSODTEo9ur0b/GK3ldDH7CnHboOJVJou/yBfRQK6b
- SkwxJrM6t6zJHfSUWAZ4oF219jh78rt1lnPchiN9i/h+XosuEmQuBQMDB
+ t=1723458723; x=1754994723;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=RtyqbXQ+sriCFG+n74w1AyUQ0n7xzM/+olYS1hdB96g=;
+ b=E4HfblX8uUYy5sfkbpL0nXHxuqy+/TMHdZwkXJYy+u0YLNfUl9Wjtcxv
+ 5AGjxPOM36GuFvckOWDSiGMGPtSz5YNyBN+hy+bcea/3aiLfDAwnTMP5Q
+ QLaGf8oa9OXTbF3zSC15HhxOKjT+nYYhFk9E36oYpx51MfNCH6/kWjT+E
+ 8gw5zwFVD0TvAkbdfKN64WOVl9kwIa+xCJ4aQ0s+78R6SyoxbwJL3pEJ5
+ H4urV6BOikIZ+KGUm0cBIUmT65JsBQcpt4dAM4Hzss0EZ0xZ8xBRBsJEE
+ 2PYSyR7cE2ixKBu1Qoqgmxe5lajuc7l10OC89P8nf+J/MSNefVfhB0mUH
  g==;
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=linux.intel.com
+ dmarc=pass (p=none dis=none)
+ header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=hAy64I9t
-Subject: [Intel-wired-lan] [PATCH iwl-net] ice: Add
- netif_device_attach/detach into PF reset flow
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=E4HfblX8
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v1] i40e: Add Energy
+ Efficient Ethernet ability for X710 Base-T/KR/KX cards
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -104,123 +218,243 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, Igor Bagnucki <igor.bagnucki@intel.com>,
- Dawid Osuchowski <dawid.osuchowski@linux.intel.com>,
- Jakub Kicinski <kuba@kernel.org>
+Cc: "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>, "Kubalewski,
+ Arkadiusz" <arkadiusz.kubalewski@intel.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Ethtool callbacks can be executed while reset is in progress and try to
-access deleted resources, e.g. getting coalesce settings can result in a
-NULL pointer dereference seen below.
 
-Once the driver is fully initialized, trigger reset:
-	# echo 1 > /sys/class/net/<interface>/device/reset
-when reset is in progress try to get coalesce settings using ethtool:
-        # ethtool -c <interface>
 
-Calling netif_device_detach() before reset makes the net core not call
-the driver when ethtool command is issued, the attempt to execute an
-ethtool command during reset will result in the following message:
+> -----Original Message-----
+> From: Simon Horman <horms@kernel.org>
+> Sent: Friday, August 9, 2024 5:26 PM
+> To: Loktionov, Aleksandr <aleksandr.loktionov@intel.com>
+> Cc: intel-wired-lan@lists.osuosl.org; Nguyen, Anthony L
+> <anthony.l.nguyen@intel.com>; netdev@vger.kernel.org; Kubalewski,
+> Arkadiusz <arkadiusz.kubalewski@intel.com>
+> Subject: Re: [PATCH iwl-next v1] i40e: Add Energy Efficient Ethernet
+> ability for X710 Base-T/KR/KX cards
+>=20
+> On Thu, Aug 08, 2024 at 01:22:17PM +0200, Aleksandr Loktionov wrote:
+>=20
+> ...
+>=20
+> > diff --git a/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
+> > b/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
+> > index 1d0d2e5..cd7509f 100644
+> > --- a/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
+> > +++ b/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
+> > @@ -5641,50 +5641,77 @@ static int i40e_get_module_eeprom(struct
+> net_device *netdev,
+> >  	return 0;
+> >  }
+> >
+> > +static void i40e_eee_capability_to_kedata_supported(__le16
+> eee_capability_,
+> > +						    unsigned long *supported)
+> > +{
+> > +	const int eee_capability =3D le16_to_cpu(eee_capability_);
+>=20
+> Hi Aleksandr,
+>=20
+> Maybe u16 would be an appropriate type for eee_capability.
+> Also, using const seems excessive here.
+>=20
+The value is got from FW which dictates endianness.
+Const is const, explicit coding style helps understanding and compiler opti=
+mizations.=20
 
-    netlink error: No such device
+> > +	static const int lut[] =3D {
+> > +		ETHTOOL_LINK_MODE_100baseT_Full_BIT,
+> > +		ETHTOOL_LINK_MODE_1000baseT_Full_BIT,
+> > +		ETHTOOL_LINK_MODE_10000baseT_Full_BIT,
+> > +		ETHTOOL_LINK_MODE_1000baseKX_Full_BIT,
+> > +		ETHTOOL_LINK_MODE_10000baseKX4_Full_BIT,
+> > +		ETHTOOL_LINK_MODE_10000baseKR_Full_BIT,
+> > +		ETHTOOL_LINK_MODE_40000baseKR4_Full_BIT,
+> > +	};
+> > +
+> > +	linkmode_zero(supported);
+> > +	for (unsigned int i =3D ARRAY_SIZE(lut); i--; )
+> > +		if (eee_capability & (1 << (i + 1)))
+>=20
+> Perhaps:
+>=20
+> 		if (eee_capability & BIT(i + 1))
+>=20
+Ok
 
-instead of NULL pointer dereference. Once reset is done and
-ice_rebuild() is executing, the netif_device_attach() is called to allow
-for ethtool operations to occur again in a safe manner.
+> > +			linkmode_set_bit(lut[i], supported); }
+> > +
+> >  static int i40e_get_eee(struct net_device *netdev, struct
+> > ethtool_keee *edata)  {
+> >  	struct i40e_netdev_priv *np =3D netdev_priv(netdev);
+> >  	struct i40e_aq_get_phy_abilities_resp phy_cfg;
+> >  	struct i40e_vsi *vsi =3D np->vsi;
+> >  	struct i40e_pf *pf =3D vsi->back;
+> >  	struct i40e_hw *hw =3D &pf->hw;
+> > -	int status =3D 0;
+> > +	int status;
+>=20
+> This change seems unrelated to the subject of this patch.
+> If so, please remove.
+>=20
+But it fixes kernel coding style which checkpatch.pl may complain about.
 
-[  +0.000105] BUG: kernel NULL pointer dereference, address: 0000000000000020
-[  +0.000027] #PF: supervisor read access in kernel mode
-[  +0.000011] #PF: error_code(0x0000) - not-present page
-[  +0.000011] PGD 0 P4D 0
-[  +0.000008] Oops: Oops: 0000 [#1] PREEMPT SMP PTI
-[  +0.000012] CPU: 11 PID: 19713 Comm: ethtool Tainted: G S                 6.10.0-rc7+ #7
-[  +0.000015] Hardware name: Supermicro Super Server/X10SRi-F, BIOS 2.0 12/17/2015
-[  +0.000013] RIP: 0010:ice_get_q_coalesce+0x2e/0xa0 [ice]
-[  +0.000090] Code: 00 55 53 48 89 fb 48 89 f7 48 83 ec 08 0f b7 8b 86 04 00 00 0f b7 83 82 04 00 00 39 d1 7e 30 48 8b 4b 18 48 63 ea 48 8b 0c e9 <48> 8b 71 20 48 81 c6 a0 01 00 00 39 c2 7c 32 e8 ee fe ff ff 85 c0
-[  +0.000029] RSP: 0018:ffffbab1e9bcf6a8 EFLAGS: 00010206
-[  +0.000012] RAX: 000000000000000c RBX: ffff94512305b028 RCX: 0000000000000000
-[  +0.000012] RDX: 0000000000000000 RSI: ffff9451c3f2e588 RDI: ffff9451c3f2e588
-[  +0.000012] RBP: 0000000000000000 R08: 0000000000000000 R09: 0000000000000000
-[  +0.000013] R10: ffff9451c3f2e580 R11: 000000000000001f R12: ffff945121fa9000
-[  +0.000012] R13: ffffbab1e9bcf760 R14: 0000000000000013 R15: ffffffff9e65dd40
-[  +0.000012] FS:  00007faee5fbe740(0000) GS:ffff94546fd80000(0000) knlGS:0000000000000000
-[  +0.000014] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
-[  +0.000011] CR2: 0000000000000020 CR3: 0000000106c2e005 CR4: 00000000001706f0
-[  +0.000012] Call Trace:
-[  +0.000009]  <TASK>
-[  +0.000007]  ? __die+0x23/0x70
-[  +0.000012]  ? page_fault_oops+0x173/0x510
-[  +0.000011]  ? ice_get_q_coalesce+0x2e/0xa0 [ice]
-[  +0.000071]  ? search_module_extables+0x19/0x60
-[  +0.000013]  ? search_bpf_extables+0x5f/0x80
-[  +0.000012]  ? exc_page_fault+0x7e/0x180
-[  +0.000013]  ? asm_exc_page_fault+0x26/0x30
-[  +0.000014]  ? ice_get_q_coalesce+0x2e/0xa0 [ice]
-[  +0.000070]  ice_get_coalesce+0x17/0x30 [ice]
-[  +0.000070]  coalesce_prepare_data+0x61/0x80
-[  +0.000012]  ethnl_default_doit+0xde/0x340
-[  +0.000012]  genl_family_rcv_msg_doit+0xf2/0x150
-[  +0.000013]  genl_rcv_msg+0x1b3/0x2c0
-[  +0.000009]  ? __pfx_ethnl_default_doit+0x10/0x10
-[  +0.000011]  ? __pfx_genl_rcv_msg+0x10/0x10
-[  +0.000010]  netlink_rcv_skb+0x5b/0x110
-[  +0.000013]  genl_rcv+0x28/0x40
-[  +0.000007]  netlink_unicast+0x19c/0x290
-[  +0.000012]  netlink_sendmsg+0x222/0x490
-[  +0.000011]  __sys_sendto+0x1df/0x1f0
-[  +0.000013]  __x64_sys_sendto+0x24/0x30
-[  +0.000340]  do_syscall_64+0x82/0x160
-[  +0.000309]  ? __mod_memcg_lruvec_state+0xa6/0x150
-[  +0.000309]  ? __lruvec_stat_mod_folio+0x68/0xa0
-[  +0.000311]  ? folio_add_file_rmap_ptes+0x86/0xb0
-[  +0.000309]  ? next_uptodate_folio+0x89/0x290
-[  +0.000309]  ? filemap_map_pages+0x521/0x5f0
-[  +0.000302]  ? do_fault+0x26e/0x470
-[  +0.000293]  ? __handle_mm_fault+0x7dc/0x1060
-[  +0.000295]  ? __count_memcg_events+0x58/0xf0
-[  +0.000289]  ? count_memcg_events.constprop.0+0x1a/0x30
-[  +0.000292]  ? handle_mm_fault+0xae/0x320
-[  +0.000284]  ? do_user_addr_fault+0x33a/0x6a0
-[  +0.000280]  ? exc_page_fault+0x7e/0x180
-[  +0.000289]  entry_SYSCALL_64_after_hwframe+0x76/0x7e
-[  +0.000271] RIP: 0033:0x7faee60d8e27
+> >
+> >  	/* Get initial PHY capabilities */
+> >  	status =3D i40e_aq_get_phy_capabilities(hw, false, true, &phy_cfg,
+> NULL);
+> >  	if (status)
+> >  		return -EAGAIN;
+> >
+> >  	/* Check whether NIC configuration is compatible with Energy
+> Efficient
+> >  	 * Ethernet (EEE) mode.
+> >  	 */
+> >  	if (phy_cfg.eee_capability =3D=3D 0)
+> >  		return -EOPNOTSUPP;
+> >
+> > +	i40e_eee_capability_to_kedata_supported(phy_cfg.eee_capability,
+> > +edata->supported);
+>=20
+> Please line-wrap: Networking still prefers code to be 80 columns wide
+> or less.
+>=20
+As you wish.
 
-Fixes: 67fe64d78c43 ("ice: Implement getting and setting ethtool coalesce")
-Suggested-by: Jakub Kicinski <kuba@kernel.org>
-Signed-off-by: Dawid Osuchowski <dawid.osuchowski@linux.intel.com>
-Reviewed-by: Igor Bagnucki <igor.bagnucki@intel.com>
----
- drivers/net/ethernet/intel/ice/ice_main.c | 4 ++++
- 1 file changed, 4 insertions(+)
+> > +	linkmode_copy(edata->lp_advertised, edata->supported);
+> > +
+> >  	/* Get current configuration */
+> >  	status =3D i40e_aq_get_phy_capabilities(hw, false, false,
+> &phy_cfg, NULL);
+> >  	if (status)
+> >  		return -EAGAIN;
+> >
+> > +	linkmode_zero(edata->advertised);
+> > +	if (phy_cfg.eee_capability)
+> > +		linkmode_copy(edata->advertised, edata->supported);
+> >  	edata->eee_enabled =3D !!phy_cfg.eee_capability;
+> >  	edata->tx_lpi_enabled =3D pf->stats.tx_lpi_status;
+> >
+> >  	edata->eee_active =3D pf->stats.tx_lpi_status &&
+> > pf->stats.rx_lpi_status;
+> >
+> >  	return 0;
+> >  }
+> >
+> >  static int i40e_is_eee_param_supported(struct net_device *netdev,
+> >  				       struct ethtool_keee *edata)  {
+> >  	struct i40e_netdev_priv *np =3D netdev_priv(netdev);
+> >  	struct i40e_vsi *vsi =3D np->vsi;
+> >  	struct i40e_pf *pf =3D vsi->back;
+> >  	struct i40e_ethtool_not_used {
+> > -		u32 value;
+> > +		int value;
+>=20
+> It is unclear to me that this type change is really related to the
+> subject of this patch. If not, please drop it. But if so, it seems to
+> me that bool would be the appropriate type.
+>=20
+> >  		const char *name;
+> >  	} param[] =3D {
+> > -		{edata->tx_lpi_timer, "tx-timer"},
+> > +		{!!(edata->advertised[0] & ~edata->supported[0]),
+> "advertise"},
+> > +		{!!edata->tx_lpi_timer, "tx-timer"},
+> >  		{edata->tx_lpi_enabled !=3D pf->stats.tx_lpi_status, "tx-
+> lpi"}
+> >  	};
+> >  	int i;
+> > @@ -5710,7 +5737,7 @@ static int i40e_set_eee(struct net_device
+> *netdev, struct ethtool_keee *edata)
+> >  	struct i40e_pf *pf =3D vsi->back;
+> >  	struct i40e_hw *hw =3D &pf->hw;
+> >  	__le16 eee_capability;
+> > -	int status =3D 0;
+> > +	int status;
+>=20
+> This change seems unrelated to the subject of this patch.
+> If so, please remove.
+>=20
+But it fixes kernel coding style which checkpatch.pl may complain about.
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index eaa73cc200f4..16b4920741ff 100644
---- a/drivers/net/ethernet/intel/ice/ice_main.c
-+++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -608,6 +608,8 @@ ice_prepare_for_reset(struct ice_pf *pf, enum ice_reset_req reset_type)
- 			memset(&vsi->mqprio_qopt, 0, sizeof(vsi->mqprio_qopt));
- 		}
- 	}
-+	if (vsi->netdev)
-+		netif_device_detach(vsi->netdev);
- skip:
- 
- 	/* clear SW filtering DB */
-@@ -7568,11 +7570,13 @@ static void ice_update_pf_netdev_link(struct ice_pf *pf)
- 
- 		ice_get_link_status(pf->vsi[i]->port_info, &link_up);
- 		if (link_up) {
-+			netif_device_attach(pf->vsi[i]->netdev);
- 			netif_carrier_on(pf->vsi[i]->netdev);
- 			netif_tx_wake_all_queues(pf->vsi[i]->netdev);
- 		} else {
- 			netif_carrier_off(pf->vsi[i]->netdev);
- 			netif_tx_stop_all_queues(pf->vsi[i]->netdev);
-+			netif_device_detach(pf->vsi[i]->netdev);
- 		}
- 	}
- }
--- 
-2.44.0
+> >
+> >  	/* Deny parameters we don't support */
+> >  	if (i40e_is_eee_param_supported(netdev, edata)) @@ -5754,7
+> +5781,7
+> > @@ static int i40e_set_eee(struct net_device *netdev, struct
+> ethtool_keee *edata)
+> >  		config.eeer |=3D
+> cpu_to_le32(I40E_PRTPM_EEER_TX_LPI_EN_MASK);
+> >  	} else {
+> >  		config.eee_capability =3D 0;
+> > -		config.eeer &=3D
+> cpu_to_le32(~I40E_PRTPM_EEER_TX_LPI_EN_MASK);
+> > +		config.eeer &=3D
+> ~cpu_to_le32(I40E_PRTPM_EEER_TX_LPI_EN_MASK);
+>=20
+> Ditto.
+>=20
+> >  	}
+> >
+> >  	/* Apply modified PHY configuration */ diff --git
+> > a/drivers/net/ethernet/intel/i40e/i40e_main.c
+> > b/drivers/net/ethernet/intel/i40e/i40e_main.c
+> > index cbcfada..55bbf0f 100644
+> > --- a/drivers/net/ethernet/intel/i40e/i40e_main.c
+> > +++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
+> > @@ -7263,6 +7263,22 @@ static int i40e_init_pf_dcb(struct i40e_pf
+> *pf)
+> >  	return err;
+> >  }
+> >  #endif /* CONFIG_I40E_DCB */
+> > +static void i40e_print_link_message_eee(struct i40e_vsi *vsi,
+> struct ethtool_keee *kedata,
+> > +			    const char *speed, const char *fc) {
+> > +	if (vsi->netdev->ethtool_ops->get_eee)
+> > +		vsi->netdev->ethtool_ops->get_eee(vsi->netdev, kedata);
+> > +
+> > +	if (!linkmode_empty(kedata->supported))
+> > +		netdev_info(vsi->netdev,
+> > +			    "NIC Link is Up, %sbps Full Duplex, Flow
+> Control: %s, EEE: %s\n",
+> > +			    speed, fc,
+> > +			    kedata->eee_enabled ? "Enabled" : "Disabled");
+> > +	else
+> > +		netdev_info(vsi->netdev,
+> > +			    "NIC Link is Up, %sbps Full Duplex, Flow
+> Control: %s\n",
+> > +			    speed, fc);
+> > +}
+> >
+> >  /**
+> >   * i40e_print_link_message - print link up or down @@ -7395,9
+> > +7411,12 @@ void i40e_print_link_message(struct i40e_vsi *vsi, bool
+> isup)
+> >  			    "NIC Link is Up, %sbps Full Duplex, Requested
+> FEC: %s, Negotiated FEC: %s, Autoneg: %s, Flow Control: %s\n",
+> >  			    speed, req_fec, fec, an, fc);
+> >  	} else {
+> > -		netdev_info(vsi->netdev,
+> > -			    "NIC Link is Up, %sbps Full Duplex, Flow
+> Control: %s\n",
+> > -			    speed, fc);
+> > +		struct ethtool_keee kedata;
+> > +
+> > +		linkmode_zero(kedata.supported);
+> > +		kedata.eee_enabled =3D false;
+>=20
+> Can the declaration of ethtool_keee be moved into
+> i40e_print_link_message_eee()? I suspect that would lead to a cleaner
+> implementation.
+>=20
+Ok
 
+> > +
+> > +		i40e_print_link_message_eee(vsi, &kedata, speed, fc);
+> >  	}
+> >
+> >  }
