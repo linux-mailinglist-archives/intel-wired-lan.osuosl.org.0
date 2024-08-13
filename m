@@ -1,102 +1,207 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 67FAE9505FB
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 13 Aug 2024 15:08:51 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2233F9506A8
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 13 Aug 2024 15:37:32 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 2EE0D81EC2;
-	Tue, 13 Aug 2024 13:08:47 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id C895D81948;
+	Tue, 13 Aug 2024 13:37:30 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id DNvEokw0qJJH; Tue, 13 Aug 2024 13:08:45 +0000 (UTC)
+ id uFAMxlVZAecn; Tue, 13 Aug 2024 13:37:29 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8273081EAC
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org EF3488190B
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1723554525;
-	bh=lLPNQwwpvMeDsCe9Vd+y88HzCTQqZ4bPXjZyNhvf68M=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1723556249;
+	bh=iPj/lCALHixIaK2nGOsxj5Pmq9jdaBd5d830l2h3Vvg=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=3Wq5weXmyypTzCFoQQQftEuNkOv3/WQeMTLDW5tNtIJEAEW/RS2FWr52yxYEZHaOz
-	 FUHURcopzFuD7urWO4W53YdYN/jMSxuO6ENJKTrfsDbxWigX6ir8d86zMwCzVX/th+
-	 wGUkZR9kcE6dB8WFrQHQcKHIoAE8N2qHKk58OhW4CTk1JEV8QDozPGfhlXmsUMuDKD
-	 2f9JXRIr2nbZkrasNH/GuH2QZlAiMWt33lpAYveU5UESMI9Rr7yrJhqstCsfELRsCy
-	 jJ5Uj2GIuaQ1VTBGejbbRT6pZovVzfgv5H1tcXvehmonhpx6jDugCZTFRu5XT65Qu4
-	 eI0rDwCxvLEFg==
+	b=6TD325C/hFLdcjck5HQbNBGr0JY0CcDqKopOyWT+YPG+Uq4CFQy9rguVb0VWyy0Aa
+	 nHhtXiH5x5akV6mFtkl69Knk+clabHFnhkLHw+5kbfQ2cKr+BXjseIK8lyUyHkK5vm
+	 91ZAYrwlILMu0TnmJZjQyYntqiNFmXHN8IbyOjA80gm17g0OnVbocx20gcCXP0fbOd
+	 WcwMoOxK9g6zLySeLyI2i2hYL4Sp54yMjU7XxKEwdkD3iPIxc/sILE0I920IE20OTR
+	 KPkTxkZAB+BElzJeC8HGdRdzigIYpJ0UsFyBtHvkBKawJhJcFM499WnTX5r8etyCi6
+	 I1MBZkwEPjTmg==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 8273081EAC;
-	Tue, 13 Aug 2024 13:08:45 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id EF3488190B;
+	Tue, 13 Aug 2024 13:37:28 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 658361BF97A
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Aug 2024 13:08:22 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 34A241BF275
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Aug 2024 13:37:26 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 5091C40A43
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Aug 2024 13:08:22 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 2A2D9818D4
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Aug 2024 13:37:26 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id jB92oBstpDxm for <intel-wired-lan@lists.osuosl.org>;
- Tue, 13 Aug 2024 13:08:20 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.11;
- helo=mgamail.intel.com; envelope-from=mateusz.polchlopek@intel.com;
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id W9zhBBsYdWsb for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 13 Aug 2024 13:37:25 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.19;
+ helo=mgamail.intel.com; envelope-from=larysa.zaremba@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 867DD40A45
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 867DD40A45
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.11])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 867DD40A45
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Aug 2024 13:08:20 +0000 (UTC)
-X-CSE-ConnectionGUID: N/DIN2peTp+87sfh+OK17g==
-X-CSE-MsgGUID: bVGhYKCkQu+fi3bB20UmvQ==
-X-IronPort-AV: E=McAfee;i="6700,10204,11163"; a="32290954"
-X-IronPort-AV: E=Sophos;i="6.09,285,1716274800"; d="scan'208";a="32290954"
-Received: from orviesa008.jf.intel.com ([10.64.159.148])
- by orvoesa103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 Aug 2024 06:08:20 -0700
-X-CSE-ConnectionGUID: 5E9enFdgR4CChZ+hMTRARw==
-X-CSE-MsgGUID: SIP44p1qRH+FLLLg8AnXJg==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 7AAE3818CD
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 7AAE3818CD
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.19])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 7AAE3818CD
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Aug 2024 13:37:23 +0000 (UTC)
+X-CSE-ConnectionGUID: dz9oHmgDSji+n/JB5oYR9A==
+X-CSE-MsgGUID: JQwecQcxQDO9sdRBtxIjbw==
+X-IronPort-AV: E=McAfee;i="6700,10204,11163"; a="21580671"
+X-IronPort-AV: E=Sophos;i="6.09,286,1716274800"; d="scan'208";a="21580671"
+Received: from orviesa003.jf.intel.com ([10.64.159.143])
+ by orvoesa111.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 13 Aug 2024 06:37:22 -0700
+X-CSE-ConnectionGUID: NlL/6rpnTSmRA3eK9gVmjQ==
+X-CSE-MsgGUID: /3gYQwgSQrOIJsidrOMJFA==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.09,285,1716274800"; d="scan'208";a="59417163"
-Received: from irvmail002.ir.intel.com ([10.43.11.120])
- by orviesa008.jf.intel.com with ESMTP; 13 Aug 2024 06:08:16 -0700
-Received: from fedora.igk.intel.com (Metan_eth.igk.intel.com [10.123.220.124])
- by irvmail002.ir.intel.com (Postfix) with ESMTP id E3A3C32C8B;
- Tue, 13 Aug 2024 14:08:14 +0100 (IST)
-From: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
-To: intel-wired-lan@lists.osuosl.org,
-	aleksander.lobakin@intel.com
-Date: Tue, 13 Aug 2024 08:55:13 -0400
-Message-Id: <20240813125513.8212-15-mateusz.polchlopek@intel.com>
-X-Mailer: git-send-email 2.38.1
-In-Reply-To: <20240813125513.8212-1-mateusz.polchlopek@intel.com>
-References: <20240813125513.8212-1-mateusz.polchlopek@intel.com>
+X-IronPort-AV: E=Sophos;i="6.09,285,1716274800"; d="scan'208";a="63518015"
+Received: from orsmsx602.amr.corp.intel.com ([10.22.229.15])
+ by orviesa003.jf.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
+ 13 Aug 2024 06:37:22 -0700
+Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
+ ORSMSX602.amr.corp.intel.com (10.22.229.15) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.39; Tue, 13 Aug 2024 06:37:22 -0700
+Received: from ORSEDG602.ED.cps.intel.com (10.7.248.7) by
+ orsmsx610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.39 via Frontend Transport; Tue, 13 Aug 2024 06:37:22 -0700
+Received: from NAM04-BN8-obe.outbound.protection.outlook.com (104.47.74.45) by
+ edgegateway.intel.com (134.134.137.103) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.39; Tue, 13 Aug 2024 06:37:21 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=LtUZBDhYFgdEDurgTW/N3/hDY/VWqKso+Wq7t0hE8izL9gl5a2E8HP2bnXUhMxdrTLozjAnZVeN8GjLHQenIVqsbADEFzXN9YcxqFogTnOHo70lO/GYJAiQvjOkgBGm2+Cs3Bs1Q+x38t3F4zb/WaLD+CW8jBhLuFEz7U6NGkkMKyb7/ljcOgUBO82NSN9mCrdfsloXak8AQToo9/w9CHHkZppEEdZPYG+MgzA2LBhLhNUqc2fh/HhMgVnkOdVL3ai2yypb6Ks6JMmUkZYFegUYALBBB59OLdKmewjCwTwajLZMItZGKjL6V0SPyVqpk3R7p6shg9sWlOEAmeZc8Xg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=iPj/lCALHixIaK2nGOsxj5Pmq9jdaBd5d830l2h3Vvg=;
+ b=rFXWs7SK99ThN/45v8mNQ6Pwbb/v0iSp2vDhvNfEeFfLQtJPwwZiCnkFbnSEbRDW/T4Mv1Tk9aYEARh4WHC/Va4mOL/khdZru0jL2zwpXmbyfjl35diw/HAD8YnsCwb7IR9bmUhrMl3F7Cya4mluMwyKtk7zONUyoyribKyE27KKah565wtILuD1NGPkgCbQlkaCIAFLNOPCM+SYnWVOzmz8kEiqPH0NZkPOwWMUnArPXq0g7Qp2G7VfzaWDE0tRSGk8QXuxH7RxTaEZiP9CInzvp65vhjEoJXSexx4i/r+653l+DiI9k6aTnnzXA1H1iH784yUfPKZw2l9iW6QUdQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from SN7PR11MB7540.namprd11.prod.outlook.com (2603:10b6:806:340::7)
+ by DS7PR11MB7857.namprd11.prod.outlook.com (2603:10b6:8:da::17) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7828.27; Tue, 13 Aug
+ 2024 13:37:14 +0000
+Received: from SN7PR11MB7540.namprd11.prod.outlook.com
+ ([fe80::399f:ff7c:adb2:8d29]) by SN7PR11MB7540.namprd11.prod.outlook.com
+ ([fe80::399f:ff7c:adb2:8d29%4]) with mapi id 15.20.7828.030; Tue, 13 Aug 2024
+ 13:37:14 +0000
+Date: Tue, 13 Aug 2024 15:36:57 +0200
+From: Larysa Zaremba <larysa.zaremba@intel.com>
+To: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+Message-ID: <ZrthebTBERMWN1DR@lzaremba-mobl.ger.corp.intel.com>
+References: <20240724164840.2536605-1-larysa.zaremba@intel.com>
+ <20240724164840.2536605-3-larysa.zaremba@intel.com>
+ <ZrtELQV3zZENOvn+@boxer>
+Content-Type: text/plain; charset="us-ascii"
+Content-Disposition: inline
+In-Reply-To: <ZrtELQV3zZENOvn+@boxer>
+X-ClientProxiedBy: TL2P290CA0007.ISRP290.PROD.OUTLOOK.COM (2603:1096:950:2::9)
+ To SN7PR11MB7540.namprd11.prod.outlook.com
+ (2603:10b6:806:340::7)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: SN7PR11MB7540:EE_|DS7PR11MB7857:EE_
+X-MS-Office365-Filtering-Correlation-Id: 0466d257-627a-4df4-33ec-08dcbb9d0a82
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|1800799024|7416014|376014;
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?diSRdXnJQZPSjXapGInVLrGv1jJjd3NLFeaPFU3/BleKSNZ0Db4E8jIYXlxU?=
+ =?us-ascii?Q?c4EDkbA7rHZOzrEkbBRKO3TRHJLFo4qjK2+hZ++9AFext21fsJU/mHt7moa7?=
+ =?us-ascii?Q?tEdiremxlzgIWwQj2j/lRUZ7ZHb/EIx7f5ZD6DCUpaJLG0/wTOgFX+Hp3Pjf?=
+ =?us-ascii?Q?5HffN1Dy0myV+VNo+Epv3RiczzhtzOGLBqeoqiYOVJs9bovob4VyEocQai+X?=
+ =?us-ascii?Q?WPSBVuWGle/UOj73M4F8L1+i7FnE6Uc3UV5O2V7gSUU3PAL6yPyJ4oebV5u5?=
+ =?us-ascii?Q?aQRoJE51z2iQH6fHDD8wfmobIsEPNef71HM1CWicrmDP3UEAnUSpmzVXC4rb?=
+ =?us-ascii?Q?D1emSepwn8izisfEHY1WtjuugP8baabwAcDS3/mxuX1/ONFfI1K3kqDGwNc8?=
+ =?us-ascii?Q?VL6qzFQPWN+pn03Bruc4UsVF78jeYW81nVlcSriEUinSBaXVhfDj263Jn28n?=
+ =?us-ascii?Q?vK+ARicuB66CMvV5pvIhaZ7JgL3uoIeEiLJ3gbi2pc9rc30sKLP8gPrfkqL+?=
+ =?us-ascii?Q?dfrsdOAB9tRz1Ci4hmlt2YB0U23rgt5ETIf3dKeN8C+MvZFqbuFo+mSJSd0z?=
+ =?us-ascii?Q?gmD++7A9ehV1QtAy/yHF5FO+QsWhfrDiqBL/8KQoS+qt8L43AcMAvXnJoN/I?=
+ =?us-ascii?Q?Ibevkk2udsRwqmrbtxJb7WsPXZwrsqL0yfmMpQohFJicxmH0iEynuNgakvv4?=
+ =?us-ascii?Q?zP8CPNYKWbyzOVwsEPs/9ok2qdzDXI+Jrq5AHPS/aai4gGOp8i9PIy/xZ191?=
+ =?us-ascii?Q?EJnh9L5KBceyXdplLrVbHjwYl0z3sLWd0KL3YGtPIjUxMzA+hkPG4T82jNVl?=
+ =?us-ascii?Q?YkJhWp0u8Ej4TD67P3wBv9WESVUA/ckXljA5EBQOY4sql2POO/yNpEv+FtKG?=
+ =?us-ascii?Q?f4jitl4coauBFf9DZmRD6DLBbsyABuv+FEtFDxDMWoFVcgopjrwryQsfS3YU?=
+ =?us-ascii?Q?IIVAicHK1bGAvtx/6wKpBKAL5QYmKIgpxCheC4Z4UiXQu5x1I7uo37d6Tv7h?=
+ =?us-ascii?Q?MQCZgo9sCY8lKAYaKMZq0q5Y0ERvqoonqK2D+86itldgheyV2Yt9bZjYimGQ?=
+ =?us-ascii?Q?MGWa4juh9hNg1jXQZiR0bbUaddzBB3im0Z4nVlNh1mo2/FHGJL7dbEFMJ73I?=
+ =?us-ascii?Q?4p8YlAE8d7HhgOxpDuOv/SH5G6ZjvlerICXXIINUZ0cysP/yClvHYyZ3vpfs?=
+ =?us-ascii?Q?9kefpFv2wp1cpLXKV0Oz7dzUgvV41R+pfitscgI/E1jVBTW41IxTKxNvQD5i?=
+ =?us-ascii?Q?JDfAQ+uglqaBD2bYVE2135dmi4EgmAK58LLjoQ10W6f8r2ujRwvvjW2+rBlD?=
+ =?us-ascii?Q?7WQKlh6xouMfqzXLgJLSWVxOZa9URE9gtk+tVZdffjixxA=3D=3D?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SN7PR11MB7540.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(366016)(1800799024)(7416014)(376014); DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?4i7oemUatTOj2h8UhyXOVIKzuDfOPtkmGDdZIz1lT8iG1vhh3c1IZY5b1Rs2?=
+ =?us-ascii?Q?OKuTvrZxLLm1GJg41rtqvLiZL9iQB63raBU/bi0yO/LwioLZqE4tXtdhhX1A?=
+ =?us-ascii?Q?k6WSEqmozAUEg+XLfH9+e3sr8vhQYtt1JZIdnitwWdgIugf9sWT1bpbxwJjb?=
+ =?us-ascii?Q?SHBniF9s5HtvvshKe0A2DuzQuTYU8Y9ZgajvZvPnaGJTU7GpIYJ99qT0rbZ8?=
+ =?us-ascii?Q?lddr0L3Jur+whs4MDCSoE9B6UAVtXnjtHJdHbEhVCz68dYumyzKBbNgHMlzo?=
+ =?us-ascii?Q?snGXP5zxfFs8v/t8AahCuUgxyPz7gjAEllQXsUeeVgWbjSrfjolFMWQXX0/E?=
+ =?us-ascii?Q?/sH/DORrI7hlfftwICu4x7FBE8sp0kgLnsxAdbUPmFmsCYT7KIEE2+BqXPU8?=
+ =?us-ascii?Q?paOBvcUKpLVYeu1/9pggh1YhsrGPlMHhXH6X+NUr44eW9gYSDcZJI8DPdRQj?=
+ =?us-ascii?Q?RrGlcLjSRMN93ZU9Z0vHLhrTk/1mkCZoiBl9yAXyt49TY5vYOKPDGMEnwODI?=
+ =?us-ascii?Q?bxKtTj0lh80hdJrI3DUpDh15WN0GCgpJ6sNYMQ9XGvtdUivUuObrAeo3rSVW?=
+ =?us-ascii?Q?a/9EDqLM6bHnUfWi3x5UF4JHlswxXACTrKOJ4lQoCNzIf/fdnK8tOEzur9AO?=
+ =?us-ascii?Q?XoZd/mL3FFmcuRnf1TIMsmMXEYS9zT3SRL5Y4T8dLTcA1j39DFoMQjwL+Jua?=
+ =?us-ascii?Q?DfWPonPw9l+dI1jmlcnDdl5P2fzaAJL3inFU5BvNJcrKAFWrRtapG9tUXxsj?=
+ =?us-ascii?Q?IMRbpqDNq/NdHJ7cTdOdYMahauviihcK2rNjc/FS+UBihZAlao4QM0FJbZFl?=
+ =?us-ascii?Q?bjjuO9XAkAKr8ebGdnzB1LHwZAV3dJcO6GkRAxtCu8dDhGGINDnFOA8cSZbg?=
+ =?us-ascii?Q?rdUYskOe2OLB7XQygw15Tiebf6bOZTeQpgp2QBHEv1LfR0qoFsFrJgRwpB3Y?=
+ =?us-ascii?Q?D2SI8zs7fAQsDhZH9eHfGDZdrKxeBCgP9JXa2mYFScOc6zkjERituLOYYC5T?=
+ =?us-ascii?Q?L7PJqeGCCAdxx0mlJn4tFdxueFAQ4q2x1BPdqYrfoCdc/xzqaBG9P/pyn0UT?=
+ =?us-ascii?Q?abkaCluzfwkR7FysP8GgHGkbOpB4GB/Q1JCsTUuRplg4+VoxNaE+VEiT+qqP?=
+ =?us-ascii?Q?3oTqp5VMySLkAMs0Fyt+CrMDl2xtKKBMh583X3lChF7RU+n/ajcdxfXoljdW?=
+ =?us-ascii?Q?o0VIITWhnS4csolSAPqNIeJXpRtjkQeiKY0iMwBM5sNHTYptBr6D2Vd7qKBh?=
+ =?us-ascii?Q?LoVHD54dsRaLIjUHkMimjsuBFBnObCjIfg3cH0/DTOmoxFrQxRlZvJsUOw38?=
+ =?us-ascii?Q?PjyEK9GgRMrfCcMcJPYeFK2JKr3X6eiubEyCbUPS+NN4CJqm3M/zAvx4jZvB?=
+ =?us-ascii?Q?gvnw1UXShVfvXk98kFBQdOKPnPWbxz2CEQfzKkL85z9K71m9aClR5rsELB7a?=
+ =?us-ascii?Q?8gPrh5oV3x78dB1jOPx5MHM44NrqS+rLgd4WMEZF2F8t2HG1M2V5m5vBCdYA?=
+ =?us-ascii?Q?hC2sjQyFTFPzP5ep7iPrwSB3EUnfVfLgmb4dt5bVKsFm93IvrTR4pqFAYonS?=
+ =?us-ascii?Q?dgmG8cq+/l5E4Ww6InJ0uD4ZZ8ZaE+Wog/fh6ygF?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: 0466d257-627a-4df4-33ec-08dcbb9d0a82
+X-MS-Exchange-CrossTenant-AuthSource: SN7PR11MB7540.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Aug 2024 13:37:14.2365 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: r03Lx06jY/NAC8/yUZKYZf00fCVzCEGpZYlTZ18FnAsNhaVcrLB5Xkhhy+qi5/cgH6BIsbmND/GBPP9QabGGyjVtJN86i1gjxe2rYqKKS08=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS7PR11MB7857
+X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1723554501; x=1755090501;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=UkCkRlP9JjXDSYVw4cI1UgJ3SzA6/LPSY+O7NarxdOM=;
- b=gV6LVHk56jMAShs/O0N6Uo8UMwPmY9faaR0qRit+3MKm6QsDLAXNrMp6
- BXOtSm6c1SCuqzfT9Btqi3NiOeU3J5GlgdYVFhW6oThWJj15QW3wiWwvC
- penQy+K4dLVVJH2dKAOwEePvQoV3v4bd+8LdWjdVLsb8uXQ5nBZLhBnVV
- QSOimHBnimuTsJHBEE/8SNqfuF0M0Fgf62idnr/BaTGe59FtZEywFkWGD
- fk+4F42kUjpUgjrNCkjvl9wgdAYhKI00bnR2dhfJaiV9VWLSA2Jz6kgCk
- UJD44gS91Bkd/S45BenALyb1kpoMNpBd+EqwEZNbf9H4r8FOdBSRHszoZ
- g==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ t=1723556244; x=1755092244;
+ h=date:from:to:cc:subject:message-id:references:
+ in-reply-to:mime-version;
+ bh=I1unFJsgAHyA0HMg4kVic4rPrvrGx2mMA4o4XZhncH4=;
+ b=Mgomr1n55fMP6grPHJDKhikaLLGKaoeJqbXP2GhAeqRmCU35ZaQsjyTl
+ AGY4mkali897CjIRiPpGg+CjS61/SuDMHKjCZFa+kgc7Q3eOjFPLKOZ8F
+ u5Zu1F8lMdB/jlF9ryFWvFGpoCQhvYJqdgb58aVrgbgWQftp2dQENY/aa
+ RHeO3iuK+sd1ufIJf9z4JciMVKfFED0uZ+XaioFzSiyz6MP+XDUAI5+iY
+ P+/08n48AeUxYtdie4dH1jHxQoAg+HVSxtyT8xpKinj9P/CkPk8GEjFTn
+ w+jM8gOM3waxVlPTFhAr4H3q4G8Aedmt+s9s0s2waSGUF/SbEsIcI60MV
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=gV6LVHk5
-Subject: [Intel-wired-lan] [PATCH iwl-next v9 14/14] iavf: add support for
- Rx timestamps to hotpath
+ header.s=Intel header.b=Mgomr1n5
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH iwl-net v2 2/6] ice: protect XDP
+ configuration with a mutex
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -109,255 +214,313 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Wojciech Drewek <wojciech.drewek@intel.com>, netdev@vger.kernel.org,
- Simon Horman <horms@kernel.org>,
- Mateusz Polchlopek <mateusz.polchlopek@intel.com>,
- Jacob Keller <jacob.e.keller@intel.com>,
- Rahul Rameshbabu <rrameshbabu@nvidia.com>,
- Sunil Goutham <sgoutham@marvell.com>
+Cc: Wojciech Drewek <wojciech.drewek@intel.com>,
+ Jesper Dangaard Brouer <hawk@kernel.org>,
+ Daniel Borkmann <daniel@iogearbox.net>, netdev@vger.kernel.org,
+ Amritha Nambiar <amritha.nambiar@intel.com>,
+ John Fastabend <john.fastabend@gmail.com>, Alexei
+ Starovoitov <ast@kernel.org>, linux-kernel@vger.kernel.org,
+ Eric Dumazet <edumazet@google.com>, Michal Kubiak <michal.kubiak@intel.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>, Jakub Kicinski <kuba@kernel.org>,
+ Jacob Keller <jacob.e.keller@intel.com>, intel-wired-lan@lists.osuosl.org,
+ bpf@vger.kernel.org, Paolo Abeni <pabeni@redhat.com>,
+ "David S. Miller" <davem@davemloft.net>, magnus.karlsson@intel.com
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Jacob Keller <jacob.e.keller@intel.com>
+On Tue, Aug 13, 2024 at 01:31:57PM +0200, Maciej Fijalkowski wrote:
+> On Wed, Jul 24, 2024 at 06:48:33PM +0200, Larysa Zaremba wrote:
+> > The main threat to data consistency in ice_xdp() is a possible asynchronous
+> > PF reset. It can be triggered by a user or by TX timeout handler.
+> > 
+> > XDP setup and PF reset code access the same resources in the following
+> > sections:
+> > * ice_vsi_close() in ice_prepare_for_reset() - already rtnl-locked
+> > * ice_vsi_rebuild() for the PF VSI - not protected
+> > * ice_vsi_open() - already rtnl-locked
+> > 
+> > With an unfortunate timing, such accesses can result in a crash such as the
+> > one below:
+> > 
+> > [ +1.999878] ice 0000:b1:00.0: Registered XDP mem model MEM_TYPE_XSK_BUFF_POOL on Rx ring 14
+> > [ +2.002992] ice 0000:b1:00.0: Registered XDP mem model MEM_TYPE_XSK_BUFF_POOL on Rx ring 18
+> > [Mar15 18:17] ice 0000:b1:00.0 ens801f0np0: NETDEV WATCHDOG: CPU: 38: transmit queue 14 timed out 80692736 ms
+> > [ +0.000093] ice 0000:b1:00.0 ens801f0np0: tx_timeout: VSI_num: 6, Q 14, NTC: 0x0, HW_HEAD: 0x0, NTU: 0x0, INT: 0x4000001
+> > [ +0.000012] ice 0000:b1:00.0 ens801f0np0: tx_timeout recovery level 1, txqueue 14
+> > [ +0.394718] ice 0000:b1:00.0: PTP reset successful
+> > [ +0.006184] BUG: kernel NULL pointer dereference, address: 0000000000000098
+> > [ +0.000045] #PF: supervisor read access in kernel mode
+> > [ +0.000023] #PF: error_code(0x0000) - not-present page
+> > [ +0.000023] PGD 0 P4D 0
+> > [ +0.000018] Oops: 0000 [#1] PREEMPT SMP NOPTI
+> > [ +0.000023] CPU: 38 PID: 7540 Comm: kworker/38:1 Not tainted 6.8.0-rc7 #1
+> > [ +0.000031] Hardware name: Intel Corporation S2600WFT/S2600WFT, BIOS SE5C620.86B.02.01.0014.082620210524 08/26/2021
+> > [ +0.000036] Workqueue: ice ice_service_task [ice]
+> > [ +0.000183] RIP: 0010:ice_clean_tx_ring+0xa/0xd0 [ice]
+> > [...]
+> > [ +0.000013] Call Trace:
+> > [ +0.000016] <TASK>
+> > [ +0.000014] ? __die+0x1f/0x70
+> > [ +0.000029] ? page_fault_oops+0x171/0x4f0
+> > [ +0.000029] ? schedule+0x3b/0xd0
+> > [ +0.000027] ? exc_page_fault+0x7b/0x180
+> > [ +0.000022] ? asm_exc_page_fault+0x22/0x30
+> > [ +0.000031] ? ice_clean_tx_ring+0xa/0xd0 [ice]
+> > [ +0.000194] ice_free_tx_ring+0xe/0x60 [ice]
+> > [ +0.000186] ice_destroy_xdp_rings+0x157/0x310 [ice]
+> > [ +0.000151] ice_vsi_decfg+0x53/0xe0 [ice]
+> > [ +0.000180] ice_vsi_rebuild+0x239/0x540 [ice]
+> > [ +0.000186] ice_vsi_rebuild_by_type+0x76/0x180 [ice]
+> > [ +0.000145] ice_rebuild+0x18c/0x840 [ice]
+> > [ +0.000145] ? delay_tsc+0x4a/0xc0
+> > [ +0.000022] ? delay_tsc+0x92/0xc0
+> > [ +0.000020] ice_do_reset+0x140/0x180 [ice]
+> > [ +0.000886] ice_service_task+0x404/0x1030 [ice]
+> > [ +0.000824] process_one_work+0x171/0x340
+> > [ +0.000685] worker_thread+0x277/0x3a0
+> > [ +0.000675] ? preempt_count_add+0x6a/0xa0
+> > [ +0.000677] ? _raw_spin_lock_irqsave+0x23/0x50
+> > [ +0.000679] ? __pfx_worker_thread+0x10/0x10
+> > [ +0.000653] kthread+0xf0/0x120
+> > [ +0.000635] ? __pfx_kthread+0x10/0x10
+> > [ +0.000616] ret_from_fork+0x2d/0x50
+> > [ +0.000612] ? __pfx_kthread+0x10/0x10
+> > [ +0.000604] ret_from_fork_asm+0x1b/0x30
+> > [ +0.000604] </TASK>
+> > 
+> > The previous way of handling this through returning -EBUSY is not viable,
+> > particularly when destroying AF_XDP socket, because the kernel proceeds
+> > with removal anyway.
+> > 
+> > There is plenty of code between those calls and there is no need to create
+> > a large critical section that covers all of them, same as there is no need
+> > to protect ice_vsi_rebuild() with rtnl_lock().
+> > 
+> > Add xdp_state_lock mutex to protect ice_vsi_rebuild() and ice_xdp().
+> > 
+> > Leaving unprotected sections in between would result in two states that
+> > have to be considered:
+> > 1. when the VSI is closed, but not yet rebuild
+> > 2. when VSI is already rebuild, but not yet open
+> > 
+> > The latter case is actually already handled through !netif_running() case,
+> > we just need to adjust flag checking a little. The former one is not as
+> > trivial, because between ice_vsi_close() and ice_vsi_rebuild(), a lot of
+> > hardware interaction happens, this can make adding/deleting rings exit
+> > with an error. Luckily, VSI rebuild is pending and can apply new
+> > configuration for us in a managed fashion.
+> > 
+> > Therefore, add an additional VSI state flag ICE_VSI_REBUILD_PENDING to
+> > indicate that ice_xdp() can just hot-swap the program.
+> 
+> couldn't this be a separate patch?
+> 
 
-Add support for receive timestamps to the Rx hotpath. This support only
-works when using the flexible descriptor format, so make sure that we
-request this format by default if we have receive timestamp support
-available in the PTP capabilities.
+I think, this is an integral part of the synchronization concept, without it 
+locking the rebuild would not have much sense.
 
-In order to report the timestamps to userspace, we need to perform
-timestamp extension. The Rx descriptor does actually contain the "40
-bit" timestamp. However, upper 32 bits which contain nanoseconds are
-conveniently stored separately in the descriptor. We could extract the
-32bits and lower 8 bits, then perform a bitwise OR to calculate the
-40bit value. This makes no sense, because the timestamp extension
-algorithm would simply discard the lower 8 bits anyways.
+> > 
+> > Fixes: 2d4238f55697 ("ice: Add support for AF_XDP")
+> > Fixes: efc2214b6047 ("ice: Add support for XDP")
+> > Reviewed-by: Wojciech Drewek <wojciech.drewek@intel.com>
+> > Signed-off-by: Larysa Zaremba <larysa.zaremba@intel.com>
+> > ---
+> >  drivers/net/ethernet/intel/ice/ice.h      |  2 ++
+> >  drivers/net/ethernet/intel/ice/ice_lib.c  | 26 +++++++++++++++--------
+> >  drivers/net/ethernet/intel/ice/ice_main.c | 19 ++++++++++++-----
+> >  drivers/net/ethernet/intel/ice/ice_xsk.c  |  3 ++-
+> >  4 files changed, 35 insertions(+), 15 deletions(-)
+> > 
+> > diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
+> > index 99a75a59078e..3d7a0abc13ab 100644
+> > --- a/drivers/net/ethernet/intel/ice/ice.h
+> > +++ b/drivers/net/ethernet/intel/ice/ice.h
+> > @@ -318,6 +318,7 @@ enum ice_vsi_state {
+> >  	ICE_VSI_UMAC_FLTR_CHANGED,
+> >  	ICE_VSI_MMAC_FLTR_CHANGED,
+> >  	ICE_VSI_PROMISC_CHANGED,
+> > +	ICE_VSI_REBUILD_PENDING,
+> >  	ICE_VSI_STATE_NBITS		/* must be last */
+> >  };
+> >  
+> > @@ -411,6 +412,7 @@ struct ice_vsi {
+> >  	struct ice_tx_ring **xdp_rings;	 /* XDP ring array */
+> >  	u16 num_xdp_txq;		 /* Used XDP queues */
+> >  	u8 xdp_mapping_mode;		 /* ICE_MAP_MODE_[CONTIG|SCATTER] */
+> > +	struct mutex xdp_state_lock;
+> >  
+> >  	struct net_device **target_netdevs;
+> >  
+> > diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
+> > index 5f2ddcaf7031..bbef5ec67cae 100644
+> > --- a/drivers/net/ethernet/intel/ice/ice_lib.c
+> > +++ b/drivers/net/ethernet/intel/ice/ice_lib.c
+> > @@ -447,6 +447,7 @@ static void ice_vsi_free(struct ice_vsi *vsi)
+> >  
+> >  	ice_vsi_free_stats(vsi);
+> >  	ice_vsi_free_arrays(vsi);
+> > +	mutex_destroy(&vsi->xdp_state_lock);
+> >  	mutex_unlock(&pf->sw_mutex);
+> >  	devm_kfree(dev, vsi);
+> >  }
+> > @@ -626,6 +627,8 @@ static struct ice_vsi *ice_vsi_alloc(struct ice_pf *pf)
+> >  	pf->next_vsi = ice_get_free_slot(pf->vsi, pf->num_alloc_vsi,
+> >  					 pf->next_vsi);
+> >  
+> > +	mutex_init(&vsi->xdp_state_lock);
+> > +
+> >  unlock_pf:
+> >  	mutex_unlock(&pf->sw_mutex);
+> >  	return vsi;
+> > @@ -2973,19 +2976,24 @@ int ice_vsi_rebuild(struct ice_vsi *vsi, u32 vsi_flags)
+> >  	if (WARN_ON(vsi->type == ICE_VSI_VF && !vsi->vf))
+> >  		return -EINVAL;
+> >  
+> > +	mutex_lock(&vsi->xdp_state_lock);
+> > +	clear_bit(ICE_VSI_REBUILD_PENDING, vsi->state);
+> > +
+> >  	ret = ice_vsi_realloc_stat_arrays(vsi);
+> >  	if (ret)
+> > -		goto err_vsi_cfg;
+> > +		goto unlock;
+> >  
+> >  	ice_vsi_decfg(vsi);
+> >  	ret = ice_vsi_cfg_def(vsi);
+> >  	if (ret)
+> > -		goto err_vsi_cfg;
+> > +		goto unlock;
+> >  
+> >  	coalesce = kcalloc(vsi->num_q_vectors,
+> >  			   sizeof(struct ice_coalesce_stored), GFP_KERNEL);
+> > -	if (!coalesce)
+> > -		return -ENOMEM;
+> > +	if (!coalesce) {
+> > +		ret = -ENOMEM;
+> 
+> Knee-jerk reaction would be to deconfig things that ice_vsi_cfg_def()
+> setup above.
+> 
+> So I think the order of kfree and ice_vsi_decfg should be swapped,
+> something like:
+> 
+> 	if (!coalesce) {
+> 		ret = -ENOMEM;
+> 		goto err_mem_alloc;
+> 	}
+> 
+> err_vsi_cfg_tc_lan:
+> 	kfree(coalesce);
+> err_mem_alloc:
+> 	ice_vsi_decfg(vsi);
+> unlock:
+> 	mutex_unlock(&vsi->xdp_state_lock);
+> 	return ret;
+> 
+> 
+> or am I missing something?
+> 
 
-Thus, implement timestamp extension as iavf_ptp_extend_32b_timestamp(),
-and extract and forward only the 32bits of nominal nanoseconds.
+You are correct, v3 it is :D
 
-Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
-Reviewed-by: Wojciech Drewek <wojciech.drewek@intel.com>
-Reviewed-by: Rahul Rameshbabu <rrameshbabu@nvidia.com>
-Reviewed-by: Sunil Goutham <sgoutham@marvell.com>
-Reviewed-by: Simon Horman <horms@kernel.org>
-Signed-off-by: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
----
- drivers/net/ethernet/intel/iavf/iavf_main.c | 11 +++-
- drivers/net/ethernet/intel/iavf/iavf_ptp.c  | 61 +++++++++++++++++++++
- drivers/net/ethernet/intel/iavf/iavf_ptp.h  |  4 ++
- drivers/net/ethernet/intel/iavf/iavf_txrx.c | 45 +++++++++++++++
- drivers/net/ethernet/intel/iavf/iavf_type.h |  1 +
- 5 files changed, 121 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
-index 1eacd06e372c..d714bc9b4030 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_main.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
-@@ -730,6 +730,15 @@ static u8 iavf_select_rx_desc_format(const struct iavf_adapter *adapter)
- 	if (!IAVF_RXDID_ALLOWED(adapter))
- 		return VIRTCHNL_RXDID_1_32B_BASE;
- 
-+	/* Rx timestamping requires the use of flexible NIC descriptors */
-+	if (iavf_ptp_cap_supported(adapter, VIRTCHNL_1588_PTP_CAP_RX_TSTAMP)) {
-+		if (rxdids & BIT(VIRTCHNL_RXDID_2_FLEX_SQ_NIC))
-+			return VIRTCHNL_RXDID_2_FLEX_SQ_NIC;
-+
-+		pci_warn(adapter->pdev,
-+			"Unable to negotiate flexible descriptor format\n");
-+	}
-+
- 	/* Warn if the PF does not list support for the default legacy
- 	 * descriptor format. This shouldn't happen, as this is the format
- 	 * used if VIRTCHNL_VF_OFFLOAD_RX_FLEX_DESC is not supported. It is
-@@ -737,7 +746,7 @@ static u8 iavf_select_rx_desc_format(const struct iavf_adapter *adapter)
- 	 * support for the format.
- 	 */
- 	if (!(rxdids & VIRTCHNL_RXDID_1_32B_BASE_M))
--		dev_warn(&adapter->pdev->dev, "PF does not list support for default Rx descriptor format\n");
-+		pci_warn(adapter->pdev, "PF does not list support for default Rx descriptor format\n");
- 
- 	return VIRTCHNL_RXDID_1_32B_BASE;
- }
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_ptp.c b/drivers/net/ethernet/intel/iavf/iavf_ptp.c
-index c52090c576d5..51bdd126f1f0 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_ptp.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_ptp.c
-@@ -389,6 +389,9 @@ void iavf_ptp_release(struct iavf_adapter *adapter)
- 	}
- 	adapter->aq_required &= ~IAVF_FLAG_AQ_SEND_PTP_CMD;
- 	mutex_unlock(&adapter->ptp.aq_cmd_lock);
-+
-+	adapter->ptp.hwtstamp_config.rx_filter = HWTSTAMP_FILTER_NONE;
-+	iavf_ptp_disable_rx_tstamp(adapter);
- }
- 
- /**
-@@ -418,3 +421,61 @@ void iavf_ptp_process_caps(struct iavf_adapter *adapter)
- 		iavf_ptp_disable_rx_tstamp(adapter);
- 	}
- }
-+
-+/**
-+ * iavf_ptp_extend_32b_timestamp - Convert a 32b nanoseconds timestamp to 64b
-+ * nanoseconds
-+ * @cached_phc_time: recently cached copy of PHC time
-+ * @in_tstamp: Ingress/egress 32b nanoseconds timestamp value
-+ *
-+ * Hardware captures timestamps which contain only 32 bits of nominal
-+ * nanoseconds, as opposed to the 64bit timestamps that the stack expects.
-+ *
-+ * Extend the 32bit nanosecond timestamp using the following algorithm and
-+ * assumptions:
-+ *
-+ * 1) have a recently cached copy of the PHC time
-+ * 2) assume that the in_tstamp was captured 2^31 nanoseconds (~2.1
-+ *    seconds) before or after the PHC time was captured.
-+ * 3) calculate the delta between the cached time and the timestamp
-+ * 4) if the delta is smaller than 2^31 nanoseconds, then the timestamp was
-+ *    captured after the PHC time. In this case, the full timestamp is just
-+ *    the cached PHC time plus the delta.
-+ * 5) otherwise, if the delta is larger than 2^31 nanoseconds, then the
-+ *    timestamp was captured *before* the PHC time, i.e. because the PHC
-+ *    cache was updated after the timestamp was captured by hardware. In this
-+ *    case, the full timestamp is the cached time minus the inverse delta.
-+ *
-+ * This algorithm works even if the PHC time was updated after a Tx timestamp
-+ * was requested, but before the Tx timestamp event was reported from
-+ * hardware.
-+ *
-+ * This calculation primarily relies on keeping the cached PHC time up to
-+ * date. If the timestamp was captured more than 2^31 nanoseconds after the
-+ * PHC time, it is possible that the lower 32bits of PHC time have
-+ * overflowed more than once, and we might generate an incorrect timestamp.
-+ *
-+ * This is prevented by (a) periodically updating the cached PHC time once
-+ * a second, and (b) discarding any Tx timestamp packet if it has waited for
-+ * a timestamp for more than one second.
-+ *
-+ * Return: extended timestamp (to 64b).
-+ */
-+u64 iavf_ptp_extend_32b_timestamp(u64 cached_phc_time, u32 in_tstamp)
-+{
-+	u32 low = lower_32_bits(cached_phc_time);
-+	u32 delta = in_tstamp - low;
-+	u64 ns;
-+
-+	/* Do not assume that the in_tstamp is always more recent than the
-+	 * cached PHC time. If the delta is large, it indicates that the
-+	 * in_tstamp was taken in the past, and should be converted
-+	 * forward.
-+	 */
-+	if (delta > S32_MAX)
-+		ns = cached_phc_time - (low - in_tstamp);
-+	else
-+		ns = cached_phc_time + delta;
-+
-+	return ns;
-+}
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_ptp.h b/drivers/net/ethernet/intel/iavf/iavf_ptp.h
-index 3b67a4624eee..2c4f25ef5af0 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_ptp.h
-+++ b/drivers/net/ethernet/intel/iavf/iavf_ptp.h
-@@ -9,6 +9,9 @@
- #define iavf_clock_to_adapter(info)				\
- 	container_of_const(info, struct iavf_adapter, ptp.info)
- 
-+/* bit indicating whether a 40bit timestamp is valid */
-+#define IAVF_PTP_40B_TSTAMP_VALID	BIT(24)
-+
- void iavf_ptp_init(struct iavf_adapter *adapter);
- void iavf_ptp_release(struct iavf_adapter *adapter);
- void iavf_ptp_process_caps(struct iavf_adapter *adapter);
-@@ -18,5 +21,6 @@ long iavf_ptp_do_aux_work(struct ptp_clock_info *ptp);
- int iavf_ptp_set_ts_config(struct iavf_adapter *adapter,
- 			   struct kernel_hwtstamp_config *config,
- 			   struct netlink_ext_ack *extack);
-+u64 iavf_ptp_extend_32b_timestamp(u64 cached_phc_time, u32 in_tstamp);
- 
- #endif /* _IAVF_PTP_H_ */
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_txrx.c b/drivers/net/ethernet/intel/iavf/iavf_txrx.c
-index 8f529cfaf7a8..b2ed20622bbc 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_txrx.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_txrx.c
-@@ -8,6 +8,7 @@
- #include "iavf.h"
- #include "iavf_trace.h"
- #include "iavf_prototype.h"
-+#include "iavf_ptp.h"
- 
- /**
-  * iavf_is_descriptor_done - tests DD bit in Rx descriptor
-@@ -1085,6 +1086,49 @@ static void iavf_flex_rx_hash(const struct iavf_ring *ring,
- 	}
- }
- 
-+/**
-+ * iavf_flex_rx_tstamp - Capture Rx timestamp from the descriptor
-+ * @rx_ring: descriptor ring
-+ * @rx_desc: specific descriptor
-+ * @skb: skb currently being received
-+ *
-+ * Read the Rx timestamp value from the descriptor and pass it to the stack.
-+ *
-+ * This function only operates on the VIRTCHNL_RXDID_2_FLEX_SQ_NIC flexible
-+ * descriptor writeback format.
-+ */
-+static void iavf_flex_rx_tstamp(const struct iavf_ring *rx_ring,
-+				const struct iavf_rx_desc *rx_desc,
-+				struct sk_buff *skb)
-+{
-+	struct iavf_adapter *adapter;
-+	__le64 qw2 = rx_desc->qw2;
-+	__le64 qw3 = rx_desc->qw3;
-+	u32 tstamp;
-+	u64 ns;
-+
-+	/* Skip processing if timestamps aren't enabled */
-+	if (!(rx_ring->flags & IAVF_TXRX_FLAGS_HW_TSTAMP))
-+		return;
-+
-+	/* Check if this Rx descriptor has a valid timestamp */
-+	if (!le64_get_bits(qw2, IAVF_PTP_40B_TSTAMP_VALID))
-+		return;
-+
-+	/* the ts_low field only contains the valid bit and sub-nanosecond
-+	 * precision, so we don't need to extract it.
-+	 */
-+	tstamp = le64_get_bits(qw3, IAVF_RXD_FLEX_QW3_TSTAMP_HIGH_M);
-+
-+	adapter = netdev_priv(rx_ring->netdev);
-+	ns = iavf_ptp_extend_32b_timestamp(adapter->ptp.cached_phc_time,
-+					   tstamp);
-+
-+	*skb_hwtstamps(skb) = (struct skb_shared_hwtstamps) {
-+		.hwtstamp = ns_to_ktime(ns),
-+	};
-+}
-+
- /**
-  * iavf_process_skb_fields - Populate skb header fields from Rx descriptor
-  * @rx_ring: rx descriptor ring packet is being transacted on
-@@ -1110,6 +1154,7 @@ static void iavf_process_skb_fields(const struct iavf_ring *rx_ring,
- 		csum_bits = iavf_legacy_rx_csum(rx_ring->vsi, rx_desc, decoded);
- 	} else {
- 		iavf_flex_rx_hash(rx_ring, rx_desc, skb, decoded);
-+		iavf_flex_rx_tstamp(rx_ring, rx_desc, skb);
- 		csum_bits = iavf_flex_rx_csum(rx_ring->vsi, rx_desc, decoded);
- 	}
- 	iavf_rx_csum(rx_ring->vsi, skb, decoded, csum_bits);
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_type.h b/drivers/net/ethernet/intel/iavf/iavf_type.h
-index db48ab08faf2..c559adb25330 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_type.h
-+++ b/drivers/net/ethernet/intel/iavf/iavf_type.h
-@@ -320,6 +320,7 @@ struct iavf_rx_desc {
- #define IAVF_RXD_FLEX_XTRMD5_VALID_M		BIT(15)
- 
- 	aligned_le64 qw3;
-+#define IAVF_RXD_FLEX_QW3_TSTAMP_HIGH_M		GENMASK_ULL(63, 32)
- } __aligned(4 * sizeof(__le64));
- 
- #define IAVF_RXD_QW1_STATUS_TSYNINDX_SHIFT IAVF_RX_DESC_STATUS_TSYNINDX_SHIFT
--- 
-2.38.1
-
+> > +		goto unlock;
+> > +	}
+> >  
+> >  	prev_num_q_vectors = ice_vsi_rebuild_get_coalesce(vsi, coalesce);
+> >  
+> > @@ -2996,19 +3004,19 @@ int ice_vsi_rebuild(struct ice_vsi *vsi, u32 vsi_flags)
+> >  			goto err_vsi_cfg_tc_lan;
+> >  		}
+> >  
+> > -		kfree(coalesce);
+> > -		return ice_schedule_reset(pf, ICE_RESET_PFR);
+> > +		ret = ice_schedule_reset(pf, ICE_RESET_PFR);
+> > +		goto err_vsi_cfg_tc_lan;
+> >  	}
+> >  
+> >  	ice_vsi_rebuild_set_coalesce(vsi, coalesce, prev_num_q_vectors);
+> >  	kfree(coalesce);
+> > -
+> > -	return 0;
+> > +	goto unlock;
+> >  
+> >  err_vsi_cfg_tc_lan:
+> >  	ice_vsi_decfg(vsi);
+> >  	kfree(coalesce);
+> > -err_vsi_cfg:
+> > +unlock:
+> > +	mutex_unlock(&vsi->xdp_state_lock);
+> >  	return ret;
+> >  }
+> >  
+> > diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
+> > index 8ed1798bb06e..e50526b491fc 100644
+> > --- a/drivers/net/ethernet/intel/ice/ice_main.c
+> > +++ b/drivers/net/ethernet/intel/ice/ice_main.c
+> > @@ -611,6 +611,7 @@ ice_prepare_for_reset(struct ice_pf *pf, enum ice_reset_req reset_type)
+> >  	/* clear SW filtering DB */
+> >  	ice_clear_hw_tbls(hw);
+> >  	/* disable the VSIs and their queues that are not already DOWN */
+> > +	set_bit(ICE_VSI_REBUILD_PENDING, ice_get_main_vsi(pf)->state);
+> >  	ice_pf_dis_all_vsi(pf, false);
+> >  
+> >  	if (test_bit(ICE_FLAG_PTP_SUPPORTED, pf->flags))
+> > @@ -3011,7 +3012,8 @@ ice_xdp_setup_prog(struct ice_vsi *vsi, struct bpf_prog *prog,
+> >  	}
+> >  
+> >  	/* hot swap progs and avoid toggling link */
+> > -	if (ice_is_xdp_ena_vsi(vsi) == !!prog) {
+> > +	if (ice_is_xdp_ena_vsi(vsi) == !!prog ||
+> > +	    test_bit(ICE_VSI_REBUILD_PENDING, vsi->state)) {
+> >  		ice_vsi_assign_bpf_prog(vsi, prog);
+> >  		return 0;
+> >  	}
+> > @@ -3083,21 +3085,28 @@ static int ice_xdp(struct net_device *dev, struct netdev_bpf *xdp)
+> >  {
+> >  	struct ice_netdev_priv *np = netdev_priv(dev);
+> >  	struct ice_vsi *vsi = np->vsi;
+> > +	int ret;
+> >  
+> >  	if (vsi->type != ICE_VSI_PF) {
+> >  		NL_SET_ERR_MSG_MOD(xdp->extack, "XDP can be loaded only on PF VSI");
+> >  		return -EINVAL;
+> >  	}
+> >  
+> > +	mutex_lock(&vsi->xdp_state_lock);
+> > +
+> >  	switch (xdp->command) {
+> >  	case XDP_SETUP_PROG:
+> > -		return ice_xdp_setup_prog(vsi, xdp->prog, xdp->extack);
+> > +		ret = ice_xdp_setup_prog(vsi, xdp->prog, xdp->extack);
+> > +		break;
+> >  	case XDP_SETUP_XSK_POOL:
+> > -		return ice_xsk_pool_setup(vsi, xdp->xsk.pool,
+> > -					  xdp->xsk.queue_id);
+> > +		ret = ice_xsk_pool_setup(vsi, xdp->xsk.pool, xdp->xsk.queue_id);
+> > +		break;
+> >  	default:
+> > -		return -EINVAL;
+> > +		ret = -EINVAL;
+> >  	}
+> > +
+> > +	mutex_unlock(&vsi->xdp_state_lock);
+> > +	return ret;
+> >  }
+> >  
+> >  /**
+> > diff --git a/drivers/net/ethernet/intel/ice/ice_xsk.c b/drivers/net/ethernet/intel/ice/ice_xsk.c
+> > index a65955eb23c0..2c1a843ba200 100644
+> > --- a/drivers/net/ethernet/intel/ice/ice_xsk.c
+> > +++ b/drivers/net/ethernet/intel/ice/ice_xsk.c
+> > @@ -379,7 +379,8 @@ int ice_xsk_pool_setup(struct ice_vsi *vsi, struct xsk_buff_pool *pool, u16 qid)
+> >  		goto failure;
+> >  	}
+> >  
+> > -	if_running = netif_running(vsi->netdev) && ice_is_xdp_ena_vsi(vsi);
+> > +	if_running = !test_bit(ICE_VSI_DOWN, vsi->state) &&
+> > +		     ice_is_xdp_ena_vsi(vsi);
+> >  
+> >  	if (if_running) {
+> >  		struct ice_rx_ring *rx_ring = vsi->rx_rings[qid];
+> > -- 
+> > 2.43.0
+> > 
