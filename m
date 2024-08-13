@@ -2,205 +2,98 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7CB3095041F
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 13 Aug 2024 13:49:38 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3F5DC9505E7
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 13 Aug 2024 15:08:17 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 2CE6A80B56;
-	Tue, 13 Aug 2024 11:49:37 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id D55BB80EC5;
+	Tue, 13 Aug 2024 13:08:15 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id vAFEInMwrW4L; Tue, 13 Aug 2024 11:49:36 +0000 (UTC)
+ id dIvyyejavRlV; Tue, 13 Aug 2024 13:08:15 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org C882680B1D
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 7337E819B4
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1723549775;
-	bh=9W2PmRxVZaTopLKPv2FuG1/ZBL7I2BokLPKLdSOxkmA=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=7BMdIXWfSxweDBVOUd0NIpdm501KVAn3wjBnSSt+3LbocQw6SvOvLZhTH3xej0AS6
-	 LX9KNszi8NIfyGbh2doK1HSmrsqkT6e5gd+ziksriLlhjthSK2F/XK8UKOE05nL5wJ
-	 0pvk/UEn4j4tKavM2FrjdrRxyP0XWghg5mJtR8f19/gpM2nbDJ1DEi3DGUvOjlB32j
-	 aYW8lX97z/oDMaoId7bxD9DExw29YOfEX+EfIyAXPEwCYhoA2MI19/PypE3VJd8O2k
-	 bdPmcxB7DHqL2hHv2Uyj4r5fD8bIerD74C61gFPLFAH+l1W2HP8Cn8SBIGPpeNmDIp
-	 o6MLWi+ldxHeg==
+	s=default; t=1723554494;
+	bh=5nzVfoPr9O7VIJTJRnrjfp+g1TOUETRZ0OP0fyxTPTc=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=EKerIAutUKkbrslZk0H5OMfBGnbpHMTp1fWWDuFLnMzUguRROsaaabqqSkq/G5vZu
+	 HC6YBZqsR1z8SfkBAAjoTBAe+eED8FO3VukfpFkd9xqi4N68FCgaJokmOMFRIlkBl8
+	 ODKKtlkys2Jc+soFCSdaAZWqkjxKalsWgMMrjQO8Vv2YLHS8S3SW9MpzWxLIor+nLs
+	 1AlzDnEI8YKznS6AeJlbDKQ/o++wc8hyUJavM5s/zyK4XC9ft5QGVgm6TJiD6KiN5L
+	 kwyRcCbtmdlufIZTZYkdIzBI6mEJ2+bynaq8Ottn9OaVQK0bGoMx8+VbWILvzk3W3M
+	 YAA9HxQYxyZsw==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id C882680B1D;
-	Tue, 13 Aug 2024 11:49:35 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 7337E819B4;
+	Tue, 13 Aug 2024 13:08:14 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 1F13A1BF5B3
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Aug 2024 11:49:34 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 92FBA1BF275
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Aug 2024 13:08:12 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 16CA980B0B
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Aug 2024 11:49:34 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 8C1B740A45
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Aug 2024 13:08:12 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id GBHPiMW8S9xd for <intel-wired-lan@lists.osuosl.org>;
- Tue, 13 Aug 2024 11:49:33 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.9;
- helo=mgamail.intel.com; envelope-from=maciej.fijalkowski@intel.com;
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id c_vdyABDlVGR for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 13 Aug 2024 13:08:11 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.11;
+ helo=mgamail.intel.com; envelope-from=mateusz.polchlopek@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 8B3C780ADE
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8B3C780ADE
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.9])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 8B3C780ADE
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Aug 2024 11:49:32 +0000 (UTC)
-X-CSE-ConnectionGUID: ZVklGTaTR+6KZgyhqjQcIg==
-X-CSE-MsgGUID: 0Q7jNSZpS6qLu/v3hcMA0A==
-X-IronPort-AV: E=McAfee;i="6700,10204,11162"; a="44227606"
-X-IronPort-AV: E=Sophos;i="6.09,285,1716274800"; d="scan'208";a="44227606"
-Received: from fmviesa007.fm.intel.com ([10.60.135.147])
- by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 Aug 2024 04:49:30 -0700
-X-CSE-ConnectionGUID: ARwwo4pdRdWatORF2Gvbdw==
-X-CSE-MsgGUID: AzqfSpwVQl6dtymN1b6Ikg==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org A645A40A6E
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A645A40A6E
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.11])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id A645A40A6E
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Aug 2024 13:08:10 +0000 (UTC)
+X-CSE-ConnectionGUID: 90ecshJ1SzSb1o5cAGmuOg==
+X-CSE-MsgGUID: b86neGq5Si20ZnaSZMEKsg==
+X-IronPort-AV: E=McAfee;i="6700,10204,11163"; a="32290900"
+X-IronPort-AV: E=Sophos;i="6.09,285,1716274800"; d="scan'208";a="32290900"
+Received: from orviesa008.jf.intel.com ([10.64.159.148])
+ by orvoesa103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 13 Aug 2024 06:08:09 -0700
+X-CSE-ConnectionGUID: ieVtGXeDSkKx7LnF+g4xJA==
+X-CSE-MsgGUID: 2MrPp1fySh+9RuyaidzUhA==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.09,285,1716274800"; d="scan'208";a="58337931"
-Received: from fmsmsx601.amr.corp.intel.com ([10.18.126.81])
- by fmviesa007.fm.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
- 13 Aug 2024 04:49:30 -0700
-Received: from fmsmsx601.amr.corp.intel.com (10.18.126.81) by
- fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.39; Tue, 13 Aug 2024 04:49:29 -0700
-Received: from fmsedg602.ED.cps.intel.com (10.1.192.136) by
- fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.39 via Frontend Transport; Tue, 13 Aug 2024 04:49:29 -0700
-Received: from NAM11-BN8-obe.outbound.protection.outlook.com (104.47.58.172)
- by edgegateway.intel.com (192.55.55.71) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Tue, 13 Aug 2024 04:49:29 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=NLXCUpXm2xA8zXUZgM/SOdPl/gU8OyQ1tnp6Nffo1YplxenY46UsRQYHugZ30aROU2b3w5zCxK64/WqM5jGLS7sMZGht7ftfUuZyG9MtLkwkA5x+LTGL8N8G3dfgiyy2yoUk1GyRcoy4eJ/AoQXhgUhjmKNNcRbL/wbdiVfPrWmuhH57HYhk754aR08DyX0KSM5xFMjwoOoUBAltROR17QSd/JLBKxGer+DWKUwBKg/l+PUaudSIANGAPRB+da3VeWaALO32PaO+DJdjb5KwRcEzp+4vaRhD8UOVVmueXCD8u4XZo0IH8sGuIu+qvU/Foq+T8BHRNuDyHTM5QNEPuA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=9W2PmRxVZaTopLKPv2FuG1/ZBL7I2BokLPKLdSOxkmA=;
- b=nXI/KdOON/YyxT+nRBNbBaRhDwWfWrxxVYSsdc8JuVdIlzKRbMACnBrWK3wN1AqGOPdwWTqxY6cEoKvarlkdXgP3lqbo0Y3OVswosso/6/QvlmQbotaKHbHEEUhIn8GMPmB2YgSBtR4IGIHdrfhECulBiICU38JWPuUsA36JymVHmZRn3o2BbYyMEtceHvAwPFL8lwhYzydduE7U+QlvRFugKi7EhSUXn86gYjuf3hfZx5+Esw+dAVCw2CcKjvbD9l8Y4ebh2P+0TH8z5e/glYvtuDnDNMGywmOB4DSWtyP401qvb+LGHKor3xOp8oFhMOPxqJT6ektgmE/VCGOgjQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from DM4PR11MB6117.namprd11.prod.outlook.com (2603:10b6:8:b3::19) by
- PH7PR11MB7479.namprd11.prod.outlook.com (2603:10b6:510:27f::7) with
- Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.7828.25; Tue, 13 Aug 2024 11:49:26 +0000
-Received: from DM4PR11MB6117.namprd11.prod.outlook.com
- ([fe80::d19:56fe:5841:77ca]) by DM4PR11MB6117.namprd11.prod.outlook.com
- ([fe80::d19:56fe:5841:77ca%4]) with mapi id 15.20.7828.023; Tue, 13 Aug 2024
- 11:49:26 +0000
-Date: Tue, 13 Aug 2024 13:49:15 +0200
-From: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
-To: Dawid Osuchowski <dawid.osuchowski@linux.intel.com>
-Message-ID: <ZrtIO2durwKP7ue/@boxer>
-References: <20240812125009.62635-1-dawid.osuchowski@linux.intel.com>
-Content-Type: text/plain; charset="us-ascii"
-Content-Disposition: inline
-In-Reply-To: <20240812125009.62635-1-dawid.osuchowski@linux.intel.com>
-X-ClientProxiedBy: MI0P293CA0006.ITAP293.PROD.OUTLOOK.COM
- (2603:10a6:290:44::17) To DM4PR11MB6117.namprd11.prod.outlook.com
- (2603:10b6:8:b3::19)
+X-IronPort-AV: E=Sophos;i="6.09,285,1716274800"; d="scan'208";a="59417116"
+Received: from irvmail002.ir.intel.com ([10.43.11.120])
+ by orviesa008.jf.intel.com with ESMTP; 13 Aug 2024 06:08:07 -0700
+Received: from fedora.igk.intel.com (Metan_eth.igk.intel.com [10.123.220.124])
+ by irvmail002.ir.intel.com (Postfix) with ESMTP id C02CB32C86;
+ Tue, 13 Aug 2024 14:08:05 +0100 (IST)
+From: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
+To: intel-wired-lan@lists.osuosl.org,
+	aleksander.lobakin@intel.com
+Date: Tue, 13 Aug 2024 08:54:59 -0400
+Message-Id: <20240813125513.8212-1-mateusz.polchlopek@intel.com>
+X-Mailer: git-send-email 2.38.1
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DM4PR11MB6117:EE_|PH7PR11MB7479:EE_
-X-MS-Office365-Filtering-Correlation-Id: 21d1e0c5-9a03-4f1f-0a2b-08dcbb8dfb7a
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|366016|1800799024;
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?ZvoFTATMU3Tm+vU2iRR2lDKBbfW6sBkILu5X3VE2f2zaap58trRY71RpNOiD?=
- =?us-ascii?Q?V1doH1NYB3HDVSvogj1RQjrINU9xdoOGt1l9aWbnNgISIBV5NakoDqXHCQRA?=
- =?us-ascii?Q?/kcLOHRmFxAQb7mx51SUkc0DJje94ucxWT3mX4fqeN3lfN2/uO5xely4JgxF?=
- =?us-ascii?Q?ex+eZsSm9ZWke0WfffScqMDqa6xvQvA9FikxlGtP+YlqIj6LIvFluHv+uHwE?=
- =?us-ascii?Q?5XZqb+Z531J5RlsGPrLjtXyli6telym+bmSBDRvxoF2Dy/SbEqtkTmlpvLdL?=
- =?us-ascii?Q?lAXprhwlU/Jgr8upJrNxFUT2G0cKfOmeCqfp0enuqU1FlipJFrbuWEO9g5gk?=
- =?us-ascii?Q?xVcOsGMyVjVDbGtvVgNqW40f6w7eEFUYhOxQ6PdCLBC57/tFn7JtrUap8TxT?=
- =?us-ascii?Q?Kc0bnhUHj68odiovW5EjPhxSNpmCyjmD/jOEumeXqByeeCPK5BR/T9ck3v4B?=
- =?us-ascii?Q?o8gUcD+H8uyTQm7pdbRJHl4aFy0X9Ig/9Ao6p8KevmXVVK/Pcl8/v3sSH6C2?=
- =?us-ascii?Q?y7+eljGGjUlHq5YrtVbb8LWiDMx+3wyNj/Ugp6fi4ZzkJ3WuGTCbo0imtxXc?=
- =?us-ascii?Q?ywKh06Yv4jf05p5A7wKgdo606E7am8WhiJXkXEWACJN3q17BWENjNX9RBcCS?=
- =?us-ascii?Q?VS9aqYs1ixE4iEaJj/8ursqoKTNZKDQzH3uJIZjGqkyGqpDnC5KAElvzebUl?=
- =?us-ascii?Q?BUen9OsXfsvUXZ5sUnhRiwc1bE1RwKLceo6w42swGS7PVFmbSo+BThadIKcW?=
- =?us-ascii?Q?3od+M5RMHabWXbAfo4HFqn+5TfVLlHglQsboC+h3KnVq5JGb5UzI12cSEqel?=
- =?us-ascii?Q?RePgzZbBD1RVbJRuIqOo7921PCo0odcpLlUldnGXMKyCYRJfur7d9o3cuE3t?=
- =?us-ascii?Q?R1a4a74T+11aM+dzBNKlrd7vlI0bJtvUAAESNp2yaq+YrOGfLDiof47BJlMS?=
- =?us-ascii?Q?8cJpclCReUOos5uIz99+7k0L1Mmu6c+tdZCxubfrdpweel+VxMoJS+R1yfQ/?=
- =?us-ascii?Q?Pzk4AMS68Vbgb+5c5y8aaRURJ2mV6zxkccD1iWc3lZ4pP9GAfTLEx3fHkk3I?=
- =?us-ascii?Q?VLK3LLTToWyqTTVeG+qqG+GxRt2Tr85yktZFAvZyGySFV1SbAAswW2+NSbw1?=
- =?us-ascii?Q?3BO0cARvEDa1//UnTQegISfbMcHq0+RZzBmN4NR9XvztFGrET7GwfMMgK6md?=
- =?us-ascii?Q?6icL3hr8zXfTbtF+9p5vCraNlQpET0OzofGC9ZaBxjB38oZTBXNpjZ5slApx?=
- =?us-ascii?Q?o35bkW/06nNos1noYzskXh5zj4pV/piSFrg+BEuaurWWuYya7opxPyCOHfkl?=
- =?us-ascii?Q?SFI=3D?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:DM4PR11MB6117.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(376014)(366016)(1800799024); DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?I4pc/t3Hx/WeQaEh5w73TZLyErqSa4O4ptCl9b8jmU+Et8xqKGy8iKoz9UH9?=
- =?us-ascii?Q?PQ3NILhnqXkf8yowoHktyus+glyWv9ZlYruLwnXi2ae/vhxXj8uZMWB5Fg+5?=
- =?us-ascii?Q?s5XPDfgYmyApzemPfsRuXZfvngvuwO1KdgM8VpPC2zp6Jjvb2RJ7x8ZAHJCN?=
- =?us-ascii?Q?eHXSvT0KYOgauccq+G8b97WQaty0Q8ey9ybBd3WsL1ggQ9bM5zTMP8WHyQA+?=
- =?us-ascii?Q?aP7Wf+C/tZcwrbSR/csJjBzyyGQnu0IeL/82W0vcRvPR0l19ldto6QMrsDs2?=
- =?us-ascii?Q?4P5CAJSHTs95vOhLmLoYC6SoBdlR+8nrk28Q32UAjCaH0vobicC1kbbDAfRm?=
- =?us-ascii?Q?5fCQp1cCAQRqaTs5dl2JjyOSD7LSEzm7ZLQ2nm0mmwDbfaPUW7OyVguhW5Ig?=
- =?us-ascii?Q?Nmi2X4uhWCBPODAsEZsJ3rqtL6nN6rddj1gfn5ibcXxe5Tg5j0aWbLkZvQSw?=
- =?us-ascii?Q?UzY5jfHxENkswewebFYsEN8K+CfAo38hnzbvK3agqrQmJn1t371SIyjLTN8m?=
- =?us-ascii?Q?UFNhCpcfw7hCqGrRhkL/Lhv9f7yrAnhH8dOuWlJfzcWCZDu7KVTa8UKamX5O?=
- =?us-ascii?Q?PoR2KGska5Z8yVsUHiMASRPS/D4G2DORdOU6ALPkIxy46TZIGJJGEg3Zpn0h?=
- =?us-ascii?Q?P+7Q7sbR4zBEpFrFwEaiKn+BWd2zotSOdKjkcVvjM9BNhmDUOs6BSSQ12aVH?=
- =?us-ascii?Q?G4QucDFeLHpRdtW1eqdcnwVr0+ac/cT21KmHm4c7XBFMW09rA0XuQLnV7IpZ?=
- =?us-ascii?Q?Zl6Pal1sipJHAhxeHx9h9bMc7H5shYvxS2ewnxF5bXghmrALI3kIN7HJ9Iak?=
- =?us-ascii?Q?SEzj2SBM29MOGguWfcnM+mjzep50ZHwNK4nCZ+nGSG5tHWaRw1DD0aEsR4wP?=
- =?us-ascii?Q?NpPKcCc/VMRC+8LWzePWVCRT2wqtPhN+YZ/V7buDKJzx3Wki4ZVmVuOb49em?=
- =?us-ascii?Q?Pp0Oil1djl+up2XdtOBMTqLTNNh52+/2o/Cd51LdJom3bxDHX03Jml4Qm26u?=
- =?us-ascii?Q?Ce2BE8pFCdhtmuF77cg/6fJib7v2L6E4j2/OPVGTCHHXvDP7jrhiJ5re0F/c?=
- =?us-ascii?Q?NtaN0iy0ayHJIz1aJw9T6Gl6lgJOpfk1/Wypl69Bxf95SF+us+Q0lIMn823h?=
- =?us-ascii?Q?fUfMbRIWKj1OBbH0mLRXuElN4lkDgrH2wgpkJLy4qy9mnqpb5R7Z69SqBFL/?=
- =?us-ascii?Q?X4LP4O0gVEEydpxe/hVSEi6ps6QAd6h55zZA2tkW3qeQvmpTBHhl6CUArd9j?=
- =?us-ascii?Q?vgzao5RjYRg6413y+toMAfJ1M0398hTE5J6hzdJeXmXc38pb1yy+ZN33DtSb?=
- =?us-ascii?Q?50FzOkWUeF7n78BYHgk6wk/zt0qqz/2hVh3deRE3thPxBA8cIn5cf5osG+TL?=
- =?us-ascii?Q?EDD3VyWwe/N8gp/MirRONvjL6ohS0/+we0zBnSt7eqoUFEheC/v1wmcsjg+D?=
- =?us-ascii?Q?9ifh4FXZthuiUK+fy8nkbgZRfeamRYg6gaUwV0ab7RMXN7qGoYXs97mmnKKD?=
- =?us-ascii?Q?e1HixZmx82wcjN/SofYcLQ/hvzVD5YsOBiwsjNAeGLZusGkoCfRiBim4pCWs?=
- =?us-ascii?Q?BEH05oyEMC7zcOzW5dSbMCiu/CY7QGdu+sgSE8GnGlzEJmcN7DvSNuXiIBR2?=
- =?us-ascii?Q?ng=3D=3D?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: 21d1e0c5-9a03-4f1f-0a2b-08dcbb8dfb7a
-X-MS-Exchange-CrossTenant-AuthSource: DM4PR11MB6117.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Aug 2024 11:49:26.4395 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: /NDPlthjtZ95joCCjpl/VtejywevCo5QUQzntXCqN0iEa8hrYsio3T3reSEYPa44mi0t0+nDi9ckYDSL4EvzKIz7CISHTfTNEvWNEt2mWbI=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH7PR11MB7479
-X-OriginatorOrg: intel.com
+Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1723549772; x=1755085772;
- h=date:from:to:cc:subject:message-id:references:
- in-reply-to:mime-version;
- bh=kD2LXdnl176zvn8PT4klFVIK8h5+nhY2s0MfewO2jh0=;
- b=g/u+q+44rYV5/a3oJhY5JXcUFUJO2Q6aGrDO/KjFQKvIyhUyERQAe7EF
- opliIQJA4ImRJbDOIJLM1Qjme/WrihhP3TCIuH9ZbC0lhvWJ+iQih7znm
- Obf4SWKrlOWxIwswmg2MWqv01ZFRDeDiA2GzOI41E96qcvPZTePyaRzLQ
- J7rk/ecC+W1QvTrYZG/e3ilOBZ4KZE6fZaTPDLIN9jG4kkTs6YTaLKi8u
- T+/xKuvJj/TR3Ko9q349KwUClCLsvGOQU2I2TY0GqR+AWEvihdJ8Dd8GW
- zj8djKJbfBSnr6rLD5WXqf4CY/JeH0C1LG0b7RbGIDv9BCxJfFwON0HN5
- Q==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ t=1723554491; x=1755090491;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=lNeqJxEpd49T++OecEYoBJ2nLcgVHCPOnYpAfhNlHZY=;
+ b=bktqWTc2d9Q0iR4jmLiWzflvDt40QDbptjcZMM6JGFYoQJoNgr52zSAO
+ 2/RhCMjlX6SUta8BPNPVwQ/o0N+6gF17/38o1Icqit5Sje9TCmEOs21s6
+ PDC26eYRK8hK+KD2WbGJ3h3petI9iLsYsLtQI2R+batzVKS7sLNxEVAWB
+ aofYb5zq2ow0gr9Pa9CEaYvFcmLUEmfffKnu/V3x0RbQ2Gas5Fqn/uKF4
+ 3Avs4UEuzxGGqaFbJ5UkSHGrk/XlvLlH0uwbo9tezpFexdrwD6XI1gpMM
+ oI7NaFsB8ZFd4ZouXwH4J5fRwcVxMbUiOw7v74+FDlcUlVEyQrJ337h+p
+ w==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=g/u+q+44
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH iwl-net v2] ice: Add
- netif_device_attach/detach into PF reset flow
+ header.s=Intel header.b=bktqWTc2
+Subject: [Intel-wired-lan] [PATCH iwl-next v9 00/14] Add support for Rx
+ timestamping for both ice and iavf drivers
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -213,109 +106,140 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
- Igor Bagnucki <igor.bagnucki@intel.com>, Jakub Kicinski <kuba@kernel.org>
+Cc: netdev@vger.kernel.org, Mateusz Polchlopek <mateusz.polchlopek@intel.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, Aug 12, 2024 at 02:50:09PM +0200, Dawid Osuchowski wrote:
-> Ethtool callbacks can be executed while reset is in progress and try to
-> access deleted resources, e.g. getting coalesce settings can result in a
-> NULL pointer dereference seen below.
-> 
-> Reproduction steps:
-> Once the driver is fully initialized, trigger reset:
-> 	# echo 1 > /sys/class/net/<interface>/device/reset
-> when reset is in progress try to get coalesce settings using ethtool:
-> 	# ethtool -c <interface>
-> 
-> BUG: kernel NULL pointer dereference, address: 0000000000000020
-> PGD 0 P4D 0
-> Oops: Oops: 0000 [#1] PREEMPT SMP PTI
-> CPU: 11 PID: 19713 Comm: ethtool Tainted: G S                 6.10.0-rc7+ #7
-> RIP: 0010:ice_get_q_coalesce+0x2e/0xa0 [ice]
-> RSP: 0018:ffffbab1e9bcf6a8 EFLAGS: 00010206
-> RAX: 000000000000000c RBX: ffff94512305b028 RCX: 0000000000000000
-> RDX: 0000000000000000 RSI: ffff9451c3f2e588 RDI: ffff9451c3f2e588
-> RBP: 0000000000000000 R08: 0000000000000000 R09: 0000000000000000
-> R10: ffff9451c3f2e580 R11: 000000000000001f R12: ffff945121fa9000
-> R13: ffffbab1e9bcf760 R14: 0000000000000013 R15: ffffffff9e65dd40
-> FS:  00007faee5fbe740(0000) GS:ffff94546fd80000(0000) knlGS:0000000000000000
-> CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
-> CR2: 0000000000000020 CR3: 0000000106c2e005 CR4: 00000000001706f0
-> Call Trace:
-> <TASK>
-> ice_get_coalesce+0x17/0x30 [ice]
-> coalesce_prepare_data+0x61/0x80
-> ethnl_default_doit+0xde/0x340
-> genl_family_rcv_msg_doit+0xf2/0x150
-> genl_rcv_msg+0x1b3/0x2c0
-> netlink_rcv_skb+0x5b/0x110
-> genl_rcv+0x28/0x40
-> netlink_unicast+0x19c/0x290
-> netlink_sendmsg+0x222/0x490
-> __sys_sendto+0x1df/0x1f0
-> __x64_sys_sendto+0x24/0x30
-> do_syscall_64+0x82/0x160
-> entry_SYSCALL_64_after_hwframe+0x76/0x7e
-> RIP: 0033:0x7faee60d8e27
-> 
-> Calling netif_device_detach() before reset makes the net core not call
-> the driver when ethtool command is issued, the attempt to execute an
-> ethtool command during reset will result in the following message:
-> 
->     netlink error: No such device
-> 
-> instead of NULL pointer dereference. Once reset is done and
-> ice_rebuild() is executing, the netif_device_attach() is called to allow
-> for ethtool operations to occur again in a safe manner.
-> 
-> Fixes: fcea6f3da546 ("ice: Add stats and ethtool support")
+Initially, during VF creation it registers the PTP clock in
+the system and negotiates with PF it's capabilities. In the
+meantime the PF enables the Flexible Descriptor for VF.
+Only this type of descriptor allows to receive Rx timestamps.
 
-What about other intel drivers tho?
+Enabling virtual clock would be possible, though it would probably
+perform poorly due to the lack of direct time access.
 
-> Suggested-by: Jakub Kicinski <kuba@kernel.org>
-> Signed-off-by: Dawid Osuchowski <dawid.osuchowski@linux.intel.com>
-> Reviewed-by: Igor Bagnucki <igor.bagnucki@intel.com>
-> ---
-> Changes since v1:
-> * Changed Fixes tag to point to another commit
-> * Minified the stacktrace
-> 
-> Suggestion from Kuba: https://lore.kernel.org/netdev/20240610194756.5be5be90@kernel.org/
-> Previous attempt: https://lore.kernel.org/netdev/20240722122839.51342-1-dawid.osuchowski@linux.intel.com/
-> ---
->  drivers/net/ethernet/intel/ice/ice_main.c | 4 ++++
->  1 file changed, 4 insertions(+)
-> 
-> diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-> index eaa73cc200f4..16b4920741ff 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_main.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_main.c
-> @@ -608,6 +608,8 @@ ice_prepare_for_reset(struct ice_pf *pf, enum ice_reset_req reset_type)
->  			memset(&vsi->mqprio_qopt, 0, sizeof(vsi->mqprio_qopt));
->  		}
->  	}
-> +	if (vsi->netdev)
-> +		netif_device_detach(vsi->netdev);
->  skip:
->  
->  	/* clear SW filtering DB */
-> @@ -7568,11 +7570,13 @@ static void ice_update_pf_netdev_link(struct ice_pf *pf)
->  
->  		ice_get_link_status(pf->vsi[i]->port_info, &link_up);
->  		if (link_up) {
-> +			netif_device_attach(pf->vsi[i]->netdev);
->  			netif_carrier_on(pf->vsi[i]->netdev);
->  			netif_tx_wake_all_queues(pf->vsi[i]->netdev);
->  		} else {
->  			netif_carrier_off(pf->vsi[i]->netdev);
->  			netif_tx_stop_all_queues(pf->vsi[i]->netdev);
-> +			netif_device_detach(pf->vsi[i]->netdev);
->  		}
->  	}
->  }
-> -- 
-> 2.44.0
-> 
-> 
+Enable timestamping should be done using userspace tools, e.g.
+hwstamp_ctl -i $VF -r 14
+
+In order to report the timestamps to userspace, the VF extends
+timestamp to 40b.
+
+To support this feature the flexible descriptors and PTP part
+in iavf driver have been introduced.
+
+---
+v9:
+- another big refactor of code, again the list is too long to describe each change. Only
+  patch1 and patch12 has not been changed AFAIR. Please take a look on v8 and changes
+  requests from Alexander L. (in short - fixed structs paddings, aligns, optimized rx hot
+  path, renamed few structs, added "const" keyword where applicable, added kdoc comments
+  to newly introduced structs and defines, removed unnecessary casts, simplified few
+  functions and few more).
+
+v8:
+- big refactor to make code more optimised (too many changes to list them here, please
+  take a look on v7 patch9 and comments from Alexander L) - patch 11. Because of that I
+  decided to remove all gathered RB tags.
+- changed newly introduced spinlock aq_cmd_lock to mutex type to avoid deadlock - patch 7
+- adjusted function iavf_is_descriptor_done() to extract fields from descriptor in a new
+  way - patch 12
+- changed (and removed unused) defines that describe specific fields and bits in
+  descriptor
+https://lore.kernel.org/netdev/20240730091509.18846-1-mateusz.polchlopek@intel.com/
+
+v7:
+- changed .ndo_eth_ioctl to .ndo_hwtstamp_get and .ndo_hwtstamp_set
+  (according to Kuba's suggestion) - patch 11
+https://lore.kernel.org/netdev/20240604131400.13655-1-mateusz.polchlopek@intel.com/
+
+v6:
+- reordered tags
+- added RB tags where applicable
+- removed redundant instructions in ifs - patch 4 and patch 5
+- changed teardown to LIFO, adapter->ptp.initialized = false
+  moved to the top of function - patch 6
+- changed cpu-endianess for testing - patch 9
+- aligned to libeth changes - patch 9
+https://lore.kernel.org/netdev/20240528112301.5374-1-mateusz.polchlopek@intel.com/
+
+v5:
+- fixed all new issues generated by this series in kernel-doc
+https://lore.kernel.org/netdev/20240418052500.50678-1-mateusz.polchlopek@intel.com/
+
+v4:
+- fixed duplicated argument in iavf_virtchnl.c reported by coccicheck
+https://lore.kernel.org/netdev/20240410121706.6223-1-mateusz.polchlopek@intel.com/
+
+v3:
+- added RB in commit 6
+- removed inline keyword in commit 9
+- fixed sparse issues in commit 9 and commit 10
+- used GENMASK_ULL when possible in commit 9
+https://lore.kernel.org/netdev/20240403131927.87021-1-mateusz.polchlopek@intel.com/
+
+v2:
+- fixed warning related to wrong specifier to dev_err_once in
+  commit 7
+- fixed warnings related to unused variables in commit 9
+https://lore.kernel.org/netdev/20240327132543.15923-1-mateusz.polchlopek@intel.com/
+
+v1:
+- initial series
+https://lore.kernel.org/netdev/20240326115116.10040-1-mateusz.polchlopek@intel.com/
+---
+
+Jacob Keller (10):
+  virtchnl: add support for enabling PTP on iAVF
+  virtchnl: add enumeration for the rxdid format
+  iavf: add support for negotiating flexible RXDID format
+  iavf: negotiate PTP capabilities
+  iavf: add initial framework for registering PTP clock
+  iavf: add support for indirect access to PHC time
+  iavf: periodically cache PHC time
+  iavf: refactor iavf_clean_rx_irq to support legacy and flex
+    descriptors
+  iavf: handle set and get timestamps ops
+  iavf: add support for Rx timestamps to hotpath
+
+Mateusz Polchlopek (3):
+  libeth: move idpf_rx_csum_decoded and idpf_rx_extracted
+  iavf: define Rx descriptors as qwords
+  iavf: Implement checking DD desc field
+
+Simei Su (1):
+  ice: support Rx timestamp on flex descriptor
+
+ drivers/net/ethernet/intel/iavf/Makefile      |   2 +
+ drivers/net/ethernet/intel/iavf/iavf.h        |  35 +-
+ drivers/net/ethernet/intel/iavf/iavf_main.c   | 228 ++++++++-
+ drivers/net/ethernet/intel/iavf/iavf_ptp.c    | 481 ++++++++++++++++++
+ drivers/net/ethernet/intel/iavf/iavf_ptp.h    |  26 +
+ drivers/net/ethernet/intel/iavf/iavf_trace.h  |   6 +-
+ drivers/net/ethernet/intel/iavf/iavf_txrx.c   | 425 ++++++++++++----
+ drivers/net/ethernet/intel/iavf/iavf_txrx.h   |  22 +-
+ drivers/net/ethernet/intel/iavf/iavf_type.h   | 272 +++++-----
+ drivers/net/ethernet/intel/iavf/iavf_types.h  |  36 ++
+ .../net/ethernet/intel/iavf/iavf_virtchnl.c   | 223 ++++++++
+ drivers/net/ethernet/intel/ice/ice_base.c     |   3 -
+ drivers/net/ethernet/intel/ice/ice_lib.c      |   5 +-
+ drivers/net/ethernet/intel/ice/ice_ptp.c      |   4 +-
+ drivers/net/ethernet/intel/ice/ice_ptp.h      |   8 +
+ drivers/net/ethernet/intel/ice/ice_vf_lib.h   |   2 +
+ drivers/net/ethernet/intel/ice/ice_virtchnl.c |  96 +++-
+ drivers/net/ethernet/intel/ice/ice_virtchnl.h |   6 +
+ .../intel/ice/ice_virtchnl_allowlist.c        |   7 +
+ .../ethernet/intel/idpf/idpf_singleq_txrx.c   |  51 +-
+ drivers/net/ethernet/intel/idpf/idpf_txrx.c   |  16 +-
+ drivers/net/ethernet/intel/idpf/idpf_txrx.h   |  19 -
+ include/linux/avf/virtchnl.h                  | 131 ++++-
+ include/net/libeth/rx.h                       |  42 ++
+ 24 files changed, 1810 insertions(+), 336 deletions(-)
+ create mode 100644 drivers/net/ethernet/intel/iavf/iavf_ptp.c
+ create mode 100644 drivers/net/ethernet/intel/iavf/iavf_ptp.h
+ create mode 100644 drivers/net/ethernet/intel/iavf/iavf_types.h
+
+
+base-commit: d1815992133ebcc6007009645571f322f4bc7c44
+-- 
+2.38.1
+
