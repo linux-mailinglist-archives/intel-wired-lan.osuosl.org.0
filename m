@@ -2,210 +2,205 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id D890B9503B9
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 13 Aug 2024 13:32:24 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 7CB3095041F
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 13 Aug 2024 13:49:38 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 1FF9781A33;
-	Tue, 13 Aug 2024 11:32:23 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 2CE6A80B56;
+	Tue, 13 Aug 2024 11:49:37 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id dt1qS4jzp1u1; Tue, 13 Aug 2024 11:32:21 +0000 (UTC)
+ id vAFEInMwrW4L; Tue, 13 Aug 2024 11:49:36 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 2964881A3E
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org C882680B1D
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1723548741;
-	bh=QWhXb5zgsYPs14vsbGtc8EIHmhyNEDuCyQW0obv088k=;
+	s=default; t=1723549775;
+	bh=9W2PmRxVZaTopLKPv2FuG1/ZBL7I2BokLPKLdSOxkmA=;
 	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=Mb+djPBE8gvPHvGTPtd7wn6ndQxW5O2Oi4M94LD5cCljaR1b8I+dR2i6W9AJA0ylz
-	 T60oFResb3+vtx14p+wiprTq6PJLc47SE1VCmnmfx7YwjEfM/Jcz7x9Ihok9VmKQGW
-	 ALdnWry0rglVOymgOqIUugLT7syxiwEK58EOASELes8Og/j3MbCQ9RFDnKxTfFAbx1
-	 o4CW/YVQuHIGEmUlNsoKj/xNJFRFDY7LxuzgkwUK+Fj4+HAnW3h317B2mHPpodTro7
-	 czq+1/Ee+cWFY9zUQU5OYS74iq7H13p1efmSorARx/SHE3mek2E/sAnULE62UmL9Vh
-	 YD0KLogLBMKmA==
+	b=7BMdIXWfSxweDBVOUd0NIpdm501KVAn3wjBnSSt+3LbocQw6SvOvLZhTH3xej0AS6
+	 LX9KNszi8NIfyGbh2doK1HSmrsqkT6e5gd+ziksriLlhjthSK2F/XK8UKOE05nL5wJ
+	 0pvk/UEn4j4tKavM2FrjdrRxyP0XWghg5mJtR8f19/gpM2nbDJ1DEi3DGUvOjlB32j
+	 aYW8lX97z/oDMaoId7bxD9DExw29YOfEX+EfIyAXPEwCYhoA2MI19/PypE3VJd8O2k
+	 bdPmcxB7DHqL2hHv2Uyj4r5fD8bIerD74C61gFPLFAH+l1W2HP8Cn8SBIGPpeNmDIp
+	 o6MLWi+ldxHeg==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 2964881A3E;
-	Tue, 13 Aug 2024 11:32:21 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id C882680B1D;
+	Tue, 13 Aug 2024 11:49:35 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 90AE21BF5B3
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Aug 2024 11:32:19 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 1F13A1BF5B3
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Aug 2024 11:49:34 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 7D1CD60683
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Aug 2024 11:32:19 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 16CA980B0B
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Aug 2024 11:49:34 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id lnmtFoqNiPkK for <intel-wired-lan@lists.osuosl.org>;
- Tue, 13 Aug 2024 11:32:18 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.14;
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id GBHPiMW8S9xd for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 13 Aug 2024 11:49:33 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.9;
  helo=mgamail.intel.com; envelope-from=maciej.fijalkowski@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 2FCFC60681
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2FCFC60681
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.14])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 2FCFC60681
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Aug 2024 11:32:17 +0000 (UTC)
-X-CSE-ConnectionGUID: g3N3P85DRwS2DtqaB6PnDA==
-X-CSE-MsgGUID: fwvpV5XASg+I0REdxC6+/Q==
-X-IronPort-AV: E=McAfee;i="6700,10204,11162"; a="21873555"
-X-IronPort-AV: E=Sophos;i="6.09,285,1716274800"; d="scan'208";a="21873555"
-Received: from orviesa007.jf.intel.com ([10.64.159.147])
- by fmvoesa108.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 13 Aug 2024 04:32:16 -0700
-X-CSE-ConnectionGUID: MiMOdURjRlOxvdCBFi1iNA==
-X-CSE-MsgGUID: +KU7AP2sSaKh5Q7VzTt0XA==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 8B3C780ADE
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 8B3C780ADE
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.9])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 8B3C780ADE
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Aug 2024 11:49:32 +0000 (UTC)
+X-CSE-ConnectionGUID: ZVklGTaTR+6KZgyhqjQcIg==
+X-CSE-MsgGUID: 0Q7jNSZpS6qLu/v3hcMA0A==
+X-IronPort-AV: E=McAfee;i="6700,10204,11162"; a="44227606"
+X-IronPort-AV: E=Sophos;i="6.09,285,1716274800"; d="scan'208";a="44227606"
+Received: from fmviesa007.fm.intel.com ([10.60.135.147])
+ by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 13 Aug 2024 04:49:30 -0700
+X-CSE-ConnectionGUID: ARwwo4pdRdWatORF2Gvbdw==
+X-CSE-MsgGUID: AzqfSpwVQl6dtymN1b6Ikg==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.09,285,1716274800"; d="scan'208";a="59208959"
-Received: from fmsmsx603.amr.corp.intel.com ([10.18.126.83])
- by orviesa007.jf.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
- 13 Aug 2024 04:32:15 -0700
-Received: from fmsmsx611.amr.corp.intel.com (10.18.126.91) by
- fmsmsx603.amr.corp.intel.com (10.18.126.83) with Microsoft SMTP Server
+X-IronPort-AV: E=Sophos;i="6.09,285,1716274800"; d="scan'208";a="58337931"
+Received: from fmsmsx601.amr.corp.intel.com ([10.18.126.81])
+ by fmviesa007.fm.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
+ 13 Aug 2024 04:49:30 -0700
+Received: from fmsmsx601.amr.corp.intel.com (10.18.126.81) by
+ fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.39; Tue, 13 Aug 2024 04:32:14 -0700
-Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
- fmsmsx611.amr.corp.intel.com (10.18.126.91) with Microsoft SMTP Server
+ 15.1.2507.39; Tue, 13 Aug 2024 04:49:29 -0700
+Received: from fmsedg602.ED.cps.intel.com (10.1.192.136) by
+ fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.39; Tue, 13 Aug 2024 04:32:14 -0700
-Received: from FMSEDG603.ED.cps.intel.com (10.1.192.133) by
- fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.39 via Frontend Transport; Tue, 13 Aug 2024 04:32:14 -0700
-Received: from NAM04-BN8-obe.outbound.protection.outlook.com (104.47.74.44) by
- edgegateway.intel.com (192.55.55.68) with Microsoft SMTP Server
+ 15.1.2507.39 via Frontend Transport; Tue, 13 Aug 2024 04:49:29 -0700
+Received: from NAM11-BN8-obe.outbound.protection.outlook.com (104.47.58.172)
+ by edgegateway.intel.com (192.55.55.71) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Tue, 13 Aug 2024 04:32:14 -0700
+ 15.1.2507.39; Tue, 13 Aug 2024 04:49:29 -0700
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=ES0XdC4HasWLOG1UhW//+fTu7A/YfVVo7qsfZjr9OGYD/vtg99EoNI6QoalwbaLov9pRSToksMvGaoiew7P4sfH5OC3rpqNbmE4ekMXFLhcaoNod9VhJ3B6GJ286raO7EMzeIKqfrN3g+PMDoAFrLYzpAUBecg439uo/GLm5Ya+7dSaZhrRA1LfGZZhdztLeTvulHeSzbqElOgT+6JmOcUqAyv1IFlsHGfZkmLsbwnqjgew/y/9v4x3BT3lOC29cBl2wgH6U+4T90YC6e5/9tRqwEBYJHhuDB/XUZSDUN3kJxc2jgnpFm/2/pKiqBTKnpPveocB/vKBvLpJ9KDtMQg==
+ b=NLXCUpXm2xA8zXUZgM/SOdPl/gU8OyQ1tnp6Nffo1YplxenY46UsRQYHugZ30aROU2b3w5zCxK64/WqM5jGLS7sMZGht7ftfUuZyG9MtLkwkA5x+LTGL8N8G3dfgiyy2yoUk1GyRcoy4eJ/AoQXhgUhjmKNNcRbL/wbdiVfPrWmuhH57HYhk754aR08DyX0KSM5xFMjwoOoUBAltROR17QSd/JLBKxGer+DWKUwBKg/l+PUaudSIANGAPRB+da3VeWaALO32PaO+DJdjb5KwRcEzp+4vaRhD8UOVVmueXCD8u4XZo0IH8sGuIu+qvU/Foq+T8BHRNuDyHTM5QNEPuA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=QWhXb5zgsYPs14vsbGtc8EIHmhyNEDuCyQW0obv088k=;
- b=feZKIOc0HfpcPwsRRIpMJL3ea+cw0lHBCd+PUoKfKoKKqlx2gswAfT9wJzMyKWqotUxIbiD8ut57KvbwgWlpm2md+51KqcXF4JD/gW7ieggtxj7Hmo/4INaaWfTQDAAktgz7xXrtA9VXExjbAXG4E8L2h6KqcTGrmD6fuKaAn4To2hKt96LO2ShkTagJdKd4fKPLjgBnregwUbgn19OxRgjBhl6wQ4V+gxPxca2TcX5D5aQuf8aBE7T0KZyKEvXR7R/bndECmItdL0qGAvlacvRqD7gl1pgbsjV7fsSRnew6jN4qoa4e+prGGKnVEGNj2dp/FBml8MvDrvbjv4Y9SQ==
+ bh=9W2PmRxVZaTopLKPv2FuG1/ZBL7I2BokLPKLdSOxkmA=;
+ b=nXI/KdOON/YyxT+nRBNbBaRhDwWfWrxxVYSsdc8JuVdIlzKRbMACnBrWK3wN1AqGOPdwWTqxY6cEoKvarlkdXgP3lqbo0Y3OVswosso/6/QvlmQbotaKHbHEEUhIn8GMPmB2YgSBtR4IGIHdrfhECulBiICU38JWPuUsA36JymVHmZRn3o2BbYyMEtceHvAwPFL8lwhYzydduE7U+QlvRFugKi7EhSUXn86gYjuf3hfZx5+Esw+dAVCw2CcKjvbD9l8Y4ebh2P+0TH8z5e/glYvtuDnDNMGywmOB4DSWtyP401qvb+LGHKor3xOp8oFhMOPxqJT6ektgmE/VCGOgjQ==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
  dkim=pass header.d=intel.com; arc=none
 Received: from DM4PR11MB6117.namprd11.prod.outlook.com (2603:10b6:8:b3::19) by
- DS0PR11MB7412.namprd11.prod.outlook.com (2603:10b6:8:152::20) with
+ PH7PR11MB7479.namprd11.prod.outlook.com (2603:10b6:510:27f::7) with
  Microsoft
  SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.7828.32; Tue, 13 Aug 2024 11:32:12 +0000
+ 15.20.7828.25; Tue, 13 Aug 2024 11:49:26 +0000
 Received: from DM4PR11MB6117.namprd11.prod.outlook.com
  ([fe80::d19:56fe:5841:77ca]) by DM4PR11MB6117.namprd11.prod.outlook.com
  ([fe80::d19:56fe:5841:77ca%4]) with mapi id 15.20.7828.023; Tue, 13 Aug 2024
- 11:32:11 +0000
-Date: Tue, 13 Aug 2024 13:31:57 +0200
+ 11:49:26 +0000
+Date: Tue, 13 Aug 2024 13:49:15 +0200
 From: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
-To: Larysa Zaremba <larysa.zaremba@intel.com>
-Message-ID: <ZrtELQV3zZENOvn+@boxer>
-References: <20240724164840.2536605-1-larysa.zaremba@intel.com>
- <20240724164840.2536605-3-larysa.zaremba@intel.com>
+To: Dawid Osuchowski <dawid.osuchowski@linux.intel.com>
+Message-ID: <ZrtIO2durwKP7ue/@boxer>
+References: <20240812125009.62635-1-dawid.osuchowski@linux.intel.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Disposition: inline
-In-Reply-To: <20240724164840.2536605-3-larysa.zaremba@intel.com>
-X-ClientProxiedBy: MI1P293CA0021.ITAP293.PROD.OUTLOOK.COM
- (2603:10a6:290:3::14) To DM4PR11MB6117.namprd11.prod.outlook.com
+In-Reply-To: <20240812125009.62635-1-dawid.osuchowski@linux.intel.com>
+X-ClientProxiedBy: MI0P293CA0006.ITAP293.PROD.OUTLOOK.COM
+ (2603:10a6:290:44::17) To DM4PR11MB6117.namprd11.prod.outlook.com
  (2603:10b6:8:b3::19)
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DM4PR11MB6117:EE_|DS0PR11MB7412:EE_
-X-MS-Office365-Filtering-Correlation-Id: 204facf3-fbde-4659-e63b-08dcbb8b92ad
+X-MS-TrafficTypeDiagnostic: DM4PR11MB6117:EE_|PH7PR11MB7479:EE_
+X-MS-Office365-Filtering-Correlation-Id: 21d1e0c5-9a03-4f1f-0a2b-08dcbb8dfb7a
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|7416014|1800799024|376014|366016;
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?cCFs0LcxfgkgzpQLFNSVwX458aU1/RCWQWAEqQ3YiCq/YwLbzshRfwcwTeje?=
- =?us-ascii?Q?jpT9Tls2iUBu5sAf5n5tUrSt8L5aVFUWPu32Pw/tgv654fSgSoblDnLTvrEs?=
- =?us-ascii?Q?YqO40brkYC1EKdb21fuQc8L2srcdLUSvfoxQJ8NhG2IxRqyffZOfa+mtg0gk?=
- =?us-ascii?Q?gEnlq4ld/bkl16asOr6iZeDKk62BGg9iukLu9XHs/ptMUxB9hZ7Of45+NQry?=
- =?us-ascii?Q?/U0q6BtAMw7GkUz0vl37SOI7oLAghJadnWj0pusKDdLPrdfQginVuWIicAg6?=
- =?us-ascii?Q?kvfKAwHyKT68OyARa3/LGzS9AEqs3o4tqXfDE2YOYPC/5vu1N7fNoOfZgirU?=
- =?us-ascii?Q?revlih40NrAmqzABBYmnMc4UpSxhswzoYGjgU+gcEXhkBK4GwwCZZc5gLDOC?=
- =?us-ascii?Q?p2a70hcIyuPBktQIutjQ7SjUEFn3SWjFWa5Wy1qzUx3vHQ26LZNt44cLHjk5?=
- =?us-ascii?Q?UqjvwL5HUM5hjAN0yY6MZw8FsQZLoGIHozciGK9SrPM82rbRKTZkYqYaFc/f?=
- =?us-ascii?Q?l5balBNtktLCrsI8oJR0CJlgoVt8jzL4BBicbhv9CJeXLKjL0i04AEMc6hpw?=
- =?us-ascii?Q?isctHcRKjToVD0NATj42BS1SGTP4QfTPGlcKO3gSiQ0D4rZfySoKyaQin4wt?=
- =?us-ascii?Q?0nNooybIJ89CmGZD0A5xrysSWztNSeylQD0WSP1nt8c+dV+FtlcZ/A18TQKt?=
- =?us-ascii?Q?TmdQZUcZOkyoJcT83orSmDGEa0cM5B1R34svvqS2uEz/aFYpmfkv7cyoR2oF?=
- =?us-ascii?Q?SaR+xknkDTlWKh7Frj5glTiJkDijb8erymUrSsyQhevYfnyAyWfexceOPlcx?=
- =?us-ascii?Q?SnRjC+9x3SLQhCCsAzroVOZ5ercvuTuTO9M3WMr1HALrlP5qjdk2gIKXMfQz?=
- =?us-ascii?Q?ncSGpA0TNaR7fRcWVNNYrZEvKF7TrBrFQ8EUdLs+SiFTTJE9FVtfvmMU/Zht?=
- =?us-ascii?Q?i47TQdrUrsD917tUukgHTWs4sJn5ybWotBT8/q9U7f3TfAZlLzVgoABlZeAm?=
- =?us-ascii?Q?SiHi/vPrDQ5rYvAQtM9kNAA3DSPNVoqxmlgjkhcYT99V4770/io0HOzWtyE/?=
- =?us-ascii?Q?d8hIvvsXbmfz1sU84mNRpJzUuPfzL2qCRTY4k9LydJqS/CIPNTRSD2Wc5Q45?=
- =?us-ascii?Q?lomckq+TGJpaMvC8qY5gMtFcC7Mm/LHmZjOOOMf32DUYAbKCimlnC9Tenai+?=
- =?us-ascii?Q?2NsvmiFNICItm2Kq7dhzegxSN/XnbRfxe8u1XAvHQ7LDjsbhjGpm+E3rCyrL?=
- =?us-ascii?Q?Y7SqqFdMTLMmL+Sa03bTfDI0/xc2KsPg/qTM7iPDIqV/gf5KP+OGm78HZd1B?=
- =?us-ascii?Q?kNkNVDGsq95z681EWpPhofdMgSS1y5ny6zH1inTKtpOxBA=3D=3D?=
+X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|366016|1800799024;
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?ZvoFTATMU3Tm+vU2iRR2lDKBbfW6sBkILu5X3VE2f2zaap58trRY71RpNOiD?=
+ =?us-ascii?Q?V1doH1NYB3HDVSvogj1RQjrINU9xdoOGt1l9aWbnNgISIBV5NakoDqXHCQRA?=
+ =?us-ascii?Q?/kcLOHRmFxAQb7mx51SUkc0DJje94ucxWT3mX4fqeN3lfN2/uO5xely4JgxF?=
+ =?us-ascii?Q?ex+eZsSm9ZWke0WfffScqMDqa6xvQvA9FikxlGtP+YlqIj6LIvFluHv+uHwE?=
+ =?us-ascii?Q?5XZqb+Z531J5RlsGPrLjtXyli6telym+bmSBDRvxoF2Dy/SbEqtkTmlpvLdL?=
+ =?us-ascii?Q?lAXprhwlU/Jgr8upJrNxFUT2G0cKfOmeCqfp0enuqU1FlipJFrbuWEO9g5gk?=
+ =?us-ascii?Q?xVcOsGMyVjVDbGtvVgNqW40f6w7eEFUYhOxQ6PdCLBC57/tFn7JtrUap8TxT?=
+ =?us-ascii?Q?Kc0bnhUHj68odiovW5EjPhxSNpmCyjmD/jOEumeXqByeeCPK5BR/T9ck3v4B?=
+ =?us-ascii?Q?o8gUcD+H8uyTQm7pdbRJHl4aFy0X9Ig/9Ao6p8KevmXVVK/Pcl8/v3sSH6C2?=
+ =?us-ascii?Q?y7+eljGGjUlHq5YrtVbb8LWiDMx+3wyNj/Ugp6fi4ZzkJ3WuGTCbo0imtxXc?=
+ =?us-ascii?Q?ywKh06Yv4jf05p5A7wKgdo606E7am8WhiJXkXEWACJN3q17BWENjNX9RBcCS?=
+ =?us-ascii?Q?VS9aqYs1ixE4iEaJj/8ursqoKTNZKDQzH3uJIZjGqkyGqpDnC5KAElvzebUl?=
+ =?us-ascii?Q?BUen9OsXfsvUXZ5sUnhRiwc1bE1RwKLceo6w42swGS7PVFmbSo+BThadIKcW?=
+ =?us-ascii?Q?3od+M5RMHabWXbAfo4HFqn+5TfVLlHglQsboC+h3KnVq5JGb5UzI12cSEqel?=
+ =?us-ascii?Q?RePgzZbBD1RVbJRuIqOo7921PCo0odcpLlUldnGXMKyCYRJfur7d9o3cuE3t?=
+ =?us-ascii?Q?R1a4a74T+11aM+dzBNKlrd7vlI0bJtvUAAESNp2yaq+YrOGfLDiof47BJlMS?=
+ =?us-ascii?Q?8cJpclCReUOos5uIz99+7k0L1Mmu6c+tdZCxubfrdpweel+VxMoJS+R1yfQ/?=
+ =?us-ascii?Q?Pzk4AMS68Vbgb+5c5y8aaRURJ2mV6zxkccD1iWc3lZ4pP9GAfTLEx3fHkk3I?=
+ =?us-ascii?Q?VLK3LLTToWyqTTVeG+qqG+GxRt2Tr85yktZFAvZyGySFV1SbAAswW2+NSbw1?=
+ =?us-ascii?Q?3BO0cARvEDa1//UnTQegISfbMcHq0+RZzBmN4NR9XvztFGrET7GwfMMgK6md?=
+ =?us-ascii?Q?6icL3hr8zXfTbtF+9p5vCraNlQpET0OzofGC9ZaBxjB38oZTBXNpjZ5slApx?=
+ =?us-ascii?Q?o35bkW/06nNos1noYzskXh5zj4pV/piSFrg+BEuaurWWuYya7opxPyCOHfkl?=
+ =?us-ascii?Q?SFI=3D?=
 X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:DM4PR11MB6117.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(7416014)(1800799024)(376014)(366016); DIR:OUT; SFP:1101; 
+ SFS:(13230040)(376014)(366016)(1800799024); DIR:OUT; SFP:1101; 
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?bnc5VtJfPntqVFaKRz4rPQZY39HpDajck7q4MNc5RGCuTWDuL/48sEmj5gtv?=
- =?us-ascii?Q?LTWvpvtkopYeyinpU2F4si229vNHuHbV7i87bOZ324LbDtfMNN3Afx2VFfg8?=
- =?us-ascii?Q?9Z2ot/90XXZty7NCGAQ14nuMi8razwLW+PBAT0fydSvM6Z/WcxupMkMzUKW0?=
- =?us-ascii?Q?CvxYxnhvphDvo1gAVb/Vlw0vzlF35xQFxZhaMj6P4aulmF9IqwVeaS1BsVUv?=
- =?us-ascii?Q?E66LPKPnop7Ge9nuxtIgsUmw+kleFHQ+4IevXzIZI8+Gm+THwsez/hNB8DfX?=
- =?us-ascii?Q?7Mur4UgfF+D/CLChczuME0+FyXQPCtH715jiyl5654WJlxyYjz5zCJpKJSJp?=
- =?us-ascii?Q?puUb1NznxsVPfBZiK81HhpoK8NwM/4WjzjfkSS1PYXsU5OKt3j3kEBpLrsQg?=
- =?us-ascii?Q?zFoM16Gma96BuVnab10iIFY5SmlkFvXvX2efu03j1sqBfxbiqFKT/CuNa40j?=
- =?us-ascii?Q?ykdO9udz03V0ePaSPomveTCS++q4SCWHWdxf9WmP23O5BEA3cRa99IxjaOVN?=
- =?us-ascii?Q?d0taD6fm+/qpiJBwDAWySzFqL6IAwicf4XF72CUcS0XBSV+KOaPaanVHSUoi?=
- =?us-ascii?Q?6+QtLz+I903Zf+p7fc4f1UlqaQ9NeYvW9Xy4nsyfWUD2wdCa5BqG/aEzG9CY?=
- =?us-ascii?Q?W6BLtOmwyCQfoo5JIUU9rig5wL4e/1lyZu4GLa+koiEAX9Pm3E2UGSb+uT1H?=
- =?us-ascii?Q?O/9Q/5lo4oZ+Q4uMYquBUhhGVP8A/JDMF9joJuEpZg4gDoggVWrV8dusr4af?=
- =?us-ascii?Q?EMNSv8uKk8EvT9T4rtCaaEO8x7/4iAR07EQdt1rxyAnCX/7+FqA5UvqmLtRC?=
- =?us-ascii?Q?Hj48OAPCHsvtwi6R0xO2ks7RZN9XMygKp/E3YzQzynYmA9R3hgBm/p+tBueh?=
- =?us-ascii?Q?GOc6iQcY4pYjbeOVPr+jUllrvzcmv69Lz4dB5XZ6IlsTFmp5Xlox8HgSyfwe?=
- =?us-ascii?Q?fkenFmZdXk/z+CceG7Yd0rdYPtWLESMQa04RTyPUuvPcGudx09FkKkHVoJ8g?=
- =?us-ascii?Q?PI0LzIk3FPhvJ40pG3zwKPC5yeWhbWaIYU+JrSjAhGbnheRpV3QsFTs3YD+1?=
- =?us-ascii?Q?QmFNoF9ZAntsC4K8Yaeslc/x8sa4fJzQxdj7QC36nAuMXEJ/oUdl9a7ZIsJ2?=
- =?us-ascii?Q?VFYNOnzT0Htqb17vphbYB2tCeMIN5uufvC5cDcMfupk14xcNtvMtRGQ1rteG?=
- =?us-ascii?Q?UAv/w55lcuXMFvi9pf5RGG71oxg88T+ssqtp4pcH8Nl6ivuPtg9v+fVLX4lB?=
- =?us-ascii?Q?CeHremrgMhwm8dqFxV91d8i7ORgnTqghIVVUxCS+QLtxwNgX0qtmXC4PU5Mb?=
- =?us-ascii?Q?/ECTo4M94Y6AXce2ppsXMbBhHVpipfm/OjjdpP6G9SPNMVAxOwJ5BnnPz4TP?=
- =?us-ascii?Q?DnJRH3ILmtUHGLRfKpuMrOTI7hlZL1J01isrANBGDBfmyN5YCh26cUVKzS+P?=
- =?us-ascii?Q?dJX3v20FIm+IObQiRRcN/QgJBZMvMArSsc1yWUQ2DPVWsZsGyXshMa5y3H/v?=
- =?us-ascii?Q?DuY5LbeuL9gh2CHhqmKEp3WfZw8nnM+rqAUaC2ji6bCP2SSxzUKN0yAzpjZt?=
- =?us-ascii?Q?nfC9tz/NtLRIxOw8p9GQDmtJ79eLnpegPjb0XLWAVKfbuo0rFjgi2YYvhSrl?=
- =?us-ascii?Q?tw=3D=3D?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: 204facf3-fbde-4659-e63b-08dcbb8b92ad
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?I4pc/t3Hx/WeQaEh5w73TZLyErqSa4O4ptCl9b8jmU+Et8xqKGy8iKoz9UH9?=
+ =?us-ascii?Q?PQ3NILhnqXkf8yowoHktyus+glyWv9ZlYruLwnXi2ae/vhxXj8uZMWB5Fg+5?=
+ =?us-ascii?Q?s5XPDfgYmyApzemPfsRuXZfvngvuwO1KdgM8VpPC2zp6Jjvb2RJ7x8ZAHJCN?=
+ =?us-ascii?Q?eHXSvT0KYOgauccq+G8b97WQaty0Q8ey9ybBd3WsL1ggQ9bM5zTMP8WHyQA+?=
+ =?us-ascii?Q?aP7Wf+C/tZcwrbSR/csJjBzyyGQnu0IeL/82W0vcRvPR0l19ldto6QMrsDs2?=
+ =?us-ascii?Q?4P5CAJSHTs95vOhLmLoYC6SoBdlR+8nrk28Q32UAjCaH0vobicC1kbbDAfRm?=
+ =?us-ascii?Q?5fCQp1cCAQRqaTs5dl2JjyOSD7LSEzm7ZLQ2nm0mmwDbfaPUW7OyVguhW5Ig?=
+ =?us-ascii?Q?Nmi2X4uhWCBPODAsEZsJ3rqtL6nN6rddj1gfn5ibcXxe5Tg5j0aWbLkZvQSw?=
+ =?us-ascii?Q?UzY5jfHxENkswewebFYsEN8K+CfAo38hnzbvK3agqrQmJn1t371SIyjLTN8m?=
+ =?us-ascii?Q?UFNhCpcfw7hCqGrRhkL/Lhv9f7yrAnhH8dOuWlJfzcWCZDu7KVTa8UKamX5O?=
+ =?us-ascii?Q?PoR2KGska5Z8yVsUHiMASRPS/D4G2DORdOU6ALPkIxy46TZIGJJGEg3Zpn0h?=
+ =?us-ascii?Q?P+7Q7sbR4zBEpFrFwEaiKn+BWd2zotSOdKjkcVvjM9BNhmDUOs6BSSQ12aVH?=
+ =?us-ascii?Q?G4QucDFeLHpRdtW1eqdcnwVr0+ac/cT21KmHm4c7XBFMW09rA0XuQLnV7IpZ?=
+ =?us-ascii?Q?Zl6Pal1sipJHAhxeHx9h9bMc7H5shYvxS2ewnxF5bXghmrALI3kIN7HJ9Iak?=
+ =?us-ascii?Q?SEzj2SBM29MOGguWfcnM+mjzep50ZHwNK4nCZ+nGSG5tHWaRw1DD0aEsR4wP?=
+ =?us-ascii?Q?NpPKcCc/VMRC+8LWzePWVCRT2wqtPhN+YZ/V7buDKJzx3Wki4ZVmVuOb49em?=
+ =?us-ascii?Q?Pp0Oil1djl+up2XdtOBMTqLTNNh52+/2o/Cd51LdJom3bxDHX03Jml4Qm26u?=
+ =?us-ascii?Q?Ce2BE8pFCdhtmuF77cg/6fJib7v2L6E4j2/OPVGTCHHXvDP7jrhiJ5re0F/c?=
+ =?us-ascii?Q?NtaN0iy0ayHJIz1aJw9T6Gl6lgJOpfk1/Wypl69Bxf95SF+us+Q0lIMn823h?=
+ =?us-ascii?Q?fUfMbRIWKj1OBbH0mLRXuElN4lkDgrH2wgpkJLy4qy9mnqpb5R7Z69SqBFL/?=
+ =?us-ascii?Q?X4LP4O0gVEEydpxe/hVSEi6ps6QAd6h55zZA2tkW3qeQvmpTBHhl6CUArd9j?=
+ =?us-ascii?Q?vgzao5RjYRg6413y+toMAfJ1M0398hTE5J6hzdJeXmXc38pb1yy+ZN33DtSb?=
+ =?us-ascii?Q?50FzOkWUeF7n78BYHgk6wk/zt0qqz/2hVh3deRE3thPxBA8cIn5cf5osG+TL?=
+ =?us-ascii?Q?EDD3VyWwe/N8gp/MirRONvjL6ohS0/+we0zBnSt7eqoUFEheC/v1wmcsjg+D?=
+ =?us-ascii?Q?9ifh4FXZthuiUK+fy8nkbgZRfeamRYg6gaUwV0ab7RMXN7qGoYXs97mmnKKD?=
+ =?us-ascii?Q?e1HixZmx82wcjN/SofYcLQ/hvzVD5YsOBiwsjNAeGLZusGkoCfRiBim4pCWs?=
+ =?us-ascii?Q?BEH05oyEMC7zcOzW5dSbMCiu/CY7QGdu+sgSE8GnGlzEJmcN7DvSNuXiIBR2?=
+ =?us-ascii?Q?ng=3D=3D?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: 21d1e0c5-9a03-4f1f-0a2b-08dcbb8dfb7a
 X-MS-Exchange-CrossTenant-AuthSource: DM4PR11MB6117.namprd11.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Aug 2024 11:32:11.7946 (UTC)
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Aug 2024 11:49:26.4395 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: ipSMOl+nyBE0dk54ndE/LzIoDcE/nwTzofCZe3IYfW99lTIfE2ujyM7NbTVrBCMhcMv2rL2qHk1DWzDymA3IVi5yDdIgAiJJBbD2fp8025Y=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS0PR11MB7412
+X-MS-Exchange-CrossTenant-UserPrincipalName: /NDPlthjtZ95joCCjpl/VtejywevCo5QUQzntXCqN0iEa8hrYsio3T3reSEYPa44mi0t0+nDi9ckYDSL4EvzKIz7CISHTfTNEvWNEt2mWbI=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH7PR11MB7479
 X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1723548738; x=1755084738;
+ t=1723549772; x=1755085772;
  h=date:from:to:cc:subject:message-id:references:
  in-reply-to:mime-version;
- bh=qgXvjQ920Rd/N9kr7hcc5NdzY7h0Elwt47iyHz/Mx+M=;
- b=KgIJJH5ng5Sxhm5U8o8sHhiz2qEmcfnnhoEB9i7LjrNzzZIL2gi+2UAJ
- lUedIznH94lNOTu4s9QksU3v+XiKld33IBqbo8LnsThp6UIJR4ckhMmLv
- 3ah0fDqzrW2+8f2lL799p05ZnGtI3ZBjQb6gnW0THiawsP6I2B6H9K22x
- OuFiBR2pY6GT6EQphh+/zEECju+DZdZyrMDmfJapJo37V72xFlLkNYVSL
- O4wF+6WebiBh7X33RD7EmPCpeqxgk/mKqwiybWWGGbxH5NxUBR65CC/Nz
- vjQMxt0UwHFys1hfdpsuML5m4N/93Ocgju+1x7zgogU+rodtdjgVAO2Bi
+ bh=kD2LXdnl176zvn8PT4klFVIK8h5+nhY2s0MfewO2jh0=;
+ b=g/u+q+44rYV5/a3oJhY5JXcUFUJO2Q6aGrDO/KjFQKvIyhUyERQAe7EF
+ opliIQJA4ImRJbDOIJLM1Qjme/WrihhP3TCIuH9ZbC0lhvWJ+iQih7znm
+ Obf4SWKrlOWxIwswmg2MWqv01ZFRDeDiA2GzOI41E96qcvPZTePyaRzLQ
+ J7rk/ecC+W1QvTrYZG/e3ilOBZ4KZE6fZaTPDLIN9jG4kkTs6YTaLKi8u
+ T+/xKuvJj/TR3Ko9q349KwUClCLsvGOQU2I2TY0GqR+AWEvihdJ8Dd8GW
+ zj8djKJbfBSnr6rLD5WXqf4CY/JeH0C1LG0b7RbGIDv9BCxJfFwON0HN5
  Q==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=KgIJJH5n
+ header.s=Intel header.b=g/u+q+44
 X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH iwl-net v2 2/6] ice: protect XDP
- configuration with a mutex
+Subject: Re: [Intel-wired-lan] [PATCH iwl-net v2] ice: Add
+ netif_device_attach/detach into PF reset flow
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -218,305 +213,109 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Wojciech Drewek <wojciech.drewek@intel.com>,
- Jesper Dangaard Brouer <hawk@kernel.org>,
- Daniel Borkmann <daniel@iogearbox.net>, netdev@vger.kernel.org,
- Amritha Nambiar <amritha.nambiar@intel.com>,
- John Fastabend <john.fastabend@gmail.com>, Alexei
- Starovoitov <ast@kernel.org>, linux-kernel@vger.kernel.org,
- Eric Dumazet <edumazet@google.com>, Michal Kubiak <michal.kubiak@intel.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>, Jakub Kicinski <kuba@kernel.org>,
- Jacob Keller <jacob.e.keller@intel.com>, intel-wired-lan@lists.osuosl.org,
- bpf@vger.kernel.org, Paolo Abeni <pabeni@redhat.com>,
- "David S. Miller" <davem@davemloft.net>, magnus.karlsson@intel.com
+Cc: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
+ Igor Bagnucki <igor.bagnucki@intel.com>, Jakub Kicinski <kuba@kernel.org>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed, Jul 24, 2024 at 06:48:33PM +0200, Larysa Zaremba wrote:
-> The main threat to data consistency in ice_xdp() is a possible asynchronous
-> PF reset. It can be triggered by a user or by TX timeout handler.
+On Mon, Aug 12, 2024 at 02:50:09PM +0200, Dawid Osuchowski wrote:
+> Ethtool callbacks can be executed while reset is in progress and try to
+> access deleted resources, e.g. getting coalesce settings can result in a
+> NULL pointer dereference seen below.
 > 
-> XDP setup and PF reset code access the same resources in the following
-> sections:
-> * ice_vsi_close() in ice_prepare_for_reset() - already rtnl-locked
-> * ice_vsi_rebuild() for the PF VSI - not protected
-> * ice_vsi_open() - already rtnl-locked
+> Reproduction steps:
+> Once the driver is fully initialized, trigger reset:
+> 	# echo 1 > /sys/class/net/<interface>/device/reset
+> when reset is in progress try to get coalesce settings using ethtool:
+> 	# ethtool -c <interface>
 > 
-> With an unfortunate timing, such accesses can result in a crash such as the
-> one below:
+> BUG: kernel NULL pointer dereference, address: 0000000000000020
+> PGD 0 P4D 0
+> Oops: Oops: 0000 [#1] PREEMPT SMP PTI
+> CPU: 11 PID: 19713 Comm: ethtool Tainted: G S                 6.10.0-rc7+ #7
+> RIP: 0010:ice_get_q_coalesce+0x2e/0xa0 [ice]
+> RSP: 0018:ffffbab1e9bcf6a8 EFLAGS: 00010206
+> RAX: 000000000000000c RBX: ffff94512305b028 RCX: 0000000000000000
+> RDX: 0000000000000000 RSI: ffff9451c3f2e588 RDI: ffff9451c3f2e588
+> RBP: 0000000000000000 R08: 0000000000000000 R09: 0000000000000000
+> R10: ffff9451c3f2e580 R11: 000000000000001f R12: ffff945121fa9000
+> R13: ffffbab1e9bcf760 R14: 0000000000000013 R15: ffffffff9e65dd40
+> FS:  00007faee5fbe740(0000) GS:ffff94546fd80000(0000) knlGS:0000000000000000
+> CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+> CR2: 0000000000000020 CR3: 0000000106c2e005 CR4: 00000000001706f0
+> Call Trace:
+> <TASK>
+> ice_get_coalesce+0x17/0x30 [ice]
+> coalesce_prepare_data+0x61/0x80
+> ethnl_default_doit+0xde/0x340
+> genl_family_rcv_msg_doit+0xf2/0x150
+> genl_rcv_msg+0x1b3/0x2c0
+> netlink_rcv_skb+0x5b/0x110
+> genl_rcv+0x28/0x40
+> netlink_unicast+0x19c/0x290
+> netlink_sendmsg+0x222/0x490
+> __sys_sendto+0x1df/0x1f0
+> __x64_sys_sendto+0x24/0x30
+> do_syscall_64+0x82/0x160
+> entry_SYSCALL_64_after_hwframe+0x76/0x7e
+> RIP: 0033:0x7faee60d8e27
 > 
-> [ +1.999878] ice 0000:b1:00.0: Registered XDP mem model MEM_TYPE_XSK_BUFF_POOL on Rx ring 14
-> [ +2.002992] ice 0000:b1:00.0: Registered XDP mem model MEM_TYPE_XSK_BUFF_POOL on Rx ring 18
-> [Mar15 18:17] ice 0000:b1:00.0 ens801f0np0: NETDEV WATCHDOG: CPU: 38: transmit queue 14 timed out 80692736 ms
-> [ +0.000093] ice 0000:b1:00.0 ens801f0np0: tx_timeout: VSI_num: 6, Q 14, NTC: 0x0, HW_HEAD: 0x0, NTU: 0x0, INT: 0x4000001
-> [ +0.000012] ice 0000:b1:00.0 ens801f0np0: tx_timeout recovery level 1, txqueue 14
-> [ +0.394718] ice 0000:b1:00.0: PTP reset successful
-> [ +0.006184] BUG: kernel NULL pointer dereference, address: 0000000000000098
-> [ +0.000045] #PF: supervisor read access in kernel mode
-> [ +0.000023] #PF: error_code(0x0000) - not-present page
-> [ +0.000023] PGD 0 P4D 0
-> [ +0.000018] Oops: 0000 [#1] PREEMPT SMP NOPTI
-> [ +0.000023] CPU: 38 PID: 7540 Comm: kworker/38:1 Not tainted 6.8.0-rc7 #1
-> [ +0.000031] Hardware name: Intel Corporation S2600WFT/S2600WFT, BIOS SE5C620.86B.02.01.0014.082620210524 08/26/2021
-> [ +0.000036] Workqueue: ice ice_service_task [ice]
-> [ +0.000183] RIP: 0010:ice_clean_tx_ring+0xa/0xd0 [ice]
-> [...]
-> [ +0.000013] Call Trace:
-> [ +0.000016] <TASK>
-> [ +0.000014] ? __die+0x1f/0x70
-> [ +0.000029] ? page_fault_oops+0x171/0x4f0
-> [ +0.000029] ? schedule+0x3b/0xd0
-> [ +0.000027] ? exc_page_fault+0x7b/0x180
-> [ +0.000022] ? asm_exc_page_fault+0x22/0x30
-> [ +0.000031] ? ice_clean_tx_ring+0xa/0xd0 [ice]
-> [ +0.000194] ice_free_tx_ring+0xe/0x60 [ice]
-> [ +0.000186] ice_destroy_xdp_rings+0x157/0x310 [ice]
-> [ +0.000151] ice_vsi_decfg+0x53/0xe0 [ice]
-> [ +0.000180] ice_vsi_rebuild+0x239/0x540 [ice]
-> [ +0.000186] ice_vsi_rebuild_by_type+0x76/0x180 [ice]
-> [ +0.000145] ice_rebuild+0x18c/0x840 [ice]
-> [ +0.000145] ? delay_tsc+0x4a/0xc0
-> [ +0.000022] ? delay_tsc+0x92/0xc0
-> [ +0.000020] ice_do_reset+0x140/0x180 [ice]
-> [ +0.000886] ice_service_task+0x404/0x1030 [ice]
-> [ +0.000824] process_one_work+0x171/0x340
-> [ +0.000685] worker_thread+0x277/0x3a0
-> [ +0.000675] ? preempt_count_add+0x6a/0xa0
-> [ +0.000677] ? _raw_spin_lock_irqsave+0x23/0x50
-> [ +0.000679] ? __pfx_worker_thread+0x10/0x10
-> [ +0.000653] kthread+0xf0/0x120
-> [ +0.000635] ? __pfx_kthread+0x10/0x10
-> [ +0.000616] ret_from_fork+0x2d/0x50
-> [ +0.000612] ? __pfx_kthread+0x10/0x10
-> [ +0.000604] ret_from_fork_asm+0x1b/0x30
-> [ +0.000604] </TASK>
+> Calling netif_device_detach() before reset makes the net core not call
+> the driver when ethtool command is issued, the attempt to execute an
+> ethtool command during reset will result in the following message:
 > 
-> The previous way of handling this through returning -EBUSY is not viable,
-> particularly when destroying AF_XDP socket, because the kernel proceeds
-> with removal anyway.
+>     netlink error: No such device
 > 
-> There is plenty of code between those calls and there is no need to create
-> a large critical section that covers all of them, same as there is no need
-> to protect ice_vsi_rebuild() with rtnl_lock().
+> instead of NULL pointer dereference. Once reset is done and
+> ice_rebuild() is executing, the netif_device_attach() is called to allow
+> for ethtool operations to occur again in a safe manner.
 > 
-> Add xdp_state_lock mutex to protect ice_vsi_rebuild() and ice_xdp().
-> 
-> Leaving unprotected sections in between would result in two states that
-> have to be considered:
-> 1. when the VSI is closed, but not yet rebuild
-> 2. when VSI is already rebuild, but not yet open
-> 
-> The latter case is actually already handled through !netif_running() case,
-> we just need to adjust flag checking a little. The former one is not as
-> trivial, because between ice_vsi_close() and ice_vsi_rebuild(), a lot of
-> hardware interaction happens, this can make adding/deleting rings exit
-> with an error. Luckily, VSI rebuild is pending and can apply new
-> configuration for us in a managed fashion.
-> 
-> Therefore, add an additional VSI state flag ICE_VSI_REBUILD_PENDING to
-> indicate that ice_xdp() can just hot-swap the program.
+> Fixes: fcea6f3da546 ("ice: Add stats and ethtool support")
 
-couldn't this be a separate patch?
+What about other intel drivers tho?
 
-> 
-> Fixes: 2d4238f55697 ("ice: Add support for AF_XDP")
-> Fixes: efc2214b6047 ("ice: Add support for XDP")
-> Reviewed-by: Wojciech Drewek <wojciech.drewek@intel.com>
-> Signed-off-by: Larysa Zaremba <larysa.zaremba@intel.com>
+> Suggested-by: Jakub Kicinski <kuba@kernel.org>
+> Signed-off-by: Dawid Osuchowski <dawid.osuchowski@linux.intel.com>
+> Reviewed-by: Igor Bagnucki <igor.bagnucki@intel.com>
 > ---
->  drivers/net/ethernet/intel/ice/ice.h      |  2 ++
->  drivers/net/ethernet/intel/ice/ice_lib.c  | 26 +++++++++++++++--------
->  drivers/net/ethernet/intel/ice/ice_main.c | 19 ++++++++++++-----
->  drivers/net/ethernet/intel/ice/ice_xsk.c  |  3 ++-
->  4 files changed, 35 insertions(+), 15 deletions(-)
+> Changes since v1:
+> * Changed Fixes tag to point to another commit
+> * Minified the stacktrace
 > 
-> diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
-> index 99a75a59078e..3d7a0abc13ab 100644
-> --- a/drivers/net/ethernet/intel/ice/ice.h
-> +++ b/drivers/net/ethernet/intel/ice/ice.h
-> @@ -318,6 +318,7 @@ enum ice_vsi_state {
->  	ICE_VSI_UMAC_FLTR_CHANGED,
->  	ICE_VSI_MMAC_FLTR_CHANGED,
->  	ICE_VSI_PROMISC_CHANGED,
-> +	ICE_VSI_REBUILD_PENDING,
->  	ICE_VSI_STATE_NBITS		/* must be last */
->  };
->  
-> @@ -411,6 +412,7 @@ struct ice_vsi {
->  	struct ice_tx_ring **xdp_rings;	 /* XDP ring array */
->  	u16 num_xdp_txq;		 /* Used XDP queues */
->  	u8 xdp_mapping_mode;		 /* ICE_MAP_MODE_[CONTIG|SCATTER] */
-> +	struct mutex xdp_state_lock;
->  
->  	struct net_device **target_netdevs;
->  
-> diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
-> index 5f2ddcaf7031..bbef5ec67cae 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_lib.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_lib.c
-> @@ -447,6 +447,7 @@ static void ice_vsi_free(struct ice_vsi *vsi)
->  
->  	ice_vsi_free_stats(vsi);
->  	ice_vsi_free_arrays(vsi);
-> +	mutex_destroy(&vsi->xdp_state_lock);
->  	mutex_unlock(&pf->sw_mutex);
->  	devm_kfree(dev, vsi);
->  }
-> @@ -626,6 +627,8 @@ static struct ice_vsi *ice_vsi_alloc(struct ice_pf *pf)
->  	pf->next_vsi = ice_get_free_slot(pf->vsi, pf->num_alloc_vsi,
->  					 pf->next_vsi);
->  
-> +	mutex_init(&vsi->xdp_state_lock);
-> +
->  unlock_pf:
->  	mutex_unlock(&pf->sw_mutex);
->  	return vsi;
-> @@ -2973,19 +2976,24 @@ int ice_vsi_rebuild(struct ice_vsi *vsi, u32 vsi_flags)
->  	if (WARN_ON(vsi->type == ICE_VSI_VF && !vsi->vf))
->  		return -EINVAL;
->  
-> +	mutex_lock(&vsi->xdp_state_lock);
-> +	clear_bit(ICE_VSI_REBUILD_PENDING, vsi->state);
-> +
->  	ret = ice_vsi_realloc_stat_arrays(vsi);
->  	if (ret)
-> -		goto err_vsi_cfg;
-> +		goto unlock;
->  
->  	ice_vsi_decfg(vsi);
->  	ret = ice_vsi_cfg_def(vsi);
->  	if (ret)
-> -		goto err_vsi_cfg;
-> +		goto unlock;
->  
->  	coalesce = kcalloc(vsi->num_q_vectors,
->  			   sizeof(struct ice_coalesce_stored), GFP_KERNEL);
-> -	if (!coalesce)
-> -		return -ENOMEM;
-> +	if (!coalesce) {
-> +		ret = -ENOMEM;
-
-Knee-jerk reaction would be to deconfig things that ice_vsi_cfg_def()
-setup above.
-
-So I think the order of kfree and ice_vsi_decfg should be swapped,
-something like:
-
-	if (!coalesce) {
-		ret = -ENOMEM;
-		goto err_mem_alloc;
-	}
-
-err_vsi_cfg_tc_lan:
-	kfree(coalesce);
-err_mem_alloc:
-	ice_vsi_decfg(vsi);
-unlock:
-	mutex_unlock(&vsi->xdp_state_lock);
-	return ret;
-
-
-or am I missing something?
-
-> +		goto unlock;
-> +	}
->  
->  	prev_num_q_vectors = ice_vsi_rebuild_get_coalesce(vsi, coalesce);
->  
-> @@ -2996,19 +3004,19 @@ int ice_vsi_rebuild(struct ice_vsi *vsi, u32 vsi_flags)
->  			goto err_vsi_cfg_tc_lan;
->  		}
->  
-> -		kfree(coalesce);
-> -		return ice_schedule_reset(pf, ICE_RESET_PFR);
-> +		ret = ice_schedule_reset(pf, ICE_RESET_PFR);
-> +		goto err_vsi_cfg_tc_lan;
->  	}
->  
->  	ice_vsi_rebuild_set_coalesce(vsi, coalesce, prev_num_q_vectors);
->  	kfree(coalesce);
-> -
-> -	return 0;
-> +	goto unlock;
->  
->  err_vsi_cfg_tc_lan:
->  	ice_vsi_decfg(vsi);
->  	kfree(coalesce);
-> -err_vsi_cfg:
-> +unlock:
-> +	mutex_unlock(&vsi->xdp_state_lock);
->  	return ret;
->  }
->  
+> Suggestion from Kuba: https://lore.kernel.org/netdev/20240610194756.5be5be90@kernel.org/
+> Previous attempt: https://lore.kernel.org/netdev/20240722122839.51342-1-dawid.osuchowski@linux.intel.com/
+> ---
+>  drivers/net/ethernet/intel/ice/ice_main.c | 4 ++++
+>  1 file changed, 4 insertions(+)
+> 
 > diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-> index 8ed1798bb06e..e50526b491fc 100644
+> index eaa73cc200f4..16b4920741ff 100644
 > --- a/drivers/net/ethernet/intel/ice/ice_main.c
 > +++ b/drivers/net/ethernet/intel/ice/ice_main.c
-> @@ -611,6 +611,7 @@ ice_prepare_for_reset(struct ice_pf *pf, enum ice_reset_req reset_type)
+> @@ -608,6 +608,8 @@ ice_prepare_for_reset(struct ice_pf *pf, enum ice_reset_req reset_type)
+>  			memset(&vsi->mqprio_qopt, 0, sizeof(vsi->mqprio_qopt));
+>  		}
+>  	}
+> +	if (vsi->netdev)
+> +		netif_device_detach(vsi->netdev);
+>  skip:
+>  
 >  	/* clear SW filtering DB */
->  	ice_clear_hw_tbls(hw);
->  	/* disable the VSIs and their queues that are not already DOWN */
-> +	set_bit(ICE_VSI_REBUILD_PENDING, ice_get_main_vsi(pf)->state);
->  	ice_pf_dis_all_vsi(pf, false);
+> @@ -7568,11 +7570,13 @@ static void ice_update_pf_netdev_link(struct ice_pf *pf)
 >  
->  	if (test_bit(ICE_FLAG_PTP_SUPPORTED, pf->flags))
-> @@ -3011,7 +3012,8 @@ ice_xdp_setup_prog(struct ice_vsi *vsi, struct bpf_prog *prog,
+>  		ice_get_link_status(pf->vsi[i]->port_info, &link_up);
+>  		if (link_up) {
+> +			netif_device_attach(pf->vsi[i]->netdev);
+>  			netif_carrier_on(pf->vsi[i]->netdev);
+>  			netif_tx_wake_all_queues(pf->vsi[i]->netdev);
+>  		} else {
+>  			netif_carrier_off(pf->vsi[i]->netdev);
+>  			netif_tx_stop_all_queues(pf->vsi[i]->netdev);
+> +			netif_device_detach(pf->vsi[i]->netdev);
+>  		}
 >  	}
->  
->  	/* hot swap progs and avoid toggling link */
-> -	if (ice_is_xdp_ena_vsi(vsi) == !!prog) {
-> +	if (ice_is_xdp_ena_vsi(vsi) == !!prog ||
-> +	    test_bit(ICE_VSI_REBUILD_PENDING, vsi->state)) {
->  		ice_vsi_assign_bpf_prog(vsi, prog);
->  		return 0;
->  	}
-> @@ -3083,21 +3085,28 @@ static int ice_xdp(struct net_device *dev, struct netdev_bpf *xdp)
->  {
->  	struct ice_netdev_priv *np = netdev_priv(dev);
->  	struct ice_vsi *vsi = np->vsi;
-> +	int ret;
->  
->  	if (vsi->type != ICE_VSI_PF) {
->  		NL_SET_ERR_MSG_MOD(xdp->extack, "XDP can be loaded only on PF VSI");
->  		return -EINVAL;
->  	}
->  
-> +	mutex_lock(&vsi->xdp_state_lock);
-> +
->  	switch (xdp->command) {
->  	case XDP_SETUP_PROG:
-> -		return ice_xdp_setup_prog(vsi, xdp->prog, xdp->extack);
-> +		ret = ice_xdp_setup_prog(vsi, xdp->prog, xdp->extack);
-> +		break;
->  	case XDP_SETUP_XSK_POOL:
-> -		return ice_xsk_pool_setup(vsi, xdp->xsk.pool,
-> -					  xdp->xsk.queue_id);
-> +		ret = ice_xsk_pool_setup(vsi, xdp->xsk.pool, xdp->xsk.queue_id);
-> +		break;
->  	default:
-> -		return -EINVAL;
-> +		ret = -EINVAL;
->  	}
-> +
-> +	mutex_unlock(&vsi->xdp_state_lock);
-> +	return ret;
 >  }
->  
->  /**
-> diff --git a/drivers/net/ethernet/intel/ice/ice_xsk.c b/drivers/net/ethernet/intel/ice/ice_xsk.c
-> index a65955eb23c0..2c1a843ba200 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_xsk.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_xsk.c
-> @@ -379,7 +379,8 @@ int ice_xsk_pool_setup(struct ice_vsi *vsi, struct xsk_buff_pool *pool, u16 qid)
->  		goto failure;
->  	}
->  
-> -	if_running = netif_running(vsi->netdev) && ice_is_xdp_ena_vsi(vsi);
-> +	if_running = !test_bit(ICE_VSI_DOWN, vsi->state) &&
-> +		     ice_is_xdp_ena_vsi(vsi);
->  
->  	if (if_running) {
->  		struct ice_rx_ring *rx_ring = vsi->rx_rings[qid];
 > -- 
-> 2.43.0
+> 2.44.0
+> 
 > 
