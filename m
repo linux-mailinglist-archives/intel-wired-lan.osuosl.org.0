@@ -1,104 +1,86 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id B8DDF950849
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 13 Aug 2024 16:57:46 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id DEF0995085E
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 13 Aug 2024 17:02:53 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 3FE2B81292;
-	Tue, 13 Aug 2024 14:57:45 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 58B21817AB;
+	Tue, 13 Aug 2024 15:02:52 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id LlBY7QuSemzk; Tue, 13 Aug 2024 14:57:44 +0000 (UTC)
+ id CAt4mWRwXPG9; Tue, 13 Aug 2024 15:02:51 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 69D1E817AB
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 5D590817BA
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1723561064;
-	bh=SEp3qwk4GT0xlQatDRuLHX4RJHy/o8pdyqFPySWqAS4=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1723561371;
+	bh=s1p2+5HGmT6uC5ZKwYp1agA+hLlWRfdOVnAhqAU68Ok=;
+	h=Date:From:To:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=Jg7moJHLJo0zEBFGzFrmacvszKIKQuIb9MJWiTV7uhs7lx3GvK9FW6d3s/XOscz1G
-	 U8d7A35rmLfqR0fV6a8nrRiTcAiTfLbhbSmueWHTsG3l+oPL+KYkXJg2aUzEKtCvkR
-	 9OBEm4mrFyrlmtO7gJ2QH4v0vJOaPRrGhPZiMJETlMTAl5kZQTATgqUUqQp9vFsn62
-	 /T1YVF4Nhi670Omk1Q5KyjPz7TNE0Qsk7VtSkz/M9GzXwpQju6xhOEzgTKqVYZoXOe
-	 oFaE7q28oPF17fLQ/78WFrMqRQEPh2IzjRhUdEHJsUtnbpoPtTLGzEZ+fnpgDo0hi8
-	 ALtCeEClzQGyQ==
+	b=4sEbE6Ey18VZL9HUPStOa49fAl9Bzf7O2oIqLA65QwNf5/NPwbJHWjnXAJuvoCigD
+	 vIUrq6p9hkjHC4xaAVTeKozyWZVrmYeeAdmrrvbd6ZbcnDTqRghQmq9JjBhBCO04F2
+	 250f7m1O8GkhptBybPzPxuqha5Txcu4r+5nbgO0e/8WUegFI3mHil5eQVcrHY53Qi5
+	 GA6f2TtyirsaL6/IVmhsRq2xfNzBXCBDp77ZD6c2abJv90XC5e7PbxOxU1Q4qq8gMN
+	 3rtlcrVa1xixaPETEWO4MPkx3OO4b2V+I9VXd+NRIEFrkD6aNo7zLEPr8lw2X9polG
+	 IpFVoNWKK5pXw==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 69D1E817AB;
-	Tue, 13 Aug 2024 14:57:44 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 5D590817BA;
+	Tue, 13 Aug 2024 15:02:51 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id E15661BF42D
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Aug 2024 04:13:31 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id BBB3D1BF488
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Aug 2024 15:02:48 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id CC55640420
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Aug 2024 04:13:31 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id B546060865
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Aug 2024 15:02:48 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id R7o_5M5B0cR5 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 13 Aug 2024 04:13:31 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=67.231.156.173;
- helo=mx0b-0016f401.pphosted.com;
- envelope-from=prvs=595515a65d=rkannoth@marvell.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org DABDE40025
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org DABDE40025
-Received: from mx0b-0016f401.pphosted.com (mx0b-0016f401.pphosted.com
- [67.231.156.173])
- by smtp2.osuosl.org (Postfix) with ESMTPS id DABDE40025
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Aug 2024 04:13:30 +0000 (UTC)
-Received: from pps.filterd (m0045851.ppops.net [127.0.0.1])
- by mx0b-0016f401.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 47CN03IS028173;
- Mon, 12 Aug 2024 21:13:00 -0700
-Received: from dc6wp-exch02.marvell.com ([4.21.29.225])
- by mx0b-0016f401.pphosted.com (PPS) with ESMTPS id 40yup38vta-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 12 Aug 2024 21:13:00 -0700 (PDT)
-Received: from DC6WP-EXCH02.marvell.com (10.76.176.209) by
- DC6WP-EXCH02.marvell.com (10.76.176.209) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1544.4; Mon, 12 Aug 2024 21:12:59 -0700
-Received: from maili.marvell.com (10.69.176.80) by DC6WP-EXCH02.marvell.com
- (10.76.176.209) with Microsoft SMTP Server id 15.2.1544.4 via Frontend
- Transport; Mon, 12 Aug 2024 21:12:59 -0700
-Received: from maili.marvell.com (unknown [10.28.36.165])
- by maili.marvell.com (Postfix) with SMTP id EF7D43F704B;
- Mon, 12 Aug 2024 21:12:54 -0700 (PDT)
-Date: Tue, 13 Aug 2024 09:42:53 +0530
-From: Ratheesh Kannoth <rkannoth@marvell.com>
-To: Vinicius Costa Gomes <vinicius.gomes@intel.com>
-Message-ID: <20240813041253.GA3072284@maili.marvell.com>
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 56UCG-3lJudr for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 13 Aug 2024 15:02:48 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2604:1380:4641:c500::1; helo=dfw.source.kernel.org;
+ envelope-from=kuba@kernel.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org DD68960861
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org DD68960861
+Received: from dfw.source.kernel.org (dfw.source.kernel.org
+ [IPv6:2604:1380:4641:c500::1])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id DD68960861
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Aug 2024 15:02:47 +0000 (UTC)
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by dfw.source.kernel.org (Postfix) with ESMTP id 1175861707;
+ Tue, 13 Aug 2024 15:02:47 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 40F96C4AF09;
+ Tue, 13 Aug 2024 15:02:46 +0000 (UTC)
+Date: Tue, 13 Aug 2024 08:02:45 -0700
+From: Jakub Kicinski <kuba@kernel.org>
+To: Ratheesh Kannoth <rkannoth@marvell.com>
+Message-ID: <20240813080245.5e5c6657@kernel.org>
+In-Reply-To: <20240813041253.GA3072284@maili.marvell.com>
 References: <20240810002302.2054816-1-vinicius.gomes@intel.com>
+ <20240813041253.GA3072284@maili.marvell.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Disposition: inline
-In-Reply-To: <20240810002302.2054816-1-vinicius.gomes@intel.com>
-X-Proofpoint-ORIG-GUID: 8SkyDvNSPllJkWS5yqlAv2-2pAbWRIVY
-X-Proofpoint-GUID: 8SkyDvNSPllJkWS5yqlAv2-2pAbWRIVY
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1039,Hydra:6.0.680,FMLib:17.12.28.16
- definitions=2024-08-12_12,2024-08-12_02,2024-05-17_01
-X-Mailman-Approved-At: Tue, 13 Aug 2024 14:57:41 +0000
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=marvell.com; h=
- cc:content-type:date:from:in-reply-to:message-id:mime-version
- :references:subject:to; s=pfpt0220; bh=SEp3qwk4GT0xlQatDRuLHX4RJ
- Hy/o8pdyqFPySWqAS4=; b=d7tPA2ao/7cLfAGdMrLQweuu0v3Y4xuVCcHniImw4
- VY5q4IR9Nl9F9f4bBPG5f5eDhRxk8LTwWe7FevuqYo9/cmLJHLVzyJQnubX2X41N
- i6r09TCNozL/4GQmCfpmz46cPZwkAuvXd+4FS4EtORaPGI6D+l9X3131Wanbl3X3
- MZtN8jf3gszCf9NTNcGhobsFZibQJhieaDZnDBq+TXzKnjIQicswh5dgQYvQVIcT
- vvAFlZFtOdhPBJtOHDMdN/SpoAyXr/r0JdbyouHPK0Jhd1le45N3x4tUtCyYrViu
- moAJOaZM4kPNA+CFJ0yyj9S714uro+fxsqWcAa2WBDyCg==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=kernel.org; s=k20201202; t=1723561366;
+ bh=vREXw95kYwA8kvX2/ZrNdGxcYOka4556U6NGc0ogOv8=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=QZnbD1n6ChEq3x8FTN0TOlAP6p66S+0lVOlM38aTYOcqaKNVeVGjLFtLLtnLTaiG3
+ Bp+u37/fFiCPvPKz2MtFcrfcHHjrvkOo871/a7RYsuWVVX7FrOi6xyHTlLwevXAjMO
+ Xnkp8wxINZTOxhQexh4UHxbQxlIXes2AJM3xNtmp9tzPJ/VpYk80RpIhATIaK7/XNm
+ CKUiHfPbgaAS4V7TyrOzzv7xesdeOZREvYxrKXX9JHa4VmYk2yCRVqMZ+7gdETZps6
+ I6LH/ixzl1kZei6FJYxrU7jhUa2nbNS3FmL1OJCVg16PlqM+KqOjbm/PLGPcuaLn1L
+ ZW+xXVyK+J3Rw==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=marvell.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=marvell.com header.i=@marvell.com header.a=rsa-sha256
- header.s=pfpt0220 header.b=d7tPA2ao
+ header.from=kernel.org
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=QZnbD1n6
 Subject: Re: [Intel-wired-lan] [PATCH iwl-net v1] igb: Fix not clearing
  TimeSync interrupts for 82580
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -113,20 +95,41 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: sasha.neftin@intel.com, netdev@vger.kernel.org, richardcochran@gmail.com,
- kurt@linutronix.de, linux-kernel@vger.kernel.org,
- Jakub Kicinski <kuba@kernel.org>, Eric Dumazet <edumazet@google.com>,
+Cc: sasha.neftin@intel.com, Vinicius Costa Gomes <vinicius.gomes@intel.com>,
+ netdev@vger.kernel.org, richardcochran@gmail.com, kurt@linutronix.de,
+ linux-kernel@vger.kernel.org, Eric Dumazet <edumazet@google.com>,
  daiweili@gmail.com, intel-wired-lan@lists.osuosl.org,
  Przemek Kitszel <przemyslaw.kitszel@intel.com>, anthony.l.nguyen@intel.com,
  Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 2024-08-10 at 05:53:02, Vinicius Costa Gomes (vinicius.gomes@intel.com) wrote:
-> @@ -6960,31 +6960,48 @@ static void igb_extts(struct igb_adapter *adapter, int tsintr_tt)
->  static void igb_tsync_interrupt(struct igb_adapter *adapter)
->  {
->  	struct e1000_hw *hw = &adapter->hw;
-> -	u32 tsicr = rd32(E1000_TSICR);
-> +	u32 ack = 0, tsicr = rd32(E1000_TSICR);
-nit: reverse xmas tree.
+On Tue, 13 Aug 2024 09:42:53 +0530 Ratheesh Kannoth wrote:
+> On 2024-08-10 at 05:53:02, Vinicius Costa Gomes (vinicius.gomes@intel.com) wrote:
+> > @@ -6960,31 +6960,48 @@ static void igb_extts(struct igb_adapter *adapter, int tsintr_tt)
+> >  static void igb_tsync_interrupt(struct igb_adapter *adapter)
+> >  {
+> >  	struct e1000_hw *hw = &adapter->hw;
+> > -	u32 tsicr = rd32(E1000_TSICR);
+> > +	u32 ack = 0, tsicr = rd32(E1000_TSICR);  
+> nit: reverse xmas tree.
+
+Please read the last paragraph below and disseminate this information
+among your colleagues at Marvell.
+
+  Reviewer guidance
+  -----------------
+  
+  Reviewing other people's patches on the list is highly encouraged,
+  regardless of the level of expertise. For general guidance and
+  helpful tips please see :ref:`development_advancedtopics_reviews`.
+  
+  It's safe to assume that netdev maintainers know the community and
+  the level of expertise of the reviewers. The reviewers should not be
+  concerned about their comments impeding or derailing the patch flow.
+  
+  Less experienced reviewers are highly encouraged to do more in-depth
+  review of submissions and not focus exclusively on trivial or
+  subjective matters like code formatting, tags etc.
+  
+See: https://www.kernel.org/doc/html/next/process/maintainer-netdev.html#reviewer-guidance
