@@ -2,96 +2,93 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 55984951B76
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 14 Aug 2024 15:09:51 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id DB5C7951C12
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 14 Aug 2024 15:42:26 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 17ECA80C4B;
-	Wed, 14 Aug 2024 13:09:46 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 6E3CD81C81;
+	Wed, 14 Aug 2024 13:42:25 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id mdf9Vi93PD9T; Wed, 14 Aug 2024 13:09:44 +0000 (UTC)
+ id ZfgnPWcZYzMy; Wed, 14 Aug 2024 13:42:24 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org BEAF880C9F
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 80B5B81C2F
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1723640984;
-	bh=hbq+15QF7tT22i1THCZdvW2mgsvbOowWqrLp79cYKUA=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=XAwFlxV0QD0RXC0sjtyrYE9w7DX95bKYIZgwLUFdlrbZgCHOOhhK1BVye6+vqGBYM
-	 RTQo5ZGSMRTP1+r41B2DlI2OniCijFqcmPdQf2LXyHFbYkEQrrJRVgevZ+xApaNeYi
-	 t1pIflj0uF14za19izhkkDzFiMsYvS2mEcirT6ItA9MMGt/9xLkWs8s5XuL97bHUy8
-	 FbZXoBTGEfSPdmKBecK1a+tHlvDBGfG/Lfax6ZJsIowHhjpWYTgQjWq87wNMRW1hsK
-	 J++0um/T6B4xCjh0JHgoDFl5qQ/7LZh6VLaNHsFFy80SZYFNl20uR+tI0vLdVz3eT9
-	 Pji7yZ7J/swmg==
+	s=default; t=1723642943;
+	bh=mfldORXGYnjudSAMPSy94uYS87bKYAUJ1wJQkIg+Ksk=;
+	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=NavhOgtyPIBLqn7NUJd+G7ul9235vHmg4cYtGS8uIeiBjg7h9hfhp0k5vWrc9U+Jw
+	 1riAyKgCluqK4w1JXiUraxMwhxGKeG7b44/LqqiJwkV+RlFcmZylyUsYZqVwcvJ0nS
+	 ih4F8aNN4Eja7SsAydrS8mFrs4mX0EPa9YLAoEsO1p1P0SSrvZrSH3aURIyDMYcAQc
+	 xhe1EyHAyRo5wFVgALOcrKI81YA8rpK3QBbedNUz5UC1BYjSZRHMvYDk+valKHRHUA
+	 Fq1N4NKg8oupyrygXJ2rd1fRXoRwrD7fGh+AeWIKv2EHdToxRhaSThJYPFTkiZjlW0
+	 1dwZeMlg7Hiig==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id BEAF880C9F;
-	Wed, 14 Aug 2024 13:09:44 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 80B5B81C2F;
+	Wed, 14 Aug 2024 13:42:23 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id CA2791BF32E
- for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Aug 2024 13:09:37 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id BF2381BF2FF
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Aug 2024 13:42:21 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id B7C37403B5
- for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Aug 2024 13:09:37 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id B831640257
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Aug 2024 13:42:21 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id s4x_rSeFsvsX for <intel-wired-lan@lists.osuosl.org>;
- Wed, 14 Aug 2024 13:09:36 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.14;
- helo=mgamail.intel.com; envelope-from=karol.kolacinski@intel.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org D677040372
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D677040372
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.14])
- by smtp4.osuosl.org (Postfix) with ESMTPS id D677040372
- for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Aug 2024 13:09:35 +0000 (UTC)
-X-CSE-ConnectionGUID: LWfcvNISQTmHdoMExXwR6A==
-X-CSE-MsgGUID: MdwB3grxSYOMF9HDkFDxoQ==
-X-IronPort-AV: E=McAfee;i="6700,10204,11164"; a="25658827"
-X-IronPort-AV: E=Sophos;i="6.10,145,1719903600"; d="scan'208";a="25658827"
-Received: from fmviesa009.fm.intel.com ([10.60.135.149])
- by orvoesa106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 14 Aug 2024 06:09:35 -0700
-X-CSE-ConnectionGUID: iFmNirLBRO6E/skOTY6lyA==
-X-CSE-MsgGUID: BABGOYl+QlmTI26g5ZG7ew==
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id r19jF2qItbNh for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 14 Aug 2024 13:42:20 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.21;
+ helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 2C70440163
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 2C70440163
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.21])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 2C70440163
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Aug 2024 13:42:19 +0000 (UTC)
+X-CSE-ConnectionGUID: 8Dfmto6MQD6CK928PBWXjg==
+X-CSE-MsgGUID: HgoiZtj1RtmKrsaP/TLyKg==
+X-IronPort-AV: E=McAfee;i="6700,10204,11164"; a="21826333"
+X-IronPort-AV: E=Sophos;i="6.10,146,1719903600"; d="scan'208";a="21826333"
+Received: from fmviesa006.fm.intel.com ([10.60.135.146])
+ by orvoesa113.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 14 Aug 2024 06:42:19 -0700
+X-CSE-ConnectionGUID: ndpnBdW+Qzu7N7BUvLUm/g==
+X-CSE-MsgGUID: tUZAgJt6RDqJgRH+HygFAw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.10,145,1719903600"; d="scan'208";a="59009733"
-Received: from unknown (HELO kkolacin-desk1.igk.intel.com) ([10.217.160.108])
- by fmviesa009.fm.intel.com with ESMTP; 14 Aug 2024 06:09:33 -0700
-From: Karol Kolacinski <karol.kolacinski@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Wed, 14 Aug 2024 15:05:44 +0200
-Message-ID: <20240814130918.58444-14-karol.kolacinski@intel.com>
-X-Mailer: git-send-email 2.46.0
-In-Reply-To: <20240814130918.58444-8-karol.kolacinski@intel.com>
-References: <20240814130918.58444-8-karol.kolacinski@intel.com>
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+X-IronPort-AV: E=Sophos;i="6.10,146,1719903600"; d="scan'208";a="58648122"
+Received: from lkp-server01.sh.intel.com (HELO 9a732dc145d3) ([10.239.97.150])
+ by fmviesa006.fm.intel.com with ESMTP; 14 Aug 2024 06:41:51 -0700
+Received: from kbuild by 9a732dc145d3 with local (Exim 4.96)
+ (envelope-from <lkp@intel.com>) id 1seEG5-0001hO-13
+ for intel-wired-lan@lists.osuosl.org; Wed, 14 Aug 2024 13:41:49 +0000
+Date: Wed, 14 Aug 2024 21:41:41 +0800
+From: kernel test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <202408142139.t4IWwylh-lkp@intel.com>
+User-Agent: s-nail v14.9.24
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1723640976; x=1755176976;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=+eVWypsTV9e4bjQWBZrCnsQfyOd4izCUkhvv5CKscGQ=;
- b=GcpDhXAYvtODd97S+fTKLGfm47hdcn5NwV4mK6/fH6t9/rVXgbOyJW/E
- SPFIaMHiZUVOaAvzGv0VNXqGHgIFxGMxGV9hknaI6nrbevJLZbArkSUM7
- Y3JUd1qmX/n1yOyWt0yFsCbcHBfXFBIjUa6BPvSOIa1GKe7MyWaecU/uo
- BgyNl/DqZ+AYsJawtnGz9VdgcnCaWoZMuYf4G9rlMWrPCxmMPaWd/AmWa
- uzuZOoP14N8ovIVzCcbmmx8p+ZQ6H7yV1TX0wKirzwUfRljhrHZuDp4Nr
- nJKuYo8cPZO7VkTq27S/2BK1dmHH3QyqHCow5KNVC9Psu6HpbU9tyc8qH
+ t=1723642940; x=1755178940;
+ h=date:from:to:subject:message-id;
+ bh=voOlMhgEcPDFo9XaMHiuLe57mmU8Wy/EhYz10KkIIX4=;
+ b=cThyt0WiLeowjyKELlJjfujpvBtXiFbEGUlxaqhg/01bfkhBAsZxfjw6
+ j+YoEsl1aLadjFXWBVjTxBuPqo9TWO2mqbXzX1ZwPSXJ6ggm6j/5BHVdf
+ gM4miFDlIJQ4p4JEt5gU5LMB/79XkCyx7mu6tU9qxKeeI35OqOsh9CIpO
+ iXmbMc7KjBPI1fuBHjv5cVRAcaEs9dEgmDe661j6sxDviDdmYIme3aJvH
+ lXwziWbBawGCX+FvPxdmCjs4Rs27l+cNywrW1EFlr/kdc6+8sovXcLxbr
+ czxG5mBLULzO5+R6O2XTgMmDdxFFEm+9DmOCPUt8DyJfgfHaOs/uhrNgq
  A==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=GcpDhXAY
-Subject: [Intel-wired-lan] [PATCH v6 iwl-next 6/6] ice: combine cross
- timestamp functions for E82x and E830
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=cThyt0Wi
+Subject: [Intel-wired-lan] [tnguy-next-queue:40GbE] BUILD SUCCESS
+ 623122ac1c4074791ea319df4676fb2875817fe4
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -104,444 +101,236 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Jacob Keller <jacob.e.keller@intel.com>, netdev@vger.kernel.org,
- Karol Kolacinski <karol.kolacinski@intel.com>, anthony.l.nguyen@intel.com,
- przemyslaw.kitszel@intel.com
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Jacob Keller <jacob.e.keller@intel.com>
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git 40GbE
+branch HEAD: 623122ac1c4074791ea319df4676fb2875817fe4  iavf: add support for offloading tc U32 cls filters
 
-The E830 and E82x devices use essentially the same logic for performing
-a crosstimestamp. The only difference is that E830 hardware has
-different offsets. Instead of having two implementations, combine them
-into a single ice_capture_crosststamp() function.
+elapsed time: 893m
 
-Also combine the wrapper functions which call
-get_device_system_crosststamp() into a single ice_ptp_getcrosststamp()
-function.
+configs tested: 214
+configs skipped: 9
 
-To support both hardware types, the ice_capture_crosststamp function
-must be able to determine the appropriate registers to access. To handle
-this, pass a custom context structure instead of the PF pointer. This
-structure, ice_crosststamp_ctx, contains a pointer to the PF, and
-a pointer to the device configuration structure. This new structure also
-will make it easier to implement historic snapshot support in a future
-commit.
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
-The device configuration structure is a static const data which defines
-the offsets and flags for the various registers. This includes the lock
-register, the cross timestamp control register, the upper and lower ART
-system time capture registers, and the upper and lower device time
-capture registers for each timer index.
+tested configs:
+alpha                             allnoconfig   gcc-13.2.0
+alpha                             allnoconfig   gcc-13.3.0
+alpha                            allyesconfig   gcc-13.3.0
+alpha                               defconfig   gcc-13.2.0
+arc                              allmodconfig   gcc-13.2.0
+arc                               allnoconfig   gcc-13.2.0
+arc                              allyesconfig   gcc-13.2.0
+arc                                 defconfig   gcc-13.2.0
+arc                   randconfig-001-20240814   gcc-13.2.0
+arc                   randconfig-002-20240814   gcc-13.2.0
+arc                           tb10x_defconfig   gcc-13.2.0
+arm                              allmodconfig   gcc-13.2.0
+arm                              allmodconfig   gcc-14.1.0
+arm                               allnoconfig   clang-20
+arm                               allnoconfig   gcc-13.2.0
+arm                              allyesconfig   gcc-13.2.0
+arm                              allyesconfig   gcc-14.1.0
+arm                         assabet_defconfig   gcc-13.2.0
+arm                                 defconfig   gcc-13.2.0
+arm                            dove_defconfig   gcc-12.4.0
+arm                            hisi_defconfig   gcc-12.4.0
+arm                          moxart_defconfig   gcc-12.4.0
+arm                         mv78xx0_defconfig   gcc-12.4.0
+arm                       omap2plus_defconfig   gcc-13.2.0
+arm                   randconfig-001-20240814   gcc-13.2.0
+arm                   randconfig-002-20240814   gcc-13.2.0
+arm                   randconfig-003-20240814   gcc-13.2.0
+arm                   randconfig-004-20240814   gcc-13.2.0
+arm                           sunxi_defconfig   gcc-13.2.0
+arm                         wpcm450_defconfig   gcc-12.4.0
+arm64                            allmodconfig   clang-20
+arm64                            allmodconfig   gcc-13.2.0
+arm64                             allnoconfig   gcc-13.2.0
+arm64                             allnoconfig   gcc-14.1.0
+arm64                               defconfig   gcc-13.2.0
+arm64                 randconfig-001-20240814   gcc-13.2.0
+arm64                 randconfig-002-20240814   gcc-13.2.0
+arm64                 randconfig-003-20240814   gcc-13.2.0
+arm64                 randconfig-004-20240814   gcc-13.2.0
+csky                              allnoconfig   gcc-13.2.0
+csky                              allnoconfig   gcc-14.1.0
+csky                                defconfig   gcc-13.2.0
+csky                  randconfig-001-20240814   gcc-13.2.0
+csky                  randconfig-002-20240814   gcc-13.2.0
+hexagon                          allmodconfig   clang-20
+hexagon                           allnoconfig   clang-20
+hexagon                          allyesconfig   clang-20
+i386                             alldefconfig   gcc-12.4.0
+i386                             allmodconfig   clang-18
+i386                             allmodconfig   gcc-12
+i386                              allnoconfig   clang-18
+i386                              allnoconfig   gcc-12
+i386                             allyesconfig   clang-18
+i386                             allyesconfig   gcc-12
+i386         buildonly-randconfig-001-20240814   clang-18
+i386         buildonly-randconfig-002-20240814   clang-18
+i386         buildonly-randconfig-003-20240814   clang-18
+i386         buildonly-randconfig-004-20240814   clang-18
+i386         buildonly-randconfig-005-20240814   clang-18
+i386         buildonly-randconfig-005-20240814   gcc-12
+i386         buildonly-randconfig-006-20240814   clang-18
+i386         buildonly-randconfig-006-20240814   gcc-12
+i386                                defconfig   clang-18
+i386                  randconfig-001-20240814   clang-18
+i386                  randconfig-002-20240814   clang-18
+i386                  randconfig-002-20240814   gcc-12
+i386                  randconfig-003-20240814   clang-18
+i386                  randconfig-003-20240814   gcc-12
+i386                  randconfig-004-20240814   clang-18
+i386                  randconfig-005-20240814   clang-18
+i386                  randconfig-006-20240814   clang-18
+i386                  randconfig-011-20240814   clang-18
+i386                  randconfig-011-20240814   gcc-12
+i386                  randconfig-012-20240814   clang-18
+i386                  randconfig-012-20240814   gcc-12
+i386                  randconfig-013-20240814   clang-18
+i386                  randconfig-014-20240814   clang-18
+i386                  randconfig-014-20240814   gcc-11
+i386                  randconfig-015-20240814   clang-18
+i386                  randconfig-015-20240814   gcc-12
+i386                  randconfig-016-20240814   clang-18
+i386                  randconfig-016-20240814   gcc-12
+loongarch                        allmodconfig   gcc-14.1.0
+loongarch                         allnoconfig   gcc-13.2.0
+loongarch                         allnoconfig   gcc-14.1.0
+loongarch                           defconfig   gcc-13.2.0
+loongarch             randconfig-001-20240814   gcc-13.2.0
+loongarch             randconfig-002-20240814   gcc-13.2.0
+m68k                             allmodconfig   gcc-14.1.0
+m68k                              allnoconfig   gcc-13.2.0
+m68k                              allnoconfig   gcc-14.1.0
+m68k                             allyesconfig   gcc-14.1.0
+m68k                         amcore_defconfig   gcc-12.4.0
+m68k                                defconfig   gcc-13.2.0
+m68k                        mvme16x_defconfig   gcc-12.4.0
+microblaze                       allmodconfig   gcc-14.1.0
+microblaze                        allnoconfig   gcc-13.2.0
+microblaze                        allnoconfig   gcc-14.1.0
+microblaze                       allyesconfig   gcc-14.1.0
+microblaze                          defconfig   gcc-13.2.0
+mips                              allnoconfig   gcc-13.2.0
+mips                              allnoconfig   gcc-14.1.0
+mips                       bmips_be_defconfig   gcc-13.2.0
+mips                      pic32mzda_defconfig   gcc-13.2.0
+mips                         rt305x_defconfig   gcc-13.2.0
+nios2                             allnoconfig   gcc-13.2.0
+nios2                             allnoconfig   gcc-14.1.0
+nios2                               defconfig   gcc-13.2.0
+nios2                 randconfig-001-20240814   gcc-13.2.0
+nios2                 randconfig-002-20240814   gcc-13.2.0
+openrisc                          allnoconfig   gcc-14.1.0
+openrisc                         allyesconfig   gcc-14.1.0
+openrisc                            defconfig   gcc-14.1.0
+openrisc                  or1klitex_defconfig   gcc-12.4.0
+parisc                           allmodconfig   gcc-14.1.0
+parisc                            allnoconfig   gcc-14.1.0
+parisc                           allyesconfig   gcc-14.1.0
+parisc                              defconfig   gcc-14.1.0
+parisc                randconfig-001-20240814   gcc-13.2.0
+parisc                randconfig-002-20240814   gcc-13.2.0
+parisc64                            defconfig   gcc-13.2.0
+powerpc                          allmodconfig   gcc-14.1.0
+powerpc                           allnoconfig   gcc-14.1.0
+powerpc                          allyesconfig   gcc-14.1.0
+powerpc                      katmai_defconfig   gcc-12.4.0
+powerpc                      katmai_defconfig   gcc-13.2.0
+powerpc                 mpc837x_rdb_defconfig   gcc-13.2.0
+powerpc                      ppc44x_defconfig   gcc-13.2.0
+powerpc                       ppc64_defconfig   gcc-12.4.0
+powerpc               randconfig-002-20240814   gcc-13.2.0
+powerpc               randconfig-003-20240814   gcc-13.2.0
+powerpc                 xes_mpc85xx_defconfig   gcc-13.2.0
+powerpc64             randconfig-001-20240814   gcc-13.2.0
+powerpc64             randconfig-002-20240814   gcc-13.2.0
+powerpc64             randconfig-003-20240814   gcc-13.2.0
+riscv                            allmodconfig   gcc-14.1.0
+riscv                             allnoconfig   gcc-14.1.0
+riscv                            allyesconfig   gcc-14.1.0
+riscv                               defconfig   gcc-14.1.0
+riscv                 randconfig-001-20240814   gcc-13.2.0
+riscv                 randconfig-002-20240814   gcc-13.2.0
+s390                             allmodconfig   clang-20
+s390                              allnoconfig   clang-20
+s390                              allnoconfig   gcc-14.1.0
+s390                             allyesconfig   clang-20
+s390                             allyesconfig   gcc-14.1.0
+s390                                defconfig   gcc-13.2.0
+s390                                defconfig   gcc-14.1.0
+s390                  randconfig-001-20240814   gcc-13.2.0
+s390                  randconfig-002-20240814   gcc-13.2.0
+sh                               allmodconfig   gcc-14.1.0
+sh                                allnoconfig   gcc-13.2.0
+sh                                allnoconfig   gcc-14.1.0
+sh                               allyesconfig   gcc-14.1.0
+sh                                  defconfig   gcc-14.1.0
+sh                          landisk_defconfig   gcc-13.2.0
+sh                            migor_defconfig   gcc-12.4.0
+sh                          polaris_defconfig   gcc-12.4.0
+sh                    randconfig-001-20240814   gcc-13.2.0
+sh                    randconfig-002-20240814   gcc-13.2.0
+sh                          rsk7269_defconfig   gcc-13.2.0
+sh                      rts7751r2d1_defconfig   gcc-12.4.0
+sh                          sdk7780_defconfig   gcc-13.2.0
+sh                           sh2007_defconfig   gcc-12.4.0
+sh                     sh7710voipgw_defconfig   gcc-12.4.0
+sparc                            allmodconfig   gcc-14.1.0
+sparc                       sparc64_defconfig   gcc-12.4.0
+sparc64                             defconfig   gcc-14.1.0
+sparc64               randconfig-001-20240814   gcc-13.2.0
+sparc64               randconfig-002-20240814   gcc-13.2.0
+um                               allmodconfig   clang-20
+um                               allmodconfig   gcc-13.3.0
+um                                allnoconfig   clang-17
+um                                allnoconfig   gcc-14.1.0
+um                               allyesconfig   gcc-12
+um                               allyesconfig   gcc-13.3.0
+um                                  defconfig   gcc-14.1.0
+um                             i386_defconfig   gcc-14.1.0
+um                    randconfig-001-20240814   gcc-13.2.0
+um                    randconfig-002-20240814   gcc-13.2.0
+um                           x86_64_defconfig   gcc-14.1.0
+x86_64                            allnoconfig   clang-18
+x86_64                           allyesconfig   clang-18
+x86_64       buildonly-randconfig-001-20240814   clang-18
+x86_64       buildonly-randconfig-002-20240814   clang-18
+x86_64       buildonly-randconfig-003-20240814   clang-18
+x86_64       buildonly-randconfig-004-20240814   clang-18
+x86_64       buildonly-randconfig-005-20240814   clang-18
+x86_64       buildonly-randconfig-006-20240814   clang-18
+x86_64                              defconfig   clang-18
+x86_64                              defconfig   gcc-11
+x86_64                randconfig-001-20240814   clang-18
+x86_64                randconfig-002-20240814   clang-18
+x86_64                randconfig-003-20240814   clang-18
+x86_64                randconfig-004-20240814   clang-18
+x86_64                randconfig-005-20240814   clang-18
+x86_64                randconfig-006-20240814   clang-18
+x86_64                randconfig-011-20240814   clang-18
+x86_64                randconfig-012-20240814   clang-18
+x86_64                randconfig-013-20240814   clang-18
+x86_64                randconfig-014-20240814   clang-18
+x86_64                randconfig-015-20240814   clang-18
+x86_64                randconfig-016-20240814   clang-18
+x86_64                randconfig-071-20240814   clang-18
+x86_64                randconfig-072-20240814   clang-18
+x86_64                randconfig-073-20240814   clang-18
+x86_64                randconfig-074-20240814   clang-18
+x86_64                randconfig-075-20240814   clang-18
+x86_64                randconfig-076-20240814   clang-18
+x86_64                          rhel-8.3-rust   clang-18
+xtensa                            allnoconfig   gcc-13.2.0
+xtensa                            allnoconfig   gcc-14.1.0
+xtensa                randconfig-001-20240814   gcc-13.2.0
+xtensa                randconfig-002-20240814   gcc-13.2.0
 
-This does add extra data to the .text of the module (and thus kernel),
-but it also removes 2 near duplicate functions for enabling E830
-support.
-
-Use the configuration structure to access all of the registers in
-ice_capture_crosststamp(). Ensure that we don't over-run the device time
-array by checking that the timer index is 0 or 1. Previously this was
-simply assumed, and it would cause the device to read an incorrect and
-likely garbage register.
-
-It does feel like there should be a kernel interface for managing
-register offsets like this, but the closest thing I saw was
-<linux/regmap.h> which is interesting but not quite what we're looking
-for...
-
-Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
-Signed-off-by: Karol Kolacinski <karol.kolacinski@intel.com>
----
-V4 -> V5: Removed unnecessary CPU features check for SoCs (E82X) and
-          X86_FEATURE_TSC_KNOWN_FREQ check for E830
-
- drivers/net/ethernet/intel/Kconfig            |   2 +-
- .../net/ethernet/intel/ice/ice_hw_autogen.h   |   8 +
- drivers/net/ethernet/intel/ice/ice_main.c     |   7 +
- drivers/net/ethernet/intel/ice/ice_ptp.c      | 246 ++++++++++++------
- 4 files changed, 187 insertions(+), 76 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/Kconfig b/drivers/net/ethernet/intel/Kconfig
-index 0375c7448a57..90415fe785ac 100644
---- a/drivers/net/ethernet/intel/Kconfig
-+++ b/drivers/net/ethernet/intel/Kconfig
-@@ -334,7 +334,7 @@ config ICE_SWITCHDEV
- config ICE_HWTS
- 	bool "Support HW cross-timestamp on platforms with PTM support"
- 	default y
--	depends on ICE && X86
-+	depends on ICE && X86 && PCIE_PTM
- 	help
- 	  Say Y to enable hardware supported cross-timestamping on platforms
- 	  with PCIe PTM support. The cross-timestamp is available through
-diff --git a/drivers/net/ethernet/intel/ice/ice_hw_autogen.h b/drivers/net/ethernet/intel/ice/ice_hw_autogen.h
-index 646089f3e26c..495b182ea13b 100644
---- a/drivers/net/ethernet/intel/ice/ice_hw_autogen.h
-+++ b/drivers/net/ethernet/intel/ice/ice_hw_autogen.h
-@@ -541,6 +541,14 @@
- #define E830_PRTMAC_CL01_QNT_THR_CL0_M		GENMASK(15, 0)
- #define E830_PRTTSYN_TXTIME_H(_i)		(0x001E5800 + ((_i) * 32))
- #define E830_PRTTSYN_TXTIME_L(_i)		(0x001E5000 + ((_i) * 32))
-+#define E830_GLPTM_ART_CTL			0x00088B50
-+#define E830_GLPTM_ART_CTL_ACTIVE_M		BIT(0)
-+#define E830_GLPTM_ART_TIME_H			0x00088B54
-+#define E830_GLPTM_ART_TIME_L			0x00088B58
-+#define E830_GLTSYN_PTMTIME_H(_i)		(0x00088B48 + ((_i) * 4))
-+#define E830_GLTSYN_PTMTIME_L(_i)		(0x00088B40 + ((_i) * 4))
-+#define E830_PFPTM_SEM				0x00088B00
-+#define E830_PFPTM_SEM_BUSY_M			BIT(0)
- #define VFINT_DYN_CTLN(_i)			(0x00003800 + ((_i) * 4))
- #define VFINT_DYN_CTLN_CLEARPBA_M		BIT(1)
- 
-diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index 9108613dcac3..ef322f846f1b 100644
---- a/drivers/net/ethernet/intel/ice/ice_main.c
-+++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -5042,6 +5042,12 @@ static int ice_init(struct ice_pf *pf)
- 	if (err)
- 		return err;
- 
-+	if (pf->hw.mac_type == ICE_MAC_E830) {
-+		err = pci_enable_ptm(pf->pdev, NULL);
-+		if (err)
-+			dev_dbg(ice_pf_to_dev(pf), "PCIe PTM not supported by PCIe bus/controller\n");
-+	}
-+
- 	err = ice_alloc_vsis(pf);
- 	if (err)
- 		goto err_alloc_vsis;
-@@ -5272,6 +5278,7 @@ ice_probe(struct pci_dev *pdev, const struct pci_device_id __always_unused *ent)
- 	hw->subsystem_device_id = pdev->subsystem_device;
- 	hw->bus.device = PCI_SLOT(pdev->devfn);
- 	hw->bus.func = PCI_FUNC(pdev->devfn);
-+
- 	ice_set_ctrlq_len(hw);
- 
- 	pf->msg_enable = netif_msg_init(debug, ICE_DFLT_NETIF_M);
-diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.c b/drivers/net/ethernet/intel/ice/ice_ptp.c
-index b438647717cc..765ec175941d 100644
---- a/drivers/net/ethernet/intel/ice/ice_ptp.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ptp.c
-@@ -2144,93 +2144,157 @@ static int ice_ptp_adjtime(struct ptp_clock_info *info, s64 delta)
- 	return 0;
- }
- 
-+/**
-+ * struct ice_crosststamp_cfg - Device cross timestamp configuration
-+ * @lock_reg: The hardware semaphore lock to use
-+ * @lock_busy: Bit in the semaphore lock indicating the lock is busy
-+ * @ctl_reg: The hardware register to request cross timestamp
-+ * @ctl_active: Bit in the control register to request cross timestamp
-+ * @art_time_l: Lower 32-bits of ART system time
-+ * @art_time_h: Upper 32-bits of ART system time
-+ * @dev_time_l: Lower 32-bits of device time (per timer index)
-+ * @dev_time_h: Upper 32-bits of device time (per timer index)
-+ */
-+struct ice_crosststamp_cfg {
-+	/* HW semaphore lock register */
-+	u32 lock_reg;
-+	u32 lock_busy;
-+
-+	/* Capture control register */
-+	u32 ctl_reg;
-+	u32 ctl_active;
-+
-+	/* Time storage */
-+	u32 art_time_l;
-+	u32 art_time_h;
-+	u32 dev_time_l[2];
-+	u32 dev_time_h[2];
-+};
-+
-+static const struct ice_crosststamp_cfg ice_crosststamp_cfg_e82x = {
-+	.lock_reg = PFHH_SEM,
-+	.lock_busy = PFHH_SEM_BUSY_M,
-+	.ctl_reg = GLHH_ART_CTL,
-+	.ctl_active = GLHH_ART_CTL_ACTIVE_M,
-+	.art_time_l = GLHH_ART_TIME_L,
-+	.art_time_h = GLHH_ART_TIME_H,
-+	.dev_time_l[0] = GLTSYN_HHTIME_L(0),
-+	.dev_time_h[0] = GLTSYN_HHTIME_H(0),
-+	.dev_time_l[1] = GLTSYN_HHTIME_L(1),
-+	.dev_time_h[1] = GLTSYN_HHTIME_H(1),
-+};
-+
- #ifdef CONFIG_ICE_HWTS
-+static const struct ice_crosststamp_cfg ice_crosststamp_cfg_e830 = {
-+	.lock_reg = E830_PFPTM_SEM,
-+	.lock_busy = E830_PFPTM_SEM_BUSY_M,
-+	.ctl_reg = E830_GLPTM_ART_CTL,
-+	.ctl_active = E830_GLPTM_ART_CTL_ACTIVE_M,
-+	.art_time_l = E830_GLPTM_ART_TIME_L,
-+	.art_time_h = E830_GLPTM_ART_TIME_H,
-+	.dev_time_l[0] = E830_GLTSYN_PTMTIME_L(0),
-+	.dev_time_h[0] = E830_GLTSYN_PTMTIME_H(0),
-+	.dev_time_l[1] = E830_GLTSYN_PTMTIME_L(1),
-+	.dev_time_h[1] = E830_GLTSYN_PTMTIME_H(1),
-+};
-+
-+#endif /* CONFIG_ICE_HWTS */
-+/**
-+ * struct ice_crosststamp_ctx - Device cross timestamp context
-+ * @snapshot: snapshot of system clocks for historic interpolation
-+ * @pf: pointer to the PF private structure
-+ * @cfg: pointer to hardware configuration for cross timestamp
-+ */
-+struct ice_crosststamp_ctx {
-+	struct system_time_snapshot snapshot;
-+	struct ice_pf *pf;
-+	const struct ice_crosststamp_cfg *cfg;
-+};
-+
- /**
-- * ice_ptp_get_syncdevicetime - Get the cross time stamp info
-+ * ice_capture_crosststamp - Capture a device/system cross timestamp
-  * @device: Current device time
-  * @system: System counter value read synchronously with device time
-- * @ctx: Context provided by timekeeping code
-+ * @__ctx: Context passed from ice_ptp_getcrosststamp
-  *
-  * Read device and system (ART) clock simultaneously and return the corrected
-  * clock values in ns.
-+ *
-+ * Return: zero on success, or a negative error code on failure.
-  */
--static int
--ice_ptp_get_syncdevicetime(ktime_t *device,
--			   struct system_counterval_t *system,
--			   void *ctx)
-+static int ice_capture_crosststamp(ktime_t *device,
-+				   struct system_counterval_t *system,
-+				   void *__ctx)
- {
--	struct ice_pf *pf = (struct ice_pf *)ctx;
--	struct ice_hw *hw = &pf->hw;
--	u32 hh_lock, hh_art_ctl;
--	int i;
-+	struct ice_crosststamp_ctx *ctx = __ctx;
-+	const struct ice_crosststamp_cfg *cfg;
-+	u32 lock, ctl, ts_lo, ts_hi, tmr_idx;
-+	struct ice_pf *pf;
-+	struct ice_hw *hw;
-+	int err;
-+	u64 ts;
- 
--#define MAX_HH_HW_LOCK_TRIES	5
--#define MAX_HH_CTL_LOCK_TRIES	100
-+	cfg = ctx->cfg;
-+	pf = ctx->pf;
-+	hw = &pf->hw;
- 
--	for (i = 0; i < MAX_HH_HW_LOCK_TRIES; i++) {
--		/* Get the HW lock */
--		hh_lock = rd32(hw, PFHH_SEM + (PFTSYN_SEM_BYTES * hw->pf_id));
--		if (hh_lock & PFHH_SEM_BUSY_M) {
--			usleep_range(10000, 15000);
--			continue;
--		}
--		break;
--	}
--	if (hh_lock & PFHH_SEM_BUSY_M) {
--		dev_err(ice_pf_to_dev(pf), "PTP failed to get hh lock\n");
-+	tmr_idx = hw->func_caps.ts_func_info.tmr_index_assoc;
-+	if (tmr_idx > 1)
-+		return -EINVAL;
-+
-+	/* Poll until we obtain the cross-timestamp hardware semaphore */
-+	err = rd32_poll_timeout(hw, cfg->lock_reg, lock,
-+				!(lock & cfg->lock_busy),
-+				10 * USEC_PER_MSEC, 50 * USEC_PER_MSEC);
-+	if (err) {
-+		dev_err(ice_pf_to_dev(pf), "PTP failed to get cross timestamp lock\n");
- 		return -EBUSY;
- 	}
- 
-+	/* Snapshot system time for historic interpolation */
-+	ktime_get_snapshot(&ctx->snapshot);
-+
- 	/* Program cmd to master timer */
- 	ice_ptp_src_cmd(hw, ICE_PTP_READ_TIME);
- 
- 	/* Start the ART and device clock sync sequence */
--	hh_art_ctl = rd32(hw, GLHH_ART_CTL);
--	hh_art_ctl = hh_art_ctl | GLHH_ART_CTL_ACTIVE_M;
--	wr32(hw, GLHH_ART_CTL, hh_art_ctl);
--
--	for (i = 0; i < MAX_HH_CTL_LOCK_TRIES; i++) {
--		/* Wait for sync to complete */
--		hh_art_ctl = rd32(hw, GLHH_ART_CTL);
--		if (hh_art_ctl & GLHH_ART_CTL_ACTIVE_M) {
--			udelay(1);
--			continue;
--		} else {
--			u32 hh_ts_lo, hh_ts_hi, tmr_idx;
--			u64 hh_ts;
--
--			tmr_idx = hw->func_caps.ts_func_info.tmr_index_assoc;
--			/* Read ART time */
--			hh_ts_lo = rd32(hw, GLHH_ART_TIME_L);
--			hh_ts_hi = rd32(hw, GLHH_ART_TIME_H);
--			hh_ts = ((u64)hh_ts_hi << 32) | hh_ts_lo;
--			system->cycles = hh_ts;
--			system->cs_id = CSID_X86_ART;
--			/* Read Device source clock time */
--			hh_ts_lo = rd32(hw, GLTSYN_HHTIME_L(tmr_idx));
--			hh_ts_hi = rd32(hw, GLTSYN_HHTIME_H(tmr_idx));
--			hh_ts = ((u64)hh_ts_hi << 32) | hh_ts_lo;
--			*device = ns_to_ktime(hh_ts);
--			break;
--		}
--	}
-+	ctl = rd32(hw, cfg->ctl_reg);
-+	ctl |= cfg->ctl_active;
-+	wr32(hw, cfg->ctl_reg, ctl);
- 
-+	/* Poll until hardware completes the capture */
-+	err = rd32_poll_timeout(hw, cfg->ctl_reg, ctl, !(ctl & cfg->ctl_active),
-+				5, 20 * USEC_PER_MSEC);
-+	if (err)
-+		goto err_timeout;
-+
-+	/* Read ART system time */
-+	ts_lo = rd32(hw, cfg->art_time_l);
-+	ts_hi = rd32(hw, cfg->art_time_h);
-+	ts = ((u64)ts_hi << 32) | ts_lo;
-+	system->cycles = ts;
-+	system->cs_id = CSID_X86_ART;
-+
-+	/* Read Device source clock time */
-+	ts_lo = rd32(hw, cfg->dev_time_l[tmr_idx]);
-+	ts_hi = rd32(hw, cfg->dev_time_h[tmr_idx]);
-+	ts = ((u64)ts_hi << 32) | ts_lo;
-+	*device = ns_to_ktime(ts);
-+
-+err_timeout:
- 	/* Clear the master timer */
- 	ice_ptp_src_cmd(hw, ICE_PTP_NOP);
- 
- 	/* Release HW lock */
--	hh_lock = rd32(hw, PFHH_SEM + (PFTSYN_SEM_BYTES * hw->pf_id));
--	hh_lock = hh_lock & ~PFHH_SEM_BUSY_M;
--	wr32(hw, PFHH_SEM + (PFTSYN_SEM_BYTES * hw->pf_id), hh_lock);
--
--	if (i == MAX_HH_CTL_LOCK_TRIES)
--		return -ETIMEDOUT;
-+	lock = rd32(hw, cfg->lock_reg);
-+	lock &= ~cfg->lock_busy;
-+	wr32(hw, cfg->lock_reg, lock);
- 
--	return 0;
-+	return err;
- }
- 
- /**
-- * ice_ptp_getcrosststamp_e82x - Capture a device cross timestamp
-+ * ice_ptp_getcrosststamp - Capture a device cross timestamp
-  * @info: the driver's PTP info structure
-  * @cts: The memory to fill the cross timestamp info
-  *
-@@ -2238,22 +2302,36 @@ ice_ptp_get_syncdevicetime(ktime_t *device,
-  * clock. Fill the cross timestamp information and report it back to the
-  * caller.
-  *
-- * This is only valid for E822 and E823 devices which have support for
-- * generating the cross timestamp via PCIe PTM.
-- *
-  * In order to correctly correlate the ART timestamp back to the TSC time, the
-  * CPU must have X86_FEATURE_TSC_KNOWN_FREQ.
-+ *
-+ * Return: zero on success, or a negative error code on failure.
-  */
--static int
--ice_ptp_getcrosststamp_e82x(struct ptp_clock_info *info,
--			    struct system_device_crosststamp *cts)
-+static int ice_ptp_getcrosststamp(struct ptp_clock_info *info,
-+				  struct system_device_crosststamp *cts)
- {
- 	struct ice_pf *pf = ptp_info_to_pf(info);
-+	struct ice_crosststamp_ctx ctx = {
-+		.pf = pf,
-+	};
- 
--	return get_device_system_crosststamp(ice_ptp_get_syncdevicetime,
--					     pf, NULL, cts);
--}
-+	switch (pf->hw.mac_type) {
-+	case ICE_MAC_GENERIC:
-+	case ICE_MAC_GENERIC_3K_E825:
-+		ctx.cfg = &ice_crosststamp_cfg_e82x;
-+		break;
-+#ifdef CONFIG_ICE_HWTS
-+	case ICE_MAC_E830:
-+		ctx.cfg = &ice_crosststamp_cfg_e830;
-+		break;
- #endif /* CONFIG_ICE_HWTS */
-+	default:
-+		return -EOPNOTSUPP;
-+	}
-+
-+	return get_device_system_crosststamp(ice_capture_crosststamp, &ctx,
-+					     &ctx.snapshot, cts);
-+}
- 
- /**
-  * ice_ptp_get_ts_config - ioctl interface to read the timestamping config
-@@ -2528,12 +2606,8 @@ static int ice_ptp_parse_sdp_entries(struct ice_pf *pf, __le16 *entries,
-  */
- static void ice_ptp_set_funcs_e82x(struct ice_pf *pf)
- {
--#ifdef CONFIG_ICE_HWTS
--	if (boot_cpu_has(X86_FEATURE_ART) &&
--	    boot_cpu_has(X86_FEATURE_TSC_KNOWN_FREQ))
--		pf->ptp.info.getcrosststamp = ice_ptp_getcrosststamp_e82x;
-+	pf->ptp.info.getcrosststamp = ice_ptp_getcrosststamp;
- 
--#endif /* CONFIG_ICE_HWTS */
- 	if (pf->hw.mac_type == ICE_MAC_GENERIC_3K_E825) {
- 		pf->ptp.ice_pin_desc = ice_pin_desc_e825c;
- 		pf->ptp.info.n_pins = ICE_PIN_DESC_ARR_LEN(ice_pin_desc_e825c);
-@@ -2600,6 +2674,26 @@ static void ice_ptp_set_funcs_e810(struct ice_pf *pf)
- 	}
- }
- 
-+/**
-+ * ice_ptp_set_funcs_e830 - Set specialized functions for E830 support
-+ * @pf: Board private structure
-+ *
-+ * Assign functions to the PTP capabiltiies structure for E830 devices.
-+ * Functions which operate across all device families should be set directly
-+ * in ice_ptp_set_caps. Only add functions here which are distinct for E830
-+ * devices.
-+ */
-+static void ice_ptp_set_funcs_e830(struct ice_pf *pf)
-+{
-+#ifdef CONFIG_ICE_HWTS
-+	if (pcie_ptm_enabled(pf->pdev) && boot_cpu_has(X86_FEATURE_ART))
-+		pf->ptp.info.getcrosststamp = ice_ptp_getcrosststamp;
-+
-+#endif /* CONFIG_ICE_HWTS */
-+	/* Rest of the config is the same as base E810 */
-+	ice_ptp_set_funcs_e810(pf);
-+}
-+
- /**
-  * ice_ptp_set_caps - Set PTP capabilities
-  * @pf: Board private structure
-@@ -2624,9 +2718,11 @@ static void ice_ptp_set_caps(struct ice_pf *pf)
- 
- 	switch (pf->hw.mac_type) {
- 	case ICE_MAC_E810:
--	case ICE_MAC_E830:
- 		ice_ptp_set_funcs_e810(pf);
- 		return;
-+	case ICE_MAC_E830:
-+		ice_ptp_set_funcs_e830(pf);
-+		return;
- 	case ICE_MAC_GENERIC:
- 	case ICE_MAC_GENERIC_3K_E825:
- 		ice_ptp_set_funcs_e82x(pf);
 -- 
-2.46.0
-
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
