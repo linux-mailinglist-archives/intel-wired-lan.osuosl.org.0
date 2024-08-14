@@ -1,137 +1,96 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id E99CD9521C0
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 14 Aug 2024 20:01:51 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4F17F95227B
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 14 Aug 2024 21:10:18 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 90BE640C19;
-	Wed, 14 Aug 2024 18:01:50 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id F168180E36;
+	Wed, 14 Aug 2024 19:10:16 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id n2srlspjDkVF; Wed, 14 Aug 2024 18:01:49 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id JFtaTc1NgEcq; Wed, 14 Aug 2024 19:10:16 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 8D7F740C1D
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D41F380DD1
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1723658509;
-	bh=iKG1BA6nZA/+iN2W0nGROx4tq6HJetKTMlW3JVQELg0=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=XxbP+g2uGVjmfFT1nCI/vS1QBEBoZqtT5ZXTODbNrwt3LCiP85T1UcIfz9mbutm+G
-	 VjjeUxVfl2wGmRgncKgBeYsjsy6Yw7fJo3bigvpWLZXnaUec9kKKd47gxMZ26dkbLM
-	 RZMYiNKRaq9CJlFbsk4xnlJmZOt3LmdTU3IgI0MEyhM+Y0PMpn2gpZX93sX8cURoME
-	 ct1OiVnv3vaudE35SrtUEqkkusuIEvPTDbVRA9/GOTOin7ZKRxzVUHOziVicQXlVyo
-	 IsVsQWjzmwhiFzZtJSiisary6gCBmfz3SmYbymEpMvyQ31wEi5TzhBpD5/64r6bKzS
-	 A0Hw31vcZA9Dg==
+	s=default; t=1723662615;
+	bh=h+B7Ok2724D0YIEU2jqWGAsw0rmpwqc+X6QStwYQ0V4=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=Bw9YgWBUJEP8urO24wSudHCKeeJ/dDqwnlugNkU+66E6GE5zlE+wpmTkVuUQi4quT
+	 AmzAswa/eA9vM/LFSb/XmMv5bXx4lu/6JbTUyRon6dhd1L6q34FIBaHFbRI2efg0J7
+	 U/b9MsZW1hD/Y5Jd9uOy9hqgE5ohKG+sX9xSCoCDLI7G9qwcMNROyY8VbbL9eDyJqo
+	 EFAUhv2gZ38hAVlDUYE9F14jwXpdD6lHw2nPbCMxn1lVbMNYVlTz2/n2apLB6rrXaB
+	 /ug/bKqWbxVnuwKOH2y24BFhzVW5yrAjPwpdS5FU26IxrjqGR6DtKMLYxPTGvR/6z9
+	 B99f29Tz2yiUg==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 8D7F740C1D;
-	Wed, 14 Aug 2024 18:01:49 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id D41F380DD1;
+	Wed, 14 Aug 2024 19:10:15 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 7D25B1BF3A8
- for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Aug 2024 18:01:47 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 42CD21BF40D
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Aug 2024 19:10:14 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 69FB9401BA
- for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Aug 2024 18:01:47 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 3298180E36
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Aug 2024 19:10:14 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id cXohnOH8bDf2 for <intel-wired-lan@lists.osuosl.org>;
- Wed, 14 Aug 2024 18:01:46 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2a00:1450:4864:20::42f; helo=mail-wr1-x42f.google.com;
- envelope-from=jdamato@fastly.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 2248D401D4
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2248D401D4
-Received: from mail-wr1-x42f.google.com (mail-wr1-x42f.google.com
- [IPv6:2a00:1450:4864:20::42f])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 2248D401D4
- for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Aug 2024 18:01:45 +0000 (UTC)
-Received: by mail-wr1-x42f.google.com with SMTP id
- ffacd0b85a97d-3718706cf8aso63256f8f.3
- for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Aug 2024 11:01:45 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1723658504; x=1724263304;
- h=in-reply-to:content-disposition:mime-version:references
- :mail-followup-to:message-id:subject:cc:to:from:date
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=iKG1BA6nZA/+iN2W0nGROx4tq6HJetKTMlW3JVQELg0=;
- b=IEvCY2+6iIbujSDizHpdDCA7nTAedRG6YpsZ/Ysn2vF6QMn92pkpQ/aHMzaAxZnux0
- 8ltFwiIZftCfr9XSND7f9WutEsVXnWo/lPs84JxwSGpmjpPr19nVVh94rSbNlpih6nlo
- h+PcPzhMSXIrPRDfpsLV6PChtqbk05YrqS7taMFM7uSPtuSMTuqbU4FYne9sTgE/OoXQ
- WteGvwfmpU8ANU3GDAc6pEdm0NpkuUTO9E8e2xpr8cK5JFY+DegCTkgVGecmEJyD4XrI
- K+piTiS0X003dINfHo1BlDn+HA0qFZrD7h2qVYyWRRhDr1Xq3znPjSpaebDDII3lWjD+
- dUDA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUXp9ew4RiBjib++pXyJW2a1hCVVDjwThYFAmmHFwikWkUZv+b9BawoSL1t+dgl6B8jmdRkfN4EG8Lvn6plxBB/eqyX9pAuoA8J0ScC6ca52w==
-X-Gm-Message-State: AOJu0Yw23NPEvctzSlpMYln1JD5C5isAS1eDaCYrkQ3ileoVEQG1XNsz
- NbSo3ae2Svi4BaaSoCb6uPvEZhxr3HRDwe4pVWygd/y7VfT8dvKNriX1gVgqRww=
-X-Google-Smtp-Source: AGHT+IGCmSIjhxSRM6zFrHvolmN2wXREY83zZw95/jXyk6UpHYC0uXJzFqUFz4BGJeihuJswIDQe0w==
-X-Received: by 2002:a5d:59a5:0:b0:36b:357a:bfee with SMTP id
- ffacd0b85a97d-37177749bc7mr2760473f8f.1.1723658503541; 
- Wed, 14 Aug 2024 11:01:43 -0700 (PDT)
-Received: from LQ3V64L9R2 ([80.208.222.2]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3718479c332sm548792f8f.87.2024.08.14.11.01.42
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 14 Aug 2024 11:01:43 -0700 (PDT)
-Date: Wed, 14 Aug 2024 19:01:40 +0100
-From: Joe Damato <jdamato@fastly.com>
-To: Shay Drori <shayd@nvidia.com>
-Message-ID: <ZrzxBAWwA7EuRB24@LQ3V64L9R2>
-Mail-Followup-To: Joe Damato <jdamato@fastly.com>,
- Shay Drori <shayd@nvidia.com>, Jakub Kicinski <kuba@kernel.org>,
- netdev@vger.kernel.org, Daniel Borkmann <daniel@iogearbox.net>,
- "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>,
- Harshitha Ramamurthy <hramamurthy@google.com>,
- "moderated list:INTEL ETHERNET DRIVERS" <intel-wired-lan@lists.osuosl.org>,
- Jeroen de Borst <jeroendb@google.com>,
- Jiri Pirko <jiri@resnulli.us>, Leon Romanovsky <leon@kernel.org>,
- open list <linux-kernel@vger.kernel.org>,
- "open list:MELLANOX MLX4 core VPI driver" <linux-rdma@vger.kernel.org>,
- Lorenzo Bianconi <lorenzo@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>,
- Praveen Kaligineedi <pkaligineedi@google.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Saeed Mahameed <saeedm@nvidia.com>,
- Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
- Shailend Chand <shailend@google.com>,
- Tariq Toukan <tariqt@nvidia.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>,
- Willem de Bruijn <willemb@google.com>,
- Yishai Hadas <yishaih@nvidia.com>,
- Ziwei Xiao <ziweixiao@google.com>
-References: <20240812145633.52911-1-jdamato@fastly.com>
- <20240813171710.599d3f01@kernel.org>
- <ZrxZaHGDTO3ohHFH@LQ3V64L9R2.home>
- <ZryfGDU9wHE0IrvZ@LQ3V64L9R2.home>
- <20240814080915.005cb9ac@kernel.org> <ZrzLEZs01KVkvBjw@LQ3V64L9R2>
- <701eb84c-8d26-4945-8af3-55a70e05b09c@nvidia.com>
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id lf2VitIZG2AE for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 14 Aug 2024 19:10:13 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.21;
+ helo=mgamail.intel.com; envelope-from=aleksandr.loktionov@intel.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org F30FC80DF0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org F30FC80DF0
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.21])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id F30FC80DF0
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Aug 2024 19:10:12 +0000 (UTC)
+X-CSE-ConnectionGUID: xIimRRMcQiGZWcJJLJzCQg==
+X-CSE-MsgGUID: aM+I1L6/RUux5LQtg6UueQ==
+X-IronPort-AV: E=McAfee;i="6700,10204,11164"; a="21869962"
+X-IronPort-AV: E=Sophos;i="6.10,146,1719903600"; d="scan'208";a="21869962"
+Received: from orviesa006.jf.intel.com ([10.64.159.146])
+ by orvoesa113.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 14 Aug 2024 12:10:12 -0700
+X-CSE-ConnectionGUID: c8ycNxVXSiSegtYsF2ACmg==
+X-CSE-MsgGUID: CryTS2bkTnyETYHl7t3KJA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.10,146,1719903600"; d="scan'208";a="59395720"
+Received: from unknown (HELO amlin-019-225.igk.intel.com) ([10.102.19.225])
+ by orviesa006.jf.intel.com with ESMTP; 14 Aug 2024 12:10:10 -0700
+From: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+To: intel-wired-lan@lists.osuosl.org, anthony.l.nguyen@intel.com,
+ aleksandr.loktionov@intel.com
+Date: Wed, 14 Aug 2024 21:10:09 +0200
+Message-Id: <20240814191009.1127679-1-aleksandr.loktionov@intel.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <701eb84c-8d26-4945-8af3-55a70e05b09c@nvidia.com>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=fastly.com; s=google; t=1723658504; x=1724263304; darn=lists.osuosl.org;
- h=in-reply-to:content-disposition:mime-version:references
- :mail-followup-to:message-id:subject:cc:to:from:date:from:to:cc
- :subject:date:message-id:reply-to;
- bh=iKG1BA6nZA/+iN2W0nGROx4tq6HJetKTMlW3JVQELg0=;
- b=Qthf4uYZK18T1WX+C8XHUX/NVNpu/6zYi5OHJEiACaXGn3GdSO2F0z/9RzU3eBXNRO
- O4pQQcRfxzrnRUrVnGQGYptG9wu3kneRdiptJuZe28FCLv+srj+JRPDg5ODh8OXHOzb3
- QmnB+8ui/b4cD9NGM7hDL8pi7xwcxhHu5KxVE=
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dmarc=pass (p=reject dis=none)
- header.from=fastly.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (1024-bit key,
- unprotected) header.d=fastly.com header.i=@fastly.com header.a=rsa-sha256
- header.s=google header.b=Qthf4uYZ
-Subject: Re: [Intel-wired-lan] [RFC net-next 0/6] Cleanup IRQ affinity
- checks in several drivers
+Content-Transfer-Encoding: 8bit
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1723662613; x=1755198613;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=puAXCRFRIP++S42Pw9m2tr+d7epYbIyOvbOE3LYbsyI=;
+ b=PCJd+9SofdWPPqkk/IyiKyGiTizn+7LNlwZpo++SHzuuHBg++USMGSXB
+ rer8pT6vmjr9iycEXAF3QBt6uOZba3uiybEH83Y3pfyfnnDU34JDymZDi
+ opGHePC/labg8EApVbShmQzGwFc61Uo+rpYA0N5WWJn09niivmrdwcLsF
+ m5SlAxNNSfj6Tkx3y4Ihc+xK1YVWPUQBMiWFFmeKj6X77LROxpguAH4cD
+ 3CnCCv6RddOJb/pHPPkRo0Rqf55WhQ8q/HWyaCN1vor3Y0GGMnpL6vDwo
+ IR3GnqcSdMInt9+CjKqF7rUbLUQX1F2yR4G+MtMD9wLDP/hhUhfx8CRvg
+ w==;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=intel.com
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=PCJd+9So
+Subject: [Intel-wired-lan] [PATCH iwl-next v2] i40e: Add Energy Efficient
+ Ethernet ability for X710 Base-T/KR/KX cards
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -144,77 +103,198 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
- Eric Dumazet <edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
- Ziwei Xiao <ziweixiao@google.com>, Jeroen de Borst <jeroendb@google.com>,
- Leon Romanovsky <leon@kernel.org>,
- "open list:MELLANOX MLX4 core VPI driver" <linux-rdma@vger.kernel.org>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- "moderated list:INTEL ETHERNET DRIVERS" <intel-wired-lan@lists.osuosl.org>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Lorenzo Bianconi <lorenzo@kernel.org>, Jiri Pirko <jiri@resnulli.us>,
- Shailend Chand <shailend@google.com>,
- Harshitha Ramamurthy <hramamurthy@google.com>,
- Willem de Bruijn <willemb@google.com>, Yishai Hadas <yishaih@nvidia.com>,
- Daniel Borkmann <daniel@iogearbox.net>, netdev@vger.kernel.org,
- open list <linux-kernel@vger.kernel.org>, Tariq Toukan <tariqt@nvidia.com>,
- Praveen Kaligineedi <pkaligineedi@google.com>,
- Saeed Mahameed <saeedm@nvidia.com>, "David S. Miller" <davem@davemloft.net>
+Cc: netdev@vger.kernel.org,
+ Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed, Aug 14, 2024 at 07:03:35PM +0300, Shay Drori wrote:
-> 
-> 
-> On 14/08/2024 18:19, Joe Damato wrote:
-> > On Wed, Aug 14, 2024 at 08:09:15AM -0700, Jakub Kicinski wrote:
-> > > On Wed, 14 Aug 2024 13:12:08 +0100 Joe Damato wrote:
-> > > > Actually... how about a slightly different approach, which caches
-> > > > the affinity mask in the core?
-> > > 
-> > > I was gonna say :)
-> > > 
-> > > >    0. Extend napi struct to have a struct cpumask * field
-> > > > 
-> > > >    1. extend netif_napi_set_irq to:
-> > > >      a. store the IRQ number in the napi struct (as you suggested)
-> > > >      b. call irq_get_effective_affinity_mask to store the mask in the
-> > > >         napi struct
-> > > >      c. set up generic affinity_notify.notify and
-> > > >         affinity_notify.release callbacks to update the in core mask
-> > > >         when it changes
-> > > 
-> > > This part I'm not an export on.
-> 
-> several net drivers (mlx5, mlx4, ice, ena and more) are using a feature
-> called ARFS (rmap)[1], and this feature is using the affinity notifier
-> mechanism.
-> Also, affinity notifier infra is supporting only a single notifier per
-> IRQ.
-> 
-> Hence, your suggestion (1.c) will break the ARFS feature.
-> 
-> [1] see irq_cpu_rmap_add()
+Add "EEE: Enabled/Disabled" to dmesg for supported X710 Base-T/KR/KX cards.
+According to the IEEE standard report the EEE ability and and the
+EEE Link Partner ability. Use the kernel's 'ethtool_keee' structure
+and report EEE link modes.
 
-Thanks for taking a look and your reply.
+Example:
+dmesg | grep 'NIC Link is'
+ethtool --show-eee <device>
 
-I did notice ARFS use by some drivers and figured that might be why
-the notifiers were being used in some cases.
+Before:
+	NIC Link is Up, 10 Gbps Full Duplex, Flow Control: None
 
-I guess the question comes down to whether adding a call to
-irq_get_effective_affinity_mask in the hot path is a bad idea.
+        Supported EEE link modes:  Not reported
+        Advertised EEE link modes:  Not reported
+        Link partner advertised EEE link modes:  Not reported
 
-If it is, then the only option is to have the drivers pass in their
-IRQ affinity masks, as Stanislav suggested, to avoid adding that
-call to the hot path.
+After:
+	NIC Link is Up, 10 Gbps Full Duplex, Flow Control: None, EEE: Enabled
 
-If not, then the IRQ from napi_struct can be used and the affinity
-mask can be generated on every napi poll. i40e/gve/iavf would need
-calls to netif_napi_set_irq to set the IRQ mapping, which seems to
-be straightforward.
+        Supported EEE link modes:  100baseT/Full
+                                   1000baseT/Full
+                                   10000baseT/Full
+        Advertised EEE link modes:  100baseT/Full
+                                    1000baseT/Full
+                                    10000baseT/Full
+        Link partner advertised EEE link modes:  100baseT/Full
+                                                 1000baseT/Full
+                                                 10000baseT/Full
 
-In both cases: the IRQ notifier stuff would be left as is so that it
-wouldn't break ARFS.
+Reviewed-by: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
+Signed-off-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+---
+v1->v2 removed some not mandatory changes, some style improvements
+---
+ drivers/net/ethernet/intel/i40e/i40e.h        |  1 +
+ .../net/ethernet/intel/i40e/i40e_ethtool.c    | 36 ++++++++++++++++---
+ drivers/net/ethernet/intel/i40e/i40e_main.c   | 23 ++++++++++--
+ 3 files changed, 53 insertions(+), 7 deletions(-)
 
-I suspect that the preferred solution would be to avoid adding that
-call to the hot path, right?
+diff --git a/drivers/net/ethernet/intel/i40e/i40e.h b/drivers/net/ethernet/intel/i40e/i40e.h
+index d546567..0f25a48 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e.h
++++ b/drivers/net/ethernet/intel/i40e/i40e.h
+@@ -7,6 +7,7 @@
+ #include <linux/pci.h>
+ #include <linux/ptp_clock_kernel.h>
+ #include <linux/types.h>
++#include <linux/linkmode.h>
+ #include <linux/avf/virtchnl.h>
+ #include <linux/net/intel/i40e_client.h>
+ #include <net/devlink.h>
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_ethtool.c b/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
+index 1d0d2e5..47c5d05 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
+@@ -5641,50 +5641,78 @@ static int i40e_get_module_eeprom(struct net_device *netdev,
+ 	return 0;
+ }
+ 
++static void i40e_eee_capability_to_kedata_supported(__le16  eee_capability_,
++						    unsigned long *supported)
++{
++	const int eee_capability = le16_to_cpu(eee_capability_);
++	static const int lut[] = {
++		ETHTOOL_LINK_MODE_100baseT_Full_BIT,
++		ETHTOOL_LINK_MODE_1000baseT_Full_BIT,
++		ETHTOOL_LINK_MODE_10000baseT_Full_BIT,
++		ETHTOOL_LINK_MODE_1000baseKX_Full_BIT,
++		ETHTOOL_LINK_MODE_10000baseKX4_Full_BIT,
++		ETHTOOL_LINK_MODE_10000baseKR_Full_BIT,
++		ETHTOOL_LINK_MODE_40000baseKR4_Full_BIT,
++	};
++
++	linkmode_zero(supported);
++	for (unsigned int i = ARRAY_SIZE(lut); i--; )
++		if (eee_capability & BIT(i + 1))
++			linkmode_set_bit(lut[i], supported);
++}
++
+ static int i40e_get_eee(struct net_device *netdev, struct ethtool_keee *edata)
+ {
+ 	struct i40e_netdev_priv *np = netdev_priv(netdev);
+ 	struct i40e_aq_get_phy_abilities_resp phy_cfg;
+ 	struct i40e_vsi *vsi = np->vsi;
+ 	struct i40e_pf *pf = vsi->back;
+ 	struct i40e_hw *hw = &pf->hw;
+-	int status = 0;
++	int status;
+ 
+ 	/* Get initial PHY capabilities */
+ 	status = i40e_aq_get_phy_capabilities(hw, false, true, &phy_cfg, NULL);
+ 	if (status)
+ 		return -EAGAIN;
+ 
+ 	/* Check whether NIC configuration is compatible with Energy Efficient
+ 	 * Ethernet (EEE) mode.
+ 	 */
+ 	if (phy_cfg.eee_capability == 0)
+ 		return -EOPNOTSUPP;
+ 
++	i40e_eee_capability_to_kedata_supported(phy_cfg.eee_capability,
++						edata->supported);
++	linkmode_copy(edata->lp_advertised, edata->supported);
++
+ 	/* Get current configuration */
+ 	status = i40e_aq_get_phy_capabilities(hw, false, false, &phy_cfg, NULL);
+ 	if (status)
+ 		return -EAGAIN;
+ 
++	linkmode_zero(edata->advertised);
++	if (phy_cfg.eee_capability)
++		linkmode_copy(edata->advertised, edata->supported);
+ 	edata->eee_enabled = !!phy_cfg.eee_capability;
+ 	edata->tx_lpi_enabled = pf->stats.tx_lpi_status;
+ 
+ 	edata->eee_active = pf->stats.tx_lpi_status && pf->stats.rx_lpi_status;
+ 
+ 	return 0;
+ }
+ 
+ static int i40e_is_eee_param_supported(struct net_device *netdev,
+ 				       struct ethtool_keee *edata)
+ {
+ 	struct i40e_netdev_priv *np = netdev_priv(netdev);
+ 	struct i40e_vsi *vsi = np->vsi;
+ 	struct i40e_pf *pf = vsi->back;
+ 	struct i40e_ethtool_not_used {
+-		u32 value;
++		bool value;
+ 		const char *name;
+ 	} param[] = {
+-		{edata->tx_lpi_timer, "tx-timer"},
++		{!!(edata->advertised[0] & ~edata->supported[0]), "advertise"},
++		{!!edata->tx_lpi_timer, "tx-timer"},
+ 		{edata->tx_lpi_enabled != pf->stats.tx_lpi_status, "tx-lpi"}
+ 	};
+ 	int i;
+@@ -5710,7 +5738,7 @@ static int i40e_set_eee(struct net_device *netdev, struct ethtool_keee *edata)
+ 	struct i40e_pf *pf = vsi->back;
+ 	struct i40e_hw *hw = &pf->hw;
+ 	__le16 eee_capability;
+-	int status = 0;
++	int status;
+ 
+ 	/* Deny parameters we don't support */
+ 	if (i40e_is_eee_param_supported(netdev, edata))
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
+index cbcfada..5c102f8 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_main.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
+@@ -7263,6 +7263,25 @@ static int i40e_init_pf_dcb(struct i40e_pf *pf)
+ 	return err;
+ }
+ #endif /* CONFIG_I40E_DCB */
++static void i40e_print_link_message_eee(struct i40e_vsi *vsi,
++			    const char *speed, const char *fc)
++{
++	struct ethtool_keee kedata;
++
++	memzero_explicit(&kedata, sizeof(kedata));
++	if (vsi->netdev->ethtool_ops->get_eee)
++		vsi->netdev->ethtool_ops->get_eee(vsi->netdev, &kedata);
++
++	if (!linkmode_empty(kedata.supported))
++		netdev_info(vsi->netdev,
++			    "NIC Link is Up, %sbps Full Duplex, Flow Control: %s, EEE: %s\n",
++			    speed, fc,
++			    kedata.eee_enabled ? "Enabled" : "Disabled");
++	else
++		netdev_info(vsi->netdev,
++			    "NIC Link is Up, %sbps Full Duplex, Flow Control: %s\n",
++			    speed, fc);
++}
+ 
+ /**
+  * i40e_print_link_message - print link up or down
+@@ -7395,9 +7414,7 @@ void i40e_print_link_message(struct i40e_vsi *vsi, bool isup)
+ 			    "NIC Link is Up, %sbps Full Duplex, Requested FEC: %s, Negotiated FEC: %s, Autoneg: %s, Flow Control: %s\n",
+ 			    speed, req_fec, fec, an, fc);
+ 	} else {
+-		netdev_info(vsi->netdev,
+-			    "NIC Link is Up, %sbps Full Duplex, Flow Control: %s\n",
+-			    speed, fc);
++		i40e_print_link_message_eee(vsi, speed, fc);
+ 	}
+ 
+ }
+-- 
+2.25.1
+
