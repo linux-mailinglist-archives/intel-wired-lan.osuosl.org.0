@@ -1,139 +1,102 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2A6729519D9
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 14 Aug 2024 13:27:43 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id A6E61951940
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 14 Aug 2024 12:45:11 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 6148C818DC;
-	Wed, 14 Aug 2024 11:27:41 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id A180840BA7;
+	Wed, 14 Aug 2024 10:45:09 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id fCtpy1fg5mGO; Wed, 14 Aug 2024 11:27:38 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id OsVO-SRp_xpr; Wed, 14 Aug 2024 10:45:09 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 5180F819F5
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org DF422404CD
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1723634858;
-	bh=oChSn+ddY3rawqfzReuNujffEuD1pwyybyXLWnykGyA=;
-	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Reply-To:Cc:From;
-	b=Bd/oOey97XGMzozhmFnXIYfpDkX1rd8xqtuNmdSG2GLhbD/a0ngk35TSvMC7Qc/31
-	 5VD+lrtergztMJ8a7H+iN79V2Ej3D7BGDy6aujsJ+PS52vv6CFukr34Z/IicaUJw/B
-	 DGwa5U+pseMGdL3VPKzzr+WnCiyI9UIeKp/LyEyzCiwy8fKV/IrxJJPAim9qkonU58
-	 jwXaJM8EQNoYSWmvRRZT1Glo3d7IvCOI0PQHqVdXApTXQReJgsYWRvSip0bIEChjIb
-	 2Pqascxla8K94RkNVRUujfxCKcd7wbI2EzBBOiMruJm3yZj1XmIteq00XrLI7rO4oR
-	 xp2lNz8wvHTrA==
+	s=default; t=1723632308;
+	bh=wiUTnFpC5joop3DR9T5I/yXQE9g75XJ/m25P+wT3Bdo=;
+	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=4CBykZI8SlfGKfkvW3owgFlKj6Big5547M8myJQgv7F18nAY1HElC8sYgaMpsLi2W
+	 Z+zQLhUHlNXAN1INdDgRP3rsc555Cccp5Y9+RDOl6kg6U1wp+05gquXw7dRdDo5qNd
+	 Vx/F2PovW0ZQtygYWGTA6yVs04/kEfb98K7lSKwqQBxxSvGK7OwjhiVcqCr+Ki4/lY
+	 NF3G6Q2FcGZuDn1ru2nwLE+eBy9pea062NTcQ2ng32yzI2cGOxX67Nt0HZVfSZgLA5
+	 058ccGnefB7o4oR6+v2sdZqCYo8M/exUHLef/pE+LrzJfM97G2YVoODXx/21vcxnTl
+	 KvYW9jQmoitDg==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 5180F819F5;
-	Wed, 14 Aug 2024 11:27:38 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id DF422404CD;
+	Wed, 14 Aug 2024 10:45:08 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id A72D21BF616
- for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Aug 2024 11:27:34 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 0AD101BF3C3
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Aug 2024 10:45:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 91F5F818C0
- for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Aug 2024 11:27:34 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 033A340372
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Aug 2024 10:45:07 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id KUwMrNrjUFOV for <intel-wired-lan@lists.osuosl.org>;
- Wed, 14 Aug 2024 11:27:33 +0000 (UTC)
-X-Greylist: delayed 2674 seconds by postgrey-1.37 at util1.osuosl.org;
- Wed, 14 Aug 2024 11:27:30 UTC
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org ACE2581886
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org ACE2581886
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=80.237.130.52;
- helo=wp530.webpack.hosteurope.de; envelope-from=regressions@leemhuis.info;
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id yLNzzHlJn18T for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 14 Aug 2024 10:45:06 +0000 (UTC)
+Received-SPF: None (mailfrom) identity=mailfrom; client-ip=198.175.65.20;
+ helo=mgamail.intel.com; envelope-from=dawid.osuchowski@linux.intel.com;
  receiver=<UNKNOWN> 
-Received: from wp530.webpack.hosteurope.de (wp530.webpack.hosteurope.de
- [80.237.130.52])
- by smtp1.osuosl.org (Postfix) with ESMTPS id ACE2581886
- for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Aug 2024 11:27:30 +0000 (UTC)
-Received: from [2a02:8108:8980:2478:8cde:aa2c:f324:937e]; authenticated
- by wp530.webpack.hosteurope.de running ExIM with esmtpsa
- (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
- id 1seBSt-0000u4-Nb; Wed, 14 Aug 2024 12:42:51 +0200
-Message-ID: <acaa3e31-a6f4-4c45-b795-d12b0d2743da@leemhuis.info>
-Date: Wed, 14 Aug 2024 12:42:51 +0200
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 9C2A2402C1
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9C2A2402C1
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.20])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 9C2A2402C1
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Aug 2024 10:45:05 +0000 (UTC)
+X-CSE-ConnectionGUID: b5o6UO0vThOesXAeNcN8zA==
+X-CSE-MsgGUID: GZCl1qXeQ4ab1bDtc+/R3g==
+X-IronPort-AV: E=McAfee;i="6700,10204,11163"; a="21651979"
+X-IronPort-AV: E=Sophos;i="6.09,145,1716274800"; d="scan'208";a="21651979"
+Received: from orviesa009.jf.intel.com ([10.64.159.149])
+ by orvoesa112.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 14 Aug 2024 03:45:04 -0700
+X-CSE-ConnectionGUID: FXDONt9bRzKKKWKeerycnA==
+X-CSE-MsgGUID: R6hydafiSUCzC5YE6Bp2tA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.09,145,1716274800"; d="scan'208";a="58933088"
+Received: from dosuchow-mobl2.ger.corp.intel.com (HELO [10.245.130.66])
+ ([10.245.130.66])
+ by orviesa009-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 14 Aug 2024 03:45:00 -0700
+Message-ID: <40210c88-1e3a-44d2-8907-1530500eab91@linux.intel.com>
+Date: Wed, 14 Aug 2024 12:44:56 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-From: "Linux regression tracking (Thorsten Leemhuis)"
- <regressions@leemhuis.info>
-Content-Language: en-US, de-DE
-To: Tony Nguyen <anthony.l.nguyen@intel.com>,
- Sasha Neftin <sasha.neftin@intel.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>
-Autocrypt: addr=linux@leemhuis.info; keydata=
- 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 n7RI
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-X-bounce-key: webpack.hosteurope.de; regressions@leemhuis.info; 1723634850;
- aef2d79c; 
-X-HE-SMSGID: 1seBSt-0000u4-Nb
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt;
- c=relaxed/relaxed; 
- d=leemhuis.info; s=he214686; h=Content-Transfer-Encoding:Content-Type:
- Reply-To:Subject:Cc:To:From:MIME-Version:Date:Message-ID:From:Sender:Reply-To
- :Subject:Date:Message-ID:To:Cc:MIME-Version:Content-Type:
- Content-Transfer-Encoding:Content-ID:Content-Description:In-Reply-To:
- References; bh=oChSn+ddY3rawqfzReuNujffEuD1pwyybyXLWnykGyA=; t=1723634850;
- x=1724066850; b=1/kbgULAKW7s/mWJJkbvR7lF9Iw48M5tRUNWunD9AXzlQPketgmaEsiSvxRZc
- 5RoJkVhPWPzUIeMXGDz+uilYn0AYRl9fm/FM27WyMC9VjOsmC8g7GdVZlHlcTE4dMu1PAOXapn6AV
- zHvcDdGGcd6FwG/DhJ0hussNNJMtLPJpzzZ6UI+S4jGr7J9ztF9GpRGFqQ87zQe0xn76SA1WKaZMh
- jJjbWeOlLR5vGgWt+6HAuvFc1wxjq4VAejJS4pIhM56crSrcQT/eCatK3n4QV63l7lc+eWud6KBWV
- EPR/a/dHMgkXXD0mriGnVUnL37WLnCUibta/gQjnYtH8XqXLTg==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+To: Kalesh Anakkur Purayil <kalesh-anakkur.purayil@broadcom.com>
+References: <20240812102210.61548-1-dawid.osuchowski@linux.intel.com>
+ <CAH-L+nOFqs-K5YzfrfmpRHbhDGM-+1ahhWh4NXATX1FqZiPVLQ@mail.gmail.com>
+Content-Language: pl
+From: Dawid Osuchowski <dawid.osuchowski@linux.intel.com>
+In-Reply-To: <CAH-L+nOFqs-K5YzfrfmpRHbhDGM-+1ahhWh4NXATX1FqZiPVLQ@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1723632306; x=1755168306;
+ h=message-id:date:mime-version:subject:to:cc:references:
+ from:in-reply-to:content-transfer-encoding;
+ bh=a5KrdtRLOgpr8DwJFZLF1WHA9kk/i1MzhU2jglxWUG8=;
+ b=Z7vvvcsrwuwF6r+kFWz2pbHpF4I6WsOLITIwMvurtPejsWI2N4qin3eA
+ seLNbeq6ritfSmONBz1fc4HHOy/L7/AemIIrNWCnHrZtDwO2hC40lR5D7
+ pt204jmV+6VZi6Np+8RIKCMbDxSFiwD0FX8XNbVrtxqqkAFHYl/94vj0r
+ QmhlEAtPgDRifH1UJW+OUwINgvbN5vL7ZFm9Ux0fv9zVPdG85ve1VTHZ3
+ t4gQBarPDliUtw1XkqjeZ1op2y1zvDdH9oaPE6Fx1ilxYtFBcekF6J9Cq
+ 40YfknhXuUaNIySDKq0D+XVNm8AMyKjaBuMQG86hFbZyAieI8L03t3XI/
+ g==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=none (p=none dis=none)
- header.from=leemhuis.info
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=leemhuis.info header.i=@leemhuis.info
- header.a=rsa-sha256 header.s=he214686 header.b=1/kbgULA
-Subject: [Intel-wired-lan] [regression] igc does not function anymore after
- second resume from standby
+ header.from=linux.intel.com
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=Z7vvvcsr
+Subject: Re: [Intel-wired-lan] [PATCH iwl-net] ice: Add
+ netif_device_attach/detach into PF reset flow
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -146,46 +109,54 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Reply-To: Linux regressions mailing list <regressions@lists.linux.dev>
-Cc: netdev <netdev@vger.kernel.org>,
- intel-wired-lan <intel-wired-lan@lists.osuosl.org>,
- Linux kernel regressions list <regressions@lists.linux.dev>,
- Martin <mwolf@adiumentum.com>, LKML <linux-kernel@vger.kernel.org>
+Cc: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
+ Igor Bagnucki <igor.bagnucki@intel.com>, Jakub Kicinski <kuba@kernel.org>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-[Tony, Przemek: lore did not find any mail from Sasha in the past few
-weeks, so from here it looks like this might be something somebody else
-needs to handle.]
-
-Hi, Thorsten here, the Linux kernel's regression tracker.
-
-Sasha, I noticed a report about a regression in bugzilla.kernel.org that
-appears to be caused by this change of yours:
-6f31d6b643a32c ("igc: Refactor runtime power management flow") [v6.10-rc1]
-
-As many (most?) kernel developers don't keep an eye on the bug tracker,
-I decided to write this mail. To quote from
-https://bugzilla.kernel.org/show_bug.cgi?id=219143 :
-
->  Martin 2024-08-09 15:17:49 UTC
+On 14.08.2024 05:19, Kalesh Anakkur Purayil wrote:
+> On Mon, Aug 12, 2024 at 3:52 PM Dawid Osuchowski
+> <dawid.osuchowski@linux.intel.com> wrote:
+>> @@ -7568,11 +7570,13 @@ static void ice_update_pf_netdev_link(struct ice_pf *pf)
+>>
+>>                  ice_get_link_status(pf->vsi[i]->port_info, &link_up);
+>>                  if (link_up) {
+>> +                       netif_device_attach(pf->vsi[i]->netdev);
+>>                          netif_carrier_on(pf->vsi[i]->netdev);
+>>                          netif_tx_wake_all_queues(pf->vsi[i]->netdev);
+>>                  } else {
+>>                          netif_carrier_off(pf->vsi[i]->netdev);
+>>                          netif_tx_stop_all_queues(pf->vsi[i]->netdev);
+>> +                       netif_device_detach(pf->vsi[i]->netdev);
+> [Kalesh] Is there any reason to attach back the netdev only if link is
+> up? IMO, you should attach the device back irrespective of physical
+> link status. In ice_prepare_for_reset(), you are detaching the device
+> unconditionally.
 > 
-> Starting with Kernel 6.10.x I experienced network connection
-> problems after resuming my system for the second time.
-> 
-> My system contains two Intel I225-V (rev2 and rev3) cards.
-> 
-> I ran a bisection and got a hit: 6f31d6b643a32cc126cf86093fca1ea575948bf0
-> 
-> rmmod igc ; modprobe igc remedies the issue till the next but one resume.
+> I may be missing something here.
 
-See the ticket for more details. Martin, the reporter, is CCed.
+Hey Kalesh,
 
-Ciao, Thorsten (wearing his 'the Linux kernel's regression tracker' hat)
---
-Everything you wanna know about Linux kernel regression tracking:
-https://linux-regtracking.leemhuis.info/about/#tldr
-If I did something stupid, please tell me, as explained on that page.
+I think you are right, it is a mistake on my end. I have already sent a 
+v2 but without this change. I just tested if this works with the attach 
+irrespective of link status and it also resolves the reported issue that 
+the patch is supposed to fix and doesn't introduce any regression that I 
+am aware of. I will forward your concern to the v2 thread and will post 
+a v3 with the change.
 
-#regzbot duplicate: https://bugzilla.kernel.org/show_bug.cgi?id=219143
-#regzbot from: Martin
+--Dawid
+
+>>                  }
+>>          }
+>>   }
+> 
+>> --
+>> 2.44.0
+>>
+>>
+> 
+> 
+> --
+> Regards,
+> Kalesh A P
+
