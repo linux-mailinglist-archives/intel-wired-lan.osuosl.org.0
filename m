@@ -2,95 +2,92 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4F17F95227B
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 14 Aug 2024 21:10:18 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 3903A9522C2
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 14 Aug 2024 21:45:46 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id F168180E36;
-	Wed, 14 Aug 2024 19:10:16 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id E156F81D5F;
+	Wed, 14 Aug 2024 19:45:44 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id JFtaTc1NgEcq; Wed, 14 Aug 2024 19:10:16 +0000 (UTC)
+ id NNWQzipkvS7l; Wed, 14 Aug 2024 19:45:44 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D41F380DD1
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 7D6B381D21
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1723662615;
-	bh=h+B7Ok2724D0YIEU2jqWGAsw0rmpwqc+X6QStwYQ0V4=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=Bw9YgWBUJEP8urO24wSudHCKeeJ/dDqwnlugNkU+66E6GE5zlE+wpmTkVuUQi4quT
-	 AmzAswa/eA9vM/LFSb/XmMv5bXx4lu/6JbTUyRon6dhd1L6q34FIBaHFbRI2efg0J7
-	 U/b9MsZW1hD/Y5Jd9uOy9hqgE5ohKG+sX9xSCoCDLI7G9qwcMNROyY8VbbL9eDyJqo
-	 EFAUhv2gZ38hAVlDUYE9F14jwXpdD6lHw2nPbCMxn1lVbMNYVlTz2/n2apLB6rrXaB
-	 /ug/bKqWbxVnuwKOH2y24BFhzVW5yrAjPwpdS5FU26IxrjqGR6DtKMLYxPTGvR/6z9
-	 B99f29Tz2yiUg==
+	s=default; t=1723664743;
+	bh=MukDnrBh5Dc4qEgMp5UWIspSKMppu4Lr3o5rNxrsHd4=;
+	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=IICLukgP14caMZdRbG2OWnzWSC4fF7Ud1FOSn4bXID3HpoXRlXKCqtA8cFPKuVc3J
+	 Eda6sMbGCSSNxJrloPZMXR0S3YhIcL7y1WY6Gs0uwQEqtZ1rVMPq5KvVYWHj8A1CqV
+	 uP6t4R9T65qprg8Usztt4yndJYhl1FSHWYqyEa0aRPU1lfE6A/7Du0sbVF+BVZZkBQ
+	 Uy76zU1FN2z4aTFkX45CBXYH2kN90ydtcQN5yqnBJ2mMSh32rZmx3MMA0qv74CszQP
+	 yv+RGfL589zbSj9RXTgDi692AZrUnFYp9ZH242pRkyxYr4K3Kfl1Nv4oEAxuN5H/Bt
+	 FnpHeOrJ9eDXA==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id D41F380DD1;
-	Wed, 14 Aug 2024 19:10:15 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 7D6B381D21;
+	Wed, 14 Aug 2024 19:45:43 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 42CD21BF40D
- for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Aug 2024 19:10:14 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 548E11BF40D
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Aug 2024 19:45:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 3298180E36
- for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Aug 2024 19:10:14 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 41007403B5
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Aug 2024 19:45:41 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id lf2VitIZG2AE for <intel-wired-lan@lists.osuosl.org>;
- Wed, 14 Aug 2024 19:10:13 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.21;
- helo=mgamail.intel.com; envelope-from=aleksandr.loktionov@intel.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org F30FC80DF0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org F30FC80DF0
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.21])
- by smtp1.osuosl.org (Postfix) with ESMTPS id F30FC80DF0
- for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Aug 2024 19:10:12 +0000 (UTC)
-X-CSE-ConnectionGUID: xIimRRMcQiGZWcJJLJzCQg==
-X-CSE-MsgGUID: aM+I1L6/RUux5LQtg6UueQ==
-X-IronPort-AV: E=McAfee;i="6700,10204,11164"; a="21869962"
-X-IronPort-AV: E=Sophos;i="6.10,146,1719903600"; d="scan'208";a="21869962"
-Received: from orviesa006.jf.intel.com ([10.64.159.146])
- by orvoesa113.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 14 Aug 2024 12:10:12 -0700
-X-CSE-ConnectionGUID: c8ycNxVXSiSegtYsF2ACmg==
-X-CSE-MsgGUID: CryTS2bkTnyETYHl7t3KJA==
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id K_-RjGQWYUyS for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 14 Aug 2024 19:45:40 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.10;
+ helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org CCD20403B0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org CCD20403B0
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.10])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id CCD20403B0
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Aug 2024 19:45:39 +0000 (UTC)
+X-CSE-ConnectionGUID: b/xXvu72Q/iD9AHIAbEvfg==
+X-CSE-MsgGUID: zgtg57CJQZu5HSho8bDHbw==
+X-IronPort-AV: E=McAfee;i="6700,10204,11164"; a="39358164"
+X-IronPort-AV: E=Sophos;i="6.10,146,1719903600"; d="scan'208";a="39358164"
+Received: from fmviesa005.fm.intel.com ([10.60.135.145])
+ by orvoesa102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 14 Aug 2024 12:45:38 -0700
+X-CSE-ConnectionGUID: dQD93jCjT5CiJZABWzLZwQ==
+X-CSE-MsgGUID: A3dWm2P0RTCyvqBUoVYSMA==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.10,146,1719903600"; d="scan'208";a="59395720"
-Received: from unknown (HELO amlin-019-225.igk.intel.com) ([10.102.19.225])
- by orviesa006.jf.intel.com with ESMTP; 14 Aug 2024 12:10:10 -0700
-From: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
-To: intel-wired-lan@lists.osuosl.org, anthony.l.nguyen@intel.com,
- aleksandr.loktionov@intel.com
-Date: Wed, 14 Aug 2024 21:10:09 +0200
-Message-Id: <20240814191009.1127679-1-aleksandr.loktionov@intel.com>
-X-Mailer: git-send-email 2.25.1
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+X-IronPort-AV: E=Sophos;i="6.10,146,1719903600"; d="scan'208";a="63547964"
+Received: from lkp-server01.sh.intel.com (HELO 9a732dc145d3) ([10.239.97.150])
+ by fmviesa005.fm.intel.com with ESMTP; 14 Aug 2024 12:45:37 -0700
+Received: from kbuild by 9a732dc145d3 with local (Exim 4.96)
+ (envelope-from <lkp@intel.com>) id 1seJw7-0002p6-0W
+ for intel-wired-lan@lists.osuosl.org; Wed, 14 Aug 2024 19:45:35 +0000
+Date: Thu, 15 Aug 2024 03:45:21 +0800
+From: kernel test robot <lkp@intel.com>
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+Message-ID: <202408150319.hsDojMCL-lkp@intel.com>
+User-Agent: s-nail v14.9.24
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1723662613; x=1755198613;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=puAXCRFRIP++S42Pw9m2tr+d7epYbIyOvbOE3LYbsyI=;
- b=PCJd+9SofdWPPqkk/IyiKyGiTizn+7LNlwZpo++SHzuuHBg++USMGSXB
- rer8pT6vmjr9iycEXAF3QBt6uOZba3uiybEH83Y3pfyfnnDU34JDymZDi
- opGHePC/labg8EApVbShmQzGwFc61Uo+rpYA0N5WWJn09niivmrdwcLsF
- m5SlAxNNSfj6Tkx3y4Ihc+xK1YVWPUQBMiWFFmeKj6X77LROxpguAH4cD
- 3CnCCv6RddOJb/pHPPkRo0Rqf55WhQ8q/HWyaCN1vor3Y0GGMnpL6vDwo
- IR3GnqcSdMInt9+CjKqF7rUbLUQX1F2yR4G+MtMD9wLDP/hhUhfx8CRvg
+ t=1723664740; x=1755200740;
+ h=date:from:to:subject:message-id;
+ bh=YAW8QQ5nt9lJ3aIXm40UUox7waPRtIasuQxyVVZ0Fws=;
+ b=F7S1ohr4UsPiFnOeQOBYF73VgePtS3wQwRM9lbduq7bozSePsY/nt0Cd
+ uy8fYaSWB55yrg5yNMaUR+oX+VnHNvCciVcKIytSRr7Q0RyGLr0VZsAey
+ 1CM+XSXgcEL6876T6oGAugBB7ypQhLrK1sfrU7gCo8RtCz3j3VSTp0dKs
+ 9ORiXBHpAwBhFC/34YT/vWn1exLKw2jJietiCxNZlv5jC3wGUcanpCZ03
+ T/XBQmqQYbn5KsjK4wTvt/YdAwXHKEC+XLVCW/UnkS59w5JBEyaLTWOE9
+ U3X1i9IEJ7d72KiH5D2QVK804aEf/TsexUgLgh4DcnZem5bms4JlZjuAq
  w==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=PCJd+9So
-Subject: [Intel-wired-lan] [PATCH iwl-next v2] i40e: Add Energy Efficient
- Ethernet ability for X710 Base-T/KR/KX cards
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=F7S1ohr4
+Subject: [Intel-wired-lan] [tnguy-next-queue:100GbE] BUILD SUCCESS
+ 2a30ccc225fbbe6bfe302046534f8dc0020fc2ad
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -103,198 +100,162 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org,
- Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Add "EEE: Enabled/Disabled" to dmesg for supported X710 Base-T/KR/KX cards.
-According to the IEEE standard report the EEE ability and and the
-EEE Link Partner ability. Use the kernel's 'ethtool_keee' structure
-and report EEE link modes.
+tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git 100GbE
+branch HEAD: 2a30ccc225fbbe6bfe302046534f8dc0020fc2ad  ice: subfunction activation and base devlink ops
 
-Example:
-dmesg | grep 'NIC Link is'
-ethtool --show-eee <device>
+elapsed time: 1403m
 
-Before:
-	NIC Link is Up, 10 Gbps Full Duplex, Flow Control: None
+configs tested: 140
+configs skipped: 5
 
-        Supported EEE link modes:  Not reported
-        Advertised EEE link modes:  Not reported
-        Link partner advertised EEE link modes:  Not reported
+The following configs have been built successfully.
+More configs may be tested in the coming days.
 
-After:
-	NIC Link is Up, 10 Gbps Full Duplex, Flow Control: None, EEE: Enabled
+tested configs:
+alpha                             allnoconfig   gcc-13.3.0
+alpha                            allyesconfig   gcc-13.3.0
+arc                              allmodconfig   gcc-13.2.0
+arc                               allnoconfig   gcc-13.2.0
+arc                              allyesconfig   gcc-13.2.0
+arc                   randconfig-001-20240814   gcc-13.2.0
+arc                   randconfig-002-20240814   gcc-13.2.0
+arm                              allmodconfig   gcc-14.1.0
+arm                               allnoconfig   clang-20
+arm                              allyesconfig   gcc-14.1.0
+arm                   randconfig-001-20240814   clang-20
+arm                   randconfig-002-20240814   clang-20
+arm                   randconfig-003-20240814   clang-20
+arm                   randconfig-004-20240814   clang-20
+arm64                            allmodconfig   clang-20
+arm64                             allnoconfig   gcc-14.1.0
+arm64                 randconfig-001-20240814   clang-20
+arm64                 randconfig-002-20240814   gcc-14.1.0
+arm64                 randconfig-003-20240814   gcc-14.1.0
+arm64                 randconfig-004-20240814   clang-20
+csky                              allnoconfig   gcc-14.1.0
+csky                  randconfig-001-20240814   gcc-14.1.0
+csky                  randconfig-002-20240814   gcc-14.1.0
+hexagon                          allmodconfig   clang-20
+hexagon                           allnoconfig   clang-20
+hexagon                          allyesconfig   clang-20
+hexagon               randconfig-001-20240814   clang-16
+hexagon               randconfig-002-20240814   clang-14
+i386                             allmodconfig   gcc-12
+i386                              allnoconfig   gcc-12
+i386                             allyesconfig   gcc-12
+i386         buildonly-randconfig-001-20240814   clang-18
+i386         buildonly-randconfig-002-20240814   clang-18
+i386         buildonly-randconfig-003-20240814   clang-18
+i386         buildonly-randconfig-004-20240814   clang-18
+i386         buildonly-randconfig-005-20240814   gcc-12
+i386         buildonly-randconfig-006-20240814   gcc-12
+i386                                defconfig   clang-18
+i386                  randconfig-001-20240814   clang-18
+i386                  randconfig-002-20240814   gcc-12
+i386                  randconfig-003-20240814   gcc-12
+i386                  randconfig-004-20240814   clang-18
+i386                  randconfig-005-20240814   clang-18
+i386                  randconfig-006-20240814   clang-18
+i386                  randconfig-011-20240814   gcc-12
+i386                  randconfig-012-20240814   gcc-12
+i386                  randconfig-013-20240814   clang-18
+i386                  randconfig-014-20240814   gcc-11
+i386                  randconfig-015-20240814   gcc-12
+i386                  randconfig-016-20240814   gcc-12
+loongarch                        allmodconfig   gcc-14.1.0
+loongarch                         allnoconfig   gcc-14.1.0
+loongarch             randconfig-001-20240814   gcc-14.1.0
+loongarch             randconfig-002-20240814   gcc-14.1.0
+m68k                             allmodconfig   gcc-14.1.0
+m68k                              allnoconfig   gcc-14.1.0
+m68k                             allyesconfig   gcc-14.1.0
+microblaze                       allmodconfig   gcc-14.1.0
+microblaze                        allnoconfig   gcc-14.1.0
+microblaze                       allyesconfig   gcc-14.1.0
+mips                              allnoconfig   gcc-14.1.0
+nios2                             allnoconfig   gcc-14.1.0
+nios2                 randconfig-001-20240814   gcc-14.1.0
+nios2                 randconfig-002-20240814   gcc-14.1.0
+openrisc                          allnoconfig   gcc-14.1.0
+openrisc                         allyesconfig   gcc-14.1.0
+openrisc                            defconfig   gcc-14.1.0
+parisc                           allmodconfig   gcc-14.1.0
+parisc                            allnoconfig   gcc-14.1.0
+parisc                           allyesconfig   gcc-14.1.0
+parisc                              defconfig   gcc-14.1.0
+parisc                randconfig-001-20240814   gcc-14.1.0
+parisc                randconfig-002-20240814   gcc-14.1.0
+powerpc                          allmodconfig   gcc-14.1.0
+powerpc                           allnoconfig   gcc-14.1.0
+powerpc                          allyesconfig   clang-20
+powerpc               randconfig-002-20240814   clang-20
+powerpc               randconfig-003-20240814   gcc-14.1.0
+powerpc64             randconfig-001-20240814   clang-20
+powerpc64             randconfig-002-20240814   clang-15
+powerpc64             randconfig-003-20240814   clang-20
+riscv                            allmodconfig   clang-20
+riscv                             allnoconfig   gcc-14.1.0
+riscv                            allyesconfig   clang-20
+riscv                               defconfig   clang-20
+riscv                 randconfig-001-20240814   gcc-14.1.0
+riscv                 randconfig-002-20240814   clang-20
+s390                             allmodconfig   clang-20
+s390                              allnoconfig   clang-20
+s390                             allyesconfig   gcc-14.1.0
+s390                                defconfig   clang-20
+s390                  randconfig-001-20240814   gcc-14.1.0
+s390                  randconfig-002-20240814   gcc-14.1.0
+sh                               allmodconfig   gcc-14.1.0
+sh                                allnoconfig   gcc-14.1.0
+sh                               allyesconfig   gcc-14.1.0
+sh                                  defconfig   gcc-14.1.0
+sh                    randconfig-001-20240814   gcc-14.1.0
+sh                    randconfig-002-20240814   gcc-14.1.0
+sparc                            allmodconfig   gcc-14.1.0
+sparc64                             defconfig   gcc-14.1.0
+sparc64               randconfig-001-20240814   gcc-14.1.0
+sparc64               randconfig-002-20240814   gcc-14.1.0
+um                               allmodconfig   clang-20
+um                                allnoconfig   clang-17
+um                               allyesconfig   gcc-12
+um                                  defconfig   clang-20
+um                             i386_defconfig   gcc-12
+um                    randconfig-001-20240814   clang-20
+um                    randconfig-002-20240814   clang-20
+um                           x86_64_defconfig   clang-15
+x86_64                            allnoconfig   clang-18
+x86_64                           allyesconfig   clang-18
+x86_64       buildonly-randconfig-001-20240814   clang-18
+x86_64       buildonly-randconfig-002-20240814   gcc-12
+x86_64       buildonly-randconfig-003-20240814   clang-18
+x86_64       buildonly-randconfig-004-20240814   clang-18
+x86_64       buildonly-randconfig-005-20240814   gcc-12
+x86_64       buildonly-randconfig-006-20240814   clang-18
+x86_64                              defconfig   gcc-11
+x86_64                randconfig-001-20240814   clang-18
+x86_64                randconfig-002-20240814   gcc-12
+x86_64                randconfig-003-20240814   gcc-11
+x86_64                randconfig-004-20240814   gcc-12
+x86_64                randconfig-005-20240814   gcc-12
+x86_64                randconfig-006-20240814   gcc-12
+x86_64                randconfig-013-20240814   gcc-11
+x86_64                randconfig-014-20240814   clang-18
+x86_64                randconfig-015-20240814   gcc-12
+x86_64                randconfig-016-20240814   clang-18
+x86_64                randconfig-071-20240814   clang-18
+x86_64                randconfig-072-20240814   clang-18
+x86_64                randconfig-073-20240814   clang-18
+x86_64                randconfig-074-20240814   clang-18
+x86_64                randconfig-075-20240814   gcc-12
+x86_64                randconfig-076-20240814   clang-18
+x86_64                          rhel-8.3-rust   clang-18
+xtensa                            allnoconfig   gcc-14.1.0
+xtensa                randconfig-001-20240814   gcc-14.1.0
+xtensa                randconfig-002-20240814   gcc-14.1.0
 
-        Supported EEE link modes:  100baseT/Full
-                                   1000baseT/Full
-                                   10000baseT/Full
-        Advertised EEE link modes:  100baseT/Full
-                                    1000baseT/Full
-                                    10000baseT/Full
-        Link partner advertised EEE link modes:  100baseT/Full
-                                                 1000baseT/Full
-                                                 10000baseT/Full
-
-Reviewed-by: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
-Signed-off-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
----
-v1->v2 removed some not mandatory changes, some style improvements
----
- drivers/net/ethernet/intel/i40e/i40e.h        |  1 +
- .../net/ethernet/intel/i40e/i40e_ethtool.c    | 36 ++++++++++++++++---
- drivers/net/ethernet/intel/i40e/i40e_main.c   | 23 ++++++++++--
- 3 files changed, 53 insertions(+), 7 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/i40e/i40e.h b/drivers/net/ethernet/intel/i40e/i40e.h
-index d546567..0f25a48 100644
---- a/drivers/net/ethernet/intel/i40e/i40e.h
-+++ b/drivers/net/ethernet/intel/i40e/i40e.h
-@@ -7,6 +7,7 @@
- #include <linux/pci.h>
- #include <linux/ptp_clock_kernel.h>
- #include <linux/types.h>
-+#include <linux/linkmode.h>
- #include <linux/avf/virtchnl.h>
- #include <linux/net/intel/i40e_client.h>
- #include <net/devlink.h>
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_ethtool.c b/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
-index 1d0d2e5..47c5d05 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
-@@ -5641,50 +5641,78 @@ static int i40e_get_module_eeprom(struct net_device *netdev,
- 	return 0;
- }
- 
-+static void i40e_eee_capability_to_kedata_supported(__le16  eee_capability_,
-+						    unsigned long *supported)
-+{
-+	const int eee_capability = le16_to_cpu(eee_capability_);
-+	static const int lut[] = {
-+		ETHTOOL_LINK_MODE_100baseT_Full_BIT,
-+		ETHTOOL_LINK_MODE_1000baseT_Full_BIT,
-+		ETHTOOL_LINK_MODE_10000baseT_Full_BIT,
-+		ETHTOOL_LINK_MODE_1000baseKX_Full_BIT,
-+		ETHTOOL_LINK_MODE_10000baseKX4_Full_BIT,
-+		ETHTOOL_LINK_MODE_10000baseKR_Full_BIT,
-+		ETHTOOL_LINK_MODE_40000baseKR4_Full_BIT,
-+	};
-+
-+	linkmode_zero(supported);
-+	for (unsigned int i = ARRAY_SIZE(lut); i--; )
-+		if (eee_capability & BIT(i + 1))
-+			linkmode_set_bit(lut[i], supported);
-+}
-+
- static int i40e_get_eee(struct net_device *netdev, struct ethtool_keee *edata)
- {
- 	struct i40e_netdev_priv *np = netdev_priv(netdev);
- 	struct i40e_aq_get_phy_abilities_resp phy_cfg;
- 	struct i40e_vsi *vsi = np->vsi;
- 	struct i40e_pf *pf = vsi->back;
- 	struct i40e_hw *hw = &pf->hw;
--	int status = 0;
-+	int status;
- 
- 	/* Get initial PHY capabilities */
- 	status = i40e_aq_get_phy_capabilities(hw, false, true, &phy_cfg, NULL);
- 	if (status)
- 		return -EAGAIN;
- 
- 	/* Check whether NIC configuration is compatible with Energy Efficient
- 	 * Ethernet (EEE) mode.
- 	 */
- 	if (phy_cfg.eee_capability == 0)
- 		return -EOPNOTSUPP;
- 
-+	i40e_eee_capability_to_kedata_supported(phy_cfg.eee_capability,
-+						edata->supported);
-+	linkmode_copy(edata->lp_advertised, edata->supported);
-+
- 	/* Get current configuration */
- 	status = i40e_aq_get_phy_capabilities(hw, false, false, &phy_cfg, NULL);
- 	if (status)
- 		return -EAGAIN;
- 
-+	linkmode_zero(edata->advertised);
-+	if (phy_cfg.eee_capability)
-+		linkmode_copy(edata->advertised, edata->supported);
- 	edata->eee_enabled = !!phy_cfg.eee_capability;
- 	edata->tx_lpi_enabled = pf->stats.tx_lpi_status;
- 
- 	edata->eee_active = pf->stats.tx_lpi_status && pf->stats.rx_lpi_status;
- 
- 	return 0;
- }
- 
- static int i40e_is_eee_param_supported(struct net_device *netdev,
- 				       struct ethtool_keee *edata)
- {
- 	struct i40e_netdev_priv *np = netdev_priv(netdev);
- 	struct i40e_vsi *vsi = np->vsi;
- 	struct i40e_pf *pf = vsi->back;
- 	struct i40e_ethtool_not_used {
--		u32 value;
-+		bool value;
- 		const char *name;
- 	} param[] = {
--		{edata->tx_lpi_timer, "tx-timer"},
-+		{!!(edata->advertised[0] & ~edata->supported[0]), "advertise"},
-+		{!!edata->tx_lpi_timer, "tx-timer"},
- 		{edata->tx_lpi_enabled != pf->stats.tx_lpi_status, "tx-lpi"}
- 	};
- 	int i;
-@@ -5710,7 +5738,7 @@ static int i40e_set_eee(struct net_device *netdev, struct ethtool_keee *edata)
- 	struct i40e_pf *pf = vsi->back;
- 	struct i40e_hw *hw = &pf->hw;
- 	__le16 eee_capability;
--	int status = 0;
-+	int status;
- 
- 	/* Deny parameters we don't support */
- 	if (i40e_is_eee_param_supported(netdev, edata))
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
-index cbcfada..5c102f8 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_main.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
-@@ -7263,6 +7263,25 @@ static int i40e_init_pf_dcb(struct i40e_pf *pf)
- 	return err;
- }
- #endif /* CONFIG_I40E_DCB */
-+static void i40e_print_link_message_eee(struct i40e_vsi *vsi,
-+			    const char *speed, const char *fc)
-+{
-+	struct ethtool_keee kedata;
-+
-+	memzero_explicit(&kedata, sizeof(kedata));
-+	if (vsi->netdev->ethtool_ops->get_eee)
-+		vsi->netdev->ethtool_ops->get_eee(vsi->netdev, &kedata);
-+
-+	if (!linkmode_empty(kedata.supported))
-+		netdev_info(vsi->netdev,
-+			    "NIC Link is Up, %sbps Full Duplex, Flow Control: %s, EEE: %s\n",
-+			    speed, fc,
-+			    kedata.eee_enabled ? "Enabled" : "Disabled");
-+	else
-+		netdev_info(vsi->netdev,
-+			    "NIC Link is Up, %sbps Full Duplex, Flow Control: %s\n",
-+			    speed, fc);
-+}
- 
- /**
-  * i40e_print_link_message - print link up or down
-@@ -7395,9 +7414,7 @@ void i40e_print_link_message(struct i40e_vsi *vsi, bool isup)
- 			    "NIC Link is Up, %sbps Full Duplex, Requested FEC: %s, Negotiated FEC: %s, Autoneg: %s, Flow Control: %s\n",
- 			    speed, req_fec, fec, an, fc);
- 	} else {
--		netdev_info(vsi->netdev,
--			    "NIC Link is Up, %sbps Full Duplex, Flow Control: %s\n",
--			    speed, fc);
-+		i40e_print_link_message_eee(vsi, speed, fc);
- 	}
- 
- }
 -- 
-2.25.1
-
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
