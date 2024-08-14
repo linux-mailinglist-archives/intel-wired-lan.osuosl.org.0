@@ -1,112 +1,107 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 921FA951C3B
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 14 Aug 2024 15:51:33 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id B56C0951E0A
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 14 Aug 2024 17:05:23 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 4904C813D7;
-	Wed, 14 Aug 2024 13:51:32 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id fwKXbtl1FSBY; Wed, 14 Aug 2024 13:51:31 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 872C581BB2
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1723643491;
-	bh=HY6+pCY9ehqSqJDFE8HV9VdLuiE98nA8v+BgVfOFgHw=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=6/hLlFC3zyUvbYSQfaiAr9yUFcRT0qVCDyX0JzM8pbttHrHbMv9zB8RmKFYT/nPkW
-	 7zPkpeIA5Y80wi15x4lkGAuz4n3EpyVUNpsk1F3dsxb/JTIVU2GMCWtsYwT6V5OGz3
-	 MTxxCc3Mfo7XChJf2ZKjjSJjM0Wjf53VA4LCurra7z3zOrYGb8wzhwAgbj6+92VJMo
-	 MsgyRcWBujcOVfC7Qy2ErbOScaZXcneyjZK1XTYIYdQITtSa8HpozQhgEET0W9kycN
-	 wY1Xxkzw30KIQURpWsItvHwgfPx0Vaz6PjXKXjHzoOPJELS1V/lAp/DWmNc6n52lNM
-	 kLSb/pGYg02XQ==
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 872C581BB2;
-	Wed, 14 Aug 2024 13:51:31 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id D97911BF97D
- for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Aug 2024 13:51:29 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id C585740621
- for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Aug 2024 13:51:29 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 668364068C;
+	Wed, 14 Aug 2024 15:05:20 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id pGb9Pf7Ij5mA for <intel-wired-lan@lists.osuosl.org>;
- Wed, 14 Aug 2024 13:51:28 +0000 (UTC)
-Received-SPF: None (mailfrom) identity=mailfrom;
- client-ip=2a00:1450:4864:20::42c; helo=mail-wr1-x42c.google.com;
- envelope-from=jiri@resnulli.us; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org A9354405EF
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A9354405EF
-Received: from mail-wr1-x42c.google.com (mail-wr1-x42c.google.com
- [IPv6:2a00:1450:4864:20::42c])
- by smtp4.osuosl.org (Postfix) with ESMTPS id A9354405EF
- for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Aug 2024 13:51:25 +0000 (UTC)
-Received: by mail-wr1-x42c.google.com with SMTP id
- ffacd0b85a97d-3687ea0521cso4713765f8f.1
- for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Aug 2024 06:51:25 -0700 (PDT)
+ id Oqdg3wq42y-B; Wed, 14 Aug 2024 15:05:19 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1C8974057F
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1723647919;
+	bh=lnvp97S/MR4yUiKbd5n8jwMTfUiZvb9HbFkBv7V13WM=;
+	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=o4Gy81WJwhD2aI/EZ3lUhA3Xzl9/jrUda9edOfypLaKvb9y9MAaXSfAxtYjFF11LT
+	 S4O2CaVtR7Ai7iS0z93g4A7hSS5Z0aV5/RBXXQKSYb2snrNXdrEBRaIRoTRvrqDsj1
+	 4MyA9iGS4k8Z16bNxz8Fg2MLmLZdhy3N9NNY3r2yFeR9y6HhSgaidWJTPSYAE65WV0
+	 6tK+qaC74kTQdwfVOIvzgzdCdsMNtGiIZA4/hk5GIYSvL85zxlrAqEv1ra0YD1kQAz
+	 uNDO2vvkMDn2Md8mg/PLdpkqkMOv57waEpiIqSTkCTSxp/Sh+3EIclTv6Z6b/38mat
+	 TNDl7zVicLFdA==
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp4.osuosl.org (Postfix) with ESMTP id 1C8974057F;
+	Wed, 14 Aug 2024 15:05:19 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 6A79E1BF2FB
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Aug 2024 04:56:09 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp4.osuosl.org (Postfix) with ESMTP id 4C017403A1
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Aug 2024 04:56:09 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id cZee155e0KeO for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 14 Aug 2024 04:56:08 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2607:f8b0:4864:20::114a; helo=mail-yw1-x114a.google.com;
+ envelope-from=35ti8zggkd4qliq4mqtqowwotm.kwuqv1mt-4qzml-tivtq010.w02w0t.wzo@flex--daiweili.bounces.google.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 0BE394032E
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0BE394032E
+Received: from mail-yw1-x114a.google.com (mail-yw1-x114a.google.com
+ [IPv6:2607:f8b0:4864:20::114a])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 0BE394032E
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Aug 2024 04:56:07 +0000 (UTC)
+Received: by mail-yw1-x114a.google.com with SMTP id
+ 00721157ae682-690404fd230so131101947b3.3
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Aug 2024 21:56:07 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1723643483; x=1724248283;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=HY6+pCY9ehqSqJDFE8HV9VdLuiE98nA8v+BgVfOFgHw=;
- b=O2OmCavHfIGRQH9iJydzCJA4Us506sAMHgQsXYGRU7usxjfdee0MyGWgIn5J3si7SX
- V6DGo2qs+odtXWHMUar7i0gcX6nqiejOzs40wmjPUyl8pMa5x6NYzMrms3vfrtwk8N8h
- VI10uv20eDXLxZI/s9XrG1XNQm4xDrQPyOKgyu2aEzKmxx52p8NgXUK3h5FVR7+ewq0Y
- IBkLqH24FLGhpbl569IyjKdRlmx4ThZlrPM0agQHLOAZljxeqMRRN77bsQemsgKW6NLo
- Q7dPeEjIA1X/hutog83SwaHF5AOq3sSpeXU96H99mIOE5zdjKLmy4AEhAK3djLQHjBR4
- LEiw==
-X-Gm-Message-State: AOJu0Yx19rdLpJc9stkYOcWPvL1sUVBQ67MYjm22boTTPneiraOYHBG9
- 3Dh1H/bYu25bZ8JzDW0T2R6o6LEHVlIRP34XfS4xHoM75cojwuk866AUqU8TQVQ=
-X-Google-Smtp-Source: AGHT+IGM/Kg8J/CcdohjEY5RAm1+8y6SdzbAu07J03j+lQEZzw0NedV1E9ohGzx8kXDzo6AVkCvs3Q==
-X-Received: by 2002:a05:6000:2ac:b0:360:75b1:77fb with SMTP id
- ffacd0b85a97d-37177742ccamr3008355f8f.8.1723643482955; 
- Wed, 14 Aug 2024 06:51:22 -0700 (PDT)
-Received: from localhost (37-48-50-18.nat.epc.tmcz.cz. [37.48.50.18])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-36e4c93714asm12856184f8f.27.2024.08.14.06.51.22
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 14 Aug 2024 06:51:22 -0700 (PDT)
-Date: Wed, 14 Aug 2024 15:51:20 +0200
-From: Jiri Pirko <jiri@resnulli.us>
-To: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-Message-ID: <Zry2WL9JFtz4Q-N1@nanopsycho.orion>
-References: <20240813071610.52295-1-michal.swiatkowski@linux.intel.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20240813071610.52295-1-michal.swiatkowski@linux.intel.com>
+ d=1e100.net; s=20230601; t=1723611367; x=1724216167;
+ h=cc:to:from:subject:message-id:mime-version:date:x-gm-message-state
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=lnvp97S/MR4yUiKbd5n8jwMTfUiZvb9HbFkBv7V13WM=;
+ b=vnm5d2ZkkWH1etpss7rJZKqoGkBoBNMixDIUdajGXVDdNKUawZWdMBRtvgcx52Lxnu
+ tTY+Z4fx+oOZ1zGSquPwivR3M4g3ZuLMXz2oGpRTPHhG4T+igjXzxZbeWcNlbLJSlZdW
+ kstf9A0iE9rCv6Zl/xm2CMo9zi+CWa5hYgyTmDxoGDNP5FZlgUPPRMZFnl8tXdY6GNhO
+ wMxMTYCDnjoyeN/MrJ6WpMV3D6gkngavHTwvZgcN/dfAYYuS/oSjWLjCGXj89mxmbF7X
+ k4hh0xJt7d77sX5yEPlh7ee5iU8PzMUGfuNFC5EVOPRGJGZBzCBHVmSzz1HNodPOYSHr
+ SqJw==
+X-Gm-Message-State: AOJu0YxcWMWqu9kU2nwjoQSuxfEAKxrOh7ZIvUaW/lA3b4Qg63QoxaJE
+ 8alHSPTcewYkPwrT3ipCCCNzgwir1bVAIvF29Kz5TAq/lkg5t+RUWZ2f790QlCRiHqUWqxsy+MK
+ 8fVpeNwqvsUba8/t2Fx1iMcZwxQzUGERCFHXbfuGZ5KouCpjfgkdkQty0nnsLbJhp3/UDlzqbyE
+ LdYiZG4PDiVdht3IvlGVDexUib5GHckNIedmD0HIL1R2Qj4/E73weGkTI=
+X-Google-Smtp-Source: AGHT+IG49Fx2xiRVWQlRuoz0zvxLK+LtnKos04NNqOiwZh05DlnfFBZtQGQFWYfG84ZKnZq//Q5fW+6FXooL0w==
+X-Received: from ditto.mtv.corp.google.com
+ ([2a00:79e0:2e0b:7:febd:a120:fb9c:be25])
+ (user=daiweili job=sendgmr) by 2002:a25:d6d1:0:b0:e03:59e2:e82 with SMTP id
+ 3f1490d57ef6-e1155bca773mr2220276.10.1723611365685; Tue, 13 Aug 2024 21:56:05
+ -0700 (PDT)
+Date: Tue, 13 Aug 2024 21:55:53 -0700
+Mime-Version: 1.0
+X-Mailer: git-send-email 2.46.0.76.ge559c4bf1a-goog
+Message-ID: <20240814045553.947331-1-daiweili@google.com>
+From: Daiwei Li <daiweili@google.com>
+To: intel-wired-lan@lists.osuosl.org
+Content-Type: text/plain; charset="UTF-8"
+X-Mailman-Approved-At: Wed, 14 Aug 2024 15:05:16 +0000
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=resnulli-us.20230601.gappssmtp.com; s=20230601; t=1723643483; x=1724248283;
- darn=lists.osuosl.org; 
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=HY6+pCY9ehqSqJDFE8HV9VdLuiE98nA8v+BgVfOFgHw=;
- b=JnfirZGZkiKfnV+fmrUotEYmPzMmOZWcPBgtfDDJgVmCwk27028UotcM9Pez1n7pRE
- 0IbzradWDnQ+GW/dgGaWQ+9/adQxai9N23oH6HNglhzu1GrJIwZ2Tt2Pe6ZuuzEzrPPf
- v5h+O1e+oHNVhImIMh55yHcn01607CPRQPsH4X3g2ywLZOleJ8PqLV6N50eNo6Xl/Bu2
- TO8teYgpp0rciHeO6OY6YnxPRvTZT5UmQ6Rgz3VBZ/8Yx/9F3Ud/WzaOQND2oop6G36u
- kowiFHQ9lIWkzXakJXCcWrz2kS+Th17ecuDeAE18LmRwWiOR9fb6qjS9GcAAIpDoVqfQ
- schQ==
+ d=google.com; s=20230601; t=1723611367; x=1724216167; darn=lists.osuosl.org;
+ h=cc:to:from:subject:message-id:mime-version:date:from:to:cc:subject
+ :date:message-id:reply-to;
+ bh=lnvp97S/MR4yUiKbd5n8jwMTfUiZvb9HbFkBv7V13WM=;
+ b=c3dCDBUO6GeO1aGUzHujsD2dtWyG94b8K8+pd7vstjIBk3S093OuJU7k4EPEUwdLyJ
+ fLnlyTDJORwKAKBjDs10l3Gjty/U6ywRMYpRY4q9CaW41YAjwBuqIAdTBXYZa4/mn0xM
+ 7WpuiuMs/PEic42uGwWunSH19L1c8yyDppZLoWXPCEhho8HpSdXj1515nVFyxEu8MBED
+ FOfNzsDE7DrZU2Uzm3K8BHA+PZHhxUgN6tnAmUXNquCyjnjqhrS21sV6gmrS8bF53WaX
+ qUUbIixZ3neOF3MSu0OItuabAcTODsLkDoXsJQw0Pl+8xLh6YoSMxFk/B72wnH7j+/FG
+ axGg==
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=resnulli.us
+ dmarc=pass (p=reject dis=none)
+ header.from=google.com
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=resnulli-us.20230601.gappssmtp.com
- header.i=@resnulli-us.20230601.gappssmtp.com header.a=rsa-sha256
- header.s=20230601 header.b=JnfirZGZ
-Subject: Re: [Intel-wired-lan] [iwl-next v1] ice: use internal pf id instead
- of function number
+ unprotected) header.d=google.com header.i=@google.com header.a=rsa-sha256
+ header.s=20230601 header.b=c3dCDBUO
+Subject: [Intel-wired-lan] [PATCH iwl-net v3] igb: Fix not clearing TimeSync
+ interrupts for 82580
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -119,51 +114,66 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: wojciech.drewek@intel.com, netdev@vger.kernel.org,
- intel-wired-lan@lists.osuosl.org
+Cc: Daiwei Li <daiweili@google.com>, sasha.neftin@intel.com,
+ vinicius.gomes@intel.com, netdev@vger.kernel.org, richardcochran@gmail.com,
+ kurt@linutronix.de, linux-kernel@vger.kernel.org, edumazet@google.com,
+ anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com, kuba@kernel.org,
+ pabeni@redhat.com, davem@davemloft.net
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Tue, Aug 13, 2024 at 09:16:10AM CEST, michal.swiatkowski@linux.intel.com wrote:
->Use always the same pf id in devlink port number. When doing
->pass-through the PF to VM bus info func number can be any value.
+82580 NICs have a hardware bug that makes it
+necessary to write into the TSICR (TimeSync Interrupt Cause) register
+to clear it:
+https://lore.kernel.org/all/CDCB8BE0.1EC2C%25matthew.vick@intel.com/
 
-From the patch subject I'm not sure which tree you target, but since
-this is a bugfix of something not recent, you should target -net.
-Also, please provide "Fixes" tag blaming the commit(s) that introduced
-the issue.
+Add a conditional so only for 82580 we write into the TSICR register,
+so we don't risk losing events for other models.
 
+Without this change, when running ptp4l with an Intel 82580 card,
+I get the following output:
 
->
->Reviewed-by: Wojciech Drewek <wojciech.drewek@intel.com>
->Suggested-by: Jiri Pirko <jiri@resnulli.us>
->Signed-off-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
->---
-> drivers/net/ethernet/intel/ice/devlink/devlink_port.c | 4 ++--
-> 1 file changed, 2 insertions(+), 2 deletions(-)
->
->diff --git a/drivers/net/ethernet/intel/ice/devlink/devlink_port.c b/drivers/net/ethernet/intel/ice/devlink/devlink_port.c
->index 4abdc40d345e..1fe441bfa0ca 100644
->--- a/drivers/net/ethernet/intel/ice/devlink/devlink_port.c
->+++ b/drivers/net/ethernet/intel/ice/devlink/devlink_port.c
->@@ -340,7 +340,7 @@ int ice_devlink_create_pf_port(struct ice_pf *pf)
-> 		return -EIO;
-> 
-> 	attrs.flavour = DEVLINK_PORT_FLAVOUR_PHYSICAL;
->-	attrs.phys.port_number = pf->hw.bus.func;
->+	attrs.phys.port_number = pf->hw.pf_id;
-> 
-> 	/* As FW supports only port split options for whole device,
-> 	 * set port split options only for first PF.
->@@ -458,7 +458,7 @@ int ice_devlink_create_vf_port(struct ice_vf *vf)
-> 		return -EINVAL;
-> 
-> 	attrs.flavour = DEVLINK_PORT_FLAVOUR_PCI_VF;
->-	attrs.pci_vf.pf = pf->hw.bus.func;
->+	attrs.pci_vf.pf = pf->hw.pf_id;
-> 	attrs.pci_vf.vf = vf->vf_id;
-> 
-> 	ice_devlink_set_switch_id(pf, &attrs.switch_id);
->-- 
->2.42.0
->
+> timed out while polling for tx timestamp increasing tx_timestamp_timeout or
+> increasing kworker priority may correct this issue, but a driver bug likely
+> causes it
+
+This goes away with this change.
+
+This (partially) reverts commit ee14cc9ea19b ("igb: Fix missing time sync events").
+
+Fixes: ee14cc9ea19b ("igb: Fix missing time sync events")
+Closes: https://lore.kernel.org/intel-wired-lan/CAN0jFd1kO0MMtOh8N2Ztxn6f7vvDKp2h507sMryobkBKe=xk=w@mail.gmail.com/
+Tested-by: Daiwei Li <daiweili@google.com>
+Suggested-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
+Signed-off-by: Daiwei Li <daiweili@google.com>
+---
+ drivers/net/ethernet/intel/igb/igb_main.c | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
+index ada42ba63549..69d7e8b16437 100644
+--- a/drivers/net/ethernet/intel/igb/igb_main.c
++++ b/drivers/net/ethernet/intel/igb/igb_main.c
+@@ -6984,9 +6984,19 @@ static void igb_extts(struct igb_adapter *adapter, int tsintr_tt)
+ static void igb_tsync_interrupt(struct igb_adapter *adapter)
+ {
+ 	struct e1000_hw *hw = &adapter->hw;
++	const u32 mask = (TSINTR_SYS_WRAP | E1000_TSICR_TXTS |
++			  TSINTR_TT0 | TSINTR_TT1 |
++			  TSINTR_AUTT0 | TSINTR_AUTT1);
+ 	u32 tsicr = rd32(E1000_TSICR);
+ 	struct ptp_clock_event event;
+ 
++	if (hw->mac.type == e1000_82580) {
++		/* 82580 has a hardware bug that requires an explicit
++		 * write to clear the TimeSync interrupt cause.
++		 */
++		wr32(E1000_TSICR, tsicr & mask);
++	}
++
+ 	if (tsicr & TSINTR_SYS_WRAP) {
+ 		event.type = PTP_CLOCK_PPS;
+ 		if (adapter->ptp_caps.pps)
+-- 
+2.46.0.76.ge559c4bf1a-goog
+
