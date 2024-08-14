@@ -1,112 +1,100 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 69892951E0B
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 14 Aug 2024 17:05:26 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5A00B951DBF
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 14 Aug 2024 16:52:16 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 461674069E;
-	Wed, 14 Aug 2024 15:05:21 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 95C0340402;
+	Wed, 14 Aug 2024 14:52:14 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id FsicwY1iAyRb; Wed, 14 Aug 2024 15:05:20 +0000 (UTC)
+ id 6Y1UsyRtg239; Wed, 14 Aug 2024 14:52:13 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1202C40499
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B1E784040B
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1723647920;
-	bh=cZbsYN7hywOio9CebOtG5ipZd6XqFXAATkmmHXXoYiY=;
-	h=References:In-Reply-To:From:Date:To:Subject:List-Id:
+	s=default; t=1723647133;
+	bh=x0z+shmhpVmM3UxM1TKRiuDEZOCx8yaGOMmub7K7E9U=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Reply-To:Cc:From;
-	b=hHbnVKMe/gxc/1oGsEm/aiAVTJBRuZX34nM/arFBHkKO1H0ETXhXF/QkT2iiJHAJG
-	 6IytcVB9+1GKS0tMHKCWsXcDSMNtKL2bJOpNxi6k/hFU+NiV6oTXBg7QgoPsyoS00e
-	 ETh94SoFC8Lev9tgVJoiT8g88ZihNEFXeTpSAKep7Lvcr0F0BUR3wIxxjHhYCItz/5
-	 NcLV+1zEKUVpH7/SzD+Tt9fZbTcq9R/QLb4rbQ+PwEHn2aRq8RKdyZtC53wmkV6db3
-	 WVKVvigPMCcEwPUtG2/64wT4aULTsu6/upv7WW8TAN0aM5UmWVUTMMiNAYMbV8JVPH
-	 rdPq9dNMT5b9Q==
+	 Cc:From;
+	b=YwH7FZimToY0BbCuFhp06g8ge+WuDRmxlpz831LbMZxZrOELlEwLHiChXjj25vgYk
+	 4IBJo//sn5bcnNOTUK1kmm3RQQ6b225/X1OT6mtonSqIcmvjsVPnV28rnixi1TLIr7
+	 mbv8pIsTU4JS48ROXaHTDzBhr4TrkiMjNrGYSd65/UUGnKH5QaT4cOcaKlWmlXnNcD
+	 Kwsp3nfYgIq20Lbn55USK1f7Inp9+lApqyEJWwWs1DfjgweD+739Vg1yu5UkEoYseW
+	 6y2A+YjHEeuskbgGaUuHs+jOvjRM9ksQWlGtVCx1OGlCN6tU+ySly0FvFAYiDLs7/v
+	 WjWpBjr/3B+7w==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 1202C40499;
-	Wed, 14 Aug 2024 15:05:20 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id B1E784040B;
+	Wed, 14 Aug 2024 14:52:12 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 958CB1BF2FB
- for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Aug 2024 04:58:21 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 72A341BF599
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Aug 2024 14:52:10 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 8FF4640393
- for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Aug 2024 04:58:21 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 5E767403D6
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Aug 2024 14:52:10 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id o0GLPTW99_a4 for <intel-wired-lan@lists.osuosl.org>;
- Wed, 14 Aug 2024 04:58:20 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2607:f8b0:4864:20::f32; helo=mail-qv1-xf32.google.com;
- envelope-from=daiweili@google.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 1566740391
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1566740391
-Received: from mail-qv1-xf32.google.com (mail-qv1-xf32.google.com
- [IPv6:2607:f8b0:4864:20::f32])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 1566740391
- for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Aug 2024 04:58:19 +0000 (UTC)
-Received: by mail-qv1-xf32.google.com with SMTP id
- 6a1803df08f44-6b7a8cada97so34922326d6.3
- for <intel-wired-lan@lists.osuosl.org>; Tue, 13 Aug 2024 21:58:19 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1723611499; x=1724216299;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :reply-to:in-reply-to:references:mime-version:x-gm-message-state
- :from:to:cc:subject:date:message-id:reply-to;
- bh=cZbsYN7hywOio9CebOtG5ipZd6XqFXAATkmmHXXoYiY=;
- b=hkkp0ms0AfFfOVluNYtqSDmxGzXjQf3HKH3SCorRt9cU9+Lvdbac83c5inqXvW8bA/
- UIWEvpaEz02vKadlB9ISRRrdkGMDgTrSKsvLFFvTtnbzmY92SsmQtaH/8ynsoSkVJfjZ
- k374gu9eaSv05NiPm/sfUJdrho1Nwh6dfyRlaxIMf77Xt/35Q19fhmRep2Jeeqk84IBV
- bw0mUJTa7z1fW9BP1Ix3Zq1rCjdGvn8eYrCYA9U1X/PigF31G1HrUVVCZzkbpWfvDG7e
- CWkWsveHufaqYWTA5l7Cqf0sjdjIHYYdDWNQGaK2PA5Aua/+R6Bqj6kkiI+T5XIltLhm
- 3qsQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWoX5ONi7vJVwpBbkMR5y2ZdmsbI3mgh3UjBm6ftWkd/aTVgu+RFneVrzi98KCX8Asxuaa2YR1PmMuIkRo9kWc=@lists.osuosl.org
-X-Gm-Message-State: AOJu0Yzn+H0AFXCBtzBtif+kBoJ90PAlDFlmEQPrnOyxmZgSF2hMAPwD
- wK8znpQIbgDkBPbzDpZ3UrJIM31Z0OdYtqOBhfV8FsTcoBWxG02kRjFbaMVbTvhKd48NA4BwaMi
- mjkdV6KmIeNFr9z9vhssaosaec04SOvTEMSk=
-X-Google-Smtp-Source: AGHT+IE3wmqWQC8hH6zZI3LxdJ0W45BhWmHg3wpq0EuaM73ZIPGiS2LC/8R6MAF1HWhkBv59JXB0Iutnq0JiQV7NQ+E=
-X-Received: by 2002:a05:6214:4909:b0:6b7:b1b7:c44a with SMTP id
- 6a1803df08f44-6bf5d1846ffmr17979386d6.16.1723611498599; Tue, 13 Aug 2024
- 21:58:18 -0700 (PDT)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id B6zQpr3ixiJs for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 14 Aug 2024 14:52:08 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.19;
+ helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org B8264400B9
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B8264400B9
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.19])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id B8264400B9
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 14 Aug 2024 14:52:08 +0000 (UTC)
+X-CSE-ConnectionGUID: BNnxFkWLRImY8YpUU7ovEw==
+X-CSE-MsgGUID: 9Me15Vl1ToyzYWz/QsNtWg==
+X-IronPort-AV: E=McAfee;i="6700,10204,11164"; a="21728902"
+X-IronPort-AV: E=Sophos;i="6.10,146,1719903600"; d="scan'208";a="21728902"
+Received: from fmviesa010.fm.intel.com ([10.60.135.150])
+ by orvoesa111.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 14 Aug 2024 07:52:08 -0700
+X-CSE-ConnectionGUID: vrtd5o3hTWGOz6hbJ27uDg==
+X-CSE-MsgGUID: YfhRX44YSUeFPq7D503XFg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.10,146,1719903600"; d="scan'208";a="59174207"
+Received: from lkp-server01.sh.intel.com (HELO 9a732dc145d3) ([10.239.97.150])
+ by fmviesa010.fm.intel.com with ESMTP; 14 Aug 2024 07:52:06 -0700
+Received: from kbuild by 9a732dc145d3 with local (Exim 4.96)
+ (envelope-from <lkp@intel.com>) id 1seFM3-00025N-2w;
+ Wed, 14 Aug 2024 14:52:03 +0000
+Date: Wed, 14 Aug 2024 22:51:40 +0800
+From: kernel test robot <lkp@intel.com>
+To: Paul Greenwalt <paul.greenwalt@intel.com>, intel-wired-lan@lists.osuosl.org
+Message-ID: <202408142133.W175mlnf-lkp@intel.com>
+References: <20240812221501.1705162-1-paul.greenwalt@intel.com>
 MIME-Version: 1.0
-References: <87sev9wrkj.fsf@intel.com>
- <20240813033508.781022-1-daiweili@google.com>
- <871q2svz40.fsf@intel.com>
-In-Reply-To: <871q2svz40.fsf@intel.com>
-From: Daiwei Li <daiweili@waymo.com>
-Date: Tue, 13 Aug 2024 21:58:06 -0700
-Message-ID: <CALhna8C4Ux27SWYRxY4iViwRPSjReUgQpiJtfivNT-bCZLhuqQ@mail.gmail.com>
-To: Vinicius Costa Gomes <vinicius.gomes@intel.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-Mailman-Approved-At: Wed, 14 Aug 2024 15:05:16 +0000
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=waymo.com; s=20230601; t=1723611499; x=1724216299; darn=lists.osuosl.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :reply-to:in-reply-to:references:mime-version:from:to:cc:subject
- :date:message-id:reply-to;
- bh=cZbsYN7hywOio9CebOtG5ipZd6XqFXAATkmmHXXoYiY=;
- b=KpQgfCcfTo+NWb2g6UvQpBsg3kwxDhTP/uzqZWVqe7Wjls/T3GkQJrcIK7nekAVeCX
- jJvNk2i2OaKBUV72bvStxC9DbViSrYxZ+FbOjpTEG+pIOxM6DZmu7cS4Oc/FP4XzUUOP
- oG59uNmU/LAfiIPcDhSxoTLS60h/Q9bOqNAPDLc9C0sagz4Xrma/m0lxjJ3qb8dmlZYg
- SG24O81oIbzZXyyu6WajUxQE/JriBQw/SLHkiiCvp+CbPvQ1TN+pOJXXpeVtT/AgPi1z
- +YsTMGPN1p6uJvdd4Sm7dZhwDB7l4RmTyc8ymft2Pg5XHkGgcYx71Otc4LrLFU6kQ3O/
- R8Gw==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240812221501.1705162-1-paul.greenwalt@intel.com>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1723647129; x=1755183129;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:in-reply-to;
+ bh=fH9nqycAp4e66py/VxtqhL7SOKq8f1P35tkeWY1gFE8=;
+ b=mpfvemr9dxfzyyJ6IzXqqxzXdsM6rG207pa5JMGMoS0wLSJpwSCaTdmA
+ KCvlXYh264EE9QF4rwVloojUkawKYl0fhboh6W8NpJ4QzE1LgiGsogLRN
+ YWQssKTcQ/p/j89vP6sKSYTbeLmfJp7ITc23comEm7RuPrFAAV/8Fe6NX
+ FpMNBClURkDosPN85yPIf/zPh5roLKNZRYDUeF44nC+s1VvC2mU6QPGK1
+ G4IZQpxBqcpS5BHdaPeJdmwQne4wUhyN1dKDM9e5spYuLvL+rXnzpT2bu
+ SYn/bT7luunlYm23oYFK1auUla2SYaBqvd66NF+c9d3ZKIxry3hNJJSQ0
+ w==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=waymo.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ header.from=intel.com
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=waymo.com header.i=@waymo.com header.a=rsa-sha256
- header.s=20230601 header.b=KpQgfCcf
-Subject: Re: [Intel-wired-lan] [PATCH iwl-net v2] igb: Fix not clearing
- TimeSync interrupts for 82580
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=mpfvemr9
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v3] ice: add E830 HW VF
+ mailbox message limit support
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -119,111 +107,198 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Reply-To: daiweili@waymo.com
-Cc: sasha.neftin@intel.com, netdev@vger.kernel.org, richardcochran@gmail.com,
- kurt@linutronix.de, linux-kernel@vger.kernel.org, przemyslaw.kitszel@intel.com,
- edumazet@google.com, daiweili@gmail.com, intel-wired-lan@lists.osuosl.org,
- kuba@kernel.org, anthony.l.nguyen@intel.com, pabeni@redhat.com,
- davem@davemloft.net
+Cc: aleksander.lobakin@intel.com, llvm@lists.linux.dev,
+ Paul Greenwalt <paul.greenwalt@intel.com>, oe-kbuild-all@lists.linux.dev
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Thank you for the review! I've sent out another patch that hopefully
-addresses the comments.
+Hi Paul,
+
+kernel test robot noticed the following build errors:
+
+[auto build test ERROR on tnguy-next-queue/dev-queue]
+
+url:    https://github.com/intel-lab-lkp/linux/commits/Paul-Greenwalt/ice-add-E830-HW-VF-mailbox-message-limit-support/20240814-151255
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git dev-queue
+patch link:    https://lore.kernel.org/r/20240812221501.1705162-1-paul.greenwalt%40intel.com
+patch subject: [Intel-wired-lan] [PATCH iwl-next v3] ice: add E830 HW VF mailbox message limit support
+config: i386-randconfig-006-20240814 (https://download.01.org/0day-ci/archive/20240814/202408142133.W175mlnf-lkp@intel.com/config)
+compiler: clang version 18.1.5 (https://github.com/llvm/llvm-project 617a15a9eac96088ae5e9134248d8236e34b91b1)
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20240814/202408142133.W175mlnf-lkp@intel.com/reproduce)
+
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202408142133.W175mlnf-lkp@intel.com/
+
+All errors (new ones prefixed by >>):
+
+>> drivers/net/ethernet/intel/ice/ice_main.c:1546:5: error: call to undeclared function 'ice_mbx_vf_dec_trig_e830'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+    1546 |                                 ice_mbx_vf_dec_trig_e830(hw, &event);
+         |                                 ^
+   drivers/net/ethernet/intel/ice/ice_main.c:5269:39: warning: shift count >= width of type [-Wshift-count-overflow]
+    5269 |         err = dma_set_mask_and_coherent(dev, DMA_BIT_MASK(64));
+         |                                              ^~~~~~~~~~~~~~~~
+   include/linux/dma-mapping.h:77:54: note: expanded from macro 'DMA_BIT_MASK'
+      77 | #define DMA_BIT_MASK(n) (((n) == 64) ? ~0ULL : ((1ULL<<(n))-1))
+         |                                                      ^ ~~~
+   1 warning and 1 error generated.
 
 
-On Tue, Aug 13, 2024 at 3:26=E2=80=AFPM Vinicius Costa Gomes
-<vinicius.gomes@intel.com> wrote:
->
-> Daiwei Li <daiweili@google.com> writes:
->
-> > 82580 NICs have a hardware bug that makes it
-> > necessary to write into the TSICR (TimeSync Interrupt Cause) register
-> > to clear it:
-> > https://lore.kernel.org/all/CDCB8BE0.1EC2C%25matthew.vick@intel.com/
-> >
-> > Add a conditional so only for 82580 we write into the TSICR register,
-> > so we don't risk losing events for other models.
->
-> Please add some information in the commit message about how to reproduce
-> the issue, as Paul suggested.
->
-> >
-> > This (partially) reverts commit ee14cc9ea19b ("igb: Fix missing time sy=
-nc events").
-> >
-> > Fixes: ee14cc9ea19b ("igb: Fix missing time sync events")
-> > Closes: https://lore.kernel.org/intel-wired-lan/CAN0jFd1kO0MMtOh8N2Ztxn=
-6f7vvDKp2h507sMryobkBKe=3Dxk=3Dw@mail.gmail.com/
-> > Tested-by: Daiwei Li <daiweili@google.com>
-> > Signed-off-by: Daiwei Li <daiweili@google.com>
-> > ---
-> >
-> > @Vinicius Gomes, this is my first time submitting a Linux kernel patch,
-> > so apologies if I missed any part of the procedure (e.g. this is
-> > currently on top of 6.7.12, the kernel I am running; should I be
-> > rebasing on inline?). Also, is there any way to annotate the patch
-> > to give you credit for the original change?
->
-> Your submission format looks fine. Just a couple details:
->  - No need for setting in-reply-to (or something like it);
->
->  - For this particular patch, you got lucky and it applies cleanly
->  against current tip, but for future submissions, for intel-wired-lan
->  and patches intended for the stable tree, please rebase against:
->
->  https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git/
->
-> For credits, you can add something like:
->
-> Suggested-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
->
-> >
-> >  drivers/net/ethernet/intel/igb/igb_main.c | 10 ++++++++++
-> >  1 file changed, 10 insertions(+)
-> >
-> > diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/et=
-hernet/intel/igb/igb_main.c
-> > index ada42ba63549..1210ddc5d81e 100644
-> > --- a/drivers/net/ethernet/intel/igb/igb_main.c
-> > +++ b/drivers/net/ethernet/intel/igb/igb_main.c
-> > @@ -6986,6 +6986,16 @@ static void igb_tsync_interrupt(struct igb_adapt=
-er *adapter)
-> >       struct e1000_hw *hw =3D &adapter->hw;
-> >       u32 tsicr =3D rd32(E1000_TSICR);
-> >       struct ptp_clock_event event;
-> > +     const u32 mask =3D (TSINTR_SYS_WRAP | E1000_TSICR_TXTS |
-> > +                       TSINTR_TT0 | TSINTR_TT1 |
-> > +                       TSINTR_AUTT0 | TSINTR_AUTT1);
-> > +
->
-> Please move the declaration of 'mask' up, to follow the convention, the
-> "reverse christmas tree" rule. Or separate the attribution from the
-> declaration.
->
-> > +     if (hw->mac.type =3D=3D e1000_82580) {
-> > +             /* 82580 has a hardware bug that requires a explicit
->
-> And as pointed by Paul, "*an* explicit".
->
-> > +              * write to clear the TimeSync interrupt cause.
-> > +              */
-> > +             wr32(E1000_TSICR, tsicr & mask);
-> > +     }
-> >
-> >       if (tsicr & TSINTR_SYS_WRAP) {
-> >               event.type =3D PTP_CLOCK_PPS;
-> > --
-> > 2.46.0.76.ge559c4bf1a-goog
-> >
->
-> --
-> Vinicius
+vim +/ice_mbx_vf_dec_trig_e830 +1546 drivers/net/ethernet/intel/ice/ice_main.c
 
+  1426	
+  1427	/**
+  1428	 * __ice_clean_ctrlq - helper function to clean controlq rings
+  1429	 * @pf: ptr to struct ice_pf
+  1430	 * @q_type: specific Control queue type
+  1431	 */
+  1432	static int __ice_clean_ctrlq(struct ice_pf *pf, enum ice_ctl_q q_type)
+  1433	{
+  1434		struct device *dev = ice_pf_to_dev(pf);
+  1435		struct ice_rq_event_info event;
+  1436		struct ice_hw *hw = &pf->hw;
+  1437		struct ice_ctl_q_info *cq;
+  1438		u16 pending, i = 0;
+  1439		const char *qtype;
+  1440		u32 oldval, val;
+  1441	
+  1442		/* Do not clean control queue if/when PF reset fails */
+  1443		if (test_bit(ICE_RESET_FAILED, pf->state))
+  1444			return 0;
+  1445	
+  1446		switch (q_type) {
+  1447		case ICE_CTL_Q_ADMIN:
+  1448			cq = &hw->adminq;
+  1449			qtype = "Admin";
+  1450			break;
+  1451		case ICE_CTL_Q_SB:
+  1452			cq = &hw->sbq;
+  1453			qtype = "Sideband";
+  1454			break;
+  1455		case ICE_CTL_Q_MAILBOX:
+  1456			cq = &hw->mailboxq;
+  1457			qtype = "Mailbox";
+  1458			/* we are going to try to detect a malicious VF, so set the
+  1459			 * state to begin detection
+  1460			 */
+  1461			hw->mbx_snapshot.mbx_buf.state = ICE_MAL_VF_DETECT_STATE_NEW_SNAPSHOT;
+  1462			break;
+  1463		default:
+  1464			dev_warn(dev, "Unknown control queue type 0x%x\n", q_type);
+  1465			return 0;
+  1466		}
+  1467	
+  1468		/* check for error indications - PF_xx_AxQLEN register layout for
+  1469		 * FW/MBX/SB are identical so just use defines for PF_FW_AxQLEN.
+  1470		 */
+  1471		val = rd32(hw, cq->rq.len);
+  1472		if (val & (PF_FW_ARQLEN_ARQVFE_M | PF_FW_ARQLEN_ARQOVFL_M |
+  1473			   PF_FW_ARQLEN_ARQCRIT_M)) {
+  1474			oldval = val;
+  1475			if (val & PF_FW_ARQLEN_ARQVFE_M)
+  1476				dev_dbg(dev, "%s Receive Queue VF Error detected\n",
+  1477					qtype);
+  1478			if (val & PF_FW_ARQLEN_ARQOVFL_M) {
+  1479				dev_dbg(dev, "%s Receive Queue Overflow Error detected\n",
+  1480					qtype);
+  1481			}
+  1482			if (val & PF_FW_ARQLEN_ARQCRIT_M)
+  1483				dev_dbg(dev, "%s Receive Queue Critical Error detected\n",
+  1484					qtype);
+  1485			val &= ~(PF_FW_ARQLEN_ARQVFE_M | PF_FW_ARQLEN_ARQOVFL_M |
+  1486				 PF_FW_ARQLEN_ARQCRIT_M);
+  1487			if (oldval != val)
+  1488				wr32(hw, cq->rq.len, val);
+  1489		}
+  1490	
+  1491		val = rd32(hw, cq->sq.len);
+  1492		if (val & (PF_FW_ATQLEN_ATQVFE_M | PF_FW_ATQLEN_ATQOVFL_M |
+  1493			   PF_FW_ATQLEN_ATQCRIT_M)) {
+  1494			oldval = val;
+  1495			if (val & PF_FW_ATQLEN_ATQVFE_M)
+  1496				dev_dbg(dev, "%s Send Queue VF Error detected\n",
+  1497					qtype);
+  1498			if (val & PF_FW_ATQLEN_ATQOVFL_M) {
+  1499				dev_dbg(dev, "%s Send Queue Overflow Error detected\n",
+  1500					qtype);
+  1501			}
+  1502			if (val & PF_FW_ATQLEN_ATQCRIT_M)
+  1503				dev_dbg(dev, "%s Send Queue Critical Error detected\n",
+  1504					qtype);
+  1505			val &= ~(PF_FW_ATQLEN_ATQVFE_M | PF_FW_ATQLEN_ATQOVFL_M |
+  1506				 PF_FW_ATQLEN_ATQCRIT_M);
+  1507			if (oldval != val)
+  1508				wr32(hw, cq->sq.len, val);
+  1509		}
+  1510	
+  1511		event.buf_len = cq->rq_buf_size;
+  1512		event.msg_buf = kzalloc(event.buf_len, GFP_KERNEL);
+  1513		if (!event.msg_buf)
+  1514			return 0;
+  1515	
+  1516		do {
+  1517			struct ice_mbx_data data = {};
+  1518			u16 opcode;
+  1519			int ret;
+  1520	
+  1521			ret = ice_clean_rq_elem(hw, cq, &event, &pending);
+  1522			if (ret == -EALREADY)
+  1523				break;
+  1524			if (ret) {
+  1525				dev_err(dev, "%s Receive Queue event error %d\n", qtype,
+  1526					ret);
+  1527				break;
+  1528			}
+  1529	
+  1530			opcode = le16_to_cpu(event.desc.opcode);
+  1531	
+  1532			/* Notify any thread that might be waiting for this event */
+  1533			ice_aq_check_events(pf, opcode, &event);
+  1534	
+  1535			switch (opcode) {
+  1536			case ice_aqc_opc_get_link_status:
+  1537				if (ice_handle_link_event(pf, &event))
+  1538					dev_err(dev, "Could not handle link event\n");
+  1539				break;
+  1540			case ice_aqc_opc_event_lan_overflow:
+  1541				ice_vf_lan_overflow_event(pf, &event);
+  1542				break;
+  1543			case ice_mbx_opc_send_msg_to_pf:
+  1544				if (ice_is_feature_supported(pf, ICE_F_MBX_LIMIT)) {
+  1545					ice_vc_process_vf_msg(pf, &event, NULL);
+> 1546					ice_mbx_vf_dec_trig_e830(hw, &event);
+  1547				} else {
+  1548					u16 val = hw->mailboxq.num_rq_entries;
+  1549	
+  1550					data.max_num_msgs_mbx = val;
+  1551					val = ICE_MBX_OVERFLOW_WATERMARK;
+  1552					data.async_watermark_val = val;
+  1553					data.num_msg_proc = i;
+  1554					data.num_pending_arq = pending;
+  1555	
+  1556					ice_vc_process_vf_msg(pf, &event, &data);
+  1557				}
+  1558				break;
+  1559			case ice_aqc_opc_fw_logs_event:
+  1560				ice_get_fwlog_data(pf, &event);
+  1561				break;
+  1562			case ice_aqc_opc_lldp_set_mib_change:
+  1563				ice_dcb_process_lldp_set_mib_change(pf, &event);
+  1564				break;
+  1565			default:
+  1566				dev_dbg(dev, "%s Receive Queue unknown event 0x%04x ignored\n",
+  1567					qtype, opcode);
+  1568				break;
+  1569			}
+  1570		} while (pending && (i++ < ICE_DFLT_IRQ_WORK));
+  1571	
+  1572		kfree(event.msg_buf);
+  1573	
+  1574		return pending && (i == ICE_DFLT_IRQ_WORK);
+  1575	}
+  1576	
 
-
---=20
-Daiwei Li
-Software Engineer
-Mobile: 415-736-8670
-waymo.com
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
