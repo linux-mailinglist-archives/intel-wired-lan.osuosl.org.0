@@ -1,87 +1,210 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 196AC954854
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 16 Aug 2024 13:55:34 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2CD79954895
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 16 Aug 2024 14:17:37 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 59AAB40874;
-	Fri, 16 Aug 2024 11:55:31 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id CFD0460636;
+	Fri, 16 Aug 2024 12:17:35 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 8Qy9mYwmRrnj; Fri, 16 Aug 2024 11:55:30 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id hEMG88-1cUNR; Fri, 16 Aug 2024 12:17:34 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0EB9D40C4B
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C7D916074E
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1723809330;
-	bh=6MF+Hys4URJmfz1fejfZxR/uz81I1wSZn2lhLw7Q2dA=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
+	s=default; t=1723810643;
+	bh=7Vhe54p657ZEaxOtF6J8Y9Rhuu5bvFV/kWMQr7u8p7o=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=xq4ysTMkMzmJvC431XCxUJiSz9+jXWqlGifNyNtie4mdml2BEsiJFddev62OX5Bez
-	 ZpITH639eL837g0530Xijzgb9C4Id6Moqe3LH/5NUQh79sNJjNA1j5tGc5pJMfIZsG
-	 m0f5n5nn6s5yf0tyFmKOEpl510lNnAtEpMhRUhM1aQm1xdTn3JhaGjZVlyieRAnVaz
-	 4UBU55TjBgxQTrY1eSqkgyf9FaYvkYZWLtzTYQ3yU6687sAp00SYf6lODOldTqY2hS
-	 erFSufQdo06VO/cK/vw85uoJiiNkXD1ebUCShDTQ+Xtg5DWF7nb+Xh8DexN4G7ZLhh
-	 xt1jWATS1zmYA==
+	b=EvXfo5W9pRsanIUrr66hg96l5kG7rn1WLjxGiV9PMKqZgJAzEGCa54F/geWjYbQdx
+	 RLB7Od9aOUjvhcXuBV1Jbb0HEk87vRIeVBwie4StEKzS4g+4jFs8AsRbqRp/qzDPQ3
+	 KguaPTOPLFxpl9MWq73VzmDGV3h1lmD9xctXaHHft1hK4CJkMxQIES5fvQaQQQIJug
+	 DFP0ixTnBplwXEU2MnY3oReSYo3t+kcbU2cSQp29kN38MSdbW5g15k8asn9Lf6m8kH
+	 NlNeFdMBASTcyhIZI2OdrqOsVCU2vM+HBVaocmWRDBOa+8hwMY8qekkZqTaWBXe8Pt
+	 Av1tlKcqeoL6g==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 0EB9D40C4B;
-	Fri, 16 Aug 2024 11:55:30 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id C7D916074E;
+	Fri, 16 Aug 2024 12:17:23 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 0E0031BF38E
- for <intel-wired-lan@lists.osuosl.org>; Fri, 16 Aug 2024 11:55:28 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 12E271BF37E
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 16 Aug 2024 12:17:21 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id EEA9880DEE
- for <intel-wired-lan@lists.osuosl.org>; Fri, 16 Aug 2024 11:55:27 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id F30F040576
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 16 Aug 2024 12:17:20 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id tjqAFkZqR6aD for <intel-wired-lan@lists.osuosl.org>;
- Fri, 16 Aug 2024 11:55:27 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=45.249.212.187;
- helo=szxga01-in.huawei.com; envelope-from=linyunsheng@huawei.com;
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id JxHCqKnYzv3H for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 16 Aug 2024 12:17:19 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.15;
+ helo=mgamail.intel.com; envelope-from=maciej.fijalkowski@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 0957380DE8
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0957380DE8
-Received: from szxga01-in.huawei.com (szxga01-in.huawei.com [45.249.212.187])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 0957380DE8
- for <intel-wired-lan@lists.osuosl.org>; Fri, 16 Aug 2024 11:55:24 +0000 (UTC)
-Received: from mail.maildlp.com (unknown [172.19.163.174])
- by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4WlgQt2dSLzcdVh;
- Fri, 16 Aug 2024 19:55:02 +0800 (CST)
-Received: from dggpemf200006.china.huawei.com (unknown [7.185.36.61])
- by mail.maildlp.com (Postfix) with ESMTPS id 879EA1403D5;
- Fri, 16 Aug 2024 19:55:19 +0800 (CST)
-Received: from [10.67.120.129] (10.67.120.129) by
- dggpemf200006.china.huawei.com (7.185.36.61) with Microsoft SMTP Server
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 5A926400F8
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 5A926400F8
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.15])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 5A926400F8
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 16 Aug 2024 12:17:19 +0000 (UTC)
+X-CSE-ConnectionGUID: HjHaETBwTdOLQgsOl7ZLbw==
+X-CSE-MsgGUID: +JiCIHuXSUajkxQNrs+3Rw==
+X-IronPort-AV: E=McAfee;i="6700,10204,11166"; a="25862459"
+X-IronPort-AV: E=Sophos;i="6.10,151,1719903600"; d="scan'208";a="25862459"
+Received: from orviesa002.jf.intel.com ([10.64.159.142])
+ by orvoesa107.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 16 Aug 2024 05:17:16 -0700
+X-CSE-ConnectionGUID: //RlAXnXQ1KVQMBFyZ+Q4Q==
+X-CSE-MsgGUID: DF8YxqagTTORAAUM35XqVA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.10,151,1719903600"; d="scan'208";a="90384522"
+Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82])
+ by orviesa002.jf.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
+ 16 Aug 2024 05:17:15 -0700
+Received: from fmsmsx611.amr.corp.intel.com (10.18.126.91) by
+ fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.39; Fri, 16 Aug 2024 05:17:15 -0700
+Received: from fmsmsx602.amr.corp.intel.com (10.18.126.82) by
+ fmsmsx611.amr.corp.intel.com (10.18.126.91) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.39; Fri, 16 Aug 2024 05:17:14 -0700
+Received: from fmsedg602.ED.cps.intel.com (10.1.192.136) by
+ fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.39 via Frontend Transport; Fri, 16 Aug 2024 05:17:14 -0700
+Received: from NAM12-DM6-obe.outbound.protection.outlook.com (104.47.59.171)
+ by edgegateway.intel.com (192.55.55.71) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1544.11; Fri, 16 Aug 2024 19:55:18 +0800
-Message-ID: <3e069c81-a728-4d72-a5bb-3be00d182107@huawei.com>
-Date: Fri, 16 Aug 2024 19:55:18 +0800
+ 15.1.2507.39; Fri, 16 Aug 2024 05:17:14 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=k8YSim9NrI0GKb08L+satYoIQmaOcMBqkGB8ubeS4J1K3XdhdCc2Htn3/z9VFtUptmFd6pBenNntNsbNFbejE5V7tnjDpoJ159aJ4yDw2RCBOYyBPOclQ+guIVCWJolPXMT5QqxtOFQmER0S525usLOzKPRTSwHYMTbOAxEdpS9414YBW+2ZCnC19IwynnPT/u5iNPQC3nzLSAqoexXJOKUCt+9x4TODmcwH0vhbErvKIMkEdiH8OocMTd0S06yrbwJTjFDzyz4nlmYzMf4nIejwVszjRp6+sX1WQLoJinDpMZqUxcjKNK/3QQUtPlwG0075Qd5J1e5/t5JvK/8Q2w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=7Vhe54p657ZEaxOtF6J8Y9Rhuu5bvFV/kWMQr7u8p7o=;
+ b=kazsWl23V8tagsYWLgk4UTkhEC8IUDwYXwup6rjhTMcb/7Kq5zcWZZXGyqCiPuefasFZbjxcwajKTQ9saFGPwTdBwJ2J2YRpDbG4c4FSUK+RIAhstAiHqc3oCL3ZF0VIgv3j440we6qTWoyJlZUzrZdgLvJADxQgkXd9sls58MR3qmSajexzl2HwNZXkNiSmUKnxSBPqKUHOBaT15MUJpkad5VGWig2aWDQj4eyFHBXfUEpjdKPrtVIRzxKnLY2/rlf2uXZCb7H+QsbqFRwQPB+B84R/3OWqZO6gNWw7vLKNz01F28o2QOg4WeSi5MEVkI9Dz80j+gsehR4KsYSOHA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from DM4PR11MB6117.namprd11.prod.outlook.com (2603:10b6:8:b3::19) by
+ SA1PR11MB6821.namprd11.prod.outlook.com (2603:10b6:806:29d::5) with
+ Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.7828.33; Fri, 16 Aug 2024 12:17:11 +0000
+Received: from DM4PR11MB6117.namprd11.prod.outlook.com
+ ([fe80::d19:56fe:5841:77ca]) by DM4PR11MB6117.namprd11.prod.outlook.com
+ ([fe80::d19:56fe:5841:77ca%4]) with mapi id 15.20.7875.016; Fri, 16 Aug 2024
+ 12:17:11 +0000
+Date: Fri, 16 Aug 2024 14:17:03 +0200
+From: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
+To: Kurt Kanzenbach <kurt@linutronix.de>
+Message-ID: <Zr9DP5Dr+IRYESD+@boxer>
+References: <20240711-b4-igb_zero_copy-v6-0-4bfb68773b18@linutronix.de>
+Content-Type: text/plain; charset="us-ascii"
+Content-Disposition: inline
+In-Reply-To: <20240711-b4-igb_zero_copy-v6-0-4bfb68773b18@linutronix.de>
+X-ClientProxiedBy: MI1P293CA0007.ITAP293.PROD.OUTLOOK.COM
+ (2603:10a6:290:2::18) To DM4PR11MB6117.namprd11.prod.outlook.com
+ (2603:10b6:8:b3::19)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: Alexander Duyck <alexander.duyck@gmail.com>
-References: <20240808123714.462740-1-linyunsheng@huawei.com>
- <20240808123714.462740-5-linyunsheng@huawei.com>
- <d1a23116d054e2ebb00067227f0cffecefe33e11.camel@gmail.com>
- <676a2a15-d390-48a7-a8d7-6e491c89e200@huawei.com>
- <CAKgT0Uct5ptfs9ZEoe-9u-fOVz4HLf+5MS-YidKV+xELCBHKNw@mail.gmail.com>
-Content-Language: en-US
-From: Yunsheng Lin <linyunsheng@huawei.com>
-In-Reply-To: <CAKgT0Uct5ptfs9ZEoe-9u-fOVz4HLf+5MS-YidKV+xELCBHKNw@mail.gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [10.67.120.129]
-X-ClientProxiedBy: dggems702-chm.china.huawei.com (10.3.19.179) To
- dggpemf200006.china.huawei.com (7.185.36.61)
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=huawei.com
-Subject: Re: [Intel-wired-lan] [PATCH net-next v13 04/14] mm: page_frag: add
- '_va' suffix to page_frag API
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DM4PR11MB6117:EE_|SA1PR11MB6821:EE_
+X-MS-Office365-Filtering-Correlation-Id: 1618aab7-a72b-477f-f725-08dcbded5b13
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|376014|7416014|366016;
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?s2+zGwX1GdncUiAPJvZ5LgSSz/GiGpEgXcEoGr/iplJueLskqBPOQc+x/ZZ+?=
+ =?us-ascii?Q?M+Lpx9y6fhnUFw9yGWnpEDT1lsGXSoTTczR/27e+/hMA8gP70L5FT2+KPmSk?=
+ =?us-ascii?Q?SI77iPfCgVs/KQn8ftHnxmdTJf9N6zCMyib4iC+j0W+9kgIb7Zx/WPdVvlyg?=
+ =?us-ascii?Q?nwMfydxNporNSWK5LxAzw1RFy5L/jGppcNRKcaD4Wf4xnu2V6CMLQ/jQGhCn?=
+ =?us-ascii?Q?kPp42oqhcHR9E21tCnXDO7pTXay/S/g0WHHFWKP+NSQC1qDBFRUCu3o62T5l?=
+ =?us-ascii?Q?3z4vlIRNKbMeTkANBZAT3pM5k+OPEXkwg21EUf8qUkRJJFdNemVhrygFbAHk?=
+ =?us-ascii?Q?bOBi6fc7fBLO88PjXpeDdkq+GjoS2qS3u8s3EbF4aR7gzc+ZPpXVuu90/jPs?=
+ =?us-ascii?Q?VEesDrwSBWnjCYxi18I+eBIyyUHOeFvDk08Mjo6jfd44ZYCHUtD5njJoSJsO?=
+ =?us-ascii?Q?ekGdbP2f1t5IxCIBvkZQ9/jrUcsXhTws9kkXEdAMMWA57mYMhJglPew2FArg?=
+ =?us-ascii?Q?bzkrqGy1o4yCidSMUS0NWNz6ygRsZYVCTZcaY8L3UR90uq/DksFnDEvGHmL1?=
+ =?us-ascii?Q?Ppjz8H8cLA3p2FtSBeUtaUvPYitMlKYcKaceQH197QxRsDm+Mue1aEr5OOr+?=
+ =?us-ascii?Q?bfkQhX6VbANzek15W1lzqeN28kDIdGFtHPWzfWi+Ikbt7TX8uC+2NsQOrJdH?=
+ =?us-ascii?Q?jJSjJJUcEVyPw76ib76ELvmX7ZStfw+sxX1d5nyUwfv20nLIml+f4d6Mxjcu?=
+ =?us-ascii?Q?2H7hXskKt0Su/GMaiCnr4CDaXVS0r5UmNc+bXw7d332Gq9Ucy0+pW8V2P0pB?=
+ =?us-ascii?Q?YwpnrMLXCXtHT1Hu5TFZ6wzq06wegNhI+YhpYMIINuA1wDNYXhbaXC/8LTkx?=
+ =?us-ascii?Q?x1yt3S3coJKiIlUmADbZ7BZymaKRGb+6tuHqw3DGFMYgbWYF5yZQeIf5nHIu?=
+ =?us-ascii?Q?1ckMTiQiV3/mqiBml6vveQrz4x3/pSdNseC1h7IVnudlNcsABIq1GxOUz8LO?=
+ =?us-ascii?Q?eV63HefM1yFQnNMG3SIHGPEL5G0txgONz9RB6VSYVUsWz8stJJSwV8A/BT83?=
+ =?us-ascii?Q?bWT1KdEXoApvjCUm/AZsY9WwgVYwP2ruBrivubY2yd/K+rpf/rh49ZAdNPhb?=
+ =?us-ascii?Q?vPh6A0B5yfcOJZ+6PKoFEh5ImIVB5P+jJi4CKXDwpPomKMUxQ3aX1zHE5ULT?=
+ =?us-ascii?Q?W8mgaKjAw0Y4zFln4OVPgJtAFzCVbV5b76KQIks1I5eNKB/j1Rhkqnk4bdJs?=
+ =?us-ascii?Q?GqW3Qpk/V6g8ZWRdf76vbT9TqHVC7g2VdMc6roHl7kxX0bscE9kXhV8UV/Fy?=
+ =?us-ascii?Q?yWg=3D?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:DM4PR11MB6117.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(1800799024)(376014)(7416014)(366016); DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?IKxXRJC7i3K4oilIcv7uJ5K9/SULdk+hblUbufI0IE9/YluGdJDt49RLf8YL?=
+ =?us-ascii?Q?c6atgQIxl4VfkpVnG2Er8ZKOQ6S3cMH1oSrNAFbMpHP1LL/8v/rvz6mF0MFu?=
+ =?us-ascii?Q?smvmZkgq/VqTF908ieWU7O0wc/lqoprHxe99oJ66dmh3aeRWAwW9Txjxt+a7?=
+ =?us-ascii?Q?8yrIgo2XuHDQV6H4AsBfS9FsI1OKjXNMugv66gI3A3Iz3D1QAi6sogQ9Kk8z?=
+ =?us-ascii?Q?Vc1Vq5Q9m7Jd7JJ1mesC8bUnBpqzR4dCBLh+zUZcoE3pUYxNzmXtnQ31L0tz?=
+ =?us-ascii?Q?rW5Vc518zn0jVMQruBijUPDi4NqangnrROISAIBr8yj/o2bUKDYdzLHFtJWq?=
+ =?us-ascii?Q?1aPYSrHermXZ99sGK+NT4nH5vessWnee0QHWVfSUukqLqWGXd22xjeEGTJBc?=
+ =?us-ascii?Q?9c3fdjRbMLVK+jhrbILM32M93Or2R39cafMfV+3y+jFUpWg3sO2HVsWxYrJd?=
+ =?us-ascii?Q?HbusN9WS24ThU8uRZKB32ZPWae9UYgj06CSPn4D+GDJSZcSgiyH+HjNHp3eo?=
+ =?us-ascii?Q?qNgcwTscuiIlwkiuBvm55EGTSDUfAEkLjWWeV5uGXUK9r0nFNf39PirX2b+b?=
+ =?us-ascii?Q?6G37LZccVOaxuX/GIxCSB/+XnZWaADQBv01CrBZUjp4jus5st1j4KBaweoDH?=
+ =?us-ascii?Q?XIZxiICsVxFu4Atd+R3Sao+FW3EkU4Pq9klH+ngCPH2DtRoxMXjnITHyBH/m?=
+ =?us-ascii?Q?/HCaz18rIrLrktgjk9RYZCBaKXcdVzpeuuPiTuCnk+5OKXex8SJ/34veyriR?=
+ =?us-ascii?Q?5FfL0KQDmpLvjbSVuThzNrgEECzgf/3i79enSoJDXQo+SUqJFuag0fTl1V11?=
+ =?us-ascii?Q?Iqjw9DMlXRIs5NwF6yvMWLtNfZHctlru4z5RZ1jZ0ECDwec8SiJayOPieOZz?=
+ =?us-ascii?Q?KaZTn2eNasSrjSewbCp2bpGsDbXX/b7cBBDArnDWtdaTJLwPELIza7+u87WY?=
+ =?us-ascii?Q?uIfxX8u2EiRUA88q/AgrS8LAg72/PoA/7xohg4No2M7FrLQAuO0JzsUdGWwL?=
+ =?us-ascii?Q?nsqRjiWe8ztkdWpoHpVX8wXtq33lToYXE90wCe+e5Yfg5INafX4lS0C4Dwk6?=
+ =?us-ascii?Q?HaWoqk1NnQCzqvm5/OTAqpu7CtrfhhMMvFq8WjWsYH5xCTxFe7vI9vm8gRug?=
+ =?us-ascii?Q?8fR5UKyQ6p0NeUQl18YGPAi2PyB3pyERATDuLbUpmROy3Lr1Z29HGuetyjAO?=
+ =?us-ascii?Q?oUKFMj/5bWDXQ/jDbql/x/ZF74tZnpxYd/harVW0OmxX6EGxjuRFc2pSHjou?=
+ =?us-ascii?Q?NbAzUsigbyqKvEi55b+zBMcXKAuyRVrKreEVk8Fi9zRTKUY1ilU3ySv4H003?=
+ =?us-ascii?Q?6S4KjoWcKDIr8x95K/chUGZPcP2x7HqG7i4QgoPjewpchCLchONOYNNmwBPZ?=
+ =?us-ascii?Q?IuGXfpYqn2OQgHIiyn+PBydkrav1VBLj1OI1Kuut1i/qvAWR5ZhubNO8izel?=
+ =?us-ascii?Q?GWAvzPgvjHPf8JLJwtDDnsjaYXQz0a4Iz7myq2vHm7WELjlsLk8HfY8gW1iv?=
+ =?us-ascii?Q?NJz0NKuwGz7dpN0RcRD34R/Weo7EEHw21IQRViJW9wJN3QHy3r7W9WvHhSbx?=
+ =?us-ascii?Q?hsgbeqi64kLNaJFJ4dySD/Ngd9t+zJkNC3lKf0KeCYAENZkyUt0bnvgNFg5H?=
+ =?us-ascii?Q?mQ=3D=3D?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: 1618aab7-a72b-477f-f725-08dcbded5b13
+X-MS-Exchange-CrossTenant-AuthSource: DM4PR11MB6117.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 16 Aug 2024 12:17:11.3631 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: xV4cmYkInJUW3k1AA1sGi5BDkOndv3FAjqZDNmjvQZ9Qi0wwdKorXAJemAN4CO6TyL+2FGFq8m9guHA2+2ntt3vkXpcKEo8BBQ3R4nUKTXQ=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA1PR11MB6821
+X-OriginatorOrg: intel.com
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1723810639; x=1755346639;
+ h=date:from:to:cc:subject:message-id:references:
+ in-reply-to:mime-version;
+ bh=VKl9e9cZiPr8FHTJ8J76iOODRD7P3M84J6wN8t7efBk=;
+ b=D3J3LdI6Y/vuCrIKhJQa7bprngo6xj5t0bV751RqkiKDnKdBrFtjvxjg
+ /jI36B80jXVhOW67TdcR9g+aCRSzjpMdqrXNnIpFQz9xTD1iBCDtEcwzX
+ 1kbmhIg/MTFySLEOXpi+Yxyh5cCj78N9hh2kCeeieJlHq13zyFgeqVY3s
+ 0yNYuj3gBvyFZdA/YnJOok2Rsw8K4zuzUxKMzyLOtTFYfn5uXSyDXFs7Q
+ UH9Y7nyDcCSgYHgps47q6tfv9UMcxP3KhlnpDGGTLCWOG5ZUc69V1vx9G
+ 8P89ttjGw42t5cymHPXzwohzx1LbiBQ21gudOP4bsCK/pMdBDh2Ikq4Dd
+ w==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=intel.com
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=D3J3LdI6
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v6 0/6] igb: Add support for
+ AF_XDP zero-copy
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,142 +217,122 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Yonghong Song <yonghong.song@linux.dev>, kvm@vger.kernel.org,
- "Michael S. Tsirkin" <mst@redhat.com>, Neil Brown <neilb@suse.de>,
- Jason Wang <jasowang@redhat.com>, Alexei Starovoitov <ast@kernel.org>,
- linux-nvme@lists.infradead.org, Dai Ngo <Dai.Ngo@oracle.com>,
- David Howells <dhowells@redhat.com>, Keith Busch <kbusch@kernel.org>,
- Eric Dumazet <edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
- Subbaraya Sundeep <sbhatta@marvell.com>,
- Marc Dionne <marc.dionne@auristor.com>, Shuah Khan <shuah@kernel.org>,
- Christoph Hellwig <hch@lst.de>, Anna Schumaker <anna@kernel.org>,
- Jeroen de Borst <jeroendb@google.com>, Sagi Grimberg <sagi@grimberg.me>,
- Daniel Borkmann <daniel@iogearbox.net>,
+Cc: Jesper Dangaard Brouer <hawk@kernel.org>, Daniel
+ Borkmann <daniel@iogearbox.net>, Sriram Yagnaraman <sriram.yagnaraman@est.tech>,
  Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- John Fastabend <john.fastabend@gmail.com>, Andrii Nakryiko <andrii@kernel.org>,
- linux-afs@lists.infradead.org,
- =?UTF-8?Q?Eugenio_P=C3=A9rez?= <eperezma@redhat.com>,
- Stanislav Fomichev <sdf@fomichev.me>, intel-wired-lan@lists.osuosl.org,
- Olga Kornievskaia <kolga@netapp.com>, kuba@kernel.org, pabeni@redhat.com,
- Lorenzo Bianconi <lorenzo@kernel.org>, Mark Lee <Mark-MC.Lee@mediatek.com>,
- Sunil Goutham <sgoutham@marvell.com>, linux-kselftest@vger.kernel.org,
- Chaitanya Kulkarni <kch@nvidia.com>, Jesper Dangaard Brouer <hawk@kernel.org>,
- Sean Wang <sean.wang@mediatek.com>, virtualization@lists.linux.dev,
- KP Singh <kpsingh@kernel.org>, Tom Talpey <tom@talpey.com>,
- Shailend Chand <shailend@google.com>, linux-mediatek@lists.infradead.org,
- linux-mm@kvack.org, Matthias Brugger <matthias.bgg@gmail.com>,
- bpf@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Jens Axboe <axboe@kernel.dk>, Hao Luo <haoluo@google.com>,
- linux-nfs@vger.kernel.org, Song Liu <song@kernel.org>, netdev@vger.kernel.org,
- Jeff Layton <jlayton@kernel.org>, linux-kernel@vger.kernel.org,
- davem@davemloft.net, Eduard Zingerman <eddyz87@gmail.com>,
- hariprasad <hkelam@marvell.com>, Chuck Lever <chuck.lever@oracle.com>,
- Jiri Olsa <jolsa@kernel.org>, Praveen Kaligineedi <pkaligineedi@google.com>,
- Andrew Morton <akpm@linux-foundation.org>,
- Martin KaFai Lau <martin.lau@linux.dev>, Geetha sowjanya <gakula@marvell.com>,
- Trond Myklebust <trondmy@kernel.org>, Felix Fietkau <nbd@nbd.name>
+ Richard Cochran <richardcochran@gmail.com>,
+ John Fastabend <john.fastabend@gmail.com>, Alexei Starovoitov <ast@kernel.org>,
+ Sriram Yagnaraman <sriram.yagnaraman@ericsson.com>,
+ Benjamin Steinke <benjamin.steinke@woks-audio.com>,
+ Eric Dumazet <edumazet@google.com>, netdev@vger.kernel.org,
+ Tony Nguyen <anthony.l.nguyen@intel.com>, intel-wired-lan@lists.osuosl.org,
+ Jakub Kicinski <kuba@kernel.org>, bpf@vger.kernel.org, Paolo
+ Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>,
+ Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 2024/8/15 23:00, Alexander Duyck wrote:
-> On Wed, Aug 14, 2024 at 8:00 PM Yunsheng Lin <linyunsheng@huawei.com> wrote:
->>
->> On 2024/8/14 23:49, Alexander H Duyck wrote:
->>> On Thu, 2024-08-08 at 20:37 +0800, Yunsheng Lin wrote:
->>>> Currently the page_frag API is returning 'virtual address'
->>>> or 'va' when allocing and expecting 'virtual address' or
->>>> 'va' as input when freeing.
->>>>
->>>> As we are about to support new use cases that the caller
->>>> need to deal with 'struct page' or need to deal with both
->>>> 'va' and 'struct page'. In order to differentiate the API
->>>> handling between 'va' and 'struct page', add '_va' suffix
->>>> to the corresponding API mirroring the page_pool_alloc_va()
->>>> API of the page_pool. So that callers expecting to deal with
->>>> va, page or both va and page may call page_frag_alloc_va*,
->>>> page_frag_alloc_pg*, or page_frag_alloc* API accordingly.
->>>>
->>>> CC: Alexander Duyck <alexander.duyck@gmail.com>
->>>> Signed-off-by: Yunsheng Lin <linyunsheng@huawei.com>
->>>> Reviewed-by: Subbaraya Sundeep <sbhatta@marvell.com>
->>>> Acked-by: Chuck Lever <chuck.lever@oracle.com>
->>>> Acked-by: Sagi Grimberg <sagi@grimberg.me>
->>>> ---
->>>>  drivers/net/ethernet/google/gve/gve_rx.c      |  4 ++--
->>>>  drivers/net/ethernet/intel/ice/ice_txrx.c     |  2 +-
->>>>  drivers/net/ethernet/intel/ice/ice_txrx.h     |  2 +-
->>>>  drivers/net/ethernet/intel/ice/ice_txrx_lib.c |  2 +-
->>>>  .../net/ethernet/intel/ixgbevf/ixgbevf_main.c |  4 ++--
->>>>  .../marvell/octeontx2/nic/otx2_common.c       |  2 +-
->>>>  drivers/net/ethernet/mediatek/mtk_wed_wo.c    |  4 ++--
->>>>  drivers/nvme/host/tcp.c                       |  8 +++----
->>>>  drivers/nvme/target/tcp.c                     | 22 +++++++++----------
->>>>  drivers/vhost/net.c                           |  6 ++---
->>>>  include/linux/page_frag_cache.h               | 21 +++++++++---------
->>>>  include/linux/skbuff.h                        |  2 +-
->>>>  kernel/bpf/cpumap.c                           |  2 +-
->>>>  mm/page_frag_cache.c                          | 12 +++++-----
->>>>  net/core/skbuff.c                             | 16 +++++++-------
->>>>  net/core/xdp.c                                |  2 +-
->>>>  net/rxrpc/txbuf.c                             | 15 +++++++------
->>>>  net/sunrpc/svcsock.c                          |  6 ++---
->>>>  .../selftests/mm/page_frag/page_frag_test.c   | 13 ++++++-----
->>>>  19 files changed, 75 insertions(+), 70 deletions(-)
->>>>
->>>
->>> I still say no to this patch. It is an unnecessary name change and adds
->>> no value. If you insist on this patch I will reject the set every time.
->>>
->>> The fact is it is polluting the git history and just makes things
->>> harder to maintain without adding any value as you aren't changing what
->>> the function does and there is no need for this. In addition it just
->>
->> I guess I have to disagree with the above 'no need for this' part for
->> now, as mentioned in [1]:
->>
->> "There are three types of API as proposed in this patchset instead of
->> two types of API:
->> 1. page_frag_alloc_va() returns [va].
->> 2. page_frag_alloc_pg() returns [page, offset].
->> 3. page_frag_alloc() returns [va] & [page, offset].
->>
->> You seemed to miss that we need a third naming for the type 3 API.
->> Do you see type 3 API as a valid API? if yes, what naming are you
->> suggesting for it? if no, why it is not a valid API?"
+On Fri, Aug 16, 2024 at 11:23:59AM +0200, Kurt Kanzenbach wrote:
+> This is version 6 of the AF_XDP zero-copy support for igb. Since Sriram's
+> duties changed I am sending this instead. Additionally, I've tested this on
+> real hardware, Intel i210 [1].
 > 
-> I didn't. I just don't see the point in pushing out the existing API
-> to support that. In reality 2 and 3 are redundant. You probably only
-> need 3. Like I mentioned earlier you can essentially just pass a
+> Changes since v5:
+> 
+>  - Rebase to 6.11
+>  - Fix set-but-unused variable warnings
+>  - Split first patches (Maciej)
+>  - Add READ/WRITE_ONCE() for xsk_pool and xdp_prog (Maciej)
+>  - Add synchronize_net() (Maciej)
+>  - Remove IGB_RING_FLAG_AF_XDP_ZC (Maciej)
+>  - Add NETDEV_XDP_ACT_XSK_ZEROCOPY to last patch (Maciej)
+>  - Update Rx ntc handling (Maciej)
+>  - Move stats update and xdp finalize to common functions (Maciej)
+>  - "Likelyfy" XDP_REDIRECT case (Maciej)
+>  - Check Tx disabled and carrier in igb_xmit_zc() (Maciej)
+>  - RCT (Maciej)
+>  - Link to v5: https://lore.kernel.org/r/20240711-b4-igb_zero_copy-v5-0-f3f455113b11@linutronix.de
 
-If the caller just expect [page, offset], do you expect the caller also
-type 3 API, which return both [va] and [page, offset]?
-
-I am not sure if I understand why you think 2 and 3 are redundant here?
-If you think 2 and 3 are redundant here, aren't 1 and 3 also redundant
-as the similar agrument?
-
-> page_frag via pointer to the function. With that you could also look
-> at just returning a virtual address as well if you insist on having
-> something that returns all of the above. No point in having 2 and 3 be
-> seperate functions.
-
-Let's be more specific about what are your suggestion here: which way
-is the prefer way to return the virtual address. It seems there are two
-options:
-
-1. Return the virtual address by function returning as below:
-void *page_frag_alloc_bio(struct page_frag_cache *nc, struct bio_vec *bio);
-
-2. Return the virtual address by double pointer as below:
-int page_frag_alloc_bio(struct page_frag_cache *nc, struct bio_vec *bio,
-		        void **va);
-
-If the above options is what you have in mind, please be more specific
-which one is the prefer option, and why it is the prefer option.
-If the above options is not what you have in mind, please list out the
-declaration of API in your mind.
+I'll go through the set on monday.
+Thanks!
 
 > 
-> I am going to nack this patch set if you insist on this pointless
-> renaming. The fact is it is just adding noise that adds no value.
+> Changes since v4:
+> 
+>  - Rebase to v6.10
+>  - Fix issue reported by kernel test robot
+>  - Provide napi_id for xdp_rxq_info_reg() so that busy polling works
+>  - Set olinfo_status in igb_xmit_zc() so that frames are transmitted
+> 
+> Link to v4: https://lore.kernel.org/intel-wired-lan/20230804084051.14194-1-sriram.yagnaraman@est.tech/
+> 
+> [1] - https://github.com/Linutronix/TSN-Testbench/tree/main/tests/busypolling_i210
+> 
+> Original cover letter:
+> 
+> The first couple of patches adds helper funcctions to prepare for AF_XDP
+> zero-copy support which comes in the last couple of patches, one each
+> for Rx and TX paths.
+> 
+> As mentioned in v1 patchset [0], I don't have access to an actual IGB
+> device to provide correct performance numbers. I have used Intel 82576EB
+> emulator in QEMU [1] to test the changes to IGB driver.
+> 
+> The tests use one isolated vCPU for RX/TX and one isolated vCPU for the
+> xdp-sock application [2]. Hope these measurements provide at the least
+> some indication on the increase in performance when using ZC, especially
+> in the TX path. It would be awesome if someone with a real IGB NIC can
+> test the patch.
+> 
+> AF_XDP performance using 64 byte packets in Kpps.
+> Benchmark:	XDP-SKB		XDP-DRV		XDP-DRV(ZC)
+> rxdrop		220		235		350
+> txpush		1.000		1.000		410
+> l2fwd 		1.000		1.000		200
+> 
+> AF_XDP performance using 1500 byte packets in Kpps.
+> Benchmark:	XDP-SKB		XDP-DRV		XDP-DRV(ZC)
+> rxdrop		200		210		310
+> txpush		1.000		1.000		410
+> l2fwd 		0.900		1.000		160
+> 
+> [0]: https://lore.kernel.org/intel-wired-lan/20230704095915.9750-1-sriram.yagnaraman@est.tech/
+> [1]: https://www.qemu.org/docs/master/system/devices/igb.html
+> [2]: https://github.com/xdp-project/bpf-examples/tree/master/AF_XDP-example
+> 
+> v3->v4:
+> - NULL check buffer_info in igb_dump before dereferencing (Simon Horman)
+> 
+> v2->v3:
+> - Avoid TX unit hang when using AF_XDP zero-copy by setting time_stamp
+>   on the tx_buffer_info
+> - Fix uninitialized nb_buffs (Simon Horman)
+> 
+> v1->v2:
+> - Use batch XSK APIs (Maciej Fijalkowski)
+> - Follow reverse xmas tree convention and remove the ternary operator
+>   use (Simon Horman)
+> 
+> ---
+> Sriram Yagnaraman (6):
+>       igb: Always call igb_xdp_ring_update_tail() under Tx lock
+>       igb: Remove static qualifiers
+>       igb: Introduce igb_xdp_is_enabled()
+>       igb: Introduce XSK data structures and helpers
+>       igb: Add AF_XDP zero-copy Rx support
+>       igb: Add AF_XDP zero-copy Tx support
+> 
+>  drivers/net/ethernet/intel/igb/Makefile   |   2 +-
+>  drivers/net/ethernet/intel/igb/igb.h      |  36 +-
+>  drivers/net/ethernet/intel/igb/igb_main.c | 232 ++++++++----
+>  drivers/net/ethernet/intel/igb/igb_xsk.c  | 561 ++++++++++++++++++++++++++++++
+>  4 files changed, 770 insertions(+), 61 deletions(-)
+> ---
+> base-commit: e7d731326ef0622f103e5ed47d3405f71cdcd7f6
+> change-id: 20240711-b4-igb_zero_copy-bb70a31ecb0f
+> 
+> Best regards,
+> -- 
+> Kurt Kanzenbach <kurt@linutronix.de>
+> 
+> 
