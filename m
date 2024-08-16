@@ -2,93 +2,86 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7E1AF9546C5
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 16 Aug 2024 12:28:57 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 196AC954854
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 16 Aug 2024 13:55:34 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id DC22241260;
-	Fri, 16 Aug 2024 10:28:55 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 59AAB40874;
+	Fri, 16 Aug 2024 11:55:31 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id NP6J7JlKRT5c; Fri, 16 Aug 2024 10:28:54 +0000 (UTC)
+ id 8Qy9mYwmRrnj; Fri, 16 Aug 2024 11:55:30 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B36AB412C4
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0EB9D40C4B
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1723804133;
-	bh=6Mk6yub60f2qILJP02kE03ezDuDeM6GLHDKDr/lPPEQ=;
-	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=1bXziQjjTvDC+C/MgRfP3yXlLOy+PDUWGlLffzHw1diq/+40P61znS7qKRa8EZd3P
-	 8b0EhNGcBppi7zyYQpM7yC3fas+Hy8KL8X7Q+6bgdSxXdIfqHyTYiEgxbFspanJQNo
-	 cXvM66e/NH3cSU6kBdejkvjwijguUhZNiWWNHckMHReUNfRZxmnGT833AJE1CeB9Fn
-	 eQIidckHmoA+tazunwzxn0VvZEzHKyj6Q0V2MK22wjMdn5edvlxVQ+lfJzi3LBRieX
-	 ZxKf8UYLyesB8NnpenrbE3j+8sJun6m2t5itDZSaj7YxMNHaQiIauhqXqT7XspuxKa
-	 yEt0ApPxh1WsQ==
+	s=default; t=1723809330;
+	bh=6MF+Hys4URJmfz1fejfZxR/uz81I1wSZn2lhLw7Q2dA=;
+	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=xq4ysTMkMzmJvC431XCxUJiSz9+jXWqlGifNyNtie4mdml2BEsiJFddev62OX5Bez
+	 ZpITH639eL837g0530Xijzgb9C4Id6Moqe3LH/5NUQh79sNJjNA1j5tGc5pJMfIZsG
+	 m0f5n5nn6s5yf0tyFmKOEpl510lNnAtEpMhRUhM1aQm1xdTn3JhaGjZVlyieRAnVaz
+	 4UBU55TjBgxQTrY1eSqkgyf9FaYvkYZWLtzTYQ3yU6687sAp00SYf6lODOldTqY2hS
+	 erFSufQdo06VO/cK/vw85uoJiiNkXD1ebUCShDTQ+Xtg5DWF7nb+Xh8DexN4G7ZLhh
+	 xt1jWATS1zmYA==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id B36AB412C4;
-	Fri, 16 Aug 2024 10:28:53 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 0EB9D40C4B;
+	Fri, 16 Aug 2024 11:55:30 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 3CEAD1BF82C
- for <intel-wired-lan@lists.osuosl.org>; Fri, 16 Aug 2024 10:28:52 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 0E0031BF38E
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 16 Aug 2024 11:55:28 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 278D484143
- for <intel-wired-lan@lists.osuosl.org>; Fri, 16 Aug 2024 10:28:52 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id EEA9880DEE
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 16 Aug 2024 11:55:27 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id UDGjcL6rqRKn for <intel-wired-lan@lists.osuosl.org>;
- Fri, 16 Aug 2024 10:28:50 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.16;
- helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 4DAB98413E
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4DAB98413E
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.16])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 4DAB98413E
- for <intel-wired-lan@lists.osuosl.org>; Fri, 16 Aug 2024 10:28:49 +0000 (UTC)
-X-CSE-ConnectionGUID: wGJkH4ffT9SX8vYbBVJGzQ==
-X-CSE-MsgGUID: vLoc2UVLRq6mbSBcMH8AEQ==
-X-IronPort-AV: E=McAfee;i="6700,10204,11165"; a="22238707"
-X-IronPort-AV: E=Sophos;i="6.10,151,1719903600"; d="scan'208";a="22238707"
-Received: from fmviesa010.fm.intel.com ([10.60.135.150])
- by orvoesa108.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 16 Aug 2024 03:28:49 -0700
-X-CSE-ConnectionGUID: EnpIjAM7SN6Xc+9ZZzoVWA==
-X-CSE-MsgGUID: rJN8bruBSoOA0xetgqf6RQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.10,151,1719903600"; d="scan'208";a="59796906"
-Received: from lkp-server01.sh.intel.com (HELO 9a732dc145d3) ([10.239.97.150])
- by fmviesa010.fm.intel.com with ESMTP; 16 Aug 2024 03:28:48 -0700
-Received: from kbuild by 9a732dc145d3 with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1seuCM-0006II-0A
- for intel-wired-lan@lists.osuosl.org; Fri, 16 Aug 2024 10:28:46 +0000
-Date: Fri, 16 Aug 2024 18:28:14 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <202408161812.IDyWmBE4-lkp@intel.com>
-User-Agent: s-nail v14.9.24
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1723804130; x=1755340130;
- h=date:from:to:subject:message-id;
- bh=ABd8boRx/rc1yDRwZIzNwVTd16xXKprLWfqOw5J18t8=;
- b=GdM5jqzb2MCxAjtyAnimbUZ5/g7G1ffJ8Wog12CGsgz9oXVFzz8Ti67c
- vfWnAjmAGiBCU5OH0/5k55aNw/u/0oiGtKuxNIPNAohCOhsiAIIb4CVvv
- SYxFaKR8O4mS3koCiJ4E6SI8IYgRFkqqRcfxjvtt2fkCu9npL++STotch
- hO7rjUHDq4U6kx6Ywu2elQ/6erHk3Ii9eiJhXsXr5t0O8PxwSH14Hy1JV
- zHYXoYtRJL4fYEqI/6EOHFk7AefeODxRcyMnt7iuUFeCc2eJkNrVocPiu
- 8xrKRg02mZqLlWFm+jKbG1o562PDU+aiFQwUo2aBp3mypnxnE7OxBt9s2
- Q==;
+ id tjqAFkZqR6aD for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 16 Aug 2024 11:55:27 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=45.249.212.187;
+ helo=szxga01-in.huawei.com; envelope-from=linyunsheng@huawei.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 0957380DE8
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0957380DE8
+Received: from szxga01-in.huawei.com (szxga01-in.huawei.com [45.249.212.187])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 0957380DE8
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 16 Aug 2024 11:55:24 +0000 (UTC)
+Received: from mail.maildlp.com (unknown [172.19.163.174])
+ by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4WlgQt2dSLzcdVh;
+ Fri, 16 Aug 2024 19:55:02 +0800 (CST)
+Received: from dggpemf200006.china.huawei.com (unknown [7.185.36.61])
+ by mail.maildlp.com (Postfix) with ESMTPS id 879EA1403D5;
+ Fri, 16 Aug 2024 19:55:19 +0800 (CST)
+Received: from [10.67.120.129] (10.67.120.129) by
+ dggpemf200006.china.huawei.com (7.185.36.61) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1544.11; Fri, 16 Aug 2024 19:55:18 +0800
+Message-ID: <3e069c81-a728-4d72-a5bb-3be00d182107@huawei.com>
+Date: Fri, 16 Aug 2024 19:55:18 +0800
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+To: Alexander Duyck <alexander.duyck@gmail.com>
+References: <20240808123714.462740-1-linyunsheng@huawei.com>
+ <20240808123714.462740-5-linyunsheng@huawei.com>
+ <d1a23116d054e2ebb00067227f0cffecefe33e11.camel@gmail.com>
+ <676a2a15-d390-48a7-a8d7-6e491c89e200@huawei.com>
+ <CAKgT0Uct5ptfs9ZEoe-9u-fOVz4HLf+5MS-YidKV+xELCBHKNw@mail.gmail.com>
+Content-Language: en-US
+From: Yunsheng Lin <linyunsheng@huawei.com>
+In-Reply-To: <CAKgT0Uct5ptfs9ZEoe-9u-fOVz4HLf+5MS-YidKV+xELCBHKNw@mail.gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [10.67.120.129]
+X-ClientProxiedBy: dggems702-chm.china.huawei.com (10.3.19.179) To
+ dggpemf200006.china.huawei.com (7.185.36.61)
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=GdM5jqzb
-Subject: [Intel-wired-lan] [tnguy-net-queue:dev-queue] BUILD SUCCESS
- 9c2544f4a20b3c5a29974524b706ef84c3c8714d
+ dmarc=pass (p=quarantine dis=none)
+ header.from=huawei.com
+Subject: Re: [Intel-wired-lan] [PATCH net-next v13 04/14] mm: page_frag: add
+ '_va' suffix to page_frag API
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -101,105 +94,142 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: Yonghong Song <yonghong.song@linux.dev>, kvm@vger.kernel.org,
+ "Michael S. Tsirkin" <mst@redhat.com>, Neil Brown <neilb@suse.de>,
+ Jason Wang <jasowang@redhat.com>, Alexei Starovoitov <ast@kernel.org>,
+ linux-nvme@lists.infradead.org, Dai Ngo <Dai.Ngo@oracle.com>,
+ David Howells <dhowells@redhat.com>, Keith Busch <kbusch@kernel.org>,
+ Eric Dumazet <edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Subbaraya Sundeep <sbhatta@marvell.com>,
+ Marc Dionne <marc.dionne@auristor.com>, Shuah Khan <shuah@kernel.org>,
+ Christoph Hellwig <hch@lst.de>, Anna Schumaker <anna@kernel.org>,
+ Jeroen de Borst <jeroendb@google.com>, Sagi Grimberg <sagi@grimberg.me>,
+ Daniel Borkmann <daniel@iogearbox.net>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ John Fastabend <john.fastabend@gmail.com>, Andrii Nakryiko <andrii@kernel.org>,
+ linux-afs@lists.infradead.org,
+ =?UTF-8?Q?Eugenio_P=C3=A9rez?= <eperezma@redhat.com>,
+ Stanislav Fomichev <sdf@fomichev.me>, intel-wired-lan@lists.osuosl.org,
+ Olga Kornievskaia <kolga@netapp.com>, kuba@kernel.org, pabeni@redhat.com,
+ Lorenzo Bianconi <lorenzo@kernel.org>, Mark Lee <Mark-MC.Lee@mediatek.com>,
+ Sunil Goutham <sgoutham@marvell.com>, linux-kselftest@vger.kernel.org,
+ Chaitanya Kulkarni <kch@nvidia.com>, Jesper Dangaard Brouer <hawk@kernel.org>,
+ Sean Wang <sean.wang@mediatek.com>, virtualization@lists.linux.dev,
+ KP Singh <kpsingh@kernel.org>, Tom Talpey <tom@talpey.com>,
+ Shailend Chand <shailend@google.com>, linux-mediatek@lists.infradead.org,
+ linux-mm@kvack.org, Matthias Brugger <matthias.bgg@gmail.com>,
+ bpf@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Jens Axboe <axboe@kernel.dk>, Hao Luo <haoluo@google.com>,
+ linux-nfs@vger.kernel.org, Song Liu <song@kernel.org>, netdev@vger.kernel.org,
+ Jeff Layton <jlayton@kernel.org>, linux-kernel@vger.kernel.org,
+ davem@davemloft.net, Eduard Zingerman <eddyz87@gmail.com>,
+ hariprasad <hkelam@marvell.com>, Chuck Lever <chuck.lever@oracle.com>,
+ Jiri Olsa <jolsa@kernel.org>, Praveen Kaligineedi <pkaligineedi@google.com>,
+ Andrew Morton <akpm@linux-foundation.org>,
+ Martin KaFai Lau <martin.lau@linux.dev>, Geetha sowjanya <gakula@marvell.com>,
+ Trond Myklebust <trondmy@kernel.org>, Felix Fietkau <nbd@nbd.name>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git dev-queue
-branch HEAD: 9c2544f4a20b3c5a29974524b706ef84c3c8714d  ice: fix truesize operations for PAGE_SIZE >= 8192
+On 2024/8/15 23:00, Alexander Duyck wrote:
+> On Wed, Aug 14, 2024 at 8:00 PM Yunsheng Lin <linyunsheng@huawei.com> wrote:
+>>
+>> On 2024/8/14 23:49, Alexander H Duyck wrote:
+>>> On Thu, 2024-08-08 at 20:37 +0800, Yunsheng Lin wrote:
+>>>> Currently the page_frag API is returning 'virtual address'
+>>>> or 'va' when allocing and expecting 'virtual address' or
+>>>> 'va' as input when freeing.
+>>>>
+>>>> As we are about to support new use cases that the caller
+>>>> need to deal with 'struct page' or need to deal with both
+>>>> 'va' and 'struct page'. In order to differentiate the API
+>>>> handling between 'va' and 'struct page', add '_va' suffix
+>>>> to the corresponding API mirroring the page_pool_alloc_va()
+>>>> API of the page_pool. So that callers expecting to deal with
+>>>> va, page or both va and page may call page_frag_alloc_va*,
+>>>> page_frag_alloc_pg*, or page_frag_alloc* API accordingly.
+>>>>
+>>>> CC: Alexander Duyck <alexander.duyck@gmail.com>
+>>>> Signed-off-by: Yunsheng Lin <linyunsheng@huawei.com>
+>>>> Reviewed-by: Subbaraya Sundeep <sbhatta@marvell.com>
+>>>> Acked-by: Chuck Lever <chuck.lever@oracle.com>
+>>>> Acked-by: Sagi Grimberg <sagi@grimberg.me>
+>>>> ---
+>>>>  drivers/net/ethernet/google/gve/gve_rx.c      |  4 ++--
+>>>>  drivers/net/ethernet/intel/ice/ice_txrx.c     |  2 +-
+>>>>  drivers/net/ethernet/intel/ice/ice_txrx.h     |  2 +-
+>>>>  drivers/net/ethernet/intel/ice/ice_txrx_lib.c |  2 +-
+>>>>  .../net/ethernet/intel/ixgbevf/ixgbevf_main.c |  4 ++--
+>>>>  .../marvell/octeontx2/nic/otx2_common.c       |  2 +-
+>>>>  drivers/net/ethernet/mediatek/mtk_wed_wo.c    |  4 ++--
+>>>>  drivers/nvme/host/tcp.c                       |  8 +++----
+>>>>  drivers/nvme/target/tcp.c                     | 22 +++++++++----------
+>>>>  drivers/vhost/net.c                           |  6 ++---
+>>>>  include/linux/page_frag_cache.h               | 21 +++++++++---------
+>>>>  include/linux/skbuff.h                        |  2 +-
+>>>>  kernel/bpf/cpumap.c                           |  2 +-
+>>>>  mm/page_frag_cache.c                          | 12 +++++-----
+>>>>  net/core/skbuff.c                             | 16 +++++++-------
+>>>>  net/core/xdp.c                                |  2 +-
+>>>>  net/rxrpc/txbuf.c                             | 15 +++++++------
+>>>>  net/sunrpc/svcsock.c                          |  6 ++---
+>>>>  .../selftests/mm/page_frag/page_frag_test.c   | 13 ++++++-----
+>>>>  19 files changed, 75 insertions(+), 70 deletions(-)
+>>>>
+>>>
+>>> I still say no to this patch. It is an unnecessary name change and adds
+>>> no value. If you insist on this patch I will reject the set every time.
+>>>
+>>> The fact is it is polluting the git history and just makes things
+>>> harder to maintain without adding any value as you aren't changing what
+>>> the function does and there is no need for this. In addition it just
+>>
+>> I guess I have to disagree with the above 'no need for this' part for
+>> now, as mentioned in [1]:
+>>
+>> "There are three types of API as proposed in this patchset instead of
+>> two types of API:
+>> 1. page_frag_alloc_va() returns [va].
+>> 2. page_frag_alloc_pg() returns [page, offset].
+>> 3. page_frag_alloc() returns [va] & [page, offset].
+>>
+>> You seemed to miss that we need a third naming for the type 3 API.
+>> Do you see type 3 API as a valid API? if yes, what naming are you
+>> suggesting for it? if no, why it is not a valid API?"
+> 
+> I didn't. I just don't see the point in pushing out the existing API
+> to support that. In reality 2 and 3 are redundant. You probably only
+> need 3. Like I mentioned earlier you can essentially just pass a
 
-elapsed time: 1107m
+If the caller just expect [page, offset], do you expect the caller also
+type 3 API, which return both [va] and [page, offset]?
 
-configs tested: 83
-configs skipped: 2
+I am not sure if I understand why you think 2 and 3 are redundant here?
+If you think 2 and 3 are redundant here, aren't 1 and 3 also redundant
+as the similar agrument?
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+> page_frag via pointer to the function. With that you could also look
+> at just returning a virtual address as well if you insist on having
+> something that returns all of the above. No point in having 2 and 3 be
+> seperate functions.
 
-tested configs:
-alpha                             allnoconfig   gcc-13.3.0
-alpha                            allyesconfig   gcc-13.3.0
-arc                              allmodconfig   gcc-13.2.0
-arc                               allnoconfig   gcc-13.2.0
-arc                              allyesconfig   gcc-13.2.0
-arc                   randconfig-001-20240816   gcc-13.2.0
-arc                   randconfig-002-20240816   gcc-13.2.0
-arm                              allmodconfig   gcc-14.1.0
-arm                               allnoconfig   clang-20
-arm                              allyesconfig   gcc-14.1.0
-arm                   randconfig-001-20240816   clang-20
-arm                   randconfig-002-20240816   clang-20
-arm                   randconfig-003-20240816   clang-20
-arm                   randconfig-004-20240816   clang-20
-arm64                            allmodconfig   clang-20
-arm64                             allnoconfig   gcc-14.1.0
-arm64                 randconfig-001-20240816   clang-20
-arm64                 randconfig-002-20240816   clang-20
-arm64                 randconfig-003-20240816   clang-20
-arm64                 randconfig-004-20240816   clang-20
-csky                              allnoconfig   gcc-14.1.0
-csky                  randconfig-001-20240816   gcc-14.1.0
-csky                  randconfig-002-20240816   gcc-14.1.0
-hexagon                          allmodconfig   clang-20
-hexagon                           allnoconfig   clang-20
-hexagon                          allyesconfig   clang-20
-i386                             allmodconfig   gcc-12
-i386                              allnoconfig   gcc-12
-i386                             allyesconfig   gcc-12
-i386         buildonly-randconfig-001-20240816   gcc-12
-i386         buildonly-randconfig-002-20240816   clang-18
-i386         buildonly-randconfig-003-20240816   clang-18
-i386         buildonly-randconfig-004-20240816   clang-18
-i386         buildonly-randconfig-005-20240816   gcc-11
-i386         buildonly-randconfig-006-20240816   gcc-12
-i386                                defconfig   clang-18
-i386                  randconfig-001-20240816   clang-18
-i386                  randconfig-002-20240816   gcc-12
-i386                  randconfig-003-20240816   gcc-11
-i386                  randconfig-004-20240816   gcc-12
-i386                  randconfig-005-20240816   clang-18
-i386                  randconfig-006-20240816   gcc-11
-i386                  randconfig-011-20240816   gcc-12
-i386                  randconfig-012-20240816   clang-18
-i386                  randconfig-013-20240816   clang-18
-i386                  randconfig-014-20240816   gcc-12
-i386                  randconfig-015-20240816   gcc-12
-i386                  randconfig-016-20240816   gcc-12
-loongarch                        allmodconfig   gcc-14.1.0
-loongarch                         allnoconfig   gcc-14.1.0
-m68k                             allmodconfig   gcc-14.1.0
-m68k                              allnoconfig   gcc-14.1.0
-m68k                             allyesconfig   gcc-14.1.0
-microblaze                       allmodconfig   gcc-14.1.0
-microblaze                        allnoconfig   gcc-14.1.0
-microblaze                       allyesconfig   gcc-14.1.0
-mips                              allnoconfig   gcc-14.1.0
-nios2                             allnoconfig   gcc-14.1.0
-openrisc                          allnoconfig   gcc-14.1.0
-openrisc                         allyesconfig   gcc-14.1.0
-parisc                           allmodconfig   gcc-14.1.0
-parisc                            allnoconfig   gcc-14.1.0
-parisc                           allyesconfig   gcc-14.1.0
-powerpc                          allmodconfig   gcc-14.1.0
-powerpc                           allnoconfig   gcc-14.1.0
-riscv                            allmodconfig   clang-20
-riscv                             allnoconfig   gcc-14.1.0
-riscv                            allyesconfig   clang-20
-s390                             allmodconfig   clang-20
-s390                              allnoconfig   clang-20
-s390                             allyesconfig   gcc-14.1.0
-sh                               allmodconfig   gcc-14.1.0
-sh                                allnoconfig   gcc-14.1.0
-sh                               allyesconfig   gcc-14.1.0
-sparc                            allmodconfig   gcc-14.1.0
-um                               allmodconfig   clang-20
-um                                allnoconfig   clang-17
-um                               allyesconfig   gcc-12
-x86_64                            allnoconfig   clang-18
-x86_64                           allyesconfig   clang-18
-x86_64                              defconfig   gcc-11
-x86_64                          rhel-8.3-rust   clang-18
-xtensa                            allnoconfig   gcc-14.1.0
+Let's be more specific about what are your suggestion here: which way
+is the prefer way to return the virtual address. It seems there are two
+options:
 
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+1. Return the virtual address by function returning as below:
+void *page_frag_alloc_bio(struct page_frag_cache *nc, struct bio_vec *bio);
+
+2. Return the virtual address by double pointer as below:
+int page_frag_alloc_bio(struct page_frag_cache *nc, struct bio_vec *bio,
+		        void **va);
+
+If the above options is what you have in mind, please be more specific
+which one is the prefer option, and why it is the prefer option.
+If the above options is not what you have in mind, please list out the
+declaration of API in your mind.
+
+> 
+> I am going to nack this patch set if you insist on this pointless
+> renaming. The fact is it is just adding noise that adds no value.
