@@ -2,92 +2,91 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1E43D9545E6
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 16 Aug 2024 11:38:47 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 81E729545EB
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 16 Aug 2024 11:39:45 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 7B69260658;
-	Fri, 16 Aug 2024 09:38:45 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 366AA60658;
+	Fri, 16 Aug 2024 09:39:44 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id NeiQ_ViJXS2g; Fri, 16 Aug 2024 09:38:44 +0000 (UTC)
+ id XPkmDvhA7SvN; Fri, 16 Aug 2024 09:39:43 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C733460B23
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 422E860B23
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1723801124;
-	bh=4A0ncITU7sK44pZjbb9IGN+bBgHKoi/AYwMNN3yoM3w=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1723801183;
+	bh=GCA8cQuwEwNBgoj9TYSkK4RVcQzIIkJrc8uQklmoBIc=;
+	h=From:To:In-Reply-To:References:Date:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=PtHk5sAO3X9NWGEp19RSv8LyNSSTBUfMABd9Oxc6OXUDlSB9fyysEK7nFuFOOJlvI
-	 3/9jbERGGhP94EAQMutuQucwJyPpSxgIkp6aUi/B+CBFYXOHaI+je4sELUcD1UFB03
-	 lzomMFG1sLbzX1XgqxklsZYlCtPWZLy5tdykEXgho6prJbIJdcEGfFWN3uJ4XtzLtT
-	 PD9PiVkYnYOtU1n4r4izJKxXN96UJoo+vCm8yREcbH+8yUWHxdty9JNOYwDXRfPtHZ
-	 qvEfEM4L3E+I3rFWkhCzIF/NhswTe1cTfu/Nv1IHTr3RKsmvlRwUlm5L7lYvhcmudd
-	 Y08mSmxt67IuA==
+	b=QUGi+hzUknYp4IFKDVxSKnvjOYyyOkmItsa6MJEDyMr7+dc8rXewxrwgg0at+dtpp
+	 YcqsGVJ4jO7rJ7vtl9R6DDXL1wb7q8+8sEXznBVDr24zAQLvw7jDAIo/ypDbQl0185
+	 iJUn7pQbBYJOT8IO8eRsD0fGJv1s4z6oJBesrakofKJiuIde4lyqRwvpuglB7YSX6K
+	 fZs5N9Y1qNxnutpUnO83gwrkXxydDiYE+gnwumDbCaS0fx285VnSN7OC3pok9hNvMo
+	 Vj1W0K8uM59WsdIVEaDKgvjmUCGFVHblGfEu6mAhigAFCkVEQblwlcUj/W03Y1geev
+	 ohKChpIstBYWQ==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id C733460B23;
-	Fri, 16 Aug 2024 09:38:44 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 422E860B23;
+	Fri, 16 Aug 2024 09:39:43 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 186FB1BF292
- for <intel-wired-lan@lists.osuosl.org>; Fri, 16 Aug 2024 09:38:43 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 8615C1BF292
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 16 Aug 2024 09:39:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 7325460605
- for <intel-wired-lan@lists.osuosl.org>; Fri, 16 Aug 2024 09:38:42 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 7133740547
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 16 Aug 2024 09:39:41 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id I2R_3LG29DKb for <intel-wired-lan@lists.osuosl.org>;
- Fri, 16 Aug 2024 09:38:42 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 5ifLyx4SIwVN for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 16 Aug 2024 09:39:40 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=193.142.43.55;
- helo=galois.linutronix.de; envelope-from=bigeasy@linutronix.de;
+ helo=galois.linutronix.de; envelope-from=kurt@linutronix.de;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org BC7F5605A8
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org BC7F5605A8
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 1BFBA4051C
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1BFBA4051C
 Received: from galois.linutronix.de (Galois.linutronix.de [193.142.43.55])
- by smtp3.osuosl.org (Postfix) with ESMTPS id BC7F5605A8
- for <intel-wired-lan@lists.osuosl.org>; Fri, 16 Aug 2024 09:38:41 +0000 (UTC)
-Date: Fri, 16 Aug 2024 11:38:38 +0200
-From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
-To: Kurt Kanzenbach <kurt@linutronix.de>
-Message-ID: <20240816093838.ZpGD38t-@linutronix.de>
-References: <20240711-b4-igb_zero_copy-v6-0-4bfb68773b18@linutronix.de>
- <20240711-b4-igb_zero_copy-v6-1-4bfb68773b18@linutronix.de>
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 1BFBA4051C
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 16 Aug 2024 09:39:39 +0000 (UTC)
+From: Kurt Kanzenbach <kurt@linutronix.de>
+To: Daiwei Li <daiweili@google.com>, intel-wired-lan@lists.osuosl.org
+In-Reply-To: <20240814045553.947331-1-daiweili@google.com>
+References: <20240814045553.947331-1-daiweili@google.com>
+Date: Fri, 16 Aug 2024 11:39:36 +0200
+Message-ID: <8734n4vmav.fsf@kurt.kurt.home>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <20240711-b4-igb_zero_copy-v6-1-4bfb68773b18@linutronix.de>
+Content-Type: multipart/signed; boundary="=-=-=";
+ micalg=pgp-sha512; protocol="application/pgp-signature"
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linutronix.de; s=2020; t=1723801119;
+ d=linutronix.de; s=2020; t=1723801178;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=4A0ncITU7sK44pZjbb9IGN+bBgHKoi/AYwMNN3yoM3w=;
- b=YlheqFlOvIePYCb9WAVjljhc+ynBrUApZXQYXstjqBQ7JagjcVNlO+vjOsbGY9L1NVxIAx
- IV+KSpFvO+znRhG6IxxP3nUhqgJ28WQtgf3sSZaNOb/cnXlADWaqt+9qTFQmZ2T+N0BPt5
- FVQzZZ4VD0w5f4FZ9c3UhGukjaPzOQVighKCAZWSti+Jv8fmsbY6Zyw2+tsWUqHbwuQ3Ty
- fMxzr9TDCn0iUt1zyno+pTIuehwETgdedOnAUPjAoRVG5RFXicOc7LBqyIt90zwPUfMMnp
- VIKV2uqUSPbHBCVHrfSJAfe2ojce9h+j2yMzf+nNvmtoeY7++fuLaJoEO9GpaA==
+ bh=GCA8cQuwEwNBgoj9TYSkK4RVcQzIIkJrc8uQklmoBIc=;
+ b=TQVy1hjVZkSV9/q3bVbtCwOGqJrYu9NfXUhRDEcF/rj044n1iOI+D5ozqLxJjTb3wPVS2p
+ Q4NxufMC50XeV8nZw517pExjPCH8dO6lvINlDs/gcF9DZ0xc/KiILYNBDh/Lbnl/sgP5WW
+ oi4BEZ4morJO7xfgRb/eOaX6SE1ZpoRga/ubc+KXJFrLBxHIW08BmdA/qdoIQM1wqZHQjY
+ qfVWZEd7nbhp85hE3hgb5G9MuvFos7NOcE/sNMyNY5RbMMHizvuA0fytWYoh4Zgm80BGQp
+ X8GIy+b4nogTfVweY+YAnbuj0xGFJKwbEZdCpTbQU/aTcbWXo5kDaWHPY7oeQw==
 X-Mailman-Original-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed;
- d=linutronix.de; s=2020e; t=1723801119;
+ d=linutronix.de; s=2020e; t=1723801178;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=4A0ncITU7sK44pZjbb9IGN+bBgHKoi/AYwMNN3yoM3w=;
- b=TkwzjobRKZQFsqAnvwafio5sXYbUAd8gBXbxX7QN60OTP2eVC0uiXRduOEJ8cNZr3QPkm5
- tL6wBeB4koKMWrAw==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ bh=GCA8cQuwEwNBgoj9TYSkK4RVcQzIIkJrc8uQklmoBIc=;
+ b=gXgbqc0g0YJpJuzLSKYVMtDgr3vTyKl1EcypXECeHHO7pfQGIrqOMhanWq31iqn/dsobvw
+ pe04TNc4f4K8ozCA==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=linutronix.de
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=linutronix.de header.i=@linutronix.de
- header.a=rsa-sha256 header.s=2020 header.b=YlheqFlO; 
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key, unprotected) header.d=linutronix.de
+ header.i=@linutronix.de header.a=rsa-sha256 header.s=2020 header.b=TQVy1hjV; 
  dkim=pass header.d=linutronix.de header.i=@linutronix.de
- header.a=ed25519-sha256 header.s=2020e header.b=TkwzjobR
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v6 1/6] igb: Always call
- igb_xdp_ring_update_tail() under Tx lock
+ header.a=ed25519-sha256 header.s=2020e header.b=gXgbqc0g
+Subject: Re: [Intel-wired-lan] [PATCH iwl-net v3] igb: Fix not clearing
+ TimeSync interrupts for 82580
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,36 +99,63 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Maciej Fijalkowski <maciej.fijalkowski@intel.com>,
- Jesper Dangaard Brouer <hawk@kernel.org>,
- Daniel Borkmann <daniel@iogearbox.net>,
- Sriram Yagnaraman <sriram.yagnaraman@est.tech>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Richard Cochran <richardcochran@gmail.com>,
- John Fastabend <john.fastabend@gmail.com>, Alexei Starovoitov <ast@kernel.org>,
- Sriram Yagnaraman <sriram.yagnaraman@ericsson.com>,
- Benjamin Steinke <benjamin.steinke@woks-audio.com>,
- Eric Dumazet <edumazet@google.com>, netdev@vger.kernel.org,
- Tony Nguyen <anthony.l.nguyen@intel.com>, intel-wired-lan@lists.osuosl.org,
- Jakub Kicinski <kuba@kernel.org>, bpf@vger.kernel.org,
- Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>
+Cc: Daiwei Li <daiweili@google.com>, sasha.neftin@intel.com,
+ vinicius.gomes@intel.com, netdev@vger.kernel.org, richardcochran@gmail.com,
+ linux-kernel@vger.kernel.org, edumazet@google.com, anthony.l.nguyen@intel.com,
+ przemyslaw.kitszel@intel.com, kuba@kernel.org, pabeni@redhat.com,
+ davem@davemloft.net
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 2024-08-16 11:24:00 [+0200], Kurt Kanzenbach wrote:
-> index 11be39f435f3..4d5e5691c9bd 100644
-> --- a/drivers/net/ethernet/intel/igb/igb_main.c
-> +++ b/drivers/net/ethernet/intel/igb/igb_main.c
-> @@ -2914,6 +2914,7 @@ static int igb_xdp(struct net_device *dev, struct netdev_bpf *xdp)
->  	}
->  }
->  
-> +/* This function assumes __netif_tx_lock is held by the caller. */
->  static void igb_xdp_ring_update_tail(struct igb_ring *ring)
->  {
->  	/* Force memory writes to complete before letting h/w know there
-This
-  lockdep_assert_held(txring_txq(ring)->_xmit_lock);
-would be more powerful than the comment ;)
+--=-=-=
+Content-Type: text/plain
 
-Sebastian
+On Tue Aug 13 2024, Daiwei Li wrote:
+> 82580 NICs have a hardware bug that makes it
+> necessary to write into the TSICR (TimeSync Interrupt Cause) register
+> to clear it:
+> https://lore.kernel.org/all/CDCB8BE0.1EC2C%25matthew.vick@intel.com/
+>
+> Add a conditional so only for 82580 we write into the TSICR register,
+> so we don't risk losing events for other models.
+>
+> Without this change, when running ptp4l with an Intel 82580 card,
+> I get the following output:
+>
+>> timed out while polling for tx timestamp increasing tx_timestamp_timeout or
+>> increasing kworker priority may correct this issue, but a driver bug likely
+>> causes it
+>
+> This goes away with this change.
+>
+> This (partially) reverts commit ee14cc9ea19b ("igb: Fix missing time sync events").
+>
+> Fixes: ee14cc9ea19b ("igb: Fix missing time sync events")
+> Closes: https://lore.kernel.org/intel-wired-lan/CAN0jFd1kO0MMtOh8N2Ztxn6f7vvDKp2h507sMryobkBKe=xk=w@mail.gmail.com/
+> Tested-by: Daiwei Li <daiweili@google.com>
+> Suggested-by: Vinicius Costa Gomes <vinicius.gomes@intel.com>
+> Signed-off-by: Daiwei Li <daiweili@google.com>
+
+Reviewed-by: Kurt Kanzenbach <kurt@linutronix.de>
+
+--=-=-=
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQJHBAEBCgAxFiEEvLm/ssjDfdPf21mSwZPR8qpGc4IFAma/HlgTHGt1cnRAbGlu
+dXRyb25peC5kZQAKCRDBk9HyqkZzghDCEACx8T5zGnmrBjeSsXzemRWluHVJI6Ub
+7QnBxWCvIfrC8sUUzgsXYa08yMTXjTAkSh9pxTW0oVqpV01J+jd7NKJrz1qdZ1XV
+RDRF178k4DPKLSrP1/XkMaFV5DI+56OzRoZgEudq5rmSVwqcdYNh+wRrO8Oh7ucx
+xgQhXMhvzZruRCzsMNyStuqn3zF51M1YPBfgTLjk8UD9nnXGLRnwLFgv0OjUL89K
+rhD5TXZ3seFW82RelaNorkC2ALLkPAQB7Pd2GVejrcWcj23Una2aPZV44uqV1VMI
+iBnE1idHmJEO8/T4sLxwudHr1WJffb82PxadBdm7NGemqZh4OShc0GOWoWu2OEdY
+UojoM8OGofudAfol8HdUHESETaR3gK5ZIlKEl22nPWN/rDpaUCl+se7Kv7UGpacc
+vXd3AP+V/3oDb21evFjjqlQGsqodcTKD68C7OjvRZT0fSx7V0rnyxm4Lvou1zwWl
+KbWG112CXPgx1YSJNiPfsYNhJMU8wmSjM9PABy1PLLgbesLfKIbj8o1lF54Aq2Nn
+TyvhsWHYCnEPPfo2uRNtWX94h9uBZRo/Ll2kz4H4vVCD87RXkWMgNcdHcYzeiUIL
+NLnNi7PHcQtpclrQVDLyh5c8m9VKCOCFtE2g4IdiMjOV/ecP/iCknnqf3Zxs5Piy
+BTECwLhghJ5GKA==
+=sPWN
+-----END PGP SIGNATURE-----
+--=-=-=--
