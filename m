@@ -1,95 +1,96 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 55488956E41
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 19 Aug 2024 17:09:16 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3A98D956E40
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 19 Aug 2024 17:09:14 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id EAA79405FB;
+	by smtp2.osuosl.org (Postfix) with ESMTP id D5C4C405FD;
 	Mon, 19 Aug 2024 15:09:12 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id uDm1JEHGHkr2; Mon, 19 Aug 2024 15:09:11 +0000 (UTC)
+ id ABlXTKGY3Mp6; Mon, 19 Aug 2024 15:09:12 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 5FC36405F8
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org AAB6E405FB
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1724080150;
-	bh=VYxzJL/zYTS0RTltuHgT27JKtVxek25BUeqgw0i3KSQ=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
+	s=default; t=1724080151;
+	bh=QRPnZgfuD04mlqn1AsHHKOM++TRQ9dP251PdCGyiwmk=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=dMFKqixV7RKLWJHGIpYgzPV3dlIvieHu0TzWnsR5SmyjubUKhgCBf4Kghw8kV78+R
-	 BjwvTL3kuPKFHFguRbiB6OtkZ4d+Ny1iBnlEpgLaz2Bw0LFDZueHhh/re5YMBOosPN
-	 GIVqvQBFfIiEHQUCE4DGDw1bzYs7Yeja0GSF9XJ6TAnNRfswOBIydvILLrVfCiIUrc
-	 CAF3xgmjVa/vSNUajTh2qvMurIuskqpRdaUFgTazdmqYHAQnTggF9DrgBW4CWfSDTr
-	 h4TTqF1vvaF6uFB5O1l8rkFU+PL6Sdse/hFe1CX4V7zySbrJTt9OBU/JdZfEXphG6V
-	 b/GBzQjINoP3A==
+	b=yUiQ18CVB1TJkv48EcZLheiKhqFjBTlK2XWfj1AqOsJk2bl4oHP+lWxdGYa3O9gFu
+	 ZD6rLEm4GfVNa7iCdD0y4kw/d7m29n50/EYR6n5EILCqG0O/CIBYc5f+g4T4uei0Hv
+	 Okg4WpOAYXBDFmHQXlr3gop1CKZGWBGIJx3SWndmRIMc4PGnmfLm5CuQdSfkrI++NO
+	 EkkrKrWCPtCRSVeFgqhDBGUTqE2gwkDme+hLR/J28Fkf+UysHbYiCSBYqAg4sfvGF7
+	 9Z+T0qjPWAmp7BpAiS5RhtWYUqytFmMxq/fzEDR9sLSZxghUhrvJ9bjxLkt2/j8L6a
+	 B4CxeVUPC27JQ==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 5FC36405F8;
-	Mon, 19 Aug 2024 15:09:10 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id AAB6E405FB;
+	Mon, 19 Aug 2024 15:09:11 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 705C91BF41B
- for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Aug 2024 04:50:14 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 5C4E01BF3E8
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Aug 2024 05:23:47 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 5D41080C33
- for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Aug 2024 04:50:14 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 55B99607B5
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Aug 2024 05:23:47 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id I0ICPtpb7MOU for <intel-wired-lan@lists.osuosl.org>;
- Mon, 19 Aug 2024 04:50:13 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=209.85.128.54;
- helo=mail-wm1-f54.google.com; envelope-from=jirislaby@gmail.com;
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 69gTCSJRbo_l for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 19 Aug 2024 05:23:46 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=209.85.128.50;
+ helo=mail-wm1-f50.google.com; envelope-from=jirislaby@gmail.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 1313D80B7F
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1313D80B7F
-Received: from mail-wm1-f54.google.com (mail-wm1-f54.google.com
- [209.85.128.54])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 1313D80B7F
- for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Aug 2024 04:50:12 +0000 (UTC)
-Received: by mail-wm1-f54.google.com with SMTP id
- 5b1f17b1804b1-42816ca782dso32342095e9.2
- for <intel-wired-lan@lists.osuosl.org>; Sun, 18 Aug 2024 21:50:12 -0700 (PDT)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 40F606058B
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 40F606058B
+Received: from mail-wm1-f50.google.com (mail-wm1-f50.google.com
+ [209.85.128.50])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 40F606058B
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Aug 2024 05:23:46 +0000 (UTC)
+Received: by mail-wm1-f50.google.com with SMTP id
+ 5b1f17b1804b1-428101fa30aso30905675e9.3
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 18 Aug 2024 22:23:45 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1724043011; x=1724647811;
- h=content-transfer-encoding:in-reply-to:autocrypt:from
- :content-language:references:cc:to:subject:user-agent:mime-version
- :date:message-id:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=VYxzJL/zYTS0RTltuHgT27JKtVxek25BUeqgw0i3KSQ=;
- b=w+4hsBVPStNe7JemIBzhT3UsTURXgH3BMehKFeFZgPbk4++03+E6GL0Apby4OEUct7
- OLJ7hcHsX9st3j9FmnfcU3clr6JiAQIDkHrcfHf0NbWTRhVcAv1FxvUl/70wm9sOdcyo
- mhhuodnEFsi9Wg6uSEAvypTLpIdaZcjUs9V0ZHl1nj2Q08hJX2ocghS1LCmnenVl1SPa
- C2j8i+99n6jIqiqjYG4e3W5u4AWSFvv7NEyo0OyQ3w+gcXLTW58AZQGgQ/CjIsCoIx69
- WzdtKK0ekOaktRj5x8WDDHsYZ6IU/CXRRC4feZ8f/jDnclAF5a7qW/G/kboByxB/6NSE
- C6Gw==
+ d=1e100.net; s=20230601; t=1724045024; x=1724649824;
+ h=content-transfer-encoding:in-reply-to:autocrypt:content-language
+ :references:cc:to:from:subject:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=QRPnZgfuD04mlqn1AsHHKOM++TRQ9dP251PdCGyiwmk=;
+ b=hmhfd4pwW24x2RnKVJrSUQ4T1/8BN114jYNI7bJH2ET8BxVnHgGUWk9y+Sk0hAl12K
+ SHmvjxZf60tcfKQosRNgSgiKkR7WGR0qvvHnTYmGbBUMzT/ki8sIOOpSUfPuHC2zpGFY
+ jP6bNDV78nT4zn16WqMXqKUsiz5XBJfISmqW6JNlq1jDyfpy9MG2GPk2stZImNGp0wpW
+ f6UUbsO+E1zDJu0HceY/zG3yPHEKYulbLKuH2y9qLKNsgwBGnM/1a1ylbaeLLSKwXU4x
+ cUXexaMaQ2h7qMxCYy46We3psMWE3s6V3ak9pA8zPOCykLBMdX95BdengxeXh2V084ss
+ ZB0A==
 X-Forwarded-Encrypted: i=1;
- AJvYcCU7Gf/q8kmNhNdlxlNPR+Er0LfwfTHd0T403UIKWYRc2nalvBQuiQhh5xDrDfnKq/DGjvVm77ZoRgpgfG8iAoQ=@lists.osuosl.org
-X-Gm-Message-State: AOJu0YzREvIm0Xbv53kCkqZMySFrSeSv8CRrWhCP5jdwX5R77KrdFIaF
- hD9dY3iMzAiUHZPbXzMWxYmPZWjRTYWp+O/AzosFOzpgNaAmckM9
-X-Google-Smtp-Source: AGHT+IHslvwh9znIKAar3W1Y8q9MvL6x5u8S2m9JgW1IO2Uc71quggEmdnRI3eXHNOpeR4ID64WvnA==
-X-Received: by 2002:a05:600c:a43:b0:426:6696:9e50 with SMTP id
- 5b1f17b1804b1-42aa8241587mr42641595e9.14.1724043010534; 
- Sun, 18 Aug 2024 21:50:10 -0700 (PDT)
+ AJvYcCWXauFHjafHc1eOAh96Zr4p5J2Ut3cy2yhtbRG5eLTToUiBz3gQQGGaa1WOUVwYhkwKGuogz+TB88bhwVjwnDkYPjpp83dA1jPg3TpeDw6hkA==
+X-Gm-Message-State: AOJu0YyfJ2gXrmOeE+iKwshdmZrkb7c+NwjWeTG1ct1IK2+Zt4HDP5LJ
+ TZ2c2oig4C8QLY5wgd4rycGS+v+iQWUE2bao7cInbQ8xQ4gHRTwAWzRqpg==
+X-Google-Smtp-Source: AGHT+IHKzVPlN+RRAyCEZScNVcdul0vfaAZE0h4JYP0WeGlRZ4xobxUDZoF2oj/4yb3KyKR8uZjxNA==
+X-Received: by 2002:a05:600c:4692:b0:425:7bbf:fd07 with SMTP id
+ 5b1f17b1804b1-429ed7856b4mr71755305e9.5.1724045023749; 
+ Sun, 18 Aug 2024 22:23:43 -0700 (PDT)
 Received: from ?IPV6:2a0b:e7c0:0:107::aaaa:69? ([2a0b:e7c0:0:107::aaaa:69])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-37189896d74sm9331502f8f.68.2024.08.18.21.50.09
+ ffacd0b85a97d-371898aa229sm9438557f8f.88.2024.08.18.22.23.42
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 18 Aug 2024 21:50:10 -0700 (PDT)
-Message-ID: <95ef6fd9-6d86-40e2-9814-d1f671b2262d@kernel.org>
-Date: Mon, 19 Aug 2024 06:50:09 +0200
+ Sun, 18 Aug 2024 22:23:43 -0700 (PDT)
+Message-ID: <782b7159-076a-4064-8333-69c454972b29@kernel.org>
+Date: Mon, 19 Aug 2024 07:23:42 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-To: Petr Valenta <petr@jevklidu.cz>, "Rafael J. Wysocki" <rafael@kernel.org>
+From: Jiri Slaby <jirislaby@kernel.org>
+To: Bjorn Helgaas <bhelgaas@google.com>
 References: <60ac8988-ace4-4cf0-8c44-028ca741c0a1@kernel.org>
  <bd149809-f670-4b5d-a18a-f1f63624265f@kernel.org>
  <CAJZ5v0jrgC+cvjDfw+vQ1jyVz1oj28uTf9k+-Kk2EAPJj3VmdQ@mail.gmail.com>
  <6eac5c37-a5a8-4ccf-aef6-62a4a0bfcea0@jevklidu.cz>
+ <95ef6fd9-6d86-40e2-9814-d1f671b2262d@kernel.org>
 Content-Language: en-US
-From: Jiri Slaby <jirislaby@kernel.org>
 Autocrypt: addr=jirislaby@kernel.org; keydata=
  xsFNBE6S54YBEACzzjLwDUbU5elY4GTg/NdotjA0jyyJtYI86wdKraekbNE0bC4zV+ryvH4j
  rrcDwGs6tFVrAHvdHeIdI07s1iIx5R/ndcHwt4fvI8CL5PzPmn5J+h0WERR5rFprRh6axhOk
@@ -132,11 +133,11 @@ Autocrypt: addr=jirislaby@kernel.org; keydata=
  f/bIWIr0cqQmqQ33FgRhrG1+Xml6UXyJ2jExmlO8JljuOGeXYh6ZkIEyzqzffzBLXZCujlYQ
  DFXpyMNVJ2ZwPmX2mWEoYuaBU0JN7wM+/zWgOf2zRwhEuD3A2cO2PxoiIfyUEfB9SSmffaK/
  S4xXoB6wvGENZ85Hg37C7WDNdaAt6Xh2uQIly5grkgvWppkNy4ZHxE+jeNsU7tg=
-In-Reply-To: <6eac5c37-a5a8-4ccf-aef6-62a4a0bfcea0@jevklidu.cz>
+In-Reply-To: <95ef6fd9-6d86-40e2-9814-d1f671b2262d@kernel.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-Mailman-Approved-At: Mon, 19 Aug 2024 15:09:08 +0000
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=fail (p=none dis=none)
  header.from=kernel.org
 Subject: Re: [Intel-wired-lan] ACPI IRQ storm with 6.10
@@ -153,142 +154,62 @@ List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Cc: Linux regressions mailing list <regressions@lists.linux.dev>,
- przemyslaw.kitszel@intel.com,
+ "Rafael J. Wysocki" <rafael@kernel.org>, przemyslaw.kitszel@intel.com,
  Linux kernel mailing list <linux-kernel@vger.kernel.org>,
  jesse.brandeburg@intel.com,
  "linux-acpi@vger.kernel.org" <linux-acpi@vger.kernel.org>,
- Tony Nguyen <anthony.l.nguyen@intel.com>, intel-wired-lan@lists.osuosl.org,
- Len Brown <lenb@kernel.org>
+ Tony Nguyen <anthony.l.nguyen@intel.com>, Petr Valenta <petr@jevklidu.cz>,
+ intel-wired-lan@lists.osuosl.org, Len Brown <lenb@kernel.org>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-CC e1000e guys + Jesse (due to 75a3f93b5383) + Bjorn (due to b2c289415b2b)
+On 19. 08. 24, 6:50, Jiri Slaby wrote:
+> CC e1000e guys + Jesse (due to 75a3f93b5383) + Bjorn (due to b2c289415b2b)
 
-On 17. 08. 24, 19:57, Petr Valenta wrote:
-> 
-> 
-> Dne 16. 08. 24 v 20:29 Rafael J. Wysocki napsal(a):
->> On Wed, Aug 14, 2024 at 8:48 AM Jiri Slaby <jirislaby@kernel.org> wrote:
->>>
->>> On 14. 08. 24, 7:22, Jiri Slaby wrote:
->>>> Hi,
->>>>
->>>> one openSUSE's user reported that with 6.10, he sees one CPU under an
->>>> IRQ storm from ACPI (sci_interrupt):
->>>>      9:   20220768          ...  IR-IO-APIC    9-fasteoi   acpi
->>>>
->>>> At:
->>>> https://bugzilla.suse.com/show_bug.cgi?id=1229085
->>>>
->>>> 6.9 was OK.
->>>>
->>>> With acpi.debug_level=0x08000000 acpi.debug_layer=0xffffffff, there 
->>>> is a
->>>> repeated load of:
->>>>> evgpe-0673 ev_detect_gpe         : Read registers for GPE 6D:
->>>>> Status=20, Enable=00, RunEnable=4A, WakeEnable=00
->>>
->>> 0x6d seems to count excessively (10 snapshots every 1 second):
->>>> /sys/firmware/acpi/interrupts/gpe6D:   82066  EN STS enabled      
->>>> unmasked
->>>> /sys/firmware/acpi/interrupts/gpe6D:   86536  EN STS enabled      
->>>> unmasked
->>>> /sys/firmware/acpi/interrupts/gpe6D:   90990     STS enabled      
->>>> unmasked
->>>> /sys/firmware/acpi/interrupts/gpe6D:   95468  EN STS enabled      
->>>> unmasked
->>>> /sys/firmware/acpi/interrupts/gpe6D:  100282  EN STS enabled      
->>>> unmasked
->>>> /sys/firmware/acpi/interrupts/gpe6D:  105187     STS enabled      
->>>> unmasked
->>>> /sys/firmware/acpi/interrupts/gpe6D:  110014     STS enabled      
->>>> unmasked
->>>> /sys/firmware/acpi/interrupts/gpe6D:  114852     STS enabled      
->>>> unmasked
->>>> /sys/firmware/acpi/interrupts/gpe6D:  119682     STS enabled      
->>>> unmasked
->>>> /sys/firmware/acpi/interrupts/gpe6D:  124194     STS enabled      
->>>> unmasked
->>>> /sys/firmware/acpi/interrupts/gpe6D:  128641  EN STS enabled      
->>>> unmasked
->>>
->>> acpidump:
->>> https://bugzilla.suse.com/attachment.cgi?id=876677
->>>
->>> DSDT:
->>> https://bugzilla.suse.com/attachment.cgi?id=876678
->>>
->>>> Any ideas?
->>
->> GPE 6D is listed in _PRW for some devices, so maybe one of them
->> continues to trigger wakeup events?
->>
-> 
-> Disabling powertop service (which calls /usr/sbin/powertop --auto-tune) 
-> solves problem completely. After some search I have found this is the 
-> cause:
-> 
-> # causes IRQ storm on 6.10.x
-> # kernel 6.9.9 is immune
-> echo 'auto' > /sys/bus/pci/devices/0000:00:1f.6/power/control
+Bjorn,
 
-$ git log --no-merges  --oneline v6.9..v6.10 
-drivers/net/ethernet/intel/e1000e/
-76a0a3f9cc2f e1000e: fix force smbus during suspend flow
-c93a6f62cb1b e1000e: Fix S0ix residency on corporate systems
-bfd546a552e1 e1000e: move force SMBUS near the end of enable_ulp function
-6918107e2540 net: e1000e & ixgbe: Remove PCI_HEADER_TYPE_MFD duplicates
-1eb2cded45b3 net: annotate writes on dev->mtu from ndo_change_mtu()
-b2c289415b2b e1000e: Remove redundant runtime resume for ethtool_ops
-75a3f93b5383 net: intel: implement modern PM ops declarations
+I am confused by these changes:
+==========================================
+@@ -291,16 +288,13 @@ static int e1000_set_link_ksettings(struct 
+net_device *net
+dev,
+          * duplex is forced.
+          */
+         if (cmd->base.eth_tp_mdix_ctrl) {
+-               if (hw->phy.media_type != e1000_media_type_copper) {
+-                       ret_val = -EOPNOTSUPP;
+-                       goto out;
+-               }
++               if (hw->phy.media_type != e1000_media_type_copper)
++                       return -EOPNOTSUPP;
 
-The last two play with PM ^^. I cannot immediately see if the issue can 
-be caused by any of those, though.
+                 if ((cmd->base.eth_tp_mdix_ctrl != ETH_TP_MDI_AUTO) &&
+                     (cmd->base.autoneg != AUTONEG_ENABLE)) {
+                         e_err("forcing MDI/MDI-X state is not supported 
+when lin
+k speed and/or duplex are forced\n");
+-                       ret_val = -EINVAL;
+-                       goto out;
++                       return -EINVAL;
+                 }
+         }
 
-If there are no ideas, possibly giving revert of both a try?
+@@ -347,7 +341,6 @@ static int e1000_set_link_ksettings(struct 
+net_device *netde
+v,
+         }
 
-> lspci | grep 1f.6
-> 00:1f.6 Ethernet controller: Intel Corporation Device 550b (rev 20)
-> 
-> journalctl -b | grep 1f.6
-> srp 17 19:44:17 e14 kernel: pci 0000:00:1f.6: [8086:550b] type 00 class 
-> 0x020000 conventional PCI endpoint
-> srp 17 19:44:17 e14 kernel: pci 0000:00:1f.6: BAR 0 [mem 
-> 0x9c300000-0x9c31ffff]
-> srp 17 19:44:17 e14 kernel: pci 0000:00:1f.6: PME# supported from D0 
-> D3hot D3cold
-> srp 17 19:44:17 e14 kernel: pci 0000:00:1f.6: Adding to iommu group 12
-> srp 17 19:44:19 e14 kernel: e1000e 0000:00:1f.6: Interrupt Throttling 
-> Rate (ints/sec) set to dynamic conservative mode
-> srp 17 19:44:19 e14 kernel: e1000e 0000:00:1f.6 0000:00:1f.6 
-> (uninitialized): registered PHC clock
-> srp 17 19:44:20 e14 kernel: e1000e 0000:00:1f.6 eth0: (PCI 
-> Express:2.5GT/s:Width x1) fc:5c:ee:b0:13:74
-> srp 17 19:44:20 e14 kernel: e1000e 0000:00:1f.6 eth0: Intel(R) PRO/1000 
-> Network Connection
-> srp 17 19:44:20 e14 kernel: e1000e 0000:00:1f.6 eth0: MAC: 16, PHY: 12, 
-> PBA No: FFFFFF-0FF
-> srp 17 19:44:20 e14 kernel: e1000e 0000:00:1f.6 enp0s31f6: renamed from 
-> eth0
-> srp 17 19:44:24 e14 ModemManager[1434]: <info>  [base-manager] couldn't 
-> check support for device '/sys/devices/pci0000:00/0000:00:1f.6': not 
-> supported by any plugin
-> 
-> 
-> 
->> You can ask the reporter to mask that GPE via "echo mask >
->> /sys/firmware/acpi/interrupts/gpe6D" and see if the storm goes away
->> then.
->>
->> The only ACPI core issue introduced between 6.9 and 6.10 I'm aware of
->> is the one addressed by this series
->>
->> https://lore.kernel.org/linux-acpi/22385894.EfDdHjke4D@rjwysocki.net/
->>
->> but this is about the EC and the problem here doesn't appear to be
->> EC-related.  It may be worth trying anyway, though.
->>
+  out:
+-       pm_runtime_put_sync(netdev->dev.parent);
+         clear_bit(__E1000_RESETTING, &adapter->state);
+         return ret_val;
+  }
+==========================================
 
+So no more clear_bit(__E1000_RESETTING in the above fail paths. Is that 
+intentional?
+
+thanks,
 -- 
 js
 suse labs
