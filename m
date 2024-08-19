@@ -1,94 +1,94 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 37A6C956D15
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 19 Aug 2024 16:21:56 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3C8EB956D1D
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 19 Aug 2024 16:23:36 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 818286081F;
-	Mon, 19 Aug 2024 14:21:54 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id DE62060816;
+	Mon, 19 Aug 2024 14:23:34 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id DwKBE8lscuiF; Mon, 19 Aug 2024 14:21:54 +0000 (UTC)
+ id w59LeIT_zG58; Mon, 19 Aug 2024 14:23:34 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org CBD4B60819
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 15CC060818
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1724077313;
-	bh=SLHhR+rzf4JQqmUikEjK3E7yXqz/4mLlLXIqQxKal6E=;
+	s=default; t=1724077414;
+	bh=+mxhW/AMCmI2oaiMdzAW2dtIm1Ckb87i0ukk7+cIY4I=;
 	h=From:To:In-Reply-To:References:Date:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=yvKRrrbkej+0efh+YlORhW5pzg7Ef/vBtCyh4eahBYR+Lck3OWo6pxd5Pmvep0ys6
-	 K0NK7vwA4UGHbiSFiKEt8CCjxkdEDnE5Q/ROAvIgNawBb6aCEYd6ffL3/7DkuACO2k
-	 5mL44kMCEWXYOHV+gpCCvzF2JHkubh7Nmld0q/McOcMaG96nWv0zIssjZb+iXGQlo3
-	 760iYMbl357oQlzf273NY7paZAKEtDyWqWatTf+emkTUNoXrr7+NFuoK9QiJXQ7sS5
-	 3Jeirv51GesWm+83mKuY+24GOSeVK/u6wl2oSkYtiE+I0wy+s5+VA2HySS6AnbD/Z5
-	 Y/ILDW2Ys8myw==
+	b=L6xzpU7HsJtnCpyLSFPXxH09Tx3rCupUjyam6nDV9nvmao4xAJDOnYwwjemKfREUM
+	 Ud9gOpXUFeIb40lvO7WD5ZrCrlmf1oygW+LVnpBT4RGSlNdvT8DkliuK+XQYLTn34s
+	 1M3i5YnAMmp3iZCtCcBYNe/hc4D5Pb0EkGnlbSqKclnEQr22NAis4BOgH8P8PQl0Q3
+	 K010fXXebayjVF/SbhHitKLeCv7tFKL02WQVg5I7JJTf30QybYpb8ypu7NPxzDSIli
+	 VoirKfsjr0yF41sYBThFYTqUm0ZaIoDTWOxH0QMZU3jnyLaajcQNwbopfo+focmzjk
+	 1Hl1hHjoHX+/Q==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id CBD4B60819;
-	Mon, 19 Aug 2024 14:21:53 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 15CC060818;
+	Mon, 19 Aug 2024 14:23:34 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 315701BF3BC
- for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Aug 2024 14:21:52 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 8ADD41BF3BC
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Aug 2024 14:23:32 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 2A5EF80E65
- for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Aug 2024 14:21:52 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 836AB40491
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Aug 2024 14:23:32 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 2d5KXroweU4t for <intel-wired-lan@lists.osuosl.org>;
- Mon, 19 Aug 2024 14:21:51 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id Qt7ozOCZmpo3 for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 19 Aug 2024 14:23:31 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=193.142.43.55;
  helo=galois.linutronix.de; envelope-from=kurt@linutronix.de;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 6616880E51
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6616880E51
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 75B7D4048F
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 75B7D4048F
 Received: from galois.linutronix.de (Galois.linutronix.de [193.142.43.55])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 6616880E51
- for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Aug 2024 14:21:51 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 75B7D4048F
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Aug 2024 14:23:31 +0000 (UTC)
 From: Kurt Kanzenbach <kurt@linutronix.de>
 To: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
-In-Reply-To: <ZsNDdPTHu2OACpPq@boxer>
+In-Reply-To: <ZsNEU1OPt6PYhBnT@boxer>
 References: <20240711-b4-igb_zero_copy-v6-0-4bfb68773b18@linutronix.de>
- <20240711-b4-igb_zero_copy-v6-1-4bfb68773b18@linutronix.de>
- <ZsNDdPTHu2OACpPq@boxer>
-Date: Mon, 19 Aug 2024 16:21:47 +0200
-Message-ID: <87o75o8uf8.fsf@kurt.kurt.home>
+ <20240711-b4-igb_zero_copy-v6-2-4bfb68773b18@linutronix.de>
+ <ZsNEU1OPt6PYhBnT@boxer>
+Date: Mon, 19 Aug 2024 16:23:27 +0200
+Message-ID: <87jzgc8ucg.fsf@kurt.kurt.home>
 MIME-Version: 1.0
 Content-Type: multipart/signed; boundary="=-=-=";
  micalg=pgp-sha512; protocol="application/pgp-signature"
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linutronix.de; s=2020; t=1724077309;
+ d=linutronix.de; s=2020; t=1724077409;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=SLHhR+rzf4JQqmUikEjK3E7yXqz/4mLlLXIqQxKal6E=;
- b=QgYlKwZLBbVtiPm99BZV8eRbPO1RH43QBIHwGg5skvRuyWRH5SGAoOPxsdUAhhskyPESFq
- +zt6RZ2zCT+s2kOa+9MwBHSUWlokBiX4Efo3UmVzjc8NB/DxUgaouWqC1lTjmRQd5RNnLv
- Tzwpi3ebX3TJy6ajginqQ0A3b7vgmkIHKoHgzGDR1htv4Efo6HuKKJR9nKEWiyzdqg6UNb
- uW3zro91+wD7cQ3LSPlEtgBrTcf6Ys4aDmtwQ7ZjwOTtC7MQFAtLRKpQlmpOfLMj5zO1hf
- g8g+Ew9pSRuemBPCs/vLeWZQzxBmmqebKhouCZrZ6QjclHIsVVk8eJpwNVNdZQ==
+ bh=+mxhW/AMCmI2oaiMdzAW2dtIm1Ckb87i0ukk7+cIY4I=;
+ b=iUrS1NI9pTD61ICXAO/4wBIl74n5KrnCcoLLIRJtqExUDJFbD1TH94gwxGx2c/gXnkFKqJ
+ AXLGlogabypH0IYEP8XLzSgI1K/taJz+aoG5649kccSCcvGzzEpvzFXTJ5Efk9UBmcD53H
+ D4mzhDCo9AI0tpOgrP3VCpmIlmbBICmHQP7l7P6DXr6CLUeHDfeYWaTeoU9LaM6eTbK4nA
+ UtSdON26Ea2SPv9tmmdTZjMldDHUsIJnCyyqsBVFTijffukQLhZNp+gYz/Gcrl+0XaomQd
+ Yzz9vLdWcAWANhhVOU5CbZRwl5Wgb+pKci/BqLD59bVXwrNcUL4o4U2l1c546g==
 X-Mailman-Original-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed;
- d=linutronix.de; s=2020e; t=1724077309;
+ d=linutronix.de; s=2020e; t=1724077409;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=SLHhR+rzf4JQqmUikEjK3E7yXqz/4mLlLXIqQxKal6E=;
- b=G5o+YrMGIbxBmQuH4y4AQms58B24+agqX6/FnFTet/XtRI9upSMMCiOKXHK65+9s21geVU
- 1NFQQnwgIoUIbcAA==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ bh=+mxhW/AMCmI2oaiMdzAW2dtIm1Ckb87i0ukk7+cIY4I=;
+ b=edGRjFn6pqNQ9iqMPbs5B4pEJsRIwpS4DDzyET7tE6SMA5PZz69RByR20WOQtkjZtEu3Ot
+ AXxiyks0NnqfBYBg==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=linutronix.de
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=linutronix.de header.i=@linutronix.de
- header.a=rsa-sha256 header.s=2020 header.b=QgYlKwZL; 
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key, unprotected) header.d=linutronix.de
+ header.i=@linutronix.de header.a=rsa-sha256 header.s=2020 header.b=iUrS1NI9; 
  dkim=pass header.d=linutronix.de header.i=@linutronix.de
- header.a=ed25519-sha256 header.s=2020e header.b=G5o+YrMG
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v6 1/6] igb: Always call
- igb_xdp_ring_update_tail() under Tx lock
+ header.a=ed25519-sha256 header.s=2020e header.b=edGRjFn6
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v6 2/6] igb: Remove static
+ qualifiers
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -122,21 +122,24 @@ Content-Type: text/plain
 Content-Transfer-Encoding: quoted-printable
 
 On Mon Aug 19 2024, Maciej Fijalkowski wrote:
-> On Fri, Aug 16, 2024 at 11:24:00AM +0200, Kurt Kanzenbach wrote:
+> On Fri, Aug 16, 2024 at 11:24:01AM +0200, Kurt Kanzenbach wrote:
 >> From: Sriram Yagnaraman <sriram.yagnaraman@est.tech>
 >>=20
->> Always call igb_xdp_ring_update_tail() under __netif_tx_lock(), add a
->> comment to indicate that. This is needed to share the same TX ring betwe=
-en
->> XDP, XSK and slow paths.
+>> Remove static qualifiers on the following functions to be able to call
+>> from XSK specific file that is added in the later patches:
+>> - igb_xdp_tx_queue_mapping()
+>> - igb_xdp_ring_update_tail()
+>> - igb_clean_tx_ring()
+>> - igb_clean_rx_ring()
+>> - igb_xdp_xmit_back()
+>> - igb_process_skb_fields()
 >
-> Sorry for being a-hole here but I think this should go to -net as a fix...
-> I should have brought it up earlier, current igb XDP support is racy on
-> tail updates which you're fixing here.
+> How about inlining some of these that are small enough?
 >
-> Do you agree...or not?:)
+> - igb_xdp_tx_queue_mapping()
+> - igb_xdp_ring_update_tail()
 
-Yeah, makes sense. I'll add a Fixes tag and send it to iwl-net.
+Will do.
 
 Thanks,
 Kurt
@@ -146,19 +149,19 @@ Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQJHBAEBCgAxFiEEvLm/ssjDfdPf21mSwZPR8qpGc4IFAmbDVPsTHGt1cnRAbGlu
-dXRyb25peC5kZQAKCRDBk9HyqkZzgio+EACxHf2TIRo4Ebw4aCqR7PmkA/iqNbX5
-18s/iS/jVy7DJcqWb3y20H34MErTMlBuFU7uv2dXqDzYetd78zIbSQ0zeMQJiM8R
-X1haJVFaZJkiJiQcIJ9cQ4IJDalOr0D2Zxl3wKR/PSjlUJGCgFS5xPfLkJxShFGK
-Yxw7dR2CrzJFvWXMzEKxnrWJi57aoELGDVtlSd6oDZZTdgH8VOMspd2cuaG0ndw7
-tYnw6VFRWfWx/RUwmM+zt43zqMMBYciCK2f/uIm0RPFgdjyXt3cHQn4wU3Asqlm1
-7d8qH18FONfZyTmizEAIV9cP5rGnzBsD0R1/GZY6EpJhu4lHEyfnQbx6YLdr8MVI
-PaL58hRCxoZNqwVrM+faYByBLsizp+8Ptg1rxk390RPwdq+yw6lgrbpdhS9GIP5E
-2A49OeFJ8yIFANTz3HNOVLLgvek6L+K35dwuCulfJjZXq4/7INVOzC1j2sHT2EX7
-Onhmj5Rwjs57jO3qDxLS6E17rYziuCfa/h2eKJjHrQ3Vrad3PZam2AqaUTGRxoj3
-mYEk5tthd+U6swuSD/3Rj5LMjSxy7EpYwW6Z9UVhzMXnRMMLJg3FLJncSlWjHWpk
-vjV4pGSUZhAXLmzrE+qxitrHamGR95S+jj2ahw4c5t5hzFZZ9izK+GHSIYjmT15V
-VKh/fFQ1ZvMqBA==
-=Ba03
+iQJHBAEBCgAxFiEEvLm/ssjDfdPf21mSwZPR8qpGc4IFAmbDVV8THGt1cnRAbGlu
+dXRyb25peC5kZQAKCRDBk9HyqkZzgowCD/0ep7WJYeDlyu9YzP+Hs3hojDR8zDf7
+bZuuR+QZbpX2BFP7pa15MaaRzcIRumkqC4gIse67H++iEBedii9FmntU0LyeaMS/
+p6ThB/E6JY7+iCDJfTCTXNJ5A4uf4g8y6qLtizLWjsNhUwKW5HeiT2h9eHDYnJAU
+mo9KRYvjG3EFMmskiO7fxzhF5cobwoTgrIR2gOH16pwqM5B3j2rbIRjwNIriYbo5
+Q8FQBqXWPMYwxSmY1SEiHOQ5LEp8uM9VyT244UrqT24rCENLO5xKjzyFfx3lma+s
+xRgQCtYmmTQhBqC0ujozgiB50TB7yO8PCn/NEfZDEEP8sz8F3gMBGa1YFbpq/m0J
+Il8hatVhxOfMBVvseDhEW0wgEZQ/zW25YvIP1C3z/hxAz0u/RYaaioRa+HdRlws2
+zp7gtqo8E+jzKG7kK48i6CSikxBI/aauOZQ8ihg76+cBy7SVz7Veeq6WmQ/brJX+
+UArZJQZd37cNjDtZALxgvEVAXZgyogXEdfSYiBdfGHKF4Z33i0dpr83tUBi6gWOm
+9824+CM91+qJxCbl25HyAC/OPrS0YOlUxusoIxDYiRQbDOpUgw79YjqclpVhn9oi
+Z0ry80HGjTeleQ3pg7Xp9JSL1nlofr3OM3mTPpkah7MHhIUhLc7zA1P/rWMFsTXK
+Uc+jR5/+VjJ0yA==
+=1bJz
 -----END PGP SIGNATURE-----
 --=-=-=--
