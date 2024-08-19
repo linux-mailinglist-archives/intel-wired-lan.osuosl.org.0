@@ -1,74 +1,74 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 56B9C9567F4
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 19 Aug 2024 12:14:49 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4EF619567F5
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 19 Aug 2024 12:14:51 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 699CD404BF;
-	Mon, 19 Aug 2024 10:14:46 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id B07F1404F5;
+	Mon, 19 Aug 2024 10:14:49 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id pvNkPj7ZRmvJ; Mon, 19 Aug 2024 10:14:45 +0000 (UTC)
+ id oDUSZxf5EpBy; Mon, 19 Aug 2024 10:14:49 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D6A4C404C0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 18B2C404E7
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1724062485;
-	bh=lgttjxF2C9//2sgJtSX/fu1Ju2bk604KYMYslTyEl2k=;
+	s=default; t=1724062489;
+	bh=RRM3QH0kFILFQ2zQI3W3N6XcUot4mCIvTXfPj5QFu+U=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=jQlS90fbE8qW918Gbn+k40B8qN6l97uFw9J5ymadFxT68kd2/mzxe5CcpY5vVKBgP
-	 4NEgOaMvVDIpl9jWz88o31r/4ifaaShJWx75c2rCRZEzFXU9kauM3rEZeTFM0D1cKq
-	 g9WHdcz8mlPHn1BOv8egi70isbFCt+rVcyKFYIpmiUzbzeOWwzvryrrmSdw+pI2dyj
-	 MNAvTUmJuQA5ucAJ/pxnQSjt6DulOAteeYa0InrRfZBbawRvMa55Q3+nG60+TGbCY3
-	 KfcIB3PGQMjWZaKgCdJ8tfU05QfHc6/ycYg+iLaV6XnQxNgISKq2jbtOlJK0hTenHW
-	 betUNnDheNGng==
+	b=CG9OvwbrOiOE9La1wtiZhfYZypRWqO6SxXRFEeufE/ZTuCHz6DPAoXEvvZey3Frly
+	 1a6HHPi+r9zF8F7pP9hLE9AJpI+6B2Sa+H+WyODsO5FKWxureBw+X9GpNTiH/FVbex
+	 3a74eK2XKj/+Fhm7vQfnE4fT1uT7jQ9szlzqRNRXVjBgVWNhbqmNFyhDQaposXq8w2
+	 9lSrwfz18TehY5qQCzFpX+FJ/incADb8YSqUkQaf/SekcJgaevcenfcW1RLIicSt/a
+	 tzviCub04T8RZAO/6v1ciwJzBLIqZbmMLMsOkpYYaiXx6QAmN/+s9IpaKymY6C1aZ9
+	 MmK7sJ6myrI3A==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id D6A4C404C0;
-	Mon, 19 Aug 2024 10:14:45 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 18B2C404E7;
+	Mon, 19 Aug 2024 10:14:49 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 50AAF1BF39D
- for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Aug 2024 10:14:43 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id B36A31BF39D
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Aug 2024 10:14:45 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id C7A8A80581
- for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Aug 2024 10:14:42 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id AF8BB60763
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Aug 2024 10:14:45 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id vYTNt0E8XT_A for <intel-wired-lan@lists.osuosl.org>;
- Mon, 19 Aug 2024 10:14:42 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id jbe1Oj9ALEFI for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 19 Aug 2024 10:14:45 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.16;
  helo=mgamail.intel.com; envelope-from=larysa.zaremba@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 0798980847
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0798980847
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 013836072A
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 013836072A
 Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.16])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 0798980847
- for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Aug 2024 10:14:41 +0000 (UTC)
-X-CSE-ConnectionGUID: 8Z/pLdfhQWmSIqoFa26pZA==
-X-CSE-MsgGUID: TxYy1InpQLKti1L0H8SzsQ==
-X-IronPort-AV: E=McAfee;i="6700,10204,11168"; a="13090170"
-X-IronPort-AV: E=Sophos;i="6.10,158,1719903600"; d="scan'208";a="13090170"
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 013836072A
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 19 Aug 2024 10:14:44 +0000 (UTC)
+X-CSE-ConnectionGUID: SSQLtb1UTBqoJlgwO/Eiag==
+X-CSE-MsgGUID: 4CtY5DwjRAKhhspV0sW4ug==
+X-IronPort-AV: E=McAfee;i="6700,10204,11168"; a="13090181"
+X-IronPort-AV: E=Sophos;i="6.10,158,1719903600"; d="scan'208";a="13090181"
 Received: from fmviesa001.fm.intel.com ([10.60.135.141])
  by fmvoesa110.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 19 Aug 2024 03:14:41 -0700
-X-CSE-ConnectionGUID: IiwUjazURwi9aNFKqE/3NA==
-X-CSE-MsgGUID: HaRkVdDNR+ahstqUeXg/oQ==
+ 19 Aug 2024 03:14:43 -0700
+X-CSE-ConnectionGUID: 74XTKPG2TmmdQqfqkloIPg==
+X-CSE-MsgGUID: NDiyf87sRkqlF33qI7JN7g==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.10,158,1719903600"; d="scan'208";a="91097101"
+X-IronPort-AV: E=Sophos;i="6.10,158,1719903600"; d="scan'208";a="91097107"
 Received: from irvmail002.ir.intel.com ([10.43.11.120])
- by fmviesa001.fm.intel.com with ESMTP; 19 Aug 2024 03:14:37 -0700
+ by fmviesa001.fm.intel.com with ESMTP; 19 Aug 2024 03:14:39 -0700
 Received: from lincoln.igk.intel.com (lincoln.igk.intel.com [10.102.21.235])
- by irvmail002.ir.intel.com (Postfix) with ESMTP id BD74028195;
- Mon, 19 Aug 2024 11:14:35 +0100 (IST)
+ by irvmail002.ir.intel.com (Postfix) with ESMTP id DAB8F28197;
+ Mon, 19 Aug 2024 11:14:37 +0100 (IST)
 From: Larysa Zaremba <larysa.zaremba@intel.com>
 To: intel-wired-lan@lists.osuosl.org, Tony Nguyen <anthony.l.nguyen@intel.com>
-Date: Mon, 19 Aug 2024 12:05:41 +0200
-Message-ID: <20240819100606.15383-5-larysa.zaremba@intel.com>
+Date: Mon, 19 Aug 2024 12:05:42 +0200
+Message-ID: <20240819100606.15383-6-larysa.zaremba@intel.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20240819100606.15383-1-larysa.zaremba@intel.com>
 References: <20240819100606.15383-1-larysa.zaremba@intel.com>
@@ -76,25 +76,25 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1724062482; x=1755598482;
+ t=1724062485; x=1755598485;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=ggv0Vvud4p7WVAXKSxI0QumP+Iqv96sBq059E0KCF44=;
- b=YfwsuuT2DHbygUA2CuSNBcZm4Yqmt8AS3tazHttibvNq1QhhNWnDnUhQ
- H8TCDSBONacrpPsLpQPy7ncCjmjfhkSZX1vHz3Dde3Z/jZ0eZBncKQBMJ
- EHzzuY4KFd1dLnbrZVhxLijo8MCHMfdcADgzrZMK6YHV/p+sDTRMuMeR1
- 015KkDAEL/Gv2gwkbcZG8BAhKXNqE+nN0uOem8WpHyzjaPQkGRUSL6j7K
- b0jleb7uKlYIzFrI6JU9bKwrW1Q1VTZBy7aAbcPorjVVNP1pEoCBLRUMZ
- pOL7BxP6tagGZtmkrhxjEzZkcU9kVBZO/0h9+cCIGzeWsuHW6tYQX62Gk
- g==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ bh=NLhq04lnu+KpbIptdCwfMqC7vkjmfPTxuVrCa4ZWpAA=;
+ b=l9dIdaIQilHGvCt6Qo8yNY0JO1Yc1ie9JlOBnpPvHuSvTZ5q8uUphZxL
+ tuNay5izyu0nFI/HjKssac2DJVpgaZR9kWqVlkoWCkpQddE6f7hM+4nsF
+ lpu8dc8Ef1cbH2lKjXG0GOVhLl8zcMFIleg4xGsZ2TkyAoCkwI2q7EBpG
+ Ie3skdCt6NnxO/dOegL/FWHsjaVqZ/ldbQ/BF5k3ZJ8eHJ9Jo8Sm0oPjQ
+ rRkrcPZzWM0jJE6qCOm+E6VknHgKjuol965I0YtcDLChihoKPlA/XAo7m
+ 2iWaw6Rihzpe6P9x7AQjUs7BWA+0xhX9X15wwQQsvC0n4us5My3ptzpqx
+ A==;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=YfwsuuT2
-Subject: [Intel-wired-lan] [PATCH iwl-net v3 4/6] ice: check ICE_VSI_DOWN
- under rtnl_lock when preparing for reset
+ header.a=rsa-sha256 header.s=Intel header.b=l9dIdaIQ
+Subject: [Intel-wired-lan] [PATCH iwl-net v3 5/6] ice: remove ICE_CFG_BUSY
+ locking from AF_XDP code
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -123,66 +123,59 @@ Cc: Wojciech Drewek <wojciech.drewek@intel.com>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Consider the following scenario:
+Locking used in ice_qp_ena() and ice_qp_dis() does pretty much nothing,
+because ICE_CFG_BUSY is a state flag that is supposed to be set in a PF
+state, not VSI one. Therefore it does not protect the queue pair from
+e.g. reset.
 
-.ndo_bpf()		| ice_prepare_for_reset()		|
-________________________|_______________________________________|
-rtnl_lock()		|					|
-ice_down()		|					|
-			| test_bit(ICE_VSI_DOWN) - true		|
-			| ice_dis_vsi() returns			|
-ice_up()		|					|
-			| proceeds to rebuild a running VSI	|
+Despite being useless, it still can deadlock the unfortunate functions that
+have fell into the same ICE_CFG_BUSY-VSI trap. This happens if ice_qp_ena
+returns an error.
 
-.ndo_bpf() is not the only rtnl-locked callback that toggles the interface
-to apply new configuration. Another example is .set_channels().
+Remove ICE_CFG_BUSY locking from ice_qp_dis() and ice_qp_ena().
 
-To avoid the race condition above, act only after reading ICE_VSI_DOWN
-under rtnl_lock.
-
-Fixes: 0f9d5027a749 ("ice: Refactor VSI allocation, deletion and rebuild flow")
+Fixes: 2d4238f55697 ("ice: Add support for AF_XDP")
 Reviewed-by: Wojciech Drewek <wojciech.drewek@intel.com>
 Reviewed-by: Jacob Keller <jacob.e.keller@intel.com>
 Tested-by: Chandan Kumar Rout <chandanx.rout@intel.com>
 Signed-off-by: Larysa Zaremba <larysa.zaremba@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_lib.c | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_xsk.c | 9 ---------
+ 1 file changed, 9 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_lib.c b/drivers/net/ethernet/intel/ice/ice_lib.c
-index b72338974a60..94029e446b99 100644
---- a/drivers/net/ethernet/intel/ice/ice_lib.c
-+++ b/drivers/net/ethernet/intel/ice/ice_lib.c
-@@ -2665,8 +2665,7 @@ int ice_ena_vsi(struct ice_vsi *vsi, bool locked)
-  */
- void ice_dis_vsi(struct ice_vsi *vsi, bool locked)
- {
--	if (test_bit(ICE_VSI_DOWN, vsi->state))
--		return;
-+	bool already_down = test_bit(ICE_VSI_DOWN, vsi->state);
+diff --git a/drivers/net/ethernet/intel/ice/ice_xsk.c b/drivers/net/ethernet/intel/ice/ice_xsk.c
+index 8693509efbe7..5dee829bfc47 100644
+--- a/drivers/net/ethernet/intel/ice/ice_xsk.c
++++ b/drivers/net/ethernet/intel/ice/ice_xsk.c
+@@ -165,7 +165,6 @@ static int ice_qp_dis(struct ice_vsi *vsi, u16 q_idx)
+ 	struct ice_q_vector *q_vector;
+ 	struct ice_tx_ring *tx_ring;
+ 	struct ice_rx_ring *rx_ring;
+-	int timeout = 50;
+ 	int fail = 0;
+ 	int err;
  
- 	set_bit(ICE_VSI_NEEDS_RESTART, vsi->state);
+@@ -176,13 +175,6 @@ static int ice_qp_dis(struct ice_vsi *vsi, u16 q_idx)
+ 	rx_ring = vsi->rx_rings[q_idx];
+ 	q_vector = rx_ring->q_vector;
  
-@@ -2674,15 +2673,16 @@ void ice_dis_vsi(struct ice_vsi *vsi, bool locked)
- 		if (netif_running(vsi->netdev)) {
- 			if (!locked)
- 				rtnl_lock();
+-	while (test_and_set_bit(ICE_CFG_BUSY, vsi->state)) {
+-		timeout--;
+-		if (!timeout)
+-			return -EBUSY;
+-		usleep_range(1000, 2000);
+-	}
 -
--			ice_vsi_close(vsi);
-+			already_down = test_bit(ICE_VSI_DOWN, vsi->state);
-+			if (!already_down)
-+				ice_vsi_close(vsi);
- 
- 			if (!locked)
- 				rtnl_unlock();
--		} else {
-+		} else if (!already_down) {
- 			ice_vsi_close(vsi);
- 		}
--	} else if (vsi->type == ICE_VSI_CTRL) {
-+	} else if (vsi->type == ICE_VSI_CTRL && !already_down) {
- 		ice_vsi_close(vsi);
+ 	synchronize_net();
+ 	netif_carrier_off(vsi->netdev);
+ 	netif_tx_stop_queue(netdev_get_tx_queue(vsi->netdev, q_idx));
+@@ -261,7 +253,6 @@ static int ice_qp_ena(struct ice_vsi *vsi, u16 q_idx)
+ 		netif_tx_start_queue(netdev_get_tx_queue(vsi->netdev, q_idx));
+ 		netif_carrier_on(vsi->netdev);
  	}
+-	clear_bit(ICE_CFG_BUSY, vsi->state);
+ 
+ 	return fail;
  }
 -- 
 2.43.0
