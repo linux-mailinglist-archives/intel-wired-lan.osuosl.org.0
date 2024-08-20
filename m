@@ -2,81 +2,82 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3FA17958DCF
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 20 Aug 2024 20:10:07 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 80E96958E33
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 20 Aug 2024 20:44:35 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id E314560A8D;
-	Tue, 20 Aug 2024 18:10:04 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 2CE5C60AB7;
+	Tue, 20 Aug 2024 18:44:34 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Da3sbKbD1bPH; Tue, 20 Aug 2024 18:10:04 +0000 (UTC)
+ id IWpaX_vn0N_e; Tue, 20 Aug 2024 18:44:33 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1B0576088D
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org E8FA060ABD
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1724177404;
-	bh=6fGbYP0Pgm08W0S4sOq2N6tdqzefoudfHbaLxkP0eWc=;
+	s=default; t=1724179473;
+	bh=70AoaSjo96+DLI/aDgGJ/KSUUJum/oVq1+roRVZK2o8=;
 	h=Date:From:To:In-Reply-To:Subject:List-Id:List-Unsubscribe:
 	 List-Archive:List-Post:List-Help:List-Subscribe:Cc:From;
-	b=mh3K2h8X5Z9DW0gn3G0H4qJEHEoEDjBDcZ3eNG/udvJ8gewEj07Z7t631PWVlvMbC
-	 jmFjzXCg0StHAo3FniLFOVCF8HlYJ2oAaLZ8S4aKg+CgkfVPvksE57+luq6/ycxcvS
-	 P/r8pE7twpBEYxy+4Pc0W1zgX8A9EaqJu6S/ASAYn9B2feFx2LseKA5gutbyjErAZ6
-	 ShxUAMW4jFWIPjgkxyeR1dnkT/jGl1ys1fnZWzkEEK7BvtUn+5JqLpG0Vmde8kADTg
-	 kwGTcXO28oOs+lCQYHYj/g2r42EFfHFIbvb5Jlvt1f7CCli7zR7YyEyX3FYPu8EhkG
-	 l2+qK5A/sytJw==
+	b=1SvTtfT5YE4tMtLdSutkymAr1bwtKHMxqncRubV6hT9sQ5efe4NgmxljxsZwm88zy
+	 v+gOSWWe5w3BE2KudXTZhKdwO80voacHjpv1Cwp0icQ1PUOLfMz4P6nS2T2p09szhB
+	 SlxVgLnlcivZNmoodTZUHkBdWgxpYlza4IwRkLzgTMKeyniEZyzKSNRDYIG25BZBjE
+	 gNI6pzUaub0dfqGG00uKr4hnPbwUif3YXiL2G3IKA+mlUlY0mgeM/GmYalDPOw5YU3
+	 MDAbUKloOUcuXUsPisUN6d8DQt4AO6OUSw+IswdpFCB+qO5Fw5anedy2w7yM8srhv8
+	 3hIjyCWk4nT3Q==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 1B0576088D;
-	Tue, 20 Aug 2024 18:10:04 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id E8FA060ABD;
+	Tue, 20 Aug 2024 18:44:32 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id B15261BF575
- for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Aug 2024 18:10:01 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 22B551BF575
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Aug 2024 18:44:31 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 9D58A406C9
- for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Aug 2024 18:10:01 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 1B4DA4067B
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Aug 2024 18:44:31 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id g8_DUWu2_JZA for <intel-wired-lan@lists.osuosl.org>;
- Tue, 20 Aug 2024 18:10:00 +0000 (UTC)
+ id 90drYmr9VE_g for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 20 Aug 2024 18:44:30 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=145.40.73.55;
  helo=sin.source.kernel.org; envelope-from=helgaas@kernel.org;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 30A28406C8
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 30A28406C8
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 8A1294067A
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8A1294067A
 Received: from sin.source.kernel.org (sin.source.kernel.org [145.40.73.55])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 30A28406C8
- for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Aug 2024 18:10:00 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 8A1294067A
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Aug 2024 18:44:29 +0000 (UTC)
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by sin.source.kernel.org (Postfix) with ESMTP id 1F9A8CE0BB0;
- Tue, 20 Aug 2024 18:09:56 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id F28E8C4AF0E;
- Tue, 20 Aug 2024 18:09:54 +0000 (UTC)
-Date: Tue, 20 Aug 2024 13:09:52 -0500
+ by sin.source.kernel.org (Postfix) with ESMTP id 3A033CE094C;
+ Tue, 20 Aug 2024 18:44:27 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 130A5C4AF17;
+ Tue, 20 Aug 2024 18:44:25 +0000 (UTC)
+Date: Tue, 20 Aug 2024 13:44:24 -0500
 From: Bjorn Helgaas <helgaas@kernel.org>
-To: Jiri Slaby <jirislaby@kernel.org>, Petr Valenta <petr@jevklidu.cz>
-Message-ID: <20240820180952.GA217979@bhelgaas>
+To: Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>
+Message-ID: <20240820184424.GA216935@bhelgaas>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 In-Reply-To: <782b7159-076a-4064-8333-69c454972b29@kernel.org>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1724177395;
- bh=dsZSsTHCSmyV6T/HkBCcmiJ+V5vOuti6g8kY5++amGs=;
+ d=kernel.org; s=k20201202; t=1724179466;
+ bh=R/txcs1DZkukly3Qa0Vt3JIrM10BbblB1vJcIw6/Yq8=;
  h=Date:From:To:Cc:Subject:In-Reply-To:From;
- b=N8k2MJlhET5rv+1jo4tv5ZBudM9YrFu2mVRe1/LgB+1ZvMGY7Tm1DKNSLR86DGiJI
- OA9J8eSiF4/nNO9B0H6aHsFnB+Ce/UFCW8euHssufXCYACgvv5tBHVT8W/t32DRb5s
- XD2yMMoXTj4Rgyyq1hd8WsnbkXQBSSsQm9TnPTwK5V4Phc31W/07qpC0bC2AkSKTFF
- dRnboBz7W2gG4JjxazgocTmpEkRR1/aQvmKk2/FI7eie4JNNPNRS4CH8t+aN6cj03d
- +Mkmh1IPiApyuZ/YRWny2G21MAfw21XaMb9ebvk299nyPknhYRYHid689O+LehIfWW
- IJRU//hL1vIPA==
+ b=rliiBxSjFnjRgV0xG3x/qTaAvHoVWNLmRb0wKuTy2oPrAmwnkwsP22UkvwhsXTIL3
+ F4dxD5FiaDReJIUlHPyTU2loYJXasYBu20Q2ibWG07aJtW81dvqdfL7NfmUCBCWe2A
+ 9hGNH2HZ+fJnjNWIYGotEr8FUouWMqGFPWocX60/G7eGkr5CY4dql0KmXCXpjHKjEj
+ BeslEFR6tpTI59xZLd7vuRD8/gYfmGPtgUvDWxE1AEOVwghPbQIdiHkeXQtDheq0Wm
+ bA1IXutwpO9Ztp+5LVZdKJtKlKqDO5iAJkAWOOTpKkazVmrgiAdLg+iiqwqNNnP32h
+ RwwsvQ9IRG8/w==
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=kernel.org
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=N8k2MJlh
+ header.a=rsa-sha256 header.s=k20201202 header.b=rliiBxSj
 Subject: Re: [Intel-wired-lan] ACPI IRQ storm with 6.10
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -91,15 +92,16 @@ List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Cc: Linux regressions mailing list <regressions@lists.linux.dev>,
- "Rafael J. Wysocki" <rafael@kernel.org>, przemyslaw.kitszel@intel.com,
+ "Rafael J. Wysocki" <rafael@kernel.org>,
  Linux kernel mailing list <linux-kernel@vger.kernel.org>,
  "linux-acpi@vger.kernel.org" <linux-acpi@vger.kernel.org>,
- Tony Nguyen <anthony.l.nguyen@intel.com>, Bjorn Helgaas <bhelgaas@google.com>,
- intel-wired-lan@lists.osuosl.org, Len Brown <lenb@kernel.org>
+ Petr Valenta <petr@jevklidu.cz>, intel-wired-lan@lists.osuosl.org,
+ Bjorn Helgaas <bhelgaas@google.com>, Jiri Slaby <jirislaby@kernel.org>,
+ Len Brown <lenb@kernel.org>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-[+to Petr, -cc Jesse, bouncing]
+[+to Tony, Przemek for e1000e questions; -cc Jesse]
 
 On Mon, Aug 19, 2024 at 07:23:42AM +0200, Jiri Slaby wrote:
 > On 19. 08. 24, 6:50, Jiri Slaby wrote:
@@ -148,41 +150,66 @@ On Mon, Aug 19, 2024 at 07:23:42AM +0200, Jiri Slaby wrote:
 > So no more clear_bit(__E1000_RESETTING in the above fail paths. Is that
 > intentional?
 
-Not intentional.  Petr, do you have the ability to test the patch
-below?  I'm not sure it's the correct fix, but it reverts the pieces
-of b2c289415b2b that Jiri pointed out.
+I don't remember if it was intentional, but the use of
+__E1000_RESETTING is a bit subtle and I don't know what is correct.
 
-diff --git a/drivers/net/ethernet/intel/e1000e/ethtool.c b/drivers/net/ethernet/intel/e1000e/ethtool.c
-index 9364bc2b4eb1..9db36ee71684 100644
---- a/drivers/net/ethernet/intel/e1000e/ethtool.c
-+++ b/drivers/net/ethernet/intel/e1000e/ethtool.c
-@@ -280,7 +280,8 @@ static int e1000_set_link_ksettings(struct net_device *netdev,
- 	if (hw->phy.ops.check_reset_block &&
- 	    hw->phy.ops.check_reset_block(hw)) {
- 		e_err("Cannot change link characteristics when SoL/IDER is active.\n");
--		return -EINVAL;
-+		ret_val = -EINVAL;
-+		goto out;
- 	}
- 
- 	/* MDI setting is only allowed when autoneg enabled because
-@@ -288,13 +289,16 @@ static int e1000_set_link_ksettings(struct net_device *netdev,
- 	 * duplex is forced.
- 	 */
- 	if (cmd->base.eth_tp_mdix_ctrl) {
--		if (hw->phy.media_type != e1000_media_type_copper)
--			return -EOPNOTSUPP;
-+		if (hw->phy.media_type != e1000_media_type_copper) {
-+			ret_val = -EOPNOTSUPP;
-+			goto out;
-+		}
- 
- 		if ((cmd->base.eth_tp_mdix_ctrl != ETH_TP_MDI_AUTO) &&
- 		    (cmd->base.autoneg != AUTONEG_ENABLE)) {
- 			e_err("forcing MDI/MDI-X state is not supported when link speed and/or duplex are forced\n");
--			return -EINVAL;
-+			ret_val = -EINVAL;
-+			goto out;
- 		}
- 	}
- 
+Here's how it was used before I changed it with b2c289415b2b, i.e., in
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/drivers/net/ethernet/intel/e1000e/ethtool.c?id=39f59c72ad3a:
+
+  e1000_set_link_ksettings(...)
+  {
+    if (hw->phy.ops.check_reset_block(hw)) {
+      ret_val = -EINVAL;
+      goto out;
+    }
+    while (test_and_set_bit(__E1000_RESETTING, &adapter->state))
+      usleep_range(1000, 2000);
+    if (err) {
+      ret_val = -EINVAL;
+      goto out;
+    }
+    ...
+  out:
+    clear_bit(__E1000_RESETTING, &adapter->state);
+  }
+
+In this case, we *always* clear __E1000_RESETTING, even if we bail out
+before the test_and_set_bit(__E1000_RESETTING).
+
+It makes sense to me that we clear __E1000_RESETTING after we've set
+it via test_and_set_bit() because we know it was set *here*.
+
+But it seems wrong to me that we clear __E1000_RESETTING even when we
+haven't done the test_and_set_bit() because it may have been set by a
+concurrent thread executing a different operation.
+
+  e1000_set_ringparam(...)
+  {
+    if ((ring->rx_mini_pending) || (ring->rx_jumbo_pending))
+      return -EINVAL;
+    while (test_and_set_bit(__E1000_RESETTING, &adapter->state))
+      usleep_range(1000, 2000);
+    err = e1000e_setup_tx_resources(...);
+    if (err)
+      goto out;
+    ...
+  out:
+    clear_bit(__E1000_RESETTING, &adapter->state);
+  }
+
+But here, we *don't* clear __E1000_RESETTING if we bail out before the
+test_and_set_bit(__E1000_RESETTING).  This seems like the correct
+behavior.
+
+In the e1000 driver (not the e1000e driver),
+e1000_set_link_ksettings() does *not* clear __E1000_RESETTING unless
+it has already done the test_and_set_bit().
+
+b2c289415b2b changed e1000e to work that way, too.
+
+FWIW, 3ef672ab1862 ("e1000e: ethtool unnecessarily takes device out of
+RPM suspend") changed e1000e e1000_set_link_ksettings() to clear
+__E1000_RESETTING even when bailing out before the test_and_set_bit().
+That part of 3ef672ab1862 looks possibly buggy to me.
+
+Bjorn
