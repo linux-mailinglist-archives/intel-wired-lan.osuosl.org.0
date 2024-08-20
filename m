@@ -1,115 +1,97 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id AB685958BDE
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 20 Aug 2024 18:03:43 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 15B37958C0D
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 20 Aug 2024 18:16:53 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 09E85406BF;
-	Tue, 20 Aug 2024 16:03:42 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 589884048D;
+	Tue, 20 Aug 2024 16:16:51 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id iesKvtqLPNAT; Tue, 20 Aug 2024 16:03:41 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id YihzuqzHpHeN; Tue, 20 Aug 2024 16:16:50 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 843ED406BC
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org D8060404B5
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1724169820;
-	bh=ACxpErlOvFQuBRokph/wthh0GeLIFddWl+sG+UC+KHk=;
-	h=References:In-Reply-To:From:Date:To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=H+49oBCiqyPy71YT0oWa2Eq0Y4trq+ErYcsXLILfDe1ZfFWdHP5xohiDrQU+9W/dF
-	 40DB/WPlBecU2Wu+iP1Qa6uaHd7608yZx87G1hBlnXJAJ03o0DIp+lAEIi4OVOJokW
-	 XOv/oFByvQfo1rfalH57X6v9eP1aOS1nPCFPlRbjh+Dmg1J8bJJEXin0JA33uIAx6+
-	 14AXwo1xJnVmgUnP5Lz3jAo1muF3JQUUHBCpmSAP8FCroSdUPZcJU/3lhGNNJKv9Ef
-	 zgrrl5ydok2WPg/PAFonDplliXf663s4z8oYvHQmMcoskYpaXM2X1qAymF26Jcw6nF
-	 9hvEQ2T2fNPog==
+	s=default; t=1724170610;
+	bh=HTTXLIuJSU8bEb4VLmqX87SLxVWy1+GFEpn3mb/vDz0=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=r5XtLLrjmpJEcloubxzF6+/vO+xTAq1qyHyDsuN42M0NxgMjezhRvKiXL4D6/tR28
+	 OOlOG5oQS5ihYOdY0xqAoI1iA2rL984hqkqna7HfvH1kfcKZKzoGhNCYaOjiXUcRbK
+	 pH+T5LUfCGu621XjFt4o06tgk7y6U6j18Hlnq/e7xIpg7f/ZPICunq8O7JPUz0XQho
+	 7QnbxLZs4zIhVJZbB3N5edW+IJyshU56+hvvQLj9GvIW8krz2kEbY/1vmf+cD7n5JI
+	 CPc0Q4kgUPUyb/724AoLWYtuGEhJEsDPy/nkz+xI30LPraZY/ANHz26UVrvqXFhuVm
+	 f3MkxI8mO8Kwg==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 843ED406BC;
-	Tue, 20 Aug 2024 16:03:40 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id D8060404B5;
+	Tue, 20 Aug 2024 16:16:49 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 3221A1BF328
- for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Aug 2024 16:03:39 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id D1BB41BF37A
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Aug 2024 16:16:47 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 1EB4660A89
- for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Aug 2024 16:03:39 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id BE7B581276
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Aug 2024 16:16:47 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id nk8swcB3aLFj for <intel-wired-lan@lists.osuosl.org>;
- Tue, 20 Aug 2024 16:03:38 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2a00:1450:4864:20::32f; helo=mail-wm1-x32f.google.com;
- envelope-from=alexander.duyck@gmail.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org CB7B3606C5
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org CB7B3606C5
-Received: from mail-wm1-x32f.google.com (mail-wm1-x32f.google.com
- [IPv6:2a00:1450:4864:20::32f])
- by smtp3.osuosl.org (Postfix) with ESMTPS id CB7B3606C5
- for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Aug 2024 16:03:37 +0000 (UTC)
-Received: by mail-wm1-x32f.google.com with SMTP id
- 5b1f17b1804b1-42819654737so45025325e9.1
- for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Aug 2024 09:03:37 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1724169815; x=1724774615;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=ACxpErlOvFQuBRokph/wthh0GeLIFddWl+sG+UC+KHk=;
- b=HkhGGD3LmcocJTglaTxukwpjC3AeS0aJu7L24VsAIem8mrEcUg7GzMTIDhooNseb5M
- lkm1UhopxPv8S8PvZpDvK3ybC7J7NNfplAZlA8oCtp77RD+/dY52fx6AeT+PhacmGOCL
- 9GIbW1dZ15LNCJFLq45YzqJ3pWTD2dchUh+ZJbEPbCHEHWU1YawBRwPTn5ZxclmPec+X
- 2YCnlncznlfCvLiop0JJfmWnskyhWnK5WFR8LxIi3BAVRVetkZ/yy4bSnNNqgc2FW4j8
- I+yFIokZaU9bN0/sIgI23TQAA5OPhR/TO5RniF16E5y7KMMv6yTdvC4ONWK8nk2BEaJx
- X4vg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWZWvhxwc8Z4QSwk1BWbrleyzl43VYbQNFqHoZLLQt2TskmWgUBVkieSRP82HKp6wW26C0n0+gnw1ZeByaWGFc=@lists.osuosl.org
-X-Gm-Message-State: AOJu0YysZJqj7SwPIGsYxgdQWv65JI0a82Vetfig9VmKxlE1D1f3+rh3
- hn8FXlkxKBA+y+ojqMj3TUPHo76RLk6orhCI8/2G/4uLBeWblqmtGLmI1w/60URuNCN5Li7WxSj
- x8pJRJ+JMJJtmt2lJGAAGvMcHAB8=
-X-Google-Smtp-Source: AGHT+IF4DoS60WZqDqVaq8Y/5SjjI7zscaIxzpj60ezQwLm3viTYLpGZpmD+jTekneRZUAoDJMoW7JwgYwWaXYZHKdQ=
-X-Received: by 2002:adf:f285:0:b0:371:888d:7aaa with SMTP id
- ffacd0b85a97d-371946b1ae9mr9087932f8f.49.1724169814881; Tue, 20 Aug 2024
- 09:03:34 -0700 (PDT)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id wNnD3q_VkJ9W for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 20 Aug 2024 16:16:46 +0000 (UTC)
+Received-SPF: None (mailfrom) identity=mailfrom; client-ip=198.175.65.21;
+ helo=mgamail.intel.com; envelope-from=dawid.osuchowski@linux.intel.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 1FB9C81271
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1FB9C81271
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.21])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 1FB9C81271
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Aug 2024 16:16:45 +0000 (UTC)
+X-CSE-ConnectionGUID: XATnUAMRTjy410eRHr8PjA==
+X-CSE-MsgGUID: EnGIIEoGQ7uyHvGHEVXeOQ==
+X-IronPort-AV: E=McAfee;i="6700,10204,11170"; a="22452823"
+X-IronPort-AV: E=Sophos;i="6.10,162,1719903600"; d="scan'208";a="22452823"
+Received: from orviesa002.jf.intel.com ([10.64.159.142])
+ by orvoesa113.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 20 Aug 2024 09:15:53 -0700
+X-CSE-ConnectionGUID: 6zDUOe6XTTu9DbWTyc7pjw==
+X-CSE-MsgGUID: jRtI3O3LSLC5n78td7lzEA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.10,162,1719903600"; d="scan'208";a="91502808"
+Received: from pae-dbg-x10sri-f_n1_f.igk.intel.com (HELO
+ localhost.igk.intel.com) ([10.91.240.220])
+ by orviesa002-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 20 Aug 2024 09:15:50 -0700
+From: Dawid Osuchowski <dawid.osuchowski@linux.intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Tue, 20 Aug 2024 18:15:24 +0200
+Message-ID: <20240820161524.108578-1-dawid.osuchowski@linux.intel.com>
+X-Mailer: git-send-email 2.44.0
 MIME-Version: 1.0
-References: <20240808123714.462740-1-linyunsheng@huawei.com>
- <20240808123714.462740-5-linyunsheng@huawei.com>
- <d1a23116d054e2ebb00067227f0cffecefe33e11.camel@gmail.com>
- <676a2a15-d390-48a7-a8d7-6e491c89e200@huawei.com>
- <CAKgT0Uct5ptfs9ZEoe-9u-fOVz4HLf+5MS-YidKV+xELCBHKNw@mail.gmail.com>
- <3e069c81-a728-4d72-a5bb-3be00d182107@huawei.com>
- <CAKgT0UcDDFeMqD_eRe1-2Og0GEEFyNP90E9SDxDjskdgtMe0Uw@mail.gmail.com>
- <98ceade3-8d60-45bf-a419-ff3982a96101@huawei.com>
-In-Reply-To: <98ceade3-8d60-45bf-a419-ff3982a96101@huawei.com>
-From: Alexander Duyck <alexander.duyck@gmail.com>
-Date: Tue, 20 Aug 2024 09:02:57 -0700
-Message-ID: <CAKgT0Uc+e3MUb4CK1i7H7F=y-fHTxiGF8zddBFiqFRdbd6ofLg@mail.gmail.com>
-To: Yunsheng Lin <linyunsheng@huawei.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1724169815; x=1724774615; darn=lists.osuosl.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=ACxpErlOvFQuBRokph/wthh0GeLIFddWl+sG+UC+KHk=;
- b=LH7Q0oqfhYwY85a7xqFp4Wa7lgewRASWYxMZ2oUyM90dbBo5g9v40JhwNvnu10PAGy
- 6kz+e7qM7/hIgKUehddyq7M0nAOlbZeOaxm25HVonG1TIPoV9jcY1bqGy6q27RLDVZAf
- SpETI95ZV0T1H2kVWo2ed5J7XpOYHRhZ66n+M2h3ezoj2+z8hGrjqwuvjO8YHxOPjV7V
- pP2XM6qSRw+LqIEXCcfd1D9sQs4MIMa8Kpc7IqQmUmAJmljj1/K/N0gE0/FypTzK377H
- B8bc0otL6XuWTISt8bAmxLXdHBCLgfEpUXee8CkRTASwxFtAf6/cKhs/+YXMK2xx6rq0
- PMFA==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=gmail.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
- header.a=rsa-sha256 header.s=20230601 header.b=LH7Q0oqf
-Subject: Re: [Intel-wired-lan] [PATCH net-next v13 04/14] mm: page_frag: add
- '_va' suffix to page_frag API
+Content-Transfer-Encoding: 8bit
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1724170607; x=1755706607;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=mCCvaMkdnhuYW+qISu3LkjPeWGUYJVB6928qIq6h5xQ=;
+ b=d8Ayq8fsco8eEax5iAM6DPdNMq+MVhNI11yPPdxnWqDTcX0pzb3WebUq
+ yr5bwyQ325GxGo1mxia6RbdkrVWY40mAObGSR7Wq5Mq+M6xqP2lydPtuk
+ U/O+XQrySBSm9VteROe899eVIWdsu20/og2vuQynjPWMMmRg7i5qZdpnk
+ BaXEzjdcijRB03tZNkHPBnzGRphe0mCs6soWQUHSPIzjo5tFOXFquNb0i
+ WaKqnQIBNtEDsmIqwvQRmwYA6xMB8XOtuTGiw2WaoAVXX1oB2IWUmOrxI
+ +TCdwoiOPPJccbX2qkKNq4Aj9rHvTq9HWoHCG7j+naVnMKrSzuP7buxia
+ A==;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dmarc=none (p=none dis=none)
+ header.from=linux.intel.com
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=d8Ayq8fs
+Subject: [Intel-wired-lan] [PATCH iwl-net v4] ice: Add
+ netif_device_attach/detach into PF reset flow
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -122,188 +104,118 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Yonghong Song <yonghong.song@linux.dev>, kvm@vger.kernel.org,
- "Michael S. Tsirkin" <mst@redhat.com>, Neil Brown <neilb@suse.de>,
- Jason Wang <jasowang@redhat.com>, Alexei Starovoitov <ast@kernel.org>,
- linux-nvme@lists.infradead.org, Dai Ngo <Dai.Ngo@oracle.com>,
- David Howells <dhowells@redhat.com>, Keith Busch <kbusch@kernel.org>,
- Eric Dumazet <edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
- Subbaraya Sundeep <sbhatta@marvell.com>,
- Marc Dionne <marc.dionne@auristor.com>, Shuah Khan <shuah@kernel.org>,
- Christoph Hellwig <hch@lst.de>, Anna Schumaker <anna@kernel.org>,
- Jeroen de Borst <jeroendb@google.com>, Sagi Grimberg <sagi@grimberg.me>,
- Daniel Borkmann <daniel@iogearbox.net>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- John Fastabend <john.fastabend@gmail.com>, Andrii Nakryiko <andrii@kernel.org>,
- linux-afs@lists.infradead.org,
- =?UTF-8?Q?Eugenio_P=C3=A9rez?= <eperezma@redhat.com>,
- Stanislav Fomichev <sdf@fomichev.me>, intel-wired-lan@lists.osuosl.org,
- Olga Kornievskaia <kolga@netapp.com>, kuba@kernel.org, pabeni@redhat.com,
- Lorenzo Bianconi <lorenzo@kernel.org>, Mark Lee <Mark-MC.Lee@mediatek.com>,
- Sunil Goutham <sgoutham@marvell.com>, linux-kselftest@vger.kernel.org,
- Chaitanya Kulkarni <kch@nvidia.com>, Jesper Dangaard Brouer <hawk@kernel.org>,
- Sean Wang <sean.wang@mediatek.com>, virtualization@lists.linux.dev,
- KP Singh <kpsingh@kernel.org>, Tom Talpey <tom@talpey.com>,
- Shailend Chand <shailend@google.com>, linux-mediatek@lists.infradead.org,
- linux-mm@kvack.org, Matthias Brugger <matthias.bgg@gmail.com>,
- bpf@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Jens Axboe <axboe@kernel.dk>, Hao Luo <haoluo@google.com>,
- linux-nfs@vger.kernel.org, Song Liu <song@kernel.org>, netdev@vger.kernel.org,
- Jeff Layton <jlayton@kernel.org>, linux-kernel@vger.kernel.org,
- davem@davemloft.net, Eduard Zingerman <eddyz87@gmail.com>,
- hariprasad <hkelam@marvell.com>, Chuck Lever <chuck.lever@oracle.com>,
- Jiri Olsa <jolsa@kernel.org>, Praveen Kaligineedi <pkaligineedi@google.com>,
- Andrew Morton <akpm@linux-foundation.org>,
- Martin KaFai Lau <martin.lau@linux.dev>, Geetha sowjanya <gakula@marvell.com>,
- Trond Myklebust <trondmy@kernel.org>, Felix Fietkau <nbd@nbd.name>
+Cc: maciej.fijalkowski@intel.com, larysa.zaremba@intel.com,
+ netdev@vger.kernel.org, kalesh-anakkur.purayil@broadcom.com,
+ Igor Bagnucki <igor.bagnucki@intel.com>, Jakub Kicinski <kuba@kernel.org>,
+ Dawid Osuchowski <dawid.osuchowski@linux.intel.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, Aug 20, 2024 at 6:07=E2=80=AFAM Yunsheng Lin <linyunsheng@huawei.co=
-m> wrote:
->
-> On 2024/8/19 23:54, Alexander Duyck wrote:
->
-> ...
->
-> >>>>
-> >>>> "There are three types of API as proposed in this patchset instead o=
-f
-> >>>> two types of API:
-> >>>> 1. page_frag_alloc_va() returns [va].
-> >>>> 2. page_frag_alloc_pg() returns [page, offset].
-> >>>> 3. page_frag_alloc() returns [va] & [page, offset].
-> >>>>
-> >>>> You seemed to miss that we need a third naming for the type 3 API.
-> >>>> Do you see type 3 API as a valid API? if yes, what naming are you
-> >>>> suggesting for it? if no, why it is not a valid API?"
-> >>>
-> >>> I didn't. I just don't see the point in pushing out the existing API
-> >>> to support that. In reality 2 and 3 are redundant. You probably only
-> >>> need 3. Like I mentioned earlier you can essentially just pass a
-> >>
-> >> If the caller just expect [page, offset], do you expect the caller als=
-o
-> >> type 3 API, which return both [va] and [page, offset]?
-> >>
-> >> I am not sure if I understand why you think 2 and 3 are redundant here=
-?
-> >> If you think 2 and 3 are redundant here, aren't 1 and 3 also redundant
-> >> as the similar agrument?
-> >
-> > The big difference is the need to return page and offset. Basically to
-> > support returning page and offset you need to pass at least one value
-> > as a pointer so you can store the return there.
-> >
-> > The reason why 3 is just a redundant form of 2 is that you will
-> > normally just be converting from a va to a page and offset so the va
-> > should already be easily accessible.
->
-> I am assuming that by 'easily accessible', you meant the 'va' can be
-> calculated as below, right?
->
-> va =3D encoded_page_address(encoded_va) +
->                 (page_frag_cache_page_size(encoded_va) - remaining);
->
-> I guess it is easily accessible, but it is not without some overhead
-> to calculate the 'va' here.
+Ethtool callbacks can be executed while reset is in progress and try to
+access deleted resources, e.g. getting coalesce settings can result in a
+NULL pointer dereference seen below.
 
-It is just the encoded_page_address + offset that you have to
-calculate anyway. So the only bit you actually have to do is 2
-instructions, one to mask the encoded_va and then the addition of the
-offset that you provided to the page. As it stands those instruction
-can easily be slipped in while you are working on converting the va to
-a page.
+Reproduction steps:
+Once the driver is fully initialized, trigger reset:
+	# echo 1 > /sys/class/net/<interface>/device/reset
+when reset is in progress try to get coalesce settings using ethtool:
+	# ethtool -c <interface>
 
+BUG: kernel NULL pointer dereference, address: 0000000000000020
+PGD 0 P4D 0
+Oops: Oops: 0000 [#1] PREEMPT SMP PTI
+CPU: 11 PID: 19713 Comm: ethtool Tainted: G S                 6.10.0-rc7+ #7
+RIP: 0010:ice_get_q_coalesce+0x2e/0xa0 [ice]
+RSP: 0018:ffffbab1e9bcf6a8 EFLAGS: 00010206
+RAX: 000000000000000c RBX: ffff94512305b028 RCX: 0000000000000000
+RDX: 0000000000000000 RSI: ffff9451c3f2e588 RDI: ffff9451c3f2e588
+RBP: 0000000000000000 R08: 0000000000000000 R09: 0000000000000000
+R10: ffff9451c3f2e580 R11: 000000000000001f R12: ffff945121fa9000
+R13: ffffbab1e9bcf760 R14: 0000000000000013 R15: ffffffff9e65dd40
+FS:  00007faee5fbe740(0000) GS:ffff94546fd80000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 0000000000000020 CR3: 0000000106c2e005 CR4: 00000000001706f0
+Call Trace:
+<TASK>
+ice_get_coalesce+0x17/0x30 [ice]
+coalesce_prepare_data+0x61/0x80
+ethnl_default_doit+0xde/0x340
+genl_family_rcv_msg_doit+0xf2/0x150
+genl_rcv_msg+0x1b3/0x2c0
+netlink_rcv_skb+0x5b/0x110
+genl_rcv+0x28/0x40
+netlink_unicast+0x19c/0x290
+netlink_sendmsg+0x222/0x490
+__sys_sendto+0x1df/0x1f0
+__x64_sys_sendto+0x24/0x30
+do_syscall_64+0x82/0x160
+entry_SYSCALL_64_after_hwframe+0x76/0x7e
+RIP: 0033:0x7faee60d8e27
 
-> >
-> >>> page_frag via pointer to the function. With that you could also look
-> >>> at just returning a virtual address as well if you insist on having
-> >>> something that returns all of the above. No point in having 2 and 3 b=
-e
-> >>> seperate functions.
-> >>
-> >> Let's be more specific about what are your suggestion here: which way
-> >> is the prefer way to return the virtual address. It seems there are tw=
-o
-> >> options:
-> >>
-> >> 1. Return the virtual address by function returning as below:
-> >> void *page_frag_alloc_bio(struct page_frag_cache *nc, struct bio_vec *=
-bio);
-> >>
-> >> 2. Return the virtual address by double pointer as below:
-> >> int page_frag_alloc_bio(struct page_frag_cache *nc, struct bio_vec *bi=
-o,
-> >>                         void **va);
-> >
-> > I was thinking more of option 1. Basically this is a superset of
-> > page_frag_alloc_va that is also returning the page and offset via a
-> > page frag. However instead of bio_vec I would be good with "struct
-> > page_frag *" being the value passed to the function to play the role
-> > of container. Basically the big difference between 1 and 2/3 if I am
-> > not mistaken is the fact that for 1 you pass the size, whereas with
-> > 2/3 you are peeling off the page frag from the larger page frag cache
->
-> Let's be clear here: The callers just expecting [page, offset] also need
-> to call type 3 API, which return both [va] and [page, offset]? and it
-> is ok to ignore the overhead of calculating the 'va' for those kinds
-> of callers just because we don't want to do the renaming for a existing
-> API and can't come up with good naming for that?
->
-> > after the fact via a commit type action.
->
-> Just be clear here, there is no commit type action for some subtype of
-> type 2/3 API.
->
-> For example, for type 2 API in this patchset, it has below subtypes:
->
-> subtype 1: it does not need a commit type action, it just return
->            [page, offset] instead of page_frag_alloc_va() returning [va],
->            and it does not return the allocated fragsz back to the caller
->            as page_frag_alloc_va() does not too:
-> struct page *page_frag_alloc_pg(struct page_frag_cache *nc,
->                                 unsigned int *offset, unsigned int fragsz=
-,
->                                 gfp_t gfp)
->
-> subtype 2: it does need a commit type action, and @fragsz is returned to
->            the caller and caller used that to commit how much fragsz to
->            commit.
-> struct page *page_frag_alloc_pg_prepare(struct page_frag_cache *nc,
->                                         unsigned int *offset,
->                                         unsigned int *fragsz, gfp_t gfp)
->
-> Do you see subtype 1 as valid API? If no, why?
+Calling netif_device_detach() before reset makes the net core not call
+the driver when ethtool command is issued, the attempt to execute an
+ethtool command during reset will result in the following message:
 
-Not really, it is just a wrapper for page_frag_alloc that is
-converting the virtual address to a page and offset. They are the same
-data and don't justify the need for two functions. It kind of explains
-one of the complaints I had about this code. Supposedly it was
-refactoring and combining several different callers into one, but what
-it is actually doing is fracturing the code path into 3 different
-variants based on little if any actual difference as it is doing
-unnecessary optimization.
+    netlink error: No such device
 
-> If yes, do you also expect the caller to use "struct page_frag *" as the
-> container? If yes, what is the caller expected to do with the size field =
-in
-> "struct page_frag *" from API perspective? Just ignore it?
+instead of NULL pointer dereference. Once reset is done and
+ice_rebuild() is executing, the netif_device_attach() is called to allow
+for ethtool operations to occur again in a safe manner.
 
-It should be populated. You passed a fragsz, so you should populate
-the output fragsz so you can get the truesize in the case of network
-packets. The removal of the page_frag from the other callers is making
-it much harder to review your code anyway. If we keep the page_frag
-there it should reduce the amount of change needed when you replace
-page_frag with the page_frag_cache.
+Fixes: fcea6f3da546 ("ice: Add stats and ethtool support")
+Suggested-by: Jakub Kicinski <kuba@kernel.org>
+Reviewed-by: Igor Bagnucki <igor.bagnucki@intel.com>
+Signed-off-by: Dawid Osuchowski <dawid.osuchowski@linux.intel.com>
+---
+Changes since v1:
+* Changed Fixes tag to point to another commit
+* Minified the stacktrace
 
-Honestly this is eating up too much of my time. As I said before this
-patch set is too big and it is trying to squeeze in more than it
-really should for a single patch set to be reviewable. Going forward
-please split up the patch set as I had suggested before and address my
-comments. Ideally you would have your first patch just be some
-refactor and cleanup to get the "offset" pointer moving in the
-direction you want. With that we can at least get half of this set
-digested before we start chewing into all this refactor for the
-replacement of page_frag with the page_frag_cache.
+Changes since v2:
+* Moved netif_device_attach() directly into ice_rebuild() and perform it
+  only on main vsi
+
+Changes since v3:
+* Style changes requested by Przemek Kitszel
+
+Suggestion from Kuba: https://lore.kernel.org/netdev/20240610194756.5be5be90@kernel.org/
+Previous attempt (dropped because it introduced regression with link up): https://lore.kernel.org/netdev/20240722122839.51342-1-dawid.osuchowski@linux.intel.com/
+---
+ drivers/net/ethernet/intel/ice/ice_main.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
+index eaa73cc200f4..a840690f2385 100644
+--- a/drivers/net/ethernet/intel/ice/ice_main.c
++++ b/drivers/net/ethernet/intel/ice/ice_main.c
+@@ -608,6 +608,9 @@ ice_prepare_for_reset(struct ice_pf *pf, enum ice_reset_req reset_type)
+ 			memset(&vsi->mqprio_qopt, 0, sizeof(vsi->mqprio_qopt));
+ 		}
+ 	}
++
++	if (vsi->netdev)
++		netif_device_detach(vsi->netdev);
+ skip:
+ 
+ 	/* clear SW filtering DB */
+@@ -7591,6 +7594,7 @@ static void ice_rebuild(struct ice_pf *pf, enum ice_reset_req reset_type)
+ {
+ 	struct device *dev = ice_pf_to_dev(pf);
+ 	struct ice_hw *hw = &pf->hw;
++	struct ice_vsi *vsi = ice_get_main_vsi(pf);
+ 	bool dvm;
+ 	int err;
+ 
+@@ -7731,6 +7735,9 @@ static void ice_rebuild(struct ice_pf *pf, enum ice_reset_req reset_type)
+ 		ice_rebuild_arfs(pf);
+ 	}
+ 
++	if (vsi && vsi->netdev)
++		netif_device_attach(vsi->netdev);
++
+ 	ice_update_pf_netdev_link(pf);
+ 
+ 	/* tell the firmware we are up */
+-- 
+2.44.0
+
