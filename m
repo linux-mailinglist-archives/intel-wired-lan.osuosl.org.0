@@ -2,229 +2,97 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id A30A8959F17
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 21 Aug 2024 15:53:12 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4A8BF95A131
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 21 Aug 2024 17:17:20 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 3E40A4011A;
-	Wed, 21 Aug 2024 13:53:11 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 6D4AC40535;
+	Wed, 21 Aug 2024 15:17:18 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 9X_w28BxeKly; Wed, 21 Aug 2024 13:53:09 +0000 (UTC)
+ id LRWXkhcuC505; Wed, 21 Aug 2024 15:17:15 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org ACCE540201
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C94B1403C2
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1724248389;
-	bh=zehJBxIdwcE0pu6erl6ULhumrBMD0tIaExYfQjyJiCk=;
+	s=default; t=1724253432;
+	bh=xQE9O4VsDMrQ4BIQLTgCLmj5iahMklQtOcDE0Zxb79Q=;
 	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=pOrJscVWCzG/p9fUCCmVLUdw3Ase+Lg36YDc/btnSDuZRXWL39vkGhoret5/7NNUZ
-	 qNjIrNGAw+DMEtCgImKdbrwdpPh47vQTxLaXTzADZy0tZY2hE/wP6RspKFXUZRdCQe
-	 F2l4t1yFuVaNbIodHIudUX3RGa6C3qeVX2bxTIzGQ3TiZrDcXDBBquRp8uPePAUmBZ
-	 Q3Kqvn3pHuYCJSU84YRPCc/e173wx7SceoB2xCmqoRHd04K+H80/V2wxL8Pn9trlzB
-	 W17zsLZ8p0MjS2ERFZEWFYk+Q/n5XkV6QIhXBQ/g+qDRzWDKaKuJP7akAC0YpODWBi
-	 yOW4Aa5h9G8WA==
+	b=AC0X4SYxcaaafYv0CM6zPg+mA96K7lYtQCw9bBuKvu74FKDCdbqsndX4RpXH1TrQC
+	 hbYMeSVrce0tBLRv87UFx6uXqdhRowH3TD2LDpGdzvB4I+gLjH4K+4bYehaV+tq4AN
+	 xNWLzylr+Y3amBkmYyjo4QCI2IOHcmfjwmJtWZ9BOU9PFiVoV6nk/ugolSIXj5NDCi
+	 IAw02AnRM0r1hTFd1sGeOJCkrlF5ZHJQxNcuXXzXRq+dnqGHDQIukFhO7iPurmqu40
+	 XumpSNyNDIrfahQ1Dpk4mzrrdXRyx7BRBr+RJ7i1iM1/UB+8nNaI71BuK2YjPLIDG3
+	 f3rcTiB4fydmA==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id ACCE540201;
-	Wed, 21 Aug 2024 13:53:09 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id C94B1403C2;
+	Wed, 21 Aug 2024 15:17:12 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id B4AA71BF3C0
- for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Aug 2024 13:53:06 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 4DE8B1BF4E7
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Aug 2024 11:39:47 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 9FA726069C
- for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Aug 2024 13:53:06 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 3A98D6072C
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Aug 2024 11:39:47 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id sunOjHnOhfLA for <intel-wired-lan@lists.osuosl.org>;
- Wed, 21 Aug 2024 13:53:05 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.12;
- helo=mgamail.intel.com; envelope-from=aleksander.lobakin@intel.com;
+ id b6Yhtu5LCgej for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 21 Aug 2024 11:39:45 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=136.143.188.52;
+ helo=sender4-of-o52.zoho.com; envelope-from=petr@jevklidu.cz;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 8E5A26065A
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 8E5A26065A
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.12])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 8E5A26065A
- for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Aug 2024 13:53:05 +0000 (UTC)
-X-CSE-ConnectionGUID: r5mIgsP6RgmoeneSpOLB6g==
-X-CSE-MsgGUID: 01bLnxjtR4Osy8MnjHPDIw==
-X-IronPort-AV: E=McAfee;i="6700,10204,11171"; a="26476357"
-X-IronPort-AV: E=Sophos;i="6.10,164,1719903600"; d="scan'208";a="26476357"
-Received: from fmviesa005.fm.intel.com ([10.60.135.145])
- by fmvoesa106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 21 Aug 2024 06:53:04 -0700
-X-CSE-ConnectionGUID: jwCA67ykQd2kwZjCFMoxPw==
-X-CSE-MsgGUID: Mwm03WDLTwuQdlAZC7ZKcA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.10,164,1719903600"; d="scan'208";a="65447158"
-Received: from orsmsx601.amr.corp.intel.com ([10.22.229.14])
- by fmviesa005.fm.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
- 21 Aug 2024 06:53:04 -0700
-Received: from orsmsx612.amr.corp.intel.com (10.22.229.25) by
- ORSMSX601.amr.corp.intel.com (10.22.229.14) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.39; Wed, 21 Aug 2024 06:53:03 -0700
-Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
- ORSMSX612.amr.corp.intel.com (10.22.229.25) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.39; Wed, 21 Aug 2024 06:53:03 -0700
-Received: from ORSEDG602.ED.cps.intel.com (10.7.248.7) by
- orsmsx610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.39 via Frontend Transport; Wed, 21 Aug 2024 06:53:03 -0700
-Received: from NAM12-MW2-obe.outbound.protection.outlook.com (104.47.66.45) by
- edgegateway.intel.com (134.134.137.103) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Wed, 21 Aug 2024 06:53:03 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=BARfcuoP9Pa3eIcPfC0+/FA4I/lPviCOSTJnsmthlI/fXq6tqZz9ioZM9y5i5uYpTdNJC7gTZRimVh9ampNbZ3oEXP9PKkMAo60XafZKU8VrgcNr5DKuKi/fqarOqRaztOn7CGjUxJJW7Vggt3bs1gvTt/TJWCAls5fyGpuyej9xve3oMJCZuVAYQQXsU6NHZN3xX1mE7o7ECbPN7gUfeiL3Kz/mPPZ4unNkZAOYJJT5egdS/NJTZZMfLRTlEZzG37/aNVQgYkd0HvkmU4wiI5gaYK8i2HrQY1+kqLpigds0laJu92ja+ybGC2BSUupKIJC30IixNbPJhUBIy0ZofA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=zehJBxIdwcE0pu6erl6ULhumrBMD0tIaExYfQjyJiCk=;
- b=GLUi/MtfEa8f4LpdBpFAsVKdcw7wZej3HDGu/d6WGK8v+249V9K/UI0Q6pB0nPOmOrB/nknAmHaNitHnIGNYGOk68WnsxYqAxofy0VnUbLmQL+X8KAIbZmI78gexnhso632CeiVnSSpYa8SOYpo0voXNXwOyjRaWWjsUgPzMKAsSL8lks5yVwIsreEZw4eQvsfltnP/8NVoNG7/Qcp9gxQO7W0F+UBOr8kQOzP95mnUhHRGiGnABimuOZmCyUddDwQzW2QbOnyYbunz9dY7JwgzDv03aj7PSSKaSfqGsS8RNououu0bWlvtKt2b4mIlAIUo+ZFcJknX7bW6iwIiiRg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from DS0PR11MB8718.namprd11.prod.outlook.com (2603:10b6:8:1b9::20)
- by MW6PR11MB8312.namprd11.prod.outlook.com (2603:10b6:303:242::10) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7897.18; Wed, 21 Aug
- 2024 13:52:56 +0000
-Received: from DS0PR11MB8718.namprd11.prod.outlook.com
- ([fe80::4b3b:9dbe:f68c:d808]) by DS0PR11MB8718.namprd11.prod.outlook.com
- ([fe80::4b3b:9dbe:f68c:d808%5]) with mapi id 15.20.7875.019; Wed, 21 Aug 2024
- 13:52:56 +0000
-Message-ID: <b8845a87-e27a-4834-b510-f9fde51a364c@intel.com>
-Date: Wed, 21 Aug 2024 15:52:51 +0200
-User-Agent: Mozilla Thunderbird
-To: Wojciech Drewek <wojciech.drewek@intel.com>
-References: <20240821121539.374343-1-wojciech.drewek@intel.com>
- <20240821121539.374343-5-wojciech.drewek@intel.com>
-From: Alexander Lobakin <aleksander.lobakin@intel.com>
-Content-Language: en-US
-In-Reply-To: <20240821121539.374343-5-wojciech.drewek@intel.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-X-ClientProxiedBy: ZR0P278CA0048.CHEP278.PROD.OUTLOOK.COM
- (2603:10a6:910:1d::17) To DS0PR11MB8718.namprd11.prod.outlook.com
- (2603:10b6:8:1b9::20)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org B5B04605A5
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B5B04605A5
+Received: from sender4-of-o52.zoho.com (sender4-of-o52.zoho.com
+ [136.143.188.52])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id B5B04605A5
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 21 Aug 2024 11:39:42 +0000 (UTC)
+ARC-Seal: i=1; a=rsa-sha256; t=1724240362; cv=none; 
+ d=zohomail.com; s=zohoarc; 
+ b=nyc4BASOTXbnfHuthUwnpnHtOAGn/zmpmnxcUTYUK2NR1yp3sbcnYrble9WlX93e0ABqHp6HvrT+5L2QKAevCDTO9oVPWjfW0+D+jLpHT7qQVnAZ7LCDQ1fc5B3EF5J5RDnd3RXDU/i6rIEsqWXRMcBbI78nyN7VaI0m5UIeGL8=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
+ s=zohoarc; t=1724240362;
+ h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To;
+ bh=xQE9O4VsDMrQ4BIQLTgCLmj5iahMklQtOcDE0Zxb79Q=; 
+ b=Sn4zDlTE3LA8Fhy1NV2eX+z4Vnt1oc1RfIKV4iMqsHJytGFmh1l4LQdVF8QOspAgPUGyfNM1GLTRS5+Z5e0mdV0sUTthdwclps5nxLyh0kLnLopKaloApgbGf9gTRgw60pIG9e2AQTWcg5AienW23fZ/i+bYxCqCxJQLwY5eQ9k=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+ dkim=pass  header.i=jevklidu.cz;
+ spf=pass  smtp.mailfrom=petr@jevklidu.cz;
+ dmarc=pass header.from=<petr@jevklidu.cz>
+Received: by mx.zohomail.com with SMTPS id 1724240358733590.0863393254813;
+ Wed, 21 Aug 2024 04:39:18 -0700 (PDT)
+Message-ID: <b190e352-e11f-4795-941a-62c09ba5f602@jevklidu.cz>
+Date: Wed, 21 Aug 2024 13:39:11 +0200
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DS0PR11MB8718:EE_|MW6PR11MB8312:EE_
-X-MS-Office365-Filtering-Correlation-Id: fec7f91b-018f-412f-4ce6-08dcc1e88f4f
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|376014|366016;
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?WnU5V1hFMEFCd2NEY01Kazh2MTNyVGJndTA5K24wVmp0elpiTko0em9Id3Jv?=
- =?utf-8?B?djM3aVFEM3UvN0xqcENCNVFucUxCOTJLTXdBc1lYdE9tbWl2c0Y1cy9vc3Qw?=
- =?utf-8?B?Sk9uNmtjWnZ6MkpqVTJkdmx0cHVhQXIwS25hWlRpZUxjTFFtQmN5Rndwam5R?=
- =?utf-8?B?Nk1HMGFYZUovODdURlJveGYyNEJBNUJ3MDFOeVVHUlgyZ0pXT0p3REtrLzJ3?=
- =?utf-8?B?ZVJWVkpVUytjajlKdTBIWHhBdUQrZHQ0c0tnM2FNL1RZT1RhWm9uWC9velpV?=
- =?utf-8?B?TmlPeC9QT0kzaDM1VkFURUVkTkNHMzBEOFdNbDlMbktTdGxqZ0h5VWhQSDhp?=
- =?utf-8?B?T040NCtEMTdhNXMwakpLblZxNi83TXd0cEl3bHo1Ritrb3RVdE1kVklJOEVa?=
- =?utf-8?B?YUZNT2hNSW5telhZampyc21LWlpyc2hBbnBzdW5hYlZ5bFdCYnludjcyOTBL?=
- =?utf-8?B?eG9MYTNvZEdvMmNCN2ZSZnFTbGtXRE1iaGNJN3dDQVB2SHpONVBRUjlUaDBF?=
- =?utf-8?B?WnpkSXFIcnRMbHV1U0pjVldNSFgvOExvY0ZLaU0zWlNjck9ON2EyTGhCRmMz?=
- =?utf-8?B?SVJLL2dBbUhOU253R0IwS3FzUFZVWVhhcnBMMG40ejEydkxQKzBFZG03NmIr?=
- =?utf-8?B?T0dqeXNqTlIrRzhkYW5hZjdxbHdSeENlVWo2L0RUUVhzdkFaSTlkdGZXMVhT?=
- =?utf-8?B?ZUtMaFdCekZuV0JNL0xHaWdvdUxGR3FSV3hNSWlHNEJuc2JFb1hxeHZDUlUw?=
- =?utf-8?B?MkVINTJSNnhOZEJ5TDZsWGNJakN2eFlPQjgyUmc2NU1HNHZQWFBnR1RzQjRh?=
- =?utf-8?B?cVhNVkg3Z0QyTy9sRFJLTzFjaFN1Ulp6WS9HOVJYY2U5cWlOK3N5NGVzeEx5?=
- =?utf-8?B?aUZHc0c0dzdlRkZCK01neWhtKzZGTGF2RTNrd1dlNVduU0Y5R0VKT2pJc2ts?=
- =?utf-8?B?N0h2U0h1L3lTOXFDVVZSaTJOeWhYdEF1N2lNQ216NE1HR1EzdDlyQW9aOHZG?=
- =?utf-8?B?WE9GTFVUb3lWQktlZ1V3ZHdlYmg5bTVzZWRiNlVOWmp2MWthcDFNWHBKQUhk?=
- =?utf-8?B?cE1rK3dJQVQ2a0M2eGFDVkFaS1BqRGROaUY2MVFWS2JxbkRQSGF3aC9DRDJS?=
- =?utf-8?B?ZzdTRVBWK2xsa2lBeG80TnpEc2FHY3MvdVNSMnRaaXFXRWpack5ZSWZRTkRu?=
- =?utf-8?B?WmYxWWJYNkh6QXZzUWtGUnArTFVNT0tKb0Y4QmFZZHl5MEx6TkRPaEF5dG12?=
- =?utf-8?B?aFRZZS8vWTVMSFpKN010RUhrWHZ4K0w5N05VVG4zNUU5MGRUTTlqNGF3TWJo?=
- =?utf-8?B?eDhTVnYxbUc4RGdtRlpkbUp6NTM0enBIQ2Z3UUVQRDJQVHFibjE2eExTT2pI?=
- =?utf-8?B?N0xXM1RsQ01zLzRELzlWV3cxbWMrbTJZdHpBV0VsVlZVQ0lNaXpReEIwNytF?=
- =?utf-8?B?eDNSWXo2VFJhUks3OE1WbWRLcStJZVp2ZkVLWUhvZ1BHRFZhREpia3dpZjlB?=
- =?utf-8?B?cEZaU1V5ZFNrK1BoREl5MjJQb21aVVl4NmU2cllBaUpPRDZBMzdpZnozbSsw?=
- =?utf-8?B?Q0hnZGdEcGN6YnRVdnBkWHNMR3o3ZUNNb3dYYWFwQ1N2dG0wWmFRejlGbjBN?=
- =?utf-8?B?aEdmTWk0emhMV0dhZDV1TkpZMUx4VDVYa3MwdWdiaVJOaHI3TU1mVC8rNjkw?=
- =?utf-8?B?aVc1YU4yb2xySHdUckIyWGR4YjF0QjB4YkhSTmM5MktQdnFiNEZoeDBNVGlE?=
- =?utf-8?B?Wk1ZaEhrckFNUTNaNUxRWXhkZWFZaEk4Rm5ETzNOaDBJYnRiaCtBY3c5UTg4?=
- =?utf-8?B?L05UTFlEM2RvZGFvbWRzUT09?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:DS0PR11MB8718.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(1800799024)(376014)(366016); DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?YmUwYVRhOW1JMjEyb2tHdVdNdEZTQVg2T01tSjhuMGV3cUZPWkFKd01aa2ZQ?=
- =?utf-8?B?Zm9aN3BOUkFObS9LOG1hYTJ4aDY5K0hSclRiSFNNVndnODFWdXFIQVVKeVhS?=
- =?utf-8?B?c3ZjdGNhNWNaeWlQamJ2bkZmS3k3S1FmZVZ2ZUVVa1pxdlhqamk4ZEJXWXgx?=
- =?utf-8?B?bkxKNXhBa3BJR0RUaGhKUVFPZmJGTXlmUDlPL0tCYlRwUHdqN2U1M1lyd24z?=
- =?utf-8?B?aEFlMG5SVGc4VTdjNDBEYjlzTUEvbm5jMXAwVzRTVWtNcFN0VGdNNWtOZTFN?=
- =?utf-8?B?SVFNd2ZyWkd6dWpFOERralQrZDNSb1NZQURPNmhTbjhvVGhJa2dwYjFzY1Bk?=
- =?utf-8?B?NjZFbTc2SUxPSzc4OXpaeW9JT1U2K0RNdVFZamlwajQ5TUVlQ0V0dGtHSVpa?=
- =?utf-8?B?My9hR0VZRElTT3NVMEZaNlZUbnp4U1lmMHkweTFJUEUzQzRXV0l3aFlpalZS?=
- =?utf-8?B?TkluQkJ6N0F0V2QxaVVmZGIwU0lnc2hQcmhKMHUxdnZCQkNRbVd3WWhTejhs?=
- =?utf-8?B?eW9NRTVrMHg4d1BRMDIrWHd5a203ZkN6N1JwZzNXQWRvYkMyMk5LazhDQyt4?=
- =?utf-8?B?TWUwQk1tSnVrVVJTYmV4OVRCaFlJNDBDOVJHVzZneGtsQmRQVUdwR2ZkWE1V?=
- =?utf-8?B?dXFXcGcrRWZtTFg3NVk4OVZrbEk0SnZvVGpyWk1obFlzYUNTOHJpZEtUamZE?=
- =?utf-8?B?Y3RKbzl4MWJSZFFxemt5V1VUSW8rNmRpN0hTRVcwYXhXclV6Wkw3UDdTNHQv?=
- =?utf-8?B?WVNOandISjhqRkowZVdKZGNjYlRHc2hlckxENTdTMG1IbW0vMzVocjZQMXd0?=
- =?utf-8?B?eVNNSlFUMUJLdGd3L2V2WnFpUUVzQVo0SkFET3ptZVd4d0VLU0xTSjFZc0xk?=
- =?utf-8?B?R0ZIa21pUHVYM2pzQU13endyUzQ0YUtjQklSWDlRZk93bmFJTU9MYlhuMFJG?=
- =?utf-8?B?UnA2aUxIcEZEdFVYeTlBS0NaOWxXdEZaN1dkZ3YxVFBzeW5PTXplYUtZVktl?=
- =?utf-8?B?dEpnV3lxM29WbkdNUU5sV25jWmZuam81Z0M3WGFhWUk1Yi9HQnR5Vm5EVmEz?=
- =?utf-8?B?dTJQVGFmcFRlaFh4MDkyWlllOFkvdHUvOEJpWUdzeERWRWI4UURTcVFMY3Fw?=
- =?utf-8?B?eHJjd0p6aHVBYU5QRjhUakpKaitRdnlQTEZwQWxPMjRrdmZCUkJkYVhocWpR?=
- =?utf-8?B?dGk3UHI4ZE9ZUDljQk9hbU1RL09oUWRmUE9XM09sOEZZUjg3RUhyczk1MEY0?=
- =?utf-8?B?SEhTblMrWFpodTFKMG1kcjBJVU5vbE93RXZJYTVtNWhLYktTMHRJWUtvT1Fj?=
- =?utf-8?B?cm5DY3NUMWtheGVydU9mcVNReDBuK2w4bWlkV290eDdYNWowemgzakU3cFpQ?=
- =?utf-8?B?L1BWeDNKVUJ6M1lnQ09JT3NCNVJ6UkZZNHd0R0hyMHB3VC9jS3Q5MnZVY09p?=
- =?utf-8?B?U3orcVZDbldCSkY0WUp4UmxBWDRwM0pwRWJ3cjJvTWtNOGpLZ0N0d1JCck9o?=
- =?utf-8?B?aGorcEV1SE16eHFaeUNZVGRpQy9pclhqdnBGR0pFaFI2V2xpRXdaOThXaDA5?=
- =?utf-8?B?dDJZVTl1MnZOWHlJd2pSZ1hZV1g1UWRPb1k5U3NIdGwraFRuVngwYUR2M01Q?=
- =?utf-8?B?QXJ4eTBFRWVmb1o3OW44cStKSVlOcnB3KysvekhQSkMrQm9IbEdpS045UFoz?=
- =?utf-8?B?UTRITHRjUDJyZTBXNDVzdUpBa3JVcTdxM1dGN3llRGY2cS9uSWVka240blNl?=
- =?utf-8?B?Q25HbWM1SWhXUUlqdGZYUkZUQm5lSHl6bStraFhSRUZaQktjd3pPK0xPSklX?=
- =?utf-8?B?WmVTNmVNKzN0eVpVWCtGWHBsb05lcitLTTFrZmhtQ2drQ1NpMU8vTXhiQmZn?=
- =?utf-8?B?WXZzWHVka0E2ek50TFRjbnc2M0ZYcGI2Q2JITTZyQW9Ca2tUampoWHNIR2h1?=
- =?utf-8?B?QlZIdnB2ZDZTVlg0VmszZS9EZkh2cXNMSW14UU5wNmZkd2NkZGsvTlJtQ3hF?=
- =?utf-8?B?azRVZnBINXE3NE5Sc3VKU3lxNmJ4YlhrMHZUVHNNUmRsMTFuSU5yQ25BbDhz?=
- =?utf-8?B?eDN3QU1ZbUdSSWhxK0tndUJONkNFMkdpUEpCdmRUeXhHZFVQQVVkaXZNNEtH?=
- =?utf-8?B?dVJESDZoYXduMU84NkpxNU1reG5oaXJpcUZjbWN6dktXS3dncTRSMkNPdlNw?=
- =?utf-8?B?Wnc9PQ==?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: fec7f91b-018f-412f-4ce6-08dcc1e88f4f
-X-MS-Exchange-CrossTenant-AuthSource: DS0PR11MB8718.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 21 Aug 2024 13:52:56.1630 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 1Yc6WjvLHONhGx1UgqkdFKD2mVx5VYaPT9hCiQvg2AmtPvhes84W+83GR90j/dOKiY9RemXJvoq/cj0noM6um+UfhhsbWLxID6Ui5KA7TDA=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MW6PR11MB8312
-X-OriginatorOrg: intel.com
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1724248385; x=1755784385;
- h=message-id:date:subject:to:cc:references:from:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=lIGlIOGuuiO1Fiwv9M4BSm6GRd0fgSZxwcZsM9rNk2k=;
- b=NlQQJIL6qKhMHASLSPDf8afzoNSohYBxHS230eY8NMTeTSoQIYDULpMy
- ayETm75jqeOlCNRRS6Our47NLbF+5G5WD3y2/Jo6TCgO5bEjoH/dcSowe
- /LG47KBccVS+oVx7jQSMDf12/QGa3KxSYGI93TPdwy8eWm7+OhYFSWLSc
- Z+geytR8OtDivoZkf/XLpXdZFtJVUSwX5diEItJPYP+eU1ibyNNGFB2MP
- gQUWQoDSlU0xErDvPpvVaP0wF0oggEoMPfRff5fvq3Z3n4KqG7omDeOFO
- 9gH/QPuSJlSB5ypxe1fCO+ScmPYPqv2raRhoUYdf7rEFTzVYffDKI2lFZ
- w==;
+User-Agent: Mozilla Thunderbird
+To: Bjorn Helgaas <helgaas@kernel.org>
+References: <20240820213035.GA226181@bhelgaas>
+Content-Language: cs-CZ
+From: Petr Valenta <petr@jevklidu.cz>
+In-Reply-To: <20240820213035.GA226181@bhelgaas>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-ZohoMailClient: External
+X-Mailman-Approved-At: Wed, 21 Aug 2024 15:17:11 +0000
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt;
+ c=relaxed/relaxed; t=1724240362; 
+ s=zoho; d=jevklidu.cz; i=petr@jevklidu.cz;
+ h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
+ bh=xQE9O4VsDMrQ4BIQLTgCLmj5iahMklQtOcDE0Zxb79Q=;
+ b=XqUQOBbFG8FicnMeTkku6fFRPIzvPanLQtic9bJe3EnJIFYkhMclMbUBZ5WF0KMm
+ DCEuYMROeC3mNLmzIfWUnTyt/9kzLNn8mh1+FeL48vZxDg5WJ+86od6javCsV1TeaN4
+ NWjW1awn4MvYEUWwRZuhRW/tYF1XUWZaQLHeGc3k=
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
+ dmarc=none (p=none dis=none)
+ header.from=jevklidu.cz
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=NlQQJIL6
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v10 04/14] iavf: add support
- for negotiating flexible RXDID format
+ dkim=pass (1024-bit key,
+ unprotected) header.d=jevklidu.cz header.i=petr@jevklidu.cz
+ header.a=rsa-sha256 header.s=zoho header.b=XqUQOBbF
+Subject: Re: [Intel-wired-lan] ACPI IRQ storm with 6.10
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -237,208 +105,829 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, alexandr.lobakin@intel.com, horms@kernel.org,
- kuba@kernel.org, anthony.l.nguyen@intel.com, intel-wired-lan@lists.osuosl.org
+Cc: Linux regressions mailing list <regressions@lists.linux.dev>,
+ "Rafael J. Wysocki" <rafael@kernel.org>, przemyslaw.kitszel@intel.com,
+ Linux kernel mailing list <linux-kernel@vger.kernel.org>,
+ "linux-acpi@vger.kernel.org" <linux-acpi@vger.kernel.org>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>, Bjorn Helgaas <bhelgaas@google.com>,
+ intel-wired-lan@lists.osuosl.org, Jiri Slaby <jirislaby@kernel.org>,
+ Len Brown <lenb@kernel.org>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Wojciech Drewek <wojciech.drewek@intel.com>
-Date: Wed, 21 Aug 2024 14:15:29 +0200
 
-> From: Jacob Keller <jacob.e.keller@intel.com>
+
+Dne 20. 08. 24 v 23:30 Bjorn Helgaas napsal(a):
+> On Tue, Aug 20, 2024 at 11:13:54PM +0200, Petr Valenta wrote:
+>> Dne 20. 08. 24 v 20:09 Bjorn Helgaas napsal(a):
+>>> On Mon, Aug 19, 2024 at 07:23:42AM +0200, Jiri Slaby wrote:
+>>>> On 19. 08. 24, 6:50, Jiri Slaby wrote:
+>>>>> CC e1000e guys + Jesse (due to 75a3f93b5383) + Bjorn (due to b2c289415b2b)
+>>>>
+>>>> Bjorn,
+>>>>
+>>>> I am confused by these changes:
+>>>> ==========================================
+>>>> @@ -291,16 +288,13 @@ static int e1000_set_link_ksettings(struct net_device
+>>>> *net
+>>>> dev,
+>>>>            * duplex is forced.
+>>>>            */
+>>>>           if (cmd->base.eth_tp_mdix_ctrl) {
+>>>> -               if (hw->phy.media_type != e1000_media_type_copper) {
+>>>> -                       ret_val = -EOPNOTSUPP;
+>>>> -                       goto out;
+>>>> -               }
+>>>> +               if (hw->phy.media_type != e1000_media_type_copper)
+>>>> +                       return -EOPNOTSUPP;
+>>>>
+>>>>                   if ((cmd->base.eth_tp_mdix_ctrl != ETH_TP_MDI_AUTO) &&
+>>>>                       (cmd->base.autoneg != AUTONEG_ENABLE)) {
+>>>>                           e_err("forcing MDI/MDI-X state is not supported when
+>>>> lin
+>>>> k speed and/or duplex are forced\n");
+>>>> -                       ret_val = -EINVAL;
+>>>> -                       goto out;
+>>>> +                       return -EINVAL;
+>>>>                   }
+>>>>           }
+>>>>
+>>>> @@ -347,7 +341,6 @@ static int e1000_set_link_ksettings(struct net_device
+>>>> *netde
+>>>> v,
+>>>>           }
+>>>>
+>>>>    out:
+>>>> -       pm_runtime_put_sync(netdev->dev.parent);
+>>>>           clear_bit(__E1000_RESETTING, &adapter->state);
+>>>>           return ret_val;
+>>>>    }
+>>>> ==========================================
+>>>>
+>>>> So no more clear_bit(__E1000_RESETTING in the above fail paths. Is that
+>>>> intentional?
+>>>
+>>> Not intentional.  Petr, do you have the ability to test the patch
+>>> below?  I'm not sure it's the correct fix, but it reverts the pieces
+>>> of b2c289415b2b that Jiri pointed out.
+>>
+>> I tested the patch below but it didn't help. After the first boot with new
+>> kernel it looked promising as the irq storm only appeared for a few seconds,
+>> but with subsequent reboots it was the same as without the patch.
 > 
-> Enable support for VIRTCHNL_VF_OFFLOAD_RX_FLEX_DESC, to enable the VF
-> driver the ability to determine what Rx descriptor formats are
-> available. This requires sending an additional message during
-> initialization and reset, the VIRTCHNL_OP_GET_SUPPORTED_RXDIDS. This
-> operation requests the supported Rx descriptor IDs available from the
-> PF.
+> Thank you very much for testing that!
 > 
-> This is treated the same way that VLAN V2 capabilities are handled. Add
-> a new set of extended capability flags, used to process send and receipt
-> of the VIRTCHNL_OP_GET_SUPPORTED_RXDIDS message.
+>> To be sure, I also send the md5sum of ethtool.c after applying the patch:
+>>
+>> a25c003257538f16994b4d7c4260e894 ethtool.c
 > 
-> This ensures we finish negotiating for the supported descriptor formats
-> prior to beginning configuration of receive queues.
+> Thanks, that matches what I get when applying the patch on v6.10.
 > 
-> This change stores the supported format bitmap into the iavf_adapter
-> structure. Additionally, if VIRTCHNL_VF_OFFLOAD_RX_FLEX_DESC is enabled
-> by the PF, we need to make sure that the Rx queue configuration
-> specifies the format.
+> I'm at a loss.  You could try reverting the entire b2c289415b2b commit
+> (patch for that is below).
+
+This patch didn't help, so I reverted it back.
+
 > 
-> Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
-> Reviewed-by: Wojciech Drewek <wojciech.drewek@intel.com>
-> Reviewed-by: Simon Horman <horms@kernel.org>
-> Co-developed-by: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
-> Signed-off-by: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
-> Signed-off-by: Wojciech Drewek <wojciech.drewek@intel.com>
+> If that doesn't help, I guess you could try reverting the other
+> commits Jiri mentioned:
+> 
+>    76a0a3f9cc2f e1000e: fix force smbus during suspend flow
+>    c93a6f62cb1b e1000e: Fix S0ix residency on corporate systems
+>    bfd546a552e1 e1000e: move force SMBUS near the end of enable_ulp function
+>    6918107e2540 net: e1000e & ixgbe: Remove PCI_HEADER_TYPE_MFD duplicates
+>    1eb2cded45b3 net: annotate writes on dev->mtu from ndo_change_mtu()
+>    b2c289415b2b e1000e: Remove redundant runtime resume for ethtool_ops
+>    75a3f93b5383 net: intel: implement modern PM ops declarations
+> 
+> If you do this, I would revert 76a0a3f9cc2f, test, then revert
+> c93a6f62cb1b in addition, test, then revert bfd546a552e1 in addition,
+> etc.
 
-[...]
+I have created revert patches like this:
+git format-patch --stdout -1 76a0a3f9cc2f | interdiff -q /dev/stdin \
+/dev/null > revert_76a0a3f9cc2f.patch
 
-> +/**
-> + * iavf_select_rx_desc_format - Select Rx descriptor format
-> + * @adapter: adapter private structure
-> + *
-> + * Select what Rx descriptor format based on availability and enabled
-> + * features.
-> + *
-> + * Return: the desired RXDID to select for a given Rx queue, as defined by
-> + *         enum virtchnl_rxdid_format.
-> + */
-> +static u8 iavf_select_rx_desc_format(const struct iavf_adapter *adapter)
-> +{
-> +	u64 rxdids = adapter->supp_rxdids;
+I have applied revert_76a0a3f9cc2f.patch (rebuild and tested), then in 
+addition revert_c93a6f62cb1b.patch and after applying 
+revert_bfd546a552e1.patch irq storm didn't appear.
+
+I have tested it with 3 subsequent reboots and in all those cases it was ok.
+
+> 
+> commit 5e92945ffe5c ("Revert "e1000e: Remove redundant runtime resume for ethtool_ops"")
+> Author: Bjorn Helgaas <bhelgaas@google.com>
+> Date:   Tue Aug 20 16:18:32 2024 -0500
+> 
+>      Revert "e1000e: Remove redundant runtime resume for ethtool_ops"
+>      
+>      This reverts commit b2c289415b2b2ef112b78d5e73b4acecf5db409e.
+> 
+> 
+> diff --git a/drivers/net/ethernet/intel/e1000e/ethtool.c b/drivers/net/ethernet/intel/e1000e/ethtool.c
+> index 9364bc2b4eb1..61fa2f6b3708 100644
+> --- a/drivers/net/ethernet/intel/e1000e/ethtool.c
+> +++ b/drivers/net/ethernet/intel/e1000e/ethtool.c
+> @@ -156,7 +156,7 @@ static int e1000_get_link_ksettings(struct net_device *netdev,
+>   			speed = adapter->link_speed;
+>   			cmd->base.duplex = adapter->link_duplex - 1;
+>   		}
+> -	} else {
+> +	} else if (!pm_runtime_suspended(netdev->dev.parent)) {
+>   		u32 status = er32(STATUS);
+>   
+>   		if (status & E1000_STATUS_LU) {
+> @@ -274,13 +274,16 @@ static int e1000_set_link_ksettings(struct net_device *netdev,
+>   	ethtool_convert_link_mode_to_legacy_u32(&advertising,
+>   						cmd->link_modes.advertising);
+>   
+> +	pm_runtime_get_sync(netdev->dev.parent);
 > +
-> +	/* If we did not negotiate VIRTCHNL_VF_OFFLOAD_RX_FLEX_DESC, we must
-> +	 * stick with the default value of the legacy 32 byte format.
-> +	 */
-> +	if (!IAVF_RXDID_ALLOWED(adapter))
-> +		return VIRTCHNL_RXDID_1_32B_BASE;
+>   	/* When SoL/IDER sessions are active, autoneg/speed/duplex
+>   	 * cannot be changed
+>   	 */
+>   	if (hw->phy.ops.check_reset_block &&
+>   	    hw->phy.ops.check_reset_block(hw)) {
+>   		e_err("Cannot change link characteristics when SoL/IDER is active.\n");
+> -		return -EINVAL;
+> +		ret_val = -EINVAL;
+> +		goto out;
+>   	}
+>   
+>   	/* MDI setting is only allowed when autoneg enabled because
+> @@ -288,13 +291,16 @@ static int e1000_set_link_ksettings(struct net_device *netdev,
+>   	 * duplex is forced.
+>   	 */
+>   	if (cmd->base.eth_tp_mdix_ctrl) {
+> -		if (hw->phy.media_type != e1000_media_type_copper)
+> -			return -EOPNOTSUPP;
+> +		if (hw->phy.media_type != e1000_media_type_copper) {
+> +			ret_val = -EOPNOTSUPP;
+> +			goto out;
+> +		}
+>   
+>   		if ((cmd->base.eth_tp_mdix_ctrl != ETH_TP_MDI_AUTO) &&
+>   		    (cmd->base.autoneg != AUTONEG_ENABLE)) {
+>   			e_err("forcing MDI/MDI-X state is not supported when link speed and/or duplex are forced\n");
+> -			return -EINVAL;
+> +			ret_val = -EINVAL;
+> +			goto out;
+>   		}
+>   	}
+>   
+> @@ -341,6 +347,7 @@ static int e1000_set_link_ksettings(struct net_device *netdev,
+>   	}
+>   
+>   out:
+> +	pm_runtime_put_sync(netdev->dev.parent);
+>   	clear_bit(__E1000_RESETTING, &adapter->state);
+>   	return ret_val;
+>   }
+> @@ -376,6 +383,8 @@ static int e1000_set_pauseparam(struct net_device *netdev,
+>   	while (test_and_set_bit(__E1000_RESETTING, &adapter->state))
+>   		usleep_range(1000, 2000);
+>   
+> +	pm_runtime_get_sync(netdev->dev.parent);
 > +
-> +	/* Warn if the PF does not list support for the default legacy
-> +	 * descriptor format. This shouldn't happen, as this is the format
-> +	 * used if VIRTCHNL_VF_OFFLOAD_RX_FLEX_DESC is not supported. It is
-> +	 * likely caused by a bug in the PF implementation failing to indicate
-> +	 * support for the format.
-> +	 */
-> +	if (!(rxdids & VIRTCHNL_RXDID_1_32B_BASE_M))
-> +		dev_warn(&adapter->pdev->dev, "PF does not list support for default Rx descriptor format\n");
-
-pci_warn() or netdev_warn() if netdev is available here, sorry if I
-didn't mention this earlier =\
-
+>   	if (adapter->fc_autoneg == AUTONEG_ENABLE) {
+>   		hw->fc.requested_mode = e1000_fc_default;
+>   		if (netif_running(adapter->netdev)) {
+> @@ -408,6 +417,7 @@ static int e1000_set_pauseparam(struct net_device *netdev,
+>   	}
+>   
+>   out:
+> +	pm_runtime_put_sync(netdev->dev.parent);
+>   	clear_bit(__E1000_RESETTING, &adapter->state);
+>   	return retval;
+>   }
+> @@ -438,6 +448,8 @@ static void e1000_get_regs(struct net_device *netdev,
+>   	u32 *regs_buff = p;
+>   	u16 phy_data;
+>   
+> +	pm_runtime_get_sync(netdev->dev.parent);
 > +
-> +	return VIRTCHNL_RXDID_1_32B_BASE;
-> +}
+>   	memset(p, 0, E1000_REGS_LEN * sizeof(u32));
+>   
+>   	regs->version = (1u << 24) |
+> @@ -483,6 +495,8 @@ static void e1000_get_regs(struct net_device *netdev,
+>   	e1e_rphy(hw, MII_STAT1000, &phy_data);
+>   	regs_buff[24] = (u32)phy_data;	/* phy local receiver status */
+>   	regs_buff[25] = regs_buff[24];	/* phy remote receiver status */
 > +
->  /**
->   * iavf_configure_rx - Configure Receive Unit after Reset
->   * @adapter: board private structure
-
-[...]
-
-> @@ -262,6 +276,37 @@ int iavf_get_vf_vlan_v2_caps(struct iavf_adapter *adapter)
->  	return err;
->  }
->  
-> +int iavf_get_vf_supported_rxdids(struct iavf_adapter *adapter)
-> +{
-> +	struct iavf_hw *hw = &adapter->hw;
-> +	struct iavf_arq_event_info event;
-> +	u32 len = sizeof(u64);
-> +	enum virtchnl_ops op;
-> +	enum iavf_status err;
-> +	u8 rxdids;
+> +	pm_runtime_put_sync(netdev->dev.parent);
+>   }
+>   
+>   static int e1000_get_eeprom_len(struct net_device *netdev)
+> @@ -515,6 +529,8 @@ static int e1000_get_eeprom(struct net_device *netdev,
+>   	if (!eeprom_buff)
+>   		return -ENOMEM;
+>   
+> +	pm_runtime_get_sync(netdev->dev.parent);
 > +
-> +	event.msg_buf = &rxdids;
-> +	event.buf_len = len;
-
-This looks suspicious. @rxdids is u8, while @len is sizeof(u64), i.e 8
-bytes, not 1. Is this intended? Or maybe @rxdids should be u64 here as
-well, just like adapter->supported_rxdids?
-
+>   	if (hw->nvm.type == e1000_nvm_eeprom_spi) {
+>   		ret_val = e1000_read_nvm(hw, first_word,
+>   					 last_word - first_word + 1,
+> @@ -528,6 +544,8 @@ static int e1000_get_eeprom(struct net_device *netdev,
+>   		}
+>   	}
+>   
+> +	pm_runtime_put_sync(netdev->dev.parent);
 > +
-> +	while (1) {
-
-@op can be declared right here.
-@err can be also declared right here if you address the comment below.
-
-> +		/* When the AQ is empty, iavf_clean_arq_element will return
-> +		 * nonzero and this loop will terminate.
-> +		 */
-> +		err = iavf_clean_arq_element(hw, &event, NULL);
-> +		if (err != IAVF_SUCCESS)
-> +			return err;
-> +		op = le32_to_cpu(event.desc.cookie_high);
-> +		if (op == VIRTCHNL_OP_GET_SUPPORTED_RXDIDS)
-
-When one of the elements you want to compare is a compile-time constant,
-you will get more optimized code if you do
-
-		__le32 op;
-
-		op = event.desc.cookie_high;
-		if (op == cpu_to_le32(VIRTCHNL_OP_GET_SUPPORTED_RXDIDS))
-
-because then you won't need to byteswap a variable and constants get
-byteswapped at compilation time.
-
-But given that iavf runs on LE 99% of time and it's not hotpath, it's up
-to you whether to do it like that here or just leave as it is.
-
-> +			break;
+>   	if (ret_val) {
+>   		/* a read error occurred, throw away the result */
+>   		memset(eeprom_buff, 0xff, sizeof(u16) *
+> @@ -577,6 +595,8 @@ static int e1000_set_eeprom(struct net_device *netdev,
+>   
+>   	ptr = (void *)eeprom_buff;
+>   
+> +	pm_runtime_get_sync(netdev->dev.parent);
+> +
+>   	if (eeprom->offset & 1) {
+>   		/* need read/modify/write of first changed EEPROM word */
+>   		/* only the second byte of the word is being modified */
+> @@ -617,6 +637,7 @@ static int e1000_set_eeprom(struct net_device *netdev,
+>   		ret_val = e1000e_update_nvm_checksum(hw);
+>   
+>   out:
+> +	pm_runtime_put_sync(netdev->dev.parent);
+>   	kfree(eeprom_buff);
+>   	return ret_val;
+>   }
+> @@ -712,6 +733,8 @@ static int e1000_set_ringparam(struct net_device *netdev,
+>   		}
+>   	}
+>   
+> +	pm_runtime_get_sync(netdev->dev.parent);
+> +
+>   	e1000e_down(adapter, true);
+>   
+>   	/* We can't just free everything and then setup again, because the
+> @@ -750,6 +773,7 @@ static int e1000_set_ringparam(struct net_device *netdev,
+>   		e1000e_free_tx_resources(temp_tx);
+>   err_setup:
+>   	e1000e_up(adapter);
+> +	pm_runtime_put_sync(netdev->dev.parent);
+>   free_temp:
+>   	vfree(temp_tx);
+>   	vfree(temp_rx);
+> @@ -1792,6 +1816,8 @@ static void e1000_diag_test(struct net_device *netdev,
+>   	u8 autoneg;
+>   	bool if_running = netif_running(netdev);
+>   
+> +	pm_runtime_get_sync(netdev->dev.parent);
+> +
+>   	set_bit(__E1000_TESTING, &adapter->state);
+>   
+>   	if (!if_running) {
+> @@ -1877,6 +1903,8 @@ static void e1000_diag_test(struct net_device *netdev,
+>   	}
+>   
+>   	msleep_interruptible(4 * 1000);
+> +
+> +	pm_runtime_put_sync(netdev->dev.parent);
+>   }
+>   
+>   static void e1000_get_wol(struct net_device *netdev,
+> @@ -2018,11 +2046,15 @@ static int e1000_set_coalesce(struct net_device *netdev,
+>   		adapter->itr_setting = adapter->itr & ~3;
+>   	}
+>   
+> +	pm_runtime_get_sync(netdev->dev.parent);
+> +
+>   	if (adapter->itr_setting != 0)
+>   		e1000e_write_itr(adapter, adapter->itr);
+>   	else
+>   		e1000e_write_itr(adapter, 0);
+>   
+> +	pm_runtime_put_sync(netdev->dev.parent);
+> +
+>   	return 0;
+>   }
+>   
+> @@ -2036,7 +2068,9 @@ static int e1000_nway_reset(struct net_device *netdev)
+>   	if (!adapter->hw.mac.autoneg)
+>   		return -EINVAL;
+>   
+> +	pm_runtime_get_sync(netdev->dev.parent);
+>   	e1000e_reinit_locked(adapter);
+> +	pm_runtime_put_sync(netdev->dev.parent);
+>   
+>   	return 0;
+>   }
+> @@ -2050,8 +2084,12 @@ static void e1000_get_ethtool_stats(struct net_device *netdev,
+>   	int i;
+>   	char *p = NULL;
+>   
+> +	pm_runtime_get_sync(netdev->dev.parent);
+> +
+>   	dev_get_stats(netdev, &net_stats);
+>   
+> +	pm_runtime_put_sync(netdev->dev.parent);
+> +
+>   	for (i = 0; i < E1000_GLOBAL_STATS_LEN; i++) {
+>   		switch (e1000_gstrings_stats[i].type) {
+>   		case NETDEV_STATS:
+> @@ -2108,7 +2146,9 @@ static int e1000_get_rxnfc(struct net_device *netdev,
+>   		struct e1000_hw *hw = &adapter->hw;
+>   		u32 mrqc;
+>   
+> +		pm_runtime_get_sync(netdev->dev.parent);
+>   		mrqc = er32(MRQC);
+> +		pm_runtime_put_sync(netdev->dev.parent);
+>   
+>   		if (!(mrqc & E1000_MRQC_RSS_FIELD_MASK))
+>   			return 0;
+> @@ -2171,9 +2211,13 @@ static int e1000e_get_eee(struct net_device *netdev, struct ethtool_keee *edata)
+>   		return -EOPNOTSUPP;
+>   	}
+>   
+> +	pm_runtime_get_sync(netdev->dev.parent);
+> +
+>   	ret_val = hw->phy.ops.acquire(hw);
+> -	if (ret_val)
+> +	if (ret_val) {
+> +		pm_runtime_put_sync(netdev->dev.parent);
+>   		return -EBUSY;
 > +	}
+>   
+>   	/* EEE Capability */
+>   	ret_val = e1000_read_emi_reg_locked(hw, cap_addr, &phy_data);
+> @@ -2213,6 +2257,8 @@ static int e1000e_get_eee(struct net_device *netdev, struct ethtool_keee *edata)
+>   	if (ret_val)
+>   		ret_val = -ENODATA;
+>   
+> +	pm_runtime_put_sync(netdev->dev.parent);
 > +
-> +	err = le32_to_cpu(event.desc.cookie_low);
-> +	if (!err)
-
-	if (!event.desc.cookie_low)
-
-Because 0 == le32_to_cpu(0), it's always 0.
-So you don't need @err here and it can be declared inside the loop above.
-
-> +		adapter->supp_rxdids = rxdids;
+>   	return ret_val;
+>   }
+>   
+> @@ -2253,12 +2299,16 @@ static int e1000e_set_eee(struct net_device *netdev, struct ethtool_keee *edata)
+>   
+>   	hw->dev_spec.ich8lan.eee_disable = !edata->eee_enabled;
+>   
+> +	pm_runtime_get_sync(netdev->dev.parent);
 > +
-> +	return 0;
-> +}
+>   	/* reset the link */
+>   	if (netif_running(netdev))
+>   		e1000e_reinit_locked(adapter);
+>   	else
+>   		e1000e_reset(adapter);
+>   
+> +	pm_runtime_put_sync(netdev->dev.parent);
 > +
->  /**
->   * iavf_configure_queues
->   * @adapter: adapter structure
-> @@ -308,6 +353,8 @@ void iavf_configure_queues(struct iavf_adapter *adapter)
->  		vqpi->rxq.dma_ring_addr = adapter->rx_rings[i].dma;
->  		vqpi->rxq.max_pkt_size = max_frame;
->  		vqpi->rxq.databuffer_size = adapter->rx_rings[i].rx_buf_len;
-> +		if (IAVF_RXDID_ALLOWED(adapter))
-> +			vqpi->rxq.rxdid = adapter->rxdid;
->  		if (CRC_OFFLOAD_ALLOWED(adapter))
->  			vqpi->rxq.crc_disable = !!(adapter->netdev->features &
->  						   NETIF_F_RXFCS);
-> @@ -2372,6 +2419,10 @@ void iavf_virtchnl_completion(struct iavf_adapter *adapter,
->  			aq_required;
->  		}
->  		break;
-> +	case VIRTCHNL_OP_GET_SUPPORTED_RXDIDS:
-> +		memcpy(&adapter->supp_rxdids, msg,
-> +		       min_t(u16, msglen, sizeof(adapter->supp_rxdids)));
-
-Why is this needed if you assign ->supp_rxdids in
-iavf_get_vf_supported_rxdids()? Or is this something different?
-
-I'd also say this memcpy() is not safe. ->supp_rxdids is u64. If somehow
-@msglen is less than 8 bytes, you'd probably get a corrupted u64 value.
-I think you should compare @msglen to sizeof(u64) and bail out if it's
-different. If it's the same, you should just do
-
-		adapter->supp_rxdids = *(u64 *)msg;
-
-> +		break;
->  	case VIRTCHNL_OP_ENABLE_QUEUES:
->  		/* enable transmits */
->  		iavf_irq_enable(adapter, true);
-> diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl.c b/drivers/net/ethernet/intel/ice/ice_virtchnl.c
-> index b60df6e9b3e7..3c2d6a504aa0 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_virtchnl.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_virtchnl.c
-> @@ -2709,12 +2709,12 @@ static int ice_vc_set_rss_hena(struct ice_vf *vf, u8 *msg)
->  static int ice_vc_query_rxdid(struct ice_vf *vf)
->  {
->  	enum virtchnl_status_code v_ret = VIRTCHNL_STATUS_SUCCESS;
-> -	struct virtchnl_supported_rxdids *rxdid = NULL;
->  	struct ice_hw *hw = &vf->pf->hw;
->  	struct ice_pf *pf = vf->pf;
-> -	int len = 0;
-> -	int ret, i;
-> +	u32 len = sizeof(u64);
->  	u32 regval;
-> +	u64 rxdid;
-> +	int ret, i;
-
-RCT broke here =\
-
->  
->  	if (!test_bit(ICE_VF_STATE_ACTIVE, vf->vf_states)) {
->  		v_ret = VIRTCHNL_STATUS_ERR_PARAM;
-
-Thanks,
-Olek
+>   	return 0;
+>   }
+>   
+> 
+>  From mboxrd@z Thu Jan  1 00:00:00 1970
+> Return-Path: <intel-wired-lan-bounces@osuosl.org>
+> X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
+> 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
+> Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+> 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+> 	(No client certificate requested)
+> 	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22EE6C3DA4A
+> 	for <intel-wired-lan@archiver.kernel.org>; Tue, 20 Aug 2024 21:30:44 +0000 (UTC)
+> Received: from localhost (localhost [127.0.0.1])
+> 	by smtp2.osuosl.org (Postfix) with ESMTP id E223040474;
+> 	Tue, 20 Aug 2024 21:30:43 +0000 (UTC)
+> X-Virus-Scanned: amavis at osuosl.org
+> Received: from smtp2.osuosl.org ([127.0.0.1])
+>   by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+>   id bS7tH8aI4dXw; Tue, 20 Aug 2024 21:30:42 +0000 (UTC)
+> X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN>
+> DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 9F4E940B38
+> DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+> 	s=default; t=1724189442;
+> 	bh=mlj2OU/9jQQlYVgc8xXGFGEbmSA2BUO2s9ZMNvlZa5E=;
+> 	h=Date:From:To:In-Reply-To:Subject:List-Id:List-Unsubscribe:
+> 	 List-Archive:List-Post:List-Help:List-Subscribe:Cc:From;
+> 	b=gRsw4VpLnbvTsoxcHbTQgLUM2iVdECmRSG1uEylrYmPsdWJDin8aVjhm4QrxSXuMO
+> 	 g+6njzmv+w6950L+rcQlJiK6ry1jbhFrNzTmFOyCvctsUeLmaqGu1jrLvOp2XhP3uJ
+> 	 dOpebDahCjpzldI2iCU6Oy/iNQsLx2KSsxzZgtlNqOx3rXCjDFXINVRKkL9Sz2kv5b
+> 	 etzK/KOTa/xffZ7mnp9ZelV0v0YGUFmgFKvt6/QLqeTpqpXphMr3MntldSJLu7BrFm
+> 	 4EJloku9spGmIB2ZBt4wRHhPvuoKG4HPu8DszG7VJAOAj52QaC1bmnQ19OKwKM+Rlz
+> 	 C0+0QilD6XFkQ==
+> Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+> 	by smtp2.osuosl.org (Postfix) with ESMTP id 9F4E940B38;
+> 	Tue, 20 Aug 2024 21:30:42 +0000 (UTC)
+> Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+>   by ash.osuosl.org (Postfix) with ESMTP id B70001BF3B8
+>   for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Aug 2024 21:30:40 +0000 (UTC)
+> Received: from localhost (localhost [127.0.0.1])
+>   by smtp4.osuosl.org (Postfix) with ESMTP id B04CA4067F
+>   for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Aug 2024 21:30:40 +0000 (UTC)
+> X-Virus-Scanned: amavis at osuosl.org
+> Received: from smtp4.osuosl.org ([127.0.0.1])
+>   by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+>   id 6VOvnWK04xp7 for <intel-wired-lan@lists.osuosl.org>;
+>   Tue, 20 Aug 2024 21:30:39 +0000 (UTC)
+> Received-SPF: Pass (mailfrom) identity=mailfrom;
+>   client-ip=2604:1380:4641:c500::1; helo=dfw.source.kernel.org;
+>   envelope-from=helgaas@kernel.org; receiver=<UNKNOWN>
+> DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 3098940679
+> DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3098940679
+> Received: from dfw.source.kernel.org (dfw.source.kernel.org
+>   [IPv6:2604:1380:4641:c500::1])
+>   by smtp4.osuosl.org (Postfix) with ESMTPS id 3098940679
+>   for <intel-wired-lan@lists.osuosl.org>; Tue, 20 Aug 2024 21:30:39 +0000 (UTC)
+> Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+>   by dfw.source.kernel.org (Postfix) with ESMTP id EF93D60DF6;
+>   Tue, 20 Aug 2024 21:30:37 +0000 (UTC)
+> Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4A00BC4AF09;
+>   Tue, 20 Aug 2024 21:30:37 +0000 (UTC)
+> Date: Tue, 20 Aug 2024 16:30:35 -0500
+> From: Bjorn Helgaas <helgaas@kernel.org>
+> To: Petr Valenta <petr@jevklidu.cz>
+> Message-ID: <20240820213035.GA226181@bhelgaas>
+> MIME-Version: 1.0
+> Content-Type: text/plain; charset=us-ascii
+> Content-Disposition: inline
+> In-Reply-To: <7ec28d20-c729-496a-b8bf-2bf88bbb4d70@jevklidu.cz>
+> X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+>   d=kernel.org; s=k20201202; t=1724189437;
+>   bh=0t79HOH2kYVclDTTF8FvHw6OfaaM4JS6jorC17zXI3k=;
+>   h=Date:From:To:Cc:Subject:In-Reply-To:From;
+>   b=GhFyFhraHJm9t4ey15N3XxG5Bc8U2z1N5/4pJSFm4vNlndjUOQltzb39mj8r5tzdO
+>   0Qrk2iUfn9usdQTfr3eHowUDbvxoFI6z/iFJUe0kPts5eaue6Z5J1ESezm6daA6gwZ
+>   yJtcho1EXrvEH0dGBx7xhKIKBezS0BAXW2lbUFKuTB9YSHJvprlgy0VZjDNjg/G3WL
+>   4nV3cEtNJ3EiMYMMNl9JNQtJDhvg/VIeHBFzQPJHHzBh+gZ4MmwNPJSkTNCDceZicW
+>   OJIm3Vprxxg/osSezx/ysd0VAXqV7ywftKaXHshPID8u49v2SiJtBafOh/+7jMlh+U
+>   CASP86+QHj9sA==
+> X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+>   dmarc=pass (p=quarantine dis=none)
+>   header.from=kernel.org
+> X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+>   dkim=pass (2048-bit key,
+>   unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
+>   header.s=k20201202 header.b=GhFyFhra
+> Subject: Re: [Intel-wired-lan] ACPI IRQ storm with 6.10
+> X-BeenThere: intel-wired-lan@osuosl.org
+> X-Mailman-Version: 2.1.29
+> Precedence: list
+> List-Id: Intel Wired Ethernet Linux Kernel Driver Development
+>   <intel-wired-lan.osuosl.org>
+> List-Unsubscribe: <https://lists.osuosl.org/mailman/options/intel-wired-lan>,
+>   <mailto:intel-wired-lan-request@osuosl.org?subject=unsubscribe>
+> List-Archive: <http://lists.osuosl.org/pipermail/intel-wired-lan/>
+> List-Post: <mailto:intel-wired-lan@osuosl.org>
+> List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
+> List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
+>   <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+> Cc: Linux regressions mailing list <regressions@lists.linux.dev>,
+>   "Rafael J. Wysocki" <rafael@kernel.org>, przemyslaw.kitszel@intel.com,
+>   Linux kernel mailing list <linux-kernel@vger.kernel.org>,
+>   "linux-acpi@vger.kernel.org" <linux-acpi@vger.kernel.org>,
+>   Tony Nguyen <anthony.l.nguyen@intel.com>, Bjorn Helgaas <bhelgaas@google.com>,
+>   intel-wired-lan@lists.osuosl.org, Jiri Slaby <jirislaby@kernel.org>,
+>   Len Brown <lenb@kernel.org>
+> Errors-To: intel-wired-lan-bounces@osuosl.org
+> Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
+> 
+> On Tue, Aug 20, 2024 at 11:13:54PM +0200, Petr Valenta wrote:
+>> Dne 20. 08. 24 v 20:09 Bjorn Helgaas napsal(a):
+>>> On Mon, Aug 19, 2024 at 07:23:42AM +0200, Jiri Slaby wrote:
+>>>> On 19. 08. 24, 6:50, Jiri Slaby wrote:
+>>>>> CC e1000e guys + Jesse (due to 75a3f93b5383) + Bjorn (due to b2c289415b2b)
+>>>>
+>>>> Bjorn,
+>>>>
+>>>> I am confused by these changes:
+>>>> ==========================================
+>>>> @@ -291,16 +288,13 @@ static int e1000_set_link_ksettings(struct net_device
+>>>> *net
+>>>> dev,
+>>>>            * duplex is forced.
+>>>>            */
+>>>>           if (cmd->base.eth_tp_mdix_ctrl) {
+>>>> -               if (hw->phy.media_type != e1000_media_type_copper) {
+>>>> -                       ret_val = -EOPNOTSUPP;
+>>>> -                       goto out;
+>>>> -               }
+>>>> +               if (hw->phy.media_type != e1000_media_type_copper)
+>>>> +                       return -EOPNOTSUPP;
+>>>>
+>>>>                   if ((cmd->base.eth_tp_mdix_ctrl != ETH_TP_MDI_AUTO) &&
+>>>>                       (cmd->base.autoneg != AUTONEG_ENABLE)) {
+>>>>                           e_err("forcing MDI/MDI-X state is not supported when
+>>>> lin
+>>>> k speed and/or duplex are forced\n");
+>>>> -                       ret_val = -EINVAL;
+>>>> -                       goto out;
+>>>> +                       return -EINVAL;
+>>>>                   }
+>>>>           }
+>>>>
+>>>> @@ -347,7 +341,6 @@ static int e1000_set_link_ksettings(struct net_device
+>>>> *netde
+>>>> v,
+>>>>           }
+>>>>
+>>>>    out:
+>>>> -       pm_runtime_put_sync(netdev->dev.parent);
+>>>>           clear_bit(__E1000_RESETTING, &adapter->state);
+>>>>           return ret_val;
+>>>>    }
+>>>> ==========================================
+>>>>
+>>>> So no more clear_bit(__E1000_RESETTING in the above fail paths. Is that
+>>>> intentional?
+>>>
+>>> Not intentional.  Petr, do you have the ability to test the patch
+>>> below?  I'm not sure it's the correct fix, but it reverts the pieces
+>>> of b2c289415b2b that Jiri pointed out.
+>>
+>> I tested the patch below but it didn't help. After the first boot with new
+>> kernel it looked promising as the irq storm only appeared for a few seconds,
+>> but with subsequent reboots it was the same as without the patch.
+> 
+> Thank you very much for testing that!
+> 
+>> To be sure, I also send the md5sum of ethtool.c after applying the patch:
+>>
+>> a25c003257538f16994b4d7c4260e894 ethtool.c
+> 
+> Thanks, that matches what I get when applying the patch on v6.10.
+> 
+> I'm at a loss.  You could try reverting the entire b2c289415b2b commit
+> (patch for that is below).
+> 
+> If that doesn't help, I guess you could try reverting the other
+> commits Jiri mentioned:
+> 
+>    76a0a3f9cc2f e1000e: fix force smbus during suspend flow
+>    c93a6f62cb1b e1000e: Fix S0ix residency on corporate systems
+>    bfd546a552e1 e1000e: move force SMBUS near the end of enable_ulp function
+>    6918107e2540 net: e1000e & ixgbe: Remove PCI_HEADER_TYPE_MFD duplicates
+>    1eb2cded45b3 net: annotate writes on dev->mtu from ndo_change_mtu()
+>    b2c289415b2b e1000e: Remove redundant runtime resume for ethtool_ops
+>    75a3f93b5383 net: intel: implement modern PM ops declarations
+> 
+> If you do this, I would revert 76a0a3f9cc2f, test, then revert
+> c93a6f62cb1b in addition, test, then revert bfd546a552e1 in addition,
+> etc.
+> 
+> commit 5e92945ffe5c ("Revert "e1000e: Remove redundant runtime resume for ethtool_ops"")
+> Author: Bjorn Helgaas <bhelgaas@google.com>
+> Date:   Tue Aug 20 16:18:32 2024 -0500
+> 
+>      Revert "e1000e: Remove redundant runtime resume for ethtool_ops"
+>      
+>      This reverts commit b2c289415b2b2ef112b78d5e73b4acecf5db409e.
+> 
+> 
+> diff --git a/drivers/net/ethernet/intel/e1000e/ethtool.c b/drivers/net/ethernet/intel/e1000e/ethtool.c
+> index 9364bc2b4eb1..61fa2f6b3708 100644
+> --- a/drivers/net/ethernet/intel/e1000e/ethtool.c
+> +++ b/drivers/net/ethernet/intel/e1000e/ethtool.c
+> @@ -156,7 +156,7 @@ static int e1000_get_link_ksettings(struct net_device *netdev,
+>   			speed = adapter->link_speed;
+>   			cmd->base.duplex = adapter->link_duplex - 1;
+>   		}
+> -	} else {
+> +	} else if (!pm_runtime_suspended(netdev->dev.parent)) {
+>   		u32 status = er32(STATUS);
+>   
+>   		if (status & E1000_STATUS_LU) {
+> @@ -274,13 +274,16 @@ static int e1000_set_link_ksettings(struct net_device *netdev,
+>   	ethtool_convert_link_mode_to_legacy_u32(&advertising,
+>   						cmd->link_modes.advertising);
+>   
+> +	pm_runtime_get_sync(netdev->dev.parent);
+> +
+>   	/* When SoL/IDER sessions are active, autoneg/speed/duplex
+>   	 * cannot be changed
+>   	 */
+>   	if (hw->phy.ops.check_reset_block &&
+>   	    hw->phy.ops.check_reset_block(hw)) {
+>   		e_err("Cannot change link characteristics when SoL/IDER is active.\n");
+> -		return -EINVAL;
+> +		ret_val = -EINVAL;
+> +		goto out;
+>   	}
+>   
+>   	/* MDI setting is only allowed when autoneg enabled because
+> @@ -288,13 +291,16 @@ static int e1000_set_link_ksettings(struct net_device *netdev,
+>   	 * duplex is forced.
+>   	 */
+>   	if (cmd->base.eth_tp_mdix_ctrl) {
+> -		if (hw->phy.media_type != e1000_media_type_copper)
+> -			return -EOPNOTSUPP;
+> +		if (hw->phy.media_type != e1000_media_type_copper) {
+> +			ret_val = -EOPNOTSUPP;
+> +			goto out;
+> +		}
+>   
+>   		if ((cmd->base.eth_tp_mdix_ctrl != ETH_TP_MDI_AUTO) &&
+>   		    (cmd->base.autoneg != AUTONEG_ENABLE)) {
+>   			e_err("forcing MDI/MDI-X state is not supported when link speed and/or duplex are forced\n");
+> -			return -EINVAL;
+> +			ret_val = -EINVAL;
+> +			goto out;
+>   		}
+>   	}
+>   
+> @@ -341,6 +347,7 @@ static int e1000_set_link_ksettings(struct net_device *netdev,
+>   	}
+>   
+>   out:
+> +	pm_runtime_put_sync(netdev->dev.parent);
+>   	clear_bit(__E1000_RESETTING, &adapter->state);
+>   	return ret_val;
+>   }
+> @@ -376,6 +383,8 @@ static int e1000_set_pauseparam(struct net_device *netdev,
+>   	while (test_and_set_bit(__E1000_RESETTING, &adapter->state))
+>   		usleep_range(1000, 2000);
+>   
+> +	pm_runtime_get_sync(netdev->dev.parent);
+> +
+>   	if (adapter->fc_autoneg == AUTONEG_ENABLE) {
+>   		hw->fc.requested_mode = e1000_fc_default;
+>   		if (netif_running(adapter->netdev)) {
+> @@ -408,6 +417,7 @@ static int e1000_set_pauseparam(struct net_device *netdev,
+>   	}
+>   
+>   out:
+> +	pm_runtime_put_sync(netdev->dev.parent);
+>   	clear_bit(__E1000_RESETTING, &adapter->state);
+>   	return retval;
+>   }
+> @@ -438,6 +448,8 @@ static void e1000_get_regs(struct net_device *netdev,
+>   	u32 *regs_buff = p;
+>   	u16 phy_data;
+>   
+> +	pm_runtime_get_sync(netdev->dev.parent);
+> +
+>   	memset(p, 0, E1000_REGS_LEN * sizeof(u32));
+>   
+>   	regs->version = (1u << 24) |
+> @@ -483,6 +495,8 @@ static void e1000_get_regs(struct net_device *netdev,
+>   	e1e_rphy(hw, MII_STAT1000, &phy_data);
+>   	regs_buff[24] = (u32)phy_data;	/* phy local receiver status */
+>   	regs_buff[25] = regs_buff[24];	/* phy remote receiver status */
+> +
+> +	pm_runtime_put_sync(netdev->dev.parent);
+>   }
+>   
+>   static int e1000_get_eeprom_len(struct net_device *netdev)
+> @@ -515,6 +529,8 @@ static int e1000_get_eeprom(struct net_device *netdev,
+>   	if (!eeprom_buff)
+>   		return -ENOMEM;
+>   
+> +	pm_runtime_get_sync(netdev->dev.parent);
+> +
+>   	if (hw->nvm.type == e1000_nvm_eeprom_spi) {
+>   		ret_val = e1000_read_nvm(hw, first_word,
+>   					 last_word - first_word + 1,
+> @@ -528,6 +544,8 @@ static int e1000_get_eeprom(struct net_device *netdev,
+>   		}
+>   	}
+>   
+> +	pm_runtime_put_sync(netdev->dev.parent);
+> +
+>   	if (ret_val) {
+>   		/* a read error occurred, throw away the result */
+>   		memset(eeprom_buff, 0xff, sizeof(u16) *
+> @@ -577,6 +595,8 @@ static int e1000_set_eeprom(struct net_device *netdev,
+>   
+>   	ptr = (void *)eeprom_buff;
+>   
+> +	pm_runtime_get_sync(netdev->dev.parent);
+> +
+>   	if (eeprom->offset & 1) {
+>   		/* need read/modify/write of first changed EEPROM word */
+>   		/* only the second byte of the word is being modified */
+> @@ -617,6 +637,7 @@ static int e1000_set_eeprom(struct net_device *netdev,
+>   		ret_val = e1000e_update_nvm_checksum(hw);
+>   
+>   out:
+> +	pm_runtime_put_sync(netdev->dev.parent);
+>   	kfree(eeprom_buff);
+>   	return ret_val;
+>   }
+> @@ -712,6 +733,8 @@ static int e1000_set_ringparam(struct net_device *netdev,
+>   		}
+>   	}
+>   
+> +	pm_runtime_get_sync(netdev->dev.parent);
+> +
+>   	e1000e_down(adapter, true);
+>   
+>   	/* We can't just free everything and then setup again, because the
+> @@ -750,6 +773,7 @@ static int e1000_set_ringparam(struct net_device *netdev,
+>   		e1000e_free_tx_resources(temp_tx);
+>   err_setup:
+>   	e1000e_up(adapter);
+> +	pm_runtime_put_sync(netdev->dev.parent);
+>   free_temp:
+>   	vfree(temp_tx);
+>   	vfree(temp_rx);
+> @@ -1792,6 +1816,8 @@ static void e1000_diag_test(struct net_device *netdev,
+>   	u8 autoneg;
+>   	bool if_running = netif_running(netdev);
+>   
+> +	pm_runtime_get_sync(netdev->dev.parent);
+> +
+>   	set_bit(__E1000_TESTING, &adapter->state);
+>   
+>   	if (!if_running) {
+> @@ -1877,6 +1903,8 @@ static void e1000_diag_test(struct net_device *netdev,
+>   	}
+>   
+>   	msleep_interruptible(4 * 1000);
+> +
+> +	pm_runtime_put_sync(netdev->dev.parent);
+>   }
+>   
+>   static void e1000_get_wol(struct net_device *netdev,
+> @@ -2018,11 +2046,15 @@ static int e1000_set_coalesce(struct net_device *netdev,
+>   		adapter->itr_setting = adapter->itr & ~3;
+>   	}
+>   
+> +	pm_runtime_get_sync(netdev->dev.parent);
+> +
+>   	if (adapter->itr_setting != 0)
+>   		e1000e_write_itr(adapter, adapter->itr);
+>   	else
+>   		e1000e_write_itr(adapter, 0);
+>   
+> +	pm_runtime_put_sync(netdev->dev.parent);
+> +
+>   	return 0;
+>   }
+>   
+> @@ -2036,7 +2068,9 @@ static int e1000_nway_reset(struct net_device *netdev)
+>   	if (!adapter->hw.mac.autoneg)
+>   		return -EINVAL;
+>   
+> +	pm_runtime_get_sync(netdev->dev.parent);
+>   	e1000e_reinit_locked(adapter);
+> +	pm_runtime_put_sync(netdev->dev.parent);
+>   
+>   	return 0;
+>   }
+> @@ -2050,8 +2084,12 @@ static void e1000_get_ethtool_stats(struct net_device *netdev,
+>   	int i;
+>   	char *p = NULL;
+>   
+> +	pm_runtime_get_sync(netdev->dev.parent);
+> +
+>   	dev_get_stats(netdev, &net_stats);
+>   
+> +	pm_runtime_put_sync(netdev->dev.parent);
+> +
+>   	for (i = 0; i < E1000_GLOBAL_STATS_LEN; i++) {
+>   		switch (e1000_gstrings_stats[i].type) {
+>   		case NETDEV_STATS:
+> @@ -2108,7 +2146,9 @@ static int e1000_get_rxnfc(struct net_device *netdev,
+>   		struct e1000_hw *hw = &adapter->hw;
+>   		u32 mrqc;
+>   
+> +		pm_runtime_get_sync(netdev->dev.parent);
+>   		mrqc = er32(MRQC);
+> +		pm_runtime_put_sync(netdev->dev.parent);
+>   
+>   		if (!(mrqc & E1000_MRQC_RSS_FIELD_MASK))
+>   			return 0;
+> @@ -2171,9 +2211,13 @@ static int e1000e_get_eee(struct net_device *netdev, struct ethtool_keee *edata)
+>   		return -EOPNOTSUPP;
+>   	}
+>   
+> +	pm_runtime_get_sync(netdev->dev.parent);
+> +
+>   	ret_val = hw->phy.ops.acquire(hw);
+> -	if (ret_val)
+> +	if (ret_val) {
+> +		pm_runtime_put_sync(netdev->dev.parent);
+>   		return -EBUSY;
+> +	}
+>   
+>   	/* EEE Capability */
+>   	ret_val = e1000_read_emi_reg_locked(hw, cap_addr, &phy_data);
+> @@ -2213,6 +2257,8 @@ static int e1000e_get_eee(struct net_device *netdev, struct ethtool_keee *edata)
+>   	if (ret_val)
+>   		ret_val = -ENODATA;
+>   
+> +	pm_runtime_put_sync(netdev->dev.parent);
+> +
+>   	return ret_val;
+>   }
+>   
+> @@ -2253,12 +2299,16 @@ static int e1000e_set_eee(struct net_device *netdev, struct ethtool_keee *edata)
+>   
+>   	hw->dev_spec.ich8lan.eee_disable = !edata->eee_enabled;
+>   
+> +	pm_runtime_get_sync(netdev->dev.parent);
+> +
+>   	/* reset the link */
+>   	if (netif_running(netdev))
+>   		e1000e_reinit_locked(adapter);
+>   	else
+>   		e1000e_reset(adapter);
+>   
+> +	pm_runtime_put_sync(netdev->dev.parent);
+> +
+>   	return 0;
+>   }
+>   
+> 
