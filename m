@@ -1,96 +1,88 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id ABF3195B2F4
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 22 Aug 2024 12:33:33 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9833D95B317
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 22 Aug 2024 12:40:23 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 10409605C5;
-	Thu, 22 Aug 2024 10:33:32 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 3A07960B4A;
+	Thu, 22 Aug 2024 10:40:22 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 1r_aK3PgI-lx; Thu, 22 Aug 2024 10:33:31 +0000 (UTC)
+ id Ti68G7IB1QRW; Thu, 22 Aug 2024 10:40:21 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 604B060676
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7B08160B2E
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1724322811;
-	bh=3+moksOzKUqUZbOqsKxIlWaWDSrhTeHdPTqwXvV8bRM=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=NAzIadB6KW1ePFkWxoWp19RI2wnnVO1UZELKpQU/+QEmuytt87/LWiLQHLBKUirue
-	 qJ56Uy2Jl2k2nrtAoC/RSIQ8Ky15o7C9TbixKfayBzg9v2/aUbfqp3HzxvpXjyV62F
-	 qlYTTcRvU8x9LSwNyH6xQsCyMVgvr8ySqrkHh0daby+T5wSpYHxneWJG83DyAFS+ro
-	 8skr1TNWJGrxU5vJd+EhViKdLVTcbbo0utxYI7hQ0aIG4+njm5Rs0UhACVfted1Ta1
-	 7rTex+z1k877F6S/WMet086rfDc6vnFb2ofCDWC7+2NIu1rbKwJiDT82ZVQ7PpLZJB
-	 Hl5oP6SvUm4wQ==
+	s=default; t=1724323221;
+	bh=5xAIu9B4Vl3KoqN1f4LWGERnwrll19Oe35IzheBVJ0k=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=SyOPTf0iamwFqolVQvSi6/m4J35dsrWGWb8TAz5/R5oPl2Rc6KIdpxz+U0HsGCv7l
+	 N+hH0gT4eJSNPVGkplM9KMaNX3w8eGzA/R6b3eZnmTFbuYVSRVt7tVq47hGB5mw+MC
+	 L7Bem1Ra5U7jTd6VpMEVAIcSlAGWXwckDrT9scVlxmXYYUtjWWHtBksnKwVR3VDeBa
+	 LC7823KPbrznMfzeDmrwcvVdhZJBavYR5yvpsLbAzPE6vokmzf5AZeWAZo78Wb9keL
+	 ogqCErlFwLlB5ZFydX++eC7fuZcn0ljBynRn7vJuhpVd6MXbqqB+lI+SSPSbmd+9wT
+	 n9jkiUjaRmCgA==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 604B060676;
-	Thu, 22 Aug 2024 10:33:31 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 7B08160B2E;
+	Thu, 22 Aug 2024 10:40:21 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 5CEF21BF346
- for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Aug 2024 10:33:29 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id E9D261BF346
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Aug 2024 10:40:18 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 4977040492
- for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Aug 2024 10:33:29 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id D600360B29
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Aug 2024 10:40:18 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id iLhyS-A5v2_G for <intel-wired-lan@lists.osuosl.org>;
- Thu, 22 Aug 2024 10:33:28 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.19;
- helo=mgamail.intel.com; envelope-from=vitaly.lifshits@intel.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 4AAF9403E6
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4AAF9403E6
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.19])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 4AAF9403E6
- for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Aug 2024 10:33:27 +0000 (UTC)
-X-CSE-ConnectionGUID: UyrHbRXmRjeSEBn87il2wQ==
-X-CSE-MsgGUID: ohliDbdaTZyh8lHukmXVQw==
-X-IronPort-AV: E=McAfee;i="6700,10204,11171"; a="22332254"
-X-IronPort-AV: E=Sophos;i="6.10,166,1719903600"; d="scan'208";a="22332254"
-Received: from fmviesa009.fm.intel.com ([10.60.135.149])
- by fmvoesa113.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 22 Aug 2024 03:33:27 -0700
-X-CSE-ConnectionGUID: 6NKOIE9ATqOF7RC7ezjXyg==
-X-CSE-MsgGUID: IR4pEoCGS/66AXNCf0verQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.10,166,1719903600"; d="scan'208";a="61429032"
-Received: from ccdlinuxdev11.iil.intel.com ([143.185.162.51])
- by fmviesa009.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 22 Aug 2024 03:33:26 -0700
-From: Vitaly Lifshits <vitaly.lifshits@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Thu, 22 Aug 2024 13:33:20 +0300
-Message-Id: <20240822103320.2302092-1-vitaly.lifshits@intel.com>
-X-Mailer: git-send-email 2.34.1
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id IAVOCI_5yAa4 for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 22 Aug 2024 10:40:18 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2604:1380:40e1:4800::1; helo=sin.source.kernel.org;
+ envelope-from=horms@kernel.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org CDD8E60AF9
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org CDD8E60AF9
+Received: from sin.source.kernel.org (sin.source.kernel.org
+ [IPv6:2604:1380:40e1:4800::1])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id CDD8E60AF9
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 22 Aug 2024 10:40:17 +0000 (UTC)
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by sin.source.kernel.org (Postfix) with ESMTP id 5C22FCE0F80;
+ Thu, 22 Aug 2024 10:40:13 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6E180C32782;
+ Thu, 22 Aug 2024 10:40:09 +0000 (UTC)
+Date: Thu, 22 Aug 2024 11:40:07 +0100
+From: Simon Horman <horms@kernel.org>
+To: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+Message-ID: <20240822104007.GL2164@kernel.org>
+References: <20240821133714.61417-1-przemyslaw.kitszel@intel.com>
+ <20240821133714.61417-4-przemyslaw.kitszel@intel.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240821133714.61417-4-przemyslaw.kitszel@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1724322808; x=1755858808;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=qefD3+4LTJvv3L0eP6paM7cTZUU1XsuOOqKSKrdIOFQ=;
- b=eHYkKXzeXQBU1rse1LdxhT8QIUm5UU9vDPL1qydKiH3U/GIb8kxJ3808
- rBcNscRLKE7JqnFx56PwlKnG2ZwnthJR/77qF22Db78M40s0mcdaPtaAK
- obr7ox3108wIdN9BFacn91cBNgsT5wB0KCe1pyGJobUxbZ3Lz0F1434pn
- dARPCifR32TZDfPg/tmxZG38c4JS/t1og8M4Ca9bE6cTIoi7DT9cHdinH
- xB0BY+FMNo2d9ri4yYSiQTq51ED/2DPPhTyJyloSaEXJMrKQ0fFaD7Jcy
- qrs/T8YkDI2utaxBCn+yxi6otVP0J88+w34IJHBE13OcriWZKoINx7JU5
- Q==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=eHYkKXze
-Subject: [Intel-wired-lan] [PATCH iwl-net v2 1/1] e1000e: change I219 (19)
- devices to ADP
+ d=kernel.org; s=k20201202; t=1724323212;
+ bh=fq6WxlddeTPwRmrjo9kprPP5PAIJy0zQ4SnYvgRtKwU=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=lucMqYMvFlq6JNTdcdUQucSJnyOba56S2T0vVPi5OgwlXx2m2HygCMCj0SvVqyPcA
+ QcZXEN2d9/14ueoh/XJwqdxO5JMS1qFbqIvxJVwyfq1810egn9y074dyc9BzCON9fk
+ mAgSclfFeKy3dsZK8LPUJF467MRDE9CAQ0gjGY91nhzoqsIapwGWEU2fHNUrv8n2Fx
+ yc99oAwM9SsTAbHyXlqn2xREG8+2F9AMTN/97EbjmMvkLBv8vbfUxSq05UpdNr1sOr
+ Emf1Sfvur3IuKDL0AMJYJ6T+TCyNM5MQiYEPxb8AaVZzSgtMxSw+ibcMd3/d5/0fef
+ XOxSApbsLagEQ==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dmarc=pass (p=quarantine dis=none)
+ header.from=kernel.org
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=lucMqYMv
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v3 3/6] devlink: add
+ devlink_fmsg_dump_skb() function
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -103,59 +95,91 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Vitaly Lifshits <vitaly.lifshits@intel.com>
+Cc: lukas.bulwahn@gmail.com, willemb@google.com, Jiri Pirko <jiri@resnulli.us>,
+ dwaipayanray1@gmail.com, nex.sw.ncis.osdt.itp.upstreaming@intel.com,
+ netdev@vger.kernel.org, Mateusz Polchlopek <mateusz.polchlopek@intel.com>,
+ joe@perches.com, Eric Dumazet <edumazet@google.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>, Jakub Kicinski <kuba@kernel.org>,
+ apw@canonical.com, intel-wired-lan@lists.osuosl.org, akpm@linux-foundation.org,
+ Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Sporadic issues have been observed on I219 (19) devices. It was found
-that these devices have hardware more closely related to ADP than MTP
-and the issues were caused by taking MTP-specific flows.
+On Wed, Aug 21, 2024 at 03:37:11PM +0200, Przemek Kitszel wrote:
+> From: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
+> 
+> Add devlink_fmsg_dump_skb() function that adds some diagnostic
+> information about skb (like length, pkt type, MAC, etc) to devlink
+> fmsg mechanism using bunch of devlink_fmsg_put() function calls.
+> 
+> Signed-off-by: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
+> Signed-off-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
 
-Change the MAC and board types of these devices from MTP to ADP to
-correctly reflect the LAN hardware, and flows, of these devices.
+...
 
-Fixes: db2d737d63c5 ("e1000e: Separate MTP board type from ADP")
-Signed-off-by: Vitaly Lifshits <vitaly.lifshits@intel.com>
----
-v2: elaborate on the meanings of this change
-v1: initial version 
----
- drivers/net/ethernet/intel/e1000e/hw.h     | 4 ++--
- drivers/net/ethernet/intel/e1000e/netdev.c | 4 ++--
- 2 files changed, 4 insertions(+), 4 deletions(-)
+> diff --git a/net/devlink/health.c b/net/devlink/health.c
+> index acb8c0e174bb..b98ca650284c 100644
+> --- a/net/devlink/health.c
+> +++ b/net/devlink/health.c
+> @@ -1241,3 +1241,70 @@ int devlink_nl_health_reporter_test_doit(struct sk_buff *skb,
+>  
+>  	return reporter->ops->test(reporter, info->extack);
+>  }
+> +
+> +/**
+> + * devlink_fmsg_dump_skb - Dump sk_buffer structure
+> + * @fmsg: devlink formatted message pointer
+> + * @skb: pointer to skb
+> + *
+> + * Dump diagnostic information about sk_buff structure, like headroom, length,
+> + * tailroom, MAC, etc.
+> + */
+> +void devlink_fmsg_dump_skb(struct devlink_fmsg *fmsg, const struct sk_buff *skb)
+> +{
+> +	struct skb_shared_info *sh = skb_shinfo(skb);
+> +	struct sock *sk = skb->sk;
+> +	bool has_mac, has_trans;
+> +
+> +	has_mac = skb_mac_header_was_set(skb);
+> +	has_trans = skb_transport_header_was_set(skb);
+> +
+> +	devlink_fmsg_pair_nest_start(fmsg, "skb");
+> +	devlink_fmsg_obj_nest_start(fmsg);
+> +	devlink_fmsg_put(fmsg, "actual len", skb->len);
+> +	devlink_fmsg_put(fmsg, "head len", skb_headlen(skb));
+> +	devlink_fmsg_put(fmsg, "data len", skb->data_len);
+> +	devlink_fmsg_put(fmsg, "tail len", skb_tailroom(skb));
+> +	devlink_fmsg_put(fmsg, "MAC", has_mac ? skb->mac_header : -1);
+> +	devlink_fmsg_put(fmsg, "MAC len",
+> +			 has_mac ? skb_mac_header_len(skb) : -1);
+> +	devlink_fmsg_put(fmsg, "network hdr", skb->network_header);
+> +	devlink_fmsg_put(fmsg, "network hdr len",
+> +			 has_trans ? skb_network_header_len(skb) : -1);
+> +	devlink_fmsg_put(fmsg, "transport hdr",
+> +			 has_trans ? skb->transport_header : -1);
+> +	devlink_fmsg_put(fmsg, "csum", skb->csum);
 
-diff --git a/drivers/net/ethernet/intel/e1000e/hw.h b/drivers/net/ethernet/intel/e1000e/hw.h
-index 4b6e7536170a..fc8ed38aa095 100644
---- a/drivers/net/ethernet/intel/e1000e/hw.h
-+++ b/drivers/net/ethernet/intel/e1000e/hw.h
-@@ -108,8 +108,8 @@ struct e1000_hw;
- #define E1000_DEV_ID_PCH_RPL_I219_V22		0x0DC8
- #define E1000_DEV_ID_PCH_MTP_I219_LM18		0x550A
- #define E1000_DEV_ID_PCH_MTP_I219_V18		0x550B
--#define E1000_DEV_ID_PCH_MTP_I219_LM19		0x550C
--#define E1000_DEV_ID_PCH_MTP_I219_V19		0x550D
-+#define E1000_DEV_ID_PCH_ADP_I219_LM19		0x550C
-+#define E1000_DEV_ID_PCH_ADP_I219_V19		0x550D
- #define E1000_DEV_ID_PCH_LNP_I219_LM20		0x550E
- #define E1000_DEV_ID_PCH_LNP_I219_V20		0x550F
- #define E1000_DEV_ID_PCH_LNP_I219_LM21		0x5510
-diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
-index 360ee26557f7..80f8e23bc4f5 100644
---- a/drivers/net/ethernet/intel/e1000e/netdev.c
-+++ b/drivers/net/ethernet/intel/e1000e/netdev.c
-@@ -7896,10 +7896,10 @@ static const struct pci_device_id e1000_pci_tbl[] = {
- 	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_ADP_I219_V17), board_pch_adp },
- 	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_RPL_I219_LM22), board_pch_adp },
- 	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_RPL_I219_V22), board_pch_adp },
-+	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_ADP_I219_LM19), board_pch_adp },
-+	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_ADP_I219_V19), board_pch_adp },
- 	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_MTP_I219_LM18), board_pch_mtp },
- 	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_MTP_I219_V18), board_pch_mtp },
--	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_MTP_I219_LM19), board_pch_mtp },
--	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_MTP_I219_V19), board_pch_mtp },
- 	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_LNP_I219_LM20), board_pch_mtp },
- 	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_LNP_I219_V20), board_pch_mtp },
- 	{ PCI_VDEVICE(INTEL, E1000_DEV_ID_PCH_LNP_I219_LM21), board_pch_mtp },
--- 
-2.34.1
+Hi,
 
+One minor nit here, which I don't think needs to stop progress of this
+patchset. Sparse warns that:
+
+error: no generic selection for 'restricted __wsum const [usertype] csum'
+
+I believe this can be addressed by casting: (__force __u32) skb->csum,
+perhaps incorporated into devlink_fmsg_put(). Which seems fine enough for
+this case.
+
+However, my observation is that there are a lot of sparse warnings
+present in the tree due to similar issues around the use of __wsum.
+And IMHO naked casts are error prone and not obviously correct to the
+reader (me). So I wonder if there is some value in introducing some
+helpers. E.g.
+
+	wsum_to_cpu()
+	cpu_to_wsum()
+
+To my mind, that would clearly be out of scope for this patchset.
+But It seems appropriate to raise this as it's been on my mind for a while.
+
+...
