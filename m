@@ -1,89 +1,87 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2579F95DE1C
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 24 Aug 2024 15:32:36 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 78D3F95DE3C
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 24 Aug 2024 15:58:49 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 75F9B60679;
-	Sat, 24 Aug 2024 13:32:33 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 0D8186069E;
+	Sat, 24 Aug 2024 13:58:48 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 3k4ihz6CO27u; Sat, 24 Aug 2024 13:32:32 +0000 (UTC)
+ id DHlx_tpdCbF8; Sat, 24 Aug 2024 13:58:47 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org CE4A660625
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5950C606AE
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1724506352;
-	bh=iYdiFI7ZWYPD5L4KdfxKa2YPulo+xjoFZjT6tHF1xBw=;
+	s=default; t=1724507927;
+	bh=JnKIRIiU9r2SosFAqspAhIEIk2FtZj38NcUbYmHQymQ=;
 	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=rJ0v5W86AgnjQkzNduhObXIs3zgqTmDQJiuTRH8C26siYJ8r+5yDVIN11/e7glol2
-	 3Bx6iWcdU6mzdKg7ishTMPIEd3Fhx1hTmucSW0cOC2Tf21DKPhE6tUEJf+i4X3dU6e
-	 umQip2ZoU7vciPYz9VB1GChC2j+hQSP5aRzZeTX83mAY28Q2HfhYenCc3E9OZ9eCgo
-	 ne2iTSP6Ad11xPGBwwzWUqlb2BocA8pqnqCKucGWmuIvlbuYj7grTIIbrBHrl1dDoR
-	 pMIF5WM7hl7P1+sQL02/6WT3tXLi9KgvqZIc26jvkhwlx8/+dF+d4DKVVvFGnPweQC
-	 MJWfCVCy/z2Ew==
+	b=n6ZU/IEGA8/pxygBIiv0evb9qunP/Hl5VFiE5VNjSoZGh1AX8uP8c2v3fPDTnDJc3
+	 SXo2Kd0UZ4cCNIXF+S3yv6Mjka1/F+GCZt3V2ODw/VsP2ez1hXpIuPN0mPOb6OISbS
+	 HF4Ye2YtrnqB9NroXWvnPQo+ByqnvO2Kw1xTdap3Xj/OQNFz26aX+0byOar4VvKe8i
+	 Ts5jJ49r/CeCdsbmiw4Q+RFSaGjTDgCHrSkOgG484v7EMbVhW67CHKECA7OowNKnWZ
+	 qvTSYbMK5M4dsTvBwRalKKPR0liJfBbkyKOJ16krwoUC67jyG4qgmwF2+ooQu9STQO
+	 KREcrw7og3lAw==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id CE4A660625;
-	Sat, 24 Aug 2024 13:32:32 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 5950C606AE;
+	Sat, 24 Aug 2024 13:58:47 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 7C5891BF349
- for <intel-wired-lan@lists.osuosl.org>; Sat, 24 Aug 2024 13:32:30 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 2E9881BF349
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 24 Aug 2024 13:58:46 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 751FE60625
- for <intel-wired-lan@lists.osuosl.org>; Sat, 24 Aug 2024 13:32:30 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 2760481778
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 24 Aug 2024 13:58:46 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id VbdSVcQ6fVDw for <intel-wired-lan@lists.osuosl.org>;
- Sat, 24 Aug 2024 13:32:30 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2604:1380:4641:c500::1; helo=dfw.source.kernel.org;
- envelope-from=horms@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org CB4666062D
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org CB4666062D
-Received: from dfw.source.kernel.org (dfw.source.kernel.org
- [IPv6:2604:1380:4641:c500::1])
- by smtp3.osuosl.org (Postfix) with ESMTPS id CB4666062D
- for <intel-wired-lan@lists.osuosl.org>; Sat, 24 Aug 2024 13:32:29 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 0BXUEH-bvj6b for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 24 Aug 2024 13:58:45 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=145.40.73.55;
+ helo=sin.source.kernel.org; envelope-from=horms@kernel.org;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 5C4E681774
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 5C4E681774
+Received: from sin.source.kernel.org (sin.source.kernel.org [145.40.73.55])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 5C4E681774
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 24 Aug 2024 13:58:44 +0000 (UTC)
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by dfw.source.kernel.org (Postfix) with ESMTP id 9ACE460B21;
- Sat, 24 Aug 2024 13:32:28 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2AAA8C32781;
- Sat, 24 Aug 2024 13:32:25 +0000 (UTC)
-Date: Sat, 24 Aug 2024 14:32:23 +0100
+ by sin.source.kernel.org (Postfix) with ESMTP id C375DCE09B8;
+ Sat, 24 Aug 2024 13:58:40 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CF8FAC32781;
+ Sat, 24 Aug 2024 13:58:38 +0000 (UTC)
+Date: Sat, 24 Aug 2024 14:58:36 +0100
 From: Simon Horman <horms@kernel.org>
-To: Karol Kolacinski <karol.kolacinski@intel.com>
-Message-ID: <20240824133223.GK2164@kernel.org>
-References: <20240820102402.576985-8-karol.kolacinski@intel.com>
- <20240820102402.576985-13-karol.kolacinski@intel.com>
+To: Wojciech Drewek <wojciech.drewek@intel.com>
+Message-ID: <20240824135836.GL2164@kernel.org>
+References: <20240805134350.132357-1-wojciech.drewek@intel.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20240820102402.576985-13-karol.kolacinski@intel.com>
+In-Reply-To: <20240805134350.132357-1-wojciech.drewek@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1724506348;
- bh=yWDV6zMHCzJEYB1oaS9d3E9GAKtkhUP1/BrP+7WaSHA=;
+ d=kernel.org; s=k20201202; t=1724507920;
+ bh=MyaHm4/jqfyXmm+qOcdwO0g5N2J//Qv06F//5xrumO0=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=U+REtyjROfseawkBmwNI1Pt4XlpJe6xEZpHDz22GwMIhDr+ibZneuo6IPBXPdoA/n
- z72oKn4gQPwutl/6ZAFDwS4LpmveE7iMxMXYWi225bCrzRjRLjBUye0JAePK/svnAE
- RHloFbG2/K7m/l0ONCWiCiTNjOpivLtArVYLYoYIlEoylwvOeLOUAp5n7+NS0Sc4q3
- lK9i9/7oW5c4AN2YRryRJtymbXW1l+7aWjOswMuFbB47UJYlEeCYTFpdAqdCpjxT+r
- LhyQSbUB/aECFJfYi/F92XcSybgXPO6uOzRTP+hZMYDKqVP37AinNePPKE0LYlq28o
- 3KDPtjIhiIxwQ==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ b=a5irSxDkcoxY/xqZdBbkzHelgjOWZlhGRo8NmbxiXowskXHVx0NcdipvKimljPk19
+ cB5Xo8XRzA30R4n4IioqXB3C8YpwBhusk7N7xPmAB0sTc4xbKkbsfPNEtjLSmm6QFc
+ sb4L7n/iH/eqU8r7U6yeAHPB2ByT+mwbIcgvRPlerHm7fpdpTO90SP8FXOcsY450Jm
+ Lkc7Rog9Ottwi0Q4RHjdk/hIWXonO0Ptux2qL7ZUT33mZyritQy0vzU5xMDKGdOHTt
+ kLUKlVksR/g2jHN2qHyrmsJtFtTgsYlycTuzHazjcUv0i1VeG4v0e6CRYvZ5QWJuiQ
+ x4JKb+7Sz/sgg==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20201202 header.b=U+REtyjR
-Subject: Re: [Intel-wired-lan] [PATCH v7 iwl-next 5/6] ice: Add timestamp
- ready bitmap for E830 products
+ header.s=k20201202 header.b=a5irSxDk
+Subject: Re: [Intel-wired-lan] [PATCH iwl-net] ice: Flush FDB entries before
+ reset
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -101,55 +99,28 @@ Cc: netdev@vger.kernel.org, anthony.l.nguyen@intel.com,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, Aug 20, 2024 at 12:21:52PM +0200, Karol Kolacinski wrote:
-> E830 PHY supports timestamp ready bitmap.
-> Enable the bitmap by refactoring tx init function.
+On Mon, Aug 05, 2024 at 03:43:50PM +0200, Wojciech Drewek wrote:
+> Triggering the reset while in switchdev mode causes
+> errors[1]. Rules are already removed by this time
+> because switch content is flushed in case of the reset.
+> We can avoid these errors by clearing the rules
+> early in the reset flow. Remove unnecessary
+> ice_clear_sw_switch_recipes.
+
+Hi Wojciech,
+
+I think it would be helpful (at least to me) if the patch
+description included some more detail on
+1) How the current flow results in these warnings; and
+2) The new flow ensures resources are released.
+
 > 
-> Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-> Signed-off-by: Karol Kolacinski <karol.kolacinski@intel.com>
-
-...
-
-> @@ -3344,20 +3327,13 @@ static int ice_ptp_init_port(struct ice_pf *pf, struct ice_ptp_port *ptp_port)
->  	mutex_init(&ptp_port->ps_lock);
->  
->  	switch (hw->mac_type) {
-> -	case ICE_MAC_E810:
-> -	case ICE_MAC_E830:
-> -		return ice_ptp_init_tx_e810(pf, &ptp_port->tx);
->  	case ICE_MAC_GENERIC:
->  		kthread_init_delayed_work(&ptp_port->ov_work,
->  					  ice_ptp_wait_for_offsets);
-> -
->  		return ice_ptp_init_tx_e82x(pf, &ptp_port->tx,
->  					    ptp_port->port_num);
-> -	case ICE_MAC_GENERIC_3K_E825:
-> -		return ice_ptp_init_tx_eth56g(pf, &ptp_port->tx,
-> -					      ptp_port->port_num);
->  	default:
-> -		return -ENODEV;
-> +		return ice_ptp_init_tx(pf, &ptp_port->tx, ptp_port->port_num);
->  	}
-
-I think it would be better to maintain default as an error case
-for unknown mac_type values. (completely untested!)
-
-	switch (hw->mac_type) {
-	case ICE_MAC_E810:
-	case ICE_MAC_E830:
-	case ICE_MAC_GENERIC_3K_E825:
-		return ice_ptp_init_tx(pf, &ptp_port->tx, ptp_port->port_num);
-	case ICE_MAC_GENERIC:
-		kthread_init_delayed_work(&ptp_port->ov_work,
-					  ice_ptp_wait_for_offsets);
-		return ice_ptp_init_tx_e82x(pf, &ptp_port->tx,
-					    ptp_port->port_num);
-	default:
-		return -ENODEV;
-	}
-
-And update the Return: section in the Kernel doc accordingly.
-
->  }
+> [1]
+> ice 0000:01:00.0: Failed to delete FDB forward rule, err: -2
+> ice 0000:01:00.0: Failed to delete FDB guard rule, err: -2
+> 
+> Fixes: 7c945a1a8e5f ("ice: Switchdev FDB events support")
+> Reviewed-by: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
+> Signed-off-by: Wojciech Drewek <wojciech.drewek@intel.com>
 
 ...
