@@ -2,230 +2,176 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 735DE95F1B2
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 26 Aug 2024 14:44:22 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8078195F4D0
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 26 Aug 2024 17:13:17 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 42808606B1;
-	Mon, 26 Aug 2024 12:44:20 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id DF85560789;
+	Mon, 26 Aug 2024 15:13:15 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id J3WH6DJ_pjHx; Mon, 26 Aug 2024 12:44:13 +0000 (UTC)
+ id 2q_VO3Z2vfLH; Mon, 26 Aug 2024 15:13:15 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3AF4A60739
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org ABB8E6077B
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1724676253;
-	bh=tGBvvbljQaeb6rqy8lEkd4wxG0kygXGvao0F0jHU4Uk=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=UIJ8nenth/uaHsbpkU6M29/O801SclNTApN4x6rq1braS3urWNpDzbztKuTWL7ZiJ
-	 eoiA4C3w8WtPliz/D4zAzyohg9QDSVDy3wBkS1yer5GfarMkxlUzCYZqfV5HO410Eo
-	 lhODYhLkq6Hd/mXP+N4HVmXrHMtlED0PjsgcPTYdfQlE+QD/+1MBQYxnndbrLNljS9
-	 WtFLVPKNeZaZw8di6oITAMnf2MEfIIGw/fhBgjb2W5w2IL0UZMyHTZpR6XIPJGGVwg
-	 +cQUMbTLuP1W3TKw/Y75TZH1ki/XjhrhxwcpxFq/UQGKWz3Kg+cJbKGVmnC1gwHSAQ
-	 rXwS98xKquaAA==
+	s=default; t=1724685194;
+	bh=tcz4I5KrfObPRz8TB3TN7L3MQvpnvGr5UmcJzEV1/qA=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=PuWwiqx7L3hyoBKhcyvUQFfJKFaDXGG+nw5zsn/7xiYCXVbIhSZuET+3C78FeTvo6
+	 6mYDRJO08N+zGqWFrEwNCpOZBmo94l9/C9nuvu0na+r909175AP/3cVn86KmXByqdb
+	 rziqauyXlIeiBlHRgpiHLeupxzryucw9apE9UA+0uWwjJQZ//rURbhbtyPMvUeirpZ
+	 nii6dtrNC4XHwcGoV+/+YK0Pkc+KLStLL0G90k/bRbeiv3lB8mTlIp9KoAYk5IVOFL
+	 WYRnQiRA9PcPYZdiXV0+v2OEmkW1d3PNFLKnxFzhEW9RQOMyFEECY4i7cln5UcZd0Y
+	 EuOytyueEq86w==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 3AF4A60739;
-	Mon, 26 Aug 2024 12:44:13 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id C3C131BF97A
- for <intel-wired-lan@lists.osuosl.org>; Mon, 26 Aug 2024 12:44:10 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id ABB8E6077B;
+	Mon, 26 Aug 2024 15:13:14 +0000 (UTC)
+X-Original-To: intel-wired-lan@osuosl.org
+Delivered-To: intel-wired-lan@osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 7604F1BF40E
+ for <intel-wired-lan@osuosl.org>; Mon, 26 Aug 2024 03:19:42 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id DADEE40547
- for <intel-wired-lan@lists.osuosl.org>; Mon, 26 Aug 2024 12:44:06 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 6267B4029C
+ for <intel-wired-lan@osuosl.org>; Mon, 26 Aug 2024 03:19:42 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 0xVCxLONneJS for <intel-wired-lan@lists.osuosl.org>;
- Mon, 26 Aug 2024 12:44:05 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.10;
- helo=mgamail.intel.com; envelope-from=wojciech.drewek@intel.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 43F1240592
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 43F1240592
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.10])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 43F1240592
- for <intel-wired-lan@lists.osuosl.org>; Mon, 26 Aug 2024 12:44:04 +0000 (UTC)
-X-CSE-ConnectionGUID: RoizXr60RJCyo1cgPXeBBQ==
-X-CSE-MsgGUID: Zb58cLgFRN2twd0019RvmQ==
-X-IronPort-AV: E=McAfee;i="6700,10204,11176"; a="40568394"
-X-IronPort-AV: E=Sophos;i="6.10,177,1719903600"; d="scan'208";a="40568394"
-Received: from orviesa009.jf.intel.com ([10.64.159.149])
- by orvoesa102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 26 Aug 2024 05:44:04 -0700
-X-CSE-ConnectionGUID: cbzlbZrQR8CYyq8dc0JxmA==
-X-CSE-MsgGUID: oIBKBFwiSWmSpHvoEL86RQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.10,177,1719903600"; d="scan'208";a="62472138"
-Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
- by orviesa009.jf.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
- 26 Aug 2024 05:44:04 -0700
-Received: from orsmsx611.amr.corp.intel.com (10.22.229.24) by
- ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.39; Mon, 26 Aug 2024 05:44:04 -0700
-Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
- ORSMSX611.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.39; Mon, 26 Aug 2024 05:44:03 -0700
-Received: from ORSEDG602.ED.cps.intel.com (10.7.248.7) by
- orsmsx610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.39 via Frontend Transport; Mon, 26 Aug 2024 05:44:03 -0700
-Received: from NAM12-BN8-obe.outbound.protection.outlook.com (104.47.55.177)
- by edgegateway.intel.com (134.134.137.103) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Mon, 26 Aug 2024 05:44:03 -0700
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id YmFQxk4xxwtj for <intel-wired-lan@osuosl.org>;
+ Mon, 26 Aug 2024 03:19:41 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=40.107.220.136;
+ helo=nam11-co1-obe.outbound.protection.outlook.com;
+ envelope-from=faicker.mo@zenlayer.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 0CA064021B
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0CA064021B
+Received: from NAM11-CO1-obe.outbound.protection.outlook.com
+ (mail-co1nam11on2136.outbound.protection.outlook.com [40.107.220.136])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 0CA064021B
+ for <intel-wired-lan@osuosl.org>; Mon, 26 Aug 2024 03:19:40 +0000 (UTC)
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=yfUAGlD2npYIFfxbDFN6+X+BdmoFgReNCFxajEfk7gtkwFUlgtCwL7Bx28NxdIwEcwziuLwzXsduo1d68OnJjys0OuIbh22czKfJ8YdHS8FvRX9U7PC64RNmwHfatxhPYfuiM2OmLrCRCUsrpjVhyKgits4mtckxq7fkCJrLMX09lN4fAI+AVwhrKDyXMea3HMhOfyXh9QYcZMA8xoEddCjjvH7wglDGmmM2n5hWFm/kF6O2LpXZz2XVS0ibyqSA2yO/YUPXi0XwT4zEZGP9LiX9JMqadUVLFvPAigflVOOOxFsh7qgk37v9400WxZfJiyMItXTaYRLjBqaWAs5WgQ==
+ b=CQsRDc6znqin0WE2qwDGoY9SIuNMuNiJPKysI2j9Sa8XoVmZebAQbQRygaNGN4xY3ZPQWblW76xQlIbNdHm0xFmgWn9lBEe7Xtrdd2+gr6VG0qY92H0Ur8PSNWi0V5/sXnz0BorPV8EMJ88ZzIaP+d504UrPez8vuxrFv3XGSIhvKT0UsZlThWx13zhNEOZxebvgPTiuLeDqDsKS9UOj00RdJnRpHRlVyCZNt0r6lya1Im9o8aZARdlScdloyVrErEP6NSxjN6D6CH5ZVkUfZFY8SZWOmV3dkMstYPErTLEFjvWxENjsBtqfExJvrxkoq+y5HxDQZBKdYCC/4Y6Zcg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=tGBvvbljQaeb6rqy8lEkd4wxG0kygXGvao0F0jHU4Uk=;
- b=g1WqB/ETrWyl8SLqR+rTPrWStvzNwE6kAh7CJTXPyuYtSn14dTDgpAfXYiyAZJRdRa1UkCfq0AXYk/a4vD+i+fWfAuR4GIrCVfZ4zgmMmGFxzCyK5XLKVYbLZm46KmmqoTixViu65qYFjUx65C24++MMoRjpiozDsMeFfn3xweGa/w+qGPgRG+JkXn1whvMBPthHi+hSr+xwJ3h++pRhf9tzsf/En2Lda2dbsdXC7y+xQ1IdBh42IJXfiv+AmdZRKEwQ9wq26qPvMYxGb8/Gj1EbXL+VQav+SkLH5+1SJS1uGgFcdA2UaOPmNVVNwxEic5zmrBqvfwz3gHklykrwEQ==
+ bh=tcz4I5KrfObPRz8TB3TN7L3MQvpnvGr5UmcJzEV1/qA=;
+ b=WI2HuSo1fLNTfkMKCwrwtOKIyO9h9NndTkqrfppikzmbzkNmexcCTZYtURIyOZFx6SSJiAwhrv9jHiDa/vXItgHfnfAyBBSQVHVxU4lkfPTUT63NtZUmqALCbDPE1Vf9bdY56Uktw0pTH5nU6PfbVFe+Oo8F3Ymu+evgWsFMnziMAkRs8A0U5DyqxU8BY3v9l3sWl5JdYU9Vsw7U5HEtsMjTbgcFhIzfe12NqVOapTf5RKeZS8epeu64BDkaFb0SV7/72ipC3fB8YVS6SCUJw3g0qmNRh433VRZP06Qne5iWVijuxNyt1GCP88GVVXv1guMMU77pOnGgqsM+K53Q2g==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from MW4PR11MB5776.namprd11.prod.outlook.com (2603:10b6:303:183::9)
- by IA0PR11MB8377.namprd11.prod.outlook.com (2603:10b6:208:487::5)
+ smtp.mailfrom=zenlayer.com; dmarc=pass action=none header.from=zenlayer.com;
+ dkim=pass header.d=zenlayer.com; arc=none
+Received: from SJ0PR20MB6079.namprd20.prod.outlook.com (2603:10b6:a03:4d7::19)
+ by LV8PR20MB7323.namprd20.prod.outlook.com (2603:10b6:408:230::14)
  with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7897.24; Mon, 26 Aug
- 2024 12:44:00 +0000
-Received: from MW4PR11MB5776.namprd11.prod.outlook.com
- ([fe80::4bea:b8f6:b86f:6942]) by MW4PR11MB5776.namprd11.prod.outlook.com
- ([fe80::4bea:b8f6:b86f:6942%6]) with mapi id 15.20.7897.021; Mon, 26 Aug 2024
- 12:44:00 +0000
-Message-ID: <e66525d1-3f4c-45cc-909f-1a9665d4db97@intel.com>
-Date: Mon, 26 Aug 2024 14:43:54 +0200
-User-Agent: Mozilla Thunderbird
-To: Alexander Lobakin <aleksander.lobakin@intel.com>
-References: <20240821121539.374343-1-wojciech.drewek@intel.com>
- <20240821121539.374343-6-wojciech.drewek@intel.com>
- <7e832ea6-2036-4112-9b63-20f4475e7f8d@intel.com>
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7875.21; Mon, 26 Aug
+ 2024 03:19:37 +0000
+Received: from SJ0PR20MB6079.namprd20.prod.outlook.com
+ ([fe80::c11:df86:9358:e76]) by SJ0PR20MB6079.namprd20.prod.outlook.com
+ ([fe80::c11:df86:9358:e76%4]) with mapi id 15.20.7875.018; Mon, 26 Aug 2024
+ 03:19:37 +0000
+From: Faicker Mo <faicker.mo@zenlayer.com>
+To: "intel-wired-lan@osuosl.org" <intel-wired-lan@osuosl.org>
+Thread-Topic: [bug report]iavf: deadlock on detach/attach vf to VM with
+ net_failover
+Thread-Index: AQHa92PLTpgL6l7lbkabERG8MCc2gw==
+Date: Mon, 26 Aug 2024 03:19:37 +0000
+Message-ID: <SJ0PR20MB6079EE704620E28B3AD45286FA8B2@SJ0PR20MB6079.namprd20.prod.outlook.com>
+Accept-Language: en-US
 Content-Language: en-US
-From: Wojciech Drewek <wojciech.drewek@intel.com>
-In-Reply-To: <7e832ea6-2036-4112-9b63-20f4475e7f8d@intel.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-X-ClientProxiedBy: ZR0P278CA0026.CHEP278.PROD.OUTLOOK.COM
- (2603:10a6:910:1c::13) To MW4PR11MB5776.namprd11.prod.outlook.com
- (2603:10b6:303:183::9)
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: SJ0PR20MB6079:EE_|LV8PR20MB7323:EE_
+x-ms-office365-filtering-correlation-id: c3abbab8-d9ec-4cb2-d1ff-08dcc57dea63
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0; ARA:13230040|1800799024|376014|366016|38070700018;
+x-microsoft-antispam-message-info: =?us-ascii?Q?3qep2yasyzjutYMB652U4YrqDYy94INvLhXyk4sG2EBIeX31gJyXitvKyzMG?=
+ =?us-ascii?Q?Mxhu3gdwXONbkv7Q8JwaxRR/JjmVfEP/8L+RDVPcLzBEc8ghXrQuhGBztwJN?=
+ =?us-ascii?Q?kIcALRnZBQZBVt1kIQj7XypctWmVcnhTvO2pVcT/TVJcsqltLdpH8wHVhkOR?=
+ =?us-ascii?Q?ft6GH+a6V/jnBqYaipoYIhh+zhcu/Z8/gI/7NTmbboG/dKoiwCEI6dzMQHfJ?=
+ =?us-ascii?Q?Rplk0pjSdSxtM5UHXui3e7Uzzsgjfp1+qy0q9XtN4bdtoKZhWyY9kQcKBiJq?=
+ =?us-ascii?Q?Hd10wpTyx59f1maJmMfsk847mjVG4iTnigAV3frNf9coSnxr6RHY2TvHBayu?=
+ =?us-ascii?Q?ybmHYHTeEnyVdjs8puY73kxEP19aUlE06ToNGkEU62jdj24d1HaKPwvIyLMZ?=
+ =?us-ascii?Q?0aTRsMjvj076klR8OcLQc6Y/6y4TUTPRNcgEFWUWJ/bqvXIRb13RnEHnUcmD?=
+ =?us-ascii?Q?ypVbN0zLX36wW4Ue0DE885/SjynDfriiq2mnXl7A4S0NWNbjshIhBWdnrlAn?=
+ =?us-ascii?Q?CbJT7QWhV5fPe4f7J4h2r02vfnc6D64xiNSVZgMtBiNHv0sw4uIhhoRHObbF?=
+ =?us-ascii?Q?5Zqmw6x//uerU/2F+jLsd1wAiUYY9eoqFx+E40MHDztWWZ0t2sLqN5exhq6N?=
+ =?us-ascii?Q?TVqwGVtcOVmFPogriwkxaByT07fRKVwvF9GSHk3YEY/eeeDQdChx7ey5lIJK?=
+ =?us-ascii?Q?3Hn2vimvBgFQDBBERfcU5Pu4OaXh3AwB+KTq9pYmRCmVb34EHlGQVK19M6wL?=
+ =?us-ascii?Q?WSjQtNpefuUud8yhbgZOA7RyUXPrax1+gzGMi15kp0+NAIedsB49QEHI8aQM?=
+ =?us-ascii?Q?NW9VpvvQ4QF23xAwj8yfb/v0+LcGONXgwPmAh/DhIbRl4AANy0i262MUcrA9?=
+ =?us-ascii?Q?+G/5W+GHGtGYvVMV88MuasTX9km7uZ1Lmq2PNR76TJCfHr07xCRUmARi0Wt/?=
+ =?us-ascii?Q?DcgxwF1V4DRoXWDIj13IB0aMJnfoMUCC3RbG8wgjQa/fpZr0/jSrFSH06v/r?=
+ =?us-ascii?Q?jS+V+GXwrgWUsvX+xiCGf4KXSXJyKarLo6yKl79DVjCfKDnZmkzkmm8EE4s3?=
+ =?us-ascii?Q?WsjmqvopC/3EgdBITZJILbs/fPthjnXuCY5PVMW66hNv25qXYikhXmKpe2nz?=
+ =?us-ascii?Q?xKGrkEHGP5nqeeXbGteP8Kg/SlLFlkOYlg1ZJwiyNnENhcht+3+ba2DtL7U2?=
+ =?us-ascii?Q?rDPjF8RImS8vi+n0V+zhCQwQa3zNnsb+hxSLjbzpKhUTCUaCI5LdM2VI527R?=
+ =?us-ascii?Q?/ye1WHL2aehO80N5hvK073qUi4oCHnFRPDfeTU0V/ccgz+jCLL6bz+URNiUK?=
+ =?us-ascii?Q?1bTmxbecni58THF/G5JdRSbHbVIJGKGO5d05Dql1IKePpBuKTkgQkAPuHLRm?=
+ =?us-ascii?Q?XGWGBL4=3D?=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SJ0PR20MB6079.namprd20.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(1800799024)(376014)(366016)(38070700018); DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?61xbLR6zzjvVBTFeKhg98r0Pt92Jrci6333lsg/PvtOl3SsTKWFa/k1AOWg6?=
+ =?us-ascii?Q?2ztEEZOIyRL2yCu/5gac3kWxuPYFKEQgHJEv8SkC/Cnt1I+T5mkEWy3mbxww?=
+ =?us-ascii?Q?RK8tqmaL3f0qKyD0sat2yYdNCVZUheX3Zku0du7472oMGtGHc8D9S7p94wd1?=
+ =?us-ascii?Q?iVDs0xI6ZyGawCdaQHSj527q7aaVUW4Wktp5TywaM72nUzuwLRFqA5ftVpxp?=
+ =?us-ascii?Q?y9VmbX64GfoUl41kvWCNyoEkwb18MriyJHY9NOyhOV9NVDBYKdiiVPt/dGXy?=
+ =?us-ascii?Q?ySBSVwWVy8Utqa4lH7YM0CfsU21d4pG0iKnXrGMmo7MpGSz0sewT2hCht2pL?=
+ =?us-ascii?Q?xBszxXlJMBrddFnkt9sex6VntNbnCl5w6ox9ogtKPW2rYdYGCer3FdWSuXVA?=
+ =?us-ascii?Q?qGgxXg8MQvsetamf3DYDaozg4KSRXrEO5qo6FXDvYnVRaoQDw0UsfhXIkCwD?=
+ =?us-ascii?Q?0trnP1hWgfhojXLUMkVq6sbHPk8m1pejxzYjY4468ifYtgYN1ZgHDNB1AORY?=
+ =?us-ascii?Q?VnNOrjxtQgWN1lrNKDr/SPjtTTYcjUB8ZCxFLfBTWFvKPaxjRiPKdmdZ6sV7?=
+ =?us-ascii?Q?bghrYe9rdPWKVQnA38XRFn7qOFXVW/3Kkyv8IRjXDKRvQzcrPCf+0mUbEHrq?=
+ =?us-ascii?Q?L58tFNM9u+TGNJJfl8Iw7gWnaaSUwvk3N5LdrZ8rMZYGl+NwwtibOMoojxCp?=
+ =?us-ascii?Q?mItBRWbL68W4FlEFLerh73KKDLCGe+kF917LeoAvkFQh5W45QWYk3qTr2CXg?=
+ =?us-ascii?Q?MtfhfIaxItPfNLMOdM8pUYCdOvf9WZULYMFuz07NRmm0ZkTgCEvU6kWKwTaw?=
+ =?us-ascii?Q?QGWO0D5D3DowejPH92LYPo8XOh4x9HcYn2gmFM/QGBkOpnLmO9mUGYDlWhqY?=
+ =?us-ascii?Q?xZ0NXFw+Bp+OEgiDQy+6ekECbkmqQahCLltPUT8TFA+MIxSNXsDchOdml6E4?=
+ =?us-ascii?Q?2/LC6oMe3MZSSpqoTWGlYPBUkEF2E13Swx5BVsur6VPKLYXhJodQbnWVr+37?=
+ =?us-ascii?Q?WDRx2mZAuWE8MtkxNcxOkgDhSPFLqFsMOaQbAyymQ2sFexyVdJQ7g8ZOGQDT?=
+ =?us-ascii?Q?LbvE8ipX1B5S8kbEjRoxYZgcyFgXP6/VTDVSjvvE98WtFSQFhXcHtHEMAPzk?=
+ =?us-ascii?Q?8hWEh58XZEYBjphOwS8sP9zVG+VpPy6qfhpE2Gf1YVfoMMiW1DteAP941tXf?=
+ =?us-ascii?Q?mtVtIVyFZzYh8alNw7+TAngTyWjy4A9bnBPHpi6vq1/HaELdPtnBsisWGoK3?=
+ =?us-ascii?Q?Fh3k9yMyZccHIsqrTMhND3cQKJIev++Uskh/AfFpqiXvWRvG5lr2Dp7879RO?=
+ =?us-ascii?Q?ZPVRsoGXErvQht99KcVAybr25msyDQSK+MvKWPtmxi6Dl+QofyAtsS/FfcDH?=
+ =?us-ascii?Q?Vu9RKpq66vIuAVMpzYoOXP0Dsx7Z21KDHkhzGLYp8uk9CCLnHkh3/FMcPS15?=
+ =?us-ascii?Q?/o1byS2jLKmRZCzKWiW7ZxO6FOy9KyEks5n2ZmJgscosP1ziTzo9z61lLwLa?=
+ =?us-ascii?Q?E4Cv9UoCNfSPuBGfC9PENtcGUKRILNg92hthmTBQMTDp8CBwkPNUaryJj53I?=
+ =?us-ascii?Q?nwxqkma7cNNyIxPVg2FPz/vGS3C0TWBevk1YqEh/mL88KynKGm2aVWIJa+h1?=
+ =?us-ascii?Q?vw=3D=3D?=
+Content-Type: multipart/alternative;
+ boundary="_000_SJ0PR20MB6079EE704620E28B3AD45286FA8B2SJ0PR20MB6079namp_"
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: MW4PR11MB5776:EE_|IA0PR11MB8377:EE_
-X-MS-Office365-Filtering-Correlation-Id: f24e746b-b766-415c-443e-08dcc5ccc255
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|1800799024|376014;
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?R0tLaVhvR2NqaDlNOVhUbEpIN1hWdFhaTkUzL1JvdHQvcmU1WkpBRjFha1lD?=
- =?utf-8?B?cksxQVcvRDdBRHhnenhhM2dPeHRsUE02Z1lCZENzQjgzZEJINjRKZmZyVEow?=
- =?utf-8?B?eUNkOGk0dDgyZEJ6U3d4ZmxZUHlGTDgxWXZTelh3MmVMSTloVVVlcEdDdmxi?=
- =?utf-8?B?aEtVL2k0ZGRYZ05lNldaTmlrelNGSS9WaWJpQUc3eHpMY1lMbHQ2ZEk2TG10?=
- =?utf-8?B?Q0lObHNvSDIzdllYamxheEJmRVNqYXBLdm5VNy9FbDFjUjNDbWhaTkY2QStj?=
- =?utf-8?B?dmxGazFIdmRQaDhCMTFMUDFNUGdkUkJiL1dOWGRuTnVrZzBYK3hOcWZSTmFN?=
- =?utf-8?B?dENvWGhBclc5aUxsTDVoZFUwS3R3ZnNzQXpEc0lLVllIYjdsOHdCMVErR04w?=
- =?utf-8?B?ZnhwRXpNcFVwdnd5NFcyamNETWxEM0kxNURQM2VvSnUvUnh5R1MwYWUwRkVM?=
- =?utf-8?B?MFJtSHBGZnhqK1BZY0FJbWhib2tMUVNyN0l6b2YyTE1wRkd6SjRxNXlTT3lq?=
- =?utf-8?B?TVU1bkZKZXd0aStyUU5SSDBjNGtDL1phbXJic3JJZWNSUUhjVUYrTVMzbTh4?=
- =?utf-8?B?NUZrY3pUdWt5Z1A1c0tNYmQ1Y1ZPMzZQMnNPRzVqdlJxS0sySFpqU3ZLcDRp?=
- =?utf-8?B?d25IUWk1aFVPWnQxUEZ0dUMvVEx6dy8ydlVKOHdnYXMydlJzcnRiN1RjUjY2?=
- =?utf-8?B?NHBBU2dsRFRobXJ2ZG16clZONDFRTVhxM2VWQzhBVnJBaXJ6alNtQWdIclNE?=
- =?utf-8?B?VlcvMmN1SUx3OUxRcEMvNUtoSGQxL1Z4S244VHM2MExhZmlCbWt6bTVud3ow?=
- =?utf-8?B?dGcrLzF4UEZDaW1CUGpNSHJjc2labFhBZFNZTjRYaUpHek9BVVJLMk1NN2lG?=
- =?utf-8?B?YVdlK2pzUFlMdmFBQjZFd0pudDgrQ21XRTJETm5FUnE4RzVyZnZzRU9iMm1s?=
- =?utf-8?B?MkdvTkUwcXoxTVRTQnRnL1A4UU5FVVpEQkt4OFk4ZjM2UTVQcEVTSU9Edm5r?=
- =?utf-8?B?NTZtdXJ6QnBub3c0Zk1tUlMvdUpHSnZQeFZqeUJUTkVkbERac05HTzNUbnJU?=
- =?utf-8?B?QUVPL3l0b21MdmtWVnREbk13aHZ0ZVExTkg5aU1rY082NXNVNDI5ZVVLK2V3?=
- =?utf-8?B?R3RuK2l6VU8zcFdDc2dDSkdRZGd0YUJTMUdwN2tjWFdxTkZWZUp6blBWK0o4?=
- =?utf-8?B?dUFNaFRPOXZORGRDd3lJa0owMzM3N3RlU29nYUx6WGdJT29yT3REdE5Eb3JX?=
- =?utf-8?B?RkgyTTlWRVZzM3NDZXFQamtXNnEwTEN4RUN5Wld4R2NWcjJrdEtock5YMVlz?=
- =?utf-8?B?TmFFekRmNi8vTjdoNWxxZVhlRUZQUjBoWVVhc0RjTXBlMzIxV0pzcWQrbzdy?=
- =?utf-8?B?enNuVzA4NFhrREx4N0piSGtSNmZFZlVkeXMzUUJLUk9RZ1NUb3h3V09nd2xi?=
- =?utf-8?B?VVY3ZjVIWDFXTGk0Tkp3aGZMOEc1UGFrU1hNU2Y4K2YvY29hVVhzNGlUdVhn?=
- =?utf-8?B?ZWthd2JOR1U4YlBKSGliK2E3RXNsSnlFZkpvUk4yNkpyeFNnaWIwVDhJdFFF?=
- =?utf-8?B?bmFwU1lmenJXQWNzU0haSHlDdDM5L25jNmp1czlMTnV1L043Q2hoWXo5VFd5?=
- =?utf-8?B?SDdEYVhkNDRlMmVBdkNaQis5QldNd3JKSTB6RmJUU2ZVUzlrL21aNkxSMERr?=
- =?utf-8?B?OUR4UWMrU2I5SHBLdkdkTkZ3TmIvSkg0VEFOMjFObUxkTk5jU3JBT2R4R0k1?=
- =?utf-8?B?UjE1QWlPckFyWUx5MmV4YXowK3RJdnlkVTQvU0daR0txWVdoK3FaQ3ljUHc4?=
- =?utf-8?B?M2ZCMk5xcFI3cGdBdnFVZz09?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:MW4PR11MB5776.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(366016)(1800799024)(376014); DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?cWkwekFnU2g2VW5lVFJwMHpIQkx6VEF1SkJuY1psZHRvTFJLZTM2dTQ3Q2k2?=
- =?utf-8?B?UHU5QmZ5UFFHMDJsSUN6dFBscHVZZk9PYzFHMm1oYzV2QlcrOVJjM2tPeGxw?=
- =?utf-8?B?UnJYQlRMY3JUZytpamc4czVYV0xzWWppbWFRM1EwaC8yY3kxSHNqN0c5N2pR?=
- =?utf-8?B?cWlmYUQ1NGlzeXQrRWs5S1l3OFlnUDl5aW4xQkdKbk13K0RDSENBWHRmeGpn?=
- =?utf-8?B?bllIcDluNENuSHpmVDRicCs5c2Q1WnZKVTdyL3VEWEE1WHg4OXBEczJodk1C?=
- =?utf-8?B?MDBPUXpQV2w3Tks5WHBPUUtTSW9FL0NLN01CWFhoS0tscjlBQnhWUFV3MTZv?=
- =?utf-8?B?ZTlNcUQydVZhbk80RHJDc0ZKanZucnVqS2trZ0dHTmh4M3hXR1d2VDNuOFpz?=
- =?utf-8?B?R0ZmcEk3VFJ1WVJHTURFYWVPL2dCRWV4MmRiUGMzTytYRlBYZCtuUEZ3aUdQ?=
- =?utf-8?B?dlFJdURpeFNqdFpLNmd5SUoyaEdZNUoxU1ZyVjhrTGVvbllIaGxUeDI5NE83?=
- =?utf-8?B?UFBjRFJhSFZVU1NFWjB3R0JpeE5NQXh4QTc3WGhmMXF5WGIzdEMvUmsyeERj?=
- =?utf-8?B?RlVnY1FGQWZvMmd5bk9kN2lkL3pqMU9BaXVUL1F0VHVuS3VnSWJVeXE0aS9h?=
- =?utf-8?B?UmhnYkEzcy96MklhY0tnYnVqWGx4bk1XOUFjR0lhRHE0aGhCbGg4Q2RDM1hW?=
- =?utf-8?B?czdBT2Y3TjNEdG9rVFp3S3pyd0VYenlMVkJ2TDUrSFBZaDJEZlVicmFPWWpW?=
- =?utf-8?B?N2R5RzJRalJ6N2Y2TnhIdXRrWDMzMHlhMnRVMERJd2Y5UTNMdG1WS3RCOXMv?=
- =?utf-8?B?ZTdVMFFLbCtKMWFjWVV6VC9xWllmVzFoY3pQZWNvQnRDV1ZFb1UzMTYwT3lU?=
- =?utf-8?B?NklzNkVxUDlPUFJ1VGNJQWc2eEFydVpESmVZdnBwQ1g3OFQzemd1bDVvMjc1?=
- =?utf-8?B?dmUzOGdhU2t2bTcvRXNTQzdVMExTZXpMYkw3ZE5OTnU5T0duTXY3all2Y245?=
- =?utf-8?B?Nk9lMGNZb21UbmdxenliZWEra0luMzdDMDIrdWgwcHhYVWVVSTQraUg4T3dT?=
- =?utf-8?B?RE9oYjRMV2NibGlSSVdPSDkyQXBCeWhOaFdtUWVsU3BKVCtDN1Brb1NSWlhz?=
- =?utf-8?B?ZDI3SllTR1Q3elNXT21EU3d3VGlqM2JqeUF3ejVBL1RncEN1cEZ3KzB3Y01a?=
- =?utf-8?B?cDRHSW5NREtCbG9KZnNHZWtocmtWd3NhdGVvT011NzRDNFdSVXZyNzZUT3lo?=
- =?utf-8?B?WDFvYU1qWHZ5QWVibVo0aUhsdk93bzJVTzdOK2t4TUc5Zm8wQTNIMEd3aHhZ?=
- =?utf-8?B?eDBqYWdmcGtMZGVvWlpqUnBlZlQ4ak5lMVJoa1ZMZkNlYVlBZnp6d2F0Mks5?=
- =?utf-8?B?Z28yMVpWUk5VOXUvbW4zTnpoQUlhT3M0bWtIU242dlZuSjFNOWZJSHRSNXdP?=
- =?utf-8?B?NnpPcTBEWWFCQ1V3UGZMUTJaY0ZDd2lPWW1LZ3FMYWl3Y0tSME9KODV5NnQz?=
- =?utf-8?B?WFVaRk12SUpKTm14eVFXRGR6QnFlN2RGbGJxODRpVGhjbFRFaWxYdE9tTjds?=
- =?utf-8?B?NXY2QUdsU3RFNElWTXJ3QTIvS05VbzZRNWl4eHR3K0ZzVE84UUJJczR2amhG?=
- =?utf-8?B?OGk5Um1lK0JRNndJQ0RvQVV1Yy95RXpkNGRwRlptam5HOGsvazNWZnpBNGhB?=
- =?utf-8?B?QTRWYUhhbVhrTFdOYXVIbllqMjFMVnVESitoL2NyNWsreVlaQ0hDaWxFaEdY?=
- =?utf-8?B?NkFrQXQ4TENUSFNWV1N2SEdBbjl4QWFSdjQvS0p6NjZ5NlVyZW1HOHlLUVNC?=
- =?utf-8?B?V3V1UVd6SFJXSzRCUlFqMkRWUlVQMk1oSGpBblBEeDhkb0lDczVMZ1hDdUY0?=
- =?utf-8?B?cTFXVGZqZUNCaWYxZFJqY1QvWWhqM2Y4N3hDc2w1bUxBY2x4Y2dHVzhRM3Vw?=
- =?utf-8?B?WDNtSktMZWRzYkRETFp5MkZod20vRTY2UGtLYXpIcFJmcE1JYThoVk9kbXdl?=
- =?utf-8?B?UUJUUXVqaFlFZVBTeVJ4N3pLdklEMk9wUTBqRXBFVUxCaGQ0UGF6L05qUVNZ?=
- =?utf-8?B?M2R6NUpVVG1DMm1KT0hXRm4rQlpaUkdrdmNRMitKYnhnc05OMXJrTXpLNVp4?=
- =?utf-8?B?ZlFvaVIrS0pVSFpFdC9kU1lER0RrL3gwQm9JNk43YjVPd29USEUvSmh2V3hJ?=
- =?utf-8?B?N3c9PQ==?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: f24e746b-b766-415c-443e-08dcc5ccc255
-X-MS-Exchange-CrossTenant-AuthSource: MW4PR11MB5776.namprd11.prod.outlook.com
+X-OriginatorOrg: zenlayer.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 26 Aug 2024 12:44:00.6754 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: CvYaf+s+aGrjzijs88hX1DVdSDg5+IOxJ739vBGaAkOU/l2pD/SVekgvsMoP3A1fCYAndPZF4EYZIdBAmUBGuFIF+qHkI5tCMsm2EfdJKmg=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA0PR11MB8377
-X-OriginatorOrg: intel.com
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1724676245; x=1756212245;
- h=message-id:date:subject:to:cc:references:from:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=5ru8DmeheTHhK0Mng8w6RpFYVL0niHhfKgdji7uG3ts=;
- b=DdBN8HOlvmh/zQ98Qn9qZzxq/BN9NffhNYYCy78RoHFauSmlvPE7w1hk
- H1U8ILPVGJSIp22VUdMmtzEiU8/w7d9vzh7wrVWWaBEb5Li760XNDG3Sx
- fHZT8g5n9QUmwjx2RGxWkCjKV0Dh1EdVEfYS7uHnB7gG8+OGBT940wkbk
- HRinjTyWRx4MWZ558k9jhsKuaBBb9odVIerSRHSG9GrqRVbMKf7DSsTef
- LVIcsF3dVuvzSffsoiCLbBDGmIYgIZTqzWGxoMrydMoHVCOItb1Q+PFHx
- jW1RebinO7RlyTsglABG5Oa479nvOZ8oLzLmKeeqEN6ARXy9f93IkU+3+
- A==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+X-MS-Exchange-CrossTenant-AuthSource: SJ0PR20MB6079.namprd20.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: c3abbab8-d9ec-4cb2-d1ff-08dcc57dea63
+X-MS-Exchange-CrossTenant-originalarrivaltime: 26 Aug 2024 03:19:37.3248 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 0d27725c-b11d-49f0-b479-a26ae758f26d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: lVStfLve/x30pVJ+Un/KEdKXQ0DtAD+wcHlzKkYZzjkcHT5KttNYtnzPi5OZbYaAbIxltOHstpg+ydl5ziGBjg==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: LV8PR20MB7323
+X-Mailman-Approved-At: Mon, 26 Aug 2024 15:13:12 +0000
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=zenlayer.onmicrosoft.com; s=selector2-zenlayer-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=tcz4I5KrfObPRz8TB3TN7L3MQvpnvGr5UmcJzEV1/qA=;
+ b=bp5SzOwmCCC+gta0hQHbpEJRo2m5xKHaqv1AS/5vEmq3i9z9CgVF3ehWi8IJY2y4NTYyOvNV7MesPQOpgfaLxuf/Ly0BUdEkYoJphnCk8XBQpQOfgTtSi986vlL4J0dresj1pnBYCJRn7qq74ArevAqi/mt6ajw9kz9nKo5W3o0=
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=DdBN8HOl
+ header.from=zenlayer.com
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (1024-bit key,
+ unprotected) header.d=zenlayer.onmicrosoft.com
+ header.i=@zenlayer.onmicrosoft.com header.a=rsa-sha256
+ header.s=selector2-zenlayer-onmicrosoft-com header.b=bp5SzOwm
 X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v10 05/14] iavf: negotiate
- PTP capabilities
+ header.d=none;dmarc=none action=none header.from=zenlayer.com;
+Subject: [Intel-wired-lan] [bug report]iavf: deadlock on detach/attach vf to
+ VM with net_failover
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -238,271 +184,137 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, alexandr.lobakin@intel.com, horms@kernel.org,
- kuba@kernel.org, anthony.l.nguyen@intel.com, intel-wired-lan@lists.osuosl.org
+Cc: "anthony.l.nguyen@intel.com" <anthony.l.nguyen@intel.com>,
+ "konrad0.jankowski@intel.com" <konrad0.jankowski@intel.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+--_000_SJ0PR20MB6079EE704620E28B3AD45286FA8B2SJ0PR20MB6079namp_
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 
+Hello, we met a problem with iavf driver, the ubuntu22.04 kernel 5.15.0-119=
+ and 6.11rc4 both have the same problem.
 
-On 21.08.2024 16:06, Alexander Lobakin wrote:
-> From: Wojciech Drewek <wojciech.drewek@intel.com>
-> Date: Wed, 21 Aug 2024 14:15:30 +0200
-> 
->> From: Jacob Keller <jacob.e.keller@intel.com>
->>
->> Add a new extended capabilities negotiation to exchange information from
->> the PF about what PTP capabilities are supported by this VF. This
->> requires sending a VIRTCHNL_OP_1588_PTP_GET_CAPS message, and waiting
->> for the response from the PF. Handle this early on during the VF
->> initialization.
->>
->> Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
->> Reviewed-by: Wojciech Drewek <wojciech.drewek@intel.com>
->> Reviewed-by: Simon Horman <horms@kernel.org>
->> Co-developed-by: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
->> Signed-off-by: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
->> Signed-off-by: Wojciech Drewek <wojciech.drewek@intel.com>
->> ---
->>  drivers/net/ethernet/intel/iavf/iavf.h        | 17 ++++-
->>  drivers/net/ethernet/intel/iavf/iavf_main.c   | 60 ++++++++++++++++
->>  drivers/net/ethernet/intel/iavf/iavf_ptp.h    |  9 +++
->>  drivers/net/ethernet/intel/iavf/iavf_types.h  | 36 ++++++++++
->>  .../net/ethernet/intel/iavf/iavf_virtchnl.c   | 72 +++++++++++++++++++
->>  5 files changed, 192 insertions(+), 2 deletions(-)
->>  create mode 100644 drivers/net/ethernet/intel/iavf/iavf_ptp.h
->>  create mode 100644 drivers/net/ethernet/intel/iavf/iavf_types.h
->>
->> diff --git a/drivers/net/ethernet/intel/iavf/iavf.h b/drivers/net/ethernet/intel/iavf/iavf.h
->> index f1506b3d01ce..871431bed64a 100644
->> --- a/drivers/net/ethernet/intel/iavf/iavf.h
->> +++ b/drivers/net/ethernet/intel/iavf/iavf.h
->> @@ -40,6 +40,7 @@
->>  #include "iavf_txrx.h"
->>  #include "iavf_fdir.h"
->>  #include "iavf_adv_rss.h"
->> +#include "iavf_types.h"
->>  #include <linux/bitmap.h>
->>  
->>  #define DEFAULT_DEBUG_LEVEL_SHIFT 3
->> @@ -338,13 +339,16 @@ struct iavf_adapter {
->>  #define IAVF_FLAG_AQ_ENABLE_STAG_VLAN_INSERTION		BIT_ULL(37)
->>  #define IAVF_FLAG_AQ_DISABLE_STAG_VLAN_INSERTION	BIT_ULL(38)
->>  #define IAVF_FLAG_AQ_GET_SUPPORTED_RXDIDS		BIT_ULL(39)
->> +#define IAVF_FLAG_AQ_GET_PTP_CAPS			BIT_ULL(40)
->> +#define IAVF_FLAG_AQ_SEND_PTP_CMD			BIT_ULL(41)
->>  
->>  	/* AQ messages that must be sent after IAVF_FLAG_AQ_GET_CONFIG, in
->>  	 * order to negotiated extended capabilities.
->>  	 */
->>  #define IAVF_FLAG_AQ_EXTENDED_CAPS			\
->>  	(IAVF_FLAG_AQ_GET_OFFLOAD_VLAN_V2_CAPS |	\
->> -	 IAVF_FLAG_AQ_GET_SUPPORTED_RXDIDS)
->> +	 IAVF_FLAG_AQ_GET_SUPPORTED_RXDIDS |		\
->> +	 IAVF_FLAG_AQ_GET_PTP_CAPS)
->>  
->>  	/* flags for processing extended capability messages during
->>  	 * __IAVF_INIT_EXTENDED_CAPS. Each capability exchange requires
->> @@ -358,12 +362,16 @@ struct iavf_adapter {
->>  #define IAVF_EXTENDED_CAP_RECV_VLAN_V2			BIT_ULL(1)
->>  #define IAVF_EXTENDED_CAP_SEND_RXDID			BIT_ULL(2)
->>  #define IAVF_EXTENDED_CAP_RECV_RXDID			BIT_ULL(3)
->> +#define IAVF_EXTENDED_CAP_SEND_PTP			BIT_ULL(4)
->> +#define IAVF_EXTENDED_CAP_RECV_PTP			BIT_ULL(5)
->>  
->>  #define IAVF_EXTENDED_CAPS				\
->>  	(IAVF_EXTENDED_CAP_SEND_VLAN_V2 |		\
->>  	 IAVF_EXTENDED_CAP_RECV_VLAN_V2 |		\
->>  	 IAVF_EXTENDED_CAP_SEND_RXDID |			\
->> -	 IAVF_EXTENDED_CAP_RECV_RXDID)
->> +	 IAVF_EXTENDED_CAP_RECV_RXDID |			\
->> +	 IAVF_EXTENDED_CAP_SEND_PTP |			\
->> +	 IAVF_EXTENDED_CAP_RECV_PTP)
->>  
->>  	/* Lock to prevent possible clobbering of
->>  	 * current_netdev_promisc_flags
->> @@ -423,6 +431,8 @@ struct iavf_adapter {
->>  			     VIRTCHNL_VF_OFFLOAD_ADV_RSS_PF)
->>  #define IAVF_RXDID_ALLOWED(a) ((a)->vf_res->vf_cap_flags & \
->>  			       VIRTCHNL_VF_OFFLOAD_RX_FLEX_DESC)
->> +#define IAVF_PTP_ALLOWED(a) ((a)->vf_res->vf_cap_flags & \
->> +			      VIRTCHNL_VF_CAP_PTP)
-> 
-> Bah, should've mentioned that where you introduce IAVF_RXDID_ALLOWED().
-> I realize that the macros added previously are indented with spaces, but
-> it's not sorta correct style for the kernel. Maybe you'd indent both new
-> macros (RXDID and PTP) with tabs? You can also break the line different
-> way if you want, like
-> 
-> #define IAVF_PTP_ALLOWED(a)					\
-> 	((a)->vf_res->vf_cap_flags & VIRTCHNL_VF_CAP_PTP)
-> 
-> Looks more clear than breaking it after the '&'.
+When the X710 VF is detached and attached to the VM with net_failover, the =
+kworker thread in VM hang. The backtrace is,
+[<0>] iavf_open+0x48/0x230 [iavf]
+[<0>] __dev_open+0xe5/0x1c0
+[<0>] dev_open+0x52/0xa0
+[<0>] net_failover_slave_register+0x131/0x190 [net_failover]
+[<0>] failover_slave_register.part.0+0xda/0x180 [failover]
+[<0>] failover_event+0x104/0x1f0 [failover]
+[<0>] raw_notifier_call_chain+0x46/0x60
+[<0>] call_netdevice_notifiers_info+0x52/0xa0
+[<0>] register_netdevice+0x4d3/0x650
+[<0>] iavf_finish_config+0xc5/0xf0 [iavf]
+[<0>] process_one_work+0x228/0x3d0
+[<0>] worker_thread+0x53/0x420
+[<0>] kthread+0x127/0x150
+[<0>] ret_from_fork+0x1f/0x30
 
-sure
+It looks like a dead lock of adapter->crit_lock.
+A similar problem, https://patchwork.ozlabs.org/project/intel-wired-lan/pat=
+ch/20220808175845.484968-1-ivecera@redhat.com/#2947762
 
-> 
->>  	struct virtchnl_vf_resource *vf_res; /* incl. all VSIs */
->>  	struct virtchnl_vsi_resource *vsi_res; /* our LAN VSI */
->>  	struct virtchnl_version_info pf_version;
->> @@ -430,6 +440,7 @@ struct iavf_adapter {
->>  		       ((_a)->pf_version.minor == 1))
->>  	struct virtchnl_vlan_caps vlan_v2_caps;
->>  	u64 supp_rxdids;
->> +	struct iavf_ptp ptp;
->>  	u16 msg_enable;
->>  	struct iavf_eth_stats current_stats;
->>  	struct iavf_vsi vsi;
-> 
-> [...]
-> 
->> diff --git a/drivers/net/ethernet/intel/iavf/iavf_ptp.h b/drivers/net/ethernet/intel/iavf/iavf_ptp.h
->> new file mode 100644
->> index 000000000000..65678e76c34f
->> --- /dev/null
->> +++ b/drivers/net/ethernet/intel/iavf/iavf_ptp.h
->> @@ -0,0 +1,9 @@
->> +/* SPDX-License-Identifier: GPL-2.0 */
->> +/* Copyright(c) 2024 Intel Corporation. */
->> +
->> +#ifndef _IAVF_PTP_H_
->> +#define _IAVF_PTP_H_
->> +
->> +#include "iavf_types.h"
->> +
->> +#endif /* _IAVF_PTP_H_ */
->> diff --git a/drivers/net/ethernet/intel/iavf/iavf_types.h b/drivers/net/ethernet/intel/iavf/iavf_types.h
->> new file mode 100644
->> index 000000000000..6b7029a1a5a7
->> --- /dev/null
->> +++ b/drivers/net/ethernet/intel/iavf/iavf_types.h
->> @@ -0,0 +1,36 @@
->> +/* SPDX-License-Identifier: GPL-2.0 */
->> +/* Copyright(c) 2024 Intel Corporation. */
->> +
->> +#ifndef _IAVF_TYPES_H_
->> +#define _IAVF_TYPES_H_
->> +
->> +#include "iavf_types.h"
->> +
->> +#include <linux/avf/virtchnl.h>
->> +#include <linux/ptp_clock_kernel.h>
-> 
-> Oh well. I initially asked to introduce iavf_types.h to not bloat
-> iavf.h, but now types.h includes big ptp_clock_kernel.h :z
-> When I was reviewing PTP for idpf, I proposed to make this iavf_ptp in
-> iavf_adapter a pointer and allocate it dynamically, so that iavf.h
-> wouldn't need to include anything PTP-related at all. This way you
-> wouldn't need iavf_types.h.
-> What do you think?
+--_000_SJ0PR20MB6079EE704620E28B3AD45286FA8B2SJ0PR20MB6079namp_
+Content-Type: text/html; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 
-I can try make it happen
+<html xmlns:o=3D"urn:schemas-microsoft-com:office:office" xmlns:w=3D"urn:sc=
+hemas-microsoft-com:office:word" xmlns:m=3D"http://schemas.microsoft.com/of=
+fice/2004/12/omml" xmlns=3D"http://www.w3.org/TR/REC-html40">
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dus-ascii"=
+>
+<meta name=3D"Generator" content=3D"Microsoft Word 15 (filtered medium)">
+<style><!--
+/* Font Definitions */
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:DengXian;
+	panose-1:2 1 6 0 3 1 1 1 1 1;}
+@font-face
+	{font-family:Aptos;
+	panose-1:2 11 0 4 2 2 2 2 2 4;}
+@font-face
+	{font-family:"\@DengXian";
+	panose-1:2 1 6 0 3 1 1 1 1 1;}
+/* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0cm;
+	font-size:12.0pt;
+	font-family:"Aptos",sans-serif;
+	mso-ligatures:standardcontextual;}
+a:link, span.MsoHyperlink
+	{mso-style-priority:99;
+	color:#467886;
+	text-decoration:underline;}
+span.EmailStyle17
+	{mso-style-type:personal-compose;
+	font-family:"Aptos",sans-serif;
+	color:windowtext;}
+.MsoChpDefault
+	{mso-style-type:export-only;}
+@page WordSection1
+	{size:612.0pt 792.0pt;
+	margin:72.0pt 72.0pt 72.0pt 72.0pt;}
+div.WordSection1
+	{page:WordSection1;}
+--></style>
+</head>
+<body lang=3D"en-CN" link=3D"#467886" vlink=3D"#96607D" style=3D"word-wrap:=
+break-word">
+<div class=3D"WordSection1">
+<p class=3D"MsoNormal"><span style=3D"font-size:10.5pt">Hello, we met a pro=
+blem with iavf driver, the ubuntu22.04 kernel 5.15.0-119 and 6.11rc4 both h=
+ave the same problem.<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.5pt"><o:p>&nbsp;</o:p></=
+span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.5pt">When the X710 VF is=
+ detached and attached to the VM with net_failover, the kworker thread in V=
+M hang. The backtrace is,<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.5pt">[&lt;0&gt;] iavf_op=
+en+0x48/0x230 [iavf]<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.5pt">[&lt;0&gt;] __dev_o=
+pen+0xe5/0x1c0<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.5pt">[&lt;0&gt;] dev_ope=
+n+0x52/0xa0<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.5pt">[&lt;0&gt;] net_fai=
+lover_slave_register+0x131/0x190 [net_failover]<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.5pt">[&lt;0&gt;] failove=
+r_slave_register.part.0+0xda/0x180 [failover]<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.5pt">[&lt;0&gt;] failove=
+r_event+0x104/0x1f0 [failover]<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.5pt">[&lt;0&gt;] raw_not=
+ifier_call_chain+0x46/0x60<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.5pt">[&lt;0&gt;] call_ne=
+tdevice_notifiers_info+0x52/0xa0<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.5pt">[&lt;0&gt;] registe=
+r_netdevice+0x4d3/0x650<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.5pt">[&lt;0&gt;] iavf_fi=
+nish_config+0xc5/0xf0 [iavf]<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.5pt">[&lt;0&gt;] process=
+_one_work+0x228/0x3d0<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.5pt">[&lt;0&gt;] worker_=
+thread+0x53/0x420<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.5pt">[&lt;0&gt;] kthread=
++0x127/0x150<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.5pt">[&lt;0&gt;] ret_fro=
+m_fork+0x1f/0x30<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.5pt"><o:p>&nbsp;</o:p></=
+span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.5pt">It looks like a dea=
+d lock of adapter-&gt;crit_lock.<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.5pt">A similar problem, =
+<a href=3D"https://patchwork.ozlabs.org/project/intel-wired-lan/patch/20220=
+808175845.484968-1-ivecera@redhat.com/#2947762">
+https://patchwork.ozlabs.org/project/intel-wired-lan/patch/20220808175845.4=
+84968-1-ivecera@redhat.com/#2947762</a><o:p></o:p></span></p>
+</div>
+</body>
+</html>
 
-> 
->> +
->> +/* structure used to queue PTP commands for processing */
->> +struct iavf_ptp_aq_cmd {
->> +	struct list_head list;
->> +	enum virtchnl_ops v_opcode:16;
->> +	u16 msglen;
->> +	u8 msg[] __counted_by(msglen);
->> +};
->> +
->> +/* fields used for PTP support */
-> 
-> Redundant comment I'd say.
-
-Agree
-
-> 
->> +struct iavf_ptp {
->> +	wait_queue_head_t phc_time_waitqueue;
->> +	struct virtchnl_ptp_caps hw_caps;
->> +	struct ptp_clock_info info;
->> +	struct ptp_clock *clock;
->> +	struct list_head aq_cmds;
->> +	u64 cached_phc_time;
->> +	unsigned long cached_phc_updated;
->> +	/* Lock protecting access to the AQ command list */
->> +	struct mutex aq_cmd_lock;
->> +	struct kernel_hwtstamp_config hwtstamp_config;
->> +	bool initialized:1;
->> +	bool phc_time_ready:1;
->> +};
->> +
->> +#endif /* _IAVF_TYPES_H_ */
-> 
-> [...]
-> 
->> @@ -307,6 +343,38 @@ int iavf_get_vf_supported_rxdids(struct iavf_adapter *adapter)
->>  	return 0;
->>  }
->>  
->> +int iavf_get_vf_ptp_caps(struct iavf_adapter *adapter)
->> +{
->> +	struct virtchnl_ptp_caps caps = {};
->> +	struct iavf_hw *hw = &adapter->hw;
->> +	struct iavf_arq_event_info event;
->> +	enum virtchnl_ops op;
->> +	enum iavf_status err;
->> +
->> +	event.msg_buf = (u8 *)&caps;
->> +	event.buf_len = sizeof(caps);
->> +
->> +	while (1) {
->> +		/* When the AQ is empty, iavf_clean_arq_element will return
->> +		 * nonzero and this loop will terminate.
->> +		 */
->> +		err = iavf_clean_arq_element(hw, &event, NULL);
->> +		if (err != IAVF_SUCCESS)
->> +			return err;
->> +		op = (enum virtchnl_ops)le32_to_cpu(event.desc.cookie_high);
-> 
-> This cast is not needed.
-> 
->> +		if (op == VIRTCHNL_OP_1588_PTP_GET_CAPS)
->> +			break;
-> 
-> Same comments as to one of the previous patches -- you can declare @op
-> inside the loop and also take into consideration that cpu_to_le32(const)
-> is faster than le32_to_cpu(var) on BE.
-
-As in previous patch I'll use iavf_poll_virtchnl_msg. After that
-your comments won't apply
-
-> 
->> +	}
->> +
->> +	err = le32_to_cpu(event.desc.cookie_low);
->> +	if (err)
->> +		return err;
->> +
->> +	memcpy(&adapter->ptp.hw_caps, &caps, sizeof(caps));
->> +
->> +	return 0;
->> +}
->> +
->>  /**
->>   * iavf_configure_queues
->>   * @adapter: adapter structure
->> @@ -2423,6 +2491,10 @@ void iavf_virtchnl_completion(struct iavf_adapter *adapter,
->>  		memcpy(&adapter->supp_rxdids, msg,
->>  		       min_t(u16, msglen, sizeof(adapter->supp_rxdids)));
->>  		break;
->> +	case VIRTCHNL_OP_1588_PTP_GET_CAPS:
->> +		memcpy(&adapter->ptp.hw_caps, msg,
->> +		       min_t(u16, msglen, sizeof(adapter->ptp.hw_caps)));
-> 
-> Same as to one of the previous patches -- I'd avoid partial copying and
-> check the msglen first to be the same as this sizeof().
-
-Sure
-
-> 
->> +		break;
->>  	case VIRTCHNL_OP_ENABLE_QUEUES:
->>  		/* enable transmits */
->>  		iavf_irq_enable(adapter, true);
-> 
-> Thanks,
-> Olek
+--_000_SJ0PR20MB6079EE704620E28B3AD45286FA8B2SJ0PR20MB6079namp_--
