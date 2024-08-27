@@ -1,154 +1,101 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 36E609617D7
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 27 Aug 2024 21:12:39 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id DBD11961805
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 27 Aug 2024 21:29:21 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id C14094058D;
-	Tue, 27 Aug 2024 19:12:37 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 00C7D4066D;
+	Tue, 27 Aug 2024 19:29:20 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id PEB2Xwvvmgio; Tue, 27 Aug 2024 19:12:36 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id UskMCHouK3SK; Tue, 27 Aug 2024 19:29:19 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 8200D40A47
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org BB8214066F
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1724785956;
-	bh=hV7fAjaizF4vynjkGZ/75HBzKrPuuFVP8PnlSmPIxwk=;
-	h=Date:From:To:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1724786958;
+	bh=tyZtb9KmqI2x6rzXgR5hvLMGTDKN6WerHsoS8ZXy5FM=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=UAWIzf3aHw+aqP1EnFUInPZFCAqLOC4psL1PyF3hD2yViXml2biru9WDwW51Qx2u+
-	 JCtO4CTropM5vw8IA8QyUANkxTv6BUFsb3VSduYTOma69+EqbOOsRHor539hEQg7TE
-	 HFtZryp/wUoItevsSEnzP/cN3mKKNpZbwJL2ze/TC91qM3q0tWpC3ZabbSSI6866Sk
-	 W2cuBmC9rzfnSno1cQqtmDcmbm8GLVSmdfUyY5CfUfbDLcQiy+OL4fDje2F5DJE+/O
-	 SwIwxbdchWhloB32rKT4HspUATwiUzSuXfUHHVQJ6iwUJd5a/NIPjXABvIP3zT7h04
-	 Qdrp/BGom6KkA==
+	b=MWF6sU0UkGFZ58C0fkSaSVjBvHBMTYQoQjLc+Gc4nXMB5HUFw8j1h5nkWkX3EuluA
+	 57RHoWuyLD96wa3CCLXuRYoBLvLXwHhzR/ScTf9FuZsDPqwUXsCLHFgMcSx/ruOSD+
+	 sFhyLXQO6CjBJ6amvEpGl8em4rnaidwu0fg+nymsnqAbgzmutvWza+v3gRcSqPudc3
+	 qrCtWBQUvTflfI2BXuWsXF74rRXsiQBLvFKSwAONmyD9qAiUXiUKJKvVMwofU/ZsqO
+	 UTk3wGkWgQzWwx6wEDpFP3pTe1zvDay+dvfMZ9Y817MI7MU70WoYxO7Udx32YBjg5k
+	 AtmVlk+sdE/uQ==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 8200D40A47;
-	Tue, 27 Aug 2024 19:12:36 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id BB8214066F;
+	Tue, 27 Aug 2024 19:29:18 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 148911BF2FD
- for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Aug 2024 19:12:34 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id A69011BF2FD
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Aug 2024 19:29:16 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id ED39B60754
- for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Aug 2024 19:12:33 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 90E4C608CB
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Aug 2024 19:29:16 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id WB5OKPaqA3mJ for <intel-wired-lan@lists.osuosl.org>;
- Tue, 27 Aug 2024 19:12:33 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2a07:de40:b251:101:10:150:64:2; helo=smtp-out2.suse.de;
- envelope-from=tbogendoerfer@suse.de; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org C8E0B60744
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C8E0B60744
-Received: from smtp-out2.suse.de (smtp-out2.suse.de
- [IPv6:2a07:de40:b251:101:10:150:64:2])
- by smtp3.osuosl.org (Postfix) with ESMTPS id C8E0B60744
- for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Aug 2024 19:12:32 +0000 (UTC)
-Received: from imap1.dmz-prg2.suse.org (imap1.dmz-prg2.suse.org
- [IPv6:2a07:de40:b281:104:10:150:64:97])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (No client certificate requested)
- by smtp-out2.suse.de (Postfix) with ESMTPS id BB53B1FB86;
- Tue, 27 Aug 2024 19:12:29 +0000 (UTC)
-Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (No client certificate requested)
- by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id 8007813724;
- Tue, 27 Aug 2024 19:12:29 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
- by imap1.dmz-prg2.suse.org with ESMTPSA id GGUBHh0lzmY5agAAD6G6ig
- (envelope-from <tbogendoerfer@suse.de>); Tue, 27 Aug 2024 19:12:29 +0000
-Date: Tue, 27 Aug 2024 21:12:24 +0200
-From: Thomas Bogendoerfer <tbogendoerfer@suse.de>
-To: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-Message-ID: <20240827211224.0d172e40@samweis>
-In-Reply-To: <362dd93c-8176-4c46-878d-dd0e1b897468@intel.com>
-References: <20240826085830.28136-1-tbogendoerfer@suse.de>
- <ZsxNv6jN5hld7jYl@nanopsycho.orion>
- <20240826121710.7fcd856e@samweis>
- <362dd93c-8176-4c46-878d-dd0e1b897468@intel.com>
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.34; x86_64-suse-linux-gnu)
+ id V8t2xCCivJma for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 27 Aug 2024 19:29:15 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.11;
+ helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 6AB20608CA
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6AB20608CA
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.11])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 6AB20608CA
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Aug 2024 19:29:14 +0000 (UTC)
+X-CSE-ConnectionGUID: TmCKBQHOQcqUdkfC2AI0IA==
+X-CSE-MsgGUID: wF5UGroySCKjcrb6oLrShg==
+X-IronPort-AV: E=McAfee;i="6700,10204,11177"; a="33861378"
+X-IronPort-AV: E=Sophos;i="6.10,181,1719903600"; d="scan'208";a="33861378"
+Received: from orviesa006.jf.intel.com ([10.64.159.146])
+ by orvoesa103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 27 Aug 2024 12:29:14 -0700
+X-CSE-ConnectionGUID: /9tq97SySTyv2uBoJnvGgw==
+X-CSE-MsgGUID: rA87ujF4TZuIkwOehkX/Jw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.10,181,1719903600"; d="scan'208";a="63283879"
+Received: from lkp-server01.sh.intel.com (HELO 9a732dc145d3) ([10.239.97.150])
+ by orviesa006.jf.intel.com with ESMTP; 27 Aug 2024 12:29:13 -0700
+Received: from kbuild by 9a732dc145d3 with local (Exim 4.96)
+ (envelope-from <lkp@intel.com>) id 1sj1sL-000K0K-1w;
+ Tue, 27 Aug 2024 19:29:09 +0000
+Date: Wed, 28 Aug 2024 03:28:12 +0800
+From: kernel test robot <lkp@intel.com>
+To: Karol Kolacinski <karol.kolacinski@intel.com>,
+ intel-wired-lan@lists.osuosl.org
+Message-ID: <202408280349.0Wn5wfHn-lkp@intel.com>
+References: <20240827130814.732181-11-karol.kolacinski@intel.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-Rspamd-Queue-Id: BB53B1FB86
-X-Spamd-Result: default: False [-4.01 / 50.00]; BAYES_HAM(-3.00)[100.00%];
- NEURAL_HAM_LONG(-1.00)[-1.000]; MID_RHS_NOT_FQDN(0.50)[];
- R_DKIM_ALLOW(-0.20)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
- NEURAL_HAM_SHORT(-0.20)[-0.999]; MIME_GOOD(-0.10)[text/plain];
- MX_GOOD(-0.01)[]; FUZZY_BLOCKED(0.00)[rspamd.com];
- RCVD_TLS_ALL(0.00)[]; RCVD_VIA_SMTP_AUTH(0.00)[];
- MIME_TRACE(0.00)[0:+]; ARC_NA(0.00)[];
- RCPT_COUNT_SEVEN(0.00)[11];
- DKIM_SIGNED(0.00)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
- TO_MATCH_ENVRCPT_ALL(0.00)[]; FROM_HAS_DN(0.00)[];
- TO_DN_SOME(0.00)[]; FROM_EQ_ENVFROM(0.00)[];
- RCVD_COUNT_TWO(0.00)[2]; DKIM_TRACE(0.00)[suse.de:+]
-X-Rspamd-Server: rspamd2.dmz-prg2.suse.org
-X-Rspamd-Action: no action
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=suse.de; s=susede2_rsa; 
- t=1724785949; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=hV7fAjaizF4vynjkGZ/75HBzKrPuuFVP8PnlSmPIxwk=;
- b=X+vPlEneJD0qhFJi2Kx8Xo0qkNOHG3KSuspOC6CMtYIY/+h7F1r9nMfpW8zLROF9taU8S3
- aFE3GHU4Ows4b6yDeZ8jLISne4PhwcqW1DvBEh5zL1nUXMr9oQTk5JQTonU6wi6OP+Gc2Z
- TJ2yYxpbtXWwo53DgMaBtL95IVpEQeQ=
-X-Mailman-Original-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed;
- d=suse.de; s=susede2_ed25519; t=1724785949;
- h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=hV7fAjaizF4vynjkGZ/75HBzKrPuuFVP8PnlSmPIxwk=;
- b=siK8oYLjSAiJ9eajPXBKoZORHOIGT3g8kdmV58jc8X/mqGtBMefSgY/j3s81MB0qZYOwDK
- 7zSZsaMT5TnT0FAg==
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=suse.de; s=susede2_rsa; 
- t=1724785949; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=hV7fAjaizF4vynjkGZ/75HBzKrPuuFVP8PnlSmPIxwk=;
- b=X+vPlEneJD0qhFJi2Kx8Xo0qkNOHG3KSuspOC6CMtYIY/+h7F1r9nMfpW8zLROF9taU8S3
- aFE3GHU4Ows4b6yDeZ8jLISne4PhwcqW1DvBEh5zL1nUXMr9oQTk5JQTonU6wi6OP+Gc2Z
- TJ2yYxpbtXWwo53DgMaBtL95IVpEQeQ=
-X-Mailman-Original-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed;
- d=suse.de; s=susede2_ed25519; t=1724785949;
- h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=hV7fAjaizF4vynjkGZ/75HBzKrPuuFVP8PnlSmPIxwk=;
- b=siK8oYLjSAiJ9eajPXBKoZORHOIGT3g8kdmV58jc8X/mqGtBMefSgY/j3s81MB0qZYOwDK
- 7zSZsaMT5TnT0FAg==
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240827130814.732181-11-karol.kolacinski@intel.com>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1724786956; x=1756322956;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:in-reply-to;
+ bh=XmCKE1yAFFK3hqkryW2KkaSx2PKqUdv57bUBardyjb8=;
+ b=SN8/LXybTf2wCrWRs85EN6qgHgZbn+4JGyc4yRBKhLTjJjRYXRl6O97G
+ hLnD+AU6XrwjvUbwjcPxhIcym+W+CI4Eaa7d5kzdxqUhxt9ymm47m24bz
+ vd5aMltWWbL0zHEpsMwgooMQo47UZ/4CnBg1a7ruNUvYSopIECD0nqQda
+ uusFp3Q6VujKjZQIQDAZG4hlGSzP78p4Cyx6EecQisqN0N09JyC72642+
+ 0e2H5I6gWEgRXA3qe2qUjwCzp9zz1Kg3EAb3/8c47LDaTw5jbGKdRCisg
+ mvW4sYsGlT49QEil8gHUZE17mIGbM1juCesVPhxpsoR4JpXO+Af7na2bB
+ Q==;
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=suse.de
+ header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (1024-bit key, unprotected) header.d=suse.de header.i=@suse.de
- header.a=rsa-sha256 header.s=susede2_rsa header.b=X+vPlEne; 
- dkim=pass header.d=suse.de header.i=@suse.de header.a=ed25519-sha256
- header.s=susede2_ed25519 header.b=siK8oYLj; 
- dkim=pass (1024-bit key) header.d=suse.de header.i=@suse.de
- header.a=rsa-sha256 header.s=susede2_rsa header.b=X+vPlEne; 
- dkim=neutral header.d=suse.de header.i=@suse.de header.a=ed25519-sha256
- header.s=susede2_ed25519 header.b=siK8oYLj
-X-Mailman-Original-Authentication-Results: smtp-out2.suse.de;
- dkim=pass header.d=suse.de header.s=susede2_rsa header.b=X+vPlEne;
- dkim=pass header.d=suse.de header.s=susede2_ed25519 header.b=siK8oYLj
-Subject: Re: [Intel-wired-lan] [PATCH net] ice: Fix NULL pointer access,
- if PF doesn't support SRIOV_LAG
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=SN8/LXyb
+Subject: Re: [Intel-wired-lan] [PATCH v8 iwl-next 2/7] ice: Remove
+ unncecessary ice_is_e8xx() functions
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -161,62 +108,41 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Jiri Pirko <jiri@resnulli.us>, Dave Ertman <david.m.ertman@intel.com>,
- intel-wired-lan@lists.osuosl.org, linux-kernel@vger.kernel.org,
- Eric Dumazet <edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
- netdev@vger.kernel.org, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>
+Cc: netdev@vger.kernel.org, Karol Kolacinski <karol.kolacinski@intel.com>,
+ anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com,
+ oe-kbuild-all@lists.linux.dev
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Tue, 27 Aug 2024 09:16:51 +0200
-Przemek Kitszel <przemyslaw.kitszel@intel.com> wrote:
+Hi Karol,
 
-> On 8/26/24 12:17, Thomas Bogendoerfer wrote:
-> > On Mon, 26 Aug 2024 11:41:19 +0200
-> > Jiri Pirko <jiri@resnulli.us> wrote:
-> >  =20
-> >> Mon, Aug 26, 2024 at 10:58:30AM CEST, tbogendoerfer@suse.de wrote: =20
-> >>> For PFs, which don't support SRIOV_LAG, there is no pf->lag struct
-> >>> allocated. So before accessing pf->lag a NULL pointer check is needed.
-> >>>
-> >>> Signed-off-by: Thomas Bogendoerfer <tbogendoerfer@suse.de> =20
-> >>
-> >> You need to add a "fixes" tag blaming the commit that introduced the
-> >> bug. =20
->=20
-> Would be also good to CC the author.
+kernel test robot noticed the following build errors:
 
-sure, I'm using get_maintainer for building address line and looks
-like it only adds the author, if there is a Fixes tag, which IMHO
-makes more sense than mailing all possible authors of file (in this
-case it would work, but there are other files).
+[auto build test ERROR on 025f455f893c9f39ec392d7237d1de55d2d00101]
 
-> > Fixes: 1e0f9881ef79 ("ice: Flesh out implementation of support for
-> > SRIOV on bonded interface") =20
->=20
-> the bug was introduced later, the tag should be:
-> Fixes: ec5a6c5f79ed ("ice: process events created by lag netdev event=20
-> handler")
+url:    https://github.com/intel-lab-lkp/linux/commits/Karol-Kolacinski/ice-Don-t-check-device-type-when-checking-GNSS-presence/20240827-211218
+base:   025f455f893c9f39ec392d7237d1de55d2d00101
+patch link:    https://lore.kernel.org/r/20240827130814.732181-11-karol.kolacinski%40intel.com
+patch subject: [Intel-wired-lan] [PATCH v8 iwl-next 2/7] ice: Remove unncecessary ice_is_e8xx() functions
+config: s390-allyesconfig (https://download.01.org/0day-ci/archive/20240828/202408280349.0Wn5wfHn-lkp@intel.com/config)
+compiler: s390-linux-gcc (GCC) 14.1.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20240828/202408280349.0Wn5wfHn-lkp@intel.com/reproduce)
 
-I'd like to disagree, ec5a6c5f79ed adds an empty ice_lag_move_new_vf_nodes(=
-),
-which will do no harm if pf->lag is NULL. Commit 1e0f9881ef79 introduces
-the access to pf->lag without checking for NULL.
->=20
-> The mentioned commit extracted code into ice_lag_move_new_vf_nodes(),
-> and there is just one call to this function by now, just after
-> releasing lag_mutex, so would be good to change the semantics of
-> ice_lag_move_new_vf_nodes() to "only for lag-enabled flows, with
-> lag_mutex held", and fix the call to it to reflect that.
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202408280349.0Wn5wfHn-lkp@intel.com/
 
-I could do that for sure, but IMHO this is about fixing a bug,
-which crashes the kernel. Making the code better should be done
-after fixing.
+All errors (new ones prefixed by >>):
 
-Thomas.
+   s390-linux-ld: drivers/net/ethernet/intel/ice/ice_main.o: in function `ice_service_task':
+>> ice_main.c:(.text+0x267ca): undefined reference to `ice_is_generic_mac'
+   s390-linux-ld: drivers/net/ethernet/intel/ice/ice_controlq.o: in function `ice_is_sbq_supported':
+>> ice_controlq.c:(.text+0x2fb6): undefined reference to `ice_is_generic_mac'
+   s390-linux-ld: drivers/net/ethernet/intel/ice/ice_ptp.o: in function `ice_ptp_init':
+>> ice_ptp.c:(.text+0xad28): undefined reference to `ice_is_e825c'
+>> s390-linux-ld: ice_ptp.c:(.text+0xadde): undefined reference to `ice_is_e825c'
 
---=20
-SUSE Software Solutions Germany GmbH
-HRB 36809 (AG N=C3=BCrnberg)
-Gesch=C3=A4ftsf=C3=BChrer: Ivo Totev, Andrew McDonald, Werner Knoblich
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
