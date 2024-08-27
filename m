@@ -1,98 +1,233 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 56D5D960B5A
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 27 Aug 2024 15:08:57 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 07561960D2D
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 27 Aug 2024 16:09:43 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 3E67F409A7;
-	Tue, 27 Aug 2024 13:08:54 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 22BAA405D0;
+	Tue, 27 Aug 2024 14:09:40 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id fFsnCO6Ai_UY; Tue, 27 Aug 2024 13:08:52 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id xpTLDZnpYVh4; Tue, 27 Aug 2024 14:09:39 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 6417C40936
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 25EE5405B5
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1724764132;
-	bh=Rtltl9CZKsD3gORW6WA9K46mP6IwGDQaCw25TodzhoQ=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1724767779;
+	bh=wUDBltAlbk8CcirFooKK4hut8YH0wYvVM2U7gASYCLE=;
+	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=vPYruYpNT8keBcmtQ5NBJ7yJNzgkex+lRhbWwZaIh4vA9RebIHCYXNbyDuIiE/dj9
-	 dG/nUaJGgKa4snPae2Vo/lEs0ck6gKuDUP9eF/5yHPLwekVP2q0wpOTqw6pm2UwrWr
-	 P0JvWm7MPH89hLXoOdYUiC/AV/w8nnyRj7iFBHFauZpJzF/kpkbRG4J64OMaqWhRaO
-	 lghiEIDKuEmkiahKXFsmAoGvLaDuGB/VSjhSdnuSOX40wYcGfdbCqNvOYsmz5SWA1i
-	 /5vQsVAvfPtVpIXMvai680quHZ2HWFWJN2n/7d/q1xTYKhsbf5syR6F046EYjc9Hwg
-	 A7MZx2xg9VOBg==
+	b=nRXeDjAwwqaJUADfTZPoiyMarvQpls/QeIMX8//7RSCPwpfIqCcC8IoQYGSIy1dsx
+	 x+k/84ybJZ3Oos80st4YBmEKYqiroXHUNFiB4wHfijQ+0qxo0jcp5pvUY9DlM3Ls5d
+	 t7MxqUbuJ2WXGJfLJDt6jQ5PQi3V7KmZe7ZOfzA1Ic5GF9GPq4DrsqbVoknBoZTHC9
+	 vkXONn4J0Lzo4mVaaabN/blo1V0AGCjryApz1RzD0O6EQPDPwrO6apVhYafuPCoHx2
+	 90JamFOe+NnzgGTI0sxMufBqhZAfIKA+cu3p5evBO+fTipKxSVVJRr+mtKJ6ZBn2iI
+	 LSS42e+taNXwg==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 6417C40936;
-	Tue, 27 Aug 2024 13:08:52 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 25EE5405B5;
+	Tue, 27 Aug 2024 14:09:39 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 063D31BF21A
- for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Aug 2024 13:08:50 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 384C91BF3DB
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Aug 2024 14:09:36 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id E861B80B6F
- for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Aug 2024 13:08:49 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 23691405C2
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Aug 2024 14:09:36 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id GNO4RZaNzVM4 for <intel-wired-lan@lists.osuosl.org>;
- Tue, 27 Aug 2024 13:08:48 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id GyPuXsa4PHTr for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 27 Aug 2024 14:09:35 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.10;
- helo=mgamail.intel.com; envelope-from=karol.kolacinski@intel.com;
+ helo=mgamail.intel.com; envelope-from=aleksander.lobakin@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 6F2CF80A54
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6F2CF80A54
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 371CC405AB
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 371CC405AB
 Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.10])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 6F2CF80A54
- for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Aug 2024 13:08:48 +0000 (UTC)
-X-CSE-ConnectionGUID: uLszuCiVQX+3RZb1SA7KzQ==
-X-CSE-MsgGUID: D/f+ilndQEKTUi0vUCOSFw==
-X-IronPort-AV: E=McAfee;i="6700,10204,11176"; a="40710323"
-X-IronPort-AV: E=Sophos;i="6.10,180,1719903600"; d="scan'208";a="40710323"
-Received: from fmviesa001.fm.intel.com ([10.60.135.141])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 371CC405AB
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Aug 2024 14:09:34 +0000 (UTC)
+X-CSE-ConnectionGUID: BHJ3FkxARNy3FGmu8GWxYw==
+X-CSE-MsgGUID: 5FAeUgHZTLSG/BNQRvwBfQ==
+X-IronPort-AV: E=McAfee;i="6700,10204,11177"; a="40719476"
+X-IronPort-AV: E=Sophos;i="6.10,180,1719903600"; d="scan'208";a="40719476"
+Received: from orviesa002.jf.intel.com ([10.64.159.142])
  by orvoesa102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 27 Aug 2024 06:08:48 -0700
-X-CSE-ConnectionGUID: OQ8WM7pfRo2fMYHSbD0Z4w==
-X-CSE-MsgGUID: KC69AwB7TmiGlfiawF6S1g==
+ 27 Aug 2024 07:09:34 -0700
+X-CSE-ConnectionGUID: HUL9kg64S6CUx2P1Cy31Mg==
+X-CSE-MsgGUID: IydCR5OOQ3KmB/+gsCHKYg==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.10,180,1719903600"; d="scan'208";a="93650113"
-Received: from kkolacin-desk1.ger.corp.intel.com (HELO
- kkolacin-desk1.igk.intel.com) ([10.217.160.108])
- by fmviesa001.fm.intel.com with ESMTP; 27 Aug 2024 06:08:45 -0700
-From: Karol Kolacinski <karol.kolacinski@intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Tue, 27 Aug 2024 14:50:49 +0200
-Message-ID: <20240827130814.732181-16-karol.kolacinski@intel.com>
-X-Mailer: git-send-email 2.46.0
-In-Reply-To: <20240827130814.732181-9-karol.kolacinski@intel.com>
-References: <20240827130814.732181-9-karol.kolacinski@intel.com>
-MIME-Version: 1.0
+X-IronPort-AV: E=Sophos;i="6.10,180,1719903600"; d="scan'208";a="93614436"
+Received: from fmsmsx601.amr.corp.intel.com ([10.18.126.81])
+ by orviesa002.jf.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
+ 27 Aug 2024 07:09:34 -0700
+Received: from fmsmsx611.amr.corp.intel.com (10.18.126.91) by
+ fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.39; Tue, 27 Aug 2024 07:09:33 -0700
+Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
+ fmsmsx611.amr.corp.intel.com (10.18.126.91) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.39; Tue, 27 Aug 2024 07:09:32 -0700
+Received: from FMSEDG603.ED.cps.intel.com (10.1.192.133) by
+ fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.39 via Frontend Transport; Tue, 27 Aug 2024 07:09:32 -0700
+Received: from NAM10-MW2-obe.outbound.protection.outlook.com (104.47.55.46) by
+ edgegateway.intel.com (192.55.55.68) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.39; Tue, 27 Aug 2024 07:09:32 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=QTbIag4LhN/9vECYClfawNRTDlYY4hqaKCOk4RWkhuqRWIB5BOQ7Ca8T7LAyCL8qRhx8C403FvE7Y0rFTDQW3hlMQEkG4CfnCNpxukUYO8Tn78DvAVI+eRtvEHYGgq65u8IcTHiZ6QLmv7ckHokTXlopdpkpvbQd5yiSfa1Zdi8zA9Xcxahu35JnS4qbWE9/a4hC9pG8zx7nZV9lAmj5IcYh+id1d3Faaksnq1sRXav48hDp8O8YBSqk6PwDT8eWbgpwurR6bOTt8s7e/OJ00IUXB7TkP7GgGk3NiHVzTmbm1AQHHo/KQ/UAKrQFGeMnyg31dcsFS1i2gBU4uAjk6A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=wUDBltAlbk8CcirFooKK4hut8YH0wYvVM2U7gASYCLE=;
+ b=rfoPGqeRGKDGPpVtlhOekRyce3nRF+znH3fSXcJ6PqtNg7Thz9H8l0TJs5QIbWWIiv+b7zBae3IRejg8aAwL88BbW/4quNDmu9oA0+ctAkSCn6dMl8AmgSH4FDjLGPiVccPQlQBH6YeJQauk0KdTWTYbk1PMNYhAtk4V7IMq52Ugp7KsKPuzDMyOZ21pMgfschC8FaQX2O6ak8SjsqwKoYOGYQjEKIfmhiSV3bS0+CF1P5iqWAYCnhnxn91oqjFesXC+k9MgVfS3cwGrzaqXnyPn59i4kvonT1YeLf20pgEixHSPoH+xS/j0wStwmx471XO6F8C2EwTzXz8LPLpyig==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from DS0PR11MB8718.namprd11.prod.outlook.com (2603:10b6:8:1b9::20)
+ by MN0PR11MB6304.namprd11.prod.outlook.com (2603:10b6:208:3c0::7) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7897.25; Tue, 27 Aug
+ 2024 14:09:28 +0000
+Received: from DS0PR11MB8718.namprd11.prod.outlook.com
+ ([fe80::4b3b:9dbe:f68c:d808]) by DS0PR11MB8718.namprd11.prod.outlook.com
+ ([fe80::4b3b:9dbe:f68c:d808%5]) with mapi id 15.20.7875.019; Tue, 27 Aug 2024
+ 14:09:28 +0000
+Message-ID: <a16c0444-a289-4a84-b6eb-b06b4a3ef1f9@intel.com>
+Date: Tue, 27 Aug 2024 16:09:21 +0200
+User-Agent: Mozilla Thunderbird
+To: Przemek Kitszel <przemyslaw.kitszel@intel.com>, Christophe JAILLET
+ <christophe.jaillet@wanadoo.fr>
+References: <fa4f19064be084d5e740e625dcf05805c0d71ad0.1724394169.git.christophe.jaillet@wanadoo.fr>
+ <c786a345-9ec4-4e41-8e69-506239db291c@stanley.mountain>
+ <2896a4b2-2297-44cd-b4c7-a4d320298740@intel.com>
+ <bbe06f51-459a-4973-9322-56b3d27427f1@wanadoo.fr>
+ <dafcfb71-52b5-4bf7-8145-aae2dfc06e10@intel.com>
+From: Alexander Lobakin <aleksander.lobakin@intel.com>
+Content-Language: en-US
+In-Reply-To: <dafcfb71-52b5-4bf7-8145-aae2dfc06e10@intel.com>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
+X-ClientProxiedBy: ZR2P278CA0017.CHEP278.PROD.OUTLOOK.COM
+ (2603:10a6:910:46::11) To DS0PR11MB8718.namprd11.prod.outlook.com
+ (2603:10b6:8:1b9::20)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DS0PR11MB8718:EE_|MN0PR11MB6304:EE_
+X-MS-Office365-Filtering-Correlation-Id: bcd9b683-9566-47f1-65b9-08dcc6a1dd29
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|1800799024|7416014|376014;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?OEV5UktUZTR5S1FqZk9xV01DVkIvSFdHcElvSWluclhsSzhzZFlZY1VpZ0Uy?=
+ =?utf-8?B?ZFY3SEgwRmpKeXpkNHp6TEtWazBTSU9GM3hjMFJ2aXVVRVBzUWJ1Y2pzalk2?=
+ =?utf-8?B?ejdVVUdJMmFJTTl2WkxkR2JwQlhZOEgyV3grTTNmUHVObEs5U2p3eVZQeUty?=
+ =?utf-8?B?b3Mwc1NDekRyL3FBdy9vcUMzMzRoaTFjK2ErL0ZKdDFGWVpIL2t0a2xUblRT?=
+ =?utf-8?B?cTM1UDNQQ0FmR1dBM2Z2dGU5c1ZGQithcnZHZTlCSzBxVGpLVmNyTGt5NTVk?=
+ =?utf-8?B?TXJOcG9WM3R4aHR2bFRKREpScUw4S04yU1hQNVRJY2NEU0pRRW5YYTF2QkVo?=
+ =?utf-8?B?YitnSEQvdVRzV3hJb3RDeWZWSVd5LzlrQ2RSVm5EZ1kyTElSa1JXSjRCeHRX?=
+ =?utf-8?B?Uy9DdnNyL2pXZEtwMjJZbStDeHRvdDFhcEgxMFJUaTVRWWZla1RENEZlb2x4?=
+ =?utf-8?B?TjNHNUFtT1YxdG1LV2tZdmpHZXY1anZ0bCtpREwxNlZ4VWl4UmkrYVVjeko4?=
+ =?utf-8?B?eHlEdW51eFQ5K0pKQjFqSTZYZ1NOYnk0WTFwdEdheDBBYUxPN0ZtaFVxdEhI?=
+ =?utf-8?B?WGhvYTQ1OTROcDZSQUhkYjlFSXhHaVVQano0SWJUcnhaOG0yUlpQOXB4d1V4?=
+ =?utf-8?B?QjZyYUJoTVhtNC9ha0IyN25Rczd3NGRhem10QkQ0VU8wc3k2dzlvSURSV0tI?=
+ =?utf-8?B?WjlIKytINEFZTlhxVUxIU0RET0ZldWt1SjB1d0VXMVVRQTBJS1lQSmZYcEhJ?=
+ =?utf-8?B?OHJPOCtPNUFqM0RHNXR1NzF4QUM3bDV3S0hjQnBXKzArMmJHczJyaThMZnRB?=
+ =?utf-8?B?MU81V3VQaHVJUmZwTUk1OHdaWjhmMkhHcWN4NTlWYzhpTTVrRVoyRjVkaGc2?=
+ =?utf-8?B?djRuY1B0WEM5N25xZWFjS1pWcnd3aDVnK3V3WkNmSXhuYmhtMmcxRDBUa2pl?=
+ =?utf-8?B?di84YUpicUhRVW9FTUI3UHE2eWFPUWRYTUp0QnpVbWJ5UGhKSUJTdGQ4clg3?=
+ =?utf-8?B?Z1k5UmQ3anpiMGZ3bDRmSXVEeXBuSzdzeG1YLzlSTjRYQVhyais1empHbFla?=
+ =?utf-8?B?ejRmZVFOUjIxWkQ4a2xGaE5UYlQ2N0lOMUhRV3RXVHFId2VIWWhPMFJyemNm?=
+ =?utf-8?B?MExvWnJYN0xyRXRGdmE1QnRnSEtUZkU0Z2FBcy9jdHhwV1VvVHJrRDBzdHZ2?=
+ =?utf-8?B?RVZnV3F2SXdSTGtZZTVIVElNQkkvbmc1WWRCV3ZreDQxaFBoZmN2NWFaZGNL?=
+ =?utf-8?B?N0lOZzZaSkpqZXVFWTd2Nms3Qlo0RTVUZjYzeUJ3RGV2OUV3L1dOeXE5SVFu?=
+ =?utf-8?B?cHFkdUc5VUkyUDJ2ZG8veUZhNm9uMzdsVDlWNXJTRlVsMXU4aFQwbHE2Z3or?=
+ =?utf-8?B?MlpSQVd5d3RNSm1NOU1sTnRmQlFROFBUaE5NUGFIaEFxTENPdlp5MDhCeVhP?=
+ =?utf-8?B?cGpiSzhIUnFPVmV2eE9HS3VveTQyMlhWT0xCK0RIbE1WbHU0c3YxNVhQbENS?=
+ =?utf-8?B?ZzdBUUNKSHNmMStSTlk5YWRxK3dCRVRZRmVHOGhpdFFhN1lKeEdMNWo4bTNi?=
+ =?utf-8?B?V05FSXlOWHlidS9HTU40MmRLdXVyT0N3UGlKN0ZvdzNoUEkya0Y2WHdjU0V4?=
+ =?utf-8?B?NGU5WmlXMVozVGkyaVdMT1RNTmduS1hSUCtSUUs2VE5helRJWGdBYk5DRGtD?=
+ =?utf-8?B?djBDUjZLK1RWSzBRNjVZRFFNTkJ0ejBBNEVXcElwMG1TUWF1Nmw1Q3E4UVRt?=
+ =?utf-8?B?T3hjeUVPTHdJUkxEaFBEZmlVa1JlSmp5bzZvNUwwWXpXTEl3K2cwb1JSV3Vn?=
+ =?utf-8?B?b2ZBZis3azh0dWFRclExdz09?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:DS0PR11MB8718.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(366016)(1800799024)(7416014)(376014); DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?UDhSUWdvRFgwazRqWDZNRFpkRFdZczluSGJtbHg2NTNGWkFvYWVnZHVBQWRh?=
+ =?utf-8?B?eGN3aFFnbFdyVmpVc1FyTUJEcWg4QmgwTTNmSTVOdTUwQklhTkJ6dDB3bkts?=
+ =?utf-8?B?QjJSb3N5Vi9Dc1dBdEp3OG4zeEpvZ0ZSVEw4V3Q3WUlsZlZUUlNYTmpiTFAv?=
+ =?utf-8?B?SjFWTVFLOFBVd0Z4ejcxMjh2bU1hNE1tRys3OWxtMHJNdU50ZXN5VlRxY1pI?=
+ =?utf-8?B?aFU1dEZXamplOWcyUEZlZ0FNQWUxVmo2SDBrbCtoOHprRlRZQURHTlk4Mm1m?=
+ =?utf-8?B?Y0xtUThnd20ya0o4OXRPZVhqck5CVFJDcHVsUWJpUjFkTmNOOGxPZlhGUTYz?=
+ =?utf-8?B?NTQwaThtYTAyNXNkZXZuUEJYL3NUaWxUd0FyZnZUVHdRVzlUWGVkbnhyTUll?=
+ =?utf-8?B?Ri8vY3hrTXVVZVRYSFB4V0NsM3dLN2p3NU4vWVd0YWtxMVhta2dDV3JSOGR6?=
+ =?utf-8?B?WmVieWkwSjlOSlhUVnI1WDBJYVBrSkNnaG52MVVORXB3RXo0SCtuV1Vsem9C?=
+ =?utf-8?B?eXF4TGhRcndkV2ZpRDQwTXpONEsweGcyVzBhZ1N0eXNZeGdyeDBiNEl4MjVG?=
+ =?utf-8?B?K29lalJYeUFkQWFEanlSMzcvaGlxa1pveElwUUlUcFN4b1cwcGhBdkRzUUFn?=
+ =?utf-8?B?MWhkYWZsK2dUSi90OUVkK2lQUVBFeU44VGNTNEgzbCtsbTNnNFdnNzJXNTcz?=
+ =?utf-8?B?bHBZV2dXb1FKSms3UUdtT0xzM3p4WCtrdXE5ZGlCWjN1QXVDVkUzTUpYbXAz?=
+ =?utf-8?B?WC9paGt1TTRoTk56NFBHMkZ4a1BhUGttVEs0NjNwdUZSVXM3bVNlcTNvYVhx?=
+ =?utf-8?B?V2hwbWR1QjFvcDExT0J0VmhYbzlwK3ltYW1ZMWx3K1VXeXkrS2tkMEh6Vnpz?=
+ =?utf-8?B?VitkODhyTDlSRzg4WjFSa2dLM0pDQjFvaFJzdFRjc3lwUytmMjB5OWZEVldO?=
+ =?utf-8?B?UGJCUEVhSi9CL1p3TGZmQ2dvdGVNWHpiamhjb1NYWnI1L3hIWTB5UlBnSVpI?=
+ =?utf-8?B?VHVqT3lqQXFLeGtMVXVEWml0R2wzeUpENjdyd0UwK0tJbXI0YzhZelRyWE9Z?=
+ =?utf-8?B?YkpqaEJhU3pCSG5HRWxkcWpKa1A3WmhBUDF2VG1KVU9XWkJkZ3BldDRsNjky?=
+ =?utf-8?B?MzYwRTE3NkwzVmtXcXoyU0xUKzRYUlFNc3BuS0I0RkpYaHN0TTFNN0t0WjN4?=
+ =?utf-8?B?Y1RXQ0ErcFArMCtXS1BIZGRNR2lDc3U4Q0ZadWdDM3p4ZVl6VEg4QVV3TU1x?=
+ =?utf-8?B?UEE5bXh4c0ZFSG0xRVFtVEpzK2pZTlFud1Uxcm5Ya1ZNQ3Znc21Ua3NzUUxG?=
+ =?utf-8?B?eHN6OHNIbXBFVjJEL1FNRXBtSWJwalh2eThGMXQwSHdZZmtIVVN2V29VZUsy?=
+ =?utf-8?B?ZzJ5TDRWZDB1ejg3L2xQS3NDcjFHNXdKZFdYY09CLzh2S0Jqa0FsUXZWNVpp?=
+ =?utf-8?B?RW1ZbVRCRHJLbndwZUdkeXJEaWVDancreGhCOXlKdHlXZHhGdzVqSEZsVmx3?=
+ =?utf-8?B?RU9zWU9mSkpEeUdOQi9ydk5WblJKekwra1lESkcwRXBVQTF6VnJNSUYvcDlM?=
+ =?utf-8?B?UzRKLytzSjRoalZVREdsVGpidFM1MktOSHZqczMzMUdBTit4NDZKeFN1aWJ3?=
+ =?utf-8?B?VGdyU2w4ZkZ4dlVEc2ZyVFYwckRLUnJQWHpNSVBVL3pDNVc4aE9LQjU2ckV2?=
+ =?utf-8?B?Y2NEUmFEVE9heW9TVkl3K3BDYkhLcjN2bjkrZmpJMkRXZjJ5Y29kaUdTbXdW?=
+ =?utf-8?B?NXd6cjRiblk4OUNweUtYMVNFOXMwK25qbE5PSktwN3d2RWt2SW4yU25vVU95?=
+ =?utf-8?B?V2F5ZTN3NTdtYVZXOXVhUEJXVWFiWFpqVWVvcHRsbTdnZ2VIZnNiakZQNm1X?=
+ =?utf-8?B?RVplWVE2RkNzL3h1YmMxRklsUWJSM29vaXE4dURnQkFLVVRFQTN1NGxFQmRh?=
+ =?utf-8?B?c1lvNDdINGpwcG1raWk3SWdMV1hOQy9JaUliZ3ZqeFdaR0hmbDBVOFU3Q2JJ?=
+ =?utf-8?B?clZGNEFGTEhnUU5oLys0R3ZXYWhFaitkd3o3ZlpsdnZEOHZBVk5CdTJwdEVX?=
+ =?utf-8?B?aUZjbStuV1E1cEk3ZjNXVHlqMWpvV3lqaWloOFBQdjF5aHJMSkdjRGZxNVg0?=
+ =?utf-8?B?aGRiVFNnMWNZZzJpQ0tTU3NFajdYSnFVRW9NaG9zT3pBNXJnVnVBdWlNcHBI?=
+ =?utf-8?B?YUE9PQ==?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: bcd9b683-9566-47f1-65b9-08dcc6a1dd29
+X-MS-Exchange-CrossTenant-AuthSource: DS0PR11MB8718.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 27 Aug 2024 14:09:28.5022 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: frxW5NbyAQyPAR2rl6TlVpQnl3rYAg+saFtJGSix+Ds3gi/nXzyFLQlgNksEC2gmfMnnkzUgatNCvh2m3yyZXsOtrNd932gfqO6l+eGzIy4=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN0PR11MB6304
+X-OriginatorOrg: intel.com
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1724764129; x=1756300129;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=+yWrgLZTdCqvfZlsAQoj5h2bJmHzHN0EWZcnh6ObgkY=;
- b=CiZZepDm/hd39QLm888zHmPTF2EnQI5uCNUoCBIPrLKfeX+H2dIakimw
- /MFgiE3ei74Vfi4OaYURtIp2HdApUv3fxFtWEqI3YNkxEhPSiJRin3r4I
- lHozopWYimumIZJIZaVoXIYiplFUtvJVWetnDa5ZDcX4bIQikDm4y2V6u
- vq+hQsxZkKEwUcKKz0V+rcrKrs2MyUHWmyOfaB94TugI9z69/h6DoJ4Tl
- D3Bwq6YI912LsP31wNYYPL+ziuERRnBuT8PJSxibw5udFzFw+3bDRDt01
- 17pS97JG6WQpGsc3vBcBfWsOn1HeNuO579p3/IbC6l/T4Bhg0LRTFxAG4
+ t=1724767775; x=1756303775;
+ h=message-id:date:subject:to:cc:references:from:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=XlTH/Pii3h42Pg1r4E27UG5y1MmTzmbhAN8tw2Wylb8=;
+ b=gtwfGuySlC2hQN37KDwdU4VZ+IX+6k063rrFwJQK3pVqXT0GzsQHxe1x
+ hlqOhNjVbKiQIZNDHsiax8SwVTuXYl8c4I2GqGx4DrpphbeQYRNXv7uRh
+ f7yZboVDMYjkoEe2r/ngoFlFMyrHgYQbRTJ9h1sQs1t/1XAPLSI1FUHcp
+ wUdsuUU+TPPpF9HBtN/kxkRLakYmXfSdqiBpnDohDO1B256imNGQm5WsO
+ s5336tdUSanpMD4hmE4+RmyjzPh2ipp6tuiKZbiv8dO7Hd/aiCuI+Awsr
+ JcrFsVmFXzPbyxUetEVaCln5nUYzJ4JackJ6vfoa41AFLlrQOsqIfNTNn
  A==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=CiZZepDm
-Subject: [Intel-wired-lan] [PATCH v8 iwl-next 7/7] ice: Implement PTP
- support for E830 devices
+ header.a=rsa-sha256 header.s=Intel header.b=gtwfGuyS
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH net-next] idpf: Slightly simplify
+ memory management in idpf_add_del_mac_filters()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -105,535 +240,45 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Paul Greenwalt <paul.greenwalt@intel.com>,
- Michal Michalik <michal.michalik@intel.com>, netdev@vger.kernel.org,
- Frederic Weisbecker <frederic@kernel.org>,
- Karol Kolacinski <karol.kolacinski@intel.com>, anthony.l.nguyen@intel.com,
- przemyslaw.kitszel@intel.com, Jacob Keller <jacob.e.keller@intel.com>,
- Thomas Gleixner <tglx@linutronix.de>,
- Anna-Maria Behnsen <anna-maria@linutronix.de>,
- Milena Olech <milena.olech@intel.com>
+Cc: intel-wired-lan@lists.osuosl.org, kernel-janitors@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Eric Dumazet <edumazet@google.com>, Pavan Kumar
+ Linga <pavan.kumar.linga@intel.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
+ netdev@vger.kernel.org, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>,
+ Dan Carpenter <dan.carpenter@linaro.org>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Michal Michalik <michal.michalik@intel.com>
+From: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+Date: Tue, 27 Aug 2024 08:58:33 +0200
 
-Add specific functions and definitions for E830 devices to enable
-PTP support.
+> On 8/26/24 19:14, Christophe JAILLET wrote:
+>> Le 26/08/2024 à 11:15, Przemek Kitszel a écrit :
+>>> On 8/23/24 11:10, Dan Carpenter wrote:
+>>>> On Fri, Aug 23, 2024 at 08:23:29AM +0200, Christophe JAILLET wrote:
+> 
+>>>> It would be even nicer to move the ma_list allocation outside the loop:
+>>>>
+>>>>          buf_size = struct_size(ma_list, mac_addr_list,
+>>>> IDPF_NUM_FILTERS_PER_MSG);
+>>>>          ma_list = kmalloc(buf_size, GFP_ATOMIC);
 
-E830 devices support direct write to GLTSYN_ registers without shadow
-registers and 64 bit read of PHC time.
+[...]
 
-Enable PTM for E830 device, which is required for cross timestamp and
-and dependency on PCIE_PTM for ICE_HWTS.
+>> So, I'm not sure to understand what you propose, or the code in
+>> idpf_add_del_mac_filters() and co.
+>>
+>>>
+>>> CCing author; CCing Olek to ask if there are already some refactors that
+>>> would conflict with this.
 
-Check X86_FEATURE_ART for E830 as it may not be present in the CPU.
+I'm not aware of any MAC filter code refactors.
 
-Cc: Anna-Maria Behnsen <anna-maria@linutronix.de>
-Cc: Frederic Weisbecker <frederic@kernel.org>
-Cc: Thomas Gleixner <tglx@linutronix.de>
-Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-Co-developed-by: Jacob Keller <jacob.e.keller@intel.com>
-Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
-Co-developed-by: Milena Olech <milena.olech@intel.com>
-Signed-off-by: Milena Olech <milena.olech@intel.com>
-Co-developed-by: Paul Greenwalt <paul.greenwalt@intel.com>
-Signed-off-by: Paul Greenwalt <paul.greenwalt@intel.com>
-Signed-off-by: Michal Michalik <michal.michalik@intel.com>
-Co-developed-by: Karol Kolacinski <karol.kolacinski@intel.com>
-Signed-off-by: Karol Kolacinski <karol.kolacinski@intel.com>
----
-V7 -> V8: Moved E830 parts of other patches to this patch
-V6 -> V7: Fixed timestamp acquisition
-V4 -> V5: Edited return values
-V3 -> V4: Fixed kdoc for other ice_is_e***() and other _e830() functions in
-          ice_ptp_hw.c
-V2 -> V3: Fixed kdoc for ice_is_e***() and ice_ptp_init_phy_e830()
-V1 -> V2: Fixed compilation issue with GENMASK bits higher than 32
+>>
+>> I'll way a few days for these feedbacks and send a v2.
+> 
+> Would be good to have simple memory cleanup first, and later (if at all)
+> to untangle our locks a bit.
 
- drivers/net/ethernet/intel/Kconfig            |   2 +-
- .../net/ethernet/intel/ice/ice_hw_autogen.h   |  12 ++
- drivers/net/ethernet/intel/ice/ice_main.c     |   6 +
- drivers/net/ethernet/intel/ice/ice_ptp.c      |  69 +++++++-
- drivers/net/ethernet/intel/ice/ice_ptp_hw.c   | 163 +++++++++++++++++-
- drivers/net/ethernet/intel/ice/ice_ptp_hw.h   |   7 +
- 6 files changed, 254 insertions(+), 5 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/Kconfig b/drivers/net/ethernet/intel/Kconfig
-index 0375c7448a57..90415fe785ac 100644
---- a/drivers/net/ethernet/intel/Kconfig
-+++ b/drivers/net/ethernet/intel/Kconfig
-@@ -334,7 +334,7 @@ config ICE_SWITCHDEV
- config ICE_HWTS
- 	bool "Support HW cross-timestamp on platforms with PTM support"
- 	default y
--	depends on ICE && X86
-+	depends on ICE && X86 && PCIE_PTM
- 	help
- 	  Say Y to enable hardware supported cross-timestamping on platforms
- 	  with PCIe PTM support. The cross-timestamp is available through
-diff --git a/drivers/net/ethernet/intel/ice/ice_hw_autogen.h b/drivers/net/ethernet/intel/ice/ice_hw_autogen.h
-index 8d31bfe28cc8..b692be1cf7bf 100644
---- a/drivers/net/ethernet/intel/ice/ice_hw_autogen.h
-+++ b/drivers/net/ethernet/intel/ice/ice_hw_autogen.h
-@@ -533,10 +533,22 @@
- #define PFPM_WUS_MAG_M				BIT(1)
- #define PFPM_WUS_MNG_M				BIT(3)
- #define PFPM_WUS_FW_RST_WK_M			BIT(31)
-+#define E830_PRTMAC_TS_TX_MEM_VALID_H		0x001E2020
-+#define E830_PRTMAC_TS_TX_MEM_VALID_L		0x001E2000
- #define E830_PRTMAC_CL01_PS_QNT			0x001E32A0
- #define E830_PRTMAC_CL01_PS_QNT_CL0_M		GENMASK(15, 0)
- #define E830_PRTMAC_CL01_QNT_THR		0x001E3320
- #define E830_PRTMAC_CL01_QNT_THR_CL0_M		GENMASK(15, 0)
-+#define E830_PRTTSYN_TXTIME_H(_i)		(0x001E5800 + ((_i) * 32))
-+#define E830_PRTTSYN_TXTIME_L(_i)		(0x001E5000 + ((_i) * 32))
-+#define E830_GLPTM_ART_CTL			0x00088B50
-+#define E830_GLPTM_ART_CTL_ACTIVE_M		BIT(0)
-+#define E830_GLPTM_ART_TIME_H			0x00088B54
-+#define E830_GLPTM_ART_TIME_L			0x00088B58
-+#define E830_GLTSYN_PTMTIME_H(_i)		(0x00088B48 + ((_i) * 4))
-+#define E830_GLTSYN_PTMTIME_L(_i)		(0x00088B40 + ((_i) * 4))
-+#define E830_PFPTM_SEM				0x00088B00
-+#define E830_PFPTM_SEM_BUSY_M			BIT(0)
- #define VFINT_DYN_CTLN(_i)			(0x00003800 + ((_i) * 4))
- #define VFINT_DYN_CTLN_CLEARPBA_M		BIT(1)
- #define E830_MBX_PF_IN_FLIGHT_VF_MSGS_THRESH	0x00234000
-diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index fbb2aa8d3188..a3e92e89d0d1 100644
---- a/drivers/net/ethernet/intel/ice/ice_main.c
-+++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -5067,6 +5067,12 @@ static int ice_init(struct ice_pf *pf)
- 	if (err)
- 		return err;
- 
-+	if (pf->hw.mac_type == ICE_MAC_E830) {
-+		err = pci_enable_ptm(pf->pdev, NULL);
-+		if (err)
-+			dev_dbg(ice_pf_to_dev(pf), "PCIe PTM not supported by PCIe bus/controller\n");
-+	}
-+
- 	err = ice_alloc_vsis(pf);
- 	if (err)
- 		goto err_alloc_vsis;
-diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.c b/drivers/net/ethernet/intel/ice/ice_ptp.c
-index 764148928ce4..0bfef6babda9 100644
---- a/drivers/net/ethernet/intel/ice/ice_ptp.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ptp.c
-@@ -310,6 +310,15 @@ ice_ptp_read_src_clk_reg(struct ice_pf *pf, struct ptp_system_timestamp *sts)
- 	/* Read the system timestamp pre PHC read */
- 	ptp_read_system_prets(sts);
- 
-+	if (hw->mac_type == ICE_MAC_E830) {
-+		u64 clk_time = rd64(hw, E830_GLTSYN_TIME_L(tmr_idx));
-+
-+		/* Read the system timestamp post PHC read */
-+		ptp_read_system_postts(sts);
-+
-+		return clk_time;
-+	}
-+
- 	lo = rd32(hw, GLTSYN_TIME_L(tmr_idx));
- 
- 	/* Read the system timestamp post PHC read */
-@@ -1279,6 +1288,7 @@ ice_ptp_port_phy_stop(struct ice_ptp_port *ptp_port)
- 
- 	switch (hw->mac_type) {
- 	case ICE_MAC_E810:
-+	case ICE_MAC_E830:
- 		err = 0;
- 		break;
- 	case ICE_MAC_GENERIC:
-@@ -1325,6 +1335,7 @@ ice_ptp_port_phy_restart(struct ice_ptp_port *ptp_port)
- 
- 	switch (hw->mac_type) {
- 	case ICE_MAC_E810:
-+	case ICE_MAC_E830:
- 		err = 0;
- 		break;
- 	case ICE_MAC_GENERIC:
-@@ -1400,7 +1411,8 @@ void ice_ptp_link_change(struct ice_pf *pf, u8 port, bool linkup)
- 
- 	switch (hw->mac_type) {
- 	case ICE_MAC_E810:
--		/* Do not reconfigure E810 PHY */
-+	case ICE_MAC_E830:
-+		/* Do not reconfigure E810 or E830 PHY */
- 		return;
- 	case ICE_MAC_GENERIC:
- 	case ICE_MAC_GENERIC_3K_E825:
-@@ -1433,6 +1445,7 @@ static int ice_ptp_cfg_phy_interrupt(struct ice_pf *pf, bool ena, u32 threshold)
- 
- 	switch (hw->mac_type) {
- 	case ICE_MAC_E810:
-+	case ICE_MAC_E830:
- 		return 0;
- 	case ICE_MAC_GENERIC: {
- 		int quad;
-@@ -2181,6 +2194,21 @@ static const struct ice_crosststamp_cfg ice_crosststamp_cfg_e82x = {
- 	.dev_time_h[1] = GLTSYN_HHTIME_H(1),
- };
- 
-+#ifdef CONFIG_ICE_HWTS
-+static const struct ice_crosststamp_cfg ice_crosststamp_cfg_e830 = {
-+	.lock_reg = E830_PFPTM_SEM,
-+	.lock_busy = E830_PFPTM_SEM_BUSY_M,
-+	.ctl_reg = E830_GLPTM_ART_CTL,
-+	.ctl_active = E830_GLPTM_ART_CTL_ACTIVE_M,
-+	.art_time_l = E830_GLPTM_ART_TIME_L,
-+	.art_time_h = E830_GLPTM_ART_TIME_H,
-+	.dev_time_l[0] = E830_GLTSYN_PTMTIME_L(0),
-+	.dev_time_h[0] = E830_GLTSYN_PTMTIME_H(0),
-+	.dev_time_l[1] = E830_GLTSYN_PTMTIME_L(1),
-+	.dev_time_h[1] = E830_GLTSYN_PTMTIME_H(1),
-+};
-+
-+#endif /* CONFIG_ICE_HWTS */
- /**
-  * struct ice_crosststamp_ctx - Device cross timestamp context
-  * @snapshot: snapshot of system clocks for historic interpolation
-@@ -2302,6 +2330,11 @@ static int ice_ptp_getcrosststamp(struct ptp_clock_info *info,
- 	case ICE_MAC_GENERIC_3K_E825:
- 		ctx.cfg = &ice_crosststamp_cfg_e82x;
- 		break;
-+#ifdef CONFIG_ICE_HWTS
-+	case ICE_MAC_E830:
-+		ctx.cfg = &ice_crosststamp_cfg_e830;
-+		break;
-+#endif /* CONFIG_ICE_HWTS */
- 	default:
- 		return -EOPNOTSUPP;
- 	}
-@@ -2651,6 +2684,26 @@ static void ice_ptp_set_funcs_e810(struct ice_pf *pf)
- 	}
- }
- 
-+/**
-+ * ice_ptp_set_funcs_e830 - Set specialized functions for E830 support
-+ * @pf: Board private structure
-+ *
-+ * Assign functions to the PTP capabiltiies structure for E830 devices.
-+ * Functions which operate across all device families should be set directly
-+ * in ice_ptp_set_caps. Only add functions here which are distinct for E830
-+ * devices.
-+ */
-+static void ice_ptp_set_funcs_e830(struct ice_pf *pf)
-+{
-+#ifdef CONFIG_ICE_HWTS
-+	if (pcie_ptm_enabled(pf->pdev) && boot_cpu_has(X86_FEATURE_ART))
-+		pf->ptp.info.getcrosststamp = ice_ptp_getcrosststamp;
-+
-+#endif /* CONFIG_ICE_HWTS */
-+	/* Rest of the config is the same as base E810 */
-+	ice_ptp_set_funcs_e810(pf);
-+}
-+
- /**
-  * ice_ptp_set_caps - Set PTP capabilities
-  * @pf: Board private structure
-@@ -2677,6 +2730,9 @@ static void ice_ptp_set_caps(struct ice_pf *pf)
- 	case ICE_MAC_E810:
- 		ice_ptp_set_funcs_e810(pf);
- 		return;
-+	case ICE_MAC_E830:
-+		ice_ptp_set_funcs_e830(pf);
-+		return;
- 	case ICE_MAC_GENERIC:
- 	case ICE_MAC_GENERIC_3K_E825:
- 		ice_ptp_set_funcs_e82x(pf);
-@@ -2837,6 +2893,16 @@ irqreturn_t ice_ptp_ts_irq(struct ice_pf *pf)
- 
- 		set_bit(ICE_MISC_THREAD_TX_TSTAMP, pf->misc_thread);
- 		return IRQ_WAKE_THREAD;
-+	case ICE_MAC_E830:
-+		/* E830 can read timestamps in the top half using rd32() */
-+		if (ice_ptp_process_ts(pf) == ICE_TX_TSTAMP_WORK_PENDING) {
-+			/* Process outstanding Tx timestamps. If there
-+			 * is more work, re-arm the interrupt to trigger again.
-+			 */
-+			wr32(hw, PFINT_OICR, PFINT_OICR_TSYN_TX_M);
-+			ice_flush(hw);
-+		}
-+		return IRQ_HANDLED;
- 	default:
- 		return IRQ_HANDLED;
- 	}
-@@ -3221,6 +3287,7 @@ static int ice_ptp_init_port(struct ice_pf *pf, struct ice_ptp_port *ptp_port)
- 
- 	switch (hw->mac_type) {
- 	case ICE_MAC_E810:
-+	case ICE_MAC_E830:
- 	case ICE_MAC_GENERIC_3K_E825:
- 		return ice_ptp_init_tx(pf, &ptp_port->tx, ptp_port->port_num);
- 	case ICE_MAC_GENERIC:
-diff --git a/drivers/net/ethernet/intel/ice/ice_ptp_hw.c b/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
-index 65a66225797e..7789ffbf74d4 100644
---- a/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
-@@ -897,6 +897,17 @@ static void ice_ptp_exec_tmr_cmd(struct ice_hw *hw)
- 	ice_flush(hw);
- }
- 
-+/**
-+ * ice_ptp_cfg_sync_delay - Configure PHC to PHY synchronization delay
-+ * @hw: pointer to HW struct
-+ * @delay: delay between PHC and PHY SYNC command execution in nanoseconds
-+ */
-+static void ice_ptp_cfg_sync_delay(const struct ice_hw *hw, u32 delay)
-+{
-+	wr32(hw, GLTSYN_SYNC_DLAY, delay);
-+	ice_flush(hw);
-+}
-+
- /* 56G PHY device functions
-  *
-  * The following functions operate on devices with the ETH 56G PHY.
-@@ -5018,8 +5029,7 @@ static int ice_ptp_init_phc_e810(struct ice_hw *hw)
- 	u8 tmr_idx;
- 	int err;
- 
--	/* Ensure synchronization delay is zero */
--	wr32(hw, GLTSYN_SYNC_DLAY, 0);
-+	ice_ptp_cfg_sync_delay(hw, ICE_E810_E830_SYNC_DELAY);
- 
- 	tmr_idx = hw->func_caps.ts_func_info.tmr_index_owned;
- 	err = ice_write_phy_reg_e810(hw, ETH_GLTSYN_ENA(tmr_idx),
-@@ -5313,6 +5323,128 @@ static void ice_ptp_init_phy_e810(struct ice_ptp_hw *ptp)
- 	ptp->ports_per_phy = 4;
- }
- 
-+/* E830 functions
-+ *
-+ * The following functions operate on the E830 series devices.
-+ *
-+ */
-+
-+/**
-+ * ice_ptp_init_phc_e830 - Perform E830 specific PHC initialization
-+ * @hw: pointer to HW struct
-+ *
-+ * Perform E830-specific PTP hardware clock initialization steps.
-+ */
-+static void ice_ptp_init_phc_e830(const struct ice_hw *hw)
-+{
-+	ice_ptp_cfg_sync_delay(hw, ICE_E810_E830_SYNC_DELAY);
-+}
-+
-+/**
-+ * ice_ptp_write_direct_incval_e830 - Prep PHY port increment value change
-+ * @hw: pointer to HW struct
-+ * @incval: The new 40bit increment value to prepare
-+ *
-+ * Prepare the PHY port for a new increment value by programming the PHC
-+ * GLTSYN_INCVAL_L and GLTSYN_INCVAL_H registers. The actual change is
-+ * completed by FW automatically.
-+ */
-+static void ice_ptp_write_direct_incval_e830(const struct ice_hw *hw,
-+					     u64 incval)
-+{
-+	u8 tmr_idx = hw->func_caps.ts_func_info.tmr_index_owned;
-+
-+	wr32(hw, GLTSYN_INCVAL_L(tmr_idx), lower_32_bits(incval));
-+	wr32(hw, GLTSYN_INCVAL_H(tmr_idx), upper_32_bits(incval));
-+}
-+
-+/**
-+ * ice_ptp_write_direct_phc_time_e830 - Prepare PHY port with initial time
-+ * @hw: Board private structure
-+ * @time: Time to initialize the PHY port clock to
-+ *
-+ * Program the PHY port ETH_GLTSYN_SHTIME registers in preparation setting the
-+ * initial clock time. The time will not actually be programmed until the
-+ * driver issues an ICE_PTP_INIT_TIME command.
-+ *
-+ * The time value is the upper 32 bits of the PHY timer, usually in units of
-+ * nominal nanoseconds.
-+ */
-+static void ice_ptp_write_direct_phc_time_e830(const struct ice_hw *hw,
-+					       u64 time)
-+{
-+	u8 tmr_idx = hw->func_caps.ts_func_info.tmr_index_owned;
-+
-+	wr32(hw, GLTSYN_TIME_0(tmr_idx), 0);
-+	wr32(hw, GLTSYN_TIME_L(tmr_idx), lower_32_bits(time));
-+	wr32(hw, GLTSYN_TIME_H(tmr_idx), upper_32_bits(time));
-+}
-+
-+/**
-+ * ice_ptp_port_cmd_e830 - Prepare all external PHYs for a timer command
-+ * @hw: pointer to HW struct
-+ * @cmd: Command to be sent to the port
-+ *
-+ * Prepare the external PHYs connected to this device for a timer sync
-+ * command.
-+ *
-+ * Return: 0 on success, negative error code when PHY write failed
-+ */
-+static int ice_ptp_port_cmd_e830(struct ice_hw *hw, enum ice_ptp_tmr_cmd cmd)
-+{
-+	u32 val = ice_ptp_tmr_cmd_to_port_reg(hw, cmd);
-+
-+	return ice_write_phy_reg_e810(hw, E830_ETH_GLTSYN_CMD, val);
-+}
-+
-+/**
-+ * ice_read_phy_tstamp_e830 - Read a PHY timestamp out of the external PHY
-+ * @hw: pointer to the HW struct
-+ * @idx: the timestamp index to read
-+ * @tstamp: on return, the 40bit timestamp value
-+ *
-+ * Read a 40bit timestamp value out of the timestamp block of the external PHY
-+ * on the E830 device.
-+ */
-+static void ice_read_phy_tstamp_e830(const struct ice_hw *hw, u8 idx,
-+				     u64 *tstamp)
-+{
-+	u32 hi, lo;
-+
-+	hi = rd32(hw, E830_PRTTSYN_TXTIME_H(idx));
-+	lo = rd32(hw, E830_PRTTSYN_TXTIME_L(idx));
-+
-+	/* For E830 devices, the timestamp is reported with the lower 32 bits
-+	 * in the low register, and the upper 8 bits in the high register.
-+	 */
-+	*tstamp = FIELD_PREP(PHY_EXT_40B_HIGH_M, hi) |
-+		  FIELD_PREP(PHY_EXT_40B_LOW_M, lo);
-+}
-+
-+/**
-+ * ice_get_phy_tx_tstamp_ready_e830 - Read Tx memory status register
-+ * @hw: pointer to the HW struct
-+ * @port: the PHY port to read
-+ * @tstamp_ready: contents of the Tx memory status register
-+ */
-+static void ice_get_phy_tx_tstamp_ready_e830(const struct ice_hw *hw, u8 port,
-+					     u64 *tstamp_ready)
-+{
-+	*tstamp_ready = rd32(hw, E830_PRTMAC_TS_TX_MEM_VALID_H);
-+	*tstamp_ready <<= 32;
-+	*tstamp_ready |= rd32(hw, E830_PRTMAC_TS_TX_MEM_VALID_L);
-+}
-+
-+/**
-+ * ice_ptp_init_phy_e830 - initialize PHY parameters
-+ * @ptp: pointer to the PTP HW struct
-+ */
-+static void ice_ptp_init_phy_e830(struct ice_ptp_hw *ptp)
-+{
-+	ptp->num_lports = 8;
-+	ptp->ports_per_phy = 4;
-+}
-+
- /* Device agnostic functions
-  *
-  * The following functions implement shared behavior common to all devices,
-@@ -5383,6 +5515,9 @@ void ice_ptp_init_hw(struct ice_hw *hw)
- 	case ICE_MAC_E810:
- 		ice_ptp_init_phy_e810(ptp);
- 		break;
-+	case ICE_MAC_E830:
-+		ice_ptp_init_phy_e830(ptp);
-+		break;
- 	case ICE_MAC_GENERIC:
- 		ice_ptp_init_phy_e82x(ptp);
- 		break;
-@@ -5480,6 +5615,8 @@ static int ice_ptp_port_cmd(struct ice_hw *hw, enum ice_ptp_tmr_cmd cmd)
- 	switch (hw->mac_type) {
- 	case ICE_MAC_E810:
- 		return ice_ptp_port_cmd_e810(hw, cmd);
-+	case ICE_MAC_E830:
-+		return ice_ptp_port_cmd_e830(hw, cmd);
- 	default:
- 		break;
- 	}
-@@ -5550,6 +5687,12 @@ int ice_ptp_init_time(struct ice_hw *hw, u64 time)
- 	tmr_idx = hw->func_caps.ts_func_info.tmr_index_owned;
- 
- 	/* Source timers */
-+	/* For E830 we don't need to use shadow registers, its automatic */
-+	if (hw->mac_type == ICE_MAC_E830) {
-+		ice_ptp_write_direct_phc_time_e830(hw, time);
-+		return 0;
-+	}
-+
- 	wr32(hw, GLTSYN_SHTIME_L(tmr_idx), lower_32_bits(time));
- 	wr32(hw, GLTSYN_SHTIME_H(tmr_idx), upper_32_bits(time));
- 	wr32(hw, GLTSYN_SHTIME_0(tmr_idx), 0);
-@@ -5598,6 +5741,12 @@ int ice_ptp_write_incval(struct ice_hw *hw, u64 incval)
- 
- 	tmr_idx = hw->func_caps.ts_func_info.tmr_index_owned;
- 
-+	/* For E830 we don't need to use shadow registers, its automatic */
-+	if (hw->mac_type == ICE_MAC_E830) {
-+		ice_ptp_write_direct_incval_e830(hw, incval);
-+		return 0;
-+	}
-+
- 	/* Shadow Adjust */
- 	wr32(hw, GLTSYN_SHADJ_L(tmr_idx), lower_32_bits(incval));
- 	wr32(hw, GLTSYN_SHADJ_H(tmr_idx), upper_32_bits(incval));
-@@ -5707,6 +5856,9 @@ int ice_read_phy_tstamp(struct ice_hw *hw, u8 block, u8 idx, u64 *tstamp)
- 	switch (hw->mac_type) {
- 	case ICE_MAC_E810:
- 		return ice_read_phy_tstamp_e810(hw, block, idx, tstamp);
-+	case ICE_MAC_E830:
-+		ice_read_phy_tstamp_e830(hw, idx, tstamp);
-+		return 0;
- 	case ICE_MAC_GENERIC:
- 		return ice_read_phy_tstamp_e82x(hw, block, idx, tstamp);
- 	case ICE_MAC_GENERIC_3K_E825:
-@@ -5829,6 +5981,9 @@ int ice_ptp_init_phc(struct ice_hw *hw)
- 	switch (hw->mac_type) {
- 	case ICE_MAC_E810:
- 		return ice_ptp_init_phc_e810(hw);
-+	case ICE_MAC_E830:
-+		ice_ptp_init_phc_e830(hw);
-+		return 0;
- 	case ICE_MAC_GENERIC:
- 		return ice_ptp_init_phc_e82x(hw);
- 	case ICE_MAC_GENERIC_3K_E825:
-@@ -5855,13 +6010,15 @@ int ice_get_phy_tx_tstamp_ready(struct ice_hw *hw, u8 block, u64 *tstamp_ready)
- 	case ICE_MAC_E810:
- 		return ice_get_phy_tx_tstamp_ready_e810(hw, block,
- 							tstamp_ready);
-+	case ICE_MAC_E830:
-+		ice_get_phy_tx_tstamp_ready_e830(hw, block, tstamp_ready);
-+		return 0;
- 	case ICE_MAC_GENERIC:
- 		return ice_get_phy_tx_tstamp_ready_e82x(hw, block,
- 							tstamp_ready);
- 	case ICE_MAC_GENERIC_3K_E825:
- 		return ice_get_phy_tx_tstamp_ready_eth56g(hw, block,
- 							  tstamp_ready);
--		break;
- 	default:
- 		return -EOPNOTSUPP;
- 	}
-diff --git a/drivers/net/ethernet/intel/ice/ice_ptp_hw.h b/drivers/net/ethernet/intel/ice/ice_ptp_hw.h
-index 3968e064cc22..30ecd3268ac8 100644
---- a/drivers/net/ethernet/intel/ice/ice_ptp_hw.h
-+++ b/drivers/net/ethernet/intel/ice/ice_ptp_hw.h
-@@ -327,6 +327,7 @@ extern const struct ice_vernier_info_e82x e822_vernier[NUM_ICE_PTP_LNK_SPD];
- #define ICE_E810_PLL_FREQ		812500000
- #define ICE_PTP_NOMINAL_INCVAL_E810	0x13b13b13bULL
- #define ICE_E810_OUT_PROP_DELAY_NS	1
-+#define ICE_E810_E830_SYNC_DELAY	0
- #define ICE_E825C_OUT_PROP_DELAY_NS	11
- 
- /* Device agnostic functions */
-@@ -673,6 +674,12 @@ static inline bool ice_is_dual(struct ice_hw *hw)
- /* E810 timer command register */
- #define E810_ETH_GLTSYN_CMD		0x03000344
- 
-+/* E830 timer command register */
-+#define E830_ETH_GLTSYN_CMD		0x00088814
-+
-+/* E810 PHC time register */
-+#define E830_GLTSYN_TIME_L(_tmr_idx)	(0x0008A000 + 0x1000 * (_tmr_idx))
-+
- /* Source timer incval macros */
- #define INCVAL_HIGH_M			0xFF
- 
--- 
-2.46.0
-
+Thanks,
+Olek
