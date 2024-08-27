@@ -1,113 +1,92 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5DFAA95F8CD
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 26 Aug 2024 20:10:58 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id D60C495FF1C
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 27 Aug 2024 04:30:37 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id C13C040605;
-	Mon, 26 Aug 2024 18:10:50 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 2E25480E85;
+	Tue, 27 Aug 2024 02:30:36 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id rrf3OtsUUfmJ; Mon, 26 Aug 2024 18:10:50 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id i-IbRL3pVFbW; Tue, 27 Aug 2024 02:30:35 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 0218C40586
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 1463580E86
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1724695850;
-	bh=+2F7nz3UMUAFR15Vkm7j1Cul/J99ot3Q3o9XowrrRt8=;
-	h=Date:In-Reply-To:References:From:To:Subject:List-Id:
+	s=default; t=1724725835;
+	bh=bTzB6wcRmc1Vn9Bh6F58aJ+FMAKMHjA6UG6kHf2vF9Y=;
+	h=From:Date:References:In-Reply-To:To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=TNNprTvJJz488pPvhANaujFSRxIfoSEN+udKr1nY/Ycslyzsh6oS5DkXoM4C7vSiU
-	 EMM+/kwZh2RoKFn349rQGBxbxGgkYxC+btGn9+AATk6VbwjFbzfuD3UZNfLGR0pnoy
-	 WcWG+9x4cUip4FIvC6EiE4C6z6AZ1GOnOVZO+kdSQaBZF0Brgp0yItksWSs667WJRN
-	 F5HkJ1ldM2r6jRe4thFM7Pp378YcRFm/7Y3ScVtAxec15O8XVPSCKFb3atChUX6oNR
-	 q98ZbB+OJCXLP7eaXVju/bpTnO6SE77CsdbRgcQ05BNe24zBGETh12X8aLZ0UEU12V
-	 AYX0KBvdM8Vog==
+	b=DV+YPml9U3pBAevNKclOfZFOxwKcl8hlZNaYJjFIqxeQDzbDGKbZF8fpJu6px+ca2
+	 FDQAr/fvXT2Grmj5sFc4FZ/1DtZeCgACR593vG7llEqrXOK6Kgf7KIK5kzZdwPsI1C
+	 DCkZLTB64SSxp0GhGZd1ybjUutbj+jGGpZxq1Vj6Yh+JP9evqRlhFoXoSN/1QPLWr0
+	 KZ+V2GoATEtaVEQOq9M6LSXE5pqqhqc4z+wlODdBqh0ja3OwLdwjukmOn2CdS/2JjT
+	 kKB6BX8vZH/rLNZdGq3K0gjJ3eXjZg4jcFCLBPS4zpyUW3OAFk7/YM+pMmMQ9UD3F+
+	 3BfJJVhLI8b8w==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 0218C40586;
-	Mon, 26 Aug 2024 18:10:49 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 1463580E86;
+	Tue, 27 Aug 2024 02:30:35 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 828261BF2AB
- for <intel-wired-lan@lists.osuosl.org>; Mon, 26 Aug 2024 18:10:47 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id D10071BF2C6
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Aug 2024 02:30:33 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 6CEF640602
- for <intel-wired-lan@lists.osuosl.org>; Mon, 26 Aug 2024 18:10:47 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id BD13180E78
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Aug 2024 02:30:33 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id TqtkUExLePmZ for <intel-wired-lan@lists.osuosl.org>;
- Mon, 26 Aug 2024 18:10:46 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id eXMZcfcBqvU7 for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 27 Aug 2024 02:30:33 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2607:f8b0:4864:20::1149; helo=mail-yw1-x1149.google.com;
- envelope-from=3jcxmzgokdyai6jkfreoduckkcha.8kiejpah-sena9-h6jheopo.koqkoh.knc@flex--manojvishy.bounces.google.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 6921E405F2
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 6921E405F2
-Received: from mail-yw1-x1149.google.com (mail-yw1-x1149.google.com
- [IPv6:2607:f8b0:4864:20::1149])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 6921E405F2
- for <intel-wired-lan@lists.osuosl.org>; Mon, 26 Aug 2024 18:10:46 +0000 (UTC)
-Received: by mail-yw1-x1149.google.com with SMTP id
- 00721157ae682-6b46a237b48so97825947b3.1
- for <intel-wired-lan@lists.osuosl.org>; Mon, 26 Aug 2024 11:10:46 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1724695845; x=1725300645;
- h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
- :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=+2F7nz3UMUAFR15Vkm7j1Cul/J99ot3Q3o9XowrrRt8=;
- b=aPQ6hcalJpznwibt/W+m36ot2CNTjTmgdchwK6/ENVt+/MOINR4ZHyQ2oA99uYrV0S
- 98ymnwl6YtdRfCJPNWhziSz14EKgClQ5PBWsm49yLCAtY7Na+s9zEIW45u2bWA6/miVa
- OynY1QGzVhiJflhrUN9kcUK/DpWjeB+Xqm73IN4ek0z1scsMtxf9dAwwhT37iAgSakub
- OlioMBrBW+Z7D2JQXjqUYMKbGF0QZctWZARHf99lSk5Mc3nr5nSJq0IgEmQHPoT2A6yH
- HzGZpnI7QaBoaG4OOr3xFg33CWjQdQOFE3kXWP65xucq3KHRDKti5YlZCNvA4KSXtcZm
- R25A==
-X-Forwarded-Encrypted: i=1;
- AJvYcCX+dKn75HcteO/zKY/i68ZXQIgumQbPyqhuqP/QN2G/3i8VYu26TLTO9R67xgePN0m66sbkY/eDLwBjE8QG71k=@lists.osuosl.org
-X-Gm-Message-State: AOJu0YxICOUDPFRqxkNNaf3ixmH2/3kRrveJGgPeH+hfooiN67fGPnWM
- 5+NYbXETqSd8LDP/hPPC/I4rRTYYkjbjl7oFqSiN7SrGPCe471sv2I71GrPM98Dlxeq1wKuh6FU
- mYMkMrK5YfkFE9sFUxw==
-X-Google-Smtp-Source: AGHT+IH1ALkhd6H0T9zDYc5JDKk/4XNxqMfJlwCfIvNtsnq/kvN4ZDenJppUZ+Y9eW49jxiGQRirEW+rHE7gLg3t
-X-Received: from manojvishy.c.googlers.com
- ([fda3:e722:ac3:cc00:20:ed76:c0a8:413f])
- (user=manojvishy job=sendgmr) by 2002:a05:690c:6e09:b0:6b2:7ff8:ca3 with SMTP
- id 00721157ae682-6cfbaf3a1c9mr97067b3.4.1724695845308; Mon, 26 Aug 2024
- 11:10:45 -0700 (PDT)
-Date: Mon, 26 Aug 2024 18:10:32 +0000
-In-Reply-To: <20240826181032.3042222-1-manojvishy@google.com>
-Mime-Version: 1.0
-References: <20240826181032.3042222-1-manojvishy@google.com>
-X-Mailer: git-send-email 2.46.0.295.g3b9ea8a38a-goog
-Message-ID: <20240826181032.3042222-5-manojvishy@google.com>
-From: Manoj Vishwanathan <manojvishy@google.com>
-To: Tony Nguyen <anthony.l.nguyen@intel.com>, 
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- "David S. Miller" <davem@davemloft.net>, 
- Eric Dumazet <edumazet@google.com>, intel-wired-lan@lists.osuosl.org
-Content-Type: text/plain; charset="UTF-8"
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1724695845; x=1725300645; darn=lists.osuosl.org;
- h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
- :date:from:to:cc:subject:date:message-id:reply-to;
- bh=+2F7nz3UMUAFR15Vkm7j1Cul/J99ot3Q3o9XowrrRt8=;
- b=4MLlEOCkNmu3IHFWX7E48oHHiCW+dix3CpSNyXfjcttjojQSuXtNxPy6k/VL5+CR7e
- IhoETao7BynrMvl4A5+WcvcbY0HjwvufJ3/PLiZ2Nvmy4z7hb6exoX5yxS2xfUAh9xly
- 45CAS14JqD59/MZtg3yv2Z8Z1RfL75FhMnM4wIcDBxHc43K3H9SEu1M3qh9jTZgVedLG
- FsS5k/rJVV+5j+1SQX4N1z9+r0/VO3tHqCoIcSIH5owj+1ulxHxVBXYe63xcJdw3IEN4
- zy7erYJzYarGaC4f6rJvdWt1FUJxqvn2WJboUFu6EXCk1GI11aOdvMT1nLV3nor4o0/Z
- iR6Q==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=pass (p=reject dis=none)
- header.from=google.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ client-ip=2604:1380:45d1:ec00::3; helo=nyc.source.kernel.org;
+ envelope-from=patchwork-bot+netdevbpf@kernel.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org CA21680E75
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org CA21680E75
+Received: from nyc.source.kernel.org (nyc.source.kernel.org
+ [IPv6:2604:1380:45d1:ec00::3])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id CA21680E75
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Aug 2024 02:30:32 +0000 (UTC)
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by nyc.source.kernel.org (Postfix) with ESMTP id 64226A40A73;
+ Tue, 27 Aug 2024 02:30:24 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id EA728C8B7A4;
+ Tue, 27 Aug 2024 02:30:30 +0000 (UTC)
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+ by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id
+ 33E523806660; Tue, 27 Aug 2024 02:30:32 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <172472583073.186086.6173747037683312916.git-patchwork-notify@kernel.org>
+Date: Tue, 27 Aug 2024 02:30:30 +0000
+References: <20240822222513.255179-1-arkadiusz.kubalewski@intel.com>
+In-Reply-To: <20240822222513.255179-1-arkadiusz.kubalewski@intel.com>
+To: Kubalewski@aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org,
+ Arkadiusz <arkadiusz.kubalewski@intel.com>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=kernel.org; s=k20201202; t=1724725831;
+ bh=96aPBM1prgnl1Trwv1kDI7urETSSeh6JFCVzKGEBwOE=;
+ h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+ b=UID67CP7WsLrT3RsC/iK+4OOP992y+UqZ2MwdiSGm7zt9jaKcN/cy4qWxVGCwcdB0
+ 0nzrTyZL2kgZBt0lVURgJps+vzb4YGdpDdcYBNL9ClpPplKK2xJYSuTgy/pSiMIlwl
+ ZPLEndwMnzmrMJSBkalIkKAPECxF1FgerWTOp8ZlU3go3W/QgaH87N5S22U8st8SXo
+ u698FDFS/GvTzTKGvkilRj0wmnw682ujMP52OhBHZOs3srGxRBJYdq+6N0DonplqUi
+ rfnkPwae+4dm3ZqRUT+DTBOYeX/87zAGZ7CkFqEkwKin+39gJ1RGaL5sZVFnesaT5W
+ xd4+8BFiD/5hQ==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dmarc=pass (p=quarantine dis=none)
+ header.from=kernel.org
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=google.com header.i=@google.com header.a=rsa-sha256
- header.s=20230601 header.b=4MLlEOCk
-Subject: [Intel-wired-lan] [[PATCH v2 iwl-next] v2 4/4] idpf: add more info
- during virtchnl transaction time out
+ unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
+ header.s=k20201202 header.b=UID67CP7
+Subject: Re: [Intel-wired-lan] [PATCH net-next v3 0/2] Add Embedded SYNC
+ feature for a dpll's pin
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -120,52 +99,41 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, Manoj Vishwanathan <manojvishy@google.com>,
- linux-kernel@vger.kernel.org, google-lan-reviews@googlegroups.com
+Cc: jiri@resnulli.us, corbet@lwn.net, netdev@vger.kernel.org,
+ donald.hunter@gmail.com, linux-doc@vger.kernel.org,
+ linux-kernel@vger.kernel.org, przemyslaw.kitszel@intel.com,
+ edumazet@google.com, anthony.l.nguyen@intel.com, kuba@kernel.org,
+ vadim.fedorenko@linux.dev, pabeni@redhat.com, davem@davemloft.net,
+ intel-wired-lan@lists.osuosl.org
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Add more information related to the transaction like cookie, vc_op,
-salt when transaction times out and include similar information
-when transaction salt does not match.
+Hello:
 
-Info output for transaction timeout:
--------------------
-(op:5015 cookie:45fe vc_op:5015 salt:45 timeout:60000ms)
--------------------
+This series was applied to netdev/net-next.git (main)
+by Jakub Kicinski <kuba@kernel.org>:
 
-Signed-off-by: Manoj Vishwanathan <manojvishy@google.com>
----
- drivers/net/ethernet/intel/idpf/idpf_virtchnl.c | 9 +++++----
- 1 file changed, 5 insertions(+), 4 deletions(-)
+On Fri, 23 Aug 2024 00:25:11 +0200 you wrote:
+> Introduce and allow DPLL subsystem users to get/set capabilities of
+> Embedded SYNC on a dpll's pin.
+> 
+> Signed-off-by: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
+> 
+> Arkadiusz Kubalewski (2):
+>   dpll: add Embedded SYNC feature for a pin
+>   ice: add callbacks for Embedded SYNC enablement on dpll pins
+> 
+> [...]
 
-diff --git a/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c b/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c
-index 30eec674d594..d8294f31fdf9 100644
---- a/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c
-+++ b/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c
-@@ -517,8 +517,9 @@ static ssize_t idpf_vc_xn_exec(struct idpf_adapter *adapter,
- 		retval = -ENXIO;
- 		goto only_unlock;
- 	case IDPF_VC_XN_WAITING:
--		dev_notice_ratelimited(&adapter->pdev->dev, "Transaction timed-out (op %d, %dms)\n",
--				       params->vc_op, params->timeout_ms);
-+		dev_notice_ratelimited(&adapter->pdev->dev,
-+				"Transaction timed-out (op:%d cookie:%04x vc_op:%d salt:%02x timeout:%dms)\n",
-+				params->vc_op, cookie, xn->vc_op, xn->salt, params->timeout_ms);
- 		retval = -ETIME;
- 		break;
- 	case IDPF_VC_XN_COMPLETED_SUCCESS:
-@@ -615,8 +616,8 @@ idpf_vc_xn_forward_reply(struct idpf_adapter *adapter,
- 	idpf_vc_xn_lock(xn);
- 	salt = FIELD_GET(IDPF_VC_XN_SALT_M, msg_info);
- 	if (xn->salt != salt) {
--		dev_err_ratelimited(&adapter->pdev->dev, "Transaction salt does not match (%02x != %02x)\n",
--				    xn->salt, salt);
-+		dev_err_ratelimited(&adapter->pdev->dev, "Transaction salt does not match (exp:%d@%02x(%d) != got:%d@%02x)\n",
-+				xn->vc_op, xn->salt, xn->state, ctlq_msg->cookie.mbx.chnl_opcode, salt);
- 		idpf_vc_xn_unlock(xn);
- 		return -EINVAL;
- 	}
+Here is the summary with links:
+  - [net-next,v3,1/2] dpll: add Embedded SYNC feature for a pin
+    https://git.kernel.org/netdev/net-next/c/cda1fba15cb2
+  - [net-next,v3,2/2] ice: add callbacks for Embedded SYNC enablement on dpll pins
+    https://git.kernel.org/netdev/net-next/c/87abc5666ab7
+
+You are awesome, thank you!
 -- 
-2.46.0.295.g3b9ea8a38a-goog
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
 
