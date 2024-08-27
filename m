@@ -2,73 +2,73 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 475E6961982
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 27 Aug 2024 23:53:25 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 4DC7F96197A
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 27 Aug 2024 23:53:09 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 56A36406E0;
-	Tue, 27 Aug 2024 21:53:15 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 8AAF9406BB;
+	Tue, 27 Aug 2024 21:53:06 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Gz2Vj_KMARfL; Tue, 27 Aug 2024 21:53:14 +0000 (UTC)
+ id 0LdUkX6MU-Ul; Tue, 27 Aug 2024 21:53:05 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org EA47340697
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E737D4068D
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1724795594;
-	bh=0pFRsItO2bTveBfVrunmlU3Hp8Z0usjSLUArydwW+iw=;
+	s=default; t=1724795585;
+	bh=1MpDeeuUBdJ4MsblNsdjyZq/DF3qOhhM1NpXd1AgG4k=;
 	h=From:Date:References:In-Reply-To:To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=9Cj06SZzDXLmoHgQtttZ2JgBEethhyzOzHK1+JbsQcDQnGIqxozChuNmV6vDKxVTY
-	 SZmyAyyG8dP85t7lB6dF/w5r7+n2OWOS4sN2c4kfCZOijSPD5WDQRzaqu0dONznCTK
-	 5SvQAknBwgBxZphZOsrg6VELimUBKYf8DjR/L10dsbsn3m3o6OioQ62/GGjWTtvkAh
-	 BmHpLMt4i5UUSZ2JaIuITkK54xN6W38FNXE8t+g6qSIVzEMMq+5xMSUSZFhlqVIGIm
-	 n6ROXr8alGA0IHSoI1Ll78aQ9QcJ9SBywVxT0UI4/qELs6zrrlCi1Cu/6jZ3FTorOn
-	 NqWGD3tUaKTgg==
+	b=NYFlDdGOSL9ozMHBZFVSp9OhseeJKf+7qC4D14QzAE2rr4gMvWpkJ+bW0nB/iJhwz
+	 +D96HR0yQdVdiHHgYf8T17FLQNsF6Wu2ott42/hLZTzAKI0lwOxKD1L+GJuPxjCHxx
+	 MGmd5XeCKspCMlQNeqIlXxu1azRjZ7dxWS3AlRORA6SoeQWkC59BHb360yi4JAIZHV
+	 vXoXpNKQd0dpPgcr0mnuN1pTMYZmbPPfIpOs1H7D6ktqAa86S5ZS6yv5ujIUUzJXWG
+	 VE5dyp8IZ4MHf1TkNRCVncODc0LnBaW7loculFr0i4/AzC7Fawl/9oWzx/4n/5hWcB
+	 f1WEMzHuhdfqA==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id EA47340697;
-	Tue, 27 Aug 2024 21:53:13 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id E737D4068D;
+	Tue, 27 Aug 2024 21:53:04 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 473AE1BF27E
- for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Aug 2024 21:52:58 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id EF79740A7D
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id F2D8E1BF27E
  for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Aug 2024 21:52:53 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp1.osuosl.org (Postfix) with ESMTP id 382E68112B
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Aug 2024 21:52:51 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 5CDr9wOGk3fx for <intel-wired-lan@lists.osuosl.org>;
- Tue, 27 Aug 2024 21:52:51 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 1jh5nygQFa19 for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 27 Aug 2024 21:52:50 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.15;
  helo=mgamail.intel.com; envelope-from=jacob.e.keller@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org DBAB940A47
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org DBAB940A47
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 0CA048114E
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0CA048114E
 Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.15])
- by smtp2.osuosl.org (Postfix) with ESMTPS id DBAB940A47
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 0CA048114E
  for <intel-wired-lan@lists.osuosl.org>; Tue, 27 Aug 2024 21:52:50 +0000 (UTC)
-X-CSE-ConnectionGUID: XxHngH4jS9Szb1QgkyZAfg==
-X-CSE-MsgGUID: dE5IF7mcSYCqzo12XPYzRQ==
-X-IronPort-AV: E=McAfee;i="6700,10204,11177"; a="27068847"
-X-IronPort-AV: E=Sophos;i="6.10,181,1719903600"; d="scan'208";a="27068847"
+X-CSE-ConnectionGUID: BEPixrHKQdKWM0kAKoEyWA==
+X-CSE-MsgGUID: nZaOLloDRqWq4hYo6TixUQ==
+X-IronPort-AV: E=McAfee;i="6700,10204,11177"; a="27068822"
+X-IronPort-AV: E=Sophos;i="6.10,181,1719903600"; d="scan'208";a="27068822"
 Received: from fmviesa010.fm.intel.com ([10.60.135.150])
  by orvoesa107.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 27 Aug 2024 14:52:46 -0700
-X-CSE-ConnectionGUID: 2yJNwa3vQieW/ygeuTNM1A==
-X-CSE-MsgGUID: pmxr54EZQhaHNHYi/Km30A==
+ 27 Aug 2024 14:52:45 -0700
+X-CSE-ConnectionGUID: +4pWv+mSTaSoVcrHZiJz+Q==
+X-CSE-MsgGUID: XqjflUFhQPKlPgWnnOq3jg==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.10,181,1719903600"; d="scan'208";a="63189493"
+X-IronPort-AV: E=Sophos;i="6.10,181,1719903600"; d="scan'208";a="63189496"
 Received: from jekeller-desk.jf.intel.com ([10.166.241.20])
  by fmviesa010-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  27 Aug 2024 14:52:44 -0700
 From: Jacob Keller <jacob.e.keller@intel.com>
-Date: Tue, 27 Aug 2024 14:52:08 -0700
+Date: Tue, 27 Aug 2024 14:52:09 -0700
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20240827-e810-live-migration-jk-prep-ctx-functions-v1-5-0442e2e42d32@intel.com>
+Message-Id: <20240827-e810-live-migration-jk-prep-ctx-functions-v1-6-0442e2e42d32@intel.com>
 References: <20240827-e810-live-migration-jk-prep-ctx-functions-v1-0-0442e2e42d32@intel.com>
 In-Reply-To: <20240827-e810-live-migration-jk-prep-ctx-functions-v1-0-0442e2e42d32@intel.com>
 To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>, 
@@ -81,23 +81,22 @@ X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  t=1724795571; x=1756331571;
  h=from:date:subject:mime-version:content-transfer-encoding:
  message-id:references:in-reply-to:to:cc;
- bh=CSIC7wjXzvZOqpiIyQbbSlbLWWd9LJnyAAx1DY5uhm8=;
- b=Pcn/kChWkHRzB+tumyzeeedODhVYwvK5yEEJ+5FoMH3Sn9tCbU1MQS70
- WKem21P6G9c8jb9hZlFV6ObExzkO58BmX0SdwTfpN7gtM2RAeHJp88icE
- x5SFyndNQCr+d2iWV7hYNnE41CjP10hawgmKPs/WKXqDAkQSgLWA6C4h4
- ZdztbRql7N+JoImpjDTjSj3GZ9xqBBAIsWfpctOs5simogKoWCy0p8qIc
- ayS/zZVzbpY6oZHrAtJPecMcN6Juhp9F9vWrYX+ZVlV9V/R+SwQqTcsKf
- 8oPg/g6EuSAMvHxsP4rHDYH3VPFJpfOT8S40jjzWCOicoRpepnSROxsN0
- g==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ bh=77DNrZnhNI61R70Uim5rhtEqqMp2CaYBnFy65j9mg2E=;
+ b=j0kl4MwVw5biQnJwSxarPB3IPIr1qFAFf1m8jdlOVE8tbLZbJfHs5dNa
+ BT7JZkjfK352Jc11MJ8T/HSbVTvxFN5d7jBUKcuvbJ2QZ56QyNx8ffzOk
+ QssTrAAiXAlUnm11Q5LBjt9LKUjOyMz2jASVKSYk0Wnv3znitEVKCL+YD
+ UPQIT3MPMFFu8Uf3TuXio7YFNAgNfUBu61efnlYbYFPF2X+P+zhkq0CyO
+ ze7wJIPi/oCASlMrq1eFPOzIrYP06Gnbv7Hb11mTfnSPCDhoJ2w8w80Kn
+ OFFNfvEXGBQ5I4XvC6XVd/wxwqI0bKHruhROxrnMPZNjy6V/a4B9F3BgM
+ A==;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=Pcn/kChW
-Subject: [Intel-wired-lan] [PATCH iwl-next 05/13] lib: packing: duplicate
- pack() and unpack() implementations
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=j0kl4MwV
+Subject: [Intel-wired-lan] [PATCH iwl-next 06/13] lib: packing: add KUnit
+ tests adapted from selftests
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -114,375 +113,336 @@ Cc: Przemek Kitszel <przemyslaw.kitszel@intel.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Vladimir Oltean <vladimir.oltean@nxp.com>
+Add 24 simple KUnit tests for the lib/packing.c pack() and unpack() APIs.
 
-packing() is now used in some hot paths, and it would be good to get rid
-of some ifs and buts that depend on "op", to speed things up a little bit.
+The first 16 tests exercise all combinations of quirks with a simple magic
+number value on a 16-byte buffer. The remaining 8 tests cover
+non-multiple-of-4 buffer sizes.
 
-With the main implementations now taking size_t endbit, we no longer
-have to check for negative values. Update the local integer variables to
-also be size_t to match.
+These tests were originally written by Vladimir as simple selftest
+functions. I adapted them to KUnit, refactoring them into a table driven
+approach. This will aid in adding additional tests in the future.
 
+Co-developed-by: Vladimir Oltean <vladimir.oltean@nxp.com>
 Signed-off-by: Vladimir Oltean <vladimir.oltean@nxp.com>
 Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
 Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
 ---
- include/linux/packing.h |   4 +-
- lib/packing.c           | 243 ++++++++++++++++++++++++++++++------------------
- 2 files changed, 154 insertions(+), 93 deletions(-)
+ lib/packing_test.c | 256 +++++++++++++++++++++++++++++++++++++++++++++++++++++
+ MAINTAINERS        |   1 +
+ lib/Kconfig        |  12 +++
+ lib/Makefile       |   1 +
+ 4 files changed, 270 insertions(+)
 
-diff --git a/include/linux/packing.h b/include/linux/packing.h
-index ea25cb93cc70..5d36dcd06f60 100644
---- a/include/linux/packing.h
-+++ b/include/linux/packing.h
-@@ -20,8 +20,8 @@ enum packing_op {
- int packing(void *pbuf, u64 *uval, int startbit, int endbit, size_t pbuflen,
- 	    enum packing_op op, u8 quirks);
- 
--int pack(void *pbuf, const u64 *uval, size_t startbit, size_t endbit,
--	 size_t pbuflen, u8 quirks);
-+int pack(void *pbuf, u64 uval, size_t startbit, size_t endbit, size_t pbuflen,
-+	 u8 quirks);
- 
- int unpack(const void *pbuf, u64 *uval, size_t startbit, size_t endbit,
- 	   size_t pbuflen, u8 quirks);
-diff --git a/lib/packing.c b/lib/packing.c
-index 2922db8a528c..500184530d07 100644
---- a/lib/packing.c
-+++ b/lib/packing.c
-@@ -9,11 +9,11 @@
- #include <linux/types.h>
- #include <linux/bitrev.h>
- 
--static void adjust_for_msb_right_quirk(u64 *to_write, int *box_start_bit,
--				       int *box_end_bit, u8 *box_mask)
-+static void adjust_for_msb_right_quirk(u64 *to_write, size_t *box_start_bit,
-+				       size_t *box_end_bit, u8 *box_mask)
- {
--	int box_bit_width = *box_start_bit - *box_end_bit + 1;
--	int new_box_start_bit, new_box_end_bit;
-+	size_t box_bit_width = *box_start_bit - *box_end_bit + 1;
-+	size_t new_box_start_bit, new_box_end_bit;
- 
- 	*to_write >>= *box_end_bit;
- 	*to_write = bitrev8(*to_write) >> (8 - box_bit_width);
-@@ -48,7 +48,7 @@ static void adjust_for_msb_right_quirk(u64 *to_write, int *box_start_bit,
-  *
-  * Return: the physical offset into the buffer corresponding to the logical box.
-  */
--static int calculate_box_addr(int box, size_t len, u8 quirks)
-+static size_t calculate_box_addr(size_t box, size_t len, u8 quirks)
- {
- 	size_t offset_of_group, offset_in_group, this_group = box / 4;
- 	size_t group_size;
-@@ -69,13 +69,10 @@ static int calculate_box_addr(int box, size_t len, u8 quirks)
- }
- 
- /**
-- * packing - Convert numbers (currently u64) between a packed and an unpacked
-- *	     format. Unpacked means laid out in memory in the CPU's native
-- *	     understanding of integers, while packed means anything else that
-- *	     requires translation.
-+ * pack - Pack u64 number into bitfield of buffer.
-  *
-  * @pbuf: Pointer to a buffer holding the packed value.
-- * @uval: Pointer to an u64 holding the unpacked value.
-+ * @uval: CPU-readable unpacked value to pack.
-  * @startbit: The index (in logical notation, compensated for quirks) where
-  *	      the packed value starts within pbuf. Must be larger than, or
-  *	      equal to, endbit.
-@@ -83,58 +80,45 @@ static int calculate_box_addr(int box, size_t len, u8 quirks)
-  *	    the packed value ends within pbuf. Must be smaller than, or equal
-  *	    to, startbit.
-  * @pbuflen: The length in bytes of the packed buffer pointed to by @pbuf.
-- * @op: If PACK, then uval will be treated as const pointer and copied (packed)
-- *	into pbuf, between startbit and endbit.
-- *	If UNPACK, then pbuf will be treated as const pointer and the logical
-- *	value between startbit and endbit will be copied (unpacked) to uval.
-  * @quirks: A bit mask of QUIRK_LITTLE_ENDIAN, QUIRK_LSW32_IS_FIRST and
-  *	    QUIRK_MSB_ON_THE_RIGHT.
-  *
-- * Note: this is deprecated, prefer to use pack() or unpack() in new code.
-- *
-  * Return: 0 on success, EINVAL or ERANGE if called incorrectly. Assuming
-- *	   correct usage, return code may be discarded.
-- *	   If op is PACK, pbuf is modified.
-- *	   If op is UNPACK, uval is modified.
-+ *	   correct usage, return code may be discarded. The @pbuf memory will
-+ *	   be modified on success.
-  */
--int packing(void *pbuf, u64 *uval, int startbit, int endbit, size_t pbuflen,
--	    enum packing_op op, u8 quirks)
-+int pack(void *pbuf, u64 uval, size_t startbit, size_t endbit, size_t pbuflen,
-+	 u8 quirks)
- {
--	/* Number of bits for storing "uval"
--	 * also width of the field to access in the pbuf
--	 */
--	u64 value_width;
- 	/* Logical byte indices corresponding to the
- 	 * start and end of the field.
- 	 */
- 	int plogical_first_u8, plogical_last_u8, box;
-+	/* width of the field to access in the pbuf */
-+	u64 value_width;
- 
- 	/* startbit is expected to be larger than endbit, and both are
- 	 * expected to be within the logically addressable range of the buffer.
- 	 */
--	if (unlikely(startbit < endbit || startbit >= 8 * pbuflen || endbit < 0))
-+	if (unlikely(startbit < endbit || startbit >= 8 * pbuflen))
- 		/* Invalid function call */
- 		return -EINVAL;
- 
- 	value_width = startbit - endbit + 1;
--	if (value_width > 64)
-+	if (unlikely(value_width > 64))
- 		return -ERANGE;
- 
- 	/* Check if "uval" fits in "value_width" bits.
- 	 * If value_width is 64, the check will fail, but any
- 	 * 64-bit uval will surely fit.
- 	 */
--	if (op == PACK && value_width < 64 && (*uval >= (1ull << value_width)))
-+	if (unlikely(value_width < 64 && uval >= (1ull << value_width)))
- 		/* Cannot store "uval" inside "value_width" bits.
- 		 * Truncating "uval" is most certainly not desirable,
- 		 * so simply erroring out is appropriate.
- 		 */
- 		return -ERANGE;
- 
--	/* Initialize parameter */
--	if (op == UNPACK)
--		*uval = 0;
--
- 	/* Iterate through an idealistic view of the pbuf as an u64 with
- 	 * no quirks, u8 by u8 (aligned at u8 boundaries), from high to low
- 	 * logical bit significance. "box" denotes the current logical u8.
-@@ -144,11 +128,12 @@ int packing(void *pbuf, u64 *uval, int startbit, int endbit, size_t pbuflen,
- 
- 	for (box = plogical_first_u8; box >= plogical_last_u8; box--) {
- 		/* Bit indices into the currently accessed 8-bit box */
--		int box_start_bit, box_end_bit, box_addr;
-+		size_t box_start_bit, box_end_bit, box_addr;
- 		u8  box_mask;
- 		/* Corresponding bits from the unpacked u64 parameter */
--		int proj_start_bit, proj_end_bit;
-+		size_t proj_start_bit, proj_end_bit;
- 		u64 proj_mask;
-+		u64 pval;
- 
- 		/* This u8 may need to be accessed in its entirety
- 		 * (from bit 7 to bit 0), or not, depending on the
-@@ -182,66 +167,21 @@ int packing(void *pbuf, u64 *uval, int startbit, int endbit, size_t pbuflen,
- 		 */
- 		box_addr = calculate_box_addr(box, pbuflen, quirks);
- 
--		if (op == UNPACK) {
--			u64 pval;
-+		/* Write to pbuf, read from uval */
-+		pval = uval & proj_mask;
-+		pval >>= proj_end_bit;
-+		if (quirks & QUIRK_MSB_ON_THE_RIGHT)
-+			adjust_for_msb_right_quirk(&pval,
-+						   &box_start_bit,
-+						   &box_end_bit,
-+						   &box_mask);
- 
--			/* Read from pbuf, write to uval */
--			pval = ((u8 *)pbuf)[box_addr] & box_mask;
--			if (quirks & QUIRK_MSB_ON_THE_RIGHT)
--				adjust_for_msb_right_quirk(&pval,
--							   &box_start_bit,
--							   &box_end_bit,
--							   &box_mask);
--
--			pval >>= box_end_bit;
--			pval <<= proj_end_bit;
--			*uval &= ~proj_mask;
--			*uval |= pval;
--		} else {
--			u64 pval;
--
--			/* Write to pbuf, read from uval */
--			pval = (*uval) & proj_mask;
--			pval >>= proj_end_bit;
--			if (quirks & QUIRK_MSB_ON_THE_RIGHT)
--				adjust_for_msb_right_quirk(&pval,
--							   &box_start_bit,
--							   &box_end_bit,
--							   &box_mask);
--
--			pval <<= box_end_bit;
--			((u8 *)pbuf)[box_addr] &= ~box_mask;
--			((u8 *)pbuf)[box_addr] |= pval;
--		}
-+		pval <<= box_end_bit;
-+		((u8 *)pbuf)[box_addr] &= ~box_mask;
-+		((u8 *)pbuf)[box_addr] |= pval;
- 	}
- 	return 0;
- }
--EXPORT_SYMBOL(packing);
--
--/**
-- * pack - Pack u64 number into bitfield of buffer.
-- *
-- * @pbuf: Pointer to a buffer holding the packed value.
-- * @uval: Pointer to an u64 holding the unpacked value.
-- * @startbit: The index (in logical notation, compensated for quirks) where
-- *	      the packed value starts within pbuf. Must be larger than, or
-- *	      equal to, endbit.
-- * @endbit: The index (in logical notation, compensated for quirks) where
-- *	    the packed value ends within pbuf. Must be smaller than, or equal
-- *	    to, startbit.
-- * @pbuflen: The length in bytes of the packed buffer pointed to by @pbuf.
-- * @quirks: A bit mask of QUIRK_LITTLE_ENDIAN, QUIRK_LSW32_IS_FIRST and
-- *	    QUIRK_MSB_ON_THE_RIGHT.
-- *
-- * Return: 0 on success, EINVAL or ERANGE if called incorrectly. Assuming
-- *	   correct usage, return code may be discarded. The @pbuf memory will
-- *	   be modified on success.
-- */
--int pack(void *pbuf, const u64 *uval, size_t startbit, size_t endbit,
--	 size_t pbuflen, u8 quirks)
--{
--	return packing(pbuf, (u64 *)uval, startbit, endbit, pbuflen, PACK, quirks);
--}
- EXPORT_SYMBOL(pack);
- 
- /**
-@@ -266,8 +206,129 @@ EXPORT_SYMBOL(pack);
- int unpack(const void *pbuf, u64 *uval, size_t startbit, size_t endbit,
- 	   size_t pbuflen, u8 quirks)
- {
--	return packing((void *)pbuf, uval, startbit, endbit, pbuflen, UNPACK, quirks);
-+	/* Logical byte indices corresponding to the
-+	 * start and end of the field.
-+	 */
-+	int plogical_first_u8, plogical_last_u8, box;
-+	/* width of the field to access in the pbuf */
-+	u64 value_width;
-+
-+	/* startbit is expected to be larger than endbit, and both are
-+	 * expected to be within the logically addressable range of the buffer.
-+	 */
-+	if (unlikely(startbit < endbit || startbit >= 8 * pbuflen))
-+		/* Invalid function call */
-+		return -EINVAL;
-+
-+	value_width = startbit - endbit + 1;
-+	if (unlikely(value_width > 64))
-+		return -ERANGE;
-+
-+	/* Initialize parameter */
-+	*uval = 0;
-+
-+	/* Iterate through an idealistic view of the pbuf as an u64 with
-+	 * no quirks, u8 by u8 (aligned at u8 boundaries), from high to low
-+	 * logical bit significance. "box" denotes the current logical u8.
-+	 */
-+	plogical_first_u8 = startbit / 8;
-+	plogical_last_u8  = endbit / 8;
-+
-+	for (box = plogical_first_u8; box >= plogical_last_u8; box--) {
-+		/* Bit indices into the currently accessed 8-bit box */
-+		size_t box_start_bit, box_end_bit, box_addr;
-+		u8  box_mask;
-+		/* Corresponding bits from the unpacked u64 parameter */
-+		size_t proj_start_bit, proj_end_bit;
-+		u64 proj_mask;
-+		u64 pval;
-+
-+		/* This u8 may need to be accessed in its entirety
-+		 * (from bit 7 to bit 0), or not, depending on the
-+		 * input arguments startbit and endbit.
-+		 */
-+		if (box == plogical_first_u8)
-+			box_start_bit = startbit % 8;
-+		else
-+			box_start_bit = 7;
-+		if (box == plogical_last_u8)
-+			box_end_bit = endbit % 8;
-+		else
-+			box_end_bit = 0;
-+
-+		/* We have determined the box bit start and end.
-+		 * Now we calculate where this (masked) u8 box would fit
-+		 * in the unpacked (CPU-readable) u64 - the u8 box's
-+		 * projection onto the unpacked u64. Though the
-+		 * box is u8, the projection is u64 because it may fall
-+		 * anywhere within the unpacked u64.
-+		 */
-+		proj_start_bit = ((box * 8) + box_start_bit) - endbit;
-+		proj_end_bit   = ((box * 8) + box_end_bit) - endbit;
-+		proj_mask = GENMASK_ULL(proj_start_bit, proj_end_bit);
-+		box_mask  = GENMASK_ULL(box_start_bit, box_end_bit);
-+
-+		/* Determine the offset of the u8 box inside the pbuf,
-+		 * adjusted for quirks. The adjusted box_addr will be used for
-+		 * effective addressing inside the pbuf (so it's not
-+		 * logical any longer).
-+		 */
-+		box_addr = calculate_box_addr(box, pbuflen, quirks);
-+
-+		/* Read from pbuf, write to uval */
-+		pval = ((u8 *)pbuf)[box_addr] & box_mask;
-+		if (quirks & QUIRK_MSB_ON_THE_RIGHT)
-+			adjust_for_msb_right_quirk(&pval,
-+						   &box_start_bit,
-+						   &box_end_bit,
-+						   &box_mask);
-+
-+		pval >>= box_end_bit;
-+		pval <<= proj_end_bit;
-+		*uval &= ~proj_mask;
-+		*uval |= pval;
-+	}
-+	return 0;
- }
- EXPORT_SYMBOL(unpack);
- 
-+/**
-+ * packing - Convert numbers (currently u64) between a packed and an unpacked
-+ *	     format. Unpacked means laid out in memory in the CPU's native
-+ *	     understanding of integers, while packed means anything else that
-+ *	     requires translation.
-+ *
-+ * @pbuf: Pointer to a buffer holding the packed value.
-+ * @uval: Pointer to an u64 holding the unpacked value.
-+ * @startbit: The index (in logical notation, compensated for quirks) where
-+ *	      the packed value starts within pbuf. Must be larger than, or
-+ *	      equal to, endbit.
-+ * @endbit: The index (in logical notation, compensated for quirks) where
-+ *	    the packed value ends within pbuf. Must be smaller than, or equal
-+ *	    to, startbit.
-+ * @pbuflen: The length in bytes of the packed buffer pointed to by @pbuf.
-+ * @op: If PACK, then uval will be treated as const pointer and copied (packed)
-+ *	into pbuf, between startbit and endbit.
-+ *	If UNPACK, then pbuf will be treated as const pointer and the logical
-+ *	value between startbit and endbit will be copied (unpacked) to uval.
-+ * @quirks: A bit mask of QUIRK_LITTLE_ENDIAN, QUIRK_LSW32_IS_FIRST and
-+ *	    QUIRK_MSB_ON_THE_RIGHT.
-+ *
-+ * Note: this is deprecated, prefer to use pack() or unpack() in new code.
-+ *
-+ * Return: 0 on success, EINVAL or ERANGE if called incorrectly. Assuming
-+ *	   correct usage, return code may be discarded.
-+ *	   If op is PACK, pbuf is modified.
-+ *	   If op is UNPACK, uval is modified.
+diff --git a/lib/packing_test.c b/lib/packing_test.c
+new file mode 100644
+index 000000000000..52e039e2231b
+--- /dev/null
++++ b/lib/packing_test.c
+@@ -0,0 +1,256 @@
++// SPDX-License-Identifier: GPL-2.0
++/* Copyright (c) 2024, Vladimir Oltean <olteanv@gmail.com>
++ * Copyright (c) 2024, Intel Corporation.
 + */
-+int packing(void *pbuf, u64 *uval, int startbit, int endbit, size_t pbuflen,
-+	    enum packing_op op, u8 quirks)
++#include <kunit/test.h>
++#include <linux/packing.h>
++
++struct packing_test_case {
++	const char *desc;
++	const u8 *pbuf;
++	size_t pbuf_size;
++	u64 uval;
++	size_t start_bit;
++	size_t end_bit;
++	u8 quirks;
++};
++
++#define NO_QUIRKS	0
++
++/**
++ * PBUF - Initialize .pbuf and .pbuf_size
++ * @array: elements of constant physical buffer
++ *
++ * Initializes the .pbuf and .pbuf_size fields of a struct packing_test_case
++ * with a constant array of the specified elements.
++ */
++#define PBUF(array...)					\
++	.pbuf = (const u8[]){ array },			\
++	.pbuf_size = sizeof((const u8 []){ array })
++
++const struct packing_test_case cases[] = {
++	/* These tests pack and unpack a magic 64-bit value
++	 * (0xcafedeadbeefcafe) at a fixed logical offset (32) within an
++	 * otherwise zero array of 128 bits (16 bytes). They test all possible
++	 * bit layouts of the 128 bit buffer.
++	 */
++	{
++		.desc = "no quirks, 16 bytes",
++		PBUF(0x00, 0x00, 0x00, 0x00, 0xca, 0xfe, 0xde, 0xad,
++		     0xbe, 0xef, 0xca, 0xfe, 0x00, 0x00, 0x00, 0x00),
++		.uval = 0xcafedeadbeefcafe,
++		.start_bit = 95,
++		.end_bit = 32,
++		.quirks = NO_QUIRKS,
++	},
++	{
++		.desc = "lsw32 first, 16 bytes",
++		PBUF(0x00, 0x00, 0x00, 0x00, 0xbe, 0xef, 0xca, 0xfe,
++		     0xca, 0xfe, 0xde, 0xad, 0x00, 0x00, 0x00, 0x00),
++		.uval = 0xcafedeadbeefcafe,
++		.start_bit = 95,
++		.end_bit = 32,
++		.quirks = QUIRK_LSW32_IS_FIRST,
++	},
++	{
++		.desc = "little endian words, 16 bytes",
++		PBUF(0x00, 0x00, 0x00, 0x00, 0xad, 0xde, 0xfe, 0xca,
++		     0xfe, 0xca, 0xef, 0xbe, 0x00, 0x00, 0x00, 0x00),
++		.uval = 0xcafedeadbeefcafe,
++		.start_bit = 95,
++		.end_bit = 32,
++		.quirks = QUIRK_LITTLE_ENDIAN,
++	},
++	{
++		.desc = "lsw32 first + little endian words, 16 bytes",
++		PBUF(0x00, 0x00, 0x00, 0x00, 0xfe, 0xca, 0xef, 0xbe,
++		     0xad, 0xde, 0xfe, 0xca, 0x00, 0x00, 0x00, 0x00),
++		.uval = 0xcafedeadbeefcafe,
++		.start_bit = 95,
++		.end_bit = 32,
++		.quirks = QUIRK_LSW32_IS_FIRST | QUIRK_LITTLE_ENDIAN,
++	},
++	{
++		.desc = "msb right, 16 bytes",
++		PBUF(0x00, 0x00, 0x00, 0x00, 0x53, 0x7f, 0x7b, 0xb5,
++		     0x7d, 0xf7, 0x53, 0x7f, 0x00, 0x00, 0x00, 0x00),
++		.uval = 0xcafedeadbeefcafe,
++		.start_bit = 95,
++		.end_bit = 32,
++		.quirks = QUIRK_MSB_ON_THE_RIGHT,
++	},
++	{
++		.desc = "msb right + lsw32 first, 16 bytes",
++		PBUF(0x00, 0x00, 0x00, 0x00, 0x7d, 0xf7, 0x53, 0x7f,
++		     0x53, 0x7f, 0x7b, 0xb5, 0x00, 0x00, 0x00, 0x00),
++		.uval = 0xcafedeadbeefcafe,
++		.start_bit = 95,
++		.end_bit = 32,
++		.quirks = QUIRK_MSB_ON_THE_RIGHT | QUIRK_LSW32_IS_FIRST,
++	},
++	{
++		.desc = "msb right + little endian words, 16 bytes",
++		PBUF(0x00, 0x00, 0x00, 0x00, 0xb5, 0x7b, 0x7f, 0x53,
++		     0x7f, 0x53, 0xf7, 0x7d, 0x00, 0x00, 0x00, 0x00),
++		.uval = 0xcafedeadbeefcafe,
++		.start_bit = 95,
++		.end_bit = 32,
++		.quirks = QUIRK_MSB_ON_THE_RIGHT | QUIRK_LITTLE_ENDIAN,
++	},
++	{
++		.desc = "msb right + lsw32 first + little endian words, 16 bytes",
++		PBUF(0x00, 0x00, 0x00, 0x00, 0x7f, 0x53, 0xf7, 0x7d,
++		     0xb5, 0x7b, 0x7f, 0x53, 0x00, 0x00, 0x00, 0x00),
++		.uval = 0xcafedeadbeefcafe,
++		.start_bit = 95,
++		.end_bit = 32,
++		.quirks = QUIRK_MSB_ON_THE_RIGHT | QUIRK_LSW32_IS_FIRST | QUIRK_LITTLE_ENDIAN,
++	},
++	/* These tests pack and unpack a magic 64-bit value
++	 * (0xcafedeadbeefcafe) at a fixed logical offset (32) within an
++	 * otherwise zero array of varying size from 18 bytes to 24 bytes.
++	 */
++	{
++		.desc = "no quirks, 18 bytes",
++		PBUF(0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xca, 0xfe,
++		     0xde, 0xad, 0xbe, 0xef, 0xca, 0xfe, 0x00, 0x00,
++		     0x00, 0x00),
++		.uval = 0xcafedeadbeefcafe,
++		.start_bit = 95,
++		.end_bit = 32,
++		.quirks = NO_QUIRKS,
++	},
++	{
++		.desc = "no quirks, 19 bytes",
++		PBUF(0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xca,
++		     0xfe, 0xde, 0xad, 0xbe, 0xef, 0xca, 0xfe, 0x00,
++		     0x00, 0x00, 0x00),
++		.uval = 0xcafedeadbeefcafe,
++		.start_bit = 95,
++		.end_bit = 32,
++		.quirks = NO_QUIRKS,
++	},
++	{
++		.desc = "no quirks, 20 bytes",
++		PBUF(0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
++		     0xca, 0xfe, 0xde, 0xad, 0xbe, 0xef, 0xca, 0xfe,
++		     0x00, 0x00, 0x00, 0x00),
++		.uval = 0xcafedeadbeefcafe,
++		.start_bit = 95,
++		.end_bit = 32,
++		.quirks = NO_QUIRKS,
++	},
++	{
++		.desc = "no quirks, 22 bytes",
++		PBUF(0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
++		     0x00, 0x00, 0xca, 0xfe, 0xde, 0xad, 0xbe, 0xef,
++		     0xca, 0xfe, 0x00, 0x00, 0x00, 0x00),
++		.uval = 0xcafedeadbeefcafe,
++		.start_bit = 95,
++		.end_bit = 32,
++		.quirks = NO_QUIRKS,
++	},
++	{
++		.desc = "no quirks, 24 bytes",
++		PBUF(0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
++		     0x00, 0x00, 0x00, 0x00, 0xca, 0xfe, 0xde, 0xad,
++		     0xbe, 0xef, 0xca, 0xfe, 0x00, 0x00, 0x00, 0x00),
++		.uval = 0xcafedeadbeefcafe,
++		.start_bit = 95,
++		.end_bit = 32,
++		.quirks = NO_QUIRKS,
++	},
++	{
++		.desc = "lsw32 first + little endian words, 18 bytes",
++		PBUF(0x00, 0x00, 0x00, 0x00, 0xfe, 0xca, 0xef, 0xbe,
++		     0xad, 0xde, 0xfe, 0xca, 0x00, 0x00, 0x00, 0x00,
++		     0x00, 0x00),
++		.uval = 0xcafedeadbeefcafe,
++		.start_bit = 95,
++		.end_bit = 32,
++		.quirks = QUIRK_LSW32_IS_FIRST | QUIRK_LITTLE_ENDIAN,
++	},
++	{
++		.desc = "lsw32 first + little endian words, 19 bytes",
++		PBUF(0x00, 0x00, 0x00, 0x00, 0xfe, 0xca, 0xef, 0xbe,
++		     0xad, 0xde, 0xfe, 0xca, 0x00, 0x00, 0x00, 0x00,
++		     0x00, 0x00, 0x00),
++		.uval = 0xcafedeadbeefcafe,
++		.start_bit = 95,
++		.end_bit = 32,
++		.quirks = QUIRK_LSW32_IS_FIRST | QUIRK_LITTLE_ENDIAN,
++	},
++	{
++		.desc = "lsw32 first + little endian words, 20 bytes",
++		PBUF(0x00, 0x00, 0x00, 0x00, 0xfe, 0xca, 0xef, 0xbe,
++		     0xad, 0xde, 0xfe, 0xca, 0x00, 0x00, 0x00, 0x00,
++		     0x00, 0x00, 0x00, 0x00),
++		.uval = 0xcafedeadbeefcafe,
++		.start_bit = 95,
++		.end_bit = 32,
++		.quirks = QUIRK_LSW32_IS_FIRST | QUIRK_LITTLE_ENDIAN,
++	},
++	{
++		.desc = "lsw32 first + little endian words, 22 bytes",
++		PBUF(0x00, 0x00, 0x00, 0x00, 0xfe, 0xca, 0xef, 0xbe,
++		     0xad, 0xde, 0xfe, 0xca, 0x00, 0x00, 0x00, 0x00,
++		     0x00, 0x00, 0x00, 0x00, 0x00, 0x00),
++		.uval = 0xcafedeadbeefcafe,
++		.start_bit = 95,
++		.end_bit = 32,
++		.quirks = QUIRK_LSW32_IS_FIRST | QUIRK_LITTLE_ENDIAN,
++	},
++	{
++		.desc = "lsw32 first + little endian words, 24 bytes",
++		PBUF(0x00, 0x00, 0x00, 0x00, 0xfe, 0xca, 0xef, 0xbe,
++		     0xad, 0xde, 0xfe, 0xca, 0x00, 0x00, 0x00, 0x00,
++		     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00),
++		.uval = 0xcafedeadbeefcafe,
++		.start_bit = 95,
++		.end_bit = 32,
++		.quirks = QUIRK_LSW32_IS_FIRST | QUIRK_LITTLE_ENDIAN,
++	},
++};
++
++KUNIT_ARRAY_PARAM_DESC(packing, cases, desc);
++
++static void packing_test_pack(struct kunit *test)
 +{
-+	if (op == PACK)
-+		return pack(pbuf, *uval, startbit, endbit, pbuflen, quirks);
++	const struct packing_test_case *params = test->param_value;
++	u8 *pbuf;
++	int err;
 +
-+	return unpack(pbuf, uval, startbit, endbit, pbuflen, quirks);
++	pbuf = kunit_kzalloc(test, params->pbuf_size, GFP_KERNEL);
++
++	err = pack(pbuf, params->uval, params->start_bit, params->end_bit,
++		  params->pbuf_size, params->quirks);
++
++	KUNIT_EXPECT_EQ_MSG(test, err, 0, "pack() returned %pe\n", ERR_PTR(err));
++	KUNIT_EXPECT_MEMEQ(test, pbuf, params->pbuf, params->pbuf_size);
 +}
-+EXPORT_SYMBOL(packing);
 +
- MODULE_DESCRIPTION("Generic bitfield packing and unpacking");
++static void packing_test_unpack(struct kunit *test)
++{
++	const struct packing_test_case *params = test->param_value;
++	u64 uval;
++	int err;
++
++	err = unpack(params->pbuf, &uval, params->start_bit, params->end_bit,
++		     params->pbuf_size, params->quirks);
++	KUNIT_EXPECT_EQ_MSG(test, err, 0, "unpack() returned %pe\n", ERR_PTR(err));
++	KUNIT_EXPECT_EQ(test, uval, params->uval);
++}
++
++static struct kunit_case packing_test_cases[] = {
++	KUNIT_CASE_PARAM(packing_test_pack, packing_gen_params),
++	KUNIT_CASE_PARAM(packing_test_unpack, packing_gen_params),
++	{},
++};
++
++static struct kunit_suite packing_test_suite = {
++	.name = "packing",
++	.test_cases = packing_test_cases,
++};
++kunit_test_suite(packing_test_suite);
++
++MODULE_LICENSE("GPL");
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 30a9b9450e11..8daa3b7d307a 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -17235,6 +17235,7 @@ S:	Supported
+ F:	Documentation/core-api/packing.rst
+ F:	include/linux/packing.h
+ F:	lib/packing.c
++F:	lib/packing_test.c
+ 
+ PADATA PARALLEL EXECUTION MECHANISM
+ M:	Steffen Klassert <steffen.klassert@secunet.com>
+diff --git a/lib/Kconfig b/lib/Kconfig
+index b38849af6f13..50d85f38b569 100644
+--- a/lib/Kconfig
++++ b/lib/Kconfig
+@@ -40,6 +40,18 @@ config PACKING
+ 
+ 	  When in doubt, say N.
+ 
++config PACKING_KUNIT_TEST
++	tristate "KUnit tests for packing library" if !KUNIT_ALL_TESTS
++	depends on PACKING && KUNIT
++	default KUNIT_ALL_TESTS
++	help
++	  This builds KUnit tests for the packing library.
++
++	  For more information on KUnit and unit tests in general,
++	  please refer to the KUnit documentation in Documentation/dev-tools/kunit/.
++
++	  When in doubt, say N.
++
+ config BITREVERSE
+ 	tristate
+ 
+diff --git a/lib/Makefile b/lib/Makefile
+index 322bb127b4dc..69db48a89cf5 100644
+--- a/lib/Makefile
++++ b/lib/Makefile
+@@ -153,6 +153,7 @@ obj-$(CONFIG_DEBUG_OBJECTS) += debugobjects.o
+ obj-$(CONFIG_BITREVERSE) += bitrev.o
+ obj-$(CONFIG_LINEAR_RANGES) += linear_ranges.o
+ obj-$(CONFIG_PACKING)	+= packing.o
++obj-$(CONFIG_PACKING_KUNIT_TEST) += packing_test.o
+ obj-$(CONFIG_CRC_CCITT)	+= crc-ccitt.o
+ obj-$(CONFIG_CRC16)	+= crc16.o
+ obj-$(CONFIG_CRC_T10DIF)+= crc-t10dif.o
 
 -- 
 2.46.0.124.g2dc1a81c8933
