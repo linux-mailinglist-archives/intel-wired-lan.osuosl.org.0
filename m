@@ -2,97 +2,93 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5A39F964323
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 29 Aug 2024 13:33:30 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id E5BBC96434B
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 29 Aug 2024 13:42:16 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 12CA86111D;
-	Thu, 29 Aug 2024 11:33:25 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 73D8761160;
+	Thu, 29 Aug 2024 11:42:15 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id VKaq6s3cf3wq; Thu, 29 Aug 2024 11:33:24 +0000 (UTC)
+ id oxSq7zNIvXZ2; Thu, 29 Aug 2024 11:42:11 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 529B361161
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3F08161147
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1724931204;
-	bh=NmFqb9rX55S2QQ0P8awEa3jzzysmqEVBQWGY/dj7+Ck=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=cZAzDqw2U0CYwo21pgGfCMit0fcFuYtqUmF02kAGNfQtY5hQL07CrMRs2eLUDG5h/
-	 w3/ZZG2RjLkFISuf1nNjwyJ+AIfNGBw3oQpv8ynXrvDoqZTf/B18o1Y8TyyK82Kjta
-	 Sb+rzxw0ecwfG4LVOaBUjXx0dwfK69zB26v5DWsgqxl+KxSmGyfgEwnrFrsSRK1uNL
-	 SOuzY0rFrVZym9R/wqqlDBecIMLM+pp0th1cIpsNmCMes/C7hrqHlIDkReUrLtRc6u
-	 dT1lUQXkSV3he9ba+YExwNCy4ht7Xw1WkziX5u2DLmJGFgxi/vlwG11GZ2zW+dN34z
-	 E6O6C3hOsdgtw==
+	s=default; t=1724931731;
+	bh=BD/l0R2jpiHz0BmvMpaXP2yztNH6QAXaLWhqTLtK3CQ=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=X91Fu6CUN89kxo5SkhIPo/5/AwjAL5gTJ2XCTVqF95WlO5YeL9laIpHEgF12qiEnk
+	 2txqNZzyrmhguBUldqcczDIkeLMM0VOoR9Ea96D8Dbg/E1kZAwBA/ieOlTDoKof7Su
+	 984iovpMulx9OPysVaj2jVvG5jBYgifF8LZcWtVykeKSZJiPEvWN4dGjSB7qGrYsjS
+	 BKj5gfyyBCzvpUNAAyduZO7ExARjLQrrJ7mpV23gukFDvuP1eNmcqYBkU2pmLn44hO
+	 1PB4F1WT3kF4YUkVMqYqabpdhv0qHDdH6QKiuvtsli3PfloLFCzHoyEdk3NxQ8NGPb
+	 IbUw9/Zq2ILnA==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 529B361161;
-	Thu, 29 Aug 2024 11:33:24 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 3F08161147;
+	Thu, 29 Aug 2024 11:42:11 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 1BCB21BF2B5
- for <intel-wired-lan@lists.osuosl.org>; Thu, 29 Aug 2024 11:33:20 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id CA4FD1BF2B5
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 29 Aug 2024 11:42:08 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 156324022B
- for <intel-wired-lan@lists.osuosl.org>; Thu, 29 Aug 2024 11:33:20 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 329A281BFA
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 29 Aug 2024 11:42:07 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 4z78rEesAKq5 for <intel-wired-lan@lists.osuosl.org>;
- Thu, 29 Aug 2024 11:33:19 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.17;
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id aN5pqXy92tcI for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 29 Aug 2024 11:42:06 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.19;
  helo=mgamail.intel.com; envelope-from=karol.kolacinski@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org E78F5401F6
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org E78F5401F6
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.17])
- by smtp2.osuosl.org (Postfix) with ESMTPS id E78F5401F6
- for <intel-wired-lan@lists.osuosl.org>; Thu, 29 Aug 2024 11:33:18 +0000 (UTC)
-X-CSE-ConnectionGUID: ubPL6HYSQp6ShCLAdrM0yw==
-X-CSE-MsgGUID: hLU/+YzISOeekOHBnTmLmQ==
-X-IronPort-AV: E=McAfee;i="6700,10204,11178"; a="23677895"
-X-IronPort-AV: E=Sophos;i="6.10,185,1719903600"; d="scan'208";a="23677895"
-Received: from fmviesa007.fm.intel.com ([10.60.135.147])
- by orvoesa109.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 29 Aug 2024 04:33:18 -0700
-X-CSE-ConnectionGUID: SBja+CndSGic8cOqGCQg6g==
-X-CSE-MsgGUID: F1uRUSsoSVum0eHkBXrF6g==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 76F12813D0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 76F12813D0
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.19])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 76F12813D0
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 29 Aug 2024 11:42:06 +0000 (UTC)
+X-CSE-ConnectionGUID: Rp2plepJRtWkt2Q7eHDd7g==
+X-CSE-MsgGUID: zr7/Eq4WRhm/oW1zqEAyLA==
+X-IronPort-AV: E=McAfee;i="6700,10204,11178"; a="23092319"
+X-IronPort-AV: E=Sophos;i="6.10,185,1719903600"; d="scan'208";a="23092319"
+Received: from orviesa007.jf.intel.com ([10.64.159.147])
+ by fmvoesa113.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 29 Aug 2024 04:42:06 -0700
+X-CSE-ConnectionGUID: VSML9KV2RCupfvLPArDvdw==
+X-CSE-MsgGUID: zlbv79xJS2OopENsxNESPQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.10,185,1719903600"; d="scan'208";a="63230630"
+X-IronPort-AV: E=Sophos;i="6.10,185,1719903600"; d="scan'208";a="64045375"
 Received: from kkolacin-desk1.igk.intel.com ([10.217.160.108])
- by fmviesa007.fm.intel.com with ESMTP; 29 Aug 2024 04:33:17 -0700
+ by orviesa007.jf.intel.com with ESMTP; 29 Aug 2024 04:42:04 -0700
 From: Karol Kolacinski <karol.kolacinski@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Thu, 29 Aug 2024 13:28:14 +0200
-Message-ID: <20240829113257.1023835-16-karol.kolacinski@intel.com>
+Date: Thu, 29 Aug 2024 13:37:36 +0200
+Message-ID: <20240829114201.1030938-9-karol.kolacinski@intel.com>
 X-Mailer: git-send-email 2.46.0
-In-Reply-To: <20240829113257.1023835-9-karol.kolacinski@intel.com>
-References: <20240829113257.1023835-9-karol.kolacinski@intel.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1724931199; x=1756467199;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=p7xgIQH0bb8bKwQrlGLYcFI7oXY+3QHoY5PQPeXaia8=;
- b=NcMkngPczHC65xN+qRcsQq21tVjKX0j/lGNpT2LmF7PfKlYax8oamkxo
- CSy4qP9gpmxVjkfq4GYYFR27A654tNX+2IFA5rH2zRLWSTQ3tYMxo6XSP
- xv/9wDkIL1eyn9bhPMPDWvJlH9uPRuM4u9NclcwJDj4Nz/X1iB/YV5SB/
- lPqFn06d9PtANWO2uqTL6epjt+HORQbVMBJVSB2kSUE6ep/GlP/LZavL8
- xp3kwv3ptSd7h181gdf49VB0QfrpJrtMYlL8zoP3VDTWjRmNaQ6qu1g7I
- AEq4Yp0Mm6AIqZfgHjub0IYCLJVVSOEme81bmDnQTOZ4YprD4lv4AKE6Q
+ t=1724931726; x=1756467726;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=xPaxi/7gwUkkALGMYm83jqvODfD2o15/EeyIv9h1ans=;
+ b=hx859UsZhHF4oNuWCwCGOAFYJUgORQoWvcyQilfVj0KcX3h0lGc8hkcI
+ e52QruMsttAsN5GzanvNi4reZKB9aKYafsC0cZxtBMsYkDWKNrMr6Rsbs
+ ycciOfRkIjNMX6L7GUH4Nez5KnEJJ8xOoIoYzxNJd+6HpiWgF3RNwEs7W
+ 3LLkMCDIkuqKP172hXhVFcNU0QAZp4eKVEjcaecjtHIpQVkGiPfRjRdGe
+ wuu2D88qThLzqHyotuHijqPEmzHcRLI5AEKxN+kNCq+iCO9lxPVKBSsjL
+ GHBPjrV7UDnf/PJMKG+jPLY7WjAGzz8bJ1ClMEPD5WQgLyfeobZ3tn0sW
  A==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=NcMkngPc
-Subject: [Intel-wired-lan] [PATCH v3 iwl-next 7/7] ice: Enable 1PPS out from
- CGU for E825C products
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
+ header.a=rsa-sha256 header.s=Intel header.b=hx859UsZ
+Subject: [Intel-wired-lan] [PATCH v9 iwl-next 0/7] ice: Implement PTP
+ support for E830 devices
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -105,109 +101,74 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Sergey Temerkhanov <sergey.temerkhanov@intel.com>, netdev@vger.kernel.org,
- Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>,
- Karol Kolacinski <karol.kolacinski@intel.com>, anthony.l.nguyen@intel.com,
- przemyslaw.kitszel@intel.com
+Cc: netdev@vger.kernel.org, Karol Kolacinski <karol.kolacinski@intel.com>,
+ anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Sergey Temerkhanov <sergey.temerkhanov@intel.com>
+Add specific functions and definitions for E830 devices to enable
+PTP support.
 
-Implement configuring 1PPS signal output from CGU. Use maximal amplitude
-because Linux PTP pin API does not have any way for user to set signal
-level.
+Refactor processing of timestamping interrupt, cross timestamping, and
+remove usage of ice_is_e8xx() functions to avoid code redundancy.
 
-This change is necessary for E825C products to properly output any
-signal from 1PPS pin.
+Refactor GNSS presence check to be able to remove ice_is_e8xx()
+functions.
 
-Reviewed-by: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
-Signed-off-by: Sergey Temerkhanov <sergey.temerkhanov@intel.com>
-Co-developed-by: Karol Kolacinski <karol.kolacinski@intel.com>
-Signed-off-by: Karol Kolacinski <karol.kolacinski@intel.com>
----
-V1 -> V2: Added return value description, renamed the function and
-          enable parameter. Reworded commit message.
+Jacob Keller (1):
+  ice: Add unified ice_capture_crosststamp
 
- drivers/net/ethernet/intel/ice/ice_ptp.c    | 10 +++++++++
- drivers/net/ethernet/intel/ice/ice_ptp_hw.c | 23 +++++++++++++++++++++
- drivers/net/ethernet/intel/ice/ice_ptp_hw.h |  1 +
- 3 files changed, 34 insertions(+)
+Karol Kolacinski (5):
+  ice: Don't check device type when checking GNSS presence
+  ice: Remove unncecessary ice_is_e8xx() functions
+  ice: Use FIELD_PREP for timestamp values
+  ice: Process TSYN IRQ in a separate function
+  ice: Refactor ice_ptp_init_tx_*
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.c b/drivers/net/ethernet/intel/ice/ice_ptp.c
-index a35ffc31f316..e275201dff36 100644
---- a/drivers/net/ethernet/intel/ice/ice_ptp.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ptp.c
-@@ -4,6 +4,7 @@
- #include "ice.h"
- #include "ice_lib.h"
- #include "ice_trace.h"
-+#include "ice_cgu_regs.h"
- 
- static const char ice_pin_names[][64] = {
- 	"SDP0",
-@@ -1709,6 +1710,15 @@ static int ice_ptp_write_perout(struct ice_hw *hw, unsigned int chan,
- 	/* 0. Reset mode & out_en in AUX_OUT */
- 	wr32(hw, GLTSYN_AUX_OUT(chan, tmr_idx), 0);
- 
-+	if (ice_is_e825c(hw)) {
-+		int err;
-+
-+		/* Enable/disable CGU 1PPS output for E825C */
-+		err = ice_cgu_cfg_pps_out(hw, !!period);
-+		if (err)
-+			return err;
-+	}
-+
- 	/* 1. Write perout with half of required period value.
- 	 * HW toggles output when source clock hits the TGT and then adds
- 	 * GLTSYN_CLKO value to the target, so it ends up with 50% duty cycle.
-diff --git a/drivers/net/ethernet/intel/ice/ice_ptp_hw.c b/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
-index 07ecf2a86742..6dff422b7f4e 100644
---- a/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
-+++ b/drivers/net/ethernet/intel/ice/ice_ptp_hw.c
-@@ -661,6 +661,29 @@ static int ice_cfg_cgu_pll_e825c(struct ice_hw *hw,
- 	return 0;
- }
- 
-+#define ICE_ONE_PPS_OUT_AMP_MAX 3
-+
-+/**
-+ * ice_cgu_cfg_pps_out - Configure 1PPS output from CGU
-+ * @hw: pointer to the HW struct
-+ * @enable: true to enable 1PPS output, false to disable it
-+ *
-+ * Return: 0 on success, other negative error code when CGU read/write failed
-+ */
-+int ice_cgu_cfg_pps_out(struct ice_hw *hw, bool enable)
-+{
-+	union nac_cgu_dword9 dw9;
-+	int err;
-+
-+	err = ice_read_cgu_reg_e82x(hw, NAC_CGU_DWORD9, &dw9.val);
-+	if (err)
-+		return err;
-+
-+	dw9.one_pps_out_en = enable;
-+	dw9.one_pps_out_amp = enable * ICE_ONE_PPS_OUT_AMP_MAX;
-+	return ice_write_cgu_reg_e82x(hw, NAC_CGU_DWORD9, dw9.val);
-+}
-+
- /**
-  * ice_cfg_cgu_pll_dis_sticky_bits_e82x - disable TS PLL sticky bits
-  * @hw: pointer to the HW struct
-diff --git a/drivers/net/ethernet/intel/ice/ice_ptp_hw.h b/drivers/net/ethernet/intel/ice/ice_ptp_hw.h
-index ff98f76969e3..fc946fcd28b9 100644
---- a/drivers/net/ethernet/intel/ice/ice_ptp_hw.h
-+++ b/drivers/net/ethernet/intel/ice/ice_ptp_hw.h
-@@ -331,6 +331,7 @@ extern const struct ice_vernier_info_e82x e822_vernier[NUM_ICE_PTP_LNK_SPD];
- 
- /* Device agnostic functions */
- u8 ice_get_ptp_src_clock_index(struct ice_hw *hw);
-+int ice_cgu_cfg_pps_out(struct ice_hw *hw, bool enable);
- bool ice_ptp_lock(struct ice_hw *hw);
- void ice_ptp_unlock(struct ice_hw *hw);
- void ice_ptp_src_cmd(struct ice_hw *hw, enum ice_ptp_tmr_cmd cmd);
+Michal Michalik (1):
+  ice: Implement PTP support for E830 devices
+
+ drivers/net/ethernet/intel/Kconfig            |   2 +-
+ drivers/net/ethernet/intel/ice/ice.h          |   5 -
+ drivers/net/ethernet/intel/ice/ice_common.c   | 210 ++++----
+ drivers/net/ethernet/intel/ice/ice_common.h   |   7 +-
+ drivers/net/ethernet/intel/ice/ice_ddp.c      |   4 +-
+ drivers/net/ethernet/intel/ice/ice_gnss.c     |  29 +-
+ drivers/net/ethernet/intel/ice/ice_gnss.h     |   4 +-
+ .../net/ethernet/intel/ice/ice_hw_autogen.h   |  12 +
+ drivers/net/ethernet/intel/ice/ice_lib.c      |   2 +-
+ drivers/net/ethernet/intel/ice/ice_main.c     |  24 +-
+ drivers/net/ethernet/intel/ice/ice_ptp.c      | 507 ++++++++++++------
+ drivers/net/ethernet/intel/ice/ice_ptp.h      |   9 +-
+ drivers/net/ethernet/intel/ice/ice_ptp_hw.c   | 403 ++++++++------
+ drivers/net/ethernet/intel/ice/ice_ptp_hw.h   |  42 +-
+ drivers/net/ethernet/intel/ice/ice_type.h     |   9 -
+ 15 files changed, 727 insertions(+), 542 deletions(-)
+
+V8 -> V9: Fixed compilation issue introduced after rebase in "ice: Remove
+          unncecessary ice_is_e8xx()"
+V7 -> V8: - reordered patches to have all E830 changes in "ice: Implement PTP
+            support for E830 devices"
+          - added "ice: Don't check device type when checking GNSS presence",
+            which removes GNSS related changes from "ice: Remove unncecessary
+            ice_is_e8xx() functions"
+          - reworded commit messages
+V6 -> V7: Fixed timestamp acquisition in "ice: Implement PTP support for
+          E830 devices"
+V5 -> V6: Fixed minor compilation issue in "ice: Use FIELD_PREP for timestamp
+          values"
+V4 -> V5: Added 2 patches: "ice: Remove unncecessary ice_is_e8xx()
+          functions" and "ice: Use FIELD_PREP for timestamp values".
+          Edited return values "ice: Implement PTP support for E830
+          devices".
+V3 -> V4: Further kdoc fixes in "ice: Implement PTP support for
+          E830 devices"
+V2 -> V3: Rebased and fixed kdoc in "ice: Implement PTP support for
+          E830 devices"
+V1 -> V2: Fixed compilation issue in "ice: Implement PTP support for
+          E830 devices"
+
+base-commit: 1d27028dacb9fdd63de4a7cc819b7dc04b29928f
 -- 
 2.46.0
 
