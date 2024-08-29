@@ -1,75 +1,75 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 54E549649BE
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 29 Aug 2024 17:18:25 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4EE6B9649C0
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 29 Aug 2024 17:18:27 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 07473418AB;
-	Thu, 29 Aug 2024 15:18:24 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id D3D8E40D0B;
+	Thu, 29 Aug 2024 15:18:25 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id RrdNNzKebnyT; Thu, 29 Aug 2024 15:18:22 +0000 (UTC)
+ id OQG370tRIvVY; Thu, 29 Aug 2024 15:18:24 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E2463405BD
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 941B94199B
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1724944702;
-	bh=zTGuuzlXD3iCOvOdCTNLyK5gprM/SES7Ucqw69P1mPw=;
+	s=default; t=1724944704;
+	bh=Cx0qAntOjDXvUoPhdK6OH+djyDvpAlNINxQF+OH7kGs=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=9w798NVWyJfSfTrbgXvQhd7Sp+G81HqpkombKbt7cbc5uW1it+9nc36TTxmA5o+5h
-	 VAtv9BxJnXTgbIqpYvpTwrO1DVT8T5/zKwh5usUg8rBFTasfAyKawcTO1tx1rM6i9R
-	 vAXtxtPLsJ55MUWJZwnq6/oaVJIebhJTkukgooFrkQtf2THrVhHvvSFkOa7CKfn3nF
-	 6WvW+yxr4ZyossVG42tQZtOBIFTw3xbDMOR4cV+6V4vDZe4mV48p7krQlUGxPhdjyo
-	 g9+Dmg1PDrQ5+ijFxNmD32Qy58pNy2VmX0g4vAEvwnVdwuoPigKNBfzkofk0kXtCgF
-	 rSD9vBXqQajLw==
+	b=Bot7HSrfE00gJ6+hX5aGcP7Fii/EoOVBbcTtnH9pIKOfbJYf5iVtVNb80liyvN8Ng
+	 kfgbpsyvbG47/VtnGuTykQZ0IGdWhuOYjNjmIMyPCCN5kyD5weg9W7YyXW4FIc9V4C
+	 zWBQpXyhBqwbhhevRnuoawcy+U9B7iRou1oQ4tPAjxcPlxbPjRvb67djXWclYKXi/S
+	 qzErMEV70DzS3uCMLyRiL0Pbc6UIjzNPRDiIITHfjnZuUPpoOtvmblUAPWpgDdaQ5m
+	 KJNqdWxU9aEijSbOWyC5u8rJDnwO2zsCkOySBrqtXiFYVuNaYPZCBsnqsprEP/Qd0U
+	 lCQEytSKxGzJg==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id E2463405BD;
-	Thu, 29 Aug 2024 15:18:21 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 941B94199B;
+	Thu, 29 Aug 2024 15:18:24 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 270331BF27C
- for <intel-wired-lan@lists.osuosl.org>; Thu, 29 Aug 2024 15:18:20 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 94B681BF27C
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 29 Aug 2024 15:18:23 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 128B340223
- for <intel-wired-lan@lists.osuosl.org>; Thu, 29 Aug 2024 15:18:20 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 81D8840210
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 29 Aug 2024 15:18:23 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id RlFbNRmi-kWK for <intel-wired-lan@lists.osuosl.org>;
- Thu, 29 Aug 2024 15:18:18 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.129.124;
+ id CEutIhJDpgiY for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 29 Aug 2024 15:18:22 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.133.124;
  helo=us-smtp-delivery-124.mimecast.com; envelope-from=pabeni@redhat.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 1DF2B4016D
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1DF2B4016D
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 313FD4016D
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 313FD4016D
 Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.129.124])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 1DF2B4016D
- for <intel-wired-lan@lists.osuosl.org>; Thu, 29 Aug 2024 15:18:17 +0000 (UTC)
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 313FD4016D
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 29 Aug 2024 15:18:22 +0000 (UTC)
+Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-79-UqI7-FxEOxSI-yUfAMgtCQ-1; Thu,
- 29 Aug 2024 11:18:11 -0400
-X-MC-Unique: UqI7-FxEOxSI-yUfAMgtCQ-1
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-208-uyeFQsm0NymtXIfzKQREng-1; Thu,
+ 29 Aug 2024 11:18:17 -0400
+X-MC-Unique: uyeFQsm0NymtXIfzKQREng-1
 Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 5AE121955BF2; Thu, 29 Aug 2024 15:18:09 +0000 (UTC)
+ by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id AAB6719137AA; Thu, 29 Aug 2024 15:18:15 +0000 (UTC)
 Received: from gerbillo.redhat.com (unknown [10.45.224.217])
  by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id C38563002249; Thu, 29 Aug 2024 15:18:04 +0000 (UTC)
+ id C5DA93002240; Thu, 29 Aug 2024 15:18:09 +0000 (UTC)
 From: Paolo Abeni <pabeni@redhat.com>
 To: netdev@vger.kernel.org
-Date: Thu, 29 Aug 2024 17:17:01 +0200
-Message-ID: <d1fe533039fe636f0fe905ebe90bcfa8226352a2.1724944117.git.pabeni@redhat.com>
+Date: Thu, 29 Aug 2024 17:17:02 +0200
+Message-ID: <1b2eb5da627d9bae87694ee21a0ffdd9f0598f5a.1724944117.git.pabeni@redhat.com>
 In-Reply-To: <cover.1724944116.git.pabeni@redhat.com>
 References: <cover.1724944116.git.pabeni@redhat.com>
 MIME-Version: 1.0
@@ -77,24 +77,24 @@ Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=redhat.com; 
- s=mimecast20190719; t=1724944697;
+ s=mimecast20190719; t=1724944701;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=zTGuuzlXD3iCOvOdCTNLyK5gprM/SES7Ucqw69P1mPw=;
- b=Avhq8ChT6MgagkLTWFjrgaVNTt2tFbNviWm0+fQTXohUZ6JsIt52Vho1yrKENdDoZ/beCu
- bhC4e+v5+9DgE6DIkDMKfAuj8DAf5WdMKGpNNkpF0kUrlgcQlKoFVaOavQdFmqpJwCzaqJ
- lvuedXNBEHTRuhyCH37CT0dSkuniSBc=
+ bh=Cx0qAntOjDXvUoPhdK6OH+djyDvpAlNINxQF+OH7kGs=;
+ b=ZBb49nEdU41JeAPA9ofasVe6UlF2Tq8SjWzEW9nFp3B/s9H8nrmteRII6hq1HlC+Ne1NUq
+ OK588mu6Bok7HiSp4oaVIZL9PsYBTWKKaMlyXDe+a+/jlDy3y92+WjR3pUf2aPbF5Ye4Vp
+ aeqStQbguVGRdS+Zfqz2TFqUkK75+Xk=
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=redhat.com
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dkim=pass (1024-bit key,
  unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256
- header.s=mimecast20190719 header.b=Avhq8ChT
-Subject: [Intel-wired-lan] [PATCH v5 net-next 08/12] testing: net-drv: add
- basic shaper test
+ header.s=mimecast20190719 header.b=ZBb49nEd
+Subject: [Intel-wired-lan] [PATCH v5 net-next 09/12] virtchnl: support queue
+ rate limit and quanta size configuration
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -118,437 +118,189 @@ Cc: Jiri Pirko <jiri@resnulli.us>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Leverage a basic/dummy netdevsim implementation to do functional
-coverage for NL interface.
+From: Wenjun Wu <wenjun1.wu@intel.com>
 
-Signed-off-by: Paolo Abeni <pabeni@redhat.com>
+This patch adds new virtchnl opcodes and structures for rate limit
+and quanta size configuration, which include:
+1. VIRTCHNL_OP_CONFIG_QUEUE_BW, to configure max bandwidth for each
+VF per queue.
+2. VIRTCHNL_OP_CONFIG_QUANTA, to configure quanta size per queue.
+3. VIRTCHNL_OP_GET_QOS_CAPS, VF queries current QoS configuration, such
+as enabled TCs, arbiter type, up2tc and bandwidth of VSI node. The
+configuration is previously set by DCB and PF, and now is the potential
+QoS capability of VF. VF can take it as reference to configure queue TC
+mapping.
+
+Signed-off-by: Wenjun Wu <wenjun1.wu@intel.com>
 ---
-v4 -> v5:
-  - updated to new driver API
-  - more consistent indentation
+ include/linux/avf/virtchnl.h | 119 +++++++++++++++++++++++++++++++++++
+ 1 file changed, 119 insertions(+)
 
-rfc v1 -> v2:
-  - added more test-cases WRT nesting and grouping
----
- drivers/net/Kconfig                           |   1 +
- drivers/net/netdevsim/netdev.c                |  43 +++
- tools/testing/selftests/drivers/net/Makefile  |   1 +
- tools/testing/selftests/drivers/net/shaper.py | 290 ++++++++++++++++++
- .../testing/selftests/net/lib/py/__init__.py  |   1 +
- tools/testing/selftests/net/lib/py/ynl.py     |   5 +
- 6 files changed, 341 insertions(+)
- create mode 100755 tools/testing/selftests/drivers/net/shaper.py
-
-diff --git a/drivers/net/Kconfig b/drivers/net/Kconfig
-index 9920b3a68ed1..1fd5acdc73c6 100644
---- a/drivers/net/Kconfig
-+++ b/drivers/net/Kconfig
-@@ -641,6 +641,7 @@ config NETDEVSIM
- 	depends on PTP_1588_CLOCK_MOCK || PTP_1588_CLOCK_MOCK=n
- 	select NET_DEVLINK
- 	select PAGE_POOL
-+	select NET_SHAPER
- 	help
- 	  This driver is a developer testing tool and software model that can
- 	  be used to test various control path networking APIs, especially
-diff --git a/drivers/net/netdevsim/netdev.c b/drivers/net/netdevsim/netdev.c
-index 017a6102be0a..3c18191c7448 100644
---- a/drivers/net/netdevsim/netdev.c
-+++ b/drivers/net/netdevsim/netdev.c
-@@ -22,6 +22,7 @@
- #include <net/netdev_queues.h>
- #include <net/page_pool/helpers.h>
- #include <net/netlink.h>
-+#include <net/net_shaper.h>
- #include <net/pkt_cls.h>
- #include <net/rtnetlink.h>
- #include <net/udp_tunnel.h>
-@@ -475,6 +476,47 @@ static int nsim_stop(struct net_device *dev)
- 	return 0;
- }
- 
-+static int nsim_shaper_set(struct net_shaper_binding *binding,
-+			   const struct net_shaper_handle *handle,
-+			   const struct net_shaper_info *shaper,
-+			   struct netlink_ext_ack *extack)
-+{
-+	return 0;
-+}
-+
-+static int nsim_shaper_del(struct net_shaper_binding *binding,
-+			   const struct net_shaper_handle *handle,
-+			   struct netlink_ext_ack *extack)
-+{
-+	return 0;
-+}
-+
-+static int nsim_shaper_group(struct net_shaper_binding *binding,
-+			     int leaves_count,
-+			     const struct net_shaper_handle *leaves_handles,
-+			     const struct net_shaper_info *leaves,
-+			     const struct net_shaper_handle *root_handle,
-+			     const struct net_shaper_info *root,
-+			     struct netlink_ext_ack *extack)
-+{
-+	return 0;
-+}
-+
-+static int nsim_shaper_cap(struct net_shaper_binding *binding,
-+			   enum net_shaper_scope scope,
-+			   unsigned long *flags)
-+{
-+	*flags = ULONG_MAX;
-+	return 0;
-+}
-+
-+static const struct net_shaper_ops nsim_shaper_ops = {
-+	.set			= nsim_shaper_set,
-+	.delete			= nsim_shaper_del,
-+	.group			= nsim_shaper_group,
-+	.capabilities		= nsim_shaper_cap,
-+};
-+
- static const struct net_device_ops nsim_netdev_ops = {
- 	.ndo_start_xmit		= nsim_start_xmit,
- 	.ndo_set_rx_mode	= nsim_set_rx_mode,
-@@ -496,6 +538,7 @@ static const struct net_device_ops nsim_netdev_ops = {
- 	.ndo_bpf		= nsim_bpf,
- 	.ndo_open		= nsim_open,
- 	.ndo_stop		= nsim_stop,
-+	.net_shaper_ops		= &nsim_shaper_ops,
+diff --git a/include/linux/avf/virtchnl.h b/include/linux/avf/virtchnl.h
+index f41395264dca..223e433c39fe 100644
+--- a/include/linux/avf/virtchnl.h
++++ b/include/linux/avf/virtchnl.h
+@@ -89,6 +89,9 @@ enum virtchnl_rx_hsplit {
+ 	VIRTCHNL_RX_HSPLIT_SPLIT_SCTP    = 8,
  };
  
- static const struct net_device_ops nsim_vf_netdev_ops = {
-diff --git a/tools/testing/selftests/drivers/net/Makefile b/tools/testing/selftests/drivers/net/Makefile
-index 39fb97a8c1df..25aec5c081df 100644
---- a/tools/testing/selftests/drivers/net/Makefile
-+++ b/tools/testing/selftests/drivers/net/Makefile
-@@ -9,6 +9,7 @@ TEST_PROGS := \
- 	ping.py \
- 	queues.py \
- 	stats.py \
-+	shaper.py
- # end of TEST_PROGS
++enum virtchnl_bw_limit_type {
++	VIRTCHNL_BW_SHAPER = 0,
++};
+ /* END GENERIC DEFINES */
  
- include ../../lib.mk
-diff --git a/tools/testing/selftests/drivers/net/shaper.py b/tools/testing/selftests/drivers/net/shaper.py
-new file mode 100755
-index 000000000000..ed1ceba13915
---- /dev/null
-+++ b/tools/testing/selftests/drivers/net/shaper.py
-@@ -0,0 +1,290 @@
-+#!/usr/bin/env python3
-+# SPDX-License-Identifier: GPL-2.0
+ /* Opcodes for VF-PF communication. These are placed in the v_opcode field
+@@ -151,6 +154,11 @@ enum virtchnl_ops {
+ 	VIRTCHNL_OP_DISABLE_VLAN_STRIPPING_V2 = 55,
+ 	VIRTCHNL_OP_ENABLE_VLAN_INSERTION_V2 = 56,
+ 	VIRTCHNL_OP_DISABLE_VLAN_INSERTION_V2 = 57,
++	/* opcode 57 - 65 are reserved */
++	VIRTCHNL_OP_GET_QOS_CAPS = 66,
++	/* opcode 68 through 111 are reserved */
++	VIRTCHNL_OP_CONFIG_QUEUE_BW = 112,
++	VIRTCHNL_OP_CONFIG_QUANTA = 113,
+ 	VIRTCHNL_OP_MAX,
+ };
+ 
+@@ -261,6 +269,7 @@ VIRTCHNL_CHECK_STRUCT_LEN(16, virtchnl_vsi_resource);
+ #define VIRTCHNL_VF_OFFLOAD_RX_FLEX_DESC	BIT(26)
+ #define VIRTCHNL_VF_OFFLOAD_ADV_RSS_PF		BIT(27)
+ #define VIRTCHNL_VF_OFFLOAD_FDIR_PF		BIT(28)
++#define VIRTCHNL_VF_OFFLOAD_QOS			BIT(29)
+ 
+ #define VF_BASE_MODE_OFFLOADS (VIRTCHNL_VF_OFFLOAD_L2 | \
+ 			       VIRTCHNL_VF_OFFLOAD_VLAN | \
+@@ -1416,6 +1425,85 @@ struct virtchnl_fdir_del {
+ 
+ VIRTCHNL_CHECK_STRUCT_LEN(12, virtchnl_fdir_del);
+ 
++struct virtchnl_shaper_bw {
++	/* Unit is Kbps */
++	u32 committed;
++	u32 peak;
++};
 +
-+from lib.py import ksft_run, ksft_exit, ksft_eq, ksft_true, KsftSkipEx
-+from lib.py import NetshaperFamily
-+from lib.py import NetDrvEnv
-+from lib.py import NlError
-+from lib.py import cmd
-+import glob
-+import sys
++VIRTCHNL_CHECK_STRUCT_LEN(8, virtchnl_shaper_bw);
 +
-+def get_shapers(cfg, nl_shaper) -> None:
-+    try:
-+        shapers = nl_shaper.get({'ifindex': cfg.ifindex},
-+                                dump=True)
-+    except NlError as e:
-+        if e.error == 95:
-+            raise KsftSkipEx("shapers not supported by the device")
-+        raise
++/* VIRTCHNL_OP_GET_QOS_CAPS
++ * VF sends this message to get its QoS Caps, such as
++ * TC number, Arbiter and Bandwidth.
++ */
++struct virtchnl_qos_cap_elem {
++	u8 tc_num;
++	u8 tc_prio;
++#define VIRTCHNL_ABITER_STRICT      0
++#define VIRTCHNL_ABITER_ETS         2
++	u8 arbiter;
++#define VIRTCHNL_STRICT_WEIGHT      1
++	u8 weight;
++	enum virtchnl_bw_limit_type type;
++	union {
++		struct virtchnl_shaper_bw shaper;
++		u8 pad2[32];
++	};
++};
 +
-+    # Default configuration: no shapers configured.
-+    ksft_eq(len(shapers), 0)
++VIRTCHNL_CHECK_STRUCT_LEN(40, virtchnl_qos_cap_elem);
 +
-+def get_caps(cfg, nl_shaper) -> None:
-+    try:
-+        caps = nl_shaper.cap_get({'ifindex': cfg.ifindex},
-+                                 dump=True)
-+    except NlError as e:
-+        if e.error == 95:
-+            raise KsftSkipEx("shapers not supported by the device")
-+        raise
++struct virtchnl_qos_cap_list {
++	u16 vsi_id;
++	u16 num_elem;
++	struct virtchnl_qos_cap_elem cap[];
++};
 +
-+    # Each device implementing shaper support must support some
-+    # features in at least a scope.
-+    ksft_true(len(caps)> 0)
++VIRTCHNL_CHECK_STRUCT_LEN(4, virtchnl_qos_cap_list);
++#define virtchnl_qos_cap_list_LEGACY_SIZEOF	44
 +
-+def set_qshapers(cfg, nl_shaper) -> None:
-+    try:
-+        caps = nl_shaper.cap_get({'ifindex': cfg.ifindex,
-+                                 'scope':'queue'})
-+    except NlError as e:
-+        if e.error == 95:
-+            cfg.queues = False;
-+            raise KsftSkipEx("shapers not supported by the device")
-+        raise
-+    if not 'support-bw-max' in caps or not 'support-metric-bps' in caps:
-+            raise KsftSkipEx("device does not support queue scope shapers with bw_max and metric bps")
++/* VIRTCHNL_OP_CONFIG_QUEUE_BW */
++struct virtchnl_queue_bw {
++	u16 queue_id;
++	u8 tc;
++	u8 pad;
++	struct virtchnl_shaper_bw shaper;
++};
 +
-+    nl_shaper.set({'ifindex': cfg.ifindex,
-+                   'shaper': {'handle': {'scope': 'queue', 'id': 1},
-+                              'metric': 'bps',
-+                              'bw-max': 10000}})
-+    nl_shaper.set({'ifindex': cfg.ifindex,
-+                   'shaper': {'handle': {'scope': 'queue', 'id': 2},
-+                              'metric': 'bps',
-+                              'bw-max': 20000}})
++VIRTCHNL_CHECK_STRUCT_LEN(12, virtchnl_queue_bw);
 +
-+    # Querying a specific shaper not yet configured must fail.
-+    raised = False
-+    try:
-+        shaper_q0 = nl_shaper.get({'ifindex': cfg.ifindex,
-+                                   'handle': {'scope': 'queue', 'id': 0}})
-+    except (NlError):
-+        raised = True
-+    ksft_eq(raised, True)
++struct virtchnl_queues_bw_cfg {
++	u16 vsi_id;
++	u16 num_queues;
++	struct virtchnl_queue_bw cfg[];
++};
 +
-+    shaper_q1 = nl_shaper.get({'ifindex': cfg.ifindex,
-+                              'handle': {'scope': 'queue', 'id': 1}})
-+    ksft_eq(shaper_q1, {'ifindex': cfg.ifindex,
-+                        'parent': {'scope': 'netdev'},
-+                        'handle': {'scope': 'queue', 'id': 1},
-+                        'metric': 'bps',
-+                        'bw-max': 10000})
++VIRTCHNL_CHECK_STRUCT_LEN(4, virtchnl_queues_bw_cfg);
++#define virtchnl_queues_bw_cfg_LEGACY_SIZEOF	16
 +
-+    shapers = nl_shaper.get({'ifindex': cfg.ifindex},
-+                            dump=True)
-+    ksft_eq(shapers, [{'ifindex': cfg.ifindex,
-+                       'parent': {'scope': 'netdev'},
-+                       'handle': {'scope': 'queue', 'id': 1},
-+                       'metric': 'bps',
-+                       'bw-max': 10000},
-+                      {'ifindex': cfg.ifindex,
-+                       'parent': {'scope': 'netdev'},
-+                       'handle': {'scope': 'queue', 'id': 2},
-+                       'metric': 'bps',
-+                       'bw-max': 20000}])
++enum virtchnl_queue_type {
++	VIRTCHNL_QUEUE_TYPE_TX			= 0,
++	VIRTCHNL_QUEUE_TYPE_RX			= 1,
++};
 +
-+def del_qshapers(cfg, nl_shaper) -> None:
-+    if not cfg.queues:
-+        raise KsftSkipEx("queue shapers not supported by device, skipping delete")
++/* structure to specify a chunk of contiguous queues */
++struct virtchnl_queue_chunk {
++	/* see enum virtchnl_queue_type */
++	s32 type;
++	u16 start_queue_id;
++	u16 num_queues;
++};
 +
-+    nl_shaper.delete({'ifindex': cfg.ifindex,
-+                      'handle': {'scope': 'queue', 'id': 2}})
-+    nl_shaper.delete({'ifindex': cfg.ifindex,
-+                      'handle': {'scope': 'queue', 'id': 1}})
-+    shapers = nl_shaper.get({'ifindex': cfg.ifindex},
-+                            dump=True)
-+    ksft_eq(len(shapers), 0)
++VIRTCHNL_CHECK_STRUCT_LEN(8, virtchnl_queue_chunk);
 +
-+def set_nshapers(cfg, nl_shaper) -> None:
-+    # Check required features.
-+    try:
-+        caps = nl_shaper.cap_get({'ifindex': cfg.ifindex,
-+                                  'scope':'netdev'})
-+    except NlError as e:
-+        if e.error == 95:
-+            cfg.netdev = False;
-+            raise KsftSkipEx("shapers not supported by the device")
-+        raise
-+    if not 'support-bw-max' in caps or not 'support-metric-bps' in caps:
-+            raise KsftSkipEx("device does not support nested netdev scope shapers with weight")
++struct virtchnl_quanta_cfg {
++	u16 quanta_size;
++	struct virtchnl_queue_chunk queue_select;
++};
 +
-+    nl_shaper.set({'ifindex': cfg.ifindex,
-+                   'shaper': {
-+                        'handle': {'scope': 'netdev', 'id': 0},
-+                        'bw-max': 100000}})
++VIRTCHNL_CHECK_STRUCT_LEN(12, virtchnl_quanta_cfg);
 +
-+    shapers = nl_shaper.get({'ifindex': cfg.ifindex},
-+                            dump=True)
-+    ksft_eq(shapers, [{'ifindex': cfg.ifindex,
-+                       'handle': {'scope': 'netdev'},
-+                       'metric': 'bps',
-+                       'bw-max': 100000}])
+ #define __vss_byone(p, member, count, old)				      \
+ 	(struct_size(p, member, count) + (old - 1 - struct_size(p, member, 0)))
+ 
+@@ -1438,6 +1526,8 @@ VIRTCHNL_CHECK_STRUCT_LEN(12, virtchnl_fdir_del);
+ 		 __vss(virtchnl_vlan_filter_list_v2, __vss_byelem, p, m, c),  \
+ 		 __vss(virtchnl_tc_info, __vss_byelem, p, m, c),	      \
+ 		 __vss(virtchnl_rdma_qvlist_info, __vss_byelem, p, m, c),     \
++		 __vss(virtchnl_qos_cap_list, __vss_byelem, p, m, c),	      \
++		 __vss(virtchnl_queues_bw_cfg, __vss_byelem, p, m, c),	      \
+ 		 __vss(virtchnl_rss_key, __vss_byone, p, m, c),		      \
+ 		 __vss(virtchnl_rss_lut, __vss_byone, p, m, c))
+ 
+@@ -1637,6 +1727,35 @@ virtchnl_vc_validate_vf_msg(struct virtchnl_version_info *ver, u32 v_opcode,
+ 	case VIRTCHNL_OP_DISABLE_VLAN_INSERTION_V2:
+ 		valid_len = sizeof(struct virtchnl_vlan_setting);
+ 		break;
++	case VIRTCHNL_OP_GET_QOS_CAPS:
++		break;
++	case VIRTCHNL_OP_CONFIG_QUEUE_BW:
++		valid_len = virtchnl_queues_bw_cfg_LEGACY_SIZEOF;
++		if (msglen >= valid_len) {
++			struct virtchnl_queues_bw_cfg *q_bw =
++				(struct virtchnl_queues_bw_cfg *)msg;
 +
-+def del_nshapers(cfg, nl_shaper) -> None:
-+    if not cfg.netdev:
-+        raise KsftSkipEx("netdev shaper not supported by device, skipping delete")
++			valid_len = virtchnl_struct_size(q_bw, cfg,
++							 q_bw->num_queues);
++			if (q_bw->num_queues == 0) {
++				err_msg_format = true;
++				break;
++			}
++		}
++		break;
++	case VIRTCHNL_OP_CONFIG_QUANTA:
++		valid_len = sizeof(struct virtchnl_quanta_cfg);
++		if (msglen >= valid_len) {
++			struct virtchnl_quanta_cfg *q_quanta =
++				(struct virtchnl_quanta_cfg *)msg;
 +
-+    nl_shaper.delete({'ifindex': cfg.ifindex,
-+                      'handle': {'scope': 'netdev'}})
-+    shapers = nl_shaper.get({'ifindex': cfg.ifindex},
-+                            dump=True)
-+    ksft_eq(len(shapers), 0)
-+
-+def basic_groups(cfg, nl_shaper) -> None:
-+    if not cfg.netdev:
-+        raise KsftSkipEx("netdev shaper not supported by the device")
-+    try:
-+        caps = nl_shaper.cap_get({'ifindex': cfg.ifindex,
-+                                  'scope':'queue'})
-+    except NlError as e:
-+        if e.error == 95:
-+            cfg.queues = False;
-+            raise KsftSkipEx("shapers not supported by the device")
-+        raise
-+    if not 'support-weight' in caps:
-+            raise KsftSkipEx("device does not support queue scope shapers with weight")
-+
-+    node_handle = nl_shaper.group({
-+                        'ifindex': cfg.ifindex,
-+                        'leaves':[{'handle': {'scope': 'queue', 'id': 1},
-+                                   'weight': 1},
-+                                  {'handle': {'scope': 'queue', 'id': 2},
-+                                   'weight': 2}],
-+                         'node': {'handle': {'scope':'netdev'},
-+                                  'metric': 'bps',
-+                                  'bw-max': 10000}})
-+    ksft_eq(node_handle, {'ifindex': cfg.ifindex,
-+                          'handle': {'scope': 'netdev'}})
-+
-+    shaper = nl_shaper.get({'ifindex': cfg.ifindex,
-+                            'handle': {'scope': 'queue', 'id': 1}})
-+    ksft_eq(shaper, {'ifindex': cfg.ifindex,
-+                     'parent': {'scope': 'netdev'},
-+                     'handle': {'scope': 'queue', 'id': 1},
-+                     'weight': 1 })
-+
-+    nl_shaper.delete({'ifindex': cfg.ifindex,
-+                      'handle': {'scope': 'queue', 'id': 2}})
-+    nl_shaper.delete({'ifindex': cfg.ifindex,
-+                      'handle': {'scope': 'queue', 'id': 1}})
-+
-+    # Deleting all the leaves shaper does not affect the node one
-+    # when the latter has 'netdev' scope.
-+    shapers = nl_shaper.get({'ifindex': cfg.ifindex},
-+                            dump=True)
-+    ksft_eq(len(shapers), 1)
-+
-+    nl_shaper.delete({'ifindex': cfg.ifindex,
-+                      'handle': {'scope': 'netdev'}})
-+
-+def qgroups(cfg, nl_shaper) -> None:
-+    try:
-+        caps = nl_shaper.cap_get({'ifindex': cfg.ifindex,
-+                                  'scope':'node'})
-+    except NlError as e:
-+        if e.error == 95:
-+            raise KsftSkipEx("shapers not supported by the device")
-+        raise
-+    if not 'support-bw-max' in caps or not 'support-metric-bps' in caps:
-+            raise KsftSkipEx("device does not support node scope shapers with bw_max and metric bps")
-+    try:
-+        caps = nl_shaper.cap_get({'ifindex': cfg.ifindex,
-+                                  'scope':'queue'})
-+    except NlError as e:
-+        if e.error == 95:
-+            raise KsftSkipEx("shapers not supported by the device")
-+        raise
-+    if not 'support-nesting' in caps or not 'support-weight' in caps or not 'support-metric-bps' in caps:
-+            raise KsftSkipEx("device does not support nested queue scope shapers with weight")
-+
-+    node_handle = nl_shaper.group({
-+                   'ifindex': cfg.ifindex,
-+                   'leaves':[{'handle': {'scope': 'queue', 'id': 1},
-+                              'metric': 'bps', 'weight': 3},
-+                             {'handle': {'scope': 'queue', 'id': 2},
-+                              'metric': 'bps', 'weight': 2}],
-+                   'node': {'handle': {'scope':'node'},
-+                            'metric': 'bps',
-+                            'bw-max': 10000}})
-+    node_id = node_handle['handle']['id']
-+
-+    shaper = nl_shaper.get({'ifindex': cfg.ifindex,
-+                            'handle': {'scope': 'queue', 'id': 1}})
-+    ksft_eq(shaper, {'ifindex': cfg.ifindex,
-+                     'parent': {'scope': 'node', 'id': node_id},
-+                     'handle': {'scope': 'queue', 'id': 1},
-+                     'weight': 3})
-+
-+    # Grouping to a specified, not existing node scope shaper must fail
-+    raised = False
-+    try:
-+        nl_shaper.group({
-+                   'ifindex': cfg.ifindex,
-+                   'leaves':[{'handle': {'scope': 'queue', 'id': 3},
-+                              'metric': 'bps',
-+                              'weight': 3}],
-+                   'node': {'handle': {'scope':'node', 'id': node_id + 1},
-+                            'metric': 'bps',
-+                            'bw-max': 10000}})
-+
-+    except (NlError):
-+        raised = True
-+    ksft_eq(raised, True)
-+
-+    node_handle = nl_shaper.group({
-+                   'ifindex': cfg.ifindex,
-+                   'leaves':[{'handle': {'scope': 'queue', 'id': 3},
-+                              'metric': 'bps',
-+                              'weight': 4}],
-+                   'node': {'handle': {'scope':'node', 'id': node_id}}})
-+    ksft_eq(node_handle, {'ifindex': cfg.ifindex,
-+                          'handle': {'scope': 'node', 'id': node_id}})
-+
-+    shaper = nl_shaper.get({'ifindex': cfg.ifindex,
-+                            'handle': {'scope': 'queue', 'id': 3}})
-+    ksft_eq(shaper, {'ifindex': cfg.ifindex,
-+                     'parent': {'scope': 'node', 'id': node_id},
-+                     'handle': {'scope': 'queue', 'id': 3},
-+                     'weight': 4})
-+
-+    nl_shaper.delete({'ifindex': cfg.ifindex,
-+                      'handle': {'scope': 'queue', 'id': 2}})
-+    nl_shaper.delete({'ifindex': cfg.ifindex,
-+                      'handle': {'scope': 'queue', 'id': 1}})
-+
-+    # Deleting a non empty group will move the leaves downstream.
-+    nl_shaper.delete({'ifindex': cfg.ifindex,
-+                      'handle': {'scope': 'node', 'id': node_id}})
-+    shapers = nl_shaper.get({'ifindex': cfg.ifindex},
-+                            dump=True)
-+    ksft_eq(shapers, [{'ifindex': cfg.ifindex,
-+                       'parent': {'scope': 'netdev'},
-+                       'handle': {'scope': 'queue', 'id': 3},
-+                       'weight': 4}])
-+
-+    # Finish and verify the complete cleanup.
-+    nl_shaper.delete({'ifindex': cfg.ifindex,
-+                      'handle': {'scope': 'queue', 'id': 3}})
-+    shapers = nl_shaper.get({'ifindex': cfg.ifindex},
-+                            dump=True)
-+    ksft_eq(len(shapers), 0)
-+
-+def main() -> None:
-+    with NetDrvEnv(__file__, queue_count=4) as cfg:
-+        cfg.queues = True
-+        cfg.netdev = True
-+        ksft_run([get_shapers,
-+                  get_caps,
-+                  set_qshapers,
-+                  del_qshapers,
-+                  set_nshapers,
-+                  del_nshapers,
-+                  basic_groups,
-+                  qgroups], args=(cfg, NetshaperFamily()))
-+    ksft_exit()
-+
-+
-+if __name__ == "__main__":
-+    main()
-diff --git a/tools/testing/selftests/net/lib/py/__init__.py b/tools/testing/selftests/net/lib/py/__init__.py
-index b6d498d125fe..54d8f5eba810 100644
---- a/tools/testing/selftests/net/lib/py/__init__.py
-+++ b/tools/testing/selftests/net/lib/py/__init__.py
-@@ -6,3 +6,4 @@ from .netns import NetNS
- from .nsim import *
- from .utils import *
- from .ynl import NlError, YnlFamily, EthtoolFamily, NetdevFamily, RtnlFamily
-+from .ynl import NetshaperFamily
-diff --git a/tools/testing/selftests/net/lib/py/ynl.py b/tools/testing/selftests/net/lib/py/ynl.py
-index 1ace58370c06..a0d689d58c57 100644
---- a/tools/testing/selftests/net/lib/py/ynl.py
-+++ b/tools/testing/selftests/net/lib/py/ynl.py
-@@ -47,3 +47,8 @@ class NetdevFamily(YnlFamily):
-     def __init__(self):
-         super().__init__((SPEC_PATH / Path('netdev.yaml')).as_posix(),
-                          schema='')
-+
-+class NetshaperFamily(YnlFamily):
-+    def __init__(self):
-+        super().__init__((SPEC_PATH / Path('net_shaper.yaml')).as_posix(),
-+                         schema='')
++			if (q_quanta->quanta_size == 0 ||
++			    q_quanta->queue_select.num_queues == 0) {
++				err_msg_format = true;
++				break;
++			}
++		}
++		break;
+ 	/* These are always errors coming from the VF. */
+ 	case VIRTCHNL_OP_EVENT:
+ 	case VIRTCHNL_OP_UNKNOWN:
 -- 
 2.45.2
 
