@@ -1,75 +1,75 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 652789649B0
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 29 Aug 2024 17:17:53 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1DB959649B1
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 29 Aug 2024 17:17:57 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 1718F40D37;
-	Thu, 29 Aug 2024 15:17:52 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id CAD2E405BD;
+	Thu, 29 Aug 2024 15:17:55 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id AahaVGWtx5wh; Thu, 29 Aug 2024 15:17:50 +0000 (UTC)
+ id w6ari4e8cwMK; Thu, 29 Aug 2024 15:17:54 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 78EED403DD
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7DBD240CB3
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1724944670;
-	bh=8X4rDkxdgKSCQ5daPXfLVHvLK68fOiFc7mWBdlR8XtU=;
+	s=default; t=1724944674;
+	bh=kCFq2W4ZuleS4SBL2SFUyPZdrtJSes9573ALK3euMC0=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=nEkvKAkBrGDv3GOMNwvXY9ukl3QiBd/dzyUaMVVIiwQ454Z6/J4nGvnxgH2a3U3sb
-	 Ox5zgCn/t86D7ul9CRSb/DCiXqXOjhst+shBR+U01eVJmuampzkszFmfWfh+hRhC5B
-	 HyVwW4wEtl9JYfi/A82TF8Up6cFwfWnbsv+mM3iiRsTP8QauM3/61Sh0uyLkc8J8+p
-	 Mkyoy1qsNLIzO1emrb4n98mn1qQeb94o7HnF7SPXdKZ6MJ1f2iV5zgxx18xxK9Mlok
-	 VSJdAELsNTucLRVlRGXpzkBLs1+2lPbp5DiYtKWbFq2uFU7v613H+VgxWn2ILutJRJ
-	 r6+ORqvTsYMtQ==
+	b=iw1P0anxRBDBp4SgY8XtcD/1FbELrumDOaCUqKWTecqhKl/Rjo4WVyEyx+oJx4SF3
+	 bTnQFxTA9QuwT3S0TYxwNQ+W8UUcXEaICaks+sT/Zjr8N5zBkn9fibXB1fjeDmiPQx
+	 CqHt+tDP5MRDUsMbx12ENyHa6VadbtflOSN3Dg986ElHcnqLD4bm9FKFimYLG74hs6
+	 qrIJBl+69p0qqBjS8Qq6Irfgk4Yz8JWt6jId3aVcXdgUFInQF7/EdiGqMtNnd9XxIl
+	 C1P6XIyx/IhjVeTIxTNL5IeznoIymEe4LQd3wAXxm3FKGSqY0Lwy6whXcpalaxL9/L
+	 83yhDHrCVE90Q==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 78EED403DD;
-	Thu, 29 Aug 2024 15:17:50 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 7DBD240CB3;
+	Thu, 29 Aug 2024 15:17:54 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id F40DC1BF27C
- for <intel-wired-lan@lists.osuosl.org>; Thu, 29 Aug 2024 15:17:48 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id AA3D41BF27C
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 29 Aug 2024 15:17:52 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 3A20380CA4
- for <intel-wired-lan@lists.osuosl.org>; Thu, 29 Aug 2024 15:17:47 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 944B5409FB
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 29 Aug 2024 15:17:52 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id tOr8a3t6EnWl for <intel-wired-lan@lists.osuosl.org>;
- Thu, 29 Aug 2024 15:17:46 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id AVarjg7mzzle for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 29 Aug 2024 15:17:51 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.129.124;
  helo=us-smtp-delivery-124.mimecast.com; envelope-from=pabeni@redhat.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org ADDF280D61
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org ADDF280D61
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 4D0BC40CB3
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4D0BC40CB3
 Received: from us-smtp-delivery-124.mimecast.com
  (us-smtp-delivery-124.mimecast.com [170.10.129.124])
- by smtp1.osuosl.org (Postfix) with ESMTPS id ADDF280D61
- for <intel-wired-lan@lists.osuosl.org>; Thu, 29 Aug 2024 15:17:45 +0000 (UTC)
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 4D0BC40CB3
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 29 Aug 2024 15:17:51 +0000 (UTC)
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-443-N0s2yfKUP4qqsQvUMshgGg-1; Thu,
- 29 Aug 2024 11:17:38 -0400
-X-MC-Unique: N0s2yfKUP4qqsQvUMshgGg-1
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-487-a_ugSsnZNxmcDd08nB3tMw-1; Thu,
+ 29 Aug 2024 11:17:44 -0400
+X-MC-Unique: a_ugSsnZNxmcDd08nB3tMw-1
 Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id AB3811955BF2; Thu, 29 Aug 2024 15:17:35 +0000 (UTC)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 80B031955F03; Thu, 29 Aug 2024 15:17:42 +0000 (UTC)
 Received: from gerbillo.redhat.com (unknown [10.45.224.217])
  by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 5FCCC300019C; Thu, 29 Aug 2024 15:17:30 +0000 (UTC)
+ id D93723001FE8; Thu, 29 Aug 2024 15:17:35 +0000 (UTC)
 From: Paolo Abeni <pabeni@redhat.com>
 To: netdev@vger.kernel.org
-Date: Thu, 29 Aug 2024 17:16:55 +0200
-Message-ID: <53077d35a1183d5c1110076a07d73940bb2a55f3.1724944117.git.pabeni@redhat.com>
+Date: Thu, 29 Aug 2024 17:16:56 +0200
+Message-ID: <fcf4c258f606837cac72bb26cd751bb619e9ff87.1724944117.git.pabeni@redhat.com>
 In-Reply-To: <cover.1724944116.git.pabeni@redhat.com>
 References: <cover.1724944116.git.pabeni@redhat.com>
 MIME-Version: 1.0
@@ -77,23 +77,23 @@ Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=redhat.com; 
- s=mimecast20190719; t=1724944664;
+ s=mimecast20190719; t=1724944670;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=8X4rDkxdgKSCQ5daPXfLVHvLK68fOiFc7mWBdlR8XtU=;
- b=HozBtWNg6zcImCoAYoayhKfYWc7J5gWpH9FXlY1JI8QlHC7kYUWEucRfQXkRmp+2pCMhak
- DF79EOUZzX+k7XscBBvrDQ70uUy+FONda9KFpE+F5LE4/5CHgJ1aNPVFG1gb2tHgjKxBvs
- WZJXcRL641yXkvP6CXGFb+1l8ou1bso=
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ bh=kCFq2W4ZuleS4SBL2SFUyPZdrtJSes9573ALK3euMC0=;
+ b=KVhafCZXz10+wmRhWhHYqGNgQI26p2BOHopCJIlm2JARZiZW2ilHVqaAJktDotWuFd0w5N
+ JM9eBFgYlfWFEG38xBsKgpVRIruj9wuEUWlWB1EukI7hwxvfl8qPLEHCWE8016SCHi6zNL
+ yXS1y3Be+FCC9hljiW5pTg0ia+pjTw8=
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=redhat.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
- header.a=rsa-sha256 header.s=mimecast20190719 header.b=HozBtWNg
-Subject: [Intel-wired-lan] [PATCH v5 net-next 02/12] net-shapers: implement
- NL get operation
+ header.a=rsa-sha256 header.s=mimecast20190719 header.b=KVhafCZX
+Subject: [Intel-wired-lan] [PATCH v5 net-next 03/12] net-shapers: implement
+ NL set and delete operations
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -117,553 +117,465 @@ Cc: Jiri Pirko <jiri@resnulli.us>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Introduce the basic infrastructure to implement the net-shaper
-core functionality. Each network devices carries a net-shaper cache,
-the NL get() operation fetches the data from such cache.
-
-The cache is initially empty, will be fill by the set()/group()
-operation implemented later and is destroyed at device cleanup time.
-
-The net_shaper_ctx_init() and net_shaper_generic_pre() implementations
-handle generic index type attributes, despite the current caller always
-pass a constant value to avoid more noise in later patches using them.
+Both NL operations directly map on the homonymous device shaper
+callbacks, update accordingly the shapers cache and are serialized
+via a per device lock.
+Implement the cache modification helpers to additionally deal with
+NODE scope shaper. That will be needed by the group() operation
+implemented in the next patch.
+The delete implementation is partial: does not handle NODE scope
+shaper yet. Such support will require infrastructure from
+ithe next patch and will be implemented later in the series.
 
 Signed-off-by: Paolo Abeni <pabeni@redhat.com>
 ---
 v4 -> v5:
- - ops operate on struct binding
  - replace net_device * with binding* in most helpers
- - include 'ifindex' in get/dump output
- - use dev_tracker for real
- - user pre/post for dump op, too
- - use NL_SET_BAD_ATTR where applicable
- - drop redundant/useless kdoc documentation
- - add type arg to net_shaper_ctx_init() (moved from later patch)
- - factor out generic pre/post helper for later usage in the series
- - remove unneeded forward declaration from netdevice.h
- - dropped 'inline' modifier in .c file
- - dropped black line at net_shaper.h EoF
+ - move check for scope NONE handle at parse time and leverage
+   NL_SET_BAD_ATTR()
+ - move the default parent initialization to net_shaper_parse_info_nest()
 
 v3 -> v4:
- - add scope prefix
- - use forward declaration in the include
- - move the handle out of shaper_info
+ - add locking
+ - helper rename
 
 RFC v2 -> RFC v3:
  - dev_put() -> netdev_put()
 ---
- Documentation/networking/kapi.rst |   3 +
- include/linux/netdevice.h         |  15 ++
- include/net/net_shaper.h          | 121 ++++++++++
- net/core/dev.c                    |   2 +
- net/core/dev.h                    |   6 +
- net/shaper/shaper.c               | 363 +++++++++++++++++++++++++++++-
- 6 files changed, 503 insertions(+), 7 deletions(-)
- create mode 100644 include/net/net_shaper.h
+ net/shaper/shaper.c | 398 +++++++++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 395 insertions(+), 3 deletions(-)
 
-diff --git a/Documentation/networking/kapi.rst b/Documentation/networking/kapi.rst
-index ea55f462cefa..98682b9a13ee 100644
---- a/Documentation/networking/kapi.rst
-+++ b/Documentation/networking/kapi.rst
-@@ -104,6 +104,9 @@ Driver Support
- .. kernel-doc:: include/linux/netdevice.h
-    :internal:
- 
-+.. kernel-doc:: include/net/net_shaper.h
-+   :internal:
-+
- PHY Support
- -----------
- 
-diff --git a/include/linux/netdevice.h b/include/linux/netdevice.h
-index fce70990b209..71bd011fde7b 100644
---- a/include/linux/netdevice.h
-+++ b/include/linux/netdevice.h
-@@ -1603,6 +1603,14 @@ struct net_device_ops {
- 	int			(*ndo_hwtstamp_set)(struct net_device *dev,
- 						    struct kernel_hwtstamp_config *kernel_config,
- 						    struct netlink_ext_ack *extack);
-+
-+#if IS_ENABLED(CONFIG_NET_SHAPER)
-+	/**
-+	 * @net_shaper_ops: Device shaping offload operations
-+	 * see include/net/net_shapers.h
-+	 */
-+	const struct net_shaper_ops *net_shaper_ops;
-+#endif
- };
- 
- /**
-@@ -2383,6 +2391,13 @@ struct net_device {
- 	/** @irq_moder: dim parameters used if IS_ENABLED(CONFIG_DIMLIB). */
- 	struct dim_irq_moder	*irq_moder;
- 
-+#if IS_ENABLED(CONFIG_NET_SHAPER)
-+	/**
-+	 * @net_shaper_data: data tracking the current shaper status
-+	 *  see include/net/net_shapers.h
-+	 */
-+	struct net_shaper_data *net_shaper_data;
-+#endif
- 	u8			priv[] ____cacheline_aligned
- 				       __counted_by(priv_len);
- } ____cacheline_aligned;
-diff --git a/include/net/net_shaper.h b/include/net/net_shaper.h
-new file mode 100644
-index 000000000000..52bad5a2f63b
---- /dev/null
-+++ b/include/net/net_shaper.h
-@@ -0,0 +1,121 @@
-+/* SPDX-License-Identifier: GPL-2.0-or-later */
-+
-+#ifndef _NET_SHAPER_H_
-+#define _NET_SHAPER_H_
-+
-+#include <linux/types.h>
-+
-+#include <uapi/linux/net_shaper.h>
-+
-+struct net_device;
-+struct devlink;
-+struct netlink_ext_ack;
-+
-+enum net_shaper_binding_type {
-+	NET_SHAPER_BINDING_TYPE_NETDEV,
-+	NET_SHAPER_BINDING_TYPE_DEVLINK_PORT,
-+};
-+
-+struct net_shaper_binding {
-+	enum net_shaper_binding_type type;
-+	union {
-+		struct net_device *netdev;
-+		struct devlink *devlink;
-+	};
-+};
-+
-+struct net_shaper_handle {
-+	enum net_shaper_scope scope;
-+	int id;
-+};
-+
-+/**
-+ * struct net_shaper_info - represents a shaping node on the NIC H/W
-+ * zeroed field are considered not set.
-+ * @parent: Unique identifier for the shaper parent, usually implied
-+ * @metric: Specify if the rate limits refers to PPS or BPS
-+ * @bw_min: Minimum guaranteed rate for this shaper
-+ * @bw_max: Maximum peak rate allowed for this shaper
-+ * @burst: Maximum burst for the peek rate of this shaper
-+ * @priority: Scheduling priority for this shaper
-+ * @weight: Scheduling weight for this shaper
-+ */
-+struct net_shaper_info {
-+	struct net_shaper_handle parent;
-+	enum net_shaper_metric metric;
-+	u64 bw_min;
-+	u64 bw_max;
-+	u64 burst;
-+	u32 priority;
-+	u32 weight;
-+
-+	/* private: */
-+	u32 leaves; /* accounted only for NODE scope */
-+};
-+
-+/**
-+ * struct net_shaper_ops - Operations on device H/W shapers
-+ *
-+ * The operations applies to either net_device and devlink objects.
-+ * The initial shaping configuration at device initialization is empty:
-+ * does not constraint the rate in any way.
-+ * The network core keeps track of the applied user-configuration in
-+ * the net_device or devlink structure.
-+ * The operations are serialized via a per device lock.
-+ *
-+ * Each shaper is uniquely identified within the device with a 'handle'
-+ * comprising the shaper scope and a scope-specific id.
-+ */
-+struct net_shaper_ops {
-+	/**
-+	 * @group: create the specified shapers scheduling group
-+	 *
-+	 * Nest the @leaves shapers identified by @leaves_handles under the
-+	 * @root shaper identified by @root_handle. All the shapers belong
-+	 * to the network device @dev. The @leaves and @leaves_handles shaper
-+	 * arrays size is specified by @leaves_count.
-+	 * Create either the @leaves and the @root shaper; or if they already
-+	 * exists, links them together in the desired way.
-+	 * @leaves scope must be NET_SHAPER_SCOPE_QUEUE.
-+	 */
-+	int (*group)(struct net_shaper_binding *binding, int leaves_count,
-+		     const struct net_shaper_handle *leaves_handles,
-+		     const struct net_shaper_info *leaves,
-+		     const struct net_shaper_handle *root_handle,
-+		     const struct net_shaper_info *root,
-+		     struct netlink_ext_ack *extack);
-+
-+	/**
-+	 * @set: Updates the specified shaper
-+	 *
-+	 * Updates or creates the @shaper identified by the provided @handle
-+	 * on the given device @dev.
-+	 */
-+	int (*set)(struct net_shaper_binding *binding,
-+		   const struct net_shaper_handle *handle,
-+		   const struct net_shaper_info *shaper,
-+		   struct netlink_ext_ack *extack);
-+
-+	/**
-+	 * @delete: Removes the specified shaper
-+	 *
-+	 * Removes the shaper configuration as identified by the given @handle
-+	 * on the specified device @dev, restoring the default behavior.
-+	 */
-+	int (*delete)(struct net_shaper_binding *binding,
-+		      const struct net_shaper_handle *handle,
-+		      struct netlink_ext_ack *extack);
-+
-+	/**
-+	 * @capabilities: get the shaper features supported by the device
-+	 *
-+	 * Fills the bitmask @cap with the supported capabilities for the
-+	 * specified @scope and device @dev.
-+	 *
-+	 * Returns 0 on success or a negative error value otherwise.
-+	 */
-+	int (*capabilities)(struct net_shaper_binding *binding,
-+			    enum net_shaper_scope scope, unsigned long *cap);
-+};
-+
-+#endif
-diff --git a/net/core/dev.c b/net/core/dev.c
-index 63987b8b7c85..23629abd3ef7 100644
---- a/net/core/dev.c
-+++ b/net/core/dev.c
-@@ -11201,6 +11201,8 @@ void free_netdev(struct net_device *dev)
- 	/* Flush device addresses */
- 	dev_addr_flush(dev);
- 
-+	net_shaper_flush_netdev(dev);
-+
- 	list_for_each_entry_safe(p, n, &dev->napi_list, dev_list)
- 		netif_napi_del(p);
- 
-diff --git a/net/core/dev.h b/net/core/dev.h
-index 5654325c5b71..13c558874af3 100644
---- a/net/core/dev.h
-+++ b/net/core/dev.h
-@@ -35,6 +35,12 @@ void dev_addr_flush(struct net_device *dev);
- int dev_addr_init(struct net_device *dev);
- void dev_addr_check(struct net_device *dev);
- 
-+#if IS_ENABLED(CONFIG_NET_SHAPER)
-+void net_shaper_flush_netdev(struct net_device *dev);
-+#else
-+static inline void net_shaper_flush_netdev(struct net_device *dev) {}
-+#endif
-+
- /* sysctls not referred to from outside net/core/ */
- extern int		netdev_unregister_timeout_secs;
- extern int		weight_p;
 diff --git a/net/shaper/shaper.c b/net/shaper/shaper.c
-index a1b20888f502..2ed80df25765 100644
+index 2ed80df25765..a58bdd2ec013 100644
 --- a/net/shaper/shaper.c
 +++ b/net/shaper/shaper.c
-@@ -1,30 +1,361 @@
- // SPDX-License-Identifier: GPL-2.0-or-later
+@@ -23,6 +23,10 @@
  
-+#include <linux/bits.h>
-+#include <linux/bitfield.h>
-+#include <linux/idr.h>
- #include <linux/kernel.h>
-+#include <linux/netdevice.h>
-+#include <linux/netlink.h>
- #include <linux/skbuff.h>
-+#include <linux/xarray.h>
-+#include <net/devlink.h>
-+#include <net/net_shaper.h>
+ struct net_shaper_data {
+ 	struct xarray shapers;
++
++	/* Serialize write ops and protects node_ids updates. */
++	struct mutex lock;
++	struct idr node_ids;
+ };
  
- #include "shaper_nl_gen.h"
+ struct net_shaper_nl_ctx {
+@@ -47,6 +51,27 @@ net_shaper_binding_data(struct net_shaper_binding *binding)
+ 	return NULL;
+ }
  
-+#include "../core/dev.h"
-+
-+#define NET_SHAPER_SCOPE_SHIFT	26
-+#define NET_SHAPER_ID_MASK	GENMASK(NET_SHAPER_SCOPE_SHIFT - 1, 0)
-+#define NET_SHAPER_SCOPE_MASK	GENMASK(31, NET_SHAPER_SCOPE_SHIFT)
-+
-+#define NET_SHAPER_ID_UNSPEC NET_SHAPER_ID_MASK
-+
-+struct net_shaper_data {
-+	struct xarray shapers;
-+};
-+
-+struct net_shaper_nl_ctx {
-+	struct net_shaper_binding binding;
-+	netdevice_tracker dev_tracker;
-+	u32 start_index;
-+};
-+
-+static struct net_shaper_binding *net_shaper_binding_from_ctx(void *ctx)
-+{
-+	return &((struct net_shaper_nl_ctx *)ctx)->binding;
-+}
-+
 +static struct net_shaper_data *
-+net_shaper_binding_data(struct net_shaper_binding *binding)
++net_shaper_binding_set_data(struct net_shaper_binding *binding,
++			    struct net_shaper_data *data)
 +{
-+	/* The barrier pairs with cmpxchg on init. */
 +	if (binding->type == NET_SHAPER_BINDING_TYPE_NETDEV)
-+		return READ_ONCE(binding->netdev->net_shaper_data);
++		return cmpxchg(&binding->netdev->net_shaper_data, NULL, data);
 +
-+	/* No other type supported yet.*/
++	/* No devlink implementation yet.*/
 +	return NULL;
 +}
 +
-+static int net_shaper_fill_binding(struct sk_buff *msg,
-+				   const struct net_shaper_binding *binding,
-+				   u32 type)
++static const struct net_shaper_ops *
++net_shaper_binding_ops(struct net_shaper_binding *binding)
 +{
-+	/* Should never happen, as currently only NETDEV is supported */
-+	if (WARN_ON_ONCE(binding->type != NET_SHAPER_BINDING_TYPE_NETDEV))
-+		return -EINVAL;
++	if (binding->type == NET_SHAPER_BINDING_TYPE_NETDEV)
++		return binding->netdev->netdev_ops->net_shaper_ops;
 +
-+	if (nla_put_u32(msg, type, binding->netdev->ifindex))
-+		return -EMSGSIZE;
-+
-+	return 0;
++	/* No devlink implementation yet.*/
++	return NULL;
 +}
 +
-+static int net_shaper_fill_handle(struct sk_buff *msg,
-+				  const struct net_shaper_handle *handle,
-+				  u32 type)
+ static int net_shaper_fill_binding(struct sk_buff *msg,
+ 				   const struct net_shaper_binding *binding,
+ 				   u32 type)
+@@ -178,6 +203,26 @@ static void net_shaper_index_to_handle(u32 index,
+ 	handle->id = FIELD_GET(NET_SHAPER_ID_MASK, index);
+ }
+ 
++static void net_shaper_default_parent(const struct net_shaper_handle *handle,
++				      struct net_shaper_handle *parent)
 +{
-+	struct nlattr *handle_attr;
++	switch (handle->scope) {
++	case NET_SHAPER_SCOPE_UNSPEC:
++	case NET_SHAPER_SCOPE_NETDEV:
++	case __NET_SHAPER_SCOPE_MAX:
++		parent->scope = NET_SHAPER_SCOPE_UNSPEC;
++		break;
 +
-+	if (handle->scope == NET_SHAPER_SCOPE_UNSPEC)
-+		return 0;
-+
-+	handle_attr = nla_nest_start_noflag(msg, type);
-+	if (!handle_attr)
-+		return -EMSGSIZE;
-+
-+	if (nla_put_u32(msg, NET_SHAPER_A_HANDLE_SCOPE, handle->scope) ||
-+	    (handle->scope >= NET_SHAPER_SCOPE_QUEUE &&
-+	     nla_put_u32(msg, NET_SHAPER_A_HANDLE_ID, handle->id)))
-+		goto handle_nest_cancel;
-+
-+	nla_nest_end(msg, handle_attr);
-+	return 0;
-+
-+handle_nest_cancel:
-+	nla_nest_cancel(msg, handle_attr);
-+	return -EMSGSIZE;
++	case NET_SHAPER_SCOPE_QUEUE:
++	case NET_SHAPER_SCOPE_NODE:
++		parent->scope = NET_SHAPER_SCOPE_NETDEV;
++		break;
++	}
++	parent->id = 0;
 +}
 +
-+static int
-+net_shaper_fill_one(struct sk_buff *msg,
-+		    const struct net_shaper_binding *binding,
-+		    const struct net_shaper_handle *handle,
-+		    const struct net_shaper_info *shaper,
-+		    const struct genl_info *info)
-+{
-+	void *hdr;
++#define NET_SHAPER_CACHE_NOT_VALID XA_MARK_0
 +
-+	hdr = genlmsg_iput(msg, info);
-+	if (!hdr)
-+		return -EMSGSIZE;
+ /* Lookup the given shaper inside the cache. */
+ static struct net_shaper_info *
+ net_shaper_cache_lookup(struct net_shaper_binding *binding,
+@@ -186,7 +231,132 @@ net_shaper_cache_lookup(struct net_shaper_binding *binding,
+ 	struct net_shaper_data *data = net_shaper_binding_data(binding);
+ 	u32 index = net_shaper_handle_to_index(handle);
+ 
+-	return data ? xa_load(&data->shapers, index) : NULL;
++	if (!data || xa_get_mark(&data->shapers, index,
++				 NET_SHAPER_CACHE_NOT_VALID))
++		return NULL;
 +
-+	if (net_shaper_fill_binding(msg, binding, NET_SHAPER_A_IFINDEX) ||
-+	    net_shaper_fill_handle(msg, &shaper->parent,
-+				   NET_SHAPER_A_PARENT) ||
-+	    net_shaper_fill_handle(msg, handle, NET_SHAPER_A_HANDLE) ||
-+	    ((shaper->bw_min || shaper->bw_max || shaper->burst) &&
-+	     nla_put_u32(msg, NET_SHAPER_A_METRIC, shaper->metric)) ||
-+	    (shaper->bw_min &&
-+	     nla_put_uint(msg, NET_SHAPER_A_BW_MIN, shaper->bw_min)) ||
-+	    (shaper->bw_max &&
-+	     nla_put_uint(msg, NET_SHAPER_A_BW_MAX, shaper->bw_max)) ||
-+	    (shaper->burst &&
-+	     nla_put_uint(msg, NET_SHAPER_A_BURST, shaper->burst)) ||
-+	    (shaper->priority &&
-+	     nla_put_u32(msg, NET_SHAPER_A_PRIORITY, shaper->priority)) ||
-+	    (shaper->weight &&
-+	     nla_put_u32(msg, NET_SHAPER_A_WEIGHT, shaper->weight)))
-+		goto nla_put_failure;
-+
-+	genlmsg_end(msg, hdr);
-+
-+	return 0;
-+
-+nla_put_failure:
-+	genlmsg_cancel(msg, hdr);
-+	return -EMSGSIZE;
++	return xa_load(&data->shapers, index);
 +}
 +
-+/* Initialize the context fetching the relevant device and
-+ * acquiring a reference to it.
++/* Allocate on demand the per device shaper's cache. */
++static struct net_shaper_data *
++net_shaper_cache_init(struct net_shaper_binding *binding,
++		      struct netlink_ext_ack *extack)
++{
++	struct net_shaper_data *new, *data = net_shaper_binding_data(binding);
++
++	if (!data) {
++		new = kmalloc(sizeof(*data), GFP_KERNEL);
++		if (!new) {
++			NL_SET_ERR_MSG(extack, "Can't allocate memory for shaper data");
++			return NULL;
++		}
++
++		mutex_init(&new->lock);
++		xa_init(&new->shapers);
++		idr_init(&new->node_ids);
++
++		/* No lock acquired yet, we can race with other operations. */
++		data = net_shaper_binding_set_data(binding, new);
++		if (!data)
++			data = new;
++		else
++			kfree(new);
++	}
++	return data;
++}
++
++/* Prepare the cache to actually insert the given shaper, doing
++ * in advance the needed allocations.
 + */
-+static int net_shaper_ctx_init(const struct genl_info *info, int type,
-+			       struct net_shaper_nl_ctx *ctx)
-+{
-+	struct net *ns = genl_info_net(info);
-+	struct net_device *dev;
-+	int ifindex;
-+
-+	memset(ctx, 0, sizeof(*ctx));
-+	if (GENL_REQ_ATTR_CHECK(info, type))
-+		return -EINVAL;
-+
-+	ifindex = nla_get_u32(info->attrs[type]);
-+	dev = netdev_get_by_index(ns, ifindex, &ctx->dev_tracker, GFP_KERNEL);
-+	if (!dev) {
-+		NL_SET_BAD_ATTR(info->extack, info->attrs[type]);
-+		return -ENOENT;
-+	}
-+
-+	if (!dev->netdev_ops->net_shaper_ops) {
-+		NL_SET_BAD_ATTR(info->extack, info->attrs[type]);
-+		netdev_put(dev, &ctx->dev_tracker);
-+		return -EOPNOTSUPP;
-+	}
-+
-+	ctx->binding.type = NET_SHAPER_BINDING_TYPE_NETDEV;
-+	ctx->binding.netdev = dev;
-+	return 0;
-+}
-+
-+static void net_shaper_ctx_cleanup(struct net_shaper_nl_ctx *ctx)
-+{
-+	if (ctx->binding.type == NET_SHAPER_BINDING_TYPE_NETDEV)
-+		netdev_put(ctx->binding.netdev, &ctx->dev_tracker);
-+}
-+
-+static u32 net_shaper_handle_to_index(const struct net_shaper_handle *handle)
-+{
-+	return FIELD_PREP(NET_SHAPER_SCOPE_MASK, handle->scope) |
-+		FIELD_PREP(NET_SHAPER_ID_MASK, handle->id);
-+}
-+
-+static void net_shaper_index_to_handle(u32 index,
-+				       struct net_shaper_handle *handle)
-+{
-+	handle->scope = FIELD_GET(NET_SHAPER_SCOPE_MASK, index);
-+	handle->id = FIELD_GET(NET_SHAPER_ID_MASK, index);
-+}
-+
-+/* Lookup the given shaper inside the cache. */
-+static struct net_shaper_info *
-+net_shaper_cache_lookup(struct net_shaper_binding *binding,
-+			const struct net_shaper_handle *handle)
++static int net_shaper_cache_pre_insert(struct net_shaper_binding *binding,
++				       struct net_shaper_handle *handle,
++				       struct netlink_ext_ack *extack)
 +{
 +	struct net_shaper_data *data = net_shaper_binding_data(binding);
-+	u32 index = net_shaper_handle_to_index(handle);
++	struct net_shaper_info *prev, *cur;
++	bool id_allocated = false;
++	int ret, id, index;
 +
-+	return data ? xa_load(&data->shapers, index) : NULL;
++	if (!data)
++		return -ENOMEM;
++
++	index = net_shaper_handle_to_index(handle);
++	cur = xa_load(&data->shapers, index);
++	if (cur)
++		return 0;
++
++	/* Allocated a new id, if needed. */
++	if (handle->scope == NET_SHAPER_SCOPE_NODE &&
++	    handle->id == NET_SHAPER_ID_UNSPEC) {
++		id = idr_alloc(&data->node_ids, NULL,
++			       0, NET_SHAPER_ID_UNSPEC, GFP_ATOMIC);
++
++		if (id < 0) {
++			NL_SET_ERR_MSG(extack, "Can't allocate new id for NODE shaper");
++			return id;
++		}
++
++		handle->id = id;
++		index = net_shaper_handle_to_index(handle);
++		id_allocated = true;
++	}
++
++	cur = kmalloc(sizeof(*cur), GFP_KERNEL | __GFP_ZERO);
++	if (!cur) {
++		NL_SET_ERR_MSG(extack, "Can't allocate memory for cached shaper");
++		ret = -ENOMEM;
++		goto free_id;
++	}
++
++	/* Mark 'tentative' shaper inside the cache. */
++	xa_lock(&data->shapers);
++	prev = __xa_store(&data->shapers, index, cur, GFP_KERNEL);
++	__xa_set_mark(&data->shapers, index, NET_SHAPER_CACHE_NOT_VALID);
++	xa_unlock(&data->shapers);
++	if (xa_err(prev)) {
++		NL_SET_ERR_MSG(extack, "Can't insert shaper into cache");
++		kfree(cur);
++		ret = xa_err(prev);
++		goto free_id;
++	}
++	return 0;
++
++free_id:
++	if (id_allocated)
++		idr_remove(&data->node_ids, handle->id);
++	return ret;
 +}
 +
-+static int net_shaper_parse_handle(const struct nlattr *attr,
-+				   const struct genl_info *info,
-+				   struct net_shaper_handle *handle)
++/* Commit the tentative insert with the actual values.
++ * Must be called only after a successful net_shaper_pre_insert().
++ */
++static void net_shaper_cache_commit(struct net_shaper_binding *binding,
++				    int nr_shapers,
++				    const struct net_shaper_handle *handle,
++				    const struct net_shaper_info *shapers)
 +{
-+	struct nlattr *tb[NET_SHAPER_A_HANDLE_MAX + 1];
-+	struct nlattr *scope_attr, *id_attr;
-+	u32 id = 0;
++	struct net_shaper_data *data = net_shaper_binding_data(binding);
++	struct net_shaper_info *cur;
++	int index;
++	int i;
++
++	xa_lock(&data->shapers);
++	for (i = 0; i < nr_shapers; ++i) {
++		index = net_shaper_handle_to_index(&handle[i]);
++
++		cur = xa_load(&data->shapers, index);
++		if (WARN_ON_ONCE(!cur))
++			continue;
++
++		/* Successful update: drop the tentative mark
++		 * and update the cache.
++		 */
++		__xa_clear_mark(&data->shapers, index,
++				NET_SHAPER_CACHE_NOT_VALID);
++		*cur = shapers[i];
++	}
++	xa_unlock(&data->shapers);
+ }
+ 
+ static int net_shaper_parse_handle(const struct nlattr *attr,
+@@ -227,6 +397,85 @@ static int net_shaper_parse_handle(const struct nlattr *attr,
+ 	return 0;
+ }
+ 
++static int net_shaper_parse_info(struct net_shaper_binding *binding,
++				 struct nlattr **tb,
++				 const struct genl_info *info,
++				 struct net_shaper_handle *handle,
++				 struct net_shaper_info *shaper,
++				 bool *cached)
++{
++	struct net_shaper_info *old;
 +	int ret;
 +
-+	ret = nla_parse_nested(tb, NET_SHAPER_A_HANDLE_MAX, attr,
-+			       net_shaper_handle_nl_policy, info->extack);
++	/* The shaper handle is the only mandatory attribute. */
++	if (NL_REQ_ATTR_CHECK(info->extack, NULL, tb, NET_SHAPER_A_HANDLE))
++		return -EINVAL;
++
++	ret = net_shaper_parse_handle(tb[NET_SHAPER_A_HANDLE], info, handle);
++	if (ret)
++		return ret;
++
++	if (handle->scope == NET_SHAPER_SCOPE_UNSPEC) {
++		NL_SET_BAD_ATTR(info->extack,
++				info->attrs[NET_SHAPER_A_HANDLE]);
++		return -EINVAL;
++	}
++
++	/* Fetch existing data, if any, so that user provide info will
++	 * incrementally update the existing shaper configuration.
++	 */
++	old = net_shaper_cache_lookup(binding, handle);
++	if (old)
++		*shaper = *old;
++	*cached = !!old;
++
++	if (tb[NET_SHAPER_A_METRIC])
++		shaper->metric = nla_get_u32(tb[NET_SHAPER_A_METRIC]);
++
++	if (tb[NET_SHAPER_A_BW_MIN])
++		shaper->bw_min = nla_get_uint(tb[NET_SHAPER_A_BW_MIN]);
++
++	if (tb[NET_SHAPER_A_BW_MAX])
++		shaper->bw_max = nla_get_uint(tb[NET_SHAPER_A_BW_MAX]);
++
++	if (tb[NET_SHAPER_A_BURST])
++		shaper->burst = nla_get_uint(tb[NET_SHAPER_A_BURST]);
++
++	if (tb[NET_SHAPER_A_PRIORITY])
++		shaper->priority = nla_get_u32(tb[NET_SHAPER_A_PRIORITY]);
++
++	if (tb[NET_SHAPER_A_WEIGHT])
++		shaper->weight = nla_get_u32(tb[NET_SHAPER_A_WEIGHT]);
++	return 0;
++}
++
++/* Fetch the cached shaper info and update them with the user-provided
++ * attributes.
++ */
++static int net_shaper_parse_info_nest(struct net_shaper_binding *binding,
++				      const struct nlattr *attr,
++				      const struct genl_info *info,
++				      struct net_shaper_handle *handle,
++				      struct net_shaper_info *shaper)
++{
++	struct nlattr *tb[NET_SHAPER_A_WEIGHT + 1];
++	bool cached;
++	int ret;
++
++	ret = nla_parse_nested(tb, NET_SHAPER_A_WEIGHT, attr,
++			       net_shaper_info_nl_policy, info->extack);
 +	if (ret < 0)
 +		return ret;
 +
-+	scope_attr = tb[NET_SHAPER_A_HANDLE_SCOPE];
-+	if (!scope_attr) {
-+		NL_SET_BAD_ATTR(info->extack,
-+				tb[NET_SHAPER_A_HANDLE_SCOPE]);
-+		return -EINVAL;
-+	}
++	ret = net_shaper_parse_info(binding, tb, info, handle, shaper, &cached);
++	if (ret < 0)
++		return ret;
 +
-+	handle->scope = nla_get_u32(scope_attr);
-+
-+	/* The default id for NODE scope shapers is an invalid one
-+	 * to help the 'group' operation discriminate between new
-+	 * NODE shaper creation (ID_UNSPEC) and reuse of existing
-+	 * shaper (any other value).
-+	 */
-+	id_attr = tb[NET_SHAPER_A_HANDLE_ID];
-+	if (id_attr)
-+		id = nla_get_u32(id_attr);
-+	else if (handle->scope == NET_SHAPER_SCOPE_NODE)
-+		id = NET_SHAPER_ID_UNSPEC;
-+
-+	handle->id = id;
++	if (!cached)
++		net_shaper_default_parent(handle, &shaper->parent);
 +	return 0;
 +}
 +
-+static int net_shaper_generic_pre(struct genl_info *info, int type)
+ static int net_shaper_generic_pre(struct genl_info *info, int type)
+ {
+ 	struct net_shaper_nl_ctx *ctx;
+@@ -358,14 +607,153 @@ int net_shaper_nl_get_dumpit(struct sk_buff *skb,
+ 	return 0;
+ }
+ 
++/* Update the H/W and on success update the local cache, too. */
++static int net_shaper_set(struct net_shaper_binding *binding,
++			  const struct net_shaper_handle *h,
++			  const struct net_shaper_info *shaper,
++			  struct netlink_ext_ack *extack)
 +{
-+	struct net_shaper_nl_ctx *ctx;
++	struct net_shaper_data *data = net_shaper_cache_init(binding, extack);
++	const struct net_shaper_ops *ops = net_shaper_binding_ops(binding);
++	struct net_shaper_handle handle = *h;
 +	int ret;
 +
-+	ctx = kmalloc(sizeof(*ctx), GFP_KERNEL);
-+	if (!ctx)
++	if (!data)
 +		return -ENOMEM;
 +
-+	ret = net_shaper_ctx_init(info, type, ctx);
-+	if (ret) {
-+		kfree(ctx);
-+		return ret;
++	/* Should never happen: binding lookup validates the ops presence */
++	if (WARN_ON_ONCE(!ops))
++		return -EOPNOTSUPP;
++
++	mutex_lock(&data->lock);
++	if (handle.scope == NET_SHAPER_SCOPE_NODE &&
++	    net_shaper_cache_lookup(binding, &handle)) {
++		ret = -ENOENT;
++		goto unlock;
 +	}
 +
-+	info->user_ptr[0] = ctx;
-+	return 0;
++	ret = net_shaper_cache_pre_insert(binding, &handle, extack);
++	if (ret)
++		goto unlock;
++
++	ret = ops->set(binding, &handle, shaper, extack);
++	net_shaper_cache_commit(binding, 1, &handle, shaper);
++
++unlock:
++	mutex_unlock(&data->lock);
++	return ret;
 +}
 +
- int net_shaper_nl_pre_doit(const struct genl_split_ops *ops,
- 			   struct sk_buff *skb, struct genl_info *info)
- {
--	return -EOPNOTSUPP;
-+	return net_shaper_generic_pre(info, NET_SHAPER_A_IFINDEX);
-+}
-+
-+static void net_shaper_generic_post(struct genl_info *info)
-+{
-+	struct net_shaper_nl_ctx *ctx = info->user_ptr[0];
-+
-+	net_shaper_ctx_cleanup(ctx);
-+	kfree(ctx);
- }
- 
- void net_shaper_nl_post_doit(const struct genl_split_ops *ops,
- 			     struct sk_buff *skb, struct genl_info *info)
- {
-+	net_shaper_generic_post(info);
-+}
-+
-+int net_shaper_nl_pre_dumpit(struct netlink_callback *cb)
-+{
-+	struct net_shaper_nl_ctx *ctx = (struct net_shaper_nl_ctx *)cb->ctx;
-+	const struct genl_info *info = genl_info_dump(cb);
-+
-+	BUILD_BUG_ON(sizeof(*ctx) > sizeof(cb->ctx));
-+
-+	return net_shaper_ctx_init(info, NET_SHAPER_A_IFINDEX, ctx);
-+}
-+
-+int net_shaper_nl_post_dumpit(struct netlink_callback *cb)
-+{
-+	struct net_shaper_nl_ctx *ctx = (struct net_shaper_nl_ctx *)cb->ctx;
-+
-+	net_shaper_ctx_cleanup(ctx);
-+	return 0;
- }
- 
- int net_shaper_nl_get_doit(struct sk_buff *skb, struct genl_info *info)
+ int net_shaper_nl_set_doit(struct sk_buff *skb, struct genl_info *info)
  {
 -	return -EOPNOTSUPP;
 +	struct net_shaper_binding *binding;
 +	struct net_shaper_handle handle;
++	struct net_shaper_info shaper;
++	struct nlattr *attr;
++	int ret;
++
++	if (GENL_REQ_ATTR_CHECK(info, NET_SHAPER_A_SHAPER))
++		return -EINVAL;
++
++	binding = net_shaper_binding_from_ctx(info->user_ptr[0]);
++	attr = info->attrs[NET_SHAPER_A_SHAPER];
++	ret = net_shaper_parse_info_nest(binding, attr, info, &handle,
++					 &shaper);
++	if (ret)
++		return ret;
++
++	return net_shaper_set(binding, &handle, &shaper, info->extack);
++}
++
++static int __net_shaper_delete(struct net_shaper_binding *binding,
++			       const struct net_shaper_handle *h,
++			       struct net_shaper_info *shaper,
++			       struct netlink_ext_ack *extack)
++{
++	const struct net_shaper_ops *ops = net_shaper_binding_ops(binding);
++	struct net_shaper_data *data = net_shaper_binding_data(binding);
++	struct net_shaper_handle parent_handle, handle = *h;
++	int ret;
++
++	/* Should never happen: we are under the cache lock, the cache
++	 * is already initialized.
++	 */
++	if (WARN_ON_ONCE(!data || !ops))
++		return -EINVAL;
++
++again:
++	parent_handle = shaper->parent;
++
++	ret = ops->delete(binding, &handle, extack);
++	if (ret < 0)
++		return ret;
++
++	xa_erase(&data->shapers, net_shaper_handle_to_index(&handle));
++	if (handle.scope == NET_SHAPER_SCOPE_NODE)
++		idr_remove(&data->node_ids, handle.id);
++	kfree(shaper);
++
++	/* Eventually delete the parent, if it is left over with no leaves. */
++	if (parent_handle.scope == NET_SHAPER_SCOPE_NODE) {
++		shaper = net_shaper_cache_lookup(binding, &parent_handle);
++		if (shaper && !--shaper->leaves) {
++			handle = parent_handle;
++			goto again;
++		}
++	}
++	return 0;
++}
++
++static int net_shaper_delete(struct net_shaper_binding *binding,
++			     const struct net_shaper_handle *handle,
++			     struct netlink_ext_ack *extack)
++{
++	struct net_shaper_data *data = net_shaper_binding_data(binding);
 +	struct net_shaper_info *shaper;
-+	struct sk_buff *msg;
++	int ret;
++
++	/* The lock is null when the cache is not initialized, and thus
++	 * no shaper has been created yet.
++	 */
++	if (!data)
++		return -ENOENT;
++
++	mutex_lock(&data->lock);
++	shaper = net_shaper_cache_lookup(binding, handle);
++	if (!shaper) {
++		ret = -ENOENT;
++		goto unlock;
++	}
++
++	if (handle->scope == NET_SHAPER_SCOPE_NODE) {
++		/* TODO: implement support for scope NODE delete. */
++		ret = -EINVAL;
++		goto unlock;
++	}
++
++	ret = __net_shaper_delete(binding, handle, shaper, extack);
++
++unlock:
++	mutex_unlock(&data->lock);
++	return ret;
+ }
+ 
+ int net_shaper_nl_delete_doit(struct sk_buff *skb, struct genl_info *info)
+ {
+-	return -EOPNOTSUPP;
++	struct net_shaper_binding *binding;
++	struct net_shaper_handle handle;
 +	int ret;
 +
 +	if (GENL_REQ_ATTR_CHECK(info, NET_SHAPER_A_HANDLE))
@@ -672,105 +584,30 @@ index a1b20888f502..2ed80df25765 100644
 +	binding = net_shaper_binding_from_ctx(info->user_ptr[0]);
 +	ret = net_shaper_parse_handle(info->attrs[NET_SHAPER_A_HANDLE], info,
 +				      &handle);
-+	if (ret < 0)
++	if (ret)
 +		return ret;
 +
-+	shaper = net_shaper_cache_lookup(binding, &handle);
-+	if (!shaper) {
-+		NL_SET_BAD_ATTR(info->extack,
-+				info->attrs[NET_SHAPER_A_HANDLE]);
-+		return -ENOENT;
-+	}
-+
-+	msg = nlmsg_new(NLMSG_DEFAULT_SIZE, GFP_KERNEL);
-+	if (!msg)
-+		return -ENOMEM;
-+
-+	ret = net_shaper_fill_one(msg, binding, &handle, shaper, info);
-+	if (ret)
-+		goto free_msg;
-+
-+	ret =  genlmsg_reply(msg, info);
-+	if (ret)
-+		goto free_msg;
-+
-+	return 0;
-+
-+free_msg:
-+	nlmsg_free(msg);
-+	return ret;
++	return net_shaper_delete(binding, &handle, info->extack);
  }
  
- int net_shaper_nl_get_dumpit(struct sk_buff *skb,
- 			     struct netlink_callback *cb)
- {
--	return -EOPNOTSUPP;
-+	struct net_shaper_nl_ctx *ctx = (struct net_shaper_nl_ctx *)cb->ctx;
-+	const struct genl_info *info = genl_info_dump(cb);
-+	struct net_shaper_binding *binding;
-+	struct net_shaper_handle handle;
-+	struct net_shaper_info *shaper;
-+	struct net_shaper_data *data;
-+	unsigned long index;
-+	int ret;
+ static void net_shaper_flush(struct net_shaper_binding *binding)
+@@ -377,12 +765,16 @@ static void net_shaper_flush(struct net_shaper_binding *binding)
+ 	if (!data)
+ 		return;
+ 
++	mutex_lock(&data->lock);
+ 	xa_lock(&data->shapers);
+ 	xa_for_each(&data->shapers, index, cur) {
+ 		__xa_erase(&data->shapers, index);
+ 		kfree(cur);
+ 	}
+ 	xa_unlock(&data->shapers);
++	idr_destroy(&data->node_ids);
++	mutex_unlock(&data->lock);
 +
-+	/* Don't error out dumps performed before any set operation. */
-+	binding = net_shaper_binding_from_ctx(ctx);
-+	data = net_shaper_binding_data(binding);
-+	if (!data)
-+		return 0;
-+
-+	xa_for_each_range(&data->shapers, index, shaper, ctx->start_index,
-+			  U32_MAX) {
-+		net_shaper_index_to_handle(index, &handle);
-+		ret = net_shaper_fill_one(skb, binding, &handle, shaper, info);
-+		if (ret)
-+			return ret;
-+
-+		ctx->start_index = index;
-+	}
-+
-+	return 0;
+ 	kfree(data);
  }
  
- int net_shaper_nl_set_doit(struct sk_buff *skb, struct genl_info *info)
-@@ -37,14 +368,32 @@ int net_shaper_nl_delete_doit(struct sk_buff *skb, struct genl_info *info)
- 	return -EOPNOTSUPP;
- }
- 
--int net_shaper_nl_pre_dumpit(struct netlink_callback *cb)
-+static void net_shaper_flush(struct net_shaper_binding *binding)
- {
--	return -EOPNOTSUPP;
-+	struct net_shaper_data *data = net_shaper_binding_data(binding);
-+	struct net_shaper_info *cur;
-+	unsigned long index;
-+
-+	if (!data)
-+		return;
-+
-+	xa_lock(&data->shapers);
-+	xa_for_each(&data->shapers, index, cur) {
-+		__xa_erase(&data->shapers, index);
-+		kfree(cur);
-+	}
-+	xa_unlock(&data->shapers);
-+	kfree(data);
- }
- 
--int net_shaper_nl_post_dumpit(struct netlink_callback *cb)
-+void net_shaper_flush_netdev(struct net_device *dev)
- {
--	return -EOPNOTSUPP;
-+	struct net_shaper_binding binding = {
-+		.type = NET_SHAPER_BINDING_TYPE_NETDEV,
-+		.netdev = dev,
-+	};
-+
-+	net_shaper_flush(&binding);
- }
- 
- static int __init shaper_init(void)
 -- 
 2.45.2
 
