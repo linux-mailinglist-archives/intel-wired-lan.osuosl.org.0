@@ -2,94 +2,98 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id DD2F39649AC
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 29 Aug 2024 17:17:40 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id C3E229649AE
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 29 Aug 2024 17:17:45 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 7BAB6418AB;
-	Thu, 29 Aug 2024 15:17:38 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 7237140D0B;
+	Thu, 29 Aug 2024 15:17:44 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id w-yPuLWG9FaC; Thu, 29 Aug 2024 15:17:37 +0000 (UTC)
+ id VFNyUX4V8RZH; Thu, 29 Aug 2024 15:17:42 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C0CB540D0B
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 31F78403DD
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1724944656;
-	bh=kXw8Yuy/5Ie7ozfteaZNS9EplLViUVL+SoqrglsoFzw=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=HX5V7R4rpiXHVRECWPk9XKSZXrsSo0LJBOuGFM7tXmZ5kCyCQHvt1hQsFPcIVRUM0
-	 UcUwh1Pl/HvLyctbLHxv+6sooUOWp+VHeeqZNwrK/bDI6ZHBHcT3aq8UdRD3nbRgCW
-	 hROwi9hWoxV9cZ8WQWfEGB614F0B0/5zl4dFJKMUlEpsVqSEmxwfXr8BRVZrnW40vi
-	 81LZZSsEWhRPKCnBKdyb4XwCE48QIc4ZYzOvI05SUNhG298wxUCnRtFBMwQZdoos0W
-	 pdBKDnsTHlo1D7e+U56V9wIgrdrut/VOfpSFxTM4ZooM4OMKFWcP3goGTQcs5XY1Lx
-	 pBub7sDvI5Mew==
+	s=default; t=1724944662;
+	bh=mYKNFdhf4vYVdDhytv5kgVnc0pL/IkDzlrOUzgB07Us=;
+	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=n2fD80vO1QWchNaD0OZmbQgl3oGrMmvg7MVwTwN4WlszkSLpmwEdTAlBOooBA1EDS
+	 sBOutNdYc9kIzJoOSK/rlB7fDlVcIvdiGxpg1Gmm7OCNc3unARIm23tWsMUdJ3wLgc
+	 MSM9bWdoeJka+PFbtBnWh/4pJt8XiwAbuw90sd6EXL8rDggVnfr9UsaJ3BKsLK1B55
+	 A9vhQqunObOw1xr/t5pxaA30AkFANHc6TrbHtScbGYqzc+q+QmirGMA+y2aRyO5JBY
+	 POFxl90YO7xV8CoY4srQ4q+hWgs1T+xkcUORszC/5JM/BRsZDKruO7cUI5NPZORzSr
+	 Zq6ifuhd0abyA==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id C0CB540D0B;
-	Thu, 29 Aug 2024 15:17:36 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 31F78403DD;
+	Thu, 29 Aug 2024 15:17:42 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id B8A9F1BF27C
- for <intel-wired-lan@lists.osuosl.org>; Thu, 29 Aug 2024 15:17:34 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 2B5251BF27C
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 29 Aug 2024 15:17:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id B23E26077F
- for <intel-wired-lan@lists.osuosl.org>; Thu, 29 Aug 2024 15:17:34 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 18A8440654
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 29 Aug 2024 15:17:40 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Jkoul9YRNIWt for <intel-wired-lan@lists.osuosl.org>;
- Thu, 29 Aug 2024 15:17:33 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id cByC-nwFOtb3 for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 29 Aug 2024 15:17:38 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.133.124;
  helo=us-smtp-delivery-124.mimecast.com; envelope-from=pabeni@redhat.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 5D1056071D
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5D1056071D
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 5556640CAB
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5556640CAB
 Received: from us-smtp-delivery-124.mimecast.com
  (us-smtp-delivery-124.mimecast.com [170.10.133.124])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 5D1056071D
- for <intel-wired-lan@lists.osuosl.org>; Thu, 29 Aug 2024 15:17:33 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 5556640CAB
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 29 Aug 2024 15:17:38 +0000 (UTC)
 Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-498-Fxf7_fxbMeKWzekjw-zKBQ-1; Thu,
- 29 Aug 2024 11:17:26 -0400
-X-MC-Unique: Fxf7_fxbMeKWzekjw-zKBQ-1
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-512-3NkB14r9MRC_Ded9zGTPig-1; Thu,
+ 29 Aug 2024 11:17:33 -0400
+X-MC-Unique: 3NkB14r9MRC_Ded9zGTPig-1
 Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 01D3B1955F3F; Thu, 29 Aug 2024 15:17:24 +0000 (UTC)
+ id 1463B1955BE7; Thu, 29 Aug 2024 15:17:30 +0000 (UTC)
 Received: from gerbillo.redhat.com (unknown [10.45.224.217])
  by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 43B88300019C; Thu, 29 Aug 2024 15:17:18 +0000 (UTC)
+ id 4AB323001FC3; Thu, 29 Aug 2024 15:17:24 +0000 (UTC)
 From: Paolo Abeni <pabeni@redhat.com>
 To: netdev@vger.kernel.org
-Date: Thu, 29 Aug 2024 17:16:53 +0200
-Message-ID: <cover.1724944116.git.pabeni@redhat.com>
+Date: Thu, 29 Aug 2024 17:16:54 +0200
+Message-ID: <6efadf27d04ebeefee842586237cadcb18da5fca.1724944117.git.pabeni@redhat.com>
+In-Reply-To: <cover.1724944116.git.pabeni@redhat.com>
+References: <cover.1724944116.git.pabeni@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=redhat.com; 
- s=mimecast20190719; t=1724944652;
+ s=mimecast20190719; t=1724944657;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=kXw8Yuy/5Ie7ozfteaZNS9EplLViUVL+SoqrglsoFzw=;
- b=KR1SdTM5nDE7/4TsuumaYrXjDI9KNG1K16wvGxkdaViTRjbws0GQ7xhsjOWpc7a+Y8yWbi
- M3XeWVUJ84C8fmytAbCnNtcWA8o5K65UzSS+IJpEIEwWCYIXvZHsvGM+wSjOQnvieSWGlO
- kvya4vo+QFvSkPiBqz2E8cm2UV22vxw=
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=mYKNFdhf4vYVdDhytv5kgVnc0pL/IkDzlrOUzgB07Us=;
+ b=YsatGb1PMRMEGPC3R7KzCKq7ljBFM0+pBCKrlwccuHeDwkJygsyfAURtEKw5v+Szui+5VC
+ wTg0ylOodHTDlOC6lAp6BiOPO+HqqzlBYxsABQZmjPcI60V6FdfHsAjgMoeFDGxfcqNmic
+ yd7QHpWhTSWg2YiISCVyP36Y1xI/1vs=
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=redhat.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
- header.a=rsa-sha256 header.s=mimecast20190719 header.b=KR1SdTM5
-Subject: [Intel-wired-lan] [PATCH v5 net-next 00/12] net: introduce TX H/W
- shaping API
+ header.a=rsa-sha256 header.s=mimecast20190719 header.b=YsatGb1P
+Subject: [Intel-wired-lan] [PATCH v5 net-next 01/12] netlink: spec: add
+ shaper YAML spec
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -113,211 +117,737 @@ Cc: Jiri Pirko <jiri@resnulli.us>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-We have a plurality of shaping-related drivers API, but none flexible
-enough to meet existing demand from vendors[1].
+Define the user-space visible interface to query, configure and delete
+network shapers via yaml definition.
 
-This series introduces new device APIs to configure in a flexible way
-TX H/W shaping. The new functionalities are exposed via a newly
-defined generic netlink interface and include introspection
-capabilities. Some self-tests are included, on top of a dummy
-netdevsim implementation. Finally a basic implementation for the iavf
-driver is provided.
+Add dummy implementations for the relevant NL callbacks.
 
-Some usage examples:
+set() and delete() operations touch a single shaper creating/updating or
+deleting it.
+The group() operation creates a shaper's group, nesting multiple input
+shapers under the specified output shaper.
 
-* Configure shaping on a given queue:
-
-./tools/net/ynl/cli.py --spec Documentation/netlink/specs/shaper.yaml \
-	--do set --json '{"ifindex": '$IFINDEX',
-			  "shaper": {"handle":
-				     {"scope": "queue", "id":'$QUEUEID'},
-			  "bw-max": 2000000}}'
-
-* Container B/W sharing
-
-The orchestration infrastructure wants to group the 
-container-related queues under a RR scheduling and limit the aggregate
-bandwidth:
-
-./tools/net/ynl/cli.py --spec Documentation/netlink/specs/shaper.yaml \
-	--do group --json '{"ifindex": '$IFINDEX',
-			"leaves": [
-			  {"handle": {"scope": "queue", "id":'$QID1'},
-			   "weight": '$W1'}, 
-			  {"handle": {"scope": "queue", "id":'$QID2'},
-			   "weight": '$W2'}], 
-			  {"handle": {"scope": "queue", "id":'$QID3'},
-			   "weight": '$W3'}], 
-			"node": {"handle": {"scope":"node"},
-			 	 "bw-max": 10000000}}'
-{'ifindex': $IFINDEX, 'handle': {'scope': 'node', 'id': 0}}
-
-Q1 \
-    \
-Q2 -- node 0 -------  netdev
-    / (bw-max: 10M)
-Q3 / 
-
-* Delegation
-
-A containers wants to limit the aggregate B/W bandwidth of 2 of the 3
-queues it owns - the starting configuration is the one from the
-previous point:
-
-SPEC=Documentation/netlink/specs/net_shaper.yaml
-./tools/net/ynl/cli.py --spec $SPEC \
-	--do group --json '{"ifindex": '$IFINDEX',
-			"leaves": [ 
-			  {"handle": {"scope": "queue", "id":'$QID1'},
-			   "weight": '$W1'}, 
-			  {"handle": {"scope": "queue", "id":'$QID2'},
-			   "weight": '$W2'}], 
-			"node": {"handle": {"scope": "node"},
-				 "bw-max": 5000000 }}'
-{'ifindex': $IFINDEX, 'handle': {'scope': 'node', 'id': 1}}
-
-Q1 -- node 1 --------\
-    / (bw-max: 5M)    \
-Q2 /                   node 0 -------  netdev
-                      /  (bw-max: 10M)
-Q3 ------------------
-
-* Cleanup:
-
-To delete a single queue shaper:
-
-./tools/net/ynl/cli.py --spec $SPEC --do delete --json \
-	'{"ifindex": '$IFINDEX',
-	  "handle": {"scope": "queue", "id":'$QID3'}}'
-
-Q1 -- node 1 --------\
-    / (bw-max: 5M)    \
-Q2 /                   node 0 -------  netdev
-                       (bw-max: 10M)
-
-Deleting a node shaper relinks all its leaves to the node's parent:
-
-./tools/net/ynl/cli.py --spec $SPEC --do delete --json \
-	'{"ifindex": '$IFINDEX',
-	  "handle": {"scope": "node", "id":1}}'
-
-Q1 ------\
-          \
-          node 0 -------  netdev
-         /  (bw-max: 10M)
-Q2 -----
-
-Deleting the last shaper under a node shaper deletes the node, too:
-
-./tools/net/ynl/cli.py --spec $SPEC --do delete --json \
-	'{"ifindex": '$IFINDEX',
-	  "handle": {"scope": "queue", "id":'$QID1'}}'
-./tools/net/ynl/cli.py --spec $SPEC --do delete --json \
-	'{"ifindex": '$IFINDEX',
-	  "handle": {"scope": "queue", "id":'$QID2'}}'
-./tools/net/ynl/cli.py --spec $SPEC --do get --json \
-	'{"ifindex": '$IFINDEX',
-	  "handle": {"scope": "node", "id": 0}}'
-Netlink error: No such file or directory
-nl_len = 44 (28) nl_flags = 0x300 nl_type = 2
-	error: -2
-	extack: {'bad-attr': '.handle'}
-
-[1] https://lore.kernel.org/netdev/20240405102313.GA310894@kernel.org/
+Signed-off-by: Paolo Abeni <pabeni@redhat.com>
 ---
-Changes from v4:
- - ops operate on struct binding
- - 'root' -> 'node' rename
- - most core function/helpers operate on 'binding'
- - use NL_SET_BAD_ATTR where possible
- - some code deduplication
-
-v4: https://lore.kernel.org/netdev/cover.1724165948.git.pabeni@redhat.com/
-
-Changes from v3:
- - rename
- - locking
- - delete operates on node, too
-
-v3: https://lore.kernel.org/netdev/cover.1722357745.git.pabeni@redhat.com/
-
-Changes from RFC v2:
- - added patch 1
- - fixed deprecated API usage
-
-RFC v2: https://lore.kernel.org/netdev/cover.1721851988.git.pabeni@redhat.com/
-
-Changes from RFC v1:
- - set() and delete() ops operate on a single shaper
- - added group() op to allow grouping and nesting
- - split the NL implementation into multiple patches to help reviewing
-
-RFC v1: https://lore.kernel.org/netdev/cover.1719518113.git.pabeni@redhat.com/
-
-Paolo Abeni (8):
-  netlink: spec: add shaper YAML spec
-  net-shapers: implement NL get operation
-  net-shapers: implement NL set and delete operations
-  net-shapers: implement NL group operation
-  net-shapers: implement delete support for NODE scope shaper
-  netlink: spec: add shaper introspection support
-  net: shaper: implement introspection support
-  testing: net-drv: add basic shaper test
-
-Sudheer Mogilappagari (2):
-  iavf: Add net_shaper_ops support
-  iavf: add support to exchange qos capabilities
-
-Wenjun Wu (2):
-  virtchnl: support queue rate limit and quanta size configuration
-  ice: Support VF queue rate limit and quanta size configuration
-
- Documentation/netlink/specs/net_shaper.yaml   |  391 +++++
- Documentation/networking/kapi.rst             |    3 +
- MAINTAINERS                                   |    1 +
- drivers/net/Kconfig                           |    1 +
- drivers/net/ethernet/intel/Kconfig            |    1 +
- drivers/net/ethernet/intel/iavf/iavf.h        |   13 +
- drivers/net/ethernet/intel/iavf/iavf_main.c   |  190 ++-
- drivers/net/ethernet/intel/iavf/iavf_txrx.h   |    2 +
- .../net/ethernet/intel/iavf/iavf_virtchnl.c   |  157 +-
- drivers/net/ethernet/intel/ice/ice.h          |    2 +
- drivers/net/ethernet/intel/ice/ice_base.c     |    2 +
- drivers/net/ethernet/intel/ice/ice_common.c   |   21 +
- .../net/ethernet/intel/ice/ice_hw_autogen.h   |    8 +
- drivers/net/ethernet/intel/ice/ice_txrx.h     |    1 +
- drivers/net/ethernet/intel/ice/ice_type.h     |    1 +
- drivers/net/ethernet/intel/ice/ice_vf_lib.h   |    8 +
- drivers/net/ethernet/intel/ice/ice_virtchnl.c |  335 +++++
- drivers/net/ethernet/intel/ice/ice_virtchnl.h |   11 +
- .../intel/ice/ice_virtchnl_allowlist.c        |    6 +
- drivers/net/netdevsim/netdev.c                |   43 +
- include/linux/avf/virtchnl.h                  |  119 ++
- include/linux/netdevice.h                     |   15 +
- include/net/net_shaper.h                      |  121 ++
- include/uapi/linux/net_shaper.h               |   97 ++
- net/Kconfig                                   |    3 +
- net/Makefile                                  |    1 +
- net/core/dev.c                                |    2 +
- net/core/dev.h                                |    6 +
- net/shaper/Makefile                           |    8 +
- net/shaper/shaper.c                           | 1337 +++++++++++++++++
- net/shaper/shaper_nl_gen.c                    |  156 ++
- net/shaper/shaper_nl_gen.h                    |   45 +
- tools/testing/selftests/drivers/net/Makefile  |    1 +
- tools/testing/selftests/drivers/net/shaper.py |  290 ++++
- .../testing/selftests/net/lib/py/__init__.py  |    1 +
- tools/testing/selftests/net/lib/py/ynl.py     |    5 +
- 36 files changed, 3402 insertions(+), 2 deletions(-)
+v4 -> v5:
+ - moved ifindex under the binding attr
+ - moved id, scope to new attr set
+ - rename 'root' as 'node'
+ - deleted unused 'info' subset
+ - a lot of doc update and fixup
+ - removed empty black line at MAKEFILE eof
+v3 -> v4:
+ - spec file rename
+ - always use '@' for references
+ - detached scope -> node scope
+ - inputs/output -> leaves/root
+ - deduplicate leaves/root policy
+ - get/dump/group return ifindex, too
+ - added some general introduction to the doc
+RFC v1 -> RFC v2:
+ - u64 -> uint
+ - net_shapers -> net-shapers
+ - documented all the attributes
+ - dropped [ admin-perm ] for get() op
+ - group op
+ - set/delete touch a single shaper
+---
+ Documentation/netlink/specs/net_shaper.yaml | 303 ++++++++++++++++++++
+ MAINTAINERS                                 |   1 +
+ include/uapi/linux/net_shaper.h             |  80 ++++++
+ net/Kconfig                                 |   3 +
+ net/Makefile                                |   1 +
+ net/shaper/Makefile                         |   8 +
+ net/shaper/shaper.c                         |  55 ++++
+ net/shaper/shaper_nl_gen.c                  | 127 ++++++++
+ net/shaper/shaper_nl_gen.h                  |  35 +++
+ 9 files changed, 613 insertions(+)
  create mode 100644 Documentation/netlink/specs/net_shaper.yaml
- create mode 100644 include/net/net_shaper.h
  create mode 100644 include/uapi/linux/net_shaper.h
  create mode 100644 net/shaper/Makefile
  create mode 100644 net/shaper/shaper.c
  create mode 100644 net/shaper/shaper_nl_gen.c
  create mode 100644 net/shaper/shaper_nl_gen.h
- create mode 100755 tools/testing/selftests/drivers/net/shaper.py
 
+diff --git a/Documentation/netlink/specs/net_shaper.yaml b/Documentation/netlink/specs/net_shaper.yaml
+new file mode 100644
+index 000000000000..ae40bd17c39c
+--- /dev/null
++++ b/Documentation/netlink/specs/net_shaper.yaml
+@@ -0,0 +1,303 @@
++# SPDX-License-Identifier: ((GPL-2.0 WITH Linux-syscall-note) OR BSD-3-Clause)
++
++name: net-shaper
++
++doc: |
++  Networking HW rate limiting configuration.
++
++  This API allows configuring HW shapers available on the network
++  devices at different levels (queues, network device) and allows
++  arbitrary manipulation of the scheduling tree of the involved
++  shapers.
++
++  Each @shaper is identified within the given device, by an @handle,
++  comprising both a @scope and an @id.
++
++  Depending on the @scope value, the shapers are attached to specific
++  HW objects (queues, devices) or, for @node scope, represent a
++  scheduling group, that can be placed in an arbitrary location of
++  the scheduling tree.
++
++  Shapers can be created with two different operations: the @set
++  operation, to create and update a single "attached" shaper, and
++  the @group operation, to create and update a scheduling
++  group. Only the @group operation can create @node scope shapers
++
++  Existing shapers can be deleted /reset via the @delete operation.
++
++  The user can query the running configuration via the @get operation.
++
++definitions:
++  -
++    type: enum
++    name: scope
++    doc: Defines the shaper @id interpretation.
++    render-max: true
++    entries:
++      - name: unspec
++        doc: The scope is not specified.
++      -
++        name: netdev
++        doc: The main shaper for the given network device.
++      -
++        name: queue
++        doc: |
++            The shaper is attached to the given device queue,
++            the @id represents the queue number.
++      -
++        name: node
++        doc: |
++             The shaper allows grouping of queues or other
++             node shapers; can be nested in either @netdev
++             shapers or other @node shapers, allowing placement
++             in any location of the scheduling tree, except
++             leaves and root.
++  -
++    type: enum
++    name: metric
++    doc: Different metric supported by the shaper.
++    entries:
++      -
++        name: bps
++        doc: Shaper operates on a bits per second basis.
++      -
++        name: pps
++        doc: Shaper operates on a packets per second basis.
++
++attribute-sets:
++  -
++    name: net-shaper
++    attributes:
++      -
++        name: handle
++        type: nest
++        nested-attributes: handle
++        doc: Unique identifier for the given shaper inside the owning device.
++      -
++        name: metric
++        type: u32
++        enum: metric
++        doc: Metric used by the given shaper for bw-min, bw-max and burst.
++      -
++        name: bw-min
++        type: uint
++        doc: Minimum Guaranteed bandwidth for the given shaper.
++      -
++        name: bw-max
++        type: uint
++        doc: Maximum bandwidth for the given shaper or 0 when unlimited.
++      -
++        name: burst
++        type: uint
++        doc: |
++          Maximum burst-size for shaping. Should not be interpreted
++          as a quantum.
++      -
++        name: priority
++        type: u32
++        doc: |
++          Scheduling priority for the given shaper. The priority
++          scheduling is applied to sibling shapers.
++      -
++        name: weight
++        type: u32
++        doc: |
++          Relative weight for round robin scheduling of the
++          given shaper.
++          The scheduling is applied to all sibling shapers
++          with the same priority.
++      -
++        name: ifindex
++        type: u32
++        doc: Interface index owning the specified shaper.
++      -
++        name: parent
++        type: nest
++        nested-attributes: handle
++        doc: |
++          Identifier for the parent of the affected shaper.
++          Only needed for @group operation.
++      -
++        name: leaves
++        type: nest
++        multi-attr: true
++        nested-attributes: info
++        doc: |
++           Describes a set of leaves shapers for a @group operation.
++      -
++        name: node
++        type: nest
++        nested-attributes: node-info
++        doc: |
++           Describes the node shaper for a @group operation.
++           Differently from @leaves and @shaper allow specifying
++           the shaper parent handle, too.
++      -
++        name: shaper
++        type: nest
++        nested-attributes: info
++        doc: |
++           Describes a single shaper for a @set operation.
++  -
++    name: handle
++    attributes:
++      -
++        name: scope
++        type: u32
++        enum: scope
++        doc: Defines the shaper @id interpretation.
++      -
++        name: id
++        type: u32
++        doc: |
++          Numeric identifier of a shaper. The id semantic depends on
++          the scope. For @queue scope it's the queue id and for @node
++          scope it's the node identifier.
++  -
++    name: info
++    subset-of: net-shaper
++    attributes:
++      -
++        name: handle
++      -
++        name: metric
++      -
++        name: bw-min
++      -
++        name: bw-max
++      -
++        name: burst
++      -
++        name: priority
++      -
++        name: weight
++  -
++    name: node-info
++    subset-of: net-shaper
++    attributes:
++      -
++        name: parent
++      -
++        name: handle
++      -
++        name: metric
++      -
++        name: bw-min
++      -
++        name: bw-max
++      -
++        name: burst
++      -
++        name: priority
++      -
++        name: weight
++
++operations:
++  list:
++    -
++      name: get
++      doc: |
++        Get information about a shaper for a given device.
++      attribute-set: net-shaper
++
++      do:
++        pre: net-shaper-nl-pre-doit
++        post: net-shaper-nl-post-doit
++        request:
++          attributes: &ns-binding
++            - ifindex
++            - handle
++        reply:
++          attributes: &ns-attrs
++            - ifindex
++            - parent
++            - handle
++            - metric
++            - bw-min
++            - bw-max
++            - burst
++            - priority
++            - weight
++
++      dump:
++        pre: net-shaper-nl-pre-dumpit
++        post: net-shaper-nl-post-dumpit
++        request:
++          attributes:
++            - ifindex
++        reply:
++          attributes: *ns-attrs
++    -
++      name: set
++      doc: |
++        Create or update the specified shaper.
++        The set operation can't be used to create a @node scope shaper,
++        use the @group operation instead.
++      attribute-set: net-shaper
++      flags: [ admin-perm ]
++
++      do:
++        pre: net-shaper-nl-pre-doit
++        post: net-shaper-nl-post-doit
++        request:
++          attributes:
++            - ifindex
++            - shaper
++
++    -
++      name: delete
++      doc: |
++        Clear (remove) the specified shaper. When deleting
++        a @node shaper, reattach all the node's leaves to the
++        deleted node's parent.
++        If, after the removal, the parent shaper has no more
++        leaves and the parent shaper scope is @node,the parent
++        node is deleted, recursively.
++        When deleting a @queue shaper or a @netdev shaper,
++        the shaper disappears from the hierarchy, but the
++        queue/device can still send traffic: it has an implicit
++        node with infinite bandwidth. Queue's implicit node
++        feeds an implicit RR node at the root of the hierarchy.
++      attribute-set: net-shaper
++      flags: [ admin-perm ]
++
++      do:
++        pre: net-shaper-nl-pre-doit
++        post: net-shaper-nl-post-doit
++        request:
++          attributes: *ns-binding
++
++    -
++      name: group
++      doc: |
++        Create or update a scheduling group, attaching the specified
++        @leaves shapers under the specified @node, creating the latter,
++        if needed.
++        The @leaves shapers scope must be @queue and the @node shaper
++        scope must be either @node or @netdev.
++        When the @node shaper has @node scope, if the @handle @id is not
++        specified, a new shaper of such scope is created, otherwise the
++        specified @node must already exist.
++        The @parent handle for the @node shaper is optional in most cases.
++        For newly created @node scope shaper, the @parent is set by
++        default to the parent linked to the @leaves before the @group
++        operation. If, prior to the grouping operation, the @leaves
++        have different parents, the @node shaper parent must be explicitly
++        set.
++        The operation is atomic, on failure no change is applied to
++        the device shaping configuration, otherwise the @node shaper
++        full identifier, comprising @binding and @handle, is provided
++        as the reply.
++      attribute-set: net-shaper
++      flags: [ admin-perm ]
++
++      do:
++        pre: net-shaper-nl-pre-doit
++        post: net-shaper-nl-post-doit
++        request:
++          attributes:
++            - ifindex
++            - leaves
++            - node
++        reply:
++          attributes: *ns-binding
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 30a9b9450e11..2673b9c63439 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -15892,6 +15892,7 @@ F:	include/linux/platform_data/wiznet.h
+ F:	include/uapi/linux/cn_proc.h
+ F:	include/uapi/linux/ethtool_netlink.h
+ F:	include/uapi/linux/if_*
++F:	include/uapi/linux/net_shaper.h
+ F:	include/uapi/linux/netdev*
+ F:	tools/testing/selftests/drivers/net/
+ X:	drivers/net/wireless/
+diff --git a/include/uapi/linux/net_shaper.h b/include/uapi/linux/net_shaper.h
+new file mode 100644
+index 000000000000..03c774a2bec1
+--- /dev/null
++++ b/include/uapi/linux/net_shaper.h
+@@ -0,0 +1,80 @@
++/* SPDX-License-Identifier: ((GPL-2.0 WITH Linux-syscall-note) OR BSD-3-Clause) */
++/* Do not edit directly, auto-generated from: */
++/*	Documentation/netlink/specs/net_shaper.yaml */
++/* YNL-GEN uapi header */
++
++#ifndef _UAPI_LINUX_NET_SHAPER_H
++#define _UAPI_LINUX_NET_SHAPER_H
++
++#define NET_SHAPER_FAMILY_NAME		"net-shaper"
++#define NET_SHAPER_FAMILY_VERSION	1
++
++/**
++ * enum net_shaper_scope - Defines the shaper @id interpretation.
++ * @NET_SHAPER_SCOPE_UNSPEC: The scope is not specified.
++ * @NET_SHAPER_SCOPE_NETDEV: The main shaper for the given network device.
++ * @NET_SHAPER_SCOPE_QUEUE: The shaper is attached to the given device queue,
++ *   the @id represents the queue number.
++ * @NET_SHAPER_SCOPE_NODE: The shaper allows grouping of queues or other node
++ *   shapers; can be nested in either @netdev shapers or other @node shapers,
++ *   allowing placement in any location of the scheduling tree, except leaves
++ *   and root.
++ */
++enum net_shaper_scope {
++	NET_SHAPER_SCOPE_UNSPEC,
++	NET_SHAPER_SCOPE_NETDEV,
++	NET_SHAPER_SCOPE_QUEUE,
++	NET_SHAPER_SCOPE_NODE,
++
++	/* private: */
++	__NET_SHAPER_SCOPE_MAX,
++	NET_SHAPER_SCOPE_MAX = (__NET_SHAPER_SCOPE_MAX - 1)
++};
++
++/**
++ * enum net_shaper_metric - Different metric supported by the shaper.
++ * @NET_SHAPER_METRIC_BPS: Shaper operates on a bits per second basis.
++ * @NET_SHAPER_METRIC_PPS: Shaper operates on a packets per second basis.
++ */
++enum net_shaper_metric {
++	NET_SHAPER_METRIC_BPS,
++	NET_SHAPER_METRIC_PPS,
++};
++
++enum {
++	NET_SHAPER_A_HANDLE = 1,
++	NET_SHAPER_A_METRIC,
++	NET_SHAPER_A_BW_MIN,
++	NET_SHAPER_A_BW_MAX,
++	NET_SHAPER_A_BURST,
++	NET_SHAPER_A_PRIORITY,
++	NET_SHAPER_A_WEIGHT,
++	NET_SHAPER_A_IFINDEX,
++	NET_SHAPER_A_PARENT,
++	NET_SHAPER_A_LEAVES,
++	NET_SHAPER_A_NODE,
++	NET_SHAPER_A_SHAPER,
++
++	__NET_SHAPER_A_MAX,
++	NET_SHAPER_A_MAX = (__NET_SHAPER_A_MAX - 1)
++};
++
++enum {
++	NET_SHAPER_A_HANDLE_SCOPE = 1,
++	NET_SHAPER_A_HANDLE_ID,
++
++	__NET_SHAPER_A_HANDLE_MAX,
++	NET_SHAPER_A_HANDLE_MAX = (__NET_SHAPER_A_HANDLE_MAX - 1)
++};
++
++enum {
++	NET_SHAPER_CMD_GET = 1,
++	NET_SHAPER_CMD_SET,
++	NET_SHAPER_CMD_DELETE,
++	NET_SHAPER_CMD_GROUP,
++
++	__NET_SHAPER_CMD_MAX,
++	NET_SHAPER_CMD_MAX = (__NET_SHAPER_CMD_MAX - 1)
++};
++
++#endif /* _UAPI_LINUX_NET_SHAPER_H */
+diff --git a/net/Kconfig b/net/Kconfig
+index d27d0deac0bf..31fccfed04f7 100644
+--- a/net/Kconfig
++++ b/net/Kconfig
+@@ -66,6 +66,9 @@ config SKB_DECRYPTED
+ config SKB_EXTENSIONS
+ 	bool
+ 
++config NET_SHAPER
++	bool
++
+ menu "Networking options"
+ 
+ source "net/packet/Kconfig"
+diff --git a/net/Makefile b/net/Makefile
+index 65bb8c72a35e..60ed5190eda8 100644
+--- a/net/Makefile
++++ b/net/Makefile
+@@ -79,3 +79,4 @@ obj-$(CONFIG_XDP_SOCKETS)	+= xdp/
+ obj-$(CONFIG_MPTCP)		+= mptcp/
+ obj-$(CONFIG_MCTP)		+= mctp/
+ obj-$(CONFIG_NET_HANDSHAKE)	+= handshake/
++obj-$(CONFIG_NET_SHAPER)	+= shaper/
+diff --git a/net/shaper/Makefile b/net/shaper/Makefile
+new file mode 100644
+index 000000000000..54af7169a331
+--- /dev/null
++++ b/net/shaper/Makefile
+@@ -0,0 +1,8 @@
++# SPDX-License-Identifier: GPL-2.0-only
++#
++# Makefile for the net shaper infrastructure.
++#
++# Copyright (c) 2024, Red Hat, Inc.
++#
++
++obj-y += shaper.o shaper_nl_gen.o
+diff --git a/net/shaper/shaper.c b/net/shaper/shaper.c
+new file mode 100644
+index 000000000000..a1b20888f502
+--- /dev/null
++++ b/net/shaper/shaper.c
+@@ -0,0 +1,55 @@
++// SPDX-License-Identifier: GPL-2.0-or-later
++
++#include <linux/kernel.h>
++#include <linux/skbuff.h>
++
++#include "shaper_nl_gen.h"
++
++int net_shaper_nl_pre_doit(const struct genl_split_ops *ops,
++			   struct sk_buff *skb, struct genl_info *info)
++{
++	return -EOPNOTSUPP;
++}
++
++void net_shaper_nl_post_doit(const struct genl_split_ops *ops,
++			     struct sk_buff *skb, struct genl_info *info)
++{
++}
++
++int net_shaper_nl_get_doit(struct sk_buff *skb, struct genl_info *info)
++{
++	return -EOPNOTSUPP;
++}
++
++int net_shaper_nl_get_dumpit(struct sk_buff *skb,
++			     struct netlink_callback *cb)
++{
++	return -EOPNOTSUPP;
++}
++
++int net_shaper_nl_set_doit(struct sk_buff *skb, struct genl_info *info)
++{
++	return -EOPNOTSUPP;
++}
++
++int net_shaper_nl_delete_doit(struct sk_buff *skb, struct genl_info *info)
++{
++	return -EOPNOTSUPP;
++}
++
++int net_shaper_nl_pre_dumpit(struct netlink_callback *cb)
++{
++	return -EOPNOTSUPP;
++}
++
++int net_shaper_nl_post_dumpit(struct netlink_callback *cb)
++{
++	return -EOPNOTSUPP;
++}
++
++static int __init shaper_init(void)
++{
++	return genl_register_family(&net_shaper_nl_family);
++}
++
++subsys_initcall(shaper_init);
+diff --git a/net/shaper/shaper_nl_gen.c b/net/shaper/shaper_nl_gen.c
+new file mode 100644
+index 000000000000..06641811bfc1
+--- /dev/null
++++ b/net/shaper/shaper_nl_gen.c
+@@ -0,0 +1,127 @@
++// SPDX-License-Identifier: ((GPL-2.0 WITH Linux-syscall-note) OR BSD-3-Clause)
++/* Do not edit directly, auto-generated from: */
++/*	Documentation/netlink/specs/net_shaper.yaml */
++/* YNL-GEN kernel source */
++
++#include <net/netlink.h>
++#include <net/genetlink.h>
++
++#include "shaper_nl_gen.h"
++
++#include <uapi/linux/net_shaper.h>
++
++/* Common nested types */
++const struct nla_policy net_shaper_handle_nl_policy[NET_SHAPER_A_HANDLE_ID + 1] = {
++	[NET_SHAPER_A_HANDLE_SCOPE] = NLA_POLICY_MAX(NLA_U32, 3),
++	[NET_SHAPER_A_HANDLE_ID] = { .type = NLA_U32, },
++};
++
++const struct nla_policy net_shaper_info_nl_policy[NET_SHAPER_A_WEIGHT + 1] = {
++	[NET_SHAPER_A_HANDLE] = NLA_POLICY_NESTED(net_shaper_handle_nl_policy),
++	[NET_SHAPER_A_METRIC] = NLA_POLICY_MAX(NLA_U32, 1),
++	[NET_SHAPER_A_BW_MIN] = { .type = NLA_UINT, },
++	[NET_SHAPER_A_BW_MAX] = { .type = NLA_UINT, },
++	[NET_SHAPER_A_BURST] = { .type = NLA_UINT, },
++	[NET_SHAPER_A_PRIORITY] = { .type = NLA_U32, },
++	[NET_SHAPER_A_WEIGHT] = { .type = NLA_U32, },
++};
++
++const struct nla_policy net_shaper_node_info_nl_policy[NET_SHAPER_A_PARENT + 1] = {
++	[NET_SHAPER_A_PARENT] = NLA_POLICY_NESTED(net_shaper_handle_nl_policy),
++	[NET_SHAPER_A_HANDLE] = NLA_POLICY_NESTED(net_shaper_handle_nl_policy),
++	[NET_SHAPER_A_METRIC] = NLA_POLICY_MAX(NLA_U32, 1),
++	[NET_SHAPER_A_BW_MIN] = { .type = NLA_UINT, },
++	[NET_SHAPER_A_BW_MAX] = { .type = NLA_UINT, },
++	[NET_SHAPER_A_BURST] = { .type = NLA_UINT, },
++	[NET_SHAPER_A_PRIORITY] = { .type = NLA_U32, },
++	[NET_SHAPER_A_WEIGHT] = { .type = NLA_U32, },
++};
++
++/* NET_SHAPER_CMD_GET - do */
++static const struct nla_policy net_shaper_get_do_nl_policy[NET_SHAPER_A_IFINDEX + 1] = {
++	[NET_SHAPER_A_IFINDEX] = { .type = NLA_U32, },
++	[NET_SHAPER_A_HANDLE] = NLA_POLICY_NESTED(net_shaper_handle_nl_policy),
++};
++
++/* NET_SHAPER_CMD_GET - dump */
++static const struct nla_policy net_shaper_get_dump_nl_policy[NET_SHAPER_A_IFINDEX + 1] = {
++	[NET_SHAPER_A_IFINDEX] = { .type = NLA_U32, },
++};
++
++/* NET_SHAPER_CMD_SET - do */
++static const struct nla_policy net_shaper_set_nl_policy[NET_SHAPER_A_SHAPER + 1] = {
++	[NET_SHAPER_A_IFINDEX] = { .type = NLA_U32, },
++	[NET_SHAPER_A_SHAPER] = NLA_POLICY_NESTED(net_shaper_info_nl_policy),
++};
++
++/* NET_SHAPER_CMD_DELETE - do */
++static const struct nla_policy net_shaper_delete_nl_policy[NET_SHAPER_A_IFINDEX + 1] = {
++	[NET_SHAPER_A_IFINDEX] = { .type = NLA_U32, },
++	[NET_SHAPER_A_HANDLE] = NLA_POLICY_NESTED(net_shaper_handle_nl_policy),
++};
++
++/* NET_SHAPER_CMD_GROUP - do */
++static const struct nla_policy net_shaper_group_nl_policy[NET_SHAPER_A_NODE + 1] = {
++	[NET_SHAPER_A_IFINDEX] = { .type = NLA_U32, },
++	[NET_SHAPER_A_LEAVES] = NLA_POLICY_NESTED(net_shaper_info_nl_policy),
++	[NET_SHAPER_A_NODE] = NLA_POLICY_NESTED(net_shaper_node_info_nl_policy),
++};
++
++/* Ops table for net_shaper */
++static const struct genl_split_ops net_shaper_nl_ops[] = {
++	{
++		.cmd		= NET_SHAPER_CMD_GET,
++		.pre_doit	= net_shaper_nl_pre_doit,
++		.doit		= net_shaper_nl_get_doit,
++		.post_doit	= net_shaper_nl_post_doit,
++		.policy		= net_shaper_get_do_nl_policy,
++		.maxattr	= NET_SHAPER_A_IFINDEX,
++		.flags		= GENL_CMD_CAP_DO,
++	},
++	{
++		.cmd		= NET_SHAPER_CMD_GET,
++		.start		= net_shaper_nl_pre_dumpit,
++		.dumpit		= net_shaper_nl_get_dumpit,
++		.done		= net_shaper_nl_post_dumpit,
++		.policy		= net_shaper_get_dump_nl_policy,
++		.maxattr	= NET_SHAPER_A_IFINDEX,
++		.flags		= GENL_CMD_CAP_DUMP,
++	},
++	{
++		.cmd		= NET_SHAPER_CMD_SET,
++		.pre_doit	= net_shaper_nl_pre_doit,
++		.doit		= net_shaper_nl_set_doit,
++		.post_doit	= net_shaper_nl_post_doit,
++		.policy		= net_shaper_set_nl_policy,
++		.maxattr	= NET_SHAPER_A_SHAPER,
++		.flags		= GENL_ADMIN_PERM | GENL_CMD_CAP_DO,
++	},
++	{
++		.cmd		= NET_SHAPER_CMD_DELETE,
++		.pre_doit	= net_shaper_nl_pre_doit,
++		.doit		= net_shaper_nl_delete_doit,
++		.post_doit	= net_shaper_nl_post_doit,
++		.policy		= net_shaper_delete_nl_policy,
++		.maxattr	= NET_SHAPER_A_IFINDEX,
++		.flags		= GENL_ADMIN_PERM | GENL_CMD_CAP_DO,
++	},
++	{
++		.cmd		= NET_SHAPER_CMD_GROUP,
++		.pre_doit	= net_shaper_nl_pre_doit,
++		.doit		= net_shaper_nl_group_doit,
++		.post_doit	= net_shaper_nl_post_doit,
++		.policy		= net_shaper_group_nl_policy,
++		.maxattr	= NET_SHAPER_A_NODE,
++		.flags		= GENL_ADMIN_PERM | GENL_CMD_CAP_DO,
++	},
++};
++
++struct genl_family net_shaper_nl_family __ro_after_init = {
++	.name		= NET_SHAPER_FAMILY_NAME,
++	.version	= NET_SHAPER_FAMILY_VERSION,
++	.netnsok	= true,
++	.parallel_ops	= true,
++	.module		= THIS_MODULE,
++	.split_ops	= net_shaper_nl_ops,
++	.n_split_ops	= ARRAY_SIZE(net_shaper_nl_ops),
++};
+diff --git a/net/shaper/shaper_nl_gen.h b/net/shaper/shaper_nl_gen.h
+new file mode 100644
+index 000000000000..0fe95a03f1b5
+--- /dev/null
++++ b/net/shaper/shaper_nl_gen.h
+@@ -0,0 +1,35 @@
++/* SPDX-License-Identifier: ((GPL-2.0 WITH Linux-syscall-note) OR BSD-3-Clause) */
++/* Do not edit directly, auto-generated from: */
++/*	Documentation/netlink/specs/net_shaper.yaml */
++/* YNL-GEN kernel header */
++
++#ifndef _LINUX_NET_SHAPER_GEN_H
++#define _LINUX_NET_SHAPER_GEN_H
++
++#include <net/netlink.h>
++#include <net/genetlink.h>
++
++#include <uapi/linux/net_shaper.h>
++
++/* Common nested types */
++extern const struct nla_policy net_shaper_handle_nl_policy[NET_SHAPER_A_HANDLE_ID + 1];
++extern const struct nla_policy net_shaper_info_nl_policy[NET_SHAPER_A_WEIGHT + 1];
++extern const struct nla_policy net_shaper_node_info_nl_policy[NET_SHAPER_A_PARENT + 1];
++
++int net_shaper_nl_pre_doit(const struct genl_split_ops *ops,
++			   struct sk_buff *skb, struct genl_info *info);
++void
++net_shaper_nl_post_doit(const struct genl_split_ops *ops, struct sk_buff *skb,
++			struct genl_info *info);
++int net_shaper_nl_pre_dumpit(struct netlink_callback *cb);
++int net_shaper_nl_post_dumpit(struct netlink_callback *cb);
++
++int net_shaper_nl_get_doit(struct sk_buff *skb, struct genl_info *info);
++int net_shaper_nl_get_dumpit(struct sk_buff *skb, struct netlink_callback *cb);
++int net_shaper_nl_set_doit(struct sk_buff *skb, struct genl_info *info);
++int net_shaper_nl_delete_doit(struct sk_buff *skb, struct genl_info *info);
++int net_shaper_nl_group_doit(struct sk_buff *skb, struct genl_info *info);
++
++extern struct genl_family net_shaper_nl_family;
++
++#endif /* _LINUX_NET_SHAPER_GEN_H */
 -- 
 2.45.2
 
