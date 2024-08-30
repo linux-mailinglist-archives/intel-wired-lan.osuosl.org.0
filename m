@@ -1,90 +1,96 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9B108966961
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 30 Aug 2024 21:14:27 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 82ADE966993
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 30 Aug 2024 21:28:18 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id C005B42598;
-	Fri, 30 Aug 2024 19:14:25 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 2A601419A6;
+	Fri, 30 Aug 2024 19:28:17 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id PCIr4MhC2F8M; Fri, 30 Aug 2024 19:14:25 +0000 (UTC)
+ id Cc6oY8KIZrwy; Fri, 30 Aug 2024 19:28:16 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B7BC6425A4
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2DA0042580
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1725045264;
-	bh=lD5b6RVQ076/9VwJIi2BTcx7i1lFUTXZ2u5x81MeTok=;
-	h=Date:From:To:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=pq9BfFVYPWowuKE4xYtIGTtuCiXKrKWPQB7DbdnfZVmIXponI2gbxA8M0dapCaOXB
-	 xpNYZmWyxi3lcMQC0HCLHWk7uJr0ITl7dpvM92FtI77iw3E62XOewF9cKCGKbf83zk
-	 QkdDocyLfdB4JzB+Pcaxhzj5lAAWBe+ctAjKsmS10h1mC06Yrd52X+XljhIe6XSHeQ
-	 Ouniu2vjXT+cE4ryhd+JDPRbZlRpddR3uRpSbTwXq95WiPbEexUITLD/PdO03uAoPx
-	 +PSwpGd1e2bnDtemFJn1AiH2fpJpKmrTs9e9jgdQnmigTVxJ3/7mYm8+sG0xSo/e1b
-	 672ktfqIJA2jg==
+	s=default; t=1725046095;
+	bh=macEvfeI2N6akA8VCttHH17pEvEH4SIA92nKvC1zxwY=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=EPshvb16gyoQpV5HT1imRuYDv/ZaW/psQsoglbIu6pvTp5oNEhgqveeyzjkdwY6jp
+	 VY7G749NUP6uOYpwdVaZTR1eL3qrnjvm0g0WFO8qXJIPjjfdICBf57dTG3ipwWxEhu
+	 JQ0GSLBY7T0hNN4Av6W3IOp1faOS7Gq8nItvtM4xgHYwEvXsAN8l4WwOEeO5qUmxqk
+	 KLXhiWn7wm/V198dtFhn88uj3vyrWSUiEBp+Zma2jOqZZayWgkhFTg6becdfaVcZGl
+	 bUGSnpmPqROqkF3qQkvba7U6ldE4jVG9n5ERyqAjt5aDn39LXZrMBBssrjre1fLwTm
+	 sgrFi8ZB5m05w==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id B7BC6425A4;
-	Fri, 30 Aug 2024 19:14:24 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 2DA0042580;
+	Fri, 30 Aug 2024 19:28:15 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id BBD8A1BF275
- for <intel-wired-lan@lists.osuosl.org>; Fri, 30 Aug 2024 19:14:22 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id DB3861BF2F4
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 30 Aug 2024 19:28:12 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id A64D184525
- for <intel-wired-lan@lists.osuosl.org>; Fri, 30 Aug 2024 19:14:22 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id C7E548194C
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 30 Aug 2024 19:28:12 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 6KNwiNuwPmO8 for <intel-wired-lan@lists.osuosl.org>;
- Fri, 30 Aug 2024 19:14:22 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2604:1380:45d1:ec00::3; helo=nyc.source.kernel.org;
- envelope-from=kuba@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org C22A58451D
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org C22A58451D
-Received: from nyc.source.kernel.org (nyc.source.kernel.org
- [IPv6:2604:1380:45d1:ec00::3])
- by smtp1.osuosl.org (Postfix) with ESMTPS id C22A58451D
- for <intel-wired-lan@lists.osuosl.org>; Fri, 30 Aug 2024 19:14:21 +0000 (UTC)
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by nyc.source.kernel.org (Postfix) with ESMTP id 865F0A44CB2;
- Fri, 30 Aug 2024 19:14:13 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B39FEC4CEC2;
- Fri, 30 Aug 2024 19:14:19 +0000 (UTC)
-Date: Fri, 30 Aug 2024 12:14:18 -0700
-From: Jakub Kicinski <kuba@kernel.org>
-To: Paolo Abeni <pabeni@redhat.com>
-Message-ID: <20240830121418.39f3e6f8@kernel.org>
-In-Reply-To: <58730142-2064-46cb-bc84-0060ea73c4a0@redhat.com>
-References: <cover.1724944116.git.pabeni@redhat.com>
- <53077d35a1183d5c1110076a07d73940bb2a55f3.1724944117.git.pabeni@redhat.com>
- <20240829182019.105962f6@kernel.org>
- <58730142-2064-46cb-bc84-0060ea73c4a0@redhat.com>
+ id yxtmu0DvQ4fz for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 30 Aug 2024 19:28:11 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.18;
+ helo=mgamail.intel.com; envelope-from=aleksandr.loktionov@intel.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 933F38058A
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 933F38058A
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.18])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 933F38058A
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 30 Aug 2024 19:28:11 +0000 (UTC)
+X-CSE-ConnectionGUID: l2vqAUyNQBeRPwMZR1YWBw==
+X-CSE-MsgGUID: CL8NgYORSz+sNA8bBTeufw==
+X-IronPort-AV: E=McAfee;i="6700,10204,11180"; a="23219087"
+X-IronPort-AV: E=Sophos;i="6.10,189,1719903600"; d="scan'208";a="23219087"
+Received: from orviesa010.jf.intel.com ([10.64.159.150])
+ by fmvoesa112.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 30 Aug 2024 12:28:11 -0700
+X-CSE-ConnectionGUID: +JDtjSUDSRKDCZmgehK7XA==
+X-CSE-MsgGUID: Qzxr/zvURAWSQqf0KvbDQg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.10,189,1719903600"; d="scan'208";a="63795939"
+Received: from unknown (HELO amlin-019-225.igk.intel.com) ([10.102.19.225])
+ by orviesa010.jf.intel.com with ESMTP; 30 Aug 2024 12:28:09 -0700
+From: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+To: intel-wired-lan@lists.osuosl.org, anthony.l.nguyen@intel.com,
+ aleksandr.loktionov@intel.com
+Date: Fri, 30 Aug 2024 21:28:07 +0200
+Message-Id: <20240830192807.615867-1-aleksandr.loktionov@intel.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1725045260;
- bh=wGhBMBgM0ROt6ktM3GMH2VAMYqx4ySKxfA5iIFGOMnI=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=fh71pGo0uOIsf7HRT0sPNEkWLzYikwDWdmqnrGx7mnrKLFUkL6Sidd5bluyulcB1O
- jWmx3z3ssVpnAoW3UVfTTpiWKBbSA8kuG96Gq1/4dtGqHMbDmRh6TrVBPckikNEmpA
- EbtqnQpKb1ay0vMSlFYJ1AHzof3VZ/0MtGds0rtAjOGKCbItPktDI/Raf2lT+IdK0+
- ay72xAGbKKotXkaVYDfAmqdvtdP9+W4o/kdvRH3EI8tB2/x5nzTy16xIWQ8agPuyE+
- YxYjqs7tFKz7xWsk2Wn/pyCSmFEnxE0iDCDf8Z0y3gSGghHJ8CKLruEIRvkVHXkKfe
- +H3mOwsNENHNw==
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1725046091; x=1756582091;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=agQNZf+YmsTnIqwkN3/XjayGX1L5F3d3d38xVDDzmhA=;
+ b=ijP92x0nMzQMktYIy8WkqDuXDTrPW141RsrGhhzGGMWpPaAU1fGFhzNR
+ SXEKQUiU6lcvhXToCFCPi2byg/KRKRMca1Fb1d4l2BDGNqJLb6S6JnKu1
+ rteCjZ6/A1l5dW+7IKici3C74YkI89Kn8DeNKslw40/iVM2sXrRWhHBNh
+ dcUgMqkBhO9tgZzqYfwoDIZTE1E1Ng8qYY0qMRYByLk3dMf3pTZQInd5p
+ xCX+JqLB3IG1NtyCbImXFZtPOxd7GtgE60AsI/zQN9gzWtMNCO59c3h/e
+ 5AHC/i8b971vWXCdqGSbJFqp1XmuEO7V3Yfjsdj4hWFH4Q8SRIQ9VyApF
+ w==;
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=kernel.org
+ dmarc=pass (p=none dis=none)
+ header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=fh71pGo0
-Subject: Re: [Intel-wired-lan] [PATCH v5 net-next 02/12] net-shapers:
- implement NL get operation
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=ijP92x0n
+Subject: [Intel-wired-lan] [PATCH iwl-next v3] i40e: add ability to reset vf
+ for tx and rx mdd events
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,105 +103,312 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Jiri Pirko <jiri@resnulli.us>, netdev@vger.kernel.org,
- John Fastabend <john.fastabend@gmail.com>, Jamal Hadi Salim <jhs@mojatatu.com>,
- edumazet@google.com, Madhu Chittim <madhu.chittim@intel.com>,
- anthony.l.nguyen@intel.com, Simon Horman <horms@kernel.org>,
- Sridhar Samudrala <sridhar.samudrala@intel.com>,
- Donald Hunter <donald.hunter@gmail.com>, intel-wired-lan@lists.osuosl.org,
- przemyslaw.kitszel@intel.com, Sunil Kovvuri Goutham <sgoutham@marvell.com>
+Cc: netdev@vger.kernel.org, Jan Sokolowski <jan.sokolowski@intel.com>,
+ Padraig J Connolly <padraig.j.connolly@intel.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Fri, 30 Aug 2024 17:43:08 +0200 Paolo Abeni wrote:
-> Please allow me to put a few high level questions together, to both=20
-> underline them as most critical, and keep the thread focused.
->=20
-> On 8/30/24 03:20, Jakub Kicinski wrote:
->  > This 'binding' has the same meaning as 'binding' in TCP ZC? :( =20
->=20
-> I hope we can agree that good naming is difficult. I thought we agreed=20
-> on such naming in the past week=E2=80=99s discussion. The term 'binding' =
-is=20
-> already used in the networking stack in many places to identify=20
-> different things (i.e. device tree, socket, netfilter.. ). The name=20
-> prefix avoids any ambiguity and I think this a good name, but if you=20
-> have any better suggestions, this change should be trivial.
+In cases when vf sends malformed packets that are classified as
+malicious, sometimes it causes tx queue to freeze. This frozen queue can be
+stuck for several minutes being unusable. When mdd event occurs, there is a
+posibility to perform a graceful vf reset to quickly bring vf back to
+operational state.
 
-Ack. Maybe we can cut down the number of ambiguous nouns elsewhere:
+Currently vf iqueues are being disabled if mdd event occurs.
+Add the ability to reset vf if tx or rx mdd occurs.
+Add mdd events logging throttling /* avoid dmesg polution */.
+Unify tx rx mdd messages formats.
 
-maybe call net_shaper_info -> net_shaper ?
+Co-developed-by: Jan Sokolowski <jan.sokolowski@intel.com>
+Signed-off-by: Jan Sokolowski <jan.sokolowski@intel.com>
+Co-developed-by: Padraig J Connolly <padraig.j.connolly@intel.com>
+Signed-off-by:  Padraig J Connolly <padraig.j.connolly@intel.com>
+Signed-off-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+---
+v2->v3 fix compilation issue
+v1->v2 fix compilation issue
+---
+ drivers/net/ethernet/intel/i40e/i40e.h        |   4 +-
+ .../net/ethernet/intel/i40e/i40e_debugfs.c    |   2 +-
+ .../net/ethernet/intel/i40e/i40e_ethtool.c    |   2 +
+ drivers/net/ethernet/intel/i40e/i40e_main.c   | 116 ++++++++++++++++--
+ .../ethernet/intel/i40e/i40e_virtchnl_pf.c    |   2 +-
+ .../ethernet/intel/i40e/i40e_virtchnl_pf.h    |  11 +-
+ 6 files changed, 122 insertions(+), 15 deletions(-)
 
-maybe net_shaper_data -> net_shaper_hierarchy ?
+diff --git a/drivers/net/ethernet/intel/i40e/i40e.h b/drivers/net/ethernet/intel/i40e/i40e.h
+index d546567..6d6683c 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e.h
++++ b/drivers/net/ethernet/intel/i40e/i40e.h
+@@ -87,6 +87,7 @@ enum i40e_state {
+ 	__I40E_SERVICE_SCHED,
+ 	__I40E_ADMINQ_EVENT_PENDING,
+ 	__I40E_MDD_EVENT_PENDING,
++	__I40E_MDD_VF_PRINT_PENDING,
+ 	__I40E_VFLR_EVENT_PENDING,
+ 	__I40E_RESET_RECOVERY_PENDING,
+ 	__I40E_TIMEOUT_RECOVERY_PENDING,
+@@ -190,6 +191,7 @@ enum i40e_pf_flags {
+ 	 */
+ 	I40E_FLAG_TOTAL_PORT_SHUTDOWN_ENA,
+ 	I40E_FLAG_VF_VLAN_PRUNING_ENA,
++	I40E_FLAG_MDD_AUTO_RESET_VF,
+ 	I40E_PF_FLAGS_NBITS,		/* must be last */
+ };
+ 
+@@ -571,7 +573,7 @@ struct i40e_pf {
+ 	int num_alloc_vfs;	/* actual number of VFs allocated */
+ 	u32 vf_aq_requests;
+ 	u32 arq_overflows;	/* Not fatal, possibly indicative of problems */
+-
++	unsigned long last_printed_mdd_jiffies; /* MDD message rate limit */
+ 	/* DCBx/DCBNL capability for PF that indicates
+ 	 * whether DCBx is managed by firmware or host
+ 	 * based agent (LLDPAD). Also, indicates what
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_debugfs.c b/drivers/net/ethernet/intel/i40e/i40e_debugfs.c
+index abf624d..6a697bf 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_debugfs.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_debugfs.c
+@@ -721,7 +721,7 @@ static void i40e_dbg_dump_vf(struct i40e_pf *pf, int vf_id)
+ 		dev_info(&pf->pdev->dev, "vf %2d: VSI id=%d, seid=%d, qps=%d\n",
+ 			 vf_id, vf->lan_vsi_id, vsi->seid, vf->num_queue_pairs);
+ 		dev_info(&pf->pdev->dev, "       num MDD=%lld\n",
+-			 vf->num_mdd_events);
++			 vf->mdd_tx_events.count + vf->mdd_rx_events.count);
+ 	} else {
+ 		dev_info(&pf->pdev->dev, "invalid VF id %d\n", vf_id);
+ 	}
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_ethtool.c b/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
+index 1d0d2e5..d146575 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
+@@ -459,6 +459,8 @@ static const struct i40e_priv_flags i40e_gstrings_priv_flags[] = {
+ 	I40E_PRIV_FLAG("base-r-fec", I40E_FLAG_BASE_R_FEC, 0),
+ 	I40E_PRIV_FLAG("vf-vlan-pruning",
+ 		       I40E_FLAG_VF_VLAN_PRUNING_ENA, 0),
++	I40E_PRIV_FLAG("mdd-auto-reset-vf",
++		       I40E_FLAG_MDD_AUTO_RESET_VF, 0),
+ };
+ 
+ #define I40E_PRIV_FLAGS_STR_LEN ARRAY_SIZE(i40e_gstrings_priv_flags)
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
+index cbcfada..28df3d5 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_main.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
+@@ -11189,22 +11189,102 @@ static void i40e_handle_reset_warning(struct i40e_pf *pf, bool lock_acquired)
+ 	i40e_reset_and_rebuild(pf, false, lock_acquired);
+ }
+ 
++/**
++ * i40e_print_vf_rx_mdd_event - print VF Rx malicious driver detect event
++ * @pf: board private structure
++ * @vf: pointer to the VF structure
++ */
++static void i40e_print_vf_rx_mdd_event(struct i40e_pf *pf, struct i40e_vf *vf)
++{
++	dev_err(&pf->pdev->dev, "%lld Rx Malicious Driver Detection events detected on PF %d VF %d MAC %pm. mdd-auto-reset-vfs=%s\n",
++		vf->mdd_rx_events.count,
++		pf->hw.pf_id,
++		vf->vf_id,
++		vf->default_lan_addr.addr,
++		test_bit(I40E_FLAG_MDD_AUTO_RESET_VF, pf->flags) ? "on" : "off");
++}
++
++/**
++ * i40e_print_vf_tx_mdd_event - print VF Tx malicious driver detect event
++ * @pf: board private structure
++ * @vf: pointer to the VF structure
++ */
++static void i40e_print_vf_tx_mdd_event(struct i40e_pf *pf, struct i40e_vf *vf)
++{
++	dev_err(&pf->pdev->dev, "%lld Tx Malicious Driver Detection events detected on PF %d VF %d MAC %pm. mdd-auto-reset-vfs=%s\n",
++		vf->mdd_tx_events.count,
++		pf->hw.pf_id,
++		vf->vf_id,
++		vf->default_lan_addr.addr,
++		test_bit(I40E_FLAG_MDD_AUTO_RESET_VF, pf->flags) ? "on" : "off");
++}
++
++/**
++ * i40e_print_vfs_mdd_events - print VFs malicious driver detect event
++ * @pf: pointer to the PF structure
++ *
++ * Called from i40e_handle_mdd_event to rate limit and print VFs MDD events.
++ */
++static void i40e_print_vfs_mdd_events(struct i40e_pf *pf)
++{
++	unsigned int i;
++
++	/* check that there are pending MDD events to print */
++	if (!test_and_clear_bit(__I40E_MDD_VF_PRINT_PENDING, pf->state))
++		return;
++
++	/* VF MDD event logs are rate limited to one second intervals */
++	if (time_is_after_jiffies(pf->last_printed_mdd_jiffies + HZ * 1))
++		return;
++
++	pf->last_printed_mdd_jiffies = jiffies;
++
++	for (i = 0; i < pf->num_alloc_vfs; i++) {
++		struct i40e_vf *vf = &pf->vf[i];
++		bool is_printed = false;
++
++		/* only print Rx MDD event message if there are new events */
++		if (vf->mdd_rx_events.count != vf->mdd_rx_events.last_printed) {
++			vf->mdd_rx_events.last_printed = vf->mdd_rx_events.count;
++			i40e_print_vf_rx_mdd_event(pf, vf);
++			is_printed = true;
++		}
++
++		/* only print Tx MDD event message if there are new events */
++		if (vf->mdd_tx_events.count != vf->mdd_tx_events.last_printed) {
++			vf->mdd_tx_events.last_printed = vf->mdd_tx_events.count;
++			i40e_print_vf_tx_mdd_event(pf, vf);
++			is_printed = true;
++		}
++
++		if (is_printed && !test_bit(I40E_FLAG_MDD_AUTO_RESET_VF, pf->flags))
++			dev_info(&pf->pdev->dev,
++				 "Use PF Control I/F to re-enable the VF #%d\n",
++				 i);
++	}
++}
++
+ /**
+  * i40e_handle_mdd_event
+  * @pf: pointer to the PF structure
+  *
+  * Called from the MDD irq handler to identify possibly malicious vfs
+  **/
+ static void i40e_handle_mdd_event(struct i40e_pf *pf)
+ {
+ 	struct i40e_hw *hw = &pf->hw;
+ 	bool mdd_detected = false;
+ 	struct i40e_vf *vf;
+ 	u32 reg;
+ 	int i;
+ 
+-	if (!test_bit(__I40E_MDD_EVENT_PENDING, pf->state))
++	if (!test_and_clear_bit(__I40E_MDD_EVENT_PENDING, pf->state)) {
++		/* Since the VF MDD event logging is rate limited, check if
++		 * there are pending MDD events.
++		 */
++		i40e_print_vfs_mdd_events(pf);
+ 		return;
++	}
+ 
+ 	/* find what triggered the MDD event */
+ 	reg = rd32(hw, I40E_GL_MDET_TX);
+@@ -11248,36 +11328,50 @@ static void i40e_handle_mdd_event(struct i40e_pf *pf)
+ 
+ 	/* see if one of the VFs needs its hand slapped */
+ 	for (i = 0; i < pf->num_alloc_vfs && mdd_detected; i++) {
++		bool is_mdd_on_tx = false;
++		bool is_mdd_on_rx = false;
++
+ 		vf = &(pf->vf[i]);
+ 		reg = rd32(hw, I40E_VP_MDET_TX(i));
+ 		if (reg & I40E_VP_MDET_TX_VALID_MASK) {
++			set_bit(__I40E_MDD_VF_PRINT_PENDING, pf->state);
+ 			wr32(hw, I40E_VP_MDET_TX(i), 0xFFFF);
+-			vf->num_mdd_events++;
+-			dev_info(&pf->pdev->dev, "TX driver issue detected on VF %d\n",
+-				 i);
+-			dev_info(&pf->pdev->dev,
+-				 "Use PF Control I/F to re-enable the VF\n");
++			vf->mdd_tx_events.count++;
+ 			set_bit(I40E_VF_STATE_DISABLED, &vf->vf_states);
++			is_mdd_on_tx = true;
+ 		}
+ 
+ 		reg = rd32(hw, I40E_VP_MDET_RX(i));
+ 		if (reg & I40E_VP_MDET_RX_VALID_MASK) {
++			set_bit(__I40E_MDD_VF_PRINT_PENDING, pf->state);
+ 			wr32(hw, I40E_VP_MDET_RX(i), 0xFFFF);
+-			vf->num_mdd_events++;
+-			dev_info(&pf->pdev->dev, "RX driver issue detected on VF %d\n",
+-				 i);
+-			dev_info(&pf->pdev->dev,
+-				 "Use PF Control I/F to re-enable the VF\n");
++			vf->mdd_rx_events.count++;
+ 			set_bit(I40E_VF_STATE_DISABLED, &vf->vf_states);
++			is_mdd_on_rx = true;
++		}
++
++		if ((is_mdd_on_tx || is_mdd_on_rx) &&
++		    test_bit(I40E_FLAG_MDD_AUTO_RESET_VF, pf->flags)) {
++			/* VF MDD event counters will be cleared by
++			 * reset, so print the event prior to reset.
++			 */
++			if (is_mdd_on_rx)
++				i40e_print_vf_rx_mdd_event(pf, vf);
++			if (is_mdd_on_tx)
++				i40e_print_vf_tx_mdd_event(pf, vf);
++
++			i40e_vc_reset_vf(vf, true);
+ 		}
+ 	}
+ 
+ 	/* re-enable mdd interrupt cause */
+ 	clear_bit(__I40E_MDD_EVENT_PENDING, pf->state);
+ 	reg = rd32(hw, I40E_PFINT_ICR0_ENA);
+ 	reg |=  I40E_PFINT_ICR0_ENA_MAL_DETECT_MASK;
+ 	wr32(hw, I40E_PFINT_ICR0_ENA, reg);
+ 	i40e_flush(hw);
++
++	i40e_print_vfs_mdd_events(pf);
+ }
+ 
+ /**
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
+index 662622f..5b4618e 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.c
+@@ -216,7 +216,7 @@ void i40e_vc_notify_vf_reset(struct i40e_vf *vf)
+  * @notify_vf: notify vf about reset or not
+  * Reset VF handler.
+  **/
+-static void i40e_vc_reset_vf(struct i40e_vf *vf, bool notify_vf)
++void i40e_vc_reset_vf(struct i40e_vf *vf, bool notify_vf)
+ {
+ 	struct i40e_pf *pf = vf->pf;
+ 	int i;
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.h b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.h
+index 66f95e2..5cf74f1 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.h
++++ b/drivers/net/ethernet/intel/i40e/i40e_virtchnl_pf.h
+@@ -64,6 +64,12 @@ struct i40evf_channel {
+ 	u64 max_tx_rate; /* bandwidth rate allocation for VSIs */
+ };
+ 
++struct i40e_mdd_vf_events {
++	u64 count;      /* total count of Rx|Tx events */
++	/* count number of the last printed event */
++	u64 last_printed;
++};
++
+ /* VF information structure */
+ struct i40e_vf {
+ 	struct i40e_pf *pf;
+@@ -92,7 +98,9 @@ struct i40e_vf {
+ 
+ 	u8 num_queue_pairs;	/* num of qps assigned to VF vsis */
+ 	u8 num_req_queues;	/* num of requested qps */
+-	u64 num_mdd_events;	/* num of mdd events detected */
++	/* num of mdd tx and rx events detected */
++	struct i40e_mdd_vf_events mdd_rx_events;
++	struct i40e_mdd_vf_events mdd_tx_events;
+ 
+ 	unsigned long vf_caps;	/* vf's adv. capabilities */
+ 	unsigned long vf_states;	/* vf's runtime states */
+@@ -120,6 +128,7 @@ int i40e_alloc_vfs(struct i40e_pf *pf, u16 num_alloc_vfs);
+ int i40e_vc_process_vf_msg(struct i40e_pf *pf, s16 vf_id, u32 v_opcode,
+ 			   u32 v_retval, u8 *msg, u16 msglen);
+ int i40e_vc_process_vflr_event(struct i40e_pf *pf);
++void i40e_vc_reset_vf(struct i40e_vf *vf, bool notify_vf);
+ bool i40e_reset_vf(struct i40e_vf *vf, bool flr);
+ bool i40e_reset_all_vfs(struct i40e_pf *pf, bool flr);
+ void i40e_vc_notify_vf_reset(struct i40e_vf *vf);
+-- 
+2.25.1
 
->  > I've been wondering if we shouldn't move this lock
->  > directly into net_device and combine it with the RSS lock.
->  > Create a "per-netdev" lock, instead of having multiple disparate
->  > mutexes which are hard to allocate? =20
->=20
-> The above looks like a quite unrelated refactor and one I think it will=20
-> not be worthy. The complexity of locking code in this series is very=20
-> limited, and self-encapsulated. Different locks for different things=20
-> increases scalability. Possibly we will not see much contention on the=20
-> same device, but some years ago we did not think there would be much=20
-> contention on RTNL...
-
-We need to do this, anyway. Let me do it myself, then.
-
-> Additionally, if we use a per _network device_ lock, future expansion of=
-=20
-> the core to support devlink objects will be more difficult.
-
-You parse out the binding you can store a pointer to the right mutex.
-
-> [about separate handle from shaper_info arguments]
->  > Wouldn't it be convenient to store the handle in the "info"
->  > object? AFAIU the handle is forever for an info, so no risk of it
->  > being out of sync=E2=80=A6 =20
->=20
-> Was that way a couple of iterations ago. Jiri explicitly asked for the=20
-> separation, I asked for confirmation and nobody objected.
-
-Could you link to that? I must have not read it.
-You can keep it wrapped in a struct *_handle, that's fine.
-But it can live inside the shaper object.
-
-> Which if the 2 options is acceptable from both of you?
->=20
-> [about queue limit and channel reconf]
->  > we probably want to trim the queue shapers on channel reconfig,
->  > then, too? :( =20
->=20
-> what about exposing to the drivers an helper alike:
->=20
-> 	net_shaper_notify_delete(binding, handle);
->=20
-> that tells the core the shaper at the given handle just went away in the=
-=20
-> H/W? The driver will call it in the queue deletion helper, and such=20
-> helper could be later on used more generically, i.e. for vf/devlink port=
-=20
-> deletion.
-
-We can either prevent disabling queues which have shapers attached,=20
-or auto-removing the shapers. No preference on that. But put the
-callback in the core, please, netif_set_real_num_rx_queues() ?
-Why not?
-
->  > It's not just for introspection, it's also for the core to do
->  > error checking. =20
->=20
-> Actually, in the previous discussions it was never mentioned to use=20
-> capabilities to fully centralize the error checking.
->=20
-> This really looks like another feature, and can easily be added in a=20
-> second time (say, a follow-up series), with no functionality loss.
->=20
-> I (or anybody else) can=E2=80=99t keep adding new features at every itera=
-tion.=20
-> At some point we need to draw a line, and we should agree that the scope=
-=20
-> of this activity has already expanded a lot in the past year. I would=20
-> like to draw such a line here.
-
-I can help you. Just tell me which parts you want me to take care of.
