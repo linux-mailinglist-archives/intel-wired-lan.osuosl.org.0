@@ -1,94 +1,106 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 455A396730A
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 31 Aug 2024 20:49:25 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id A5EA996A181
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  3 Sep 2024 17:02:29 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 11E64419A8;
-	Sat, 31 Aug 2024 18:49:22 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id B7E48606B8;
+	Tue,  3 Sep 2024 15:02:27 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id LBYD2muUGqCB; Sat, 31 Aug 2024 18:49:21 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id kk7UFMo6UO-f; Tue,  3 Sep 2024 15:02:27 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B8915419A9
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 06C21606C7
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1725130160;
-	bh=ChYC5kgjhURUYWMhcnyi3yykxLTUj0TtuzgyVpRM1/k=;
-	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=4f9+oGIdpwIyIUESlojVFpHLyimY9K69QCkW61r9IdyohSjjcIJoaBK2t9pfRQiCm
-	 arYk4jHxP5EMLHoJpUIAR89D9vBxVB2H4pnhRUPi2GHiiDeWElS2SoJdzlpaFlA2aD
-	 9BOtYTsW9bkPDaCa/yAUxkhUiorTBJtaOu6L2AD05vJs4eVt9mIYi9PDExSCDCEoH7
-	 2Npg+J/otxxWzDLSOdarZyymY0/7UhEl+Gr1EkDzbtSpvp/PZyDl/vlDqqwA27Zcey
-	 LGYKv0FH+xebYAEw3/qfC9TxjHSI4OdTTgWPwWUaQkM9wVA3WSjHW8hzc65o8BGIZy
-	 36WLaPSI0sJpg==
+	s=default; t=1725375747;
+	bh=SWdOw87/+51iqg586AVxL9Z/wKo8wamb0wgkXwwaRE0=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=Cgu4mA9zI+57h9918ZuS8w4dCM/NKJKFSrhtaB8dZYQH341APVvPQybnlx1BEJT15
+	 RUVCtahCOmBQ0HoX4kotUL+BMc+iJZbA1vVD9g4bufqfp+r1hQhMKeym0FXUvi3/70
+	 KpbS5zx9R2l3aagke6ahm+lVlKgOwgH4N/IdRfwZTzviCDwWeHxpZqVzobSoJb4pat
+	 yX9yDDKYZ5Gr1wHVYa6i8BXAdF4Kq0sbuglrjwuop0WPQCzUGQnci9PmjiAMi+xtTs
+	 9gIDv0aMu7pXoE9jN3WZm8uolEXW0TVxPIsgezNx7izYA98PScdGS6FWkLFTZKzyFT
+	 BbVkmPKiRXdJg==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id B8915419A9;
-	Sat, 31 Aug 2024 18:49:20 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 06C21606C7;
+	Tue,  3 Sep 2024 15:02:27 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id DE51C1BF316
- for <intel-wired-lan@lists.osuosl.org>; Sat, 31 Aug 2024 18:49:18 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id E698A1BF42C
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  2 Sep 2024 06:15:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id CA7F5419A6
- for <intel-wired-lan@lists.osuosl.org>; Sat, 31 Aug 2024 18:49:18 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id D342560673
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  2 Sep 2024 06:15:41 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 4sHGbHxsznlj for <intel-wired-lan@lists.osuosl.org>;
- Sat, 31 Aug 2024 18:49:17 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.18;
- helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 59538419A3
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 59538419A3
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.18])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 59538419A3
- for <intel-wired-lan@lists.osuosl.org>; Sat, 31 Aug 2024 18:49:17 +0000 (UTC)
-X-CSE-ConnectionGUID: JPFyDoMIRC6aSudXzF3eGA==
-X-CSE-MsgGUID: i+0nM61jT0K7sfnHKg9Gyw==
-X-IronPort-AV: E=McAfee;i="6700,10204,11181"; a="23269449"
-X-IronPort-AV: E=Sophos;i="6.10,192,1719903600"; d="scan'208";a="23269449"
-Received: from orviesa001.jf.intel.com ([10.64.159.141])
- by fmvoesa112.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 31 Aug 2024 11:49:16 -0700
-X-CSE-ConnectionGUID: t+jQWAniRmufvV0/tupjCQ==
-X-CSE-MsgGUID: SrUQYwbpTMSVUryX89+sGg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.10,192,1719903600"; d="scan'208";a="101675849"
-Received: from lkp-server01.sh.intel.com (HELO 9c6b1c7d3b50) ([10.239.97.150])
- by orviesa001.jf.intel.com with ESMTP; 31 Aug 2024 11:49:16 -0700
-Received: from kbuild by 9c6b1c7d3b50 with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1skT9t-00030s-1a
- for intel-wired-lan@lists.osuosl.org; Sat, 31 Aug 2024 18:49:13 +0000
-Date: Sun, 01 Sep 2024 02:48:43 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <202409010241.yuFVoQi9-lkp@intel.com>
-User-Agent: s-nail v14.9.24
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1725130157; x=1756666157;
- h=date:from:to:subject:message-id;
- bh=Y27iLe5P12pHNscJBOronU7c1/i53AWFSeP0LGo8XLc=;
- b=Gzl5m6teL+oZ04hCc6NtmYUOgX1PCpyEiW03QxRIGpUwHZiNw3K2hgz4
- 6gWTASEOgysHQmaWZCPPl6QI1YmqEAUgamf5s3DeQwRymxuTxX/5ure4i
- iIwLGTt/l45i+85GIa938vVrnE1q4nJV41PLuAq35PTsq4VjNiHz42Ese
- ZPfD8+SagMh2TIee5v/1VJlwJ+zj5Olk8dOuYPULw/UgSBzmjuFJ3oCJX
- 5y9bzhXIrLNd8JQDqoKAhdkq/YcTsFt4itMoGWsvH8HBUh6fxG2hEb6kO
- KJWFPD137auOqKCfCPpyzjaEwthpCnKD/n9BNEGPnB0uvGJNu/uw8Nrhb
- A==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=Gzl5m6te
-Subject: [Intel-wired-lan] [tnguy-net-queue:dev-queue] BUILD SUCCESS
- 8d1cd4c8c3ead3e13b963d1342514ff1c137685d
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id QBJaeeKWpV27 for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  2 Sep 2024 06:15:41 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=52.119.213.152;
+ helo=smtp-fw-52003.amazon.com;
+ envelope-from=prvs=9686ec0e1=takamitz@amazon.co.jp; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org D8A8A6062E
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D8A8A6062E
+Received: from smtp-fw-52003.amazon.com (smtp-fw-52003.amazon.com
+ [52.119.213.152])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id D8A8A6062E
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  2 Sep 2024 06:15:40 +0000 (UTC)
+X-IronPort-AV: E=Sophos;i="6.10,195,1719878400"; d="scan'208";a="22718195"
+Received: from iad12-co-svc-p1-lb1-vlan3.amazon.com (HELO
+ smtpout.prod.us-west-2.prod.farcaster.email.amazon.dev) ([10.43.8.6])
+ by smtp-border-fw-52003.iad7.amazon.com with
+ ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 02 Sep 2024 06:15:39 +0000
+Received: from EX19MTAUWC001.ant.amazon.com [10.0.21.151:51579]
+ by smtpin.naws.us-west-2.prod.farcaster.email.amazon.dev [10.0.21.120:2525]
+ with esmtp (Farcaster)
+ id f0cf710c-b7a4-4e55-bfa9-c836fc843b9b; Mon, 2 Sep 2024 06:15:38 +0000 (UTC)
+X-Farcaster-Flow-ID: f0cf710c-b7a4-4e55-bfa9-c836fc843b9b
+Received: from EX19D005ANA004.ant.amazon.com (10.37.240.178) by
+ EX19MTAUWC001.ant.amazon.com (10.250.64.174) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.1258.34;
+ Mon, 2 Sep 2024 06:15:37 +0000
+Received: from 682f678c4465.ant.amazon.com (10.37.244.7) by
+ EX19D005ANA004.ant.amazon.com (10.37.240.178) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.1258.35;
+ Mon, 2 Sep 2024 06:15:33 +0000
+From: Takamitsu Iwai <takamitz@amazon.co.jp>
+To: "David S. Miller" <davem@davemloft.net>, Eric Dumazet
+ <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni
+ <pabeni@redhat.com>, Tony Nguyen <anthony.l.nguyen@intel.com>, "Przemek
+ Kitszel" <przemyslaw.kitszel@intel.com>
+Date: Mon, 2 Sep 2024 15:14:54 +0900
+Message-ID: <20240902061454.85744-1-takamitz@amazon.co.jp>
+X-Mailer: git-send-email 2.39.3 (Apple Git-145)
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-Originating-IP: [10.37.244.7]
+X-ClientProxiedBy: EX19D046UWB001.ant.amazon.com (10.13.139.187) To
+ EX19D005ANA004.ant.amazon.com (10.37.240.178)
+X-Mailman-Approved-At: Tue, 03 Sep 2024 15:02:25 +0000
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=amazon.co.jp; i=@amazon.co.jp; q=dns/txt;
+ s=amazon201209; t=1725257741; x=1756793741;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=SWdOw87/+51iqg586AVxL9Z/wKo8wamb0wgkXwwaRE0=;
+ b=oRNh32krKN36oWobEo1OnZ2TVzsrmRkxOBjQ4+SaMWWRD7Szo8L3/7xP
+ t2s6z2i3TBxrpNO/HIZgNvvsxY1O3g0aV3NYswz6bMVx2BL32kwfkGuOv
+ TmVBkU1C5zA28Hm+VwvQfACnC0jaC7MrN2ltumma71nCcvbXAPauCAfQM
+ 8=;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dmarc=pass (p=quarantine dis=none)
+ header.from=amazon.co.jp
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (1024-bit key,
+ unprotected) header.d=amazon.co.jp header.i=@amazon.co.jp header.a=rsa-sha256
+ header.s=amazon201209 header.b=oRNh32kr
+Subject: [Intel-wired-lan] [PATCH v1 net-next] e1000e: Remove duplicated
+ writel() in e1000_configure_tx/rx()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -101,127 +113,65 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
+ Takamitsu Iwai <takamitz@amazon.co.jp>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git dev-queue
-branch HEAD: 8d1cd4c8c3ead3e13b963d1342514ff1c137685d  ice: do not bring the VSI up, if it was down before the XDP setup
+Duplicated register initialization codes exist in e1000_configure_tx()
+and e1000_configure_rx().
 
-elapsed time: 1700m
+For example, writel(0, tx_ring->head) writes 0 to tx_ring->head, which
+is adapter->hw.hw_addr + E1000_TDH(0).
 
-configs tested: 105
-configs skipped: 3
+This initialization is already done in ew32(TDH(0), 0).
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+ew32(TDH(0), 0) is equivalent to __ew32(hw, E1000_TDH(0), 0). It
+executes writel(0, hw->hw_addr + E1000_TDH(0)). Since variable hw is
+set to &adapter->hw, it is equal to writel(0, tx_ring->head).
 
-tested configs:
-alpha                             allnoconfig   gcc-14.1.0
-alpha                            allyesconfig   clang-20
-alpha                               defconfig   gcc-14.1.0
-arc                              allmodconfig   clang-20
-arc                               allnoconfig   gcc-14.1.0
-arc                              allyesconfig   clang-20
-arc                                 defconfig   gcc-14.1.0
-arm                              allmodconfig   clang-20
-arm                               allnoconfig   gcc-14.1.0
-arm                              allyesconfig   clang-20
-arm                                 defconfig   gcc-14.1.0
-arm                          ep93xx_defconfig   clang-20
-arm                        realview_defconfig   clang-20
-arm64                            allmodconfig   clang-20
-arm64                             allnoconfig   gcc-14.1.0
-arm64                               defconfig   clang-20
-arm64                               defconfig   gcc-14.1.0
-csky                              allnoconfig   gcc-14.1.0
-csky                                defconfig   gcc-14.1.0
-hexagon                          allmodconfig   clang-20
-hexagon                           allnoconfig   gcc-14.1.0
-hexagon                          allyesconfig   clang-20
-hexagon                             defconfig   gcc-14.1.0
-i386                             allmodconfig   clang-18
-i386                              allnoconfig   clang-18
-i386                             allyesconfig   clang-18
-i386                                defconfig   clang-18
-loongarch                         allnoconfig   gcc-14.1.0
-loongarch                           defconfig   gcc-14.1.0
-m68k                              allnoconfig   gcc-14.1.0
-m68k                          amiga_defconfig   clang-20
-m68k                                defconfig   gcc-14.1.0
-microblaze                        allnoconfig   gcc-14.1.0
-microblaze                          defconfig   gcc-14.1.0
-mips                              allnoconfig   gcc-14.1.0
-mips                            gpr_defconfig   clang-20
-mips                      malta_kvm_defconfig   clang-20
-mips                         rt305x_defconfig   clang-20
-nios2                            alldefconfig   clang-20
-nios2                             allnoconfig   gcc-14.1.0
-nios2                               defconfig   gcc-14.1.0
-openrisc                          allnoconfig   clang-20
-openrisc                            defconfig   gcc-12
-openrisc                  or1klitex_defconfig   clang-20
-parisc                            allnoconfig   clang-20
-parisc                              defconfig   gcc-12
-parisc                generic-64bit_defconfig   clang-20
-parisc64                            defconfig   gcc-14.1.0
-powerpc                    adder875_defconfig   clang-20
-powerpc                           allnoconfig   clang-20
-powerpc                    gamecube_defconfig   clang-20
-powerpc                       maple_defconfig   clang-20
-powerpc                 mpc834x_itx_defconfig   clang-20
-riscv                             allnoconfig   clang-20
-riscv                               defconfig   gcc-12
-riscv                    nommu_k210_defconfig   clang-20
-s390                             allmodconfig   gcc-14.1.0
-s390                              allnoconfig   clang-20
-s390                             allyesconfig   gcc-14.1.0
-s390                                defconfig   gcc-12
-sh                               allmodconfig   gcc-14.1.0
-sh                                allnoconfig   gcc-14.1.0
-sh                               allyesconfig   gcc-14.1.0
-sh                                  defconfig   gcc-12
-sh                           se7780_defconfig   clang-20
-sh                   secureedge5410_defconfig   clang-20
-sparc                            allmodconfig   gcc-14.1.0
-sparc64                             defconfig   gcc-12
-um                               allmodconfig   clang-20
-um                                allnoconfig   clang-20
-um                               allyesconfig   clang-20
-um                                  defconfig   gcc-12
-um                             i386_defconfig   gcc-12
-um                           x86_64_defconfig   gcc-12
-x86_64                            allnoconfig   clang-18
-x86_64                           allyesconfig   clang-18
-x86_64       buildonly-randconfig-001-20240831   clang-18
-x86_64       buildonly-randconfig-002-20240831   clang-18
-x86_64       buildonly-randconfig-003-20240831   clang-18
-x86_64       buildonly-randconfig-004-20240831   clang-18
-x86_64       buildonly-randconfig-005-20240831   clang-18
-x86_64       buildonly-randconfig-006-20240831   clang-18
-x86_64                              defconfig   clang-18
-x86_64                                  kexec   gcc-12
-x86_64                randconfig-001-20240831   clang-18
-x86_64                randconfig-002-20240831   clang-18
-x86_64                randconfig-003-20240831   clang-18
-x86_64                randconfig-004-20240831   clang-18
-x86_64                randconfig-005-20240831   clang-18
-x86_64                randconfig-006-20240831   clang-18
-x86_64                randconfig-011-20240831   clang-18
-x86_64                randconfig-012-20240831   clang-18
-x86_64                randconfig-013-20240831   clang-18
-x86_64                randconfig-014-20240831   clang-18
-x86_64                randconfig-015-20240831   clang-18
-x86_64                randconfig-016-20240831   clang-18
-x86_64                randconfig-071-20240831   clang-18
-x86_64                randconfig-072-20240831   clang-18
-x86_64                randconfig-073-20240831   clang-18
-x86_64                randconfig-074-20240831   clang-18
-x86_64                randconfig-075-20240831   clang-18
-x86_64                randconfig-076-20240831   clang-18
-x86_64                          rhel-8.3-rust   clang-18
-x86_64                               rhel-8.3   gcc-12
-xtensa                            allnoconfig   gcc-14.1.0
+We can remove similar four writel() in e1000_configure_tx() and
+e1000_configure_rx().
 
+commit 0845d45e900c ("e1000e: Modify Tx/Rx configurations to avoid
+null pointer dereferences in e1000_open") has introduced these
+writel(). This commit moved register writing to
+e1000_configure_tx/rx(), and as result, it caused duplication in
+e1000_configure_tx/rx().
+
+Signed-off-by: Takamitsu Iwai <takamitz@amazon.co.jp>
+---
+ drivers/net/ethernet/intel/e1000e/netdev.c | 6 ------
+ 1 file changed, 6 deletions(-)
+
+diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
+index 360ee26557f7..cf352befaeb9 100644
+--- a/drivers/net/ethernet/intel/e1000e/netdev.c
++++ b/drivers/net/ethernet/intel/e1000e/netdev.c
+@@ -2928,11 +2928,8 @@ static void e1000_configure_tx(struct e1000_adapter *adapter)
+ 	tx_ring->head = adapter->hw.hw_addr + E1000_TDH(0);
+ 	tx_ring->tail = adapter->hw.hw_addr + E1000_TDT(0);
+ 
+-	writel(0, tx_ring->head);
+ 	if (adapter->flags2 & FLAG2_PCIM2PCI_ARBITER_WA)
+ 		e1000e_update_tdt_wa(tx_ring, 0);
+-	else
+-		writel(0, tx_ring->tail);
+ 
+ 	/* Set the Tx Interrupt Delay register */
+ 	ew32(TIDV, adapter->tx_int_delay);
+@@ -3253,11 +3250,8 @@ static void e1000_configure_rx(struct e1000_adapter *adapter)
+ 	rx_ring->head = adapter->hw.hw_addr + E1000_RDH(0);
+ 	rx_ring->tail = adapter->hw.hw_addr + E1000_RDT(0);
+ 
+-	writel(0, rx_ring->head);
+ 	if (adapter->flags2 & FLAG2_PCIM2PCI_ARBITER_WA)
+ 		e1000e_update_rdt_wa(rx_ring, 0);
+-	else
+-		writel(0, rx_ring->tail);
+ 
+ 	/* Enable Receive Checksum Offload for TCP and UDP */
+ 	rxcsum = er32(RXCSUM);
 -- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+2.39.3 (Apple Git-145)
+
