@@ -1,106 +1,87 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id A5EA996A181
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  3 Sep 2024 17:02:29 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id BD443968260
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  2 Sep 2024 10:49:30 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id B7E48606B8;
-	Tue,  3 Sep 2024 15:02:27 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 97AE480F2A;
+	Mon,  2 Sep 2024 08:49:28 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id kk7UFMo6UO-f; Tue,  3 Sep 2024 15:02:27 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id ZP4E1hlbLYMP; Mon,  2 Sep 2024 08:49:28 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 06C21606C7
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org CCB8B80F2F
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1725375747;
-	bh=SWdOw87/+51iqg586AVxL9Z/wKo8wamb0wgkXwwaRE0=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=Cgu4mA9zI+57h9918ZuS8w4dCM/NKJKFSrhtaB8dZYQH341APVvPQybnlx1BEJT15
-	 RUVCtahCOmBQ0HoX4kotUL+BMc+iJZbA1vVD9g4bufqfp+r1hQhMKeym0FXUvi3/70
-	 KpbS5zx9R2l3aagke6ahm+lVlKgOwgH4N/IdRfwZTzviCDwWeHxpZqVzobSoJb4pat
-	 yX9yDDKYZ5Gr1wHVYa6i8BXAdF4Kq0sbuglrjwuop0WPQCzUGQnci9PmjiAMi+xtTs
-	 9gIDv0aMu7pXoE9jN3WZm8uolEXW0TVxPIsgezNx7izYA98PScdGS6FWkLFTZKzyFT
-	 BbVkmPKiRXdJg==
+	s=default; t=1725266967;
+	bh=BybvaNHBSo+pp+BAsQlS4icRilb7WXRwVGJwUN96Q6A=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=NtnUvMCpYROt9/+jeMEHZNXorASMD1zHbbatXjx+3HV/yJpQh8Tlt2YeNlO1dHmOw
+	 LQiqWBNuyCs72Y6ii9plL55ibppTEhGvf2JKDw4XmMrMzNzvSGuQGj0kcQDHHltk0E
+	 2dDPze61pT/9mZYCSjQHbQVg9+Clza/vJZ7bQGPwCmQkm4rlhyEfTlURRab5kVgjGJ
+	 fVLCw4K4lzz0QL09kkiyTBwsEdHMc75sfhv1HGparI7K+WQv+j4W1LMnHvMZkIQSjU
+	 tL80a1/KpJGs9HF8HUWu+EuGxCk7xml5dHIDaI14OSKtiZTGyjRF7z8eF3XM4WHvLq
+	 /Lo2jEq8Sy7cw==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 06C21606C7;
-	Tue,  3 Sep 2024 15:02:27 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id CCB8B80F2F;
+	Mon,  2 Sep 2024 08:49:27 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id E698A1BF42C
- for <intel-wired-lan@lists.osuosl.org>; Mon,  2 Sep 2024 06:15:41 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 9EB331BF427
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  2 Sep 2024 08:49:25 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id D342560673
- for <intel-wired-lan@lists.osuosl.org>; Mon,  2 Sep 2024 06:15:41 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 8B3EE6061B
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  2 Sep 2024 08:49:25 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id QBJaeeKWpV27 for <intel-wired-lan@lists.osuosl.org>;
- Mon,  2 Sep 2024 06:15:41 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=52.119.213.152;
- helo=smtp-fw-52003.amazon.com;
- envelope-from=prvs=9686ec0e1=takamitz@amazon.co.jp; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org D8A8A6062E
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D8A8A6062E
-Received: from smtp-fw-52003.amazon.com (smtp-fw-52003.amazon.com
- [52.119.213.152])
- by smtp3.osuosl.org (Postfix) with ESMTPS id D8A8A6062E
- for <intel-wired-lan@lists.osuosl.org>; Mon,  2 Sep 2024 06:15:40 +0000 (UTC)
-X-IronPort-AV: E=Sophos;i="6.10,195,1719878400"; d="scan'208";a="22718195"
-Received: from iad12-co-svc-p1-lb1-vlan3.amazon.com (HELO
- smtpout.prod.us-west-2.prod.farcaster.email.amazon.dev) ([10.43.8.6])
- by smtp-border-fw-52003.iad7.amazon.com with
- ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 02 Sep 2024 06:15:39 +0000
-Received: from EX19MTAUWC001.ant.amazon.com [10.0.21.151:51579]
- by smtpin.naws.us-west-2.prod.farcaster.email.amazon.dev [10.0.21.120:2525]
- with esmtp (Farcaster)
- id f0cf710c-b7a4-4e55-bfa9-c836fc843b9b; Mon, 2 Sep 2024 06:15:38 +0000 (UTC)
-X-Farcaster-Flow-ID: f0cf710c-b7a4-4e55-bfa9-c836fc843b9b
-Received: from EX19D005ANA004.ant.amazon.com (10.37.240.178) by
- EX19MTAUWC001.ant.amazon.com (10.250.64.174) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.1258.34;
- Mon, 2 Sep 2024 06:15:37 +0000
-Received: from 682f678c4465.ant.amazon.com (10.37.244.7) by
- EX19D005ANA004.ant.amazon.com (10.37.240.178) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.1258.35;
- Mon, 2 Sep 2024 06:15:33 +0000
-From: Takamitsu Iwai <takamitz@amazon.co.jp>
-To: "David S. Miller" <davem@davemloft.net>, Eric Dumazet
- <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni
- <pabeni@redhat.com>, Tony Nguyen <anthony.l.nguyen@intel.com>, "Przemek
- Kitszel" <przemyslaw.kitszel@intel.com>
-Date: Mon, 2 Sep 2024 15:14:54 +0900
-Message-ID: <20240902061454.85744-1-takamitz@amazon.co.jp>
-X-Mailer: git-send-email 2.39.3 (Apple Git-145)
+ id yKPXfL2hct_V for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  2 Sep 2024 08:49:23 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=139.178.84.217;
+ helo=dfw.source.kernel.org; envelope-from=horms@kernel.org;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 4D9586061A
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 4D9586061A
+Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 4D9586061A
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  2 Sep 2024 08:49:23 +0000 (UTC)
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by dfw.source.kernel.org (Postfix) with ESMTP id C578D5C2714;
+ Mon,  2 Sep 2024 08:49:18 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B9EF3C4CEC2;
+ Mon,  2 Sep 2024 08:49:20 +0000 (UTC)
+Date: Mon, 2 Sep 2024 09:49:18 +0100
+From: Simon Horman <horms@kernel.org>
+To: Ahmed Zaki <ahmed.zaki@intel.com>
+Message-ID: <20240902084918.GD23170@kernel.org>
+References: <20240828223825.426647-1-ahmed.zaki@intel.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.37.244.7]
-X-ClientProxiedBy: EX19D046UWB001.ant.amazon.com (10.13.139.187) To
- EX19D005ANA004.ant.amazon.com (10.37.240.178)
-X-Mailman-Approved-At: Tue, 03 Sep 2024 15:02:25 +0000
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=amazon.co.jp; i=@amazon.co.jp; q=dns/txt;
- s=amazon201209; t=1725257741; x=1756793741;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=SWdOw87/+51iqg586AVxL9Z/wKo8wamb0wgkXwwaRE0=;
- b=oRNh32krKN36oWobEo1OnZ2TVzsrmRkxOBjQ4+SaMWWRD7Szo8L3/7xP
- t2s6z2i3TBxrpNO/HIZgNvvsxY1O3g0aV3NYswz6bMVx2BL32kwfkGuOv
- TmVBkU1C5zA28Hm+VwvQfACnC0jaC7MrN2ltumma71nCcvbXAPauCAfQM
- 8=;
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240828223825.426647-1-ahmed.zaki@intel.com>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=kernel.org; s=k20201202; t=1725266961;
+ bh=d1/KMQQr3fp9PZdagK+xwKJylQI0EntVlebQ3EFFMCY=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=ZRmLM7FQNHhxRN0c4VcxoPrXOhha8/AKkVACxwSdZdQxfFGqjkZbgAHkm4f4yUlGs
+ y9sDvV5pu6vfINvCXbRaBln5HuUm1lvCC+woGiH3z0wfEtV4ujVK0iH0dcTQR6WhwN
+ pDmu8OwD8F1G07/JRt+rnlIfNhDV06LKuQt7ZqUDS24+NP72toSl53PSiLJye/hig3
+ z/okx3/INUWxVgtt84cbPtZit+ciYF2zsCD27u8S40hMt3+cV5Cd3Ive4ibAAe46YF
+ 5ytLFSZcXi87E52yAnlgM5y+MWEHAodMEzyUiQ+WJ2218AUfY1PUEA4j3Ws1Nekii+
+ TVGVBuaXHspPw==
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
- header.from=amazon.co.jp
+ header.from=kernel.org
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (1024-bit key,
- unprotected) header.d=amazon.co.jp header.i=@amazon.co.jp header.a=rsa-sha256
- header.s=amazon201209 header.b=oRNh32kr
-Subject: [Intel-wired-lan] [PATCH v1 net-next] e1000e: Remove duplicated
- writel() in e1000_configure_tx/rx()
+ dkim=pass (2048-bit key,
+ unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
+ header.s=k20201202 header.b=ZRmLM7FQ
+Subject: Re: [Intel-wired-lan] [PATCH iwl-net] idpf: fix VF dynamic
+ interrupt ctl register initialization
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -113,65 +94,40 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org,
- Takamitsu Iwai <takamitz@amazon.co.jp>
+Cc: netdev@vger.kernel.org, pavan.kumar.linga@intel.com,
+ intel-wired-lan@lists.osuosl.org,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Duplicated register initialization codes exist in e1000_configure_tx()
-and e1000_configure_rx().
+On Wed, Aug 28, 2024 at 04:38:25PM -0600, Ahmed Zaki wrote:
+> The VF's dynamic interrupt ctl "dyn_ctl_intrvl_s" is not initialized
+> in idpf_vf_intr_reg_init(). This resulted in the following UBSAN error
+> whenever a VF is created:
+> 
+> [  564.345655] UBSAN: shift-out-of-bounds in drivers/net/ethernet/intel/idpf/idpf_txrx.c:3654:10
+> [  564.345663] shift exponent 4294967295 is too large for 32-bit type 'int'
+> [  564.345671] CPU: 33 UID: 0 PID: 2458 Comm: NetworkManager Not tainted 6.11.0-rc4+ #1
+> [  564.345678] Hardware name: Intel Corporation M50CYP2SBSTD/M50CYP2SBSTD, BIOS SE5C6200.86B.0027.P10.2201070222 01/07/2022
+> [  564.345683] Call Trace:
+> [  564.345688]  <TASK>
+> [  564.345693]  dump_stack_lvl+0x91/0xb0
+> [  564.345708]  __ubsan_handle_shift_out_of_bounds+0x16b/0x320
+> [  564.345730]  idpf_vport_intr_update_itr_ena_irq.cold+0x13/0x39 [idpf]
+> [  564.345755]  ? __pfx_idpf_vport_intr_update_itr_ena_irq+0x10/0x10 [idpf]
+> [  564.345771]  ? static_obj+0x95/0xd0
+> [  564.345782]  ? lockdep_init_map_type+0x1a5/0x800
+> [  564.345794]  idpf_vport_intr_ena+0x5ef/0x9f0 [idpf]
+> [  564.345814]  idpf_vport_open+0x2cc/0x1240 [idpf]
+> [  564.345837]  idpf_open+0x6d/0xc0 [idpf]
+> [  564.345850]  __dev_open+0x241/0x420
+> 
+> Fixes: d4d558718266 ("idpf: initialize interrupts and enable vport")
+> Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+> Signed-off-by: Ahmed Zaki <ahmed.zaki@intel.com>
 
-For example, writel(0, tx_ring->head) writes 0 to tx_ring->head, which
-is adapter->hw.hw_addr + E1000_TDH(0).
+Thanks,
 
-This initialization is already done in ew32(TDH(0), 0).
+I see that this now matches the implementation of idpf_intr_reg_init().
 
-ew32(TDH(0), 0) is equivalent to __ew32(hw, E1000_TDH(0), 0). It
-executes writel(0, hw->hw_addr + E1000_TDH(0)). Since variable hw is
-set to &adapter->hw, it is equal to writel(0, tx_ring->head).
-
-We can remove similar four writel() in e1000_configure_tx() and
-e1000_configure_rx().
-
-commit 0845d45e900c ("e1000e: Modify Tx/Rx configurations to avoid
-null pointer dereferences in e1000_open") has introduced these
-writel(). This commit moved register writing to
-e1000_configure_tx/rx(), and as result, it caused duplication in
-e1000_configure_tx/rx().
-
-Signed-off-by: Takamitsu Iwai <takamitz@amazon.co.jp>
----
- drivers/net/ethernet/intel/e1000e/netdev.c | 6 ------
- 1 file changed, 6 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
-index 360ee26557f7..cf352befaeb9 100644
---- a/drivers/net/ethernet/intel/e1000e/netdev.c
-+++ b/drivers/net/ethernet/intel/e1000e/netdev.c
-@@ -2928,11 +2928,8 @@ static void e1000_configure_tx(struct e1000_adapter *adapter)
- 	tx_ring->head = adapter->hw.hw_addr + E1000_TDH(0);
- 	tx_ring->tail = adapter->hw.hw_addr + E1000_TDT(0);
- 
--	writel(0, tx_ring->head);
- 	if (adapter->flags2 & FLAG2_PCIM2PCI_ARBITER_WA)
- 		e1000e_update_tdt_wa(tx_ring, 0);
--	else
--		writel(0, tx_ring->tail);
- 
- 	/* Set the Tx Interrupt Delay register */
- 	ew32(TIDV, adapter->tx_int_delay);
-@@ -3253,11 +3250,8 @@ static void e1000_configure_rx(struct e1000_adapter *adapter)
- 	rx_ring->head = adapter->hw.hw_addr + E1000_RDH(0);
- 	rx_ring->tail = adapter->hw.hw_addr + E1000_RDT(0);
- 
--	writel(0, rx_ring->head);
- 	if (adapter->flags2 & FLAG2_PCIM2PCI_ARBITER_WA)
- 		e1000e_update_rdt_wa(rx_ring, 0);
--	else
--		writel(0, rx_ring->tail);
- 
- 	/* Enable Receive Checksum Offload for TCP and UDP */
- 	rxcsum = er32(RXCSUM);
--- 
-2.39.3 (Apple Git-145)
-
+Reviewed-by: Simon Horman <horms@kernel.org>
