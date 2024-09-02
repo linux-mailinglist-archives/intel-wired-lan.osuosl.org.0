@@ -1,128 +1,99 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id A580E968432
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  2 Sep 2024 12:11:03 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6B485968553
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  2 Sep 2024 12:54:31 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id EB117405F7;
-	Mon,  2 Sep 2024 10:11:00 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 69fxmSMMtPI3; Mon,  2 Sep 2024 10:11:00 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 97FD1405EB
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1725271859;
-	bh=ko0VtalU6TRd2mcjtdDzNrGiHlfUv5J7DOtlyGXRSv8=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=kpmsm8lfPKJ+4wa1ZRE6r26/onTryDObExkK/xj9FtJoUb61xZdzCRO7X/sl+fIIl
-	 hwxHzpGX4VO+zW0kwbrUrxgHgR8ASJ1Kp5Qw4QmccCWQci/3lh2umXhkAr9SMdfIj6
-	 7m7Z6KNeTzto0HZRiztoDBXfIcFcG0DRTsrWTfKAjnoygZvEq0qXu2mWPxn+Lb/98S
-	 qrlThgSdgVKYb6I5yLBIQQlPvDxY/difSj9/XZbuEKSkN28RE5z0jipMA48wdZHw1d
-	 846eUk9MWN1BKmFOzypoX7h9r2rzu75EFan6kHEjYE0ooJlQJmJMuhboVG7gQzejZz
-	 4VTBzxu28f7kA==
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 97FD1405EB;
-	Mon,  2 Sep 2024 10:10:59 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 2A12D1BF279
- for <intel-wired-lan@lists.osuosl.org>; Mon,  2 Sep 2024 10:10:58 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 23ACE607D0
- for <intel-wired-lan@lists.osuosl.org>; Mon,  2 Sep 2024 10:10:58 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 26C486075B;
+	Mon,  2 Sep 2024 10:54:30 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id yKrMQWmkC5aT for <intel-wired-lan@lists.osuosl.org>;
- Mon,  2 Sep 2024 10:10:57 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.133.124;
- helo=us-smtp-delivery-124.mimecast.com; envelope-from=pabeni@redhat.com;
+ id EndkkG3ZA89K; Mon,  2 Sep 2024 10:54:29 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C849E607D7
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1725274468;
+	bh=JVtktW2gD/YgtYvfOs5beDXR/pUTOi0OnshwF7wVGoM=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=p5LW9DWhennBOGtKxWIIU8XtMjLw9/80iI6C2O/kAx4YZYX/VK6d8dar8udrOIdfT
+	 HlxgYD3WWELFuTQ4BgsT47siol4aN8EKDMXqk1rmXK5QaMnBY8b6ysydMSpK5KB9zV
+	 FaAaJXnZduJP1v8vIooFnJfg/zho4ARGga9q6W3SAU6jIPVJPCG8fVqxQ2Lpu4Kewo
+	 g9LBwk/cDCyGBv1sm3bRkoyvVFNz8v+md6I95G/TqfIS/ONzSXlxNQff1CrZaNsixE
+	 qhyK/dVEGFqgyOGx3kGSmDvzBxChirDzexXqDNzd4Xr+WpOv7iO1bl7twu1J81Z9l7
+	 ED6vaToQ3MPjw==
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp3.osuosl.org (Postfix) with ESMTP id C849E607D7;
+	Mon,  2 Sep 2024 10:54:28 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id A6B481BF279
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  2 Sep 2024 10:54:26 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp3.osuosl.org (Postfix) with ESMTP id 934B9605E6
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  2 Sep 2024 10:54:26 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 2Ry04cChfg6l for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  2 Sep 2024 10:54:25 +0000 (UTC)
+Received-SPF: None (mailfrom) identity=mailfrom; client-ip=198.175.65.21;
+ helo=mgamail.intel.com; envelope-from=michal.swiatkowski@linux.intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 012AD6061B
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 012AD6061B
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.133.124])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 012AD6061B
- for <intel-wired-lan@lists.osuosl.org>; Mon,  2 Sep 2024 10:10:56 +0000 (UTC)
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-590-m9QaHLbYPsihMiHls2nITQ-1; Mon, 02 Sep 2024 06:10:54 -0400
-X-MC-Unique: m9QaHLbYPsihMiHls2nITQ-1
-Received: by mail-wm1-f69.google.com with SMTP id
- 5b1f17b1804b1-42c6f2e6976so18949145e9.1
- for <intel-wired-lan@lists.osuosl.org>; Mon, 02 Sep 2024 03:10:54 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1725271853; x=1725876653;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=ko0VtalU6TRd2mcjtdDzNrGiHlfUv5J7DOtlyGXRSv8=;
- b=uZibH8fpIELmu+PIhSiX0AMaCQEkJqWveUWWhEBNzysBxKBZ900M4fwRDxTiQRS75k
- EoLjdOSorlFAOLcNthnqMGGjUIZpulYQvumKbAyTmvivlWlzOWkrmorEfXXfPPwjf1HC
- 3yWW/PCjuRQ/wFdrh8+oo4s5erHJfCg6ghhj9ZaQG9blNrOTPdU/8F2g6+oWziq/QXdp
- TBBRfPo2hR5F7FQh0AzXubQIK7dP3PFNW+x0ymPlc3stz4FDMr7kb0uPPEF0luU+xxHR
- qyevQGZ+qlPpUKEeIrQNq7VsNUCGr7DZ5YeqlFqkIsMZNl0p4qVauYywkUHrURvlk6mk
- +BPg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXHYzmW0Mqib8gPotTi3KcguKomJ5GagN1akvt/ULrD89VGL6I+OVn+A8klgUFxaoiM/ePF4VbgngAWdvvN6sA=@lists.osuosl.org
-X-Gm-Message-State: AOJu0YweD9XtEgA8JRZdIItbYkVhWr2Ia+QsgE8vur3zdyky4YGsavdG
- NgT9dEN7Li1+nvYXpIMXArIe7lGfMztUD2yV+FwTb0I0TQRDoeH/nYEpbww8+xkR8PrF4laNLOk
- d4RFQOSZWdFHOqCXCICbpWJW4ZVrntB7rUzvBRyTrfZ0M1ezC4o5WjPWwwLkMBIp69Hc=
-X-Received: by 2002:a05:600c:1c09:b0:423:791:f446 with SMTP id
- 5b1f17b1804b1-42c7b59e335mr44157475e9.7.1725271853547; 
- Mon, 02 Sep 2024 03:10:53 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHeJOyJ/Ar6rX0WhVMfQs2myZpFdPxS2VVeL1tGE/EIyhRLHqUFol+/by50MHVDasgoZUwWZQ==
-X-Received: by 2002:a05:600c:1c09:b0:423:791:f446 with SMTP id
- 5b1f17b1804b1-42c7b59e335mr44157165e9.7.1725271852979; 
- Mon, 02 Sep 2024 03:10:52 -0700 (PDT)
-Received: from [192.168.179.247] (146-241-5-217.dyn.eolo.it. [146.241.5.217])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-374b9d54f98sm7541793f8f.69.2024.09.02.03.10.51
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 02 Sep 2024 03:10:52 -0700 (PDT)
-Message-ID: <c6d8052c-c5a0-48e2-8984-0063afc1e482@redhat.com>
-Date: Mon, 2 Sep 2024 12:10:50 +0200
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 6C02A605C6
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6C02A605C6
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.21])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 6C02A605C6
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  2 Sep 2024 10:54:25 +0000 (UTC)
+X-CSE-ConnectionGUID: 0FDjjn4yQbOSnqJabdN0Ow==
+X-CSE-MsgGUID: odhPCfdsSqOP+NKaxroN6g==
+X-IronPort-AV: E=McAfee;i="6700,10204,11182"; a="23804302"
+X-IronPort-AV: E=Sophos;i="6.10,195,1719903600"; d="scan'208";a="23804302"
+Received: from orviesa006.jf.intel.com ([10.64.159.146])
+ by orvoesa113.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 02 Sep 2024 03:54:25 -0700
+X-CSE-ConnectionGUID: 8Do9u97wSAe6K19+Wlzz9A==
+X-CSE-MsgGUID: Ylj5ZuI6RGeUkzBghnZv2w==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.10,195,1719903600"; d="scan'208";a="64931669"
+Received: from mev-dev.igk.intel.com ([10.237.112.144])
+ by orviesa006-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 02 Sep 2024 03:54:22 -0700
+Date: Mon, 2 Sep 2024 12:52:21 +0200
+From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+To: Michal Schmidt <mschmidt@redhat.com>
+Message-ID: <ZtWY5ZJkAc3OGth0@mev-dev.igk.intel.com>
+References: <20240902100652.269398-1-mschmidt@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: Jakub Kicinski <kuba@kernel.org>, Jiri Pirko <jiri@resnulli.us>
-References: <cover.1724944116.git.pabeni@redhat.com>
- <53077d35a1183d5c1110076a07d73940bb2a55f3.1724944117.git.pabeni@redhat.com>
- <20240829182019.105962f6@kernel.org>
- <58730142-2064-46cb-bc84-0060ea73c4a0@redhat.com>
- <20240830121418.39f3e6f8@kernel.org>
-From: Paolo Abeni <pabeni@redhat.com>
-In-Reply-To: <20240830121418.39f3e6f8@kernel.org>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=redhat.com; 
- s=mimecast20190719; t=1725271855;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=ko0VtalU6TRd2mcjtdDzNrGiHlfUv5J7DOtlyGXRSv8=;
- b=P1e/PKF4ITrNYMbXt4WsBEXHOY67VPTreGceh23W4rwYVr9KpDaUtXVxoTGbaf/KbTgkYM
- +fw/RGlTuLrqhB7I/XNhtWD4dooyGQvfe5kGZ+m562rVpeyrExMELJv8q7siCnS5OaYm2Z
- UQ6zyYdKeqz3RPsWzsk+awRVlJRy/OU=
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240902100652.269398-1-mschmidt@redhat.com>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1725274466; x=1756810466;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:in-reply-to;
+ bh=1ox6/8Pljv8b73NeRXJoFS9ibX5dEGrklAxOVjdb0xU=;
+ b=Pbqh7McqCW85XCGdWNfDGwhPN0piy9sr43klN6I80Eftis899xmSqptC
+ TNsBm6DzkEQyTnmanUSV9LV2GxsrtRoUD2AEwkN8oOxcd67K5D+DNJ4bi
+ YSQuXSQ1dZwcBKTA0pxAJWmJnY6DTxd0RMLo4NnhxmEVL6H1fHzate/F3
+ 8UKRMeiT+F2TPITEAh1SkKzSsVmkZCNFApSYlsxoAczN2z4kXGYva1vq8
+ 4ruqLrHWxweCSa6zkAN6LJHhFtkz5LAcjeisDqV6zG+ywSgXUILHHPHwZ
+ 2u1+ljSI1fiOA5C0UrPZ79ic3anLD41qNYPak2TapWOkkltYTR5UUItYH
+ w==;
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=redhat.com
+ dmarc=none (p=none dis=none)
+ header.from=linux.intel.com
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
- header.a=rsa-sha256 header.s=mimecast20190719 header.b=P1e/PKF4
-Subject: Re: [Intel-wired-lan] [PATCH v5 net-next 02/12] net-shapers:
- implement NL get operation
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=Pbqh7Mcq
+Subject: Re: [Intel-wired-lan] [PATCH iwl-net] ice: fix VSI lists confusion
+ when adding VLANs
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -135,91 +106,105 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Donald Hunter <donald.hunter@gmail.com>, netdev@vger.kernel.org,
- John Fastabend <john.fastabend@gmail.com>, Jamal Hadi Salim <jhs@mojatatu.com>,
- edumazet@google.com, Madhu Chittim <madhu.chittim@intel.com>,
- anthony.l.nguyen@intel.com, Simon Horman <horms@kernel.org>,
- Sridhar Samudrala <sridhar.samudrala@intel.com>,
- intel-wired-lan@lists.osuosl.org, przemyslaw.kitszel@intel.com,
- Sunil Kovvuri Goutham <sgoutham@marvell.com>
+Cc: Wojciech Drewek <wojciech.drewek@intel.com>,
+ Marcin Szycik <marcin.szycik@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>, linux-kernel@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org, Eric Dumazet <edumazet@google.com>,
+ netdev@vger.kernel.org, Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Timothy Miskell <timothy.miskell@intel.com>,
+ Dave Ertman <david.m.ertman@intel.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>,
+ Daniel Machon <daniel.machon@microchip.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-
-
-On 8/30/24 21:14, Jakub Kicinski wrote:
-> On Fri, 30 Aug 2024 17:43:08 +0200 Paolo Abeni wrote:
->> Please allow me to put a few high level questions together, to both
->> underline them as most critical, and keep the thread focused.
->>
->> On 8/30/24 03:20, Jakub Kicinski wrote:
->>   > This 'binding' has the same meaning as 'binding' in TCP ZC? :(
->>
->> I hope we can agree that good naming is difficult. I thought we agreed
->> on such naming in the past week’s discussion. The term 'binding' is
->> already used in the networking stack in many places to identify
->> different things (i.e. device tree, socket, netfilter.. ). The name
->> prefix avoids any ambiguity and I think this a good name, but if you
->> have any better suggestions, this change should be trivial.
+On Mon, Sep 02, 2024 at 12:06:52PM +0200, Michal Schmidt wrote:
+> The description of function ice_find_vsi_list_entry says:
+>   Search VSI list map with VSI count 1
 > 
-> Ack. Maybe we can cut down the number of ambiguous nouns elsewhere:
+> However, since the blamed commit (see Fixes below), the function no
+> longer checks vsi_count. This causes a problem in ice_add_vlan_internal,
+> where the decision to share VSI lists between filter rules relies on the
+> vsi_count of the found existing VSI list being 1.
 > 
-> maybe call net_shaper_info -> net_shaper ?
+> The reproducing steps:
+> 1. Have a PF and two VFs.
+>    There will be a filter rule for VLAN 0, refering to a VSI list
+>    containing VSIs: 0 (PF), 2 (VF#0), 3 (VF#1).
+> 2. Add VLAN 1234 to VF#0.
+>    ice will make the wrong decision to share the VSI list with the new
+>    rule. The wrong behavior may not be immediately apparent, but it can
+>    be observed with debug prints.
+> 3. Add VLAN 1234 to VF#1.
+>    ice will unshare the VSI list for the VLAN 1234 rule. Due to the
+>    earlier bad decision, the newly created VSI list will contain
+>    VSIs 0 (PF) and 3 (VF#1), instead of expected 2 (VF#0) and 3 (VF#1).
+> 4. Try pinging a network peer over the VLAN interface on VF#0.
+>    This fails.
 > 
-> maybe net_shaper_data -> net_shaper_hierarchy ?
-
-Is everybody fine with the above?
-
->> [about separate handle from shaper_info arguments]
->>   > Wouldn't it be convenient to store the handle in the "info"
->>   > object? AFAIU the handle is forever for an info, so no risk of it
->>   > being out of sync…
->>
->> Was that way a couple of iterations ago. Jiri explicitly asked for the
->> separation, I asked for confirmation and nobody objected.
+> Reproducer script at:
+> https://gitlab.com/mschmidt2/repro/-/blob/master/RHEL-46814/test-vlan-vsi-list-confusion.sh
+> Commented debug trace:
+> https://gitlab.com/mschmidt2/repro/-/blob/master/RHEL-46814/ice-vlan-vsi-lists-debug.txt
+> Patch adding the debug prints:
+> https://gitlab.com/mschmidt2/linux/-/commit/f8a8814623944a45091a77c6094c40bfe726bfdb
 > 
-> Could you link to that? I must have not read it.
-
-https://lore.kernel.org/netdev/ZqzIoZaGVb3jIW43@nanopsycho.orion/
-
-search for "I wonder if the handle should be part of this structure"
-
-I must admit by wannabe reply on such point never left my outbox.
-
-> You can keep it wrapped in a struct *_handle, that's fine.
-> But it can live inside the shaper object.
-
-That is basically the opposite of what Jiri asked. @Jiri would you be ok 
-reverting to such layout?
-
->> Which if the 2 options is acceptable from both of you?
->>
->> [about queue limit and channel reconf]
->>   > we probably want to trim the queue shapers on channel reconfig,
->>   > then, too? :(
->>
->> what about exposing to the drivers an helper alike:
->>
->> 	net_shaper_notify_delete(binding, handle);
->>
->> that tells the core the shaper at the given handle just went away in the
->> H/W? The driver will call it in the queue deletion helper, and such
->> helper could be later on used more generically, i.e. for vf/devlink port
->> deletion.
+> One thing I'm not certain about is the implications for the LAG feature,
+> which is another caller of ice_find_vsi_list_entry. I don't have a
+> LAG-capable card at hand to test.
 > 
-> We can either prevent disabling queues which have shapers attached,
-> or auto-removing the shapers. 
+> Fixes: 25746e4f06a5 ("ice: changes to the interface with the HW and FW for SRIOV_VF+LAG")
+> Signed-off-by: Michal Schmidt <mschmidt@redhat.com>
+> ---
+>  drivers/net/ethernet/intel/ice/ice_switch.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/net/ethernet/intel/ice/ice_switch.c b/drivers/net/ethernet/intel/ice/ice_switch.c
+> index fe8847184cb1..4e6e7af962bd 100644
+> --- a/drivers/net/ethernet/intel/ice/ice_switch.c
+> +++ b/drivers/net/ethernet/intel/ice/ice_switch.c
+> @@ -3264,7 +3264,7 @@ ice_find_vsi_list_entry(struct ice_hw *hw, u8 recp_id, u16 vsi_handle,
+>  
+>  	list_head = &sw->recp_list[recp_id].filt_rules;
+>  	list_for_each_entry(list_itr, list_head, list_entry) {
+> -		if (list_itr->vsi_list_info) {
+> +		if (list_itr->vsi_count == 1 && list_itr->vsi_list_info) {
+>  			map_info = list_itr->vsi_list_info;
+>  			if (test_bit(vsi_handle, map_info->vsi_map)) {
+>  				*vsi_list_id = map_info->vsi_list_id;
+> -- 
+> 2.45.2
+> 
 
-I think/fear that prevent disabling queues would lead to 
-weird/unexpected results and more difficult administration, I prefer the 
-callback option.
+Thanks, it for sure looks correct. Reusing VSI list when the rule is new
+seems like an error. I don't know why it was needed for LAG, probably
+Dave will now.
 
-> No preference on that. But put the
-> callback in the core, please, netif_set_real_num_rx_queues() ?
-> Why not?
+You can add in the description that bug is caused because of reusing VSI
+list created for VLAN 0. All created VFs VSIs are added to VLAN 0
+filter. When none zero VLAN is created on VF which is already in VLAN 0
+(normal case) the VSI list from VLAN 0 is reused. It leads to a problem
+because all VFs (VSIs to be sepcific) that are subscribed to VLAN 0 will
+now receive a new VLAN tag traffic. This is one bug, another is the bug
+that you described. Removing filters from one VF will remove VLAN filter
+from the previous VF. It happens in case of reset of VF.
 
-It makes sense. I'll add a net_shaper_set_real_num_rx_queues() callback 
-there.
+For example:
+- creation of 3 VFs
+- we have VSI list (used for VLAN 0) [0 (pf), 2 (vf1), 3 (vf2), 4 (vf3)]
+- we are adding VLAN 100 on VF1, we are reusing the previous list
+  because 2 is there
+- VLAN traffic works fine, but VLAN 100 tagged traffic can be received
+  on all VSIs from the list (for example broadcast or unicast)
+- trust is turing on on VF2, VF2 is resetting, all filters from VF2 are
+  removed; the VLAN 100 filter is also remove because 3 is on the list
+- VLAN traffic to VF1 isn't working anymore, there is a need to recreate
+  VLAN interface to readd VLAN filter
 
-/P
+In summary, I don't see the use case when reusing VSI list which more
+than one VSI on it for new rule is valid scenario.
 
+Reviewed-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+
+Thanks,
+Michal 
