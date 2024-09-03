@@ -2,63 +2,63 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id C440B969D74
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  3 Sep 2024 14:26:25 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id C7EA2969D76
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  3 Sep 2024 14:26:28 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 9BF28607D3;
-	Tue,  3 Sep 2024 12:26:21 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 8B7CA607B1;
+	Tue,  3 Sep 2024 12:26:22 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id fpqbDeL95iwc; Tue,  3 Sep 2024 12:26:21 +0000 (UTC)
+ id 27pCIU1wPBy7; Tue,  3 Sep 2024 12:26:22 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org CD46C60622
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D7D5860622
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1725366380;
-	bh=bdwNlO10/FzjujM96/UAuWgzXHY3k0KaqsI9ZMK91Zg=;
+	s=default; t=1725366381;
+	bh=A7yI1BkDEk0+y5hmQhPdjM5d10UFxmYBH1F2D5PIAUA=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=P3klb6o0j8zMgFY/RX3uwKziLf9ep5x6hRbQgDKNyBNuohhEkg65a/6Bu51JyvNgP
-	 JXPYG2/X57Jm1WuAxuFJF4GaK2nkSvLTK6bNTr257ORk8cmbBzvuSIH+8hUXI/Drg9
-	 WP6W47drs1tKyUIg06gXRTc5U90gUQEQRXzyDTwG/dYXq7S8S+opj444LRs/dMWuh6
-	 nlFR7JwfIXsz68ntBheLhOwcpJqzzfpY95Q9/A1kBgnUSj1bEKI188+iKxRZrx1T24
-	 Icw63qPYlZRGii/ViPY95/eVx9UIKk2XU3HDOVRQRTAbJQcqw93SeqVIKCdC48N13z
-	 k7uWy0lASS7DA==
+	b=2jrJfZSL4CLHCfOfNNWvDXoXZWjIWxqzILy47GCZ1uiW85rtg1RE6mTF8DbUajnuq
+	 8zR7ZfYUDtUmKRCfbKO21Ti5P8h8kDLyQgc4oEx4YFWiSus+W3WHBlL4II0HNWN5Yt
+	 NpFqFrNKlMqugamZAohtXqh4eMkG8xBXvU2fzxLJWLUJAcYVIsnYQNHdCwkjF6n8di
+	 hmJE9a7PPewFCaPQhHxjQ9KSe1Un01vYmgOhvxXVvpl7p8juyY1Bmvxthw9EvHKeBt
+	 FrGkHNTYR7W/fOFV9Dl/Ly0Jn0lVIDBMF7+7/pDA52O2O42f048F/yqFpyrsyOay5H
+	 yw/SdoIHsnEuQ==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id CD46C60622;
-	Tue,  3 Sep 2024 12:26:20 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id D7D5860622;
+	Tue,  3 Sep 2024 12:26:21 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id B992A1BF589
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id EB40F1BF589
  for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Sep 2024 12:26:16 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id B3BA740921
+ by smtp1.osuosl.org (Postfix) with ESMTP id E3D4E80E4C
  for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Sep 2024 12:26:16 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id TD7vwIkADRwR for <intel-wired-lan@lists.osuosl.org>;
- Tue,  3 Sep 2024 12:26:15 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=45.249.212.32;
- helo=szxga06-in.huawei.com; envelope-from=yuehaibing@huawei.com;
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id wNvdGByTeOqa for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  3 Sep 2024 12:26:16 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=45.249.212.187;
+ helo=szxga01-in.huawei.com; envelope-from=yuehaibing@huawei.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org DB6E3408D4
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org DB6E3408D4
-Received: from szxga06-in.huawei.com (szxga06-in.huawei.com [45.249.212.32])
- by smtp2.osuosl.org (Postfix) with ESMTPS id DB6E3408D4
- for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Sep 2024 12:26:14 +0000 (UTC)
-Received: from mail.maildlp.com (unknown [172.19.88.234])
- by szxga06-in.huawei.com (SkyGuard) with ESMTP id 4WylD56MpSz1xwpy;
- Tue,  3 Sep 2024 20:24:05 +0800 (CST)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org F259C80E4A
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org F259C80E4A
+Received: from szxga01-in.huawei.com (szxga01-in.huawei.com [45.249.212.187])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id F259C80E4A
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Sep 2024 12:26:15 +0000 (UTC)
+Received: from mail.maildlp.com (unknown [172.19.162.254])
+ by szxga01-in.huawei.com (SkyGuard) with ESMTP id 4WylFj6h4XzyRNt;
+ Tue,  3 Sep 2024 20:25:29 +0800 (CST)
 Received: from dggpemf500002.china.huawei.com (unknown [7.185.36.57])
- by mail.maildlp.com (Postfix) with ESMTPS id 4118114011F;
+ by mail.maildlp.com (Postfix) with ESMTPS id F015018010A;
  Tue,  3 Sep 2024 20:26:06 +0800 (CST)
 Received: from huawei.com (10.175.101.6) by dggpemf500002.china.huawei.com
  (7.185.36.57) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.11; Tue, 3 Sep
- 2024 20:26:05 +0800
+ 2024 20:26:06 +0800
 From: Yue Haibing <yuehaibing@huawei.com>
 To: <anthony.l.nguyen@intel.com>, <przemyslaw.kitszel@intel.com>,
  <davem@davemloft.net>, <kuba@kernel.org>, <pabeni@redhat.com>,
@@ -66,8 +66,8 @@ To: <anthony.l.nguyen@intel.com>, <przemyslaw.kitszel@intel.com>,
  <michal.swiatkowski@linux.intel.com>, <amritha.nambiar@intel.com>,
  <mateusz.polchlopek@intel.com>, <jacob.e.keller@intel.com>,
  <maciej.fijalkowski@intel.com>
-Date: Tue, 3 Sep 2024 20:22:32 +0800
-Message-ID: <20240903122234.964218-2-yuehaibing@huawei.com>
+Date: Tue, 3 Sep 2024 20:22:33 +0800
+Message-ID: <20240903122234.964218-3-yuehaibing@huawei.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240903122234.964218-1-yuehaibing@huawei.com>
 References: <20240903122234.964218-1-yuehaibing@huawei.com>
@@ -77,10 +77,10 @@ Content-Type: text/plain
 X-Originating-IP: [10.175.101.6]
 X-ClientProxiedBy: dggems703-chm.china.huawei.com (10.3.19.180) To
  dggpemf500002.china.huawei.com (7.185.36.57)
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=huawei.com
-Subject: [Intel-wired-lan] [PATCH net-next 1/3] iavf: Remove unused
+Subject: [Intel-wired-lan] [PATCH net-next 2/3] igb: Cleanup unused
  declarations
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
@@ -98,83 +98,40 @@ Cc: netdev@vger.kernel.org, intel-wired-lan@lists.osuosl.org
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-There is no caller and implementation in tree.
+e1000_init_function_pointers_82575() is never implemented and used since
+commit 9d5c824399de ("igb: PCI-Express 82575 Gigabit Ethernet driver").
+And commit 9835fd7321a6 ("igb: Add new function to read part number from
+EEPROM in string format") removed igb_read_part_num() implementation.
 
 Signed-off-by: Yue Haibing <yuehaibing@huawei.com>
 ---
- drivers/net/ethernet/intel/iavf/iavf.h           | 10 ----------
- drivers/net/ethernet/intel/iavf/iavf_prototype.h |  3 ---
- 2 files changed, 13 deletions(-)
+ drivers/net/ethernet/intel/igb/e1000_mac.h | 1 -
+ drivers/net/ethernet/intel/igb/e1000_nvm.h | 1 -
+ 2 files changed, 2 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/iavf/iavf.h b/drivers/net/ethernet/intel/iavf/iavf.h
-index 48cd1d06761c..95b1d8f62304 100644
---- a/drivers/net/ethernet/intel/iavf/iavf.h
-+++ b/drivers/net/ethernet/intel/iavf/iavf.h
-@@ -529,22 +529,16 @@ static inline void iavf_change_state(struct iavf_adapter *adapter,
- 		iavf_state_str(adapter->state));
- }
+diff --git a/drivers/net/ethernet/intel/igb/e1000_mac.h b/drivers/net/ethernet/intel/igb/e1000_mac.h
+index 6e110f28f922..529b7d18b662 100644
+--- a/drivers/net/ethernet/intel/igb/e1000_mac.h
++++ b/drivers/net/ethernet/intel/igb/e1000_mac.h
+@@ -63,6 +63,5 @@ enum e1000_mng_mode {
  
--int iavf_up(struct iavf_adapter *adapter);
- void iavf_down(struct iavf_adapter *adapter);
- int iavf_process_config(struct iavf_adapter *adapter);
- int iavf_parse_vf_resource_msg(struct iavf_adapter *adapter);
- void iavf_schedule_reset(struct iavf_adapter *adapter, u64 flags);
- void iavf_schedule_aq_request(struct iavf_adapter *adapter, u64 flags);
- void iavf_schedule_finish_config(struct iavf_adapter *adapter);
--void iavf_reset(struct iavf_adapter *adapter);
- void iavf_set_ethtool_ops(struct net_device *netdev);
--void iavf_update_stats(struct iavf_adapter *adapter);
- void iavf_free_all_tx_resources(struct iavf_adapter *adapter);
- void iavf_free_all_rx_resources(struct iavf_adapter *adapter);
+ #define E1000_MNG_DHCP_COOKIE_STATUS_VLAN	0x2
  
--void iavf_napi_add_all(struct iavf_adapter *adapter);
--void iavf_napi_del_all(struct iavf_adapter *adapter);
--
- int iavf_send_api_ver(struct iavf_adapter *adapter);
- int iavf_verify_api_ver(struct iavf_adapter *adapter);
- int iavf_send_vf_config_msg(struct iavf_adapter *adapter);
-@@ -555,11 +549,9 @@ void iavf_set_queue_vlan_tag_loc(struct iavf_adapter *adapter);
- u16 iavf_get_num_vlans_added(struct iavf_adapter *adapter);
- void iavf_irq_enable(struct iavf_adapter *adapter, bool flush);
- void iavf_configure_queues(struct iavf_adapter *adapter);
--void iavf_deconfigure_queues(struct iavf_adapter *adapter);
- void iavf_enable_queues(struct iavf_adapter *adapter);
- void iavf_disable_queues(struct iavf_adapter *adapter);
- void iavf_map_queues(struct iavf_adapter *adapter);
--int iavf_request_queues(struct iavf_adapter *adapter, int num);
- void iavf_add_ether_addrs(struct iavf_adapter *adapter);
- void iavf_del_ether_addrs(struct iavf_adapter *adapter);
- void iavf_add_vlans(struct iavf_adapter *adapter);
-@@ -579,8 +571,6 @@ void iavf_virtchnl_completion(struct iavf_adapter *adapter,
- 			      enum virtchnl_ops v_opcode,
- 			      enum iavf_status v_retval, u8 *msg, u16 msglen);
- int iavf_config_rss(struct iavf_adapter *adapter);
--int iavf_lan_add_device(struct iavf_adapter *adapter);
--int iavf_lan_del_device(struct iavf_adapter *adapter);
- void iavf_enable_channels(struct iavf_adapter *adapter);
- void iavf_disable_channels(struct iavf_adapter *adapter);
- void iavf_add_cloud_filter(struct iavf_adapter *adapter);
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_prototype.h b/drivers/net/ethernet/intel/iavf/iavf_prototype.h
-index 48c3901381b4..cac9d1a35a52 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_prototype.h
-+++ b/drivers/net/ethernet/intel/iavf/iavf_prototype.h
-@@ -18,7 +18,6 @@
- /* adminq functions */
- enum iavf_status iavf_init_adminq(struct iavf_hw *hw);
- enum iavf_status iavf_shutdown_adminq(struct iavf_hw *hw);
--void iavf_adminq_init_ring_data(struct iavf_hw *hw);
- enum iavf_status iavf_clean_arq_element(struct iavf_hw *hw,
- 					struct iavf_arq_event_info *e,
- 					u16 *events_pending);
-@@ -33,8 +32,6 @@ bool iavf_asq_done(struct iavf_hw *hw);
- void iavf_debug_aq(struct iavf_hw *hw, enum iavf_debug_mask mask,
- 		   void *desc, void *buffer, u16 buf_len);
+-void e1000_init_function_pointers_82575(struct e1000_hw *hw);
  
--void iavf_idle_aq(struct iavf_hw *hw);
--void iavf_resume_aq(struct iavf_hw *hw);
- bool iavf_check_asq_alive(struct iavf_hw *hw);
- enum iavf_status iavf_aq_queue_shutdown(struct iavf_hw *hw, bool unloading);
- const char *iavf_aq_str(struct iavf_hw *hw, enum iavf_admin_queue_err aq_err);
+ #endif
+diff --git a/drivers/net/ethernet/intel/igb/e1000_nvm.h b/drivers/net/ethernet/intel/igb/e1000_nvm.h
+index 091cddf4ada8..4f652ab713b3 100644
+--- a/drivers/net/ethernet/intel/igb/e1000_nvm.h
++++ b/drivers/net/ethernet/intel/igb/e1000_nvm.h
+@@ -7,7 +7,6 @@
+ s32  igb_acquire_nvm(struct e1000_hw *hw);
+ void igb_release_nvm(struct e1000_hw *hw);
+ s32  igb_read_mac_addr(struct e1000_hw *hw);
+-s32  igb_read_part_num(struct e1000_hw *hw, u32 *part_num);
+ s32  igb_read_part_string(struct e1000_hw *hw, u8 *part_num,
+ 			  u32 part_num_size);
+ s32  igb_read_nvm_eerd(struct e1000_hw *hw, u16 offset, u16 words, u16 *data);
 -- 
 2.34.1
 
