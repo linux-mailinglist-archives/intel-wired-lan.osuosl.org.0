@@ -1,95 +1,95 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2B74896A66D
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  3 Sep 2024 20:26:21 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 16D6796A6BA
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  3 Sep 2024 20:43:10 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id CE0BA607C1;
-	Tue,  3 Sep 2024 18:26:19 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 6A7FE40A25;
+	Tue,  3 Sep 2024 18:43:08 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id IEvMUpW7EHqF; Tue,  3 Sep 2024 18:26:19 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 1DrxwDRLJDKR; Tue,  3 Sep 2024 18:43:07 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C640C6077F
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3FECC40A1D
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1725387978;
-	bh=6/flk3hxb6gs6RQWyWRSb7d6hfydIm8MHggsK2bWkc0=;
+	s=default; t=1725388987;
+	bh=/LVyIECu32f4UU8taso7jleG5ukvwJ7wskdqDimb/so=;
 	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
 	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=bB3FRMUCTWN7b5WW1KzrCsAVzJnQE3WMp32jvwvYA5H79nXAumQcJNIJ7DNGk3geY
-	 Wgs9FFMwiwibIWBiggRpQyrGsrm5TlKp4a5R0MnZ+Z4q+ifK6LVVFamDti5GlLtEyg
-	 MVeStvWz+399KRvrAVS/5++FUMTl82SsqctVHLfFhDs7eG9vTWWQ3oA5UTSOnIx8dq
-	 eBvimSy0rVRYgqza3ite7peWFVMRhQ+shv279Zej59Yz9iPYkaOINIBQ4PdZ8vEe9Q
-	 IdkvAxNfiHjpSOljuGMe0eDOQNauXnbFrvVnsNFZz34rL+X2m//xbiapkmE/NCIQmW
-	 C8X3FFr3hdxdg==
+	b=dVOVDmBEgTGR2csOJ3VUId/k3U1U2CAhAAxrMfWz2t6Bcj2ztd55EdHSWtzuvKJPw
+	 HwBBhCJercA5E3/c2Yyga/sdRZ7eYyddYpV+r6I2XCwLh3jXj0HRrtJYCoYEuYgbl5
+	 8DSrUyIHMKyQja++FA371EaNJF/CFzwCwJ1TMxSxnDRX6JalJg22+stEYqhAHQpP4u
+	 pBR/nBSdaICJHyUI5tqUH4RirNqkLmPb9niR164nrm2+vrdy+eIVsZRUyPUe2qGoYH
+	 KES1vdZ16LD/CYU1Q1pCdAXVFrn+WEt9h5jptLdZgivid+Detk50isabworz4Xs17w
+	 gO/qt4hCEskNg==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id C640C6077F;
-	Tue,  3 Sep 2024 18:26:18 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 3FECC40A1D;
+	Tue,  3 Sep 2024 18:43:07 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id DFC3C1BF356
- for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Sep 2024 18:26:16 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 305151BF59C
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Sep 2024 18:43:05 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id CD40980E61
- for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Sep 2024 18:26:16 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 1B3D940A1A
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Sep 2024 18:43:05 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 9MNu6XJ7NyPb for <intel-wired-lan@lists.osuosl.org>;
- Tue,  3 Sep 2024 18:26:16 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.129.124;
- helo=us-smtp-delivery-124.mimecast.com; envelope-from=kheib@redhat.com;
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id FwbVWkBdSHzx for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  3 Sep 2024 18:43:04 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.18;
+ helo=mgamail.intel.com; envelope-from=joshua.a.hay@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org CFD8080E2F
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org CFD8080E2F
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.129.124])
- by smtp1.osuosl.org (Postfix) with ESMTPS id CFD8080E2F
- for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Sep 2024 18:26:15 +0000 (UTC)
-Received: from mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-659-IdtOVd3BP4WnhKg2PQicgQ-1; Tue,
- 03 Sep 2024 14:26:13 -0400
-X-MC-Unique: IdtOVd3BP4WnhKg2PQicgQ-1
-Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id D8DAA18EA8B6; Tue,  3 Sep 2024 18:26:10 +0000 (UTC)
-Received: from fedora-x1.redhat.com (unknown [10.22.32.64])
- by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 7A86730001A4; Tue,  3 Sep 2024 18:26:08 +0000 (UTC)
-From: Kamal Heib <kheib@redhat.com>
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org AED4640A02
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org AED4640A02
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.18])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id AED4640A02
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Sep 2024 18:43:03 +0000 (UTC)
+X-CSE-ConnectionGUID: jvWUwQxgSQyGgcZkc5Dawg==
+X-CSE-MsgGUID: h0Q6Tl/USI2MWCdxdLWMTg==
+X-IronPort-AV: E=McAfee;i="6700,10204,11184"; a="24148511"
+X-IronPort-AV: E=Sophos;i="6.10,199,1719903600"; d="scan'208";a="24148511"
+Received: from fmviesa006.fm.intel.com ([10.60.135.146])
+ by orvoesa110.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 03 Sep 2024 11:43:03 -0700
+X-CSE-ConnectionGUID: FAb18MeQSmqXZesO1LIS/w==
+X-CSE-MsgGUID: zpRnkUTCT7uay3rrJ2F3Tg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.10,199,1719903600"; d="scan'208";a="64655220"
+Received: from dcskidmo-m40.jf.intel.com ([10.166.241.13])
+ by fmviesa006.fm.intel.com with ESMTP; 03 Sep 2024 11:43:03 -0700
+From: Joshua Hay <joshua.a.hay@intel.com>
 To: intel-wired-lan@lists.osuosl.org
-Date: Tue,  3 Sep 2024 14:25:55 -0400
-Message-ID: <20240903182555.1253466-1-kheib@redhat.com>
+Date: Tue,  3 Sep 2024 11:49:56 -0700
+Message-Id: <20240903184956.1572344-1-joshua.a.hay@intel.com>
+X-Mailer: git-send-email 2.39.2
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=redhat.com; 
- s=mimecast20190719; t=1725387974;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=6/flk3hxb6gs6RQWyWRSb7d6hfydIm8MHggsK2bWkc0=;
- b=FbCviH1W8s6z86YBIeWTJU0PJvV8w0xPSgivym6TYIHuA0Tt7KRirnmIurX4dc0+xHnr/5
- t6u3SEkMfVqVVwDlQALiwPRH3SZngPQscLlnjpX22sRJsyLyk5lQj0Fiz5HTG9jHy5h1vd
- PbgOq8I7hxpmJy700cXa6disnWnacwo=
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1725388984; x=1756924984;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=ld9gagOa0fa1CJUN37/ZlIKkg9SRVVn3N2D0lHHCkzI=;
+ b=jN7ALio7hIvZ1e5cYlNdbEwh5mfDAadrIbLAPQLvzcQjpfxRlZv4gyQI
+ azlIN8T1sapMNYbuE8x2iZ3lV/YB5FfcXq1mi7Q4vQcK/YI+d6w9za/9k
+ dKuO8Ym9mwqvTM83TOqQFEgHT/jvnthwzjfIw8zE++ndl6Qf385PR8D0a
+ Kf2eB6EqSZ0iF/rCs4BTmKrc9tWbnbaKc8+ODZlZn/8rlXPwHVbhyrGz7
+ wJ6YaNImH79ZYF5Kb+j788Cz74qD7wEkjU8KcTC1nJsbf9/Ol/UlZRC7N
+ kIOR5Df9NFsgRah3mbCcFxPoomFdkHeMcdiap3jtGbjQQQanJ8XSO7IG8
+ g==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=redhat.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
- header.a=rsa-sha256 header.s=mimecast20190719 header.b=FbCviH1W
-Subject: [Intel-wired-lan] [PATCH iwl-net] i40e: Fix trying to free
- already-freed IRQ
+ header.from=intel.com
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=jN7ALio7
+Subject: [Intel-wired-lan] [PATCH iwl-net] idpf: use actual mbx receive
+ payload length
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -102,146 +102,74 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Ivan Vecera <ivecera@redhat.com>, YangHang Liu <yanghliu@redhat.com>,
- netdev@vger.kernel.org, Kamal Heib <kheib@redhat.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- "David S . Miller" <davem@davemloft.net>
+Cc: Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Joshua Hay <joshua.a.hay@intel.com>, stable@vger.kernel.org,
+ aleksander.lobakin@intel.com, netdev@vger.kernel.org, milena.olech@intel.com
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Avoid the following warning when trying to free an already freed IRQ,
-The issue happens when trying to call i40e_remove() twice from two
-different contexts which will lead to calling i40e_vsi_free_irq() twice,
-Fix the issue by using a flag to mark that the IRQ has already been freed.
+When a mailbox message is received, the driver is checking for a non 0
+datalen in the controlq descriptor. If it is valid, the payload is
+attached to the ctlq message to give to the upper layer.  However, the
+payload response size given to the upper layer was taken from the buffer
+metadata which is _always_ the max buffer size. This meant the API was
+returning 4K as the payload size for all messages.  This went unnoticed
+since the virtchnl exchange response logic was checking for a response
+size less than 0 (error), not less than exact size, or not greater than
+or equal to the max mailbox buffer size (4K). All of these checks will
+pass in the success case since the size provided is always 4K. However,
+this breaks anyone that wants to validate the exact response size.
 
-i40e 0000:07:00.0: i40e_ptp_stop: removed PHC on enp7s0
-------------[ cut here ]------------
-Trying to free already-free IRQ 0
-WARNING: CPU: 2 PID: 12 at kernel/irq/manage.c:1868 __free_irq+0x1e3/0x350
-Modules linked in: nft_fib_inet nft_fib_ipv4 nft_fib_ipv6 nft_fib nft_reject_inet nf_reject_ipv4 nf_reject_ipv6 nft_reject nft_ct nft_chain_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 rfkill ip_set nf_tables nfnetlink vfat fat intel_rapl_msr intel_rapl_common kvm_amd ccp iTCO_wdt iTCO_vendor_support kvm i2c_i801 pcspkr i40e lpc_ich virtio_gpu i2c_smbus virtio_dma_buf drm_shmem_helper drm_kms_helper virtio_balloon joydev drm fuse xfs libcrc32c ahci crct10dif_pclmul libahci crc32_pclmul crc32c_intel virtio_net libata virtio_blk ghash_clmulni_intel net_failover virtio_console failover serio_raw dm_mirror dm_region_hash dm_log dm_mod
-CPU: 2 PID: 12 Comm: kworker/u16:1 Kdump: loaded Not tainted 5.14.0-478.el9.x86_64 #1
-Hardware name: Red Hat KVM/RHEL, BIOS edk2-20240524-1.el9 05/24/2024
-Workqueue: kacpi_hotplug acpi_hotplug_work_fn
-RIP: 0010:__free_irq+0x1e3/0x350
-Code: 00 00 48 8b bb a8 01 00 00 e8 09 74 02 00 49 8b 7c 24 30 e8 8f 7c 1d 00 eb 35 8b 74 24 04 48 c7 c7 50 a3 61 92 e8 cd 99 f6 ff <0f> 0b 4c 89 fe 48 89 ef e8 30 aa b3 00 48 8b 43 40 48 8b 40 78 48
-RSP: 0018:ffffb971c0077ac8 EFLAGS: 00010086
-RAX: 0000000000000000 RBX: ffff8b594193ee00 RCX: 0000000000000027
-RDX: 0000000000000027 RSI: 00000000ffff7fff RDI: ffff8b59bcf208c8
-RBP: ffff8b594193eec4 R08: 0000000000000000 R09: ffffb971c0077970
-R10: ffffb971c0077968 R11: ffffffff931e7c28 R12: ffff8b5944946000
-R13: ffff8b594193ef80 R14: ffff8b5944946000 R15: 0000000000000246
-FS:  0000000000000000(0000) GS:ffff8b59bcf00000(0000) knlGS:0000000000000000
-CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
-CR2: 00007f11eb064000 CR3: 000000000ad40004 CR4: 0000000000770ef0
-PKRU: 55555554
-Call Trace:
- <TASK>
- ? srso_alias_return_thunk+0x5/0xfbef5
- ? show_trace_log_lvl+0x26e/0x2df
- ? show_trace_log_lvl+0x26e/0x2df
- ? free_irq+0x33/0x70
- ? __free_irq+0x1e3/0x350
- ? __warn+0x7e/0xd0
- ? __free_irq+0x1e3/0x350
- ? report_bug+0x100/0x140
- ? srso_alias_return_thunk+0x5/0xfbef5
- ? handle_bug+0x3c/0x70
- ? exc_invalid_op+0x14/0x70
- ? asm_exc_invalid_op+0x16/0x20
- ? __free_irq+0x1e3/0x350
- ? __free_irq+0x1e3/0x350
- free_irq+0x33/0x70
- i40e_vsi_free_irq+0x19e/0x220 [i40e]
- i40e_vsi_close+0x2b/0xc0 [i40e]
- i40e_close+0x11/0x20 [i40e]
- __dev_close_many+0x9e/0x110
- dev_close_many+0x8b/0x140
- ? srso_alias_return_thunk+0x5/0xfbef5
- ? free_pcppages_bulk+0xee/0x290
- unregister_netdevice_many_notify+0x162/0x690
- ? srso_alias_return_thunk+0x5/0xfbef5
- ? free_unref_page_commit+0x19a/0x310
- unregister_netdevice_queue+0xd3/0x110
- unregister_netdev+0x18/0x20
- i40e_vsi_release+0x84/0x2e0 [i40e]
- ? srso_alias_return_thunk+0x5/0xfbef5
- i40e_remove+0x15c/0x430 [i40e]
- pci_device_remove+0x3e/0xb0
- device_release_driver_internal+0x193/0x200
- pci_stop_bus_device+0x6c/0x90
- pci_stop_and_remove_bus_device+0xe/0x20
- disable_slot+0x49/0x90
- acpiphp_disable_and_eject_slot+0x15/0x90
- hotplug_event+0xea/0x210
- ? __pfx_acpiphp_hotplug_notify+0x10/0x10
- acpiphp_hotplug_notify+0x22/0x80
- ? __pfx_acpiphp_hotplug_notify+0x10/0x10
- acpi_device_hotplug+0xb8/0x210
- acpi_hotplug_work_fn+0x1a/0x30
- process_one_work+0x197/0x380
- worker_thread+0x2fe/0x410
- ? __pfx_worker_thread+0x10/0x10
- kthread+0xe0/0x100
- ? __pfx_kthread+0x10/0x10
- ret_from_fork+0x2c/0x50
- </TASK>
----[ end trace 0000000000000000 ]---
+Fetch the actual payload length from the value provided in the
+descriptor data_len field (instead of the buffer metadata).
 
-Fixes: 41c445ff0f48 ("i40e: main driver core")
-Tested-by: YangHang Liu <yanghliu@redhat.com>
-Signed-off-by: Kamal Heib <kheib@redhat.com>
+Unfortunately, this means we lose some extra error parsing for variable
+sized virtchnl responses such as create vport and get ptypes.  However,
+the original checks weren't really helping anyways since the size was
+_always_ 4K.
+
+Fixes: 34c21fa894a1 ("idpf: implement virtchnl transaction manager")
+Cc: stable@vger.kernel.org # 6.9+
+Signed-off-by: Joshua Hay <joshua.a.hay@intel.com>
+Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
 ---
- drivers/net/ethernet/intel/i40e/i40e.h      | 1 +
- drivers/net/ethernet/intel/i40e/i40e_main.c | 8 ++++++++
- 2 files changed, 9 insertions(+)
+ drivers/net/ethernet/intel/idpf/idpf_virtchnl.c | 9 +--------
+ 1 file changed, 1 insertion(+), 8 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/i40e/i40e.h b/drivers/net/ethernet/intel/i40e/i40e.h
-index d546567e0286..910415116995 100644
---- a/drivers/net/ethernet/intel/i40e/i40e.h
-+++ b/drivers/net/ethernet/intel/i40e/i40e.h
-@@ -865,6 +865,7 @@ struct i40e_vsi {
- 	int num_q_vectors;
- 	int base_vector;
- 	bool irqs_ready;
-+	bool legacy_msi_irq_ready;
+diff --git a/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c b/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c
+index 70986e12da28..3c0f97650d72 100644
+--- a/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c
++++ b/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c
+@@ -666,7 +666,7 @@ idpf_vc_xn_forward_reply(struct idpf_adapter *adapter,
  
- 	u16 seid;		/* HW index of this VSI (absolute index) */
- 	u16 id;			/* VSI number */
-diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
-index cbcfada7b357..b39004a42df2 100644
---- a/drivers/net/ethernet/intel/i40e/i40e_main.c
-+++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
-@@ -4630,6 +4630,9 @@ static int i40e_vsi_request_irq(struct i40e_vsi *vsi, char *basename)
- 	if (err)
- 		dev_info(&pf->pdev->dev, "request_irq failed, Error %d\n", err);
+ 	if (ctlq_msg->data_len) {
+ 		payload = ctlq_msg->ctx.indirect.payload->va;
+-		payload_size = ctlq_msg->ctx.indirect.payload->size;
++		payload_size = ctlq_msg->data_len;
+ 	}
  
-+	if (!test_bit(I40E_FLAG_MSIX_ENA, pf->flags) && !err)
-+		vsi->legacy_msi_irq_ready = true;
-+
- 	return err;
- }
+ 	xn->reply_sz = payload_size;
+@@ -1295,10 +1295,6 @@ int idpf_send_create_vport_msg(struct idpf_adapter *adapter,
+ 		err = reply_sz;
+ 		goto free_vport_params;
+ 	}
+-	if (reply_sz < IDPF_CTLQ_MAX_BUF_LEN) {
+-		err = -EIO;
+-		goto free_vport_params;
+-	}
  
-@@ -5061,6 +5064,10 @@ static void i40e_vsi_free_irq(struct i40e_vsi *vsi)
- 			}
- 		}
- 	} else {
-+		if (!vsi->legacy_msi_irq_ready)
-+			return;
-+
-+		vsi->legacy_msi_irq_ready = false;
- 		free_irq(pf->pdev->irq, pf);
+ 	return 0;
  
- 		val = rd32(hw, I40E_PFINT_LNKLST0);
-@@ -11519,6 +11526,7 @@ static int i40e_vsi_mem_alloc(struct i40e_pf *pf, enum i40e_vsi_type type)
- 	vsi->work_limit = I40E_DEFAULT_IRQ_WORK;
- 	hash_init(vsi->mac_filter_hash);
- 	vsi->irqs_ready = false;
-+	vsi->legacy_msi_irq_ready = false;
+@@ -2602,9 +2598,6 @@ int idpf_send_get_rx_ptype_msg(struct idpf_vport *vport)
+ 		if (reply_sz < 0)
+ 			return reply_sz;
  
- 	if (type == I40E_VSI_MAIN) {
- 		vsi->af_xdp_zc_qps = bitmap_zalloc(pf->num_lan_qps, GFP_KERNEL);
+-		if (reply_sz < IDPF_CTLQ_MAX_BUF_LEN)
+-			return -EIO;
+-
+ 		ptypes_recvd += le16_to_cpu(ptype_info->num_ptypes);
+ 		if (ptypes_recvd > max_ptype)
+ 			return -EINVAL;
 -- 
-2.46.0
+2.39.2
 
