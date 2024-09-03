@@ -1,112 +1,112 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id BD60B969067
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  3 Sep 2024 01:25:35 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2E621969094
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  3 Sep 2024 02:08:12 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 62B274027A;
-	Mon,  2 Sep 2024 23:25:34 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id A9B6B402C1;
+	Tue,  3 Sep 2024 00:08:10 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Wocn1lT3Df4w; Mon,  2 Sep 2024 23:25:33 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id iHEUYkNhecdl; Tue,  3 Sep 2024 00:08:09 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org EE19B40926
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3B1E0402CC
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1725319533;
-	bh=aZPbEk837UIQeWK1zj9VvBLJMdvblUtE/V1kEMjqnzg=;
+	s=default; t=1725322089;
+	bh=jverNQzc8OEnv1hJ+On8rPhs7dBruz9IRY9b92+fQ5I=;
 	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=SWTZEM9C3ZLL6FZb5YgvrXCqnfFD16Tp9FItm8YX95xD3A5oPihi/dHsMPMLLHh/R
-	 l7v83KuMDYuMWxRKmi0NwRD9Y28Q9ujFIvDCuvIPn+VT1woRDns9B0S6yvoh6jRQ88
-	 Yng53RSC04Mn+rLJw9ixq/+TA7QwH2OidVO4YtoyPMSruPUf9qdBO22A7WypG2MLo8
-	 iOqX7erbiOcvFaLBRl7yUt5iX8GfyFkmuPaeH2mDcD8tUWfUedQ/VCJkTYbr/wm4Cf
-	 hWHh5zHDF6ry8kFC2uRaY9meyDEi6DppcBH46lrTnJKnt7rf7/0Uw1CCJrhzJ/2xWM
-	 H8cg4cdPjgacA==
+	b=kHxXQIgK400tRLKCnugrmkYevonup6dGnQ0gSuxZY7bOIQAD75ZxXUDIqP4xJzBt5
+	 cJZlQmSTbsZLEnFvftAYLY6vXNGgYjE5TUuTqv5gQtXx4ZLjMRI1E1b2bXj9dpjkoS
+	 Rrpi1ZkLLNIYE6PLXVzboLop2WupcG0jtYBwu3H08DGEtc4ny/kzNcQRlr2NSRoBjj
+	 QDWb/4GaQhoqp9xZEHckoyq47nY89Fyp8pKwDfuXDTWFV0QNW5gML3T/AEp9ENXs0T
+	 T7cxhjxMLJ3NlbDCQr06UnTwnfQxle+c/rMX/8vtTuwwWOF62bdsniGjVRTUGwhXfJ
+	 RhR6LeG9Vvd2w==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id EE19B40926;
-	Mon,  2 Sep 2024 23:25:32 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 3B1E0402CC;
+	Tue,  3 Sep 2024 00:08:09 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 713951BF3FD
- for <intel-wired-lan@lists.osuosl.org>; Mon,  2 Sep 2024 23:25:31 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 689731BF8B4
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Sep 2024 00:08:07 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 5DB536061B
- for <intel-wired-lan@lists.osuosl.org>; Mon,  2 Sep 2024 23:25:31 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 53B2680EB9
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Sep 2024 00:08:07 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id g8N7L5B6-Nkh for <intel-wired-lan@lists.osuosl.org>;
- Mon,  2 Sep 2024 23:25:30 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 43fpCsLIlJoZ for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  3 Sep 2024 00:08:06 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2a00:1450:4864:20::430; helo=mail-wr1-x430.google.com;
+ client-ip=2a00:1450:4864:20::32f; helo=mail-wm1-x32f.google.com;
  envelope-from=olteanv@gmail.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 032A2605A5
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 032A2605A5
-Received: from mail-wr1-x430.google.com (mail-wr1-x430.google.com
- [IPv6:2a00:1450:4864:20::430])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 032A2605A5
- for <intel-wired-lan@lists.osuosl.org>; Mon,  2 Sep 2024 23:25:29 +0000 (UTC)
-Received: by mail-wr1-x430.google.com with SMTP id
- ffacd0b85a97d-374c4ea1d75so32550f8f.3
- for <intel-wired-lan@lists.osuosl.org>; Mon, 02 Sep 2024 16:25:29 -0700 (PDT)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 4D1E680EAB
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4D1E680EAB
+Received: from mail-wm1-x32f.google.com (mail-wm1-x32f.google.com
+ [IPv6:2a00:1450:4864:20::32f])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 4D1E680EAB
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Sep 2024 00:08:06 +0000 (UTC)
+Received: by mail-wm1-x32f.google.com with SMTP id
+ 5b1f17b1804b1-42bbbe94b88so5023165e9.3
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 02 Sep 2024 17:08:06 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1725319528; x=1725924328;
+ d=1e100.net; s=20230601; t=1725322084; x=1725926884;
  h=in-reply-to:content-disposition:mime-version:references:message-id
  :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=aZPbEk837UIQeWK1zj9VvBLJMdvblUtE/V1kEMjqnzg=;
- b=wDYePpOQGDJnvZg17b+gv02ezLh450g7exgywwO+/xW3MS+CieMrTzszxqoqtdyzns
- blHT3/R/kpOB7A8d9ZzJ8oa8+oUsRr9yoDSDpwbJTp3tukx38Z0fmXQpxbV0dTxEwd5M
- 9jFcwNN/dafaDCYQFm7SBNwqmC9iyPng7Y922Nr9uHLhApZIcy6QLLgCpdK4I5Iud4o3
- h0RHiFO4KSOAK/ZUSDBr6eHaK1eJ/nmOLn/f4Y3tTAPTnLJJphKuGMmSmv2txcmvV8QA
- k1sbWpcTUqW084g38MXkjVGfaML0hAmquqFw36ZrN/MonhH9N0gmyPXv4RITgbPToLbs
- JkzA==
+ bh=jverNQzc8OEnv1hJ+On8rPhs7dBruz9IRY9b92+fQ5I=;
+ b=Cl+jQKswl+VHYPia6MElE+AiPZ/GN9jHPwR4x9a2/QvxH1IzgXMVA3OMZLzwVGVIAZ
+ Yk/aKxZhdjyB4BhYBDf2O4dFDVhkcmpgCbl1JHyyJXvczwjrJgpvm+p1hLBQJ7vwW8o6
+ giNp1ORGcecHEP0zKNl86lIoORI8cnlU03jRlN6m++Dx1vgDcGw6jEi5gy2IQjJNMkGY
+ 9Vd3sP2BpNWdnwV0AwgyrdrVZubE9vTdYAZuSSq6YCfi0VBIb1y9OrGB0LctqC9OA5pF
+ cS3V88pg9HJBtFvI3X1B/rfiEVvDb9TjLTj/CS3dBNwvIdAxBL4nlOEYXD7zRNaBclNn
+ IkPQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXGV3wkFeW5pc+sWiE1Qwp1RvRo3LqSmkRH4JP7Sbl22zIYspG+zINENjIWo0xB9Jkh76PhNoLQlOUYJXiiDnE=@lists.osuosl.org
-X-Gm-Message-State: AOJu0Ywa4LhTzKuxG/P5/NOldMGOvnh8BPTKz6S4CgbZUg7j9FPt24OW
- 4aY7PrMPGKp9rl+NcsCvdyKm18cGpVuuz1dfC0xyQysyb+hjXZXS
-X-Google-Smtp-Source: AGHT+IGodv6U83bhyOrivZT9MKQClD2J3mAAoi4gZsnTSM89crXcjvYge4qfExEjp1ElnMZIJ20BIg==
-X-Received: by 2002:a5d:6d05:0:b0:374:c2e9:28aa with SMTP id
- ffacd0b85a97d-374c2e92e71mr2690184f8f.8.1725319527051; 
- Mon, 02 Sep 2024 16:25:27 -0700 (PDT)
+ AJvYcCXTaw+x25JqWDbOJaBfqc5nOfjA9L3VQePZNcE6m7A25T++OmgAOiMUTT/12xkeuA8eJOOJlHMgvzZsjePOyH8=@lists.osuosl.org
+X-Gm-Message-State: AOJu0Yy8+ybWFsFIC8CfWBPjFyDbO7pfNHT98UqrCs8d7p/ukYP8i+4J
+ ahfaGZiImG6b+NGkhFJcTe2+BVdol4jkrU5MCe04Q8fIUgaQURFtvYYBcgvyINE=
+X-Google-Smtp-Source: AGHT+IECfz0b7w8YnRDzE9ye+95wL81FU5aqo1+RnHHS6qTUiapghUcV1Vxc5qXT7VPhZnE/K+fgpQ==
+X-Received: by 2002:a05:600c:4f4a:b0:426:6fc0:5910 with SMTP id
+ 5b1f17b1804b1-42bbb10d61dmr48457865e9.1.1725322083046; 
+ Mon, 02 Sep 2024 17:08:03 -0700 (PDT)
 Received: from skbuf ([188.25.134.29]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3749eea50dasm12602549f8f.56.2024.09.02.16.25.26
+ 5b1f17b1804b1-42bbf15b9b1sm111758835e9.10.2024.09.02.17.08.02
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 02 Sep 2024 16:25:26 -0700 (PDT)
-Date: Tue, 3 Sep 2024 02:25:24 +0300
+ Mon, 02 Sep 2024 17:08:02 -0700 (PDT)
+Date: Tue, 3 Sep 2024 03:08:00 +0300
 From: Vladimir Oltean <olteanv@gmail.com>
 To: Jacob Keller <jacob.e.keller@intel.com>
-Message-ID: <20240902232524.cz77daj2tsajhrpb@skbuf>
+Message-ID: <20240903000800.ue77eim4664dhy4p@skbuf>
 References: <20240828-e810-live-migration-jk-prep-ctx-functions-v2-0-558ab9e240f5@intel.com>
- <20240828-e810-live-migration-jk-prep-ctx-functions-v2-8-558ab9e240f5@intel.com>
+ <20240828-e810-live-migration-jk-prep-ctx-functions-v2-10-558ab9e240f5@intel.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20240828-e810-live-migration-jk-prep-ctx-functions-v2-8-558ab9e240f5@intel.com>
+In-Reply-To: <20240828-e810-live-migration-jk-prep-ctx-functions-v2-10-558ab9e240f5@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1725319528; x=1725924328; darn=lists.osuosl.org;
+ d=gmail.com; s=20230601; t=1725322084; x=1725926884; darn=lists.osuosl.org;
  h=in-reply-to:content-disposition:mime-version:references:message-id
  :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=aZPbEk837UIQeWK1zj9VvBLJMdvblUtE/V1kEMjqnzg=;
- b=F9gOqutJhPJyELl760+72P2bLQfw/ZQG6BJaBIJWFLoidkyiMQDkOrJ62kn6UQ6OMD
- 9/CFlAe+MnCuCptaGXyXWNWpzDz4gPi0DxP4Eh+M6z0Bk1kFy6br825IfL6Y06oxsvuk
- kGxIwlOoJCsk0AZCuVWVo6wMxJ5P1aRBjruqi/N/8v3VRbUZU1MAqdFcviSbahMQ+AnR
- i0JGXvHEvXvNQ7fUKRgGJU/cVvXo8Yk4tAQpfGIynl+7MAxN4jW2386TuTDE3Px5Joxf
- 8qkT5jYXXMAgERjfdUMOHuF+u6JZx9XZKQyG/zcbRPbboFMzVIu1VWPe8U1zG2gNRQPK
- 9O6w==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ bh=jverNQzc8OEnv1hJ+On8rPhs7dBruz9IRY9b92+fQ5I=;
+ b=jPxWEcgchfi5MXdpiglsWTF46Cq40OWHnBi+4W+eGOhkYMemTgyf0HExhhe244RMnM
+ uwqua11OsPdwAm+SoGG9REbZ0Q0lq3eL4LiNLGm+66Rl6Aueg/vd3lPuQZOwbALj1czk
+ RN8Gxp6fY+2yMCOlCcSz5Ef3I753xqT/26rctwsNWyuQaHnJeOZGfpvjkk+kNabFNXWd
+ ZMnKx1v+PGF7NM4aFtiGhZiBFSO6+WpEUjeZ6MVl6ht3Un2HlebEXdC4i5XpEdDMpct0
+ cDBUwNuu+t5BLBR+S4ePPnLoW/Sz3PJ8REs/48+vOrN3EKKT7AwECaxEEekDqE6TRVcU
+ R8og==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=gmail.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256
- header.s=20230601 header.b=F9gOqutJ
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v2 08/13] lib: packing: fix
- QUIRK_MSB_ON_THE_RIGHT behavior
+ header.s=20230601 header.b=jPxWEcgc
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v2 10/13] ice: use
+ <linux/packing.h> for Tx and Rx queue context data
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -126,154 +126,104 @@ Cc: netdev <netdev@vger.kernel.org>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi Jacob,
+On Wed, Aug 28, 2024 at 01:57:26PM -0700, Jacob Keller wrote:
+> The major difference with <linux/packing.h> is that it expects the unpacked
+> data will always be a u64. This is somewhat limiting, but can be worked
+> around by using a local temporary u64.
+> 
+> As with the other implementations, we handle the error codes from pack()
+> with a pr_err and a call to dump_stack. These are unexpected as they should
+> only happen due to programmer error.
+> 
+> Note that I initially tried implementing this as functions which just
+> repeatably called the ice_ctx_pack() function instead of using the
+> ice_rlan_ctx_info and ice_tlan_ctx_info arrays. This does work, but it has
+> a couple of downsides:
+> 
+>  1) it wastes a significant amount of bytes in the text section, vs the
+>     savings from removing the RO data of the arrays.
+> 
+>  2) this cost is made worse after implementing an unpack function, as we
+>     must duplicate the list of packings for the unpack function.
 
-It's very cool that you and Przemek (and possibly others) spent the time
-to untangle this. Thanks! Just a microscopic nitpick below.
+I agree with your concerns and with your decision of keeping the
+ICE_CTX_STORE tables. Actually I have some more unposted lib/packing
+changes which operate on struct packed_field arrays, very, very similar
+to the ICE_CTX_STORE tables. Essentially two new calls: pack_fields()
+and unpack_fields(), which perform the iteration inside the core library.
+(the only real difference being that I went for startbit and endbit in
+their definitions, rather than LSB+size).
 
-On Wed, Aug 28, 2024 at 01:57:24PM -0700, Jacob Keller wrote:
-> The QUIRK_MSB_ON_THE_RIGHT quirk is intended to modify pack() and unpack()
-> so that the most significant bit of each byte in the packed layout is on
-> the right.
-> 
-> The way the quirk is currently implemented is broken whenever the packing
-> code packs or unpacks any value that is not exactly a full byte.
-> 
-> The broken behavior can occur when packing any values smaller than one
-> byte, when packing any value that is not exactly a whole number of bytes,
-> or when the packing is not aligned to a byte boundary.
-> 
-> This quirk is documented in the following way:
-> 
->   1. Normally (no quirks), we would do it like this:
-> 
->   ::
-> 
->     63 62 61 60 59 58 57 56 55 54 53 52 51 50 49 48 47 46 45 44 43 42 41 40 39 38 37 36 35 34 33 32
->     7                       6                       5                        4
->     31 30 29 28 27 26 25 24 23 22 21 20 19 18 17 16 15 14 13 12 11 10  9  8  7  6  5  4  3  2  1  0
->     3                       2                       1                        0
-> 
->   <snip>
-> 
->   2. If QUIRK_MSB_ON_THE_RIGHT is set, we do it like this:
-> 
->   ::
-> 
->     56 57 58 59 60 61 62 63 48 49 50 51 52 53 54 55 40 41 42 43 44 45 46 47 32 33 34 35 36 37 38 39
->     7                       6                        5                       4
->     24 25 26 27 28 29 30 31 16 17 18 19 20 21 22 23  8  9 10 11 12 13 14 15  0  1  2  3  4  5  6  7
->     3                       2                        1                       0
-> 
->   That is, QUIRK_MSB_ON_THE_RIGHT does not affect byte positioning, but
->   inverts bit offsets inside a byte.
-> 
-> Essentially, the mapping for physical bit offsets should be reserved for a
-							      ~~~~~~~~
-							      reversed
+I came to the realization that this API would be nice exactly because
+otherwise, you need to duplicate the field definitions, once for the
+pack() call and once for the unpack(). But if they're tables, you don't.
 
-> given byte within the payload. This reversal should be fixed to the bytes
-> in the packing layout.
-> 
-> The logic to implement this quirk is handled within the
-> adjust_for_msb_right_quirk() function. This function does not work properly
-> when dealing with the bytes that contain only a partial amount of data.
-> 
-> In particular, consider trying to pack or unpack the range 53-44. We should
-> always be mapping the bits from the logical ordering to their physical
-> ordering in the same way, regardless of what sequence of bits we are
-> unpacking.
-> 
-> This, we should grab the following logical bits:
-> 
->   Logical: 55 54 53 52 51 50 49 48 47 45 44 43 42 41 40 39
->                   ^  ^  ^  ^  ^  ^  ^  ^  ^
+I'm looking at ways in which this new API could solve all the shortcomings
+I don't like with lib/packing in general. Without being even aware of
+ICE_CTX_STORE, I had actually implemented the type conversion to smaller
+unpacked u8/u16/u32 types in exactly the same way.
 
-These 16 bits should have been 55-40. Bit 46 is missing, and bit 39 is
-extraneous.
+I also wish to do something about the way in which lib/packing deals
+with errors. I don't think it's exactly great for every driver to have
+to dump stack and ignore them. And also, since they're programming
+errors, it's odd (and bad for performance) to perform the sanity checks
+for every function call, instead of just once, say at boot time. So I
+had thought of a third new API call: packed_fields_validate(), which
+runs at module_init() in the consumer driver (ice, sja1105, ...) and
+operates on the field tables.
 
-Also, I honestly think that another "Byte boundary:" line would help the
-reader see the transformation proposed as an example better. Like this:
+Basically it is a singular replacement for these existing verifications
+in pack() and unpack():
 
- Byte boundary: |                       |                       |
-       Logical:   55 54 53 52 51 50 49 48 47 46 45 44 43 42 41 40
-                         ^  ^  ^  ^  ^  ^  ^  ^  ^
+	/* startbit is expected to be larger than endbit, and both are
+	 * expected to be within the logically addressable range of the buffer.
+	 */
+	if (unlikely(startbit < endbit || startbit >= 8 * pbuflen))
+		/* Invalid function call */
+		return -EINVAL;
 
-> 
-> And pack them into the physical bits:
-> 
->    Physical: 48 49 50 51 52 53 54 55 40 41 42 43 44 45 46 47
->     Logical: 48 49 50 51 52 53                   44 45 46 47
->               ^  ^  ^  ^  ^  ^                    ^  ^  ^  ^
-> 
-> The current logic in adjust_for_msb_right_quirk is broken. I believe it is
-> intending to map according to the following:
-> 
->   Physical: 48 49 50 51 52 53 54 55 40 41 42 43 44 45 46 47
->    Logical:       48 49 50 51 52 53 44 45 46 47
->                    ^  ^  ^  ^  ^  ^  ^  ^  ^  ^
-> 
-> That is, it tries to keep the bits at the start and end of a packing
-> together. This is wrong, as it makes the packing change what bit is being
-> mapped to what based on which bits you're currently packing or unpacking.
-> 
-> Worse, the actual calculations within adjust_for_msb_right_quirk don't make
-> sense.
-> 
-> Consider the case when packing the last byte of an unaligned packing. It
-> might have a start bit of 7 and an end bit of 5. This would have a width of
-> 3 bits. The new_start_bit will be calculated as the width - the box_end_bit
-> - 1. This will underflow and produce a negative value, which will
-> ultimate result in generating a new box_mask of all 0s.
-> 
-> For any other values, the result of the calculations of the
-> new_box_end_bit, new_box_start_bit, and the new box_mask will result in the
-> exact same values for the box_end_bit, box_start_bit, and box_mask. This
-> makes the calculations completely irrelevant.
-> 
-> If box_end_bit is 0, and box_start_bit is 7, then the entire function of
-> adjust_for_msb_right_quirk will boil down to just:
-> 
->     *to_write = bitrev8(*to_write)
-> 
-> The other adjustments are attempting (incorrectly) to keep the bits in the
-> same place but just reversed. This is not the right behavior even if
-> implemented correctly, as it leaves the mapping dependent on the bit values
-> being packed or unpacked.
-> 
-> Remove adjust_for_msb_right_quirk() and just use bitrev8 to reverse the
-> byte order when interacting with the packed data.
+	value_width = startbit - endbit + 1;
+	if (unlikely(value_width > 64))
+		return -ERANGE;
 
-Yes, just bitrev8() should be exactly what is needed for the "MSB on the
-right within a packed byte" definition.
+so you actually need to tell packed_fields_validate() what is the size
+of the buffer you intend to run pack_fields() and unpack_fields() on.
+I don't see it as a problem at all that the packed buffer size must be
+fixed and known ahead of time - you also operate on fixed ICE_RXQ_CTX_SZ
+and ... hmmm... txq_ctx[22]? sized buffers.
 
-> 
-> In particular, for packing, we need to reverse both the box_mask and the
-> physical value being packed. This is done after shifting the value by
-> box_end_bit so that the reversed mapping is always aligned to the physical
-> buffer byte boundary. The box_mask is reversed as we're about to use it to
-> clear any stale bits in the physical buffer at this block.
-> 
-> For unpacking, we need to reverse the contents of the physical buffer
-> *before* masking with the box_mask. This is critical, as the box_mask is a
-> logical mask of the bit layout before handling the QUIRK_MSB_ON_THE_RIGHT.
-> 
-> Add several new tests which cover this behavior. These tests will fail
-> without the fix and pass afterwards. Note that no current drivers make use
-> of QUIRK_MSB_ON_THE_RIGHT. I suspect this is why there have been no reports
-> of this inconsistency before.
-> 
-> Fixes: 554aae35007e ("lib: Add support for generic packing operations")
+But this packed_fields_validate() idea quickly creates another set of 2
+problems which I didn't get to the bottom of:
 
-When there is no user-observable issue in mainline, I believe there is
-no reason for a Fixes: tag, even if the bug is very real. My understanding
-is that the role of the tag is to help the backporting process to stable.
-Using it here could possibly confuse the maintainers that it needs to be
-backported, even though it is spelled out that it needs not be.
+1. Some sanity checks in pack() are dynamic and cannot be run at
+   module_init() time. Like this:
 
-> Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
-> Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-> ---
+	/* Check if "uval" fits in "value_width" bits.
+	 * If value_width is 64, the check will fail, but any
+	 * 64-bit uval will surely fit.
+	 */
+	if (value_width < 64 && uval >= (1ull << value_width))
+		/* Cannot store "uval" inside "value_width" bits.
+		 * Truncating "uval" is most certainly not desirable,
+		 * so simply erroring out is appropriate.
+		 */
+		return -ERANGE;
 
-Reviewed-by: Vladimir Oltean <olteanv@gmail.com>
-Tested-by: Vladimir Oltean <olteanv@gmail.com>
+   The worse part is that the check is actually useful. It led to the
+   quick identification of the bug behind commit 24deec6b9e4a ("net:
+   dsa: sja1105: disallow C45 transactions on the BASE-TX MDIO bus"),
+   rather than seeing a silent failure. But... I would still really like
+   the revised lib/packing API to return void for pack_fields() and
+   unpack_fields(). Not really sure how to reconcile these.
+
+2. How to make sure that the pbuflen passed to packed_fields_validate()
+   will be the same one as the pbuflen passed to all subsequent pack_fields()
+   calls validated against that very pbuflen?
+
+Sorry for not posting code and just telling a story about it. There
+isn't much to show other than unfinished ideas with conflicting
+requirements. So I thought maybe I could use a little help with some
+brainstorming. Of course, do let me know if you are not that interested
+in making the ICE_CTX_STORE tables idea a part of the packing core.
+
+Thanks!
