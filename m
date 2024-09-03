@@ -1,91 +1,106 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 255529690B3
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  3 Sep 2024 02:37:15 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4BAC796A183
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  3 Sep 2024 17:02:33 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 0709760740;
-	Tue,  3 Sep 2024 00:37:13 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id C17BE607C3;
+	Tue,  3 Sep 2024 15:02:29 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id B11pZCzWSVg4; Tue,  3 Sep 2024 00:37:12 +0000 (UTC)
+ id DMeaOMYC-W-D; Tue,  3 Sep 2024 15:02:29 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 10DEB60743
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 24903606C7
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1725323832;
-	bh=cgrDCeFt8fQNv95/xvyxrOB7/VDxLnyUD+27p0Fuwx0=;
-	h=Date:From:To:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1725375749;
+	bh=D3pK/xIDd4gN73xR2IAKuIfQBHRY4tf7Zw38vyUW1ow=;
+	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=ASqHqsVuebeG58b902ICOynlO9gDOKcwNtc5r7HlMTd0Fn6RJLWpxEGawkRMPGLpt
-	 kQYh95DYbmNinu8cInHPhYRiXD2G5HHxQ+SAMbg5zpDbahqwxSYSj2Pd7C9FMr0hfj
-	 G/Z0BywSyGmOsOJsGSrR0v1kgjaEG9TLNR14WiKagG5pcUaElJYmij9S/prIfclpoB
-	 vktK9m8lLZi4BHAdwesBsZ1Rnqqsfkq/vPfLGO08YuF14dwfaK2Rs/BD25sEyIezC2
-	 5Jed8HnA7TC3f7THJQWL2ieh+dNcSryzqcQcWUsPDzE44G2LR3LQizyGGoNryVkh1r
-	 w7NSYYxFUq3ow==
+	b=4srgI001ZwRsRrdcvDXBZNjjGapu7gf+vmrR0w1R3+Q30HUuTVYO67rMDf212UoGo
+	 /r7CiP1E3J4BpEE6trlTBk9QwAlCs60Lp2uZ+9HyBLrZOcK1Yg8qk4H1EAMn9xE77D
+	 HZlId3NRZy7aHdPXBLuYZl0/IMZHkxO4eoz7SM3im9LpHXbRVnIbrd56Kzt9wdcCE7
+	 c3kQhGA+02MWFrVmL8KRDg73NK4Ov4n/DjhLrIMOiHDNFDjLf1raHpiOG6v8KAEK2Z
+	 04jpEEi5NJdjY9a5fB62kgmTCXzKVpHke3uUBjGYGKagbviZW62J91UF2Uf+AipxkX
+	 hCk4T3yruRAPA==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 10DEB60743;
-	Tue,  3 Sep 2024 00:37:12 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 24903606C7;
+	Tue,  3 Sep 2024 15:02:29 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 8A4301BF954
- for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Sep 2024 00:37:09 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 24CD31BF263
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Sep 2024 10:47:02 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 7509080E7B
- for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Sep 2024 00:37:09 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 10D736065C
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Sep 2024 10:47:02 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id SXQCkH66vqBU for <intel-wired-lan@lists.osuosl.org>;
- Tue,  3 Sep 2024 00:37:08 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=147.75.193.91;
- helo=nyc.source.kernel.org; envelope-from=kuba@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 946D380E08
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 946D380E08
-Received: from nyc.source.kernel.org (nyc.source.kernel.org [147.75.193.91])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 946D380E08
- for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Sep 2024 00:37:08 +0000 (UTC)
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by nyc.source.kernel.org (Postfix) with ESMTP id C5E0CA4071B;
- Tue,  3 Sep 2024 00:36:59 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 136E0C4CEC2;
- Tue,  3 Sep 2024 00:37:06 +0000 (UTC)
-Date: Mon, 2 Sep 2024 17:37:04 -0700
-From: Jakub Kicinski <kuba@kernel.org>
-To: Paolo Abeni <pabeni@redhat.com>
-Message-ID: <20240902173704.71c6b35a@kernel.org>
-In-Reply-To: <c6d8052c-c5a0-48e2-8984-0063afc1e482@redhat.com>
-References: <cover.1724944116.git.pabeni@redhat.com>
- <53077d35a1183d5c1110076a07d73940bb2a55f3.1724944117.git.pabeni@redhat.com>
- <20240829182019.105962f6@kernel.org>
- <58730142-2064-46cb-bc84-0060ea73c4a0@redhat.com>
- <20240830121418.39f3e6f8@kernel.org>
- <c6d8052c-c5a0-48e2-8984-0063afc1e482@redhat.com>
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id fkRdw2lyYxGv for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  3 Sep 2024 10:47:01 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=99.78.197.219;
+ helo=smtp-fw-80008.amazon.com;
+ envelope-from=prvs=9695ab786=takamitz@amazon.co.jp; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 4B73F60658
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 4B73F60658
+Received: from smtp-fw-80008.amazon.com (smtp-fw-80008.amazon.com
+ [99.78.197.219])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 4B73F60658
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  3 Sep 2024 10:47:01 +0000 (UTC)
+X-IronPort-AV: E=Sophos;i="6.10,198,1719878400"; d="scan'208";a="121943980"
+Received: from pdx4-co-svc-p1-lb2-vlan3.amazon.com (HELO
+ smtpout.prod.us-west-2.prod.farcaster.email.amazon.dev) ([10.25.36.214])
+ by smtp-border-fw-80008.pdx80.corp.amazon.com with
+ ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 03 Sep 2024 10:46:54 +0000
+Received: from EX19MTAUWA002.ant.amazon.com [10.0.7.35:14951]
+ by smtpin.naws.us-west-2.prod.farcaster.email.amazon.dev [10.0.6.188:2525]
+ with esmtp (Farcaster)
+ id 3b7296b2-e8e6-4804-8ef1-7ed099bb915d; Tue, 3 Sep 2024 10:46:54 +0000 (UTC)
+X-Farcaster-Flow-ID: 3b7296b2-e8e6-4804-8ef1-7ed099bb915d
+Received: from EX19D005ANA004.ant.amazon.com (10.37.240.178) by
+ EX19MTAUWA002.ant.amazon.com (10.250.64.202) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.1258.34;
+ Tue, 3 Sep 2024 10:46:54 +0000
+Received: from 682f678c4465.ant.amazon.com.com (10.118.248.122) by
+ EX19D005ANA004.ant.amazon.com (10.37.240.178) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.1258.35;
+ Tue, 3 Sep 2024 10:46:50 +0000
+From: Takamitsu Iwai <takamitz@amazon.co.jp>
+To: <andrew@lunn.ch>
+Date: Tue, 3 Sep 2024 19:46:42 +0900
+Message-ID: <20240903104642.75303-1-takamitz@amazon.co.jp>
+X-Mailer: git-send-email 2.39.3 (Apple Git-145)
+In-Reply-To: <87af1b9e-21c3-4c22-861a-b917b5cd82c2@lunn.ch>
+References: <87af1b9e-21c3-4c22-861a-b917b5cd82c2@lunn.ch>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1725323826;
- bh=W/A4XMjAkThRmR1Qu06rR2z3sjh6iTSU03vzeapf8YA=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=JOTcKsq2O8g9HZTRct+iDno3H1bYpqmaTGAOdC5DR6/J0DPF2efa/UVbolo4tyIJP
- dBBz3MqPKE6GQDgaN2imfhusIsRYdzD/G3Cda82U53D6R6dB4FVc1loCX/OEwf6Pim
- 6u28OSrfugAatiWg3p/q5u9WRIUJPBv46s9tWx0sFdoMCiRHj+GijXW4fhUHXVnCfr
- LQbFX8O6EYVl7qEe1hfoCEFlahzrhLyjJJiqcijQhgTj8VwqzNUje4L8TRJwQ/U5TJ
- JY4ceOcJL2QyFuy9liFegV/R3ebSBuyp7ETO/ugoYlYIgOP/WoiFlvgFEMFv+p2YPG
- JEYeertEZ/ykA==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-Originating-IP: [10.118.248.122]
+X-ClientProxiedBy: EX19D045UWA003.ant.amazon.com (10.13.139.46) To
+ EX19D005ANA004.ant.amazon.com (10.37.240.178)
+X-Mailman-Approved-At: Tue, 03 Sep 2024 15:02:25 +0000
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=amazon.co.jp; i=@amazon.co.jp; q=dns/txt;
+ s=amazon201209; t=1725360421; x=1756896421;
+ h=from:to:cc:subject:date:message-id:in-reply-to:
+ references:mime-version:content-transfer-encoding;
+ bh=D3pK/xIDd4gN73xR2IAKuIfQBHRY4tf7Zw38vyUW1ow=;
+ b=Mg2L1W60bslHWa++oWxJZ1j2b3AP7OB6mfrCyKzWW2H45DG+ScRdyA+6
+ Ortt5Ur/gLw2pxZbfdTtARU1DxPJZWWoSlgztVvxiltrVTOCQowDNv2pS
+ IdNRXjtZEfdrXbzlpXHT1He9QlXOZo+zO4cGnfNL/M40ozHmjDaMaAdQ9
+ s=;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
- header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20201202 header.b=JOTcKsq2
-Subject: Re: [Intel-wired-lan] [PATCH v5 net-next 02/12] net-shapers:
- implement NL get operation
+ header.from=amazon.co.jp
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (1024-bit key,
+ unprotected) header.d=amazon.co.jp header.i=@amazon.co.jp header.a=rsa-sha256
+ header.s=amazon201209 header.b=Mg2L1W60
+Subject: Re: [Intel-wired-lan] [PATCH v1 net-next] e1000e: Remove duplicated
+ writel() in e1000_configure_tx/rx()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,29 +113,20 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Jiri Pirko <jiri@resnulli.us>, netdev@vger.kernel.org,
- John Fastabend <john.fastabend@gmail.com>, Jamal Hadi Salim <jhs@mojatatu.com>,
- edumazet@google.com, Madhu Chittim <madhu.chittim@intel.com>,
- anthony.l.nguyen@intel.com, Simon Horman <horms@kernel.org>,
- Sridhar Samudrala <sridhar.samudrala@intel.com>,
- Donald Hunter <donald.hunter@gmail.com>, intel-wired-lan@lists.osuosl.org,
- przemyslaw.kitszel@intel.com, Sunil Kovvuri Goutham <sgoutham@marvell.com>
+Cc: netdev@vger.kernel.org, przemyslaw.kitszel@intel.com, edumazet@google.com,
+ intel-wired-lan@lists.osuosl.org, takamitz@amazon.co.jp, kuba@kernel.org,
+ anthony.l.nguyen@intel.com, pabeni@redhat.com, davem@davemloft.net
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, 2 Sep 2024 12:10:50 +0200 Paolo Abeni wrote:
-> >> Was that way a couple of iterations ago. Jiri explicitly asked for the
-> >> separation, I asked for confirmation and nobody objected.  
-> > 
-> > Could you link to that? I must have not read it.  
-> 
-> https://lore.kernel.org/netdev/ZqzIoZaGVb3jIW43@nanopsycho.orion/
-> 
-> search for "I wonder if the handle should be part of this structure"
-> 
-> I must admit by wannabe reply on such point never left my outbox.
+> Did the same sequence of read/writes happen before 0845d45e900c? Or
+> did 0845d45e900c add additional writes, not just move them around?
 
-"I wonder if .." does not sound like a strong preference.
-And the parent ID remained in the struct, so it still partially records 
-its position in the hierarchy. Since there is no "move" op it's really
-not worth multiplying arguments to most functions 2x.
+The sequence of read/writes happened before 0845d45e900c because the similar
+writel() exists in ew32() above the writel() moved by 0845d45e900c.
+
+The commit 0845d45e900c moved writel() in e1000_clean_tx/rx_ring() to
+e1000_configure_tx/rx() to avoid null pointer dereference. But since the same
+writel() exists in e1000_configure_tx/rx(), we just needed to remove writel()
+from e1000_clean_rx/tx_ring().
+
