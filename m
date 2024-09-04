@@ -1,75 +1,75 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2947996BF45
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  4 Sep 2024 15:57:38 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6D69596BF4D
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  4 Sep 2024 15:58:14 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id D592480E6F;
-	Wed,  4 Sep 2024 13:57:36 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 1A33F81204;
+	Wed,  4 Sep 2024 13:58:13 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id qE-eUy3haIM1; Wed,  4 Sep 2024 13:57:35 +0000 (UTC)
+ id Xh9-1P0ZhWWA; Wed,  4 Sep 2024 13:58:12 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 16FF080E5F
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 21B9D811FE
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1725458255;
-	bh=lJ48yosRnd4X2sWZRVITgdKAUA5lk5UHcqwEokjovCM=;
+	s=default; t=1725458292;
+	bh=baf7NR+ARd1j5vSuLGfqoVv19brivZfJFTAjhr67f2c=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=J9hm2aq+Md6xguApD5l56DzjLgH6h4W+3pz8ChUjkkLs4+jn3LnPEnrUiMQJNCYtW
-	 lGB5Fu32FChg0i8Uhr//uGQcDRH8beLRrWa887JpE3KU3yfVGhOlTKdYpl+Cr9rQZJ
-	 icNjy0SPPPEF7uzwdrawA2rl9WQ0fNmRbm4wPv3Fa1pXqU6fv1JLAQ6qbVpDxAvLli
-	 rw9eT0kQOmC3BAzh+HY2YQJ8hr6d1cmb3DhD8P3/JuEnju8Qg3Z7d0hnl6K56WnzVt
-	 0UPoUya4Ss9jF5BXaF+s449Ivfs/n7fpHK2bqu2H8hg+P94R25MJCZs2DKhyjI/ZU5
-	 czFpM1Neoxtbg==
+	b=p4zKEiG/su+ptKx5pToB2dIR8IEiQxsG0RNG5LhPrLLw7LOF1B+YN+Tut/lVQABL5
+	 sWdw72tFV3msnfyya9VPNclnFWkzPaJSDykUKnXzDzVUJ+uKfdRUAlMzV0UlCzcGBn
+	 kfqj7zV/RXojdevIbH5W4vj510ISEvBgJGKFSpje07PsPoCnynX/fDXuJ7WtVOSqH7
+	 C73YfnnSs4iBEnnuQ2y3JUWKG33YThayJrNUn7DwyEuonrjOTaGQvUhybeDkZCagob
+	 3PDScPaWwB1hgIs/40L+OMw2PoMQwautLvWYGhG+jAhHn4W/XnTqeoRuhaFpyz5HBo
+	 i1AzTLZavH7KQ==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 16FF080E5F;
-	Wed,  4 Sep 2024 13:57:35 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 21B9D811FE;
+	Wed,  4 Sep 2024 13:58:12 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id C331A1BF479
- for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Sep 2024 13:57:33 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id BB8351BF479
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Sep 2024 13:58:09 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id AFD7060896
- for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Sep 2024 13:57:33 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id A7D4740203
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Sep 2024 13:58:09 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id LgIuW4s-0jZs for <intel-wired-lan@lists.osuosl.org>;
- Wed,  4 Sep 2024 13:57:32 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.133.124;
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id zYsiTUoqYcg9 for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  4 Sep 2024 13:58:08 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.129.124;
  helo=us-smtp-delivery-124.mimecast.com; envelope-from=pabeni@redhat.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org ACA10605AA
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org ACA10605AA
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 9085F40189
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9085F40189
 Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.133.124])
- by smtp3.osuosl.org (Postfix) with ESMTPS id ACA10605AA
- for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Sep 2024 13:57:32 +0000 (UTC)
-Received: from mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com
+ (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 9085F40189
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Sep 2024 13:58:08 +0000 (UTC)
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-550-8gWq1N0gMiKMMtKNxYcr4Q-1; Wed,
- 04 Sep 2024 09:57:27 -0400
-X-MC-Unique: 8gWq1N0gMiKMMtKNxYcr4Q-1
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-211-vuYRL3R0PuWwMv8VFBBmHA-1; Wed,
+ 04 Sep 2024 09:58:02 -0400
+X-MC-Unique: vuYRL3R0PuWwMv8VFBBmHA-1
 Received: from mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.15])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 351B91955BC1; Wed,  4 Sep 2024 13:57:24 +0000 (UTC)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id D5C741955D5A; Wed,  4 Sep 2024 13:57:47 +0000 (UTC)
 Received: from gerbillo.redhat.com (unknown [10.45.225.58])
  by mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 8139E1955EA9; Wed,  4 Sep 2024 13:57:19 +0000 (UTC)
+ id 9EEAC195421B; Wed,  4 Sep 2024 13:57:24 +0000 (UTC)
 From: Paolo Abeni <pabeni@redhat.com>
 To: netdev@vger.kernel.org
-Date: Wed,  4 Sep 2024 15:53:40 +0200
-Message-ID: <1d1e5e7c29da39fe366a4572d22fc17dc9637b42.1725457317.git.pabeni@redhat.com>
+Date: Wed,  4 Sep 2024 15:53:41 +0200
+Message-ID: <a664b4475431f677fe59d8bc8a04e9e984a53e26.1725457317.git.pabeni@redhat.com>
 In-Reply-To: <cover.1725457317.git.pabeni@redhat.com>
 References: <cover.1725457317.git.pabeni@redhat.com>
 MIME-Version: 1.0
@@ -77,23 +77,23 @@ Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.15
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=redhat.com; 
- s=mimecast20190719; t=1725458251;
+ s=mimecast20190719; t=1725458287;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=lJ48yosRnd4X2sWZRVITgdKAUA5lk5UHcqwEokjovCM=;
- b=bRxAwOaiJIzS9ORWbVaB+Ue7AF/AwExcyPB1aZkRHlSAxU9iiw1JnlIY7PbeXcjCYOAZUZ
- a1YiDiPIYz0gE30CpnXoJ5inn8jTi4OpDW283KXujah8QKvwm/b7alKY0NTdkrjR2YN68C
- JivDkUsK81f5VrL6gQWIQHOpis4ZfRw=
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ bh=baf7NR+ARd1j5vSuLGfqoVv19brivZfJFTAjhr67f2c=;
+ b=Rlh9sgLS+RyiSbb3nCh+GfyIkl35O465tgDJqxTEaIXl1aRliplqO/WS6vqV0ntQOW8c4F
+ 0rYnsR9RIsw0CS3NncxovmaueYMH699AP12NjZyrdsLmP5h3/9kmTDYOM2+dNOnJ0oT86u
+ 2WWW5gu+tLmySFa5k/M2GUHT3c154Y0=
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=redhat.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
- header.a=rsa-sha256 header.s=mimecast20190719 header.b=bRxAwOai
-Subject: [Intel-wired-lan] [PATCH v6 net-next 08/15] netlink: spec: add
- shaper introspection support
+ header.a=rsa-sha256 header.s=mimecast20190719 header.b=Rlh9sgLS
+Subject: [Intel-wired-lan] [PATCH v6 net-next 09/15] net: shaper: implement
+ introspection support
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -117,295 +117,168 @@ Cc: Jiri Pirko <jiri@resnulli.us>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Allow the user-space to fine-grain query the shaping features
-supported by the NIC on each domain.
+The netlink op is a simple wrapper around the device callback.
+
+Extend the existing fetch_dev() helper adding an attribute argument
+for the requested device. Reuse such helper in the newly implemented
+operation.
 
 Signed-off-by: Paolo Abeni <pabeni@redhat.com>
 ---
 v5 -> v6:
- - shorter cap-related names
+ - update to new API
 
 v4 -> v5:
- - added pre/post helpers for dump op
----
- Documentation/netlink/specs/net_shaper.yaml | 88 +++++++++++++++++++++
- include/uapi/linux/net_shaper.h             | 17 ++++
- net/shaper/shaper.c                         | 32 ++++++++
- net/shaper/shaper_nl_gen.c                  | 29 +++++++
- net/shaper/shaper_nl_gen.h                  | 10 +++
- 5 files changed, 176 insertions(+)
+ - replace net_device* with binding* in most functions
+ - de-deplicate some code thanks to more generic helpers in previous
+   patches
 
-diff --git a/Documentation/netlink/specs/net_shaper.yaml b/Documentation/netlink/specs/net_shaper.yaml
-index 1820578743c1..b93cf1fa3928 100644
---- a/Documentation/netlink/specs/net_shaper.yaml
-+++ b/Documentation/netlink/specs/net_shaper.yaml
-@@ -27,6 +27,11 @@ doc: |
- 
-   The user can query the running configuration via the @get operation.
- 
-+  Different devices can provide different feature sets, e.g. with no
-+  support for complex scheduling hierarchy, or for some shaping
-+  parameters. The user can introspect the HW capabilities via the
-+  @cap-get operation.
-+
- definitions:
-   -
-     type: enum
-@@ -201,6 +206,53 @@ attribute-sets:
-         name: priority
-       -
-         name: weight
-+  -
-+    name: caps
-+    attributes:
-+      -
-+        name: ifindex
-+        type: u32
-+        doc: Interface index queried for shapers capabilities.
-+      -
-+        name: scope
-+        type: u32
-+        enum: scope
-+        doc: The scope to which the queried capabilities apply.
-+      -
-+        name: support-metric-bps
-+        type: flag
-+        doc: The device accepts 'bps' metric for bw-min, bw-max and burst.
-+      -
-+        name: support-metric-pps
-+        type: flag
-+        doc: The device accepts 'pps' metric for bw-min, bw-max and burst.
-+      -
-+        name: support-nesting
-+        type: flag
-+        doc: |
-+          The device supports nesting shaper belonging to this scope
-+          below 'node' scoped shapers. Only 'queue' and 'node'
-+          scope can have flag 'support-nesting'.
-+      -
-+        name: support-bw-min
-+        type: flag
-+        doc: The device supports a minimum guaranteed B/W.
-+      -
-+        name: support-bw-max
-+        type: flag
-+        doc: The device supports maximum B/W shaping.
-+      -
-+        name: support-burst
-+        type: flag
-+        doc: The device supports a maximum burst size.
-+      -
-+        name: support-priority
-+        type: flag
-+        doc: The device supports priority scheduling.
-+      -
-+        name: support-weight
-+        type: flag
-+        doc: The device supports weighted round robin scheduling.
- 
- operations:
-   list:
-@@ -311,3 +363,39 @@ operations:
-             - node
-         reply:
-           attributes: *ns-binding
-+
-+    -
-+      name: cap-get
-+      doc: |
-+        Get the shaper capabilities supported by the given device
-+        for the specified scope.
-+      attribute-set: caps
-+
-+      do:
-+        pre: net-shaper-nl-cap-pre-doit
-+        post: net-shaper-nl-cap-post-doit
-+        request:
-+          attributes:
-+            - ifindex
-+            - scope
-+        reply:
-+          attributes: &cap-attrs
-+            - ifindex
-+            - scope
-+            - support-metric-bps
-+            - support-metric-pps
-+            - support-nesting
-+            - support-bw-min
-+            - support-bw-max
-+            - support-burst
-+            - support-priority
-+            - support-weight
-+
-+      dump:
-+        pre: net-shaper-nl-cap-pre-dumpit
-+        post: net-shaper-nl-cap-post-dumpit
-+        request:
-+          attributes:
-+            - ifindex
-+        reply:
-+          attributes: *cap-attrs
-diff --git a/include/uapi/linux/net_shaper.h b/include/uapi/linux/net_shaper.h
-index 03c774a2bec1..ff82c00bc305 100644
---- a/include/uapi/linux/net_shaper.h
-+++ b/include/uapi/linux/net_shaper.h
-@@ -67,11 +67,28 @@ enum {
- 	NET_SHAPER_A_HANDLE_MAX = (__NET_SHAPER_A_HANDLE_MAX - 1)
- };
- 
-+enum {
-+	NET_SHAPER_A_CAPS_IFINDEX = 1,
-+	NET_SHAPER_A_CAPS_SCOPE,
-+	NET_SHAPER_A_CAPS_SUPPORT_METRIC_BPS,
-+	NET_SHAPER_A_CAPS_SUPPORT_METRIC_PPS,
-+	NET_SHAPER_A_CAPS_SUPPORT_NESTING,
-+	NET_SHAPER_A_CAPS_SUPPORT_BW_MIN,
-+	NET_SHAPER_A_CAPS_SUPPORT_BW_MAX,
-+	NET_SHAPER_A_CAPS_SUPPORT_BURST,
-+	NET_SHAPER_A_CAPS_SUPPORT_PRIORITY,
-+	NET_SHAPER_A_CAPS_SUPPORT_WEIGHT,
-+
-+	__NET_SHAPER_A_CAPS_MAX,
-+	NET_SHAPER_A_CAPS_MAX = (__NET_SHAPER_A_CAPS_MAX - 1)
-+};
-+
- enum {
- 	NET_SHAPER_CMD_GET = 1,
- 	NET_SHAPER_CMD_SET,
- 	NET_SHAPER_CMD_DELETE,
- 	NET_SHAPER_CMD_GROUP,
-+	NET_SHAPER_CMD_CAP_GET,
- 
- 	__NET_SHAPER_CMD_MAX,
- 	NET_SHAPER_CMD_MAX = (__NET_SHAPER_CMD_MAX - 1)
+v3 -> v4:
+ - another dev_put() -> netdev_put() conversion, missed in previous
+   iteration
+
+RFC v2 -> v3:
+ - dev_put() -> netdev_put()
+---
+ net/shaper/shaper.c | 98 +++++++++++++++++++++++++++++++++++++++++++--
+ 1 file changed, 95 insertions(+), 3 deletions(-)
+
 diff --git a/net/shaper/shaper.c b/net/shaper/shaper.c
-index f6f5712d7b3c..67d38b691bb8 100644
+index 67d38b691bb8..bc55dd53a5d7 100644
 --- a/net/shaper/shaper.c
 +++ b/net/shaper/shaper.c
-@@ -614,6 +614,27 @@ int net_shaper_nl_post_dumpit(struct netlink_callback *cb)
- 	return 0;
+@@ -617,22 +617,29 @@ int net_shaper_nl_post_dumpit(struct netlink_callback *cb)
+ int net_shaper_nl_cap_pre_doit(const struct genl_split_ops *ops,
+ 			       struct sk_buff *skb, struct genl_info *info)
+ {
+-	return -EOPNOTSUPP;
++	return net_shaper_generic_pre(info, NET_SHAPER_A_CAPS_IFINDEX);
  }
  
-+int net_shaper_nl_cap_pre_doit(const struct genl_split_ops *ops,
-+			       struct sk_buff *skb, struct genl_info *info)
-+{
-+	return -EOPNOTSUPP;
-+}
-+
-+void net_shaper_nl_cap_post_doit(const struct genl_split_ops *ops,
-+				 struct sk_buff *skb, struct genl_info *info)
-+{
-+}
-+
-+int net_shaper_nl_cap_pre_dumpit(struct netlink_callback *cb)
-+{
-+	return -EOPNOTSUPP;
-+}
-+
-+int net_shaper_nl_cap_post_dumpit(struct netlink_callback *cb)
-+{
-+	return -EOPNOTSUPP;
-+}
-+
- int net_shaper_nl_get_doit(struct sk_buff *skb, struct genl_info *info)
+ void net_shaper_nl_cap_post_doit(const struct genl_split_ops *ops,
+ 				 struct sk_buff *skb, struct genl_info *info)
  {
- 	struct net_shaper_binding *binding;
-@@ -1170,6 +1191,17 @@ int net_shaper_nl_group_doit(struct sk_buff *skb, struct genl_info *info)
++	net_shaper_generic_post(info);
+ }
+ 
+ int net_shaper_nl_cap_pre_dumpit(struct netlink_callback *cb)
+ {
+-	return -EOPNOTSUPP;
++	struct net_shaper_nl_ctx *ctx = (struct net_shaper_nl_ctx *)cb->ctx;
++
++	return net_shaper_ctx_setup(genl_info_dump(cb),
++				    NET_SHAPER_A_CAPS_IFINDEX, ctx);
+ }
+ 
+ int net_shaper_nl_cap_post_dumpit(struct netlink_callback *cb)
+ {
+-	return -EOPNOTSUPP;
++	struct net_shaper_nl_ctx *ctx = (struct net_shaper_nl_ctx *)cb->ctx;
++
++	net_shaper_ctx_cleanup(ctx);
++	return 0;
+ }
+ 
+ int net_shaper_nl_get_doit(struct sk_buff *skb, struct genl_info *info)
+@@ -1191,14 +1198,99 @@ int net_shaper_nl_group_doit(struct sk_buff *skb, struct genl_info *info)
  	goto free_shapers;
  }
  
-+int net_shaper_nl_cap_get_doit(struct sk_buff *skb, struct genl_info *info)
++static int
++net_shaper_cap_fill_one(struct sk_buff *msg,
++			struct net_shaper_binding *binding,
++			enum net_shaper_scope scope, unsigned long flags,
++			const struct genl_info *info)
 +{
++	unsigned long cur;
++	void *hdr;
++
++	hdr = genlmsg_iput(msg, info);
++	if (!hdr)
++		return -EMSGSIZE;
++
++	if (net_shaper_fill_binding(msg, binding, NET_SHAPER_A_CAPS_IFINDEX) ||
++	    nla_put_u32(msg, NET_SHAPER_A_CAPS_SCOPE, scope))
++		goto nla_put_failure;
++
++	for (cur = NET_SHAPER_A_CAPS_SUPPORT_METRIC_BPS;
++	     cur <= NET_SHAPER_A_CAPS_MAX; ++cur) {
++		if (flags & BIT(cur) && nla_put_flag(msg, cur))
++			goto nla_put_failure;
++	}
++
++	genlmsg_end(msg, hdr);
++
 +	return 0;
++
++nla_put_failure:
++	genlmsg_cancel(msg, hdr);
++	return -EMSGSIZE;
 +}
 +
-+int net_shaper_nl_cap_get_dumpit(struct sk_buff *skb,
-+				 struct netlink_callback *cb)
-+{
-+	return 0;
-+}
-+
- static void net_shaper_flush(struct net_shaper_binding *binding)
+ int net_shaper_nl_cap_get_doit(struct sk_buff *skb, struct genl_info *info)
  {
- 	struct net_shaper_hierarchy *hierarchy = net_shaper_hierarchy(binding);
-diff --git a/net/shaper/shaper_nl_gen.c b/net/shaper/shaper_nl_gen.c
-index 76289f6df9aa..4393c9370cef 100644
---- a/net/shaper/shaper_nl_gen.c
-+++ b/net/shaper/shaper_nl_gen.c
-@@ -73,6 +73,17 @@ static const struct nla_policy net_shaper_group_nl_policy[NET_SHAPER_A_NODE + 1]
- 	[NET_SHAPER_A_NODE] = NLA_POLICY_NESTED(net_shaper_node_info_nl_policy),
- };
- 
-+/* NET_SHAPER_CMD_CAP_GET - do */
-+static const struct nla_policy net_shaper_cap_get_do_nl_policy[NET_SHAPER_A_CAPS_SCOPE + 1] = {
-+	[NET_SHAPER_A_CAPS_IFINDEX] = { .type = NLA_U32, },
-+	[NET_SHAPER_A_CAPS_SCOPE] = NLA_POLICY_MAX(NLA_U32, 3),
-+};
++	struct net_shaper_binding *binding;
++	const struct net_shaper_ops *ops;
++	enum net_shaper_scope scope;
++	unsigned long flags = 0;
++	struct sk_buff *msg;
++	int ret;
 +
-+/* NET_SHAPER_CMD_CAP_GET - dump */
-+static const struct nla_policy net_shaper_cap_get_dump_nl_policy[NET_SHAPER_A_CAPS_IFINDEX + 1] = {
-+	[NET_SHAPER_A_CAPS_IFINDEX] = { .type = NLA_U32, },
-+};
++	if (GENL_REQ_ATTR_CHECK(info, NET_SHAPER_A_CAPS_SCOPE))
++		return -EINVAL;
 +
- /* Ops table for net_shaper */
- static const struct genl_split_ops net_shaper_nl_ops[] = {
- 	{
-@@ -120,6 +131,24 @@ static const struct genl_split_ops net_shaper_nl_ops[] = {
- 		.maxattr	= NET_SHAPER_A_NODE,
- 		.flags		= GENL_ADMIN_PERM | GENL_CMD_CAP_DO,
- 	},
-+	{
-+		.cmd		= NET_SHAPER_CMD_CAP_GET,
-+		.pre_doit	= net_shaper_nl_cap_pre_doit,
-+		.doit		= net_shaper_nl_cap_get_doit,
-+		.post_doit	= net_shaper_nl_cap_post_doit,
-+		.policy		= net_shaper_cap_get_do_nl_policy,
-+		.maxattr	= NET_SHAPER_A_CAPS_SCOPE,
-+		.flags		= GENL_CMD_CAP_DO,
-+	},
-+	{
-+		.cmd		= NET_SHAPER_CMD_CAP_GET,
-+		.start		= net_shaper_nl_cap_pre_dumpit,
-+		.dumpit		= net_shaper_nl_cap_get_dumpit,
-+		.done		= net_shaper_nl_cap_post_dumpit,
-+		.policy		= net_shaper_cap_get_dump_nl_policy,
-+		.maxattr	= NET_SHAPER_A_CAPS_IFINDEX,
-+		.flags		= GENL_CMD_CAP_DUMP,
-+	},
- };
++	binding = net_shaper_binding_from_ctx(info->ctx);
++	scope = nla_get_u32(info->attrs[NET_SHAPER_A_CAPS_SCOPE]);
++	ops = net_shaper_ops(binding);
++	ops->capabilities(binding, scope, &flags);
++	if (!flags)
++		return -EOPNOTSUPP;
++
++	msg = genlmsg_new(NLMSG_DEFAULT_SIZE, GFP_KERNEL);
++	if (!msg)
++		return -ENOMEM;
++
++	ret = net_shaper_cap_fill_one(msg, binding, scope, flags, info);
++	if (ret)
++		goto free_msg;
++
++	ret =  genlmsg_reply(msg, info);
++	if (ret)
++		goto free_msg;
+ 	return 0;
++
++free_msg:
++	nlmsg_free(msg);
++	return ret;
+ }
  
- struct genl_family net_shaper_nl_family __ro_after_init = {
-diff --git a/net/shaper/shaper_nl_gen.h b/net/shaper/shaper_nl_gen.h
-index fea70e94af48..3affdb21061f 100644
---- a/net/shaper/shaper_nl_gen.h
-+++ b/net/shaper/shaper_nl_gen.h
-@@ -19,17 +19,27 @@ extern const struct nla_policy net_shaper_node_info_nl_policy[NET_SHAPER_A_PAREN
- 
- int net_shaper_nl_pre_doit(const struct genl_split_ops *ops,
- 			   struct sk_buff *skb, struct genl_info *info);
-+int net_shaper_nl_cap_pre_doit(const struct genl_split_ops *ops,
-+			       struct sk_buff *skb, struct genl_info *info);
- void
- net_shaper_nl_post_doit(const struct genl_split_ops *ops, struct sk_buff *skb,
- 			struct genl_info *info);
-+void
-+net_shaper_nl_cap_post_doit(const struct genl_split_ops *ops,
-+			    struct sk_buff *skb, struct genl_info *info);
- int net_shaper_nl_pre_dumpit(struct netlink_callback *cb);
-+int net_shaper_nl_cap_pre_dumpit(struct netlink_callback *cb);
- int net_shaper_nl_post_dumpit(struct netlink_callback *cb);
-+int net_shaper_nl_cap_post_dumpit(struct netlink_callback *cb);
- 
- int net_shaper_nl_get_doit(struct sk_buff *skb, struct genl_info *info);
- int net_shaper_nl_get_dumpit(struct sk_buff *skb, struct netlink_callback *cb);
- int net_shaper_nl_set_doit(struct sk_buff *skb, struct genl_info *info);
- int net_shaper_nl_delete_doit(struct sk_buff *skb, struct genl_info *info);
- int net_shaper_nl_group_doit(struct sk_buff *skb, struct genl_info *info);
-+int net_shaper_nl_cap_get_doit(struct sk_buff *skb, struct genl_info *info);
-+int net_shaper_nl_cap_get_dumpit(struct sk_buff *skb,
-+				 struct netlink_callback *cb);
- 
- extern struct genl_family net_shaper_nl_family;
+ int net_shaper_nl_cap_get_dumpit(struct sk_buff *skb,
+ 				 struct netlink_callback *cb)
+ {
++	const struct genl_info *info = genl_info_dump(cb);
++	struct net_shaper_binding *binding;
++	const struct net_shaper_ops *ops;
++	enum net_shaper_scope scope;
++	int ret;
++
++	binding = net_shaper_binding_from_ctx(cb->ctx);
++	ops = net_shaper_ops(binding);
++	for (scope = 0; scope <= NET_SHAPER_SCOPE_MAX; ++scope) {
++		unsigned long flags = 0;
++
++		ops->capabilities(binding, scope, &flags);
++		if (!flags)
++			continue;
++
++		ret = net_shaper_cap_fill_one(skb, binding, scope, flags,
++					      info);
++		if (ret)
++			return ret;
++	}
++
+ 	return 0;
+ }
  
 -- 
 2.45.2
