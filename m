@@ -1,106 +1,95 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 57AF196C1DE
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  4 Sep 2024 17:12:46 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id C4F0F4050A;
-	Wed,  4 Sep 2024 15:12:43 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 3eBRDwPQnzan; Wed,  4 Sep 2024 15:12:43 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 39D0E402F3
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1725462763;
-	bh=668GR7K85eKGutSjk9hdhyby0WaauuFbm4jSRy4Js+Q=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=VAeUSySIj00oxRozZD6S0R9+BLcMdqJQZra5zvSymnSz5OQEiThmoveKChF3D+fVz
-	 0wobbVwZwLSRTuKJ2hV/o2WRj/P/F6eqa7nWGyetHV0Eg922iHb1iEXQb9Nk3edLH1
-	 PjvntH40D19WSfQTBYDGPIZ754E31r2F+gvmHypCXMA2NT9uzp163GYYnWg7DyPRRc
-	 Ei6ABpNGtVWTLmfIpQBUrQ77s4sENbJhjADklzVI7wJ2ICBAFl+JdXomQuQNfIucn5
-	 17jGj6gvFFkaDILl2Ken9aOW1ftkXU2Y4J9rnhlwE1T18DE0hngL7+p10ldCRuboOs
-	 7vFZ7c/evYxnA==
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 39D0E402F3;
-	Wed,  4 Sep 2024 15:12:43 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id A08DF1BF83C
- for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Sep 2024 06:41:20 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id D8EC096C2E7
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  4 Sep 2024 17:51:24 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 99EB960847
- for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Sep 2024 06:41:20 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 95EE6608A8;
+	Wed,  4 Sep 2024 15:51:23 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 5Kzhhu0v8-8t for <intel-wired-lan@lists.osuosl.org>;
- Wed,  4 Sep 2024 06:41:20 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=99.78.197.218;
- helo=smtp-fw-80007.amazon.com; envelope-from=prvs=970f31387=enjuk@amazon.co.jp;
+ id ugX8IvVWCJLO; Wed,  4 Sep 2024 15:51:22 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 93267608AE
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1725465082;
+	bh=YAcBbNK2V9s969eLdZlWPL7SHL7g4Ra2mjODjmfunLs=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=kECxWBD5oh/fr72mCJrvE/I6cU5XJLv1VyMWbMZhyGAUmJOM3YwC0qLi5pz5NoZ75
+	 Jgtpl409FfZLWFkH2sZaJoM3D9L+r6m8scFJgHfQaROFt74E6PqbP8u/WVQtneMdPK
+	 nxdrbD5jW+TBsWEtjsHkMjoR+JcnwDGt4IpDm1rgk8rc+A8VGErfn8N5St+gu77e7I
+	 V82dm5JcpcJ0KQpi+jlj9D7ywnC1O/IHTGFnl6WaBBwRPUYrCTrbTaqa6A7Px1JA8y
+	 /Aja4bLCs0ejctFNRfD4I3bcEa4GCnzcqbJZmj0YpoHsdTFx2cs88u5Ayq1eVvktzM
+	 uUijLTzQ+as/g==
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp3.osuosl.org (Postfix) with ESMTP id 93267608AE;
+	Wed,  4 Sep 2024 15:51:22 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 4BA0C1BF40B
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Sep 2024 15:51:20 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp3.osuosl.org (Postfix) with ESMTP id 38842608A9
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Sep 2024 15:51:20 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 8bwtaNP-8VBq for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  4 Sep 2024 15:51:19 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.11;
+ helo=mgamail.intel.com; envelope-from=aleksander.lobakin@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org B15CE6082C
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B15CE6082C
-Received: from smtp-fw-80007.amazon.com (smtp-fw-80007.amazon.com
- [99.78.197.218])
- by smtp3.osuosl.org (Postfix) with ESMTPS id B15CE6082C
- for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Sep 2024 06:41:19 +0000 (UTC)
-X-IronPort-AV: E=Sophos;i="6.10,201,1719878400"; d="scan'208";a="327404631"
-Received: from pdx4-co-svc-p1-lb2-vlan2.amazon.com (HELO
- smtpout.prod.us-west-2.prod.farcaster.email.amazon.dev) ([10.25.36.210])
- by smtp-border-fw-80007.pdx80.corp.amazon.com with
- ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 04 Sep 2024 06:41:17 +0000
-Received: from EX19MTAUWC002.ant.amazon.com [10.0.7.35:45773]
- by smtpin.naws.us-west-2.prod.farcaster.email.amazon.dev [10.0.5.128:2525]
- with esmtp (Farcaster)
- id fa2646ae-c483-4dd3-a0cc-92f2c91c3a0d; Wed, 4 Sep 2024 06:41:16 +0000 (UTC)
-X-Farcaster-Flow-ID: fa2646ae-c483-4dd3-a0cc-92f2c91c3a0d
-Received: from EX19D003ANC003.ant.amazon.com (10.37.240.197) by
- EX19MTAUWC002.ant.amazon.com (10.250.64.143) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.1258.34;
- Wed, 4 Sep 2024 06:41:14 +0000
-Received: from b0be8375a521.amazon.com (10.143.69.20) by
- EX19D003ANC003.ant.amazon.com (10.37.240.197) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.1258.35;
- Wed, 4 Sep 2024 06:41:11 +0000
-From: Kohei Enju <enjuk@amazon.com>
-To: <takamitz@amazon.co.jp>
-Date: Wed, 4 Sep 2024 15:41:01 +0900
-Message-ID: <20240904064101.8548-1-enjuk@amazon.com>
-X-Mailer: git-send-email 2.39.3 (Apple Git-146)
-In-Reply-To: <20240904055646.58588-1-takamitz@amazon.co.jp>
-References: <20240904055646.58588-1-takamitz@amazon.co.jp>
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 48270607C3
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 48270607C3
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.11])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 48270607C3
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Sep 2024 15:51:18 +0000 (UTC)
+X-CSE-ConnectionGUID: 7tzy5yD/RqicnCCqAKSAfA==
+X-CSE-MsgGUID: VNRVUZlkQpW1fmx8gCU8hw==
+X-IronPort-AV: E=McAfee;i="6700,10204,11185"; a="34737128"
+X-IronPort-AV: E=Sophos;i="6.10,202,1719903600"; d="scan'208";a="34737128"
+Received: from orviesa008.jf.intel.com ([10.64.159.148])
+ by fmvoesa105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 04 Sep 2024 08:51:18 -0700
+X-CSE-ConnectionGUID: in9rYBYpQlGP4u4Wf4LHzQ==
+X-CSE-MsgGUID: 7jytzqScRX+8LbY0ZnHpsg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.10,202,1719903600"; d="scan'208";a="66041811"
+Received: from newjersey.igk.intel.com ([10.102.20.203])
+ by orviesa008.jf.intel.com with ESMTP; 04 Sep 2024 08:51:15 -0700
+From: Alexander Lobakin <aleksander.lobakin@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Wed,  4 Sep 2024 17:47:42 +0200
+Message-ID: <20240904154748.2114199-1-aleksander.lobakin@intel.com>
+X-Mailer: git-send-email 2.46.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.143.69.20]
-X-ClientProxiedBy: EX19D046UWA003.ant.amazon.com (10.13.139.18) To
- EX19D003ANC003.ant.amazon.com (10.37.240.197)
-X-Mailman-Approved-At: Wed, 04 Sep 2024 15:12:38 +0000
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=amazon.com; i=@amazon.com; q=dns/txt; s=amazon201209;
- t=1725432080; x=1756968080;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=668GR7K85eKGutSjk9hdhyby0WaauuFbm4jSRy4Js+Q=;
- b=JQXtHTl3TmBfc2iWky28EzJSsxZqIHbL57Flr1dkrltIk3eZy2UFOwp2
- MZxUO7FnZNTQ9dBCBQqkuNF9J+YVTSPMzNPbZC1TEn1Mj5EuIg1czIAg/
- bkY8UYnYZzpqD9RW/xpDjRWdP6ZOI3eL2z9MFQut9ZTmt49fITz7SaBff
- 8=;
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1725465079; x=1757001079;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=y7K0XuRk4s2I3UAuv+2/CKOqjAjq4Y52W4VRKs5k61E=;
+ b=fgBhr95EMj0+t88RIYYAUANkB+dxGZc5IcFC7R7TfH9xJ57AbM7OVvT8
+ YaZpHp4MglwxGCgrlYfYapQqDnjTrmGZUFHuJqVHeOzflcHU+eTKpEo8N
+ Axvz9fb/lquPgpepdrNorrUpbDuK53a3KX4rnR/tzF/QoLLsTy9kaLp0r
+ WpMmbTmERmYSwZEpaBm3KzPyNg1tllVmhWlv/xntFSJt9qH0kuDXWOz+D
+ COC2v7YsxInrQi//O9SN4d4/iOfYgYAErHMu/fruAYPDPlpuYFWQmkzV2
+ p4gayks/dn6mNSYUZAl6ZwyFIxY5Kwp7ZUHHl7h3YjkhiCcdCcKMWk5ZS
+ w==;
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=amazon.com
+ dmarc=pass (p=none dis=none)
+ header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (1024-bit key,
- unprotected) header.d=amazon.com header.i=@amazon.com header.a=rsa-sha256
- header.s=amazon201209 header.b=JQXtHTl3
-Subject: Re: [Intel-wired-lan] [PATCH v1 net-next] e1000e: Remove duplicated
- writel() in e1000_configure_tx/rx()
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=fgBhr95E
+Subject: [Intel-wired-lan] [PATCH iwl-next v2 0/6] idpf: XDP chapter II:
+ convert Tx completion to libeth
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -113,32 +102,71 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: andrew@lunn.ch, netdev@vger.kernel.org, przemyslaw.kitszel@intel.com,
- edumazet@google.com, intel-wired-lan@lists.osuosl.org, kuba@kernel.org,
- anthony.l.nguyen@intel.com, Kohei Enju <enjuk@amazon.com>, pabeni@redhat.com,
- davem@davemloft.net
+Cc: Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Joshua Hay <joshua.a.hay@intel.com>, linux-kernel@vger.kernel.org,
+ Alexander Lobakin <aleksander.lobakin@intel.com>,
+ Eric Dumazet <edumazet@google.com>, Michal Kubiak <michal.kubiak@intel.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>,
+ nex.sw.ncis.osdt.itp.upstreaming@intel.com, Jakub Kicinski <kuba@kernel.org>,
+ netdev@vger.kernel.org, Paolo Abeni <pabeni@redhat.com>,
+ "David S. Miller" <davem@davemloft.net>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-> My colleague, Kohei, tested the patch with a real hardware and will provide his
-> Tested-by shortly.
+XDP for idpf is currently 5 chapters:
+* convert Rx to libeth;
+* convert Tx completion to libeth (this);
+* generic XDP and XSk code changes;
+* actual XDP for idpf via libeth_xdp;
+* XSk for idpf (^).
 
-I have tested the patch using my physical hardware, an Intel Ethernet controller I219-V. The device was properly attached by the e1000e driver and functioned correctly. The test was performed on a custom kernel based on kernel-core-6.10.6-200.fc40.x86_64.
+Part II does the following:
+* adds generic libeth Tx completion routines;
+* converts idpf to use generic libeth Tx comp routines;
+* fixes Tx queue timeouts and robustifies Tx completion in general;
+* fixes Tx event/descriptor flushes (writebacks).
 
-The PCI device is identified as an Intel Corporation Ethernet Connection (17) I219-V (rev 11), with vendor ID 0x8086 and device ID 0x1a1d. This device ID matches the E1000_DEV_ID_PCH_ADP_I219_V17 definition in the e1000e driver code.
-```
-$ lspci | grep -i ethernet
-00:1f.6 Ethernet controller: Intel Corporation Ethernet Connection (17) I219-V (rev 11)
+Most idpf patches again remove more lines than adds.
+Generic Tx completion helpers and structs are needed as libeth_xdp
+(Ch. III) makes use of them. WB_ON_ITR is needed since XDPSQs don't
+want to work without it at all. Tx queue timeouts fixes are needed
+since without them, it's way easier to catch a Tx timeout event when
+WB_ON_ITR is enabled.
 
-$ cat /sys/bus/pci/devices/0000:00:1f.6/{vendor,device}
-0x8086
-0x1a1d
+Alexander Lobakin (3):
+  libeth: add Tx buffer completion helpers
+  idpf: convert to libeth Tx buffer completion
+  netdevice: add netdev_tx_reset_subqueue() shorthand
 
-$ grep -ri 0x1a1d ~/ghq/github.com/torvalds/linux/drivers/net/ethernet/intel/e1000e
-/home/kohei/ghq/github.com/torvalds/linux/drivers/net/ethernet/intel/e1000e/hw.h:#define E1000_DEV_ID_PCH_ADP_I219_V17          0x1A1D
-```
+Joshua Hay (2):
+  idpf: refactor Tx completion routines
+  idpf: enable WB_ON_ITR
 
-So this testing confirms that the patch does not introduce any regressions for this specific hardware configuration.
+Michal Kubiak (1):
+  idpf: fix netdev Tx queue stop/wake
 
-Tested-by: Kohei Enju <enjuk@amazon.com>
-Thanks!
+ include/net/libeth/types.h                    |  25 ++
+ drivers/net/ethernet/intel/idpf/idpf_txrx.h   |  92 ++--
+ include/linux/netdevice.h                     |  13 +-
+ include/net/libeth/tx.h                       | 129 ++++++
+ drivers/net/ethernet/intel/idpf/idpf_dev.c    |   2 +
+ .../ethernet/intel/idpf/idpf_singleq_txrx.c   | 110 +++--
+ drivers/net/ethernet/intel/idpf/idpf_txrx.c   | 394 ++++++++----------
+ drivers/net/ethernet/intel/idpf/idpf_vf_dev.c |   2 +
+ 8 files changed, 441 insertions(+), 326 deletions(-)
+ create mode 100644 include/net/libeth/types.h
+ create mode 100644 include/net/libeth/tx.h
+
+---
+From v1[0]:
+* drop the stats implementation. It's not generic, uses old Ethtool
+  interfaces and is written using macro templates which made it barely
+  readable (Kuba).
+  I'll be rewriting it separately.
+* replace `/* <multi-line comment>` with `/*\n * <multi-line comment>`
+  since the special rule for netdev was removed.
+
+[0] https://lore.kernel.org/netdev/20240819223442.48013-1-anthony.l.nguyen@intel.com
+-- 
+2.46.0
+
