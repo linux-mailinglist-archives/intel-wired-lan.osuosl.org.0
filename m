@@ -2,94 +2,99 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7E9F796BF38
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  4 Sep 2024 15:56:52 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 5883696BF39
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  4 Sep 2024 15:56:55 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 1DE7F811EC;
-	Wed,  4 Sep 2024 13:56:51 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id F3B45811FD;
+	Wed,  4 Sep 2024 13:56:53 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id TyFNqntpXkDa; Wed,  4 Sep 2024 13:56:50 +0000 (UTC)
+ id j4htvfaav6hE; Wed,  4 Sep 2024 13:56:53 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 614FE80E93
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org CDF94811F0
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1725458210;
-	bh=pH5/nva7blU637n1lHlctRPIke79gY2kkCOW9Prjaao=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=wifEA3KkerJvAErPyPc5PN4lrRwDax2dXXU66dZUZjKkkE5uUCdc9FgGizRb94cAo
-	 XWEAZI43d92cDyHlvAAbMBQ4NQvmjY2PbosZN2P5ayRzV+WUBGc6dXYSvgpR1JTLYC
-	 5WXK63aDcorsYdSJ2M7nmnYFWqlAF4K//5iv+hjMccJIsSbGp0jME0hlKu1Jugj6I4
-	 ZqrqcG98yYWwWMEWRMSsxKYgdgswXeZD+GjqrBno1gfbxwj4dI8lqks36bHm7fMKbi
-	 ytuzQdcJLssTJjLpO85MWItI5T8yddtn0VXUhy4Ichh7JEmkeFNfd2QtsNj9GgMYtX
-	 2qn/s/eax86aQ==
+	s=default; t=1725458212;
+	bh=3xI4MM3MREOOk0SuylN3QYDotCVL3b9eTV7gqo/9Nwk=;
+	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=YsU3Q8tCH++m8gt2xQDQwX0HVSPMNt8898asyDgc480qq7YCUNMDCK1F9k2rRgqiE
+	 zMHOFUqNsCQpZBe8bJoOqhPplURHY0KzfMwcsFzAaj49r9DE+Amiwu2iolyZBiuR2i
+	 xSXkOGcwN5NDUVlhMQ1PDR4iyME0Pu0DCiDvzKJpwEa4rDM1GpPRfEfwKpAzBf3E0I
+	 eTpDhS1x4x7InpgOTiSf1wLCugFmhVoCHgIF3a4Xw83eLh9IutkCnNWrvlmhc7zbkj
+	 obSE8A/14pBEpQtAvLtijVofEkWhzugiz8G7y5yOlQCtY8BhTOcM1MckGUmMyAWB7Z
+	 jkue5xeGQur5A==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 614FE80E93;
-	Wed,  4 Sep 2024 13:56:49 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id CDF94811F0;
+	Wed,  4 Sep 2024 13:56:52 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 4424F1BF479
- for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Sep 2024 13:56:47 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 8D61B1BF479
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Sep 2024 13:56:51 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 2F4FD40169
- for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Sep 2024 13:56:47 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 8759A6089D
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Sep 2024 13:56:51 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 8JExB1vmGl69 for <intel-wired-lan@lists.osuosl.org>;
- Wed,  4 Sep 2024 13:56:45 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.133.124;
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id tPJpXjoIQDhQ for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  4 Sep 2024 13:56:50 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.129.124;
  helo=us-smtp-delivery-124.mimecast.com; envelope-from=pabeni@redhat.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 804C04016B
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 804C04016B
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 8E3A8605AA
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 8E3A8605AA
 Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.133.124])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 804C04016B
- for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Sep 2024 13:56:44 +0000 (UTC)
-Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
+ (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 8E3A8605AA
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Sep 2024 13:56:50 +0000 (UTC)
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-262-gVpkTC81Mk-Tf-tyDDojqA-1; Wed,
- 04 Sep 2024 09:56:39 -0400
-X-MC-Unique: gVpkTC81Mk-Tf-tyDDojqA-1
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-393-n7sf2mrcNo6HoHbw84Rc_w-1; Wed,
+ 04 Sep 2024 09:56:46 -0400
+X-MC-Unique: n7sf2mrcNo6HoHbw84Rc_w-1
 Received: from mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.15])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 0CB7919560A5; Wed,  4 Sep 2024 13:56:37 +0000 (UTC)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 42B801955BC7; Wed,  4 Sep 2024 13:56:43 +0000 (UTC)
 Received: from gerbillo.redhat.com (unknown [10.45.225.58])
  by mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 8C4A9195608A; Wed,  4 Sep 2024 13:56:26 +0000 (UTC)
+ id 9D1FF1956088; Wed,  4 Sep 2024 13:56:37 +0000 (UTC)
 From: Paolo Abeni <pabeni@redhat.com>
 To: netdev@vger.kernel.org
-Date: Wed,  4 Sep 2024 15:53:32 +0200
-Message-ID: <cover.1725457317.git.pabeni@redhat.com>
+Date: Wed,  4 Sep 2024 15:53:33 +0200
+Message-ID: <b67adf159b412f7618df7b40fcdb1d8f94b3766f.1725457317.git.pabeni@redhat.com>
+In-Reply-To: <cover.1725457317.git.pabeni@redhat.com>
+References: <cover.1725457317.git.pabeni@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.15
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=redhat.com; 
- s=mimecast20190719; t=1725458203;
+ s=mimecast20190719; t=1725458209;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=pH5/nva7blU637n1lHlctRPIke79gY2kkCOW9Prjaao=;
- b=Au7Z/A0pDcNW3VRxmcN1nKhjvddiICvbynfZyayQE3YsQDNhMkxLofXwXeLuK1EICGg12h
- K8OdyvNWesIhvR3O98Kbw5aRgIdFkWonvSyDeZaoERmw1evGwkl/rXwaclSWHOoW0+nfMc
- Fv5dxDiqlehzaZ5CMy19GZnstVFELjg=
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=3xI4MM3MREOOk0SuylN3QYDotCVL3b9eTV7gqo/9Nwk=;
+ b=Sei4mXm1EdNeSbGatc0vFyxcRv32JT5kNljji4NXByK+YOxVdhfU8pxYbrSXkVW3QQjSAL
+ IfkcpARk77mmpbWpg0gx+lCg1+nIdOLAUB+AYr0TGK4wgVLFdEDTWPM48xfIJ8QgxKXqoN
+ UF0gN9ivQRBurfiY+ZHGANfciNXVmrE=
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=redhat.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
- header.a=rsa-sha256 header.s=mimecast20190719 header.b=Au7Z/A0p
-Subject: [Intel-wired-lan] [PATCH v6 net-next 00/15] net: introduce TX H/W
- shaping API
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (1024-bit key,
+ unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256
+ header.s=mimecast20190719 header.b=Sei4mXm1
+Subject: [Intel-wired-lan] [PATCH v6 net-next 01/15] genetlink: extend info
+ user-storage to match NL cb ctx
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -113,239 +118,183 @@ Cc: Jiri Pirko <jiri@resnulli.us>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-We have a plurality of shaping-related drivers API, but none flexible
-enough to meet existing demand from vendors[1].
+This allows a more uniform implementation of non-dump and dump
+operations, and will be used later in the series to avoid some
+per-operation allocation.
 
-This series introduces new device APIs to configure in a flexible way
-TX H/W shaping. The new functionalities are exposed via a newly
-defined generic netlink interface and include introspection
-capabilities. Some self-tests are included, on top of a dummy
-netdevsim implementation. Finally a basic implementation for the iavf
-driver is provided.
+Additionally rename the NL_ASSERT_DUMP_CTX_FITS macro, to
+fit a more extended usage.
 
-Some usage examples:
-
-* Configure shaping on a given queue:
-
-./tools/net/ynl/cli.py --spec Documentation/netlink/specs/shaper.yaml \
-	--do set --json '{"ifindex": '$IFINDEX',
-			  "shaper": {"handle":
-				     {"scope": "queue", "id":'$QUEUEID'},
-			  "bw-max": 2000000}}'
-
-* Container B/W sharing
-
-The orchestration infrastructure wants to group the 
-container-related queues under a RR scheduling and limit the aggregate
-bandwidth:
-
-./tools/net/ynl/cli.py --spec Documentation/netlink/specs/shaper.yaml \
-	--do group --json '{"ifindex": '$IFINDEX',
-			"leaves": [
-			  {"handle": {"scope": "queue", "id":'$QID1'},
-			   "weight": '$W1'}, 
-			  {"handle": {"scope": "queue", "id":'$QID2'},
-			   "weight": '$W2'}], 
-			  {"handle": {"scope": "queue", "id":'$QID3'},
-			   "weight": '$W3'}], 
-			"node": {"handle": {"scope":"node"},
-			 	 "bw-max": 10000000}}'
-{'ifindex': $IFINDEX, 'handle': {'scope': 'node', 'id': 0}}
-
-Q1 \
-    \
-Q2 -- node 0 -------  netdev
-    / (bw-max: 10M)
-Q3 / 
-
-* Delegation
-
-A containers wants to limit the aggregate B/W bandwidth of 2 of the 3
-queues it owns - the starting configuration is the one from the
-previous point:
-
-SPEC=Documentation/netlink/specs/net_shaper.yaml
-./tools/net/ynl/cli.py --spec $SPEC \
-	--do group --json '{"ifindex": '$IFINDEX',
-			"leaves": [ 
-			  {"handle": {"scope": "queue", "id":'$QID1'},
-			   "weight": '$W1'}, 
-			  {"handle": {"scope": "queue", "id":'$QID2'},
-			   "weight": '$W2'}], 
-			"node": {"handle": {"scope": "node"},
-				 "bw-max": 5000000 }}'
-{'ifindex': $IFINDEX, 'handle': {'scope': 'node', 'id': 1}}
-
-Q1 -- node 1 --------\
-    / (bw-max: 5M)    \
-Q2 /                   node 0 -------  netdev
-                      /  (bw-max: 10M)
-Q3 ------------------
-
-* Cleanup:
-
-To delete a single queue shaper:
-
-./tools/net/ynl/cli.py --spec $SPEC --do delete --json \
-	'{"ifindex": '$IFINDEX',
-	  "handle": {"scope": "queue", "id":'$QID3'}}'
-
-Q1 -- node 1 --------\
-    / (bw-max: 5M)    \
-Q2 /                   node 0 -------  netdev
-                       (bw-max: 10M)
-
-Deleting a node shaper relinks all its leaves to the node's parent:
-
-./tools/net/ynl/cli.py --spec $SPEC --do delete --json \
-	'{"ifindex": '$IFINDEX',
-	  "handle": {"scope": "node", "id":1}}'
-
-Q1 ------\
-          \
-          node 0 -------  netdev
-         /  (bw-max: 10M)
-Q2 -----
-
-Deleting the last shaper under a node shaper deletes the node, too:
-
-./tools/net/ynl/cli.py --spec $SPEC --do delete --json \
-	'{"ifindex": '$IFINDEX',
-	  "handle": {"scope": "queue", "id":'$QID1'}}'
-./tools/net/ynl/cli.py --spec $SPEC --do delete --json \
-	'{"ifindex": '$IFINDEX',
-	  "handle": {"scope": "queue", "id":'$QID2'}}'
-./tools/net/ynl/cli.py --spec $SPEC --do get --json \
-	'{"ifindex": '$IFINDEX',
-	  "handle": {"scope": "node", "id": 0}}'
-Netlink error: No such file or directory
-nl_len = 44 (28) nl_flags = 0x300 nl_type = 2
-	error: -2
-	extack: {'bad-attr': '.handle'}
-
-[1] https://lore.kernel.org/netdev/20240405102313.GA310894@kernel.org/
+Suggested-by: Jakub Kicinski <kuba@kernel.org>
+Signed-off-by: Paolo Abeni <pabeni@redhat.com>
 ---
-Changes from v5:
- - handle/shaper unsplit
- - removed 'binding' from NL api
- - several helper renames
- - added rcu protection to shaper pointer
- - implemented value checking into the core
- - handle device channels reconf
- - consolidate NL ctx handling
- - dropped idr allocator, leverage the existing xarray
- - caps names shrinking
- - group() op is optional
- - cap callback can't fail
- - more self-tests
+ drivers/net/vxlan/vxlan_mdb.c        | 2 +-
+ include/linux/netlink.h              | 5 +++--
+ include/net/genetlink.h              | 8 ++++++--
+ net/core/netdev-genl.c               | 2 +-
+ net/core/rtnetlink.c                 | 2 +-
+ net/devlink/devl_internal.h          | 2 +-
+ net/ethtool/rss.c                    | 2 +-
+ net/netfilter/nf_conntrack_netlink.c | 2 +-
+ net/netlink/genetlink.c              | 4 ++--
+ 9 files changed, 17 insertions(+), 12 deletions(-)
 
-v5: https://lore.kernel.org/netdev/cover.1724944116.git.pabeni@redhat.com/
-
-Changes from v4:
- - ops operate on struct binding
- - 'root' -> 'node' rename
- - most core function/helpers operate on 'binding'
- - use NL_SET_BAD_ATTR where possible
- - some code deduplication
-
-v4: https://lore.kernel.org/netdev/cover.1724165948.git.pabeni@redhat.com/
-
-Changes from v3:
- - rename
- - locking
- - delete operates on node, too
-
-v3: https://lore.kernel.org/netdev/cover.1722357745.git.pabeni@redhat.com/
-
-Changes from RFC v2:
- - added patch 1
- - fixed deprecated API usage
-
-RFC v2: https://lore.kernel.org/netdev/cover.1721851988.git.pabeni@redhat.com/
-
-Changes from RFC v1:
- - set() and delete() ops operate on a single shaper
- - added group() op to allow grouping and nesting
- - split the NL implementation into multiple patches to help reviewing
-
-RFC v1: https://lore.kernel.org/netdev/cover.1719518113.git.pabeni@redhat.com/
-
-Paolo Abeni (11):
-  genetlink: extend info user-storage to match NL cb ctx
-  netlink: spec: add shaper YAML spec
-  net-shapers: implement NL get operation
-  net-shapers: implement NL set and delete operations
-  net-shapers: implement NL group operation
-  net-shapers: implement delete support for NODE scope shaper
-  net-shapers: implement shaper cleanup on queue deletion
-  netlink: spec: add shaper introspection support
-  net: shaper: implement introspection support
-  net-shapers: implement cap validation in the core
-  testing: net-drv: add basic shaper test
-
-Sudheer Mogilappagari (2):
-  iavf: Add net_shaper_ops support
-  iavf: add support to exchange qos capabilities
-
-Wenjun Wu (2):
-  virtchnl: support queue rate limit and quanta size configuration
-  ice: Support VF queue rate limit and quanta size configuration
-
- Documentation/netlink/specs/net_shaper.yaml   |  401 +++++
- Documentation/networking/kapi.rst             |    3 +
- MAINTAINERS                                   |    1 +
- drivers/net/Kconfig                           |    1 +
- drivers/net/ethernet/intel/Kconfig            |    1 +
- drivers/net/ethernet/intel/iavf/iavf.h        |   13 +
- drivers/net/ethernet/intel/iavf/iavf_main.c   |  159 +-
- drivers/net/ethernet/intel/iavf/iavf_txrx.h   |    2 +
- .../net/ethernet/intel/iavf/iavf_virtchnl.c   |  157 +-
- drivers/net/ethernet/intel/ice/ice.h          |    2 +
- drivers/net/ethernet/intel/ice/ice_base.c     |    2 +
- drivers/net/ethernet/intel/ice/ice_common.c   |   21 +
- .../net/ethernet/intel/ice/ice_hw_autogen.h   |    8 +
- drivers/net/ethernet/intel/ice/ice_txrx.h     |    1 +
- drivers/net/ethernet/intel/ice/ice_type.h     |    1 +
- drivers/net/ethernet/intel/ice/ice_vf_lib.h   |    8 +
- drivers/net/ethernet/intel/ice/ice_virtchnl.c |  335 ++++
- drivers/net/ethernet/intel/ice/ice_virtchnl.h |   11 +
- .../intel/ice/ice_virtchnl_allowlist.c        |    6 +
- drivers/net/netdevsim/netdev.c                |   39 +
- drivers/net/vxlan/vxlan_mdb.c                 |    2 +-
- include/linux/avf/virtchnl.h                  |  119 ++
- include/linux/netdevice.h                     |   21 +
- include/linux/netlink.h                       |    5 +-
- include/net/genetlink.h                       |    8 +-
- include/net/net_shaper.h                      |  120 ++
- include/uapi/linux/net_shaper.h               |   97 ++
- net/Kconfig                                   |    3 +
- net/Makefile                                  |    1 +
- net/core/dev.c                                |    8 +
- net/core/dev.h                                |   10 +
- net/core/netdev-genl.c                        |    2 +-
- net/core/rtnetlink.c                          |    2 +-
- net/devlink/devl_internal.h                   |    2 +-
- net/ethtool/rss.c                             |    2 +-
- net/netfilter/nf_conntrack_netlink.c          |    2 +-
- net/netlink/genetlink.c                       |    4 +-
- net/shaper/Makefile                           |    8 +
- net/shaper/shaper.c                           | 1460 +++++++++++++++++
- net/shaper/shaper_nl_gen.c                    |  162 ++
- net/shaper/shaper_nl_gen.h                    |   46 +
- tools/testing/selftests/drivers/net/Makefile  |    1 +
- tools/testing/selftests/drivers/net/shaper.py |  458 ++++++
- .../testing/selftests/net/lib/py/__init__.py  |    1 +
- tools/testing/selftests/net/lib/py/ynl.py     |    5 +
- 45 files changed, 3707 insertions(+), 14 deletions(-)
- create mode 100644 Documentation/netlink/specs/net_shaper.yaml
- create mode 100644 include/net/net_shaper.h
- create mode 100644 include/uapi/linux/net_shaper.h
- create mode 100644 net/shaper/Makefile
- create mode 100644 net/shaper/shaper.c
- create mode 100644 net/shaper/shaper_nl_gen.c
- create mode 100644 net/shaper/shaper_nl_gen.h
- create mode 100755 tools/testing/selftests/drivers/net/shaper.py
-
+diff --git a/drivers/net/vxlan/vxlan_mdb.c b/drivers/net/vxlan/vxlan_mdb.c
+index 60eb95a06d55..ebed05a2804c 100644
+--- a/drivers/net/vxlan/vxlan_mdb.c
++++ b/drivers/net/vxlan/vxlan_mdb.c
+@@ -284,7 +284,7 @@ int vxlan_mdb_dump(struct net_device *dev, struct sk_buff *skb,
+ 
+ 	ASSERT_RTNL();
+ 
+-	NL_ASSERT_DUMP_CTX_FITS(struct vxlan_mdb_dump_ctx);
++	NL_ASSERT_CTX_FITS(struct vxlan_mdb_dump_ctx);
+ 
+ 	nlh = nlmsg_put(skb, NETLINK_CB(cb->skb).portid,
+ 			cb->nlh->nlmsg_seq, RTM_NEWMDB, sizeof(*bpm),
+diff --git a/include/linux/netlink.h b/include/linux/netlink.h
+index b332c2048c75..a3ca198a3a9e 100644
+--- a/include/linux/netlink.h
++++ b/include/linux/netlink.h
+@@ -34,6 +34,7 @@ struct netlink_skb_parms {
+ 
+ #define NETLINK_CB(skb)		(*(struct netlink_skb_parms*)&((skb)->cb))
+ #define NETLINK_CREDS(skb)	(&NETLINK_CB((skb)).creds)
++#define NETLINK_CTX_SIZE	48
+ 
+ 
+ void netlink_table_grab(void);
+@@ -293,7 +294,7 @@ struct netlink_callback {
+ 	int			flags;
+ 	bool			strict_check;
+ 	union {
+-		u8		ctx[48];
++		u8		ctx[NETLINK_CTX_SIZE];
+ 
+ 		/* args is deprecated. Cast a struct over ctx instead
+ 		 * for proper type safety.
+@@ -302,7 +303,7 @@ struct netlink_callback {
+ 	};
+ };
+ 
+-#define NL_ASSERT_DUMP_CTX_FITS(type_name)				\
++#define NL_ASSERT_CTX_FITS(type_name)					\
+ 	BUILD_BUG_ON(sizeof(type_name) >				\
+ 		     sizeof_field(struct netlink_callback, ctx))
+ 
+diff --git a/include/net/genetlink.h b/include/net/genetlink.h
+index 9ab49bfeae78..9d3726e8f90e 100644
+--- a/include/net/genetlink.h
++++ b/include/net/genetlink.h
+@@ -124,7 +124,8 @@ struct genl_family {
+  * @genlhdr: generic netlink message header
+  * @attrs: netlink attributes
+  * @_net: network namespace
+- * @user_ptr: user pointers
++ * @ctx: storage space for the use by the family
++ * @user_ptr: user pointers (deprecated, use ctx instead)
+  * @extack: extended ACK report struct
+  */
+ struct genl_info {
+@@ -135,7 +136,10 @@ struct genl_info {
+ 	struct genlmsghdr *	genlhdr;
+ 	struct nlattr **	attrs;
+ 	possible_net_t		_net;
+-	void *			user_ptr[2];
++	union {
++		u8		ctx[NETLINK_CTX_SIZE];
++		void *		user_ptr[2];
++	};
+ 	struct netlink_ext_ack *extack;
+ };
+ 
+diff --git a/net/core/netdev-genl.c b/net/core/netdev-genl.c
+index a17d7eaeb001..bb2b9f53ef6b 100644
+--- a/net/core/netdev-genl.c
++++ b/net/core/netdev-genl.c
+@@ -23,7 +23,7 @@ struct netdev_nl_dump_ctx {
+ 
+ static struct netdev_nl_dump_ctx *netdev_dump_ctx(struct netlink_callback *cb)
+ {
+-	NL_ASSERT_DUMP_CTX_FITS(struct netdev_nl_dump_ctx);
++	NL_ASSERT_CTX_FITS(struct netdev_nl_dump_ctx);
+ 
+ 	return (struct netdev_nl_dump_ctx *)cb->ctx;
+ }
+diff --git a/net/core/rtnetlink.c b/net/core/rtnetlink.c
+index f0a520987085..472d1a27cdf8 100644
+--- a/net/core/rtnetlink.c
++++ b/net/core/rtnetlink.c
+@@ -6169,7 +6169,7 @@ static int rtnl_mdb_dump(struct sk_buff *skb, struct netlink_callback *cb)
+ 	int idx, s_idx;
+ 	int err;
+ 
+-	NL_ASSERT_DUMP_CTX_FITS(struct rtnl_mdb_dump_ctx);
++	NL_ASSERT_CTX_FITS(struct rtnl_mdb_dump_ctx);
+ 
+ 	if (cb->strict_check) {
+ 		err = rtnl_mdb_valid_dump_req(cb->nlh, cb->extack);
+diff --git a/net/devlink/devl_internal.h b/net/devlink/devl_internal.h
+index c7a8e13f917c..a9f064ab9ed9 100644
+--- a/net/devlink/devl_internal.h
++++ b/net/devlink/devl_internal.h
+@@ -166,7 +166,7 @@ int devlink_nl_dumpit(struct sk_buff *msg, struct netlink_callback *cb,
+ static inline struct devlink_nl_dump_state *
+ devlink_dump_state(struct netlink_callback *cb)
+ {
+-	NL_ASSERT_DUMP_CTX_FITS(struct devlink_nl_dump_state);
++	NL_ASSERT_CTX_FITS(struct devlink_nl_dump_state);
+ 
+ 	return (struct devlink_nl_dump_state *)cb->ctx;
+ }
+diff --git a/net/ethtool/rss.c b/net/ethtool/rss.c
+index e07386275e14..7cb106b590ab 100644
+--- a/net/ethtool/rss.c
++++ b/net/ethtool/rss.c
+@@ -224,7 +224,7 @@ struct rss_nl_dump_ctx {
+ 
+ static struct rss_nl_dump_ctx *rss_dump_ctx(struct netlink_callback *cb)
+ {
+-	NL_ASSERT_DUMP_CTX_FITS(struct rss_nl_dump_ctx);
++	NL_ASSERT_CTX_FITS(struct rss_nl_dump_ctx);
+ 
+ 	return (struct rss_nl_dump_ctx *)cb->ctx;
+ }
+diff --git a/net/netfilter/nf_conntrack_netlink.c b/net/netfilter/nf_conntrack_netlink.c
+index 4cbf71d0786b..cae4ee5d11d3 100644
+--- a/net/netfilter/nf_conntrack_netlink.c
++++ b/net/netfilter/nf_conntrack_netlink.c
+@@ -3876,7 +3876,7 @@ static int __init ctnetlink_init(void)
+ {
+ 	int ret;
+ 
+-	NL_ASSERT_DUMP_CTX_FITS(struct ctnetlink_list_dump_ctx);
++	NL_ASSERT_CTX_FITS(struct ctnetlink_list_dump_ctx);
+ 
+ 	ret = nfnetlink_subsys_register(&ctnl_subsys);
+ 	if (ret < 0) {
+diff --git a/net/netlink/genetlink.c b/net/netlink/genetlink.c
+index feb54c63a116..29387b605f3e 100644
+--- a/net/netlink/genetlink.c
++++ b/net/netlink/genetlink.c
+@@ -997,7 +997,7 @@ static int genl_start(struct netlink_callback *cb)
+ 	info->info.attrs	= attrs;
+ 	genl_info_net_set(&info->info, sock_net(cb->skb->sk));
+ 	info->info.extack	= cb->extack;
+-	memset(&info->info.user_ptr, 0, sizeof(info->info.user_ptr));
++	memset(&info->info.ctx, 0, sizeof(info->info.ctx));
+ 
+ 	cb->data = info;
+ 	if (ops->start) {
+@@ -1104,7 +1104,7 @@ static int genl_family_rcv_msg_doit(const struct genl_family *family,
+ 	info.attrs = attrbuf;
+ 	info.extack = extack;
+ 	genl_info_net_set(&info, net);
+-	memset(&info.user_ptr, 0, sizeof(info.user_ptr));
++	memset(&info.ctx, 0, sizeof(info.ctx));
+ 
+ 	if (ops->pre_doit) {
+ 		err = ops->pre_doit(ops, skb, &info);
 -- 
 2.45.2
 
