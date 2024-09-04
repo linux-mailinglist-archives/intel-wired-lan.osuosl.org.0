@@ -2,103 +2,97 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 53A0A96B704
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  4 Sep 2024 11:40:05 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id A831996B779
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  4 Sep 2024 11:54:51 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 83364403B4;
-	Wed,  4 Sep 2024 09:40:03 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 651034039F;
+	Wed,  4 Sep 2024 09:54:50 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id ddySAapgFazP; Wed,  4 Sep 2024 09:40:02 +0000 (UTC)
+ id bPcrjJdGaY9g; Wed,  4 Sep 2024 09:54:49 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org EED814027A
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8065B40284
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1725442802;
-	bh=7W9oltKFXttPL8GJSRJ98yRABp613Ij+tZra8U77GSo=;
+	s=default; t=1725443689;
+	bh=WC8bbiXg+vH5J8X+E9ZX6z3IVLVFjx2K5KdOt4oVdyA=;
 	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
 	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=6BJ1v20U7YROzXyX8PbHjdkDxaMsVy4SldLQfQsMXWD6U6NLr2rytaFLaK/jUMo5l
-	 iXNLJ6EmuUrazQAV/aJ+UCl4Coa71ZNgHVYr65rBXZk8wqySfr/zPvpJT1RJ4DMJR+
-	 hJ+Az48cy7LmTDJlFziVC89z78PVjPmEtLf7Rq5kNGxFERC7rD+W1TiWUlOkA2vfRS
-	 I3lJ+fAhMAnA+QMR1f4G/az/8wghGTb/WPr0e10vD9FlWz3GojY6yylbHKcdTSAsKW
-	 ioK4OrrzCbPeOM93NYBN0gLkZpDgZkhDGHzKcdP+C9ePkkF7fsyqNC3GrGTPfy1nbM
-	 +t8ln4l6OUI9Q==
+	b=tPrCxJoJiV41ReCWBKaHnE/R4L/OsGbO5FWYwfvlE+F4prsFF3E6Dvsl7UWCBDCqj
+	 xBM9q329uMJ7gtp934qm5mByOGSTswvsBWlWdllHPUuwoNipvUGqXt/6meVIwHtMDh
+	 sf2qaW/2X10BgG3w+dayhwB2Sz+GcyHlyCtelRBLz0h7AGzlQ+XWdgm15LEoRtBLgQ
+	 E1Xr90Pi+RsOS/sJPKDOoDDzREA3T56gnumEJSaI2UXaAiVDEb8gLuVZ8U1HNf2Gtf
+	 WVbcczruH/LDo7J+QWOeC5cefXcPua973qKuiwJJjutli9cH9kSF74VEhzHSdek0aQ
+	 x8FSg3ulybsTw==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id EED814027A;
-	Wed,  4 Sep 2024 09:40:01 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 8065B40284;
+	Wed,  4 Sep 2024 09:54:49 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 496E41BF577
- for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Sep 2024 09:40:00 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 3AEF71BF577
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Sep 2024 09:54:47 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 34B0140A93
- for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Sep 2024 09:40:00 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 27E8040340
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Sep 2024 09:54:47 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id lj18Bnb4zWQE for <intel-wired-lan@lists.osuosl.org>;
- Wed,  4 Sep 2024 09:39:59 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.129.124;
- helo=us-smtp-delivery-124.mimecast.com; envelope-from=mschmidt@redhat.com;
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id sKirvQdRp8jL for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  4 Sep 2024 09:54:46 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.11;
+ helo=mgamail.intel.com; envelope-from=larysa.zaremba@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org C1C56404C1
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C1C56404C1
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.129.124])
- by smtp2.osuosl.org (Postfix) with ESMTPS id C1C56404C1
- for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Sep 2024 09:39:58 +0000 (UTC)
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-517-oxcLcZgzPCyf0KdeXNAYhA-1; Wed,
- 04 Sep 2024 05:39:54 -0400
-X-MC-Unique: oxcLcZgzPCyf0KdeXNAYhA-1
-Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 71D2A195608B; Wed,  4 Sep 2024 09:39:51 +0000 (UTC)
-Received: from localhost.localdomain (unknown [10.45.224.188])
- by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 6D00A19560AA; Wed,  4 Sep 2024 09:39:44 +0000 (UTC)
-From: Michal Schmidt <mschmidt@redhat.com>
-To: Wojciech Drewek <wojciech.drewek@intel.com>,
- Marcin Szycik <marcin.szycik@intel.com>,
- Timothy Miskell <timothy.miskell@intel.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Dave Ertman <david.m.ertman@intel.com>,
- Daniel Machon <daniel.machon@microchip.com>
-Date: Wed,  4 Sep 2024 11:39:22 +0200
-Message-ID: <20240904093924.24368-1-mschmidt@redhat.com>
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org E57A3402FF
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E57A3402FF
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.11])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id E57A3402FF
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Sep 2024 09:54:45 +0000 (UTC)
+X-CSE-ConnectionGUID: cVJyxuq4TI6UPnL0J4jZlQ==
+X-CSE-MsgGUID: 1BdqzyB8SP2ZO/inWEgWoA==
+X-IronPort-AV: E=McAfee;i="6700,10204,11184"; a="34664473"
+X-IronPort-AV: E=Sophos;i="6.10,201,1719903600"; d="scan'208";a="34664473"
+Received: from fmviesa005.fm.intel.com ([10.60.135.145])
+ by orvoesa103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 04 Sep 2024 02:54:44 -0700
+X-CSE-ConnectionGUID: YwwdvXlxSQu8VWPsqwJ44Q==
+X-CSE-MsgGUID: 2cjHcJE3RoOhPTSsDAyR3w==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.10,201,1719903600"; d="scan'208";a="69618113"
+Received: from irvmail002.ir.intel.com ([10.43.11.120])
+ by fmviesa005.fm.intel.com with ESMTP; 04 Sep 2024 02:54:41 -0700
+Received: from mglak.igk.intel.com (mglak.igk.intel.com [10.237.112.146])
+ by irvmail002.ir.intel.com (Postfix) with ESMTP id D6B0427BD9;
+ Wed,  4 Sep 2024 10:54:39 +0100 (IST)
+From: Larysa Zaremba <larysa.zaremba@intel.com>
+To: intel-wired-lan@lists.osuosl.org, Tony Nguyen <anthony.l.nguyen@intel.com>
+Date: Wed,  4 Sep 2024 11:54:17 +0200
+Message-ID: <20240904095418.6426-1-larysa.zaremba@intel.com>
+X-Mailer: git-send-email 2.45.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=redhat.com; 
- s=mimecast20190719; t=1725442797;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=7W9oltKFXttPL8GJSRJ98yRABp613Ij+tZra8U77GSo=;
- b=Ibhhi6aX35fsDVIWJlRDwRY/l/SZDGVTj1o1qk9lz3TJtnv2y9+tE2BtahL1TvpNSnZ9SN
- 9kNtOhvWc1i3/Py2lRnMDwLgL14zUdilTXbKWI1ubcPSm4GwH3JLokgaRlnJPlwUD1DzSd
- 1FifXc3bYISGnkR0AGba1voB1jIQlOE=
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1725443686; x=1756979686;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=A8jBBEU4JmlCS2iIUWpGULpUfjnILI4ZQFsy022HtJM=;
+ b=jcksETBak4va8F8p4UjF2w/KKI8EDk1iigi2mbqA/Vn52peldVR8TUP5
+ aJCs7F/N2TmVld2jcZio5OjmpQfD67cOLrldtftEule9pEzDIrcpOve/s
+ ACYHG1kglFSWwnsbrktnHrj9HQdPtYh66jGi1N7azKc9RhKzsB4PYEEnq
+ DI0Y5PSmnmwNw0m9xR8NFw/ozl5VNoQOfl6mnDNBHVSbsCE4KScQ6Y72G
+ 97n/w8R8yKQPEKuL4wDKGWaN4yvODhXCObKnOeR57KbIZoKzCQGwI233h
+ GLRivO/pkB+8F4KpxbHW+7T99kbOjYXkw0yJwX/6gyDbFa5Id3FwV4wJv
+ A==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=redhat.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (1024-bit key,
- unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256
- header.s=mimecast20190719 header.b=Ibhhi6aX
-Subject: [Intel-wired-lan] [PATCH iwl-net v2] ice: fix VSI lists confusion
- when adding VLANs
+ header.from=intel.com
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=jcksETBa
+Subject: [Intel-wired-lan] [PATCH iwl-net] idpf: deinit virtchnl transaction
+ manager after vport and vectors
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -111,92 +105,55 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>,
- intel-wired-lan@lists.osuosl.org, linux-kernel@vger.kernel.org,
- netdev@vger.kernel.org
+Cc: "Tantilov, Emil S" <emil.s.tantilov@intel.com>,
+ Larysa Zaremba <larysa.zaremba@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Joshua Hay <joshua.a.hay@intel.com>, linux-kernel@vger.kernel.org,
+ Igor Bagnucki <igor.bagnucki@intel.com>,
+ Alexander Lobakin <aleksander.lobakin@intel.com>,
+ Eric Dumazet <edumazet@google.com>, Michal Kubiak <michal.kubiak@intel.com>,
+ Alan Brady <alan.brady@intel.com>, netdev@vger.kernel.org,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ "David S. Miller" <davem@davemloft.net>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The description of function ice_find_vsi_list_entry says:
-  Search VSI list map with VSI count 1
+When the device is removed, idpf is supposed to make certain virtchnl
+requests e.g. VIRTCHNL2_OP_DEALLOC_VECTORS and VIRTCHNL2_OP_DESTROY_VPORT.
 
-However, since the blamed commit (see Fixes below), the function no
-longer checks vsi_count. This causes a problem in ice_add_vlan_internal,
-where the decision to share VSI lists between filter rules relies on the
-vsi_count of the found existing VSI list being 1.
+However, this does not happen due to the referenced commit introducing
+virtchnl transaction manager and placing its deinitialization before those
+messages are sent. Then the sending is impossible due to no transactions
+being available.
 
-The reproducing steps:
-1. Have a PF and two VFs.
-   There will be a filter rule for VLAN 0, referring to a VSI list
-   containing VSIs: 0 (PF), 2 (VF#0), 3 (VF#1).
-2. Add VLAN 1234 to VF#0.
-   ice will make the wrong decision to share the VSI list with the new
-   rule. The wrong behavior may not be immediately apparent, but it can
-   be observed with debug prints.
-3. Add VLAN 1234 to VF#1.
-   ice will unshare the VSI list for the VLAN 1234 rule. Due to the
-   earlier bad decision, the newly created VSI list will contain
-   VSIs 0 (PF) and 3 (VF#1), instead of expected 2 (VF#0) and 3 (VF#1).
-4. Try pinging a network peer over the VLAN interface on VF#0.
-   This fails.
+Lack of cleanup can lead to the FW becoming unresponsive from e.g.
+unloading-loading the driver and creating-destroying VFs afterwards.
 
-Reproducer script at:
-https://gitlab.com/mschmidt2/repro/-/blob/master/RHEL-46814/test-vlan-vsi-list-confusion.sh
-Commented debug trace:
-https://gitlab.com/mschmidt2/repro/-/blob/master/RHEL-46814/ice-vlan-vsi-lists-debug.txt
-Patch adding the debug prints:
-https://gitlab.com/mschmidt2/linux/-/commit/f8a8814623944a45091a77c6094c40bfe726bfdb
-(Unsafe, by the way. Lacks rule_lock when dumping in ice_remove_vlan.)
+Move transaction manager deinitialization to after other virtchnl-related
+cleanup is done.
 
-Michal Swiatkowski added to the explanation that the bug is caused by
-reusing a VSI list created for VLAN 0. All created VFs' VSIs are added
-to VLAN 0 filter. When a non-zero VLAN is created on a VF which is already
-in VLAN 0 (normal case), the VSI list from VLAN 0 is reused.
-It leads to a problem because all VFs (VSIs to be specific) that are
-subscribed to VLAN 0 will now receive a new VLAN tag traffic. This is
-one bug, another is the bug described above. Removing filters from
-one VF will remove VLAN filter from the previous VF. It happens a VF is
-reset. Example:
-- creation of 3 VFs
-- we have VSI list (used for VLAN 0) [0 (pf), 2 (vf1), 3 (vf2), 4 (vf3)]
-- we are adding VLAN 100 on VF1, we are reusing the previous list
-  because 2 is there
-- VLAN traffic works fine, but VLAN 100 tagged traffic can be received
-  on all VSIs from the list (for example broadcast or unicast)
-- trust is turning on on VF2, VF2 is resetting, all filters from VF2 are
-  removed; the VLAN 100 filter is also removed because 3 is on the list
-- VLAN traffic to VF1 isn't working anymore, there is a need to recreate
-  VLAN interface to readd VLAN filter
-
-One thing I'm not certain about is the implications for the LAG feature,
-which is another caller of ice_find_vsi_list_entry. I don't have a
-LAG-capable card at hand to test.
-
-Fixes: 23ccae5ce15f ("ice: changes to the interface with the HW and FW for SRIOV_VF+LAG")
-Reviewed-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-Signed-off-by: Michal Schmidt <mschmidt@redhat.com>
+Fixes: 34c21fa894a1 ("idpf: implement virtchnl transaction manager")
+Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+Signed-off-by: Larysa Zaremba <larysa.zaremba@intel.com>
 ---
-v2: Corrected the Fixes commit ID (the ID in v1 was of a centos-stream-9
-    backport accidentally).
-    Added the extended explanation from Michal Swiatkowski.
-    Fixed some typos.
----
- drivers/net/ethernet/intel/ice/ice_switch.c | 2 +-
+ drivers/net/ethernet/intel/idpf/idpf_virtchnl.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_switch.c b/drivers/net/ethernet/intel/ice/ice_switch.c
-index fe8847184cb1..4e6e7af962bd 100644
---- a/drivers/net/ethernet/intel/ice/ice_switch.c
-+++ b/drivers/net/ethernet/intel/ice/ice_switch.c
-@@ -3264,7 +3264,7 @@ ice_find_vsi_list_entry(struct ice_hw *hw, u8 recp_id, u16 vsi_handle,
+diff --git a/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c b/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c
+index a5f9b7a5effe..f18f490dafd8 100644
+--- a/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c
++++ b/drivers/net/ethernet/intel/idpf/idpf_virtchnl.c
+@@ -3040,9 +3040,9 @@ void idpf_vc_core_deinit(struct idpf_adapter *adapter)
+ 	if (!test_bit(IDPF_VC_CORE_INIT, adapter->flags))
+ 		return;
  
- 	list_head = &sw->recp_list[recp_id].filt_rules;
- 	list_for_each_entry(list_itr, list_head, list_entry) {
--		if (list_itr->vsi_list_info) {
-+		if (list_itr->vsi_count == 1 && list_itr->vsi_list_info) {
- 			map_info = list_itr->vsi_list_info;
- 			if (test_bit(vsi_handle, map_info->vsi_map)) {
- 				*vsi_list_id = map_info->vsi_list_id;
+-	idpf_vc_xn_shutdown(adapter->vcxn_mngr);
+ 	idpf_deinit_task(adapter);
+ 	idpf_intr_rel(adapter);
++	idpf_vc_xn_shutdown(adapter->vcxn_mngr);
+ 
+ 	cancel_delayed_work_sync(&adapter->serv_task);
+ 	cancel_delayed_work_sync(&adapter->mbx_task);
 -- 
-2.45.2
+2.45.0
 
