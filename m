@@ -1,84 +1,98 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 831D596BBC3
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  4 Sep 2024 14:13:55 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4A34196BC66
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  4 Sep 2024 14:33:24 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 08860401F6;
-	Wed,  4 Sep 2024 12:13:54 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 4D5CD605AA;
+	Wed,  4 Sep 2024 12:33:21 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 9R9ATG68rQZR; Wed,  4 Sep 2024 12:13:53 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id VTt_yFnY2aip; Wed,  4 Sep 2024 12:33:20 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org BED8540265
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B47A06087A
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1725452032;
-	bh=uh3zwQosGacku7wCYITExnVZrD8nWKDofzBx6XEt7T8=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=hXyjO1jyycFalhJp4ms9mXZopmdFUfj3DSBNF9uzaAb7ne2BeknqcIG8fHramDQc8
-	 ffP3DGJjnormctggphzGiOfRrmafLLDKjLSto7YG5P03BM7hT8YGSBAynfm/qcqEnX
-	 2GiapEIDGvslKO+f54WfIWlLKeQJ6MhGqECSHds5DCovr4dcV28bJAE5rvMwEZtRQu
-	 LjpgTl75TKoNz0bMPbvM6xBJjk82nQnvoiw2Cl0q7nNeX26xj08O3xvlNrtniRtnLs
-	 NQ/iysruCDWXRWmMr+OG8EsBvy/gJ1K711mqcQgOWoOFmgNd0/WXyyyJjz5OtzWXAc
-	 ygHEbz60r+OYQ==
+	s=default; t=1725453199;
+	bh=XlOkpY1Dm1P+2toip6j+Eh7xw68GPnVXN2bGe/skPS4=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=i1EOPhEDT3Y13aNN6mKI8ePgMpTsNki9ahuzWoNHKXNFBCoWdBbHXbCyeGS2NQa1P
+	 Qh5ZoEtvTci2tPB8SBnHC1PeCYOdcn4z86YrYINJqqIJjMDYQJf4PyOEV2kxdRiAPm
+	 aHD5eNQk+u7oks2n1da5NenQq9icsi1uuhCRpooS7f+7wymOo2TH3CQWdV0mP36FYY
+	 NdseEgcgMKq0CdeOWXYrymQa4Wl90wg1gMIm+tyHi5WeLqUODBuHTgT40nSyMau9M8
+	 r5hlN0Lbgk7AQcF3us0MKuF8H6W2TKstDIruVMESoLEMWMygBDizdr9rDvG9B6YToR
+	 mMZXf2ruDh/PQ==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id BED8540265;
-	Wed,  4 Sep 2024 12:13:52 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id B47A06087A;
+	Wed,  4 Sep 2024 12:33:19 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 3002C1BF47A
- for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Sep 2024 12:13:51 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id C9B5B1BF267
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Sep 2024 12:33:17 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 19900811D4
- for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Sep 2024 12:13:51 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id B64FA605AA
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Sep 2024 12:33:17 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 675iWeIA6gUR for <intel-wired-lan@lists.osuosl.org>;
- Wed,  4 Sep 2024 12:13:49 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=156.67.10.101;
- helo=vps0.lunn.ch; envelope-from=andrew@lunn.ch; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org D12CA811D5
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D12CA811D5
-Received: from vps0.lunn.ch (vps0.lunn.ch [156.67.10.101])
- by smtp1.osuosl.org (Postfix) with ESMTPS id D12CA811D5
- for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Sep 2024 12:13:48 +0000 (UTC)
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
- (envelope-from <andrew@lunn.ch>)
- id 1slotG-006YDY-SV; Wed, 04 Sep 2024 14:13:38 +0200
-Date: Wed, 4 Sep 2024 14:13:38 +0200
-From: Andrew Lunn <andrew@lunn.ch>
-To: Takamitsu Iwai <takamitz@amazon.co.jp>
-Message-ID: <b6b56dd0-b6ff-47d1-a678-d2fde5184723@lunn.ch>
-References: <3ef52bb5-3289-416a-81b6-4064c49960c8@lunn.ch>
- <20240904055646.58588-1-takamitz@amazon.co.jp>
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 5k3xrzc5myVf for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  4 Sep 2024 12:33:16 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.13;
+ helo=mgamail.intel.com; envelope-from=przemyslaw.kitszel@intel.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 8F9666059C
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 8F9666059C
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.13])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 8F9666059C
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Sep 2024 12:33:16 +0000 (UTC)
+X-CSE-ConnectionGUID: xu0jX3GBTn6ZOGnJoDdbTw==
+X-CSE-MsgGUID: MamRjhT0TreRFVoyB1+zoQ==
+X-IronPort-AV: E=McAfee;i="6700,10204,11184"; a="27029724"
+X-IronPort-AV: E=Sophos;i="6.10,201,1719903600"; d="scan'208";a="27029724"
+Received: from orviesa001.jf.intel.com ([10.64.159.141])
+ by fmvoesa107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 04 Sep 2024 05:33:16 -0700
+X-CSE-ConnectionGUID: YZFOA4XuRK6wcWLR7GVbrQ==
+X-CSE-MsgGUID: 0eEjeUZfTVSh1T0Gvk+W7A==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.10,201,1719903600"; d="scan'208";a="102665900"
+Received: from irvmail002.ir.intel.com ([10.43.11.120])
+ by orviesa001.jf.intel.com with ESMTP; 04 Sep 2024 05:33:14 -0700
+Received: from pkitszel-desk.intel.com (unknown [10.245.246.22])
+ by irvmail002.ir.intel.com (Postfix) with ESMTP id 04A9528167;
+ Wed,  4 Sep 2024 13:33:12 +0100 (IST)
+From: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+To: intel-wired-lan@lists.osuosl.org, Tony Nguyen <anthony.l.nguyen@intel.com>
+Date: Wed,  4 Sep 2024 14:32:57 +0200
+Message-ID: <20240904123306.14629-2-przemyslaw.kitszel@intel.com>
+X-Mailer: git-send-email 2.46.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20240904055646.58588-1-takamitz@amazon.co.jp>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt;
- c=relaxed/relaxed; d=lunn.ch; 
- s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
- References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
- Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
- Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
- bh=uh3zwQosGacku7wCYITExnVZrD8nWKDofzBx6XEt7T8=; b=mlM2NzootN0hH8Q8aa21fcpw5o
- 2tCCGYTQ4pbiWGRmnkd7EoU81eNdhxGlbCh+XSoXBUm6oWfq95vQoll/fTCSlhwSm0uCk5+/Bj9Pc
- RZC/Y49CGWRamPWAiYaXiKbss5yg40DzPjMgqMaYfruv0WHbKM5D6cIjMdS4WbaObeN8=;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+Content-Transfer-Encoding: 8bit
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1725453197; x=1756989197;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=3zZVN5QEEQ0tht7sMIhSJX3o61lUp/lS8M8cFNU4AzE=;
+ b=R6EkYrpfzIK1qXXQ6rvqlujMqLy4TAwFAONoj9Yg7/R9VZe3QnRyzG18
+ pzhLRQkJUO5LtMXBvsokhLXAmMP0z1g18BRFdOUx3Q6hZLaT5nxaQq519
+ 933u0oa9iaY63w48YDq6KqbhOkk/OzeJWFKbw2WroVi4oj3ZL7qgiY15B
+ aCmStDPVoVz9/TpxOqYMxT27P3fopOV8ZEoAxLcgYdS8SUl2nsQIy5xF5
+ 5bT3ok9n78OND7jgh8F+3nyBHn4SEyfDIiMCEDaUYg7fYcEBSwI/NLQs3
+ eecoD1Obka9OSTxprI4LeOMJwmv1IJ8EOTAUEka71GjKOf5WE+f7c6LtR
+ A==;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=lunn.ch
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (1024-bit key,
- unprotected) header.d=lunn.ch header.i=@lunn.ch header.a=rsa-sha256
- header.s=20171124 header.b=mlM2Nzoo
-Subject: Re: [Intel-wired-lan] [PATCH v1 net-next] e1000e: Remove duplicated
- writel() in e1000_configure_tx/rx()
+ header.from=intel.com
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=R6EkYrpf
+Subject: [Intel-wired-lan] [PATCH iwl-net] ice: fix memleak in
+ ice_init_tx_topology()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,38 +105,54 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, przemyslaw.kitszel@intel.com, edumazet@google.com,
- intel-wired-lan@lists.osuosl.org, kuba@kernel.org, anthony.l.nguyen@intel.com,
- pabeni@redhat.com, davem@davemloft.net
+Cc: netdev@vger.kernel.org, Larysa Zaremba <larysa.zaremba@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed, Sep 04, 2024 at 02:56:46PM +0900, Takamitsu Iwai wrote:
-> > So you have confirmed with the datsheet that the write is not needed?
-> >
-> > As i said, this is a hardware register, not memory. Writes are not
-> > always idempotent. It might be necessary to write it twice.
-> 
-> I have checked following datasheets and I can not find that we need to write
-> RDH, RDT, TDH, TDT registers twice at initialization.
-> 
-> https://www.intel.com/content/dam/www/public/us/en/documents/datasheets/82577-gbe-phy-datasheet.pdf
-> https://www.intel.com/content/www/us/en/content-details/613460/intel-82583v-gbe-controller-datasheet.html
-> 
-> Write happened once before commit 0845d45e900c, so just out of curiosity,
-> have you seen such a device?
+Fix leak of the FW blob, by not copying it.
+ice_cfg_tx_topo() is not changing the passed buffer, but constification
+of it is not a -net material, constification patch is mentioned by Link.
 
-This is just risk minimisation. I don't want e1000e to be broken
-because you removed a write. I'm trying to ensure you fully understand
-what you are changing, and have verified it is a safe change. I don't
-have this hardware, so i cannot test it.
+This was found by kmemleak, with the following trace for each PF:
+    [<ffffffff8761044d>] kmemdup_noprof+0x1d/0x50
+    [<ffffffffc0a0a480>] ice_init_ddp_config+0x100/0x220 [ice]
+    [<ffffffffc0a0da7f>] ice_init_dev+0x6f/0x200 [ice]
+    [<ffffffffc0a0dc49>] ice_init+0x29/0x560 [ice]
+    [<ffffffffc0a10c1d>] ice_probe+0x21d/0x310 [ice]
 
-> My colleague, Kohei, tested the patch with a real hardware and will provide his
-> Tested-by shortly.
+Link: https://lore.kernel.org/intel-wired-lan/20240904093135.8795-2-przemyslaw.kitszel@intel.com
+Fixes: cc5776fe1832 ("ice: Enable switching default Tx scheduler topology")
+Reviewed-by: Larysa Zaremba <larysa.zaremba@intel.com>
+Signed-off-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+---
+ drivers/net/ethernet/intel/ice/ice_main.c | 8 +-------
+ 1 file changed, 1 insertion(+), 7 deletions(-)
 
-Please resend the patch, adding his Tested-by: and update the commit
-message to summarise this discussion. Explain how you determined this
-is safe.
+diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
+index 6f97ed471fe9..71f592dda156 100644
+--- a/drivers/net/ethernet/intel/ice/ice_main.c
++++ b/drivers/net/ethernet/intel/ice/ice_main.c
+@@ -4535,16 +4535,10 @@ ice_init_tx_topology(struct ice_hw *hw, const struct firmware *firmware)
+ 	u8 num_tx_sched_layers = hw->num_tx_sched_layers;
+ 	struct ice_pf *pf = hw->back;
+ 	struct device *dev;
+-	u8 *buf_copy;
+ 	int err;
+ 
+ 	dev = ice_pf_to_dev(pf);
+-	/* ice_cfg_tx_topo buf argument is not a constant,
+-	 * so we have to make a copy
+-	 */
+-	buf_copy = kmemdup(firmware->data, firmware->size, GFP_KERNEL);
+-
+-	err = ice_cfg_tx_topo(hw, buf_copy, firmware->size);
++	err = ice_cfg_tx_topo(hw, (void *)firmware->data, firmware->size);
+ 	if (!err) {
+ 		if (hw->num_tx_sched_layers > num_tx_sched_layers)
+ 			dev_info(dev, "Tx scheduling layers switching feature disabled\n");
 
-Thanks
-	Andrew
+base-commit: 4186c8d9e6af57bab0687b299df10ebd47534a0a
+-- 
+2.46.0
+
