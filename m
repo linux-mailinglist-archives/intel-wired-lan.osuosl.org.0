@@ -1,95 +1,84 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 938EF96BB69
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  4 Sep 2024 14:01:00 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 831D596BBC3
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  4 Sep 2024 14:13:55 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 482B7404CB;
-	Wed,  4 Sep 2024 12:00:59 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 08860401F6;
+	Wed,  4 Sep 2024 12:13:54 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 42Xr3aK_ubL0; Wed,  4 Sep 2024 12:00:58 +0000 (UTC)
+ id 9R9ATG68rQZR; Wed,  4 Sep 2024 12:13:53 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3904E404BF
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org BED8540265
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1725451258;
-	bh=btdF+hOaM4NJKxMT+Se1ljP27WASPlSy0rXg+U4asao=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=NZBjYafvyKIijyuK6yP2WbEbVW3DLDQAYLAVZJyk5ays3UE/tXGXF1JlygTfXwhng
-	 fzWBziqHqQzQF/o9uxcMFkCSvL+ViODXP8MiOVpvl76yRWyznocfB6qFcIXRx1KRqE
-	 PM7x407FzDFha3OILI++of9LmQ60QjguzJxbflTrn67arH6KoovZrNyDBd+13bZJ60
-	 a+uHjWP4zV2mrTgh+jGEsnrLRnZP6QYhI/VqxWTmxr7DCl4VW9z4NuzRF+L8rOknwz
-	 eFDGi9GxTPnDkdAnZSFALywvivHDFzdjM/J9jagSL5xuh1yEsVhjLqyKy+KlCSLT83
-	 g/K24kXb42NgQ==
+	s=default; t=1725452032;
+	bh=uh3zwQosGacku7wCYITExnVZrD8nWKDofzBx6XEt7T8=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=hXyjO1jyycFalhJp4ms9mXZopmdFUfj3DSBNF9uzaAb7ne2BeknqcIG8fHramDQc8
+	 ffP3DGJjnormctggphzGiOfRrmafLLDKjLSto7YG5P03BM7hT8YGSBAynfm/qcqEnX
+	 2GiapEIDGvslKO+f54WfIWlLKeQJ6MhGqECSHds5DCovr4dcV28bJAE5rvMwEZtRQu
+	 LjpgTl75TKoNz0bMPbvM6xBJjk82nQnvoiw2Cl0q7nNeX26xj08O3xvlNrtniRtnLs
+	 NQ/iysruCDWXRWmMr+OG8EsBvy/gJ1K711mqcQgOWoOFmgNd0/WXyyyJjz5OtzWXAc
+	 ygHEbz60r+OYQ==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 3904E404BF;
-	Wed,  4 Sep 2024 12:00:58 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id BED8540265;
+	Wed,  4 Sep 2024 12:13:52 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 319591BF47E
- for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Sep 2024 12:00:56 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 3002C1BF47A
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Sep 2024 12:13:51 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 1C793811CD
- for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Sep 2024 12:00:56 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 19900811D4
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Sep 2024 12:13:51 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id uyUE_OaByNuS for <intel-wired-lan@lists.osuosl.org>;
- Wed,  4 Sep 2024 12:00:55 +0000 (UTC)
-Received-SPF: None (mailfrom) identity=mailfrom; client-ip=192.198.163.8;
- helo=mgamail.intel.com; envelope-from=michal.swiatkowski@linux.intel.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 29CD7811CF
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 29CD7811CF
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.8])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 29CD7811CF
- for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Sep 2024 12:00:54 +0000 (UTC)
-X-CSE-ConnectionGUID: GGBXuyo3QfWgCyH6oTI15A==
-X-CSE-MsgGUID: EkZuOCWVQ1uqHerujG2IgQ==
-X-IronPort-AV: E=McAfee;i="6700,10204,11184"; a="41604761"
-X-IronPort-AV: E=Sophos;i="6.10,201,1719903600"; d="scan'208";a="41604761"
-Received: from orviesa006.jf.intel.com ([10.64.159.146])
- by fmvoesa102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 04 Sep 2024 05:00:54 -0700
-X-CSE-ConnectionGUID: 2k/PEZ7uRjOkQP9AP5dn6A==
-X-CSE-MsgGUID: qm8bJafYR2uIVRHMORfvMQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.10,201,1719903600"; d="scan'208";a="65587654"
-Received: from gk3153-dr2-r750-36946.igk.intel.com ([10.102.20.192])
- by orviesa006.jf.intel.com with ESMTP; 04 Sep 2024 05:00:53 -0700
-From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Date: Wed,  4 Sep 2024 14:00:52 +0200
-Message-ID: <20240904120052.24561-1-michal.swiatkowski@linux.intel.com>
-X-Mailer: git-send-email 2.42.0
+ id 675iWeIA6gUR for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  4 Sep 2024 12:13:49 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=156.67.10.101;
+ helo=vps0.lunn.ch; envelope-from=andrew@lunn.ch; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org D12CA811D5
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D12CA811D5
+Received: from vps0.lunn.ch (vps0.lunn.ch [156.67.10.101])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id D12CA811D5
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  4 Sep 2024 12:13:48 +0000 (UTC)
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+ (envelope-from <andrew@lunn.ch>)
+ id 1slotG-006YDY-SV; Wed, 04 Sep 2024 14:13:38 +0200
+Date: Wed, 4 Sep 2024 14:13:38 +0200
+From: Andrew Lunn <andrew@lunn.ch>
+To: Takamitsu Iwai <takamitz@amazon.co.jp>
+Message-ID: <b6b56dd0-b6ff-47d1-a678-d2fde5184723@lunn.ch>
+References: <3ef52bb5-3289-416a-81b6-4064c49960c8@lunn.ch>
+ <20240904055646.58588-1-takamitz@amazon.co.jp>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1725451255; x=1756987255;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=VcjJN/0JVmbUk8ZLjYz5iPFJ5gdF/EBYzp9ZTry6rwA=;
- b=DQ+pdyPTTv/EAidZZhkMS2hIWrHK2v1mbSyIxPyTP8kSOiuIqiZljvPi
- rwewD5L7+7/xnlTdG2tRntgIvWnDOETQ3eSHeWxpDmcnBsRxxyBV6SDJo
- 440rNCKHEAnpqrAm5VUh/NXWd/yRp06Y/VEhKmqpg/sSnncbnihBQLfVh
- QjqfE05VEh+Sj9fpOtJZWH9x9isKqiemiyfnOSj3vv+j0jCEgtVgaklM0
- +wnyp5WeFzDTxz1mnLA3wh0zLVDDEO2wtV379F6JikAI/GIExlU7XV2f+
- fntDfSf9bYnIOO+XU0EN9efjoAgHbTn/vt6dFzrnwInqeaQTklCrNoDOm
- Q==;
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240904055646.58588-1-takamitz@amazon.co.jp>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt;
+ c=relaxed/relaxed; d=lunn.ch; 
+ s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+ References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+ Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+ Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+ bh=uh3zwQosGacku7wCYITExnVZrD8nWKDofzBx6XEt7T8=; b=mlM2NzootN0hH8Q8aa21fcpw5o
+ 2tCCGYTQ4pbiWGRmnkd7EoU81eNdhxGlbCh+XSoXBUm6oWfq95vQoll/fTCSlhwSm0uCk5+/Bj9Pc
+ RZC/Y49CGWRamPWAiYaXiKbss5yg40DzPjMgqMaYfruv0WHbKM5D6cIjMdS4WbaObeN8=;
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=linux.intel.com
+ dmarc=pass (p=none dis=none)
+ header.from=lunn.ch
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=DQ+pdyPT
-Subject: [Intel-wired-lan] [iwl-net v1] iavf: allow changing VLAN state
- without calling PF
+ dkim=pass (1024-bit key,
+ unprotected) header.d=lunn.ch header.i=@lunn.ch header.a=rsa-sha256
+ header.s=20171124 header.b=mlM2Nzoo
+Subject: Re: [Intel-wired-lan] [PATCH v1 net-next] e1000e: Remove duplicated
+ writel() in e1000_configure_tx/rx()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -102,104 +91,38 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, wojciech.drewek@intel.com
+Cc: netdev@vger.kernel.org, przemyslaw.kitszel@intel.com, edumazet@google.com,
+ intel-wired-lan@lists.osuosl.org, kuba@kernel.org, anthony.l.nguyen@intel.com,
+ pabeni@redhat.com, davem@davemloft.net
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-First case:
-> ip l a l $VF name vlanx type vlan id 100
-> ip l d vlanx
-> ip l a l $VF name vlanx type vlan id 100
+On Wed, Sep 04, 2024 at 02:56:46PM +0900, Takamitsu Iwai wrote:
+> > So you have confirmed with the datsheet that the write is not needed?
+> >
+> > As i said, this is a hardware register, not memory. Writes are not
+> > always idempotent. It might be necessary to write it twice.
+> 
+> I have checked following datasheets and I can not find that we need to write
+> RDH, RDT, TDH, TDT registers twice at initialization.
+> 
+> https://www.intel.com/content/dam/www/public/us/en/documents/datasheets/82577-gbe-phy-datasheet.pdf
+> https://www.intel.com/content/www/us/en/content-details/613460/intel-82583v-gbe-controller-datasheet.html
+> 
+> Write happened once before commit 0845d45e900c, so just out of curiosity,
+> have you seen such a device?
 
-As workqueue can be execute after sometime, there is a window to have
-call trace like that:
-- iavf_del_vlan
-- iavf_add_vlan
-- iavf_del_vlans (wq)
+This is just risk minimisation. I don't want e1000e to be broken
+because you removed a write. I'm trying to ensure you fully understand
+what you are changing, and have verified it is a safe change. I don't
+have this hardware, so i cannot test it.
 
-It means that our VLAN 100 will change the state from IAVF_VLAN_ACTIVE
-to IAVF_VLAN_REMOVE (iavf_del_vlan). After that in iavf_add_vlan state
-won't be changed because VLAN 100 is on the filter list. The final
-result is that the VLAN 100 filter isn't added in hardware (no
-iavf_add_vlans call).
+> My colleague, Kohei, tested the patch with a real hardware and will provide his
+> Tested-by shortly.
 
-To fix that change the state if the filter wasn't removed yet directly
-to active. It is save as IAVF_VLAN_REMOVE means that virtchnl message
-wasn't sent yet.
+Please resend the patch, adding his Tested-by: and update the commit
+message to summarise this discussion. Explain how you determined this
+is safe.
 
-Second case:
-> ip l a l $VF name vlanx type vlan id 100
-Any type of VF reset ex. change trust
-> ip l s $PF vf $VF_NUM trust on
-> ip l d vlanx
-> ip l a l $VF name vlanx type vlan id 100
-
-In case of reset iavf driver is responsible for readding all filters
-that are being used. To do that all VLAN filters state are changed to
-IAVF_VLAN_ADD. Here is even longer window for changing VLAN state from
-kernel side, as workqueue isn't called immediately. We can have call
-trace like that:
-
-- changing to IAVF_VLAN_ADD (after reset)
-- iavf_del_vlan (called from kernel ops)
-- iavf_del_vlans (wq)
-
-Not exsisitng VLAN filters will be removed from hardware. It isn't a
-bug, ice driver will handle it fine. However, we can have call trace
-like that:
-
-- changing to IAVF_VLAN_ADD (after reset)
-- iavf_del_vlan (called from kernel ops)
-- iavf_add_vlan (called from kernel ops)
-- iavf_del_vlans (wq)
-
-With fix for previous case we end up with no VLAN filters in hardware.
-We have to remove VLAN filters if the state is IAVF_VLAN_ADD and delete
-VLAN was called. It is save as IAVF_VLAN_ADD means that virtchnl message
-wasn't sent yet.
-
-Fixes: 0c0da0e95105 ("iavf: refactor VLAN filter states")
-Signed-off-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
----
- drivers/net/ethernet/intel/iavf/iavf_main.c | 18 ++++++++++++++++--
- 1 file changed, 16 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
-index ff11bafb3b4f..ae5e37eac761 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_main.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
-@@ -773,6 +773,11 @@ iavf_vlan_filter *iavf_add_vlan(struct iavf_adapter *adapter,
- 		f->state = IAVF_VLAN_ADD;
- 		adapter->num_vlan_filters++;
- 		iavf_schedule_aq_request(adapter, IAVF_FLAG_AQ_ADD_VLAN_FILTER);
-+	} else if (f->state == IAVF_VLAN_REMOVE) {
-+		/* IAVF_VLAN_REMOVE means that VLAN wasn't yet removed.
-+		 * We can safely only change the state here.
-+		 */
-+		f->state = IAVF_VLAN_ACTIVE;
- 	}
- 
- clearout:
-@@ -793,8 +798,17 @@ static void iavf_del_vlan(struct iavf_adapter *adapter, struct iavf_vlan vlan)
- 
- 	f = iavf_find_vlan(adapter, vlan);
- 	if (f) {
--		f->state = IAVF_VLAN_REMOVE;
--		iavf_schedule_aq_request(adapter, IAVF_FLAG_AQ_DEL_VLAN_FILTER);
-+		/* IAVF_ADD_VLAN means that VLAN wasn't even added yet.
-+		 * Remove it from the list.
-+		 */
-+		if (f->state == IAVF_VLAN_ADD) {
-+			list_del(&f->list);
-+			kfree(f);
-+			adapter->num_vlan_filters--;
-+		} else {
-+			iavf_schedule_aq_request(adapter,
-+						 IAVF_FLAG_AQ_DEL_VLAN_FILTER);
-+		}
- 	}
- 
- 	spin_unlock_bh(&adapter->mac_vlan_list_lock);
--- 
-2.42.0
-
+Thanks
+	Andrew
