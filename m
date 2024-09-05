@@ -1,87 +1,87 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9800A96CBE3
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  5 Sep 2024 02:41:03 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id B7F7496CC02
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  5 Sep 2024 03:03:38 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id E54C540BA8;
-	Thu,  5 Sep 2024 00:41:01 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 1E06240B9B;
+	Thu,  5 Sep 2024 01:03:37 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 9Z4Ixh6caCAR; Thu,  5 Sep 2024 00:41:01 +0000 (UTC)
+ id wUR8RI92T1nn; Thu,  5 Sep 2024 01:03:36 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 20BAB40B9B
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 24E3140B9E
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1725496861;
-	bh=MaQbh4DYcFQhtyQ0MhnYx+5wZdKFTmqvdLwPvBFK0ec=;
+	s=default; t=1725498216;
+	bh=He/j/R9ukZGte7HLKjuUofXyAApQ5u7KYcQrnvHmyK8=;
 	h=Date:From:To:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=joksytq/fOx+g8XUKg5W+54gXWjyesN0c5lPco9VpX5AFcjKSMDMkHEh5Mv2tU15s
-	 aBUcJDXH+TJ86XsWusUU7dbDFKmy0KvZFT65k3DH/RterlRLqjIoTl20M3yslYykk9
-	 CwSyew2jyPuJCO6q7CK+S0nIACI6876UsvT3jkE+BfC4wjv9376LERJ0xnxF+em7vi
-	 RZPgZt889NafP3yjvcTEeanyP4EvF6cnakmdjUABKk4IgflWbaUOWafL1zpXbQs7An
-	 dDTVbKMohNCXAz9PQ2KpZOQs5b9PNYUwmlL6AMxYv1x+eg9jyklHcpc5ZjM1od9ffb
-	 koQ5CxTnMA0xg==
+	b=94niHo9Byg/Z8QmyWNC2fW0AP7tNgBtAPO6p/n3yAAPE+FhIOo24D2M9+7F32Rz2n
+	 JZdC+8i1TMqHzpKBkR/vIo18T/sxVN+LKNPUXLQcSIZE2Ma9RWn8ABquJQDyXLZ5/P
+	 wzQdcyAcQ1Wn0TFf6FBUU89pocDQYI3uhsmjV2EXaIA1+lKO7N9qb72Zgf2l7nJLMt
+	 YchV87x6v804nyJ0frfrLWLNz6JEuB8qAGaCBoL4g3if/HauD3iAtBgL5MjUuTzPgw
+	 SM+7+YzOmcYNjAYFxCS1UW0B9mFVx/w4g85rJY5Erzs83/jWwc9anyhtrCfuKQo6yl
+	 swh4gcipYL4BQ==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 20BAB40B9B;
-	Thu,  5 Sep 2024 00:41:01 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 24E3140B9E;
+	Thu,  5 Sep 2024 01:03:36 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 8E8801BF97A
- for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Sep 2024 00:40:58 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 444551BF263
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Sep 2024 01:03:34 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 8872181249
- for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Sep 2024 00:40:58 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 31380605FF
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Sep 2024 01:03:34 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id gN9Q96Nd9Jth for <intel-wired-lan@lists.osuosl.org>;
- Thu,  5 Sep 2024 00:40:58 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=139.178.84.217;
- helo=dfw.source.kernel.org; envelope-from=kuba@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org DDE9380D9C
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org DDE9380D9C
-Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
- by smtp1.osuosl.org (Postfix) with ESMTPS id DDE9380D9C
- for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Sep 2024 00:40:57 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id HWH6uFifJiXA for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  5 Sep 2024 01:03:33 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=147.75.193.91;
+ helo=nyc.source.kernel.org; envelope-from=kuba@kernel.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 6D533600B8
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6D533600B8
+Received: from nyc.source.kernel.org (nyc.source.kernel.org [147.75.193.91])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 6D533600B8
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  5 Sep 2024 01:03:33 +0000 (UTC)
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by dfw.source.kernel.org (Postfix) with ESMTP id 1A4415C58A7;
- Thu,  5 Sep 2024 00:40:53 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BE0D8C4CEC2;
- Thu,  5 Sep 2024 00:40:55 +0000 (UTC)
-Date: Wed, 4 Sep 2024 17:40:55 -0700
+ by nyc.source.kernel.org (Postfix) with ESMTP id 0F2B9A41FD8;
+ Thu,  5 Sep 2024 01:03:25 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5C2D2C4CEC9;
+ Thu,  5 Sep 2024 01:03:31 +0000 (UTC)
+Date: Wed, 4 Sep 2024 18:03:30 -0700
 From: Jakub Kicinski <kuba@kernel.org>
 To: Paolo Abeni <pabeni@redhat.com>
-Message-ID: <20240904174055.6e2a95d7@kernel.org>
-In-Reply-To: <b67adf159b412f7618df7b40fcdb1d8f94b3766f.1725457317.git.pabeni@redhat.com>
+Message-ID: <20240904180330.522b07c5@kernel.org>
+In-Reply-To: <a0585e78f2da45b79e2220c98e4e478a5640798b.1725457317.git.pabeni@redhat.com>
 References: <cover.1725457317.git.pabeni@redhat.com>
- <b67adf159b412f7618df7b40fcdb1d8f94b3766f.1725457317.git.pabeni@redhat.com>
+ <a0585e78f2da45b79e2220c98e4e478a5640798b.1725457317.git.pabeni@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1725496856;
- bh=LMvpfzvbJHjRNldRE72Zzb1I187lsNQdVHfTCGCfaT0=;
+ d=kernel.org; s=k20201202; t=1725498211;
+ bh=mBo1M+6e6dT1/Ok93GvGsN3bfzsU8Icz47GwhvHuvU8=;
  h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=gfa/idANISWni59Nc1GXCYL7wTpIPyeUmgeLFt3gc51kYLkJ8XKwCvlg7ihBPuFdl
- caQRQwKpG5hhbZ0Lu+E5uKmR3VzwCeLYSE/ugerhrRDriqqrukCLa7V0KgoAcAbuC/
- 7L8/ofpb3ZiEJmMX+A1Cke2pEQXyE2DK1Vmb55uWEmiSV/HMcBPDsNiAdnsanFYRLc
- wLzoqW3Nk8AXTclkq00JmhWZo5Cd1EaJUMcRnYfCHo8OUf+OObgucRmBNinwywIIN6
- y/kea+NUKgKXQRU+x+BPopQ+wqvZmM7AzODC4WDUiHgKjKx8bDoNKRoHtJU52Z+VG2
- NfUJ9VHEqivjg==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ b=HyjXFFLcxwLxMxQSpWyDJZuCU3rWXCn6VSOZhWX8fuGmKzor/qw7slbuia/oROApn
+ iOEe2JZ1VM7LJEyKTSyhEVe27jb0nPW/Yyw3vgfmQ8v9qld8Q2W13m2eyEqDdXI8ci
+ 32jM68GNUoM74G2DpA0Tnut20KpocyxedHX8alyNwdbuoNIK8UXdvHeIAKHt55IVQp
+ qOuAQoGF2WiC5iIGoSVtPVflDgdKCpP1mKgsyPPxeaVewaeZQ7CzggmcoGvzFZKF5B
+ EQ6Z/6F0bvMCtFb2ylmkKwoO/gv2LfSvcPvpVKyzEKbtiNXOtF9do/WQwpoYNKJVJm
+ oBnUQYXduV89Q==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20201202 header.b=gfa/idAN
-Subject: Re: [Intel-wired-lan] [PATCH v6 net-next 01/15] genetlink: extend
- info user-storage to match NL cb ctx
+ header.s=k20201202 header.b=HyjXFFLc
+Subject: Re: [Intel-wired-lan] [PATCH v6 net-next 02/15] netlink: spec: add
+ shaper YAML spec
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -104,17 +104,57 @@ Cc: Jiri Pirko <jiri@resnulli.us>, netdev@vger.kernel.org,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Wed,  4 Sep 2024 15:53:33 +0200 Paolo Abeni wrote:
-> This allows a more uniform implementation of non-dump and dump
-> operations, and will be used later in the series to avoid some
-> per-operation allocation.
-> 
-> Additionally rename the NL_ASSERT_DUMP_CTX_FITS macro, to
-> fit a more extended usage.
-> 
-> Suggested-by: Jakub Kicinski <kuba@kernel.org>
-> Signed-off-by: Paolo Abeni <pabeni@redhat.com>
+On Wed,  4 Sep 2024 15:53:34 +0200 Paolo Abeni wrote:
+> +doc: |
+> +  Networking HW rate limiting configuration.
+> +
+> +  This API allows configuring HW shapers available on the network
+> +  devices at different levels (queues, network device) and allows
+> +  arbitrary manipulation of the scheduling tree of the involved
+> +  shapers.
+> +
+> +  Each @shaper is identified within the given device, by an @handle,
+> +  comprising both a @scope and an @id.
+> +
+> +  Depending on the @scope value, the shapers are attached to specific
+> +  HW objects (queues, devices) or, for @node scope, represent a
+> +  scheduling group, that can be placed in an arbitrary location of
+> +  the scheduling tree.
+> +
+> +  Shapers can be created with two different operations: the @set
+> +  operation, to create and update a single "attached" shaper, and
+> +  the @group operation, to create and update a scheduling
+> +  group. Only the @group operation can create @node scope shapers
+> +
+> +  Existing shapers can be deleted /reset via the @delete operation.
 
-Reviewed-by: Jakub Kicinski <kuba@kernel.org>
+nit: space before the / ?
 
-Thank you!
+> +        name: bw-min
+> +        type: uint
+> +        doc: Minimum Guaranteed bandwidth for the given shaper.
+
+I think I asked to remove "Minimum"? Both "guaranteed" and "minimum"
+express the fact that we can't go lower, so it's a bit of a pleonasm.
+
+> +      -
+> +        name: node
+> +        type: nest
+> +        nested-attributes: node-info
+> +        doc: |
+> +           Describes the node shaper for a @group operation.
+> +           Differently from @leaves and @shaper allow specifying
+> +           the shaper parent handle, too.
+
+Parent handle is inside node scope? Why are leaves outside and parent
+inside? Both should be at the same scope, preferably main scope.
+
+> +      -
+> +        name: shaper
+> +        type: nest
+> +        nested-attributes: info
+> +        doc: |
+> +           Describes a single shaper for a @set operation.
+
+Why does this level of nesting exist? With the exception of ifindex 
+all attributes for SET are nested inside this..
