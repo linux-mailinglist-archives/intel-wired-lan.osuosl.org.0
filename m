@@ -1,89 +1,105 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7DA5B96E746
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  6 Sep 2024 03:25:34 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 664B296E79B
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  6 Sep 2024 04:18:15 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id D406140902;
-	Fri,  6 Sep 2024 01:25:31 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Id9iov8ZUsij; Fri,  6 Sep 2024 01:25:29 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 642E740908
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1725585929;
-	bh=QoDzFM0bfO/fKAgucyi0mTTN/nB7hiJl3qks6x7Nj1c=;
-	h=Date:From:To:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=4xPlyNEFJ/J5WmnDL85c2EIeoBQSJbDQ9+SQ+qdPMpDq9dSZlcK/52PToFTiQrsE1
-	 TdEauJEBLhg7lAEao2CdjhCyJO39HuSLzoo7z+N+H3IyWNuL4GskrFic1QAaDjUlcm
-	 tcgD8SKHQxOOzHdiaXoy+6g9sKLVoEwQ3J9oCVMvstPH4K8aRgBn4hcw+dwJlEU/oj
-	 QKMhKAXmpm+nwjd2gEutjpiKBUmoWlGLNzEcna2M8n4QZR0+MfRCgo+mP5fwdwFr/d
-	 ph65To4wn+c5bPkNVtuxfLxrPmORCs22xEd8N49gz8q9/1i8O4NqKL8asSlG7BtXEr
-	 7bxsKSVyBF0IA==
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 642E740908;
-	Fri,  6 Sep 2024 01:25:29 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 849561BF3C9
- for <intel-wired-lan@lists.osuosl.org>; Fri,  6 Sep 2024 01:25:26 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 22B0840242
- for <intel-wired-lan@lists.osuosl.org>; Fri,  6 Sep 2024 01:25:26 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 832004032A;
+	Fri,  6 Sep 2024 02:18:13 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 6eJZxsjsBt1X for <intel-wired-lan@lists.osuosl.org>;
- Fri,  6 Sep 2024 01:25:25 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=147.75.193.91;
- helo=nyc.source.kernel.org; envelope-from=kuba@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 04153400DA
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 04153400DA
-Received: from nyc.source.kernel.org (nyc.source.kernel.org [147.75.193.91])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 04153400DA
- for <intel-wired-lan@lists.osuosl.org>; Fri,  6 Sep 2024 01:25:24 +0000 (UTC)
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by nyc.source.kernel.org (Postfix) with ESMTP id 3A524A444E3;
- Fri,  6 Sep 2024 01:25:16 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 79C30C4CEC3;
- Fri,  6 Sep 2024 01:25:22 +0000 (UTC)
-Date: Thu, 5 Sep 2024 18:25:21 -0700
-From: Jakub Kicinski <kuba@kernel.org>
-To: Paolo Abeni <pabeni@redhat.com>
-Message-ID: <20240905182521.2f9f4c1c@kernel.org>
-In-Reply-To: <8fba5626-f4e0-47c3-b022-a7ca9ca1a93f@redhat.com>
-References: <cover.1725457317.git.pabeni@redhat.com>
- <160421ccd6deedfd4d531f0239e80077f19db1d0.1725457317.git.pabeni@redhat.com>
- <20240904183329.5c186909@kernel.org>
- <8fba5626-f4e0-47c3-b022-a7ca9ca1a93f@redhat.com>
+ id C81EDpTUREUq; Fri,  6 Sep 2024 02:18:12 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C866D40374
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1725589091;
+	bh=5TT8xdsCmk+8IqEfUImoDN2/EEbxvgsTV+2khwPLNfo=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=8DjtGZzssckVcmLwHwJ4CO/kLr+26pu+KXkPlqtFwZ2WQ0/SMrKUuXfoXRRunkskH
+	 +B+uf62pCdRZP8kmyOo9ha7LH7gqZuwrbWG9hM1CRqVGzKRp7gvHxayb6YZfV3TKan
+	 /uIN7sOltZ1wPmMuJfLkLfyHlUwa8cUxJhxb3YnfCMMwpgN7dx8F5Gu/8DEX4osVxB
+	 PWyCd0KCJ5BmohQx2fsYxuqOLnWFGuRREh7UkLlYnoSNuNv3mJb9a6Dv6QDSht3ya4
+	 vXqxyUvps48jdspl7kh5vMEaw4WNNZGNGwGBunjYvjq4T85sDNKkqO+daW+l8FWd2N
+	 oQTK5oejdNC5A==
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp2.osuosl.org (Postfix) with ESMTP id C866D40374;
+	Fri,  6 Sep 2024 02:18:11 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 866201BF398
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  6 Sep 2024 02:18:09 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp3.osuosl.org (Postfix) with ESMTP id 6CFDE60B4A
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  6 Sep 2024 02:18:08 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id xD9AuioIrWIf for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  6 Sep 2024 02:18:03 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=207.171.190.10;
+ helo=smtp-fw-33001.amazon.com;
+ envelope-from=prvs=972109e13=takamitz@amazon.co.jp; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 6E66060B3A
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6E66060B3A
+Received: from smtp-fw-33001.amazon.com (smtp-fw-33001.amazon.com
+ [207.171.190.10])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 6E66060B3A
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  6 Sep 2024 02:18:01 +0000 (UTC)
+X-IronPort-AV: E=Sophos;i="6.10,206,1719878400"; d="scan'208";a="366478080"
+Received: from iad12-co-svc-p1-lb1-vlan3.amazon.com (HELO
+ smtpout.prod.us-west-2.prod.farcaster.email.amazon.dev) ([10.43.8.6])
+ by smtp-border-fw-33001.sea14.amazon.com with
+ ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 06 Sep 2024 02:18:00 +0000
+Received: from EX19MTAUWA002.ant.amazon.com [10.0.38.20:37237]
+ by smtpin.naws.us-west-2.prod.farcaster.email.amazon.dev [10.0.61.84:2525]
+ with esmtp (Farcaster)
+ id 993dfbd4-fd5b-473d-beb9-0afd4cb6a4fb; Fri, 6 Sep 2024 02:17:58 +0000 (UTC)
+X-Farcaster-Flow-ID: 993dfbd4-fd5b-473d-beb9-0afd4cb6a4fb
+Received: from EX19D005ANA004.ant.amazon.com (10.37.240.178) by
+ EX19MTAUWA002.ant.amazon.com (10.250.64.202) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.1258.34;
+ Fri, 6 Sep 2024 02:17:58 +0000
+Received: from 682f678c4465.ant.amazon.com (10.118.248.64) by
+ EX19D005ANA004.ant.amazon.com (10.37.240.178) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.1258.35;
+ Fri, 6 Sep 2024 02:17:54 +0000
+From: Takamitsu Iwai <takamitz@amazon.co.jp>
+To: "David S. Miller" <davem@davemloft.net>, Eric Dumazet
+ <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni
+ <pabeni@redhat.com>, Tony Nguyen <anthony.l.nguyen@intel.com>, "Przemek
+ Kitszel" <przemyslaw.kitszel@intel.com>
+Date: Fri, 6 Sep 2024 11:17:19 +0900
+Message-ID: <20240906021719.37754-1-takamitz@amazon.co.jp>
+X-Mailer: git-send-email 2.39.3 (Apple Git-145)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1725585923;
- bh=P6bXWKTaCR/pN+LWeUeLyDHVBJzI92h7jxSDlvKveRg=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=SHFyVXFPMvi5IWC8kQmNeTEDvYiGsi6+8v5zJkRC4i2X2qZUrbJob4Bd6BuvALjIc
- DQaO7cb2WcmEEDrizwKEDCnzLYAVQ6kbb6IsfYjoFx7CcGSSIbGjo61c9siOlV3fDb
- J9XfasikF8adixh6EIetrqadgC9WVTlF6n9nNBTQ/B8tVDZRlr0tqJgvyeYUvVLIdH
- HMLgPN7iY4A35TXxYYtZfGCq6JhvwNfWr3pyH4be1q5O/xF/bQUhCqrL+AdUnqqRkA
- ad7I8dCuqHG3YNGJuB7zPDQA39yqExr+0KkhH8rtcysIg0P+oELUFpq0fJJbF3Jdxf
- q/uHaUIUBVStA==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-Originating-IP: [10.118.248.64]
+X-ClientProxiedBy: EX19D031UWA002.ant.amazon.com (10.13.139.96) To
+ EX19D005ANA004.ant.amazon.com (10.37.240.178)
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=amazon.co.jp; i=@amazon.co.jp; q=dns/txt;
+ s=amazon201209; t=1725589083; x=1757125083;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=5TT8xdsCmk+8IqEfUImoDN2/EEbxvgsTV+2khwPLNfo=;
+ b=goESFkrP/zgnlN1YAm5LKWAjYfboqm6jDKP2GkovOc7yZ9XBRWkiUGSu
+ b5RqK5X+IKPIFI3WHuLlK4jGZgXzL1vRSkDt0V5UEcX0f5FXzKP8bKNDn
+ kRPgXm0pH7T29CbJcb8YJSbap77KNWsOWy4wJSodCneG/+quhyC/s/Q1V
+ I=;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
- header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20201202 header.b=SHFyVXFP
-Subject: Re: [Intel-wired-lan] [PATCH v6 net-next 07/15] net-shapers:
- implement shaper cleanup on queue deletion
+ header.from=amazon.co.jp
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (1024-bit key,
+ unprotected) header.d=amazon.co.jp header.i=@amazon.co.jp header.a=rsa-sha256
+ header.s=amazon201209 header.b=goESFkrP
+Subject: [Intel-wired-lan] [PATCH v2 net-next] e1000e: Remove duplicated
+ writel() in e1000_configure_tx/rx()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,94 +112,84 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Jiri Pirko <jiri@resnulli.us>, netdev@vger.kernel.org,
- John Fastabend <john.fastabend@gmail.com>, Jamal Hadi Salim <jhs@mojatatu.com>,
- edumazet@google.com, Madhu Chittim <madhu.chittim@intel.com>,
- anthony.l.nguyen@intel.com, Simon Horman <horms@kernel.org>,
- Sridhar Samudrala <sridhar.samudrala@intel.com>,
- Donald Hunter <donald.hunter@gmail.com>, intel-wired-lan@lists.osuosl.org,
- przemyslaw.kitszel@intel.com, Sunil Kovvuri Goutham <sgoutham@marvell.com>
+Cc: netdev@vger.kernel.org, Kohei Enju <enjuk@amazon.com>,
+ intel-wired-lan@lists.osuosl.org, Takamitsu Iwai <takamitz@amazon.co.jp>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Thu, 5 Sep 2024 20:02:38 +0200 Paolo Abeni wrote:
-> > The dev->lock has to be taken here, around those three lines,
-> > and then set / group must check QUEUE ids against
-> > dev->real_num_tx_queues, no? Otherwise the work
-> > net_shaper_set_real_num_tx_queues() does is prone to races?  
-> 
-> Yes, I think such race exists, but I'm unsure that tacking the lock 
-> around the above code will be enough.
+Duplicated register initialization codes exist in e1000_configure_tx()
+and e1000_configure_rx().
 
-I think "enough" will be subjective. Right now patch 7 provides no real
-guarantee.
+For example, writel(0, tx_ring->head) writes 0 to tx_ring->head, which
+is adapter->hw.hw_addr + E1000_TDH(0).
 
-> i.e. if the relevant devices has 16 channel queues the set() races with 
-> a channel reconf on different CPUs:
-> 
-> CPU 1						CPU 2
-> 
-> set_channels(8)
-> 
-> driver_set_channel()
-> // actually change the number of queues to
-> // 8, dev->real_num_tx_queues is still 16
-> // dev->lock is not held yet because the
-> // driver still has to call
-> // netif_set_real_num_tx_queues()
-> 						set(QUEUE_15,...)
-> 						// will pass validation
-> 						// but queue 15 does not
-> 						// exist anymore
+This initialization is already done in ew32(TDH(0), 0).
 
-That may be true - in my proposal the driver can only expect that once
-netif_set_real_num_tx_queues() returns core will not issue rate limit
-ops on disabled queues. Driver has to make sure rate limit ops for old
-queues are accepted all the way up to the call to set_real and ops for
-new queues are accepted immediately after.
+ew32(TDH(0), 0) is equivalent to __ew32(hw, E1000_TDH(0), 0). It
+executes writel(0, hw->hw_addr + E1000_TDH(0)). Since variable hw is
+set to &adapter->hw, it is equal to writel(0, tx_ring->head).
 
-Importantly, the core's state is always consistent - given both the
-flushing inside net_shaper_set_real_num_tx_queues() and proposed check
-would be under netdev->lock.
+We can remove similar four writel() in e1000_configure_tx() and
+e1000_configure_rx().
 
-For the driver -- let me flip the question around -- what do you expect
-the locking scheme to be in case of channel count change? Alternatively
-we could just expect the driver to take netdev->lock around the
-appropriate section of code and we'd do:
+commit 0845d45e900c ("e1000e: Modify Tx/Rx configurations to avoid
+null pointer dereferences in e1000_open") has introduced these
+writel(). This commit moved register writing to
+e1000_configure_tx/rx(), and as result, it caused duplication in
+e1000_configure_tx/rx().
 
-void net_shaper_set_real_num_tx_queues(struct net_device *dev, ...)
-{
-	...
-	if (!READ_ONCE(dev->net_shaper_hierarchy))
-		return;
+This patch modifies the sequence of register writing, but removing
+these writes is safe because the same writes were already there before
+the commit.
 
-	lockdep_assert_held(dev->lock);
-	...
-}
+I also have checked the datasheets [0] [1] and have not found any
+description that we need to write RDH, RDT, TDH and TDT registers
+twice at initialization. Furthermore, we have tested this patch on an
+I219-V device physically.
 
-I had a look at iavf, and there is no relevant locking around the queue
-count check at all, so that doesn't help..
+Link: https://www.intel.com/content/dam/www/public/us/en/documents/datasheets/82577-gbe-phy-datasheet.pdf [0]
+Link: https://www.intel.com/content/www/us/en/content-details/613460/intel-82583v-gbe-controller-datasheet.html [1]
+Tested-by: Kohei Enju <enjuk@amazon.com>
+Signed-off-by: Takamitsu Iwai <takamitz@amazon.co.jp>
+---
 
-> Acquiring dev->lock around set_channel() will not be enough: some driver 
-> change the channels number i.e. when enabling XDP.
+v1->v2
+modify commit message to explain the reason why we can remove these writes safely.
 
-Indeed, trying to lock before calling the driver would be both a huge
-job and destined to fail.
+v1 link
+https://lore.kernel.org/netdev/20240902061454.85744-1-takamitz@amazon.co.jp/
 
-> I think/fear we need to replace the dev->lock with the rtnl lock to 
-> solve the race for good.
+ drivers/net/ethernet/intel/e1000e/netdev.c | 6 ------
+ 1 file changed, 6 deletions(-)
 
-Maybe :( I think we need *an* answer for:
- - how we expect the driver to protect itself (assuming that the racy
-   check in iavf_verify_handle() actually serves some purpose, which
-   may not be true);
- - how we ensure consistency of core state (no shapers for queues which
-   don't exist, assuming we agree having shapers for queues which
-   don't exist is counter productive).
+diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
+index da5c59daf8ba..89c57be89c88 100644
+--- a/drivers/net/ethernet/intel/e1000e/netdev.c
++++ b/drivers/net/ethernet/intel/e1000e/netdev.c
+@@ -2928,11 +2928,8 @@ static void e1000_configure_tx(struct e1000_adapter *adapter)
+ 	tx_ring->head = adapter->hw.hw_addr + E1000_TDH(0);
+ 	tx_ring->tail = adapter->hw.hw_addr + E1000_TDT(0);
+ 
+-	writel(0, tx_ring->head);
+ 	if (adapter->flags2 & FLAG2_PCIM2PCI_ARBITER_WA)
+ 		e1000e_update_tdt_wa(tx_ring, 0);
+-	else
+-		writel(0, tx_ring->tail);
+ 
+ 	/* Set the Tx Interrupt Delay register */
+ 	ew32(TIDV, adapter->tx_int_delay);
+@@ -3253,11 +3250,8 @@ static void e1000_configure_rx(struct e1000_adapter *adapter)
+ 	rx_ring->head = adapter->hw.hw_addr + E1000_RDH(0);
+ 	rx_ring->tail = adapter->hw.hw_addr + E1000_RDT(0);
+ 
+-	writel(0, rx_ring->head);
+ 	if (adapter->flags2 & FLAG2_PCIM2PCI_ARBITER_WA)
+ 		e1000e_update_rdt_wa(rx_ring, 0);
+-	else
+-		writel(0, rx_ring->tail);
+ 
+ 	/* Enable Receive Checksum Offload for TCP and UDP */
+ 	rxcsum = er32(RXCSUM);
+-- 
+2.40.1
 
-Reverting back to rtnl_lock for all would be sad, the scheme of
-expecting the driver to take netdev->lock could work?
-It's the model we effectively settled on in devlink.
-Core->driver callbacks are always locked by the core,
-for driver->core calls driver should explicitly take the lock
-(some wrappers for lock+op+unlock are provided).
