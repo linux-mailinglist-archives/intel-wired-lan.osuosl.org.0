@@ -1,63 +1,64 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id BC9D0970289
-	for <lists+intel-wired-lan@lfdr.de>; Sat,  7 Sep 2024 15:52:15 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3F96A9702A5
+	for <lists+intel-wired-lan@lfdr.de>; Sat,  7 Sep 2024 16:13:44 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id E77224067D;
-	Sat,  7 Sep 2024 13:52:13 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id A2F844067D;
+	Sat,  7 Sep 2024 14:13:42 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id KP0AnTeMizPI; Sat,  7 Sep 2024 13:52:13 +0000 (UTC)
+ id XJMIpLwSyMC0; Sat,  7 Sep 2024 14:13:42 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 14D20402D4
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org C776A40604
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1725717133;
-	bh=X2twUjQyoR/uhU+swGNqIlL2LZ9+rvbldIvPKsJuRDA=;
+	s=default; t=1725718421;
+	bh=WVaGamJVODQB4gQDo+vHsqlA9m11CPc2XJWute1wpGM=;
 	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=jSbrhicLbs2mJGLBpwjfG36BxQm+SdQv6snyuiR+tODlN6epSs2w9lVW8Gu7uWwyb
-	 hWw0G8mxWF2U9TQ00QASqMeoNArMGVpUmRgF3jLUD0PQwZFofjfvlxW6I0iVIb+Q/x
-	 VDV2Lc2sst91yr2wTnGGb7HJI96DupVbMNm8MgP9WVZ5DLr8PY1RlW8ihGf30UGtaF
-	 atbSgPszqFWmQRkNeKHxQU1COutIVy7sxtsIBUD5VZ8K8wfLK0VcLmM/245mXVFE+a
-	 g/U/Y4dXkEkXnb+9Rgi6UAaAnSKupR6mfU4KNQDs7MWiPSn3IE5VnjQYpEn+sI9ZFA
-	 PUI0Wq41TSQeA==
+	b=ngW4ZCMsBFXG+AI3oC6qeEpZBwsixF31ftV4jAwcYUeuh4loJXzfwRe8j1zjBDeVu
+	 rpfqkgaOEnK9OECLhAfNq6aKEp7juDMHfC/L6+n32VEHt66qAl6pozvEbKMKsslX+a
+	 yNc+cTBYQE/B3+MLaTIA4j+oYmffLj4fT8GJ1kIJq5IwwiO4s+8y3b9dAcDm9JjUZi
+	 rDkdWjb30qKbEvZHc66kQyTD3whg5Wbca0OaM38WfdH0LVMOl1gKAalpDc5XKL8DPe
+	 hay6xCaznZBjU684Rpmx/ZjbGeB880ponqK+KiY49KJ7Cxoq5FHjKF9gxtWu987kjv
+	 ZRVXX/Af6rmug==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 14D20402D4;
-	Sat,  7 Sep 2024 13:52:13 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id C776A40604;
+	Sat,  7 Sep 2024 14:13:41 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 2D4131BF3CB
- for <intel-wired-lan@lists.osuosl.org>; Sat,  7 Sep 2024 13:52:11 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 7A87A1BF354
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  7 Sep 2024 14:13:39 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 1933B40230
- for <intel-wired-lan@lists.osuosl.org>; Sat,  7 Sep 2024 13:52:11 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 73C2860609
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  7 Sep 2024 14:13:39 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 5e7rZHQMmwOI for <intel-wired-lan@lists.osuosl.org>;
- Sat,  7 Sep 2024 13:52:10 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=147.75.193.91;
- helo=nyc.source.kernel.org; envelope-from=horms@kernel.org;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 4327340226
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4327340226
-Received: from nyc.source.kernel.org (nyc.source.kernel.org [147.75.193.91])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 4327340226
- for <intel-wired-lan@lists.osuosl.org>; Sat,  7 Sep 2024 13:52:10 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id T4xb4C46EQf6 for <intel-wired-lan@lists.osuosl.org>;
+ Sat,  7 Sep 2024 14:13:38 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2604:1380:4641:c500::1; helo=dfw.source.kernel.org;
+ envelope-from=gregkh@linuxfoundation.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 60F25605DB
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 60F25605DB
+Received: from dfw.source.kernel.org (dfw.source.kernel.org
+ [IPv6:2604:1380:4641:c500::1])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 60F25605DB
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  7 Sep 2024 14:13:38 +0000 (UTC)
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by nyc.source.kernel.org (Postfix) with ESMTP id 3B1A7A403BD;
- Sat,  7 Sep 2024 13:52:01 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9089AC4CEC2;
- Sat,  7 Sep 2024 13:52:05 +0000 (UTC)
-Date: Sat, 7 Sep 2024 14:52:03 +0100
-From: Simon Horman <horms@kernel.org>
+ by dfw.source.kernel.org (Postfix) with ESMTP id 78FA25C3A73;
+ Sat,  7 Sep 2024 14:13:33 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D202DC4CEC2;
+ Sat,  7 Sep 2024 14:13:35 +0000 (UTC)
+Date: Sat, 7 Sep 2024 16:13:28 +0200
+From: Greg KH <gregkh@linuxfoundation.org>
 To: Markus Elfring <Markus.Elfring@web.de>
-Message-ID: <20240907135203.GQ2097826@kernel.org>
+Message-ID: <2024090715-grief-uneasily-4aa6@gregkh>
 References: <SY8P300MB0460D0263B2105307C444520C0932@SY8P300MB0460.AUSP300.PROD.OUTLOOK.COM>
  <99a2d643-9004-41c8-8585-6c5c86fab599@web.de>
 MIME-Version: 1.0
@@ -66,22 +67,20 @@ Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
 In-Reply-To: <99a2d643-9004-41c8-8585-6c5c86fab599@web.de>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1725717128;
- bh=MYrO/3eKljHyoKJjSw8BBububPsJc6vLPebzXA5ILLM=;
+ d=linuxfoundation.org; 
+ s=korg; t=1725718416;
+ bh=qko2OkevnRrLYu4Aceoty+wFI+V0BJzREcrgVKbYvzA=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=bRshFzzihKz7KcoG149wshja98LfJ2ZGlpiI96+3s2DvdHyw6EeJiCLWqjhfJo8oq
- wjtkprMaMTouRtQTTTIMBSH3qnJeSK+PnANQat9T3C0FKPuAmLfX0snkJ+OcWwDYJa
- dxuV3baL39uwwsocxhbDXzN4z87U+h2KF6U8vCddICIx8CbZrzsT5Y9vC7mU5N+EeJ
- uYYeQZe4oMj1N976JWokknF7Rm0ilKPneEjWo8Y/4js0rqutlpFgHDPZ/Z11QnvTKr
- fpNgN43LC/H6Hn0hSDUxLX/IoSSCbev6FmrEnqXXlqwfVXJ4/Rv0nkUqJCfzr+fiy3
- RvVXgZSjMHN2Q==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20201202 header.b=bRshFzzi
+ b=ep1ZulgPBOi90upuj78yyY44kQrOiGBIvQGRExVuiIpavifk9h4CW4VN6a+VXbG5D
+ XFlIaz9pafb+t1TlK2U8d0SDtd8NPm8XjZfHkMd0odL3HgDObmFSJzuBwZyibhCvJy
+ vUe0ZeEynzzgAOETq8XSy6JYkwI2xaWpje83NRl0=
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=linuxfoundation.org
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (1024-bit key,
+ unprotected) header.d=linuxfoundation.org header.i=@linuxfoundation.org
+ header.a=rsa-sha256 header.s=korg header.b=ep1ZulgP
 Subject: Re: [Intel-wired-lan] [PATCH v2] ice: Fix improper handling of
  refcount in ice_sriov_set_msix_vec_count()
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -100,6 +99,7 @@ Cc: Tony Nguyen <anthony.l.nguyen@intel.com>, netdev@vger.kernel.org,
  Eric Dumazet <edumazet@google.com>, stable@vger.kernel.org,
  LKML <linux-kernel@vger.kernel.org>, Gui-Dong Han <hanguidong02@outlook.com>,
  Jia-Ju Bai <baijiaju1990@gmail.com>, intel-wired-lan@lists.osuosl.org,
+ Simon Horman <horms@kernel.org>,
  Przemek Kitszel <przemyslaw.kitszel@intel.com>,
  Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
  "David S. Miller" <davem@davemloft.net>
@@ -136,8 +136,29 @@ On Sat, Sep 07, 2024 at 02:40:10PM +0200, Markus Elfring wrote:
 > 
 > Would you like to collaborate with any goto chains according to
 > the desired completion of exception handling?
+> 
+> Regards,
+> Markus
+> 
 
-Yes, I agree that might be nice. But the changes made by this patch are
-consistent with the exiting error handling in this function. And as a fix,
-this minimal approach seems appropriate to me. IOW, I believe clean-up
-should be separated from fixes in this case.
+
+Hi,
+
+This is the semi-friendly patch-bot of Greg Kroah-Hartman.
+
+Markus, you seem to have sent a nonsensical or otherwise pointless
+review comment to a patch submission on a Linux kernel developer mailing
+list.  I strongly suggest that you not do this anymore.  Please do not
+bother developers who are actively working to produce patches and
+features with comments that, in the end, are a waste of time.
+
+Patch submitter, please ignore Markus's suggestion; you do not need to
+follow it at all.  The person/bot/AI that sent it is being ignored by
+almost all Linux kernel maintainers for having a persistent pattern of
+behavior of producing distracting and pointless commentary, and
+inability to adapt to feedback.  Please feel free to also ignore emails
+from them.
+
+thanks,
+
+greg k-h's patch email bot
