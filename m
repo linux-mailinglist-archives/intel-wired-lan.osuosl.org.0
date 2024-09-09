@@ -2,74 +2,74 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3ED46972502
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 10 Sep 2024 00:11:33 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 0C111972504
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 10 Sep 2024 00:11:40 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id E809060839;
-	Mon,  9 Sep 2024 22:11:31 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id AE50D60842;
+	Mon,  9 Sep 2024 22:11:38 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Nm3WxEza8YG3; Mon,  9 Sep 2024 22:11:31 +0000 (UTC)
+ id FIV77nsVQXhU; Mon,  9 Sep 2024 22:11:38 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 213466083E
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org EF1B86083E
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1725919891;
-	bh=J01Bjsl7YWsZl9fOHpMh3iI7EGbOprCnGy3SY28REac=;
+	s=default; t=1725919896;
+	bh=haaj6QWfZ3f4f/0CGzntQEj06240hoo6CdwmjyyTOcA=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=mIMzMmkqB4MBn6200P4ZnRW9aC63sgDwZhYAKRv01hm4BFSlS5Z6vwmyJKgFm1nRV
-	 xDAlUGs4Cc9lOmPDX7MgT/i4dtfbPdMC4mnXP5TjhB7KVjL7mA0ViocPOHL/Fwysh/
-	 7Wmbmpbihv5KRdBDAcr9LzPHlKvm9iKqComha3iOc7IQJP7RAXZzwiSQSkdDx09Uci
-	 jGs+mx2VNTk4j0+AwyuzMsbFok719QZdFSVN6DQL6Q+mD1UIumDxI5lRgiXsZOk/RS
-	 /8hwrjEThKM5f/9TWtMzuAek8oQAt5SOGJKHT/S+Z3irb0Ph9bHi+Z/QmFcaWhUQd0
-	 HMXP3ek4uZLUw==
+	b=MyVTtJdaMoGwFAzqKGCPL7IToBKH/f5VXCa/Pl/vlG0uJw4bucSuPidMVp14klakp
+	 WSSvz8K154cDAIFnQ/Ack/YEI8GbxhdDvxcdBJzC2hB4Tocofv6RYY0BFutsCMuJkO
+	 K/1ssYWooHPVepqThNk1DX7ond6sVXhZRBILXjfetlV24E/+Jv65UwriYRr9EVPmO1
+	 V64JlPk4voKenYPB6JQ5SC9tE4KWhyDEIq/+IxDJBc1hhi/eM98NDm8xzwNvgYmC3g
+	 LiX9i90HkasR5/tiI6Vgp0aRd4Nwy39qRdcYN5rv5w8/0DIabXTcro38k6RBYx+EdA
+	 HMu02ePvGyKtQ==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 213466083E;
-	Mon,  9 Sep 2024 22:11:31 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id EF1B86083E;
+	Mon,  9 Sep 2024 22:11:35 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id E6BCA1BF2E4
- for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Sep 2024 22:11:28 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id A55CD1BF2E4
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Sep 2024 22:11:33 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id D31C56083E
- for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Sep 2024 22:11:28 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 935086083D
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Sep 2024 22:11:33 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 1MU9f6bv9yss for <intel-wired-lan@lists.osuosl.org>;
- Mon,  9 Sep 2024 22:11:28 +0000 (UTC)
+ id jPR7bbRlyG3a for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  9 Sep 2024 22:11:33 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.133.124;
  helo=us-smtp-delivery-124.mimecast.com; envelope-from=pabeni@redhat.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 8552460829
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 8552460829
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org BC5C56083A
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org BC5C56083A
 Received: from us-smtp-delivery-124.mimecast.com
  (us-smtp-delivery-124.mimecast.com [170.10.133.124])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 8552460829
- for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Sep 2024 22:11:27 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTPS id BC5C56083A
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Sep 2024 22:11:32 +0000 (UTC)
 Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-686-a7mO6zluMuyHO_V-jiCNrQ-1; Mon,
- 09 Sep 2024 18:11:23 -0400
-X-MC-Unique: a7mO6zluMuyHO_V-jiCNrQ-1
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-410-BTWbuX9UNUWg65tVwves3w-1; Mon,
+ 09 Sep 2024 18:11:28 -0400
+X-MC-Unique: BTWbuX9UNUWg65tVwves3w-1
 Received: from mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.15])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 023A119560B0; Mon,  9 Sep 2024 22:11:21 +0000 (UTC)
+ id 321B91955DC3; Mon,  9 Sep 2024 22:11:26 +0000 (UTC)
 Received: from gerbillo.redhat.com (unknown [10.45.224.56])
  by mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id F01C11956086; Mon,  9 Sep 2024 22:11:15 +0000 (UTC)
+ id 53B671956086; Mon,  9 Sep 2024 22:11:21 +0000 (UTC)
 From: Paolo Abeni <pabeni@redhat.com>
 To: netdev@vger.kernel.org
-Date: Tue, 10 Sep 2024 00:10:00 +0200
-Message-ID: <692d979b5f61e626f5ec078845d5557e85119375.1725919039.git.pabeni@redhat.com>
+Date: Tue, 10 Sep 2024 00:10:01 +0200
+Message-ID: <634b63e19c1466fd1c3e7db4276e14b6b223cc86.1725919039.git.pabeni@redhat.com>
 In-Reply-To: <cover.1725919039.git.pabeni@redhat.com>
 References: <cover.1725919039.git.pabeni@redhat.com>
 MIME-Version: 1.0
@@ -77,23 +77,23 @@ Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.15
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=redhat.com; 
- s=mimecast20190719; t=1725919886;
+ s=mimecast20190719; t=1725919891;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=J01Bjsl7YWsZl9fOHpMh3iI7EGbOprCnGy3SY28REac=;
- b=GC8Mw592nz4hvEV67CTtGpINV5XxjKkIIvfyNO4VrDH1ItbGS5D1cdc51evEjrY/4pZvwZ
- GEaGeVreJaaaw+RBCq3Lmz4CJChQBh19JAFzYVUBdk1Mm14GZMi4Td7/tHBVGSnmHYwpka
- gHUPVmmHNpqKmKQ6MnsW+sjk3AGolbc=
+ bh=haaj6QWfZ3f4f/0CGzntQEj06240hoo6CdwmjyyTOcA=;
+ b=fi1E4z0PwR2B+tZ8Qr86S42lV+AdrYD+ouL7oV7zLG+GKNOoXG3+f2uRTmYb7PLNQS8trg
+ Dt3H6XO9SfgdljP+rx9agsV95znBE36ajAcxvh9EnQ64EaER1TNV+J0Y7y2JSYGjTOyfKU
+ hCwFGIuEBgC2paecrdZN593DfCIa8Ds=
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=redhat.com
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
- header.a=rsa-sha256 header.s=mimecast20190719 header.b=GC8Mw592
-Subject: [Intel-wired-lan] [PATCH v7 net-next 06/15] net-shapers: implement
- delete support for NODE scope shaper
+ header.a=rsa-sha256 header.s=mimecast20190719 header.b=fi1E4z0P
+Subject: [Intel-wired-lan] [PATCH v7 net-next 07/15] net-shapers: implement
+ shaper cleanup on queue deletion
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -117,151 +117,111 @@ Cc: Jiri Pirko <jiri@resnulli.us>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Leverage the previously introduced group operation to implement
-the removal of NODE scope shaper, re-linking its leaves under the
-the parent node before actually deleting the specified NODE scope
-shaper.
+hook into netif_set_real_num_tx_queues() to cleanup any shaper
+configured on top of the to-be-destroyed TX queues.
 
 Signed-off-by: Paolo Abeni <pabeni@redhat.com>
 ---
-v4 -> v5:
- - replace net_device* with binding* in most helpers
+v6 -> v7:
+ - don't touch the H/W for the queue shaper, the driver
+   is supposed to clean it up.
+ - it's up to the net shaper enabled caller to acquire the
+   dev lock
 ---
- net/shaper/shaper.c | 86 ++++++++++++++++++++++++++++++++++++++-------
- 1 file changed, 74 insertions(+), 12 deletions(-)
+ net/core/dev.c      |  2 ++
+ net/core/dev.h      |  4 ++++
+ net/shaper/shaper.c | 48 +++++++++++++++++++++++++++++++++++++++++++++
+ 3 files changed, 54 insertions(+)
 
+diff --git a/net/core/dev.c b/net/core/dev.c
+index 0e7e13db94db..23c0d0acbc40 100644
+--- a/net/core/dev.c
++++ b/net/core/dev.c
+@@ -2948,6 +2948,8 @@ int netif_set_real_num_tx_queues(struct net_device *dev, unsigned int txq)
+ 		if (dev->num_tc)
+ 			netif_setup_tc(dev, txq);
+ 
++		net_shaper_set_real_num_tx_queues(dev, txq);
++
+ 		dev_qdisc_change_real_num_tx(dev, txq);
+ 
+ 		dev->real_num_tx_queues = txq;
+diff --git a/net/core/dev.h b/net/core/dev.h
+index 13c558874af3..d3ea92949ff3 100644
+--- a/net/core/dev.h
++++ b/net/core/dev.h
+@@ -37,8 +37,12 @@ void dev_addr_check(struct net_device *dev);
+ 
+ #if IS_ENABLED(CONFIG_NET_SHAPER)
+ void net_shaper_flush_netdev(struct net_device *dev);
++void net_shaper_set_real_num_tx_queues(struct net_device *dev,
++				       unsigned int txq);
+ #else
+ static inline void net_shaper_flush_netdev(struct net_device *dev) {}
++static inline void net_shaper_set_real_num_tx_queues(struct net_device *dev,
++						     unsigned int txq) {}
+ #endif
+ 
+ /* sysctls not referred to from outside net/core/ */
 diff --git a/net/shaper/shaper.c b/net/shaper/shaper.c
-index 3ffbd83b3e05..b502918b0a76 100644
+index b502918b0a76..2ddd52ec28e3 100644
 --- a/net/shaper/shaper.c
 +++ b/net/shaper/shaper.c
-@@ -787,7 +787,8 @@ static int net_shaper_parent_from_leaves(int leaves_count,
+@@ -1159,6 +1159,54 @@ void net_shaper_flush_netdev(struct net_device *dev)
+ 	net_shaper_flush(&binding);
  }
  
- static int __net_shaper_group(struct net_shaper_binding *binding,
--			      int leaves_count, struct net_shaper *leaves,
-+			      bool update_node, int leaves_count,
-+			      struct net_shaper *leaves,
- 			      struct net_shaper *node,
- 			      struct netlink_ext_ack *extack)
- {
-@@ -833,12 +834,14 @@ static int __net_shaper_group(struct net_shaper_binding *binding,
- 		}
- 	}
- 
--	/* For newly created node scope shaper, the following will update
--	 * the handle, due to id allocation.
--	 */
--	ret = net_shaper_pre_insert(binding, &node->handle, extack);
--	if (ret)
--		return ret;
-+	if (update_node) {
-+		/* For newly created node scope shaper, the following will
-+		 * update the handle, due to id allocation.
-+		 */
-+		ret = net_shaper_pre_insert(binding, &node->handle, extack);
-+		if (ret)
-+			return ret;
-+	}
- 
- 	for (i = 0; i < leaves_count; ++i) {
- 		leaf_handle = leaves[i].handle;
-@@ -866,7 +869,8 @@ static int __net_shaper_group(struct net_shaper_binding *binding,
- 	 */
- 	if (new_node && parent)
- 		parent->leaves++;
--	net_shaper_commit(binding, 1, node);
-+	if (update_node)
-+		net_shaper_commit(binding, 1, node);
- 	net_shaper_commit(binding, leaves_count, leaves);
- 	return 0;
- 
-@@ -875,6 +879,64 @@ static int __net_shaper_group(struct net_shaper_binding *binding,
- 	return ret;
- }
- 
-+static int net_shaper_pre_del_node(struct net_shaper_binding *binding,
-+				   const struct net_shaper *shaper,
-+				   struct netlink_ext_ack *extack)
++void net_shaper_set_real_num_tx_queues(struct net_device *dev,
++				       unsigned int txq)
 +{
-+	struct net_shaper_hierarchy *hierarchy = net_shaper_hierarchy(binding);
-+	struct net_shaper *cur, *leaves, node = {};
-+	int ret, leaves_count = 0;
-+	unsigned long index;
-+	bool update_node;
++	struct net_shaper_hierarchy *hierarchy;
++	struct net_shaper_binding binding;
++	int i;
 +
-+	if (!shaper->leaves)
-+		return 0;
++	binding.type = NET_SHAPER_BINDING_TYPE_NETDEV;
++	binding.netdev = dev;
++	hierarchy = net_shaper_hierarchy(&binding);
++	if (!hierarchy)
++		return;
 +
-+	/* Fetch the new node information. */
-+	node.handle = shaper->parent;
-+	cur = net_shaper_lookup(binding, &node.handle);
-+	if (cur) {
-+		node = *cur;
-+	} else {
-+		/* A scope NODE shaper can be nested only to the NETDEV scope
-+		 * shaper without creating the latter, this check may fail only
-+		 * if the data is in inconsistent status.
-+		 */
-+		if (WARN_ON_ONCE(node.handle.scope != NET_SHAPER_SCOPE_NETDEV))
-+			return -EINVAL;
-+	}
++	/* Only drivers implementing shapers support ensure
++	 * the lock is acquired in advance.
++	 */
++	lockdep_assert_held(&dev->lock);
 +
-+	leaves = kcalloc(shaper->leaves, sizeof(struct net_shaper),
-+			 GFP_KERNEL);
-+	if (!leaves)
-+		return -ENOMEM;
++	/* Take action only when decreasing the tx queue number. */
++	for (i = txq; i < dev->real_num_tx_queues; ++i) {
++		struct net_shaper_handle handle, parent_handle;
++		struct net_shaper *shaper;
++		u32 index;
 +
-+	/* Build the leaves arrays. */
-+	xa_for_each(&hierarchy->shapers, index, cur) {
-+		if (net_shaper_handle_cmp(&cur->parent, &shaper->handle))
++		handle.scope = NET_SHAPER_SCOPE_QUEUE;
++		handle.id = i;
++		shaper = net_shaper_lookup(&binding, &handle);
++		if (!shaper)
 +			continue;
 +
-+		if (WARN_ON_ONCE(leaves_count == shaper->leaves)) {
-+			ret = -EINVAL;
-+			goto free;
-+		}
++		/* Don't touch the H/W for the queue shaper, the drivers already
++		 * deleted the queue and related resources.
++		 */
++		parent_handle = shaper->parent;
++		index = net_shaper_handle_to_index(&handle);
++		xa_erase(&hierarchy->shapers, index);
++		kfree_rcu(shaper, rcu);
 +
-+		leaves[leaves_count++] = *cur;
++		/* The recursion on parent does the full job. */
++		if (parent_handle.scope != NET_SHAPER_SCOPE_NODE)
++			continue;
++
++		shaper = net_shaper_lookup(&binding, &parent_handle);
++		if (shaper && !--shaper->leaves)
++			__net_shaper_delete(&binding, shaper, NULL);
 +	}
-+
-+	/* When re-linking to the netdev shaper, avoid the eventual, implicit,
-+	 * creation of the new node, would be surprising since the user is
-+	 * doing a delete operation.
-+	 */
-+	update_node = node.handle.scope != NET_SHAPER_SCOPE_NETDEV;
-+	ret = __net_shaper_group(binding, update_node, leaves_count,
-+				 leaves, &node, extack);
-+
-+free:
-+	kfree(leaves);
-+	return ret;
 +}
 +
- int net_shaper_nl_delete_doit(struct sk_buff *skb, struct genl_info *info)
+ static int __init shaper_init(void)
  {
- 	struct net_shaper_hierarchy *hierarchy;
-@@ -907,9 +969,9 @@ int net_shaper_nl_delete_doit(struct sk_buff *skb, struct genl_info *info)
- 	}
- 
- 	if (handle.scope == NET_SHAPER_SCOPE_NODE) {
--		/* TODO: implement support for scope NODE delete. */
--		ret = -EINVAL;
--		goto unlock;
-+		ret = net_shaper_pre_del_node(binding, shaper, info->extack);
-+		if (ret)
-+			goto unlock;
- 	}
- 
- 	ret = __net_shaper_delete(binding, shaper, info->extack);
-@@ -1029,7 +1091,7 @@ int net_shaper_nl_group_doit(struct sk_buff *skb, struct genl_info *info)
- 		}
- 	}
- 
--	ret = __net_shaper_group(binding, leaves_count, leaves, &node,
-+	ret = __net_shaper_group(binding, true, leaves_count, leaves, &node,
- 				 info->extack);
- 	if (ret)
- 		goto free_msg;
+ 	return genl_register_family(&net_shaper_nl_family);
 -- 
 2.45.2
 
