@@ -1,75 +1,75 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4A4AE972507
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 10 Sep 2024 00:11:49 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id A727F972509
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 10 Sep 2024 00:11:55 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 0148960826;
-	Mon,  9 Sep 2024 22:11:48 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 0E67A60838;
+	Mon,  9 Sep 2024 22:11:54 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 3msXGO5J6ydj; Mon,  9 Sep 2024 22:11:47 +0000 (UTC)
+ id umhOzCHpkGu4; Mon,  9 Sep 2024 22:11:53 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 458CC6084C
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1A3A060833
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1725919907;
-	bh=seWTQeouo6oPkoUFNCWmrvzJ1eVNfxbVf6WWRnyhpi4=;
+	s=default; t=1725919913;
+	bh=/rZRAFE1PifDnARdCag97zpgkPbbZa5BBiiypRORyLQ=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=k7s8LH/1zi4pFvlDnS4JT1fZVau3JGEUFPiveh4JE3zsVO+oZTwpnhn/qlMtW2lw+
-	 f5ZrZDn0MjqAvTDS7bXDkLUbqxVKSMov5TbOmr7oEXxUK2PXuil5tjIiASBnWcT+v4
-	 0sg1VnXKvd/kKUliYPkxz3arAkLmWXsWt7nz436PImy+N31/1kjVKpnSa9XJD0cSUp
-	 GSDADZOnTCLGOn7oJlZ0gYqUMR9qJd338DpqcKK3qo8QjJOtfzqu3ikImAgcvonMhb
-	 v3IT9VbZlL/bCwNmYBviCtUvND3ofvKNqGdmfpvJ24C51rS6RtITmWHMt/wdvKDCOO
-	 mmTPkf1hk8JZQ==
+	b=z9YoEtqZ+9VfNl3THGuALiTzHtMrh7Wl1WwbyqzY4Jw0FDA84utLQLQKRpOEdMln1
+	 7iWfdtZt8mzR5Oj2l4Sracgag/OAy+wAYSJkiK3vBk7dbkyWC4dvt3lPujydFdRkiw
+	 Xp6YsxecEDF1QU4IEypz7o32EMCxHF8GIGqTmLloDqmdK0zJpxeqWfqKNnP0XzXHjf
+	 1rARNZ3nPQcnQfFbZdUJ9+pU/vC7c4Qau6BgmGUvve/KamJsJ/p6VJLQG5WtcG/4eO
+	 0/LqmjJWBONTX3XKRwKg3NHGx2ZLfKngcxdBM2RcpBONKmjfvUKGDim8ilQY/Hfr9T
+	 xVSGfHptoql3w==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 458CC6084C;
-	Mon,  9 Sep 2024 22:11:47 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 1A3A060833;
+	Mon,  9 Sep 2024 22:11:53 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 179D61BF2E4
- for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Sep 2024 22:11:45 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id C20081BF2E4
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Sep 2024 22:11:50 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 8CFC660824
- for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Sep 2024 22:11:44 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id AF40F40301
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Sep 2024 22:11:50 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 1y7m41rdbrCM for <intel-wired-lan@lists.osuosl.org>;
- Mon,  9 Sep 2024 22:11:43 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id RsH19F0bqfAP for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  9 Sep 2024 22:11:49 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.129.124;
  helo=us-smtp-delivery-124.mimecast.com; envelope-from=pabeni@redhat.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 9BD1B6083A
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9BD1B6083A
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 7F46340241
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7F46340241
 Received: from us-smtp-delivery-124.mimecast.com
  (us-smtp-delivery-124.mimecast.com [170.10.129.124])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 9BD1B6083A
- for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Sep 2024 22:11:43 +0000 (UTC)
-Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 7F46340241
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Sep 2024 22:11:49 +0000 (UTC)
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-665-Z9J5ONecOYW2mdMBor3nCw-1; Mon,
- 09 Sep 2024 18:11:39 -0400
-X-MC-Unique: Z9J5ONecOYW2mdMBor3nCw-1
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-29-R_Ja6J4YOgiM5q5i1UFWNA-1; Mon,
+ 09 Sep 2024 18:11:44 -0400
+X-MC-Unique: R_Ja6J4YOgiM5q5i1UFWNA-1
 Received: from mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.15])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 38DE61955DC1; Mon,  9 Sep 2024 22:11:37 +0000 (UTC)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 8FE3419560B1; Mon,  9 Sep 2024 22:11:42 +0000 (UTC)
 Received: from gerbillo.redhat.com (unknown [10.45.224.56])
  by mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 44D781956086; Mon,  9 Sep 2024 22:11:32 +0000 (UTC)
+ id 9A49C1956086; Mon,  9 Sep 2024 22:11:37 +0000 (UTC)
 From: Paolo Abeni <pabeni@redhat.com>
 To: netdev@vger.kernel.org
-Date: Tue, 10 Sep 2024 00:10:03 +0200
-Message-ID: <48696b1841d2fb0f5e726a89cf17d356108e6fa9.1725919039.git.pabeni@redhat.com>
+Date: Tue, 10 Sep 2024 00:10:04 +0200
+Message-ID: <b1b9a2ba1f8847b602f90102a0321a42ac9ff06f.1725919039.git.pabeni@redhat.com>
 In-Reply-To: <cover.1725919039.git.pabeni@redhat.com>
 References: <cover.1725919039.git.pabeni@redhat.com>
 MIME-Version: 1.0
@@ -77,23 +77,23 @@ Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.15
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=redhat.com; 
- s=mimecast20190719; t=1725919902;
+ s=mimecast20190719; t=1725919908;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=seWTQeouo6oPkoUFNCWmrvzJ1eVNfxbVf6WWRnyhpi4=;
- b=Qq+7UYLPiU8z9de2hSvH4IDx3OJgGD1NFVn76vWFZWx/AICxnBdyR9Bab/oAg0O0aLJY0b
- JRRRRXyKJbnSZhHUt1mWWKhX8g16gk9/Dk+nomgHaPb51GYolxv03ymfIuSwnJUvRwcutI
- OTnQj4X2KpIn+T4Ob2Lv6gAYCfrJVcc=
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ bh=/rZRAFE1PifDnARdCag97zpgkPbbZa5BBiiypRORyLQ=;
+ b=P2sehFlCRJghRU/MfcEdRw/qIPKaCXNaFYqwguM2m9AoG+ObJ5iBEQ86yhYithDTY3iYS9
+ 809MckP+eOXnFWop+uCVw5pHXHkVcvhgE9MUznwvET3+6snsyQBmUCJz0NF5rmyRJkJUJJ
+ f1V8Bt0wKP7bvQueAsq37+UR6+762mc=
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=redhat.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
- header.a=rsa-sha256 header.s=mimecast20190719 header.b=Qq+7UYLP
-Subject: [Intel-wired-lan] [PATCH v7 net-next 09/15] net: shaper: implement
- introspection support
+ header.a=rsa-sha256 header.s=mimecast20190719 header.b=P2sehFlC
+Subject: [Intel-wired-lan] [PATCH v7 net-next 10/15] net-shapers: implement
+ cap validation in the core
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -117,169 +117,165 @@ Cc: Jiri Pirko <jiri@resnulli.us>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The netlink op is a simple wrapper around the device callback.
+Use the device capabilities to reject invalid attribute values before
+pushing them to the H/W.
 
-Extend the existing fetch_dev() helper adding an attribute argument
-for the requested device. Reuse such helper in the newly implemented
-operation.
+Note that validating the metric explicitly avoids NL_SET_BAD_ATTR()
+usage, to provide unambiguous error messages to the user.
 
+Validating the nesting requires the knowledge of the new parent for
+the given shaper; as such is a chicken-egg problem: to validate the
+leaf nesting we need to know the node scope, to validate the node
+nesting we need to know the leafs parent scope.
+
+To break the circular dependency, place the leafs nesting validation
+after the parsing.
+
+Suggested-by: Jakub Kicinski <kuba@kernel.org>
+Reviewed-by: Jakub Kicinski <kuba@kernel.org>
 Signed-off-by: Paolo Abeni <pabeni@redhat.com>
 ---
-v5 -> v6:
- - update to new API
-
-v4 -> v5:
- - replace net_device* with binding* in most functions
- - de-deplicate some code thanks to more generic helpers in previous
-   patches
-
-v3 -> v4:
- - another dev_put() -> netdev_put() conversion, missed in previous
-   iteration
-
-RFC v2 -> v3:
- - dev_put() -> netdev_put()
+v6 -> v7:
+  - validate the queue id vs real_num_tx_queues
+  - some mangling upon rebase, as 'node' is now always not NULL
+    in net_shaper_parse_leaf()
 ---
- net/shaper/shaper.c | 98 +++++++++++++++++++++++++++++++++++++++++++--
- 1 file changed, 95 insertions(+), 3 deletions(-)
+ net/shaper/shaper.c | 101 ++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 101 insertions(+)
 
 diff --git a/net/shaper/shaper.c b/net/shaper/shaper.c
-index 1b4b3408d7a1..cf282b26f9aa 100644
+index cf282b26f9aa..8631e700a069 100644
 --- a/net/shaper/shaper.c
 +++ b/net/shaper/shaper.c
-@@ -603,22 +603,29 @@ int net_shaper_nl_post_dumpit(struct netlink_callback *cb)
- int net_shaper_nl_cap_pre_doit(const struct genl_split_ops *ops,
- 			       struct sk_buff *skb, struct genl_info *info)
- {
--	return -EOPNOTSUPP;
-+	return net_shaper_generic_pre(info, NET_SHAPER_A_CAPS_IFINDEX);
+@@ -439,6 +439,74 @@ static int net_shaper_parse_handle(const struct nlattr *attr,
+ 	return 0;
  }
  
- void net_shaper_nl_cap_post_doit(const struct genl_split_ops *ops,
- 				 struct sk_buff *skb, struct genl_info *info)
- {
-+	net_shaper_generic_post(info);
- }
- 
- int net_shaper_nl_cap_pre_dumpit(struct netlink_callback *cb)
- {
--	return -EOPNOTSUPP;
-+	struct net_shaper_nl_ctx *ctx = (struct net_shaper_nl_ctx *)cb->ctx;
-+
-+	return net_shaper_ctx_setup(genl_info_dump(cb),
-+				    NET_SHAPER_A_CAPS_IFINDEX, ctx);
- }
- 
- int net_shaper_nl_cap_post_dumpit(struct netlink_callback *cb)
- {
--	return -EOPNOTSUPP;
-+	struct net_shaper_nl_ctx *ctx = (struct net_shaper_nl_ctx *)cb->ctx;
-+
-+	net_shaper_ctx_cleanup(ctx);
-+	return 0;
- }
- 
- int net_shaper_nl_get_doit(struct sk_buff *skb, struct genl_info *info)
-@@ -1149,14 +1156,99 @@ int net_shaper_nl_group_doit(struct sk_buff *skb, struct genl_info *info)
- 	goto free_leaves;
- }
- 
-+static int
-+net_shaper_cap_fill_one(struct sk_buff *msg,
-+			struct net_shaper_binding *binding,
-+			enum net_shaper_scope scope, unsigned long flags,
-+			const struct genl_info *info)
++static int net_shaper_validate_caps(struct net_shaper_binding *binding,
++				    struct nlattr **tb,
++				    const struct genl_info *info,
++				    struct net_shaper *shaper)
 +{
-+	unsigned long cur;
-+	void *hdr;
++	const struct net_shaper_ops *ops = net_shaper_ops(binding);
++	struct nlattr *bad = NULL;
++	unsigned long caps = 0;
 +
-+	hdr = genlmsg_iput(msg, info);
-+	if (!hdr)
-+		return -EMSGSIZE;
++	ops->capabilities(binding, shaper->handle.scope, &caps);
 +
-+	if (net_shaper_fill_binding(msg, binding, NET_SHAPER_A_CAPS_IFINDEX) ||
-+	    nla_put_u32(msg, NET_SHAPER_A_CAPS_SCOPE, scope))
-+		goto nla_put_failure;
++	if (tb[NET_SHAPER_A_PRIORITY] &&
++	    !(caps & BIT(NET_SHAPER_A_CAPS_SUPPORT_PRIORITY)))
++		bad = tb[NET_SHAPER_A_PRIORITY];
++	if (tb[NET_SHAPER_A_WEIGHT] &&
++	    !(caps & BIT(NET_SHAPER_A_CAPS_SUPPORT_WEIGHT)))
++		bad = tb[NET_SHAPER_A_WEIGHT];
++	if (tb[NET_SHAPER_A_BW_MIN] &&
++	    !(caps & BIT(NET_SHAPER_A_CAPS_SUPPORT_BW_MIN)))
++		bad = tb[NET_SHAPER_A_BW_MIN];
++	if (tb[NET_SHAPER_A_BW_MAX] &&
++	    !(caps & BIT(NET_SHAPER_A_CAPS_SUPPORT_BW_MAX)))
++		bad = tb[NET_SHAPER_A_BW_MAX];
++	if (tb[NET_SHAPER_A_BURST] &&
++	    !(caps & BIT(NET_SHAPER_A_CAPS_SUPPORT_BURST)))
++		bad = tb[NET_SHAPER_A_BURST];
 +
-+	for (cur = NET_SHAPER_A_CAPS_SUPPORT_METRIC_BPS;
-+	     cur <= NET_SHAPER_A_CAPS_MAX; ++cur) {
-+		if (flags & BIT(cur) && nla_put_flag(msg, cur))
-+			goto nla_put_failure;
++	if (!caps)
++		bad = tb[NET_SHAPER_A_HANDLE];
++
++	if (bad) {
++		NL_SET_BAD_ATTR(info->extack, bad);
++		return -EOPNOTSUPP;
 +	}
 +
-+	genlmsg_end(msg, hdr);
++	if (shaper->handle.scope == NET_SHAPER_SCOPE_QUEUE &&
++	    binding->type == NET_SHAPER_BINDING_TYPE_NETDEV &&
++	    shaper->handle.id >= binding->netdev->real_num_tx_queues) {
++		NL_SET_ERR_MSG_FMT(info->extack,
++				   "Not existing queue id %d max %d",
++				   shaper->handle.id,
++				   binding->netdev->real_num_tx_queues);
++		return -ENOENT;
++	}
 +
++	/* The metric is really used only if there is *any* rate-related
++	 * setting, either in current attributes set or in pre-existing
++	 * values.
++	 */
++	if (shaper->burst || shaper->bw_min || shaper->bw_max) {
++		u32 metric_cap = NET_SHAPER_A_CAPS_SUPPORT_METRIC_BPS +
++				 shaper->metric;
++
++		/* The metric test can fail even when the user did not
++		 * specify the METRIC attribute. Pointing to rate related
++		 * attribute will be confusing, as the attribute itself
++		 * could be indeed supported, with a different metric.
++		 * Be more specific.
++		 */
++		if (!(caps & BIT(metric_cap))) {
++			NL_SET_ERR_MSG_FMT(info->extack, "Bad metric %d",
++					   shaper->metric);
++			return -EOPNOTSUPP;
++		}
++	}
 +	return 0;
-+
-+nla_put_failure:
-+	genlmsg_cancel(msg, hdr);
-+	return -EMSGSIZE;
 +}
 +
- int net_shaper_nl_cap_get_doit(struct sk_buff *skb, struct genl_info *info)
- {
-+	struct net_shaper_binding *binding;
-+	const struct net_shaper_ops *ops;
-+	enum net_shaper_scope scope;
-+	unsigned long flags = 0;
-+	struct sk_buff *msg;
-+	int ret;
+ static int net_shaper_parse_info(struct net_shaper_binding *binding,
+ 				 struct nlattr **tb,
+ 				 const struct genl_info *info,
+@@ -489,6 +557,28 @@ static int net_shaper_parse_info(struct net_shaper_binding *binding,
+ 
+ 	if (tb[NET_SHAPER_A_WEIGHT])
+ 		shaper->weight = nla_get_u32(tb[NET_SHAPER_A_WEIGHT]);
 +
-+	if (GENL_REQ_ATTR_CHECK(info, NET_SHAPER_A_CAPS_SCOPE))
-+		return -EINVAL;
++	ret = net_shaper_validate_caps(binding, tb, info, shaper);
++	if (ret < 0)
++		return ret;
 +
-+	binding = net_shaper_binding_from_ctx(info->ctx);
-+	scope = nla_get_u32(info->attrs[NET_SHAPER_A_CAPS_SCOPE]);
-+	ops = net_shaper_ops(binding);
-+	ops->capabilities(binding, scope, &flags);
-+	if (!flags)
++	return 0;
++}
++
++static int net_shaper_validate_nesting(struct net_shaper_binding *binding,
++				       const struct net_shaper *shaper,
++				       struct netlink_ext_ack *extack)
++{
++	const struct net_shaper_ops *ops = net_shaper_ops(binding);
++	unsigned long caps = 0;
++
++	ops->capabilities(binding, shaper->handle.scope, &caps);
++	if (!(caps & BIT(NET_SHAPER_A_CAPS_SUPPORT_NESTING))) {
++		NL_SET_ERR_MSG_FMT(extack,
++				   "Nesting not supported for scope %d",
++				   shaper->handle.scope);
 +		return -EOPNOTSUPP;
-+
-+	msg = genlmsg_new(NLMSG_DEFAULT_SIZE, GFP_KERNEL);
-+	if (!msg)
-+		return -ENOMEM;
-+
-+	ret = net_shaper_cap_fill_one(msg, binding, scope, flags, info);
-+	if (ret)
-+		goto free_msg;
-+
-+	ret =  genlmsg_reply(msg, info);
-+	if (ret)
-+		goto free_msg;
++	}
  	return 0;
-+
-+free_msg:
-+	nlmsg_free(msg);
-+	return ret;
  }
  
- int net_shaper_nl_cap_get_dumpit(struct sk_buff *skb,
- 				 struct netlink_callback *cb)
- {
-+	const struct genl_info *info = genl_info_dump(cb);
-+	struct net_shaper_binding *binding;
-+	const struct net_shaper_ops *ops;
-+	enum net_shaper_scope scope;
-+	int ret;
-+
-+	binding = net_shaper_binding_from_ctx(cb->ctx);
-+	ops = net_shaper_ops(binding);
-+	for (scope = 0; scope <= NET_SHAPER_SCOPE_MAX; ++scope) {
-+		unsigned long flags = 0;
-+
-+		ops->capabilities(binding, scope, &flags);
-+		if (!flags)
-+			continue;
-+
-+		ret = net_shaper_cap_fill_one(skb, binding, scope, flags,
-+					      info);
-+		if (ret)
+@@ -519,6 +609,13 @@ static int net_shaper_parse_leaf(struct net_shaper_binding *binding,
+ 		return -EINVAL;
+ 	}
+ 
++	if (node->handle.scope == NET_SHAPER_SCOPE_NODE) {
++		ret = net_shaper_validate_nesting(binding, shaper,
++						  info->extack);
++		if (ret < 0)
 +			return ret;
 +	}
 +
+ 	if (!exists)
+ 		net_shaper_default_parent(&shaper->handle, &shaper->parent);
  	return 0;
- }
+@@ -860,6 +957,10 @@ static int __net_shaper_group(struct net_shaper_binding *binding,
+ 					   node->parent.scope, node->parent.id);
+ 			return -ENOENT;
+ 		}
++
++		ret = net_shaper_validate_nesting(binding, node, extack);
++		if (ret < 0)
++			return ret;
+ 	}
  
+ 	if (update_node) {
 -- 
 2.45.2
 
