@@ -2,100 +2,101 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6725597258A
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 10 Sep 2024 01:06:01 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 773A397258E
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 10 Sep 2024 01:08:00 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 15C1A60828;
-	Mon,  9 Sep 2024 23:05:59 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id B97AC60832;
+	Mon,  9 Sep 2024 23:07:58 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id j48sxROzvmwQ; Mon,  9 Sep 2024 23:05:58 +0000 (UTC)
+ id em4li7DydwvU; Mon,  9 Sep 2024 23:07:58 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 4BB5F60830
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C442D60828
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1725923158;
-	bh=jyUmEKrM8dyUWOisoMLE2uruIKOj9hvx/CDbn40isYc=;
-	h=From:Date:References:In-Reply-To:To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=nvzRa8G5eUjmQfZTy2HyGiMLgTQFszj2fso2FCxWGAFN/BnqrmQkraa5lKgQxlGvM
-	 rRf8Ek+/ZDa+Qejf0qtAUbghtmyH79P6f8oF6gWzWi5EsEgoqRwwEXO3Cx4407/FwO
-	 PCOGMt7El6+COk68DAy2Tdq2UQiB4N6t+9hpJlPnQPZVhkkxyM5bfcpxlpAbMziSQA
-	 k2Bf86rppnvuRVqru9kYJ5VPCjVKsC3wvWVVGnCQeSizGTMCL+7eGdD3f6p5dvvEgM
-	 3bQQWkSRsQ6D0J7iblUTlvTDL0vW4p+4589QMBVhzz9pHeUN967RVavg6lXMEP5l+x
-	 iuUZbwrLeLIKQ==
+	s=default; t=1725923277;
+	bh=aYAyMfLl/WUrDLg4a8DaG06/0qHg3UpC2Vl5hbZIRbk=;
+	h=From:Date:To:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=tnYTdR8UILGaN7LLblLEemFZQZ4bBFNbBhqt9BLOalfEgK8z2lx5FZnGTrZNahgtF
+	 +145VRHg8uahktWtwg/LLqV83Om2PrfXCQxxlRAUxpXU1DxPOIsMACa+Ske9QdjOFs
+	 uyzczIBeo5XbI1FltUoms9bO8TNCJqnHoOm5XuWNu4by1BLtwWSoD73QBEJErpHhJm
+	 7doDy3TYEjIbt4K3JtUCsiKwRQgrYBD5S9C9/Snvg4k8GYcARvYmQhdu49ebEoSAHZ
+	 2mIdC4L3/3S+MAUvq2QGJ8Ccx3Ys63Lgj+NWGa1hRgPTfEc/Qn7JKl0RyXBuSBi9xZ
+	 uV1ZbtfwZkDhg==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 4BB5F60830;
-	Mon,  9 Sep 2024 23:05:58 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id C442D60828;
+	Mon,  9 Sep 2024 23:07:57 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 635D61BF300
- for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Sep 2024 23:05:55 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id DEDEA1BF300
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Sep 2024 23:07:55 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 5152E40298
- for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Sep 2024 23:05:55 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id CA0B16082B
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Sep 2024 23:07:55 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Mp-vxLcWV0eY for <intel-wired-lan@lists.osuosl.org>;
- Mon,  9 Sep 2024 23:05:54 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.9;
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id em8L8jAobxvB for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  9 Sep 2024 23:07:55 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.16;
  helo=mgamail.intel.com; envelope-from=jacob.e.keller@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 3F986400D0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3F986400D0
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.9])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 3F986400D0
- for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Sep 2024 23:05:54 +0000 (UTC)
-X-CSE-ConnectionGUID: aRymXM3yS12peKxjkswyUA==
-X-CSE-MsgGUID: npulecXxQYGuwGbqlC7SYA==
-X-IronPort-AV: E=McAfee;i="6700,10204,11190"; a="35312319"
-X-IronPort-AV: E=Sophos;i="6.10,215,1719903600"; d="scan'208";a="35312319"
-Received: from orviesa007.jf.intel.com ([10.64.159.147])
- by fmvoesa103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 09 Sep 2024 16:05:52 -0700
-X-CSE-ConnectionGUID: Yjd2O4WJRbWWr+0o5f3f3g==
-X-CSE-MsgGUID: jrERLkOXRc+OCreFE8YHLg==
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org BF6D860824
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org BF6D860824
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.16])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id BF6D860824
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  9 Sep 2024 23:07:54 +0000 (UTC)
+X-CSE-ConnectionGUID: GybAOTq1TFGILXAHOJZujQ==
+X-CSE-MsgGUID: rnQeBH+nQpOp7Ot1rHrEVg==
+X-IronPort-AV: E=McAfee;i="6700,10204,11190"; a="13448221"
+X-IronPort-AV: E=Sophos;i="6.10,215,1719903600"; d="scan'208";a="13448221"
+Received: from fmviesa003.fm.intel.com ([10.60.135.143])
+ by fmvoesa110.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 09 Sep 2024 16:07:55 -0700
+X-CSE-ConnectionGUID: 836AJHWrRwGkaJVLHwodSg==
+X-CSE-MsgGUID: p3wVobsTTPCsYivRXW/mDQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.10,215,1719903600"; d="scan'208";a="67358479"
+X-IronPort-AV: E=Sophos;i="6.10,215,1719903600"; d="scan'208";a="70940069"
 Received: from jekeller-desk.jf.intel.com ([10.166.241.20])
- by orviesa007-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 09 Sep 2024 16:05:52 -0700
+ by fmviesa003-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 09 Sep 2024 16:07:54 -0700
 From: Jacob Keller <jacob.e.keller@intel.com>
-Date: Mon, 09 Sep 2024 16:05:44 -0700
+Date: Mon, 09 Sep 2024 16:07:43 -0700
+Message-Id: <20240909-e810-live-migration-jk-per-queue-max-frame-rx-buf-len-v1-0-f955205bc78f@intel.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20240909-e810-live-migration-jk-vf-rxdid-cleanup-v1-2-e53a024980fd@intel.com>
-References: <20240909-e810-live-migration-jk-vf-rxdid-cleanup-v1-0-e53a024980fd@intel.com>
-In-Reply-To: <20240909-e810-live-migration-jk-vf-rxdid-cleanup-v1-0-e53a024980fd@intel.com>
-To: Anthony Nguyen <anthony.l.nguyen@intel.com>, 
- Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
+X-B4-Tracking: v=1; b=H4sIAL9/32YC/6WOTQ6CMBCFr2Jm7ZgWSQBX3sOwKHSA0VJwgIoh3
+ N2GK7h8P3nf22AiYZrgdtpAKPDEg49Cn09Qd8a3hGyjhkQlqcqTAinXCh0Hwp5bMXPs4/OFIwm
+ +F1qibVZsxPSEsmK1NOjIo1VZrc210spmELdHoYbXg/sA/jj0tM5QxqTjaR7kexwK+sj/ZAeNC
+ otK27ROlMkLc2c/k7vUQw/lvu8/HSrnSQQBAAA=
+To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>, 
+ Anthony Nguyen <anthony.l.nguyen@intel.com>
 X-Mailer: b4 0.14.1
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1725923154; x=1757459154;
- h=from:date:subject:mime-version:content-transfer-encoding:
- message-id:references:in-reply-to:to:cc;
- bh=UT0lrbCJFwByISkL421YwI83Nrzujzcwlianq9XOJ1A=;
- b=AdRfyAO3K4pOyP7SJcPzI1PKagXWqcZ0fnaCoFPW9bBWmH+CuMRpV91d
- v4ApkVoSFSNLWQOREsFe7eupo1IWzl54qzxzhVimFi3JtH/5PB9vHjyAK
- SFBU8R2/qxTZGsO28EFueWFHZDqZw2IMvAiTgEiSjiRLrHc05xMcCAOU0
- mhL4+VcLyLfkoovAmKO9iaLKHY0gGOcdxr5Rmvv395egGwi6LS1g7TGRR
- 3UxuS5MZgSeKx5GuJUUc54hDyd4YIFWWDBQrh+B4IKsIpmHr8WHks3WgC
- +Svoh3y/omVJZVdR9FA3NuilHvsD6UfIBhsrNBPL6tU8HSY4kVK8NylXf
- A==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ t=1725923275; x=1757459275;
+ h=from:subject:date:message-id:mime-version:
+ content-transfer-encoding:to:cc;
+ bh=VgAXP5zJbU+kjVnhnW7wmCq7L79zL/IE3NNPEpYScUk=;
+ b=nCH5s7OBB7bgkOfqVrxbUHlOvDk8LnJFL+eB2BB8MukH7vGV3dx9zmJJ
+ EAAS/D57/qFDIw6FPBD99dnifcqOj7dsUgGkJEwu6xdPryKMDcRfEmHT+
+ Th43Jf+z9Rwop4p6ozAQ2QC1xvDBovISleCccdPoxqBeU4XFw/Lih/YSp
+ 6hQt+BFa+W1L02JJrR05sTy76F5goz8gxG+7D6lylUDbMHrkiTVfujLqh
+ +bbYvFIG/gTBqsb09QyS4rYhDnttNLAaMk5AlXEudi7wKJzPooJB8Mb+q
+ jzsoFoajkknFOXpC55PtTthbRVO7+UUtMuVzdF53qe2V9cFQPEnRkWvpN
+ w==;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=AdRfyAO3
-Subject: [Intel-wired-lan] [PATCH iwl-next 2/2] ice: use stack variable for
- virtchnl_supported_rxdids
+ header.s=Intel header.b=nCH5s7OB
+Subject: [Intel-wired-lan] [PATCH iwl-next 0/2] ice: store max frame and
+ rx_buf_len only in ice_rx_ring
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -113,72 +114,48 @@ Cc: Jacob Keller <jacob.e.keller@intel.com>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-The ice_vc_query_rxdid() function allocates memory to store the
-virtchnl_supported_rxdids structure used to communicate the bitmap of
-supported RXDIDs to a VF.
+While working on ice VF Live Migration support, I noticed some oddities
+with how the vsi->max_frame and vsi->rx_buf_len fields are used.
+Technically, both the hardware and virtchnl interface allow a VF to set
+per-queue maximum frame size and buffer lengths. The existing code does
+this in a surprising and non-intuitive way by setting the VSI variables for
+each VF queue in between programming the queues during bring-up.
 
-This structure is only 8 bytes in size. The function must hold the
-allocated length on the stack as well as the pointer to the structure which
-itself is 8 bytes. Allocating this storage on the heap adds unnecessary
-overhead including a potential error path that must be handled in case
-kzalloc fails. Because this structure is so small, we're not saving stack
-space. Additionally, because we must ensure that we free the allocated
-memory, the return value from ice_vc_send_msg_to_vf() must also be saved in
-the stack ret variable. Depending on compiler optimization, this means
-allocating the 8-byte structure is requiring up to 16-bytes of stack
-memory!
+I ran into this when accidentally assuming that the max_frame variable was
+constant for a given VF VSI, and not per-queue.
 
-Simplify this function to keep the rxdid variable on the stack, saving
-memory and removing a potential failure exit path from this function.
+Instead of keeping the per-VSI values, replace them with per-ring values.
+We already have rx_buf_len for the hotpath, so we can just add max_frame.
+Better yet, the structure has gaps, so we're not wasting any additional
+space.
+
+This refactor simplifies the logic for programming the VF and removes the
+surprise of overwriting the ring->rx_buf_len with the vsi->rx_buf_len when
+programming.
+
+While implementing this change, I also noticed that the ring accessed when
+programming the Rx rings was sometimes indexed via the q_idx and sometimes
+indexed by the 'i' iterator over the queue pair array. Nothing validated
+that these two values are equivalent. It makes sense to only interact with
+the ring via the q_idx so that we are consistent in the event that these
+values differ.
 
 Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
-Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
 ---
- drivers/net/ethernet/intel/ice/ice_virtchnl.c | 20 ++++----------------
- 1 file changed, 4 insertions(+), 16 deletions(-)
+Jacob Keller (2):
+      ice: consistently use q_idx in ice_vc_cfg_qs_msg()
+      ice: store max_frame and rx_buf_len only in ice_rx_ring
 
-diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl.c b/drivers/net/ethernet/intel/ice/ice_virtchnl.c
-index 5f3166877830..09150287cf35 100644
---- a/drivers/net/ethernet/intel/ice/ice_virtchnl.c
-+++ b/drivers/net/ethernet/intel/ice/ice_virtchnl.c
-@@ -2700,10 +2700,8 @@ static int ice_vc_set_rss_hena(struct ice_vf *vf, u8 *msg)
- static int ice_vc_query_rxdid(struct ice_vf *vf)
- {
- 	enum virtchnl_status_code v_ret = VIRTCHNL_STATUS_SUCCESS;
--	struct virtchnl_supported_rxdids *rxdid = NULL;
-+	struct virtchnl_supported_rxdids rxdid = {};
- 	struct ice_pf *pf = vf->pf;
--	int len = 0;
--	int ret;
- 
- 	if (!test_bit(ICE_VF_STATE_ACTIVE, vf->vf_states)) {
- 		v_ret = VIRTCHNL_STATUS_ERR_PARAM;
-@@ -2715,21 +2713,11 @@ static int ice_vc_query_rxdid(struct ice_vf *vf)
- 		goto err;
- 	}
- 
--	len = sizeof(struct virtchnl_supported_rxdids);
--	rxdid = kzalloc(len, GFP_KERNEL);
--	if (!rxdid) {
--		v_ret = VIRTCHNL_STATUS_ERR_NO_MEMORY;
--		len = 0;
--		goto err;
--	}
--
--	rxdid->supported_rxdids = pf->supported_rxdids;
-+	rxdid.supported_rxdids = pf->supported_rxdids;
- 
- err:
--	ret = ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_GET_SUPPORTED_RXDIDS,
--				    v_ret, (u8 *)rxdid, len);
--	kfree(rxdid);
--	return ret;
-+	return ice_vc_send_msg_to_vf(vf, VIRTCHNL_OP_GET_SUPPORTED_RXDIDS,
-+				     v_ret, (u8 *)&rxdid, sizeof(rxdid));
- }
- 
- /**
+ drivers/net/ethernet/intel/ice/ice.h          |  3 ---
+ drivers/net/ethernet/intel/ice/ice_txrx.h     |  3 ++-
+ drivers/net/ethernet/intel/ice/ice_base.c     | 34 ++++++++++++++-------------
+ drivers/net/ethernet/intel/ice/ice_virtchnl.c | 26 ++++++++++----------
+ 4 files changed, 32 insertions(+), 34 deletions(-)
+---
+base-commit: bfba7bc8b7c2c100b76edb3a646fdce256392129
+change-id: 20240829-e810-live-migration-jk-per-queue-max-frame-rx-buf-len-d07c1a3b10d7
 
+Best regards,
 -- 
-2.46.0.124.g2dc1a81c8933
+Jacob Keller <jacob.e.keller@intel.com>
 
