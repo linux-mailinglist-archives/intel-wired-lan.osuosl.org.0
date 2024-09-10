@@ -1,77 +1,98 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id A727C9736D7
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 10 Sep 2024 14:08:43 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2B4D8973938
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 10 Sep 2024 15:59:17 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 5430180F76;
-	Tue, 10 Sep 2024 12:08:40 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id CA90040AE7;
+	Tue, 10 Sep 2024 13:59:13 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 1sFhJdUhTgHo; Tue, 10 Sep 2024 12:08:39 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id eKUmS7BRz8_H; Tue, 10 Sep 2024 13:59:12 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D00D580F79
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 0AFA940279
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1725970118;
-	bh=dHWhE/Fwwy2CDLWRhGm4iGzOqHbm7qfIQvasLXygzpk=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=n/5yPSARqln9EhhzBQJGgujIfpNxodNP2bA6JitIENHeyxq1MQjiIlQEs93QECuQd
-	 +Up+wAKGFCS4JMeaH69eHMILHyYukjUkkEpUzsFFqPE9Actq2aIzQ1lEhdvOpImnjX
-	 DkA7sVsqx6jx0RNxG0TkW1DQdlxovWr+SlsTdn4JWxO8SKsjIP5dDsUgparURFHGvC
-	 /Hx9xVcKZYxLzMEp+QxjgtmaOx6a32Zm+JiTcFd5R8UV3FY+TPQS/ipJ1VEtUfXs8a
-	 n/KdeQ4zFR1j36hp2Pc2ZYw9ErUkI3QEU+e2ndiTyEGQE5yE9wqe/eZaFDhNC6Ib6q
-	 ApAnq1OHMG5MA==
+	s=default; t=1725976752;
+	bh=2HztyNoO1nGgjvlQC+D39X9viw9H/zBf9TVtd3wP/5E=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=3KWlZwMpTsfdiWS+LmAH4PCR6ZA6tuQLJ5ngezYDuYEWVkroEIToUXQa41mLceNSC
+	 OP4SsMPZK/6MAaMbwC6m+xsa38WLOaoeUvidD7rVgrZ+xKMV5PCobA5bd+Ge2X4nrM
+	 1Rwtp+QnuTkOK+7gcHZ1Xy+JPEiQuaafjbpeWd8KQpYL/lrJjV+6zzNZljUH7Dl1kP
+	 SVEVC3TW21EfFduo9oOrpiXSMhiqY9XGInqsrRNZ9DlkmdiELH7GHNzaJJjsCqo0tC
+	 nlMrQObff3LDGMXFwmvgBThwWO2Gncss4ZJByjoG06YSEbUk0agcDo058sqmeQZMte
+	 pNbsZxSyWVwKg==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id D00D580F79;
-	Tue, 10 Sep 2024 12:08:38 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 0AFA940279;
+	Tue, 10 Sep 2024 13:59:12 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 42BC51BF339
- for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Sep 2024 12:08:37 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 99D0F1BF20B
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Sep 2024 13:59:09 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 2F3AC60595
- for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Sep 2024 12:08:37 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 77C6F60883
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Sep 2024 13:59:09 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id dx1mjBdNmqlA for <intel-wired-lan@lists.osuosl.org>;
- Tue, 10 Sep 2024 12:08:35 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=141.14.17.11;
- helo=mx3.molgen.mpg.de; envelope-from=pmenzel@molgen.mpg.de;
+ id v4-VsW_oqzJn for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 10 Sep 2024 13:59:07 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.12;
+ helo=mgamail.intel.com; envelope-from=przemyslaw.kitszel@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org C3CDB60591
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C3CDB60591
-Received: from mx3.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
- by smtp3.osuosl.org (Postfix) with ESMTPS id C3CDB60591
- for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Sep 2024 12:08:33 +0000 (UTC)
-Received: from [141.14.220.45] (g45.guest.molgen.mpg.de [141.14.220.45])
- (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested) (Authenticated sender: pmenzel)
- by mx.molgen.mpg.de (Postfix) with ESMTPSA id 505A761E5FE05;
- Tue, 10 Sep 2024 14:08:02 +0200 (CEST)
-Message-ID: <688515d9-9bf2-4939-a3c6-9b22a886dfb9@molgen.mpg.de>
-Date: Tue, 10 Sep 2024 14:08:01 +0200
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 42AEC60891
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 42AEC60891
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.12])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 42AEC60891
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Sep 2024 13:59:05 +0000 (UTC)
+X-CSE-ConnectionGUID: KW8+WY9wRguiFkXnUUPiJw==
+X-CSE-MsgGUID: 1hmDAVg8TTGMEFR0QZACBA==
+X-IronPort-AV: E=McAfee;i="6700,10204,11191"; a="28614412"
+X-IronPort-AV: E=Sophos;i="6.10,217,1719903600"; d="scan'208";a="28614412"
+Received: from orviesa009.jf.intel.com ([10.64.159.149])
+ by fmvoesa106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 10 Sep 2024 06:59:05 -0700
+X-CSE-ConnectionGUID: iwDbtjOAQqijO85QWaeczg==
+X-CSE-MsgGUID: 4YdcaoniSYyTC8dlThI46w==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.10,217,1719903600"; d="scan'208";a="66997721"
+Received: from irvmail002.ir.intel.com ([10.43.11.120])
+ by orviesa009.jf.intel.com with ESMTP; 10 Sep 2024 06:59:02 -0700
+Received: from pkitszel-desk.tendawifi.com (unknown [10.245.246.31])
+ by irvmail002.ir.intel.com (Postfix) with ESMTP id A1CB427BAD;
+ Tue, 10 Sep 2024 14:59:00 +0100 (IST)
+From: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+To: intel-wired-lan@lists.osuosl.org, Tony Nguyen <anthony.l.nguyen@intel.com>
+Date: Tue, 10 Sep 2024 15:57:21 +0200
+Message-ID: <20240910135814.35693-2-przemyslaw.kitszel@intel.com>
+X-Mailer: git-send-email 2.46.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: Paolo Abeni <pabeni@redhat.com>
-References: <cover.1725919039.git.pabeni@redhat.com>
- <4ac641b1cb3d0b78de3571e394e4c7d2239714f7.1725919039.git.pabeni@redhat.com>
-Content-Language: en-US
-From: Paul Menzel <pmenzel@molgen.mpg.de>
-In-Reply-To: <4ac641b1cb3d0b78de3571e394e4c7d2239714f7.1725919039.git.pabeni@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1725976746; x=1757512746;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=A9vnovoJ6RCpux/CpGxMIlLHjNbXDQ2+KzXezxtkdUo=;
+ b=g9cf6jidMMMkb1LFizYRi7t+jc1tPSizUDRQa9OxsmWiwcluHeaD8qSW
+ Hq+ThB2uiZ9u0Wm6ASyqsY74efhxEtns8VMPceX0vNwBX5LJLdTN5Gdwq
+ v6H3BPnyg01taZ3wdrk2/pOLjlVCeCb/zVb/c7bp4xvkiuTZ3IibdXWDv
+ BiK7xLvsOYhcnbwzHXd3mGamw/nik0SK4H4Am7sglGktGjHlZE8M8657n
+ rB/k7e8g3IEhfxTinkpm1WUcWB6zTKxwEOIfOJAmU3l7Hxuceo/0XXZf/
+ wSU8w1a9XXoJCmHHQwcUzk6Wv+esdXbWVqMNot6KXi2U//Cwzzm/2pWfm
+ g==;
 X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=molgen.mpg.de
-Subject: Re: [Intel-wired-lan] [PATCH v7 net-next 02/15] netlink: spec: add
- shaper YAML spec
+ dmarc=pass (p=none dis=none)
+ header.from=intel.com
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=g9cf6jid
+Subject: [Intel-wired-lan] [PATCH iwl-net v2] ice: fix memleak in
+ ice_init_tx_topology()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,493 +105,250 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Donald Hunter <donald.hunter@gmail.com>, netdev@vger.kernel.org,
- John Fastabend <john.fastabend@gmail.com>, Jamal Hadi Salim <jhs@mojatatu.com>,
- Jakub Kicinski <kuba@kernel.org>, edumazet@google.com,
- Madhu Chittim <madhu.chittim@intel.com>, anthony.l.nguyen@intel.com,
- Simon Horman <horms@kernel.org>,
- Sridhar Samudrala <sridhar.samudrala@intel.com>, Jiri Pirko <jiri@resnulli.us>,
- intel-wired-lan@lists.osuosl.org, przemyslaw.kitszel@intel.com,
- Sunil Kovvuri Goutham <sgoutham@marvell.com>
+Cc: Pucha Himasekhar Reddy <himasekharx.reddy.pucha@intel.com>,
+ Larysa Zaremba <larysa.zaremba@intel.com>, netdev@vger.kernel.org,
+ Mateusz Polchlopek <mateusz.polchlopek@intel.com>,
+ Jacob Keller <jacob.e.keller@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Dear Paolo,
+Fix leak of the FW blob (DDP pkg).
 
+Make ice_cfg_tx_topo() const-correct, so ice_init_tx_topology() can avoid
+copying whole FW blob. Copy just the topology section, and only when
+needed. Reuse the buffer allocated for the read of the current topology.
 
-Thank you for the patch. Some minor nits below.
+This was found by kmemleak, with the following trace for each PF:
+    [<ffffffff8761044d>] kmemdup_noprof+0x1d/0x50
+    [<ffffffffc0a0a480>] ice_init_ddp_config+0x100/0x220 [ice]
+    [<ffffffffc0a0da7f>] ice_init_dev+0x6f/0x200 [ice]
+    [<ffffffffc0a0dc49>] ice_init+0x29/0x560 [ice]
+    [<ffffffffc0a10c1d>] ice_probe+0x21d/0x310 [ice]
 
+Constify ice_cfg_tx_topo() @buf parameter.
+This cascades further down to few more functions.
 
-Am 10.09.24 um 00:09 schrieb Paolo Abeni:
-> Define the user-space visible interface to query, configure and delete
-> network shapers via yaml definition.
-> 
-> Add dummy implementations for the relevant NL callbacks.
-> 
-> set() and delete() operations touch a single shaper creating/updating or
-> deleting it.
-> The group() operation creates a shaper's group, nesting multiple input
-> shapers under the specified output shaper.
-> 
-> Signed-off-by: Paolo Abeni <pabeni@redhat.com>
-> ---
-> v6 -> v7:
->   - s/Minimum g/G/
->   - shaper attributes for set() op are not nested anymore
->   - node attributes for group() op are not nested anymore
-> 
-> v5 -> v6:
->   - moved back ifindex out of binding attr, drop the latter
->   - restrict leaves attributes to scheduling-related ones
-> 
-> v4 -> v5:
->   - moved ifindex under the binding attr
->   - moved id, scope to new attr set
->   - rename 'root' as 'node'
->   - deleted unused 'info' subset
->   - a lot of doc update and fixup
->   - removed empty black line at MAKEFILE eof
-> 
-> v3 -> v4:
->   - spec file rename
->   - always use '@' for references
->   - detached scope -> node scope
->   - inputs/output -> leaves/root
->   - deduplicate leaves/root policy
->   - get/dump/group return ifindex, too
->   - added some general introduction to the doc
-> 
-> RFC v1 -> RFC v2:
->   - u64 -> uint
->   - net_shapers -> net-shapers
->   - documented all the attributes
->   - dropped [ admin-perm ] for get() op
->   - group op
->   - set/delete touch a single shaper
-> ---
->   Documentation/netlink/specs/net_shaper.yaml | 276 ++++++++++++++++++++
->   MAINTAINERS                                 |   1 +
->   include/uapi/linux/net_shaper.h             |  78 ++++++
->   net/Kconfig                                 |   3 +
->   net/Makefile                                |   1 +
->   net/shaper/Makefile                         |   8 +
->   net/shaper/shaper.c                         |  55 ++++
->   net/shaper/shaper_nl_gen.c                  | 125 +++++++++
->   net/shaper/shaper_nl_gen.h                  |  34 +++
->   9 files changed, 581 insertions(+)
->   create mode 100644 Documentation/netlink/specs/net_shaper.yaml
->   create mode 100644 include/uapi/linux/net_shaper.h
->   create mode 100644 net/shaper/Makefile
->   create mode 100644 net/shaper/shaper.c
->   create mode 100644 net/shaper/shaper_nl_gen.c
->   create mode 100644 net/shaper/shaper_nl_gen.h
-> 
-> diff --git a/Documentation/netlink/specs/net_shaper.yaml b/Documentation/netlink/specs/net_shaper.yaml
-> new file mode 100644
-> index 000000000000..cfe55af41d9d
-> --- /dev/null
-> +++ b/Documentation/netlink/specs/net_shaper.yaml
-> @@ -0,0 +1,276 @@
-> +# SPDX-License-Identifier: ((GPL-2.0 WITH Linux-syscall-note) OR BSD-3-Clause)
-> +
-> +name: net-shaper
-> +
-> +doc: |
-> +  Networking HW rate limiting configuration.
-> +
-> +  This API allows configuring HW shapers available on the network
-> +  devices at different levels (queues, network device) and allows
-> +  arbitrary manipulation of the scheduling tree of the involved
-> +  shapers.
-> +
-> +  Each @shaper is identified within the given device, by an @handle,
+Fixes: cc5776fe1832 ("ice: Enable switching default Tx scheduler topology")
+CC: Larysa Zaremba <larysa.zaremba@intel.com>
+CC: Jacob Keller <jacob.e.keller@intel.com>
+CC: Pucha Himasekhar Reddy <himasekharx.reddy.pucha@intel.com>
+CC: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
+Signed-off-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+---
+this patch obsoletes two other, so I'm dropping RB tags
+v1, iwl-net: https://lore.kernel.org/netdev/20240904123306.14629-2-przemyslaw.kitszel@intel.com/
+    wrong assumption that ice_get_set_tx_topo() does not modify the buffer
+    on adminq SET variant, it sometimes does, to fill the response, thanks
+    to Pucha Himasekhar Reddy for finding it out;
+almost-const-correct iwl-next patch:
+https://lore.kernel.org/intel-wired-lan/20240904093135.8795-2-przemyslaw.kitszel@intel.com
+it was just some of this patch, now it is const-correct
+---
+ drivers/net/ethernet/intel/ice/ice_ddp.h  |  4 +-
+ drivers/net/ethernet/intel/ice/ice_ddp.c  | 58 +++++++++++------------
+ drivers/net/ethernet/intel/ice/ice_main.c |  8 +---
+ 3 files changed, 31 insertions(+), 39 deletions(-)
 
-*a* handle?
+diff --git a/drivers/net/ethernet/intel/ice/ice_ddp.h b/drivers/net/ethernet/intel/ice/ice_ddp.h
+index 622543f08b43..00840e5a1077 100644
+--- a/drivers/net/ethernet/intel/ice/ice_ddp.h
++++ b/drivers/net/ethernet/intel/ice/ice_ddp.h
+@@ -430,7 +430,7 @@ struct ice_pkg_enum {
+ 	u32 buf_idx;
+ 
+ 	u32 type;
+-	struct ice_buf_hdr *buf;
++	const struct ice_buf_hdr *buf;
+ 	u32 sect_idx;
+ 	void *sect;
+ 	u32 sect_type;
+@@ -454,6 +454,6 @@ u16 ice_pkg_buf_get_active_sections(struct ice_buf_build *bld);
+ void *ice_pkg_enum_section(struct ice_seg *ice_seg, struct ice_pkg_enum *state,
+ 			   u32 sect_type);
+ 
+-int ice_cfg_tx_topo(struct ice_hw *hw, u8 *buf, u32 len);
++int ice_cfg_tx_topo(struct ice_hw *hw, const void *buf, u32 len);
+ 
+ #endif
+diff --git a/drivers/net/ethernet/intel/ice/ice_ddp.c b/drivers/net/ethernet/intel/ice/ice_ddp.c
+index f182179529b7..6b60b7c4de09 100644
+--- a/drivers/net/ethernet/intel/ice/ice_ddp.c
++++ b/drivers/net/ethernet/intel/ice/ice_ddp.c
+@@ -31,7 +31,7 @@ static const struct ice_tunnel_type_scan tnls[] = {
+  * Verifies various attributes of the package file, including length, format
+  * version, and the requirement of at least one segment.
+  */
+-static enum ice_ddp_state ice_verify_pkg(struct ice_pkg_hdr *pkg, u32 len)
++static enum ice_ddp_state ice_verify_pkg(const struct ice_pkg_hdr *pkg, u32 len)
+ {
+ 	u32 seg_count;
+ 	u32 i;
+@@ -57,13 +57,13 @@ static enum ice_ddp_state ice_verify_pkg(struct ice_pkg_hdr *pkg, u32 len)
+ 	/* all segments must fit within length */
+ 	for (i = 0; i < seg_count; i++) {
+ 		u32 off = le32_to_cpu(pkg->seg_offset[i]);
+-		struct ice_generic_seg_hdr *seg;
++		const struct ice_generic_seg_hdr *seg;
+ 
+ 		/* segment header must fit */
+ 		if (len < off + sizeof(*seg))
+ 			return ICE_DDP_PKG_INVALID_FILE;
+ 
+-		seg = (struct ice_generic_seg_hdr *)((u8 *)pkg + off);
++		seg = (void *)pkg + off;
+ 
+ 		/* segment body must fit */
+ 		if (len < off + le32_to_cpu(seg->seg_size))
+@@ -119,13 +119,13 @@ static enum ice_ddp_state ice_chk_pkg_version(struct ice_pkg_ver *pkg_ver)
+  *
+  * This helper function validates a buffer's header.
+  */
+-static struct ice_buf_hdr *ice_pkg_val_buf(struct ice_buf *buf)
++static const struct ice_buf_hdr *ice_pkg_val_buf(const struct ice_buf *buf)
+ {
+-	struct ice_buf_hdr *hdr;
++	const struct ice_buf_hdr *hdr;
+ 	u16 section_count;
+ 	u16 data_end;
+ 
+-	hdr = (struct ice_buf_hdr *)buf->buf;
++	hdr = (const struct ice_buf_hdr *)buf->buf;
+ 	/* verify data */
+ 	section_count = le16_to_cpu(hdr->section_count);
+ 	if (section_count < ICE_MIN_S_COUNT || section_count > ICE_MAX_S_COUNT)
+@@ -165,8 +165,8 @@ static struct ice_buf_table *ice_find_buf_table(struct ice_seg *ice_seg)
+  * unexpected value has been detected (for example an invalid section count or
+  * an invalid buffer end value).
+  */
+-static struct ice_buf_hdr *ice_pkg_enum_buf(struct ice_seg *ice_seg,
+-					    struct ice_pkg_enum *state)
++static const struct ice_buf_hdr *ice_pkg_enum_buf(struct ice_seg *ice_seg,
++						  struct ice_pkg_enum *state)
+ {
+ 	if (ice_seg) {
+ 		state->buf_table = ice_find_buf_table(ice_seg);
+@@ -1800,9 +1800,9 @@ int ice_update_pkg(struct ice_hw *hw, struct ice_buf *bufs, u32 count)
+  * success it returns a pointer to the segment header, otherwise it will
+  * return NULL.
+  */
+-static struct ice_generic_seg_hdr *
++static const struct ice_generic_seg_hdr *
+ ice_find_seg_in_pkg(struct ice_hw *hw, u32 seg_type,
+-		    struct ice_pkg_hdr *pkg_hdr)
++		    const struct ice_pkg_hdr *pkg_hdr)
+ {
+ 	u32 i;
+ 
+@@ -1813,11 +1813,9 @@ ice_find_seg_in_pkg(struct ice_hw *hw, u32 seg_type,
+ 
+ 	/* Search all package segments for the requested segment type */
+ 	for (i = 0; i < le32_to_cpu(pkg_hdr->seg_count); i++) {
+-		struct ice_generic_seg_hdr *seg;
++		const struct ice_generic_seg_hdr *seg;
+ 
+-		seg = (struct ice_generic_seg_hdr
+-			       *)((u8 *)pkg_hdr +
+-				  le32_to_cpu(pkg_hdr->seg_offset[i]));
++		seg = (void *)pkg_hdr + le32_to_cpu(pkg_hdr->seg_offset[i]);
+ 
+ 		if (le32_to_cpu(seg->seg_type) == seg_type)
+ 			return seg;
+@@ -2354,12 +2352,12 @@ ice_get_set_tx_topo(struct ice_hw *hw, u8 *buf, u16 buf_size,
+  *
+  * Return: zero when update was successful, negative values otherwise.
+  */
+-int ice_cfg_tx_topo(struct ice_hw *hw, u8 *buf, u32 len)
++int ice_cfg_tx_topo(struct ice_hw *hw, const void *buf, u32 len)
+ {
+-	u8 *current_topo, *new_topo = NULL;
+-	struct ice_run_time_cfg_seg *seg;
+-	struct ice_buf_hdr *section;
+-	struct ice_pkg_hdr *pkg_hdr;
++	u8 *new_topo = NULL, *topo __free(kfree) = NULL;
++	const struct ice_run_time_cfg_seg *seg;
++	const struct ice_buf_hdr *section;
++	const struct ice_pkg_hdr *pkg_hdr;
+ 	enum ice_ddp_state state;
+ 	u16 offset, size = 0;
+ 	u32 reg = 0;
+@@ -2375,15 +2373,13 @@ int ice_cfg_tx_topo(struct ice_hw *hw, u8 *buf, u32 len)
+ 		return -EOPNOTSUPP;
+ 	}
+ 
+-	current_topo = kzalloc(ICE_AQ_MAX_BUF_LEN, GFP_KERNEL);
+-	if (!current_topo)
++	topo = kzalloc(ICE_AQ_MAX_BUF_LEN, GFP_KERNEL);
++	if (!topo)
+ 		return -ENOMEM;
+ 
+-	/* Get the current Tx topology */
+-	status = ice_get_set_tx_topo(hw, current_topo, ICE_AQ_MAX_BUF_LEN, NULL,
+-				     &flags, false);
+-
+-	kfree(current_topo);
++	/* Get the current Tx topology flags */
++	status = ice_get_set_tx_topo(hw, topo, ICE_AQ_MAX_BUF_LEN, NULL, &flags,
++				     false);
+ 
+ 	if (status) {
+ 		ice_debug(hw, ICE_DBG_INIT, "Get current topology is failed\n");
+@@ -2419,16 +2415,16 @@ int ice_cfg_tx_topo(struct ice_hw *hw, u8 *buf, u32 len)
+ 		goto update_topo;
+ 	}
+ 
+-	pkg_hdr = (struct ice_pkg_hdr *)buf;
++	pkg_hdr = (const struct ice_pkg_hdr *)buf;
+ 	state = ice_verify_pkg(pkg_hdr, len);
+ 	if (state) {
+ 		ice_debug(hw, ICE_DBG_INIT, "Failed to verify pkg (err: %d)\n",
+ 			  state);
+ 		return -EIO;
+ 	}
+ 
+ 	/* Find runtime configuration segment */
+-	seg = (struct ice_run_time_cfg_seg *)
++	seg = (const struct ice_run_time_cfg_seg *)
+ 	      ice_find_seg_in_pkg(hw, SEGMENT_TYPE_ICE_RUN_TIME_CFG, pkg_hdr);
+ 	if (!seg) {
+ 		ice_debug(hw, ICE_DBG_INIT, "5 layer topology segment is missing\n");
+@@ -2461,8 +2457,10 @@ int ice_cfg_tx_topo(struct ice_hw *hw, u8 *buf, u32 len)
+ 		return -EIO;
+ 	}
+ 
+-	/* Get the new topology buffer */
+-	new_topo = ((u8 *)section) + offset;
++	/* Get the new topology buffer, reuse current topo copy mem */
++	static_assert(ICE_PKG_BUF_SIZE == ICE_AQ_MAX_BUF_LEN);
++	new_topo = topo;
++	memcpy(new_topo, (u8 *)section + offset, size);
+ 
+ update_topo:
+ 	/* Acquire global lock to make sure that set topology issued
+diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
+index c7db88b517da..30b94eca32b1 100644
+--- a/drivers/net/ethernet/intel/ice/ice_main.c
++++ b/drivers/net/ethernet/intel/ice/ice_main.c
+@@ -4548,16 +4548,10 @@ ice_init_tx_topology(struct ice_hw *hw, const struct firmware *firmware)
+ 	u8 num_tx_sched_layers = hw->num_tx_sched_layers;
+ 	struct ice_pf *pf = hw->back;
+ 	struct device *dev;
+-	u8 *buf_copy;
+ 	int err;
+ 
+ 	dev = ice_pf_to_dev(pf);
+-	/* ice_cfg_tx_topo buf argument is not a constant,
+-	 * so we have to make a copy
+-	 */
+-	buf_copy = kmemdup(firmware->data, firmware->size, GFP_KERNEL);
+-
+-	err = ice_cfg_tx_topo(hw, buf_copy, firmware->size);
++	err = ice_cfg_tx_topo(hw, firmware->data, firmware->size);
+ 	if (!err) {
+ 		if (hw->num_tx_sched_layers > num_tx_sched_layers)
+ 			dev_info(dev, "Tx scheduling layers switching feature disabled\n");
 
-> +  comprising both a @scope and an @id.
-> +
-> +  Depending on the @scope value, the shapers are attached to specific
-> +  HW objects (queues, devices) or, for @node scope, represent a
-> +  scheduling group, that can be placed in an arbitrary location of
-> +  the scheduling tree.
-> +
-> +  Shapers can be created with two different operations: the @set
-> +  operation, to create and update a single "attached" shaper, and
-> +  the @group operation, to create and update a scheduling
+base-commit: b3c9e65eb227269ed72a115ba22f4f51b4e62b4d
+-- 
+2.46.0
 
-I think no comma needed before the two *to*s.
-
-> +  group. Only the @group operation can create @node scope shapers
-
-Add a dot/period at the end?
-
-> +
-> +  Existing shapers can be deleted/reset via the @delete operation.
-> +
-> +  The user can query the running configuration via the @get operation.
-> +
-> +definitions:
-> +  -
-> +    type: enum
-> +    name: scope
-> +    doc: Defines the shaper @id interpretation.
-> +    render-max: true
-> +    entries:
-> +      - name: unspec
-> +        doc: The scope is not specified.
-> +      -
-> +        name: netdev
-> +        doc: The main shaper for the given network device.
-> +      -
-> +        name: queue
-> +        doc: |
-> +            The shaper is attached to the given device queue,
-> +            the @id represents the queue number.
-> +      -
-> +        name: node
-> +        doc: |
-> +             The shaper allows grouping of queues or other
-> +             node shapers; can be nested in either @netdev
-> +             shapers or other @node shapers, allowing placement
-> +             in any location of the scheduling tree, except
-> +             leaves and root.
-> +  -
-> +    type: enum
-> +    name: metric
-> +    doc: Different metric supported by the shaper.
-> +    entries:
-> +      -
-> +        name: bps
-> +        doc: Shaper operates on a bits per second basis.
-> +      -
-> +        name: pps
-> +        doc: Shaper operates on a packets per second basis.
-> +
-> +attribute-sets:
-> +  -
-> +    name: net-shaper
-> +    attributes:
-> +      -
-> +        name: handle
-> +        type: nest
-> +        nested-attributes: handle
-> +        doc: Unique identifier for the given shaper inside the owning device.
-> +      -
-> +        name: metric
-> +        type: u32
-> +        enum: metric
-> +        doc: Metric used by the given shaper for bw-min, bw-max and burst.
-> +      -
-> +        name: bw-min
-> +        type: uint
-> +        doc: Guaranteed bandwidth for the given shaper.
-> +      -
-> +        name: bw-max
-> +        type: uint
-> +        doc: Maximum bandwidth for the given shaper or 0 when unlimited.
-> +      -
-> +        name: burst
-> +        type: uint
-> +        doc: |
-> +          Maximum burst-size for shaping. Should not be interpreted
-> +          as a quantum.
-> +      -
-> +        name: priority
-> +        type: u32
-> +        doc: |
-> +          Scheduling priority for the given shaper. The priority
-> +          scheduling is applied to sibling shapers.
-> +      -
-> +        name: weight
-> +        type: u32
-> +        doc: |
-> +          Relative weight for round robin scheduling of the
-> +          given shaper.
-> +          The scheduling is applied to all sibling shapers
-> +          with the same priority.
-> +      -
-> +        name: ifindex
-> +        type: u32
-> +        doc: Interface index owning the specified shaper.
-> +      -
-> +        name: parent
-> +        type: nest
-> +        nested-attributes: handle
-> +        doc: |
-> +          Identifier for the parent of the affected shaper.
-> +          Only needed for @group operation.
-> +      -
-> +        name: leaves
-> +        type: nest
-> +        multi-attr: true
-> +        nested-attributes: leaf-info
-> +        doc: |
-> +           Describes a set of leaves shapers for a @group operation.
-> +  -
-> +    name: handle
-> +    attributes:
-> +      -
-> +        name: scope
-> +        type: u32
-> +        enum: scope
-> +        doc: Defines the shaper @id interpretation.
-> +      -
-> +        name: id
-> +        type: u32
-> +        doc: |
-> +          Numeric identifier of a shaper. The id semantic depends on
-> +          the scope. For @queue scope it's the queue id and for @node
-> +          scope it's the node identifier.
-> +  -
-> +    name: leaf-info
-> +    subset-of: net-shaper
-> +    attributes:
-> +      -
-> +        name: handle
-> +      -
-> +        name: priority
-> +      -
-> +        name: weight
-> +
-> +operations:
-> +  list:
-> +    -
-> +      name: get
-> +      doc: |
-> +        Get information about a shaper for a given device.
-> +      attribute-set: net-shaper
-> +
-> +      do:
-> +        pre: net-shaper-nl-pre-doit
-> +        post: net-shaper-nl-post-doit
-> +        request:
-> +          attributes: &ns-binding
-> +            - ifindex
-> +            - handle
-> +        reply:
-> +          attributes: &ns-attrs
-> +            - ifindex
-> +            - parent
-> +            - handle
-> +            - metric
-> +            - bw-min
-> +            - bw-max
-> +            - burst
-> +            - priority
-> +            - weight
-> +
-> +      dump:
-> +        pre: net-shaper-nl-pre-dumpit
-> +        post: net-shaper-nl-post-dumpit
-> +        request:
-> +          attributes:
-> +            - ifindex
-> +        reply:
-> +          attributes: *ns-attrs
-> +    -
-> +      name: set
-> +      doc: |
-> +        Create or update the specified shaper.
-> +        The set operation can't be used to create a @node scope shaper,
-> +        use the @group operation instead.
-> +      attribute-set: net-shaper
-> +      flags: [ admin-perm ]
-> +
-> +      do:
-> +        pre: net-shaper-nl-pre-doit
-> +        post: net-shaper-nl-post-doit
-> +        request:
-> +          attributes:
-> +            - ifindex
-> +            - handle
-> +            - metric
-> +            - bw-min
-> +            - bw-max
-> +            - burst
-> +            - priority
-> +            - weight
-> +
-> +    -
-> +      name: delete
-> +      doc: |
-> +        Clear (remove) the specified shaper. When deleting
-> +        a @node shaper, reattach all the node's leaves to the
-> +        deleted node's parent.
-> +        If, after the removal, the parent shaper has no more
-> +        leaves and the parent shaper scope is @node, the parent
-> +        node is deleted, recursively.
-> +        When deleting a @queue shaper or a @netdev shaper,
-> +        the shaper disappears from the hierarchy, but the
-> +        queue/device can still send traffic: it has an implicit
-> +        node with infinite bandwidth. Queue's implicit node
-
-Maybe: The queue’s implicit node …
-
-> +        feeds an implicit RR node at the root of the hierarchy.
-> +      attribute-set: net-shaper
-> +      flags: [ admin-perm ]
-> +
-> +      do:
-> +        pre: net-shaper-nl-pre-doit
-> +        post: net-shaper-nl-post-doit
-> +        request:
-> +          attributes: *ns-binding
-> +
-> +    -
-> +      name: group
-> +      doc: |
-> +        Create or update a scheduling group, attaching the specified
-> +        @leaves shapers under the specified node identified by @handle,
-> +        creating the latter, if needed.
-> +        The @leaves shapers scope must be @queue and the node shaper
-> +        scope must be either @node or @netdev.
-> +        When the node shaper has @node scope, if the @handle @id is not
-> +        specified, a new shaper of such scope is created, otherwise the
-> +        specified node must already exist.
-> +        The @parent handle for the node shaper is optional in most cases.
-> +        For newly created node scope shaper, the node parent is set by
-> +        default to the parent linked to the @leaves before the @group
-> +        operation. If, prior to the grouping operation, the @leaves
-> +        have different parents, the node shaper @parent must be explicitly
-> +        set.
-> +        The user can optionally provide shaping attributes for the node
-> +        shaper.
-> +        The operation is atomic, on failure no change is applied to
-> +        the device shaping configuration, otherwise the @node shaper
-> +        full identifier, comprising @binding and @handle, is provided
-> +        as the reply.
-> +      attribute-set: net-shaper
-> +      flags: [ admin-perm ]
-> +
-> +      do:
-> +        pre: net-shaper-nl-pre-doit
-> +        post: net-shaper-nl-post-doit
-> +        request:
-> +          attributes:
-> +            - ifindex
-> +            - parent
-> +            - handle
-> +            - metric
-> +            - bw-min
-> +            - bw-max
-> +            - burst
-> +            - priority
-> +            - weight
-> +            - leaves
-> +        reply:
-> +          attributes: *ns-binding
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index ca1469d52076..e3d95488d61c 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -15915,6 +15915,7 @@ F:	include/linux/platform_data/wiznet.h
->   F:	include/uapi/linux/cn_proc.h
->   F:	include/uapi/linux/ethtool_netlink.h
->   F:	include/uapi/linux/if_*
-> +F:	include/uapi/linux/net_shaper.h
->   F:	include/uapi/linux/netdev*
->   F:	tools/testing/selftests/drivers/net/
->   X:	Documentation/devicetree/bindings/net/bluetooth/
-> diff --git a/include/uapi/linux/net_shaper.h b/include/uapi/linux/net_shaper.h
-> new file mode 100644
-> index 000000000000..9e3fa63618ee
-> --- /dev/null
-> +++ b/include/uapi/linux/net_shaper.h
-> @@ -0,0 +1,78 @@
-> +/* SPDX-License-Identifier: ((GPL-2.0 WITH Linux-syscall-note) OR BSD-3-Clause) */
-> +/* Do not edit directly, auto-generated from: */
-> +/*	Documentation/netlink/specs/net_shaper.yaml */
-> +/* YNL-GEN uapi header */
-> +
-> +#ifndef _UAPI_LINUX_NET_SHAPER_H
-> +#define _UAPI_LINUX_NET_SHAPER_H
-> +
-> +#define NET_SHAPER_FAMILY_NAME		"net-shaper"
-> +#define NET_SHAPER_FAMILY_VERSION	1
-> +
-> +/**
-> + * enum net_shaper_scope - Defines the shaper @id interpretation.
-> + * @NET_SHAPER_SCOPE_UNSPEC: The scope is not specified.
-> + * @NET_SHAPER_SCOPE_NETDEV: The main shaper for the given network device.
-> + * @NET_SHAPER_SCOPE_QUEUE: The shaper is attached to the given device queue,
-> + *   the @id represents the queue number.
-> + * @NET_SHAPER_SCOPE_NODE: The shaper allows grouping of queues or other node
-> + *   shapers; can be nested in either @netdev shapers or other @node shapers,
-> + *   allowing placement in any location of the scheduling tree, except leaves
-> + *   and root.
-> + */
-> +enum net_shaper_scope {
-> +	NET_SHAPER_SCOPE_UNSPEC,
-> +	NET_SHAPER_SCOPE_NETDEV,
-> +	NET_SHAPER_SCOPE_QUEUE,
-> +	NET_SHAPER_SCOPE_NODE,
-> +
-> +	/* private: */
-> +	__NET_SHAPER_SCOPE_MAX,
-> +	NET_SHAPER_SCOPE_MAX = (__NET_SHAPER_SCOPE_MAX - 1)
-> +};
-> +
-> +/**
-> + * enum net_shaper_metric - Different metric supported by the shaper.
-> + * @NET_SHAPER_METRIC_BPS: Shaper operates on a bits per second basis.
-> + * @NET_SHAPER_METRIC_PPS: Shaper operates on a packets per second basis.
-> + */
-> +enum net_shaper_metric {
-> +	NET_SHAPER_METRIC_BPS,
-> +	NET_SHAPER_METRIC_PPS,
-> +};
-> +
-> +enum {
-> +	NET_SHAPER_A_HANDLE = 1,
-> +	NET_SHAPER_A_METRIC,
-> +	NET_SHAPER_A_BW_MIN,
-> +	NET_SHAPER_A_BW_MAX,
-> +	NET_SHAPER_A_BURST,
-> +	NET_SHAPER_A_PRIORITY,
-> +	NET_SHAPER_A_WEIGHT,
-> +	NET_SHAPER_A_IFINDEX,
-> +	NET_SHAPER_A_PARENT,
-> +	NET_SHAPER_A_LEAVES,
-> +
-> +	__NET_SHAPER_A_MAX,
-> +	NET_SHAPER_A_MAX = (__NET_SHAPER_A_MAX - 1)
-> +};
-> +
-> +enum {
-> +	NET_SHAPER_A_HANDLE_SCOPE = 1,
-> +	NET_SHAPER_A_HANDLE_ID,
-> +
-> +	__NET_SHAPER_A_HANDLE_MAX,
-> +	NET_SHAPER_A_HANDLE_MAX = (__NET_SHAPER_A_HANDLE_MAX - 1)
-> +};
-> +
-> +enum {
-> +	NET_SHAPER_CMD_GET = 1,
-> +	NET_SHAPER_CMD_SET,
-> +	NET_SHAPER_CMD_DELETE,
-> +	NET_SHAPER_CMD_GROUP,
-> +
-> +	__NET_SHAPER_CMD_MAX,
-> +	NET_SHAPER_CMD_MAX = (__NET_SHAPER_CMD_MAX - 1)
-> +};
-> +
-> +#endif /* _UAPI_LINUX_NET_SHAPER_H */
-> diff --git a/net/Kconfig b/net/Kconfig
-> index d27d0deac0bf..31fccfed04f7 100644
-> --- a/net/Kconfig
-> +++ b/net/Kconfig
-> @@ -66,6 +66,9 @@ config SKB_DECRYPTED
->   config SKB_EXTENSIONS
->   	bool
->   
-> +config NET_SHAPER
-> +	bool
-
-It’d be great if you added a help text/description.
-
-[…]
-
-
-Kind regards,
-
-Paul
