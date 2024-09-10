@@ -1,232 +1,77 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id A807D9735EF
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 10 Sep 2024 13:10:58 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id A727C9736D7
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 10 Sep 2024 14:08:43 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 4A350810A2;
-	Tue, 10 Sep 2024 11:10:57 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 5430180F76;
+	Tue, 10 Sep 2024 12:08:40 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id jp0VjswfpqAc; Tue, 10 Sep 2024 11:10:56 +0000 (UTC)
+ id 1sFhJdUhTgHo; Tue, 10 Sep 2024 12:08:39 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 413A2810AC
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D00D580F79
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1725966656;
-	bh=J+gwcKueutt7q9sfdjr3vBQ5QGvRs7DmBHofsAiUZ2g=;
+	s=default; t=1725970118;
+	bh=dHWhE/Fwwy2CDLWRhGm4iGzOqHbm7qfIQvasLXygzpk=;
 	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=IsIcBuLC644k4KH1Lap8rxVnGOKR/BByz4XOgp7YHyDKN6Wb57p+KxhLflEzCR8nw
-	 BRecF23NeNDbByFw8bNscQQvQz+bRPpPPhWfmm/+4SJYKxzsr9drHqVhOTFMRaiRjR
-	 n4fWPzCnJEGBX0+c8DOT0GBLF1PkB/CwK5rUH7NbFBgg2pvV9UjtPNMeU0SnJMNJge
-	 pEtVaeFcAwcGdMIAS2QOklNP64vI8IhBNX9ShwPYF/7bYPWb5bIq4qA7yrCtiohylg
-	 xf7buzhnRze5EsymMZqVF4r1eoueiteBJ2Hs3yGeoiM1nqK76LQvn7zvaN8I+iIhx5
-	 aVOQaEtjmHdNQ==
+	b=n/5yPSARqln9EhhzBQJGgujIfpNxodNP2bA6JitIENHeyxq1MQjiIlQEs93QECuQd
+	 +Up+wAKGFCS4JMeaH69eHMILHyYukjUkkEpUzsFFqPE9Actq2aIzQ1lEhdvOpImnjX
+	 DkA7sVsqx6jx0RNxG0TkW1DQdlxovWr+SlsTdn4JWxO8SKsjIP5dDsUgparURFHGvC
+	 /Hx9xVcKZYxLzMEp+QxjgtmaOx6a32Zm+JiTcFd5R8UV3FY+TPQS/ipJ1VEtUfXs8a
+	 n/KdeQ4zFR1j36hp2Pc2ZYw9ErUkI3QEU+e2ndiTyEGQE5yE9wqe/eZaFDhNC6Ib6q
+	 ApAnq1OHMG5MA==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 413A2810AC;
-	Tue, 10 Sep 2024 11:10:56 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id D00D580F79;
+	Tue, 10 Sep 2024 12:08:38 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id B6B221BF2FE
- for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Sep 2024 11:10:54 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 42BC51BF339
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Sep 2024 12:08:37 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id A304081091
- for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Sep 2024 11:10:54 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 2F3AC60595
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Sep 2024 12:08:37 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Pt0Ntu3QNWok for <intel-wired-lan@lists.osuosl.org>;
- Tue, 10 Sep 2024 11:10:53 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.9;
- helo=mgamail.intel.com; envelope-from=przemyslaw.kitszel@intel.com;
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id dx1mjBdNmqlA for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 10 Sep 2024 12:08:35 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=141.14.17.11;
+ helo=mx3.molgen.mpg.de; envelope-from=pmenzel@molgen.mpg.de;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org A548881080
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org A548881080
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.9])
- by smtp1.osuosl.org (Postfix) with ESMTPS id A548881080
- for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Sep 2024 11:10:53 +0000 (UTC)
-X-CSE-ConnectionGUID: 0W5V5+8iQyCmfNwMveKzgg==
-X-CSE-MsgGUID: XtgyqKJnR2mrWBmfT8PgHw==
-X-IronPort-AV: E=McAfee;i="6700,10204,11190"; a="47224518"
-X-IronPort-AV: E=Sophos;i="6.10,217,1719903600"; d="scan'208";a="47224518"
-Received: from fmviesa002.fm.intel.com ([10.60.135.142])
- by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 10 Sep 2024 04:10:53 -0700
-X-CSE-ConnectionGUID: X5LzxmycQgqlrZZvglCl/Q==
-X-CSE-MsgGUID: jnkwSgs+RO2GiJLgzYWmjA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.10,217,1719903600"; d="scan'208";a="90280846"
-Received: from fmsmsx601.amr.corp.intel.com ([10.18.126.81])
- by fmviesa002.fm.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
- 10 Sep 2024 04:10:52 -0700
-Received: from fmsmsx612.amr.corp.intel.com (10.18.126.92) by
- fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.39; Tue, 10 Sep 2024 04:10:52 -0700
-Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
- fmsmsx612.amr.corp.intel.com (10.18.126.92) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.39; Tue, 10 Sep 2024 04:10:51 -0700
-Received: from FMSEDG603.ED.cps.intel.com (10.1.192.133) by
- fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.39 via Frontend Transport; Tue, 10 Sep 2024 04:10:51 -0700
-Received: from NAM11-DM6-obe.outbound.protection.outlook.com (104.47.57.168)
- by edgegateway.intel.com (192.55.55.68) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Tue, 10 Sep 2024 04:10:42 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=XqX+49gzfo0adN2PHOJb/D3yUM36GImFfxxzC741VfboEzle5az5wdPXsIuSAfCgTTQYA7mHCVHlqqJHVB3sKqFZIUkhlCPncBbVyiTXvFRRSj55FzzIi/B3FCg02uZTiuulSyUz3iR/xTDz/2uqvujUujsYRln3ZFUozARdIBiRd3nsD/efS+PQZBVAM71J7Y7l9POM/HDJCs95I4KVKD59A8XbkZzm1rBwMQWHmhe8vXOkBm0SN/KQj+0Mi5iKUpAu2uaammal9NZC6VTKOPDugouca/5k45igPNJWNgffHziNEwXpehm4LCQuL8He6t6KmsVdnzyQmE49W5Em7w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=J+gwcKueutt7q9sfdjr3vBQ5QGvRs7DmBHofsAiUZ2g=;
- b=P6wSgTzJuLSCZSFfZrqJ7Z4lRPE4v6DxF5okEm5gqPLGvELyiWqvmR7tJLXDrskw7v/0cWU8qtq6Cg4+LLV3cwc15+Plznq9rL5S/Aw9vV37i4NiJLeWmRTeOqjVioXVEYC9YefcdN76J9hjQaOZ8NknR3Bcpjaw2R8aR5UWFE7f2fvcyACuC1Px9KmLsV9/hPxXFDr2eIz3wtNt0aqIo8WrchE4VPPKdc0hF0gaLH8+8xm8MWcDSPtGscGkCpEEBHcgV+aimVnIbDU8bZZvLRWe92IWL8q81P8VgIJdFo9KjtmMYBvQZshfJ1nfVO8eTbhM97ZBAbZlAACPy/kPJQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from MN6PR11MB8102.namprd11.prod.outlook.com (2603:10b6:208:46d::9)
- by PH0PR11MB5016.namprd11.prod.outlook.com (2603:10b6:510:32::23)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7939.24; Tue, 10 Sep
- 2024 11:10:39 +0000
-Received: from MN6PR11MB8102.namprd11.prod.outlook.com
- ([fe80::15b2:ee05:2ae7:cfd6]) by MN6PR11MB8102.namprd11.prod.outlook.com
- ([fe80::15b2:ee05:2ae7:cfd6%5]) with mapi id 15.20.7918.024; Tue, 10 Sep 2024
- 11:10:39 +0000
-Message-ID: <e9828f6a-3a2a-4128-bb2c-5dc75d013a9e@intel.com>
-Date: Tue, 10 Sep 2024 13:10:35 +0200
-User-Agent: Mozilla Thunderbird
-To: "Loktionov, Aleksandr" <aleksandr.loktionov@intel.com>, "Fijalkowski,
- Maciej" <maciej.fijalkowski@intel.com>
-References: <20240830192807.615867-1-aleksandr.loktionov@intel.com>
- <ZtdqfLfHYvEKPE+r@boxer>
- <SJ0PR11MB586686ED6AFA882486F4EF05E59A2@SJ0PR11MB5866.namprd11.prod.outlook.com>
-From: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-Content-Language: en-US
-In-Reply-To: <SJ0PR11MB586686ED6AFA882486F4EF05E59A2@SJ0PR11MB5866.namprd11.prod.outlook.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 7bit
-X-ClientProxiedBy: ZR2P278CA0060.CHEP278.PROD.OUTLOOK.COM
- (2603:10a6:910:53::20) To MN6PR11MB8102.namprd11.prod.outlook.com
- (2603:10b6:208:46d::9)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org C3CDB60591
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C3CDB60591
+Received: from mx3.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id C3CDB60591
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 10 Sep 2024 12:08:33 +0000 (UTC)
+Received: from [141.14.220.45] (g45.guest.molgen.mpg.de [141.14.220.45])
+ (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested) (Authenticated sender: pmenzel)
+ by mx.molgen.mpg.de (Postfix) with ESMTPSA id 505A761E5FE05;
+ Tue, 10 Sep 2024 14:08:02 +0200 (CEST)
+Message-ID: <688515d9-9bf2-4939-a3c6-9b22a886dfb9@molgen.mpg.de>
+Date: Tue, 10 Sep 2024 14:08:01 +0200
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: MN6PR11MB8102:EE_|PH0PR11MB5016:EE_
-X-MS-Office365-Filtering-Correlation-Id: 802938b8-cede-49f5-d3a2-08dcd189342d
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|376014|1800799024;
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?SCtGalN4S2JaMUZ2RndEVXpxQUlXUUdRY2VLUWlhOE1DcjNwK29wVkJ4ZzU2?=
- =?utf-8?B?dlhMem9TMWlXejlQOS9TT2d0S1BwcUYrdk53V1IwMXl3T2J3cXpYOXdnbmVV?=
- =?utf-8?B?M24zS1ZudFdHalo3UWFSd1YzREh0OVEwU1hLNmFVenBCNElNMlVFUFVFUUtM?=
- =?utf-8?B?YUhmV0NjZHI4d0c4ZllvTzh2cWtKU2IxeXprUUtMM0tPRkpoeHNuem54VWsw?=
- =?utf-8?B?QWE0UCt6UkRxdWpYQTZZZ1NydEJWdU1oS2c0RitndGFLaEMyOUR1dElXYzNQ?=
- =?utf-8?B?Mkc0ZTdxUW55cm9sSUhERVFiaDgwOTh0YU4vWk1JNTRMSzVJeUtkSEZCSHZO?=
- =?utf-8?B?SElwdHYyTk8rOTluWkdyNFAyYkFxQXpDZGgwL2NHREQxbFh0UVFUV3VnaFNt?=
- =?utf-8?B?TnQyekp0UzZHZEFhbjFMOUdTTThMOGxEM2NzQlJPM1JPKzUxWHNWbWhSSkM2?=
- =?utf-8?B?cDNodHgyUWZnWGZxdTNBUFJ6OE9haXh0OURROHhaalZPYnNMZW1MOVFxWE5k?=
- =?utf-8?B?TFFpbXQ1L0JERDdybkltYVRqQ3dyblZ0VEVGeFQwTlh6dy9hbWVzU2tMQzFO?=
- =?utf-8?B?Y25ZeUNKWGdHUHJuM1JoMVA5bE5pL243cHBUeXcvSU9IM29JaDN3d25rclhD?=
- =?utf-8?B?eFFEeU5DWUFRNEFGWG15U0FRTWdWOFBlQTRCZ2s3K1c5ZVpiMnk3SHFBOC9u?=
- =?utf-8?B?VDZ3Yjh6ZjJlRW55M3VtZ25uZjI2TmQ3N3duVHNhMmNsemEvWU41RGQ1ZGNh?=
- =?utf-8?B?VHdXMisyeVN6bEc4ZktoajBKN2JzVGtXYmx5UUJrWEExQ054SnB3VGpuQ2Iw?=
- =?utf-8?B?bW9EdVY2WnVvbkpxVGpTeklCN1JTZ2czNDZMaXkyZHNEYzJMMENoRFdTNHZM?=
- =?utf-8?B?bFRoSGZYVmlGYUFNWENqcHJDTjVqZjhPVXVtZWR4WUJpanp1L3I3V2s3VVZv?=
- =?utf-8?B?aWlaYkdEL1hkWHRMTlpKYjYrWkNwczlwV0d5UStPUVVRVTlJdHR2T05aTUhn?=
- =?utf-8?B?eXV2WWFEVndTYjNtR0tuSEdhcmIxUW9PZWlkQ1oybWpWaURMUXhFUzVMMWp5?=
- =?utf-8?B?SHkzNWlqamlJVGlEQ3AvbGtoaXdPcXVpSlo5RlJWRHBpRXAwc3ZlYVZOQ2wy?=
- =?utf-8?B?bXZDRnFoa3picWcvaWc3NXc4WXJMNDg1R3lnd0o3dFBVRXEyTWliM040bWlu?=
- =?utf-8?B?UGhkU1gwaFh3MnFKbUVMVXg2OFpGbFo0MW41d3laeHdoSW92ZDRNMjR5NEN1?=
- =?utf-8?B?REMxUXRaMEQvZFJCemVieDFRVlRZZzV2ZXdHM2dzTXZxQjQwaC9kQThpMkF5?=
- =?utf-8?B?eU5ocElVdmM4a0hVNkllMHRXMWNhUTgrOThhc3NiNnVKQXdjV21ibFlBS2xi?=
- =?utf-8?B?UGlwd1MwRTFWdWl0MThwUW44c2tOYVZCcU1Gc1pkRHFXckptYk5oSVg5OC9x?=
- =?utf-8?B?Q3h5eGpNL2xtcC9EUGVETXhPTHlNQ2hGWFF3N2ZYM1lxa0VyeWFiU2k2TVBZ?=
- =?utf-8?B?VXZhZlpMa3NrSVd2b3pIWUwxWVkwQVBNTDNVMHk2SDRTbzdVZkZKNG1nUzRu?=
- =?utf-8?B?ZXNVbkx3WlNVZVJCWk0zbjVYTXdmUXBtd1paVFlyaUc4REdqSkR5OE5WdWVF?=
- =?utf-8?B?RWt3ZGdldmhKUVZuNXFqQTVtNmp2c2hzMFdpUzlnVGVJUVZMdGxxaDZqanlC?=
- =?utf-8?B?RWdSa2U1WGh3eDZJcThFK0dpbTVScUUvQ05TRW5ReHR0aWhyd2NvODRscUxi?=
- =?utf-8?B?YXJCUlZxbExmeUhvNWV4N201b3hWWlFxejlmbko2TjJJNFh0bEh5QldrU0Nv?=
- =?utf-8?B?ZXozajNIcDBobmRjV3JoQT09?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:MN6PR11MB8102.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(366016)(376014)(1800799024); DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?VUJwd3JaaVFlTzZqR1VmZmtNM1FTQklyVTF4WEIzY1J1Y1FOQlJOSkl2S1Zs?=
- =?utf-8?B?cU95WU5zQ0NSSzBjS1JBTVdZNXU3c1dDbkZnWitoUGtqWnIzMHVUT0pPZjN0?=
- =?utf-8?B?RFpKOHhtQjBRbUtkZElPNDRsTW9CQXFPdmxnNHBpdWxLUGpkMnVnc2dHdmlO?=
- =?utf-8?B?eEI4MUdrd0o5cmdBUXBXWFU1aTNKZ2FQOHhPeXcvM09RdjBFcEozN0NzeFZ3?=
- =?utf-8?B?K0ovTUF5MTROaU1SSkFqRkhZYzJKSmh2RGNxamxnZUlDcFYxOXlESk1RRWNt?=
- =?utf-8?B?SEdVVDRmUTZ4a1FiZE5IUHVBRVpXT2UrZlcrL1BOZHFBOTgwbmU3dzg4OE5r?=
- =?utf-8?B?U2g0dUlmaDJOTUxrYTd6bGpHRmtiY0NHR2RFTGdmL1dYZWtrNmVFM2hFVEhT?=
- =?utf-8?B?N0k3RkF5aDA5emRVeW5YNzBDbWtqYm1CVnZuclEyaUJQU3BXdFBTYVVzNElw?=
- =?utf-8?B?dUhGNUZNenRFSVl3SEE3d3V5SGZZenZnemMyOHorR0RzRkJENEJpSHhvVGF2?=
- =?utf-8?B?emRXdFJYa0x2R1pxQzk5Y1Nzb2FCemtNckFEb0lIT3BycmZ5WlNRcEtQQk9n?=
- =?utf-8?B?N2JyMEZOZWRWN0ROc00rZDg5MzdEYk9MOWpUZmwvSGMrc0hhNi9nTEZndCt2?=
- =?utf-8?B?ZVNibXhxNWVaQkRJdTJFdDBLL21CR0RFQ3BZdU1ZSDdwZmxNUE5FZjdKU09D?=
- =?utf-8?B?cDhibXZ2bUk2NGxzL1N3S3puc3ZtdGYydjUyTVpWUmhQRjdxeisyL3Q3TG8z?=
- =?utf-8?B?ZDg1MnFwTXFhZW1jVThzNFh0TG1pMDJidDhQblZrc3hGdWR6UzdSeWxmZmxG?=
- =?utf-8?B?REhFaEMvaXdyc2V3ME5ISEFaZ2tCSDUxUkN3K2kycXZkNlBmNFNnZFg4QXJK?=
- =?utf-8?B?VGpDaytUcmtmSkZ6MTJObFhtRmdqRzlnUGJXSFVLa0ovZ0JvTC9PNFNNY2h0?=
- =?utf-8?B?UC8zYnYyRlRaZG9kREhadFlIU1QvakVRRUZIYVJaU0hwWUtOSWNrWTdaQUtw?=
- =?utf-8?B?M0dxZXZQdkFNMGtyVFNOcmp2RFBmaW1ON1AvbC9Hb1hVWTlTL1Q5TllGQkNY?=
- =?utf-8?B?SHZkc3kvTjRZWjNwbXBFY3Z5ekdqenZpbHI3WEVZNlZ1VDVhM2NQYzJIVTFG?=
- =?utf-8?B?WTMyb3B4YVJPeFFnWStBMHhoTktMWnV2TzVnazNGZmh6ZGt6RGNEOWFaYm9W?=
- =?utf-8?B?Q1NVRzFJZThvVFZtZnRGQ1R6S2k4RmFiMExOaTRzbk4rZ0gvNTl4c1ZYR0FF?=
- =?utf-8?B?Z0JlN1dNWTdqQ3RjZGs5aUV5UmFLWkVYK1Z0T3dxV0ZWcWdIOHlKN0x4bEVx?=
- =?utf-8?B?U21KdVV6Q21vMk1WbzIveXBXSEpNcGtVbGxDRjNzUk84ZnVqZklaYzE2ODEz?=
- =?utf-8?B?M3RGVHBQZXFsNU5tbEdhalRqT2F1S0hubzZuL0NuVm1YQlpNMXJRQ2xING1w?=
- =?utf-8?B?cTBIbUplViswVDV0STRDUkFJRXRoOWZLZEpuRFZGZ3Z4MG5nZmZNbXRWQnNL?=
- =?utf-8?B?ZnV4S3I2RTNxOHEwOHFYYlo2QjNZeDBuRHBpYVRMUUltejZ4aFptWmQ0a2xU?=
- =?utf-8?B?RDdzWXJJNDRhQXBmalhOQUN0VW1RZVpUbGk5YkhLZTFzZmFmSkhmVnVMejcy?=
- =?utf-8?B?WXlqSDFKbERmZ3M1T3dQNzNpRTZCcVNNZFkxdGdLczFjUFdKZUJYVmh0NGM2?=
- =?utf-8?B?ZDdGQWZQMWRVWWxoWWkwTkU2UVJobGMybmVHV2dkYW9HMDBqYUV2OFBMeFlD?=
- =?utf-8?B?UHQyTWt1TFc1ZHpibCswV1JRMEtaSUpaWXpVVUVFNVVOWHlLd0ppKytwNG9V?=
- =?utf-8?B?cGZnODZnMnRQQ1ByNysvbGNYbUsyV0M1QXUzdUo5U3BNMzFDUkRleGxJL3Zl?=
- =?utf-8?B?emwzbEVsL2R0QncwUkh5eXFSeVhvUkhGR05hMUV3NVRnRDNNZk1LbzlUaDlu?=
- =?utf-8?B?b2Z5V21NMmJNNGRpRXNpLzhRS0hqakkvdDFyNFJHdnRIa2tEa0liUWUwVGhT?=
- =?utf-8?B?U3BLdmRma1lyVWxaR09VWDc2a0p5N0taS1lJMTR4aVJ1cGw4TW82dGdUTEtG?=
- =?utf-8?B?MGdTNEROdldnMWpySkZiSzc1ejVlRk9GL2oyU0p6elBSSFdtUGNDNS9BZklQ?=
- =?utf-8?B?WENzUUwybEpyekxEUElLSUtvdFJHYVVHTUZjcERBYUlOYWxtZmtGV2pDZ2pR?=
- =?utf-8?B?N2c9PQ==?=
-X-MS-Exchange-CrossTenant-Network-Message-Id: 802938b8-cede-49f5-d3a2-08dcd189342d
-X-MS-Exchange-CrossTenant-AuthSource: MN6PR11MB8102.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 10 Sep 2024 11:10:39.6795 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: N7/zJFNL47cpyrYdm2PN1XmvUMTMUaiUiB+mBrii8psGKxyKvIRLhZX8Y0OLW50XtqhgTj9AgTd0e2+bs6CjoUSFAfU8v/w856WfX0MbViM=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH0PR11MB5016
-X-OriginatorOrg: intel.com
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1725966654; x=1757502654;
- h=message-id:date:subject:to:cc:references:from:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=uJJl88NOqy9/Aa5mZCCAvhrvPCz8IYPNseDAz8/BK0g=;
- b=bbMbHet4EdW/Gm/XO3jKS0KrP8NfcwoV1NanO7GjLvGh1j19d+0XXyZl
- 8QyZuc8uTOOiUuqkLTIojTX1RkDN+4bCcZi9SMIW+aQTLFtz4eCk7X5o9
- TSA+JYP3M3YSbh72v0+AupQPfQ8fBms7x8cZ/Al+XGMDeUxSpuf0UseEs
- EJIw7n0e1m64IYMxmAI9GVU6m2W+4o4NKmeDNZA/xteUy6czRFQu+Dql3
- dkCLjCWqJvsXkEfjrIGA+ITMoXgFQ7Xkbi5hXmdhpQ8erdcCyGWPDQ5ag
- LwIACWdNMeqSwIuAMvrQ69aqS3G5/TkTnBQocsVwjUPGQ/GqdkF1ktjya
- w==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=bbMbHet4
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v3] i40e: add ability to
- reset vf for tx and rx mdd events
+User-Agent: Mozilla Thunderbird
+To: Paolo Abeni <pabeni@redhat.com>
+References: <cover.1725919039.git.pabeni@redhat.com>
+ <4ac641b1cb3d0b78de3571e394e4c7d2239714f7.1725919039.git.pabeni@redhat.com>
+Content-Language: en-US
+From: Paul Menzel <pmenzel@molgen.mpg.de>
+In-Reply-To: <4ac641b1cb3d0b78de3571e394e4c7d2239714f7.1725919039.git.pabeni@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dmarc=none (p=none dis=none)
+ header.from=molgen.mpg.de
+Subject: Re: [Intel-wired-lan] [PATCH v7 net-next 02/15] netlink: spec: add
+ shaper YAML spec
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -239,140 +84,493 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "Nguyen, Anthony L" <anthony.l.nguyen@intel.com>, "Sokolowski,
- Jan" <jan.sokolowski@intel.com>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "Connolly, Padraig J" <padraig.j.connolly@intel.com>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>
+Cc: Donald Hunter <donald.hunter@gmail.com>, netdev@vger.kernel.org,
+ John Fastabend <john.fastabend@gmail.com>, Jamal Hadi Salim <jhs@mojatatu.com>,
+ Jakub Kicinski <kuba@kernel.org>, edumazet@google.com,
+ Madhu Chittim <madhu.chittim@intel.com>, anthony.l.nguyen@intel.com,
+ Simon Horman <horms@kernel.org>,
+ Sridhar Samudrala <sridhar.samudrala@intel.com>, Jiri Pirko <jiri@resnulli.us>,
+ intel-wired-lan@lists.osuosl.org, przemyslaw.kitszel@intel.com,
+ Sunil Kovvuri Goutham <sgoutham@marvell.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 9/10/24 10:29, Loktionov, Aleksandr wrote:
->> From: Fijalkowski, Maciej <maciej.fijalkowski@intel.com>
->> Sent: Tuesday, September 3, 2024 9:59 PM
->> To: Loktionov, Aleksandr <aleksandr.loktionov@intel.com>
->> Cc: intel-wired-lan@lists.osuosl.org; Nguyen, Anthony L
->> <anthony.l.nguyen@intel.com>; netdev@vger.kernel.org; Sokolowski, Jan
->> <jan.sokolowski@intel.com>; Connolly, Padraig J
->> <padraig.j.connolly@intel.com>
->> Subject: Re: [PATCH iwl-next v3] i40e: add ability to reset vf for tx
->> and rx mdd events
-
-please capitalize acronyms (Tx, Rx, VF, MDD, PF)
-(also in the subject line, but sent next version as v4).
-
->>
->> On Fri, Aug 30, 2024 at 09:28:07PM +0200, Aleksandr Loktionov wrote:
->>> In cases when vf sends malformed packets that are classified as
->>> malicious, sometimes it causes tx queue to freeze. This frozen queue
->>> can be stuck for several minutes being unusable. When mdd event
->>> occurs, there is a posibility to perform a graceful vf reset to
->>> quickly bring vf back to operational state.
->>>
->>> Currently vf iqueues are being disabled if mdd event occurs.
->>> Add the ability to reset vf if tx or rx mdd occurs.
->>> Add mdd events logging throttling /* avoid dmesg polution */.
->>> Unify tx rx mdd messages formats.
->>>
->>> Co-developed-by: Jan Sokolowski <jan.sokolowski@intel.com>
->>> Signed-off-by: Jan Sokolowski <jan.sokolowski@intel.com>
->>> Co-developed-by: Padraig J Connolly <padraig.j.connolly@intel.com>
->>> Signed-off-by:  Padraig J Connolly <padraig.j.connolly@intel.com>
->>> Signed-off-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
-
-Next time please wait for review on our internal e1000-mailing-list.
-Feel free to ping me directly if there will be no one engaged in any
-future series of yours.
-
->>> ---
->>> v2->v3 fix compilation issue
->>> v1->v2 fix compilation issue
->>> ---
->>>   drivers/net/ethernet/intel/i40e/i40e.h        |   4 +-
->>>   .../net/ethernet/intel/i40e/i40e_debugfs.c    |   2 +-
->>>   .../net/ethernet/intel/i40e/i40e_ethtool.c    |   2 +
->>>   drivers/net/ethernet/intel/i40e/i40e_main.c   | 116
->> ++++++++++++++++--
->>>   .../ethernet/intel/i40e/i40e_virtchnl_pf.c    |   2 +-
->>>   .../ethernet/intel/i40e/i40e_virtchnl_pf.h    |  11 +-
->>>   6 files changed, 122 insertions(+), 15 deletions(-)
->>>
+Dear Paolo,
 
 
->>> --- a/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
->>> +++ b/drivers/net/ethernet/intel/i40e/i40e_ethtool.c
->>> @@ -459,6 +459,8 @@ static const struct i40e_priv_flags
->> i40e_gstrings_priv_flags[] = {
->>>   	I40E_PRIV_FLAG("base-r-fec", I40E_FLAG_BASE_R_FEC, 0),
->>>   	I40E_PRIV_FLAG("vf-vlan-pruning",
->>>   		       I40E_FLAG_VF_VLAN_PRUNING_ENA, 0),
->>> +	I40E_PRIV_FLAG("mdd-auto-reset-vf",
->>> +		       I40E_FLAG_MDD_AUTO_RESET_VF, 0),
->>
->> you don't tell us that this is implemented via priv-flag in the commit
->> message, would be good to include info about it.
-> This flag is implemented for other network adapters like ice, we thought it's kind of standard.
-> Can you suggest what exact part to change? Please be concrete.
-> Thank you
+Thank you for the patch. Some minor nits below.
 
-priv-flag is not a standard, by definition
-what we do in intel drivers is also not necessarily a standard
 
-keeping the code quality as-is should be rather seen as an allowance
-for legacy drivers, instead of something that should be copy-pasted yet
-again. But commit messages are different, you need to obey the current
-standard, which is simply: describe non-obvious things, describe more
-if asked during review. Please do so :)
+Am 10.09.24 um 00:09 schrieb Paolo Abeni:
+> Define the user-space visible interface to query, configure and delete
+> network shapers via yaml definition.
+> 
+> Add dummy implementations for the relevant NL callbacks.
+> 
+> set() and delete() operations touch a single shaper creating/updating or
+> deleting it.
+> The group() operation creates a shaper's group, nesting multiple input
+> shapers under the specified output shaper.
+> 
+> Signed-off-by: Paolo Abeni <pabeni@redhat.com>
+> ---
+> v6 -> v7:
+>   - s/Minimum g/G/
+>   - shaper attributes for set() op are not nested anymore
+>   - node attributes for group() op are not nested anymore
+> 
+> v5 -> v6:
+>   - moved back ifindex out of binding attr, drop the latter
+>   - restrict leaves attributes to scheduling-related ones
+> 
+> v4 -> v5:
+>   - moved ifindex under the binding attr
+>   - moved id, scope to new attr set
+>   - rename 'root' as 'node'
+>   - deleted unused 'info' subset
+>   - a lot of doc update and fixup
+>   - removed empty black line at MAKEFILE eof
+> 
+> v3 -> v4:
+>   - spec file rename
+>   - always use '@' for references
+>   - detached scope -> node scope
+>   - inputs/output -> leaves/root
+>   - deduplicate leaves/root policy
+>   - get/dump/group return ifindex, too
+>   - added some general introduction to the doc
+> 
+> RFC v1 -> RFC v2:
+>   - u64 -> uint
+>   - net_shapers -> net-shapers
+>   - documented all the attributes
+>   - dropped [ admin-perm ] for get() op
+>   - group op
+>   - set/delete touch a single shaper
+> ---
+>   Documentation/netlink/specs/net_shaper.yaml | 276 ++++++++++++++++++++
+>   MAINTAINERS                                 |   1 +
+>   include/uapi/linux/net_shaper.h             |  78 ++++++
+>   net/Kconfig                                 |   3 +
+>   net/Makefile                                |   1 +
+>   net/shaper/Makefile                         |   8 +
+>   net/shaper/shaper.c                         |  55 ++++
+>   net/shaper/shaper_nl_gen.c                  | 125 +++++++++
+>   net/shaper/shaper_nl_gen.h                  |  34 +++
+>   9 files changed, 581 insertions(+)
+>   create mode 100644 Documentation/netlink/specs/net_shaper.yaml
+>   create mode 100644 include/uapi/linux/net_shaper.h
+>   create mode 100644 net/shaper/Makefile
+>   create mode 100644 net/shaper/shaper.c
+>   create mode 100644 net/shaper/shaper_nl_gen.c
+>   create mode 100644 net/shaper/shaper_nl_gen.h
+> 
+> diff --git a/Documentation/netlink/specs/net_shaper.yaml b/Documentation/netlink/specs/net_shaper.yaml
+> new file mode 100644
+> index 000000000000..cfe55af41d9d
+> --- /dev/null
+> +++ b/Documentation/netlink/specs/net_shaper.yaml
+> @@ -0,0 +1,276 @@
+> +# SPDX-License-Identifier: ((GPL-2.0 WITH Linux-syscall-note) OR BSD-3-Clause)
+> +
+> +name: net-shaper
+> +
+> +doc: |
+> +  Networking HW rate limiting configuration.
+> +
+> +  This API allows configuring HW shapers available on the network
+> +  devices at different levels (queues, network device) and allows
+> +  arbitrary manipulation of the scheduling tree of the involved
+> +  shapers.
+> +
+> +  Each @shaper is identified within the given device, by an @handle,
 
->>> +static void i40e_print_vf_rx_mdd_event(struct i40e_pf *pf, struct
->>> +i40e_vf *vf) {
->>> +	dev_err(&pf->pdev->dev, "%lld Rx Malicious Driver Detection
->> events detected on PF %d VF %d MAC %pm. mdd-auto-reset-vfs=%s\n",
->>> +		vf->mdd_rx_events.count,
->>> +		pf->hw.pf_id,
->>> +		vf->vf_id,
->>> +		vf->default_lan_addr.addr,
->>> +		test_bit(I40E_FLAG_MDD_AUTO_RESET_VF, pf->flags) ? "on" :
->> "off"); }
->>> +
->>> +/**
->>> + * i40e_print_vf_tx_mdd_event - print VF Tx malicious driver detect
->>> +event
->>> + * @pf: board private structure
->>> + * @vf: pointer to the VF structure
->>> + */
->>> +static void i40e_print_vf_tx_mdd_event(struct i40e_pf *pf, struct
->>> +i40e_vf *vf) {
->>> +	dev_err(&pf->pdev->dev, "%lld Tx Malicious Driver Detection
->> events detected on PF %d VF %d MAC %pm. mdd-auto-reset-vfs=%s\n",
->>> +		vf->mdd_tx_events.count,
->>> +		pf->hw.pf_id,
->>> +		vf->vf_id,
->>> +		vf->default_lan_addr.addr,
->>> +		test_bit(I40E_FLAG_MDD_AUTO_RESET_VF, pf->flags) ? "on" :
->> "off"); }
->>
->> Unnecesary code duplication, two functions with printing the very same
->> statement with a single different letter.
-> But it's easy to grep and find as required by linux coding standards.
+*a* handle?
 
-You could reword to have it still obvious what to grep for, like:
+> +  comprising both a @scope and an @id.
+> +
+> +  Depending on the @scope value, the shapers are attached to specific
+> +  HW objects (queues, devices) or, for @node scope, represent a
+> +  scheduling group, that can be placed in an arbitrary location of
+> +  the scheduling tree.
+> +
+> +  Shapers can be created with two different operations: the @set
+> +  operation, to create and update a single "attached" shaper, and
+> +  the @group operation, to create and update a scheduling
 
-Malicious Driver Detected an Event, PF: %d, VF: %d, MAC: %pm, dir: %s...
+I think no comma needed before the two *to*s.
 
-with the last %s being "Tx" or "Rx"
-(note: I didn't copied all your stuff as this is just an example)
+> +  group. Only the @group operation can create @node scope shapers
 
->>> +
->>> +	/* VF MDD event logs are rate limited to one second intervals */
->>> +	if (time_is_after_jiffies(pf->last_printed_mdd_jiffies + HZ *
->> 1))
->>> +		return;
->>> +
->>> +	pf->last_printed_mdd_jiffies = jiffies;
->>
->> why homegrown rate limiting?
-> Because it works! And other ideas probably didn't.
-> What is your suggestion exactly? Please be concrete.
+Add a dot/period at the end?
 
-dev_info_ratelimited()
+> +
+> +  Existing shapers can be deleted/reset via the @delete operation.
+> +
+> +  The user can query the running configuration via the @get operation.
+> +
+> +definitions:
+> +  -
+> +    type: enum
+> +    name: scope
+> +    doc: Defines the shaper @id interpretation.
+> +    render-max: true
+> +    entries:
+> +      - name: unspec
+> +        doc: The scope is not specified.
+> +      -
+> +        name: netdev
+> +        doc: The main shaper for the given network device.
+> +      -
+> +        name: queue
+> +        doc: |
+> +            The shaper is attached to the given device queue,
+> +            the @id represents the queue number.
+> +      -
+> +        name: node
+> +        doc: |
+> +             The shaper allows grouping of queues or other
+> +             node shapers; can be nested in either @netdev
+> +             shapers or other @node shapers, allowing placement
+> +             in any location of the scheduling tree, except
+> +             leaves and root.
+> +  -
+> +    type: enum
+> +    name: metric
+> +    doc: Different metric supported by the shaper.
+> +    entries:
+> +      -
+> +        name: bps
+> +        doc: Shaper operates on a bits per second basis.
+> +      -
+> +        name: pps
+> +        doc: Shaper operates on a packets per second basis.
+> +
+> +attribute-sets:
+> +  -
+> +    name: net-shaper
+> +    attributes:
+> +      -
+> +        name: handle
+> +        type: nest
+> +        nested-attributes: handle
+> +        doc: Unique identifier for the given shaper inside the owning device.
+> +      -
+> +        name: metric
+> +        type: u32
+> +        enum: metric
+> +        doc: Metric used by the given shaper for bw-min, bw-max and burst.
+> +      -
+> +        name: bw-min
+> +        type: uint
+> +        doc: Guaranteed bandwidth for the given shaper.
+> +      -
+> +        name: bw-max
+> +        type: uint
+> +        doc: Maximum bandwidth for the given shaper or 0 when unlimited.
+> +      -
+> +        name: burst
+> +        type: uint
+> +        doc: |
+> +          Maximum burst-size for shaping. Should not be interpreted
+> +          as a quantum.
+> +      -
+> +        name: priority
+> +        type: u32
+> +        doc: |
+> +          Scheduling priority for the given shaper. The priority
+> +          scheduling is applied to sibling shapers.
+> +      -
+> +        name: weight
+> +        type: u32
+> +        doc: |
+> +          Relative weight for round robin scheduling of the
+> +          given shaper.
+> +          The scheduling is applied to all sibling shapers
+> +          with the same priority.
+> +      -
+> +        name: ifindex
+> +        type: u32
+> +        doc: Interface index owning the specified shaper.
+> +      -
+> +        name: parent
+> +        type: nest
+> +        nested-attributes: handle
+> +        doc: |
+> +          Identifier for the parent of the affected shaper.
+> +          Only needed for @group operation.
+> +      -
+> +        name: leaves
+> +        type: nest
+> +        multi-attr: true
+> +        nested-attributes: leaf-info
+> +        doc: |
+> +           Describes a set of leaves shapers for a @group operation.
+> +  -
+> +    name: handle
+> +    attributes:
+> +      -
+> +        name: scope
+> +        type: u32
+> +        enum: scope
+> +        doc: Defines the shaper @id interpretation.
+> +      -
+> +        name: id
+> +        type: u32
+> +        doc: |
+> +          Numeric identifier of a shaper. The id semantic depends on
+> +          the scope. For @queue scope it's the queue id and for @node
+> +          scope it's the node identifier.
+> +  -
+> +    name: leaf-info
+> +    subset-of: net-shaper
+> +    attributes:
+> +      -
+> +        name: handle
+> +      -
+> +        name: priority
+> +      -
+> +        name: weight
+> +
+> +operations:
+> +  list:
+> +    -
+> +      name: get
+> +      doc: |
+> +        Get information about a shaper for a given device.
+> +      attribute-set: net-shaper
+> +
+> +      do:
+> +        pre: net-shaper-nl-pre-doit
+> +        post: net-shaper-nl-post-doit
+> +        request:
+> +          attributes: &ns-binding
+> +            - ifindex
+> +            - handle
+> +        reply:
+> +          attributes: &ns-attrs
+> +            - ifindex
+> +            - parent
+> +            - handle
+> +            - metric
+> +            - bw-min
+> +            - bw-max
+> +            - burst
+> +            - priority
+> +            - weight
+> +
+> +      dump:
+> +        pre: net-shaper-nl-pre-dumpit
+> +        post: net-shaper-nl-post-dumpit
+> +        request:
+> +          attributes:
+> +            - ifindex
+> +        reply:
+> +          attributes: *ns-attrs
+> +    -
+> +      name: set
+> +      doc: |
+> +        Create or update the specified shaper.
+> +        The set operation can't be used to create a @node scope shaper,
+> +        use the @group operation instead.
+> +      attribute-set: net-shaper
+> +      flags: [ admin-perm ]
+> +
+> +      do:
+> +        pre: net-shaper-nl-pre-doit
+> +        post: net-shaper-nl-post-doit
+> +        request:
+> +          attributes:
+> +            - ifindex
+> +            - handle
+> +            - metric
+> +            - bw-min
+> +            - bw-max
+> +            - burst
+> +            - priority
+> +            - weight
+> +
+> +    -
+> +      name: delete
+> +      doc: |
+> +        Clear (remove) the specified shaper. When deleting
+> +        a @node shaper, reattach all the node's leaves to the
+> +        deleted node's parent.
+> +        If, after the removal, the parent shaper has no more
+> +        leaves and the parent shaper scope is @node, the parent
+> +        node is deleted, recursively.
+> +        When deleting a @queue shaper or a @netdev shaper,
+> +        the shaper disappears from the hierarchy, but the
+> +        queue/device can still send traffic: it has an implicit
+> +        node with infinite bandwidth. Queue's implicit node
+
+Maybe: The queue’s implicit node …
+
+> +        feeds an implicit RR node at the root of the hierarchy.
+> +      attribute-set: net-shaper
+> +      flags: [ admin-perm ]
+> +
+> +      do:
+> +        pre: net-shaper-nl-pre-doit
+> +        post: net-shaper-nl-post-doit
+> +        request:
+> +          attributes: *ns-binding
+> +
+> +    -
+> +      name: group
+> +      doc: |
+> +        Create or update a scheduling group, attaching the specified
+> +        @leaves shapers under the specified node identified by @handle,
+> +        creating the latter, if needed.
+> +        The @leaves shapers scope must be @queue and the node shaper
+> +        scope must be either @node or @netdev.
+> +        When the node shaper has @node scope, if the @handle @id is not
+> +        specified, a new shaper of such scope is created, otherwise the
+> +        specified node must already exist.
+> +        The @parent handle for the node shaper is optional in most cases.
+> +        For newly created node scope shaper, the node parent is set by
+> +        default to the parent linked to the @leaves before the @group
+> +        operation. If, prior to the grouping operation, the @leaves
+> +        have different parents, the node shaper @parent must be explicitly
+> +        set.
+> +        The user can optionally provide shaping attributes for the node
+> +        shaper.
+> +        The operation is atomic, on failure no change is applied to
+> +        the device shaping configuration, otherwise the @node shaper
+> +        full identifier, comprising @binding and @handle, is provided
+> +        as the reply.
+> +      attribute-set: net-shaper
+> +      flags: [ admin-perm ]
+> +
+> +      do:
+> +        pre: net-shaper-nl-pre-doit
+> +        post: net-shaper-nl-post-doit
+> +        request:
+> +          attributes:
+> +            - ifindex
+> +            - parent
+> +            - handle
+> +            - metric
+> +            - bw-min
+> +            - bw-max
+> +            - burst
+> +            - priority
+> +            - weight
+> +            - leaves
+> +        reply:
+> +          attributes: *ns-binding
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index ca1469d52076..e3d95488d61c 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -15915,6 +15915,7 @@ F:	include/linux/platform_data/wiznet.h
+>   F:	include/uapi/linux/cn_proc.h
+>   F:	include/uapi/linux/ethtool_netlink.h
+>   F:	include/uapi/linux/if_*
+> +F:	include/uapi/linux/net_shaper.h
+>   F:	include/uapi/linux/netdev*
+>   F:	tools/testing/selftests/drivers/net/
+>   X:	Documentation/devicetree/bindings/net/bluetooth/
+> diff --git a/include/uapi/linux/net_shaper.h b/include/uapi/linux/net_shaper.h
+> new file mode 100644
+> index 000000000000..9e3fa63618ee
+> --- /dev/null
+> +++ b/include/uapi/linux/net_shaper.h
+> @@ -0,0 +1,78 @@
+> +/* SPDX-License-Identifier: ((GPL-2.0 WITH Linux-syscall-note) OR BSD-3-Clause) */
+> +/* Do not edit directly, auto-generated from: */
+> +/*	Documentation/netlink/specs/net_shaper.yaml */
+> +/* YNL-GEN uapi header */
+> +
+> +#ifndef _UAPI_LINUX_NET_SHAPER_H
+> +#define _UAPI_LINUX_NET_SHAPER_H
+> +
+> +#define NET_SHAPER_FAMILY_NAME		"net-shaper"
+> +#define NET_SHAPER_FAMILY_VERSION	1
+> +
+> +/**
+> + * enum net_shaper_scope - Defines the shaper @id interpretation.
+> + * @NET_SHAPER_SCOPE_UNSPEC: The scope is not specified.
+> + * @NET_SHAPER_SCOPE_NETDEV: The main shaper for the given network device.
+> + * @NET_SHAPER_SCOPE_QUEUE: The shaper is attached to the given device queue,
+> + *   the @id represents the queue number.
+> + * @NET_SHAPER_SCOPE_NODE: The shaper allows grouping of queues or other node
+> + *   shapers; can be nested in either @netdev shapers or other @node shapers,
+> + *   allowing placement in any location of the scheduling tree, except leaves
+> + *   and root.
+> + */
+> +enum net_shaper_scope {
+> +	NET_SHAPER_SCOPE_UNSPEC,
+> +	NET_SHAPER_SCOPE_NETDEV,
+> +	NET_SHAPER_SCOPE_QUEUE,
+> +	NET_SHAPER_SCOPE_NODE,
+> +
+> +	/* private: */
+> +	__NET_SHAPER_SCOPE_MAX,
+> +	NET_SHAPER_SCOPE_MAX = (__NET_SHAPER_SCOPE_MAX - 1)
+> +};
+> +
+> +/**
+> + * enum net_shaper_metric - Different metric supported by the shaper.
+> + * @NET_SHAPER_METRIC_BPS: Shaper operates on a bits per second basis.
+> + * @NET_SHAPER_METRIC_PPS: Shaper operates on a packets per second basis.
+> + */
+> +enum net_shaper_metric {
+> +	NET_SHAPER_METRIC_BPS,
+> +	NET_SHAPER_METRIC_PPS,
+> +};
+> +
+> +enum {
+> +	NET_SHAPER_A_HANDLE = 1,
+> +	NET_SHAPER_A_METRIC,
+> +	NET_SHAPER_A_BW_MIN,
+> +	NET_SHAPER_A_BW_MAX,
+> +	NET_SHAPER_A_BURST,
+> +	NET_SHAPER_A_PRIORITY,
+> +	NET_SHAPER_A_WEIGHT,
+> +	NET_SHAPER_A_IFINDEX,
+> +	NET_SHAPER_A_PARENT,
+> +	NET_SHAPER_A_LEAVES,
+> +
+> +	__NET_SHAPER_A_MAX,
+> +	NET_SHAPER_A_MAX = (__NET_SHAPER_A_MAX - 1)
+> +};
+> +
+> +enum {
+> +	NET_SHAPER_A_HANDLE_SCOPE = 1,
+> +	NET_SHAPER_A_HANDLE_ID,
+> +
+> +	__NET_SHAPER_A_HANDLE_MAX,
+> +	NET_SHAPER_A_HANDLE_MAX = (__NET_SHAPER_A_HANDLE_MAX - 1)
+> +};
+> +
+> +enum {
+> +	NET_SHAPER_CMD_GET = 1,
+> +	NET_SHAPER_CMD_SET,
+> +	NET_SHAPER_CMD_DELETE,
+> +	NET_SHAPER_CMD_GROUP,
+> +
+> +	__NET_SHAPER_CMD_MAX,
+> +	NET_SHAPER_CMD_MAX = (__NET_SHAPER_CMD_MAX - 1)
+> +};
+> +
+> +#endif /* _UAPI_LINUX_NET_SHAPER_H */
+> diff --git a/net/Kconfig b/net/Kconfig
+> index d27d0deac0bf..31fccfed04f7 100644
+> --- a/net/Kconfig
+> +++ b/net/Kconfig
+> @@ -66,6 +66,9 @@ config SKB_DECRYPTED
+>   config SKB_EXTENSIONS
+>   	bool
+>   
+> +config NET_SHAPER
+> +	bool
+
+It’d be great if you added a help text/description.
+
+[…]
+
+
+Kind regards,
+
+Paul
