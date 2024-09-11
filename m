@@ -1,221 +1,131 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 952979758CC
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 11 Sep 2024 18:54:54 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2A8479759BF
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 11 Sep 2024 19:52:35 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id D42768132F;
-	Wed, 11 Sep 2024 16:54:52 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id A5E7C401B4;
+	Wed, 11 Sep 2024 17:52:33 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id audGNpKtISob; Wed, 11 Sep 2024 16:54:52 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id BdVk5QZtwYIC; Wed, 11 Sep 2024 17:52:32 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E45078134A
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3A05E408DF
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1726073692;
-	bh=3wUpoiTItb8NiSnEcdegQYahmQuRcbUQWD2uCsLuKcM=;
-	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1726077151;
+	bh=USRMv9RzUopMWvtodUYYp9EwsgYfe6uI7ezp0e+xAS0=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=3Pc4KnYB4Vq3rh1ShM97U+cKcqllieKtv0gqU/mo5T8eP2LucMWFdZT+kmsrLul85
-	 yEDfuILW84PhKsJKTeP3g2gY101AYA1+UFvLHEOgFEJvh7xt2n37GIV9I+Fi1Du/fc
-	 tBade4Dk6+OWgCWWmicLExt3Qos55tJixGxPOypluKwFtEmQPfRcVNRizv3T6Lu3xo
-	 G+mTEt9GMhSrVQmg2SKIe8p2cwR/1jiPCuHmkq4HqEUevMXeBQsJUy3b93tJj21KpE
-	 mN4oCgD9kLNrBhlbW1qa4Xy3krjR52yGre7f9uHSGnI/B/Vfo8TUorPVrrT1Ao0CBL
-	 zHp5CXiSphPeg==
+	b=WRt/g25PR3UZQAwfrzagw0diz3SIc5TRkWwa6tb4Iss34bCU/X8i6kUVJxtvNnfPE
+	 ko3K7nE1tk5ff5pPyLtzvyS6H+vdfOmHvQfby1TXnaxPoD1UGfFx8ZLFc32Cwv/avm
+	 0m8t40D9ne0xiu4tNp/pAsnBONuBXW+VGoJGeREjE16PNdKfyCtlKzhKbzAr1PVMCx
+	 ALMVsitR0zwJk2/zoXeuoVRJZvrHvGGG1iueR38YibxoRe3ACafwJLMBQC+RIWhqG/
+	 9lbrwcrEkyDJwyCLKlwXbxnfeFQgRw0zMC6rg+ckuu5wwRPlAc/GFc9I3svwc6j1s2
+	 1BqkeNrr8ip2Q==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id E45078134A;
-	Wed, 11 Sep 2024 16:54:51 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 3A05E408DF;
+	Wed, 11 Sep 2024 17:52:31 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 261041BF580
- for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Sep 2024 16:54:50 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 4AB9F1BF306
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Sep 2024 17:52:29 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 131AE401AD
- for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Sep 2024 16:54:50 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 3838C40424
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Sep 2024 17:52:29 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id c5cPRIDdDtLF for <intel-wired-lan@lists.osuosl.org>;
- Wed, 11 Sep 2024 16:54:49 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.19;
- helo=mgamail.intel.com; envelope-from=himasekharx.reddy.pucha@intel.com;
+ id rYN66PQpGKqT for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 11 Sep 2024 17:52:27 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.133.124;
+ helo=us-smtp-delivery-124.mimecast.com; envelope-from=kheib@redhat.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 88DF440021
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 88DF440021
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.19])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 88DF440021
- for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Sep 2024 16:54:47 +0000 (UTC)
-X-CSE-ConnectionGUID: UvzP5h5pSKS9KRcXcPM58g==
-X-CSE-MsgGUID: 8cv9NZCcReWJ4U+QprDG5A==
-X-IronPort-AV: E=McAfee;i="6700,10204,11192"; a="24428250"
-X-IronPort-AV: E=Sophos;i="6.10,220,1719903600"; d="scan'208";a="24428250"
-Received: from orviesa003.jf.intel.com ([10.64.159.143])
- by fmvoesa113.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 11 Sep 2024 09:54:47 -0700
-X-CSE-ConnectionGUID: 1GJF6bGmT8Ck0PGAYDTrRw==
-X-CSE-MsgGUID: SDuzIsh5QIOYUG9MeLqSwg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.10,220,1719903600"; d="scan'208";a="72198361"
-Received: from orsmsx601.amr.corp.intel.com ([10.22.229.14])
- by orviesa003.jf.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
- 11 Sep 2024 09:54:47 -0700
-Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
- ORSMSX601.amr.corp.intel.com (10.22.229.14) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.39; Wed, 11 Sep 2024 09:54:46 -0700
-Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
- ORSMSX610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.39; Wed, 11 Sep 2024 09:54:46 -0700
-Received: from ORSEDG601.ED.cps.intel.com (10.7.248.6) by
- orsmsx610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.39 via Frontend Transport; Wed, 11 Sep 2024 09:54:46 -0700
-Received: from NAM02-SN1-obe.outbound.protection.outlook.com (104.47.57.41) by
- edgegateway.intel.com (134.134.137.102) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Wed, 11 Sep 2024 09:54:46 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=hlyt0esc7txnmZ1aJeJQlJHFxDqZf6+g7upMLS616Z5Wq/qpWT1fc3+qJEBh0ptaN/wfOlq3P/m0j5PzO14YzAyovKhdjLhKAAQlExDLy0ZdsH/EF9df/voP5xU93NhJaxI/qjdoV7Fu9Y+tpUaKZblXeTNEkkG/GCoxv+j6lwri4ILk9Zzrwf7TBzWa2hcTbNR2FBaF5wZKczpSDqX0crzM7goffOyfK7CYZj2jPpxrmyfwmIi7Nq0Bhhi6dotEwhqVRDAsqH9biAM+gtlq4iDDvR8qg0LUxCHKgcEdHsFjNPKPL0nJWimBTu310n5I0fh1UJdEONIOR2WQhMw8Rw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=3wUpoiTItb8NiSnEcdegQYahmQuRcbUQWD2uCsLuKcM=;
- b=dpuvGMEGWl1RA4AeVReqW9B/Hf3aToLE+m8wgJrCXZfgg4HQzpfGb+n7b2F0/lljf0JJl0kChtRB4ISm2fpNtZVpS2DyHocmfewylLeZ2B6qseoa06K5b/wthIj22HMajyv6uVixpg4Bo6fZPh8pwuYQiJqBsBMes5UlmMBSjfh0zFyCKT2FrO4xYf7DdzDvW/BY449wWRfKxmOg1aG6AhbJUgTFBciEbTCAaqonjld+N/XNvkaHo0xy9l4n1vTBXJ8RheD9eV4nUyZKELp/s7R8G1qZSW8aOOYiDTuqsgTnBzFEKDRS55BIiR9xbouBzg3T/z62gFnf+Z159VHkiQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from CYYPR11MB8429.namprd11.prod.outlook.com (2603:10b6:930:c2::15)
- by MW6PR11MB8409.namprd11.prod.outlook.com (2603:10b6:303:24c::10)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7918.24; Wed, 11 Sep
- 2024 16:54:38 +0000
-Received: from CYYPR11MB8429.namprd11.prod.outlook.com
- ([fe80::4f97:ad9d:79a9:899f]) by CYYPR11MB8429.namprd11.prod.outlook.com
- ([fe80::4f97:ad9d:79a9:899f%4]) with mapi id 15.20.7939.022; Wed, 11 Sep 2024
- 16:54:38 +0000
-From: "Pucha, HimasekharX Reddy" <himasekharx.reddy.pucha@intel.com>
-To: Gui-Dong Han <hanguidong02@outlook.com>, "Nguyen, Anthony L"
- <anthony.l.nguyen@intel.com>, "Kitszel, Przemyslaw"
- <przemyslaw.kitszel@intel.com>, "davem@davemloft.net" <davem@davemloft.net>,
- "edumazet@google.com" <edumazet@google.com>, "kuba@kernel.org"
- <kuba@kernel.org>, "pabeni@redhat.com" <pabeni@redhat.com>
-Thread-Topic: [Intel-wired-lan] [PATCH v2] ice: Fix improper handling of
- refcount in ice_dpll_init_rclk_pins()
-Thread-Index: AQHa/hJyDFp9ie+S+kCRwGSOskH2nLJS2doQ
-Date: Wed, 11 Sep 2024 16:54:38 +0000
-Message-ID: <CYYPR11MB842927FFCC14C0B1B4F39534BD9B2@CYYPR11MB8429.namprd11.prod.outlook.com>
-References: <SY8P300MB0460F0F4B5D0BC6768DCA466C0932@SY8P300MB0460.AUSP300.PROD.OUTLOOK.COM>
-In-Reply-To: <SY8P300MB0460F0F4B5D0BC6768DCA466C0932@SY8P300MB0460.AUSP300.PROD.OUTLOOK.COM>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: CYYPR11MB8429:EE_|MW6PR11MB8409:EE_
-x-ms-office365-filtering-correlation-id: db62c21f-f73d-4b9e-bfa8-08dcd2826c41
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
- ARA:13230040|1800799024|7416014|376014|366016|38070700018; 
-x-microsoft-antispam-message-info: =?us-ascii?Q?l5P/9XbpXfodzbvzjD5PEyaIE6ahyW+TEjPuZY6raPyI4leflyf0gRkE22Pv?=
- =?us-ascii?Q?MKJ81PLulhjVgpfdvt8Z5KaSFn4cLc8ZBNTUl86KJFVVde0WaFM2S2OmoYiS?=
- =?us-ascii?Q?LDCMKhaf/RwYUbi/HKrsyXKfhYcsxSUUjHaT/wjnW48B+29sqUVpSOkD9ey1?=
- =?us-ascii?Q?LQmx+AArgD0eDkUwNJuEkYuo/q+n/xtXILy0x3I9cUBSzWf/SKAFjF7kn6Tz?=
- =?us-ascii?Q?IubhNhNm2NEixoxElFNvJPEuxTcjBp/l6TWg+dIxwsldWoVHd1JZRliXVmrn?=
- =?us-ascii?Q?KO8LEG9RWlM1iCDnylcAZAlbf7SzikMCAPtw0EXfREQwJjBzwWGnAoirJdgc?=
- =?us-ascii?Q?D5j2izJfGB8/9pCB88JKgMNCvCyQgn4ofiU8CnMMweGCcNAk2+kRsPPgLlh1?=
- =?us-ascii?Q?ZLTw8SU/zYFSG63X7Z7hSBlspfmUiVwAQWQH5pusqfve8mlJZz7nZy/RIMYZ?=
- =?us-ascii?Q?Y3Qh05FhfOCH5NLBaV6gRcAbXc8VZkNKP++zk8XEXNiZuB8apX2lZDAyz+T2?=
- =?us-ascii?Q?nVu2hEX27KE+Z51zLyJFW896HBiIimB6GKe8sgKKK1/dEF+7PJhK1JEdJ/Mn?=
- =?us-ascii?Q?/oYXUkJ5qsrPRkHQivJEhEYhk8uvaNA2QJROwlz6l0t5bh+xr7u7NlDJoXvP?=
- =?us-ascii?Q?auciUH3haR4RlJ1hP3rAph6aQB1udZzggJoHCjIN59bCZkebX1sm5R2Y2/H5?=
- =?us-ascii?Q?ybC3uQwA2uW5DBfpzLfJ33qmqou4lYK7EpmgxjAIj0gEFuuSS9cxbMswGP0C?=
- =?us-ascii?Q?FxhFi3+tDtyitc4jeD8jJshTq3MqMN9hmUgegTbryvB0dj+ysX9VmXkDZA3t?=
- =?us-ascii?Q?7InHdXvxtCnzcTriPZ0+rTnsnwz5t3b4G9MXdkXt6Hnu837Syrpbvp6BKBbn?=
- =?us-ascii?Q?F21dfpmurHj58s19gJbmbozG4Iz5TDYlLHbCIWmwnBLIRTPaRoIQnbKfsPVm?=
- =?us-ascii?Q?AN5v0orAHopb6JG/klNIKz+o+U2Bhjb81CYDVKKX+v3s+ihqSdgBdO+8/hh/?=
- =?us-ascii?Q?S3uVOxUHkqo3yphbGCrJbAGzqIYS7PjPBuylwtih/TV917FfNAhpDPRtWy6b?=
- =?us-ascii?Q?zKzgPz0xNYYA5u5lK0C+hqIyP1QglMNai87R0n3/fDP6KHAfS+eDDNEObpmd?=
- =?us-ascii?Q?9ge2UqUUphOUAd4EwadMoIxdEtLxPmYend8hcwC3uAfwaWF+f6Rk9mLrStJJ?=
- =?us-ascii?Q?dv/+cPnFE21nXZLP8XhfUtTtDP+DVwqRSa1+6AyeYJpG4/kAeh3bItaGlDki?=
- =?us-ascii?Q?MhZGDGCEsNNlP8WaHkXS5Z6L7BCkXjGLvZRnmtGME6FvoATyZkn78Iqqy7v8?=
- =?us-ascii?Q?j6X/52z3U2SdQf/zG0Ot3iljk0xXFH7m0SD6nH3+U3OcRv/RAUJTJF4J2Ldq?=
- =?us-ascii?Q?hGVc5jys0Lg+Zf5RpdLparU0hoQrbeGeJjgZSR+7HAoCYHXcFQ=3D=3D?=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:CYYPR11MB8429.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(1800799024)(7416014)(376014)(366016)(38070700018); DIR:OUT;
- SFP:1101; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?rMHR9sre7wXNR1UdHE37BU4gAqotT/o9ZM+5+rRXXj8y2UC6S60yE8JQc4ha?=
- =?us-ascii?Q?B6Ozm0DfcmfspQFoVc6wGh7LdoC435RDBLK/Rm4xAkqHnhaM8nomOTJTxlVb?=
- =?us-ascii?Q?qgkfJYNDWO4+wbflh236IImtNnrhnEmDOUjt4PsKMncbBf8t0jFwAEfLUwMS?=
- =?us-ascii?Q?VNtJjvGTDyRzZAj/p/7kBLkbRRAR43tigsf8ls9hG4zNQZaRI1UuRszFx8vH?=
- =?us-ascii?Q?FXYgr1XwbSWheksrrlkAekX6aeoTaE/XdwmTHEvAaxi6cIJahOU1RJjygxPW?=
- =?us-ascii?Q?eJ68oswIFH01pRLWbCTI/qRNrI7e5IRoNHHhdh/hCOhtfcuv8cbSssy4ucy4?=
- =?us-ascii?Q?t14pKoCdhpW4CKcSd/6s+HhRb+nxiso/H+KEMUJi8V7+ADJRDOsBJCY7bR84?=
- =?us-ascii?Q?lHbYOeGu+frkaBnsIyzndRY0/KcXVhQTm4Xrxs1d/RthM9uQKsWGpDvGyv6e?=
- =?us-ascii?Q?PFOgCIObzMawrSoz+s6LUsaJgLH0LNfhb3SajwgEd+p+q2uXjMMonDzIs8n3?=
- =?us-ascii?Q?qc1lgAmPR5sKc5QKoZnZTI7ANAkcWNh7RCAhRshIPnHyWsj2QheaChjBpvYA?=
- =?us-ascii?Q?FefoVMlY2mFjLjHQtfohBupfkTQjhArTNBawDbB+gN2jm4NHFA6xcc+G/GYT?=
- =?us-ascii?Q?oMMyqAr/samMiszqWuBS+vBwViJ5wVo/aSrquuRp36qiRV20KavkV4dGXd29?=
- =?us-ascii?Q?mRu7EZ+A5Gil6Zl6nkKm4qZjTc4vFla/3HlnJV/8dxRbFi7Icazu6tAVC2yQ?=
- =?us-ascii?Q?fOPaCR5pIprdRdPgagKD/pWcEEhYuGBz3hCKchi40BWdewRaJqTulZx0UpwE?=
- =?us-ascii?Q?zCQnqBG9OAZ/j6twOLQHxnfC87shwUcVorgW0R+p44Ce/u+DqI9w2SebPQXy?=
- =?us-ascii?Q?l0/H6lB+yEaQdwdAXKCRuCSKzEllWf3GEIRc9wwU/52cCwhxZ25EyVkRCZnz?=
- =?us-ascii?Q?77Wyh0y5f57KtwdnMGG2rm5QagmpbnGfEJXrKHesNJM2WfA2rWN7OvkLHi3R?=
- =?us-ascii?Q?wPEO9G1OqBSLfaXae59SjnVmt6UsVZZS9Oh/P4LgSG8bZ1UYJmOFkrL1G8zS?=
- =?us-ascii?Q?x1j3ml/EQ7oKU2dPFwaNzxxwER36AkvPSlycLObrM+301EqMrl1uHYm5XETM?=
- =?us-ascii?Q?KLoHQGlRzm8paCgse5+C+ar0YvWg0kKm7BeHYskXT+SijsVxe+xKlOSBxfYy?=
- =?us-ascii?Q?LN0snJLMn8+RUGrSq+ed/LgVhrBw9oP9uDGo6BvsyBb46Qazb5cv9Po83iI9?=
- =?us-ascii?Q?caDBbE2EFJ2OuEGfzF8u9Xfh892cE0oVL2FMLDrlLmL1w5H3Yu4ja/RWhsJf?=
- =?us-ascii?Q?gcb0Wu0cK4BjR86D3//Lf2D3Sl7/T9YPspi5tCio8T0lfPvvERnx9FOF8lFh?=
- =?us-ascii?Q?LhVXgcTBjTI57kqfoQv6r5n0NHOorpU/s6cxugR5JFM6HR04QpXZVSgBxNDf?=
- =?us-ascii?Q?+DMZqvHE/lEGTEg+I4UariYvWSjCKTOhbrrpUVL6n1TqRVtsrcsMklxeSIPG?=
- =?us-ascii?Q?bE0d21YPjnkyrFb0jTYIDupQxBmlDu502+XC45kqjbBCf+aRGYii65JiKa5J?=
- =?us-ascii?Q?0slufIZZ6ChlUS8x7t2ukmHG+yJYNoY2cctO92ggpD2/etg3+Xdgv+CzByNh?=
- =?us-ascii?Q?eg=3D=3D?=
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 1BE5940257
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1BE5940257
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 1BE5940257
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Sep 2024 17:52:26 +0000 (UTC)
+Received: from mail-qt1-f200.google.com (mail-qt1-f200.google.com
+ [209.85.160.200]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-2-VtQgRBwIM6KVlcFe6GDTew-1; Wed, 11 Sep 2024 13:52:24 -0400
+X-MC-Unique: VtQgRBwIM6KVlcFe6GDTew-1
+Received: by mail-qt1-f200.google.com with SMTP id
+ d75a77b69052e-45826823bb0so451601cf.1
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 11 Sep 2024 10:52:24 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1726077144; x=1726681944;
+ h=in-reply-to:content-transfer-encoding:content-disposition
+ :mime-version:references:message-id:subject:cc:to:from:date
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=USRMv9RzUopMWvtodUYYp9EwsgYfe6uI7ezp0e+xAS0=;
+ b=KtidyWKsppESd07oJu9ifOwziRUX6yLw2lL4TGwiCmT8s0qBwzRmstJHLxDAAw+s1z
+ Emcnxy+wEjwJYFltT5pawAqaVUSajVT605VdHup3EFAVcxdl7Gg8A++CldFsqhxP7AYy
+ KhtSL+s7yV1DBmH6cwTS4DZP6LRUluIgbIU5SG14N/7DqJu5Wga9S0/66oQWAVZ1wGa2
+ kNZzt6Oax9Apo4/UogCKGOB2S1rmnM7WRqjUR5Q0VbcAD/5JZPttQhlGormt+HGMOkKJ
+ 1WfmPDqYO3iVNFzzK421SrerY8qi59WdIG1r3RqL6cDHOJpao7G5Igk9ma9K38vfkWnv
+ AfFQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUEex268lv0L6ZLRLK48j3COAdqjkBEefFA3tdX1W4hRPfVvAdpTX9UajJEsajC5j6cuJJi8txnXPuFjKcB5Qc=@lists.osuosl.org
+X-Gm-Message-State: AOJu0YyXCd0h+Su0WYrP3b5CFWlYmDbv0vgaSsItm00/w5WvBdNaOdeD
+ rMd70J1ge03jZJHTRKfQoOr6KOGGYpoucpzulPh/siH1kFuhVhhr1rcpVEe89WeJZOTneccMXmz
+ n8K2ojehruCViBmCccUfVV4I+IFersG5uRphf8cDDBTGtB8LkVC90UyA9GqsZU1gOzrY=
+X-Received: by 2002:a05:620a:28c7:b0:7a9:a744:f989 with SMTP id
+ af79cd13be357-7a9e5f8fbc7mr21771085a.46.1726077143609; 
+ Wed, 11 Sep 2024 10:52:23 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFaIBbrZV7quifxciyS6qJ4NtWPS4KWQAt/MZjRMAcRq6+Ll3a9JPMjdHfJgRHoxzT0Fv45mA==
+X-Received: by 2002:a05:620a:28c7:b0:7a9:a744:f989 with SMTP id
+ af79cd13be357-7a9e5f8fbc7mr21765685a.46.1726077142987; 
+ Wed, 11 Sep 2024 10:52:22 -0700 (PDT)
+Received: from fedora-x1
+ (bras-base-london1622w-grc-35-184-146-85-211.dsl.bell.ca. [184.146.85.211])
+ by smtp.gmail.com with ESMTPSA id
+ af79cd13be357-7a9a7a1e3a8sm446257985a.117.2024.09.11.10.52.21
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 11 Sep 2024 10:52:22 -0700 (PDT)
+Date: Wed, 11 Sep 2024 13:52:20 -0400
+From: Kamal Heib <kheib@redhat.com>
+To: "Loktionov, Aleksandr" <aleksandr.loktionov@intel.com>
+Message-ID: <ZuHY1DHpeg3K868D@fedora-x1>
+References: <20240903182555.1253466-1-kheib@redhat.com>
+ <CAGYh1E_tbTY5U1Uwpszw7KeUTaKXV0+Lw4AUgBFdsTbx=Gb73A@mail.gmail.com>
+ <SJ0PR11MB586692C95212C29D929C0DA5E59C2@SJ0PR11MB5866.namprd11.prod.outlook.com>
+ <Ztjz4ZZIP8v6iKF1@fedora-x1>
+ <SJ0PR11MB5866A1A4AF2FC7216B372E14E59D2@SJ0PR11MB5866.namprd11.prod.outlook.com>
+ <ZuD9MRVoiN2pmmpf@fedora-x1>
+ <SJ0PR11MB586618D8EE350346110C02A6E59B2@SJ0PR11MB5866.namprd11.prod.outlook.com>
+ <SJ0PR11MB58669EBD94CD541831F3120DE59B2@SJ0PR11MB5866.namprd11.prod.outlook.com>
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: CYYPR11MB8429.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: db62c21f-f73d-4b9e-bfa8-08dcd2826c41
-X-MS-Exchange-CrossTenant-originalarrivaltime: 11 Sep 2024 16:54:38.3053 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: IdEX6dfOMymrR9K2xzkricr3Pedt0d3WHg/Z7ioZnhu6bqevjcKlq+R87Zf/9BixUUijE/Ngr9LKT8ZME/cn7YxrVpb2FQx3RTaw0TmHh+fVETxRj+RgJZ+pzsKE0C5I
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MW6PR11MB8409
-X-OriginatorOrg: intel.com
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1726073689; x=1757609689;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-transfer-encoding:mime-version;
- bh=yGa0zbcep2YL+lTeheGAmR/gBTAEHycm9HgpHA+OsGM=;
- b=nOFxLOkWV1MlYkTvYeezwe7o8HdXIvBzsXsQ/8iKYCsdI6h81JBAL5+Q
- JuVzSqLd8Dgtxt5Y73pCUrTYYirddFjUhIx12dqlXjL1/ZOaZ6PqbC2gO
- Aw5Efg1Xl99JVCyfLRq21+qGt7WNYc2k1NbpvpcQKrtCuYzHX07huif9e
- LyrHOXo3viV92KQRt00PFENa61ha4lMWmX/qncm5p1Ukq2cxAfTrW36mT
- QmvIGVc8qvrDKZYZ61jiW19K0TMia6chi9VF0s8I7Pnx34cfKmjO/KRti
- HkHkJTyXCHeYMrUjxH3IV4VVt/nNpxdA8yQ8t1P9PQ+LdTooMRfNXtaI9
- Q==;
+In-Reply-To: <SJ0PR11MB58669EBD94CD541831F3120DE59B2@SJ0PR11MB5866.namprd11.prod.outlook.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=redhat.com; 
+ s=mimecast20190719; t=1726077145;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=USRMv9RzUopMWvtodUYYp9EwsgYfe6uI7ezp0e+xAS0=;
+ b=J6jBLLi1oAB64xDep20oECvWq/hflVGRf+Kak3UpgaKsni5QUnSjV2TAU8j7SOxdTYrJSt
+ A+2SAOfcxeR+o8RiXxlpyY99kkxueuHZqV0E3IRK+UCGwmH6Akk3ZpzyYcApxyENVJ0deC
+ pfZ5aW8K8zW0txAQJXxKtNHpGHIqIz8=
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=intel.com
+ header.from=redhat.com
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=nOFxLOkW
-X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Subject: Re: [Intel-wired-lan] [PATCH v2] ice: Fix improper handling of
- refcount in ice_dpll_init_rclk_pins()
+ dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
+ header.a=rsa-sha256 header.s=mimecast20190719 header.b=J6jBLLi1
+Subject: Re: [Intel-wired-lan] [PATCH iwl-net] i40e: Fix trying to free
+ already-freed IRQ
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -228,59 +138,479 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "baijiaju1990@gmail.com" <baijiaju1990@gmail.com>,
+Cc: ivecera <ivecera@redhat.com>, Paolo Abeni <pabeni@redhat.com>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ "David S . Miller" <davem@davemloft.net>, "Nguyen,
+ Anthony L" <anthony.l.nguyen@intel.com>, Jakub Kicinski <kuba@kernel.org>,
+ YangHang Liu <yanghliu@redhat.com>,
  "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "stable@vger.kernel.org" <stable@vger.kernel.org>
+ Chao Yang <chayang@redhat.com>, "Kitszel,
+ Przemyslaw" <przemyslaw.kitszel@intel.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-> -----Original Message-----
-> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of G=
-ui-Dong Han
-> Sent: Tuesday, September 3, 2024 5:19 PM
-> To: Nguyen, Anthony L <anthony.l.nguyen@intel.com>; Kitszel, Przemyslaw <=
-przemyslaw.kitszel@intel.com>; davem@davemloft.net; edumazet@google.com; ku=
-ba@kernel.org; pabeni@redhat.com
-> Cc: netdev@vger.kernel.org; linux-kernel@vger.kernel.org; stable@vger.ker=
-nel.org; Gui-Dong Han <hanguidong02@outlook.com>; baijiaju1990@gmail.com; i=
-ntel-wired-lan@lists.osuosl.org
-> Subject: [Intel-wired-lan] [PATCH v2] ice: Fix improper handling of refco=
-unt in ice_dpll_init_rclk_pins()
->
-> This patch addresses a reference count handling issue in the
-> ice_dpll_init_rclk_pins() function. The function calls ice_dpll_get_pins(=
-), which increments the reference count of the relevant resources. However,=
- if the condition WARN_ON((!vsi || !vsi->netdev)) is met, the function curr=
-ently returns an error without properly releasing the > resources acquired =
-by ice_dpll_get_pins(), leading to a reference count leak.
->
-> To resolve this, the check has been moved to the top of the function. Thi=
-s ensures that the function verifies the state before any resources are acq=
-uired, avoiding the need for additional resource management in the error pa=
-th.=20
->
-> This bug was identified by an experimental static analysis tool developed=
- by our team. The tool specializes in analyzing reference count operations =
-and detecting potential issues where resources are not properly managed.
-> In this case, the tool flagged the missing release operation as a potenti=
-al problem, which led to the development of this patch.
->
-> Fixes: d7999f5ea64b ("ice: implement dpll interface to control cgu")
-> Cc: stable@vger.kernel.org
-> Signed-off-by: Gui-Dong Han <hanguidong02@outlook.com>
-> ---
-> v2:
-> * In this patch v2, the check for vsi and vsi->netdev has been moved to t=
-he top of the function to simplify error handling and avoid the need for re=
-source unwinding.
->   Thanks to Simon Horman for suggesting this improvement.
-> ---
->  drivers/net/ethernet/intel/ice/ice_dpll.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
+On Wed, Sep 11, 2024 at 08:50:39AM +0000, Loktionov, Aleksandr wrote:
+> 
+> 
+> > -----Original Message-----
+> > From: Loktionov, Aleksandr
+> > Sent: Wednesday, September 11, 2024 10:35 AM
+> > To: Kamal Heib <kheib@redhat.com>
+> > Cc: YangHang Liu <yanghliu@redhat.com>; Chao Yang
+> > <chayang@redhat.com>; ivecera <ivecera@redhat.com>;
+> > netdev@vger.kernel.org; Jakub Kicinski <kuba@kernel.org>; Nguyen,
+> > Anthony L <anthony.l.nguyen@intel.com>; Kitszel, Przemyslaw
+> > <przemyslaw.kitszel@intel.com>; intel-wired-lan@lists.osuosl.org;
+> > Paolo Abeni <pabeni@redhat.com>; David S . Miller
+> > <davem@davemloft.net>
+> > Subject: RE: [Intel-wired-lan] [PATCH iwl-net] i40e: Fix trying to
+> > free already-freed IRQ
+> > 
+> > 
+> > 
+> > > -----Original Message-----
+> > > From: Kamal Heib <kheib@redhat.com>
+> > > Sent: Wednesday, September 11, 2024 4:15 AM
+> > > To: Loktionov, Aleksandr <aleksandr.loktionov@intel.com>
+> > > Cc: YangHang Liu <yanghliu@redhat.com>; Chao Yang
+> > > <chayang@redhat.com>; ivecera <ivecera@redhat.com>;
+> > > netdev@vger.kernel.org; Jakub Kicinski <kuba@kernel.org>; Nguyen,
+> > > Anthony L <anthony.l.nguyen@intel.com>; Kitszel, Przemyslaw
+> > > <przemyslaw.kitszel@intel.com>; intel-wired-lan@lists.osuosl.org;
+> > > Paolo Abeni <pabeni@redhat.com>; David S . Miller
+> > > <davem@davemloft.net>
+> > > Subject: Re: [Intel-wired-lan] [PATCH iwl-net] i40e: Fix trying to
+> > > free already-freed IRQ
+> > >
+> > > On Thu, Sep 05, 2024 at 07:51:15AM +0000, Loktionov, Aleksandr
+> > wrote:
+> > > >
+> > > >
+> > > > > -----Original Message-----
+> > > > > From: Kamal Heib <kheib@redhat.com>
+> > > > > Sent: Thursday, September 5, 2024 1:57 AM
+> > > > > To: Loktionov, Aleksandr <aleksandr.loktionov@intel.com>
+> > > > > Cc: YangHang Liu <yanghliu@redhat.com>; Chao Yang
+> > > > > <chayang@redhat.com>; ivecera <ivecera@redhat.com>;
+> > > > > netdev@vger.kernel.org; Jakub Kicinski <kuba@kernel.org>;
+> > Nguyen,
+> > > > > Anthony L <anthony.l.nguyen@intel.com>; Kitszel, Przemyslaw
+> > > > > <przemyslaw.kitszel@intel.com>; intel-wired-
+> > lan@lists.osuosl.org;
+> > > > > Paolo Abeni <pabeni@redhat.com>; David S . Miller
+> > > > > <davem@davemloft.net>
+> > > > > Subject: Re: [Intel-wired-lan] [PATCH iwl-net] i40e: Fix trying
+> > to
+> > > > > free already-freed IRQ
+> > > > >
+> > > > > On Wed, Sep 04, 2024 at 09:00:32PM +0000, Loktionov, Aleksandr
+> > > wrote:
+> > > > > >
+> > > > > >
+> > > > > > > -----Original Message-----
+> > > > > > > From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org>
+> > On
+> > > > > Behalf
+> > > > > > > Of YangHang Liu
+> > > > > > > Sent: Wednesday, September 4, 2024 4:37 AM
+> > > > > > > To: Kamal Heib <kheib@redhat.com>; Chao Yang
+> > > > > > > <chayang@redhat.com>
+> > > > > > > Cc: ivecera <ivecera@redhat.com>; netdev@vger.kernel.org;
+> > > Jakub
+> > > > > > > Kicinski <kuba@kernel.org>; Nguyen, Anthony L
+> > > > > > > <anthony.l.nguyen@intel.com>; Kitszel, Przemyslaw
+> > > > > > > <przemyslaw.kitszel@intel.com>;
+> > > > > > > intel-wired-lan@lists.osuosl.org; Paolo Abeni
+> > > > > > > <pabeni@redhat.com>; David S . Miller <davem@davemloft.net>
+> > > > > > > Subject: Re: [Intel-wired-lan] [PATCH iwl-net] i40e: Fix
+> > > trying
+> > > > > > > to free already-freed IRQ
+> > > > > > >
+> > > > > > > This issue can be reproduced by hot-unplugging the INTx i40e
+> > > PF.
+> > > > > > >
+> > > > > > > The Call Trace will disappear after using Kamal's fix.
+> > > > > > >
+> > > > > > > Tested-by: Yanghang Liu<yanghliu@redhat.com>
+> > > > > > >
+> > > > > > >
+> > > > > > >
+> > > > > > > On Wed, Sep 4, 2024 at 2:26 AM Kamal Heib <kheib@redhat.com>
+> > > wrote:
+> > > > > > > >
+> > > > > > > > Avoid the following warning when trying to free an already
+> > > > > > > > freed
+> > > > > > > IRQ,
+> > > > > > > > The issue happens when trying to call i40e_remove() twice
+> > > from
+> > > > > two
+> > > > > > > > different contexts which will lead to calling
+> > > > > i40e_vsi_free_irq()
+> > > > > > > > twice, Fix the issue by using a flag to mark that the IRQ
+> > > has
+> > > > > > > already been freed.
+> > > > > > > >
+> > > > > > > > i40e 0000:07:00.0: i40e_ptp_stop: removed PHC on enp7s0
+> > > > > > > > ------------
+> > > > > > > [
+> > > > > > > > cut here ]------------ Trying to free already-free IRQ 0
+> > > > > > > > WARNING: CPU: 2 PID: 12 at kernel/irq/manage.c:1868
+> > > > > > > > __free_irq+0x1e3/0x350 Modules linked in: nft_fib_inet
+> > > > > > > > nft_fib_ipv4
+> > > > > > > > nft_fib_ipv6 nft_fib nft_reject_inet nf_reject_ipv4
+> > > > > nf_reject_ipv6
+> > > > > > > > nft_reject nft_ct nft_chain_nat nf_nat nf_conntrack
+> > > > > nf_defrag_ipv6
+> > > > > > > > nf_defrag_ipv4 rfkill ip_set nf_tables nfnetlink vfat fat
+> > > > > > > > intel_rapl_msr intel_rapl_common kvm_amd ccp iTCO_wdt
+> > > > > > > > iTCO_vendor_support kvm i2c_i801 pcspkr i40e lpc_ich
+> > > > > > > > virtio_gpu i2c_smbus virtio_dma_buf drm_shmem_helper
+> > > > > > > > drm_kms_helper virtio_balloon joydev drm fuse xfs
+> > libcrc32c
+> > > > > > > > ahci
+> > > > > crct10dif_pclmul
+> > > > > > > > libahci crc32_pclmul crc32c_intel virtio_net libata
+> > > virtio_blk
+> > > > > > > > ghash_clmulni_intel net_failover virtio_console failover
+> > > > > serio_raw
+> > > > > > > > dm_mirror dm_region_hash dm_log dm_mod
+> > > > > > > > CPU: 2 PID: 12 Comm: kworker/u16:1 Kdump: loaded Not
+> > tainted
+> > > > > > > > 5.14.0-478.el9.x86_64 #1 Hardware name: Red Hat KVM/RHEL,
+> > > BIOS
+> > > > > > > > edk2-20240524-1.el9 05/24/2024
+> > > > > > > > Workqueue: kacpi_hotplug acpi_hotplug_work_fn
+> > > > > > > > RIP: 0010:__free_irq+0x1e3/0x350
+> > > > > > > > Code: 00 00 48 8b bb a8 01 00 00 e8 09 74 02 00 49 8b 7c
+> > 24
+> > > 30
+> > > > > e8
+> > > > > > > > 8f 7c 1d 00 eb 35 8b 74 24 04 48 c7 c7 50 a3 61 92 e8 cd
+> > 99
+> > > f6
+> > > > > ff
+> > > > > > > > <0f>
+> > > > > > > 0b
+> > > > > > > > 4c 89 fe 48 89 ef e8 30 aa b3 00 48 8b 43 40 48 8b 40 78
+> > 48
+> > > > > > > > RSP: 0018:ffffb971c0077ac8 EFLAGS: 00010086
+> > > > > > > > RAX: 0000000000000000 RBX: ffff8b594193ee00 RCX:
+> > > > > 0000000000000027
+> > > > > > > > RDX: 0000000000000027 RSI: 00000000ffff7fff RDI:
+> > > > > ffff8b59bcf208c8
+> > > > > > > > RBP: ffff8b594193eec4 R08: 0000000000000000 R09:
+> > > > > ffffb971c0077970
+> > > > > > > > R10: ffffb971c0077968 R11: ffffffff931e7c28 R12:
+> > > > > ffff8b5944946000
+> > > > > > > > R13: ffff8b594193ef80 R14: ffff8b5944946000 R15:
+> > > > > 0000000000000246
+> > > > > > > > FS:  0000000000000000(0000) GS:ffff8b59bcf00000(0000)
+> > > > > > > > knlGS:0000000000000000
+> > > > > > > > CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+> > > > > > > > CR2: 00007f11eb064000 CR3: 000000000ad40004 CR4:
+> > > > > 0000000000770ef0
+> > > > > > > > PKRU: 55555554
+> > > > > > > > Call Trace:
+> > > > > > > >  <TASK>
+> > > > > > > >  ? srso_alias_return_thunk+0x5/0xfbef5
+> > > > > > > >  ? show_trace_log_lvl+0x26e/0x2df  ?
+> > > > > > > > show_trace_log_lvl+0x26e/0x2df  ? free_irq+0x33/0x70  ?
+> > > > > > > > __free_irq+0x1e3/0x350  ? __warn+0x7e/0xd0  ?
+> > > > > > > > __free_irq+0x1e3/0x350  ? report_bug+0x100/0x140  ?
+> > > > > > > > srso_alias_return_thunk+0x5/0xfbef5
+> > > > > > > >  ? handle_bug+0x3c/0x70
+> > > > > > > >  ? exc_invalid_op+0x14/0x70
+> > > > > > > >  ? asm_exc_invalid_op+0x16/0x20  ? __free_irq+0x1e3/0x350
+> > ?
+> > > > > > > > __free_irq+0x1e3/0x350
+> > > > > > > >  free_irq+0x33/0x70
+> > > > > > > >  i40e_vsi_free_irq+0x19e/0x220 [i40e]
+> > > > > > > >  i40e_vsi_close+0x2b/0xc0 [i40e]
+> > > > > > > >  i40e_close+0x11/0x20 [i40e]
+> > > > > > > >  __dev_close_many+0x9e/0x110
+> > > > > > > >  dev_close_many+0x8b/0x140
+> > > > > > > >  ? srso_alias_return_thunk+0x5/0xfbef5
+> > > > > > > >  ? free_pcppages_bulk+0xee/0x290
+> > > > > > > >  unregister_netdevice_many_notify+0x162/0x690
+> > > > > > > >  ? srso_alias_return_thunk+0x5/0xfbef5
+> > > > > > > >  ? free_unref_page_commit+0x19a/0x310
+> > > > > > > >  unregister_netdevice_queue+0xd3/0x110
+> > > > > > > >  unregister_netdev+0x18/0x20
+> > > > > > > >  i40e_vsi_release+0x84/0x2e0 [i40e]  ?
+> > > > > > > > srso_alias_return_thunk+0x5/0xfbef5
+> > > > > > > >  i40e_remove+0x15c/0x430 [i40e]
+> > > > > > > >  pci_device_remove+0x3e/0xb0
+> > > > > > > >  device_release_driver_internal+0x193/0x200
+> > > > > > > >  pci_stop_bus_device+0x6c/0x90
+> > > > > > > >  pci_stop_and_remove_bus_device+0xe/0x20
+> > > > > > > >  disable_slot+0x49/0x90
+> > > > > > > >  acpiphp_disable_and_eject_slot+0x15/0x90
+> > > > > > > >  hotplug_event+0xea/0x210
+> > > > > > > >  ? __pfx_acpiphp_hotplug_notify+0x10/0x10
+> > > > > > > >  acpiphp_hotplug_notify+0x22/0x80  ?
+> > > > > > > > __pfx_acpiphp_hotplug_notify+0x10/0x10
+> > > > > > > >  acpi_device_hotplug+0xb8/0x210
+> > > > > > > >  acpi_hotplug_work_fn+0x1a/0x30
+> > > > > > > >  process_one_work+0x197/0x380
+> > > > > > > >  worker_thread+0x2fe/0x410
+> > > > > > > >  ? __pfx_worker_thread+0x10/0x10
+> > > > > > > >  kthread+0xe0/0x100
+> > > > > > > >  ? __pfx_kthread+0x10/0x10
+> > > > > > > >  ret_from_fork+0x2c/0x50
+> > > > > > > >  </TASK>
+> > > > > > > > ---[ end trace 0000000000000000 ]---
+> > > > > > > >
+> > > > > > > > Fixes: 41c445ff0f48 ("i40e: main driver core")
+> > > > > > > > Tested-by: YangHang Liu <yanghliu@redhat.com>
+> > > > > > > > Signed-off-by: Kamal Heib <kheib@redhat.com>
+> > > > > > > > ---
+> > > > > > > >  drivers/net/ethernet/intel/i40e/i40e.h      | 1 +
+> > > > > > > >  drivers/net/ethernet/intel/i40e/i40e_main.c | 8 ++++++++
+> > > > > > > >  2 files changed, 9 insertions(+)
+> > > > > > > >
+> > > > > > > > diff --git a/drivers/net/ethernet/intel/i40e/i40e.h
+> > > > > > > > b/drivers/net/ethernet/intel/i40e/i40e.h
+> > > > > > > > index d546567e0286..910415116995 100644
+> > > > > > > > --- a/drivers/net/ethernet/intel/i40e/i40e.h
+> > > > > > > > +++ b/drivers/net/ethernet/intel/i40e/i40e.h
+> > > > > > > > @@ -865,6 +865,7 @@ struct i40e_vsi {
+> > > > > > > >         int num_q_vectors;
+> > > > > > > >         int base_vector;
+> > > > > > > >         bool irqs_ready;
+> > > > > > > > +       bool legacy_msi_irq_ready;
+> > > > > > I'm against adding additional boolian var which can cause race
+> > > > > conditions.
+> > > > > > Use I40E_FLAG_MSIX_ENA or at least add additional bit and use
+> > > > > interlock test_and_clean/test_and_set bit functions instead.
+> > > > > >
+> > > > >
+> > > > > Hi Aleksandr,
+> > > > >
+> > > > > Thanks for your review!
+> > > > >
+> > > > > This patch was inspired by the use of "irqs_ready" boolian flag
+> > in
+> > > > > the case that I40E_FLAG_MSIX_ENA is set, Please take a look at
+> > the
+> > > > > following change from 2014 for more info:
+> > > > >
+> > > > > 6374184672c8 ("i40e: remove irqs only when they are set up")
+> > > > >
+> > > > > I'll change the patch to use your suggstion, but probably the
+> > use
+> > > of
+> > > > > "irqs_ready" needs to be changed too.
+> > > > >
+> > > > > Thanks,
+> > > > > Kamal
+> > > >
+> > > > Thank you for pointing me to similar fix, now I see my mistake -
+> > > I40E_FLAG_MSIX_ENA is pf level flag.
+> > > > Now we have a race in i40e_vsi_release() v i40e_close() and
+> > probably
+> > > a better solution to use interlocked bits in i40e_vsi struct.
+> > > >
+> > > > But for me it looks like a race on higher level -  vsi states.
+> > > > If i40e_remove() already called i40e_vsi_close() then when
+> > > i40e_close() calls i40e_vsi_close() second time i40e_vsi_close()
+> > must
+> > > just bail out with nothing to do.
+> > > > Do you see my point, it's not just interrupt freeing race, it's
+> > vsi
+> > > state race. We need to make i40e_vsi_close() and i40e_vsi_release()
+> > > idempotent.
+> > > >
+> > > > Proper fix should be something like:
+> > > >   Add vsi_state interlocked bit-set into vsi struct.
+> > > >
+> > > >   Replace everywhere in i40e code sequence of two calls:
+> > > > 	i40e_vsi_close(pf->vsi[i]);
+> > > > 	i40e_vsi_release(pf->vsi[i]);
+> > > >   With single one:
+> > > > 	i40e_vsi_release(pf->vsi[i]);
+> > > >
+> > > > i40e_vsi_release() must interlock vsi state to prevent re-entrance
+> > > and double calls.
+> > > > 			must first call i40e_vsi_close()
+> > > >
+> > > > i40e_vsi_close() must interlock vsi state to prevent re-entrance
+> > and
+> > > double calls.
+> > > >
+> > > > From my point of view this is much closer to the proper fix.
+> > > > Introducing simple race-prone bool variable is just adding one
+> > more
+> > > timebomb.
+> > > >
+> > > > With the best regards
+> > > > Alex
+> > >
+> > > Hi Alex,
+> > >
+> > > Thanks for your review and feedback!
+> > >
+> > > I've prepared the following change based on the above suggestion,
+> > > Could you please take a look and give your feedback:
+> > Waw, it looks almost perfect for me.
+> > Just wonder why we didn't came to such solution before.
+> > 
+> But just one more thing!
+> i40e_vsi_close() and i40e_vsi_release() need to be not only idempotent, but synchronous too! To preserve driver logic working and be safe.
+> I.e. the function needs to return only when other thread returned from the same function.
 >
 
-Tested-by: Pucha Himasekhar Reddy <himasekharx.reddy.pucha@intel.com> (A Co=
-ntingent worker at Intel)
+Unless I'm missing something, seems like i40e_vsi_release() is already
+calling i40e_vsi_close() or i40e_close() (which calles i40e_vsi_close()),
+please take a look at the following code from i40e_vsi_release()
+
+if (vsi->type != I40E_VSI_SRIOV) {
+        if (vsi->netdev_registered) {
+                vsi->netdev_registered = false;
+                if (vsi->netdev) {
+                        /* results in a call to i40e_close() */
+                        unregister_netdev(vsi->netdev);
+                }
+        } else {
+                i40e_vsi_close(vsi);
+        }
+        i40e_vsi_disable_irq(vsi);
+}
+
+Thanks,
+Kamal
+ 
+> > 
+> > > diff --git a/drivers/net/ethernet/intel/i40e/i40e.h
+> > > b/drivers/net/ethernet/intel/i40e/i40e.h
+> > > index d546567e0286..2ed0a027ce69 100644
+> > > --- a/drivers/net/ethernet/intel/i40e/i40e.h
+> > > +++ b/drivers/net/ethernet/intel/i40e/i40e.h
+> > > @@ -135,6 +135,7 @@ enum i40e_vsi_state {
+> > >         __I40E_VSI_REINIT_REQUESTED,
+> > >         __I40E_VSI_DOWN_REQUESTED,
+> > >         __I40E_VSI_RELEASING,
+> > > +       __I40E_VSI_CLOSING,
+> > >         /* This must be last as it determines the size of the BITMAP
+> > > */
+> > >         __I40E_VSI_STATE_SIZE__,
+> > >  };
+> > > diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c
+> > > b/drivers/net/ethernet/intel/i40e/i40e_main.c
+> > > index cbcfada7b357..b883e187fc9b 100644
+> > > --- a/drivers/net/ethernet/intel/i40e/i40e_main.c
+> > > +++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
+> > > @@ -5233,6 +5233,10 @@ static void i40e_napi_disable_all(struct
+> > > i40e_vsi *vsi)  static void i40e_vsi_close(struct i40e_vsi *vsi)  {
+> > >         struct i40e_pf *pf = vsi->back;
+> > > +
+> > > +       if (test_and_set_bit(__I40E_VSI_CLOSING, vsi->state))
+> > > +               return;
+> I think just returning is not enough, to preserve driver logic, here we need to wait until another thread will close and return only then.
+> 
+> > > +
+> > >         if (!test_and_set_bit(__I40E_VSI_DOWN, vsi->state))
+> > >                 i40e_down(vsi);
+> > >         i40e_vsi_free_irq(vsi);
+> > > @@ -7422,6 +7426,7 @@ static int i40e_up_complete(struct i40e_vsi
+> > > *vsi)
+> > >                 return err;
+> > >
+> > >         clear_bit(__I40E_VSI_DOWN, vsi->state);
+> > > +       clear_bit(__I40E_VSI_CLOSING, vsi->state);
+> > >         i40e_napi_enable_all(vsi);
+> > >         i40e_vsi_enable_irq(vsi);
+> > >
+> > > @@ -14162,7 +14167,10 @@ int i40e_vsi_release(struct i40e_vsi *vsi)
+> > >                 dev_info(&pf->pdev->dev, "Can't remove PF VSI\n");
+> > >                 return -ENODEV;
+> > >         }
+> > Please don't forget to call void i40e_vsi_close() in this function
+> > then!
+> > From the first glance the i40e_vsi_close() call should go here.
+> > 
+> > > -       set_bit(__I40E_VSI_RELEASING, vsi->state);
+> > > +
+> > > +       if (test_and_set_bit(__I40E_VSI_RELEASING, vsi->state))
+> > > +               return -ENODEV;
+> > > +
+> > But the i40e_vsi_close() call could be here, can you double check?
+> > Thank you
+> > 
+> > 
+> > >         uplink_seid = vsi->uplink_seid;
+> > >
+> > >         if (vsi->type != I40E_VSI_SRIOV) { @@ -16270,7 +16278,6 @@
+> > > static void i40e_remove(struct pci_dev *pdev)
+> > >          * adminq and hmc.
+> > >          */
+> > >         i40e_pf_for_each_vsi(pf, i, vsi) {
+> > > -               i40e_vsi_close(vsi);
+> > >                 i40e_vsi_release(vsi);
+> > >                 pf->vsi[i] = NULL;
+> > >         }
+> > >
+> > >
+> > > Thanks,
+> > > Kamal
+> > >
+> > > > >
+> > > > > >
+> > > > > > > >
+> > > > > > > >         u16 seid;               /* HW index of this VSI
+> > > > > (absolute
+> > > > > > > index) */
+> > > > > > > >         u16 id;                 /* VSI number */
+> > > > > > > > diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c
+> > > > > > > > b/drivers/net/ethernet/intel/i40e/i40e_main.c
+> > > > > > > > index cbcfada7b357..b39004a42df2 100644
+> > > > > > > > --- a/drivers/net/ethernet/intel/i40e/i40e_main.c
+> > > > > > > > +++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
+> > > > > > > > @@ -4630,6 +4630,9 @@ static int
+> > i40e_vsi_request_irq(struct
+> > > > > > > i40e_vsi *vsi, char *basename)
+> > > > > > > >         if (err)
+> > > > > > > >                 dev_info(&pf->pdev->dev, "request_irq
+> > > failed,
+> > > > > > > > Error %d\n", err);
+> > > > > > > >
+> > > > > > > > +       if (!test_bit(I40E_FLAG_MSIX_ENA, pf->flags) &&
+> > > !err)
+> > > > > > > > +               vsi->legacy_msi_irq_ready = true;
+> > > > > > > > +
+> > > > > > > >         return err;
+> > > > > > > >  }
+> > > > > > > >
+> > > > > > > > @@ -5061,6 +5064,10 @@ static void
+> > i40e_vsi_free_irq(struct
+> > > > > > > > i40e_vsi
+> > > > > > > *vsi)
+> > > > > > > >                         }
+> > > > > > > >                 }
+> > > > > > > >         } else {
+> > > > > > > > +               if (!vsi->legacy_msi_irq_ready)
+> > > > > > > > +                       return;
+> > > > > > > > +
+> > > > > > > > +               vsi->legacy_msi_irq_ready = false;
+> > > > > > > >                 free_irq(pf->pdev->irq, pf);
+> > > > > > > >
+> > > > > > > >                 val = rd32(hw, I40E_PFINT_LNKLST0); @@
+> > > > > > > > -11519,6
+> > > > > > > > +11526,7 @@ static int i40e_vsi_mem_alloc(struct i40e_pf
+> > > *pf,
+> > > > > enum
+> > > > > > > i40e_vsi_type type)
+> > > > > > > >         vsi->work_limit = I40E_DEFAULT_IRQ_WORK;
+> > > > > > > >         hash_init(vsi->mac_filter_hash);
+> > > > > > > >         vsi->irqs_ready = false;
+> > > > > > > > +       vsi->legacy_msi_irq_ready = false;
+> > > > > > > >
+> > > > > > > >         if (type == I40E_VSI_MAIN) {
+> > > > > > > >                 vsi->af_xdp_zc_qps =
+> > > > > > > > bitmap_zalloc(pf->num_lan_qps, GFP_KERNEL);
+> > > > > > > > --
+> > > > > > > > 2.46.0
+> > > > > > > >
+> > > > > >
+> > > >
+> 
 
