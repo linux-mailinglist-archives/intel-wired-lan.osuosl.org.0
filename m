@@ -2,190 +2,185 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 18D9E97B65E
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 18 Sep 2024 01:54:26 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 08AB997B71B
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 18 Sep 2024 05:43:49 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id A6D7161165;
-	Tue, 17 Sep 2024 23:54:24 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id C6C696072F;
+	Wed, 18 Sep 2024 03:43:45 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id rGJxvgrQ4iLo; Tue, 17 Sep 2024 23:54:23 +0000 (UTC)
+ id 72n8jeNCAA_E; Wed, 18 Sep 2024 03:43:44 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7327461185
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7DFDA60E18
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1726617263;
-	bh=VO9CpxyMDKeQrGmBStDGxHs/MpQt/07Q/+W5jK1SEF0=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
+	s=default; t=1726631024;
+	bh=rQVgSAt4WcI+mX3R65NFB5+/qWrC6XJ/kuj011rbYkA=;
+	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=NPFQd+ydnY1N4cFUf6nmEuOMd1AYIqhjrA9hqifRL1RMY3gcXQ7TVATbNlLveNOt5
-	 OFITxkeduKZ6EfaKHTnyg7KS9ZRdAIcIny/45/a2Un4t97FjQgNtXTDz8/Jp4+YCcf
-	 FH7nLPKloYtDlN1K0AuVpmIISlyMSBPlQrtnYUKhtKaungFsfudn5e/bEiO48YbdtO
-	 Km7zh/MLLgDhGUd5tU63z9mC060PO6aYheJgSmMT1zYxc+0NN5yK4sqCFm3gz4wZP2
-	 giqYlSxh0UndlNLAihyBPreaHgXzQPFY4wygza1KsOYtaC7jNlhEKRGMthEv4gWWLC
-	 vqvY5HCYWwM9g==
+	b=d1WiGHtgtuiB+8oC1Jjl/ENeNCFxaIzQCnc2++NN7efB35khaMwXTBCogTDuR6ap9
+	 Z0C9zHH9cAPpbKuUSDnJM4cmfBO/ZveG4NDZCwuFzcqnB7hqbR1cpr6zCPtETMg8PB
+	 6ANeNp4JTg7uYUXNvYQy9EykggSmkjHo+PCpflHOpBX/Ry3LQ6Vfpu7TtwAs+KFZmO
+	 n6E0l6e/jvJpJOezywsQ7PaJNv0fZTI5mae8NEO3svZOKT+iByoYwWIPsLtc5t3hdz
+	 ROdQhgkbpAhevrSMCaDQhQR/PAseUZYdFlBqrcf7v+aWEKqGDeogdfzn2l6F9NFeFD
+	 Y4Khx+mv7izKg==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 7327461185;
-	Tue, 17 Sep 2024 23:54:23 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
+	by smtp3.osuosl.org (Postfix) with ESMTP id 7DFDA60E18;
+	Wed, 18 Sep 2024 03:43:44 +0000 (UTC)
+X-Original-To: intel-wired-lan@osuosl.org
+Delivered-To: intel-wired-lan@osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 9D4171BF842
- for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Sep 2024 23:54:21 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 88B2A1BF215
+ for <intel-wired-lan@osuosl.org>; Wed, 18 Sep 2024 03:43:42 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 8B61D81E1E
- for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Sep 2024 23:54:21 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 7652281EB0
+ for <intel-wired-lan@osuosl.org>; Wed, 18 Sep 2024 03:43:42 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id HNDvkKc29wQE for <intel-wired-lan@lists.osuosl.org>;
- Tue, 17 Sep 2024 23:54:20 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=40.107.102.41;
- helo=nam04-dm6-obe.outbound.protection.outlook.com;
- envelope-from=shannon.nelson@amd.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 4A06381E19
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4A06381E19
-Received: from NAM04-DM6-obe.outbound.protection.outlook.com
- (mail-dm6nam04on2041.outbound.protection.outlook.com [40.107.102.41])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 4A06381E19
- for <intel-wired-lan@lists.osuosl.org>; Tue, 17 Sep 2024 23:54:19 +0000 (UTC)
+ id 3CnCVA94HOFP for <intel-wired-lan@osuosl.org>;
+ Wed, 18 Sep 2024 03:43:41 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=40.107.92.129;
+ helo=nam10-bn7-obe.outbound.protection.outlook.com;
+ envelope-from=faicker.mo@zenlayer.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 52C5481EAD
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 52C5481EAD
+Received: from NAM10-BN7-obe.outbound.protection.outlook.com
+ (mail-bn7nam10on2129.outbound.protection.outlook.com [40.107.92.129])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 52C5481EAD
+ for <intel-wired-lan@osuosl.org>; Wed, 18 Sep 2024 03:43:40 +0000 (UTC)
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=owl7UttC7CzwR6dKtJTfzZREPxg6qsfVMyxCs6fJAP3iA++epDS6cd//PfsDvgFFN7dPWI2hNdozX5orjd/regHCfMntwzWvNuBe/BYUrZl4Vl5ab3NjFkDjxVpe4519M5PBI9BXZrusd00YPgS0/a2kIUpyjj6L1e42lqb4ap+n3YfWQcPABbTGNM4ytrugWpojwy1r23lFt3/1+BMEHxxesNGTdQFwzt9qk3x3UJeg3jcdWDV/2Y7aPap2bzDSe7rwDH2tz1JacDFjKd4Jki2CjxS/YPh/gMZavRK8TG8d3UiK6B5Cr1tDVsH+t1vb4oBeOvAFwSaZtGrceymBVg==
+ b=VNuKjfY83njNxTuEhq7Xrlp6l8SxbFv8+O2Oa5ezKP2bdREMIzdgG7QgfjQVxlR6y3wejTgeZaoDool3lRGJP3Ul3SNnXf66MhK5z9aTHUtblSopZsx7aCIsdh763hgnWKoOjyQ02v/M/sUHdaW3zyq5lnsmPTfJwtFVqqw1Kbq49JUb6lvCjwrJYFeOjZnGtHRCNecwQSFuAzQbgVi057LHwIhjtIQPjElcPKU9tan37UsM4mUSrNws2Hz1OwNai5QhQuoZUASkArX6qSGZCa0zLmyN0500FG1RPW7tw2gMz9uUKLNapKrtXINLM/8/lGNExX8TrIVNhOnYiVaLvA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=VO9CpxyMDKeQrGmBStDGxHs/MpQt/07Q/+W5jK1SEF0=;
- b=SDSIg6pDVsxgkitLu+TGKHoEI1O9WG26E0a/Dw6PXNpoZSCooD1lUvBjnsmEGlNwfTpZqbAqM5xtU8do8qaDhEqMy732bx640bTIWeuiPHNZbGd9W6NKHYP4EVxa1J2ATJSRHJkEecx/1UJz7HcKSYfthTN1io36r504UdhBU+fK7tOGvsHxmca7RuN4leDM4J9d4VEuDudvNN6ofooNZeuUiTobD2oOoytLwzRDCJceA6rVXCwAVrk1vB0Snbtnq/IVT1QTe0oy/i4EbyoX7uQNLS+wq5ErVWZ2j6tFnT9pnp7OvjWC6c4x+fYWx+7a25hmTDyIm5lRUSZ2yioHag==
+ bh=rQVgSAt4WcI+mX3R65NFB5+/qWrC6XJ/kuj011rbYkA=;
+ b=rcK/B2Y+3VzJVNkZeS10i7C6EVXkHidgnsDzKhohCx5R/wXboG+9/6ZZwBBsATjhuaDIpYb5Q8MxR/30yiFB6N+yenQnLeNi3rFZGh1dwwWZnva6kemGUvkBDZ6ptqAfKY6EBLo1y3+1L8NQUuqTrxzyT3N0bri20VtNHZ+r/fPylWq6LZGca1psI8yEv14A41ZQW1OFaVOhS81kAlHyog4WgZyjHW23/XC7ya3SRYRD5gkTq6pFKsnh2ePmg87/SKFk/ha1VWwKseMN+Lja0NQqXv2CRRYxCa1W5n8kmgOOGC+Ub3h2dguJ2J9N/swRr54SeBbAoysp5qpDuGi7Ew==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=amd.com; dmarc=pass action=none header.from=amd.com; dkim=pass
- header.d=amd.com; arc=none
-Received: from DS0PR12MB6583.namprd12.prod.outlook.com (2603:10b6:8:d1::12) by
- CH2PR12MB4296.namprd12.prod.outlook.com (2603:10b6:610:af::10) with
- Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.7962.24; Tue, 17 Sep 2024 23:54:16 +0000
-Received: from DS0PR12MB6583.namprd12.prod.outlook.com
- ([fe80::c8a9:4b0d:e1c7:aecb]) by DS0PR12MB6583.namprd12.prod.outlook.com
- ([fe80::c8a9:4b0d:e1c7:aecb%6]) with mapi id 15.20.7962.022; Tue, 17 Sep 2024
- 23:54:16 +0000
-Message-ID: <49131e14-fb4c-4176-9e55-f50d69bc9bdf@amd.com>
-Date: Tue, 17 Sep 2024 16:54:13 -0700
-User-Agent: Mozilla Thunderbird
-To: Dmitrii Ermakov <demonihin@gmail.com>, davem@davemloft.net
-References: <20240915070334.1267-1-demonihin@gmail.com>
+ smtp.mailfrom=zenlayer.com; dmarc=pass action=none header.from=zenlayer.com;
+ dkim=pass header.d=zenlayer.com; arc=none
+Received: from SJ0PR20MB6079.namprd20.prod.outlook.com (2603:10b6:a03:4d7::19)
+ by SA1PR20MB4297.namprd20.prod.outlook.com (2603:10b6:806:234::14)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7982.16; Wed, 18 Sep
+ 2024 03:43:37 +0000
+Received: from SJ0PR20MB6079.namprd20.prod.outlook.com
+ ([fe80::c11:df86:9358:e76]) by SJ0PR20MB6079.namprd20.prod.outlook.com
+ ([fe80::c11:df86:9358:e76%4]) with mapi id 15.20.7982.012; Wed, 18 Sep 2024
+ 03:43:35 +0000
+From: Faicker Mo <faicker.mo@zenlayer.com>
+To: "Glaza, Jan" <jan.glaza@intel.com>
+Thread-Topic: [EXTERNAL] Re: [Intel-wired-lan] [EXTERNAL] Re: [bug
+ report]iavf: deadlock on detach/attach vf to VM with net_failover
+Thread-Index: AQHbBexRV7UeOwRX10mzASIXiA13T7Jc67xc
+Date: Wed, 18 Sep 2024 03:43:35 +0000
+Message-ID: <SJ0PR20MB6079F810B9623E6919B3DB6DFA622@SJ0PR20MB6079.namprd20.prod.outlook.com>
+References: <SJ0PR20MB6079EE704620E28B3AD45286FA8B2@SJ0PR20MB6079.namprd20.prod.outlook.com>
+ <5dfb65a7-8625-4149-9d8a-b6bcda530882@intel.com>
+ <SJ0PR20MB60797AE7B7293BB912545B37FA962@SJ0PR20MB6079.namprd20.prod.outlook.com>
+ <ef41438c-b311-4922-a6bb-3073f69bfa96@intel.com>
+In-Reply-To: <ef41438c-b311-4922-a6bb-3073f69bfa96@intel.com>
+Accept-Language: en-US
 Content-Language: en-US
-From: "Nelson, Shannon" <shannon.nelson@amd.com>
-In-Reply-To: <20240915070334.1267-1-demonihin@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-ClientProxiedBy: BY5PR16CA0014.namprd16.prod.outlook.com
- (2603:10b6:a03:1a0::27) To DS0PR12MB6583.namprd12.prod.outlook.com
- (2603:10b6:8:d1::12)
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: SJ0PR20MB6079:EE_|SA1PR20MB4297:EE_
+x-ms-office365-filtering-correlation-id: ebb68466-3b9f-467e-69c6-08dcd794131a
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0; ARA:13230040|1800799024|376014|366016|38070700018;
+x-microsoft-antispam-message-info: =?Windows-1252?Q?1ObhpyqHrWgnViURjTnaJoRwqpxUwCZLvGEYU5h4izaMi5qmRK63S+bj?=
+ =?Windows-1252?Q?EWcKiF9gDJv/IyUpGvAAdiXkKIApVyWOq83JkYhqofFEZUEBnghrZTlq?=
+ =?Windows-1252?Q?2Jw43kBzIVNIqo3w5Z9DsG4oxkVKAVsC+I/896mYn9XIEopRRJGsLLV6?=
+ =?Windows-1252?Q?nOBET3uCSRttEtXci36KRcGb9IS7WHDm7gLlGjXvExPf7V8A0v9MJyRo?=
+ =?Windows-1252?Q?yYUBoLd+zBVU+q7K/5Y0C9OuZG1bi6uj0YXKwX1PACmXaYJjZQ+kcJfm?=
+ =?Windows-1252?Q?P6hlYVsVwRpH+ZrCsJy6IItOYhH9VEGjcjctKHj4ABRQSlTy0MRMslBb?=
+ =?Windows-1252?Q?0lG0uYbouT9AHKI5GJx0YtzTiIFKvVIBO4F2nMLMPNPNsjQGE334WVX8?=
+ =?Windows-1252?Q?jLxb8S5r+cZLM099QqQpNYE3/Kf2Pu1ykDSg5IHyg5bxzngVaIhoO7l1?=
+ =?Windows-1252?Q?M7DooKfxny91g3u/lUSL8rYl0KLUq3wmMsUV2xNoFXry4wqLQTASh86O?=
+ =?Windows-1252?Q?K/fvmIWmzZxK7ogZJBB4c1PwBCSbTYs27qUCli+RWCxxssNDc8iD5fWs?=
+ =?Windows-1252?Q?oH+rJudHG30CFI4Jpe02REr4KFYBdpucTvZkpbIxDWK+rXWBS+Bqbn44?=
+ =?Windows-1252?Q?HTxZKWeiVp8X3vN7WbINcIdEhg8mFzmXI9i75nNbo47Uk9Z1F2FgEhB1?=
+ =?Windows-1252?Q?x2MEaSms7FNDusKeCMIWVCnmICRqcmpxCbdZU4OSpGSYX/FS1PAOjq+C?=
+ =?Windows-1252?Q?Dd5lmurQ41OIHEHbWVW8lIghsdVzQDpxnDKN5++1nkzYeSCLZb+i0d5c?=
+ =?Windows-1252?Q?YfSKRh5sw41HqNsxzg0KoYkt6j/VUnAcVWA/xherNGmXSdoXTlNWDlTc?=
+ =?Windows-1252?Q?l6KzqpgpaQG23Apmg4wosIxxhpOtw8heS3rOZJI7WiU/s08aNUgEHrpE?=
+ =?Windows-1252?Q?xitvO7vu+k2JQHOr9nIfSnk6kCI98+Pm+cTJuLFpWUmBI8O8xk9ZjIOV?=
+ =?Windows-1252?Q?ShtM9c5x1QygBSwMCoUi13SOykQHzOQY3JWuPuIErXNhnXZ339Cve7QU?=
+ =?Windows-1252?Q?/pUTw6cXu6UByssyc/Q9KeglgbRiJ6dpNxqHJhZLxpYXz94qJkW4k+iB?=
+ =?Windows-1252?Q?0udugT5Kq7Vk+TdOO4V5E2mIY52NFcdjRi24noW9EGJhb7Fm0jXitF51?=
+ =?Windows-1252?Q?9l3yFlJ3OFs9UEj0xCQM3giqpre2moOJmn0q3joGskkC3owKFp4c5dXn?=
+ =?Windows-1252?Q?SQMcUB6vK0Eg4ku3HNT/c3ojiIkH4+Wz/1pTOSP5TRmAWZtfBgcJ8AV7?=
+ =?Windows-1252?Q?meYwuHc0eaXjR4WIa1smXdvw59kIdAZ5hYe4+IMReHjiAGov1r4d5xrI?=
+ =?Windows-1252?Q?0GdGkBlBdTwJ1/J3fMgZ/3qUgXqkDrvIYjyQuyQ2lg6ri6Fb8jdgG2Pq?=
+ =?Windows-1252?Q?imPgKfhTpN3ht9d7CYfQYCPAvNvWahW1cUYh2Mw/m8ckgR5WE0eS5hHI?=
+ =?Windows-1252?Q?ffkpZaFOvMr2oMhdxMVw0y1sAS4w9Q=3D=3D?=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SJ0PR20MB6079.namprd20.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(1800799024)(376014)(366016)(38070700018); DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?Windows-1252?Q?F0BQe/1Hx1qZwjTSYYtckK7aPkRcrjcUX8a2MdKIC5aLFeVw0sYUjWgI?=
+ =?Windows-1252?Q?9xQK5+mHpqL7lWXImJi7XWKZIat13hIFWZuW5zu24gXYz2+Z6cSlxFik?=
+ =?Windows-1252?Q?7p2mndjgogZywDuOfRa5VSwjwwcjYTrGeWMQyhvNivdtmqWA21T03uS7?=
+ =?Windows-1252?Q?aRqI4n6hZu+pDnDuIKuLV9WPj5PDuan9C/agnw6kxy+/UVtxaX7Fi4+I?=
+ =?Windows-1252?Q?zmuS+yJvD3M5WIqeGRqAwEuCllo0feDcJEg1nQGDvs1VCTHA6CCF0wJv?=
+ =?Windows-1252?Q?aFxY6ZDogI9AVUnDjIVRlgQaFAqWMtcBhfkgtPf9rpFZk6E0YI95kHcb?=
+ =?Windows-1252?Q?Vsnx1kT5oFzJcZ5e9xbB1wENqrwO+wmh0JpaWsKGPy8e8yRv3yzOZ1xq?=
+ =?Windows-1252?Q?P6QF87OGlxx2wLI3gDbvricD5V8OQpyCeEgkQ3OffcI996RbVdGm9C+0?=
+ =?Windows-1252?Q?HgvkA5uyC5RkhRGhnyjDypnmkP1gbZs4kc6GOkx1JIiZUxOK19KYTYJY?=
+ =?Windows-1252?Q?W3mW5/RIHbesbAtzMysjFSOuTU6gGzdzJdb94QaS5DxgyYcC4s/7yRZ0?=
+ =?Windows-1252?Q?T1DaLWx3Vtpi0+legfvPx+4jNIwRvXJBJXC6JSzYcgj0cZnEzAcOuB9B?=
+ =?Windows-1252?Q?mbAX/N7xnqwXQHOBggFtOz8HbrJsu6WKTU1AJHEnvT9rVyhJpllyByRd?=
+ =?Windows-1252?Q?/KzpHCI73LIia1ZbELnn9uWVw+BlwsQEI2QWl0vN0k3Tzt9Qp66TpSRx?=
+ =?Windows-1252?Q?uCxGntEYf0h3L8mtIXoti3hASpqo+suTzoszOcR8UNlkVQY3nePm9+NK?=
+ =?Windows-1252?Q?87ESa3YaahKPm3bjO/iwi5e/Z4YAK3Sz8WbPAh6vwSvwSnJylPpQ2RTt?=
+ =?Windows-1252?Q?KNV3PLOFUUrVuDDhS3tBOfBJ9lWWHmI63QemZqehjUJf7XSSej89u+N+?=
+ =?Windows-1252?Q?Q6NKMkqF+1Bw0i1269Bxu/MT+wXCnInh+jaorZ6RG0/bQAhFrICJgxpf?=
+ =?Windows-1252?Q?fayzlqoi/UiM0jHPXyb4j/yAOK17yzPx0ZSar7Xre4aqibhtCaBS2a/B?=
+ =?Windows-1252?Q?nfXLtHaPtdDQ2Jqtl5HpEDo5Ph51q3J/u5T/sWCyD8mGCwDHrkfkHuQc?=
+ =?Windows-1252?Q?msHREjRKNFzNQ4aSsBFftOYo38ER09XMc2iQZsXT85ANGSQXyVMSJtPu?=
+ =?Windows-1252?Q?88ilECQ6rCJK/X+1IWxfcKiywqlwBkSP08nzQpE0xZlAgxFD9JF2skKT?=
+ =?Windows-1252?Q?Jyvjkn0PUXgrb66Kd2IrMGqUPdsVSBVLxdOCGzDgYPCx5TOaiNDkaIeZ?=
+ =?Windows-1252?Q?tPvyOgLLx+zR+NZVBYsamuik/HxN0u+STRfjielPsEM9n9Xtwmx8CuV+?=
+ =?Windows-1252?Q?MljZY9DwJaEx29DJlwyhxcSSkyyvx2U0T5x8H4clURQC6XV8fGC4z1LM?=
+ =?Windows-1252?Q?gt5s+lNXyRrYfDy6GaueIbvmdIwmTMA854Y4buifk9GQTl/P0xubPUhh?=
+ =?Windows-1252?Q?rrBxgF8QKrJFZO7Ujz0p0X+8qONhrT1NLElBApaeqijZCiKeJi/Ewvkj?=
+ =?Windows-1252?Q?BumGzBJ48I92oukTfjaAxdtg7EmXWHd2dkpeAj/72TQKaFOjw2XYcYmM?=
+ =?Windows-1252?Q?3P6hWF6Z2GQKLwrg42UdM52lZZFCh/S5XncIwI+f1+ApcfyOWRE5HB80?=
+ =?Windows-1252?Q?/aMA6U4kvYhKkK1QuoG6Q390qLXAKA30UaTZeuENYpBnlEuLAmtRhg?=
+ =?Windows-1252?Q?=3D=3D?=
+Content-Type: multipart/alternative;
+ boundary="_000_SJ0PR20MB6079F810B9623E6919B3DB6DFA622SJ0PR20MB6079namp_"
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DS0PR12MB6583:EE_|CH2PR12MB4296:EE_
-X-MS-Office365-Filtering-Correlation-Id: f82a6fed-a617-4cfd-773d-08dcd77409b3
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|376014|7416014|1800799024;
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?VDNDNDN6dDE1M2lGa0V3WEJSRU9EYjVodVBTeFJYREo3ZUtFU3ZPSEJPUWlr?=
- =?utf-8?B?bWRmVEFUbEs4Sk5uc3RvM05RMGNpbWlCelRtb1ByNDk5WDA5Q1p5R1JxaE9D?=
- =?utf-8?B?U01icFRXVkV3M0htMnREMUU4MndvN2FMK25sNi95dWIvRVNKS1pJZ3UwWis2?=
- =?utf-8?B?RnFpUEJzNXQ2Rzdzc0ZaaFBNZlJwdHBKOFFPWTJ5UmMveitNamFjWHJKK3M1?=
- =?utf-8?B?ZXBtTEIvYjdMTXd0Uld5NlhicTdacWNPSm11U2g1VlA1VVZUMGdnbi9KWnNL?=
- =?utf-8?B?R1o5azJEaGxJZjd5bEJpLzBrbXlyWkFYU0djVitNWWFGVXljTUMrcUZDWnNV?=
- =?utf-8?B?M1pKZDlmQzdVNHpTMkorSEZyZmNBU2tBZmFpYlRqMEZmYUN2cG4vU01KNGNl?=
- =?utf-8?B?Q2w2M3JXb2ZPU1JBbXhJbXV4Nk5JTUdvbnplMVNqQ0IrODJtK21YN2xBd0dH?=
- =?utf-8?B?ZzB0OUU1TGIvSVpaQXZMWmRJR25PWnRaYmNWZjQ2bGMvaUoraW5DRGlPZklY?=
- =?utf-8?B?ZGNtcGFsZzhXQkRpWXNVSUR0SG9uaXpBVkJVV3lkNzVIL2RidWcxbFIyRTBG?=
- =?utf-8?B?Q21CZkptS2Z2Tmp1UGt4YWt4andIRjBHTmNwZHlrcWpUUjE4K05RRkVvWVVG?=
- =?utf-8?B?ZzA5TlY3Z1h0YmdmM3ArNHlvanM4TGRRejRicHJrU2tuR3d1Y0lDRjFHMk9s?=
- =?utf-8?B?YVdTbnF1Y0RzUmYzRFRTdWtHaGQ1VEtJYmRXNnZxMzRMcDZTcmZIQW5IeXdp?=
- =?utf-8?B?c1U2NUpvVU5tbU4zK1YzUzJhYXlOdEluVThPcHpPVjVIVXpldHM0bEJIUnRn?=
- =?utf-8?B?a0M2VlpJTHF4b0Q0bzVqWGVRajJmN2NPWTNZM25GR2hkREk1b094Rzl1eGNH?=
- =?utf-8?B?WEd0SkpnblVxeUo2Y2ZKbGJnNmc3Q084UitMYW5oSVJJVERBMUhsT2hZZkdr?=
- =?utf-8?B?cFpGR3MwRGl5T215cUFPL3FsTTY5ejVkSGNUY0dCMGNJR1VmekU2bUlMdlQ5?=
- =?utf-8?B?T1ZLeDY5N1RNRS9XTEkzNUZUYVBUeWIzbFoxcmdnQ0VtaGZYdHB5V3BWeTky?=
- =?utf-8?B?anUwby9Hc2VBeTJEN3hmRGNIejJpVnVWazJmTTk0aXBUYmsrSUdPc0dHaFUz?=
- =?utf-8?B?RElqN0RIR2ZlWHJldTNNemRhT1pNbzBJbkEzTXdmT2xMMDB6OFMwMERrU0xw?=
- =?utf-8?B?ejdxb3NGK3BiR1k0eENKeTQyMEVHbFZQNEh0WThjVXZUeUdoWk1wNFo2NDRm?=
- =?utf-8?B?V2NnSTNWV1ZqL1BpekwyRkxCWG4vaFpVU3JzQmc1cDBuNWJXR29Uc2FOV2Ur?=
- =?utf-8?B?dkprQXVyKzhHU3Bwc05xRXU4TzYrelRMbExCM2NrMm9YUFdsOXNSM2l2MWZG?=
- =?utf-8?B?WFN0Q0lzUXBHc1ZqY0JwbktWVzRnYlBYZ3hsN0YwWmdpZ2plRUMrWFUyM2ow?=
- =?utf-8?B?a1FDTWYrT1VOOW91MHYxeXNyV0gvTmlPZW9pVUNOekxYOFJrZ21vdHZlRnJs?=
- =?utf-8?B?NXdlckFIQ1VnaVprSE1VaFlidjVFb2hrVzk3Y3JGWjFvekMvczA3N0lqc0ZU?=
- =?utf-8?B?YmFKSklZbTJONzNyQ2s1a2tqYTNDRzUzKzUyTU94blpZZXdZSHIrS3pNL25v?=
- =?utf-8?B?NXhTUExCWDVNLzhGaXF6WndmS2xsdTVoWHpUaG85emprOWltenVhc2pramJJ?=
- =?utf-8?B?SXBLWDhRNzBnMml2cDlGSW1rUnc3aGNzYkVCUkx6alZFRnUyck9abC9wR1Zi?=
- =?utf-8?B?SURrUU9MeWtZOGRnOVFFbmlUOVNacmtrUGZZSkFzL1pJL1BUQVE4LzRPbHlk?=
- =?utf-8?B?RDYwbFl4dElBclVpaVFOZz09?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:DS0PR12MB6583.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(366016)(376014)(7416014)(1800799024); DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?YjdnNmc1NUh3WU05SFBnODhhbWpkdmxnUi9aQ0FOd0hCRTdubXZDT1VEK2xI?=
- =?utf-8?B?ZjlVaVA4YUVENU1CMHhuSnIwb1l2U1B6SGlUbDhlVmVCZzBpMjlvS09adkZ2?=
- =?utf-8?B?UE9sNGFwQmhwelBpWjFHV3VJZjYreUIzR05IYkVBckd4R3pXeEVPZUVrTHRL?=
- =?utf-8?B?cCs5bE5TN2Zkc3g2T3B5NkQzU3U2aFVwSGg1OFhtYjZuSDczMlRkT3Erblhw?=
- =?utf-8?B?ZFdFWkR6djJ5eU1SS2k4dFc3NFByV3BJUDg2eXhoWU5jOU1BRXRNV1R4d2Fa?=
- =?utf-8?B?aEFiVzFxbTB0cDJpS0dsVHh1SW5PT2ZpL0JPZTVKV1ZWTDczTFBWZzd4TzdI?=
- =?utf-8?B?cjQyUjhvYWlodHBuNCs5SytmRURJYWJTSW9aUS9WUEVTdUZ5dDFRY05SSjRE?=
- =?utf-8?B?eW4wSHRnaUhKUTJQRUVROEhCN0hNSGpqc0tSZVN5dml2aGpsbEpCU3pNZmtm?=
- =?utf-8?B?OTZDYk96QUVUY2hDQzVzSmJkVFVaazVLL0FwNy9aUjZhU3ZKTXorNzBuNmU4?=
- =?utf-8?B?dzc5aFZPOGZZcUpUNlI2ZU01bkxwTGt3OFRtT3g1VVNzbkZPVnY5ODVNOWlN?=
- =?utf-8?B?cUg1b292MVhFTVpLc1dJR2VNbkcyU0VOekg1L3AyOXpvakhhclp0Nkc4a0w1?=
- =?utf-8?B?aFpFazZyVG93OXd5L0oyYndJTWgxOUIxalNJR1d5UHkwSVRIaWZ1cEl6bzNO?=
- =?utf-8?B?bTNOZGovaVhUSHM4dzdLM1A1MVpselZwOWdIOUR0VVJTa0NSWDhQbXljYW56?=
- =?utf-8?B?dUZ2WkhOeXU4TENERmhwL2NlUDQ4Mk96VzR5czlkNWRHbHNmZU9OUDdaVko2?=
- =?utf-8?B?K1lIS0xVNlo3YVpMbkh3YVo5UFFUamZBbS92dFBwNE1EcThNREowcGlzRC82?=
- =?utf-8?B?ZHRaSXpVWUpyOElVZ3FGUXJpUnNhaHh3SnBXb1ZhMm0zWFlMOHVyRTZ6bGZL?=
- =?utf-8?B?UGdFQWRWdnhPRC9aWFhGZWlxQTJPeHhDcjZ0MnYrcmM3OXFHd3ZvVTNLMHJL?=
- =?utf-8?B?ZXZuTTVVeEtqQkJwMlkxQ2o0SG1KekZ1UmpZMDErQmpWdi92SXhCVlVLeFlq?=
- =?utf-8?B?L1dkT01NMGVpUGxUV05NTE56L0tINDdJN24yWWtmZ2k4dVdUOUZ2RkdhZDlv?=
- =?utf-8?B?QkdlYTM3MlZneUhOb0liQmJrZGlLVG5XMUNXNFdNMmRFd3J5N21vbzdOWCtS?=
- =?utf-8?B?VlllK2pheXBYRmNpVXpFcGViSlN3d1VZRzV0ejV6OHpmVXAzSEpzZWJoTnNZ?=
- =?utf-8?B?dmNoMnlJVnUwVFlsNWRhOHYwUWRiRDV1VlYvOTI5cEd3enVhMFRRWnkwaWxX?=
- =?utf-8?B?c3FLM2ZDWFUwdmN0NzN1a0VWenVhampCRnpYM2RCL1dmaGdON2RhWkJHakZz?=
- =?utf-8?B?U3ZHWlpwODFRZGRTQkF1TGs5R0Jnd0xxM2szZnZ2SHdJVmtRcFpDdG1EMk1a?=
- =?utf-8?B?THFsWEcvQ21UVUxqeS9veTJmR3B3eUdtVEdML3RaTzFudG94QmR0TE90K0ow?=
- =?utf-8?B?K1pxcDVrak5PdmFJMTFIL1hERURvcmpNQVpHZzltakNJS1ovZHhLRW52N3pK?=
- =?utf-8?B?ZndmczhHaTF0cktKYkxCQ0daY01qaksxNDMwYTA2VjZNaUJzOG91c0g2NVVI?=
- =?utf-8?B?dnQyTHpjenBOdzUzZ05OUUUvVUVFQXlMVnN2RnZtbENGTExmclI0Q01LWlNw?=
- =?utf-8?B?dWdHRmFHT1ZSSjh4UURjMEg3NUtFYXdIVFBhYkNzUm1oVDRuazRxeEo0eUxD?=
- =?utf-8?B?UWx5ZUY4M3BwN1JvUVlOOS9hSm0vU3ZORmoyc2hKWXBJZmRzc1RaZFJWdEYy?=
- =?utf-8?B?WmhoQUJMd2xXTW41UlZrdXprV28xMTZiWWJkdzU0WDV2UjlsTUJqdEFvM1RT?=
- =?utf-8?B?T2RTSzc1OE5oUkwzQXdoZ3ByTFlRTklqd2t3ZzRFMGd2T1VSbVlFNWtCeFQy?=
- =?utf-8?B?MjIxUVdCd0YwV2sxcytPeGVkaHRQSGp1K1BnK2cxblRYMWhseFBaTngvMTVz?=
- =?utf-8?B?K04rMnBLZy9lT2dsbW1vTHozRlJBdGViYkVkN0tNRkp0WXVFT1JUUFVKR3lj?=
- =?utf-8?B?Y3gvQ2lPU0tuKzZXV3ZBaWh4QXRKTGx3eDYyYWcyUnFtMHhqL2ExbDJHNG45?=
- =?utf-8?Q?TXYAY/eTNJg7M9TfUxSU/hi4W?=
-X-OriginatorOrg: amd.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: f82a6fed-a617-4cfd-773d-08dcd77409b3
-X-MS-Exchange-CrossTenant-AuthSource: DS0PR12MB6583.namprd12.prod.outlook.com
+X-OriginatorOrg: zenlayer.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 17 Sep 2024 23:54:15.9983 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: sV3G8oyar8Bfb1ph0U4IbI/u5FNFj3vRSiVeyW89ju5FbdZbPJR1C3Yr84AYxzM4uMavjftaCCJcQih2kWci0w==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH2PR12MB4296
+X-MS-Exchange-CrossTenant-AuthSource: SJ0PR20MB6079.namprd20.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: ebb68466-3b9f-467e-69c6-08dcd794131a
+X-MS-Exchange-CrossTenant-originalarrivaltime: 18 Sep 2024 03:43:35.5130 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 0d27725c-b11d-49f0-b479-a26ae758f26d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: 7NQKcSR9vvQRcFPG39KAGWvLMTz76UVIDjtyFdMinZ5CBFczL5CKahdDLC7YhZvPObrHmpAfRCD4gA++JZ6iwA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA1PR20MB4297
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=amd.com; s=selector1; 
+ d=zenlayer.onmicrosoft.com; s=selector2-zenlayer-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=VO9CpxyMDKeQrGmBStDGxHs/MpQt/07Q/+W5jK1SEF0=;
- b=b1rEiM0mhx5svZXAFeY87o/WRBLaUkw1wvnwUaQbb1NODcxauaTBpXlWp0r3GraErz8ycWNfmounoOD7qpzr7FCvkyfg1FBF2JklbWMATnVUWXg//kwVMCkUprzWe5Q+fJKqirFeVQ+4GiLFDjgn4mQ1TxoZg4wX3kTrWN2UT4g=
+ bh=rQVgSAt4WcI+mX3R65NFB5+/qWrC6XJ/kuj011rbYkA=;
+ b=GqN+NnovddoMV1+3N+cC4XmPrraLDEknAwypPR/atikdSk5/Ig8mO7hMdkU2SyGp7rqfRlr1bg9ttyz5toqNPeS0axCKKjrjVUgwPcSKt6b1PNMRT/bDXj9kJZ9kn1AXCfsyvnlcEaHXhqGNAb1NtpVtLNCadblMe02exmMQRDU=
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=amd.com
+ dmarc=pass (p=none dis=none)
+ header.from=zenlayer.com
 X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (1024-bit key,
- unprotected) header.d=amd.com header.i=@amd.com header.a=rsa-sha256
- header.s=selector1 header.b=b1rEiM0m
+ unprotected) header.d=zenlayer.onmicrosoft.com
+ header.i=@zenlayer.onmicrosoft.com header.a=rsa-sha256
+ header.s=selector2-zenlayer-onmicrosoft-com header.b=GqN+Nnov
 X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=amd.com;
-Subject: Re: [Intel-wired-lan] [PATCH] e1000e: makes e1000_watchdog_task use
- queue_delayed_work
+ header.d=none;dmarc=none action=none header.from=zenlayer.com;
+Subject: Re: [Intel-wired-lan] [EXTERNAL] Re: [EXTERNAL] Re: [bug
+ report]iavf: deadlock on detach/attach vf to VM with net_failover
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -198,174 +193,195 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org, edumazet@google.com,
- anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com, kuba@kernel.org,
- pabeni@redhat.com, intel-wired-lan@lists.osuosl.org
+Cc: "intel-wired-lan@osuosl.org" <intel-wired-lan@osuosl.org>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 9/15/2024 12:03 AM, Dmitrii Ermakov wrote:
-> 
-> Replaces watchdog timer with delayed_work as advised
-> in the driver's TODO comment.
-> 
-> Signed-off-by: Dmitrii Ermakov <demonihin@gmail.com>
+--_000_SJ0PR20MB6079F810B9623E6919B3DB6DFA622SJ0PR20MB6079namp_
+Content-Type: text/plain; charset="Windows-1252"
+Content-Transfer-Encoding: quoted-printable
 
-The Subject should identify which tree to go to, net or net-next.  This 
-should be for net-next, e.g. [PATCH net-next].
+Should setup a net failover device.
+The xml like this,
+<interface type=3D'network'>
+  <mac address=3D'52:54:00:00:12:53'/>
+  <source network=3D=92virbr0=92 />
+  <model type=3D'virtio'/>
+  <driver name=3D'vhost' queues=3D'4'/>
+  <link state=3D'down'/>
+  <teaming type=3D'persistent'/>
+  <alias name=3D'ua-backup0'/>
+</interface>
+<interface type=3D'hostdev' managed=3D'yes'>
+  <mac address=3D'52:54:00:00:12:53'/>
+  <source>
+    <address type=3D'pci' domain=3D'0x0000' bus=3D'0x42' slot=3D'0x02' func=
+tion=3D'0x5'/>
+  </source>
+  <teaming type=3D'transient' persistent=3D'ua-backup0'/>
+</interface>
 
-But be aware that net-next tree is closed during the merge window, so 
-you'll need to wait a week or two before reposting.
+After the VM booted, detach the VF and attach the VF.
+The vf.xml like this,
+<interface type=3D'hostdev' managed=3D'yes'>
+  <mac address=3D'52:54:00:00:12:53'/>
+  <source>
+    <address type=3D'pci' domain=3D'0x0000' bus=3D'0x42' slot=3D'0x02' func=
+tion=3D'0x5'/>
+  </source>
+  <teaming type=3D'transient' persistent=3D'ua-backup0'/>
+</interface>
+
+Command like this, virsh detach-device $domain vf.xml ; , virsh attach-devi=
+ce $domain vf.xml
+The VM hangs.
+
+--
+Best Regards,
+Faicker
 
 
-> ---
->   drivers/net/ethernet/intel/e1000e/e1000.h  |  4 +-
->   drivers/net/ethernet/intel/e1000e/netdev.c | 43 ++++++++--------------
->   2 files changed, 18 insertions(+), 29 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/intel/e1000e/e1000.h b/drivers/net/ethernet/intel/e1000e/e1000.h
-> index ba9c19e6994c..5a60372d2158 100644
-> --- a/drivers/net/ethernet/intel/e1000e/e1000.h
-> +++ b/drivers/net/ethernet/intel/e1000e/e1000.h
-> @@ -189,12 +189,12 @@ struct e1000_phy_regs {
-> 
->   /* board specific private data structure */
->   struct e1000_adapter {
-> -       struct timer_list watchdog_timer;
->          struct timer_list phy_info_timer;
->          struct timer_list blink_timer;
-> 
-> +       struct delayed_work watchdog_work;
-> +
->          struct work_struct reset_task;
-> -       struct work_struct watchdog_task;
-> 
->          const struct e1000_info *ei;
-> 
-> diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
-> index 360ee26557f7..5b7a3a1423ed 100644
-> --- a/drivers/net/ethernet/intel/e1000e/netdev.c
-> +++ b/drivers/net/ethernet/intel/e1000e/netdev.c
-> @@ -1778,7 +1778,8 @@ static irqreturn_t e1000_intr_msi(int __always_unused irq, void *data)
->                  }
->                  /* guard against interrupt when we're going down */
->                  if (!test_bit(__E1000_DOWN, &adapter->state))
-> -                       mod_timer(&adapter->watchdog_timer, jiffies + 1);
-> +                       queue_delayed_work(system_wq, &adapter->watchdog_work,
-> +                                          1);
+--_000_SJ0PR20MB6079F810B9623E6919B3DB6DFA622SJ0PR20MB6079namp_
+Content-Type: text/html; charset="Windows-1252"
+Content-Transfer-Encoding: quoted-printable
 
-This is not worth the line wrap, keep it one line.
+<html xmlns:o=3D"urn:schemas-microsoft-com:office:office" xmlns:w=3D"urn:sc=
+hemas-microsoft-com:office:word" xmlns:m=3D"http://schemas.microsoft.com/of=
+fice/2004/12/omml" xmlns=3D"http://www.w3.org/TR/REC-html40">
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DWindows-1=
+252">
+<meta name=3D"Generator" content=3D"Microsoft Word 15 (filtered medium)">
+<style><!--
+/* Font Definitions */
+@font-face
+	{font-family:SimSun;
+	panose-1:2 1 6 0 3 1 1 1 1 1;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:DengXian;
+	panose-1:2 1 6 0 3 1 1 1 1 1;}
+@font-face
+	{font-family:Aptos;
+	panose-1:2 11 0 4 2 2 2 2 2 4;}
+@font-face
+	{font-family:"\@SimSun";
+	panose-1:2 1 6 0 3 1 1 1 1 1;}
+@font-face
+	{font-family:"\@DengXian";
+	panose-1:2 1 6 0 3 1 1 1 1 1;}
+/* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0cm;
+	font-size:10.0pt;
+	font-family:"Aptos",sans-serif;}
+span.EmailStyle19
+	{mso-style-type:personal-reply;
+	font-family:"Aptos",sans-serif;
+	color:windowtext;}
+.MsoChpDefault
+	{mso-style-type:export-only;
+	font-size:10.0pt;
+	mso-ligatures:none;}
+@page WordSection1
+	{size:612.0pt 792.0pt;
+	margin:72.0pt 72.0pt 72.0pt 72.0pt;}
+div.WordSection1
+	{page:WordSection1;}
+--></style>
+</head>
+<body lang=3D"en-CN" link=3D"blue" vlink=3D"purple" style=3D"word-wrap:brea=
+k-word">
+<div class=3D"WordSection1">
+<p class=3D"MsoNormal"><span style=3D"font-size:10.5pt">Should setup a net =
+failover device.<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.5pt">The xml like this,<=
+o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.5pt">&lt;interface type=
+=3D'network'&gt;<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.5pt">&nbsp; &lt;mac addr=
+ess=3D'52:54:00:00:12:53'/&gt;<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.5pt">&nbsp; &lt;source n=
+etwork=3D=92virbr0=92 /&gt;<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.5pt">&nbsp; &lt;model ty=
+pe=3D'virtio'/&gt;<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.5pt">&nbsp; &lt;driver n=
+ame=3D'vhost' queues=3D'4'/&gt;<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.5pt">&nbsp; &lt;link sta=
+te=3D'down'/&gt;<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.5pt">&nbsp; &lt;teaming =
+type=3D'persistent'/&gt;<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.5pt">&nbsp; &lt;alias na=
+me=3D'ua-backup0'/&gt;<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.5pt">&lt;/interface&gt;<=
+o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.5pt">&lt;interface type=
+=3D'hostdev' managed=3D'yes'&gt;<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.5pt">&nbsp; &lt;mac addr=
+ess=3D'52:54:00:00:12:53'/&gt;<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.5pt">&nbsp; &lt;source&g=
+t;<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.5pt">&nbsp;&nbsp;&nbsp; =
+&lt;address type=3D'pci' domain=3D'0x0000' bus=3D'0x42' slot=3D'0x02' funct=
+ion=3D'0x5'/&gt;<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.5pt">&nbsp; &lt;/source&=
+gt;<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.5pt">&nbsp; &lt;teaming =
+type=3D'transient' persistent=3D'ua-backup0'/&gt;<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.5pt">&lt;/interface&gt;<=
+o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.5pt"><o:p>&nbsp;</o:p></=
+span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.5pt">After the VM booted=
+, detach the VF and attach the VF.<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.5pt">The vf.xml like thi=
+s,<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.5pt">&lt;interface type=
+=3D'hostdev' managed=3D'yes'&gt;<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.5pt">&nbsp; &lt;mac addr=
+ess=3D'52:54:00:00:12:53'/&gt;<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.5pt">&nbsp; &lt;source&g=
+t;<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.5pt">&nbsp;&nbsp;&nbsp; =
+&lt;address type=3D'pci' domain=3D'0x0000' bus=3D'0x42' slot=3D'0x02' funct=
+ion=3D'0x5'/&gt;<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.5pt">&nbsp; &lt;/source&=
+gt;<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.5pt">&nbsp; &lt;teaming =
+type=3D'transient' persistent=3D'ua-backup0'/&gt;<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.5pt">&lt;/interface&gt;<=
+o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.5pt"><o:p>&nbsp;</o:p></=
+span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.5pt">Command like this, =
+virsh detach-device $domain vf.xml ; , virsh attach-device $domain vf.xml<o=
+:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.5pt">The VM hangs.<o:p><=
+/o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:10.5pt"><o:p>&nbsp;</o:p></=
+span></p>
+<div>
+<div>
+<p class=3D"MsoNormal"><span style=3D"font-size:12.0pt">--&nbsp;<o:p></o:p>=
+</span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:12.0pt">Best Regards,<o:p><=
+/o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:12.0pt">Faicker<o:p></o:p><=
+/span></p>
+</div>
+</div>
+<div id=3D"mail-editor-reference-message-container">
+<div>
+<div>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt"><o:p>&nbsp;</o:p></=
+span></p>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>
 
->          }
-> 
->          /* Reset on uncorrectable ECC error */
-> @@ -1857,7 +1858,8 @@ static irqreturn_t e1000_intr(int __always_unused irq, void *data)
->                  }
->                  /* guard against interrupt when we're going down */
->                  if (!test_bit(__E1000_DOWN, &adapter->state))
-> -                       mod_timer(&adapter->watchdog_timer, jiffies + 1);
-> +                       queue_delayed_work(system_wq, &adapter->watchdog_work,
-> +                                          1);
-
-ditto
-
->          }
-> 
->          /* Reset on uncorrectable ECC error */
-> @@ -1901,7 +1903,8 @@ static irqreturn_t e1000_msix_other(int __always_unused irq, void *data)
->                  hw->mac.get_link_status = true;
->                  /* guard against interrupt when we're going down */
->                  if (!test_bit(__E1000_DOWN, &adapter->state))
-> -                       mod_timer(&adapter->watchdog_timer, jiffies + 1);
-> +                       queue_delayed_work(system_wq, &adapter->watchdog_work,
-> +                                          1);
-
-ditto
-
->          }
-> 
->          if (!test_bit(__E1000_DOWN, &adapter->state))
-> @@ -4293,7 +4296,8 @@ void e1000e_down(struct e1000_adapter *adapter, bool reset)
-> 
->          napi_synchronize(&adapter->napi);
-> 
-> -       del_timer_sync(&adapter->watchdog_timer);
-> +       cancel_delayed_work_sync(&adapter->watchdog_work);
-> +
->          del_timer_sync(&adapter->phy_info_timer);
-> 
->          spin_lock(&adapter->stats64_lock);
-> @@ -5164,25 +5168,12 @@ static void e1000e_check_82574_phy_workaround(struct e1000_adapter *adapter)
->          }
->   }
-> 
-> -/**
-> - * e1000_watchdog - Timer Call-back
-> - * @t: pointer to timer_list containing private info adapter
-> - **/
-> -static void e1000_watchdog(struct timer_list *t)
-> -{
-> -       struct e1000_adapter *adapter = from_timer(adapter, t, watchdog_timer);
-> -
-> -       /* Do the rest outside of interrupt context */
-> -       schedule_work(&adapter->watchdog_task);
-> -
-> -       /* TODO: make this use queue_delayed_work() */
-> -}
-> -
->   static void e1000_watchdog_task(struct work_struct *work)
-
-In keeping with the theme, this could be changed to e1000_watchdog_work()
-
->   {
-> -       struct e1000_adapter *adapter = container_of(work,
-> -                                                    struct e1000_adapter,
-> -                                                    watchdog_task);
-> +       struct delayed_work *dwork =
-> +               container_of(work, struct delayed_work, work);
-> +       struct e1000_adapter *adapter =
-> +               container_of(dwork, struct e1000_adapter, watchdog_work);
->          struct net_device *netdev = adapter->netdev;
->          struct e1000_mac_info *mac = &adapter->hw.mac;
->          struct e1000_phy_info *phy = &adapter->hw.phy;
-> @@ -5411,8 +5402,8 @@ static void e1000_watchdog_task(struct work_struct *work)
-> 
->          /* Reset the timer */
->          if (!test_bit(__E1000_DOWN, &adapter->state))
-> -               mod_timer(&adapter->watchdog_timer,
-> -                         round_jiffies(jiffies + 2 * HZ));
-> +               queue_delayed_work(system_wq, &adapter->watchdog_work,
-> +                                  round_jiffies(2 * HZ));
->   }
-> 
->   #define E1000_TX_FLAGS_CSUM            0x00000001
-> @@ -7588,11 +7579,10 @@ static int e1000_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
->                  goto err_eeprom;
->          }
-> 
-> -       timer_setup(&adapter->watchdog_timer, e1000_watchdog, 0);
->          timer_setup(&adapter->phy_info_timer, e1000_update_phy_info, 0);
-> +       INIT_DELAYED_WORK(&adapter->watchdog_work, e1000_watchdog_task);
-> 
->          INIT_WORK(&adapter->reset_task, e1000_reset_task);
-> -       INIT_WORK(&adapter->watchdog_task, e1000_watchdog_task);
->          INIT_WORK(&adapter->downshift_task, e1000e_downshift_workaround);
->          INIT_WORK(&adapter->update_phy_task, e1000e_update_phy_task);
->          INIT_WORK(&adapter->print_hang_task, e1000_print_hw_hang);
-> @@ -7733,11 +7723,10 @@ static void e1000_remove(struct pci_dev *pdev)
->           * from being rescheduled.
->           */
->          set_bit(__E1000_DOWN, &adapter->state);
-> -       del_timer_sync(&adapter->watchdog_timer);
-> +       cancel_delayed_work_sync(&adapter->watchdog_work);
->          del_timer_sync(&adapter->phy_info_timer);
-> 
->          cancel_work_sync(&adapter->reset_task);
-> -       cancel_work_sync(&adapter->watchdog_task);
->          cancel_work_sync(&adapter->downshift_task);
->          cancel_work_sync(&adapter->update_phy_task);
->          cancel_work_sync(&adapter->print_hang_task);
-> --
-> 2.45.2
-> 
-> 
+--_000_SJ0PR20MB6079F810B9623E6919B3DB6DFA622SJ0PR20MB6079namp_--
