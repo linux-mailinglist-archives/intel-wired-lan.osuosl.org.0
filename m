@@ -1,113 +1,97 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2C00B97D180
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 20 Sep 2024 09:11:22 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 2ACED42B4D;
-	Fri, 20 Sep 2024 07:11:20 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id d6G5KW0tedSP; Fri, 20 Sep 2024 07:11:19 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1C40142B4B
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1726816279;
-	bh=IxTvS8Re1mH+yLe3me+r4ZHkYxfcUhZvllapA26y+nk=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=3jNWmJV3or+vloAVbQjaspvR5l7StgUEf716IbmrmzooYoZb77pLFwAJHjVIpllcs
-	 8UOXktAxaFya67Aa5bmatLjsx6gEw3cx3D7GVgKPgZYhxCI3qC7pKXXXgmYFfESRV6
-	 mInXh2qlDR8SU3M2wjwMsW/oZugZyPuaJRJ8Fd/A2RmK9gvDP1fH9nU7nNR3UjEkXS
-	 SX/XR782u1mLnvBpODGMYUvI16RDFEly4omy4bPLJga4J6BA8QsgRynYzA7yiegNJ0
-	 SYUwD+Oj46dm5ICFJK0qOKmbpB2SeMK0R9B9BlNlMCQ9Rqf90hdQA2XX/QKu5stjm1
-	 Tkk6kx9Fv7/mg==
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 1C40142B4B;
-	Fri, 20 Sep 2024 07:11:19 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id C32C31BF82C
- for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Sep 2024 07:11:17 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 19D6497D4F3
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 20 Sep 2024 13:52:27 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id BDC306077F
- for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Sep 2024 07:11:17 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 14BB16F4C6;
+	Fri, 20 Sep 2024 11:52:25 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id uMM-ru8aZX5J for <intel-wired-lan@lists.osuosl.org>;
- Fri, 20 Sep 2024 07:11:17 +0000 (UTC)
-X-Greylist: delayed 323 seconds by postgrey-1.37 at util1.osuosl.org;
- Fri, 20 Sep 2024 07:11:15 UTC
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 5EA0F6073A
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 5EA0F6073A
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=212.227.15.4;
- helo=mout.web.de; envelope-from=markus.elfring@web.de; receiver=<UNKNOWN> 
-Received: from mout.web.de (mout.web.de [212.227.15.4])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 5EA0F6073A
- for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Sep 2024 07:11:15 +0000 (UTC)
-X-UI-Sender-Class: 814a7b36-bfc1-4dae-8640-3722d8ec6cd6
-Received: from [192.168.178.21] ([94.31.91.95]) by smtp.web.de (mrweb005
- [213.165.67.108]) with ESMTPSA (Nemesis) id 1N62ua-1ruMR00XQe-00shO0; Fri, 20
- Sep 2024 09:05:14 +0200
-Message-ID: <d9ee8571-208a-45cb-ad51-61926ce23d62@web.de>
-Date: Fri, 20 Sep 2024 09:05:11 +0200
+ id iCiDdlASgO3y; Fri, 20 Sep 2024 11:52:24 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 660B260684
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1726833144;
+	bh=Ayg6AnaYDQIXVltmno+TNsMWh3+TCjXMgHZdX/9AqKM=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=f3IaAi3bEt/M/KQbtu2u7h7oXvzuF43VRPo4QVTyn5o23PPrHi+O+H3vm/pCHs05t
+	 PTje+yhkpn5MCKgPsdO0kuMBkQ4GR8gOAbXDhB00CZXOxejGbKLkRrhVuEldjO2foR
+	 QFXw7KFlSvYADyQbKoKrhBxu76G1MBc+FkU2ZmNqyo1LKw6OnV/fJxg3Fz62tcoSpt
+	 A/OUeR9/Fl+6HX4Kne8xpFFnGvapDNvPQsUPtrGBCnXYKnKVa3Stn+DUiKpHS50gf6
+	 ROy02b51lcEK7GWZv32ojgSRCKCK/urA6yfx6wZYDg/Iz9/VvmHduUXNmE+oePpRr8
+	 3oQkMhMl/F1Og==
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp3.osuosl.org (Postfix) with ESMTP id 660B260684;
+	Fri, 20 Sep 2024 11:52:24 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 59A141BF414
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Sep 2024 11:52:22 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp1.osuosl.org (Postfix) with ESMTP id 48A4181E57
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Sep 2024 11:52:22 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id ucVbAMTVgb3j for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 20 Sep 2024 11:52:21 +0000 (UTC)
+Received-SPF: None (mailfrom) identity=mailfrom; client-ip=198.175.65.19;
+ helo=mgamail.intel.com; envelope-from=marcin.szycik@linux.intel.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 61D4D81422
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 61D4D81422
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.19])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 61D4D81422
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 20 Sep 2024 11:52:21 +0000 (UTC)
+X-CSE-ConnectionGUID: /lQrFnC5S9SS40f7oyZOTw==
+X-CSE-MsgGUID: Hx54KpHWRGOq9MVfCJezVg==
+X-IronPort-AV: E=McAfee;i="6700,10204,11200"; a="25708347"
+X-IronPort-AV: E=Sophos;i="6.10,244,1719903600"; d="scan'208";a="25708347"
+Received: from orviesa003.jf.intel.com ([10.64.159.143])
+ by orvoesa111.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 20 Sep 2024 04:52:21 -0700
+X-CSE-ConnectionGUID: PJIy/0DTTCOTr2fGBf7pzA==
+X-CSE-MsgGUID: poA2NL46RGSmRtsboYKHBQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.10,244,1719903600"; d="scan'208";a="75046032"
+Received: from irvmail002.ir.intel.com ([10.43.11.120])
+ by orviesa003.jf.intel.com with ESMTP; 20 Sep 2024 04:52:19 -0700
+Received: from mystra-4.igk.intel.com (mystra-4.igk.intel.com [10.123.220.40])
+ by irvmail002.ir.intel.com (Postfix) with ESMTP id 2345127BB0;
+ Fri, 20 Sep 2024 12:52:18 +0100 (IST)
+From: Marcin Szycik <marcin.szycik@linux.intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Fri, 20 Sep 2024 13:55:09 +0200
+Message-ID: <20240920115508.3168-3-marcin.szycik@linux.intel.com>
+X-Mailer: git-send-email 2.45.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org
-References: <f3a2dbaf-a280-40c8-bacf-b4f0c9b0b7fe@web.de>
- <58d38533-bccd-4e0e-8c7a-4f7a122ce0d1@intel.com>
-Content-Language: en-GB
-From: Markus Elfring <Markus.Elfring@web.de>
-In-Reply-To: <58d38533-bccd-4e0e-8c7a-4f7a122ce0d1@intel.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:okDhtZGdxOeK6rH3CHh40dnLehZXd0mSL2Q2FsgR28JsAvdHXvT
- HomrVNaQ06MtYvCmmHSBEW2YCS4yu1BfWbWbBV9deckg/VQ1utE8seNT5rOb859jETZjMtb
- ekuuL/ifwq49XNI9twz2QjAOwTTLrldZFa0fuUmfa0FhUo5YnGgulnEAET3Afiqk5CTug4c
- 1mInlO/A4x2K1CVD6cZYQ==
-UI-OutboundReport: notjunk:1;M01:P0:RNoE8jq6XpU=;uAPVM7H0fyW5ie2loAK9vvMzQi1
- 3olIxIFm8A7IA8eDEfv0r4MST0rwMx2M4ydi2AKTWakvC5bXF8FNXK0saJHx1iiRZJaKOJEJq
- LQ/OdFQJZGX9tpGquIE3wj43Ee5iQxJpb2vaN+Zhcj9BQ5OnYs4XzUL6nkW+dGK3QfYopkzes
- 9xVBDdOXvcgxcxuxWbgudqmfNfey1busuoO9cPr4O9CM8Xj8p5qTr3Po522CUX2oL6SADyuaq
- p3izp5xWxVbv2vHief3ntzd3mUN9SA/7CWJ8y9uBWNA4EMLU/QeSv2IPWzHaCnwRMk9bXJHCg
- awr4bvd/UbNYUhidhISMTM2XnTO7jZEWF9g6gtcMkg6AEgpr3TyWgOGx+Vpxpk7Yg+72MuzIN
- j1KdcvXcyYFLbTxkT3HKmyXJ8CXr3YI/UUAnOzYVvNTb6d9wHgUfcmyojBn4ozKISbglgFb8u
- M1/fy49q+vtvUIhdhEie+dFvutMbsmFGrqxvufbodNBz0j6r6PChwIXxCYAOP184vLKMFBtHz
- jxcDK5mltyx1iJQo3oP3My4gJXmQ0ykvwdaeagsbYRyEB0V/tDeRCPy6h8eMdPVX35jAcBrTk
- 8Rb3b7L8tLUAwyVe8Mm0JhQInozGECWDVNdPNhD23JTSoSCovux8zj/UAeJp0vLJCcAJbBGpB
- xNLLbmR0YfCA4OMrOiIt29xwu5TJ6RAhdmP965ohXKqfHkZBfsfT8+SyznkMxTAYNEENRUY/5
- lO1lv/GvwUWiBuU5gbT73fgZa0K9m7cX/+wwnzVjeIxDeZVqpnNiN7SsjXz+xp9foWsqabXog
- 6DX0t7MfOU+qImO+lX1G3S1A==
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=web.de; 
- s=s29768273; t=1726816274; x=1727421074; i=markus.elfring@web.de;
- bh=IxTvS8Re1mH+yLe3me+r4ZHkYxfcUhZvllapA26y+nk=;
- h=X-UI-Sender-Class:Message-ID:Date:MIME-Version:Subject:To:Cc:
- References:From:In-Reply-To:Content-Type:
- Content-Transfer-Encoding:cc:content-transfer-encoding:
- content-type:date:from:message-id:mime-version:reply-to:subject:
- to;
- b=sl64Mu3bUQX4r7Tq7TSshebQVDyb2tsHo+SsPJpnjOjHde2L07LjhqztRD/KrZWo
- lFvkEY8XzLWRrBwA/3N2J9V31qC/kbtqVhETfcChUcpswWlkTAxaadRSVwlaxEZl3
- HXddFTKTrOs/uFuTX4M0rGx5eUBz9pEJHFzNhzo6PaaHvSK1phD7sKsurGD+LiHGi
- Qyah1xOVYNFeTPUxd7v5ZH0H6fZauhUqavLK0T3QFl3RSwDayS/UM7M1Ud3iOEFy4
- fzSQHPaCq9JQB13etaTp+efO3m2qHc98wd7aTcTEh2LNsr058FGeI18OYDbKAlaLK
- 5juGd4xO55jyK/1K5Q==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=web.de
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+Content-Transfer-Encoding: 8bit
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1726833142; x=1758369142;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=RiozRk7VfjzRUIe3LI7qPJXH9LFjSxqMrA5xS4AOpsc=;
+ b=QlJ9d9iz8SesvX/wIKP9i7aisW8+uuFaO1mVMxzVEeMGsT5k2hw9hi6n
+ +fmBAhdmygWehhB0u0DoiF08mLV8k4BH6nVU4zrXmMD5DvgEWH5kizGKW
+ W/V3M6lqI8yKbP/spDLpodMq35a3ZcRoqIADqyHWmJDnw32fOPW85KlSe
+ GHFF+LQq+UaQ3I0dLAmYzLmitiCGECTA3pLScesThzKuDjW9L/nwmyQK5
+ HQVCa5kmK1XL9ihnBWn+u+TwJGCfAvN1EkgfGyDwjSmF01uRZb6f1g9+t
+ jDuXE8QGlhbehYMAyTBN9JwvXtjIwpnHxm1EA0WdKAD82Q7tjxAr+1hfg
+ A==;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dmarc=none (p=none dis=none)
+ header.from=linux.intel.com
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=web.de header.i=markus.elfring@web.de
- header.a=rsa-sha256 header.s=s29768273 header.b=sl64Mu3b
-Subject: Re: [Intel-wired-lan] ice: Use common error handling code in two
- functions
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=QlJ9d9iz
+Subject: [Intel-wired-lan] [PATCH iwl-net 1/2] ice: Fix entering Safe Mode
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -120,35 +104,42 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Richard Cochran <richardcochran@gmail.com>,
- Karol Kolacinski <karol.kolacinski@intel.com>,
- LKML <linux-kernel@vger.kernel.org>, Eric Dumazet <edumazet@google.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>,
- Jacob Keller <jacob.e.keller@intel.com>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>
+Cc: netdev@vger.kernel.org, Marcin Szycik <marcin.szycik@linux.intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>, mateusz.polchlopek@intel.com
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
->> Add jump targets so that a bit of exception handling can be better reus=
-ed
->> at the end of two function implementations.
->
-> Thank you for contribution, the change is fine,
+If DDP package is missing or corrupted, the driver should enter Safe Mode.
+Instead, an error is returned and probe fails.
 
-Thanks for this positive feedback.
+Don't check return value of ice_init_ddp_config() to fix this.
 
+Repro:
+* Remove or rename DDP package (/lib/firmware/intel/ice/ddp/ice.pkg)
+* Load ice
 
->                                                 but not as a bugfix.
+Fixes: cc5776fe1832 ("ice: Enable switching default Tx scheduler topology")
+Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+Signed-off-by: Marcin Szycik <marcin.szycik@linux.intel.com>
+---
+ drivers/net/ethernet/intel/ice/ice_main.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
-Would you like to qualify my update suggestion as a correction for
-a coding style issue?
-https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Do=
-cumentation/process/coding-style.rst?h=3Dv6.11#n526
+diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
+index 0f5c9d347806..7b6725d652e1 100644
+--- a/drivers/net/ethernet/intel/ice/ice_main.c
++++ b/drivers/net/ethernet/intel/ice/ice_main.c
+@@ -4748,9 +4748,7 @@ int ice_init_dev(struct ice_pf *pf)
+ 
+ 	ice_init_feature_support(pf);
+ 
+-	err = ice_init_ddp_config(hw, pf);
+-	if (err)
+-		return err;
++	ice_init_ddp_config(hw, pf);
+ 
+ 	/* if ice_init_ddp_config fails, ICE_FLAG_ADV_FEATURES bit won't be
+ 	 * set in pf->state, which will cause ice_is_safe_mode to return
+-- 
+2.45.0
 
-
-> Please send as a [iwl-next], when the submission window opens.
-
-Will a patch resend really be needed for the proposed adjustment?
-
-Regards,
-Markus
