@@ -1,77 +1,84 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id E706E97DD48
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 21 Sep 2024 14:53:34 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 61BB397DDF8
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 21 Sep 2024 18:53:15 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 587386075A;
-	Sat, 21 Sep 2024 12:53:33 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id C81DB4063E;
+	Sat, 21 Sep 2024 16:53:12 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id YVbjbCZzVVKk; Sat, 21 Sep 2024 12:53:32 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id XiGaxfGzRm83; Sat, 21 Sep 2024 16:53:12 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9ACC16079A
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0751A405AB
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1726923212;
-	bh=6QSo1wbX76z4QTgK0MnEADpfJWPXA3ae8nkOlPrjfdI=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=QTIjFN/XnLuWUP2z3vN1y7X9ravfH2v0Y3CaNTZUgT7opeIvcWXrlA7+f/Vn98uz6
-	 mGpcgapdp2L5QFsCjz9VBZiwPdaRyoTPDQlfFSf0fwY09xnyp6oics5DGqsHlyvlrW
-	 psD6APpbkiilvSWLz7b3WkMv200wtkcwbxFdRsO92SKsfxZ0eN/lPutSrrERfkOHG9
-	 bfntNMaEDIhhJWWeurwH9WYx4bEWrJJHyaWaJmJBw8aqMT4GEgDUBCvQUYD84ANIW6
-	 p53VW43g5WUz3Bx+d6pkhCf6PEbxKF4Pb1SZjYDMm+AX2LAoqkcJml5JmK+m2pqiHd
-	 mx5mNwmqD+02w==
+	s=default; t=1726937592;
+	bh=xGlHEAHL35QP8aj41FQozKU4SGvEbTjEc+gQoO/8OG8=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=g9b3doMCpMKv7fM82faV7xk3jMF9KuWhvbldP+bhUxGHSD8uA8XiS3j9IIBv8jLI3
+	 iNdllrDTit4DG1Eesx3FLir+0Z4hmojJLQxQK+czTg2Nq/hmZOCbPIpygUhKH7p2PI
+	 lLy04/TI8vFaB0Izpy8KwYFEoWatxdMfWkb2gZ3fbMYKMPOoZvvnptcORGTK3XBMT5
+	 4LSf3tSK5qSR0CMwJ4JKWCSmdPzAmyXJ8FSNsAHlEn7sMPs0Lsu9KL6+GPemZ9Edpn
+	 brChnx2hqlPxxoFZfIC4QNav3CiYbCVg/1tW/vJtlOnRFUQD6P4173sniWOoTlMSyP
+	 6XnQB1Dx/R3mQ==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 9ACC16079A;
-	Sat, 21 Sep 2024 12:53:32 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 0751A405AB;
+	Sat, 21 Sep 2024 16:53:12 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 481C21BF834
- for <intel-wired-lan@lists.osuosl.org>; Sat, 21 Sep 2024 12:53:30 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 01C131BF373
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 21 Sep 2024 16:53:10 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 36A278444B
- for <intel-wired-lan@lists.osuosl.org>; Sat, 21 Sep 2024 12:53:30 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id E2DF0405D9
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 21 Sep 2024 16:53:09 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id VuNeT2D025uc for <intel-wired-lan@lists.osuosl.org>;
- Sat, 21 Sep 2024 12:53:29 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=141.14.17.11;
- helo=mx3.molgen.mpg.de; envelope-from=pmenzel@molgen.mpg.de;
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id QOIC6hqLzRIP for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 21 Sep 2024 16:53:09 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=139.178.84.217;
+ helo=dfw.source.kernel.org; envelope-from=lorenzo@kernel.org;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 31191841C7
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 31191841C7
-Received: from mx3.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 31191841C7
- for <intel-wired-lan@lists.osuosl.org>; Sat, 21 Sep 2024 12:53:27 +0000 (UTC)
-Received: from [192.168.0.53] (ip5f5aef34.dynamic.kabel-deutschland.de
- [95.90.239.52])
- (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested) (Authenticated sender: pmenzel)
- by mx.molgen.mpg.de (Postfix) with ESMTPSA id 4670161E5FE05;
- Sat, 21 Sep 2024 14:52:56 +0200 (CEST)
-Message-ID: <7e2c75bf-3ec5-4202-8b69-04fce763e948@molgen.mpg.de>
-Date: Sat, 21 Sep 2024 14:52:55 +0200
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 0C130405AB
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0C130405AB
+Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 0C130405AB
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 21 Sep 2024 16:53:08 +0000 (UTC)
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by dfw.source.kernel.org (Postfix) with ESMTP id BE3715C4C65;
+ Sat, 21 Sep 2024 16:53:03 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 85A4AC4CEC2;
+ Sat, 21 Sep 2024 16:53:06 +0000 (UTC)
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: bpf@vger.kernel.org
+Date: Sat, 21 Sep 2024 18:52:56 +0200
+Message-ID: <cover.1726935917.git.lorenzo@kernel.org>
+X-Mailer: git-send-email 2.46.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: Wander Lairson Costa <wander@redhat.com>
-References: <20240920185918.616302-1-wander@redhat.com>
- <20240920185918.616302-3-wander@redhat.com>
-Content-Language: en-US
-From: Paul Menzel <pmenzel@molgen.mpg.de>
-In-Reply-To: <20240920185918.616302-3-wander@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=molgen.mpg.de
-Subject: Re: [Intel-wired-lan] [PATCH 2/2] igbvf: remove unused spinlock
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=kernel.org; s=k20201202; t=1726937587;
+ bh=3DcqSOF/2OUCezVBG3TW/2mi74Vittpx3O4Bq7D530E=;
+ h=From:To:Cc:Subject:Date:From;
+ b=mvZgflTHVHw8FcQSB0HTmTUe0PReDu8ac0Ptt9TgciEUburqdfqLdHfKeUtAfXRp9
+ dT/fR60pFaascXawuuChzCkLfALQErQ9NI+fxLZtf3ckjxq4NqvzR2WVv6bnXlD7n5
+ 46TQOWgSD76K+cQd6x95ZWOfSMcQG2x8iBW4jdZFoaZ8OMVxJ/e4UJqS/iQh2/swAe
+ 5HAkxJUEPg5hk0arYhWSEUfa7atczRZeo/lvmknUdbCm//aH1iINb0+qEIJnmslirS
+ hQF00/n7PXc2gqoallb0faO/HSH69QHgcOxzDb0anGn3CJeehea0fUHEmDYP1ni82I
+ 9dl//9BFZ3zFA==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dmarc=pass (p=quarantine dis=none)
+ header.from=kernel.org
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
+ header.s=k20201202 header.b=mvZgflTH
+Subject: [Intel-wired-lan] [RFC bpf-next 0/4] Add XDP rx hw hints support
+ performing XDP_REDIRECT
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,76 +91,50 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- linux-kernel@vger.kernel.org, Eric Dumazet <edumazet@google.com>,
- netdev@vger.kernel.org, Tony Nguyen <anthony.l.nguyen@intel.com>,
- intel-wired-lan@lists.osuosl.org, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>
+Cc: toke@toke.dk, mst@redhat.com, jasowang@redhat.com, ast@kernel.org,
+ edumazet@google.com, anthony.l.nguyen@intel.com, sdf@google.com,
+ daniel@iogearbox.net, przemyslaw.kitszel@intel.com, john.fastabend@gmail.com,
+ intel-wired-lan@lists.osuosl.org, kuba@kernel.org, pabeni@redhat.com,
+ hawk@kernel.org, alexandre.torgue@foss.st.com, netdev@vger.kernel.org,
+ tariqt@nvidia.com, aleksander.lobakin@intel.com, mcoquelin.stm32@gmail.com,
+ saeedm@nvidia.com, davem@davemloft.net
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Dear Wander,
+This series introduces the xdp_rx_meta struct in the xdp_buff/xdp_frame
+one as a container to store the already supported xdp rx hw hints (rx_hash
+and rx_vlan, rx_timestamp will be stored in skb_shared_info area) when the
+eBPF program running on the nic performs XDP_REDIRECT. Doing so, we are able
+to set the skb metadata converting the xdp_buff/xdp_frame to a skb.
+Update xdp_metadata_ops callbacks for the following drivers:
+- ice
+- igc
+- mlx5
+- mlx4
+- veth
+- virtio_net
+- stmmac
 
+Lorenzo Bianconi (4):
+  net: xdp: Add xdp_rx_meta structure
+  net: xdp: Update rx_hash of xdp_rx_meta struct running xmo_rx_hash
+    callback
+  net: xdp: Update rx_vlan of xdp_rx_meta struct running xmo_rx_vlan_tag
+    callback
+  net: xdp: Update rx timestamp of xdp_rx_meta struct running
+    xmo_rx_timestamp callback
 
-Thank you for your patch.
+ drivers/net/ethernet/intel/ice/ice_txrx_lib.c |  9 +++
+ drivers/net/ethernet/intel/igc/igc_main.c     |  5 ++
+ drivers/net/ethernet/mellanox/mlx4/en_rx.c    |  3 +
+ .../net/ethernet/mellanox/mlx5/core/en/xdp.c  |  8 ++
+ .../net/ethernet/stmicro/stmmac/stmmac_main.c |  3 +
+ drivers/net/veth.c                            |  9 +++
+ drivers/net/virtio_net.c                      |  3 +-
+ include/net/xdp.h                             | 79 +++++++++++++++++++
+ net/core/xdp.c                                | 29 ++++++-
+ 9 files changed, 146 insertions(+), 2 deletions(-)
 
-Am 20.09.24 um 20:59 schrieb Wander Lairson Costa:
-> tx_queue_lock and stats_lock are declared and initialized, but never
-> used. Remove them.
-> 
-> Signed-off-by: Wander Lairson Costa <wander@redhat.com>
+-- 
+2.46.1
 
-It’d be great if you added a Fixes: tag.
-
-> ---
->   drivers/net/ethernet/intel/igbvf/igbvf.h  | 3 ---
->   drivers/net/ethernet/intel/igbvf/netdev.c | 3 ---
->   2 files changed, 6 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/intel/igbvf/igbvf.h b/drivers/net/ethernet/intel/igbvf/igbvf.h
-> index 6ad35a00a287..ca6e44245a7b 100644
-> --- a/drivers/net/ethernet/intel/igbvf/igbvf.h
-> +++ b/drivers/net/ethernet/intel/igbvf/igbvf.h
-> @@ -169,8 +169,6 @@ struct igbvf_adapter {
->   	u16 link_speed;
->   	u16 link_duplex;
->   
-> -	spinlock_t tx_queue_lock; /* prevent concurrent tail updates */
-> -
->   	/* track device up/down/testing state */
->   	unsigned long state;
->   
-> @@ -220,7 +218,6 @@ struct igbvf_adapter {
->   	/* OS defined structs */
->   	struct net_device *netdev;
->   	struct pci_dev *pdev;
-> -	spinlock_t stats_lock; /* prevent concurrent stats updates */
->   
->   	/* structs defined in e1000_hw.h */
->   	struct e1000_hw hw;
-> diff --git a/drivers/net/ethernet/intel/igbvf/netdev.c b/drivers/net/ethernet/intel/igbvf/netdev.c
-> index 925d7286a8ee..02044aa2181b 100644
-> --- a/drivers/net/ethernet/intel/igbvf/netdev.c
-> +++ b/drivers/net/ethernet/intel/igbvf/netdev.c
-> @@ -1656,12 +1656,9 @@ static int igbvf_sw_init(struct igbvf_adapter *adapter)
->   	if (igbvf_alloc_queues(adapter))
->   		return -ENOMEM;
->   
-> -	spin_lock_init(&adapter->tx_queue_lock);
-> -
->   	/* Explicitly disable IRQ since the NIC can be in any state. */
->   	igbvf_irq_disable(adapter);
->   
-> -	spin_lock_init(&adapter->stats_lock);
->   	spin_lock_init(&adapter->hw.mbx_lock);
->   
->   	set_bit(__IGBVF_DOWN, &adapter->state);
-
-With that addressed:
-
-Reviewed-by: Paul Menzel <pmenzel@molgen.mpg.de>
-
-
-Kind regards,
-
-Paul
