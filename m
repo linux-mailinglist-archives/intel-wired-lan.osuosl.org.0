@@ -2,87 +2,86 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 58B6097DDFB
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 21 Sep 2024 18:53:20 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 1D0B797DDFD
+	for <lists+intel-wired-lan@lfdr.de>; Sat, 21 Sep 2024 18:53:23 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 937F6408F0;
-	Sat, 21 Sep 2024 16:53:17 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id AACB940939;
+	Sat, 21 Sep 2024 16:53:21 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id smfPPX8Cjyh4; Sat, 21 Sep 2024 16:53:16 +0000 (UTC)
+ id 37PCQlJZ87bz; Sat, 21 Sep 2024 16:53:20 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A531540672
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A30CB4064B
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1726937596;
-	bh=25DbdkuOEdqnoc8SijsqgVyQHYj82ciiUr/jWcJogSM=;
+	s=default; t=1726937600;
+	bh=E8x7wlQNHT+KDlk0X8Xbi+HpU0S/SVjNfgmeaAxGY7s=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=XbF4T6AnuGoqH4cUtfCkf5p6cfh2SMbxPUkab5YW0NbiFPAEKI64qWzh/UOQ8mjtM
-	 ktEcByz7Hf7NQ5DxqYpA3zFLrXjlXZZthGRks1B2LzSWVHgUaxDH3l0ZRKVjcAnJ3Z
-	 oyZNDy+l3//uzGHqRDA0+qj11QMC9dGBgD5IdW2lJZWvl974TGN8TeZXUs/PRbOUOe
-	 CgMQKX12eVd15r3fzlqLmxnGMsP+JLYsb4DPk4bcXJEx9p96Zhbt3iSOQ76qfIxXei
-	 dtuJndmSJ9N9dXoggxrhYWHurVVs3Ta4s7F+75mWtnuiPfeJYGzwLrxHJAuGvhxi2T
-	 OXqj7X+SBvjfQ==
+	b=XXUs6Ao4DLQxDgCx8zj4Yhb4XIH01+bQxiuE7dWxJ569RHJB1Zkt4nTqE8foQcgMA
+	 PiYH782Sr7ZIBeur6O8HchQIeiadS8+GUpZgxcVcGlnbrLrY67HoZLU33wEclGQA4P
+	 XVbshDKwlfloyTUHRuwiZvFaSMb/1IH1R97Zxv5ftO95GLEllEbTs7mwakMHNbtpmv
+	 U7hRtSOxL5uloUj2bC+YVBn0NRMVKvPLkr9lpzbLU9aSUrmhzr7+SYMItoOlCy4NkK
+	 pAwJN4uqYo8tOYgp2E8TCsGnZAsC8r/b82rTLD4BcXun/XasU7az0R7KxvKSxdqBh2
+	 UjuBcLdyjdpnA==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id A531540672;
-	Sat, 21 Sep 2024 16:53:16 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id A30CB4064B;
+	Sat, 21 Sep 2024 16:53:20 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id DEA7C1BF373
- for <intel-wired-lan@lists.osuosl.org>; Sat, 21 Sep 2024 16:53:14 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 9C1FF1BF373
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 21 Sep 2024 16:53:18 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id CD1C7400D0
- for <intel-wired-lan@lists.osuosl.org>; Sat, 21 Sep 2024 16:53:14 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 86E854064B
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 21 Sep 2024 16:53:18 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id WawHalq5Ky_D for <intel-wired-lan@lists.osuosl.org>;
- Sat, 21 Sep 2024 16:53:13 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id N0mV9n6sTiT5 for <intel-wired-lan@lists.osuosl.org>;
+ Sat, 21 Sep 2024 16:53:16 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
  client-ip=2604:1380:4641:c500::1; helo=dfw.source.kernel.org;
  envelope-from=lorenzo@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 6BF8C40186
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 6BF8C40186
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 2B7354074B
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2B7354074B
 Received: from dfw.source.kernel.org (dfw.source.kernel.org
  [IPv6:2604:1380:4641:c500::1])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 6BF8C40186
- for <intel-wired-lan@lists.osuosl.org>; Sat, 21 Sep 2024 16:53:13 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 2B7354074B
+ for <intel-wired-lan@lists.osuosl.org>; Sat, 21 Sep 2024 16:53:16 +0000 (UTC)
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by dfw.source.kernel.org (Postfix) with ESMTP id AEFB45C5719;
- Sat, 21 Sep 2024 16:53:08 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D82A8C4CEC2;
+ by dfw.source.kernel.org (Postfix) with ESMTP id 894955C503A;
  Sat, 21 Sep 2024 16:53:11 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id AE731C4CEC2;
+ Sat, 21 Sep 2024 16:53:14 +0000 (UTC)
 From: Lorenzo Bianconi <lorenzo@kernel.org>
 To: bpf@vger.kernel.org
-Date: Sat, 21 Sep 2024 18:52:58 +0200
-Message-ID: <01ce17910fdd7b693c23132663fa884d5ec7f440.1726935917.git.lorenzo@kernel.org>
+Date: Sat, 21 Sep 2024 18:52:59 +0200
+Message-ID: <26256149e5331a69ba9574907ac570a7d2d2e382.1726935917.git.lorenzo@kernel.org>
 X-Mailer: git-send-email 2.46.1
 In-Reply-To: <cover.1726935917.git.lorenzo@kernel.org>
 References: <cover.1726935917.git.lorenzo@kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1726937592;
- bh=FtECcRJ9XXZ3jnvA5WKYiudLQt/ewvPA8UCT9rYB6eQ=;
+ d=kernel.org; s=k20201202; t=1726937595;
+ bh=3jw9I0lwiO4TTcm1AqiwzBTLqWxZoiHdGD9kSgY0iRA=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=QkBYEes6AI7AnET4LlfzKJfKdkZ+nZyYEzbAV0SyGCSHvLg77jwOlWSFFSAwlWmXZ
- ryQvlxKYJDn8T3n+XSQxKYDRCPodVDD3FWFqJrT0Y9GfjfOuGdPVRTFfVf/CRCjoeV
- Z6BQ7mjQRzJDdEX1HrrwcFvJD8Gx2iDH+ceTYMuaVeWSNnKeSG0CDM9QbJTevv7GWK
- ggt/GThXtZaXBNrEO/IC9FJeOzb/dBujbHhE14y0sN9/97XjTMWqXDynMVYLSYiJbp
- kg9CcjP9ott+U53Cmp8y5Qxy5bFu5E/vLIzbusZx6MXzHkLRTsXZbb6vIORCp6Lr3B
- RKDmA85MRm5Lw==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ b=j0X8UTg+dz4aJfP1I6iIW7aF1XJpGoSGCwGaAeJTO5ai5LeUVOzuRBz92hrC1ul4n
+ vhna9qluD4JeHV8sO7y6An8tK2s4jJCXSkvCusq7cSaOoEwfXOp6xItbaE8MeS9m1V
+ mspRJ1n12fJgRMfE3Ati8nRHMlQNbxo9C8rdrwTs4M+8f3hG9+BiDKwAC5jvklwa3a
+ IMHLqb2hZtv5ugwJ8Y2nfP4HRUr1OmufHjs/FNNPSGWWtnJjHJtpNbUOwUOW7KNLKp
+ V/CEUThSY6Bex1C3eaMEm6AvHE0nd8LwRxgdFNWJU/b1cJbhsMFW7Tep6sDb+LTusA
+ VUWSEHFgc3Kzg==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20201202 header.b=QkBYEes6
-Subject: [Intel-wired-lan] [RFC bpf-next 2/4] net: xdp: Update rx_hash of
- xdp_rx_meta struct running xmo_rx_hash callback
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=j0X8UTg+
+Subject: [Intel-wired-lan] [RFC bpf-next 3/4] net: xdp: Update rx_vlan of
+ xdp_rx_meta struct running xmo_rx_vlan_tag callback
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -105,208 +104,134 @@ Cc: toke@toke.dk, mst@redhat.com, jasowang@redhat.com, ast@kernel.org,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Set rx_hash in xdp_rx_meta struct of xdp_buff/xdp_frame according to
-the value reported by the hw.
-Update the xmo_rx_hash callback of xdp_metadata_ops for the following
-drivers:
+Set vlan_proto and vlan_tci in xdp_rx_meta struct of xdp_buff/xdp_frame
+according to the value reported by the hw.
+Update the xmo_rx_vlan_tag callback of xdp_metadata_ops for the
+following drivers:
 - ice
-- igc
-- mlx4
 - mlx5
 - veth
-- virtio_net
-Set rx_hash value/type reported by the hw converting the xdp_frame into
+Set rx vlan_{prot, tci} reported by the hw converting the xdp_frame into
 a sk_buff.
 
 Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
- drivers/net/ethernet/intel/ice/ice_txrx_lib.c |  3 +++
- drivers/net/ethernet/intel/igc/igc_main.c     |  2 ++
- drivers/net/ethernet/mellanox/mlx4/en_rx.c    |  1 +
- .../net/ethernet/mellanox/mlx5/core/en/xdp.c  |  2 ++
- drivers/net/veth.c                            |  1 +
- drivers/net/virtio_net.c                      |  3 ++-
- include/net/xdp.h                             | 14 +++++++++++++
- net/core/xdp.c                                | 20 ++++++++++++++++++-
- 8 files changed, 44 insertions(+), 2 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_txrx_lib.c    |  3 +++
+ drivers/net/ethernet/mellanox/mlx5/core/en/xdp.c |  3 +++
+ drivers/net/veth.c                               |  3 +++
+ include/net/xdp.h                                | 14 ++++++++++++++
+ net/core/xdp.c                                   |  3 +++
+ 5 files changed, 26 insertions(+)
 
 diff --git a/drivers/net/ethernet/intel/ice/ice_txrx_lib.c b/drivers/net/ethernet/intel/ice/ice_txrx_lib.c
-index 2719f0e20933f..e4b051a8d99c7 100644
+index e4b051a8d99c7..74dabe5b0c35c 100644
 --- a/drivers/net/ethernet/intel/ice/ice_txrx_lib.c
 +++ b/drivers/net/ethernet/intel/ice/ice_txrx_lib.c
-@@ -520,12 +520,15 @@ static int ice_xdp_rx_hash(const struct xdp_md *ctx, u32 *hash,
- 			   enum xdp_rss_hash_type *rss_type)
+@@ -545,6 +545,7 @@ static int ice_xdp_rx_vlan_tag(const struct xdp_md *ctx, __be16 *vlan_proto,
+ 			       u16 *vlan_tci)
  {
  	const struct ice_xdp_buff *xdp_ext = (void *)ctx;
 +	struct xdp_buff *xdp = (void *)&(xdp_ext->xdp_buff);
  
- 	*hash = ice_get_rx_hash(xdp_ext->eop_desc);
- 	*rss_type = ice_xdp_rx_hash_type(xdp_ext->eop_desc);
- 	if (!likely(*hash))
+ 	*vlan_proto = xdp_ext->pkt_ctx->vlan_proto;
+ 	if (!*vlan_proto)
+@@ -554,6 +555,8 @@ static int ice_xdp_rx_vlan_tag(const struct xdp_md *ctx, __be16 *vlan_proto,
+ 	if (!*vlan_tci)
  		return -ENODATA;
  
-+	xdp_set_rx_meta_hash(xdp, *hash, *rss_type);
++	xdp_set_rx_meta_vlan(xdp, *vlan_proto, *vlan_tci);
 +
  	return 0;
  }
  
-diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
-index dfd6c00b4205d..ed22a7a70695e 100644
---- a/drivers/net/ethernet/intel/igc/igc_main.c
-+++ b/drivers/net/ethernet/intel/igc/igc_main.c
-@@ -6776,12 +6776,14 @@ static int igc_xdp_rx_hash(const struct xdp_md *_ctx, u32 *hash,
- 			   enum xdp_rss_hash_type *rss_type)
- {
- 	const struct igc_xdp_buff *ctx = (void *)_ctx;
-+	struct xdp_buff *xdp = (void *)&(ctx->xdp);
- 
- 	if (!(ctx->xdp.rxq->dev->features & NETIF_F_RXHASH))
- 		return -ENODATA;
- 
- 	*hash = le32_to_cpu(ctx->rx_desc->wb.lower.hi_dword.rss);
- 	*rss_type = igc_xdp_rss_type[igc_rss_type(ctx->rx_desc)];
-+	xdp_set_rx_meta_hash(xdp, *hash, *rss_type);
- 
- 	return 0;
- }
-diff --git a/drivers/net/ethernet/mellanox/mlx4/en_rx.c b/drivers/net/ethernet/mellanox/mlx4/en_rx.c
-index 15c57e9517e9a..ef6c687866f9d 100644
---- a/drivers/net/ethernet/mellanox/mlx4/en_rx.c
-+++ b/drivers/net/ethernet/mellanox/mlx4/en_rx.c
-@@ -708,6 +708,7 @@ int mlx4_en_xdp_rx_hash(const struct xdp_md *ctx, u32 *hash,
- 		if (cqe->ipv6_ext_mask)
- 			xht |= XDP_RSS_L3_DYNHDR;
- 	}
-+	xdp_set_rx_meta_hash(&(_ctx->xdp), *hash, xht);
- 	*rss_type = xht;
- 
- 	return 0;
 diff --git a/drivers/net/ethernet/mellanox/mlx5/core/en/xdp.c b/drivers/net/ethernet/mellanox/mlx5/core/en/xdp.c
-index 4610621a340e5..92fb98397751a 100644
+index 92fb98397751a..d3b7eee031470 100644
 --- a/drivers/net/ethernet/mellanox/mlx5/core/en/xdp.c
 +++ b/drivers/net/ethernet/mellanox/mlx5/core/en/xdp.c
-@@ -238,6 +238,7 @@ static int mlx5e_xdp_rx_hash(const struct xdp_md *ctx, u32 *hash,
- 			     enum xdp_rss_hash_type *rss_type)
+@@ -262,6 +262,7 @@ static int mlx5e_xdp_rx_vlan_tag(const struct xdp_md *ctx, __be16 *vlan_proto,
+ 				 u16 *vlan_tci)
  {
  	const struct mlx5e_xdp_buff *_ctx = (void *)ctx;
 +	struct xdp_buff *xdp = (void *)&(_ctx->xdp);
  	const struct mlx5_cqe64 *cqe = _ctx->cqe;
- 	u32 hash_type, l4_type, ip_type, lookup;
  
-@@ -252,6 +253,7 @@ static int mlx5e_xdp_rx_hash(const struct xdp_md *ctx, u32 *hash,
- 	l4_type = FIELD_GET(CQE_RSS_HTYPE_L4, hash_type);
- 	lookup = ip_type | l4_type;
- 	*rss_type = mlx5_xdp_rss_type[lookup];
-+	xdp_set_rx_meta_hash(xdp, *hash, *rss_type);
+ 	if (!cqe_has_vlan(cqe))
+@@ -269,6 +270,8 @@ static int mlx5e_xdp_rx_vlan_tag(const struct xdp_md *ctx, __be16 *vlan_proto,
  
+ 	*vlan_proto = htons(ETH_P_8021Q);
+ 	*vlan_tci = be16_to_cpu(cqe->vlan_info);
++	xdp_set_rx_meta_vlan(xdp, *vlan_proto, *vlan_tci);
++
  	return 0;
  }
+ 
 diff --git a/drivers/net/veth.c b/drivers/net/veth.c
-index 426e68a950672..cc8e90d330456 100644
+index cc8e90d330456..3a4b81104a6bd 100644
 --- a/drivers/net/veth.c
 +++ b/drivers/net/veth.c
-@@ -1633,6 +1633,7 @@ static int veth_xdp_rx_hash(const struct xdp_md *ctx, u32 *hash,
- 
- 	*hash = skb_get_hash(skb);
- 	*rss_type = skb->l4_hash ? XDP_RSS_TYPE_L4_ANY : XDP_RSS_TYPE_NONE;
-+	xdp_set_rx_meta_hash(&(_ctx->xdp), *hash, *rss_type);
- 
- 	return 0;
- }
-diff --git a/drivers/net/virtio_net.c b/drivers/net/virtio_net.c
-index 3f10c72743e94..1d1ada8eeda0e 100644
---- a/drivers/net/virtio_net.c
-+++ b/drivers/net/virtio_net.c
-@@ -6250,8 +6250,8 @@ virtnet_xdp_rss_type[VIRTIO_NET_HASH_REPORT_MAX_TABLE] = {
- static int virtnet_xdp_rx_hash(const struct xdp_md *_ctx, u32 *hash,
- 			       enum xdp_rss_hash_type *rss_type)
+@@ -1642,6 +1642,7 @@ static int veth_xdp_rx_vlan_tag(const struct xdp_md *ctx, __be16 *vlan_proto,
+ 				u16 *vlan_tci)
  {
--	const struct xdp_buff *xdp = (void *)_ctx;
- 	struct virtio_net_hdr_v1_hash *hdr_hash;
-+	struct xdp_buff *xdp = (void *)_ctx;
- 	struct virtnet_info *vi;
- 	u16 hash_report;
+ 	const struct veth_xdp_buff *_ctx = (void *)ctx;
++	struct xdp_buff *xdp = (void *)&(_ctx->xdp);
+ 	const struct sk_buff *skb = _ctx->skb;
+ 	int err;
  
-@@ -6267,6 +6267,7 @@ static int virtnet_xdp_rx_hash(const struct xdp_md *_ctx, u32 *hash,
+@@ -1653,6 +1654,8 @@ static int veth_xdp_rx_vlan_tag(const struct xdp_md *ctx, __be16 *vlan_proto,
+ 		return err;
  
- 	*rss_type = virtnet_xdp_rss_type[hash_report];
- 	*hash = __le32_to_cpu(hdr_hash->hash_value);
-+	xdp_set_rx_meta_hash(xdp, *hash, *rss_type);
- 	return 0;
+ 	*vlan_proto = skb->vlan_proto;
++	xdp_set_rx_meta_vlan(xdp, skb->vlan_proto, *vlan_tci);
++
+ 	return err;
  }
  
 diff --git a/include/net/xdp.h b/include/net/xdp.h
-index 5e08b58a2a10f..e1c344eb7e686 100644
+index e1c344eb7e686..2ffaad806b9ed 100644
 --- a/include/net/xdp.h
 +++ b/include/net/xdp.h
-@@ -214,6 +214,11 @@ static __always_inline bool xdp_frame_has_rx_meta(struct xdp_frame *frame)
- 	return !!(frame->flags & XDP_FLAGS_META_RX);
+@@ -219,6 +219,11 @@ static __always_inline bool xdp_frame_has_rx_meta_hash(struct xdp_frame *frame)
+ 	return !!(frame->flags & XDP_FLAGS_META_RX_HASH);
  }
  
-+static __always_inline bool xdp_frame_has_rx_meta_hash(struct xdp_frame *frame)
++static __always_inline bool xdp_frame_has_rx_meta_vlan(struct xdp_frame *frame)
 +{
-+	return !!(frame->flags & XDP_FLAGS_META_RX_HASH);
++	return !!(frame->flags & XDP_FLAGS_META_RX_VLAN);
 +}
 +
  #define XDP_BULK_QUEUE_SIZE	16
  struct xdp_frame_bulk {
  	int count;
-@@ -504,6 +509,15 @@ struct xdp_metadata_ops {
- 				   u16 *vlan_tci);
- };
+@@ -518,6 +523,15 @@ xdp_set_rx_meta_hash(struct xdp_buff *xdp, u32 hash,
+ 	xdp->flags |= XDP_FLAGS_META_RX_HASH;
+ }
  
 +static __always_inline void
-+xdp_set_rx_meta_hash(struct xdp_buff *xdp, u32 hash,
-+		     enum xdp_rss_hash_type rss_type)
++xdp_set_rx_meta_vlan(struct xdp_buff *xdp, __be16 vlan_proto,
++		     u16 vlan_tci)
 +{
-+	xdp->rx_meta.hash.val = hash;
-+	xdp->rx_meta.hash.type = rss_type;
-+	xdp->flags |= XDP_FLAGS_META_RX_HASH;
++	xdp->rx_meta.vlan.proto = vlan_proto;
++	xdp->rx_meta.vlan.tci = vlan_tci;
++	xdp->flags |= XDP_FLAGS_META_RX_VLAN;
 +}
 +
  #ifdef CONFIG_NET
  u32 bpf_xdp_metadata_kfunc_id(int id);
  bool bpf_dev_bound_kfunc_id(u32 btf_id);
 diff --git a/net/core/xdp.c b/net/core/xdp.c
-index bcc5551c6424b..e2f4d01cf84cf 100644
+index e2f4d01cf84cf..84d6b134f8e97 100644
 --- a/net/core/xdp.c
 +++ b/net/core/xdp.c
-@@ -594,6 +594,23 @@ int xdp_alloc_skb_bulk(void **skbs, int n_skb, gfp_t gfp)
- }
- EXPORT_SYMBOL_GPL(xdp_alloc_skb_bulk);
- 
-+static void xdp_set_skb_rx_hash_from_meta(struct xdp_frame *frame,
-+					  struct sk_buff *skb)
-+{
-+	enum pkt_hash_types hash_type = PKT_HASH_TYPE_NONE;
-+
-+	if (!xdp_frame_has_rx_meta_hash(frame))
-+		return;
-+
-+	if (frame->rx_meta.hash.type & XDP_RSS_TYPE_L4_ANY)
-+		hash_type = PKT_HASH_TYPE_L4;
-+	else if (frame->rx_meta.hash.type & (XDP_RSS_TYPE_L3_IPV4 |
-+					     XDP_RSS_TYPE_L3_IPV6))
-+		hash_type = PKT_HASH_TYPE_L3;
-+
-+	skb_set_hash(skb, frame->rx_meta.hash.val, hash_type);
-+}
-+
- struct sk_buff *__xdp_build_skb_from_frame(struct xdp_frame *xdpf,
- 					   struct sk_buff *skb,
- 					   struct net_device *dev)
-@@ -634,9 +651,10 @@ struct sk_buff *__xdp_build_skb_from_frame(struct xdp_frame *xdpf,
- 	/* Essential SKB info: protocol and skb->dev */
+@@ -652,6 +652,9 @@ struct sk_buff *__xdp_build_skb_from_frame(struct xdp_frame *xdpf,
  	skb->protocol = eth_type_trans(skb, dev);
  
-+	xdp_set_skb_rx_hash_from_meta(xdpf, skb);
-+
+ 	xdp_set_skb_rx_hash_from_meta(xdpf, skb);
++	if (xdp_frame_has_rx_meta_vlan(xdpf))
++		__vlan_hwaccel_put_tag(skb, xdpf->rx_meta.vlan.proto,
++				       xdpf->rx_meta.vlan.tci);
+ 
  	/* Optional SKB info, currently missing:
  	 * - HW checksum info		(skb->ip_summed)
--	 * - HW RX hash			(skb_set_hash)
- 	 * - RX ring dev queue index	(skb_record_rx_queue)
- 	 */
- 
 -- 
 2.46.1
 
