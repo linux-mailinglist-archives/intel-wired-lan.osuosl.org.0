@@ -1,103 +1,121 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id E7FE497E99D
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 23 Sep 2024 12:14:12 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id CABDF97EF78
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 23 Sep 2024 18:46:26 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 56F7060891;
-	Mon, 23 Sep 2024 10:14:11 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id ED0D940A40;
+	Mon, 23 Sep 2024 16:46:24 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id uXILVnPgoREY; Mon, 23 Sep 2024 10:14:10 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 0ovxVZqx75rx; Mon, 23 Sep 2024 16:46:24 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6CF786075B
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1597340A3B
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1727086450;
-	bh=gsSKbUPFuGR9WrIxHgSXvL7mUo2I72w+5OM/i/P4S+U=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
+	s=default; t=1727109984;
+	bh=CBaBcZjvSjE2uqo1qSHWS8BMthhUAEogThtkqQHzEvQ=;
+	h=References:In-Reply-To:From:Date:To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=0VpK4RJIp4eR7qW6QqAN+/1WY9lmLJv7jyhiYXOPC4DXbHRZl51Q54vaQDsaXRBjK
-	 wqzhOPERCChJJe/HP7QUS2G3R9TBZBsvksaS+9/3j/PIaJR6rOk6xzAzvTkKO3Bh2m
-	 0ETjV84Ux3bFC42IRLZsAN24+GO22zy6MElpeDotaMVMsxVTpyKmMB2/Kv+nr6nWoP
-	 a2lmN+V3nCbZpvgxpQrbZt5qE28bbkwn+AwtH0fpdQJVFB02Ki3dkZNmm6FNZPAzJH
-	 nCXVxZSujDgixUxbPIIz5Sg7PAc98c49O1wYvlcb0spZ3Qgx94fSYbS/UmM0V+FJqG
-	 MhhezDsrIdTtg==
+	b=UbyVCJcDurL9nob9ahODDMWGQ3wot3/wxFEldtSkcGqm56ldvo0GTwSGKxp085EFc
+	 2U5aZLchD/jz/YF1Xz8hKOVeYbaQk/mXb8qFuAI1WUEJ4LZUYVHbg5DYA0Qfx1n//b
+	 IzlRzWrNeMnNQvnwRpj5DyiBdFk+H7t/zUMprkKJnboscJm1gD9oAN/L1J5Mt2tbH+
+	 XMsdbubdy52lIR45JyIJoCtQ1MzzObOFShka+IjcDcOw57vijZAZ4quX+ydJaQgP9L
+	 3YHUll7QM497yL7LTRn8CgD3W3E+FehezGcwhUZvOSr0jV3sATRrJqzwJqyYGZa6oY
+	 F8Sq7SvVrLEHg==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 6CF786075B;
-	Mon, 23 Sep 2024 10:14:10 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 1597340A3B;
+	Mon, 23 Sep 2024 16:46:24 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 5AB601BF307
- for <intel-wired-lan@lists.osuosl.org>; Mon, 23 Sep 2024 10:14:08 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id A8AE31BF355
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 23 Sep 2024 16:46:22 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 34DB7605FC
- for <intel-wired-lan@lists.osuosl.org>; Mon, 23 Sep 2024 10:14:06 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id A353240395
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 23 Sep 2024 16:46:22 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id jPxZmlJnC0mi for <intel-wired-lan@lists.osuosl.org>;
- Mon, 23 Sep 2024 10:14:05 +0000 (UTC)
-Received-SPF: None (mailfrom) identity=mailfrom; client-ip=198.175.65.15;
- helo=mgamail.intel.com; envelope-from=marcin.szycik@linux.intel.com;
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id hds1L7BRrxMy for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 23 Sep 2024 16:46:22 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.133.124;
+ helo=us-smtp-delivery-124.mimecast.com; envelope-from=wcosta@redhat.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 3A971605A2
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3A971605A2
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.15])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 3A971605A2
- for <intel-wired-lan@lists.osuosl.org>; Mon, 23 Sep 2024 10:14:04 +0000 (UTC)
-X-CSE-ConnectionGUID: hlhiW+0uQaqOsLjNoeNU+g==
-X-CSE-MsgGUID: ar68wdYDTjKTgrZqVkQsfw==
-X-IronPort-AV: E=McAfee;i="6700,10204,11202"; a="29747953"
-X-IronPort-AV: E=Sophos;i="6.10,251,1719903600"; d="scan'208";a="29747953"
-Received: from orviesa004.jf.intel.com ([10.64.159.144])
- by orvoesa107.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 23 Sep 2024 03:14:04 -0700
-X-CSE-ConnectionGUID: Zb6YVVJWS4mXEqQzo05cPA==
-X-CSE-MsgGUID: rNh90k91REKm5TsT+6h0Sg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.10,251,1719903600"; d="scan'208";a="75962603"
-Received: from mszycik-mobl1.ger.corp.intel.com (HELO [10.246.26.245])
- ([10.246.26.245])
- by orviesa004-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 23 Sep 2024 03:14:03 -0700
-Message-ID: <3ecfcc55-f31f-40ee-b7f2-49b567c3e8a2@linux.intel.com>
-Date: Mon, 23 Sep 2024 12:13:57 +0200
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org B9FDE40332
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B9FDE40332
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id B9FDE40332
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 23 Sep 2024 16:46:21 +0000 (UTC)
+Received: from mail-lj1-f198.google.com (mail-lj1-f198.google.com
+ [209.85.208.198]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-330-eDnNApHoOTe3y2bluzugOg-1; Mon, 23 Sep 2024 12:46:16 -0400
+X-MC-Unique: eDnNApHoOTe3y2bluzugOg-1
+Received: by mail-lj1-f198.google.com with SMTP id
+ 38308e7fff4ca-2f760cbd9deso31456321fa.0
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 23 Sep 2024 09:46:15 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1727109974; x=1727714774;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=CBaBcZjvSjE2uqo1qSHWS8BMthhUAEogThtkqQHzEvQ=;
+ b=bvvkEsYMtUi+ZBZHk7z8FqoPoBjpogJ/YnMoXoClKY76MdiboPctZ4mTp15yybIUk8
+ zrOwkIPaic4FlQXGMoIVh+mj/rt8MM8cI5cYjjRL/1PlAW/+BeiGdVnJ90nxrP82QW74
+ tWdpJriY3RLmtW0AtQo2Y6/zOxiz0u721Ax5PTeRTWV2t46s4MDQPVNHbbtI9+Ob1Mpz
+ A2qt2ibiHRqXXeKkV27r5TjQuJta8oT0rzyrLkiHgim5C0iSGJmGMBkbysDHcBO18amg
+ P7unQ2Esc9C+tVKB4zu3jiqEQNuYCNnmv67/9akBqZNumAoIh8BC4Z9/yDgtTWU8BQa6
+ yz4g==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUI78HRmmTkU4cb8GgKsOJuR3eY44neL1LggW5mc3RqIKaZNwBYROS5quDLHy+dQh7tr2K/dBEwLf+AYkVEPB0=@lists.osuosl.org
+X-Gm-Message-State: AOJu0Yz5yjeY64v0xRmruX2rOuE0hWbTHIxZfVRK9eRkj6z6ysD7y/Va
+ 2tWrhXvmXufoBm4ny4QfrJCvMeCn5nt4f/XD1YJtv1+EnnbXTBKpUrEUuWHU1Kg0ettDOUj/Rtz
+ Td7Y/Nc3VbQsyo3C5dONOO+YnnXxBmgWwQ6jpm8Fl6owjDMCYob9pdm4TrglqLQ/6a3Yu9/TNZq
+ VY3rvHO5PT6tt2ZDaozpQoa3taVDrY1sOn8n1UFuLwOA==
+X-Received: by 2002:a2e:824e:0:b0:2f6:6029:c63e with SMTP id
+ 38308e7fff4ca-2f7cc375a2dmr47198661fa.23.1727109974358; 
+ Mon, 23 Sep 2024 09:46:14 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IG6qm7m3hWwtODGuDM1oa5WQCLNv0Y3IKoTB111Cx49PEhbpDmWp9BFnvuAJKnx3CHurDhFPWigvS/XiFS0BxM=
+X-Received: by 2002:a2e:824e:0:b0:2f6:6029:c63e with SMTP id
+ 38308e7fff4ca-2f7cc375a2dmr47198471fa.23.1727109973965; Mon, 23 Sep 2024
+ 09:46:13 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: Brett Creeley <bcreeley@amd.com>, intel-wired-lan@lists.osuosl.org
-References: <20240920165916.9592-3-marcin.szycik@linux.intel.com>
- <5cda9974-6c19-4216-9139-0ac83c95303c@amd.com>
-Content-Language: en-US
-From: Marcin Szycik <marcin.szycik@linux.intel.com>
-In-Reply-To: <5cda9974-6c19-4216-9139-0ac83c95303c@amd.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1727086445; x=1758622445;
- h=message-id:date:mime-version:subject:to:cc:references:
- from:in-reply-to:content-transfer-encoding;
- bh=p5o1Jo6U3AZKAQbTtFOZi3I5CXN3bA3pd+Y097tFe/4=;
- b=ZUARyK4MroLCI1poW1Wz6C/2YWuS0PuiYaCG9YjJ8hVMDx3FEcFtdfC4
- y/pyIqg/iJXWVdG2q0NtCZoe3o820SKS+iYpDgQ83m2cwHtvNlbId87XE
- uKIM3Igw8oCaJcxeXuTro/0jW7eVu5b+amly392cQfAj4xRw4CjggurIy
- ELB7jOxa9UraX6ruvQrj/3wNhxq8l+bBhctXa9iFzSRb3wMobN7fgkjHj
- MthVdFWxHKwd3gfuicodAohMej/z5L4edcHcjU5REWuX2nQgboFz5BQVj
- 7G+8bobb6i7VgE9ZtmaeBigTHdHxwbtufR/DPs3UgTgNhBGzZ/V6LToKj
- w==;
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=linux.intel.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=ZUARyK4M
-Subject: Re: [Intel-wired-lan] [PATCH iwl-net v2 1/2] ice: Fix entering Safe
- Mode
+References: <20240920185918.616302-1-wander@redhat.com>
+ <20240920185918.616302-3-wander@redhat.com>
+ <7e2c75bf-3ec5-4202-8b69-04fce763e948@molgen.mpg.de>
+ <02076f9d-1158-4f3e-85cc-83ee4d41091e@intel.com>
+In-Reply-To: <02076f9d-1158-4f3e-85cc-83ee4d41091e@intel.com>
+From: Wander Lairson Costa <wander@redhat.com>
+Date: Mon, 23 Sep 2024 13:46:03 -0300
+Message-ID: <CAAq0SUkeVkiit383065nhfCibn-CG701uvaM6UHpWu9RaZE83g@mail.gmail.com>
+To: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=redhat.com; 
+ s=mimecast20190719; t=1727109980;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=CBaBcZjvSjE2uqo1qSHWS8BMthhUAEogThtkqQHzEvQ=;
+ b=FRr4ALZOpyQpnWv+lbKtDlKIlkmFmyAB13JaKm0RT7k0mAeP+jpYLTE9XSj4nCj67rSrOx
+ Xr4iZIGiq4rWjmNvlbw6GP2cVjh1oKvOcHr5dsPQ/O6QU1g6b5vm6pXclCsQYaPVs1C3Ui
+ 6xMK0QsUUhaljhD4Gqu8psPxOKr7vgw=
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=redhat.com
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (1024-bit key,
+ unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256
+ header.s=mimecast20190719 header.b=FRr4ALZO
+Subject: Re: [Intel-wired-lan] [PATCH 2/2] igbvf: remove unused spinlock
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -110,119 +128,50 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, mateusz.polchlopek@intel.com,
- maciej.fijalkowski@intel.com, Przemek Kitszel <przemyslaw.kitszel@intel.com>
+Cc: Paul Menzel <pmenzel@molgen.mpg.de>, intel-wired-lan@lists.osuosl.org,
+ linux-kernel@vger.kernel.org, Eric Dumazet <edumazet@google.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>, netdev@vger.kernel.org,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ "David S. Miller" <davem@davemloft.net>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+On Mon, Sep 23, 2024 at 6:04=E2=80=AFAM Przemek Kitszel
+<przemyslaw.kitszel@intel.com> wrote:
+>
+> On 9/21/24 14:52, Paul Menzel wrote:
+> > Dear Wander,
+> >
+> >
+> > Thank you for your patch.
+> >
+> > Am 20.09.24 um 20:59 schrieb Wander Lairson Costa:
+> >> tx_queue_lock and stats_lock are declared and initialized, but never
+> >> used. Remove them.
+> >>
+> >> Signed-off-by: Wander Lairson Costa <wander@redhat.com>
+> >
+> > It=E2=80=99d be great if you added a Fixes: tag.
+>
+> Alternatively you could split this series into two, and send this patch
+> to iwl-next tree, without the fixes tag. For me this patch is just
+> a cleanup, not a fix.
+>
+> >
+>
 
+Should I send a new version of the patches separately?
 
-On 20.09.2024 19:14, Brett Creeley wrote:
-> 
-> 
-> On 9/20/2024 9:59 AM, Marcin Szycik wrote:
->> Caution: This message originated from an External Source. Use proper caution when opening attachments, clicking links, or responding.
->>
->>
->> If DDP package is missing or corrupted, the driver should enter Safe Mode.
->> Instead, an error is returned and probe fails.
->>
->> Don't check return value of ice_init_ddp_config() to fix this.
->>
->> Change ice_init_ddp_config() type to void, as now its return is never
->> checked.
->>
->> Repro:
->> * Remove or rename DDP package (/lib/firmware/intel/ice/ddp/ice.pkg)
->> * Load ice
->>
->> Fixes: cc5776fe1832 ("ice: Enable switching default Tx scheduler topology")
->> Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
->> Signed-off-by: Marcin Szycik <marcin.szycik@linux.intel.com>
->> ---
->> v2: Change ice_init_ddp_config() type to void
->> ---
->>   drivers/net/ethernet/intel/ice/ice_main.c | 15 +++------------
->>   1 file changed, 3 insertions(+), 12 deletions(-)
->>
->> diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
->> index 0f5c9d347806..aeebf4ae25ae 100644
->> --- a/drivers/net/ethernet/intel/ice/ice_main.c
->> +++ b/drivers/net/ethernet/intel/ice/ice_main.c
->> @@ -4548,34 +4548,27 @@ ice_init_tx_topology(struct ice_hw *hw, const struct firmware *firmware)
->>    *
->>    * This function loads DDP file from the disk, then initializes Tx
->>    * topology. At the end DDP package is loaded on the card.
->> - *
->> - * Return: zero when init was successful, negative values otherwise.
->>    */
->> -static int ice_init_ddp_config(struct ice_hw *hw, struct ice_pf *pf)
->> +static void ice_init_ddp_config(struct ice_hw *hw, struct ice_pf *pf)
->>   {
->>          struct device *dev = ice_pf_to_dev(pf);
->>          const struct firmware *firmware = NULL;
->>          int err;
->>
->>          err = ice_request_fw(pf, &firmware);
->> -       if (err) {
->> +       if (err)
->>                  dev_err(dev, "Fail during requesting FW: %d\n", err);
->> -               return err;
->> -       }
->>
->>          err = ice_init_tx_topology(hw, firmware);
->>          if (err) {
->>                  dev_err(dev, "Fail during initialization of Tx topology: %d\n",
->>                          err);
->>                  release_firmware(firmware);
->> -               return err;
->>          }
->>
->>          /* Download firmware to device */
->>          ice_load_pkg(firmware, pf);
->>          release_firmware(firmware);
->> -
->> -       return 0;
->>   }
->>
->>   /**
->> @@ -4748,9 +4741,7 @@ int ice_init_dev(struct ice_pf *pf)
->>
->>          ice_init_feature_support(pf);
->>
->> -       err = ice_init_ddp_config(hw, pf);
->> -       if (err)
->> -               return err;
->> +       ice_init_ddp_config(hw, pf);
-> 
-> I just commented this on v1 as I didn't expect it to be resent. I'm also okay with Maciej's suggestion, but I wanted to offer an alternative option.
-> 
-> As an alternative solution you could potentially do the following, which
-> would make the flow more readable:
-> 
-> err = ice_init_ddp_config(hw, pf);
-> if (err || ice_is_safe_mode(pf))
->        ice_set_safe_mode_caps(hw);
-
-This sounds reasonable, I'll change it if there will be no more comments.
-
-> Also, should there be some sort of messaging if the device goes into
-> safe mode? I wonder if a dev_dbg() would be better than nothing. If ice_init_ddp_config() fails, then it will print an error message, so maybe a dev_warn/info() is warranted if (err)? Of course this would depend on ice_init_ddp_config() to return a non-void value.
-
-ice_request_fw() already prints a dev_err() message when entering safe mode, so I don't think it's necessary here.
-
-Thanks,
-Marcin
-> 
-> Thanks,
-> 
-> Brett
-> 
->>
->>          /* if ice_init_ddp_config fails, ICE_FLAG_ADV_FEATURES bit won't be
->>           * set in pf->state, which will cause ice_is_safe_mode to return
->> -- 
->> 2.45.0
->>
->>
+> [...]
+>
+> >
+> > With that addressed:
+> >
+> > Reviewed-by: Paul Menzel <pmenzel@molgen.mpg.de>
+> >
+> >
+> > Kind regards,
+> >
+> > Paul
+>
 
