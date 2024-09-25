@@ -1,91 +1,90 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0E8329859B9
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 25 Sep 2024 13:59:20 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8DABE985AAD
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 25 Sep 2024 14:12:00 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id ABD3942596;
-	Wed, 25 Sep 2024 11:59:18 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 158914266B;
+	Wed, 25 Sep 2024 12:11:59 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 8jacfn_TgK2H; Wed, 25 Sep 2024 11:59:17 +0000 (UTC)
+ id N_jkw9z2v_pX; Wed, 25 Sep 2024 12:11:58 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 696D342597
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E02044266C
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1727265557;
-	bh=dJXlTinMhGe4J1VnmMetYI8d+gyxOmHk/2j+WXZyUac=;
+	s=default; t=1727266318;
+	bh=rRbUVgTOcbr1MVB1pVeK4F3vY4IgtbcfE4AHajibSt0=;
 	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=L1S7f3ci5evtc0cmxJ/LMvX2QKlFbtr5bdWz82HpVI1gtMzXiLjkh7Lhcm4JJRIlT
-	 zcpsV5PVKKjM4rtc4Rk5GEZ0xQ2SqoULpo1EL4X6He1Qct4f2rQsjHzav0/SIQADVD
-	 ItNRec4Ntae1sU60QX8IzbWH8cLi4cEdzfCbHBcy/cu2MxdPoDUrJwj36fsK9cE0uI
-	 Yljy6s0akrIbwOrt6K7UT2tInMHJrnD18Okib65ZZlAt2/J7b7QdLlfyXhuvEb2rNd
-	 X9wS7XvL1ckgmn6CfuRAZSq72YnEozhirrNhg1nE0W452nwxSD5CKHMpLR95sDZzef
-	 vyB7BVOqzDnxA==
+	b=dybdrP3vV2FNunfsHkqzsm1PbwskAxeNJCftEsduOqOpuv4c9XNY6aTW24WcvxIrp
+	 PAcAOeQOJicksMgSfPkgaOc6jeDc8nm8uoQFiw5gTwPSQe6mppOvgC3vgUi1aISZlk
+	 HaMg08QhqnmalS4PAuNL4HDFUd9+dgGIWxlAbDF+ebwPt4uEd1Pc6keXqdqtcvpuTc
+	 8pAdJBRkO14IZ5OCibXaoOUG/342YKg+qHSgAaETPxjUCTaAD3NegBiRk7UcrRsquc
+	 6PFefGHY3oaY7RxXuTYFH6bfKjqlGDobCHDnabMbkIasTTba5KYnCkLKvw1Zqms1pB
+	 4nZGKriQVmujw==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 696D342597;
-	Wed, 25 Sep 2024 11:59:17 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id E02044266C;
+	Wed, 25 Sep 2024 12:11:57 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id F0F011BF21A
- for <intel-wired-lan@lists.osuosl.org>; Wed, 25 Sep 2024 11:59:14 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 9809A1BF2F8
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 25 Sep 2024 12:11:55 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id DF88A4258A
- for <intel-wired-lan@lists.osuosl.org>; Wed, 25 Sep 2024 11:59:14 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 934A284778
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 25 Sep 2024 12:11:55 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id kGpkJsq96rw5 for <intel-wired-lan@lists.osuosl.org>;
- Wed, 25 Sep 2024 11:59:13 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2604:1380:4641:c500::1; helo=dfw.source.kernel.org;
- envelope-from=sashal@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 7EC6B42587
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7EC6B42587
-Received: from dfw.source.kernel.org (dfw.source.kernel.org
- [IPv6:2604:1380:4641:c500::1])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 7EC6B42587
- for <intel-wired-lan@lists.osuosl.org>; Wed, 25 Sep 2024 11:59:13 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 3qFBl5lDtPCw for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 25 Sep 2024 12:11:55 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=139.178.84.217;
+ helo=dfw.source.kernel.org; envelope-from=sashal@kernel.org;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org D2C3080CB2
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org D2C3080CB2
+Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id D2C3080CB2
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 25 Sep 2024 12:11:54 +0000 (UTC)
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by dfw.source.kernel.org (Postfix) with ESMTP id DAB425C4DAE;
- Wed, 25 Sep 2024 11:59:08 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CAE9EC4CEC3;
- Wed, 25 Sep 2024 11:59:10 +0000 (UTC)
+ by dfw.source.kernel.org (Postfix) with ESMTP id E9E105C5DD7;
+ Wed, 25 Sep 2024 12:11:49 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D7E79C4CECD;
+ Wed, 25 Sep 2024 12:11:51 +0000 (UTC)
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Date: Wed, 25 Sep 2024 07:50:38 -0400
-Message-ID: <20240925115823.1303019-19-sashal@kernel.org>
+Date: Wed, 25 Sep 2024 08:07:07 -0400
+Message-ID: <20240925121137.1307574-7-sashal@kernel.org>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20240925115823.1303019-1-sashal@kernel.org>
-References: <20240925115823.1303019-1-sashal@kernel.org>
+In-Reply-To: <20240925121137.1307574-1-sashal@kernel.org>
+References: <20240925121137.1307574-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
-X-stable-base: Linux 6.10.11
+X-stable-base: Linux 6.6.52
 Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1727265552;
- bh=evpAucpxGw2NfOXO+jcEMrOdRcUXped8HsEbvQi2geE=;
+ d=kernel.org; s=k20201202; t=1727266313;
+ bh=VWM4rj+YOMFfafZndKI5LhtdnkSaRAsjT/1PHccu0M0=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=SqBOzoMY5amqP38pxEL4f0LU6u5bxAXdxmRCD+HO2EDTBSJa7sHfx+2n9XbsCjQq0
- cLrd7JrvMlHbwO0YB2hHwzarl5Njr+MY27RFPTRUfTcH3lD2ECYi3s3Ws0/LI8ct2m
- NIYD6t1VuRTA+ZgOFaBRbY8Ep4Ik575g0SzE4e4Ir7WwIcEvaU/yohOdZbWSPsFFkE
- Cov+VC7q0Yj+TW9MGPNJspKnQduHsmkek92BFhU8zMiPO4yuq/D9GXywn7tPkI+klI
- EK4C6d5NU0Wh4rARftDc5QT+JH6aAVJ6D71s898P0ukfpkCMQbgALEWdJA74s/ORl6
- J5uomDm3uw83g==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ b=F/Rrac1PNjCXbk5eg5/khtvca13w+4miZWzDyQMKW/w4OOLlxwFqsexis8naN8guW
+ a+4kCeV2PEAROBnyB2X2Pfbn03DE07nZGPg3wN9RJAKBX07E2Dec5wDGNRA6Ysc2eq
+ jbJG8FAiAQHjGIJeHsTxfXdi2iUKy03cQL8BSz0BoYk6yl+ZeU3SUu8xK+tAwiHHVj
+ liT/NqT2Ck98OguKQx9AlLDQ1vaqHHmdOJ4Mp2Rxu4+6uWqLpVrbVh/AJjh3O8Xm+K
+ OAbZnVy7pH77Ix94AHe+6+1xjSJb9dOQDvJm3WkTsvbt0AYsWYOUPZyIO9/yDu8F+I
+ SvJDdBNyXh2mQ==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=SqBOzoMY
-Subject: [Intel-wired-lan] [PATCH AUTOSEL 6.10 019/197] e1000e: avoid
- failing the system during pm_suspend
+ header.a=rsa-sha256 header.s=k20201202 header.b=F/Rrac1P
+Subject: [Intel-wired-lan] [PATCH AUTOSEL 6.6 007/139] ice: Adjust over
+ allocation of memory in ice_sched_add_root_node() and ice_sched_add_node()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -98,112 +97,68 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Sasha Levin <sashal@kernel.org>, pabeni@redhat.com,
- przemyslaw.kitszel@intel.com, Mor Bar-Gabay <morx.bar.gabay@intel.com>,
- edumazet@google.com, netdev@vger.kernel.org,
- Tony Nguyen <anthony.l.nguyen@intel.com>, kuba@kernel.org,
- Vitaly Lifshits <vitaly.lifshits@intel.com>,
- Dima Ruinskiy <dima.ruinskiy@intel.com>, davem@davemloft.net,
- intel-wired-lan@lists.osuosl.org
+Cc: Pucha Himasekhar Reddy <himasekharx.reddy.pucha@intel.com>,
+ Sasha Levin <sashal@kernel.org>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>, edumazet@google.com,
+ netdev@vger.kernel.org, Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Aleksandr Mishin <amishin@t-argos.ru>, Simon Horman <horms@kernel.org>,
+ intel-wired-lan@lists.osuosl.org, kuba@kernel.org, pabeni@redhat.com,
+ davem@davemloft.net
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Vitaly Lifshits <vitaly.lifshits@intel.com>
+From: Aleksandr Mishin <amishin@t-argos.ru>
 
-[ Upstream commit 0a6ad4d9e1690c7faa3a53f762c877e477093657 ]
+[ Upstream commit 62fdaf9e8056e9a9e6fe63aa9c816ec2122d60c6 ]
 
-Occasionally when the system goes into pm_suspend, the suspend might fail
-due to a PHY access error on the network adapter. Previously, this would
-have caused the whole system to fail to go to a low power state.
-An example of this was reported in the following Bugzilla:
-https://bugzilla.kernel.org/show_bug.cgi?id=205015
+In ice_sched_add_root_node() and ice_sched_add_node() there are calls to
+devm_kcalloc() in order to allocate memory for array of pointers to
+'ice_sched_node' structure. But incorrect types are used as sizeof()
+arguments in these calls (structures instead of pointers) which leads to
+over allocation of memory.
 
-[ 1663.694828] e1000e 0000:00:19.0 eth0: Failed to disable ULP
-[ 1664.731040] asix 2-3:1.0 eth1: link up, 100Mbps, full-duplex, lpa 0xC1E1
-[ 1665.093513] e1000e 0000:00:19.0 eth0: Hardware Error
-[ 1665.596760] e1000e 0000:00:19.0: pci_pm_resume+0x0/0x80 returned 0 after 2975399 usecs
+Adjust over allocation of memory by correcting types in devm_kcalloc()
+sizeof() arguments.
 
-and then the system never recovers from it, and all the following suspend failed due to this
-[22909.393854] PM: pci_pm_suspend(): e1000e_pm_suspend+0x0/0x760 [e1000e] returns -2
-[22909.393858] PM: dpm_run_callback(): pci_pm_suspend+0x0/0x160 returns -2
-[22909.393861] PM: Device 0000:00:1f.6 failed to suspend async: error -2
+Found by Linux Verification Center (linuxtesting.org) with SVACE.
 
-This can be avoided by changing the return values of __e1000_shutdown and
-e1000e_pm_suspend functions so that they always return 0 (success). This
-is consistent with what other drivers do.
-
-If the e1000e driver encounters a hardware error during suspend, potential
-side effects include slightly higher power draw or non-working wake on
-LAN. This is preferred to a system-level suspend failure, and a warning
-message is written to the system log, so that the user can be aware that
-the LAN controller experienced a problem during suspend.
-
-Link: https://bugzilla.kernel.org/show_bug.cgi?id=205015
-Suggested-by: Dima Ruinskiy <dima.ruinskiy@intel.com>
-Signed-off-by: Vitaly Lifshits <vitaly.lifshits@intel.com>
-Tested-by: Mor Bar-Gabay <morx.bar.gabay@intel.com>
+Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+Signed-off-by: Aleksandr Mishin <amishin@t-argos.ru>
+Reviewed-by: Simon Horman <horms@kernel.org>
+Tested-by: Pucha Himasekhar Reddy <himasekharx.reddy.pucha@intel.com> (A Contingent worker at Intel)
 Signed-off-by: Tony Nguyen <anthony.l.nguyen@intel.com>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- drivers/net/ethernet/intel/e1000e/netdev.c | 19 +++++++++++--------
- 1 file changed, 11 insertions(+), 8 deletions(-)
+ drivers/net/ethernet/intel/ice/ice_sched.c | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
-index 3cd161c6672be..e23eedc791d66 100644
---- a/drivers/net/ethernet/intel/e1000e/netdev.c
-+++ b/drivers/net/ethernet/intel/e1000e/netdev.c
-@@ -6671,8 +6671,10 @@ static int __e1000_shutdown(struct pci_dev *pdev, bool runtime)
- 		if (adapter->flags2 & FLAG2_HAS_PHY_WAKEUP) {
- 			/* enable wakeup by the PHY */
- 			retval = e1000_init_phy_wakeup(adapter, wufc);
--			if (retval)
--				return retval;
-+			if (retval) {
-+				e_err("Failed to enable wakeup\n");
-+				goto skip_phy_configurations;
-+			}
- 		} else {
- 			/* enable wakeup by the MAC */
- 			ew32(WUFC, wufc);
-@@ -6693,8 +6695,10 @@ static int __e1000_shutdown(struct pci_dev *pdev, bool runtime)
- 			 * or broadcast.
- 			 */
- 			retval = e1000_enable_ulp_lpt_lp(hw, !runtime);
--			if (retval)
--				return retval;
-+			if (retval) {
-+				e_err("Failed to enable ULP\n");
-+				goto skip_phy_configurations;
-+			}
- 		}
- 	}
+diff --git a/drivers/net/ethernet/intel/ice/ice_sched.c b/drivers/net/ethernet/intel/ice/ice_sched.c
+index c0533d7b66b99..908bcd0738033 100644
+--- a/drivers/net/ethernet/intel/ice/ice_sched.c
++++ b/drivers/net/ethernet/intel/ice/ice_sched.c
+@@ -28,9 +28,8 @@ ice_sched_add_root_node(struct ice_port_info *pi,
+ 	if (!root)
+ 		return -ENOMEM;
  
-@@ -6726,6 +6730,7 @@ static int __e1000_shutdown(struct pci_dev *pdev, bool runtime)
- 		hw->phy.ops.release(hw);
- 	}
- 
-+skip_phy_configurations:
- 	/* Release control of h/w to f/w.  If f/w is AMT enabled, this
- 	 * would have already happened in close and is redundant.
- 	 */
-@@ -6968,15 +6973,13 @@ static int e1000e_pm_suspend(struct device *dev)
- 	e1000e_pm_freeze(dev);
- 
- 	rc = __e1000_shutdown(pdev, false);
--	if (rc) {
--		e1000e_pm_thaw(dev);
--	} else {
-+	if (!rc) {
- 		/* Introduce S0ix implementation */
- 		if (adapter->flags2 & FLAG2_ENABLE_S0IX_FLOWS)
- 			e1000e_s0ix_entry_flow(adapter);
- 	}
- 
--	return rc;
-+	return 0;
- }
- 
- static int e1000e_pm_resume(struct device *dev)
+-	/* coverity[suspicious_sizeof] */
+ 	root->children = devm_kcalloc(ice_hw_to_dev(hw), hw->max_children[0],
+-				      sizeof(*root), GFP_KERNEL);
++				      sizeof(*root->children), GFP_KERNEL);
+ 	if (!root->children) {
+ 		devm_kfree(ice_hw_to_dev(hw), root);
+ 		return -ENOMEM;
+@@ -186,10 +185,9 @@ ice_sched_add_node(struct ice_port_info *pi, u8 layer,
+ 	if (!node)
+ 		return -ENOMEM;
+ 	if (hw->max_children[layer]) {
+-		/* coverity[suspicious_sizeof] */
+ 		node->children = devm_kcalloc(ice_hw_to_dev(hw),
+ 					      hw->max_children[layer],
+-					      sizeof(*node), GFP_KERNEL);
++					      sizeof(*node->children), GFP_KERNEL);
+ 		if (!node->children) {
+ 			devm_kfree(ice_hw_to_dev(hw), node);
+ 			return -ENOMEM;
 -- 
 2.43.0
 
