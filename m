@@ -1,94 +1,97 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id E83B49887E9
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 27 Sep 2024 17:07:09 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5DB0C988803
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 27 Sep 2024 17:13:17 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 6B30361527;
-	Fri, 27 Sep 2024 15:07:08 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 98AB0614FE;
+	Fri, 27 Sep 2024 15:13:09 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id YyrSf2mvnz78; Fri, 27 Sep 2024 15:07:06 +0000 (UTC)
+ id BCWGASWeRH59; Fri, 27 Sep 2024 15:13:08 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org C17736150E
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org CAD06614F1
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1727449623;
-	bh=qpxyMse3hZYn59ZWfZD3k68H+27fM6U7WmyDdKcpNRA=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=9hMKv6OhK27+aP5YXbDJHZnlXqjE8avhDvVkAB61r5qiW2eATUNKgAq11O2bMoY22
-	 HlO+m0kqNafHyDhnmEegT+SapC/nC5VMXRVYWgxQ2Rv1qvFV4IwmKToYRk2d222rjK
-	 whoifTI/on3UU28YPcDtt6R3dyTq9pP7pEBSGdKrOTkgdEGzGJabyoY0jgpdImEjs4
-	 63qWItlpLy82Z96w1NPcSzWgehBcMg4nWRqtRV/9xFg5R0Mn24w2+fAakRyoqytjnf
-	 g3VJofXNwaWF8opd4e/3hALrBhmXEf4oYXxO4N8IFTfAnEyj+3Bw6MMLl2YHEERnYv
-	 BttT1w8nk4Rhg==
+	s=default; t=1727449988;
+	bh=6C5HPCyYyRgCV5jSiEU3UAJEjQ95FtNVVLB0mhz2LgU=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=o7fFcCnEF8VWflw9wdNOIcEOvpc3RSjp2Kyn81lZlw9nv8HC3IpaYsNIojYwcAh3O
+	 Ut3Q24Aan5q7Qihlmb/pfdz9XkQCFplUiWqMSRqlw0uDaYPDg6HPWkC/9u5nxN1ACo
+	 hw1CZmkrpXFKMW2l1bvtMB/6QXCbMMtUQmNC+uVt+BHP+BAp5/eTP0PEB8uWYxrUau
+	 l0F2m8OTu5UWd/+Df3G17tssZsrzBNfyC8WVkCQHIhtTLdCQAZTABkXN/k9m4Ws5CQ
+	 2MhdLq68Ac3tcveewwkW93NOzN7jqWIhcYa/7sGTZSEBJY7VzCvUWLigdAfM034tt/
+	 HTbvr7xT00Plg==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id C17736150E;
-	Fri, 27 Sep 2024 15:07:03 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id CAD06614F1;
+	Fri, 27 Sep 2024 15:13:08 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id CC8391BF853
- for <intel-wired-lan@lists.osuosl.org>; Fri, 27 Sep 2024 15:07:01 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 5B1A61BF853
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 27 Sep 2024 15:13:05 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id BA15D61505
- for <intel-wired-lan@lists.osuosl.org>; Fri, 27 Sep 2024 15:07:01 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id DA02C84367
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 27 Sep 2024 15:13:04 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 7S_P9XV0Eg_X for <intel-wired-lan@lists.osuosl.org>;
- Fri, 27 Sep 2024 15:07:00 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2604:1380:45d1:ec00::3; helo=nyc.source.kernel.org;
- envelope-from=lorenzo@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 911BB614F2
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 911BB614F2
-Received: from nyc.source.kernel.org (nyc.source.kernel.org
- [IPv6:2604:1380:45d1:ec00::3])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 911BB614F2
- for <intel-wired-lan@lists.osuosl.org>; Fri, 27 Sep 2024 15:07:00 +0000 (UTC)
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by nyc.source.kernel.org (Postfix) with ESMTP id EEDB0A45823;
- Fri, 27 Sep 2024 15:06:50 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D1010C4CEC4;
- Fri, 27 Sep 2024 15:06:57 +0000 (UTC)
-Date: Fri, 27 Sep 2024 17:06:53 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Arthur Fabre <afabre@cloudflare.com>
-Message-ID: <ZvbKDT-2xqx2unrx@lore-rh-laptop>
-References: <cover.1726935917.git.lorenzo@kernel.org>
- <1f53cd74-6c1e-4a1c-838b-4acc8c5e22c1@intel.com>
- <09657be6-b5e2-4b5a-96b6-d34174aadd0a@kernel.org>
- <Zu_gvkXe4RYjJXtq@lore-desk> <87ldzkndqk.fsf@toke.dk>
- <CAOn4ftshf3pyAst27C2haaSj4eR2n34_pcwWBc5o3zHBkwRb3g@mail.gmail.com>
- <87wmiysi37.fsf@toke.dk> <D4GBY7CHJNJ6.3O18I5W1FTPKR@bobby>
- <87ldzds8bp.fsf@toke.dk> <D4H5CAN4O95E.3KF8LAH75FYD4@bobby>
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id uLKZ0EaZQhPM for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 27 Sep 2024 15:13:03 +0000 (UTC)
+Received-SPF: None (mailfrom) identity=mailfrom; client-ip=198.175.65.11;
+ helo=mgamail.intel.com; envelope-from=marcin.szycik@linux.intel.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org A007884498
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org A007884498
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.11])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id A007884498
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 27 Sep 2024 15:13:02 +0000 (UTC)
+X-CSE-ConnectionGUID: mlAireeDTwuVLWHqTPNtBQ==
+X-CSE-MsgGUID: agv5+TRiS/SI65+F4pPNXA==
+X-IronPort-AV: E=McAfee;i="6700,10204,11208"; a="37162505"
+X-IronPort-AV: E=Sophos;i="6.11,159,1725346800"; d="scan'208";a="37162505"
+Received: from fmviesa001.fm.intel.com ([10.60.135.141])
+ by orvoesa103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 27 Sep 2024 08:13:02 -0700
+X-CSE-ConnectionGUID: UJuX2bMFRmu7aw/v96TjqQ==
+X-CSE-MsgGUID: TZy8yzYZTcG2XUcihCsxEA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.11,159,1725346800"; d="scan'208";a="103375534"
+Received: from irvmail002.ir.intel.com ([10.43.11.120])
+ by fmviesa001.fm.intel.com with ESMTP; 27 Sep 2024 08:12:59 -0700
+Received: from mystra-4.igk.intel.com (mystra-4.igk.intel.com [10.123.220.40])
+ by irvmail002.ir.intel.com (Postfix) with ESMTP id BF9A728763;
+ Fri, 27 Sep 2024 16:12:58 +0100 (IST)
+From: Marcin Szycik <marcin.szycik@linux.intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Fri, 27 Sep 2024 17:15:40 +0200
+Message-ID: <20240927151541.15704-1-marcin.szycik@linux.intel.com>
+X-Mailer: git-send-email 2.45.0
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
- protocol="application/pgp-signature"; boundary="48nyGz3vm9X8yMny"
-Content-Disposition: inline
-In-Reply-To: <D4H5CAN4O95E.3KF8LAH75FYD4@bobby>
+Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1727449618;
- bh=MyFqb+wY84HD5T6WosrUNw3USR4E0d33ftvlJocCEQE=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=TfVSQgHfGmeSMNrmQoolcxikQ0ogy6NTCoTpYNpXh6GSZPVUWyWRmlWVlr8Kxyn6O
- dm0I+ivnMdahpDJGpOwJL5MxtF0uSWacZEDrH2LZKQLHftKIBUXtH0KJovZGNjlRCv
- zIAWsTqQA5/5zygFRsnOwgbAt1WcCBrCuLfxiDjEfDDRnGxoSxyyajE/ar5ejYYoRe
- C2xBIxTZbLoeAAkSd9KXVEW8P4t/AXHrnHRwL2wWINIwg+zU6s8dN7kR4Ow+gMrDER
- P8056GaHrnLkfbH6k5PjlZPcIdSx/onmhJVTCI/LWR/S9iWLwY1U8C9KLTBQ0o9NpL
- KS/rMBiXXKe7g==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=TfVSQgHf
-Subject: Re: [Intel-wired-lan] [RFC bpf-next 0/4] Add XDP rx hw hints
- support performing XDP_REDIRECT
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1727449983; x=1758985983;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=D1c1dAzmJ/Sr9BMGhBJt9ou745FIkqDtaFT55zGwwLQ=;
+ b=T+G3kUjqmuZWDC5ziumM24/kT1jDv3p7iTt4paLsTk64yWWcj6/qKY+9
+ pOJuj76StRTXRxxw1AJCvTo88bx9SWfu9kGzU8/0aNNQHyMc5nyBVvA0h
+ jtZvlVYU4Xcf1GTZbhLmrxSMeXAicQFwkQHq+X4ariXAodh1IVpW01ZQV
+ qwnR/SG+qT76b3r4ZBNPeBxI/4UmJ/HgNZDqX9IiZok8SvW0jlJlUNJhZ
+ RcBDmP0RXDrwXNtRSxHxEP4jhTVK0jLNOqJ1818skWPqOa2n5LztduVp3
+ +/fNz59GcT2+X+m+SuqwQRuAJ0yQdiujVEnJP9XXKG9OdXZI5JnAvu7ot
+ g==;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dmarc=none (p=none dis=none)
+ header.from=linux.intel.com
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=T+G3kUjq
+Subject: [Intel-wired-lan] [PATCH iwl-net] ice: Fix increasing MSI-X on VF
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -101,247 +104,129 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: mst@redhat.com, jasowang@redhat.com, ast@kernel.org, edumazet@google.com,
- anthony.l.nguyen@intel.com, Yan Zhai <yan@cloudflare.com>,
- Jakub Sitnicki <jakub@cloudflare.com>, daniel@iogearbox.net,
- kernel-team <kernel-team@cloudflare.com>, przemyslaw.kitszel@intel.com,
- john.fastabend@gmail.com, sdf@fomichev.me, intel-wired-lan@lists.osuosl.org,
- kuba@kernel.org, pabeni@redhat.com, Jesper Dangaard Brouer <hawk@kernel.org>,
- alexandre.torgue@foss.st.com, netdev@vger.kernel.org,
- Toke =?iso-8859-1?Q?H=F8iland-J=F8rgensen?= <toke@redhat.com>,
- tariqt@nvidia.com, Alexander Lobakin <aleksander.lobakin@intel.com>,
- mcoquelin.stm32@gmail.com, bpf@vger.kernel.org, saeedm@nvidia.com,
- davem@davemloft.net
+Cc: Jacob Keller <jacob.e.keller@intel.com>, netdev@vger.kernel.org,
+ Marcin Szycik <marcin.szycik@linux.intel.com>,
+ Michal Swiatkowski <michal.swiatkowski@linux.intel.com>,
+ przemyslaw.kitszel@intel.com
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
+Increasing MSI-X value on a VF leads to invalid memory operations. This
+is caused by not reallocating some arrays.
 
---48nyGz3vm9X8yMny
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Reproducer:
+  modprobe ice
+  echo 0 > /sys/bus/pci/devices/$PF_PCI/sriov_drivers_autoprobe
+  echo 1 > /sys/bus/pci/devices/$PF_PCI/sriov_numvfs
+  echo 17 > /sys/bus/pci/devices/$VF0_PCI/sriov_vf_msix_count
 
-On Sep 27, Arthur Fabre wrote:
-> On Fri Sep 27, 2024 at 12:24 PM CEST, Toke H=F8iland-J=F8rgensen wrote:
-> > "Arthur Fabre" <afabre@cloudflare.com> writes:
-> >
-> > >> >> The nice thing about an API like this, though, is that it's exten=
-sible,
-> > >> >> and the kernel itself can be just another consumer of it for the
-> > >> >> metadata fields Lorenzo is adding in this series. I.e., we could =
-just
-> > >> >> pre-define some IDs for metadata vlan, timestamp etc, and use the=
- same
-> > >> >> functions as above from within the kernel to set and get those va=
-lues;
-> > >> >> using the registry, there could even be an option to turn those o=
-ff if
-> > >> >> an application wants more space for its own usage. Or, alternativ=
-ely, we
-> > >> >> could keep the kernel-internal IDs hardcoded and always allocated=
-, and
-> > >> >> just use the getter/setter functions as the BPF API for accessing=
- them.
-> > >> >
-> > >> > That's exactly what I'm thinking of too, a simple API like:
-> > >> >
-> > >> > get(u8 key, u8 len, void *val);
-> > >> > set(u8 key, u8 len, void *val);
-> > >> >
-> > >> > With "well-known" keys like METADATA_ID_HW_HASH for hardware metad=
-ata.
-> > >> >
-> > >> > If a NIC doesn't support a certain well-known metadata, the key
-> > >> > wouldn't be set, and get() would return ENOENT.
-> > >> >
-> > >> > I think this also lets us avoid having to "register" keys or bits =
-of
-> > >> > metadata with the kernel.
-> > >> > We'd reserve some number of keys for hardware metadata.
-> > >>
-> > >> Right, but how do you allocate space/offset for each key without an
-> > >> explicit allocation step? You'd basically have to encode the list of=
- IDs
-> > >> in the metadata area itself, which implies a TLV format that you hav=
-e to
-> > >> walk on every access? The registry idea in my example above was
-> > >> basically to avoid that...
-> > >
-> > > I've been playing around with having a small fixed header at the front
-> > > of the metadata itself, that lets you access values without walking t=
-hem
-> > > all.
-> > >
-> > > Still WIP, and maybe this is too restrictive, but it lets you encode =
-64
-> > > 2, 4, or 8 byte KVs with a single 16 byte header:
-> >
-> > Ohh, that's clever, I like it! :)
-> >
-> > It's also extensible in the sense that the internal representation can
-> > change without impacting the API, so if we end up needing more bits we
-> > can always add those.
-> >
-> > Maybe it would be a good idea to make the 'key' parameter a larger
-> > integer type (function parameters are always 64-bit anyway, so might as
-> > well go all the way up to u64)? That way we can use higher values for
-> > the kernel-reserved types instead of reserving part of the already-small
-> > key space for applications (assuming the kernel-internal data is stored
-> > somewhere else, like in a static struct as in Lorenzo's patch)?
->=20
-> Good idea! That makes it more extensible too if we ever support more
-> keys or bigger lengths.
->=20
-> I'm not sure where the kernel-reserved types should live. Putting them
-> in here uses up some the of KV IDs, but it uses less head room space than=
-=20
-> always reserving a static struct for them.
-> Maybe it doesn't matter much, as long as we use the same API to access
-> them, we could internally switch between one and the other.
->=20
-> >
-> > [...]
-> >
-> > >> > The remaining keys would be up to users. They'd have to allocate k=
-eys
-> > >> > to services, and configure services to use those keys.
-> > >> > This is similar to the way listening on a certain port works: only=
- one
-> > >> > service can use port 80 or 443, and that can typically beconfigure=
-d in
-> > >> > a service's config file.
-> > >>
-> > >> Right, well, port numbers *do* actually have an out of band service
-> > >> registry (IANA), which I thought was what we wanted to avoid? ;)
-> > >
-> > > Depends how you think about it ;)
-> > >
-> > > I think we should avoid a global registry. But having a registry per
-> > > deployment / server doesn't seem awful. Services that want to use a
-> > > field would have a config file setting to set which index it correspo=
-nds
-> > > to.
-> > > Admins would just have to pick a free one on their system, and set it=
- in
-> > > the config file of the service.
-> > >
-> > > This is similar to what we do for non-IANA registered ports internall=
-y.
-> > > For example each service needs a port on an internal interface to exp=
-ose
-> > > metrics, and we just track which ports are taken in our config
-> > > management.
-> >
-> > Right, this would work, but it assumes that applications are
-> > well-behaved and do this correctly. Which they probably do in a
-> > centrally-managed system like yours, but for random applications shipped
-> > by distros, I'm not sure if it's going to work.
-> >
-> > In fact, it's more or less the situation we have with skb->mark today,
-> > isn't it? I.e., applications can co-exist as long as they don't use the
-> > same bits, so they have to coordinate on which bits to use. Sure, with
-> > this scheme there will be more total bits to use, which can lessen the
-> > pressure somewhat, but the basic problem remains. In other words, I
-> > worry that in practice we will end up with another github repository
-> > serving as a registry for metadata keys...
->=20
-> That's true. If applications hardcode keys, we'll be back to having
-> conflicts. If someone creates a registry on github I'll be very sad.
->=20
-> (Maybe we can make the verifier enforce that the key passed to get() and
-> set() isn't a constant? - only joking)
->=20
-> Applications don't tend to do this for ports though, I think most can be
-> configured to listen on any port. Is that just because it's been
-> instilled as "good practice" over time? Could we try to do the same with
-> some very stern documentation and examples?
->=20
-> Thinking about it more, my only relectance for a registration API is how
-> to communicate the ID back to other consumers (our discussion below).
->=20
-> >
-> > > Dynamically registering fields means you have to share the returned ID
-> > > with whoever is interested, which sounds tricky.
-> > > If an XDP program sets a field like packet_id, every tracing
-> > > program that looks at it, and userspace service, would need to know w=
-hat
-> > > the ID of that field is.
-> > > Is there a way to easily share that ID with all of them?
-> >
-> > Right, so I'll admit this was one of the handwavy bits of my original
-> > proposal, but I don't think it's unsolvable. You could do something like
-> > (once, on application initialisation):
-> >
-> > __u64 my_key =3D bpf_register_metadata_field(my_size); /* maybe add a n=
-ame for introspection? */
-> > bpf_map_update(&shared_application_config, &my_key_index, &my_key);
-> >
-> > and then just get the key out of that map from all programs that want to
-> > use it?
->=20
-> Passing it out of band works (whether it's via a pinned map like you
-> described, or through other means like a unix socket or some other
-> API), it's just more complicated.
->=20
-> Every consumer also needs to know about that API. That won't work with
-> standard tools. For example if we set a PACKET_ID KV, maybe we could
-> give it to pwru so it could track packets using it?
-> Without registering keys, we could pass it as a cli flag. With
-> registration, we'd have to have some helper to get the KV ID.
->=20
-> It also introduces ordering dependencies between the services on
-> startup, eg packet tracing hooks could only be attached once our XDP
-> service has registered a PACKET_ID KV, and they could query it's API.
->=20
-> >
-> > We could combine such a registration API with your header format, so
-> > that the registration just becomes a way of allocating one of the keys
-> > from 0-63 (and the registry just becomes a global copy of the header).
-> > This would basically amount to moving the "service config file" into the
-> > kernel, since that seems to be the only common denominator we can rely
-> > on between BPF applications (as all attempts to write a common daemon
-> > for BPF management have shown).
->=20
-> That sounds reasonable. And I guess we'd have set() check the global
-> registry to enforce that the key has been registered beforehand?
->=20
-> >
-> > -Toke
->=20
-> Thanks for all the feedback!
+Default MSI-X is 16, so 17 and above triggers this issue.
 
-I like this 'fast' KV approach but I guess we should really evaluate its
-impact on performances (especially for xdp) since, based on the kfunc calls
-order in the ebpf program, we can have one or multiple memmove/memcpy for
-each packet, right?
+KASAN reports:
 
-Moreover, I still think the metadata area in the xdp_frame/xdp_buff is not
-so suitable for nic hw metadata since:
-- it grows backward=20
-- it is probably in a different cacheline with respect to xdp_frame
-- nic hw metadata will not start at fixed and immutable address, but it dep=
-ends
-  on the running ebpf program
+  BUG: KASAN: slab-out-of-bounds in ice_vsi_alloc_ring_stats+0x38d/0x4b0 [ice]
+  Read of size 8 at addr ffff8888b937d180 by task bash/28433
+  (...)
 
-What about having something like:
-- fixed hw nic metadata: just after xdp_frame struct (or if you want at the=
- end
-  of the metadata area :)). Here he can reuse the same KV approach if it is=
- fast
-- user defined metadata: in the metadata area of the xdp_frame/xdp_buff
+  Call Trace:
+   (...)
+   ? ice_vsi_alloc_ring_stats+0x38d/0x4b0 [ice]
+   kasan_report+0xed/0x120
+   ? ice_vsi_alloc_ring_stats+0x38d/0x4b0 [ice]
+   ice_vsi_alloc_ring_stats+0x38d/0x4b0 [ice]
+   ice_vsi_cfg_def+0x3360/0x4770 [ice]
+   ? mutex_unlock+0x83/0xd0
+   ? __pfx_ice_vsi_cfg_def+0x10/0x10 [ice]
+   ? __pfx_ice_remove_vsi_lkup_fltr+0x10/0x10 [ice]
+   ice_vsi_cfg+0x7f/0x3b0 [ice]
+   ice_vf_reconfig_vsi+0x114/0x210 [ice]
+   ice_sriov_set_msix_vec_count+0x3d0/0x960 [ice]
+   sriov_vf_msix_count_store+0x21c/0x300
+   (...)
 
-Regards,
-Lorenzo
+  Allocated by task 28201:
+   (...)
+   ice_vsi_cfg_def+0x1c8e/0x4770 [ice]
+   ice_vsi_cfg+0x7f/0x3b0 [ice]
+   ice_vsi_setup+0x179/0xa30 [ice]
+   ice_sriov_configure+0xcaa/0x1520 [ice]
+   sriov_numvfs_store+0x212/0x390
+   (...)
 
---48nyGz3vm9X8yMny
-Content-Type: application/pgp-signature; name="signature.asc"
+To fix it, use ice_vsi_rebuild() instead of ice_vf_reconfig_vsi(). This
+causes the required arrays to be reallocated taking the new queue count
+into account (ice_vsi_realloc_stat_arrays()). Set req_txq and req_rxq
+before ice_vsi_rebuild(), so that realloc uses the newly set queue
+count.
 
------BEGIN PGP SIGNATURE-----
+Additionally, ice_vsi_rebuild() does not remove VSI filters
+(ice_fltr_remove_all()), so ice_vf_init_host_cfg() is no longer
+necessary.
 
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCZvbKCwAKCRA6cBh0uS2t
-rF5lAQDTdLyjQu9LBlYXr/x+szI6oCwR7y7mQizpEprqoM5cZAEAnFSLkOtb3uYb
-tK14RGKLKIvhpK4/Q4SfAnUM/napRAM=
-=3nAl
------END PGP SIGNATURE-----
+Reported-by: Jacob Keller <jacob.e.keller@intel.com>
+Fixes: 2a2cb4c6c181 ("ice: replace ice_vf_recreate_vsi() with ice_vf_reconfig_vsi()")
+Reviewed-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+Signed-off-by: Marcin Szycik <marcin.szycik@linux.intel.com>
+---
+ drivers/net/ethernet/intel/ice/ice_sriov.c          | 11 ++++++++---
+ drivers/net/ethernet/intel/ice/ice_vf_lib.c         |  2 +-
+ drivers/net/ethernet/intel/ice/ice_vf_lib_private.h |  1 -
+ 3 files changed, 9 insertions(+), 5 deletions(-)
 
---48nyGz3vm9X8yMny--
+diff --git a/drivers/net/ethernet/intel/ice/ice_sriov.c b/drivers/net/ethernet/intel/ice/ice_sriov.c
+index c2d6b2a144e9..91cb393f616f 100644
+--- a/drivers/net/ethernet/intel/ice/ice_sriov.c
++++ b/drivers/net/ethernet/intel/ice/ice_sriov.c
+@@ -1121,7 +1121,10 @@ int ice_sriov_set_msix_vec_count(struct pci_dev *vf_dev, int msix_vec_count)
+ 	if (vf->first_vector_idx < 0)
+ 		goto unroll;
+ 
+-	if (ice_vf_reconfig_vsi(vf) || ice_vf_init_host_cfg(vf, vsi)) {
++	vsi->req_txq = queues;
++	vsi->req_rxq = queues;
++
++	if (ice_vsi_rebuild(vsi, ICE_VSI_FLAG_NO_INIT)) {
+ 		/* Try to rebuild with previous values */
+ 		needs_rebuild = true;
+ 		goto unroll;
+@@ -1150,8 +1153,10 @@ int ice_sriov_set_msix_vec_count(struct pci_dev *vf_dev, int msix_vec_count)
+ 	}
+ 
+ 	if (needs_rebuild) {
+-		ice_vf_reconfig_vsi(vf);
+-		ice_vf_init_host_cfg(vf, vsi);
++		vsi->req_txq = prev_queues;
++		vsi->req_rxq = prev_queues;
++
++		ice_vsi_rebuild(vsi, ICE_VSI_FLAG_NO_INIT);
+ 	}
+ 
+ 	ice_ena_vf_mappings(vf);
+diff --git a/drivers/net/ethernet/intel/ice/ice_vf_lib.c b/drivers/net/ethernet/intel/ice/ice_vf_lib.c
+index 749a08ccf267..8c434689e3f7 100644
+--- a/drivers/net/ethernet/intel/ice/ice_vf_lib.c
++++ b/drivers/net/ethernet/intel/ice/ice_vf_lib.c
+@@ -256,7 +256,7 @@ static void ice_vf_pre_vsi_rebuild(struct ice_vf *vf)
+  *
+  * It brings the VSI down and then reconfigures it with the hardware.
+  */
+-int ice_vf_reconfig_vsi(struct ice_vf *vf)
++static int ice_vf_reconfig_vsi(struct ice_vf *vf)
+ {
+ 	struct ice_vsi *vsi = ice_get_vf_vsi(vf);
+ 	struct ice_pf *pf = vf->pf;
+diff --git a/drivers/net/ethernet/intel/ice/ice_vf_lib_private.h b/drivers/net/ethernet/intel/ice/ice_vf_lib_private.h
+index 91ba7fe0eaee..0c7e77c0a09f 100644
+--- a/drivers/net/ethernet/intel/ice/ice_vf_lib_private.h
++++ b/drivers/net/ethernet/intel/ice/ice_vf_lib_private.h
+@@ -23,7 +23,6 @@
+ #warning "Only include ice_vf_lib_private.h in CONFIG_PCI_IOV virtualization files"
+ #endif
+ 
+-int ice_vf_reconfig_vsi(struct ice_vf *vf);
+ void ice_initialize_vf_entry(struct ice_vf *vf);
+ void ice_dis_vf_qs(struct ice_vf *vf);
+ int ice_check_vf_init(struct ice_vf *vf);
+-- 
+2.45.0
+
