@@ -1,89 +1,98 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id BE33D988357
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 27 Sep 2024 13:29:39 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 497CE614E5;
-	Fri, 27 Sep 2024 11:29:34 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id XjZJcrFNwKQ2; Fri, 27 Sep 2024 11:29:33 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 19742614E9
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1727436573;
-	bh=f/WFEz0A5bvXUvo45jjUU1d1+FxqRULkPKv8aYb2Y+c=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=hRnksQPpgx2ZjZboM5rryO+wXNxeQcOhLXJ5YviTe4YtGBKhVl6Bo3JEkcX7scpi+
-	 cjST8s3luAuWfjspaJo4V/5gqmZ90M1AjM8tO5ETCh+BuLSsHkTpGCFSWA0MVkvRHB
-	 8KsmFHDd7Um2/O0/BDPZegU4lwmclZ6dZIIK6L59KLBg+r7iUeovcPYtEGq6rNA+np
-	 8WHY8LaRiBSfuB4zApMRVat7/hO/Vf1lacqF3t5n71Z+cxLKwHlUoILO8AdGlKZ5Bs
-	 i1Ei8TzT9tfMcbaJpgNra50DxDkAZU7K06XPuuaci2DyxIY0dwoCyi0sCw36iYBxxN
-	 SeZ1v22dItHAg==
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 19742614E9;
-	Fri, 27 Sep 2024 11:29:33 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 1128A1BF3ED
- for <intel-wired-lan@lists.osuosl.org>; Fri, 27 Sep 2024 11:29:31 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 32B73988523
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 27 Sep 2024 14:41:15 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id F1D8942526
- for <intel-wired-lan@lists.osuosl.org>; Fri, 27 Sep 2024 11:29:30 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 60BD1424E2;
+	Fri, 27 Sep 2024 12:41:13 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id uAhbkjCGuVwL for <intel-wired-lan@lists.osuosl.org>;
- Fri, 27 Sep 2024 11:29:29 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=45.249.212.191;
- helo=szxga05-in.huawei.com; envelope-from=linyunsheng@huawei.com;
+ id 1QYYojDPrhfF; Fri, 27 Sep 2024 12:41:12 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5861641DD6
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1727440872;
+	bh=pnarfaYo2MIrZtKCD2fwqu+EYfmKXTYnu2ILTZHh/h4=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=mDZm1is5Cx8FauiTJPqQpKxXizNORgGsS0FQ9Mdj8hBZZuN9JoKsUMJRVLKkaXeq0
+	 08srjAPp8zZzF9qp/4YyDIJ9RzZ3S7Ce2I1Cl2ZSjon8Whg2xV+v2qOcrDxAdOF1yU
+	 gTGBlxi4PPf5Pe0HNnzMrhEY4Zr6LVfCV3W+PcIsKUCBkUxggi4Zbsof6hRqYPcTRv
+	 UX+eFLn5U2cYVpF8/V5BcFgMLTWcbL5tUmg6hGPW9q8AKMfzQnICxxvWterJcuc9YV
+	 cOzxrTeSV6/Y1RhQ3R2bOboMoHpmIh3IAW8PVBu5++eU/Xl4urxqdU41rrTJU8Gu8P
+	 K1lCBGQ/SA1Sg==
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp4.osuosl.org (Postfix) with ESMTP id 5861641DD6;
+	Fri, 27 Sep 2024 12:41:12 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id E9C541BF303
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 27 Sep 2024 12:41:10 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp3.osuosl.org (Postfix) with ESMTP id D83B0614D8
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 27 Sep 2024 12:41:10 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id TIqAQyTEEYuf for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 27 Sep 2024 12:41:08 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.20;
+ helo=mgamail.intel.com; envelope-from=wojciech.drewek@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org BEAAB4251F
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org BEAAB4251F
-Received: from szxga05-in.huawei.com (szxga05-in.huawei.com [45.249.212.191])
- by smtp4.osuosl.org (Postfix) with ESMTPS id BEAAB4251F
- for <intel-wired-lan@lists.osuosl.org>; Fri, 27 Sep 2024 11:29:28 +0000 (UTC)
-Received: from mail.maildlp.com (unknown [172.19.88.214])
- by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4XFSrx2nMcz2QTtc;
- Fri, 27 Sep 2024 19:28:33 +0800 (CST)
-Received: from dggpemf200006.china.huawei.com (unknown [7.185.36.61])
- by mail.maildlp.com (Postfix) with ESMTPS id 2ACA31A016C;
- Fri, 27 Sep 2024 19:29:23 +0800 (CST)
-Received: from [10.67.120.129] (10.67.120.129) by
- dggpemf200006.china.huawei.com (7.185.36.61) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1544.11; Fri, 27 Sep 2024 19:29:22 +0800
-Message-ID: <934d601f-be43-4e04-b126-dc86890a4bfa@huawei.com>
-Date: Fri, 27 Sep 2024 19:29:22 +0800
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 8ADCC605C1
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 8ADCC605C1
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.20])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 8ADCC605C1
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 27 Sep 2024 12:41:08 +0000 (UTC)
+X-CSE-ConnectionGUID: 95nvioRBT6iayD6mHUPS2Q==
+X-CSE-MsgGUID: aD00EJcBTFiyvvClbh45pA==
+X-IronPort-AV: E=McAfee;i="6700,10204,11207"; a="26385762"
+X-IronPort-AV: E=Sophos;i="6.11,158,1725346800"; d="scan'208";a="26385762"
+Received: from fmviesa005.fm.intel.com ([10.60.135.145])
+ by orvoesa112.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 27 Sep 2024 05:40:45 -0700
+X-CSE-ConnectionGUID: 8eMsemkkSNaHZM7mKKn3hQ==
+X-CSE-MsgGUID: yidCo77+QXqMI9eb6wcyJQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.11,158,1725346800"; d="scan'208";a="76902945"
+Received: from irvmail002.ir.intel.com ([10.43.11.120])
+ by fmviesa005.fm.intel.com with ESMTP; 27 Sep 2024 05:40:43 -0700
+Received: from rozewie.igk.intel.com (rozewie.igk.intel.com [10.211.8.69])
+ by irvmail002.ir.intel.com (Postfix) with ESMTP id 3E9EF28195;
+ Fri, 27 Sep 2024 13:40:42 +0100 (IST)
+From: Wojciech Drewek <wojciech.drewek@intel.com>
+To: netdev@vger.kernel.org
+Date: Fri, 27 Sep 2024 14:38:01 +0200
+Message-Id: <20240927123801.14853-1-wojciech.drewek@intel.com>
+X-Mailer: git-send-email 2.40.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: Ilias Apalodimas <ilias.apalodimas@linaro.org>
-References: <20240925075707.3970187-1-linyunsheng@huawei.com>
- <20240925075707.3970187-3-linyunsheng@huawei.com>
- <CAHS8izOxugzWJDTc-4CWqaKABTj=J4OHs=Lcb=SE9r8gX0J+yg@mail.gmail.com>
- <842c8cc6-f716-437a-bc98-70bc26d6fd38@huawei.com>
- <CAC_iWjLgNOtsbhqrhvvEz2C3S668qB8KatL_W+tPHMSkDrNS=w@mail.gmail.com>
- <0ef315df-e8e9-41e8-9ba8-dcb69492c616@huawei.com>
- <CAC_iWjKeajwn3otjdEekE6VDLHGEvqmnQRwpN5R3yHj8UpEiDw@mail.gmail.com>
-Content-Language: en-US
-From: Yunsheng Lin <linyunsheng@huawei.com>
-In-Reply-To: <CAC_iWjKeajwn3otjdEekE6VDLHGEvqmnQRwpN5R3yHj8UpEiDw@mail.gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.67.120.129]
-X-ClientProxiedBy: dggems706-chm.china.huawei.com (10.3.19.183) To
- dggpemf200006.china.huawei.com (7.185.36.61)
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=huawei.com
-Subject: Re: [Intel-wired-lan] [PATCH net v2 2/2] page_pool: fix IOMMU crash
- when driver has already unbound
+Content-Transfer-Encoding: 8bit
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1727440869; x=1758976869;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=r1Lr7tvYMwtc8w3SfFcWa0W0NlqvWIvdww5MJWGf+50=;
+ b=I4v15Stll790w4//q3HREMISIjMegXvjeCixgi6HBFPSlfDhw7HwYMFi
+ o6aLzgV4s9jNjX3qhhOeRWTUm/pujyNUU83c/jdSjRLEH2s3Ibo7YjQpu
+ Z7/Dw7BpuSWqF4ajE6595LjCy1OFfGPa11fb6MV5SUnS2hCdYEtY3uLrm
+ 1915edhzjGvnK0sxcCluDlTI7qHy4PYF+GwugciqgyJXhEeRJMXRx1m+x
+ lNftxNxmGcwAOSHso5++0Cs2C+7hqJadSwUH8TJfy16+Iz5oxhMjBDMTs
+ yxv64SXNq9eHF10T5ia3z3eDjK8Ha+forEYIC6Di5AlAMiomR9nIkPNsP
+ A==;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=intel.com
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=I4v15Stl
+Subject: [Intel-wired-lan] [PATCH iwl-net v2] ice: Flush FDB entries before
+ reset
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,81 +105,113 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: imx@lists.linux.dev, Alexei Starovoitov <ast@kernel.org>,
- Alexander Duyck <alexander.duyck@gmail.com>, linux-mm@kvack.org,
- Eric Dumazet <edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
- Shenwei Wang <shenwei.wang@nxp.com>, Mina Almasry <almasrymina@google.com>,
- Ryder Lee <ryder.lee@mediatek.com>, Daniel Borkmann <daniel@iogearbox.net>,
- linux-rdma@vger.kernel.org, Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- John Fastabend <john.fastabend@gmail.com>, IOMMU <iommu@lists.linux.dev>,
- liuyonglong@huawei.com, Clark Wang <xiaoning.wang@nxp.com>,
- zhangkun09@huawei.com, fanghaiqing@huawei.com, pabeni@redhat.com,
- Lorenzo Bianconi <lorenzo@kernel.org>,
- Jesper Dangaard Brouer <hawk@kernel.org>, Kalle Valo <kvalo@kernel.org>,
- Sean Wang <sean.wang@mediatek.com>, Wei Fang <wei.fang@nxp.com>,
- kuba@kernel.org, Matthias Brugger <matthias.bgg@gmail.com>,
- intel-wired-lan@lists.osuosl.org, bpf@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Leon Romanovsky <leon@kernel.org>, Robin Murphy <robin.murphy@arm.com>,
- linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
- Tariq Toukan <tariqt@nvidia.com>,
- Alexander Lobakin <aleksander.lobakin@intel.com>, netdev@vger.kernel.org,
- linux-mediatek@lists.infradead.org, Andrew Morton <akpm@linux-foundation.org>,
- Shayne Chen <shayne.chen@mediatek.com>, Saeed Mahameed <saeedm@nvidia.com>,
- davem@davemloft.net, Felix Fietkau <nbd@nbd.name>
+Cc: anthony.l.nguyen@intel.com, marcin.szycik@linux.intel.com,
+ intel-wired-lan@lists.osuosl.org, horms@kernel.org,
+ michal.swiatkowski@linux.intel.com
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 2024/9/27 17:58, Ilias Apalodimas wrote:
+Triggering the reset while in switchdev mode causes
+errors[1]. Rules are already removed by this time
+because switch content is flushed in case of the reset.
+This means that rules were deleted from HW but SW
+still thinks they exist so when we get
+SWITCHDEV_FDB_DEL_TO_DEVICE notification we try to
+delete not existing rule.
 
-...
+We can avoid these errors by clearing the rules
+early in the reset flow before they are removed from HW.
+Switchdev API will get notified that the rule was removed
+so we won't get SWITCHDEV_FDB_DEL_TO_DEVICE notification.
+Remove unnecessary ice_clear_sw_switch_recipes.
 
->>
->>> importantly, though, why does struct page need to know about this?
->>> Can't we have the same information in page pool?
->>> When the driver allocates pages it does via page_pool_dev_alloc_XXXXX
->>> or something similar. Cant we do what you suggest here ? IOW when we
->>> allocate a page we put it in a list, and when that page returns to
->>> page_pool (and it's mapped) we remove it.
->>
->> Yes, that is the basic idea, but the important part is how to do that
->> with less performance impact.
-> 
-> Yes, but do you think that keeping that list of allocated pages in
-> struct page_pool will end up being more costly somehow compared to
-> struct page?
+[1]
+ice 0000:01:00.0: Failed to delete FDB forward rule, err: -2
+ice 0000:01:00.0: Failed to delete FDB guard rule, err: -2
 
-I am not sure if I understand your above question here.
-I am supposing the question is about what's the cost between using
-single/doubly linked list for the inflight pages or using a array
-for the inflight pages like this patch does using pool->items?
-If I understand question correctly, the single/doubly linked list
-is more costly than array as the page_pool case as my understanding.
+Fixes: 7c945a1a8e5f ("ice: Switchdev FDB events support")
+Reviewed-by: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
+Signed-off-by: Wojciech Drewek <wojciech.drewek@intel.com>
+---
+v2: extend commit msg, add NULL pointer check
+---
+ .../net/ethernet/intel/ice/ice_eswitch_br.c   |  5 +++-
+ .../net/ethernet/intel/ice/ice_eswitch_br.h   |  1 +
+ drivers/net/ethernet/intel/ice/ice_main.c     | 24 +++----------------
+ 3 files changed, 8 insertions(+), 22 deletions(-)
 
-For single linked list, it doesn't allow deleting a specific entry but
-only support deleting the first entry and all the entries. It does support
-lockless operation using llist, but have limitation as below:
-https://elixir.bootlin.com/linux/v6.7-rc8/source/include/linux/llist.h#L13
+diff --git a/drivers/net/ethernet/intel/ice/ice_eswitch_br.c b/drivers/net/ethernet/intel/ice/ice_eswitch_br.c
+index f5aceb32bf4d..cccb7ddf61c9 100644
+--- a/drivers/net/ethernet/intel/ice/ice_eswitch_br.c
++++ b/drivers/net/ethernet/intel/ice/ice_eswitch_br.c
+@@ -582,10 +582,13 @@ ice_eswitch_br_switchdev_event(struct notifier_block *nb,
+ 	return NOTIFY_DONE;
+ }
+ 
+-static void ice_eswitch_br_fdb_flush(struct ice_esw_br *bridge)
++void ice_eswitch_br_fdb_flush(struct ice_esw_br *bridge)
+ {
+ 	struct ice_esw_br_fdb_entry *entry, *tmp;
+ 
++	if (!bridge)
++		return;
++
+ 	list_for_each_entry_safe(entry, tmp, &bridge->fdb_list, list)
+ 		ice_eswitch_br_fdb_entry_notify_and_cleanup(bridge, entry);
+ }
+diff --git a/drivers/net/ethernet/intel/ice/ice_eswitch_br.h b/drivers/net/ethernet/intel/ice/ice_eswitch_br.h
+index c15c7344d7f8..66a2c804338f 100644
+--- a/drivers/net/ethernet/intel/ice/ice_eswitch_br.h
++++ b/drivers/net/ethernet/intel/ice/ice_eswitch_br.h
+@@ -117,5 +117,6 @@ void
+ ice_eswitch_br_offloads_deinit(struct ice_pf *pf);
+ int
+ ice_eswitch_br_offloads_init(struct ice_pf *pf);
++void ice_eswitch_br_fdb_flush(struct ice_esw_br *bridge);
+ 
+ #endif /* _ICE_ESWITCH_BR_H_ */
+diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
+index c7db88b517da..dcd4c8204753 100644
+--- a/drivers/net/ethernet/intel/ice/ice_main.c
++++ b/drivers/net/ethernet/intel/ice/ice_main.c
+@@ -519,25 +519,6 @@ static void ice_pf_dis_all_vsi(struct ice_pf *pf, bool locked)
+ 		pf->vf_agg_node[node].num_vsis = 0;
+ }
+ 
+-/**
+- * ice_clear_sw_switch_recipes - clear switch recipes
+- * @pf: board private structure
+- *
+- * Mark switch recipes as not created in sw structures. There are cases where
+- * rules (especially advanced rules) need to be restored, either re-read from
+- * hardware or added again. For example after the reset. 'recp_created' flag
+- * prevents from doing that and need to be cleared upfront.
+- */
+-static void ice_clear_sw_switch_recipes(struct ice_pf *pf)
+-{
+-	struct ice_sw_recipe *recp;
+-	u8 i;
+-
+-	recp = pf->hw.switch_info->recp_list;
+-	for (i = 0; i < ICE_MAX_NUM_RECIPES; i++)
+-		recp[i].recp_created = false;
+-}
+-
+ /**
+  * ice_prepare_for_reset - prep for reset
+  * @pf: board private structure
+@@ -574,8 +555,9 @@ ice_prepare_for_reset(struct ice_pf *pf, enum ice_reset_req reset_type)
+ 	mutex_unlock(&pf->vfs.table_lock);
+ 
+ 	if (ice_is_eswitch_mode_switchdev(pf)) {
+-		if (reset_type != ICE_RESET_PFR)
+-			ice_clear_sw_switch_recipes(pf);
++		rtnl_lock();
++		ice_eswitch_br_fdb_flush(pf->eswitch.br_offloads->bridge);
++		rtnl_unlock();
+ 	}
+ 
+ 	/* release ADQ specific HW and SW resources */
+-- 
+2.39.3
 
-For doubly linked list, it needs two pointer to support deleting a specific
-entry and it does not support lockless operation.
-
-For pool->items, as the alloc side is protected by NAPI context, and the
-free side use item->pp_idx to ensure there is only one producer for each
-item, which means for each item in pool->items, there is only one consumer
-and one producer, which seems much like the case when the page is not
-recyclable in __page_pool_put_page, we don't need a lock protection when
-calling page_pool_return_page(), the 'struct page' is also one consumer
-and one producer as the pool->items[item->pp_idx] does:
-https://elixir.bootlin.com/linux/v6.7-rc8/source/net/core/page_pool.c#L645
-
-We only need a lock protection when page_pool_destroy() is called to
-check if there is inflight page to be unmapped as a consumer, and the
-__page_pool_put_page() may also called to unmapped the inflight page as
-another consumer, there is why the 'destroy_lock' is added for protection
-when pool->destroy_cnt > 0.
-
-> 
-> Thanks
-> /Ilias
