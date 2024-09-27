@@ -1,87 +1,234 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 18CFC987F5E
-	for <lists+intel-wired-lan@lfdr.de>; Fri, 27 Sep 2024 09:25:32 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 9AE2360675;
-	Fri, 27 Sep 2024 07:25:27 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id L2ezN_LZag2a; Fri, 27 Sep 2024 07:25:26 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org EFF98606BA
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1727421926;
-	bh=k7JnJLY3j21G0h4M++WWN0keVFp8PHiw+DUxnS4RdJo=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=ClP0ni91ULf09P19eCYEHw/VLvTnbFFzH/psKlq+TGpa24kHVIF8PZwmFzHqmNNAT
-	 2eXHIsNnVieCptYkkLSFG7hJqVwvS8G2cWUB8yomumhUPcfK1Xn/jGQ0uvV4RPwKSj
-	 vU8UaftxmnRH0XQl1LV4VNr1tH+FFsZ+Xa5z68eze+UIvh0Eb24qip8aHP3V8OomIC
-	 wnvtCDg/ObxckT8/joP4/N4DvraYIf/QPXJEXks35UkX79mo7++YQB/gqrPhVAUXFr
-	 68Nt8m/1SKsYIMZ8dVRQeKW4AplWtCatzy9VNOf7FGRsenxAnao3rOA+182DhMj/Yd
-	 z3N3uMWp0CiAA==
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id EFF98606BA;
-	Fri, 27 Sep 2024 07:25:25 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id 042BE1BF304
- for <intel-wired-lan@lists.osuosl.org>; Fri, 27 Sep 2024 07:25:24 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id CBF1D988121
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 27 Sep 2024 11:13:45 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id E67A584737
- for <intel-wired-lan@lists.osuosl.org>; Fri, 27 Sep 2024 07:25:23 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 613BA844C2;
+	Fri, 27 Sep 2024 09:13:23 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id NqGOBqfNtsCB for <intel-wired-lan@lists.osuosl.org>;
- Fri, 27 Sep 2024 07:25:22 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=45.249.212.191;
- helo=szxga05-in.huawei.com; envelope-from=linyunsheng@huawei.com;
+ id LQUZh8jLrIxX; Fri, 27 Sep 2024 09:13:22 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6E3EA844CE
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1727428402;
+	bh=TU0P3R1JN0fOiAzQqfhNx/vFfx6INAlKmRwf9Z/kKkE=;
+	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=tVQpcHzFoGhXTlVY9Z8hI5OiTgvnva39kefqsWHpDqkiVFfflFX9uHZxQ2vC+O6Ei
+	 WOU3Qcn4c7dp+ejeMjhFPIeJXC/+85Qzl95z8Y4Qyn0ASryDRHAs+k4vWeQ0pRe/ua
+	 pudAOYiHBfzt4JMvoNf56Xr5Ma0rNJmYr8qZ/PMD/N4X4STyAMyao8zz+Y9unJo3bR
+	 NOoXt95mmixkmRrj8mXYv2Aqbns61rJhT/2LsdOPIUqfyQMOUynSSCd9Alnx8RmLI6
+	 1ueopgXrq/pmHnQX2AOdDd6IOEJhTuUyOGuiLIgG9rDdIUvUu995ruf8VkZdoPiJK8
+	 +Ml2FWC7XNLyw==
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp1.osuosl.org (Postfix) with ESMTP id 6E3EA844CE;
+	Fri, 27 Sep 2024 09:13:22 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id EF4BD1BF2F0
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 27 Sep 2024 09:13:20 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp2.osuosl.org (Postfix) with ESMTP id DBBD8404B5
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 27 Sep 2024 09:13:20 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 0vajqnmjBYUE for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 27 Sep 2024 09:13:20 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.14;
+ helo=mgamail.intel.com; envelope-from=rafal.romanowski@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org A284D8472C
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org A284D8472C
-Received: from szxga05-in.huawei.com (szxga05-in.huawei.com [45.249.212.191])
- by smtp1.osuosl.org (Postfix) with ESMTPS id A284D8472C
- for <intel-wired-lan@lists.osuosl.org>; Fri, 27 Sep 2024 07:25:20 +0000 (UTC)
-Received: from mail.maildlp.com (unknown [172.19.163.17])
- by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4XFMMk1vKlz1HKGY;
- Fri, 27 Sep 2024 15:21:22 +0800 (CST)
-Received: from dggpemf200006.china.huawei.com (unknown [7.185.36.61])
- by mail.maildlp.com (Postfix) with ESMTPS id C25E81A0188;
- Fri, 27 Sep 2024 15:25:14 +0800 (CST)
-Received: from [10.67.120.129] (10.67.120.129) by
- dggpemf200006.china.huawei.com (7.185.36.61) with Microsoft SMTP Server
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 857B9402A4
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 857B9402A4
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.14])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 857B9402A4
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 27 Sep 2024 09:13:19 +0000 (UTC)
+X-CSE-ConnectionGUID: 9Ls+qw8rRye95nnmIqnRlA==
+X-CSE-MsgGUID: KPidXr4gS4+VFYlgv6BrUA==
+X-IronPort-AV: E=McAfee;i="6700,10204,11207"; a="30357466"
+X-IronPort-AV: E=Sophos;i="6.11,158,1725346800"; d="scan'208";a="30357466"
+Received: from orviesa009.jf.intel.com ([10.64.159.149])
+ by orvoesa106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 27 Sep 2024 02:13:18 -0700
+X-CSE-ConnectionGUID: kkayGSn6TMKMbR7UOycJ/w==
+X-CSE-MsgGUID: y+wUjnPDSTmh0vhDhNxvQg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.11,158,1725346800"; d="scan'208";a="72561447"
+Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82])
+ by orviesa009.jf.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
+ 27 Sep 2024 02:13:19 -0700
+Received: from fmsmsx601.amr.corp.intel.com (10.18.126.81) by
+ fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.39; Fri, 27 Sep 2024 02:13:18 -0700
+Received: from fmsmsx602.amr.corp.intel.com (10.18.126.82) by
+ fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.39; Fri, 27 Sep 2024 02:13:17 -0700
+Received: from fmsedg602.ED.cps.intel.com (10.1.192.136) by
+ fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.39 via Frontend Transport; Fri, 27 Sep 2024 02:13:17 -0700
+Received: from NAM04-BN8-obe.outbound.protection.outlook.com (104.47.74.45) by
+ edgegateway.intel.com (192.55.55.71) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1544.11; Fri, 27 Sep 2024 15:25:14 +0800
-Message-ID: <2a495d47-f1ca-42ee-a23d-736d4cd47880@huawei.com>
-Date: Fri, 27 Sep 2024 15:25:14 +0800
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: Mina Almasry <almasrymina@google.com>
-References: <20240925075707.3970187-1-linyunsheng@huawei.com>
- <20240925075707.3970187-3-linyunsheng@huawei.com>
- <CAHS8izOxugzWJDTc-4CWqaKABTj=J4OHs=Lcb=SE9r8gX0J+yg@mail.gmail.com>
- <842c8cc6-f716-437a-bc98-70bc26d6fd38@huawei.com>
- <CAHS8izN-3Ooiexsr+Xp2234=GqMUy0sTTMqExKVkXAgmjeWQ6w@mail.gmail.com>
+ 15.1.2507.39; Fri, 27 Sep 2024 02:13:17 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=kvX4s072gZsxHjkO0ZUHt5IHHZEBKMMOh/Xsy+AglJ70Ae9S9uPi0ciyMfhhapbwkVS84SlSUr/58JSNfAYcMsS4PTBkr4Z0AXABGFUstH7J7lxOA2iFxZbk/FUquAHrLuomyc4ze4Wi45bz2xSnFcOhIbtu18R8RwdeRN7dSePyQImg3/Svq7w1dbEtKJRPlg6EewPARYK9cNVpte/qsGqG28Z2NUhXxDulp4tPrbD7PWyeuuSdMnRYG5M9KTwOMM+xTX2I/jSWT6hghzS/+krWzAcuLR1pR1gNuVfoUmEchMl08jZCYvQw5bEfEQ0QGb6IRGAexAwTOImggVIOPQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=TU0P3R1JN0fOiAzQqfhNx/vFfx6INAlKmRwf9Z/kKkE=;
+ b=WDE+XIoIeWmPGyy6ebMZZluhn+XtJVSYmsJgx9UVDQ9D/yjZPgtlMd5xKoPa/32OQjnglmxMEPjP18upu8E5fw3hVFX6VLF1T/xxNZTWfqw6YTfb2cfg2s1j8vNAjMXXUODUFapT0FJq4x8FV18hVusKHMk5LIMN5J59OJeU1Frl7PROXVhQnu1G8awE7V7l7ZKS+G6Kq35T2JPXGR3sw+pg5K6JDqDhHlY2kJBZPpDdM0FG0jOmnr3tVVtTAQoJS5EsOtuqhGqXt5ipLIaqBCX62X8D7ilODHdlC2fd/JJCs2ll7Ebxzfeh4PiOeNR6dW5pb7nJjNrOh83QrzUQgA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from SJ0PR11MB5865.namprd11.prod.outlook.com (2603:10b6:a03:428::13)
+ by BL1PR11MB5272.namprd11.prod.outlook.com (2603:10b6:208:30a::5)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8005.22; Fri, 27 Sep
+ 2024 09:13:12 +0000
+Received: from SJ0PR11MB5865.namprd11.prod.outlook.com
+ ([fe80::b615:4475:b6d7:8bc5]) by SJ0PR11MB5865.namprd11.prod.outlook.com
+ ([fe80::b615:4475:b6d7:8bc5%6]) with mapi id 15.20.7982.029; Fri, 27 Sep 2024
+ 09:13:12 +0000
+From: "Romanowski, Rafal" <rafal.romanowski@intel.com>
+To: "Keller, Jacob E" <jacob.e.keller@intel.com>, Intel Wired LAN
+ <intel-wired-lan@lists.osuosl.org>, "Nguyen, Anthony L"
+ <anthony.l.nguyen@intel.com>
+Thread-Topic: [Intel-wired-lan] [PATCH iwl-next 1/2] ice: consistently use
+ q_idx in ice_vc_cfg_qs_msg()
+Thread-Index: AQHbAw0tVpNkrgDKXEejpWXnJRY+BLJrdMEw
+Date: Fri, 27 Sep 2024 09:13:12 +0000
+Message-ID: <SJ0PR11MB58658B6073F9646C157B52088F6B2@SJ0PR11MB5865.namprd11.prod.outlook.com>
+References: <20240909-e810-live-migration-jk-per-queue-max-frame-rx-buf-len-v1-0-f955205bc78f@intel.com>
+ <20240909-e810-live-migration-jk-per-queue-max-frame-rx-buf-len-v1-1-f955205bc78f@intel.com>
+In-Reply-To: <20240909-e810-live-migration-jk-per-queue-max-frame-rx-buf-len-v1-1-f955205bc78f@intel.com>
+Accept-Language: en-US
 Content-Language: en-US
-From: Yunsheng Lin <linyunsheng@huawei.com>
-In-Reply-To: <CAHS8izN-3Ooiexsr+Xp2234=GqMUy0sTTMqExKVkXAgmjeWQ6w@mail.gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [10.67.120.129]
-X-ClientProxiedBy: dggems706-chm.china.huawei.com (10.3.19.183) To
- dggpemf200006.china.huawei.com (7.185.36.61)
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=huawei.com
-Subject: Re: [Intel-wired-lan] [PATCH net v2 2/2] page_pool: fix IOMMU crash
- when driver has already unbound
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: SJ0PR11MB5865:EE_|BL1PR11MB5272:EE_
+x-ms-office365-filtering-correlation-id: 9219bbd8-4b33-4a8f-d962-08dcded49cf0
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0; ARA:13230040|376014|1800799024|366016|38070700018;
+x-microsoft-antispam-message-info: =?utf-8?B?aWRiMDROWjlMVU1kT254d1ZYVFFFZjdDcENENDNGOVBxZloybldxMmpjcHN2?=
+ =?utf-8?B?eHUzT1RvWFpyTVhJS3NDNDNaSUdsWkRHM1hOOTJjWCsrK2NUQmhqMFh5RWZ6?=
+ =?utf-8?B?NkE2bElqdzBvWCthODZvSGZ0MmpXY1hEUlk3bmkzQ2pjMzU1Vmx5MDM5NE9F?=
+ =?utf-8?B?QVl5SnMxWUdyamFxcW4xVmZZRi9xazgyQmpSRWNQNDhCL0J5NjVscGp0My96?=
+ =?utf-8?B?cVQ2aFUzbUlreC95VzhWQlJBb3pncmxsTnl5M0VqOWZWK2VMa1RTUHpsUTVO?=
+ =?utf-8?B?NUhUTERMQ2RBZXlmUlFxTmZwWE5PMkhzcmpNT01OcFQycjVKQ3FMNStnNUlJ?=
+ =?utf-8?B?RDFBaXdQWFBzZjluMlJGVENsUFVaMWVzOGZNeThrYVVBSUU2VTZWOC9tZ2hz?=
+ =?utf-8?B?V2FJR0dXcGNBRXFNQTU0c010NVVSdHIvRnhvbUxaa1o1UU9LeVl3TjlkazBD?=
+ =?utf-8?B?TDNxaEFyaGNSK0dWd2xEMWwwQmROOS9pbVhlR2xJTlFYVVQ1VXE0SFBwa3kx?=
+ =?utf-8?B?akJhUVJDTDc5emt5OG1TdGVpaEVNQzZuT3lmRFdrSDR5cjZjSmRPaEE5bTA2?=
+ =?utf-8?B?a2l6U2ZOY1hZVWdhOVJkVVFlQnRIMWo4SVhDYjBPUUxxVTZwS2RKbnhwSjN0?=
+ =?utf-8?B?NEFBMlIzcCt6QlBGbVNNOXNWUnp6dld6OFNFWndqYTFnRUlnY05VYjJ0RUpG?=
+ =?utf-8?B?K3RQSGtsTTQ4UmRHV21iSGVhZVRkM0hvT1dUSk01bjJlTk5QSFc1dG1CbXhx?=
+ =?utf-8?B?Q3ZITTltRjdzcUtVWmtFTjRIY3h0TTBHRDFJZXJqeWlPVmpHRExmbE1BMDQ3?=
+ =?utf-8?B?TklJQlVXb3RmZHlFRGg0NXdnWlYxTWF3Z0ZHWUpRWHFpdG9NeGN5YlVYME8r?=
+ =?utf-8?B?TmpYV0dNRjd6bWdsWnM4SmVPOUZEOTJOWHppUDQ3ZGljWWlsa3RkMjlWSyty?=
+ =?utf-8?B?b1hDU0M2MlBRblZBZUhyMHA2TklzaytOWnBXMmtnRVUxaTBQY3JhbUhKMHUv?=
+ =?utf-8?B?UmFNZU05N0VjZ2dsb0orb0ppMWpBT3RFMjg0UThDZTJ4OEl6Y1RMeEpqR3VO?=
+ =?utf-8?B?U3pGVzd1RzJIbDFrMHpWNTRDOVAzd2NZM0ppdDVGRXllR3ZQZitoNVg1UzZu?=
+ =?utf-8?B?TDNqaG4yYnVIL1Y3N094N3dGdWd3aHdoVkpGTURweWxEWkg3MXhCOEFLMWxU?=
+ =?utf-8?B?cE5EN2VNL1AyV3VteFJieWRsRlo0bHgwWmNXbzIwZFloQ3l5VThlNEdlc0pL?=
+ =?utf-8?B?dXJOb3FVVHo0VzBsenpSdTFJbGhRRFN3UWdkUmJWdHFjckUwU2lDVVA3Y29P?=
+ =?utf-8?B?K3p6MFFPdGlJNXhFU2lnQkRkTWVtNTBWK3M3MXp3SkQ0ZVltYmhTT2lLOHIr?=
+ =?utf-8?B?L2VwM1B1Y3U1bkFORysxd1VVMDVDVTFFMjNLLzA5NENISWtZbFJUTGlQYTlQ?=
+ =?utf-8?B?NStNRExHV3FXWi92WkJ5MVJqUzZhQkRueVU4YVorVkUvSDNvV25BR2hPcmlu?=
+ =?utf-8?B?Y1VuTmlRRG5qbzd1TDd0cEtJcGdHczhyUmc3YUVEWERwRFk1N1d5VjlGWlk1?=
+ =?utf-8?B?dFdQcHJmanhZcWhSZUQvbU1XWnVSR2NtQURiV0JsOFROSTFycVhKdEhIbmpO?=
+ =?utf-8?B?Rllxd3BuWTBSSkxYNjUzYVhZTDEzNFlnZ2d2RmZtZU1JMXp3SGJxaWNIa2E5?=
+ =?utf-8?B?bk43aDlUNU1kQXNJRTdoWGFvZFlpTFJDVzBlcHBzRTQ0UUpjczc0VVpLdGg2?=
+ =?utf-8?B?SmxYVUt4dWx0WXduVENrSHVLZlJsbE50bVF1UklrR2lDRjBJVTFwY0N2L21F?=
+ =?utf-8?B?c2dSMTdJUThiRDZTZHZPUT09?=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SJ0PR11MB5865.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(376014)(1800799024)(366016)(38070700018); DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?QWYyWDlYNEpjc0FWMWZqRGJFKzVWTHJBYzVQaFJZS244VTdaWU55SWVFMER1?=
+ =?utf-8?B?SjU5UGdXTWhUQit2czBqbFVRQ2lOZEFObERIN1ZHeGJVd3QyNVlWazRObmg0?=
+ =?utf-8?B?YXZCUGtyemtZcWRjZC9kaU9XcjRyTWtTYkY0bGFIL1k4RGFWK1hGNGp3Mlpo?=
+ =?utf-8?B?UDZVcVpiMndaangxT3F6a3p6cmNNK1B6eFZVQ0ZnM0oyUmNZYk5wMmlNdmpM?=
+ =?utf-8?B?elozK1V1L0tXY1l5Yk1Mam45VExqR3hHd3VyMnhaQ2QxUEo5ZXlIaTNhQTFV?=
+ =?utf-8?B?ZEp0b1hicW8yMDFiYTlhN2s1djgyVmV4R3RtTzYrV0tNYTdIWDBUWFN0bk1u?=
+ =?utf-8?B?RElHUXNvclYrWGtHNUFQelZrbUZHSnNzdDc3alhmVUQ0UFZIeFZBS0R0K1Jt?=
+ =?utf-8?B?cFAvNG9RbzlWM1dkeXh0UUJtNmR1L0U2UDVwcklPK1JSSTZjeWdLTHVQZ3RR?=
+ =?utf-8?B?VlI5STdJeXk1d0xmMlVMeWUyQW9FeHU4MFcwMFRIckEvM245N3FzbGU1eHJW?=
+ =?utf-8?B?OFlraWtMVHRUM09oOVBVSmwzYmJyZWkycUQzbkhrbDVDSGxHemd6eVlhazh5?=
+ =?utf-8?B?YXBnNDg1Y2Y2dHdaakZkRGVUQmRmdjBVb1VoZHdIVldYSzV6VEU4WXcvQUVN?=
+ =?utf-8?B?bmxaSUMzUlJYUWRTYWdndUwyYlNvWkg4OWx3M2x5cjRCanpsVlNUNXJCa2I0?=
+ =?utf-8?B?REhPZUVjbUk0MkVkdld5OVo1NkdIajhWdU5iSkJ3K3YrUG1NRGR3NXVzbThj?=
+ =?utf-8?B?ZDdIZjkzU1UvSXpzVlFtam84dFBFbjdZVHMyM1RxZHBZZTlsMDc3RnFkQXFE?=
+ =?utf-8?B?QmN1MFVURHZaM3BCRHRCZ1o0ZTFYaEE2WWwxbjh0VEJXVTBLY3lYRzc3eklY?=
+ =?utf-8?B?TmNnZ0JHV3NkVUxTakJHaWhySzhYNk5sd3ZBcEwvQmU5endSNVpNMlVFQVM1?=
+ =?utf-8?B?bC9tTVdUS0pUdGwyc0NqM0ZNWXUzY0lpOFg3c01FQVNMY0hNNUIyVnlRQWxY?=
+ =?utf-8?B?d3grTEl5ZHFLSkVGYWRqbVY1OGtZSUY1YytMSTNUN1BiZHFBVkFmakpkWUxx?=
+ =?utf-8?B?MHRYNld2NDZoTE9SU0F1SXJVTUZWODdpclpnT3AxTmxBSkZiNHpPSGJzRkcy?=
+ =?utf-8?B?T2pldkNMQVdhQ3hWL3RSNzRObjMvZ2ZCYW1QQzgxRkN0S3M0cWJPWFNKUEJY?=
+ =?utf-8?B?d3MyeThKdWUzWEhjazk1R3JheWJ1MmNDUjcvUFNPR3JIQitYSFQ3dG91dStX?=
+ =?utf-8?B?TkRjLzE1aDN2c216Mk9LUWV3TDBxejVwV2NYdXJOS2lLVEQ2YmVoN0xjWWpV?=
+ =?utf-8?B?dzRMV2tCanpiNnFMdWh1aUJGY0FuS0dDQ3BUVVBxcG5WeDZVdkpEUE5YUkRD?=
+ =?utf-8?B?dW43bDVoS01RWlM5cjZaaU1qbnFCVmZ6akxaU3JQa3RqSFJod2tOb1hCK0Q0?=
+ =?utf-8?B?SlFuZ09sd1V4NkpPTS9hWUU5UjFaZUdpUSttQzREYkJLSDBCYXJqTlhtTzRj?=
+ =?utf-8?B?WVNWWmVPZjg0c0dZZUljelpMeEoraE42elNJQ0NMK1Z5aDUyeFA0RTI2WmVT?=
+ =?utf-8?B?QmtoVWp2YitnbVA3bWhsYkdPbC9JYjN4RlNkUXBINVNvTXB0OUFpTTIwK2lo?=
+ =?utf-8?B?bE5Ob1F0c1VUZzBFTDdMMHl1eFJ4RjNVZ21CdXdTR3FRVkNBVHBHVGpxOElP?=
+ =?utf-8?B?ZjZkbTBxM2I0c3FwSnJnSThtc2dQK2VRTFhSMithTU0wTnRrZ0ZqR0xCTW01?=
+ =?utf-8?B?ZzkxREdUVVR0QSt5ZDZWNFhnU3dBVEw1dXZDWVlZUnRncDlSakUvN25FVUJ1?=
+ =?utf-8?B?eThZWTQxUVQ5OUhITjZCS1dDb0xYVU5WakNqLzlIaWZ4ZTJUWmFpd2FUa2Nk?=
+ =?utf-8?B?MWpHdW42cEdXYzhPVTV4Tkpmb1ExKzFjVm8rbkJhTmNxUWFScjBTaWJqRHZk?=
+ =?utf-8?B?aW1XUXZ1QTMrcUNQTVBRMTBSZWRVVEY1VGJIaTl6eHFJblVNWDVyQStxbnVk?=
+ =?utf-8?B?L1NSYnErc0tSMjBxMFZSYXhoOVBGZlBqek8xSkhHbitvV1h3Tk1GcDNzVmxD?=
+ =?utf-8?B?UzRMcjJXUm9UQjhXazN1eTBJMXFhd2VzRTBXemhucXRQSEJOODNTaXVOZTcz?=
+ =?utf-8?B?cDhIWnZ3ZkFzRDBkeEZTYXZhZGVUVE1zakJVck4zRGovK3JkeEk1NFZScHBl?=
+ =?utf-8?B?Ymc9PQ==?=
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SJ0PR11MB5865.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 9219bbd8-4b33-4a8f-d962-08dcded49cf0
+X-MS-Exchange-CrossTenant-originalarrivaltime: 27 Sep 2024 09:13:12.6988 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: 9Im3iFPm4q1HJ8QXnQoIzaIylTrUgIZ0BKCsKDeoydqjzsVyBeNujVszeE1JsenYmgeR68RtObZddtOZZkxMlGMkm+eeko68MCy6atGIBEc=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BL1PR11MB5272
+X-OriginatorOrg: intel.com
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1727428399; x=1758964399;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=TU0P3R1JN0fOiAzQqfhNx/vFfx6INAlKmRwf9Z/kKkE=;
+ b=iHa2SQYQqX43XioONE4rs5JPAbMl073W0YkEldvrC1rl80IfdlnqKkbJ
+ Wwmk/ANXZHyI5pi3EX9xwiAUpT3kCZyf9vYAX5fq3Rf/NUZ+ax5MUG9Jr
+ xOg/aXrXQEjcU0tYgkxZYzx5e+tfDWc/IQa53uIjxnHJmUeCqQPjiLlgs
+ cNOzf1rGuF0v/Y0I7TXMJe+E27Xox+CpVk2T+Su7Xz42Z3y24Mth82V+1
+ DqQH2d7NXdhDWxWyjMABIOS+kHWDUy5eMHlkaXbX7kZw0oQEdAEq9pTtR
+ kdb8TTIBPIXUrUlUyBd5BuRIJzlcjrHK1cxnRoZPM4gKuDbdm0vjZAPug
+ A==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=intel.com
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=iHa2SQYQ
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next 1/2] ice: consistently use
+ q_idx in ice_vc_cfg_qs_msg()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -94,167 +241,44 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: imx@lists.linux.dev, Alexei Starovoitov <ast@kernel.org>,
- Alexander Duyck <alexander.duyck@gmail.com>, linux-mm@kvack.org,
- Eric Dumazet <edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
- Shenwei Wang <shenwei.wang@nxp.com>, Sumit Semwal <sumit.semwal@linaro.org>,
- Ryder Lee <ryder.lee@mediatek.com>, Daniel Borkmann <daniel@iogearbox.net>,
- linux-rdma@vger.kernel.org, Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- John Fastabend <john.fastabend@gmail.com>, IOMMU <iommu@lists.linux.dev>,
- liuyonglong@huawei.com, Clark Wang <xiaoning.wang@nxp.com>,
- zhangkun09@huawei.com, fanghaiqing@huawei.com, pabeni@redhat.com,
- Lorenzo Bianconi <lorenzo@kernel.org>, linux-media@vger.kernel.org,
- Jesper Dangaard Brouer <hawk@kernel.org>, Kalle Valo <kvalo@kernel.org>,
- Sean Wang <sean.wang@mediatek.com>, linaro-mm-sig@lists.linaro.org,
- Wei Fang <wei.fang@nxp.com>, dri-devel@lists.freedesktop.org, kuba@kernel.org,
- Matthias Brugger <matthias.bgg@gmail.com>, intel-wired-lan@lists.osuosl.org,
- bpf@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Leon Romanovsky <leon@kernel.org>, Robin Murphy <robin.murphy@arm.com>,
- Ilias Apalodimas <ilias.apalodimas@linaro.org>, linux-wireless@vger.kernel.org,
- linux-kernel@vger.kernel.org, Tariq Toukan <tariqt@nvidia.com>,
- =?UTF-8?Q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>,
- Alexander Lobakin <aleksander.lobakin@intel.com>, netdev@vger.kernel.org,
- linux-mediatek@lists.infradead.org, Andrew Morton <akpm@linux-foundation.org>,
- Shayne Chen <shayne.chen@mediatek.com>, Saeed Mahameed <saeedm@nvidia.com>,
- davem@davemloft.net, Felix Fietkau <nbd@nbd.name>
+Cc: "Keller, Jacob E" <jacob.e.keller@intel.com>, "Kitszel,
+ Przemyslaw" <przemyslaw.kitszel@intel.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-adding Sumit & Christian & dma-buf maillist
-
-On 2024/9/27 13:54, Mina Almasry wrote:
-> On Thu, Sep 26, 2024 at 8:58 PM Yunsheng Lin <linyunsheng@huawei.com> wrote:
->>
->> On 2024/9/27 2:15, Mina Almasry wrote:
->>>
->>>> In order not to do the dma unmmapping after driver has already
->>>> unbound and stall the unloading of the networking driver, add
->>>> the pool->items array to record all the pages including the ones
->>>> which are handed over to network stack, so the page_pool can
->>>> do the dma unmmapping for those pages when page_pool_destroy()
->>>> is called.
->>>
->>> One thing I could not understand from looking at the code: if the
->>> items array is in the struct page_pool, why do you need to modify the
->>> page_pool entry in the struct page and in the struct net_iov? I think
->>> the code could be made much simpler if you can remove these changes,
->>> and you wouldn't need to modify the public api of the page_pool.
->>
->> As mentioned in [1]:
->> "There is no space in 'struct page' to track the inflight pages, so
->> 'pp' in 'struct page' is renamed to 'pp_item' to enable the tracking
->> of inflight page"
->>
->> As we still need pp for "struct page_pool" for page_pool_put_page()
->> related API, the container_of() trick is used to get the pp from the
->> pp_item.
->>
->> As you had changed 'struct net_iov' to be mirroring the 'struct page',
->> so change 'struct net_iov' part accordingly.
->>
->> 1. https://lore.kernel.org/all/50a463d5-a5a1-422f-a4f7-d3587b12c265@huawei.com/
->>
-> 
-> I'm not sure we need the pages themselves to have the list of pages
-> that need to be dma unmapped on page_pool_destroy. The pool can have
-> the list of pages that need to be unmapped on page_pool_destroy, and
-> the individual pages need not track them, unless I'm missing
-> something.
-
-It is about the pool having the list of pages that need to be unmapped.
-The point is that the list of pages that need to be unmapped is dynamic,
-it is not a static list:
-1. How to find a empty space in the list and add a page to the list?
-2. How to find a page in the list and delete it from the list?
-3. How to do the about two steps concurrently without obvious overhead?
-
-I am not sure how it is possible to do the above without something like
-the 'pp_item' added in this patch? Even the lockless list in the
-include/linux/llist.h need a 'struct llist_node' for that to work.
-But if it is possible, please share the idea in your mind.
-
-> 
->>>
->>>> As the pool->items need to be large enough to avoid
->>>> performance degradation, add a 'item_full' stat to indicate the
->>>> allocation failure due to unavailability of pool->items.
->>>>
->>>
->>> I'm not sure there is any way to size the pool->items array correctly.
->>
->> Currently the size of pool->items is calculated in page_pool_create_percpu()
->> as below, to make sure the size of pool->items is somewhat twice of the
->> size of pool->ring so that the number of page sitting in the driver's rx
->> ring waiting for the new packet is the similar to the number of page that is
->> still being handled in the network stack as most drivers seems to set the
->> pool->pool_size according to their rx ring size:
->>
->> +#define PAGE_POOL_MIN_INFLIGHT_ITEMS           512
->> +       unsigned int item_cnt = (params->pool_size ? : 1024) +
->> +                               PP_ALLOC_CACHE_SIZE + PAGE_POOL_MIN_INFLIGHT_ITEMS;
->> +       item_cnt = roundup_pow_of_two(item_cnt);
->>
-> 
-> I'm not sure it's OK to add a limitation to the page_pool that it can
-> only allocate N pages. At the moment, AFAIU, N is unlimited and it may
-> become a regression if we add a limitation.
-
-Maybe, let's see if there is some stronger argument that it is not ok
-to add the limitation or some testing that does show the limitation
-does bring a regression.
-
-> 
->>> Can you use a data structure here that can grow? Linked list or
->>> xarray?
->>>
->>> AFAIU what we want is when the page pool allocates a netmem it will
->>> add the netmem to the items array, and when the pp releases a netmem
->>> it will remove it from the array. Both of these operations are slow
->>> paths, right? So the performance of a data structure more complicated
->>> than an array may be ok. bench_page_pool_simple will tell for sure.
->>
->> The question would be why do we need the pool->items to grow with the
->> additional overhead and complication by dynamic allocation of item, using
->> complicated data structure and concurrent handling?
->>
->> As mentioned in [2], it was the existing semantics, but it does not means
->> we need to keep it. The changing of semantics seems like an advantage
->> to me, as we are able to limit how many pages is allowed to be used by
->> a page_pool instance.
->>
->> 2. https://lore.kernel.org/all/2fb8d278-62e0-4a81-a537-8f601f61e81d@huawei.com/
->>
->>>
->>>> Note, the devmem patchset seems to make the bug harder to fix,
->>>> and may make backporting harder too. As there is no actual user
->>>> for the devmem and the fixing for devmem is unclear for now,
->>>> this patch does not consider fixing the case for devmem yet.
->>>>
->>>
->>> net_iovs don't hit this bug, dma_unmap_page_attrs() is never called on
->>> them, so no special handling is needed really. However for code
->>
->> I am really doubtful about your above claim. As at least the below
->> implementaion of dma_buf_unmap_attachment_unlocked() called in
->> __net_devmem_dmabuf_binding_free() seems be using the DMA API directly:
->>
->> https://elixir.bootlin.com/linux/v6.7-rc8/source/drivers/gpu/drm/amd/amdgpu/amdgpu_dma_buf.c#L215
->>
->> Or am I missing something obvious here?
->>
-> 
-> I mean currently net_iovs don't hit the __page_pool_release_page_dma
-> function that causes the crash in the stack trace. The dmabuf layer
-> handles the unmapping when the dmabuf dies (I assume correctly).
-
-It seems like the similar assumption made about the normal page.
-How is dmabuf layer able to handles the unmapping when the driver
-which creates the page_pool with the devmem pages has unbound and
-the 'struct device' behind the driver has became invalid?
-
-If dmabuf layer is able to handle that, it seems the page_pool may
-be able to handle that too. Adding the maintainers of Dma-buf to see
-if there is some clarifying from them.
-
-> 
+PiAtLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQ0KPiBGcm9tOiBJbnRlbC13aXJlZC1sYW4gPGlu
+dGVsLXdpcmVkLWxhbi1ib3VuY2VzQG9zdW9zbC5vcmc+IE9uIEJlaGFsZiBPZiBKYWNvYg0KPiBL
+ZWxsZXINCj4gU2VudDogVHVlc2RheSwgU2VwdGVtYmVyIDEwLCAyMDI0IDE6MDggQU0NCj4gVG86
+IEludGVsIFdpcmVkIExBTiA8aW50ZWwtd2lyZWQtbGFuQGxpc3RzLm9zdW9zbC5vcmc+OyBOZ3V5
+ZW4sIEFudGhvbnkgTA0KPiA8YW50aG9ueS5sLm5ndXllbkBpbnRlbC5jb20+DQo+IENjOiBLZWxs
+ZXIsIEphY29iIEUgPGphY29iLmUua2VsbGVyQGludGVsLmNvbT47IEtpdHN6ZWwsIFByemVteXNs
+YXcNCj4gPHByemVteXNsYXcua2l0c3plbEBpbnRlbC5jb20+DQo+IFN1YmplY3Q6IFtJbnRlbC13
+aXJlZC1sYW5dIFtQQVRDSCBpd2wtbmV4dCAxLzJdIGljZTogY29uc2lzdGVudGx5IHVzZSBxX2lk
+eCBpbg0KPiBpY2VfdmNfY2ZnX3FzX21zZygpDQo+IA0KPiBUaGUgaWNlX3ZjX2NmZ19xc19tc2co
+KSBmdW5jdGlvbiBpcyB1c2VkIHRvIGNvbmZpZ3VyZSBWRiBxdWV1ZXMgaW4gcmVzcG9uc2UgdG8g
+YQ0KPiBWSVJUQ0hOTF9PUF9DT05GSUdfVlNJX1FVRVVFUyBjb21tYW5kLg0KPiANCj4gVGhlIHZp
+cnRjaG5sIGNvbW1hbmQgY29udGFpbnMgYW4gYXJyYXkgb2YgcXVldWUgcGFpciBkYXRhIGZvciBj
+b25maWd1cmluZyBUeCBhbmQNCj4gUnggcXVldWVzLiBUaGlzIGRhdGEgaW5jbHVkZXMgYSBxdWV1
+ZSBJRC4gV2hlbiBjb25maWd1cmluZyB0aGUgcXVldWVzLCB0aGUNCj4gZHJpdmVyIGdlbmVyYWxs
+eSB1c2VzIHRoaXMgcXVldWUgSUQgdG8gZGV0ZXJtaW5lIHdoaWNoIFR4IGFuZCBSeCByaW5nIHRv
+IHByb2dyYW0uDQo+IEhvd2V2ZXIsIGEgaGFuZGZ1bCBvZiBwbGFjZXMgdXNlIHRoZSBpbmRleCBp
+bnRvIHRoZSBxdWV1ZSBwYWlyIGRhdGEgZnJvbSB0aGUgVkYuDQo+IFdoaWxlIG1vc3QgVkYgaW1w
+bGVtZW50YXRpb25zIGFwcGVhciB0byBzZW5kIHRoaXMgZGF0YSBpbiBvcmRlciwgaXQgaXMgbm90
+DQo+IG1hbmRhdGVkIGJ5IHRoZSB2aXJ0Y2hubCBhbmQgaXQgaXMgbm90IHZlcmlmaWVkIHRoYXQg
+dGhlIHF1ZXVlIHBhaXIgZGF0YSBjb21lcyBpbg0KPiBvcmRlci4NCj4gDQo+IEZpeCB0aGUgZHJp
+dmVyIHRvIGNvbnNpc3RlbnRseSB1c2UgdGhlIHFfaWR4IGZpZWxkIGluc3RlYWQgb2YgdGhlICdp
+Jw0KPiBpdGVyYXRvciB2YWx1ZSB3aGVuIGFjY2Vzc2luZyB0aGUgcmluZ3MuIEZvciB0aGUgUngg
+Y2FzZSwgaW50cm9kdWNlIGEgbG9jYWwgcmluZw0KPiB2YXJpYWJsZSB0byBrZWVwIGxpbmVzIHNo
+b3J0Lg0KPiANCj4gRml4ZXM6IDdhZDE1NDQwYWNmOCAoImljZTogUmVmYWN0b3IgVklSVENITkxf
+T1BfQ09ORklHX1ZTSV9RVUVVRVMNCj4gaGFuZGxpbmciKQ0KPiBTaWduZWQtb2ZmLWJ5OiBKYWNv
+YiBLZWxsZXIgPGphY29iLmUua2VsbGVyQGludGVsLmNvbT4NCj4gLS0tDQo+ICBkcml2ZXJzL25l
+dC9ldGhlcm5ldC9pbnRlbC9pY2UvaWNlX3ZpcnRjaG5sLmMgfCAyMSArKysrKysrKysrLS0tLS0t
+LS0tLS0NCj4gIDEgZmlsZSBjaGFuZ2VkLCAxMCBpbnNlcnRpb25zKCspLCAxMSBkZWxldGlvbnMo
+LSkNCj4gDQo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pY2UvaWNl
+X3ZpcnRjaG5sLmMNCj4gYi9kcml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pY2UvaWNlX3ZpcnRj
+aG5sLmMNCj4gaW5kZXggNTlmNjIzMDZiOWNiLi5iNmVjMDFmNmZhNzMgMTAwNjQ0DQo+IC0tLSBh
+L2RyaXZlcnMvbmV0L2V0aGVybmV0L2ludGVsL2ljZS9pY2VfdmlydGNobmwuYw0KPiArKysgYi9k
+cml2ZXJzL25ldC9ldGhlcm5ldC9pbnRlbC9pY2UvaWNlX3ZpcnRjaG5sLmMNCj4gQEAgLTE3MTUs
+OCArMTcxNSw4IEBAIHN0YXRpYyBpbnQgaWNlX3ZjX2NmZ19xc19tc2coc3RydWN0IGljZV92ZiAq
+dmYsIHU4DQoNCg0KVGVzdGVkLWJ5OiBSYWZhbCBSb21hbm93c2tpIDxyYWZhbC5yb21hbm93c2tp
+QGludGVsLmNvbT4NCg0KDQoNCg==
