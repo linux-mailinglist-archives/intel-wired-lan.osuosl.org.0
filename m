@@ -2,93 +2,90 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id ED3CF989113
-	for <lists+intel-wired-lan@lfdr.de>; Sat, 28 Sep 2024 21:07:37 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id EA7E49892C1
+	for <lists+intel-wired-lan@lfdr.de>; Sun, 29 Sep 2024 04:45:07 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 7F70760708;
-	Sat, 28 Sep 2024 19:07:34 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 347AC60794;
+	Sun, 29 Sep 2024 02:45:06 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id YeDAmTtJLbOo; Sat, 28 Sep 2024 19:07:33 +0000 (UTC)
+ id ZaYRa-Jve2Sa; Sun, 29 Sep 2024 02:45:05 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1717B606E5
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org DABC560790
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1727550453;
-	bh=XlhTUndG2XSLEeiEdpj4xnfpOrn+boHz3I4zPf4Esag=;
-	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=rz4BLpNkWgrTuNKBEC5n68AKovPvMtjfbNNeaZ+Ddx1TPEHFqvBjqUtUxbFQzgrLV
-	 imR/lO1BB8CL3YQevWAHQuClFwUVpCQGORaQASMT/xYb4Une55gigtVpCAI60dJ2Cg
-	 N+idWJo0FRJ8jDlo2P07gsKu5mQZiA9dGzPu9AaBUPY4Afa7/isM22au3y0qJdyyXK
-	 RO+Un4wWgRUaYhoVV9NrMqFzSS7iwBfi4eLy3AouLbol+iUMtzLLKHU3yOQEVOojZa
-	 p8keK7M8bYnem9f1kdd/rXqMaqTqulNES72x8noiNfizEqwZji0WJcDLfAoj7G+n6n
-	 GHfQ728bz850g==
+	s=default; t=1727577904;
+	bh=2q/9Xq3iyIg0BIaKZgbLzqV+w3imPdbeRr3Vi8phnk0=;
+	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=AISDILmyPJ7rwnF93iS+tqEUty5IYAqPvZuqvJxcv4NgMoYlqh6jRo6NofRsnIOgH
+	 tadGUFzZRvPwCo9T29RYjUK6vNTWgP+tS3BtmrekwyfqlWt8kRAabEHkUzslg3j3h3
+	 LrzVL1CxYCHXlq03MAuYsxM56k+OidhBOSkMiq9N/1VWh2UJwdmlR9AAdo2KNR/DXL
+	 fGRM+OePGR0sQvtmfZxY52008QnUikYjzRYlkuBOfOv/fdIqZ1mSYj6bGJCyDbe/GU
+	 AFAh3ok0VrH8EuoqDUkLaXky6CixV2haTfloehLlBzUOUx+RfsYaqfgQvqyVZMnp7F
+	 j67R4LU1Ps1jA==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 1717B606E5;
-	Sat, 28 Sep 2024 19:07:33 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id DABC560790;
+	Sun, 29 Sep 2024 02:45:04 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id D78781BF852
- for <intel-wired-lan@lists.osuosl.org>; Sat, 28 Sep 2024 19:07:31 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id BB9A91BF366
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 29 Sep 2024 02:45:03 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id C5F0981362
- for <intel-wired-lan@lists.osuosl.org>; Sat, 28 Sep 2024 19:07:31 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id B67166078A
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 29 Sep 2024 02:45:03 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 3FVHwnMEyXAE for <intel-wired-lan@lists.osuosl.org>;
- Sat, 28 Sep 2024 19:07:30 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.11;
- helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 6101880D33
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6101880D33
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.11])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 6101880D33
- for <intel-wired-lan@lists.osuosl.org>; Sat, 28 Sep 2024 19:07:30 +0000 (UTC)
-X-CSE-ConnectionGUID: KfWWsckRTmq/OJo0uHno1Q==
-X-CSE-MsgGUID: miEp84sbSKinTycFKiNtTg==
-X-IronPort-AV: E=McAfee;i="6700,10204,11209"; a="37242792"
-X-IronPort-AV: E=Sophos;i="6.11,162,1725346800"; d="scan'208";a="37242792"
-Received: from orviesa010.jf.intel.com ([10.64.159.150])
- by orvoesa103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 28 Sep 2024 12:07:29 -0700
-X-CSE-ConnectionGUID: BP0HmOO8TBC3z/t0jEbBBA==
-X-CSE-MsgGUID: F/872nIVTnC9ZAQ6qyfdcw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.11,162,1725346800"; d="scan'208";a="72730840"
-Received: from lkp-server01.sh.intel.com (HELO 53e96f405c61) ([10.239.97.150])
- by orviesa010.jf.intel.com with ESMTP; 28 Sep 2024 12:07:28 -0700
-Received: from kbuild by 53e96f405c61 with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1sucmr-000NXb-2g
- for intel-wired-lan@lists.osuosl.org; Sat, 28 Sep 2024 19:07:25 +0000
-Date: Sun, 29 Sep 2024 03:06:34 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <202409290329.JMXXi2pr-lkp@intel.com>
-User-Agent: s-nail v14.9.24
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1727550450; x=1759086450;
- h=date:from:to:subject:message-id;
- bh=3ylPn2TX8+4OcpST8IP8sTjPNzvNTCickIe07G0iNOk=;
- b=B7TKkGx5tOexw5qsbl9Fc/k+Ig9HY5kvGpcrIm5OATBz/BXkwaa992B5
- u8LP5YsPkGQg9AdUZwNwoiqqIw3qYf8HKCzwrqyiS/Xdq4L8KF88NkRae
- B/9MMdyzw4lRPAF22GxLl22M0IaRxI2jM3bMp6ANiHWeB98mGvCzQDLgD
- 98Hy/oGd/VmGuqB4Kx1vZvQOjjRGqwAGq2rh7uZONAABYFKHBeJVNQur1
- ebG7q31g/dv1fzvK8b81EM0DQeLJCF6egQ7DYUtaIloJbWEb/6dtMUnzx
- r7OyQGIQu/B2APcBkx9pQ9NZrmuGnzo8RUSGNPiW/Pmta2g4I4TQGXHl4
- A==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=B7TKkGx5
-Subject: [Intel-wired-lan] [tnguy-next-queue:dev-queue] BUILD SUCCESS
- 252daba137fd8c5a841f7120fdafa6f2ad67e88a
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id dj6mKLc5odzJ for <intel-wired-lan@lists.osuosl.org>;
+ Sun, 29 Sep 2024 02:45:02 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=45.249.212.188;
+ helo=szxga02-in.huawei.com; envelope-from=linyunsheng@huawei.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org E262660035
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org E262660035
+Received: from szxga02-in.huawei.com (szxga02-in.huawei.com [45.249.212.188])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id E262660035
+ for <intel-wired-lan@lists.osuosl.org>; Sun, 29 Sep 2024 02:45:00 +0000 (UTC)
+Received: from mail.maildlp.com (unknown [172.19.163.48])
+ by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4XGT571jzCzfbjm;
+ Sun, 29 Sep 2024 10:42:35 +0800 (CST)
+Received: from dggpemf200006.china.huawei.com (unknown [7.185.36.61])
+ by mail.maildlp.com (Postfix) with ESMTPS id 219E918007C;
+ Sun, 29 Sep 2024 10:44:54 +0800 (CST)
+Received: from [10.67.120.129] (10.67.120.129) by
+ dggpemf200006.china.huawei.com (7.185.36.61) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1544.11; Sun, 29 Sep 2024 10:44:53 +0800
+Message-ID: <ac2eec69-8f44-4adb-8182-02c78625851d@huawei.com>
+Date: Sun, 29 Sep 2024 10:44:53 +0800
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+To: Ilias Apalodimas <ilias.apalodimas@linaro.org>
+References: <20240925075707.3970187-1-linyunsheng@huawei.com>
+ <20240925075707.3970187-3-linyunsheng@huawei.com>
+ <CAHS8izOxugzWJDTc-4CWqaKABTj=J4OHs=Lcb=SE9r8gX0J+yg@mail.gmail.com>
+ <842c8cc6-f716-437a-bc98-70bc26d6fd38@huawei.com>
+ <CAC_iWjLgNOtsbhqrhvvEz2C3S668qB8KatL_W+tPHMSkDrNS=w@mail.gmail.com>
+ <0ef315df-e8e9-41e8-9ba8-dcb69492c616@huawei.com>
+ <CAC_iWjKeajwn3otjdEekE6VDLHGEvqmnQRwpN5R3yHj8UpEiDw@mail.gmail.com>
+ <934d601f-be43-4e04-b126-dc86890a4bfa@huawei.com>
+ <CAC_iWjL7m4ZL2W2OZM5F22dLvZhxU6fyCXV_xjyGf+W7UP43EQ@mail.gmail.com>
+Content-Language: en-US
+From: Yunsheng Lin <linyunsheng@huawei.com>
+In-Reply-To: <CAC_iWjL7m4ZL2W2OZM5F22dLvZhxU6fyCXV_xjyGf+W7UP43EQ@mail.gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.67.120.129]
+X-ClientProxiedBy: dggems702-chm.china.huawei.com (10.3.19.179) To
+ dggpemf200006.china.huawei.com (7.185.36.61)
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dmarc=pass (p=quarantine dis=none)
+ header.from=huawei.com
+Subject: Re: [Intel-wired-lan] [PATCH net v2 2/2] page_pool: fix IOMMU crash
+ when driver has already unbound
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -101,212 +98,93 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: imx@lists.linux.dev, Alexei Starovoitov <ast@kernel.org>,
+ Alexander Duyck <alexander.duyck@gmail.com>, linux-mm@kvack.org,
+ Eric Dumazet <edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Shenwei Wang <shenwei.wang@nxp.com>, Mina Almasry <almasrymina@google.com>,
+ Ryder Lee <ryder.lee@mediatek.com>, Daniel Borkmann <daniel@iogearbox.net>,
+ linux-rdma@vger.kernel.org, Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ John Fastabend <john.fastabend@gmail.com>, IOMMU <iommu@lists.linux.dev>,
+ liuyonglong@huawei.com, Clark Wang <xiaoning.wang@nxp.com>,
+ zhangkun09@huawei.com, fanghaiqing@huawei.com, pabeni@redhat.com,
+ Lorenzo Bianconi <lorenzo@kernel.org>,
+ Jesper Dangaard Brouer <hawk@kernel.org>, Kalle Valo <kvalo@kernel.org>,
+ Sean Wang <sean.wang@mediatek.com>, Wei Fang <wei.fang@nxp.com>,
+ kuba@kernel.org, Matthias Brugger <matthias.bgg@gmail.com>,
+ intel-wired-lan@lists.osuosl.org, bpf@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Leon Romanovsky <leon@kernel.org>, Robin Murphy <robin.murphy@arm.com>,
+ linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Tariq Toukan <tariqt@nvidia.com>,
+ Alexander Lobakin <aleksander.lobakin@intel.com>, netdev@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, Andrew Morton <akpm@linux-foundation.org>,
+ Shayne Chen <shayne.chen@mediatek.com>, Saeed Mahameed <saeedm@nvidia.com>,
+ davem@davemloft.net, Felix Fietkau <nbd@nbd.name>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git dev-queue
-branch HEAD: 252daba137fd8c5a841f7120fdafa6f2ad67e88a  igb: Do not bring the device up after non-fatal error
+On 2024/9/28 15:34, Ilias Apalodimas wrote:
 
-elapsed time: 1208m
+...
 
-configs tested: 190
-configs skipped: 3
+> 
+> Yes, that wasn't very clear indeed, apologies for any confusion. I was
+> trying to ask on a linked list that only lives in struct page_pool.
+> But I now realize this was a bad idea since the lookup would be way
+> slower.
+> 
+>> If I understand question correctly, the single/doubly linked list
+>> is more costly than array as the page_pool case as my understanding.
+>>
+>> For single linked list, it doesn't allow deleting a specific entry but
+>> only support deleting the first entry and all the entries. It does support
+>> lockless operation using llist, but have limitation as below:
+>> https://elixir.bootlin.com/linux/v6.7-rc8/source/include/linux/llist.h#L13
+>>
+>> For doubly linked list, it needs two pointer to support deleting a specific
+>> entry and it does not support lockless operation.
+> 
+> I didn't look at the patch too carefully at first. Looking a bit
+> closer now, the array is indeed better, since the lookup is faster.
+> You just need the stored index in struct page to find the page we need
+> to unmap. Do you remember if we can reduce the atomic pp_ref_count to
+> 32bits? If so we can reuse that space for the index. Looking at it
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+For 64 bits system, yes, we can reuse that.
+But for 32 bits system, we may have only 16 bits for each of them, and it
+seems that there is no atomic operation for variable that is less than 32
+bits.
 
-tested configs:
-alpha                             allnoconfig    gcc-13.3.0
-alpha                            allyesconfig    clang-20
-alpha                            allyesconfig    gcc-13.3.0
-alpha                               defconfig    gcc-14.1.0
-arc                              allmodconfig    clang-20
-arc                              allmodconfig    gcc-13.2.0
-arc                               allnoconfig    gcc-13.2.0
-arc                              allyesconfig    clang-20
-arc                              allyesconfig    gcc-13.2.0
-arc                          axs103_defconfig    clang-20
-arc                                 defconfig    gcc-14.1.0
-arc                   randconfig-001-20240928    gcc-14.1.0
-arc                   randconfig-002-20240928    gcc-14.1.0
-arc                           tb10x_defconfig    clang-20
-arm                              allmodconfig    clang-20
-arm                              allmodconfig    gcc-14.1.0
-arm                               allnoconfig    clang-20
-arm                              allyesconfig    clang-20
-arm                              allyesconfig    gcc-14.1.0
-arm                                 defconfig    gcc-14.1.0
-arm                        mvebu_v5_defconfig    clang-20
-arm                   randconfig-001-20240928    gcc-14.1.0
-arm                   randconfig-002-20240928    gcc-14.1.0
-arm                   randconfig-003-20240928    gcc-14.1.0
-arm                   randconfig-004-20240928    gcc-14.1.0
-arm                             rpc_defconfig    clang-20
-arm64                            allmodconfig    clang-20
-arm64                             allnoconfig    gcc-14.1.0
-arm64                               defconfig    gcc-14.1.0
-arm64                 randconfig-001-20240928    gcc-14.1.0
-arm64                 randconfig-002-20240928    gcc-14.1.0
-arm64                 randconfig-003-20240928    gcc-14.1.0
-arm64                 randconfig-004-20240928    gcc-14.1.0
-csky                              allnoconfig    gcc-14.1.0
-csky                                defconfig    gcc-14.1.0
-csky                  randconfig-001-20240928    gcc-14.1.0
-csky                  randconfig-002-20240928    gcc-14.1.0
-hexagon                          allmodconfig    clang-20
-hexagon                           allnoconfig    clang-20
-hexagon                          allyesconfig    clang-20
-hexagon                             defconfig    gcc-14.1.0
-hexagon               randconfig-001-20240928    gcc-14.1.0
-hexagon               randconfig-002-20240928    gcc-14.1.0
-i386                             allmodconfig    clang-18
-i386                             allmodconfig    gcc-12
-i386                              allnoconfig    clang-18
-i386                              allnoconfig    gcc-12
-i386                             allyesconfig    clang-18
-i386                             allyesconfig    gcc-12
-i386        buildonly-randconfig-001-20240928    clang-18
-i386        buildonly-randconfig-002-20240928    gcc-12
-i386        buildonly-randconfig-003-20240928    clang-18
-i386        buildonly-randconfig-004-20240928    gcc-12
-i386        buildonly-randconfig-005-20240928    gcc-12
-i386        buildonly-randconfig-006-20240928    gcc-12
-i386                                defconfig    clang-18
-i386                  randconfig-001-20240928    clang-18
-i386                  randconfig-002-20240928    gcc-12
-i386                  randconfig-003-20240928    clang-18
-i386                  randconfig-004-20240928    clang-18
-i386                  randconfig-005-20240928    clang-18
-i386                  randconfig-006-20240928    gcc-12
-i386                  randconfig-011-20240928    clang-18
-i386                  randconfig-012-20240928    gcc-12
-i386                  randconfig-013-20240928    clang-18
-i386                  randconfig-014-20240928    clang-18
-i386                  randconfig-015-20240928    clang-18
-i386                  randconfig-016-20240928    clang-18
-loongarch                        allmodconfig    gcc-14.1.0
-loongarch                         allnoconfig    gcc-14.1.0
-loongarch                           defconfig    gcc-14.1.0
-loongarch             randconfig-001-20240928    gcc-14.1.0
-loongarch             randconfig-002-20240928    gcc-14.1.0
-m68k                             allmodconfig    gcc-14.1.0
-m68k                              allnoconfig    gcc-14.1.0
-m68k                             allyesconfig    gcc-14.1.0
-m68k                                defconfig    gcc-14.1.0
-microblaze                       allmodconfig    gcc-14.1.0
-microblaze                        allnoconfig    gcc-14.1.0
-microblaze                       allyesconfig    gcc-14.1.0
-microblaze                          defconfig    gcc-14.1.0
-mips                              allnoconfig    gcc-14.1.0
-mips                          eyeq5_defconfig    clang-20
-mips                           ip22_defconfig    clang-20
-mips                           jazz_defconfig    clang-20
-mips                     loongson2k_defconfig    clang-20
-mips                          rb532_defconfig    clang-20
-nios2                             allnoconfig    gcc-14.1.0
-nios2                               defconfig    gcc-14.1.0
-nios2                 randconfig-001-20240928    gcc-14.1.0
-nios2                 randconfig-002-20240928    gcc-14.1.0
-openrisc                          allnoconfig    gcc-14.1.0
-openrisc                         allyesconfig    gcc-14.1.0
-openrisc                            defconfig    gcc-12
-parisc                           allmodconfig    gcc-14.1.0
-parisc                            allnoconfig    gcc-14.1.0
-parisc                           allyesconfig    gcc-14.1.0
-parisc                              defconfig    gcc-12
-parisc                randconfig-001-20240928    gcc-14.1.0
-parisc                randconfig-002-20240928    gcc-14.1.0
-parisc64                            defconfig    gcc-14.1.0
-powerpc                          allmodconfig    gcc-14.1.0
-powerpc                           allnoconfig    gcc-14.1.0
-powerpc                          allyesconfig    clang-20
-powerpc                          allyesconfig    gcc-14.1.0
-powerpc                     asp8347_defconfig    clang-20
-powerpc                      mgcoge_defconfig    clang-20
-powerpc                      ppc6xx_defconfig    clang-20
-powerpc               randconfig-001-20240928    gcc-14.1.0
-powerpc               randconfig-002-20240928    gcc-14.1.0
-powerpc               randconfig-003-20240928    gcc-14.1.0
-powerpc                     tqm8540_defconfig    clang-20
-powerpc64             randconfig-001-20240928    gcc-14.1.0
-powerpc64             randconfig-002-20240928    gcc-14.1.0
-powerpc64             randconfig-003-20240928    gcc-14.1.0
-riscv                            allmodconfig    clang-20
-riscv                            allmodconfig    gcc-14.1.0
-riscv                             allnoconfig    gcc-14.1.0
-riscv                            allyesconfig    clang-20
-riscv                            allyesconfig    gcc-14.1.0
-riscv                               defconfig    clang-20
-riscv                               defconfig    gcc-12
-riscv                 randconfig-001-20240928    gcc-14.1.0
-riscv                 randconfig-002-20240928    gcc-14.1.0
-s390                             allmodconfig    clang-20
-s390                             allmodconfig    gcc-14.1.0
-s390                              allnoconfig    clang-20
-s390                             allyesconfig    gcc-14.1.0
-s390                                defconfig    gcc-12
-s390                  randconfig-001-20240928    gcc-14.1.0
-s390                  randconfig-002-20240928    gcc-14.1.0
-sh                               allmodconfig    gcc-14.1.0
-sh                                allnoconfig    gcc-14.1.0
-sh                               allyesconfig    gcc-14.1.0
-sh                                  defconfig    gcc-12
-sh                          kfr2r09_defconfig    clang-20
-sh                    randconfig-001-20240928    gcc-14.1.0
-sh                    randconfig-002-20240928    gcc-14.1.0
-sh                   rts7751r2dplus_defconfig    clang-20
-sh                           se7780_defconfig    clang-20
-sparc                            allmodconfig    gcc-14.1.0
-sparc64                             defconfig    gcc-12
-sparc64               randconfig-001-20240928    gcc-14.1.0
-sparc64               randconfig-002-20240928    gcc-14.1.0
-um                               allmodconfig    clang-20
-um                                allnoconfig    clang-17
-um                               allyesconfig    clang-20
-um                               allyesconfig    gcc-12
-um                                  defconfig    gcc-12
-um                             i386_defconfig    gcc-12
-um                    randconfig-001-20240928    gcc-14.1.0
-um                    randconfig-002-20240928    gcc-14.1.0
-um                           x86_64_defconfig    gcc-12
-x86_64                            allnoconfig    clang-18
-x86_64                           allyesconfig    clang-18
-x86_64      buildonly-randconfig-001-20240928    clang-18
-x86_64      buildonly-randconfig-002-20240928    clang-18
-x86_64      buildonly-randconfig-003-20240928    clang-18
-x86_64      buildonly-randconfig-004-20240928    clang-18
-x86_64      buildonly-randconfig-005-20240928    clang-18
-x86_64      buildonly-randconfig-006-20240928    clang-18
-x86_64                              defconfig    clang-18
-x86_64                              defconfig    gcc-11
-x86_64                                  kexec    clang-18
-x86_64                randconfig-001-20240928    clang-18
-x86_64                randconfig-002-20240928    clang-18
-x86_64                randconfig-003-20240928    clang-18
-x86_64                randconfig-004-20240928    clang-18
-x86_64                randconfig-005-20240928    clang-18
-x86_64                randconfig-006-20240928    clang-18
-x86_64                randconfig-011-20240928    clang-18
-x86_64                randconfig-012-20240928    clang-18
-x86_64                randconfig-013-20240928    clang-18
-x86_64                randconfig-014-20240928    clang-18
-x86_64                randconfig-015-20240928    clang-18
-x86_64                randconfig-016-20240928    clang-18
-x86_64                randconfig-071-20240928    clang-18
-x86_64                randconfig-072-20240928    clang-18
-x86_64                randconfig-073-20240928    clang-18
-x86_64                randconfig-074-20240928    clang-18
-x86_64                randconfig-075-20240928    clang-18
-x86_64                randconfig-076-20240928    clang-18
-x86_64                               rhel-8.3    gcc-12
-x86_64                           rhel-8.3-bpf    clang-18
-x86_64                         rhel-8.3-kunit    clang-18
-x86_64                           rhel-8.3-ltp    clang-18
-x86_64                          rhel-8.3-rust    clang-18
-xtensa                            allnoconfig    gcc-14.1.0
-xtensa                randconfig-001-20240928    gcc-14.1.0
-xtensa                randconfig-002-20240928    gcc-14.1.0
+> requires a bit more work in netmem, but that's mostly swapping all the
+> atomic64 calls to atomic ones.
+> 
+>>
+>> For pool->items, as the alloc side is protected by NAPI context, and the
+>> free side use item->pp_idx to ensure there is only one producer for each
+>> item, which means for each item in pool->items, there is only one consumer
+>> and one producer, which seems much like the case when the page is not
+>> recyclable in __page_pool_put_page, we don't need a lock protection when
+>> calling page_pool_return_page(), the 'struct page' is also one consumer
+>> and one producer as the pool->items[item->pp_idx] does:
+>> https://elixir.bootlin.com/linux/v6.7-rc8/source/net/core/page_pool.c#L645
+>>
+>> We only need a lock protection when page_pool_destroy() is called to
+>> check if there is inflight page to be unmapped as a consumer, and the
+>> __page_pool_put_page() may also called to unmapped the inflight page as
+>> another consumer,
+> 
+> Thanks for the explanation. On the locking side, page_pool_destroy is
+> called once from the driver and then it's either the workqueue for
+> inflight packets or an SKB that got freed and tried to recycle right?
+> But do we still need to do all the unmapping etc from the delayed
+> work? Since the new function will unmap all packets in
+> page_pool_destroy, we can just skip unmapping when the delayed work
+> runs
 
---
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+Yes, the pool->dma_map is clear in page_pool_item_uninit() after it does
+the unmapping for all inflight pages with the protection of pool->destroy_lock,
+so that the unmapping is skipped in page_pool_return_page() when those inflight
+pages are returned back to page_pool.
+
+> 
