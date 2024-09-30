@@ -1,115 +1,95 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id E331A98AC11
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 30 Sep 2024 20:28:03 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id C1BA598AC42
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 30 Sep 2024 20:41:14 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 5A8E8810CB;
-	Mon, 30 Sep 2024 18:28:02 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 6ED08810CC;
+	Mon, 30 Sep 2024 18:41:13 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id sKK1qhhhfLWt; Mon, 30 Sep 2024 18:28:01 +0000 (UTC)
+ id M5ACIm6skGHr; Mon, 30 Sep 2024 18:41:12 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 33D7B8108B
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3B5D9810C8
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1727720881;
-	bh=YZ8ek2hT/WFDjyeRsPQC6Ye9s+aSlMGsNX4bBi7RmHM=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=N6U75WpUBvCqAtjW+Nl8dRAFL64VYRll+/yS/NmAyRngzkQTa6ie/Ptmiaqtw+fd2
-	 hxQ/mKt6+MUlvH6XdXxlFlLGYXj4eUAOykZtFBZonOoaMKewveYSJLREkth124oQV6
-	 UbpBlGfPXRl1M8N3FNMZXAgRMWEUQTWVjgknJ52vv/O+tGaidSnpI0CKTYwZxP7BO9
-	 DNh8DuIq6PcFhX1DMpvVqIKkPH24uOcK00YWdrT8mVFgCQ+/yGtQbEq1Pifx5pWKfb
-	 mxQN8PosDTJK7HSN//hMFaUDXMvQCFQOPtccsslqq76yvW6TWmBz8VV2sziYNsfzVj
-	 3HS2xuJVsTGhQ==
+	s=default; t=1727721672;
+	bh=bY6Xo73AWHsLr0N0vDG5Yqxchj/TWk8LTBJcHRdTQyA=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=7SURGSXxztahQiXTtRamspFMij7Xeqms240KBAt0DG6fuCdbUDeA9stlfx3Jyjb6L
+	 mibwCPJk15wzy/PICxv9z0b/RGur4zxtGV2wf3tfMTOLgc5uRxHVahwE5WWOVSZPfz
+	 gjrR2CR7O1LYK4YKbCSl14p2L/UClu7A1/IIY0D7SbfwAzt54k3DuxYChdUSJ55Vwt
+	 YBIgVtparP1ScsMyY/bRDBxQO32H/nBTV7XJHjQf8ANVP2e86owu0NabGazvUeEPyR
+	 xdtnBriPcEEKUSroVzHLiUIGNAWuUKuWJ/VLchkdQuaZuNGg8P1AXn5260bYIabURs
+	 tH0V5KlnQQYxQ==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 33D7B8108B;
-	Mon, 30 Sep 2024 18:28:01 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 3B5D9810C8;
+	Mon, 30 Sep 2024 18:41:12 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id A8AD61BF2F5
- for <intel-wired-lan@lists.osuosl.org>; Mon, 30 Sep 2024 18:27:59 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id C23571BF2F5
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 30 Sep 2024 18:41:09 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id A257E4070B
- for <intel-wired-lan@lists.osuosl.org>; Mon, 30 Sep 2024 18:27:59 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id AFDD2606E7
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 30 Sep 2024 18:41:09 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 6oQK7_1XjXmD for <intel-wired-lan@lists.osuosl.org>;
- Mon, 30 Sep 2024 18:27:58 +0000 (UTC)
-Received-SPF: Permerror (mailfrom) identity=mailfrom;
- client-ip=2607:f8b0:4864:20::631; helo=mail-pl1-x631.google.com;
- envelope-from=mkhalfella@purestorage.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 64D2E408AD
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 64D2E408AD
-Received: from mail-pl1-x631.google.com (mail-pl1-x631.google.com
- [IPv6:2607:f8b0:4864:20::631])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 64D2E408AD
- for <intel-wired-lan@lists.osuosl.org>; Mon, 30 Sep 2024 18:27:56 +0000 (UTC)
-Received: by mail-pl1-x631.google.com with SMTP id
- d9443c01a7336-20b9b35c7c3so9163115ad.3
- for <intel-wired-lan@lists.osuosl.org>; Mon, 30 Sep 2024 11:27:56 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1727720876; x=1728325676;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=YZ8ek2hT/WFDjyeRsPQC6Ye9s+aSlMGsNX4bBi7RmHM=;
- b=DTZwVh3n1ZowtH7LsH78NUFDVg68NuvRYZCQCob4WJSwfkWdti3iQ9IjqyoAQ9Pnbl
- +Xjj+If/J/q7/KEAwxOWDj8Y8DWYf6pd1BZfKQbVFgEB8EiDqvXG9BqHeIa8nSjIbsiq
- qPovGDxNpMQE/TF6E7y1A/MyxOWPq+5oXyosp+Co8CnuYF0Hp/6sp0NqPUTUZmE0dfMQ
- nFo1VoH/V7z4a1Yr5md28MxOvKAZ0+47KsfxkJKsjxVPwziOMst3hT1Z1kSY6Hm4nq8/
- n2FsYpp6bpQ0SB9LGrLejOe7HgBwaqFyHvkhWcSZg+HMSSUrxpDlFbuGCoEnfruO5QwE
- t4Rw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWQViLDLmiSlDKTNsO2Fnlb+DQ4TZW8gVFX8uZdnPq8kYgQRq05xlAGeBfblT/yG/MRKWc9Cq4ITchvAZ9lpxY=@lists.osuosl.org
-X-Gm-Message-State: AOJu0Yyrjowub/2HAcZEUy7CVss1d5Lwq2cF5JlOhnEjcisk2zezf+jV
- 6cmVDJgr7lTI4Y7A3dxvwEXbXB9oAM71aaa6QYaPhjqbVpLcSvQHWfrcy2sM0Bw=
-X-Google-Smtp-Source: AGHT+IEPD0M1S4D/tI6Apuz0+SRKRkbBIq0MNt57C/GmcGlxlEEyiQcbKrX6kS3f6EzAtW+NVLq8Kg==
-X-Received: by 2002:a17:902:e547:b0:20b:9034:fb44 with SMTP id
- d9443c01a7336-20b9034fbdbmr48466935ad.16.1727720875944; 
- Mon, 30 Sep 2024 11:27:55 -0700 (PDT)
-Received: from medusa.lab.kspace.sh ([208.88.152.253])
- by smtp.googlemail.com with ESMTPSA id
- d9443c01a7336-20b37d67769sm57209885ad.33.2024.09.30.11.27.55
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 30 Sep 2024 11:27:55 -0700 (PDT)
-Date: Mon, 30 Sep 2024 11:27:54 -0700
-From: Mohamed Khalfella <mkhalfella@purestorage.com>
-To: "Pucha, HimasekharX Reddy" <himasekharx.reddy.pucha@intel.com>
-Message-ID: <Zvrtqt_0bc9rSBX6@apollo.purestorage.com>
-References: <20240924210604.123175-1-mkhalfella@purestorage.com>
- <20240924210604.123175-2-mkhalfella@purestorage.com>
- <CYYPR11MB8429494B65C5E9A025BF8F96BD742@CYYPR11MB8429.namprd11.prod.outlook.com>
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id sDNAipOAs7be for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 30 Sep 2024 18:41:06 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.9;
+ helo=mgamail.intel.com; envelope-from=arkadiusz.kubalewski@intel.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org B7F40606EC
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org B7F40606EC
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.9])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id B7F40606EC
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 30 Sep 2024 18:41:05 +0000 (UTC)
+X-CSE-ConnectionGUID: DRmW/iqlRWqEk1tWNoy6sQ==
+X-CSE-MsgGUID: NTv3D5rVRBKf2lRzK/J/og==
+X-IronPort-AV: E=McAfee;i="6700,10204,11211"; a="37503954"
+X-IronPort-AV: E=Sophos;i="6.11,166,1725346800"; d="scan'208";a="37503954"
+Received: from fmviesa006.fm.intel.com ([10.60.135.146])
+ by fmvoesa103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 30 Sep 2024 11:41:05 -0700
+X-CSE-ConnectionGUID: pPFT+mntRS+9sU2135O1AA==
+X-CSE-MsgGUID: dKfJQhjlTpCr3vzn6z+VYA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.11,166,1725346800"; d="scan'208";a="73006463"
+Received: from amlin-018-114.igk.intel.com ([10.102.18.114])
+ by fmviesa006.fm.intel.com with ESMTP; 30 Sep 2024 11:41:03 -0700
+From: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Mon, 30 Sep 2024 20:36:22 +0200
+Message-Id: <20240930183622.897485-1-arkadiusz.kubalewski@intel.com>
+X-Mailer: git-send-email 2.38.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CYYPR11MB8429494B65C5E9A025BF8F96BD742@CYYPR11MB8429.namprd11.prod.outlook.com>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=purestorage.com; s=google2022; t=1727720876; x=1728325676;
- darn=lists.osuosl.org; 
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=YZ8ek2hT/WFDjyeRsPQC6Ye9s+aSlMGsNX4bBi7RmHM=;
- b=E6zogXsV8OfdJx9Kc0uvIn3Ho4CP/DULuX7uVXZQ6N265fZ5h2mJiENQI7bKMtXRmN
- FWDNjOy89Z+AWjlOOrGC66zPlFb0USRLXxMapME4OsMpKTqeccedpmMjlR8YEW567cak
- /fTNNUukQud6sLqaUNyC9jVpdK0QBple1zlftngczkRmKHhh92dFstnKkVZLT5cr6CeU
- oyanlhbX9rsXqOglzwdOociEQy5tqRY3djAmtle96/GJws3Vh1UtcnCdZ02sV9h7ut1u
- dXFy0Tp+iXYXcypXdIx1QFoWlbfLaaINotBQ4wqTEe8e6AQXwXjGivIAYhg3dAJUJqGs
- tZ4Q==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=pass (p=reject dis=none)
- header.from=purestorage.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+Content-Transfer-Encoding: 8bit
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1727721666; x=1759257666;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=GG/OJKhDL0RBKwrdAegSZu+YlLNna1KjYgbZ2ujHHIs=;
+ b=agsUQntDznApeIqlo49oDaKdImOQzvDJXiPEXA6uE2HOGngXuIKDIp3j
+ O1vswhTwDAyKzK1Is6yDiKvhHVvz1zIg8aa+CzInX4tNlZF1PBFkstiid
+ 57XPaFYNiDwQq/Fe9yCWuFZ84xPQ7McgYQByOu6X+zK8R13zRxIEEOMio
+ XDULs7Co721lCAXLr1wh0ilsYQnxAWNBuK8a0maos8sb5qTdfo1i4s7eS
+ CSgSiVZ0+QsbYNAUpQnlVnXODPySUMAT6jxN2hxpY2S1I5tne3/2rno5A
+ hObpxbDf7UGrpdgeiqZChgJ7mOkNu63ihUaorkD1lhMCvq+kScmodCVVX
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=intel.com
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=purestorage.com header.i=@purestorage.com
- header.a=rsa-sha256 header.s=google2022 header.b=E6zogXsV
-Subject: Re: [Intel-wired-lan] [PATCH v2 1/1] igb: Do not bring the device
- up after non-fatal error
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=agsUQntD
+Subject: [Intel-wired-lan] [PATCH iwl-net v1] ice: fix PHY Clock Recovery
+ availability check
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -122,118 +102,119 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Auke Kok <auke-jan.h.kok@intel.com>, "Kitszel,
- Przemyslaw" <przemyslaw.kitszel@intel.com>, Ying Hsu <yinghsu@chromium.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Jeff Garzik <jgarzik@redhat.com>, "Zhong, YuanYuan" <yzhong@purestorage.com>,
- Eric Dumazet <edumazet@google.com>, "Nguyen,
- Anthony L" <anthony.l.nguyen@intel.com>, Simon Horman <horms@kernel.org>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- "David S. Miller" <davem@davemloft.net>,
- "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Cc: Aleksandr Loktionov <aleksandr.loktionov@intel.com>,
+ Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 2024-09-28 14:40:05 +0000, Pucha, HimasekharX Reddy wrote:
-> >-----Original Message-----
-> >From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of Mohamed Khalfella
-> > Sent: Wednesday, September 25, 2024 2:36 AM
-> > To: Nguyen, Anthony L <anthony.l.nguyen@intel.com>; Kitszel, Przemyslaw <przemyslaw.kitszel@intel.com>; David S. Miller <davem@davemloft.net>; Eric Dumazet <edumazet@google.com>; Jakub Kicinski <kuba@kernel.org>; Paolo Abeni <pabeni@redhat.com>; Auke Kok <auke-jan.h.kok@intel.com>; Zhong, YuanYuan <yzhong@purestorage.com>; Jeff Garzik <jgarzik@redhat.com>; Mohamed Khalfella <mkhalfella@purestorage.com>; Ying Hsu <yinghsu@chromium.org>; Simon Horman <horms@kernel.org>
-> > Cc: netdev@vger.kernel.org; intel-wired-lan@lists.osuosl.org; linux-kernel@vger.kernel.org
-> > Subject: [Intel-wired-lan] [PATCH v2 1/1] igb: Do not bring the device up after non-fatal error
-> >
-> >Commit 004d25060c78 ("igb: Fix igb_down hung on surprise removal") changed igb_io_error_detected() to ignore non-fatal pcie errors in order to avoid hung task that can happen when igb_down() is called multiple times. This caused an issue when processing transient non-fatal errors.
-> > igb_io_resume(), which is called after igb_io_error_detected(), assumes that device is brought down by igb_io_error_detected() if the interface is up. This resulted in panic with stacktrace below.
-> >
-> > [ T3256] igb 0000:09:00.0 haeth0: igb: haeth0 NIC Link is Down [  T292] pcieport 0000:00:1c.5: AER: Uncorrected (Non-Fatal) error received: 0000:09:00.0 [  T292] igb 0000:09:00.0: PCIe Bus Error: severity=Uncorrected (Non-Fatal), type=Transaction Layer, (Requester ID)
-> > [  T292] igb 0000:09:00.0:   device [8086:1537] error status/mask=00004000/00000000
-> > [  T292] igb 0000:09:00.0:    [14] CmpltTO [  200.105524,009][  T292] igb 0000:09:00.0: AER:   TLP Header: 00000000 00000000 00000000 00000000
-> > [  T292] pcieport 0000:00:1c.5: AER: broadcast error_detected message [  T292] igb 0000:09:00.0: Non-correctable non-fatal error reported.
-> > [  T292] pcieport 0000:00:1c.5: AER: broadcast mmio_enabled message [  T292] pcieport 0000:00:1c.5: AER: broadcast resume message [  T292] ------------[ cut here ]------------ [  T292] kernel BUG at net/core/dev.c:6539!
-> > [  T292] invalid opcode: 0000 [#1] PREEMPT SMP [  T292] RIP: 0010:napi_enable+0x37/0x40 [  T292] Call Trace:
-> > [  T292]  <TASK>
-> > [  T292]  ? die+0x33/0x90
-> > [  T292]  ? do_trap+0xdc/0x110
-> > [  T292]  ? napi_enable+0x37/0x40
-> > [  T292]  ? do_error_trap+0x70/0xb0
-> > [  T292]  ? napi_enable+0x37/0x40
-> > [  T292]  ? napi_enable+0x37/0x40
-> > [  T292]  ? exc_invalid_op+0x4e/0x70
-> > [  T292]  ? napi_enable+0x37/0x40
-> > [  T292]  ? asm_exc_invalid_op+0x16/0x20 [  T292]  ? napi_enable+0x37/0x40 [  T292]  igb_up+0x41/0x150 [  T292]  igb_io_resume+0x25/0x70 [  T292]  report_resume+0x54/0x70 [  T292]  ? report_frozen_detected+0x20/0x20 [  T292]  pci_walk_bus+0x6c/0x90 [  T292]  ? aer_print_port_info+0xa0/0xa0 [  T292]  pcie_do_recovery+0x22f/0x380 [  T292]  aer_process_err_devices+0x110/0x160
-> > [  T292]  aer_isr+0x1c1/0x1e0
-> > [  T292]  ? disable_irq_nosync+0x10/0x10 [  T292]  irq_thread_fn+0x1a/0x60 [  T292]  irq_thread+0xe3/0x1a0 [  T292]  ? irq_set_affinity_notifier+0x120/0x120
-> > [  T292]  ? irq_affinity_notify+0x100/0x100 [  T292]  kthread+0xe2/0x110 [  T292]  ? kthread_complete_and_exit+0x20/0x20
-> > [  T292]  ret_from_fork+0x2d/0x50
-> > [  T292]  ? kthread_complete_and_exit+0x20/0x20
-> > [  T292]  ret_from_fork_asm+0x11/0x20
-> > [  T292]  </TASK>
-> >
-> > To fix this issue igb_io_resume() checks if the interface is running and the device is not down this means igb_io_error_detected() did not bring the device down and there is no need to bring it up.
-> >
-> > Signed-off-by: Mohamed Khalfella <mkhalfella@purestorage.com>
-> > Reviewed-by: Yuanyuan Zhong<yzhong@purestorage.com>
-> > Fixes: 004d25060c78 ("igb: Fix igb_down hung on surprise removal")
-> > ---
-> >  drivers/net/ethernet/intel/igb/igb_main.c | 4 ++++
-> >  1 file changed, 4 insertions(+)
-> 
-> Any reproductions steps for reproduction of these issue?
-> 
+To check if PHY Clock Recovery mechanic is available for a device, there
+is a need to verify if given PHY is available within the netlist, but the
+netlist node type used for the search is wrong, also the search context
+shall be specified.
 
-I know of two way to reproduce this kernel panic on a kernel that does
-not have the patch above.
+Modify the search function to allow specifying the context in the
+search.
 
-1- Using aer-inject:
+Use the PHY node type instead of CLOCK CONTROLLER type, also use proper
+search context which for PHY search is PORT, as defined in E810
+Datasheet [1] ('3.3.8.2.4 Node Part Number and Node Options (0x0003)' and
+'Table 3-105. Program Topology Device NVM Admin Command').
 
-  This works on both physical machine and vm. Here are the steps on a
-  virtual machine.
+[1] https://cdrdv2.intel.com/v1/dl/getContent/613875?explicitVersion=true
 
-  root@(none):~# lspci -t -v -s 03:00.0
-  -[0000:02]---00.0-[03]----00.0  Intel Corporation 82576 Gigabit Network Connection
-  root@(none):~# cat > /tmp/uncor << EOF
-  > AER
-  > UNCOR_STATUS COMP_ABORT
-  > HEADER_LOG 0 1 2 3
-  > EOF
-  root@(none):~# modprobe aer_inject
-  root@(none):~# /var/tmp/aer-inject --id=0000:03:00.0 /tmp/uncor
+Fixes: 91e43ca0090b ("ice: fix linking when CONFIG_PTP_1588_CLOCK=n")
+Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+Signed-off-by: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
+---
+ drivers/net/ethernet/intel/ice/ice_common.c | 25 ++++++++++++++-------
+ 1 file changed, 17 insertions(+), 8 deletions(-)
 
-  This is the qemu command used to start the vm. You probably do not
-  need all the options related to numa settings and iommu. Only the part
-  related to pci setup should be enough.
+diff --git a/drivers/net/ethernet/intel/ice/ice_common.c b/drivers/net/ethernet/intel/ice/ice_common.c
+index 009716a12a26..f1324e25b2af 100644
+--- a/drivers/net/ethernet/intel/ice/ice_common.c
++++ b/drivers/net/ethernet/intel/ice/ice_common.c
+@@ -542,7 +542,8 @@ ice_aq_get_netlist_node(struct ice_hw *hw, struct ice_aqc_get_link_topo *cmd,
+ /**
+  * ice_find_netlist_node
+  * @hw: pointer to the hw struct
+- * @node_type_ctx: type of netlist node to look for
++ * @node_type: type of netlist node to look for
++ * @ctx: context of the search
+  * @node_part_number: node part number to look for
+  * @node_handle: output parameter if node found - optional
+  *
+@@ -552,10 +553,12 @@ ice_aq_get_netlist_node(struct ice_hw *hw, struct ice_aqc_get_link_topo *cmd,
+  * valid if the function returns zero, and should be ignored on any non-zero
+  * return value.
+  *
+- * Returns: 0 if the node is found, -ENOENT if no handle was found, and
+- * a negative error code on failure to access the AQ.
++ * Return:
++ * * 0 if the node is found,
++ * * -ENOENT if no handle was found,
++ * * negative error code on failure to access the AQ.
+  */
+-static int ice_find_netlist_node(struct ice_hw *hw, u8 node_type_ctx,
++static int ice_find_netlist_node(struct ice_hw *hw, u8 node_type, u8 ctx,
+ 				 u8 node_part_number, u16 *node_handle)
+ {
+ 	u8 idx;
+@@ -566,8 +569,8 @@ static int ice_find_netlist_node(struct ice_hw *hw, u8 node_type_ctx,
+ 		int status;
+ 
+ 		cmd.addr.topo_params.node_type_ctx =
+-			FIELD_PREP(ICE_AQC_LINK_TOPO_NODE_TYPE_M,
+-				   node_type_ctx);
++			FIELD_PREP(ICE_AQC_LINK_TOPO_NODE_TYPE_M, node_type) |
++			FIELD_PREP(ICE_AQC_LINK_TOPO_NODE_CTX_M, ctx);
+ 		cmd.addr.topo_params.index = idx;
+ 
+ 		status = ice_aq_get_netlist_node(hw, &cmd,
+@@ -2726,9 +2729,11 @@ bool ice_is_pf_c827(struct ice_hw *hw)
+  */
+ bool ice_is_phy_rclk_in_netlist(struct ice_hw *hw)
+ {
+-	if (ice_find_netlist_node(hw, ICE_AQC_LINK_TOPO_NODE_TYPE_CLK_CTRL,
++	if (ice_find_netlist_node(hw, ICE_AQC_LINK_TOPO_NODE_TYPE_PHY,
++				  ICE_AQC_LINK_TOPO_NODE_CTX_PORT,
+ 				  ICE_AQC_GET_LINK_TOPO_NODE_NR_C827, NULL) &&
+-	    ice_find_netlist_node(hw, ICE_AQC_LINK_TOPO_NODE_TYPE_CLK_CTRL,
++	    ice_find_netlist_node(hw, ICE_AQC_LINK_TOPO_NODE_TYPE_PHY,
++				  ICE_AQC_LINK_TOPO_NODE_CTX_PORT,
+ 				  ICE_AQC_GET_LINK_TOPO_NODE_NR_E822_PHY, NULL))
+ 		return false;
+ 
+@@ -2744,6 +2749,7 @@ bool ice_is_phy_rclk_in_netlist(struct ice_hw *hw)
+ bool ice_is_clock_mux_in_netlist(struct ice_hw *hw)
+ {
+ 	if (ice_find_netlist_node(hw, ICE_AQC_LINK_TOPO_NODE_TYPE_CLK_MUX,
++				  ICE_AQC_LINK_TOPO_NODE_CTX_GLOBAL,
+ 				  ICE_AQC_GET_LINK_TOPO_NODE_NR_GEN_CLK_MUX,
+ 				  NULL))
+ 		return false;
+@@ -2764,12 +2770,14 @@ bool ice_is_clock_mux_in_netlist(struct ice_hw *hw)
+ bool ice_is_cgu_in_netlist(struct ice_hw *hw)
+ {
+ 	if (!ice_find_netlist_node(hw, ICE_AQC_LINK_TOPO_NODE_TYPE_CLK_CTRL,
++				   ICE_AQC_LINK_TOPO_NODE_CTX_GLOBAL,
+ 				   ICE_AQC_GET_LINK_TOPO_NODE_NR_ZL30632_80032,
+ 				   NULL)) {
+ 		hw->cgu_part_number = ICE_AQC_GET_LINK_TOPO_NODE_NR_ZL30632_80032;
+ 		return true;
+ 	} else if (!ice_find_netlist_node(hw,
+ 					  ICE_AQC_LINK_TOPO_NODE_TYPE_CLK_CTRL,
++					  ICE_AQC_LINK_TOPO_NODE_CTX_GLOBAL,
+ 					  ICE_AQC_GET_LINK_TOPO_NODE_NR_SI5383_5384,
+ 					  NULL)) {
+ 		hw->cgu_part_number = ICE_AQC_GET_LINK_TOPO_NODE_NR_SI5383_5384;
+@@ -2788,6 +2796,7 @@ bool ice_is_cgu_in_netlist(struct ice_hw *hw)
+ bool ice_is_gps_in_netlist(struct ice_hw *hw)
+ {
+ 	if (ice_find_netlist_node(hw, ICE_AQC_LINK_TOPO_NODE_TYPE_GPS,
++				  ICE_AQC_LINK_TOPO_NODE_CTX_GLOBAL,
+ 				  ICE_AQC_GET_LINK_TOPO_NODE_NR_GEN_GPS, NULL))
+ 		return false;
+ 
+-- 
+2.38.1
 
-  /usr/bin/qemu-system-x86_64 \
-    -kernel $SRCDIR/arch/x86/boot/bzImage \
-    -initrd $INITRAMFSIMG \
-    -append "rdinit=/startup.sh console=ttyS0,115200n8" \
-    -machine q35,accel=kvm,kernel-irqchip=split \
-    -nographic \
-    -chardev socket,id=gdb0,host=0.0.0.0,port=22004,telnet=on,server=on,wait=off \
-    -gdb chardev:gdb0 \
-    $GDB_WAIT \
-    -serial telnet:127.0.0.1:22003,server=on,wait=off \
-    -device pxb-pcie,id=pcie.1,bus_nr=2,bus=pcie.0 \
-    -device ioh3420,id=pcie_port1,bus=pcie.1,chassis=1 \
-    -netdev user,id=net0,hostfwd=tcp:127.0.0.1:22002-:22 \
-    -device igb,netdev=net0,id=net0,mac=52:54:00:b8:9c:58,bus=pcie_port1 \
-    -cpu host \
-    -smp 4 \
-    -m 8G \
-    -object memory-backend-ram,size=7G,id=m0 \
-    -object memory-backend-ram,size=1G,id=m1 \
-    -numa node,nodeid=0,memdev=m0,cpus=0-1 \
-    -numa node,nodeid=1,memdev=m1,cpus=2-3 \
-    -chardev socket,id=charmonitor,host=0.0.0.0,port=10001,telnet=on,server=on,wait=off \
-    -mon chardev=charmonitor,id=monitor \
-    -boot order=c \
-    -device intel-iommu,intremap=on
-
-
-2- Using pcie_aer_inject_error
-
-  Injecting pcie aer error from qemu monitor should be enough to trigger
-  the kernel panic. This is using the qemu command above.
-
-  (qemu) pcie_aer_inject_error pcie_port1 0x00004000
