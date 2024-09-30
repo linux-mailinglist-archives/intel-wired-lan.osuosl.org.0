@@ -1,129 +1,88 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 70B02989FF7
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 30 Sep 2024 12:58:17 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1EFE498A08D
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 30 Sep 2024 13:28:44 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id D4B2580FF8;
-	Mon, 30 Sep 2024 10:58:15 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id AB1AF80ECF;
+	Mon, 30 Sep 2024 11:28:42 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id hRd9tuGteuhh; Mon, 30 Sep 2024 10:58:15 +0000 (UTC)
+ id 3PRh3bF4Dh42; Mon, 30 Sep 2024 11:28:42 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0B30780E4E
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B225680ED0
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1727693895;
-	bh=YQtQd6yJgFN1nEDyO9tB7R6YFKbGVROFVNqQrT35Gl4=;
-	h=From:To:In-Reply-To:References:Date:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=U2+0Wlujxa25XeQQB7js/rcguMU248GjidupzOW8naKRPP0vmS22cFCh77D7Omd2e
-	 zbUt3bpMiBH/O6MkrZw/81Yv+TTIN3HDLph+1Kl18vBFcPAganNzQ2qs5MIQOADZAF
-	 k4ydrGUbPOcuXzsFpaOEM0KN28dxx+iwyGoQoDSxfBIucQJrcUPeCxgLli0uiIjPKq
-	 ZanZmtP/ojHBNG9+M+knng0sirrM+CwCO/kXjOvo0hnXiRpOlzicuMVbpT0ylaJPas
-	 E8is8Pl9BzEk7ZFJxANCgezGfgXreig5QT/Ti3qwqBAjJEjx4Rv6dlpJY3c94VFN6l
-	 adwL5wCWOtj9g==
+	s=default; t=1727695721;
+	bh=9JFHu5GN4m1ZIa7hFOr/S0cR7gAkAibwxtDh3yT9bKQ=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=3huNmFc2SW8J3B5ghqUmnLUYHjJIfyTIb0FpWnHcau/wzYqmOeIue/NoqslFmY8vM
+	 Urfg8tCQa05SzEv8HxUOAgfqO/hONIttQCoqmk5Y0psdtyIRAJrnFKJfDu9Mua2gcI
+	 kZgPXq950FvU8dxb/WVX4GAsP3i0oZs5peEZ5BvZi8VAysl6iammi1eGZhPJciJLcv
+	 HLufjW7NCte38zWea9eWP6/JSns7HmHP8U1F9YP9gKNvqmCGApMkMm+gYZ1RKW1c0S
+	 6ybd18x2Z4aLyXJ0HSVjhQpZawkHruTyFDgMD3CEFOAsv14dA4Vba9KmlMd8dJDJkm
+	 czGrKXPr4sq+A==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 0B30780E4E;
-	Mon, 30 Sep 2024 10:58:15 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id B225680ED0;
+	Mon, 30 Sep 2024 11:28:41 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 255F71BF418
- for <intel-wired-lan@lists.osuosl.org>; Mon, 30 Sep 2024 10:58:13 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 1A6C91BF2C6
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 30 Sep 2024 11:28:40 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 11E61401B3
- for <intel-wired-lan@lists.osuosl.org>; Mon, 30 Sep 2024 10:58:13 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 11FF34023C
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 30 Sep 2024 11:28:40 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id rGGQr4uT-I4v for <intel-wired-lan@lists.osuosl.org>;
- Mon, 30 Sep 2024 10:58:12 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.129.124;
- helo=us-smtp-delivery-124.mimecast.com; envelope-from=toke@redhat.com;
+ id NGV7e0WCBnzC for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 30 Sep 2024 11:28:39 +0000 (UTC)
+X-Greylist: delayed 429 seconds by postgrey-1.37 at util1.osuosl.org;
+ Mon, 30 Sep 2024 11:28:38 UTC
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 2C9B240230
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2C9B240230
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.134.164.83;
+ helo=mail2-relais-roc.national.inria.fr; envelope-from=julia.lawall@inria.fr;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org E9CDD401A0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E9CDD401A0
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.129.124])
- by smtp4.osuosl.org (Postfix) with ESMTPS id E9CDD401A0
- for <intel-wired-lan@lists.osuosl.org>; Mon, 30 Sep 2024 10:58:11 +0000 (UTC)
-Received: from mail-ej1-f70.google.com (mail-ej1-f70.google.com
- [209.85.218.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-25-3CrsHzkgNjK4kYYXAM90pA-1; Mon, 30 Sep 2024 06:58:08 -0400
-X-MC-Unique: 3CrsHzkgNjK4kYYXAM90pA-1
-Received: by mail-ej1-f70.google.com with SMTP id
- a640c23a62f3a-a8d1a00e0beso94992666b.0
- for <intel-wired-lan@lists.osuosl.org>; Mon, 30 Sep 2024 03:58:08 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1727693887; x=1728298687;
- h=mime-version:message-id:date:references:in-reply-to:subject:cc:to
- :from:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=YQtQd6yJgFN1nEDyO9tB7R6YFKbGVROFVNqQrT35Gl4=;
- b=V0HEn39GWJIg0rr35y/VvSObjwazw0FJqBYFfLUOsBWLKkcaFdHYX3oWFj6qnQt5qC
- b6aofhC3FrHt0jlg1Oh24WFJXSBcF2OrjHPLbH7+BSsxOYj4599o0iSRd+h82c7x7JiY
- 6zGQFbakRf1Ag1vZsmVUVnev31iqUgEjqabEBCWxQzWU3yC6FKIeWV+SQSl7fUxNLy2j
- b9majjRN+VSGatDQReFHtEzJxNuWoTeVEQxHdkUGCZY5AYIr80XPWVdQ2MiIzDHgXbTl
- ISVmTbPu5jHKu/29+OoklPndgXgvq1+PYGWJBiMoZGbcn7jMgcOaXx89n5sSP/hgJiXl
- MctQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCV/bpLBzLwq+UzysEEaf2QbQHJvsAHeIFe4jJ/S5b3Js/LmCDJDqLVgdmFpQ5SJKst8eSLMrhBTFALjH751HN8=@lists.osuosl.org
-X-Gm-Message-State: AOJu0Yyq0427VFL3n0hanJ8dNd5L9OhdiCgtiID/iVMWQuKt2/+v5eDE
- Kf57+icGtF5VIfuSO3v1nT6GB8k6EbhmTbih/e7sPkPwNAPYEDM40Ghzr0brNggUo5Edp/T/RrC
- D7iFAoq2dwC8CKVKTp10LE2BiiGvmb9ENxyx08B62ksqLqYCmlYSSLrQhiOwrrW3QXRI=
-X-Received: by 2002:a17:907:1c20:b0:a8d:2b86:d76a with SMTP id
- a640c23a62f3a-a93c320fddbmr1195061866b.32.1727693887593; 
- Mon, 30 Sep 2024 03:58:07 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGGHuIsk16t7bVuBeqIkOOcCdNMy8NqwmYcnnTngn99ySvq772YXEHBZWTPrcxOhMsAnkZifw==
-X-Received: by 2002:a17:907:1c20:b0:a8d:2b86:d76a with SMTP id
- a640c23a62f3a-a93c320fddbmr1195058866b.32.1727693887132; 
- Mon, 30 Sep 2024 03:58:07 -0700 (PDT)
-Received: from alrua-x1.borgediget.toke.dk ([2a0c:4d80:42:443::2])
- by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-a93c2777214sm508704066b.36.2024.09.30.03.58.06
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 30 Sep 2024 03:58:06 -0700 (PDT)
-Received: by alrua-x1.borgediget.toke.dk (Postfix, from userid 1000)
- id 7F603157FE98; Mon, 30 Sep 2024 12:58:05 +0200 (CEST)
-From: Toke =?utf-8?Q?H=C3=B8iland-J=C3=B8rgensen?= <toke@redhat.com>
-To: Lorenzo Bianconi <lorenzo@kernel.org>, Arthur Fabre <afabre@cloudflare.com>
-In-Reply-To: <ZvbKDT-2xqx2unrx@lore-rh-laptop>
-References: <cover.1726935917.git.lorenzo@kernel.org>
- <1f53cd74-6c1e-4a1c-838b-4acc8c5e22c1@intel.com>
- <09657be6-b5e2-4b5a-96b6-d34174aadd0a@kernel.org>
- <Zu_gvkXe4RYjJXtq@lore-desk> <87ldzkndqk.fsf@toke.dk>
- <CAOn4ftshf3pyAst27C2haaSj4eR2n34_pcwWBc5o3zHBkwRb3g@mail.gmail.com>
- <87wmiysi37.fsf@toke.dk> <D4GBY7CHJNJ6.3O18I5W1FTPKR@bobby>
- <87ldzds8bp.fsf@toke.dk> <D4H5CAN4O95E.3KF8LAH75FYD4@bobby>
- <ZvbKDT-2xqx2unrx@lore-rh-laptop>
-X-Clacks-Overhead: GNU Terry Pratchett
-Date: Mon, 30 Sep 2024 12:58:05 +0200
-Message-ID: <871q11s91e.fsf@toke.dk>
+Received: from mail2-relais-roc.national.inria.fr
+ (mail2-relais-roc.national.inria.fr [192.134.164.83])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 2C9B240230
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 30 Sep 2024 11:28:37 +0000 (UTC)
+X-IronPort-AV: E=Sophos;i="6.11,165,1725314400"; d="scan'208";a="185956867"
+Received: from i80.paris.inria.fr (HELO i80.paris.inria.fr.) ([128.93.90.48])
+ by mail2-relais-roc.national.inria.fr with
+ ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 30 Sep 2024 13:21:25 +0200
+From: Julia Lawall <Julia.Lawall@inria.fr>
+To: linux-gpio@vger.kernel.org
+Date: Mon, 30 Sep 2024 13:20:46 +0200
+Message-Id: <20240930112121.95324-1-Julia.Lawall@inria.fr>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain
+Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=redhat.com; 
- s=mimecast20190719; t=1727693890;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=YQtQd6yJgFN1nEDyO9tB7R6YFKbGVROFVNqQrT35Gl4=;
- b=gkVzmenPRxDZim+YPR4UzjtsYDZXyqRIC7LBF9pFHbOXWXERWIGEZr8UIxLFo8Z6Taz8RS
- lVogRld5zK79IfDrwmD9hzDdMQmcfMX4onLm6SFT8Xfrz9r4IakFBOO2SwFAxRQFUfN6Yx
- DoH8GOieWYnWNFUJ0DnqgicejM0JkWA=
+ d=inria.fr; s=dc;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=9JFHu5GN4m1ZIa7hFOr/S0cR7gAkAibwxtDh3yT9bKQ=;
+ b=N5Crvn6Kq6KpHSPNN73aCiDy+RvsqlM0pHtSseTwUaXi/R+AUcNhRU/s
+ cjlHPMFgIZOJllRTItDSSyRCzG1SoWucsK69kp3cC+hyWG6w77VR7U5lk
+ 50vSZgwZFWWTGfQ7neSTgSg1frKowyQAjCduh7p7sY9rw2OBXSFMSw4B2
+ 4=;
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=redhat.com
+ header.from=inria.fr
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
- header.a=rsa-sha256 header.s=mimecast20190719 header.b=gkVzmenP
-Subject: Re: [Intel-wired-lan] [RFC bpf-next 0/4] Add XDP rx hw hints
- support performing XDP_REDIRECT
+ dkim=pass (1024-bit key,
+ unprotected) header.d=inria.fr header.i=@inria.fr header.a=rsa-sha256
+ header.s=dc header.b=N5Crvn6K
+X-Mailman-Original-Authentication-Results: mail2-relais-roc.national.inria.fr;
+ dkim=none (message not signed)
+ header.i=none; spf=SoftFail smtp.mailfrom=Julia.Lawall@inria.fr;
+ dmarc=fail (p=none dis=none) d=inria.fr
+Subject: [Intel-wired-lan] [PATCH 00/35] Reorganize kerneldoc parameter names
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -136,70 +95,156 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: mst@redhat.com, jasowang@redhat.com, ast@kernel.org, edumazet@google.com,
- anthony.l.nguyen@intel.com, Yan Zhai <yan@cloudflare.com>,
- Jakub Sitnicki <jakub@cloudflare.com>, daniel@iogearbox.net,
- kernel-team <kernel-team@cloudflare.com>, przemyslaw.kitszel@intel.com,
- john.fastabend@gmail.com, sdf@fomichev.me, intel-wired-lan@lists.osuosl.org,
- kuba@kernel.org, pabeni@redhat.com, Jesper Dangaard Brouer <hawk@kernel.org>,
- alexandre.torgue@foss.st.com, netdev@vger.kernel.org, tariqt@nvidia.com,
- Alexander Lobakin <aleksander.lobakin@intel.com>, mcoquelin.stm32@gmail.com,
- bpf@vger.kernel.org, saeedm@nvidia.com, davem@davemloft.net
+Cc: nvdimm@lists.linux.dev, alsa-devel@alsa-project.org,
+ Jan Kara <jack@suse.cz>, "Rafael J. Wysocki" <rafael@kernel.org>,
+ Neil Brown <neilb@suse.de>, linux-pci@vger.kernel.org,
+ kernel-janitors@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ linux-mm@kvack.org, linux-mtd@lists.infradead.org,
+ amd-gfx@lists.freedesktop.org, linux-leds@vger.kernel.org,
+ drbd-dev@lists.linbit.com,
+ Pierre-Louis Bossart <pierre-louis.bossart@linux.dev>, dccp@vger.kernel.org,
+ Dai Ngo <Dai.Ngo@oracle.com>, Christophe Leroy <christophe.leroy@csgroup.eu>,
+ iommu@lists.linux.dev, intel-wired-lan@lists.osuosl.org,
+ Robin Murphy <robin.murphy@arm.com>, Olga Kornievskaia <okorniev@redhat.com>,
+ linux-arm-msm@vger.kernel.org, Naveen N Rao <naveen@kernel.org>,
+ linux-sound@vger.kernel.org, maple-tree@lists.infradead.org,
+ Tom Talpey <tom@talpey.com>, Madhavan Srinivasan <maddy@linux.ibm.com>,
+ Mathieu Desnoyers <mathieu.desnoyers@efficios.com>,
+ Nicholas Piggin <npiggin@gmail.com>, linux-omap@vger.kernel.org,
+ Zhihao Cheng <chengzhihao1@huawei.com>, linux-arm-kernel@lists.infradead.org,
+ linux-nfs@vger.kernel.org, netdev@vger.kernel.org, linux-usb@vger.kernel.org,
+ linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
+ audit@vger.kernel.org, tipc-discussion@lists.sourceforge.net,
+ linux-fsdevel@vger.kernel.org, Sanyog Kale <sanyog.r.kale@intel.com>,
+ linux-trace-kernel@vger.kernel.org, linuxppc-dev@lists.ozlabs.org
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Lorenzo Bianconi <lorenzo@kernel.org> writes:
+Reorganize kerneldoc parameter names to match the parameter
+order in the function header.
 
->> > We could combine such a registration API with your header format, so
->> > that the registration just becomes a way of allocating one of the keys
->> > from 0-63 (and the registry just becomes a global copy of the header).
->> > This would basically amount to moving the "service config file" into the
->> > kernel, since that seems to be the only common denominator we can rely
->> > on between BPF applications (as all attempts to write a common daemon
->> > for BPF management have shown).
->> 
->> That sounds reasonable. And I guess we'd have set() check the global
->> registry to enforce that the key has been registered beforehand?
->> 
->> >
->> > -Toke
->> 
->> Thanks for all the feedback!
->
-> I like this 'fast' KV approach but I guess we should really evaluate its
-> impact on performances (especially for xdp) since, based on the kfunc calls
-> order in the ebpf program, we can have one or multiple memmove/memcpy for
-> each packet, right?
+The misordered cases were identified using the following
+Coccinelle semantic patch:
 
-Yes, with Arthur's scheme, performance will be ordering dependent. Using
-a global registry for offsets would sidestep this, but have the
-synchronisation issues we discussed up-thread. So on balance, I think
-the memmove() suggestion will probably lead to the least pain.
+// <smpl>
+@initialize:ocaml@
+@@
 
-For the HW metadata we could sidestep this by always having a fixed
-struct for it (but using the same set/get() API with reserved keys). The
-only drawback of doing that is that we statically reserve a bit of
-space, but I'm not sure that is such a big issue in practice (at least
-not until this becomes to popular that the space starts to be contended;
-but surely 256 bytes ought to be enough for everybody, right? :)).
+let parse_doc l =
+  let pieces = List.map String.trim (String.split_on_char '*' l) in
+  let l = String.concat " " pieces in
+  match String.split_on_char ':' l with
+    x::xs -> x
+  | _ -> ""
 
-> Moreover, I still think the metadata area in the xdp_frame/xdp_buff is not
-> so suitable for nic hw metadata since:
-> - it grows backward 
-> - it is probably in a different cacheline with respect to xdp_frame
-> - nic hw metadata will not start at fixed and immutable address, but it depends
->   on the running ebpf program
->
-> What about having something like:
-> - fixed hw nic metadata: just after xdp_frame struct (or if you want at the end
->   of the metadata area :)). Here he can reuse the same KV approach if it is fast
-> - user defined metadata: in the metadata area of the xdp_frame/xdp_buff
+let params ps =
+  List.rev
+    (List.fold_left
+       (fun prev (pm,_) ->
+	 let ty =
+	   String.trim(Pretty_print_c.string_of_fullType pm.Ast_c.p_type) in
+	 if ty = "void" && pm.Ast_c.p_namei = None
+	 then prev
+	 else
+	   let name =
+	     match pm.Ast_c.p_namei with
+	       Some name -> name
+	     | None -> failwith "function parameter has no name" in
+	   (String.trim (Pretty_print_c.string_of_name name),ty)::prev)
+       [] ps)
 
-AFAIU, none of this will live in the (current) XDP metadata area. It
-will all live just after the xdp_frame struct (so sharing the space with
-the metadata area in the sense that adding more metadata kv fields will
-decrease the amount of space that is usable by the current XDP metadata
-APIs).
+@r@
+comments c;
+identifier fn;
+position p;
+parameter list ps;
+type T;
+@@
 
--Toke
+T@c fn@p(ps) { ... }
 
+@script:ocaml@
+p << r.p;
+c << r.c;
+(_,ps) << r.ps;
+@@
+
+let isdoc c ps =
+  List.length ps > 1 &&
+  (let c = String.trim c in
+  String.length c > 3 && String.sub c 0 3 = "/**" && String.get c 3 != '*') in
+
+let subset l1 l2 =
+  List.for_all (fun x -> List.mem x l2) l1 in
+
+let (cb,cm,ca) = List.hd c in
+match List.rev cb with
+  c::_ when isdoc c ps ->
+    let pieces = String.split_on_char '@' c in
+    (match pieces with
+      _::tl ->
+	let d_names = List.map parse_doc tl in
+	(* check parameters *)
+	let p_names = List.map fst (params ps) in
+	if d_names <> [] && not(d_names = p_names)
+	then
+	  begin
+	    if List.sort compare d_names = List.sort compare p_names
+	    then Coccilib.print_main "out of order" p
+	    else if subset d_names p_names
+	    then Coccilib.print_main "doc is missing a parameter" p
+	    else if subset d_names p_names
+	    then Coccilib.print_main "doc has an extra parameter" p
+	  end
+    | _ -> ())
+| _ -> ()
+// </smpl>
+
+---
+
+ arch/arm/mach-omap2/prm2xxx_3xxx.c              |    1 -
+ arch/powerpc/platforms/ps3/interrupt.c          |    2 +-
+ arch/powerpc/platforms/ps3/repository.c         |    2 +-
+ drivers/base/firmware_loader/main.c             |    2 +-
+ drivers/comedi/drivers/comedi_8254.c            |    2 +-
+ drivers/gpu/drm/amd/amdgpu/amdgpu_vm.c          |    2 +-
+ drivers/gpu/drm/amd/display/dc/core/dc.c        |    2 +-
+ drivers/gpu/drm/drm_gem_framebuffer_helper.c    |    3 +--
+ drivers/gpu/drm/drm_gpuvm.c                     |    2 +-
+ drivers/gpu/drm/radeon/radeon_ib.c              |    2 +-
+ drivers/iommu/iommu.c                           |    2 +-
+ drivers/leds/leds-gpio-register.c               |    2 +-
+ drivers/mfd/atmel-smc.c                         |    4 ++--
+ drivers/misc/mei/bus.c                          |    2 +-
+ drivers/mtd/ubi/eba.c                           |    2 +-
+ drivers/net/ethernet/broadcom/bnxt/bnxt_hwrm.c  |    2 +-
+ drivers/net/ethernet/intel/e1000/e1000_hw.c     |    2 +-
+ drivers/net/ethernet/intel/i40e/i40e_common.c   |    7 +++----
+ drivers/net/ethernet/intel/ice/ice_common.c     |    2 +-
+ drivers/net/ethernet/intel/ixgbe/ixgbe_common.c |    2 +-
+ drivers/nvdimm/dimm_devs.c                      |    2 +-
+ drivers/pci/hotplug/pci_hotplug_core.c          |    2 +-
+ drivers/pinctrl/pinmux.c                        |    2 +-
+ drivers/slimbus/messaging.c                     |    2 +-
+ drivers/soc/qcom/qmi_interface.c                |    2 +-
+ drivers/soundwire/stream.c                      |    2 +-
+ drivers/usb/gadget/config.c                     |    4 ++--
+ fs/char_dev.c                                   |    2 +-
+ fs/dcache.c                                     |    4 ++--
+ fs/seq_file.c                                   |    2 +-
+ kernel/audit.c                                  |    2 +-
+ kernel/resource.c                               |    2 +-
+ kernel/sysctl.c                                 |    1 -
+ kernel/trace/ring_buffer.c                      |    2 +-
+ lib/lru_cache.c                                 |    2 +-
+ lib/maple_tree.c                                |    2 +-
+ mm/mmu_notifier.c                               |    2 +-
+ net/dccp/feat.c                                 |    2 +-
+ net/mac80211/mesh_hwmp.c                        |    6 +++---
+ net/mac80211/mesh_pathtbl.c                     |   10 +++++-----
+ net/socket.c                                    |    2 +-
+ net/sunrpc/xprt.c                               |    2 +-
+ net/tipc/link.c                                 |   14 +++++++-------
+ net/tipc/msg.c                                  |    2 +-
+ sound/pci/hda/hda_codec.c                       |    2 +-
+ 45 files changed, 60 insertions(+), 64 deletions(-)
