@@ -1,100 +1,95 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3538298A580
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 30 Sep 2024 15:39:57 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id D75564056B;
-	Mon, 30 Sep 2024 13:39:55 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id gwoje2LvSjxr; Mon, 30 Sep 2024 13:39:55 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 4A5BA404DB
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1727703594;
-	bh=VbDX+6dTbeDpzJmYAVJme00S3NmKf0ARdIXE2daaWvE=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=LfasBcZaeleZYtIj1+t0q51sspH9YpDsWIn3OnqOZerdyNiVIQxpnBdq0uMrIobZJ
-	 MhgSHhBoQ3WHZDYt6MuZI9Be2gmeIUc3Lk4WCSChZwFWIdVL+AuzgdEp5/KK3aBBLH
-	 1Qie4jdVvUpz5JO4ecQK9zZToLiOHBjgn15GmR7b+SH1XURN/4jtLZ71zp1gclwH4N
-	 AqltOlO7EOL7GwaiQgjkCTe7yzF+cGOJQHqNixmgXB4EV1CNAK9nYOvPkKSpimsyZa
-	 DHWDep1s3u3W+magPbe1C7WoXDEomNBxkZp/73t4dI2sy1mFsa9iYLrSAOJ/2lG3fu
-	 x12w+KPxycW9Q==
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 4A5BA404DB;
-	Mon, 30 Sep 2024 13:39:54 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 4BC341BF300
- for <intel-wired-lan@lists.osuosl.org>; Mon, 30 Sep 2024 13:39:49 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id DB2B598A625
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 30 Sep 2024 15:54:51 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 3921440238
- for <intel-wired-lan@lists.osuosl.org>; Mon, 30 Sep 2024 13:39:49 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 230F540247;
+	Mon, 30 Sep 2024 13:54:50 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id LkZUcyXXiOAs for <intel-wired-lan@lists.osuosl.org>;
- Mon, 30 Sep 2024 13:39:48 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.20;
- helo=mgamail.intel.com; envelope-from=przemyslaw.kitszel@intel.com;
+ id qdpwIzZxv0Q3; Mon, 30 Sep 2024 13:54:49 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4DCCD40250
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1727704488;
+	bh=x8XTqEa8/mNe22b6un2MKhBZ+Eq8SmC0NK0XwtkSL1E=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=kWkRTr2cLgjNfs7Te1OBd17cxdj1+5op4hqmDjftLZ+gXnB2kV74HxrFU1IyHiQyT
+	 Veopoj+3D+1awIzU1bHv6J2J0rcnsfzfBlp9Qy+JAu7Ebt2lWfANWs3pTHkOk0iDGB
+	 jXu/jSe2ffz01zMSPnxoyyvNb6vwkLborrBKtcJZpzMxp59aaJXVI4oFV/yooBxqkJ
+	 rhdkBrpoMAhQhEjNU57xYH6m1eKNJFCl/BmWKQwfxv+TlC/YP/kOs/LYSv93GpdDRN
+	 DK99yEV3fDzKddE18Llcnc1KGDELjMLNVBdDrNKrqbC652P5z+0INbyobQNA2k0DKg
+	 1X4REdZm49QbQ==
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp4.osuosl.org (Postfix) with ESMTP id 4DCCD40250;
+	Mon, 30 Sep 2024 13:54:48 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 997C31BF300
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 30 Sep 2024 13:54:45 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp3.osuosl.org (Postfix) with ESMTP id 945C160659
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 30 Sep 2024 13:54:45 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id PgTMBJABgZWG for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 30 Sep 2024 13:54:44 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.129.124;
+ helo=us-smtp-delivery-124.mimecast.com; envelope-from=pabeni@redhat.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org D3ABC401B5
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org D3ABC401B5
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.20])
- by smtp4.osuosl.org (Postfix) with ESMTPS id D3ABC401B5
- for <intel-wired-lan@lists.osuosl.org>; Mon, 30 Sep 2024 13:39:47 +0000 (UTC)
-X-CSE-ConnectionGUID: ATEGBVpDS/OOiS4rsLKj0Q==
-X-CSE-MsgGUID: VDY9f3+SR22vre1CdlNBSQ==
-X-IronPort-AV: E=McAfee;i="6700,10204,11211"; a="26601099"
-X-IronPort-AV: E=Sophos;i="6.11,165,1725346800"; d="scan'208";a="26601099"
-Received: from fmviesa006.fm.intel.com ([10.60.135.146])
- by orvoesa112.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 30 Sep 2024 06:39:47 -0700
-X-CSE-ConnectionGUID: zM2hGgn7TmeP7C7wFmumqA==
-X-CSE-MsgGUID: XmAbj/nzRHqTI0TQitN/aA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.11,165,1725346800"; d="scan'208";a="72895452"
-Received: from irvmail002.ir.intel.com ([10.43.11.120])
- by fmviesa006.fm.intel.com with ESMTP; 30 Sep 2024 06:39:43 -0700
-Received: from vecna.igk.intel.com (vecna.igk.intel.com [10.123.220.17])
- by irvmail002.ir.intel.com (Postfix) with ESMTP id 4A5F928195;
- Mon, 30 Sep 2024 14:39:41 +0100 (IST)
-From: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-To: intel-wired-lan@lists.osuosl.org, Tony Nguyen <anthony.l.nguyen@intel.com>
-Date: Mon, 30 Sep 2024 15:37:25 +0200
-Message-Id: <20240930133724.610512-8-przemyslaw.kitszel@intel.com>
-X-Mailer: git-send-email 2.39.3
-In-Reply-To: <20240930133724.610512-1-przemyslaw.kitszel@intel.com>
-References: <20240930133724.610512-1-przemyslaw.kitszel@intel.com>
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 426F560630
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 426F560630
+Received: from us-smtp-delivery-124.mimecast.com
+ (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 426F560630
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 30 Sep 2024 13:54:43 +0000 (UTC)
+Received: from mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-695-BDZ_LV_rMLOXWMtWiEmSaw-1; Mon,
+ 30 Sep 2024 09:54:36 -0400
+X-MC-Unique: BDZ_LV_rMLOXWMtWiEmSaw-1
+Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (unknown
+ [10.30.177.12])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id BF32E1944DDF; Mon, 30 Sep 2024 13:54:34 +0000 (UTC)
+Received: from gerbillo.redhat.com (unknown [10.45.224.210])
+ by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 686091954B0F; Mon, 30 Sep 2024 13:54:28 +0000 (UTC)
+From: Paolo Abeni <pabeni@redhat.com>
+To: netdev@vger.kernel.org
+Date: Mon, 30 Sep 2024 15:53:47 +0200
+Message-ID: <cover.1727704215.git.pabeni@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1727703588; x=1759239588;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=Bn+ZWwTkouoXDVKET85eSpE0DSK3dWYr18A3xShvEbk=;
- b=kU0E2zfSWeoK26JsSzSBh3Zhdx4/Cj+hTnQnDb9DCkrZgcqAowhjzBz5
- li1uAw8yfo+LVtj/D0Pg88ON0krM5CCONMZNJJfi4vw5CZDGQ4G/WzGDO
- KXS/0BSVwW+EHvMUQUtAL3snMY0OnFfsiajLRfSJul8hG6OCa8SMY5o74
- 4qUPSWi4ueAkoBvxAD4FtFE7VKRHkdBLMK2RRZgM4Q/T6tFqvxSofs+e5
- 89Ry2OnAcnhPTLqHJ0lckhhjj+rXkuBM92vxxf6CgtxtiM4qFWGyzfrt0
- R2kAmGEeRol1FNUYnOesdkGtlHsybU4FHrzsGYoW5fiCVaCHKohDpsFoS
- Q==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=redhat.com; 
+ s=mimecast20190719; t=1727704482;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=x8XTqEa8/mNe22b6un2MKhBZ+Eq8SmC0NK0XwtkSL1E=;
+ b=VHLpTC7Xr3JB7pwltHtHT8JTa9NslR4MpN1976xyL8IltrmB0U7v9YlUyaIddM+FeOM/A5
+ f1JcoV79eSRwmYr48BM/Gd3eGB5HSLuF+1EM//cGw0VOO6tdOI8+uwjLOwsziyfD0Aw5ae
+ ssjUCRD9RP+52kTdI87fAfluUEjD8E8=
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=kU0E2zfS
-Subject: [Intel-wired-lan] [PATCH 7/7] ice: Add MDD logging via devlink
- health
+ header.from=redhat.com
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
+ header.a=rsa-sha256 header.s=mimecast20190719 header.b=VHLpTC7X
+Subject: [Intel-wired-lan] [PATCH v8 net-next 00/15] net: introduce TX H/W
+ shaping API
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -107,225 +102,318 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Wojciech Drewek <wojciech.drewek@intel.com>,
- Pucha Himasekhar Reddy <himasekharx.reddy.pucha@intel.com>,
- Jiri Pirko <jiri@resnulli.us>, Simon Horman <horms@kernel.org>,
- Ben Shelton <benjamin.h.shelton@intel.com>, netdev@vger.kernel.org,
- Mateusz Polchlopek <mateusz.polchlopek@intel.com>,
- linux-kernel@vger.kernel.org, Joe Perches <joe@perches.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Jakub Kicinski <kuba@kernel.org>, Dwaipayan Ray <dwaipayanray1@gmail.com>,
- Andy Whitcroft <apw@canonical.com>, Lukas Bulwahn <lukas.bulwahn@gmail.com>,
- Igor Bagnucki <igor.bagnucki@intel.com>
+Cc: Jiri Pirko <jiri@resnulli.us>,
+ Sridhar Samudrala <sridhar.samudrala@intel.com>,
+ Donald Hunter <donald.hunter@gmail.com>,
+ John Fastabend <john.fastabend@gmail.com>, Jamal Hadi Salim <jhs@mojatatu.com>,
+ edumazet@google.com, Madhu Chittim <madhu.chittim@intel.com>,
+ anthony.l.nguyen@intel.com, Simon Horman <horms@kernel.org>,
+ przemyslaw.kitszel@intel.com, Jakub Kicinski <kuba@kernel.org>,
+ intel-wired-lan@lists.osuosl.org, Sunil Kovvuri Goutham <sgoutham@marvell.com>,
+ Stanislav Fomichev <stfomichev@gmail.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Ben Shelton <benjamin.h.shelton@intel.com>
+We have a plurality of shaping-related drivers API, but none flexible
+enough to meet existing demand from vendors[1].
 
-Add a devlink health reporter for MDD events. The 'dump' handler will
-return the information captured in each call to ice_handle_mdd_event().
-A device reset (CORER/PFR) will put the reporter back in healthy state.
+This series introduces new device APIs to configure in a flexible way
+TX H/W shaping. The new functionalities are exposed via a newly
+defined generic netlink interface and include introspection
+capabilities. Some self-tests are included, on top of a dummy
+netdevsim implementation. Finally a basic implementation for the iavf
+driver is provided.
 
-Signed-off-by: Ben Shelton <benjamin.h.shelton@intel.com>
-Reviewed-by: Igor Bagnucki <igor.bagnucki@intel.com>
-Reviewed-by: Wojciech Drewek <wojciech.drewek@intel.com>
-Reviewed-by: Simon Horman <horms@kernel.org>
-Signed-off-by: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
-Tested-by: Pucha Himasekhar Reddy <himasekharx.reddy.pucha@intel.com> (A Contingent worker at Intel)
-Co-developed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-Signed-off-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+Some usage examples:
+
+* Configure shaping on a given queue:
+
+./tools/net/ynl/cli.py --spec Documentation/netlink/specs/shaper.yaml \
+	--do set --json '{"ifindex": '$IFINDEX',
+			  "shaper": {"handle":
+				     {"scope": "queue", "id":'$QUEUEID'},
+			  "bw-max": 2000000}}'
+
+* Container B/W sharing
+
+The orchestration infrastructure wants to group the 
+container-related queues under a RR scheduling and limit the aggregate
+bandwidth:
+
+./tools/net/ynl/cli.py --spec Documentation/netlink/specs/shaper.yaml \
+	--do group --json '{"ifindex": '$IFINDEX',
+			"leaves": [
+			  {"handle": {"scope": "queue", "id":'$QID1'},
+			   "weight": '$W1'}, 
+			  {"handle": {"scope": "queue", "id":'$QID2'},
+			   "weight": '$W2'}], 
+			  {"handle": {"scope": "queue", "id":'$QID3'},
+			   "weight": '$W3'}], 
+			"handle": {"scope":"node"},
+			"bw-max": 10000000}'
+{'ifindex': $IFINDEX, 'handle': {'scope': 'node', 'id': 0}}
+
+Q1 \
+    \
+Q2 -- node 0 -------  netdev
+    / (bw-max: 10M)
+Q3 / 
+
+* Delegation
+
+A containers wants to limit the aggregate B/W bandwidth of 2 of the 3
+queues it owns - the starting configuration is the one from the
+previous point:
+
+SPEC=Documentation/netlink/specs/net_shaper.yaml
+./tools/net/ynl/cli.py --spec $SPEC \
+	--do group --json '{"ifindex": '$IFINDEX',
+			"leaves": [ 
+			  {"handle": {"scope": "queue", "id":'$QID1'},
+			   "weight": '$W1'}, 
+			  {"handle": {"scope": "queue", "id":'$QID2'},
+			   "weight": '$W2'}], 
+			"handle": {"scope": "node"},
+			"bw-max": 5000000 }'
+{'ifindex': $IFINDEX, 'handle': {'scope': 'node', 'id': 1}}
+
+Q1 -- node 1 --------\
+    / (bw-max: 5M)    \
+Q2 /                   node 0 -------  netdev
+                      /(bw-max: 10M)
+Q3 ------------------/
+
+In a group operation, when prior to the op itself, the leaves have
+different parents, the user must specify the parent handle for the
+group. I.e., starting from the previous config:
+
+./tools/net/ynl/cli.py --spec $SPEC \
+	--do group --json '{"ifindex": '$IFINDEX',
+			"leaves": [ 
+			  {"handle": {"scope": "queue", "id":'$QID1'},
+			   "weight": '$W1'}, 
+			  {"handle": {"scope": "queue", "id":'$QID3'},
+			   "weight": '$W3'}], 
+			"handle": {"scope": "node"},
+			"bw-max": 3000000 }'
+Netlink error: Invalid argument
+nl_len = 96 (80) nl_flags = 0x300 nl_type = 2
+	error: -22
+	extack: {'msg': 'All the leaves shapers must have the same old parent'}
+
+./tools/net/ynl/cli.py --spec $SPEC \
+	--do group --json '{"ifindex": '$IFINDEX',
+			"leaves": [ 
+			  {"handle": {"scope": "queue", "id":'$QID1'},
+			   "weight": '$W1'}, 
+			  {"handle": {"scope": "queue", "id":'$QID3'},
+			   "weight": '$W3'}], 
+			"handle": {"scope": "node"},
+			"parent": {"scope": "node", "id": 1},
+			"bw-max": 3000000 }
+{'ifindex': $IFINDEX, 'handle': {'scope': 'node', 'id': 2}}
+
+Q1 -- node 2 ---
+    /(bw-max:3M)\
+Q3 /             \
+         ---- node 1 \
+        / (bw-max: 5M)\
+      Q2              node 0 -------  netdev
+                      (bw-max: 10M)
+
+* Cleanup:
+
+Still starting from config 1To delete a single queue shaper
+
+./tools/net/ynl/cli.py --spec $SPEC --do delete --json \
+	'{"ifindex": '$IFINDEX',
+	  "handle": {"scope": "queue", "id":'$QID3'}}'
+
+Q1 -- node 2 ---
+     (bw-max:3M)\
+                 \
+         ---- node 1 \
+        / (bw-max: 5M)\
+      Q2              node 0 -------  netdev
+                      (bw-max: 10M)
+
+Deleting a node shaper relinks all its leaves to the node's parent:
+
+./tools/net/ynl/cli.py --spec $SPEC --do delete --json \
+	'{"ifindex": '$IFINDEX',
+	  "handle": {"scope": "node", "id":2}}'
+
+Q1 ---\
+       \
+        node 1----- \
+       / (bw-max: 5M)\
+Q2----/              node 0 -------  netdev
+                     (bw-max: 10M)
+
+Deleting the last shaper under a node shaper deletes the node, too:
+
+./tools/net/ynl/cli.py --spec $SPEC --do delete --json \
+	'{"ifindex": '$IFINDEX',
+	  "handle": {"scope": "queue", "id":'$QID1'}}'
+./tools/net/ynl/cli.py --spec $SPEC --do delete --json \
+	'{"ifindex": '$IFINDEX',
+	  "handle": {"scope": "queue", "id":'$QID2'}}'
+./tools/net/ynl/cli.py --spec $SPEC --do get --json \
+	'{"ifindex": '$IFINDEX',
+	  "handle": {"scope": "node", "id": 1}}'
+Netlink error: No such file or directory
+nl_len = 44 (28) nl_flags = 0x300 nl_type = 2
+	error: -2
+	extack: {'bad-attr': '.handle'}
+
+Such delete recurses on parents that are left over with no leaves:
+
+./tools/net/ynl/cli.py --spec $SPEC --do get --json \
+	'{"ifindex": '$IFINDEX',
+	  "handle": {"scope": "node", "id": 0}}'
+Netlink error: No such file or directory
+nl_len = 44 (28) nl_flags = 0x300 nl_type = 2
+	error: -2
+	extack: {'bad-attr': '.handle'}
+
+[1] https://lore.kernel.org/netdev/20240405102313.GA310894@kernel.org/
 ---
- .../net/ethernet/intel/ice/devlink/health.h   | 11 +++
- .../net/ethernet/intel/ice/devlink/health.c   | 77 +++++++++++++++++++
- drivers/net/ethernet/intel/ice/ice_main.c     |  6 ++
- 3 files changed, 94 insertions(+)
+Changes from v7:
+ - fixed uninit error and related ST failures
+ - dev lock cleanup
+ - fixed a bunch of typos
 
-diff --git a/drivers/net/ethernet/intel/ice/devlink/health.h b/drivers/net/ethernet/intel/ice/devlink/health.h
-index 92e40d790e72..a08c7bd174cf 100644
---- a/drivers/net/ethernet/intel/ice/devlink/health.h
-+++ b/drivers/net/ethernet/intel/ice/devlink/health.h
-@@ -16,17 +16,26 @@
- struct ice_pf;
- struct ice_tx_ring;
- 
-+enum ice_mdd_src {
-+	ICE_MDD_SRC_TX_PQM,
-+	ICE_MDD_SRC_TX_TCLAN,
-+	ICE_MDD_SRC_TX_TDPU,
-+	ICE_MDD_SRC_RX,
-+};
-+
- /**
-  * struct ice_health - stores ice devlink health reporters and accompanied data
-  * @tx_hang: devlink health reporter for tx_hang event
-+ * @mdd: devlink health reporter for MDD detection event
-  * @tx_hang_buf: pre-allocated place to put info for Tx hang reporter from
-  *               non-sleeping context
-  * @tx_ring: ring that the hang occured on
-  * @head: descriptior head
-  * @intr: interrupt register value
-  * @vsi_num: VSI owning the queue that the hang occured on
-  */
- struct ice_health {
-+	struct devlink_health_reporter *mdd;
- 	struct devlink_health_reporter *tx_hang;
- 	struct_group_tagged(ice_health_tx_hang_buf, tx_hang_buf,
- 		struct ice_tx_ring *tx_ring;
-@@ -43,6 +52,8 @@ void ice_health_clear(struct ice_pf *pf);
- 
- void ice_prep_tx_hang_report(struct ice_pf *pf, struct ice_tx_ring *tx_ring,
- 			     u16 vsi_num, u32 head, u32 intr);
-+void ice_report_mdd_event(struct ice_pf *pf, enum ice_mdd_src src, u8 pf_num,
-+			  u16 vf_num, u8 event, u16 queue);
- void ice_report_tx_hang(struct ice_pf *pf);
- 
- #endif /* _HEALTH_H_ */
-diff --git a/drivers/net/ethernet/intel/ice/devlink/health.c b/drivers/net/ethernet/intel/ice/devlink/health.c
-index 1626c5171152..c7a8b8c9e1ca 100644
---- a/drivers/net/ethernet/intel/ice/devlink/health.c
-+++ b/drivers/net/ethernet/intel/ice/devlink/health.c
-@@ -27,6 +27,79 @@ static void ice_devlink_health_report(struct devlink_health_reporter *reporter,
- 	devlink_health_report(reporter, msg, priv_ctx);
- }
- 
-+struct ice_mdd_event {
-+	enum ice_mdd_src src;
-+	u16 vf_num;
-+	u16 queue;
-+	u8 pf_num;
-+	u8 event;
-+};
-+
-+static const char *ice_mdd_src_to_str(enum ice_mdd_src src)
-+{
-+	switch (src) {
-+	case ICE_MDD_SRC_TX_PQM:
-+		return "tx_pqm";
-+	case ICE_MDD_SRC_TX_TCLAN:
-+		return "tx_tclan";
-+	case ICE_MDD_SRC_TX_TDPU:
-+		return "tx_tdpu";
-+	case ICE_MDD_SRC_RX:
-+		return "rx";
-+	default:
-+		return "invalid";
-+	}
-+}
-+
-+static int
-+ice_mdd_reporter_dump(struct devlink_health_reporter *reporter,
-+		      struct devlink_fmsg *fmsg, void *priv_ctx,
-+		      struct netlink_ext_ack *extack)
-+{
-+	struct ice_mdd_event *mdd_event = priv_ctx;
-+	const char *src;
-+
-+	if (!mdd_event)
-+		return 0;
-+
-+	src = ice_mdd_src_to_str(mdd_event->src);
-+
-+	devlink_fmsg_obj_nest_start(fmsg);
-+	devlink_fmsg_put(fmsg, "src", src);
-+	ICE_DEVLINK_FMSG_PUT_FIELD(fmsg, mdd_event, pf_num);
-+	ICE_DEVLINK_FMSG_PUT_FIELD(fmsg, mdd_event, vf_num);
-+	ICE_DEVLINK_FMSG_PUT_FIELD(fmsg, mdd_event, event);
-+	ICE_DEVLINK_FMSG_PUT_FIELD(fmsg, mdd_event, queue);
-+	devlink_fmsg_obj_nest_end(fmsg);
-+
-+	return 0;
-+}
-+
-+/**
-+ * ice_report_mdd_event - Report an MDD event through devlink health
-+ * @pf: the PF device structure
-+ * @src: the HW block that was the source of this MDD event
-+ * @pf_num: the pf_num on which the MDD event occurred
-+ * @vf_num: the vf_num on which the MDD event occurred
-+ * @event: the event type of the MDD event
-+ * @queue: the queue on which the MDD event occurred
-+ *
-+ * Report an MDD event that has occurred on this PF.
-+ */
-+void ice_report_mdd_event(struct ice_pf *pf, enum ice_mdd_src src, u8 pf_num,
-+			  u16 vf_num, u8 event, u16 queue)
-+{
-+	struct ice_mdd_event ev = {
-+		.src = src,
-+		.pf_num = pf_num,
-+		.vf_num = vf_num,
-+		.event = event,
-+		.queue = queue,
-+	};
-+
-+	ice_devlink_health_report(pf->health_reporters.mdd, "MDD event", &ev);
-+}
-+
- static void ice_dump_ethtool_stats_to_fmsg(struct devlink_fmsg *fmsg,
- 					   struct net_device *netdev)
- {
-@@ -169,6 +242,7 @@ ice_init_devlink_rep(struct ice_pf *pf,
- 	.dump = ice_ ## _name ## _reporter_dump, \
- }
- 
-+ICE_DEFINE_HEALTH_REPORTER_OPS(mdd);
- ICE_DEFINE_HEALTH_REPORTER_OPS(tx_hang);
- 
- /**
-@@ -181,6 +255,7 @@ void ice_health_init(struct ice_pf *pf)
- {
- 	struct ice_health *reps = &pf->health_reporters;
- 
-+	reps->mdd = ice_init_devlink_rep(pf, &ice_mdd_reporter_ops);
- 	reps->tx_hang = ice_init_devlink_rep(pf, &ice_tx_hang_reporter_ops);
- }
- 
-@@ -202,6 +277,7 @@ static void ice_deinit_devl_reporter(struct devlink_health_reporter *reporter)
-  */
- void ice_health_deinit(struct ice_pf *pf)
- {
-+	ice_deinit_devl_reporter(pf->health_reporters.mdd);
- 	ice_deinit_devl_reporter(pf->health_reporters.tx_hang);
- }
- 
-@@ -221,5 +297,6 @@ void ice_health_assign_healthy_state(struct devlink_health_reporter *reporter)
-  */
- void ice_health_clear(struct ice_pf *pf)
- {
-+	ice_health_assign_healthy_state(pf->health_reporters.mdd);
- 	ice_health_assign_healthy_state(pf->health_reporters.tx_hang);
- }
-diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
-index 899bd7f8abec..5a63f0ccc27a 100644
---- a/drivers/net/ethernet/intel/ice/ice_main.c
-+++ b/drivers/net/ethernet/intel/ice/ice_main.c
-@@ -1816,6 +1816,8 @@ static void ice_handle_mdd_event(struct ice_pf *pf)
- 		if (netif_msg_tx_err(pf))
- 			dev_info(dev, "Malicious Driver Detection event %d on TX queue %d PF# %d VF# %d\n",
- 				 event, queue, pf_num, vf_num);
-+		ice_report_mdd_event(pf, ICE_MDD_SRC_TX_PQM, pf_num, vf_num,
-+				     event, queue);
- 		wr32(hw, GL_MDET_TX_PQM, 0xffffffff);
- 	}
- 
-@@ -1829,6 +1831,8 @@ static void ice_handle_mdd_event(struct ice_pf *pf)
- 		if (netif_msg_tx_err(pf))
- 			dev_info(dev, "Malicious Driver Detection event %d on TX queue %d PF# %d VF# %d\n",
- 				 event, queue, pf_num, vf_num);
-+		ice_report_mdd_event(pf, ICE_MDD_SRC_TX_TCLAN, pf_num, vf_num,
-+				     event, queue);
- 		wr32(hw, GL_MDET_TX_TCLAN_BY_MAC(hw), U32_MAX);
- 	}
- 
-@@ -1842,6 +1846,8 @@ static void ice_handle_mdd_event(struct ice_pf *pf)
- 		if (netif_msg_rx_err(pf))
- 			dev_info(dev, "Malicious Driver Detection event %d on RX queue %d PF# %d VF# %d\n",
- 				 event, queue, pf_num, vf_num);
-+		ice_report_mdd_event(pf, ICE_MDD_SRC_RX, pf_num, vf_num, event,
-+				     queue);
- 		wr32(hw, GL_MDET_RX, 0xffffffff);
- 	}
- 
+v7: https://lore.kernel.org/netdev/cover.1725919039.git.pabeni@redhat.com/
+
+Changes from v6:
+ - move node attributes in main NL scope for group() op
+ - driver must acquire dev->lock around channels update
+ - implemented queue id checking in the core
+
+v6: https://lore.kernel.org/netdev/cover.1725457317.git.pabeni@redhat.com/
+
+Changes from v5:
+ - handle/shaper unsplit
+ - removed 'binding' from NL api
+ - several helper renames
+ - added rcu protection to shaper pointer
+ - implemented value checking into the core
+ - handle device channels reconf
+ - consolidate NL ctx handling
+ - dropped idr allocator, leverage the existing xarray
+ - caps names shrinking
+ - group() op is optional
+ - cap callback can't fail
+ - more self-tests
+
+v5: https://lore.kernel.org/netdev/cover.1724944116.git.pabeni@redhat.com/
+
+Changes from v4:
+ - ops operate on struct binding
+ - 'root' -> 'node' rename
+ - most core function/helpers operate on 'binding'
+ - use NL_SET_BAD_ATTR where possible
+ - some code deduplication
+
+v4: https://lore.kernel.org/netdev/cover.1724165948.git.pabeni@redhat.com/
+
+Changes from v3:
+ - rename
+ - locking
+ - delete operates on node, too
+
+v3: https://lore.kernel.org/netdev/cover.1722357745.git.pabeni@redhat.com/
+
+Changes from RFC v2:
+ - added patch 1
+ - fixed deprecated API usage
+
+RFC v2: https://lore.kernel.org/netdev/cover.1721851988.git.pabeni@redhat.com/
+
+Changes from RFC v1:
+ - set() and delete() ops operate on a single shaper
+ - added group() op to allow grouping and nesting
+ - split the NL implementation into multiple patches to help reviewing
+
+RFC v1: https://lore.kernel.org/netdev/cover.1719518113.git.pabeni@redhat.com/
+
+Paolo Abeni (11):
+  genetlink: extend info user-storage to match NL cb ctx
+  netlink: spec: add shaper YAML spec
+  net-shapers: implement NL get operation
+  net-shapers: implement NL set and delete operations
+  net-shapers: implement NL group operation
+  net-shapers: implement delete support for NODE scope shaper
+  net-shapers: implement shaper cleanup on queue deletion
+  netlink: spec: add shaper introspection support
+  net: shaper: implement introspection support
+  net-shapers: implement cap validation in the core
+  testing: net-drv: add basic shaper test
+
+Sudheer Mogilappagari (2):
+  iavf: Add net_shaper_ops support
+  iavf: add support to exchange qos capabilities
+
+Wenjun Wu (2):
+  virtchnl: support queue rate limit and quanta size configuration
+  ice: Support VF queue rate limit and quanta size configuration
+
+ Documentation/netlink/specs/net_shaper.yaml   |  363 +++++
+ Documentation/networking/kapi.rst             |    3 +
+ MAINTAINERS                                   |    1 +
+ drivers/net/Kconfig                           |    1 +
+ drivers/net/ethernet/intel/Kconfig            |    1 +
+ drivers/net/ethernet/intel/iavf/iavf.h        |   13 +
+ drivers/net/ethernet/intel/iavf/iavf_main.c   |  161 +-
+ drivers/net/ethernet/intel/iavf/iavf_txrx.h   |    2 +
+ .../net/ethernet/intel/iavf/iavf_virtchnl.c   |  157 +-
+ drivers/net/ethernet/intel/ice/ice.h          |    2 +
+ drivers/net/ethernet/intel/ice/ice_base.c     |    2 +
+ drivers/net/ethernet/intel/ice/ice_common.c   |   21 +
+ .../net/ethernet/intel/ice/ice_hw_autogen.h   |    8 +
+ drivers/net/ethernet/intel/ice/ice_txrx.h     |    1 +
+ drivers/net/ethernet/intel/ice/ice_type.h     |    1 +
+ drivers/net/ethernet/intel/ice/ice_vf_lib.h   |    8 +
+ drivers/net/ethernet/intel/ice/ice_virtchnl.c |  335 ++++
+ drivers/net/ethernet/intel/ice/ice_virtchnl.h |   11 +
+ .../intel/ice/ice_virtchnl_allowlist.c        |    6 +
+ drivers/net/netdevsim/ethtool.c               |    2 +
+ drivers/net/netdevsim/netdev.c                |   39 +
+ drivers/net/vxlan/vxlan_mdb.c                 |    2 +-
+ include/linux/avf/virtchnl.h                  |  119 ++
+ include/linux/netdevice.h                     |   21 +
+ include/linux/netlink.h                       |    5 +-
+ include/net/genetlink.h                       |    8 +-
+ include/net/net_shaper.h                      |  120 ++
+ include/uapi/linux/net_shaper.h               |   95 ++
+ net/Kconfig                                   |    3 +
+ net/Makefile                                  |    1 +
+ net/core/dev.c                                |    8 +
+ net/core/dev.h                                |   10 +
+ net/core/netdev-genl.c                        |    2 +-
+ net/core/rtnetlink.c                          |    2 +-
+ net/devlink/devl_internal.h                   |    2 +-
+ net/ethtool/rss.c                             |    2 +-
+ net/netfilter/nf_conntrack_netlink.c          |    2 +-
+ net/netlink/genetlink.c                       |    4 +-
+ net/shaper/Makefile                           |    8 +
+ net/shaper/shaper.c                           | 1438 +++++++++++++++++
+ net/shaper/shaper_nl_gen.c                    |  154 ++
+ net/shaper/shaper_nl_gen.h                    |   44 +
+ tools/testing/selftests/drivers/net/Makefile  |    1 +
+ tools/testing/selftests/drivers/net/shaper.py |  461 ++++++
+ .../testing/selftests/net/lib/py/__init__.py  |    1 +
+ tools/testing/selftests/net/lib/py/ynl.py     |    5 +
+ 46 files changed, 3641 insertions(+), 15 deletions(-)
+ create mode 100644 Documentation/netlink/specs/net_shaper.yaml
+ create mode 100644 include/net/net_shaper.h
+ create mode 100644 include/uapi/linux/net_shaper.h
+ create mode 100644 net/shaper/Makefile
+ create mode 100644 net/shaper/shaper.c
+ create mode 100644 net/shaper/shaper_nl_gen.c
+ create mode 100644 net/shaper/shaper_nl_gen.h
+ create mode 100755 tools/testing/selftests/drivers/net/shaper.py
+
 -- 
-2.39.3
+2.45.2
 
