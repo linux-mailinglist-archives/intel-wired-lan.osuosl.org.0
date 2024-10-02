@@ -1,117 +1,96 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id DE30B98E165
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  2 Oct 2024 19:02:41 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id BBB1298E183
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  2 Oct 2024 19:17:36 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 9A1BA4105D;
-	Wed,  2 Oct 2024 17:02:38 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 42AF74105F;
+	Wed,  2 Oct 2024 17:17:35 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id D9ARwVN-zrfG; Wed,  2 Oct 2024 17:02:37 +0000 (UTC)
+ id HZJLuZmhqxLF; Wed,  2 Oct 2024 17:17:34 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 7D72B41054
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1BB9441040
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1727888557;
-	bh=j3CAetgPIchZCXGcR59D8f6NwNxq3FYMeL7IhO3SN+4=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	s=default; t=1727889454;
+	bh=aNjF/nH5qxitY3E9vNWYPzr7Uc7Xsz8h0q7T62K3lKU=;
+	h=Date:From:To:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=Vll/B1oX8iioGbbO1yQV2w39St2WSkX4nw0WEKPQOE4+DaYfpuDzIDPn5q1wBT3E7
-	 fY5TChnhTDHnfxOSZDFUxtYZoq4P6TP0tgHBnBmfIvgiluV9lzI4jWxzCBRtg0z3z2
-	 NEGZ7cqVfRtZ4SvNnENoMPT3EpYzyfXxNvdxoVSerycfUUC9GX9/bOI9b03fkYe3Vn
-	 Pfwzqn1ZHb8ozEAD9OqzjsOCs7e1fbhfs63vOM8bUKRLLwtqs4lX3z9TtKXg1wUxUm
-	 b+23GnFGxSogSEFszLPZTVV3JX65ZI/EAvWDGqCaRnrPZW83PFWUszrrqR5cWDAf5a
-	 ykabYKUrLY5EA==
+	b=PfstWVVAnE6bLZuU+D66woRD/gkPOXP7aATYwsFo4c8SS6dWI0EQ4yRdB/QZDqUU8
+	 +Yu2kk6mZs6LeG5o+hP9WVK+KBHwn6Jy83xSiC5l/WVZ1d4zvl3oLBFdE8qmtpC9lZ
+	 AlXxcXcQKTck9VS7vFXkmzxpNI4ncXl75a+YHATPSClw0kP+zm/y2S/92iQVxYMyoM
+	 ekq35qMlPU8M/57y0muYVwosOxy9ccSmk1IgzpsTgNFWUPc1FQRNX5x4CX2vpcY2Fe
+	 svTzEWE9KAXZ0JrZbhkys7ydHXtuVnm6pSw+lM3amcrY6+C25sK9DM3iQ77/HXNQ8V
+	 KVLPMSrvQ7ZzA==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 7D72B41054;
-	Wed,  2 Oct 2024 17:02:37 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 1BB9441040;
+	Wed,  2 Oct 2024 17:17:34 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 824591BF422
- for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Oct 2024 17:02:35 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 3F5A11BF83E
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Oct 2024 17:17:31 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 6F1D1401F7
- for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Oct 2024 17:02:35 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 2DDE881760
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Oct 2024 17:17:31 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id q2iKj0Qx5_3c for <intel-wired-lan@lists.osuosl.org>;
- Wed,  2 Oct 2024 17:02:34 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id Dq0Vd47sJV4R for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  2 Oct 2024 17:17:30 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2607:f8b0:4864:20::431; helo=mail-pf1-x431.google.com;
- envelope-from=stfomichev@gmail.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 4E303401B8
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4E303401B8
-Received: from mail-pf1-x431.google.com (mail-pf1-x431.google.com
- [IPv6:2607:f8b0:4864:20::431])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 4E303401B8
- for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Oct 2024 17:02:33 +0000 (UTC)
-Received: by mail-pf1-x431.google.com with SMTP id
- d2e1a72fcca58-717934728adso60771b3a.2
- for <intel-wired-lan@lists.osuosl.org>; Wed, 02 Oct 2024 10:02:33 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1727888553; x=1728493353;
- h=in-reply-to:content-transfer-encoding:content-disposition
- :mime-version:references:message-id:subject:cc:to:from:date
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=j3CAetgPIchZCXGcR59D8f6NwNxq3FYMeL7IhO3SN+4=;
- b=uIMcFS1EGa9hHrktx0ZLPGxh+Ko9xZOiFtMGqi6nHnn+aLEMZO54FYq9ZVLU9R32o4
- 0WvTGS+mOKPvew3EnJA7rPyYu/7yxK+gDyntYwHN+5tq7L9iyngVDOwWWAF3UBtLHfCu
- ml0AnTuhekwkiaJZFG2cpQexRZZYf8PxH2kc+SYp4pXsIvMjxuLaCARiWpKStZVgTRa2
- 1bQpdK8TqbHYj0ZP6NTJTWD44UrW+k3xuz3UPV72my9O9TnL74CvhZCZdsvdijI/bLCA
- 0X5UBeg0+xuA/ByVGXlEk1mlWf472+vfbVjcPg4W8LG/jDRJQSGE93OxP4anlnGR4tMn
- ZGxQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVDwWfiyMz+wWv1IEso1DxGHYD21/2OiCi1py8VLUYxTW+wip2QJBrZYDWfSJQO2j4y6tLNCplqR1JZ7t/sZ4k=@lists.osuosl.org
-X-Gm-Message-State: AOJu0Yx5pJQlMordueEuuCmSLNlnFp9tEhY9HttYlj6wOugspMMHpzeF
- TxB2Ydv+jhgMLZ31bJfAkY3j4w9IhMP3jVLRicU3McN5UYrIuHI=
-X-Google-Smtp-Source: AGHT+IGp5S9qADB+5Pu5rzmzU8tU0hkVADw7MBH03DAjOoup+W+fr8dADId0yHouk9LY1IerDa/fzA==
-X-Received: by 2002:a05:6a00:807:b0:705:a13b:e740 with SMTP id
- d2e1a72fcca58-71dc5d6a157mr5638461b3a.19.1727888552645; 
- Wed, 02 Oct 2024 10:02:32 -0700 (PDT)
-Received: from localhost ([2601:646:9e00:f56e:123b:cea3:439a:b3e3])
- by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-71b26498b51sm10383673b3a.14.2024.10.02.10.02.31
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 02 Oct 2024 10:02:32 -0700 (PDT)
-Date: Wed, 2 Oct 2024 10:02:31 -0700
-From: Stanislav Fomichev <stfomichev@gmail.com>
-To: Toke =?utf-8?Q?H=C3=B8iland-J=C3=B8rgensen?= <toke@redhat.com>
-Message-ID: <Zv18pxsiTGTZSTyO@mini-arch>
-References: <87wmiysi37.fsf@toke.dk> <D4GBY7CHJNJ6.3O18I5W1FTPKR@bobby>
- <87ldzds8bp.fsf@toke.dk> <D4H5CAN4O95E.3KF8LAH75FYD4@bobby>
- <ZvbKDT-2xqx2unrx@lore-rh-laptop> <871q11s91e.fsf@toke.dk>
- <ZvqQOpqnK9hBmXNn@lore-desk> <D4KJ7DUXJQC5.2UFST9L3CUOH7@bobby>
- <ZvwNQqN4gez1Ksfn@lore-desk> <87zfnnq2hs.fsf@toke.dk>
+ client-ip=2604:1380:45d1:ec00::3; helo=nyc.source.kernel.org;
+ envelope-from=kuba@kernel.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 799298175E
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 799298175E
+Received: from nyc.source.kernel.org (nyc.source.kernel.org
+ [IPv6:2604:1380:45d1:ec00::3])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 799298175E
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Oct 2024 17:17:30 +0000 (UTC)
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by nyc.source.kernel.org (Postfix) with ESMTP id ACADCA4276E;
+ Wed,  2 Oct 2024 17:17:20 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 576E4C4CEC2;
+ Wed,  2 Oct 2024 17:17:28 +0000 (UTC)
+Date: Wed, 2 Oct 2024 10:17:27 -0700
+From: Jakub Kicinski <kuba@kernel.org>
+To: Alexander Lobakin <aleksander.lobakin@intel.com>, Przemek Kitszel
+ <przemyslaw.kitszel@intel.com>
+Message-ID: <20241002101727.349fc146@kernel.org>
+In-Reply-To: <ZvwK1PnvREjf_wvK@LQ3V64L9R2>
+References: <20240925180017.82891-1-jdamato@fastly.com>
+ <20240925180017.82891-2-jdamato@fastly.com>
+ <6a440baa-fd9b-4d00-a15e-1cdbfce52168@intel.com>
+ <c32620a8-2497-432a-8958-b9b59b769498@intel.com>
+ <9f86b27c-8d5c-4df9-8d8c-91edb01b0b79@intel.com>
+ <Zvsjitl-SANM81Mk@LQ3V64L9R2>
+ <a2d7ef07-a3a8-4427-857f-3477eb48af11@intel.com>
+ <ZvwK1PnvREjf_wvK@LQ3V64L9R2>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <87zfnnq2hs.fsf@toke.dk>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1727888553; x=1728493353; darn=lists.osuosl.org;
- h=in-reply-to:content-transfer-encoding:content-disposition
- :mime-version:references:message-id:subject:cc:to:from:date:from:to
- :cc:subject:date:message-id:reply-to;
- bh=j3CAetgPIchZCXGcR59D8f6NwNxq3FYMeL7IhO3SN+4=;
- b=ku6RoYYNGHX0ekx9eQH8ALiEGyTH5bx9WQw58cNWONU3e9nJ2PNJM2yGheyjpI51zs
- 9tpx/9q0ZACOgv4fe44N1giiMaaoSd3RxrOkId3XHP6CUV7b582/5/5Sh9V6jh/Y3J4g
- fFcd3bsuEckp0BEEXSD7BILyHKXU+l7SgqUBJnQYsef7CKvsyvilhfdzTUDRY3gJKe2d
- FZvsS2+RWi4n2PmQ5LRT2P2bSjwZv2yY68O+0AAU+6BFMpUFgx3CfyKkKZtGjl09OjAO
- BeiYK72mwJVrxpb5v+1srZf8uaHGPMzFfxTbheZO4Q2l5Nc0GOoQguGghfRoiseQDMVb
- hpsQ==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=gmail.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
- header.a=rsa-sha256 header.s=20230601 header.b=ku6RoYYN
-Subject: Re: [Intel-wired-lan] [RFC bpf-next 0/4] Add XDP rx hw hints
- support performing XDP_REDIRECT
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=kernel.org; s=k20201202; t=1727889448;
+ bh=pfIEXJMb4PrK/x6Ayj1gPI5EQfPIRYz2z5v24LdJmEA=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=qzEnYJ9CkvJ8iZ4ixy2eyCWweBM9CPz5GeO+p2AgtBUNPETZ6/3NISG/9dC2KI1OY
+ UtwAOkVXxti8ogfSILyF16Jvf/ToKHgA1de0pg7voPLqDgeSkeG77c9u1oVjLXJAk1
+ DsE2bEBwdFm1/EAo7jhlT/fjOT54ScBLPcmr/RIM0QGWOb2LYpNYLE1lFpV6nBxTAf
+ nv3gBJiehRQNktWr9HRujEXZiH4Tbq3hPaDt9Z2kdwSWcMtVkmQeg7/ngel3QRVNxG
+ F6rGxf6gNyw0cVBru74re6uWB2oBF5dHk9+RNEyIN4zzuY6UvONcoOoRf2fbquNsX5
+ J7Ud/KXCYedCQ==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dmarc=pass (p=quarantine dis=none)
+ header.from=kernel.org
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
+ header.s=k20201202 header.b=qzEnYJ9C
+Subject: Re: [Intel-wired-lan] [RFC net-next 1/1] idpf: Don't hard code
+ napi_struct size
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -124,108 +103,33 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: mst@redhat.com, jasowang@redhat.com, ast@kernel.org, edumazet@google.com,
- anthony.l.nguyen@intel.com, Yan Zhai <yan@cloudflare.com>,
- Jakub Sitnicki <jakub@cloudflare.com>, daniel@iogearbox.net,
- kernel-team <kernel-team@cloudflare.com>, przemyslaw.kitszel@intel.com,
- john.fastabend@gmail.com, sdf@fomichev.me, intel-wired-lan@lists.osuosl.org,
- kuba@kernel.org, pabeni@redhat.com, Lorenzo Bianconi <lorenzo@kernel.org>,
- Jesper Dangaard Brouer <hawk@kernel.org>, alexandre.torgue@foss.st.com,
- Arthur Fabre <afabre@cloudflare.com>, netdev@vger.kernel.org,
- tariqt@nvidia.com, Alexander Lobakin <aleksander.lobakin@intel.com>,
- mcoquelin.stm32@gmail.com, bpf@vger.kernel.org, saeedm@nvidia.com,
- davem@davemloft.net
+Cc: netdev@vger.kernel.org, Joe Damato <jdamato@fastly.com>,
+ open list <linux-kernel@vger.kernel.org>, Eric Dumazet <edumazet@google.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>, Simon Horman <horms@kernel.org>,
+ "moderated list:INTEL ETHERNET DRIVERS" <intel-wired-lan@lists.osuosl.org>,
+ Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 10/01, Toke Høiland-Jørgensen wrote:
-> Lorenzo Bianconi <lorenzo@kernel.org> writes:
+On Tue, 1 Oct 2024 07:44:36 -0700 Joe Damato wrote:
+> > But if you change any core API, let's say rename a field used in several
+> > drivers, you anyway need to adjust the affected drivers.  
 > 
-> >> On Mon Sep 30, 2024 at 1:49 PM CEST, Lorenzo Bianconi wrote:
-> >> > > Lorenzo Bianconi <lorenzo@kernel.org> writes:
-> >> > > 
-> >> > > >> > We could combine such a registration API with your header format, so
-> >> > > >> > that the registration just becomes a way of allocating one of the keys
-> >> > > >> > from 0-63 (and the registry just becomes a global copy of the header).
-> >> > > >> > This would basically amount to moving the "service config file" into the
-> >> > > >> > kernel, since that seems to be the only common denominator we can rely
-> >> > > >> > on between BPF applications (as all attempts to write a common daemon
-> >> > > >> > for BPF management have shown).
-> >> > > >> 
-> >> > > >> That sounds reasonable. And I guess we'd have set() check the global
-> >> > > >> registry to enforce that the key has been registered beforehand?
-> >> > > >> 
-> >> > > >> >
-> >> > > >> > -Toke
-> >> > > >> 
-> >> > > >> Thanks for all the feedback!
-> >> > > >
-> >> > > > I like this 'fast' KV approach but I guess we should really evaluate its
-> >> > > > impact on performances (especially for xdp) since, based on the kfunc calls
-> >> > > > order in the ebpf program, we can have one or multiple memmove/memcpy for
-> >> > > > each packet, right?
-> >> > > 
-> >> > > Yes, with Arthur's scheme, performance will be ordering dependent. Using
-> >> > > a global registry for offsets would sidestep this, but have the
-> >> > > synchronisation issues we discussed up-thread. So on balance, I think
-> >> > > the memmove() suggestion will probably lead to the least pain.
-> >> > > 
-> >> > > For the HW metadata we could sidestep this by always having a fixed
-> >> > > struct for it (but using the same set/get() API with reserved keys). The
-> >> > > only drawback of doing that is that we statically reserve a bit of
-> >> > > space, but I'm not sure that is such a big issue in practice (at least
-> >> > > not until this becomes to popular that the space starts to be contended;
-> >> > > but surely 256 bytes ought to be enough for everybody, right? :)).
-> >> >
-> >> > I am fine with the proposed approach, but I think we need to verify what is the
-> >> > impact on performances (in the worst case??)
-> >> 
-> >> If drivers are responsible for populating the hardware metadata before
-> >> XDP, we could make sure drivers set the fields in order to avoid any
-> >> memove() (and maybe even provide a helper to ensure this?).
-> >
-> > nope, since the current APIs introduced by Stanislav are consuming NIC
-> > metadata in kfuncs (mainly for af_xdp) and, according to my understanding,
-> > we want to add a kfunc to store the info for each NIC metadata (e.g rx-hash,
-> > timestamping, ..) into the packet (this is what Toke is proposing, right?).
-> > In this case kfunc calling order makes a difference.
-> > We can think even to add single kfunc to store all the info for all the NIC
-> > metadata (maybe via a helping struct) but it seems not scalable to me and we
-> > are losing kfunc versatility.
+> Sorry, but that's a totally different argument.
 > 
-> Yes, I agree we should have separate kfuncs for each metadata field.
-> Which means it makes a lot of sense to just use the same setter API that
-> we use for the user-registered metadata fields, but using reserved keys.
-> So something like:
-> 
-> #define BPF_METADATA_HW_HASH      BIT(60)
-> #define BPF_METADATA_HW_TIMESTAMP BIT(61)
-> #define BPF_METADATA_HW_VLAN      BIT(62)
-> #define BPF_METADATA_RESERVED (0xffff << 48)
-> 
-> bpf_packet_metadata_set(pkt, BPF_METADATA_HW_HASH, hash_value);
-> 
-> 
-> As for the internal representation, we can just have the kfunc do
-> something like:
-> 
-> int bpf_packet_metadata_set(field_id, value) {
->   switch(field_id) {
->     case BPF_METADATA_HW_HASH:
->       pkt->xdp_hw_meta.hash = value;
->       break;
->     [...]
->     default:
->       /* do the key packing thing */
->   }
-> }
-> 
-> 
-> that way the order of setting the HW fields doesn't matter, only the
-> user-defined metadata.
+> There are obvious cases where touching certain parts of core would
+> require changes to drivers, yes. I agree on that if I change an API
+> or a struct field name, or remove an enum, then this affects drivers
+> which must be updated.
 
-Can you expand on why we need the flexibility of picking the metadata fields
-here? Presumably we are talking about the use-cases where the XDP program
-is doing redirect/pass and it doesn't really know who's the final
-consumer is (might be another xdp program or might be the xdp->skb
-kernel case), so the only sensible option here seems to be store everything?
++1
+
+I fully agree with Joe. Drivers asserting the size of core structures
+is both undue burden on core changes and pointless.
+The former is subjective, as for the latter: most core structures 
+will contain cold / slow path data, usually at the end. If you care
+about performance of anything that follows a core struct you need
+to align the next field yourself.
+
+IDK how you want to fit this into your magic macros but complex
+nested types should be neither ro, rw nor cold. They are separate.
