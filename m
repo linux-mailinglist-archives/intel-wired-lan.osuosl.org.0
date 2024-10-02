@@ -1,127 +1,109 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 49B9398CDD5
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  2 Oct 2024 09:38:11 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 89BBC98CEB2
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  2 Oct 2024 10:24:06 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id CE4BB40F9E;
-	Wed,  2 Oct 2024 07:38:07 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 38BD5804DC;
+	Wed,  2 Oct 2024 08:24:05 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id AG2HRqOt5gkc; Wed,  2 Oct 2024 07:38:07 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id em9C9XBVD-1e; Wed,  2 Oct 2024 08:24:03 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org D592F40FA2
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 11D7E81F20
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1727854687;
-	bh=j08eYaNn2uqZATIiA0jZfTZrfzeBz+jlQCTj6GcTpN8=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
+	s=default; t=1727857443;
+	bh=8qT8AJdSAevn7Lon301IIUYaxahlZK6BFR3I/iQhyNk=;
+	h=References:In-Reply-To:From:Date:To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=DEDPgvFAg717iVYjg281xEA/hxOr4DW+R7ayxM/Sf8gKWbZylj99kYKGDRZHBje7h
-	 3WBXVy47GzyXdJ7bwXJZ6BSlmRnjxCJXtU0Vs8YA/zdwJd8xLJ51muGy2tVsDypCmK
-	 OGKGGIVq/rodXFCZoUXQCRoFBt+WOx67hfN12XnIcYBN/8mj7WeSrJUx65ZlicEXeY
-	 cU4+MdFRkw80FpUN/JGAJmYxmQeeyOPuB5pjMOZ9OMH8+cIyWQCWseLlG+DXrexlHY
-	 ukFJTDgcMY2rX6d2QiW1CdmvNRs91xNbHXgAZmCsICkor+QrsjPUzq2+vvqo5ZQxfy
-	 J1pfcX11Mou6Q==
+	b=OxYBmqxsnmRW+cQfjDijhKMe1Mo7oeoWsKr80B8mSO2hzWT5o0UP9LizGSqYSaPve
+	 sP30T6GHp/R9I7q0YfV+baL0pF6gf2NPO7XXxNZK2JGt4jilFWfHRumtD4hfuSpDPx
+	 HoKBa196Y1fQWJSPmmFT/LEBl0ALc4Ro21tMxjcavUdY+mwF0YVD92ixpjOwPfbczl
+	 oW2pplhamTlyDYPs0kEoxYlHPRDZnvX0i9GOTlQbF3EYpGgKQ7RufDRFDlPeaQ+NT3
+	 2Z7JLjqidz/cBjFxzQAPOXv+z4v7E9B6x+/l1qS1CCFFcV9vUL3f/kNTk3ePWPqobU
+	 CJMUehPA7XnnA==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id D592F40FA2;
-	Wed,  2 Oct 2024 07:38:06 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 11D7E81F20;
+	Wed,  2 Oct 2024 08:24:03 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id CA56E1BF280
- for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Oct 2024 07:38:05 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 21ACF1BF842
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Oct 2024 08:24:01 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id B532040B3D
- for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Oct 2024 07:38:05 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 0EC9260A83
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Oct 2024 08:24:01 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id UgR7yKaesCFI for <intel-wired-lan@lists.osuosl.org>;
- Wed,  2 Oct 2024 07:38:05 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=170.10.129.124;
- helo=us-smtp-delivery-124.mimecast.com; envelope-from=pabeni@redhat.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org AD9A2407BB
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org AD9A2407BB
-Received: from us-smtp-delivery-124.mimecast.com
- (us-smtp-delivery-124.mimecast.com [170.10.129.124])
- by smtp4.osuosl.org (Postfix) with ESMTPS id AD9A2407BB
- for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Oct 2024 07:38:04 +0000 (UTC)
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-639-QPKMvr_ENA-j8FQVaz60cA-1; Wed, 02 Oct 2024 03:37:59 -0400
-X-MC-Unique: QPKMvr_ENA-j8FQVaz60cA-1
-Received: by mail-wm1-f69.google.com with SMTP id
- 5b1f17b1804b1-42e611963c2so48907315e9.1
- for <intel-wired-lan@lists.osuosl.org>; Wed, 02 Oct 2024 00:37:59 -0700 (PDT)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id M9nEGQXTed9i for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  2 Oct 2024 08:24:00 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2607:f8b0:4864:20::529; helo=mail-pg1-x529.google.com;
+ envelope-from=ilias.apalodimas@linaro.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 25F3760A7C
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 25F3760A7C
+Received: from mail-pg1-x529.google.com (mail-pg1-x529.google.com
+ [IPv6:2607:f8b0:4864:20::529])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 25F3760A7C
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Oct 2024 08:23:59 +0000 (UTC)
+Received: by mail-pg1-x529.google.com with SMTP id
+ 41be03b00d2f7-7db90a28cf6so420274a12.0
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 02 Oct 2024 01:23:59 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1727854678; x=1728459478;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=j08eYaNn2uqZATIiA0jZfTZrfzeBz+jlQCTj6GcTpN8=;
- b=A9NPEqOX/hIyJw4B2ywQuKUqaLsXUTtORsOzczXd8qFKBkk5UFPcoiXo7CIxxFvru0
- XO9ckgVT+7lkY5IdhoziB32mSyP/sEhpBwi+Y3krSHXNLUG1qIFLH1hCybIxUhGhHWn9
- wEI9Cu0vvT+Q7qFlNjrMDY+PwkdGUXO5w4auGz9OTTJETQhpAJl5ZhvUzIyUZjQPM07i
- b9CBvDk+b3cnJpvEsXqTJJ2XF3grJYNotBTRrTx5f+HQsadz5FVwriZmMF/UWeEU3qaQ
- oxe2netv+QH/pRkDBT/z5g8v4IH2fGEFbfBdcfUzUsxCVbKWYWptxAir04spsFKSmdIH
- AQfg==
+ d=1e100.net; s=20230601; t=1727857439; x=1728462239;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=8qT8AJdSAevn7Lon301IIUYaxahlZK6BFR3I/iQhyNk=;
+ b=FugC9n/MeU9RG7RUt6DFUBCmk9P+Whd8Q13WFJdWfJyeBujtnj93MOWccDHyg/wTwZ
+ n8nz/8DmSSsdB9BBFyn3n+ALhx4IA6ZgV4QzTWehMFwQci//UD3WnIRi7+XJ+jOUQrZw
+ qMDG8lP7MptlGVDTN/FqRti5FsFj3c0Eu6UKMs71uAFp48PlriMOtlVxQ10CwivZ1uUr
+ M2wwJq0vADm/1khckdY6fQK+5DeM0PsdmNEX4O4pFEwwvWA2V2biEk8FcBvaF1HWFSA6
+ StU8N0tdO6D45tEqa7d8hA9P8XOlMULYW50hQcclT//jRQ7FUmrrqLwHHwHWqEHe9CpB
+ VnOg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWK+ps0y1MHMC0LLZru6jK6IyYSeDYZFcsI31UhjLsEBWGtkzH1dfpvX7NAE90y9VKicM53QDXORnVn843hsxc=@lists.osuosl.org
-X-Gm-Message-State: AOJu0Yz432zj8BZF/8ra598Bpw45Dhs2x1PisnA1aaiLfj8uqbt54yPA
- 2sdHv2IKNUokG49ePV1FCLMzTOOwfyfmQoHZnpCKVP+pnOsBd2dISR7IcMiYsND4pelWT5aklRz
- WwmrEEkh1j3zpwto+q+1ayp3RVhyppWx5WxssACEmngyuVzbW1f8MhkokmKObzsXdNhY=
-X-Received: by 2002:a05:600c:1549:b0:42c:b4f1:f281 with SMTP id
- 5b1f17b1804b1-42f778ffef3mr14810195e9.34.1727854678268; 
- Wed, 02 Oct 2024 00:37:58 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEexnVZvq0noKxS76pRMj9/ZaTG1nDs7t0bSMBHW4+0LcSgagoa/Bz8vlb6jQ6CnVv6cUGFfw==
-X-Received: by 2002:a05:600c:1549:b0:42c:b4f1:f281 with SMTP id
- 5b1f17b1804b1-42f778ffef3mr14809895e9.34.1727854677827; 
- Wed, 02 Oct 2024 00:37:57 -0700 (PDT)
-Received: from [192.168.88.248] (146-241-47-72.dyn.eolo.it. [146.241.47.72])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-42f7a01fc92sm10806665e9.36.2024.10.02.00.37.55
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 02 Oct 2024 00:37:57 -0700 (PDT)
-Message-ID: <4316fa2d-8dd8-44f2-b211-4b2ef3200d75@redhat.com>
-Date: Wed, 2 Oct 2024 09:37:54 +0200
+ AJvYcCXu76TrSPYgtLxqyxB6n7n+t4z56515A52XH5aQhpILpapZJ2rh28c7UJ+bS15+cSA7PCvXA7WevDehHZpDaHk=@lists.osuosl.org
+X-Gm-Message-State: AOJu0YwsS8NcLTFix38kUJfAZa3yQFbXAoc7w/iTC4pKReP3dAF4iMNv
+ yAkkXVplilbrzocFMYaX5ObEhy/kEAwJACAeGpZU9yqOuWOCFDtJ6iPk2kTAzkX+ZNdykcHQY/9
+ 4OcGyOZJ2b4fHwOig4qZQn/O2sKg4g3B7F+XQhA==
+X-Google-Smtp-Source: AGHT+IEr1vFU0a1kvwV4sZXMH05Rcdg/y0G4x0gieaTwktCZi4DvPvG3W8WrO/0W27YGf2bHaceIX2iLNO+x3PuzjLM=
+X-Received: by 2002:a17:90a:cb8f:b0:2c9:36bf:ba6f with SMTP id
+ 98e67ed59e1d1-2e1851496c6mr3427473a91.3.1727857439139; Wed, 02 Oct 2024
+ 01:23:59 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: Yunsheng Lin <yunshenglin0825@gmail.com>,
- Yunsheng Lin <linyunsheng@huawei.com>,
- Ilias Apalodimas <ilias.apalodimas@linaro.org>
 References: <20240925075707.3970187-1-linyunsheng@huawei.com>
  <20240925075707.3970187-3-linyunsheng@huawei.com>
  <4968c2ec-5584-4a98-9782-143605117315@redhat.com>
  <33f23809-abec-4d39-ab80-839dc525a2e6@gmail.com>
-From: Paolo Abeni <pabeni@redhat.com>
-In-Reply-To: <33f23809-abec-4d39-ab80-839dc525a2e6@gmail.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+ <4316fa2d-8dd8-44f2-b211-4b2ef3200d75@redhat.com>
+In-Reply-To: <4316fa2d-8dd8-44f2-b211-4b2ef3200d75@redhat.com>
+From: Ilias Apalodimas <ilias.apalodimas@linaro.org>
+Date: Wed, 2 Oct 2024 11:23:22 +0300
+Message-ID: <CAC_iWjLBE9UY2wk_kKE=t=npRBF13HoLWODLUpQJ6F3P8sv4rw@mail.gmail.com>
+To: Paolo Abeni <pabeni@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=redhat.com; 
- s=mimecast20190719; t=1727854683;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=j08eYaNn2uqZATIiA0jZfTZrfzeBz+jlQCTj6GcTpN8=;
- b=NmcAydelTMjVGr6u4Nr6rlYytTBKxUaTnW1Ut6R8SlnucaZXtQJTE05YPEBgqcmCnrIvBX
- Lxec51eOHp1muMzyMau/k1uruvKi1yE8f+t56pbCs9sNRX4Ms3xTW3KITkgUTTNobplzAx
- vd+ncJwHew8s0sZQlH906v6RO17Za2E=
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ d=linaro.org; s=google; t=1727857439; x=1728462239; darn=lists.osuosl.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=8qT8AJdSAevn7Lon301IIUYaxahlZK6BFR3I/iQhyNk=;
+ b=A3+Qr1YYEAZHN5WEcIIatTChMcoHrUzIiGlDpWHg/BSo0kc0G+yjAL0maCMJqCaTwS
+ Yovtgq3vHf20+mkZftqZ+GH4MXH6y/Imqnrd9HHOd/pGAWzbFxtr0ZyWrxq2jpRSzM4W
+ 5EyE82jm5O+kDjbPoKi7TMiHfJdUtmPj2Zz03kvZ5Gj65UttV6+p9SeJrgl0cV6wPcdo
+ yFGi29H5TjKm0x8YUKsuu5EyFmWjDSVCRgPZqK0NeNLdOHv6qsY3chmzR2B4YSEQIy7z
+ KOur95WsScNTxe+ZkSW6cv3NAQcibb1pw7km9B01Fxsg3NPSfFKAdTXQUgWxCnriEiXL
+ zd3A==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=redhat.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com
- header.a=rsa-sha256 header.s=mimecast20190719 header.b=NmcAydel
+ header.from=linaro.org
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256
+ header.s=google header.b=A3+Qr1YY
 Subject: Re: [Intel-wired-lan] [PATCH net v2 2/2] page_pool: fix IOMMU crash
  when driver has already unbound
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -144,8 +126,8 @@ Cc: imx@lists.linux.dev, Alexei Starovoitov <ast@kernel.org>,
  Przemek Kitszel <przemyslaw.kitszel@intel.com>,
  John Fastabend <john.fastabend@gmail.com>, IOMMU <iommu@lists.linux.dev>,
  liuyonglong@huawei.com, Clark Wang <xiaoning.wang@nxp.com>,
- zhangkun09@huawei.com, fanghaiqing@huawei.com,
- Lorenzo Bianconi <lorenzo@kernel.org>,
+ Yunsheng Lin <yunshenglin0825@gmail.com>, zhangkun09@huawei.com,
+ fanghaiqing@huawei.com, Lorenzo Bianconi <lorenzo@kernel.org>,
  Jesper Dangaard Brouer <hawk@kernel.org>, Kalle Valo <kvalo@kernel.org>,
  Sean Wang <sean.wang@mediatek.com>, Wei Fang <wei.fang@nxp.com>,
  kuba@kernel.org, Matthias Brugger <matthias.bgg@gmail.com>,
@@ -155,38 +137,56 @@ Cc: imx@lists.linux.dev, Alexei Starovoitov <ast@kernel.org>,
  Leon Romanovsky <leon@kernel.org>, Saeed Mahameed <saeedm@nvidia.com>,
  linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
  Tariq Toukan <tariqt@nvidia.com>,
- Alexander Lobakin <aleksander.lobakin@intel.com>, netdev@vger.kernel.org,
+ Alexander Lobakin <aleksander.lobakin@intel.com>,
+ Yunsheng Lin <linyunsheng@huawei.com>, netdev@vger.kernel.org,
  linux-mediatek@lists.infradead.org, Andrew Morton <akpm@linux-foundation.org>,
  Shayne Chen <shayne.chen@mediatek.com>, Robin Murphy <robin.murphy@arm.com>,
  davem@davemloft.net, Felix Fietkau <nbd@nbd.name>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hi,
+Hi Paolo,
 
-On 10/2/24 04:34, Yunsheng Lin wrote:
-> On 10/1/2024 9:32 PM, Paolo Abeni wrote:
->> Is the problem only tied to VFs drivers? It's a pity all the page_pool
->> users will have to pay a bill for it...
-> 
-> I am afraid it is not only tied to VFs drivers, as:
-> attempting DMA unmaps after the driver has already unbound may leak
-> resources or at worst corrupt memory.
-> 
-> Unloading PFs driver might cause the above problems too, I guess the
-> probability of crashing is low for the PF as PF can not be disable
-> unless it can be hot-unplug'ed, but the probability of leaking resources
-> behind the dma mapping might be similar.
+On Wed, 2 Oct 2024 at 10:38, Paolo Abeni <pabeni@redhat.com> wrote:
+>
+> Hi,
+>
+> On 10/2/24 04:34, Yunsheng Lin wrote:
+> > On 10/1/2024 9:32 PM, Paolo Abeni wrote:
+> >> Is the problem only tied to VFs drivers? It's a pity all the page_pool
+> >> users will have to pay a bill for it...
+> >
+> > I am afraid it is not only tied to VFs drivers, as:
+> > attempting DMA unmaps after the driver has already unbound may leak
+> > resources or at worst corrupt memory.
+> >
+> > Unloading PFs driver might cause the above problems too, I guess the
+> > probability of crashing is low for the PF as PF can not be disable
+> > unless it can be hot-unplug'ed, but the probability of leaking resources
+> > behind the dma mapping might be similar.
+>
+> Out of sheer ignorance, why/how the refcount acquired by the page pool
+> on the device does not prevent unloading?
+>
+> I fear the performance impact could be very high: AFICS, if the item
+> array become fragmented, insertion will take linar time, with the quite
+> large item_count/pool size. If so, it looks like a no-go.
 
-Out of sheer ignorance, why/how the refcount acquired by the page pool 
-on the device does not prevent unloading?
+It would be could if someone could test that. I'll look around in case
+we have any test machines with cards that run on page pool.
 
-I fear the performance impact could be very high: AFICS, if the item 
-array become fragmented, insertion will take linar time, with the quite 
-large item_count/pool size. If so, it looks like a no-go.
+>
+> I fear we should consider blocking the device removal until all the
+> pages are returned/unmapped ?!? (I hope that could be easier/faster)
 
-I fear we should consider blocking the device removal until all the 
-pages are returned/unmapped ?!? (I hope that could be easier/faster)
+Jakub send an RFC doing that [0]. Yes, this is far far simpler and
+does not affect performance, but aren't we implicitly breaking
+userspace?
 
-/P
+[0] https://lore.kernel.org/netdev/20240806151618.1373008-1-kuba@kernel.org/
 
+Thanks
+/Ilias
+>
+> /P
+>
