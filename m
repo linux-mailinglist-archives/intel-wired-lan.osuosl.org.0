@@ -1,110 +1,109 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 654DF98C99D
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  2 Oct 2024 01:53:55 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5F1E298CD53
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  2 Oct 2024 08:46:54 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id F09274062A;
-	Tue,  1 Oct 2024 23:53:51 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 0AC2080C9D;
+	Wed,  2 Oct 2024 06:46:53 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Yl1-ymVtsCWy; Tue,  1 Oct 2024 23:53:51 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id elDw3zhD_yu1; Wed,  2 Oct 2024 06:46:52 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org BD70D40624
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 657AD80D41
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1727826830;
-	bh=8jeH1LephSM3GFjcVzcycSI9hrM1DyHIRSwagoq7Cvo=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1727851609;
+	bh=julty6rnHcSXHSDPw3px62HgLzdn2IBXQjTC66JT5PQ=;
+	h=References:In-Reply-To:From:Date:To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=gesjQfbGANf2c7LjwESJfBMfAGyjyYS8DbabnZ7n7yL21hBBjPyEJm2ohAvU3A17f
-	 PhG1PzUQ1J932OQqE74Wq7VVK2RgVK0HKIkAUcJ49bOzZqBDIoapYCxUrrFQSORJdw
-	 QAnMMkfYqmyvxGMwlbSBFmBVX1mCpxHYWZ0553+BFm9CtldnOOd5TxPf1evFTRyW8s
-	 2p0EMOICPJonQqlBz7xfR9SKU1Zuxy0BXaIdwrheqhrsknGcnhhQYD78MAU3eTAqpF
-	 iSI+qseIyr5rF/cLodNy2/a0eCkBuSt2xE+cnToCL/WW6Csm1NQVnksaJrf1xY6h3x
-	 3Fruak5cUOrEQ==
+	b=K1ePLRPteZNTS7qW6XQ7yA6kH3dZlc+bHRd/o5XfstKDRKjMz+yjnr5sQ/xmj4MyX
+	 Dz1SDg8ll+EE5qzEmhREpUT29sZyL3H8hlke/S2egS5GgONOs8/xhqDwgjLWcRMIPn
+	 A2Z9UX93w1m20RDkeOT+q8PSQC9ZXPRpZNg5riOy3mhcnJFI64+PHdN1Y/QvXKKvSf
+	 r6KlTNmUZWM3YYC5u7hzGAKVVIkFrYQ9AcjaJ5pk3xJaUDrhccSjJCzq2aJMqE9tu7
+	 1aHaicn31TIvDmto5vQqOeF1gzbWlCbtmIAta10K4cDcyLsLGffXb/hcxDlaMiZbky
+	 QZwihzYO5M7Xw==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id BD70D40624;
-	Tue,  1 Oct 2024 23:53:50 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 657AD80D41;
+	Wed,  2 Oct 2024 06:46:49 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 260301BF31D
- for <intel-wired-lan@lists.osuosl.org>; Tue,  1 Oct 2024 23:53:48 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 56B121BF847
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Oct 2024 06:46:47 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id B8D8C4061C
- for <intel-wired-lan@lists.osuosl.org>; Tue,  1 Oct 2024 23:53:47 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 50A1C40879
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Oct 2024 06:46:47 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id RTKEWSPu2HR3 for <intel-wired-lan@lists.osuosl.org>;
- Tue,  1 Oct 2024 23:53:46 +0000 (UTC)
+ id DaizLgJX8rJG for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  2 Oct 2024 06:46:46 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2607:f8b0:4864:20::529; helo=mail-pg1-x529.google.com;
- envelope-from=jdamato@fastly.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 82AF04061A
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 82AF04061A
-Received: from mail-pg1-x529.google.com (mail-pg1-x529.google.com
- [IPv6:2607:f8b0:4864:20::529])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 82AF04061A
- for <intel-wired-lan@lists.osuosl.org>; Tue,  1 Oct 2024 23:53:46 +0000 (UTC)
-Received: by mail-pg1-x529.google.com with SMTP id
- 41be03b00d2f7-7db90a28cf6so221705a12.0
- for <intel-wired-lan@lists.osuosl.org>; Tue, 01 Oct 2024 16:53:46 -0700 (PDT)
+ client-ip=2607:f8b0:4864:20::62d; helo=mail-pl1-x62d.google.com;
+ envelope-from=ilias.apalodimas@linaro.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 382B540824
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 382B540824
+Received: from mail-pl1-x62d.google.com (mail-pl1-x62d.google.com
+ [IPv6:2607:f8b0:4864:20::62d])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 382B540824
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Oct 2024 06:46:45 +0000 (UTC)
+Received: by mail-pl1-x62d.google.com with SMTP id
+ d9443c01a7336-20b90984971so30206015ad.3
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 01 Oct 2024 23:46:45 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1727826826; x=1728431626;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=8jeH1LephSM3GFjcVzcycSI9hrM1DyHIRSwagoq7Cvo=;
- b=VuIxOOpATh1dK0DtczkN9Ksxi/eSIrI+uk9g31qipPRp1qg+7AwtHppIMD6rptdeb4
- mCpKsCZh4jqCVy/KTu6OC9/xa4A3TzYmECQElgfz2//qaIk+8O/ZaNVzNAE8qesMwdUz
- ZsLRtFARTQTXM/H0Oeu7ZYy+qfmz69aniSn2n92BRlvsiIg2TeO7LxF0/ZIk7eNDlhiy
- Dcf176/pqot21aLMU+TNI9BEXH23ynIq2pQc4wRWDnkb7Xwq3xDTWm4qgUyAb0TI+XBt
- UVsMYzQDHkWdoxb8+1VsEMlJxfjsp5WspV4+5XVY2qsMatzRbh6VLWvAhwGYdrn+JRk5
- bNkw==
+ d=1e100.net; s=20230601; t=1727851605; x=1728456405;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=julty6rnHcSXHSDPw3px62HgLzdn2IBXQjTC66JT5PQ=;
+ b=EvZi1KypucyS9GjLiRDvPtz4vGwHQv8p5KakYeHrBgZkoPAza4QXlpgEog9UYe6mXs
+ FLVILokY7BS821t3NVZvR5PW7noBmQPBMvUydavoJUIVE/r0chql4jEgh8wjHYrouuPt
+ UxLhkHDkss5njphlZrxmPLSIZiHhJRzutdtctswmW/1Wu6skqZcNUX8tSKXjYSNXKdWy
+ b6+Ov6PbH+ERWn5HRHW/4e4bOmj5oXgy/YjnFeQGtDbyzLMOqs8Yn1RsnbrjosmByUuC
+ jr7gZubszgkvG6U8u15OUg8CLxB9ywLQ6MKnUE82mJyEZW7InZDgdmT6phqcRnxAde2s
+ ZkDA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXhIrNi86U8+ZgwhnMbSc706eL/0IwZp6jUOD2wsiOV5Pr8ze5ID5xPGnV6oYN02V+xpDgCbmQ2qcQeJ8DxLeE=@lists.osuosl.org
-X-Gm-Message-State: AOJu0YyK5MxBVttZlQRCFVFZJ66Zm1aNtpsyMMCo59S3K9ZaFmvVUDk5
- J2xC9QVaRZ79375emNZCtLpntQpJBn2tZIu4GEJH1JvtUCMWFFWL2Bh7FebLqKo=
-X-Google-Smtp-Source: AGHT+IHnD47ZafzdaY5Hlr1/2gXXQgmcG0+t+WA3Vp+OIdQfqS4Lc5McbW2j0MHbRJNSn6aoWeQjew==
-X-Received: by 2002:a17:90a:f484:b0:2da:8b9f:5b74 with SMTP id
- 98e67ed59e1d1-2e1853e76femr1920261a91.13.1727826825726; 
- Tue, 01 Oct 2024 16:53:45 -0700 (PDT)
-Received: from localhost.localdomain ([2620:11a:c019:0:65e:3115:2f58:c5fd])
- by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-2e18f89e973sm213130a91.29.2024.10.01.16.53.43
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 01 Oct 2024 16:53:45 -0700 (PDT)
-From: Joe Damato <jdamato@fastly.com>
-To: netdev@vger.kernel.org
-Date: Tue,  1 Oct 2024 23:52:34 +0000
-Message-Id: <20241001235302.57609-4-jdamato@fastly.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20241001235302.57609-1-jdamato@fastly.com>
-References: <20241001235302.57609-1-jdamato@fastly.com>
+ AJvYcCVPr1TJNj5U3+TXa+BufaZBgjYSk2b/A7/hnY4MvBHHTEnr/kK53NbRTDj5B5KGft5dYpFUaDHwhfnJNvq/hg0=@lists.osuosl.org
+X-Gm-Message-State: AOJu0YyPBolYZWpZO+TseAIslB0p2v2O1BJIC67NxisRbhzGTn99RttQ
+ vuRhqZLxMIYV2lExRyGK05nQKk2f6P88w05ja8N/p/FGNB/S8A+0IUlOePs50qF8wNRbKmYsWsS
+ fa0ceuxHreY2UjbB2FIoetYfgDpbgLG0MCsIGsg==
+X-Google-Smtp-Source: AGHT+IFQFeN+13hsSVg8HfZx3v0JFKL/2OojczRKBuzwXMASAbyeLF4dgYHBH+F1NmuIXohzp3j20fi5PB1R6+vYJtE=
+X-Received: by 2002:a17:902:d505:b0:205:4e4a:72d9 with SMTP id
+ d9443c01a7336-20bc59efb2emr41817915ad.7.1727851604719; Tue, 01 Oct 2024
+ 23:46:44 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+References: <20240925075707.3970187-1-linyunsheng@huawei.com>
+ <20240925075707.3970187-3-linyunsheng@huawei.com>
+ <4968c2ec-5584-4a98-9782-143605117315@redhat.com>
+In-Reply-To: <4968c2ec-5584-4a98-9782-143605117315@redhat.com>
+From: Ilias Apalodimas <ilias.apalodimas@linaro.org>
+Date: Wed, 2 Oct 2024 09:46:08 +0300
+Message-ID: <CAC_iWjKHofqDrp+jOO_QTp_8Op=KeE_jjhjsDUxjRa4vnHYJmQ@mail.gmail.com>
+To: Paolo Abeni <pabeni@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=fastly.com; s=google; t=1727826826; x=1728431626; darn=lists.osuosl.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=8jeH1LephSM3GFjcVzcycSI9hrM1DyHIRSwagoq7Cvo=;
- b=YtgHl8YdtOZ1IWiIqgmU6pkazuOWsMZcsoxBMYaEwaVTfAMJ8eqCzTk7KKmfuZ1TeO
- rGO/Xo8fYUjHOwiAbZlIDq83MVUG2PkJdFu5Jy0MZkGcNi6zZ445MCx4NPBge8w80Nhm
- BCtcvQn0+O358jqTkf37gbRD0wedrowwWIVNw=
+ d=linaro.org; s=google; t=1727851605; x=1728456405; darn=lists.osuosl.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=julty6rnHcSXHSDPw3px62HgLzdn2IBXQjTC66JT5PQ=;
+ b=x5MbFi/67TpmIRs2zm+VGU0xKjgIXb48hkbWpUjzuUdN4j0uWYIjiAMhyRou2/usRx
+ l8+N4xhRvlNHhswIx+GsrZqKswGCjqJyRC+0Qlf/PWIfeGWdp6WAO93ITlDPbWFeOWQN
+ 3qnZKaaadfFXr9a1bhz1GH/gPSS43IXqERKk2WdYrRWrCxnLuo3TkdTJLQscKzXCKO5r
+ KZ6d1H8XyGBYQb5ha0/P01U714hpgQyCCHeMEZNZEt89y3eJmpZ1ivtuYa7pRyNYTsXh
+ 0SqwuaMVxz0GJKMGR0TOvqQKGokeVRFN+Y4MgwgX8TEsqV6IGzq6vimiXkfi+mw0qws6
+ S5hA==
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dmarc=pass (p=reject dis=none)
- header.from=fastly.com
+ dmarc=pass (p=none dis=none)
+ header.from=linaro.org
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (1024-bit key,
- unprotected) header.d=fastly.com header.i=@fastly.com header.a=rsa-sha256
- header.s=google header.b=YtgHl8Yd
-Subject: [Intel-wired-lan] [RFC net-next v4 3/9] net: napi: Make
- gro_flush_timeout per-NAPI
+ dkim=pass (2048-bit key,
+ unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256
+ header.s=google header.b=x5MbFi/6
+Subject: Re: [Intel-wired-lan] [PATCH net v2 2/2] page_pool: fix IOMMU crash
+ when driver has already unbound
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -117,236 +116,99 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "open list:DOCUMENTATION" <linux-doc@vger.kernel.org>,
- mkarsten@uwaterloo.ca, Joe Damato <jdamato@fastly.com>, bjorn@rivosinc.com,
+Cc: imx@lists.linux.dev, Alexei Starovoitov <ast@kernel.org>,
+ Alexander Duyck <alexander.duyck@gmail.com>, linux-mm@kvack.org,
  Eric Dumazet <edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
- Breno Leitao <leitao@debian.org>, willemdebruijn.kernel@gmail.com,
- amritha.nambiar@intel.com, Jonathan Corbet <corbet@lwn.net>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>, sdf@fomichev.me,
- "moderated list:INTEL ETHERNET DRIVERS" <intel-wired-lan@lists.osuosl.org>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Shenwei Wang <shenwei.wang@nxp.com>, Ryder Lee <ryder.lee@mediatek.com>,
+ Daniel Borkmann <daniel@iogearbox.net>, linux-rdma@vger.kernel.org,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ John Fastabend <john.fastabend@gmail.com>, IOMMU <iommu@lists.linux.dev>,
+ liuyonglong@huawei.com, Clark Wang <xiaoning.wang@nxp.com>,
+ zhangkun09@huawei.com, fanghaiqing@huawei.com,
  Lorenzo Bianconi <lorenzo@kernel.org>,
- Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
- Jiri Pirko <jiri@resnulli.us>, Johannes Berg <johannes.berg@intel.com>,
- skhawaja@google.com, Kory Maincent <kory.maincent@bootlin.com>,
- sridhar.samudrala@intel.com, David Ahern <dsahern@kernel.org>,
- open list <linux-kernel@vger.kernel.org>,
+ Jesper Dangaard Brouer <hawk@kernel.org>, Kalle Valo <kvalo@kernel.org>,
+ Sean Wang <sean.wang@mediatek.com>, Wei Fang <wei.fang@nxp.com>,
+ kuba@kernel.org, Matthias Brugger <matthias.bgg@gmail.com>,
+ intel-wired-lan@lists.osuosl.org, bpf@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Leon Romanovsky <leon@kernel.org>, Robin Murphy <robin.murphy@arm.com>,
+ linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
+ Tariq Toukan <tariqt@nvidia.com>,
  Alexander Lobakin <aleksander.lobakin@intel.com>,
- "David S. Miller" <davem@davemloft.net>
+ Yunsheng Lin <linyunsheng@huawei.com>, netdev@vger.kernel.org,
+ linux-mediatek@lists.infradead.org, Andrew Morton <akpm@linux-foundation.org>,
+ Shayne Chen <shayne.chen@mediatek.com>, Saeed Mahameed <saeedm@nvidia.com>,
+ davem@davemloft.net, Felix Fietkau <nbd@nbd.name>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Allow per-NAPI gro_flush_timeout setting.
+Hi Paolo,
 
-The existing sysfs parameter is respected; writes to sysfs will write to
-all NAPI structs for the device and the net_device gro_flush_timeout
-field. Reads from sysfs will read from the net_device field.
+Thanks for taking the time.
 
-The ability to set gro_flush_timeout on specific NAPI instances will be
-added in a later commit, via netdev-genl.
+On Tue, 1 Oct 2024 at 16:32, Paolo Abeni <pabeni@redhat.com> wrote:
+>
+> On 9/25/24 09:57, Yunsheng Lin wrote:
+> > Networking driver with page_pool support may hand over page
+> > still with dma mapping to network stack and try to reuse that
+> > page after network stack is done with it and passes it back
+> > to page_pool to avoid the penalty of dma mapping/unmapping.
+> > With all the caching in the network stack, some pages may be
+> > held in the network stack without returning to the page_pool
+> > soon enough, and with VF disable causing the driver unbound,
+> > the page_pool does not stop the driver from doing it's
+> > unbounding work, instead page_pool uses workqueue to check
+> > if there is some pages coming back from the network stack
+> > periodically, if there is any, it will do the dma unmmapping
+> > related cleanup work.
+> >
+> > As mentioned in [1], attempting DMA unmaps after the driver
+> > has already unbound may leak resources or at worst corrupt
+> > memory. Fundamentally, the page pool code cannot allow DMA
+> > mappings to outlive the driver they belong to.
+> >
+> > Currently it seems there are at least two cases that the page
+> > is not released fast enough causing dma unmmapping done after
+> > driver has already unbound:
+> > 1. ipv4 packet defragmentation timeout: this seems to cause
+> >     delay up to 30 secs.
+> > 2. skb_defer_free_flush(): this may cause infinite delay if
+> >     there is no triggering for net_rx_action().
+> >
+> > In order not to do the dma unmmapping after driver has already
+> > unbound and stall the unloading of the networking driver, add
+> > the pool->items array to record all the pages including the ones
+> > which are handed over to network stack, so the page_pool can
+> > do the dma unmmapping for those pages when page_pool_destroy()
+> > is called. As the pool->items need to be large enough to avoid
+> > performance degradation, add a 'item_full' stat to indicate the
+> > allocation failure due to unavailability of pool->items.
+>
+> This looks really invasive, with room for potentially large performance
+> regressions or worse. At very least it does not look suitable for net.
 
-Note that idpf has embedded napi_struct in its internals and has
-established some series of asserts that involve the size of napi
-structure. Since this change increases the napi_struct size from 400 to
-416 (according to pahole on my system), I've increased the assertion in
-idpf by 16 bytes. No attention whatsoever was paid to the cacheline
-placement of idpf internals as a result of this change.
+Perhaps, and you are right we need to measure performance before
+pulling it but...
 
-Signed-off-by: Joe Damato <jdamato@fastly.com>
----
- .../networking/net_cachelines/net_device.rst  |  2 +-
- drivers/net/ethernet/intel/idpf/idpf_txrx.h   |  2 +-
- include/linux/netdevice.h                     |  3 +-
- net/core/dev.c                                | 12 +++---
- net/core/dev.h                                | 40 +++++++++++++++++++
- net/core/net-sysfs.c                          |  2 +-
- 6 files changed, 51 insertions(+), 10 deletions(-)
+>
+> Is the problem only tied to VFs drivers? It's a pity all the page_pool
+> users will have to pay a bill for it...
 
-diff --git a/Documentation/networking/net_cachelines/net_device.rst b/Documentation/networking/net_cachelines/net_device.rst
-index eeeb7c925ec5..3d02ae79c850 100644
---- a/Documentation/networking/net_cachelines/net_device.rst
-+++ b/Documentation/networking/net_cachelines/net_device.rst
-@@ -98,7 +98,6 @@ struct_netdev_queue*                _rx                     read_mostly
- unsigned_int                        num_rx_queues                                                   
- unsigned_int                        real_num_rx_queues      -                   read_mostly         get_rps_cpu
- struct_bpf_prog*                    xdp_prog                -                   read_mostly         netif_elide_gro()
--unsigned_long                       gro_flush_timeout       -                   read_mostly         napi_complete_done
- unsigned_int                        gro_max_size            -                   read_mostly         skb_gro_receive
- unsigned_int                        gro_ipv4_max_size       -                   read_mostly         skb_gro_receive
- rx_handler_func_t*                  rx_handler              read_mostly         -                   __netif_receive_skb_core
-@@ -182,4 +181,5 @@ struct_devlink_port*                devlink_port
- struct_dpll_pin*                    dpll_pin                                                        
- struct hlist_head                   page_pools
- struct dim_irq_moder*               irq_moder
-+unsigned_long                       gro_flush_timeout
- u32                                 napi_defer_hard_irqs
-diff --git a/drivers/net/ethernet/intel/idpf/idpf_txrx.h b/drivers/net/ethernet/intel/idpf/idpf_txrx.h
-index f0537826f840..fcdf73486d46 100644
---- a/drivers/net/ethernet/intel/idpf/idpf_txrx.h
-+++ b/drivers/net/ethernet/intel/idpf/idpf_txrx.h
-@@ -438,7 +438,7 @@ struct idpf_q_vector {
- 	__cacheline_group_end_aligned(cold);
- };
- libeth_cacheline_set_assert(struct idpf_q_vector, 112,
--			    424 + 2 * sizeof(struct dim),
-+			    440 + 2 * sizeof(struct dim),
- 			    8 + sizeof(cpumask_var_t));
- 
- struct idpf_rx_queue_stats {
-diff --git a/include/linux/netdevice.h b/include/linux/netdevice.h
-index 55764efc5c93..33897edd16c8 100644
---- a/include/linux/netdevice.h
-+++ b/include/linux/netdevice.h
-@@ -377,6 +377,7 @@ struct napi_struct {
- 	struct list_head	dev_list;
- 	struct hlist_node	napi_hash_node;
- 	int			irq;
-+	unsigned long		gro_flush_timeout;
- 	u32			defer_hard_irqs;
- };
- 
-@@ -2075,7 +2076,6 @@ struct net_device {
- 	int			ifindex;
- 	unsigned int		real_num_rx_queues;
- 	struct netdev_rx_queue	*_rx;
--	unsigned long		gro_flush_timeout;
- 	unsigned int		gro_max_size;
- 	unsigned int		gro_ipv4_max_size;
- 	rx_handler_func_t __rcu	*rx_handler;
-@@ -2398,6 +2398,7 @@ struct net_device {
- 
- 	/** @irq_moder: dim parameters used if IS_ENABLED(CONFIG_DIMLIB). */
- 	struct dim_irq_moder	*irq_moder;
-+	unsigned long		gro_flush_timeout;
- 	u32			napi_defer_hard_irqs;
- 
- 	u8			priv[] ____cacheline_aligned
-diff --git a/net/core/dev.c b/net/core/dev.c
-index 748739958d2a..056ed44f766f 100644
---- a/net/core/dev.c
-+++ b/net/core/dev.c
-@@ -6226,12 +6226,12 @@ bool napi_complete_done(struct napi_struct *n, int work_done)
- 
- 	if (work_done) {
- 		if (n->gro_bitmask)
--			timeout = READ_ONCE(n->dev->gro_flush_timeout);
-+			timeout = napi_get_gro_flush_timeout(n);
- 		n->defer_hard_irqs_count = napi_get_defer_hard_irqs(n);
- 	}
- 	if (n->defer_hard_irqs_count > 0) {
- 		n->defer_hard_irqs_count--;
--		timeout = READ_ONCE(n->dev->gro_flush_timeout);
-+		timeout = napi_get_gro_flush_timeout(n);
- 		if (timeout)
- 			ret = false;
- 	}
-@@ -6366,7 +6366,7 @@ static void busy_poll_stop(struct napi_struct *napi, void *have_poll_lock,
- 
- 	if (flags & NAPI_F_PREFER_BUSY_POLL) {
- 		napi->defer_hard_irqs_count = napi_get_defer_hard_irqs(napi);
--		timeout = READ_ONCE(napi->dev->gro_flush_timeout);
-+		timeout = napi_get_gro_flush_timeout(napi);
- 		if (napi->defer_hard_irqs_count && timeout) {
- 			hrtimer_start(&napi->timer, ns_to_ktime(timeout), HRTIMER_MODE_REL_PINNED);
- 			skip_schedule = true;
-@@ -6648,6 +6648,7 @@ void netif_napi_add_weight(struct net_device *dev, struct napi_struct *napi,
- 	hrtimer_init(&napi->timer, CLOCK_MONOTONIC, HRTIMER_MODE_REL_PINNED);
- 	napi->timer.function = napi_watchdog;
- 	napi_set_defer_hard_irqs(napi, READ_ONCE(dev->napi_defer_hard_irqs));
-+	napi_set_gro_flush_timeout(napi, READ_ONCE(dev->gro_flush_timeout));
- 	init_gro_hash(napi);
- 	napi->skb = NULL;
- 	INIT_LIST_HEAD(&napi->rx_list);
-@@ -11053,7 +11054,7 @@ void netdev_sw_irq_coalesce_default_on(struct net_device *dev)
- 	WARN_ON(dev->reg_state == NETREG_REGISTERED);
- 
- 	if (!IS_ENABLED(CONFIG_PREEMPT_RT)) {
--		dev->gro_flush_timeout = 20000;
-+		netdev_set_gro_flush_timeout(dev, 20000);
- 		netdev_set_defer_hard_irqs(dev, 1);
- 	}
- }
-@@ -11991,7 +11992,6 @@ static void __init net_dev_struct_check(void)
- 	CACHELINE_ASSERT_GROUP_MEMBER(struct net_device, net_device_read_rx, ifindex);
- 	CACHELINE_ASSERT_GROUP_MEMBER(struct net_device, net_device_read_rx, real_num_rx_queues);
- 	CACHELINE_ASSERT_GROUP_MEMBER(struct net_device, net_device_read_rx, _rx);
--	CACHELINE_ASSERT_GROUP_MEMBER(struct net_device, net_device_read_rx, gro_flush_timeout);
- 	CACHELINE_ASSERT_GROUP_MEMBER(struct net_device, net_device_read_rx, gro_max_size);
- 	CACHELINE_ASSERT_GROUP_MEMBER(struct net_device, net_device_read_rx, gro_ipv4_max_size);
- 	CACHELINE_ASSERT_GROUP_MEMBER(struct net_device, net_device_read_rx, rx_handler);
-@@ -12003,7 +12003,7 @@ static void __init net_dev_struct_check(void)
- #ifdef CONFIG_NET_XGRESS
- 	CACHELINE_ASSERT_GROUP_MEMBER(struct net_device, net_device_read_rx, tcx_ingress);
- #endif
--	CACHELINE_ASSERT_GROUP_SIZE(struct net_device, net_device_read_rx, 100);
-+	CACHELINE_ASSERT_GROUP_SIZE(struct net_device, net_device_read_rx, 92);
- }
- 
- /*
-diff --git a/net/core/dev.h b/net/core/dev.h
-index b3792219879b..26e598aa56c3 100644
---- a/net/core/dev.h
-+++ b/net/core/dev.h
-@@ -174,6 +174,46 @@ static inline void netdev_set_defer_hard_irqs(struct net_device *netdev,
- 		napi_set_defer_hard_irqs(napi, defer);
- }
- 
-+/**
-+ * napi_get_gro_flush_timeout - get the gro_flush_timeout
-+ * @n: napi struct to get the gro_flush_timeout from
-+ *
-+ * Return: the per-NAPI value of the gro_flush_timeout field.
-+ */
-+static inline unsigned long
-+napi_get_gro_flush_timeout(const struct napi_struct *n)
-+{
-+	return READ_ONCE(n->gro_flush_timeout);
-+}
-+
-+/**
-+ * napi_set_gro_flush_timeout - set the gro_flush_timeout for a napi
-+ * @n: napi struct to set the gro_flush_timeout
-+ * @timeout: timeout value to set
-+ *
-+ * napi_set_gro_flush_timeout sets the per-NAPI gro_flush_timeout
-+ */
-+static inline void napi_set_gro_flush_timeout(struct napi_struct *n,
-+					      unsigned long timeout)
-+{
-+	WRITE_ONCE(n->gro_flush_timeout, timeout);
-+}
-+
-+/**
-+ * netdev_set_gro_flush_timeout - set gro_flush_timeout of a netdev's NAPIs
-+ * @netdev: the net_device for which all NAPIs will have gro_flush_timeout set
-+ * @timeout: the timeout value to set
-+ */
-+static inline void netdev_set_gro_flush_timeout(struct net_device *netdev,
-+						unsigned long timeout)
-+{
-+	struct napi_struct *napi;
-+
-+	WRITE_ONCE(netdev->gro_flush_timeout, timeout);
-+	list_for_each_entry(napi, &netdev->napi_list, dev_list)
-+		napi_set_gro_flush_timeout(napi, timeout);
-+}
-+
- int rps_cpumask_housekeeping(struct cpumask *mask);
- 
- #if defined(CONFIG_DEBUG_NET) && defined(CONFIG_BPF_SYSCALL)
-diff --git a/net/core/net-sysfs.c b/net/core/net-sysfs.c
-index 25125f356a15..2d9afc6e2161 100644
---- a/net/core/net-sysfs.c
-+++ b/net/core/net-sysfs.c
-@@ -409,7 +409,7 @@ NETDEVICE_SHOW_RW(tx_queue_len, fmt_dec);
- 
- static int change_gro_flush_timeout(struct net_device *dev, unsigned long val)
- {
--	WRITE_ONCE(dev->gro_flush_timeout, val);
-+	netdev_set_gro_flush_timeout(dev, val);
- 	return 0;
- }
- 
--- 
-2.25.1
+It's not. The problem happens when an SKB has been scheduled for
+recycling and has already been mapped via page_pool. If the driver
+disappears in the meantime, page_pool will free all the packets it
+holds in its private rings (both slow and fast), but is not in control
+of the SKB anymore. So any packets coming back for recycling *after*
+that point cannot unmap memory properly.
 
+As discussed this can either lead to memory corruption and resource
+leaking, or worse as seen in the bug report panics. I am fine with
+this going into -next, but it really is a bugfix, although I am not
+100% sure that the Fixes: tag in the current patch is correct.
+
+Thanks
+/Ilias
+>
+> /P
+>
