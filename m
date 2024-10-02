@@ -2,107 +2,116 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 54B8D98E1E8
-	for <lists+intel-wired-lan@lfdr.de>; Wed,  2 Oct 2024 19:53:08 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id DE30B98E165
+	for <lists+intel-wired-lan@lfdr.de>; Wed,  2 Oct 2024 19:02:41 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 0F9E24104C;
-	Wed,  2 Oct 2024 17:53:07 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 9A1BA4105D;
+	Wed,  2 Oct 2024 17:02:38 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id vInpOza3SNBD; Wed,  2 Oct 2024 17:53:06 +0000 (UTC)
+ id D9ARwVN-zrfG; Wed,  2 Oct 2024 17:02:37 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 8F0164028F
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 7D72B41054
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1727891585;
-	bh=j1KvCZ7gaXzt52gPxua+C5bMinjON5snkugcQdtgk70=;
-	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:Cc:From;
-	b=YXGn1rqkFDpEukDisl1UyOR0+T7qigyUCCGQp/J7RnutlstH1XdeSvEeUDdWzGbI+
-	 LE93C5nxsPceUhRtSIqy8jPYhZ7B7MXESGwTiNU5lkw3xzx3tkR4FDpN6ljUCuDKeN
-	 Rt4G3oeVYRs0I5PVkgtOEY3VVdcBuN2+N+YoiXe3DyFZcMM/9RU1PWlpOekgLEYeUs
-	 OKPKFqHj+yKfZ7Ar7RC+iT2431+LxsDuOHZtva98YKMGyLSjrcpImOMu9lGxl28uH0
-	 80HzG9t0VBTNgG5Lj/JSgzRHhCCe25QyyocUNNf1I58hzr02PCQFTU7NVvlFM3Cpqj
-	 Gtr3MndPnHDmQ==
+	s=default; t=1727888557;
+	bh=j3CAetgPIchZCXGcR59D8f6NwNxq3FYMeL7IhO3SN+4=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=Vll/B1oX8iioGbbO1yQV2w39St2WSkX4nw0WEKPQOE4+DaYfpuDzIDPn5q1wBT3E7
+	 fY5TChnhTDHnfxOSZDFUxtYZoq4P6TP0tgHBnBmfIvgiluV9lzI4jWxzCBRtg0z3z2
+	 NEGZ7cqVfRtZ4SvNnENoMPT3EpYzyfXxNvdxoVSerycfUUC9GX9/bOI9b03fkYe3Vn
+	 Pfwzqn1ZHb8ozEAD9OqzjsOCs7e1fbhfs63vOM8bUKRLLwtqs4lX3z9TtKXg1wUxUm
+	 b+23GnFGxSogSEFszLPZTVV3JX65ZI/EAvWDGqCaRnrPZW83PFWUszrrqR5cWDAf5a
+	 ykabYKUrLY5EA==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 8F0164028F;
-	Wed,  2 Oct 2024 17:53:05 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 7D72B41054;
+	Wed,  2 Oct 2024 17:02:37 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 081D61BF83E
- for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Oct 2024 17:53:04 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 824591BF422
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Oct 2024 17:02:35 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id EA4AB6060D
- for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Oct 2024 17:53:03 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 6F1D1401F7
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Oct 2024 17:02:35 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 7TkoEBYXOOAy for <intel-wired-lan@lists.osuosl.org>;
- Wed,  2 Oct 2024 17:53:03 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id q2iKj0Qx5_3c for <intel-wired-lan@lists.osuosl.org>;
+ Wed,  2 Oct 2024 17:02:34 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2a00:1450:4864:20::22e; helo=mail-lj1-x22e.google.com;
- envelope-from=demonihin@gmail.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org D4359600C9
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D4359600C9
-Received: from mail-lj1-x22e.google.com (mail-lj1-x22e.google.com
- [IPv6:2a00:1450:4864:20::22e])
- by smtp3.osuosl.org (Postfix) with ESMTPS id D4359600C9
- for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Oct 2024 17:53:02 +0000 (UTC)
-Received: by mail-lj1-x22e.google.com with SMTP id
- 38308e7fff4ca-2fada911953so11100881fa.0
- for <intel-wired-lan@lists.osuosl.org>; Wed, 02 Oct 2024 10:53:02 -0700 (PDT)
+ client-ip=2607:f8b0:4864:20::431; helo=mail-pf1-x431.google.com;
+ envelope-from=stfomichev@gmail.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 4E303401B8
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4E303401B8
+Received: from mail-pf1-x431.google.com (mail-pf1-x431.google.com
+ [IPv6:2607:f8b0:4864:20::431])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 4E303401B8
+ for <intel-wired-lan@lists.osuosl.org>; Wed,  2 Oct 2024 17:02:33 +0000 (UTC)
+Received: by mail-pf1-x431.google.com with SMTP id
+ d2e1a72fcca58-717934728adso60771b3a.2
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 02 Oct 2024 10:02:33 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1727891580; x=1728496380;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=j1KvCZ7gaXzt52gPxua+C5bMinjON5snkugcQdtgk70=;
- b=mvIgdRM/6oF5qnA6BzCkUomhnICCsDm8veYMVfKSC8BKiCizoDiK40/SIEftqXc1yC
- 6wSdEmaLJh0bAqw932CIfQqCK8O/AhChBP8VoCKnKNFadhqVTkBeovfVmEWDan/0vu08
- anhLFj7EwO3ju2X5jJW1QYVs/vZFW4KK8BduU/iEev9gFWuHF3R5d+N1LgtMR0qFAcUY
- mn3Enj/KR0+PSyxi0RdyDoOY048PF3baEHsDXOBQvXePJ5mV7hJY8KtCmWL/N4CBixhb
- pgJ1cIpk2doeB1bXLIfXoWOYnPYJ3WPwExEl1Vw72EyZRpOJzXGbj+71H5gf9Qopp4M7
- D17w==
+ d=1e100.net; s=20230601; t=1727888553; x=1728493353;
+ h=in-reply-to:content-transfer-encoding:content-disposition
+ :mime-version:references:message-id:subject:cc:to:from:date
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=j3CAetgPIchZCXGcR59D8f6NwNxq3FYMeL7IhO3SN+4=;
+ b=uIMcFS1EGa9hHrktx0ZLPGxh+Ko9xZOiFtMGqi6nHnn+aLEMZO54FYq9ZVLU9R32o4
+ 0WvTGS+mOKPvew3EnJA7rPyYu/7yxK+gDyntYwHN+5tq7L9iyngVDOwWWAF3UBtLHfCu
+ ml0AnTuhekwkiaJZFG2cpQexRZZYf8PxH2kc+SYp4pXsIvMjxuLaCARiWpKStZVgTRa2
+ 1bQpdK8TqbHYj0ZP6NTJTWD44UrW+k3xuz3UPV72my9O9TnL74CvhZCZdsvdijI/bLCA
+ 0X5UBeg0+xuA/ByVGXlEk1mlWf472+vfbVjcPg4W8LG/jDRJQSGE93OxP4anlnGR4tMn
+ ZGxQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWMhBcMLggFYV5XU1JLWlscgnF+iMq0T06+bNUS9RgSxC1VdWdc3HTnZvBqJI/lYUeSv2LpOa7b/POFGfyElzE=@lists.osuosl.org
-X-Gm-Message-State: AOJu0Ywyk/Xf4SVEOIrB1kCfgAxWggoA0SSSINJW3y93LLME7J8C6irS
- 4A4NNftHX4mIwJfz0faovbFNcHcf0e4wHeBd5AoNYGNfT5Cs3rTg
-X-Google-Smtp-Source: AGHT+IGa18kvxvg8Vx8+TvCEpf9WV9I6u3h8TcPjesh3PjmhEGgbC4i0pCBjyNko56nxv1HoL5TG/w==
-X-Received: by 2002:a05:6512:a8b:b0:539:8bc9:b354 with SMTP id
- 2adb3069b0e04-539a6260868mr169443e87.9.1727891580038; 
- Wed, 02 Oct 2024 10:53:00 -0700 (PDT)
-Received: from laptop.dev.lan ([2001:2040:c00f:15c::4159])
+ AJvYcCVDwWfiyMz+wWv1IEso1DxGHYD21/2OiCi1py8VLUYxTW+wip2QJBrZYDWfSJQO2j4y6tLNCplqR1JZ7t/sZ4k=@lists.osuosl.org
+X-Gm-Message-State: AOJu0Yx5pJQlMordueEuuCmSLNlnFp9tEhY9HttYlj6wOugspMMHpzeF
+ TxB2Ydv+jhgMLZ31bJfAkY3j4w9IhMP3jVLRicU3McN5UYrIuHI=
+X-Google-Smtp-Source: AGHT+IGp5S9qADB+5Pu5rzmzU8tU0hkVADw7MBH03DAjOoup+W+fr8dADId0yHouk9LY1IerDa/fzA==
+X-Received: by 2002:a05:6a00:807:b0:705:a13b:e740 with SMTP id
+ d2e1a72fcca58-71dc5d6a157mr5638461b3a.19.1727888552645; 
+ Wed, 02 Oct 2024 10:02:32 -0700 (PDT)
+Received: from localhost ([2601:646:9e00:f56e:123b:cea3:439a:b3e3])
  by smtp.gmail.com with ESMTPSA id
- 2adb3069b0e04-538a043bb4esm1958968e87.234.2024.10.02.10.52.58
+ d2e1a72fcca58-71b26498b51sm10383673b3a.14.2024.10.02.10.02.31
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 02 Oct 2024 10:52:59 -0700 (PDT)
-From: Dmitrii Ermakov <demonihin@gmail.com>
-To: davem@davemloft.net
-Date: Wed,  2 Oct 2024 18:59:15 +0200
-Message-ID: <20241002165957.36513-2-demonihin@gmail.com>
-X-Mailer: git-send-email 2.45.2
+ Wed, 02 Oct 2024 10:02:32 -0700 (PDT)
+Date: Wed, 2 Oct 2024 10:02:31 -0700
+From: Stanislav Fomichev <stfomichev@gmail.com>
+To: Toke =?utf-8?Q?H=C3=B8iland-J=C3=B8rgensen?= <toke@redhat.com>
+Message-ID: <Zv18pxsiTGTZSTyO@mini-arch>
+References: <87wmiysi37.fsf@toke.dk> <D4GBY7CHJNJ6.3O18I5W1FTPKR@bobby>
+ <87ldzds8bp.fsf@toke.dk> <D4H5CAN4O95E.3KF8LAH75FYD4@bobby>
+ <ZvbKDT-2xqx2unrx@lore-rh-laptop> <871q11s91e.fsf@toke.dk>
+ <ZvqQOpqnK9hBmXNn@lore-desk> <D4KJ7DUXJQC5.2UFST9L3CUOH7@bobby>
+ <ZvwNQqN4gez1Ksfn@lore-desk> <87zfnnq2hs.fsf@toke.dk>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
+In-Reply-To: <87zfnnq2hs.fsf@toke.dk>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1727891580; x=1728496380; darn=lists.osuosl.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=j1KvCZ7gaXzt52gPxua+C5bMinjON5snkugcQdtgk70=;
- b=XhsuN5g6jfjgYaqjlQpVGQucOXmozU7r71gKiWI1x5jSXloNUJBhgeC6KYlPgy0yJT
- xVxLQejzuHBBIfzzrAmhzyGNS94JKNpWoQ2wnxF6JCcB8xV4Xsg8ZpAMS7rYnla6tWUL
- cSqANRyZxd983ZtYpqnwaIdCUT9DUEhz1s+rqVaheJ0hBMNJYRE64X7K5dxqP7w+gJ5N
- dnkHE5UTV/F6CMw1016mwIymwSypt6EbvG3YCioWuFyPougMoVpzwy/CyX8CnJlEVmq8
- ePoaL+afxmQf5xiUtiTdagRPWPO93k/nFTkL++J0EmeEo5FO7kqSAdydm6XD5k/FdX8J
- aEKQ==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ d=gmail.com; s=20230601; t=1727888553; x=1728493353; darn=lists.osuosl.org;
+ h=in-reply-to:content-transfer-encoding:content-disposition
+ :mime-version:references:message-id:subject:cc:to:from:date:from:to
+ :cc:subject:date:message-id:reply-to;
+ bh=j3CAetgPIchZCXGcR59D8f6NwNxq3FYMeL7IhO3SN+4=;
+ b=ku6RoYYNGHX0ekx9eQH8ALiEGyTH5bx9WQw58cNWONU3e9nJ2PNJM2yGheyjpI51zs
+ 9tpx/9q0ZACOgv4fe44N1giiMaaoSd3RxrOkId3XHP6CUV7b582/5/5Sh9V6jh/Y3J4g
+ fFcd3bsuEckp0BEEXSD7BILyHKXU+l7SgqUBJnQYsef7CKvsyvilhfdzTUDRY3gJKe2d
+ FZvsS2+RWi4n2PmQ5LRT2P2bSjwZv2yY68O+0AAU+6BFMpUFgx3CfyKkKZtGjl09OjAO
+ BeiYK72mwJVrxpb5v+1srZf8uaHGPMzFfxTbheZO4Q2l5Nc0GOoQguGghfRoiseQDMVb
+ hpsQ==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=gmail.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
- header.a=rsa-sha256 header.s=20230601 header.b=XhsuN5g6
-Subject: [Intel-wired-lan] [PATCH v2 net-next] e1000e: makes
- e1000_watchdog_task use queue_delayed_work
+ header.a=rsa-sha256 header.s=20230601 header.b=ku6RoYYN
+Subject: Re: [Intel-wired-lan] [RFC bpf-next 0/4] Add XDP rx hw hints
+ support performing XDP_REDIRECT
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -115,152 +124,108 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Dmitrii Ermakov <demonihin@gmail.com>, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, edumazet@google.com, anthony.l.nguyen@intel.com,
- przemyslaw.kitszel@intel.com, kuba@kernel.org, pabeni@redhat.com,
- intel-wired-lan@lists.osuosl.org
+Cc: mst@redhat.com, jasowang@redhat.com, ast@kernel.org, edumazet@google.com,
+ anthony.l.nguyen@intel.com, Yan Zhai <yan@cloudflare.com>,
+ Jakub Sitnicki <jakub@cloudflare.com>, daniel@iogearbox.net,
+ kernel-team <kernel-team@cloudflare.com>, przemyslaw.kitszel@intel.com,
+ john.fastabend@gmail.com, sdf@fomichev.me, intel-wired-lan@lists.osuosl.org,
+ kuba@kernel.org, pabeni@redhat.com, Lorenzo Bianconi <lorenzo@kernel.org>,
+ Jesper Dangaard Brouer <hawk@kernel.org>, alexandre.torgue@foss.st.com,
+ Arthur Fabre <afabre@cloudflare.com>, netdev@vger.kernel.org,
+ tariqt@nvidia.com, Alexander Lobakin <aleksander.lobakin@intel.com>,
+ mcoquelin.stm32@gmail.com, bpf@vger.kernel.org, saeedm@nvidia.com,
+ davem@davemloft.net
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Replaces watchdog timer with delayed_work as advised
-in the driver's TODO comment.
+On 10/01, Toke Høiland-Jørgensen wrote:
+> Lorenzo Bianconi <lorenzo@kernel.org> writes:
+> 
+> >> On Mon Sep 30, 2024 at 1:49 PM CEST, Lorenzo Bianconi wrote:
+> >> > > Lorenzo Bianconi <lorenzo@kernel.org> writes:
+> >> > > 
+> >> > > >> > We could combine such a registration API with your header format, so
+> >> > > >> > that the registration just becomes a way of allocating one of the keys
+> >> > > >> > from 0-63 (and the registry just becomes a global copy of the header).
+> >> > > >> > This would basically amount to moving the "service config file" into the
+> >> > > >> > kernel, since that seems to be the only common denominator we can rely
+> >> > > >> > on between BPF applications (as all attempts to write a common daemon
+> >> > > >> > for BPF management have shown).
+> >> > > >> 
+> >> > > >> That sounds reasonable. And I guess we'd have set() check the global
+> >> > > >> registry to enforce that the key has been registered beforehand?
+> >> > > >> 
+> >> > > >> >
+> >> > > >> > -Toke
+> >> > > >> 
+> >> > > >> Thanks for all the feedback!
+> >> > > >
+> >> > > > I like this 'fast' KV approach but I guess we should really evaluate its
+> >> > > > impact on performances (especially for xdp) since, based on the kfunc calls
+> >> > > > order in the ebpf program, we can have one or multiple memmove/memcpy for
+> >> > > > each packet, right?
+> >> > > 
+> >> > > Yes, with Arthur's scheme, performance will be ordering dependent. Using
+> >> > > a global registry for offsets would sidestep this, but have the
+> >> > > synchronisation issues we discussed up-thread. So on balance, I think
+> >> > > the memmove() suggestion will probably lead to the least pain.
+> >> > > 
+> >> > > For the HW metadata we could sidestep this by always having a fixed
+> >> > > struct for it (but using the same set/get() API with reserved keys). The
+> >> > > only drawback of doing that is that we statically reserve a bit of
+> >> > > space, but I'm not sure that is such a big issue in practice (at least
+> >> > > not until this becomes to popular that the space starts to be contended;
+> >> > > but surely 256 bytes ought to be enough for everybody, right? :)).
+> >> >
+> >> > I am fine with the proposed approach, but I think we need to verify what is the
+> >> > impact on performances (in the worst case??)
+> >> 
+> >> If drivers are responsible for populating the hardware metadata before
+> >> XDP, we could make sure drivers set the fields in order to avoid any
+> >> memove() (and maybe even provide a helper to ensure this?).
+> >
+> > nope, since the current APIs introduced by Stanislav are consuming NIC
+> > metadata in kfuncs (mainly for af_xdp) and, according to my understanding,
+> > we want to add a kfunc to store the info for each NIC metadata (e.g rx-hash,
+> > timestamping, ..) into the packet (this is what Toke is proposing, right?).
+> > In this case kfunc calling order makes a difference.
+> > We can think even to add single kfunc to store all the info for all the NIC
+> > metadata (maybe via a helping struct) but it seems not scalable to me and we
+> > are losing kfunc versatility.
+> 
+> Yes, I agree we should have separate kfuncs for each metadata field.
+> Which means it makes a lot of sense to just use the same setter API that
+> we use for the user-registered metadata fields, but using reserved keys.
+> So something like:
+> 
+> #define BPF_METADATA_HW_HASH      BIT(60)
+> #define BPF_METADATA_HW_TIMESTAMP BIT(61)
+> #define BPF_METADATA_HW_VLAN      BIT(62)
+> #define BPF_METADATA_RESERVED (0xffff << 48)
+> 
+> bpf_packet_metadata_set(pkt, BPF_METADATA_HW_HASH, hash_value);
+> 
+> 
+> As for the internal representation, we can just have the kfunc do
+> something like:
+> 
+> int bpf_packet_metadata_set(field_id, value) {
+>   switch(field_id) {
+>     case BPF_METADATA_HW_HASH:
+>       pkt->xdp_hw_meta.hash = value;
+>       break;
+>     [...]
+>     default:
+>       /* do the key packing thing */
+>   }
+> }
+> 
+> 
+> that way the order of setting the HW fields doesn't matter, only the
+> user-defined metadata.
 
-Signed-off-by: Dmitrii Ermakov <demonihin@gmail.com>
----
-V1 -> V2: Removed redundant line wraps, renamed e1000_watchdog to e1000_watchdog_work
-
- drivers/net/ethernet/intel/e1000e/e1000.h  |  4 +--
- drivers/net/ethernet/intel/e1000e/netdev.c | 42 ++++++++--------------
- 2 files changed, 16 insertions(+), 30 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/e1000e/e1000.h b/drivers/net/ethernet/intel/e1000e/e1000.h
-index ba9c19e6994c..5a60372d2158 100644
---- a/drivers/net/ethernet/intel/e1000e/e1000.h
-+++ b/drivers/net/ethernet/intel/e1000e/e1000.h
-@@ -189,12 +189,12 @@ struct e1000_phy_regs {
- 
- /* board specific private data structure */
- struct e1000_adapter {
--	struct timer_list watchdog_timer;
- 	struct timer_list phy_info_timer;
- 	struct timer_list blink_timer;
- 
-+	struct delayed_work watchdog_work;
-+
- 	struct work_struct reset_task;
--	struct work_struct watchdog_task;
- 
- 	const struct e1000_info *ei;
- 
-diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
-index f103249b12fa..495693bca2b1 100644
---- a/drivers/net/ethernet/intel/e1000e/netdev.c
-+++ b/drivers/net/ethernet/intel/e1000e/netdev.c
-@@ -1778,7 +1778,7 @@ static irqreturn_t e1000_intr_msi(int __always_unused irq, void *data)
- 		}
- 		/* guard against interrupt when we're going down */
- 		if (!test_bit(__E1000_DOWN, &adapter->state))
--			mod_timer(&adapter->watchdog_timer, jiffies + 1);
-+			queue_delayed_work(system_wq, &adapter->watchdog_work, 1);
- 	}
- 
- 	/* Reset on uncorrectable ECC error */
-@@ -1857,7 +1857,7 @@ static irqreturn_t e1000_intr(int __always_unused irq, void *data)
- 		}
- 		/* guard against interrupt when we're going down */
- 		if (!test_bit(__E1000_DOWN, &adapter->state))
--			mod_timer(&adapter->watchdog_timer, jiffies + 1);
-+			queue_delayed_work(system_wq, &adapter->watchdog_work, 1);
- 	}
- 
- 	/* Reset on uncorrectable ECC error */
-@@ -1901,7 +1901,7 @@ static irqreturn_t e1000_msix_other(int __always_unused irq, void *data)
- 		hw->mac.get_link_status = true;
- 		/* guard against interrupt when we're going down */
- 		if (!test_bit(__E1000_DOWN, &adapter->state))
--			mod_timer(&adapter->watchdog_timer, jiffies + 1);
-+			queue_delayed_work(system_wq, &adapter->watchdog_work, 1);
- 	}
- 
- 	if (!test_bit(__E1000_DOWN, &adapter->state))
-@@ -4293,7 +4293,8 @@ void e1000e_down(struct e1000_adapter *adapter, bool reset)
- 
- 	napi_synchronize(&adapter->napi);
- 
--	del_timer_sync(&adapter->watchdog_timer);
-+	cancel_delayed_work_sync(&adapter->watchdog_work);
-+
- 	del_timer_sync(&adapter->phy_info_timer);
- 
- 	spin_lock(&adapter->stats64_lock);
-@@ -5164,25 +5165,12 @@ static void e1000e_check_82574_phy_workaround(struct e1000_adapter *adapter)
- 	}
- }
- 
--/**
-- * e1000_watchdog - Timer Call-back
-- * @t: pointer to timer_list containing private info adapter
-- **/
--static void e1000_watchdog(struct timer_list *t)
-+static void e1000_watchdog_work(struct work_struct *work)
- {
--	struct e1000_adapter *adapter = from_timer(adapter, t, watchdog_timer);
--
--	/* Do the rest outside of interrupt context */
--	schedule_work(&adapter->watchdog_task);
--
--	/* TODO: make this use queue_delayed_work() */
--}
--
--static void e1000_watchdog_task(struct work_struct *work)
--{
--	struct e1000_adapter *adapter = container_of(work,
--						     struct e1000_adapter,
--						     watchdog_task);
-+	struct delayed_work *dwork =
-+		container_of(work, struct delayed_work, work);
-+	struct e1000_adapter *adapter =
-+		container_of(dwork, struct e1000_adapter, watchdog_work);
- 	struct net_device *netdev = adapter->netdev;
- 	struct e1000_mac_info *mac = &adapter->hw.mac;
- 	struct e1000_phy_info *phy = &adapter->hw.phy;
-@@ -5411,8 +5399,8 @@ static void e1000_watchdog_task(struct work_struct *work)
- 
- 	/* Reset the timer */
- 	if (!test_bit(__E1000_DOWN, &adapter->state))
--		mod_timer(&adapter->watchdog_timer,
--			  round_jiffies(jiffies + 2 * HZ));
-+		queue_delayed_work(system_wq, &adapter->watchdog_work,
-+				   round_jiffies(2 * HZ));
- }
- 
- #define E1000_TX_FLAGS_CSUM		0x00000001
-@@ -7591,11 +7579,10 @@ static int e1000_probe(struct pci_dev *pdev, const struct pci_device_id *ent)
- 		goto err_eeprom;
- 	}
- 
--	timer_setup(&adapter->watchdog_timer, e1000_watchdog, 0);
- 	timer_setup(&adapter->phy_info_timer, e1000_update_phy_info, 0);
-+	INIT_DELAYED_WORK(&adapter->watchdog_work, e1000_watchdog_work);
- 
- 	INIT_WORK(&adapter->reset_task, e1000_reset_task);
--	INIT_WORK(&adapter->watchdog_task, e1000_watchdog_task);
- 	INIT_WORK(&adapter->downshift_task, e1000e_downshift_workaround);
- 	INIT_WORK(&adapter->update_phy_task, e1000e_update_phy_task);
- 	INIT_WORK(&adapter->print_hang_task, e1000_print_hw_hang);
-@@ -7736,11 +7723,10 @@ static void e1000_remove(struct pci_dev *pdev)
- 	 * from being rescheduled.
- 	 */
- 	set_bit(__E1000_DOWN, &adapter->state);
--	del_timer_sync(&adapter->watchdog_timer);
-+	cancel_delayed_work_sync(&adapter->watchdog_work);
- 	del_timer_sync(&adapter->phy_info_timer);
- 
- 	cancel_work_sync(&adapter->reset_task);
--	cancel_work_sync(&adapter->watchdog_task);
- 	cancel_work_sync(&adapter->downshift_task);
- 	cancel_work_sync(&adapter->update_phy_task);
- 	cancel_work_sync(&adapter->print_hang_task);
--- 
-2.45.2
-
+Can you expand on why we need the flexibility of picking the metadata fields
+here? Presumably we are talking about the use-cases where the XDP program
+is doing redirect/pass and it doesn't really know who's the final
+consumer is (might be another xdp program or might be the xdp->skb
+kernel case), so the only sensible option here seems to be store everything?
