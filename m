@@ -1,104 +1,103 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id F036A98E8B7
-	for <lists+intel-wired-lan@lfdr.de>; Thu,  3 Oct 2024 05:13:10 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 286D798E8BD
+	for <lists+intel-wired-lan@lfdr.de>; Thu,  3 Oct 2024 05:14:04 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 8814A4050C;
-	Thu,  3 Oct 2024 03:13:08 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id C06A04036E;
+	Thu,  3 Oct 2024 03:14:02 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 9IJzLNRGY8Yi; Thu,  3 Oct 2024 03:13:07 +0000 (UTC)
+ id ILNV0FxuKNOe; Thu,  3 Oct 2024 03:14:01 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 54D7C403A7
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 624C7403A2
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1727925187;
-	bh=u7KOU930YCS4T0Zeyl32nCweeMUSCNrFU/vOhKmimzQ=;
+	s=default; t=1727925241;
+	bh=6Q/V/FYeYBqbDmFh06aqi2rG5Bx4oRN6BWp1UP6ZkqQ=;
 	h=References:In-Reply-To:From:Date:To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=WK6ltY79ZrSPCBPA9sLQadx4tCBDahFXUINLIcG6bPbMhffwNzmgCgF9q4pJg78An
-	 gnBXbk2HQNSEOa6lwHSLtdGKwxQdu4Bk33FDCZ5EpGwOsjvCV+7RlhGW/IhyUPnK4U
-	 6JhqdrOZcqUSSmkqtykk/9VBuyw7d/7RGl1jNfX7+UCTiudK34sXhAcKnheZpaSnXV
-	 e21FRbspfFriuu2Sp6bw1pS4c37fU0cTOfIUTUvIdGfJ/g7TCnOPdRFlc2D3aoPHW5
-	 X89cTN6Qg0TwLe4bbOafx87UHzSVm2aCmPmQ5PmL+N1t85B1ArC/PvJv2W8uUMq0ZG
-	 dQl4ff1hRJxmA==
+	b=WKw0of5mUcUGhqB/jS+wHIhsiQ20YDK8f+/6Jqzlk+Kkr1CkzyEWtT0TnKM0SE8d8
+	 2h9QK4so7Mg2IEAFlRflRiwus9PRUaosngzdh3gmmbaIeqpgJhC4kG85KGIEIaZwM5
+	 +pZs376PBZkJ3VjTzbio6S5Q5xDr0vkYIAfhe230l6F9QzUs8DIaStsmBLlX5Y+8C5
+	 VzH9t8OkjdVHEtTMup7umStnLSn+sRssbc5GsgWIQtyk5Pd1RZH7W06OP9hcdGEdKI
+	 Ct7dcsulgLb3dPkmzQkGfHY+hJ8buRlzoJoS05UKFBt4F8VlxEGLbQJ6cca3057A5c
+	 dQEuzt4E/qqLg==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 54D7C403A7;
-	Thu,  3 Oct 2024 03:13:07 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 624C7403A2;
+	Thu,  3 Oct 2024 03:14:01 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id E3DB11BF28D
- for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Oct 2024 03:13:04 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id C65651BF28D
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Oct 2024 03:13:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id DDE534036E
- for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Oct 2024 03:13:04 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id BFC7D401D8
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Oct 2024 03:13:58 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id BF9cvaE8z0Q9 for <intel-wired-lan@lists.osuosl.org>;
- Thu,  3 Oct 2024 03:13:03 +0000 (UTC)
+ id nBLq1sXefi66 for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  3 Oct 2024 03:13:57 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2a00:1450:4864:20::22d; helo=mail-lj1-x22d.google.com;
+ client-ip=2a00:1450:4864:20::132; helo=mail-lf1-x132.google.com;
  envelope-from=kalesh-anakkur.purayil@broadcom.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 3F958400B5
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 3F958400B5
-Received: from mail-lj1-x22d.google.com (mail-lj1-x22d.google.com
- [IPv6:2a00:1450:4864:20::22d])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 3F958400B5
- for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Oct 2024 03:13:02 +0000 (UTC)
-Received: by mail-lj1-x22d.google.com with SMTP id
- 38308e7fff4ca-2facf48157dso5187021fa.2
- for <intel-wired-lan@lists.osuosl.org>; Wed, 02 Oct 2024 20:13:02 -0700 (PDT)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 449F24036E
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 449F24036E
+Received: from mail-lf1-x132.google.com (mail-lf1-x132.google.com
+ [IPv6:2a00:1450:4864:20::132])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 449F24036E
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Oct 2024 03:13:56 +0000 (UTC)
+Received: by mail-lf1-x132.google.com with SMTP id
+ 2adb3069b0e04-5398e33155fso513425e87.3
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 02 Oct 2024 20:13:56 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1727925181; x=1728529981;
+ d=1e100.net; s=20230601; t=1727925235; x=1728530035;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=u7KOU930YCS4T0Zeyl32nCweeMUSCNrFU/vOhKmimzQ=;
- b=cQc4znw6W15eaIBzO1XWpHatGrym2VeBO8YSbkCnjF8w0d/aPscw4wF0YW5jD/YkjR
- zvN6tqhxUYUkSK9DlfXVbEFgIHEQwodVn9Ma0bHsMTc0I60CVFRPKHRNGMtQS0/o08A0
- bKQ9FXs6I2jKRaz0v6ajZkj3DfXeIXu/SstVdLPfXbFAsuRA25R+NWrVx/3sShQE50/W
- 7hsxzIlNYA9WeS7/SB3QSX4/Sv3hzRgfN4nta1kBEd17YJ+0+R2L0+WdC0U4uyAovXQw
- qcEuNIdz+ovxYc92+0vuOp2luid9+fTeJ/vnUpxzGFazr473piLuuJl7hoXI+CXsUX0t
- Ts9g==
-X-Gm-Message-State: AOJu0Ywt2pieVw+8zH/3V/Jt4FbQTxlDwa7eTFLa7Kk/UCNJbRt9tliq
- sjKvUiwIvh/dMuH92xShxTx6tl2AQmGGCAynXJ80mZ4BONfBtehomkjQW232CAvpkXu3PquITis
- 8MaUb8xDwWJgvmbz7PcYXUO89e8iwFBGsdwlq
-X-Google-Smtp-Source: AGHT+IGS/f7PEmJxBvVUaKxsuwXZlqo7IOhPhFmxlQ0mvZBLHMY0o4SABbxap95G7qfmRKNtRc+UPY9uykbvHnW8dbo=
-X-Received: by 2002:a05:651c:508:b0:2f6:1d35:1491 with SMTP id
- 38308e7fff4ca-2fae1013f1fmr31409131fa.15.1727925180630; Wed, 02 Oct 2024
- 20:13:00 -0700 (PDT)
+ bh=6Q/V/FYeYBqbDmFh06aqi2rG5Bx4oRN6BWp1UP6ZkqQ=;
+ b=ubcGMW838X4Id1Iyk4px/yOdyyz+fioNDKpZzEy/WCcj+xmbeWEJVGM7VMW+0L/sco
+ a1Ko+DD3ylnqRQ3M+3Rh/5kQyXdYct9hRnNmWwmuzmGUSdpfM10ENfA3VdELt/4othMG
+ Wc25eT2jv3w9gq/G4mVIkIOqPK1i7450h4N5KUb58Whhs5oJI6SQUEvOpRy2a7XipJc4
+ xL8d5cm2wrEaPdowd7HWSMx7+qKnW+4jhn/fPklAT4c9cAvPo/xufxPfZBpn/SQA7C21
+ Pwnbyqshc6o6wFVMYOrM287iM3kWX9u3IHLmokBrJMAKlyKmLmzGhvx2Fmi3KD1+zxsx
+ Labg==
+X-Gm-Message-State: AOJu0YyT/sjy5qPv2m17qfLUmj9MaAsN028dq3giIW5ua5rhTKdbGerz
+ l8Or2z5+q6CFNoYEKxsNTwwsZNkQNZdvc5Rvg2/s9qPbX/CoLPW04/kpjC5iElEmhdjBu+Laahy
+ 9ixORrsv8mfwd0IOmRwBG+SEae+/graia8Zsh
+X-Google-Smtp-Source: AGHT+IFsDIEa6b1kpLCtg+SjFxqKgeTDehldgZSoZoD/3l3UxDUajBUqRQ+tEZSCotBSJhKoQWkbcYzZDvFD+YQvuUI=
+X-Received: by 2002:a05:6512:694:b0:539:8d46:4746 with SMTP id
+ 2adb3069b0e04-539a07aa3b0mr2590601e87.60.1727925234751; Wed, 02 Oct 2024
+ 20:13:54 -0700 (PDT)
 MIME-Version: 1.0
 References: <20241002115304.15127-6-przemyslaw.kitszel@intel.com>
- <20241002115304.15127-9-przemyslaw.kitszel@intel.com>
-In-Reply-To: <20241002115304.15127-9-przemyslaw.kitszel@intel.com>
+ <20241002115304.15127-8-przemyslaw.kitszel@intel.com>
+In-Reply-To: <20241002115304.15127-8-przemyslaw.kitszel@intel.com>
 From: Kalesh Anakkur Purayil <kalesh-anakkur.purayil@broadcom.com>
-Date: Thu, 3 Oct 2024 08:42:48 +0530
-Message-ID: <CAH-L+nMMkbKSdrObGOat+mjfoJUkWj_jOr2emCpDyLmJO98FUw@mail.gmail.com>
+Date: Thu, 3 Oct 2024 08:43:42 +0530
+Message-ID: <CAH-L+nOAu_FCu9HpmaDWnhE+wy2wpc6Q9izBSgv0x_Huco__cQ@mail.gmail.com>
 To: Przemek Kitszel <przemyslaw.kitszel@intel.com>
 Content-Type: multipart/signed; protocol="application/pkcs7-signature";
- micalg=sha-256; boundary="0000000000009d3f95062389eeeb"
+ micalg=sha-256; boundary="000000000000d6cb05062389f184"
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=broadcom.com; s=google; t=1727925181; x=1728529981; darn=lists.osuosl.org;
+ d=broadcom.com; s=google; t=1727925235; x=1728530035; darn=lists.osuosl.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=u7KOU930YCS4T0Zeyl32nCweeMUSCNrFU/vOhKmimzQ=;
- b=T99HwW/8t+OXc9+qRec3TPB0f8D5Ci5+xX9/8E3+ahP++5N3+de4LBCW7QwzbNeVXO
- d6Hx7CUsrMgdciip6og1Lqmxjbb7uK4+m7UParHmN/SsZBAm2LtRLpY19/TSSeF5MqD5
- 6YCd1KTNKQEN647tn1TyX2nbO4mmwDxB3EpNQ=
+ bh=6Q/V/FYeYBqbDmFh06aqi2rG5Bx4oRN6BWp1UP6ZkqQ=;
+ b=cDbortTrIUl/NqO3Fv5mmLlv4KIGmT/oCQT9mih8V8ux236S7ikxmpCQHmsAaPXkFk
+ sdp1ygrKY0v/NPAxkfgZvr45qexT/aeWAMBekZOyHb+Q9BpId4cytBrVpQ/duCit/9Ho
+ f7pL5czTynbZ+90pNgcB1+vY2tst2SX5Yt3aY=
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=broadcom.com
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (1024-bit key,
- unprotected) header.d=broadcom.com header.i=@broadcom.com header.a=rsa-sha256
- header.s=google header.b=T99HwW/8
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next 3/4] ice: minor: rename goto
- labels from err to unroll
+ dkim=pass (1024-bit key) header.d=broadcom.com header.i=@broadcom.com
+ header.a=rsa-sha256 header.s=google header.b=cDbortTr
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next 2/4] ice: split ice_init_hw()
+ out from ice_init_dev()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -117,15 +116,21 @@ Cc: Tony Nguyen <anthony.l.nguyen@intel.com>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
---0000000000009d3f95062389eeeb
+--000000000000d6cb05062389f184
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
 On Wed, Oct 2, 2024 at 5:23=E2=80=AFPM Przemek Kitszel
 <przemyslaw.kitszel@intel.com> wrote:
 >
-> Clean up goto labels after previous commit, to conform to single naming
-> scheme in ice_probe() and ice_init_dev().
+> Split ice_init_hw() call out from ice_init_dev(). Such move enables
+> pulling the former to be even earlier on call path, what would enable
+> moving ice_adapter init to be between the two (in subsequent commit).
+> Such move enables ice_adapter to know about number of PFs.
+>
+> Do the same for ice_deinit_hw(), so the init and deinit calls could
+> be easily mirrored.
+> Next commit will rename unrelated goto labels to unroll prefix.
 >
 > Reviewed-by: Marcin Szycik <marcin.szycik@linux.intel.com>
 > Signed-off-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
@@ -138,7 +143,7 @@ Reviewed-by: Kalesh AP <kalesh-anakkur.purayil@broadcom.com>
 Regards,
 Kalesh A P
 
---0000000000009d3f95062389eeeb
+--000000000000d6cb05062389f184
 Content-Type: application/pkcs7-signature; name="smime.p7s"
 Content-Transfer-Encoding: base64
 Content-Disposition: attachment; filename="smime.p7s"
@@ -210,13 +215,13 @@ a30CvRuhokNO6Jzh7ZFtjKVMzYas3oo6HXgA+slRszMu4pc+fRPO41FHjeDM76e6P5OnthhnD+NY
 x6xokUN65DN1bn2MkeNs0nQpizDqd0QxggJtMIICaQIBATBrMFsxCzAJBgNVBAYTAkJFMRkwFwYD
 VQQKExBHbG9iYWxTaWduIG52LXNhMTEwLwYDVQQDEyhHbG9iYWxTaWduIEdDQyBSMyBQZXJzb25h
 bFNpZ24gMiBDQSAyMDIwAgw3wUUJsDUiPdpordMwDQYJYIZIAWUDBAIBBQCggdQwLwYJKoZIhvcN
-AQkEMSIEIBmXkTR2Wzn5k6w9A+WgRNTurC7KmCm6Q2UXqIp6MPJMMBgGCSqGSIb3DQEJAzELBgkq
-hkiG9w0BBwEwHAYJKoZIhvcNAQkFMQ8XDTI0MTAwMzAzMTMwMVowaQYJKoZIhvcNAQkPMVwwWjAL
+AQkEMSIEIFw6UdsE6xjfdYsXsi4HGGk10beNr1vKmC2X52bxfNb1MBgGCSqGSIb3DQEJAzELBgkq
+hkiG9w0BBwEwHAYJKoZIhvcNAQkFMQ8XDTI0MTAwMzAzMTM1NVowaQYJKoZIhvcNAQkPMVwwWjAL
 BglghkgBZQMEASowCwYJYIZIAWUDBAEWMAsGCWCGSAFlAwQBAjAKBggqhkiG9w0DBzALBgkqhkiG
-9w0BAQowCwYJKoZIhvcNAQEHMAsGCWCGSAFlAwQCATANBgkqhkiG9w0BAQEFAASCAQB+c/Fja1rf
-KTUNNcX/zMSwPBgGQTCTpjdDfIHt+8BKZe1SHHBMv9yXUPEkXB6VMehN/srBVvziK5P5QflwIuiY
-+IQHy0QCERXYZprNoQJddHrqQ7mg3BiFuFwGyIveMXuIAVE3xcAOJYGhRy6k3Qk3HulzOjwtx/J5
-58X8oWhNM5STnmCpx5wE+nmaHs4FgOt6M3EIq19g0MyCgBkWz7PChcfpAJehCZdIZRxZtwGWAx+m
-QvxZVPcTWX+eMNQbJalzqVPGVRIg1j6FB81J/PCeJU/5qdggdJtIK9+E7cGWm6EB3ubhptDYi0OD
-wHLn0WZKK0iOnplAO0K0LQUtBWlG
---0000000000009d3f95062389eeeb--
+9w0BAQowCwYJKoZIhvcNAQEHMAsGCWCGSAFlAwQCATANBgkqhkiG9w0BAQEFAASCAQA6S/GPxKcU
+KIZ1PCCOrXx83wvjO1YOOhK9WPisdzlZrZYazoVLkJsiVsBZ1uW1S642pOvi+iCRtf9BP4N8XpBf
+JTXIfnSYL1oJBci9Yp1EB2RtN5fzvY6CZTq8qqKsO2qY1SkJSFEjyWyOQ3EtXW1+ImC4lMbvYeyj
+phTuyDk1zDjimglri3g2JsWnZH+kHBg35YbqRYnJpB03klBOeXsvwnXIQqazUfp5+pKBpylTjw6I
+vRgM1IcexvGndE/tN1pC+HQGWUZqNn6VlaYt901TKBARWkk3BplAiKsqtgDU1MDRAWRjOEk+Wq0b
+QOxUKWK+YeSkeaplS61b1mhIgAIp
+--000000000000d6cb05062389f184--
