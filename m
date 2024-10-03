@@ -2,110 +2,105 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3559C98FA6C
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  4 Oct 2024 01:29:45 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 223C798FAA5
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  4 Oct 2024 01:39:09 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id D9EA660F7B;
-	Thu,  3 Oct 2024 23:29:42 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id C693C60FEF;
+	Thu,  3 Oct 2024 23:39:07 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id oIkYZIwAYgxe; Thu,  3 Oct 2024 23:29:42 +0000 (UTC)
+ id PPZWgnyYTlfs; Thu,  3 Oct 2024 23:39:07 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1916C60F77
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1E5E860637
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1727998182;
-	bh=zJJfYTsJBD1YUpbtaYyu99p9PsYf+XDP7HfTuVlkPL0=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=sMmio8LLOR0MvVQuUwsSM6nKejnC2PbtlJIMrS5yk/VcBa/dpwy1sBO6hhQJhaI6u
-	 Tpg1Z8XipkI6/CCm8j8pa+B5ZQxaVKvuWp24opEY+CQmQm9fgkSFeuBptjlxKnxKIJ
-	 7U0c2McAOWcOKuPa7KIlj7tVdLDH+w/QarWDr1IXJse33zFvX6aZEv6FVH05+84GdG
-	 2xgPg0Aak8aL13VR+sb59EvayeG2b5PSOPjv+ZzCdacu2M7/wI5WdjomYLiW0b4NB2
-	 BZcEpTJbfj0sLN+yi5f8k9c0JMK9FhshbR/5V9xTNpk0xgBDU3K/+1rlz3rCQpv1VC
-	 mUPTPI4iZz8Tw==
+	s=default; t=1727998747;
+	bh=X5uM8+CsvXiU2bmxtLKhHDD6o30h8WQH0Z1Yw+U9EME=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=dlAPIyjcIqimoPYaOdvdKQ2tiyUYpC+gqpFXX1ZRK6SEWU5KYviUWYqbEXwVpWz8k
+	 R+QhU3/xqkMtERp7Ag4rurfJNeOxGqKsWP3ZDqpNWD3OcVpkpCieU2dVDDBTe1FW6M
+	 z84iMu1nO5QAmfO7IhVVZwhBvxLvT3Oh/YirG/tqgvYm9IuX6Ae+WGN7SEsGt4ZjLe
+	 BOcLSLC+VQ79CalB/UzAMvFRDPUaD9tXb1Sv/4s1wrAwgVyI43nSkZmZDVjIHv1AKb
+	 AiXauTzXA3VTEgbyMebxwoDmtGwKTliUV+LY9QLW74QGxDsuRf+X0MbNj84iMFpHOv
+	 Ma7XekdnpxRog==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 1916C60F77;
-	Thu,  3 Oct 2024 23:29:42 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 1E5E860637;
+	Thu,  3 Oct 2024 23:39:07 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 00A1F1BF370
- for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Oct 2024 23:29:40 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id AF8341BF370
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Oct 2024 23:39:05 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id E100540B38
- for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Oct 2024 23:29:40 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 9E52D840AA
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Oct 2024 23:39:05 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id FjzFbiQcZ3gs for <intel-wired-lan@lists.osuosl.org>;
- Thu,  3 Oct 2024 23:29:40 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id OjGa6qdX565K for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  3 Oct 2024 23:39:05 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2607:f8b0:4864:20::42f; helo=mail-pf1-x42f.google.com;
- envelope-from=stfomichev@gmail.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org BF5A340B37
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org BF5A340B37
-Received: from mail-pf1-x42f.google.com (mail-pf1-x42f.google.com
- [IPv6:2607:f8b0:4864:20::42f])
- by smtp4.osuosl.org (Postfix) with ESMTPS id BF5A340B37
- for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Oct 2024 23:29:39 +0000 (UTC)
-Received: by mail-pf1-x42f.google.com with SMTP id
- d2e1a72fcca58-7198de684a7so1207608b3a.2
- for <intel-wired-lan@lists.osuosl.org>; Thu, 03 Oct 2024 16:29:39 -0700 (PDT)
+ client-ip=2607:f8b0:4864:20::102d; helo=mail-pj1-x102d.google.com;
+ envelope-from=jdamato@fastly.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 6805E81D19
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6805E81D19
+Received: from mail-pj1-x102d.google.com (mail-pj1-x102d.google.com
+ [IPv6:2607:f8b0:4864:20::102d])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 6805E81D19
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Oct 2024 23:39:04 +0000 (UTC)
+Received: by mail-pj1-x102d.google.com with SMTP id
+ 98e67ed59e1d1-2e091682cfbso1212333a91.0
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 03 Oct 2024 16:39:04 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1727998179; x=1728602979;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=zJJfYTsJBD1YUpbtaYyu99p9PsYf+XDP7HfTuVlkPL0=;
- b=wFyfqlCGYerZNfXhyxGsYcmMCzIkaJfYmpQ8IoxWPEumQ0OPKPY8yf41vdjhUPO71x
- KKliU7MJY3DqlAc9hetXDV4gFi6BVAnVUSZjOOVyFL3hb3VLNAyZYU5s/xt2sA7dtLto
- 6c8iv8ds07KSGex5hiMAHzbVE/m37ltXGjBv3dv3pXJ6Bub3nu1aY6gV6QOhKJOOGP9Y
- jyVrxbKZXVLm0qCAuttWICNdjEot9yS4sdsBfcnJu2ATixJpmQjNKJQNGgxU6YZJsfZb
- Y0s7+UnWpZJXQ5M9xPUbtHsVfvcSoQFNFQqxMScQirpYJmmM4oyaOWRBFcbasqyVHZ/e
- zXOQ==
+ d=1e100.net; s=20230601; t=1727998743; x=1728603543;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=X5uM8+CsvXiU2bmxtLKhHDD6o30h8WQH0Z1Yw+U9EME=;
+ b=J+CyPd+bhICmqx2I+Hw9MIs4X5KO7LJCKw33o4XbiZs1T/an1SylcWUoUCSH+R2Ys5
+ DpOeKQU/imGLcmohC5jnh1O3ONX1GixZgUaaHKpFxSsvXVcTZB4d9jLK2KlwlbnapVL3
+ m97YnsDt7DqctTQSa8jys1VYXJzd5rFtXv0Nmr72OFSEqK1ZVPmgMZK8BpZgTwDVHpuZ
+ YazRn8w5OHz0ioDwcSXh6eQPrYWfxE67qFQHksLgjF+ByfAaVsEE1mGkqEAbT76GKZl8
+ 8Ta+M4tOO9FuaVcueGB1CzIO5ftC9DEfKz52ymSLVEOlDWe45OTVItaBt9cYPabBObGP
+ wqfA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWzBxbyLLPdlpl+ETsMmiVGZn+syf6nX6V6bzd9A2F31EwBUnedBaeTdprjtOZ3jBY0pPu0oOMV9lKKmNT2wak=@lists.osuosl.org
-X-Gm-Message-State: AOJu0Yy7jT5IOLq5ubyxzJPXPaQ7kBWUt1zbjnZzYjEpwfNSIFiT263i
- HH8zkI04NKaPOA+L3O4HVfNloLLCNNYkJFs1D2sPt/QStHBxEu4=
-X-Google-Smtp-Source: AGHT+IGvaV40ffnh+bcHsRNWNaFU/gWd5N//USCwZyNU/5JM6pBgrlCZqQRe3DPLD2Ps7suX/tnyoA==
-X-Received: by 2002:a05:6a21:3489:b0:1cf:2aaa:9199 with SMTP id
- adf61e73a8af0-1d6dfa35eb5mr1378179637.15.1727998179000; 
- Thu, 03 Oct 2024 16:29:39 -0700 (PDT)
-Received: from localhost ([2601:646:9e00:f56e:123b:cea3:439a:b3e3])
+ AJvYcCXYRwsredLoD40ovPFTGeXKBgf3rFRO8LMPYcz1aZlqnCR2PYezwzcxBRMcGpX5B1OqC64TGeGIoQO1gIn6RnY=@lists.osuosl.org
+X-Gm-Message-State: AOJu0Yxq3Dfha7lQqRbdHk7xw0LYLE3KYuTmb58Py41gWE5nfWo6ZlEB
+ IMcHizNvbGwvFCBp52PXAy04kOXn02pxBCI6tAJd9eh6Vonip/hdG1ifQJ7MQKU=
+X-Google-Smtp-Source: AGHT+IHEWYORPHjnHHVp6I9/kLAbZHfWNaSuzgQt1JIWu8FqZigoY7u1EMlJMMl+mRfWDmx9NcDWEA==
+X-Received: by 2002:a17:90b:4f87:b0:2d8:8430:8a91 with SMTP id
+ 98e67ed59e1d1-2e1e6221b1dmr1015791a91.10.1727998743501; 
+ Thu, 03 Oct 2024 16:39:03 -0700 (PDT)
+Received: from localhost.localdomain ([2620:11a:c019:0:65e:3115:2f58:c5fd])
  by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-71dd9e0809bsm1932509b3a.201.2024.10.03.16.29.38
+ d9443c01a7336-20beef8ec6bsm13960705ad.158.2024.10.03.16.39.02
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 03 Oct 2024 16:29:38 -0700 (PDT)
-Date: Thu, 3 Oct 2024 16:29:37 -0700
-From: Stanislav Fomichev <stfomichev@gmail.com>
-To: Joe Damato <jdamato@fastly.com>
-Message-ID: <Zv8o4eliTO60odQe@mini-arch>
-References: <20241001235302.57609-1-jdamato@fastly.com>
+ Thu, 03 Oct 2024 16:39:03 -0700 (PDT)
+From: Joe Damato <jdamato@fastly.com>
+To: netdev@vger.kernel.org
+Date: Thu,  3 Oct 2024 23:38:48 +0000
+Message-Id: <20241003233850.199495-1-jdamato@fastly.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <20241001235302.57609-1-jdamato@fastly.com>
+Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1727998179; x=1728602979; darn=lists.osuosl.org;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=zJJfYTsJBD1YUpbtaYyu99p9PsYf+XDP7HfTuVlkPL0=;
- b=Gp92z8STeLn2/MlxfCGVYiDmCk0IrgtQCBR5p3+O9/jLdoAitYwkaOfKngnvSpRq/6
- Ugp8cQbABBGphzi670gVq10+jT/+Fm+epDVKNbPhBgG3F9kgdQufyD7PrmnhUseZ4osh
- LHnbv8cadBy3ze/Pda7ozGFke9mRfGBMeCW9FuUa2jbB4weA5iqH0/r8q4H7ICPvfj9H
- Ys6vJHjFE75rzB1/kzeWhjrCA2rztQErepHjT3RHrbPKdYHC8/ZVGlYpRmCx+uIEeEDS
- vowjkmI2pp9EVztXUpWFi5vFSaJRNRi6WiyU0HrEYyHluWx91tqN5RZ1MxLckMRjYGDa
- 8n7w==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=gmail.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
- header.a=rsa-sha256 header.s=20230601 header.b=Gp92z8ST
-Subject: Re: [Intel-wired-lan] [RFC net-next v4 0/9] Add support for
- per-NAPI config via netlink
+ d=fastly.com; s=google; t=1727998743; x=1728603543; darn=lists.osuosl.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=X5uM8+CsvXiU2bmxtLKhHDD6o30h8WQH0Z1Yw+U9EME=;
+ b=iH7732TBN7oHQaSBsVZQgAkWW0YdfqFs8eLez9p+9WqeUhkV/yJqsd2tsCAYbrEEY+
+ KPh+3x7FRrftSJlBfYtRQISaSQ6sZvclkEjO/+XytmVQoojUEz20tb8VtVUhw/oqlxtE
+ UR+l3YBuD/Er899WDN3UId1O10THbKwsU3pJY=
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dmarc=pass (p=reject dis=none)
+ header.from=fastly.com
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (1024-bit key,
+ unprotected) header.d=fastly.com header.i=@fastly.com header.a=rsa-sha256
+ header.s=google header.b=iH7732TB
+Subject: [Intel-wired-lan] [RFC net-next 0/2] igc: Link IRQs and queues to
+ NAPIs
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -118,78 +113,48 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: "open list:DOCUMENTATION" <linux-doc@vger.kernel.org>,
- mkarsten@uwaterloo.ca, Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
- bjorn@rivosinc.com, Eric Dumazet <edumazet@google.com>,
- Tony Nguyen <anthony.l.nguyen@intel.com>, Daniel Jurgens <danielj@nvidia.com>,
- Breno Leitao <leitao@debian.org>, Mina Almasry <almasrymina@google.com>,
- Xuan Zhuo <xuanzhuo@linux.alibaba.com>, willemdebruijn.kernel@gmail.com,
- Donald Hunter <donald.hunter@gmail.com>, amritha.nambiar@intel.com,
- Jonathan Corbet <corbet@lwn.net>,
- "open list:MELLANOX MLX4 core VPI driver" <linux-rdma@vger.kernel.org>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>, sdf@fomichev.me,
+Cc: Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Joe Damato <jdamato@fastly.com>, open list <linux-kernel@vger.kernel.org>,
+ Eric Dumazet <edumazet@google.com>,
  "moderated list:INTEL ETHERNET DRIVERS" <intel-wired-lan@lists.osuosl.org>,
  Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Lorenzo Bianconi <lorenzo@kernel.org>, Jiri Pirko <jiri@resnulli.us>,
- Jesper Dangaard Brouer <hawk@kernel.org>,
- Johannes Berg <johannes.berg@intel.com>,
- Michael Chan <michael.chan@broadcom.com>, skhawaja@google.com,
- Kory Maincent <kory.maincent@bootlin.com>, Leon Romanovsky <leon@kernel.org>,
- netdev@vger.kernel.org, David Ahern <dsahern@kernel.org>,
- open list <linux-kernel@vger.kernel.org>, Tariq Toukan <tariqt@nvidia.com>,
- Alexander Lobakin <aleksander.lobakin@intel.com>, sridhar.samudrala@intel.com,
- Saeed Mahameed <saeedm@nvidia.com>, "David S. Miller" <davem@davemloft.net>
+ "David S. Miller" <davem@davemloft.net>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 10/01, Joe Damato wrote:
-> Greetings:
-> 
-> Welcome to RFC v4.
-> 
-> Very important and significant changes have been made since RFC v3 [1],
-> please see the changelog below for details.
-> 
-> A couple important call outs for this revision for reviewers:
-> 
->   1. idpf embeds a napi_struct in an internal data structure and
->      includes an assertion on the size of napi_struct. The maintainers
->      have stated that they think anyone touching napi_struct should update
->      the assertion [2], so I've done this in patch 3. 
-> 
->      Even though the assertion has been updated, I've given the
->      cacheline placement of napi_struct within idpf's internals no
->      thought or consideration.
-> 
->      Would appreciate other opinions on this; I think idpf should be
->      fixed. It seems unreasonable to me that anyone changing the size of
->      a struct in the core should need to think about cachelines in idpf.
+Greetings:
 
-[..]
+This is an RFC to get feedback before submitting an actual series and
+because I have a question for igc maintainers, see below.
 
->   2. This revision seems to work (see below for a full walk through). Is
->      this the behavior we want? Am I missing some use case or some
->      behavioral thing other folks need?
+This series addss support for netdev-genl to igc so that userland apps
+can query IRQ, queue, and NAPI instance relationships. This is useful
+because developers who have igc NICs (for example, in their Intel NUCs)
+who are working on epoll-based busy polling apps and using
+SO_INCOMING_NAPI_ID, need access to this API to map NAPI IDs back to
+queues.
 
-The walk through looks good!
+See the commit messages of each patch for example output I got on my igc
+hardware.
 
+My question for maintainers:
 
->   3. Re a previous point made by Stanislav regarding "taking over a NAPI
->      ID" when the channel count changes: mlx5 seems to call napi_disable
->      followed by netif_napi_del for the old queues and then calls
->      napi_enable for the new ones. In this RFC, the NAPI ID generation
->      is deferred to napi_enable. This means we won't end up with two of
->      the same NAPI IDs added to the hash at the same time (I am pretty
->      sure).
+In patch 2, the linking should be avoided for XDP queues. Is there a way
+to test that somehow in the driver? I looked around a bit, but didn't
+notice anything. Sorry if I'm missing something obvious.
 
+Thanks,
+Joe
 
-[..]
+Joe Damato (2):
+  igc: Link IRQs to NAPI instances
+  igc: Link queues to NAPI instances
 
->      Can we assume all drivers will napi_disable the old queues before
->      napi_enable the new ones? If yes, we might not need to worry about
->      a NAPI ID takeover function.
+ drivers/net/ethernet/intel/igc/igc.h      |  1 +
+ drivers/net/ethernet/intel/igc/igc_main.c | 33 ++++++++++++++++++++---
+ 2 files changed, 30 insertions(+), 4 deletions(-)
 
-With the explicit driver opt-in via netif_napi_add_config, this
-shouldn't matter? When somebody gets to converting the drivers that
-don't follow this common pattern they'll have to solve the takeover
-part :-)
+-- 
+2.25.1
+
