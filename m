@@ -2,108 +2,143 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 723E598FAA9
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  4 Oct 2024 01:39:15 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 762B598FB0F
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  4 Oct 2024 01:53:23 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 19C3B60F77;
-	Thu,  3 Oct 2024 23:39:12 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 3191E60F77;
+	Thu,  3 Oct 2024 23:53:22 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id YXgBjweCR0Wm; Thu,  3 Oct 2024 23:39:11 +0000 (UTC)
+ id 6lTo892IOn-S; Thu,  3 Oct 2024 23:53:21 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 4DBCE61084
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 74BE66100E
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1727998751;
-	bh=ZpDtgFKpiW6n7Ug+1YSP06l0kr3SHis2120480WaYUs=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1727999601;
+	bh=to5UESfoGJJK2TcGhffLq8Xvshlbs/BIWcOtCWTyRfU=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=PiLotgLt0Dd6PUW1yeQcFoZc2dbMy8vq3XXIKXHuq7MUQf5OzYWNSDUjKv3Jl4Vq3
-	 qken0G0z25BKautlRF4Ecy2oY0rTq1c0gQAnwdQNm99FDvPJhJiP0johQXdKJSur/s
-	 6r7a1UEV2n6IPU9ROy95qspk3ru/ISjOUQW8kIWlE6SzDfqJ/iqGuwN0Mv1ZwLJ4wo
-	 BLlq/daedd78q0X1ivtOsdZK4n8D0UHPwpSYdXeWA3CpgNMvFwC9JQr5V8PA7OJSnV
-	 M+Q9VgAw6rm/8JQN/KI59UowyTjwYXvLH8PYdXzI+tc1uhpis2PBHqLjGzAIfQUAgo
-	 JDLey5pNZESEg==
+	b=mcgXpAuVd9HZPQWaSHjBM5p+/GjGAZEv4lVsdo3d7LbcGEez+1eMQ/hnuTBZGMpqV
+	 8XnQwEbOSt1LPBlEsucZGwOc6Yku+QVqU/eomHsSTKvGqmpvnN1i0/Kos8QohLV2U+
+	 7Due/rGEZmSOwuHJ4aRGjwkUu+y95aIQhiAe8Xs1IlVcVKTg4iaqVZe03tGrgh9H08
+	 tJ5GGbTOZzohq+8CA4pR1dTT2xhfv34yVZZgFokCmsNgbUJtNMVQ6/aOBvVXBmN72n
+	 /mkdF1ZF94DhXysicPuIwt2vsUj2zjs0dneEXgcbpQpAKMFAx/gBd5ZW2BKFWVwpVF
+	 dBR5kIUl5P58A==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 4DBCE61084;
-	Thu,  3 Oct 2024 23:39:11 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 74BE66100E;
+	Thu,  3 Oct 2024 23:53:21 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 5A7821BF370
- for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Oct 2024 23:39:08 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 63FC21BF370
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Oct 2024 23:53:19 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 48DD460637
- for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Oct 2024 23:39:08 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 5046D40BFB
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Oct 2024 23:53:19 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id kPmWkGlu54dP for <intel-wired-lan@lists.osuosl.org>;
- Thu,  3 Oct 2024 23:39:07 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id HlUeJ-fP8K8w for <intel-wired-lan@lists.osuosl.org>;
+ Thu,  3 Oct 2024 23:53:18 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2607:f8b0:4864:20::62c; helo=mail-pl1-x62c.google.com;
+ client-ip=2607:f8b0:4864:20::433; helo=mail-pf1-x433.google.com;
  envelope-from=jdamato@fastly.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 7962F6070F
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7962F6070F
-Received: from mail-pl1-x62c.google.com (mail-pl1-x62c.google.com
- [IPv6:2607:f8b0:4864:20::62c])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 7962F6070F
- for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Oct 2024 23:39:07 +0000 (UTC)
-Received: by mail-pl1-x62c.google.com with SMTP id
- d9443c01a7336-20ba9f3824fso12298745ad.0
- for <intel-wired-lan@lists.osuosl.org>; Thu, 03 Oct 2024 16:39:07 -0700 (PDT)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 5A790406D2
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 5A790406D2
+Received: from mail-pf1-x433.google.com (mail-pf1-x433.google.com
+ [IPv6:2607:f8b0:4864:20::433])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 5A790406D2
+ for <intel-wired-lan@lists.osuosl.org>; Thu,  3 Oct 2024 23:53:18 +0000 (UTC)
+Received: by mail-pf1-x433.google.com with SMTP id
+ d2e1a72fcca58-7198cb6bb02so1186331b3a.3
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 03 Oct 2024 16:53:18 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1727998746; x=1728603546;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=ZpDtgFKpiW6n7Ug+1YSP06l0kr3SHis2120480WaYUs=;
- b=uUXioRzUUBQMk1OyVBT0eG+pWBvbjbZ0xC1RRNsUZh18655b57xjaCz6GrpTvI/+rr
- IfQ1vqyv0byQ1VC+oF/NBawDil1vYmo76u3UvxqJjOzx8e9BZt67ioAmuUJhdy205SLj
- PmY3FAtxWh4UWRV4IA61r/m0eaFZkPHLPD2hOU4ZPiAFowr6dHmISuRYGuuMM2LZ+e5q
- 4kLrAjID1q2l1RJjLIC410p4Sgg0EtMn4SP+CCO5MS36PJsC0qCRihD+ML+MAunfSi3r
- Go0WMHfGkHQRCellrUtQrvinNrLvCJbPiJsHXyhfYTpr6eHFkXnu3nunGABfCjhfRpc7
- bV6A==
+ d=1e100.net; s=20230601; t=1727999597; x=1728604397;
+ h=in-reply-to:content-disposition:mime-version:references
+ :mail-followup-to:message-id:subject:cc:to:from:date
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=to5UESfoGJJK2TcGhffLq8Xvshlbs/BIWcOtCWTyRfU=;
+ b=D6tFJAUi8iVf6NAgLtJsyWwGMqAfWSKMSp/GeYBBMzlqmMhnitkK0zr+qLtqDUWegg
+ +NB+3QQ+CZxArJIErDRha3eXNrwWBt5jA99v8b6t5yaMlfgESyThq6enqpBcso0S/RzP
+ NY+zSVds8miHTiKEgo1WQRZBMvRp/jh13XXyh5V2ZqbOo4dPkWabcsHmC+7x61WwCbyl
+ oIMjMtd4zRuKF22UCrBtuU9kOuHrTQNj56W4FYouv8Z465h97FLyU8/kJmgvjcpxFOBg
+ ysdEKXkzecKhV+4/2QlZI9/EyIcsZl3f93fbf2irY652DPei3KSXoSASb+cMeKvVYM84
+ u/vQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWZmS+tyExwwyUuVGnWAKMkpMIsrp1hl5FD17UmQoK1FAWHpMN5udhbyCNdYY9gmfmDQAu3ThOfQoK0E4UsVMw=@lists.osuosl.org
-X-Gm-Message-State: AOJu0YwdtRA6d72/sU+TX8LSqZBn7wn3f6CJY+NleFbjIPZyI23p4cLg
- VhVEOCISvJ8rS1RsuTZZOdpjtDu+yILMc1FRt7DC/Ak5r6xr+/3TnRVSCTJDCSo=
-X-Google-Smtp-Source: AGHT+IEscOgAVx/0YG9i/MINtF9xq0NivswWkuBxhiN50OJBwJky40grr6JNhThn+Z2xOj8C0ihYvQ==
-X-Received: by 2002:a17:902:e742:b0:20b:b7b2:b6f4 with SMTP id
- d9443c01a7336-20bfea5417fmr10500325ad.47.1727998746571; 
- Thu, 03 Oct 2024 16:39:06 -0700 (PDT)
-Received: from localhost.localdomain ([2620:11a:c019:0:65e:3115:2f58:c5fd])
+ AJvYcCVtm4sObQRy+ewH9xtEmhHMAb7eMz0ay3QXrBw+F7kW3vgt657O1jTXRmcR6sfczg2p3iIelQXJzJp42YsBkd0=@lists.osuosl.org
+X-Gm-Message-State: AOJu0YynCpSQFeLGhLcmwPWCVXFa+Zk6C2ZZGp4tOxgCkrt9TPf7iOjW
+ Njcg3noFKJZvDVVUjepRlMQ8PjmDz50Xc5r1wrwYOG5PQO/45WPyPdOES+f0dtM=
+X-Google-Smtp-Source: AGHT+IHFFJEXCsS7CL3SCEq6Zn2fPKDty4P7fGrgnhTy1s2+ZG4Kz84QJLtn4fcPKjIeGqhkJ9NQCw==
+X-Received: by 2002:aa7:8e0e:0:b0:717:9897:1405 with SMTP id
+ d2e1a72fcca58-71de2439b2dmr1040349b3a.17.1727999597631; 
+ Thu, 03 Oct 2024 16:53:17 -0700 (PDT)
+Received: from LQ3V64L9R2 (c-24-6-151-244.hsd1.ca.comcast.net. [24.6.151.244])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-20beef8ec6bsm13960705ad.158.2024.10.03.16.39.05
+ d2e1a72fcca58-71dd9df57ddsm1970234b3a.184.2024.10.03.16.53.14
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 03 Oct 2024 16:39:06 -0700 (PDT)
+ Thu, 03 Oct 2024 16:53:17 -0700 (PDT)
+Date: Thu, 3 Oct 2024 16:53:13 -0700
 From: Joe Damato <jdamato@fastly.com>
-To: netdev@vger.kernel.org
-Date: Thu,  3 Oct 2024 23:38:50 +0000
-Message-Id: <20241003233850.199495-3-jdamato@fastly.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20241003233850.199495-1-jdamato@fastly.com>
-References: <20241003233850.199495-1-jdamato@fastly.com>
+To: Stanislav Fomichev <stfomichev@gmail.com>
+Message-ID: <Zv8uaQ4WIprQCBzv@LQ3V64L9R2>
+Mail-Followup-To: Joe Damato <jdamato@fastly.com>,
+ Stanislav Fomichev <stfomichev@gmail.com>, netdev@vger.kernel.org,
+ mkarsten@uwaterloo.ca, skhawaja@google.com, sdf@fomichev.me,
+ bjorn@rivosinc.com, amritha.nambiar@intel.com,
+ sridhar.samudrala@intel.com, willemdebruijn.kernel@gmail.com,
+ Alexander Lobakin <aleksander.lobakin@intel.com>,
+ Breno Leitao <leitao@debian.org>,
+ Daniel Jurgens <danielj@nvidia.com>,
+ David Ahern <dsahern@kernel.org>,
+ "David S. Miller" <davem@davemloft.net>,
+ Donald Hunter <donald.hunter@gmail.com>,
+ Eric Dumazet <edumazet@google.com>,
+ "moderated list:INTEL ETHERNET DRIVERS" <intel-wired-lan@lists.osuosl.org>,
+ Jakub Kicinski <kuba@kernel.org>,
+ Jesper Dangaard Brouer <hawk@kernel.org>,
+ Jiri Pirko <jiri@resnulli.us>,
+ Johannes Berg <johannes.berg@intel.com>,
+ Jonathan Corbet <corbet@lwn.net>,
+ Kory Maincent <kory.maincent@bootlin.com>,
+ Leon Romanovsky <leon@kernel.org>,
+ "open list:DOCUMENTATION" <linux-doc@vger.kernel.org>,
+ open list <linux-kernel@vger.kernel.org>,
+ "open list:MELLANOX MLX4 core VPI driver" <linux-rdma@vger.kernel.org>,
+ Lorenzo Bianconi <lorenzo@kernel.org>,
+ Michael Chan <michael.chan@broadcom.com>,
+ Mina Almasry <almasrymina@google.com>,
+ Paolo Abeni <pabeni@redhat.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Saeed Mahameed <saeedm@nvidia.com>,
+ Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
+ Tariq Toukan <tariqt@nvidia.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Xuan Zhuo <xuanzhuo@linux.alibaba.com>
+References: <20241001235302.57609-1-jdamato@fastly.com>
+ <Zv8o4eliTO60odQe@mini-arch>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <Zv8o4eliTO60odQe@mini-arch>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=fastly.com; s=google; t=1727998746; x=1728603546; darn=lists.osuosl.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=ZpDtgFKpiW6n7Ug+1YSP06l0kr3SHis2120480WaYUs=;
- b=o9i/GXpA0FjeGN2+heI2ytXEDTYCSX2+uhRhCBFCLSuH1rddOn1fG5xaX3axiqP0dY
- Jlg6nOWsWxgrr16fp4K3Pk1g2e4IQ6CU7uG2YxEEkSxsddIDeziOYgHDp6Z+KuG4217K
- 5AzIAX0vmwEAgLWe6UWJOYRHegQrD4s3kmd6E=
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ d=fastly.com; s=google; t=1727999597; x=1728604397; darn=lists.osuosl.org;
+ h=in-reply-to:content-disposition:mime-version:references
+ :mail-followup-to:message-id:subject:cc:to:from:date:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=to5UESfoGJJK2TcGhffLq8Xvshlbs/BIWcOtCWTyRfU=;
+ b=xNOelld+qdFJ6RDqOuo3N0fNkKdZIYlrgn+qb5PEWHUYtuKuostzMyFd91cxEejGBB
+ d++Sbkvtqr+1cizCQ0JMkrnLuCfKO6SZtONg/vhdfyxiKLwspQBCiRICla5QMRxdn3BB
+ gw8fuR6OEGYSOrcW+bMCS7tL1A7k0PtWqwYiw=
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=reject dis=none)
  header.from=fastly.com
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (1024-bit key) header.d=fastly.com header.i=@fastly.com
- header.a=rsa-sha256 header.s=google header.b=o9i/GXpA
-Subject: [Intel-wired-lan] [RFC net-next 2/2] igc: Link queues to NAPI
- instances
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (1024-bit key,
+ unprotected) header.d=fastly.com header.i=@fastly.com header.a=rsa-sha256
+ header.s=google header.b=xNOelld+
+Subject: Re: [Intel-wired-lan] [RFC net-next v4 0/9] Add support for
+ per-NAPI config via netlink
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -116,111 +151,64 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Joe Damato <jdamato@fastly.com>, open list <linux-kernel@vger.kernel.org>,
- Eric Dumazet <edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
+Cc: "open list:DOCUMENTATION" <linux-doc@vger.kernel.org>,
+ mkarsten@uwaterloo.ca, Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
+ bjorn@rivosinc.com, Eric Dumazet <edumazet@google.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>, Daniel Jurgens <danielj@nvidia.com>,
+ Breno Leitao <leitao@debian.org>, Mina Almasry <almasrymina@google.com>,
+ Xuan Zhuo <xuanzhuo@linux.alibaba.com>, willemdebruijn.kernel@gmail.com,
+ Donald Hunter <donald.hunter@gmail.com>, amritha.nambiar@intel.com,
+ Jonathan Corbet <corbet@lwn.net>,
+ "open list:MELLANOX MLX4 core VPI driver" <linux-rdma@vger.kernel.org>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>, sdf@fomichev.me,
  "moderated list:INTEL ETHERNET DRIVERS" <intel-wired-lan@lists.osuosl.org>,
  Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- "David S. Miller" <davem@davemloft.net>
+ Lorenzo Bianconi <lorenzo@kernel.org>, Jiri Pirko <jiri@resnulli.us>,
+ Jesper Dangaard Brouer <hawk@kernel.org>,
+ Johannes Berg <johannes.berg@intel.com>,
+ Michael Chan <michael.chan@broadcom.com>, skhawaja@google.com,
+ Kory Maincent <kory.maincent@bootlin.com>, Leon Romanovsky <leon@kernel.org>,
+ netdev@vger.kernel.org, David Ahern <dsahern@kernel.org>,
+ open list <linux-kernel@vger.kernel.org>, Tariq Toukan <tariqt@nvidia.com>,
+ Alexander Lobakin <aleksander.lobakin@intel.com>, sridhar.samudrala@intel.com,
+ Saeed Mahameed <saeedm@nvidia.com>, "David S. Miller" <davem@davemloft.net>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Link queues to NAPI instances via netdev-genl API so that users can
-query this information with netlink:
+On Thu, Oct 03, 2024 at 04:29:37PM -0700, Stanislav Fomichev wrote:
+> On 10/01, Joe Damato wrote:
 
-$ ./tools/net/ynl/cli.py --spec Documentation/netlink/specs/netdev.yaml \
-                         --dump queue-get --json='{"ifindex": 2}'
+[...]
+ 
+> >   2. This revision seems to work (see below for a full walk through). Is
+> >      this the behavior we want? Am I missing some use case or some
+> >      behavioral thing other folks need?
+> 
+> The walk through looks good!
 
-[{'id': 0, 'ifindex': 2, 'napi-id': 8193, 'type': 'rx'},
- {'id': 1, 'ifindex': 2, 'napi-id': 8194, 'type': 'rx'},
- {'id': 2, 'ifindex': 2, 'napi-id': 8195, 'type': 'rx'},
- {'id': 3, 'ifindex': 2, 'napi-id': 8196, 'type': 'rx'},
- {'id': 0, 'ifindex': 2, 'napi-id': 8193, 'type': 'tx'},
- {'id': 1, 'ifindex': 2, 'napi-id': 8194, 'type': 'tx'},
- {'id': 2, 'ifindex': 2, 'napi-id': 8195, 'type': 'tx'},
- {'id': 3, 'ifindex': 2, 'napi-id': 8196, 'type': 'tx'}]
+Thanks for taking a look.
 
-Since igc uses only combined queues, you'll note that the same NAPI ID
-is present for both rx and tx queues at the same index, for example
-index 0:
+> >   3. Re a previous point made by Stanislav regarding "taking over a NAPI
+> >      ID" when the channel count changes: mlx5 seems to call napi_disable
+> >      followed by netif_napi_del for the old queues and then calls
+> >      napi_enable for the new ones. In this RFC, the NAPI ID generation
+> >      is deferred to napi_enable. This means we won't end up with two of
+> >      the same NAPI IDs added to the hash at the same time (I am pretty
+> >      sure).
+> 
+> 
+> [..]
+> 
+> >      Can we assume all drivers will napi_disable the old queues before
+> >      napi_enable the new ones? If yes, we might not need to worry about
+> >      a NAPI ID takeover function.
+> 
+> With the explicit driver opt-in via netif_napi_add_config, this
+> shouldn't matter? When somebody gets to converting the drivers that
+> don't follow this common pattern they'll have to solve the takeover
+> part :-)
 
-{'id': 0, 'ifindex': 2, 'napi-id': 8193, 'type': 'rx'},
-{'id': 0, 'ifindex': 2, 'napi-id': 8193, 'type': 'tx'},
-
-Signed-off-by: Joe Damato <jdamato@fastly.com>
----
- drivers/net/ethernet/intel/igc/igc_main.c | 30 ++++++++++++++++++++---
- 1 file changed, 26 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
-index 7964bbedb16c..b3bd5bf29fa7 100644
---- a/drivers/net/ethernet/intel/igc/igc_main.c
-+++ b/drivers/net/ethernet/intel/igc/igc_main.c
-@@ -4955,6 +4955,7 @@ static int igc_sw_init(struct igc_adapter *adapter)
- void igc_up(struct igc_adapter *adapter)
- {
- 	struct igc_hw *hw = &adapter->hw;
-+	struct napi_struct *napi;
- 	int i = 0;
- 
- 	/* hardware has been reset, we need to reload some things */
-@@ -4962,8 +4963,17 @@ void igc_up(struct igc_adapter *adapter)
- 
- 	clear_bit(__IGC_DOWN, &adapter->state);
- 
--	for (i = 0; i < adapter->num_q_vectors; i++)
--		napi_enable(&adapter->q_vector[i]->napi);
-+	for (i = 0; i < adapter->num_q_vectors; i++) {
-+		napi = &adapter->q_vector[i]->napi;
-+		napi_enable(napi);
-+		/* igc only supports combined queues, so link each NAPI to both
-+		 * TX and RX
-+		 */
-+		netif_queue_set_napi(adapter->netdev, i, NETDEV_QUEUE_TYPE_RX,
-+				     napi);
-+		netif_queue_set_napi(adapter->netdev, i, NETDEV_QUEUE_TYPE_TX,
-+				     napi);
-+	}
- 
- 	if (adapter->msix_entries)
- 		igc_configure_msix(adapter);
-@@ -5192,6 +5202,10 @@ void igc_down(struct igc_adapter *adapter)
- 	for (i = 0; i < adapter->num_q_vectors; i++) {
- 		if (adapter->q_vector[i]) {
- 			napi_synchronize(&adapter->q_vector[i]->napi);
-+			netif_queue_set_napi(netdev, i, NETDEV_QUEUE_TYPE_RX,
-+					     NULL);
-+			netif_queue_set_napi(netdev, i, NETDEV_QUEUE_TYPE_TX,
-+					     NULL);
- 			napi_disable(&adapter->q_vector[i]->napi);
- 		}
- 	}
-@@ -6021,6 +6035,7 @@ static int __igc_open(struct net_device *netdev, bool resuming)
- 	struct igc_adapter *adapter = netdev_priv(netdev);
- 	struct pci_dev *pdev = adapter->pdev;
- 	struct igc_hw *hw = &adapter->hw;
-+	struct napi_struct *napi;
- 	int err = 0;
- 	int i = 0;
- 
-@@ -6056,8 +6071,15 @@ static int __igc_open(struct net_device *netdev, bool resuming)
- 
- 	clear_bit(__IGC_DOWN, &adapter->state);
- 
--	for (i = 0; i < adapter->num_q_vectors; i++)
--		napi_enable(&adapter->q_vector[i]->napi);
-+	for (i = 0; i < adapter->num_q_vectors; i++) {
-+		napi = &adapter->q_vector[i]->napi;
-+		napi_enable(napi);
-+		/* igc only supports combined queues, so link each NAPI to both
-+		 * TX and RX
-+		 */
-+		netif_queue_set_napi(netdev, i, NETDEV_QUEUE_TYPE_RX, napi);
-+		netif_queue_set_napi(netdev, i, NETDEV_QUEUE_TYPE_TX, napi);
-+	}
- 
- 	/* Clear any pending interrupts. */
- 	rd32(IGC_ICR);
--- 
-2.25.1
-
+That is true; that's a good point. I'll let the RFC hang out on the
+list for another day or two just to give Jakub time to catch up on
+his mails ;) but if you all agree... this might be ready to be
+resent as a PATCH instead of an RFC.
