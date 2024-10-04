@@ -1,117 +1,116 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6D0E0990920
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  4 Oct 2024 18:27:54 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
+	by mail.lfdr.de (Postfix) with ESMTPS id 13EEF990A6F
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  4 Oct 2024 19:53:59 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 1AAFF40106;
-	Fri,  4 Oct 2024 16:27:53 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 92DD04021C;
+	Fri,  4 Oct 2024 17:53:57 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 2o1QvQwsB064; Fri,  4 Oct 2024 16:27:52 +0000 (UTC)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id FMTR5xsuuA0X; Fri,  4 Oct 2024 17:53:56 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6F7F540105
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C39C340423
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1728059271;
-	bh=1EwPJ1608FHgcUv1d+P5BWSkWcWPXFoUeUgbMomkXh8=;
+	s=default; t=1728064435;
+	bh=JrHhw1JiaZd1L+/KyXQwcgkVe1bI00CuH0U1t4rxdlI=;
 	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=bS/4njSkouzs3QHGoZqWGbMa/gQKLVPJ+51XhbxtjMbTcA382W54DdiSCIaqDTvrn
-	 1rncMsQrKxN+NEML5IqsItu7tChBXmE3ILUqha/XIc9HQ6cnJTdnriE8XLCClgiAHu
-	 2ebc2laDrgAHczr2sMvPjiPYgckFgUDccjD/pLK6dSZ+37JnSfQ8M2U8hleV3tGWCt
-	 tVfu1H1EYeS0/AD293rcIAFykts/5AEDXCkhFJuQL94sqMiQd3C2FwW0kqyhTnynqn
-	 HrlNT4wk2lk/3mIIDISo85iU3sqULix+zvpIkfH4cGMBiQBki+yWHuhKHG9FjnBy/w
-	 ouoi57WyI3h3Q==
+	b=xQumx6OHQvWEahr1EQYRnc0Dv1q2bC6EZdc1XutKvysoXPoAsF+qsomrPds/b4tTg
+	 ab+lL/BHZ84yATncQoZTOoqWRm0KRQULRPn91eU5m62hrtBwAwc47fWCtLo55s6P/z
+	 4g5yX9KVKek+4FNwMghcS3GpeOvo+icgoH6M9SJQfpO5SC0Gw+bmRu7V8G+Nn+9To2
+	 z1mRFpqklfSOpr8r6NUL2en3YD5Qwnsn+BrfZVjiYSsFIAGcv261ICsWLnLqOSvbNE
+	 s+plVr9Tn+ppkaeWSyLChdlMBoASRgEVMbAFu5t3CuF2D+Penb323tf+8XZWesJAym
+	 j0rzeRrpu/rRw==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 6F7F540105;
-	Fri,  4 Oct 2024 16:27:51 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id C39C340423;
+	Fri,  4 Oct 2024 17:53:55 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id C59B51BF3BD
- for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Oct 2024 16:27:49 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id A7A731BF982
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Oct 2024 17:53:53 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id B449F8431B
- for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Oct 2024 16:27:49 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 94B0C406C2
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Oct 2024 17:53:53 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id rrm8hyJIA2sk for <intel-wired-lan@lists.osuosl.org>;
- Fri,  4 Oct 2024 16:27:48 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 3pn97bPX-Jcx for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  4 Oct 2024 17:53:52 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2607:f8b0:4864:20::42b; helo=mail-pf1-x42b.google.com;
+ client-ip=2607:f8b0:4864:20::1033; helo=mail-pj1-x1033.google.com;
  envelope-from=stfomichev@gmail.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 7233181F89
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 7233181F89
-Received: from mail-pf1-x42b.google.com (mail-pf1-x42b.google.com
- [IPv6:2607:f8b0:4864:20::42b])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 7233181F89
- for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Oct 2024 16:27:48 +0000 (UTC)
-Received: by mail-pf1-x42b.google.com with SMTP id
- d2e1a72fcca58-71c702b2d50so1772314b3a.1
- for <intel-wired-lan@lists.osuosl.org>; Fri, 04 Oct 2024 09:27:48 -0700 (PDT)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 3ACCB406C0
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3ACCB406C0
+Received: from mail-pj1-x1033.google.com (mail-pj1-x1033.google.com
+ [IPv6:2607:f8b0:4864:20::1033])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 3ACCB406C0
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Oct 2024 17:53:52 +0000 (UTC)
+Received: by mail-pj1-x1033.google.com with SMTP id
+ 98e67ed59e1d1-2e0894f1b14so1865776a91.1
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 04 Oct 2024 10:53:52 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1728059268; x=1728664068;
+ d=1e100.net; s=20230601; t=1728064431; x=1728669231;
  h=in-reply-to:content-transfer-encoding:content-disposition
  :mime-version:references:message-id:subject:cc:to:from:date
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=1EwPJ1608FHgcUv1d+P5BWSkWcWPXFoUeUgbMomkXh8=;
- b=q9BsN7qBMO+pniq5p1CgTboMj4iftfA98MqtgUUsXslGXxVFe+E1zuEqzzkFUuRKlJ
- gTuQyrBKc8f41OdySsT2mfRDej6mHIRM9tVyKnLMWiThKEqrpr9wdk2CrPIpaENL5h1P
- gxkeUMCrrTeSVhXfhDURqYSAK5u8ll3CDj2TEZMIm4gAQU84wVGHUFAGs9tKmUvAmOwd
- IG1CjunPchuFv4InknLiATZkXaD0btqcpCpD56Een6cGmqx76VlacWgC+8MPnHeKinuu
- OlpUj3pKrNS/Wi+FM0Mj+Ir8Uh4xR1Y7c1zOZzHZKi5YrffMgrhVmSTvB9H73vu3gg2/
- 7KAw==
+ bh=JrHhw1JiaZd1L+/KyXQwcgkVe1bI00CuH0U1t4rxdlI=;
+ b=n9Z/Ji7GP3Xgg2ZRkCfY0CA5imN+M9tqQLd5alZUfE+5+x7kbmUcWdYnwD7H9+MYX1
+ UzaYrRtEFMw9vVnum0BZkg8P8CqvPf/e65pOaw9GmQu2MKjQFK2XIg/JrW3imHS3jM9G
+ LkxrIh8Z2v5ilUHX8aBcHBOZ5ijeYgLh3Y5O5Bq/8XP6QJO2x277ZWOyjspMxp0lnz33
+ UyE8OptqTCbhMQJfdUoSScSs3V5GxhI4GHP2UW3lJDXTEGfrvyujZR1MiEBWwytEbwi9
+ 9qcDiTFfp49lmsNjscXI4vii2Wrr7NS1FrwZ1WkVxjjsn33GVVh4z+LpBCM8GwsEGWGn
+ EOwA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXag1I2q1t1V1/2l/yfuyHlHUV7xqO0klqJbJ2Tl4xaChlptPLljjZrzFyLSthaJZ6NSCxmA/N+LzPcEn8MLsg=@lists.osuosl.org
-X-Gm-Message-State: AOJu0YzphCDD+z3LmrO/gzHoa0hGVZiMuvZJcZ0WWVbg4a5zKZ//DG9Y
- tW08BmF5i/UWC55Omfh28gQs+fcDSmw9clwn+hH252UfEdR9DkE=
-X-Google-Smtp-Source: AGHT+IH6co3BoA6TXvpR16aqzkc3+ox+pDBKiQ0FlqXl6KBOx9VjfDbaw/EgsWMhwyHSNy3vWWxT+w==
-X-Received: by 2002:a05:6a20:43a7:b0:1d4:f6c4:8e7a with SMTP id
- adf61e73a8af0-1d6dfacaf95mr5327190637.31.1728059267540; 
- Fri, 04 Oct 2024 09:27:47 -0700 (PDT)
+ AJvYcCW/LvoCQ/SWkkFBwGNwfy3qs43Try1LCxtk/SBgtJsaUA51E5/5GYwnam+3xM5vwVROrNL+gdunZhdt5F9Ptu8=@lists.osuosl.org
+X-Gm-Message-State: AOJu0Yxb/CxYPVZgLfCb7H9agNmm9MmNuko2p48cTEy5EPs2mG+Eor4u
+ rGseiHk1fSkMYjv800y8dpZCh2BTXEO2lnx1cQGWwhecIglQSeI=
+X-Google-Smtp-Source: AGHT+IETxvqfT3O6Nss0LDaANw71BycqWmkZxK4x4rCcdRphpBZeZFc9IQK4yBpYhzzsWPYzF9wmzQ==
+X-Received: by 2002:a17:90b:17c8:b0:2c3:2557:3de8 with SMTP id
+ 98e67ed59e1d1-2e1e638d03dmr4260896a91.33.1728064431360; 
+ Fri, 04 Oct 2024 10:53:51 -0700 (PDT)
 Received: from localhost ([2601:646:9e00:f56e:123b:cea3:439a:b3e3])
  by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-71df0d4665dsm38795b3a.116.2024.10.04.09.27.46
+ 98e67ed59e1d1-2e20b0f6467sm192816a91.45.2024.10.04.10.53.50
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 04 Oct 2024 09:27:47 -0700 (PDT)
-Date: Fri, 4 Oct 2024 09:27:46 -0700
+ Fri, 04 Oct 2024 10:53:50 -0700 (PDT)
+Date: Fri, 4 Oct 2024 10:53:50 -0700
 From: Stanislav Fomichev <stfomichev@gmail.com>
-To: Daniel Xu <dxu@dxuuu.xyz>
-Message-ID: <ZwAXgm-wV8-WQAqU@mini-arch>
-References: <ZvqQOpqnK9hBmXNn@lore-desk> <D4KJ7DUXJQC5.2UFST9L3CUOH7@bobby>
- <ZvwNQqN4gez1Ksfn@lore-desk> <87zfnnq2hs.fsf@toke.dk>
- <Zv18pxsiTGTZSTyO@mini-arch> <87ttdunydz.fsf@toke.dk>
- <Zv3N5G8swr100EXm@mini-arch> <D4LYNKGLE7G0.3JAN5MX1ATPTB@bobby>
- <Zv794Ot-kOq1pguM@mini-arch>
+To: Jesper Dangaard Brouer <hawk@kernel.org>
+Message-ID: <ZwArrsqrYx7IM5tq@mini-arch>
+References: <D4KJ7DUXJQC5.2UFST9L3CUOH7@bobby> <ZvwNQqN4gez1Ksfn@lore-desk>
+ <87zfnnq2hs.fsf@toke.dk> <Zv18pxsiTGTZSTyO@mini-arch>
+ <87ttdunydz.fsf@toke.dk> <Zv3N5G8swr100EXm@mini-arch>
+ <D4LYNKGLE7G0.3JAN5MX1ATPTB@bobby> <Zv794Ot-kOq1pguM@mini-arch>
  <2fy5vuewgwkh3o3mx5v4bkrzu6josqylraa4ocgzqib6a7ozt4@hwsuhcibtcb6>
+ <038fffa3-1e29-4c6d-9e27-8181865dca46@kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <2fy5vuewgwkh3o3mx5v4bkrzu6josqylraa4ocgzqib6a7ozt4@hwsuhcibtcb6>
+In-Reply-To: <038fffa3-1e29-4c6d-9e27-8181865dca46@kernel.org>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1728059268; x=1728664068; darn=lists.osuosl.org;
+ d=gmail.com; s=20230601; t=1728064431; x=1728669231; darn=lists.osuosl.org;
  h=in-reply-to:content-transfer-encoding:content-disposition
  :mime-version:references:message-id:subject:cc:to:from:date:from:to
  :cc:subject:date:message-id:reply-to;
- bh=1EwPJ1608FHgcUv1d+P5BWSkWcWPXFoUeUgbMomkXh8=;
- b=SIbZx/HR5z/FHkNP9JGS4WB40CoHR+/N6FbNymXg+onV/GCN+0x6vux+M7Ceg+kLJH
- GIbDFZ7uZDlUAA2dOOf2/YypF7X2NJhbdhZuS33tK8NLq4SxK9tsQDhq5g5vyXEcPA6a
- PBiTk6y5sWG1u5We7qXiNuQOcPFvuY9uLcbteakLZoPcmGSJ/7nomHRzZ6FnhQ3H/Zff
- bw5/Gup7THD63PexbCoTJZkeWYRIP47E2rfNLQUee5wa7w1VRJCFDHtoKswTlmeWi4UV
- ws+nZTGcCyWjdtJEpanypJtjkM5wAqdr7yZyQBjCSxXpfdvORKx2iqptisPynnCKmHEj
- TgWw==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ bh=JrHhw1JiaZd1L+/KyXQwcgkVe1bI00CuH0U1t4rxdlI=;
+ b=VfyQGkT0pChTB0kgPD9DaRsUy2OWxRTm1u2OqkFSuWTB/rPwnWocHDgftJZpKOufWV
+ Ze8EwZbDiF9nNsrfFhkiwl1FBpIsSrN6ynuAaxKUSlPUvq6DMsx0Xayc+JlazOGiLbQB
+ 2xEhXLBrIvbymjlhqCdGDPiYjkqNRHvjkg8fsLlcRgOivjP7mPw9zayUjUvFFTBlw77C
+ 8KO3ADE0qkokPQm6juimWx+633hoC7V6HTcYKxjLA/OWduPGjyqWberliUd3MSuAGjvs
+ SaEACtTr5cuCQDgx2B3iQcAPCfvLRc77E6Q+AmcHJA3fCwgk0FmZKD4kQ6nLkn87iQAm
+ jYLQ==
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=gmail.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256
- header.s=20230601 header.b=SIbZx/HR
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
+ header.a=rsa-sha256 header.s=20230601 header.b=VfyQGkT0
 Subject: Re: [Intel-wired-lan] [RFC bpf-next 0/4] Add XDP rx hw hints
  support performing XDP_REDIRECT
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -127,12 +126,12 @@ List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
 Cc: mst@redhat.com, jasowang@redhat.com, ast@kernel.org, edumazet@google.com,
- anthony.l.nguyen@intel.com, Yan Zhai <yan@cloudflare.com>,
- Jakub Sitnicki <jakub@cloudflare.com>, daniel@iogearbox.net,
- kernel-team <kernel-team@cloudflare.com>, przemyslaw.kitszel@intel.com,
- john.fastabend@gmail.com, sdf@fomichev.me, intel-wired-lan@lists.osuosl.org,
- kuba@kernel.org, pabeni@redhat.com, Lorenzo Bianconi <lorenzo@kernel.org>,
- Jesper Dangaard Brouer <hawk@kernel.org>, alexandre.torgue@foss.st.com,
+ anthony.l.nguyen@intel.com, Jakub Sitnicki <jakub@cloudflare.com>,
+ daniel@iogearbox.net, kernel-team <kernel-team@cloudflare.com>,
+ przemyslaw.kitszel@intel.com, john.fastabend@gmail.com, sdf@fomichev.me,
+ intel-wired-lan@lists.osuosl.org, kuba@kernel.org, pabeni@redhat.com,
+ Lorenzo Bianconi <lorenzo@kernel.org>, Yan Zhai <yan@cloudflare.com>,
+ alexandre.torgue@foss.st.com, Daniel Xu <dxu@dxuuu.xyz>,
  Arthur Fabre <afabre@cloudflare.com>, netdev@vger.kernel.org,
  Toke =?utf-8?Q?H=C3=B8iland-J=C3=B8rgensen?= <toke@redhat.com>,
  tariqt@nvidia.com, Alexander Lobakin <aleksander.lobakin@intel.com>,
@@ -141,198 +140,107 @@ Cc: mst@redhat.com, jasowang@redhat.com, ast@kernel.org, edumazet@google.com,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 10/03, Daniel Xu wrote:
-> Hi Stan,
+On 10/04, Jesper Dangaard Brouer wrote:
 > 
-> On Thu, Oct 03, 2024 at 01:26:08PM GMT, Stanislav Fomichev wrote:
-> > On 10/03, Arthur Fabre wrote:
-> > > On Thu Oct 3, 2024 at 12:49 AM CEST, Stanislav Fomichev wrote:
-> > > > On 10/02, Toke Høiland-Jørgensen wrote:
-> > > > > Stanislav Fomichev <stfomichev@gmail.com> writes:
-> > > > > 
-> > > > > > On 10/01, Toke Høiland-Jørgensen wrote:
-> > > > > >> Lorenzo Bianconi <lorenzo@kernel.org> writes:
-> > > > > >> 
-> > > > > >> >> On Mon Sep 30, 2024 at 1:49 PM CEST, Lorenzo Bianconi wrote:
-> > > > > >> >> > > Lorenzo Bianconi <lorenzo@kernel.org> writes:
-> > > > > >> >> > > 
-> > > > > >> >> > > >> > We could combine such a registration API with your header format, so
-> > > > > >> >> > > >> > that the registration just becomes a way of allocating one of the keys
-> > > > > >> >> > > >> > from 0-63 (and the registry just becomes a global copy of the header).
-> > > > > >> >> > > >> > This would basically amount to moving the "service config file" into the
-> > > > > >> >> > > >> > kernel, since that seems to be the only common denominator we can rely
-> > > > > >> >> > > >> > on between BPF applications (as all attempts to write a common daemon
-> > > > > >> >> > > >> > for BPF management have shown).
-> > > > > >> >> > > >> 
-> > > > > >> >> > > >> That sounds reasonable. And I guess we'd have set() check the global
-> > > > > >> >> > > >> registry to enforce that the key has been registered beforehand?
-> > > > > >> >> > > >> 
-> > > > > >> >> > > >> >
-> > > > > >> >> > > >> > -Toke
-> > > > > >> >> > > >> 
-> > > > > >> >> > > >> Thanks for all the feedback!
-> > > > > >> >> > > >
-> > > > > >> >> > > > I like this 'fast' KV approach but I guess we should really evaluate its
-> > > > > >> >> > > > impact on performances (especially for xdp) since, based on the kfunc calls
-> > > > > >> >> > > > order in the ebpf program, we can have one or multiple memmove/memcpy for
-> > > > > >> >> > > > each packet, right?
-> > > > > >> >> > > 
-> > > > > >> >> > > Yes, with Arthur's scheme, performance will be ordering dependent. Using
-> > > > > >> >> > > a global registry for offsets would sidestep this, but have the
-> > > > > >> >> > > synchronisation issues we discussed up-thread. So on balance, I think
-> > > > > >> >> > > the memmove() suggestion will probably lead to the least pain.
-> > > > > >> >> > > 
-> > > > > >> >> > > For the HW metadata we could sidestep this by always having a fixed
-> > > > > >> >> > > struct for it (but using the same set/get() API with reserved keys). The
-> > > > > >> >> > > only drawback of doing that is that we statically reserve a bit of
-> > > > > >> >> > > space, but I'm not sure that is such a big issue in practice (at least
-> > > > > >> >> > > not until this becomes to popular that the space starts to be contended;
-> > > > > >> >> > > but surely 256 bytes ought to be enough for everybody, right? :)).
-> > > > > >> >> >
-> > > > > >> >> > I am fine with the proposed approach, but I think we need to verify what is the
-> > > > > >> >> > impact on performances (in the worst case??)
-> > > > > >> >> 
-> > > > > >> >> If drivers are responsible for populating the hardware metadata before
-> > > > > >> >> XDP, we could make sure drivers set the fields in order to avoid any
-> > > > > >> >> memove() (and maybe even provide a helper to ensure this?).
-> > > > > >> >
-> > > > > >> > nope, since the current APIs introduced by Stanislav are consuming NIC
-> > > > > >> > metadata in kfuncs (mainly for af_xdp) and, according to my understanding,
-> > > > > >> > we want to add a kfunc to store the info for each NIC metadata (e.g rx-hash,
-> > > > > >> > timestamping, ..) into the packet (this is what Toke is proposing, right?).
-> > > > > >> > In this case kfunc calling order makes a difference.
-> > > > > >> > We can think even to add single kfunc to store all the info for all the NIC
-> > > > > >> > metadata (maybe via a helping struct) but it seems not scalable to me and we
-> > > > > >> > are losing kfunc versatility.
-> > > > > >> 
-> > > > > >> Yes, I agree we should have separate kfuncs for each metadata field.
-> > > > > >> Which means it makes a lot of sense to just use the same setter API that
-> > > > > >> we use for the user-registered metadata fields, but using reserved keys.
-> > > > > >> So something like:
-> > > > > >> 
-> > > > > >> #define BPF_METADATA_HW_HASH      BIT(60)
-> > > > > >> #define BPF_METADATA_HW_TIMESTAMP BIT(61)
-> > > > > >> #define BPF_METADATA_HW_VLAN      BIT(62)
-> > > > > >> #define BPF_METADATA_RESERVED (0xffff << 48)
-> > > > > >> 
-> > > > > >> bpf_packet_metadata_set(pkt, BPF_METADATA_HW_HASH, hash_value);
-> > > > > >> 
-> > > > > >> 
-> > > > > >> As for the internal representation, we can just have the kfunc do
-> > > > > >> something like:
-> > > > > >> 
-> > > > > >> int bpf_packet_metadata_set(field_id, value) {
-> > > > > >>   switch(field_id) {
-> > > > > >>     case BPF_METADATA_HW_HASH:
-> > > > > >>       pkt->xdp_hw_meta.hash = value;
-> > > > > >>       break;
-> > > > > >>     [...]
-> > > > > >>     default:
-> > > > > >>       /* do the key packing thing */
-> > > > > >>   }
-> > > > > >> }
-> > > > > >> 
-> > > > > >> 
-> > > > > >> that way the order of setting the HW fields doesn't matter, only the
-> > > > > >> user-defined metadata.
-> > > > > >
-> > > > > > Can you expand on why we need the flexibility of picking the metadata fields
-> > > > > > here? Presumably we are talking about the use-cases where the XDP program
-> > > > > > is doing redirect/pass and it doesn't really know who's the final
-> > > > > > consumer is (might be another xdp program or might be the xdp->skb
-> > > > > > kernel case), so the only sensible option here seems to be store everything?
-> > > > > 
-> > > > > For the same reason that we have separate kfuncs for each metadata field
-> > > > > when getting it from the driver: XDP programs should have the
-> > > > > flexibility to decide which pieces of metadata they need, and skip the
-> > > > > overhead of stuff that is not needed.
-> > > > > 
-> > > > > For instance, say an XDP program knows that nothing in the system uses
-> > > > > timestamps; in that case, it can skip both the getter and the setter
-> > > > > call for timestamps.
-> > 
-> > Original RFC is talking about XDP -> XDP_REDIRECT -> skb use-case,
-> > right? For this we pretty much know what kind of metadata we want to
-> > preserve, so why not ship it in the existing metadata area and have
-> > a kfunc that the xdp program will call prior to doing xdp_redirect?
-> > This kfunc can do exactly what you're suggesting - skip the timestamp
-> > if we know that the timestamping is off.
-> > 
-> > Or have we moved to discussing some other use-cases? What am I missing
-> > about the need for some other new mechanism?
-> > 
-> > > > But doesn't it put us in the same place? Where the first (native) xdp program
-> > > > needs to know which metadata the final consumer wants. At this point
-> > > > why not propagate metadata layout as well?
-> > > >
-> > > > (or maybe I'm still missing what exact use-case we are trying to solve)
-> > > 
-> > > There are two different use-cases for the metadata:
-> > > 
-> > > * "Hardware" metadata (like the hash, rx_timestamp...). There are only a
-> > >   few well known fields, and only XDP can access them to set them as
-> > >   metadata, so storing them in a struct somewhere could make sense.
-> > > 
-> > > * Arbitrary metadata used by services. Eg a TC filter could set a field
-> > >   describing which service a packet is for, and that could be reused for
-> > >   iptables, routing, socket dispatch...
-> > >   Similarly we could set a "packet_id" field that uniquely identifies a
-> > >   packet so we can trace it throughout the network stack (through
-> > >   clones, encap, decap, userspace services...).
-> > >   The skb->mark, but with more room, and better support for sharing it.
-> > > 
-> > > We can only know the layout ahead of time for the first one. And they're
-> > > similar enough in their requirements (need to be stored somewhere in the
-> > > SKB, have a way of retrieving each one individually, that it seems to
-> > > make sense to use a common API).
-> > 
-> > Why not have the following layout then?
-> > 
-> > +---------------+-------------------+----------------------------------------+------+
-> > | more headroom | user-defined meta | hw-meta (potentially fixed skb format) | data |
-> > +---------------+-------------------+----------------------------------------+------+
-> >                 ^                                                            ^
-> >             data_meta                                                      data
-> > 
-> > You obviously still have a problem of communicating the layout if you
-> > have some redirects in between, but you, in theory still have this
-> > problem with user-defined metadata anyway (unless I'm missing
-> > something).
-> > 
-> > > > > I suppose we *could* support just a single call to set the skb meta,
-> > > > > like:
-> > > > > 
-> > > > > bpf_set_skb_meta(struct xdp_md *pkt, struct xdp_hw_meta *data);
-> > > > > 
-> > > > > ...but in that case, we'd need to support some fields being unset
-> > > > > anyway, and the program would have to populate the struct on the stack
-> > > > > before performing the call. So it seems simpler to just have symmetry
-> > > > > between the get (from HW) and set side? :)
-> > > >
-> > > > Why not simply bpf_set_skb_meta(struct xdp_md *pkt) and let it store
-> > > > the metadata somewhere in xdp_md directly? (also presumably by
-> > > > reusing most of the existing kfuncs/xmo_xxx helpers)
-> > > 
-> > > If we store it in xdp_md, the metadata won't be available higher up the
-> > > stack (or am I missing something?). I think one of the goals is to let
-> > > things other than XDP access it (maybe even the network stack itself?).
-> > 
-> > IIRC, xdp metadata gets copied to skb metadata, so it does propagate.
-> > Although, it might have a detrimental effect on the gro, but I'm
-> > assuming that is something that can be fixed separately.
 > 
-> I was thinking about this today so I'm glad you brought it up.
+> On 04/10/2024 04.13, Daniel Xu wrote:
+> > On Thu, Oct 03, 2024 at 01:26:08PM GMT, Stanislav Fomichev wrote:
+> > > On 10/03, Arthur Fabre wrote:
+> > > > On Thu Oct 3, 2024 at 12:49 AM CEST, Stanislav Fomichev wrote:
+> > > > > On 10/02, Toke Høiland-Jørgensen wrote:
+> > > > > > Stanislav Fomichev <stfomichev@gmail.com> writes:
+> > > > > > 
+> > > > > > > On 10/01, Toke Høiland-Jørgensen wrote:
+> > > > > > > > Lorenzo Bianconi <lorenzo@kernel.org> writes:
+> > > > > > > > 
+> > > > > > > > > > On Mon Sep 30, 2024 at 1:49 PM CEST, Lorenzo Bianconi wrote:
+> > > > > > > > > > > > Lorenzo Bianconi <lorenzo@kernel.org> writes:
+> > > > > > > > > > > > 
+> [...]
+> > > > > > > > > > > > > 
+> > > > > > > > > > > > > I like this 'fast' KV approach but I guess we should really evaluate its
+> > > > > > > > > > > > > impact on performances (especially for xdp) since, based on the kfunc calls
+> > > > > > > > > > > > > order in the ebpf program, we can have one or multiple memmove/memcpy for
+> > > > > > > > > > > > > each packet, right?
+> > > > > > > > > > > > 
+> > > > > > > > > > > > Yes, with Arthur's scheme, performance will be ordering dependent. Using
 > 
-> IIUC putting unique data in the metadata area will prevent GRO from
-> working. I wonder if as a part of this work there's a cleaner way to
-> indicate to XDP or GRO engine that some metadata should be ignored for
-> coalescing purposes. Otherwise the final XDP prog before GRO would need
-> to memset() all the relevant bytes to 0 (assuming that even works).
+> I really like the *compact* Key-Value (KV) store idea from Arthur.
+>  - The question is it is fast enough?
+> 
+> I've promised Arthur to XDP micro-benchmark this, if he codes this up to
+> be usable in the XDP code path.  Listening to the LPC recording I heard
+> that Alexei also saw potential and other use-case for this kind of
+> fast-and-compact KV approach.
+> 
+> I have high hopes for the performance, as Arthur uses POPCNT instruction
+> which is *very* fast[1]. I checked[2] AMD Zen 3 and 4 have Ops/Latency=1
+> and Reciprocal throughput 0.25.
+> 
+>  [1] https://www.agner.org/optimize/blog/read.php?i=853#848
+>  [2] https://www.agner.org/optimize/instruction_tables.pdf
+> 
+> [...]
+> > > > There are two different use-cases for the metadata:
+> > > > 
+> > > > * "Hardware" metadata (like the hash, rx_timestamp...). There are only a
+> > > >    few well known fields, and only XDP can access them to set them as
+> > > >    metadata, so storing them in a struct somewhere could make sense.
+> > > > 
+> > > > * Arbitrary metadata used by services. Eg a TC filter could set a field
+> > > >    describing which service a packet is for, and that could be reused for
+> > > >    iptables, routing, socket dispatch...
+> > > >    Similarly we could set a "packet_id" field that uniquely identifies a
+> > > >    packet so we can trace it throughout the network stack (through
+> > > >    clones, encap, decap, userspace services...).
+> > > >    The skb->mark, but with more room, and better support for sharing it.
+> > > > 
+> > > > We can only know the layout ahead of time for the first one. And they're
+> > > > similar enough in their requirements (need to be stored somewhere in the
+> > > > SKB, have a way of retrieving each one individually, that it seems to
+> > > > make sense to use a common API).
+> > > 
+> > > Why not have the following layout then?
+> > > 
+> > > +---------------+-------------------+----------------------------------------+------+
+> > > | more headroom | user-defined meta | hw-meta (potentially fixed skb format) | data |
+> > > +---------------+-------------------+----------------------------------------+------+
+> > >                  ^                                                            ^
+> > >              data_meta                                                      data
+> > > 
+> > > You obviously still have a problem of communicating the layout if you
+> > > have some redirects in between, but you, in theory still have this
+> > > problem with user-defined metadata anyway (unless I'm missing
+> > > something).
+> > > 
+> 
+> Hmm, I think you are missing something... As far as I'm concerned we are
+> discussing placing the KV data after the xdp_frame, and not in the XDP
+> data_meta area (as your drawing suggests).  The xdp_frame is stored at
+> the very top of the headroom.  Lorenzo's patchset is extending struct
+> xdp_frame and now we are discussing to we can make a more flexible API
+> for extending this. I understand that Toke confirmed this here [3].  Let
+> me know if I missed something :-)
+> 
+>  [3] https://lore.kernel.org/all/874j62u1lb.fsf@toke.dk/
+>
+> As part of designing this flexible API, we/Toke are trying hard not to
+> tie this to a specific data area.  This is a good API design, keeping it
+> flexible enough that we can move things around should the need arise.
+> 
+> I don't think it is viable to store this KV data in XDP data_meta area,
+> because existing BPF-prog's already have direct memory (write) access
+> and can change size of area, which creates too much headache with
+> (existing) BPF-progs creating unintentional breakage for the KV store,
+> which would then need extensive checks to handle random corruptions
+> (slowing down KV-store code).
 
-I'm assuming it is that way because there has to be a conscious decision
-(TBD somewhere) about how to merge the metadata. IOW, there needs to be
-some definition of 'ignored for coalescing purposes'. Do we ignore
-the old metadata (the one that's already in the gro queue) or the new
-metadata (in the skb)? What if there is a timestamp in the metadata?
-In this case, depending on what you ignore, you get a different
-timestamp.
+Yes, I'm definitely missing the bigger picture. If we want to have a global
+metadata registry in the kernel, why can't it be built on top of the existing
+area? Have some control api to define the layout and some new api to attach
+the layout id to the xdp_frame. And one of those layouts might be
+the xdp->skb one (although, for performance sake, still makes more sense
+to special case xdp->skb one rather than asking the kernel to parse the kv
+layout definition).
+
+But I'm happy to wait for the v2 and re-read the cover letter :-)
