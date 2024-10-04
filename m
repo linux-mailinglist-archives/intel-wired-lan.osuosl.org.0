@@ -1,123 +1,216 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4E92E990612
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  4 Oct 2024 16:29:36 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id C04E0990717
+	for <lists+intel-wired-lan@lfdr.de>; Fri,  4 Oct 2024 17:05:13 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 0667561053;
-	Fri,  4 Oct 2024 14:29:35 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id o84jQ6o--xlo; Fri,  4 Oct 2024 14:29:34 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 28C6260F79
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1728052173;
-	bh=rYRKMpJ4OBC0LQYCHSn1P6nBU6dgmdu8HhUM6MMa+jE=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=lzjj7mYV2M6SNKBHLAxccp0czDpWWzVIE5M2rcsWUiSH8XYPmeBts95bcae+yh2VA
-	 dpNCGZaazjnzgOU31R6mpB5O0dd1yj9xaLqAelWJhry7cnqXsXnUWepqJQl7sUUp5N
-	 FYp6JqSwEUtyqQPmCmt13duzeuY6nPOePnN0hlOYANBwyYUSvnjimM18WL4TK0hoWH
-	 a5SAH3sGI1P24CeqrFOD+RxyHD/EuEVzDSj311LrStijNJXtDtfDnB/FnZUkk7nTeg
-	 XDHw1mYNTVqc+eO9GdR0WB3Pyo/9PQTVJ955SPWypgXA7723lhS461QAnt4KMLaSTo
-	 hBMAXwatRXj1Q==
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 28C6260F79;
-	Fri,  4 Oct 2024 14:29:33 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id A6E4E1BF82C
- for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Oct 2024 14:29:30 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id A1445406B2
- for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Oct 2024 14:29:30 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 9D31A40C7F;
+	Fri,  4 Oct 2024 15:05:10 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 8YxH-2pOGzsa for <intel-wired-lan@lists.osuosl.org>;
- Fri,  4 Oct 2024 14:29:28 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2a00:1450:4864:20::430; helo=mail-wr1-x430.google.com;
- envelope-from=afabre@cloudflare.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 6381240491
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6381240491
-Received: from mail-wr1-x430.google.com (mail-wr1-x430.google.com
- [IPv6:2a00:1450:4864:20::430])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 6381240491
- for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Oct 2024 14:29:28 +0000 (UTC)
-Received: by mail-wr1-x430.google.com with SMTP id
- ffacd0b85a97d-37cc810ce73so1329474f8f.1
- for <intel-wired-lan@lists.osuosl.org>; Fri, 04 Oct 2024 07:29:28 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1728052166; x=1728656966;
- h=in-reply-to:references:subject:cc:to:from:message-id:date
- :content-transfer-encoding:mime-version:x-gm-message-state:from:to
- :cc:subject:date:message-id:reply-to;
- bh=rYRKMpJ4OBC0LQYCHSn1P6nBU6dgmdu8HhUM6MMa+jE=;
- b=xNT2ZsHtNm5Aekh8KoAaAeAliWrPfHNQwAE4NP8cY36LzvfX+t8Z0iw2rmgK1tkvTG
- PLcaF4L8R9cxYW1k7awZ6G7mA4IEkacyFp6OcmvwbBtr7vZixcB/ycns+waGkqIx/SUM
- kQjFFPwp5q8vylaQEzVq5L172SvvOAojafBh/XE9NB0ENNoOFxmQPqKTPW6OeTQKH6AB
- +Z9ztCoSMQuvoGsKBwR1nvAngw5nfwGvlkOo5b1Z11rKMEROWxTQEOew+wNg56ymUM6q
- WlxKbFdwpJB5WL/8/o6zZQ6oIXKjFNCTvbVs4vzz95pnbfWhoOJS93FkdQuVX785XPHh
- ++HA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVnXiq648+tXFTpW74fHzY74mCzVj6PUQxqRneQRJ4l6Ro+0b+YomUy32qpu0V2tEsazjWWYdd0Q3S8sX3dTHA=@lists.osuosl.org
-X-Gm-Message-State: AOJu0YwqlZuc0QO1fiEiCUzbO17haN0UnR/9ZBfhfuAhrtrxyoFwQm04
- b1xrrC/mXm1k2FbenXuI3GvuPLlIdB1LYjbuJgeVU3yz5BjiW3mtM9AM2GUrFnk=
-X-Google-Smtp-Source: AGHT+IGfwB1d0G2mnqATVG3785KhqOhSttTikbEtmWl9Q33QYeDl/m5n3wD4HEhVBVCt8hb+z5i61A==
-X-Received: by 2002:a05:6000:1866:b0:37c:c870:b454 with SMTP id
- ffacd0b85a97d-37d0e8f708fmr2201971f8f.49.1728052165950; 
- Fri, 04 Oct 2024 07:29:25 -0700 (PDT)
-Received: from localhost ([2a09:bac1:27c0:58::31:92])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-42f86a1f42esm17045225e9.4.2024.10.04.07.29.24
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 04 Oct 2024 07:29:25 -0700 (PDT)
-Mime-Version: 1.0
+ id E5aXWXFxalHQ; Fri,  4 Oct 2024 15:05:09 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 84BAB40C87
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1728054309;
+	bh=TJjgXfI8GbEKL2ozJpVa4hgzPzqKeP9vQ3DorNZ4a1k=;
+	h=From:To:Date:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=YzpgmtzRJX/HLISl/Kl0EiAljezNP1ulOcVvDkqdlPAbqJsKOLiVFUlViFqXwPWna
+	 khL8Dpbtpp2ZQ1SNyiO9Vu04Wa99tp4GdVFRapNJZwZIl7N+oMjxSYL8dMo083KpnO
+	 rurmvcC96MZpTc5Jv1YVlcCo6x4MHOgfr3g68q0iI+dOtZfzbCepzajjVL8FbuoyyU
+	 z46i/8aDP+lWonIKMh8iTzWYlktV+NcGUpD9lCXHsVI3O94coWDqEeUMqLVDezN+2S
+	 5bbS1fTBK4gMGgN8N2rgY/vChjCi2lSjJ4sVrIP0yddQcQMBT4g7hH/OCqExmkyrKn
+	 81N3MiMaW8ZXw==
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp4.osuosl.org (Postfix) with ESMTP id 84BAB40C87;
+	Fri,  4 Oct 2024 15:05:09 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id C2B811BF239
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Oct 2024 15:05:07 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp4.osuosl.org (Postfix) with ESMTP id BC0E540C7F
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Oct 2024 15:05:07 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id rnpGgUXAWxRy for <intel-wired-lan@lists.osuosl.org>;
+ Fri,  4 Oct 2024 15:05:06 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.16;
+ helo=mgamail.intel.com; envelope-from=himasekharx.reddy.pucha@intel.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org E9C4740B9B
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org E9C4740B9B
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.16])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id E9C4740B9B
+ for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Oct 2024 15:04:59 +0000 (UTC)
+X-CSE-ConnectionGUID: IY2DvNeOQv+puzrrUUn2lg==
+X-CSE-MsgGUID: V5T8PxwWQ7qE4EcTq5jYlg==
+X-IronPort-AV: E=McAfee;i="6700,10204,11215"; a="27369970"
+X-IronPort-AV: E=Sophos;i="6.11,177,1725346800"; d="scan'208";a="27369970"
+Received: from fmviesa004.fm.intel.com ([10.60.135.144])
+ by orvoesa108.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 04 Oct 2024 08:04:59 -0700
+X-CSE-ConnectionGUID: kHiOruz7S4SML0u3AldM+w==
+X-CSE-MsgGUID: LwUD3fCPTlCA1KPJ0v5plA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.11,177,1725346800"; d="scan'208";a="79302775"
+Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
+ by fmviesa004.fm.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
+ 04 Oct 2024 08:04:51 -0700
+Received: from orsmsx611.amr.corp.intel.com (10.22.229.24) by
+ ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.39; Fri, 4 Oct 2024 08:04:48 -0700
+Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
+ ORSMSX611.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.39; Fri, 4 Oct 2024 08:04:48 -0700
+Received: from orsedg603.ED.cps.intel.com (10.7.248.4) by
+ orsmsx610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.39 via Frontend Transport; Fri, 4 Oct 2024 08:04:48 -0700
+Received: from NAM10-BN7-obe.outbound.protection.outlook.com (104.47.70.48) by
+ edgegateway.intel.com (134.134.137.100) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.39; Fri, 4 Oct 2024 08:04:47 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=B7iI07xusgOBOxRYc+jNNUIfV/mR1Ydryuc504X6YU6KiD6SprxaOQEfYwpjhwJeul9Ypo37glvL3aR8V9WeQGsZd4Wtm8Z9aNigrlRomsqnVAX4uNiCiLwz3CfL7plcun3R3ecNHSEVoTc7oXpn3BAwOGAAck+gcQZQ6lZoTliUHLuH4YK9BEAdX21cVr+gtcIbMUcHHGrTbMb1Z6zKgO5DnXeSqR2PnWuKakRhQUXQtaALXx1pLxHrxkHEtfY/hNHmCe+BdrD2wGynRv/8JQmFxYLB7w9TYY0+8FqG2qbcOXphvHJt0oZ1NJpxf7wzPxBRR6gQctKPEdxU2nYnAA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=TJjgXfI8GbEKL2ozJpVa4hgzPzqKeP9vQ3DorNZ4a1k=;
+ b=pETw/DjpfHqfMFhNeJqi/bSLAUFZT6ZMvjePamLEh8o17Z29JWLQW5EjzkGgiqqJ8WhpbYn/Ywx1dSVSzmT1CSJkQCa1O8T5GDjpKsak4KfNGGAQbHaQ85ewcNTD35xxxpSzdqfljMNJlpST8nSz5FSUMpDnpSuq0qaIet+7mDrK53rFlarwS3KxUGaTBkZyxEeRqGlyct6dZZ6OvBaMEvVKbxeQjl4VkqoAxgYMCquL7I4w5ltbXHSQlre+U60xJ6fB1q8UGNEkpMgM1lPJ/L4XSw268XFFXeZQCC54tzK6/C6hm2gLLypjJYh5358KdZWC/jzhts/5FsdKncAWew==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from CYYPR11MB8429.namprd11.prod.outlook.com (2603:10b6:930:c2::15)
+ by LV8PR11MB8771.namprd11.prod.outlook.com (2603:10b6:408:206::18)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8026.18; Fri, 4 Oct
+ 2024 15:04:44 +0000
+Received: from CYYPR11MB8429.namprd11.prod.outlook.com
+ ([fe80::4f97:ad9d:79a9:899f]) by CYYPR11MB8429.namprd11.prod.outlook.com
+ ([fe80::4f97:ad9d:79a9:899f%5]) with mapi id 15.20.8026.017; Fri, 4 Oct 2024
+ 15:04:43 +0000
+From: "Pucha, HimasekharX Reddy" <himasekharx.reddy.pucha@intel.com>
+To: "Kolacinski, Karol" <karol.kolacinski@intel.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>
+Thread-Topic: [Intel-wired-lan] [PATCH v12 iwl-next 7/7] ice: Implement PTP
+ support for E830 devices
+Thread-Index: AQHbEzK4XSxjBZsos0ujhixi94gWY7J2tlcw
+Date: Fri, 4 Oct 2024 15:04:43 +0000
+Message-ID: <CYYPR11MB842919C5C3BAE3EE4751DCC1BD722@CYYPR11MB8429.namprd11.prod.outlook.com>
+References: <20240930121610.679430-9-karol.kolacinski@intel.com>
+ <20240930121610.679430-16-karol.kolacinski@intel.com>
+In-Reply-To: <20240930121610.679430-16-karol.kolacinski@intel.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: CYYPR11MB8429:EE_|LV8PR11MB8771:EE_
+x-ms-office365-filtering-correlation-id: 71b6b382-09e7-4f17-42f4-08dce485e128
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0; ARA:13230040|1800799024|376014|366016|38070700018;
+x-microsoft-antispam-message-info: =?us-ascii?Q?hk7hzIKpnxoAGAXXo37xmygk/Ns2Pqla1v9GmB1T1GiM8D9Up39Qz1+qcPib?=
+ =?us-ascii?Q?pkK3DJe4tme/oWFSbwb0/+M9CIVcbuCz9MVEaUJIZkz0C3yWmZXHj/J/BONz?=
+ =?us-ascii?Q?Y55/+fWCyee6Eg91TXMvP1aa/Vocium4viBsXjScpJIQSnlBJ9N7yeV4APuR?=
+ =?us-ascii?Q?Kvs9OQ3UpZkdQi4GUfEF3PMMUTCTO6rXKjIDrcbSjF4Bf7Zl37NDgKZS3xBj?=
+ =?us-ascii?Q?lSFX+IVsybt2/RVqjv6RjMWvhvqrk7IALI8id2bY4G4Eq9OPlqJaq7AMV8Kb?=
+ =?us-ascii?Q?SRH3eMSvKmXDEKIhbC3hkd0eIb6kEbWqSzPYPF2lSMqzZENL1DinJcx1z//Y?=
+ =?us-ascii?Q?PZeDB7TflOLEaVyv9V2rnp8NkxX7X1YdaxNgFLTXAYEZtHQUcs4usMrpMz39?=
+ =?us-ascii?Q?M7VInQ1J37S4DCBEfWoUBynBt+6lGhc9fUCSWZm08N7cXGXHKkUBX6fAPnM2?=
+ =?us-ascii?Q?KhrjjxRDLJ0v8TgL2QhZlzuyj1pc32sh6fa6VnB/VCzdGsIxx5h1nVwsMXRn?=
+ =?us-ascii?Q?HJtlQwldvsIpOQFNElgn6+Ia3952KayTtXSFbq6TLzZTbsy+t+tHVSf2Llwa?=
+ =?us-ascii?Q?Mbxv7mqtPMQ/U8XoMSTJQjvqWOEBQBkNBrsUbAlYVXATRPHrkZbI77TKIIV3?=
+ =?us-ascii?Q?rMg1iyOphYIbpPV8a9qn51YFZQw0mCrXKOKRLWGDpB4pADrAkGyGlNWHvbaG?=
+ =?us-ascii?Q?Of2JyGmFtWwd4g5kFu50tDYK/trOBX+xk8ZvsA/8U8deBMBplEFD0UW5ldVF?=
+ =?us-ascii?Q?AcioocAMO/gzsEjTOFgQJ6qCoWkvWekfaEWRDwJFYGfgvPfmAKz16qulOo8Q?=
+ =?us-ascii?Q?N3NUVmBSFA4Awh/ahvXnD6PJdYmrt32tWFEO9CV5cp2OkZ49+Kg15qV/+dHO?=
+ =?us-ascii?Q?wf0GwAIQXmNpXXhiHYs2paBN91WX6H9p/3/jw67PObBITbKG4CKA8+hCqNr8?=
+ =?us-ascii?Q?jGYZNk/PCQ0s/owHdsAectADeoVcOHUriDFaaA8xJX6YefKKS9CRznnqQJfR?=
+ =?us-ascii?Q?GYcsODs/BC9gktjSv4TqXKNlS+/FUmgEXUenG3Eo1LlOi8KOGy6oeKNlnP5o?=
+ =?us-ascii?Q?QBbA1Xx1Mz/0M+zY7zBcJflHc03m7N9WvVM5zLsPyErWCu2gAwAZVlVb97Lt?=
+ =?us-ascii?Q?Tlxh1d4s07IX6XAXC2Ii2usJ+vpokzmicGA6GRS/GFWScBRK/HPba0bzDuYN?=
+ =?us-ascii?Q?FdztbLK6330hziFEoBpC/lCrcPdkPcxvXOzdJCbrGGoyHX7X0VUPQiTg03kH?=
+ =?us-ascii?Q?Jl8fjThv0ZupwUQhC6N4QvMfopxMCm4GBE4zwYe8BY23mL/hhchLvqksj61j?=
+ =?us-ascii?Q?ovJIH2rSJdRzCciFDg0r0rSBP4dexztAPmiHk9FTOTlFlQ=3D=3D?=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:CYYPR11MB8429.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(1800799024)(376014)(366016)(38070700018); DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?jYsow7pHQW2T3fxVRVDrKDzC88JFi2nS19sGuIArv55CuMe2l+dBF/6cS2kh?=
+ =?us-ascii?Q?aHvzwmXxG/J7I75zR8eYo/21cOusw8CvwBu2jK3AjZ8SVTWTB5pvhvn8iV7A?=
+ =?us-ascii?Q?PDUQ4H7RkFW5KDpG+x2jlGEUXH2EcVxO/v328nIBHIdcTWbmCaSkSihnoX8H?=
+ =?us-ascii?Q?iNv4vcR27u4Iz62mmimbyttWs8L5EX87tcqD0DVI7KjHNzPe2wn5VqlL4mRy?=
+ =?us-ascii?Q?/cBDdVJYRPEdReT8wqqW2FhyiGC9iOhv+rOD9VmySG4yJ4idD1WeYV9uRI08?=
+ =?us-ascii?Q?Jsti1X7/oAx+lFN6mwBltyJTHRaZijMu4oxDwKA97Be+Fxmjm/ClBccyfA7v?=
+ =?us-ascii?Q?jsSZ5gKjPmCeoOrqNcoMOsH7UPk7srlm/Gwkiv8bU2dEhF8iNmIKyDBj4Zby?=
+ =?us-ascii?Q?yHZWkCyO6NOwH0Jz0eyFCHFPpPRA9nc5BpNqHEHzpogjSONmWq/84IwDlQTi?=
+ =?us-ascii?Q?hcDPaz54WpunJIkuREkcGYFuPAMpFAqy2P78ZnHqpilSxWD0IqPg3Z/oZjC4?=
+ =?us-ascii?Q?hDS1RYxJdBt0H8xUNFxdU4FJfA/cUw+qL6Ud7Xy/14HnI1qJJPwRUtPKRfS9?=
+ =?us-ascii?Q?LpiVVfeMRNkzyFI/XVLjm+f40fT8t3K0UzZudvIFi5NKgjZ501yA5KESoV43?=
+ =?us-ascii?Q?tGOI4FIKiaWMhpy3XAc9VUXjU0b8wLhhvhIzEEVoKtGfcyRNpRRLIH1AceyL?=
+ =?us-ascii?Q?PA2eO3v+wWF/DC+T2jqDEpdZORG74sXy7exLG16NvZQ3iq/aWiH8i5az9enq?=
+ =?us-ascii?Q?NeISUake3/QHB+OVQdi+sjW8EsAP1xskn7PzKqSySbV6DGUmeZnwrv3FkVgx?=
+ =?us-ascii?Q?JG0FCSo021X1UFCZQJUtqnHU0CQ0C2ibUe7FDmO0X4/SM4CyoU6Cp+xwn0Ve?=
+ =?us-ascii?Q?h0uvW3v5naZukYl2NSmKkegn/H6Q9EJwho7TRPLHHodqKMFll6UYIiUo3thL?=
+ =?us-ascii?Q?PAGsq9y8AXVg3kJIa9ZvCaYXZskpQSVDWDWAAsTAVyFVRQyWztngFvwl1sY5?=
+ =?us-ascii?Q?IOEXRykhXIricuON2URzAtCyCRCCFkSxGQxDKyKeVQhkDSgBhTGuZ8jOICkj?=
+ =?us-ascii?Q?MoiaNmJSSXfMCXFpCGyrBrx30dl9kBRJ2azLPbrIK0NRLv72c5OSyfoTVUvi?=
+ =?us-ascii?Q?ye62QWvQPsvV7N68ecIroMzMAtp3TsolV9AanTtOYHDnPf0Kx0MiYa+EuEiL?=
+ =?us-ascii?Q?fI1UXDEg/P0CnUUKInZr6VR6NphtNA0g8lnDrTpTx9kBJGM+D/Cq/nkbhddR?=
+ =?us-ascii?Q?kWRvpmc7UkuyZPdZB0ewBoV5+6iBMbYpoLCBdZSIw7TGiMyzm6nSdArGzAl8?=
+ =?us-ascii?Q?jdfrjz9evP2kfm3LRwL+ahZme8Q5HSOW934lXBImNTc4K5cSwLZ2kZN2i9gT?=
+ =?us-ascii?Q?1kX2dmJcy1ntvzP/4bcrDK2a4wUst+9WJbkVRJEj+v7a58PE4wQ3n6tiVGJH?=
+ =?us-ascii?Q?t7SGKtzu3DRfEkTbGnz6aOx0Lr4NE7KZbg++oK0B9LKobsEs8DUzuq1wad+E?=
+ =?us-ascii?Q?OnZBhJKWB9Fg19oEv7YbtE7HfBdRuUQLA75LZFqWygnCGTioHB7/Mkgy9aX9?=
+ =?us-ascii?Q?SjfDH4YsyyW+LwwJbA7iVm909RYju0PMdSy0L9fo8uSgj3qc5WFFl1BW7xcd?=
+ =?us-ascii?Q?gg=3D=3D?=
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset=UTF-8
-Date: Fri, 04 Oct 2024 16:29:23 +0200
-Message-Id: <D4N3D8N0MUJE.2X8G8YM8UMA3N@bobby>
-From: "Arthur Fabre" <afabre@cloudflare.com>
-To: "Lorenzo Bianconi" <lorenzo@kernel.org>, "Jesper Dangaard Brouer"
- <hawk@kernel.org>
-X-Mailer: aerc 0.8.2
-References: <87zfnnq2hs.fsf@toke.dk> <Zv18pxsiTGTZSTyO@mini-arch>
- <87ttdunydz.fsf@toke.dk> <Zv3N5G8swr100EXm@mini-arch>
- <D4LYNKGLE7G0.3JAN5MX1ATPTB@bobby> <Zv794Ot-kOq1pguM@mini-arch>
- <2fy5vuewgwkh3o3mx5v4bkrzu6josqylraa4ocgzqib6a7ozt4@hwsuhcibtcb6>
- <038fffa3-1e29-4c6d-9e27-8181865dca46@kernel.org>
- <D4N2N1YKKI54.1WAGONIYZH0Y4@bobby>
- <75fb1dd3-fe14-426c-bc59-9a582c4b0e8d@kernel.org>
- <Zv_5KdpkaYY-6z1f@lore-desk>
-In-Reply-To: <Zv_5KdpkaYY-6z1f@lore-desk>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=cloudflare.com; s=google09082023; t=1728052166; x=1728656966;
- darn=lists.osuosl.org; 
- h=in-reply-to:references:subject:cc:to:from:message-id:date
- :content-transfer-encoding:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=rYRKMpJ4OBC0LQYCHSn1P6nBU6dgmdu8HhUM6MMa+jE=;
- b=WFS21+kgK+OLxU3BvqQophZaA/rmD/cQuz03IEVejYLegYEQh6HQBH80mTuFL49e3D
- VYzYAnItSSl3cc1iQMW1zMBRAjAi9Li2nHpTiey0BksdzNajuP4CDfeLB7cDY5raqRWK
- EGWlxj9+q+4Ey/Kj6j5vh4DV9SwTf2zfH047QElonbqcyj8/dvX8jLhAEj+saDS6bueR
- bSphTGkt8+BtUJEBsCQdkTnCgyaRenASNyG7JYVmTjyKH/G+L/vW9+ody9AN7fMC4jiI
- B7GnBvPyZbC5VsGQnG6zLvJW6YLyM/LMM4BMHikLj8g2Egro/JPOeodsVE5p4fcNS/FT
- jQ6Q==
+MIME-Version: 1.0
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: CYYPR11MB8429.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 71b6b382-09e7-4f17-42f4-08dce485e128
+X-MS-Exchange-CrossTenant-originalarrivaltime: 04 Oct 2024 15:04:43.9042 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: EDNZI/p5ly86AHJLRID8/egf2Wkt8WmthuVSfndcrabLZHL6qHrF7Trg5LWgScPYAxEQf47MpYfrqun9mb/ceg3D4xe2C6F+hluPdA5SHlM3IEDvgAvTj0l2EgLqCT5Z
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: LV8PR11MB8771
+X-OriginatorOrg: intel.com
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1728054307; x=1759590307;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=7kHWXH6KvBR9JjaVNZNbetYisrKWwHj12511kV8uquQ=;
+ b=G2OtLtMLSGkI12Eut7vcz6+3nLAPWhHL2cFY795FaCO6eMaauYqut3h1
+ /m2XhYtSuXsAbouXm/Yt7hGsP/GacnOoFd9aqgD4ADLLqPrek/5SPvVFy
+ ErYSGXfFAAzH5h4EZdcM6rckCRNZNM3hFM1JLfgtfUXNvbQTMh6vvDsaK
+ LcAAvf/mk8bEm1wILojjN4gw+a1TEyUiOXcnWV0W9on14hgqAWNWxWMvJ
+ RzW3VSmYZZg0stEEqKoICG3YCyOng6L1SkIGvnT/rDJz8vNf8rK3IQ2tL
+ Hf6NcwqtJ/GGm9U9A3JRSmM6N2D26Os3p39snRs+4t/Cyd7jCULRw06I8
+ Q==;
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dmarc=pass (p=reject dis=none)
- header.from=cloudflare.com
+ dmarc=pass (p=none dis=none)
+ header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=cloudflare.com header.i=@cloudflare.com
- header.a=rsa-sha256 header.s=google09082023 header.b=WFS21+kg
-Subject: Re: [Intel-wired-lan] [RFC bpf-next 0/4] Add XDP rx hw hints
- support performing XDP_REDIRECT
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=G2OtLtML
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [PATCH v12 iwl-next 7/7] ice: Implement PTP
+ support for E830 devices
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -130,136 +223,83 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: mst@redhat.com, jasowang@redhat.com, ast@kernel.org, edumazet@google.com,
- anthony.l.nguyen@intel.com, Jakub
- Sitnicki <jakub@cloudflare.com>, daniel@iogearbox.net,
- kernel-team <kernel-team@cloudflare.com>, przemyslaw.kitszel@intel.com,
- john.fastabend@gmail.com, sdf@fomichev.me, intel-wired-lan@lists.osuosl.org,
- kuba@kernel.org, pabeni@redhat.com, Yan Zhai <yan@cloudflare.com>,
- Stanislav Fomichev <stfomichev@gmail.com>, alexandre.torgue@foss.st.com,
- Daniel Xu <dxu@dxuuu.xyz>, netdev@vger.kernel.org,
- =?utf-8?q?Toke_H=C3=B8iland-J=C3=B8rgensen?= <toke@redhat.com>,
- tariqt@nvidia.com, Alexander Lobakin <aleksander.lobakin@intel.com>,
- mcoquelin.stm32@gmail.com, bpf@vger.kernel.org, saeedm@nvidia.com,
- davem@davemloft.net
+Cc: "Greenwalt, Paul" <paul.greenwalt@intel.com>,
+ Michal Michalik <michal.michalik@intel.com>,
+ "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+ Frederic Weisbecker <frederic@kernel.org>, "Kolacinski,
+ Karol" <karol.kolacinski@intel.com>, "Nguyen,
+ Anthony L" <anthony.l.nguyen@intel.com>, "Kitszel,
+ Przemyslaw" <przemyslaw.kitszel@intel.com>, "Keller,
+ Jacob E" <jacob.e.keller@intel.com>, Thomas Gleixner <tglx@linutronix.de>,
+ Anna-Maria Behnsen <anna-maria@linutronix.de>, "Olech,
+ Milena" <milena.olech@intel.com>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Fri Oct 4, 2024 at 4:18 PM CEST, Lorenzo Bianconi wrote:
-> On Oct 04, Jesper Dangaard Brouer wrote:
-> > On 04/10/2024 15.55, Arthur Fabre wrote:
-> > > On Fri Oct 4, 2024 at 12:38 PM CEST, Jesper Dangaard Brouer wrote:
-> > > > [...]
-> > > > > > > There are two different use-cases for the metadata:
-> > > > > > >=20
-> > > > > > > * "Hardware" metadata (like the hash, rx_timestamp...). There=
- are only a
-> > > > > > >     few well known fields, and only XDP can access them to se=
-t them as
-> > > > > > >     metadata, so storing them in a struct somewhere could mak=
-e sense.
-> > > > > > >=20
-> > > > > > > * Arbitrary metadata used by services. Eg a TC filter could s=
-et a field
-> > > > > > >     describing which service a packet is for, and that could =
-be reused for
-> > > > > > >     iptables, routing, socket dispatch...
-> > > > > > >     Similarly we could set a "packet_id" field that uniquely =
-identifies a
-> > > > > > >     packet so we can trace it throughout the network stack (t=
-hrough
-> > > > > > >     clones, encap, decap, userspace services...).
-> > > > > > >     The skb->mark, but with more room, and better support for=
- sharing it.
-> > > > > > >=20
-> > > > > > > We can only know the layout ahead of time for the first one. =
-And they're
-> > > > > > > similar enough in their requirements (need to be stored somew=
-here in the
-> > > > > > > SKB, have a way of retrieving each one individually, that it =
-seems to
-> > > > > > > make sense to use a common API).
-> > > > > >=20
-> > > > > > Why not have the following layout then?
-> > > > > >=20
-> > > > > > +---------------+-------------------+--------------------------=
---------------+------+
-> > > > > > | more headroom | user-defined meta | hw-meta (potentially fixe=
-d skb format) | data |
-> > > > > > +---------------+-------------------+--------------------------=
---------------+------+
-> > > > > >                   ^                                            =
-                ^
-> > > > > >               data_meta                                        =
-              data
-> > > > > >=20
-> > > > > > You obviously still have a problem of communicating the layout =
-if you
-> > > > > > have some redirects in between, but you, in theory still have t=
-his
-> > > > > > problem with user-defined metadata anyway (unless I'm missing
-> > > > > > something).
-> > > > > >=20
-> > > >=20
-> > > > Hmm, I think you are missing something... As far as I'm concerned w=
-e are
-> > > > discussing placing the KV data after the xdp_frame, and not in the =
-XDP
-> > > > data_meta area (as your drawing suggests).  The xdp_frame is stored=
- at
-> > > > the very top of the headroom.  Lorenzo's patchset is extending stru=
-ct
-> > > > xdp_frame and now we are discussing to we can make a more flexible =
-API
-> > > > for extending this. I understand that Toke confirmed this here [3].=
-  Let
-> > > > me know if I missed something :-)
-> > > >=20
-> > > >    [3] https://lore.kernel.org/all/874j62u1lb.fsf@toke.dk/
-> > > >=20
-> > > > As part of designing this flexible API, we/Toke are trying hard not=
- to
-> > > > tie this to a specific data area.  This is a good API design, keepi=
-ng it
-> > > > flexible enough that we can move things around should the need aris=
-e.
-> > >=20
-> > > +1. And if we have an API for doing this for user-defined metadata, i=
-t
-> > > seems like we might as well use it for hardware metadata too.
-> > >=20
-> > > With something roughly like:
-> > >=20
-> > >      *val get(id)
-> > >=20
-> > >      set(id, *val)
-> > >=20
-> > > with pre-defined ids for hardware metadata, consumers don't need to k=
-now
-> > > the layout, or where / how the data is stored.
-> > >=20
-> > > Under the hood we can implement it however we want, and change it in =
-the
-> > > future.
-> > >=20
-> > > I was initially thinking we could store hardware metadata the same wa=
-y
-> > > as user defined metadata, but Toke and Lorenzo seem to prefer storing=
- it
-> > > in a fixed struct.
-> >=20
-> > If the API hide the actual location then we can always move things
-> > around, later.  If your popcnt approach is fast enough, then IMO we
-> > don't need a fixed struct for hardware metadata.
+> -----Original Message-----
+> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf Of K=
+arol Kolacinski
+> Sent: Monday, September 30, 2024 5:43 PM
+> To: intel-wired-lan@lists.osuosl.org
+> Cc: Greenwalt, Paul <paul.greenwalt@intel.com>; Michal Michalik <michal.m=
+ichalik@intel.com>; netdev@vger.kernel.org; Frederic Weisbecker <frederic@k=
+ernel.org>; Kolacinski, Karol <karol.kolacinski@intel.com>; Nguyen, Anthony=
+ L <anthony.l.nguyen@intel.com>; Kitszel, Przemyslaw <przemyslaw.kitszel@in=
+tel.com>; Keller, Jacob E <jacob.e.keller@intel.com>; Thomas Gleixner <tglx=
+@linutronix.de>; Anna-Maria Behnsen <anna-maria@linutronix.de>; Olech, Mile=
+na <milena.olech@intel.com>
+> Subject: [Intel-wired-lan] [PATCH v12 iwl-next 7/7] ice: Implement PTP su=
+pport for E830 devices
 >
-> +1. I am fine with the KV approach for nic metadata as well if it is fast=
- enough.
+> From: Michal Michalik <michal.michalik@intel.com>
+>
+> Add specific functions and definitions for E830 devices to enable PTP sup=
+port.
+>
+> E830 devices support direct write to GLTSYN_ registers without shadow reg=
+isters and 64 bit read of PHC time.
+>
+> Enable PTM for E830 device, which is required for cross timestamp and and=
+ dependency on PCIE_PTM for ICE_HWTS.
+>
+> Check X86_FEATURE_ART for E830 as it may not be present in the CPU.
+>
+> Cc: Anna-Maria Behnsen <anna-maria@linutronix.de>
+> Cc: Frederic Weisbecker <frederic@kernel.org>
+> Cc: Thomas Gleixner <tglx@linutronix.de>
+> Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+> Co-developed-by: Jacob Keller <jacob.e.keller@intel.com>
+> Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
+> Co-developed-by: Milena Olech <milena.olech@intel.com>
+> Signed-off-by: Milena Olech <milena.olech@intel.com>
+> Co-developed-by: Paul Greenwalt <paul.greenwalt@intel.com>
+> Signed-off-by: Paul Greenwalt <paul.greenwalt@intel.com>
+> Signed-off-by: Michal Michalik <michal.michalik@intel.com>
+> Co-developed-by: Karol Kolacinski <karol.kolacinski@intel.com>
+> Signed-off-by: Karol Kolacinski <karol.kolacinski@intel.com>
+> ---
+> V11 -> V12: Fixed missing E830 case in ice_get_base_incval()
+> V10 -> V11: Fixed adjustments not working on E830
+> V9 -> V10: Removed ICE_FLAG_PTP_SUPPORTED check for E830, which was disab=
+ling
+>            PTP only for E830
+> V7 -> V8: Moved E830 parts of other patches to this patch
+> V6 -> V7: Fixed timestamp acquisition
+> V4 -> V5: Edited return values
+> V3 -> V4: Fixed kdoc for other ice_is_e***() and other _e830() functions =
+in
+>           ice_ptp_hw.c
+> V2 -> V3: Fixed kdoc for ice_is_e***() and ice_ptp_init_phy_e830()
+> V1 -> V2: Fixed compilation issue with GENMASK bits higher than 32
+>
+>  drivers/net/ethernet/intel/Kconfig            |   2 +-
+>  .../net/ethernet/intel/ice/ice_hw_autogen.h   |  12 ++
+>  drivers/net/ethernet/intel/ice/ice_main.c     |   9 +-
+>  drivers/net/ethernet/intel/ice/ice_ptp.c      |  71 +++++++-
+>  drivers/net/ethernet/intel/ice/ice_ptp_hw.c   | 167 +++++++++++++++++-
+>  drivers/net/ethernet/intel/ice/ice_ptp_hw.h   |   8 +
+>  6 files changed, 262 insertions(+), 7 deletions(-)
+>
 
-Great! That's simpler. I should have something for Jesper to benchmark
-on Monday.
-
-> If you want I can modify my series to use kfunc sto store data after xdp_=
-frame
-> and then you can plug the KV encoding. What do you think? Up to you.
-
-Thanks for the offer! That works for me :)
+Tested-by: Pucha Himasekhar Reddy <himasekharx.reddy.pucha@intel.com> (A Co=
+ntingent worker at Intel)
