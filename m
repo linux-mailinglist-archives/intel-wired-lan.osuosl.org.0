@@ -2,117 +2,100 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 13EEF990A6F
-	for <lists+intel-wired-lan@lfdr.de>; Fri,  4 Oct 2024 19:53:59 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 57038991504
+	for <lists+intel-wired-lan@lfdr.de>; Sat,  5 Oct 2024 08:55:15 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 92DD04021C;
-	Fri,  4 Oct 2024 17:53:57 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 10FAD40181;
+	Sat,  5 Oct 2024 06:55:14 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id FMTR5xsuuA0X; Fri,  4 Oct 2024 17:53:56 +0000 (UTC)
+ id l7habHvZYiuQ; Sat,  5 Oct 2024 06:55:13 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org C39C340423
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 55AD940E27
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1728064435;
-	bh=JrHhw1JiaZd1L+/KyXQwcgkVe1bI00CuH0U1t4rxdlI=;
+	s=default; t=1728111312;
+	bh=ArvFhPVB84Szyek6exCEGBRNdLL+0taOZvT4o43L0F0=;
 	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=xQumx6OHQvWEahr1EQYRnc0Dv1q2bC6EZdc1XutKvysoXPoAsF+qsomrPds/b4tTg
-	 ab+lL/BHZ84yATncQoZTOoqWRm0KRQULRPn91eU5m62hrtBwAwc47fWCtLo55s6P/z
-	 4g5yX9KVKek+4FNwMghcS3GpeOvo+icgoH6M9SJQfpO5SC0Gw+bmRu7V8G+Nn+9To2
-	 z1mRFpqklfSOpr8r6NUL2en3YD5Qwnsn+BrfZVjiYSsFIAGcv261ICsWLnLqOSvbNE
-	 s+plVr9Tn+ppkaeWSyLChdlMBoASRgEVMbAFu5t3CuF2D+Penb323tf+8XZWesJAym
-	 j0rzeRrpu/rRw==
+	b=6MRRxQc/1P7ZWJTH94WnB0O+6Eoc+uy8lZmK5340iwTqfDprHO5yp4pbHzjE1IUuK
+	 ndRAlhy7LCRs/dGIV7uRcwJRdtiAchmdUXrxjBEJi8VJk+urGVBEO1IkWAT8NKeRdb
+	 +vLPvDlukIwZGVaniHXKbv51DKfBhApdHD1uQkZrLBPhLEMLf+0nvGm3ehA0fJrnZh
+	 3QFSU62PGbMFDdfb1lXYfOejeOZlSJUnj/cZoF84yfJa3xvVQwRKdvLMqdVZExvGBI
+	 Bb9dePCbhOeDAY4NT1yEognn7NSQ/prbFnWMtaLiiXLHT8WDba5ZhpU5FnLSrOGs0Z
+	 i1PXA6HPhc6Cg==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id C39C340423;
-	Fri,  4 Oct 2024 17:53:55 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 55AD940E27;
+	Sat,  5 Oct 2024 06:55:12 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id A7A731BF982
- for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Oct 2024 17:53:53 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 3126E1BF2F3
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  5 Oct 2024 06:55:06 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 94B0C406C2
- for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Oct 2024 17:53:53 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 2240640191
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  5 Oct 2024 06:55:06 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 3pn97bPX-Jcx for <intel-wired-lan@lists.osuosl.org>;
- Fri,  4 Oct 2024 17:53:52 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2607:f8b0:4864:20::1033; helo=mail-pj1-x1033.google.com;
- envelope-from=stfomichev@gmail.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 3ACCB406C0
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 3ACCB406C0
-Received: from mail-pj1-x1033.google.com (mail-pj1-x1033.google.com
- [IPv6:2607:f8b0:4864:20::1033])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 3ACCB406C0
- for <intel-wired-lan@lists.osuosl.org>; Fri,  4 Oct 2024 17:53:52 +0000 (UTC)
-Received: by mail-pj1-x1033.google.com with SMTP id
- 98e67ed59e1d1-2e0894f1b14so1865776a91.1
- for <intel-wired-lan@lists.osuosl.org>; Fri, 04 Oct 2024 10:53:52 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1728064431; x=1728669231;
- h=in-reply-to:content-transfer-encoding:content-disposition
- :mime-version:references:message-id:subject:cc:to:from:date
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=JrHhw1JiaZd1L+/KyXQwcgkVe1bI00CuH0U1t4rxdlI=;
- b=n9Z/Ji7GP3Xgg2ZRkCfY0CA5imN+M9tqQLd5alZUfE+5+x7kbmUcWdYnwD7H9+MYX1
- UzaYrRtEFMw9vVnum0BZkg8P8CqvPf/e65pOaw9GmQu2MKjQFK2XIg/JrW3imHS3jM9G
- LkxrIh8Z2v5ilUHX8aBcHBOZ5ijeYgLh3Y5O5Bq/8XP6QJO2x277ZWOyjspMxp0lnz33
- UyE8OptqTCbhMQJfdUoSScSs3V5GxhI4GHP2UW3lJDXTEGfrvyujZR1MiEBWwytEbwi9
- 9qcDiTFfp49lmsNjscXI4vii2Wrr7NS1FrwZ1WkVxjjsn33GVVh4z+LpBCM8GwsEGWGn
- EOwA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCW/LvoCQ/SWkkFBwGNwfy3qs43Try1LCxtk/SBgtJsaUA51E5/5GYwnam+3xM5vwVROrNL+gdunZhdt5F9Ptu8=@lists.osuosl.org
-X-Gm-Message-State: AOJu0Yxb/CxYPVZgLfCb7H9agNmm9MmNuko2p48cTEy5EPs2mG+Eor4u
- rGseiHk1fSkMYjv800y8dpZCh2BTXEO2lnx1cQGWwhecIglQSeI=
-X-Google-Smtp-Source: AGHT+IETxvqfT3O6Nss0LDaANw71BycqWmkZxK4x4rCcdRphpBZeZFc9IQK4yBpYhzzsWPYzF9wmzQ==
-X-Received: by 2002:a17:90b:17c8:b0:2c3:2557:3de8 with SMTP id
- 98e67ed59e1d1-2e1e638d03dmr4260896a91.33.1728064431360; 
- Fri, 04 Oct 2024 10:53:51 -0700 (PDT)
-Received: from localhost ([2601:646:9e00:f56e:123b:cea3:439a:b3e3])
- by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-2e20b0f6467sm192816a91.45.2024.10.04.10.53.50
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 04 Oct 2024 10:53:50 -0700 (PDT)
-Date: Fri, 4 Oct 2024 10:53:50 -0700
-From: Stanislav Fomichev <stfomichev@gmail.com>
-To: Jesper Dangaard Brouer <hawk@kernel.org>
-Message-ID: <ZwArrsqrYx7IM5tq@mini-arch>
-References: <D4KJ7DUXJQC5.2UFST9L3CUOH7@bobby> <ZvwNQqN4gez1Ksfn@lore-desk>
- <87zfnnq2hs.fsf@toke.dk> <Zv18pxsiTGTZSTyO@mini-arch>
- <87ttdunydz.fsf@toke.dk> <Zv3N5G8swr100EXm@mini-arch>
- <D4LYNKGLE7G0.3JAN5MX1ATPTB@bobby> <Zv794Ot-kOq1pguM@mini-arch>
- <2fy5vuewgwkh3o3mx5v4bkrzu6josqylraa4ocgzqib6a7ozt4@hwsuhcibtcb6>
- <038fffa3-1e29-4c6d-9e27-8181865dca46@kernel.org>
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id fIiKQFDWtoN8 for <intel-wired-lan@lists.osuosl.org>;
+ Sat,  5 Oct 2024 06:55:04 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.18;
+ helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org B84F54010C
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B84F54010C
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.18])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id B84F54010C
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  5 Oct 2024 06:55:02 +0000 (UTC)
+X-CSE-ConnectionGUID: 11fVgni8Suy+ec0oMjGRFA==
+X-CSE-MsgGUID: HuRmNnRSR0WHpgMcey9WBA==
+X-IronPort-AV: E=McAfee;i="6700,10204,11215"; a="27467350"
+X-IronPort-AV: E=Sophos;i="6.11,179,1725346800"; d="scan'208";a="27467350"
+Received: from fmviesa001.fm.intel.com ([10.60.135.141])
+ by orvoesa110.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 04 Oct 2024 23:55:02 -0700
+X-CSE-ConnectionGUID: 5OShleAyRVCjkykQdK3TUw==
+X-CSE-MsgGUID: bYXVGoUASe6Jr4RfSnSvqA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.11,179,1725346800"; d="scan'208";a="105684427"
+Received: from lkp-server01.sh.intel.com (HELO a48cf1aa22e8) ([10.239.97.150])
+ by fmviesa001.fm.intel.com with ESMTP; 04 Oct 2024 23:54:59 -0700
+Received: from kbuild by a48cf1aa22e8 with local (Exim 4.96)
+ (envelope-from <lkp@intel.com>) id 1swygr-0002hS-1c;
+ Sat, 05 Oct 2024 06:54:57 +0000
+Date: Sat, 5 Oct 2024 14:54:07 +0800
+From: kernel test robot <lkp@intel.com>
+To: Karol Kolacinski <karol.kolacinski@intel.com>,
+ intel-wired-lan@lists.osuosl.org
+Message-ID: <202410051435.O9bgxFKe-lkp@intel.com>
+References: <20241004064733.1362850-2-karol.kolacinski@intel.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <038fffa3-1e29-4c6d-9e27-8181865dca46@kernel.org>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1728064431; x=1728669231; darn=lists.osuosl.org;
- h=in-reply-to:content-transfer-encoding:content-disposition
- :mime-version:references:message-id:subject:cc:to:from:date:from:to
- :cc:subject:date:message-id:reply-to;
- bh=JrHhw1JiaZd1L+/KyXQwcgkVe1bI00CuH0U1t4rxdlI=;
- b=VfyQGkT0pChTB0kgPD9DaRsUy2OWxRTm1u2OqkFSuWTB/rPwnWocHDgftJZpKOufWV
- Ze8EwZbDiF9nNsrfFhkiwl1FBpIsSrN6ynuAaxKUSlPUvq6DMsx0Xayc+JlazOGiLbQB
- 2xEhXLBrIvbymjlhqCdGDPiYjkqNRHvjkg8fsLlcRgOivjP7mPw9zayUjUvFFTBlw77C
- 8KO3ADE0qkokPQm6juimWx+633hoC7V6HTcYKxjLA/OWduPGjyqWberliUd3MSuAGjvs
- SaEACtTr5cuCQDgx2B3iQcAPCfvLRc77E6Q+AmcHJA3fCwgk0FmZKD4kQ6nLkn87iQAm
- jYLQ==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+In-Reply-To: <20241004064733.1362850-2-karol.kolacinski@intel.com>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1728111303; x=1759647303;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:in-reply-to;
+ bh=arrPmPGvHlFX5GdvlfnFtQchw1f5aiMJFlUVQgbNQYE=;
+ b=MXzENQZ+ywxUfR5jOb73BQCfI6QrpLkjxFsj7yVaZnUyySTTYDOG4Os4
+ 6ouBjQsKVQAujOu/D5CSteTBMwDYDAEIekZMW4Wbir9igj2jYw5V52e1k
+ Lcm1YnHyWmTcMgJAZwOP5Kt/D8ObGe6HUyVf2VrYxElOFca7rY8Z+KFkr
+ s6GHmi/c3ROnViydi7YRcc4Tt707GU/r1RFaqYOOU/75dFyyVKTR8ZhCG
+ bcN/yL1flMr4oQBSiyJI2Z2HXkauFm/f5brMeaxTPG5nIVBYvwbi9dw8a
+ R7GGLZw5X8pjyH3EA/sLE+TZOkhzXSY5lEjuVWZnY2ufqDwXizyvEC4Lb
+ g==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=gmail.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
- header.a=rsa-sha256 header.s=20230601 header.b=VfyQGkT0
-Subject: Re: [Intel-wired-lan] [RFC bpf-next 0/4] Add XDP rx hw hints
- support performing XDP_REDIRECT
+ header.from=intel.com
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=MXzENQZ+
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next] ice: Add in/out PTP pin
+ delays
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -125,122 +108,129 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: mst@redhat.com, jasowang@redhat.com, ast@kernel.org, edumazet@google.com,
- anthony.l.nguyen@intel.com, Jakub Sitnicki <jakub@cloudflare.com>,
- daniel@iogearbox.net, kernel-team <kernel-team@cloudflare.com>,
- przemyslaw.kitszel@intel.com, john.fastabend@gmail.com, sdf@fomichev.me,
- intel-wired-lan@lists.osuosl.org, kuba@kernel.org, pabeni@redhat.com,
- Lorenzo Bianconi <lorenzo@kernel.org>, Yan Zhai <yan@cloudflare.com>,
- alexandre.torgue@foss.st.com, Daniel Xu <dxu@dxuuu.xyz>,
- Arthur Fabre <afabre@cloudflare.com>, netdev@vger.kernel.org,
- Toke =?utf-8?Q?H=C3=B8iland-J=C3=B8rgensen?= <toke@redhat.com>,
- tariqt@nvidia.com, Alexander Lobakin <aleksander.lobakin@intel.com>,
- mcoquelin.stm32@gmail.com, bpf@vger.kernel.org, saeedm@nvidia.com,
- davem@davemloft.net
+Cc: oe-kbuild-all@lists.linux.dev, netdev@vger.kernel.org, llvm@lists.linux.dev,
+ Karol Kolacinski <karol.kolacinski@intel.com>, anthony.l.nguyen@intel.com,
+ przemyslaw.kitszel@intel.com
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 10/04, Jesper Dangaard Brouer wrote:
-> 
-> 
-> On 04/10/2024 04.13, Daniel Xu wrote:
-> > On Thu, Oct 03, 2024 at 01:26:08PM GMT, Stanislav Fomichev wrote:
-> > > On 10/03, Arthur Fabre wrote:
-> > > > On Thu Oct 3, 2024 at 12:49 AM CEST, Stanislav Fomichev wrote:
-> > > > > On 10/02, Toke Høiland-Jørgensen wrote:
-> > > > > > Stanislav Fomichev <stfomichev@gmail.com> writes:
-> > > > > > 
-> > > > > > > On 10/01, Toke Høiland-Jørgensen wrote:
-> > > > > > > > Lorenzo Bianconi <lorenzo@kernel.org> writes:
-> > > > > > > > 
-> > > > > > > > > > On Mon Sep 30, 2024 at 1:49 PM CEST, Lorenzo Bianconi wrote:
-> > > > > > > > > > > > Lorenzo Bianconi <lorenzo@kernel.org> writes:
-> > > > > > > > > > > > 
-> [...]
-> > > > > > > > > > > > > 
-> > > > > > > > > > > > > I like this 'fast' KV approach but I guess we should really evaluate its
-> > > > > > > > > > > > > impact on performances (especially for xdp) since, based on the kfunc calls
-> > > > > > > > > > > > > order in the ebpf program, we can have one or multiple memmove/memcpy for
-> > > > > > > > > > > > > each packet, right?
-> > > > > > > > > > > > 
-> > > > > > > > > > > > Yes, with Arthur's scheme, performance will be ordering dependent. Using
-> 
-> I really like the *compact* Key-Value (KV) store idea from Arthur.
->  - The question is it is fast enough?
-> 
-> I've promised Arthur to XDP micro-benchmark this, if he codes this up to
-> be usable in the XDP code path.  Listening to the LPC recording I heard
-> that Alexei also saw potential and other use-case for this kind of
-> fast-and-compact KV approach.
-> 
-> I have high hopes for the performance, as Arthur uses POPCNT instruction
-> which is *very* fast[1]. I checked[2] AMD Zen 3 and 4 have Ops/Latency=1
-> and Reciprocal throughput 0.25.
-> 
->  [1] https://www.agner.org/optimize/blog/read.php?i=853#848
->  [2] https://www.agner.org/optimize/instruction_tables.pdf
-> 
-> [...]
-> > > > There are two different use-cases for the metadata:
-> > > > 
-> > > > * "Hardware" metadata (like the hash, rx_timestamp...). There are only a
-> > > >    few well known fields, and only XDP can access them to set them as
-> > > >    metadata, so storing them in a struct somewhere could make sense.
-> > > > 
-> > > > * Arbitrary metadata used by services. Eg a TC filter could set a field
-> > > >    describing which service a packet is for, and that could be reused for
-> > > >    iptables, routing, socket dispatch...
-> > > >    Similarly we could set a "packet_id" field that uniquely identifies a
-> > > >    packet so we can trace it throughout the network stack (through
-> > > >    clones, encap, decap, userspace services...).
-> > > >    The skb->mark, but with more room, and better support for sharing it.
-> > > > 
-> > > > We can only know the layout ahead of time for the first one. And they're
-> > > > similar enough in their requirements (need to be stored somewhere in the
-> > > > SKB, have a way of retrieving each one individually, that it seems to
-> > > > make sense to use a common API).
-> > > 
-> > > Why not have the following layout then?
-> > > 
-> > > +---------------+-------------------+----------------------------------------+------+
-> > > | more headroom | user-defined meta | hw-meta (potentially fixed skb format) | data |
-> > > +---------------+-------------------+----------------------------------------+------+
-> > >                  ^                                                            ^
-> > >              data_meta                                                      data
-> > > 
-> > > You obviously still have a problem of communicating the layout if you
-> > > have some redirects in between, but you, in theory still have this
-> > > problem with user-defined metadata anyway (unless I'm missing
-> > > something).
-> > > 
-> 
-> Hmm, I think you are missing something... As far as I'm concerned we are
-> discussing placing the KV data after the xdp_frame, and not in the XDP
-> data_meta area (as your drawing suggests).  The xdp_frame is stored at
-> the very top of the headroom.  Lorenzo's patchset is extending struct
-> xdp_frame and now we are discussing to we can make a more flexible API
-> for extending this. I understand that Toke confirmed this here [3].  Let
-> me know if I missed something :-)
-> 
->  [3] https://lore.kernel.org/all/874j62u1lb.fsf@toke.dk/
->
-> As part of designing this flexible API, we/Toke are trying hard not to
-> tie this to a specific data area.  This is a good API design, keeping it
-> flexible enough that we can move things around should the need arise.
-> 
-> I don't think it is viable to store this KV data in XDP data_meta area,
-> because existing BPF-prog's already have direct memory (write) access
-> and can change size of area, which creates too much headache with
-> (existing) BPF-progs creating unintentional breakage for the KV store,
-> which would then need extensive checks to handle random corruptions
-> (slowing down KV-store code).
+Hi Karol,
 
-Yes, I'm definitely missing the bigger picture. If we want to have a global
-metadata registry in the kernel, why can't it be built on top of the existing
-area? Have some control api to define the layout and some new api to attach
-the layout id to the xdp_frame. And one of those layouts might be
-the xdp->skb one (although, for performance sake, still makes more sense
-to special case xdp->skb one rather than asking the kernel to parse the kv
-layout definition).
+kernel test robot noticed the following build errors:
 
-But I'm happy to wait for the v2 and re-read the cover letter :-)
+[auto build test ERROR on f2589ad16e14b7102f1411e3385a2abf07076406]
+
+url:    https://github.com/intel-lab-lkp/linux/commits/Karol-Kolacinski/ice-Add-in-out-PTP-pin-delays/20241004-144802
+base:   f2589ad16e14b7102f1411e3385a2abf07076406
+patch link:    https://lore.kernel.org/r/20241004064733.1362850-2-karol.kolacinski%40intel.com
+patch subject: [PATCH iwl-next] ice: Add in/out PTP pin delays
+config: x86_64-allyesconfig (https://download.01.org/0day-ci/archive/20241005/202410051435.O9bgxFKe-lkp@intel.com/config)
+compiler: clang version 18.1.8 (https://github.com/llvm/llvm-project 3b5b5c1ec4a3095ab096dd780e84d7ab81f3d7ff)
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20241005/202410051435.O9bgxFKe-lkp@intel.com/reproduce)
+
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202410051435.O9bgxFKe-lkp@intel.com/
+
+All errors (new ones prefixed by >>):
+
+>> drivers/net/ethernet/intel/ice/ice_ptp.c:1784:15: error: redefinition of 'gpio_pin'
+    1784 |         unsigned int gpio_pin;
+         |                      ^
+   drivers/net/ethernet/intel/ice/ice_ptp.c:1781:15: note: previous definition is here
+    1781 |         unsigned int gpio_pin, prop_delay;
+         |                      ^
+   1 error generated.
+--
+>> drivers/net/ethernet/intel/ice/ice_ptp_hw.c:5033:29: error: use of undeclared identifier 'ICE_E810_E830_SYNC_DELAY'
+    5033 |         ice_ptp_cfg_sync_delay(hw, ICE_E810_E830_SYNC_DELAY);
+         |                                    ^
+   drivers/net/ethernet/intel/ice/ice_ptp_hw.c:5341:29: error: use of undeclared identifier 'ICE_E810_E830_SYNC_DELAY'
+    5341 |         ice_ptp_cfg_sync_delay(hw, ICE_E810_E830_SYNC_DELAY);
+         |                                    ^
+   2 errors generated.
+
+Kconfig warnings: (for reference only)
+   WARNING: unmet direct dependencies detected for MODVERSIONS
+   Depends on [n]: MODULES [=y] && !COMPILE_TEST [=y]
+   Selected by [y]:
+   - RANDSTRUCT_FULL [=y] && (CC_HAS_RANDSTRUCT [=y] || GCC_PLUGINS [=n]) && MODULES [=y]
+
+
+vim +/gpio_pin +1784 drivers/net/ethernet/intel/ice/ice_ptp.c
+
+172db5f91d5f7b Maciej Machnikowski 2021-06-16  1766  
+5a078a58ade86d Karol Kolacinski    2024-08-30  1767  /**
+5a078a58ade86d Karol Kolacinski    2024-08-30  1768   * ice_ptp_cfg_perout - Configure clock to generate periodic wave
+5a078a58ade86d Karol Kolacinski    2024-08-30  1769   * @pf: Board private structure
+5a078a58ade86d Karol Kolacinski    2024-08-30  1770   * @rq: Periodic output request
+5a078a58ade86d Karol Kolacinski    2024-08-30  1771   * @on: Enable/disable flag
+5a078a58ade86d Karol Kolacinski    2024-08-30  1772   *
+5a078a58ade86d Karol Kolacinski    2024-08-30  1773   * Configure the internal clock generator modules to generate the clock wave of
+5a078a58ade86d Karol Kolacinski    2024-08-30  1774   * specified period.
+5a078a58ade86d Karol Kolacinski    2024-08-30  1775   *
+5a078a58ade86d Karol Kolacinski    2024-08-30  1776   * Return: 0 on success, negative error code otherwise
+5a078a58ade86d Karol Kolacinski    2024-08-30  1777   */
+5a078a58ade86d Karol Kolacinski    2024-08-30  1778  static int ice_ptp_cfg_perout(struct ice_pf *pf, struct ptp_perout_request *rq,
+5a078a58ade86d Karol Kolacinski    2024-08-30  1779  			      int on)
+5a078a58ade86d Karol Kolacinski    2024-08-30  1780  {
+718647161517f7 Karol Kolacinski    2024-10-04  1781  	unsigned int gpio_pin, prop_delay;
+5a078a58ade86d Karol Kolacinski    2024-08-30  1782  	u64 clk, period, start, phase;
+5a078a58ade86d Karol Kolacinski    2024-08-30  1783  	struct ice_hw *hw = &pf->hw;
+5a078a58ade86d Karol Kolacinski    2024-08-30 @1784  	unsigned int gpio_pin;
+5a078a58ade86d Karol Kolacinski    2024-08-30  1785  	int pin_desc_idx;
+5a078a58ade86d Karol Kolacinski    2024-08-30  1786  
+5a078a58ade86d Karol Kolacinski    2024-08-30  1787  	if (rq->flags & ~PTP_PEROUT_PHASE)
+5a078a58ade86d Karol Kolacinski    2024-08-30  1788  		return -EOPNOTSUPP;
+5a078a58ade86d Karol Kolacinski    2024-08-30  1789  
+5a078a58ade86d Karol Kolacinski    2024-08-30  1790  	pin_desc_idx = ice_ptp_find_pin_idx(pf, PTP_PF_PEROUT, rq->index);
+5a078a58ade86d Karol Kolacinski    2024-08-30  1791  	if (pin_desc_idx < 0)
+5a078a58ade86d Karol Kolacinski    2024-08-30  1792  		return -EIO;
+5a078a58ade86d Karol Kolacinski    2024-08-30  1793  
+5a078a58ade86d Karol Kolacinski    2024-08-30  1794  	gpio_pin = pf->ptp.ice_pin_desc[pin_desc_idx].gpio[1];
+718647161517f7 Karol Kolacinski    2024-10-04  1795  	prop_delay = pf->ptp.ice_pin_desc[pin_desc_idx].delay[1];
+5a078a58ade86d Karol Kolacinski    2024-08-30  1796  	period = rq->period.sec * NSEC_PER_SEC + rq->period.nsec;
+5a078a58ade86d Karol Kolacinski    2024-08-30  1797  
+5a078a58ade86d Karol Kolacinski    2024-08-30  1798  	/* If we're disabling the output or period is 0, clear out CLKO and TGT
+5a078a58ade86d Karol Kolacinski    2024-08-30  1799  	 * and keep output level low.
+5a078a58ade86d Karol Kolacinski    2024-08-30  1800  	 */
+5a078a58ade86d Karol Kolacinski    2024-08-30  1801  	if (!on || !period)
+5a078a58ade86d Karol Kolacinski    2024-08-30  1802  		return ice_ptp_write_perout(hw, rq->index, gpio_pin, 0, 0);
+5a078a58ade86d Karol Kolacinski    2024-08-30  1803  
+5a078a58ade86d Karol Kolacinski    2024-08-30  1804  	if (strncmp(pf->ptp.pin_desc[pin_desc_idx].name, "1PPS", 64) == 0 &&
+001459cacff09e Karol Kolacinski    2024-09-30  1805  	    period != NSEC_PER_SEC && hw->mac_type == ICE_MAC_GENERIC) {
+5a078a58ade86d Karol Kolacinski    2024-08-30  1806  		dev_err(ice_pf_to_dev(pf), "1PPS pin supports only 1 s period\n");
+5a078a58ade86d Karol Kolacinski    2024-08-30  1807  		return -EOPNOTSUPP;
+5a078a58ade86d Karol Kolacinski    2024-08-30  1808  	}
+5a078a58ade86d Karol Kolacinski    2024-08-30  1809  
+5a078a58ade86d Karol Kolacinski    2024-08-30  1810  	if (period & 0x1) {
+5a078a58ade86d Karol Kolacinski    2024-08-30  1811  		dev_err(ice_pf_to_dev(pf), "CLK Period must be an even value\n");
+5a078a58ade86d Karol Kolacinski    2024-08-30  1812  		return -EIO;
+5a078a58ade86d Karol Kolacinski    2024-08-30  1813  	}
+5a078a58ade86d Karol Kolacinski    2024-08-30  1814  
+5a078a58ade86d Karol Kolacinski    2024-08-30  1815  	start = rq->start.sec * NSEC_PER_SEC + rq->start.nsec;
+5a078a58ade86d Karol Kolacinski    2024-08-30  1816  
+5a078a58ade86d Karol Kolacinski    2024-08-30  1817  	/* If PTP_PEROUT_PHASE is set, rq has phase instead of start time */
+5a078a58ade86d Karol Kolacinski    2024-08-30  1818  	if (rq->flags & PTP_PEROUT_PHASE)
+5a078a58ade86d Karol Kolacinski    2024-08-30  1819  		phase = start;
+5a078a58ade86d Karol Kolacinski    2024-08-30  1820  	else
+5a078a58ade86d Karol Kolacinski    2024-08-30  1821  		div64_u64_rem(start, period, &phase);
+5a078a58ade86d Karol Kolacinski    2024-08-30  1822  
+5a078a58ade86d Karol Kolacinski    2024-08-30  1823  	/* If we have only phase or start time is in the past, start the timer
+5a078a58ade86d Karol Kolacinski    2024-08-30  1824  	 * at the next multiple of period, maintaining phase.
+5a078a58ade86d Karol Kolacinski    2024-08-30  1825  	 */
+5a078a58ade86d Karol Kolacinski    2024-08-30  1826  	clk = ice_ptp_read_src_clk_reg(pf, NULL);
+718647161517f7 Karol Kolacinski    2024-10-04  1827  	if (rq->flags & PTP_PEROUT_PHASE || start <= clk - prop_delay)
+5a078a58ade86d Karol Kolacinski    2024-08-30  1828  		start = div64_u64(clk + period - 1, period) * period + phase;
+5a078a58ade86d Karol Kolacinski    2024-08-30  1829  
+5a078a58ade86d Karol Kolacinski    2024-08-30  1830  	/* Compensate for propagation delay from the generator to the pin. */
+718647161517f7 Karol Kolacinski    2024-10-04  1831  	start -= prop_delay;
+5a078a58ade86d Karol Kolacinski    2024-08-30  1832  
+5a078a58ade86d Karol Kolacinski    2024-08-30  1833  	return ice_ptp_write_perout(hw, rq->index, gpio_pin, start, period);
+172db5f91d5f7b Maciej Machnikowski 2021-06-16  1834  }
+172db5f91d5f7b Maciej Machnikowski 2021-06-16  1835  
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
