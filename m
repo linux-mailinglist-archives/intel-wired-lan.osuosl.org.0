@@ -2,73 +2,73 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 57038991504
-	for <lists+intel-wired-lan@lfdr.de>; Sat,  5 Oct 2024 08:55:15 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id B6235991500
+	for <lists+intel-wired-lan@lfdr.de>; Sat,  5 Oct 2024 08:55:10 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 10FAD40181;
-	Sat,  5 Oct 2024 06:55:14 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 9924C40526;
+	Sat,  5 Oct 2024 06:55:07 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id l7habHvZYiuQ; Sat,  5 Oct 2024 06:55:13 +0000 (UTC)
+ id 1sN-rqiiySWo; Sat,  5 Oct 2024 06:55:06 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 55AD940E27
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 2B35940454
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1728111312;
-	bh=ArvFhPVB84Szyek6exCEGBRNdLL+0taOZvT4o43L0F0=;
+	s=default; t=1728111306;
+	bh=L/lpA9KJPl1YJydFyQ4K0Wi+6Yx7t5YnJyhb5GR3k40=;
 	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=6MRRxQc/1P7ZWJTH94WnB0O+6Eoc+uy8lZmK5340iwTqfDprHO5yp4pbHzjE1IUuK
-	 ndRAlhy7LCRs/dGIV7uRcwJRdtiAchmdUXrxjBEJi8VJk+urGVBEO1IkWAT8NKeRdb
-	 +vLPvDlukIwZGVaniHXKbv51DKfBhApdHD1uQkZrLBPhLEMLf+0nvGm3ehA0fJrnZh
-	 3QFSU62PGbMFDdfb1lXYfOejeOZlSJUnj/cZoF84yfJa3xvVQwRKdvLMqdVZExvGBI
-	 Bb9dePCbhOeDAY4NT1yEognn7NSQ/prbFnWMtaLiiXLHT8WDba5ZhpU5FnLSrOGs0Z
-	 i1PXA6HPhc6Cg==
+	b=cr+Y72Sh9Kj17fSxsFk6fxmm3NGl8/NJVxWakSgndBT6f0r/gqNAH39uK300Hnefs
+	 WwBom+TFR064cXpU0tm3jw/cFDT7rWwJ4PcaMaYJsAYcL9q3YNpuuzq3lMJoRtzWvk
+	 HjVdOn1ziSvhSjE+GNKvanyjoprDBnKq53IAaKuxx9S9mrjw4XI6di6u8eSYSf7shH
+	 pYFEqFPI30ePJAYqf2XPHXEHdcF7iFTa2Q936a9ONWxwJP7+www8w/21bdQBtbIZuG
+	 UUqmx21iEgPQQYdA/XTG2B2HByFxOIPqnRj93Uyw4Dajp4WtNIWKlYJawcV/WMljm6
+	 cyLKaYM/pBYtw==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 55AD940E27;
-	Sat,  5 Oct 2024 06:55:12 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 2B35940454;
+	Sat,  5 Oct 2024 06:55:06 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 3126E1BF2F3
- for <intel-wired-lan@lists.osuosl.org>; Sat,  5 Oct 2024 06:55:06 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+ by ash.osuosl.org (Postfix) with ESMTP id 54D651BF2F3
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  5 Oct 2024 06:55:04 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 2240640191
- for <intel-wired-lan@lists.osuosl.org>; Sat,  5 Oct 2024 06:55:06 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 4312C81453
+ for <intel-wired-lan@lists.osuosl.org>; Sat,  5 Oct 2024 06:55:04 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id fIiKQFDWtoN8 for <intel-wired-lan@lists.osuosl.org>;
- Sat,  5 Oct 2024 06:55:04 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.18;
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id Nb0-ywnN_HUf for <intel-wired-lan@lists.osuosl.org>;
+ Sat,  5 Oct 2024 06:55:03 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.12;
  helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org B84F54010C
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org B84F54010C
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.18])
- by smtp2.osuosl.org (Postfix) with ESMTPS id B84F54010C
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org B7FC58124B
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B7FC58124B
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.12])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id B7FC58124B
  for <intel-wired-lan@lists.osuosl.org>; Sat,  5 Oct 2024 06:55:02 +0000 (UTC)
-X-CSE-ConnectionGUID: 11fVgni8Suy+ec0oMjGRFA==
-X-CSE-MsgGUID: HuRmNnRSR0WHpgMcey9WBA==
-X-IronPort-AV: E=McAfee;i="6700,10204,11215"; a="27467350"
-X-IronPort-AV: E=Sophos;i="6.11,179,1725346800"; d="scan'208";a="27467350"
-Received: from fmviesa001.fm.intel.com ([10.60.135.141])
- by orvoesa110.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+X-CSE-ConnectionGUID: 5yyE/8k+ScyvY17ctmvevA==
+X-CSE-MsgGUID: fOTJRlVoRwCCGiIqRScT/A==
+X-IronPort-AV: E=McAfee;i="6700,10204,11215"; a="38724273"
+X-IronPort-AV: E=Sophos;i="6.11,179,1725346800"; d="scan'208";a="38724273"
+Received: from orviesa009.jf.intel.com ([10.64.159.149])
+ by orvoesa104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
  04 Oct 2024 23:55:02 -0700
-X-CSE-ConnectionGUID: 5OShleAyRVCjkykQdK3TUw==
-X-CSE-MsgGUID: bYXVGoUASe6Jr4RfSnSvqA==
+X-CSE-ConnectionGUID: XnEwvlP9S8yUlVVimWJ/0g==
+X-CSE-MsgGUID: vV05ennSQ9KU8HWNTAfVxw==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.11,179,1725346800"; d="scan'208";a="105684427"
+X-IronPort-AV: E=Sophos;i="6.11,179,1725346800"; d="scan'208";a="74907373"
 Received: from lkp-server01.sh.intel.com (HELO a48cf1aa22e8) ([10.239.97.150])
- by fmviesa001.fm.intel.com with ESMTP; 04 Oct 2024 23:54:59 -0700
+ by orviesa009.jf.intel.com with ESMTP; 04 Oct 2024 23:55:00 -0700
 Received: from kbuild by a48cf1aa22e8 with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1swygr-0002hS-1c;
+ (envelope-from <lkp@intel.com>) id 1swygr-0002hP-1Y;
  Sat, 05 Oct 2024 06:54:57 +0000
-Date: Sat, 5 Oct 2024 14:54:07 +0800
+Date: Sat, 5 Oct 2024 14:54:09 +0800
 From: kernel test robot <lkp@intel.com>
 To: Karol Kolacinski <karol.kolacinski@intel.com>,
  intel-wired-lan@lists.osuosl.org
-Message-ID: <202410051435.O9bgxFKe-lkp@intel.com>
+Message-ID: <202410051418.lLY7SXXp-lkp@intel.com>
 References: <20241004064733.1362850-2-karol.kolacinski@intel.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
@@ -76,24 +76,24 @@ Content-Disposition: inline
 In-Reply-To: <20241004064733.1362850-2-karol.kolacinski@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1728111303; x=1759647303;
+ t=1728111302; x=1759647302;
  h=date:from:to:cc:subject:message-id:references:
  mime-version:in-reply-to;
- bh=arrPmPGvHlFX5GdvlfnFtQchw1f5aiMJFlUVQgbNQYE=;
- b=MXzENQZ+ywxUfR5jOb73BQCfI6QrpLkjxFsj7yVaZnUyySTTYDOG4Os4
- 6ouBjQsKVQAujOu/D5CSteTBMwDYDAEIekZMW4Wbir9igj2jYw5V52e1k
- Lcm1YnHyWmTcMgJAZwOP5Kt/D8ObGe6HUyVf2VrYxElOFca7rY8Z+KFkr
- s6GHmi/c3ROnViydi7YRcc4Tt707GU/r1RFaqYOOU/75dFyyVKTR8ZhCG
- bcN/yL1flMr4oQBSiyJI2Z2HXkauFm/f5brMeaxTPG5nIVBYvwbi9dw8a
- R7GGLZw5X8pjyH3EA/sLE+TZOkhzXSY5lEjuVWZnY2ufqDwXizyvEC4Lb
- g==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ bh=gAxSir66pjUkLrR2v3FQvq9A3ljFvlMTr5inGp6EPCI=;
+ b=EBWc+SsIDJNnqsNjTgL6daRO2i1k64urDVkXJbmE7lwuUwSS2EPRA+Qd
+ bNphG8KhqbHNoi2wvcULf9vDxpaoGLyl3PVBDkzSlKI6ogf8p3UsxQJSx
+ 1fGpSOwByZSPGHDMNQqG7vmAfSYL5bcxV/iXpxqdHXyebBMDXp1JVKOWT
+ m7N4WvBCxUlN95M/Jlr0NADgHRavHcoVyTWRJieyJzE8ex664q0lm51rw
+ aqiWXcnErIJ6iKxN9MSGCtvjXF7en+RBCb42ajr6NUhfe0rLUhXm5zTpH
+ P2YIX8HaYLwS4jaiyBk7iIZ31RCV4hJEVkc4kvCvfvtC3zORdr2dplQlI
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=MXzENQZ+
+ header.s=Intel header.b=EBWc+SsI
 Subject: Re: [Intel-wired-lan] [PATCH iwl-next] ice: Add in/out PTP pin
  delays
 X-BeenThere: intel-wired-lan@osuosl.org
@@ -108,9 +108,9 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: oe-kbuild-all@lists.linux.dev, netdev@vger.kernel.org, llvm@lists.linux.dev,
- Karol Kolacinski <karol.kolacinski@intel.com>, anthony.l.nguyen@intel.com,
- przemyslaw.kitszel@intel.com
+Cc: netdev@vger.kernel.org, Karol Kolacinski <karol.kolacinski@intel.com>,
+ anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com,
+ oe-kbuild-all@lists.linux.dev
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
@@ -124,38 +124,34 @@ url:    https://github.com/intel-lab-lkp/linux/commits/Karol-Kolacinski/ice-Add-
 base:   f2589ad16e14b7102f1411e3385a2abf07076406
 patch link:    https://lore.kernel.org/r/20241004064733.1362850-2-karol.kolacinski%40intel.com
 patch subject: [PATCH iwl-next] ice: Add in/out PTP pin delays
-config: x86_64-allyesconfig (https://download.01.org/0day-ci/archive/20241005/202410051435.O9bgxFKe-lkp@intel.com/config)
-compiler: clang version 18.1.8 (https://github.com/llvm/llvm-project 3b5b5c1ec4a3095ab096dd780e84d7ab81f3d7ff)
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20241005/202410051435.O9bgxFKe-lkp@intel.com/reproduce)
+config: alpha-allyesconfig (https://download.01.org/0day-ci/archive/20241005/202410051418.lLY7SXXp-lkp@intel.com/config)
+compiler: alpha-linux-gcc (GCC) 13.3.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20241005/202410051418.lLY7SXXp-lkp@intel.com/reproduce)
 
 If you fix the issue in a separate patch/commit (i.e. not just a new version of
 the same patch/commit), kindly add following tags
 | Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202410051435.O9bgxFKe-lkp@intel.com/
+| Closes: https://lore.kernel.org/oe-kbuild-all/202410051418.lLY7SXXp-lkp@intel.com/
 
 All errors (new ones prefixed by >>):
 
->> drivers/net/ethernet/intel/ice/ice_ptp.c:1784:15: error: redefinition of 'gpio_pin'
+   drivers/net/ethernet/intel/ice/ice_ptp.c: In function 'ice_ptp_cfg_perout':
+>> drivers/net/ethernet/intel/ice/ice_ptp.c:1784:22: error: redeclaration of 'gpio_pin' with no linkage
     1784 |         unsigned int gpio_pin;
-         |                      ^
-   drivers/net/ethernet/intel/ice/ice_ptp.c:1781:15: note: previous definition is here
+         |                      ^~~~~~~~
+   drivers/net/ethernet/intel/ice/ice_ptp.c:1781:22: note: previous declaration of 'gpio_pin' with type 'unsigned int'
     1781 |         unsigned int gpio_pin, prop_delay;
-         |                      ^
-   1 error generated.
+         |                      ^~~~~~~~
 --
->> drivers/net/ethernet/intel/ice/ice_ptp_hw.c:5033:29: error: use of undeclared identifier 'ICE_E810_E830_SYNC_DELAY'
+   drivers/net/ethernet/intel/ice/ice_ptp_hw.c: In function 'ice_ptp_init_phc_e810':
+>> drivers/net/ethernet/intel/ice/ice_ptp_hw.c:5033:36: error: 'ICE_E810_E830_SYNC_DELAY' undeclared (first use in this function)
     5033 |         ice_ptp_cfg_sync_delay(hw, ICE_E810_E830_SYNC_DELAY);
-         |                                    ^
-   drivers/net/ethernet/intel/ice/ice_ptp_hw.c:5341:29: error: use of undeclared identifier 'ICE_E810_E830_SYNC_DELAY'
+         |                                    ^~~~~~~~~~~~~~~~~~~~~~~~
+   drivers/net/ethernet/intel/ice/ice_ptp_hw.c:5033:36: note: each undeclared identifier is reported only once for each function it appears in
+   drivers/net/ethernet/intel/ice/ice_ptp_hw.c: In function 'ice_ptp_init_phc_e830':
+   drivers/net/ethernet/intel/ice/ice_ptp_hw.c:5341:36: error: 'ICE_E810_E830_SYNC_DELAY' undeclared (first use in this function)
     5341 |         ice_ptp_cfg_sync_delay(hw, ICE_E810_E830_SYNC_DELAY);
-         |                                    ^
-   2 errors generated.
-
-Kconfig warnings: (for reference only)
-   WARNING: unmet direct dependencies detected for MODVERSIONS
-   Depends on [n]: MODULES [=y] && !COMPILE_TEST [=y]
-   Selected by [y]:
-   - RANDSTRUCT_FULL [=y] && (CC_HAS_RANDSTRUCT [=y] || GCC_PLUGINS [=n]) && MODULES [=y]
+         |                                    ^~~~~~~~~~~~~~~~~~~~~~~~
 
 
 vim +/gpio_pin +1784 drivers/net/ethernet/intel/ice/ice_ptp.c
