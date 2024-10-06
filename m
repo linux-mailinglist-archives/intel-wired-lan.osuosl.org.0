@@ -2,94 +2,89 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 78934992DAD
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  7 Oct 2024 15:48:11 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id CC01099302F
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  7 Oct 2024 16:57:03 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 22DD380DD8;
-	Mon,  7 Oct 2024 13:48:10 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 8154F80B83;
+	Mon,  7 Oct 2024 14:57:02 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id HXa00Y9duz0M; Mon,  7 Oct 2024 13:48:09 +0000 (UTC)
+ id 1S_P8SSCogn2; Mon,  7 Oct 2024 14:57:01 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 5B19480DD9
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org C0E5980BA5
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1728308889;
-	bh=/CMEPpVEE6fy3UEb+JX8XqWy4ReKkQZ2Nee5KJh8d/0=;
-	h=From:To:In-Reply-To:References:Date:Subject:List-Id:
+	s=default; t=1728313021;
+	bh=i3b6VewzdWsYLb8rinUu6Go1q/V2crmVUsAabrmyl+4=;
+	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=z2EU48qJDlkL+0YeCyHUuvNGp9g08QbK/t+MSimM/sJtUY/bBUh9p2sTi5maDM6wk
-	 wzb6E86d4yRqNGCJ5B2/oW/i83S78qWMgXGwovn0duObEvkg+rS9rptXTYaeJ2gtct
-	 f5l/XB5B4udQ2gCORHVibJZlqi/k5Fg3TvLHRmmbTc09Pj6DF6Q0EDdPvjk3zm/9N3
-	 Hc7EJlbTTmOGysAC9zHAc9JqWpg9xykYXwwGMhZ5ZHlx/u+DNLKRNNaQGMIiRscHBJ
-	 NxuPj3dcUMu+SlU7YstT3U/TVAzEdmw9821eIL2K7L9TBDpLwONLk9UT+Mv9ltSrkn
-	 LU0+hC8lvAMaw==
+	b=UwYlssL0yBzaEir+9/NtjgHjF/D08Sf6gf0+4ImUxQ3yuVB8faZmSGPTdH5/Deycf
+	 bMh37Nbe6HUC7/P2vtasnPUegVr5CUOtUBP1l/Y/Rm7QZayp8q1WrYHV0wec4udsZy
+	 QQxbvdsO4o6zLYUTCjlodufLZl6v6GE91DBooskk4XtyP9HmD7tLzvAPrA9ztiCgbg
+	 3i7gu9/ztBRkzXS2XZ2hszZndqgNoAsV7K4S8RaT/fGTjZYafYqZJR4qhe2Le8zJC7
+	 vM+ejHBvgY1n5x2cljJQxcq9xFsgXaDH/CyKn62TgbYUbNuDer7diqE0nMKMi6K+ay
+	 z9Xk14PTB9CfQ==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 5B19480DD9;
-	Mon,  7 Oct 2024 13:48:09 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id C0E5980BA5;
+	Mon,  7 Oct 2024 14:57:01 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id C605C1BF955
- for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Oct 2024 13:48:07 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 2477C1BF239
+ for <intel-wired-lan@lists.osuosl.org>; Sun,  6 Oct 2024 01:55:48 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id AC95440320
- for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Oct 2024 13:48:06 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 132B7401D2
+ for <intel-wired-lan@lists.osuosl.org>; Sun,  6 Oct 2024 01:55:48 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Ef-_oUpnlmjH for <intel-wired-lan@lists.osuosl.org>;
- Mon,  7 Oct 2024 13:48:05 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2a0a:51c0:0:12e:550::1; helo=galois.linutronix.de;
- envelope-from=kurt@linutronix.de; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 88BA140015
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 88BA140015
-Received: from galois.linutronix.de (Galois.linutronix.de
- [IPv6:2a0a:51c0:0:12e:550::1])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 88BA140015
- for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Oct 2024 13:48:05 +0000 (UTC)
-From: Kurt Kanzenbach <kurt@linutronix.de>
-To: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
-In-Reply-To: <ZwPfARyIRE+MvqyK@boxer>
-References: <20241007-b4-igb_zero_copy-v7-0-23556668adc6@linutronix.de>
- <20241007-b4-igb_zero_copy-v7-5-23556668adc6@linutronix.de>
- <ZwPfARyIRE+MvqyK@boxer>
-Date: Mon, 07 Oct 2024 15:48:01 +0200
-Message-ID: <87h69o3tym.fsf@kurt.kurt.home>
+ id oRNxPjMfGEcc for <intel-wired-lan@lists.osuosl.org>;
+ Sun,  6 Oct 2024 01:55:47 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=139.178.84.217;
+ helo=dfw.source.kernel.org; envelope-from=andersson@kernel.org;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 2BEFB400EA
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 2BEFB400EA
+Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 2BEFB400EA
+ for <intel-wired-lan@lists.osuosl.org>; Sun,  6 Oct 2024 01:55:47 +0000 (UTC)
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by dfw.source.kernel.org (Postfix) with ESMTP id 86C2A5C55E1;
+ Sun,  6 Oct 2024 01:55:41 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 442DCC4CEC2;
+ Sun,  6 Oct 2024 01:55:42 +0000 (UTC)
+From: Bjorn Andersson <andersson@kernel.org>
+To: linux-gpio@vger.kernel.org,
+	Julia Lawall <Julia.Lawall@inria.fr>
+Date: Sat,  5 Oct 2024 20:55:35 -0500
+Message-ID: <172817973322.398361.12931602917664759173.b4-ty@kernel.org>
+X-Mailer: git-send-email 2.45.2
+In-Reply-To: <20240930112121.95324-1-Julia.Lawall@inria.fr>
+References: <20240930112121.95324-1-Julia.Lawall@inria.fr>
 MIME-Version: 1.0
-Content-Type: multipart/signed; boundary="=-=-=";
- micalg=pgp-sha512; protocol="application/pgp-signature"
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linutronix.de; s=2020; t=1728308883;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=/CMEPpVEE6fy3UEb+JX8XqWy4ReKkQZ2Nee5KJh8d/0=;
- b=fcXenWxYppf4B3MgjuL064fGlAUEFe1lUp1CKZVXRONISZCaqx34CPlgsA9H3QSGAbYqEK
- cjNvhGMGB7TLtyzmvfQAGl7ci9uo6to4sfuK6miJHymST2UKXaUxiqlisyyufbDIejlAkX
- qxw9Z1hIxAelAYaLwwf32j2XFt/fhzwP1tnXr7O1pZU2ymcbgl/DlXFIWgc9VEAYmlTxsu
- Ph5ZXfjoLr0tv2kxhaZ58obNzONOPNYrxXqvcw0U65tm0yq3l+WqNNXgy64njzlXE5aTp/
- b5evre4s09feOeHeZCa5ju6yUw/NpHhylZAjHn3n3+6Wsawkk4tXTuIlKyFLNw==
-X-Mailman-Original-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed;
- d=linutronix.de; s=2020e; t=1728308883;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=/CMEPpVEE6fy3UEb+JX8XqWy4ReKkQZ2Nee5KJh8d/0=;
- b=uycR1gYDgxQPnbwBcdIYakrl/MLcbeIXwkYNCh6hLRKdncJULrn57s71HsL7JlVFPJK8g4
- BVBnxR7dPoRnulAw==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-Mailman-Approved-At: Mon, 07 Oct 2024 14:56:59 +0000
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=kernel.org; s=k20201202; t=1728179745;
+ bh=/4L+Waftv30hJTd8pHAaY7MDs2ik61gNjRPrwI78SK4=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=bHJhnSlcDypCxKXc9/0e8sSwcsPUcNs5OrzLmNK372VoYuGepvQT+MeJe7gZxz24S
+ Td8OetlGIX6VQqxeo+oLpBwCwYCr2xh0kr7HWG2dWxJwS9C9I5+F0Ozm3XgnvgOi6R
+ eyo7cMIiqgZ5im6lRwsEC9egd6IBXTkhxhVOAfSeJ6SqQ1OAUWk36taYJoiLw9dpJ9
+ 1TD2kMI24gaTyunNoaEycYfyV8WJ6EL2ZaaiP5SsbbYsVWCcKHV7TrlwKb7lUEYqTY
+ l48kzmdHzTLb/dBfgaSN3gUHXAeR3ENezjiB4lZZ+5JAICFVxSM/ycZNnlcwg/pUoP
+ 0Njb/XOnUh7ew==
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=linutronix.de
+ dmarc=pass (p=quarantine dis=none)
+ header.from=kernel.org
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=linutronix.de header.i=@linutronix.de
- header.a=rsa-sha256 header.s=2020 header.b=fcXenWxY; 
- dkim=pass header.d=linutronix.de header.i=@linutronix.de
- header.a=ed25519-sha256 header.s=2020e header.b=uycR1gYD
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v7 5/5] igb: Add AF_XDP
- zero-copy Tx support
+ dkim=pass (2048-bit key,
+ unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
+ header.s=k20201202 header.b=bHJhnSlc
+Subject: Re: [Intel-wired-lan] (subset) [PATCH 00/35] Reorganize kerneldoc
+ parameter names
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -102,102 +97,50 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Jesper Dangaard Brouer <hawk@kernel.org>,
- Daniel Borkmann <daniel@iogearbox.net>,
- Sriram Yagnaraman <sriram.yagnaraman@est.tech>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Richard Cochran <richardcochran@gmail.com>,
- John Fastabend <john.fastabend@gmail.com>, Alexei Starovoitov <ast@kernel.org>,
- Sriram Yagnaraman <sriram.yagnaraman@ericsson.com>,
- Benjamin Steinke <benjamin.steinke@woks-audio.com>,
- Eric Dumazet <edumazet@google.com>, netdev@vger.kernel.org,
- Tony Nguyen <anthony.l.nguyen@intel.com>, intel-wired-lan@lists.osuosl.org,
- Jakub Kicinski <kuba@kernel.org>, bpf@vger.kernel.org,
- Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>,
- Sebastian Andrzej Siewior <bigeasy@linutronix.de>
+Cc: nvdimm@lists.linux.dev, alsa-devel@alsa-project.org,
+ Jan Kara <jack@suse.cz>, "Rafael J. Wysocki" <rafael@kernel.org>,
+ Neil Brown <neilb@suse.de>, linux-pci@vger.kernel.org,
+ kernel-janitors@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ linux-mm@kvack.org, linux-mtd@lists.infradead.org,
+ amd-gfx@lists.freedesktop.org, linux-leds@vger.kernel.org,
+ drbd-dev@lists.linbit.com,
+ Pierre-Louis Bossart <pierre-louis.bossart@linux.dev>, dccp@vger.kernel.org,
+ Dai Ngo <Dai.Ngo@oracle.com>, Christophe Leroy <christophe.leroy@csgroup.eu>,
+ iommu@lists.linux.dev, intel-wired-lan@lists.osuosl.org,
+ Robin Murphy <robin.murphy@arm.com>, Olga Kornievskaia <okorniev@redhat.com>,
+ linux-arm-msm@vger.kernel.org, Naveen N Rao <naveen@kernel.org>,
+ linux-sound@vger.kernel.org, maple-tree@lists.infradead.org,
+ Tom Talpey <tom@talpey.com>, Madhavan Srinivasan <maddy@linux.ibm.com>,
+ Mathieu Desnoyers <mathieu.desnoyers@efficios.com>,
+ Nicholas Piggin <npiggin@gmail.com>, linux-omap@vger.kernel.org,
+ Zhihao Cheng <chengzhihao1@huawei.com>, linux-arm-kernel@lists.infradead.org,
+ linux-nfs@vger.kernel.org, netdev@vger.kernel.org, linux-usb@vger.kernel.org,
+ linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
+ audit@vger.kernel.org, tipc-discussion@lists.sourceforge.net,
+ linux-fsdevel@vger.kernel.org, Sanyog Kale <sanyog.r.kale@intel.com>,
+ linux-trace-kernel@vger.kernel.org, linuxppc-dev@lists.ozlabs.org
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
---=-=-=
-Content-Type: text/plain
 
-On Mon Oct 07 2024, Maciej Fijalkowski wrote:
->> +bool igb_xmit_zc(struct igb_ring *tx_ring)
->> +{
->> +	unsigned int budget = igb_desc_unused(tx_ring);
->> +	struct xsk_buff_pool *pool = tx_ring->xsk_pool;
->> +	u32 cmd_type, olinfo_status, nb_pkts, i = 0;
->> +	struct xdp_desc *descs = pool->tx_descs;
->> +	union e1000_adv_tx_desc *tx_desc = NULL;
->> +	struct igb_tx_buffer *tx_buffer_info;
->> +	unsigned int total_bytes = 0;
->> +	dma_addr_t dma;
->> +
->> +	if (!netif_carrier_ok(tx_ring->netdev))
->> +		return true;
->> +
->> +	if (test_bit(IGB_RING_FLAG_TX_DISABLED, &tx_ring->flags))
->> +		return true;
->> +
->> +	nb_pkts = xsk_tx_peek_release_desc_batch(pool, budget);
->> +	if (!nb_pkts)
->> +		return true;
->> +
->> +	while (nb_pkts-- > 0) {
->> +		dma = xsk_buff_raw_get_dma(pool, descs[i].addr);
->> +		xsk_buff_raw_dma_sync_for_device(pool, dma, descs[i].len);
->> +
->> +		tx_buffer_info = &tx_ring->tx_buffer_info[tx_ring->next_to_use];
->> +		tx_buffer_info->bytecount = descs[i].len;
->> +		tx_buffer_info->type = IGB_TYPE_XSK;
->> +		tx_buffer_info->xdpf = NULL;
->> +		tx_buffer_info->gso_segs = 1;
->> +		tx_buffer_info->time_stamp = jiffies;
->> +
->> +		tx_desc = IGB_TX_DESC(tx_ring, tx_ring->next_to_use);
->> +		tx_desc->read.buffer_addr = cpu_to_le64(dma);
->> +
->> +		/* put descriptor type bits */
->> +		cmd_type = E1000_ADVTXD_DTYP_DATA | E1000_ADVTXD_DCMD_DEXT |
->> +			   E1000_ADVTXD_DCMD_IFCS;
->> +		olinfo_status = descs[i].len << E1000_ADVTXD_PAYLEN_SHIFT;
->> +
->> +		cmd_type |= descs[i].len | IGB_TXD_DCMD;
->
-> I forgot if we spoke about this but you still set RS bit for each produced
-> desc. Probably we agreed that since cleaning side is shared with 'slow'
-> path it would be too much of an effort to address that?
+On Mon, 30 Sep 2024 13:20:46 +0200, Julia Lawall wrote:
+> Reorganize kerneldoc parameter names to match the parameter
+> order in the function header.
+> 
+> The misordered cases were identified using the following
+> Coccinelle semantic patch:
+> 
+> // <smpl>
+> @initialize:ocaml@
+> @@
+> 
+> [...]
 
-Yes, and i believe we agreed that this needs to be addressed later, also
-for igc.
+Applied, thanks!
 
->
-> Could you add a FIXME/TODO here so that we won't lose this from our
-> radars?
+[24/35] soc: qcom: qmi: Reorganize kerneldoc parameter names
+        commit: eea73fa08e69fec9cdc915592022bec6a9ac8ad7
 
-Sure.
-
-Thanks,
-Kurt
-
---=-=-=
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQJHBAEBCgAxFiEEvLm/ssjDfdPf21mSwZPR8qpGc4IFAmcD5pETHGt1cnRAbGlu
-dXRyb25peC5kZQAKCRDBk9HyqkZzgsWdD/9yy16yaYLB4R5GpXSpQa/47OdSmlNU
-38nE4hLd6bLrnhVvu5XEoglQyPn0jciYPw69b45JXi5y/Fe/Whegtw+jYC8/StB1
-j3RPnd47yX5vvmwn6+413ybpiE+fk1yBKmhjhMj8VLjGb6ejFC7J6L65q0k4CvbZ
-jx1XfF+0b58+ZTyjSLAi3KJhjkMFfsmdosVm6Rqqqeui5ZICTXTrjKWizj/8rDR0
-nv4DLRFgPdhYpD+xbjtDT5D7eBnkXI3kwznQHdVreimI2Niv5TOqc9vHa8RIbqHw
-rdFK3ihLAmcKm4vApDXdHnkAl3SQMdWQX5JNE+X4DL4Cd1DP2iMpsXYn9RNgtdw+
-2Ogmn9joZiVrtXAzt0aijkXzQFO8S7fo36EjJ8Wkx9mMHcUjHth1WJn3i/tB/1+5
-Y/m0HxSvGGreoQ1ApECJJkToYcaWZwmyd66C7u2mg0jQSEipqtTavFNWyaBIq7OR
-REIlkZTfoRaa7mrcJXMEbNprJGFZwQ3VlXUii7ps02Yce35+QAZF5cB44IPue77O
-5uWWIWKX2QGMyXdx2NTSWngo0iidI+VQfxBNKut5zIcBBEBxZDOjumJevWedPsrV
-3SlQOW3uoopIdRbu18Cw3TZQoSR2/Nxn6zfWO3R+pyplWRH3gDWcrVW7Dewic+2v
-PYzAZE+2VlG36w==
-=b4js
------END PGP SIGNATURE-----
---=-=-=--
+Best regards,
+-- 
+Bjorn Andersson <andersson@kernel.org>
