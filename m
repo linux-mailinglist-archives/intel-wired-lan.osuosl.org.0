@@ -1,118 +1,95 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id D28EA99368B
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  7 Oct 2024 20:48:40 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5FCCD993811
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  7 Oct 2024 22:17:38 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 89955607C7;
-	Mon,  7 Oct 2024 18:48:39 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 24A5580D6C;
+	Mon,  7 Oct 2024 20:17:36 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id skSygqkLJlLG; Mon,  7 Oct 2024 18:48:38 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id bnO4YiHbrTae; Mon,  7 Oct 2024 20:17:35 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0954B607CB
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 5BB5480D72
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1728326918;
-	bh=DxIo6SBDZQXc37oWyxERlpu6l1Wa+ULpd6grGxBigoc=;
-	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=OR9qQphnM4Z8g3FxhXjv8F3ypDYJBNLNH6dvCnJ6Wk/MR08G4WavJPxcXl6WJAsQk
-	 Cyvwj46Hj8KCdEb24GR3r7WWzCogyR3u864qxvAFL0FTxtaQp8nDfVROrDvZKsjf1S
-	 9eAEla5cD6HA9tv5BUKvdNJ0r8QSwYrnm6Ied7/Mg5vR4GXC4VBlBLVFQZiXA1EPv0
-	 S4LYl3RwSKuOufwGGkH2vBB7DuzBR/PRou7ILc8TiAvigC7CrwwPbmHb+AxNbSwwyh
-	 drNeVFyJlD9lA4Ovxp4DNbssmLXKZerCqGZdN9LSgeWL1QlauPbOruCiPJEDXb+Jb5
-	 asfAapWpaTmLw==
+	s=default; t=1728332255;
+	bh=5SGIma5cgP63XBFaBrxf1rEl2MrRfgMmZ0Y9FUN4N3c=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=B62hT4zea22od/9/YQbMRK4KV//JokFY538+AVGI9fTTW6zuVE7mA8l0AdM1YGznG
+	 ebKJirUMEBV9dSVJfRB/6ntoIjLMjOjI7/9c5QteCoHMJ5F18+DJh29dflKzJeAJjc
+	 6i3oxcMv1w3XJF9ju4SgybvHzZDrUcEeNVhB/Z4a0t2KtzQiuSEv6X8PwMWq89/dwk
+	 7nxNRIgy7mS5o6IXWv5K3RDoXXJK7oJklvNh0MwAQTxFVzZscWbDqarMwCr/w1bzRG
+	 /LHeYOZTcKnm6oD5YzSjaXmFRNKmtSh5y1JLcDc6o3FJHkAIbIuYbPr+lD3W3JmXWS
+	 TcVMtz+yjloQw==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 0954B607CB;
-	Mon,  7 Oct 2024 18:48:38 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 5BB5480D72;
+	Mon,  7 Oct 2024 20:17:35 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id C74F41BF34B
- for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Oct 2024 18:48:36 +0000 (UTC)
+ by ash.osuosl.org (Postfix) with ESMTP id 588D41BF38E
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Oct 2024 20:17:34 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id B512D400FF
- for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Oct 2024 18:48:36 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 462574025B
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Oct 2024 20:17:34 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id WEXBJ4FNuxdy for <intel-wired-lan@lists.osuosl.org>;
- Mon,  7 Oct 2024 18:48:35 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2607:f8b0:4864:20::232; helo=mail-oi1-x232.google.com;
- envelope-from=stfomichev@gmail.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 13179400B9
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 13179400B9
-Received: from mail-oi1-x232.google.com (mail-oi1-x232.google.com
- [IPv6:2607:f8b0:4864:20::232])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 13179400B9
- for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Oct 2024 18:48:34 +0000 (UTC)
-Received: by mail-oi1-x232.google.com with SMTP id
- 5614622812f47-3e03a5ed4d7so2442955b6e.1
- for <intel-wired-lan@lists.osuosl.org>; Mon, 07 Oct 2024 11:48:34 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1728326913; x=1728931713;
- h=in-reply-to:content-transfer-encoding:content-disposition
- :mime-version:references:message-id:subject:cc:to:from:date
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=DxIo6SBDZQXc37oWyxERlpu6l1Wa+ULpd6grGxBigoc=;
- b=DCTjU7ksR5aQC1ROwoQbzoo44hTdKAH6ygSG0tFVvzJuXBeHDwHo/adMowdpfMDYwn
- w6E/Q48vcaf9gA0aci0KQlJdJRPgm8iH8STE4xyI34hONq6cEfGhZQ/87oQKeYw+Gx11
- RvpHj68xioUTavKnB19rUPjY8oWTIR6wYBpH3srS8ZIvVI+38gy+T00SnQIgA0oxTgGc
- lJgziEj+Ut+UgHEcT93kCY+mb0Ir3Idk6bhpLUBbMW0GE3SPyRbKxTN0SnC42ZkAS+dW
- ws2vcCsTzEk/nygv6o95Uq8hxjFMUdfBFlhyg/fo9h9mXIm+v7ybGr/ESM2uM03Cyvnf
- LnOQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXSDjOldh617HvRFEYK5iQTsuw0kvp2rwYsNZDgaB5YMghMJUOIixbBaCu+Bj71CqhTx0JAAxip4ZjVOWBeH/o=@lists.osuosl.org
-X-Gm-Message-State: AOJu0Yyy9d2l/ANHx0fJ+0joWbhJjSQqp4K18/TgMS1YhdTxbK1a00qd
- Hn48sZcYiTk9Csu/L5nEJt7zc/CG/eHlXpGY0pZB1FrmFtYprEg=
-X-Google-Smtp-Source: AGHT+IHidoJ5KUJ6/hc4eJOnHC4cWCklIOkHi42bJtWHz6oCLeuYegsjuUpsou49IAVpUwzcvXsFXg==
-X-Received: by 2002:a05:6808:2e86:b0:3e0:7005:3f86 with SMTP id
- 5614622812f47-3e3c15345a3mr10727871b6e.28.1728326913536; 
- Mon, 07 Oct 2024 11:48:33 -0700 (PDT)
-Received: from localhost ([2601:646:9e00:f56e:123b:cea3:439a:b3e3])
- by smtp.gmail.com with ESMTPSA id
- 41be03b00d2f7-7e9f6c4a65esm5253615a12.94.2024.10.07.11.48.32
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 07 Oct 2024 11:48:33 -0700 (PDT)
-Date: Mon, 7 Oct 2024 11:48:32 -0700
-From: Stanislav Fomichev <stfomichev@gmail.com>
-To: Toke =?utf-8?Q?H=C3=B8iland-J=C3=B8rgensen?= <toke@redhat.com>
-Message-ID: <ZwQtAHpg2LB-7en_@mini-arch>
-References: <87zfnnq2hs.fsf@toke.dk> <Zv18pxsiTGTZSTyO@mini-arch>
- <87ttdunydz.fsf@toke.dk> <Zv3N5G8swr100EXm@mini-arch>
- <D4LYNKGLE7G0.3JAN5MX1ATPTB@bobby> <Zv794Ot-kOq1pguM@mini-arch>
- <2fy5vuewgwkh3o3mx5v4bkrzu6josqylraa4ocgzqib6a7ozt4@hwsuhcibtcb6>
- <038fffa3-1e29-4c6d-9e27-8181865dca46@kernel.org>
- <ZwArrsqrYx7IM5tq@mini-arch> <87ldz1edaz.fsf@toke.dk>
+ id StFlyaJ0L8bz for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  7 Oct 2024 20:17:33 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.11;
+ helo=mgamail.intel.com; envelope-from=joshua.a.hay@intel.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 0CFAE40252
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 0CFAE40252
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.11])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 0CFAE40252
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Oct 2024 20:17:32 +0000 (UTC)
+X-CSE-ConnectionGUID: BHD9xCYXRACWTocMU6YZlQ==
+X-CSE-MsgGUID: 1lR420B1T6mf3HBgHyPbBw==
+X-IronPort-AV: E=McAfee;i="6700,10204,11218"; a="38066443"
+X-IronPort-AV: E=Sophos;i="6.11,184,1725346800"; d="scan'208";a="38066443"
+Received: from orviesa007.jf.intel.com ([10.64.159.147])
+ by orvoesa103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 07 Oct 2024 13:17:31 -0700
+X-CSE-ConnectionGUID: h+KGnEy/QVydIlyV5f6wiw==
+X-CSE-MsgGUID: MrRYPvxqQ+i+0IqF8kEnsQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.11,184,1725346800"; d="scan'208";a="76023755"
+Received: from dcskidmo-m40.jf.intel.com ([10.166.241.13])
+ by orviesa007.jf.intel.com with ESMTP; 07 Oct 2024 13:17:31 -0700
+From: Joshua Hay <joshua.a.hay@intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Mon,  7 Oct 2024 13:24:35 -0700
+Message-Id: <20241007202435.664345-1-joshua.a.hay@intel.com>
+X-Mailer: git-send-email 2.39.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <87ldz1edaz.fsf@toke.dk>
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1728326913; x=1728931713; darn=lists.osuosl.org;
- h=in-reply-to:content-transfer-encoding:content-disposition
- :mime-version:references:message-id:subject:cc:to:from:date:from:to
- :cc:subject:date:message-id:reply-to;
- bh=DxIo6SBDZQXc37oWyxERlpu6l1Wa+ULpd6grGxBigoc=;
- b=JXa+HNtD20tXdgKxk/4+n2V0K3ke/CgYI5P5qG3SNplhA/1CUMyGTywMsdaVQy0cGO
- f10e1VUG3Fudepy+ciIrJ+bKxL0UConYA40ulyvvpdOdV7TRDnIDYKn5ZUJHNDO4vg0u
- 0pml1HoqLUA5I682TEogvTMFMBvcSkHO4JLu12HX+hqNtgckkuwqQU2qLoaZ/hXJiChV
- UayB5DyVVlOtbO0vGyKSOjmDH9kQAoLCqf/XjprcHUAWFkc8+Sd4XMvy1rKpITqCxnQm
- qq88iI09lRIiODVJ/44OinToOnjk1mtqLKx4lodKX7u1H9fWCdJRbgL0vVoxxCXx7IFD
- mNcg==
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1728332253; x=1759868253;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=t8eRMXgHM65A8SAT5uZ6vgW3918+43f43JG1igKF8M8=;
+ b=eVF5BQzna7vrPi6b2sZzgaZf2Flp11+68VYljPNZh123DCIiE4eUQhGQ
+ 3omdDkTKAXbhNC7HmUEJZKe0QGlGQFau0WARu6g4PiNLlmLLZzWjPRRVh
+ yTha7y67XhKoIPC/KNnqlLpMa39Um40pKxj6EyjD+U8T+21P0e7VmyNGa
+ D8P1LikI7vI4XBgwhSr3AaJTRsfSGJuZMyf3b+aByXscotOqDT1ZEXCBW
+ IRNqK26KvI5KE4S5KPa+9gL035CJh4/t20eeHD3viW68z0DLylCWDFF6P
+ W+ebrU3uXLtHjj4EKA3AjOV7Ynr21HfOuhKarcQTZS+Y+8DDwedGtU14c
+ Q==;
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=gmail.com
+ header.from=intel.com
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
- header.a=rsa-sha256 header.s=20230601 header.b=JXa+HNtD
-Subject: Re: [Intel-wired-lan] [RFC bpf-next 0/4] Add XDP rx hw hints
- support performing XDP_REDIRECT
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=eVF5BQzn
+Subject: [Intel-wired-lan] [PATCH iwl-net] idpf: set completion tag for
+ "empty" bufs associated with a packet
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -125,143 +102,58 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: mst@redhat.com, jasowang@redhat.com, ast@kernel.org, edumazet@google.com,
- anthony.l.nguyen@intel.com, Yan Zhai <yan@cloudflare.com>,
- Jakub Sitnicki <jakub@cloudflare.com>, daniel@iogearbox.net,
- kernel-team <kernel-team@cloudflare.com>, przemyslaw.kitszel@intel.com,
- john.fastabend@gmail.com, sdf@fomichev.me, intel-wired-lan@lists.osuosl.org,
- kuba@kernel.org, pabeni@redhat.com, Lorenzo Bianconi <lorenzo@kernel.org>,
- Jesper Dangaard Brouer <hawk@kernel.org>, alexandre.torgue@foss.st.com,
- Daniel Xu <dxu@dxuuu.xyz>, Arthur Fabre <afabre@cloudflare.com>,
- netdev@vger.kernel.org, tariqt@nvidia.com,
- Alexander Lobakin <aleksander.lobakin@intel.com>, mcoquelin.stm32@gmail.com,
- bpf@vger.kernel.org, saeedm@nvidia.com, davem@davemloft.net
+Cc: aleksander.lobakin@intel.com, madhu.chittim@intel.com,
+ netdev@vger.kernel.org
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On 10/06, Toke Høiland-Jørgensen wrote:
-> Stanislav Fomichev <stfomichev@gmail.com> writes:
-> 
-> > On 10/04, Jesper Dangaard Brouer wrote:
-> >> 
-> >> 
-> >> On 04/10/2024 04.13, Daniel Xu wrote:
-> >> > On Thu, Oct 03, 2024 at 01:26:08PM GMT, Stanislav Fomichev wrote:
-> >> > > On 10/03, Arthur Fabre wrote:
-> >> > > > On Thu Oct 3, 2024 at 12:49 AM CEST, Stanislav Fomichev wrote:
-> >> > > > > On 10/02, Toke Høiland-Jørgensen wrote:
-> >> > > > > > Stanislav Fomichev <stfomichev@gmail.com> writes:
-> >> > > > > > 
-> >> > > > > > > On 10/01, Toke Høiland-Jørgensen wrote:
-> >> > > > > > > > Lorenzo Bianconi <lorenzo@kernel.org> writes:
-> >> > > > > > > > 
-> >> > > > > > > > > > On Mon Sep 30, 2024 at 1:49 PM CEST, Lorenzo Bianconi wrote:
-> >> > > > > > > > > > > > Lorenzo Bianconi <lorenzo@kernel.org> writes:
-> >> > > > > > > > > > > > 
-> >> [...]
-> >> > > > > > > > > > > > > 
-> >> > > > > > > > > > > > > I like this 'fast' KV approach but I guess we should really evaluate its
-> >> > > > > > > > > > > > > impact on performances (especially for xdp) since, based on the kfunc calls
-> >> > > > > > > > > > > > > order in the ebpf program, we can have one or multiple memmove/memcpy for
-> >> > > > > > > > > > > > > each packet, right?
-> >> > > > > > > > > > > > 
-> >> > > > > > > > > > > > Yes, with Arthur's scheme, performance will be ordering dependent. Using
-> >> 
-> >> I really like the *compact* Key-Value (KV) store idea from Arthur.
-> >>  - The question is it is fast enough?
-> >> 
-> >> I've promised Arthur to XDP micro-benchmark this, if he codes this up to
-> >> be usable in the XDP code path.  Listening to the LPC recording I heard
-> >> that Alexei also saw potential and other use-case for this kind of
-> >> fast-and-compact KV approach.
-> >> 
-> >> I have high hopes for the performance, as Arthur uses POPCNT instruction
-> >> which is *very* fast[1]. I checked[2] AMD Zen 3 and 4 have Ops/Latency=1
-> >> and Reciprocal throughput 0.25.
-> >> 
-> >>  [1] https://www.agner.org/optimize/blog/read.php?i=853#848
-> >>  [2] https://www.agner.org/optimize/instruction_tables.pdf
-> >> 
-> >> [...]
-> >> > > > There are two different use-cases for the metadata:
-> >> > > > 
-> >> > > > * "Hardware" metadata (like the hash, rx_timestamp...). There are only a
-> >> > > >    few well known fields, and only XDP can access them to set them as
-> >> > > >    metadata, so storing them in a struct somewhere could make sense.
-> >> > > > 
-> >> > > > * Arbitrary metadata used by services. Eg a TC filter could set a field
-> >> > > >    describing which service a packet is for, and that could be reused for
-> >> > > >    iptables, routing, socket dispatch...
-> >> > > >    Similarly we could set a "packet_id" field that uniquely identifies a
-> >> > > >    packet so we can trace it throughout the network stack (through
-> >> > > >    clones, encap, decap, userspace services...).
-> >> > > >    The skb->mark, but with more room, and better support for sharing it.
-> >> > > > 
-> >> > > > We can only know the layout ahead of time for the first one. And they're
-> >> > > > similar enough in their requirements (need to be stored somewhere in the
-> >> > > > SKB, have a way of retrieving each one individually, that it seems to
-> >> > > > make sense to use a common API).
-> >> > > 
-> >> > > Why not have the following layout then?
-> >> > > 
-> >> > > +---------------+-------------------+----------------------------------------+------+
-> >> > > | more headroom | user-defined meta | hw-meta (potentially fixed skb format) | data |
-> >> > > +---------------+-------------------+----------------------------------------+------+
-> >> > >                  ^                                                            ^
-> >> > >              data_meta                                                      data
-> >> > > 
-> >> > > You obviously still have a problem of communicating the layout if you
-> >> > > have some redirects in between, but you, in theory still have this
-> >> > > problem with user-defined metadata anyway (unless I'm missing
-> >> > > something).
-> >> > > 
-> >> 
-> >> Hmm, I think you are missing something... As far as I'm concerned we are
-> >> discussing placing the KV data after the xdp_frame, and not in the XDP
-> >> data_meta area (as your drawing suggests).  The xdp_frame is stored at
-> >> the very top of the headroom.  Lorenzo's patchset is extending struct
-> >> xdp_frame and now we are discussing to we can make a more flexible API
-> >> for extending this. I understand that Toke confirmed this here [3].  Let
-> >> me know if I missed something :-)
-> >> 
-> >>  [3] https://lore.kernel.org/all/874j62u1lb.fsf@toke.dk/
-> >>
-> >> As part of designing this flexible API, we/Toke are trying hard not to
-> >> tie this to a specific data area.  This is a good API design, keeping it
-> >> flexible enough that we can move things around should the need arise.
-> >> 
-> >> I don't think it is viable to store this KV data in XDP data_meta area,
-> >> because existing BPF-prog's already have direct memory (write) access
-> >> and can change size of area, which creates too much headache with
-> >> (existing) BPF-progs creating unintentional breakage for the KV store,
-> >> which would then need extensive checks to handle random corruptions
-> >> (slowing down KV-store code).
-> >
-> > Yes, I'm definitely missing the bigger picture. If we want to have a global
-> > metadata registry in the kernel, why can't it be built on top of the existing
-> > area?
-> 
-> Because we have no way of preventing existing XDP programs from
-> overwriting (corrupting) the area using the xdp_adjust_meta() API and
-> data_meta field.
+Commit d9028db618a6 ("idpf: convert to libeth Tx buffer completion")
+inadvertently removed code that was necessary for the tx buffer cleaning
+routine to iterate over all buffers associated with a packet.
 
-True, but this can be solved with some new BPF_F_XDP_HAS_FRAGS-like
-flag (which can reject loading if there is some incompatibility)?
-Even in the new KV-metadata world, 2+ programs still need to be
-aware of the new method to work correctly. But I do see your point
-that it's better to not apply any metadata than apply something
-that's corrupt/overridden.
+When a frag is too large for a single data descriptor, it will be split
+across multiple data descriptors. This means the frag will span multiple
+buffers in the buffer ring in order to keep the descriptor and buffer
+ring indexes aligned. The buffer entries in the ring are technically
+empty and no cleaning actions need to be performed. These empty buffers
+can precede other frags associated with the same packet. I.e. a single
+packet on the buffer ring can look like:
 
-> But in a sense the *memory area* is shared between the two APIs, in the
-> sense that they both use the headroom before the packet data, just from
-> opposite ends. So if you store lots of data using the new KV API, that
-> space will no longer be available for xdp_adjust_{head,meta}. But the
-> kernel can enforce this so we don't get programs corrupting the KV
-> format.
+	buf[0]=skb0.frag0
+	buf[1]=skb0.frag1
+	buf[2]=empty
+	buf[3]=skb0.frag2
 
-Ack, let's see how it shapes out. My main concern comes from the
-growing api surface where for af_xdp it's one mechanism, for xdp
-redirect it's another. And for Jakub's consumption from userspace
-it's gonna be another special case probably (to read it out from the
-headroom head)? Idk, maybe it's fine as long as each case is clearly
-documented.
+The cleaning routine iterates through these buffers based on a matching
+completion tag. If the completion tag is not set for buf2, the loop will
+end prematurely. Frag2 will be left uncleaned and next_to_clean will be
+left pointing to the end of packet, which will break the cleaning logic
+for subsequent cleans. This consequently leads to tx timeouts.
+
+Assign the empty bufs the same completion tag for the packet to ensure
+the cleaning routine iterates over all of the buffers associated with
+the packet.
+
+Fixes: d9028db618a6 ("idpf: convert to libeth Tx buffer completion")
+Signed-off-by: Joshua Hay <joshua.a.hay@intel.com>
+Acked-by: Alexander Lobakin <aleksander.lobakin@intel.com>
+Reviewed-by: Madhu chittim <madhu.chittim@intel.com>
+---
+ drivers/net/ethernet/intel/idpf/idpf_txrx.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/drivers/net/ethernet/intel/idpf/idpf_txrx.c b/drivers/net/ethernet/intel/idpf/idpf_txrx.c
+index d4e6f0e10487..60d15b3e6e2f 100644
+--- a/drivers/net/ethernet/intel/idpf/idpf_txrx.c
++++ b/drivers/net/ethernet/intel/idpf/idpf_txrx.c
+@@ -2448,6 +2448,7 @@ static void idpf_tx_splitq_map(struct idpf_tx_queue *tx_q,
+ 			 * rest of the packet.
+ 			 */
+ 			tx_buf->type = LIBETH_SQE_EMPTY;
++			idpf_tx_buf_compl_tag(tx_buf) = params->compl_tag;
+ 
+ 			/* Adjust the DMA offset and the remaining size of the
+ 			 * fragment.  On the first iteration of this loop,
+-- 
+2.39.2
+
