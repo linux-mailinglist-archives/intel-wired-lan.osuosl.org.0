@@ -1,113 +1,111 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 517899930F5
-	for <lists+intel-wired-lan@lfdr.de>; Mon,  7 Oct 2024 17:20:40 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 041FB99327E
+	for <lists+intel-wired-lan@lfdr.de>; Mon,  7 Oct 2024 18:07:03 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 0B84B408FB;
-	Mon,  7 Oct 2024 15:20:39 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 08B43402CE;
+	Mon,  7 Oct 2024 16:07:01 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id l-NPzH1v7vH5; Mon,  7 Oct 2024 15:20:38 +0000 (UTC)
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id kmo8tAdUxXF0; Mon,  7 Oct 2024 16:07:00 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org ECF144092B
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 1783A402D7
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1728314438;
-	bh=pPxzdbrBTki/yDMf9zuDFMMZBiHu7JxpPiSGspfiGJ8=;
+	s=default; t=1728317220;
+	bh=Gf+PiJeuT5YXR8uf468cVOB4GwgU6SzIkTri3Fs5PWk=;
 	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=aqhZUSh7AOSNslMCAQdXBDosx45UeM6V3sR4YNg0xnsN08oEUfxmaThf67eskvTbL
-	 xM/V77evgGD8zLPV+ZAHMsJkKAEEYIvugEZTUO1PeDMKSPMuZtyodPX0KVW3nzdVrC
-	 SRnJws9Ukq4ARcLm2ihp/ZTkr6rA07vsLUe4SZDaBq5+EUC5ZmK5Wl9OVt9rEZ8LUN
-	 Tx/Tb69TnspP2qFtGmVROQ23gXet86SGGoAs5p40KYBfEUZHGvLnuFyk96qwhvAoMP
-	 GJWvRQejncfRZU7c51wbulpGsDGjHjEJMoOCYs5gIJqztffh6pKTa+OEsLHbPDsiYc
-	 gDnwUlOz9pfrQ==
+	b=2yCkCX0hG38WwkbDNVqidOnDnvxRs7UoseKXTCIIs36OJMmEIKxDzwAAjuotZzxfm
+	 QPOQDYnkm5jTgRo+7HOWxuZ8svlbki971qyaQkAQdUuaMx5xvq05keey+tN7U+lEnZ
+	 A/0BPOsRi16+InyYPhuqWfcezA1BFYfeWuP5d3XzC1DrNb+6oau6ewl8Z1kHA/N9fU
+	 GbEd5mMG2z0bjNXqWoI0F9ewBr/9hB4nkQVesvdijO0+TcyMrg4yLLZWSl3CijUioh
+	 nh2bmQOQUcWuefhhm9EUrICiMD3m9vn35T5f1k7M11Hkzfma9IEh4cQRfCninYS92h
+	 oUGoIiBkbU+LA==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id ECF144092B;
-	Mon,  7 Oct 2024 15:20:37 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 1783A402D7;
+	Mon,  7 Oct 2024 16:07:00 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 65D631BF289
- for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Oct 2024 15:20:36 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id DD1061BF955
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Oct 2024 16:06:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 60D1F60752
- for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Oct 2024 15:20:36 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id C91F440967
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Oct 2024 16:06:58 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id HmTmZjcOP4HK for <intel-wired-lan@lists.osuosl.org>;
- Mon,  7 Oct 2024 15:20:35 +0000 (UTC)
-Received-SPF: None (mailfrom) identity=mailfrom;
- client-ip=2a00:1450:4864:20::62f; helo=mail-ej1-x62f.google.com;
- envelope-from=jiri@resnulli.us; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 47A3F6066C
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 47A3F6066C
-Received: from mail-ej1-x62f.google.com (mail-ej1-x62f.google.com
- [IPv6:2a00:1450:4864:20::62f])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 47A3F6066C
- for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Oct 2024 15:20:32 +0000 (UTC)
-Received: by mail-ej1-x62f.google.com with SMTP id
- a640c23a62f3a-a9957588566so143555666b.3
- for <intel-wired-lan@lists.osuosl.org>; Mon, 07 Oct 2024 08:20:32 -0700 (PDT)
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id GsPzwC01tdzi for <intel-wired-lan@lists.osuosl.org>;
+ Mon,  7 Oct 2024 16:06:58 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2607:f8b0:4864:20::630; helo=mail-pl1-x630.google.com;
+ envelope-from=richardcochran@gmail.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 02C54403AA
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 02C54403AA
+Received: from mail-pl1-x630.google.com (mail-pl1-x630.google.com
+ [IPv6:2607:f8b0:4864:20::630])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 02C54403AA
+ for <intel-wired-lan@lists.osuosl.org>; Mon,  7 Oct 2024 16:06:57 +0000 (UTC)
+Received: by mail-pl1-x630.google.com with SMTP id
+ d9443c01a7336-20b7463dd89so48383255ad.2
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 07 Oct 2024 09:06:57 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1728314430; x=1728919230;
+ d=1e100.net; s=20230601; t=1728317217; x=1728922017;
  h=in-reply-to:content-disposition:mime-version:references:message-id
  :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=pPxzdbrBTki/yDMf9zuDFMMZBiHu7JxpPiSGspfiGJ8=;
- b=WSrjYVpenhjyf5h6vT9S/gKTG2pKVdlCRzmyxWc1CrjlrJJZiyi2rSjNSgzeDYsqL5
- f7UReusr1JOxEr1i10n6MDQknWoBt5A7zxBaEVwpn7tfj+G6CDe7fuSVnk7sMUt6FKLL
- Wi0h3E+k/7amgNWgrXDgMeJVtlC2rXOJbbpODCNGUsVYVWsxWKiCB4gm4Jf4ViO3nvFx
- R3wONEfzHp7ySjCZFXVP6o3n9BxN3Aivn0UxHzEXL4EeqPhrja8Vg4X+sxjMEQarh45X
- Yq5gdTiPzfyepB3j9dXCbDkbswvC4X9b3SCgrZIh0YGaaGu68dkKa5lVuvDt6y8c51ST
- CR2Q==
+ bh=Gf+PiJeuT5YXR8uf468cVOB4GwgU6SzIkTri3Fs5PWk=;
+ b=pf0VNKWvwzIOd/XRi9753M7cHI8iLHc8CbikeESIvt1+6+shb/7fePf/2WDeormTr+
+ Jz9B3UXPYxgdeKqY+AzROglLAkB1M66PlPmPrmxGnnmXnf99+bIZUSlVLkwQybQBFIdO
+ +fm0scIL8BfnyOLYjKbSzoSABuloljwGrPgZWZHXAs5wSClP9HpnsyP0cW08dweoMK+R
+ Tquk+qOgz/WMx8SZBJ73UflKIK8rssOXPB9FSmxgm4x1yaMbWTKszIz43JAzbhyF9QSQ
+ G/qxE0pkK4wA+8B+BXTQGIzgiN83xxYSY6i0sX4vJgES7U08aBJSu+Tu0XnNr7LonOSk
+ HG0Q==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVeSW3JaRtpkDgSq+meJep6NmY48kcSj29u+/VguRWPK5tA8wzHhnrvSvaRl8ywir2270xFnPW1mguBMUWwjbY=@lists.osuosl.org
-X-Gm-Message-State: AOJu0YxtG3ZhBEunTIYCp1LWEW7hxqz0eiUUNBHYZKCLAAju+VxaJX0+
- WsVMMY0QS5ariPZtv4fh0TSUDJ2wmtRyIL8qWz1no5R1sQXhBTksizXirMIQy9Q=
-X-Google-Smtp-Source: AGHT+IGFPlkUrUyWa4Kqksj7oKkVWDH7XjJailgRfGtZS5xJypLhfrZ5Hyr0z5iyK1N2zJalyOYRIg==
-X-Received: by 2002:a17:907:6d17:b0:a8d:2d2e:90e6 with SMTP id
- a640c23a62f3a-a991c00fb55mr1357264166b.60.1728314430225; 
- Mon, 07 Oct 2024 08:20:30 -0700 (PDT)
-Received: from localhost ([193.47.165.251]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-a99429c8bb9sm293586966b.196.2024.10.07.08.20.28
+ AJvYcCUSP2zr7MY8iBtPm2Rt+9/dTC8I3Fl8hjdqfk63VZYQhpwWLophNP0eak5Cq2TlXo+aFvJHE6DmUJY4yG8Hnwg=@lists.osuosl.org
+X-Gm-Message-State: AOJu0YwT++W5oJ5vP7/2wg/Y2XQ4vMrA+2Q40vDDgzhrKU63AN5S5Grf
+ 9Qe5HY+rZ8BnF4/5//5Ndko1GSNFXwYXVp4OpPQFt8Vr+KMvOtgF
+X-Google-Smtp-Source: AGHT+IEGwDAT9Cv1y8WQER1FRIlOllCMCIASgGerSdmRnTWkgRQSganVf2GcG1sGdzVp1JMLrYG0ew==
+X-Received: by 2002:a17:903:244e:b0:20b:ab6a:3a18 with SMTP id
+ d9443c01a7336-20bfdfd4372mr211059575ad.17.1728317216962; 
+ Mon, 07 Oct 2024 09:06:56 -0700 (PDT)
+Received: from hoboy.vegasvil.org ([198.59.164.146])
+ by smtp.gmail.com with ESMTPSA id
+ d9443c01a7336-20c138afd1dsm41264245ad.36.2024.10.07.09.06.55
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 07 Oct 2024 08:20:29 -0700 (PDT)
-Date: Mon, 7 Oct 2024 17:20:25 +0200
-From: Jiri Pirko <jiri@resnulli.us>
-To: Paolo Abeni <pabeni@redhat.com>
-Message-ID: <ZwP8OWtMfCH0_ikc@nanopsycho.orion>
-References: <cover.1727704215.git.pabeni@redhat.com>
+ Mon, 07 Oct 2024 09:06:56 -0700 (PDT)
+Date: Mon, 7 Oct 2024 09:06:54 -0700
+From: Richard Cochran <richardcochran@gmail.com>
+To: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
+Message-ID: <ZwQHHmLeBUBpH71p@hoboy.vegasvil.org>
+References: <20241003213754.926691-1-arkadiusz.kubalewski@intel.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <cover.1727704215.git.pabeni@redhat.com>
+In-Reply-To: <20241003213754.926691-1-arkadiusz.kubalewski@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=resnulli-us.20230601.gappssmtp.com; s=20230601; t=1728314430; x=1728919230;
- darn=lists.osuosl.org; 
+ d=gmail.com; s=20230601; t=1728317217; x=1728922017; darn=lists.osuosl.org;
  h=in-reply-to:content-disposition:mime-version:references:message-id
  :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=pPxzdbrBTki/yDMf9zuDFMMZBiHu7JxpPiSGspfiGJ8=;
- b=kE4/7wFQnvu7ttnHU70XTTbyWmJOxisk9H4TSX2k8phzRdkDn1pmkn22uYe6RE2Y/Z
- i4vcNTPFTLbBt1J//dExr9HuA1NkUEi5wEZ5uH5seFg7yKcKxT2MB+3ibL+ZNCHXftVb
- VwBOWm+WrxL8bHPegTHME9GPbaBtBqqMTmi86e5ujMn3CqBv1Nug8mkRvCNEPHdN47fk
- PyyKNshmtQT6Uhewy8GrqkxHZcmMW8cn/mNkbDTTFEoTrz7QQWpScURjuvV05YoYSUlk
- DUVVkGVvWNRGm2E+YASCD+p9l1desAc3oKXhETb5KabltE+D9jJaRru/nwcsKUHZZzLi
- PGiA==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=resnulli.us
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=resnulli-us.20230601.gappssmtp.com
- header.i=@resnulli-us.20230601.gappssmtp.com header.a=rsa-sha256
- header.s=20230601 header.b=kE4/7wFQ
-Subject: Re: [Intel-wired-lan] [PATCH v8 net-next 00/15] net: introduce TX
- H/W shaping API
+ bh=Gf+PiJeuT5YXR8uf468cVOB4GwgU6SzIkTri3Fs5PWk=;
+ b=P5P/piV9Prfz36qZAshXL+WaGN6v2NF+ETem20lUw7I7DVRCk6jjSn4pJbRHwpzKQM
+ /gHztxoiq7zbn3NDot57WtOR3kx4zzcimCHjWEmJHgR7m/T5pEyNNNuap+OprBGBh6dx
+ sNkxsJoIIh7yt0e2XlHF1egtJG3glZV0KausXRvCW2DWHWnScpsn0N1V+sYfoSJdVEjr
+ HooKqZutyga1qpW6oJvp+kTWTlvJBh8BpV84p9jxbjcQ6/hN+Uadq8UJw3FPIWaxqlUB
+ +Pg/EJW92DtRYIeu0Ff7ajELcEg316ueqb73AzcEm8Jk1+KD0b7R5YLgten7hDbkAh1K
+ /ROg==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=gmail.com
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com
+ header.a=rsa-sha256 header.s=20230601 header.b=P5P/piV9
+Subject: Re: [Intel-wired-lan] [RFC PATCH 0/2] ptp: add control over HW
+ timestamp latch point
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -120,49 +118,24 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Donald Hunter <donald.hunter@gmail.com>,
- Sridhar Samudrala <sridhar.samudrala@intel.com>,
- John Fastabend <john.fastabend@gmail.com>, Jamal Hadi Salim <jhs@mojatatu.com>,
- edumazet@google.com, Madhu Chittim <madhu.chittim@intel.com>,
- anthony.l.nguyen@intel.com, Simon Horman <horms@kernel.org>,
- netdev@vger.kernel.org, Jakub Kicinski <kuba@kernel.org>,
- intel-wired-lan@lists.osuosl.org, przemyslaw.kitszel@intel.com,
- Sunil Kovvuri Goutham <sgoutham@marvell.com>,
- Stanislav Fomichev <stfomichev@gmail.com>
+Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org, kuba@kernel.org,
+ edumazet@google.com, anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com,
+ intel-wired-lan@lists.osuosl.org, pabeni@redhat.com, davem@davemloft.net
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Mon, Sep 30, 2024 at 03:53:47PM CEST, pabeni@redhat.com wrote:
->We have a plurality of shaping-related drivers API, but none flexible
->enough to meet existing demand from vendors[1].
->
->This series introduces new device APIs to configure in a flexible way
->TX H/W shaping. The new functionalities are exposed via a newly
->defined generic netlink interface and include introspection
->capabilities. Some self-tests are included, on top of a dummy
->netdevsim implementation. Finally a basic implementation for the iavf
->driver is provided.
->
+On Thu, Oct 03, 2024 at 11:37:52PM +0200, Arkadiusz Kubalewski wrote:
+> HW support of PTP/timesync solutions in network PHY chips can be
+> achieved with two different approaches, the timestamp maybe latched
+> either in the beginning or after the Start of Frame Delimiter (SFD) [1].
+> 
+> Allow ptp device drivers to provide user with control over the timestamp
+> latch point.
 
-[...]
+This looks okay to me.
 
+Sorry for the late reply, but I'm travelling untill Oct 11 and may not
+response to messages right away.
 
->---
->Changes from v7:
-> - fixed uninit error and related ST failures
-> - dev lock cleanup
-> - fixed a bunch of typos
-
-
-Was out of the loop for last couple of iterations for personal reasons,
-sorry for getting to this after such while!
-
-Overall, I like very much how the patchset looks right now. I reviewed
-it, didn't find anything noteworthy.
-
-set-
-Reviewed-by: Jiri Pirko <jiri@nvidia.com>
-
-Thanks for the work Paolo!
-
-I will try to convert devlink rate to this api soon, I promise.
+Thanks,
+Richard
