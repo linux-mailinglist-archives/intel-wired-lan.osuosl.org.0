@@ -1,77 +1,226 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id DE6D499465C
-	for <lists+intel-wired-lan@lfdr.de>; Tue,  8 Oct 2024 13:16:56 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+	by mail.lfdr.de (Postfix) with ESMTPS id 894D099508B
+	for <lists+intel-wired-lan@lfdr.de>; Tue,  8 Oct 2024 15:45:57 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 184A740A6C;
-	Tue,  8 Oct 2024 11:16:55 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 30FF340521;
+	Tue,  8 Oct 2024 13:45:54 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id s-Clkpm0sXqN; Tue,  8 Oct 2024 13:45:53 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0469A404E8
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1728395153;
+	bh=A4jeWc5H0VS2+mPI5zFsb3Hfxy+EiUu6IZAgDXbTpO8=;
+	h=To:References:From:Date:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=NlyVLv7H9QhlYxI4n18Lpm+DejrOO95Lv5YvWe07bNQVNPJRdtT1wIvBMgiMbTCtI
+	 fgop3HUzmOa2lEKSc09KruPcs0UAiD8hBXc5lDFES1hH6MiGdrhKFDLf0Y+zy/kI2k
+	 hRTuB9n6AwLa3tk47Ple0axnY9eXdcCnVa2pBoZemdkaZ6ZoFkNfBTsSFlPfA6zRez
+	 9zRWgUTsiz+gWXe6bn0cpfS67Es0BSaxDoCjo5XUB1bVjQT/kHsro3Y9TD6G9DRzOH
+	 rfA2+RARo09HrpHrOLWlwB4vFIYnJazInpd0oJDkNkbvk642MN9vRbEc3jtsi4maMB
+	 kcj5Ru3ejD0RQ==
+Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
+	by smtp4.osuosl.org (Postfix) with ESMTP id 0469A404E8;
+	Tue,  8 Oct 2024 13:45:53 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 73A3D1BF3D5
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Oct 2024 13:45:51 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp2.osuosl.org (Postfix) with ESMTP id 609CC400C8
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Oct 2024 13:45:51 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id PcIVhCpgSRbM; Tue,  8 Oct 2024 11:16:54 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 8C75140A1B
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1728386213;
-	bh=UARPcsdBbYaLV2jRoTTijlZb0TEmosLk8RnE7OjmX5M=;
-	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=9wCiWntWgb2rSrJ8s7xGx+usweD/VnMlaFfmzeQdg+GH1COAW4jVaG2sogbQzoImh
-	 zUX6XT5ZUtYAKRM9MK/W0Wh5UcNL+AzuWsV1edvvuovQZ7/Fx8+p6utg1Gx9QCeYu8
-	 wlLdgvkuSx7AW2/x2bGJWxMKL5OppyYgw0pZIYtxNIzoWhWbJOk3xH+8tM6cFVDBvi
-	 7dAyjXbgjCh6GnA6qHUfBomVwqWWX1L44LgmPzfWTnNRq+RO3ZyGqK3kSKwWH7bRB5
-	 +Gr/+ct6AT5ZgSFCR4XkKLa9wqTa366c10y7BsT6YfkoXmm+Wqqp4bJXjz06bXPizN
-	 3oPK/ry4FRVwA==
-Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 8C75140A1B;
-	Tue,  8 Oct 2024 11:16:53 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id C337B1BF3EB
- for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Oct 2024 11:16:50 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id B1A4B80480
- for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Oct 2024 11:16:50 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 5M5p3ZeHAncz for <intel-wired-lan@lists.osuosl.org>;
- Tue,  8 Oct 2024 11:16:49 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=141.14.17.11;
- helo=mx3.molgen.mpg.de; envelope-from=pmenzel@molgen.mpg.de;
+ id Wb2dY0hOlkkC for <intel-wired-lan@lists.osuosl.org>;
+ Tue,  8 Oct 2024 13:45:50 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.14;
+ helo=mgamail.intel.com; envelope-from=avigailx.dahan@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 695A48088A
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 695A48088A
-Received: from mx3.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 695A48088A
- for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Oct 2024 11:16:48 +0000 (UTC)
-Received: from [172.18.249.96] (ip-185-104-138-68.ptr.icomera.net
- [185.104.138.68])
- (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested) (Authenticated sender: pmenzel)
- by mx.molgen.mpg.de (Postfix) with ESMTPSA id DDAC061E5FE05;
- Tue,  8 Oct 2024 13:16:30 +0200 (CEST)
-Message-ID: <6fb25275-8490-42cf-b07c-c15298bc943d@molgen.mpg.de>
-Date: Tue, 8 Oct 2024 13:16:28 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: Karol Kolacinski <karol.kolacinski@intel.com>
-References: <20241008110626.1745728-2-karol.kolacinski@intel.com>
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 1C8A1400A6
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 1C8A1400A6
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.14])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 1C8A1400A6
+ for <intel-wired-lan@lists.osuosl.org>; Tue,  8 Oct 2024 13:45:49 +0000 (UTC)
+X-CSE-ConnectionGUID: g9d7jLA0QXaYPbWExml1wQ==
+X-CSE-MsgGUID: 1Ly7Uz6nQBSnzWw7o7EhTA==
+X-IronPort-AV: E=McAfee;i="6700,10204,11219"; a="31376186"
+X-IronPort-AV: E=Sophos;i="6.11,187,1725346800"; d="scan'208";a="31376186"
+Received: from fmviesa010.fm.intel.com ([10.60.135.150])
+ by orvoesa106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 08 Oct 2024 06:45:49 -0700
+X-CSE-ConnectionGUID: aBtBre3iTrKK/ybWxSjPeA==
+X-CSE-MsgGUID: BmYSb/4bTqCnvNqkHVpftg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.11,187,1725346800"; d="scan'208";a="76218466"
+Received: from orsmsx603.amr.corp.intel.com ([10.22.229.16])
+ by fmviesa010.fm.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
+ 08 Oct 2024 06:45:48 -0700
+Received: from orsmsx610.amr.corp.intel.com (10.22.229.23) by
+ ORSMSX603.amr.corp.intel.com (10.22.229.16) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.39; Tue, 8 Oct 2024 06:45:48 -0700
+Received: from ORSEDG601.ED.cps.intel.com (10.7.248.6) by
+ orsmsx610.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.39 via Frontend Transport; Tue, 8 Oct 2024 06:45:48 -0700
+Received: from NAM12-BN8-obe.outbound.protection.outlook.com (104.47.55.176)
+ by edgegateway.intel.com (134.134.137.102) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.39; Tue, 8 Oct 2024 06:45:47 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=PJl3Gx91JBBDc+O6NWVlBkLapTafxoMenHFHGJADonjdode5HoOz1kt1ou7I/9l6+8Qayr15cptZ20MABIH886oB/Uj0pgRLEJZQl68jLADvfziP3e7mpuj2pmVhmvUavEGr6bgTwCMmRQ5pWarv7klF4L9hpBHL1uuWABBAIgJ169yQSqSxbo+mkL7v8u51vCaR31QdPWgrQh3K39KYIxOyQa3Cy3xMaIdBgWUfQW+zj3ORJH8ky0n4xWgpLyrTPhAfbRqfvouAqkSuJhA+UxEgkwcxX8WgcC5o9uSYU/XKvCqnHnW5svNhZdcmpl8SicsiwBhYwgiqm3YQs/hmfw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=A4jeWc5H0VS2+mPI5zFsb3Hfxy+EiUu6IZAgDXbTpO8=;
+ b=uYPCndz6oKUvYP0zxMyUWOG0StbkccKhmWEt6BwKc6CQw8kR3pgxERlfaln72umf30fwzyMTfkH/g+Usf/qvmvETQQZeLnY7TeXlZKsyR0fANB/SMLckTKFIzP+Ah+XzKLlMU1TZEO9vQjW+CY2GnuqdbYgwV8pA93hqM4D7Gg1jvqkS81aR1/spnWOOhmST4mvTvWrTxXSaupdwIuWWAM+RqSgYiXcLSDjQ04XyvHT2pHyZhOEXsN/FEg3uvsrCYhNZ1nEGH8TvyJMsg3+vLlV7u+wrWvi6Sx+SBsiY75Nai2u0+04NhmMeHfG2Tf9YpuwhE64osVy14DQonjEl7A==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from BY5PR11MB4194.namprd11.prod.outlook.com (2603:10b6:a03:1c0::13)
+ by MN2PR11MB4744.namprd11.prod.outlook.com (2603:10b6:208:263::17)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8026.23; Tue, 8 Oct
+ 2024 13:45:44 +0000
+Received: from BY5PR11MB4194.namprd11.prod.outlook.com
+ ([fe80::9d17:67a6:4f83:ef61]) by BY5PR11MB4194.namprd11.prod.outlook.com
+ ([fe80::9d17:67a6:4f83:ef61%6]) with mapi id 15.20.8048.013; Tue, 8 Oct 2024
+ 13:45:44 +0000
+To: Joe Damato <jdamato@fastly.com>, <netdev@vger.kernel.org>
+References: <20240930171232.1668-1-jdamato@fastly.com>
+ <20240930171232.1668-2-jdamato@fastly.com>
+From: Avigail Dahan <Avigailx.dahan@intel.com>
+Message-ID: <c6210bf9-be61-4d57-faa1-962c3a51ae87@intel.com>
+Date: Tue, 8 Oct 2024 16:45:38 +0300
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
+ Thunderbird/78.7.1
+In-Reply-To: <20240930171232.1668-2-jdamato@fastly.com>
+Content-Type: text/plain; charset="utf-8"; format=flowed
 Content-Language: en-US
-From: Paul Menzel <pmenzel@molgen.mpg.de>
-In-Reply-To: <20241008110626.1745728-2-karol.kolacinski@intel.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=molgen.mpg.de
-Subject: Re: [Intel-wired-lan] [PATCH v2 iwl-next] ice: Add in/out PTP pin
- delays
+Content-Transfer-Encoding: 7bit
+X-ClientProxiedBy: TL2P290CA0008.ISRP290.PROD.OUTLOOK.COM
+ (2603:1096:950:2::11) To BY5PR11MB4194.namprd11.prod.outlook.com
+ (2603:10b6:a03:1c0::13)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: BY5PR11MB4194:EE_|MN2PR11MB4744:EE_
+X-MS-Office365-Filtering-Correlation-Id: 6beb44a8-6f3f-4402-6158-08dce79f81bc
+X-LD-Processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|1800799024|366016;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?TzBET1JrdHdMa0RNbjVWZE1tWDZxOVI3SGs1ZUNoUXdyRGhmZ21DTjgzTFFh?=
+ =?utf-8?B?YTFXd0NZUDR5TDNkYzdRNzBzazNMbVVOQm8zbUVyK0tzOHlzZjFINGx0Mk15?=
+ =?utf-8?B?d3FMd25jejFzZDJKakg2TXd1ZTJUVzhhTjhQUjdwQlVhS3kvcFBCdzJLR2d5?=
+ =?utf-8?B?QkpZM1JZZmI5T2JUck4rVVJuajBUTDl0SVlMeDAvbndlZXh5NmdMaWJ0QzJB?=
+ =?utf-8?B?cVo2aFovRW84VHR1SUV6dlJ5cHdGcjd3eWI4UitwZ1NzTzkwck5ZVTdILy8r?=
+ =?utf-8?B?SnIwYUtSc1RyeTNYOEdWNnlNRXBDVVhBYTBvVzFGY3pmTFl6YlBjcHUyYnI2?=
+ =?utf-8?B?cWtqSis2SzVXbFZmNFo1VkVMY0VNQTVXS3JEcDh4Sm9rcTRaa0RjeHFqaEw1?=
+ =?utf-8?B?dDVsdTNtK2Vqbi93RW1PUGZFdTBNZ0pwOUFlUnV3dXVhVWhaOG8wRzIrb21i?=
+ =?utf-8?B?VFJ4bXJKaUtJblBTTG15MjRQVTQ4NnN4eUdkaEE5bU5zd1hyd21iak1rZ3l4?=
+ =?utf-8?B?WEl5N1N0a1EwRHBSR0RheXNiQ3hOdTZna1JWY0hmR05FdU5GalB0MlRFZENz?=
+ =?utf-8?B?dm9WWFBRdXlQUjg4Z2IxN3FIdzd1Z0ZYaWdWM1RHWkVhZ21RVXpRK1lqWTB2?=
+ =?utf-8?B?T3dwdktxcWlBOERBV0pWYjBWd2VJUGgvU25XQXVETThJWGM1eXZYMmdRMnZO?=
+ =?utf-8?B?UEhGWkQwOUVpZ0N4UjhYK2ZvajMya1dnS2EzSXo0N3dDaXh5Z1ZnL0JHM3J6?=
+ =?utf-8?B?bklqZG1aZnpuT0E1N1RPNmZudFJMTFBtTWhQT041TVMxTk9ORFV4Z0czRDlR?=
+ =?utf-8?B?eUtaNGlCcXNHdHMyeTZldjBFd2QyalFrWURWb1NESjgxQURjTmUvaDYzVWxV?=
+ =?utf-8?B?c01UMGdjMVZsWm9lWE1HREVJLy9YbzdDS2hURVc4eVlqa1lFWWdXMC9VQXBP?=
+ =?utf-8?B?V211KzRKNHpFMVBWVjdtaXNPYU9NUXhCRDNaanVJaXIwQTFFYXNiTjR6QnN2?=
+ =?utf-8?B?Z0tuVEx0bldEK3FEbHNpZ0FPdW5wSGZBNkdIbk9sOTFtcXRxOG1lZXNmS3JO?=
+ =?utf-8?B?ZmVqZlVxWFl1SFpldzh0RzRuZTRjUW5vL3JadVBYMi8rSGNjUFh1a1RscG5H?=
+ =?utf-8?B?MytSZXN6cTd4ZVE4NW1IZHFLV1dWNTB2TGRXeWZjejBDUlNuUEVEY21BSm0y?=
+ =?utf-8?B?TzMrME5hdms5a3ZvNVFxTXRPNHdvMEZULzZPUHhyc2I0TGFNZFJyL3AwVERU?=
+ =?utf-8?B?NjNpUy9NLzhvK3RGNHZlUVJFWkxQQU5GMmplOCt1K2c2OTRsWEZ1SHJpYVB3?=
+ =?utf-8?B?ZXdLOWd0d3FNUnoveEZGV0Q1aTZlM1ozRi9mQTBtbEJIV2hoUnR1TFJ3Z2Vx?=
+ =?utf-8?B?Zy9JSllYb3djd1FXV080RzltMzhlOFY2cjVERDVjMnpPK0VPQlR5eFpNRTUz?=
+ =?utf-8?B?QTRwYTE2WTRMQ1pXVTNIT0hmN0ZuYTd4MXhSNkhQd1NhSzJVUkZEV2dVRWRs?=
+ =?utf-8?B?NDVnd0VLSHA3MTB5NXZVSGZYNzl5RlJSMld2aENzTnNJaHZGdElVY04yMytp?=
+ =?utf-8?B?bXhrOFdvdVJKYWQ1SUM0anpnT0V2dk9jQW9hdkJWMjJuNkZIb1ZVYkowcnFO?=
+ =?utf-8?B?K29ZNUpVN29WRFBmSnFMVnFzem96ZWtMTVZKVVZnN1hDeWgzNFB2cVp2RHJN?=
+ =?utf-8?B?ZUg5aUZZS2VPSGQ4a1I1b3EvZWJRcHd1c1VZUFEwTHRaRG9JYVF2MVV3PT0=?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BY5PR11MB4194.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(376014)(1800799024)(366016); DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?UGQ4MWRybTl5SGo4M1FwcThTMDV5RzBjL3Z5NGRjVmdySCtJa3hiQ1FIdjNy?=
+ =?utf-8?B?N2FBQjBzaVhWdnZKZGVVVE1EM0lxaHN3MmhtVzY5Wm5RRkFZQkFFcmx5aWR6?=
+ =?utf-8?B?REdKdTBVU0dKM1lEaHE3MWFuQzltdzZ5cURLSGVIVW9RWTlpQ1c4N3BEc2lU?=
+ =?utf-8?B?aHRxZ3dmVlVtazVOdjZMVE5DOGlOMk1iUE5wSHRkeFdlak95SzZwUkQvaTU4?=
+ =?utf-8?B?bHIvQS82MEs3OVFSVE5YcDczMTEwUlpWaDJXdFAwdWRRdWNrR1psSlpXL0t1?=
+ =?utf-8?B?SE1weVcrSy85VDRPbUw3a1FyYmdieElHV2Q2UUttbWRrRVlRWE1QQ3NOeUtm?=
+ =?utf-8?B?d3VNMXFEbmtHeGlpTzcyd0UyNXdaZUJ4NzhrblIvWXY5SklkdGNvV1JwYldJ?=
+ =?utf-8?B?MG4rNXdrcUdwemZxdGhXMUtkaGJ5NDRaNTJmemkxSFl0V0lxbE1EaGNyUHFq?=
+ =?utf-8?B?eGF5NnRhd2ptR2MyeTJ3UkNpbXdYRnErY1UrWDFPRkNpVVFyOURtQW5tSmFB?=
+ =?utf-8?B?ZUlMeThDNXYwbW00WHpYTFRxczB0djcrWGs4YWNEMjRwelUzTTN1N2R3enl4?=
+ =?utf-8?B?N1l1NHhubkxxRTAwcWFoM3hzSW8yMTdiR3paWUxMQUgxcTVpWEkyVUhzSFN4?=
+ =?utf-8?B?RWJLaVRjZWNNMHM4MFVrQTU3NGllRmtuMnZyVkJ1L3hSOEY5RFY3ck1Ed2FK?=
+ =?utf-8?B?YUU2VWo0YmFPaHBDMEFXTzNKNEgyY3YxclhFKzZjY1o3QUUzRVhKZ1BGZnp1?=
+ =?utf-8?B?UXgxVFhxaWtITmxnT1dIbUYvVVBtV2RiNUszcS94akFFcUt3UFZYb0lyc25L?=
+ =?utf-8?B?S09odURCREcxMEU5c1cxRktybXJzMnVNL3VFTG9yZkFQV3V4aEVzSndJZ1Jm?=
+ =?utf-8?B?WENHZ2RKYlNLSVNQYkM1ZFdjd3ZCZEVpWG0vRlBkS1Yvd2FqSXUyT3dCdGw0?=
+ =?utf-8?B?MGx6Ynk4Zm5SV3dEclg5K3dmVVFHOXZlU0ZQb1RzdEhOREtZUDFyZjZIRTlv?=
+ =?utf-8?B?WlVTTnRlR1orTlJpYmErcDM1cU9UMXpUT2ZVTHFTdU4vLzR3MnZMNVdlUWY5?=
+ =?utf-8?B?RU94YUpQNHd6OVNGdnA5Ukg5TytmMXVmUmFxRVNLSE9OU1RieUduUlNXUzlY?=
+ =?utf-8?B?OFg0dXVWNE5EdFNpREZjd0RCbHRKMnRyNDFDT3E2dlVVcHc0MTRJSlMxaitR?=
+ =?utf-8?B?TFAwT2dQdjdJUHZneXJMZldYYVkvbnFiZlpJeVN2aGRNT01jazRsNzFIbXF4?=
+ =?utf-8?B?TUlPMktuSUhYWjlOM05GSGJqdVk4cEpIWk9MUnlIZ1IzRGdtNk1VTTVMNU5u?=
+ =?utf-8?B?OHA2L21IMm93amlIT1YxaGdrU2s2TmNXSG5KUHBRRHVTbTlzY2hyY25nOFZG?=
+ =?utf-8?B?KzgwUHRKOG5Ob0hxMi8zNXZKajdzaDV4V0ZKQTVrNHd1bjZYdXFzeUFiV1Bs?=
+ =?utf-8?B?cU94OGowZjVKYlY0U0dTYnl2WG0yYm9FeW5Mc1ZYNzhVS3JQT3dLL2VxejlY?=
+ =?utf-8?B?UExWVmRYTUh5SWtZQkludFZLaWNMVnRjckxxZTh5eG9SV2JUVTRIVWp2ejgz?=
+ =?utf-8?B?SzdHSHZPa09udXdSL0cwbVN0cTZEOVBBRUFuQ1hGZnNYUGJLcnpramRyb1FH?=
+ =?utf-8?B?YThFMkV0WHdlR3hCZU1yRGYzY0JwVWh2b2FNK21oMGxxQmRsVjBWMno1QkFw?=
+ =?utf-8?B?cDBkMUd1Tnd2K3ZETithYWU0NHJFcGhhSUgwWlJlakwxZkdiOUtHWlFqelhV?=
+ =?utf-8?B?RUVwdFBPUHRWbnpiU3dMdGY4QlpFbzFRaUFMNno5UUY2TUdnOHd0SUtDeWlD?=
+ =?utf-8?B?eHIvSGJreGVRNGNVT3dTRE9qZE4vc3NpeTl2VU4zeGdYNksyMXFBTTJMS2px?=
+ =?utf-8?B?ZzVjTmp1bVdGdmthaTgxZGk3S0xZQUtaODNvR3QxN3NLWTBubUpQVmFhREw0?=
+ =?utf-8?B?dHFPYVE0RkI0RTFabGpKZ1JxclJDOHZ4OWhFWmxrZnh3bHY3R0NEMWc2aTZB?=
+ =?utf-8?B?K0c5ZXdwRC9MVnlZSEs3RGxOVVZ3VURsUjhXSzlSMm80cXgvUkxraFphQWlk?=
+ =?utf-8?B?VHVhTWdlclZ1TjZodVNVUGdhckxaM3VxMVpKbWdCZ01zQWZCejR5bkxHK0Qy?=
+ =?utf-8?B?S3pyMGdLZUxmNzJ4VzUyNmpCOWd3TmhtL3c0ZG8vR1FJRDIvYkh0OXp6US9R?=
+ =?utf-8?B?dkE9PQ==?=
+X-MS-Exchange-CrossTenant-Network-Message-Id: 6beb44a8-6f3f-4402-6158-08dce79f81bc
+X-MS-Exchange-CrossTenant-AuthSource: BY5PR11MB4194.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 08 Oct 2024 13:45:44.3403 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: VJmAp4MATHbsq2IxEQDcx9syGoU+xBV0xLIL8OgxWX+2dz8nYYe1qVAXKtYTdZumJyk3ZO9kI1VytgwyndnfrP4FOlhUitFzW/z/h7rI2aE=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR11MB4744
+X-OriginatorOrg: intel.com
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1728395151; x=1759931151;
+ h=subject:to:cc:references:from:message-id:date:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=Jnq+GTSTOxTBBm2bODCDznhrfcA+TiEguIUp+7EQnvU=;
+ b=ZWD3VQw3RT3vGEsfRxzp3J+mWJKZ6+QnT6DPxS+R7JLJFOpmjCle1M00
+ qtv/dC874W4V0QwFU3uXBYiFMWMySsJ/VjjFyzm1+NyaSQ6Srv6RPsgyq
+ TY+kILT+CWQnRneE7B8rfohkVsURQH95hWPhEqlyTLBryNfgVkeApMN1N
+ Rg/asswFZCqZhZe0R1KfgNNmt82mH9HvWA28gqc6OgshBL+FVlDaHZSj0
+ MAKSrfkuNe7cUzrc6Pmkcu+P3TLTdmAa+WTgPoF29xbXHTXmPicTfRrBk
+ sZeIsP3uJNxhwrsqdOXAX7q/Hjo3SntYcs7HoybRyKfnANLDUrHPfkcjK
+ g==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=intel.com
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=ZWD3VQw3
+X-Mailman-Original-Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Subject: Re: [Intel-wired-lan] [net-next v3 1/2] e1000e: Link NAPI instances
+ to queues and IRQs
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,343 +233,48 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: netdev@vger.kernel.org, anthony.l.nguyen@intel.com,
- intel-wired-lan@lists.osuosl.org, przemyslaw.kitszel@intel.com
+Cc: Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ open list <linux-kernel@vger.kernel.org>, Eric Dumazet <edumazet@google.com>,
+ "moderated list:INTEL ETHERNET DRIVERS" <intel-wired-lan@lists.osuosl.org>,
+ Jakub Kicinski <kuba@kernel.org>, Tony
+ Nguyen <anthony.l.nguyen@intel.com>, Paolo
+ Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Dear Karol,
 
 
-Thank you for your patch.
-
-Am 08.10.24 um 13:05 schrieb Karol Kolacinski:
-> HW can have different input/output delays for each of the pins.
-> Add a field in ice_ptp_pin_desc structure to reflect that.
-
-What is the current status, that means before your patch?
-
-> Implement external timestamp delay compensation.
-
-How is this related to the first paragraph?
-
-> Remove existing definitions and wrappers for periodic output propagation
-> delays.
-
-How can this be tested?
-
-> Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-> Signed-off-by: Karol Kolacinski <karol.kolacinski@intel.com>
+On 30/09/2024 20:12, Joe Damato wrote:
+> Add support for netdev-genl, allowing users to query IRQ, NAPI, and queue
+> information.
+> 
+> After this patch is applied, note the IRQs assigned to my NIC:
+> 
+> $ cat /proc/interrupts | grep ens | cut -f1 --delimiter=':'
+>   50
+>   51
+>   52
+> 
+> While e1000e allocates 3 IRQs (RX, TX, and other), it looks like e1000e
+> only has a single NAPI, so I've associated the NAPI with the RX IRQ (50
+> on my system, seen above).
+> 
+> Note the output from the cli:
+> 
+> $ ./tools/net/ynl/cli.py --spec Documentation/netlink/specs/netdev.yaml \
+>                         --dump napi-get --json='{"ifindex": 2}'
+> [{'id': 145, 'ifindex': 2, 'irq': 50}]
+> 
+> This device supports only 1 rx and 1 tx queue. so querying that:
+> 
+> $ ./tools/net/ynl/cli.py --spec Documentation/netlink/specs/netdev.yaml \
+>                         --dump queue-get --json='{"ifindex": 2}'
+> [{'id': 0, 'ifindex': 2, 'napi-id': 145, 'type': 'rx'},
+>   {'id': 0, 'ifindex': 2, 'napi-id': 145, 'type': 'tx'}]
+> 
+> Signed-off-by: Joe Damato <jdamato@fastly.com>
 > ---
-> V1 -> V2: removed duplicate gpio_pin variable and restored missing
->            ICE_E810_E830_SYNC_DELAY
+>   drivers/net/ethernet/intel/e1000e/netdev.c | 11 +++++++++++
+>   1 file changed, 11 insertions(+)
 > 
->   drivers/net/ethernet/intel/ice/ice_ptp.c      | 82 +++++++++++--------
->   drivers/net/ethernet/intel/ice/ice_ptp.h      |  2 +
->   .../net/ethernet/intel/ice/ice_ptp_consts.h   | 12 ---
->   drivers/net/ethernet/intel/ice/ice_ptp_hw.h   | 23 ------
->   4 files changed, 49 insertions(+), 70 deletions(-)
-> 
-> diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.c b/drivers/net/ethernet/intel/ice/ice_ptp.c
-> index 9bc22620f838..afecbd189750 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_ptp.c
-> +++ b/drivers/net/ethernet/intel/ice/ice_ptp.c
-> @@ -16,28 +16,28 @@ static const char ice_pin_names[][64] = {
->   };
->   
->   static const struct ice_ptp_pin_desc ice_pin_desc_e82x[] = {
-> -	/* name,        gpio */
-> -	{  TIME_SYNC, {  4, -1 }},
-> -	{  ONE_PPS,   { -1,  5 }},
-> +	/* name,        gpio,       delay */
-
-Please add the unit in the comment. (Also below.)
-
-> +	{  TIME_SYNC, {  4, -1 }, { 0,  0 }},
-> +	{  ONE_PPS,   { -1,  5 }, { 0, 11 }},
-
-Where do the values come from?
-
->   };
->   
->   static const struct ice_ptp_pin_desc ice_pin_desc_e825c[] = {
-> -	/* name,        gpio */
-> -	{  SDP0,      {  0,  0 }},
-> -	{  SDP1,      {  1,  1 }},
-> -	{  SDP2,      {  2,  2 }},
-> -	{  SDP3,      {  3,  3 }},
-> -	{  TIME_SYNC, {  4, -1 }},
-> -	{  ONE_PPS,   { -1,  5 }},
-> +	/* name,        gpio,       delay */
-> +	{  SDP0,      {  0,  0 }, { 15, 14 }},
-> +	{  SDP1,      {  1,  1 }, { 15, 14 }},
-> +	{  SDP2,      {  2,  2 }, { 15, 14 }},
-> +	{  SDP3,      {  3,  3 }, { 15, 14 }},
-> +	{  TIME_SYNC, {  4, -1 }, { 11,  0 }},
-> +	{  ONE_PPS,   { -1,  5 }, {  0,  9 }},
->   };
->   
->   static const struct ice_ptp_pin_desc ice_pin_desc_e810[] = {
-> -	/* name,      gpio */
-> -	{  SDP0,    {  0, 0 }},
-> -	{  SDP1,    {  1, 1 }},
-> -	{  SDP2,    {  2, 2 }},
-> -	{  SDP3,    {  3, 3 }},
-> -	{  ONE_PPS, { -1, 5 }},
-> +	/* name,        gpio,       delay */
-> +	{  SDP0,      {  0,  0 }, { 0, 1 }},
-> +	{  SDP1,      {  1,  1 }, { 0, 1 }},
-> +	{  SDP2,      {  2,  2 }, { 0, 1 }},
-> +	{  SDP3,      {  3,  3 }, { 0, 1 }},
-> +	{  ONE_PPS,   { -1,  5 }, { 0, 1 }},
->   };
->   
->   static const char ice_pin_names_nvm[][64] = {
-> @@ -49,12 +49,12 @@ static const char ice_pin_names_nvm[][64] = {
->   };
->   
->   static const struct ice_ptp_pin_desc ice_pin_desc_e810_sma[] = {
-> -	/* name,   gpio */
-> -	{  GNSS, {  1, -1 }},
-> -	{  SMA1, {  1,  0 }},
-> -	{  UFL1, { -1,  0 }},
-> -	{  SMA2, {  3,  2 }},
-> -	{  UFL2, {  3, -1 }},
-> +	/* name,   gpio,       delay */
-> +	{  GNSS, {  1, -1 }, { 0, 0 }},
-> +	{  SMA1, {  1,  0 }, { 0, 1 }},
-> +	{  UFL1, { -1,  0 }, { 0, 1 }},
-> +	{  SMA2, {  3,  2 }, { 0, 1 }},
-> +	{  UFL2, {  3, -1 }, { 0, 0 }},
->   };
->   
->   static struct ice_pf *ice_get_ctrl_pf(struct ice_pf *pf)
-> @@ -1561,18 +1561,29 @@ void ice_ptp_extts_event(struct ice_pf *pf)
->   	 * Event is defined in GLTSYN_EVNT_0 register
->   	 */
->   	for (chan = 0; chan < GLTSYN_EVNT_H_IDX_MAX; chan++) {
-> +		int pin_desc_idx;
-> +
->   		/* Check if channel is enabled */
-> -		if (pf->ptp.ext_ts_irq & (1 << chan)) {
-> -			lo = rd32(hw, GLTSYN_EVNT_L(chan, tmr_idx));
-> -			hi = rd32(hw, GLTSYN_EVNT_H(chan, tmr_idx));
-> -			event.timestamp = (((u64)hi) << 32) | lo;
-> -			event.type = PTP_CLOCK_EXTTS;
-> -			event.index = chan;
-> -
-> -			/* Fire event */
-> -			ptp_clock_event(pf->ptp.clock, &event);
-> -			pf->ptp.ext_ts_irq &= ~(1 << chan);
-> +		if (!(pf->ptp.ext_ts_irq & (1 << chan)))
-> +			continue;
-> +
-> +		lo = rd32(hw, GLTSYN_EVNT_L(chan, tmr_idx));
-> +		hi = rd32(hw, GLTSYN_EVNT_H(chan, tmr_idx));
-> +		event.timestamp = (u64)hi << 32 | lo;
-> +
-> +		/* Add delay compensation */
-> +		pin_desc_idx = ice_ptp_find_pin_idx(pf, PTP_PF_EXTTS, chan);
-> +		if (pin_desc_idx >= 0) {
-> +			const struct ice_ptp_pin_desc *desc;
-> +
-> +			desc = &pf->ptp.ice_pin_desc[pin_desc_idx];
-> +			event.timestamp -= desc->delay[0];
->   		}
-> +
-> +		event.type = PTP_CLOCK_EXTTS;
-> +		event.index = chan;
-
-You got rid of the comment `Fire event` correct?
-
-> +		pf->ptp.ext_ts_irq &= ~(1 << chan);
-> +		ptp_clock_event(pf->ptp.clock, &event);
->   	}
->   }
->   
-> @@ -1767,9 +1778,9 @@ static int ice_ptp_write_perout(struct ice_hw *hw, unsigned int chan,
->   static int ice_ptp_cfg_perout(struct ice_pf *pf, struct ptp_perout_request *rq,
->   			      int on)
->   {
-> +	unsigned int gpio_pin, prop_delay;
-
-I’d also add the unit to the variable name.
-
-
-Kind regards,
-
-Paul
-
-
->   	u64 clk, period, start, phase;
->   	struct ice_hw *hw = &pf->hw;
-> -	unsigned int gpio_pin;
->   	int pin_desc_idx;
->   
->   	if (rq->flags & ~PTP_PEROUT_PHASE)
-> @@ -1780,6 +1791,7 @@ static int ice_ptp_cfg_perout(struct ice_pf *pf, struct ptp_perout_request *rq,
->   		return -EIO;
->   
->   	gpio_pin = pf->ptp.ice_pin_desc[pin_desc_idx].gpio[1];
-> +	prop_delay = pf->ptp.ice_pin_desc[pin_desc_idx].delay[1];
->   	period = rq->period.sec * NSEC_PER_SEC + rq->period.nsec;
->   
->   	/* If we're disabling the output or period is 0, clear out CLKO and TGT
-> @@ -1811,11 +1823,11 @@ static int ice_ptp_cfg_perout(struct ice_pf *pf, struct ptp_perout_request *rq,
->   	 * at the next multiple of period, maintaining phase.
->   	 */
->   	clk = ice_ptp_read_src_clk_reg(pf, NULL);
-> -	if (rq->flags & PTP_PEROUT_PHASE || start <= clk - ice_prop_delay(hw))
-> +	if (rq->flags & PTP_PEROUT_PHASE || start <= clk - prop_delay)
->   		start = div64_u64(clk + period - 1, period) * period + phase;
->   
->   	/* Compensate for propagation delay from the generator to the pin. */
-> -	start -= ice_prop_delay(hw);
-> +	start -= prop_delay;
->   
->   	return ice_ptp_write_perout(hw, rq->index, gpio_pin, start, period);
->   }
-> diff --git a/drivers/net/ethernet/intel/ice/ice_ptp.h b/drivers/net/ethernet/intel/ice/ice_ptp.h
-> index 5af474285780..23cd7878bcc8 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_ptp.h
-> +++ b/drivers/net/ethernet/intel/ice/ice_ptp.h
-> @@ -210,6 +210,7 @@ enum ice_ptp_pin_nvm {
->    * struct ice_ptp_pin_desc - hardware pin description data
->    * @name_idx: index of the name of pin in ice_pin_names
->    * @gpio: the associated GPIO input and output pins
-> +  * @delay: input and output signal delays in nanoseconds
->    *
->    * Structure describing a PTP-capable GPIO pin that extends ptp_pin_desc array
->    * for the device. Device families have separate sets of available pins with
-> @@ -218,6 +219,7 @@ enum ice_ptp_pin_nvm {
->   struct ice_ptp_pin_desc {
->   	int name_idx;
->   	int gpio[2];
-> +	unsigned int delay[2];
->   };
->   
->   /**
-> diff --git a/drivers/net/ethernet/intel/ice/ice_ptp_consts.h b/drivers/net/ethernet/intel/ice/ice_ptp_consts.h
-> index 585ce200c60f..c3e9b78087a8 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_ptp_consts.h
-> +++ b/drivers/net/ethernet/intel/ice/ice_ptp_consts.h
-> @@ -341,8 +341,6 @@ const struct ice_time_ref_info_e82x e82x_time_ref[NUM_ICE_TIME_REF_FREQ] = {
->   		823437500, /* 823.4375 MHz PLL */
->   		/* nominal_incval */
->   		0x136e44fabULL,
-> -		/* pps_delay */
-> -		11,
->   	},
->   
->   	/* ICE_TIME_REF_FREQ_122_880 -> 122.88 MHz */
-> @@ -351,8 +349,6 @@ const struct ice_time_ref_info_e82x e82x_time_ref[NUM_ICE_TIME_REF_FREQ] = {
->   		783360000, /* 783.36 MHz */
->   		/* nominal_incval */
->   		0x146cc2177ULL,
-> -		/* pps_delay */
-> -		12,
->   	},
->   
->   	/* ICE_TIME_REF_FREQ_125_000 -> 125 MHz */
-> @@ -361,8 +357,6 @@ const struct ice_time_ref_info_e82x e82x_time_ref[NUM_ICE_TIME_REF_FREQ] = {
->   		796875000, /* 796.875 MHz */
->   		/* nominal_incval */
->   		0x141414141ULL,
-> -		/* pps_delay */
-> -		12,
->   	},
->   
->   	/* ICE_TIME_REF_FREQ_153_600 -> 153.6 MHz */
-> @@ -371,8 +365,6 @@ const struct ice_time_ref_info_e82x e82x_time_ref[NUM_ICE_TIME_REF_FREQ] = {
->   		816000000, /* 816 MHz */
->   		/* nominal_incval */
->   		0x139b9b9baULL,
-> -		/* pps_delay */
-> -		12,
->   	},
->   
->   	/* ICE_TIME_REF_FREQ_156_250 -> 156.25 MHz */
-> @@ -381,8 +373,6 @@ const struct ice_time_ref_info_e82x e82x_time_ref[NUM_ICE_TIME_REF_FREQ] = {
->   		830078125, /* 830.78125 MHz */
->   		/* nominal_incval */
->   		0x134679aceULL,
-> -		/* pps_delay */
-> -		11,
->   	},
->   
->   	/* ICE_TIME_REF_FREQ_245_760 -> 245.76 MHz */
-> @@ -391,8 +381,6 @@ const struct ice_time_ref_info_e82x e82x_time_ref[NUM_ICE_TIME_REF_FREQ] = {
->   		783360000, /* 783.36 MHz */
->   		/* nominal_incval */
->   		0x146cc2177ULL,
-> -		/* pps_delay */
-> -		12,
->   	},
->   };
->   
-> diff --git a/drivers/net/ethernet/intel/ice/ice_ptp_hw.h b/drivers/net/ethernet/intel/ice/ice_ptp_hw.h
-> index 5c11d8a69fd3..5b4dc921deee 100644
-> --- a/drivers/net/ethernet/intel/ice/ice_ptp_hw.h
-> +++ b/drivers/net/ethernet/intel/ice/ice_ptp_hw.h
-> @@ -80,7 +80,6 @@ struct ice_phy_reg_info_eth56g {
->    * struct ice_time_ref_info_e82x
->    * @pll_freq: Frequency of PLL that drives timer ticks in Hz
->    * @nominal_incval: increment to generate nanoseconds in GLTSYN_TIME_L
-> -  * @pps_delay: propagation delay of the PPS output signal
->    *
->    * Characteristic information for the various TIME_REF sources possible in the
->    * E822 devices
-> @@ -88,7 +87,6 @@ struct ice_phy_reg_info_eth56g {
->   struct ice_time_ref_info_e82x {
->   	u64 pll_freq;
->   	u64 nominal_incval;
-> -	u8 pps_delay;
->   };
->   
->   /**
-> @@ -326,9 +324,7 @@ extern const struct ice_vernier_info_e82x e822_vernier[NUM_ICE_PTP_LNK_SPD];
->    */
->   #define ICE_E810_PLL_FREQ		812500000
->   #define ICE_PTP_NOMINAL_INCVAL_E810	0x13b13b13bULL
-> - #define ICE_E810_OUT_PROP_DELAY_NS	1
->   #define ICE_E810_E830_SYNC_DELAY	0
-> - #define ICE_E825C_OUT_PROP_DELAY_NS	11
->   
->   /* Device agnostic functions */
->   u8 ice_get_ptp_src_clock_index(struct ice_hw *hw);
-> @@ -390,11 +386,6 @@ static inline u64 ice_e82x_nominal_incval(enum ice_time_ref_freq time_ref)
->   	return e82x_time_ref[time_ref].nominal_incval;
->   }
->   
-> -static inline u64 ice_e82x_pps_delay(enum ice_time_ref_freq time_ref)
-> -{
-> -	return e82x_time_ref[time_ref].pps_delay;
-> -}
-> -
->   /* E822 Vernier calibration functions */
->   int ice_stop_phy_timer_e82x(struct ice_hw *hw, u8 port, bool soft_reset);
->   int ice_start_phy_timer_e82x(struct ice_hw *hw, u8 port);
-> @@ -432,20 +423,6 @@ int ice_phy_cfg_ptp_1step_eth56g(struct ice_hw *hw, u8 port);
->   #define ICE_ETH56G_NOMINAL_THRESH4	0x7777
->   #define ICE_ETH56G_NOMINAL_TX_THRESH	0x6
->   
-> -static inline u64 ice_prop_delay(const struct ice_hw *hw)
-> -{
-> -	switch (hw->mac_type) {
-> -	case ICE_MAC_E810:
-> -		return ICE_E810_OUT_PROP_DELAY_NS;
-> -	case ICE_MAC_GENERIC:
-> -		return ice_e82x_pps_delay(ice_e82x_time_ref(hw));
-> -	case ICE_MAC_GENERIC_3K_E825:
-> -		return ICE_E825C_OUT_PROP_DELAY_NS;
-> -	default:
-> -		return 0;
-> -	}
-> -}
-> -
->   /**
->    * ice_get_base_incval - Get base clock increment value
->    * @hw: pointer to the HW struct
-> 
-> base-commit: 85a30ab1a599eb2f21c044d935950311082db4c5
-
+Tested-by: Avigail Dahan <avigailx.dahan@intel.com>
