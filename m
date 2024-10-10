@@ -1,94 +1,95 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1AAF2997C1A
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 10 Oct 2024 07:04:57 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id ABDFA997E71
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 10 Oct 2024 09:08:32 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 243A240DED;
-	Thu, 10 Oct 2024 05:04:55 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 6772F60A69;
+	Thu, 10 Oct 2024 07:08:30 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id u_MXvS2Q8ffj; Thu, 10 Oct 2024 05:04:54 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id q-mDk7cqJv3H; Thu, 10 Oct 2024 07:08:29 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org A895240DE5
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7B9CE60A48
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1728536693;
-	bh=K6dS70mwYVt7qty0L93XdDaidT19MKZDH2IVtGdq3gA=;
-	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=8GKCwUK5S1Ks7eZWB5vn5Mv6vcKzoc4hu40JgjYI03w5+KpNi9wsJSgbE2ssbj2nB
-	 zLyZwzCSXapMmshFsdnZfMPELfS0D/lo+dI01VQ7HFEOoxqg5xW1IMv83M4aD+Sggn
-	 ZJGxcWLZ2v82bxxTpblKFInr3XSFxg9YFFFVaPAQDzhl0EsyM/vfLIW/EUsMVKC4Ph
-	 b5+v33VRDg4FehJ23BUMFCpWKzi+iO9FU80Pw5bDInx7lBcoMKz3zjLoO5V5DExVd2
-	 qBVqsdcT3XGG8NJxvOLUPo6zXMfyFOXGz7L0eksl8zsMAVv7yA/vC2B0YfY7hTerdL
-	 2fn/QLPJ2lGBA==
+	s=default; t=1728544109;
+	bh=IU6+r5lZGAYZvMk+oAC6fxTdFz8i+0mzjN8aBnNbt3M=;
+	h=From:To:In-Reply-To:References:Date:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 Cc:From;
+	b=cv0i0kM4ppTdL2em7IzSce+N4d9lriKqm3JhJr2BK6u5CDRAHNiSk2LoLb7lEgSBf
+	 tHmCKZGTg4uVGjvJjygHztGjj9TOf1p0PgZ4Aw9+L2yQHsAcxvh4iv6eEi05c6IQx/
+	 QikHpuvRJs3s33YzyKMhXYlXhRUvwBuheTFnxbBeSGPuF3C7v6FV9exYPyeQlUfLwf
+	 aLwkWgwPv26lC+k7ETZDwCDPCJt8QG3FyBiyTcIwODaOB9rKFV8/SlZuKx0SCSOwFP
+	 IcgIYDBwVWancoF3EfJZVcgbNdJMvBstjc/BT+IOwzRpbBzuSLdy0+gS6IAwWtvfrv
+	 jAH3T5RR7CVqA==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id A895240DE5;
-	Thu, 10 Oct 2024 05:04:53 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 7B9CE60A48;
+	Thu, 10 Oct 2024 07:08:29 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by ash.osuosl.org (Postfix) with ESMTP id 05D991BF40D
- for <intel-wired-lan@lists.osuosl.org>; Thu, 10 Oct 2024 05:04:52 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 706711BF473
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 10 Oct 2024 07:08:27 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id E753B4087B
- for <intel-wired-lan@lists.osuosl.org>; Thu, 10 Oct 2024 05:04:51 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 5EAFA608FB
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 10 Oct 2024 07:08:27 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 7Jy0WX9HQdIA for <intel-wired-lan@lists.osuosl.org>;
- Thu, 10 Oct 2024 05:04:50 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.20;
- helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 42CB840879
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 42CB840879
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.20])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 42CB840879
- for <intel-wired-lan@lists.osuosl.org>; Thu, 10 Oct 2024 05:04:49 +0000 (UTC)
-X-CSE-ConnectionGUID: QhiM3kzrTUqdF8/WB14h4Q==
-X-CSE-MsgGUID: /IaFcY03TyKLM69QPnzQ+w==
-X-IronPort-AV: E=McAfee;i="6700,10204,11220"; a="27684998"
-X-IronPort-AV: E=Sophos;i="6.11,192,1725346800"; d="scan'208";a="27684998"
-Received: from fmviesa005.fm.intel.com ([10.60.135.145])
- by orvoesa112.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 09 Oct 2024 22:04:49 -0700
-X-CSE-ConnectionGUID: ZkwoDprRR1eQKJRftpC5Gg==
-X-CSE-MsgGUID: pQb1HG4bTeayXGnqgDmUig==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.11,192,1725346800"; d="scan'208";a="80999834"
-Received: from lkp-server01.sh.intel.com (HELO a48cf1aa22e8) ([10.239.97.150])
- by fmviesa005.fm.intel.com with ESMTP; 09 Oct 2024 22:04:48 -0700
-Received: from kbuild by a48cf1aa22e8 with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1sylLx-000ACT-2T
- for intel-wired-lan@lists.osuosl.org; Thu, 10 Oct 2024 05:04:45 +0000
-Date: Thu, 10 Oct 2024 13:04:00 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <202410101356.g2CrMeOB-lkp@intel.com>
-User-Agent: s-nail v14.9.24
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1728536691; x=1760072691;
- h=date:from:to:subject:message-id;
- bh=NDLMg9PzkXnZ9P+EbYsCnIxyH0PUhiPjSvE0y8tETgE=;
- b=IwYIQ6+TytAem+/hlimLOdnlQAgyOm9N5UXFaEItr15YPyM3khafCm5E
- 8EZC8GMMrMJWltBdsTPXjc8rHZU00m/JubeoOUF3FingkC4HwmuP0GdgL
- 71quExiudzBGCnuoqlQexKe7RS+4gnqzaL3B0Hzi1i247d6wUomq7ooze
- npNr5WM/m+QR4IQoAvO9YVuVxjHvfyOqhtJU44PNrb00z40bBVZUDttQ0
- 9TWIKqsU7a/rRJu96D+ElTqMeDtCLuEbIuabmxoWyYoBp81J3hafPa4wK
- 270jC+4FgAXHVliRo6LUVouXcGI3jWeXa7qsplpg0/4MB7T14xEXMLa+9
- Q==;
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id ybuJHTa9pAxk for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 10 Oct 2024 07:08:26 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2a0a:51c0:0:12e:550::1; helo=galois.linutronix.de;
+ envelope-from=kurt@linutronix.de; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 12239608EE
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 12239608EE
+Received: from galois.linutronix.de (Galois.linutronix.de
+ [IPv6:2a0a:51c0:0:12e:550::1])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 12239608EE
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 10 Oct 2024 07:08:25 +0000 (UTC)
+From: Kurt Kanzenbach <kurt@linutronix.de>
+To: Joe Damato <jdamato@fastly.com>
+In-Reply-To: <Zwa3sW-4s7oqktX3@LQ3V64L9R2>
+References: <20241003233850.199495-1-jdamato@fastly.com>
+ <20241003233850.199495-3-jdamato@fastly.com>
+ <87msjg46lw.fsf@kurt.kurt.home> <Zwa3sW-4s7oqktX3@LQ3V64L9R2>
+Date: Thu, 10 Oct 2024 09:08:20 +0200
+Message-ID: <87wmig3063.fsf@kurt.kurt.home>
+MIME-Version: 1.0
+Content-Type: multipart/signed; boundary="=-=-=";
+ micalg=pgp-sha512; protocol="application/pgp-signature"
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linutronix.de; s=2020; t=1728544102;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=IU6+r5lZGAYZvMk+oAC6fxTdFz8i+0mzjN8aBnNbt3M=;
+ b=hw6Bw/VpVdaTyP4PBmtuQiqyNyiYHkDnABR2i0CsyzvWfQR8lbjUGyUVYA22YxziLtLurh
+ bzmp0RUF6lK9knrSbw7CDiCKGBOFj4OqN7MsJZkwO5gUJJvGM3RYd57HHx6NENWeAOz+ED
+ ZCHFxwoSaXMZZAsngUenbF0YOMYwWZ6XFzV5RK35CtJ7xZ2z6NHqLIehT1EciyTRYDubFR
+ gGLfyP2CEfDA87r+H2OqYiLTI970bcxQWGfVIO2C1tSn8w9LrbTLBcZkXGuX/zGJPa/i48
+ BYgr9IRALy0zHcQ4mv18vqSgBoWVL931KUIKujYr5FaOgWFLxWe3Qw82j9hP1Q==
+X-Mailman-Original-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed;
+ d=linutronix.de; s=2020e; t=1728544102;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=IU6+r5lZGAYZvMk+oAC6fxTdFz8i+0mzjN8aBnNbt3M=;
+ b=uehgxAKYZ234wpzUPC6gpFpkpmQEj/nuRSAJ/ahxtW5AhCw9W75oc9MAWoBWZ33KzS8VFS
+ auwPAKaLdTfNzKBA==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=IwYIQ6+T
-Subject: [Intel-wired-lan] [tnguy-next-queue:100GbE] BUILD SUCCESS
- 8f7ff18a5ec7d8ce47ff84a9d1b024bfb6039dd8
+ header.from=linutronix.de
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key, unprotected) header.d=linutronix.de
+ header.i=@linutronix.de header.a=rsa-sha256 header.s=2020 header.b=hw6Bw/Vp; 
+ dkim=pass header.d=linutronix.de header.i=@linutronix.de
+ header.a=ed25519-sha256 header.s=2020e header.b=uehgxAKY
+Subject: Re: [Intel-wired-lan] [RFC net-next 2/2] igc: Link queues to NAPI
+ instances
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -101,138 +102,188 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
+Cc: netdev@vger.kernel.org, open list <linux-kernel@vger.kernel.org>,
+ Eric Dumazet <edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ "David S. Miller" <davem@davemloft.net>, "moderated list:INTEL
+ ETHERNET DRIVERS" <intel-wired-lan@lists.osuosl.org>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/next-queue.git 100GbE
-branch HEAD: 8f7ff18a5ec7d8ce47ff84a9d1b024bfb6039dd8  e1000: Link NAPI instances to queues and IRQs
+--=-=-=
+Content-Type: text/plain
+Content-Transfer-Encoding: quoted-printable
 
-elapsed time: 1769m
+On Wed Oct 09 2024, Joe Damato wrote:
+> On Mon, Oct 07, 2024 at 11:14:51AM +0200, Kurt Kanzenbach wrote:
+>> Hi Joe,
+>>=20
+>> On Thu Oct 03 2024, Joe Damato wrote:
+>> > Link queues to NAPI instances via netdev-genl API so that users can
+>> > query this information with netlink:
+>> >
+>> > $ ./tools/net/ynl/cli.py --spec Documentation/netlink/specs/netdev.yam=
+l \
+>> >                          --dump queue-get --json=3D'{"ifindex": 2}'
+>> >
+>> > [{'id': 0, 'ifindex': 2, 'napi-id': 8193, 'type': 'rx'},
+>> >  {'id': 1, 'ifindex': 2, 'napi-id': 8194, 'type': 'rx'},
+>> >  {'id': 2, 'ifindex': 2, 'napi-id': 8195, 'type': 'rx'},
+>> >  {'id': 3, 'ifindex': 2, 'napi-id': 8196, 'type': 'rx'},
+>> >  {'id': 0, 'ifindex': 2, 'napi-id': 8193, 'type': 'tx'},
+>> >  {'id': 1, 'ifindex': 2, 'napi-id': 8194, 'type': 'tx'},
+>> >  {'id': 2, 'ifindex': 2, 'napi-id': 8195, 'type': 'tx'},
+>> >  {'id': 3, 'ifindex': 2, 'napi-id': 8196, 'type': 'tx'}]
+>> >
+>> > Since igc uses only combined queues, you'll note that the same NAPI ID
+>> > is present for both rx and tx queues at the same index, for example
+>> > index 0:
+>> >
+>> > {'id': 0, 'ifindex': 2, 'napi-id': 8193, 'type': 'rx'},
+>> > {'id': 0, 'ifindex': 2, 'napi-id': 8193, 'type': 'tx'},
+>> >
+>> > Signed-off-by: Joe Damato <jdamato@fastly.com>
+>> > ---
+>> >  drivers/net/ethernet/intel/igc/igc_main.c | 30 ++++++++++++++++++++---
+>> >  1 file changed, 26 insertions(+), 4 deletions(-)
+>> >
+>> > diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/e=
+thernet/intel/igc/igc_main.c
+>> > index 7964bbedb16c..b3bd5bf29fa7 100644
+>> > --- a/drivers/net/ethernet/intel/igc/igc_main.c
+>> > +++ b/drivers/net/ethernet/intel/igc/igc_main.c
+>> > @@ -4955,6 +4955,7 @@ static int igc_sw_init(struct igc_adapter *adapt=
+er)
+>> >  void igc_up(struct igc_adapter *adapter)
+>> >  {
+>> >  	struct igc_hw *hw =3D &adapter->hw;
+>> > +	struct napi_struct *napi;
+>> >  	int i =3D 0;
+>> >=20=20
+>> >  	/* hardware has been reset, we need to reload some things */
+>> > @@ -4962,8 +4963,17 @@ void igc_up(struct igc_adapter *adapter)
+>> >=20=20
+>> >  	clear_bit(__IGC_DOWN, &adapter->state);
+>> >=20=20
+>> > -	for (i =3D 0; i < adapter->num_q_vectors; i++)
+>> > -		napi_enable(&adapter->q_vector[i]->napi);
+>> > +	for (i =3D 0; i < adapter->num_q_vectors; i++) {
+>> > +		napi =3D &adapter->q_vector[i]->napi;
+>> > +		napi_enable(napi);
+>> > +		/* igc only supports combined queues, so link each NAPI to both
+>> > +		 * TX and RX
+>> > +		 */
+>>=20
+>> igc has IGC_FLAG_QUEUE_PAIRS. For example there may be 2 queues
+>> configured, but 4 vectors active (and 4 IRQs). Is your patch working
+>> with that?  Can be tested easily with `ethtool -L <inf> combined 2` or
+>> by booting with only 2 CPUs.
+>
+> I tested what you asked, here's what it looks like on my system:
 
-configs tested: 116
-configs skipped: 2
+Thanks.
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+>
+> 16 core Intel(R) Core(TM) i7-1360P
+>
+> lspci:
+> Ethernet controller: Intel Corporation Device 125c (rev 04)
+>                      Subsystem: Intel Corporation Device 3037
+>
+> ethtool -i:
+> firmware-version: 2017:888d
+>
+> $ sudo ethtool -L enp86s0 combined 2
+> $ sudo ethtool -l enp86s0
+> Channel parameters for enp86s0:
+> Pre-set maximums:
+> RX:		n/a
+> TX:		n/a
+> Other:		1
+> Combined:	4
+> Current hardware settings:
+> RX:		n/a
+> TX:		n/a
+> Other:		1
+> Combined:	2
+>
+> $ cat /proc/interrupts | grep enp86s0 | cut --delimiter=3D":" -f1
+>  144
+>  145
+>  146
+>  147
+>  148
+>
+> Note that IRQ 144 is the "other" IRQ, so if we ignore that one...
+> /proc/interrupts shows 4 IRQs, despite there being only 2 queues.
+>
+> Querying netlink to see which IRQs map to which NAPIs:
+>
+> $ ./tools/net/ynl/cli.py --spec Documentation/netlink/specs/netdev.yaml \
+>                          --dump napi-get --json=3D'{"ifindex": 2}'
+> [{'id': 8200, 'ifindex': 2, 'irq': 148},
+>  {'id': 8199, 'ifindex': 2, 'irq': 147},
+>  {'id': 8198, 'ifindex': 2, 'irq': 146},
+>  {'id': 8197, 'ifindex': 2, 'irq': 145}]
+>
+> This suggests that all 4 IRQs are assigned to a NAPI (this mapping
+> happens due to netif_napi_set_irq in patch 1).
+>
+> Now query the queues and which NAPIs they are associated with (which
+> is what patch 2 adds):
+>
+> $ ./tools/net/ynl/cli.py --spec Documentation/netlink/specs/netdev.yaml \=
+=20
+>                          --dump queue-get --json=3D'{"ifindex": 2}'
+> [{'id': 0, 'ifindex': 2, 'napi-id': 8197, 'type': 'rx'},
+>  {'id': 1, 'ifindex': 2, 'napi-id': 8198, 'type': 'rx'},
+>  {'id': 0, 'ifindex': 2, 'napi-id': 8197, 'type': 'tx'},
+>  {'id': 1, 'ifindex': 2, 'napi-id': 8198, 'type': 'tx'}]
+>
+> As you can see above, since the queues are combined and there are
+> only 2 of them, NAPI IDs 8197 and 8198 (which are triggered via IRQ
+> 145 and 146) are displayed.
 
-tested configs:
-alpha                             allnoconfig    gcc-13.3.0
-alpha                            allyesconfig    gcc-13.3.0
-alpha                               defconfig    gcc-13.3.0
-arc                              allmodconfig    gcc-13.2.0
-arc                               allnoconfig    gcc-13.2.0
-arc                              allyesconfig    gcc-13.2.0
-arc                                 defconfig    gcc-13.2.0
-arc                   randconfig-001-20241010    gcc-13.2.0
-arc                   randconfig-002-20241010    gcc-13.2.0
-arc                    vdk_hs38_smp_defconfig    gcc-13.2.0
-arm                              allmodconfig    gcc-14.1.0
-arm                               allnoconfig    clang-20
-arm                              allyesconfig    gcc-14.1.0
-arm                   milbeaut_m10v_defconfig    clang-16
-arm                   randconfig-001-20241010    clang-20
-arm                   randconfig-002-20241010    clang-20
-arm                   randconfig-003-20241010    clang-20
-arm                   randconfig-004-20241010    clang-20
-arm64                            allmodconfig    clang-20
-arm64                             allnoconfig    gcc-14.1.0
-csky                              allnoconfig    gcc-14.1.0
-csky                                defconfig    gcc-14.1.0
-hexagon                          allmodconfig    clang-20
-hexagon                           allnoconfig    clang-20
-hexagon                          allyesconfig    clang-20
-i386                             allmodconfig    gcc-12
-i386                              allnoconfig    gcc-12
-i386                             allyesconfig    gcc-12
-i386        buildonly-randconfig-001-20241010    clang-18
-i386        buildonly-randconfig-002-20241010    clang-18
-i386        buildonly-randconfig-003-20241010    clang-18
-i386        buildonly-randconfig-004-20241010    gcc-12
-i386        buildonly-randconfig-005-20241010    clang-18
-i386        buildonly-randconfig-006-20241010    clang-18
-i386                                defconfig    clang-18
-i386                  randconfig-001-20241010    clang-18
-i386                  randconfig-002-20241010    clang-18
-i386                  randconfig-003-20241010    gcc-12
-i386                  randconfig-004-20241010    clang-18
-i386                  randconfig-005-20241010    clang-18
-i386                  randconfig-006-20241010    clang-18
-i386                  randconfig-011-20241010    gcc-12
-i386                  randconfig-012-20241010    clang-18
-i386                  randconfig-013-20241010    gcc-12
-i386                  randconfig-014-20241010    clang-18
-i386                  randconfig-015-20241010    clang-18
-i386                  randconfig-016-20241010    clang-18
-loongarch                        allmodconfig    gcc-14.1.0
-loongarch                         allnoconfig    gcc-14.1.0
-m68k                             allmodconfig    gcc-14.1.0
-m68k                              allnoconfig    gcc-14.1.0
-m68k                             allyesconfig    gcc-14.1.0
-microblaze                       allmodconfig    gcc-14.1.0
-microblaze                        allnoconfig    gcc-14.1.0
-microblaze                       allyesconfig    gcc-14.1.0
-mips                              allnoconfig    gcc-14.1.0
-mips                      bmips_stb_defconfig    clang-20
-mips                           ci20_defconfig    clang-20
-mips                          malta_defconfig    gcc-13.2.0
-mips                          rb532_defconfig    clang-20
-mips                        vocore2_defconfig    clang-15
-nios2                             allnoconfig    gcc-14.1.0
-openrisc                          allnoconfig    clang-20
-openrisc                          allnoconfig    gcc-14.1.0
-openrisc                         allyesconfig    gcc-14.1.0
-openrisc                            defconfig    gcc-14.1.0
-openrisc                 simple_smp_defconfig    gcc-14.1.0
-parisc                           allmodconfig    gcc-14.1.0
-parisc                            allnoconfig    clang-20
-parisc                            allnoconfig    gcc-14.1.0
-parisc                           allyesconfig    gcc-14.1.0
-parisc                              defconfig    gcc-14.1.0
-powerpc                          allmodconfig    gcc-14.1.0
-powerpc                           allnoconfig    clang-20
-powerpc                           allnoconfig    gcc-14.1.0
-powerpc                          allyesconfig    clang-20
-powerpc                       eiger_defconfig    clang-20
-powerpc                     ppa8548_defconfig    gcc-14.1.0
-riscv                            allmodconfig    clang-20
-riscv                             allnoconfig    clang-20
-riscv                             allnoconfig    gcc-14.1.0
-riscv                            allyesconfig    clang-20
-riscv                               defconfig    clang-20
-s390                             allmodconfig    clang-20
-s390                              allnoconfig    clang-20
-s390                             allyesconfig    gcc-14.1.0
-s390                                defconfig    clang-20
-sh                               allmodconfig    gcc-14.1.0
-sh                                allnoconfig    gcc-14.1.0
-sh                               allyesconfig    gcc-14.1.0
-sh                                  defconfig    gcc-14.1.0
-sh                ecovec24-romimage_defconfig    gcc-14.1.0
-sh                        edosk7705_defconfig    gcc-14.1.0
-sparc                            allmodconfig    gcc-14.1.0
-sparc64                             defconfig    gcc-14.1.0
-um                               allmodconfig    clang-20
-um                                allnoconfig    clang-17
-um                                allnoconfig    clang-20
-um                               allyesconfig    gcc-12
-um                                  defconfig    clang-20
-um                             i386_defconfig    gcc-12
-um                           x86_64_defconfig    clang-15
-x86_64                            allnoconfig    clang-18
-x86_64                           allyesconfig    clang-18
-x86_64      buildonly-randconfig-001-20241010    gcc-12
-x86_64      buildonly-randconfig-002-20241010    clang-18
-x86_64      buildonly-randconfig-003-20241010    clang-18
-x86_64      buildonly-randconfig-004-20241010    gcc-12
-x86_64      buildonly-randconfig-005-20241010    clang-18
-x86_64      buildonly-randconfig-006-20241010    clang-18
-x86_64                              defconfig    gcc-11
-x86_64                                  kexec    clang-18
-x86_64                randconfig-002-20241010    gcc-12
-x86_64                               rhel-8.3    gcc-12
-x86_64                          rhel-8.3-rust    clang-18
-xtensa                            allnoconfig    gcc-14.1.0
+Is that really correct? There are four NAPI IDs which are triggered by
+the four IRQs. Let's say we have:
 
---
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+ - IRQ: 145 -> NAPI 8197 -> Tx for queue 0
+ - IRQ: 146 -> NAPI 8198 -> Rx for queue 0
+ - IRQ: 147 -> NAPI 8199 -> Tx for queue 1
+ - IRQ: 148 -> NAPI 8200 -> Rx for queue 1
+
+My understanding is that this scheme is used when <=3D 2 queues are
+configured. See IGC_FLAG_QUEUE_PAIRS.
+
+My expectation would be some output like:
+
+[{'id': 0, 'ifindex': 2, 'napi-id': 8197, 'type': 'tx'},
+ {'id': 0, 'ifindex': 2, 'napi-id': 8198, 'type': 'rx'},
+ {'id': 1, 'ifindex': 2, 'napi-id': 8199, 'type': 'tx'},
+ {'id': 1, 'ifindex': 2, 'napi-id': 8200, 'type': 'rx'}]
+
+Thanks,
+Kurt
+
+--=-=-=
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQJHBAEBCgAxFiEEvLm/ssjDfdPf21mSwZPR8qpGc4IFAmcHfWQTHGt1cnRAbGlu
+dXRyb25peC5kZQAKCRDBk9HyqkZzgm5kD/wKWSB0Ipa7QUEmYLceiDsnwHr9ptAG
+veIqB7500LItsANplLxHfgqb85Bs6ioag6EQVbnOCyeIncbO/2sPWGTYuen71uNk
+em7EhPF+c73A1NkLZzYMSw2FVnoPrPD3+9wIWzRBgYneix9b3nFwVAwgO1NiDnQg
+Vw+2WmAnJkM2KHziYF4lcuJlDFlwqUS674wJGVG3eQTzF/pAWzgML0BoldNMUQlP
+gQFdXhYK4HQJTaF09aIv7hwZOyI659+vUDmS7zvJd1qk1R9L+FaYiv3hOjuIu7YQ
+dEzWs9PhGH3vk50POY30Y248oiAO8wQZMloB0Y5CufKtgIB1fhx+NQFDAmdfI5If
+y+Vavk+N2/b6DvCQlyQ149SoJAwIRZ3Noa2J/q0vMSceCnncDJCITXYtTbhjmruv
+gq2guTYIZIFbpx4NKorJoWZ9fl0PGJL8uDgqRHO6cotcG40jS90p85Lm5iy1dVp/
+0Z55krETtccNRy/pp2FNT+ljwgUye5Mo9hOtXvKyNsVip50pxM+ng16U8h0uAIOd
+OyXeYASR6Xc9o9Ac5LX39AjoDnONwXj0+lnYyFjnMk6apyV5gNbXN2lCQDv9XZWt
+9P6VVuiCQB97u9oKOs7iO5cQ64frJI0nuLmafxg5eKcVi4Cb7gjhRYNJRdzFEvDM
+pgxnGG2nKU/qmg==
+=yeTM
+-----END PGP SIGNATURE-----
+--=-=-=--
