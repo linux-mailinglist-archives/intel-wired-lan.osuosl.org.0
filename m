@@ -1,90 +1,95 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id D7433998CE3
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 10 Oct 2024 18:10:47 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id CE988999D60
+	for <lists+intel-wired-lan@lfdr.de>; Fri, 11 Oct 2024 09:03:51 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 1995A81BCF;
-	Thu, 10 Oct 2024 16:10:46 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id C71BB82071;
+	Fri, 11 Oct 2024 07:03:49 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id o9dlT5ihAUrM; Thu, 10 Oct 2024 16:10:45 +0000 (UTC)
+ id ppFkd00D4MOQ; Fri, 11 Oct 2024 07:03:49 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org E91BE81BD4
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 28BB482051
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1728576645;
-	bh=NSzCZoqHvlrwRMbQ2mAG5ERUjRe5z8yUx9fJeDJu6sA=;
-	h=From:Date:References:In-Reply-To:To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 Cc:From;
-	b=EDWh0/zSk1w56RyS5DkJpACU7VjVofkcGcST/bbLttiI7xFoBFJNosIJXJVql1oRv
-	 fxKeEB2DmFZSBC0mxEyu1vHMzeZnVMomB0jnXRJ544uTgTmTUTYcRQmZSNIQ/X7qyD
-	 JLecu7oj3s1f8iLXCl23Ord1UDd3PFFjOCc4s59Sold5I4KZS6d302D+5ZxZoPmuja
-	 GFWpYH9ztjVhrdh0infPkVAeidpmQCDVLjHQ5XH2+AuC21cfY0uUanPCc7O1jZCBTz
-	 HTUtzSC/rpSZ8GNhV8LRja7aLhxJLVIMIhnRWQFvZWF17yzpkDauaRZKuMuqCLzhEK
-	 cOd3frhHVcAFA==
+	s=default; t=1728630229;
+	bh=vXbwrvuVVYSOXt8OeVX9XIUBurcIxMEtdJr0BKRevNU=;
+	h=From:To:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:Cc:From;
+	b=o02ETVDGREOJMNpdkIxqZb0zUO9OCcAVwTdTwkbE53boRr+V8XZIloskT8FhfX9U9
+	 Uk8vkubDtWYugfeBXJV1za9XyIWQwI1dc8A3Q9HHjDhIWJekWQObNAwGuGrG9g4Vjk
+	 sA4AP2f8hypUCpaO9zm3VaE0SlILeGS9IftMalNWMCMsEDQ3BfHaxFErKlvP8XMMoU
+	 PHvZygCvcztcPYqScxouFrkXkSdfarfjOedPK8AZ9SGgcUw/ovGwNg2aQCsgQAuevc
+	 pMiqfZ/OFExEsNGbiVxJFhRylE40d2i1WoNm53KClZSPPVpxnfCh8MNK5rqLPGOvM8
+	 bBPsFoSUJ+vnA==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id E91BE81BD4;
-	Thu, 10 Oct 2024 16:10:44 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 28BB482051;
+	Fri, 11 Oct 2024 07:03:49 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by ash.osuosl.org (Postfix) with ESMTP id 3B3C81BF4D6
- for <intel-wired-lan@lists.osuosl.org>; Thu, 10 Oct 2024 16:10:43 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 7B61F1BF385
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 11 Oct 2024 07:03:47 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id 361AC608E3
- for <intel-wired-lan@lists.osuosl.org>; Thu, 10 Oct 2024 16:10:43 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 74FC940543
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 11 Oct 2024 07:03:47 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id BnIheOfYsVwe for <intel-wired-lan@lists.osuosl.org>;
- Thu, 10 Oct 2024 16:10:42 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=139.178.84.217;
- helo=dfw.source.kernel.org; envelope-from=patchwork-bot+netdevbpf@kernel.org;
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id tkIifZiZN1oM for <intel-wired-lan@lists.osuosl.org>;
+ Fri, 11 Oct 2024 07:03:46 +0000 (UTC)
+Received-SPF: None (mailfrom) identity=mailfrom; client-ip=198.175.65.19;
+ helo=mgamail.intel.com; envelope-from=michal.swiatkowski@linux.intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 2342B607DE
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 2342B607DE
-Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 2342B607DE
- for <intel-wired-lan@lists.osuosl.org>; Thu, 10 Oct 2024 16:10:41 +0000 (UTC)
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by dfw.source.kernel.org (Postfix) with ESMTP id 912AE5C5E99;
- Thu, 10 Oct 2024 16:10:36 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9059CC4CEC5;
- Thu, 10 Oct 2024 16:10:40 +0000 (UTC)
-Received: from [10.30.226.235] (localhost [IPv6:::1])
- by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id
- 33AC33803263; Thu, 10 Oct 2024 16:10:46 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 2C164403ED
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 2C164403ED
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.19])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 2C164403ED
+ for <intel-wired-lan@lists.osuosl.org>; Fri, 11 Oct 2024 07:03:45 +0000 (UTC)
+X-CSE-ConnectionGUID: mCoBw1NwQwuoqG8CP4MnjA==
+X-CSE-MsgGUID: ZbI9Ba6tT0SXPDc4kwfI3g==
+X-IronPort-AV: E=McAfee;i="6700,10204,11221"; a="27913404"
+X-IronPort-AV: E=Sophos;i="6.11,195,1725346800"; d="scan'208";a="27913404"
+Received: from fmviesa002.fm.intel.com ([10.60.135.142])
+ by orvoesa111.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 11 Oct 2024 00:03:46 -0700
+X-CSE-ConnectionGUID: S1xeL+sEQxiAhYSsb1H1mQ==
+X-CSE-MsgGUID: MmuDoe7ySnSd4sXEK3Xgyw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.11,195,1725346800"; d="scan'208";a="100157742"
+Received: from gk3153-dr2-r750-36946.igk.intel.com ([10.102.20.192])
+ by fmviesa002.fm.intel.com with ESMTP; 11 Oct 2024 00:03:30 -0700
+From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+To: intel-wired-lan@lists.osuosl.org
+Date: Fri, 11 Oct 2024 09:03:28 +0200
+Message-ID: <20241011070328.45874-1-michal.swiatkowski@linux.intel.com>
+X-Mailer: git-send-email 2.42.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <172857664473.2081951.14668843585548257303.git-patchwork-notify@kernel.org>
-Date: Thu, 10 Oct 2024 16:10:44 +0000
-References: <cover.1728460186.git.pabeni@redhat.com>
-In-Reply-To: <cover.1728460186.git.pabeni@redhat.com>
-To: Paolo Abeni <pabeni@redhat.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1728576640;
- bh=3j3BdPgK6Vd/vnSvVA35LlyZ2UhPlFthr12ffk6o9is=;
- h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
- b=ubyGNQq1I2v0BQXSGgk6D6COJZZjh6wo2zDWaPuyMJUpIWyv7MvagP/L0mxAxRqCs
- QP95BH0983imVR6JyToy2/rNIEFvO1laaPHuer8fwE72lZqXVZBVbp8eX8C6rGvzfy
- fAAA9Z+IzT1hLhtVw2uNI6z0YxFgS1KItyIXG+wd/CrWV6QBsvGLlgi50WiISBjHRQ
- YoMstZhvG1FP331rMbrnQqmO2VvkzM9N3JN2jVxhzQEn5Y1qpwXP1QefMicr1Jmhtf
- WE5Qr2poGfRtqk+njRaoEE1iSr6Kc6MLXWw6jE4tdpulR9iXne3Zg0dLSglF/+Ncaf
- 0NPgk85JIz/0w==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1728630227; x=1760166227;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=gIwZN5qhCoc1qKjbX/TX6+2K2sh+0F1AM3i5JM3TVNw=;
+ b=amqwFs0VNdtTRHFImlf0m3P40xa627hPfriRzqWQOI43O4+26GxYMB34
+ fV/WhsmtiDl7RCGlPttIn+MfXdBKftFlmfRpmImfHSfAUs5cLYriZvzN2
+ 3xJukzEihMhT9jHdzGLYaOZ6XgjyW9asRxW2JbyWZYAG6x2xasEHhONlZ
+ K9Nxg4TcLPNVMe/rCe3k7NL1NLYrMMFCGY4I303onvm7JbBszENVHMi49
+ fgeACkqFial5QYiX1LqydDDigyvnCOV02lDC+NXgZG+XvUbKw8P263t/k
+ dxtDGIo9c0tddgi6FFE4EFMzFeX/sVTxG0ID8oxwJxs/c+fUrgfkp6LZy
+ g==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dmarc=none (p=none dis=none)
+ header.from=linux.intel.com
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20201202 header.b=ubyGNQq1
-Subject: Re: [Intel-wired-lan] [PATCH v9 net-next 00/15] net: introduce TX
- H/W shaping API
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=amqwFs0V
+Subject: [Intel-wired-lan] [iwl-next v1] ice: add recipe priority check in
+ search
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,67 +102,60 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: jiri@resnulli.us, sridhar.samudrala@intel.com, donald.hunter@gmail.com,
- john.fastabend@gmail.com, jhs@mojatatu.com, edumazet@google.com,
- madhu.chittim@intel.com, anthony.l.nguyen@intel.com, horms@kernel.org,
- netdev@vger.kernel.org, kuba@kernel.org, intel-wired-lan@lists.osuosl.org,
- przemyslaw.kitszel@intel.com, sgoutham@marvell.com, stfomichev@gmail.com
+Cc: netdev@vger.kernel.org, marcin.szycik@intel.com,
+ przemyslaw.kitszel@intel.com
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Hello:
+The new recipe should be added even if exactly the same recipe already
+exists with different priority.
 
-This series was applied to netdev/net-next.git (main)
-by Jakub Kicinski <kuba@kernel.org>:
+Example use case is when the rule is being added from TC tool context.
+It should has the highest priority, but if the recipe already exists
+the rule will inherit it priority. It can lead to the situation when
+the rule added from TC tool has lower priority than expected.
 
-On Wed,  9 Oct 2024 10:09:46 +0200 you wrote:
-> We have a plurality of shaping-related drivers API, but none flexible
-> enough to meet existing demand from vendors[1].
-> 
-> This series introduces new device APIs to configure in a flexible way
-> TX H/W shaping. The new functionalities are exposed via a newly
-> defined generic netlink interface and include introspection
-> capabilities. Some self-tests are included, on top of a dummy
-> netdevsim implementation. Finally a basic implementation for the iavf
-> driver is provided.
-> 
-> [...]
+The solution is to check the recipe priority when trying to find
+existing one.
 
-Here is the summary with links:
-  - [v9,net-next,01/15] genetlink: extend info user-storage to match NL cb ctx
-    https://git.kernel.org/netdev/net-next/c/13d68a164303
-  - [v9,net-next,02/15] netlink: spec: add shaper YAML spec
-    https://git.kernel.org/netdev/net-next/c/04e65df94b31
-  - [v9,net-next,03/15] net-shapers: implement NL get operation
-    https://git.kernel.org/netdev/net-next/c/4b623f9f0f59
-  - [v9,net-next,04/15] net-shapers: implement NL set and delete operations
-    https://git.kernel.org/netdev/net-next/c/93954b40f6a4
-  - [v9,net-next,05/15] net-shapers: implement NL group operation
-    https://git.kernel.org/netdev/net-next/c/5d5d4700e75d
-  - [v9,net-next,06/15] net-shapers: implement delete support for NODE scope shaper
-    https://git.kernel.org/netdev/net-next/c/bf230c497d31
-  - [v9,net-next,07/15] net-shapers: implement shaper cleanup on queue deletion
-    https://git.kernel.org/netdev/net-next/c/ff7d4deb1f3e
-  - [v9,net-next,08/15] netlink: spec: add shaper introspection support
-    https://git.kernel.org/netdev/net-next/c/14bba9285aed
-  - [v9,net-next,09/15] net: shaper: implement introspection support
-    https://git.kernel.org/netdev/net-next/c/553ea9f1efd6
-  - [v9,net-next,10/15] net-shapers: implement cap validation in the core
-    https://git.kernel.org/netdev/net-next/c/ecd82cfee355
-  - [v9,net-next,11/15] testing: net-drv: add basic shaper test
-    https://git.kernel.org/netdev/net-next/c/b3ea416419c8
-  - [v9,net-next,12/15] virtchnl: support queue rate limit and quanta size configuration
-    https://git.kernel.org/netdev/net-next/c/608a5c05c39b
-  - [v9,net-next,13/15] ice: Support VF queue rate limit and quanta size configuration
-    https://git.kernel.org/netdev/net-next/c/015307754a19
-  - [v9,net-next,14/15] iavf: Add net_shaper_ops support
-    https://git.kernel.org/netdev/net-next/c/ef490bbb2267
-  - [v9,net-next,15/15] iavf: add support to exchange qos capabilities
-    https://git.kernel.org/netdev/net-next/c/4c1a457cb8b0
+Previous recipe is still useful. Example:
+RID 8 -> priority 4
+RID 10 -> priority 7
 
-You are awesome, thank you!
+The difference is only in priority rest is let's say eth + mac +
+direction.
+
+Adding ARP + MAC_A + RX on RID 8, forward to VF0_VSI
+After that IP + MAC_B + RX on RID 10 (from TC tool), forward to PF0
+
+Both will work.
+
+In case of adding ARP + MAC_A + RX on RID 8, forward to VF0_VSI
+ARP + MAC_A + RX on RID 10, forward to PF0.
+
+Only second one will match, but this is expected.
+
+Reviewed-by: Marcin Szycik <marcin.szycik@linux.intel.com>
+Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
+Signed-off-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+---
+ drivers/net/ethernet/intel/ice/ice_switch.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/net/ethernet/intel/ice/ice_switch.c b/drivers/net/ethernet/intel/ice/ice_switch.c
+index 79d91e95358c..6a4a11fa5f14 100644
+--- a/drivers/net/ethernet/intel/ice/ice_switch.c
++++ b/drivers/net/ethernet/intel/ice/ice_switch.c
+@@ -4784,7 +4784,8 @@ ice_find_recp(struct ice_hw *hw, struct ice_prot_lkup_ext *lkup_exts,
+ 			 */
+ 			if (found && recp[i].tun_type == rinfo->tun_type &&
+ 			    recp[i].need_pass_l2 == rinfo->need_pass_l2 &&
+-			    recp[i].allow_pass_l2 == rinfo->allow_pass_l2)
++			    recp[i].allow_pass_l2 == rinfo->allow_pass_l2 &&
++			    recp[i].priority == rinfo->priority)
+ 				return i; /* Return the recipe ID */
+ 		}
+ 	}
 -- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
+2.42.0
 
