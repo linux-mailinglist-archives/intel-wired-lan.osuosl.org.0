@@ -2,100 +2,94 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5E98899C63A
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 14 Oct 2024 11:44:43 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id 8739A99C9B2
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 14 Oct 2024 14:08:46 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 19C1860724;
-	Mon, 14 Oct 2024 09:44:35 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id EFFD760609;
+	Mon, 14 Oct 2024 12:08:44 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 631d8khbrNh5; Mon, 14 Oct 2024 09:44:34 +0000 (UTC)
+ id xtYLXH1l2eJk; Mon, 14 Oct 2024 12:08:44 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org E3C726078B
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9B09660750
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1728899074;
-	bh=FNSbEKWmCMOnOkP3XigMOG3Hxc2cE6zhkYQduKgSBow=;
-	h=From:To:Date:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1728907723;
+	bh=gEcJR/qQYI7JBHCDG5kvF4CZ4xrhEgVc83vGvWKLtEU=;
+	h=From:To:In-Reply-To:References:Date:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=MlxaPga5+eWz+MmHqkX2eREZ/BxVj5MTSdn4jjaanxO4PY4pZVc4sZvABvydV/7SG
-	 2KKvLEUkYhg4ImsXkjcKyAs6cqaEBlGrpb8wMIYsVDX0FeiPYBkDCnAOCUidd9PHE2
-	 Yx9i1O0i7md2GGHYZ9gYvW2xdrgzYQetci5F4cFyhIfsjFSJI1utSEut2YbV8MiMXj
-	 q4e2B7wgfI+FvPpW6vfVZPymL8ypdpenFHh/phXxOoyTrF8YzCsZaHTRsdNb6HMBmU
-	 BrGSc56QEbfipQ/bb/NutjNHAteQsgYYxu4xDodRuaa2HC3WHYdmyo5t0oO0zvcCZV
-	 v41PoLnXCzF9Q==
+	b=fEKMDgYHh//ZNxGOBSCtvFiYYilgNE+RCyEE/rdFJnZGrCjoygazat3jAbZyO+jIl
+	 kcu8wu9PjiSz2ZAjyWN7Ud71jYY3LOnXRNRrwwY3QmUOUT6yNhkacrrYDShPUGtsMj
+	 GKpObWPGtvJ+YvGzBzmlxpyfqUZDqm7i1D/Uz/0tlsAD4CCOlGtIKQlu+I6k8iC+Ya
+	 U/dXTziuLZDzIfySJ4guUjx6jTPVxA0eBJjPbcFGRXzXfwEHpP5DnK9/cCxraIHOPW
+	 hMNRiuZvo9oFg4OiPG966RTnrvN4RDauFfkZtcS7tpMc3dkMHsuUbdYzci3W94TWDf
+	 Ubs0/xAJp4S5w==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id E3C726078B;
-	Mon, 14 Oct 2024 09:44:33 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 9B09660750;
+	Mon, 14 Oct 2024 12:08:43 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 77F961BF364
- for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Oct 2024 09:44:16 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by ash.osuosl.org (Postfix) with ESMTP id 701071BF303
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Oct 2024 12:08:41 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 7461F4032B
- for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Oct 2024 09:44:16 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 6B38C605D2
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Oct 2024 12:08:41 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id JHzUUidbBh-V for <intel-wired-lan@lists.osuosl.org>;
- Mon, 14 Oct 2024 09:44:15 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.10;
- helo=mgamail.intel.com; envelope-from=mateusz.polchlopek@intel.com;
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id NnLoBHrT8GMl for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 14 Oct 2024 12:08:40 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=193.142.43.55;
+ helo=galois.linutronix.de; envelope-from=kurt@linutronix.de;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org D4259400FB
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org D4259400FB
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.10])
- by smtp2.osuosl.org (Postfix) with ESMTPS id D4259400FB
- for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Oct 2024 09:44:14 +0000 (UTC)
-X-CSE-ConnectionGUID: f7hZ3FLXTY6z480MCJpKVg==
-X-CSE-MsgGUID: hAO5N+/ISbmJ7urBUgZUJw==
-X-IronPort-AV: E=McAfee;i="6700,10204,11222"; a="45712233"
-X-IronPort-AV: E=Sophos;i="6.11,199,1725346800"; d="scan'208";a="45712233"
-Received: from fmviesa009.fm.intel.com ([10.60.135.149])
- by orvoesa102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 14 Oct 2024 02:44:14 -0700
-X-CSE-ConnectionGUID: TE4aHIr1STWE4JiAYnaLLg==
-X-CSE-MsgGUID: 7/Fh5e8CTOiEf4LDpvRwZQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.11,202,1725346800"; d="scan'208";a="77531863"
-Received: from irvmail002.ir.intel.com ([10.43.11.120])
- by fmviesa009.fm.intel.com with ESMTP; 14 Oct 2024 02:44:10 -0700
-Received: from fedora.igk.intel.com (Metan_eth.igk.intel.com [10.123.220.124])
- by irvmail002.ir.intel.com (Postfix) with ESMTP id 1659027BD1;
- Mon, 14 Oct 2024 10:44:09 +0100 (IST)
-From: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
-To: intel-wired-lan@lists.osuosl.org,
-	aleksander.lobakin@intel.com
-Date: Sun, 13 Oct 2024 11:44:15 -0400
-Message-Id: <20241013154415.20262-15-mateusz.polchlopek@intel.com>
-X-Mailer: git-send-email 2.38.1
-In-Reply-To: <20241013154415.20262-1-mateusz.polchlopek@intel.com>
-References: <20241013154415.20262-1-mateusz.polchlopek@intel.com>
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 08CF6605D1
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 08CF6605D1
+Received: from galois.linutronix.de (Galois.linutronix.de [193.142.43.55])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 08CF6605D1
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 14 Oct 2024 12:08:39 +0000 (UTC)
+From: Kurt Kanzenbach <kurt@linutronix.de>
+To: Joe Damato <jdamato@fastly.com>
+In-Reply-To: <ZwnXuSUbaFiyGn52@LQ3V64L9R2>
+References: <20241003233850.199495-1-jdamato@fastly.com>
+ <20241003233850.199495-3-jdamato@fastly.com>
+ <87msjg46lw.fsf@kurt.kurt.home> <Zwa3sW-4s7oqktX3@LQ3V64L9R2>
+ <87wmig3063.fsf@kurt.kurt.home> <ZwnXuSUbaFiyGn52@LQ3V64L9R2>
+Date: Mon, 14 Oct 2024 14:08:34 +0200
+Message-ID: <87zfn6c2f1.fsf@kurt.kurt.home>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1728899055; x=1760435055;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=jGD7oNKwU5MrxipdNFiJJDZ82IxT7fO06kkoC7mmTI0=;
- b=a+T7KCZ+F/pKuDJVTQO/mfovCB8z/X7aZP0cfrW6w4qJT+KJMFX1Siao
- qf6Wu3FnU5/708p/Xv9Zy2GHi3PAaSdPg0PvxHQPMSjKNyovynlZEkQtI
- 9T0+9I+xCRuQL1DegQc6DATYIt1vaoniL3D0lihuLi4wpcgYEhNEirMF3
- 3WrEY5y+DG+XAZumSUy/VvSu+6dJSDPieS1xEjrEwoGHJyncFB0q84lQ8
- b1Rrt2lZIYmBu/ab2LvP2ydYFzwrK50ihaeQN0Bs2bS0m5rquq/my227h
- X58zHia6Kj0hMc9h2F37j4Q48ohS7h6ulIr9wYxnCs9SbfTDODYB6DzFW
- w==;
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+Content-Type: multipart/signed; boundary="=-=-=";
+ micalg=pgp-sha512; protocol="application/pgp-signature"
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linutronix.de; s=2020; t=1728907716;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=gEcJR/qQYI7JBHCDG5kvF4CZ4xrhEgVc83vGvWKLtEU=;
+ b=JfC55cLQE21yNRRGy8L6KJTgjXE/lFCHHYGV9LC58B/hIRGwr+0ihe1918BJlUpYLPVzpu
+ QJZkwYtoDpOjA06ZLKcvYosEy3LXF58PAu5hNqjvstONTAn0jT9E8O6zQNwt1GzdxVwZ6e
+ OAJKImax+Gqr6G8gqWqUJizOy/A2lDrL3nYtctVRXlNuQWpNGbI+0/ETJzLfQolMiCtU4k
+ Lrz/66OPjzfmNAxYGcsSMDIMU19FiJygwcogz1ji5JU0TJ+bpEa68x1xiuMxYjcR3yadh7
+ lTM7kacXImPmGtMUtR0DYnHyQzq4029N8HIrF4s+quXpM8YlLawB5gf3AnSqhQ==
+X-Mailman-Original-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed;
+ d=linutronix.de; s=2020e; t=1728907716;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=gEcJR/qQYI7JBHCDG5kvF4CZ4xrhEgVc83vGvWKLtEU=;
+ b=BfGevVBGI4KMq+TlAwIDcMsUEF7NJNpO2YwmCGoRB+sdcTi4l8gVeS/X+SNUfNlfBb3gLT
+ YA4IN5uYWOKCuvBg==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com
- header.a=rsa-sha256 header.s=Intel header.b=a+T7KCZ+
-Subject: [Intel-wired-lan] [PATCH iwl-next v11 14/14] iavf: add support for
- Rx timestamps to hotpath
+ header.from=linutronix.de
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key, unprotected) header.d=linutronix.de
+ header.i=@linutronix.de header.a=rsa-sha256 header.s=2020 header.b=JfC55cLQ; 
+ dkim=pass header.d=linutronix.de header.i=@linutronix.de
+ header.a=ed25519-sha256 header.s=2020e header.b=BfGevVBG
+Subject: Re: [Intel-wired-lan] [RFC net-next 2/2] igc: Link queues to NAPI
+ instances
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -108,249 +102,252 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Wojciech Drewek <wojciech.drewek@intel.com>, netdev@vger.kernel.org,
- Simon Horman <horms@kernel.org>,
- Mateusz Polchlopek <mateusz.polchlopek@intel.com>,
- Jacob Keller <jacob.e.keller@intel.com>,
- Rahul Rameshbabu <rrameshbabu@nvidia.com>,
- Sunil Goutham <sgoutham@marvell.com>
+Cc: netdev@vger.kernel.org, open list <linux-kernel@vger.kernel.org>,
+ Eric Dumazet <edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ "David S. Miller" <davem@davemloft.net>, "moderated list:INTEL
+ ETHERNET DRIVERS" <intel-wired-lan@lists.osuosl.org>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Jacob Keller <jacob.e.keller@intel.com>
+--=-=-=
+Content-Type: text/plain
+Content-Transfer-Encoding: quoted-printable
 
-Add support for receive timestamps to the Rx hotpath. This support only
-works when using the flexible descriptor format, so make sure that we
-request this format by default if we have receive timestamp support
-available in the PTP capabilities.
+On Fri Oct 11 2024, Joe Damato wrote:
+>> > 16 core Intel(R) Core(TM) i7-1360P
+>> >
+>> > lspci:
+>> > Ethernet controller: Intel Corporation Device 125c (rev 04)
+>> >                      Subsystem: Intel Corporation Device 3037
+>> >
+>> > ethtool -i:
+>> > firmware-version: 2017:888d
+>> >
+>> > $ sudo ethtool -L enp86s0 combined 2
+>> > $ sudo ethtool -l enp86s0
+>> > Channel parameters for enp86s0:
+>> > Pre-set maximums:
+>> > RX:		n/a
+>> > TX:		n/a
+>> > Other:		1
+>> > Combined:	4
+>> > Current hardware settings:
+>> > RX:		n/a
+>> > TX:		n/a
+>> > Other:		1
+>> > Combined:	2
+>> >
+>> > $ cat /proc/interrupts | grep enp86s0 | cut --delimiter=3D":" -f1
+>> >  144
+>> >  145
+>> >  146
+>> >  147
+>> >  148
+>> >
+>> > Note that IRQ 144 is the "other" IRQ, so if we ignore that one...
+>> > /proc/interrupts shows 4 IRQs, despite there being only 2 queues.
+>> >
+>> > Querying netlink to see which IRQs map to which NAPIs:
+>> >
+>> > $ ./tools/net/ynl/cli.py --spec Documentation/netlink/specs/netdev.yam=
+l \
+>> >                          --dump napi-get --json=3D'{"ifindex": 2}'
+>> > [{'id': 8200, 'ifindex': 2, 'irq': 148},
+>> >  {'id': 8199, 'ifindex': 2, 'irq': 147},
+>> >  {'id': 8198, 'ifindex': 2, 'irq': 146},
+>> >  {'id': 8197, 'ifindex': 2, 'irq': 145}]
+>> >
+>> > This suggests that all 4 IRQs are assigned to a NAPI (this mapping
+>> > happens due to netif_napi_set_irq in patch 1).
+>> >
+>> > Now query the queues and which NAPIs they are associated with (which
+>> > is what patch 2 adds):
+>> >
+>> > $ ./tools/net/ynl/cli.py --spec Documentation/netlink/specs/netdev.yam=
+l \=20
+>> >                          --dump queue-get --json=3D'{"ifindex": 2}'
+>> > [{'id': 0, 'ifindex': 2, 'napi-id': 8197, 'type': 'rx'},
+>> >  {'id': 1, 'ifindex': 2, 'napi-id': 8198, 'type': 'rx'},
+>> >  {'id': 0, 'ifindex': 2, 'napi-id': 8197, 'type': 'tx'},
+>> >  {'id': 1, 'ifindex': 2, 'napi-id': 8198, 'type': 'tx'}]
+>> >
+>> > As you can see above, since the queues are combined and there are
+>> > only 2 of them, NAPI IDs 8197 and 8198 (which are triggered via IRQ
+>> > 145 and 146) are displayed.
+>>=20
+>> Is that really correct?
+>
+> So I definitely think the case where IGC_FLAG_QUEUE_PAIRS is enabled is
+> correct, that case is highlighted by the original commit message.
 
-In order to report the timestamps to userspace, we need to perform
-timestamp extension. The Rx descriptor does actually contain the "40
-bit" timestamp. However, upper 32 bits which contain nanoseconds are
-conveniently stored separately in the descriptor. We could extract the
-32bits and lower 8 bits, then perform a bitwise OR to calculate the
-40bit value. This makes no sense, because the timestamp extension
-algorithm would simply discard the lower 8 bits anyways.
+Yes.
 
-Thus, implement timestamp extension as iavf_ptp_extend_32b_timestamp(),
-and extract and forward only the 32bits of nominal nanoseconds.
+>
+> I think IGC_FLAG_QUEUE_PAIRS disabled was buggy, as you pointed out, and =
+I've
+> made a change I'll include in the next RFC, which I believe fixes it.
 
-Signed-off-by: Jacob Keller <jacob.e.keller@intel.com>
-Reviewed-by: Wojciech Drewek <wojciech.drewek@intel.com>
-Reviewed-by: Rahul Rameshbabu <rrameshbabu@nvidia.com>
-Reviewed-by: Sunil Goutham <sgoutham@marvell.com>
-Reviewed-by: Simon Horman <horms@kernel.org>
-Signed-off-by: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
----
- drivers/net/ethernet/intel/iavf/iavf_main.c |  9 +++
- drivers/net/ethernet/intel/iavf/iavf_ptp.c  | 61 +++++++++++++++++++++
- drivers/net/ethernet/intel/iavf/iavf_ptp.h  |  4 ++
- drivers/net/ethernet/intel/iavf/iavf_txrx.c | 43 +++++++++++++++
- drivers/net/ethernet/intel/iavf/iavf_type.h |  1 +
- 5 files changed, 118 insertions(+)
+Great, thanks :).
 
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_main.c b/drivers/net/ethernet/intel/iavf/iavf_main.c
-index 1103c210b4e3..a25ceecf1ea7 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_main.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_main.c
-@@ -730,6 +730,15 @@ static u8 iavf_select_rx_desc_format(const struct iavf_adapter *adapter)
- 	if (!IAVF_RXDID_ALLOWED(adapter))
- 		return VIRTCHNL_RXDID_1_32B_BASE;
- 
-+	/* Rx timestamping requires the use of flexible NIC descriptors */
-+	if (iavf_ptp_cap_supported(adapter, VIRTCHNL_1588_PTP_CAP_RX_TSTAMP)) {
-+		if (rxdids & BIT(VIRTCHNL_RXDID_2_FLEX_SQ_NIC))
-+			return VIRTCHNL_RXDID_2_FLEX_SQ_NIC;
-+
-+		pci_warn(adapter->pdev,
-+			 "Unable to negotiate flexible descriptor format\n");
-+	}
-+
- 	/* Warn if the PF does not list support for the default legacy
- 	 * descriptor format. This shouldn't happen, as this is the format
- 	 * used if VIRTCHNL_VF_OFFLOAD_RX_FLEX_DESC is not supported. It is
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_ptp.c b/drivers/net/ethernet/intel/iavf/iavf_ptp.c
-index 5550f44c87d3..a5162ee3a1c9 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_ptp.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_ptp.c
-@@ -392,6 +392,9 @@ void iavf_ptp_release(struct iavf_adapter *adapter)
- 	}
- 	adapter->aq_required &= ~IAVF_FLAG_AQ_SEND_PTP_CMD;
- 	mutex_unlock(&adapter->ptp.aq_cmd_lock);
-+
-+	adapter->ptp.hwtstamp_config.rx_filter = HWTSTAMP_FILTER_NONE;
-+	iavf_ptp_disable_rx_tstamp(adapter);
- }
- 
- /**
-@@ -420,3 +423,61 @@ void iavf_ptp_process_caps(struct iavf_adapter *adapter)
- 		iavf_ptp_disable_rx_tstamp(adapter);
- 	}
- }
-+
-+/**
-+ * iavf_ptp_extend_32b_timestamp - Convert a 32b nanoseconds timestamp to 64b
-+ * nanoseconds
-+ * @cached_phc_time: recently cached copy of PHC time
-+ * @in_tstamp: Ingress/egress 32b nanoseconds timestamp value
-+ *
-+ * Hardware captures timestamps which contain only 32 bits of nominal
-+ * nanoseconds, as opposed to the 64bit timestamps that the stack expects.
-+ *
-+ * Extend the 32bit nanosecond timestamp using the following algorithm and
-+ * assumptions:
-+ *
-+ * 1) have a recently cached copy of the PHC time
-+ * 2) assume that the in_tstamp was captured 2^31 nanoseconds (~2.1
-+ *    seconds) before or after the PHC time was captured.
-+ * 3) calculate the delta between the cached time and the timestamp
-+ * 4) if the delta is smaller than 2^31 nanoseconds, then the timestamp was
-+ *    captured after the PHC time. In this case, the full timestamp is just
-+ *    the cached PHC time plus the delta.
-+ * 5) otherwise, if the delta is larger than 2^31 nanoseconds, then the
-+ *    timestamp was captured *before* the PHC time, i.e. because the PHC
-+ *    cache was updated after the timestamp was captured by hardware. In this
-+ *    case, the full timestamp is the cached time minus the inverse delta.
-+ *
-+ * This algorithm works even if the PHC time was updated after a Tx timestamp
-+ * was requested, but before the Tx timestamp event was reported from
-+ * hardware.
-+ *
-+ * This calculation primarily relies on keeping the cached PHC time up to
-+ * date. If the timestamp was captured more than 2^31 nanoseconds after the
-+ * PHC time, it is possible that the lower 32bits of PHC time have
-+ * overflowed more than once, and we might generate an incorrect timestamp.
-+ *
-+ * This is prevented by (a) periodically updating the cached PHC time once
-+ * a second, and (b) discarding any Tx timestamp packet if it has waited for
-+ * a timestamp for more than one second.
-+ *
-+ * Return: extended timestamp (to 64b).
-+ */
-+u64 iavf_ptp_extend_32b_timestamp(u64 cached_phc_time, u32 in_tstamp)
-+{
-+	u32 low = lower_32_bits(cached_phc_time);
-+	u32 delta = in_tstamp - low;
-+	u64 ns;
-+
-+	/* Do not assume that the in_tstamp is always more recent than the
-+	 * cached PHC time. If the delta is large, it indicates that the
-+	 * in_tstamp was taken in the past, and should be converted
-+	 * forward.
-+	 */
-+	if (delta > S32_MAX)
-+		ns = cached_phc_time - (low - in_tstamp);
-+	else
-+		ns = cached_phc_time + delta;
-+
-+	return ns;
-+}
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_ptp.h b/drivers/net/ethernet/intel/iavf/iavf_ptp.h
-index 4c8539c1841d..0f69ccf54ccc 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_ptp.h
-+++ b/drivers/net/ethernet/intel/iavf/iavf_ptp.h
-@@ -6,6 +6,9 @@
- 
- #include "iavf_types.h"
- 
-+/* bit indicating whether a 40bit timestamp is valid */
-+#define IAVF_PTP_40B_TSTAMP_VALID	BIT(24)
-+
- void iavf_ptp_init(struct iavf_adapter *adapter);
- void iavf_ptp_release(struct iavf_adapter *adapter);
- void iavf_ptp_process_caps(struct iavf_adapter *adapter);
-@@ -14,5 +17,6 @@ void iavf_virtchnl_send_ptp_cmd(struct iavf_adapter *adapter);
- int iavf_ptp_set_ts_config(struct iavf_adapter *adapter,
- 			   struct kernel_hwtstamp_config *config,
- 			   struct netlink_ext_ack *extack);
-+u64 iavf_ptp_extend_32b_timestamp(u64 cached_phc_time, u32 in_tstamp);
- 
- #endif /* _IAVF_PTP_H_ */
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_txrx.c b/drivers/net/ethernet/intel/iavf/iavf_txrx.c
-index a3dfbb9806b4..b78b377047a8 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_txrx.c
-+++ b/drivers/net/ethernet/intel/iavf/iavf_txrx.c
-@@ -8,6 +8,7 @@
- #include "iavf.h"
- #include "iavf_trace.h"
- #include "iavf_prototype.h"
-+#include "iavf_ptp.h"
- 
- /**
-  * iavf_is_descriptor_done - tests DD bit in Rx descriptor
-@@ -1076,6 +1077,45 @@ static void iavf_flex_rx_hash(const struct iavf_ring *ring, __le64 qw1,
- 	}
- }
- 
-+/**
-+ * iavf_flex_rx_tstamp - Capture Rx timestamp from the descriptor
-+ * @rx_ring: descriptor ring
-+ * @qw2: quad word 2 of descriptor
-+ * @qw3: quad word 3 of descriptor
-+ * @skb: skb currently being received
-+ *
-+ * Read the Rx timestamp value from the descriptor and pass it to the stack.
-+ *
-+ * This function only operates on the VIRTCHNL_RXDID_2_FLEX_SQ_NIC flexible
-+ * descriptor writeback format.
-+ */
-+static void iavf_flex_rx_tstamp(const struct iavf_ring *rx_ring, __le64 qw2,
-+				__le64 qw3, struct sk_buff *skb)
-+{
-+	u32 tstamp;
-+	u64 ns;
-+
-+	/* Skip processing if timestamps aren't enabled */
-+	if (!(rx_ring->flags & IAVF_TXRX_FLAGS_HW_TSTAMP))
-+		return;
-+
-+	/* Check if this Rx descriptor has a valid timestamp */
-+	if (!le64_get_bits(qw2, IAVF_PTP_40B_TSTAMP_VALID))
-+		return;
-+
-+	/* the ts_low field only contains the valid bit and sub-nanosecond
-+	 * precision, so we don't need to extract it.
-+	 */
-+	tstamp = le64_get_bits(qw3, IAVF_RXD_FLEX_QW3_TSTAMP_HIGH_M);
-+
-+	ns = iavf_ptp_extend_32b_timestamp(rx_ring->ptp->cached_phc_time,
-+					   tstamp);
-+
-+	*skb_hwtstamps(skb) = (struct skb_shared_hwtstamps) {
-+		.hwtstamp = ns_to_ktime(ns),
-+	};
-+}
-+
- /**
-  * iavf_process_skb_fields - Populate skb header fields from Rx descriptor
-  * @rx_ring: rx descriptor ring packet is being transacted on
-@@ -1097,11 +1137,14 @@ static void iavf_process_skb_fields(const struct iavf_ring *rx_ring,
- 	struct libeth_rx_pt decoded_pt;
- 	__le64 qw0 = rx_desc->qw0;
- 	__le64 qw1 = rx_desc->qw1;
-+	__le64 qw2 = rx_desc->qw2;
-+	__le64 qw3 = rx_desc->qw3;
- 
- 	decoded_pt = libie_rx_pt_parse(ptype);
- 
- 	if (flex) {
- 		iavf_flex_rx_hash(rx_ring, qw1, skb, decoded_pt);
-+		iavf_flex_rx_tstamp(rx_ring, qw2, qw3, skb);
- 		csum_bits = iavf_flex_rx_csum(rx_ring->vsi, le64_to_cpu(qw1),
- 					      decoded_pt);
- 	} else {
-diff --git a/drivers/net/ethernet/intel/iavf/iavf_type.h b/drivers/net/ethernet/intel/iavf/iavf_type.h
-index e62a8a0067ea..f9e1319620f4 100644
---- a/drivers/net/ethernet/intel/iavf/iavf_type.h
-+++ b/drivers/net/ethernet/intel/iavf/iavf_type.h
-@@ -285,6 +285,7 @@ struct iavf_rx_desc {
- /* L2 Tag 2 Presence */
- #define IAVF_RXD_FLEX_L2TAG2P_M			BIT(11)
- 	aligned_le64 qw3;
-+#define IAVF_RXD_FLEX_QW3_TSTAMP_HIGH_M		GENMASK_ULL(63, 32)
- } __aligned(4 * sizeof(__le64));
- static_assert(sizeof(struct iavf_rx_desc) == 32);
- 
--- 
-2.38.1
+>
+> Please see below for the case where IGC_FLAG_QUEUE_PAIRS is disabled and a
+> walk-through.
+>
+>> There are four NAPI IDs which are triggered by
+>> the four IRQs.
+>
+> I'm not an IGC expert and I appreciate your review/comments very much, so=
+ thank
+> you!
+>
+> I don't think the number of queues I create with ethtool factors into whe=
+ther
+> or not IGC_FLAG_QUEUE_PAIRS is enabled or not.
 
+igc_ethtool_set_channels() sets adapter->rss_queues and calls
+igc_set_flag_queue_pairs(). So, ethtool should influence it.
+
+> Please forgive me for the length of my message, but let me walk
+> through the code to see if I've gotten it right, including some debug
+> output I added:
+>
+> In igc_init_queue_configuration:
+>
+> max_rss_queues =3D IGC_MAX_RX_QUEUES (4)
+>
+> and
+>
+> adapter->rss_queues =3D min of 4 or num_online_cpus
+>
+> which I presume is 16 on my 16 core machine, so:
+>
+> adapter->rss_queues =3D 4 (see below for debug output which verifies this)
+>
+> In igc_set_flag_queue_pairs, the flag IGC_FLAG_QUEUE_PAIRS is set only if:
+>
+> (adapter->rss_queues (4) > max_rss_queues(4) / 2) which simplifies
+> to (4 > 2), meaning the flag would be enabled regardless of the
+> number of queues I create with ethtool, as long as I boot my machine
+> with 16 cores available.
+>
+> I verified this by adding debug output to igc_set_flag_queue_pairs and
+> igc_init_queue_configuration, which outputs:
+>
+> igc 0000:56:00.0: IGC_FLAG_QUEUE_PAIRS on
+> igc 0000:56:00.0: max_rss_queues: 4, rss_queues: 4
+>
+> That's at boot with the default number of combined queues of 4 (which is =
+also
+> the hardware max).
+>
+> The result of IGC_FLAG_QUEUE_PAIRS on was the result posted in the
+> original commit message of this patch and I believe that to be
+> correct.
+>
+> The only place I can see that IGC_FLAG_QUEUE_PAIRS has any impact
+> (aside from ethtool IRQ coalescing, which we can ignore) is
+> igc_set_interrupt_capability:
+>
+>   /* start with one vector for every Rx queue */
+>   numvecs =3D adapter->num_rx_queues;
+>=20=20=20
+>   /* if Tx handler is separate add 1 for every Tx queue */
+>   if (!(adapter->flags & IGC_FLAG_QUEUE_PAIRS))
+>     numvecs +=3D adapter->num_tx_queues;
+>
+> In this case, the flag only has impact if it is _off_.
+>
+> It impacts the number of vectors allocated, so I made a small change
+> to the driver, which I'll include in the next RFC to deal with the
+> IGC_FLAG_QUEUE_PAIRS off case.
+>
+> In order to get IGC_FLAG_QUEUE_PAIRS off, I boot my machine with the grub
+> command line option "maxcpus=3D2", which should force the flag off.
+>
+> Checking my debug output at boot to make sure:
+>
+> igc 0000:56:00.0: IGC_FLAG_QUEUE_PAIRS off
+> igc 0000:56:00.0: max_rss_queues: 4, rss_queues: 2
+>
+> So, now IGC_FLAG_QUEUE_PAIRS is off which should impact
+> igc_set_interrupt_capability and the vector calculation.
+>
+> Let's check how things look at boot:
+>
+> $ ethtool -l enp86s0 | tail -5
+> Current hardware settings:
+> RX:		n/a
+> TX:		n/a
+> Other:		1
+> Combined:	2
+>
+> 2 combined queues by default when I have 2 CPUs.
+>
+> $ cat /proc/interrupts  | grep enp
+>  127:  enp86s0
+>  128:  enp86s0-rx-0
+>  129:  enp86s0-rx-1
+>  130:  enp86s0-tx-0
+>  131:  enp86s0-tx-1
+>
+> 1 other IRQ, and 2 IRQs for each of RX and TX.
+>
+> Compare to netlink:
+>
+> $ ./tools/net/ynl/cli.py --spec Documentation/netlink/specs/netdev.yaml \
+>                        --dump napi-get --json=3D'{"ifindex": 2}'
+> [{'id': 8196, 'ifindex': 2, 'irq': 131},
+>  {'id': 8195, 'ifindex': 2, 'irq': 130},
+>  {'id': 8194, 'ifindex': 2, 'irq': 129},
+>  {'id': 8193, 'ifindex': 2, 'irq': 128}]
+>
+> So the driver has 4 IRQs linked to 4 different NAPIs, let's check queues:
+>
+> $ ./tools/net/ynl/cli.py --spec Documentation/netlink/specs/netdev.yaml \
+>                          --dump queue-get --json=3D'{"ifindex": 2}'
+>
+> [{'id': 0, 'ifindex': 2, 'napi-id': 8193, 'type': 'rx'},
+>  {'id': 1, 'ifindex': 2, 'napi-id': 8194, 'type': 'rx'},
+>  {'id': 0, 'ifindex': 2, 'napi-id': 8195, 'type': 'tx'},
+>  {'id': 1, 'ifindex': 2, 'napi-id': 8196, 'type': 'tx'}]
+>
+> In this case you can see that each RX and TX queue has a unique NAPI.
+>
+> I think this is correct, but slightly confusing :) as ethtool
+> reports n/a for RX and TX and only reports a combined queue count,
+> but you were correct that there was a bug for this case in the code
+> I proposed in this RFC.
+>
+> I think this new output looks correct and will include the adjusted
+> patch and a detailed commit message in the next RFC.
+>
+> Let me know if you think the output looks right to you now?
+
+Looks good to me now.
+
+Thanks,
+Kurt
+
+--=-=-=
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQJHBAEBCgAxFiEEvLm/ssjDfdPf21mSwZPR8qpGc4IFAmcNCcITHGt1cnRAbGlu
+dXRyb25peC5kZQAKCRDBk9HyqkZzgmfuD/9PLA6H/l3Onsm204kSaDJQkhAj8/qf
+nBm0wqMs1nw/DmpJAfb8WaaZpYgPhMQNYzRCgZBTMDBStG1dvPudanxeVzDfoHfh
+TAJa4SDjzqryywCDRCf7kmmsltVnbc6Zyv9rWunNuQFjdcOSQHV9aRBE7IKZ/DiX
+nrKLQpmK77KiIrMFxv3q/H6pz2pItlJrTmofUe9kXEcYZgLNDidBPZuQR5tX9ny5
+bzr2tTnd9O7zmTnpHA4FYhaGpDStS0k7wzcodbI4AXI4THHx6g6M1Yj8ZWG9LxpZ
+LhKUA86wF5URlwR0gJxUXOS4PT9gQb9loiOmgWVqYqvfL8uToql6Mwf//NSXY4bb
+MS71auFDnqkbLnXd5MhXIb9J5QboEjP4yfK4EgRFjdBZFGKflXFJe25/5JssZmDq
+Zv+rcSQBGa09WcxcIHdRsYllTXK0pUEKMoLuFux3nlV2mhaygPy/KTSM01VWRmo/
+LfD15FJbdJLErM7QuowaSJ+t2B8RqVNNuEHYohAY1btK1MWcsbuIHz1weInCnEIl
+o3XSJKvwfyDotnwhhclr+DN4QBi/ispbJHRJPZlFtCJ+8qUp20PbH8h1FOj5JWh6
+VYrGcLg8bR9LcdqgDs1jiugmUgfk5wn7OKtbViVFrGSMrTtG/NaEi6O1gnHdzh9D
+YyYzJufnkRqXqA==
+=vwnG
+-----END PGP SIGNATURE-----
+--=-=-=--
