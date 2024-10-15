@@ -1,89 +1,100 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0F23F99DA91
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 15 Oct 2024 02:14:16 +0200 (CEST)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+	by mail.lfdr.de (Postfix) with ESMTPS id BD4B999DBE8
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 15 Oct 2024 03:52:07 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 691B4403AC;
-	Tue, 15 Oct 2024 00:14:14 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id 45D584096B;
+	Tue, 15 Oct 2024 01:52:06 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id k-BX_teA2OoL; Tue, 15 Oct 2024 00:14:13 +0000 (UTC)
+ id WBOaBQAbuMKx; Tue, 15 Oct 2024 01:52:05 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 6AC0F40530
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org CA3C64063B
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1728951253;
-	bh=D1bOouhGYp8qYUjvtk9VBz/g0FK7jRRodQ+2KCWlw7I=;
-	h=Date:From:To:In-Reply-To:References:Subject:List-Id:
+	s=default; t=1728957125;
+	bh=aFubY3hDlN4JAZvP05a365cRVGS3VvQnoS3gjUeyF9Y=;
+	h=From:To:In-Reply-To:References:Date:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=LbjOHBokCKCtoEehuq+jZJ/b5px65ecY8z6v06og2U0p1hIBs2aM5ufhP+EXx/REk
-	 CM2DDZaHtShWvHfz24YQphulKmoNtWt4gavnDCdrW4fa0of4kEwPyHVJcF0XEywg/M
-	 ZN9dBl4nJJ0XW9D9PCbnxirSWDG4C/6KExt7sq/R/RZF7Mr685TZTSOPWdMv8CYC5t
-	 4gEVUmVOgugvK6yAMfp9g6B039GDNOvDGfCog9PLHIo5fESLh82EUDOQjvfPJXA0R+
-	 /Ptviopa0rF638P9IYclAwkF/n2zm6x9Sy8v9zVZAx6XGIuxKv8uPUBRr+CjcqAdRY
-	 o4bNHlnE69jOA==
+	b=TjbvZbTP/pjtcIKqQ+5TCtbkuh1ScmYEBpJjIdx+GaTA+ryOBeBQQeDwoi2xGzi0m
+	 Pt4XU2xSqOrRYtqw7ueLcSskAQ+wQo0+PzpAVvrwBIBVKyaeWlh39AbfKi8W+FRULE
+	 XxA6xazwYZcWVTT71BxwDNINXRpCt9bFPkG1U4Y86lJsxDPhFp4iHaCPWd3osem4zN
+	 00dVPZddvJJcnzIosveCGl3Wk2iylePTCDtqmrfNsOOzYMy4okUh6vWOTKRNj7ATdI
+	 wkeerIKJlgiAfyx1zSl7HCenQm/eOsJk/KZNx/KLSHDbSWVJDBJHeoqDA9s7NWQEYs
+	 qvKaUsYhiNLdQ==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp2.osuosl.org (Postfix) with ESMTP id 6AC0F40530;
-	Tue, 15 Oct 2024 00:14:13 +0000 (UTC)
+	by smtp2.osuosl.org (Postfix) with ESMTP id CA3C64063B;
+	Tue, 15 Oct 2024 01:52:04 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by ash.osuosl.org (Postfix) with ESMTP id 7EC6E1BF2EB
- for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Oct 2024 00:14:11 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id D46841BF2EA
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Oct 2024 01:52:02 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 6C1C1402E5
- for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Oct 2024 00:14:11 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 9CA904048F
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Oct 2024 01:52:01 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id du-coyL2xEle for <intel-wired-lan@lists.osuosl.org>;
- Tue, 15 Oct 2024 00:14:10 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2604:1380:45d1:ec00::3; helo=nyc.source.kernel.org;
- envelope-from=kuba@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 7B2B840137
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 7B2B840137
-Received: from nyc.source.kernel.org (nyc.source.kernel.org
- [IPv6:2604:1380:45d1:ec00::3])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 7B2B840137
- for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Oct 2024 00:14:10 +0000 (UTC)
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by nyc.source.kernel.org (Postfix) with ESMTP id 98022A42980;
- Tue, 15 Oct 2024 00:13:59 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 69880C4CEC3;
- Tue, 15 Oct 2024 00:14:07 +0000 (UTC)
-Date: Mon, 14 Oct 2024 17:14:06 -0700
-From: Jakub Kicinski <kuba@kernel.org>
-To: Yunsheng Lin <linyunsheng@huawei.com>
-Message-ID: <20241014171406.43e730c9@kernel.org>
-In-Reply-To: <b1fd5ece-b967-4e56-ad4f-64ec437e2634@huawei.com>
-References: <20240925075707.3970187-1-linyunsheng@huawei.com>
- <b1fd5ece-b967-4e56-ad4f-64ec437e2634@huawei.com>
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id p5MqRJYMn0v9 for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 15 Oct 2024 01:52:00 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.16;
+ helo=mgamail.intel.com; envelope-from=vinicius.gomes@intel.com;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 0F0BF403BE
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0F0BF403BE
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.16])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 0F0BF403BE
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Oct 2024 01:51:59 +0000 (UTC)
+X-CSE-ConnectionGUID: W27+KBUpSUO+qxrAumW3xQ==
+X-CSE-MsgGUID: umDmiBv8QkuIfuk5ButqKg==
+X-IronPort-AV: E=McAfee;i="6700,10204,11225"; a="15948996"
+X-IronPort-AV: E=Sophos;i="6.11,204,1725346800"; d="scan'208";a="15948996"
+Received: from orviesa008.jf.intel.com ([10.64.159.148])
+ by fmvoesa110.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 14 Oct 2024 18:51:59 -0700
+X-CSE-ConnectionGUID: Xtxza0obQPi2lh2TP1yC5g==
+X-CSE-MsgGUID: pgSghFNdTh6Jrefj0IEGKg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.11,204,1725346800"; d="scan'208";a="78561331"
+Received: from jdoman-desk1.amr.corp.intel.com (HELO vcostago-mobl3)
+ ([10.124.221.73])
+ by orviesa008-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 14 Oct 2024 18:51:58 -0700
+From: Vinicius Costa Gomes <vinicius.gomes@intel.com>
+To: Joe Damato <jdamato@fastly.com>, netdev@vger.kernel.org
+In-Reply-To: <20241014213012.187976-3-jdamato@fastly.com>
+References: <20241014213012.187976-1-jdamato@fastly.com>
+ <20241014213012.187976-3-jdamato@fastly.com>
+Date: Mon, 14 Oct 2024 18:51:57 -0700
+Message-ID: <87ldyqnneq.fsf@intel.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1728951248;
- bh=vC2js+3LTh37+eK6v22mAPM7Aj/mMz6+h5IByLtkN9E=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=KA8B/kcn+CyFsGvB5lRCxHl/oMJ1/+ytr1xDfxtbTs2DknFuUjJajsNy0pBQtNinE
- aBThc9YZ1cFhAt31Z5v+RM/dhm2JAPTKuGtyuje64hxEH/H5VEHEbjO4USBbUN1fAj
- guPIt3CzR7l2Z+1Z0iyzUflxo7LwX4BZfgu0zRLrp0OQKlnGPZAWBX+nVhbl7Gsjv6
- QUT/nM9S1klJHU1VYvDFpllFdm+q/ha04BQtbSPGDMqXRkoJOlhnkVy9vfNjYfYlgJ
- jQjJ7ODdnQfVsF0VXXApSdXdP/on+vs9Gx0cHlCCgG8uaZ6zjBRSt7o7Mfyx1NvgCU
- 8QE2ujuElZjug==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1728957120; x=1760493120;
+ h=from:to:cc:subject:in-reply-to:references:date:
+ message-id:mime-version;
+ bh=jRe3cvMMhFQXU5Qt3lmzcFa6sNreGfi9RKk2Rty5aS8=;
+ b=E9a6hxAGpwHzz2t+uz+z8LwHO+1/puyKstkQ5EnCzRFCs7PH9T8IezHj
+ PvPq7Lx1Ifl/zgPHYpXzcklvHYgOGxR07aT1iND6Veg2Fa+QrlfXs/zil
+ 4CdbIecwWLh1lpEvrzkdOTLl/OCLvMZ/Jk2EejpMrI87O1PlYeqCSdg/p
+ 17E3OBPjfQ3FNbT0z6OKh+5uP4GaHksRWW1UfV3CWbaOoKmz7wJYprDRa
+ mGAaMvfEncCUqv16vmcC4MI0cCTAbiv40hAyDXy63bpbGVs/c/R7tvcNF
+ fw6IIm1mFpuqJRJHT3RuQa1ZxnqGEenx5edDM7Va+rh3JSqSAQayn0Q8f
+ g==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=intel.com
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20201202 header.b=KA8B/kcn
-Subject: Re: [Intel-wired-lan] [PATCH net v2 0/2] fix two bugs related to
- page_pool
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=E9a6hxAG
+Subject: Re: [Intel-wired-lan] [RFC net-next v2 2/2] igc: Link queues to
+ NAPI instances
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -96,33 +107,257 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: linux-mediatek@lists.infradead.org,
- Jesper Dangaard Brouer <hawk@kernel.org>,
- Daniel Borkmann <daniel@iogearbox.net>, netdev@vger.kernel.org,
+Cc: Jesper Dangaard Brouer <hawk@kernel.org>,
+ Daniel Borkmann <daniel@iogearbox.net>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>,
+ Joe Damato <jdamato@fastly.com>, kurt@linutronix.de,
  John Fastabend <john.fastabend@gmail.com>, Alexei Starovoitov <ast@kernel.org>,
- Alexander Duyck <alexander.duyck@gmail.com>, linux-kernel@vger.kernel.org,
- Alexander Lobakin <aleksander.lobakin@intel.com>,
- IOMMU <iommu@lists.linux.dev>, liuyonglong@huawei.com,
- Matthias Brugger <matthias.bgg@gmail.com>, intel-wired-lan@lists.osuosl.org,
- zhangkun09@huawei.com, fanghaiqing@huawei.com, bpf@vger.kernel.org,
- pabeni@redhat.com, Robin Murphy <robin.murphy@arm.com>, davem@davemloft.net,
- linux-arm-kernel@lists.infradead.org,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+ open list <linux-kernel@vger.kernel.org>, Eric Dumazet <edumazet@google.com>,
+ Tony Nguyen <anthony.l.nguyen@intel.com>, "moderated
+ list:INTEL ETHERNET DRIVERS" <intel-wired-lan@lists.osuosl.org>,
+ Jakub Kicinski <kuba@kernel.org>,
+ "open list:XDP \(eXpress Data Path\)" <bpf@vger.kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Sat, 12 Oct 2024 20:05:31 +0800 Yunsheng Lin wrote:
-> 1. Semantics changing of supporting unlimited inflight pages
->    to limited inflight pages that are as large as the pool_size
->    of page_pool.
+Joe Damato <jdamato@fastly.com> writes:
 
-How can this possibly work?
+> Link queues to NAPI instances via netdev-genl API so that users can
+> query this information with netlink. Handle a few cases in the driver:
+>   1. Link/unlink the NAPIs when XDP is enabled/disabled
+>   2. Handle IGC_FLAG_QUEUE_PAIRS enabled and disabled
+>
+> Example output when IGC_FLAG_QUEUE_PAIRS is enabled:
+>
+> $ ./tools/net/ynl/cli.py --spec Documentation/netlink/specs/netdev.yaml \
+>                          --dump queue-get --json='{"ifindex": 2}'
+>
+> [{'id': 0, 'ifindex': 2, 'napi-id': 8193, 'type': 'rx'},
+>  {'id': 1, 'ifindex': 2, 'napi-id': 8194, 'type': 'rx'},
+>  {'id': 2, 'ifindex': 2, 'napi-id': 8195, 'type': 'rx'},
+>  {'id': 3, 'ifindex': 2, 'napi-id': 8196, 'type': 'rx'},
+>  {'id': 0, 'ifindex': 2, 'napi-id': 8193, 'type': 'tx'},
+>  {'id': 1, 'ifindex': 2, 'napi-id': 8194, 'type': 'tx'},
+>  {'id': 2, 'ifindex': 2, 'napi-id': 8195, 'type': 'tx'},
+>  {'id': 3, 'ifindex': 2, 'napi-id': 8196, 'type': 'tx'}]
+>
+> Since IGC_FLAG_QUEUE_PAIRS is enabled, you'll note that the same NAPI ID
+> is present for both rx and tx queues at the same index, for example
+> index 0:
+>
+> {'id': 0, 'ifindex': 2, 'napi-id': 8193, 'type': 'rx'},
+> {'id': 0, 'ifindex': 2, 'napi-id': 8193, 'type': 'tx'},
+>
+> To test IGC_FLAG_QUEUE_PAIRS disabled, a test system was booted using
+> the grub command line option "maxcpus=2" to force
+> igc_set_interrupt_capability to disable IGC_FLAG_QUEUE_PAIRS.
+>
+> Example output when IGC_FLAG_QUEUE_PAIRS is disabled:
+>
+> $ lscpu | grep "On-line CPU"
+> On-line CPU(s) list:      0,2
+>
+> $ ethtool -l enp86s0  | tail -5
+> Current hardware settings:
+> RX:		n/a
+> TX:		n/a
+> Other:		1
+> Combined:	2
+>
+> $ cat /proc/interrupts  | grep enp
+>  144: [...] enp86s0
+>  145: [...] enp86s0-rx-0
+>  146: [...] enp86s0-rx-1
+>  147: [...] enp86s0-tx-0
+>  148: [...] enp86s0-tx-1
+>
+> 1 "other" IRQ, and 2 IRQs for each of RX and Tx, so we expect netlink to
+> report 4 IRQs with unique NAPI IDs:
+>
+> $ ./tools/net/ynl/cli.py --spec Documentation/netlink/specs/netdev.yaml \
+>                          --dump napi-get --json='{"ifindex": 2}'
+> [{'id': 8196, 'ifindex': 2, 'irq': 148},
+>  {'id': 8195, 'ifindex': 2, 'irq': 147},
+>  {'id': 8194, 'ifindex': 2, 'irq': 146},
+>  {'id': 8193, 'ifindex': 2, 'irq': 145}]
+>
+> Now we examine which queues these NAPIs are associated with, expecting
+> that since IGC_FLAG_QUEUE_PAIRS is disabled each RX and TX queue will
+> have its own NAPI instance:
+>
+> $ ./tools/net/ynl/cli.py --spec Documentation/netlink/specs/netdev.yaml \
+>                          --dump queue-get --json='{"ifindex": 2}'
+> [{'id': 0, 'ifindex': 2, 'napi-id': 8193, 'type': 'rx'},
+>  {'id': 1, 'ifindex': 2, 'napi-id': 8194, 'type': 'rx'},
+>  {'id': 0, 'ifindex': 2, 'napi-id': 8195, 'type': 'tx'},
+>  {'id': 1, 'ifindex': 2, 'napi-id': 8196, 'type': 'tx'}]
+>
+> Signed-off-by: Joe Damato <jdamato@fastly.com>
+> ---
+>  v2:
+>    - Update commit message to include tests for IGC_FLAG_QUEUE_PAIRS
+>      disabled
+>    - Refactored code to move napi queue mapping and unmapping to helper
+>      functions igc_set_queue_napi and igc_unset_queue_napi
+>    - Adjust the code to handle IGC_FLAG_QUEUE_PAIRS disabled
+>    - Call helpers to map/unmap queues to NAPIs in igc_up, __igc_open,
+>      igc_xdp_enable_pool, and igc_xdp_disable_pool
+>
+>  drivers/net/ethernet/intel/igc/igc.h      |  3 ++
+>  drivers/net/ethernet/intel/igc/igc_main.c | 58 +++++++++++++++++++++--
+>  drivers/net/ethernet/intel/igc/igc_xdp.c  |  2 +
+>  3 files changed, 59 insertions(+), 4 deletions(-)
+>
+> diff --git a/drivers/net/ethernet/intel/igc/igc.h b/drivers/net/ethernet/intel/igc/igc.h
+> index eac0f966e0e4..7b1c9ea60056 100644
+> --- a/drivers/net/ethernet/intel/igc/igc.h
+> +++ b/drivers/net/ethernet/intel/igc/igc.h
+> @@ -337,6 +337,9 @@ struct igc_adapter {
+>  	struct igc_led_classdev *leds;
+>  };
+>  
+> +void igc_set_queue_napi(struct igc_adapter *adapter, int q_idx,
+> +			struct napi_struct *napi);
+> +void igc_unset_queue_napi(struct igc_adapter *adapter, int q_idx);
+>  void igc_up(struct igc_adapter *adapter);
+>  void igc_down(struct igc_adapter *adapter);
+>  int igc_open(struct net_device *netdev);
+> diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
+> index 7964bbedb16c..59c00acfa0ed 100644
+> --- a/drivers/net/ethernet/intel/igc/igc_main.c
+> +++ b/drivers/net/ethernet/intel/igc/igc_main.c
+> @@ -4948,6 +4948,47 @@ static int igc_sw_init(struct igc_adapter *adapter)
+>  	return 0;
+>  }
+>  
+> +void igc_set_queue_napi(struct igc_adapter *adapter, int q_idx,
+> +			struct napi_struct *napi)
+> +{
+> +	if (adapter->flags & IGC_FLAG_QUEUE_PAIRS) {
+> +		netif_queue_set_napi(adapter->netdev, q_idx,
+> +				     NETDEV_QUEUE_TYPE_RX, napi);
+> +		netif_queue_set_napi(adapter->netdev, q_idx,
+> +				     NETDEV_QUEUE_TYPE_TX, napi);
+> +	} else {
+> +		if (q_idx < adapter->num_rx_queues) {
+> +			netif_queue_set_napi(adapter->netdev, q_idx,
+> +					     NETDEV_QUEUE_TYPE_RX, napi);
+> +		} else {
+> +			q_idx -= adapter->num_rx_queues;
+> +			netif_queue_set_napi(adapter->netdev, q_idx,
+> +					     NETDEV_QUEUE_TYPE_TX, napi);
+> +		}
+> +	}
+> +}
+> +
+> +void igc_unset_queue_napi(struct igc_adapter *adapter, int q_idx)
+> +{
+> +	struct net_device *netdev = adapter->netdev;
+> +
+> +	if (adapter->flags & IGC_FLAG_QUEUE_PAIRS) {
+> +		netif_queue_set_napi(netdev, q_idx, NETDEV_QUEUE_TYPE_RX,
+> +				     NULL);
+> +		netif_queue_set_napi(netdev, q_idx, NETDEV_QUEUE_TYPE_TX,
+> +				     NULL);
+> +	} else {
+> +		if (q_idx < adapter->num_rx_queues) {
+> +			netif_queue_set_napi(adapter->netdev, q_idx,
+> +					     NETDEV_QUEUE_TYPE_RX, NULL);
+> +		} else {
+> +			q_idx -= adapter->num_rx_queues;
+> +			netif_queue_set_napi(adapter->netdev, q_idx,
+> +					     NETDEV_QUEUE_TYPE_TX, NULL);
+> +		}
+> +	}
+> +}
 
-The main thing stopping me from reposting my fix that it'd be nice to
-figure out if a real IOMMU device is bound or not. If we don't have
-real per-device mappings we presumably don't have to wait. If we can 
-check this condition we are guaranteed not to introduce regressions,
-since we would be replacing a crash by a wait, which is strictly better.
+It seems that igc_unset_queue_napi() is igc_set_queue_napi(x, y, NULL),
+so I would suggest either implementing "unset" in terms of "set", or
+using igc_set_queue_napi(x, y, NULL) directly in the "unlink" case (I
+have a slight preference for the second option).
 
-If we'd need to fiddle with too many internals to find out if we have
-to wait - let's just always wait and see if anyone complains.
+> +
+>  /**
+>   * igc_up - Open the interface and prepare it to handle traffic
+>   * @adapter: board private structure
+> @@ -4955,6 +4996,7 @@ static int igc_sw_init(struct igc_adapter *adapter)
+>  void igc_up(struct igc_adapter *adapter)
+>  {
+>  	struct igc_hw *hw = &adapter->hw;
+> +	struct napi_struct *napi;
+>  	int i = 0;
+>  
+>  	/* hardware has been reset, we need to reload some things */
+> @@ -4962,8 +5004,11 @@ void igc_up(struct igc_adapter *adapter)
+>  
+>  	clear_bit(__IGC_DOWN, &adapter->state);
+>  
+> -	for (i = 0; i < adapter->num_q_vectors; i++)
+> -		napi_enable(&adapter->q_vector[i]->napi);
+> +	for (i = 0; i < adapter->num_q_vectors; i++) {
+> +		napi = &adapter->q_vector[i]->napi;
+> +		napi_enable(napi);
+> +		igc_set_queue_napi(adapter, i, napi);
+> +	}
+>  
+>  	if (adapter->msix_entries)
+>  		igc_configure_msix(adapter);
+> @@ -5192,6 +5237,7 @@ void igc_down(struct igc_adapter *adapter)
+>  	for (i = 0; i < adapter->num_q_vectors; i++) {
+>  		if (adapter->q_vector[i]) {
+>  			napi_synchronize(&adapter->q_vector[i]->napi);
+> +			igc_unset_queue_napi(adapter, i);
+>  			napi_disable(&adapter->q_vector[i]->napi);
+>  		}
+>  	}
+> @@ -6021,6 +6067,7 @@ static int __igc_open(struct net_device *netdev, bool resuming)
+>  	struct igc_adapter *adapter = netdev_priv(netdev);
+>  	struct pci_dev *pdev = adapter->pdev;
+>  	struct igc_hw *hw = &adapter->hw;
+> +	struct napi_struct *napi;
+>  	int err = 0;
+>  	int i = 0;
+>  
+> @@ -6056,8 +6103,11 @@ static int __igc_open(struct net_device *netdev, bool resuming)
+>  
+>  	clear_bit(__IGC_DOWN, &adapter->state);
+>  
+> -	for (i = 0; i < adapter->num_q_vectors; i++)
+> -		napi_enable(&adapter->q_vector[i]->napi);
+> +	for (i = 0; i < adapter->num_q_vectors; i++) {
+> +		napi = &adapter->q_vector[i]->napi;
+> +		napi_enable(napi);
+> +		igc_set_queue_napi(adapter, i, napi);
+> +	}
+>  
+>  	/* Clear any pending interrupts. */
+>  	rd32(IGC_ICR);
+> diff --git a/drivers/net/ethernet/intel/igc/igc_xdp.c b/drivers/net/ethernet/intel/igc/igc_xdp.c
+> index e27af72aada8..886f04b8c394 100644
+> --- a/drivers/net/ethernet/intel/igc/igc_xdp.c
+> +++ b/drivers/net/ethernet/intel/igc/igc_xdp.c
+> @@ -84,6 +84,7 @@ static int igc_xdp_enable_pool(struct igc_adapter *adapter,
+>  		napi_disable(napi);
+>  	}
+>  
+> +	igc_unset_queue_napi(adapter, queue_id);
+>  	set_bit(IGC_RING_FLAG_AF_XDP_ZC, &rx_ring->flags);
+>  	set_bit(IGC_RING_FLAG_AF_XDP_ZC, &tx_ring->flags);
+>  
+> @@ -133,6 +134,7 @@ static int igc_xdp_disable_pool(struct igc_adapter *adapter, u16 queue_id)
+>  	xsk_pool_dma_unmap(pool, IGC_RX_DMA_ATTR);
+>  	clear_bit(IGC_RING_FLAG_AF_XDP_ZC, &rx_ring->flags);
+>  	clear_bit(IGC_RING_FLAG_AF_XDP_ZC, &tx_ring->flags);
+> +	igc_set_queue_napi(adapter, queue_id, napi);
+>  
+>  	if (needs_reset) {
+>  		napi_enable(napi);
+> -- 
+> 2.25.1
+>
+
+
+Cheers,
+-- 
+Vinicius
