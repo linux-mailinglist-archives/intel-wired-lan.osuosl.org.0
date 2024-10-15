@@ -1,93 +1,78 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
-	by mail.lfdr.de (Postfix) with ESMTPS id AEC7B99E3D2
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 15 Oct 2024 12:27:12 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id E99BC99E3FC
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 15 Oct 2024 12:33:08 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id AEE4F60887;
-	Tue, 15 Oct 2024 10:27:10 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 8C21260891;
+	Tue, 15 Oct 2024 10:33:01 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id u1c7BK6nk7FN; Tue, 15 Oct 2024 10:27:10 +0000 (UTC)
+ id lwNX72gjIZ5I; Tue, 15 Oct 2024 10:33:00 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6B0EF60891
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 1A09860895
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1728988029;
-	bh=ZpIqGV3FZABzIvwPIJ5wx08SyD5BMrHZo4Js9GlnC54=;
-	h=From:To:In-Reply-To:References:Date:Subject:List-Id:
+	s=default; t=1728988380;
+	bh=RhKkCADgY08hUoIVRKrHobZvX8wPHvkWoHgQOM1tqPE=;
+	h=Date:To:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=ciONPy3JjwyhNkNhu19XVcDaXcUYiV/XvTEI63El4lyAPUS+KGKj5hjtsVKcdYJQO
-	 Su3IqFGBtUFDhZPVbXIQr7LhxjvYcXcSfO5skcEliqEaT6v3wasVZhHiyYDNE7aDtt
-	 +zvb+RmmzcYC2jD/IaidmD08WSKjKLOV/UpihhPU05WNMd0HWkIDTQ++YvsOTzlxSs
-	 dgz20jw4sefwZWQ9lozYnT9RiB5DWzGF/noT1fsaWjGFKiAQ8EQdNu0kZHS0e9kZfm
-	 JmwYlZAQ2MQ6R7TRxyAl0/raF8jJZRa1slV9sFPueXFxeu+qw2l/Is7mpwLs6mC1v2
-	 ofrr7uH62ryQQ==
+	b=yD013U1cvuQNYMOwBuMHUkWGxHlRdtHVpa+tNFUJMbkDjMqFfcBkuhp8FYTefcUrB
+	 YVuPVWJWq+sCZOPDW6JWpsRQtO6af6WCmOqFYMgGf42FgBYPhkbJEw94KO4EyVZZiK
+	 fX7L7yG28IVwhm/kYEWPLtLob1eVqDNixcPrDNDXs1FSGHLCEHc4VjAOyHRMj+Jwvo
+	 zCuavMovqZ8A+dYT2Go1rwXM7amTlnLBXoX/aXVkT2eGW20MDlSWPSk+PnTtAbz5De
+	 eg0m1bLrjPp6Di2bugFhto6ygUN1YrRUfk7k4wlLdoGV7qpx8HTVFD++vILCvt6kIt
+	 lYUknME4ewuNw==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 6B0EF60891;
-	Tue, 15 Oct 2024 10:27:09 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 1A09860895;
+	Tue, 15 Oct 2024 10:33:00 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id C94D81BF5DC
- for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Oct 2024 10:27:07 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+ by ash.osuosl.org (Postfix) with ESMTP id 2BFBF1BF5DC
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Oct 2024 10:32:58 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id B29C480E11
- for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Oct 2024 10:27:07 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 17E844027D
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Oct 2024 10:32:58 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id F1KgZ3HTXm3o for <intel-wired-lan@lists.osuosl.org>;
- Tue, 15 Oct 2024 10:27:07 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=193.142.43.55;
- helo=galois.linutronix.de; envelope-from=kurt@linutronix.de;
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id UE0cK-_iBXAZ for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 15 Oct 2024 10:32:56 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=141.14.17.11;
+ helo=mx3.molgen.mpg.de; envelope-from=pmenzel@molgen.mpg.de;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 830DE80E01
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 830DE80E01
-Received: from galois.linutronix.de (Galois.linutronix.de [193.142.43.55])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 830DE80E01
- for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Oct 2024 10:27:06 +0000 (UTC)
-From: Kurt Kanzenbach <kurt@linutronix.de>
-To: Joe Damato <jdamato@fastly.com>, netdev@vger.kernel.org
-In-Reply-To: <20241014213012.187976-3-jdamato@fastly.com>
-References: <20241014213012.187976-1-jdamato@fastly.com>
- <20241014213012.187976-3-jdamato@fastly.com>
-Date: Tue, 15 Oct 2024 12:27:01 +0200
-Message-ID: <87h69d3bm2.fsf@kurt.kurt.home>
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 0F6D44027C
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 0F6D44027C
+Received: from mx3.molgen.mpg.de (mx3.molgen.mpg.de [141.14.17.11])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 0F6D44027C
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Oct 2024 10:32:54 +0000 (UTC)
+Received: from [141.14.220.45] (g45.guest.molgen.mpg.de [141.14.220.45])
+ (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested) (Authenticated sender: pmenzel)
+ by mx.molgen.mpg.de (Postfix) with ESMTPSA id 88A1361E5FE05;
+ Tue, 15 Oct 2024 12:32:38 +0200 (CEST)
+Message-ID: <4435dade-5c41-43a1-aeab-58e2d262545f@molgen.mpg.de>
+Date: Tue, 15 Oct 2024 12:32:38 +0200
 MIME-Version: 1.0
-Content-Type: multipart/signed; boundary="=-=-=";
- micalg=pgp-sha512; protocol="application/pgp-signature"
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linutronix.de; s=2020; t=1728988023;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=ZpIqGV3FZABzIvwPIJ5wx08SyD5BMrHZo4Js9GlnC54=;
- b=B0/fQViYnGcwZkjQZs8vbCUqHVQOoQNorEgLOrCnMT3vYDGaR0Nn95bIYWFC1xtOzg+Rng
- wDIl46GY1RVTe6eAaTUVq5qsL9oB7kbUd2a2OgyGBonb2Ay6GaszVee+P+V176vZPYwmmS
- 5ei7r6hiqvGM786Yp6uT3UF23VdR7s7uKctL0pMvp59t0O/MLl+2ltrBYl4OqFN+BgqEgq
- rO87KpZjg1HGHYOdJSL2WBgpk8+7gN1gXs8kOKTBC/uMvfcOClbZDNkYSgis6xWOjw3zyh
- xYWIcfCAU4QAonSwpCdUA9Faa3Sz3B/7DA8HxkkZwtuUpLFfjRexk+LBQqw07g==
-X-Mailman-Original-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed;
- d=linutronix.de; s=2020e; t=1728988023;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=ZpIqGV3FZABzIvwPIJ5wx08SyD5BMrHZo4Js9GlnC54=;
- b=XNFspYlioZsgZddnrxGs0PI4T2EM6GhW1kvaym/ivzoAGUyjWZm91IPy6KSuszl8vAPU0I
- ciNVLtnKOz/v3TBQ==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=linutronix.de
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key, unprotected) header.d=linutronix.de
- header.i=@linutronix.de header.a=rsa-sha256 header.s=2020 header.b=B0/fQViY; 
- dkim=pass header.d=linutronix.de header.i=@linutronix.de
- header.a=ed25519-sha256 header.s=2020e header.b=XNFspYli
-Subject: Re: [Intel-wired-lan] [RFC net-next v2 2/2] igc: Link queues to
- NAPI instances
+User-Agent: Mozilla Thunderbird
+To: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+References: <20241015070450.1572415-1-aleksandr.loktionov@intel.com>
+ <011cfa1f-d7df-4d38-ba5d-7820176ebf8b@molgen.mpg.de>
+ <SJ0PR11MB586684C1B9995B605D83CF71E5452@SJ0PR11MB5866.namprd11.prod.outlook.com>
+Content-Language: en-US
+From: Paul Menzel <pmenzel@molgen.mpg.de>
+In-Reply-To: <SJ0PR11MB586684C1B9995B605D83CF71E5452@SJ0PR11MB5866.namprd11.prod.outlook.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dmarc=none (p=none dis=none)
+ header.from=molgen.mpg.de
+Subject: Re: [Intel-wired-lan] [PATCH iwl-net v1] i40e: fix "Error
+ I40E_AQ_RC_ENOSPC adding RX filters on VF" issue
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -100,190 +85,212 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Jesper Dangaard Brouer <hawk@kernel.org>,
- Daniel Borkmann <daniel@iogearbox.net>, vinicius.gomes@intel.com,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Joe Damato <jdamato@fastly.com>, John Fastabend <john.fastabend@gmail.com>,
- Alexei Starovoitov <ast@kernel.org>, open list <linux-kernel@vger.kernel.org>,
- Eric Dumazet <edumazet@google.com>, Tony Nguyen <anthony.l.nguyen@intel.com>,
- "moderated list:INTEL ETHERNET DRIVERS" <intel-wired-lan@lists.osuosl.org>,
- Jakub Kicinski <kuba@kernel.org>,
- "open list:XDP \(eXpress Data Path\)" <bpf@vger.kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>
+Cc: Anthony L Nguyen <anthony.l.nguyen@intel.com>,
+ "intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+ netdev@vger.kernel.org
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
---=-=-=
-Content-Type: text/plain
-Content-Transfer-Encoding: quoted-printable
+Dear Aleksandr,
 
-On Mon Oct 14 2024, Joe Damato wrote:
-> Link queues to NAPI instances via netdev-genl API so that users can
-> query this information with netlink. Handle a few cases in the driver:
->   1. Link/unlink the NAPIs when XDP is enabled/disabled
->   2. Handle IGC_FLAG_QUEUE_PAIRS enabled and disabled
->
-> Example output when IGC_FLAG_QUEUE_PAIRS is enabled:
->
-> $ ./tools/net/ynl/cli.py --spec Documentation/netlink/specs/netdev.yaml \
->                          --dump queue-get --json=3D'{"ifindex": 2}'
->
-> [{'id': 0, 'ifindex': 2, 'napi-id': 8193, 'type': 'rx'},
->  {'id': 1, 'ifindex': 2, 'napi-id': 8194, 'type': 'rx'},
->  {'id': 2, 'ifindex': 2, 'napi-id': 8195, 'type': 'rx'},
->  {'id': 3, 'ifindex': 2, 'napi-id': 8196, 'type': 'rx'},
->  {'id': 0, 'ifindex': 2, 'napi-id': 8193, 'type': 'tx'},
->  {'id': 1, 'ifindex': 2, 'napi-id': 8194, 'type': 'tx'},
->  {'id': 2, 'ifindex': 2, 'napi-id': 8195, 'type': 'tx'},
->  {'id': 3, 'ifindex': 2, 'napi-id': 8196, 'type': 'tx'}]
->
-> Since IGC_FLAG_QUEUE_PAIRS is enabled, you'll note that the same NAPI ID
-> is present for both rx and tx queues at the same index, for example
-> index 0:
->
-> {'id': 0, 'ifindex': 2, 'napi-id': 8193, 'type': 'rx'},
-> {'id': 0, 'ifindex': 2, 'napi-id': 8193, 'type': 'tx'},
->
-> To test IGC_FLAG_QUEUE_PAIRS disabled, a test system was booted using
-> the grub command line option "maxcpus=3D2" to force
-> igc_set_interrupt_capability to disable IGC_FLAG_QUEUE_PAIRS.
->
-> Example output when IGC_FLAG_QUEUE_PAIRS is disabled:
->
-> $ lscpu | grep "On-line CPU"
-> On-line CPU(s) list:      0,2
->
-> $ ethtool -l enp86s0  | tail -5
-> Current hardware settings:
-> RX:		n/a
-> TX:		n/a
-> Other:		1
-> Combined:	2
->
-> $ cat /proc/interrupts  | grep enp
->  144: [...] enp86s0
->  145: [...] enp86s0-rx-0
->  146: [...] enp86s0-rx-1
->  147: [...] enp86s0-tx-0
->  148: [...] enp86s0-tx-1
->
-> 1 "other" IRQ, and 2 IRQs for each of RX and Tx, so we expect netlink to
-> report 4 IRQs with unique NAPI IDs:
->
-> $ ./tools/net/ynl/cli.py --spec Documentation/netlink/specs/netdev.yaml \
->                          --dump napi-get --json=3D'{"ifindex": 2}'
-> [{'id': 8196, 'ifindex': 2, 'irq': 148},
->  {'id': 8195, 'ifindex': 2, 'irq': 147},
->  {'id': 8194, 'ifindex': 2, 'irq': 146},
->  {'id': 8193, 'ifindex': 2, 'irq': 145}]
->
-> Now we examine which queues these NAPIs are associated with, expecting
-> that since IGC_FLAG_QUEUE_PAIRS is disabled each RX and TX queue will
-> have its own NAPI instance:
->
-> $ ./tools/net/ynl/cli.py --spec Documentation/netlink/specs/netdev.yaml \
->                          --dump queue-get --json=3D'{"ifindex": 2}'
-> [{'id': 0, 'ifindex': 2, 'napi-id': 8193, 'type': 'rx'},
->  {'id': 1, 'ifindex': 2, 'napi-id': 8194, 'type': 'rx'},
->  {'id': 0, 'ifindex': 2, 'napi-id': 8195, 'type': 'tx'},
->  {'id': 1, 'ifindex': 2, 'napi-id': 8196, 'type': 'tx'}]
->
-> Signed-off-by: Joe Damato <jdamato@fastly.com>
-> ---
->  v2:
->    - Update commit message to include tests for IGC_FLAG_QUEUE_PAIRS
->      disabled
->    - Refactored code to move napi queue mapping and unmapping to helper
->      functions igc_set_queue_napi and igc_unset_queue_napi
->    - Adjust the code to handle IGC_FLAG_QUEUE_PAIRS disabled
->    - Call helpers to map/unmap queues to NAPIs in igc_up, __igc_open,
->      igc_xdp_enable_pool, and igc_xdp_disable_pool
->
->  drivers/net/ethernet/intel/igc/igc.h      |  3 ++
->  drivers/net/ethernet/intel/igc/igc_main.c | 58 +++++++++++++++++++++--
->  drivers/net/ethernet/intel/igc/igc_xdp.c  |  2 +
->  3 files changed, 59 insertions(+), 4 deletions(-)
->
-> diff --git a/drivers/net/ethernet/intel/igc/igc.h b/drivers/net/ethernet/=
-intel/igc/igc.h
-> index eac0f966e0e4..7b1c9ea60056 100644
-> --- a/drivers/net/ethernet/intel/igc/igc.h
-> +++ b/drivers/net/ethernet/intel/igc/igc.h
-> @@ -337,6 +337,9 @@ struct igc_adapter {
->  	struct igc_led_classdev *leds;
->  };
->=20=20
-> +void igc_set_queue_napi(struct igc_adapter *adapter, int q_idx,
-> +			struct napi_struct *napi);
-> +void igc_unset_queue_napi(struct igc_adapter *adapter, int q_idx);
->  void igc_up(struct igc_adapter *adapter);
->  void igc_down(struct igc_adapter *adapter);
->  int igc_open(struct net_device *netdev);
-> diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethe=
-rnet/intel/igc/igc_main.c
-> index 7964bbedb16c..59c00acfa0ed 100644
-> --- a/drivers/net/ethernet/intel/igc/igc_main.c
-> +++ b/drivers/net/ethernet/intel/igc/igc_main.c
-> @@ -4948,6 +4948,47 @@ static int igc_sw_init(struct igc_adapter *adapter)
->  	return 0;
->  }
->=20=20
-> +void igc_set_queue_napi(struct igc_adapter *adapter, int q_idx,
-> +			struct napi_struct *napi)
-> +{
-> +	if (adapter->flags & IGC_FLAG_QUEUE_PAIRS) {
-> +		netif_queue_set_napi(adapter->netdev, q_idx,
-> +				     NETDEV_QUEUE_TYPE_RX, napi);
-> +		netif_queue_set_napi(adapter->netdev, q_idx,
-> +				     NETDEV_QUEUE_TYPE_TX, napi);
-> +	} else {
-> +		if (q_idx < adapter->num_rx_queues) {
-> +			netif_queue_set_napi(adapter->netdev, q_idx,
-> +					     NETDEV_QUEUE_TYPE_RX, napi);
-> +		} else {
-> +			q_idx -=3D adapter->num_rx_queues;
-> +			netif_queue_set_napi(adapter->netdev, q_idx,
-> +					     NETDEV_QUEUE_TYPE_TX, napi);
-> +		}
-> +	}
-> +}
 
-In addition, to what Vinicius said. I think this can be done
-simpler. Something like this?
+Thank you for your reply. Just a note at the beginning, that your mailer 
+seems to wrap lines without preserving the right citation level. It’d be 
+great if you used a mailer following standards. (I know, it’s hard in a 
+corporate environment, but other Intel developers seem to have found 
+solutions for this.)
 
-void igc_set_queue_napi(struct igc_adapter *adapter, int vector,
-			struct napi_struct *napi)
-{
-	struct igc_q_vector *q_vector =3D adapter->q_vector[vector];
 
-	if (q_vector->rx.ring)
-		netif_queue_set_napi(adapter->netdev, vector, NETDEV_QUEUE_TYPE_RX, napi);
+Am 15.10.24 um 11:45 schrieb Loktionov, Aleksandr:
 
-	if (q_vector->tx.ring)
-		netif_queue_set_napi(adapter->netdev, vector, NETDEV_QUEUE_TYPE_TX, napi);
-}
+>> -----Original Message-----
+>> From: Paul Menzel <pmenzel@molgen.mpg.de>
+>> Sent: Tuesday, October 15, 2024 10:24 AM
 
-Thanks,
-Kurt
+>> Thank you for your patch. For the summary I’d make it more about the
+>> action of the patch like “Add intermediate filter to …”.
+> 
+> Sorry, I don't get your point. This patch fixes bug that can stop
+> vfs to receive any traffic making them useless. The first and most
+> visible effect of the bug is a lot of "Error I40E_AQ_RC_ENOSPC
+> adding RX filters on VF XX,..." errors from F/W complaining to add
+> MAC/VLAN filter. So I've mentioned it in the title to be easy found. 
+> I don't add any filter in the driver, we have to add one more
+> intermediate state of the filter to avoid the race condition.
 
---=-=-=
-Content-Type: application/pgp-signature; name="signature.asc"
+In my opinion, having the log in the body is good enough for search 
+engines and the summary should be optimized for `git log --oneline` 
+consumption. I am sorry about the confusion with my example. Maybe:
 
------BEGIN PGP SIGNATURE-----
+Add intermediate sync state to fix race condition
 
-iQJHBAEBCgAxFiEEvLm/ssjDfdPf21mSwZPR8qpGc4IFAmcOQ3UTHGt1cnRAbGlu
-dXRyb25peC5kZQAKCRDBk9HyqkZzggP+EACbgGaNTWYbIcp1ENi3SQd4VQWHfX4P
-NLZHtOiG+aBHjfLRpW+pHulbwJ4+fn/XOIoWc1HyoS3IjF95CKAiwK8SNPBivGb9
-5zRmEqoz0yUZHJjdhZIboVwAZ9/1O92eE3gwtE++LW0oEoBcE4TqItDeZgQJ/jb8
-zdmXp0pxQns7TEfFv5cDPTnnxZJgbbyDBHr9Le0jA27/hMwDzclgHqgpqyzoypdD
-+B99POsjugofhiOVmzvWVYtTQ2Km/7Yt4pc45IAJG7M5sfqly8hfAmvutTuCeE0p
-NGjW43qgpzCThQCWRL6QgiEqlDHndYAkLjrRxUNBEy2RwMvtZPJCFw54h3XrzfXB
-/JXen5j1+gaFuFS/tF743VvLprsYPsKnKOa9sYU6ji7uKd6yKml8Rw8XUrWnPwjS
-hpgzkewBeZVBYOJ/x+odtVMPBiFxhpoSmbhPnPNGs7P5SESJgPAtdkiQNqGzI81Z
-mFgkNkRTkeyBiJ6NN43diLanEFeH5pGbFs8m7hrXBrAHxQP/c6A09KmCR5XS3Hra
-dzG7EB+tvIrYfsQiEWwhZEC+j9m2MGT190NusYPX+Gv7d5RgL80vw7XGly5t91el
-/SO30QNj8yItov0R//NqlZKx76hugTbW4NO+hJLqNCpU0woBG56v5N8y2VSuS4Fh
-jQrQCDjVYZqMyg==
-=yqMd
------END PGP SIGNATURE-----
---=-=-=--
+>> Am 15.10.24 um 09:04 schrieb Aleksandr Loktionov:
+>>> Fix a race condition in the i40e driver that leads to MAC/VLAN filters
+>>> becoming corrupted and leaking. Address the issue that occurs under
+>>> heavy load when multiple threads are concurrently modifying MAC/VLAN
+>>> filters by setting mac and port VLAN.
+>>>
+>>> 1. Thread T0 allocates a filter in i40e_add_filter() within
+>>>           i40e_ndo_set_vf_port_vlan().
+>>> 2. Thread T1 concurrently frees the filter in __i40e_del_filter() within
+>>>           i40e_ndo_set_vf_mac().
+>>> 3. Subsequently, i40e_service_task() calls i40e_sync_vsi_filters(), which
+>>>           refers to the already freed filter memory, causing corruption.
+>>>
+>>> Reproduction steps:
+>>> 1. Spawn multiple VFs.
+>>> 2. Apply a concurrent heavy load by running parallel operations to change
+>>>           MAC addresses on the VFs and change port VLANs on the host.
+>>
+>> It’d be great if you shared your commands.
+
+> Sorry, I'm pretty sure it's quite impossible to reproduce the issue
+> with bash scripts /*I've tried really hard*/. Reproduction is
+> related to user-space/kernel code which might be not open-sourced.
+> So as I've explained in the commit title the race condition
+> possibility that was introduced from the very beginning.
+
+Could you please ask to get clearance to publish it. My naive view 
+wonders, why legal(?) should oppose publication.
+
+>>> 3. Observe errors in dmesg:
+>>> "Error I40E_AQ_RC_ENOSPC adding RX filters on VF XX,
+>>>    please set promiscuous on manually for VF XX".
+>>
+>> I’d indent it by eight spaces and put it in one line.
+> Ok, I'll fix it in v2
+> 
+>>> The fix involves implementing a new intermediate filter state,
+>>> I40E_FILTER_NEW_SYNC, for the time when a filter is on a tmp_add_list.
+>>> These filters cannot be deleted from the hash list directly but
+>>> must be removed using the full process.
+>>
+>> Please excuse my ignorance. Where is that done in the diff? For me it
+>> looks like you only replace `I40E_FILTER_NEW` by `I40E_FILTER_NEW_SYNC`
+>> in certain places, but no new condition for this case.
+>
+> Here are below the code which adds new I40E_FILTER_NEW_SYNC enum. 
+> And additional conditions for this I40E_FILTER_NEW_SYNC state. All
+> other places in the driver just tract I40E_FILTER_NEW_SYNC as not
+> just I40E_FILTER_NEW by default.
+Thank you. For me it’s not so obvious from the diff, and indeed, it’s 
+done in `i40e_sync_vsi_filters()`. Thank you again.
+
+>>> Fixes: 278e7d0b9d68 ("i40e: store MAC/VLAN filters in a hash with the MAC Address as key")
+>>> Signed-off-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+>>> ---
+>>>    drivers/net/ethernet/intel/i40e/i40e.h         |  2 ++
+>>>    drivers/net/ethernet/intel/i40e/i40e_debugfs.c |  2 ++
+>>>    drivers/net/ethernet/intel/i40e/i40e_main.c    | 12 ++++++++++--
+>>>    3 files changed, 14 insertions(+), 2 deletions(-)
+>>>
+>>> diff --git a/drivers/net/ethernet/intel/i40e/i40e.h
+>> b/drivers/net/ethernet/intel/i40e/i40e.h
+>>> index 2089a0e..a1842dd 100644
+>>> --- a/drivers/net/ethernet/intel/i40e/i40e.h
+>>> +++ b/drivers/net/ethernet/intel/i40e/i40e.h
+>>> @@ -755,6 +755,8 @@ enum i40e_filter_state {
+>>>    	I40E_FILTER_ACTIVE,		/* Added to switch by FW */
+>>>    	I40E_FILTER_FAILED,		/* Rejected by FW */
+>>>    	I40E_FILTER_REMOVE,		/* To be removed */
+>>> +	/* RESERVED */
+>>
+>> Why the reserved comment? Please elaborate in the commit message.
+> 
+> This is for not breaking compatibility with different driver
+> versions. Between OOT, net-next and plain old net. Isn't it obvious
+> from the comment, it's "RESERVERD"?
+
+Apparently not, otherwise I wouldn’t ask. ;-)
+
+> Can you provide me example commit message what I should follow?
+
+There are people reading the code not familiar with the ecosystem, that 
+there is an out of tree driver fore example. So the code or the commit 
+message should have an explanation why `I40E_FILTER_NEW_SYNC = 6` and 
+what the reserved is used for.
+
+>>> +	I40E_FILTER_NEW_SYNC = 6,	/* New, not sent, in sync task */
+
+Also mention the hash list in the comment?
+
+>>>    /* There is no 'removed' state; the filter struct is freed */
+>>>    };
+>>>    struct i40e_mac_filter {
+>>> diff --git a/drivers/net/ethernet/intel/i40e/i40e_debugfs.c b/drivers/net/ethernet/intel/i40e/i40e_debugfs.c
+>>> index abf624d..1c439b1 100644
+>>> --- a/drivers/net/ethernet/intel/i40e/i40e_debugfs.c
+>>> +++ b/drivers/net/ethernet/intel/i40e/i40e_debugfs.c
+>>> @@ -89,6 +89,8 @@ static char *i40e_filter_state_string[] = {
+>>>    	"ACTIVE",
+>>>    	"FAILED",
+>>>    	"REMOVE",
+>>> +	"<RESERVED>",
+>>> +	"NEW_SYNC",
+>>>    };
+>>>
+>>>    /**
+>>> diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
+>>> index 25295ae..55fb362 100644
+>>> --- a/drivers/net/ethernet/intel/i40e/i40e_main.c
+>>> +++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
+>>> @@ -1255,6 +1255,7 @@ int i40e_count_filters(struct i40e_vsi *vsi)
+>>>
+>>>    	hash_for_each_safe(vsi->mac_filter_hash, bkt, h, f, hlist) {
+>>>    		if (f->state == I40E_FILTER_NEW ||
+>>> +		    f->state == I40E_FILTER_NEW_SYNC ||
+>>>    		    f->state == I40E_FILTER_ACTIVE)
+>>>    			++cnt;
+>>>    	}
+>>> @@ -1441,6 +1442,8 @@ static int i40e_correct_mac_vlan_filters(struct i40e_vsi *vsi,
+>>>
+>>>    			new->f = add_head;
+>>>    			new->state = add_head->state;
+>>> +			if (add_head->state == I40E_FILTER_NEW)
+>>> +				add_head->state = I40E_FILTER_NEW_SYNC;
+>>>
+>>>    			/* Add the new filter to the tmp list */
+>>>    			hlist_add_head(&new->hlist, tmp_add_list);
+>>> @@ -1550,6 +1553,8 @@ static int i40e_correct_vf_mac_vlan_filters(struct i40e_vsi *vsi,
+>>>    				return -ENOMEM;
+>>>    			new_mac->f = add_head;
+>>>    			new_mac->state = add_head->state;
+>>> +			if (add_head->state == I40E_FILTER_NEW)
+>>> +				add_head->state = I40E_FILTER_NEW_SYNC;
+>>>
+>>>    			/* Add the new filter to the tmp list */
+>>>    			hlist_add_head(&new_mac->hlist, tmp_add_list);
+>>> @@ -2437,7 +2442,8 @@ static int
+>>>    i40e_aqc_broadcast_filter(struct i40e_vsi *vsi, const char *vsi_name,
+>>>    			  struct i40e_mac_filter *f)
+>>>    {
+>>> -	bool enable = f->state == I40E_FILTER_NEW;
+>>> +	bool enable = f->state == I40E_FILTER_NEW ||
+>>> +		      f->state == I40E_FILTER_NEW_SYNC;
+>>>    	struct i40e_hw *hw = &vsi->back->hw;
+>>>    	int aq_ret;
+>>>
+>>> @@ -2611,6 +2617,7 @@ int i40e_sync_vsi_filters(struct i40e_vsi *vsi)
+>>>
+>>>    				/* Add it to the hash list */
+>>>    				hlist_add_head(&new->hlist, &tmp_add_list);
+>>> +				f->state = I40E_FILTER_NEW_SYNC;
+>>>    			}
+>>>
+>>>    			/* Count the number of active (current and new) VLAN
+>>> @@ -2762,7 +2769,8 @@ int i40e_sync_vsi_filters(struct i40e_vsi *vsi)
+>>>    		spin_lock_bh(&vsi->mac_filter_hash_lock);
+>>>    		hlist_for_each_entry_safe(new, h, &tmp_add_list, hlist) {
+>>>    			/* Only update the state if we're still NEW */
+>>> -			if (new->f->state == I40E_FILTER_NEW)
+>>> +			if (new->f->state == I40E_FILTER_NEW ||
+>>> +			    new->f->state == I40E_FILTER_NEW_SYNC)
+>>>    				new->f->state = new->state;
+>>>    			hlist_del(&new->hlist);
+>>>    			netdev_hw_addr_refcnt(new->f, vsi->netdev, -1);
+Thank you again for your work and explanations.
+
+
+Kind regards,
+
+Paul
