@@ -1,95 +1,101 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id DB18999F3D1
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 15 Oct 2024 19:16:37 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3442399F4C6
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 15 Oct 2024 20:03:51 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 7FD2E80FAF;
-	Tue, 15 Oct 2024 17:16:36 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id CB90060842;
+	Tue, 15 Oct 2024 18:03:49 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 8yiZosdi49Xx; Tue, 15 Oct 2024 17:16:35 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id qTsE5Zvzga0g; Tue, 15 Oct 2024 18:03:48 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.34; helo=ash.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 4968F80FF8
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6385060888
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1729012595;
-	bh=7OBgULFgo0E6fdM/oAmCKutFjhQegDdfbfj5nGDAZKc=;
-	h=From:To:In-Reply-To:References:Date:Subject:List-Id:
+	s=default; t=1729015428;
+	bh=g085k9b+sZOfBzv4vTMMqxWN1rAHPei97pUqHGNGvuw=;
+	h=Date:From:To:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 Cc:From;
-	b=6pSo+n+x1yfQRRFHU3h/b+cZ2yokfbeG4ChGk3VPSgWSZXXxQXtu/HNbXjnY87+S9
-	 MhRI5msnRqnKaXVoJm6pjLwhTa0SQDIKki50y2YQ1UaHY0cmiuUyvqeLZ2auQ6bUV5
-	 bIrqBdPREf6xzj7s9aX/Gnvej4jqa/jJjQQ9yv+TqiHL7N7X9kH/F4Udcp0jlXMRf+
-	 LMZ//QelT3G38Oqk96aswZCe27IoGeIMj/eSRune0wNPK8HCtmxh35dqdSP0twSHaF
-	 /Do9KAvp/vTpbiQAxSiVJyjGt1CSrsyUxiWj+Zqgpvc2d0aUZm1w9AEeLmoX2DOQuJ
-	 5ZxQ2o4bY64uA==
+	b=v4assXgNowfjsnJMquulD7I1mJpLr+OPhmDYp43NANJSmosAiqucQUMby8pB0eGzF
+	 nUakJRJ0YrifqT6cmMaMP601C3KYRmOPoEg+tbegfDWjoH07Z56j6p9pZkXbKusZyt
+	 mtfq6sYXH1eCxocz0vZZ7dz5OPQx9Oq0daTsCP1OTp4znRjgyVLBg5nq5RzZXmlpi2
+	 c7Tm6pyxGgUwvyrGU9etziId9C9sEmxIOkls8YEMmCYFh/YMJSFy/9d0AbzRN7twNY
+	 iA0+lZndVwX/Xh0BVNSKn1qZej/6ixZsdW4pw/y4wbzIkb4YekUIIzd3uxvryneLuP
+	 f6uovjsyqSqhQ==
 Received: from ash.osuosl.org (ash.osuosl.org [140.211.166.34])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 4968F80FF8;
-	Tue, 15 Oct 2024 17:16:35 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 6385060888;
+	Tue, 15 Oct 2024 18:03:48 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
- by ash.osuosl.org (Postfix) with ESMTP id D463B1BF35B
- for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Oct 2024 17:16:33 +0000 (UTC)
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by ash.osuosl.org (Postfix) with ESMTP id 5282D1BF35B
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Oct 2024 18:03:46 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id C22E080F97
- for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Oct 2024 17:16:33 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 3FCE6405D3
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Oct 2024 18:03:46 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id kBYYp82oS_Ku for <intel-wired-lan@lists.osuosl.org>;
- Tue, 15 Oct 2024 17:16:31 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2a0a:51c0:0:12e:550::1; helo=galois.linutronix.de;
- envelope-from=kurt@linutronix.de; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 0E8FE80F82
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0E8FE80F82
-Received: from galois.linutronix.de (Galois.linutronix.de
- [IPv6:2a0a:51c0:0:12e:550::1])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 0E8FE80F82
- for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Oct 2024 17:16:30 +0000 (UTC)
-From: Kurt Kanzenbach <kurt@linutronix.de>
-To: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
-In-Reply-To: <Zw5uBZa7+Iy5qD1t@boxer>
-References: <20241011-b4-igb_zero_copy-v8-0-83862f726a9e@linutronix.de>
- <20241011-b4-igb_zero_copy-v8-6-83862f726a9e@linutronix.de>
- <Zw5uBZa7+Iy5qD1t@boxer>
-Date: Tue, 15 Oct 2024 19:16:25 +0200
-Message-ID: <875xptnv6e.fsf@kurt.kurt.home>
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id pxGKfAPwufbT for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 15 Oct 2024 18:03:44 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.12;
+ helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 7E6F140195
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 7E6F140195
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.12])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 7E6F140195
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 15 Oct 2024 18:03:43 +0000 (UTC)
+X-CSE-ConnectionGUID: RCwDBHnLS7qwY93aCBGb/g==
+X-CSE-MsgGUID: qFrGliAxSxSbTcpZu8JXTQ==
+X-IronPort-AV: E=McAfee;i="6700,10204,11225"; a="39818628"
+X-IronPort-AV: E=Sophos;i="6.11,205,1725346800"; d="scan'208";a="39818628"
+Received: from orviesa006.jf.intel.com ([10.64.159.146])
+ by orvoesa104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 15 Oct 2024 11:03:43 -0700
+X-CSE-ConnectionGUID: 2OLwxAtWR3mbgRXseSctXw==
+X-CSE-MsgGUID: 8OsR92p0ScO85/UBS+NHkw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.11,205,1725346800"; d="scan'208";a="78158364"
+Received: from lkp-server01.sh.intel.com (HELO a48cf1aa22e8) ([10.239.97.150])
+ by orviesa006.jf.intel.com with ESMTP; 15 Oct 2024 11:03:41 -0700
+Received: from kbuild by a48cf1aa22e8 with local (Exim 4.96)
+ (envelope-from <lkp@intel.com>) id 1t0ltS-000JhW-23;
+ Tue, 15 Oct 2024 18:03:38 +0000
+Date: Wed, 16 Oct 2024 02:03:30 +0800
+From: kernel test robot <lkp@intel.com>
+To: Mateusz Polchlopek <mateusz.polchlopek@intel.com>,
+ intel-wired-lan@lists.osuosl.org, aleksander.lobakin@intel.com
+Message-ID: <202410160123.5dWnVGKr-lkp@intel.com>
+References: <20241013154415.20262-10-mateusz.polchlopek@intel.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; boundary="=-=-=";
- micalg=pgp-sha512; protocol="application/pgp-signature"
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linutronix.de; s=2020; t=1729012587;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=7OBgULFgo0E6fdM/oAmCKutFjhQegDdfbfj5nGDAZKc=;
- b=oDhb3LDa5vj/VAspFGdQ9EIDhBPWMrVXoS0dDV0ILbpz+dMY2pSLn1lEulQIzID5YQkFbU
- zXnuLxCKmRjTLt+xpzcb5q8Hh+QDJVN6sER0GOaJCaauA3hy01SdRExGhrNpv4vUK8BgFP
- zvs/E6LXfidQRnfg47zH8VN+4VIYLAakgYvgMxC2XOcaIR5QZ+F6UgUlbDH8SFIWaE0JSM
- /9iWAYtpm9S4mQxBQYU4a7BtvxOPy108+bYJvJcNxDquiXo2i0UOZx3sxPoaE0YqY/i8bK
- MQrsR1dzczCIYczN20/2lbhgJCL9XD873Jd6oU1N2G5CTpw8kmUZWJKuUmovbg==
-X-Mailman-Original-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed;
- d=linutronix.de; s=2020e; t=1729012587;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=7OBgULFgo0E6fdM/oAmCKutFjhQegDdfbfj5nGDAZKc=;
- b=wJt5OPPc3ngYGsJEDFjmD4HCCWhw7aTMnR4hzTSwwv+SnPIVTQE/ZuvQh4Aaw/NuPzPB70
- nCzSMg6RHDJztCAg==
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20241013154415.20262-10-mateusz.polchlopek@intel.com>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1729015424; x=1760551424;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:in-reply-to;
+ bh=FUxYJtCSs6rsDB6KaZF+B5u3c5DTcljuc15UIOoOLjw=;
+ b=kO0SN1wQ52pmVTwp2wqq8RT3QUHpiwaUHAJohuLfhZkyYPR9o1+Gdi4y
+ MAl8sEmckk2zFNYsIkhml8k/GYn38uiz1yVPWQEVieTlouyVEplyYvg6y
+ 8YubN8Id9Zicl+CAk03j8VF36GqnOQdcGWiw9rQWvSkzeMIw574++drRh
+ 9ya+/IFhk0e8xNVZx2mj8DT+TSbkm/09CJqcdzrTCjz8DUXz+MxRmbjam
+ BIjvdOPQ32GYsytLy6RkYQ1AW4tCac7mRG80fv9vZX/Bfk1L90mG53MWE
+ lSdecGTTf/+RLhbbACyG6z/eH+2u+1rgzRBfFLPgdA0oiV3/+U5/TEA4l
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=linutronix.de
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key) header.d=linutronix.de header.i=@linutronix.de
- header.a=rsa-sha256 header.s=2020 header.b=oDhb3LDa; 
- dkim=pass header.d=linutronix.de header.i=@linutronix.de
- header.a=ed25519-sha256 header.s=2020e header.b=wJt5OPPc
-Subject: Re: [Intel-wired-lan] [PATCH iwl-next v8 6/6] igb: Add AF_XDP
- zero-copy Tx support
+ header.from=intel.com
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=kO0SN1wQ
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v11 09/14] libeth: move
+ idpf_rx_csum_decoded and idpf_rx_extracted
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -102,285 +108,155 @@ List-Post: <mailto:intel-wired-lan@osuosl.org>
 List-Help: <mailto:intel-wired-lan-request@osuosl.org?subject=help>
 List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
  <mailto:intel-wired-lan-request@osuosl.org?subject=subscribe>
-Cc: Jesper Dangaard Brouer <hawk@kernel.org>,
- Daniel Borkmann <daniel@iogearbox.net>,
- Sriram Yagnaraman <sriram.yagnaraman@est.tech>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>,
- Richard Cochran <richardcochran@gmail.com>,
- John Fastabend <john.fastabend@gmail.com>, Alexei Starovoitov <ast@kernel.org>,
- Sriram Yagnaraman <sriram.yagnaraman@ericsson.com>,
- Benjamin Steinke <benjamin.steinke@woks-audio.com>,
- Eric Dumazet <edumazet@google.com>, netdev@vger.kernel.org,
- Tony Nguyen <anthony.l.nguyen@intel.com>, intel-wired-lan@lists.osuosl.org,
- Jakub Kicinski <kuba@kernel.org>, bpf@vger.kernel.org,
- Paolo Abeni <pabeni@redhat.com>, "David S. Miller" <davem@davemloft.net>,
- Sebastian Andrzej Siewior <bigeasy@linutronix.de>
+Cc: Mateusz Polchlopek <mateusz.polchlopek@intel.com>, netdev@vger.kernel.org,
+ llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
---=-=-=
-Content-Type: text/plain
-Content-Transfer-Encoding: quoted-printable
+Hi Mateusz,
 
-On Tue Oct 15 2024, Maciej Fijalkowski wrote:
-> On Fri, Oct 11, 2024 at 11:01:04AM +0200, Kurt Kanzenbach wrote:
->> From: Sriram Yagnaraman <sriram.yagnaraman@est.tech>
->>=20
->> Add support for AF_XDP zero-copy transmit path.
->>=20
->> A new TX buffer type IGB_TYPE_XSK is introduced to indicate that the Tx
->> frame was allocated from the xsk buff pool, so igb_clean_tx_ring() and
->> igb_clean_tx_irq() can clean the buffers correctly based on type.
->>=20
->> igb_xmit_zc() performs the actual packet transmit when AF_XDP zero-copy =
-is
->> enabled. We share the TX ring between slow path, XDP and AF_XDP
->> zero-copy, so we use the netdev queue lock to ensure mutual exclusion.
->>=20
->> Signed-off-by: Sriram Yagnaraman <sriram.yagnaraman@est.tech>
->> [Kurt: Set olinfo_status in igb_xmit_zc() so that frames are transmitted,
->>        Use READ_ONCE() for xsk_pool and check Tx disabled and carrier in
->>        igb_xmit_zc(), Add FIXME for RS bit]
->> Signed-off-by: Kurt Kanzenbach <kurt@linutronix.de>
->> Reviewed-by: Maciej Fijalkowski <maciej.fijalkowski@intel.com>
->> ---
->>  drivers/net/ethernet/intel/igb/igb.h      |  2 +
->>  drivers/net/ethernet/intel/igb/igb_main.c | 61 ++++++++++++++++++++++++=
------
->>  drivers/net/ethernet/intel/igb/igb_xsk.c  | 64 ++++++++++++++++++++++++=
-+++++++
->>  3 files changed, 117 insertions(+), 10 deletions(-)
->>=20
->> diff --git a/drivers/net/ethernet/intel/igb/igb.h b/drivers/net/ethernet=
-/intel/igb/igb.h
->> index e4a85867aa18..f6ac74327bb3 100644
->> --- a/drivers/net/ethernet/intel/igb/igb.h
->> +++ b/drivers/net/ethernet/intel/igb/igb.h
->> @@ -258,6 +258,7 @@ enum igb_tx_flags {
->>  enum igb_tx_buf_type {
->>  	IGB_TYPE_SKB =3D 0,
->>  	IGB_TYPE_XDP,
->> +	IGB_TYPE_XSK
->>  };
->>=20=20
->>  /* wrapper around a pointer to a socket buffer,
->> @@ -859,6 +860,7 @@ bool igb_alloc_rx_buffers_zc(struct igb_ring *rx_rin=
-g,
->>  void igb_clean_rx_ring_zc(struct igb_ring *rx_ring);
->>  int igb_clean_rx_irq_zc(struct igb_q_vector *q_vector,
->>  			struct xsk_buff_pool *xsk_pool, const int budget);
->> +bool igb_xmit_zc(struct igb_ring *tx_ring);
->>  int igb_xsk_wakeup(struct net_device *dev, u32 qid, u32 flags);
->>=20=20
->>  #endif /* _IGB_H_ */
->> diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/eth=
-ernet/intel/igb/igb_main.c
->> index 711b60cab594..5f396c02e3b9 100644
->> --- a/drivers/net/ethernet/intel/igb/igb_main.c
->> +++ b/drivers/net/ethernet/intel/igb/igb_main.c
->> @@ -2979,6 +2979,9 @@ static int igb_xdp_xmit(struct net_device *dev, in=
-t n,
->>  	if (unlikely(!tx_ring))
->>  		return -ENXIO;
->>=20=20
->> +	if (unlikely(test_bit(IGB_RING_FLAG_TX_DISABLED, &tx_ring->flags)))
->> +		return -ENXIO;
->> +
->>  	nq =3D txring_txq(tx_ring);
->>  	__netif_tx_lock(nq, cpu);
->>=20=20
->> @@ -3326,7 +3329,8 @@ static int igb_probe(struct pci_dev *pdev, const s=
-truct pci_device_id *ent)
->>  	netdev->priv_flags |=3D IFF_SUPP_NOFCS;
->>=20=20
->>  	netdev->priv_flags |=3D IFF_UNICAST_FLT;
->> -	netdev->xdp_features =3D NETDEV_XDP_ACT_BASIC | NETDEV_XDP_ACT_REDIREC=
-T;
->> +	netdev->xdp_features =3D NETDEV_XDP_ACT_BASIC | NETDEV_XDP_ACT_REDIREC=
-T |
->> +			       NETDEV_XDP_ACT_XSK_ZEROCOPY;
->>=20=20
->>  	/* MTU range: 68 - 9216 */
->>  	netdev->min_mtu =3D ETH_MIN_MTU;
->> @@ -4900,15 +4904,20 @@ void igb_clean_tx_ring(struct igb_ring *tx_ring)
->>  {
->>  	u16 i =3D tx_ring->next_to_clean;
->>  	struct igb_tx_buffer *tx_buffer =3D &tx_ring->tx_buffer_info[i];
->> +	u32 xsk_frames =3D 0;
->>=20=20
->>  	while (i !=3D tx_ring->next_to_use) {
->>  		union e1000_adv_tx_desc *eop_desc, *tx_desc;
->>=20=20
->>  		/* Free all the Tx ring sk_buffs or xdp frames */
->> -		if (tx_buffer->type =3D=3D IGB_TYPE_SKB)
->> +		if (tx_buffer->type =3D=3D IGB_TYPE_SKB) {
->>  			dev_kfree_skb_any(tx_buffer->skb);
->> -		else
->> +		} else if (tx_buffer->type =3D=3D IGB_TYPE_XDP) {
->>  			xdp_return_frame(tx_buffer->xdpf);
->> +		} else if (tx_buffer->type =3D=3D IGB_TYPE_XSK) {
->> +			xsk_frames++;
->> +			goto skip_for_xsk;
->> +		}
->>=20=20
->>  		/* unmap skb header data */
->>  		dma_unmap_single(tx_ring->dev,
->> @@ -4939,6 +4948,7 @@ void igb_clean_tx_ring(struct igb_ring *tx_ring)
->>  					       DMA_TO_DEVICE);
->>  		}
->>=20=20
->> +skip_for_xsk:
->>  		tx_buffer->next_to_watch =3D NULL;
->>=20=20
->>  		/* move us one more past the eop_desc for start of next pkt */
->> @@ -4953,6 +4963,9 @@ void igb_clean_tx_ring(struct igb_ring *tx_ring)
->>  	/* reset BQL for queue */
->>  	netdev_tx_reset_queue(txring_txq(tx_ring));
->>=20=20
->> +	if (tx_ring->xsk_pool && xsk_frames)
->> +		xsk_tx_completed(tx_ring->xsk_pool, xsk_frames);
->> +
->>  	/* reset next_to_use and next_to_clean */
->>  	tx_ring->next_to_use =3D 0;
->>  	tx_ring->next_to_clean =3D 0;
->> @@ -6486,6 +6499,9 @@ netdev_tx_t igb_xmit_frame_ring(struct sk_buff *sk=
-b,
->>  		return NETDEV_TX_BUSY;
->>  	}
->>=20=20
->> +	if (unlikely(test_bit(IGB_RING_FLAG_TX_DISABLED, &tx_ring->flags)))
->> +		return NETDEV_TX_BUSY;
->> +
->>  	/* record the location of the first descriptor for this packet */
->>  	first =3D &tx_ring->tx_buffer_info[tx_ring->next_to_use];
->>  	first->type =3D IGB_TYPE_SKB;
->> @@ -8260,13 +8276,18 @@ static int igb_poll(struct napi_struct *napi, in=
-t budget)
->>   **/
->>  static bool igb_clean_tx_irq(struct igb_q_vector *q_vector, int napi_bu=
-dget)
->>  {
->> -	struct igb_adapter *adapter =3D q_vector->adapter;
->> -	struct igb_ring *tx_ring =3D q_vector->tx.ring;
->> -	struct igb_tx_buffer *tx_buffer;
->> -	union e1000_adv_tx_desc *tx_desc;
->>  	unsigned int total_bytes =3D 0, total_packets =3D 0;
->> +	struct igb_adapter *adapter =3D q_vector->adapter;
->>  	unsigned int budget =3D q_vector->tx.work_limit;
->> +	struct igb_ring *tx_ring =3D q_vector->tx.ring;
->>  	unsigned int i =3D tx_ring->next_to_clean;
->> +	union e1000_adv_tx_desc *tx_desc;
->> +	struct igb_tx_buffer *tx_buffer;
->> +	struct xsk_buff_pool *xsk_pool;
->> +	int cpu =3D smp_processor_id();
->> +	bool xsk_xmit_done =3D true;
->> +	struct netdev_queue *nq;
->> +	u32 xsk_frames =3D 0;
->>=20=20
->>  	if (test_bit(__IGB_DOWN, &adapter->state))
->>  		return true;
->> @@ -8297,10 +8318,14 @@ static bool igb_clean_tx_irq(struct igb_q_vector=
- *q_vector, int napi_budget)
->>  		total_packets +=3D tx_buffer->gso_segs;
->>=20=20
->>  		/* free the skb */
->> -		if (tx_buffer->type =3D=3D IGB_TYPE_SKB)
->> +		if (tx_buffer->type =3D=3D IGB_TYPE_SKB) {
->>  			napi_consume_skb(tx_buffer->skb, napi_budget);
->> -		else
->> +		} else if (tx_buffer->type =3D=3D IGB_TYPE_XDP) {
->>  			xdp_return_frame(tx_buffer->xdpf);
->> +		} else if (tx_buffer->type =3D=3D IGB_TYPE_XSK) {
->> +			xsk_frames++;
->> +			goto skip_for_xsk;
->> +		}
->>=20=20
->>  		/* unmap skb header data */
->>  		dma_unmap_single(tx_ring->dev,
->> @@ -8332,6 +8357,7 @@ static bool igb_clean_tx_irq(struct igb_q_vector *=
-q_vector, int napi_budget)
->>  			}
->>  		}
->>=20=20
->> +skip_for_xsk:
->>  		/* move us one more past the eop_desc for start of next pkt */
->>  		tx_buffer++;
->>  		tx_desc++;
->> @@ -8360,6 +8386,21 @@ static bool igb_clean_tx_irq(struct igb_q_vector =
-*q_vector, int napi_budget)
->>  	q_vector->tx.total_bytes +=3D total_bytes;
->>  	q_vector->tx.total_packets +=3D total_packets;
->>=20=20
->> +	xsk_pool =3D READ_ONCE(tx_ring->xsk_pool);
->> +	if (xsk_pool) {
->> +		if (xsk_frames)
->> +			xsk_tx_completed(xsk_pool, xsk_frames);
->> +		if (xsk_uses_need_wakeup(xsk_pool))
->> +			xsk_set_tx_need_wakeup(xsk_pool);
->> +
->> +		nq =3D txring_txq(tx_ring);
->> +		__netif_tx_lock(nq, cpu);
->> +		/* Avoid transmit queue timeout since we share it with the slow path =
-*/
->> +		txq_trans_cond_update(nq);
->> +		xsk_xmit_done =3D igb_xmit_zc(tx_ring);
->> +		__netif_tx_unlock(nq);
->> +	}
->> +
->>  	if (test_bit(IGB_RING_FLAG_TX_DETECT_HANG, &tx_ring->flags)) {
->>  		struct e1000_hw *hw =3D &adapter->hw;
->>=20=20
->> @@ -8422,7 +8463,7 @@ static bool igb_clean_tx_irq(struct igb_q_vector *=
-q_vector, int napi_budget)
->>  		}
->>  	}
->>=20=20
->> -	return !!budget;
->> +	return !!budget && xsk_xmit_done;
->>  }
->>=20=20
->>  /**
->> diff --git a/drivers/net/ethernet/intel/igb/igb_xsk.c b/drivers/net/ethe=
-rnet/intel/igb/igb_xsk.c
->> index 22d234db0fab..d962c5e22b71 100644
->> --- a/drivers/net/ethernet/intel/igb/igb_xsk.c
->> +++ b/drivers/net/ethernet/intel/igb/igb_xsk.c
->> @@ -465,6 +465,70 @@ int igb_clean_rx_irq_zc(struct igb_q_vector *q_vect=
-or,
->>  	return failure ? budget : (int)total_packets;
->>  }
->>=20=20
->> +bool igb_xmit_zc(struct igb_ring *tx_ring)
->> +{
->> +	unsigned int budget =3D igb_desc_unused(tx_ring);
->> +	struct xsk_buff_pool *pool =3D tx_ring->xsk_pool;
->
-> Ughh that's another read of pool ptr, you should have passed it by arg to
-> igb_xmit_zc()...
+kernel test robot noticed the following build errors:
 
-Ups, missed that somehow. Thanks!
+[auto build test ERROR on a77c49f53be0af1efad5b4541a9a145505c81800]
 
-Thanks,
-Kurt
+url:    https://github.com/intel-lab-lkp/linux/commits/Mateusz-Polchlopek/virtchnl-add-support-for-enabling-PTP-on-iAVF/20241014-174710
+base:   a77c49f53be0af1efad5b4541a9a145505c81800
+patch link:    https://lore.kernel.org/r/20241013154415.20262-10-mateusz.polchlopek%40intel.com
+patch subject: [Intel-wired-lan] [PATCH iwl-next v11 09/14] libeth: move idpf_rx_csum_decoded and idpf_rx_extracted
+config: x86_64-allyesconfig (https://download.01.org/0day-ci/archive/20241016/202410160123.5dWnVGKr-lkp@intel.com/config)
+compiler: clang version 18.1.8 (https://github.com/llvm/llvm-project 3b5b5c1ec4a3095ab096dd780e84d7ab81f3d7ff)
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20241016/202410160123.5dWnVGKr-lkp@intel.com/reproduce)
 
---=-=-=
-Content-Type: application/pgp-signature; name="signature.asc"
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202410160123.5dWnVGKr-lkp@intel.com/
 
------BEGIN PGP SIGNATURE-----
+All errors (new ones prefixed by >>):
 
-iQJHBAEBCgAxFiEEvLm/ssjDfdPf21mSwZPR8qpGc4IFAmcOo2kTHGt1cnRAbGlu
-dXRyb25peC5kZQAKCRDBk9HyqkZzgtKMD/42b3RGlHmSKn2PyoIO2tgv9q+JmRdi
-/R5QR9SNRnwZFIRVfB1Bez+d3kLcJCNX4GM1oG/wyPxkViLQAjFbNtXgZ32w/z98
-o05iEW1vBbw2bZIuDiYF3yH0nZuyNF4PaS15QYkDz7jOpD1MQFI6F+fcP0dOmwSQ
-yFHibxWp106Xgo9xuJwsBXr+rOsc3BjUwLfDDCiu6KhBtll25nNdrxp0B6aBYzkH
-ja0G0s5l1dEQMC8kDxmVvizPh8H0WkTMdY8/IUXLFmoIY8CmkVE4z+u+9SGcq5gz
-AtmZQlwW5EB9U6A0bX1JlVUSLQYB/Krnfd9WLnkcTquE7Uss2jrmADoMkOqlp20y
-KxaImdFP551IM3/xyKJRTfC8Kfn1haiqhUG0ggbRN5MYnfNLCTSgUCpMvAp7fVQG
-fK5ayhtUMATdkvX5hFih4pSh0+uqG2uWeSlIMz+ldv0M3IdK/wBbEseYZOEBzv7K
-35Ysj4XiKND8FWWAo7G6d+8rrwJ5q4rZvWzy3+X7/CLtnBe35sL7wLTUhyOWwvzm
-1G/KWJm01zCR85jCpNQMKlof++TR2llOTH8QF1h/ufsaJXeVsZRLq4BHzQGso1gQ
-YFX9lsFJJ3vVgEnFQ9lZGJDDheYNqLMEWHX4qWL7WuPvU9ZRvpYp7Ll48+L9i/pG
-NFq3Qw2Br15WwA==
-=drIZ
------END PGP SIGNATURE-----
---=-=-=--
+>> drivers/net/ethernet/intel/idpf/idpf_singleq_txrx.c:1040:64: error: expected ';' after expression
+    1040 |                 idpf_rx_singleq_process_skb_fields(rx_q, skb, rx_desc, ptype)
+         |                                                                              ^
+         |                                                                              ;
+   1 error generated.
+
+
+vim +1040 drivers/net/ethernet/intel/idpf/idpf_singleq_txrx.c
+
+   954	
+   955	/**
+   956	 * idpf_rx_singleq_clean - Reclaim resources after receive completes
+   957	 * @rx_q: rx queue to clean
+   958	 * @budget: Total limit on number of packets to process
+   959	 *
+   960	 * Returns true if there's any budget left (e.g. the clean is finished)
+   961	 */
+   962	static int idpf_rx_singleq_clean(struct idpf_rx_queue *rx_q, int budget)
+   963	{
+   964		unsigned int total_rx_bytes = 0, total_rx_pkts = 0;
+   965		struct sk_buff *skb = rx_q->skb;
+   966		u16 ntc = rx_q->next_to_clean;
+   967		u16 cleaned_count = 0;
+   968		bool failure = false;
+   969	
+   970		/* Process Rx packets bounded by budget */
+   971		while (likely(total_rx_pkts < (unsigned int)budget)) {
+   972			struct libeth_rqe_info fields = { };
+   973			union virtchnl2_rx_desc *rx_desc;
+   974			struct idpf_rx_buf *rx_buf;
+   975			u32 ptype;
+   976	
+   977			/* get the Rx desc from Rx queue based on 'next_to_clean' */
+   978			rx_desc = &rx_q->rx[ntc];
+   979	
+   980			/* status_error_ptype_len will always be zero for unused
+   981			 * descriptors because it's cleared in cleanup, and overlaps
+   982			 * with hdr_addr which is always zero because packet split
+   983			 * isn't used, if the hardware wrote DD then the length will be
+   984			 * non-zero
+   985			 */
+   986	#define IDPF_RXD_DD VIRTCHNL2_RX_BASE_DESC_STATUS_DD_M
+   987			if (!idpf_rx_singleq_test_staterr(rx_desc,
+   988							  IDPF_RXD_DD))
+   989				break;
+   990	
+   991			/* This memory barrier is needed to keep us from reading
+   992			 * any other fields out of the rx_desc
+   993			 */
+   994			dma_rmb();
+   995	
+   996			idpf_rx_singleq_extract_fields(rx_q, rx_desc, &fields, &ptype);
+   997	
+   998			rx_buf = &rx_q->rx_buf[ntc];
+   999			if (!libeth_rx_sync_for_cpu(rx_buf, fields.len))
+  1000				goto skip_data;
+  1001	
+  1002			if (skb)
+  1003				idpf_rx_add_frag(rx_buf, skb, fields.len);
+  1004			else
+  1005				skb = idpf_rx_build_skb(rx_buf, fields.len);
+  1006	
+  1007			/* exit if we failed to retrieve a buffer */
+  1008			if (!skb)
+  1009				break;
+  1010	
+  1011	skip_data:
+  1012			rx_buf->page = NULL;
+  1013	
+  1014			IDPF_SINGLEQ_BUMP_RING_IDX(rx_q, ntc);
+  1015			cleaned_count++;
+  1016	
+  1017			/* skip if it is non EOP desc */
+  1018			if (idpf_rx_singleq_is_non_eop(rx_desc) || unlikely(!skb))
+  1019				continue;
+  1020	
+  1021	#define IDPF_RXD_ERR_S FIELD_PREP(VIRTCHNL2_RX_BASE_DESC_QW1_ERROR_M, \
+  1022					  VIRTCHNL2_RX_BASE_DESC_ERROR_RXE_M)
+  1023			if (unlikely(idpf_rx_singleq_test_staterr(rx_desc,
+  1024								  IDPF_RXD_ERR_S))) {
+  1025				dev_kfree_skb_any(skb);
+  1026				skb = NULL;
+  1027				continue;
+  1028			}
+  1029	
+  1030			/* pad skb if needed (to make valid ethernet frame) */
+  1031			if (eth_skb_pad(skb)) {
+  1032				skb = NULL;
+  1033				continue;
+  1034			}
+  1035	
+  1036			/* probably a little skewed due to removing CRC */
+  1037			total_rx_bytes += skb->len;
+  1038	
+  1039			/* protocol */
+> 1040			idpf_rx_singleq_process_skb_fields(rx_q, skb, rx_desc, ptype)
+  1041	
+  1042			/* send completed skb up the stack */
+  1043			napi_gro_receive(rx_q->pp->p.napi, skb);
+  1044			skb = NULL;
+  1045	
+  1046			/* update budget accounting */
+  1047			total_rx_pkts++;
+  1048		}
+  1049	
+  1050		rx_q->skb = skb;
+  1051	
+  1052		rx_q->next_to_clean = ntc;
+  1053	
+  1054		page_pool_nid_changed(rx_q->pp, numa_mem_id());
+  1055		if (cleaned_count)
+  1056			failure = idpf_rx_singleq_buf_hw_alloc_all(rx_q, cleaned_count);
+  1057	
+  1058		u64_stats_update_begin(&rx_q->stats_sync);
+  1059		u64_stats_add(&rx_q->q_stats.packets, total_rx_pkts);
+  1060		u64_stats_add(&rx_q->q_stats.bytes, total_rx_bytes);
+  1061		u64_stats_update_end(&rx_q->stats_sync);
+  1062	
+  1063		/* guarantee a trip back through this routine if there was a failure */
+  1064		return failure ? budget : (int)total_rx_pkts;
+  1065	}
+  1066	
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
