@@ -2,60 +2,60 @@ Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id E84B29A0D12
-	for <lists+intel-wired-lan@lfdr.de>; Wed, 16 Oct 2024 16:44:02 +0200 (CEST)
+	by mail.lfdr.de (Postfix) with ESMTPS id D2BE69A0D16
+	for <lists+intel-wired-lan@lfdr.de>; Wed, 16 Oct 2024 16:44:32 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 8566C811F9;
-	Wed, 16 Oct 2024 14:44:01 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 7D306811F7;
+	Wed, 16 Oct 2024 14:44:31 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id HqyidcXXFXew; Wed, 16 Oct 2024 14:44:00 +0000 (UTC)
+ id BiYkTR0GSE8L; Wed, 16 Oct 2024 14:44:30 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 6DECF811F3
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 79135811F9
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1729089840;
-	bh=Ap8TCtVQtKAEaWVGknPYcFTq1ovJiv5/gXWJd3wztFw=;
+	s=default; t=1729089870;
+	bh=/gievmNSp6gcEhgMsU62ZBHjqoa5a15h27lVU/uD/8U=;
 	h=Date:To:Cc:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=p2v0lTEQZUAoz246uahE+EPFjAFrI0vcu0lcA0CQEG+k/UJd5BgzrAwq6iH7J+taj
-	 R3+9I2CQZJmA6ipRejqCBUcWtxCzv4Raraxn3/37wpae8zrPNs4rAdcIEskh4Q/srq
-	 4gdqmmhfkJyGoP8Lg7MZ/1T/U3Ni5GNNCpVeyUckevFbyuY/aH5tdDbcry16VkixAP
-	 8J5E4JmeX9b1Etc0oqrg5htnXyynfbEc77DjOKsecBQRZqLr0kizUMQOGQcbLwAlLC
-	 y3vMDKER8sZEbp1+xHtpIkYzbxdot3D63Te0YQv3gDYh4+CFwDxeEnuybbTslibI2q
-	 KSss9CsNSd/oQ==
+	b=PdkoLhpL8lAF2wY3QgDmRKfdTEeuVF9ZRtPm1vymB5vm7ZOI9x+rpQrvzBtc95otH
+	 5MU6J3YC/WhyCoi5RNolWwi52Qr1PpsGMf4FDrHj7HMREqnKIVrRYUmFx1qGEeyNKW
+	 sRBu4JG2yPhUGZqQCfhZlbpR11SQvAspwAD8t0JlCwd9OjRb/RxcO0T3jJnUagch9v
+	 5nYa7t4ZM3aO8ihnJp6k9wZRaj4CXnOX0CRQ8yHkzJCTj8n+c59gcBO42x4QYKcA0W
+	 VP8J8V5spLj/33C3wWkbYNqo9Um6gTdcLZUI+quTjRK5874gua+//Ki+WHaWaCjV3/
+	 Dc54S/C994yFA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 6DECF811F3;
-	Wed, 16 Oct 2024 14:44:00 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 79135811F9;
+	Wed, 16 Oct 2024 14:44:30 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp2.osuosl.org (smtp2.osuosl.org [IPv6:2605:bc80:3010::133])
- by lists1.osuosl.org (Postfix) with ESMTP id 886B627F2
- for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Oct 2024 14:43:58 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id 0BED127E3
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Oct 2024 14:44:28 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id 7521F40491
- for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Oct 2024 14:43:58 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id 0663240491
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Oct 2024 14:44:28 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp2.osuosl.org ([127.0.0.1])
  by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id u5avP9KtyyBN for <intel-wired-lan@lists.osuosl.org>;
- Wed, 16 Oct 2024 14:43:57 +0000 (UTC)
+ id UJUiBTpVnyNy for <intel-wired-lan@lists.osuosl.org>;
+ Wed, 16 Oct 2024 14:44:27 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=217.140.110.172;
  helo=foss.arm.com; envelope-from=ryan.roberts@arm.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 45C0C40201
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 45C0C40201
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org D4C5740201
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org D4C5740201
 Received: from foss.arm.com (foss.arm.com [217.140.110.172])
- by smtp2.osuosl.org (Postfix) with ESMTP id 45C0C40201
- for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Oct 2024 14:43:56 +0000 (UTC)
+ by smtp2.osuosl.org (Postfix) with ESMTP id D4C5740201
+ for <intel-wired-lan@lists.osuosl.org>; Wed, 16 Oct 2024 14:44:26 +0000 (UTC)
 Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 5FD381007;
- Wed, 16 Oct 2024 07:44:25 -0700 (PDT)
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id E13BF1007;
+ Wed, 16 Oct 2024 07:44:55 -0700 (PDT)
 Received: from [10.1.28.177] (XHFQ2J9959.cambridge.arm.com [10.1.28.177])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id D5FBD3F71E;
- Wed, 16 Oct 2024 07:43:51 -0700 (PDT)
-Message-ID: <456ea437-fe6c-474f-bd9f-583c6fce9151@arm.com>
-Date: Wed, 16 Oct 2024 15:43:50 +0100
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 84AB63F71E;
+ Wed, 16 Oct 2024 07:44:22 -0700 (PDT)
+Message-ID: <6463a9f9-76ee-48bc-9173-75b220fcb3ac@arm.com>
+Date: Wed, 16 Oct 2024 15:44:20 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Content-Language: en-GB
@@ -75,15 +75,15 @@ Cc: intel-wired-lan@lists.osuosl.org, linux-arm-kernel@lists.infradead.org,
  linux-kernel@vger.kernel.org, linux-mm@kvack.org, netdev@vger.kernel.org
 References: <20241014105514.3206191-1-ryan.roberts@arm.com>
  <20241014105912.3207374-1-ryan.roberts@arm.com>
- <20241014105912.3207374-27-ryan.roberts@arm.com>
+ <20241014105912.3207374-28-ryan.roberts@arm.com>
 From: Ryan Roberts <ryan.roberts@arm.com>
-In-Reply-To: <20241014105912.3207374-27-ryan.roberts@arm.com>
+In-Reply-To: <20241014105912.3207374-28-ryan.roberts@arm.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
  dmarc=pass (p=none dis=none)
  header.from=arm.com
-Subject: Re: [Intel-wired-lan] [RFC PATCH v1 27/57] net: e1000: Remove
+Subject: Re: [Intel-wired-lan] [RFC PATCH v1 28/57] net: igbvf: Remove
  PAGE_SIZE compile-time constant assumption
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
@@ -126,26 +126,26 @@ On 14/10/2024 11:58, Ryan Roberts wrote:
 > Any confused maintainers may want to read the cover note here for context:
 > https://lore.kernel.org/all/20241014105514.3206191-1-ryan.roberts@arm.com/
 > 
->  drivers/net/ethernet/intel/e1000/e1000_main.c | 6 ++----
+>  drivers/net/ethernet/intel/igbvf/netdev.c | 6 ++----
 >  1 file changed, 2 insertions(+), 4 deletions(-)
 > 
-> diff --git a/drivers/net/ethernet/intel/e1000/e1000_main.c b/drivers/net/ethernet/intel/e1000/e1000_main.c
-> index ab7ae418d2948..cc14788f5bb04 100644
-> --- a/drivers/net/ethernet/intel/e1000/e1000_main.c
-> +++ b/drivers/net/ethernet/intel/e1000/e1000_main.c
-> @@ -3553,12 +3553,10 @@ static int e1000_change_mtu(struct net_device *netdev, int new_mtu)
->  
->  	if (max_frame <= E1000_RXBUFFER_2048)
->  		adapter->rx_buffer_len = E1000_RXBUFFER_2048;
+> diff --git a/drivers/net/ethernet/intel/igbvf/netdev.c b/drivers/net/ethernet/intel/igbvf/netdev.c
+> index 925d7286a8ee4..2e11d999168de 100644
+> --- a/drivers/net/ethernet/intel/igbvf/netdev.c
+> +++ b/drivers/net/ethernet/intel/igbvf/netdev.c
+> @@ -2419,12 +2419,10 @@ static int igbvf_change_mtu(struct net_device *netdev, int new_mtu)
+>  		adapter->rx_buffer_len = 1024;
+>  	else if (max_frame <= 2048)
+>  		adapter->rx_buffer_len = 2048;
 > -	else
-> -#if (PAGE_SIZE >= E1000_RXBUFFER_16384)
-> +	else if (PAGE_SIZE >= E1000_RXBUFFER_16384)
->  		adapter->rx_buffer_len = E1000_RXBUFFER_16384;
-> -#elif (PAGE_SIZE >= E1000_RXBUFFER_4096)
-> +	else if (PAGE_SIZE >= E1000_RXBUFFER_4096)
->  		adapter->rx_buffer_len = PAGE_SIZE;
+> -#if (PAGE_SIZE / 2) > 16384
+> +	else if ((PAGE_SIZE / 2) > 16384)
+>  		adapter->rx_buffer_len = 16384;
+> -#else
+> +	else
+>  		adapter->rx_buffer_len = PAGE_SIZE / 2;
 > -#endif
 >  
 >  	/* adjust allocation if LPE protects us, and we aren't using SBP */
->  	if (!hw->tbi_compatibility_on &&
+>  	if ((max_frame == ETH_FRAME_LEN + ETH_FCS_LEN) ||
 
