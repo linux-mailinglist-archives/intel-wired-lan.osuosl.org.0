@@ -1,66 +1,66 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8192E9A1981
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 17 Oct 2024 05:52:00 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 064969A1988
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 17 Oct 2024 05:55:20 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id C6930606C9;
-	Thu, 17 Oct 2024 03:51:58 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 40A3F606E5;
+	Thu, 17 Oct 2024 03:55:17 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 5AnQs16H-K6Q; Thu, 17 Oct 2024 03:51:58 +0000 (UTC)
+ id gVrYlHH26Dpq; Thu, 17 Oct 2024 03:55:16 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org D69BC606E5
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 52140606F2
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1729137117;
-	bh=Am7z/ewwRU7URpH1zeuXH9BvU8ZEygj12hlGHqnqVmE=;
+	s=default; t=1729137316;
+	bh=XdwVZHuLRqOwvtMBNraE1pG5mvNR8vi5JPIV8cLPmBg=;
 	h=Date:To:CC:References:From:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=ei56zOhEFUazxE1/27jthA+oSszk/FyGU2721+fkpQh0XYMA7e26N7yqkTivcVa36
-	 V007mIb6ihCQV0Mqyfdm28cRAK2AlzQgiRmQFKy0Z/uwsYVTVhLJzBdlpQi2A8QQj9
-	 DHc/jugiEijvL9ZZN16ynvPzJmMBH5Rz9RemMe/V506RooskAZc3mom36QlqKJhley
-	 54U93GeaqbTsakhU2kX8DjfIesbC7xtfbl7/3uTuqWnYih/zn6lP8NRaI9BsQnlOAC
-	 pifbwhQ+iIFb+ZhTFlL65Eql6aMhQK7jXDgDfsV5D7TJNuL1TcKV2MipCKKqDIj+k4
-	 ueorgKQS9l+oQ==
+	b=V3YUq1PvnAYSeWXNjRGdy1aTTJcedAAg3Bi9HvOYsMVMg3Q8A8f9Y4BWoiPv58SN8
+	 4g4aFeg8XvVWeZaR0HM9dSuN26lFlp/muIOqUvt2H9DQ8DQeFKr+EldK3gxcriIZjR
+	 GqkYOfMtnbK6wT1R4GznQGaVYGr+jKu9hN3gdIvEoDIjLcJN5S7dwo+MViqE8FYFlE
+	 zhl079ji0OOeLBNcIpmnhQGhdv2wqps/d/ek7pk+P1JnlMYS2rq/DWO6mKe4YLZ14m
+	 +ulzOxTiukykuS4LyeGPecrDdCACW1L7iwuzDMCcuu1pP0rLtn6JNSN156t+kWRBQC
+	 mb9+gwcZS0/LA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id D69BC606E5;
-	Thu, 17 Oct 2024 03:51:57 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 52140606F2;
+	Thu, 17 Oct 2024 03:55:16 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
- by lists1.osuosl.org (Postfix) with ESMTP id 20A142316
- for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Oct 2024 03:51:55 +0000 (UTC)
+ by lists1.osuosl.org (Postfix) with ESMTP id C7D5527EF
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Oct 2024 03:55:14 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id EEC2480EB9
- for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Oct 2024 03:51:54 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id A2B0E80E08
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Oct 2024 03:55:14 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp1.osuosl.org ([127.0.0.1])
  by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 44B1t7_DO1qR for <intel-wired-lan@lists.osuosl.org>;
- Thu, 17 Oct 2024 03:51:54 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=45.249.212.191;
- helo=szxga05-in.huawei.com; envelope-from=yuehaibing@huawei.com;
+ id IenGrjNai4iH for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 17 Oct 2024 03:55:14 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=45.249.212.190;
+ helo=szxga04-in.huawei.com; envelope-from=yuehaibing@huawei.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 3FE1180E90
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3FE1180E90
-Received: from szxga05-in.huawei.com (szxga05-in.huawei.com [45.249.212.191])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 3FE1180E90
- for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Oct 2024 03:51:52 +0000 (UTC)
-Received: from mail.maildlp.com (unknown [172.19.163.17])
- by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4XTYlC605hz1j9v8;
- Thu, 17 Oct 2024 11:50:31 +0800 (CST)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 0D7AB80A92
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 0D7AB80A92
+Received: from szxga04-in.huawei.com (szxga04-in.huawei.com [45.249.212.190])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 0D7AB80A92
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Oct 2024 03:55:12 +0000 (UTC)
+Received: from mail.maildlp.com (unknown [172.19.88.234])
+ by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4XTYqf2y2Lz20qSw;
+ Thu, 17 Oct 2024 11:54:22 +0800 (CST)
 Received: from dggpemf500002.china.huawei.com (unknown [7.185.36.57])
- by mail.maildlp.com (Postfix) with ESMTPS id C47291A0188;
- Thu, 17 Oct 2024 11:51:46 +0800 (CST)
+ by mail.maildlp.com (Postfix) with ESMTPS id 56AF41400CF;
+ Thu, 17 Oct 2024 11:55:07 +0800 (CST)
 Received: from [10.174.179.113] (10.174.179.113) by
  dggpemf500002.china.huawei.com (7.185.36.57) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1544.11; Thu, 17 Oct 2024 11:51:45 +0800
-Message-ID: <4d80b2fd-17d8-a7bd-0e80-7d33c9764810@huawei.com>
-Date: Thu, 17 Oct 2024 11:51:45 +0800
+ 15.2.1544.11; Thu, 17 Oct 2024 11:55:06 +0800
+Message-ID: <672730fc-2224-d5fe-87d0-7dc9b00bf207@huawei.com>
+Date: Thu, 17 Oct 2024 11:55:05 +0800
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101
  Thunderbird/91.13.1
@@ -165,10 +165,12 @@ On 2024/10/17 7:12, Jacob Keller wrote:
 > Indeed, this SKB error stuff was added by 26575105d6ed ("igc: Add
 > initial XDP support") which claims to be aligning with other Intel drivers.
 > 
+
+Thanks for review，maybe can fix this as commit 12738ac4754e ("i40e: Fix sparse errors in i40e_txrx.c")?
+
 > But the other Intel drivers just have a function that returns the xdp
 > result and checks it directly.
->Thanks for review，maybe can fix this as commit 12738ac4754e ("i40e: Fix sparse errors in i40e_txrx.c")?
-
+> 
 > Perhaps this is due to the way that the igc driver shares rings between
 > XDP and the regular path?
 > 
