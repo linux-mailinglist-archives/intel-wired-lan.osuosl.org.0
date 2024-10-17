@@ -1,96 +1,72 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 420839A1B5B
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 17 Oct 2024 09:08:29 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id A71F39A1DDB
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 17 Oct 2024 11:10:20 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 95FB2406F9;
-	Thu, 17 Oct 2024 07:08:27 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id E9590608C7;
+	Thu, 17 Oct 2024 09:10:17 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id BLs0l-jIgnPe; Thu, 17 Oct 2024 07:08:27 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id HMXllbpj2ODS; Thu, 17 Oct 2024 09:10:14 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org A7EF7406EF
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 58803608BB
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1729148906;
-	bh=0lTStNXXuNVMbPmlGCYwK05rykQ/QTuzTTVPV36fJLk=;
+	s=default; t=1729156213;
+	bh=PBiTZStokzdXtTQQ5ljDO7mCXK87QxBx9//nSDBU12o=;
 	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
 	 List-Post:List-Help:List-Subscribe:From;
-	b=KdQeP+xH9YLScoxffmBMZwsZcl41u3524YwXs2FB7hiGAjC6fkN/XbKWvt5BMnrQI
-	 H4Rx6K8krrg+c3cgCbFJhzVaR3lu/BNcMG3D409GqDWDGIQNRfxVa2GujZNRQsguqY
-	 IVAlmjSXedkfubCFeU14XupdMpsJ5QzpZtduWHPzUDGpIiIjdq0SFFVlu4ov0pSFmm
-	 Yy+QzJGUnNOmr6SUujo9czMzMaMT+R0WtRzEFUONC3mhfGrwKuOMTVIRkoQSIPp7ra
-	 FIqjTjbKeL5OtIUnP8FF60flTjwwN6dd36nqECWYg+MohvImSLgtzZ+xF3fIEuRuwx
-	 mJIadU/8smylw==
+	b=6iF62lY5Y72/3eGZs6hHV1txoHcAnyS/RVG+pbKucHzzy3z2TVfuwVXIpI5KurmWR
+	 YgknapqvcJDzbcxgv8e9yd4DCl6Ogh1jRSz/wqauoplYrtxjLXeQ8hZ5ZfTe6zaTaj
+	 Jx3tJqpGfKMojgkjmbG7nzRuBRkvWMAQeBZplp7yCRv5QkwmFYOAjnLe40J+kEJHzC
+	 4vh8IqoEjor4oZoM0bWj4GUp5rCEXAHq3ayYuJUSQ73Ms51QbQot4/wDsJca6DJvrD
+	 hscX2ui+Dsz0kTVsHg50ODuRmOBpA2qFzrhtn4WL/WKGOxPfWoUf0Wz97hCY5KTGQN
+	 /eG0Mo7H8nJOA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id A7EF7406EF;
-	Thu, 17 Oct 2024 07:08:26 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 58803608BB;
+	Thu, 17 Oct 2024 09:10:13 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by lists1.osuosl.org (Postfix) with ESMTP id 360E8972
- for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Oct 2024 07:08:25 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 7C5AF27EF
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Oct 2024 09:10:11 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 0DC404061F
- for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Oct 2024 07:08:25 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 6FDAB4011E
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Oct 2024 09:10:11 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id LMhpN7h2uE_E for <intel-wired-lan@lists.osuosl.org>;
- Thu, 17 Oct 2024 07:08:21 +0000 (UTC)
-Received-SPF: None (mailfrom) identity=mailfrom; client-ip=198.175.65.20;
- helo=mgamail.intel.com; envelope-from=michal.swiatkowski@linux.intel.com;
- receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 8AD2740286
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 8AD2740286
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.20])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 8AD2740286
- for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Oct 2024 07:08:20 +0000 (UTC)
-X-CSE-ConnectionGUID: ghnEiRjGRz6Vw2qyWyLlIA==
-X-CSE-MsgGUID: cebpR8PZSUeQMBmn0cUERA==
-X-IronPort-AV: E=McAfee;i="6700,10204,11222"; a="28410638"
-X-IronPort-AV: E=Sophos;i="6.11,199,1725346800"; d="scan'208";a="28410638"
-Received: from fmviesa008.fm.intel.com ([10.60.135.148])
- by orvoesa112.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 17 Oct 2024 00:08:19 -0700
-X-CSE-ConnectionGUID: vuccogX9Q8GCY1dADEMQhQ==
-X-CSE-MsgGUID: Qr4Gmy39QZqU6aPPdNQtSQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.11,210,1725346800"; d="scan'208";a="78494121"
-Received: from gk3153-dr2-r750-36946.igk.intel.com ([10.102.20.192])
- by fmviesa008.fm.intel.com with ESMTP; 17 Oct 2024 00:08:17 -0700
-From: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-To: intel-wired-lan@lists.osuosl.org
-Cc: netdev@vger.kernel.org, brett.creeley@amd.com, mateusz.polchlopek@intel.com
-Date: Thu, 17 Oct 2024 09:08:16 +0200
-Message-ID: <20241017070816.189630-1-michal.swiatkowski@linux.intel.com>
-X-Mailer: git-send-email 2.42.0
+ id csz18IKX8Evb for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 17 Oct 2024 09:10:10 +0000 (UTC)
+X-Greylist: delayed 503 seconds by postgrey-1.37 at util1.osuosl.org;
+ Thu, 17 Oct 2024 09:10:09 UTC
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 9F6434011B
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9F6434011B
+Received-SPF: Pass (mailfrom) identity=mailfrom;
+ client-ip=2001:648:2ffe:3:a800:ff:fe99:2593; helo=balab.aueb.gr;
+ envelope-from=dds@balab.aueb.gr; receiver=<UNKNOWN> 
+Received: from balab.aueb.gr (balab.aueb.gr
+ [IPv6:2001:648:2ffe:3:a800:ff:fe99:2593])
+ by smtp4.osuosl.org (Postfix) with ESMTP id 9F6434011B
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Oct 2024 09:10:09 +0000 (UTC)
+Received: by balab.aueb.gr (Postfix, from userid 1000)
+ id 53E1124618F; Thu, 17 Oct 2024 12:01:40 +0300 (EEST)
+From: Diomidis Spinellis <dds@aueb.gr>
+To: Tony Nguyen <anthony.l.nguyen@intel.com>,
+ Przemek Kitszel <przemyslaw.kitszel@intel.com>
+Cc: intel-wired-lan@lists.osuosl.org,
+	Diomidis Spinellis <dds@aueb.gr>
+Date: Thu, 17 Oct 2024 11:58:53 +0300
+Message-Id: <20241017085851.1800065-1-dds@aueb.gr>
+X-Mailer: git-send-email 2.39.5
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1729148901; x=1760684901;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=C8il09Zid+NlX4kVgauTunq+ykY+xAP2npwH8kPEciM=;
- b=dziDsaZzsWjzIwb9LS0I0wkhXi7bff8A7D0F0HroPEBrub0ds2KaUjBy
- DWaWW3D4jB14PYXmxuG/GjfAVT2447NTI5u47tNzwlmwiHwyFcPpF/tBr
- a0TATmBZDEeaaJ73Nn/daytN7yD+SJ1nu8uGfCyZb1kHz7z3D4/moAFTF
- aJINxqBKUF+aRDG8Mtxr+u2u8LoS2xUz1SJ/O27gLF8KKgpoofrMwzdKZ
- 6urTb5ZBdzl0fEt4VO+mFqavkNqwI4vhHx+Wq5GViqcK3ZlArfzbETFrC
- O5geYiXa+g21AorrggFMmQuIBFT7WuoWUZ7mfj7AHbuCFyHtW8PXqpz0Q
- A==;
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dmarc=none (p=none dis=none)
- header.from=linux.intel.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=dziDsaZz
-Subject: [Intel-wired-lan] [iwl-next v1] ice: only allow Tx promiscuous for
- multicast
+ dmarc=pass (p=none dis=none)
+ header.from=aueb.gr
+Subject: [Intel-wired-lan] [PATCH] ixgbe: Break include dependency cycle
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -106,112 +82,172 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-From: Brett Creeley <brett.creeley@intel.com>
+Header ixgbe_type.h includes ixgbe_mbx.h.  Also, header
+ixgbe_mbx.h included ixgbe_type.h, thus introducing a circular
+dependency.
 
-Currently when any VF is trusted and true promiscuous mode is enabled on
-the PF, the VF will receive all unicast traffic directed to the device's
-internal switch. This includes traffic external to the NIC and also from
-other VSI (i.e. VFs). This does not match the expected behavior as
-unicast traffic should only be visible from external sources in this
-case. Disable the Tx promiscuous mode bits for unicast promiscuous mode.
+- Remove ixgbe_mbx.h inclusion from ixgbe_type.h.
 
-Reviewed-by: Mateusz Polchlopek <mateusz.polchlopek@intel.com>
-Signed-off-by: Brett Creeley <brett.creeley@intel.com>
-Signed-off-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+- ixgbe_mbx.h requires the definition of struct ixgbe_mbx_operations
+  so move its definition there. While at it, add missing argument
+  identifier names.
+
+- Add required forward structure declarations.
+
+- Include ixgbe_mbx.h in the .c files that need it, for the
+  following reasons:
+
+  ixgbe_sriov.c uses ixgbe_check_for_msg
+  ixgbe_main.c uses ixgbe_init_mbx_params_pf
+  ixgbe_82599.c uses mbx_ops_generic
+  ixgbe_x540.c uses mbx_ops_generic
+  ixgbe_x550.c uses mbx_ops_generic
+
+Signed-off-by: Diomidis Spinellis <dds@aueb.gr>
 ---
- drivers/net/ethernet/intel/ice/ice.h          |  6 ++---
- drivers/net/ethernet/intel/ice/ice_virtchnl.c | 23 ++++++++++++++-----
- 2 files changed, 19 insertions(+), 10 deletions(-)
+ drivers/net/ethernet/intel/ixgbe/ixgbe_82598.c |  1 +
+ drivers/net/ethernet/intel/ixgbe/ixgbe_main.c  |  1 +
+ drivers/net/ethernet/intel/ixgbe/ixgbe_mbx.h   | 16 +++++++++++++++-
+ drivers/net/ethernet/intel/ixgbe/ixgbe_sriov.c |  1 +
+ drivers/net/ethernet/intel/ixgbe/ixgbe_type.h  | 15 ++-------------
+ drivers/net/ethernet/intel/ixgbe/ixgbe_x540.c  |  1 +
+ drivers/net/ethernet/intel/ixgbe/ixgbe_x550.c  |  1 +
+ 7 files changed, 22 insertions(+), 14 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ice/ice.h b/drivers/net/ethernet/intel/ice/ice.h
-index d2235e8bfea4..cae5cac74389 100644
---- a/drivers/net/ethernet/intel/ice/ice.h
-+++ b/drivers/net/ethernet/intel/ice/ice.h
-@@ -182,11 +182,9 @@
- #define ice_for_each_chnl_tc(i)	\
- 	for ((i) = ICE_CHNL_START_TC; (i) < ICE_CHNL_MAX_TC; (i)++)
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_82598.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_82598.c
+index 283a23150a4d..4aaaea3b5f8f 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_82598.c
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_82598.c
+@@ -6,6 +6,7 @@
+ #include <linux/sched.h>
  
--#define ICE_UCAST_PROMISC_BITS (ICE_PROMISC_UCAST_TX | ICE_PROMISC_UCAST_RX)
-+#define ICE_UCAST_PROMISC_BITS ICE_PROMISC_UCAST_RX
+ #include "ixgbe.h"
++#include "ixgbe_mbx.h"
+ #include "ixgbe_phy.h"
  
--#define ICE_UCAST_VLAN_PROMISC_BITS (ICE_PROMISC_UCAST_TX | \
--				     ICE_PROMISC_UCAST_RX | \
--				     ICE_PROMISC_VLAN_TX  | \
-+#define ICE_UCAST_VLAN_PROMISC_BITS (ICE_PROMISC_UCAST_RX | \
- 				     ICE_PROMISC_VLAN_RX)
+ #define IXGBE_82598_MAX_TX_QUEUES 32
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+index 8b8404d8c946..c229a26fbbb7 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+@@ -43,6 +43,7 @@
+ #include "ixgbe.h"
+ #include "ixgbe_common.h"
+ #include "ixgbe_dcb_82599.h"
++#include "ixgbe_mbx.h"
+ #include "ixgbe_phy.h"
+ #include "ixgbe_sriov.h"
+ #include "ixgbe_model.h"
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_mbx.h b/drivers/net/ethernet/intel/ixgbe/ixgbe_mbx.h
+index bd205306934b..bf65e82b4c61 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_mbx.h
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_mbx.h
+@@ -4,7 +4,7 @@
+ #ifndef _IXGBE_MBX_H_
+ #define _IXGBE_MBX_H_
  
- #define ICE_MCAST_PROMISC_BITS (ICE_PROMISC_MCAST_TX | ICE_PROMISC_MCAST_RX)
-diff --git a/drivers/net/ethernet/intel/ice/ice_virtchnl.c b/drivers/net/ethernet/intel/ice/ice_virtchnl.c
-index 466e44a33c43..2fda7be60fb7 100644
---- a/drivers/net/ethernet/intel/ice/ice_virtchnl.c
-+++ b/drivers/net/ethernet/intel/ice/ice_virtchnl.c
-@@ -2231,17 +2231,27 @@ static bool ice_is_vlan_promisc_allowed(struct ice_vf *vf)
+-#include "ixgbe_type.h"
++#include <linux/types.h>
  
- /**
-  * ice_vf_ena_vlan_promisc - Enable Tx/Rx VLAN promiscuous for the VLAN
-+ * @vf: VF to enable VLAN promisc on
-  * @vsi: VF's VSI used to enable VLAN promiscuous mode
-  * @vlan: VLAN used to enable VLAN promiscuous
-  *
-  * This function should only be called if VLAN promiscuous mode is allowed,
-  * which can be determined via ice_is_vlan_promisc_allowed().
-  */
--static int ice_vf_ena_vlan_promisc(struct ice_vsi *vsi, struct ice_vlan *vlan)
-+static int ice_vf_ena_vlan_promisc(struct ice_vf *vf, struct ice_vsi *vsi,
-+				   struct ice_vlan *vlan)
- {
--	u8 promisc_m = ICE_PROMISC_VLAN_TX | ICE_PROMISC_VLAN_RX;
-+	u8 promisc_m = 0;
- 	int status;
+ #define IXGBE_VFMAILBOX_SIZE        16 /* 16 32 bit words - 64 bytes */
  
-+	if (test_bit(ICE_VF_STATE_UC_PROMISC, vf->vf_states))
-+		promisc_m |= ICE_UCAST_VLAN_PROMISC_BITS;
-+	if (test_bit(ICE_VF_STATE_MC_PROMISC, vf->vf_states))
-+		promisc_m |= ICE_MCAST_VLAN_PROMISC_BITS;
+@@ -96,6 +96,8 @@ enum ixgbe_pfvf_api_rev {
+ #define IXGBE_VF_MBX_INIT_TIMEOUT 2000 /* number of retries on mailbox */
+ #define IXGBE_VF_MBX_INIT_DELAY   500  /* microseconds between retries */
+ 
++struct ixgbe_hw;
 +
-+	if (!promisc_m)
-+		return 0;
+ int ixgbe_read_mbx(struct ixgbe_hw *, u32 *, u16, u16);
+ int ixgbe_write_mbx(struct ixgbe_hw *, u32 *, u16, u16);
+ int ixgbe_check_for_msg(struct ixgbe_hw *, u16);
+@@ -105,6 +107,18 @@ int ixgbe_check_for_rst(struct ixgbe_hw *, u16);
+ void ixgbe_init_mbx_params_pf(struct ixgbe_hw *);
+ #endif /* CONFIG_PCI_IOV */
+ 
++struct ixgbe_mbx_operations {
++	int (*init_params)(struct ixgbe_hw *hw);
++	int (*read)(struct ixgbe_hw *hw, u32 *msg, u16 size, u16 vf_number);
++	int (*write)(struct ixgbe_hw *hw, u32 *msg, u16 size, u16 vf_number);
++	int (*read_posted)(struct ixgbe_hw *hw, u32 *msg, u16 size, u16 mbx_id);
++	int (*write_posted)(struct ixgbe_hw *hw, u32 *msg, u16 size,
++			    u16 mbx_id);
++	int (*check_for_msg)(struct ixgbe_hw *hw, u16 vf_number);
++	int (*check_for_ack)(struct ixgbe_hw *hw, u16 vf_number);
++	int (*check_for_rst)(struct ixgbe_hw *hw, u16 vf_number);
++};
 +
- 	status = ice_fltr_set_vsi_promisc(&vsi->back->hw, vsi->idx, promisc_m,
- 					  vlan->vid);
- 	if (status && status != -EEXIST)
-@@ -2260,7 +2270,7 @@ static int ice_vf_ena_vlan_promisc(struct ice_vsi *vsi, struct ice_vlan *vlan)
-  */
- static int ice_vf_dis_vlan_promisc(struct ice_vsi *vsi, struct ice_vlan *vlan)
- {
--	u8 promisc_m = ICE_PROMISC_VLAN_TX | ICE_PROMISC_VLAN_RX;
-+	u8 promisc_m = ICE_UCAST_VLAN_PROMISC_BITS | ICE_MCAST_VLAN_PROMISC_BITS;
- 	int status;
+ extern const struct ixgbe_mbx_operations mbx_ops_generic;
  
- 	status = ice_fltr_clear_vsi_promisc(&vsi->back->hw, vsi->idx, promisc_m,
-@@ -2415,7 +2425,7 @@ static int ice_vc_process_vlan_msg(struct ice_vf *vf, u8 *msg, bool add_v)
- 					goto error_param;
- 				}
- 			} else if (vlan_promisc) {
--				status = ice_vf_ena_vlan_promisc(vsi, &vlan);
-+				status = ice_vf_ena_vlan_promisc(vf, vsi, &vlan);
- 				if (status) {
- 					v_ret = VIRTCHNL_STATUS_ERR_PARAM;
- 					dev_err(dev, "Enable Unicast/multicast promiscuous mode on VLAN ID:%d failed error-%d\n",
-@@ -3224,7 +3234,7 @@ ice_vc_add_vlans(struct ice_vf *vf, struct ice_vsi *vsi,
- 				return err;
+ #endif /* _IXGBE_MBX_H_ */
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_sriov.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_sriov.c
+index e71715f5da22..9631559a5aea 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_sriov.c
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_sriov.c
+@@ -18,6 +18,7 @@
  
- 			if (vlan_promisc) {
--				err = ice_vf_ena_vlan_promisc(vsi, &vlan);
-+				err = ice_vf_ena_vlan_promisc(vf, vsi, &vlan);
- 				if (err)
- 					return err;
- 			}
-@@ -3252,7 +3262,8 @@ ice_vc_add_vlans(struct ice_vf *vf, struct ice_vsi *vsi,
- 			 */
- 			if (!ice_is_dvm_ena(&vsi->back->hw)) {
- 				if (vlan_promisc) {
--					err = ice_vf_ena_vlan_promisc(vsi, &vlan);
-+					err = ice_vf_ena_vlan_promisc(vf, vsi,
-+								      &vlan);
- 					if (err)
- 						return err;
- 				}
+ #include "ixgbe.h"
+ #include "ixgbe_type.h"
++#include "ixgbe_mbx.h"
+ #include "ixgbe_sriov.h"
+ 
+ #ifdef CONFIG_PCI_IOV
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h b/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h
+index 346e3d9114a8..9baccacd02a1 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h
+@@ -3601,19 +3601,6 @@ struct ixgbe_phy_info {
+ 	u32				nw_mng_if_sel;
+ };
+ 
+-#include "ixgbe_mbx.h"
+-
+-struct ixgbe_mbx_operations {
+-	int (*init_params)(struct ixgbe_hw *hw);
+-	int (*read)(struct ixgbe_hw *, u32 *, u16,  u16);
+-	int (*write)(struct ixgbe_hw *, u32 *, u16, u16);
+-	int (*read_posted)(struct ixgbe_hw *, u32 *, u16,  u16);
+-	int (*write_posted)(struct ixgbe_hw *, u32 *, u16, u16);
+-	int (*check_for_msg)(struct ixgbe_hw *, u16);
+-	int (*check_for_ack)(struct ixgbe_hw *, u16);
+-	int (*check_for_rst)(struct ixgbe_hw *, u16);
+-};
+-
+ struct ixgbe_mbx_stats {
+ 	u32 msgs_tx;
+ 	u32 msgs_rx;
+@@ -3623,6 +3610,8 @@ struct ixgbe_mbx_stats {
+ 	u32 rsts;
+ };
+ 
++struct ixgbe_mbx_operations;
++
+ struct ixgbe_mbx_info {
+ 	const struct ixgbe_mbx_operations *ops;
+ 	struct ixgbe_mbx_stats stats;
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_x540.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_x540.c
+index f1ffa398f6df..81e1df83f136 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_x540.c
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_x540.c
+@@ -6,6 +6,7 @@
+ #include <linux/sched.h>
+ 
+ #include "ixgbe.h"
++#include "ixgbe_mbx.h"
+ #include "ixgbe_phy.h"
+ #include "ixgbe_x540.h"
+ 
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_x550.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_x550.c
+index a5f644934445..d9a8cf018d3b 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_x550.c
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_x550.c
+@@ -4,6 +4,7 @@
+ #include "ixgbe_x540.h"
+ #include "ixgbe_type.h"
+ #include "ixgbe_common.h"
++#include "ixgbe_mbx.h"
+ #include "ixgbe_phy.h"
+ 
+ static int ixgbe_setup_kr_speed_x550em(struct ixgbe_hw *, ixgbe_link_speed);
 -- 
-2.42.0
+2.39.5
 
