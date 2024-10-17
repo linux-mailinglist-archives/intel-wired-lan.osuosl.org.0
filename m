@@ -1,72 +1,89 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id A71F39A1DDB
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 17 Oct 2024 11:10:20 +0200 (CEST)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
+	by mail.lfdr.de (Postfix) with ESMTPS id DB1F09A1DC9
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 17 Oct 2024 11:04:38 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id E9590608C7;
-	Thu, 17 Oct 2024 09:10:17 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id HMXllbpj2ODS; Thu, 17 Oct 2024 09:10:14 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 58803608BB
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1729156213;
-	bh=PBiTZStokzdXtTQQ5ljDO7mCXK87QxBx9//nSDBU12o=;
-	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=6iF62lY5Y72/3eGZs6hHV1txoHcAnyS/RVG+pbKucHzzy3z2TVfuwVXIpI5KurmWR
-	 YgknapqvcJDzbcxgv8e9yd4DCl6Ogh1jRSz/wqauoplYrtxjLXeQ8hZ5ZfTe6zaTaj
-	 Jx3tJqpGfKMojgkjmbG7nzRuBRkvWMAQeBZplp7yCRv5QkwmFYOAjnLe40J+kEJHzC
-	 4vh8IqoEjor4oZoM0bWj4GUp5rCEXAHq3ayYuJUSQ73Ms51QbQot4/wDsJca6DJvrD
-	 hscX2ui+Dsz0kTVsHg50ODuRmOBpA2qFzrhtn4WL/WKGOxPfWoUf0Wz97hCY5KTGQN
-	 /eG0Mo7H8nJOA==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 58803608BB;
-	Thu, 17 Oct 2024 09:10:13 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
- by lists1.osuosl.org (Postfix) with ESMTP id 7C5AF27EF
- for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Oct 2024 09:10:11 +0000 (UTC)
-Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 6FDAB4011E
- for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Oct 2024 09:10:11 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 7C8014066A;
+	Thu, 17 Oct 2024 09:04:37 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id csz18IKX8Evb for <intel-wired-lan@lists.osuosl.org>;
- Thu, 17 Oct 2024 09:10:10 +0000 (UTC)
-X-Greylist: delayed 503 seconds by postgrey-1.37 at util1.osuosl.org;
- Thu, 17 Oct 2024 09:10:09 UTC
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 9F6434011B
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9F6434011B
+ id Pyg0Mtvfeqgs; Thu, 17 Oct 2024 09:04:35 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B16754076E
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1729155875;
+	bh=8td+raJppumIQUbEbi2nGF0kcQTVJZczGWFJQd03Jq4=;
+	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=n1gTWtUxOr7S70nGw3gW7D64vVtnmSWu0KT6G6KDaep4pFARlfV/mhewljH4QaRRD
+	 BeUbdEr/ZStwV9RwbdgcOEA1UZta0vc0Mg6qhvA3gugyPsZ5FFuwOFDsEDwfWwH9Tl
+	 jRc7RwCI2DPnfnGstTBz4ctUn/yslOQaQMC8m0jmboTQkG541cpgovf1cJFl2bNjw9
+	 P5JyPG1IwgXMsUoDfYHI/WFwySeqhxE3EqVGjm0bvv29QUgG2Rueg41zYDKX802wOl
+	 TwMJcHNSxRNI6zYS3U2w8r783txBhuxVSeSoFJcpBSeeuA6rQxIXQdT4VXno7QoMIp
+	 Objalq7Vdvizg==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp4.osuosl.org (Postfix) with ESMTP id B16754076E;
+	Thu, 17 Oct 2024 09:04:35 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
+ by lists1.osuosl.org (Postfix) with ESMTP id 1AA1F27EF
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Oct 2024 09:04:34 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp2.osuosl.org (Postfix) with ESMTP id E7463405B0
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Oct 2024 09:04:33 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp2.osuosl.org ([127.0.0.1])
+ by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id KlAsFJA5qqhw for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 17 Oct 2024 09:04:33 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
- client-ip=2001:648:2ffe:3:a800:ff:fe99:2593; helo=balab.aueb.gr;
- envelope-from=dds@balab.aueb.gr; receiver=<UNKNOWN> 
-Received: from balab.aueb.gr (balab.aueb.gr
- [IPv6:2001:648:2ffe:3:a800:ff:fe99:2593])
- by smtp4.osuosl.org (Postfix) with ESMTP id 9F6434011B
- for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Oct 2024 09:10:09 +0000 (UTC)
-Received: by balab.aueb.gr (Postfix, from userid 1000)
- id 53E1124618F; Thu, 17 Oct 2024 12:01:40 +0300 (EEST)
-From: Diomidis Spinellis <dds@aueb.gr>
-To: Tony Nguyen <anthony.l.nguyen@intel.com>,
- Przemek Kitszel <przemyslaw.kitszel@intel.com>
-Cc: intel-wired-lan@lists.osuosl.org,
-	Diomidis Spinellis <dds@aueb.gr>
-Date: Thu, 17 Oct 2024 11:58:53 +0300
-Message-Id: <20241017085851.1800065-1-dds@aueb.gr>
-X-Mailer: git-send-email 2.39.5
+ client-ip=2604:1380:4641:c500::1; helo=dfw.source.kernel.org;
+ envelope-from=horms@kernel.org; receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 0A8B5404C5
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 0A8B5404C5
+Received: from dfw.source.kernel.org (dfw.source.kernel.org
+ [IPv6:2604:1380:4641:c500::1])
+ by smtp2.osuosl.org (Postfix) with ESMTPS id 0A8B5404C5
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Oct 2024 09:04:32 +0000 (UTC)
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by dfw.source.kernel.org (Postfix) with ESMTP id 608685C5D37;
+ Thu, 17 Oct 2024 09:04:27 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5F9EDC4CEC3;
+ Thu, 17 Oct 2024 09:04:30 +0000 (UTC)
+Date: Thu, 17 Oct 2024 10:04:28 +0100
+From: Simon Horman <horms@kernel.org>
+To: Joshua Hay <joshua.a.hay@intel.com>
+Cc: intel-wired-lan@lists.osuosl.org, aleksander.lobakin@intel.com,
+ madhu.chittim@intel.com, netdev@vger.kernel.org
+Message-ID: <20241017090428.GS2162@kernel.org>
+References: <20241007202435.664345-1-joshua.a.hay@intel.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
- dmarc=pass (p=none dis=none)
- header.from=aueb.gr
-Subject: [Intel-wired-lan] [PATCH] ixgbe: Break include dependency cycle
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20241007202435.664345-1-joshua.a.hay@intel.com>
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=kernel.org; s=k20201202; t=1729155871;
+ bh=d5kqO4Bh9+2mLG4iFeXcX1lSGbbJ2UL2sLpOF4R3KX4=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=fBhsGYDEZBWr9wfeIkUXehVLJCt/J7hM7gGxAJdLccpuNX1U0hYNC98bIGTWzqhbk
+ Llp/chNtnicm3xiUxDYY3lzr8qQCNeMOFl18oJG8nKQV39Bb/EEPGXF+MKusJ9giUK
+ +OXz5msY94POZSBJ07Qrs67baL//sIQppD6TSL0XiTGLC13ic+f/gOkTIiRld18t0w
+ 9cSsx4UmItjp6pz3VDPgF42dQqMuxOkjJ0jAaHc+ticCg8mxqCtnR5c7/Qshp2noxH
+ QFNCK8Oyh64BQx8AlnEbq2LktCJKdDgpnypgCG5Uz20x2yk9yOk7p3/DKY8bVrQ+/y
+ ypcvstjsXz0Fg==
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dmarc=pass (p=quarantine dis=none)
+ header.from=kernel.org
+X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
+ header.a=rsa-sha256 header.s=k20201202 header.b=fBhsGYDE
+Subject: Re: [Intel-wired-lan] [PATCH iwl-net] idpf: set completion tag for
+ "empty" bufs associated with a packet
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -82,172 +99,39 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-Header ixgbe_type.h includes ixgbe_mbx.h.  Also, header
-ixgbe_mbx.h included ixgbe_type.h, thus introducing a circular
-dependency.
+On Mon, Oct 07, 2024 at 01:24:35PM -0700, Joshua Hay wrote:
+> Commit d9028db618a6 ("idpf: convert to libeth Tx buffer completion")
+> inadvertently removed code that was necessary for the tx buffer cleaning
+> routine to iterate over all buffers associated with a packet.
+> 
+> When a frag is too large for a single data descriptor, it will be split
+> across multiple data descriptors. This means the frag will span multiple
+> buffers in the buffer ring in order to keep the descriptor and buffer
+> ring indexes aligned. The buffer entries in the ring are technically
+> empty and no cleaning actions need to be performed. These empty buffers
+> can precede other frags associated with the same packet. I.e. a single
+> packet on the buffer ring can look like:
+> 
+> 	buf[0]=skb0.frag0
+> 	buf[1]=skb0.frag1
+> 	buf[2]=empty
+> 	buf[3]=skb0.frag2
+> 
+> The cleaning routine iterates through these buffers based on a matching
+> completion tag. If the completion tag is not set for buf2, the loop will
+> end prematurely. Frag2 will be left uncleaned and next_to_clean will be
+> left pointing to the end of packet, which will break the cleaning logic
+> for subsequent cleans. This consequently leads to tx timeouts.
+> 
+> Assign the empty bufs the same completion tag for the packet to ensure
+> the cleaning routine iterates over all of the buffers associated with
+> the packet.
+> 
+> Fixes: d9028db618a6 ("idpf: convert to libeth Tx buffer completion")
+> Signed-off-by: Joshua Hay <joshua.a.hay@intel.com>
+> Acked-by: Alexander Lobakin <aleksander.lobakin@intel.com>
+> Reviewed-by: Madhu chittim <madhu.chittim@intel.com>
 
-- Remove ixgbe_mbx.h inclusion from ixgbe_type.h.
+Thanks for the detailed description.
 
-- ixgbe_mbx.h requires the definition of struct ixgbe_mbx_operations
-  so move its definition there. While at it, add missing argument
-  identifier names.
-
-- Add required forward structure declarations.
-
-- Include ixgbe_mbx.h in the .c files that need it, for the
-  following reasons:
-
-  ixgbe_sriov.c uses ixgbe_check_for_msg
-  ixgbe_main.c uses ixgbe_init_mbx_params_pf
-  ixgbe_82599.c uses mbx_ops_generic
-  ixgbe_x540.c uses mbx_ops_generic
-  ixgbe_x550.c uses mbx_ops_generic
-
-Signed-off-by: Diomidis Spinellis <dds@aueb.gr>
----
- drivers/net/ethernet/intel/ixgbe/ixgbe_82598.c |  1 +
- drivers/net/ethernet/intel/ixgbe/ixgbe_main.c  |  1 +
- drivers/net/ethernet/intel/ixgbe/ixgbe_mbx.h   | 16 +++++++++++++++-
- drivers/net/ethernet/intel/ixgbe/ixgbe_sriov.c |  1 +
- drivers/net/ethernet/intel/ixgbe/ixgbe_type.h  | 15 ++-------------
- drivers/net/ethernet/intel/ixgbe/ixgbe_x540.c  |  1 +
- drivers/net/ethernet/intel/ixgbe/ixgbe_x550.c  |  1 +
- 7 files changed, 22 insertions(+), 14 deletions(-)
-
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_82598.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_82598.c
-index 283a23150a4d..4aaaea3b5f8f 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_82598.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_82598.c
-@@ -6,6 +6,7 @@
- #include <linux/sched.h>
- 
- #include "ixgbe.h"
-+#include "ixgbe_mbx.h"
- #include "ixgbe_phy.h"
- 
- #define IXGBE_82598_MAX_TX_QUEUES 32
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-index 8b8404d8c946..c229a26fbbb7 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-@@ -43,6 +43,7 @@
- #include "ixgbe.h"
- #include "ixgbe_common.h"
- #include "ixgbe_dcb_82599.h"
-+#include "ixgbe_mbx.h"
- #include "ixgbe_phy.h"
- #include "ixgbe_sriov.h"
- #include "ixgbe_model.h"
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_mbx.h b/drivers/net/ethernet/intel/ixgbe/ixgbe_mbx.h
-index bd205306934b..bf65e82b4c61 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_mbx.h
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_mbx.h
-@@ -4,7 +4,7 @@
- #ifndef _IXGBE_MBX_H_
- #define _IXGBE_MBX_H_
- 
--#include "ixgbe_type.h"
-+#include <linux/types.h>
- 
- #define IXGBE_VFMAILBOX_SIZE        16 /* 16 32 bit words - 64 bytes */
- 
-@@ -96,6 +96,8 @@ enum ixgbe_pfvf_api_rev {
- #define IXGBE_VF_MBX_INIT_TIMEOUT 2000 /* number of retries on mailbox */
- #define IXGBE_VF_MBX_INIT_DELAY   500  /* microseconds between retries */
- 
-+struct ixgbe_hw;
-+
- int ixgbe_read_mbx(struct ixgbe_hw *, u32 *, u16, u16);
- int ixgbe_write_mbx(struct ixgbe_hw *, u32 *, u16, u16);
- int ixgbe_check_for_msg(struct ixgbe_hw *, u16);
-@@ -105,6 +107,18 @@ int ixgbe_check_for_rst(struct ixgbe_hw *, u16);
- void ixgbe_init_mbx_params_pf(struct ixgbe_hw *);
- #endif /* CONFIG_PCI_IOV */
- 
-+struct ixgbe_mbx_operations {
-+	int (*init_params)(struct ixgbe_hw *hw);
-+	int (*read)(struct ixgbe_hw *hw, u32 *msg, u16 size, u16 vf_number);
-+	int (*write)(struct ixgbe_hw *hw, u32 *msg, u16 size, u16 vf_number);
-+	int (*read_posted)(struct ixgbe_hw *hw, u32 *msg, u16 size, u16 mbx_id);
-+	int (*write_posted)(struct ixgbe_hw *hw, u32 *msg, u16 size,
-+			    u16 mbx_id);
-+	int (*check_for_msg)(struct ixgbe_hw *hw, u16 vf_number);
-+	int (*check_for_ack)(struct ixgbe_hw *hw, u16 vf_number);
-+	int (*check_for_rst)(struct ixgbe_hw *hw, u16 vf_number);
-+};
-+
- extern const struct ixgbe_mbx_operations mbx_ops_generic;
- 
- #endif /* _IXGBE_MBX_H_ */
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_sriov.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_sriov.c
-index e71715f5da22..9631559a5aea 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_sriov.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_sriov.c
-@@ -18,6 +18,7 @@
- 
- #include "ixgbe.h"
- #include "ixgbe_type.h"
-+#include "ixgbe_mbx.h"
- #include "ixgbe_sriov.h"
- 
- #ifdef CONFIG_PCI_IOV
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h b/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h
-index 346e3d9114a8..9baccacd02a1 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_type.h
-@@ -3601,19 +3601,6 @@ struct ixgbe_phy_info {
- 	u32				nw_mng_if_sel;
- };
- 
--#include "ixgbe_mbx.h"
--
--struct ixgbe_mbx_operations {
--	int (*init_params)(struct ixgbe_hw *hw);
--	int (*read)(struct ixgbe_hw *, u32 *, u16,  u16);
--	int (*write)(struct ixgbe_hw *, u32 *, u16, u16);
--	int (*read_posted)(struct ixgbe_hw *, u32 *, u16,  u16);
--	int (*write_posted)(struct ixgbe_hw *, u32 *, u16, u16);
--	int (*check_for_msg)(struct ixgbe_hw *, u16);
--	int (*check_for_ack)(struct ixgbe_hw *, u16);
--	int (*check_for_rst)(struct ixgbe_hw *, u16);
--};
--
- struct ixgbe_mbx_stats {
- 	u32 msgs_tx;
- 	u32 msgs_rx;
-@@ -3623,6 +3610,8 @@ struct ixgbe_mbx_stats {
- 	u32 rsts;
- };
- 
-+struct ixgbe_mbx_operations;
-+
- struct ixgbe_mbx_info {
- 	const struct ixgbe_mbx_operations *ops;
- 	struct ixgbe_mbx_stats stats;
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_x540.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_x540.c
-index f1ffa398f6df..81e1df83f136 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_x540.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_x540.c
-@@ -6,6 +6,7 @@
- #include <linux/sched.h>
- 
- #include "ixgbe.h"
-+#include "ixgbe_mbx.h"
- #include "ixgbe_phy.h"
- #include "ixgbe_x540.h"
- 
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_x550.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_x550.c
-index a5f644934445..d9a8cf018d3b 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_x550.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_x550.c
-@@ -4,6 +4,7 @@
- #include "ixgbe_x540.h"
- #include "ixgbe_type.h"
- #include "ixgbe_common.h"
-+#include "ixgbe_mbx.h"
- #include "ixgbe_phy.h"
- 
- static int ixgbe_setup_kr_speed_x550em(struct ixgbe_hw *, ixgbe_link_speed);
--- 
-2.39.5
-
+Reviewed-by: Simon Horman <horms@kernel.org>
