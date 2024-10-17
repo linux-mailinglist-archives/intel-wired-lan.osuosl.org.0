@@ -1,89 +1,93 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
-	by mail.lfdr.de (Postfix) with ESMTPS id DB1F09A1DC9
-	for <lists+intel-wired-lan@lfdr.de>; Thu, 17 Oct 2024 11:04:38 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 55F139A1EC2
+	for <lists+intel-wired-lan@lfdr.de>; Thu, 17 Oct 2024 11:46:34 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp4.osuosl.org (Postfix) with ESMTP id 7C8014066A;
-	Thu, 17 Oct 2024 09:04:37 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 2A74A608F8;
+	Thu, 17 Oct 2024 09:46:30 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp4.osuosl.org ([127.0.0.1])
- by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id Pyg0Mtvfeqgs; Thu, 17 Oct 2024 09:04:35 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id xf-4UIKr1h0h; Thu, 17 Oct 2024 09:46:27 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org B16754076E
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 3D5CC608C7
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1729155875;
-	bh=8td+raJppumIQUbEbi2nGF0kcQTVJZczGWFJQd03Jq4=;
+	s=default; t=1729158386;
+	bh=MOEgPurlM+/ygTfkiic8gRQ1VNIykSKGXnENroR1yqw=;
 	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=n1gTWtUxOr7S70nGw3gW7D64vVtnmSWu0KT6G6KDaep4pFARlfV/mhewljH4QaRRD
-	 BeUbdEr/ZStwV9RwbdgcOEA1UZta0vc0Mg6qhvA3gugyPsZ5FFuwOFDsEDwfWwH9Tl
-	 jRc7RwCI2DPnfnGstTBz4ctUn/yslOQaQMC8m0jmboTQkG541cpgovf1cJFl2bNjw9
-	 P5JyPG1IwgXMsUoDfYHI/WFwySeqhxE3EqVGjm0bvv29QUgG2Rueg41zYDKX802wOl
-	 TwMJcHNSxRNI6zYS3U2w8r783txBhuxVSeSoFJcpBSeeuA6rQxIXQdT4VXno7QoMIp
-	 Objalq7Vdvizg==
+	b=l8LVDN3s1enq4oz7qkvC/9IvsWQM12gRv/iK3gR6vggjXwJTuSN2s2jT8UlMmocHb
+	 CPAJvf+CFomH2Ep5jvX5xqUAvEnM9JsyF0DjYbWDTHcRG72VTm3FgvPTsrM5RyC2+1
+	 hcWt5APZYY2WCjwGWVjzpGvgM9WQGZf9NpxiaRn63rkQXkB0zVsat1nQrobVrJdPCU
+	 30lLRs3p/VwWZqdnskQr6/uouFSMmpEmi0i7uK6Ze8nWkWZCuXnNVhu+IzYXWuLx2l
+	 n7xKxNB4hyubqJv7CSEE0GW5ITnRGMyFhgs63CU0/B6nJ37EmM4vb6Hk7Ifhqv+zX2
+	 zVMLYsbP6SSwQ==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp4.osuosl.org (Postfix) with ESMTP id B16754076E;
-	Thu, 17 Oct 2024 09:04:35 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 3D5CC608C7;
+	Thu, 17 Oct 2024 09:46:26 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp2.osuosl.org (smtp2.osuosl.org [140.211.166.133])
- by lists1.osuosl.org (Postfix) with ESMTP id 1AA1F27EF
- for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Oct 2024 09:04:34 +0000 (UTC)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+ by lists1.osuosl.org (Postfix) with ESMTP id 2221927EF
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Oct 2024 09:46:24 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp2.osuosl.org (Postfix) with ESMTP id E7463405B0
- for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Oct 2024 09:04:33 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTP id 0F18781135
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Oct 2024 09:46:24 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp2.osuosl.org ([127.0.0.1])
- by localhost (smtp2.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id KlAsFJA5qqhw for <intel-wired-lan@lists.osuosl.org>;
- Thu, 17 Oct 2024 09:04:33 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 5TvHFuR5mZIx for <intel-wired-lan@lists.osuosl.org>;
+ Thu, 17 Oct 2024 09:46:23 +0000 (UTC)
 Received-SPF: Pass (mailfrom) identity=mailfrom;
  client-ip=2604:1380:4641:c500::1; helo=dfw.source.kernel.org;
  envelope-from=horms@kernel.org; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp2.osuosl.org 0A8B5404C5
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp2.osuosl.org 0A8B5404C5
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 5582480E53
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 5582480E53
 Received: from dfw.source.kernel.org (dfw.source.kernel.org
  [IPv6:2604:1380:4641:c500::1])
- by smtp2.osuosl.org (Postfix) with ESMTPS id 0A8B5404C5
- for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Oct 2024 09:04:32 +0000 (UTC)
+ by smtp1.osuosl.org (Postfix) with ESMTPS id 5582480E53
+ for <intel-wired-lan@lists.osuosl.org>; Thu, 17 Oct 2024 09:46:23 +0000 (UTC)
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by dfw.source.kernel.org (Postfix) with ESMTP id 608685C5D37;
- Thu, 17 Oct 2024 09:04:27 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5F9EDC4CEC3;
- Thu, 17 Oct 2024 09:04:30 +0000 (UTC)
-Date: Thu, 17 Oct 2024 10:04:28 +0100
+ by dfw.source.kernel.org (Postfix) with ESMTP id 1AE3C5C5E66;
+ Thu, 17 Oct 2024 09:46:18 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0FFE6C4CEC7;
+ Thu, 17 Oct 2024 09:46:20 +0000 (UTC)
+Date: Thu, 17 Oct 2024 10:46:18 +0100
 From: Simon Horman <horms@kernel.org>
-To: Joshua Hay <joshua.a.hay@intel.com>
-Cc: intel-wired-lan@lists.osuosl.org, aleksander.lobakin@intel.com,
- madhu.chittim@intel.com, netdev@vger.kernel.org
-Message-ID: <20241017090428.GS2162@kernel.org>
-References: <20241007202435.664345-1-joshua.a.hay@intel.com>
+To: Piotr Kwapulinski <piotr.kwapulinski@intel.com>
+Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
+ Stefan Wegrzyn <stefan.wegrzyn@intel.com>,
+ Jedrzej Jagielski <jedrzej.jagielski@intel.com>,
+ Jan Sokolowski <jan.sokolowski@intel.com>
+Message-ID: <20241017094618.GA1697@kernel.org>
+References: <20241003141650.16524-1-piotr.kwapulinski@intel.com>
+ <20241003141650.16524-3-piotr.kwapulinski@intel.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20241007202435.664345-1-joshua.a.hay@intel.com>
+In-Reply-To: <20241003141650.16524-3-piotr.kwapulinski@intel.com>
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1729155871;
- bh=d5kqO4Bh9+2mLG4iFeXcX1lSGbbJ2UL2sLpOF4R3KX4=;
+ d=kernel.org; s=k20201202; t=1729158382;
+ bh=/wuOGEEvNYquRC66hYVt0oRxhuEpdfr1+7xxF1GTnqc=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=fBhsGYDEZBWr9wfeIkUXehVLJCt/J7hM7gGxAJdLccpuNX1U0hYNC98bIGTWzqhbk
- Llp/chNtnicm3xiUxDYY3lzr8qQCNeMOFl18oJG8nKQV39Bb/EEPGXF+MKusJ9giUK
- +OXz5msY94POZSBJ07Qrs67baL//sIQppD6TSL0XiTGLC13ic+f/gOkTIiRld18t0w
- 9cSsx4UmItjp6pz3VDPgF42dQqMuxOkjJ0jAaHc+ticCg8mxqCtnR5c7/Qshp2noxH
- QFNCK8Oyh64BQx8AlnEbq2LktCJKdDgpnypgCG5Uz20x2yk9yOk7p3/DKY8bVrQ+/y
- ypcvstjsXz0Fg==
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
+ b=dL/1hkfVN+NhWJWq4AV53lWwhY8V+IAndQd/BOUyF2VPaEXIsqSQBpR5USlpAHRtc
+ yejEOSNCzegSxi1+MC/jnA2OuKBFrOlWtcFjGXkTLDBMlqtjMTqvcJfa+y8sCSz8mt
+ SCwnYnzpSQi7lO+SdQwQSkfdkIQSPEUg74Hp0X3uhB4mmshG68mrzBYd7HYcs5AQfu
+ o4AE0GuSiXy9DOkodxTJP2ABThzgBp50V5GtFx70VouPstB8XfbKLhctN0ejN0DaaZ
+ i+hgr6GjeTmZ3ZZNCPld3Zdrj5lT3olBTaDMgPCNLQm9q3Pxs9OYJ5EQ+gh06aXYy+
+ NW1ORwBxR6saA==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp2.osuosl.org;
- dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org
- header.a=rsa-sha256 header.s=k20201202 header.b=fBhsGYDE
-Subject: Re: [Intel-wired-lan] [PATCH iwl-net] idpf: set completion tag for
- "empty" bufs associated with a packet
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+ dkim=pass (2048-bit key,
+ unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
+ header.s=k20201202 header.b=dL/1hkfV
+Subject: Re: [Intel-wired-lan] [PATCH iwl-next v9 2/7] ixgbe: Add support
+ for E610 device capabilities detection
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -99,39 +103,20 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Mon, Oct 07, 2024 at 01:24:35PM -0700, Joshua Hay wrote:
-> Commit d9028db618a6 ("idpf: convert to libeth Tx buffer completion")
-> inadvertently removed code that was necessary for the tx buffer cleaning
-> routine to iterate over all buffers associated with a packet.
+On Thu, Oct 03, 2024 at 04:16:45PM +0200, Piotr Kwapulinski wrote:
+> Add low level support for E610 device capabilities detection. The
+> capabilities are discovered via the Admin Command Interface. Discover the
+> following capabilities:
+> - function caps: vmdq, dcb, rss, rx/tx qs, msix, nvm, orom, reset
+> - device caps: vsi, fdir, 1588
+> - phy caps
 > 
-> When a frag is too large for a single data descriptor, it will be split
-> across multiple data descriptors. This means the frag will span multiple
-> buffers in the buffer ring in order to keep the descriptor and buffer
-> ring indexes aligned. The buffer entries in the ring are technically
-> empty and no cleaning actions need to be performed. These empty buffers
-> can precede other frags associated with the same packet. I.e. a single
-> packet on the buffer ring can look like:
-> 
-> 	buf[0]=skb0.frag0
-> 	buf[1]=skb0.frag1
-> 	buf[2]=empty
-> 	buf[3]=skb0.frag2
-> 
-> The cleaning routine iterates through these buffers based on a matching
-> completion tag. If the completion tag is not set for buf2, the loop will
-> end prematurely. Frag2 will be left uncleaned and next_to_clean will be
-> left pointing to the end of packet, which will break the cleaning logic
-> for subsequent cleans. This consequently leads to tx timeouts.
-> 
-> Assign the empty bufs the same completion tag for the packet to ensure
-> the cleaning routine iterates over all of the buffers associated with
-> the packet.
-> 
-> Fixes: d9028db618a6 ("idpf: convert to libeth Tx buffer completion")
-> Signed-off-by: Joshua Hay <joshua.a.hay@intel.com>
-> Acked-by: Alexander Lobakin <aleksander.lobakin@intel.com>
-> Reviewed-by: Madhu chittim <madhu.chittim@intel.com>
-
-Thanks for the detailed description.
+> Co-developed-by: Stefan Wegrzyn <stefan.wegrzyn@intel.com>
+> Signed-off-by: Stefan Wegrzyn <stefan.wegrzyn@intel.com>
+> Co-developed-by: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
+> Signed-off-by: Jedrzej Jagielski <jedrzej.jagielski@intel.com>
+> Reviewed-by: Jan Sokolowski <jan.sokolowski@intel.com>
+> Signed-off-by: Piotr Kwapulinski <piotr.kwapulinski@intel.com>
 
 Reviewed-by: Simon Horman <horms@kernel.org>
+
