@@ -1,89 +1,100 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 60CC79A6B30
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 21 Oct 2024 15:57:14 +0200 (CEST)
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8DF059A6C04
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 21 Oct 2024 16:24:46 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 4EE6D6070F;
-	Mon, 21 Oct 2024 13:57:11 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 2F35480DB0;
+	Mon, 21 Oct 2024 14:24:45 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id YKcwD3tvC7Qe; Mon, 21 Oct 2024 13:57:10 +0000 (UTC)
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id zqAebfaYc9Fg; Mon, 21 Oct 2024 14:24:44 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 9FF0060666
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 3948880DB1
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1729519030;
-	bh=8zvqVxqxllexuUQr2xLZFQv0QlHmSs3CKh3BEQn7kGk=;
-	h=Date:From:To:Cc:References:In-Reply-To:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=KeHm1yRheGYpDU786vK1X9RMaJiCgCnQv0YdJxYAYK9QXyATpA6Ds/fLDgYS9w32W
-	 n0yG3WqtYKi0B2l6QYuelCpxMlUvHqAwq1E+StEuykHi7xVU0OXcijIA9ek01LH5PP
-	 6CKoY+ehOrz2jv/uXVRmR2DKEtBDiwQn150IJGJilahrpPowk+3OBx/ZE4Os/mZnEI
-	 7/uv5qmOnMxqo7wU9YOvrJ9FuHbhMcTRpCK5T6zUA9Fb4A5czF0kBzL8lb2RYZQRLl
-	 I3rTHvXQUGgS2KYt261D4gBqQVrmhyzn6t4b31BGukIy7m1h/pX0cWg27hm5BRsYFt
-	 JzhxqqxhEW/fg==
+	s=default; t=1729520684;
+	bh=hxt/vd/k1NChmiKGjuFuBEMZh+qVNXjF9vrUKCplJts=;
+	h=From:To:Cc:Date:Subject:List-Id:List-Unsubscribe:List-Archive:
+	 List-Post:List-Help:List-Subscribe:From;
+	b=HorJ2pJ285yBWcNStMM8hJcAGycYaV+yq3CsYrFRMLNGql9K3WAqMN/RkhfaBfMaH
+	 /CP0FZJaXfPx7NHQgw9PMw5A+Jo8ut5ZZ2O3bvNxvGsr5w4sp02jyEH80pCft3Ceb8
+	 mFYP6iuGDOt3yyZvHirOKR72cVXZB0/mtCtqC2DKfDuxJybAvnlGD+iAD0s8uxHKrN
+	 OlOYrqtdlO5Tsn2hewH9xEXjY4vHBFlwyxLDRB//uHZam7hVPiVWXD6fmnNuV+L/ZI
+	 +ThPP5zcAQW0nPJTiMQtxcAthKIvDQyE72MMIREDl9Pmx+DAma1WDKclx1cp42q2Sa
+	 3OnruE//jzh+Q==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 9FF0060666;
-	Mon, 21 Oct 2024 13:57:10 +0000 (UTC)
+	by smtp1.osuosl.org (Postfix) with ESMTP id 3948880DB1;
+	Mon, 21 Oct 2024 14:24:44 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
- by lists1.osuosl.org (Postfix) with ESMTP id 1C47771F
- for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Oct 2024 13:57:09 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 21D22AF2
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Oct 2024 14:24:43 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp3.osuosl.org (Postfix) with ESMTP id F254C60666
- for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Oct 2024 13:57:08 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id F07C5404F6
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Oct 2024 14:24:42 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp3.osuosl.org ([127.0.0.1])
- by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 0hy22a6Diw0L for <intel-wired-lan@lists.osuosl.org>;
- Mon, 21 Oct 2024 13:57:08 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=139.178.84.217;
- helo=dfw.source.kernel.org; envelope-from=horms@kernel.org;
+Received: from smtp4.osuosl.org ([127.0.0.1])
+ by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id icblQ7WOWwke for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 21 Oct 2024 14:24:42 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.175.65.20;
+ helo=mgamail.intel.com; envelope-from=arkadiusz.kubalewski@intel.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 60EAC605F9
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 60EAC605F9
-Received: from dfw.source.kernel.org (dfw.source.kernel.org [139.178.84.217])
- by smtp3.osuosl.org (Postfix) with ESMTPS id 60EAC605F9
- for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Oct 2024 13:57:08 +0000 (UTC)
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by dfw.source.kernel.org (Postfix) with ESMTP id 7E6F75C04AF;
- Mon, 21 Oct 2024 13:57:02 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8D1B7C4CEE5;
- Mon, 21 Oct 2024 13:57:05 +0000 (UTC)
-Date: Mon, 21 Oct 2024 14:57:03 +0100
-From: Simon Horman <horms@kernel.org>
-To: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
-Cc: intel-wired-lan@lists.osuosl.org, netdev@vger.kernel.org,
- przemyslaw.kitszel@intel.com, marcin.szycik@intel.com
-Message-ID: <20241021135703.GK402847@kernel.org>
-References: <20241011070328.45874-1-michal.swiatkowski@linux.intel.com>
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 7C850402D6
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 7C850402D6
+Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.20])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 7C850402D6
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Oct 2024 14:24:41 +0000 (UTC)
+X-CSE-ConnectionGUID: 72BS7EXeRFey9Yp9hDLLVA==
+X-CSE-MsgGUID: IFmij+X8TqSLrmh6CDCUCg==
+X-IronPort-AV: E=McAfee;i="6700,10204,11222"; a="28781476"
+X-IronPort-AV: E=Sophos;i="6.11,199,1725346800"; d="scan'208";a="28781476"
+Received: from fmviesa002.fm.intel.com ([10.60.135.142])
+ by orvoesa112.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 21 Oct 2024 07:24:40 -0700
+X-CSE-ConnectionGUID: K/mVzZNPTeyWcbXabMW+6w==
+X-CSE-MsgGUID: RNR/rDYxRJCBtdFcUPU2Kw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.11,221,1725346800"; d="scan'208";a="102857310"
+Received: from amlin-018-114.igk.intel.com ([10.102.18.114])
+ by fmviesa002.fm.intel.com with ESMTP; 21 Oct 2024 07:24:38 -0700
+From: Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
+To: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ intel-wired-lan@lists.osuosl.org
+Cc: anthony.l.nguyen@intel.com, przemyslaw.kitszel@intel.com,
+ davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
+ pabeni@redhat.com, richardcochran@gmail.com,
+ Arkadiusz Kubalewski <arkadiusz.kubalewski@intel.com>
+Date: Mon, 21 Oct 2024 16:19:53 +0200
+Message-Id: <20241021141955.1466979-1-arkadiusz.kubalewski@intel.com>
+X-Mailer: git-send-email 2.38.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20241011070328.45874-1-michal.swiatkowski@linux.intel.com>
+Content-Transfer-Encoding: 8bit
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=kernel.org; s=k20201202; t=1729519026;
- bh=ocsaoy6SWeiXZExB3xTvWnrst7hsXXBiL9gmodujsXw=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=h19xc56z7lB2IH9Ubgecft+IP4+Ljvljpnd5smQs7hvGjo7+OeGJR2+W70xnlyvua
- J9jOcBrmTcpq8FOpBX3AK7bySWMDJKhZAAUOS1wzmkg3oytjO8ZE+cVLVcHXmTt643
- xtikDqNVZUmB2mFPefaoPU8euU7qqlO4gx6VQCgrhsPz8yr3uO/JQy8ct6nKH3iCpk
- Z4ynHU4ij9qQwgJiU9NMiyRJ4CAUhlBi6aehgsZj6sDiBpr0/VEY4JYya/IzYdC2We
- P4AFm7PHwbrEy5T9k/pWB1cE6qFFyjr7V3mSN61aHTxdCpX6anznER/7aHmcEY8Q6P
- 8LojI1m8uyhBQ==
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
- dmarc=pass (p=quarantine dis=none)
- header.from=kernel.org
-X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1729520681; x=1761056681;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=pc4NBde+fXjBXx1YyOAYXQyIKmBbSnOydn+XQMOwhH4=;
+ b=N3OdEKR+90K5s9L5eM0Ohlm+eP1czrB8QzgywCipS3fqjk+bwLxBTjZf
+ KR68mylkt/WuTZmql063Qm6Qoc+q0ZsyqbcB/nytqkehzCtv/tclVbXpY
+ eRm8I7x+r+WozpmILtcDp1+1LTEnV9DHXVwzKWs461AdTIs4rNNGgkC5Z
+ BxPz5QtmbcrPlGIcl/y8mNWnNK0n/8k9L1FSfV4znZBe4IiA/jo+u9IHK
+ OI71O8PMtPPa2AZyjyJyulQjAdrej8o6fEBU/1K7SJvjQsBCYZwpLOjIw
+ vzIaa//qrtE9YTiAhmWUKW6GyGK27xQXqu0LCIuMlEkVYRiMSvZVEtsTg
+ Q==;
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ dmarc=pass (p=none dis=none)
+ header.from=intel.com
+X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dkim=pass (2048-bit key,
- unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256
- header.s=k20201202 header.b=h19xc56z
-Subject: Re: [Intel-wired-lan] [iwl-next v1] ice: add recipe priority check
- in search
+ unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
+ header.s=Intel header.b=N3OdEKR+
+Subject: [Intel-wired-lan] [PATCH net-next 0/2] ptp: add control over HW
+ timestamp latch point
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -99,38 +110,27 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-On Fri, Oct 11, 2024 at 09:03:28AM +0200, Michal Swiatkowski wrote:
-> The new recipe should be added even if exactly the same recipe already
-> exists with different priority.
-> 
-> Example use case is when the rule is being added from TC tool context.
-> It should has the highest priority, but if the recipe already exists
-> the rule will inherit it priority. It can lead to the situation when
-> the rule added from TC tool has lower priority than expected.
-> 
-> The solution is to check the recipe priority when trying to find
-> existing one.
-> 
-> Previous recipe is still useful. Example:
-> RID 8 -> priority 4
-> RID 10 -> priority 7
-> 
-> The difference is only in priority rest is let's say eth + mac +
-> direction.
-> 
-> Adding ARP + MAC_A + RX on RID 8, forward to VF0_VSI
-> After that IP + MAC_B + RX on RID 10 (from TC tool), forward to PF0
-> 
-> Both will work.
-> 
-> In case of adding ARP + MAC_A + RX on RID 8, forward to VF0_VSI
-> ARP + MAC_A + RX on RID 10, forward to PF0.
-> 
-> Only second one will match, but this is expected.
-> 
-> Reviewed-by: Marcin Szycik <marcin.szycik@linux.intel.com>
-> Reviewed-by: Przemek Kitszel <przemyslaw.kitszel@intel.com>
-> Signed-off-by: Michal Swiatkowski <michal.swiatkowski@linux.intel.com>
+HW support of PTP/timesync solutions in network PHY chips can be
+achieved with two different approaches, the timestamp maybe latched
+either in the beginning or after the Start of Frame Delimiter (SFD) [1].
 
-Reviewed-by: Simon Horman <horms@kernel.org>
+Allow ptp device drivers to provide user with control over the timestamp
+latch point.
+
+[1] https://www.ieee802.org/3/cx/public/april20/tse_3cx_01_0420.pdf
+
+Arkadiusz Kubalewski (2):
+  ptp: add control over HW timestamp latch point
+  ice: ptp: add control over HW timestamp latch point
+
+ Documentation/ABI/testing/sysfs-ptp         | 12 +++++
+ drivers/net/ethernet/intel/ice/ice_ptp.c    | 46 +++++++++++++++++
+ drivers/net/ethernet/intel/ice/ice_ptp_hw.c | 57 +++++++++++++++++++++
+ drivers/net/ethernet/intel/ice/ice_ptp_hw.h |  2 +
+ drivers/ptp/ptp_sysfs.c                     | 44 ++++++++++++++++
+ include/linux/ptp_clock_kernel.h            | 29 +++++++++++
+ 6 files changed, 190 insertions(+)
+
+-- 
+2.38.1
 
