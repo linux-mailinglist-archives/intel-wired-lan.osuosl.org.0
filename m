@@ -1,94 +1,104 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8EFC79A599C
-	for <lists+intel-wired-lan@lfdr.de>; Mon, 21 Oct 2024 06:56:50 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+	by mail.lfdr.de (Postfix) with ESMTPS id E1FE09A59D3
+	for <lists+intel-wired-lan@lfdr.de>; Mon, 21 Oct 2024 07:42:13 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id AC28E80C76;
-	Mon, 21 Oct 2024 04:56:47 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id BD2D16063A;
+	Mon, 21 Oct 2024 05:42:11 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id 30KLEkJqpAbQ; Mon, 21 Oct 2024 04:56:47 +0000 (UTC)
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id i8db0YGI9JYT; Mon, 21 Oct 2024 05:42:11 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B4A0580C6C
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 0DFC760609
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1729486606;
-	bh=P5YkSHJHHR53cNQHAl4+Vzc6eYVp4YG5n9LSBP1MsQk=;
-	h=Date:From:To:Subject:List-Id:List-Unsubscribe:List-Archive:
-	 List-Post:List-Help:List-Subscribe:From;
-	b=sn4khnshrGKvD4HDnVrtDtKzjBE2jiH+by2Cgn00dVxw0P/4Mh+v7kUYoiEZ3uvmR
-	 qQd9qlIIwLelVZVOjf0ECYAfEmxrJJQj0yORb3pFBjIMZVyxohDIj8n/SEL5z7bcev
-	 qTRRZQxCi1WASt9cjuIT/uLZ6isxwdUpuTozNA9otMEMD9R8OXCCkvgSGKjndZni8u
-	 Hw1ftTbHT/KEQB1EWTVM4rGjg91kBCxSPD/SbHUSldNppxWIilw+EekYDIjXmpQBz7
-	 tQbgNjVuRs6wsRa9Suq1VEN76SfNv8HsstRNvlWf8iWcNXqbUY0+TPsvd4LtoXO08P
-	 d2zqTHvfpYvsw==
+	s=default; t=1729489331;
+	bh=IwN2APzuoMR+7fgmrER77l2eiOhN6doSytLMUFLsLt4=;
+	h=From:To:Cc:In-Reply-To:References:Date:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=HHK6gmrFx22wCtwxEzwKKNBXYCL3V2Tv04VrW596fG5W4KnqkxWMYfCJuTAQAdAO/
+	 /XGU5GpJLKIxrwFC7dgvyeuZjqdc6Zw7+e8dc739xUcUqeOzBURfCWqqphY2IxhuKi
+	 CMtIWan6ulkNRSDwo1RfER5bOVQnshkt+7MvLjhPVJcFXvQPK8WNk+LX3yyk0P8uRE
+	 kyNkPTUbUAkV2anzEAKL1h9JdbReBpzZ3xSA7MSaDL1I/Vvg+sCeNxudDzQR/eBm3T
+	 2MPFlXtzpwu9ap5a6sefyZtnNhXmdVddX0UTvuI3k8mOYwLnos1006DfZYwPrW1W0U
+	 f3DMvhWngGyfA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id B4A0580C6C;
-	Mon, 21 Oct 2024 04:56:46 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 0DFC760609;
+	Mon, 21 Oct 2024 05:42:11 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
- by lists1.osuosl.org (Postfix) with ESMTP id A4CBD27D7
- for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Oct 2024 04:56:44 +0000 (UTC)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
+ by lists1.osuosl.org (Postfix) with ESMTP id 89AF4AF2
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Oct 2024 05:42:08 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp1.osuosl.org (Postfix) with ESMTP id 71DF280C67
- for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Oct 2024 04:56:44 +0000 (UTC)
+ by smtp3.osuosl.org (Postfix) with ESMTP id 6AE3B60607
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Oct 2024 05:42:08 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id y0aFb8pS1b8F for <intel-wired-lan@lists.osuosl.org>;
- Mon, 21 Oct 2024 04:56:43 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=192.198.163.10;
- helo=mgamail.intel.com; envelope-from=lkp@intel.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org 56B4980C60
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 56B4980C60
-Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.10])
- by smtp1.osuosl.org (Postfix) with ESMTPS id 56B4980C60
- for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Oct 2024 04:56:42 +0000 (UTC)
-X-CSE-ConnectionGUID: sJhKl1sEQSaQ5Ssl6irmKQ==
-X-CSE-MsgGUID: 8xT3yHNbSFm8uDRq4d6qcA==
-X-IronPort-AV: E=McAfee;i="6700,10204,11231"; a="40321905"
-X-IronPort-AV: E=Sophos;i="6.11,219,1725346800"; d="scan'208";a="40321905"
-Received: from orviesa010.jf.intel.com ([10.64.159.150])
- by fmvoesa104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 20 Oct 2024 21:56:42 -0700
-X-CSE-ConnectionGUID: GyUREeZNQMiHcBH9e/YUgA==
-X-CSE-MsgGUID: lQFoCpHWRdOa6TZo7SRVCA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.11,219,1725346800"; d="scan'208";a="79368683"
-Received: from lkp-server01.sh.intel.com (HELO a48cf1aa22e8) ([10.239.97.150])
- by orviesa010.jf.intel.com with ESMTP; 20 Oct 2024 21:56:40 -0700
-Received: from kbuild by a48cf1aa22e8 with local (Exim 4.96)
- (envelope-from <lkp@intel.com>) id 1t2kT8-000RCh-1b
- for intel-wired-lan@lists.osuosl.org; Mon, 21 Oct 2024 04:56:38 +0000
-Date: Mon, 21 Oct 2024 12:55:59 +0800
-From: kernel test robot <lkp@intel.com>
-To: Intel Wired LAN <intel-wired-lan@lists.osuosl.org>
-Message-ID: <202410211252.m7Q0Jf1f-lkp@intel.com>
-User-Agent: s-nail v14.9.24
-X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1729486604; x=1761022604;
- h=date:from:to:subject:message-id;
- bh=dNpNO35RK54UCnBEvtKDVg/Bm83X5gtZXoLVfIiubH4=;
- b=TjZRnxB1I+puirhxZhGxiKAGU5V6jHWGjxVhGlph003BJoxuTDO6E2yA
- mZ54FK4eHv/0Oe/tH5lh29B6Azlsg0PCPoAgJR7/1bmtwAUpMPs+QM2Hp
- lziNyBQZfkRQ53iBQ5S6IVtxs9LZuW0fPXxAAVjAh2CQoMN574JIlJ+2b
- TlCHYJUBvzjV16mMqJgZiD48lcc2bRnkXiygPgxZG4AXSXg1UvkZlZCDH
- SIcQb2V+aFaGGVphMLFyRJuKNyzTrmVCRbgFcfcnoAleUEWC4cJlCcbzP
- 3c8kANa1cutBo5GIVMKjdydBHOcf6cFK/6H+V8wbRjeXC1uZSH4dAl7Ra
- A==;
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
+Received: from smtp3.osuosl.org ([127.0.0.1])
+ by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id M0z0jkc6xJkG for <intel-wired-lan@lists.osuosl.org>;
+ Mon, 21 Oct 2024 05:42:07 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=193.142.43.55;
+ helo=galois.linutronix.de; envelope-from=kurt@linutronix.de;
+ receiver=<UNKNOWN> 
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp3.osuosl.org 6BC4E605E5
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 6BC4E605E5
+Received: from galois.linutronix.de (Galois.linutronix.de [193.142.43.55])
+ by smtp3.osuosl.org (Postfix) with ESMTPS id 6BC4E605E5
+ for <intel-wired-lan@lists.osuosl.org>; Mon, 21 Oct 2024 05:42:07 +0000 (UTC)
+From: Kurt Kanzenbach <kurt@linutronix.de>
+To: Joe Damato <jdamato@fastly.com>
+Cc: netdev@vger.kernel.org, vinicius.gomes@intel.com, Tony Nguyen
+ <anthony.l.nguyen@intel.com>, Przemek Kitszel
+ <przemyslaw.kitszel@intel.com>, "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, Alexei Starovoitov <ast@kernel.org>,
+ Daniel Borkmann <daniel@iogearbox.net>, Jesper Dangaard Brouer
+ <hawk@kernel.org>, John Fastabend <john.fastabend@gmail.com>, "moderated
+ list:INTEL ETHERNET DRIVERS" <intel-wired-lan@lists.osuosl.org>, open list
+ <linux-kernel@vger.kernel.org>, "open list:XDP (eXpress Data Path)"
+ <bpf@vger.kernel.org>
+In-Reply-To: <ZxKVI_DvFWBvRMaf@LQ3V64L9R2>
+References: <20241014213012.187976-1-jdamato@fastly.com>
+ <20241014213012.187976-3-jdamato@fastly.com>
+ <87h69d3bm2.fsf@kurt.kurt.home> <ZxKVI_DvFWBvRMaf@LQ3V64L9R2>
+Date: Mon, 21 Oct 2024 07:42:02 +0200
+Message-ID: <87o73e2es5.fsf@kurt.kurt.home>
+MIME-Version: 1.0
+Content-Type: multipart/signed; boundary="=-=-=";
+ micalg=pgp-sha512; protocol="application/pgp-signature"
+X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linutronix.de; s=2020; t=1729489324;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=IwN2APzuoMR+7fgmrER77l2eiOhN6doSytLMUFLsLt4=;
+ b=Jbs5GuSgoz06Yo6+KGN33AGlwU6bVgUJfxbq4ZyoTWGHQHxTJPHtRbfcDi31UU7CBUFGX5
+ AWhXWkF2ii5GnuIRehHb8djQEXETXZQEQez9hU3zVJIAi//Qi1nqqNjMoSWaD32/vDIly2
+ sMm4YmzsMNUPvHUzUxgXxTNCwgC5EEDpW2oIefWHHcDa0HwLaH7VQlxRUcHGthr0p4EGIH
+ DdDdpZkbwkFJ1OcNV6OLq8vdud/oiawaxlWvPSTImEudNlqZ6RmQYwqWHHJ8ZiMInKmUgr
+ Wppd4iKQ0wrpyKcCKAgw4ORLQ+pzC6kYy4jVaBb71VP/xAyd7UGazAan14tCTw==
+X-Mailman-Original-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed;
+ d=linutronix.de; s=2020e; t=1729489324;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=IwN2APzuoMR+7fgmrER77l2eiOhN6doSytLMUFLsLt4=;
+ b=/penghODChhNiRRbiTNwutaWjk3kpVXgV5wGXUvxA8y0WgJlfcblrQay4QSk/3pGM/X9il
+ piF30ZLsitnXklAw==
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
  dmarc=pass (p=none dis=none)
- header.from=intel.com
-X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
- dkim=pass (2048-bit key,
- unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256
- header.s=Intel header.b=TjZRnxB1
-Subject: [Intel-wired-lan] [tnguy-net-queue:dev-queue] BUILD SUCCESS
- efcec4898dcd215235ae427a48e7bbfdda7faa12
+ header.from=linutronix.de
+X-Mailman-Original-Authentication-Results: smtp3.osuosl.org;
+ dkim=pass (2048-bit key, unprotected) header.d=linutronix.de
+ header.i=@linutronix.de header.a=rsa-sha256 header.s=2020 header.b=Jbs5GuSg; 
+ dkim=pass header.d=linutronix.de header.i=@linutronix.de
+ header.a=ed25519-sha256 header.s=2020e header.b=/penghOD
+Subject: Re: [Intel-wired-lan] [RFC net-next v2 2/2] igc: Link queues to
+ NAPI instances
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -104,85 +114,113 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-tree/branch: https://git.kernel.org/pub/scm/linux/kernel/git/tnguy/net-queue.git dev-queue
-branch HEAD: efcec4898dcd215235ae427a48e7bbfdda7faa12  ixgbevf: Fix passing 0 to ERR_PTR in ixgbevf_run_xdp()
+--=-=-=
+Content-Type: text/plain
+Content-Transfer-Encoding: quoted-printable
 
-elapsed time: 3265m
+On Fri Oct 18 2024, Joe Damato wrote:
+> On Tue, Oct 15, 2024 at 12:27:01PM +0200, Kurt Kanzenbach wrote:
+>> On Mon Oct 14 2024, Joe Damato wrote:
+>
+> [...]
+>
+>> > diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/e=
+thernet/intel/igc/igc_main.c
+>> > index 7964bbedb16c..59c00acfa0ed 100644
+>> > --- a/drivers/net/ethernet/intel/igc/igc_main.c
+>> > +++ b/drivers/net/ethernet/intel/igc/igc_main.c
+>> > @@ -4948,6 +4948,47 @@ static int igc_sw_init(struct igc_adapter *adap=
+ter)
+>> >  	return 0;
+>> >  }
+>> >=20=20
+>> > +void igc_set_queue_napi(struct igc_adapter *adapter, int q_idx,
+>> > +			struct napi_struct *napi)
+>> > +{
+>> > +	if (adapter->flags & IGC_FLAG_QUEUE_PAIRS) {
+>> > +		netif_queue_set_napi(adapter->netdev, q_idx,
+>> > +				     NETDEV_QUEUE_TYPE_RX, napi);
+>> > +		netif_queue_set_napi(adapter->netdev, q_idx,
+>> > +				     NETDEV_QUEUE_TYPE_TX, napi);
+>> > +	} else {
+>> > +		if (q_idx < adapter->num_rx_queues) {
+>> > +			netif_queue_set_napi(adapter->netdev, q_idx,
+>> > +					     NETDEV_QUEUE_TYPE_RX, napi);
+>> > +		} else {
+>> > +			q_idx -=3D adapter->num_rx_queues;
+>> > +			netif_queue_set_napi(adapter->netdev, q_idx,
+>> > +					     NETDEV_QUEUE_TYPE_TX, napi);
+>> > +		}
+>> > +	}
+>> > +}
+>>=20
+>> In addition, to what Vinicius said. I think this can be done
+>> simpler. Something like this?
+>>=20
+>> void igc_set_queue_napi(struct igc_adapter *adapter, int vector,
+>> 			struct napi_struct *napi)
+>> {
+>> 	struct igc_q_vector *q_vector =3D adapter->q_vector[vector];
+>>=20
+>> 	if (q_vector->rx.ring)
+>> 		netif_queue_set_napi(adapter->netdev, vector, NETDEV_QUEUE_TYPE_RX, na=
+pi);
+>>=20
+>> 	if (q_vector->tx.ring)
+>> 		netif_queue_set_napi(adapter->netdev, vector, NETDEV_QUEUE_TYPE_TX, na=
+pi);
+>> }
+>
+> I tried this suggestion but this does not result in correct output
+> in the case where IGC_FLAG_QUEUE_PAIRS is disabled.
+>
+> The output from netlink:
+>
+> $ ./tools/net/ynl/cli.py --spec Documentation/netlink/specs/netdev.yaml \
+>                              --dump queue-get --json=3D'{"ifindex": 2}'
+>
+> [{'id': 0, 'ifindex': 2, 'napi-id': 8193, 'type': 'rx'},
+>  {'id': 1, 'ifindex': 2, 'napi-id': 8194, 'type': 'rx'},
+>  {'id': 0, 'ifindex': 2, 'type': 'tx'},
+>  {'id': 1, 'ifindex': 2, 'type': 'tx'}]
+>
+> Note the lack of a napi-id for the TX queues. This typically happens
+> when the linking is not done correctly; netif_queue_set_napi should
+> take a queue id as the second parameter.
+>
+> I believe the suggested code above should be modified to be as
+> follows to use ring->queue_index:
+>
+>   if (q_vector->rx.ring)
+>     netif_queue_set_napi(adapter->netdev,
+>                          q_vector->rx.ring->queue_index,
+>                          NETDEV_QUEUE_TYPE_RX, napi);
+>=20=20=20
+>   if (q_vector->tx.ring)
+>     netif_queue_set_napi(adapter->netdev,
+>                          q_vector->tx.ring->queue_index,
+>                          NETDEV_QUEUE_TYPE_TX, napi);
 
-configs tested: 66
-configs skipped: 1
+LGTM. Thanks.
 
-The following configs have been built successfully.
-More configs may be tested in the coming days.
+--=-=-=
+Content-Type: application/pgp-signature; name="signature.asc"
 
-tested configs:
-alpha                             allnoconfig    gcc-13.3.0
-arc                              allmodconfig    gcc-13.2.0
-arc                               allnoconfig    gcc-13.2.0
-arc                              allyesconfig    gcc-13.2.0
-arc                   randconfig-001-20241021    gcc-13.2.0
-arc                   randconfig-002-20241021    gcc-13.2.0
-arm                              allmodconfig    gcc-14.1.0
-arm                               allnoconfig    clang-20
-arm                              allyesconfig    gcc-14.1.0
-arm                   randconfig-001-20241021    clang-20
-arm                   randconfig-002-20241021    clang-20
-arm                   randconfig-003-20241021    clang-20
-arm                   randconfig-004-20241021    gcc-14.1.0
-arm64                             allnoconfig    gcc-14.1.0
-arm64                 randconfig-001-20241021    clang-20
-csky                              allnoconfig    gcc-14.1.0
-hexagon                           allnoconfig    clang-20
-i386                             allmodconfig    gcc-12
-i386                              allnoconfig    gcc-12
-i386                             allyesconfig    gcc-12
-i386        buildonly-randconfig-001-20241020    clang-18
-i386        buildonly-randconfig-002-20241020    clang-18
-i386        buildonly-randconfig-003-20241020    clang-18
-i386        buildonly-randconfig-004-20241020    clang-18
-i386        buildonly-randconfig-005-20241020    clang-18
-i386        buildonly-randconfig-006-20241020    gcc-12
-i386                                defconfig    clang-18
-i386                  randconfig-001-20241020    gcc-12
-i386                  randconfig-002-20241020    clang-18
-i386                  randconfig-003-20241020    gcc-12
-i386                  randconfig-004-20241020    gcc-12
-i386                  randconfig-005-20241020    clang-18
-i386                  randconfig-006-20241020    gcc-12
-i386                  randconfig-011-20241020    gcc-12
-i386                  randconfig-012-20241020    clang-18
-i386                  randconfig-013-20241020    clang-18
-i386                  randconfig-014-20241020    gcc-12
-i386                  randconfig-015-20241020    gcc-12
-i386                  randconfig-016-20241020    gcc-12
-loongarch                        allmodconfig    gcc-14.1.0
-loongarch                         allnoconfig    gcc-14.1.0
-m68k                             allmodconfig    gcc-14.1.0
-m68k                              allnoconfig    gcc-14.1.0
-m68k                             allyesconfig    gcc-14.1.0
-microblaze                       allmodconfig    gcc-14.1.0
-microblaze                        allnoconfig    gcc-14.1.0
-microblaze                       allyesconfig    gcc-14.1.0
-mips                              allnoconfig    gcc-14.1.0
-nios2                             allnoconfig    gcc-14.1.0
-openrisc                          allnoconfig    gcc-14.1.0
-parisc                            allnoconfig    gcc-14.1.0
-powerpc                           allnoconfig    gcc-14.1.0
-riscv                             allnoconfig    gcc-14.1.0
-s390                             allmodconfig    clang-20
-s390                              allnoconfig    clang-20
-s390                             allyesconfig    gcc-14.1.0
-sh                               allmodconfig    gcc-14.1.0
-sh                                allnoconfig    gcc-14.1.0
-sh                               allyesconfig    gcc-14.1.0
-sparc                            allmodconfig    gcc-14.1.0
-um                                allnoconfig    clang-17
-x86_64                            allnoconfig    clang-18
-x86_64                           allyesconfig    clang-18
-x86_64                              defconfig    gcc-11
-x86_64                               rhel-8.3    gcc-12
-xtensa                            allnoconfig    gcc-14.1.0
+-----BEGIN PGP SIGNATURE-----
 
---
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+iQJHBAEBCgAxFiEEvLm/ssjDfdPf21mSwZPR8qpGc4IFAmcV6aoTHGt1cnRAbGlu
+dXRyb25peC5kZQAKCRDBk9HyqkZzgkotD/0X5UYHEhJgqmCt6kB/HHS4YFUODWTi
+XbRxhEARJl+qKt6TMqywibxifqVHp9hL08AWuXp5kBQWw9Sc2e6KfG6TfoIBtdM3
+7nR6+Wk/CrMZhZVKbNjEQrfmcZAdl3Sk44DPaXhfqU0jCbgj0sj3zpoZU5q8UXT0
+8E5kkrPY1a98ufweoCnYSmdvLmqUXXgHeBWyoFgOdxeN2jIY1azZrgQucmdYsgYt
+g9Lprnp3euz/7UrAJhTgxjq7/klCKC0x2Sg0xmeKoNJ0aZC5zppsBZXJrWTlZElh
+zgwiV0Vc3aEWCRIoOVudj1GjSEug6w/fJWBO6gP+5EZ1N6XfQG7MOzuW07G47ubm
+8qX7JRjVyaNZAwX1wy69KZv/NVNUuPxJrdVMxPoV7HAZtZfQl5TA6aE3aBOvkO2q
+gsSU0cR2fk4Ac2YLbKcZNwrxzg8gsnhPrdPJw0EWmCvaAIzxFnYW+lPdV0SDiHnc
+e4kXClZjVramUW4cP3B9ZJ4krrXMNYQxnVfFSR55H+LwL0vKxqNNiRd3rNTpl4CL
+HcfYg6wvKulCvJZ31QwpeovA4K5BdCDd1JH/PkHLVSdM1sUWtDE3pRRnFk+sUG+S
+T8GqcYGHs4f6Ee2bYhHTFN5hOGRmcD+gM/9vdjAGqE4teIS/RhZDe7IoN0A/4gwP
+2wWE6IMegLnsZQ==
+=LURd
+-----END PGP SIGNATURE-----
+--=-=-=--
