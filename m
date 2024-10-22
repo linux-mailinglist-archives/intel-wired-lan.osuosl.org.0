@@ -1,64 +1,64 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp3.osuosl.org (smtp3.osuosl.org [140.211.166.136])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0B3D19A99FE
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 22 Oct 2024 08:39:01 +0200 (CEST)
+Received: from smtp3.osuosl.org (smtp3.osuosl.org [IPv6:2605:bc80:3010::136])
+	by mail.lfdr.de (Postfix) with ESMTPS id 33C3E9A9A03
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 22 Oct 2024 08:39:07 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 374B2607AA;
-	Tue, 22 Oct 2024 06:38:59 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id E1F19607BC;
+	Tue, 22 Oct 2024 06:39:05 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp3.osuosl.org ([127.0.0.1])
  by localhost (smtp3.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id UmphqYahD8P1; Tue, 22 Oct 2024 06:38:58 +0000 (UTC)
+ id ekDnYbdc758p; Tue, 22 Oct 2024 06:39:05 +0000 (UTC)
 X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 7E3DE6059B
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp3.osuosl.org 28529607A3
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1729579138;
-	bh=PN2hrIvEpRZTW/0rWt8RG3BBpmZK49dlHFV6y9qXDfg=;
+	s=default; t=1729579145;
+	bh=X6tX+QB/HZ7yafr64M28m/jDTbDk9AIIBkv7Y78qS4c=;
 	h=From:To:CC:Date:In-Reply-To:References:Subject:List-Id:
 	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
 	 From;
-	b=VXoabprZH4vjd1ErGul4GQOnAb3W6g5HXrwMWxbuCOQ0ZC9mTeWlCjGNcymT7Pj8k
-	 0BVD7puymYd27jch7cRj76DEeZc3o5RsX/mBKlYdhPAEGkFNV2hg2bfzZOL8k72KP4
-	 euDnByGCXuw9rP/qTvJZ4yMRFPpdaFHB+FyTekQ4ECUN0Ujbkm2dQHbK87IQfJVC5R
-	 g9sMG3QFdAILUG0QFM9bszM63gZgqdhf8takDdVlikjTfrs+mb/W/2AhiKEjEIkOM3
-	 nDUVafXyGZEKm1UZvJ4r62i1cSHyKaDca7pCnxENSRXd+t7/wtYzDVOjrfv4T41VXj
-	 bZ3XJs5ikkE8Q==
+	b=pjyUWq3zgTyrFXTYVRt5h5DLBe2H1+bDUk+AekdcB5YhU0aKtvSydoDcd+evHbbvh
+	 +kDJQmDqOu4KD2j7/LTZPqgefQyEvCSgL7NgLLyObWT9TkfzLVIYULFlGQwpH03zik
+	 zEDYjFdiSqxQZ63c5cn81sf0ebtV63aXuA3/s2Rmn7o3Y9Q6ZM/btnRua4Wx0IugLo
+	 oSvxt3ecekrk4edbxDqRKaLC/uBM/1mGWUvDaiKNUSYP2wuY44nDycTCpsMTTnuvZ9
+	 rkKq7spib1dwBkebSsBQ31lVNkyhv2u871yxefLYI0ii8N/sSTkio8gA+8oYJ1U2yx
+	 mWrt7IEOP3+eA==
 Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp3.osuosl.org (Postfix) with ESMTP id 7E3DE6059B;
-	Tue, 22 Oct 2024 06:38:58 +0000 (UTC)
+	by smtp3.osuosl.org (Postfix) with ESMTP id 28529607A3;
+	Tue, 22 Oct 2024 06:39:05 +0000 (UTC)
 X-Original-To: intel-wired-lan@lists.osuosl.org
 Delivered-To: intel-wired-lan@lists.osuosl.org
-Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by lists1.osuosl.org (Postfix) with ESMTP id 5F687963
- for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Oct 2024 06:38:56 +0000 (UTC)
+Received: from smtp4.osuosl.org (smtp4.osuosl.org [IPv6:2605:bc80:3010::137])
+ by lists1.osuosl.org (Postfix) with ESMTP id 49820963
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Oct 2024 06:39:03 +0000 (UTC)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 3CDE540513
- for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Oct 2024 06:38:56 +0000 (UTC)
+ by smtp4.osuosl.org (Postfix) with ESMTP id 289DB40530
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Oct 2024 06:39:03 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id cS7OyKm974Xc for <intel-wired-lan@lists.osuosl.org>;
- Tue, 22 Oct 2024 06:38:55 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=45.249.212.191;
- helo=szxga05-in.huawei.com; envelope-from=yuehaibing@huawei.com;
+ id Ghtto1_0749t for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 22 Oct 2024 06:39:02 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=45.249.212.188;
+ helo=szxga02-in.huawei.com; envelope-from=yuehaibing@huawei.com;
  receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 6DDF140520
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 6DDF140520
-Received: from szxga05-in.huawei.com (szxga05-in.huawei.com [45.249.212.191])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 6DDF140520
- for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Oct 2024 06:38:52 +0000 (UTC)
-Received: from mail.maildlp.com (unknown [172.19.88.163])
- by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4XXjCW6f2zz1jBNx;
- Tue, 22 Oct 2024 14:37:27 +0800 (CST)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 9A4F0404F6
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 9A4F0404F6
+Received: from szxga02-in.huawei.com (szxga02-in.huawei.com [45.249.212.188])
+ by smtp4.osuosl.org (Postfix) with ESMTPS id 9A4F0404F6
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Oct 2024 06:38:55 +0000 (UTC)
+Received: from mail.maildlp.com (unknown [172.19.88.105])
+ by szxga02-in.huawei.com (SkyGuard) with ESMTP id 4XXjBD3jW1zfdXM;
+ Tue, 22 Oct 2024 14:36:20 +0800 (CST)
 Received: from dggpemf500002.china.huawei.com (unknown [7.185.36.57])
- by mail.maildlp.com (Postfix) with ESMTPS id 6AA6818002B;
- Tue, 22 Oct 2024 14:38:49 +0800 (CST)
+ by mail.maildlp.com (Postfix) with ESMTPS id 4EDCA140123;
+ Tue, 22 Oct 2024 14:38:50 +0800 (CST)
 Received: from huawei.com (10.175.101.6) by dggpemf500002.china.huawei.com
  (7.185.36.57) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.11; Tue, 22 Oct
- 2024 14:38:48 +0800
+ 2024 14:38:49 +0800
 From: Yue Haibing <yuehaibing@huawei.com>
 To: <anthony.l.nguyen@intel.com>, <przemyslaw.kitszel@intel.com>,
  <davem@davemloft.net>, <edumazet@google.com>, <kuba@kernel.org>,
@@ -71,8 +71,8 @@ To: <anthony.l.nguyen@intel.com>, <przemyslaw.kitszel@intel.com>,
 CC: <intel-wired-lan@lists.osuosl.org>, <netdev@vger.kernel.org>,
  <linux-kernel@vger.kernel.org>, <bpf@vger.kernel.org>,
  <yuehaibing@huawei.com>
-Date: Tue, 22 Oct 2024 14:56:22 +0800
-Message-ID: <20241022065623.1282224-4-yuehaibing@huawei.com>
+Date: Tue, 22 Oct 2024 14:56:23 +0800
+Message-ID: <20241022065623.1282224-5-yuehaibing@huawei.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20241022065623.1282224-1-yuehaibing@huawei.com>
 References: <20241022065623.1282224-1-yuehaibing@huawei.com>
@@ -85,8 +85,8 @@ X-ClientProxiedBy: dggems704-chm.china.huawei.com (10.3.19.181) To
 X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
  dmarc=pass (p=quarantine dis=none)
  header.from=huawei.com
-Subject: [Intel-wired-lan] [PATCH v3 net 3/4] ixgbe: Fix passing 0 to
- ERR_PTR in ixgbe_run_xdp()
+Subject: [Intel-wired-lan] [PATCH v3 net 4/4] ixgbevf: Fix passing 0 to
+ ERR_PTR in ixgbevf_run_xdp()
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -102,47 +102,47 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-ixgbe_run_xdp() converts customed xdp action to a negative error code
+ixgbevf_run_xdp() converts customed xdp action to a negative error code
 with the sk_buff pointer type which be checked with IS_ERR in
-ixgbe_clean_rx_irq(). Remove this error pointer handing instead use
+ixgbevf_clean_rx_irq(). Remove this error pointer handing instead use
 plain int return value.
 
-Fixes: 924708081629 ("ixgbe: add XDP support for pass and drop actions")
+Fixes: c7aec59657b6 ("ixgbevf: Add XDP support for pass and drop actions")
 Reviewed-by: Jacob Keller <jacob.e.keller@intel.com>
 Signed-off-by: Yue Haibing <yuehaibing@huawei.com>
 ---
- drivers/net/ethernet/intel/ixgbe/ixgbe_main.c | 23 ++++++++-----------
- 1 file changed, 9 insertions(+), 14 deletions(-)
+ .../net/ethernet/intel/ixgbevf/ixgbevf_main.c | 23 ++++++++-----------
+ 1 file changed, 10 insertions(+), 13 deletions(-)
 
-diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-index 8b8404d8c946..78bf97ab0524 100644
---- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-+++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
-@@ -1908,10 +1908,6 @@ bool ixgbe_cleanup_headers(struct ixgbe_ring *rx_ring,
+diff --git a/drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c b/drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c
+index 149911e3002a..183d2305d058 100644
+--- a/drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c
++++ b/drivers/net/ethernet/intel/ixgbevf/ixgbevf_main.c
+@@ -732,10 +732,6 @@ static bool ixgbevf_cleanup_headers(struct ixgbevf_ring *rx_ring,
+ 				    union ixgbe_adv_rx_desc *rx_desc,
+ 				    struct sk_buff *skb)
  {
- 	struct net_device *netdev = rx_ring->netdev;
- 
 -	/* XDP packets use error pointer so abort at this point */
 -	if (IS_ERR(skb))
 -		return true;
 -
- 	/* Verify netdev is present, and that packet does not have any
- 	 * errors that would be unacceptable to the netdev.
- 	 */
-@@ -2219,9 +2215,9 @@ static struct sk_buff *ixgbe_build_skb(struct ixgbe_ring *rx_ring,
- 	return skb;
+ 	/* verify that the packet does not have any known errors */
+ 	if (unlikely(ixgbevf_test_staterr(rx_desc,
+ 					  IXGBE_RXDADV_ERR_FRAME_ERR_MASK))) {
+@@ -1044,9 +1040,9 @@ static int ixgbevf_xmit_xdp_ring(struct ixgbevf_ring *ring,
+ 	return IXGBEVF_XDP_TX;
  }
  
--static struct sk_buff *ixgbe_run_xdp(struct ixgbe_adapter *adapter,
--				     struct ixgbe_ring *rx_ring,
--				     struct xdp_buff *xdp)
-+static int ixgbe_run_xdp(struct ixgbe_adapter *adapter,
-+			 struct ixgbe_ring *rx_ring,
-+			 struct xdp_buff *xdp)
+-static struct sk_buff *ixgbevf_run_xdp(struct ixgbevf_adapter *adapter,
+-				       struct ixgbevf_ring  *rx_ring,
+-				       struct xdp_buff *xdp)
++static int ixgbevf_run_xdp(struct ixgbevf_adapter *adapter,
++			   struct ixgbevf_ring *rx_ring,
++			   struct xdp_buff *xdp)
  {
- 	int err, result = IXGBE_XDP_PASS;
- 	struct bpf_prog *xdp_prog;
-@@ -2271,7 +2267,7 @@ static struct sk_buff *ixgbe_run_xdp(struct ixgbe_adapter *adapter,
+ 	int result = IXGBEVF_XDP_PASS;
+ 	struct ixgbevf_ring *xdp_ring;
+@@ -1080,7 +1076,7 @@ static struct sk_buff *ixgbevf_run_xdp(struct ixgbevf_adapter *adapter,
  		break;
  	}
  xdp_out:
@@ -150,31 +150,31 @@ index 8b8404d8c946..78bf97ab0524 100644
 +	return result;
  }
  
- static unsigned int ixgbe_rx_frame_truesize(struct ixgbe_ring *rx_ring,
-@@ -2329,6 +2325,7 @@ static int ixgbe_clean_rx_irq(struct ixgbe_q_vector *q_vector,
- 	unsigned int offset = rx_ring->rx_offset;
- 	unsigned int xdp_xmit = 0;
+ static unsigned int ixgbevf_rx_frame_truesize(struct ixgbevf_ring *rx_ring,
+@@ -1122,6 +1118,7 @@ static int ixgbevf_clean_rx_irq(struct ixgbevf_q_vector *q_vector,
+ 	struct sk_buff *skb = rx_ring->skb;
+ 	bool xdp_xmit = false;
  	struct xdp_buff xdp;
 +	int xdp_res = 0;
  
  	/* Frame size depend on rx_ring setup when PAGE_SIZE=4K */
  #if (PAGE_SIZE < 8192)
-@@ -2374,12 +2371,10 @@ static int ixgbe_clean_rx_irq(struct ixgbe_q_vector *q_vector,
+@@ -1165,11 +1162,11 @@ static int ixgbevf_clean_rx_irq(struct ixgbevf_q_vector *q_vector,
  			/* At larger PAGE_SIZE, frame_sz depend on len size */
- 			xdp.frame_sz = ixgbe_rx_frame_truesize(rx_ring, size);
+ 			xdp.frame_sz = ixgbevf_rx_frame_truesize(rx_ring, size);
  #endif
--			skb = ixgbe_run_xdp(adapter, rx_ring, &xdp);
-+			xdp_res = ixgbe_run_xdp(adapter, rx_ring, &xdp);
+-			skb = ixgbevf_run_xdp(adapter, rx_ring, &xdp);
++			xdp_res = ixgbevf_run_xdp(adapter, rx_ring, &xdp);
  		}
  
 -		if (IS_ERR(skb)) {
--			unsigned int xdp_res = -PTR_ERR(skb);
--
+-			if (PTR_ERR(skb) == -IXGBEVF_XDP_TX) {
 +		if (xdp_res) {
- 			if (xdp_res & (IXGBE_XDP_TX | IXGBE_XDP_REDIR)) {
- 				xdp_xmit |= xdp_res;
- 				ixgbe_rx_buffer_flip(rx_ring, rx_buffer, size);
-@@ -2399,7 +2394,7 @@ static int ixgbe_clean_rx_irq(struct ixgbe_q_vector *q_vector,
++			if (xdp_res == IXGBEVF_XDP_TX) {
+ 				xdp_xmit = true;
+ 				ixgbevf_rx_buffer_flip(rx_ring, rx_buffer,
+ 						       size);
+@@ -1189,7 +1186,7 @@ static int ixgbevf_clean_rx_irq(struct ixgbevf_q_vector *q_vector,
  		}
  
  		/* exit if we failed to retrieve a buffer */
@@ -183,15 +183,15 @@ index 8b8404d8c946..78bf97ab0524 100644
  			rx_ring->rx_stats.alloc_rx_buff_failed++;
  			rx_buffer->pagecnt_bias++;
  			break;
-@@ -2413,7 +2408,7 @@ static int ixgbe_clean_rx_irq(struct ixgbe_q_vector *q_vector,
+@@ -1203,7 +1200,7 @@ static int ixgbevf_clean_rx_irq(struct ixgbevf_q_vector *q_vector,
  			continue;
  
  		/* verify the packet layout is correct */
--		if (ixgbe_cleanup_headers(rx_ring, rx_desc, skb))
-+		if (xdp_res || ixgbe_cleanup_headers(rx_ring, rx_desc, skb))
+-		if (ixgbevf_cleanup_headers(rx_ring, rx_desc, skb)) {
++		if (xdp_res || ixgbevf_cleanup_headers(rx_ring, rx_desc, skb)) {
+ 			skb = NULL;
  			continue;
- 
- 		/* probably a little skewed due to removing CRC */
+ 		}
 -- 
 2.34.1
 
