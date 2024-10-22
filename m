@@ -1,76 +1,76 @@
 Return-Path: <intel-wired-lan-bounces@osuosl.org>
 X-Original-To: lists+intel-wired-lan@lfdr.de
 Delivered-To: lists+intel-wired-lan@lfdr.de
-Received: from smtp1.osuosl.org (smtp1.osuosl.org [140.211.166.138])
-	by mail.lfdr.de (Postfix) with ESMTPS id CBF0A9AB16B
-	for <lists+intel-wired-lan@lfdr.de>; Tue, 22 Oct 2024 16:51:32 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 4E6AB80E85;
-	Tue, 22 Oct 2024 14:51:31 +0000 (UTC)
-X-Virus-Scanned: amavis at osuosl.org
-Received: from smtp1.osuosl.org ([127.0.0.1])
- by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id XIPdTII137mM; Tue, 22 Oct 2024 14:51:29 +0000 (UTC)
-X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org 2625780E8A
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
-	s=default; t=1729608689;
-	bh=hIO3xvGTf22aCNfqHakyJgIhITzblk8urTZlYt9npWM=;
-	h=From:To:CC:Date:In-Reply-To:References:Subject:List-Id:
-	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
-	 From;
-	b=k/XzaXNG8cZ9a699oa0RQHVBfh4QYfyXJWAB2v1burQ5xsBRxgmVPRHl8qJ82pQFV
-	 4LZ9CyDUZ69BI+9H/eMqou+qCQ+x7aiTlTfMChx9pAtvAobBW2BqpsAfGZ5wmdCTq9
-	 SWOb1gTxP7QVYus9L5w+3ohPUZ0d3UisN6DxFkGPFORw2U2reTcbuNZ+hvThlAoZJc
-	 EIcHu4jrSHOwD7MvVjHWlDw63QQKnQui+vZhE1XssCMoPSkoNxdNcd+/D7AZgSmvNv
-	 CK793ZwrSpJdHo/ICjnlaQgDPjH8Rpvn9XlNP4aiiOemdPzf60jYZUNscgSUpzE0r+
-	 USFxdwQOzMvOQ==
-Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
-	by smtp1.osuosl.org (Postfix) with ESMTP id 2625780E8A;
-	Tue, 22 Oct 2024 14:51:29 +0000 (UTC)
-X-Original-To: intel-wired-lan@lists.osuosl.org
-Delivered-To: intel-wired-lan@lists.osuosl.org
 Received: from smtp4.osuosl.org (smtp4.osuosl.org [140.211.166.137])
- by lists1.osuosl.org (Postfix) with ESMTP id 47311963
- for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Oct 2024 14:51:27 +0000 (UTC)
+	by mail.lfdr.de (Postfix) with ESMTPS id 280279AB16C
+	for <lists+intel-wired-lan@lfdr.de>; Tue, 22 Oct 2024 16:51:42 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by smtp4.osuosl.org (Postfix) with ESMTP id 280D44030A
- for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Oct 2024 14:51:27 +0000 (UTC)
+	by smtp4.osuosl.org (Postfix) with ESMTP id 4E1CE40392;
+	Tue, 22 Oct 2024 14:51:40 +0000 (UTC)
 X-Virus-Scanned: amavis at osuosl.org
 Received: from smtp4.osuosl.org ([127.0.0.1])
  by localhost (smtp4.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id m804pTpAD4fz for <intel-wired-lan@lists.osuosl.org>;
- Tue, 22 Oct 2024 14:51:25 +0000 (UTC)
-Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=40.107.220.68;
- helo=nam11-co1-obe.outbound.protection.outlook.com;
+ id H36uaJrBuR89; Tue, 22 Oct 2024 14:51:39 +0000 (UTC)
+X-Comment: SPF check N/A for local connections - client-ip=140.211.166.142; helo=lists1.osuosl.org; envelope-from=intel-wired-lan-bounces@osuosl.org; receiver=<UNKNOWN> 
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 4AE364039A
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=osuosl.org;
+	s=default; t=1729608699;
+	bh=b+ULd6/L4GurXkjQSYbxXr68gYbV008S1UfS7EvkWLo=;
+	h=From:To:CC:Date:In-Reply-To:References:Subject:List-Id:
+	 List-Unsubscribe:List-Archive:List-Post:List-Help:List-Subscribe:
+	 From;
+	b=owdL+9TgPyfydyzbucdssvUb/yjJyEyZPwe+jeRaQM0p2KwausTJDK+0ziCTgFSfm
+	 h1KzO/ScOhB7SFPI/Ua4ZhiK0C2lr5t+xhiLt7hWg7YIRhANP3AMpRwJi2OyJLFRFY
+	 kkH5Vwgev1QXIh/hnZOpXZp004TSjciXMFoLjYgZ/vpIMTQhYcv8DnC3aWwO8doXCi
+	 kBdggsXwyv2Zb7oCYp6oFAdOCyMXxy5UGu5mKezKzYS2C8zUPruMhC1O9GN4B4JNcD
+	 P7XrLcKEiNGFdr6TV9+eVLkQgEeCIM5hRtvl9q5xBlEz1sy0mjjGBpn1t9zx0iktm/
+	 WH12zo+N0XwMQ==
+Received: from lists1.osuosl.org (lists1.osuosl.org [140.211.166.142])
+	by smtp4.osuosl.org (Postfix) with ESMTP id 4AE364039A;
+	Tue, 22 Oct 2024 14:51:39 +0000 (UTC)
+X-Original-To: intel-wired-lan@lists.osuosl.org
+Delivered-To: intel-wired-lan@lists.osuosl.org
+Received: from smtp1.osuosl.org (smtp1.osuosl.org [IPv6:2605:bc80:3010::138])
+ by lists1.osuosl.org (Postfix) with ESMTP id B4E4D71F
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Oct 2024 14:51:36 +0000 (UTC)
+Received: from localhost (localhost [127.0.0.1])
+ by smtp1.osuosl.org (Postfix) with ESMTP id B0BF680EB7
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Oct 2024 14:51:36 +0000 (UTC)
+X-Virus-Scanned: amavis at osuosl.org
+Received: from smtp1.osuosl.org ([127.0.0.1])
+ by localhost (smtp1.osuosl.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id CUgqX1mID87X for <intel-wired-lan@lists.osuosl.org>;
+ Tue, 22 Oct 2024 14:51:35 +0000 (UTC)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=40.107.95.62;
+ helo=nam02-dm3-obe.outbound.protection.outlook.com;
  envelope-from=petrm@nvidia.com; receiver=<UNKNOWN> 
-DMARC-Filter: OpenDMARC Filter v1.4.2 smtp4.osuosl.org 60F2540327
-DKIM-Filter: OpenDKIM Filter v2.11.0 smtp4.osuosl.org 60F2540327
-Received: from NAM11-CO1-obe.outbound.protection.outlook.com
- (mail-co1nam11on2068.outbound.protection.outlook.com [40.107.220.68])
- by smtp4.osuosl.org (Postfix) with ESMTPS id 60F2540327
- for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Oct 2024 14:51:25 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.4.2 smtp1.osuosl.org B93B980EA6
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp1.osuosl.org B93B980EA6
+Received: from NAM02-DM3-obe.outbound.protection.outlook.com
+ (mail-dm3nam02on2062.outbound.protection.outlook.com [40.107.95.62])
+ by smtp1.osuosl.org (Postfix) with ESMTPS id B93B980EA6
+ for <intel-wired-lan@lists.osuosl.org>; Tue, 22 Oct 2024 14:51:35 +0000 (UTC)
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=rHUvKmkFCcY25OSbshkRwEtt9yrY5hqDYTrb+kBd+gD7MfUFXAQl0emBa22W6pSsYTCNQgU3ui4UHuDSVzX5S6FSxB29UmG6jADexjr2Vj45HL7Whvqu7fqhd+vLPn6Me8LACFXAHwh7hqJFAofyJipCloyo8o1TF8rmE/f1dUJWuAua5Tfpsrni/XZev8owV7nQAxwuQYzpdN/GpoDcyOCxosJs0JCGcOh3T69ZdeMRgcH3vs3XmZPFg6CdBYQsNs8LHvxNZpMDSgIFYRnyK666FtwTLbmjYw6MwuiQ+fS8V9SYWkBvGJb7llH+a07QEiMTkkfh+Sh2+iTaOfjB8A==
+ b=rPV6n06TRddDDSFNs6WcCC9zOAPKZjm7WQrUSq6MAak+dgojsx+0ATNQeONO4czwTp8d+Dql9oMwjEwHue5CT1cmLza/0pZUQJ5mrshKjYyf9RusYqtCU4ZiHNepHaWa5Slvj2x38MWNl+oU15nzGRYHVfdVBHbj8/sRHwiTgrn9Un5N2RRgeCCMnhW99Pa4Vg7/NnvgW8LniW3wyN2VvBRz4sxwwpAI1cR1r5ynrj8Q03uOg5R95VbSS7fwCRtDxuyKeXDxlEWHoQHhiC2ciZqdxLzZa/glq7e+RsIbbhNw5q08pjqFKWDLEADRh9lPcodIeRjnJnYeWT9BBL7TLw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=hIO3xvGTf22aCNfqHakyJgIhITzblk8urTZlYt9npWM=;
- b=bMhofnhNSbMbJW1WMxqApTeLSzSykXvzTTpBhXW/8eE+6ouHgBKDHTMQZKGbL9QjJqdPm0Il8DwplRqOlueTx5DzW5vtr8XDTlxCRPfDt34XWxWqVBaXxiqFcySQVlPrj9fm+Omz7slAxn5ie7moghDdeIZZTp5OlONKpAtRBT/f9yqX813e0y3XHfxGRCeD5mL5xK9vlZHPkVc25iAXqFnZazxB7HuBQeLw96V5LLVNOjZyz2kpq/zV16jt3giWdDu7EkGfS95A9U3TID6r1TupVtqe57FfxwSZhTtAZYSqDuepH0HWjgQNFk+M9v9jX8RWQpGHh9cWMm+rI/smCw==
+ bh=b+ULd6/L4GurXkjQSYbxXr68gYbV008S1UfS7EvkWLo=;
+ b=x2IUABcfL3Ajtyc80QPSP1OyEr0t0LmNecXsXB8s8+FDNaV2iJ6aiU9bsheUzaa66kP7VKb9muNK97uTsd9afHArSTyIVQIiRnWOHgV8optgysQzx/TDBo9mjTPLeFdRs+FcXdiHmz2/GW8ssdgVaOavKPDulAH2iWl6aQYYQzNdzTqzde0mCPQ2r+rFgfyjPyBE1rYG7vKPxBHXeqI7r76j/WFb8531U8t2RHtUv7qL7x5W8WXUUSWxiPE8R6ypPrGku/tywpZw/svRrAOmPEOzM+40FRnD632J8HCwb98eIGkHqHSbaTii4V4KFtVzdWBBME2sricJezt85G6plA==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
  216.228.117.161) smtp.rcpttodomain=davemloft.net smtp.mailfrom=nvidia.com;
  dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
  dkim=none (message not signed); arc=none (0)
-Received: from MW2PR16CA0030.namprd16.prod.outlook.com (2603:10b6:907::43) by
- MW4PR12MB6949.namprd12.prod.outlook.com (2603:10b6:303:208::19) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8093.16; Tue, 22 Oct
- 2024 14:51:21 +0000
-Received: from SJ1PEPF000023D7.namprd21.prod.outlook.com
- (2603:10b6:907:0:cafe::11) by MW2PR16CA0030.outlook.office365.com
- (2603:10b6:907::43) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8093.16 via Frontend
- Transport; Tue, 22 Oct 2024 14:51:21 +0000
+Received: from MW4PR04CA0076.namprd04.prod.outlook.com (2603:10b6:303:6b::21)
+ by PH7PR12MB6657.namprd12.prod.outlook.com (2603:10b6:510:1fe::7)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8069.28; Tue, 22 Oct
+ 2024 14:51:31 +0000
+Received: from SJ1PEPF000023D9.namprd21.prod.outlook.com
+ (2603:10b6:303:6b:cafe::e9) by MW4PR04CA0076.outlook.office365.com
+ (2603:10b6:303:6b::21) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8093.17 via Frontend
+ Transport; Tue, 22 Oct 2024 14:51:30 +0000
 X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.161)
  smtp.mailfrom=nvidia.com;
  dkim=none (message not signed)
@@ -79,17 +79,17 @@ Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
  216.228.117.161 as permitted sender) receiver=protection.outlook.com;
  client-ip=216.228.117.161; helo=mail.nvidia.com; pr=C
 Received: from mail.nvidia.com (216.228.117.161) by
- SJ1PEPF000023D7.mail.protection.outlook.com (10.167.244.72) with Microsoft
+ SJ1PEPF000023D9.mail.protection.outlook.com (10.167.244.74) with Microsoft
  SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.8114.2 via Frontend Transport; Tue, 22 Oct 2024 14:51:21 +0000
+ 15.20.8114.2 via Frontend Transport; Tue, 22 Oct 2024 14:51:30 +0000
 Received: from rnnvmail201.nvidia.com (10.129.68.8) by mail.nvidia.com
  (10.129.200.67) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.4; Tue, 22 Oct
- 2024 07:51:05 -0700
+ 2024 07:51:13 -0700
 Received: from fedora.mtl.com (10.126.231.35) by rnnvmail201.nvidia.com
  (10.129.68.8) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.4; Tue, 22 Oct
- 2024 07:50:57 -0700
+ 2024 07:51:05 -0700
 From: Petr Machata <petrm@nvidia.com>
 To: "David S. Miller" <davem@davemloft.net>, Eric Dumazet
  <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni
@@ -100,8 +100,8 @@ CC: Ido Schimmel <idosch@nvidia.com>, Petr Machata <petrm@nvidia.com>, "Amit
  <intel-wired-lan@lists.osuosl.org>, <UNGLinuxDriver@microchip.com>, "Manish
  Chopra" <manishc@marvell.com>, <GR-Linux-NIC-Dev@marvell.com>, "Kuniyuki
  Iwashima" <kuniyu@amazon.com>, Andrew Lunn <andrew+netdev@lunn.ch>
-Date: Tue, 22 Oct 2024 16:50:12 +0200
-Message-ID: <ada2163d8edc973535987bcf87cd607761143adb.1729607879.git.petrm@nvidia.com>
+Date: Tue, 22 Oct 2024 16:50:13 +0200
+Message-ID: <00caa74f6dea128400472b5dec77f61b16d0f9d4.1729607879.git.petrm@nvidia.com>
 X-Mailer: git-send-email 2.47.0
 In-Reply-To: <cover.1729607879.git.petrm@nvidia.com>
 References: <cover.1729607879.git.petrm@nvidia.com>
@@ -113,64 +113,64 @@ X-ClientProxiedBy: rnnvmail202.nvidia.com (10.129.68.7) To
  rnnvmail201.nvidia.com (10.129.68.8)
 X-EOPAttributedMessage: 0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: SJ1PEPF000023D7:EE_|MW4PR12MB6949:EE_
-X-MS-Office365-Filtering-Correlation-Id: 3421eb05-c072-461c-c1bc-08dcf2a8fe28
+X-MS-TrafficTypeDiagnostic: SJ1PEPF000023D9:EE_|PH7PR12MB6657:EE_
+X-MS-Office365-Filtering-Correlation-Id: 02a14d7c-f1a4-4804-338f-08dcf2a90397
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
- ARA:13230040|376014|7416014|36860700013|1800799024|82310400026; 
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?jmktBR8+dxzAbccA17xsQCKOAo0gblcnHw2/N9REPym3gBd7oetg+25Me7t2?=
- =?us-ascii?Q?s6liY1M2wAN7nepYH2ur/pUy7NGWnoNXCVqm+dguvM1+0JlP0+ERIMM3jnU2?=
- =?us-ascii?Q?A6r0bCah3H+uAPqk34eGtQjdAVI6oNuHS6CVsBMZKz16oqSDorR+E/3wkHr1?=
- =?us-ascii?Q?HCk1EJU1LQIGDlq/uNfh4E0BhOy/jbuAd3QAs5J79Zls8Ukebq0jXQkEBmI9?=
- =?us-ascii?Q?a01KIwUgZTSTpO54eg6GIfJXq+jz++UhGCvNcCdCgCS9dFiQS1hjt+IpZuz6?=
- =?us-ascii?Q?WRX9LbB4oRIacIukjpgn7O1y0bg7riWZPBbX3UNjRrlOtjZivHugtFXFJx/w?=
- =?us-ascii?Q?MnmLGj6XZH866H6O/uUSyf7LrjbSdRzqgZm/xiaQVEGgCxVyzhE0WAIK372j?=
- =?us-ascii?Q?brvd1b8+mqHsIPwm3zflZbb+wf8tQsETxSExfzg3+0ImbhMS4inWhkzGDqLH?=
- =?us-ascii?Q?WcOdzWVIVHKFmWBmP5mfgwoDhcXeXSc8uAEpo67GeKQ+goyRE2+hv6lZwxW1?=
- =?us-ascii?Q?v81pxTnklKLmtWnJJT2FQBT2Yf4v2FaJ+54xl3/J2g/kkM8Tw75eFFRkfw0v?=
- =?us-ascii?Q?UtOzMtUTTQW67rPckvCQQkaF4c/mAHaCpVCA5SpggJ7TbTrIGxPLx3GGP5sQ?=
- =?us-ascii?Q?NcpILMpB5R7Gj2h6w/1oIS2C01oyt7Wxb2LkwfKOr4QwZ0PcB1k7WIEx9kj8?=
- =?us-ascii?Q?MQFmiJvbPSvQ3AWYxLcWc6KOiRgymKdfM/wpUgEadGrxmaES6bVbT0VCQ0rG?=
- =?us-ascii?Q?wrefXAQMXAbZiSUTHl/l/xATiAE3UweKcAHbx3zocd79ZLI//Zs0AA91+P01?=
- =?us-ascii?Q?Bv/2F1pqJ4DQmMssvvU+xA+siUMGdkki7UZKrQ3PPaD3LwLI9CCuZNsHeZNx?=
- =?us-ascii?Q?Vzh5XkfiDHCzaxXj2LjCjh9eA3esUNE3x4BrbHqHxeBStpgsS4fW3dcB9wxB?=
- =?us-ascii?Q?ippesbeWC3/jEzfORDpXApGdQHELj+tqXt6Fm9SNk0CJfTH5nRXgXAKcuKNC?=
- =?us-ascii?Q?Y3UboasNL098sjfzG8U53Y06X1kKrLEqPFjCdp+HxhqWB2EtPfq18NFMeu4y?=
- =?us-ascii?Q?P3JyOCqsEMnR3Z0FmYNl+4lrr0fHjWyQTclRREJ8RIKpSStYI/pniTAlIeQX?=
- =?us-ascii?Q?BCJTOcaKglBki2tD4uZXsA4JygM+AmMubRoFyiKJDmXyojcbSs48ZA4AdKOB?=
- =?us-ascii?Q?rcD9RxXRQmtV8gGSdntZ2XlyYd8PyG7oNgCF+TGSDAySb+kA5DQ9MazXoluD?=
- =?us-ascii?Q?5rcAtifdKrnM3P2AM/nMegiDSg6RUhJnAQ1t//47TD15BIHM3ZM3/Zkz+ZFk?=
- =?us-ascii?Q?LO2BRlkY3OmmyVYWEJyoP97MnXzE66QaOExI9+ZVK80utCOBdCuh99vYkwz3?=
- =?us-ascii?Q?puANEA0baV4yV45jYDUSRy2kaUlv8eRRFPhlj+LTMSUoWmq4sg=3D=3D?=
+ ARA:13230040|376014|7416014|1800799024|36860700013|82310400026; 
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?sLGf+YL5Vy9mO2UqoErUAzdA2eLJBj40pcxg30lioI6rwAjliq3EQb/I3q0n?=
+ =?us-ascii?Q?IGgQ2Rnqd/bWqAgH5br+OxTpmMNhCozp47ZpxYH/74OGyOb95PTbItG/77yQ?=
+ =?us-ascii?Q?4tl8xJn1u8amKCIzagEJytP4JwYdh1EivzJV/3xIhku8NeXtvnEVXF1NNJo0?=
+ =?us-ascii?Q?0hMxGW2I44TdHVeibbV6zgznTMWQml1/sqL0pzSi6UDWBDGwkQdnx0lzqZae?=
+ =?us-ascii?Q?7fyjWGxDztvFeXRseqzQfPb5TWI7i8QcF/blaWLxq3vsiCvyY+LbKlfIwi7E?=
+ =?us-ascii?Q?7AhIweNoLpqwJQDKNUofKbwQNhF9JGNLyhrNWN5aINfbSmAvk5TbWU4wfoVx?=
+ =?us-ascii?Q?N7PmMpp5HWz54RUzhrsY7Tw91QDzBBf3IX+eP2G3WdlEtO2T8LgcpWjvPkz4?=
+ =?us-ascii?Q?PAukUCMP7xDYojGav7Y1YqNzfQleCvbLJ3MzVxjKjSKrEAi8WTUaOgb+8Wba?=
+ =?us-ascii?Q?3dhvsaS+JRD02h3pGg4cwfJFaeflAAyY0xAtoMrO8JDZJ688VRv1kSfFjnnT?=
+ =?us-ascii?Q?BznCP8nMTK4qHy99NaqCjMhZ2LND8Br7j30fsCOny/YSQ0Px3Z/WyqoJ2WrN?=
+ =?us-ascii?Q?Pp1Ec0Wq9i9hqflrJZYkOHfFQ6aRzSvQsT3v73OCABwxoXQBoIHg4PG0AKmO?=
+ =?us-ascii?Q?HQ0SmOYigEVntoO7V+W1SRhIkNg/2Zotk/OKWlUksb7zUKen0USl3RreLKRp?=
+ =?us-ascii?Q?Yw1bpxHwE92najti+MnLl1+EoRpzyTRHZPK78RyLbUkgm1eZREMwuQfETEAw?=
+ =?us-ascii?Q?AUYoO/dvtTgAr5/DO0119e3SKfzsaejFN5ucRPyq8mIqKwTiK6MPP2HPJYpH?=
+ =?us-ascii?Q?Q674JYZQTEQgL3UfMMMebrfWfSLVyN7ZbirMnq3tjKzCPBYQ8S5nAFKuP9Fy?=
+ =?us-ascii?Q?VCHVA3PYr3hbnfVsn2WQtFwaQGhBIPmVAAfuAJMv8Hi+ADlDagW1To9OViof?=
+ =?us-ascii?Q?/9yLQmEw9M824GMSW+k5CWay0N2kArmqObY2S2CcOSb6nhoCU9QONg/+u8jm?=
+ =?us-ascii?Q?qXKDH22dGgdk2G32R8FgvZRRtraCfU4DyKgDOCxGdkBWWsyyhY8dVo0AA66H?=
+ =?us-ascii?Q?pEIHNa4vVryMk7RfkmHRkZJ+6SsiSYCZDx4cQhouX/7D6bctGyIAZNibdWJf?=
+ =?us-ascii?Q?sg/wlfGiK3jCokQNnvzxM5RA3Us1L4nYF8s7oAkRzVnKN7IIVH6W9ja8aiaR?=
+ =?us-ascii?Q?95s2P71lseG9UKOgdfszT8YH3VLCp3ci3ZI1cClAxzEMkiehUbtuXpO7sx/P?=
+ =?us-ascii?Q?Ixw3WGqwL1+zdul3akjaId1e8/CxCXTtTfSh8LrjgxleG6ne6jJImgg4jswv?=
+ =?us-ascii?Q?6JOuSTZ4I3HSUl+6pn9US+59NZdrsv9MaSpAA5PTDjjycVbD+Z2ANAO4ajlV?=
+ =?us-ascii?Q?XFfuDZXN4YcJO9eCo/qMTjvIvaQlcOVi6Fk8hWeYyAZHhJjw4A=3D=3D?=
 X-Forefront-Antispam-Report: CIP:216.228.117.161; CTRY:US; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc6edge2.nvidia.com; CAT:NONE;
- SFS:(13230040)(376014)(7416014)(36860700013)(1800799024)(82310400026); DIR:OUT;
+ SFS:(13230040)(376014)(7416014)(1800799024)(36860700013)(82310400026); DIR:OUT;
  SFP:1101; 
 X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 22 Oct 2024 14:51:21.1029 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 3421eb05-c072-461c-c1bc-08dcf2a8fe28
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 22 Oct 2024 14:51:30.2153 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 02a14d7c-f1a4-4804-338f-08dcf2a90397
 X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
 X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.117.161];
  Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: SJ1PEPF000023D7.namprd21.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthSource: SJ1PEPF000023D9.namprd21.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Anonymous
 X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MW4PR12MB6949
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH7PR12MB6657
 X-Mailman-Original-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=Nvidia.com; s=selector2;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=hIO3xvGTf22aCNfqHakyJgIhITzblk8urTZlYt9npWM=;
- b=js6AWYLKWynmLBMQzFuvH5/tLPmKtRpYj1FtArZ/ikET9k4CIbCq5xzuElogIT2DHfshyKK/CiD/IJ2KtrT17ZRmxrCQlglz29GzTnJAf6LVY3dt1XlnEOupnjC8aeTqTXRpOwp8+EkdU3D5Hu0/mcbd6RWcDBSQlKWptWVZfHketGmheu0K4TWNwrEWaQv3PbLhZ4/64rO2oaLKijQ3QSfwDpjd4OiMolw0lBI8ZFAT4S8SKgeWwjoiTbxVuyDxuSehMqmGfjkCb9ph64YhW28YB7GDEQFH/ddMJkDUy+GLgM4rGDH2DFADdXbQrzFVCOgtBXU3kHr0J/+M0Rf0Ew==
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+ bh=b+ULd6/L4GurXkjQSYbxXr68gYbV008S1UfS7EvkWLo=;
+ b=NM6bLSFWvd+d4C5Dw/dSiZk2tcyLUmFl5m7xMK6+2j2Nc4YxL9DO5uz0R66t7jNby+V8dyzsKv5P6USLbgWlMSxO34GeS72dHJ6t+LFDx0FMtG4QuIefFdR5ebeIuhmtlUQ1+QaltkOMdgd26dQsKURGPn8QNsg8STvsGj954XP37DV5fHG6xEDbip/0INffmrDwzzbLkpjBmJKQzFRmKKACr7MhtaebdhHCl0dONNID4V0ods/7Pb6dMSyCKBnzME8S7ZbcHCiezxtjF79+DrhAm8JZkQ30d1BjIiJjIP1UZX8M94/Ecoe2GkK88QsGUCiqwQSxFoBSF8bWFoUt8w==
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dmarc=pass (p=reject dis=none)
  header.from=nvidia.com
-X-Mailman-Original-Authentication-Results: smtp4.osuosl.org;
+X-Mailman-Original-Authentication-Results: smtp1.osuosl.org;
  dkim=pass (2048-bit key,
  unprotected) header.d=Nvidia.com header.i=@Nvidia.com header.a=rsa-sha256
- header.s=selector2 header.b=js6AWYLK
-Subject: [Intel-wired-lan] [PATCH net-next 1/8] net: rtnetlink: Publish
- rtnl_fdb_notify()
+ header.s=selector2 header.b=NM6bLSFW
+Subject: [Intel-wired-lan] [PATCH net-next 2/8] ndo_fdb_add: Shift
+ responsibility for notifying to drivers
 X-BeenThere: intel-wired-lan@osuosl.org
 X-Mailman-Version: 2.1.30
 Precedence: list
@@ -186,11 +186,28 @@ List-Subscribe: <https://lists.osuosl.org/mailman/listinfo/intel-wired-lan>,
 Errors-To: intel-wired-lan-bounces@osuosl.org
 Sender: "Intel-wired-lan" <intel-wired-lan-bounces@osuosl.org>
 
-In the next patch, responsibility for sending notification is moved from
-the core to the driver that implement fdb_add (and fdb_del in the patch
-after that). In this patch, export a helper that the core currently uses
-for sending FDB notifications for the drivers to use as a fallback if there
-is nothing specific to report.
+Currently when FDB entries are added to or deleted from a VXLAN netdevice,
+the VXLAN driver emits one notification, including the VXLAN-specific
+attributes. The core however always sends a notification as well, a generic
+one. Thus two notifications are unnecessarily sent for these operations. A
+similar situation comes up with bridge driver, which also emits
+notifications on its own:
+
+ # ip link add name vx type vxlan id 1000 dstport 4789
+ # bridge monitor fdb &
+ [1] 1981693
+ # bridge fdb add de:ad:be:ef:13:37 dev vx self dst 192.0.2.1
+ de:ad:be:ef:13:37 dev vx dst 192.0.2.1 self permanent
+ de:ad:be:ef:13:37 dev vx self permanent
+
+In order to prevent this duplicity, shift the responsibility to send the
+notification always to the drivers. Only where the default FDB add / del
+operations are used does the core emit notifications. If fdb_add and
+fdb_del are overridden, the driver should do that instead.
+
+Drivers can use rtnl_fdb_notify(), exported in the previous patch, to get
+the default notification behavior back. This function is made to notify on
+success, which means several drivers do not need to change at all.
 
 Signed-off-by: Petr Machata <petrm@nvidia.com>
 Reviewed-by: Amit Cohen <amcohen@nvidia.com>
@@ -203,55 +220,142 @@ CC: GR-Linux-NIC-Dev@marvell.com
 CC: Kuniyuki Iwashima <kuniyu@amazon.com>
 CC: Andrew Lunn <andrew+netdev@lunn.ch>
 ---
- include/linux/rtnetlink.h | 2 ++
- net/core/rtnetlink.c      | 7 ++++---
- 2 files changed, 6 insertions(+), 3 deletions(-)
+ drivers/net/ethernet/intel/i40e/i40e_main.c      | 3 +++
+ drivers/net/ethernet/intel/ice/ice_main.c        | 3 +++
+ drivers/net/ethernet/mscc/ocelot_net.c           | 8 +++++++-
+ drivers/net/ethernet/qlogic/qlcnic/qlcnic_main.c | 6 +++++-
+ drivers/net/macvlan.c                            | 3 +++
+ include/linux/netdevice.h                        | 3 +++
+ net/core/rtnetlink.c                             | 8 ++++----
+ 7 files changed, 28 insertions(+), 6 deletions(-)
 
-diff --git a/include/linux/rtnetlink.h b/include/linux/rtnetlink.h
-index 8468a4ce8510..2e48b4ca7187 100644
---- a/include/linux/rtnetlink.h
-+++ b/include/linux/rtnetlink.h
-@@ -192,6 +192,8 @@ extern int ndo_dflt_fdb_add(struct ndmsg *ndm,
- 			    const unsigned char *addr,
- 			    u16 vid,
- 			    u16 flags);
-+extern void rtnl_fdb_notify(struct net_device *dev, const u8 *addr, u16 vid,
-+			    int type, u16 ndm_state);
- extern int ndo_dflt_fdb_del(struct ndmsg *ndm,
- 			    struct nlattr *tb[],
- 			    struct net_device *dev,
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_main.c b/drivers/net/ethernet/intel/i40e/i40e_main.c
+index 25295ae370b2..6a1ac0f4f8a6 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_main.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_main.c
+@@ -13126,6 +13126,9 @@ static int i40e_ndo_fdb_add(struct ndmsg *ndm, struct nlattr *tb[],
+ 	if (err == -EEXIST && !(flags & NLM_F_EXCL))
+ 		err = 0;
+ 
++	if (!err)
++		rtnl_fdb_notify(dev, addr, vid, RTM_NEWNEIGH, ndm->ndm_state);
++
+ 	return err;
+ }
+ 
+diff --git a/drivers/net/ethernet/intel/ice/ice_main.c b/drivers/net/ethernet/intel/ice/ice_main.c
+index a6f586f9bfd1..a3398814a1cb 100644
+--- a/drivers/net/ethernet/intel/ice/ice_main.c
++++ b/drivers/net/ethernet/intel/ice/ice_main.c
+@@ -6154,6 +6154,9 @@ ice_fdb_add(struct ndmsg *ndm, struct nlattr __always_unused *tb[],
+ 	if (err == -EEXIST && !(flags & NLM_F_EXCL))
+ 		err = 0;
+ 
++	if (!err)
++		rtnl_fdb_notify(dev, addr, vid, RTM_NEWNEIGH, ndm->ndm_state);
++
+ 	return err;
+ }
+ 
+diff --git a/drivers/net/ethernet/mscc/ocelot_net.c b/drivers/net/ethernet/mscc/ocelot_net.c
+index 7c9540a71725..cf972444e254 100644
+--- a/drivers/net/ethernet/mscc/ocelot_net.c
++++ b/drivers/net/ethernet/mscc/ocelot_net.c
+@@ -737,8 +737,14 @@ static int ocelot_port_fdb_add(struct ndmsg *ndm, struct nlattr *tb[],
+ 	struct ocelot_port *ocelot_port = &priv->port;
+ 	struct ocelot *ocelot = ocelot_port->ocelot;
+ 	int port = priv->port.index;
++	int err;
+ 
+-	return ocelot_fdb_add(ocelot, port, addr, vid, ocelot_port->bridge);
++	err = ocelot_fdb_add(ocelot, port, addr, vid, ocelot_port->bridge);
++
++	if (!err)
++		rtnl_fdb_notify(dev, addr, vid, RTM_NEWNEIGH, ndm->ndm_state);
++
++	return err;
+ }
+ 
+ static int ocelot_port_fdb_del(struct ndmsg *ndm, struct nlattr *tb[],
+diff --git a/drivers/net/ethernet/qlogic/qlcnic/qlcnic_main.c b/drivers/net/ethernet/qlogic/qlcnic/qlcnic_main.c
+index b3588a1ebc25..1de0290e15e0 100644
+--- a/drivers/net/ethernet/qlogic/qlcnic/qlcnic_main.c
++++ b/drivers/net/ethernet/qlogic/qlcnic/qlcnic_main.c
+@@ -409,7 +409,7 @@ static int qlcnic_fdb_add(struct ndmsg *ndm, struct nlattr *tb[],
+ 	}
+ 
+ 	if (ether_addr_equal(addr, adapter->mac_addr))
+-		return err;
++		goto out;
+ 
+ 	if (is_unicast_ether_addr(addr)) {
+ 		if (netdev_uc_count(netdev) < adapter->ahw->max_uc_count)
+@@ -422,6 +422,10 @@ static int qlcnic_fdb_add(struct ndmsg *ndm, struct nlattr *tb[],
+ 		err = -EINVAL;
+ 	}
+ 
++out:
++	if (!err)
++		rtnl_fdb_notify(dev, addr, vid, RTM_NEWNEIGH, ndm->ndm_state);
++
+ 	return err;
+ }
+ 
+diff --git a/drivers/net/macvlan.c b/drivers/net/macvlan.c
+index cf18e66de142..b1e828581ec4 100644
+--- a/drivers/net/macvlan.c
++++ b/drivers/net/macvlan.c
+@@ -1044,6 +1044,9 @@ static int macvlan_fdb_add(struct ndmsg *ndm, struct nlattr *tb[],
+ 	else if (is_multicast_ether_addr(addr))
+ 		err = dev_mc_add_excl(dev, addr);
+ 
++	if (!err)
++		rtnl_fdb_notify(dev, addr, vid, RTM_NEWNEIGH, ndm->ndm_state);
++
+ 	return err;
+ }
+ 
+diff --git a/include/linux/netdevice.h b/include/linux/netdevice.h
+index 8feaca12655e..9f7de8d0414a 100644
+--- a/include/linux/netdevice.h
++++ b/include/linux/netdevice.h
+@@ -1247,6 +1247,9 @@ struct netdev_net_notifier {
+  *		      const unsigned char *addr, u16 vid, u16 flags,
+  *		      struct netlink_ext_ack *extack);
+  *	Adds an FDB entry to dev for addr.
++ *	Callee is responsible for sending appropriate notification. The helper
++ *	rtnl_fdb_notify() can be invoked to send a generic notification in case
++ *	the driver does not need to customize the notification.
+  * int (*ndo_fdb_del)(struct ndmsg *ndm, struct nlattr *tb[],
+  *		      struct net_device *dev,
+  *		      const unsigned char *addr, u16 vid)
 diff --git a/net/core/rtnetlink.c b/net/core/rtnetlink.c
-index 194a81e5f608..e5c6dd4c5cf5 100644
+index e5c6dd4c5cf5..a9f56a50fa57 100644
 --- a/net/core/rtnetlink.c
 +++ b/net/core/rtnetlink.c
-@@ -4271,7 +4271,7 @@ void rtmsg_ifinfo_newnet(int type, struct net_device *dev, unsigned int change,
+@@ -4376,6 +4376,9 @@ int ndo_dflt_fdb_add(struct ndmsg *ndm,
+ 	if (err == -EEXIST && !(flags & NLM_F_EXCL))
+ 		err = 0;
  
- static int nlmsg_populate_fdb_fill(struct sk_buff *skb,
- 				   struct net_device *dev,
--				   u8 *addr, u16 vid, u32 pid, u32 seq,
-+				   const u8 *addr, u16 vid, u32 pid, u32 seq,
- 				   int type, unsigned int flags,
- 				   int nlflags, u16 ndm_state)
- {
-@@ -4313,8 +4313,8 @@ static inline size_t rtnl_fdb_nlmsg_size(const struct net_device *dev)
- 	       0;
++	if (!err)
++		rtnl_fdb_notify(dev, addr, vid, RTM_NEWNEIGH, ndm->ndm_state);
++
+ 	return err;
  }
+ EXPORT_SYMBOL(ndo_dflt_fdb_add);
+@@ -4473,11 +4476,8 @@ static int rtnl_fdb_add(struct sk_buff *skb, struct nlmsghdr *nlh,
+ 			err = ndo_dflt_fdb_add(ndm, tb, dev, addr, vid,
+ 					       nlh->nlmsg_flags);
  
--static void rtnl_fdb_notify(struct net_device *dev, u8 *addr, u16 vid, int type,
--			    u16 ndm_state)
-+void rtnl_fdb_notify(struct net_device *dev, const u8 *addr, u16 vid, int type,
-+		     u16 ndm_state)
- {
- 	struct net *net = dev_net(dev);
- 	struct sk_buff *skb;
-@@ -4336,6 +4336,7 @@ static void rtnl_fdb_notify(struct net_device *dev, u8 *addr, u16 vid, int type,
- errout:
- 	rtnl_set_sk_err(net, RTNLGRP_NEIGH, err);
- }
-+EXPORT_SYMBOL_GPL(rtnl_fdb_notify);
- 
- /*
-  * ndo_dflt_fdb_add - default netdevice operation to add an FDB entry
+-		if (!err) {
+-			rtnl_fdb_notify(dev, addr, vid, RTM_NEWNEIGH,
+-					ndm->ndm_state);
++		if (!err)
+ 			ndm->ndm_flags &= ~NTF_SELF;
+-		}
+ 	}
+ out:
+ 	return err;
 -- 
 2.45.0
 
